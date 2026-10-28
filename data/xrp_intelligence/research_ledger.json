@@ -3,7 +3,7 @@
   "record_type": "xrp_intelligence_research_ledger",
   "ledger_policy": {
     "purpose": "Highest-priority Barrot mission: XRP intelligence and prediction-engine mastery, with Barrot V3 preserved as the execution and verification foundation.",
-    "update_rule": "Append timestamped snapshots; never silently rewrite historical evidence, forecasts, or outcomes.",
+    "update_rule": "Append timestamped snapshots and run updates; update this index without rewriting historical evidence, forecasts or outcomes.",
     "evidence_classes": [
       "CONFIRMED_PRIMARY_SOURCE",
       "COMPANY_REPORTED",
@@ -13,13 +13,14 @@
       "UNKNOWN",
       "DISCONFIRMING_EVIDENCE"
     ],
-    "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
+    "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known.",
+    "source_use_rule": "Prefer official primary sources and public ledger records. Do not scrape, mirror or re-host provider-derived datasets when published terms prohibit it; obtain permission or independently reproduce the fact from a permitted public source."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-27T22:14:48Z",
+    "captured_at_utc": "2026-10-28T00:07:54Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+      "main_sha": "f315177c24dc64fc0b49957ea5643f2f7d868701",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -44,19 +45,6 @@
           "blocker": "Current API reports not mergeable against current main; mutating workflow remains on main."
         },
         {
-          "number": 1195,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
-          "title": "Research: add evidence-led XRP intelligence ledger snapshot",
-          "state": "open",
-          "draft": true,
-          "head_sha": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
-          "mergeable": true,
-          "checks": {
-            "Tests": "success",
-            "Merge disabled pending gate verification": "success"
-          }
-        },
-        {
           "number": 1202,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1202",
           "title": "Fix Databricks deployment script path",
@@ -77,6 +65,93 @@
           "mergeable": true,
           "ci": "in_progress",
           "gate": "success"
+        },
+        {
+          "number": 1195,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+          "title": "Research: add evidence-led XRP intelligence ledger snapshot",
+          "state": "open",
+          "draft": true,
+          "head_sha": "1f7795970c5e8016f7a31b3043295aa57803ee2b",
+          "mergeable": true,
+          "checks": {
+            "Tests": "in_progress_at_capture",
+            "Merge disabled pending gate verification": "success"
+          },
+          "ahead_by": 44,
+          "behind_by": 60,
+          "blocker": "Historical branch is substantially diverged; preserve it and use fresh-main successor #1227 for review."
+        },
+        {
+          "number": 1223,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1223",
+          "title": "Safety: require device-local approval for queued Termux commands",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ff8f4879a76157b79316a91ed8fa11671fa14780",
+          "mergeable": true,
+          "checks": {
+            "Tests": "success",
+            "Merge disabled pending gate verification": "success"
+          }
+        },
+        {
+          "number": 1224,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1224",
+          "title": "Safety: fresh-main XRP signal integrity and honest forecast evaluation",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ec7a70162cc09ba0ac2450a580b2dab67cd2dbf4",
+          "mergeable": true,
+          "checks": {
+            "Tests": "success",
+            "Merge disabled pending gate verification": "success"
+          }
+        },
+        {
+          "number": 1225,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1225",
+          "title": "Add dependency-aware bundle task execution and durable resume",
+          "state": "open",
+          "draft": true,
+          "head_sha": "b84deb8a2ab17130479c7fff1ce28bd1646d7ac4",
+          "mergeable": true,
+          "checks": {
+            "Tests": "success",
+            "Merge disabled pending gate verification": "success"
+          }
+        },
+        {
+          "number": 1226,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1226",
+          "title": "Safety: make scheduled signal writers artifact-only",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ae17e56ab245f575317beab35b96178dff4732a4",
+          "mergeable": true,
+          "checks": {
+            "Tests": "success_146_passed",
+            "Merge disabled pending gate verification": "success"
+          },
+          "ahead_by": 3,
+          "behind_by": 1,
+          "base_sha": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
+        },
+        {
+          "number": 1227,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
+          "title": "Research: carry XRP intelligence ledger onto fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "19374ff56bab3307ef957212fa29c9148c70591a",
+          "mergeable": true,
+          "checks": {
+            "Tests": "success_145_passed",
+            "Merge disabled pending gate verification": "success"
+          },
+          "ahead_by": 2,
+          "behind_by": 1,
+          "base_sha": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -86,89 +161,19 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "message": "Paper trade cycle [skip ci]",
-        "authored_at_utc": "2026-10-27T22:04:47Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741"
+        "message": "chore: Barrot telemetry report",
+        "authored_at_utc": "2026-10-28T00:07:00Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/f315177c24dc64fc0b49957ea5643f2f7d868701"
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
-        "main_commit": {
-          "message": "Paper trade cycle [skip ci]",
-          "authored_at_utc": "2026-10-27T22:04:47Z",
-          "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741"
-        },
+        "main_sha": "f315177c24dc64fc0b49957ea5643f2f7d868701",
         "main_branch_protected": true,
-        "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
+        "branch_protection_details": "Detailed protection read remains 403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION; effective required checks not independently verified.",
         "main_ci": {
-          "run_id": 40583993078,
-          "conclusion": "success",
-          "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
-          "current_head_status": "NOT_VERIFIED",
-          "note": "Last recorded successful code CI predates current main; current main changes since then were generated-data-only."
-        },
-        "main_databricks_deploy": {
-          "run_id": 40583993212,
-          "conclusion": "failure",
-          "root_cause": "Main workflow still calls python deploy_databricks.py while the script is under scripts/deploy_databricks.py.",
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993212"
-        },
-        "main_operations_pipeline": {
-          "run_id": 40583993172,
-          "conclusion": "failure",
-          "root_cause": "Push rejected as non-fast-forward. This confirms a direct-push failure; whether a concurrent workflow caused it remains unproven.",
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993172"
-        },
-        "approval_workflow_anomaly": {
-          "run_id": 40584131729,
-          "event": "push",
-          "conclusion": "failure",
-          "jobs_returned": 0,
-          "root_cause": "UNRESOLVED. The currently fetched workflow definition declares workflow_dispatch only, but the recorded run event is push; exact triggering semantics still require diagnosis.",
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584131729"
-        },
-        "research_pr_validation": {
-          "pr": 1195,
-          "head_sha": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
-          "ci_run_id": 40584140982,
-          "ci": "success",
-          "gate_run_id": 40584140846,
-          "gate": "success",
-          "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
-          "note": "These checks validate repository tests and fail-closed merge gate only; they do not validate prediction skill or deploy the research system."
-        },
-        "safety_prs": [
-          {
-            "pr": 1193,
-            "mergeable": false,
-            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
-            "state": "open",
-            "note": "Fail-closed signal-integrity fix remains unmerged."
-          },
-          {
-            "pr": 1194,
-            "mergeable": false,
-            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
-            "state": "open",
-            "note": "Read-only merge-queue safety fix remains unmerged; main workflow remains mutation-capable."
-          }
-        ],
-        "recent_merged_prs": [
-          {
-            "pr": 1217,
-            "merged": true,
-            "merge_commit_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
-            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1217"
-          },
-          {
-            "pr": 1218,
-            "merged": true,
-            "merge_commit_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
-            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1218"
-          }
-        ],
-        "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run."
+          "current_head_status": "NOT_CHECKED_THIS_RUN",
+          "note": "The current main head advanced by a telemetry-report commit; no exact-head main CI result was collected in this run."
+        }
       },
       "current_research_head": "d4fd1a34370ca3d53f736660de11ed9174207cf0",
       "current_research_checks": {
@@ -652,6 +657,30 @@
           "SRC-RIPPLE-SBI-RIPPLE-ASIA-NO-XRP-2026-10-27",
           "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
         ]
+      },
+      {
+        "id": "AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "LIVE_XRPL_TOKENIZATION_CONFIRMED; DIRECT_XRP_DEMAND_NOT_ESTABLISHED",
+        "claim": "Aviva Investors announced a live tokenized share class of its Sterling Liquidity Fund on XRPL on 2026-10-26 and disclosed a £50M investment in that share class. The approximately £22B amount is the underlying conventional fund's AUM, not the tokenized value.",
+        "interpretation": "This is direct institutional use of XRPL tokenization infrastructure and a meaningful adoption event. It is not evidence that Aviva bought £50M of XRP, that the fund uses XRP as collateral/bridge asset, or that the event causes XRP price appreciation.",
+        "source_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+          "SRC-AVIVA-USD-TOKENIZED-SHARE-CLASS-2026-07-29",
+          "SRC-RIPPLE-AVIVA-TOKENIZATION-PARTNERSHIP-2026-02-11"
+        ],
+        "uncertainty": "On-ledger holder/transfer details and the incremental XRP fee/reserve/liquidity effect require independent public-ledger measurement; no direct XRP acquisition was disclosed."
+      },
+      {
+        "id": "AVIVA-ONCHAIN-ANALYTICS-USE-CONSTRAINT-2026",
+        "evidence_class": "SECONDARY_SOURCE_POLICY_AND_PROVENANCE",
+        "status": "SECONDARY_CLAIM_QUARANTINED_PENDING_PERMISSION_OR_INDEPENDENT_LEDGER_REPRODUCTION",
+        "claim": "A third-party XRPL analytics page reports tokenization details and transfer restrictions for Aviva's share-class instruments, but its published terms instruct automated clients not to scrape/copy its UI/data and state that re-serving its data in another dataset requires permission.",
+        "interpretation": "Do not scrape, mirror or admit the provider's derived holder/balance data into model features without permission. Use official announcements and independently queried public XRPL ledger records where lawful and technically available.",
+        "source_ids": [
+          "SRC-XRPLTO-AVIVA-ONCHAIN-ANALYSIS-2026-10-26"
+        ],
+        "uncertainty": "The secondary data is not independently reproduced in this run."
       }
     ],
     "relationship_graph": [
@@ -968,6 +997,77 @@
           "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
         ],
         "status": "CONFIRMED_BY_RIPPLE_2021_ANNOUNCEMENT; CURRENT_STAKE_PERCENTAGE_NOT_VERIFIED"
+      },
+      {
+        "id": "EDGE-AVIVA-RIPPLE-2026",
+        "from": "Aviva Investors",
+        "relation": "partnered_with",
+        "to": "Ripple",
+        "evidence_ids": [
+          "SRC-RIPPLE-AVIVA-TOKENIZATION-PARTNERSHIP-2026-02-11",
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+        ],
+        "status": "CONFIRMED"
+      },
+      {
+        "id": "EDGE-AVIVA-GBP-SHARECLASS-2026",
+        "from": "Aviva Investors",
+        "relation": "invested_£50M_in",
+        "to": "GBP Liquidity Fund tokenized share class on XRPL",
+        "evidence_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+        ],
+        "status": "CONFIRMED; NOT_AN_XRP_PURCHASE"
+      },
+      {
+        "id": "EDGE-XRPL-AVIVA-REGISTER-2026",
+        "from": "XRPL",
+        "relation": "records_tokenized_share_class_ownership_for",
+        "to": "Aviva Investors Sterling Liquidity Fund share class",
+        "evidence_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+        ],
+        "status": "CONFIRMED_ANNOUNCEMENT"
+      },
+      {
+        "id": "EDGE-BNY-AVIVA-FUND-CUSTODY-2026",
+        "from": "BNY Mellon",
+        "relation": "custodies_underlying_fund_assets_for",
+        "to": "Aviva Investors Liquidity Fund",
+        "evidence_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+        ],
+        "status": "CONFIRMED_ANNOUNCEMENT"
+      },
+      {
+        "id": "EDGE-KOMAINU-AVIVA-TOKENIZATION-2026",
+        "from": "Komainu",
+        "relation": "supports_digital_asset_custody_for",
+        "to": "Aviva tokenized share-class launch",
+        "evidence_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+        ],
+        "status": "CONFIRMED_ANNOUNCEMENT"
+      },
+      {
+        "id": "EDGE-LICUIDO-AVIVA-TOKENIZATION-2026",
+        "from": "Licuido",
+        "relation": "provides_tokenization_infrastructure_for",
+        "to": "Aviva tokenized share-class launch",
+        "evidence_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+        ],
+        "status": "CONFIRMED_ANNOUNCEMENT"
+      },
+      {
+        "id": "EDGE-AVIVA-SHARECLASS-NOT-XRP-2026",
+        "from": "Aviva £50M tokenized share-class investment",
+        "relation": "does_not_establish",
+        "to": "XRP spot purchase, XRP collateral position, or XRP bridge-asset usage",
+        "evidence_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+        ],
+        "status": "EVIDENCE_LIMITATION"
       }
     ],
     "competing_hypotheses": [
@@ -1187,6 +1287,53 @@
           "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
         ],
         "test_plan": "Find the original occurrence of 'SBIC, ChatGPT SBIC'; check current legal-entity records and SBI Group company profiles; maintain separate graph nodes until the source explicitly identifies the entity."
+      },
+      {
+        "id": "H-AVIVA-XRPL-INSTITUTIONAL-UTILITY",
+        "hypothesis": "A regulated asset manager's live tokenized share class may increase XRPL institutional credibility and application activity.",
+        "supporting_evidence": [
+          "Aviva's primary announcement confirms a live GBP tokenized share class and a £50M investment in that share class.",
+          "A prior USD share class and the February 2026 partnership show continuity."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "The underlying fund remains in conventional fund arrangements.",
+          "Tokenized share ownership does not automatically create net XRP accumulation.",
+          "Public announcement does not establish external subscriber demand or persistent transfer activity."
+        ],
+        "test_plan": [
+          "Independently query public XRPL ledger records for the issuer, instrument IDs, supply and transfers.",
+          "Measure attributable ledger transactions/fees and compare against network baseline.",
+          "Search primary disclosures for XRP collateral, bridge or inventory use separately."
+        ]
+      },
+      {
+        "id": "H-AVIVA-XRP-DEMAND-NULL",
+        "hypothesis": "The £50M is an investment in fund shares, not XRP, and may have no direct XRP price effect.",
+        "supporting_evidence": [
+          "Aviva describes the investment as being in the tokenized share class; the £22B figure is the underlying fund AUM.",
+          "No XRP purchase or XRP-denominated collateral position is disclosed."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Indirect network-fee, reserve, market-maker or liquidity channels are possible but unmeasured."
+        ],
+        "test_plan": [
+          "Measure XRP fee/reserve requirements and actual XRPL liquidity usage.",
+          "Look for explicit XRP holdings/collateral disclosures and compare event-window spot flows with controls."
+        ]
+      },
+      {
+        "id": "H-AVIVA-ANNOUNCEMENT-VS-FLOWS",
+        "hypothesis": "Any near-term market response may reflect announcement attention rather than realized persistent on-ledger usage.",
+        "supporting_evidence": [
+          "The primary announcement confirms launch and sponsor investment but does not report ongoing secondary turnover or XRP inventory."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Public ledger history may show sustained issuance/transfer activity, though this alone does not establish price causality."
+        ],
+        "test_plan": [
+          "Separate announcement time from issuance and later transfer activity.",
+          "Use event windows and matched controls; do not infer causality from a single price move."
+        ]
       }
     ],
     "market_observations": [
@@ -1255,6 +1402,27 @@
           "SRC-COINLORE-USDC-HIST-2026-10-22"
         ],
         "approved_for_model_features": false
+      },
+      {
+        "id": "AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "as_of_date": "2026-10-26",
+        "observation": "Aviva disclosed a £50M investment in a tokenized GBP money-market-fund share class on XRPL; the conventional underlying fund has approximately £22B AUM.",
+        "interpretation": "Institutional XRPL tokenization adoption; not an XRP purchase or £22B tokenized on-ledger balance.",
+        "source_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+        ]
+      },
+      {
+        "id": "AVIVA-TOKENIZED-CLASSES-COMBINED-2026-10-26",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "as_of_date": "2026-10-26",
+        "observation": "Aviva reported more than £86M invested across its USD and GBP tokenized share classes.",
+        "interpretation": "Combined share-class investment, not XRP holdings or XRP market inflow.",
+        "source_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+          "SRC-AVIVA-USD-TOKENIZED-SHARE-CLASS-2026-07-29"
+        ]
       }
     ],
     "phrase_investigation": {
@@ -1344,7 +1512,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "No synchronized, validated XRP feature store or calibrated out-of-sample model is available. SBIC identity and realized XRP flows remain unresolved; USDC supply features remain blocked pending source harmonization.",
+      "reason": "No synchronized, validated, leakage-controlled fixed-horizon model has demonstrated out-of-sample performance and calibration.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -1389,6 +1557,14 @@
       ]
     },
     "next_actions": [
+      "Review PR #1226, which removes direct main writes from the two scheduled signal workflows while preserving outputs as 30-day artifacts; do not merge without approval.",
+      "Review fresh-main research successor PR #1227; it has 145 passing tests and a passing fail-closed gate on head 19374ff, but main advanced one telemetry-report commit after its parent.",
+      "Independently reproduce Aviva's public XRPL token IDs, balances and transfer rules without scraping or re-hosting vendor-derived data; separate tokenized fund shares from XRP flows.",
+      "Build a permanent append-only feature store and reviewed promotion/retention path; 30-day CI artifacts alone are not durable research storage.",
+      "Harmonize XRP derivatives by venue, contract type, quote currency and common UTC cutoff; quarantine the Coinbase contract page's label/expiry mismatch.",
+      "Capture Circle global USDC supply and XRPL-native USDC supply/transfers separately; do not infer XRP flows from global supply contraction.",
+      "Continue exact-phrase SBIC and Camilla Stephenson identity research; do not claim a complete video inventory until the canonical channel is verified.",
+      "Keep forecast status NOT_ISSUED until synchronized features, fixed-horizon walk-forward tests, leakage controls, calibrated probabilities and shadow evaluation pass.",
       "Design and test a durable, idempotent research-data persistence path that stops scheduled signal/knowledge workflows from writing generated data and mutable accuracy outcomes directly to main; do not remove persistence before a safe replacement exists.",
       "Review and land PR #1193 only after independent review and diagnosis or explicit acceptance of the unresolved failed workflow; do not merge automatically.",
       "Review PR #1194 and verify effective branch protection, required checks, review and approval controls before any merge queue is re-enabled.",
@@ -1636,6 +1812,28 @@
           "SRC-COINLORE-USDC-HIST-2026-10-22"
         ],
         "next_action": "Use a single provider and metric for daily time-series features; independently reconcile issuer mint/burn, total supply and chain-level distribution; keep the feature blocked until stable and reproducible."
+      },
+      {
+        "id": "AVIVA-AUM-VS-TOKENIZED-VALUE-2026",
+        "severity": "HIGH",
+        "status": "XRP_FLOW_FEATURE_BLOCKED",
+        "finding": "The approximately £22B amount is the conventional fund's AUM; Aviva disclosed £50M invested in the tokenized GBP share class. Neither amount is a disclosed XRP purchase.",
+        "interpretation": "Do not use £22B as XRPL tokenized value or £50M as XRP capital inflow.",
+        "source_ids": [
+          "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26"
+        ],
+        "next_action": "Track tokenized share-class balances separately from XRP balances, fees, collateral and spot-flow data."
+      },
+      {
+        "id": "XRPLTO-SECONDARY-DATA-USE-2026",
+        "severity": "MEDIUM",
+        "status": "BLOCKED_PENDING_PERMISSION_OR_INDEPENDENT_LEDGER_REPRODUCTION",
+        "finding": "The third-party analytics provider's published terms prohibit scraping/copying its UI/data and require permission before re-serving its data in another dataset.",
+        "interpretation": "Public visibility is not blanket permission to scrape or mirror a vendor's derived dataset.",
+        "source_ids": [
+          "SRC-XRPLTO-AVIVA-ONCHAIN-ANALYSIS-2026-10-26"
+        ],
+        "next_action": "Use public XRPL ledger data through a permitted source or obtain explicit permission before persistent reuse of provider-derived balances/holder analytics."
       }
     ],
     "mission_priority": {
@@ -1664,24 +1862,20 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "SBIC-IDENTITY-SBI-XRP-RELATIONSHIPS-2026-10-27T221448Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2214Z.json",
-    "snapshot_blob_sha": "1efb0b0744664c0e237bc16e054abebebd258199",
-    "current_research_head_before_ledger_update": "b8bf31b5d1c729ae8807580e7266620854d0747f",
+    "snapshot_id": "XRP-RUN-VERIFICATION-2026-10-28T000754Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0007Z.json",
+    "snapshot_blob_sha": "0f58a05a80dd70f80fe41eb32460368eeec1febf",
+    "current_research_head_before_ledger_update": "1f7795970c5e8016f7a31b3043295aa57803ee2b",
     "current_research_checks": {
-      "last_verified_head": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30",
-      "tests": "PASS_145_TESTS",
-      "tests_run_id": 40593506611,
-      "tests_duration_seconds": 5.89,
+      "tests": "IN_PROGRESS_AT_CAPTURE",
       "gate": "PASS",
-      "gate_run_id": 40593506632,
-      "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593506611",
-      "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593506632",
-      "current_metadata_update": "PENDING_VERIFICATION",
-      "as_of_utc": "2026-10-27T22:16:38Z",
-      "note": "Exact-head CI and fail-closed gate passed for cc16b4b. This metadata-only ledger commit creates a newer head; verify that head's run before claiming it passed."
+      "as_of_utc": "2026-10-28T00:07:54Z",
+      "validated_head_sha": "1f7795970c5e8016f7a31b3043295aa57803ee2b",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606807693",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606807685",
+      "note": "The gate passed; CI was still running at snapshot cutoff. This ledger update creates a newer head and must be independently verified."
     },
-    "current_research_head_before_final_verification_record": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30"
+    "current_research_head_before_final_verification_record": "1f7795970c5e8016f7a31b3043295aa57803ee2b"
   },
   "sources": [
     {
@@ -2289,6 +2483,38 @@
       "published_at": "2026-02-25",
       "accessed_at_utc": "2026-10-27T22:14:48Z",
       "note": "Official SBI Group release says eligible SBI Shinsei Bank shareholders may choose an XRP coupon fulfilled through SBI VC Trade. This is distinct from SBIC East Japan and SBI Capital; redemption volume is unknown."
+    },
+    {
+      "id": "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/",
+      "title": "Aviva Investors launches tokenised share class for Sterling Liquidity Fund",
+      "accessed_at_utc": "2026-10-28T00:06:16Z",
+      "note": "Official announcement: GBP share class launched on XRPL; Aviva disclosed £50M investment in the share class. Approximately £22B is the underlying conventional fund's AUM, not tokenized value. BNY Mellon, Komainu and Licuido roles are described in the announcement."
+    },
+    {
+      "id": "SRC-AVIVA-USD-TOKENIZED-SHARE-CLASS-2026-07-29",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.avivainvestors.com/en-se/about/company-news/2026/07/aviva-investors-launches-tokenised-share-class-for-usd-liquidity-fund/",
+      "title": "Aviva Investors launches tokenised share class for USD Liquidity Fund",
+      "accessed_at_utc": "2026-10-28T00:06:16Z",
+      "note": "Official announcement for the earlier USD tokenized share class on XRPL."
+    },
+    {
+      "id": "SRC-RIPPLE-AVIVA-TOKENIZATION-PARTNERSHIP-2026-02-11",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://ripple.com/ripple-press/aviva-investors-seeks-to-tokenise-products-on-the-xrp-ledger-in-collaboration-with-ripple/",
+      "title": "Aviva Investors and Ripple announce tokenization collaboration",
+      "accessed_at_utc": "2026-10-28T00:06:16Z",
+      "note": "Primary partner announcement; confirms announced collaboration, not independent proof of commercial impact."
+    },
+    {
+      "id": "SRC-XRPLTO-AVIVA-ONCHAIN-ANALYSIS-2026-10-26",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrpl.to/insights/aviva-investors-tokenized-funds-xrp-ledger",
+      "title": "XRPL.to third-party analysis of Aviva tokenized fund instruments",
+      "accessed_at_utc": "2026-10-28T00:06:16Z",
+      "note": "Quarantined secondary lead only. Provider's published notice forbids scraping/copying its UI/data and says permission is required before re-serving its data in another dataset. Do not persist or use its derived token/balance data as a feature without permission; independently reproduce facts from public XRPL ledger records instead."
     }
   ],
   "limitations": [
@@ -2633,6 +2859,66 @@
         "main_modified": false,
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T00:02:11Z",
+      "update_type": "APPEND_ONLY_USDC_AND_DERIVATIVES_DATA_QUALITY",
+      "snapshot_id": "XRP-INTELLIGENCE-2026-10-28T000211Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0002Z.json",
+      "snapshot_blob_sha": "ed8f2fcfb75afe3f3ac9cb86127cf9fe783c28f1",
+      "details": "Captured Circle's rounded Oct 22 USDC supply/reserve observations, Coinbase's provider-defined all-asset derivatives aggregate, stale single-venue XRP OI, and a Coinbase XRP contract label/expiry mismatch. Global USDC contraction is not an XRP-flow feature.",
+      "validation": {
+        "json": "PASS",
+        "source_provenance": "RECORDED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T00:03:48Z",
+      "update_type": "APPEND_ONLY_EXACT_HEAD_VERIFICATION_AND_FRESH_MAIN_SUCCESSOR",
+      "snapshot_id": "XRP-INTELLIGENCE-VERIFICATION-2026-10-28T000348Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0003Z.json",
+      "snapshot_blob_sha": "0d5e8d5c6d0c119ea608b2d373e6e1e9714b5ec9",
+      "details": "Recorded exact-head CI/gate results for PRs #1223-#1226 and the diverged historical research PR #1195. A fresh-main research successor #1227 was created without modifying or merging the historical branch.",
+      "validation": {
+        "json": "PASS",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T00:06:16Z",
+      "update_type": "APPEND_ONLY_AVIVA_INSTITUTIONAL_TOKENIZATION_EVENT",
+      "snapshot_id": "XRP-AVIVA-TOKENIZED-GBP-FUND-2026-10-28T000616Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0006Z.json",
+      "snapshot_blob_sha": "2471b7648a3cb759c13647f343785d0829158b6c",
+      "details": "Added official Aviva/Ripple evidence for a live GBP tokenized fund share class on XRPL and Aviva's £50M investment in that share class. The £22B figure is underlying fund AUM, not tokenized value or XRP capital. Third-party on-chain analytics remain quarantined pending permission or independent public-ledger reproduction.",
+      "validation": {
+        "json": "PASS",
+        "source_use_policy": "RECORDED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "snapshot_blob_sha": "VERIFIED_BY_GITHUB_FILE_READ"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T00:07:54Z",
+      "update_type": "APPEND_ONLY_RUN_VERIFICATION_AND_SOURCE_USE_CONSTRAINTS",
+      "snapshot_id": "XRP-RUN-VERIFICATION-2026-10-28T000754Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0007Z.json",
+      "snapshot_blob_sha": "0f58a05a80dd70f80fe41eb32460368eeec1febf",
+      "details": "Recorded exact-head test/gate results, current main SHA f315177, fresh-main successor #1227 state, and the requirement not to scrape/mirror provider-derived XRPL analytics without permission.",
+      "validation": {
+        "json": "PASS",
+        "pr1227_ci": "PASS_145_TESTS",
+        "pr1227_gate": "PASS",
+        "pr1226_ci": "PASS_146_TESTS",
+        "pr1226_gate": "PASS",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false
       }
     }
   ],
