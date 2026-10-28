@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T08:14:53.103Z",
+    "captured_at_utc": "2026-10-28T08:15:54.175Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
@@ -1589,6 +1589,17 @@
           "SRC-SBI-REMIT-XRP-RECHECK-2026-10-28T0814Z"
         ],
         "uncertainty": "Current transaction volumes and the intended meaning of the separate phrase 'SBIC, ChatGPT SBIC' remain unresolved."
+      },
+      {
+        "id": "CIRCLE-BINANCE-EQUITY-DISTRIBUTION-2026-10-28T0815Z",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "EQUITY_AND_COMMERCIAL_RELATION_CONFIRMED; XRP_LINK_NOT_ESTABLISHED",
+        "claim": "Circle announced on 22 September 2026 that Binance invested $100 million in Circle and renewed a five-year commercial agreement focused on promoting USDC globally, particularly in emerging markets.",
+        "interpretation": "This is a direct Circle-Binance equity and distribution relationship that can materially affect USDC distribution and exchange liquidity. It does not establish XRP holdings, XRP collateral, or a direct Circle-XRP commercial relationship.",
+        "source_ids": [
+          "SRC-CIRCLE-BINANCE-100M-2026-10-28T0815Z"
+        ],
+        "uncertainty": "Incremental USDC usage, economics after partner incentives, venue-level USDC balances, and any indirect effect on XRP liquidity or bridge-path share remain unmeasured."
       }
     ],
     "relationship_graph": [
@@ -2274,6 +2285,16 @@
           "SRC-XRP-INSIGHTS-SUPPLY-REPORT-2026-10-24"
         ],
         "status": "SECONDARY_REPORT; FUND_LEVEL_RECONCILIATION_PENDING"
+      },
+      {
+        "from": "Binance",
+        "relation": "$100M strategic equity investment and five-year USDC promotion agreement",
+        "to": "Circle",
+        "evidence_ids": [
+          "SRC-CIRCLE-BINANCE-100M-2026-10-28T0815Z"
+        ],
+        "status": "CONFIRMED_PRIMARY_SOURCE",
+        "xrp_relationship": "No direct XRP holding, collateral, or price-impact relationship established by this announcement."
       }
     ],
     "competing_hypotheses": [
@@ -2844,6 +2865,19 @@
           "Native USDC on XRPL is confirmed, and a measured increase in XRPL USDC flows coincident with higher XRP bridge-path share could support complementarity, but no such causal series is currently verified."
         ],
         "test_plan": "Reconcile issuer mint/burn and chain-specific supply by UTC cutoff; measure XRPL USDC transfer value, DEX depth, XRP bridge-path share, exchange netflows and venue balances; compare against matched chains and market beta; evaluate out of sample."
+      },
+      {
+        "id": "H-BINANCE-CIRCLE-USDC-DISTRIBUTION-VS-XRP-BRIDGE-SHARE-2026-10-28T0815Z",
+        "hypothesis": "Expanded Binance-Circle USDC distribution may increase USDC liquidity on venues and payment routes, but its effect on XRP may be complementary or substitutive depending on whether USDC pairs and direct settlement expand alongside or replace XRP bridge paths.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-BINANCE-100M-2026-10-28T0815Z",
+          "SRC-CIRCLE-USDC-XRPL"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "A distribution agreement and equity investment do not prove incremental stablecoin usage; USDC balances can move among venues/chains or replace fiat without affecting XRP.",
+          "No direct XRP purchase or collateral commitment is disclosed in the partnership announcement."
+        ],
+        "test_plan": "Measure venue-level USDC balances and pair depth, XRPL-native USDC transfer value, XRP bridge-path share, XRP/USD and XRP/USDC depth, exchange netflows, and corridor volumes before/after the agreement; use control venues/chains and fixed UTC cutoffs."
       }
     ],
     "market_observations": [
@@ -3418,6 +3452,7 @@
       ]
     },
     "next_actions": [
+      "Measure the Circle-Binance USDC distribution relationship against venue-level balances, XRPL-native USDC flows, and XRP bridge-path share; do not infer XRP impact from the equity announcement.",
       "Continue SBIC exact-identity and Camilla Stephenson canonical-channel verification; retain unresolved status.",
       "Normalize XRP spot/derivatives and XRPL-native USDC flows at common UTC cutoffs; keep provider dashboard rows blocked until universe and timestamps reconcile.",
       "Build durable append-only staging and reviewed promotion for generated summaries and paper-trading state without breaking ingestion continuity.",
@@ -3426,8 +3461,7 @@
       "Run exact-head CI and fail-closed gate on the new research snapshot+ledger commit.",
       "Design idempotent durable staging/promotion for summary, scheduler, paper-trader, ping-pong and cross-analysis writers without breaking state continuity.",
       "Normalize XRP price/volume and derivatives at common UTC cutoffs; exclude conflicting vendor rows from the feature store.",
-      "Triage the 75 open PRs read-only by changed paths, age, base/head SHAs and exact-head CI; do not auto-close or merge.",
-      "Continue SBIC identity, ASK Coin/actual capital phrase provenance, and canonical Camilla Stephenson video-channel verification."
+      "Triage the 75 open PRs read-only by changed paths, age, base/head SHAs and exact-head CI; do not auto-close or merge."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -4037,12 +4071,17 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-SIGNAL-SUMMARY-FAIL-CLOSED-CI-AND-MARKET-RECHECK-2026-10-28T0814Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0814Z.json",
+    "snapshot_id": "XRP-CIRCLE-BINANCE-DISTRIBUTION-AND-LEDGER-CI-2026-10-28T0815Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0815Z.json",
     "current_research_head_before_ledger_update": "dc18baed806b221054d88299d11a0cc3121d2fba",
     "current_research_checks": {
-      "status": "PENDING_AFTER_THIS_LEDGER_UPDATE",
-      "note": "PR #1245 exact-head CI/gate passed; these checks do not verify the new research-ledger commit. Exact-head CI for the ledger update must be inspected separately."
+      "status": "PASS_ON_PREVIOUS_LEDGER_HEAD; CURRENT_SNAPSHOT_UPDATE_PENDING_CI",
+      "previous_head": "6eb2c9341e1c0fab9756bac2de55769a69adf9c7",
+      "tests": 146,
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655440350",
+      "gate": "PASS",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655440286",
+      "note": "The prior ledger commit passed exact-head CI and fail-closed gate. This snapshot/index update requires its own exact-head CI check."
     },
     "current_research_head_before_final_verification_record": "dc18baed806b221054d88299d11a0cc3121d2fba",
     "platform_coordination_architecture": {
@@ -4632,6 +4671,18 @@
           "SRC-GH-PR1245-GATE-PASS-2026-10-28T0814Z"
         ],
         "impact_status": "VERIFIED_IN_DRAFT_PR; MAIN_UNCHANGED; NO_DEPLOYMENT"
+      },
+      {
+        "event_id": "EVT-CIRCLE-BINANCE-100M-USDC-PARTNERSHIP-2026-10-28T0815Z",
+        "event_time_utc": "2026-09-22",
+        "captured_at_utc": "2026-10-28T08:15:54.175Z",
+        "entity": "Circle; Binance; USDC",
+        "event": "Circle announced Binance's $100M strategic equity investment and a new five-year USDC promotion agreement focused on global distribution and emerging markets.",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "source_ids": [
+          "SRC-CIRCLE-BINANCE-100M-2026-10-28T0815Z"
+        ],
+        "impact_status": "USDC_DISTRIBUTION_CHANNEL_CONFIRMED; XRP_FLOW_AND_PRICE_IMPACT_UNKNOWN"
       }
     ],
     "current_pr_1238_state": {
@@ -5049,7 +5100,7 @@
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
     "current_research_head_this_run": "NOT_ASSERTED_BY_FILE_FETCH; existing research branch preserved",
-    "snapshot_blob_sha": "fa489149cd2f8f9c143ec234641314f8db3653d5"
+    "snapshot_blob_sha": "af0c86a889699185e707d8563b660e5759b2ef2b"
   },
   "sources": [
     {
@@ -6875,6 +6926,14 @@
       "title": "Observed main head",
       "accessed_at_utc": "2026-10-28T08:14:53.103Z",
       "note": "Current observed main head cc54769dc249a768b423de9cfed68da06ab0056a; commit message 'Paper trade cycle [skip ci]'; commit time 2026-10-28T08:06:57Z. This run did not modify main."
+    },
+    {
+      "id": "SRC-CIRCLE-BINANCE-100M-2026-10-28T0815Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx",
+      "title": "Circle announces Binance $100M investment and five-year USDC partnership",
+      "accessed_at_utc": "2026-10-28T08:15:54.175Z",
+      "note": "Circle's 22 Sep 2026 official announcement says Binance made a $100M strategic equity investment and entered a new five-year agreement to promote USDC, especially in emerging markets; Circle supplies infrastructure. This establishes Circle-Binance equity/commercial ties, not an XRP position or XRP flow."
     }
   ],
   "limitations": [
@@ -7839,6 +7898,26 @@
         "pr1245_gate": "PASS",
         "pr1245_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655076757",
         "ledger_exact_head_ci": "PENDING_AFTER_INDEX_UPDATE"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T08:15:54.175Z",
+      "update_type": "CIRCLE_BINANCE_USDC_DISTRIBUTION_RELATIONSHIP_AND_LEDGER_CI",
+      "snapshot_id": "XRP-CIRCLE-BINANCE-DISTRIBUTION-AND-LEDGER-CI-2026-10-28T0815Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0815Z.json",
+      "details": "Added Circle's official 22 Sep 2026 announcement of Binance's $100M strategic equity investment and five-year USDC promotion agreement. Added competing hypotheses for complementarity versus substitution on XRP bridge routes. Verified the prior ledger commit 6eb2c9341e1c0fab9756bac2de55769a69adf9c7 passed 146 tests in 6.01s and the fail-closed gate; current snapshot/index update still requires exact-head CI.",
+      "validation": {
+        "source_ids_unique": true,
+        "snapshot_blob_sha": "af0c86a889699185e707d8563b660e5759b2ef2b",
+        "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "previous_ledger_head_ci": "PASS_146_TESTS_6.01S",
+        "previous_ledger_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655440350",
+        "previous_ledger_gate": "PASS",
+        "previous_ledger_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655440286",
+        "current_ledger_head_ci": "PENDING_AFTER_INDEX_UPDATE"
       }
     }
   ],
