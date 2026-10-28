@@ -3,6 +3,7 @@
 BARROT-Ω TERMUX RUNNER — executes queued command bundles locally on
 Sean's device instead of him pasting them by hand.
 """
+import hashlib
 import json
 import os
 import subprocess
@@ -10,8 +11,15 @@ import sys
 import time
 import uuid
 from datetime import datetime, timezone
+from pathlib import Path
 
 QUEUE_PATH = "ping-pongings/knowledge-base/termux_tasks.jsonl"
+APPROVAL_STORE_PATH = Path(
+    os.environ.get(
+        "BARROT_LOCAL_APPROVAL_STORE",
+        str(Path.home() / ".config" / "barrot" / "approved_tasks.json"),
+    )
+).expanduser()
 CATASTROPHIC = [
     "rm -rf /", "rm -rf /*", "rm -rf ~", "rm -rf $HOME",
     ":(){ :|:& };:", "mkfs.", "> /dev/sda", "dd if=/dev/zero of=/dev",
@@ -44,6 +52,105 @@ def _save(entries):
 def _is_catastrophic(cmd):
     lowered = cmd.lower()
     return any(pattern in lowered for pattern in CATASTROPHIC)
+
+
+def _command_digest(commands):
+    """Hash the exact ordered command list so approval cannot survive edits."""
+    payload = json.dumps(commands, ensure_ascii=False, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _load_approvals():
+    # This store must remain on the local device, outside the repository queue.
+    try:
+        data = json.loads(APPROVAL_STORE_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def _write_approvals(approvals):
+    APPROVAL_STORE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    temporary = APPROVAL_STORE_PATH.with_name(
+        f".{APPROVAL_STORE_PATH.name}.{os.getpid()}.tmp"
+    )
+    try:
+        temporary.write_text(
+            json.dumps(approvals, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        os.chmod(temporary, 0o600)
+        os.replace(temporary, APPROVAL_STORE_PATH)
+        os.chmod(APPROVAL_STORE_PATH, 0o600)
+    finally:
+        try:
+            temporary.unlink()
+        except FileNotFoundError:
+            pass
+
+
+def _approval_matches(task, approvals=None):
+    approvals = _load_approvals() if approvals is None else approvals
+    task_id = str(task.get("id", ""))
+    record = approvals.get(task_id)
+    commands = task.get("commands")
+    return (
+        isinstance(record, dict)
+        and isinstance(commands, list)
+        and record.get("commands_sha256") == _command_digest(commands)
+    )
+
+
+def approve_task(task_id):
+    """Interactively approve one exact pending command list on this device."""
+    task = next((entry for entry in _load() if str(entry.get("id")) == str(task_id)), None)
+    if task is None or task.get("status") != "pending":
+        print("Approval refused: task was not found as pending.")
+        return False
+
+    commands = task.get("commands")
+    if not isinstance(commands, list) or not commands or any(
+        not isinstance(command, str) or not command.strip() for command in commands
+    ):
+        print("Approval refused: task command list is invalid.")
+        return False
+
+    print(f"Task ID: {task_id}")
+    print(f"Note: {task.get('note', '')}")
+    print("Exact commands to execute:")
+    for index, command in enumerate(commands, start=1):
+        print(f"  {index}. {command}")
+    expected = f"APPROVE {task_id}"
+    print(f"To authorize this exact list locally, type: {expected}")
+    try:
+        response = input("> ").strip()
+    except (EOFError, KeyboardInterrupt):
+        print("Approval cancelled.")
+        return False
+    if response != expected:
+        print("Approval cancelled; no local approval was written.")
+        return False
+
+    approvals = _load_approvals()
+    approvals[str(task_id)] = {
+        "commands_sha256": _command_digest(commands),
+        "approved_at": _now().isoformat(),
+    }
+    _write_approvals(approvals)
+    print(f"Local approval recorded for task {task_id}.")
+    return True
+
+
+def _consume_task_approval(task):
+    """Consume approval before execution; edited or replayed tasks fail closed."""
+    approvals = _load_approvals()
+    task_id = str(task.get("id", ""))
+    if not _approval_matches(task, approvals):
+        return False
+    del approvals[task_id]
+    # If this write fails, the exception prevents command execution.
+    _write_approvals(approvals)
+    return True
 
 
 def _git_commit_push(message):
@@ -107,17 +214,29 @@ def _run_task(e):
 def process_pending():
     entries = _load()
     fired = 0
+    pending_seen = False
     for e in entries:
         if e["status"] != "pending":
             continue
-        print(f"Running task {e['id']}: {e.get('note','')}")
+        pending_seen = True
+        if not _consume_task_approval(e):
+            print(
+                f"BLOCKED task {e.get('id')}: local approval required; "
+                f"run 'python scripts/termux_runner.py approve {e.get('id')}' "
+                "on this device after reviewing the exact commands."
+            )
+            continue
+        print(f"Running locally approved task {e['id']}: {e.get('note','')}")
         _run_task(e)
         _save(entries)
         _git_commit_push(f"Termux runner: task {e['id']} {e['status']} [skip ci]")
         fired += 1
         print(f"  -> {'OK' if e['status']=='done' else 'FAILED'}")
     if fired == 0:
-        print("No pending tasks.")
+        if pending_seen:
+            print("No approved pending tasks executed; unapproved tasks remain pending.")
+        else:
+            print("No pending tasks.")
     return fired
 
 
@@ -134,7 +253,7 @@ def watch(interval=30):
 
 def main():
     if len(sys.argv) < 2:
-        sys.exit("usage: termux_runner.py enqueue <note> (commands on stdin) | once | watch [interval]")
+        sys.exit("usage: termux_runner.py enqueue <note> (commands on stdin) | approve <task_id> | once | watch [interval]")
     cmd = sys.argv[1]
     if cmd == "enqueue":
         note = sys.argv[2] if len(sys.argv) > 2 else ""
@@ -142,6 +261,10 @@ def main():
         if not commands:
             sys.exit("no commands provided on stdin")
         enqueue(commands, note)
+    elif cmd == "approve":
+        if len(sys.argv) < 3:
+            sys.exit("usage: termux_runner.py approve <task_id>")
+        sys.exit(0 if approve_task(sys.argv[2]) else 1)
     elif cmd == "once":
         process_pending()
     elif cmd == "watch":
