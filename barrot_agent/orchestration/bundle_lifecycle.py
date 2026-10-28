@@ -204,6 +204,7 @@ def dispatch_bundle_tasks(
     last_result: Any = next((latest[task_id].get("result") for task_id in reversed(list(task_by_id)) if task_id in completed and latest[task_id].get("result") is not None), None)
     executed: list[str] = []
     blocked: dict[str, str] = {}
+    no_change: list[str] = []
     remaining = {task["id"] for task in tasks} - completed
 
     # Iterate until no more dependency-ready work can be advanced.
@@ -251,8 +252,18 @@ def dispatch_bundle_tasks(
                 if not isinstance(cycle, dict):
                     cycle = {}
                 commit = cycle.get("commit") or {}
+                cycle_status = cycle.get("status", raw.get("status", "UNKNOWN"))
+                verified_no_change = (
+                    cycle_status == "no_repair_required"
+                    and cycle.get("report_only") is not True
+                    and cycle.get("issue_reproduced") is False
+                    and isinstance(cycle.get("validation"), dict)
+                    and isinstance(cycle["validation"].get("issue_reproduction"), dict)
+                    and cycle["validation"]["issue_reproduction"].get("issue_reproduced") is False
+                )
                 evidence = {
-                    "status": cycle.get("status", raw.get("status", "UNKNOWN")),
+                    "status": "no_change_required" if verified_no_change else cycle_status,
+                    "disposition": "no_change_required" if verified_no_change else "repair_or_blocked",
                     "cycle_id": cycle.get("cycle_id"),
                     "queue_advanced": raw.get("queue_advanced") is True,
                     "local_validation_passed": cycle.get("local_validation_passed") is True,
@@ -267,6 +278,9 @@ def dispatch_bundle_tasks(
                 store.record_task_execution(work_id, task_id, evidence)
                 if is_complete(evidence):
                     completed.add(task_id)
+                elif verified_no_change:
+                    no_change.append(task_id)
+                    blocked[task_id] = "no repair required: deterministic reproduction showed the issue is absent"
                 else:
                     blocked[task_id] = str(evidence.get("failure") or evidence["status"])
                 remaining.remove(task_id)
@@ -300,5 +314,6 @@ def dispatch_bundle_tasks(
         "completed_task_ids": sorted(completed.intersection(task_by_id)),
         "executed_task_ids": executed,
         "blocked_tasks": blocked,
+        "no_change_task_ids": sorted(no_change),
         "last_result": last_result,
     }
