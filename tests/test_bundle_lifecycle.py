@@ -3,6 +3,12 @@ import json
 import pytest
 
 from barrot_agent.orchestration.bundle_lifecycle import BundleLifecycleStore
+from barrot_agent.orchestration.repository_repair import (
+    DurableWorkStore,
+    ProjectIdentity,
+    RepairCycleEvidence,
+    WorkQueueController,
+)
 
 
 class Review:
@@ -341,6 +347,60 @@ def test_dispatcher_does_not_treat_report_only_as_verified_no_change(tmp_path):
     assert result["no_change_task_ids"] == []
     assert result["blocked_tasks"]["task-a"] == "no_repair_required"
 
+
+
+def test_dispatcher_handles_no_change_from_real_work_queue_controller(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    class NoChangeRepairController:
+        workspace = tmp_path
+
+        def run(self, **kwargs):
+            cycle = RepairCycleEvidence(cycle_id="no-change-cycle")
+            cycle.status = "no_repair_required"
+            cycle.current_state = "NO_REPAIR_REQUIRED"
+            cycle.issue_reproduced = False
+            cycle.validation = {
+                "issue_reproduction": {"issue_reproduced": False}
+            }
+            cycle.report = "Issue did not reproduce."
+            return cycle
+
+    queue = WorkQueueController(
+        repair_controller=NoChangeRepairController(),
+        work_store=DurableWorkStore(tmp_path),
+    )
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("real-queue-no-change", Result())
+
+    def execute(task):
+        return queue.run(
+            work_id="real-queue-no-change-task-a",
+            project_identity=ProjectIdentity.from_seed("Barrot-Agent/B-Agent"),
+            task_title="No-change integration test",
+            task_body="Verify that absent issues do not create a repair PR.",
+            issue_number="42",
+            repo="Barrot-Agent/B-Agent",
+            branch="test/no-change",
+            audit_context={"inventory": "integration test"},
+        )
+
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="real-queue-no-change",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=execute,
+    )
+
+    assert result["complete"] is False
+    assert result["no_change_task_ids"] == ["task-a"]
+    assert result["blocked_tasks"]["task-a"].startswith("no repair required")
+    latest = store.latest_task_states("real-queue-no-change")["task-a"]
+    assert latest["status"] == "no_change_required"
+    persisted_queue = queue.work_store.load("real-queue-no-change-task-a")
+    assert persisted_queue["status"] == "blocked"
+    assert persisted_queue["queue_advanced"] is False
+    assert persisted_queue["repair_cycle"]["status"] == "no_repair_required"
 
 def test_dispatcher_resumes_after_interruption_between_tasks(tmp_path):
     from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
