@@ -280,6 +280,68 @@ def test_changed_request_fingerprint_does_not_reuse_old_task_evidence(tmp_path):
     assert payload["execution_evidence"] == []
 
 
+
+
+def test_dispatcher_marks_verified_no_change_without_claiming_repair_completion(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("no-change-bundle", Result())
+    no_change_result = {
+        "status": "blocked",
+        "queue_advanced": False,
+        "repair_cycle": {
+            "status": "no_repair_required",
+            "report_only": False,
+            "issue_reproduced": False,
+            "validation": {
+                "issue_reproduction": {"issue_reproduced": False}
+            },
+            "report": "The issue did not reproduce during deterministic validation.",
+        },
+    }
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="no-change-bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=lambda task: no_change_result,
+    )
+
+    assert result["complete"] is False
+    assert result["completed_task_ids"] == []
+    assert result["no_change_task_ids"] == ["task-a"]
+    assert "no repair required" in result["blocked_tasks"]["task-a"]
+    latest = store.latest_task_states("no-change-bundle")["task-a"]
+    assert latest["status"] == "no_change_required"
+    assert latest["disposition"] == "no_change_required"
+
+
+def test_dispatcher_does_not_treat_report_only_as_verified_no_change(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("report-only-bundle", Result())
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="report-only-bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=lambda task: {
+            "status": "blocked",
+            "queue_advanced": False,
+            "repair_cycle": {
+                "status": "no_repair_required",
+                "report_only": True,
+                "issue_reproduced": False,
+                "validation": {"issue_reproduction": {"issue_reproduced": False}},
+            },
+        },
+    )
+
+    assert result["complete"] is False
+    assert result["no_change_task_ids"] == []
+    assert result["blocked_tasks"]["task-a"] == "no_repair_required"
+
+
 def test_dispatcher_resumes_after_interruption_between_tasks(tmp_path):
     from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
 
