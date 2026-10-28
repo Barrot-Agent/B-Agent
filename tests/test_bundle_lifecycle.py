@@ -294,16 +294,19 @@ def test_dispatcher_resumes_after_interruption_between_tasks(tmp_path):
     def interrupted_execute(task):
         calls.append(task["id"])
         if task["id"] == "task-b":
-            raise RuntimeError("simulated process interruption")
+            # Simulate interruption/failure before the dependent task completes.
+            return {"status": "failed", "queue_advanced": False,
+                    "repair_cycle": {"status": "failed", "failure": "simulated interruption"}}
         return _complete_task_result(task["id"])
 
-    with pytest.raises(RuntimeError, match="simulated process interruption"):
-        dispatch_bundle_tasks(
-            store=store,
-            work_id="interrupted-bundle",
-            bundle=bundle,
-            execute_task=interrupted_execute,
-        )
+    first = dispatch_bundle_tasks(
+        store=store,
+        work_id="interrupted-bundle",
+        bundle=bundle,
+        execute_task=interrupted_execute,
+    )
+    assert first["complete"] is False
+    assert first["completed_task_ids"] == ["task-a"]
 
     # A fresh dispatcher/store instance represents a process restart. The first
     # task must remain durably complete; only the unfinished dependent is retried.
