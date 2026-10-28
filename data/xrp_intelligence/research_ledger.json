@@ -1256,6 +1256,21 @@
           "SRC-GH-PR1262-CI-2026-10-28T1811Z",
           "SRC-GH-PR1262-GATE-2026-10-28T1811Z"
         ]
+      },
+      {
+        "id": "PAPER-LOG-REPLAY-BLOCKED-2026-10-28T1815Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "READ_ONLY_RETRIEVAL_RETURNED_EMPTY_CONTENT; STATE_RECONCILIATION_BLOCKED",
+        "finding": "The authorized GitHub connector returned an empty content string for full and line-range reads of web/paper_trading_log.jsonl while still returning a nonempty blob SHA.",
+        "consequence": "The complete trade log could not be replayed to independently validate position size, average entry, or product identity. Empty connector output is not proof that the repository file is empty.",
+        "proposed_fix": "Use a supported authorized raw/blob read path or maintainer-provided artifact to verify the complete immutable log; do not mutate paper_trading_state.json or infer product identity until replay is validated.",
+        "verification": "Current paper state was read and preserved; PR #1262 remains draft/unmerged. No state write occurred.",
+        "source_ids": [
+          "SRC-GH-PAPER-LOG-RETRIEVAL-EMPTY-2026-10-28T1815Z",
+          "SRC-GH-PAPER-STATE-2026-10-28T1811Z",
+          "SRC-GH-PR1262-2026-10-28T1811Z"
+        ]
       }
     ],
     "research_findings": [
@@ -5809,14 +5824,14 @@
       ]
     },
     "next_actions": [
+      "Obtain a verified authorized read of the full paper-trading log; replay it read-only before proposing any state reconciliation.",
+      "Keep PR #1262 draft/unmerged until the existing position is reconciled through an approved, evidence-backed procedure.",
+      "Capture synchronized post-FOMC XRP/BTC, DXY, Treasury-yield, funding and open-interest observations.",
       "Resolve the original context for 'SBIC, ChatGPT SBIC' before choosing East, Central or West Japan.",
-      "Capture synchronized post-FOMC XRP/BTC, DXY, Treasury yields, funding and open interest; no event-direction forecast without aligned data.",
       "Keep PR #1262 draft/unmerged until the legacy paper-trading position is reconciled by a separate evidence-backed, approved procedure.",
       "Record exact-head CI/gate results for the new research-index commit after it is written.",
       "Capture Coinbase-side RLUSD balances/volume and confirm the actual activation date, eligible products and haircuts for Global Exchange collateral; keep it marked future until live evidence appears.",
-      "Track BNY XRP/RLUSD assets under custody, reserve attestations, BNY direct mint/redeem activation, C2FO Instant Pay live status/volume and Robinhood XRPL institutional settlement disclosures.",
-      "Track Ripple Prime access to Coinbase Derivatives alongside CFTC positions, open interest, basis and venue share; do not infer direction from access alone.",
-      "Reconcile spot/volume/OI source universes and common UTC cutoffs before feature admission."
+      "Track BNY XRP/RLUSD assets under custody, reserve attestations, BNY direct mint/redeem activation, C2FO Instant Pay live status/volume and Robinhood XRPL institutional settlement disclosures."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T18:14:16Z",
@@ -6392,25 +6407,26 @@
     "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1814Z.json",
     "current_research_head_before_ledger_update": "6da34d26864869ecf2f9859fbac58013d645d874",
     "current_research_checks": {
-      "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_INDEX_PENDING",
-      "previous_index_head": "6da34d26864869ecf2f9859fbac58013d645d874",
+      "status": "PREVIOUS_INDEX_HEAD_VERIFIED; SUCCESSOR_INDEX_PENDING",
+      "previous_index_head": "d6cea418fdee41941834455800cbb4ea0b038904",
       "previous_index_ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 5.26,
-        "run_id": 40743063339,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063339"
+        "duration_seconds": 5.92,
+        "run_id": 40743235352,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235352"
       },
       "previous_index_gate": {
         "status": "PASS",
-        "run_id": 40743063330,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063330"
+        "run_id": 40743235324,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235324"
       },
       "snapshot_blob_readback_ok": true,
+      "snapshot_blob_sha": "c33004dcc85e29a8068138be8b2f51d8a413c843",
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
     },
-    "current_research_head_before_final_verification_record": "6da34d26864869ecf2f9859fbac58013d645d874",
+    "current_research_head_before_final_verification_record": "d6cea418fdee41941834455800cbb4ea0b038904",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -7887,7 +7903,8 @@
       "2026-10-28T1711Z: an Investing.com XRP quote has an unnormalized page timestamp and remains excluded from feature admission.",
       "2026-10-28T18:11:35Z: no synchronized post-FOMC XRP/BTC spot, DXY, Treasury-yield, funding and open-interest response was captured; forecast remains NOT_ISSUED.",
       "2026-10-28T18:11:35Z: paper-trading state has nonzero position size but null product identity; PR #1262 is a draft safety guard, and no state reconciliation was performed.",
-      "2026-10-28T18:14:16Z: \"SBIC\" resolves to at least three official Japanese regional sister companies; the exact phrase context remains unknown, and no direct XRP relationship is established for any candidate in this evidence set."
+      "2026-10-28T18:14:16Z: \"SBIC\" resolves to at least three official Japanese regional sister companies; the exact phrase context remains unknown, and no direct XRP relationship is established for any candidate in this evidence set.",
+      "2026-10-28T18:15:13Z: paper_trading_log.jsonl reads returned empty content through the current connector despite a nonempty blob SHA; full trade-log replay and product-identity reconciliation are blocked."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -8398,9 +8415,9 @@
       "new_market_observations": 0,
       "latest_market_observation_id": "XRP-PERP-AGGREGATE-2026-10-28T1200Z",
       "forecast_status": "NOT_ISSUED",
-      "source_records": 464,
-      "run_updates": 93,
-      "limitations": 84,
+      "source_records": 467,
+      "run_updates": 94,
+      "limitations": 85,
       "relationship_edges": 104,
       "competing_hypotheses": 65,
       "market_observations": 48
@@ -8520,22 +8537,22 @@
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T18:14:16Z",
     "snapshot_commit_sha": "83b7d10442aedd0c548d23a484da2d85bee76135",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; PREVIOUS_INDEX_CI_AND_GATE_PASS; NEW_INDEX_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; INDEX_HEAD_CI_AND_GATE_PASS; SUCCESSOR_INDEX_PENDING",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "c33004dcc85e29a8068138be8b2f51d8a413c843",
       "snapshot_commit_sha": "83b7d10442aedd0c548d23a484da2d85bee76135",
-      "verified_index_head": "6da34d26864869ecf2f9859fbac58013d645d874",
+      "verified_index_head": "d6cea418fdee41941834455800cbb4ea0b038904",
       "ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 5.26,
-        "run_id": 40743063339,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063339"
+        "duration_seconds": 5.92,
+        "run_id": 40743235352,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235352"
       },
       "gate": {
         "status": "PASS",
-        "run_id": 40743063330,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063330"
+        "run_id": 40743235324,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235324"
       },
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
@@ -12293,6 +12310,30 @@
       "title": "SBIC West Japan ChatGPT generative-AI seminar",
       "accessed_at_utc": "2026-10-28T18:14:16Z",
       "note": "Official SBIC West Japan PDF announces a seminar on using generative AI including ChatGPT, scheduled for 2025-12-04. Training-topic evidence only; not a partnership or XRP relationship."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1815Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235352",
+      "title": "Research index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:15:13Z",
+      "note": "Index commit d6cea418fdee41941834455800cbb4ea0b038904 passed 145 tests in 5.92 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1815Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235324",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:15:13Z",
+      "note": "Fail-closed gate succeeded for index commit d6cea418fdee41941834455800cbb4ea0b038904; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-PAPER-LOG-RETRIEVAL-EMPTY-2026-10-28T1815Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Paper-trading log retrieval limitation",
+      "accessed_at_utc": "2026-10-28T18:15:13Z",
+      "note": "Authorized connector returned blob SHA 25ccd93ab30b7efb9afb3fc09a82bced0a2de557 but empty content for full and line-range reads. This is a retrieval limitation, not evidence that the GitHub file is empty; trade-log replay and state reconciliation remain unverified."
     }
   ],
   "limitations": [
@@ -12379,7 +12420,8 @@
     "2026-10-28T1711Z: generic market-cap explanations clarify market cap is not actual capital inflow, but the originating context of the exact phrase 'actual capital' remains unresolved.",
     "2026-10-28T1711Z: Investing.com UK XRP quote carries a page timestamp that could not be normalized to UTC; it remains excluded from synchronized feature admission.",
     "2026-10-28T18:11:35Z: FOMC statement published and recorded; no synchronized post-release XRP response admitted.",
-    "2026-10-28T18:11:35Z: PR #1262 guard is draft/unmerged; current simulated paper position remains unidentified and unchanged."
+    "2026-10-28T18:11:35Z: PR #1262 guard is draft/unmerged; current simulated paper position remains unidentified and unchanged.",
+    "2026-10-28T18:15:13Z: current connector returned empty content for web/paper_trading_log.jsonl full and line-range reads; no replay or state reconciliation was performed."
   ],
   "run_updates": [
     {
@@ -14571,6 +14613,31 @@
         "new_index_ci": "PENDING_AFTER_WRITE",
         "new_index_gate": "PENDING_AFTER_WRITE"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T18:15:13Z",
+      "update_type": "RESEARCH_INDEX_VERIFICATION_AND_PAPER_LOG_READ_BLOCKER",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1814Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1814Z.json",
+      "details": "Verified index commit d6cea418fdee41941834455800cbb4ea0b038904 through exact-head CI (145 tests in 5.92s) and fail-closed gate. Attempted read-only replay of web/paper_trading_log.jsonl, but the authorized connector returned empty content despite a nonempty blob SHA; this is a retrieval blocker, not evidence the file is empty. No state mutation; PR #1262 remains draft/unmerged.",
+      "source_ids": [
+        "SRC-GH-LEDGER-CI-2026-10-28T1815Z",
+        "SRC-GH-LEDGER-GATE-2026-10-28T1815Z",
+        "SRC-GH-PAPER-LOG-RETRIEVAL-EMPTY-2026-10-28T1815Z"
+      ],
+      "validation": {
+        "verified_index_head": "d6cea418fdee41941834455800cbb4ea0b038904",
+        "ci": "PASS_145_TESTS_5.92S",
+        "gate": "PASS",
+        "snapshot_blob_readback": "PASS",
+        "source_ids_unique": "PASS",
+        "paper_log_replay": "BLOCKED_CONNECTOR_RETURNED_EMPTY_CONTENT",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "new_index_gate": "PENDING_AFTER_WRITE"
+      }
     }
   ],
   "mission_priority": {
@@ -14798,23 +14865,24 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "6da34d26864869ecf2f9859fbac58013d645d874",
-  "current_research_head_this_run": "83b7d10442aedd0c548d23a484da2d85bee76135",
+  "current_research_head_before_ledger_update": "d6cea418fdee41941834455800cbb4ea0b038904",
+  "current_research_head_this_run": "d6cea418fdee41941834455800cbb4ea0b038904",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; PREVIOUS_INDEX_HEAD_VERIFIED; NEW_INDEX_PENDING",
-    "previous_index_head": "6da34d26864869ecf2f9859fbac58013d645d874",
+    "status": "PREVIOUS_INDEX_HEAD_VERIFIED; SUCCESSOR_INDEX_PENDING",
+    "previous_index_head": "d6cea418fdee41941834455800cbb4ea0b038904",
     "previous_index_ci": {
       "status": "PASS",
       "tests_passed": 145,
-      "duration_seconds": 5.26,
-      "run_id": 40743063339,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063339"
+      "duration_seconds": 5.92,
+      "run_id": 40743235352,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235352"
     },
     "previous_index_gate": {
       "status": "PASS",
-      "run_id": 40743063330,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063330"
+      "run_id": 40743235324,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235324"
     },
+    "snapshot_blob_readback_ok": true,
     "snapshot_blob_sha": "c33004dcc85e29a8068138be8b2f51d8a413c843",
     "new_index_ci": "PENDING_AFTER_WRITE",
     "new_index_gate": "PENDING_AFTER_WRITE"
@@ -14829,10 +14897,10 @@
     "new_market_observations": 0,
     "latest_market_observation_id": "XRP-PERP-AGGREGATE-2026-10-28T1200Z",
     "forecast_status": "NOT_ISSUED",
-    "source_records": 459,
-    "run_updates": 92,
-    "limitations": 84,
-    "relationship_edges": 101,
+    "source_records": 467,
+    "run_updates": 94,
+    "limitations": 85,
+    "relationship_edges": 104,
     "competing_hypotheses": 65,
     "market_observations": 48
   }
