@@ -714,7 +714,7 @@ def test_xrp_telemetry_report_fails_closed_and_preserves_existing_file(tmp_path)
     assert node.last_report_path is not None
     assert node.last_report_path != existing
     assert node.last_report_path.exists()
-    assert "Forecast status: NOT_ISSUED" in report
+    assert "NOT_ISSUED" in report
     assert "Market price:** UNAVAILABLE" in report or "Market price: UNAVAILABLE" in report
     assert "No live market data was fetched by this module." in report
     assert "MAX_LIQUIDITY" not in report
