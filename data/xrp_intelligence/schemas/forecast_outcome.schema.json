@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://barrot-agent.github.io/B-Agent/data/xrp_intelligence/schemas/forecast_outcome.schema.json",
+  "title": "Append-Only XRP Forecast Outcome Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_type", "outcome_id", "forecast_id", "resolved_at_utc", "resolution_data_cutoff_utc", "outcome_status", "outcome", "reference_source_id", "reference_snapshot_sha256", "resolution_method"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_type": {"const": "forecast_outcome"},
+    "outcome_id": {"type": "string", "minLength": 1},
+    "forecast_id": {"type": "string", "minLength": 1},
+    "resolved_at_utc": {"type": "string", "format": "date-time"},
+    "resolution_data_cutoff_utc": {"type": "string", "format": "date-time"},
+    "outcome_status": {"enum": ["RESOLVED", "UNRESOLVED", "CENSORED"]},
+    "outcome": {"enum": ["UP", "DOWN", "FLAT", "UNRESOLVED"]},
+    "start_price_usd": {"type": "number", "exclusiveMinimum": 0},
+    "end_price_usd": {"type": "number", "exclusiveMinimum": 0},
+    "observed_return_bps": {"type": "number"},
+    "reference_source_id": {"type": "string", "minLength": 1},
+    "reference_snapshot_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "resolution_method": {"type": "string", "minLength": 1},
+    "data_quality_flags": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"outcome_status": {"const": "RESOLVED"}}, "required": ["outcome_status"]},
+      "then": {
+        "required": ["start_price_usd", "end_price_usd", "observed_return_bps"],
+        "properties": {"outcome": {"enum": ["UP", "DOWN", "FLAT"]}}
+      },
+      "else": {"properties": {"outcome": {"const": "UNRESOLVED"}}}
+    }
+  ]
+}
