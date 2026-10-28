@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-28T21:07:38Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T2107Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2107Z.json",
-    "snapshot_blob_sha": "d3565f4f39d22787b7fb1465e9a5db50ceb290bc",
-    "snapshot_commit_sha": "64a9420189c421615dfe289f4ecc65fec758411e"
+    "captured_at_utc": "2026-10-28T22:09:08.131Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T2208Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2208Z.json",
+    "snapshot_blob_sha": "aa2140b435e07ee9dcf5d7489b5554baa6f91c52",
+    "snapshot_commit_sha": "faeb24d2e4a921f56f627694a8a46ca444754d62"
   },
   "sources": [
     {
@@ -4334,6 +4334,150 @@
       "title": "Paper-trading replay audit PR current state",
       "accessed_at_utc": "2026-10-28T21:07:38Z",
       "note": "PR open/draft/unmerged at dba1bc56171ced721429950db6b067ee46800d73; base 760e12f4a0e336f5c1cb8d3ffe65817a597e5a57 is stale relative to main. Exact-head CI/gate passed 153 tests, but PR-base integration uses 2,345 rows. Current main separately replays cleanly at 2,349 rows."
+    },
+    {
+      "id": "SRC-RUN13-MAIN-HEAD-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/fadcb97e28854889ea69ebb90fcd12909cfa5640",
+      "title": "Current main head after paper-trading append",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Latest commit appends one paper-trading log row; branch metadata reports protected=true, while exact-head combined status has zero entries."
+    },
+    {
+      "id": "SRC-RUN13-MAIN-CROSS-ANALYSIS-20261028T2151Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/3a52d4977b5d795079c4f51403d146a25fbd4a9d",
+      "title": "Cross-analysis refresh commit",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Modified only entity co-occurrence, entity sentiment profile and sentiment shift generated files."
+    },
+    {
+      "id": "SRC-RUN13-MAIN-STATUS-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/commits/fadcb97e28854889ea69ebb90fcd12909cfa5640/status",
+      "title": "Current main combined status",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Exact-head main status has zero status entries; exact-head main CI is NOT_VERIFIED. Detailed branch-protection enforcement remains unknown."
+    },
+    {
+      "id": "SRC-RUN13-PAPER-LOG-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Paper-trading log at current main",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Fetched exact blob SHA 9959f23847bfd644f612769f000e08048e94205d; 2,351 JSONL rows, zero malformed rows, chronological, all BTC-USD; 36 buy, 89 sell, 2,226 hold."
+    },
+    {
+      "id": "SRC-RUN13-PAPER-STATE-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Persisted paper-trading state",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479. Full replay using execute_paper_trade logic matches cash, position, average entry and trade count exactly; position_product remains null and was not written."
+    },
+    {
+      "id": "SRC-RUN13-GROQ-RATE-LIMIT-20261028T2121Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40771243683/job/123108700683",
+      "title": "Signal summary failed on Groq token-per-day quota",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Job log: HTTP 429; TPD limit 200,000, used 199,784, requested 638, retry hint about 3m2s; script exited before writing summary."
+    },
+    {
+      "id": "SRC-RUN13-PR1266-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1266",
+      "title": "Fresh-main deterministic signal-summary fallback PR",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Draft/open/unmerged; four files changed: core CI test registration, artifact-only workflow, deterministic non-directional fallback and regression tests."
+    },
+    {
+      "id": "SRC-RUN13-PR1266-CI-20261028T2205Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777101158",
+      "title": "PR #1266 exact-head core CI",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Passed 150 tests in 5.63 seconds on head 3cade14183ec61df00e3fb67a11eb4e01585513f."
+    },
+    {
+      "id": "SRC-RUN13-PR1266-GATE-20261028T2205Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777100966",
+      "title": "PR #1266 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Gate passed on exact PR #1266 head; proposal remains draft/unmerged."
+    },
+    {
+      "id": "SRC-RUN13-APPROVAL-ZERO-JOBS-20261028T2204Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777082543",
+      "title": "Approval workflow zero-job recurrence",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Run reports event=push, failure, zero jobs on PR #1266 branch. Root cause remains unknown."
+    },
+    {
+      "id": "SRC-RUN13-APPROVAL-WORKFLOW-CONTENT-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Approval workflow content at main",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4; inspected triggers declare workflow_dispatch only, which does not explain push-event zero-job runs."
+    },
+    {
+      "id": "SRC-RUN13-FOMC-STATEMENT-20261028",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "title": "Federal Reserve FOMC statement, October 28, 2026",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Official statement: 10–2 vote to hold the target range at 3.75%–4.00%; Lisa D. Cook and Beth M. Hammack dissented for a 25bp hike. Strong activity, elevated inflation and geopolitical uncertainty noted."
+    },
+    {
+      "id": "SRC-RUN13-TRADRADAR-XRP-20261028T1500Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "TradRadar XRP derivatives snapshot, 15:00 UTC",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Pre-FOMC: XRP $1.3156; OI $1.84B across seven exchanges; OI −1.18%/24h; funding +0.0100%/8h; 24h liquidations ≥$1.90M. About seven hours old at capture."
+    },
+    {
+      "id": "SRC-RUN13-KAIRO-XRP-20261028T1630Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://kairotrade.net/en/coin/XRP",
+      "title": "Kairo Trade XRP perpetual snapshot, 16:30 UTC",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Pre-FOMC: XRP $1.3111; turnover $1.5B; OI $2.0B; funding +0.0100%/8h; displayed BTC correlation 0.75. Venue universe/window not fully specified."
+    },
+    {
+      "id": "SRC-RUN13-CIRCLE-USDC-20261028T2208Z",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle USDC transparency dashboard, October 26 snapshot",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Circle reports $71.0B circulation, $71.2B reserves as of Oct 26; seven-day circulation change −$1.0B and 30-day −$4.2B. Global totals do not identify XRPL balances or XRP flows."
+    },
+    {
+      "id": "SRC-RUN13-COINBASE-Q3-DATE-20261028T2208Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "title": "Coinbase Q3 2026 earnings date",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Official notice schedules results for October 29 after market close; Q3 results were not yet available at capture."
+    },
+    {
+      "id": "SRC-RUN13-OPEN-PR-INVENTORY-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/pulls?state=open&per_page=100",
+      "title": "Open pull-request inventory",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "GitHub API returned 96 open PRs at this point-in-time capture, including draft PR #1266."
+    },
+    {
+      "id": "SRC-RUN13-PR1265-STATE-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1265",
+      "title": "Ledger compaction PR state before this run's ledger append",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "PR #1265 is draft/open/unmerged; base research/xrp-ledger-fresh-main-20261028-1217z at 5dc82c5d3665ac379f75bd4e75da2301f305b6f1; head 4582ca9f0b516345046a25090375561b57dd9236 before this run; automated CI/gate not triggered for this research-base PR."
     }
   ],
   "limitations": [
@@ -7393,42 +7537,34 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "64a9420189c421615dfe289f4ecc65fec758411e",
+  "current_research_head_before_ledger_update": "4582ca9f0b516345046a25090375561b57dd9236",
   "current_research_head_this_run": "64a9420189c421615dfe289f4ecc65fec758411e",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; POINTER_AND_SOURCE_LINKS_PASS; SUCCESSOR_INDEX_CI_PENDING",
-    "latest_snapshot_blob_readback": "PASS",
-    "snapshot_blob_sha": "d3565f4f39d22787b7fb1465e9a5db50ceb290bc",
-    "snapshot_commit_sha": "64a9420189c421615dfe289f4ecc65fec758411e",
-    "pointer_fields_match_snapshot": true,
-    "source_ids_unique": true,
+    "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; INDEX_CI_PENDING",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2208Z.json",
+    "snapshot_blob_sha": "aa2140b435e07ee9dcf5d7489b5554baa6f91c52",
+    "snapshot_commit_sha": "faeb24d2e4a921f56f627694a8a46ca444754d62",
+    "source_reference_count": 320,
     "missing_source_references": 0,
-    "local_validator_tests_passed": 6,
-    "python_compile": "PASS",
-    "full_repository_local_integration": "NOT_RUN",
-    "automated_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-    "fail_closed_gate": "NOT_RUN",
-    "current_main_sha": "801e071ed5e75a9c207b9feb655a027f9b8df4f9",
-    "paper_trading_replay": "PASS_READ_ONLY_2349_ROWS",
-    "reason": "Core CI pull_request trigger only targets main; PR #1265 targets the research branch.",
-    "note": "The snapshot blob and commit are verified. This ledger index successor has not yet received automated CI or the fail-closed gate."
+    "ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "gate": "NOT_RUN"
   },
   "ledger_metrics": {
-    "source_records": 533,
+    "source_records": 551,
     "run_updates": 110,
     "limitations": 95,
     "relationship_edges": 104,
-    "competing_hypotheses": 67,
-    "market_observations": 57,
+    "competing_hypotheses": 69,
+    "market_observations": 61,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 467544,
+    "index_characters_before_this_update": 480179,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 585989,
-    "index_characters": 480179
+    "latest_snapshot_characters": 602178,
+    "index_characters": 488381
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -7454,6 +7590,133 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
+    "post_snapshot_verification": {
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SUCCESSOR_INDEX_CI_PENDING",
+      "snapshot_blob_readback_ok": true,
+      "snapshot_blob_sha": "aa2140b435e07ee9dcf5d7489b5554baa6f91c52",
+      "snapshot_commit_sha": "faeb24d2e4a921f56f627694a8a46ca444754d62",
+      "verified_index_head_before_update": "4582ca9f0b516345046a25090375561b57dd9236",
+      "source_reference_count": 320,
+      "missing_source_references": 0,
+      "ci": {
+        "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+        "tests_passed": null,
+        "duration_seconds": null,
+        "run_id": null,
+        "url": null
+      },
+      "gate": {
+        "status": "NOT_RUN",
+        "run_id": null,
+        "url": null
+      },
+      "successor_index_ci": "PENDING_AFTER_WRITE",
+      "successor_index_gate": "PENDING_AFTER_WRITE"
+    },
+    "previous_inline_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
+    "previous_inline_index_blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
+    "previous_inline_index_characters": 989081,
+    "note": "Snapshot was read back from GitHub; pointer path/ID, blob SHA and source references were checked. The successor index commit itself has no verified CI/gate result yet."
+  },
+  "index_format_version": "2.0",
+  "index_migration_history": [
+    {
+      "migration_id": "XRP-LEDGER-INDEX-POINTER-20261028T1959Z",
+      "recorded_at_utc": "2026-10-28T19:59:48Z",
+      "status": "DRAFT_NOT_MERGED",
+      "previous_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
+      "previous_index_blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
+      "previous_index_characters": 989081,
+      "previous_inline_snapshot_characters": 462600,
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2008Z.json",
+      "snapshot_blob_sha": "4a018851b109239b9bf9c2a849ebf7568cc5be8a",
+      "snapshot_commit_sha": "cbfcf2425e6c98d042172b6b34aed6437fe621e1",
+      "preservation": "All sources, limitations, run updates, and index-only verification metadata retained. The prior full index remains in Git history at previous_index_commit_sha; earlier snapshot files remain unchanged.",
+      "ci_status": "NOT_RUN_FOR_RESEARCH-BASE_PR; current workflow pull_request filter targets main only.",
+      "superseded_snapshot": {
+        "path": "data/xrp_intelligence/snapshots/2026-10-28T1959Z.json",
+        "blob_sha": "54384e1208c4f794140c1478e00fe3c03d8f9d50",
+        "commit_sha": "634990451ccee51646efebf44d5fd30b213e0baa",
+        "reason": "metrics correction; preserved unchanged"
+      },
+      "local_validation_status": "PASS_6_SYNTHETIC_FIXTURE_TESTS",
+      "previous_current_snapshot": {
+        "path": "data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
+        "blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
+        "commit_sha": "5cfa94252bb517c0349762482c1a872d98d0e48c"
+      },
+      "latest_snapshot_captured_at_utc": "2026-10-28T20:08:15Z",
+      "automated_ci_status": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR"
+    }
+  ],
+  "latest_research_addendum": {
+    "recorded_at_utc": "2026-10-28T22:09:08.131Z",
+    "main_sha": "fadcb97e28854889ea69ebb90fcd12909cfa5640",
+    "source_ids": [
+      "SRC-RUN13-MAIN-HEAD-20261028T2208Z",
+      "SRC-RUN13-MAIN-CROSS-ANALYSIS-20261028T2151Z",
+      "SRC-RUN13-MAIN-STATUS-20261028T2208Z",
+      "SRC-RUN13-PAPER-LOG-20261028T2208Z",
+      "SRC-RUN13-PAPER-STATE-20261028T2208Z",
+      "SRC-RUN13-GROQ-RATE-LIMIT-20261028T2121Z",
+      "SRC-RUN13-PR1266-20261028T2208Z",
+      "SRC-RUN13-PR1266-CI-20261028T2205Z",
+      "SRC-RUN13-PR1266-GATE-20261028T2205Z",
+      "SRC-RUN13-APPROVAL-ZERO-JOBS-20261028T2204Z",
+      "SRC-RUN13-APPROVAL-WORKFLOW-CONTENT-20261028T2208Z",
+      "SRC-RUN13-FOMC-STATEMENT-20261028",
+      "SRC-RUN13-TRADRADAR-XRP-20261028T1500Z",
+      "SRC-RUN13-KAIRO-XRP-20261028T1630Z",
+      "SRC-RUN13-CIRCLE-USDC-20261028T2208Z",
+      "SRC-RUN13-COINBASE-Q3-DATE-20261028T2208Z",
+      "SRC-RUN13-OPEN-PR-INVENTORY-20261028T2208Z",
+      "SRC-RUN13-PR1265-STATE-20261028T2208Z"
+    ],
+    "open_pr_count": 96,
+    "pr1266": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "3cade14183ec61df00e3fb67a11eb4e01585513f",
+      "ci_status": "PASS_150_TESTS_5.63S",
+      "ci_run_id": 40777101158,
+      "gate_status": "PASS",
+      "gate_run_id": 40777100966
+    },
+    "paper_trading_replay": {
+      "rows": 2351,
+      "malformed": 0,
+      "timestamp_order_errors": 0,
+      "products": [
+        "BTC-USD"
+      ],
+      "portfolio_value_mismatches": 0,
+      "state_matches": true,
+      "state_mutated": false
+    },
+    "provider_failure": {
+      "http_status": 429,
+      "run_id": 40771243683,
+      "quota": "TPD 200000; used 199784; requested 638"
+    },
+    "fomc": {
+      "decision": "HOLD",
+      "range": [
+        3.75,
+        4
+      ],
+      "vote": "10-2",
+      "dissenters": [
+        "Lisa D. Cook",
+        "Beth M. Hammack"
+      ],
+      "post_event_market_panel": "NOT_CAPTURED"
+    },
+    "xrp_market_data_admission": "BLOCKED_UNTIL_SYNCHRONIZED",
+    "forecast_status": "NOT_ISSUED",
+    "main_modified": false,
+    "merge_performed": false
+  },
+  "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T21:07:38Z",
     "post_snapshot_verification": {
       "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SUCCESSOR_INDEX_CI_PENDING",
@@ -7496,134 +7759,5 @@
     "pointer_fields_match_snapshot": true,
     "source_ids_unique": true,
     "missing_source_references": 0
-  },
-  "index_format_version": "2.0",
-  "index_migration_history": [
-    {
-      "migration_id": "XRP-LEDGER-INDEX-POINTER-20261028T1959Z",
-      "recorded_at_utc": "2026-10-28T19:59:48Z",
-      "status": "DRAFT_NOT_MERGED",
-      "previous_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
-      "previous_index_blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
-      "previous_index_characters": 989081,
-      "previous_inline_snapshot_characters": 462600,
-      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2008Z.json",
-      "snapshot_blob_sha": "4a018851b109239b9bf9c2a849ebf7568cc5be8a",
-      "snapshot_commit_sha": "cbfcf2425e6c98d042172b6b34aed6437fe621e1",
-      "preservation": "All sources, limitations, run updates, and index-only verification metadata retained. The prior full index remains in Git history at previous_index_commit_sha; earlier snapshot files remain unchanged.",
-      "ci_status": "NOT_RUN_FOR_RESEARCH-BASE_PR; current workflow pull_request filter targets main only.",
-      "superseded_snapshot": {
-        "path": "data/xrp_intelligence/snapshots/2026-10-28T1959Z.json",
-        "blob_sha": "54384e1208c4f794140c1478e00fe3c03d8f9d50",
-        "commit_sha": "634990451ccee51646efebf44d5fd30b213e0baa",
-        "reason": "metrics correction; preserved unchanged"
-      },
-      "local_validation_status": "PASS_6_SYNTHETIC_FIXTURE_TESTS",
-      "previous_current_snapshot": {
-        "path": "data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
-        "blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
-        "commit_sha": "5cfa94252bb517c0349762482c1a872d98d0e48c"
-      },
-      "latest_snapshot_captured_at_utc": "2026-10-28T20:08:15Z",
-      "automated_ci_status": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR"
-    }
-  ],
-  "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-28T21:07:38Z",
-    "main_sha": "801e071ed5e75a9c207b9feb655a027f9b8df4f9",
-    "source_ids": [
-      "SRC-RUN12-MAIN-HEAD-20261028T2107Z",
-      "SRC-RUN12-PAPER-STATE-20261028T2107Z",
-      "SRC-RUN12-PAPER-LOG-20261028T2107Z",
-      "SRC-RUN12-APPROVAL-ZERO-JOBS-20261028T2107Z",
-      "SRC-RUN12-APPROVAL-WORKFLOW-BLOB-20261028T2107Z",
-      "SRC-RUN12-XRP-COINGECKO-20261028T2107Z",
-      "SRC-RUN12-XRP-CMC-20261028T2107Z",
-      "SRC-RUN12-XRP-COINCODEX-20261028T2107Z",
-      "SRC-RUN12-XRP-ETF-INSIGHTS-20261028T2107Z",
-      "SRC-RUN12-XRP-ETF-MAKETO-20261028T2107Z",
-      "SRC-RUN12-XRP-ETF-XRPINVESTOR-20261028T2107Z",
-      "SRC-RUN12-PR1265-20261028T2107Z",
-      "SRC-RUN12-PR1264-20261028T2107Z"
-    ],
-    "current_main_paper_replay": {
-      "rows": 2349,
-      "malformed_json_rows": 0,
-      "timestamp_order_errors": 0,
-      "product_ids": [
-        "BTC-USD"
-      ],
-      "action_counts": {
-        "buy": 36,
-        "sell": 89,
-        "hold": 2224,
-        "other": 0
-      },
-      "last_price_usd": 81303.28,
-      "last_portfolio_value_usd": 10036.49,
-      "mark_to_market_usd": 10036.492075861792,
-      "delta_usd": 0.0020758617920364486,
-      "position_product_persisted": null,
-      "write_authorized": false
-    },
-    "approval_workflow": {
-      "run_id": 40760954364,
-      "event": "push",
-      "head_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
-      "head_sha": "240ccf2f83f5e8888f387243292fc4cdab0c97a2",
-      "conclusion": "failure",
-      "jobs": 0,
-      "workflow_blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
-      "triggers": [
-        "workflow_dispatch"
-      ],
-      "root_cause": "UNRESOLVED"
-    },
-    "xrp_spot_data_quality": {
-      "reported_price_range_usd": [
-        1.31,
-        1.33
-      ],
-      "reported_24h_or_daily_volume_usd_billions": [
-        1.4,
-        2.0075
-      ],
-      "admission": "BLOCK_UNTIL_SYNCHRONIZED",
-      "source_ids": [
-        "SRC-RUN12-XRP-COINGECKO-20261028T2107Z",
-        "SRC-RUN12-XRP-CMC-20261028T2107Z",
-        "SRC-RUN12-XRP-COINCODEX-20261028T2107Z"
-      ]
-    },
-    "xrp_etf_data_quality": {
-      "xrp_insights_oct27_net_flow_xrp": -433940,
-      "oct26_27_flow_xrp": -3132685,
-      "maketo_oct27_display_usd": 0,
-      "missingness_warning": true,
-      "xrpinvestor_product_count_claim": 12,
-      "category_count_sum": 11,
-      "admission": "BLOCK_UNTIL_FUND_LEVEL_RECONCILIATION",
-      "source_ids": [
-        "SRC-RUN12-XRP-ETF-INSIGHTS-20261028T2107Z",
-        "SRC-RUN12-XRP-ETF-MAKETO-20261028T2107Z",
-        "SRC-RUN12-XRP-ETF-XRPINVESTOR-20261028T2107Z"
-      ]
-    },
-    "pr1265": {
-      "state": "OPEN_DRAFT_UNMERGED",
-      "base": "research/xrp-ledger-fresh-main-20261028-1217z",
-      "base_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
-      "previous_head": "240ccf2f83f5e8888f387243292fc4cdab0c97a2",
-      "snapshot_commit_sha": "64a9420189c421615dfe289f4ecc65fec758411e",
-      "automated_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-      "local_synthetic_tests": 6
-    },
-    "forecast_status": "NOT_ISSUED",
-    "main_modified": false,
-    "state_mutated": false,
-    "merge_performed": false,
-    "force_push": false,
-    "deployment": false,
-    "real_money_trade": false
   }
 }
