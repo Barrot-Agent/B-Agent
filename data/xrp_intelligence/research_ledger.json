@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T01:04:30Z",
+    "captured_at_utc": "2026-10-28T01:06:10Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "09f1b0a8c3c568fb2fa6e5681c13d53463c14083",
+      "main_sha": "34812763a099c85a3a25bd1d1037529bb20bc0be",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -130,9 +130,18 @@
         "gate_run_id": 40592404758,
         "observed_at_utc": "2026-10-27T22:10:20Z"
       },
-      "main_commit_message": "Cross-analysis refresh [skip ci]",
-      "main_commit_at_utc": "2026-10-28T01:00:04Z",
-      "main_modified_by_this_run": false
+      "main_commit_message": "Paper trade cycle [skip ci]",
+      "main_commit_at_utc": "2026-10-28T01:05:20Z",
+      "main_modified_by_this_run": false,
+      "main_delta_since_previous_snapshot": {
+        "previous_sha": "09f1b0a8c3c568fb2fa6e5681c13d53463c14083",
+        "ahead_by": 1,
+        "changed_files": [
+          "web/paper_trading_log.jsonl"
+        ],
+        "changes": 1,
+        "interpretation": "One appended generated paper-trading row; no code/workflow change in this delta."
+      }
     },
     "critical_engine_findings": [
       {
@@ -699,6 +708,32 @@
           "SRC-RIPPLE-ROBINHOOD-2026-10-27"
         ],
         "uncertainty": "Issuer announcement does not independently verify volume, launch completion of future components, settlement throughput, net XRP demand or price impact."
+      },
+      {
+        "id": "XRP-CME-FUTURES-MIXED-POSITIONING-2026-08-31",
+        "evidence_class": "SECONDARY_MARKET_STRUCTURE_REPORT",
+        "status": "HISTORICAL_OBSERVATION_REQUIRES_RAW_SERIES_REPRODUCTION",
+        "claim": "From Aug 17 to Aug 31, 2026, CoinDesk reported XRP rose from ~$0.99 to ~$1.38 while total futures open interest fell ~16%; CME open interest rose ~36%, share of OI rose from ~10% to ~17%, leveraged funds were net short ~116M XRP equivalent, while dealers and asset managers added net-long exposure.",
+        "interpretation": "A rally with declining aggregate OI is consistent with deleveraging while regulated-venue exposure rises. The CFTC net-short figure is not necessarily an outright bearish bet because futures may hedge spot or other exposures. Open interest and trader-category positioning are not stand-alone directional signals.",
+        "source_ids": [
+          "SRC-COINDESK-XRP-CME-OI-2026-08-31"
+        ],
+        "uncertainty": "Secondary report; raw venue series, contract-unit normalization, and official CFTC positions should be independently reconstructed before model use."
+      },
+      {
+        "id": "RLUSD-ROBINHOOD-COMPETITION-WITH-USDC-COINBASE-INFERENCE-2026",
+        "evidence_class": "CAUSAL_HYPOTHESIS_NOT_CONFIRMED_FACT",
+        "status": "UNRESOLVED_HYPOTHESIS",
+        "claim": "Ripple's RLUSD partnership with Robinhood/Bitstamp could increase competition with Circle's USDC and Coinbase's USDC distribution in selected retail and institutional settlement use cases.",
+        "interpretation": "This is competitive overlap inferred from product positioning, not a direct Ripple-Circle or Ripple-Coinbase agreement, and not evidence that users or capital have migrated.",
+        "source_ids": [
+          "SRC-RIPPLE-ROBINHOOD-2026-10-27",
+          "SRC-CIRCLE-USDC-XRPL-OPS-2026",
+          "SRC-COINBASE-CIRCLE-2023",
+          "SRC-COINBASE-Q2-2026",
+          "SRC-CIRCLE-10Q-Q2-2026"
+        ],
+        "uncertainty": "No measured customer switching, net issuance migration, or XRP price effect established."
       }
     ],
     "relationship_graph": [
@@ -1157,6 +1192,20 @@
           "SRC-RIPPLE-ROBINHOOD-2026-10-27"
         ],
         "status": "ANNOUNCED_EXISTING_RELATIONSHIP"
+      },
+      {
+        "id": "EDGE-RLUSD-USDC-DISTRIBUTION-COMPETITIVE-OVERLAP-INFERENCE-2026",
+        "from": "Ripple RLUSD distribution through Robinhood/Bitstamp and planned XRPL institutional settlement",
+        "relation": "may_compete_in_selected_use_cases_with",
+        "to": "Circle USDC distribution through Coinbase and other venues",
+        "evidence_ids": [
+          "SRC-RIPPLE-ROBINHOOD-2026-10-27",
+          "SRC-CIRCLE-USDC-XRPL-OPS-2026",
+          "SRC-COINBASE-CIRCLE-2023",
+          "SRC-COINBASE-Q2-2026",
+          "SRC-CIRCLE-10Q-Q2-2026"
+        ],
+        "status": "INFERENCE_NOT_A_DIRECT_COMMERCIAL_RELATIONSHIP"
       }
     ],
     "competing_hypotheses": [
@@ -1495,6 +1544,34 @@
         "test_plan": [
           "Use event-time windows and controls for BTC, broad crypto, rates and concurrent announcements; test for robust abnormal returns and flows without look-ahead; retain null results."
         ]
+      },
+      {
+        "id": "H-RLUSD-ROBINHOOD-COMPETITION-COINBASE-CIRCLE-2026",
+        "hypothesis": "Ripple's RLUSD partnership with Robinhood may intensify competition with Circle/USDC and Coinbase's distribution economics in selected settlement and customer-facing use cases.",
+        "supporting_evidence": [
+          "Ripple announced RLUSD distribution across Robinhood Chain and Bitstamp and planned XRPL institutional settlement.",
+          "Circle's USDC operational and financial disclosures and Coinbase's USDC distribution economics establish a substantial incumbent channel."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "USDC's scale and Coinbase's existing distribution may remain resilient; RLUSD and USDC can coexist across chains and distinct use cases.",
+          "The announcement provides no adoption volume, user migration or market-share data; there is no direct partnership between Ripple and Coinbase or Circle established by these sources."
+        ],
+        "test_plan": [
+          "Track same-definition daily RLUSD and USDC supply and chain distribution; track Coinbase USDC average balances and Circle distribution costs in filings; verify Robinhood/Bitstamp product availability and XRPL settlement volume; test for user/flow migration rather than assuming it."
+        ]
+      },
+      {
+        "id": "H-CME-REGULATED-VENUE-MIGRATION-NOT-BULLISHNESS-2026",
+        "hypothesis": "An increase in CME's share of XRP futures open interest during a spot rally can reflect venue migration or hedging while aggregate leverage contracts, not necessarily net-new bullish institutional demand.",
+        "supporting_evidence": [
+          "CoinDesk reported total XRP futures OI fell ~16% while price rose ~40% from Aug 17–31; CME OI rose ~36% and leveraged funds were net short equivalent to ~116M XRP."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "CME OI growth and dealer/asset-manager net-long exposure could reflect genuine institutional participation; some short exposure may be directional rather than hedging."
+        ],
+        "test_plan": [
+          "Reconstruct daily CME and other-venue OI in common XRP-equivalent units; combine CFTC trader categories, spot flows, basis, funding, liquidations and ETF flows; compare event windows and retain alternative hedging explanations."
+        ]
       }
     ],
     "market_observations": [
@@ -1584,6 +1661,17 @@
           "SRC-AVIVA-GBP-TOKENIZED-SHARE-CLASS-2026-10-26",
           "SRC-AVIVA-USD-TOKENIZED-SHARE-CLASS-2026-07-29"
         ]
+      },
+      {
+        "id": "XRP-FUTURES-STRUCTURE-2026-08-17-TO-2026-08-31",
+        "evidence_class": "SECONDARY_SOURCE_HISTORICAL_MARKET_OBSERVATION",
+        "as_of_date": "2026-08-31",
+        "observation": "CoinDesk reported XRP price rose from about $0.99 to $1.38 while total futures open interest fell from 2.77B to 2.34B XRP (~16%); CME open interest rose from 284M to 387M (~36%), lifting CME's share from ~10% to ~17%. Leveraged funds were net short about 116M XRP equivalent, while dealers and asset managers added net-long exposure.",
+        "interpretation": "Mixed positioning: aggregate leverage declined while regulated venue share rose. Net-short positioning cannot be equated with a bearish directional forecast because it may hedge exposure elsewhere.",
+        "source_ids": [
+          "SRC-COINDESK-XRP-CME-OI-2026-08-31"
+        ],
+        "model_admission": "BLOCKED_PENDING_RECONSTRUCTION_OF_RAW_OI_AND_CFTC_SERIES"
       }
     ],
     "phrase_investigation": {
@@ -1789,12 +1877,12 @@
       ]
     },
     "next_actions": [
-      "Inspect PR #1230 exact-head CI and gate evidence; keep it draft/unmerged pending review. The tests and fail-closed gate currently pass.",
-      "Continue the artifact-only persistence redesign for scheduled signal, knowledge and evaluation writers; 30-day artifacts need a reviewed durable promotion path.",
-      "Verify Robinhood/Ripple announced components as they become operational; measure actual XRPL RLUSD settlement and XRP bridge-path usage separately.",
-      "Keep forecast status NOT_ISSUED until event-time-synchronized spot/derivatives/flows, fixed-horizon walk-forward tests, leakage controls, calibration and shadow evaluation pass.",
-      "Resolve the recurring push-triggered zero-job approval workflow anomaly from actual platform evidence; no root cause is established.",
-      "Continue exact-phrase and canonical Camilla Stephenson channel verification; do not claim exhaustive public-video coverage until identity is verified."
+      "Review PR #1230: exact-head CI and fail-closed gate pass; keep draft/unmerged pending approval. It fixes deterministic summary persistence and removes direct main writes for this workflow.",
+      "Preserve the research ledger and snapshots; current updated ledger head e17b07d has passing tests and gate, but the research PR remains draft and will lag as scheduled main writers continue.",
+      "Reconstruct the Aug 17–31 XRP spot/OI/CME/CFTC data in normalized units before using the historical market-structure observation as a model feature.",
+      "Measure RLUSD versus USDC distribution and actual Robinhood/Bitstamp XRPL settlement after launch; treat competitive displacement and XRP demand as separate hypotheses.",
+      "Continue the artifact-only redesign for scheduled knowledge, signal, and evaluation workflows; a reviewed durable promotion path is still required beyond 30-day artifacts.",
+      "Keep forecast status NOT_ISSUED until event-time-synchronized features, fixed-horizon walk-forward tests, leakage controls, calibration, drift checks and shadow evaluation pass."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -1881,7 +1969,7 @@
     },
     "repository_ci": {
       "repository": "Barrot-Agent/B-Agent",
-      "main_sha": "09f1b0a8c3c568fb2fa6e5681c13d53463c14083",
+      "main_sha": "34812763a099c85a3a25bd1d1037529bb20bc0be",
       "main_commit": {
         "message": "Paper trade cycle [skip ci]",
         "authored_at_utc": "2026-10-27T22:04:47Z",
@@ -1982,7 +2070,7 @@
         "state": "open_draft_unmerged",
         "note": "Exact-head CI and fail-closed gate passed. No merge or deployment occurred."
       },
-      "as_of_utc": "2026-10-28T01:04:30Z",
+      "as_of_utc": "2026-10-28T01:06:10Z",
       "main_head_status": "RECENT_SCHEDULED_WORKFLOWS_CONTINUE_TO_WRITE_GENERATED_DATA",
       "signal_summary_failure": {
         "run_id": 40611307868,
@@ -1997,6 +2085,32 @@
         "gate": "PASS",
         "draft": true,
         "merged": false
+      },
+      "main_delta_since_previous_snapshot": {
+        "commits": 1,
+        "files": [
+          "web/paper_trading_log.jsonl"
+        ],
+        "status": "GENERATED_DATA_ONLY",
+        "source_id": "SRC-GH-MAIN-DELTA-2026-10-28T0105Z"
+      },
+      "research_pr_1227": {
+        "head_sha": "e17b07d968732f5844927cef03f312669b94cfbf",
+        "tests": "PASS",
+        "gate": "PASS",
+        "draft": true,
+        "merged": false,
+        "test_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923515",
+        "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923584"
+      },
+      "signal_summary_pr_1230": {
+        "head_sha": "6a11fc8f2eb335fa7c5b26e2cb31f1065e372622",
+        "tests": "PASS",
+        "gate": "PASS",
+        "draft": true,
+        "merged": false,
+        "test_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612760818",
+        "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612760845"
       }
     },
     "market_data_quality_findings": [
@@ -2117,16 +2231,16 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-ROBINHOOD-PARTNERSHIP-SIGNAL-SUMMARY-SAFETY-2026-10-28T0104Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0104Z.json",
-    "current_research_head_before_ledger_update": "cc98e2a4f96c06d2c4b6e8ca4773b0026424efbb",
+    "snapshot_id": "XRP-CME-STRUCTURE-AND-CURRENT-REPO-VERIFICATION-2026-10-28T0106Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0106Z.json",
+    "current_research_head_before_ledger_update": "e17b07d968732f5844927cef03f312669b94cfbf",
     "current_research_checks": {
       "tests": "PASS",
       "gate": "PASS",
-      "as_of_utc": "2026-10-28T00:22:38Z",
-      "validated_head_sha": "cc98e2a4f96c06d2c4b6e8ca4773b0026424efbb",
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40608317443",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40608317436"
+      "as_of_utc": "2026-10-28T01:06:10Z",
+      "validated_head_sha": "e17b07d968732f5844927cef03f312669b94cfbf",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923515",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923584"
     },
     "current_research_head_before_final_verification_record": "33c87fd5007108960c8974ac1af89332916a495f",
     "platform_coordination_architecture": {
@@ -2415,7 +2529,7 @@
         "impact_status": "PRICE_IMPACT_UNKNOWN; NO_XRP_FLOW_DISCLOSED"
       }
     ],
-    "snapshot_blob_sha": "549c88700be280b49ba5b9834ade5abc372934d6"
+    "snapshot_blob_sha": "f0222065d6839926376c9f187260a7268f85c3ce"
   },
   "sources": [
     {
@@ -3191,6 +3305,38 @@
       "title": "Dollar holds gains ahead of Fed policy signal, RBNZ decision",
       "accessed_at_utc": "2026-10-28T01:04:30Z",
       "note": "Reuters reported DXY at 102.40, U.S. 10-year yield near 4.9967%, and USD/JPY at 158.03 while markets awaited Fed/RBNZ decisions. Secondary, time-sensitive observation; preserve event-time cutoff and verify official market series before model feature use."
+    },
+    {
+      "id": "SRC-COINDESK-XRP-CME-OI-2026-08-31",
+      "evidence_class": "SECONDARY_MARKET_STRUCTURE_REPORT_WITH_COINGLASS_AND_CFTC_REFERENCES",
+      "url": "https://www.coindesk.com/markets/2026/09/01/xrp-futures-are-shifting-toward-cme-as-institutional-participation-grows",
+      "title": "CME's share of XRP futures jumps as token rallies 40%",
+      "accessed_at_utc": "2026-10-28T01:06:10Z",
+      "note": "CoinDesk reports Aug 17–31, 2026 XRP price rose from about $0.99 to $1.38 while total futures open interest fell from 2.77B to 2.34B XRP (~16%); CME OI rose from 284M to 387M (~36%), lifting its share from ~10% to ~17%. CFTC leveraged funds were net short ~116M XRP equivalent, but the article cautions these positions may hedge holdings elsewhere; dealers and asset managers added net-long exposure. Historical secondary source, not a current live feature."
+    },
+    {
+      "id": "SRC-GH-MAIN-DELTA-2026-10-28T0105Z",
+      "evidence_class": "DIRECT_GITHUB_COMPARE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/09f1b0a8c3c568fb2fa6e5681c13d53463c14083...34812763a099c85a3a25bd1d1037529bb20bc0be",
+      "title": "Main advanced one generated-data commit after the 01:04 snapshot",
+      "accessed_at_utc": "2026-10-28T01:06:10Z",
+      "note": "GitHub compare shows one commit, Paper trade cycle [skip ci], adding one row to web/paper_trading_log.jsonl; no source-code or workflow file changed in this delta. This is an automated main-branch write, not a change performed by this research run."
+    },
+    {
+      "id": "SRC-PR1227-CI-2026-10-28T0106Z",
+      "evidence_class": "EXACT_HEAD_CI_PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923515",
+      "title": "Research ledger branch tests passed at head e17b07d",
+      "accessed_at_utc": "2026-10-28T01:06:10Z",
+      "note": "The research branch's latest ledger update commit e17b07d968732f5844927cef03f312669b94cfbf passed the Tests workflow after the append-only snapshot/ledger update."
+    },
+    {
+      "id": "SRC-PR1227-GATE-2026-10-28T0106Z",
+      "evidence_class": "EXACT_HEAD_FAIL_CLOSED_GATE_PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923584",
+      "title": "Research ledger branch fail-closed gate passed at head e17b07d",
+      "accessed_at_utc": "2026-10-28T01:06:10Z",
+      "note": "The fail-closed gate passed for the research branch's latest ledger update commit e17b07d968732f5844927cef03f312669b94cfbf. PR remains draft and unmerged."
     }
   ],
   "limitations": [
@@ -3682,6 +3828,27 @@
         "main_modified_by_this_run": false,
         "forecast_status": "NOT_ISSUED",
         "approval_workflow_zero_job_root_cause": "UNRESOLVED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T01:06:10Z",
+      "update_type": "XRP_CME_MARKET_STRUCTURE_AND_POST_UPDATE_CI_VERIFICATION",
+      "snapshot_id": "XRP-CME-STRUCTURE-AND-CURRENT-REPO-VERIFICATION-2026-10-28T0106Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0106Z.json",
+      "snapshot_blob_sha": "f0222065d6839926376c9f187260a7268f85c3ce",
+      "details": "Added historical CoinDesk/CFTC-referenced evidence showing price rose while aggregate XRP futures OI fell and CME share increased; added a clearly labeled RLUSD-vs-USDC/Coinbase competitive-overlap hypothesis; recorded current main's one-row generated paper-trading commit and exact-head CI/gate passes for research ledger and PR #1230.",
+      "validation": {
+        "snapshot_json": "PASS",
+        "source_ids_unique": true,
+        "relationship_edge_source_refs": "PASS",
+        "finding_source_refs": "PASS",
+        "ledger_pr_head_tests": "PASS",
+        "ledger_pr_head_gate": "PASS",
+        "pr1230_tests": "PASS",
+        "pr1230_gate": "PASS",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
       }
     }
   ],
