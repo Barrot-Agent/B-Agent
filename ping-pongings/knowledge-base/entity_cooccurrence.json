@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1161,
+    "xrp_entries": 1162,
     "btc_entries": 1189
   },
-  "unique_pairs_found": 3156,
+  "unique_pairs_found": 3164,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1761,6 +1761,21 @@
       ]
     },
     {
+      "entity_a": "BTC",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Bitcoin",
       "entity_b": "USDT",
       "cooccurrence_count": 4,
@@ -2746,21 +2761,6 @@
         },
         {
           "title": "B.AI, SUN.io, JustLend DAO, and BitTorrent Expand MetaMask Connectivity, Driving Global DeFi Access",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "BTC",
-      "entity_b": "MEXC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
-          "asset": "XRP"
-        },
-        {
-          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
           "asset": "XRP"
         }
       ]
@@ -26950,6 +26950,72 @@
       ]
     },
     {
+      "entity_a": "Solana",
+      "entity_b": "Solana Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "Solana Validator",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "Testnet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana Foundation",
+      "entity_b": "Solana Validator",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana Foundation",
+      "entity_b": "Testnet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana Validator",
+      "entity_b": "Testnet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Crypto Infrastructure",
       "entity_b": "Kraken",
       "cooccurrence_count": 1,
@@ -27000,6 +27066,28 @@
       "example_headlines": [
         {
           "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Guardian Fund",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC adds another 1,000 BTC to Guardian Fund, strengthening user protection",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Guardian Fund",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC adds another 1,000 BTC to Guardian Fund, strengthening user protection",
           "asset": "XRP"
         }
       ]

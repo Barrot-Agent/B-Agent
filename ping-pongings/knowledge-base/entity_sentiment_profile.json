@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1161,
+    "xrp_entries": 1162,
     "btc_entries": 1189
   },
-  "unique_entities_profiled": 971,
+  "unique_entities_profiled": 974,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -58,11 +58,11 @@
     },
     {
       "entity": "BTC",
-      "total_mentions": 117,
-      "bullish": 61,
+      "total_mentions": 118,
+      "bullish": 62,
       "neutral": 19,
       "bearish": 37,
-      "net_sentiment_score": 0.205,
+      "net_sentiment_score": 0.212,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -428,11 +428,11 @@
     },
     {
       "entity": "MEXC",
-      "total_mentions": 13,
-      "bullish": 12,
+      "total_mentions": 14,
+      "bullish": 13,
       "neutral": 1,
       "bearish": 0,
-      "net_sentiment_score": 0.923,
+      "net_sentiment_score": 0.929,
       "assets_seen_in": [
         "XRP"
       ],
@@ -579,6 +579,23 @@
       ]
     },
     {
+      "entity": "Solana",
+      "total_mentions": 10,
+      "bullish": 8,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.7,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "Ondo Pushes USDY Deeper Into Solana DeFi"
+      ]
+    },
+    {
       "entity": "Fidelity",
       "total_mentions": 10,
       "bullish": 8,
@@ -677,23 +694,6 @@
         "Metaplanet Moves 2,100 BTC Into US Expansion Through Superplanet Deal",
         "WisdomTree And MoonPay Expand US Access To Tokenized Funds",
         "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher"
-      ]
-    },
-    {
-      "entity": "Solana",
-      "total_mentions": 9,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.778,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "Ondo Pushes USDY Deeper Into Solana DeFi"
       ]
     },
     {
@@ -2590,6 +2590,22 @@
         "IBM's New Swift Connection Is One More Headache for XRP Investors - The Motley Fool",
         "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
         "IBM's New Swift Connection Is One More Headache for XRP Investors - The Globe and Mail"
+      ]
+    },
+    {
+      "entity": "Solana Foundation",
+      "total_mentions": 3,
+      "bullish": 2,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.667,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Foundation Hires Former Binance CMO For Institutional Push",
+        "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+        "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input"
       ]
     },
     {
@@ -4992,21 +5008,6 @@
       "example_headlines": [
         "IBM Connects Banks To Swift\u2019s Blockchain Ledger For Tokenized Deposits",
         "Oracle Connects Bank Payment Systems To Swift\u2019s Blockchain Ledger"
-      ]
-    },
-    {
-      "entity": "Solana Foundation",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Solana Foundation Hires Former Binance CMO For Institutional Push",
-        "Solana Foundation Launches Atomic DvP Settlement Tool With JPMorgan Input"
       ]
     },
     {
@@ -11116,6 +11117,34 @@
       ]
     },
     {
+      "entity": "Solana Validator",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Validator Codebase Tag v2.1.0 Released On Testnet"
+      ]
+    },
+    {
+      "entity": "Testnet",
+      "total_mentions": 1,
+      "bullish": 0,
+      "neutral": 1,
+      "bearish": 0,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Solana Validator Codebase Tag v2.1.0 Released On Testnet"
+      ]
+    },
+    {
       "entity": "TradeStation",
       "total_mentions": 1,
       "bullish": 1,
@@ -11127,6 +11156,20 @@
       ],
       "example_headlines": [
         "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets"
+      ]
+    },
+    {
+      "entity": "Guardian Fund",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "MEXC adds another 1,000 BTC to Guardian Fund, strengthening user protection"
       ]
     },
     {
