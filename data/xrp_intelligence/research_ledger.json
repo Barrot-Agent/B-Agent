@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T16:15:36.321Z",
+    "captured_at_utc": "2026-10-28T16:17:39.305Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
@@ -169,12 +169,12 @@
           "note": "Latest main commit is generated-data-only and marked [skip ci]."
         }
       },
-      "current_research_head": "18d7ef94484edd8fa31463ac6df2ea8ed270effe",
+      "current_research_head": "820c3e8d49dce8e773763d62f3a18b1510e25826",
       "current_research_checks": {
         "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
-        "previous_index_ci_run_id": 40723952011,
+        "previous_index_ci_run_id": 40724228255,
         "previous_index_tests_passed": 145,
-        "previous_index_gate_run_id": 40723952236
+        "previous_index_gate_run_id": 40724228152
       },
       "main_commit_delta_since_last_observed": {
         "previous_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
@@ -683,19 +683,19 @@
       "approval_workflow_anomaly": {
         "status": "REPRODUCED_PUSH_EVENT_ZERO_JOBS; ROOT_CAUSE_UNKNOWN",
         "latest_run": {
-          "id": 40723947446,
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723947446",
+          "id": 40724215431,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724215431",
           "event": "push",
           "branch": "research/xrp-ledger-fresh-main-20261028-1217z",
-          "head_sha": "a782a6ee8e1d903240fed3de88171fe9b65b5eb1",
+          "head_sha": "1349d2cf360de51e6f39a9a9d880337ead744dda",
           "conclusion": "failure",
           "jobs": 0
         },
         "prior_run": {
-          "id": 40723937393,
-          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723937393",
+          "id": 40724204693,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724204693",
           "event": "push",
-          "head_sha": "4161f6c417aac7d5efaaa62962ae02f948dd7198",
+          "head_sha": "18d7ef94484edd8fa31463ac6df2ea8ed270effe",
           "conclusion": "failure",
           "jobs": 0
         },
@@ -6143,8 +6143,8 @@
       "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1506Z.json",
       "next_action": "Verify CI and fail-closed gate on the new 15:06 ledger-index head; preserve the 15:01 snapshot and its exact-head verification record."
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1615Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1615Z.json",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1617Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1617Z.json",
     "current_research_head_before_ledger_update": "b6fb038aa15a38101350550ac3644150e8856a78",
     "current_research_checks": {
       "status": "PRIOR_HEAD_PASS; NEW_HEAD_PENDING",
@@ -7949,16 +7949,16 @@
       "merge_performed": false
     },
     "ledger_metrics": {
-      "source_records": 411,
-      "run_updates": 82,
+      "source_records": 420,
+      "run_updates": 83,
       "limitations": 76,
-      "relationship_edges": 93,
-      "competing_hypotheses": 59,
+      "relationship_edges": 99,
+      "competing_hypotheses": 61,
       "market_observations": 46
     },
-    "snapshot_blob_sha": "4fbfb1bc7f1cc92f6d5266ccfedad3841d109845",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:15:36.321Z",
-    "snapshot_commit_sha": "18d7ef94484edd8fa31463ac6df2ea8ed270effe",
+    "snapshot_blob_sha": "e7425970a0ca0c10a85b4e41e27a591dcd836065",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:17:39.305Z",
+    "snapshot_commit_sha": "820c3e8d49dce8e773763d62f3a18b1510e25826",
     "post_snapshot_verification": {
       "status": "PENDING_EXACT_HEAD_CI_AND_GATE",
       "snapshot_blob_readback_ok": true,
@@ -11295,6 +11295,78 @@
       "evidence_class": "REPOSITORY_OBSERVATION",
       "accessed_at_utc": "2026-10-28T16:15:36.321Z",
       "note": "Run 40723947446 on research branch index commit a782a6e reports push event, failure and zero jobs. Workflow content declares workflow_dispatch only; no job executed."
+    },
+    {
+      "id": "SRC-COINBASE-RLUSD-BLOG-2026-10-28",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "title": "Coinbase: RLUSD is now available on Coinbase",
+      "evidence_class": "COMPANY_REPORTED",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Coinbase's own blog dated 2026-10-28 independently corroborates the Ripple joint announcement: RLUSD is available through Coinbase Prime, Coinbase Exchange and the Coinbase app, with deposits/withdrawals on XRPL, Base and Ethereum. Coinbase Global Exchange collateral support will follow; no timeline or current collateral use is given."
+    },
+    {
+      "id": "SRC-RIPPLE-BNY-CUSTODY-TRADE-FINANCE-2026-10-27",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "title": "Ripple and BNY expand custody and tokenized trade-finance collaboration",
+      "evidence_class": "COMPANY_REPORTED",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Ripple release dated 2026-10-27 says BNY, already RLUSD's primary reserve custodian and custodian for Ripple Prime, now supports XRP and RLUSD on its Digital Asset Custody platform. BNY intends to enable direct RLUSD mint/redeem and explore XRPL tokenized trade finance with C2FO; those initiatives are intended/future, not proven live volume."
+    },
+    {
+      "id": "SRC-RIPPLE-C2FO-XRPL-TRADE-FINANCE-2026-10-27",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "title": "C2FO and Ripple announce Instant Pay settlement on XRPL using RLUSD",
+      "evidence_class": "COMPANY_REPORTED",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Ripple release dated 2026-10-27 describes C2FO Instant Pay as using XRPL and RLUSD for settlement against approved invoices, funded by participating capital providers, with invoice terms/due dates unchanged. The page offers a waitlist; production scale, transaction volume and live utilization are not established."
+    },
+    {
+      "id": "SRC-RIPPLE-OCC-FINAL-APPROVAL-2026-10-26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "title": "Ripple receives final OCC approval to establish National Trust Bank",
+      "evidence_class": "COMPANY_REPORTED_REGULATORY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Ripple release dated 2026-10-26 says OCC final approval was granted for Ripple National Trust Bank, whose approved plan includes managing segregated RLUSD reserves, acting as collateral trustee for reserves and fiduciary digital-asset custody upon opening. RLUSD continues to be issued by NYDFS-regulated Standard Custody & Trust Company. Approval is not evidence the bank is already operating or has a Federal Reserve master account."
+    },
+    {
+      "id": "SRC-NODAL-RIPPLE-COINBASE-DERIVATIVES-2026-03-05",
+      "url": "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf",
+      "title": "Nodal Clear: Ripple Prime clients gain access to Coinbase Derivatives contracts",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Joint Nodal Clear press release dated 2026-03-05 says Ripple Prime clients can access Coinbase Derivatives contracts cleared by Nodal Clear, including XRP futures, via the acquired Hidden Road FCM. This confirms an institutional market-access relationship; it does not reveal client positions, flow direction or proprietary XRP exposure."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1615Z-A",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724204693",
+      "title": "Approval workflow push failure with zero jobs after final snapshot commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Run 40724204693 on research snapshot commit 18d7ef9 reports push event, failure and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1615Z-B",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724215431",
+      "title": "Approval workflow push failure with zero jobs after final index commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Run 40724215431 on research index commit 1349d2c reports push event, failure and zero jobs. The workflow blob at the event head declares workflow_dispatch only; no job executed."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1615Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724228255",
+      "title": "Research index 1349d2cf CI passed 145 tests",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Exact-head CI on index commit 1349d2cf360de51e6f39a9a9d880337ead744dda passed 145 tests in 6.06 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1615Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724228152",
+      "title": "Research index 1349d2cf fail-closed gate passed",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Fail-closed gate run 40724228152 passed for index commit 1349d2cf360de51e6f39a9a9d880337ead744dda."
     }
   ],
   "limitations": [
@@ -13285,6 +13357,38 @@
         "forecast_status": "NOT_ISSUED",
         "source_ids_unique": true
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T16:17:39.305Z",
+      "update_type": "INSTITUTIONAL_CUSTODY_TRADE_FINANCE_REGULATION_AND_DERIVATIVES",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1617Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1617Z.json",
+      "details": "Added Coinbase's first-party RLUSD launch confirmation, BNY custody expansion for XRP/RLUSD, C2FO Instant Pay using XRPL/RLUSD, Ripple/Robinhood treasury and institutional-settlement plans, Ripple National Trust Bank final OCC approval, and Ripple Prime access to Coinbase Derivatives XRP futures via Nodal Clear. Distinguishes confirmed custody/approval from future mint/redeem, collateral and trade-finance use. Previous index head 1349d2cf passed 145 tests in 6.06s and gate; new snapshot/index checks pending.",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28",
+        "SRC-RIPPLE-BNY-CUSTODY-TRADE-FINANCE-2026-10-27",
+        "SRC-RIPPLE-C2FO-XRPL-TRADE-FINANCE-2026-10-27",
+        "SRC-RIPPLE-ROBINHOOD-2026-10-27",
+        "SRC-RIPPLE-OCC-FINAL-APPROVAL-2026-10-26",
+        "SRC-NODAL-RIPPLE-COINBASE-DERIVATIVES-2026-03-05",
+        "SRC-GH-LEDGER-CI-2026-10-28T1615Z",
+        "SRC-GH-LEDGER-GATE-2026-10-28T1615Z",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1615Z-A",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1615Z-B"
+      ],
+      "validation": {
+        "previous_index_ci": "PASS_145_TESTS_6.06S",
+        "previous_index_gate": "PASS",
+        "snapshot_json_parse": "PENDING_AFTER_WRITE",
+        "snapshot_blob_readback": "PENDING_AFTER_WRITE",
+        "source_id_uniqueness": "PENDING_AFTER_WRITE",
+        "missing_source_refs": 0,
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "source_ids_unique": true
+      }
     }
   ],
   "mission_priority": {
@@ -13512,12 +13616,12 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "a782a6ee8e1d903240fed3de88171fe9b65b5eb1",
-  "current_research_head_this_run": "a782a6ee8e1d903240fed3de88171fe9b65b5eb1",
+  "current_research_head_before_ledger_update": "1349d2cf360de51e6f39a9a9d880337ead744dda",
+  "current_research_head_this_run": "1349d2cf360de51e6f39a9a9d880337ead744dda",
   "current_research_checks": {
     "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
-    "previous_index_ci_run_id": 40723952011,
+    "previous_index_ci_run_id": 40724228255,
     "previous_index_tests_passed": 145,
-    "previous_index_gate_run_id": 40723952236
+    "previous_index_gate_run_id": 40724228152
   }
 }
