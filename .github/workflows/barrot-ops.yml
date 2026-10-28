@@ -1,27 +1,43 @@
 name: Barrot Operations Pipeline
 
+# External writes are manual-only and require explicit confirmation.
+# Potential targets: Hugging Face Space and Databricks workspace notebook.
+
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
+    inputs:
+      confirm_external_deploy:
+        description: "Confirm updates to the configured Hugging Face Space and Databricks workspace notebook."
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
 
 concurrency:
   group: barrot-ops-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   sync-platforms:
+    if: inputs.confirm_external_deploy == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - name: Confirm deployment targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Explicit external-deployment confirmation received."
+          echo "Potential writes: Hugging Face Space main; Databricks /Shared/barrot_databricks_job."
+          echo "Kaggle step downloads a dataset; it does not publish a dataset."
+      - uses: actions/checkout@v4
 
       - name: Deploy HF Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
+          set -euo pipefail
           if [ -z "$HF_TOKEN" ]; then
             echo "::warning::HF_TOKEN not set, skipping HF Space deploy"
             exit 0
@@ -30,7 +46,7 @@ jobs:
           printf '%s\n' "machine huggingface.co login Scribedpengenius password $HF_TOKEN" > ~/.netrc
           chmod 600 ~/.netrc
           trap 'rm -f ~/.netrc' EXIT
-          git remote add hf https://huggingface.co/spaces/Scribedpengenius/barrot-omega || true
+          git remote add hf https://huggingface.co/spaces/Scribedpengenius/barrot-omega
           git push hf origin/main:main
 
       - name: Setup Databricks CLI
@@ -41,17 +57,18 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
+          set -euo pipefail
           if [ -z "$DATABRICKS_HOST" ] || [ -z "$DATABRICKS_TOKEN" ]; then
             echo "::warning::DATABRICKS_HOST or DATABRICKS_TOKEN not set, skipping notebook run"
             exit 0
           fi
-          databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite || \
-            echo "::warning::Notebook upload failed; skipping run"
+          databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite
 
       - name: Kaggle Data Refresh
         env:
           KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
         run: |
+          set -euo pipefail
           if [ -z "$KAGGLE_JSON" ]; then
             echo "::warning::KAGGLE_JSON not set, skipping Kaggle refresh"
             exit 0

@@ -1,23 +1,25 @@
-name: Force Deploy Space
+name: Force Deploy Space (disabled)
 
 on:
   workflow_dispatch:
+    inputs:
+      reason:
+        description: "Audit note only; use the separately reviewed deployment workflow if approved."
+        required: false
+        type: string
+
+permissions:
+  contents: read
 
 jobs:
-  deploy:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - name: Push hf_space/ to the Space repo
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      - name: Fail closed
+        shell: bash
         run: |
-          MAIN_SHA=$(git rev-parse --short HEAD)
-          cd hf_space
-          git init -q
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add -A
-          git commit -q -m "Force sync from main ${MAIN_SHA}"
-          git push -f "https://Scribedpengenius:${HF_TOKEN}@huggingface.co/spaces/Scribedpengenius/Barrot-Omega" HEAD:main
-          echo "PUSHED to Space"
+          set -euo pipefail
+          echo "This legacy workflow is disabled because it used a force-push to an external Hugging Face Space."
+          echo "No token is read and no external deployment is attempted."
+          echo "Use a reviewed, fast-forward-only deployment path with explicit authorization."
+          exit 0
