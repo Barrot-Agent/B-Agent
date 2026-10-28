@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1165,
+    "xrp_entries": 1166,
     "btc_entries": 1193
   },
-  "unique_entities_profiled": 974,
+  "unique_entities_profiled": 978,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 279,
-      "bullish": 179,
+      "total_mentions": 280,
+      "bullish": 180,
       "neutral": 44,
       "bearish": 56,
-      "net_sentiment_score": 0.441,
+      "net_sentiment_score": 0.443,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -11030,6 +11030,62 @@
       ],
       "example_headlines": [
         "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger"
+      ]
+    },
+    {
+      "entity": "KDDI",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App"
+      ]
+    },
+    {
+      "entity": "au PAY",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App"
+      ]
+    },
+    {
+      "entity": "Japan Telecom",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App"
+      ]
+    },
+    {
+      "entity": "crypto wallet",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App"
       ]
     },
     {
