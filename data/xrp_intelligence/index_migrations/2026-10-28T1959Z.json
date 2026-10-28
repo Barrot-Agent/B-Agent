@@ -1,7 +1,7 @@
 {
   "migration_id": "XRP-LEDGER-INDEX-POINTER-20261028T1959Z",
   "recorded_at_utc": "2026-10-28T19:59:48Z",
-  "updated_at_utc": "2026-10-28T20:01:00Z",
+  "updated_at_utc": "2026-10-28T20:02:30Z",
   "status": "DRAFT_NOT_MERGED",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
@@ -28,7 +28,7 @@
   "new_index": {
     "path": "data/xrp_intelligence/research_ledger.json",
     "format_version": "2.0",
-    "characters": 452459
+    "characters": 455596
   },
   "preservation": {
     "source_records_retained": true,
@@ -43,7 +43,13 @@
   "rationale": "Replace the duplicated inline latest snapshot with a hash-verified pointer. A second immutable snapshot corrects ledger metrics from the first capture; neither prior index nor prior snapshot was rewritten.",
   "validation": {
     "automatic_ci": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR",
-    "local_tests": "PENDING",
-    "reason": "Core CI workflow only triggers pull_request for base main."
+    "local_tests": "PASS",
+    "tests_passed": 6,
+    "duration_seconds": 0.05,
+    "command": "python -m pytest -q tests/test_xrp_ledger_index.py",
+    "py_compile": "PASS",
+    "actual_github_pointer_readback": "PASS",
+    "full_repository_local_integration": "NOT_RUN",
+    "reason": "The core CI workflow only triggers pull_request for base main. Local tests used an isolated synthetic repository fixture; the actual branch index/snapshot pointer was separately read back through GitHub and the blob SHA matched."
   }
 }

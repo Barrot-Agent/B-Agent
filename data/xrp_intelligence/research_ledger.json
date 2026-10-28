@@ -4133,6 +4133,22 @@
       "title": "Corrected immutable XRP research snapshot metrics",
       "accessed_at_utc": "2026-10-28T20:01:00Z",
       "note": "New snapshot corrects ledger_metrics counts in the 19:59Z snapshot without rewriting it. Prior snapshot remains preserved. Correction snapshot blob SHA bae917bd6297850667e679a9d1476517a599b38e."
+    },
+    {
+      "id": "SRC-RUN11-LEDGER-VALIDATOR-20261028T2002Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/scripts/validate_xrp_ledger_index.py",
+      "title": "Read-only XRP ledger index and snapshot pointer validator",
+      "accessed_at_utc": "2026-10-28T20:02:30Z",
+      "note": "Validator blob SHA 39de2e4f8c6750f6f99c4bdb34e6d997d03544a0. Supports legacy inline and compact pointer formats; verifies exact Git blob SHA and rejects path traversal."
+    },
+    {
+      "id": "SRC-RUN11-LEDGER-TESTS-20261028T2002Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/tests/test_xrp_ledger_index.py",
+      "title": "XRP ledger pointer validator regression tests",
+      "accessed_at_utc": "2026-10-28T20:02:30Z",
+      "note": "Test blob SHA e450774d9d21c94879259fe9043a6ab877c1c1ea. Six tests cover pointer resolution/hash, fail-closed SHA mismatch, path traversal, duplicate source IDs, legacy inline compatibility and repository index validation."
     }
   ],
   "limitations": [
@@ -4225,7 +4241,8 @@
     "2026-10-28T19:07:50Z: XRP open-interest aggregators report USD 1.7B–2.93B across 7, 9 and 26 exchange universes with unresolved cutoffs; aggregate OI remains blocked from feature admission.",
     "2026-10-28T19:12:00Z: research_ledger.json was 981,865 characters before the latest verification update, close to the GitHub Contents API 1 MiB limit. Split the duplicated latest_snapshot payload from the append-only source/run ledger or compact the schema before continued hourly growth; do not wait for write failures.",
     "The research_ledger.json index reached 989,081 characters and embedded a 462,600-character latest_snapshot object. A draft migration replaces the duplicated inline snapshot with a hash-verified pointer; historical index content remains recoverable at Git commit 5dc82c5d3665ac379f75bd4e75da2301f305b6f1. The migration is not merged.",
-    "The current core CI workflow restricts pull_request events to base main. A PR targeting the research branch will not trigger that workflow automatically; any local tests must be reported separately from CI."
+    "The current core CI workflow restricts pull_request events to base main. A PR targeting the research branch will not trigger that workflow automatically; any local tests must be reported separately from CI.",
+    "Six isolated synthetic-fixture tests and Python compilation passed for the ledger pointer validator. The full repository integration test was not run against a complete local checkout; actual index/snapshot pointer integrity was independently verified by reading both files and matching the Git blob SHA through GitHub."
   ],
   "run_updates": [
     {
@@ -6804,6 +6821,34 @@
       "source_ids": [
         "SRC-RUN11-SNAPSHOT-CORRECTION-20261028T2001Z"
       ]
+    },
+    {
+      "recorded_at_utc": "2026-10-28T20:02:30Z",
+      "update_type": "LEDGER_POINTER_LOCAL_VALIDATION",
+      "branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "index_blob_sha_before_validation_record": "bb46573fab58ec4f52fb67d91649c48735d0e2b6",
+      "snapshot_pointer_validation": {
+        "status": "PASS",
+        "index_blob_sha": "bb46573fab58ec4f52fb67d91649c48735d0e2b6",
+        "snapshot_blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
+        "pointer_path_matches": true,
+        "captured_at_matches": true,
+        "snapshot_id_matches": true,
+        "source_ids_unique": true,
+        "missing_source_references": 0
+      },
+      "local_tests": {
+        "status": "PASS",
+        "tests_passed": 6,
+        "duration_seconds": 0.05,
+        "command": "python -m pytest -q tests/test_xrp_ledger_index.py",
+        "py_compile": "PASS",
+        "fixture_scope": "isolated synthetic repository fixture; not a full local checkout of the GitHub branch"
+      },
+      "automated_ci": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR",
+      "full_repository_integration_test": "NOT_RUN_LOCALLY; actual GitHub index/snapshot readback independently verified through repository connector",
+      "main_modified": false,
+      "state_mutated": false
     }
   ],
   "mission_priority": {
@@ -7031,28 +7076,33 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "9d7e36543bd4c5a6e417b1391191606d84d0c7b1",
-  "current_research_head_this_run": "PENDING_AFTER_INDEX_WRITE",
+  "current_research_head_before_ledger_update": "c9c4bec24fb96b7f4bf89bd35c581d7e9fe2b52c",
+  "current_research_head_this_run": "PENDING_AFTER_VALIDATION_RECORD_COMMIT",
   "current_research_checks": {
-    "status": "PENDING_LOCAL_VALIDATION",
-    "previous_index_head": "9d7e36543bd4c5a6e417b1391191606d84d0c7b1",
+    "status": "LOCAL_FIXTURE_TESTS_PASS; SNAPSHOT_POINTER_READBACK_PASS; AUTOMATED_CI_NOT_TRIGGERED",
     "latest_snapshot_blob_readback": "PASS",
-    "index_compaction_commit": "PENDING",
-    "local_validator_tests": "PENDING",
+    "pointer_fields_match_snapshot": true,
+    "source_ids_unique": true,
+    "missing_source_references": 0,
+    "local_tests_passed": 6,
+    "local_test_duration_seconds": 0.05,
+    "python_compile": "PASS",
+    "full_repository_integration_test": "NOT_RUN_LOCALLY",
     "automated_ci": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR",
     "fail_closed_gate": "NOT_RUN",
-    "reason": "Core CI pull_request filter targets main only; this draft PR targets the research branch."
+    "reason": "The core CI workflow pull_request trigger is restricted to base main; this draft PR targets the research branch to avoid merging the diverged research branch into main."
   },
   "ledger_metrics": {
-    "source_records": 508,
-    "run_updates": 106,
-    "limitations": 90,
+    "source_records": 510,
+    "run_updates": 107,
+    "limitations": 91,
     "relationship_edges": 104,
     "competing_hypotheses": 65,
     "market_observations": 51,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
-    "embedded_latest_snapshot_characters_removed": 462600
+    "embedded_latest_snapshot_characters_removed": 462600,
+    "local_validator_tests_passed": 6
   },
   "previous_research_checks": {
     "status": "PRIOR_INDEX_VERIFIED; SUCCESSOR_INDEX_PENDING",
