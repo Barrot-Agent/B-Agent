@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T08:17:18.242Z",
+    "captured_at_utc": "2026-10-28T08:18:12.325Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
@@ -4091,9 +4091,9 @@
         "source_ids": [
           "SRC-XRP-INVESTING-LIVE-2026-10-28T0817Z",
           "SRC-XRP-COINGECKO-PRICE-PERP-2026-10-28T0817Z",
-          "SRC-XRP-INVESTING-ID-HIST-2026-10-28T0812Z"
+          "SRC-XRP-INVESTING-ID-HIST-2026-10-28T0814Z"
         ],
-        "next_action": "Capture raw venue trades/order books and perps snapshots at a common UTC cutoff; record provider timestamp, pair, venue, quote currency, contract type, funding interval, OI coverage and payload hash."
+        "next_action": "Capture venue-specific trades/order books at common UTC cutoffs, normalize pair/venue/timezone, and preserve raw payload hashes. Prior 0817Z snapshot's source-ID suffix typo is retained historically; this snapshot corrects it."
       }
     ],
     "mission_priority": {
@@ -4122,17 +4122,12 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-CROSS-PROVIDER-QUOTE-QUALITY-2026-10-28T0817Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
+    "snapshot_id": "XRP-QUOTE-SOURCE-REFERENCE-CORRECTION-2026-10-28T0818Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0818Z.json",
     "current_research_head_before_ledger_update": "dc18baed806b221054d88299d11a0cc3121d2fba",
     "current_research_checks": {
-      "status": "PASS_ON_PREVIOUS_LEDGER_HEAD; CURRENT_SNAPSHOT_UPDATE_PENDING_CI",
-      "previous_head": "d956232d7f56e4028548b198ec53d459928648bc",
-      "tests": 146,
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655562251",
-      "gate": "PASS",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655562094",
-      "note": "Prior ledger commit passed exact-head CI and fail-closed gate. This snapshot/index update requires its own exact-head CI check."
+      "status": "PENDING_AFTER_THIS_LEDGER_UPDATE",
+      "note": "This corrective snapshot/index update requires exact-head CI."
     },
     "current_research_head_before_final_verification_record": "dc18baed806b221054d88299d11a0cc3121d2fba",
     "platform_coordination_architecture": {
@@ -5164,7 +5159,13 @@
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
     "current_research_head_this_run": "NOT_ASSERTED_BY_FILE_FETCH; existing research branch preserved",
-    "snapshot_blob_sha": "8bc3f2f9b2b8e75206971d1e54fe4119a13272ee"
+    "correction_note": {
+      "previous_snapshot": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
+      "issue": "The previous market-data-quality finding referenced a nonexistent 0812Z source ID.",
+      "correction": "This snapshot references the existing 0814Z source record instead. The prior snapshot remains unchanged.",
+      "previous_snapshot_preserved": true
+    },
+    "snapshot_blob_sha": "352affa49a38a6ac3821ac70b63831042d07993a"
   },
   "sources": [
     {
@@ -7046,7 +7047,8 @@
     "Main signal-summary workflow still commits generated summary JSON/audio directly to main; fallback code alone does not replace persistence path.",
     "Approval workflow run 40641938871 is a push-event failure with zero jobs while current workflow declares workflow_dispatch only; no approval job ran and event origin remains unresolved.",
     "Repository has 75 open PRs including many similarly scoped older safety/research branches; no PRs closed or merged; stale-head checks are not current verification.",
-    "PR #1245 fixes the signal-summary failure and direct-main write in a draft branch only; current main remains unchanged until an approved merge. Its 30-day artifact is not durable historical storage."
+    "PR #1245 fixes the signal-summary failure and direct-main write in a draft branch only; current main remains unchanged until an approved merge. Its 30-day artifact is not durable historical storage.",
+    "Historical snapshot 2026-10-28T0817Z contains one incorrect source-ID timestamp suffix in a market-data-quality finding; corrective snapshot data/xrp_intelligence/snapshots/2026-10-28T0818Z.json points to the existing source record. The historical snapshot was preserved unchanged."
   ],
   "run_updates": [
     {
@@ -8017,6 +8019,26 @@
         "previous_ledger_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655562251",
         "previous_ledger_gate": "PASS",
         "previous_ledger_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655562094",
+        "current_ledger_head_ci": "PENDING_AFTER_INDEX_UPDATE"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T08:18:12.325Z",
+      "update_type": "XRP_QUOTE_SOURCE_REFERENCE_CORRECTION",
+      "snapshot_id": "XRP-QUOTE-SOURCE-REFERENCE-CORRECTION-2026-10-28T0818Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0818Z.json",
+      "details": "Validation found one unresolved source ID in snapshot 2026-10-28T0817Z: it referenced a nonexistent 0812Z suffix for the Investing.com historical source. Created a corrective snapshot referencing the existing 0814Z source record; historical 0817Z remains unchanged.",
+      "validation": {
+        "source_ids_unique": true,
+        "snapshot_blob_sha": "352affa49a38a6ac3821ac70b63831042d07993a",
+        "corrected_snapshot_missing_source_refs": 0,
+        "prior_snapshot_known_missing_source_refs": 1,
+        "prior_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
+        "prior_snapshot_preserved": true,
+        "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
         "current_ledger_head_ci": "PENDING_AFTER_INDEX_UPDATE"
       }
     }
