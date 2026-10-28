@@ -6837,24 +6837,24 @@
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:15:30Z",
     "snapshot_commit_sha": "1967a927e99a3f420038ebd4a9c11aeb1f2fc6da",
     "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T13:18:30Z",
-      "status": "PASS_ON_VERIFIED_INDEX_HEAD_3D6AC5; FOLLOWUP_EVIDENCE_APPEND_REQUIRES_CHECK",
+      "verified_at_utc": "2026-10-28T13:20:00Z",
+      "status": "PASS_ON_VERIFIED_INDEX_HEAD_2EAA61; FOLLOWUP_EVIDENCE_APPEND_REQUIRES_CHECK",
       "snapshot_blob_sha": "23f39da1939a5b1a9f8f6445713709d8514a6308",
       "snapshot_hash_matches_index": true,
-      "verified_index_head_sha": "3d6ac5ba7594a85b757663ef2e2ebab5e52965db",
+      "verified_index_head_sha": "2eaa61bac23fe217712abb6026106ece7e56e73a",
       "ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 6.22,
-        "run_id": 40695123231,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40695123231"
+        "duration_seconds": 5.96,
+        "run_id": 40695255777,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40695255777"
       },
       "gate": {
         "status": "PASS",
-        "run_id": 40695123808,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40695123808"
+        "run_id": 40695255815,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40695255815"
       },
-      "note": "The snapshot blob hash matches the index, and index head 3d6ac5 passed exact-head CI/gate. PR #1256 also passed 147 tests and gate; it remains draft/unmerged. This follow-up evidence append creates a new index commit requiring its own CI."
+      "note": "The snapshot hash and exact-head CI/gate are verified for index head 2eaa61. This follow-up verification record creates a new index commit that must be checked separately."
     }
   },
   "sources": [
@@ -9537,6 +9537,14 @@
       "title": "Exact-head CI for repository security/dependency snapshot index",
       "accessed_at_utc": "2026-10-28T13:18:08Z",
       "note": "Ledger index commit 3d6ac5ba7594a85b757663ef2e2ebab5e52965db passed 145 tests in 6.22s. Fail-closed gate run 40695123808 passed. This evidence applies to that exact index commit; the next evidence append has its own CI."
+    },
+    {
+      "id": "SRC-LEDGER-INDEX-CI-20261028T1320Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40695255777",
+      "title": "Exact-head CI for latest security/dependency ledger index",
+      "accessed_at_utc": "2026-10-28T13:20:00Z",
+      "note": "Index commit 2eaa61bac23fe217712abb6026106ece7e56e73a passed 145 tests in 5.96s; fail-closed gate run 40695255815 passed. Snapshot blob 23f39da1939a5b1a9f8f6445713709d8514a6308 matched the index. This verification applies to that exact index head."
     }
   ],
   "limitations": [
@@ -9599,7 +9607,8 @@
     "The 'Fall Back' repository ruleset is disabled, but effective classic branch protection is unknown because the endpoint returned 403.",
     "Security-alert counts are unknown because Dependabot/code-scanning endpoints were rejected by the current connector's allowed-endpoint policy.",
     "PR #1256 core CI was still in progress at the 13:15 snapshot; its gate had passed, but no test result was claimed at capture.",
-    "PR #1256 dependency-manifest fix passed CI/gate but remains draft/unmerged; main still omits the four packages until an approved merge."
+    "PR #1256 dependency-manifest fix passed CI/gate but remains draft/unmerged; main still omits the four packages until an approved merge.",
+    "The latest index verification record is being appended in a new commit; that evidence append requires its own CI check."
   ],
   "run_updates": [
     {
@@ -11113,6 +11122,35 @@
         "pr1256_ci_run_id": 40694932828,
         "pr1256_gate": "PASS",
         "pr1256_gate_run_id": 40694932868,
+        "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T13:20:00Z",
+      "update_type": "LEDGER_INDEX_CI_VERIFIED_FOR_EXACT_HEAD",
+      "snapshot_id": "BARROT-SECURITY-AND-DEPENDENCY-AUDIT-202610281315Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1315Z.json",
+      "details": "Verified the latest index head 2eaa61ba: 145 tests passed in 5.96s and the fail-closed gate passed. The snapshot blob hash matches the index. PR #1256 independently passed 147 tests and its gate; it remains draft/unmerged. This evidence append creates a new index commit requiring its own CI.",
+      "source_ids": [
+        "SRC-LEDGER-INDEX-CI-20261028T1320Z",
+        "SRC-PR1256-CI-20261028T1318Z",
+        "SRC-GH-RULESET-FALLBACK-20261028T1315Z"
+      ],
+      "validation": {
+        "verified_index_head_sha": "2eaa61bac23fe217712abb6026106ece7e56e73a",
+        "ci": "PASS_145_TESTS_5.96S",
+        "ci_run_id": 40695255777,
+        "gate": "PASS",
+        "gate_run_id": 40695255815,
+        "snapshot_blob_sha": "23f39da1939a5b1a9f8f6445713709d8514a6308",
+        "snapshot_hash_matches_index": true,
+        "source_catalog_unique_ids": true,
+        "pr1256_ci": "PASS_147_TESTS_7.31S",
+        "pr1256_gate": "PASS",
         "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
         "forecast_status": "NOT_ISSUED",
         "main_modified_by_this_run": false,
