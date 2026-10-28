@@ -25,7 +25,7 @@ jobs:
       - name: Install test dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest PyJWT cryptography pydantic pydantic-settings requests
+          pip install pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests
 
       - name: Verify durable queue and bundle lifecycle integration
         run: |
