@@ -49,8 +49,8 @@ class BundleLifecycleStore:
                 pass
             raise
 
-    def save_plan(self, work_id: str, result: Any) -> Path:
-        """Persist exact plan, deterministic review, revision attempts, and current state."""
+    def save_plan(self, work_id: str, result: Any, *, request_fingerprint: str | None = None) -> Path:
+        """Persist exact plan, deterministic review, request identity, and current state."""
         directory = self._directory(work_id)
         path = directory / "lifecycle.json"
         bundle = getattr(result, "bundle", None)
@@ -62,7 +62,11 @@ class BundleLifecycleStore:
         if path.is_file():
             try:
                 candidate = json.loads(path.read_text(encoding="utf-8"))
-                if candidate.get("work_id") == work_id and candidate.get("bundle_fingerprint") == fingerprint:
+                if (
+                    candidate.get("work_id") == work_id
+                    and candidate.get("bundle_fingerprint") == fingerprint
+                    and candidate.get("request_fingerprint") == request_fingerprint
+                ):
                     previous = candidate
             except (OSError, ValueError, TypeError):
                 previous = None
@@ -73,6 +77,7 @@ class BundleLifecycleStore:
             "status": getattr(result, "status", "UNKNOWN"),
             "bundle": bundle,
             "bundle_fingerprint": fingerprint,
+            "request_fingerprint": request_fingerprint,
             "review": result.review.to_dict() if getattr(result, "review", None) else None,
             "attempts": list(getattr(result, "attempts", []) or []),
             "execution_evidence": list((previous or {}).get("execution_evidence", [])),
