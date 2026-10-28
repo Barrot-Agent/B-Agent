@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T05:05:10.899Z",
+    "captured_at_utc": "2026-10-28T05:06:42.642Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
@@ -40,8 +40,8 @@
           "title": "Research: carry XRP intelligence ledger onto fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "91b4a6b3043b37775314991935097797dd1eab7e",
-          "status": "Research-only branch; 36 commits ahead and 38 behind current main. Preserve history; do not merge stale branch without reviewed reconciliation."
+          "head_sha": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
+          "status": "Research-only branch; 38 commits ahead and 39 behind current main. Exact-head CI passed 146 tests in 5.62s and fail-closed gate passed for head f8e4e1990bce1b68f07c47644f3d01d64e70c92a; the new snapshot/index commits created by this update need their own CI."
         },
         {
           "number": 1228,
@@ -140,7 +140,7 @@
           "state": "open",
           "draft": true,
           "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
-          "status": "Exact-head CI PASS (150 tests, 5.30s); fail-closed gate PASS; draft/unmerged; branch was 7 ahead/0 behind at capture."
+          "status": "Exact-head CI passed 150 tests in 5.30s and fail-closed gate passed; branch is 7 ahead and 1 behind current main. The only observed intervening main commit is a generated BTC paper-trading HOLD row. Draft/unmerged."
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -3088,7 +3088,7 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T05:05:10.899Z"
+      "last_checked_utc": "2026-10-28T05:06:42.642Z"
     },
     "massive_micro_ingestion": {
       "status": "REQUIRED_STANDARD",
@@ -3208,10 +3208,10 @@
         "scope": "One generated paper-trading row only; exact-head code CI not triggered by this [skip ci] commit."
       },
       "main_branch_protected": true,
-      "branch_protection_details": "Branch endpoint reports protection enabled, but required status-check contexts/checks are empty; detailed protection endpoint is not accessible to the current integration. Effective review requirements are not verified.",
+      "branch_protection_details": "Branch endpoint reports protection enabled but required status-check contexts/checks are empty; detailed protection endpoint is not accessible to the current integration.",
       "main_ci": {
         "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-        "note": "Main head is a generated cross-analysis refresh commit marked [skip ci]; no exact-head full code CI was verified for this SHA."
+        "note": "Current main commit is a generated paper-trading-log append marked [skip ci]; exact-head full code CI was not verified."
       },
       "main_databricks_deploy": {
         "run_id": 40583993212,
@@ -3656,13 +3656,17 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-COINBASE-CIRCLE-WORKFLOW-AUDIT-2026-10-28T05:05Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0505Z.json",
-    "current_research_head_before_ledger_update": "91b4a6b3043b37775314991935097797dd1eab7e",
+    "snapshot_id": "XRP-POST-CI-AND-MAIN-DRIFT-2026-10-28T05:06Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0506Z.json",
+    "current_research_head_before_ledger_update": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
     "current_research_checks": {
-      "status": "NOT_VERIFIED_AFTER_NEW_SNAPSHOT",
-      "previous_head_checks": "Prior snapshot reported passing checks for an earlier research head; these do not verify the commit created by this update.",
-      "note": "This ledger update will change the research PR head. Recheck exact-head CI and gate after the update."
+      "status": "PASS_ON_PREVIOUS_HEAD; NEW_LEDGER_UPDATE_REQUIRES_EXACT_HEAD_CI",
+      "previous_head": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
+      "tests": "PASS_146_TESTS_5.62S",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937747",
+      "gate": "PASS",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937758",
+      "note": "The verification is for the prior research head; this snapshot and subsequent index update will create new commits and require their own exact-head CI."
     },
     "current_research_head_before_final_verification_record": "91b4a6b3043b37775314991935097797dd1eab7e",
     "platform_coordination_architecture": {
@@ -4140,6 +4144,19 @@
           "SRC-GH-MAIN-HEAD-2026-10-28T0451Z"
         ],
         "impact_status": "MERGE_GATE_ENFORCEMENT_NOT_VERIFIED"
+      },
+      {
+        "event_id": "EVT-PR1227-EXACT-HEAD-CI-PASS-2026-10-28T05:06Z",
+        "event_time_utc": "2026-10-28T05:05:39Z",
+        "captured_at_utc": "2026-10-28T05:06:42.642Z",
+        "entity": "Barrot-Agent/B-Agent PR #1227",
+        "event": "The research ledger head f8e4e1990bce1b68f07c47644f3d01d64e70c92a passed 146 tests in 5.62 seconds and the fail-closed gate.",
+        "evidence_class": "REPOSITORY_CI_VERIFICATION",
+        "source_ids": [
+          "SRC-REPO-PR1227-CI-2026-10-28T0505Z",
+          "SRC-REPO-PR1227-GATE-2026-10-28T0505Z"
+        ],
+        "impact_status": "PREVIOUS_HEAD_VERIFIED; NEW_LEDGER_COMMITS_REQUIRE_EXACT_HEAD_CI"
       }
     ],
     "current_pr_1238_state": {
@@ -4182,7 +4199,7 @@
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
-      "observed_at_utc": "2026-10-28T05:05:10.899Z",
+      "observed_at_utc": "2026-10-28T05:06:42.642Z",
       "current_main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
       "findings": [
         {
@@ -4278,7 +4295,7 @@
       "base_sha": "8beef04c25a3d182c2366c82c1257bacfa1799f2",
       "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
       "ahead_by": 7,
-      "behind_by": 0,
+      "behind_by": 1,
       "ci": {
         "status": "PASS",
         "tests_passed": 150,
@@ -4293,9 +4310,32 @@
       },
       "deployment_executed": false,
       "main_modified_by_this_run": false,
-      "merge_performed": false
+      "merge_performed": false,
+      "current_main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6"
     },
-    "snapshot_blob_sha": "164984e9e3d6e8f3bd0bb0c6351df30a68706ddd"
+    "current_pr_1227_state": {
+      "pr": 1227,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
+      "base_sha": "a960255f2b7b0418694ee428bc82fbbeed6622dd",
+      "ahead_by": 38,
+      "behind_by": 39,
+      "ci": {
+        "status": "PASS",
+        "tests_passed": 146,
+        "duration_seconds": 5.62,
+        "run_id": 40635937747,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937747"
+      },
+      "gate": {
+        "status": "PASS",
+        "run_id": 40635937758,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937758"
+      },
+      "note": "Verification applies to head f8e4e1990bce1b68f07c47644f3d01d64e70c92a before the new snapshot/index commits."
+    },
+    "snapshot_blob_sha": "260ffc0fe8f3bf82e916fd3bb83091e38a6a85b6"
   },
   "sources": [
     {
@@ -5801,6 +5841,38 @@
       "title": "Main scheduled cross-analysis workflow",
       "accessed_at_utc": "2026-10-28T05:05:10.899Z",
       "note": "contents:write; commits generated entity co-occurrence and sentiment analysis files directly to main."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T0512Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
+      "title": "Current main branch metadata and protection summary",
+      "accessed_at_utc": "2026-10-28T05:06:42.642Z",
+      "note": "Main head 4db66fd16604ed7d8b3ba17c6e3469a04a2441d6; commit message Paper trade cycle [skip ci]; branch reports protected=true with required status-check contexts/checks empty. Detailed protection endpoint remains unavailable to this integration."
+    },
+    {
+      "id": "SRC-REPO-PR1227-CI-2026-10-28T0505Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937747",
+      "title": "Research PR #1227 exact-head Tests workflow",
+      "accessed_at_utc": "2026-10-28T05:06:42.642Z",
+      "note": "Exact head f8e4e1990bce1b68f07c47644f3d01d64e70c92a passed 146 tests in 5.62 seconds."
+    },
+    {
+      "id": "SRC-REPO-PR1227-GATE-2026-10-28T0505Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937758",
+      "title": "Research PR #1227 exact-head fail-closed gate",
+      "accessed_at_utc": "2026-10-28T05:06:42.642Z",
+      "note": "Fail-closed gate passed for research ledger head f8e4e1990bce1b68f07c47644f3d01d64e70c92a."
+    },
+    {
+      "id": "SRC-REPO-PR1241-CURRENT-COMPARE-2026-10-28T0512Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+      "title": "Current PR #1241 branch comparison",
+      "accessed_at_utc": "2026-10-28T05:06:42.642Z",
+      "note": "PR #1241 head ceed1909bff53b04d45b8395374c78b3891593ed, base 8beef04c25a3d182c2366c82c1257bacfa1799f2; compare against current main reports 7 commits ahead and 1 behind. The one-behind change is the generated paper-trading-log append on main."
     }
   ],
   "limitations": [
@@ -6579,6 +6651,26 @@
         "snapshot_blob_sha": "164984e9e3d6e8f3bd0bb0c6351df30a68706ddd"
       },
       "snapshot_blob_sha": "164984e9e3d6e8f3bd0bb0c6351df30a68706ddd"
+    },
+    {
+      "recorded_at_utc": "2026-10-28T05:06:42.642Z",
+      "update_type": "POST_LEDGER_CI_VERIFICATION_AND_MAIN_HEAD_REFRESH",
+      "snapshot_id": "XRP-POST-CI-AND-MAIN-DRIFT-2026-10-28T05:06Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0506Z.json",
+      "details": "Verified prior research ledger head f8e4e1990bce1b68f07c47644f3d01d64e70c92a passed 146 tests in 5.62 seconds and the fail-closed gate. Main is now 4db66fd16604ed7d8b3ba17c6e3469a04a2441d6; current PR #1241 is 7 ahead and 1 behind, with the intervening main change limited to a generated BTC paper-trading HOLD row. This new snapshot and index update require exact-head CI of their own.",
+      "validation": {
+        "previous_research_head_ci": "PASS_146_TESTS_5.62S",
+        "previous_research_head_gate": "PASS",
+        "current_main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
+        "pr1241_ahead_by": 7,
+        "pr1241_behind_by": 1,
+        "source_ids_unique": true,
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "snapshot_blob_sha": "260ffc0fe8f3bf82e916fd3bb83091e38a6a85b6"
+      },
+      "snapshot_blob_sha": "260ffc0fe8f3bf82e916fd3bb83091e38a6a85b6"
     }
   ],
   "mission_priority": {
