@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T01:06:10Z",
+    "captured_at_utc": "2026-10-28T01:07:30Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "34812763a099c85a3a25bd1d1037529bb20bc0be",
@@ -734,6 +734,17 @@
           "SRC-CIRCLE-10Q-Q2-2026"
         ],
         "uncertainty": "No measured customer switching, net issuance migration, or XRP price effect established."
+      },
+      {
+        "id": "CFTC-XRP-CME-POSITIONING-AS-OF-2026-10-20",
+        "evidence_class": "OFFICIAL_PRIMARY_REGULATORY_POSITIONING_DATA",
+        "status": "RECORDED; RAW_SERIES_NORMALIZATION_AND_HEDGING_INTERPRETATION_REQUIRED",
+        "claim": "The CFTC TFF report updated Oct 23 shows XRP CME open interest of 7,509 contracts of 50,000 XRP each (~375.45M XRP-equivalent), down 110 contracts from Oct 13. Dealer/intermediary positions were 4,111 long, 4,630 short and 17 spreading; asset managers 981 long/717 short; leveraged funds 2,218 long/1,945 short/17 spreading; other reportables zero; nonreportables 165 long/183 short.",
+        "interpretation": "This is a primary, timestamped view of regulated CME positioning only. It is not global open interest and not a standalone directional signal. Category positions may hedge exposure elsewhere; compare with spot flows, basis, funding, liquidation data and other venues.",
+        "source_ids": [
+          "SRC-CFTC-XRP-CME-TFF-2026-10-20"
+        ],
+        "uncertainty": "Raw CFTC weekly positioning is verified from the official table; economic intent, cross-venue hedging and spot-price impact are unknown."
       }
     ],
     "relationship_graph": [
@@ -1572,6 +1583,20 @@
         "test_plan": [
           "Reconstruct daily CME and other-venue OI in common XRP-equivalent units; combine CFTC trader categories, spot flows, basis, funding, liquidations and ETF flows; compare event windows and retain alternative hedging explanations."
         ]
+      },
+      {
+        "id": "H-CFTC-CME-POSITIONING-MIXED-NOT-DIRECTIONAL-2026-10-20",
+        "hypothesis": "CME XRP futures positioning is mixed and changes over time; category-level long/short balances alone do not establish net bullish or bearish spot demand.",
+        "supporting_evidence": [
+          "Official CFTC data as of Oct 20 shows dealer/intermediary shorts exceed longs while asset managers and leveraged funds have more longs than shorts on the simple category counts.",
+          "CoinDesk's Aug 31 report described leveraged funds as net short during a prior rally, while the Oct 20 CFTC table shows a different raw balance."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "A sustained, cross-venue, consistently normalized positioning trend that aligns with spot flows and basis may have predictive value after out-of-sample testing."
+        ],
+        "test_plan": [
+          "Use official weekly CFTC vintages, contract sizes and spreading fields; align to market event time; compare with CME price/basis, aggregate OI, funding, spot CVD and ETF flows; test incremental predictive value against simple price/volatility baselines."
+        ]
       }
     ],
     "market_observations": [
@@ -1672,6 +1697,17 @@
           "SRC-COINDESK-XRP-CME-OI-2026-08-31"
         ],
         "model_admission": "BLOCKED_PENDING_RECONSTRUCTION_OF_RAW_OI_AND_CFTC_SERIES"
+      },
+      {
+        "id": "XRP-CME-CFTC-TFF-2026-10-20",
+        "evidence_class": "OFFICIAL_PRIMARY_REGULATORY_WEEKLY_POSITIONING",
+        "as_of_date": "2026-10-20",
+        "observation": "CFTC TFF table lists 7,509 XRP CME contracts open (50,000 XRP per contract, ~375.45M XRP-equivalent). Change from Oct 13: -110 contracts. Dealer/intermediary 4,111 long / 4,630 short / 17 spreading; asset managers 981 / 717 / 0; leveraged funds 2,218 / 1,945 / 17; other reportables 0; nonreportables 165 / 183.",
+        "interpretation": "CME-only, weekly, category-level positioning. The Oct 20 leveraged-fund simple long-minus-short difference is positive, unlike CoinDesk's Aug 31 report of net-short positioning; the dates differ, and neither can be read as an unhedged directional bet.",
+        "source_ids": [
+          "SRC-CFTC-XRP-CME-TFF-2026-10-20"
+        ],
+        "model_admission": "BLOCKED_PENDING_CONTRACT_NORMALIZATION_AND_CROSS_VENUE_ALIGNMENT"
       }
     ],
     "phrase_investigation": {
@@ -1877,12 +1913,12 @@
       ]
     },
     "next_actions": [
-      "Review PR #1230: exact-head CI and fail-closed gate pass; keep draft/unmerged pending approval. It fixes deterministic summary persistence and removes direct main writes for this workflow.",
-      "Preserve the research ledger and snapshots; current updated ledger head e17b07d has passing tests and gate, but the research PR remains draft and will lag as scheduled main writers continue.",
-      "Reconstruct the Aug 17–31 XRP spot/OI/CME/CFTC data in normalized units before using the historical market-structure observation as a model feature.",
-      "Measure RLUSD versus USDC distribution and actual Robinhood/Bitstamp XRPL settlement after launch; treat competitive displacement and XRP demand as separate hypotheses.",
-      "Continue the artifact-only redesign for scheduled knowledge, signal, and evaluation workflows; a reviewed durable promotion path is still required beyond 30-day artifacts.",
-      "Keep forecast status NOT_ISSUED until event-time-synchronized features, fixed-horizon walk-forward tests, leakage controls, calibration, drift checks and shadow evaluation pass."
+      "Verify exact-head CI and fail-closed gate for the latest CFTC snapshot/ledger commit; keep PR #1227 draft and unmerged.",
+      "Reconstruct CFTC weekly XRP CME positions and all-venue open interest with contract-size normalization; preserve report vintage and distinguish CME-only data from global aggregates.",
+      "Review PR #1230: exact-head CI and fail-closed gate passed; keep draft/unmerged pending approval. The current main workflow still has its failure and direct-write behavior until a reviewed fix is merged.",
+      "Measure actual RLUSD/USDC distribution and announced Robinhood/Bitstamp XRPL settlement separately; treat competition with Coinbase/Circle and XRP bridge-asset demand as hypotheses.",
+      "Continue safe persistence redesign for scheduled generated-data writers; preserve paper-trading history and do not modify main.",
+      "Keep forecast status NOT_ISSUED until fixed-horizon walk-forward tests, leakage controls, baselines, calibration, drift checks and shadow evaluation pass."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -2070,7 +2106,7 @@
         "state": "open_draft_unmerged",
         "note": "Exact-head CI and fail-closed gate passed. No merge or deployment occurred."
       },
-      "as_of_utc": "2026-10-28T01:06:10Z",
+      "as_of_utc": "2026-10-28T01:07:30Z",
       "main_head_status": "RECENT_SCHEDULED_WORKFLOWS_CONTINUE_TO_WRITE_GENERATED_DATA",
       "signal_summary_failure": {
         "run_id": 40611307868,
@@ -2111,7 +2147,15 @@
         "merged": false,
         "test_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612760818",
         "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612760845"
-      }
+      },
+      "previous_ledger_head": {
+        "sha": "d632ac3bc613af75b2c768a1757d8f4680aa6aef",
+        "tests": "PASS",
+        "gate": "PASS",
+        "tests_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613047304",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613047298"
+      },
+      "new_snapshot_commit_status": "PENDING_EXACT_HEAD_CI_AT_CAPTURE"
     },
     "market_data_quality_findings": [
       {
@@ -2231,16 +2275,17 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-CME-STRUCTURE-AND-CURRENT-REPO-VERIFICATION-2026-10-28T0106Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0106Z.json",
-    "current_research_head_before_ledger_update": "e17b07d968732f5844927cef03f312669b94cfbf",
+    "snapshot_id": "XRP-CFTC-CME-POSITIONING-2026-10-20-AND-VERIFICATION-2026-10-28T0107Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0107Z.json",
+    "current_research_head_before_ledger_update": "d632ac3bc613af75b2c768a1757d8f4680aa6aef",
     "current_research_checks": {
       "tests": "PASS",
       "gate": "PASS",
-      "as_of_utc": "2026-10-28T01:06:10Z",
-      "validated_head_sha": "e17b07d968732f5844927cef03f312669b94cfbf",
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923515",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923584"
+      "as_of_utc": "2026-10-28T01:07:17Z",
+      "validated_head_sha": "d632ac3bc613af75b2c768a1757d8f4680aa6aef",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613047304",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613047298",
+      "note": "These checks validate the immediately preceding ledger head; this new snapshot/ledger commit requires its own exact-head checks."
     },
     "current_research_head_before_final_verification_record": "33c87fd5007108960c8974ac1af89332916a495f",
     "platform_coordination_architecture": {
@@ -2529,7 +2574,7 @@
         "impact_status": "PRICE_IMPACT_UNKNOWN; NO_XRP_FLOW_DISCLOSED"
       }
     ],
-    "snapshot_blob_sha": "f0222065d6839926376c9f187260a7268f85c3ce"
+    "snapshot_blob_sha": "0baecc360ef243118274573e9c27aaa7528085e5"
   },
   "sources": [
     {
@@ -3337,6 +3382,14 @@
       "title": "Research ledger branch fail-closed gate passed at head e17b07d",
       "accessed_at_utc": "2026-10-28T01:06:10Z",
       "note": "The fail-closed gate passed for the research branch's latest ledger update commit e17b07d968732f5844927cef03f312669b94cfbf. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-CFTC-XRP-CME-TFF-2026-10-20",
+      "evidence_class": "OFFICIAL_PRIMARY_REGULATORY_POSITIONING_DATA",
+      "url": "https://www.cftc.gov/dea/options/financial_lof.htm",
+      "title": "CFTC Traders in Financial Futures — XRP CME positions as of October 20, 2026",
+      "accessed_at_utc": "2026-10-28T01:07:30Z",
+      "note": "Official CFTC TFF page updated October 23, 2026. XRP — Chicago Mercantile Exchange, code #176740, contract size 50,000 XRP, open interest 7,509 contracts (about 375.45 million XRP-equivalent contracts outstanding). Positions: dealer/intermediary long 4,111, short 4,630, spreading 17; asset manager/institutional long 981, short 717, spreading 0; leveraged funds long 2,218, short 1,945, spreading 17; other reportables 0; nonreportable long 165, short 183. Total open interest change from Oct 13 was -110 contracts. CME-only weekly positioning, not aggregate global XRP futures OI; contract positioning can hedge other exposures."
     }
   ],
   "limitations": [
@@ -3846,6 +3899,26 @@
         "ledger_pr_head_gate": "PASS",
         "pr1230_tests": "PASS",
         "pr1230_gate": "PASS",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T01:07:30Z",
+      "update_type": "OFFICIAL_CFTC_XRP_CME_POSITIONING_SNAPSHOT",
+      "snapshot_id": "XRP-CFTC-CME-POSITIONING-2026-10-20-AND-VERIFICATION-2026-10-28T0107Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0107Z.json",
+      "snapshot_blob_sha": "0baecc360ef243118274573e9c27aaa7528085e5",
+      "details": "Added official CFTC Traders in Financial Futures XRP CME positioning as of Oct 20, 2026, with contract size, open interest, category counts and change from Oct 13. Kept it separate from global derivatives aggregates and from the earlier Aug 31 secondary report. The preceding ledger head d632 passed tests and gate; the new snapshot commit is pending exact-head checks.",
+      "validation": {
+        "snapshot_json": "PASS",
+        "source_ids_unique": true,
+        "edge_source_refs": "PASS",
+        "finding_source_refs": "PASS",
+        "previous_ledger_head_tests": "PASS",
+        "previous_ledger_head_gate": "PASS",
+        "new_head_ci": "PENDING",
         "main_modified_by_this_run": false,
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
