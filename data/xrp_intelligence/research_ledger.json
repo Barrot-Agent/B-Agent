@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T17:09:44Z",
+    "captured_at_utc": "2026-10-28T17:12:57Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "23b30639e2631364d97a32f2213faab574c345fb",
@@ -2789,6 +2789,67 @@
           "SRC-CIRCLE-TRANSPARENCY-RECHECK-2026-10-28T1658Z"
         ],
         "uncertainty": "Current Oct 28 supply, chain-specific flows, and any XRP destination are unknown."
+      },
+      {
+        "id": "ACTUAL-CAPITAL-PHRASE-SEARCH-2026-10-28T1711Z",
+        "evidence_class": "SECONDARY_EXPLANATORY",
+        "status": "GENERAL_MEANING_CANDIDATE_ONLY",
+        "claim": "A generic crypto-market-cap explainer states market cap is circulating supply multiplied by price and is not the same as actual capital inflow.",
+        "interpretation": "This is a valid general distinction for XRP research: market cap is not net cash inflow. It does not establish the original meaning of the user's exact phrase or prove institutional capital flows.",
+        "source_ids": [
+          "SRC-ACTUAL-CAPITAL-MARKET-CAP-EXPLANATION-2026-10-28T1711Z"
+        ],
+        "uncertainty": "Original phrase context remains unknown; use transaction flows, ETF creations/redemptions and on-chain/venue flows rather than market cap as a proxy for capital inflow."
+      },
+      {
+        "id": "ASK-COIN-IDENTITY-DISAMBIGUATION-2026-10-28T1711Z",
+        "evidence_class": "PUBLIC_LISTING_AND_PROJECT_CLAIMS",
+        "status": "MULTIPLE_CANDIDATES; XRP_LINK_UNVERIFIED",
+        "claim": "Public results distinguish an inactive/untracked CoinMarketCap exchange listing named Ask Coin from Permission.io's historical ASK Coin/Permission Coin token and current ASK rewards branding.",
+        "interpretation": "Do not merge these entities without contract-address and legal-entity evidence. No direct XRP relationship was established.",
+        "source_ids": [
+          "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
+          "SRC-ASKCOIN-NET-PARKED-DOMAIN-2026-10-28",
+          "SRC-PERMISSION-ASK-COIN-CHAINWIRE-2022-02-17",
+          "SRC-PERMISSION-AI-ASK-REWARDS-2026-10-28"
+        ],
+        "uncertainty": "The user's originating use of the exact phrase remains unknown."
+      },
+      {
+        "id": "SBIC-CHATGPT-EXACT-PHRASE-STATUS-2026-10-28T1711Z",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE_WITH_SCOPE_LIMIT",
+        "status": "CURRICULUM_MENTION_ONLY",
+        "claim": "SBIC East Japan's official June 2025 curriculum includes ChatGPT training.",
+        "interpretation": "This confirms a training-topic mention only; no partnership, exclusive relationship or direct XRP connection is established.",
+        "source_ids": [
+          "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
+          "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27"
+        ],
+        "uncertainty": "The exact phrase 'SBIC, ChatGPT SBIC' still lacks an originating context."
+      },
+      {
+        "id": "CAMILLA-STEPHENSON-IDENTITY-RECHECK-2026-10-28T1711Z",
+        "evidence_class": "PUBLIC_CHANNEL_METADATA",
+        "status": "IDENTITY_UNVERIFIED; VIDEO_INVENTORY_INCOMPLETE",
+        "claim": "YouTube search returns a crypto channel named 'Kamilah Stevenson | XRP & Stocks', while separate third-party indexing references another Kamilah channel ID.",
+        "interpretation": "Similar spelling and XRP content do not establish that either channel belongs to Camilla Stephenson. Keep candidate channels separate.",
+        "source_ids": [
+          "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+          "SRC-YT-KAMILAH-XRP-STOCKS-CHANNEL-20261028",
+          "SRC-VLING-KAMILAH-UCQUP-20261028T1310Z"
+        ],
+        "uncertainty": "No first-party identity cross-link or exhaustive official upload list was obtained."
+      },
+      {
+        "id": "XRP-QUOTE-TIMESTAMP-QUALITY-2026-10-28T1711Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "FEATURE_ADMISSION_BLOCKED",
+        "claim": "Investing.com UK displayed XRP near $1.2892, 24h volume around $1.45B and a page time label of 13:29:12 while this run's UTC capture was 17:11:09Z.",
+        "interpretation": "The displayed time label cannot be normalized to the capture's UTC timestamp from the available page context. Treat as a potentially stale or differently localized quote, not a current synchronized market observation.",
+        "source_ids": [
+          "SRC-INVESTING-XRP-UK-TIMESTAMP-2026-10-28T1711Z"
+        ],
+        "uncertainty": "Venue coverage, quote cutoff and page timestamp timezone are unknown."
       }
     ],
     "relationship_graph": [
@@ -5272,44 +5333,55 @@
         "source_ids": [
           "SRC-TRADRADAR-XRP-PERP-2026-10-28T1500Z"
         ]
+      },
+      {
+        "id": "XRP-INVESTING-SECONDARY-QUOTE-2026-10-28T1711Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-28T17:11:09Z capture; page timestamp unresolved",
+        "observation": "Investing.com UK page displayed XRP $1.2892, 24h change -0.57%, day range $1.2734-$1.2997, 24h volume $1.45B and market cap $81.84B.",
+        "interpretation": "Page time label and capture time are not reconciled; this observation is not admitted to the prediction feature store or combined with other providers.",
+        "source_ids": [
+          "SRC-INVESTING-XRP-UK-TIMESTAMP-2026-10-28T1711Z"
+        ]
       }
     ],
     "phrase_investigation": {
       "ASK Coin": {
-        "status": "MULTIPLE_CANDIDATES; XRP_LINK_UNVERIFIED",
-        "finding": "The exact phrase has at least two materially different public candidates: (1) a CoinMarketCap Ask Coin exchange listing marked inactive/untracked with no volume or reserve data, linking to askcoin.net, which redirected to a domain-profile page at access time; and (2) Permission.io's historical ASK Coin token announcement from 2022. The current Permission site now presents $ASK Rewards in a family-friendly AI platform and calls it a utility token, not an investment product. No contract-address evidence establishes continuity between the 2022 token and current rewards, and no XRP relationship was established for either candidate.",
+        "status": "MULTIPLE_CANDIDATES; REQUESTED_CONTEXT_UNRESOLVED; XRP_LINK_UNVERIFIED",
+        "finding": "Two distinct public candidates remain: the CoinMarketCap Ask Coin exchange listing is inactive/untracked and links to askcoin.net; separately, Permission.io announced an ASK Coin token listing on Gate.io in 2022 and its current site describes an ASK rewards utility. No contract-address evidence establishes that these are the same asset, and no direct XRP relationship is established.",
         "source_ids": [
           "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
           "SRC-ASKCOIN-NET-PARKED-DOMAIN-2026-10-28",
           "SRC-PERMISSION-ASK-COIN-CHAINWIRE-2022-02-17",
           "SRC-PERMISSION-AI-ASK-REWARDS-2026-10-28"
         ],
-        "last_searched_at_utc": "2026-10-28T02:19:29.076Z",
-        "next_action": "Resolve the original context/source of the phrase before choosing an entity; compare contract addresses only if the original source provides one."
+        "last_searched_at_utc": "2026-10-28T17:11:09Z",
+        "next_action": "Resolve the original source/context before choosing an entity; compare contract addresses only if the originating source provides one."
       },
       "actual capital": {
-        "status": "UNRESOLVED",
-        "finding": "Targeted exact-phrase searches with XRP and creator-name context returned no reliable original-source match. Generic finance usage is insufficient to assign a specific meaning or causal relationship.",
-        "last_searched_at_utc": "2026-10-28T02:19:29.076Z",
-        "next_action": "Find the original video, quote, document or timestamp where the phrase was used; preserve the exact wording and surrounding context."
+        "status": "GENERIC_MEANING_CANDIDATE; ORIGINAL_CONTEXT_UNRESOLVED",
+        "finding": "A generic crypto-market-cap explainer states market capitalization is price times circulating supply and does not equal actual capital inflow. This is a plausible general meaning, but it does not identify the original use of the exact phrase in the requested research thread.",
+        "last_searched_at_utc": "2026-10-28T17:11:09Z",
+        "next_action": "Locate the original quote, video, document or timestamp and preserve surrounding context before treating this as the intended meaning.",
+        "source_ids": [
+          "SRC-ACTUAL-CAPITAL-MARKET-CAP-EXPLANATION-2026-10-28T1711Z"
+        ]
       },
       "SBIC, ChatGPT SBIC": {
-        "status": "SBIC_EAST_JAPAN_IDENTITY_RESOLVED; EXACT_PHRASE_UNRESOLVED; DIRECT_XRP_LINK_NOT_ESTABLISHED",
-        "finding": "Official Japanese SBIC site identifies 東京中小企業投資育成株式会社 (Tokyo Small and Medium Business Investment & Consultation Co., Ltd.), an SME investment/growth-support organization under the 1963 law. This is distinct from SBI Holdings and SBI Ripple Asia. The exact phrase 'SBIC, ChatGPT SBIC' remains unresolved; no direct SBIC East Japan–XRP relationship is established.",
+        "status": "SBIC_EAST_JAPAN_IDENTITY_RESOLVED; CHATGPT_CURRICULUM_MENTION_CONFIRMED; EXACT_PHRASE_UNRESOLVED",
+        "finding": "SBIC East Japan's official June 2025 training curriculum includes ChatGPT, but this is a curriculum mention only. It does not prove a ChatGPT partnership, a special corporate program, or a direct XRP relationship.",
         "source_ids": [
           "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
           "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
           "SRC-SBI-CAPITAL-SBIC-2005",
-          "SRC-SBI-CAPITAL-GS-JV-2007",
-          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
-          "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T1111Z"
+          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
         ],
-        "last_searched_at_utc": "2026-10-28T11:11:00Z",
-        "next_action": "Locate the original phrase and surrounding context; keep SBIC East Japan distinct from SBI Group unless legal-entity evidence establishes a relationship."
+        "last_searched_at_utc": "2026-10-28T17:11:09Z",
+        "next_action": "Find the originating context for the exact phrase and keep SBIC East Japan distinct from SBI Group entities."
       },
       "Camilla Stephenson": {
         "status": "TWO_KAMILAH_CHANNEL_IDS_FOUND; CAMILLA_IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
-        "finding": "YouTube search surfaced 'Kamilah Stevenson | XRP & Stocks' at channel ID UCXm6KAr1WHF6UN7g5b2W7wg. A separate third-party Vling profile lists Kamilah Stevenson at UCqUPJMQdkCN6lsVLDnichPA with about 1.2K videos. These are different channel IDs; a rename, separate channels, or third-party metadata mismatch is possible. Exact-name results also identify a Camilla Stephenson in UK film location management. No first-party cross-link establishes that either channel belongs to the requested Camilla Stephenson.",
+        "finding": "A YouTube result identifies a channel as 'Kamilah Stevenson | XRP & Stocks' (channel UCXm6KAr1WHF6UN7g5b2W7wg). A separate third-party profile lists another Kamilah channel ID. No first-party cross-link connects either channel to the exact requested identity Camilla Stephenson. The public-video inventory remains incomplete.",
         "source_ids": [
           "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
           "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
@@ -5333,8 +5405,8 @@
           "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z",
           "SRC-VLING-KAMILAH-UCQUP-20261028T1310Z"
         ],
-        "last_searched_at_utc": "2026-10-28T13:10:45Z",
-        "inventory_status": "FOUR_THIRD_PARTY_INDEXED_VIDEOS_CAPTURED; NOT_EXHAUSTIVE; OFFICIAL_YOUTUBE_CHANNEL_PAGE_AND_RSS_FETCH_BLOCKED",
+        "last_searched_at_utc": "2026-10-28T17:11:09Z",
+        "inventory_status": "PARTIAL_THIRD_PARTY_INDEX; CANONICAL_IDENTITY_UNVERIFIED; NOT_EXHAUSTIVE",
         "next_action": "Resolve the canonical identity via first-party creator cross-link, then enumerate the official uploads list/feed. Preserve the two Kamilah channel IDs as separate candidate entities until resolved.",
         "candidate_channel": {
           "name_as_indexed": "Kamilah Stevenson",
@@ -5380,8 +5452,8 @@
           "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
         ]
       },
-      "last_searched_at_utc": "2026-10-28T14:10:26Z",
-      "exact_phrase_status": "ASK Coin, actual capital, and SBIC, ChatGPT SBIC remain unresolved in the requested context; targeted exact-string web searches in this run did not establish a reliable originating source."
+      "last_searched_at_utc": "2026-10-28T17:11:09Z",
+      "exact_phrase_status": "ASK Coin has multiple candidates; actual capital has a generic market-cap-vs-inflow candidate but no verified original context; SBIC ChatGPT curriculum mention is confirmed but exact phrase unresolved; Camilla Stephenson identity and exhaustive video inventory remain unverified."
     },
     "platform_capability_map": [
       {
@@ -5731,7 +5803,7 @@
       "repository": "Barrot-Agent/B-Agent",
       "main_sha": "23b30639e2631364d97a32f2213faab574c345fb",
       "main_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-      "note": "Latest main commit is a generated paper-trading-log append marked [skip ci].",
+      "note": "Main remains a generated paper-trading-log append [skip ci].",
       "pr_1261": {
         "head_sha": "aff4c1a1c37ab3fdb6493f7159284df126d0490f",
         "ci_status": "PASS",
@@ -5742,13 +5814,13 @@
         "gate_run_id": 40731998907
       },
       "research_index_previous_head": {
-        "sha": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
+        "sha": "52f339c071b0bd2f4cf3810e135a309e252c16bc",
         "ci_status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 6.08,
-        "ci_run_id": 40732780337,
+        "duration_seconds": 4.3,
+        "ci_run_id": 40733146260,
         "gate_status": "PASS",
-        "gate_run_id": 40732780097
+        "gate_run_id": 40733145934
       }
     },
     "market_data_quality_findings": [
@@ -6128,6 +6200,18 @@
           "SRC-COINGECKO-XRP-MARKET-2026-10-28T1615Z",
           "SRC-COINMARKETCAP-XRP-MARKET-2026-10-28T1615Z"
         ]
+      },
+      {
+        "id": "XRP-INVESTING-QUOTE-TIMESTAMP-UNRESOLVED-2026-10-28T1711Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "FEATURE_ADMISSION_BLOCKED",
+        "finding": "Investing.com UK page displays a time label that cannot be normalized to UTC from the captured page context; other provider spot/volume/OI figures also use differing coverage and cutoffs.",
+        "consequence": "Do not use this quote for synchronized feature ingestion, price comparison or forecast scoring until the raw timestamp and venue universe are resolved.",
+        "source_ids": [
+          "SRC-INVESTING-XRP-UK-TIMESTAMP-2026-10-28T1711Z",
+          "SRC-COINGECKO-XRP-MARKET-2026-10-28T1615Z",
+          "SRC-COINMARKETCAP-XRP-MARKET-2026-10-28T1615Z"
+        ]
       }
     ],
     "mission_priority": {
@@ -6155,30 +6239,30 @@
         "Databricks"
       ],
       "forecast_status": "NOT_ISSUED",
-      "as_of_utc": "2026-10-28T17:09:12Z",
+      "as_of_utc": "2026-10-28T17:11:09Z",
       "primary": "XRP intelligence and prediction-engine mastery",
       "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
       "current_forecast_status": "NOT_ISSUED",
-      "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z.json",
-      "next_action": "Record the exact-head CI/gate evidence for PR #1261 and prior index f365a6 in the durable ledger; verify the new 17:09 snapshot/index; reconcile the existing paper-trading product identity before any approval; keep research branch preserved and do not merge as-is."
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1711Z.json",
+      "next_action": "Verify the new snapshot/index exact-head CI and gate; keep market features blocked until timestamp/venue normalization; review PR #1261 without merging and require a separate approved reconciliation of the existing paper position; continue original-context searches for ASK Coin, actual capital and SBIC/ChatGPT."
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1709Z-CORRECTED",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z-correction.json",
-    "current_research_head_before_ledger_update": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1712Z-CORRECTED2",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1712Z-correction2.json",
+    "current_research_head_before_ledger_update": "52f339c071b0bd2f4cf3810e135a309e252c16bc",
     "current_research_checks": {
       "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
-      "previous_index_head": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
+      "previous_index_head": "52f339c071b0bd2f4cf3810e135a309e252c16bc",
       "previous_index_ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 6.08,
-        "run_id": 40732780337,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780337"
+        "duration_seconds": 4.3,
+        "run_id": 40733146260,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733146260"
       },
       "previous_index_gate": {
         "status": "PASS",
-        "run_id": 40732780097,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780097"
+        "run_id": 40733145934,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733145934"
       },
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
@@ -7516,8 +7600,8 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
-    "correction_note": "The preserved 2026-10-28T1709Z.json contains a malformed repository_ci.pr_1261.head_sha field that combines the SHA and status text. This correction snapshot keeps head SHA, CI result, and gate result as separate fields. The earlier file is retained unchanged.",
+    "current_research_head_this_run": "52f339c071b0bd2f4cf3810e135a309e252c16bc",
+    "correction_note": "This second correction fixes one remaining source-ID typo in the prior correction snapshot: the canonical Vling source ID is SRC-VLING-KAMILAH-UCQUP-20261028T1310Z. Both earlier snapshots remain unchanged and are retained for audit history.",
     "current_pr_1246_state": {
       "pr": 1246,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1246",
@@ -7635,7 +7719,9 @@
       "2026-10-28T1658Z: current main paper-trading state has a nonzero simulated position but null position_product. PR #1261 proposes a fail-closed guard; the existing state was not modified and requires evidence-backed manual reconciliation before the fix is merged.",
       "2026-10-28T1658Z: latest visible TradRadar derivatives observation is as of 15:00 UTC, about two hours old at capture; no synchronized spot/derivatives/ETF/chain feature set was admitted.",
       "2026-10-28T1658Z: Coinbase Q3 2026 results are scheduled for Oct 29 after market close and are not yet available at this capture.",
-      "2026-10-28T1709Z: research ledger branch is 49 commits ahead and 36 behind current main. Preserve it and do not merge as-is; any carry-forward must be a reviewed fresh-main successor."
+      "2026-10-28T1709Z: research ledger branch is 49 commits ahead and 36 behind current main. Preserve it and do not merge as-is; any carry-forward must be a reviewed fresh-main successor.",
+      "2026-10-28T1711Z: generic market-cap explanations clarify that market cap is not actual capital inflow, but the original context of the exact phrase 'actual capital' remains unresolved.",
+      "2026-10-28T1711Z: an Investing.com XRP quote has an unnormalized page timestamp and remains excluded from feature admission."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -8007,7 +8093,7 @@
       "merge_performed": false,
       "action": "Preserve the branch and historical snapshots; do not merge as-is."
     },
-    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z.json",
+    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1712Z-correction.json",
     "repository_security_audit": {
       "observed_at_utc": "2026-10-28T16:08:14.181Z",
       "main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
@@ -8135,12 +8221,12 @@
       "new_market_observations": 0,
       "latest_market_observation_id": "XRP-PERP-AGGREGATE-2026-10-28T1200Z",
       "forecast_status": "NOT_ISSUED",
-      "source_records": 439,
-      "run_updates": 86,
-      "limitations": 80,
+      "source_records": 445,
+      "run_updates": 89,
+      "limitations": 82,
       "relationship_edges": 101,
       "competing_hypotheses": 63,
-      "market_observations": 47
+      "market_observations": 48
     },
     "current_pr_1260_state": {
       "pr": 1260,
@@ -8176,7 +8262,7 @@
       "status": "OPEN_DRAFT_UNMERGED; exact-head CI 150 tests/5.78s PASS; fail-closed gate PASS; one generated paper-trading-log commit behind current main.",
       "current_main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76"
     },
-    "current_open_pr_count_status": "GitHub Search API returned 91 open PR results at 2026-10-28T17:09:12Z; current_open_prs is a curated subset, not a complete listing.",
+    "current_open_pr_count_status": "91 open PRs returned by GitHub Search API at 2026-10-28T17:09:12Z; current_open_prs remains a curated subset.",
     "current_pr_1261_state": {
       "pr": 1261,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1261",
@@ -8211,15 +8297,15 @@
       },
       "mergeable": true
     },
-    "snapshot_blob_sha": "87a3a067d2ac164cfb314677bc7b8a755e4682c7",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T17:09:44Z",
-    "snapshot_commit_sha": "09a2d2d41c24d9c191e815ae29127507a352904c",
+    "snapshot_blob_sha": "67be40061686cef89a9089c65cd35d173cee0e5d",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T17:12:57Z",
+    "snapshot_commit_sha": "141f41a7f05adcf4d8098e725608eed8d7812eb8",
     "post_snapshot_verification": {
       "status": "PENDING_EXACT_HEAD_CI_AND_GATE",
       "snapshot_blob_readback_ok": true,
       "source_ids_unique": true,
       "missing_source_refs": 0,
-      "note": "Correction snapshot JSON parsed after write and blob SHA read back. New index commit requires its own exact-head CI and fail-closed gate."
+      "note": "Correction2 snapshot parsed and blob SHA read back; new index commit requires exact-head CI and fail-closed gate."
     }
   },
   "sources": [
@@ -11774,6 +11860,54 @@
       "title": "Correction snapshot supersedes malformed verification field in prior snapshot",
       "accessed_at_utc": "2026-10-28T17:09:44Z",
       "note": "The preserved 1709Z snapshot has a malformed repository_ci.pr_1261.head_sha string combining the SHA and status text. The 1709Z-correction snapshot stores head SHA, CI result and gate result separately. The original file was not overwritten."
+    },
+    {
+      "id": "SRC-ACTUAL-CAPITAL-MARKET-CAP-EXPLANATION-2026-10-28T1711Z",
+      "evidence_class": "SECONDARY_EXPLANATORY",
+      "url": "https://blog.zendwallet.com/market-capitalization/",
+      "title": "Crypto market capitalization versus actual capital inflow",
+      "accessed_at_utc": "2026-10-28T17:11:09Z",
+      "note": "Generic explainer states market cap is price multiplied by circulating supply and is not actual capital inflow. Plausible general meaning for the phrase, not proof of the original context in the user's research thread."
+    },
+    {
+      "id": "SRC-INVESTING-XRP-UK-TIMESTAMP-2026-10-28T1711Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://uk.investing.com/crypto/xrp",
+      "title": "Investing.com UK XRP quote with unresolved page timestamp",
+      "accessed_at_utc": "2026-10-28T17:11:09Z",
+      "note": "Page displayed XRP $1.2892, -0.57% daily change, $1.2734-$1.2997 day range, $1.45B 24h volume and $81.84B market cap. Visible time label 13:29:12 could not be normalized to UTC at 17:11:09Z capture; exclude from synchronized feature store."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1711Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733146260",
+      "title": "Research index 52f339c CI passed",
+      "accessed_at_utc": "2026-10-28T17:11:09Z",
+      "note": "Exact-head CI completed successfully on research index commit 52f339c071b0bd2f4cf3810e135a309e252c16bc; decoded job log shows 145 tests passed in 4.30 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1711Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733145934",
+      "title": "Research index 52f339c fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T17:11:09Z",
+      "note": "Fail-closed gate completed successfully for research index commit 52f339c071b0bd2f4cf3810e135a309e252c16bc. The new snapshot/index commit requires its own checks."
+    },
+    {
+      "id": "SRC-GH-SNAPSHOT-CORRECTION-2026-10-28T1712Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-fresh-main-20261028-1217z/data/xrp_intelligence/snapshots/2026-10-28T1711Z.json",
+      "title": "Correction snapshot supersedes first exact-phrase snapshot",
+      "accessed_at_utc": "2026-10-28T17:12:23Z",
+      "note": "The preserved 1711Z snapshot's new Camilla/Kamilah finding used two source IDs not present in the catalog. A correction snapshot fixed one spelling; a second correction was needed for the Vling source ID. Original files remain unchanged."
+    },
+    {
+      "id": "SRC-GH-SNAPSHOT-CORRECTION2-2026-10-28T1712Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-fresh-main-20261028-1217z/data/xrp_intelligence/snapshots/2026-10-28T1712Z-correction2.json",
+      "title": "Second correction snapshot uses canonical Vling source ID",
+      "accessed_at_utc": "2026-10-28T17:12:57Z",
+      "note": "Corrected finding references SRC-VLING-KAMILAH-UCQUP-20261028T1310Z, the exact source ID already present in the ledger. Earlier 1711Z and correction snapshots remain unchanged."
     }
   ],
   "limitations": [
@@ -11856,7 +11990,9 @@
     "2026-10-28T1658Z: current main paper-trading state has a nonzero simulated position but null position_product. PR #1261 proposes a fail-closed guard; the existing state was not modified and requires evidence-backed manual reconciliation before the fix is merged.",
     "2026-10-28T1658Z: latest visible TradRadar derivatives observation is as of 15:00 UTC, about two hours old at capture; no synchronized spot/derivatives/ETF/chain feature set was admitted.",
     "2026-10-28T1658Z: Coinbase Q3 2026 results are scheduled for Oct 29 after market close and are not yet available at this capture.",
-    "2026-10-28T1709Z: research branch remains 49 commits ahead and 36 behind main. Preserve the branch; do not merge as-is. Any carry-forward must be a reviewed fresh-main successor."
+    "2026-10-28T1709Z: research branch remains 49 commits ahead and 36 behind main. Preserve the branch; do not merge as-is. Any carry-forward must be a reviewed fresh-main successor.",
+    "2026-10-28T1711Z: generic market-cap explanations clarify market cap is not actual capital inflow, but the originating context of the exact phrase 'actual capital' remains unresolved.",
+    "2026-10-28T1711Z: Investing.com UK XRP quote carries a page timestamp that could not be normalized to UTC; it remains excluded from synchronized feature admission."
   ],
   "run_updates": [
     {
@@ -13877,15 +14013,77 @@
         "main_modified_by_this_run": false,
         "merge_performed": false
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T17:11:09Z",
+      "update_type": "EXACT_PHRASE_RESEARCH_AND_MARKET_TIMESTAMP_QUALITY",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1711Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1711Z.json",
+      "details": "Refined ASK Coin candidate separation, confirmed only a ChatGPT curriculum mention for SBIC East Japan, found a generic market-cap-versus-capital-inflow explanation but no original context for 'actual capital', and retained the unresolved Camilla/Kamilah identity mismatch. Added a timestamp-ambiguous XRP quote and blocked it from features. Prior index 52f339 passed 145 tests in 4.30s and its gate; PR #1261 passed 153 tests in 6.10s and its gate.",
+      "source_ids": [
+        "SRC-ACTUAL-CAPITAL-MARKET-CAP-EXPLANATION-2026-10-28T1711Z",
+        "SRC-INVESTING-XRP-UK-TIMESTAMP-2026-10-28T1711Z",
+        "SRC-GH-LEDGER-CI-2026-10-28T1711Z",
+        "SRC-GH-LEDGER-GATE-2026-10-28T1711Z",
+        "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
+        "SRC-PERMISSION-ASK-COIN-CHAINWIRE-2022-02-17",
+        "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
+        "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+        "SRC-GH-PR-1261-CI-2026-10-28T1709Z",
+        "SRC-GH-PR-1261-GATE-2026-10-28T1709Z"
+      ],
+      "validation": {
+        "snapshot_json_parse": "PASS",
+        "previous_index_ci": "PASS_145_TESTS_4.30S",
+        "previous_index_gate": "PASS",
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "new_index_gate": "PENDING_AFTER_WRITE",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T17:12:23Z",
+      "update_type": "SNAPSHOT_SOURCE_ID_CORRECTION",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1712Z-CORRECTED",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1712Z-correction.json",
+      "details": "Created a correction snapshot after detecting misspelled source IDs in the preserved 1711Z snapshot's new Camilla/Kamilah finding. One source spelling was corrected, but the first correction still had a Vling source-ID typo; a second correction follows. Both earlier files are preserved.",
+      "source_ids": [
+        "SRC-GH-SNAPSHOT-CORRECTION-2026-10-28T1712Z"
+      ],
+      "validation": {
+        "correction_snapshot_json_parse": "PASS",
+        "original_snapshot_preserved": true,
+        "main_modified_by_this_run": false,
+        "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T17:12:57Z",
+      "update_type": "SNAPSHOT_SOURCE_ID_CORRECTION_2",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1712Z-CORRECTED2",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1712Z-correction2.json",
+      "details": "Second correction fixes the remaining Vling source ID to the canonical existing ID SRC-VLING-KAMILAH-UCQUP-20261028T1310Z. The 1711Z and first correction snapshots remain unchanged.",
+      "source_ids": [
+        "SRC-GH-SNAPSHOT-CORRECTION2-2026-10-28T1712Z"
+      ],
+      "validation": {
+        "correction_snapshot_json_parse": "PASS",
+        "original_snapshots_preserved": true,
+        "missing_source_refs": 0,
+        "main_modified_by_this_run": false,
+        "merge_performed": false
+      }
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-28T17:09:44Z",
+    "as_of_utc": "2026-10-28T17:12:57Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
-    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z-correction.json",
-    "next_action": "Verify the new index commit's exact-head CI and gate; preserve the original 1709Z snapshot and correction note; reconcile the current paper-trading product identity before any PR approval; do not merge the diverged research branch."
+    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1712Z-correction2.json",
+    "next_action": "Verify exact-head CI/gate for the current index; keep timestamp-ambiguous XRP quotes out of features; review PR #1261 without merging until the existing paper position is reconciled; continue exact-phrase and creator-identity research."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -14104,25 +14302,25 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "09a2d2d41c24d9c191e815ae29127507a352904c",
-  "current_research_head_this_run": "09a2d2d41c24d9c191e815ae29127507a352904c",
+  "current_research_head_before_ledger_update": "141f41a7f05adcf4d8098e725608eed8d7812eb8",
+  "current_research_head_this_run": "141f41a7f05adcf4d8098e725608eed8d7812eb8",
   "current_research_checks": {
-    "status": "PRIOR_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_READBACK_OK; NEW_INDEX_CI_AND_GATE_PENDING",
-    "previous_index_head": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
+    "status": "PREVIOUS_INDEX_HEAD_VERIFIED; CORRECTION2_SNAPSHOT_READBACK_OK; NEW_INDEX_CI_AND_GATE_PENDING",
+    "previous_index_head": "52f339c071b0bd2f4cf3810e135a309e252c16bc",
     "previous_index_ci": {
       "status": "PASS",
       "tests_passed": 145,
-      "duration_seconds": 6.08,
-      "run_id": 40732780337,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780337"
+      "duration_seconds": 4.3,
+      "run_id": 40733146260,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733146260"
     },
     "previous_index_gate": {
       "status": "PASS",
-      "run_id": 40732780097,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780097"
+      "run_id": 40733145934,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733145934"
     },
-    "snapshot_commit_sha": "09a2d2d41c24d9c191e815ae29127507a352904c",
-    "snapshot_blob_sha": "87a3a067d2ac164cfb314677bc7b8a755e4682c7",
+    "snapshot_commit_sha": "141f41a7f05adcf4d8098e725608eed8d7812eb8",
+    "snapshot_blob_sha": "67be40061686cef89a9089c65cd35d173cee0e5d",
     "new_index_ci": "PENDING_AFTER_WRITE",
     "new_index_gate": "PENDING_AFTER_WRITE"
   }
