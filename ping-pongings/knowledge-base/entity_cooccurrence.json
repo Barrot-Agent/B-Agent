@@ -1,9 +1,9 @@
 {
   "generated_from": {
     "xrp_entries": 1186,
-    "btc_entries": 1216
+    "btc_entries": 1217
   },
-  "unique_pairs_found": 3183,
+  "unique_pairs_found": 3184,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -576,6 +576,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "SEC",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "ETH",
       "cooccurrence_count": 9,
@@ -751,21 +766,6 @@
         },
         {
           "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "SEC",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -1326,6 +1326,21 @@
       ]
     },
     {
+      "entity_a": "SEC",
+      "entity_b": "U.S. Securities and Exchange Commission",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        },
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Comoros",
       "entity_b": "MEXC",
       "cooccurrence_count": 5,
@@ -1712,21 +1727,6 @@
         {
           "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "SEC",
-      "entity_b": "U.S. Securities and Exchange Commission",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
-          "asset": "XRP"
-        },
-        {
-          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
-          "asset": "XRP"
         }
       ]
     },
@@ -37538,6 +37538,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "U.S. Securities and Exchange Commission",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC\u2019s Crypto Custody Proposal Could Change How Funds Hold Digital Assets",
           "asset": "BTC"
         }
       ]
