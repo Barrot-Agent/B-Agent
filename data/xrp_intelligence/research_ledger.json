@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T02:19:29.076Z",
+    "captured_at_utc": "2026-10-28T02:22:59.606Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
@@ -40,8 +40,8 @@
           "title": "Research: carry XRP intelligence ledger onto fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "f6ff965a2254779f63f0c6726ca786ae6bc31d55",
-          "status": "Research ledger updated in this run; prior exact-head CI/gate passed; new commit requires its own CI."
+          "head_sha": "2386636997c5aa2312f4d0e9ec2e1ce39da989f5",
+          "status": "Exact-head CI PASS (146 tests, 5.96s); gate PASS; branch is behind/moving relative to main and currently not mergeable."
         },
         {
           "number": 1228,
@@ -96,6 +96,15 @@
           "draft": true,
           "head_sha": "ec7a70162cc09ba0ac2450a580b2dab67cd2dbf4",
           "status": "Draft; older base; broad signal-integrity and fixed-horizon evaluation fix remains unmerged."
+        },
+        {
+          "number": 1237,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+          "title": "Safety: make scheduled signal writers read-only on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
+          "status": "Exact-head CI PASS (146 tests, 5.84s); fail-closed gate PASS; unmerged; artifacts expire after 30 days."
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -200,6 +209,29 @@
         },
         "main_modified_by_this_run": false,
         "merge_performed": false
+      },
+      "current_pr_1237_state": {
+        "pr": 1237,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "mergeable": true,
+        "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+        "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
+        "ci": {
+          "status": "PASS",
+          "tests_passed": 146,
+          "duration_seconds": 5.84,
+          "run_id": 40620378639,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620378639"
+        },
+        "gate": {
+          "status": "PASS",
+          "run_id": 40620378674,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620378674"
+        },
+        "limitation": "30-day run artifacts are not a durable feature store; reviewed promotion/persistent snapshot design remains required.",
+        "main_modified_by_this_run": false,
+        "merge_performed": false
       }
     },
     "critical_engine_findings": [
@@ -283,7 +315,7 @@
         "id": "WORKFLOW-AUTO-PUSH-005",
         "evidence_class": "REPOSITORY_OBSERVATION",
         "severity": "high",
-        "status": "CURRENT_MAIN_HAS_AUTOMATED_MAIN_WRITE_PATH; SAFE_PERSISTENCE_REDESIGN_REQUIRED",
+        "status": "DIRECT_MAIN_WRITE_PATH_CONFIRMED; PR1237_ARTIFACT_ONLY_FIX_VERIFIED_IN_DRAFT; DURABLE_PERSISTENCE_UNSOLVED",
         "files": [
           {
             "path": ".github/workflows/knowledge-signal-cycle.yml",
@@ -305,13 +337,20 @@
           "historical forecast/outcome rows immutable",
           "provider failure produces UNAVAILABLE and NOT_ISSUED",
           "manual reviewed promotion is reproducible"
+        ],
+        "latest_candidate_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+        "latest_candidate_status": "EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; UNMERGED",
+        "source_ids": [
+          "SRC-REPO-PR1237-HEAD-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-CI-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-GATE-2026-10-28T0220Z"
         ]
       },
       {
         "id": "WORKFLOW-PUSH-RACE-006",
         "evidence_class": "REPOSITORY_OBSERVATION",
         "severity": "critical",
-        "status": "DIRECT_MAIN_WRITE_PATHS_CONFIRMED; NON_FAST_FORWARD_FAILURE_REPRODUCED_IN_LATEST_RUN",
+        "status": "DIRECT_MAIN_WRITE_PATHS_CONFIRMED; PR1237_COVERS_TWO_SIGNAL_WORKFLOWS_ONLY; OTHER_WRITERS_AND_MERGE_QUEUE_REMAIN",
         "files": [
           {
             "path": ".github/workflows/knowledge-signal-cycle.yml",
@@ -329,7 +368,14 @@
         "finding": "Main still has scheduled data workflows with contents:write and git push to main, plus a manually dispatchable merge queue with contents:write and pull-requests:write that can update branches and merge PRs. A fresh Barrot Operations Pipeline run failed on a non-fast-forward push. The failed push is consistent with a stale local ref or concurrent writer; a concurrent-run collision is plausible but not proven.",
         "consequence": "Mutable signal/history writes can race, fail or publish unreviewed generated data; the merge queue remains a separate consequential mutation path.",
         "proposed_fix": "Build an idempotent append-only research-data branch or reviewed promotion path with snapshot hashes and provenance, then remove direct generated-data pushes to main; keep merge queue read-only until effective approval/check gates are verified.",
-        "verification": "Latest main Barrot Operations Pipeline run 40583993172 failed with a non-fast-forward push. A concurrent writer remains a hypothesis, not a proven cause. Main still contains direct-write workflows; no changes were merged by this run."
+        "verification": "Latest main Barrot Operations Pipeline run 40583993172 failed with a non-fast-forward push. A concurrent writer remains a hypothesis, not a proven cause. Main still contains direct-write workflows; no changes were merged by this run.",
+        "latest_candidate_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+        "latest_candidate_status": "EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; UNMERGED",
+        "source_ids": [
+          "SRC-REPO-PR1237-HEAD-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-CI-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-GATE-2026-10-28T0220Z"
+        ]
       },
       {
         "id": "MAIN-GENERATED-DATA-CONTINUES-20261027",
@@ -490,6 +536,22 @@
           "SRC-REPO-PR1236-TESTS-2026-10-28T0214Z",
           "SRC-REPO-PR1236-CI-2026-10-28T0214Z",
           "SRC-REPO-PR1236-GATE-2026-10-28T0214Z"
+        ]
+      },
+      {
+        "id": "SCHEDULED-WRITER-ARTIFACT-PR1237-VERIFIED-2026-10-28",
+        "evidence_class": "REPOSITORY_CI_VERIFICATION",
+        "severity": "HIGH",
+        "status": "EXACT_HEAD_CI_AND_GATE_PASS; OPEN_DRAFT_UNMERGED",
+        "finding": "Fresh-main PR #1237 changes the hourly Knowledge Signal Cycle and manual signal-accuracy workflow from contents:write/direct git push to read-only permissions and run-scoped artifacts. Exact head f86dc2e passed 146 tests in 5.84 seconds and the fail-closed gate.",
+        "limitation": "This only covers two workflows. Financial-data-refresh and the mutation-capable merge queue remain separate write paths; 30-day artifacts are not a durable feature store or reviewed promotion system.",
+        "proposed_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+        "source_ids": [
+          "SRC-REPO-MAIN-KNOWLEDGE-SIGNAL-WRITER-2026-10-28",
+          "SRC-REPO-MAIN-ACCURACY-WRITER-2026-10-28",
+          "SRC-REPO-PR1237-HEAD-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-CI-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-GATE-2026-10-28T0220Z"
         ]
       }
     ],
@@ -924,6 +986,20 @@
           "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26"
         ],
         "uncertainty": "No claim of exhaustive coverage or identity equivalence is made."
+      },
+      {
+        "id": "SCHEDULED-WRITER-ARTIFACT-PR1237-VERIFIED-2026-10-28",
+        "evidence_class": "REPOSITORY_CI_VERIFICATION",
+        "status": "EXACT_HEAD_CI_AND_GATE_PASS; UNMERGED",
+        "claim": "PR #1237 is a fresh-main candidate that removes direct main writes from two signal workflows and uploads outputs as run-scoped artifacts. Exact-head CI passed 146 tests, including the read-only/artifact regression test; fail-closed gate passed.",
+        "source_ids": [
+          "SRC-REPO-MAIN-KNOWLEDGE-SIGNAL-WRITER-2026-10-28",
+          "SRC-REPO-MAIN-ACCURACY-WRITER-2026-10-28",
+          "SRC-REPO-PR1237-HEAD-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-CI-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-GATE-2026-10-28T0220Z"
+        ],
+        "uncertainty": "PR is draft/unmerged; other direct-write workflows remain, and artifacts expire after 30 days."
       }
     ],
     "relationship_graph": [
@@ -2285,7 +2361,10 @@
       "Continue the exact phrase and canonical Camilla Stephenson channel investigations; do not claim exhaustive video coverage until the identity is verified.",
       "Resolve the original context of ASK Coin before deciding whether it refers to the inactive Ask Coin exchange listing, Permission.io's historical ASK token, or Permission.ai's current $ASK rewards.",
       "Find the original occurrence of 'actual capital' and 'SBIC, ChatGPT SBIC'; do not assign a meaning without source context.",
-      "Verify Camilla Stephenson's canonical channel through first-party cross-links before compiling an all-public-videos inventory; keep the Kamilah Stevenson channel as an unverified candidate."
+      "Verify Camilla Stephenson's canonical channel through first-party cross-links before compiling an all-public-videos inventory; keep the Kamilah Stevenson channel as an unverified candidate.",
+      "Review PR #1237 but do not merge without approval; it covers two workflows only and run artifacts expire after 30 days.",
+      "Design a durable append-only research-data branch or immutable snapshot store with provenance, idempotency, immutable forecast/outcome rows and explicit reviewed promotion before removing all persistence paths.",
+      "Audit financial-data-refresh.yml and merge-queue.yml separately; PR #1237 does not disable their write permissions."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -2474,7 +2553,7 @@
         "state": "open_draft_unmerged",
         "note": "Exact-head CI and fail-closed gate passed. No merge or deployment occurred."
       },
-      "as_of_utc": "2026-10-28T02:17:26.954Z",
+      "as_of_utc": "2026-10-28T02:22:59.606Z",
       "main_head_status": "LATEST_MAIN_COMMIT_DATA_ONLY; EXACT_HEAD_CODE_CI_NOT_CHECKED",
       "signal_summary_failure": {
         "run_id": 40611307868,
@@ -2499,13 +2578,16 @@
         "source_id": "SRC-GH-MAIN-DELTA-2026-10-28T0105Z"
       },
       "research_pr_1227": {
-        "head_sha": "e17b07d968732f5844927cef03f312669b94cfbf",
+        "head_sha": "2386636997c5aa2312f4d0e9ec2e1ce39da989f5",
         "tests": "PASS",
+        "tests_passed": 146,
+        "duration_seconds": 5.96,
+        "ci_run_id": 40620265089,
+        "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620265089",
         "gate": "PASS",
-        "draft": true,
-        "merged": false,
-        "test_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923515",
-        "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612923584"
+        "gate_run_id": 40620265146,
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620265146",
+        "state": "OPEN_DRAFT; CURRENTLY_NOT_MERGEABLE"
       },
       "signal_summary_pr_1230": {
         "head_sha": "6a11fc8f2eb335fa7c5b26e2cb31f1065e372622",
@@ -2550,6 +2632,31 @@
         "corrected_head": "0937a9ec4d6e95bd606303f1de4ac20602614566",
         "corrected_run_test_count": 151,
         "status": "CORRECTED_AND_EXACT_HEAD_VERIFIED_IN_DRAFT_PR"
+      },
+      "signal_writer_artifact_pr_1237": {
+        "pr": 1237,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+        "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
+        "tests": "PASS",
+        "tests_passed": 146,
+        "duration_seconds": 5.84,
+        "ci_run_id": 40620378639,
+        "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620378639",
+        "gate": "PASS",
+        "gate_run_id": 40620378674,
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620378674",
+        "covers": [
+          ".github/workflows/knowledge-signal-cycle.yml",
+          ".github/workflows/check-signal-accuracy.yml"
+        ],
+        "not_covers": [
+          ".github/workflows/financial-data-refresh.yml",
+          ".github/workflows/merge-queue.yml"
+        ],
+        "durable_store": "NOT_IMPLEMENTED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false
       }
     },
     "market_data_quality_findings": [
@@ -2682,19 +2789,21 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-ASKCOIN-SBIC-CHATGPT-AND-CREATOR-IDENTITY-2026-10-28T0219Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0219Z.json",
-    "current_research_head_before_ledger_update": "f6ff965a2254779f63f0c6726ca786ae6bc31d55",
+    "snapshot_id": "XRP-SCHEDULED-WRITER-SAFETY-PR1237-2026-10-28T0222Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0222Z.json",
+    "current_research_head_before_ledger_update": "2386636997c5aa2312f4d0e9ec2e1ce39da989f5",
     "current_research_checks": {
       "tests": "PASS",
+      "tests_passed": 146,
+      "duration_seconds": 5.96,
       "gate": "PASS",
-      "as_of_utc": "2026-10-28T02:08:00Z",
-      "validated_head_sha": "f6ff965a2254779f63f0c6726ca786ae6bc31d55",
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613254431",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613254459",
-      "note": "These checks validate the previous research branch head f6ff965a2254779f63f0c6726ca786ae6bc31d55. The new snapshot and ledger commit in this run requires its own exact-head CI."
+      "validated_head_sha": "2386636997c5aa2312f4d0e9ec2e1ce39da989f5",
+      "as_of_utc": "2026-10-28T02:22:59.606Z",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620265089",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620265146",
+      "note": "These checks validate the prior research branch head. The new snapshot/ledger commit in this run requires its own exact-head CI."
     },
-    "current_research_head_before_final_verification_record": "f6ff965a2254779f63f0c6726ca786ae6bc31d55",
+    "current_research_head_before_final_verification_record": "2386636997c5aa2312f4d0e9ec2e1ce39da989f5",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -3018,9 +3127,23 @@
           "SRC-REPO-PR1236-GATE-2026-10-28T0214Z"
         ],
         "impact_status": "FIX_VERIFIED_IN_DRAFT_PR; MAIN_UNCHANGED"
+      },
+      {
+        "event_id": "EVT-PR1237-ARTIFACT-WRITER-FIX-2026-10-28T0220Z",
+        "event_time_utc": "2026-10-28T02:20:47Z",
+        "captured_at_utc": "2026-10-28T02:22:59.606Z",
+        "entity": "Barrot-Agent/B-Agent PR #1237",
+        "event": "Fresh-main artifact-only fix for the scheduled knowledge-signal and signal-accuracy workflows passed 146 tests and the fail-closed gate.",
+        "evidence_class": "REPOSITORY_CI_VERIFICATION",
+        "source_ids": [
+          "SRC-REPO-PR1237-HEAD-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-CI-2026-10-28T0220Z",
+          "SRC-REPO-PR1237-GATE-2026-10-28T0220Z"
+        ],
+        "impact_status": "FIX_VERIFIED_IN_DRAFT_PR; MAIN_UNCHANGED; DURABLE_PROMOTION_STILL_REQUIRED"
       }
     ],
-    "snapshot_blob_sha": "5b598d207100fa50abccfb2b1449695de50b39f4"
+    "snapshot_blob_sha": "7a3296d6b3c9d024a7d770c9e55cebfef3658ad8"
   },
   "sources": [
     {
@@ -3956,6 +4079,62 @@
       "title": "SBIC East Japan generative AI and machine-learning training course",
       "accessed_at_utc": "2026-10-28T02:19:29.076Z",
       "note": "Official SBIC East Japan course page for June 12–13, 2025 lists ChatGPT in a generative-AI training curriculum for investee companies. This is a plausible contextual association for the words SBIC and ChatGPT, but does not prove the user's intended phrase and establishes no XRP relationship."
+    },
+    {
+      "id": "SRC-REPO-MAIN-KNOWLEDGE-SIGNAL-WRITER-2026-10-28",
+      "evidence_class": "REPOSITORY_WORKFLOW_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/knowledge-signal-cycle.yml",
+      "title": "Main hourly Knowledge Signal Cycle workflow",
+      "accessed_at_utc": "2026-10-28T02:22:59.606Z",
+      "note": "Main blob d6def0741028f313cc6f46d1ef6f0d0be7269edc declares contents:write and stages knowledge-base log/config plus web/latest_signal.json and web/signal_history.jsonl, then commits and pushes directly to main."
+    },
+    {
+      "id": "SRC-REPO-MAIN-ACCURACY-WRITER-2026-10-28",
+      "evidence_class": "REPOSITORY_WORKFLOW_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/check-signal-accuracy.yml",
+      "title": "Main signal-accuracy workflow",
+      "accessed_at_utc": "2026-10-28T02:22:59.606Z",
+      "note": "Main blob 014806e842a14b3961c4b80f9c4a6e855da3f65e declares contents:write and commits/pushes web/signal_history.jsonl and web/signal_accuracy.json when manually run."
+    },
+    {
+      "id": "SRC-REPO-PR1237-HEAD-2026-10-28T0220Z",
+      "evidence_class": "REPOSITORY_PULL_REQUEST_STATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+      "title": "Fresh-main scheduled signal-writer artifact-only PR",
+      "accessed_at_utc": "2026-10-28T02:22:59.606Z",
+      "note": "PR #1237 is open, draft, unmerged and mergeable at observed state; base main db114efe6b70a6a0cceb25f9eadabf5299f89824, head f86dc2e6069a4b1e22570cbb184c92178631d501. Changes two signal workflows to contents:read, removes direct git commit/push and uploads run-scoped artifacts; does not provide permanent storage."
+    },
+    {
+      "id": "SRC-REPO-PR1237-CI-2026-10-28T0220Z",
+      "evidence_class": "EXACT_HEAD_CI_TEST_EVIDENCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620378639",
+      "title": "PR #1237 exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T02:22:59.606Z",
+      "note": "Head f86dc2e6069a4b1e22570cbb184c92178631d501 passed 146 tests in 5.84 seconds; tests/test_v3_scripts.py::test_scheduled_signal_workflows_are_read_only_and_artifact_based passed."
+    },
+    {
+      "id": "SRC-REPO-PR1237-GATE-2026-10-28T0220Z",
+      "evidence_class": "EXACT_HEAD_FAIL_CLOSED_GATE_PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620378674",
+      "title": "PR #1237 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T02:22:59.606Z",
+      "note": "Fail-closed gate succeeded for exact head f86dc2e6069a4b1e22570cbb184c92178631d501. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-REPO-PR1227-CI-2026-10-28T0220Z",
+      "evidence_class": "EXACT_HEAD_CI_TEST_EVIDENCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620265089",
+      "title": "Research ledger PR #1227 exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T02:22:59.606Z",
+      "note": "Research branch head 2386636997c5aa2312f4d0e9ec2e1ce39da989f5 passed 146 tests in 5.96 seconds, including the platform evidence schema contract test."
+    },
+    {
+      "id": "SRC-REPO-PR1227-GATE-2026-10-28T0220Z",
+      "evidence_class": "EXACT_HEAD_FAIL_CLOSED_GATE_PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40620265146",
+      "title": "Research ledger PR #1227 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T02:22:59.606Z",
+      "note": "Fail-closed gate succeeded for research branch head 2386636997c5aa2312f4d0e9ec2e1ce39da989f5. The branch remains draft; GitHub currently reports it not mergeable against the moving main base."
     }
   ],
   "limitations": [
@@ -3972,7 +4151,9 @@
     "PR #1230's nominal fallback test file did not define tests; the fresh-main successor PR #1236 corrects this and has exact-head CI/gate evidence, but remains unmerged.",
     "ASK Coin remains ambiguous between an inactive/untracked exchange listing and Permission-related ASK token/rewards descriptions; current contract continuity is not verified.",
     "The exact phrase 'actual capital' has no reliable original-source match in the targeted searches.",
-    "Camilla Stephenson's canonical YouTube identity and exhaustive public-upload inventory remain unverified; direct YouTube page access was blocked and vidIQ search was unavailable due insufficient credits."
+    "Camilla Stephenson's canonical YouTube identity and exhaustive public-upload inventory remain unverified; direct YouTube page access was blocked and vidIQ search was unavailable due insufficient credits.",
+    "PR #1237 removes direct writes from two signal workflows only; financial-data-refresh and merge-queue remain separate write paths.",
+    "PR #1237 stores generated outputs as 30-day artifacts; durable feature-store persistence and reviewed promotion are not implemented."
   ],
   "run_updates": [
     {
@@ -4549,6 +4730,26 @@
         "relationship_edge_source_refs": "PASS",
         "finding_source_refs": "PASS",
         "previous_research_head_ci": "PASS",
+        "new_ledger_commit_ci": "PENDING",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T02:22:59.606Z",
+      "update_type": "SCHEDULED_SIGNAL_WRITER_ARTIFACT_ONLY_PR1237_VERIFIED",
+      "snapshot_id": "XRP-SCHEDULED-WRITER-SAFETY-PR1237-2026-10-28T0222Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0222Z.json",
+      "snapshot_blob_sha": "7a3296d6b3c9d024a7d770c9e55cebfef3658ad8",
+      "details": "Recorded the current direct-main-write paths, PR #1237's fresh-main artifact-only candidate, exact-head CI (146 tests) and fail-closed gate, plus the limitation that run-scoped artifacts do not replace durable research storage.",
+      "validation": {
+        "snapshot_json": "PASS",
+        "source_ids_unique": true,
+        "relationship_edge_source_refs": "PASS",
+        "finding_source_refs": "PASS",
+        "previous_research_head_tests": "PASS",
+        "previous_research_head_gate": "PASS",
         "new_ledger_commit_ci": "PENDING",
         "main_modified_by_this_run": false,
         "merge_performed": false,
