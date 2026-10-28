@@ -221,6 +221,42 @@ class AssetLoader:
         Core loading routine.  Produces a realistic AssetMetadata stub
         while preserving the full public API contract.
         """
+        # Parse real local OBJ geometry. Other formats and non-file dataset
+        # identifiers remain on the legacy stub path and are not parsed here.
+        if fmt is AssetFormat.OBJ and os.path.isfile(source):
+            from barrot_agent.rendering.obj_mesh_loader import load_obj_mesh
+            from barrot_agent.rendering.mesh_topology import analyze_mesh_topology
+
+            mesh = load_obj_mesh(source)
+            vertices = mesh["vertices"]
+            faces = mesh["faces"]
+            measured = analyze_mesh_topology(vertices, faces)
+            triangles = len(faces)
+            memory_bytes = int(len(vertices) * 3 * 8 + len(faces) * 3 * 8)
+            metadata = AssetMetadata(
+                source=source,
+                format=fmt,
+                lod_level=lod,
+                triangle_count=triangles,
+                vertex_count=len(vertices),
+                material_count=0,
+                texture_count=0,
+                memory_bytes=memory_bytes,
+                load_time_ms=0.0,
+                gpu_resident=False,
+                pbr_ready=False,
+                tags=["obj_parsed", "topology_assessed"],
+            )
+            mesh["geometry_status"] = "ASSESSED"
+            mesh["topology_analysis"] = measured
+            mesh["lod_note"] = "Requested LOD recorded; geometry was not decimated."
+            return LoadedAsset(
+                metadata=metadata,
+                mesh_data=mesh,
+                materials=[],
+                textures=[],
+            )
+
         lod_triangle_budgets = {0: 500_000, 1: 100_000, 2: 25_000, 3: 5_000, 4: 1_000}
         triangles = lod_triangle_budgets.get(lod, 25_000)
         vertices = int(triangles * 0.6)
