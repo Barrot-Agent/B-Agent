@@ -58,7 +58,7 @@ def test_invalid_zero_confidence_signal_persists_not_issued_without_provider(tmp
     assert result["status"] == "NOT_ISSUED"
     assert result["forecast_status"] == "NOT_ISSUED"
     assert result["summary_only"] is True
-    assert "no directional conclusion is supported" in result["summary"]
+    assert "no directional conclusion is supported" in result["summary"].lower()
     assert result["audio"] is None
     assert not audio_file.exists()
 
