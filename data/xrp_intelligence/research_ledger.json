@@ -18,192 +18,57 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T13:15:30Z",
+    "captured_at_utc": "2026-10-28T14:10:26Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
         {
-          "number": 1226,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1226",
-          "title": "Safety: make scheduled signal writers artifact-only",
+          "number": 1259,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1259",
+          "title": "Safety: retire variable-horizon XRP accuracy metric on fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "ae17e56ab245f575317beab35b96178dff4732a4",
-          "status": "Draft; based on older main; generated-data direct writes remain active."
+          "head_sha": "46c92f895246216869633b74ee452e3e279dff43",
+          "status": "Fresh-main fixed-horizon evaluator; exact-head CI/gate passed; draft/unmerged."
         },
         {
-          "number": 1227,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
-          "title": "Research: carry XRP intelligence ledger onto fresh main",
+          "number": 1258,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1258",
+          "title": "Safety: declare imported runtime dependencies on fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "dc18baed806b221054d88299d11a0cc3121d2fba",
-          "status": "Draft; exact-head CI and gate passed on pre-update head; 43 ahead/54 behind main; preserve, do not merge as-is."
+          "head_sha": "dfc400d87bf8e759c054a2148f8f7e07a6cf6c80",
+          "status": "Fresh-main dependency fix; exact-head CI/gate passed; one generated-data commit behind."
         },
         {
-          "number": 1228,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1228",
-          "title": "Safety: fail closed on fabricated XRP telemetry",
+          "number": 1256,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
+          "title": "Fix: declare imported runtime dependencies in primary manifests",
           "state": "open",
           "draft": true,
-          "head_sha": "649d3f60a4a2924e5124607c43609908ad1ed4c7",
-          "status": "Draft; previous exact-head tests/gate passed; not merged."
+          "head_sha": "13998c17f0fe93ab62960dc45dfa51cf4f527637",
+          "status": "Stale predecessor to #1258; do not merge as-is."
         },
         {
-          "number": 1230,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1230",
-          "title": "Safety: persist honest XRP summary on provider failure",
+          "number": 1255,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1255",
+          "title": "Update databricks-sdk requirement from >=0.153.0 to >=0.157.0",
           "state": "open",
-          "draft": true,
-          "head_sha": "6a11fc8f2eb335fa7c5b26e2cb31f1065e372622",
-          "status": "Historical draft; test-file coverage gap found and corrected in fresh-main PR #1236."
+          "draft": false,
+          "head_sha": "713b941a5ec94ae16089de31bbf7c0cd7a61ed15",
+          "status": "Open PR; review base and exact-head checks before action."
         },
         {
-          "number": 1236,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
-          "title": "Safety: fresh-main deterministic XRP summary fallback",
+          "number": 1254,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1254",
+          "title": "Update huggingface-hub requirement from >=2.2.0 to >=2.3.0",
           "state": "open",
-          "draft": true,
-          "head_sha": "0937a9ec4d6e95bd606303f1de4ac20602614566",
-          "status": "Exact-head CI PASS (151 tests, 6.46s); fail-closed gate PASS; open draft/unmerged; no deployment."
-        },
-        {
-          "number": 1235,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1235",
-          "title": "Safety: require local approval for Termux queue execution (fresh main)",
-          "state": "open",
-          "draft": true,
-          "head_sha": "854e1f15368222af1b311c6ff0a66cdb76868054",
-          "status": "Draft; exact-head checks not revalidated in this snapshot."
-        },
-        {
-          "number": 1225,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1225",
-          "title": "Add dependency-aware bundle task execution and durable resume",
-          "state": "open",
-          "draft": true,
-          "head_sha": "7c9d8f264039e1a8ca3fe5c28a344133f73e4d14",
-          "status": "Draft; latest dedicated smoke workflow verification still required."
-        },
-        {
-          "number": 1224,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1224",
-          "title": "Safety: fresh-main XRP signal integrity and honest forecast evaluation",
-          "state": "open",
-          "draft": true,
-          "head_sha": "ec7a70162cc09ba0ac2450a580b2dab67cd2dbf4",
-          "status": "Draft; older base; broad signal-integrity and fixed-horizon evaluation fix remains unmerged."
-        },
-        {
-          "number": 1237,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
-          "title": "Safety: make scheduled signal writers read-only on fresh main",
-          "state": "open",
-          "draft": true,
-          "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
-          "status": "Exact-head CI PASS (146 tests, 5.84s); fail-closed gate PASS; open draft/unmerged; covers two signal writers; artifacts expire after 30 days."
-        },
-        {
-          "number": 1238,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1238",
-          "title": "Safety: make financial data refresh read-only and artifact-based",
-          "state": "open",
-          "draft": true,
-          "head_sha": "cb2e98d0f1358d924bce2b8bd75f0612fc5519e2",
-          "status": "CI and gate previously passed; 3 commits ahead and 14 behind current main; unmerged."
-        },
-        {
-          "number": 1239,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1239",
-          "title": "Safety: disable mutation-capable merge queue on fresh main",
-          "state": "open",
-          "draft": true,
-          "head_sha": "8b215b8c9db2018ebae8a7e42008239b5f05a6e1",
-          "status": "CI and gate previously passed; 4 commits ahead and 13 behind current main; unmerged."
-        },
-        {
-          "number": 1240,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1240",
-          "title": "Safety: gate external platform writes behind manual confirmation",
-          "state": "open",
-          "draft": true,
-          "head_sha": "7b7939758526a6a90e4310aa59babc75541a7443",
-          "status": "CI and gate previously passed; branch diverged 7 ahead/7 behind current main; unmerged."
-        },
-        {
-          "number": 1241,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
-          "title": "Safety: gate external deployments and disable automated merge on fresh main",
-          "state": "open",
-          "draft": true,
-          "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
-          "status": "Draft; CI/gate passed on older head; 7 ahead/16 behind current main; reconcile branch before approval."
-        },
-        {
-          "number": 1245,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1245",
-          "title": "Safety: persist fail-closed XRP summaries without main writes",
-          "state": "open",
-          "draft": true,
-          "head_sha": "ceb74ce37c278accc9ffc521bababded91ed6c55",
-          "status": "Exact-head CI PASS: 150 tests/5.94s; fail-closed gate PASS; draft/unmerged; no deployment."
-        },
-        {
-          "number": 1246,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1246",
-          "title": "Safety: retire variable-horizon signal accuracy metric",
-          "state": "open",
-          "draft": true,
-          "head_sha": "65750a1f6309648a4841343ed7ad24985153b22c",
-          "status": "Exact-head CI and fail-closed gate passed; draft/unmerged; main unchanged."
-        },
-        {
-          "number": 1247,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1247",
-          "title": "Research: add immutable fixed-horizon XRP forecast ledger contract",
-          "state": "open",
-          "draft": true,
-          "head_sha": "adccea7259ad3f6635c4e055a082d4ae1ace2037",
-          "status": "Exact-head CI PASS (155 tests, 4.44s); gate PASS; draft/unmerged; 5 ahead/1 behind main at capture."
-        },
-        {
-          "number": 1248,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
-          "title": "Safety: enforce XRP forecast outcome provenance on fresh main",
-          "state": "open",
-          "draft": true,
-          "head_sha": "4334bc902472f1d84fc62c6cacf25aeca66befa9",
-          "status": "Draft; old base; fresh-main successor #1249 passed exact-head checks."
-        },
-        {
-          "number": 1249,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1249",
-          "title": "Safety: enforce XRP forecast outcome provenance on current main",
-          "state": "open",
-          "draft": true,
-          "head_sha": "9d46f742a14a7fb8ea448be2ce868dc10650d4c5",
-          "status": "Fresh-main validator successor; exact-head CI and gate passed; unmerged."
-        },
-        {
-          "number": 1250,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
-          "title": "Safety: handle approval-workflow push events without write access",
-          "state": "open",
-          "draft": true,
-          "head_sha": "ef959edf0507ecf4f603a856719e1d72268bc2f2",
-          "status": "Approval workflow zero-job containment; exact-head CI and gate passed; unmerged."
-        },
-        {
-          "number": 1252,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1252",
-          "title": "Reapply OBJ mesh topology and triangulation on current main",
-          "state": "open",
-          "draft": true,
-          "head_sha": "430629ecfa777516d9d25559c25e212026006f21",
-          "status": "CI/gate pass; unrelated geometry PR; unmerged."
+          "draft": false,
+          "head_sha": "2f1b754192a104b08ab300bb24d5ad29c7a3c4d2",
+          "status": "Open PR; review base and exact-head checks before action."
         },
         {
           "number": 1253,
@@ -212,7 +77,61 @@
           "state": "open",
           "draft": true,
           "head_sha": "e05d04605f78b5dc4ad94bdce0c5aed09b6781f6",
-          "status": "CI 147 passed in 6.22s and gate passed; draft/unmerged."
+          "status": "Stale predecessor to #1259; do not merge as-is."
+        },
+        {
+          "number": 1252,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1252",
+          "title": "Reapply OBJ mesh topology and triangulation on current main",
+          "state": "open",
+          "draft": false,
+          "head_sha": "430629ecfa777516d9d25559c25e212026006f21",
+          "status": "Open PR; review base and exact-head checks before action."
+        },
+        {
+          "number": 1251,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1251",
+          "title": "Research: carry current XRP intelligence ledger onto main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
+          "status": "Open PR; review base and exact-head checks before action."
+        },
+        {
+          "number": 1250,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
+          "title": "Safety: scope approval permissions and add push-event no-op",
+          "state": "open",
+          "draft": true,
+          "head_sha": "2695307faba2b973499f716cda6ba99e60076330",
+          "status": "Open PR; review base and exact-head checks before action."
+        },
+        {
+          "number": 1249,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1249",
+          "title": "Safety: enforce XRP forecast outcome provenance on current main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "9d46f742a14a7fb8ea448be2ce868dc10650d4c5",
+          "status": "Open PR; review base and exact-head checks before action."
+        },
+        {
+          "number": 1248,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
+          "title": "Safety: enforce XRP forecast outcome provenance on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "4334bc902472f1d84fc62c6cacf25aeca66befa9",
+          "status": "Open PR; review base and exact-head checks before action."
+        },
+        {
+          "number": 1247,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1247",
+          "title": "Research: add immutable fixed-horizon XRP forecast ledger contract",
+          "state": "open",
+          "draft": true,
+          "head_sha": "adccea7259ad3f6635c4e055a082d4ae1ace2037",
+          "status": "Open PR; review base and exact-head checks before action."
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -222,53 +141,52 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
         "message": "Paper trade cycle [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
-        "observed_at_utc": "2026-10-28T13:15:30Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/b08d8531ae64f59ba5ead2953ed331192b7dba12",
+        "observed_at_utc": "2026-10-28T14:04:51Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+        "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
         "main_branch_protected": true,
-        "branch_protection_details": "Branch endpoint reports protected=true but required status-check contexts/checks are empty; detailed protection endpoint returned 403 to this integration.",
+        "branch_protection_details": "Endpoint reported protected=true previously, but detailed protection returns 403; required-check contexts/checks were empty in the observable response. Effective merge enforcement remains unverified.",
         "main_ci": {
           "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-          "note": "Latest main commit is a generated paper-trading-log append marked [skip ci]; full exact-head CI not verified."
+          "note": "Latest main commit is a generated paper-trading-log append marked [skip ci]; exact-head main CI was not verified."
         },
         "main_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
         "note": "No main-branch write was performed by this run."
       },
-      "current_research_head": "413f3501d42c86735e56fcddd3729327c28dd9d9",
+      "current_research_head": "e6eca3582e32b888f9d2c1d229257f1e57af78e4",
       "current_research_checks": {
-        "status": "PENDING_AFTER_NEW_SNAPSHOT_AND_INDEX_COMMITS",
-        "note": "The prior research head was not treated as proof for the new snapshot/index commit."
+        "status": "PENDING_AFTER_LEDGER_INDEX_COMMIT",
+        "note": "Snapshot commit is created; index update commit still needs exact-head CI/gate verification."
       },
       "main_commit_delta_since_last_observed": {
-        "previous_sha": "26bc78368692aa4b4ef6e32a9464d1cb75f55fb6",
+        "previous_sha": "b390c3aa469401b07a470e3718a4e6fff9f2e547",
         "commits_ahead": 1,
         "changed_files": 1,
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ],
-        "finding": "The latest main commit appends a BTC-USD paper-trading HOLD record; it does not change XRP model code or the XRP signal artifact."
+        "finding": "Main advanced with a generated paper-trading-log append; no model-code changes observed."
       },
       "latest_research_branch_state": {
-        "branch": "research/xrp-ledger-20261027-1902z",
-        "pr": 1195,
-        "head_at_snapshot_capture": "09e3ab4f0d976aadd0e733139a38d87de8952b6e",
+        "branch": "research/xrp-ledger-fresh-main-20261028-1217z",
+        "pr": 1251,
+        "head_at_snapshot_capture": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
         "state": "open_draft_diverged",
-        "ahead_by": 37,
-        "behind_by": 45,
-        "mergeable": true,
-        "observed_at_utc": "2026-10-27T22:14:48Z",
+        "ahead_by": 21,
+        "behind_by": 15,
+        "observed_at_utc": "2026-10-28T14:10:26Z",
         "source_ids": [
-          "SRC-REPO-PR-1195-STATE-2026-10-27T2210Z"
+          "SRC-GH-OPEN-PR-INVENTORY-2026-10-28T1410Z"
         ],
-        "note": "Preserve historical research snapshots. Do not merge the stale branch."
+        "note": "Append-only ledger branch preserved. It remains diverged; do not merge as-is."
       },
       "current_pr_1220_state": {
         "pr": 1220,
@@ -286,7 +204,7 @@
         "observed_at_utc": "2026-10-27T22:10:20Z"
       },
       "main_commit_message": "Paper trade cycle [skip ci]",
-      "main_commit_at_utc": "2026-10-28T11:04:28Z",
+      "main_commit_at_utc": "2026-10-28T14:04:51Z",
       "main_modified_by_this_run": false,
       "main_delta_since_previous_snapshot": {
         "commits": 1,
@@ -341,86 +259,233 @@
         "main_modified_by_this_run": false,
         "merge_performed": false
       },
-      "current_open_prs_observed_at_utc": "2026-10-28T11:11:00Z",
+      "current_open_prs_observed_at_utc": "2026-10-28T14:10:26Z",
       "current_open_prs": [
         {
-          "number": 1227,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
+          "number": 1259,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1259",
+          "title": "Safety: retire variable-horizon XRP accuracy metric on fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "a026914aab0b80db7b3fe33ef72e5da6351b6cb0",
-          "last_verified_ci": "PASS_146_TESTS_5.87S",
-          "last_verified_gate": "PASS",
-          "note": "Latest ledger head a026914 passed CI and fail-closed gate; PR remains draft/unmerged."
+          "head_sha": "46c92f895246216869633b74ee452e3e279dff43",
+          "base_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
+          "head_branch": "safety/fixed-horizon-accuracy-fresh-main-20261028T1404Z",
+          "updated_at": "2026-10-28T14:09:55Z"
         },
         {
-          "number": 1236,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+          "number": 1258,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1258",
+          "title": "Safety: declare imported runtime dependencies on fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "0937a9ec4d6e95bd606303f1de4ac20602614566",
-          "last_verified_ci": "PASS_151_TESTS",
-          "last_verified_gate": "PASS",
-          "note": "Summary fallback fix; unmerged."
+          "head_sha": "dfc400d87bf8e759c054a2148f8f7e07a6cf6c80",
+          "base_sha": "b390c3aa469401b07a470e3718a4e6fff9f2e547",
+          "head_branch": "safety/runtime-dependency-manifest-fresh-main-20261028-1359z",
+          "updated_at": "2026-10-28T14:10:21Z"
         },
         {
-          "number": 1237,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+          "number": 1256,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
+          "title": "Fix: declare imported runtime dependencies in primary manifests",
           "state": "open",
           "draft": true,
-          "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
-          "last_verified_ci": "PASS_146_TESTS",
-          "last_verified_gate": "PASS",
-          "note": "Scheduled signal writers artifact-only; unmerged."
+          "head_sha": "13998c17f0fe93ab62960dc45dfa51cf4f527637",
+          "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+          "head_branch": "safety/runtime-dependency-manifest-fresh-main-20261028-1315z",
+          "updated_at": "2026-10-28T13:17:59Z"
         },
         {
-          "number": 1238,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1238",
+          "number": 1255,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1255",
+          "title": "Update databricks-sdk requirement from >=0.153.0 to >=0.157.0",
           "state": "open",
-          "draft": true,
-          "head_sha": "cb2e98d0f1358d924bce2b8bd75f0612fc5519e2",
-          "last_verified_ci": "PASS_146_TESTS",
-          "last_verified_gate": "PASS",
-          "note": "Financial-data refresh artifact-only; unmerged."
+          "draft": false,
+          "head_sha": "713b941a5ec94ae16089de31bbf7c0cd7a61ed15",
+          "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+          "head_branch": "dependabot/pip/databricks-sdk-gte-0.157.0",
+          "updated_at": "2026-10-28T13:14:45Z"
         },
         {
-          "number": 1239,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1239",
+          "number": 1254,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1254",
+          "title": "Update huggingface-hub requirement from >=2.2.0 to >=2.3.0",
+          "state": "open",
+          "draft": false,
+          "head_sha": "2f1b754192a104b08ab300bb24d5ad29c7a3c4d2",
+          "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+          "head_branch": "dependabot/pip/huggingface-hub-gte-2.3.0",
+          "updated_at": "2026-10-28T13:14:36Z"
+        },
+        {
+          "number": 1253,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
+          "title": "Safety: retire variable-horizon XRP accuracy metric on fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "8b215b8c9db2018ebae8a7e42008239b5f05a6e1",
-          "last_verified_ci": "PASS_150_TESTS",
-          "last_verified_gate": "PASS",
-          "note": "Read-only merge queue proposal; unmerged."
+          "head_sha": "e05d04605f78b5dc4ad94bdce0c5aed09b6781f6",
+          "base_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
+          "head_branch": "safety/fixed-horizon-accuracy-fresh-main-20261028-1259z",
+          "updated_at": "2026-10-28T13:10:47Z"
+        },
+        {
+          "number": 1252,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1252",
+          "title": "Reapply OBJ mesh topology and triangulation on current main",
+          "state": "open",
+          "draft": false,
+          "head_sha": "430629ecfa777516d9d25559c25e212026006f21",
+          "base_sha": "5b82de70e7bb0227b92435a89ce77ad6718ee1d6",
+          "head_branch": "feat/mesh-topology-obj-mainline-20261028",
+          "updated_at": "2026-10-28T12:48:04Z"
+        },
+        {
+          "number": 1251,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1251",
+          "title": "Research: carry current XRP intelligence ledger onto main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
+          "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+          "head_branch": "research/xrp-ledger-fresh-main-20261028-1217z",
+          "updated_at": "2026-10-28T13:20:30Z"
+        },
+        {
+          "number": 1250,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
+          "title": "Safety: scope approval permissions and add push-event no-op",
+          "state": "open",
+          "draft": true,
+          "head_sha": "2695307faba2b973499f716cda6ba99e60076330",
+          "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+          "head_branch": "safety/approval-workflow-push-noop-20261028-1210z",
+          "updated_at": "2026-10-28T12:21:33Z"
+        },
+        {
+          "number": 1249,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1249",
+          "title": "Safety: enforce XRP forecast outcome provenance on current main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "9d46f742a14a7fb8ea448be2ce868dc10650d4c5",
+          "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+          "head_branch": "safety/xrp-forecast-ledger-validation-fresh-main-20261028-1208z",
+          "updated_at": "2026-10-28T12:09:28Z"
+        },
+        {
+          "number": 1248,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
+          "title": "Safety: enforce XRP forecast outcome provenance on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "4334bc902472f1d84fc62c6cacf25aeca66befa9",
+          "base_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+          "head_branch": "research/xrp-forecast-ledger-validation-fix-20261028-1108z",
+          "updated_at": "2026-10-28T11:10:31Z"
+        },
+        {
+          "number": 1247,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1247",
+          "title": "Research: add immutable fixed-horizon XRP forecast ledger contract",
+          "state": "open",
+          "draft": true,
+          "head_sha": "adccea7259ad3f6635c4e055a082d4ae1ace2037",
+          "base_sha": "4e2d520e232943540f26782fc6d4d83b93bb050c",
+          "head_branch": "research/xrp-forecast-ledger-contract-20261028-1000z",
+          "updated_at": "2026-10-28T10:04:54Z"
+        },
+        {
+          "number": 1246,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1246",
+          "title": "Safety: retire variable-horizon signal accuracy metric",
+          "state": "open",
+          "draft": true,
+          "head_sha": "65750a1f6309648a4841343ed7ad24985153b22c",
+          "base_sha": "42fb527c00e481cc406b57e9636fa8b96ea3b699",
+          "head_branch": "safety/fixed-horizon-accuracy-20261028-0902z",
+          "updated_at": "2026-10-28T09:04:05Z"
+        },
+        {
+          "number": 1245,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1245",
+          "title": "Safety: persist fail-closed XRP summaries without main writes",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ceb74ce37c278accc9ffc521bababded91ed6c55",
+          "base_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
+          "head_branch": "fix/xrp-summary-fail-closed-20261028t0810z",
+          "updated_at": "2026-10-28T08:11:51Z"
+        },
+        {
+          "number": 1241,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+          "title": "Safety: gate external deployments and disable automated merge on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
+          "base_sha": "8beef04c25a3d182c2366c82c1257bacfa1799f2",
+          "head_branch": "safety/external-write-gates-fresh-main-20261028T0458Z",
+          "updated_at": "2026-10-28T05:01:31Z"
         },
         {
           "number": 1240,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1240",
+          "title": "Safety: gate external platform writes behind manual confirmation",
           "state": "open",
           "draft": true,
           "head_sha": "7b7939758526a6a90e4310aa59babc75541a7443",
           "base_sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
-          "mergeable": true,
-          "last_verified_ci": "PASS_147_TESTS_5.91S",
-          "last_verified_gate": "PASS",
-          "note": "Manual-only external deployment gate; draft/unmerged; no deployment executed."
+          "head_branch": "safety/external-deploy-manual-confirm-20261028-0406z",
+          "updated_at": "2026-10-28T04:09:44Z"
         },
         {
-          "number": 1248,
-          "title": "Safety: enforce XRP forecast outcome provenance on fresh main",
+          "number": 1239,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1239",
+          "title": "Safety: disable mutation-capable merge queue on fresh main",
           "state": "open",
           "draft": true,
-          "base_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
-          "head_sha": "4334bc902472f1d84fc62c6cacf25aeca66befa9",
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
-          "ci": "PASS_158_TESTS_5.13S",
-          "gate": "PASS"
+          "head_sha": "8b215b8c9db2018ebae8a7e42008239b5f05a6e1",
+          "base_sha": "a77c329157c85c3cb914233a5761ab4eac6bd0d4",
+          "head_branch": "safety/merge-queue-readonly-fresh-main-20261028",
+          "updated_at": "2026-10-28T03:07:30Z"
+        },
+        {
+          "number": 1238,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1238",
+          "title": "Safety: make financial data refresh read-only and artifact-based",
+          "state": "open",
+          "draft": true,
+          "head_sha": "cb2e98d0f1358d924bce2b8bd75f0612fc5519e2",
+          "base_sha": "d0fd18f7efa53eda246c7cddd727706456e77c59",
+          "head_branch": "safety/financial-refresh-artifact-only-20261028",
+          "updated_at": "2026-10-28T03:03:46Z"
+        },
+        {
+          "number": 1237,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+          "title": "Safety: make scheduled signal writers read-only on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
+          "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+          "head_branch": "safety/signal-writers-artifact-only-fresh-main-20261028-0220z",
+          "updated_at": "2026-10-28T02:20:47Z"
+        },
+        {
+          "number": 1236,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+          "title": "Safety: fresh-main deterministic XRP summary fallback",
+          "state": "open",
+          "draft": true,
+          "head_sha": "0937a9ec4d6e95bd606303f1de4ac20602614566",
+          "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+          "head_branch": "safety/signal-summary-fallback-fresh-main-20261028-0209z",
+          "updated_at": "2026-10-28T02:13:47Z"
         }
       ],
       "required_status_check_contexts": [],
       "required_status_checks": [],
       "main_head_observed_at_utc": "2026-10-28T11:11:00Z",
-      "open_pr_count": 81,
+      "open_pr_count": 89,
       "current_pr_count_source": "GitHub Search API returned total_count=79, incomplete_results=false.",
       "merge_performed": false,
       "current_pr_1247_state": {
@@ -487,7 +552,46 @@
         "merge_performed": false,
         "deployment_executed": false,
         "limitation": "Copies the forecast-ledger contract onto the observed fresh-main base and fixes three validation gaps. Draft only; no merge or deployment."
-      }
+      },
+      "main_commit_delta_since_previous_snapshot": {
+        "commits": 2,
+        "files": [
+          "ping-pongings/knowledge-base/entity_cooccurrence.json",
+          "ping-pongings/knowledge-base/entity_sentiment_profile.json",
+          "ping-pongings/knowledge-base/sentiment_shift.json",
+          "web/paper_trading_log.jsonl"
+        ],
+        "status": "GENERATED_DATA_ONLY",
+        "source_ids": [
+          "SRC-GH-MAIN-CROSS-ANALYSIS-2026-10-28T1351Z",
+          "SRC-GH-MAIN-PAPERTRADER-2026-10-28T1404Z"
+        ]
+      },
+      "current_pr_1256_state": {
+        "pr": 1256,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
+        "state": "open",
+        "draft": true,
+        "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "head_sha": "13998c17f0fe93ab62960dc45dfa51cf4f527637",
+        "ahead_by": 4,
+        "behind_by": 7,
+        "ci": {
+          "status": "PASS",
+          "tests_passed": 147,
+          "duration_seconds": 7.31,
+          "run_id": 40694932828,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694932828"
+        },
+        "gate": {
+          "status": "PASS",
+          "run_id": 40694932868,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694932868"
+        },
+        "successor_pr": 1258,
+        "note": "Stale predecessor; preserve, do not merge as-is."
+      },
+      "current_open_pr_count": 89
     },
     "critical_engine_findings": [
       {
@@ -2155,6 +2259,89 @@
           "SRC-PR1256-STATE-20261028T1315Z"
         ],
         "uncertainty": "Dependency/code-scanning alert counts were not accessible; the complete production import graph and runtime failure path have not been executed in this run."
+      },
+      {
+        "id": "USDC-GLOBAL-CIRCULATION-CHANGE-20261028T1410Z",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "GLOBAL_ISSUER_OBSERVATION; NOT_XRP_FLOW",
+        "claim": "Circle's official dashboard as of 26 Oct 2026 reports $71.0B USDC circulation and $71.2B reserves, with net circulation change -$1.0B over 7 days, -$4.2B over 30 days, and -$5.2B over 365 days.",
+        "interpretation": "Global issuance/redemption totals do not reveal chain-level supply, destination of redemptions, or XRP purchases. Do not use as a proxy for XRP demand.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26-RERUN"
+        ],
+        "uncertainty": "Chain-specific USDC supply and destination-level flow are not established by the issuer dashboard."
+      },
+      {
+        "id": "XRP-ETF-FLOW-TRACKER-DISAGREEMENT-20261028T1410Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "MODEL_FEATURE_BLOCKED_PENDING_FUND_UNIVERSE_RECONCILIATION",
+        "claim": "For 27 Oct 2026, XRP Insights reports -433,940 XRP across six spot funds plus BITW, excluding GXRP from flow calculations, while Maketo displays $0 for the latest observation and warns that incomplete reporting can leave a day without a bar.",
+        "interpretation": "The discrepancy may reflect different fund universes, timing, partial reporting or stale tracker data. Neither value is admitted to the prediction feature store until sponsor-level holdings, creations/redemptions and settlement dates are reconciled.",
+        "source_ids": [
+          "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-XRPINSIGHTS",
+          "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-MAKETO"
+        ],
+        "uncertainty": "Tracker source independence and identical fund coverage are not established."
+      },
+      {
+        "id": "COINBASE-Q3-EARNINGS-EVENT-20261028T1410Z",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "SCHEDULED_NOT_YET_PUBLISHED_AT_CAPTURE",
+        "claim": "Coinbase announced Q3 2026 results for 29 Oct 2026 after market close.",
+        "interpretation": "Treat the release as a dated event window. Do not pre-attribute a price move or infer results before the official release and filing are published.",
+        "source_ids": [
+          "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-29"
+        ],
+        "uncertainty": "Q3 results and guidance are not available at this capture."
+      },
+      {
+        "id": "REPOSITORY-DEPENDENCY-MANIFEST-FIX-VERIFIED-20261028T1410Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "FRESH_MAIN_PR_CI_PASS; DRAFT_UNMERGED",
+        "claim": "PR #1258 declares numpy, PyJWT, cryptography and websockets in primary manifests, adds two manifest tests, and passes exact-head CI (147 tests, 6.41s) plus the fail-closed gate.",
+        "interpretation": "This fixes a packaging declaration gap in a reviewed proposal, not dependency locking, full installation reproducibility, or vulnerability status. Main still lacks the additions until an approved merge.",
+        "source_ids": [
+          "SRC-GH-PR1258-CI-2026-10-28T1403Z",
+          "SRC-PYPI-PYJWT-2.15.1-2026-10-28",
+          "SRC-PYPI-CRYPTOGRAPHY-50.0.2-2026-10-28"
+        ],
+        "uncertainty": "No full clean-install matrix or security-alert review was completed."
+      },
+      {
+        "id": "REPOSITORY-FIXED-HORIZON-ACCURACY-FIX-VERIFIED-20261028T1410Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "FRESH_MAIN_PR_CI_PASS; DRAFT_UNMERGED",
+        "claim": "PR #1259 removes variable-horizon current-price scoring and historical signal-history rewrites, replacing the output with NOT_EVALUATED/NOT_COMPARABLE until fixed-horizon outcomes exist. Exact-head CI passed 147 tests in 4.18s and the fail-closed gate passed.",
+        "interpretation": "This prevents the legacy metric from being presented as forecast skill if merged. It does not yet supply a feature store, walk-forward backtest, calibration or evidence of predictive performance.",
+        "source_ids": [
+          "SRC-GH-PR1259-CI-2026-10-28T1409Z"
+        ],
+        "uncertainty": "Changes remain draft and are not active on main."
+      },
+      {
+        "id": "APPROVAL-WORKFLOW-ZERO-JOB-RECURSION-20261028T1410Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "ROOT_CAUSE_UNRESOLVED; EVENT_METADATA_INCONSISTENT",
+        "claim": "Two recent approval-workflow runs failed with zero jobs. One run is reported as push in the branch-filtered runs list but pull_request by the direct run endpoint; another reports push and zero jobs.",
+        "interpretation": "Static workflow tests have not solved the runtime anomaly. Do not treat this as an approval job failure or a verified fix; no approval action ran.",
+        "source_ids": [
+          "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1403Z",
+          "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1408Z"
+        ],
+        "uncertainty": "Event trigger provenance and GitHub workflow evaluation remain unexplained."
+      },
+      {
+        "id": "MAIN-GENERATED-DATA-WRITES-RECURRING-20261028T1410Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "OBSERVED_ON_MAIN; STAGING_FIX_NOT_MERGED",
+        "claim": "Main advanced through a scheduled cross-analysis commit that changed three generated knowledge-base JSON files, followed by a paper-trading-log append. The current signal-summary workflow still commits generated JSON/audio directly to main.",
+        "interpretation": "Generated-data writes can race with reviewed changes and obscure data provenance in code history. Preserve ingestion continuity while designing append-only staging and reviewed promotion.",
+        "source_ids": [
+          "SRC-GH-MAIN-CROSS-ANALYSIS-2026-10-28T1351Z",
+          "SRC-GH-ACTIONS-CROSS-ANALYSIS-2026-10-28T1351Z",
+          "SRC-GH-MAIN-PAPERTRADER-2026-10-28T1404Z",
+          "SRC-GH-MAIN-SIGNAL-SUMMARY-WORKFLOW-2026-10-28T1410Z"
+        ]
       }
     ],
     "relationship_graph": [
@@ -2947,6 +3134,16 @@
         ],
         "status": "COMPANY_REPORTED_PRODUCT_FOOTPRINT",
         "xrp_relationship": "Supports the possibility of USDC/XRP complementarity or substitution by route; no XRP demand or price effect established."
+      },
+      {
+        "id": "EDGE-COINBASE-Q3-RESULTS-DATE-2026-10-29",
+        "from": "Coinbase",
+        "relation": "announced publication of Q3 2026 financial results after market close on",
+        "to": "2026-10-29 earnings event",
+        "evidence_ids": [
+          "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-29"
+        ],
+        "status": "CONFIRMED_SCHEDULE; RESULTS_NOT_YET_PUBLISHED; NO_XRP_CAUSAL_EFFECT_ESTABLISHED"
       }
     ],
     "competing_hypotheses": [
@@ -4114,6 +4311,36 @@
           "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z",
           "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z"
         ]
+      },
+      {
+        "id": "USDC-CIRCULATION-2026-10-26-20261028T1410Z",
+        "evidence_class": "COMPANY_REPORTED",
+        "as_of_date": "2026-10-26",
+        "observation": "Circle reports $71.0B USDC circulation, $71.2B reserves, and net global circulation change of -$1.0B/7d, -$4.2B/30d, -$5.2B/365d.",
+        "interpretation": "Global issuance/redemption is not chain-attributed and does not prove XRP inflows or outflows.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26-RERUN"
+        ]
+      },
+      {
+        "id": "XRP-ETF-FLOW-XRPINSIGHTS-2026-10-27-20261028T1410Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-27",
+        "observation": "XRP Insights reports -433,940 XRP (about -$577.1K) for six spot funds plus BITW; GXRP excluded from daily flow due capture gap.",
+        "interpretation": "Not comparable to other trackers until fund universe, sponsor data and settlement timing are reconciled.",
+        "source_ids": [
+          "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-XRPINSIGHTS"
+        ]
+      },
+      {
+        "id": "XRP-ETF-FLOW-MAKETO-2026-10-27-20261028T1410Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-27",
+        "observation": "Maketo displays $0 for its latest 27 Oct flow observation; page warns incomplete reporting can cause missing bars.",
+        "interpretation": "Do not interpret as confirmed zero demand or reconcile to the XRP Insights figure without matching fund coverage and source timestamps.",
+        "source_ids": [
+          "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-MAKETO"
+        ]
       }
     ],
     "phrase_investigation": {
@@ -4221,7 +4448,9 @@
         "source_ids": [
           "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
         ]
-      }
+      },
+      "last_searched_at_utc": "2026-10-28T14:10:26Z",
+      "exact_phrase_status": "ASK Coin, actual capital, and SBIC, ChatGPT SBIC remain unresolved in the requested context; targeted exact-string web searches in this run did not establish a reliable originating source."
     },
     "platform_capability_map": [
       {
@@ -4374,8 +4603,8 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T13:15:30Z",
-      "last_run_update": "Added repository safety audit: one branch ruleset is disabled, effective main protection remains unverified due 403, and primary manifests omit four imported runtime dependencies. PR #1256 proposes a tested-manifest guard; CI pending at snapshot capture. No forecast issued.",
+      "last_checked_utc": "2026-10-28T14:10:26Z",
+      "last_run_update": "Updated Circle global USDC supply, conflicting 27 Oct XRP ETF tracker observations, Coinbase Q3 event date, current main generated-data writes, fresh-main PR #1258 dependency fix and PR #1259 fixed-horizon evaluator fix. Both PRs passed exact-head CI/gate and remain draft/unmerged. Forecast remains NOT_ISSUED.",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
         "XRP ETF weekly flow observation excludes GXRP and is not reconciled against all fund-level primary records.",
@@ -4398,7 +4627,12 @@
         "Mainnet activation status for ConfidentialTransfer, DynamicMPT, Sponsor and PermissionDelegationV1_1 was not verified in this capture; official status badges did not load.",
         "Effective main branch protection and required checks remain unverified; one repository ruleset is disabled.",
         "Runtime dependency manifest gap is proposed for correction in PR #1256; CI was pending at snapshot capture.",
-        "Dependabot/code-scanning alert counts are unknown because the current connector cannot access those endpoints."
+        "Dependabot/code-scanning alert counts are unknown because the current connector cannot access those endpoints.",
+        "XRP Insights and Maketo disagree on 27 Oct ETF flow; fund-level source reconciliation is required.",
+        "Current main still has direct generated-data writers; durable append-only staging and reviewed promotion are not implemented.",
+        "PR #1258 passed exact-head CI but is one commit behind main after a generated paper-trading-log append; keep unmerged pending review.",
+        "PR #1259 passed exact-head CI/gate and remains draft/unmerged; immutable feature storage, walk-forward backtesting, calibration and shadow evaluation remain incomplete.",
+        "Approval workflow still produces zero-job failures; event metadata is inconsistent across API views and root cause is unresolved."
       ],
       "issuance_outcome_contract": {
         "status": "FRESH_MAIN_SUCCESSOR_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NOT_MERGED",
@@ -4433,57 +4667,13 @@
       ]
     },
     "next_actions": [
-      "Wait for PR #1256 exact-head CI; if it passes, review the manifest test and keep the PR draft/unmerged pending approval.",
-      "Verify effective main branch protection and required checks through authorized administrator access; do not modify rulesets without approval.",
-      "Audit the 84 GitHub Actions workflows by permission and write target, prioritizing deploy/sync, scheduler, paper-trader, generated-summary and merge workflows.",
-      "Expose dependency/code-scanning alert visibility through an authorized path; do not interpret inaccessible endpoints as zero alerts.",
-      "Resolve the intended role of requirements.tx before renaming or deleting it; preserve it meanwhile.",
-      "Keep the XRP prediction engine at NOT_ISSUED until point-in-time feature storage, walk-forward backtesting and calibration are verified.",
-      "Verify live Mainnet amendment activation separately for ConfidentialTransfer, DynamicMPT, Sponsor and PermissionDelegationV1_1; release support and Final XLS status are not activation proof.",
-      "Track the Sep 25 xrpld 3.4.1 release and Oct 9 security disclosure/Batch activation as event features, but test any XRP market response with predeclared event windows and controls.",
-      "Resolve the requested Camilla Stephenson identity; preserve UCXm6 and UCqUP as separate candidate channel IDs until first-party evidence connects them.",
-      "Independently reconcile creator-reported XRP wallet accumulation/exchange outflows and ETF-flow figures with labeled on-chain data and sponsor-level fund records.",
-      "Keep PR #1253 draft/unmerged pending review against current main; exact-head CI passed 147 tests and its fail-closed gate passed.",
-      "Resolve the requested Camilla Stephenson identity using first-party evidence; preserve UCXm6 and UCqUP as separate candidate channel IDs until verified.",
-      "Enumerate the canonical channel's public uploads using its official uploads list/feed after identity resolution; current video inventory is partial.",
-      "Build durable append-only point-in-time feature storage; 30-day artifacts are not a permanent feature store.",
-      "Reconcile XRP spot, derivatives, ETF sponsor records and XRPL-native USDC flows at common UTC cutoffs.",
-      "Capture Coinbase Q3 2026 results after the scheduled 29 October release; compare official results with Q2 without inferring XRP-specific flows.",
-      "Resolve the exact requested Camilla Stephenson identity using first-party evidence; enumerate public uploads only after the canonical channel is established.",
-      "Keep PR #1253 draft and unmerged pending human review; its exact-head CI passed 147 tests and its fail-closed gate passed.",
-      "Build a durable append-only point-in-time feature store with provenance and reviewed promotion; 30-day workflow artifacts are temporary.",
-      "Reconcile XRP spot, derivatives, ETF sponsor records and XRPL-native USDC flows at common UTC cutoffs before feature admission.",
-      "Investigate the approval workflow's zero-job push-event anomaly; PR #1250 static tests do not verify runtime containment.",
-      "Continue exact-phrase research and keep Camilla Stephenson distinct from the Kamilah/Camila crypto-channel candidate until first-party identity evidence connects them.",
-      "Review PR #1248 without merging automatically; its exact-head CI and fail-closed gate passed, but it remains draft/unmerged.",
-      "Implement durable append-only feature storage with source provenance and point-in-time snapshots before admitting market data to forecasts.",
-      "Reconcile XRP spot/derivatives/ETF data at common UTC cutoffs; do not infer XRP flows from global USDC supply changes.",
-      "Capture Coinbase Q3 2026 results after the scheduled Oct 29 release and compare against Q2 baseline.",
-      "Continue exact phrase investigations and verify Camilla Stephenson's canonical channel before claiming exhaustive public-video coverage.",
-      "Resolve XRP spot and derivatives price/OI/funding disagreement using raw venue data at a common UTC cutoff; keep all unmatched provider snapshots blocked.",
-      "Measure the Circle-Binance USDC distribution relationship against venue-level balances, XRPL-native USDC flows, and XRP bridge-path share; do not infer XRP impact from the equity announcement.",
-      "Continue SBIC exact-identity and Camilla Stephenson canonical-channel verification; retain unresolved status.",
-      "Normalize XRP spot/derivatives and XRPL-native USDC flows at common UTC cutoffs; keep provider dashboard rows blocked until universe and timestamps reconcile.",
-      "Build durable append-only staging and reviewed promotion for generated summaries and paper-trading state without breaking ingestion continuity.",
-      "Inspect exact-head CI for PR #1245 after the assertion correction; keep draft/unmerged until review.",
-      "Preserve current ledger and snapshots; do not merge the 43-ahead/54-behind research branch as-is.",
-      "Run exact-head CI and fail-closed gate on the new research snapshot+ledger commit.",
-      "Design idempotent durable staging/promotion for summary, scheduler, paper-trader, ping-pong and cross-analysis writers without breaking state continuity.",
-      "Normalize XRP price/volume and derivatives at common UTC cutoffs; exclude conflicting vendor rows from the feature store.",
-      "Review PR #1246; keep draft/unmerged pending approval and recheck its base against current main.",
-      "Implement an immutable fixed-horizon forecast/outcome ledger with point-in-time features, walk-forward evaluation, calibration and baselines.",
-      "Continue durable append-only generated-data staging and reviewed promotion; other main-branch writers remain active.",
-      "Measure XRPL-native USDC flows and XRP bridge-path share before drawing causal conclusions.",
-      "Resolve SBIC exact-phrase context and Camilla Stephenson canonical channel identity before claiming completeness.",
-      "Review PR #1247; keep draft and recheck its one-commit divergence from main before approval.",
-      "Integrate the forecast issuance/outcome contract only through reviewed code; no real forecast is issued.",
-      "Measure Arc activity, XRPL-native USDC transfers and XRP bridge-path share before drawing a Circle-to-XRP causal conclusion.",
-      "Reconstruct October 26 ETF flows from sponsor-level fund holdings and matched universes; keep tracker aggregates blocked from model admission.",
-      "Prepare a fresh-main signal-summary successor if PR #1245 remains stale; do not merge its old base as-is.",
-      "Review PR #1250 containment on exact head; keep approval action manual-only and verify no-op behavior on push events.",
-      "Review PR #1249 validator contract; retain NOT_ISSUED until feature store and calibrated walk-forward evaluation exist.",
-      "Investigate why GitHub records zero-job push runs even when the branch workflow declares push_noop; inspect workflow enabled state and event-definition resolution before claiming a fix.",
-      "Reconcile Circle's issuer-reported H1 USDC operating metrics with XRPL-specific supply/transfer data and XRP bridge-path share; do not use global volume as an XRP feature."
+      "Recheck PR #1258 against current main; preserve it and do not merge without approval.",
+      "Review PR #1259 fixed-horizon evaluator successor; its exact-head CI/gate passed, but keep draft/unmerged pending review.",
+      "Implement durable append-only point-in-time feature storage and reviewed promotion without interrupting paper-trading history or ingestion.",
+      "Reconcile ETF fund-level sponsor holdings and creations/redemptions at common settlement cutoffs; do not use tracker disagreement as a feature.",
+      "Capture Coinbase Q3 2026 results only after official publication on 29 Oct after market close; compare against Q2 without assuming XRP causality.",
+      "Continue SBIC and exact-phrase research and resolve the canonical Camilla Stephenson channel before claiming exhaustive video coverage.",
+      "Investigate the zero-job approval-workflow event inconsistency; do not claim a fix until a real event executes a job as expected."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -4580,12 +4770,12 @@
     },
     "repository_ci": {
       "repository": "Barrot-Agent/B-Agent",
-      "main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
       "main_commit": {
-        "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
         "message": "Paper trade cycle [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
-        "observed_at_utc": "2026-10-28T13:11:30Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/b08d8531ae64f59ba5ead2953ed331192b7dba12",
+        "observed_at_utc": "2026-10-28T14:04:51Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
@@ -4611,14 +4801,25 @@
         "status_note": "Historical failure; subsequent generated-data commits show automated writes resumed."
       },
       "approval_workflow_anomaly": {
-        "status": "ROOT_CAUSE_UNRESOLVED",
+        "status": "ROOT_CAUSE_UNRESOLVED; ZERO-JOB FAILURES RECURRED",
         "latest_runs": [
-          40612739418,
-          40612744002,
-          40612748904,
-          40612752684
+          {
+            "id": 40702168314,
+            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702168314",
+            "reported_event_in_runs_list": "push",
+            "reported_event_direct_run": "pull_request",
+            "conclusion": "failure",
+            "jobs": 0
+          },
+          {
+            "id": 40702993670,
+            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702993670",
+            "reported_event": "push",
+            "conclusion": "failure",
+            "jobs": 0
+          }
         ],
-        "note": "Push-triggered zero-job workflow failures recurred on PR #1230 commits; do not claim a fix."
+        "note": "Event metadata for run 40702168314 differs across API views; no job executed. Workflow file on main declares workflow_dispatch only. Do not claim the cause or fix."
       },
       "research_pr_validation": {
         "pr": 1195,
@@ -4681,7 +4882,7 @@
         "state": "open_draft_unmerged",
         "note": "Exact-head CI and fail-closed gate passed. No merge or deployment occurred."
       },
-      "as_of_utc": "2026-10-28T11:11:00Z",
+      "as_of_utc": "2026-10-28T14:10:26Z",
       "main_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
       "signal_summary_failure": {
         "run_id": 40611307868,
@@ -4824,10 +5025,10 @@
         "merge_performed": false
       },
       "current_main_commit": {
-        "sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+        "sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
         "message": "Paper trade cycle [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
-        "observed_at_utc": "2026-10-28T11:04:28Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/b08d8531ae64f59ba5ead2953ed331192b7dba12",
+        "observed_at_utc": "2026-10-28T14:04:51Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
@@ -4904,11 +5105,11 @@
         "deployment_executed": false,
         "limitation": "Copies the forecast-ledger contract onto the observed fresh-main base and fixes three validation gaps. Draft only; no merge or deployment."
       },
-      "open_pr_count": 84,
-      "current_open_prs_observed_at_utc": "2026-10-28T13:03:30Z",
+      "open_pr_count": 89,
+      "current_open_prs_observed_at_utc": "2026-10-28T14:10:26Z",
       "required_status_check_contexts": [],
       "required_status_checks": [],
-      "main_workflow_write_paths": "Generated-data direct writes remain in multiple scheduled workflows; durable append-only staging and reviewed promotion are not implemented.",
+      "main_workflow_write_paths": "Generated-data direct writes remain active. Cross Analysis run 40700310719 was followed by commit b390c3a modifying three generated knowledge-base JSON files; latest main b08d853 appends web/paper_trading_log.jsonl. Current signal-summary.yml still commits generated summary JSON/audio to main. Durable append-only staging and reviewed promotion are not implemented.",
       "current_pr_1253": {
         "pr": 1253,
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
@@ -4951,7 +5152,229 @@
           "status": "PASS"
         },
         "note": "Unrelated OBJ mesh topology/triangulation proposal; its base was 5b82de7 and main later advanced through generated cross-analysis refresh. Not merged."
-      }
+      },
+      "current_open_prs": [
+        {
+          "number": 1259,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1259",
+          "title": "Safety: retire variable-horizon XRP accuracy metric on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "46c92f895246216869633b74ee452e3e279dff43",
+          "base_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
+          "head_branch": "safety/fixed-horizon-accuracy-fresh-main-20261028T1404Z",
+          "updated_at": "2026-10-28T14:09:55Z"
+        },
+        {
+          "number": 1258,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1258",
+          "title": "Safety: declare imported runtime dependencies on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "dfc400d87bf8e759c054a2148f8f7e07a6cf6c80",
+          "base_sha": "b390c3aa469401b07a470e3718a4e6fff9f2e547",
+          "head_branch": "safety/runtime-dependency-manifest-fresh-main-20261028-1359z",
+          "updated_at": "2026-10-28T14:10:21Z"
+        },
+        {
+          "number": 1256,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
+          "title": "Fix: declare imported runtime dependencies in primary manifests",
+          "state": "open",
+          "draft": true,
+          "head_sha": "13998c17f0fe93ab62960dc45dfa51cf4f527637",
+          "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+          "head_branch": "safety/runtime-dependency-manifest-fresh-main-20261028-1315z",
+          "updated_at": "2026-10-28T13:17:59Z"
+        },
+        {
+          "number": 1255,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1255",
+          "title": "Update databricks-sdk requirement from >=0.153.0 to >=0.157.0",
+          "state": "open",
+          "draft": false,
+          "head_sha": "713b941a5ec94ae16089de31bbf7c0cd7a61ed15",
+          "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+          "head_branch": "dependabot/pip/databricks-sdk-gte-0.157.0",
+          "updated_at": "2026-10-28T13:14:45Z"
+        },
+        {
+          "number": 1254,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1254",
+          "title": "Update huggingface-hub requirement from >=2.2.0 to >=2.3.0",
+          "state": "open",
+          "draft": false,
+          "head_sha": "2f1b754192a104b08ab300bb24d5ad29c7a3c4d2",
+          "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+          "head_branch": "dependabot/pip/huggingface-hub-gte-2.3.0",
+          "updated_at": "2026-10-28T13:14:36Z"
+        },
+        {
+          "number": 1253,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
+          "title": "Safety: retire variable-horizon XRP accuracy metric on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "e05d04605f78b5dc4ad94bdce0c5aed09b6781f6",
+          "base_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
+          "head_branch": "safety/fixed-horizon-accuracy-fresh-main-20261028-1259z",
+          "updated_at": "2026-10-28T13:10:47Z"
+        },
+        {
+          "number": 1252,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1252",
+          "title": "Reapply OBJ mesh topology and triangulation on current main",
+          "state": "open",
+          "draft": false,
+          "head_sha": "430629ecfa777516d9d25559c25e212026006f21",
+          "base_sha": "5b82de70e7bb0227b92435a89ce77ad6718ee1d6",
+          "head_branch": "feat/mesh-topology-obj-mainline-20261028",
+          "updated_at": "2026-10-28T12:48:04Z"
+        },
+        {
+          "number": 1251,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1251",
+          "title": "Research: carry current XRP intelligence ledger onto main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
+          "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+          "head_branch": "research/xrp-ledger-fresh-main-20261028-1217z",
+          "updated_at": "2026-10-28T13:20:30Z"
+        },
+        {
+          "number": 1250,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
+          "title": "Safety: scope approval permissions and add push-event no-op",
+          "state": "open",
+          "draft": true,
+          "head_sha": "2695307faba2b973499f716cda6ba99e60076330",
+          "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+          "head_branch": "safety/approval-workflow-push-noop-20261028-1210z",
+          "updated_at": "2026-10-28T12:21:33Z"
+        },
+        {
+          "number": 1249,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1249",
+          "title": "Safety: enforce XRP forecast outcome provenance on current main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "9d46f742a14a7fb8ea448be2ce868dc10650d4c5",
+          "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+          "head_branch": "safety/xrp-forecast-ledger-validation-fresh-main-20261028-1208z",
+          "updated_at": "2026-10-28T12:09:28Z"
+        },
+        {
+          "number": 1248,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
+          "title": "Safety: enforce XRP forecast outcome provenance on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "4334bc902472f1d84fc62c6cacf25aeca66befa9",
+          "base_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+          "head_branch": "research/xrp-forecast-ledger-validation-fix-20261028-1108z",
+          "updated_at": "2026-10-28T11:10:31Z"
+        },
+        {
+          "number": 1247,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1247",
+          "title": "Research: add immutable fixed-horizon XRP forecast ledger contract",
+          "state": "open",
+          "draft": true,
+          "head_sha": "adccea7259ad3f6635c4e055a082d4ae1ace2037",
+          "base_sha": "4e2d520e232943540f26782fc6d4d83b93bb050c",
+          "head_branch": "research/xrp-forecast-ledger-contract-20261028-1000z",
+          "updated_at": "2026-10-28T10:04:54Z"
+        },
+        {
+          "number": 1246,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1246",
+          "title": "Safety: retire variable-horizon signal accuracy metric",
+          "state": "open",
+          "draft": true,
+          "head_sha": "65750a1f6309648a4841343ed7ad24985153b22c",
+          "base_sha": "42fb527c00e481cc406b57e9636fa8b96ea3b699",
+          "head_branch": "safety/fixed-horizon-accuracy-20261028-0902z",
+          "updated_at": "2026-10-28T09:04:05Z"
+        },
+        {
+          "number": 1245,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1245",
+          "title": "Safety: persist fail-closed XRP summaries without main writes",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ceb74ce37c278accc9ffc521bababded91ed6c55",
+          "base_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
+          "head_branch": "fix/xrp-summary-fail-closed-20261028t0810z",
+          "updated_at": "2026-10-28T08:11:51Z"
+        },
+        {
+          "number": 1241,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+          "title": "Safety: gate external deployments and disable automated merge on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
+          "base_sha": "8beef04c25a3d182c2366c82c1257bacfa1799f2",
+          "head_branch": "safety/external-write-gates-fresh-main-20261028T0458Z",
+          "updated_at": "2026-10-28T05:01:31Z"
+        },
+        {
+          "number": 1240,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1240",
+          "title": "Safety: gate external platform writes behind manual confirmation",
+          "state": "open",
+          "draft": true,
+          "head_sha": "7b7939758526a6a90e4310aa59babc75541a7443",
+          "base_sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
+          "head_branch": "safety/external-deploy-manual-confirm-20261028-0406z",
+          "updated_at": "2026-10-28T04:09:44Z"
+        },
+        {
+          "number": 1239,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1239",
+          "title": "Safety: disable mutation-capable merge queue on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "8b215b8c9db2018ebae8a7e42008239b5f05a6e1",
+          "base_sha": "a77c329157c85c3cb914233a5761ab4eac6bd0d4",
+          "head_branch": "safety/merge-queue-readonly-fresh-main-20261028",
+          "updated_at": "2026-10-28T03:07:30Z"
+        },
+        {
+          "number": 1238,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1238",
+          "title": "Safety: make financial data refresh read-only and artifact-based",
+          "state": "open",
+          "draft": true,
+          "head_sha": "cb2e98d0f1358d924bce2b8bd75f0612fc5519e2",
+          "base_sha": "d0fd18f7efa53eda246c7cddd727706456e77c59",
+          "head_branch": "safety/financial-refresh-artifact-only-20261028",
+          "updated_at": "2026-10-28T03:03:46Z"
+        },
+        {
+          "number": 1237,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+          "title": "Safety: make scheduled signal writers read-only on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
+          "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+          "head_branch": "safety/signal-writers-artifact-only-fresh-main-20261028-0220z",
+          "updated_at": "2026-10-28T02:20:47Z"
+        },
+        {
+          "number": 1236,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+          "title": "Safety: fresh-main deterministic XRP summary fallback",
+          "state": "open",
+          "draft": true,
+          "head_sha": "0937a9ec4d6e95bd606303f1de4ac20602614566",
+          "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+          "head_branch": "safety/signal-summary-fallback-fresh-main-20261028-0209z",
+          "updated_at": "2026-10-28T02:13:47Z"
+        }
+      ]
     },
     "market_data_quality_findings": [
       {
@@ -5260,6 +5683,18 @@
           "SRC-XRPL-KNOWN-AMENDMENTS-20261028T1311Z",
           "SRC-XLS-0096-20261028T1311Z"
         ]
+      },
+      {
+        "id": "XRP-ETF-TRACKER-UNIVERSE-MISMATCH-20261028T1410Z",
+        "severity": "HIGH",
+        "status": "MODEL_FEATURE_BLOCKED",
+        "finding": "XRP Insights and Maketo show different 27 Oct ETF flow outputs (-433,940 XRP versus $0). Fund coverage and data completeness are not aligned; XRP Insights excludes GXRP flows while Maketo warns of incomplete reporting.",
+        "interpretation": "Tracker disagreement is a measurement problem, not a trading signal. Require fund-level issuer holdings, creation/redemption records and settlement dates before feature admission.",
+        "source_ids": [
+          "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-XRPINSIGHTS",
+          "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-MAKETO"
+        ],
+        "next_test": "Build fund-by-fund holdings-delta table with identical cutoffs and mark missing observations UNKNOWN rather than zero."
       }
     ],
     "mission_priority": {
@@ -5288,12 +5723,12 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "BARROT-SECURITY-AND-DEPENDENCY-AUDIT-202610281315Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1315Z.json",
-    "current_research_head_before_ledger_update": "48e6ba19f1db28e74751a53378c18d60dc5de7a9",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1410Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1410Z.json",
+    "current_research_head_before_ledger_update": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
     "current_research_checks": {
-      "status": "PENDING_AFTER_NEW_SNAPSHOT_AND_INDEX_COMMITS",
-      "note": "Exact-head CI and fail-closed gate must be checked after this snapshot and its ledger-index update."
+      "status": "PENDING_AFTER_LEDGER_INDEX_COMMIT",
+      "note": "Snapshot commit is created; index update commit still needs exact-head CI/gate verification."
     },
     "current_research_head_before_final_verification_record": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
     "platform_coordination_architecture": {
@@ -6004,6 +6439,27 @@
           "SRC-XRPL-SECURITY-DISCLOSURE-20261028T1311Z"
         ],
         "interpretation": "Activation confirmed for these two amendments only; do not generalize this status to ConfidentialTransfer, DynamicMPT, Sponsor or PermissionDelegationV1_1."
+      },
+      {
+        "id": "COINBASE-Q3-2026-RESULTS-SCHEDULED-2026-10-29",
+        "date": "2026-10-29",
+        "event": "Coinbase Q3 2026 results scheduled after market close",
+        "evidence_class": "COMPANY_REPORTED",
+        "source_ids": [
+          "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-29"
+        ],
+        "interpretation": "Upcoming information event; await official results and distinguish market reaction from causation."
+      },
+      {
+        "id": "BARROT-MAIN-GENERATED-CROSS-ANALYSIS-2026-10-28",
+        "date": "2026-10-28",
+        "event": "Scheduled Cross Analysis run followed by generated knowledge-base JSON commit on main",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "source_ids": [
+          "SRC-GH-ACTIONS-CROSS-ANALYSIS-2026-10-28T1351Z",
+          "SRC-GH-MAIN-CROSS-ANALYSIS-2026-10-28T1351Z"
+        ],
+        "interpretation": "Confirms generated-data main writes remain active; no model-code change observed in that commit."
       }
     ],
     "current_pr_1238_state": {
@@ -6046,8 +6502,8 @@
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
-      "observed_at_utc": "2026-10-28T13:15:30Z",
-      "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "observed_at_utc": "2026-10-28T14:10:26Z",
+      "current_main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
       "findings": [
         {
           "path": ".github/workflows/barrot-ops.yml",
@@ -6218,46 +6674,11 @@
         }
       ],
       "remaining_direct_main_writers": [
-        {
-          "path": ".github/workflows/scheduler-tick.yml",
-          "frequency": "*/15 * * * *",
-          "risk": "contents:write and actions:write; commits schedule_queue.jsonl to main; non-fast-forward retry pulls main and pushes again."
-        },
-        {
-          "path": ".github/workflows/coinbase-paper-trader.yml",
-          "frequency": "*/30 * * * *",
-          "risk": "commits paper_trading_state.json and paper_trading_log.jsonl to main; persistence affects subsequent simulation state."
-        },
-        {
-          "path": ".github/workflows/pingpong.yml",
-          "frequency": "30 */12 * * *",
-          "risk": "commits model-generated knowledge log to main."
-        },
-        {
-          "path": ".github/workflows/cross-analysis.yml",
-          "frequency": "workflow_run plus hourly fallback",
-          "risk": "commits generated entity co-occurrence and sentiment analysis to main."
-        },
-        {
-          "path": ".github/workflows/financial-data-refresh.yml",
-          "frequency": "monthly plus manual",
-          "risk": "direct generated-data write to main; PR #1238 is stale/unmerged."
-        },
-        {
-          "path": ".github/workflows/check-signal-accuracy.yml",
-          "frequency": "daily plus manual",
-          "risk": "Daily direct main write remains active until PR #1246 is reviewed/merged; PR #1246 makes the evaluator NOT_EVALUATED and uploads status as artifact."
-        },
-        {
-          "path": ".github/workflows/knowledge-signal-cycle.yml",
-          "frequency": "hourly plus manual",
-          "risk": "direct knowledge/signal/history write to main; PR #1237 is stale/unmerged."
-        },
-        {
-          "path": ".github/workflows/signal-summary.yml",
-          "frequency": "workflow_run after Knowledge Signal Cycle, hourly fallback, manual dispatch",
-          "risk": "Commits web/latest_signal_summary.json and web/generated_audio/ and pushes main; not covered by scheduled signal-writer artifact-only PR."
-        }
+        ".github/workflows/signal-summary.yml",
+        ".github/workflows/cross-analysis.yml",
+        ".github/workflows/scheduler-tick.yml",
+        ".github/workflows/coinbase-paper-trader.yml",
+        "other generated-data writers not exhaustively re-audited in this capture"
       ],
       "current_main_commit": {
         "sha": "72aa77325b3e3b030eada80c6b756a7975f4d336",
@@ -6268,7 +6689,7 @@
           "web/paper_trading_log.jsonl"
         ]
       },
-      "open_pr_count": 77,
+      "open_pr_count": 89,
       "latest_signal_artifact": {
         "timestamp": "2026-10-28T09:24:33.644225+00:00",
         "score": 44,
@@ -6279,24 +6700,32 @@
       },
       "accuracy_evaluator_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1246",
       "approval_workflow_zero_job_anomaly": {
-        "status": "PERSISTS_AFTER_PR1250_BRANCH_CHANGE; ROOT_CAUSE_UNRESOLVED",
-        "observed_runs": [
-          40685747941,
-          40685741781,
-          40685734356
+        "status": "ROOT_CAUSE_UNRESOLVED; ZERO-JOB FAILURES RECURRED",
+        "latest_runs": [
+          {
+            "id": 40702168314,
+            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702168314",
+            "reported_event_in_runs_list": "push",
+            "reported_event_direct_run": "pull_request",
+            "conclusion": "failure",
+            "jobs": 0
+          },
+          {
+            "id": 40702993670,
+            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702993670",
+            "reported_event": "push",
+            "conclusion": "failure",
+            "jobs": 0
+          }
         ],
-        "event": "push",
-        "jobs": 0,
-        "workflow_path": ".github/workflows/barrot-approve-pr.yml",
-        "main_trigger": "workflow_dispatch only",
-        "branch_trigger_content_includes_push": true,
-        "containment_pr": 1250,
-        "interpretation": "The proposed branch content adds a push no-op job, but GitHub still records push runs with zero jobs. The event origin/workflow-definition resolution is unresolved; PR #1250 does not yet demonstrate effective containment."
+        "note": "Event metadata for run 40702168314 differs across API views; no job executed. Workflow file on main declares workflow_dispatch only. Do not claim the cause or fix."
       },
-      "next_priority": "Review and, after approval, integrate narrow fresh-main safety fixes; do not merge automatically. Preserve durable ingestion history via a separate reviewed append-only store.",
+      "next_priority": "Preserve main; continue fresh-main reviewed fixes and implement durable staging before disabling writers.",
       "latest_main_commit": {
-        "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
         "message": "Paper trade cycle [skip ci]",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/b08d8531ae64f59ba5ead2953ed331192b7dba12",
+        "observed_at_utc": "2026-10-28T14:04:51Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
@@ -6443,7 +6872,7 @@
         "index": 12
       }
     ],
-    "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+    "current_main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
     "current_pr_1245_state": {
       "pr": 1245,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1245",
@@ -6477,7 +6906,7 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "48e6ba19f1db28e74751a53378c18d60dc5de7a9",
+    "current_research_head_this_run": "e6eca3582e32b888f9d2c1d229257f1e57af78e4",
     "correction_note": {
       "previous_snapshot": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
       "issue": "The previous market-data-quality finding referenced a nonexistent 0812Z source ID.",
@@ -6583,9 +7012,64 @@
       "main_modified_by_this_run": false,
       "merge_performed": false
     },
-    "current_open_pr_count": 87,
-    "current_open_prs_observed_at_utc": "2026-10-28T13:15:30Z",
+    "current_open_pr_count": 89,
+    "current_open_prs_observed_at_utc": "2026-10-28T14:10:26Z",
     "current_open_prs": [
+      {
+        "number": 1259,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1259",
+        "title": "Safety: retire variable-horizon XRP accuracy metric on fresh main",
+        "state": "open",
+        "draft": true,
+        "head_sha": "46c92f895246216869633b74ee452e3e279dff43",
+        "base_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
+        "head_branch": "safety/fixed-horizon-accuracy-fresh-main-20261028T1404Z",
+        "updated_at": "2026-10-28T14:09:55Z"
+      },
+      {
+        "number": 1258,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1258",
+        "title": "Safety: declare imported runtime dependencies on fresh main",
+        "state": "open",
+        "draft": true,
+        "head_sha": "dfc400d87bf8e759c054a2148f8f7e07a6cf6c80",
+        "base_sha": "b390c3aa469401b07a470e3718a4e6fff9f2e547",
+        "head_branch": "safety/runtime-dependency-manifest-fresh-main-20261028-1359z",
+        "updated_at": "2026-10-28T14:10:21Z"
+      },
+      {
+        "number": 1256,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
+        "title": "Fix: declare imported runtime dependencies in primary manifests",
+        "state": "open",
+        "draft": true,
+        "head_sha": "13998c17f0fe93ab62960dc45dfa51cf4f527637",
+        "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "head_branch": "safety/runtime-dependency-manifest-fresh-main-20261028-1315z",
+        "updated_at": "2026-10-28T13:17:59Z"
+      },
+      {
+        "number": 1255,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1255",
+        "title": "Update databricks-sdk requirement from >=0.153.0 to >=0.157.0",
+        "state": "open",
+        "draft": false,
+        "head_sha": "713b941a5ec94ae16089de31bbf7c0cd7a61ed15",
+        "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "head_branch": "dependabot/pip/databricks-sdk-gte-0.157.0",
+        "updated_at": "2026-10-28T13:14:45Z"
+      },
+      {
+        "number": 1254,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1254",
+        "title": "Update huggingface-hub requirement from >=2.2.0 to >=2.3.0",
+        "state": "open",
+        "draft": false,
+        "head_sha": "2f1b754192a104b08ab300bb24d5ad29c7a3c4d2",
+        "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "head_branch": "dependabot/pip/huggingface-hub-gte-2.3.0",
+        "updated_at": "2026-10-28T13:14:36Z"
+      },
       {
         "number": 1253,
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
@@ -6593,16 +7077,20 @@
         "state": "open",
         "draft": true,
         "head_sha": "e05d04605f78b5dc4ad94bdce0c5aed09b6781f6",
-        "status": "Exact-head CI 147 passed in 6.22s and gate passed; base 070d538 is one generated-data commit behind current main."
+        "base_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
+        "head_branch": "safety/fixed-horizon-accuracy-fresh-main-20261028-1259z",
+        "updated_at": "2026-10-28T13:10:47Z"
       },
       {
         "number": 1252,
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1252",
         "title": "Reapply OBJ mesh topology and triangulation on current main",
         "state": "open",
-        "draft": true,
+        "draft": false,
         "head_sha": "430629ecfa777516d9d25559c25e212026006f21",
-        "status": "Unrelated geometry proposal; CI/gate passed on observed head; unmerged."
+        "base_sha": "5b82de70e7bb0227b92435a89ce77ad6718ee1d6",
+        "head_branch": "feat/mesh-topology-obj-mainline-20261028",
+        "updated_at": "2026-10-28T12:48:04Z"
       },
       {
         "number": 1251,
@@ -6610,8 +7098,10 @@
         "title": "Research: carry current XRP intelligence ledger onto main",
         "state": "open",
         "draft": true,
-        "head_sha": "3f33885456085c3c8763461badbef3e34f73d701",
-        "status": "Research branch 7 ahead/8 behind current main; preserve and do not merge as-is."
+        "head_sha": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
+        "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+        "head_branch": "research/xrp-ledger-fresh-main-20261028-1217z",
+        "updated_at": "2026-10-28T13:20:30Z"
       },
       {
         "number": 1250,
@@ -6619,8 +7109,10 @@
         "title": "Safety: scope approval permissions and add push-event no-op",
         "state": "open",
         "draft": true,
-        "head_sha": "ef959edf0507ecf4f603a856719e1d72268bc2f2",
-        "status": "Static CI/gate pass; zero-job push event remains unresolved."
+        "head_sha": "2695307faba2b973499f716cda6ba99e60076330",
+        "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+        "head_branch": "safety/approval-workflow-push-noop-20261028-1210z",
+        "updated_at": "2026-10-28T12:21:33Z"
       },
       {
         "number": 1249,
@@ -6629,7 +7121,31 @@
         "state": "open",
         "draft": true,
         "head_sha": "9d46f742a14a7fb8ea448be2ce868dc10650d4c5",
-        "status": "Draft/unmerged; base behind current main."
+        "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+        "head_branch": "safety/xrp-forecast-ledger-validation-fresh-main-20261028-1208z",
+        "updated_at": "2026-10-28T12:09:28Z"
+      },
+      {
+        "number": 1248,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
+        "title": "Safety: enforce XRP forecast outcome provenance on fresh main",
+        "state": "open",
+        "draft": true,
+        "head_sha": "4334bc902472f1d84fc62c6cacf25aeca66befa9",
+        "base_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+        "head_branch": "research/xrp-forecast-ledger-validation-fix-20261028-1108z",
+        "updated_at": "2026-10-28T11:10:31Z"
+      },
+      {
+        "number": 1247,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1247",
+        "title": "Research: add immutable fixed-horizon XRP forecast ledger contract",
+        "state": "open",
+        "draft": true,
+        "head_sha": "adccea7259ad3f6635c4e055a082d4ae1ace2037",
+        "base_sha": "4e2d520e232943540f26782fc6d4d83b93bb050c",
+        "head_branch": "research/xrp-forecast-ledger-contract-20261028-1000z",
+        "updated_at": "2026-10-28T10:04:54Z"
       },
       {
         "number": 1246,
@@ -6638,7 +7154,86 @@
         "state": "open",
         "draft": true,
         "head_sha": "65750a1f6309648a4841343ed7ad24985153b22c",
-        "status": "Stale predecessor to fresh-main PR #1253."
+        "base_sha": "42fb527c00e481cc406b57e9636fa8b96ea3b699",
+        "head_branch": "safety/fixed-horizon-accuracy-20261028-0902z",
+        "updated_at": "2026-10-28T09:04:05Z"
+      },
+      {
+        "number": 1245,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1245",
+        "title": "Safety: persist fail-closed XRP summaries without main writes",
+        "state": "open",
+        "draft": true,
+        "head_sha": "ceb74ce37c278accc9ffc521bababded91ed6c55",
+        "base_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
+        "head_branch": "fix/xrp-summary-fail-closed-20261028t0810z",
+        "updated_at": "2026-10-28T08:11:51Z"
+      },
+      {
+        "number": 1241,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+        "title": "Safety: gate external deployments and disable automated merge on fresh main",
+        "state": "open",
+        "draft": true,
+        "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
+        "base_sha": "8beef04c25a3d182c2366c82c1257bacfa1799f2",
+        "head_branch": "safety/external-write-gates-fresh-main-20261028T0458Z",
+        "updated_at": "2026-10-28T05:01:31Z"
+      },
+      {
+        "number": 1240,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1240",
+        "title": "Safety: gate external platform writes behind manual confirmation",
+        "state": "open",
+        "draft": true,
+        "head_sha": "7b7939758526a6a90e4310aa59babc75541a7443",
+        "base_sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
+        "head_branch": "safety/external-deploy-manual-confirm-20261028-0406z",
+        "updated_at": "2026-10-28T04:09:44Z"
+      },
+      {
+        "number": 1239,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1239",
+        "title": "Safety: disable mutation-capable merge queue on fresh main",
+        "state": "open",
+        "draft": true,
+        "head_sha": "8b215b8c9db2018ebae8a7e42008239b5f05a6e1",
+        "base_sha": "a77c329157c85c3cb914233a5761ab4eac6bd0d4",
+        "head_branch": "safety/merge-queue-readonly-fresh-main-20261028",
+        "updated_at": "2026-10-28T03:07:30Z"
+      },
+      {
+        "number": 1238,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1238",
+        "title": "Safety: make financial data refresh read-only and artifact-based",
+        "state": "open",
+        "draft": true,
+        "head_sha": "cb2e98d0f1358d924bce2b8bd75f0612fc5519e2",
+        "base_sha": "d0fd18f7efa53eda246c7cddd727706456e77c59",
+        "head_branch": "safety/financial-refresh-artifact-only-20261028",
+        "updated_at": "2026-10-28T03:03:46Z"
+      },
+      {
+        "number": 1237,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+        "title": "Safety: make scheduled signal writers read-only on fresh main",
+        "state": "open",
+        "draft": true,
+        "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
+        "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+        "head_branch": "safety/signal-writers-artifact-only-fresh-main-20261028-0220z",
+        "updated_at": "2026-10-28T02:20:47Z"
+      },
+      {
+        "number": 1236,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+        "title": "Safety: fresh-main deterministic XRP summary fallback",
+        "state": "open",
+        "draft": true,
+        "head_sha": "0937a9ec4d6e95bd606303f1de4ac20602614566",
+        "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+        "head_branch": "safety/signal-summary-fallback-fresh-main-20261028-0209z",
+        "updated_at": "2026-10-28T02:13:47Z"
       }
     ],
     "current_pr_1249_state": {
@@ -6702,7 +7297,7 @@
       "base_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
       "head_sha": "e05d04605f78b5dc4ad94bdce0c5aed09b6781f6",
       "ahead_by": 3,
-      "behind_by": 1,
+      "behind_by": 8,
       "ci": {
         "status": "PASS",
         "tests_passed": 147,
@@ -6715,12 +7310,8 @@
         "run_id": 40692786488,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40692786488"
       },
-      "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
-      "main_modified_by_this_run": false,
-      "merge_performed": false,
-      "deployment_executed": false,
-      "limitation": "One generated paper-trading-log commit is ahead of PR base; no code conflict observed, but review against current main before merge.",
-      "status": "OPEN_DRAFT_UNMERGED; EXACT_HEAD_CI_PASS; ONE_GENERATED_LOG_COMMIT_BEHIND"
+      "successor_pr": 1259,
+      "note": "Stale predecessor; fresh-main successor #1259 is exact-head CI/gate verified."
     },
     "current_pr_1252_state": {
       "pr": 1252,
@@ -6750,10 +7341,10 @@
       "merge_performed": false,
       "action": "Preserve the branch and historical snapshots; do not merge as-is."
     },
-    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1311Z.json",
+    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1315Z.json",
     "repository_security_audit": {
-      "observed_at_utc": "2026-10-28T13:15:30Z",
-      "main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "observed_at_utc": "2026-10-28T14:10:26Z",
+      "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
       "workflow_file_count": 84,
       "rulesets": [
         {
@@ -6781,7 +7372,7 @@
       "caveat": "One disabled ruleset is confirmed; do not infer that all main protections are absent. No security-alert count is available."
     },
     "dependency_audit": {
-      "observed_at_utc": "2026-10-28T13:15:30Z",
+      "observed_at_utc": "2026-10-28T14:10:26Z",
       "primary_manifests": [
         "requirements.txt",
         "pyproject.toml",
@@ -6799,28 +7390,34 @@
         "websockets in barrot_agent/tools/upgrade_bundle.py"
       ],
       "ci_masking": "CI explicitly installs PyJWT and cryptography outside the primary manifests.",
-      "lockfile_status": "No root lockfile among 166 returned root entries; dependency versions are lower-bounded rather than resolved/locked.",
+      "lockfile_status": "No resolved root lockfile verified; lower-bound manifests remain unpinned beyond declared ranges.",
       "proposed_fix_pr": {
-        "number": 1256,
-        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
-        "state": "OPEN_DRAFT",
-        "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
-        "head_sha": "13998c17f0fe93ab62960dc45dfa51cf4f527637",
-        "ci_status": "IN_PROGRESS_AT_CAPTURE",
-        "gate_status": "PASS"
-      }
+        "number": 1258,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1258",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "base_sha": "b390c3aa469401b07a470e3718a4e6fff9f2e547",
+        "head_sha": "dfc400d87bf8e759c054a2148f8f7e07a6cf6c80",
+        "current_compare": "1_AHEAD_1_BEHIND",
+        "ci_status": "PASS_147_TESTS_6.41S",
+        "ci_run_id": 40702184825,
+        "gate_status": "PASS",
+        "gate_run_id": 40702184699
+      },
+      "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12"
     },
     "current_pr_1256_state": {
       "pr": 1256,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
-      "state": "OPEN_DRAFT_UNMERGED",
+      "state": "open",
+      "draft": true,
       "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
       "head_sha": "13998c17f0fe93ab62960dc45dfa51cf4f527637",
       "ahead_by": 4,
-      "behind_by": 0,
-      "mergeable": true,
+      "behind_by": 7,
       "ci": {
-        "status": "IN_PROGRESS_AT_CAPTURE",
+        "status": "PASS",
+        "tests_passed": 147,
+        "duration_seconds": 7.31,
         "run_id": 40694932828,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694932828"
       },
@@ -6829,32 +7426,68 @@
         "run_id": 40694932868,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694932868"
       },
-      "main_modified_by_this_run": false,
-      "merge_performed": false,
-      "deployment_executed": false
+      "successor_pr": 1258,
+      "note": "Stale predecessor; preserve, do not merge as-is."
     },
-    "snapshot_blob_sha": "23f39da1939a5b1a9f8f6445713709d8514a6308",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:15:30Z",
-    "snapshot_commit_sha": "1967a927e99a3f420038ebd4a9c11aeb1f2fc6da",
-    "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T13:20:00Z",
-      "status": "PASS_ON_VERIFIED_INDEX_HEAD_2EAA61; FOLLOWUP_EVIDENCE_APPEND_REQUIRES_CHECK",
-      "snapshot_blob_sha": "23f39da1939a5b1a9f8f6445713709d8514a6308",
-      "snapshot_hash_matches_index": true,
-      "verified_index_head_sha": "2eaa61bac23fe217712abb6026106ece7e56e73a",
+    "current_pr_1258_state": {
+      "pr": 1258,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1258",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "b390c3aa469401b07a470e3718a4e6fff9f2e547",
+      "head_sha": "dfc400d87bf8e759c054a2148f8f7e07a6cf6c80",
+      "ahead_by": 1,
+      "behind_by": 1,
       "ci": {
         "status": "PASS",
-        "tests_passed": 145,
-        "duration_seconds": 5.96,
-        "run_id": 40695255777,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40695255777"
+        "tests_passed": 147,
+        "duration_seconds": 6.41,
+        "run_id": 40702184825,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702184825"
       },
       "gate": {
         "status": "PASS",
-        "run_id": 40695255815,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40695255815"
+        "run_id": 40702184699,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702184699"
       },
-      "note": "The snapshot hash and exact-head CI/gate are verified for index head 2eaa61. This follow-up verification record creates a new index commit that must be checked separately."
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "deployment_executed": false,
+      "limitation": "Main has since advanced one generated paper-trading-log commit. No overlapping changed paths; review current base before approval."
+    },
+    "current_pr_1259_state": {
+      "pr": 1259,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1259",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
+      "head_sha": "46c92f895246216869633b74ee452e3e279dff43",
+      "ahead_by": 1,
+      "behind_by": 0,
+      "ci": {
+        "status": "PASS",
+        "tests_passed": 147,
+        "duration_seconds": 4.18,
+        "run_id": 40703061966,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40703061966"
+      },
+      "gate": {
+        "status": "PASS",
+        "run_id": 40703061949,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40703061949"
+      },
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "deployment_executed": false,
+      "limitation": "Retires invalid variable-horizon scoring; does not implement the durable feature store or establish predictive skill."
+    },
+    "snapshot_blob_sha": "a4ab25f73a6ac30e64c4a4670ac2e419574ec911",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T14:10:26Z",
+    "snapshot_commit_sha": "e6eca3582e32b888f9d2c1d229257f1e57af78e4",
+    "post_snapshot_verification": {
+      "verified_at_utc": null,
+      "status": "PENDING_EXACT_HEAD_CI_AFTER_INDEX_UPDATE",
+      "snapshot_blob_sha": "a4ab25f73a6ac30e64c4a4670ac2e419574ec911",
+      "snapshot_hash_matches_index": true,
+      "note": "Snapshot blob SHA verified at write time; exact-head CI and fail-closed gate must be checked after the index update commit."
     }
   },
   "sources": [
@@ -9545,6 +10178,142 @@
       "title": "Exact-head CI for latest security/dependency ledger index",
       "accessed_at_utc": "2026-10-28T13:20:00Z",
       "note": "Index commit 2eaa61bac23fe217712abb6026106ece7e56e73a passed 145 tests in 5.96s; fail-closed gate run 40695255815 passed. Snapshot blob 23f39da1939a5b1a9f8f6445713709d8514a6308 matched the index. This verification applies to that exact index head."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26-RERUN",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/fr/transparency",
+      "title": "Circle USDC transparency dashboard, as of 26 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official Circle dashboard as of 26 Oct reports $71.0B USDC circulation, $71.2B reserves, 7-day issuance/redemption $11.6B/$12.7B, 30-day $44.5B/$48.7B, and 365-day $358.7B/$363.8B. Global figures; not chain- or destination-attributed."
+    },
+    {
+      "id": "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-XRPINSIGHTS",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/",
+      "title": "XRP Insights ETF tracker, 27 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Tracker reports 27 Oct net outflows of 433,940 XRP (about $577.1K), holdings about 1.19B XRP and $1.56B net assets across six spot funds plus BITW; GXRP excluded from flow calculation during a data-capture gap."
+    },
+    {
+      "id": "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-MAKETO",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "title": "Maketo XRP ETF flows page, 27 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Page displays $0 for the latest 27 Oct observation and warns that a day without a bar may mean funds did not fully report. Fund universe and completeness are not aligned to XRP Insights in the captured page."
+    },
+    {
+      "id": "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-29",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.nasdaq.com/press-release/coinbase-announces-date-third-quarter-2026-financial-results-2026-10-14",
+      "title": "Coinbase Q3 2026 results date announcement",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Coinbase announced Q3 2026 results and related materials will publish Thursday 29 Oct 2026 after market close; the Q&A is scheduled later that day. Results were not yet published at this capture."
+    },
+    {
+      "id": "SRC-GH-MAIN-CROSS-ANALYSIS-2026-10-28T1351Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b390c3aa469401b07a470e3718a4e6fff9f2e547",
+      "title": "Main cross-analysis refresh commit",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Commit b390c3a at 13:51:40Z changed generated entity_cooccurrence.json, entity_sentiment_profile.json and sentiment_shift.json only. It followed the scheduled Cross Analysis run; this is generated-data writing to main, not reviewed model-code change."
+    },
+    {
+      "id": "SRC-GH-ACTIONS-CROSS-ANALYSIS-2026-10-28T1351Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40700310719",
+      "title": "Scheduled Cross Analysis workflow run",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Run completed successfully at 13:51:33Z on prior head 4448889; main commit b390c3a followed at 13:51:40Z with generated cross-analysis JSON changes."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPERTRADER-2026-10-28T1404Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b08d8531ae64f59ba5ead2953ed331192b7dba12",
+      "title": "Latest main paper-trading-log append",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Current main head b08d8531ae64f59ba5ead2953ed331192b7dba12 is a paper-trading-log append at 2026-10-28T14:04:51Z; changed file: web/paper_trading_log.jsonl. Exact-head main CI is not verified; commit message is marked [skip ci]."
+    },
+    {
+      "id": "SRC-GH-PR1256-CURRENT-DIVERGENCE-2026-10-28T1410Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
+      "title": "PR #1256 stale-base comparison",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Original dependency-manifest branch compares 4 commits ahead and 7 behind current main. Exact-head CI passed on its older head, but do not merge it as-is; fresh-main successor #1258 exists."
+    },
+    {
+      "id": "SRC-GH-PR1258-CI-2026-10-28T1403Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702184825",
+      "title": "Fresh-main runtime dependency manifest CI",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "PR #1258 exact head dfc400d passed 147 tests in 6.41s; fail-closed gate run 40702184699 passed. Main later advanced by one generated paper-trading-log commit; current compare is 1 ahead/1 behind with no overlapping changed paths. PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1259-CI-2026-10-28T1409Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40703061966",
+      "title": "Fresh-main fixed-horizon accuracy evaluator CI",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "PR #1259 exact head 46c92f8 passed 147 tests in 4.18s; fail-closed gate run 40703061949 passed. Base b08d853; branch 1 ahead/0 behind at capture. Draft/unmerged."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1403Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702168314",
+      "title": "Approval workflow zero-job run, first observed event metadata mismatch",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Run has zero jobs and failure. Branch-filtered runs listing reported event=push, while direct run endpoint reported event=pull_request. Event attribution is inconsistent across endpoints; root cause unresolved."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1408Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702993670",
+      "title": "Approval workflow zero-job run on PR #1259 branch push",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Run reported event=push, failure, and zero jobs. The workflow file on main declares workflow_dispatch only. This does not establish why GitHub records the run or prove a containment fix."
+    },
+    {
+      "id": "SRC-GH-MAIN-SIGNAL-SUMMARY-WORKFLOW-2026-10-28T1410Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml",
+      "title": "Current main signal-summary workflow still writes generated output",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Current main workflow declares workflow_dispatch, workflow_run and schedule triggers, then commits generated summary JSON/audio and git-pushes to main. The artifact-only replacement remains unmerged."
+    },
+    {
+      "id": "SRC-PYPI-PYJWT-2.15.1-2026-10-28",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://pypi.org/project/PyJWT/2.15.1/",
+      "title": "PyJWT 2.15.1 release on PyPI",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official PyPI page confirms PyJWT 2.15.1 was released 28 Sep 2026 with publishing provenance. This confirms the proposed minimum version exists, not that the repository dependency set is fully resolved."
+    },
+    {
+      "id": "SRC-PYPI-CRYPTOGRAPHY-50.0.2-2026-10-28",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://pypi.org/project/cryptography/50.0.2/",
+      "title": "cryptography 50.0.2 release on PyPI",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official PyPI page confirms cryptography 50.0.2 was released 30 Sep 2026. This confirms the proposed minimum version exists, not that the full dependency set is vulnerability-free."
+    },
+    {
+      "id": "SRC-GH-OPEN-PR-INVENTORY-2026-10-28T1410Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/pulls?state=open&per_page=100",
+      "title": "Current open PR inventory",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "GitHub returned 89 open PRs in the first 100-item page. Several historical safety and research PRs have stale bases; no PR was merged or closed."
+    },
+    {
+      "id": "SRC-GH-PR1258-BASE-COMPARE-2026-10-28T1410Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1258",
+      "title": "PR #1258 current-main compare",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Compare against current main: 1 ahead / 1 behind. The main-side commit after its base changes web/paper_trading_log.jsonl; no overlapping changed paths. Keep draft/unmerged."
     }
   ],
   "limitations": [
@@ -9608,7 +10377,12 @@
     "Security-alert counts are unknown because Dependabot/code-scanning endpoints were rejected by the current connector's allowed-endpoint policy.",
     "PR #1256 core CI was still in progress at the 13:15 snapshot; its gate had passed, but no test result was claimed at capture.",
     "PR #1256 dependency-manifest fix passed CI/gate but remains draft/unmerged; main still omits the four packages until an approved merge.",
-    "The latest index verification record is being appended in a new commit; that evidence append requires its own CI check."
+    "The latest index verification record is being appended in a new commit; that evidence append requires its own CI check.",
+    "XRP Insights and Maketo report different 27 Oct ETF flow values; fund universes and completeness are not reconciled.",
+    "Coinbase Q3 2026 results are scheduled for 29 Oct after market close and were not available at this capture.",
+    "PR #1258 dependency fix and PR #1259 fixed-horizon evaluator passed exact-head CI/gates but remain draft and unmerged.",
+    "Approval workflow has recurring zero-job failures; event metadata differs across API views and root cause remains unresolved.",
+    "Current main still has generated-data direct-write workflows; durable append-only staging and reviewed promotion remain unimplemented."
   ],
   "run_updates": [
     {
@@ -11157,33 +11931,58 @@
         "merge_performed": false,
         "deployment_executed": false
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T14:10:26Z",
+      "update_type": "XRP_MARKET_DATA_QUALITY_AND_FRESH_MAIN_SAFETY_SUCCESSORS",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1410Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1410Z.json",
+      "details": "Captured Circle USDC global circulation as of 26 Oct, conflicting secondary XRP ETF flow observations for 27 Oct, Coinbase Q3 results date, current main generated-data writes, PR #1258 dependency-manifest CI, PR #1259 fixed-horizon evaluator CI, and recurring zero-job approval workflow anomaly. Main at capture: b08d8531ae64f59ba5ead2953ed331192b7dba12. Snapshot blob SHA a4ab25f73a6ac30e64c4a4670ac2e419574ec911; snapshot commit e6eca3582e32b888f9d2c1d229257f1e57af78e4. Main was not modified.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26-RERUN",
+        "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-XRPINSIGHTS",
+        "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-MAKETO",
+        "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-29",
+        "SRC-GH-MAIN-CROSS-ANALYSIS-2026-10-28T1351Z",
+        "SRC-GH-ACTIONS-CROSS-ANALYSIS-2026-10-28T1351Z",
+        "SRC-GH-MAIN-PAPERTRADER-2026-10-28T1404Z",
+        "SRC-GH-PR1256-CURRENT-DIVERGENCE-2026-10-28T1410Z",
+        "SRC-GH-PR1258-CI-2026-10-28T1403Z",
+        "SRC-GH-PR1259-CI-2026-10-28T1409Z",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1403Z",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1408Z",
+        "SRC-GH-MAIN-SIGNAL-SUMMARY-WORKFLOW-2026-10-28T1410Z",
+        "SRC-PYPI-PYJWT-2.15.1-2026-10-28",
+        "SRC-PYPI-CRYPTOGRAPHY-50.0.2-2026-10-28",
+        "SRC-GH-OPEN-PR-INVENTORY-2026-10-28T1410Z",
+        "SRC-GH-PR1258-BASE-COMPARE-2026-10-28T1410Z"
+      ],
+      "validation": {
+        "snapshot_json_parse": "PASS",
+        "source_ids_unique": true,
+        "new_source_count": 17,
+        "snapshot_blob_sha": "a4ab25f73a6ac30e64c4a4670ac2e419574ec911",
+        "snapshot_commit_sha": "e6eca3582e32b888f9d2c1d229257f1e57af78e4",
+        "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false,
+        "forecast_status": "NOT_ISSUED",
+        "pr1258_ci": "PASS_147_TESTS_6.41S",
+        "pr1258_gate": "PASS",
+        "pr1259_ci": "PASS_147_TESTS_4.18S",
+        "pr1259_gate": "PASS",
+        "approval_workflow_zero_job_root_cause": "UNRESOLVED"
+      }
     }
   ],
   "mission_priority": {
-    "highest_priority": "XRP intelligence and prediction-engine mastery",
-    "execution_and_verification_foundation": "Barrot V3",
-    "operating_mode": "Quiet, sustained, non-disruptive research using lawful public or authorized sources",
-    "mandatory_controls": [
-      "Separate confirmed facts, sourced claims, inference, speculation, unknowns and disconfirming evidence.",
-      "No unauthorized access, deception, private data, manipulation or illegal activity.",
-      "No forecast without timestamped cutoff, fixed horizon, target, assumptions, probability/confidence, alternatives, model version and outcome scoring protocol.",
-      "No real-money use before walk-forward validation, calibration, leakage controls, drift monitoring and paper/shadow evaluation.",
-      "Preserve dirty worktrees and current V3 code; never reset, clean, stash, overwrite, discard, force-push, merge or make consequential external changes without approval.",
-      "Treat DESIGNED, EXECUTED and VERIFIED as distinct; record evidence for every claimed action.",
-      "Do not claim live collaboration across target platforms without tested authentication, permissions and end-to-end evidence."
-    ],
-    "target_platforms": [
-      "ChatGPT",
-      "Claude",
-      "Grok",
-      "Gemini",
-      "Copilot",
-      "Codex",
-      "Hugging Face",
-      "Kaggle",
-      "Databricks"
-    ],
-    "forecast_status": "NOT_ISSUED"
+    "as_of_utc": "2026-10-28T14:10:26Z",
+    "primary": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
+    "current_forecast_status": "NOT_ISSUED",
+    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1410Z.json",
+    "next_action": "Verify exact-head CI for the updated research ledger index; then continue synchronized market-data reconciliation and durable feature-store design."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
