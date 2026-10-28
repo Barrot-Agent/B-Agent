@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1171,
+    "xrp_entries": 1172,
     "btc_entries": 1200
   },
-  "unique_pairs_found": 3174,
+  "unique_pairs_found": 3183,
   "pairs": [
     {
       "entity_a": "Ripple",
@@ -1671,6 +1671,21 @@
       ]
     },
     {
+      "entity_a": "Ethereum",
+      "entity_b": "SEC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
+          "asset": "XRP"
+        },
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETF",
       "entity_b": "XRP",
       "cooccurrence_count": 4,
@@ -2462,21 +2477,6 @@
         {
           "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "SEC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
-          "asset": "BTC"
         }
       ]
     },
@@ -27055,6 +27055,105 @@
       "example_headlines": [
         {
           "title": "EigenLayer Unveils Dual-Staking Extension For Bitcoin Asset Security",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arbitrum",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arbitrum",
+      "entity_b": "Real World Asset Funds",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arbitrum",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arbitrum",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Real World Asset Funds",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Real World Asset Funds",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Real World Asset Funds",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
           "asset": "XRP"
         }
       ]
