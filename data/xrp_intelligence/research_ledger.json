@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T04:02:35Z",
+    "captured_at_utc": "2026-10-28T04:11:30Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "cb49b0b092bcb89e79d75afc6a842282f78d2c05",
+      "main_sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -132,20 +132,20 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "sha": "cb49b0b092bcb89e79d75afc6a842282f78d2c05",
-        "message": "Cross-analysis refresh [skip ci]",
-        "authored_at_utc": "2026-10-28T03:52:00Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/cb49b0b092bcb89e79d75afc6a842282f78d2c05",
-        "scope": "Generated-data-only refresh of entity_cooccurrence.json, entity_sentiment_profile.json, and sentiment_shift.json; no code or workflow changes."
+        "sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
+        "message": "Paper trade cycle [skip ci]",
+        "authored_at_utc": "2026-10-28T04:05:32Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/6a616e75a8afb2917a1c42fd302277fee258d89a",
+        "scope": "One appended line in web/paper_trading_log.jsonl only; no code/workflow changes."
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "cb49b0b092bcb89e79d75afc6a842282f78d2c05",
+        "main_sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
         "main_branch_protected": true,
         "branch_protection_details": "Detailed protection read remains 403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION; effective required checks not independently verified.",
         "main_ci": {
           "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-          "note": "Latest observed main head is a generated-data-only Cross-analysis refresh [skip ci]; no exact-head full CI evidence was established in this run."
+          "note": "Latest main commit is a generated paper-trading-log append with [skip ci]; exact-head full CI and effective required-check rules were not verified."
         }
       },
       "current_research_head": "d4fd1a34370ca3d53f736660de11ed9174207cf0",
@@ -252,8 +252,18 @@
         "main_modified_by_this_run": false,
         "merge_performed": false
       },
-      "current_open_prs_observed_at_utc": "2026-10-28T04:02:35Z",
+      "current_open_prs_observed_at_utc": "2026-10-28T04:11:30Z",
       "current_open_prs": [
+        {
+          "number": 1227,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
+          "state": "open",
+          "draft": true,
+          "head_sha": "b9687c3e54df6d03e5a717161e5d8eb2771eb0da",
+          "last_verified_ci": "PASS_146_TESTS_6.05S",
+          "last_verified_gate": "PASS",
+          "note": "Research ledger updated; remains draft/unmerged and based on older main."
+        },
         {
           "number": 1236,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
@@ -272,7 +282,7 @@
           "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
           "last_verified_ci": "PASS_146_TESTS",
           "last_verified_gate": "PASS",
-          "note": "Two scheduled signal writers artifact-only; unmerged."
+          "note": "Scheduled signal writers artifact-only; unmerged."
         },
         {
           "number": 1238,
@@ -292,7 +302,19 @@
           "head_sha": "8b215b8c9db2018ebae8a7e42008239b5f05a6e1",
           "last_verified_ci": "PASS_150_TESTS",
           "last_verified_gate": "PASS",
-          "note": "Proposed read-only merge queue; unmerged. Current main workflow remains write-capable until an approved fix lands."
+          "note": "Read-only merge queue proposal; unmerged."
+        },
+        {
+          "number": 1240,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1240",
+          "state": "open",
+          "draft": true,
+          "head_sha": "7b7939758526a6a90e4310aa59babc75541a7443",
+          "base_sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
+          "mergeable": true,
+          "last_verified_ci": "PASS_147_TESTS_5.91S",
+          "last_verified_gate": "PASS",
+          "note": "Manual-only external deployment gate; no deployment executed; draft/unmerged."
         }
       ]
     },
@@ -1152,25 +1174,55 @@
       },
       {
         "id": "COINBASE-USDC-REWARDS-REGULATORY-CHANNEL-2026-10-28",
-        "evidence_class": "SECONDARY_UNVERIFIED",
-        "status": "AP_REPORT_CAPTURED; PRIMARY_PRODUCT_TERMS_NOT_VERIFIED",
-        "claim": "AP reports that exchanges such as Coinbase may continue certain interest-like rewards on stablecoin balances under the emerging GENIUS Act framework, while payment-stablecoin issuers are barred from paying yield solely for holding the stablecoin.",
-        "interpretation": "If product terms and legal treatment permit, distributor-led rewards could affect where users hold USDC and how distribution economics are divided between Coinbase and Circle. This is a conditional commercial hypothesis, not a verified change to their contract or a signal of XRP accumulation.",
+        "evidence_class": "COMPANY_REPORTED_WITH_REGULATORY_CONTEXT",
+        "status": "OFFICIAL_PRODUCT_TERMS_CAPTURED; REGION_SPECIFIC; GENIUS_IMPLICATION_CONDITIONAL",
+        "claim": "Coinbase describes USDC Rewards as a Coinbase-funded loyalty program. Its official terms say rates vary by country/account and Coinbase does not use or lend customer USDC without instruction; its EEA help page says the program ended for EEA customers due to MiCA. AP separately reports that some exchange-led rewards may continue under the U.S. GENIUS Act implementation framework.",
+        "interpretation": "Distributor rewards may influence platform retention and USDC distribution, but availability is jurisdiction-specific. Neither rewards nor Circle reserve economics establishes XRP buying, collateralization or bridge demand.",
         "source_ids": [
-          "SRC-AP-STABLECOIN-REWARDS-2026-10"
+          "SRC-AP-STABLECOIN-REWARDS-2026-10",
+          "SRC-OCC-GENIUS-FINAL-RULE-2026-10-21",
+          "SRC-COINBASE-USDC-REWARDS-OFFICIAL-2026-10-28",
+          "SRC-COINBASE-USDC-REWARDS-EEA-MICA-2026-10-28"
         ],
-        "uncertainty": "Product-specific terms, eligible jurisdictions, exact legal entity and the interaction with Coinbase–Circle distribution agreements require primary-source confirmation; the final rule is not effective until Jan 18, 2027."
+        "uncertainty": "The OCC rule is not effective until Jan 18, 2027. Product terms vary by account and jurisdiction; no XRP flow response was measured."
       },
       {
         "id": "COINBASE-IRELAND-SAFEGUARDING-ENFORCEMENT-2026-10-22",
-        "evidence_class": "SECONDARY_UNVERIFIED",
-        "status": "REGULATORY_ENFORCEMENT_REPORTED; XRP_CUSTODY_IMPACT_NOT_ESTABLISHED",
-        "claim": "Reuters reported on Oct 22, 2026 that the Central Bank of Ireland fined Coinbase's Irish unit €3.25 million for safeguarding and outsourcing breaches occurring between 2020 and 2025.",
-        "interpretation": "This is relevant to Coinbase's institutional trust, operational controls and regulatory-risk profile. It does not show a current breach, customer asset loss, or a failure involving XRP specifically.",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "OFFICIAL_REGULATOR_ACTION; SANCTION_SUBJECT_TO_HIGH_COURT_CONFIRMATION; NO_XRP_SPECIFIC_FAILURE_ESTABLISHED",
+        "claim": "The Central Bank of Ireland states Coinbase Ireland Limited was fined €3,252,618 for safeguarding and outsourcing breaches between Nov 1, 2020 and Aug 19, 2025. The regulator describes inadequate outsourcing governance, control testing and periods of underfunding in a designated safeguarding account. The sanction is subject to High Court confirmation.",
+        "interpretation": "This is a material historical operational-control observation for Coinbase's Irish e-money entity. It does not establish a current failure, XRP-specific custody loss, or a failure at every Coinbase entity.",
         "source_ids": [
+          "SRC-CBI-COINBASE-IRELAND-FINE-OFFICIAL-2026-10-22",
           "SRC-REUTERS-COINBASE-IRELAND-FINE-2026-10-22"
         ],
-        "uncertainty": "The fine concerns historical control failures and a specific Irish entity; implications for current products and other Coinbase entities should not be generalized without regulator documentation."
+        "uncertainty": "High Court confirmation status should be rechecked. The enforcement concerns a defined historical period and legal entity."
+      },
+      {
+        "id": "EXTERNAL-PLATFORM-DEPLOY-PUSH-TRIGGER-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "OBSERVED_ON_MAIN; FIX_PROPOSED_PR1240; EXACT_HEAD_CI_GATE_PASS",
+        "claim": "Main's barrot-ops.yml triggers on every push to main and can push origin/main to a configured Hugging Face Space and overwrite a Databricks workspace notebook. PR #1240 removes the push trigger and requires a manual workflow_dispatch boolean confirmation.",
+        "interpretation": "The current automatic external-write path conflicts with the approval boundary. The proposed manual gate reduces accidental changes but does not establish environment-level reviewer protection. PR #1240 remains draft and unmerged.",
+        "source_ids": [
+          "SRC-REPO-BARROT-OPS-MAIN-2026-10-28",
+          "SRC-REPO-PR1240-STATE-2026-10-28T0411Z",
+          "SRC-REPO-PR1240-CI-2026-10-28T0411Z",
+          "SRC-REPO-PR1240-GATE-2026-10-28T0411Z"
+        ],
+        "uncertainty": "A manually confirmed dispatch still permits external writes by an authorized workflow actor; environment reviewer rules and token scopes were not verified."
+      },
+      {
+        "id": "APPROVAL-WORKFLOW-ZERO-JOB-ANOMALY-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "ZERO_JOB_PUSH_EVENT_REPRODUCED; ROOT_CAUSE_UNKNOWN",
+        "claim": "GitHub reports a failed push-event run for barrot-approve-pr.yml with zero jobs, while the currently fetched main and research versions have identical blob SHA and declare workflow_dispatch inputs only.",
+        "interpretation": "The failed run record is real, but the cause is not established. Do not infer a stale revision, repository setting or external trigger without more evidence.",
+        "source_ids": [
+          "SRC-REPO-APPROVAL-ZERO-JOB-RUN-2026-10-28T0405Z",
+          "SRC-REPO-APPROVAL-WORKFLOW-CURRENT-2026-10-28"
+        ],
+        "uncertainty": "Original event payload and definitive workflow-history explanation were not available through the connector. Do not trigger the approval workflow as a diagnostic because it can write approval labels/comments."
       }
     ],
     "relationship_graph": [
@@ -1752,12 +1804,14 @@
       {
         "id": "EDGE-COINBASE-USDC-REWARDS-REPORTED-2026",
         "from": "Coinbase",
-        "relation": "reported by AP as offering certain USDC-balance rewards through an exchange/distributor model",
+        "relation": "Coinbase documents a Coinbase-funded USDC rewards/loyalty program with region- and account-specific eligibility; its EEA help page says the program ended for EEA customers due to MiCA",
         "to": "Eligible Coinbase customers holding USDC",
         "evidence_ids": [
-          "SRC-AP-STABLECOIN-REWARDS-2026-10"
+          "SRC-AP-STABLECOIN-REWARDS-2026-10",
+          "SRC-COINBASE-USDC-REWARDS-OFFICIAL-2026-10-28",
+          "SRC-COINBASE-USDC-REWARDS-EEA-MICA-2026-10-28"
         ],
-        "status": "SECONDARY_REPORT; PRODUCT_TERMS_AND_SCOPE_NOT_PRIMARY_VERIFIED; NOT_AN_XRP_FLOW"
+        "status": "COMPANY_REPORTED_PRODUCT_TERMS; REGION_SPECIFIC; NO_XRP_FLOW_ESTABLISHED"
       },
       {
         "id": "EDGE-IRELAND-COINBASE-SAFEGUARDING-ENFORCEMENT-2026",
@@ -1765,9 +1819,21 @@
         "relation": "reported by Reuters as imposing a €3.25M fine for historical safeguarding and outsourcing breaches",
         "to": "Coinbase's Irish unit",
         "evidence_ids": [
-          "SRC-REUTERS-COINBASE-IRELAND-FINE-2026-10-22"
+          "SRC-REUTERS-COINBASE-IRELAND-FINE-2026-10-22",
+          "SRC-CBI-COINBASE-IRELAND-FINE-OFFICIAL-2026-10-22"
         ],
-        "status": "SECONDARY_REPORT_OF_REGULATORY_ACTION; HISTORICAL_PERIOD_2020-2025; NO_XRP_SPECIFIC_FAILURE_ESTABLISHED"
+        "status": "OFFICIAL_REGULATOR_RELEASE; HISTORICAL_2020-2025; SANCTION_SUBJECT_TO_HIGH_COURT_CONFIRMATION; NO_XRP_SPECIFIC_FAILURE_ESTABLISHED"
+      },
+      {
+        "id": "EDGE-COINBASE-USDC-REWARDS-OFFICIAL-TERMS-2026",
+        "from": "Coinbase",
+        "relation": "funds and administers a region-specific USDC rewards program; official terms say Coinbase does not use/lend customer USDC without instruction",
+        "to": "Eligible USDC customers",
+        "evidence_ids": [
+          "SRC-COINBASE-USDC-REWARDS-OFFICIAL-2026-10-28",
+          "SRC-COINBASE-USDC-REWARDS-EEA-MICA-2026-10-28"
+        ],
+        "status": "COMPANY_REPORTED; ELIGIBILITY_VARIES; EEA_PROGRAM_ENDED_UNDER_MICA"
       }
     ],
     "competing_hypotheses": [
@@ -2217,20 +2283,22 @@
         "hypothesis": "The prospective GENIUS Act framework and distributor-led USDC rewards could alter stablecoin distribution incentives between Circle and Coinbase, but any XRP impact is indirect and unproven.",
         "supporting_evidence": [
           "OCC's final rule was published Oct 21, 2026 and is stated to take effect Jan 18, 2027.",
-          "AP reports that exchange-led stablecoin rewards may remain available under certain arrangements while issuer yield for passive holding is restricted.",
-          "Prior ledger evidence documents a material Coinbase–Circle USDC distribution/economics relationship."
+          "Coinbase's official help describes USDC Rewards as Coinbase-funded and region/account specific.",
+          "Coinbase's EEA help page says USDC Rewards ended for EEA customers due to MiCA.",
+          "AP reports that some exchange-led rewards may continue under the U.S. framework, but this does not settle product-specific legal treatment."
         ],
         "disconfirming_or_alternative_evidence": [
-          "The rule is not yet effective at this snapshot cutoff and applicability is entity- and activity-specific.",
-          "Coinbase product terms and the current Coinbase–Circle commercial allocation were not re-verified in this run.",
-          "USDC distribution or balances can grow without XRP being bought, posted as collateral, or used as a bridge asset.",
-          "Regulatory changes may affect all competing payment stablecoins and exchanges rather than uniquely benefiting Coinbase or Circle."
+          "The OCC rule is not yet effective and applies according to entity/activity scope.",
+          "Coinbase's official docs show geographic differences, including EEA program termination under MiCA.",
+          "Coinbase states it does not use or lend customer USDC without instruction; reward balances do not imply deployable collateral or reserve flows.",
+          "USDC distribution can change without XRP being bought, collateralized or used as a bridge asset.",
+          "No public evidence in this run measures an XRP spot or bridge-path effect caused by rewards or regulation."
         ],
         "test_plan": [
-          "Capture official Coinbase USDC reward terms and Circle distribution-cost disclosures with effective dates.",
-          "Track USDC balances and net issuance, Coinbase product balances where publicly disclosed, and independent stablecoin market shares.",
-          "Separately measure XRPL-native USDC supply/transfers, XRP bridge-path share, XRP spot/derivatives flows and market-wide risk controls.",
-          "Use pre/post-event windows and walk-forward tests; do not infer XRP price causality from regulatory announcements alone."
+          "Capture official Coinbase rewards terms by jurisdiction with effective dates and preserve EEA MiCA exclusion.",
+          "Track Circle distribution-cost disclosures and Coinbase USDC balances where publicly disclosed.",
+          "Separately measure XRPL-native USDC supply/transfers, XRP bridge-path share, XRP spot/derivatives flows and broad-market risk controls.",
+          "Use pre/post-event windows and walk-forward tests; do not infer XRP price causality from announcements alone."
         ]
       }
     ],
@@ -2596,7 +2664,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "Main signal still has provider failures and confidence 0.0; academic/protocol research is classified as bullish market news; no fixed-horizon calibrated out-of-sample skill is demonstrated. New stablecoin regulatory findings are context only and do not justify an XRP price forecast.",
+      "reason": "Main signal has provider failures and confidence 0.0; academic/protocol research remains classified as bullish market news; stablecoin regulatory/reward evidence is context only. No calibrated fixed-horizon out-of-sample skill has been demonstrated.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -2627,7 +2695,7 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T04:02:35Z"
+      "last_checked_utc": "2026-10-28T04:11:30Z"
     },
     "massive_micro_ingestion": {
       "status": "REQUIRED_STANDARD",
@@ -3152,9 +3220,9 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-OCC-GENIUS-COINBASE-DISTRIBUTION-2026-10-28T0402Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0402Z.json",
-    "current_research_head_before_ledger_update": "347f5debf146614d50387d4e33af5c9d4f36200b",
+    "snapshot_id": "XRP-COINBASE-USDC-REWARDS-CBI-DEPLOY-SAFETY-2026-10-28T0411Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0411Z.json",
+    "current_research_head_before_ledger_update": "b9687c3e54df6d03e5a717161e5d8eb2771eb0da",
     "current_research_checks": {
       "tests": "success",
       "tests_passed": 146,
@@ -3165,7 +3233,7 @@
       "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40624733420",
       "note": "These checks validate research branch head 70f73ddfbf6ca4db845686bc94687d792e4ab702 before this new snapshot commit."
     },
-    "current_research_head_before_final_verification_record": "ac626ca9957c255b4aa16803275a9132aa865212",
+    "current_research_head_before_final_verification_record": "7048df22fdec402610425a16e9143502801a8fa8",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -3580,6 +3648,16 @@
           "SRC-REUTERS-COINBASE-IRELAND-FINE-2026-10-22"
         ],
         "interpretation": "Historical compliance action; no XRP-specific custody impact established."
+      },
+      {
+        "event_date": "2026-10-22",
+        "event_type": "EXCHANGE_REGULATORY_RISK",
+        "title": "Central Bank of Ireland announces Coinbase Ireland safeguarding enforcement",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "source_ids": [
+          "SRC-CBI-COINBASE-IRELAND-FINE-OFFICIAL-2026-10-22"
+        ],
+        "interpretation": "€3,252,618 sanction for historical safeguarding/outsourcing breaches; subject to High Court confirmation; no XRP-specific custody failure established."
       }
     ],
     "current_pr_1238_state": {
@@ -3619,26 +3697,31 @@
       "main_modified_by_this_run": false,
       "merge_performed": false
     },
-    "snapshot_blob_sha": "1eceb071c1889cc8630f3c566aeb45c770c7beac",
+    "snapshot_blob_sha": "08210109ad0a3a73b37298462189dc6715f6adaa",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
-      "observed_at_utc": "2026-10-28T04:02:35Z",
+      "observed_at_utc": "2026-10-28T04:11:30Z",
       "findings": [
         {
           "path": ".github/workflows/knowledge-signal-cycle.yml",
           "status": "ON_MAIN_WRITE_CAPABLE",
-          "evidence": "contents: write; commits generated knowledge/signal files and pushes main; PR #1237 is open/unmerged."
+          "evidence": "contents: write; commits generated knowledge/signal files and pushes main; PR #1237 remains open/unmerged."
         },
         {
           "path": ".github/workflows/financial-data-refresh.yml",
           "status": "ON_MAIN_WRITE_CAPABLE",
-          "evidence": "contents: write; commits financial data files and pushes main; PR #1238 is open/unmerged."
+          "evidence": "contents: write; commits financial data files and pushes main; PR #1238 remains open/unmerged."
         },
         {
           "path": ".github/workflows/merge-queue.yml",
           "status": "ON_MAIN_MUTATION_CAPABLE_MANUAL_DISPATCH",
-          "evidence": "workflow_dispatch only, but has contents/pull-requests write and code can update branches and merge PRs; PR #1239 is open/unmerged."
+          "evidence": "workflow_dispatch only, but has contents/pull-requests write and can update branches/merge PRs; PR #1239 remains open/unmerged."
+        },
+        {
+          "path": ".github/workflows/barrot-ops.yml",
+          "status": "ON_MAIN_PUSH_TRIGGERED_EXTERNAL_WRITES; FIX_PROPOSED_PR1240",
+          "evidence": "Every push to main can push main to a configured Hugging Face Space and overwrite a Databricks workspace notebook. PR #1240 gates this behind manual dispatch plus explicit boolean confirmation; exact-head CI 147 passed and gate passed; unmerged."
         },
         {
           "path": ".github/workflows/barrot-pr-automerge.yml",
@@ -3647,8 +3730,8 @@
         },
         {
           "path": ".github/workflows/barrot-approve-pr.yml",
-          "status": "WORKFLOW_DISPATCH_ONLY_ON_CURRENT_MAIN",
-          "evidence": "Current file declares workflow_dispatch inputs and has an approve job; earlier zero-job push-event explanation is not supported by the current trigger definition and needs run-level root-cause inspection."
+          "status": "WORKFLOW_DISPATCH_ONLY; ZERO_JOB_PUSH_RUN_UNRESOLVED",
+          "evidence": "Main and research versions have identical content hash; observed GitHub push-event run failed with zero jobs; root cause unknown."
         }
       ],
       "limitation": "Repository branch-protection details remain inaccessible to the connected integration; effective required checks and review rules are not independently verified."
@@ -4804,6 +4887,102 @@
       "title": "Irish Central Bank fines Coinbase unit €3.25 million",
       "accessed_at_utc": "2026-10-28T04:02:35Z",
       "note": "Reuters reports an Oct 22, 2026 penalty against Coinbase's Irish unit for customer-fund safeguarding and outsourcing breaches during 2020–2025. Coinbase said it self-reported and no customer lost funds or access. This is a compliance-risk observation, not evidence of current XRP custody failure."
+    },
+    {
+      "id": "SRC-CBI-COINBASE-IRELAND-FINE-OFFICIAL-2026-10-22",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://edit.centralbank.ie/news/article/press-release-central-bank-takes-enforcement-action-against-coinbase-ireland-22-october-2026",
+      "title": "Central Bank of Ireland enforcement action against Coinbase Ireland",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Official regulator release: Coinbase Ireland Limited was fined €3,252,618 for safeguarding and outsourcing breaches between Nov 1, 2020 and Aug 19, 2025; sanction is subject to High Court confirmation. No XRP-specific custody failure is established."
+    },
+    {
+      "id": "SRC-COINBASE-USDC-REWARDS-OFFICIAL-2026-10-28",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://help.coinbase.com/en-au/coinbase/coinbase-staking/rewards/usd-coin-rewards-faq",
+      "title": "Coinbase USDC Rewards Overview",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Coinbase says the rewards program is funded by Coinbase, rates vary by country/account, and Coinbase does not use or lend user USDC without instruction."
+    },
+    {
+      "id": "SRC-COINBASE-USDC-REWARDS-EEA-MICA-2026-10-28",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://help.coinbase.com/en-gb/coinbase/coinbase-staking/rewards/usd-coin-rewards-faq",
+      "title": "Coinbase USDC Rewards EEA availability notice",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Coinbase states the USDC Rewards program ended for EEA customers due to MiCA; eligibility is jurisdiction-specific."
+    },
+    {
+      "id": "SRC-REPO-PR1240-STATE-2026-10-28T0411Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1240",
+      "title": "PR #1240 external platform deployment confirmation gate",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Draft, unmerged, head 7b793975, base 6a616e75, mergeable=true. Manual-only workflow dispatch with explicit boolean confirmation."
+    },
+    {
+      "id": "SRC-REPO-PR1240-CI-2026-10-28T0411Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40630754316",
+      "title": "PR #1240 exact-head core CI",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Head 7b793975 passed 147 tests in 5.91 seconds; log confirms both external-deployment gate tests ran."
+    },
+    {
+      "id": "SRC-REPO-PR1240-GATE-2026-10-28T0411Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40630754314",
+      "title": "PR #1240 exact-head fail-closed gate",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Fail-closed gate passed for head 7b793975; draft and unmerged."
+    },
+    {
+      "id": "SRC-REPO-PR1227-CI-2026-10-28T0405Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40630341480",
+      "title": "Research PR #1227 exact-head core CI",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Research ledger head b9687c3 passed 146 tests in 6.05 seconds."
+    },
+    {
+      "id": "SRC-REPO-PR1227-GATE-2026-10-28T0405Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40630341483",
+      "title": "Research PR #1227 exact-head fail-closed gate",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Fail-closed gate passed for research ledger head b9687c3."
+    },
+    {
+      "id": "SRC-REPO-APPROVAL-ZERO-JOB-RUN-2026-10-28T0405Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40630337574",
+      "title": "Zero-job push-event run for barrot-approve-pr workflow",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "GitHub reports event=push, failure and zero jobs. Current main workflow content hash 7047d1ebf27c5151b5a844ad375ac583a2e193e4 declares workflow_dispatch only; root cause remains unknown."
+    },
+    {
+      "id": "SRC-REPO-APPROVAL-WORKFLOW-CURRENT-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Current main approval workflow definition",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Fetched main and research branch versions have identical blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4 and declare workflow_dispatch inputs only."
+    },
+    {
+      "id": "SRC-REPO-BARROT-OPS-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-ops.yml",
+      "title": "Current main Barrot Operations workflow",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Current main workflow runs on push to main and can push main to a configured Hugging Face Space and overwrite a Databricks workspace notebook; this is an external-write path pending PR #1240."
+    },
+    {
+      "id": "SRC-REPO-MAIN-PAPER-TRADE-COMMIT-2026-10-28T0405Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/6a616e75a8afb2917a1c42fd302277fee258d89a",
+      "title": "Main paper-trading log append",
+      "accessed_at_utc": "2026-10-28T04:11:30Z",
+      "note": "Compare from cb49b0b to 6a616e75 shows one appended line in web/paper_trading_log.jsonl and no code/workflow changes; not written by this run."
     }
   ],
   "limitations": [
@@ -5482,6 +5661,30 @@
         "snapshot_blob_sha": "1eceb071c1889cc8630f3c566aeb45c770c7beac"
       },
       "snapshot_blob_sha": "1eceb071c1889cc8630f3c566aeb45c770c7beac"
+    },
+    {
+      "recorded_at_utc": "2026-10-28T04:11:30Z",
+      "update_type": "COINBASE_REWARDS_PRIMARY_TERMS_CBI_ENFORCEMENT_EXTERNAL_DEPLOY_SAFETY",
+      "snapshot_id": "XRP-COINBASE-USDC-REWARDS-CBI-DEPLOY-SAFETY-2026-10-28T0411Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0411Z.json",
+      "details": "Added official Coinbase USDC Rewards terms and EEA MiCA exclusion, upgraded Coinbase Ireland enforcement to the official Central Bank of Ireland source, and refreshed the rewards-versus-XRP-flow hypothesis with explicit regional counterevidence. Audited barrot-ops.yml external writes and PR #1240; exact-head core CI passed 147 tests in 5.91s with both regression tests included, and the fail-closed gate passed. The zero-job push-event run for the workflow_dispatch-only approval workflow remains unexplained.",
+      "validation": {
+        "source_ids_unique": true,
+        "finding_source_refs": "PASS",
+        "graph_edge_source_refs": "PASS",
+        "event_source_refs": "PASS",
+        "pr1240_exact_head_ci": "PASS_147_TESTS_5.91S",
+        "pr1240_fail_closed_gate": "PASS",
+        "pr1227_exact_head_ci": "PASS_146_TESTS_6.05S",
+        "pr1227_fail_closed_gate": "PASS",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "snapshot_json": "PASS",
+        "snapshot_blob_sha": "08210109ad0a3a73b37298462189dc6715f6adaa"
+      },
+      "snapshot_blob_sha": "08210109ad0a3a73b37298462189dc6715f6adaa"
     }
   ],
   "mission_priority": {
