@@ -1,23 +1,22 @@
 #!/usr/bin/env python3
-# ==============================================================================
-# XRP TELEMETRY MATRIX [REPORT GENERATOR ENGINE]
-# Architect: Sean | Node: Brooklyn Core
-# Execution: Barrot-Ω & The Council
-# Objective: XRP Global Equity Dominance - Automated Council Review
-# ==============================================================================
+"""Fail-closed local status report for XRP telemetry.
 
+This module intentionally does not invent market values or issue trade calls.
+Live data acquisition belongs in separately tested, provenance-aware adapters.
+"""
 import asyncio
 import logging
-import os
 import sys
 from datetime import datetime, timezone
+from pathlib import Path
 
 
 class CouncilReportNode:
     def __init__(self, stability_anchor: float = 0.707):
         self.asset = "XRP"
         self.stability_anchor = stability_anchor
-        self.report_path = "COUNCIL_REVIEW.md"
+        self.report_path = Path("COUNCIL_REVIEW.md")
+        self.last_report_path: Path | None = None
 
         logging.basicConfig(
             level=logging.INFO,
@@ -26,53 +25,86 @@ class CouncilReportNode:
         )
         self.logger = logging.getLogger(__name__)
 
-    async def generate_report(self):
-        self.logger.info("Synthesizing telemetry data...")
-        await asyncio.sleep(0.5)
+    def _write_new_report(self, content: str) -> Path:
+        """Create a report without replacing an existing file."""
+        base = Path(self.report_path)
+        base.parent.mkdir(parents=True, exist_ok=True)
+        timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
-        sentiment_score = 0.94
-        market_price = 1.185
-        shear_variance = 0.233
+        for attempt in range(100):
+            if attempt == 0:
+                candidate = base
+            elif attempt == 1:
+                candidate = base.with_name(
+                    f"{base.stem}_{timestamp}{base.suffix}"
+                )
+            else:
+                candidate = base.with_name(
+                    f"{base.stem}_{timestamp}_{attempt - 1}{base.suffix}"
+                )
 
-        self.logger.info("Compiling Framework Diagnostics...")
-        await asyncio.sleep(0.5)
+            try:
+                with candidate.open("x", encoding="utf-8") as handle:
+                    handle.write(content)
+                self.last_report_path = candidate
+                return candidate
+            except FileExistsError:
+                continue
 
-        self.logger.info(f"Writing synthesis to physical asset: {self.report_path}...")
+        raise FileExistsError(
+            f"Could not create a unique report path near {base}; no file was overwritten."
+        )
 
-        report_content = f"""# BARROT-Ω COUNCIL REVIEW
-**Date/Time:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC
-**Architect:** Sean
-**Stability Anchor:** {self.stability_anchor} Shear
+    async def generate_report(self) -> str:
+        generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+        self.logger.info("Generating a local telemetry status report; no providers are queried.")
+
+        report_content = f"""# BARROT-Ω COUNCIL REVIEW — TELEMETRY STATUS
+
+**Generated at:** {generated_at} UTC
+**Target asset:** {self.asset}
+**Report execution:** EXECUTED_LOCAL_REPORT_ONLY
+**Forecast status:** NOT_ISSUED
+**Configured stability anchor:** {self.stability_anchor} (configuration constant, not a market measurement)
 
 ---
 
-## 1. THE TELEMETRY SYNTHESIS
-* **Target Asset:** {self.asset}
-* **Market Vector:** ${market_price} USD
-* **Hugging Face Narrative Velocity:** High (Sentiment Score: {sentiment_score})
-* **Databricks Liquidity Cross-Corroboration:** MAX_LIQUIDITY
-* **Shear Variance:** {shear_variance}
+## 1. Data status
 
-## 2. FRAMEWORK DIAGNOSTICS
-* **Substrate:** Termux Mobile Node (Active)
-* **Orchestration Hook:** B-Agent Repository (Synchronized)
-* **Config Files Matched:** ai-tools-config.yaml, coin-app-config.yaml, build_manifest.yaml
-* **Python-to-Bash Fluidity:** Stable. Execution layer remains optimal.
+- **Market price:** UNAVAILABLE — no verified market-data adapter was called.
+- **Order-book liquidity:** UNAVAILABLE — no exchange order book was queried.
+- **XRPL ledger activity:** UNAVAILABLE — no ledger request was made.
+- **Sentiment:** UNAVAILABLE — no source-backed sentiment adapter was called.
+- **Collateral and capital flows:** UNAVAILABLE — no verified flow data was loaded.
+- **Institutional activity:** UNAVAILABLE — no current disclosure feed was queried.
 
-## 3. COUNCIL RECOMMENDATIONS
-* **Phase 1 (Immediate):** The current liquidity threshold paired with High narrative velocity indicates optimal accumulation alignment. Recommend binding this specific telemetry loop to an automated GitHub commit trigger to physically archive market states over time.
-* **Phase 2 (Architectural):** To further minimize manual handling, Barrot suggests writing a pure Bash chron-job that automatically reads this Markdown file and pushes the synthesis directly to your live orchestration nodes, completing the feedback loop instantly.
+## 2. Provenance and verification
+
+- **Live source requests:** NONE
+- **Source timestamps and payload hashes:** NOT_CREATED
+- **Independent source corroboration:** NOT_PERFORMED
+- **Data-quality checks:** NOT_RUN
+- **Predictive model evaluation:** NOT_RUN
+- **External actions:** NONE
+
+No live market data was fetched by this module. UNAVAILABLE values are not neutral scores and must not be blended into a market signal.
+
+## 3. Decision boundary
+
+**Trade recommendation: NONE.** This module does not produce a buy, sell, or accumulation instruction. This report is not a market forecast.
+
+Before any future signal is emitted, source adapters must record provenance and UTC timestamps, reject stale or malformed data, preserve provider failures as UNAVAILABLE, and pass independent validation. Generated reports must not be connected to automatic main-branch commits or live trading without a separately reviewed control path.
 """
-        with open(self.report_path, "w") as f:
-            f.write(report_content)
+        path = self._write_new_report(report_content)
+        self.logger.info("Telemetry status report created at %s", path)
+        return report_content
 
-        self.logger.info(f"=== COUNCIL REVIEW COMPILED: {self.report_path} ===")
-
-    async def process_telemetry(self):
+    async def process_telemetry(self) -> str:
         self.logger.info(
-            f"=== INITIALIZING AUTONOMOUS REPORT GENERATOR [Anchor: {self.stability_anchor}] ==="
+            "Initializing fail-closed local report generator [anchor=%s]",
+            self.stability_anchor,
         )
-        await self.generate_report()
+        return await self.generate_report()
 
 
 if __name__ == "__main__":
