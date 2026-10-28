@@ -5727,8 +5727,8 @@
     "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1410Z.json",
     "current_research_head_before_ledger_update": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
     "current_research_checks": {
-      "status": "PENDING_AFTER_LEDGER_INDEX_COMMIT",
-      "note": "Snapshot commit is created; index update commit still needs exact-head CI/gate verification."
+      "status": "PENDING_AFTER_SOURCE_CATALOG_BACKFILL",
+      "note": "Three source IDs previously referenced by the snapshot were absent from the source catalog; they are now backfilled in this index update. Verify the new exact head."
     },
     "current_research_head_before_final_verification_record": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
     "platform_coordination_architecture": {
@@ -7484,10 +7484,10 @@
     "snapshot_commit_sha": "e6eca3582e32b888f9d2c1d229257f1e57af78e4",
     "post_snapshot_verification": {
       "verified_at_utc": null,
-      "status": "PENDING_EXACT_HEAD_CI_AFTER_INDEX_UPDATE",
+      "status": "PENDING_EXACT_HEAD_CI_AFTER_SOURCE_CATALOG_BACKFILL",
       "snapshot_blob_sha": "a4ab25f73a6ac30e64c4a4670ac2e419574ec911",
       "snapshot_hash_matches_index": true,
-      "note": "Snapshot blob SHA verified at write time; exact-head CI and fail-closed gate must be checked after the index update commit."
+      "note": "Snapshot hash matches index. Three missing catalog records were added in this follow-up index commit; exact-head CI/gate must be checked after it."
     }
   },
   "sources": [
@@ -10314,6 +10314,30 @@
       "title": "PR #1258 current-main compare",
       "accessed_at_utc": "2026-10-28T14:10:26Z",
       "note": "Compare against current main: 1 ahead / 1 behind. The main-side commit after its base changes web/paper_trading_log.jsonl; no overlapping changed paths. Keep draft/unmerged."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-MULTICHAIN-PAGE-202610281219Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/usdc",
+      "title": "Circle USDC supported networks page",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official Circle page states USDC is natively issued on 38 blockchain networks as of 16 Sep 2026 and lists XRPL among supported networks. This confirms native USDC support, not XRPL supply volume or XRP price impact."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-H1-ECONOMICS-202610281219Z",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "title": "The Economics of USDC and Why Our Partners Win",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Circle article dated 16 Oct 2026 reports H1 USDC on-chain transaction volume above $36T, mint/redemption above $315B, and $819M in distribution-partner and transaction costs. These are issuer-reported totals, not independent economic-payment or XRP-flow measurements."
+    },
+    {
+      "id": "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "title": "SBIC East Japan generative AI and machine-learning training curriculum",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official SBIC East Japan course page for 12-13 Jun 2025 includes ChatGPT usage in its curriculum and was limited to investee companies. It does not establish an OpenAI partnership or direct XRP relationship."
     }
   ],
   "limitations": [
@@ -11973,6 +11997,26 @@
         "pr1259_ci": "PASS_147_TESTS_4.18S",
         "pr1259_gate": "PASS",
         "approval_workflow_zero_job_root_cause": "UNRESOLVED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T14:10:26Z",
+      "update_type": "SOURCE_CATALOG_BACKFILL_FOR_RESOLVED_REFERENCES",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1410Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1410Z.json",
+      "details": "The newly appended snapshot referenced three source IDs that were present in prior finding/graph records but absent from the current source catalog. Added the official Circle USDC network page, Circle H1 USDC economics article, and official SBIC East Japan ChatGPT curriculum page to the catalog. The immutable snapshot file was not changed.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-MULTICHAIN-PAGE-202610281219Z",
+        "SRC-CIRCLE-USDC-H1-ECONOMICS-202610281219Z",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
+      ],
+      "validation": {
+        "source_records_added": 3,
+        "source_ids_unique": true,
+        "snapshot_blob_sha": "a4ab25f73a6ac30e64c4a4670ac2e419574ec911",
+        "snapshot_blob_sha_matches_index": true,
+        "exact_head_ci": "PENDING_AFTER_INDEX_UPDATE",
+        "main_modified_by_this_run": false
       }
     }
   ],
