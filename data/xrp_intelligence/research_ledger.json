@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T14:10:26Z",
+    "captured_at_utc": "2026-10-28T14:17:05Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
@@ -161,19 +161,17 @@
         "main_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
         "note": "No main-branch write was performed by this run."
       },
-      "current_research_head": "e6eca3582e32b888f9d2c1d229257f1e57af78e4",
+      "current_research_head": "5ae62b0a26c70ad7a41fddb4195bdd5002b1bd98",
       "current_research_checks": {
         "status": "PENDING_AFTER_LEDGER_INDEX_COMMIT",
-        "note": "Snapshot commit is created; index update commit still needs exact-head CI/gate verification."
+        "note": "The 14:17 snapshot is committed; the index update commit must be checked separately."
       },
       "main_commit_delta_since_last_observed": {
-        "previous_sha": "b390c3aa469401b07a470e3718a4e6fff9f2e547",
-        "commits_ahead": 1,
-        "changed_files": 1,
-        "changed_scope": [
-          "web/paper_trading_log.jsonl"
-        ],
-        "finding": "Main advanced with a generated paper-trading-log append; no model-code changes observed."
+        "previous_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
+        "commits_ahead": 0,
+        "changed_files": 0,
+        "changed_scope": [],
+        "finding": "Main unchanged during this capture; latest observed head remains a generated paper-trading-log append."
       },
       "latest_research_branch_state": {
         "branch": "research/xrp-ledger-fresh-main-20261028-1217z",
@@ -2342,6 +2340,51 @@
           "SRC-GH-MAIN-PAPERTRADER-2026-10-28T1404Z",
           "SRC-GH-MAIN-SIGNAL-SUMMARY-WORKFLOW-2026-10-28T1410Z"
         ]
+      },
+      {
+        "id": "XRP-SPOT-AGGREGATION-MISMATCH-20261028T1417Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "PRICE_LEVEL_SIMILAR; VOLUME_UNIVERSES_NOT_COMPARABLE",
+        "claim": "CoinCodex shows an Oct 27-28 daily XRP bar near $1.31 open, $1.33 high, $1.29 low, $1.33 close and $1.40B volume; Decrypt shows about $1.33, a $1.29-$1.34 24-hour range and $94.6M 24-hour volume.",
+        "interpretation": "Price levels are broadly similar, but the 14.8x volume difference likely reflects distinct aggregation/coverage and/or bar versus rolling windows. Do not combine into one feature or infer a spread.",
+        "source_ids": [
+          "SRC-XRP-PRICE-COINCODEX-2026-10-28",
+          "SRC-XRP-PRICE-DECRYPT-2026-10-28"
+        ],
+        "uncertainty": "Venue universe, quote cutoff and bar boundary are not aligned."
+      },
+      {
+        "id": "CFTC-XRP-DERIVATIVES-BASELINE-20261028T1417Z",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "HISTORICAL_COT_BASELINE_AS_OF_2026-10-13",
+        "claim": "CFTC Traders in Financial Futures report updated 16 Oct lists XRP CME futures open interest 7,613 contracts (50,000 XRP per contract; change -258 from 6 Oct), Coinbase Nano XRP 59,801 contracts (500 XRP per contract; change +514), and Coinbase Nano XRP Perp Style 38,798 contracts (500 XRP per contract; change +38).",
+        "interpretation": "These are separate contract families and a historical report, not a current unified leverage measure. CFTC trader-category positions do not establish spot flows, exchange-wide exposure, or a directional price signal.",
+        "source_ids": [
+          "SRC-CFTC-XRP-POSITIONS-2026-10-13"
+        ],
+        "uncertainty": "No newer Oct 20 report was verifiably retrieved in this run; OTC, offshore and other venue exposures are outside this report."
+      },
+      {
+        "id": "LEDGER-SOURCE-CATALOG-BACKFILL-CI-VERIFIED-20261028T1417Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "PASS_ON_PRIOR_INDEX_HEAD",
+        "claim": "The 14:10 snapshot and subsequent source-catalog backfill index head d4ef807 passed CI (145 tests in 4.78s) and the fail-closed gate. The source catalog now resolves the three source IDs previously missing from the snapshot.",
+        "interpretation": "This verifies the prior ledger head, not the new 14:17 snapshot/index commits.",
+        "source_ids": [
+          "SRC-GH-LEDGER-CI-2026-10-28T1416Z"
+        ],
+        "uncertainty": "The next snapshot/index head still requires its own checks."
+      },
+      {
+        "id": "APPROVAL-WORKFLOW-ZERO-JOB-LATEST-20261028T1417Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "FAILURE_WITH_ZERO_JOBS; ROOT_CAUSE_UNKNOWN",
+        "claim": "Run 40704232417 is recorded as a push-event failure with zero jobs on the research branch update.",
+        "interpretation": "This is a workflow-level no-job event, not an executed approval action. The runtime anomaly persists.",
+        "source_ids": [
+          "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1415Z"
+        ],
+        "uncertainty": "Why the workflow was scheduled and why no jobs were instantiated remains unknown."
       }
     ],
     "relationship_graph": [
@@ -3144,6 +3187,26 @@
           "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-29"
         ],
         "status": "CONFIRMED_SCHEDULE; RESULTS_NOT_YET_PUBLISHED; NO_XRP_CAUSAL_EFFECT_ESTABLISHED"
+      },
+      {
+        "id": "EDGE-CFTC-CME-XRP-FUTURES-2026-10-13",
+        "from": "CFTC Commitments of Traders",
+        "relation": "reports futures-only positioning for",
+        "to": "CME XRP futures (50,000 XRP contract)",
+        "evidence_ids": [
+          "SRC-CFTC-XRP-POSITIONS-2026-10-13"
+        ],
+        "status": "CONFIRMED_HISTORICAL_REPORT_AS_OF_2026-10-13"
+      },
+      {
+        "id": "EDGE-CFTC-COINBASE-NANO-XRP-FUTURES-2026-10-13",
+        "from": "CFTC Commitments of Traders",
+        "relation": "reports futures-only positioning for",
+        "to": "Coinbase Derivatives Nano XRP and Nano XRP Perp Style contracts (500 XRP contract)",
+        "evidence_ids": [
+          "SRC-CFTC-XRP-POSITIONS-2026-10-13"
+        ],
+        "status": "CONFIRMED_HISTORICAL_REPORT_AS_OF_2026-10-13"
       }
     ],
     "competing_hypotheses": [
@@ -4341,6 +4404,46 @@
         "source_ids": [
           "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-MAKETO"
         ]
+      },
+      {
+        "id": "XRP-PRICE-COINCODEX-2026-10-27-28",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-27/28",
+        "observation": "CoinCodex daily bar: open about $1.31, high $1.33, low $1.29, close $1.33; reported volume about $1.40B and market cap about $82.97B.",
+        "interpretation": "Daily aggregation boundary and venue universe are not fully normalized; do not combine with rolling 24-hour volume from another provider.",
+        "source_ids": [
+          "SRC-XRP-PRICE-COINCODEX-2026-10-28"
+        ]
+      },
+      {
+        "id": "XRP-PRICE-DECRYPT-2026-10-28",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-28",
+        "observation": "Decrypt price page reports XRP near $1.33, 24-hour range $1.29-$1.34, 24-hour volume about $94.6M and market cap about $84.25B.",
+        "interpretation": "Volume differs sharply from CoinCodex's daily bar; venue universe and cutoff must be reconciled.",
+        "source_ids": [
+          "SRC-XRP-PRICE-DECRYPT-2026-10-28"
+        ]
+      },
+      {
+        "id": "CFTC-CME-XRP-OI-2026-10-13",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "as_of_date": "2026-10-13",
+        "observation": "CFTC COT reports 7,613 open CME XRP futures contracts, 50,000 XRP each, down 258 contracts from 6 Oct.",
+        "interpretation": "Historical contract-specific open interest; not a current all-venue leverage metric.",
+        "source_ids": [
+          "SRC-CFTC-XRP-POSITIONS-2026-10-13"
+        ]
+      },
+      {
+        "id": "CFTC-COINBASE-NANO-XRP-OI-2026-10-13",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "as_of_date": "2026-10-13",
+        "observation": "CFTC COT reports Coinbase Nano XRP open interest 59,801 contracts (500 XRP each), +514 versus 6 Oct; Nano XRP Perp Style open interest 38,798 contracts (500 XRP each), +38 versus 6 Oct.",
+        "interpretation": "Different contract families; open interest and category positioning do not identify a net spot purchase or predict price direction.",
+        "source_ids": [
+          "SRC-CFTC-XRP-POSITIONS-2026-10-13"
+        ]
       }
     ],
     "phrase_investigation": {
@@ -4603,8 +4706,8 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T14:10:26Z",
-      "last_run_update": "Updated Circle global USDC supply, conflicting 27 Oct XRP ETF tracker observations, Coinbase Q3 event date, current main generated-data writes, fresh-main PR #1258 dependency fix and PR #1259 fixed-horizon evaluator fix. Both PRs passed exact-head CI/gate and remain draft/unmerged. Forecast remains NOT_ISSUED.",
+      "last_checked_utc": "2026-10-28T14:17:05Z",
+      "last_run_update": "Added official CFTC dated positioning baseline, identified non-comparable XRP spot-volume aggregations, verified prior ledger-head CI after source catalog backfill, and recorded another zero-job approval-workflow run. No directional forecast issued.",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
         "XRP ETF weekly flow observation excludes GXRP and is not reconciled against all fund-level primary records.",
@@ -4632,7 +4735,10 @@
         "Current main still has direct generated-data writers; durable append-only staging and reviewed promotion are not implemented.",
         "PR #1258 passed exact-head CI but is one commit behind main after a generated paper-trading-log append; keep unmerged pending review.",
         "PR #1259 passed exact-head CI/gate and remains draft/unmerged; immutable feature storage, walk-forward backtesting, calibration and shadow evaluation remain incomplete.",
-        "Approval workflow still produces zero-job failures; event metadata is inconsistent across API views and root cause is unresolved."
+        "Approval workflow still produces zero-job failures; event metadata is inconsistent across API views and root cause is unresolved.",
+        "CoinCodex daily volume and Decrypt rolling 24-hour volume are not comparable; raw synchronized venue data is still required.",
+        "Latest CFTC XRP report verified in this run is as of 13 Oct; treat as historical, not current.",
+        "New 14:17 snapshot/index requires exact-head CI and fail-closed gate."
       ],
       "issuance_outcome_contract": {
         "status": "FRESH_MAIN_SUCCESSOR_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NOT_MERGED",
@@ -4667,13 +4773,12 @@
       ]
     },
     "next_actions": [
-      "Recheck PR #1258 against current main; preserve it and do not merge without approval.",
-      "Review PR #1259 fixed-horizon evaluator successor; its exact-head CI/gate passed, but keep draft/unmerged pending review.",
-      "Implement durable append-only point-in-time feature storage and reviewed promotion without interrupting paper-trading history or ingestion.",
-      "Reconcile ETF fund-level sponsor holdings and creations/redemptions at common settlement cutoffs; do not use tracker disagreement as a feature.",
-      "Capture Coinbase Q3 2026 results only after official publication on 29 Oct after market close; compare against Q2 without assuming XRP causality.",
-      "Continue SBIC and exact-phrase research and resolve the canonical Camilla Stephenson channel before claiming exhaustive video coverage.",
-      "Investigate the zero-job approval-workflow event inconsistency; do not claim a fix until a real event executes a job as expected."
+      "Verify exact-head CI and gate for the new 14:17 ledger index.",
+      "Reconcile spot volume on identical UTC windows and source universes before model admission.",
+      "Add CFTC XRP contract positions as dated historical features only; retrieve the next official report when available.",
+      "Keep PR #1258 and #1259 draft/unmerged pending review; do not modify main.",
+      "Continue durable append-only staging and reviewed promotion design.",
+      "Continue exact phrase and Camilla Stephenson identity resolution without inventing matches."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -4802,24 +4907,14 @@
       },
       "approval_workflow_anomaly": {
         "status": "ROOT_CAUSE_UNRESOLVED; ZERO-JOB FAILURES RECURRED",
-        "latest_runs": [
-          {
-            "id": 40702168314,
-            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702168314",
-            "reported_event_in_runs_list": "push",
-            "reported_event_direct_run": "pull_request",
-            "conclusion": "failure",
-            "jobs": 0
-          },
-          {
-            "id": 40702993670,
-            "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702993670",
-            "reported_event": "push",
-            "conclusion": "failure",
-            "jobs": 0
-          }
-        ],
-        "note": "Event metadata for run 40702168314 differs across API views; no job executed. Workflow file on main declares workflow_dispatch only. Do not claim the cause or fix."
+        "latest_run": {
+          "id": 40704232417,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704232417",
+          "event": "push",
+          "conclusion": "failure",
+          "jobs": 0
+        },
+        "note": "No job executed. Earlier run 40702168314 had inconsistent event metadata between API views; workflow file on main declares workflow_dispatch only. Do not claim the cause or fix."
       },
       "research_pr_validation": {
         "pr": 1195,
@@ -5374,7 +5469,17 @@
           "head_branch": "safety/signal-summary-fallback-fresh-main-20261028-0209z",
           "updated_at": "2026-10-28T02:13:47Z"
         }
-      ]
+      ],
+      "pr1251_latest_verified_head": {
+        "sha": "d4ef807b25d837555c82ad907fe81d902237781c",
+        "ci_run_id": 40704246913,
+        "ci_status": "PASS",
+        "tests_passed": 145,
+        "duration_seconds": 4.78,
+        "gate_run_id": 40704246886,
+        "gate_status": "PASS",
+        "verified_at_utc": "2026-10-28T14:16:20Z"
+      }
     },
     "market_data_quality_findings": [
       {
@@ -5695,6 +5800,29 @@
           "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-MAKETO"
         ],
         "next_test": "Build fund-by-fund holdings-delta table with identical cutoffs and mark missing observations UNKNOWN rather than zero."
+      },
+      {
+        "id": "XRP-PRICE-VOLUME-UNIVERSE-MISMATCH-20261028T1417Z",
+        "severity": "HIGH",
+        "status": "MODEL_FEATURE_BLOCKED",
+        "finding": "CoinCodex reports about $1.40B volume on a daily XRP bar while Decrypt reports about $94.6M rolling 24-hour volume; prices are both near $1.33 but cutoff and aggregation definitions are not aligned.",
+        "interpretation": "Do not normalize these into a common volume feature without venue-level source coverage, timestamp and interval definitions.",
+        "source_ids": [
+          "SRC-XRP-PRICE-COINCODEX-2026-10-28",
+          "SRC-XRP-PRICE-DECRYPT-2026-10-28"
+        ],
+        "next_test": "Acquire synchronized raw venue trades/quotes and recompute identical UTC windows."
+      },
+      {
+        "id": "CFTC-POSITIONING-FRESHNESS-20261028T1417Z",
+        "severity": "MEDIUM",
+        "status": "HISTORICAL_ONLY",
+        "finding": "The latest CFTC XRP-related futures report verifiably retrieved in this run is as of 13 Oct and updated 16 Oct; no 20 Oct report was confirmed.",
+        "interpretation": "Use only as a dated historical baseline. Do not label it current to 28 Oct.",
+        "source_ids": [
+          "SRC-CFTC-XRP-POSITIONS-2026-10-13"
+        ],
+        "next_test": "Check the next official CFTC publication and compare contract codes/units consistently."
       }
     ],
     "mission_priority": {
@@ -5723,12 +5851,12 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1410Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1410Z.json",
-    "current_research_head_before_ledger_update": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1417Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1417Z.json",
+    "current_research_head_before_ledger_update": "5ae62b0a26c70ad7a41fddb4195bdd5002b1bd98",
     "current_research_checks": {
-      "status": "PENDING_AFTER_SOURCE_CATALOG_BACKFILL",
-      "note": "Three source IDs previously referenced by the snapshot were absent from the source catalog; they are now backfilled in this index update. Verify the new exact head."
+      "status": "PENDING_AFTER_LEDGER_INDEX_COMMIT",
+      "note": "The 14:17 snapshot is committed; the index update commit must be checked separately."
     },
     "current_research_head_before_final_verification_record": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
     "platform_coordination_architecture": {
@@ -6460,6 +6588,16 @@
           "SRC-GH-MAIN-CROSS-ANALYSIS-2026-10-28T1351Z"
         ],
         "interpretation": "Confirms generated-data main writes remain active; no model-code change observed in that commit."
+      },
+      {
+        "id": "CFTC-XRP-COT-REPORT-UPDATED-2026-10-16",
+        "date": "2026-10-16",
+        "event": "CFTC Traders in Financial Futures report updated; positions as of 13 Oct 2026 include CME XRP and Coinbase Derivatives Nano XRP contracts",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "source_ids": [
+          "SRC-CFTC-XRP-POSITIONS-2026-10-13"
+        ],
+        "interpretation": "Historical positioning only; not a current 28 Oct snapshot."
       }
     ],
     "current_pr_1238_state": {
@@ -6906,7 +7044,7 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "e6eca3582e32b888f9d2c1d229257f1e57af78e4",
+    "current_research_head_this_run": "PENDING_INDEX_COMMIT",
     "correction_note": {
       "previous_snapshot": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
       "issue": "The previous market-data-quality finding referenced a nonexistent 0812Z source ID.",
@@ -7341,7 +7479,7 @@
       "merge_performed": false,
       "action": "Preserve the branch and historical snapshots; do not merge as-is."
     },
-    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1315Z.json",
+    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1410Z.json",
     "repository_security_audit": {
       "observed_at_utc": "2026-10-28T14:10:26Z",
       "main_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
@@ -7452,7 +7590,10 @@
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "deployment_executed": false,
-      "limitation": "Main has since advanced one generated paper-trading-log commit. No overlapping changed paths; review current base before approval."
+      "limitation": "Main has since advanced one generated paper-trading-log commit. No overlapping changed paths; review current base before approval.",
+      "ci_status": "PASS_147_TESTS_6.41S",
+      "gate_status": "PASS",
+      "current_main_note": "One generated paper-trading-log commit behind main; no overlapping changed paths."
     },
     "current_pr_1259_state": {
       "pr": 1259,
@@ -7477,17 +7618,19 @@
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "deployment_executed": false,
-      "limitation": "Retires invalid variable-horizon scoring; does not implement the durable feature store or establish predictive skill."
+      "limitation": "Retires invalid variable-horizon scoring; does not implement the durable feature store or establish predictive skill.",
+      "ci_status": "PASS_147_TESTS_4.18S",
+      "gate_status": "PASS"
     },
-    "snapshot_blob_sha": "a4ab25f73a6ac30e64c4a4670ac2e419574ec911",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T14:10:26Z",
-    "snapshot_commit_sha": "e6eca3582e32b888f9d2c1d229257f1e57af78e4",
+    "snapshot_blob_sha": "820918a5fbdecbde2d5a383f3ffbe3b63faff3b3",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T14:17:05Z",
+    "snapshot_commit_sha": "5ae62b0a26c70ad7a41fddb4195bdd5002b1bd98",
     "post_snapshot_verification": {
       "verified_at_utc": null,
-      "status": "PENDING_EXACT_HEAD_CI_AFTER_SOURCE_CATALOG_BACKFILL",
-      "snapshot_blob_sha": "a4ab25f73a6ac30e64c4a4670ac2e419574ec911",
+      "status": "PENDING_EXACT_HEAD_CI_AFTER_INDEX_UPDATE",
+      "snapshot_blob_sha": "820918a5fbdecbde2d5a383f3ffbe3b63faff3b3",
       "snapshot_hash_matches_index": true,
-      "note": "Snapshot hash matches index. Three missing catalog records were added in this follow-up index commit; exact-head CI/gate must be checked after it."
+      "note": "Prior snapshot/index head d4ef807 passed 145 tests in 4.78s and the gate. This 14:17 snapshot/index pair requires its own exact-head CI/gate."
     }
   },
   "sources": [
@@ -10338,6 +10481,46 @@
       "title": "SBIC East Japan generative AI and machine-learning training curriculum",
       "accessed_at_utc": "2026-10-28T14:10:26Z",
       "note": "Official SBIC East Japan course page for 12-13 Jun 2025 includes ChatGPT usage in its curriculum and was limited to investee companies. It does not establish an OpenAI partnership or direct XRP relationship."
+    },
+    {
+      "id": "SRC-XRP-PRICE-COINCODEX-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://coincodex.com/crypto/ripple/historical-data/",
+      "title": "CoinCodex XRP historical data, 27-28 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Displayed daily bar: open about $1.31, high $1.33, low $1.29, close $1.33; reported volume about $1.40B and market cap about $82.97B. Daily bar boundary and venue universe are not normalized to other trackers."
+    },
+    {
+      "id": "SRC-XRP-PRICE-DECRYPT-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://decrypt.co/price/xrp",
+      "title": "Decrypt XRP price page, 28 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Displayed XRP near $1.33, 24-hour range $1.29-$1.34, volume about $94.6M and market cap about $84.25B. Rolling 24-hour volume is not comparable to CoinCodex daily-bar volume without matching source coverage."
+    },
+    {
+      "id": "SRC-CFTC-XRP-POSITIONS-2026-10-13",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.cftc.gov/sites/default/files/files/dea/cotarchives/2026/futures/financial_lf101326.htm",
+      "title": "CFTC Traders in Financial Futures, positions as of 13 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Report updated 16 Oct. Lists CME XRP futures open interest 7,613 contracts (50,000 XRP each; -258 vs 6 Oct), Coinbase Nano XRP 59,801 contracts (500 XRP each; +514), and Coinbase Nano XRP Perp Style 38,798 contracts (500 XRP each; +38). This is historical futures-only positioning, not current all-venue exposure."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1416Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704246913",
+      "title": "Research ledger source-catalog backfill CI",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Exact-head CI passed 145 tests in 4.78s on d4ef807; fail-closed gate run 40704246886 passed. This verifies the previous snapshot/index head before the new 14:17 snapshot/index pair."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1415Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704232417",
+      "title": "Approval workflow zero-job run, 28 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Run reported event=push, failure, and zero jobs on the research branch update. No job executed. Root cause remains unknown."
     }
   ],
   "limitations": [
@@ -10406,7 +10589,10 @@
     "Coinbase Q3 2026 results are scheduled for 29 Oct after market close and were not available at this capture.",
     "PR #1258 dependency fix and PR #1259 fixed-horizon evaluator passed exact-head CI/gates but remain draft and unmerged.",
     "Approval workflow has recurring zero-job failures; event metadata differs across API views and root cause remains unresolved.",
-    "Current main still has generated-data direct-write workflows; durable append-only staging and reviewed promotion remain unimplemented."
+    "Current main still has generated-data direct-write workflows; durable append-only staging and reviewed promotion remain unimplemented.",
+    "CoinCodex daily XRP volume and Decrypt rolling 24-hour XRP volume differ by roughly 14.8x and are not comparable without source-universe and cutoff reconciliation.",
+    "The latest CFTC XRP report verified in this run is positions as of 13 Oct 2026, updated 16 Oct; it is historical rather than current to 28 Oct.",
+    "Approval workflow continues to produce zero-job failures; root cause remains unresolved."
   ],
   "run_updates": [
     {
@@ -12018,15 +12204,39 @@
         "exact_head_ci": "PENDING_AFTER_INDEX_UPDATE",
         "main_modified_by_this_run": false
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T14:17:05Z",
+      "update_type": "XRP_CFTC_POSITIONING_AND_SPOT_DATA_QUALITY",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1417Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1417Z.json",
+      "details": "Added dated CFTC XRP futures positioning for CME and Coinbase Derivatives contracts, two non-comparable XRP spot-volume observations, prior ledger-head CI/gate evidence, and another zero-job approval-workflow run. New snapshot is immutable; index references its verified blob SHA. Current main remains unchanged.",
+      "source_ids": [
+        "SRC-XRP-PRICE-COINCODEX-2026-10-28",
+        "SRC-XRP-PRICE-DECRYPT-2026-10-28",
+        "SRC-CFTC-XRP-POSITIONS-2026-10-13",
+        "SRC-GH-LEDGER-CI-2026-10-28T1416Z",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1415Z"
+      ],
+      "validation": {
+        "new_source_count": 5,
+        "source_ids_unique": true,
+        "snapshot_blob_sha": "820918a5fbdecbde2d5a383f3ffbe3b63faff3b3",
+        "snapshot_commit_sha": "5ae62b0a26c70ad7a41fddb4195bdd5002b1bd98",
+        "exact_head_ci_for_new_index": "PENDING",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-28T14:10:26Z",
+    "as_of_utc": "2026-10-28T14:17:05Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
-    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1410Z.json",
-    "next_action": "Verify exact-head CI for the updated research ledger index; then continue synchronized market-data reconciliation and durable feature-store design."
+    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1417Z.json",
+    "next_action": "Verify exact-head CI for the 14:17 ledger index; then reconcile XRP spot-volume universes and ingest CFTC positioning as a dated historical feature."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
