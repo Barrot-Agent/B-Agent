@@ -8830,25 +8830,25 @@
       "limitation": "No position_product write included; any state repair requires separate approval."
     },
     "snapshot_blob_sha": "8054187512ad62bd7a42a23cd4da7bb68bc0cc82",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T19:10:45Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T19:12:00Z",
     "snapshot_commit_sha": "e3f66eaf518d07529da05ecf8b83a817a242882e",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; INDEX_HEAD_0D95CF_VERIFIED; SUCCESSOR_INDEX_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; INDEX_HEAD_00B1F6_VERIFIED; SUCCESSOR_INDEX_PENDING",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "8054187512ad62bd7a42a23cd4da7bb68bc0cc82",
       "snapshot_commit_sha": "e3f66eaf518d07529da05ecf8b83a817a242882e",
-      "verified_index_head": "0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3",
+      "verified_index_head": "00b1f654abad45eca9a154db3522beb2b3c06418",
       "ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 6.24,
-        "run_id": 40751862391,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862391"
+        "duration_seconds": 5.78,
+        "run_id": 40752042243,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752042243"
       },
       "gate": {
         "status": "PASS",
-        "run_id": 40751862668,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862668"
+        "run_id": 40752042245,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752042245"
       },
       "successor_index_ci": "PENDING_AFTER_WRITE",
       "successor_index_gate": "PENDING_AFTER_WRITE"
@@ -12854,6 +12854,22 @@
       "title": "Research index fail-closed gate passed",
       "accessed_at_utc": "2026-10-28T19:10:45Z",
       "note": "Fail-closed gate passed for index commit 0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-00B1F6-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752042243",
+      "title": "Research-index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T19:12:00Z",
+      "note": "Index commit 00b1f654abad45eca9a154db3522beb2b3c06418 passed 145 tests in 5.78 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-00B1F6-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752042245",
+      "title": "Research-index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T19:12:00Z",
+      "note": "Fail-closed gate passed for index commit 00b1f654abad45eca9a154db3522beb2b3c06418."
     }
   ],
   "limitations": [
@@ -12943,7 +12959,8 @@
     "2026-10-28T18:11:35Z: PR #1262 guard is draft/unmerged; current simulated paper position remains unidentified and unchanged.",
     "2026-10-28T18:15:13Z: current connector returned empty content for web/paper_trading_log.jsonl full and line-range reads; no replay or state reconciliation was performed.",
     "2026-10-28T19:07:50Z: PR #1264 first CI attempt failed because REPO_ROOT was undefined; corrected in dba1bc56171ced721429950db6b067ee46800d73, and exact-head rerun passed 153 tests in 5.40 seconds. Initial failure retained in provenance.",
-    "2026-10-28T19:07:50Z: XRP open-interest aggregators report USD 1.7B–2.93B across 7, 9 and 26 exchange universes with unresolved cutoffs; aggregate OI remains blocked from feature admission."
+    "2026-10-28T19:07:50Z: XRP open-interest aggregators report USD 1.7B–2.93B across 7, 9 and 26 exchange universes with unresolved cutoffs; aggregate OI remains blocked from feature admission.",
+    "2026-10-28T19:12:00Z: research_ledger.json was 981,865 characters before the latest verification update, close to the GitHub Contents API 1 MiB limit. Split the duplicated latest_snapshot payload from the append-only source/run ledger or compact the schema before continued hourly growth; do not wait for write failures."
   ],
   "run_updates": [
     {
@@ -15370,15 +15387,44 @@
         "new_index_ci": "PENDING_AFTER_WRITE",
         "new_index_gate": "PENDING_AFTER_WRITE"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T19:12:00Z",
+      "update_type": "RESEARCH_INDEX_CI_AND_GATE_VERIFIED_SIZE_WARNING",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1907Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1907Z.json",
+      "details": "Verified index commit 00b1f654abad45eca9a154db3522beb2b3c06418 through exact-head CI (145 tests in 5.78s) and fail-closed gate. Snapshot 1907Z blob SHA matches the index. Source IDs remain unique and references resolve. Index size was 981,865 characters before this update, so schema splitting/compaction is now a near-term reliability task.",
+      "source_ids": [
+        "SRC-GH-LEDGER-CI-00B1F6-2026-10-28",
+        "SRC-GH-LEDGER-GATE-00B1F6-2026-10-28"
+      ],
+      "validation": {
+        "verified_index_head": "00b1f654abad45eca9a154db3522beb2b3c06418",
+        "ci": "PASS_145_TESTS_5.78S",
+        "ci_run_id": 40752042243,
+        "gate": "PASS",
+        "gate_run_id": 40752042245,
+        "snapshot_blob_readback": "PASS",
+        "snapshot_blob_sha": "8054187512ad62bd7a42a23cd4da7bb68bc0cc82",
+        "source_ids_unique": "PASS",
+        "missing_source_refs": 0,
+        "index_size_before_update_chars": 981865,
+        "ledger_split_required": "NEAR_TERM",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "new_index_gate": "PENDING_AFTER_WRITE"
+      }
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-28T19:10:45Z",
+    "as_of_utc": "2026-10-28T19:12:00Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
     "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1907Z.json",
-    "next_action": "Review PR #1264; preserve the paper-trading state; reconcile XRP OI provider coverage; split or compact the research index before it approaches the GitHub content API size limit."
+    "next_action": "Split or compact research_ledger.json before further hourly growth; review PR #1264; keep state unchanged; reconcile XRP OI coverage before feature admission."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -15597,22 +15643,22 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3",
+  "current_research_head_before_ledger_update": "00b1f654abad45eca9a154db3522beb2b3c06418",
   "current_research_head_this_run": "PENDING_AFTER_INDEX_WRITE",
   "current_research_checks": {
     "status": "PRIOR_INDEX_VERIFIED; SUCCESSOR_INDEX_PENDING",
-    "previous_index_head": "0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3",
+    "previous_index_head": "00b1f654abad45eca9a154db3522beb2b3c06418",
     "previous_index_ci": {
       "status": "PASS",
       "tests_passed": 145,
-      "duration_seconds": 6.24,
-      "run_id": 40751862391,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862391"
+      "duration_seconds": 5.78,
+      "run_id": 40752042243,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752042243"
     },
     "previous_index_gate": {
       "status": "PASS",
-      "run_id": 40751862668,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862668"
+      "run_id": 40752042245,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752042245"
     },
     "snapshot_blob_readback_ok": true,
     "snapshot_blob_sha": "8054187512ad62bd7a42a23cd4da7bb68bc0cc82",
@@ -15620,9 +15666,9 @@
     "new_index_gate": "PENDING_AFTER_WRITE"
   },
   "ledger_metrics": {
-    "source_records": 495,
-    "run_updates": 101,
-    "limitations": 87,
+    "source_records": 497,
+    "run_updates": 102,
+    "limitations": 88,
     "relationship_edges": 104,
     "competing_hypotheses": 65,
     "market_observations": 51
