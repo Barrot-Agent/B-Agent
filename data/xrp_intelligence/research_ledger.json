@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T04:11:30Z",
+    "captured_at_utc": "2026-10-28T04:14:00Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
@@ -136,7 +136,7 @@
         "message": "Paper trade cycle [skip ci]",
         "authored_at_utc": "2026-10-28T04:05:32Z",
         "url": "https://github.com/Barrot-Agent/B-Agent/commit/6a616e75a8afb2917a1c42fd302277fee258d89a",
-        "scope": "One appended line in web/paper_trading_log.jsonl only; no code/workflow changes."
+        "scope": "One appended paper-trading log row only; no code/workflow changes."
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
@@ -145,7 +145,7 @@
         "branch_protection_details": "Detailed protection read remains 403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION; effective required checks not independently verified.",
         "main_ci": {
           "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-          "note": "Latest main commit is a generated paper-trading-log append with [skip ci]; exact-head full CI and effective required-check rules were not verified."
+          "note": "Latest main commit is a generated paper-trading-log append marked [skip ci]; exact-head full CI not verified."
         }
       },
       "current_research_head": "d4fd1a34370ca3d53f736660de11ed9174207cf0",
@@ -252,17 +252,17 @@
         "main_modified_by_this_run": false,
         "merge_performed": false
       },
-      "current_open_prs_observed_at_utc": "2026-10-28T04:11:30Z",
+      "current_open_prs_observed_at_utc": "2026-10-28T04:14:00Z",
       "current_open_prs": [
         {
           "number": 1227,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
           "state": "open",
           "draft": true,
-          "head_sha": "b9687c3e54df6d03e5a717161e5d8eb2771eb0da",
-          "last_verified_ci": "PASS_146_TESTS_6.05S",
+          "head_sha": "ecd62b4241dfc77d3f6c6f38e345a37b8a0bc0c6",
+          "last_verified_ci": "PASS_146_TESTS_5.93S",
           "last_verified_gate": "PASS",
-          "note": "Research ledger updated; remains draft/unmerged and based on older main."
+          "note": "Latest ledger snapshot includes new regulatory and quote-quality evidence; draft/unmerged; based on older main."
         },
         {
           "number": 1236,
@@ -314,7 +314,7 @@
           "mergeable": true,
           "last_verified_ci": "PASS_147_TESTS_5.91S",
           "last_verified_gate": "PASS",
-          "note": "Manual-only external deployment gate; no deployment executed; draft/unmerged."
+          "note": "Manual-only external deployment gate; draft/unmerged; no deployment executed."
         }
       ]
     },
@@ -1223,6 +1223,17 @@
           "SRC-REPO-APPROVAL-WORKFLOW-CURRENT-2026-10-28"
         ],
         "uncertainty": "Original event payload and definitive workflow-history explanation were not available through the connector. Do not trigger the approval workflow as a diagnostic because it can write approval labels/comments."
+      },
+      {
+        "id": "XRP-FUTURES-CARD-CONTRACT-DATE-CONFLICT-2026-10-28",
+        "evidence_class": "DATA_QUALITY_FINDING",
+        "status": "EXCLUDE_PRODUCT_CARD_METRICS_PENDING_CONTRACT_VERIFICATION",
+        "claim": "A Coinbase XRP futures page shows a contract identifier/title referencing Oct 30, 2026 while the displayed expiry detail says Oct 1, 2026, a past date at this capture time.",
+        "interpretation": "This is an internal data-quality conflict. Do not infer current open interest, liquidity or positioning from the page until the product code and contract spec are reconciled.",
+        "source_ids": [
+          "SRC-COINBASE-XRP-FUTURES-CARD-2026-10-28"
+        ],
+        "uncertainty": "Could reflect stale page content, an incorrect expiry field or a product-card defect; the correct interpretation was not established."
       }
     ],
     "relationship_graph": [
@@ -2267,15 +2278,18 @@
         "id": "H-XRP-ETF-DAILY-FLOW-PRICE-IMPACT-UNKNOWN-2026-10-26",
         "hypothesis": "The Oct 26 XRP ETF net outflow is a useful flow observation but does not by itself establish a bearish price signal or causal price effect.",
         "supporting_evidence": [
-          "Two trackers report roughly $3.5M-$3.6M of Oct 26 net outflow after conversion, with slightly different fund universes."
+          "Two trackers report roughly $3.5M-$3.6M of Oct 26 net outflow after conversion, with slightly different fund universes.",
+          "Decrypt's ETF widget reports approximately -$3.6M net flow on Oct 26 and about $1.7B cumulative net inflows; tracker source lineage and fund universe remain unverified."
         ],
         "disconfirming_or_alternative_evidence": [
           "The trackers may share issuer source data, and daily flows can be small relative to broader spot/derivatives liquidity; price may move independently.",
-          "The Oct 27 $0 figure in one tracker may be provisional or incomplete."
+          "The Oct 27 $0 figure in one tracker may be provisional or incomplete.",
+          "A tracker-level aggregate can be revised or share data lineage with other dashboards; a small daily flow does not isolate spot-market impact or establish causal price direction."
         ],
         "test_plan": [
           "Reconstruct daily fund-level creations/redemptions from issuer-reported holdings and align to XRP spot price/volume, futures basis/funding, and market-wide risk factors.",
-          "Test lagged flow features against price/volatility baselines using walk-forward splits; block until provenance and settlement checks pass."
+          "Test lagged flow features against price/volatility baselines using walk-forward splits; block until provenance and settlement checks pass.",
+          "Reconcile the Oct 26 figure against fund-by-fund issuer holdings/creation-redemption data and the tracker’s stated fund universe before model admission."
         ]
       },
       {
@@ -2496,6 +2510,29 @@
           "SRC-SBI-RIPPLE-ASIA-AWAJ-2026-02-20"
         ],
         "model_admission": "EVENT_CONTEXT_ONLY; XRP_DEMAND_NOT_ESTABLISHED"
+      },
+      {
+        "id": "XRP-PRICE-ASYNC-DECRYPT-OKX-2026-10-28",
+        "evidence_class": "DATA_QUALITY_FINDING",
+        "as_of_date": "2026-10-28",
+        "observation": "Decrypt's page displayed XRP near $1.32 without an explicit quote timestamp; OKX displayed $1.328 with a last-updated time of Oct 27 23:59:06 UTC. The approximately $0.008 (about 0.6%) difference is not a synchronized venue spread because the sources have different timestamp semantics and aggregation coverage.",
+        "interpretation": "Use neither display as a synchronized model feature. Capture raw exchange bid/ask and OHLCV with venue, pair, event time, retrieval time and response hash at a common cutoff.",
+        "source_ids": [
+          "SRC-DECRYPT-XRP-MARKET-ETF-FLOW-2026-10-28",
+          "SRC-OKX-XRP-QUOTE-2026-10-28"
+        ],
+        "approved_for_model_features": false
+      },
+      {
+        "id": "XRP-ETF-FLOW-OCT26-TRACKER-2026-10-28",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-26",
+        "observation": "Decrypt's tracker reports approximately -$3.6M of net U.S. spot XRP ETF flows on Oct 26 and about $1.7B cumulative net inflows. This is a tracker-level aggregate, not fund-level issuer/creation-redemption reconciliation.",
+        "interpretation": "A single day's outflow is not a standalone bearish signal and does not prove net XRP selling on spot venues. Verify fund universe, issuer data, settlement date and source independence before model admission.",
+        "source_ids": [
+          "SRC-DECRYPT-XRP-MARKET-ETF-FLOW-2026-10-28"
+        ],
+        "approved_for_model_features": false
       }
     ],
     "phrase_investigation": {
@@ -2664,7 +2701,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "Main signal has provider failures and confidence 0.0; academic/protocol research remains classified as bullish market news; stablecoin regulatory/reward evidence is context only. No calibrated fixed-horizon out-of-sample skill has been demonstrated.",
+      "reason": "Public XRP quote widgets are asynchronous; Coinbase's futures card has an unresolved contract-date conflict; ETF flows remain tracker-level and uncorroborated at fund level. Main signal has provider failures/confidence zero and no calibrated fixed-horizon out-of-sample skill has been demonstrated.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -2695,7 +2732,7 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T04:11:30Z"
+      "last_checked_utc": "2026-10-28T04:14:00Z"
     },
     "massive_micro_ingestion": {
       "status": "REQUIRED_STANDARD",
@@ -3192,6 +3229,29 @@
           "SRC-XRP-PRICE-COINCODEX-2026-10-26"
         ],
         "next_action": "Use timestamped raw venue quotes/OHLCV at a common UTC cutoff; record venue, pair, bid/ask, depth, and raw response hash."
+      },
+      {
+        "id": "XRP-QUOTE-TIMESTAMP-MISMATCH-2026-10-28",
+        "severity": "MEDIUM",
+        "status": "UNSYNCHRONIZED_QUOTE_WIDGETS; MODEL_ADMISSION_BLOCKED",
+        "finding": "Decrypt displayed approximately $1.32 with no visible quote timestamp, while OKX displayed $1.328 at a stated timestamp about four hours before the capture cutoff.",
+        "interpretation": "The small displayed difference cannot be treated as arbitrage or a predictive signal without synchronized venue-level bid/ask, depth and timestamps.",
+        "source_ids": [
+          "SRC-DECRYPT-XRP-MARKET-ETF-FLOW-2026-10-28",
+          "SRC-OKX-XRP-QUOTE-2026-10-28"
+        ],
+        "next_action": "Capture permitted public venue bid/ask/OHLCV at a common UTC cutoff and retain venue, pair, timestamp and raw response hash."
+      },
+      {
+        "id": "COINBASE-XRP-FUTURES-CONTRACT-DATE-CONFLICT-2026-10-28",
+        "severity": "HIGH",
+        "status": "CONTRACT_CARD_INTERNALLY_INCONSISTENT; OPEN_INTEREST_VOLUME_EXCLUDED",
+        "finding": "Coinbase's XRP-30OCT26-CDE page title/URL references an Oct 30, 2026 contract while its details show an Oct 1, 2026 expiry and still describe the market as open.",
+        "interpretation": "The displayed contract-level open interest and volume may be stale or mislabelled. They must not enter the feature store until the exact exchange contract and current official spec are verified.",
+        "source_ids": [
+          "SRC-COINBASE-XRP-FUTURES-CARD-2026-10-28"
+        ],
+        "next_action": "Resolve the contract symbol against Coinbase Derivatives Exchange's official product specification and CFTC contract metadata; only then align OI, volume and settlement time."
       }
     ],
     "mission_priority": {
@@ -3220,9 +3280,9 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-COINBASE-USDC-REWARDS-CBI-DEPLOY-SAFETY-2026-10-28T0411Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0411Z.json",
-    "current_research_head_before_ledger_update": "b9687c3e54df6d03e5a717161e5d8eb2771eb0da",
+    "snapshot_id": "XRP-QUOTE-ETF-FLOW-DATA-QUALITY-2026-10-28T0414Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0414Z.json",
+    "current_research_head_before_ledger_update": "ecd62b4241dfc77d3f6c6f38e345a37b8a0bc0c6",
     "current_research_checks": {
       "tests": "success",
       "tests_passed": 146,
@@ -3233,7 +3293,7 @@
       "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40624733420",
       "note": "These checks validate research branch head 70f73ddfbf6ca4db845686bc94687d792e4ab702 before this new snapshot commit."
     },
-    "current_research_head_before_final_verification_record": "7048df22fdec402610425a16e9143502801a8fa8",
+    "current_research_head_before_final_verification_record": "079b82d1da21d235bbd113ab23ee393761bb85ca",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -3697,7 +3757,7 @@
       "main_modified_by_this_run": false,
       "merge_performed": false
     },
-    "snapshot_blob_sha": "08210109ad0a3a73b37298462189dc6715f6adaa",
+    "snapshot_blob_sha": "11a4e20525ba8f549bbf4a08f3c685df0a51fb43",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
@@ -4983,6 +5043,46 @@
       "title": "Main paper-trading log append",
       "accessed_at_utc": "2026-10-28T04:11:30Z",
       "note": "Compare from cb49b0b to 6a616e75 shows one appended line in web/paper_trading_log.jsonl and no code/workflow changes; not written by this run."
+    },
+    {
+      "id": "SRC-DECRYPT-XRP-MARKET-ETF-FLOW-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://decrypt.co/en-US/price/xrp",
+      "title": "Decrypt XRP live price and ETF flow tracker",
+      "accessed_at_utc": "2026-10-28T04:14:00Z",
+      "note": "Page displayed XRP near $1.32, 24h high $1.33/low $1.28 and market cap around $83.81B, but no explicit quote timestamp was visible. Its ETF widget reports Oct 26 net flow of -$3.6M and cumulative net inflows around $1.7B. Treat as a tracker observation pending fund-level and source-lineage reconciliation."
+    },
+    {
+      "id": "SRC-OKX-XRP-QUOTE-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.okx.com/en-gb/price/xrp-xrp",
+      "title": "OKX XRP price page",
+      "accessed_at_utc": "2026-10-28T04:14:00Z",
+      "note": "Page displayed $1.328 and said last updated Oct 28 07:59:06 UTC+8, equivalent to Oct 27 23:59:06 UTC. At this ledger cutoff it was about 4 hours old; not synchronized with an untimestamped Decrypt widget."
+    },
+    {
+      "id": "SRC-COINBASE-XRP-FUTURES-CARD-2026-10-28",
+      "evidence_class": "DATA_QUALITY_FINDING",
+      "url": "https://www.coinbase.com/futures/XRP-30OCT26-CDE",
+      "title": "Coinbase Derivatives XRP futures product card",
+      "accessed_at_utc": "2026-10-28T04:14:00Z",
+      "note": "The page URL/title references XRP-30OCT26-CDE / Oct 2026, while the detail card reports an Oct 1, 2026 expiry and simultaneously claims the market is open, with open interest/volume figures. These fields are internally inconsistent as of Oct 28; exclude this card's contract-level open-interest and volume values until the official contract identifier/specification is resolved."
+    },
+    {
+      "id": "SRC-REPO-PR1227-CI-2026-10-28T0412Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40630965413",
+      "title": "Research PR #1227 latest exact-head CI",
+      "accessed_at_utc": "2026-10-28T04:14:00Z",
+      "note": "Research ledger head ecd62b4 passed the core test suite: 146 tests in 5.93 seconds."
+    },
+    {
+      "id": "SRC-REPO-PR1227-GATE-2026-10-28T0412Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40630965427",
+      "title": "Research PR #1227 latest exact-head fail-closed gate",
+      "accessed_at_utc": "2026-10-28T04:14:00Z",
+      "note": "Fail-closed gate passed for research ledger head ecd62b4."
     }
   ],
   "limitations": [
@@ -5685,6 +5785,29 @@
         "snapshot_blob_sha": "08210109ad0a3a73b37298462189dc6715f6adaa"
       },
       "snapshot_blob_sha": "08210109ad0a3a73b37298462189dc6715f6adaa"
+    },
+    {
+      "recorded_at_utc": "2026-10-28T04:14:00Z",
+      "update_type": "XRP_QUOTE_ETF_FLOW_AND_FUTURES_CARD_DATA_QUALITY",
+      "snapshot_id": "XRP-QUOTE-ETF-FLOW-DATA-QUALITY-2026-10-28T0414Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0414Z.json",
+      "details": "Added timestamp-qualified XRP price observations, an Oct 26 ETF tracker flow with explicit source/fund-universe caveats, and a high-severity Coinbase futures product-card expiry conflict. Marked quote and ETF tracker observations inadmissible as model features pending synchronized raw venue data and fund-level reconciliation. Confirmed research PR #1227 latest head ecd62b4 passed 146 tests in 5.93s and its fail-closed gate passed.",
+      "validation": {
+        "source_ids_unique": true,
+        "market_observations_model_admission": false,
+        "finding_source_refs": "PASS",
+        "market_quality_source_refs": "PASS",
+        "graph_edge_source_refs": "PASS",
+        "event_source_refs": "PASS",
+        "pr1227_exact_head_ci": "PASS_146_TESTS_5.93S",
+        "pr1227_fail_closed_gate": "PASS",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "snapshot_json": "PASS",
+        "snapshot_blob_sha": "11a4e20525ba8f549bbf4a08f3c685df0a51fb43"
+      },
+      "snapshot_blob_sha": "11a4e20525ba8f549bbf4a08f3c685df0a51fb43"
     }
   ],
   "mission_priority": {
