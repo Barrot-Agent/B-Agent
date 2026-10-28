@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T16:06:19.676Z",
+    "captured_at_utc": "2026-10-28T16:08:14.181Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
+      "main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -150,46 +150,43 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
-        "message": "Cross-analysis refresh [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
-        "observed_at_utc": "2026-10-28T15:51:40Z",
+        "sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
+        "message": "Paper trade cycle [skip ci]",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/03bf7c009bfd166a2993a44cc08ee09f632b6e76",
+        "observed_at_utc": "2026-10-28T16:05:07Z",
         "changed_scope": [
-          "generated knowledge-base/config/logs",
-          "entity co-occurrence and sentiment files",
-          "web/latest_signal.json",
-          "web/latest_signal_btc.json",
-          "web/latest_signal_summary.json",
-          "web/signal_history.jsonl",
-          "web/signal_history_btc.jsonl",
           "web/paper_trading_log.jsonl"
         ]
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
+        "main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
         "main_protected": true,
         "main_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-        "branch_protection_details": "Detailed branch protection returns 403 to current integration; effective merge enforcement remains unknown.",
+        "branch_protection_details": "Detailed branch protection endpoint remains 403; effective merge enforcement unknown.",
         "main_ci": {
           "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-          "note": "Latest main commit is generated-data-only and marked [skip ci]; no exact-head main CI pass verified."
+          "note": "Latest main commit is generated-data-only and marked [skip ci]."
         }
       },
-      "current_research_head": "snapshot commit created; index commit pending",
+      "current_research_head": "9b8a1a09c063a6edd2dd810f316b85ca335a3019",
       "current_research_checks": {
-        "status": "PENDING_AFTER_INDEX_UPDATE",
-        "note": "Verify the new ledger-index commit through PR CI/gate after updating the index pointer."
+        "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
+        "previous_index_ci_run_id": 40722698584,
+        "previous_index_tests_passed": 145,
+        "previous_index_gate_run_id": 40722698549
       },
       "main_commit_delta_since_last_observed": {
-        "previous_sha": "c50ec170923b90ec1f18f3c80af3cf452337c887",
-        "current_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
-        "commits_ahead": 6,
-        "changed_files": 13,
-        "changed_scope": "Generated signal, knowledge-base, summary and paper-trading data only",
-        "status": "GENERATED_DATA_ONLY; DIRECT_WRITERS_REMAIN_ACTIVE",
+        "previous_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
+        "current_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
+        "commits_ahead": 1,
+        "changed_files": 1,
+        "changed_scope": [
+          "web/paper_trading_log.jsonl"
+        ],
+        "status": "GENERATED_DATA_ONLY",
         "source_ids": [
-          "SRC-GH-GENERATED-WRITER-BURST-2026-10-28T1551Z"
+          "SRC-GH-MAIN-HEAD-2026-10-28T1605Z"
         ]
       },
       "latest_research_branch_state": {
@@ -622,10 +619,10 @@
         "pr": 1260,
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1260",
         "state": "OPEN_DRAFT_UNMERGED",
-        "base_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
+        "base_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
         "head_sha": "c4ce599faeed469760b093484919785b74cda123",
         "ahead_by": 4,
-        "behind_by": 0,
+        "behind_by": 1,
         "changed_files": [
           ".github/workflows/ci.yml",
           ".github/workflows/signal-summary.yml",
@@ -648,7 +645,8 @@
         "main_modified_by_this_run": false,
         "merge_performed": false,
         "deployment_executed": false,
-        "limitation": "Exact-head tests verify fail-closed summary behavior and read-only workflow text; they do not establish XRP predictive skill or durable feature storage."
+        "limitation": "Exact-head tests verify fail-closed summary behavior and read-only workflow text; they do not establish XRP predictive skill or durable feature storage.",
+        "status": "OPEN_DRAFT_UNMERGED; exact-head CI 150 tests/5.78s PASS; fail-closed gate PASS; one generated paper-trading-log commit behind current main."
       },
       "current_pr_1258": {
         "pr": 1258,
@@ -6119,8 +6117,8 @@
       "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1506Z.json",
       "next_action": "Verify CI and fail-closed gate on the new 15:06 ledger-index head; preserve the 15:01 snapshot and its exact-head verification record."
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1606Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1606Z.json",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1608Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1608Z.json",
     "current_research_head_before_ledger_update": "b6fb038aa15a38101350550ac3644150e8856a78",
     "current_research_checks": {
       "status": "PRIOR_HEAD_PASS; NEW_HEAD_PENDING",
@@ -7925,22 +7923,22 @@
       "merge_performed": false
     },
     "ledger_metrics": {
-      "source_records": 377,
-      "run_updates": 77,
+      "source_records": 387,
+      "run_updates": 78,
       "limitations": 76,
       "relationship_edges": 82,
       "competing_hypotheses": 53,
       "market_observations": 45
     },
-    "snapshot_blob_sha": "3247ea790ce2aa5d551e460df106470f0d897ac0",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:06:19.676Z",
-    "snapshot_commit_sha": "8be3ff9608a399913821204a4b3317ac3b5e0673",
+    "snapshot_blob_sha": "0eb2947e190a8a6254d56646c89ed04d7df44f4a",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:08:14.181Z",
+    "snapshot_commit_sha": "9b8a1a09c063a6edd2dd810f316b85ca335a3019",
     "post_snapshot_verification": {
       "status": "PENDING_EXACT_HEAD_CI_AND_GATE",
       "snapshot_blob_readback_ok": true,
       "source_ids_unique": true,
       "missing_source_refs": 0,
-      "note": "Snapshot JSON parsed after write and blob SHA recorded. Exact-head CI/gate on the research PR remains pending after the index update."
+      "note": "Snapshot JSON parsed after write and blob SHA recorded. New index commit requires exact-head CI and gate."
     }
   },
   "sources": [
@@ -10999,6 +10997,86 @@
       "title": "Fresh-main signal-summary safety PR #1260",
       "accessed_at_utc": "2026-10-28T16:06:19.676Z",
       "note": "Draft PR #1260 is based on main b85a5ce07c396ecaee296ec31f8744f95e3f4d3b and head c4ce599faeed469760b093484919785b74cda123. It changes only ci.yml, signal-summary.yml, scripts/signal_summary.py, and a new safety test. Exact-head CI passed 150 tests in 5.78s and fail-closed gate passed. PR is open and unmerged; no main changes."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1605Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/03bf7c009bfd166a2993a44cc08ee09f632b6e76",
+      "title": "Main advanced to paper-trading log append at 16:05:07 UTC",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "GitHub API reports main head 03bf7c009bfd166a2993a44cc08ee09f632b6e76, commit message Paper trade cycle [skip ci], at 2026-10-28T16:05:07Z. Exact-head main CI is not verified."
+    },
+    {
+      "id": "SRC-GH-PR1260-CURRENT-BASE-COMPARE-2026-10-28T1608Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/main...safety/signal-summary-readonly-fresh-main-20261028T1602Z",
+      "title": "PR #1260 current comparison after main advanced",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "At comparison time, PR #1260 is four commits ahead and one behind current main. Its changed files are ci.yml, signal-summary.yml, scripts/signal_summary.py and tests/test_signal_summary_safety.py; the intervening main commit changes web/paper_trading_log.jsonl, with no overlapping changed path observed. Recheck before approval."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1606Z-A",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722665371",
+      "title": "Approval workflow push-event failure with zero jobs on snapshot commit",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Run 40722665371 on research branch commit 8be3ff9608a399913821204a4b3317ac3b5e0673 reports event push, conclusion failure and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1606Z-B",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722685264",
+      "title": "Approval workflow push-event failure with zero jobs on index commit",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Run 40722685264 on research branch commit 2d37991383b788a23a3741de319ed6f6c9763c35 reports event push, conclusion failure and zero jobs. Its workflow path is .github/workflows/barrot-approve-pr.yml; exact workflow blob at event head is 7047d1ebf27c5151b5a844ad375ac583a2e193e4 and declares workflow_dispatch only. No job executed; root cause unknown."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-WORKFLOW-CURRENT-BLOB-2026-10-28T1608Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Current approval workflow remains manual-dispatch-only",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Main file blob 7047d1ebf27c5151b5a844ad375ac583a2e193e4 declares workflow_dispatch inputs only. This does not explain repeated push-event zero-job failures. PR #1250's proposed explicit push no-op is unmerged and did not govern runs 40722665371 or 40722685264."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1606Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722698584",
+      "title": "Research ledger index commit 2d379913 CI passed",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Exact-head CI run 40722698584 completed successfully on commit 2d37991383b788a23a3741de319ed6f6c9763c35; job log reports 145 tests passed in 5.95 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1606Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722698549",
+      "title": "Research ledger index commit 2d379913 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Fail-closed gate run 40722698549 completed successfully for the same ledger-index commit 2d37991383b788a23a3741de319ed6f6c9763c35."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-XRP-STOCKS-CHANNEL-20261028",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "Public YouTube channel named Kamilah Stevenson | XRP & Stocks",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "YouTube search result identifies a channel with this name and a crypto/stocks description. The requested name is Camilla Stephenson; this channel is only a candidate and no first-party evidence proves identity equivalence."
+    },
+    {
+      "id": "SRC-VLING-KAMILAH-CHANNEL-UCqUPJMQdkCN6lsVLDnichPA-20261028",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsVLDnichPA/channel-info",
+      "title": "Third-party analytics profile for a second Kamilah Stevenson channel ID",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Third-party profile reports a Kamilah Stevenson channel with ID UCqUPJMQdkCN6lsVLDnichPA and approximately 1.2K videos. This is a different ID from UCXm6KAr1WHF6UN7g5b2W7wg; no first-party cross-link or match to Camilla Stephenson is established."
+    },
+    {
+      "id": "SRC-GLASP-KAMILAH-TRANSCRIPT-QSLBJGQD0MU-20261028",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "title": "Third-party transcript for a Kamilah Stevenson XRP video",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "The page attributes the video to Kamilah Stevenson and its transcript has the speaker refer to herself as Camila Stevenson. This supports name-variant ambiguity, not identity equivalence with the requested Camilla Stephenson."
     }
   ],
   "limitations": [
@@ -12846,6 +12924,38 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T16:08:14.181Z",
+      "update_type": "CURRENT_MAIN_RECHECK_APPROVAL_ANOMALY_AND_CREATOR_IDENTITY",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1608Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1608Z.json",
+      "details": "Main advanced to 03bf7c0 via a generated paper-trading-log append. PR #1260 remains draft/unmerged, four commits ahead and one behind main, with no overlapping changed paths; its exact-head CI passed 150 tests and the fail-closed gate passed. Two push-event approval workflow runs failed with zero jobs despite dispatch-only workflow content. Public search surfaced distinct Kamilah Stevenson channel IDs and a transcript using Camila; the requested Camilla Stephenson identity remains unresolved.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-2026-10-28T1605Z",
+        "SRC-GH-PR1260-CURRENT-BASE-COMPARE-2026-10-28T1608Z",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1606Z-A",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1606Z-B",
+        "SRC-GH-APPROVAL-WORKFLOW-CURRENT-BLOB-2026-10-28T1608Z",
+        "SRC-GH-LEDGER-CI-2026-10-28T1606Z",
+        "SRC-GH-LEDGER-GATE-2026-10-28T1606Z",
+        "SRC-YT-KAMILAH-XRP-STOCKS-CHANNEL-20261028",
+        "SRC-VLING-KAMILAH-CHANNEL-UCqUPJMQdkCN6lsVLDnichPA-20261028",
+        "SRC-GLASP-KAMILAH-TRANSCRIPT-QSLBJGQD0MU-20261028"
+      ],
+      "validation": {
+        "previous_index_head": "2d37991383b788a23a3741de319ed6f6c9763c35",
+        "previous_index_ci": "PASS_145_TESTS_5.95S",
+        "previous_index_gate": "PASS",
+        "new_snapshot_json_parse": "PENDING_AFTER_WRITE",
+        "snapshot_blob_readback": "PENDING_AFTER_WRITE",
+        "source_id_uniqueness": "PENDING_AFTER_WRITE",
+        "missing_source_refs": "PENDING_AFTER_WRITE",
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
     }
   ],
   "mission_priority": {
@@ -13073,10 +13183,12 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "abfbcb17bccdbe5d4ada8a5b2a62b51a5d9db811",
-  "current_research_head_this_run": "abfbcb17bccdbe5d4ada8a5b2a62b51a5d9db811",
+  "current_research_head_before_ledger_update": "2d37991383b788a23a3741de319ed6f6c9763c35",
+  "current_research_head_this_run": "2d37991383b788a23a3741de319ed6f6c9763c35",
   "current_research_checks": {
-    "status": "PENDING_AFTER_NEW_SNAPSHOT_AND_INDEX_COMMITS",
-    "note": "Latest research-index commit must pass exact-head CI and fail-closed gate."
+    "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
+    "previous_index_ci_run_id": 40722698584,
+    "previous_index_tests_passed": 145,
+    "previous_index_gate_run_id": 40722698549
   }
 }
