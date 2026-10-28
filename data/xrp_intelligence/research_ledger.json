@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T03:08:30Z",
+    "captured_at_utc": "2026-10-28T04:02:35Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "a77c329157c85c3cb914233a5761ab4eac6bd0d4",
+      "main_sha": "cb49b0b092bcb89e79d75afc6a842282f78d2c05",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -132,19 +132,20 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "message": "Paper trade cycle [skip ci]",
-        "authored_at_utc": "2026-10-28T03:05:49Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/a77c329157c85c3cb914233a5761ab4eac6bd0d4",
-        "scope": "Inspected diff appends one row to web/paper_trading_log.jsonl only; generated-data-only change."
+        "sha": "cb49b0b092bcb89e79d75afc6a842282f78d2c05",
+        "message": "Cross-analysis refresh [skip ci]",
+        "authored_at_utc": "2026-10-28T03:52:00Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/cb49b0b092bcb89e79d75afc6a842282f78d2c05",
+        "scope": "Generated-data-only refresh of entity_cooccurrence.json, entity_sentiment_profile.json, and sentiment_shift.json; no code or workflow changes."
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+        "main_sha": "cb49b0b092bcb89e79d75afc6a842282f78d2c05",
         "main_branch_protected": true,
         "branch_protection_details": "Detailed protection read remains 403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION; effective required checks not independently verified.",
         "main_ci": {
           "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-          "note": "Latest main commit is a generated-data-only [skip ci] commit; effective branch-protection required checks remain inaccessible to this integration and were not independently verified."
+          "note": "Latest observed main head is a generated-data-only Cross-analysis refresh [skip ci]; no exact-head full CI evidence was established in this run."
         }
       },
       "current_research_head": "d4fd1a34370ca3d53f736660de11ed9174207cf0",
@@ -250,7 +251,50 @@
         "limitation": "30-day run artifacts are not a durable feature store; reviewed promotion/persistent snapshot design remains required.",
         "main_modified_by_this_run": false,
         "merge_performed": false
-      }
+      },
+      "current_open_prs_observed_at_utc": "2026-10-28T04:02:35Z",
+      "current_open_prs": [
+        {
+          "number": 1236,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+          "state": "open",
+          "draft": true,
+          "head_sha": "0937a9ec4d6e95bd606303f1de4ac20602614566",
+          "last_verified_ci": "PASS_151_TESTS",
+          "last_verified_gate": "PASS",
+          "note": "Summary fallback fix; unmerged."
+        },
+        {
+          "number": 1237,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1237",
+          "state": "open",
+          "draft": true,
+          "head_sha": "f86dc2e6069a4b1e22570cbb184c92178631d501",
+          "last_verified_ci": "PASS_146_TESTS",
+          "last_verified_gate": "PASS",
+          "note": "Two scheduled signal writers artifact-only; unmerged."
+        },
+        {
+          "number": 1238,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1238",
+          "state": "open",
+          "draft": true,
+          "head_sha": "cb2e98d0f1358d924bce2b8bd75f0612fc5519e2",
+          "last_verified_ci": "PASS_146_TESTS",
+          "last_verified_gate": "PASS",
+          "note": "Financial-data refresh artifact-only; unmerged."
+        },
+        {
+          "number": 1239,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1239",
+          "state": "open",
+          "draft": true,
+          "head_sha": "8b215b8c9db2018ebae8a7e42008239b5f05a6e1",
+          "last_verified_ci": "PASS_150_TESTS",
+          "last_verified_gate": "PASS",
+          "note": "Proposed read-only merge queue; unmerged. Current main workflow remains write-capable until an approved fix lands."
+        }
+      ]
     },
     "critical_engine_findings": [
       {
@@ -1093,6 +1137,40 @@
           "SRC-REPO-PR1239-GATE-2026-10-28T0308Z"
         ],
         "uncertainty": "The fix remains a draft PR. No merge or deployment was performed."
+      },
+      {
+        "id": "GENIUS-OCC-FINAL-RULE-2026-10-21",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "FINAL_RULE_PUBLISHED; EFFECTIVE_2027-01-18",
+        "claim": "The OCC announced a final rule on Oct 21, 2026 implementing the GENIUS Act for payment stablecoin issuers and certain custody activities under OCC jurisdiction; the stated effective date is Jan 18, 2027.",
+        "interpretation": "This changes the prospective U.S. compliance framework for covered issuers and custody activities. It may influence reserve, redemption, reporting, operational-risk and distribution decisions across the stablecoin ecosystem, but does not itself prove a Coinbase/Circle product change, an XRP-related flow, or a near-term XRP price effect.",
+        "source_ids": [
+          "SRC-OCC-GENIUS-FINAL-RULE-2026-10-21",
+          "SRC-OCC-GENIUS-BULLETIN-2026-50"
+        ],
+        "uncertainty": "Rule applicability is entity- and activity-specific; Circle and Coinbase product-level treatment was not independently determined in this run. Effective date is future relative to this snapshot."
+      },
+      {
+        "id": "COINBASE-USDC-REWARDS-REGULATORY-CHANNEL-2026-10-28",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "AP_REPORT_CAPTURED; PRIMARY_PRODUCT_TERMS_NOT_VERIFIED",
+        "claim": "AP reports that exchanges such as Coinbase may continue certain interest-like rewards on stablecoin balances under the emerging GENIUS Act framework, while payment-stablecoin issuers are barred from paying yield solely for holding the stablecoin.",
+        "interpretation": "If product terms and legal treatment permit, distributor-led rewards could affect where users hold USDC and how distribution economics are divided between Coinbase and Circle. This is a conditional commercial hypothesis, not a verified change to their contract or a signal of XRP accumulation.",
+        "source_ids": [
+          "SRC-AP-STABLECOIN-REWARDS-2026-10"
+        ],
+        "uncertainty": "Product-specific terms, eligible jurisdictions, exact legal entity and the interaction with Coinbase–Circle distribution agreements require primary-source confirmation; the final rule is not effective until Jan 18, 2027."
+      },
+      {
+        "id": "COINBASE-IRELAND-SAFEGUARDING-ENFORCEMENT-2026-10-22",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "REGULATORY_ENFORCEMENT_REPORTED; XRP_CUSTODY_IMPACT_NOT_ESTABLISHED",
+        "claim": "Reuters reported on Oct 22, 2026 that the Central Bank of Ireland fined Coinbase's Irish unit €3.25 million for safeguarding and outsourcing breaches occurring between 2020 and 2025.",
+        "interpretation": "This is relevant to Coinbase's institutional trust, operational controls and regulatory-risk profile. It does not show a current breach, customer asset loss, or a failure involving XRP specifically.",
+        "source_ids": [
+          "SRC-REUTERS-COINBASE-IRELAND-FINE-2026-10-22"
+        ],
+        "uncertainty": "The fine concerns historical control failures and a specific Irish entity; implications for current products and other Coinbase entities should not be generalized without regulator documentation."
       }
     ],
     "relationship_graph": [
@@ -1659,6 +1737,37 @@
         ],
         "status": "OFFICIAL_ANNOUNCEMENT; PRODUCTION_DEPLOYMENT_UNKNOWN",
         "xrp_relationship": "XRPL technical implementation contemplated; direct XRP usage or demand not established"
+      },
+      {
+        "id": "EDGE-OCC-GENIUS-COVERED-ISSUERS-2026",
+        "from": "Office of the Comptroller of the Currency (OCC)",
+        "relation": "issued final rule implementing GENIUS Act requirements for covered payment-stablecoin issuers and certain custody activities",
+        "to": "Covered payment-stablecoin issuers and custody activities under OCC jurisdiction",
+        "evidence_ids": [
+          "SRC-OCC-GENIUS-FINAL-RULE-2026-10-21",
+          "SRC-OCC-GENIUS-BULLETIN-2026-50"
+        ],
+        "status": "OFFICIAL_FINAL_RULE; EFFECTIVE_2027-01-18; ENTITY_SCOPE_MUST_BE_CHECKED"
+      },
+      {
+        "id": "EDGE-COINBASE-USDC-REWARDS-REPORTED-2026",
+        "from": "Coinbase",
+        "relation": "reported by AP as offering certain USDC-balance rewards through an exchange/distributor model",
+        "to": "Eligible Coinbase customers holding USDC",
+        "evidence_ids": [
+          "SRC-AP-STABLECOIN-REWARDS-2026-10"
+        ],
+        "status": "SECONDARY_REPORT; PRODUCT_TERMS_AND_SCOPE_NOT_PRIMARY_VERIFIED; NOT_AN_XRP_FLOW"
+      },
+      {
+        "id": "EDGE-IRELAND-COINBASE-SAFEGUARDING-ENFORCEMENT-2026",
+        "from": "Central Bank of Ireland",
+        "relation": "reported by Reuters as imposing a €3.25M fine for historical safeguarding and outsourcing breaches",
+        "to": "Coinbase's Irish unit",
+        "evidence_ids": [
+          "SRC-REUTERS-COINBASE-IRELAND-FINE-2026-10-22"
+        ],
+        "status": "SECONDARY_REPORT_OF_REGULATORY_ACTION; HISTORICAL_PERIOD_2020-2025; NO_XRP_SPECIFIC_FAILURE_ESTABLISHED"
       }
     ],
     "competing_hypotheses": [
@@ -2102,6 +2211,27 @@
           "Reconstruct daily fund-level creations/redemptions from issuer-reported holdings and align to XRP spot price/volume, futures basis/funding, and market-wide risk factors.",
           "Test lagged flow features against price/volatility baselines using walk-forward splits; block until provenance and settlement checks pass."
         ]
+      },
+      {
+        "id": "H-USDC-DISTRIBUTOR-REWARDS-VS-XRP-FLOW-2026-10",
+        "hypothesis": "The prospective GENIUS Act framework and distributor-led USDC rewards could alter stablecoin distribution incentives between Circle and Coinbase, but any XRP impact is indirect and unproven.",
+        "supporting_evidence": [
+          "OCC's final rule was published Oct 21, 2026 and is stated to take effect Jan 18, 2027.",
+          "AP reports that exchange-led stablecoin rewards may remain available under certain arrangements while issuer yield for passive holding is restricted.",
+          "Prior ledger evidence documents a material Coinbase–Circle USDC distribution/economics relationship."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "The rule is not yet effective at this snapshot cutoff and applicability is entity- and activity-specific.",
+          "Coinbase product terms and the current Coinbase–Circle commercial allocation were not re-verified in this run.",
+          "USDC distribution or balances can grow without XRP being bought, posted as collateral, or used as a bridge asset.",
+          "Regulatory changes may affect all competing payment stablecoins and exchanges rather than uniquely benefiting Coinbase or Circle."
+        ],
+        "test_plan": [
+          "Capture official Coinbase USDC reward terms and Circle distribution-cost disclosures with effective dates.",
+          "Track USDC balances and net issuance, Coinbase product balances where publicly disclosed, and independent stablecoin market shares.",
+          "Separately measure XRPL-native USDC supply/transfers, XRP bridge-path share, XRP spot/derivatives flows and market-wide risk controls.",
+          "Use pre/post-event windows and walk-forward tests; do not infer XRP price causality from regulatory announcements alone."
+        ]
       }
     ],
     "market_observations": [
@@ -2466,7 +2596,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "Public XRP quote pages contain asynchronous/stale widgets; USDC observations are global issuer circulation rather than XRPL-specific flows; main signal still records provider failures/confidence zero; no calibrated fixed-horizon out-of-sample skill has been demonstrated.",
+      "reason": "Main signal still has provider failures and confidence 0.0; academic/protocol research is classified as bullish market news; no fixed-horizon calibrated out-of-sample skill is demonstrated. New stablecoin regulatory findings are context only and do not justify an XRP price forecast.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -2497,7 +2627,7 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T01:04:30Z"
+      "last_checked_utc": "2026-10-28T04:02:35Z"
     },
     "massive_micro_ingestion": {
       "status": "REQUIRED_STANDARD",
@@ -3022,9 +3152,9 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-SBI-AWAJ-USDC-QUOTE-AND-MERGE-QUEUE-2026-10-28T0308Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0308Z.json",
-    "current_research_head_before_ledger_update": "70f73ddfbf6ca4db845686bc94687d792e4ab702",
+    "snapshot_id": "XRP-OCC-GENIUS-COINBASE-DISTRIBUTION-2026-10-28T0402Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0402Z.json",
+    "current_research_head_before_ledger_update": "347f5debf146614d50387d4e33af5c9d4f36200b",
     "current_research_checks": {
       "tests": "success",
       "tests_passed": 146,
@@ -3035,7 +3165,7 @@
       "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40624733420",
       "note": "These checks validate research branch head 70f73ddfbf6ca4db845686bc94687d792e4ab702 before this new snapshot commit."
     },
-    "current_research_head_before_final_verification_record": "70f73ddfbf6ca4db845686bc94687d792e4ab702",
+    "current_research_head_before_final_verification_record": "ac626ca9957c255b4aa16803275a9132aa865212",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -3429,6 +3559,27 @@
           "SRC-REPO-PR1239-GATE-2026-10-28T0308Z"
         ],
         "interpretation": "150 tests and fail-closed gate passed; draft remains unmerged."
+      },
+      {
+        "event_date": "2026-10-21",
+        "event_type": "US_STABLECOIN_REGULATION",
+        "title": "OCC publishes final GENIUS Act rule",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "source_ids": [
+          "SRC-OCC-GENIUS-FINAL-RULE-2026-10-21",
+          "SRC-OCC-GENIUS-BULLETIN-2026-50"
+        ],
+        "interpretation": "Final rule is stated to take effect Jan 18, 2027. Entity-specific application and actual market response remain open."
+      },
+      {
+        "event_date": "2026-10-22",
+        "event_type": "EXCHANGE_REGULATORY_RISK",
+        "title": "Reuters reports Coinbase Ireland safeguarding fine",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "source_ids": [
+          "SRC-REUTERS-COINBASE-IRELAND-FINE-2026-10-22"
+        ],
+        "interpretation": "Historical compliance action; no XRP-specific custody impact established."
       }
     ],
     "current_pr_1238_state": {
@@ -3468,9 +3619,40 @@
       "main_modified_by_this_run": false,
       "merge_performed": false
     },
-    "snapshot_blob_sha": "bbd69fe6c4147d8410a77a899e339e54ac28d143",
+    "snapshot_blob_sha": "1eceb071c1889cc8630f3c566aeb45c770c7beac",
     "main_modified_by_this_run": false,
-    "merge_performed": false
+    "merge_performed": false,
+    "main_workflow_audit": {
+      "observed_at_utc": "2026-10-28T04:02:35Z",
+      "findings": [
+        {
+          "path": ".github/workflows/knowledge-signal-cycle.yml",
+          "status": "ON_MAIN_WRITE_CAPABLE",
+          "evidence": "contents: write; commits generated knowledge/signal files and pushes main; PR #1237 is open/unmerged."
+        },
+        {
+          "path": ".github/workflows/financial-data-refresh.yml",
+          "status": "ON_MAIN_WRITE_CAPABLE",
+          "evidence": "contents: write; commits financial data files and pushes main; PR #1238 is open/unmerged."
+        },
+        {
+          "path": ".github/workflows/merge-queue.yml",
+          "status": "ON_MAIN_MUTATION_CAPABLE_MANUAL_DISPATCH",
+          "evidence": "workflow_dispatch only, but has contents/pull-requests write and code can update branches and merge PRs; PR #1239 is open/unmerged."
+        },
+        {
+          "path": ".github/workflows/barrot-pr-automerge.yml",
+          "status": "ON_MAIN_DISABLED_READ_ONLY_NOTICE",
+          "evidence": "workflow_dispatch only; contents and pull-requests are read-only."
+        },
+        {
+          "path": ".github/workflows/barrot-approve-pr.yml",
+          "status": "WORKFLOW_DISPATCH_ONLY_ON_CURRENT_MAIN",
+          "evidence": "Current file declares workflow_dispatch inputs and has an approve job; earlier zero-job push-event explanation is not supported by the current trigger definition and needs run-level root-cause inspection."
+        }
+      ],
+      "limitation": "Repository branch-protection details remain inaccessible to the connected integration; effective required checks and review rules are not independently verified."
+    }
   },
   "sources": [
     {
@@ -4590,6 +4772,38 @@
       "title": "SBI Ripple Asia and Asia Web3 Alliance Japan technical-support partnership",
       "accessed_at_utc": "2026-10-28T03:08:30Z",
       "note": "SBI Group official release dated Feb 20, 2026 says SBI Ripple Asia and AWAJ signed an MoU to support startups implementing financial services using blockchain, with XRPL among the contemplated technologies. This is technical support/implementation intent, not evidence of production transaction volume or XRP demand."
+    },
+    {
+      "id": "SRC-OCC-GENIUS-FINAL-RULE-2026-10-21",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "title": "OCC final rule implementing the GENIUS Act for payment stablecoin issuers and certain custody activities",
+      "accessed_at_utc": "2026-10-28T04:02:35Z",
+      "note": "OCC announced the final rule on Oct 21, 2026. The rule covers permitted payment stablecoin issuers and certain custody activities under OCC jurisdiction; the OCC states the rule takes effect Jan 18, 2027. This is a general regulatory framework, not evidence of a Circle-specific approval or an XRP flow."
+    },
+    {
+      "id": "SRC-OCC-GENIUS-BULLETIN-2026-50",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-50.html",
+      "title": "OCC Bulletin 2026-50: GENIUS Act Regulations final rule",
+      "accessed_at_utc": "2026-10-28T04:02:35Z",
+      "note": "Official bulletin summarizes the rule's scope and Jan 18, 2027 effective date. It does not establish a product-specific regulatory determination for Coinbase or Circle."
+    },
+    {
+      "id": "SRC-AP-STABLECOIN-REWARDS-2026-10",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://apnews.com/article/db6b787c7c2a5fe434ce84b23413d966",
+      "title": "Cryptocurrency companies can keep paying interest-like rewards, say federal bank regulators",
+      "accessed_at_utc": "2026-10-28T04:02:35Z",
+      "note": "AP reports that exchanges such as Coinbase and Robinhood may continue some stablecoin-balance reward arrangements while issuers are barred from paying yield solely for holding payment stablecoins. Treat as secondary reporting; exact product, legal entity, jurisdiction and reward terms require primary-source verification."
+    },
+    {
+      "id": "SRC-REUTERS-COINBASE-IRELAND-FINE-2026-10-22",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.reuters.com/legal/government/irish-central-bank-fines-coinbase-unit-325-million-2026-10-22/",
+      "title": "Irish Central Bank fines Coinbase unit €3.25 million",
+      "accessed_at_utc": "2026-10-28T04:02:35Z",
+      "note": "Reuters reports an Oct 22, 2026 penalty against Coinbase's Irish unit for customer-fund safeguarding and outsourcing breaches during 2020–2025. Coinbase said it self-reported and no customer lost funds or access. This is a compliance-risk observation, not evidence of current XRP custody failure."
     }
   ],
   "limitations": [
@@ -5248,6 +5462,26 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T04:02:35Z",
+      "update_type": "OCC_GENIUS_COINBASE_CIRCLE_REGULATORY_CHANNEL_AND_CURRENT_MAIN_AUDIT",
+      "snapshot_id": "XRP-OCC-GENIUS-COINBASE-DISTRIBUTION-2026-10-28T0402Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0402Z.json",
+      "details": "Added OCC's official GENIUS Act final rule and effective date, AP's secondary report on distributor-led USDC rewards, and Reuters' report of a historical Coinbase Ireland safeguarding/outsourcing fine. Added evidence-linked graph edges and a competing hypothesis with explicit disconfirming evidence. Re-inspected current main, current signal, open PRs, scheduled direct-main write workflows and merge-queue capability.",
+      "validation": {
+        "source_ids_unique": true,
+        "finding_source_refs": "PASS",
+        "graph_edge_source_refs": "PASS",
+        "hypothesis_has_disconfirming_evidence": true,
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_performed": false,
+        "snapshot_json": "PASS",
+        "snapshot_blob_sha": "1eceb071c1889cc8630f3c566aeb45c770c7beac"
+      },
+      "snapshot_blob_sha": "1eceb071c1889cc8630f3c566aeb45c770c7beac"
     }
   ],
   "mission_priority": {
