@@ -1,17 +1,17 @@
 {
   "generated_from": {
     "xrp_entries": 1186,
-    "btc_entries": 1216
+    "btc_entries": 1217
   },
   "unique_entities_profiled": 980,
   "entities": [
     {
       "entity": "Bitcoin",
-      "total_mentions": 292,
-      "bullish": 162,
+      "total_mentions": 293,
+      "bullish": 163,
       "neutral": 42,
       "bearish": 88,
-      "net_sentiment_score": 0.253,
+      "net_sentiment_score": 0.256,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -75,11 +75,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 63,
-      "bullish": 45,
+      "total_mentions": 64,
+      "bullish": 46,
       "neutral": 8,
       "bearish": 10,
-      "net_sentiment_score": 0.556,
+      "net_sentiment_score": 0.562,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -982,6 +982,23 @@
       ]
     },
     {
+      "entity": "U.S. Securities and Exchange Commission",
+      "total_mentions": 6,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 4,
+      "net_sentiment_score": -0.333,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Charges 38 Entities Over False Investment Adviser Filings",
+        "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
+      ]
+    },
+    {
       "entity": "TRON DAO",
       "total_mentions": 6,
       "bullish": 4,
@@ -1294,23 +1311,6 @@
         "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
         "Chainlink Releases Node v2.65.0 With Confidential Workflow Monitoring Fix",
         "Apple And Nvidia Tokenized Stocks Can Now Back USDC Loans On Aave"
-      ]
-    },
-    {
-      "entity": "U.S. Securities and Exchange Commission",
-      "total_mentions": 5,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 4,
-      "net_sentiment_score": -0.6,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "SEC Charges 38 Entities Over False Investment Adviser Filings",
-        "SEC Charges 38 Entities Over False Investment Adviser Filings",
-        "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues"
       ]
     },
     {
