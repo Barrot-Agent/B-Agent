@@ -133,6 +133,7 @@ def main():
 
     valid = usable_signal(signal)
     audio = None
+    line = f"{"XRP signal summary only; no forecast issued."} {DISCLAIMER}"[:TTS_LIMIT]
     tts_error = "skipped: summary-only output"
     if not valid:
         summary = (
