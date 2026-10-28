@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T05:06:42.642Z",
+    "captured_at_utc": "2026-10-28T06:05:00Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
+      "main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -335,7 +335,8 @@
         }
       ],
       "required_status_check_contexts": [],
-      "required_status_checks": []
+      "required_status_checks": [],
+      "main_head_observed_at_utc": "2026-10-28T06:05:00Z"
     },
     "critical_engine_findings": [
       {
@@ -1416,6 +1417,47 @@
           "SRC-REPO-APPROVAL-ZERO-JOB-RUN-2026-10-28T0501Z"
         ],
         "next_action": "Inspect the run's workflow revision and GitHub event metadata through authorized Actions endpoints; avoid dispatching approval actions for diagnosis."
+      },
+      {
+        "id": "CIRCLE-USDC-NET-REDEMPTION-2026-10-28",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "GLOBAL_SUPPLY_OBSERVATION; XRP_FLOW_UNPROVEN",
+        "claim": "Circle's official transparency dashboard shows $72.0B USDC circulation vs $72.2B reserves as of Oct 22, with net circulation changes of -$0.6B over 7 days, -$3.2B over 30 days, and -$4.4B over 365 days.",
+        "interpretation": "This confirms net redemption/contraction at the global USDC level for the dashboard windows. It does not identify chain-level redemptions, destination assets, or XRP inflows.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-OCT22-DETAILS-2026-10-28T0605Z"
+        ],
+        "next_action": "Collect daily issuer mint/burn data by chain and align with XRPL-native USDC supply/transfers and XRP bridge-path activity before testing rotation hypotheses."
+      },
+      {
+        "id": "XRP-ETF-FLOW-WEEK43-2026-10-28",
+        "evidence_class": "SECONDARY_MARKET_DATA_CROSSCHECK",
+        "status": "PROVISIONAL; MODEL_FEATURE_BLOCKED",
+        "claim": "XRP Insights reports +1.5M XRP net flows for U.S. spot XRP ETFs plus BITW from Oct 16 to Oct 23 settled closes, with 1.19B XRP held; its flow series excludes GXRP due to a scrape block and retrospective catch-up allocation.",
+        "interpretation": "The report provides a transparent caveat, but its aggregate is not fully independently corroborated here. ETF holdings are a stock measure; net fund flows are not a one-to-one measure of contemporaneous market purchases.",
+        "source_ids": [
+          "SRC-XRP-INSIGHTS-SUPPLY-REPORT-2026-10-24"
+        ],
+        "next_action": "Reconcile each fund's issuer-reported holdings, creations/redemptions, cash settlement dates and source lineage; retain as secondary-only until reconciled."
+      },
+      {
+        "id": "MAIN-GENERATED-WRITES-ACTIVE-2026-10-28T0605Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "CONFIRMED_DIRECT_MAIN_WRITES; DURABLE_REDESIGN_REQUIRED",
+        "claim": "Observed main commits between 05:22 and 05:51 UTC updated generated cross-analysis, signal-summary audio/JSON, paper-trading logs and BTC signal/knowledge data. The current main head at capture is a telemetry-report-only commit at 06:04:40 UTC. The scheduler, paper trader, ping-pong and cross-analysis workflows still declare write permissions and commit generated outputs to main.",
+        "interpretation": "Automated data updates are active, so simply removing persistence could interrupt paper-trading continuity and signal freshness. A durable, idempotent staging/promotion architecture must be implemented before these writers are changed to artifact-only.",
+        "source_ids": [
+          "SRC-GH-MAIN-HEAD-2026-10-28T0605Z",
+          "SRC-GH-COMMIT-CROSS-ANALYSIS-2026-10-28T0551Z",
+          "SRC-GH-COMMIT-BTC-CYCLE-2026-10-28T0538Z",
+          "SRC-GH-COMMIT-PAPER-TRADER-2026-10-28T0532Z",
+          "SRC-GH-COMMIT-SIGNAL-SUMMARY-2026-10-28T0528Z",
+          "SRC-WF-SCHEDULER-TICK-MAIN-2026-10-28T0605Z",
+          "SRC-WF-COINBASE-PAPER-TRADER-MAIN-2026-10-28T0605Z",
+          "SRC-WF-PINGPONG-MAIN-2026-10-28T0605Z",
+          "SRC-WF-CROSS-ANALYSIS-MAIN-2026-10-28T0605Z"
+        ],
+        "next_action": "Design and test append-only idempotent data staging with serialized writers, immutable forecast/outcome rows, and a reviewed promotion path; do not switch persistent workflows to 30-day artifacts without a continuity plan."
       }
     ],
     "relationship_graph": [
@@ -2081,6 +2123,26 @@
           "SRC-COINBASE-Q2-RESULTS-2026-07-30"
         ],
         "status": "COMPANY_REPORTED; NOT XRPL-SPECIFIC"
+      },
+      {
+        "id": "EDGE-CIRCLE-GLOBAL-USDC-CONTRACTION-2026-10-28",
+        "from": "Circle",
+        "relation": "reports global USDC circulation net changes of -$0.6B over 7 days, -$3.2B over 30 days and -$4.4B over 365 days as of 2026-10-22",
+        "to": "USDC",
+        "evidence_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-OCT22-DETAILS-2026-10-28T0605Z"
+        ],
+        "status": "CONFIRMED_PRIMARY_SOURCE; GLOBAL_ONLY; NO_XRP_FLOW_ATTRIBUTION"
+      },
+      {
+        "id": "EDGE-XRP-ETF-HOLDINGS-WEEK43-2026-10-28",
+        "from": "U.S. spot XRP ETFs plus BITW",
+        "relation": "tracker reports 1.19B XRP held and +1.5M XRP net flows for Oct 16-23 settled closes, with GXRP flow coverage caveat",
+        "to": "XRP",
+        "evidence_ids": [
+          "SRC-XRP-INSIGHTS-SUPPLY-REPORT-2026-10-24"
+        ],
+        "status": "SECONDARY_REPORT; FUND_LEVEL_RECONCILIATION_PENDING"
       }
     ],
     "competing_hypotheses": [
@@ -2606,6 +2668,40 @@
           "Keep the hypothesis unresolved until actual route-level data and independent sources support it."
         ],
         "status": "UNRESOLVED_COMPETING_CAUSAL_HYPOTHESES"
+      },
+      {
+        "id": "H-USDC-CONTRACTION-XRP-ETF-INFLOW-ROTATION-2026-10-28",
+        "hypothesis": "Global USDC net redemptions overlapping with reported positive weekly XRP ETF flows may reflect some capital reallocating from stablecoins toward XRP exposure.",
+        "supporting_evidence": [
+          "Circle reports net USDC circulation changes of -$0.6B over 7 days and -$3.2B over 30 days as of Oct 22.",
+          "XRP Insights reports +1.5M XRP net flows for Oct 16-23 settled closes."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Windows and measurement definitions differ; aggregate USDC redemptions may be fiat redemptions, reserve/treasury movements, or reallocations to assets unrelated to XRP.",
+          "ETF flows do not prove same-day spot-market purchases, and the tracker excludes GXRP from its flow series due to a scrape/catch-up issue.",
+          "No chain-level USDC flows, wallet links, investor-level flow records, or causal path between the two aggregates is established."
+        ],
+        "test_plan": [
+          "Align daily issuer mint/burn by chain, fund creations/redemptions, XRP price and exchange flows to UTC settlement cutoffs.",
+          "Use fund-level holdings and XRPL-native USDC supply/transfer data; identify source dependencies and exclude overlapping syndicated trackers.",
+          "Test event windows against BTC/ETH and broad risk controls; require out-of-sample replication before feature admission."
+        ],
+        "status": "SPECULATIVE_ROTATION_HYPOTHESIS; NOT_SUPPORTED_AS_CAUSAL_FACT"
+      },
+      {
+        "id": "H-USDC-CONTRACTION-FIAT-OR-OTHER-ASSETS-2026-10-28",
+        "hypothesis": "USDC net redemptions primarily reflect redemption to fiat or allocation to other assets, with no measurable direct XRP flow.",
+        "supporting_evidence": [
+          "Circle's transparency dashboard reports global issuance and redemption totals but no destination-asset attribution.",
+          "No XRPL-native USDC flow or XRP bridge-path increase is established in the cited evidence."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Some redeemed USDC could be used to fund XRP purchases through exchanges or OTC venues; the public aggregate cannot rule this out."
+        ],
+        "test_plan": [
+          "Compare daily USDC chain supply and exchange balances with fund-level XRP flows, spot volumes and exchange-wallet changes; preserve unknown destinations as unknown."
+        ],
+        "status": "COMPETING_ALTERNATIVE; UNRESOLVED"
       }
     ],
     "market_observations": [
@@ -2845,6 +2941,28 @@
         "interpretation": "Quote time and market universe are not normalized against CoinCodex; the apparent difference is not an executable spread or a forecast signal.",
         "source_ids": [
           "SRC-INVESTING-XRP-HISTORY-2026-10-28"
+        ],
+        "approved_for_model_features": false
+      },
+      {
+        "id": "USDC-CIRCULATION-NET-REDEMPTION-2026-10-22",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "as_of_date": "2026-10-22",
+        "observation": "Circle transparency dashboard shows $72.0B USDC in circulation and $72.2B in reserves; 7-day issuance $12.8B vs redemptions $13.3B (net change -$0.6B), 30-day net change -$3.2B, and 365-day net change -$4.4B.",
+        "interpretation": "Global USDC circulation contraction; chain-level distribution and any XRP destination are unknown. Exclude as an XRP-flow feature.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-OCT22-DETAILS-2026-10-28T0605Z"
+        ],
+        "approved_for_model_features": false
+      },
+      {
+        "id": "XRP-ETF-FLOW-WEEK43-2026-10-23",
+        "evidence_class": "SECONDARY_MARKET_DATA_CROSSCHECK",
+        "as_of_date": "2026-10-16-to-2026-10-23-settled-closes",
+        "observation": "XRP Insights reports +1.5M XRP net flows (approximately +$2.1M) for U.S. spot XRP ETFs plus BITW, with 1.19B XRP held and $1.57B combined assets at the Oct 23 close. Its methodology excludes GXRP from flows because a scrape block led to catch-up allocation across prior dates.",
+        "interpretation": "Useful secondary flow observation with an explicit coverage caveat; not independent proof of new spot-market purchases or USDC-to-XRP rotation.",
+        "source_ids": [
+          "SRC-XRP-INSIGHTS-SUPPLY-REPORT-2026-10-24"
         ],
         "approved_for_model_features": false
       }
@@ -3088,7 +3206,14 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T05:06:42.642Z"
+      "last_checked_utc": "2026-10-28T05:06:42.642Z",
+      "last_run_update": "2026-10-28T06:05:00Z",
+      "blockers": [
+        "Global USDC redemptions are not chain- or destination-attributed.",
+        "XRP ETF weekly flow observation excludes GXRP and is not reconciled against all fund-level primary records.",
+        "Spot and derivatives observations remain unsynchronized across venue and UTC cutoff.",
+        "Fixed-horizon walk-forward evaluation, leakage controls, baseline comparison, calibration and shadow evaluation remain required."
+      ]
     },
     "massive_micro_ingestion": {
       "status": "REQUIRED_STANDARD",
@@ -3103,9 +3228,9 @@
       ]
     },
     "next_actions": [
+      "Build and test a durable append-only staging/promotion path before changing generated-data workflows; preserve paper-trading state and ingestion idempotency.",
+      "Reconcile daily USDC mint/redemption by chain with XRP ETF fund-level creations/redemptions and XRPL-native USDC transfers; do not infer capital rotation from global aggregates.",
       "Review PR #1241; keep draft/unmerged pending human approval and independently verify branch protection requirements.",
-      "Design durable append-only staging/promotion for knowledge-signal-cycle, check-signal-accuracy, financial-data-refresh and cross-analysis without losing ingestion continuity.",
-      "Normalize XRP price and volume observations to one UTC cutoff and venue/quote universe before feature admission.",
       "Measure XRPL-native USDC supply/transfers, XRP bridge-path share, Coinbase order-book/derivatives positioning and actual collateral evidence; do not infer flows from company announcements.",
       "Continue SBIC entity disambiguation and exact-phrase research for ASK Coin, actual capital, and SBIC, ChatGPT SBIC.",
       "Resolve the canonical Camilla Stephenson channel from first-party links before claiming a complete public-video inventory.",
@@ -3628,6 +3753,28 @@
           "SRC-INVESTING-XRP-HISTORY-2026-10-28"
         ],
         "next_action": "Normalize venue, timezone, bar boundary, quote currency, volume universe and data retrieval timestamp before admitting any price/volume features."
+      },
+      {
+        "id": "USDC-GLOBAL-FLOW-NOT-XRP-FLOW-2026-10-28",
+        "severity": "HIGH",
+        "status": "BLOCKED_FROM_XRP_FEATURE_STORE",
+        "finding": "Circle's global USDC circulation declined by $0.6B over 7 days, $3.2B over 30 days and $4.4B over 365 days as of Oct 22, but the dashboard does not attribute destination chains or assets.",
+        "interpretation": "Do not label global USDC contraction as XRP inflow or stablecoin-to-XRP rotation.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-OCT22-DETAILS-2026-10-28T0605Z"
+        ],
+        "next_action": "Reconcile chain-level mint/burn and XRPL-native USDC balances with XRP spot/ETF flow series at common UTC cutoffs."
+      },
+      {
+        "id": "XRP-ETF-WEEKLY-FLOW-COVERAGE-2026-10-28",
+        "severity": "HIGH",
+        "status": "SECONDARY_ONLY_BLOCKED_FROM_FEATURE_STORE",
+        "finding": "The Oct 16-23 XRP ETF tracker flow series excludes GXRP from flows due to a scrape block and retrospective catch-up allocation.",
+        "interpretation": "Reported +1.5M XRP weekly flow is not a fully reconciled fund-universe total and should not be treated as an independent spot-purchase measure.",
+        "source_ids": [
+          "SRC-XRP-INSIGHTS-SUPPLY-REPORT-2026-10-24"
+        ],
+        "next_action": "Reconcile each fund's holdings and cash creations/redemptions using issuer/filing primary sources before model admission."
       }
     ],
     "mission_priority": {
@@ -3656,8 +3803,8 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-POST-CI-AND-MAIN-DRIFT-2026-10-28T05:06Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0506Z.json",
+    "snapshot_id": "XRP-CIRCLE-REDEMPTIONS-ETF-WEEK43-WORKFLOW-AUDIT-2026-10-28T0605Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0605Z.json",
     "current_research_head_before_ledger_update": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
     "current_research_checks": {
       "status": "PASS_ON_PREVIOUS_HEAD; NEW_LEDGER_UPDATE_REQUIRES_EXACT_HEAD_CI",
@@ -4157,6 +4304,46 @@
           "SRC-REPO-PR1227-GATE-2026-10-28T0505Z"
         ],
         "impact_status": "PREVIOUS_HEAD_VERIFIED; NEW_LEDGER_COMMITS_REQUIRE_EXACT_HEAD_CI"
+      },
+      {
+        "event_id": "EVT-CIRCLE-USDC-TRANSPARENCY-2026-10-22-CAPTURED-0605Z",
+        "event_time_utc": "2026-10-22",
+        "captured_at_utc": "2026-10-28T06:05:00Z",
+        "entity": "Circle; USDC",
+        "event": "Official transparency dashboard reports $72.0B USDC in circulation, $72.2B in reserves, 7-day net circulation change -$0.6B, 30-day -$3.2B and 365-day -$4.4B.",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-OCT22-DETAILS-2026-10-28T0605Z"
+        ],
+        "impact_status": "GLOBAL_USDC_CONTRACTION_CONFIRMED; XRP_DESTINATION_UNKNOWN"
+      },
+      {
+        "event_id": "EVT-XRP-ETF-WEEK43-SUPPLY-REPORT-2026-10-24",
+        "event_time_utc": "2026-10-23",
+        "captured_at_utc": "2026-10-28T06:05:00Z",
+        "entity": "U.S. spot XRP ETFs; BITW; XRP",
+        "event": "XRP Insights reports +1.5M XRP weekly net flow and 1.19B XRP holdings through the Oct 23 settled close; GXRP excluded from flow series because of scrape/catch-up caveat.",
+        "evidence_class": "SECONDARY_MARKET_DATA_CROSSCHECK",
+        "source_ids": [
+          "SRC-XRP-INSIGHTS-SUPPLY-REPORT-2026-10-24"
+        ],
+        "impact_status": "SECONDARY_OBSERVATION; NOT_PROOF_OF_USDC_ROTATION_OR_PRICE_IMPACT"
+      },
+      {
+        "event_id": "EVT-MAIN-GENERATED-WRITES-2026-10-28T0605Z",
+        "event_time_utc": "2026-10-28T06:05:00Z",
+        "captured_at_utc": "2026-10-28T06:05:00Z",
+        "entity": "Barrot-Agent/B-Agent main; GitHub Actions",
+        "event": "Recent main commits show scheduled generated-data updates to cross-analysis, BTC signal/knowledge, signal summary and paper-trading log. Main head at capture is telemetry-report-only; several scheduled workflows still write generated files directly to main.",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "source_ids": [
+          "SRC-GH-MAIN-HEAD-2026-10-28T0605Z",
+          "SRC-GH-COMMIT-CROSS-ANALYSIS-2026-10-28T0551Z",
+          "SRC-GH-COMMIT-BTC-CYCLE-2026-10-28T0538Z",
+          "SRC-GH-COMMIT-PAPER-TRADER-2026-10-28T0532Z",
+          "SRC-GH-COMMIT-SIGNAL-SUMMARY-2026-10-28T0528Z"
+        ],
+        "impact_status": "INGESTION_CONTINUITY_ACTIVE; STAGING/PROMOTION_DESIGN_REQUIRED"
       }
     ],
     "current_pr_1238_state": {
@@ -4199,8 +4386,8 @@
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
-      "observed_at_utc": "2026-10-28T05:06:42.642Z",
-      "current_main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
+      "observed_at_utc": "2026-10-28T06:05:00Z",
+      "current_main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
       "findings": [
         {
           "path": ".github/workflows/barrot-ops.yml",
@@ -4285,7 +4472,102 @@
       ],
       "proposed_fresh_main_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
       "proposed_fix_status": "EXACT_HEAD_CI_PASS_150_TESTS_5.30S; FAIL_CLOSED_GATE_PASS; DRAFT_UNMERGED",
-      "limitation": "PR #1241 covers external deployment and merge automation only. Generated-data workflows still write to main and need a durable append-only staging/promotion design. Branch protection is reported enabled but required status-check contexts are empty; detailed review settings remain unverified."
+      "limitation": "PR #1241 covers external deployment and merge automation only. Generated-data workflows still write to main and need a durable append-only staging/promotion design. Branch protection is reported enabled but required status-check contexts are empty; detailed review settings remain unverified.",
+      "recent_generated_main_commits": [
+        {
+          "sha": "b114d27ab6519fbf9f27500572885fa9ca8eb90e",
+          "at_utc": "2026-10-28T05:22:55Z",
+          "message": "Cross-analysis refresh [skip ci]",
+          "files": [
+            "ping-pongings/knowledge-base/entity_cooccurrence.json",
+            "ping-pongings/knowledge-base/entity_sentiment_profile.json",
+            "ping-pongings/knowledge-base/sentiment_shift.json"
+          ]
+        },
+        {
+          "sha": "bc611ad7b4fe5cfd5bf8b4c59ba87758cb0bdda3",
+          "at_utc": "2026-10-28T05:28:23Z",
+          "message": "Signal summary [skip ci]",
+          "files": [
+            "web/generated_audio/latest_signal_summary.wav",
+            "web/latest_signal_summary.json"
+          ]
+        },
+        {
+          "sha": "ee8d33a27293f903cb9571ed498255e0aaa828d8",
+          "at_utc": "2026-10-28T05:32:33Z",
+          "message": "Paper trade cycle [skip ci]",
+          "files": [
+            "web/paper_trading_log.jsonl"
+          ]
+        },
+        {
+          "sha": "3d64351ace118337cc4798841c21df3e76e3f68a",
+          "at_utc": "2026-10-28T05:38:51Z",
+          "message": "Auto cycle (BTC): ingest + distill + blended signal [skip ci]",
+          "files": [
+            "ping-pongings/knowledge-base/config_btc.json",
+            "ping-pongings/knowledge-base/log_btc.jsonl",
+            "web/latest_signal_btc.json",
+            "web/signal_history_btc.jsonl"
+          ]
+        },
+        {
+          "sha": "ebec69d53468d8cd2313de2a695d7dc00526c9d1",
+          "at_utc": "2026-10-28T05:51:26Z",
+          "message": "Cross-analysis refresh [skip ci]",
+          "files": [
+            "ping-pongings/knowledge-base/entity_cooccurrence.json",
+            "ping-pongings/knowledge-base/entity_sentiment_profile.json",
+            "ping-pongings/knowledge-base/sentiment_shift.json"
+          ]
+        },
+        {
+          "sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
+          "at_utc": "2026-10-28T06:04:40Z",
+          "message": "chore: Barrot telemetry report",
+          "files": [
+            "AUTONOMOUS_DEPLOYMENT_REPORT.md"
+          ]
+        }
+      ],
+      "remaining_direct_main_writers": [
+        {
+          "path": ".github/workflows/scheduler-tick.yml",
+          "frequency": "*/15 * * * *",
+          "risk": "contents:write and actions:write; commits schedule_queue.jsonl to main; non-fast-forward retry pulls main and pushes again."
+        },
+        {
+          "path": ".github/workflows/coinbase-paper-trader.yml",
+          "frequency": "*/30 * * * *",
+          "risk": "commits paper_trading_state.json and paper_trading_log.jsonl to main; persistence affects subsequent simulation state."
+        },
+        {
+          "path": ".github/workflows/pingpong.yml",
+          "frequency": "30 */12 * * *",
+          "risk": "commits model-generated knowledge log to main."
+        },
+        {
+          "path": ".github/workflows/cross-analysis.yml",
+          "frequency": "workflow_run plus hourly fallback",
+          "risk": "commits generated entity co-occurrence and sentiment analysis to main."
+        },
+        {
+          "path": ".github/workflows/financial-data-refresh.yml",
+          "frequency": "monthly plus manual",
+          "risk": "direct generated-data write to main; PR #1238 is stale/unmerged."
+        },
+        {
+          "path": ".github/workflows/check-signal-accuracy.yml",
+          "frequency": "daily plus manual",
+          "risk": "direct signal-history/accuracy write to main; PR #1237 is stale/unmerged."
+        },
+        {
+          "path": ".github/workflows/knowledge-signal-cycle.yml",
+          "frequency": "hourly plus manual",
+          "risk": "direct knowledge/signal/history write to main; PR #1237 is stale/unmerged."
+        }
+      ]
     },
     "current_pr_1241_state": {
       "pr": 1241,
@@ -4295,7 +4577,7 @@
       "base_sha": "8beef04c25a3d182c2366c82c1257bacfa1799f2",
       "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
       "ahead_by": 7,
-      "behind_by": 1,
+      "behind_by": 7,
       "ci": {
         "status": "PASS",
         "tests_passed": 150,
@@ -4311,7 +4593,11 @@
       "deployment_executed": false,
       "main_modified_by_this_run": false,
       "merge_performed": false,
-      "current_main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6"
+      "current_main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
+      "status": "OPEN_DRAFT_DIVERGED",
+      "latest_compare_url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+      "ci_applies_to_head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
+      "ci_status": "PASS_ON_HEAD; HEAD_NOW_7_BEHIND_MAIN"
     },
     "current_pr_1227_state": {
       "pr": 1227,
@@ -4319,8 +4605,8 @@
       "state": "OPEN_DRAFT_UNMERGED",
       "head_sha": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
       "base_sha": "a960255f2b7b0418694ee428bc82fbbeed6622dd",
-      "ahead_by": 38,
-      "behind_by": 39,
+      "ahead_by": 41,
+      "behind_by": 46,
       "ci": {
         "status": "PASS",
         "tests_passed": 146,
@@ -4333,9 +4619,20 @@
         "run_id": 40635937758,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937758"
       },
-      "note": "Verification applies to head f8e4e1990bce1b68f07c47644f3d01d64e70c92a before the new snapshot/index commits."
+      "note": "Verification applies to head f8e4e1990bce1b68f07c47644f3d01d64e70c92a before the new snapshot/index commits.",
+      "current_main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
+      "status": "OPEN_DRAFT_DIVERGED",
+      "action": "Do not merge; preserve snapshots and create a fresh-main successor when copying the complete ledger safely."
     },
-    "snapshot_blob_sha": "260ffc0fe8f3bf82e916fd3bb83091e38a6a85b6"
+    "research_branch_compare_at_capture": {
+      "branch": "research/xrp-ledger-fresh-main-20261028-0004z",
+      "current_main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
+      "ahead_by": 41,
+      "behind_by": 46,
+      "status": "DIVERGED",
+      "action": "Preserve this research branch; do not merge it. A fresh-main successor remains required."
+    },
+    "snapshot_blob_sha": "313914156014c906ca5bb9eb83fd9655610d5b0f"
   },
   "sources": [
     {
@@ -5889,6 +6186,94 @@
       "title": "PR #1227 ledger-update head fail-closed gate",
       "accessed_at_utc": "2026-10-28T05:07:30.288Z",
       "note": "Fail-closed gate passed for commit e909ea0b607bc6a555eea23af6fc75cce2d3de58."
+    },
+    {
+      "id": "SRC-CIRCLE-TRANSPARENCY-OCT22-DETAILS-2026-10-28T0605Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle USDC transparency dashboard — Oct 22, 2026 reserves and issuance/redemption windows",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "Dashboard reports $72.0B circulation, $72.2B reserves; 7-day issuance $12.8B vs redemptions $13.3B (-$0.6B net circulation change); 30-day -$3.2B; 365-day -$4.4B. Global issuer-level figures only; no chain/destination attribution."
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-SUPPLY-REPORT-2026-10-24",
+      "evidence_class": "SECONDARY_MARKET_DATA_CROSSCHECK",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-10-24",
+      "title": "XRP Insights Supply Report, Week 43 — ETF flows, escrow and attributed exchange wallets",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "Reports +1.5M XRP weekly ETF/BITW net flows through Oct 23 settled close; 1.19B XRP holdings; $1.57B AUM; excludes GXRP from flow figures due to scrape block and catch-up allocation; reports 31.40B XRP escrow and 22.61B publicly attributed exchange-wallet balances. Secondary aggregator; primary fund/ledger reconciliation still required."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T0605Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
+      "title": "Observed current main head — telemetry report commit",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "Observed main SHA 2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0; commit updates only AUTONOMOUS_DEPLOYMENT_REPORT.md timestamp. It follows several generated-data commits in the preceding 45 minutes."
+    },
+    {
+      "id": "SRC-GH-COMMIT-CROSS-ANALYSIS-2026-10-28T0551Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/ebec69d53468d8cd2313de2a695d7dc00526c9d1",
+      "title": "Main commit: Cross-analysis refresh",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "At 05:51:26Z, generated entity co-occurrence, entity sentiment profile and sentiment shift outputs were committed to main."
+    },
+    {
+      "id": "SRC-GH-COMMIT-BTC-CYCLE-2026-10-28T0538Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/3d64351ace118337cc4798841c21df3e76e3f68a",
+      "title": "Main commit: Auto cycle BTC ingest/distill/blended signal",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "At 05:38:51Z, generated BTC knowledge/config, latest signal and signal history were committed to main."
+    },
+    {
+      "id": "SRC-GH-COMMIT-PAPER-TRADER-2026-10-28T0532Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/ee8d33a27293f903cb9571ed498255e0aaa828d8",
+      "title": "Main commit: Paper trade cycle",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "At 05:32:33Z, a paper-trading log row was appended to main."
+    },
+    {
+      "id": "SRC-GH-COMMIT-SIGNAL-SUMMARY-2026-10-28T0528Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/bc611ad7b4fe5cfd5bf8b4c59ba87758cb0bdda3",
+      "title": "Main commit: Signal summary",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "At 05:28:23Z, generated signal-summary JSON/audio were committed to main."
+    },
+    {
+      "id": "SRC-WF-SCHEDULER-TICK-MAIN-2026-10-28T0605Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/scheduler-tick.yml",
+      "title": "Main Scheduler Tick workflow",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "Every 15 minutes; contents:write and actions:write; commits schedule_queue.jsonl and pushes main, with pull-and-push retry."
+    },
+    {
+      "id": "SRC-WF-COINBASE-PAPER-TRADER-MAIN-2026-10-28T0605Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml",
+      "title": "Main Coinbase Paper Trader workflow",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "Every 30 minutes; commits paper_trading_state.json and paper_trading_log.jsonl to main; changing persistence without durable state would interrupt continuity."
+    },
+    {
+      "id": "SRC-WF-PINGPONG-MAIN-2026-10-28T0605Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/pingpong.yml",
+      "title": "Main Ping-Pong Chain workflow",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "Runs twice daily and commits model-generated knowledge log directly to main."
+    },
+    {
+      "id": "SRC-WF-CROSS-ANALYSIS-MAIN-2026-10-28T0605Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/cross-analysis.yml",
+      "title": "Main Cross Analysis workflow",
+      "accessed_at_utc": "2026-10-28T06:05:00Z",
+      "note": "Workflow-run trigger plus hourly fallback; commits generated entity co-occurrence and sentiment analysis directly to main."
     }
   ],
   "limitations": [
@@ -5913,7 +6298,10 @@
     "CoinCodex daily XRP values and Investing.com intraday quotes are not timestamp/venue normalized; neither observation is admitted as a model feature.",
     "PR #1241 passes CI/gate but remains draft/unmerged. Main still has generated-data direct-write workflows; a durable append-only promotion design is not implemented.",
     "Main branch metadata reports protection enabled but empty required status-check contexts/checks; detailed review rules remain inaccessible to the integration.",
-    "The zero-job approval workflow run is recorded as a push event although the current workflow is workflow_dispatch-only; root cause remains unresolved."
+    "The zero-job approval workflow run is recorded as a push event although the current workflow is workflow_dispatch-only; root cause remains unresolved.",
+    "Circle's Oct 22 global USDC net redemptions do not identify chain, customer, or destination-asset flows; they cannot be used as XRP inflows.",
+    "XRP Insights' Week 43 ETF aggregate excludes GXRP from weekly flow due to a scrape/catch-up issue; fund-level primary-source reconciliation is pending.",
+    "Current main continues to receive generated-data commits from scheduled workflows. Artifact-only changes must not be deployed until durable idempotent persistence preserves paper-trading and ingestion continuity."
   ],
   "run_updates": [
     {
@@ -6707,6 +7095,21 @@
         "forecast_status": "NOT_ISSUED"
       },
       "snapshot_blob_sha": "260ffc0fe8f3bf82e916fd3bb83091e38a6a85b6"
+    },
+    {
+      "recorded_at_utc": "2026-10-28T06:05:00Z",
+      "update_type": "CIRCLE_USDC_FLOWS_XRP_ETF_WEEK43_AND_MAIN_WRITER_REAUDIT",
+      "snapshot_id": "XRP-CIRCLE-REDEMPTIONS-ETF-WEEK43-WORKFLOW-AUDIT-2026-10-28T0605Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0605Z.json",
+      "details": "Added Circle's official Oct 22 global USDC issuance/redemption windows, XRP Insights' Oct 16-23 ETF flow report with GXRP coverage caveat, and re-audited active main-branch generated-data writers. Current main observed at 2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0; PR #1241 is 7 ahead/7 behind. Research branch remains 41 ahead/46 behind; do not merge stale branch.",
+      "validation": {
+        "source_ids_unique": true,
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "snapshot_blob_sha": "313914156014c906ca5bb9eb83fd9655610d5b0f",
+        "exact_head_ci": "PENDING_AFTER_INDEX_UPDATE"
+      }
     }
   ],
   "mission_priority": {
