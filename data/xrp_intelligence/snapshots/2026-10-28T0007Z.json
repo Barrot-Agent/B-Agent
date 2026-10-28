@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_run_verification_delta",
+  "snapshot_id": "XRP-RUN-VERIFICATION-2026-10-28T000754Z",
+  "captured_at_utc": "2026-10-28T00:07:54Z",
+  "data_cutoff_utc": "2026-10-28T00:07:54Z",
+  "institutional_adoption": {
+    "event_id": "AVIVA-GBP-LIQUIDITY-FUND-TOKENIZATION-2026-10-26",
+    "official_source": "https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/",
+    "finding": "Aviva confirmed a live GBP money-market-fund tokenized share class on XRPL and a £50M investment in that share class. The approximately £22B figure is the underlying conventional fund's AUM, not tokenized value. Aviva reports more than £86M across its USD and GBP tokenized share classes.",
+    "direct_xrp_purchase": "NOT_DISCLOSED",
+    "xrp_collateral_use": "NOT_DISCLOSED",
+    "xrp_bridge_asset_use": "NOT_DISCLOSED",
+    "evidence_class": "PRIMARY_ANNOUNCEMENT",
+    "competing_hypotheses": [
+      "Live tokenization can increase institutional XRPL utility and credibility.",
+      "Fund-share investment does not equal XRP demand; the investment is in the share class and the underlying assets remain within conventional fund arrangements.",
+      "Announcement attention may affect narratives without persistent on-ledger activity or measurable XRP price impact."
+    ],
+    "third_party_onchain_source": {
+      "url": "https://xrpl.to/insights/aviva-investors-tokenized-funds-xrp-ledger",
+      "status": "SECONDARY_CLAIM_PENDING_INDEPENDENT_REPRODUCTION",
+      "reported_claims": "The analyst reports two MPT share-class tokens, approved holder wallets, and issuer/holder transfer restrictions.",
+      "terms_review": "The source's published notice says not to scrape or copy its UI/data and instructs automated clients to use its documented API; it also says re-serving its data in another dataset requires permission.",
+      "safe_next_step": "Do not scrape or mirror this provider's dataset. Independently query public XRPL ledger records through a permitted node/explorer or obtain permission before persistent reuse of the provider's derived dataset.",
+      "model_admission": "BLOCKED"
+    }
+  },
+  "repository_state": {
+    "main_sha": "f315177c24dc64fc0b49957ea5643f2f7d868701",
+    "main_advanced_from": "a960255f2b7b0418694ee428bc82fbbeed6622dd",
+    "new_main_commit": "https://github.com/Barrot-Agent/B-Agent/commit/f315177c24dc64fc0b49957ea5643f2f7d868701",
+    "new_main_commit_message": "chore: Barrot telemetry report",
+    "observed_change_scope": "Telemetry report timestamp update; no signal-workflow code change identified in the inspected commit diff.",
+    "main_modified_by_this_run": false,
+    "pull_requests": [
+      {
+        "number": 1227,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
+        "head": "19374ff56bab3307ef957212fa29c9148c70591a",
+        "status": "OPEN_DRAFT_UNMERGED",
+        "exact_head_ci": {
+          "run_id": 40606640529,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606640529",
+          "result": "PASSED",
+          "tests_passed": 145,
+          "duration_seconds": 4.47
+        },
+        "fail_closed_gate": {
+          "run_id": 40606640518,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606640518",
+          "result": "PASSED"
+        },
+        "comparison_to_current_main": {
+          "ahead_by": 2,
+          "behind_by": 1,
+          "merge_base": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
+        },
+        "note": "Fresh-main research successor now trails one telemetry-report commit; retain as a review candidate, do not merge automatically."
+      },
+      {
+        "number": 1226,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1226",
+        "head": "ae17e56ab245f575317beab35b96178dff4732a4",
+        "status": "OPEN_DRAFT_UNMERGED",
+        "exact_head_ci": {
+          "run_id": 40606115034,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606115034",
+          "result": "PASSED",
+          "tests_passed": 146,
+          "duration_seconds": 5.98
+        },
+        "fail_closed_gate": {
+          "run_id": 40606115488,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606115488",
+          "result": "PASSED"
+        },
+        "comparison_to_current_main": {
+          "ahead_by": 3,
+          "behind_by": 1,
+          "merge_base": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
+        },
+        "note": "Proposed artifact-only safety fix; main continues to contain scheduled signal workflows with direct write permissions until reviewed integration."
+      },
+      {
+        "number": 1195,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+        "head": "541cc1d5e1e35d83ae6ffb21c7826090a6627c2a",
+        "status": "OPEN_DRAFT_UNMERGED",
+        "exact_head_ci": {
+          "run_id": 40606637508,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606637508",
+          "result": "PASSED",
+          "tests_passed": 145,
+          "duration_seconds": 5.76
+        },
+        "fail_closed_gate": {
+          "run_id": 40606637396,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606637396",
+          "result": "PASSED"
+        },
+        "comparison_to_current_main": {
+          "ahead_by": 43,
+          "behind_by": 60,
+          "merge_base": "e1da2cdb3bc371364ca81af76915f5b84237a5cf"
+        },
+        "note": "Historical research branch is substantially diverged; use fresh-main successor #1227 for review. Preserve this branch and its full history."
+      },
+      {
+        "number": 1225,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1225",
+        "head": "b84deb8a2ab17130479c7fff1ce28bd1646d7ac4",
+        "status": "OPEN_DRAFT_UNMERGED",
+        "exact_head_ci": {
+          "run_id": 40605964737,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40605964737",
+          "result": "PASSED",
+          "tests_passed": 155,
+          "duration_seconds": 4.98
+        },
+        "fail_closed_gate": {
+          "run_id": 40605964743,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40605964743",
+          "result": "PASSED"
+        },
+        "note": "Controller status vocabulary matches the dispatcher completion predicate in the inspected code; full end-to-end autonomous operation is still not established."
+      }
+    ],
+    "direct_write_risk": "knowledge-signal-cycle.yml and check-signal-accuracy.yml still commit generated files directly to main until PR #1226 is reviewed and merged."
+  },
+  "source_policy": {
+    "public_primary_sources_preferred": true,
+    "secondary_analytics_corroboration_required": true,
+    "source_terms_recorded": true,
+    "unapproved_bulk_republication": false,
+    "private_or_unauthorized_data_used": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Keep PR #1226 and #1227 draft/unmerged; exact-head tests passing is not merge approval.",
+    "Continue the Aviva event study with independently queried public XRPL ledger records; separate fund-share balances, XRP fees/reserves and any actual XRP liquidity flows.",
+    "Build a permanent append-only feature store and reviewed artifact-promotion path; 30-day CI artifacts are not sufficient long-term persistence.",
+    "Normalize XRP derivatives by venue, contract type, quote currency and common UTC cutoff; exclude stale/mismatched contracts.",
+    "Continue exact-phrase SBIC research and canonical Camilla Stephenson identity resolution without conflating similarly named entities/channels.",
+    "Keep all non-verified platform adapters explicitly unverified."
+  ],
+  "safety": {
+    "main_write": false,
+    "merge": false,
+    "force_push": false,
+    "deployment": false,
+    "real_money_action": false
+  }
+}
