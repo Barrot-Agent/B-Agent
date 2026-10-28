@@ -55,4 +55,5 @@ jobs:
             tests/test_formal_benchmark.py \
             tests/test_bundle_engineering.py \
             tests/test_bundle_lifecycle.py \
+            tests/test_dependency_manifest.py \
             -v --no-cov
