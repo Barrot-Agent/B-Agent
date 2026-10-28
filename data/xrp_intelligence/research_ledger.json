@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T11:11:00Z",
+    "captured_at_utc": "2026-10-28T12:15:53Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+      "main_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -176,7 +176,25 @@
           "state": "open",
           "draft": true,
           "head_sha": "4334bc902472f1d84fc62c6cacf25aeca66befa9",
-          "status": "Fresh-main validator fix; exact-head CI 158 tests/5.13s PASS; fail-closed gate PASS; unmerged."
+          "status": "Draft; old base; fresh-main successor #1249 passed exact-head checks."
+        },
+        {
+          "number": 1249,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1249",
+          "title": "Safety: enforce XRP forecast outcome provenance on current main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "9d46f742a14a7fb8ea448be2ce868dc10650d4c5",
+          "status": "Fresh-main validator successor; exact-head CI and gate passed; unmerged."
+        },
+        {
+          "number": 1250,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
+          "title": "Safety: handle approval-workflow push events without write access",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ef959edf0507ecf4f603a856719e1d72268bc2f2",
+          "status": "Approval workflow zero-job containment; exact-head CI and gate passed; unmerged."
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -186,10 +204,10 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+        "sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
         "message": "Paper trade cycle [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
-        "observed_at_utc": "2026-10-28T11:04:28Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/7a558c0859393e9e29ea326aa90877ee2ef49220",
+        "observed_at_utc": "2026-10-28T12:15:53Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
@@ -384,7 +402,7 @@
       "required_status_check_contexts": [],
       "required_status_checks": [],
       "main_head_observed_at_utc": "2026-10-28T11:11:00Z",
-      "open_pr_count": 79,
+      "open_pr_count": 81,
       "current_pr_count_source": "GitHub Search API returned total_count=79, incomplete_results=false.",
       "merge_performed": false,
       "current_pr_1247_state": {
@@ -945,6 +963,22 @@
         "consequence": "These gaps could permit post-issuance source switching or premature data cutoffs, weakening reproducibility and leakage controls.",
         "proposed_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
         "verification": "Fresh-main PR #1248 head 4334bc902472f1d84fc62c6cacf25aeca66befa9 passed 158 tests in 5.13 seconds and the fail-closed gate. Draft/unmerged."
+      },
+      {
+        "id": "APPROVAL-WORKFLOW-ZERO-JOB-CONTAINMENT-202610281215Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "medium",
+        "status": "REPEATED_ZERO_JOB_FAILURES; CONTAINMENT_PR_OPEN_CI_PASS; ROOT_CAUSE_UNRESOLVED",
+        "files": [
+          {
+            "path": ".github/workflows/barrot-approve-pr.yml",
+            "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml"
+          }
+        ],
+        "finding": "Five consecutive pushes on a fresh safety branch generated failed runs for the approval workflow path with event=push and zero jobs although the inspected main file declares workflow_dispatch only.",
+        "consequence": "Red workflow noise obscures meaningful CI status; no approval job ran and no approval side effect occurred.",
+        "proposed_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
+        "verification": "PR #1250 exact-head Tests and fail-closed gate passed; containment remains unmerged and the underlying event origin is not proven."
       }
     ],
     "research_findings": [
@@ -3985,7 +4019,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "Main signal still reports confidence 0 and provider unavailability; no calibrated fixed-horizon out-of-sample evaluation is verified.",
+      "reason": "Main signal confidence remains zero and provider credentials/rate limits are unresolved; validator is only a contract foundation.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -4088,7 +4122,9 @@
       "Integrate the forecast issuance/outcome contract only through reviewed code; no real forecast is issued.",
       "Measure Arc activity, XRPL-native USDC transfers and XRP bridge-path share before drawing a Circle-to-XRP causal conclusion.",
       "Reconstruct October 26 ETF flows from sponsor-level fund holdings and matched universes; keep tracker aggregates blocked from model admission.",
-      "Prepare a fresh-main signal-summary successor if PR #1245 remains stale; do not merge its old base as-is."
+      "Prepare a fresh-main signal-summary successor if PR #1245 remains stale; do not merge its old base as-is.",
+      "Review PR #1250 containment on exact head; keep approval action manual-only and verify no-op behavior on push events.",
+      "Review PR #1249 validator contract; retain NOT_ISSUED until feature store and calibrated walk-forward evaluation exist."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -4801,8 +4837,8 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-FORECAST-VALIDATOR-PROVENANCE-CIRCLE-USDC-ETF-SBIC-2026-10-28T1111Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1111Z.json",
+    "snapshot_id": "XRP-FORECAST-LEDGER-APPROVAL-WORKFLOW-CONTAINMENT-202610281215Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1215Z.json",
     "current_research_head_before_ledger_update": "413f3501d42c86735e56fcddd3729327c28dd9d9",
     "current_research_checks": {
       "status": "PENDING_AFTER_LEDGER_UPDATE",
@@ -5767,7 +5803,22 @@
         "news_entries": 11,
         "status": "NOT_ISSUED; provider unavailable and not a validated forecast"
       },
-      "accuracy_evaluator_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1246"
+      "accuracy_evaluator_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1246",
+      "approval_workflow_zero_job_anomaly": {
+        "status": "REPEATED; ROOT_CAUSE_UNRESOLVED; CONTAINMENT_PR_CI_PASS",
+        "observed_runs": [
+          40685521814,
+          40685516581,
+          40685508363,
+          40685501291,
+          40685495400
+        ],
+        "event": "push",
+        "jobs": 0,
+        "workflow_path": ".github/workflows/barrot-approve-pr.yml",
+        "declared_trigger_on_main": "workflow_dispatch only",
+        "containment_pr": 1250
+      }
     },
     "current_pr_1241_state": {
       "pr": 1241,
@@ -5900,7 +5951,7 @@
         "index": 12
       }
     ],
-    "current_main_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+    "current_main_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
     "current_pr_1245_state": {
       "pr": 1245,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1245",
@@ -6006,70 +6057,102 @@
       "Oct 27 XRP ETF zero-flow readings are secondary tracker observations; source independence and sponsor-level fund coverage remain unverified.",
       "Oct 28 XRP price observations from Investing.com and CoinCodex are not synchronized to a common UTC cutoff or identical bar universe.",
       "Coinbase Q3 2026 results are scheduled for Oct 29 after market close; not yet published at this snapshot cutoff.",
-      "PR #1248 fixes three validator gaps but remains draft/unmerged; no calibrated prediction engine or feature store is operationally verified."
+      "PR #1248 fixes three validator gaps but remains draft/unmerged; no calibrated prediction engine or feature store is operationally verified.",
+      "Current main head at snapshot capture: 7a558c0859393e9e29ea326aa90877ee2ef49220.",
+      "PR #1249 and PR #1250 pass exact-head CI/gate but remain draft/unmerged.",
+      "Historical run_updates reference one snapshot path not present in the source tree: data/xrp_intelligence/snapshots/2026-10-28T0007Z.json; preserved for reconciliation, not fabricated."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
-      "state": "OPEN_DRAFT_UNMERGED",
-      "branch": "research/xrp-forecast-ledger-validation-fix-20261028-1108z",
+      "state": "OPEN_DRAFT_STALE_BASE",
       "base_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
       "head_sha": "4334bc902472f1d84fc62c6cacf25aeca66befa9",
-      "ahead_by": 1,
-      "behind_by": 0,
+      "successor_pr": 1249,
+      "main_modified_by_this_run": false,
+      "merge_performed": false
+    },
+    "current_open_pr_count": 81,
+    "current_open_prs_observed_at_utc": "2026-10-28T12:15:53Z",
+    "current_open_prs": [
+      {
+        "number": 1248,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
+        "title": "Safety: enforce XRP forecast outcome provenance on fresh main",
+        "state": "open",
+        "draft": true,
+        "head_sha": "4334bc902472f1d84fc62c6cacf25aeca66befa9",
+        "ci": "PASS_ON_PRIOR_HEAD",
+        "status": "Stale base; successor #1249."
+      },
+      {
+        "number": 1249,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1249",
+        "title": "Safety: enforce XRP forecast outcome provenance on current main",
+        "state": "open",
+        "draft": true,
+        "head_sha": "9d46f742a14a7fb8ea448be2ce868dc10650d4c5",
+        "ci": "success",
+        "status": "Fresh-main forecast validator."
+      },
+      {
+        "number": 1250,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
+        "title": "Safety: handle approval-workflow push events without write access",
+        "state": "open",
+        "draft": true,
+        "head_sha": "ef959edf0507ecf4f603a856719e1d72268bc2f2",
+        "ci": "success",
+        "status": "Approval workflow push no-op containment."
+      }
+    ],
+    "current_pr_1249_state": {
+      "pr": 1249,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1249",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+      "head_sha": "9d46f742a14a7fb8ea448be2ce868dc10650d4c5",
       "ci": {
-        "status": "PASS",
-        "tests_passed": 158,
-        "duration_seconds": 5.13,
-        "run_id": 40677898621,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40677898621"
+        "status": "success",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685530798"
       },
       "gate": {
-        "status": "PASS",
-        "run_id": 40677898669,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40677898669"
+        "status": "success",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685531060"
       },
       "changed_files": 5,
-      "additions": 525,
-      "deletions": 0,
-      "mergeable_reported": false,
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "deployment_executed": false,
-      "limitation": "Copies the forecast-ledger contract onto the observed fresh-main base and fixes three validation gaps. Draft only; no merge or deployment."
+      "limitation": "Synthetic validator contract only; no feature store, live ingestion, backtesting, calibration or shadow evaluation."
     },
-    "snapshot_blob_sha": "2cad4d509fc5e8a5f5034bc3b7f89a917de444aa",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T11:11:00Z",
-    "snapshot_commit_sha": "a40babb05651815a31165ae875cd23a24c01fb8d",
-    "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T11:15:30Z",
-      "snapshot_commit_sha": "a40babb05651815a31165ae875cd23a24c01fb8d",
+    "current_pr_1250_state": {
+      "pr": 1250,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+      "head_sha": "ef959edf0507ecf4f603a856719e1d72268bc2f2",
       "ci": {
-        "status": "PASS",
-        "tests_passed": 146,
-        "duration_seconds": 6.16,
-        "run_id": 40678454256,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40678454256"
+        "status": "success",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685772686"
       },
       "gate": {
-        "status": "PASS",
-        "run_id": 40678454201,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40678454201"
-      }
+        "status": "success",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685772752"
+      },
+      "changed_files": 3,
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "deployment_executed": false,
+      "limitation": "Containment proposal; root cause of zero-job push runs remains unresolved."
     },
-    "post_snapshot_approval_workflow_anomaly": {
-      "status": "ROOT_CAUSE_UNRESOLVED",
-      "run_id": 40678445372,
-      "event": "push",
-      "conclusion": "failure",
-      "jobs": 0,
-      "workflow_path": ".github/workflows/barrot-approve-pr.yml",
-      "workflow_blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
-      "declared_trigger": "workflow_dispatch only",
-      "source_ids": [
-        "SRC-REPO-APPROVAL-WORKFLOW-ANOMALY-2026-10-28T1115Z",
-        "SRC-REPO-APPROVAL-WORKFLOW-CONTENT-2026-10-28T1115Z"
-      ]
+    "snapshot_blob_sha": "8b651372cf4a98870b57c82d6a6f96599815254f",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T12:15:53Z",
+    "snapshot_commit_sha": "4cf2dfa89360c91419d32de2c317ddd8c4ba201b",
+    "post_snapshot_verification": {
+      "verified_at_utc": "2026-10-28T12:15:53Z",
+      "status": "PENDING_AFTER_INDEX_UPDATE",
+      "note": "Snapshot blob hash fetched from GitHub; index update commit still requires exact-head CI and fail-closed gate."
     }
   },
   "sources": [
@@ -8264,6 +8347,86 @@
       "title": "Approval workflow trigger declaration rechecked",
       "accessed_at_utc": "2026-10-28T11:15:30Z",
       "note": "Main and research branch copies have identical blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4 and declare workflow_dispatch only, with no push trigger. This conflicts with the observed push-event run; no root cause or fix is claimed."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/7a558c0859393e9e29ea326aa90877ee2ef49220",
+      "title": "Current main head at 12:15Z",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "Main head 7a558c0859393e9e29ea326aa90877ee2ef49220; latest commit is a generated paper-trading-log append."
+    },
+    {
+      "id": "SRC-GH-MAIN-PROTECTION-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
+      "title": "Main branch protection metadata",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "Branch reports protected=true but required status-check contexts and checks arrays are empty; detailed protection settings remain inaccessible to this integration."
+    },
+    {
+      "id": "SRC-REPO-MAIN-XRP-SIGNAL-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Main XRP signal remains invalid for directional use",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "Artifact timestamp 2026-10-28T11:22:15.444723Z; score 44, confidence 0, news_score 88; source string reports missing GitHub model credentials and Groq HTTP 429."
+    },
+    {
+      "id": "SRC-REPO-PR1248-STATE-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1248",
+      "title": "PR #1248 stale-base status",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "Open draft, based on older main; superseded for fresh-main review by PR #1249. No merge."
+    },
+    {
+      "id": "SRC-REPO-PR1249-STATE-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1249",
+      "title": "PR #1249 fresh-main forecast validator",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "Open draft based on main SHA 7a558c0859393e9e29ea326aa90877ee2ef49220; exact-head Tests and fail-closed gate both succeeded."
+    },
+    {
+      "id": "SRC-REPO-PR1249-CI-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685530798",
+      "title": "PR #1249 exact-head CI",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "Tests job completed success; gate run 40685531060 completed success. Aggregate test count not extracted from logs."
+    },
+    {
+      "id": "SRC-REPO-PR1250-STATE-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
+      "title": "PR #1250 approval workflow containment",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "Open draft based on main SHA 7a558c0859393e9e29ea326aa90877ee2ef49220; introduces read-only push no-op and manual-dispatch-only approval job."
+    },
+    {
+      "id": "SRC-REPO-PR1250-CI-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685772686",
+      "title": "PR #1250 exact-head CI",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "Tests and fail-closed gate completed success on head ef959edf0507ecf4f603a856719e1d72268bc2f2."
+    },
+    {
+      "id": "SRC-REPO-APPROVAL-WORKFLOW-ANOMALY-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685521814",
+      "title": "Repeated approval workflow zero-job runs",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "Five push-event runs on a fresh safety branch failed with zero jobs. The inspected main workflow declares workflow_dispatch only. Root cause remains unresolved; no approval job ran."
+    },
+    {
+      "id": "SRC-OPEN-PR-COUNT-20261028T1215Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pulls",
+      "title": "Open pull request inventory count",
+      "accessed_at_utc": "2026-10-28T12:15:53Z",
+      "note": "GitHub search returned 81 open PRs at capture time, including new PRs #1249 and #1250."
     }
   ],
   "limitations": [
@@ -9455,6 +9618,40 @@
         "snapshot_gate_run_id": 40678454201,
         "approval_workflow_anomaly": "PUSH_EVENT_ZERO_JOBS_FAILURE_ROOT_CAUSE_UNRESOLVED",
         "current_main_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false,
+        "forecast_status": "NOT_ISSUED",
+        "new_ledger_index_commit_ci": "PENDING_AFTER_INDEX_UPDATE"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T12:15:53Z",
+      "update_type": "FRESH_MAIN_VALIDATOR_AND_APPROVAL_WORKFLOW_CONTAINMENT",
+      "snapshot_id": "XRP-FORECAST-LEDGER-APPROVAL-WORKFLOW-CONTAINMENT-202610281215Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1215Z.json",
+      "details": "Recorded current main and signal state, exact-head CI/gate for fresh-main forecast-ledger PR #1249, and exact-head CI/gate for approval-workflow containment PR #1250. Five zero-job push-event failures remain unexplained. Forecast status NOT_ISSUED; no main write, merge, deployment or real-money action.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261028T1215Z",
+        "SRC-GH-MAIN-PROTECTION-20261028T1215Z",
+        "SRC-REPO-MAIN-XRP-SIGNAL-20261028T1215Z",
+        "SRC-REPO-PR1248-STATE-20261028T1215Z",
+        "SRC-REPO-PR1249-STATE-20261028T1215Z",
+        "SRC-REPO-PR1249-CI-20261028T1215Z",
+        "SRC-REPO-PR1250-STATE-20261028T1215Z",
+        "SRC-REPO-PR1250-CI-20261028T1215Z",
+        "SRC-REPO-APPROVAL-WORKFLOW-ANOMALY-20261028T1215Z",
+        "SRC-OPEN-PR-COUNT-20261028T1215Z"
+      ],
+      "validation": {
+        "snapshot_blob_sha": "8b651372cf4a98870b57c82d6a6f96599815254f",
+        "snapshot_blob_hash_matches_index": true,
+        "snapshot_commit_sha": "4cf2dfa89360c91419d32de2c317ddd8c4ba201b",
+        "pr1249_ci": "PASS",
+        "pr1249_gate": "PASS",
+        "pr1250_ci": "PASS",
+        "pr1250_gate": "PASS",
+        "main_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
         "main_modified_by_this_run": false,
         "merge_performed": false,
         "deployment_executed": false,
