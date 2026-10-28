@@ -6407,24 +6407,26 @@
     "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1817Z.json",
     "current_research_head_before_ledger_update": "2c82a5f06a39e481fdd5b485f49cebcae487a42b",
     "current_research_checks": {
-      "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_INDEX_PENDING",
-      "previous_index_head": "2c82a5f06a39e481fdd5b485f49cebcae487a42b",
+      "status": "PREVIOUS_INDEX_HEAD_VERIFIED; SUCCESSOR_INDEX_PENDING",
+      "previous_index_head": "803d90db08629411b556e023ad6c3f5fcffe1bb8",
       "previous_index_ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 4.98,
-        "run_id": 40743651729,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743651729"
+        "duration_seconds": 6.24,
+        "run_id": 40743800580,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800580"
       },
       "previous_index_gate": {
         "status": "PASS",
-        "run_id": 40743651741,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743651741"
+        "run_id": 40743800218,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800218"
       },
+      "snapshot_blob_readback_ok": true,
+      "snapshot_blob_sha": "baf15806bf19dc2bb50207807cc07749aeae99d1",
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
     },
-    "current_research_head_before_final_verification_record": "2c82a5f06a39e481fdd5b485f49cebcae487a42b",
+    "current_research_head_before_final_verification_record": "803d90db08629411b556e023ad6c3f5fcffe1bb8",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -8546,22 +8548,22 @@
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T18:17:49Z",
     "snapshot_commit_sha": "fa73d06d84d57283d271bd3cc3bff4b819e4bdd6",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; PRIOR_INDEX_CI_AND_GATE_PASS; NEW_INDEX_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; INDEX_HEAD_CI_AND_GATE_PASS; SUCCESSOR_INDEX_PENDING",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "baf15806bf19dc2bb50207807cc07749aeae99d1",
       "snapshot_commit_sha": "fa73d06d84d57283d271bd3cc3bff4b819e4bdd6",
-      "verified_index_head": "2c82a5f06a39e481fdd5b485f49cebcae487a42b",
+      "verified_index_head": "803d90db08629411b556e023ad6c3f5fcffe1bb8",
       "ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 4.98,
-        "run_id": 40743651729,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743651729"
+        "duration_seconds": 6.24,
+        "run_id": 40743800580,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800580"
       },
       "gate": {
         "status": "PASS",
-        "run_id": 40743651741,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743651741"
+        "run_id": 40743800218,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800218"
       },
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
@@ -12391,6 +12393,22 @@
       "title": "Research ledger index fail-closed gate passed",
       "accessed_at_utc": "2026-10-28T18:17:49Z",
       "note": "Fail-closed gate succeeded for index commit 2c82a5f06a39e481fdd5b485f49cebcae487a42b; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-803D90-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800580",
+      "title": "Research index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:18:41Z",
+      "note": "Index commit 803d90db08629411b556e023ad6c3f5fcffe1bb8 passed 145 tests in 6.24 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-803D90-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800218",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:18:41Z",
+      "note": "Fail-closed gate succeeded for index commit 803d90db08629411b556e023ad6c3f5fcffe1bb8; no merge was performed."
     }
   ],
   "limitations": [
@@ -14773,6 +14791,30 @@
         "new_index_ci": "PENDING_AFTER_WRITE",
         "new_index_gate": "PENDING_AFTER_WRITE"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T18:18:41Z",
+      "update_type": "RESEARCH_INDEX_CI_AND_GATE_VERIFIED",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1817Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1817Z.json",
+      "details": "Verified index commit 803d90db08629411b556e023ad6c3f5fcffe1bb8 through exact-head CI (145 tests in 6.24s) and fail-closed gate. Snapshot blob SHA matches the indexed immutable snapshot; source IDs are unique and all snapshot references resolve. The successor index commit will require its own checks.",
+      "source_ids": [
+        "SRC-GH-LEDGER-CI-803D90-2026-10-28",
+        "SRC-GH-LEDGER-GATE-803D90-2026-10-28"
+      ],
+      "validation": {
+        "verified_index_head": "803d90db08629411b556e023ad6c3f5fcffe1bb8",
+        "ci": "PASS_145_TESTS_6.24S",
+        "gate": "PASS",
+        "snapshot_blob_readback": "PASS",
+        "source_ids_unique": "PASS",
+        "missing_source_refs": 0,
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "new_index_gate": "PENDING_AFTER_WRITE"
+      }
     }
   ],
   "mission_priority": {
@@ -15000,30 +15042,31 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "2c82a5f06a39e481fdd5b485f49cebcae487a42b",
-  "current_research_head_this_run": "fa73d06d84d57283d271bd3cc3bff4b819e4bdd6",
+  "current_research_head_before_ledger_update": "803d90db08629411b556e023ad6c3f5fcffe1bb8",
+  "current_research_head_this_run": "803d90db08629411b556e023ad6c3f5fcffe1bb8",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; PRIOR_INDEX_VERIFIED; NEW_INDEX_PENDING",
-    "previous_index_head": "2c82a5f06a39e481fdd5b485f49cebcae487a42b",
+    "status": "PREVIOUS_INDEX_HEAD_VERIFIED; SUCCESSOR_INDEX_PENDING",
+    "previous_index_head": "803d90db08629411b556e023ad6c3f5fcffe1bb8",
     "previous_index_ci": {
       "status": "PASS",
       "tests_passed": 145,
-      "duration_seconds": 4.98,
-      "run_id": 40743651729,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743651729"
+      "duration_seconds": 6.24,
+      "run_id": 40743800580,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800580"
     },
     "previous_index_gate": {
       "status": "PASS",
-      "run_id": 40743651741,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743651741"
+      "run_id": 40743800218,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800218"
     },
+    "snapshot_blob_readback_ok": true,
     "snapshot_blob_sha": "baf15806bf19dc2bb50207807cc07749aeae99d1",
     "new_index_ci": "PENDING_AFTER_WRITE",
     "new_index_gate": "PENDING_AFTER_WRITE"
   },
   "ledger_metrics": {
-    "source_records": 473,
-    "run_updates": 97,
+    "source_records": 475,
+    "run_updates": 98,
     "limitations": 85,
     "relationship_edges": 104,
     "competing_hypotheses": 65,
