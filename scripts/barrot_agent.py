@@ -970,6 +970,7 @@ def main() -> None:
         post_issue_comment(message)
         raise SystemExit(1)
 
+    task_work_scope = request_fingerprint.split(":", 1)[-1][:16]
     controller = RepositoryRepairController(
         brain=brain,
         workspace=ROOT,
@@ -991,7 +992,7 @@ def main() -> None:
         ])
         task_context = build_audit_context(task_title, task_body)
         return queue.run(
-            work_id=f"{work_id}:task:{task['id']}",
+            work_id=f"{work_id}:request:{task_work_scope}:task:{task['id']}",
             project_identity=build_project_identity(REPO),
             task_title=task_title,
             task_body=task_body,
@@ -1004,7 +1005,7 @@ def main() -> None:
     def recover_completed_bundle_task(task: dict[str, Any]) -> dict[str, Any] | None:
         # Close the crash window where WorkQueueController persisted a successful
         # repair but the process died before bundle lifecycle evidence was appended.
-        task_work_id = f"{work_id}:task:{task['id']}"
+        task_work_id = f"{work_id}:request:{task_work_scope}:task:{task['id']}"
         saved_work = queue.work_store.load(task_work_id)
         if not isinstance(saved_work, dict) or saved_work.get("status") != "complete":
             return None
