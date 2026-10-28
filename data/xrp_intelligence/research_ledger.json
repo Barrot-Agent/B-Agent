@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T09:07:00Z",
+    "captured_at_utc": "2026-10-28T09:12:00Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "f0c4f520110dc74d18610d38795a9210727e3257",
@@ -1667,6 +1667,18 @@
           "SRC-CIRCLE-USDC-TRANSPARENCY-2026-10-28T0900Z"
         ],
         "uncertainty": "XRPL-native USDC supply, transfer value, payment-corridor usage and XRP bridge-path share were not independently measured in this run."
+      },
+      {
+        "id": "COINBASE-XRP-USDC-STRATEGIC-POSITION-2026-10-28T0912Z",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "XRP_HOLDING_AND_COMMERCIAL_FLAGS_DISCLOSED; USDC_DISTRIBUTION_SCALE_REPORTED; XRP_FLOW_IMPACT_UNKNOWN",
+        "claim": "Coinbase's Q2 2026 release reports 10.3% crypto trading-volume market share, $20B average USDC balances in Coinbase products, and approximately 50% of USDC economics captured over the preceding year. Coinbase's US/NY digital-asset disclosure lists XRP with holding and commercial-engagement flags, with holdings dated March 31, 2026.",
+        "interpretation": "Coinbase is a strategically important exchange, custody and stablecoin-distribution venue. These disclosures establish product and commercial positioning but do not reveal XRP inventory quantity, net accumulation, collateral use, or a causal XRP price effect. Company-reported USDC balances and XRP holding flags have different dates and scopes.",
+        "source_ids": [
+          "SRC-COINBASE-Q2-RESULTS-2026-07-30",
+          "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-2026-10-28"
+        ],
+        "uncertainty": "XRP-specific holdings quantity and changes, Coinbase XRP pair depth, institutional order flow, XRP collateral balances, and route-level substitution/complementarity with USDC are not disclosed in these sources."
       }
     ],
     "relationship_graph": [
@@ -2373,6 +2385,28 @@
         ],
         "status": "CONFIRMED_PRIMARY_SOURCE",
         "xrp_relationship": "No direct XRP relationship established by this source."
+      },
+      {
+        "id": "EDGE-COINBASE-XRP-HOLDING-COMMERCIAL-DISCLOSURE-2026-10-28T0912Z",
+        "from": "Coinbase",
+        "relation": "reports holding and commercial-engagement flags for XRP in US/NY trading-assets disclosure (holdings as of 2026-03-31)",
+        "to": "XRP",
+        "evidence_ids": [
+          "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-2026-10-28"
+        ],
+        "status": "COMPANY_REPORTED",
+        "limitation": "No quantity, change in holdings, trade direction or XRP collateral position disclosed."
+      },
+      {
+        "id": "EDGE-COINBASE-USDC-DISTRIBUTION-ECONOMICS-Q2-2026",
+        "from": "Coinbase",
+        "relation": "reports $20B average USDC balances in products and approximately 50% of USDC economics captured over preceding year",
+        "to": "USDC / Circle",
+        "evidence_ids": [
+          "SRC-COINBASE-Q2-RESULTS-2026-07-30"
+        ],
+        "status": "COMPANY_REPORTED",
+        "limitation": "Coinbase's reported figures do not establish incremental USDC-to-XRP flows."
       }
     ],
     "competing_hypotheses": [
@@ -2978,6 +3012,21 @@
           "Native availability and global issuer supply do not prove route-level adoption, XRP purchases, XRP collateralization or price impact."
         ],
         "test_plan": "Measure XRPL-native USDC supply and transfers, XRP bridge-path share, XRP/USDC depth, corridor-level payment paths and venue-level liquidity at aligned UTC cutoffs; compare against control routes."
+      },
+      {
+        "id": "H-COINBASE-USDC-DISTRIBUTION-AND-XRP-LIQUIDITY-2026-10-28T0912Z",
+        "hypothesis": "Coinbase's combined XRP trading/custody presence and substantial USDC distribution may influence XRP market access and pair liquidity, but the effect could be complementary, substitutive or negligible.",
+        "supporting_evidence": [
+          "SRC-COINBASE-Q2-RESULTS-2026-07-30",
+          "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-2026-10-28",
+          "SRC-CIRCLE-USDC-XRPL-OFFICIAL-2026-10-28T0900Z"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Coinbase discloses no XRP holdings quantity or directional change in the cited table.",
+          "USDC balances are not XRP inflows; global USDC circulation and Coinbase platform balances have different scopes.",
+          "Exchange support and commercial engagement do not prove institutional XRP collateral use or a price effect."
+        ],
+        "test_plan": "At common UTC cutoffs, compare Coinbase XRP/USD and XRP/USDC depth, spread, volume and netflow proxies with other venues; measure XRPL-native USDC supply/transfer value and XRP bridge-path share; use controls and event windows around verified product changes."
       }
     ],
     "market_observations": [
@@ -3565,7 +3614,7 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T09:07:00Z",
+      "last_checked_utc": "2026-10-28T09:12:00Z",
       "last_run_update": "Legacy accuracy metric is invalid for predictive skill; PR #1246 passed exact-head CI/gate but remains unmerged.",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
@@ -4241,14 +4290,14 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-ACCURACY-VALIDATION-GATE-PR1246-2026-10-28T0907Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0907Z.json",
-    "current_research_head_before_ledger_update": "3884824918423eeaef533de1f4a82e13dad82b5f",
+    "snapshot_id": "XRP-COINBASE-USDC-XRP-POSITION-2026-10-28T0912Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0912Z.json",
+    "current_research_head_before_ledger_update": "c7e26a6356f9d331045b26e9e4972855566ad65d",
     "current_research_checks": {
       "status": "PENDING_AFTER_THIS_LEDGER_UPDATE",
       "note": "This corrective snapshot/index update requires exact-head CI."
     },
-    "current_research_head_before_final_verification_record": "3884824918423eeaef533de1f4a82e13dad82b5f",
+    "current_research_head_before_final_verification_record": "c7e26a6356f9d331045b26e9e4972855566ad65d",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -4888,6 +4937,19 @@
           "SRC-CIRCLE-USDC-TRANSPARENCY-2026-10-28T0900Z"
         ],
         "impact_status": "XRPL_ACCESS_CONFIRMED; GLOBAL_SUPPLY_ONLY; XRP_FLOW_UNKNOWN"
+      },
+      {
+        "event_id": "EVT-COINBASE-Q2-2026-USDC-XRP-DISCLOSURE-2026-10-28T0912Z",
+        "event_time_utc": "2026-07-30",
+        "captured_at_utc": "2026-10-28T09:12:00Z",
+        "entity": "Coinbase; USDC; XRP",
+        "event": "Coinbase's Q2 2026 release reports 10.3% crypto trading-volume market share, $20B average USDC balances and approximately 50% of USDC economics captured over the preceding year; its digital-asset disclosure lists XRP as held and commercially engaged in the US/NY trading-assets table as of March 31, 2026.",
+        "evidence_class": "COMPANY_REPORTED",
+        "source_ids": [
+          "SRC-COINBASE-Q2-RESULTS-2026-07-30",
+          "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-2026-10-28"
+        ],
+        "impact_status": "COINBASE_POSITION_CONFIRMED_AS_REPORTED; XRP_FLOW_AND_PRICE_CAUSALITY_UNKNOWN"
       }
     ],
     "current_pr_1238_state": {
@@ -4930,7 +4992,7 @@
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
-      "observed_at_utc": "2026-10-28T09:07:00Z",
+      "observed_at_utc": "2026-10-28T09:12:00Z",
       "current_main_sha": "f0c4f520110dc74d18610d38795a9210727e3257",
       "findings": [
         {
@@ -5315,7 +5377,7 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "3884824918423eeaef533de1f4a82e13dad82b5f",
+    "current_research_head_this_run": "c7e26a6356f9d331045b26e9e4972855566ad65d",
     "correction_note": {
       "previous_snapshot": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
       "issue": "The previous market-data-quality finding referenced a nonexistent 0812Z source ID.",
@@ -5352,8 +5414,8 @@
       "deployment_executed": false,
       "limitation": "PR base was 42fb527c; main subsequently advanced by a generated paper-trading-log append to f0c4f520. Re-check branch divergence before any review/merge."
     },
-    "snapshot_blob_sha": "1b8a1210a07b47cd48eaaa834b51134893c11372",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T09:07:00Z"
+    "snapshot_blob_sha": "b109c32dce8464957b25e67a61ae73c94922b562",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T09:12:00Z"
   },
   "sources": [
     {
@@ -8341,6 +8403,30 @@
         "deployment_executed": false,
         "forecast_status": "NOT_ISSUED",
         "research_branch_exact_head_ci": "PENDING_AFTER_INDEX_UPDATE"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T09:12:00Z",
+      "update_type": "COINBASE_XRP_USDC_STRATEGIC_POSITION_CROSSCHECK",
+      "snapshot_id": "XRP-COINBASE-USDC-XRP-POSITION-2026-10-28T0912Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0912Z.json",
+      "details": "Added Coinbase's company-reported Q2 2026 market-share and USDC economics, its March 31 XRP holding/commercial-engagement disclosure, and a competing hypothesis that Coinbase's USDC distribution can be complementary, substitutive or immaterial to XRP liquidity. No XRP flow or price causality inferred.",
+      "source_ids": [
+        "SRC-COINBASE-Q2-RESULTS-2026-07-30",
+        "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-2026-10-28",
+        "SRC-CIRCLE-USDC-XRPL-OFFICIAL-2026-10-28T0900Z"
+      ],
+      "validation": {
+        "snapshot_blob_sha": "b109c32dce8464957b25e67a61ae73c94922b562",
+        "snapshot_hash_matches_index": true,
+        "source_ids_unique": true,
+        "source_references_present": true,
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "pr1246_ci": "PASS",
+        "pr1246_gate": "PASS",
+        "research_branch_ci": "PENDING_AFTER_LEDGER_UPDATE"
       }
     }
   ],
