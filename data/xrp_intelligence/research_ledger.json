@@ -2894,13 +2894,14 @@
       "update_type": "APPEND_ONLY_AVIVA_INSTITUTIONAL_TOKENIZATION_EVENT",
       "snapshot_id": "XRP-AVIVA-TOKENIZED-GBP-FUND-2026-10-28T000616Z",
       "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0006Z.json",
-      "snapshot_blob_sha": "unknown_before_readback",
+      "snapshot_blob_sha": "2471b7648a3cb759c13647f343785d0829158b6c",
       "details": "Added official Aviva/Ripple evidence for a live GBP tokenized fund share class on XRPL and Aviva's £50M investment in that share class. The £22B figure is underlying fund AUM, not tokenized value or XRP capital. Third-party on-chain analytics remain quarantined pending permission or independent public-ledger reproduction.",
       "validation": {
         "json": "PASS",
         "source_use_policy": "RECORDED",
         "forecast_status": "NOT_ISSUED",
-        "main_modified": false
+        "main_modified": false,
+        "snapshot_blob_sha": "VERIFIED_BY_GITHUB_FILE_READ"
       }
     },
     {
