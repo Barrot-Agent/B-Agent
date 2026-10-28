@@ -1,3 +1,7 @@
+> **Safety status — October 28, 2026:** The current `main` version of `.github/workflows/merge-queue.yml` can update branches and merge pull requests; its `mode=all` option can select every open PR. Do not run the current workflow until a reviewed replacement is merged and effective branch protection is independently verified. The proposed fresh-main read-only replacement is tracked in [PR #1239](https://github.com/Barrot-Agent/B-Agent/pull/1239).
+
+---
+
 # Merge Queue Workflow
 
 The **Merge Queue** workflow (`merge-queue.yml`) sequentially updates and merges open pull requests in this repository. It is triggered manually via `workflow_dispatch`.
