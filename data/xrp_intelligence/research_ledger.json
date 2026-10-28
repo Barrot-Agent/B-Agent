@@ -1,0 +1,2665 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_research_ledger",
+  "ledger_policy": {
+    "purpose": "Highest-priority Barrot mission: XRP intelligence and prediction-engine mastery, with Barrot V3 preserved as the execution and verification foundation.",
+    "update_rule": "Append timestamped snapshots; never silently rewrite historical evidence, forecasts, or outcomes.",
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY_SOURCE",
+      "COMPANY_REPORTED",
+      "SECONDARY_UNVERIFIED",
+      "REPOSITORY_OBSERVATION",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known."
+  },
+  "latest_snapshot": {
+    "captured_at_utc": "2026-10-27T22:14:48Z",
+    "repository": {
+      "full_name": "Barrot-Agent/B-Agent",
+      "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+      "main_protected": true,
+      "no_merge_performed": true,
+      "active_prs": [
+        {
+          "number": 1193,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
+          "title": "Safety: fail closed on unavailable XRP sentiment (fresh main)",
+          "state": "open",
+          "draft": true,
+          "head_sha": "789b639d2553a0d4389d8cf49a1a0b9fb6b80e17",
+          "mergeable": false,
+          "blocker": "Current API reports not mergeable against current main; fail-closed fix remains unmerged."
+        },
+        {
+          "number": 1194,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
+          "title": "Safety: disable mutation-capable merge queue (fresh main)",
+          "state": "open",
+          "draft": true,
+          "head_sha": "66c1be927a230e458c51b43eff308eec74253a47",
+          "mergeable": false,
+          "blocker": "Current API reports not mergeable against current main; mutating workflow remains on main."
+        },
+        {
+          "number": 1195,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+          "title": "Research: add evidence-led XRP intelligence ledger snapshot",
+          "state": "open",
+          "draft": true,
+          "head_sha": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
+          "mergeable": true,
+          "checks": {
+            "Tests": "success",
+            "Merge disabled pending gate verification": "success"
+          }
+        },
+        {
+          "number": 1202,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1202",
+          "title": "Fix Databricks deployment script path",
+          "state": "open",
+          "draft": true,
+          "head_sha": "e2defad51375a3dece0b2e3e9b64a3b1fabddd8f",
+          "mergeable": true,
+          "blocker": "Proposed fix branch is based on an older main; current main still fails on deploy_databricks.py path."
+        },
+        {
+          "number": 1220,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+          "title": "Safety: fail closed on unavailable XRP signals (fresh main)",
+          "state": "open",
+          "draft": true,
+          "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+          "base_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+          "mergeable": true,
+          "ci": "in_progress",
+          "gate": "success"
+        }
+      ],
+      "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+      "fallback_ruleset": {
+        "id": 10863829,
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      },
+      "current_main_commit": {
+        "message": "Paper trade cycle [skip ci]",
+        "authored_at_utc": "2026-10-27T22:04:47Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741"
+      },
+      "current_ci": {
+        "repository": "Barrot-Agent/B-Agent",
+        "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+        "main_commit": {
+          "message": "Paper trade cycle [skip ci]",
+          "authored_at_utc": "2026-10-27T22:04:47Z",
+          "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741"
+        },
+        "main_branch_protected": true,
+        "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
+        "main_ci": {
+          "run_id": 40583993078,
+          "conclusion": "success",
+          "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
+          "current_head_status": "NOT_VERIFIED",
+          "note": "Last recorded successful code CI predates current main; current main changes since then were generated-data-only."
+        },
+        "main_databricks_deploy": {
+          "run_id": 40583993212,
+          "conclusion": "failure",
+          "root_cause": "Main workflow still calls python deploy_databricks.py while the script is under scripts/deploy_databricks.py.",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993212"
+        },
+        "main_operations_pipeline": {
+          "run_id": 40583993172,
+          "conclusion": "failure",
+          "root_cause": "Push rejected as non-fast-forward. This confirms a direct-push failure; whether a concurrent workflow caused it remains unproven.",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993172"
+        },
+        "approval_workflow_anomaly": {
+          "run_id": 40584131729,
+          "event": "push",
+          "conclusion": "failure",
+          "jobs_returned": 0,
+          "root_cause": "UNRESOLVED. The currently fetched workflow definition declares workflow_dispatch only, but the recorded run event is push; exact triggering semantics still require diagnosis.",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584131729"
+        },
+        "research_pr_validation": {
+          "pr": 1195,
+          "head_sha": "bc3c97bbe7577f650e975e9c77aaeb880c47f387",
+          "ci_run_id": 40584140982,
+          "ci": "success",
+          "gate_run_id": 40584140846,
+          "gate": "success",
+          "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+          "note": "These checks validate repository tests and fail-closed merge gate only; they do not validate prediction skill or deploy the research system."
+        },
+        "safety_prs": [
+          {
+            "pr": 1193,
+            "mergeable": false,
+            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
+            "state": "open",
+            "note": "Fail-closed signal-integrity fix remains unmerged."
+          },
+          {
+            "pr": 1194,
+            "mergeable": false,
+            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
+            "state": "open",
+            "note": "Read-only merge-queue safety fix remains unmerged; main workflow remains mutation-capable."
+          }
+        ],
+        "recent_merged_prs": [
+          {
+            "pr": 1217,
+            "merged": true,
+            "merge_commit_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
+            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1217"
+          },
+          {
+            "pr": 1218,
+            "merged": true,
+            "merge_commit_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+            "url": "https://github.com/Barrot-Agent/B-Agent/pull/1218"
+          }
+        ],
+        "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run."
+      },
+      "current_research_head": "d4fd1a34370ca3d53f736660de11ed9174207cf0",
+      "current_research_checks": {
+        "tests": "success",
+        "gate": "success",
+        "as_of_utc": "2026-10-27T21:09:14Z",
+        "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584282225",
+        "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584282627",
+        "note": "Validation applies to head d4fd1a before the later ledger-linking commit; later head must pass CI independently."
+      },
+      "main_commit_delta_since_last_observed": {
+        "previous_sha": "26bc78368692aa4b4ef6e32a9464d1cb75f55fb6",
+        "commits_ahead": 1,
+        "changed_files": 1,
+        "changed_scope": [
+          "web/paper_trading_log.jsonl"
+        ],
+        "finding": "The latest main commit appends a BTC-USD paper-trading HOLD record; it does not change XRP model code or the XRP signal artifact."
+      },
+      "latest_research_branch_state": {
+        "branch": "research/xrp-ledger-20261027-1902z",
+        "pr": 1195,
+        "head_at_snapshot_capture": "09e3ab4f0d976aadd0e733139a38d87de8952b6e",
+        "state": "open_draft_diverged",
+        "ahead_by": 37,
+        "behind_by": 45,
+        "mergeable": true,
+        "observed_at_utc": "2026-10-27T22:14:48Z",
+        "source_ids": [
+          "SRC-REPO-PR-1195-STATE-2026-10-27T2210Z"
+        ],
+        "note": "Preserve historical research snapshots. Do not merge the stale branch."
+      },
+      "current_pr_1220_state": {
+        "pr": 1220,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+        "state": "open",
+        "draft": true,
+        "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+        "base_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+        "mergeable": true,
+        "ci": "success",
+        "tests_passed": 164,
+        "ci_run_id": 40592404749,
+        "gate": "success",
+        "gate_run_id": 40592404758,
+        "observed_at_utc": "2026-10-27T22:10:20Z"
+      }
+    },
+    "critical_engine_findings": [
+      {
+        "id": "SIGNAL-FAIL-CLOSED-001",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "critical",
+        "status": "OBSERVED_ON_MAIN; FIX_PROPOSED_IN_OPEN_PR",
+        "files": [
+          {
+            "path": "scripts/emit_signal.py",
+            "blob_sha": "7b21ee712114ae2a983f75f3b702f2966e305be4"
+          },
+          {
+            "path": "web/latest_signal_summary.json",
+            "blob_sha": "1ce6c6042bbae34ecf611ec5175e3e10f9b38d23"
+          }
+        ],
+        "finding": "On main, malformed model JSON is coerced to (50, 0.5, neutral). If both sentiment providers fail, analyze_signal returns score 0 and confidence 0.0 with an unavailable-source string; main then blends that score with the news score when one exists. The checked-in latest summary records missing GitHub/Groq credentials and a Groq HTTP 429, yet still reports score 44 with confidence 0.0 and news_score 88 from 11 entries. The latest checked-in summary also classifies XRP Ledger consensus/dissemination research papers as bullish news, contaminating the sentiment input.",
+        "consequence": "A provider outage can be represented as a numeric sentiment score and blended with unrelated news sentiment. This is not a valid directional forecast and can contaminate downstream features.",
+        "proposed_fix": "PR #1193 validates the sentiment schema, preserves provider failure as unavailable, gates event-time freshness and academic-source contamination, prevents blending unavailable model sentiment into a score, and makes summaries deterministic with forecast_status NOT_ISSUED.",
+        "verification": "PR #1193 exact-head Tests and fail-closed gate passed. Changes remain unmerged and must not be treated as deployed."
+      },
+      {
+        "id": "SIGNAL-ACCURACY-002",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "LEGACY_METRIC_INVALID_FOR_FORECAST_SKILL; FIX_PROPOSED_IN_OPEN_PR",
+        "files": [
+          {
+            "path": "scripts/check_signal_accuracy.py",
+            "blob_sha": "f7630d5655a66001d9de19c30451e5d6e53940a4"
+          },
+          {
+            "path": "web/signal_accuracy.json",
+            "blob_sha": "6f805abfea24a7cf975dab92ab9291b2aab22d25"
+          }
+        ],
+        "finding": "Main reports 1,612 checked records, 749 correct, 46.5% accuracy. The current evaluator scores old signals against a later current price after a minimum age of 24 hours, with variable elapsed horizons, and rewrites historical JSONL records. That number is not fixed-horizon, leakage-controlled, or calibrated forecast performance.",
+        "proposed_fix": "PR #1193 replaces the metric with NOT_EVALUATED until an immutable fixed-horizon forecast ledger exists and labels the historical result NOT_COMPARABLE without mutating signal history.",
+        "verification": "PR #1193 exact-head Tests and fail-closed gate passed. The legacy metric remains on main pending review."
+      },
+      {
+        "id": "TELEMETRY-HARDCODED-003",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "UNVERIFIED_STATIC_OUTPUT; QUARANTINE_OR_REFACTOR_REQUIRED",
+        "files": [
+          {
+            "path": "barrot_agent/analysis/xrp_telemetry_matrix.py",
+            "blob_sha": "6bcf98e7b8816a8875c3b262b08d84d253e239f7"
+          }
+        ],
+        "finding": "The report generator hardcodes sentiment_score=0.94, market_price=1.185, shear_variance=0.233 and prints MAX_LIQUIDITY plus an accumulation-alignment recommendation without obtaining market, liquidity, Hugging Face, or Databricks data.",
+        "consequence": "Its output must not be treated as observed telemetry, model evidence, or an investment signal.",
+        "next_action": "Replace fabricated values with timestamped source-backed observations or explicit UNAVAILABLE states; remove trading recommendations from this report path; add regression tests."
+      },
+      {
+        "id": "MERGE-QUEUE-004",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "SAFETY_FIX_PROPOSED_IN_OPEN_PR",
+        "files": [
+          {
+            "path": ".github/workflows/merge-queue.yml",
+            "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1"
+          }
+        ],
+        "finding": "Main workflow has contents:write and pull-requests:write, permits mode=all, can update branches, merge pull requests and delete branches. PR #1194 replaces it with a read-only audit/no-op pending verified protections.",
+        "verification": "PR #1194 exact-head Tests and fail-closed gate passed; not merged."
+      },
+      {
+        "id": "WORKFLOW-AUTO-PUSH-005",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "CURRENT_MAIN_HAS_AUTOMATED_MAIN_WRITE_PATH; SAFE_PERSISTENCE_REDESIGN_REQUIRED",
+        "files": [
+          {
+            "path": ".github/workflows/knowledge-signal-cycle.yml",
+            "blob_sha": "d6def0741028f313cc6f46d1ef6f0d0be7269edc"
+          },
+          {
+            "path": ".github/workflows/check-signal-accuracy.yml",
+            "blob_sha": "014806e842a14b3961c4b80f9c4a6e855da3f65e"
+          }
+        ],
+        "finding": "The scheduled Knowledge Signal Cycle runs hourly with contents:write, ingests/distills news, emits a blended signal, commits knowledge-base logs/config plus latest_signal and signal_history, then pushes directly to main. The daily accuracy workflow also has contents:write and rewrites signal_history before pushing. This can persist contaminated signal outputs and mutate outcome history without reviewed promotion.",
+        "limits": "Simply removing persistence would break continuity and may cause repeated ingestion. A safe replacement must preserve idempotent ingestion and durable snapshots while moving generated data off main or into reviewed promotion.",
+        "proposed_fix": "Design a dedicated append-only research-data branch or immutable artifact/snapshot promotion path with provenance, idempotency, retention and explicit review. Keep code changes on PR branches; never push model-generated signal/history directly to main.",
+        "relation_to_existing_pr": "PR #1193 hardens the accuracy evaluator/workflow but does not replace the hourly Knowledge Signal Cycle's direct main write-back.",
+        "tests_required": [
+          "no direct push to main from scheduled data workflow",
+          "idempotent ingestion on rerun",
+          "source provenance and snapshot hash preserved",
+          "historical forecast/outcome rows immutable",
+          "provider failure produces UNAVAILABLE and NOT_ISSUED",
+          "manual reviewed promotion is reproducible"
+        ]
+      },
+      {
+        "id": "WORKFLOW-PUSH-RACE-006",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "critical",
+        "status": "DIRECT_MAIN_WRITE_PATHS_CONFIRMED; NON_FAST_FORWARD_FAILURE_REPRODUCED_IN_LATEST_RUN",
+        "files": [
+          {
+            "path": ".github/workflows/knowledge-signal-cycle.yml",
+            "blob_sha": "d6def0741028f313cc6f46d1ef6f0d0be7269edc"
+          },
+          {
+            "path": ".github/workflows/financial-data-refresh.yml",
+            "blob_sha": "ac8086cddc68111685f2e2e3668d96c946e5b351"
+          },
+          {
+            "path": ".github/workflows/merge-queue.yml",
+            "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1"
+          }
+        ],
+        "finding": "Main still has scheduled data workflows with contents:write and git push to main, plus a manually dispatchable merge queue with contents:write and pull-requests:write that can update branches and merge PRs. A fresh Barrot Operations Pipeline run failed on a non-fast-forward push. The failed push is consistent with a stale local ref or concurrent writer; a concurrent-run collision is plausible but not proven.",
+        "consequence": "Mutable signal/history writes can race, fail or publish unreviewed generated data; the merge queue remains a separate consequential mutation path.",
+        "proposed_fix": "Build an idempotent append-only research-data branch or reviewed promotion path with snapshot hashes and provenance, then remove direct generated-data pushes to main; keep merge queue read-only until effective approval/check gates are verified.",
+        "verification": "Latest main Barrot Operations Pipeline run 40583993172 failed with a non-fast-forward push. A concurrent writer remains a hypothesis, not a proven cause. Main still contains direct-write workflows; no changes were merged by this run."
+      },
+      {
+        "id": "MAIN-GENERATED-DATA-CONTINUES-20261027",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "OBSERVED_ON_CURRENT_MAIN; SAFE_PERSISTENCE_REDESIGN_STILL_REQUIRED",
+        "files": [
+          {
+            "path": "web/latest_signal.json",
+            "observed_main_delta": "modified"
+          },
+          {
+            "path": "web/latest_signal_summary.json",
+            "observed_main_delta": "modified"
+          },
+          {
+            "path": "web/signal_history.jsonl",
+            "observed_main_delta": "modified"
+          },
+          {
+            "path": "web/paper_trading_log.jsonl",
+            "observed_main_delta": "modified"
+          },
+          {
+            "path": "ping-pongings/knowledge-base/log.jsonl",
+            "observed_main_delta": "modified"
+          }
+        ],
+        "finding": "Main advanced six commits from 6c91a862be06c02f01814c47f831da54aa306b88 to 26bc78368692aa4b4ef6e32a9464d1cb75f55fb6. The observed diff changes 13 generated runtime, signal, log and paper-trading files; no code or workflow files changed. Generated-data writes to main continued after the previous checkpoint.",
+        "consequence": "Mutable signal and simulation history continues to be committed directly to main, reducing separation between generated observations and reviewed code and complicating reproducible evaluation.",
+        "limits": "The commit comparison establishes changed-file scope, not whether every generated value is valid or whether concurrent writers caused earlier push failures.",
+        "next_action": "Create and test an idempotent append-only data branch or artifact-promotion path before changing any current writer; retain provenance and historical outcomes."
+      },
+      {
+        "id": "XRP-SIGNAL-ARTIFACT-INVALID-20261027T220604Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "critical",
+        "status": "OBSERVED_ON_MAIN; FRESH_MAIN_FIX_PROPOSED_IN_OPEN_DRAFT_PR_1220",
+        "files": [
+          {
+            "path": "web/latest_signal.json"
+          },
+          {
+            "path": "web/latest_signal_summary.json"
+          },
+          {
+            "path": "web/signal_accuracy.json"
+          },
+          {
+            "path": "scripts/emit_signal.py"
+          },
+          {
+            "path": "scripts/check_signal_accuracy.py"
+          }
+        ],
+        "finding": "The current main XRP signal artifact still reports score 44, confidence 0, news score 88 from 11 entries while the source field says the GitHub model token is missing and Groq returned HTTP 429. The headlines include academic/protocol research papers labeled bullish. The legacy accuracy artifact still reports 46.5% from 1,612 variable-horizon, mutable-outcome records.",
+        "consequence": "The score is not a valid directional forecast and the legacy accuracy percentage is not evidence of calibrated predictive skill.",
+        "proposed_fix": "Draft PR #1220 ports fail-closed sentiment handling, event-time/source-quality checks, immutable NOT_COMPARABLE legacy accuracy semantics, deterministic summary fallback, artifact-only summary/evaluation workflows and regression tests.",
+        "verification": "The fail-closed gate succeeded for PR #1220; exact-head CI was in progress at snapshot cutoff. No fix is treated as deployed.",
+        "source_ids": [
+          "SRC-REPO-PR-1220-2026-10-27",
+          "SRC-REPO-CI-1220-2026-10-27",
+          "SRC-REPO-GATE-1220-2026-10-27"
+        ]
+      },
+      {
+        "id": "SIGNAL-INTEGRITY-PR-1220-VERIFIED-20261027T2209Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "high",
+        "status": "EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS; DRAFT_UNMERGED",
+        "finding": "Fresh-main PR #1220 applies fail-closed XRP signal handling, event-time/news-source quality checks, immutable legacy accuracy semantics, deterministic summary fallback and artifact-only summary/evaluation workflows. The exact PR head passed 164 tests in 6.11 seconds and the fail-closed gate.",
+        "consequence": "The proposed repair has repository test evidence but is not deployed. Current main still contains the invalid score-44/confidence-0 artifact and the 46.5% variable-horizon accuracy artifact until the reviewed fix is merged and behavior is reverified.",
+        "limits": "Tests do not establish predictive performance. The hourly knowledge-signal workflow direct-main write remains a separate blocker.",
+        "files": [
+          {
+            "path": "scripts/emit_signal.py"
+          },
+          {
+            "path": "scripts/check_signal_accuracy.py"
+          },
+          {
+            "path": "scripts/signal_summary.py"
+          },
+          {
+            "path": ".github/workflows/check-signal-accuracy.yml"
+          },
+          {
+            "path": ".github/workflows/signal-summary.yml"
+          },
+          {
+            "path": ".github/workflows/ci.yml"
+          }
+        ],
+        "source_ids": [
+          "SRC-REPO-PR-1220-2026-10-27",
+          "SRC-REPO-CI-1220-2026-10-27T2209Z",
+          "SRC-REPO-GATE-1220-2026-10-27T2209Z"
+        ]
+      }
+    ],
+    "research_findings": [
+      {
+        "id": "SBIC-IDENTITY-001",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "ENTITY_IDENTIFIED; XRP_LINK_NOT_ESTABLISHED",
+        "claim": "The official Japanese entity using SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), a policy-implementation company investing in and supporting Japanese SMEs under the Small and Medium Business Investment & Consultation Company Act.",
+        "interpretation": "Do not equate this SBIC with SBI Holdings or SBI Ripple Asia. No direct SBIC-to-XRP, SBIC-to-Ripple, or SBIC-to-Coinbase relationship was established from the sources checked in this run.",
+        "source_ids": [
+          "SRC-SBIC-PROFILE",
+          "SRC-SBIC-ABOUT"
+        ],
+        "uncertainty": "The original phrase may have meant SBI Group rather than SBIC; the originating context is not yet verified."
+      },
+      {
+        "id": "SBI-RIPPLE-002",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "DOCUMENTED_ECOSYSTEM_RELATIONSHIPS; CURRENT_REALIZED_FLOWS_NOT_FULLY_VERIFIED",
+        "claim": "SBI Holdings is a distinct Japanese financial group. Its official October 21, 2025 announcement says it invested alongside Ripple and other investors in Evernorth's PIPE and would contribute USD 200 million in cash; Evernorth's announced purpose was institutional-scale XRP treasury adoption. SBI-group companies also announced XRP-based remittance corridors in 2023, and Ripple announced RLUSD's official Japan launch with SBI Group/SBI VC Trade on June 24, 2026 following Japanese regulatory approval.",
+        "limits": "Corporate announcements establish announced investments, plans, partnerships, and launches—not independent proof of every subsequent XRP purchase, transaction volume, or price impact. Current Evernorth closing/listing/treasury holdings were not verified in this run.",
+        "source_ids": [
+          "SRC-SBI-EVERNORTH",
+          "SRC-SBI-REMIT",
+          "SRC-RIPPLE-SBI-RLUSD"
+        ]
+      },
+      {
+        "id": "COINBASE-POSITION-003",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "CURRENT_OFFICIAL_DISCLOSURES_LOCATED",
+        "claim": "Coinbase's digital-asset disclosure page, with holdings dated March 31, 2026, lists XRP among US trading assets and shows Coinbase holding and commercial-engagement flags as Yes. Coinbase says the disclosure covers trading/custody and broad commercial engagement; the page should be interpreted by jurisdiction and product, not as universal availability.",
+        "claim_2": "Coinbase's July 30, 2026 Q2 report states 10.3% crypto trading-volume market share, a third consecutive quarter of gains, average USDC held in Coinbase products of USD 20 billion, more than 30% of USDC in circulation at quarter-end, and approximately 50% of USDC economics captured by Coinbase over the prior year.",
+        "limits": "These are company-reported figures. They describe Coinbase's distribution, custody, derivatives and stablecoin position; they do not prove Coinbase is accumulating XRP for directional price exposure or that XRP will appreciate.",
+        "source_ids": [
+          "SRC-COINBASE-ASSET-DISCLOSURES",
+          "SRC-COINBASE-Q2-2026"
+        ]
+      },
+      {
+        "id": "CIRCLE-USDC-XRPL-004",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "NATIVE_DEPLOYMENT_ANNOUNCED_AND_LIVE_PER_ISSUERS",
+        "claim": "Circle and Ripple announced USDC on the XRP Ledger mainnet on June 12, 2025. Circle says Circle Mint and its APIs support native USDC on XRPL without a bridge. Circle remains USDC's issuer; XRP is the ledger's native asset, not USDC.",
+        "limits": "USDC usage can expand XRPL utility and stablecoin liquidity, but this alone does not establish material net demand for XRP or a positive XRP price effect.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-XRPL",
+          "SRC-RIPPLE-CIRCLE-USDC"
+        ]
+      },
+      {
+        "id": "COINBASE-CIRCLE-005",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "DIRECT_COMMERCIAL_AND_EQUITY_ALIGNMENT_DOCUMENTED",
+        "claim": "Coinbase's public account of the 2023 USDC agreement says Coinbase took an equity stake in Circle and shares economics from USDC reserve income and broader distribution/usage; Circle remains the issuer. Coinbase's Q2 2026 report describes large USDC balances and material USDC economics on its platform.",
+        "limits": "The relationship aligns incentives around USDC distribution. No source checked establishes a specific Coinbase-Circle agreement designed to raise XRP's price.",
+        "source_ids": [
+          "SRC-COINBASE-CIRCLE-2023",
+          "SRC-COINBASE-Q2-2026"
+        ]
+      },
+      {
+        "id": "XRPL-XRP-FEE-006",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "PROTOCOL_MECHANISM_CONFIRMED; PRICE_EFFECT_UNKNOWN",
+        "claim": "XRPL documentation says each transaction destroys a small XRP fee and account/object reserves are denominated in XRP. This creates a protocol-level linkage between XRPL activity and XRP usage.",
+        "limits": "Fees can be tiny, some reserves can be sponsored, and activity can grow without a proportionate rise in XRP's market price. Measure actual fee burn, active accounts, sponsored reserves, stablecoin transfer volume, order-book depth and marginal market purchases before assigning price impact.",
+        "source_ids": [
+          "SRC-XRPL-TX-COST",
+          "SRC-XRPL-RESERVES"
+        ]
+      },
+      {
+        "id": "CIRCLE-SCALE-007",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "ISSUER_REPORTED_SCALE_METRICS; INDEPENDENT_METHODOLOGY_CHECK_PENDING",
+        "claim": "Circle's October 16, 2026 blog reports that USDC processed more than USD 36 trillion in on-chain transaction volume during H1 2026, Circle minted and redeemed more than USD 315 billion of USDC in that period, paid USD 819 million to distribution partners and transaction costs, and estimated USDC at roughly 77% of global stablecoin transaction volume by June 2026, up from 60% a year earlier.",
+        "limits": "These are issuer-reported figures. On-chain transfer volume is not equivalent to net capital inflow, unique end-user payments, or XRP demand; volume may include repeated transfers, trading, arbitrage and internal settlement. Methodology and independent comparability require review.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-ECONOMICS-2026"
+        ]
+      },
+      {
+        "id": "STABLECOIN-COLLATERAL-008",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "CURRENT_ISSUER_DISCLOSURES_LOCATED; INDEPENDENT_RESERVE-REPORT_RECONCILIATION_PENDING",
+        "claim": "Circle's transparency page reports USDC circulation of USD 72.0B and reserves of USD 72.2B as of October 22, 2026, with monthly third-party assurance and reserve holdings separated from Circle's operating funds. Ripple's RLUSD transparency page reports USD 2,382.8M circulating and USD 2,528.0M in reserve funds as of October 22, 2026; the ratio calculated from those displayed balances is about 106.1%.",
+        "interpretation": "USDC and RLUSD are dollar-denominated reserve-backed stablecoins, not XRP. Their reserve balances, issuance/redemption flows, treasury composition and partner distribution economics can influence stablecoin liquidity and issuer revenues; they do not by themselves prove capital is entering XRP.",
+        "limits": "Figures are issuer-published dashboard values. Verify monthly attestation documents, measurement timestamps, reserve eligibility and reconciliation details before using them as model features. Dashboard values may update.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-ECONOMICS-2026"
+        ]
+      },
+      {
+        "id": "BNY-RIPPLE-CUSTODY-2026-10-27",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "XRP_AND_RLUSD_CUSTODY_SUPPORT_ANNOUNCED; FUTURE_FINANCE_WORK_CONDITIONAL",
+        "claim": "BNY states that its Digital Asset Custody platform now supports XRP and RLUSD. BNY and Ripple intend to enable direct RLUSD mint/redemption through BNY and are exploring tokenized trade finance/supply-chain finance with C2FO; future plans are subject to final approvals.",
+        "interpretation": "This is a new institutional custody and potential settlement/collateral rail. It lowers a potential operational barrier but does not prove client balances, collateral use, XRP acquisition or positive price impact.",
+        "limits": "No custody balances, net XRP flow, product usage volume or completed C2FO launch was disclosed in the announcement.",
+        "source_ids": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ]
+      },
+      {
+        "id": "COINBASE-CIRCLE-USDC-ECONOMICS-2026Q2",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "Q2_FILINGS_CONFIRM_DIRECT_DISTRIBUTION_ECONOMICS_AND_CHANGING_EQUITY_EXPOSURE",
+        "claim": "Circle reported Q2 2026 USDC circulation of $73.3B and on-chain transaction volume of $14.8T. Q2 revenue and reserve income were $701.3M, including $667.7M reserve income. Circle's H1 filing says distribution costs paid to Coinbase rose $19.8M due to higher reserve income, partially offset by a lower Coinbase share of average USDC on-platform balances. Coinbase's Q2 filing reports all-time-high average USDC held in its products and a partial sale of its Circle investment during Q1 2026.",
+        "interpretation": "Coinbase's Circle relationship is operationally significant through distribution economics and has a changing equity component. It is not evidence of XRP accumulation or a price-support arrangement.",
+        "limits": "Stablecoin transfer volume is not equivalent to net capital inflow, unique payments, or XRP demand. Coinbase's latest filing does not establish current net XRP holdings.",
+        "source_ids": [
+          "SRC-COINBASE-10Q-Q2-2026",
+          "SRC-CIRCLE-10Q-Q2-2026"
+        ]
+      },
+      {
+        "id": "COINBASE-XRP-DERIVATIVE-ACCESS-2026",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE_PLUS_COMPANY_REPORTED",
+        "status": "XRP_SPOT_CUSTODY_AND_DERIVATIVES_ACCESS_DOCUMENTED; NET_PRICE_EFFECT_UNKNOWN",
+        "claim": "Coinbase reports 10.3% crypto trading-volume market share in Q2 2026, $20B average USDC balances in Coinbase products, and approximately 50% of USDC economics captured over the preceding year. Coinbase's global derivatives documentation lists XRP options for eligible non-US customers in supported regions, executed on Deribit and settled in USDC; Coinbase Derivatives Exchange also documents a USD-denominated nano XRP perpetual-style futures contract.",
+        "interpretation": "Coinbase is a significant access, custody, derivatives and stablecoin distribution venue. XRP derivatives can alter hedging, basis and liquidity conditions, but do not establish net spot accumulation or a bullish directional effect.",
+        "limits": "Broad market share is not XRP-specific; derivatives can be long or short; USDC settlement does not imply use of XRPL-native USDC; market statistics from product pages require timestamp validation.",
+        "source_ids": [
+          "SRC-COINBASE-Q2-2026-IR",
+          "SRC-COINBASE-GLOBAL-OPTIONS-XRP",
+          "SRC-COINBASE-XRP-PERP-FUTURES",
+          "SRC-COINBASE-ASSET-DISCLOSURES"
+        ]
+      },
+      {
+        "id": "SBI-MULTI-RAIL-2026",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE_WITH_INFERENCE",
+        "status": "MULTIPLE_DISTINCT_PRODUCTS_AND_RESEARCH_ACTIVITIES_CONFIRMED; REALIZED_XRP_FLOWS_UNKNOWN",
+        "claim": "Official SBI Group releases document a Visa-linked rewards card whose reward points can convert to BTC, ETH or XRP; SBI VC Trade handling of RLUSD in Japan; an SBI Ripple Asia proof-of-concept considering XRPL for tokenized deposits and deposit-type digital money; and separate SBI Ripple Asia–dsrv labs Japan–Korea remittance/payment research considering XRPL.",
+        "interpretation": "These are distinct products and research tracks in the broader SBI ecosystem. They show multiple potential digital-asset rails, not proof of one integrated XRP-demand mechanism or a direct SBIC East Japan relationship.",
+        "limits": "XRP reward conversion volume, production corridor volume, actual XRPL use, XRP bridge-asset share, collateral eligibility and net market demand remain undisclosed or unverified.",
+        "source_ids": [
+          "SRC-SBI-VISA-XRP-CARD-2026",
+          "SRC-SBI-RLUSD-JAPAN-2026",
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSITS-2026",
+          "SRC-SBI-RIPPLE-ASIA-JPKR-REMIT-2026"
+        ]
+      },
+      {
+        "id": "USDC-CIRCULATION-DELTA-2026-10-27",
+        "evidence_class": "COMPANY_REPORTED_DASHBOARD_OBSERVATION",
+        "status": "DISPLAYED_SUPPLY_DELTA_OBSERVED; CAUSE_AND_CHAIN_ALLOCATION_UNKNOWN",
+        "claim": "Circle's public USDC page displayed $71.0B in circulation as of October 26, 2026. The prior ledger snapshot recorded $72.0B as of October 22, implying a displayed change of about -$1.0B (-1.39%) over four days.",
+        "interpretation": "This is a comparison of two issuer-dashboard snapshots, not a verified daily netflow series. It may reflect net redemptions/issuance, snapshot timing or scope changes. It does not show whether funds entered or exited XRP, XRPL or crypto markets.",
+        "limits": "Exact daily mint/burn path, XRPL-specific USDC supply, cross-chain rebalancing and venue distribution changes are unknown. This observation is not approved as a model feature.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ]
+      },
+      {
+        "id": "USDC-XRPL-RAIL-2026",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "NATIVE_USDC_AND_CIRCLE_MINT_FUNCTIONS_DOCUMENTED; XRP_PRICE_EFFECT_UNKNOWN",
+        "claim": "Circle documents USDC as natively issued on XRPL, with qualified Circle Mint customers able to convert fiat to XRPL USDC and redeem it to USD, and Circle APIs supporting cross-chain USDC movement.",
+        "interpretation": "This confirms a dollar-stablecoin rail on XRPL. USDC can increase ledger utility and liquidity while also substituting for XRP in some transfer/settlement use cases; net impact on marginal XRP demand is unknown.",
+        "limits": "Current XRPL-native USDC supply, transfer volume, incremental XRP fee burn and linked net XRP order flow are not verified.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-XRPL-OPS-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ]
+      },
+      {
+        "id": "YOUTUBE-IDENTITY-CANDIDATE-KAMILAH-2026",
+        "evidence_class": "PUBLIC_YOUTUBE_INDEXED_RESULTS",
+        "status": "TOPIC_MATCH_CANDIDATE; EXACT_CAMILLA_IDENTITY_UNVERIFIED; INVENTORY_INCOMPLETE",
+        "claim": "Public YouTube indexing returned the channel 'Kamilah Stevenson | Xrp & Stocks' (channel ID UCXm6KAr1WHF6UN7g5b2W7wg) and at least two indexed videos by Kamilah Stevenson on XRP/global liquidity. The requested spelling 'Camilla Stephenson' differs.",
+        "interpretation": "Kamilah Stevenson is a strong topical candidate, but identity must remain unresolved without a first-party cross-link or matching channel metadata. The videos' macro/XRP explanations are creator hypotheses, not independent evidence of causal market effects.",
+        "limits": "The YouTube channel page fetch was throttled. Search-indexed results do not prove an exhaustive inventory of videos, Shorts, livestreams or archived public uploads. A third-party video referring to Kamilah is excluded from her upload list.",
+        "source_ids": [
+          "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+          "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
+          "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+          "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16"
+        ]
+      },
+      {
+        "id": "USDC-SUPPLY-CROSS-SOURCE-RECONCILIATION-2026",
+        "evidence_class": "MULTI_SOURCE_RECONCILIATION",
+        "status": "CURRENT_VALUES_CONVERGE; HISTORICAL_METRIC_SCOPE_CONFLICT; FLOW_FEATURE_BLOCKED",
+        "claim": "For Oct 26-27, Circle's rounded page value ($71.0B), DefiLlama-derived reporting ($71.71B on Oct 26), CoinGecko-based data ($71.19B on Oct 27), SatoshiMacro ($71.26B on Oct 27) and Stablecoin Beat ($71.2B on Oct 26) cluster around $71.0B-$71.7B. However, the prior issuer-reported $72.0B Oct 22 observation conflicts with third-party market-cap estimates around $74.0B for Oct 22.",
+        "interpretation": "The current-window values broadly corroborate the ~$71B level after rounding and timestamp differences. The historical mismatch shows that issuer-reported circulation, third-party market cap and different observation times cannot be treated as one exact time series. A separate DefiLlama-derived series reports a $2.6B USDC decrease from Oct 7 to Oct 26, but it does not identify destination, chain allocation or XRP flows.",
+        "limits": "No same-provider daily mint/burn series, XRPL-specific USDC supply/transfer series, venue balance series or causal link to XRP net order flow has been verified. Do not treat the prior $1B dashboard delta as a precise redemption estimate.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+          "SRC-USDCORG-COINGECKO-2026-10-27",
+          "SRC-STABLECOINBEAT-USDC-2026-10-26",
+          "SRC-COINLORE-USDC-HIST-2026-10-22"
+        ]
+      },
+      {
+        "id": "SBIC-IDENTITY-DISAMBIGUATION-2026",
+        "evidence_class": "MULTIPLE_PRIMARY_SOURCE_RECONCILIATION",
+        "status": "MULTIPLE_JAPAN_CANDIDATES; INTENDED_ENTITY_UNRESOLVED",
+        "claim": "The acronym SBIC has at least two distinct Japan-related candidates in official sources: SBIC East Japan, the Tokyo Small and Medium Business Investment & Consultation company; and historical SBI Capital Co., Ltd. (SBIキャピタル), which SBI Group explicitly called SBIC in 2005 and 2007. A current SBI Group directory lists SBI Capital and SBI Ripple Asia separately, but does not establish legal continuity of the historical SBI Capital entity.",
+        "interpretation": "Do not collapse SBIC East Japan, SBI Capital, SBI Ripple Asia, SBI Remit and SBI VC Trade into one entity. The strongest verified XRP payment relationship in the SBI ecosystem is the SBI Remit / Coins.ph / SBI VC Trade ODL corridor using XRP as bridge; that is not evidence of a direct SBIC East Japan or SBI Capital relationship to XRP.",
+        "limits": "The exact phrase 'SBIC, ChatGPT SBIC' has no established original context. No direct XRP relation was found for SBIC East Japan or SBI Capital in the reviewed sources; that is not proof no relation exists.",
+        "source_ids": [
+          "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+          "SRC-SBI-CAPITAL-SBIC-2005",
+          "SRC-SBI-CAPITAL-GS-JV-2007",
+          "SRC-SBI-GROUP-DIRECTORY-2026-10-07",
+          "SRC-RIPPLE-SBI-RIPPLE-ASIA-NO-XRP-2026-10-27",
+          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+        ]
+      }
+    ],
+    "relationship_graph": [
+      {
+        "from": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+        "relation": "SME equity investment and growth support",
+        "to": "Japanese SMEs",
+        "evidence_ids": [
+          "SRC-SBIC-PROFILE",
+          "SRC-SBIC-ABOUT"
+        ],
+        "status": "CONFIRMED",
+        "xrp_relationship": "NOT_ESTABLISHED"
+      },
+      {
+        "from": "SBI Holdings",
+        "relation": "announced investment alongside Ripple and others",
+        "to": "Evernorth XRP treasury venture",
+        "evidence_ids": [
+          "SRC-SBI-EVERNORTH"
+        ],
+        "status": "ANNOUNCED; CURRENT_REALIZATION_NOT_FULLY_VERIFIED"
+      },
+      {
+        "from": "SBI Remit / SBI VC Trade / SBI Ripple Asia",
+        "relation": "announced XRP-based cross-border remittance corridors",
+        "to": "Philippines, Vietnam and Indonesia corridors",
+        "evidence_ids": [
+          "SRC-SBI-REMIT"
+        ],
+        "status": "ANNOUNCED_2023; CURRENT_VOLUME_UNKNOWN"
+      },
+      {
+        "from": "SBI Group / SBI VC Trade",
+        "relation": "Japan launch and distribution partnership",
+        "to": "Ripple RLUSD",
+        "evidence_ids": [
+          "SRC-RIPPLE-SBI-RLUSD"
+        ],
+        "status": "ANNOUNCED_LAUNCHED_2026"
+      },
+      {
+        "from": "Circle",
+        "relation": "issues",
+        "to": "USDC",
+        "evidence_ids": [
+          "SRC-CIRCLE-USDC-XRPL"
+        ],
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "Circle and Ripple",
+        "relation": "jointly announced native USDC deployment",
+        "to": "XRP Ledger",
+        "evidence_ids": [
+          "SRC-CIRCLE-USDC-XRPL",
+          "SRC-RIPPLE-CIRCLE-USDC"
+        ],
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "Coinbase",
+        "relation": "equity stake and USDC distribution/revenue-sharing arrangement",
+        "to": "Circle / USDC",
+        "evidence_ids": [
+          "SRC-COINBASE-CIRCLE-2023",
+          "SRC-COINBASE-Q2-2026"
+        ],
+        "status": "CONFIRMED_BY_COMPANY_DISCLOSURES"
+      },
+      {
+        "from": "Coinbase",
+        "relation": "trading and custody support, subject to product/jurisdiction rules",
+        "to": "XRP",
+        "evidence_ids": [
+          "SRC-COINBASE-ASSET-DISCLOSURES"
+        ],
+        "status": "CONFIRMED_BY_DISCLOSURE"
+      },
+      {
+        "from": "XRP Ledger",
+        "relation": "transaction fees and reserves denominated in",
+        "to": "XRP",
+        "evidence_ids": [
+          "SRC-XRPL-TX-COST",
+          "SRC-XRPL-RESERVES"
+        ],
+        "status": "PROTOCOL_FACT"
+      },
+      {
+        "from": "RLUSD",
+        "relation": "competes for dollar-stablecoin liquidity and may complement other assets",
+        "to": "USDC on XRPL",
+        "evidence_ids": [
+          "SRC-RIPPLE-SBI-RLUSD",
+          "SRC-CIRCLE-USDC-XRPL"
+        ],
+        "status": "INFERENCE; NET_EFFECT_UNKNOWN"
+      },
+      {
+        "from": "Binance",
+        "relation": "announced USD 100 million strategic equity investment plus a five-year USDC promotion/integration agreement",
+        "to": "Circle / USDC",
+        "evidence_ids": [
+          "SRC-CIRCLE-BINANCE-2026"
+        ],
+        "status": "ANNOUNCED_2026-09-22; REALIZED DISTRIBUTION EFFECT NOT YET MEASURED"
+      },
+      {
+        "from": "Standard Custody & Trust Company / Ripple",
+        "relation": "publishes segregated reserve balances and monthly independent attestations for",
+        "to": "RLUSD",
+        "evidence_ids": [
+          "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026"
+        ],
+        "status": "ISSUER_DISCLOSURE_AS_OF_2026-10-22"
+      },
+      {
+        "from": "BNY",
+        "relation": "institutional custody support now includes",
+        "to": "XRP and RLUSD",
+        "evidence_ids": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ],
+        "status": "CONFIRMED_BY_JOINT_COMPANY_ANNOUNCEMENT",
+        "xrp_relationship": "DIRECT_CUSTODY_SUPPORT; CLIENT_HOLDINGS_AND_FLOWS_UNKNOWN"
+      },
+      {
+        "from": "BNY and Ripple",
+        "relation": "intend to enable direct mint/redemption through BNY for",
+        "to": "RLUSD",
+        "evidence_ids": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ],
+        "status": "PLANNED_SUBJECT_TO_APPROVALS"
+      },
+      {
+        "from": "Ripple and BNY",
+        "relation": "exploring supply-chain finance with",
+        "to": "C2FO",
+        "evidence_ids": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ],
+        "status": "EXPLORATORY_NOT_LAUNCHED"
+      },
+      {
+        "from": "Circle",
+        "relation": "reported Q2 USDC reserve income and distribution costs paid to",
+        "to": "Coinbase",
+        "evidence_ids": [
+          "SRC-CIRCLE-10Q-Q2-2026"
+        ],
+        "status": "CONFIRMED_BY_SEC_FILING"
+      },
+      {
+        "from": "Coinbase",
+        "relation": "holds/held an equity investment in, with partial sale reported in Q1 2026",
+        "to": "Circle",
+        "evidence_ids": [
+          "SRC-COINBASE-10Q-Q2-2026"
+        ],
+        "status": "CONFIRMED_BY_SEC_FILING; CURRENT_POSITION_SIZE_UNKNOWN"
+      },
+      {
+        "from": "Coinbase",
+        "relation": "reports Q2 2026 market-share gains and USDC distribution economics",
+        "to": "Crypto trading and USDC ecosystem",
+        "evidence_ids": [
+          "SRC-COINBASE-Q2-2026-IR"
+        ],
+        "status": "COMPANY_REPORTED"
+      },
+      {
+        "from": "Coinbase Global Derivatives",
+        "relation": "offers XRP options on Deribit infrastructure, settled in USDC for eligible supported-region customers outside the US",
+        "to": "XRP options / USDC settlement",
+        "evidence_ids": [
+          "SRC-COINBASE-GLOBAL-OPTIONS-XRP"
+        ],
+        "status": "CONFIRMED_PRODUCT_DOCUMENTATION"
+      },
+      {
+        "from": "Coinbase Derivatives Exchange",
+        "relation": "documents USD-denominated nano XRP perpetual-style futures",
+        "to": "XRP derivatives",
+        "evidence_ids": [
+          "SRC-COINBASE-XRP-PERP-FUTURES"
+        ],
+        "status": "CONFIRMED_PRODUCT_DOCUMENTATION; CURRENT_MARKET_FIELDS_NOT_VERIFIED"
+      },
+      {
+        "from": "SBI VC Trade / Aplus / Visa",
+        "relation": "announced a rewards card whose points can convert to",
+        "to": "BTC, ETH or XRP",
+        "evidence_ids": [
+          "SRC-SBI-VISA-XRP-CARD-2026"
+        ],
+        "status": "CONFIRMED_PRODUCT_ANNOUNCEMENT; REALIZED_XRP_CONVERSION_VOLUME_UNKNOWN"
+      },
+      {
+        "from": "SBI VC Trade",
+        "relation": "announced Japanese handling/distribution of",
+        "to": "Ripple RLUSD",
+        "evidence_ids": [
+          "SRC-SBI-RLUSD-JAPAN-2026"
+        ],
+        "status": "ANNOUNCED_LAUNCHED_2026-06-24; XRP_DEMAND_NOT_ESTABLISHED"
+      },
+      {
+        "from": "SBI Ripple Asia",
+        "relation": "conceptual proof-of-concept considers",
+        "to": "XRPL for tokenized deposits and deposit-type digital money",
+        "evidence_ids": [
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSITS-2026"
+        ],
+        "status": "CONCEPTUAL_POC; PRODUCTION_NOT_VERIFIED"
+      },
+      {
+        "from": "SBI Ripple Asia and dsrv labs",
+        "relation": "research blockchain use for",
+        "to": "Japan–Korea remittance and payment corridors, with XRPL considered",
+        "evidence_ids": [
+          "SRC-SBI-RIPPLE-ASIA-JPKR-REMIT-2026"
+        ],
+        "status": "RESEARCH_STAGE; PRODUCTION_VOLUME_UNKNOWN"
+      },
+      {
+        "from": "Circle",
+        "relation": "documents native issuance and qualified mint/redeem access for",
+        "to": "USDC on XRPL",
+        "evidence_ids": [
+          "SRC-CIRCLE-USDC-XRPL-OPS-2026"
+        ],
+        "status": "CONFIRMED_BY_ISSUER_DOCUMENTATION; XRPL_SUPPLY_NOT_RENDERED"
+      },
+      {
+        "from": "Circle",
+        "relation": "publicly displayed $71.0B USDC circulation as of 2026-10-26",
+        "to": "USDC global circulation",
+        "evidence_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ],
+        "status": "ISSUER_DASHBOARD_OBSERVATION; DAILY_NETFLOWS_UNKNOWN"
+      },
+      {
+        "from": "SBI Holdings",
+        "relation": "held 60% of SBI Capital after the 2007 joint-venture transaction",
+        "to": "SBI Capital / SBIC (historical)",
+        "evidence_ids": [
+          "SRC-SBI-CAPITAL-GS-JV-2007"
+        ],
+        "status": "HISTORICAL_2007_OWNERSHIP; CURRENT_OWNERSHIP_NOT_VERIFIED"
+      },
+      {
+        "from": "SBI Group",
+        "relation": "current group directory lists",
+        "to": "SBI Capital",
+        "evidence_ids": [
+          "SRC-SBI-GROUP-DIRECTORY-2026-10-07"
+        ],
+        "status": "CURRENT_DIRECTORY_LISTING; LEGAL_CONTINUITY_WITH_HISTORICAL_SBIC_UNRESOLVED"
+      },
+      {
+        "from": "SBI Ripple Asia",
+        "relation": "officially states it does not handle XRP directly; provides RippleNet software/services",
+        "to": "XRP trading and payment infrastructure",
+        "evidence_ids": [
+          "SRC-RIPPLE-SBI-RIPPLE-ASIA-NO-XRP-2026-10-27"
+        ],
+        "status": "CONFIRMED_SCOPE_LIMIT; DO_NOT_ATTRIBUTE_XRP_TRADING_TO_SBI_RIPPLE_ASIA"
+      },
+      {
+        "from": "SBI Remit / Coins.ph / SBI VC Trade / Ripple",
+        "relation": "launched Japan-to-Philippines ODL using XRP as bridge",
+        "to": "XRP-enabled cross-border remittance",
+        "evidence_ids": [
+          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+          "SRC-RIPPLE-SBI-RIPPLE-ASIA-NO-XRP-2026-10-27"
+        ],
+        "status": "CONFIRMED_LAUNCH; CURRENT_VOLUME_AND_NET_XRP_DEMAND_UNKNOWN"
+      },
+      {
+        "from": "SBI Remit / SBI VC Trade / Ripple / SBI Ripple Asia",
+        "relation": "announced XRP-enabled remittance expansion",
+        "to": "Philippines, Vietnam and Indonesia bank-account corridors",
+        "evidence_ids": [
+          "SRC-SBI-VC-TRADE-ODL-EXPANSION-2023-09-06"
+        ],
+        "status": "CONFIRMED_2023_ANNOUNCEMENT; CURRENT_VOLUME_UNKNOWN"
+      },
+      {
+        "from": "SBI ARUHI",
+        "relation": "offers eligible shareholders XRP distributed through",
+        "to": "SBI VC Trade",
+        "evidence_ids": [
+          "SRC-SBI-ARUHI-XRP-SHAREHOLDER-REWARDS-2026-03-12"
+        ],
+        "status": "CONFIRMED_RETAIL_DISTRIBUTION_CHANNEL; UPTAKE_UNKNOWN"
+      },
+      {
+        "from": "SBI Shinsei Bank",
+        "relation": "offers eligible shareholders an XRP coupon fulfilled through",
+        "to": "SBI VC Trade",
+        "evidence_ids": [
+          "SRC-SBI-SHINSEI-XRP-SHAREHOLDER-REWARDS-2026-02-25"
+        ],
+        "status": "CONFIRMED_RETAIL_DISTRIBUTION_CHANNEL; REDEMPTION_UNKNOWN"
+      },
+      {
+        "from": "SBI Holdings",
+        "relation": "is identified by Ripple as an investor and shareholder of",
+        "to": "Ripple",
+        "evidence_ids": [
+          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+        ],
+        "status": "CONFIRMED_BY_RIPPLE_2021_ANNOUNCEMENT; CURRENT_STAKE_PERCENTAGE_NOT_VERIFIED"
+      }
+    ],
+    "competing_hypotheses": [
+      {
+        "id": "H1-STABLECOIN-UTILITY",
+        "hypothesis": "More native USDC and RLUSD activity on XRPL increases ledger utility and some XRP usage through fees/reserves, but price impact may be small unless it changes marginal XRP demand or liquidity.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-USDC-XRPL",
+          "SRC-RIPPLE-CIRCLE-USDC",
+          "SRC-XRPL-TX-COST",
+          "SRC-XRPL-RESERVES"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Stablecoin transfers may use sponsored accounts/reserves; transaction fees are small; activity can be settled or hedged elsewhere; no causal price estimate has been produced."
+        ],
+        "test_plan": "Build daily panel of XRPL stablecoin transfer count/value, unique active accounts, sponsored reserve usage, fee burn, DEX volume, XRP/USD depth/spread, exchange netflows and market beta; compare with matched chains and pre/post windows; use event-time controls and out-of-sample evaluation."
+      },
+      {
+        "id": "H2-COINBASE-DISTRIBUTION",
+        "hypothesis": "Coinbase's trading/custody reach and institutional products can improve XRP market access, but market impact depends on actual net XRP flows, derivatives positioning, liquidity and macro risk appetite.",
+        "supporting_evidence": [
+          "SRC-COINBASE-ASSET-DISCLOSURES",
+          "SRC-COINBASE-Q2-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Listing/custody support is not evidence of net accumulation; platform holdings can be operational/customer custody; price may be driven by offshore venues, macro beta, leverage or broader risk-off moves."
+        ],
+        "test_plan": "Separate Coinbase asset holdings from customer custody, spot net flow, derivatives open interest/funding/basis, order-book depth and market-wide controls; test event windows without assuming causality."
+      },
+      {
+        "id": "H3-SBI-VS-SBIC",
+        "hypothesis": "SBI Holdings is a meaningful XRP ecosystem connector, while SBIC East Japan may be a name/acronym collision rather than the intended XRP entity.",
+        "supporting_evidence": [
+          "SRC-SBI-EVERNORTH",
+          "SRC-SBI-REMIT",
+          "SRC-RIPPLE-SBI-RLUSD",
+          "SRC-SBIC-PROFILE"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "No direct official evidence located linking SBIC East Japan to Ripple, XRP, Coinbase or Circle; the originating use of 'SBIC' remains unknown."
+        ],
+        "test_plan": "Trace the original video/post/document containing 'SBIC, ChatGPT SBIC'; verify the named legal entity and primary-source references before adding an edge."
+      },
+      {
+        "id": "H4-ETF-FLOW",
+        "hypothesis": "XRP ETF flows can measure institutional-wrapper demand but are not a standalone short-term price predictor.",
+        "supporting_evidence": [
+          "SRC-XRP-ETF-TRACKER-A",
+          "SRC-XRP-ETF-TRACKER-B",
+          "SRC-XRP-ETF-TRACKER-C"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Different dashboards report different fund universes and flow totals; holdings changes can reflect stale issuer data or coverage gaps; derivatives/offshore activity and macro shocks can dominate."
+        ],
+        "test_plan": "Reconcile every fund against issuer holdings/NAV files; preserve original snapshots; calculate creation/redemption changes in XRP and USD; model lagged relationships against price, depth, leverage and market beta with walk-forward testing."
+      },
+      {
+        "id": "H5-STABLECOIN-DISTRIBUTION",
+        "hypothesis": "USDC market share and stablecoin volume are strongly shaped by distribution, exchange integration and partner economics; those forces may grow XRPL stablecoin activity without producing proportional XRP price demand.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-USDC-ECONOMICS-2026",
+          "SRC-CIRCLE-BINANCE-2026",
+          "SRC-COINBASE-Q2-2026",
+          "SRC-CIRCLE-USDC-XRPL"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Issuer-reported transfer volume may include repeated transfers or trading activity; market-share definitions can differ; XRPL's share of USDC activity and incremental XRP acquisition are not established by these aggregate figures."
+        ],
+        "test_plan": "Compare stablecoin volume by chain, venue and issuer; separate transfer count, unique senders/receivers, exchange settlement, bridge/mint/redeem flows and net issuance; estimate whether changes predict marginal XRP demand after controlling for market beta, leverage and liquidity."
+      },
+      {
+        "id": "H6-COLLATERAL-FLOWS",
+        "hypothesis": "Stablecoin reserve assets and mint/redemption flows influence Circle/Ripple stablecoin liquidity, reserve income and distribution incentives, but are not equivalent to XRP investment flows.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-ECONOMICS-2026",
+          "SRC-COINBASE-Q2-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Reserve balances can rise while stablecoin circulation or XRP price falls; reserve assets are mostly dollar instruments, and stablecoin settlement can substitute for XRP in some use cases rather than increase XRP demand."
+        ],
+        "test_plan": "Track daily stablecoin circulation, reserves, net mint/redemption, reserve composition, issuer/partner distribution and chain-level activity separately; test lagged effects on XRPL activity and XRP market purchases while controlling for macro rates, crypto beta and derivatives leverage."
+      },
+      {
+        "id": "H7-MACRO-LIQUIDITY",
+        "hypothesis": "Over short XRP horizons, changes in real yields, dollar strength, risk appetite and crypto leverage may dominate the price impact of individual adoption announcements; the sign can reverse across regimes.",
+        "supporting_evidence": [
+          "SRC-BEA-GDP-Q2-2026",
+          "SRC-BLS-EMPLOYMENT-SEP-2026",
+          "SRC-BLS-CPI-SEP-2026",
+          "SRC-FED-FUNDSRATE-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "XRP-specific supply, exchange flows, ETF creations/redemptions, legal/regulatory events or market-maker inventory can dominate during asset-specific shocks; no fitted model has established relative importance yet."
+        ],
+        "test_plan": "Build release-vintage features for CPI/PCE, jobs, GDP, Treasury real yields, DXY, VIX, credit spreads and policy-rate expectations; model surprise vs consensus, use event-time controls and walk-forward ablation against crypto-market beta and XRP-specific flow features."
+      },
+      {
+        "id": "H8-INSTITUTIONAL-CUSTODY-OPTIONALITY",
+        "hypothesis": "New institutional custody support can lower operational barriers and expand the feasible set of XRP/RLUSD use cases, but price impact requires evidence of incremental XRP holdings, collateral acceptance, market-maker inventory changes or spot demand.",
+        "supporting_evidence": [
+          "SRC-BNY-RIPPLE-CUSTODY-2026-10-27"
+        ],
+        "counter_hypotheses": [
+          "Custody is safekeeping infrastructure; clients may hold zero XRP or use stablecoins/tokenized receivables instead.",
+          "Future RLUSD mint/redeem and C2FO trade-finance work is conditional and may not launch or may not require XRP."
+        ],
+        "test_plan": "Track later BNY disclosures, custody balance/volume metrics if public, actual XRPL transfer and exchange flows, collateral schedules and dated product-launch evidence; compare event windows with matched crypto assets and macro controls."
+      },
+      {
+        "id": "H9-LEVERAGE-CROWDING-VS-SHORT-COVER",
+        "hypothesis": "Positive funding and elevated Binance account-long skew may indicate crowded long exposure, while the reported greater short-liquidation amount could indicate recent short covering; the combination is insufficient to infer next-period direction.",
+        "supporting_evidence": [
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ],
+        "counter_hypotheses": [
+          "Aggregate open interest may include hedged positions; account ratios do not measure notional exposure; vendor venue coverage and liquidation feeds may be incomplete."
+        ],
+        "test_plan": "Obtain synchronized exchange-level OI, funding, basis, depth, liquidations, spot volume and price returns; estimate event-time and walk-forward predictive value against a simple market-beta baseline."
+      },
+      {
+        "id": "H10-COINBASE-XRP-DERIVATIVES",
+        "hypothesis": "Coinbase's XRP spot/custody and derivatives access can improve market access and price discovery, but its net spot effect is conditional on client positioning, dealer hedging, basis, collateral and liquidity.",
+        "supporting_evidence": [
+          "SRC-COINBASE-Q2-2026-IR",
+          "SRC-COINBASE-GLOBAL-OPTIONS-XRP",
+          "SRC-COINBASE-XRP-PERP-FUTURES"
+        ],
+        "disconfirming_evidence": [
+          "Derivatives permit short exposure and hedging; broad market-share gains are not XRP-specific; contract activity may net out without net spot accumulation; USDC settlement does not imply XRP purchases."
+        ],
+        "test_plan": "Collect contract-level OI, volume, funding, basis, options delta/gamma/open interest, spot depth, market-maker inventory proxies and exchange netflows; test event windows and walk-forward out-of-sample lift versus market-beta and price/volume baselines."
+      },
+      {
+        "id": "H11-OI-COVERAGE-NORMALIZATION",
+        "hypothesis": "Large discrepancies in reported XRP aggregate open interest are primarily due to differing contract/venue coverage, timestamps and currency conversion, rather than an actual 3.5x instantaneous market change.",
+        "supporting_evidence": [
+          "SRC-XRP-DERIV-KODEXIUS-2026-10-27T1716Z",
+          "SRC-XRP-DERIV-COINGLASS-2026-10-27",
+          "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Exact page timestamps and contract universes are not fully disclosed for all sources; some discrepancy may reflect real market moves between snapshots, and vendor calculations may also contain data-quality errors."
+        ],
+        "test_plan": "Capture venue-level public API responses at the same UTC cutoff, normalize contracts and quote currencies, sum open interest by contract, compare against vendor definitions and repeat across a walk-forward history."
+      },
+      {
+        "id": "H12-SBI-MULTI-RAIL-OPTIONALITY",
+        "hypothesis": "SBI Group ecosystem activity is best modeled as multiple parallel rails—XRP rewards conversion, RLUSD distribution and separate XRPL research tracks—rather than as one unified XRP-demand mechanism.",
+        "supporting_evidence": [
+          "SRC-SBI-VISA-XRP-CARD-2026",
+          "SRC-SBI-RLUSD-JAPAN-2026",
+          "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSITS-2026",
+          "SRC-SBI-RIPPLE-ASIA-JPKR-REMIT-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "A coordinated group-level strategy could connect these initiatives, but the public announcements do not establish shared flows or integrated product routing.",
+          "Some initiatives may remain small, experimental or non-production."
+        ],
+        "test_plan": "Track official launch status, product terms, reported transaction/reward volumes, exchange or chain-level flows and corporate filings; maintain separate entity/product nodes until direct integration is documented."
+      },
+      {
+        "id": "H13-USDC-SUPPLY-FLOW-INTERPRETATION",
+        "hypothesis": "A short-window change in total USDC circulation is a stablecoin issuance/redemption and distribution observation; it should not be treated as an XRP flow proxy without chain-level and venue-level linkage.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-CIRCLE-USDC-XRPL-OPS-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Cross-chain rebalancing or exchange settlement can move USDC between venues and networks without changing total supply; dashboard scope and timing may differ.",
+          "Stablecoin liquidity changes could affect crypto risk appetite indirectly, but the sign and lag are regime-dependent."
+        ],
+        "test_plan": "Capture daily Circle supply and mint/burn data, XRPL USDC issuer/holder/transfer series, exchange USDC balances, XRP spot order flow and macro controls at fixed UTC cutoffs; test lagged relationships out of sample."
+      },
+      {
+        "id": "H14-XRP-REWARD-CONVERSION-CHANNEL",
+        "hypothesis": "SBI VISA Crypto Card's XRP-selectable reward conversion creates a potential retail XRP acquisition channel, but its magnitude and price effect are unknown and may be negligible relative to exchange and derivatives flows.",
+        "supporting_evidence": [
+          "SRC-SBI-VISA-XRP-CARD-2026"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "No realized reward conversion volume or purchase execution data is disclosed in the announcement.",
+          "Users can select BTC or ETH instead; reward conversion may be netted by a provider and does not prove persistent holding."
+        ],
+        "test_plan": "Look for subsequent issuer/product disclosures of reward conversion totals, eligibility, conversion timing and asset-selection mix; do not estimate price impact without realized volume and liquidity data."
+      },
+      {
+        "id": "H15-USDC-SUPPLY-SCOPE-VS-FLOW",
+        "hypothesis": "Observed USDC supply changes combine real contraction with differences in metric definition, timestamp and source coverage; a raw issuer-page delta is not a clean flow feature.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+          "SRC-USDCORG-COINGECKO-2026-10-27",
+          "SRC-STABLECOINBEAT-USDC-2026-10-26"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-COINLORE-USDC-HIST-2026-10-22"
+        ],
+        "test_plan": "Store daily same-provider observations with exact metric definition and timestamps; reconcile issuer mint/burn and reserve reports; measure chain-specific USDC and venue balances; test any lagged XRP association out of sample."
+      },
+      {
+        "id": "H16-SBIC-ENTITY-DISAMBIGUATION",
+        "hypothesis": "The phrase 'Japan's SBIC' could refer either to SBIC East Japan or to SBI Capital/SBIC in the SBI Group context; the original phrase alone is insufficient to choose one.",
+        "supporting_evidence": [
+          "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+          "SRC-SBI-CAPITAL-SBIC-2005",
+          "SRC-SBI-CAPITAL-GS-JV-2007",
+          "SRC-SBI-GROUP-DIRECTORY-2026-10-07"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "SRC-RIPPLE-SBI-RIPPLE-ASIA-NO-XRP-2026-10-27",
+          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+        ],
+        "test_plan": "Find the original occurrence of 'SBIC, ChatGPT SBIC'; check current legal-entity records and SBI Group company profiles; maintain separate graph nodes until the source explicitly identifies the entity."
+      }
+    ],
+    "market_observations": [
+      {
+        "id": "ETF-FLOW-OCT26",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-26",
+        "observation": "One tracker reports -2.70 million XRP net flow across six US spot funds plus BITW and 1.1905 billion XRP held; another reports approximately -$2.8 million for five funds; a third uses a different fund universe and reports approximately -$3.6 million.",
+        "interpretation": "Direction is broadly reported as a small daily outflow, but universes and dollar estimates disagree. Do not use as a model feature until issuer-level series and exclusions are reconciled.",
+        "source_ids": [
+          "SRC-XRP-ETF-TRACKER-A",
+          "SRC-XRP-ETF-TRACKER-B",
+          "SRC-XRP-ETF-TRACKER-C"
+        ]
+      },
+      {
+        "id": "XRP-DERIV-2026-10-27T2102Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-27T21:02:00Z",
+        "observation": "Liqwall reported XRP at $1.32, aggregate open interest $1.44B (+2.2% over 24h), average funding +0.0092% per 8h, $1.2M 24h liquidations ($845K shorts, $306K longs), and 74.5% of Binance accounts with XRP positions long.",
+        "interpretation": "Positive funding and elevated Binance account-long skew coexist with rising OI and higher reported short liquidations. This is mixed positioning context, not a directional forecast.",
+        "quality": "Single secondary aggregate; raw exchange cross-check and independent aggregate cross-check not completed; not approved for model features.",
+        "source_ids": [
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ]
+      },
+      {
+        "id": "XRP-OI-COVERAGE-COMPARISON-2026-10-27T2111Z",
+        "evidence_class": "DATA_QUALITY_FINDING",
+        "as_of_date": "2026-10-27T21:11:39Z",
+        "observation": "Public aggregators report approximately $0.836B, $1.22B, $1.44B and $2.92B in XRP derivatives open interest, but at different times and with non-harmonized contract/venue coverage.",
+        "interpretation": "This is a measurement-universe problem until proven otherwise; it is not a valid market-direction signal.",
+        "source_ids": [
+          "SRC-XRP-DERIV-KODEXIUS-2026-10-27T1716Z",
+          "SRC-XRP-DERIV-COINGLASS-2026-10-27",
+          "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ],
+        "approved_for_model_features": false
+      },
+      {
+        "id": "USDC-CIRCULATION-DELTA-2026-10-26",
+        "evidence_class": "COMPANY_REPORTED_DASHBOARD_DELTA",
+        "as_of_date": "2026-10-26",
+        "observation": "Circle's page displayed $71.0B in USDC circulation as of Oct 26 versus a prior captured $72.0B as of Oct 22, a displayed $1.0B (-1.39%) decline across four calendar days.",
+        "interpretation": "Issuer-dashboard comparison only. Net mint/burn path, chain allocation and cause are unverified; not an XRP flow proxy.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ],
+        "approved_for_model_features": false
+      },
+      {
+        "id": "USDC-CIRCULATION-CROSS-SOURCE-2026-10-27",
+        "evidence_class": "MULTI_SOURCE_RECONCILIATION",
+        "as_of_date": "2026-10-26/27",
+        "observation": "Circle rounds current circulation to $71.0B for Oct 26; third-party sources report about $71.2B (Stablecoin Beat), $71.71B (DefiLlama-derived Oct 26), $71.189B market-data supply (CoinGecko Oct 27), and $71.26B (SatoshiMacro Oct 27). CoinLore estimates market cap around $74.0B on Oct 22, versus prior issuer-reported $72.0B circulation on that date.",
+        "interpretation": "Current readings broadly cluster after rounding/timing differences; the historical $2B gap indicates metric/source mismatch. DefiLlama-derived data suggests USDC fell about $2.6B Oct 7-26, but the cause and destination are unknown.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+          "SRC-USDCORG-COINGECKO-2026-10-27",
+          "SRC-STABLECOINBEAT-USDC-2026-10-26",
+          "SRC-COINLORE-USDC-HIST-2026-10-22"
+        ],
+        "approved_for_model_features": false
+      }
+    ],
+    "phrase_investigation": {
+      "ASK Coin": {
+        "status": "UNRESOLVED",
+        "finding": "Exact-phrase public search did not establish a reliable XRP-specific meaning; no definition assigned. Fresh exact-spelling and XRP-context searches did not establish a reliable original source or meaning; no definition assigned.",
+        "last_searched_at_utc": "2026-10-27T21:09:42Z"
+      },
+      "actual capital": {
+        "status": "UNRESOLVED",
+        "finding": "Search results were generic or unrelated; requires original context and source timestamp. Fresh exact-spelling and XRP-context searches did not establish a reliable original source or meaning; no definition assigned.",
+        "last_searched_at_utc": "2026-10-27T21:09:42Z"
+      },
+      "SBIC, ChatGPT SBIC": {
+        "status": "MULTIPLE_CANDIDATES; INTENDED_ENTITY_UNRESOLVED",
+        "finding": "Official sources distinguish SBIC East Japan from historical SBI Capital/SBIC. SBI Ripple Asia, SBI Remit and SBI VC Trade are separate entities; official Ripple sources confirm an XRP ODL corridor through SBI Remit/Coins.ph/SBI VC Trade while stating SBI Ripple Asia itself does not handle XRP.",
+        "source_ids": [
+          "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+          "SRC-SBI-CAPITAL-SBIC-2005",
+          "SRC-SBI-CAPITAL-GS-JV-2007",
+          "SRC-SBI-GROUP-DIRECTORY-2026-10-07",
+          "SRC-RIPPLE-SBI-RIPPLE-ASIA-NO-XRP-2026-10-27",
+          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+        ],
+        "next_action": "Locate the original phrase and current legal-entity record; do not infer a direct SBIC-to-XRP relationship."
+      },
+      "Camilla Stephenson": {
+        "status": "CANDIDATE_CHANNEL_FOUND; EXACT_IDENTITY_UNRESOLVED",
+        "finding": "Public YouTube indexing found the channel Kamilah Stevenson | Xrp & Stocks (channel ID UCXm6KAr1WHF6UN7g5b2W7wg) and two indexed videos by Kamilah Stevenson about XRP/global liquidity. The requested spelling Camilla Stephenson differs; no first-party cross-link proves the identities match. A separate video uploaded by Alina X is excluded from Kamilah's own uploads.",
+        "source_ids": [
+          "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+          "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
+          "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+          "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16"
+        ],
+        "inventory_status": "PARTIAL_INDEXED_RESULTS_ONLY; ALL_PUBLIC_UPLOADS_NOT_VERIFIED",
+        "last_searched_at_utc": "2026-10-27T22:11:49Z"
+      }
+    },
+    "platform_capability_map": [
+      {
+        "platform": "ChatGPT",
+        "status": "ACTIVE_IN_THIS_CONVERSATION",
+        "evidence": "Web research and connected GitHub read/write APIs were used; no live cross-agent channel to the other eight platforms was demonstrated."
+      },
+      {
+        "platform": "Claude",
+        "status": "NOT_VERIFIED_LIVE",
+        "adapter_design": "Read-only research task; structured evidence packet; no credential or API access demonstrated."
+      },
+      {
+        "platform": "Grok",
+        "status": "NOT_VERIFIED_LIVE",
+        "adapter_design": "Independent counter-hypothesis and event review; repository's Groq API failures are not evidence of a live Grok connection."
+      },
+      {
+        "platform": "Gemini",
+        "status": "NOT_VERIFIED_LIVE",
+        "adapter_design": "Independent source triangulation and document extraction; no live authenticated adapter demonstrated."
+      },
+      {
+        "platform": "Copilot",
+        "status": "NOT_VERIFIED_LIVE",
+        "adapter_design": "Repository code review and test suggestions; no live cross-platform handoff demonstrated."
+      },
+      {
+        "platform": "Codex",
+        "status": "NOT_VERIFIED_LIVE",
+        "adapter_design": "Controlled code changes and local test execution; GitHub connector access does not prove a Codex connection."
+      },
+      {
+        "platform": "Hugging Face",
+        "status": "NOT_VERIFIED_LIVE",
+        "adapter_design": "Versioned model/dataset evaluation; require model IDs, licenses, data splits and reproducible benchmark records."
+      },
+      {
+        "platform": "Kaggle",
+        "status": "NOT_VERIFIED_LIVE",
+        "adapter_design": "Versioned datasets and reproducible notebooks; require dataset provenance, temporal split and leakage audit."
+      },
+      {
+        "platform": "Databricks",
+        "status": "NOT_VERIFIED_LIVE",
+        "adapter_design": "Governed feature store and historical jobs; require workspace identity, least-privilege scope and execution evidence."
+      }
+    ],
+    "forecast_engine_status": {
+      "status": "NOT_ISSUED",
+      "current_price_forecast": null,
+      "reason": "No synchronized, validated XRP feature store or calibrated out-of-sample model is available. SBIC identity and realized XRP flows remain unresolved; USDC supply features remain blocked pending source harmonization.",
+      "minimum_forecast_record": [
+        "forecast_id",
+        "data_cutoff_utc",
+        "issued_at_utc",
+        "asset",
+        "target_definition",
+        "horizon",
+        "venue_or_reference_index",
+        "probability_distribution_or_directional_probability",
+        "confidence",
+        "assumptions",
+        "alternative_scenarios",
+        "feature_snapshot_hash",
+        "model_version",
+        "baseline_comparison",
+        "later_outcome_timestamp",
+        "realized_outcome",
+        "scoring_rule",
+        "calibration_bucket"
+      ],
+      "validation_gates": [
+        "immutable timestamped data snapshots",
+        "event-time freshness and provenance",
+        "no look-ahead or survivorship leakage",
+        "naive and market-beta baselines",
+        "walk-forward splits",
+        "calibration and Brier/log loss where applicable",
+        "drift and source coverage monitoring",
+        "shadow evaluation before any real-money use"
+      ]
+    },
+    "massive_micro_ingestion": {
+      "status": "REQUIRED_STANDARD",
+      "requirements": [
+        "retain dataset source and provenance",
+        "map parsable scope from macro through micro/nano/atomic/molecular levels where applicable",
+        "trace component relationships to four source/component depths",
+        "identify and fill gaps only with provenance",
+        "cross-corroborate independent sources",
+        "preserve minority objections and contradictory evidence",
+        "append outputs and hashes to durable ledger"
+      ]
+    },
+    "next_actions": [
+      "Design and test a durable, idempotent research-data persistence path that stops scheduled signal/knowledge workflows from writing generated data and mutable accuracy outcomes directly to main; do not remove persistence before a safe replacement exists.",
+      "Review and land PR #1193 only after independent review and diagnosis or explicit acceptance of the unresolved failed workflow; do not merge automatically.",
+      "Review PR #1194 and verify effective branch protection, required checks, review and approval controls before any merge queue is re-enabled.",
+      "Refactor barrot_agent/analysis/xrp_telemetry_matrix.py to remove hardcoded prices, sentiment and MAX_LIQUIDITY claims; add tests.",
+      "Build issuer-level XRP ETF holdings/flow snapshots with coverage-change and missing-data flags.",
+      "Create an immutable fixed-horizon forecast ledger and baseline evaluation before issuing price forecasts.",
+      "Resolve SBIC versus SBI Holdings from the original phrase source; keep separate graph nodes until then.",
+      "Resolve Camilla Stephenson identity; enumerate channel videos, Shorts, live streams and archives by canonical channel ID; extract permitted transcripts and timestamped claims.",
+      "Search exact phrases ASK Coin, actual capital and SBIC, ChatGPT SBIC in their original media/context; keep unresolved until evidence exists.",
+      "Verify each of the nine platform adapters with a test call, identity, scope, data-flow record and output provenance before describing live collaboration.",
+      "Prioritize safe persistent research-data architecture: stop scheduled generated-data writes to main only after an idempotent append-only branch/artifact promotion path preserves continuity.",
+      "Diagnose why barrot-ops attempted a non-fast-forward push and serialize or remove direct main writes only through a reviewed, tested branch/PR.",
+      "Refresh/reconcile PR #1193 and #1194 against current main without merging; verify branch protection via authorized permission or alternative public evidence before asserting required checks.",
+      "Reconcile PR #1202 against current main only without force-push or discarding work; main still invokes the wrong Databricks script path.",
+      "Cross-check current XRP derivatives data from raw exchange endpoints and a second independent aggregate source before adding model features.",
+      "Continue original-context search for ASK Coin, actual capital, SBIC/ChatGPT SBIC and verify the canonical Camilla/Kamilah/Camila Stevenson channel before claiming complete video coverage.",
+      "Measure Coinbase XRP derivatives separately by product, jurisdiction and settlement currency; do not combine USD futures with USDC-settled offshore options.",
+      "Keep the Circle-to-Coinbase USDC distribution relationship distinct from any assumed XRP accumulation or XRPL-native USDC use.",
+      "Resolve the original source of the phrase Camilla Stephenson before enumerating the full video inventory.",
+      "Continue exact-phrase source tracing for ASK Coin, actual capital and SBIC/ChatGPT SBIC.",
+      "Harmonize XRP futures open-interest coverage across raw exchange APIs and aggregators before admitting OI/funding/liquidation aggregates into the feature store.",
+      "Track SBI VISA Crypto Card reward-conversion disclosures and distinguish selected-asset rewards from realized XRP market purchases.",
+      "Capture Circle USDC circulation/reserves and XRPL-native USDC supply/transfer series at fixed UTC cutoffs; do not infer XRP flows from total USDC supply.",
+      "Preserve PR #1195 but do not merge its stale branch; it is 44 commits behind observed main and 24 commits ahead, so validate all artifacts before a fresh-main successor.",
+      "Record that generated runtime/signal files continue to be committed directly to main; design a safe idempotent append-only persistence path before altering writers.",
+      "Verify completion and exact-head result of PR #1220 CI; keep the PR draft and unmerged until independent review.",
+      "Port the signal-integrity repair only through the fresh-main PR; do not treat provider-failure score 44/confidence 0 or legacy 46.5% accuracy as predictive evidence.",
+      "Design the append-only research-data/artifact promotion path before changing scheduled workflows that currently write generated data to main."
+    ],
+    "macro_context": {
+      "as_of_utc": "2026-10-27T21:05:14Z",
+      "status": "LATEST_OFFICIAL_RELEASES_CAPTURED; FED_POLICY_AND_MARKET_PRICES_REQUIRE_FRESHER_SNAPSHOT",
+      "observations": [
+        {
+          "metric": "Real GDP",
+          "period": "2026-Q2 third estimate",
+          "value": "2.2% annualized",
+          "comparison": "2026-Q1 revised to 2.5%",
+          "published_at": "2026-09-30",
+          "source_ids": [
+            "SRC-BEA-GDP-Q2-2026"
+          ],
+          "interpretation": "Growth remains positive in the latest published quarter; this is not evidence of an already-confirmed recession. Q3 release is listed by BEA for 2026-10-29."
+        },
+        {
+          "metric": "PCE price indexes",
+          "period": "2026-Q2 third estimate",
+          "value": "PCE +5.0% annualized; core PCE +3.3% annualized",
+          "published_at": "2026-09-30",
+          "source_ids": [
+            "SRC-BEA-GDP-Q2-2026"
+          ],
+          "interpretation": "Price pressure remained elevated in the quarterly national-accounts estimate; do not confuse this annualized quarterly measure with 12-month CPI."
+        },
+        {
+          "metric": "Unemployment rate",
+          "period": "2026-09",
+          "value": "4.2%",
+          "comparison": "4.1% in July and August 2026",
+          "published_at": "2026-10",
+          "source_ids": [
+            "SRC-BLS-EMPLOYMENT-SEP-2026"
+          ],
+          "interpretation": "Labor-market slack increased modestly on the household-survey measure; not sufficient alone to diagnose recession."
+        },
+        {
+          "metric": "CPI inflation",
+          "period": "2026-09 year over year",
+          "value": "All-items CPI +3.7%; gasoline +34.2%; electricity +4.4%",
+          "published_at": "2026-10",
+          "source_ids": [
+            "SRC-BLS-CPI-SEP-2026"
+          ],
+          "interpretation": "Energy price pressure can complicate disinflation and rate expectations; verify the complete CPI release and revisions before feature engineering."
+        },
+        {
+          "metric": "Federal funds target range and upcoming policy decision",
+          "period": "Latest announced target range as of 2026-10-27; FOMC meeting 2026-10-27 to 2026-10-28",
+          "value": "3.75%–4.00% target range effective 2026-09-17; October meeting is in progress and its decision has not yet been released at this snapshot cutoff",
+          "published_at": "2026-09-16/17 for latest announced decision; October meeting calendar current as of 2026-10-27",
+          "source_ids": [
+            "SRC-FED-FUNDSRATE-2026",
+            "SRC-FED-OCT-2026"
+          ],
+          "interpretation": "Do not use the September rate as the eventual October outcome. The next statement and press conference can reprice yields, the dollar, risk assets and crypto quickly; preserve the pre-announcement cutoff separately from post-announcement observations."
+        }
+      ],
+      "provisional_read": "Mixed growth/inflation backdrop: positive latest GDP growth alongside elevated price measures and a small rise in unemployment. Macro risk is two-sided—higher-for-longer rates can pressure risk assets, while weaker growth or easing expectations can support liquidity but also signal stress. No recession probability or XRP direction is inferred from these few indicators alone.",
+      "missing_inputs": [
+        "October 27–28, 2026 FOMC decision and press conference once released; preserve a pre-event snapshot before updating the regime",
+        "current Treasury yields and real yields",
+        "DXY",
+        "VIX",
+        "credit spreads",
+        "Fed funds futures repricing",
+        "latest monthly PCE/CPI detail",
+        "Q3 2026 GDP release after publication",
+        "crypto-wide spot flows and leverage"
+      ],
+      "forecast_rule": "Treat data releases as timestamped surprises relative to consensus, not just levels; freeze vintages to avoid revision leakage.",
+      "fomc_status_at_cutoff": "FOMC meeting scheduled Oct 27–28, 2026; no October decision was available at this cutoff."
+    },
+    "repository_ci": {
+      "repository": "Barrot-Agent/B-Agent",
+      "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+      "main_commit": {
+        "message": "Paper trade cycle [skip ci]",
+        "authored_at_utc": "2026-10-27T22:04:47Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741"
+      },
+      "main_branch_protected": true,
+      "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
+      "main_ci": {
+        "run_id": 40583993078,
+        "conclusion": "success",
+        "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
+        "current_head_status": "NOT_VERIFIED",
+        "note": "Last recorded successful code CI predates current main; current main changes since then were generated-data-only."
+      },
+      "main_databricks_deploy": {
+        "run_id": 40583993212,
+        "conclusion": "failure",
+        "root_cause": "Workflow calls python deploy_databricks.py while the implementation is under scripts/deploy_databricks.py.",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993212",
+        "status_note": "Open fix candidate; no deployment executed."
+      },
+      "main_operations_pipeline": {
+        "run_id": 40583993172,
+        "conclusion": "failure",
+        "root_cause": "A push was rejected as non-fast-forward. A concurrent writer is plausible but unproven.",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993172",
+        "status_note": "Historical failure; subsequent generated-data commits show automated writes resumed."
+      },
+      "approval_workflow_anomaly": {
+        "run_id": 40584131729,
+        "event": "push",
+        "conclusion": "failure",
+        "jobs_returned": 0,
+        "root_cause": "UNRESOLVED. The currently fetched workflow definition declares workflow_dispatch only, but the recorded run event is push; exact triggering semantics still require diagnosis.",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40584131729"
+      },
+      "research_pr_validation": {
+        "pr": 1195,
+        "validated_head_sha": "09e3ab4f0d976aadd0e733139a38d87de8952b6e",
+        "ci_run_id": 40593202456,
+        "ci": "success",
+        "tests_passed": 145,
+        "duration_seconds": 4.17,
+        "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593202456",
+        "gate_run_id": 40593202473,
+        "gate": "success",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593202473",
+        "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+        "note": "These checks validate head 09e3ab4 only; this SBIC snapshot and ledger update are newer."
+      },
+      "safety_prs": [
+        {
+          "pr": 1193,
+          "mergeable": false,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1193",
+          "state": "open",
+          "note": "Fail-closed signal-integrity fix remains unmerged."
+        },
+        {
+          "pr": 1194,
+          "mergeable": false,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1194",
+          "state": "open",
+          "note": "Read-only merge-queue safety fix remains unmerged; main workflow remains mutation-capable."
+        }
+      ],
+      "recent_merged_prs": [
+        {
+          "pr": 1217,
+          "merged": true,
+          "merge_commit_sha": "cdbd5fb2a0a2ed60ee4a5850c291d6ced7489778",
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1217"
+        },
+        {
+          "pr": 1218,
+          "merged": true,
+          "merge_commit_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1218"
+        }
+      ],
+      "boundary": "No merge, force-push, reset, clean, stash, destructive branch change, deployment, secret mutation or real-money trade performed by this run.",
+      "signal_integrity_pr_1220": {
+        "pr": 1220,
+        "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+        "base_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+        "ci_run_id": 40592404749,
+        "ci": "success",
+        "tests_passed": 164,
+        "duration_seconds": 6.11,
+        "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749",
+        "gate_run_id": 40592404758,
+        "gate": "success",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758",
+        "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+        "state": "open_draft_unmerged",
+        "note": "Exact-head CI and fail-closed gate passed. No merge or deployment occurred."
+      }
+    },
+    "market_data_quality_findings": [
+      {
+        "id": "XRP-OI-COVERAGE-DIVERGENCE-2026-10-27",
+        "severity": "HIGH",
+        "status": "MODEL_FEATURE_BLOCKED_PENDING_UNIVERSE_HARMONIZATION",
+        "finding": "Four public derivatives aggregates display XRP open interest values from about $835.76M to $2.92B across different timestamps and stated/unstated contract universes. Liqwall reports $1.44B at 21:02 UTC, Kodexius $835.76M across 7 perpetual contracts at 17:16 UTC, CoinGlass $2.92B with an unspecified exact page timestamp, and SwoleCharts approximately $1.22B across 9 exchanges at 03:10 UTC.",
+        "interpretation": "The spread likely reflects differing venue/contract coverage, timestamps or calculation methods, but no cause is confirmed. Do not select a single aggregate as ground truth or admit it to the feature store until reconciled.",
+        "source_ids": [
+          "SRC-XRP-DERIV-KODEXIUS-2026-10-27T1716Z",
+          "SRC-XRP-DERIV-COINGLASS-2026-10-27",
+          "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
+          "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z"
+        ],
+        "next_action": "Rebuild OI from venue-level public endpoints at a common UTC cutoff; separate perpetuals, dated futures and options; normalize USD/USDT/USDC conversions; preserve raw payload hashes."
+      },
+      {
+        "id": "USDC-SUPPLY-SNAPSHOT-COMPARABILITY-2026-10-27",
+        "severity": "MEDIUM",
+        "status": "MODEL_FEATURE_BLOCKED_PENDING_DAILY_SERIES_AND_CHAIN_ALLOCATION",
+        "finding": "Circle's displayed total USDC circulation was $72.0B in the prior Oct 22 snapshot and $71.0B as of Oct 26 on the current page.",
+        "interpretation": "The apparent -$1.0B change is issuer-reported and potentially useful as a liquidity-context observation, but two snapshots cannot identify the daily mint/burn path or link the change to XRP flows.",
+        "source_ids": [
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+        ],
+        "next_action": "Capture daily supply and reserve dashboard values with source-page hashes; reconcile monthly attestations and issuer-level mint/burn data; collect XRPL-specific USDC supply and transfer activity before feature admission."
+      },
+      {
+        "id": "USDC-SUPPLY-CROSS-SOURCE-SCOPE-2026-10-27",
+        "severity": "HIGH",
+        "status": "BLOCKED_PENDING_SAME_PROVIDER_SERIES_AND_SCOPE_RECONCILIATION",
+        "finding": "USDC snapshots around Oct 26-27 cluster near $71B-$71.7B across Circle and third-party trackers, but the Oct 22 issuer circulation figure ($72B) conflicts with third-party market-cap estimates around $74B.",
+        "interpretation": "The apparent difference is likely affected by measurement definition, timing and source coverage. The third-party reported $2.6B decrease from Oct 7 to Oct 26 is a separate observation and does not identify destination or XRP flows.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+          "SRC-CIRCLE-TRANSPARENCY-2026",
+          "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+          "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+          "SRC-USDCORG-COINGECKO-2026-10-27",
+          "SRC-STABLECOINBEAT-USDC-2026-10-26",
+          "SRC-COINLORE-USDC-HIST-2026-10-22"
+        ],
+        "next_action": "Use a single provider and metric for daily time-series features; independently reconcile issuer mint/burn, total supply and chain-level distribution; keep the feature blocked until stable and reproducible."
+      }
+    ],
+    "mission_priority": {
+      "highest_priority": "XRP intelligence and prediction-engine mastery",
+      "execution_and_verification_foundation": "Barrot V3",
+      "operating_mode": "Quiet, sustained, non-disruptive research using lawful public or authorized sources",
+      "mandatory_controls": [
+        "Separate confirmed facts, sourced claims, inference, speculation, unknowns and disconfirming evidence.",
+        "No unauthorized access, deception, private data, manipulation or illegal activity.",
+        "No forecast without timestamped cutoff, fixed horizon, target, assumptions, probability/confidence, alternatives, model version and outcome scoring protocol.",
+        "No real-money use before walk-forward validation, calibration, leakage controls, drift monitoring and paper/shadow evaluation.",
+        "Preserve dirty worktrees and current V3 code; never reset, clean, stash, overwrite, discard, force-push, merge or make consequential external changes without approval.",
+        "Treat DESIGNED, EXECUTED and VERIFIED as distinct; record evidence for every claimed action.",
+        "Do not claim live collaboration across target platforms without tested authentication, permissions and end-to-end evidence."
+      ],
+      "target_platforms": [
+        "ChatGPT",
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks"
+      ],
+      "forecast_status": "NOT_ISSUED"
+    },
+    "snapshot_id": "SBIC-IDENTITY-SBI-XRP-RELATIONSHIPS-2026-10-27T221448Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2214Z.json",
+    "snapshot_blob_sha": "1efb0b0744664c0e237bc16e054abebebd258199",
+    "current_research_head_before_ledger_update": "b8bf31b5d1c729ae8807580e7266620854d0747f",
+    "current_research_checks": {
+      "last_verified_head": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30",
+      "tests": "PASS_145_TESTS",
+      "tests_run_id": 40593506611,
+      "tests_duration_seconds": 5.89,
+      "gate": "PASS",
+      "gate_run_id": 40593506632,
+      "ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593506611",
+      "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40593506632",
+      "current_metadata_update": "PENDING_VERIFICATION",
+      "as_of_utc": "2026-10-27T22:16:38Z",
+      "note": "Exact-head CI and fail-closed gate passed for cc16b4b. This metadata-only ledger commit creates a newer head; verify that head's run before claiming it passed."
+    },
+    "current_research_head_before_final_verification_record": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30"
+  },
+  "sources": [
+    {
+      "id": "SRC-SBIC-PROFILE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "title": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. company profile",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Official legal entity/profile; identifies SBIC East Japan and company details."
+    },
+    {
+      "id": "SRC-SBIC-ABOUT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic.co.jp/about/",
+      "title": "Official SBIC overview",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Official explanation of SME investment/growth support under the relevant Japanese law."
+    },
+    {
+      "id": "SRC-SBI-EVERNORTH",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
+      "title": "SBI Holdings announcement of investment in Evernorth XRP treasury business",
+      "published_at": "2025-10-21",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Announcement proves the disclosed investment/plan; not independently verified realized holdings or current transaction status."
+    },
+    {
+      "id": "SRC-SBI-REMIT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "title": "SBI-group announcement of XRP-based remittance corridors",
+      "published_at": "2023-09-06",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Historical announcement involving SBI Remit, SBI VC Trade, SBI Ripple Asia and Ripple; current volumes not established."
+    },
+    {
+      "id": "SRC-RIPPLE-SBI-RLUSD",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "title": "Ripple and SBI Group partner to launch RLUSD in Japan",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Official announcement of launch following Japanese regulatory approval."
+    },
+    {
+      "id": "SRC-COINBASE-ASSET-DISCLOSURES",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.coinbase.com/legal/digital-asset-disclosures",
+      "title": "Coinbase digital asset disclosures",
+      "disclosed_holdings_as_of": "2026-03-31",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "XRP is listed among US trading assets with Coinbase holding and commercial-engagement flags; availability is jurisdiction/product specific."
+    },
+    {
+      "id": "SRC-COINBASE-Q2-2026",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q2-Earnings-Everything-Exchange-Drives-3rd-Consecutive-Quarter-of-Record-Crypto-Trading-Volume-Market-Share-Revenue-Diversification-and-Resilience/default.aspx",
+      "title": "Coinbase Q2 2026 earnings",
+      "published_at": "2026-07-30",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Company-reported market share, USDC platform balance and revenue/economics figures."
+    },
+    {
+      "id": "SRC-COINBASE-CIRCLE-2023",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.coinbase.com/blog/ushering-in-the-next-chapter-for-usdc",
+      "title": "Coinbase and Circle's next chapter for USDC",
+      "published_at": "2023-08",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Coinbase says it took an equity stake in Circle and describes the USDC reserve/distribution economics arrangement."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-XRPL",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "title": "Now available: USDC on the XRPL",
+      "published_at": "2025-06-12",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Circle says native USDC is live on XRPL and Circle Mint/APIs support it without a bridge."
+    },
+    {
+      "id": "SRC-RIPPLE-CIRCLE-USDC",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/",
+      "title": "Ripple and Circle launch USDC on the XRP Ledger",
+      "published_at": "2025-06-12",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Joint official announcement."
+    },
+    {
+      "id": "SRC-XRPL-TX-COST",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
+      "title": "XRPL transaction cost documentation",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Protocol-level XRP fee destruction mechanism; does not imply material market-price effect."
+    },
+    {
+      "id": "SRC-XRPL-RESERVES",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/docs/concepts/accounts/reserves",
+      "title": "XRPL reserve documentation",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Account and object reserves are denominated in XRP; reserve settings can change."
+    },
+    {
+      "id": "SRC-XRP-ETF-TRACKER-A",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP Insights ETF holdings and flow dataset",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Issuer-reported holdings aggregated by a third-party tracker; universe includes six spot funds plus BITW and has documented coverage exclusions."
+    },
+    {
+      "id": "SRC-XRP-ETF-TRACKER-B",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "title": "Crypto ETF Today XRP flows",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Different tracked fund universe and totals; not directly comparable to other dashboards."
+    },
+    {
+      "id": "SRC-XRP-ETF-TRACKER-C",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF tracker",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Different tracked fund universe; useful for discrepancy detection, not sole ground truth."
+    },
+    {
+      "id": "SRC-KAMILAH-CANDIDATE",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "title": "Candidate channel in repository source profile",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Repository source profile labels this a probable match; canonical identity and full upload inventory are unverified."
+    },
+    {
+      "id": "SRC-KAMILAH-SEARCH-RESULT",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "Public search result: Kamilah Stevenson | XRP & Stocks",
+      "accessed_at_utc": "2026-10-27T19:02:34Z",
+      "note": "Different channel ID than the repository candidate; do not merge identities without evidence."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-ECONOMICS-2026",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "title": "The Economics of USDC and Why Our Partners Win",
+      "published_at": "2026-10-16",
+      "accessed_at_utc": "2026-10-27T19:08:30Z",
+      "note": "Circle-reported H1 2026 transaction-volume, mint/redemption and distribution-cost figures; independent methodology and comparability not verified."
+    },
+    {
+      "id": "SRC-CIRCLE-BINANCE-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx",
+      "title": "Binance invests USD 100 million in Circle and renews USDC commercial agreement",
+      "published_at": "2026-09-22",
+      "accessed_at_utc": "2026-10-27T19:08:30Z",
+      "note": "Official announcement of investment and five-year agreement; actual incremental USDC distribution effect remains to be measured."
+    },
+    {
+      "id": "SRC-CIRCLE-TRANSPARENCY-2026",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle transparency and stability: USDC reserve balances and issuance/redemption",
+      "published_at": "2026-10-22 dashboard snapshot",
+      "accessed_at_utc": "2026-10-27T19:09:30Z",
+      "note": "Issuer-published dashboard reports $72.0B circulation and $72.2B reserves as of Oct 22, 2026, plus issuance/redemption windows and monthly third-party assurance."
+    },
+    {
+      "id": "SRC-RIPPLE-RLUSD-TRANSPARENCY-2026",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "title": "Ripple USD transparency reports",
+      "published_at": "2026-10-22 dashboard snapshot",
+      "accessed_at_utc": "2026-10-27T19:09:30Z",
+      "note": "Issuer-published dashboard reports $2,382.8M RLUSD circulation and $2,528.0M reserve funds as of Oct 22, 2026; monthly independent attestation reports are linked."
+    },
+    {
+      "id": "SRC-BEA-GDP-Q2-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.bea.gov/index.php/news/2026/gdp-third-estimate-industries-corporate-profits-state-gdp-and-state-personal-income-2nd",
+      "title": "BEA third estimate of 2026 Q2 GDP and corporate profits",
+      "published_at": "2026-09-30",
+      "accessed_at_utc": "2026-10-27T19:10:30Z",
+      "note": "Real GDP +2.2% annualized; Q1 revised to +2.5%; PCE +5.0% and core PCE +3.3% annualized in the quarterly national-accounts release. Next release listed as Oct 29, 2026."
+    },
+    {
+      "id": "SRC-BLS-EMPLOYMENT-SEP-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.bls.gov/news.release/empsit.htm",
+      "title": "BLS Employment Situation, September 2026",
+      "published_at": "2026-10",
+      "accessed_at_utc": "2026-10-27T19:10:30Z",
+      "note": "Household survey reports unemployment at 4.2% in September 2026 versus 4.1% in July and August."
+    },
+    {
+      "id": "SRC-BLS-CPI-SEP-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.bls.gov/cpi/",
+      "title": "BLS CPI release page and September 2026 price highlights",
+      "published_at": "2026-10",
+      "accessed_at_utc": "2026-10-27T19:10:30Z",
+      "note": "BLS reports all-items CPI +3.7% year over year for September 2026, gasoline +34.2%, electricity +4.4%; October CPI scheduled for Nov 10, 2026."
+    },
+    {
+      "id": "SRC-FED-FUNDSRATE-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.federalreserve.gov/FOMC/fundsrate.htm",
+      "title": "Federal Reserve target federal funds rate history",
+      "published_at": "2026-09-17 latest listed effective change",
+      "accessed_at_utc": "2026-10-27T19:11:00Z",
+      "note": "Official history lists a 25 basis-point increase on Sep 17, 2026, to a 3.75%–4.00% target range."
+    },
+    {
+      "id": "SRC-FED-OCT-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.federalreserve.gov/newsevents/2026-october.htm?view=calendar",
+      "title": "Federal Reserve October 2026 calendar",
+      "accessed_at_utc": "2026-10-27T19:11:00Z",
+      "note": "Official calendar lists the FOMC meeting for Oct 27–28 and press conference on Oct 28; no October decision was available at this snapshot cutoff."
+    },
+    {
+      "id": "SRC-BNY-RIPPLE-CUSTODY-2026-10-27",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "title": "BNY and Ripple expand custody and tokenized trade-finance collaboration",
+      "published_at": "2026-10-27",
+      "accessed_at_utc": "2026-10-27T21:05:14Z",
+      "note": "BNY says XRP and RLUSD are now supported on its Digital Asset Custody platform. BNY/Ripple plans for direct RLUSD mint/redemption through BNY and tokenized trade finance/C2FO supply-chain finance remain intended future initiatives subject to approvals."
+    },
+    {
+      "id": "SRC-COINBASE-10Q-Q2-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000088/coin-20260630.htm",
+      "title": "Coinbase Global, Inc. Form 10-Q for quarter ended June 30, 2026",
+      "published_at": "2026-08",
+      "accessed_at_utc": "2026-10-27T21:05:14Z",
+      "note": "Company filing reports Q2 revenue $1.220B, net loss $359.5M, assets on platform $245.9B, all-time-high average USDC held in Coinbase products, and a partial sale of Coinbase's Circle investment in Q1 2026. Use reported period and definitions; not XRP net-flow data."
+    },
+    {
+      "id": "SRC-CIRCLE-10Q-Q2-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "title": "Circle Internet Group, Inc. Form 10-Q for quarter ended June 30, 2026",
+      "published_at": "2026-08",
+      "accessed_at_utc": "2026-10-27T21:05:14Z",
+      "note": "Circle reports Q2 USDC circulation $73.3B and on-chain transaction volume $14.8T; Q2 revenue and reserve income $701.3M, reserve income $667.7M. H1 distribution costs paid to Coinbase increased $19.8M due to higher reserve income, partially offset by a lower Coinbase share of average USDC on-platform balances. Transfer volume is not net capital inflow or unique-user payment count."
+    },
+    {
+      "id": "SRC-XRP-DERIV-LIQWALL-2026-10-27T2102Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://liqwall.com/coins/xrp",
+      "title": "Liqwall XRP derivatives snapshot",
+      "published_at": "2026-10-27T21:02:00Z",
+      "accessed_at_utc": "2026-10-27T21:05:14Z",
+      "note": "Third-party aggregate snapshot: XRP $1.32; open interest $1.44B (+2.2%/24h); average funding +0.0092%/8h; $1.2M liquidations ($845K shorts, $306K longs); 74.5% of Binance accounts with XRP positions long. Cross-venue methodology not independently verified; do not use as a model feature without raw venue corroboration."
+    },
+    {
+      "id": "SRC-COINBASE-Q2-2026-IR",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q2-Earnings-Everything-Exchange-Drives-3rd-Consecutive-Quarter-of-Record-Crypto-Trading-Volume-Market-Share-Revenue-Diversification-and-Resilience/default.aspx",
+      "title": "Coinbase Q2 2026 earnings release",
+      "published_at": "2026-07-30",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Coinbase reports Q2 crypto trading-volume market share 10.3%, third consecutive quarterly gain; average USDC held in Coinbase products $20B, more than 30% of USDC in circulation at quarter-end; approximately 50% of USDC economics captured by Coinbase over the prior year. Company-reported metrics, not XRP-specific flow data."
+    },
+    {
+      "id": "SRC-COINBASE-GLOBAL-OPTIONS-XRP",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://help.coinbase.com/en/coinbase/derivatives/global-derivatives-options",
+      "title": "Coinbase Global Derivatives crypto options help page",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Coinbase states global options are available to eligible customers in supported regions outside the US for BTC, ETH, SOL, AVAX, HYPE and XRP; options are executed on Deribit infrastructure and settled in USDC. This does not imply XRPL-native USDC is used for settlement."
+    },
+    {
+      "id": "SRC-COINBASE-XRP-PERP-FUTURES",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.coinbase.com/futures/XPP-20DEC30-CDE",
+      "title": "Coinbase Derivatives Exchange XRP perpetual-style futures product page",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Coinbase product page describes a nano XRP perpetual-style futures contract, 500 XRP per contract, USD currency and funding mechanism. Page-rendered price/open-interest fields can be delayed or stale; do not reuse them as current observations without a fresh timestamped data capture."
+    },
+    {
+      "id": "SRC-CAMILLA-STEPHENSON-BCG",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.comedy.co.uk/people/camilla_stephenson/",
+      "title": "British Comedy Guide profile for a Camilla Stephenson",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Exact-spelling public search result identifies a crew member/location manager with credits including Stan & Ollie (2019). This is a possible name collision only, not proof of identity with the requested XRP-video creator."
+    },
+    {
+      "id": "SRC-CAMILLA-STEPHENSON-MFJF",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://myfirstjobinfilm.com/UK/mentors/camilla-stephenson",
+      "title": "My First Job in Film mentor profile for a Camilla Stephenson",
+      "accessed_at_utc": "2026-10-27T21:09:42Z",
+      "note": "Public profile describes a location-management professional. Included only as name-disambiguation evidence; not linked to the XRP-video creator."
+    },
+    {
+      "id": "SRC-XRP-DERIV-KODEXIUS-2026-10-27T1716Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "title": "Kodexius XRP perpetual futures aggregate",
+      "published_at": "2026-10-27T17:16:00Z",
+      "accessed_at_utc": "2026-10-27T21:11:39Z",
+      "note": "Reports XRP perpetual open interest $835.76M across 7 contracts, OI-weighted funding +0.0096% per 8h and 24h volume $1.03B at 17:16 UTC. Contract/venue coverage is narrower than some all-futures aggregators; not comparable without universe reconciliation."
+    },
+    {
+      "id": "SRC-XRP-DERIV-COINGLASS-2026-10-27",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.coinglass.com/currencies/XRP/futures",
+      "title": "CoinGlass XRP futures dashboard",
+      "accessed_at_utc": "2026-10-27T21:11:39Z",
+      "note": "Page displayed XRP around $1.3108, futures volume $2.36B/24h, spot volume $422.13M/24h, market cap $82.87B and open interest $2.92B at access time. Exact measurement timestamp and contract universe need to be pinned; do not assume it matches perpetual-only aggregators."
+    },
+    {
+      "id": "SRC-XRP-DERIV-SWOLECHARTS-2026-10-27T0310Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://swolecharts.com/exchanges/binance/XRP",
+      "title": "SwoleCharts XRP derivatives public-API aggregate",
+      "published_at": "2026-10-27T03:10:00Z",
+      "accessed_at_utc": "2026-10-27T21:11:39Z",
+      "note": "A stale same-day snapshot reported approximately $1.22B open interest across 9 exchanges and OI-weighted funding around +0.0072%/8h. Use only as a coverage/time comparison, not as a current value."
+    },
+    {
+      "id": "SRC-SBI-VISA-XRP-CARD-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "title": "SBI Group, Aplus and Visa announce crypto-reward credit card",
+      "published_at": "2026-05-01",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Official SBI Group release says SBI VC Trade, Aplus and Visa announced card products whose reward points can be exchanged for BTC, ETH or XRP. Realized XRP conversion volume, purchase execution, holding duration and price effect are not disclosed."
+    },
+    {
+      "id": "SRC-SBI-RLUSD-JAPAN-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "title": "SBI VC Trade and Ripple announce Japanese RLUSD handling",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Official SBI Group release says SBI VC Trade and Ripple began handling RLUSD after scheduled maintenance on June 24, 2026, describing it as a Japan-first Type 4 electronic payment instrument. This is stablecoin distribution, not proof of XRP purchases or collateral use."
+    },
+    {
+      "id": "SRC-SBI-RIPPLE-ASIA-TOKENIZED-DEPOSITS-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "title": "SBI Ripple Asia concept study for tokenized deposits and deposit-type digital money",
+      "published_at": "2026-02-26",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Official SBI Group release describes a proof-of-concept considering existing MoneyTap infrastructure, an SBI Ripple Asia token-issuance platform and XRPL as a possible blockchain for tokenized deposits/deposit-type digital money. It is a conceptual study, not verified production deployment or proof XRP is the settlement asset."
+    },
+    {
+      "id": "SRC-SBI-RIPPLE-ASIA-JPKR-REMIT-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+      "title": "SBI Ripple Asia and dsrv labs research blockchain remittance/payment for Japan-Korea",
+      "published_at": "2026-02-24",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Official SBI Group release describes joint research into blockchain-based remittance/payment for Japan-Korea, with XRPL considered as candidate infrastructure. The release establishes research intent, not a production corridor, realized volume or XRP bridge-asset usage."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-XRPL-OPS-2026",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/multi-chain-usdc/xrpl",
+      "title": "Circle USDC on XRPL operational documentation",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Circle documents USDC as native on XRPL; qualified Circle Mint customers can convert fiat to XRPL USDC and redeem to USD, and Circle Mint/APIs can move USDC across supported chains. The XRPL total-supply field was not rendered in the captured page; no current XRPL supply is inferred."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/usdc",
+      "title": "Circle public USDC circulation and supported-network snapshot",
+      "accessed_at_utc": "2026-10-27T22:03:13Z",
+      "note": "Circle's public page displayed $71.0B USDC in circulation as of October 26, 2026, and states native USDC support on 38 networks as of September 16, 2026, including XRPL. The USD reserve figure was not rendered in the capture. Treat as issuer-displayed data, not an independently reconstructed daily mint/burn series."
+    },
+    {
+      "id": "SRC-REPO-MAIN-DELTA-2026-10-27T2206Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+      "title": "Observed current main head: paper-trading log append",
+      "accessed_at_utc": "2026-10-27T22:08:48Z",
+      "note": "Compare from prior observed main 26bc783 to current main a371918 reports one additional commit, Paper trade cycle [skip ci], modifying web/paper_trading_log.jsonl only. No code/workflow change in this delta."
+    },
+    {
+      "id": "SRC-REPO-PR-1220-2026-10-27",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+      "title": "Fresh-main XRP signal-integrity safety PR",
+      "accessed_at_utc": "2026-10-27T22:08:48Z",
+      "note": "Draft PR #1220 was created from current main SHA a371918. It changes 10 files, preserves current bundle-engineering tests in CI, and remains unmerged. Exact-head CI was in progress at the captured checkpoint."
+    },
+    {
+      "id": "SRC-REPO-CI-1220-2026-10-27",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749",
+      "title": "PR #1220 exact-head CI run",
+      "accessed_at_utc": "2026-10-27T22:08:48Z",
+      "note": "GitHub Actions reported CI in progress for head 32699de5938559ee1080ed05dac91195d7efebd0 at the captured checkpoint. Do not mark tests passed until a completed successful result is observed."
+    },
+    {
+      "id": "SRC-REPO-GATE-1220-2026-10-27",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758",
+      "title": "PR #1220 fail-closed gate run",
+      "accessed_at_utc": "2026-10-27T22:08:48Z",
+      "note": "GitHub Actions reported Barrot Gated Merge (fail-closed) completed successfully for PR #1220. This gate did not merge the PR and does not substitute for CI or review."
+    },
+    {
+      "id": "SRC-REPO-CI-1220-2026-10-27T2209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749",
+      "title": "PR #1220 exact-head CI completed successfully",
+      "accessed_at_utc": "2026-10-27T22:09:23Z",
+      "note": "Tests job completed successfully for head 32699de5938559ee1080ed05dac91195d7efebd0. Job logs report 164 passed in 6.11 seconds. This verifies the repository test suite, not predictive skill or deployment."
+    },
+    {
+      "id": "SRC-REPO-GATE-1220-2026-10-27T2209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758",
+      "title": "PR #1220 fail-closed gate completed successfully",
+      "accessed_at_utc": "2026-10-27T22:09:23Z",
+      "note": "Fail-closed gate completed successfully for PR #1220. It did not merge the PR; review and explicit approval remain required."
+    },
+    {
+      "id": "SRC-REPO-PR-1195-STATE-2026-10-27T2210Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "title": "Current state of XRP research ledger PR #1195",
+      "accessed_at_utc": "2026-10-27T22:10:20Z",
+      "note": "Current GitHub comparison reports the preserved research branch is open/draft, 32 commits ahead and 45 behind observed main, with mergeable=true. Do not merge; the branch contains historical research snapshots and needs a reviewed fresh-main successor."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+      "evidence_class": "PUBLIC_YOUTUBE_CHANNEL_RESULT",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "Kamilah Stevenson | Xrp & Stocks public channel page",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "YouTube indexed a public channel with this title and channel ID. The channel description focuses on stocks, crypto, market insights and long-term investing. The requested exact spelling is Camilla Stephenson; identity equivalence is not established."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "published_at": "2026-03-06",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "YouTube indexed this video as posted by Kamilah Stevenson. Its description advances a thesis linking oil shocks, yen carry-trade unwinds, global liquidity and XRP. Those are creator claims requiring independent testing, not established causal facts. Indexed engagement counts are a point-in-time observation only."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "url": "https://www.youtube.com/watch?v=Z-NeZwa3gsA",
+      "title": "STOP Watching Candles! The MASSIVE Liquidity Shift That Will Move Crypto FIRST",
+      "published_at": "2025-11-26",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "YouTube indexed this video as posted by Kamilah Stevenson. The description discusses liquidity, government spending, quantitative tightening and crypto-market timing. Treat the claims as hypotheses; not proof of actual capital flows or XRP price causality."
+    },
+    {
+      "id": "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "url": "https://www.youtube.com/watch?v=5DzBk8DfoLs",
+      "title": "Kamilah Stevenson Breaks Down XRP's Most Important Upgrade Yet",
+      "published_at": "2025-12-16",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "Indexed uploader is Alina X, not Kamilah Stevenson. The video references Kamilah but is a third-party upload and must not be counted as one of her own public videos."
+    },
+    {
+      "id": "SRC-REPO-CI-1195-2026-10-27T2211Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783577",
+      "title": "Research PR #1195 exact-head CI completed successfully",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "Tests job completed successfully for research branch head 44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2. Job logs report 145 passed in 5.81 seconds. The subsequent snapshot and ledger-only commits are newer and were not covered by this run."
+    },
+    {
+      "id": "SRC-REPO-GATE-1195-2026-10-27T2211Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592783253",
+      "title": "Research PR #1195 fail-closed gate completed successfully",
+      "accessed_at_utc": "2026-10-27T22:11:49Z",
+      "note": "Fail-closed gate completed successfully for research branch head 44a9ce7fedf8fb608e526ee2055b4cb95d1b52e2. It did not merge the PR and does not verify XRP prediction performance."
+    },
+    {
+      "id": "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+      "evidence_class": "SECONDARY_REPORT_OF_PUBLIC_AGGREGATOR_DATA",
+      "url": "https://www.coindaro.com/stablecoin-supply-drop-usdc-usdt-defillama/",
+      "title": "DefiLlama-based USDC and stablecoin supply report",
+      "published_at": "2026-10-26",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Report reads DefiLlama values at 06:54 UTC on Oct 26: USDC about $71.71B on Oct 26 versus $74.31B on Oct 7, a $2.6B decrease; total dollar stablecoin supply about $302.4B. Secondary reporting of aggregator data; does not show destination or XRP flows."
+    },
+    {
+      "id": "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+      "evidence_class": "SECONDARY_PUBLIC_TRACKER",
+      "url": "https://satoshimacro.com/tools/crypto/markets/stablecoin-supply/",
+      "title": "SatoshiMacro stablecoin supply dashboard",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Dashboard shows USDC about $71.26B as of Oct 27 and -5.5% over 30 days; total dollar stablecoin supply about $301.5B. It cites DefiLlama and refreshes twice daily; secondary tracker, not issuer reserve data."
+    },
+    {
+      "id": "SRC-USDCORG-COINGECKO-2026-10-27",
+      "evidence_class": "THIRD_PARTY_MARKET_DATA",
+      "url": "https://usdc.org/stats",
+      "title": "USDC circulating supply stats using CoinGecko",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Page reports 71,189,358,490 USDC units and market cap about $71.15B for an Oct 27 UTC observation, sourced to CoinGecko. This is third-party market data and not the same thing as an issuer reserve attestation."
+    },
+    {
+      "id": "SRC-STABLECOINBEAT-USDC-2026-10-26",
+      "evidence_class": "THIRD_PARTY_MARKET_DATA",
+      "url": "https://stablecoinbeat.com/charts/market-cap/",
+      "title": "Stablecoin Beat daily market-cap snapshot",
+      "published_at": "2026-10-26",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Tracker says USDC about $71.2B and total stablecoin market about $299.9B as of Oct 26 15:40 UTC. It uses a par-value/market-cap series and should be compared only after metric scope and timing are aligned."
+    },
+    {
+      "id": "SRC-COINLORE-USDC-HIST-2026-10-22",
+      "evidence_class": "THIRD_PARTY_HISTORICAL_MARKET_CAP",
+      "url": "https://www.coinlore.com/coin/USD-Coin/historical-data",
+      "title": "CoinLore USDC historical market-cap table",
+      "accessed_at_utc": "2026-10-27T22:13:13Z",
+      "note": "Historical table shows estimated USDC market cap about $74.0B on Oct 22 and $74.1B on Oct 23. This is a third-party price-times-supply estimate, not necessarily comparable to Circle's reported $72.0B circulation snapshot on Oct 22."
+    },
+    {
+      "id": "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "title": "Tokyo Small and Medium Business Investment & Consultation Co. profile",
+      "accessed_at_utc": "2026-10-27T22:14:48Z",
+      "note": "Official profile identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. as SBIC East Japan, a distinct regional SME investment and consultation organization with public, chamber-of-commerce, financial-institution and business shareholders. It is not SBI Holdings."
+    },
+    {
+      "id": "SRC-SBI-CAPITAL-SBIC-2005",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE_HISTORICAL",
+      "url": "https://www.sbigroup.co.jp/news/2005/0621_669.html",
+      "title": "SBI Group release explicitly defines SBI Capital as SBIC",
+      "published_at": "2005-06-21",
+      "accessed_at_utc": "2026-10-27T22:14:48Z",
+      "note": "Official SBI Group release calls SBI Capital Co., Ltd. 'SBIC' and describes it as a group company operating buyout, corporate restructuring and mezzanine investment funds. Historical entity; do not equate it with SBIC East Japan."
+    },
+    {
+      "id": "SRC-SBI-CAPITAL-GS-JV-2007",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE_HISTORICAL",
+      "url": "https://www.sbigroup.co.jp/news/2007/0521_852.html",
+      "title": "SBI Capital / SBIC joint venture with Goldman Sachs Group",
+      "published_at": "2007-05-21",
+      "accessed_at_utc": "2026-10-27T22:14:48Z",
+      "note": "Official SBI Group announcement states 40% of SBI Capital shares were transferred to a Goldman Sachs Group company; after the transaction SBI Holdings held 60% and the Goldman Sachs affiliate 40%. This is historical ownership, not proof of current ownership."
+    },
+    {
+      "id": "SRC-SBI-GROUP-DIRECTORY-2026-10-07",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/english/company/group/overview.html",
+      "title": "SBI Group companies directory",
+      "accessed_at_utc": "2026-10-27T22:14:48Z",
+      "note": "The current SBI Group directory lists SBI Capital and SBI Ripple Asia as separate names. The directory alone does not establish that the current SBI Capital listing is legally continuous with the 2005-2007 SBI Capital/SBIC entity."
+    },
+    {
+      "id": "SRC-RIPPLE-SBI-RIPPLE-ASIA-NO-XRP-2026-10-27",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://ripple.com/company/sbi-ripple-asia/",
+      "title": "Ripple's official SBI Ripple Asia profile and XRP-handling disclaimer",
+      "accessed_at_utc": "2026-10-27T22:14:48Z",
+      "note": "Ripple states SBI Ripple Asia sells RippleNet software/services and does not itself handle XRP. The same official page says Japan ODL using XRP as bridge is commercialized through SBI Remit, Coins.ph and SBI VC Trade. This distinguishes infrastructure provider from XRP-handling entities."
+    },
+    {
+      "id": "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://ripple.com/ripple-press/ripple-launches-on-demand-liquidity-with-sbi-remit-to-accelerate-and-grow-cross-border-payments-from-japan/",
+      "title": "Ripple announces Japan ODL launch with SBI Remit",
+      "published_at": "2021-07-28",
+      "accessed_at_utc": "2026-10-27T22:14:48Z",
+      "note": "Ripple announced Japan's first live ODL implementation with SBI Remit, Coins.ph and SBI VC Trade for Japan-to-Philippines remittances, using XRP to bridge fiat currencies and reduce pre-funding. The announcement confirms launch, not current volume or current net XRP demand."
+    },
+    {
+      "id": "SRC-SBI-VC-TRADE-ODL-EXPANSION-2023-09-06",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbivc.co.jp/newsview/88ut48zo5l",
+      "title": "SBI VC Trade announcement of XRP-enabled remittance expansion",
+      "published_at": "2023-09-06",
+      "accessed_at_utc": "2026-10-27T22:14:48Z",
+      "note": "SBI VC Trade announced that SBI Remit, SBI VC Trade, Ripple and SBI Ripple Asia would expand XRP-using remittance services to bank accounts in the Philippines, Vietnam and Indonesia. Current corridor volumes and XRP inventory are not disclosed in this announcement."
+    },
+    {
+      "id": "SRC-SBI-ARUHI-XRP-SHAREHOLDER-REWARDS-2026-03-12",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0312_16171.html",
+      "title": "SBI ARUHI shareholder benefit includes XRP",
+      "published_at": "2026-03-12",
+      "accessed_at_utc": "2026-10-27T22:14:48Z",
+      "note": "Official SBI Group release says eligible SBI ARUHI shareholders can receive XRP distributed through SBI VC Trade, subject to eligibility and account requirements. This is a retail distribution channel; actual uptake and net market purchases are unknown."
+    },
+    {
+      "id": "SRC-SBI-SHINSEI-XRP-SHAREHOLDER-REWARDS-2026-02-25",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0225_16135.html",
+      "title": "SBI Shinsei Bank shareholder benefit includes XRP coupon",
+      "published_at": "2026-02-25",
+      "accessed_at_utc": "2026-10-27T22:14:48Z",
+      "note": "Official SBI Group release says eligible SBI Shinsei Bank shareholders may choose an XRP coupon fulfilled through SBI VC Trade. This is distinct from SBIC East Japan and SBI Capital; redemption volume is unknown."
+    }
+  ],
+  "limitations": [
+    "This is a timestamped partial research snapshot, not an exhaustive audit of every XRP ecosystem actor, market venue, filing, macro series or public discussion.",
+    "Company press releases establish what the company announced; they do not independently verify adoption volume, economic effect or future price.",
+    "No directional XRP price forecast is issued in this snapshot.",
+    "vidIQ API calls failed for insufficient credits; no credits were charged and those calls were not retried."
+  ],
+  "run_updates": [
+    {
+      "recorded_at_utc": "2026-10-27T19:06:43Z",
+      "update_type": "PR_CREATED",
+      "pr_number": 1195,
+      "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "branch": "research/xrp-ledger-20261027-1902z",
+      "initial_head_sha": "e76e7aa551d5fe05d39117c34b24395298861117",
+      "main_sha_at_pr_creation": "5d1d7bfd25c95e983133120e9585d591e6123de3",
+      "verification_at_recording": {
+        "json_parse": "PASS",
+        "required_field_checks": "PASS",
+        "source_id_resolution": "PASS",
+        "relationship_edges": 10,
+        "competing_hypotheses": 4,
+        "platform_entries": 9,
+        "forecast_status": "NOT_ISSUED",
+        "ci_at_recording": "Tests in progress; fail-closed merge gate passed",
+        "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:08:30Z",
+      "update_type": "RESEARCH_ENRICHMENT",
+      "details": "Added Circle's issuer-reported H1 2026 USDC scale metrics, the September 22, 2026 Binance investment/USDC distribution agreement, an evidence-linked relationship edge, and a competing distribution-economics hypothesis.",
+      "validation": "JSON parse and evidence-reference integrity check executed before commit.",
+      "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:09:30Z",
+      "update_type": "COLLATERAL_AND_CAPITAL_FLOW_ENRICHMENT",
+      "details": "Added current issuer-published USDC/RLUSD reserve balances, an explicitly derived RLUSD reserve-to-circulation ratio, evidence-linked reserve relationships and a competing collateral-flow hypothesis.",
+      "validation": "JSON parse and source-reference integrity check executed before commit.",
+      "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:10:30Z",
+      "update_type": "MACRO_CONTEXT_ENRICHMENT",
+      "details": "Added official Q2 GDP, September labor and CPI observations with publication dates, regime interpretation, missing variables and a macro-liquidity competing hypothesis.",
+      "validation": "JSON parse and source-reference integrity check executed before commit.",
+      "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:10:45Z",
+      "update_type": "WORKFLOW_WRITE_PATH_AUDIT",
+      "details": "Confirmed scheduled knowledge-signal and daily accuracy workflows write generated artifacts/history directly to main; added safe persistence redesign blocker and regression-test requirements.",
+      "validation": "JSON parse and source-reference integrity check executed before commit.",
+      "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T19:11:00Z",
+      "update_type": "FOMC_EVENT_CONTEXT",
+      "details": "Added the latest announced federal funds target range and marked the Oct 27–28 FOMC decision as a pending event at the snapshot cutoff.",
+      "validation": "JSON parse and source-reference integrity check executed before commit.",
+      "no_forecast_issued": true
+    },
+    {
+      "recorded_at_utc": "2026-10-27T20:02:20Z",
+      "update_type": "APPEND_ONLY_RUN_SNAPSHOT",
+      "snapshot_id": "XRP-RUN-2026-10-27T200220Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2002Z.json",
+      "snapshot_blob_sha": "b5a76e44ec2a9e7ffd5d9f92a236ec869b83d962",
+      "details": "Appended a timestamped evidence snapshot covering current XRP market-data quality, Coinbase/Circle/USDC relationships, Circle Arc, Standard Chartered/LMAX collateral plans, BNY XRP/RLUSD custody, C2FO/RLUSD settlement plans, SBIC versus SBI identity, public video leads, platform capability status, and current repository/CI blockers.",
+      "validation": {
+        "json_parse": "PASS",
+        "unique_source_ids": "PASS",
+        "relationship_source_reference_integrity": "PASS",
+        "hypothesis_source_reference_integrity": "PASS",
+        "forecast_status": "NOT_ISSUED",
+        "exact_stored_snapshot_re_read": "PASS",
+        "merge_performed": false,
+        "main_modified": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T20:06:11Z",
+      "update_type": "APPEND_ONLY_RESEARCH_AND_CI_DELTA",
+      "snapshot_id": "XRP-DELTA-2026-10-27T200611Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2006Z.json",
+      "snapshot_blob_sha": null,
+      "details": "Strengthened the likely Kamilah/Camila/Camilla Stevenson channel lead using public indexed metadata and an interview transcript; added one new video lead while keeping canonical identity and full inventory explicitly unverified. Also recorded PR #1202's isolated Databricks script-path fix and passing exact-head CI.",
+      "validation": {
+        "json_parse": "PASS",
+        "source_id_integrity": "PASS",
+        "video_source_reference_integrity": "PASS",
+        "PR1202_tests": "PASS",
+        "PR1202_fail_closed_gate": "PASS",
+        "full_video_inventory": "NOT_COMPLETE",
+        "merge_performed": false,
+        "main_modified": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T20:06:51Z",
+      "update_type": "SNAPSHOT_BLOB_SHA_VERIFIED",
+      "snapshot_id": "XRP-DELTA-2026-10-27T200611Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2006Z.json",
+      "snapshot_blob_sha": "5662551d3d7b0c007b3c3605967bca083577fc8e",
+      "validation": {
+        "exact_stored_file_re_read": "PASS",
+        "json_parse": "PASS",
+        "source_id_integrity": "PASS",
+        "video_source_reference_integrity": "PASS",
+        "main_modified": false,
+        "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:05:14Z",
+      "update_type": "APPEND_ONLY_RESEARCH_AND_REPOSITORY_DELTA",
+      "snapshot_id": "XRP-RUN-2026-10-27T210514Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2105Z.json",
+      "snapshot_blob_sha": "c1f6858a35c92c6ea6247c4485f253ec5b6f1314",
+      "details": "Added the Oct 27 BNY/Ripple custody announcement and conditional RLUSD/C2FO plans; reconciled Coinbase/Circle Q2 SEC disclosures and distribution economics; captured a timestamped but uncorroborated XRP derivatives snapshot; refreshed current main SHA, PR mergeability, branch-protection access limits, Databricks path failure, non-fast-forward operations failure and remaining direct-main write paths.",
+      "validation": {
+        "json_parse": "PASS",
+        "source_id_integrity": "PASS",
+        "snapshot_blob_sha": "RECORDED",
+        "repository_state_refreshed": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "market_data_approved_for_model": "FALSE"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:08:25Z",
+      "update_type": "APPEND_ONLY_REPOSITORY_CI_DELTA",
+      "snapshot_id": "XRP-REPO-DELTA-2026-10-27T210825Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2108Z.json",
+      "snapshot_blob_sha": "01a7f3ccb92c2eedfeec3ec2c115d0d22efcfc69",
+      "details": "Refreshed the research handoff after main advanced from cdbd5fb2 to 6c91a862 through merged PR #1218. Confirmed research PR #1195 exact-head CI and fail-closed gate passed. Main CI passed, while Databricks deployment and Barrot Operations Pipeline failed; the approval workflow still reports push-event failures with zero jobs and unresolved cause.",
+      "validation": {
+        "json_parse": "PASS",
+        "main_sha_refreshed": "PASS",
+        "research_pr_tests": "PASS",
+        "research_pr_fail_closed_gate": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "source_id_integrity": "PASS",
+        "new_edge_sources_resolve": "PASS",
+        "hypothesis_sources_resolve": "PASS",
+        "unique_source_ids": "PASS",
+        "snapshot_re_read": "PASS"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:10:28Z",
+      "update_type": "SNAPSHOT_LEDGER_LINK_AND_RESEARCH_ENRICHMENT",
+      "snapshot_id": "XRP-RESEARCH-DELTA-2026-10-27T210942Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2109Z.json",
+      "snapshot_blob_sha": "f930df74afa783338480bbdda070d7bb8b2a200d",
+      "details": "Linked the existing Coinbase/XRP-derivatives and Camilla Stephenson disambiguation snapshot into the durable ledger; added official Coinbase Q2/product sources and explicit counter-hypotheses. Exact-head CI and fail-closed gate passed on the immediately prior research commit d4fd1a; the ledger-linking commit itself requires a fresh CI result.",
+      "validation": {
+        "json_parse": "PASS",
+        "snapshot_re_read": "PASS",
+        "source_id_integrity": "PASS",
+        "relationship_source_integrity": "PASS",
+        "unique_source_ids": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "hypothesis_source_integrity": "PASS"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:11:39Z",
+      "update_type": "APPEND_ONLY_MARKET_DATA_QUALITY_DELTA",
+      "snapshot_id": "XRP-MARKET-DATA-QUALITY-2026-10-27T211139Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2111Z.json",
+      "snapshot_blob_sha": "82341d6b547079926dafa04c605e8022a9f009b8",
+      "details": "Added a cross-provider XRP open-interest comparison. Current public aggregates range from about $835.76M to $2.92B at differing timestamps and universes; no source was selected as ground truth. The feature remains blocked pending contract-level harmonization.",
+      "validation": {
+        "json_parse": "PASS",
+        "snapshot_re_read": "PASS",
+        "source_id_integrity": "PASS",
+        "unique_source_ids": "PASS",
+        "relationship_source_integrity": "PASS",
+        "hypothesis_source_integrity": "PASS",
+        "raw_exchange_reconstruction": "NOT_DONE",
+        "model_feature_admission": "BLOCKED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T21:13:07Z",
+      "update_type": "MISSION_PRIORITY_POLICY_LOCKED",
+      "details": "Made XRP intelligence and prediction-engine mastery the explicit highest-priority Barrot mission while retaining Barrot V3 as the execution and verification foundation. Recorded the nine target platforms, evidence standards, forecast validation requirements and non-destructive repository invariants in the durable ledger.",
+      "validation": {
+        "json_parse": "PASS",
+        "source_id_integrity": "PASS",
+        "relationship_source_integrity": "PASS",
+        "hypothesis_source_integrity": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "ci_status": "PENDING_FOR_THIS_COMMIT"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:03:13Z",
+      "update_type": "APPEND_ONLY_SBI_RAILS_USDC_SUPPLY_AND_REPO_STATE_DELTA",
+      "snapshot_id": "XRP-ECOSYSTEM-DELTA-2026-10-27T220313Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2203Z.json",
+      "snapshot_blob_sha": "77babf3902d80f0ee91b72ccca0b619f8b6306a7",
+      "details": "Added official-source records for SBI's XRP-selectable reward card, Japan RLUSD handling, SBI Ripple Asia's XRPL-related conceptual deposit PoC and Japan–Korea remittance research, plus Circle's native XRPL USDC documentation and Oct 26 circulation display. Recorded the apparent $1B/1.39% four-day USDC circulation change as issuer-dashboard-only, not an XRP flow proxy. Current main advanced six commits and 13 generated-data files since the prior observed SHA; no code/workflow files changed. PR #1195 is 44 commits behind and 24 ahead of observed main.",
+      "validation": {
+        "snapshot_json": "PASS_READBACK",
+        "unique_source_ids": "PENDING_POST_WRITE_READBACK",
+        "research_finding_source_integrity": "PENDING_POST_WRITE_READBACK",
+        "relationship_source_integrity": "PENDING_POST_WRITE_READBACK",
+        "hypothesis_source_integrity": "PENDING_POST_WRITE_READBACK",
+        "model_feature_admission": "BLOCKED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "merge_performed": false,
+        "ci_status": "PENDING_FOR_THIS_COMMIT"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:08:48Z",
+      "update_type": "APPEND_ONLY_REPOSITORY_SIGNAL_INTEGRITY_AND_SAFETY_PR_DELTA",
+      "snapshot_id": "XRP-REPO-SAFETY-DELTA-2026-10-27T220604Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2206Z.json",
+      "snapshot_blob_sha": "e429ea0f71345c04d9f6dc8e5537477b6a83373d",
+      "details": "Recorded current main SHA a371918 with a paper-trading-log-only commit after 26bc783. Captured invalid XRP signal and legacy accuracy status. Added fresh-main draft PR #1220 with the previously tested signal-integrity repair; fail-closed gate passed, exact-head CI remained in progress at capture time.",
+      "validation": {
+        "snapshot_json": "PASS_READBACK",
+        "unique_source_ids": "PENDING_POST_WRITE_READBACK",
+        "critical_finding_source_integrity": "PENDING_POST_WRITE_READBACK",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "pr_1220_ci": "IN_PROGRESS_AT_CAPTURE",
+        "pr_1220_gate": "SUCCESS"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:09:23Z",
+      "update_type": "APPEND_ONLY_VERIFIED_SIGNAL_INTEGRITY_CI_RESULT",
+      "snapshot_id": "XRP-CI-VERIFICATION-2026-10-27T220923Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2209Z.json",
+      "snapshot_blob_sha": "a9fabdbcb5b3bcf33684f97572299a6d8e9c4497",
+      "details": "Verified PR #1220 exact-head CI completed successfully with 164 tests passing in 6.11 seconds and its fail-closed gate passed. PR remains draft and unmerged; current main signal and legacy accuracy artifacts remain invalid until a reviewed fix is deployed.",
+      "validation": {
+        "snapshot_json": "PASS_READBACK",
+        "ci_exact_head": "PASS_164_TESTS",
+        "fail_closed_gate": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:10:20Z",
+      "update_type": "APPEND_ONLY_CURRENT_RESEARCH_BRANCH_DIVERGENCE_CHECK",
+      "details": "Rechecked current repository refs after PR #1220 CI completed. Main remains at a371918; PR #1220 remains open/draft with 164 tests and fail-closed gate passing. PR #1195 remains open/draft, 32 commits ahead and 45 behind main; preserve it and do not merge.",
+      "validation": {
+        "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+        "pr_1220_ci": "PASS_164_TESTS",
+        "pr_1220_gate": "PASS",
+        "pr_1195_ahead_by": 32,
+        "pr_1195_behind_by": 45,
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:11:49Z",
+      "update_type": "APPEND_ONLY_VIDEO_IDENTITY_CANDIDATE_AND_RESEARCH_BRANCH_CI",
+      "snapshot_id": "XRP-VIDEO-IDENTITY-CI-DELTA-2026-10-27T221149Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2211Z.json",
+      "snapshot_blob_sha": "9604ac89fd89bb4ec8601426f2009dbe997e78c3",
+      "details": "Added a public YouTube channel candidate named Kamilah Stevenson | Xrp & Stocks and two indexed videos on XRP/liquidity. The exact requested identity Camilla Stephenson remains unverified and the public-video inventory is incomplete. Also verified research PR #1195 head 44a9ce7 passed 145 tests in 5.81 seconds and its fail-closed gate passed; subsequent ledger commits remain unverified.",
+      "validation": {
+        "video_identity": "CANDIDATE_ONLY",
+        "public_video_inventory": "INCOMPLETE",
+        "research_pr_1195_ci": "PASS_145_TESTS_ON_HEAD_44a9ce7",
+        "research_pr_1195_gate": "PASS_ON_HEAD_44a9ce7",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:13:13Z",
+      "update_type": "APPEND_ONLY_USDC_CROSS_SOURCE_RECONCILIATION",
+      "snapshot_id": "USDC-SUPPLY-RECONCILIATION-2026-10-27T221313Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2213Z.json",
+      "snapshot_blob_sha": "ba2968fe2fb7dea6e36b069a2ef4fc22003f297b",
+      "details": "Added independent DefiLlama-based, CoinGecko-based, SatoshiMacro, Stablecoin Beat and CoinLore observations. Current Oct 26-27 readings broadly cluster around $71.0B-$71.7B, but the prior issuer-reported $72B Oct 22 value conflicts with third-party market-cap estimates near $74B. The earlier $1B issuer-page delta is not treated as a precise redemption estimate; the supply feature remains blocked. Research branch head 87003b6 passed 145 tests in 5.52s and its gate passed; this new snapshot/ledger update is newer.",
+      "validation": {
+        "snapshot_json": "PASS_READBACK",
+        "source_ids_unique": "PENDING_POST_WRITE_READBACK",
+        "cross_source_refs": "PENDING_POST_WRITE_READBACK",
+        "research_pr_1195_ci": "PASS_145_TESTS_ON_HEAD_87003b6",
+        "research_pr_1195_gate": "PASS_ON_HEAD_87003b6",
+        "model_feature_admission": "BLOCKED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:14:48Z",
+      "update_type": "APPEND_ONLY_SBIC_IDENTITY_AND_VERIFIED_SBI_XRP_RAILS",
+      "snapshot_id": "SBIC-IDENTITY-SBI-XRP-RELATIONSHIPS-2026-10-27T221448Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-27T2214Z.json",
+      "snapshot_blob_sha": "1efb0b0744664c0e237bc16e054abebebd258199",
+      "details": "Disambiguated two official Japan-related SBIC candidates: SBIC East Japan and historical SBI Capital/SBIC. Added official evidence that SBI Remit/Coins.ph/SBI VC Trade launched XRP-based ODL, while Ripple says SBI Ripple Asia itself does not handle XRP. Added SBI ARUHI and SBI Shinsei XRP shareholder-benefit channels. Exact phrase 'SBIC, ChatGPT SBIC' remains unresolved.",
+      "validation": {
+        "source_ids_unique": "PENDING_POST_WRITE_READBACK",
+        "entity_separation": "PASS",
+        "direct_sbi_remit_xrp_link": "CONFIRMED_BY_OFFICIAL_ANNOUNCEMENTS",
+        "direct_sbic_xrp_link": "NOT_ESTABLISHED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-27T22:16:38Z",
+      "update_type": "APPEND_ONLY_FINAL_RESEARCH_LEDGER_CI_VERIFICATION",
+      "validated_commit": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30",
+      "details": "Verified exact-head CI completed successfully with 145 tests passing in 5.89 seconds and the fail-closed gate passed. This validation applies to cc16b4b; the following ledger metadata commit is newer and must be checked separately.",
+      "validation": {
+        "ci": "PASS_145_TESTS",
+        "gate": "PASS",
+        "validated_head_sha": "cc16b4bb70189cf4af12cd821bba4c0b05cc8e30",
+        "main_modified": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    }
+  ],
+  "mission_priority": {
+    "highest_priority": "XRP intelligence and prediction-engine mastery",
+    "execution_and_verification_foundation": "Barrot V3",
+    "operating_mode": "Quiet, sustained, non-disruptive research using lawful public or authorized sources",
+    "mandatory_controls": [
+      "Separate confirmed facts, sourced claims, inference, speculation, unknowns and disconfirming evidence.",
+      "No unauthorized access, deception, private data, manipulation or illegal activity.",
+      "No forecast without timestamped cutoff, fixed horizon, target, assumptions, probability/confidence, alternatives, model version and outcome scoring protocol.",
+      "No real-money use before walk-forward validation, calibration, leakage controls, drift monitoring and paper/shadow evaluation.",
+      "Preserve dirty worktrees and current V3 code; never reset, clean, stash, overwrite, discard, force-push, merge or make consequential external changes without approval.",
+      "Treat DESIGNED, EXECUTED and VERIFIED as distinct; record evidence for every claimed action.",
+      "Do not claim live collaboration across target platforms without tested authentication, permissions and end-to-end evidence."
+    ],
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "forecast_status": "NOT_ISSUED"
+  }
+}
