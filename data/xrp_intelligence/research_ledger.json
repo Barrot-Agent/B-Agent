@@ -14,13 +14,14 @@
       "DISCONFIRMING_EVIDENCE"
     ],
     "forecast_rule": "No price forecast is valid unless data cutoff, target, horizon, assumptions, probability, alternatives, and outcome protocol are recorded before the outcome is known.",
-    "source_use_rule": "Prefer official primary sources and public ledger records. Do not scrape, mirror or re-host provider-derived datasets when published terms prohibit it; obtain permission or independently reproduce the fact from a permitted public source."
+    "source_use_rule": "Prefer official primary sources and public ledger records. Do not scrape, mirror or re-host provider-derived datasets when published terms prohibit it; obtain permission or independently reproduce the fact from a permitted public source.",
+    "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T00:11:09Z",
+    "captured_at_utc": "2026-10-28T00:15:31Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "f315177c24dc64fc0b49957ea5643f2f7d868701",
+      "main_sha": "da52a95c17ac2cffc55197593620360ebedd5dea",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -69,89 +70,91 @@
         {
           "number": 1195,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
-          "title": "Research: add evidence-led XRP intelligence ledger snapshot",
           "state": "open",
           "draft": true,
-          "head_sha": "1f7795970c5e8016f7a31b3043295aa57803ee2b",
-          "mergeable": true,
+          "head_sha": "2ef149c52745e44b60044bc5cd6d47efc05ff6d1",
           "checks": {
-            "Tests": "in_progress_at_capture",
+            "Tests": "success_145_passed",
             "Merge disabled pending gate verification": "success"
           },
-          "ahead_by": 44,
-          "behind_by": 60,
-          "blocker": "Historical branch is substantially diverged; preserve it and use fresh-main successor #1227 for review."
+          "ahead_by": 48,
+          "behind_by": 61,
+          "blocker": "Preserve historical branch; use fresh-main successor #1227 for review."
         },
         {
           "number": 1223,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1223",
-          "title": "Safety: require device-local approval for queued Termux commands",
           "state": "open",
           "draft": true,
           "head_sha": "ff8f4879a76157b79316a91ed8fa11671fa14780",
-          "mergeable": true,
           "checks": {
-            "Tests": "success",
+            "Tests": "success_148_passed",
             "Merge disabled pending gate verification": "success"
           }
         },
         {
           "number": 1224,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1224",
-          "title": "Safety: fresh-main XRP signal integrity and honest forecast evaluation",
           "state": "open",
           "draft": true,
           "head_sha": "ec7a70162cc09ba0ac2450a580b2dab67cd2dbf4",
-          "mergeable": true,
           "checks": {
-            "Tests": "success",
+            "Tests": "success_164_passed",
             "Merge disabled pending gate verification": "success"
           }
         },
         {
           "number": 1225,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1225",
-          "title": "Add dependency-aware bundle task execution and durable resume",
           "state": "open",
           "draft": true,
           "head_sha": "b84deb8a2ab17130479c7fff1ce28bd1646d7ac4",
-          "mergeable": true,
           "checks": {
-            "Tests": "success",
+            "Tests": "success_155_passed",
             "Merge disabled pending gate verification": "success"
           }
         },
         {
           "number": 1226,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1226",
-          "title": "Safety: make scheduled signal writers artifact-only",
           "state": "open",
           "draft": true,
           "head_sha": "ae17e56ab245f575317beab35b96178dff4732a4",
-          "mergeable": true,
+          "checks": {
+            "Tests": "success_146_passed",
+            "Merge disabled pending gate verification": "success"
+          },
+          "ahead_by": 3,
+          "behind_by": 2,
+          "merge_base": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
+        },
+        {
+          "number": 1227,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
+          "state": "open",
+          "draft": true,
+          "head_sha": "6c432e0dc5d0c655e00fe0e71e199f3b93791cab",
+          "checks": {
+            "Tests": "success_145_passed",
+            "Merge disabled pending gate verification": "success"
+          },
+          "ahead_by": 5,
+          "behind_by": 2,
+          "merge_base": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
+        },
+        {
+          "number": 1228,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1228",
+          "state": "open",
+          "draft": true,
+          "head_sha": "649d3f60a4a2924e5124607c43609908ad1ed4c7",
           "checks": {
             "Tests": "success_146_passed",
             "Merge disabled pending gate verification": "success"
           },
           "ahead_by": 3,
           "behind_by": 1,
-          "base_sha": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
-        },
-        {
-          "number": 1227,
-          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
-          "title": "Research: carry XRP intelligence ledger onto fresh main",
-          "state": "open",
-          "draft": true,
-          "head_sha": "19374ff56bab3307ef957212fa29c9148c70591a",
-          "mergeable": true,
-          "checks": {
-            "Tests": "success_145_passed",
-            "Merge disabled pending gate verification": "success"
-          },
-          "ahead_by": 2,
-          "behind_by": 1,
-          "base_sha": "a960255f2b7b0418694ee428bc82fbbeed6622dd"
+          "merge_base": "f315177c24dc64fc0b49957ea5643f2f7d868701"
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -161,18 +164,18 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "message": "chore: Barrot telemetry report",
-        "authored_at_utc": "2026-10-28T00:07:00Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/f315177c24dc64fc0b49957ea5643f2f7d868701"
+        "message": "Paper trade cycle [skip ci]",
+        "authored_at_utc": "2026-10-28T00:12:40Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/da52a95c17ac2cffc55197593620360ebedd5dea",
+        "scope": "Appended a BTC-USD paper-trading log row; no source-code change identified in the inspected diff."
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "f315177c24dc64fc0b49957ea5643f2f7d868701",
+        "main_sha": "da52a95c17ac2cffc55197593620360ebedd5dea",
         "main_branch_protected": true,
         "branch_protection_details": "Detailed protection read remains 403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION; effective required checks not independently verified.",
         "main_ci": {
-          "current_head_status": "NOT_CHECKED_THIS_RUN",
-          "note": "The current main head advanced by a telemetry-report commit; no exact-head main CI result was collected in this run."
+          "current_head_status": "NOT_CHECKED_THIS_RUN"
         }
       },
       "current_research_head": "d4fd1a34370ca3d53f736660de11ed9174207cf0",
@@ -267,7 +270,7 @@
         "id": "TELEMETRY-HARDCODED-003",
         "evidence_class": "REPOSITORY_OBSERVATION",
         "severity": "high",
-        "status": "UNVERIFIED_STATIC_OUTPUT; QUARANTINE_OR_REFACTOR_REQUIRED",
+        "status": "FIX_PROPOSED_IN_OPEN_DRAFT_PR_1228; EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS",
         "files": [
           {
             "path": "barrot_agent/analysis/xrp_telemetry_matrix.py",
@@ -276,7 +279,15 @@
         ],
         "finding": "The report generator hardcodes sentiment_score=0.94, market_price=1.185, shear_variance=0.233 and prints MAX_LIQUIDITY plus an accumulation-alignment recommendation without obtaining market, liquidity, Hugging Face, or Databricks data.",
         "consequence": "Its output must not be treated as observed telemetry, model evidence, or an investment signal.",
-        "next_action": "Replace fabricated values with timestamped source-backed observations or explicit UNAVAILABLE states; remove trading recommendations from this report path; add regression tests."
+        "next_action": "Replace fabricated values with timestamped source-backed observations or explicit UNAVAILABLE states; remove trading recommendations from this report path; add regression tests.",
+        "proposed_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1228",
+        "verification": {
+          "ci": "PASS",
+          "tests_passed": 146,
+          "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607508291",
+          "gate": "PASS",
+          "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607508342"
+        }
       },
       {
         "id": "MERGE-QUEUE-004",
@@ -707,6 +718,41 @@
           "SRC-XRPL-MPT-ISSUANCE-DOCS"
         ],
         "uncertainty": "Recheck official protocol documentation and amendment status before future model use, because implementation support can change."
+      },
+      {
+        "id": "PR-1228-FAIL-CLOSED-XRP-TELEMETRY-2026",
+        "evidence_class": "VERIFIED_CODE_CHANGE_PROPOSAL_AND_CI",
+        "status": "OPEN_DRAFT_EXACT_HEAD_CI_AND_GATE_PASS",
+        "claim": "PR #1228 removes hardcoded XRP price/sentiment/liquidity/shear values and accumulation language from the current telemetry report, emits explicit UNAVAILABLE/NOT_ISSUED states, and avoids overwriting an existing COUNCIL_REVIEW.md.",
+        "interpretation": "This is a safety correction, not a live data adapter or predictive model. It prevents the existing report from presenting fabricated values as observations.",
+        "source_ids": [
+          "SRC-REPO-PR-1228-2026-10-28",
+          "SRC-REPO-CI-1228-2026-10-28",
+          "SRC-REPO-GATE-1228-2026-10-28"
+        ],
+        "uncertainty": "Live source adapters, feature store and prediction engine remain unimplemented/ungated; PR is draft and unmerged."
+      },
+      {
+        "id": "UPGRADE-BUNDLE-OVERWRITE-AUTO-PUSH-RISK-2026",
+        "evidence_class": "DIRECT_CODE_INSPECTION",
+        "status": "INSPECTED_NOT_EXECUTED_REQUIRES_REDESIGN",
+        "claim": "barrot_agent/tools/upgrade_bundle.py overwrites files under ~/barrot without backup/overwrite protection, includes an uncalibrated BUY/SELL/NULL telemetry implementation, embeds an hourly workflow that pushes generated reports, and prints git add -A/commit/push instructions.",
+        "interpretation": "Do not execute this bundle until it is redesigned to preserve existing files, remove direct-push automation, fail closed on provider errors, and separate live data acquisition from any forecast.",
+        "source_ids": [
+          "SRC-REPO-UPGRADE-BUNDLE-2026-10-28"
+        ],
+        "uncertainty": "The bundle was inspected but not executed; its generated files and runtime behavior have not been tested."
+      },
+      {
+        "id": "APPROVAL-WORKFLOW-ZERO-JOB-ANOMALY-2026",
+        "evidence_class": "VERIFIED_FAILED_RUN_AND_WORKFLOW_CONTENT",
+        "status": "ROOT_CAUSE_UNRESOLVED",
+        "claim": "A push-event run of .github/workflows/barrot-approve-pr.yml fails with zero jobs even though the current workflow file declares workflow_dispatch only and has the same blob on main and the tested branch.",
+        "interpretation": "The event/definition mismatch is reproducible but its cause is not established. Do not claim it is fixed or modify the approval workflow without a grounded root-cause finding.",
+        "source_ids": [
+          "SRC-REPO-APPROVAL-WORKFLOW-ANOMALY-2026-10-28"
+        ],
+        "uncertainty": "No job logs exist because the run has zero jobs; the platform-level trigger inconsistency remains unexplained."
       }
     ],
     "relationship_graph": [
@@ -1637,10 +1683,16 @@
       ]
     },
     "next_actions": [
+      "Keep PR #1228 draft/unmerged; its current exact head passed 146 tests and the fail-closed gate. It prevents fabricated telemetry but does not implement live market data.",
+      "Do not execute barrot_agent/tools/upgrade_bundle.py: it overwrites home-directory files and embeds a direct-push workflow plus uncalibrated BUY/SELL/NULL logic. Redesign it separately.",
+      "Review PR #1226 to stop scheduled signal workflows from committing generated data directly to main; no merge without approval.",
+      "Review fresh-main ledger PR #1227; it has 145 passing tests and a passing fail-closed gate on head 6c432, but main advances through generated paper-trading records.",
+      "Investigate the recurring barrot-approve-pr.yml push-event/zero-job failure; current file is workflow_dispatch-only, so root cause remains unresolved.",
+      "Resolve the Aviva GBP MPT supply/flags through permitted public XRPL ledger access; do not scrape or mirror third-party derived analytics.",
+      "Keep prediction status NOT_ISSUED until synchronized features, fixed-horizon walk-forward testing, leakage controls, calibration and shadow evaluation pass.",
       "Resolve Aviva GBP MPT issuance state using permitted public XRPL ledger access; do not scrape or mirror vendor-derived datasets.",
       "Separate MPT flags from implemented DEX functionality and fund-specific redemption/transfer terms.",
       "Keep the £50M fund-share investment and £22B underlying AUM separate from XRP spot demand, collateral and bridge use.",
-      "Review PR #1226 artifact-only signal workflow safety and PR #1227 fresh-main research handoff; both remain draft and unmerged.",
       "Keep the permanent feature-store design separate from 30-day CI artifacts.",
       "Review fresh-main research successor PR #1227; it has 145 passing tests and a passing fail-closed gate on head 19374ff, but main advanced one telemetry-report commit after its parent.",
       "Independently reproduce Aviva's public XRPL token IDs, balances and transfer rules without scraping or re-hosting vendor-derived data; separate tokenized fund shares from XRP flows.",
@@ -1971,18 +2023,21 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-AVIVA-MPT-SEMANTICS-CONFLICT-2026-10-28T001109Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0011Z.json",
-    "snapshot_blob_sha": "37458caf472712aed510209fd9ab550b6dd93ba8",
-    "current_research_head_before_ledger_update": "f3026297cea45d75b21099bb5f09d52ca7b2ad1a",
+    "snapshot_id": "XRP-RUN-HANDOFF-2026-10-28T001531Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0015Z.json",
+    "snapshot_blob_sha": "20ad53c42966c770888df17e6998e152132b560f",
+    "current_research_head_before_ledger_update": "6c432e0dc5d0c655e00fe0e71e199f3b93791cab",
     "current_research_checks": {
-      "tests": "NOT_CHECKED_AT_CAPTURE",
-      "gate": "NOT_CHECKED_AT_CAPTURE",
-      "as_of_utc": "2026-10-28T00:11:09Z",
-      "validated_head_sha": "f3026297cea45d75b21099bb5f09d52ca7b2ad1a",
-      "note": "This snapshot records the branch head before the ledger index update; exact-head CI for this snapshot commit must be checked separately."
+      "tests": "PASS",
+      "tests_passed": 145,
+      "duration_seconds": 5.92,
+      "gate": "PASS",
+      "as_of_utc": "2026-10-28T00:15:31Z",
+      "validated_head_sha": "6c432e0dc5d0c655e00fe0e71e199f3b93791cab",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607241515",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607241496"
     },
-    "current_research_head_before_final_verification_record": "f3026297cea45d75b21099bb5f09d52ca7b2ad1a"
+    "current_research_head_before_final_verification_record": "6c432e0dc5d0c655e00fe0e71e199f3b93791cab"
   },
   "sources": [
     {
@@ -2662,6 +2717,46 @@
       "title": "Bithomp Aviva USD MPT page",
       "accessed_at_utc": "2026-10-28T00:11:09Z",
       "note": "Secondary explorer for the USD AUS instrument reports 50,050,000 outstanding; this is a distinct MPT from GBP AGB and cannot resolve GBP flags/supply."
+    },
+    {
+      "id": "SRC-REPO-PR-1228-2026-10-28",
+      "evidence_class": "VERIFIED_OPEN_DRAFT_PR",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1228",
+      "title": "Fail-closed XRP telemetry report fix",
+      "accessed_at_utc": "2026-10-28T00:15:31Z",
+      "note": "Proposed replacement of hardcoded market values/recommendations with explicit UNAVAILABLE states, NOT_ISSUED, and exclusive file creation to preserve existing user content."
+    },
+    {
+      "id": "SRC-REPO-CI-1228-2026-10-28",
+      "evidence_class": "VERIFIED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607508291",
+      "title": "PR #1228 exact-head CI",
+      "accessed_at_utc": "2026-10-28T00:15:31Z",
+      "note": "Exact head 649d3f60a4a2924e5124607c43609908ad1ed4c7 passed 146 tests in 4.90 seconds after an initial test-only Markdown assertion mismatch was corrected."
+    },
+    {
+      "id": "SRC-REPO-GATE-1228-2026-10-28",
+      "evidence_class": "VERIFIED_FAIL_CLOSED_GATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607508342",
+      "title": "PR #1228 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T00:15:31Z",
+      "note": "Gate passed on exact head 649d3f60a4a2924e5124607c43609908ad1ed4c7; PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-REPO-UPGRADE-BUNDLE-2026-10-28",
+      "evidence_class": "INSPECTED_CODE_NOT_EXECUTED",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/barrot_agent/tools/upgrade_bundle.py",
+      "title": "Barrot upgrade bundle writer",
+      "accessed_at_utc": "2026-10-28T00:15:31Z",
+      "note": "497-line script writes several files under ~/barrot with Path.write_text, embeds an hourly workflow with git push, prints git add -A/commit/push instructions, and includes an uncalibrated BUY/SELL/NULL signal path. Not executed."
+    },
+    {
+      "id": "SRC-REPO-APPROVAL-WORKFLOW-ANOMALY-2026-10-28",
+      "evidence_class": "VERIFIED_FAILED_WORKFLOW_RUN_WITH_UNRESOLVED_ROOT_CAUSE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607500983",
+      "title": "Push-triggered zero-job approval workflow anomaly",
+      "accessed_at_utc": "2026-10-28T00:15:31Z",
+      "note": "Run reports push event and failure with zero jobs although .github/workflows/barrot-approve-pr.yml currently declares workflow_dispatch only and the blob is identical on main and tested branch. Root cause unresolved; no fix claimed."
     }
   ],
   "limitations": [
@@ -3084,6 +3179,25 @@
         "forecast_status": "NOT_ISSUED",
         "main_modified": false,
         "merge_performed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T00:15:31Z",
+      "update_type": "APPEND_ONLY_TELEMETRY_SAFETY_AND_BUNDLE_RISK_HANDOFF",
+      "snapshot_id": "XRP-RUN-HANDOFF-2026-10-28T001531Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0015Z.json",
+      "snapshot_blob_sha": "20ad53c42966c770888df17e6998e152132b560f",
+      "details": "Recorded PR #1228 exact-head CI/gate pass after correcting a Markdown assertion, inspected the unexecuted upgrade_bundle.py overwrite/direct-push/uncalibrated-signal risks, and documented the unresolved push-event zero-job approval workflow anomaly.",
+      "validation": {
+        "snapshot_json": "PASS",
+        "pr1228_ci": "PASS_146_TESTS",
+        "pr1228_gate": "PASS",
+        "pr1227_ci": "PASS_145_TESTS",
+        "pr1227_gate": "PASS",
+        "main_modified": false,
+        "merge_performed": false,
+        "upgrade_bundle_executed": false,
+        "forecast_status": "NOT_ISSUED"
       }
     }
   ],
