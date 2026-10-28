@@ -695,3 +695,32 @@ def test_groq_json_validation_failure_retries_without_response_format(monkeypatc
     assert "response_format" in seen[0]
     assert "response_format" not in seen[1]
 
+
+
+def test_scheduled_signal_workflows_are_read_only_and_artifact_based() -> None:
+    workflows = {
+        "knowledge-signal-cycle.yml": (
+            ".github/workflows/knowledge-signal-cycle.yml",
+            (
+                "ping-pongings/knowledge-base/",
+                "web/latest_signal.json",
+                "web/signal_history.jsonl",
+            ),
+        ),
+        "check-signal-accuracy.yml": (
+            ".github/workflows/check-signal-accuracy.yml",
+            ("web/signal_history.jsonl", "web/signal_accuracy.json"),
+        ),
+    }
+
+    for name, (relative_path, expected_outputs) in workflows.items():
+        workflow = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
+        assert "contents: read" in workflow, name
+        assert "contents: write" not in workflow, name
+        assert "git commit" not in workflow, name
+        assert "git push" not in workflow, name
+        assert "actions/upload-artifact@" in workflow, name
+        assert "if: always()" in workflow, name
+        assert "retention-days: 30" in workflow, name
+        for output in expected_outputs:
+            assert output in workflow, (name, output)
