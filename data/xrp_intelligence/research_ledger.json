@@ -8830,28 +8830,28 @@
       "limitation": "No position_product write included; any state repair requires separate approval."
     },
     "snapshot_blob_sha": "8054187512ad62bd7a42a23cd4da7bb68bc0cc82",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T19:07:50Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T19:10:45Z",
     "snapshot_commit_sha": "e3f66eaf518d07529da05ecf8b83a817a242882e",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; PRIOR_INDEX_HEAD_VERIFIED; SUCCESSOR_INDEX_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; INDEX_HEAD_0D95CF_VERIFIED; SUCCESSOR_INDEX_PENDING",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "8054187512ad62bd7a42a23cd4da7bb68bc0cc82",
       "snapshot_commit_sha": "e3f66eaf518d07529da05ecf8b83a817a242882e",
-      "verified_prior_index_head": "b66580cd4259b347d72678f62966b49d31b30e1e",
-      "prior_index_ci": {
+      "verified_index_head": "0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3",
+      "ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 5.3,
-        "run_id": 40743928670,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743928670"
+        "duration_seconds": 6.24,
+        "run_id": 40751862391,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862391"
       },
-      "prior_index_gate": {
+      "gate": {
         "status": "PASS",
-        "run_id": 40743928684,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743928684"
+        "run_id": 40751862668,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862668"
       },
-      "new_index_ci": "PENDING_AFTER_WRITE",
-      "new_index_gate": "PENDING_AFTER_WRITE"
+      "successor_index_ci": "PENDING_AFTER_WRITE",
+      "successor_index_gate": "PENDING_AFTER_WRITE"
     }
   },
   "sources": [
@@ -12838,6 +12838,22 @@
       "title": "CoinGlass XRP market overview",
       "accessed_at_utc": "2026-10-28T19:07:50Z",
       "note": "Displays USD 2.93B OI, USD 2.23B futures volume, USD 398.58M spot volume and USD 83.05B market cap; underlying timestamp and full venue universe unresolved."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-0D95CF-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862391",
+      "title": "Research index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T19:10:45Z",
+      "note": "Index commit 0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3 passed 145 tests in 6.24 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-0D95CF-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862668",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T19:10:45Z",
+      "note": "Fail-closed gate passed for index commit 0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3."
     }
   ],
   "limitations": [
@@ -15327,15 +15343,42 @@
         "new_index_ci": "PENDING_AFTER_WRITE",
         "new_index_gate": "PENDING_AFTER_WRITE"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T19:10:45Z",
+      "update_type": "RESEARCH_INDEX_CI_AND_GATE_VERIFIED",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1907Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1907Z.json",
+      "details": "Verified research index commit 0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3 through exact-head CI (145 tests in 6.24s) and fail-closed gate. Snapshot 1907Z blob SHA matches the indexed snapshot; source IDs are unique and source references resolve. Successor index commit requires its own checks.",
+      "source_ids": [
+        "SRC-GH-LEDGER-CI-0D95CF-2026-10-28",
+        "SRC-GH-LEDGER-GATE-0D95CF-2026-10-28"
+      ],
+      "validation": {
+        "verified_index_head": "0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3",
+        "ci": "PASS_145_TESTS_6.24S",
+        "ci_run_id": 40751862391,
+        "gate": "PASS",
+        "gate_run_id": 40751862668,
+        "snapshot_blob_readback": "PASS",
+        "snapshot_blob_sha": "8054187512ad62bd7a42a23cd4da7bb68bc0cc82",
+        "source_ids_unique": "PASS",
+        "missing_source_refs": 0,
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "new_index_gate": "PENDING_AFTER_WRITE"
+      }
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-28T19:07:50Z",
+    "as_of_utc": "2026-10-28T19:10:45Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
     "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1907Z.json",
-    "next_action": "Review PR #1264; keep state unchanged; reconcile XRP open-interest coverage and timestamps before feature admission."
+    "next_action": "Review PR #1264; preserve the paper-trading state; reconcile XRP OI provider coverage; split or compact the research index before it approaches the GitHub content API size limit."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -15554,22 +15597,22 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "b66580cd4259b347d72678f62966b49d31b30e1e",
+  "current_research_head_before_ledger_update": "0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3",
   "current_research_head_this_run": "PENDING_AFTER_INDEX_WRITE",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; PRIOR_INDEX_HEAD_VERIFIED; SUCCESSOR_INDEX_PENDING",
-    "previous_index_head": "b66580cd4259b347d72678f62966b49d31b30e1e",
+    "status": "PRIOR_INDEX_VERIFIED; SUCCESSOR_INDEX_PENDING",
+    "previous_index_head": "0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3",
     "previous_index_ci": {
       "status": "PASS",
       "tests_passed": 145,
-      "duration_seconds": 5.3,
-      "run_id": 40743928670,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743928670"
+      "duration_seconds": 6.24,
+      "run_id": 40751862391,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862391"
     },
     "previous_index_gate": {
       "status": "PASS",
-      "run_id": 40743928684,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743928684"
+      "run_id": 40751862668,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862668"
     },
     "snapshot_blob_readback_ok": true,
     "snapshot_blob_sha": "8054187512ad62bd7a42a23cd4da7bb68bc0cc82",
@@ -15577,8 +15620,8 @@
     "new_index_gate": "PENDING_AFTER_WRITE"
   },
   "ledger_metrics": {
-    "source_records": 493,
-    "run_updates": 100,
+    "source_records": 495,
+    "run_updates": 101,
     "limitations": 87,
     "relationship_edges": 104,
     "competing_hypotheses": 65,
