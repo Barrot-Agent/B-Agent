@@ -695,3 +695,31 @@ def test_groq_json_validation_failure_retries_without_response_format(monkeypatc
     assert "response_format" in seen[0]
     assert "response_format" not in seen[1]
 
+
+
+def test_xrp_telemetry_report_fails_closed_and_preserves_existing_file(tmp_path):
+    import asyncio
+
+    from barrot_agent.analysis.xrp_telemetry_matrix import CouncilReportNode
+
+    existing = tmp_path / "COUNCIL_REVIEW.md"
+    original_content = "USER WORK — preserve this file exactly.\\n"
+    existing.write_text(original_content, encoding="utf-8")
+
+    node = CouncilReportNode()
+    node.report_path = existing
+    report = asyncio.run(node.generate_report())
+
+    assert existing.read_text(encoding="utf-8") == original_content
+    assert node.last_report_path is not None
+    assert node.last_report_path != existing
+    assert node.last_report_path.exists()
+    assert "NOT_ISSUED" in report
+    assert "Market price:** UNAVAILABLE" in report or "Market price: UNAVAILABLE" in report
+    assert "No live market data was fetched by this module." in report
+    assert "MAX_LIQUIDITY" not in report
+    assert "0.94" not in report
+    assert "1.185" not in report
+    assert "0.233" not in report
+    assert "optimal accumulation alignment" not in report.lower()
+    assert "Trade recommendation: NONE" in report
