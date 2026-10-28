@@ -4478,6 +4478,22 @@
       "title": "Ledger compaction PR state before this run's ledger append",
       "accessed_at_utc": "2026-10-28T22:09:08.131Z",
       "note": "PR #1265 is draft/open/unmerged; base research/xrp-ledger-fresh-main-20261028-1217z at 5dc82c5d3665ac379f75bd4e75da2301f305b6f1; head 4582ca9f0b516345046a25090375561b57dd9236 before this run; automated CI/gate not triggered for this research-base PR."
+    },
+    {
+      "id": "SRC-RUN13-PR1265-GATE-20261028T2209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777791185",
+      "title": "Ledger-compaction PR fail-closed gate on index commit 3489319",
+      "accessed_at_utc": "2026-10-28T22:10:46.935Z",
+      "note": "The fail-closed gate passed on index commit 34893193b0914dee31074a546939e666ea160d02. This is gate evidence only; the core CI workflow did not run for the research-base PR."
+    },
+    {
+      "id": "SRC-RUN13-APPROVAL-ZERO-JOBS-20261028T2209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777777959",
+      "title": "Approval workflow zero-job recurrence after ledger-index push",
+      "accessed_at_utc": "2026-10-28T22:10:46.935Z",
+      "note": "Push-event run on the ledger index commit failed with zero jobs; the inspected approval workflow declares workflow_dispatch only. Root cause remains unknown."
     }
   ],
   "limitations": [
@@ -7417,6 +7433,29 @@
         "SRC-RUN13-OPEN-PR-INVENTORY-20261028T2208Z",
         "SRC-RUN13-PR1265-STATE-20261028T2208Z"
       ]
+    },
+    {
+      "recorded_at_utc": "2026-10-28T22:10:46.935Z",
+      "update_type": "POST_COMPACTION_INDEX_GATE_VERIFICATION_AND_ZERO_JOB_RECURRENCE",
+      "verified_index_head": "34893193b0914dee31074a546939e666ea160d02",
+      "gate_status": "PASS",
+      "gate_run_id": 40777791185,
+      "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777791185",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "approval_workflow_run_id": 40777777959,
+      "approval_workflow_event": "push",
+      "approval_workflow_jobs": 0,
+      "approval_workflow_conclusion": "failure",
+      "approval_root_cause": "UNKNOWN",
+      "main_sha": "fadcb97e28854889ea69ebb90fcd12909cfa5640",
+      "main_modified": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment": false,
+      "source_ids": [
+        "SRC-RUN13-PR1265-GATE-20261028T2209Z",
+        "SRC-RUN13-APPROVAL-ZERO-JOBS-20261028T2209Z"
+      ]
     }
   ],
   "mission_priority": {
@@ -7644,21 +7683,35 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "faeb24d2e4a921f56f627694a8a46ca444754d62",
+  "current_research_head_before_ledger_update": "34893193b0914dee31074a546939e666ea160d02",
   "current_research_head_this_run": "64a9420189c421615dfe289f4ecc65fec758411e",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; INDEX_CI_PENDING",
+    "status": "SNAPSHOT_POINTER_AND_SOURCE_REFERENCES_PASS; PRIOR_INDEX_HEAD_GATE_PASS; CORE_CI_NOT_TRIGGERED; SUCCESSOR_INDEX_PENDING",
     "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2208Z.json",
     "snapshot_blob_sha": "aa2140b435e07ee9dcf5d7489b5554baa6f91c52",
-    "snapshot_commit_sha": "faeb24d2e4a921f56f627694a8a46ca444754d62",
-    "source_reference_count": 320,
-    "missing_source_references": 0,
-    "ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-    "gate": "NOT_RUN"
+    "verified_index_head": "34893193b0914dee31074a546939e666ea160d02",
+    "gate": {
+      "status": "PASS",
+      "run_id": 40777791185,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777791185"
+    },
+    "ci": {
+      "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "run_id": null
+    },
+    "approval_workflow": {
+      "run_id": 40777777959,
+      "event": "push",
+      "jobs": 0,
+      "conclusion": "failure",
+      "root_cause": "UNKNOWN"
+    },
+    "successor_index_ci": "PENDING_AFTER_WRITE",
+    "successor_index_gate": "PENDING_AFTER_WRITE"
   },
   "ledger_metrics": {
-    "source_records": 551,
-    "run_updates": 111,
+    "source_records": 553,
+    "run_updates": 112,
     "limitations": 98,
     "relationship_edges": 104,
     "competing_hypotheses": 69,
@@ -7668,10 +7721,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 488381,
+    "index_characters_before_this_update": 492807,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 602178,
-    "index_characters": 492807
+    "index_characters": 495831
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -7699,7 +7752,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SUCCESSOR_INDEX_CI_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PRIOR_INDEX_HEAD_GATE_PASS; CORE_CI_NOT_TRIGGERED; SUCCESSOR_INDEX_PENDING",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "aa2140b435e07ee9dcf5d7489b5554baa6f91c52",
       "snapshot_commit_sha": "faeb24d2e4a921f56f627694a8a46ca444754d62",
@@ -7708,18 +7761,18 @@
       "missing_source_references": 0,
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-        "tests_passed": null,
-        "duration_seconds": null,
         "run_id": null,
         "url": null
       },
       "gate": {
-        "status": "NOT_RUN",
-        "run_id": null,
-        "url": null
+        "status": "PASS",
+        "run_id": 40777791185,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777791185",
+        "verified_head_sha": "34893193b0914dee31074a546939e666ea160d02"
       },
       "successor_index_ci": "PENDING_AFTER_WRITE",
-      "successor_index_gate": "PENDING_AFTER_WRITE"
+      "successor_index_gate": "PENDING_AFTER_WRITE",
+      "verified_index_head": "34893193b0914dee31074a546939e666ea160d02"
     },
     "previous_inline_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
     "previous_inline_index_blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
@@ -7758,7 +7811,7 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-28T22:09:08.131Z",
+    "recorded_at_utc": "2026-10-28T22:10:46.935Z",
     "main_sha": "fadcb97e28854889ea69ebb90fcd12909cfa5640",
     "source_ids": [
       "SRC-RUN13-MAIN-HEAD-20261028T2208Z",
@@ -7778,7 +7831,9 @@
       "SRC-RUN13-CIRCLE-USDC-20261028T2208Z",
       "SRC-RUN13-COINBASE-Q3-DATE-20261028T2208Z",
       "SRC-RUN13-OPEN-PR-INVENTORY-20261028T2208Z",
-      "SRC-RUN13-PR1265-STATE-20261028T2208Z"
+      "SRC-RUN13-PR1265-STATE-20261028T2208Z",
+      "SRC-RUN13-PR1265-GATE-20261028T2209Z",
+      "SRC-RUN13-APPROVAL-ZERO-JOBS-20261028T2209Z"
     ],
     "open_pr_count": 96,
     "pr1266": {
@@ -7821,7 +7876,15 @@
     "xrp_market_data_admission": "BLOCKED_UNTIL_SYNCHRONIZED",
     "forecast_status": "NOT_ISSUED",
     "main_modified": false,
-    "merge_performed": false
+    "merge_performed": false,
+    "post_compaction_verification": {
+      "verified_index_head": "34893193b0914dee31074a546939e666ea160d02",
+      "gate_status": "PASS",
+      "gate_run_id": 40777791185,
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "approval_zero_job_run_id": 40777777959,
+      "approval_zero_job_root_cause": "UNKNOWN"
+    }
   },
   "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T21:07:38Z",
