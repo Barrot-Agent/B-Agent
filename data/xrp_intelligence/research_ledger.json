@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T18:11:35Z",
+    "captured_at_utc": "2026-10-28T18:14:16Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
@@ -2895,6 +2895,21 @@
           "SRC-FED-FOMC-STATEMENT-2026-10-28"
         ],
         "uncertainty": "No synchronized post-release XRP, BTC, DXY, Treasury-yield or derivatives response was admitted in this run."
+      },
+      {
+        "id": "SBIC-REGIONAL-ENTITY-AMBIGUITY-2026-10-28T1814Z",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE_WITH_SCOPE_LIMIT",
+        "status": "THREE_REGIONAL_ENTITIES_CONFIRMED; EXACT_REFERENT_UNRESOLVED; XRP_LINK_NOT_ESTABLISHED",
+        "claim": "Japan's SBIC label is not unique: official profiles identify Tokyo/SBIC East Japan, Nagoya/SBIC Central Japan, and Osaka/SBIC West Japan as sister companies established under the SME investment framework in 1963.",
+        "interpretation": "The phrase 'SBIC, ChatGPT SBIC' cannot safely be assigned to one entity without its originating context. East Japan and West Japan both have public ChatGPT-related training material; that is not a partnership or XRP evidence.",
+        "source_ids": [
+          "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+          "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+          "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+          "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z",
+          "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12"
+        ],
+        "uncertainty": "No originating quote/video/context has resolved which regional SBIC the user intended; no direct XRP relationship is established in this source set."
       }
     ],
     "relationship_graph": [
@@ -3918,6 +3933,41 @@
         ],
         "status": "ANNOUNCED_FUTURE_NOT_LIVE_AT_CAPTURE",
         "details": "No activation date, collateral haircut, eligible-product scope or actual utilization was verified."
+      },
+      {
+        "id": "EDGE-SBIC-EAST-CENTRAL-SISTER-COMPANIES-2026-10-28T1814Z",
+        "from": "SBIC East Japan (Tokyo)",
+        "relation": "identifies as sister company of",
+        "to": "SBIC Central Japan (Nagoya)",
+        "evidence_ids": [
+          "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+          "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z"
+        ],
+        "status": "CONFIRMED_PRIMARY_SOURCE",
+        "details": "Regional sister companies under Japan's SME investment and consultation framework; this edge does not imply XRP involvement."
+      },
+      {
+        "id": "EDGE-SBIC-EAST-WEST-SISTER-COMPANIES-2026-10-28T1814Z",
+        "from": "SBIC East Japan (Tokyo)",
+        "relation": "identifies as sister company of",
+        "to": "SBIC West Japan (Osaka)",
+        "evidence_ids": [
+          "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+          "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z"
+        ],
+        "status": "CONFIRMED_PRIMARY_SOURCE",
+        "details": "Regional sister companies with different operating territories; acronym alone does not identify the intended entity."
+      },
+      {
+        "id": "EDGE-SBIC-WEST-CHATGPT-TRAINING-2026-10-28T1814Z",
+        "from": "SBIC West Japan (Osaka)",
+        "relation": "announced training seminar about",
+        "to": "ChatGPT and generative AI",
+        "evidence_ids": [
+          "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z"
+        ],
+        "status": "CONFIRMED_PRIMARY_SOURCE; TRAINING_TOPIC_ONLY",
+        "details": "Official seminar scheduled for 2025-12-04. No partnership, special access or XRP relationship established."
       }
     ],
     "competing_hypotheses": [
@@ -5435,16 +5485,17 @@
         ]
       },
       "SBIC, ChatGPT SBIC": {
-        "status": "SBIC_EAST_JAPAN_IDENTITY_RESOLVED; CHATGPT_CURRICULUM_MENTION_CONFIRMED; EXACT_PHRASE_UNRESOLVED",
-        "finding": "SBIC East Japan's official June 2025 training curriculum includes ChatGPT, but this is a curriculum mention only. It does not prove a ChatGPT partnership, a special corporate program, or a direct XRP relationship.",
+        "status": "MULTIPLE_JAPANESE_SBIC_ENTITIES; CHATGPT_TRAINING_MENTIONS_CONFIRMED; EXACT_PHRASE_AND_XRP_LINK_UNRESOLVED",
+        "finding": "Official profiles identify three distinct sister companies under Japan's SME investment and consultation framework: SBIC East Japan (Tokyo), SBIC Central Japan (Nagoya), and SBIC West Japan (Osaka). Official East Japan material includes a June 2025 ChatGPT curriculum mention; official West Japan material announces a ChatGPT/generative-AI seminar for 2025-12-04. These are training-topic mentions, not evidence of a ChatGPT corporate partnership or an XRP relationship.",
         "source_ids": [
           "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
           "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
-          "SRC-SBI-CAPITAL-SBIC-2005",
-          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+          "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+          "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+          "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z"
         ],
-        "last_searched_at_utc": "2026-10-28T17:11:09Z",
-        "next_action": "Find the originating context for the exact phrase and keep SBIC East Japan distinct from SBI Group entities."
+        "last_searched_at_utc": "2026-10-28T18:14:16Z",
+        "next_action": "Resolve which regional company or original context the exact phrase refers to. Do not infer an XRP link from the shared SBIC name or ChatGPT training mentions."
       },
       "Camilla Stephenson": {
         "status": "TWO_KAMILAH_CHANNEL_IDS_FOUND; CAMILLA_IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
@@ -5513,14 +5564,18 @@
         ]
       },
       "sbic_chatgpt_latest": {
-        "status": "UNRESOLVED_EXACT_PHRASE",
-        "evidence": "Official SBIC East Japan training curriculum includes ChatGPT; this is not evidence of a partnership or XRP link.",
+        "status": "MULTIPLE_REGIONAL_SBIC_ENTITIES; CHATGPT_TRAINING_MENTIONS_ONLY; EXACT_PHRASE_UNRESOLVED",
+        "evidence": "Official profiles identify East/Tokyo, Central/Nagoya, and West/Osaka sister companies; East and West have public ChatGPT training/curriculum material. No direct XRP relationship is established in this evidence set.",
         "source_ids": [
-          "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
+          "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
+          "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+          "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+          "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+          "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z"
         ]
       },
-      "last_searched_at_utc": "2026-10-28T17:11:09Z",
-      "exact_phrase_status": "ASK Coin has multiple candidates; actual capital has a generic market-cap-vs-inflow candidate but no verified original context; SBIC ChatGPT curriculum mention is confirmed but exact phrase unresolved; Camilla Stephenson identity and exhaustive video inventory remain unverified."
+      "last_searched_at_utc": "2026-10-28T18:14:16Z",
+      "exact_phrase_status": "ASK Coin multiple candidates; actual capital generic meaning candidate but original context unresolved; SBIC refers to multiple regional Japanese entities and exact phrase unresolved; Camilla Stephenson identity and exhaustive video inventory unresolved."
     },
     "platform_capability_map": [
       {
@@ -5754,19 +5809,17 @@
       ]
     },
     "next_actions": [
-      "Capture synchronized post-FOMC XRP/BTC spot, DXY, Treasury yields, funding and open interest; keep event response separate from pre-event features.",
+      "Resolve the original context for 'SBIC, ChatGPT SBIC' before choosing East, Central or West Japan.",
+      "Capture synchronized post-FOMC XRP/BTC, DXY, Treasury yields, funding and open interest; no event-direction forecast without aligned data.",
       "Keep PR #1262 draft/unmerged until the legacy paper-trading position is reconciled by a separate evidence-backed, approved procedure.",
       "Record exact-head CI/gate results for the new research-index commit after it is written.",
       "Capture Coinbase-side RLUSD balances/volume and confirm the actual activation date, eligible products and haircuts for Global Exchange collateral; keep it marked future until live evidence appears.",
       "Track BNY XRP/RLUSD assets under custody, reserve attestations, BNY direct mint/redeem activation, C2FO Instant Pay live status/volume and Robinhood XRPL institutional settlement disclosures.",
       "Track Ripple Prime access to Coinbase Derivatives alongside CFTC positions, open interest, basis and venue share; do not infer direction from access alone.",
-      "Reconcile spot/volume/OI source universes and common UTC cutoffs before feature admission.",
-      "Capture Coinbase Q3 results after the 2026-10-29 after-market release.",
-      "Preserve PR #1260 as draft/unmerged; refresh main base and checks before approval.",
-      "Investigate recurring approval-workflow push failures with zero jobs; root cause unknown."
+      "Reconcile spot/volume/OI source universes and common UTC cutoffs before feature admission."
     ],
     "macro_context": {
-      "as_of_utc": "2026-10-28T18:11:35Z",
+      "as_of_utc": "2026-10-28T18:14:16Z",
       "status": "OFFICIAL_FOMC_DECISION_PUBLISHED; POST_EVENT_XRP_RESPONSE_NOT_SYNCHRONIZED",
       "observations": [
         {
@@ -6328,39 +6381,36 @@
         "Databricks"
       ],
       "forecast_status": "NOT_ISSUED",
-      "as_of_utc": "2026-10-28T18:11:35Z",
+      "as_of_utc": "2026-10-28T18:14:16Z",
       "primary": "XRP intelligence and prediction-engine mastery",
       "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
       "current_forecast_status": "NOT_ISSUED",
-      "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1811Z.json",
-      "next_action": "Record post-FOMC synchronized market response; keep PR #1262 draft until the legacy paper-trading position is reconciled by approved evidence-backed procedure; verify the new ledger-index CI/gate."
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1814Z.json",
+      "next_action": "Resolve SBIC regional-entity ambiguity from originating context; capture synchronized post-FOMC market response; keep PR #1262 draft until the legacy paper-trading position is reconciled by approved procedure."
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1811Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1811Z.json",
-    "current_research_head_before_ledger_update": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1814Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1814Z.json",
+    "current_research_head_before_ledger_update": "6da34d26864869ecf2f9859fbac58013d645d874",
     "current_research_checks": {
-      "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_INDEX_COMMIT_PENDING",
-      "previous_index_head": "e7498d61868f1046e0dd4ed57a97bdd2d7f7294b",
+      "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_INDEX_PENDING",
+      "previous_index_head": "6da34d26864869ecf2f9859fbac58013d645d874",
       "previous_index_ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 6.08,
-        "run_id": 40742820484,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742820484"
+        "duration_seconds": 5.26,
+        "run_id": 40743063339,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063339"
       },
       "previous_index_gate": {
         "status": "PASS",
-        "run_id": 40742820463,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742820463"
+        "run_id": 40743063330,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063330"
       },
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "2fa79353639877e21909f157421ee77f3bbd928c",
-      "pr1262_ci": "PASS_153_TESTS_5.56S",
-      "pr1262_gate": "PASS",
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
     },
-    "current_research_head_before_final_verification_record": "e7498d61868f1046e0dd4ed57a97bdd2d7f7294b",
+    "current_research_head_before_final_verification_record": "6da34d26864869ecf2f9859fbac58013d645d874",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -7222,6 +7272,16 @@
           "SRC-FED-FOMC-STATEMENT-2026-10-28"
         ],
         "interpretation": "High-impact macro event. Measure market response against a frozen pre-event baseline; no XRP direction inferred."
+      },
+      {
+        "id": "SBIC-WEST-CHATGPT-SEMINAR-2025-12-04",
+        "date": "2025-12-04",
+        "event": "SBIC West Japan announced a seminar introducing practical generative-AI use including ChatGPT.",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "source_ids": [
+          "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z"
+        ],
+        "interpretation": "A training-topic mention only. It helps disambiguate the SBIC acronym but does not establish a ChatGPT partnership or XRP relationship."
       }
     ],
     "current_pr_1238_state": {
@@ -7703,7 +7763,7 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "e1c79463ff409b3fd45ccd27fef9f17753dcd467",
+    "current_research_head_this_run": "6da34d26864869ecf2f9859fbac58013d645d874",
     "correction_note": "This snapshot carries forward the corrected source IDs from the preserved 1712Z correction2 snapshot. The earlier 1709Z and 1711Z snapshots remain unchanged for audit history.",
     "current_pr_1246_state": {
       "pr": 1246,
@@ -7826,7 +7886,8 @@
       "2026-10-28T1711Z: generic market-cap explanations clarify that market cap is not actual capital inflow, but the original context of the exact phrase 'actual capital' remains unresolved.",
       "2026-10-28T1711Z: an Investing.com XRP quote has an unnormalized page timestamp and remains excluded from feature admission.",
       "2026-10-28T18:11:35Z: no synchronized post-FOMC XRP/BTC spot, DXY, Treasury-yield, funding and open-interest response was captured; forecast remains NOT_ISSUED.",
-      "2026-10-28T18:11:35Z: paper-trading state has nonzero position size but null product identity; PR #1262 is a draft safety guard, and no state reconciliation was performed."
+      "2026-10-28T18:11:35Z: paper-trading state has nonzero position size but null product identity; PR #1262 is a draft safety guard, and no state reconciliation was performed.",
+      "2026-10-28T18:14:16Z: \"SBIC\" resolves to at least three official Japanese regional sister companies; the exact phrase context remains unknown, and no direct XRP relationship is established for any candidate in this evidence set."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -8337,10 +8398,10 @@
       "new_market_observations": 0,
       "latest_market_observation_id": "XRP-PERP-AGGREGATE-2026-10-28T1200Z",
       "forecast_status": "NOT_ISSUED",
-      "source_records": 459,
-      "run_updates": 92,
+      "source_records": 464,
+      "run_updates": 93,
       "limitations": 84,
-      "relationship_edges": 101,
+      "relationship_edges": 104,
       "competing_hypotheses": 65,
       "market_observations": 48
     },
@@ -8455,26 +8516,26 @@
         "SRC-GH-PR1262-GATE-2026-10-28T1811Z"
       ]
     },
-    "snapshot_blob_sha": "2fa79353639877e21909f157421ee77f3bbd928c",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T18:11:35Z",
-    "snapshot_commit_sha": "ea59772ee38e21eb568fba8354fe00d238a2d3a1",
+    "snapshot_blob_sha": "c33004dcc85e29a8068138be8b2f51d8a413c843",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T18:14:16Z",
+    "snapshot_commit_sha": "83b7d10442aedd0c548d23a484da2d85bee76135",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; INDEX_HEAD_CI_AND_GATE_PASS; SUCCESSOR_INDEX_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; PREVIOUS_INDEX_CI_AND_GATE_PASS; NEW_INDEX_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "2fa79353639877e21909f157421ee77f3bbd928c",
-      "snapshot_commit_sha": "ea59772ee38e21eb568fba8354fe00d238a2d3a1",
-      "verified_index_head": "e7498d61868f1046e0dd4ed57a97bdd2d7f7294b",
+      "snapshot_blob_sha": "c33004dcc85e29a8068138be8b2f51d8a413c843",
+      "snapshot_commit_sha": "83b7d10442aedd0c548d23a484da2d85bee76135",
+      "verified_index_head": "6da34d26864869ecf2f9859fbac58013d645d874",
       "ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 6.08,
-        "run_id": 40742820484,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742820484"
+        "duration_seconds": 5.26,
+        "run_id": 40743063339,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063339"
       },
       "gate": {
         "status": "PASS",
-        "run_id": 40742820463,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742820463"
+        "run_id": 40743063330,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063330"
       },
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
@@ -12192,6 +12253,46 @@
       "title": "Research ledger index fail-closed gate passed",
       "accessed_at_utc": "2026-10-28T18:13:09Z",
       "note": "Fail-closed gate completed successfully for the index commit e7498d61868f1046e0dd4ed57a97bdd2d7f7294b; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1814Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063339",
+      "title": "Research index CI passed",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Index commit 6da34d26864869ecf2f9859fbac58013d645d874 passed 145 tests in 5.26 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1814Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063330",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Fail-closed gate succeeded for index commit 6da34d26864869ecf2f9859fbac58013d645d874; no merge was performed."
+    },
+    {
+      "id": "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "title": "SBIC West Japan official company profile",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Identifies Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan), established 1963, under Japan's SME investment law; names Tokyo and Nagoya sister companies and defines western regional coverage."
+    },
+    {
+      "id": "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "title": "SBIC Central Japan official company profile",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Identifies Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan), established 1963, and names Tokyo and Osaka sister companies."
+    },
+    {
+      "id": "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf",
+      "title": "SBIC West Japan ChatGPT generative-AI seminar",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Official SBIC West Japan PDF announces a seminar on using generative AI including ChatGPT, scheduled for 2025-12-04. Training-topic evidence only; not a partnership or XRP relationship."
     }
   ],
   "limitations": [
@@ -14443,15 +14544,42 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T18:14:16Z",
+      "update_type": "SBIC_REGIONAL_ENTITY_DISAMBIGUATION_AND_INDEX_VERIFICATION",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1814Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1814Z.json",
+      "details": "Added official evidence that SBIC East Japan (Tokyo), SBIC Central Japan (Nagoya), and SBIC West Japan (Osaka) are distinct sister companies under Japan's SME investment framework. East and West have ChatGPT-related training material, but no partnership or XRP relationship is established. Also recorded exact-head CI/gate success for prior index commit 6da34d26864869ecf2f9859fbac58013d645d874. No main changes, merges or state rewrites.",
+      "source_ids": [
+        "SRC-GH-LEDGER-CI-2026-10-28T1814Z",
+        "SRC-GH-LEDGER-GATE-2026-10-28T1814Z",
+        "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+        "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+        "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z"
+      ],
+      "validation": {
+        "snapshot_json_parse": "PASS",
+        "snapshot_blob_readback": "PASS",
+        "source_ids_unique": "PASS",
+        "missing_source_refs": 0,
+        "previous_index_ci": "PASS_145_TESTS_5.26S",
+        "previous_index_gate": "PASS",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "new_index_gate": "PENDING_AFTER_WRITE"
+      }
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-28T18:11:35Z",
+    "as_of_utc": "2026-10-28T18:14:16Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
-    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1811Z.json",
-    "next_action": "Capture synchronized post-FOMC XRP/BTC market response; keep PR #1262 draft until paper-trading state reconciliation is approved; verify the new ledger-index CI/gate."
+    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1814Z.json",
+    "next_action": "Resolve SBIC regional entity from originating context; capture synchronized post-FOMC market response; keep PR #1262 draft pending approved paper-state reconciliation."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -14670,27 +14798,24 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "e7498d61868f1046e0dd4ed57a97bdd2d7f7294b",
-  "current_research_head_this_run": "e7498d61868f1046e0dd4ed57a97bdd2d7f7294b",
+  "current_research_head_before_ledger_update": "6da34d26864869ecf2f9859fbac58013d645d874",
+  "current_research_head_this_run": "83b7d10442aedd0c548d23a484da2d85bee76135",
   "current_research_checks": {
-    "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_INDEX_COMMIT_PENDING",
-    "previous_index_head": "e7498d61868f1046e0dd4ed57a97bdd2d7f7294b",
+    "status": "SNAPSHOT_READBACK_PASS; PREVIOUS_INDEX_HEAD_VERIFIED; NEW_INDEX_PENDING",
+    "previous_index_head": "6da34d26864869ecf2f9859fbac58013d645d874",
     "previous_index_ci": {
       "status": "PASS",
       "tests_passed": 145,
-      "duration_seconds": 6.08,
-      "run_id": 40742820484,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742820484"
+      "duration_seconds": 5.26,
+      "run_id": 40743063339,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063339"
     },
     "previous_index_gate": {
       "status": "PASS",
-      "run_id": 40742820463,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742820463"
+      "run_id": 40743063330,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063330"
     },
-    "snapshot_blob_readback_ok": true,
-    "snapshot_blob_sha": "2fa79353639877e21909f157421ee77f3bbd928c",
-    "pr1262_ci": "PASS_153_TESTS_5.56S",
-    "pr1262_gate": "PASS",
+    "snapshot_blob_sha": "c33004dcc85e29a8068138be8b2f51d8a413c843",
     "new_index_ci": "PENDING_AFTER_WRITE",
     "new_index_gate": "PENDING_AFTER_WRITE"
   },
