@@ -2,6 +2,8 @@ import importlib.util
 import json
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "validate_paper_trading_state.py"
 SPEC = importlib.util.spec_from_file_location("paper_state_audit", SCRIPT)
 assert SPEC is not None and SPEC.loader is not None
