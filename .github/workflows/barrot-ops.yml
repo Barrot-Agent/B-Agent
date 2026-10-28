@@ -1,21 +1,36 @@
 name: Barrot Operations Pipeline
 
+# External deployments are manual-only and require an explicit confirmation.
+# This workflow can push to Hugging Face and overwrite a Databricks workspace notebook.
+
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
+    inputs:
+      confirm_external_deploy:
+        description: "Confirm that this run may update the configured Hugging Face Space and overwrite the Databricks workspace notebook."
+        required: true
+        default: false
+        type: boolean
 
 permissions:
   contents: read
 
 concurrency:
   group: barrot-ops-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   sync-platforms:
+    if: inputs.confirm_external_deploy == true
     runs-on: ubuntu-latest
     steps:
+      - name: Confirm deployment targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Explicit external-deployment confirmation received."
+          echo "Potential writes: Hugging Face Space main; Databricks /Shared/barrot_databricks_job."
+          echo "Kaggle step downloads the configured dataset; it does not publish a dataset."
       - uses: actions/checkout@v7
 
       - name: Deploy HF Space
