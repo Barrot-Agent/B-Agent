@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T06:05:00Z",
+    "captured_at_utc": "2026-10-28T07:09:34Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
+      "main_sha": "3c41a8c44b030643df69307f943716aeef6f1e9d",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -40,8 +40,8 @@
           "title": "Research: carry XRP intelligence ledger onto fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
-          "status": "Research-only branch; 38 commits ahead and 39 behind current main. Exact-head CI passed 146 tests in 5.62s and fail-closed gate passed for head f8e4e1990bce1b68f07c47644f3d01d64e70c92a; the new snapshot/index commits created by this update need their own CI."
+          "head_sha": "dc18baed806b221054d88299d11a0cc3121d2fba",
+          "status": "Draft; exact-head CI and gate passed on pre-update head; 43 ahead/54 behind main; preserve, do not merge as-is."
         },
         {
           "number": 1228,
@@ -140,7 +140,7 @@
           "state": "open",
           "draft": true,
           "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
-          "status": "Exact-head CI passed 150 tests in 5.30s and fail-closed gate passed; branch is 7 ahead and 1 behind current main. The only observed intervening main commit is a generated BTC paper-trading HOLD row. Draft/unmerged."
+          "status": "Draft; CI/gate passed on older head; 7 ahead/16 behind current main; reconcile branch before approval."
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -150,10 +150,10 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
+        "sha": "3c41a8c44b030643df69307f943716aeef6f1e9d",
         "message": "Paper trade cycle [skip ci]",
-        "authored_at_utc": "2026-10-28T05:04:57Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6"
+        "authored_at_utc": "2026-10-28T07:05:22Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/3c41a8c44b030643df69307f943716aeef6f1e9d"
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
@@ -336,7 +336,9 @@
       ],
       "required_status_check_contexts": [],
       "required_status_checks": [],
-      "main_head_observed_at_utc": "2026-10-28T06:05:00Z"
+      "main_head_observed_at_utc": "2026-10-28T06:05:00Z",
+      "open_pr_count": 75,
+      "current_pr_count_source": "SRC-GH-OPEN-PRS-2026-10-28T0709Z"
     },
     "critical_engine_findings": [
       {
@@ -700,7 +702,7 @@
         "next_action": "An authorized repository administrator must independently inspect effective branch protection/rulesets and require the intended CI, approval and stale-review checks; no settings were changed."
       },
       {
-        "id": "WORKFLOW-EXTERNAL-WRITE-AND-MERGE-RISK-PR1241-2026-10-28",
+        "id": "WORKFLOW-EXTERNAL-WRITE-AND-MERGE-RISK-PR1241-2026-10-28-DUPLICATE-2",
         "evidence_class": "REPOSITORY_OBSERVATION",
         "severity": "CRITICAL",
         "status": "FIX_PROPOSED_IN_OPEN_DRAFT_PR_1241; EXACT_HEAD_CI_AND_GATE_PASS",
@@ -727,7 +729,7 @@
         "verification": "PR #1241 exact-head CI passed 150 tests in 5.30 seconds and the fail-closed gate passed. Draft/unmerged; no external deployment executed."
       },
       {
-        "id": "MAIN-BRANCH-REQUIRED-CHECKS-EMPTY-2026-10-28",
+        "id": "MAIN-BRANCH-REQUIRED-CHECKS-EMPTY-2026-10-28-DUPLICATE-2",
         "evidence_class": "REPOSITORY_OBSERVATION",
         "severity": "CRITICAL",
         "status": "PROTECTED_FLAG_TRUE; REQUIRED_CHECK_CONTEXTS_EMPTY; REVIEW_RULES_NOT_VERIFIED",
@@ -739,6 +741,22 @@
         "finding": "GitHub's main branch endpoint reports protected=true but required status-check contexts and checks arrays are empty. The fallback ruleset named Fall Back is disabled. The detailed protection endpoint returns 403 to the current integration.",
         "consequence": "Passing PR CI is not proven to be enforced as a merge prerequisite by the currently observable branch settings.",
         "next_action": "An authorized repository administrator must independently inspect effective branch protection/rulesets and require the intended CI, approval and stale-review checks; no settings were changed."
+      },
+      {
+        "id": "SUMMARY-WORKFLOW-DIRECT-MAIN-WRITE-008",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "HIGH",
+        "status": "OBSERVED_ON_MAIN; FIX_NOT_MERGED",
+        "files": [
+          {
+            "path": ".github/workflows/signal-summary.yml",
+            "blob_sha": "1718b45beaf1f8aa002ce332b2b828d27049508b"
+          }
+        ],
+        "finding": "The signal-summary workflow commits generated summary JSON/audio to main. Latest signal artifact timestamp 2026-10-28T06:33:28.807481+00:00; score 44, confidence 0, news score 88; text labels XRPL protocol/consensus research as bullish.",
+        "consequence": "The signal artifact is not a validated forecast, and generated data remains coupled to the code branch.",
+        "proposed_fix": "Keep PR #1236's fail-closed summary change separate from a durable, idempotent data-staging/promotion fix for signal-summary.yml; no fix is deployed.",
+        "verification": "Workflow and artifact fetched from main at capture cutoff; this run made no main changes."
       }
     ],
     "research_findings": [
@@ -1458,6 +1476,63 @@
           "SRC-WF-CROSS-ANALYSIS-MAIN-2026-10-28T0605Z"
         ],
         "next_action": "Design and test append-only idempotent data staging with serialized writers, immutable forecast/outcome rows, and a reviewed promotion path; do not switch persistent workflows to 30-day artifacts without a continuity plan."
+      },
+      {
+        "id": "MAIN-SIGNAL-SUMMARY-DIRECT-WRITE-2026-10-28T0709Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "CONFIRMED_ON_MAIN; FIX_NOT_MERGED",
+        "claim": "Main signal-summary workflow triggers after Knowledge Signal Cycle, hourly by schedule, or manually; runs scripts/signal_summary.py; stages web/latest_signal_summary.json and web/generated_audio/, commits, and pushes main.",
+        "interpretation": "Summary fallback code and persistence boundaries are separate controls. Provider-failure fallback work does not remove this direct-main writer.",
+        "source_ids": [
+          "SRC-WF-SIGNAL-SUMMARY-MAIN-2026-10-28T0709Z",
+          "SRC-GH-MAIN-HEAD-2026-10-28T0709Z"
+        ],
+        "next_action": "Design durable idempotent staging/promotion for summary JSON/audio before changing persistence; preserve history and avoid 30-day-only artifacts as the sole store."
+      },
+      {
+        "id": "APPROVAL-WORKFLOW-ZERO-JOB-ROOT-CAUSE-STATUS-2026-10-28T0709Z",
+        "evidence_class": "REPOSITORY_CI_OBSERVATION",
+        "status": "ZERO_JOBS_CONFIRMED; TRIGGER_ORIGIN_UNRESOLVED",
+        "claim": "Run 40641938871 is recorded as a push event with failure conclusion but contains no jobs. Current workflow on main and research branch declares workflow_dispatch only.",
+        "interpretation": "This is not a failed approval job; no approval step ran. Why GitHub recorded a push-event workflow run is unresolved. Do not claim root cause fixed or trigger approval actions to diagnose it.",
+        "source_ids": [
+          "SRC-REPO-APPROVAL-ZERO-JOB-2026-10-28T0607Z"
+        ],
+        "next_action": "Inspect workflow history and event payload through permitted read-only metadata; add a read-only workflow trigger-contract test before proposing a change."
+      },
+      {
+        "id": "XRP-INVESTING-REGIONAL-QUOTE-DIVERGENCE-2026-10-28T0709Z",
+        "evidence_class": "SECONDARY_MARKET_DATA_CROSSCHECK",
+        "status": "MODEL_FEATURE_BLOCKED",
+        "claim": "Two Investing.com regional historical pages show different October 28 XRP rows: Indonesia last 1.3278/open 1.3306/high 1.3306/low 1.3267/volume 187.59M; Canada last 1.3312/open 1.3306/high 1.3431/low 1.3255/volume 191.29M.",
+        "interpretation": "Last-price difference is about 0.26%, and volume differs by 3.70M. Possible causes include cutoff, timezone/bar boundary or aggregation; this is not an executable spread or independent-source corroboration.",
+        "source_ids": [
+          "SRC-INVESTING-XRP-HISTORY-ID-2026-10-28T0709Z",
+          "SRC-INVESTING-XRP-HISTORY-CA-2026-10-28T0709Z"
+        ],
+        "next_action": "Use timestamped raw venue OHLCV/bid-ask at one UTC cutoff; record pair, venue, timezone/bar boundary, coverage and raw payload hash."
+      },
+      {
+        "id": "OPEN-PR-BACKLOG-2026-10-28T0709Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "75_OPEN_PRS; TRIAGE_REQUIRED",
+        "claim": "GitHub returned 75 open PRs, including many similarly scoped XRP-signal, workflow-safety and research-ledger PRs based on older main commits.",
+        "interpretation": "The backlog creates review ambiguity and increases the risk of duplicated fixes or stale CI being mistaken for current verification. No evidence supports auto-closing any PR.",
+        "source_ids": [
+          "SRC-GH-OPEN-PRS-2026-10-28T0709Z"
+        ],
+        "next_action": "Build a read-only PR inventory grouped by changed paths, head/base age and exact-head CI; recommend successors but do not close or merge without approval."
+      },
+      {
+        "id": "LEDGER-STRUCTURAL-ID-NORMALIZATION-2026-10-28T0709Z",
+        "evidence_class": "REPOSITORY_DATA_QUALITY",
+        "status": "NORMALIZED_IN_NEW_SNAPSHOT_ONLY",
+        "claim": "The prior 0605Z snapshot has repeated identifiers in two critical findings and one market-data quality finding, plus seven timeline entries missing event_id.",
+        "interpretation": "Duplicate/missing identifiers weaken auditability even when source references resolve. The 0605Z snapshot is preserved unchanged; this new snapshot assigns unique identifiers without deleting evidence.",
+        "source_ids": [
+          "SRC-GH-RESEARCH-SNAPSHOT-0605Z-STRUCTURE-2026-10-28T0709Z"
+        ],
+        "next_action": "Add a deterministic regression test requiring unique IDs and non-empty event_id values across every ledger/snapshot collection."
       }
     ],
     "relationship_graph": [
@@ -2965,6 +3040,18 @@
           "SRC-XRP-INSIGHTS-SUPPLY-REPORT-2026-10-24"
         ],
         "approved_for_model_features": false
+      },
+      {
+        "id": "XRP-INVESTING-REGIONAL-CUTOFF-DIVERGENCE-2026-10-28",
+        "evidence_class": "SECONDARY_MARKET_DATA_CROSSCHECK",
+        "as_of_date": "2026-10-28; page-specific cutoff not normalized",
+        "observation": "Investing.com Indonesia displayed last 1.3278/open 1.3306/high 1.3306/low 1.3267/volume 187.59M; Investing.com Canada displayed last 1.3312/open 1.3306/high 1.3431/low 1.3255/volume 191.29M.",
+        "interpretation": "Same vendor/date but differing regional values; cutoff/bar universe may differ, cause unconfirmed. Not an executable spread or model-ready feature.",
+        "source_ids": [
+          "SRC-INVESTING-XRP-HISTORY-ID-2026-10-28T0709Z",
+          "SRC-INVESTING-XRP-HISTORY-CA-2026-10-28T0709Z"
+        ],
+        "approved_for_model_features": false
       }
     ],
     "phrase_investigation": {
@@ -3206,13 +3293,16 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T05:06:42.642Z",
-      "last_run_update": "2026-10-28T06:05:00Z",
+      "last_checked_utc": "2026-10-28T07:09:34Z",
+      "last_run_update": "2026-10-28T07:09:34Z",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
         "XRP ETF weekly flow observation excludes GXRP and is not reconciled against all fund-level primary records.",
         "Spot and derivatives observations remain unsynchronized across venue and UTC cutoff.",
-        "Fixed-horizon walk-forward evaluation, leakage controls, baseline comparison, calibration and shadow evaluation remain required."
+        "Fixed-horizon walk-forward evaluation, leakage controls, baseline comparison, calibration and shadow evaluation remain required.",
+        "Investing.com regional XRP historical pages disagree on the Oct 28 row; exact cutoffs/bar definitions unresolved.",
+        "Main still has a direct-write signal-summary workflow; fallback and persistence controls are unmerged.",
+        "New snapshot+ledger commit requires exact-head CI."
       ]
     },
     "massive_micro_ingestion": {
@@ -3228,14 +3318,12 @@
       ]
     },
     "next_actions": [
-      "Build and test a durable append-only staging/promotion path before changing generated-data workflows; preserve paper-trading state and ingestion idempotency.",
-      "Reconcile daily USDC mint/redemption by chain with XRP ETF fund-level creations/redemptions and XRPL-native USDC transfers; do not infer capital rotation from global aggregates.",
-      "Review PR #1241; keep draft/unmerged pending human approval and independently verify branch protection requirements.",
-      "Measure XRPL-native USDC supply/transfers, XRP bridge-path share, Coinbase order-book/derivatives positioning and actual collateral evidence; do not infer flows from company announcements.",
-      "Continue SBIC entity disambiguation and exact-phrase research for ASK Coin, actual capital, and SBIC, ChatGPT SBIC.",
-      "Resolve the canonical Camilla Stephenson channel from first-party links before claiming a complete public-video inventory.",
-      "Test each non-ChatGPT platform adapter with least-privilege authentication and a hash-verifiable end-to-end evidence handoff.",
-      "Keep forecast status NOT_ISSUED until fixed-horizon walk-forward performance, leakage controls, baseline comparison, calibration, drift monitoring and shadow evaluation pass."
+      "Preserve current ledger and snapshots; do not merge the 43-ahead/54-behind research branch as-is.",
+      "Run exact-head CI and fail-closed gate on the new research snapshot+ledger commit.",
+      "Design idempotent durable staging/promotion for summary, scheduler, paper-trader, ping-pong and cross-analysis writers without breaking state continuity.",
+      "Normalize XRP price/volume and derivatives at common UTC cutoffs; exclude conflicting vendor rows from the feature store.",
+      "Triage the 75 open PRs read-only by changed paths, age, base/head SHAs and exact-head CI; do not auto-close or merge.",
+      "Continue SBIC identity, ASK Coin/actual capital phrase provenance, and canonical Camilla Stephenson video-channel verification."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -3743,7 +3831,7 @@
         "next_action": "Normalize venue, timezone, bar boundary, quote currency, volume universe and data retrieval timestamp before admitting any price/volume features."
       },
       {
-        "id": "XRP-QUOTE-TIME-ALIGNMENT-2026-10-28",
+        "id": "XRP-QUOTE-TIME-ALIGNMENT-2026-10-28-DUPLICATE-2",
         "severity": "HIGH",
         "status": "BLOCKED_FROM_FEATURE_STORE",
         "finding": "CoinCodex's Oct 26-27 daily interval and Investing.com's Oct 28 intraday quote differ in cutoff and potentially market coverage.",
@@ -3775,6 +3863,18 @@
           "SRC-XRP-INSIGHTS-SUPPLY-REPORT-2026-10-24"
         ],
         "next_action": "Reconcile each fund's holdings and cash creations/redemptions using issuer/filing primary sources before model admission."
+      },
+      {
+        "id": "XRP-INVESTING-REGIONAL-SNAPSHOT-CONFLICT-2026-10-28",
+        "severity": "HIGH",
+        "status": "MODEL_ADMISSION_BLOCKED",
+        "finding": "Two Investing.com regional pages show different XRP October 28 last/high/low/volume values. Last values differ by about 0.26%; daily volume differs by 3.70M.",
+        "interpretation": "Potential timezone, bar-boundary, update-time or aggregation differences; exact cause not established.",
+        "source_ids": [
+          "SRC-INVESTING-XRP-HISTORY-ID-2026-10-28T0709Z",
+          "SRC-INVESTING-XRP-HISTORY-CA-2026-10-28T0709Z"
+        ],
+        "next_action": "Reconstruct a common-cutoff venue-level price/volume row from permitted raw data before model admission."
       }
     ],
     "mission_priority": {
@@ -3803,19 +3903,19 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-CIRCLE-REDEMPTIONS-ETF-WEEK43-WORKFLOW-AUDIT-2026-10-28T0605Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0605Z.json",
-    "current_research_head_before_ledger_update": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
+    "snapshot_id": "XRP-MAIN-SIGNAL-QUOTE-WORKFLOW-AUDIT-2026-10-28T0709Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0709Z.json",
+    "current_research_head_before_ledger_update": "dc18baed806b221054d88299d11a0cc3121d2fba",
     "current_research_checks": {
-      "status": "PASS_ON_PREVIOUS_HEAD; NEW_LEDGER_UPDATE_REQUIRES_EXACT_HEAD_CI",
-      "previous_head": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
-      "tests": "PASS_146_TESTS_5.62S",
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937747",
+      "status": "PASS_ON_PREUPDATE_HEAD; NEW_SNAPSHOT_COMMIT_PENDING_EXACT_HEAD_CI",
+      "previous_head": "dc18baed806b221054d88299d11a0cc3121d2fba",
+      "tests": "PASS; Tests job succeeded; count not extracted from run summary",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40641946220",
       "gate": "PASS",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937758",
-      "note": "The verification is for the prior research head; this snapshot and subsequent index update will create new commits and require their own exact-head CI."
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40641946335",
+      "note": "Verification applies to the pre-update research head. The new snapshot+ledger commit requires its own exact-head CI and fail-closed gate."
     },
-    "current_research_head_before_final_verification_record": "91b4a6b3043b37775314991935097797dd1eab7e",
+    "current_research_head_before_final_verification_record": "dc18baed806b221054d88299d11a0cc3121d2fba",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -4164,7 +4264,8 @@
           "SRC-XRP-PRICE-MARKETCAPITALIZE-2026-10-27",
           "SRC-XRP-PRICE-COINCODEX-2026-10-26"
         ],
-        "interpretation": "Quote ranges cluster near $1.30-$1.33 but are not synchronized; no forecast issued."
+        "interpretation": "Quote ranges cluster near $1.30-$1.33 but are not synchronized; no forecast issued.",
+        "event_id": "EVENT-MISSING-ID-06-2026-10-28T0709Z"
       },
       {
         "event_date": "2026-10-28",
@@ -4176,7 +4277,8 @@
           "SRC-REPO-PR1238-CI-2026-10-28T0305Z",
           "SRC-REPO-PR1238-GATE-2026-10-28T0305Z"
         ],
-        "interpretation": "Exact-head tests and fail-closed gate passed; draft remains unmerged and 30-day artifacts do not replace durable storage."
+        "interpretation": "Exact-head tests and fail-closed gate passed; draft remains unmerged and 30-day artifacts do not replace durable storage.",
+        "event_id": "EVENT-MISSING-ID-07-2026-10-28T0709Z"
       },
       {
         "event_date": "2026-02-20",
@@ -4186,7 +4288,8 @@
         "source_ids": [
           "SRC-SBI-RIPPLE-ASIA-AWAJ-2026-02-20"
         ],
-        "interpretation": "XRPL is contemplated for startup financial-services implementation; production usage and XRP demand are unknown."
+        "interpretation": "XRPL is contemplated for startup financial-services implementation; production usage and XRP demand are unknown.",
+        "event_id": "EVENT-MISSING-ID-08-2026-10-28T0709Z"
       },
       {
         "event_date": "2026-10-26",
@@ -4196,7 +4299,8 @@
         "source_ids": [
           "SRC-CIRCLE-USDC-OFFICIAL-2026-10-26"
         ],
-        "interpretation": "Global circulation only; no chain-level flow or XRP destination inferred."
+        "interpretation": "Global circulation only; no chain-level flow or XRP destination inferred.",
+        "event_id": "EVENT-MISSING-ID-09-2026-10-28T0709Z"
       },
       {
         "event_date": "2026-10-28",
@@ -4208,7 +4312,8 @@
           "SRC-REPO-PR1239-CI-2026-10-28T0308Z",
           "SRC-REPO-PR1239-GATE-2026-10-28T0308Z"
         ],
-        "interpretation": "150 tests and fail-closed gate passed; draft remains unmerged."
+        "interpretation": "150 tests and fail-closed gate passed; draft remains unmerged.",
+        "event_id": "EVENT-MISSING-ID-10-2026-10-28T0709Z"
       },
       {
         "event_date": "2026-10-21",
@@ -4219,7 +4324,8 @@
           "SRC-OCC-GENIUS-FINAL-RULE-2026-10-21",
           "SRC-OCC-GENIUS-BULLETIN-2026-50"
         ],
-        "interpretation": "Final rule is stated to take effect Jan 18, 2027. Entity-specific application and actual market response remain open."
+        "interpretation": "Final rule is stated to take effect Jan 18, 2027. Entity-specific application and actual market response remain open.",
+        "event_id": "EVENT-MISSING-ID-11-2026-10-28T0709Z"
       },
       {
         "event_date": "2026-10-22",
@@ -4229,7 +4335,8 @@
         "source_ids": [
           "SRC-REUTERS-COINBASE-IRELAND-FINE-2026-10-22"
         ],
-        "interpretation": "Historical compliance action; no XRP-specific custody impact established."
+        "interpretation": "Historical compliance action; no XRP-specific custody impact established.",
+        "event_id": "EVENT-MISSING-ID-12-2026-10-28T0709Z"
       },
       {
         "event_date": "2026-10-22",
@@ -4239,7 +4346,8 @@
         "source_ids": [
           "SRC-CBI-COINBASE-IRELAND-FINE-OFFICIAL-2026-10-22"
         ],
-        "interpretation": "€3,252,618 sanction for historical safeguarding/outsourcing breaches; subject to High Court confirmation; no XRP-specific custody failure established."
+        "interpretation": "€3,252,618 sanction for historical safeguarding/outsourcing breaches; subject to High Court confirmation; no XRP-specific custody failure established.",
+        "event_id": "EVENT-MISSING-ID-13-2026-10-28T0709Z"
       },
       {
         "event_id": "EVT-COINBASE-XRP-DISCLOSURE-2026-03-31",
@@ -4344,6 +4452,30 @@
           "SRC-GH-COMMIT-SIGNAL-SUMMARY-2026-10-28T0528Z"
         ],
         "impact_status": "INGESTION_CONTINUITY_ACTIVE; STAGING/PROMOTION_DESIGN_REQUIRED"
+      },
+      {
+        "event_id": "EVT-XRP-MAIN-SIGNAL-ARTIFACT-2026-10-28T0633Z",
+        "event_time_utc": "2026-10-28T06:33:28.807481+00:00",
+        "captured_at_utc": "2026-10-28T07:09:34Z",
+        "entity": "Barrot-Agent/B-Agent main XRP signal artifact",
+        "event": "Artifact reports score 44, confidence 0, news score 88; headline text labels XRPL consensus/dissemination papers bullish.",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "source_ids": [
+          "SRC-GH-LATEST-SIGNAL-2026-10-28T0709Z"
+        ],
+        "impact_status": "NOT_A_VALIDATED_FORECAST; FORECAST_STATUS_NOT_ISSUED"
+      },
+      {
+        "event_id": "EVT-MAIN-PAPER-TRADER-COMMIT-2026-10-28T0705Z",
+        "event_time_utc": "2026-10-28T07:05:22Z",
+        "captured_at_utc": "2026-10-28T07:09:34Z",
+        "entity": "Barrot-Agent/B-Agent main; Coinbase Paper Trader",
+        "event": "Main head 3c41a8c44b030643df69307f943716aeef6f1e9d appends one BTC-USD HOLD row to web/paper_trading_log.jsonl; no code/workflow change in this commit.",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "source_ids": [
+          "SRC-GH-MAIN-HEAD-2026-10-28T0709Z"
+        ],
+        "impact_status": "GENERATED_STATE_ONLY; MAIN_CI_NOT_VERIFIED_AT_EXACT_HEAD"
       }
     ],
     "current_pr_1238_state": {
@@ -4386,8 +4518,8 @@
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
-      "observed_at_utc": "2026-10-28T06:05:00Z",
-      "current_main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
+      "observed_at_utc": "2026-10-28T07:09:34Z",
+      "current_main_sha": "3c41a8c44b030643df69307f943716aeef6f1e9d",
       "findings": [
         {
           "path": ".github/workflows/barrot-ops.yml",
@@ -4529,6 +4661,14 @@
           "files": [
             "AUTONOMOUS_DEPLOYMENT_REPORT.md"
           ]
+        },
+        {
+          "sha": "3c41a8c44b030643df69307f943716aeef6f1e9d",
+          "at_utc": "2026-10-28T07:05:22Z",
+          "message": "Paper trade cycle [skip ci]",
+          "files": [
+            "web/paper_trading_log.jsonl"
+          ]
         }
       ],
       "remaining_direct_main_writers": [
@@ -4566,8 +4706,27 @@
           "path": ".github/workflows/knowledge-signal-cycle.yml",
           "frequency": "hourly plus manual",
           "risk": "direct knowledge/signal/history write to main; PR #1237 is stale/unmerged."
+        },
+        {
+          "path": ".github/workflows/signal-summary.yml",
+          "frequency": "workflow_run after Knowledge Signal Cycle, hourly fallback, manual dispatch",
+          "risk": "Commits web/latest_signal_summary.json and web/generated_audio/ and pushes main; not covered by scheduled signal-writer artifact-only PR."
         }
-      ]
+      ],
+      "current_main_commit": {
+        "sha": "3c41a8c44b030643df69307f943716aeef6f1e9d",
+        "message": "Paper trade cycle [skip ci]",
+        "authored_at_utc": "2026-10-28T07:05:22Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/3c41a8c44b030643df69307f943716aeef6f1e9d"
+      },
+      "open_pr_count": 75,
+      "latest_signal_artifact": {
+        "timestamp": "2026-10-28T06:33:28.807481+00:00",
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "status": "NOT_ISSUED; not a validated forecast"
+      }
     },
     "current_pr_1241_state": {
       "pr": 1241,
@@ -4577,62 +4736,129 @@
       "base_sha": "8beef04c25a3d182c2366c82c1257bacfa1799f2",
       "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
       "ahead_by": 7,
-      "behind_by": 7,
+      "behind_by": 16,
       "ci": {
-        "status": "PASS",
+        "status": "PASS_ON_OLD_HEAD",
         "tests_passed": 150,
         "duration_seconds": 5.3,
         "run_id": 40635582479,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635582479"
       },
       "gate": {
-        "status": "PASS",
+        "status": "PASS_ON_OLD_HEAD",
         "run_id": 40635582526,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635582526"
       },
       "deployment_executed": false,
       "main_modified_by_this_run": false,
       "merge_performed": false,
-      "current_main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
+      "current_main_sha": "3c41a8c44b030643df69307f943716aeef6f1e9d",
       "status": "OPEN_DRAFT_DIVERGED",
       "latest_compare_url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
       "ci_applies_to_head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
-      "ci_status": "PASS_ON_HEAD; HEAD_NOW_7_BEHIND_MAIN"
+      "ci_status": "PASS_ON_HEAD; HEAD_NOW_7_BEHIND_MAIN",
+      "note": "No deployment executed. Branch is 7 ahead/16 behind current main; checks are for an older head."
     },
     "current_pr_1227_state": {
       "pr": 1227,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
       "state": "OPEN_DRAFT_UNMERGED",
-      "head_sha": "f8e4e1990bce1b68f07c47644f3d01d64e70c92a",
+      "head_sha": "dc18baed806b221054d88299d11a0cc3121d2fba",
       "base_sha": "a960255f2b7b0418694ee428bc82fbbeed6622dd",
-      "ahead_by": 41,
-      "behind_by": 46,
+      "ahead_by": 43,
+      "behind_by": 54,
+      "mergeable": true,
       "ci": {
-        "status": "PASS",
-        "tests_passed": 146,
-        "duration_seconds": 5.62,
-        "run_id": 40635937747,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937747"
+        "status": "PASS_ON_PREUPDATE_HEAD",
+        "run_id": 40641946220,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40641946220"
       },
       "gate": {
-        "status": "PASS",
-        "run_id": 40635937758,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635937758"
+        "status": "PASS_ON_PREUPDATE_HEAD",
+        "run_id": 40641946335,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40641946335"
       },
-      "note": "Verification applies to head f8e4e1990bce1b68f07c47644f3d01d64e70c92a before the new snapshot/index commits.",
-      "current_main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
+      "current_main_sha": "3c41a8c44b030643df69307f943716aeef6f1e9d",
       "status": "OPEN_DRAFT_DIVERGED",
-      "action": "Do not merge; preserve snapshots and create a fresh-main successor when copying the complete ledger safely."
+      "action": "Preserve history; do not merge. New ledger commit must pass exact-head CI."
     },
     "research_branch_compare_at_capture": {
       "branch": "research/xrp-ledger-fresh-main-20261028-0004z",
-      "current_main_sha": "2da2f6af985087c717bc4f9fad3a8c6dc3eeeec0",
-      "ahead_by": 41,
-      "behind_by": 46,
+      "current_main_sha": "3c41a8c44b030643df69307f943716aeef6f1e9d",
+      "ahead_by": 43,
+      "behind_by": 54,
       "status": "DIVERGED",
-      "action": "Preserve this research branch; do not merge it. A fresh-main successor remains required."
+      "action": "Preserve history; do not merge stale branch."
     },
-    "snapshot_blob_sha": "313914156014c906ca5bb9eb83fd9655610d5b0f"
+    "id_normalization_log": [
+      {
+        "collection": "CRITICAL-FINDING",
+        "original": "WORKFLOW-EXTERNAL-WRITE-AND-MERGE-RISK-PR1241-2026-10-28",
+        "normalized": "WORKFLOW-EXTERNAL-WRITE-AND-MERGE-RISK-PR1241-2026-10-28-DUPLICATE-2",
+        "index": 14
+      },
+      {
+        "collection": "CRITICAL-FINDING",
+        "original": "MAIN-BRANCH-REQUIRED-CHECKS-EMPTY-2026-10-28",
+        "normalized": "MAIN-BRANCH-REQUIRED-CHECKS-EMPTY-2026-10-28-DUPLICATE-2",
+        "index": 15
+      },
+      {
+        "collection": "MARKET-DATA-QUALITY",
+        "original": "XRP-QUOTE-TIME-ALIGNMENT-2026-10-28",
+        "normalized": "XRP-QUOTE-TIME-ALIGNMENT-2026-10-28-DUPLICATE-2",
+        "index": 14
+      },
+      {
+        "collection": "EVENT",
+        "original": null,
+        "normalized": "EVENT-MISSING-ID-06-2026-10-28T0709Z",
+        "index": 5
+      },
+      {
+        "collection": "EVENT",
+        "original": null,
+        "normalized": "EVENT-MISSING-ID-07-2026-10-28T0709Z",
+        "index": 6
+      },
+      {
+        "collection": "EVENT",
+        "original": null,
+        "normalized": "EVENT-MISSING-ID-08-2026-10-28T0709Z",
+        "index": 7
+      },
+      {
+        "collection": "EVENT",
+        "original": null,
+        "normalized": "EVENT-MISSING-ID-09-2026-10-28T0709Z",
+        "index": 8
+      },
+      {
+        "collection": "EVENT",
+        "original": null,
+        "normalized": "EVENT-MISSING-ID-10-2026-10-28T0709Z",
+        "index": 9
+      },
+      {
+        "collection": "EVENT",
+        "original": null,
+        "normalized": "EVENT-MISSING-ID-11-2026-10-28T0709Z",
+        "index": 10
+      },
+      {
+        "collection": "EVENT",
+        "original": null,
+        "normalized": "EVENT-MISSING-ID-12-2026-10-28T0709Z",
+        "index": 11
+      },
+      {
+        "collection": "EVENT",
+        "original": null,
+        "normalized": "EVENT-MISSING-ID-13-2026-10-28T0709Z",
+        "index": 12
+      }
+    ],
+    "snapshot_blob_sha": "57629d965b5ae619e3e7bf43d144832c867108ac"
   },
   "sources": [
     {
@@ -6274,6 +6500,102 @@
       "title": "Main Cross Analysis workflow",
       "accessed_at_utc": "2026-10-28T06:05:00Z",
       "note": "Workflow-run trigger plus hourly fallback; commits generated entity co-occurrence and sentiment analysis directly to main."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T0709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/3c41a8c44b030643df69307f943716aeef6f1e9d",
+      "title": "Barrot-Agent/B-Agent current main commit",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "Current main head 3c41a8c44b030643df69307f943716aeef6f1e9d; latest commit changes web/paper_trading_log.jsonl; message: Paper trade cycle [skip ci]."
+    },
+    {
+      "id": "SRC-GH-LATEST-SIGNAL-2026-10-28T0709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Main-branch latest XRP signal artifact",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "Artifact timestamp 2026-10-28T06:33:28.807481+00:00; score 44; confidence 0; news score 88. Headline text classifies XRPL protocol/consensus research as bullish; not validated directional evidence."
+    },
+    {
+      "id": "SRC-WF-SIGNAL-SUMMARY-MAIN-2026-10-28T0709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml",
+      "title": "Main signal-summary workflow",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "workflow_run/schedule/manual triggers; runs scripts/signal_summary.py; commits web/latest_signal_summary.json and web/generated_audio, then pushes main. Direct generated-data writer remains active."
+    },
+    {
+      "id": "SRC-INVESTING-XRP-HISTORY-ID-2026-10-28T0709Z",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "url": "https://id.investing.com/crypto/xrp/historical-data",
+      "title": "Investing.com Indonesia XRP historical table",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "Oct 28 displayed row: last 1.3278, open 1.3306, high 1.3306, low 1.3267, volume 187.59M; cutoff/bar boundary not normalized."
+    },
+    {
+      "id": "SRC-INVESTING-XRP-HISTORY-CA-2026-10-28T0709Z",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "url": "https://ca.investing.com/crypto/xrp/historical-data",
+      "title": "Investing.com Canada XRP historical table",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "Oct 28 displayed row: last 1.3312, open 1.3306, high 1.3431, low 1.3255, volume 191.29M; same vendor/date but values differ from Indonesia page."
+    },
+    {
+      "id": "SRC-CIRCLE-TRANSPARENCY-RECHECK-2026-10-28T0709Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle USDC transparency dashboard recheck",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "Still states as-of Oct 22, 2026: $72.0B USDC circulation, $72.2B reserves; -$0.6B 7-day, -$3.2B 30-day, -$4.4B 365-day net change. No destination chain/asset attribution."
+    },
+    {
+      "id": "SRC-REPO-PR1227-CI-DC18-2026-10-28T0607Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40641946220",
+      "title": "PR #1227 exact-head CI",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "CI completed successfully on head dc18baed806b221054d88299d11a0cc3121d2fba; Tests job succeeded. Pre-update head only."
+    },
+    {
+      "id": "SRC-REPO-PR1227-GATE-DC18-2026-10-28T0607Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40641946335",
+      "title": "PR #1227 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "Fail-closed gate completed successfully on head dc18baed806b221054d88299d11a0cc3121d2fba. Pre-update head only."
+    },
+    {
+      "id": "SRC-REPO-APPROVAL-ZERO-JOB-2026-10-28T0607Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40641938871",
+      "title": "Approval workflow push-event run with no jobs",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "GitHub records push event and failure conclusion but no jobs. Workflow file on main/research branch declares workflow_dispatch only. No approval job ran; origin of the push-event record remains unresolved."
+    },
+    {
+      "id": "SRC-GH-OPEN-PRS-2026-10-28T0709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pulls",
+      "title": "Open pull-request inventory",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "GitHub API returned 75 open PRs; many similarly scoped older safety/research PRs have stale base SHAs. No PRs were closed or merged."
+    },
+    {
+      "id": "SRC-GH-MAIN-WORKFLOW-RUNS-2026-10-28T0709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions",
+      "title": "Recent main-branch workflow runs",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "Scheduled paper trader, scheduler, cross-analysis, BTC signal cycle and signal-summary workflows continue to execute; recent main commits include generated-state updates."
+    },
+    {
+      "id": "SRC-GH-RESEARCH-SNAPSHOT-0605Z-STRUCTURE-2026-10-28T0709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-fresh-main-20261028-0004z/data/xrp_intelligence/snapshots/2026-10-28T0605Z.json",
+      "title": "Prior research snapshot structural audit",
+      "accessed_at_utc": "2026-10-28T07:09:34Z",
+      "note": "Current 0605Z snapshot contains duplicate IDs in two critical findings and one quality finding, plus seven event-timeline records without event_id. This new snapshot normalizes IDs while leaving the historical 0605Z file unchanged."
     }
   ],
   "limitations": [
@@ -6301,7 +6623,11 @@
     "The zero-job approval workflow run is recorded as a push event although the current workflow is workflow_dispatch-only; root cause remains unresolved.",
     "Circle's Oct 22 global USDC net redemptions do not identify chain, customer, or destination-asset flows; they cannot be used as XRP inflows.",
     "XRP Insights' Week 43 ETF aggregate excludes GXRP from weekly flow due to a scrape/catch-up issue; fund-level primary-source reconciliation is pending.",
-    "Current main continues to receive generated-data commits from scheduled workflows. Artifact-only changes must not be deployed until durable idempotent persistence preserves paper-trading and ingestion continuity."
+    "Current main continues to receive generated-data commits from scheduled workflows. Artifact-only changes must not be deployed until durable idempotent persistence preserves paper-trading and ingestion continuity.",
+    "Investing.com regional historical pages show differing Oct 28 XRP rows; exact timezone/bar-boundary cause unresolved; observations excluded from model features.",
+    "Main signal-summary workflow still commits generated summary JSON/audio directly to main; fallback code alone does not replace persistence path.",
+    "Approval workflow run 40641938871 is a push-event failure with zero jobs while current workflow declares workflow_dispatch only; no approval job ran and event origin remains unresolved.",
+    "Repository has 75 open PRs including many similarly scoped older safety/research branches; no PRs closed or merged; stale-head checks are not current verification."
   ],
   "run_updates": [
     {
@@ -7110,6 +7436,108 @@
         "snapshot_blob_sha": "313914156014c906ca5bb9eb83fd9655610d5b0f",
         "exact_head_ci": "PENDING_AFTER_INDEX_UPDATE"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T07:09:34Z",
+      "update_type": "MAIN_SIGNAL_QUOTE_WORKFLOW_AUDIT_AND_LEDGER_ID_NORMALIZATION",
+      "snapshot_id": "XRP-MAIN-SIGNAL-QUOTE-WORKFLOW-AUDIT-2026-10-28T0709Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0709Z.json",
+      "details": "Inspected main 3c41a8c44b030643df69307f943716aeef6f1e9d; signal artifact timestamp 2026-10-28T06:33:28.807481+00:00, score 44, confidence 0, news score 88. signal-summary.yml still commits generated summary JSON/audio directly to main. Two Investing.com regional pages disagree on Oct 28 XRP price/volume, so both rows are blocked from model use. PR #1227 pre-update head dc18baed806b221054d88299d11a0cc3121d2fba passed CI 40641946220 and fail-closed gate 40641946335. Approval workflow run 40641938871 has push event/failure conclusion but zero jobs while current workflow declares workflow_dispatch only; trigger origin unresolved. Open PR count is 75; none closed/merged. Duplicate/missing IDs were normalized only in this new snapshot; historical 0605Z snapshot remains unchanged. Main was not modified.",
+      "validation": {
+        "source_ids_unique": true,
+        "missing_source_refs": 0,
+        "duplicate_source_count": 0,
+        "duplicate_id_normalizations": [
+          {
+            "collection": "CRITICAL-FINDING",
+            "original": "WORKFLOW-EXTERNAL-WRITE-AND-MERGE-RISK-PR1241-2026-10-28",
+            "normalized": "WORKFLOW-EXTERNAL-WRITE-AND-MERGE-RISK-PR1241-2026-10-28-DUPLICATE-2",
+            "index": 14
+          },
+          {
+            "collection": "CRITICAL-FINDING",
+            "original": "MAIN-BRANCH-REQUIRED-CHECKS-EMPTY-2026-10-28",
+            "normalized": "MAIN-BRANCH-REQUIRED-CHECKS-EMPTY-2026-10-28-DUPLICATE-2",
+            "index": 15
+          },
+          {
+            "collection": "MARKET-DATA-QUALITY",
+            "original": "XRP-QUOTE-TIME-ALIGNMENT-2026-10-28",
+            "normalized": "XRP-QUOTE-TIME-ALIGNMENT-2026-10-28-DUPLICATE-2",
+            "index": 14
+          },
+          {
+            "collection": "EVENT",
+            "original": null,
+            "normalized": "EVENT-MISSING-ID-06-2026-10-28T0709Z",
+            "index": 5
+          },
+          {
+            "collection": "EVENT",
+            "original": null,
+            "normalized": "EVENT-MISSING-ID-07-2026-10-28T0709Z",
+            "index": 6
+          },
+          {
+            "collection": "EVENT",
+            "original": null,
+            "normalized": "EVENT-MISSING-ID-08-2026-10-28T0709Z",
+            "index": 7
+          },
+          {
+            "collection": "EVENT",
+            "original": null,
+            "normalized": "EVENT-MISSING-ID-09-2026-10-28T0709Z",
+            "index": 8
+          },
+          {
+            "collection": "EVENT",
+            "original": null,
+            "normalized": "EVENT-MISSING-ID-10-2026-10-28T0709Z",
+            "index": 9
+          },
+          {
+            "collection": "EVENT",
+            "original": null,
+            "normalized": "EVENT-MISSING-ID-11-2026-10-28T0709Z",
+            "index": 10
+          },
+          {
+            "collection": "EVENT",
+            "original": null,
+            "normalized": "EVENT-MISSING-ID-12-2026-10-28T0709Z",
+            "index": 11
+          },
+          {
+            "collection": "EVENT",
+            "original": null,
+            "normalized": "EVENT-MISSING-ID-13-2026-10-28T0709Z",
+            "index": 12
+          }
+        ],
+        "post_normalization_duplicate_counts": {
+          "critical": 0,
+          "quality": 0,
+          "events": 0,
+          "research": 0,
+          "observations": 0
+        },
+        "main_sha": "3c41a8c44b030643df69307f943716aeef6f1e9d",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "prior_head_ci": "PASS",
+        "prior_head_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40641946220",
+        "prior_head_gate": "PASS",
+        "prior_head_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40641946335",
+        "new_snapshot_exact_head_ci": "PENDING",
+        "signal_summary_direct_main_write": "CONFIRMED",
+        "investing_regional_quotes": "DISAGREE; MODEL_BLOCKED",
+        "approval_workflow_zero_jobs": "CONFIRMED; TRIGGER_ORIGIN_UNRESOLVED",
+        "open_pr_count": 75,
+        "snapshot_blob_sha": "57629d965b5ae619e3e7bf43d144832c867108ac"
+      },
+      "snapshot_blob_sha": "57629d965b5ae619e3e7bf43d144832c867108ac"
     }
   ],
   "mission_priority": {
