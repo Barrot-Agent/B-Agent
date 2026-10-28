@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T01:07:30Z",
+    "captured_at_utc": "2026-10-28T01:08:30Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "34812763a099c85a3a25bd1d1037529bb20bc0be",
@@ -745,6 +745,17 @@
           "SRC-CFTC-XRP-CME-TFF-2026-10-20"
         ],
         "uncertainty": "Raw CFTC weekly positioning is verified from the official table; economic intent, cross-venue hedging and spot-price impact are unknown."
+      },
+      {
+        "id": "COINBASE-DERIVATIVES-XRP-CFTC-OPEN-INTEREST-2026-10-20",
+        "evidence_class": "OFFICIAL_PRIMARY_REGULATORY_POSITIONING_DATA",
+        "status": "CONFIRMED_PRODUCT_LISTINGS_AND_OI; DIRECTIONAL_INTERPRETATION_UNKNOWN",
+        "claim": "The CFTC TFF report lists two Coinbase Derivatives XRP products as of Oct 20: NANO XRP with 59,009 open contracts and NANO XRP PERP STYLE with 40,655 open contracts, each described as 500 XRP per contract. The same report separately lists CME XRP futures at 7,509 contracts of 50,000 XRP each.",
+        "interpretation": "This confirms a measurable regulated derivatives footprint for Coinbase Derivatives in XRP contracts. It does not establish Coinbase spot inventory, customer net long/short exposure, cash-market price impact or whether positions are hedged elsewhere.",
+        "source_ids": [
+          "SRC-CFTC-XRP-COINBASE-DERIVATIVES-2026-10-20"
+        ],
+        "uncertainty": "Weekly open interest is not volume or directional flow; contract units and product types differ, and trader-category positions cannot identify motives."
       }
     ],
     "relationship_graph": [
@@ -1217,6 +1228,16 @@
           "SRC-CIRCLE-10Q-Q2-2026"
         ],
         "status": "INFERENCE_NOT_A_DIRECT_COMMERCIAL_RELATIONSHIP"
+      },
+      {
+        "id": "EDGE-COINBASE-DERIVATIVES-XRP-CFTC-POSITIONS-2026",
+        "from": "Coinbase Derivatives, LLC",
+        "relation": "has_CFTC-reported_open_interest_in",
+        "to": "NANO XRP and NANO XRP PERP STYLE contracts",
+        "evidence_ids": [
+          "SRC-CFTC-XRP-COINBASE-DERIVATIVES-2026-10-20"
+        ],
+        "status": "CONFIRMED_REGULATORY_REPORTING_OBSERVATION"
       }
     ],
     "competing_hypotheses": [
@@ -1597,6 +1618,20 @@
         "test_plan": [
           "Use official weekly CFTC vintages, contract sizes and spreading fields; align to market event time; compare with CME price/basis, aggregate OI, funding, spot CVD and ETF flows; test incremental predictive value against simple price/volatility baselines."
         ]
+      },
+      {
+        "id": "H-COINBASE-DERIVATIVES-PRICE-DISCOVERY-VS-HEDGING-2026",
+        "hypothesis": "Coinbase Derivatives' XRP contract activity may contribute to price discovery, hedging and liquidity, but CFTC open interest alone does not reveal whether it creates net spot XRP demand.",
+        "supporting_evidence": [
+          "Official CFTC weekly report lists two Coinbase Derivatives XRP products with material open interest and trader-category positioning."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Open positions may offset spot holdings or exposures elsewhere; OI can rise without net new buying, and falling OI can coincide with a price rally.",
+          "The report contains no order-flow direction, customer identity or direct spot inventory disclosure."
+        ],
+        "test_plan": [
+          "Normalize each contract multiplier and expiry/product type; collect time-aligned exchange OI, volume, basis/funding and liquidations; compare with spot CVD, exchange balances and ETF flows; evaluate out-of-sample incremental predictive value."
+        ]
       }
     ],
     "market_observations": [
@@ -1708,6 +1743,18 @@
           "SRC-CFTC-XRP-CME-TFF-2026-10-20"
         ],
         "model_admission": "BLOCKED_PENDING_CONTRACT_NORMALIZATION_AND_CROSS_VENUE_ALIGNMENT"
+      },
+      {
+        "id": "COINBASE-DERIVATIVES-XRP-OI-CFTC-2026-10-20",
+        "evidence_class": "OFFICIAL_PRIMARY_REGULATORY_WEEKLY_POSITIONING",
+        "as_of_date": "2026-10-20",
+        "observation": "CFTC TFF lists NANO XRP (Coinbase Derivatives) open interest 59,009 contracts and NANO XRP PERP STYLE (Coinbase Derivatives) open interest 40,655 contracts; each contract is described as 500 XRP. Combined, this is 99,664 contracts or approximately 49.832M XRP-equivalent contract units, before considering different product mechanics. Separately, CME XRP futures list 7,509 contracts at 50,000 XRP each (~375.45M XRP-equivalent).",
+        "interpretation": "Coinbase has a direct regulated XRP derivatives footprint. The approximate XRP-equivalent comparison is a unit normalization, not a claim that the products are economically interchangeable or that Coinbase has that amount of spot XRP.",
+        "source_ids": [
+          "SRC-CFTC-XRP-COINBASE-DERIVATIVES-2026-10-20",
+          "SRC-CFTC-XRP-CME-TFF-2026-10-20"
+        ],
+        "model_admission": "BLOCKED_PENDING_CROSS-VENUE_OI_VOLUME_BASIS_AND_SPOT_FLOW_ALIGNMENT"
       }
     ],
     "phrase_investigation": {
@@ -1913,10 +1960,10 @@
       ]
     },
     "next_actions": [
-      "Verify exact-head CI and fail-closed gate for the latest CFTC snapshot/ledger commit; keep PR #1227 draft and unmerged.",
-      "Reconstruct CFTC weekly XRP CME positions and all-venue open interest with contract-size normalization; preserve report vintage and distinguish CME-only data from global aggregates.",
-      "Review PR #1230: exact-head CI and fail-closed gate passed; keep draft/unmerged pending approval. The current main workflow still has its failure and direct-write behavior until a reviewed fix is merged.",
-      "Measure actual RLUSD/USDC distribution and announced Robinhood/Bitstamp XRPL settlement separately; treat competition with Coinbase/Circle and XRP bridge-asset demand as hypotheses.",
+      "Verify exact-head CI and fail-closed gate for the new Coinbase/CFTC snapshot; keep PR #1227 draft and unmerged.",
+      "Normalize the official CFTC CME and Coinbase Derivatives XRP product counts by contract multiplier and product mechanics; align with venue OI, volume, basis, funding, spot flow and ETF flow.",
+      "Review PR #1230: exact-head CI and fail-closed gate passed; keep draft/unmerged pending approval. Main still has the provider-failure and direct-write behavior until a reviewed fix is merged.",
+      "Measure actual RLUSD and USDC distribution and Robinhood/Bitstamp XRPL settlement separately; keep competition and XRP bridge-asset demand as hypotheses.",
       "Continue safe persistence redesign for scheduled generated-data writers; preserve paper-trading history and do not modify main.",
       "Keep forecast status NOT_ISSUED until fixed-horizon walk-forward tests, leakage controls, baselines, calibration, drift checks and shadow evaluation pass."
     ],
@@ -2106,7 +2153,7 @@
         "state": "open_draft_unmerged",
         "note": "Exact-head CI and fail-closed gate passed. No merge or deployment occurred."
       },
-      "as_of_utc": "2026-10-28T01:07:30Z",
+      "as_of_utc": "2026-10-28T01:08:30Z",
       "main_head_status": "RECENT_SCHEDULED_WORKFLOWS_CONTINUE_TO_WRITE_GENERATED_DATA",
       "signal_summary_failure": {
         "run_id": 40611307868,
@@ -2149,11 +2196,11 @@
         "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612760845"
       },
       "previous_ledger_head": {
-        "sha": "d632ac3bc613af75b2c768a1757d8f4680aa6aef",
+        "sha": "d5872c089ccfaa0c82f1aaa6eb5adff97e430b28",
         "tests": "PASS",
         "gate": "PASS",
-        "tests_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613047304",
-        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613047298"
+        "tests_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613156802",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613156767"
       },
       "new_snapshot_commit_status": "PENDING_EXACT_HEAD_CI_AT_CAPTURE"
     },
@@ -2275,16 +2322,16 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-CFTC-CME-POSITIONING-2026-10-20-AND-VERIFICATION-2026-10-28T0107Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0107Z.json",
-    "current_research_head_before_ledger_update": "d632ac3bc613af75b2c768a1757d8f4680aa6aef",
+    "snapshot_id": "XRP-COINBASE-DERIVATIVES-CFTC-2026-10-20-2026-10-28T0108Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0108Z.json",
+    "current_research_head_before_ledger_update": "d5872c089ccfaa0c82f1aaa6eb5adff97e430b28",
     "current_research_checks": {
       "tests": "PASS",
       "gate": "PASS",
-      "as_of_utc": "2026-10-28T01:07:17Z",
-      "validated_head_sha": "d632ac3bc613af75b2c768a1757d8f4680aa6aef",
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613047304",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613047298",
+      "as_of_utc": "2026-10-28T01:08:19Z",
+      "validated_head_sha": "d5872c089ccfaa0c82f1aaa6eb5adff97e430b28",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613156802",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613156767",
       "note": "These checks validate the immediately preceding ledger head; this new snapshot/ledger commit requires its own exact-head checks."
     },
     "current_research_head_before_final_verification_record": "33c87fd5007108960c8974ac1af89332916a495f",
@@ -2574,7 +2621,7 @@
         "impact_status": "PRICE_IMPACT_UNKNOWN; NO_XRP_FLOW_DISCLOSED"
       }
     ],
-    "snapshot_blob_sha": "0baecc360ef243118274573e9c27aaa7528085e5"
+    "snapshot_blob_sha": "0b8b2842a5bdd78d740d5fd09ea90bdbaa3f55bd"
   },
   "sources": [
     {
@@ -3390,6 +3437,14 @@
       "title": "CFTC Traders in Financial Futures — XRP CME positions as of October 20, 2026",
       "accessed_at_utc": "2026-10-28T01:07:30Z",
       "note": "Official CFTC TFF page updated October 23, 2026. XRP — Chicago Mercantile Exchange, code #176740, contract size 50,000 XRP, open interest 7,509 contracts (about 375.45 million XRP-equivalent contracts outstanding). Positions: dealer/intermediary long 4,111, short 4,630, spreading 17; asset manager/institutional long 981, short 717, spreading 0; leveraged funds long 2,218, short 1,945, spreading 17; other reportables 0; nonreportable long 165, short 183. Total open interest change from Oct 13 was -110 contracts. CME-only weekly positioning, not aggregate global XRP futures OI; contract positioning can hedge other exposures."
+    },
+    {
+      "id": "SRC-CFTC-XRP-COINBASE-DERIVATIVES-2026-10-20",
+      "evidence_class": "OFFICIAL_PRIMARY_REGULATORY_POSITIONING_DATA",
+      "url": "https://www.cftc.gov/dea/options/financial_lof.htm",
+      "title": "CFTC TFF XRP positions on Coinbase Derivatives products as of October 20, 2026",
+      "accessed_at_utc": "2026-10-28T01:08:30Z",
+      "note": "Official CFTC TFF page updated Oct 23, 2026 lists NANO XRP — Coinbase Derivatives, LLC (500 XRP per contract) with open interest 59,009 contracts, and NANO XRP PERP STYLE — Coinbase Derivatives, LLC (500 XRP per contract) with open interest 40,655 contracts. These are separate product lines from XRP — CME (50,000 XRP per contract). The contract counts must not be compared without multiplier normalization; positions may hedge other exposure and do not establish spot XRP holdings or net directional demand."
     }
   ],
   "limitations": [
@@ -3915,6 +3970,26 @@
         "snapshot_json": "PASS",
         "source_ids_unique": true,
         "edge_source_refs": "PASS",
+        "finding_source_refs": "PASS",
+        "previous_ledger_head_tests": "PASS",
+        "previous_ledger_head_gate": "PASS",
+        "new_head_ci": "PENDING",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T01:08:30Z",
+      "update_type": "COINBASE_XRP_DERIVATIVES_CFTC_POSITIONING",
+      "snapshot_id": "XRP-COINBASE-DERIVATIVES-CFTC-2026-10-20-2026-10-28T0108Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0108Z.json",
+      "snapshot_blob_sha": "0b8b2842a5bdd78d740d5fd09ea90bdbaa3f55bd",
+      "details": "Added official CFTC weekly positions for Coinbase Derivatives' NANO XRP and NANO XRP PERP STYLE products and separated them from CME XRP futures. The observation records contract multipliers and blocks directional interpretation pending cross-venue alignment.",
+      "validation": {
+        "snapshot_json": "PASS",
+        "source_ids_unique": true,
+        "relationship_edge_source_refs": "PASS",
         "finding_source_refs": "PASS",
         "previous_ledger_head_tests": "PASS",
         "previous_ledger_head_gate": "PASS",
