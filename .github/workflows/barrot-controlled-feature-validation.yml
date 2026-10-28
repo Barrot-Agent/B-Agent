@@ -38,7 +38,7 @@ jobs:
           [[ "$PR_NUMBER" == "1225" ]] || { echo "Only Barrot PR #1225 is currently allowlisted." >&2; exit 1; }
           [[ "$EXPECTED_HEAD_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "Expected SHA must be 40 lowercase hex characters." >&2; exit 1; }
 
-          pr_json="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq '{state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}')"
+          pr_json="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq '{state,base_ref:.base.ref,head_sha:.head.sha,head_ref:.head.ref,head_repo:.head.repo.full_name}')"
           echo "$pr_json"
 
           state="$(jq -r '.state' <<<"$pr_json")"
