@@ -6590,11 +6590,24 @@
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:08:30Z",
     "snapshot_commit_sha": "c14744782e0d48b0669641320138894840250850",
     "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T13:08:30Z",
-      "status": "SNAPSHOT_READBACK_PASS; INDEX_CI_PENDING",
+      "verified_at_utc": "2026-10-28T13:10:30Z",
+      "status": "PASS_ON_VERIFIED_INDEX_HEAD_C21639C; NEW_EVIDENCE_APPEND_AWAITS_ITS_OWN_CI",
       "snapshot_blob_sha": "e51dc8cea575cd957b5f877ee392f2c539638cdb",
       "snapshot_hash_matches_index": true,
-      "note": "Snapshot was read back and JSON-parsed. Exact-head CI/gate on the updated ledger index remains pending."
+      "verified_index_head_sha": "c21639c9e3c514129270a053d447c747f48aa12f",
+      "ci": {
+        "status": "PASS",
+        "tests_passed": 145,
+        "duration_seconds": 6.17,
+        "run_id": 40694006166,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694006166"
+      },
+      "gate": {
+        "status": "PASS",
+        "run_id": 40694006034,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694006034"
+      },
+      "note": "The snapshot blob SHA matches the index and the referenced index head passed CI/gate. This follow-up evidence append creates a new index commit and must be checked separately."
     }
   },
   "sources": [
@@ -9125,6 +9138,14 @@
       "title": "PR #1253 current base comparison",
       "accessed_at_utc": "2026-10-28T13:08:30Z",
       "note": "PR #1253 head e05d04605f78b5dc4ad94bdce0c5aed09b6781f6 is based on 070d538 and is now 3 commits ahead/1 behind current main be4a9f4. The intervening main commit only appended a paper-trading row. Exact-head CI passed 147 tests in 6.22s and gate passed; draft/unmerged."
+    },
+    {
+      "id": "SRC-LEDGER-INDEX-CI-20261028T1310Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694006166",
+      "title": "Latest XRP ledger index exact-head CI",
+      "accessed_at_utc": "2026-10-28T13:10:30Z",
+      "note": "Exact index commit c21639c9e3c514129270a053d447c747f48aa12f passed 145 tests in 6.17s; fail-closed gate run 40694006034 passed. This evidence applies to that exact commit; a subsequent evidence append has its own CI run."
     }
   ],
   "limitations": [
@@ -10519,6 +10540,33 @@
           "SRC-GH-MAIN-PAPER-TRADE-APPEND-20261028T1308Z",
           "SRC-PR1253-CURRENT-BASE-COMPARE-20261028T1308Z"
         ]
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T13:10:30Z",
+      "update_type": "LEDGER_INDEX_CI_VERIFIED_FOR_EXACT_HEAD",
+      "snapshot_id": "XRP-YOUTUBE-CANDIDATE-INVENTORY-AND-MAIN-ADVANCE-202610281308Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1308Z.json",
+      "details": "Verified the exact ledger index head c21639c after adding the candidate YouTube-channel/video inventory and source deduplication correction. The core test suite passed 145 tests in 6.17s and the fail-closed gate passed. Snapshot blob hash still matches the index. Main remains be4a9f4; PR #1253 is one generated-log commit behind and unmerged.",
+      "source_ids": [
+        "SRC-LEDGER-INDEX-CI-20261028T1310Z",
+        "SRC-GH-MAIN-PAPER-TRADE-APPEND-20261028T1308Z",
+        "SRC-PR1253-CURRENT-BASE-COMPARE-20261028T1308Z"
+      ],
+      "validation": {
+        "verified_index_head_sha": "c21639c9e3c514129270a053d447c747f48aa12f",
+        "ci": "PASS_145_TESTS_6.17S",
+        "ci_run_id": 40694006166,
+        "gate": "PASS",
+        "gate_run_id": 40694006034,
+        "snapshot_blob_sha": "e51dc8cea575cd957b5f877ee392f2c539638cdb",
+        "snapshot_hash_matches_index": true,
+        "source_catalog_unique_ids": true,
+        "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false
       }
     }
   ],
