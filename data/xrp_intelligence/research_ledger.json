@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T13:10:45Z",
+    "captured_at_utc": "2026-10-28T13:11:30Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
@@ -225,7 +225,7 @@
         "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
         "message": "Paper trade cycle [skip ci]",
         "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
-        "observed_at_utc": "2026-10-28T13:10:45Z",
+        "observed_at_utc": "2026-10-28T13:11:30Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
@@ -1043,6 +1043,16 @@
         "consequence": "If treated as facts without provenance, these claims could contaminate supply, liquidity and capital-flow features.",
         "proposed_fix": "Require source IDs, exact event windows, wallet-label confidence, fund universe and independent corroboration before feature-store admission.",
         "verification": "Source pages captured as public YouTube search results; claims remain SECONDARY_UNVERIFIED."
+      },
+      {
+        "id": "XRPL-SECURITY-EVENT-20261028T1311Z",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "severity": "high",
+        "status": "PATCH_RELEASED; OFFICIAL_DISCLOSURE_PUBLISHED; MARKET_IMPACT_UNMEASURED",
+        "finding": "Official XRPL disclosure reports a critical payment-engine integer overflow capable in theory of creating spendable XRP and a pre-activation Batch wrapper validation/consensus risk. The 3.4.1 release fixed both; the disclosure reports no evidence of public-network exploitation.",
+        "consequence": "Protocol integrity and upgrade adoption are material institutional-risk variables, but no realized inflation or XRP price effect is established.",
+        "proposed_fix": "For Barrot's research pipeline, track official release versions, amendment activation and public security disclosures as separate timestamped event classes; do not convert security announcements directly into bullish/bearish labels.",
+        "verification": "Primary official disclosure and release notes captured; amendment-status badges on the registry did not load in this capture."
       }
     ],
     "research_findings": [
@@ -2090,6 +2100,18 @@
           "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z"
         ],
         "uncertainty": "The official YouTube channel page was throttled; the 1.2K video count is third-party and may be stale. No first-party cross-link establishes the requested identity."
+      },
+      {
+        "id": "XRPL-SECURITY-RELEASE-AND-AMENDMENT-STATUS-20261028T1311Z",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "OFFICIAL_DISCLOSURE_CONFIRMS_FIXES; NO_PUBLIC_EXPLOITATION_EVIDENCE_REPORTED",
+        "claim": "XRPL's official 9 Oct 2026 disclosure says xrpld 3.4.1 fixed a payment-engine integer overflow that could theoretically mint XRP and a Batch inner-transaction wrapper validation bug with potential mixed-version consensus risk. The report says there is no evidence the overflow was exploited on any public network. The overflow fix applies when a node upgrades to 3.4.1; fixBatchV1_2 activated on Mainnet on 9 Oct, followed by BatchV1_1.",
+        "interpretation": "This is material protocol-integrity and operational-risk evidence. It is not evidence of an actual XRP supply increase, a realized loss, or a directional market catalyst. The rapid fix and transparent disclosure may support trust; discovery of a critical latent defect may raise perceived technical risk. Neither market effect is measured here.",
+        "source_ids": [
+          "SRC-XRPL-SECURITY-DISCLOSURE-20261028T1311Z",
+          "SRC-XRPL-RELEASE-3.4.1-20261028T1311Z"
+        ],
+        "uncertainty": "Claims about no exploitation are based on the official disclosure. Independent node-version adoption across the entire network and any market-price response have not been independently measured."
       }
     ],
     "relationship_graph": [
@@ -3604,6 +3626,20 @@
           "Price can fall despite net exchange outflows if demand weakens or derivatives deleveraging dominates."
         ],
         "test_plan": "Compare independent labeled exchange netflows, XRPL account clustering confidence, custody disclosures, venue order-book depth, spot volume, derivatives open interest/funding and ETF sponsor creations/redemptions at synchronized UTC cutoffs. Use placebo windows and preserve counterexamples."
+      },
+      {
+        "id": "H-XRPL-SECURITY-DISCLOSURE-TRUST-VS-RISK-202610281311Z",
+        "hypothesis": "The September 2026 XRPL security response could have opposing institutional effects: rapid patching and transparent disclosure may strengthen operational trust, while disclosure of a latent supply-inflation bug may increase perceived technical risk.",
+        "supporting_evidence": [
+          "SRC-XRPL-SECURITY-DISCLOSURE-20261028T1311Z",
+          "SRC-XRPL-RELEASE-3.4.1-20261028T1311Z"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "The official report states there is no evidence of public-network exploitation.",
+          "The exploit required deliberately crafted offers and a payment path; normal transactions would not reach the overflow path.",
+          "Markets may have priced the event before the public disclosure or not reacted materially at all."
+        ],
+        "test_plan": "Use event windows around 22 Sep bug report (not public), 25 Sep release, and 9 Oct disclosure/activation. Compare XRP/BTC returns, realized volatility, perp funding/open interest, XRPL activity and exchange depth with market controls; predeclare windows and placebo dates."
       }
     ],
     "market_observations": [
@@ -4295,8 +4331,8 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T13:10:45Z",
-      "last_run_update": "Added a second candidate Kamilah Stevenson channel ID from third-party analytics; identity remains unresolved and all creator claims remain outside model features. No forecast issued.",
+      "last_checked_utc": "2026-10-28T13:11:30Z",
+      "last_run_update": "Added official XRPL 3.4.1 security-disclosure and amendment-lifecycle evidence. The official report states no evidence of public-network exploitation; no realized XRP supply increase or market effect is established.",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
         "XRP ETF weekly flow observation excludes GXRP and is not reconciled against all fund-level primary records.",
@@ -4314,7 +4350,9 @@
         "Creator-reported XRP wallet and ETF-flow figures are not independently reconciled and remain excluded from model features.",
         "The requested Camilla Stephenson YouTube identity remains unresolved; candidate Kamilah/Camila channels have different identifiers and no first-party cross-link.",
         "Two candidate Kamilah channel IDs now exist in public evidence; no first-party link resolves the requested Camilla Stephenson identity.",
-        "Creator-reported wallet accumulation and ETF flow figures remain unverified and excluded from model features."
+        "Creator-reported wallet accumulation and ETF flow figures remain unverified and excluded from model features.",
+        "Official XRPL security events and amendment activation must be modeled as event context, not automatic bullish/bearish signals.",
+        "Mainnet activation status for ConfidentialTransfer, DynamicMPT, Sponsor and PermissionDelegationV1_1 was not verified in this capture; official status badges did not load."
       ],
       "issuance_outcome_contract": {
         "status": "FRESH_MAIN_SUCCESSOR_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NOT_MERGED",
@@ -4349,10 +4387,13 @@
       ]
     },
     "next_actions": [
-      "Resolve the requested Camilla Stephenson identity using first-party evidence; preserve UCXm6 and UCqUP as separate candidate channel IDs until verified.",
-      "Enumerate the canonical channel's public uploads using its official uploads list/feed after identity resolution; current video inventory is partial.",
+      "Verify live Mainnet amendment activation separately for ConfidentialTransfer, DynamicMPT, Sponsor and PermissionDelegationV1_1; release support and Final XLS status are not activation proof.",
+      "Track the Sep 25 xrpld 3.4.1 release and Oct 9 security disclosure/Batch activation as event features, but test any XRP market response with predeclared event windows and controls.",
+      "Resolve the requested Camilla Stephenson identity; preserve UCXm6 and UCqUP as separate candidate channel IDs until first-party evidence connects them.",
       "Independently reconcile creator-reported XRP wallet accumulation/exchange outflows and ETF-flow figures with labeled on-chain data and sponsor-level fund records.",
       "Keep PR #1253 draft/unmerged pending review against current main; exact-head CI passed 147 tests and its fail-closed gate passed.",
+      "Resolve the requested Camilla Stephenson identity using first-party evidence; preserve UCXm6 and UCqUP as separate candidate channel IDs until verified.",
+      "Enumerate the canonical channel's public uploads using its official uploads list/feed after identity resolution; current video inventory is partial.",
       "Build durable append-only point-in-time feature storage; 30-day artifacts are not a permanent feature store.",
       "Reconcile XRP spot, derivatives, ETF sponsor records and XRPL-native USDC flows at common UTC cutoffs.",
       "Capture Coinbase Q3 2026 results after the scheduled 29 October release; compare official results with Q2 without inferring XRP-specific flows.",
@@ -4492,7 +4533,7 @@
         "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
         "message": "Paper trade cycle [skip ci]",
         "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
-        "observed_at_utc": "2026-10-28T13:10:45Z",
+        "observed_at_utc": "2026-10-28T13:11:30Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
@@ -4501,7 +4542,7 @@
       "branch_protection_details": "Branch endpoint reports protected=true but required status-check contexts/checks are empty; detailed protection endpoint returned 403 to this integration.",
       "main_ci": {
         "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-        "note": "Latest main commit is a paper-trading-log append marked [skip ci]; exact-head main CI is not verified."
+        "note": "Latest main commit is a generated paper-trading-log append marked [skip ci]; exact-head main CI is not verified."
       },
       "main_databricks_deploy": {
         "run_id": 40583993212,
@@ -5154,6 +5195,19 @@
           "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z"
         ],
         "next_test": "Reconcile XRPL ledger transfers and labeled exchange wallets with independent data providers; reconcile ETF sponsor daily holdings, creations/redemptions, settlement dates and fund universe."
+      },
+      {
+        "id": "XRPL-AMENDMENT-STATUS-CLAIM-QUALIFICATION-20261028T1311Z",
+        "severity": "MEDIUM",
+        "status": "FEATURE_SUPPORT_AND_MAINNET_ACTIVATION_MUST_BE_SEPARATED",
+        "finding": "The 30 Jul creator video discusses XRPL amendment proposals. Official 3.3.0 later introduced support for BatchV1_1, ConfidentialTransfer, DynamicMPT, PermissionDelegationV1_1 and Sponsor; the official 3.4.1 disclosure confirms fixBatchV1_2 and BatchV1_1 activated on Mainnet on 9 Oct. The known-amendments page's dynamic status fields did not load in this capture, and XLS-0096 being Final is not proof of Mainnet activation.",
+        "interpretation": "Do not label a feature 'live on Mainnet' merely because a release supports it or an XLS is Final. Verify activation separately before inferring institutional functionality or adoption.",
+        "source_ids": [
+          "SRC-XRPL-RELEASE-3.3.0-20261028T1311Z",
+          "SRC-XRPL-SECURITY-DISCLOSURE-20261028T1311Z",
+          "SRC-XRPL-KNOWN-AMENDMENTS-20261028T1311Z",
+          "SRC-XLS-0096-20261028T1311Z"
+        ]
       }
     ],
     "mission_priority": {
@@ -5182,9 +5236,9 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-YOUTUBE-CHANNEL-ID-RECONCILIATION-202610281310Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1310Z.json",
-    "current_research_head_before_ledger_update": "94616bc46abcc2c47bda5f3fa94efd358ad99ab6",
+    "snapshot_id": "XRP-XRPL-SECURITY-AND-AMENDMENT-STATUS-202610281311Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1311Z.json",
+    "current_research_head_before_ledger_update": "7ce48df6a5d7f1228df343d920ead7f8b56e14ee",
     "current_research_checks": {
       "status": "PENDING_AFTER_NEW_SNAPSHOT_AND_INDEX_COMMITS",
       "note": "Exact-head CI and fail-closed gate must be checked after this snapshot and its ledger-index update."
@@ -5877,6 +5931,27 @@
         ],
         "status": "SCHEDULED_NOT_YET_PUBLISHED_AT_2026-10-28T1111Z",
         "interpretation": "Capture official release/filing after publication; until then, Q2 is the latest verified company-reported baseline."
+      },
+      {
+        "id": "XRPL-3.4.1-EMERGENCY-RELEASE-2026-09-25",
+        "date": "2026-09-25",
+        "event": "xrpld 3.4.1 emergency release with fixes for the payment-engine XRP overflow and Batch wrapper validation issue",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "source_ids": [
+          "SRC-XRPL-RELEASE-3.4.1-20261028T1311Z",
+          "SRC-XRPL-SECURITY-DISCLOSURE-20261028T1311Z"
+        ],
+        "interpretation": "Patch availability is confirmed; global node adoption and market effect are not measured."
+      },
+      {
+        "id": "XRPL-FIXBATCHV1_2-AND-BATCHV1_1-MAINNET-ACTIVATION-2026-10-09",
+        "date": "2026-10-09",
+        "event": "Official disclosure says fixBatchV1_2 and BatchV1_1 became enabled on Mainnet",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "source_ids": [
+          "SRC-XRPL-SECURITY-DISCLOSURE-20261028T1311Z"
+        ],
+        "interpretation": "Activation confirmed for these two amendments only; do not generalize this status to ConfidentialTransfer, DynamicMPT, Sponsor or PermissionDelegationV1_1."
       }
     ],
     "current_pr_1238_state": {
@@ -6234,11 +6309,11 @@
       "base_branch": "main",
       "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
       "head_branch": "research/xrp-ledger-fresh-main-20261028-1217z",
-      "head_sha": "94616bc46abcc2c47bda5f3fa94efd358ad99ab6",
-      "ahead_by": 12,
+      "head_sha": "7ce48df6a5d7f1228df343d920ead7f8b56e14ee",
+      "ahead_by": 14,
       "behind_by": 8,
       "merge_base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
-      "note": "This comparison is captured before adding the current snapshot and index commit; do not merge as-is."
+      "note": "Captured before adding this snapshot and index commit; do not merge as-is."
     },
     "id_normalization_log": [
       {
@@ -6342,7 +6417,7 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "94616bc46abcc2c47bda5f3fa94efd358ad99ab6",
+    "current_research_head_this_run": "7ce48df6a5d7f1228df343d920ead7f8b56e14ee",
     "correction_note": {
       "previous_snapshot": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
       "issue": "The previous market-data-quality finding referenced a nonexistent 0812Z source ID.",
@@ -6431,7 +6506,9 @@
       "The April/May 2026 YouTube claims about XRP accumulation, exchange outflows and ETF flows are creator-reported and not independently verified.",
       "Main advanced after the 13:03Z snapshot to be4a9f4 with a generated paper-trading-log append; exact-head main CI remains unverified.",
       "Two different Kamilah Stevenson candidate channel IDs are surfaced by YouTube search and third-party analytics; identity and exhaustive public-video inventory remain unresolved.",
-      "The latest main commit is a paper-trading-log append; exact-head main CI remains unverified."
+      "The latest main commit is a paper-trading-log append; exact-head main CI remains unverified.",
+      "Official XRPL disclosure reports no evidence of public-network exploitation of the 3.4.1 overflow bug; do not describe the issue as realized XRP inflation.",
+      "Current Mainnet status badges for several amendments did not load; activation of ConfidentialTransfer, DynamicMPT, Sponsor and PermissionDelegationV1_1 remains unverified here."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -6444,7 +6521,7 @@
       "merge_performed": false
     },
     "current_open_pr_count": 84,
-    "current_open_prs_observed_at_utc": "2026-10-28T13:10:45Z",
+    "current_open_prs_observed_at_utc": "2026-10-28T13:11:30Z",
     "current_open_prs": [
       {
         "number": 1253,
@@ -6610,16 +6687,16 @@
       "merge_performed": false,
       "action": "Preserve the branch and historical snapshots; do not merge as-is."
     },
-    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1308Z.json",
-    "snapshot_blob_sha": "29824654335e4004885e767d80d0f616a0bbb158",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:10:45Z",
-    "snapshot_commit_sha": "466980a1ce4a87951d2c9275f9dbb39e308b0c86",
+    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1310Z.json",
+    "snapshot_blob_sha": "c6b0a41bcd67b8fc937bd0217afe826ad179a130",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:11:30Z",
+    "snapshot_commit_sha": "7ca94f0fdb03edd679caf56c40459359f0011382",
     "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T13:10:45Z",
+      "verified_at_utc": "2026-10-28T13:11:30Z",
       "status": "SNAPSHOT_READBACK_PASS; INDEX_CI_PENDING",
-      "snapshot_blob_sha": "29824654335e4004885e767d80d0f616a0bbb158",
+      "snapshot_blob_sha": "c6b0a41bcd67b8fc937bd0217afe826ad179a130",
       "snapshot_hash_matches_index": true,
-      "note": "Snapshot file was read back and parsed; exact-head CI/gate for the subsequent ledger-index update remains pending."
+      "note": "Snapshot was read back and parsed; exact-head CI/gate on the subsequent index update remains pending."
     }
   },
   "sources": [
@@ -9166,6 +9243,46 @@
       "title": "Third-party analytics profile for Kamilah Stevenson channel UCqUPJMQdkCN6lsLVDnichPA",
       "accessed_at_utc": "2026-10-28T13:10:45Z",
       "note": "Third-party Vling page reports a Kamilah Stevenson channel with ID UCqUPJMQdkCN6lsLVDnichPA, roughly 143K subscribers, 1.2K videos, United States, and a 2015 join date. This ID differs from the YouTube search result for 'Kamilah Stevenson | XRP & Stocks' (UCXm6KAr1WHF6UN7g5b2W7wg). Do not assume they are the same channel or the requested Camilla Stephenson."
+    },
+    {
+      "id": "SRC-XRPL-SECURITY-DISCLOSURE-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-20261009",
+      "title": "XRPL official vulnerability disclosure for xrpld 3.4.1",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "Official 9 Oct 2026 disclosure covers two bugs fixed in xrpld 3.4.1: a Batch inner-transaction wrapper validation/consensus-risk bug and a payment-engine integer overflow that could theoretically mint XRP. The report says there is no evidence the overflow was exploited on a public network. The overflow fix applies upon upgrading to 3.4.1; fixBatchV1_2 became enabled on Mainnet 9 Oct, alongside BatchV1_1."
+    },
+    {
+      "id": "SRC-XRPL-RELEASE-3.4.1-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/blog/2026/xrpld-3.4.1",
+      "title": "XRPL official xrpld 3.4.1 emergency release",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "Official release dated 25 Sep 2026 describes 3.4.1 as an emergency release for security-sensitive protocol issues. Operators are instructed to upgrade to 3.4.1 or newer."
+    },
+    {
+      "id": "SRC-XRPL-RELEASE-3.3.0-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/blog/2026/xrpld-3.3.0",
+      "title": "XRPL official xrpld 3.3.0 release and amendment support",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "Official 6 Aug 2026 release introduces support for BatchV1_1, ConfidentialTransfer, DynamicMPT, PermissionDelegationV1_1 and Sponsor (Sponsored Fees and Reserves), among other changes. Release support is not itself proof of Mainnet amendment activation; activation is a separate voting/status fact."
+    },
+    {
+      "id": "SRC-XRPL-KNOWN-AMENDMENTS-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "title": "XRPL official known-amendments registry",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "Official registry describes amendment lifecycle and separates Mainnet status from in-development proposals. The page's dynamically rendered current-status fields were shown as Loading in this capture; use it for definitions and standards links, but do not infer live activation from the unloaded badges."
+    },
+    {
+      "id": "SRC-XLS-0096-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xls.xrpl.org/xls/XLS-0096-confidential-mpt.html",
+      "title": "XLS-0096 Confidential Transfers for Multi-Purpose Tokens",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "XLS-0096 is marked Final as a specification for confidential MPT transfers. 'Final' standard status does not by itself prove the corresponding amendment is enabled on XRPL Mainnet."
     }
   ],
   "limitations": [
@@ -9221,7 +9338,9 @@
     "Main advanced after the 13:03Z snapshot to be4a9f4 with a generated paper-trading-log append; exact-head main CI remains unverified.",
     "A duplicate source-record insertion in the first 13:08 index write was detected by post-write audit and corrected in the following index commit; snapshot file remains unchanged and its blob SHA is still the indexed value.",
     "Two different Kamilah Stevenson candidate channel IDs are surfaced by YouTube search and third-party analytics; identity and exhaustive public-video inventory remain unresolved.",
-    "The latest main commit is a paper-trading-log append; exact-head main CI remains unverified."
+    "The latest main commit is a paper-trading-log append; exact-head main CI remains unverified.",
+    "Official XRPL disclosure reports no evidence of public-network exploitation of the 3.4.1 overflow bug; do not describe the issue as realized XRP inflation.",
+    "Current Mainnet status badges for several amendments did not load; activation of ConfidentialTransfer, DynamicMPT, Sponsor and PermissionDelegationV1_1 remains unverified here."
   ],
   "run_updates": [
     {
@@ -10617,6 +10736,37 @@
         "snapshot_blob_sha": "29824654335e4004885e767d80d0f616a0bbb158",
         "snapshot_hash_matches_index": true,
         "snapshot_commit_sha": "466980a1ce4a87951d2c9275f9dbb39e308b0c86"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T13:11:30Z",
+      "update_type": "XRPL_SECURITY_DISCLOSURE_AND_AMENDMENT_STATUS_RESEARCH",
+      "snapshot_id": "XRP-XRPL-SECURITY-AND-AMENDMENT-STATUS-202610281311Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1311Z.json",
+      "details": "Added official XRPL 3.4.1 emergency-release and 9 Oct vulnerability-disclosure evidence. The disclosure describes a critical payment-engine overflow that could theoretically mint XRP and a Batch wrapper/consensus risk, but says there is no evidence of public-network exploitation; fixBatchV1_2 and BatchV1_1 activated 9 Oct. Separated release support, XLS finality and Mainnet activation. No market-price causality inferred and no forecast issued.",
+      "source_ids": [
+        "SRC-XRPL-SECURITY-DISCLOSURE-20261028T1311Z",
+        "SRC-XRPL-RELEASE-3.4.1-20261028T1311Z",
+        "SRC-XRPL-RELEASE-3.3.0-20261028T1311Z",
+        "SRC-XRPL-KNOWN-AMENDMENTS-20261028T1311Z",
+        "SRC-XLS-0096-20261028T1311Z"
+      ],
+      "validation": {
+        "source_catalog_unique_ids": true,
+        "official_security_sources": 5,
+        "public_exploitation_evidence": "NONE_REPORTED_BY_OFFICIAL_DISCLOSURE",
+        "amendment_activation_verified": [
+          "fixBatchV1_2",
+          "BatchV1_1"
+        ],
+        "other_amendment_activation": "UNVERIFIED_IN_THIS_CAPTURE",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false,
+        "snapshot_blob_sha": "c6b0a41bcd67b8fc937bd0217afe826ad179a130",
+        "snapshot_hash_matches_index": true,
+        "snapshot_commit_sha": "7ca94f0fdb03edd679caf56c40459359f0011382"
       }
     }
   ],
