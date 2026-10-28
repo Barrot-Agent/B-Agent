@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T12:15:53Z",
+    "captured_at_utc": "2026-10-28T12:18:09Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
@@ -979,6 +979,22 @@
         "consequence": "Red workflow noise obscures meaningful CI status; no approval job ran and no approval side effect occurred.",
         "proposed_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
         "verification": "PR #1250 exact-head Tests and fail-closed gate passed; containment remains unmerged and the underlying event origin is not proven."
+      },
+      {
+        "id": "APPROVAL-WORKFLOW-CONTAINMENT-INEFFECTIVE-202610281218Z",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "medium",
+        "status": "ZERO_JOB_FAILURES_PERSIST_AFTER_PROPOSED_CONTAINMENT; ROOT_CAUSE_UNRESOLVED",
+        "files": [
+          {
+            "path": ".github/workflows/barrot-approve-pr.yml",
+            "url": "https://github.com/Barrot-Agent/B-Agent/blob/safety/approval-workflow-push-noop-20261028-1210z/.github/workflows/barrot-approve-pr.yml"
+          }
+        ],
+        "finding": "The PR #1250 branch contains an explicit push event and a read-only push_noop job, and its normal CI/gate pass. Nevertheless, three push-event runs for that branch still failed with zero jobs. This indicates the static tests did not verify GitHub's actual workflow dispatch behavior.",
+        "consequence": "The proposed containment cannot be considered effective until the push event is shown to execute the no-op job and leave the approval job skipped.",
+        "proposed_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
+        "verification": "Observed runs 40685734356, 40685741781 and 40685747941; each event=push, conclusion=failure, total jobs=0."
       }
     ],
     "research_findings": [
@@ -4124,7 +4140,8 @@
       "Reconstruct October 26 ETF flows from sponsor-level fund holdings and matched universes; keep tracker aggregates blocked from model admission.",
       "Prepare a fresh-main signal-summary successor if PR #1245 remains stale; do not merge its old base as-is.",
       "Review PR #1250 containment on exact head; keep approval action manual-only and verify no-op behavior on push events.",
-      "Review PR #1249 validator contract; retain NOT_ISSUED until feature store and calibrated walk-forward evaluation exist."
+      "Review PR #1249 validator contract; retain NOT_ISSUED until feature store and calibrated walk-forward evaluation exist.",
+      "Investigate why GitHub records zero-job push runs even when the branch workflow declares push_noop; inspect workflow enabled state and event-definition resolution before claiming a fix."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -4837,8 +4854,8 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-FORECAST-LEDGER-APPROVAL-WORKFLOW-CONTAINMENT-202610281215Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1215Z.json",
+    "snapshot_id": "XRP-APPROVAL-WORKFLOW-CONTAINMENT-RESULT-202610281218Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1218Z.json",
     "current_research_head_before_ledger_update": "413f3501d42c86735e56fcddd3729327c28dd9d9",
     "current_research_checks": {
       "status": "PENDING_AFTER_LEDGER_UPDATE",
@@ -5805,19 +5822,19 @@
       },
       "accuracy_evaluator_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1246",
       "approval_workflow_zero_job_anomaly": {
-        "status": "REPEATED; ROOT_CAUSE_UNRESOLVED; CONTAINMENT_PR_CI_PASS",
+        "status": "PERSISTS_AFTER_PR1250_BRANCH_CHANGE; ROOT_CAUSE_UNRESOLVED",
         "observed_runs": [
-          40685521814,
-          40685516581,
-          40685508363,
-          40685501291,
-          40685495400
+          40685747941,
+          40685741781,
+          40685734356
         ],
         "event": "push",
         "jobs": 0,
         "workflow_path": ".github/workflows/barrot-approve-pr.yml",
-        "declared_trigger_on_main": "workflow_dispatch only",
-        "containment_pr": 1250
+        "main_trigger": "workflow_dispatch only",
+        "branch_trigger_content_includes_push": true,
+        "containment_pr": 1250,
+        "interpretation": "The proposed branch content adds a push no-op job, but GitHub still records push runs with zero jobs. The event origin/workflow-definition resolution is unresolved; PR #1250 does not yet demonstrate effective containment."
       }
     },
     "current_pr_1241_state": {
@@ -6060,7 +6077,8 @@
       "PR #1248 fixes three validator gaps but remains draft/unmerged; no calibrated prediction engine or feature store is operationally verified.",
       "Current main head at snapshot capture: 7a558c0859393e9e29ea326aa90877ee2ef49220.",
       "PR #1249 and PR #1250 pass exact-head CI/gate but remain draft/unmerged.",
-      "Historical run_updates reference one snapshot path not present in the source tree: data/xrp_intelligence/snapshots/2026-10-28T0007Z.json; preserved for reconciliation, not fabricated."
+      "Historical run_updates reference one snapshot path not present in the source tree: data/xrp_intelligence/snapshots/2026-10-28T0007Z.json; preserved for reconciliation, not fabricated.",
+      "PR #1250 static CI/gate pass does not verify actual workflow event execution; three zero-job push failures persisted on its branch."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -6132,27 +6150,40 @@
       "state": "OPEN_DRAFT_UNMERGED",
       "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
       "head_sha": "ef959edf0507ecf4f603a856719e1d72268bc2f2",
-      "ci": {
-        "status": "success",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685772686"
-      },
-      "gate": {
-        "status": "success",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685772752"
-      },
+      "ci": "PASS",
+      "gate": "PASS",
       "changed_files": 3,
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "deployment_executed": false,
-      "limitation": "Containment proposal; root cause of zero-job push runs remains unresolved."
+      "limitation": "Static regression tests pass, but three push-event failures with zero jobs persisted on this PR branch; do not claim the anomaly is fixed.",
+      "workflow_anomaly_containment_effectiveness": "NOT_EFFECTIVE_IN_BRANCH_OBSERVATION",
+      "observed_zero_job_push_runs": [
+        {
+          "id": 40685747941,
+          "sha": "ef959edf0507ecf4f603a856719e1d72268bc2f2",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685747941"
+        },
+        {
+          "id": 40685741781,
+          "sha": "ea8da97022dd7c12dfdc25ab6735276213174612",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685741781"
+        },
+        {
+          "id": 40685734356,
+          "sha": "39d244e143f1e98210a6238a374706f04d3c2fe6",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685734356"
+        }
+      ],
+      "root_cause": "UNRESOLVED"
     },
-    "snapshot_blob_sha": "8b651372cf4a98870b57c82d6a6f96599815254f",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T12:15:53Z",
-    "snapshot_commit_sha": "4cf2dfa89360c91419d32de2c317ddd8c4ba201b",
+    "snapshot_blob_sha": "c6fd684116d872c8f9da03ad04fc7f8252681633",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T12:18:09Z",
+    "snapshot_commit_sha": "aff7cf16ae993e74a4117d11593d71b26f7d2a22",
     "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T12:15:53Z",
+      "verified_at_utc": "2026-10-28T12:18:09Z",
       "status": "PENDING_AFTER_INDEX_UPDATE",
-      "note": "Snapshot blob hash fetched from GitHub; index update commit still requires exact-head CI and fail-closed gate."
+      "note": "Snapshot blob SHA fetched and recorded. Exact-head CI/gate must pass on the updated index commit."
     }
   },
   "sources": [
@@ -8427,6 +8458,54 @@
       "title": "Open pull request inventory count",
       "accessed_at_utc": "2026-10-28T12:15:53Z",
       "note": "GitHub search returned 81 open PRs at capture time, including new PRs #1249 and #1250."
+    },
+    {
+      "id": "SRC-REPO-PR1250-PUSH-RUN-40685734356",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685734356",
+      "title": "Approval workflow push event has zero jobs on PR #1250 branch",
+      "accessed_at_utc": "2026-10-28T12:18:09Z",
+      "note": "Run event=push, conclusion=failure, total jobs=0 on commit 39d244e143f1e98210a6238a374706f04d3c2fe6."
+    },
+    {
+      "id": "SRC-REPO-PR1250-PUSH-RUN-40685741781",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685741781",
+      "title": "Second zero-job approval workflow push event on PR #1250 branch",
+      "accessed_at_utc": "2026-10-28T12:18:09Z",
+      "note": "Run event=push, conclusion=failure, total jobs=0 on commit ea8da97022dd7c12dfdc25ab6735276213174612."
+    },
+    {
+      "id": "SRC-REPO-PR1250-PUSH-RUN-40685747941",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685747941",
+      "title": "Third zero-job approval workflow push event on PR #1250 branch",
+      "accessed_at_utc": "2026-10-28T12:18:09Z",
+      "note": "Run event=push, conclusion=failure, total jobs=0 on commit ef959edf0507ecf4f603a856719e1d72268bc2f2."
+    },
+    {
+      "id": "SRC-REPO-PR1250-WORKFLOW-BRANCH-CONTENT-20261028T1218Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/safety/approval-workflow-push-noop-20261028-1210z/.github/workflows/barrot-approve-pr.yml",
+      "title": "Proposed approval workflow includes explicit push no-op",
+      "accessed_at_utc": "2026-10-28T12:18:09Z",
+      "note": "Fetched branch content contains a push trigger, a push_noop job with read-only contents permission, and a separate workflow_dispatch approval job scoped with pull-requests:write. Despite this, push runs still had zero jobs."
+    },
+    {
+      "id": "SRC-REPO-PR1250-CI-20261028T1218Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40685772686",
+      "title": "PR #1250 static CI and fail-closed gate",
+      "accessed_at_utc": "2026-10-28T12:18:09Z",
+      "note": "Tests and gate pass on head ef959edf0507ecf4f603a856719e1d72268bc2f2; these tests do not demonstrate actual push-event job execution."
+    },
+    {
+      "id": "SRC-REPO-MAIN-APPROVAL-WORKFLOW-20261028T1218Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Main approval workflow definition",
+      "accessed_at_utc": "2026-10-28T12:18:09Z",
+      "note": "Main branch version has workflow_dispatch only; blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4. The branch version has an explicit push trigger, yet GitHub still recorded zero-job push runs; root cause unresolved."
     }
   ],
   "limitations": [
@@ -9657,6 +9736,33 @@
         "deployment_executed": false,
         "forecast_status": "NOT_ISSUED",
         "new_ledger_index_commit_ci": "PENDING_AFTER_INDEX_UPDATE"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T12:18:09Z",
+      "update_type": "APPROVAL_WORKFLOW_CONTAINMENT_FAILED_TO_RESOLVE_ZERO_JOB_RUNS",
+      "snapshot_id": "XRP-APPROVAL-WORKFLOW-CONTAINMENT-RESULT-202610281218Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1218Z.json",
+      "details": "Verified three failed push-event runs with zero jobs on PR #1250's branch even though that branch's workflow includes an explicit push trigger and read-only no-op job. PR #1250's static tests/gate pass, but real event execution remains unverified; root cause unresolved. No approval action ran.",
+      "source_ids": [
+        "SRC-REPO-PR1250-PUSH-RUN-40685734356",
+        "SRC-REPO-PR1250-PUSH-RUN-40685741781",
+        "SRC-REPO-PR1250-PUSH-RUN-40685747941",
+        "SRC-REPO-PR1250-WORKFLOW-BRANCH-CONTENT-20261028T1218Z",
+        "SRC-REPO-PR1250-CI-20261028T1218Z",
+        "SRC-REPO-MAIN-APPROVAL-WORKFLOW-20261028T1218Z"
+      ],
+      "validation": {
+        "snapshot_blob_sha": "c6fd684116d872c8f9da03ad04fc7f8252681633",
+        "snapshot_hash_matches_index": true,
+        "pr1250_ci": "PASS",
+        "pr1250_gate": "PASS",
+        "push_event_noop_execution": "NOT_VERIFIED; ZERO_JOBS_OBSERVED",
+        "root_cause": "UNRESOLVED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false
       }
     }
   ],
