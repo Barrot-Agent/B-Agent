@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1191,
+    "xrp_entries": 1192,
     "btc_entries": 1222
   },
-  "unique_entities_profiled": 980,
+  "unique_entities_profiled": 983,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 280,
-      "bullish": 180,
+      "total_mentions": 281,
+      "bullish": 181,
       "neutral": 44,
       "bearish": 56,
-      "net_sentiment_score": 0.443,
+      "net_sentiment_score": 0.445,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -5229,6 +5229,22 @@
       "example_headlines": [
         "House Oversight Chair Comer Probes Crypto.com, Hyperliquid & PredictIt Over Identity Checks",
         "Trump Media sells another 2,628 BTC, holdings fall to 4,261 BTC"
+      ]
+    },
+    {
+      "entity": "Crypto Market",
+      "total_mentions": 2,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+        "CLARITY Act Delay Shows Crypto Market Structure Fight Is Not Over"
       ]
     },
     {
@@ -11034,6 +11050,48 @@
       ]
     },
     {
+      "entity": "RockawayX",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion"
+      ]
+    },
+    {
+      "entity": "Relayer",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion"
+      ]
+    },
+    {
+      "entity": "NY Hedge Fund",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion"
+      ]
+    },
+    {
       "entity": "KDDI",
       "total_mentions": 1,
       "bullish": 1,
@@ -11773,20 +11831,6 @@
       ],
       "example_headlines": [
         "Profit-taking, oil spike knock bitcoin (BTC) price off its best levels in a month: Crypto Markets To"
-      ]
-    },
-    {
-      "entity": "Crypto Market",
-      "total_mentions": 1,
-      "bullish": 0,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": -1.0,
-      "assets_seen_in": [
-        "BTC"
-      ],
-      "example_headlines": [
-        "CLARITY Act Delay Shows Crypto Market Structure Fight Is Not Over"
       ]
     },
     {
