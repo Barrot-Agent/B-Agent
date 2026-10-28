@@ -114,7 +114,7 @@ Reason: ${APPROVAL_REASON}
 Workflow run: ${GITHUB_SERVER_URL}/${repo}/actions/runs/${GITHUB_RUN_ID}
 Recorded at: ${timestamp}
 
-This action applied the `approved` label only. It did not merge the PR."
+This action applied the approved label only. It did not merge the PR."
           echo "BARROT_APPROVAL=PASS"
           echo "PR_NUMBER=$PR_NUMBER"
           echo "HEAD_SHA=$EXPECTED_HEAD_SHA"
