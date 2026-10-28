@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_verification_update",
+  "snapshot_id": "XRP-INTELLIGENCE-VERIFICATION-2026-10-28T000348Z",
+  "captured_at_utc": "2026-10-28T00:03:48Z",
+  "repository_verification": {
+    "main_sha": "a960255f2b7b0418694ee428bc82fbbeed6622dd",
+    "main_sha_rechecked_against_main_ref": true,
+    "main_modified": false,
+    "merge_performed": false,
+    "pull_requests": [
+      {
+        "number": 1226,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1226",
+        "purpose": "Make scheduled signal workflows read-only and artifact-based",
+        "tested_head": "ae17e56ab245f575317beab35b96178dff4732a4",
+        "ci": {
+          "run_id": 40606115034,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606115034",
+          "result": "PASSED",
+          "tests_passed": 146,
+          "duration_seconds": 5.98
+        },
+        "fail_closed_gate": {
+          "run_id": 40606115488,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606115488",
+          "result": "PASSED"
+        },
+        "branch_comparison": {
+          "base": "main",
+          "ahead_by": 3,
+          "behind_by": 0
+        },
+        "state": "OPEN_DRAFT",
+        "limitations": [
+          "30-day workflow artifacts are not a permanent feature store",
+          "Reviewed promotion/retention design remains necessary"
+        ]
+      },
+      {
+        "number": 1225,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1225",
+        "purpose": "Dependency-aware bundle task execution and durable resume",
+        "tested_head": "b84deb8a2ab17130479c7fff1ce28bd1646d7ac4",
+        "ci": {
+          "run_id": 40605964737,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40605964737",
+          "result": "PASSED",
+          "tests_passed": 155,
+          "duration_seconds": 4.98
+        },
+        "fail_closed_gate": {
+          "run_id": 40605964743,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40605964743",
+          "result": "PASSED"
+        },
+        "state": "OPEN_DRAFT",
+        "review_note": "Status vocabulary was cross-checked against RepositoryRepairController: successful repair cycles set status='complete'; successful work-queue advancement sets queue_advanced=true. The dispatcher also requires local validation, remote verification and resolution verification before reusing a task as complete.",
+        "code_evidence": [
+          "https://github.com/Barrot-Agent/B-Agent/blob/feat/bundle-task-dispatch-resume-20261027/barrot_agent/orchestration/repository_repair.py#L2090",
+          "https://github.com/Barrot-Agent/B-Agent/blob/feat/bundle-task-dispatch-resume-20261027/barrot_agent/orchestration/repository_repair.py#L846"
+        ]
+      },
+      {
+        "number": 1224,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1224",
+        "tested_head": "ec7a70162cc09ba0ac2450a580b2dab67cd2dbf4",
+        "ci": {
+          "run_id": 40600122117,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40600122117",
+          "result": "PASSED",
+          "tests_passed": 164,
+          "duration_seconds": 6.19
+        },
+        "fail_closed_gate": {
+          "run_id": 40600122057,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40600122057",
+          "result": "PASSED"
+        },
+        "state": "OPEN_DRAFT"
+      },
+      {
+        "number": 1223,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1223",
+        "tested_head": "ff8f4879a76157b79316a91ed8fa11671fa14780",
+        "ci": {
+          "run_id": 40599773858,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40599773858",
+          "result": "PASSED",
+          "tests_passed": 148,
+          "duration_seconds": 5.59
+        },
+        "fail_closed_gate": {
+          "run_id": 40599773852,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40599773852",
+          "result": "PASSED"
+        },
+        "state": "OPEN_DRAFT"
+      },
+      {
+        "number": 1195,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+        "tested_head": "cdff9c719d9d5b9ef6201755da8a8436584115e8",
+        "ci": {
+          "run_id": 40606209320,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606209320",
+          "result": "PASSED"
+        },
+        "fail_closed_gate": {
+          "run_id": 40606209331,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40606209331",
+          "result": "PASSED"
+        },
+        "state": "OPEN_DRAFT",
+        "branch_comparison": {
+          "base": "main",
+          "ahead_by": 41,
+          "behind_by": 59
+        },
+        "decision": "Preserve as historical research branch; do not merge directly. Prepare a fresh-main successor if integrating ledger files is approved."
+      }
+    ],
+    "residual_main_risk": "The two scheduled signal workflows on main still have write permissions and direct git commit/push steps until PR #1226 is reviewed and merged. The candidate changes are verified but not active on main."
+  },
+  "market_research_update": {
+    "circle_usdc_as_of": "2026-10-22",
+    "circulation_usd": 72000000000,
+    "reserves_usd": 72200000000,
+    "net_circulation_change_7d_usd": -600000000,
+    "net_circulation_change_30d_usd": -3200000000,
+    "net_circulation_change_365d_usd": -4400000000,
+    "source": "https://www.circle.com/transparency",
+    "interpretation": "Primary-source global USDC supply contraction is observed; destination, XRPL-native balances and XRP capital-flow effects remain unknown.",
+    "feature_status": "EXCLUDED_FROM_XRP_DIRECTIONAL_FEATURES_PENDING_CHAIN_AND_EXCHANGE_ATTRIBUTION"
+  },
+  "data_quality_decisions": [
+    {
+      "issue": "Coinbase XRP futures page title/expiry mismatch",
+      "source": "https://www.coinbase.com/futures/XRP-30OCT26-CDE",
+      "decision": "Quarantine displayed price/volume/open-interest until contract ID and expiry are reconciled."
+    },
+    {
+      "issue": "Coinbase derivatives aggregate combines Deribit and Coinbase Derivatives across assets",
+      "decision": "Do not treat it as XRP-specific open interest or a complete global market-share measure."
+    },
+    {
+      "issue": "Kraken XRP perpetual observation was timestamped 2026-10-27 00:23 UTC",
+      "decision": "Keep as a historical single-venue observation; do not combine with current-cutoff venue data."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "unresolved": [
+    "ASK Coin",
+    "actual capital",
+    "SBIC, ChatGPT SBIC",
+    "canonical Camilla Stephenson YouTube identity and complete public-video inventory"
+  ],
+  "next_actions": [
+    "Keep PR #1226 draft and unmerged until reviewed; verify its exact head before any decision.",
+    "Build the permanent append-only feature store and reviewed artifact-promotion path; do not rely on 30-day artifacts as sole durable storage.",
+    "Reconstruct XRP open interest/funding/basis at common UTC cutoffs and quarantine contract metadata conflicts.",
+    "Join global USDC supply with XRPL-native USDC, exchange balances, mint/burn and payment-route data before testing causal effects.",
+    "Preserve Circle/XRP complement-versus-substitute hypotheses and seek disconfirming evidence.",
+    "Keep all nine platform adapters marked unverified unless authenticated live request/response evidence is recorded."
+  ],
+  "safety": {
+    "main_write": false,
+    "merge": false,
+    "force_push": false,
+    "deployment": false,
+    "real_money_action": false
+  }
+}
