@@ -5873,6 +5873,22 @@
       "title": "Current PR #1241 branch comparison",
       "accessed_at_utc": "2026-10-28T05:06:42.642Z",
       "note": "PR #1241 head ceed1909bff53b04d45b8395374c78b3891593ed, base 8beef04c25a3d182c2366c82c1257bacfa1799f2; compare against current main reports 7 commits ahead and 1 behind. The one-behind change is the generated paper-trading-log append on main."
+    },
+    {
+      "id": "SRC-REPO-PR1227-CI-EXACT-HEAD-E909-2026-10-28T0507Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40636084481",
+      "title": "PR #1227 ledger-update head exact-head CI",
+      "accessed_at_utc": "2026-10-28T05:07:30.288Z",
+      "note": "Commit e909ea0b607bc6a555eea23af6fc75cce2d3de58 passed 146 tests in 6.29 seconds."
+    },
+    {
+      "id": "SRC-REPO-PR1227-GATE-EXACT-HEAD-E909-2026-10-28T0507Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40636084484",
+      "title": "PR #1227 ledger-update head fail-closed gate",
+      "accessed_at_utc": "2026-10-28T05:07:30.288Z",
+      "note": "Fail-closed gate passed for commit e909ea0b607bc6a555eea23af6fc75cce2d3de58."
     }
   ],
   "limitations": [
@@ -6669,6 +6685,26 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED",
         "snapshot_blob_sha": "260ffc0fe8f3bf82e916fd3bb83091e38a6a85b6"
+      },
+      "snapshot_blob_sha": "260ffc0fe8f3bf82e916fd3bb83091e38a6a85b6"
+    },
+    {
+      "recorded_at_utc": "2026-10-28T05:07:30.288Z",
+      "update_type": "POST_SNAPSHOT_EXACT_HEAD_CI_VERIFICATION",
+      "snapshot_id": "XRP-POST-CI-AND-MAIN-DRIFT-2026-10-28T05:06Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0506Z.json",
+      "details": "After the 2026-10-28T0506Z snapshot/index update, the resulting research ledger head e909ea0b607bc6a555eea23af6fc75cce2d3de58 passed exact-head CI (146 tests in 6.29 seconds) and the fail-closed gate. The immutable 0506Z snapshot correctly records that these checks were pending at its capture time; this run update records the later verification.",
+      "validation": {
+        "verified_head": "e909ea0b607bc6a555eea23af6fc75cce2d3de58",
+        "tests": "PASS_146_TESTS_6.29S",
+        "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40636084481",
+        "gate": "PASS",
+        "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40636084484",
+        "latest_snapshot_blob_sha": "260ffc0fe8f3bf82e916fd3bb83091e38a6a85b6",
+        "source_ids_unique": true,
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
       },
       "snapshot_blob_sha": "260ffc0fe8f3bf82e916fd3bb83091e38a6a85b6"
     }
