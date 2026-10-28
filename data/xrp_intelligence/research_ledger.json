@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T12:18:09Z",
+    "captured_at_utc": "2026-10-28T12:19:53Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
@@ -1962,6 +1962,29 @@
           "SRC-XRP-ETF-MAKETO-OCT27-2026-10-28T1111Z"
         ],
         "next_test": "Reconstruct sponsor-level holdings/creations for matched funds and dates; record exclusions and settlement times."
+      },
+      {
+        "id": "CIRCLE-USDC-MULTICHAIN-AND-H1-ECONOMICS-202610281219Z",
+        "evidence_class": "COMPANY_REPORTED_PRIMARY_SOURCE",
+        "status": "CONFIRMED_COMPANY_STATEMENTS; INDEPENDENT_USAGE_ATTRIBUTION_UNVERIFIED",
+        "claim": "Circle's official USDC page lists native issuance on 38 blockchain networks as of 16 September 2026, including XRPL; its 16 October 2026 article reports more than $36T of USDC onchain transaction volume and $315B in mint/redemption during H1 2026, plus $819M in distribution-partner and transaction costs.",
+        "interpretation": "These figures establish Circle's reported scale and multi-chain distribution strategy, not economic payment volume independent of issuer methodology, XRPL-specific flows, XRP collateral demand, or a causal XRP price effect. Both sources are from Circle and are not independent corroboration.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-MULTICHAIN-PAGE-202610281219Z",
+          "SRC-CIRCLE-USDC-H1-ECONOMICS-202610281219Z"
+        ],
+        "next_test": "Obtain chain-level USDC supply/transfers, XRPL-native mint/burn and route-level settlement data; compare XRP bridge-path share and XRP/USDC liquidity at aligned UTC cutoffs."
+      },
+      {
+        "id": "SBIC-CHATGPT-CURRICULUM-NOT-PARTNERSHIP-202610281219Z",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+        "status": "CURRICULUM_MENTION_CONFIRMED; EXACT_PHRASE_AND_XRP_LINK_UNRESOLVED",
+        "claim": "SBIC East Japan's official 12 June 2025 generative-AI training course includes ChatGPT in its curriculum.",
+        "interpretation": "This is evidence of a training-course topic, not a ChatGPT corporate partnership, a special SBIC program, or an XRP relationship. SBIC East Japan remains distinct from SBI Holdings and SBI Ripple Asia.",
+        "source_ids": [
+          "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
+        ],
+        "next_test": "Continue searching for the exact original phrase and legal entity context; do not infer a partnership from a course curriculum."
       }
     ],
     "relationship_graph": [
@@ -2743,6 +2766,17 @@
           "SRC-CIRCLE-ARC-SBI-FOUNDING-VALIDATOR-2026-10-28T1111Z"
         ],
         "status": "COMPANY_REPORTED; XRP_BRIDGE_ASSET_EFFECT_UNKNOWN"
+      },
+      {
+        "id": "EDGE-CIRCLE-USDC-NATIVE-38-NETWORKS-202610281219Z",
+        "from": "Circle",
+        "relation": "reports native USDC issuance across 38 networks, including",
+        "to": "XRP Ledger (XRPL)",
+        "evidence_ids": [
+          "SRC-CIRCLE-USDC-MULTICHAIN-PAGE-202610281219Z"
+        ],
+        "status": "COMPANY_REPORTED_PRODUCT_FOOTPRINT",
+        "xrp_relationship": "Supports the possibility of USDC/XRP complementarity or substitution by route; no XRP demand or price effect established."
       }
     ],
     "competing_hypotheses": [
@@ -3425,6 +3459,20 @@
           "Tracker totals and covered fund universes differ; independent lineage has not been established."
         ],
         "test_plan": "Reconcile sponsor-level fund records for a common universe and evaluate multi-session flows against price, liquidity and derivatives positioning."
+      },
+      {
+        "id": "H-USDC-MULTICHAIN-COMPLEMENT-SUBSTITUTE-202610281219Z",
+        "hypothesis": "Circle's expanding native USDC footprint may complement XRPL by bringing dollar liquidity to the network, substitute USDC for XRP as a bridge asset on some routes, or have negligible effect on XRP demand.",
+        "supporting_evidence": [
+          "SRC-CIRCLE-USDC-MULTICHAIN-PAGE-202610281219Z",
+          "SRC-CIRCLE-USDC-H1-ECONOMICS-202610281219Z"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Both cited sources are Circle company statements and do not independently measure XRPL flows.",
+          "Global USDC transaction volume and mint/redemption are not XRP inflows or collateral balances.",
+          "No route-level evidence yet quantifies XRP bridge-path displacement."
+        ],
+        "test_plan": "Measure XRPL-native USDC supply and transfer value, XRP bridge-path share, corridor settlement share, exchange XRP/USDC depth and stablecoin mint/burn at synchronized UTC cutoffs; compare before/after product changes with control routes."
       }
     ],
     "market_observations": [
@@ -3824,6 +3872,17 @@
           "SRC-XRP-INVESTING-HISTORICAL-OCT28-2026-10-28T1111Z",
           "SRC-XRP-COINDOCS-HISTORICAL-OCT28-2026-10-28T1111Z"
         ]
+      },
+      {
+        "id": "CIRCLE-USDC-H1-2026-OPERATING-SCALE-202610281219Z",
+        "evidence_class": "COMPANY_REPORTED",
+        "as_of_date": "2026-06-30",
+        "observation": "Circle's 16 Oct 2026 article reports >$36T USDC onchain transaction volume, >$315B mint/redemption, $819M distribution-partner and transaction costs in H1 2026; Circle's USDC page lists 38 native networks as of 16 Sep 2026.",
+        "interpretation": "Issuer-reported operating scale only. Not independent proof of real-world payment value, chain-level XRPL usage, XRP capital flows, or price impact.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-H1-ECONOMICS-202610281219Z",
+          "SRC-CIRCLE-USDC-MULTICHAIN-PAGE-202610281219Z"
+        ]
       }
     ],
     "phrase_investigation": {
@@ -3912,6 +3971,13 @@
             "indexed_views": "~23.1K",
             "source_id": "SRC-GLASP-KAMILAH-CRYPTO-WEALTH-2026-01-15"
           }
+        ]
+      },
+      "sbic_chatgpt_latest": {
+        "status": "UNRESOLVED_EXACT_PHRASE",
+        "evidence": "Official SBIC East Japan training curriculum includes ChatGPT; this is not evidence of a partnership or XRP link.",
+        "source_ids": [
+          "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
         ]
       }
     },
@@ -4141,7 +4207,8 @@
       "Prepare a fresh-main signal-summary successor if PR #1245 remains stale; do not merge its old base as-is.",
       "Review PR #1250 containment on exact head; keep approval action manual-only and verify no-op behavior on push events.",
       "Review PR #1249 validator contract; retain NOT_ISSUED until feature store and calibrated walk-forward evaluation exist.",
-      "Investigate why GitHub records zero-job push runs even when the branch workflow declares push_noop; inspect workflow enabled state and event-definition resolution before claiming a fix."
+      "Investigate why GitHub records zero-job push runs even when the branch workflow declares push_noop; inspect workflow enabled state and event-definition resolution before claiming a fix.",
+      "Reconcile Circle's issuer-reported H1 USDC operating metrics with XRPL-specific supply/transfer data and XRP bridge-path share; do not use global volume as an XRP feature."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -4854,8 +4921,8 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-APPROVAL-WORKFLOW-CONTAINMENT-RESULT-202610281218Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1218Z.json",
+    "snapshot_id": "XRP-USDC-MULTICHAIN-AND-SBIC-ENTITY-CONTEXT-202610281219Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1219Z.json",
     "current_research_head_before_ledger_update": "413f3501d42c86735e56fcddd3729327c28dd9d9",
     "current_research_checks": {
       "status": "PENDING_AFTER_LEDGER_UPDATE",
@@ -6078,7 +6145,8 @@
       "Current main head at snapshot capture: 7a558c0859393e9e29ea326aa90877ee2ef49220.",
       "PR #1249 and PR #1250 pass exact-head CI/gate but remain draft/unmerged.",
       "Historical run_updates reference one snapshot path not present in the source tree: data/xrp_intelligence/snapshots/2026-10-28T0007Z.json; preserved for reconciliation, not fabricated.",
-      "PR #1250 static CI/gate pass does not verify actual workflow event execution; three zero-job push failures persisted on its branch."
+      "PR #1250 static CI/gate pass does not verify actual workflow event execution; three zero-job push failures persisted on its branch.",
+      "Circle's H1 USDC metrics and 38-network footprint are issuer-reported; sources are not independent and do not identify XRP capital flows."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -6177,13 +6245,13 @@
       ],
       "root_cause": "UNRESOLVED"
     },
-    "snapshot_blob_sha": "c6fd684116d872c8f9da03ad04fc7f8252681633",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T12:18:09Z",
-    "snapshot_commit_sha": "aff7cf16ae993e74a4117d11593d71b26f7d2a22",
+    "snapshot_blob_sha": "c92f9ecbcb10878975e2db64f2428d7afb596d7d",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T12:19:53Z",
+    "snapshot_commit_sha": "6f000e632c776779c09ff44e4816e39e470fe549",
     "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T12:18:09Z",
+      "verified_at_utc": "2026-10-28T12:19:53Z",
       "status": "PENDING_AFTER_INDEX_UPDATE",
-      "note": "Snapshot blob SHA fetched and recorded. Exact-head CI/gate must pass on the updated index commit."
+      "note": "Snapshot blob SHA fetched and recorded; exact-head CI/gate must pass on updated index commit."
     }
   },
   "sources": [
@@ -8506,6 +8574,30 @@
       "title": "Main approval workflow definition",
       "accessed_at_utc": "2026-10-28T12:18:09Z",
       "note": "Main branch version has workflow_dispatch only; blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4. The branch version has an explicit push trigger, yet GitHub still recorded zero-job push runs; root cause unresolved."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-MULTICHAIN-PAGE-20261028T1219Z",
+      "evidence_class": "COMPANY_REPORTED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/usdc",
+      "title": "Circle official USDC product and transparency page",
+      "accessed_at_utc": "2026-10-28T12:19:53Z",
+      "note": "Circle states USDC is natively issued on 38 networks as of 16 September 2026, including XRPL, and displays $72.0B circulation/$72.2B reserves as of 22 October 2026. Issuer statement; no chain-level XRP flow attribution."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-H1-ECONOMICS-20261028T1219Z",
+      "evidence_class": "COMPANY_REPORTED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "title": "Circle USDC operating economics article dated 16 October 2026",
+      "accessed_at_utc": "2026-10-28T12:19:53Z",
+      "note": "Circle reports >$36T USDC onchain transaction volume, >$315B mint/redemption, and $819M in distribution-partner and transaction costs for H1 2026; it also reports USDC at roughly 77% of global stablecoin transaction volume by June. Company-reported metrics, not independent chain-level attribution."
+    },
+    {
+      "id": "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "title": "SBIC East Japan generative-AI training curriculum",
+      "accessed_at_utc": "2026-10-28T12:19:53Z",
+      "note": "The official 12 June 2025 training course includes ChatGPT in its curriculum. This proves a curriculum mention only, not a corporate partnership, special program, or XRP link."
     }
   ],
   "limitations": [
@@ -9759,6 +9851,27 @@
         "pr1250_gate": "PASS",
         "push_event_noop_execution": "NOT_VERIFIED; ZERO_JOBS_OBSERVED",
         "root_cause": "UNRESOLVED",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T12:19:53Z",
+      "update_type": "CIRCLE_USDC_MULTICHAIN_AND_SBIC_CURRICULUM_EVIDENCE",
+      "snapshot_id": "XRP-USDC-MULTICHAIN-AND-SBIC-ENTITY-CONTEXT-202610281219Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1219Z.json",
+      "details": "Added Circle's official 38-network USDC footprint including XRPL and issuer-reported H1 2026 operating metrics; clarified that SBIC East Japan's ChatGPT mention is a training-curriculum fact, not evidence of partnership or XRP link. Complementarity/substitution hypotheses retained; no price prediction admitted.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-MULTICHAIN-PAGE-20261028T1219Z",
+        "SRC-CIRCLE-USDC-H1-ECONOMICS-20261028T1219Z",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z"
+      ],
+      "validation": {
+        "snapshot_blob_sha": "c92f9ecbcb10878975e2db64f2428d7afb596d7d",
+        "snapshot_hash_matches_index": true,
+        "source_independence": "Circle sources share issuer provenance; SBIC course is independent only for the curriculum fact",
         "forecast_status": "NOT_ISSUED",
         "main_modified_by_this_run": false,
         "merge_performed": false,
