@@ -1,0 +1,220 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_mpt_semantics_and_onchain_source_conflict",
+  "snapshot_id": "XRP-AVIVA-MPT-SEMANTICS-CONFLICT-2026-10-28T001109Z",
+  "captured_at_utc": "2026-10-28T00:11:09Z",
+  "data_cutoff_utc": "2026-10-28T00:11:09Z",
+  "event_id": "AVIVA-GBP-LIQUIDITY-FUND-TOKENIZATION-2026-10-26",
+  "official_protocol_facts": [
+    {
+      "claim": "XRPL Multi-Purpose Token issuance flags include CanTrade and CanTransfer. CanTransfer controls whether non-issuer holders can transfer units to other accounts; without it, units can only be returned to the issuer.",
+      "source_id": "SRC-XRPL-MPT-ISSUANCE-DOCS",
+      "status": "CONFIRMED_OFFICIAL_PROTOCOL_DOCUMENTATION"
+    },
+    {
+      "claim": "The official XRPL MPT concepts page states that DEX trading of MPTs is not currently implemented, even though the issuance model includes a CanTrade capability flag.",
+      "source_id": "SRC-XRPL-MPT-CONCEPTS",
+      "status": "CONFIRMED_OFFICIAL_DOCUMENTATION_AT_RETRIEVAL"
+    },
+    {
+      "claim": "XRP remains the XRPL native asset used for transaction fees and account reserves; a tokenized fund share unit is a separate asset and is not XRP.",
+      "source_id": "SRC-XRPL-MPT-CONCEPTS",
+      "status": "PROTOCOL_FACT"
+    }
+  ],
+  "secondary_observations": [
+    {
+      "source_id": "SRC-XRPLTO-AVIVA-ONCHAIN-ANALYSIS-2026-10-26",
+      "status": "SECONDARY_CLAIM_QUARANTINED",
+      "claim": "The provider's article reports the GBP tokenized share class as having 50,050,000 units and reports holder authorization with holder-to-holder transfer and DEX trading disabled.",
+      "limitation": "Do not scrape or mirror the provider's derived dataset. Its published terms require permission before re-serving its data in another dataset. This claim is not independently reproduced here."
+    },
+    {
+      "source_id": "SRC-XRPLDASHBOARD-AVIVA-AGB-MPT-2026-10-28",
+      "status": "SECONDARY_SOURCE_CONFLICT",
+      "claim": "The public explorer page for the GBP MPT ID 064D94E3607A616746E4BF525F17A63A3D266090F95EA90A reports outstanding supply 0/not yet walked while listing CanTrade and Transferable capabilities.",
+      "limitation": "The page itself labels the supply as not yet walked; its displayed state may be stale or incomplete and does not override the protocol documentation."
+    },
+    {
+      "source_id": "SRC-TSN-AVIVA-LEDGER-2026-10-28",
+      "status": "SECONDARY_CLAIM",
+      "claim": "TSN reports 50,050,000 units outstanding on each of Aviva's USD and GBP tokenized share classes and notes that Aviva has not disclosed outside subscriptions into the new GBP class.",
+      "limitation": "Secondary report based on public ledger observations; exact issuance state should be reproduced from the public XRPL ledger."
+    },
+    {
+      "source_id": "SRC-BITHOMP-AVIVA-AUS-MPT-2026-10-28",
+      "status": "SECONDARY_CROSS_CHECK_FOR_USD_CLASS_ONLY",
+      "claim": "Bithomp's USD-class token page reports the AUS MPT issued by the same public issuer account with 50,050,000 outstanding units.",
+      "limitation": "This is the USD instrument, not the GBP AGB instrument; do not use it to resolve GBP supply or flags."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Aviva GBP tokenized share class",
+      "relation": "is represented by an XRPL MPT issuance distinct from",
+      "to": "XRP",
+      "status": "PROTOCOL_DISTINCTION"
+    },
+    {
+      "from": "XRPL MPT CanTransfer flag",
+      "relation": "controls holder-to-holder transfer capability for",
+      "to": "MPT units",
+      "status": "CONFIRMED_BY_OFFICIAL_PROTOCOL_DOCUMENTATION"
+    },
+    {
+      "from": "XRPL MPT CanTrade flag",
+      "relation": "does not alone prove live DEX trading support for",
+      "to": "MPT units",
+      "status": "OFFICIAL_DOCS_SAY_MPT_DEX_TRADING_NOT_CURRENTLY_IMPLEMENTED"
+    },
+    {
+      "from": "Aviva £50M investment",
+      "relation": "is disclosed as investment in",
+      "to": "GBP fund share class, not XRP",
+      "status": "CONFIRMED_PRIMARY_ANNOUNCEMENT"
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "H-AVIVA-CONTROLLED-REGISTER-NOT-SECONDARY-LIQUIDITY",
+      "hypothesis": "The tokenized share class may function primarily as a controlled digital ownership/administration record rather than a freely tradable XRPL market instrument.",
+      "supporting_evidence": [
+        "Aviva describes a tokenized share class of an existing fund, with underlying assets held by BNY Mellon.",
+        "Official XRPL docs state that MPT DEX trading is not currently implemented.",
+        "Public analytics disagree on the GBP issuance supply/transfer flags, and no external subscription data is confirmed."
+      ],
+      "disconfirming_or_alternative_evidence": [
+        "A controlled share class can still create institutional workflow utility and later support compliant transfer/trading if protocol and product rules change."
+      ],
+      "test_plan": [
+        "Inspect the exact GBP MPTokenIssuance object from a permitted public XRPL node at a recorded validated ledger index.",
+        "Read OutstandingAmount, MaximumAmount, AssetScale, Flags, TransferFee, Issuer and immutable flags; preserve raw response and ledger index.",
+        "Inspect successful transactions and holder MPToken objects independently; compare with prospectus and issuer disclosures."
+      ]
+    },
+    {
+      "id": "H-AVIVA-XRP-PRICE-CHANNEL-NEGLIGIBLE",
+      "hypothesis": "Even if the tokenized share class is live and has £50M in sponsor investment, its direct XRP price impact may be negligible because the invested asset is the fund share and network fee/reserve demand is small relative to XRP market depth.",
+      "supporting_evidence": [
+        "Aviva's official announcement says £50M was invested in the tokenized share class, not XRP.",
+        "The underlying fund's approximately £22B AUM is not tokenized value.",
+        "MPT DEX trading is not currently implemented according to official XRPL documentation."
+      ],
+      "disconfirming_or_alternative_evidence": [
+        "Additional institutions, larger transaction throughput, liquidity provision or explicit XRP collateral/bridge use could create indirect effects; those channels are unmeasured."
+      ],
+      "test_plan": [
+        "Measure attributable transaction count/fees and required XRP reserves.",
+        "Look for explicit XRP holdings, collateral or bridge-path use in primary disclosures.",
+        "Compare the event with controlled tokenization launches and fixed event windows."
+      ]
+    }
+  ],
+  "data_quality_findings": [
+    {
+      "id": "DQ-AVIVA-AGB-ISSUANCE-STATE-CONFLICT-2026",
+      "severity": "HIGH",
+      "status": "MODEL_FEATURE_BLOCKED",
+      "finding": "Third-party public pages disagree on the GBP MPT's outstanding supply and CanTrade/CanTransfer flags. The USD instrument has a different MPT ID and cannot be substituted for the GBP instrument.",
+      "decision": "Do not admit supply, holder count, transferability or trading status as model features until the exact GBP MPT issuance object is read from a permitted public XRPL ledger source at a recorded ledger index."
+    },
+    {
+      "id": "DQ-MPT-CANTRADE-VS-DEX-SUPPORT-2026",
+      "severity": "HIGH",
+      "status": "TRADABILITY_CLAIM_BLOCKED",
+      "finding": "The CanTrade issuance capability flag is not sufficient to infer live DEX trading; the official XRPL MPT concepts documentation says MPT DEX trading is not currently implemented.",
+      "decision": "Separate issuance capabilities from implemented protocol functionality and from the product's own legal transfer/redemption terms."
+    },
+    {
+      "id": "DQ-AVIVA-SHARE-CLASS-NOT-XRP-2026",
+      "severity": "HIGH",
+      "status": "XRP_CAPITAL_FLOW_NOT_ESTABLISHED",
+      "finding": "The £50M disclosed investment is in tokenized fund shares, not XRP; the £22B is underlying fund AUM.",
+      "decision": "No XRP price forecast or capital-flow feature may be derived from these figures alone."
+    }
+  ],
+  "source_records": [
+    {
+      "source_id": "SRC-XRPL-MPT-ISSUANCE-DOCS",
+      "publisher": "XRP Ledger Foundation / XRPL.org",
+      "source_type": "official protocol documentation",
+      "url": "https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/mptokenissuance",
+      "retrieved_at_utc": "2026-10-28T00:11:09Z",
+      "independence_class": "primary protocol documentation",
+      "claims_supported": [
+        "MPTokenIssuance fields and flags, including CanTrade and CanTransfer."
+      ]
+    },
+    {
+      "source_id": "SRC-XRPL-MPT-CONCEPTS",
+      "publisher": "XRP Ledger Foundation / XRPL.org",
+      "source_type": "official protocol concepts documentation",
+      "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens",
+      "retrieved_at_utc": "2026-10-28T00:11:09Z",
+      "independence_class": "primary protocol documentation",
+      "claims_supported": [
+        "MPT transferability controls; official note that MPT DEX trading is not currently implemented; XRP is a distinct native asset."
+      ]
+    },
+    {
+      "source_id": "SRC-XRPLDASHBOARD-AVIVA-AGB-MPT-2026-10-28",
+      "publisher": "XRPL Dashboard",
+      "source_type": "third-party public-ledger explorer",
+      "url": "https://xrpldashboard.com/mpt/064D94E3607A616746E4BF525F17A63A3D266090F95EA90A",
+      "retrieved_at_utc": "2026-10-28T00:11:09Z",
+      "independence_class": "secondary public-ledger explorer",
+      "claims_supported": [
+        "GBP MPT ID and displayed flags/supply status."
+      ],
+      "limitations": [
+        "Page reports supply as 0/not yet walked; current ledger state must be independently verified."
+      ]
+    },
+    {
+      "source_id": "SRC-TSN-AVIVA-LEDGER-2026-10-28",
+      "publisher": "TSN Media",
+      "source_type": "secondary reporting with public-ledger references",
+      "url": "https://tsnmedia.org/aviva-investors-sterling-liquidity-fund-xrp-ledger/",
+      "retrieved_at_utc": "2026-10-28T00:11:09Z",
+      "independence_class": "secondary reporting",
+      "claims_supported": [
+        "Reported 50,050,000 units on both classes; no disclosed outside subscriptions in the GBP class."
+      ],
+      "limitations": [
+        "Not a primary issuer source; independently reproduce from ledger."
+      ]
+    },
+    {
+      "source_id": "SRC-BITHOMP-AVIVA-AUS-MPT-2026-10-28",
+      "publisher": "Bithomp",
+      "source_type": "third-party public-ledger explorer",
+      "url": "https://bithomp.com/token/064D94DE607A616746E4BF525F17A63A3D266090F95EA90A",
+      "retrieved_at_utc": "2026-10-28T00:11:09Z",
+      "independence_class": "secondary public-ledger explorer",
+      "claims_supported": [
+        "USD AUS instrument MPT metadata and displayed supply."
+      ],
+      "limitations": [
+        "USD instrument only; not the GBP AGB MPT."
+      ]
+    }
+  ],
+  "source_use_constraints": [
+    "Do not scrape or mirror XRPL.to's derived analytics dataset. The provider's published notice says permission is required before re-serving its data in another dataset.",
+    "Prefer official XRPL protocol documentation and independently queried public ledger records from a permitted source."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Resolve exact GBP MPT issuance state via permitted public XRPL ledger access, using the full MPT ID and a timestamped validated ledger index.",
+    "Record issuer, outstanding amount, maximum amount, asset scale, flags, transfer fee, immutable flags and transaction history from raw public-ledger responses.",
+    "Separate actual protocol capability, current implementation support, and fund-specific legal redemption/transfer terms.",
+    "Do not infer XRP purchases, collateral use, bridge demand or price impact from tokenized fund share value."
+  ],
+  "safety": {
+    "public_sources_only": true,
+    "unauthorized_access": false,
+    "private_data_used": false,
+    "provider_dataset_scraped": false,
+    "forecast_issued": false
+  }
+}
