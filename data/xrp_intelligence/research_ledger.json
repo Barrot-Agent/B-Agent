@@ -6040,7 +6040,37 @@
     },
     "snapshot_blob_sha": "2cad4d509fc5e8a5f5034bc3b7f89a917de444aa",
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T11:11:00Z",
-    "snapshot_commit_sha": "a40babb05651815a31165ae875cd23a24c01fb8d"
+    "snapshot_commit_sha": "a40babb05651815a31165ae875cd23a24c01fb8d",
+    "post_snapshot_verification": {
+      "verified_at_utc": "2026-10-28T11:15:30Z",
+      "snapshot_commit_sha": "a40babb05651815a31165ae875cd23a24c01fb8d",
+      "ci": {
+        "status": "PASS",
+        "tests_passed": 146,
+        "duration_seconds": 6.16,
+        "run_id": 40678454256,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40678454256"
+      },
+      "gate": {
+        "status": "PASS",
+        "run_id": 40678454201,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40678454201"
+      }
+    },
+    "post_snapshot_approval_workflow_anomaly": {
+      "status": "ROOT_CAUSE_UNRESOLVED",
+      "run_id": 40678445372,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs": 0,
+      "workflow_path": ".github/workflows/barrot-approve-pr.yml",
+      "workflow_blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+      "declared_trigger": "workflow_dispatch only",
+      "source_ids": [
+        "SRC-REPO-APPROVAL-WORKFLOW-ANOMALY-2026-10-28T1115Z",
+        "SRC-REPO-APPROVAL-WORKFLOW-CONTENT-2026-10-28T1115Z"
+      ]
+    }
   },
   "sources": [
     {
@@ -8202,6 +8232,38 @@
       "title": "Open pull request count at capture",
       "accessed_at_utc": "2026-10-28T11:11:00Z",
       "note": "GitHub search API returned total_count=79 and incomplete_results=false; includes newly opened PR #1248."
+    },
+    {
+      "id": "SRC-REPO-RESEARCH-LEDGER-CI-2026-10-28T1115Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40678454256",
+      "title": "Exact-head CI for XRP research snapshot/index commit",
+      "accessed_at_utc": "2026-10-28T11:15:15Z",
+      "note": "Research branch commit bd953e461afc3f789d097d645dc913a7196d611e passed 146 tests in 6.16 seconds."
+    },
+    {
+      "id": "SRC-REPO-RESEARCH-LEDGER-GATE-2026-10-28T1115Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40678454201",
+      "title": "Fail-closed gate for XRP research snapshot/index commit",
+      "accessed_at_utc": "2026-10-28T11:14:59Z",
+      "note": "Gate passed with merge disabled for research branch commit bd953e461afc3f789d097d645dc913a7196d611e."
+    },
+    {
+      "id": "SRC-REPO-APPROVAL-WORKFLOW-ANOMALY-2026-10-28T1115Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40678445372",
+      "title": "Recurring zero-job approval workflow anomaly",
+      "accessed_at_utc": "2026-10-28T11:15:30Z",
+      "note": "GitHub records .github/workflows/barrot-approve-pr.yml as a push-event failure with zero jobs on research branch commit bd953e461afc3f789d097d645dc913a7196d611e. No approval job ran; root cause remains unresolved."
+    },
+    {
+      "id": "SRC-REPO-APPROVAL-WORKFLOW-CONTENT-2026-10-28T1115Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Approval workflow trigger declaration rechecked",
+      "accessed_at_utc": "2026-10-28T11:15:30Z",
+      "note": "Main and research branch copies have identical blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4 and declare workflow_dispatch only, with no push trigger. This conflicts with the observed push-event run; no root cause or fix is claimed."
     }
   ],
   "limitations": [
@@ -8243,7 +8305,8 @@
     "Oct 27 ETF daily zero-flow readings from Alpha Finance and Maketo are secondary and not yet sponsor-level reconciled.",
     "Circle USDC contraction as of Oct 26 is global supply data with no destination-asset attribution.",
     "Investing.com/CoinCodex XRP observations for Oct 28 are not normalized to common UTC bar boundaries and market universes.",
-    "Coinbase Q3 2026 results are scheduled for Oct 29 after market close and were not available at the Oct 28 snapshot cutoff."
+    "Coinbase Q3 2026 results are scheduled for Oct 29 after market close and were not available at the Oct 28 snapshot cutoff.",
+    "The approval workflow anomaly recurred on research branch push: GitHub recorded a push-event failure with zero jobs while current workflow files on main and research are identical and declare workflow_dispatch only; cause remains unresolved."
   ],
   "run_updates": [
     {
@@ -9370,6 +9433,33 @@
         "deployment_executed": false,
         "forecast_status": "NOT_ISSUED",
         "research_index_ci": "PENDING_AFTER_INDEX_COMMIT"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T11:15:30Z",
+      "update_type": "POST_SNAPSHOT_CI_VERIFICATION_AND_APPROVAL_WORKFLOW_ANOMALY",
+      "snapshot_id": "XRP-FORECAST-VALIDATOR-PROVENANCE-CIRCLE-USDC-ETF-SBIC-2026-10-28T1111Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1111Z.json",
+      "details": "Verified that the 11:11Z research snapshot/index commit passed exact-head CI (146 tests, 6.16s) and the fail-closed gate. A recurring .github/workflows/barrot-approve-pr.yml run was recorded as push-event failure with zero jobs even though the current main and research copies are identical and declare workflow_dispatch only; root cause remains unresolved and no approval job ran.",
+      "source_ids": [
+        "SRC-REPO-RESEARCH-LEDGER-CI-2026-10-28T1115Z",
+        "SRC-REPO-RESEARCH-LEDGER-GATE-2026-10-28T1115Z",
+        "SRC-REPO-APPROVAL-WORKFLOW-ANOMALY-2026-10-28T1115Z",
+        "SRC-REPO-APPROVAL-WORKFLOW-CONTENT-2026-10-28T1115Z"
+      ],
+      "validation": {
+        "snapshot_commit_sha": "a40babb05651815a31165ae875cd23a24c01fb8d",
+        "snapshot_ci": "PASS_146_TESTS_6.16S",
+        "snapshot_ci_run_id": 40678454256,
+        "snapshot_gate": "PASS",
+        "snapshot_gate_run_id": 40678454201,
+        "approval_workflow_anomaly": "PUSH_EVENT_ZERO_JOBS_FAILURE_ROOT_CAUSE_UNRESOLVED",
+        "current_main_sha": "59f358d52a284d62c81ae177d4dd2dffd42e8ef6",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false,
+        "forecast_status": "NOT_ISSUED",
+        "new_ledger_index_commit_ci": "PENDING_AFTER_INDEX_UPDATE"
       }
     }
   ],
