@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T08:15:54.175Z",
+    "captured_at_utc": "2026-10-28T08:17:18.242Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
@@ -3186,6 +3186,44 @@
           "SRC-CIRCLE-TRANSPARENCY-RECHECK-2026-10-28T0814Z"
         ],
         "interpretation": "Global supply snapshot; no chain-level or XRP destination attribution. Not a live Oct 28 observation."
+      },
+      {
+        "id": "XRP-INVESTING-LIVE-2026-10-28T0817Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "asset": "XRP",
+        "market": "Investing.com live market page",
+        "captured_at_utc": "2026-10-28T08:17:18.242Z",
+        "provider_timestamp_text": "Real-time Data · 15:16:12; date and timezone not stated in captured result",
+        "price_usd": 1.2962,
+        "change_24h_pct": -0.29,
+        "day_low_usd": 1.2734,
+        "day_high_usd": 1.3059,
+        "volume_24h_usd_billions": 1.69,
+        "market_cap_usd_billions": 81.89,
+        "source_ids": [
+          "SRC-XRP-INVESTING-LIVE-2026-10-28T0817Z"
+        ],
+        "interpretation": "Provider page observation only; not synchronized to the daily historical row or other market sources. Model feature blocked."
+      },
+      {
+        "id": "XRP-COINGECKO-PRICE-PERP-2026-10-28T0817Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "asset": "XRP",
+        "market": "CoinGecko overview snapshot",
+        "captured_at_utc": "2026-10-28T08:17:18.242Z",
+        "price_usd": 1.32,
+        "change_24h_pct": 2.4,
+        "day_low_usd": 1.28,
+        "day_high_usd": 1.33,
+        "market_cap_usd_billions": 83.811,
+        "volume_24h_usd_billions": 1.419,
+        "perpetuals_open_interest_usd_billions": 4.006,
+        "funding_rate_8h_pct": 0.0103,
+        "perps_to_spot_volume_ratio": 3.2,
+        "source_ids": [
+          "SRC-XRP-COINGECKO-PRICE-PERP-2026-10-28T0817Z"
+        ],
+        "interpretation": "Crawler snapshot with no precise quote cutoff; open-interest/funding universe and methodology are not reconciled with other providers. Model feature blocked."
       }
     ],
     "phrase_investigation": {
@@ -3427,7 +3465,7 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T08:14:53.103Z",
+      "last_checked_utc": "2026-10-28T08:17:18.242Z",
       "last_run_update": "2026-10-28T07:09:34Z",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
@@ -3452,6 +3490,7 @@
       ]
     },
     "next_actions": [
+      "Resolve XRP spot and derivatives price/OI/funding disagreement using raw venue data at a common UTC cutoff; keep all unmatched provider snapshots blocked.",
       "Measure the Circle-Binance USDC distribution relationship against venue-level balances, XRPL-native USDC flows, and XRP bridge-path share; do not infer XRP impact from the equity announcement.",
       "Continue SBIC exact-identity and Camilla Stephenson canonical-channel verification; retain unresolved status.",
       "Normalize XRP spot/derivatives and XRPL-native USDC flows at common UTC cutoffs; keep provider dashboard rows blocked until universe and timestamps reconcile.",
@@ -3460,8 +3499,7 @@
       "Preserve current ledger and snapshots; do not merge the 43-ahead/54-behind research branch as-is.",
       "Run exact-head CI and fail-closed gate on the new research snapshot+ledger commit.",
       "Design idempotent durable staging/promotion for summary, scheduler, paper-trader, ping-pong and cross-analysis writers without breaking state continuity.",
-      "Normalize XRP price/volume and derivatives at common UTC cutoffs; exclude conflicting vendor rows from the feature store.",
-      "Triage the 75 open PRs read-only by changed paths, age, base/head SHAs and exact-head CI; do not auto-close or merge."
+      "Normalize XRP price/volume and derivatives at common UTC cutoffs; exclude conflicting vendor rows from the feature store."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -4043,6 +4081,19 @@
           "SRC-GH-PR1245-STATE-2026-10-28T0814Z"
         ],
         "next_action": "Keep draft/unmerged pending review; validate artifact retention and design durable append-only promotion before merging."
+      },
+      {
+        "id": "XRP-CROSS-PROVIDER-QUOTE-DIVERGENCE-2026-10-28T0817Z",
+        "severity": "HIGH",
+        "status": "MODEL_FEATURE_BLOCKED_PENDING_COMMON_CUTOFF_AND_UNIVERSE",
+        "finding": "Public pages currently show XRP at $1.2962 on Investing.com (timestamp text 15:16:12 without date/timezone), $1.32 on a CoinGecko crawl, and a separate Investing.com historical 28 Oct row at $1.3278. The market-cap and 24h-volume aggregates also differ materially.",
+        "interpretation": "The observations are not synchronized and may represent different times, venue universes, aggregation methods or stale crawls. They do not establish an executable arbitrage spread or a directional signal.",
+        "source_ids": [
+          "SRC-XRP-INVESTING-LIVE-2026-10-28T0817Z",
+          "SRC-XRP-COINGECKO-PRICE-PERP-2026-10-28T0817Z",
+          "SRC-XRP-INVESTING-ID-HIST-2026-10-28T0812Z"
+        ],
+        "next_action": "Capture raw venue trades/order books and perps snapshots at a common UTC cutoff; record provider timestamp, pair, venue, quote currency, contract type, funding interval, OI coverage and payload hash."
       }
     ],
     "mission_priority": {
@@ -4071,17 +4122,17 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-CIRCLE-BINANCE-DISTRIBUTION-AND-LEDGER-CI-2026-10-28T0815Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0815Z.json",
+    "snapshot_id": "XRP-CROSS-PROVIDER-QUOTE-QUALITY-2026-10-28T0817Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
     "current_research_head_before_ledger_update": "dc18baed806b221054d88299d11a0cc3121d2fba",
     "current_research_checks": {
       "status": "PASS_ON_PREVIOUS_LEDGER_HEAD; CURRENT_SNAPSHOT_UPDATE_PENDING_CI",
-      "previous_head": "6eb2c9341e1c0fab9756bac2de55769a69adf9c7",
+      "previous_head": "d956232d7f56e4028548b198ec53d459928648bc",
       "tests": 146,
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655440350",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655562251",
       "gate": "PASS",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655440286",
-      "note": "The prior ledger commit passed exact-head CI and fail-closed gate. This snapshot/index update requires its own exact-head CI check."
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655562094",
+      "note": "Prior ledger commit passed exact-head CI and fail-closed gate. This snapshot/index update requires its own exact-head CI check."
     },
     "current_research_head_before_final_verification_record": "dc18baed806b221054d88299d11a0cc3121d2fba",
     "platform_coordination_architecture": {
@@ -4683,6 +4734,19 @@
           "SRC-CIRCLE-BINANCE-100M-2026-10-28T0815Z"
         ],
         "impact_status": "USDC_DISTRIBUTION_CHANNEL_CONFIRMED; XRP_FLOW_AND_PRICE_IMPACT_UNKNOWN"
+      },
+      {
+        "event_id": "EVT-XRP-CROSS-PROVIDER-QUOTE-DIVERGENCE-2026-10-28T0817Z",
+        "event_time_utc": "2026-10-28T08:17:18.242Z",
+        "captured_at_utc": "2026-10-28T08:17:18.242Z",
+        "entity": "XRP market data providers",
+        "event": "Investing.com live, Investing.com historical and CoinGecko page snapshots show non-aligned XRP prices and aggregate market metrics; all affected rows remain blocked from model admission.",
+        "evidence_class": "SECONDARY_MARKET_DATA_CROSSCHECK",
+        "source_ids": [
+          "SRC-XRP-INVESTING-LIVE-2026-10-28T0817Z",
+          "SRC-XRP-COINGECKO-PRICE-PERP-2026-10-28T0817Z"
+        ],
+        "impact_status": "DATA_QUALITY_BLOCK; NO_DIRECTIONAL_FORECAST"
       }
     ],
     "current_pr_1238_state": {
@@ -5100,7 +5164,7 @@
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
     "current_research_head_this_run": "NOT_ASSERTED_BY_FILE_FETCH; existing research branch preserved",
-    "snapshot_blob_sha": "af0c86a889699185e707d8563b660e5759b2ef2b"
+    "snapshot_blob_sha": "8bc3f2f9b2b8e75206971d1e54fe4119a13272ee"
   },
   "sources": [
     {
@@ -6934,6 +6998,22 @@
       "title": "Circle announces Binance $100M investment and five-year USDC partnership",
       "accessed_at_utc": "2026-10-28T08:15:54.175Z",
       "note": "Circle's 22 Sep 2026 official announcement says Binance made a $100M strategic equity investment and entered a new five-year agreement to promote USDC, especially in emerging markets; Circle supplies infrastructure. This establishes Circle-Binance equity/commercial ties, not an XRP position or XRP flow."
+    },
+    {
+      "id": "SRC-XRP-INVESTING-LIVE-2026-10-28T0817Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.investing.com/crypto/xrp",
+      "title": "Investing.com XRP live market page",
+      "accessed_at_utc": "2026-10-28T08:17:18.242Z",
+      "note": "Search result displayed 1.2962, -0.29%, day range 1.2734-1.3059, 24h volume $1.69B and market cap $81.89B; quote text said 'Real-time Data · 15:16:12' without date/timezone in the captured result."
+    },
+    {
+      "id": "SRC-XRP-COINGECKO-PRICE-PERP-2026-10-28T0817Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.coingecko.com/en/coins/xrp",
+      "title": "CoinGecko XRP market and derivatives snapshot",
+      "accessed_at_utc": "2026-10-28T08:17:18.242Z",
+      "note": "Search result crawled today displayed XRP $1.32, +2.4%, 24h range $1.28-$1.33, market cap $83.811B, 24h volume $1.419B, perps open interest $4.006B, 8h funding 0.0103%, perps/spot volume 3.2x. Exact quote timestamp/venue universe not established."
     }
   ],
   "limitations": [
@@ -7917,6 +7997,26 @@
         "previous_ledger_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655440350",
         "previous_ledger_gate": "PASS",
         "previous_ledger_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655440286",
+        "current_ledger_head_ci": "PENDING_AFTER_INDEX_UPDATE"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T08:17:18.242Z",
+      "update_type": "XRP_CROSS_PROVIDER_QUOTE_AND_DERIVATIVES_QUALITY_BLOCK",
+      "snapshot_id": "XRP-CROSS-PROVIDER-QUOTE-QUALITY-2026-10-28T0817Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
+      "details": "Added public Investing.com live, Investing.com historical and CoinGecko snapshots that are not synchronized: $1.2962, $1.3278 and $1.32 respectively, with mismatched market-cap/volume and derivatives aggregates. These observations are blocked from model admission until raw venue data are aligned at a common UTC cutoff. Prior ledger head d956232 passed 146 tests and the fail-closed gate; current ledger update needs exact-head CI.",
+      "validation": {
+        "source_ids_unique": true,
+        "snapshot_blob_sha": "8bc3f2f9b2b8e75206971d1e54fe4119a13272ee",
+        "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "previous_ledger_head_ci": "PASS_146_TESTS_5.84S",
+        "previous_ledger_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655562251",
+        "previous_ledger_gate": "PASS",
+        "previous_ledger_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40655562094",
         "current_ledger_head_ci": "PENDING_AFTER_INDEX_UPDATE"
       }
     }
