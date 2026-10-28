@@ -402,6 +402,103 @@ def test_dispatcher_handles_no_change_from_real_work_queue_controller(tmp_path):
     assert persisted_queue["queue_advanced"] is False
     assert persisted_queue["repair_cycle"]["status"] == "no_repair_required"
 
+
+def test_dispatcher_recovers_real_queue_completion_after_lifecycle_interruption(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    class SuccessfulRepairController:
+        workspace = tmp_path
+        calls = []
+
+        def run(self, **kwargs):
+            self.calls.append(kwargs["task_title"])
+            cycle = RepairCycleEvidence(cycle_id=f"cycle-{len(self.calls)}")
+            cycle.status = "complete"
+            cycle.current_state = "COMPLETE"
+            cycle.local_validation_passed = True
+            cycle.resolution_verified = True
+            cycle.commit.created = True
+            cycle.commit.exists = True
+            cycle.commit.sha = f"verified-sha-{len(self.calls)}"
+            cycle.commit.remote_verified = True
+            cycle.report = "Repair validated."
+            return cycle
+
+    repair = SuccessfulRepairController()
+    queue_store = DurableWorkStore(tmp_path)
+    queue = WorkQueueController(repair_controller=repair, work_store=queue_store)
+    identity = ProjectIdentity.from_seed("Barrot-Agent/B-Agent")
+
+    # Simulate a crash after the durable queue has completed task-a but before
+    # the bundle lifecycle store has recorded that result.
+    seeded = queue.run(
+        work_id="recovery:task-a",
+        project_identity=identity,
+        task_title="Task A",
+        task_body="First dependency",
+        issue_number="42",
+        repo="Barrot-Agent/B-Agent",
+        branch="test/recovery",
+        audit_context={"inventory": "integration test"},
+    )
+    assert seeded.status == "complete"
+    assert seeded.queue_advanced is True
+    assert seeded.repair_cycle["commit"]["remote_verified"] is True
+
+    lifecycle = BundleLifecycleStore(tmp_path)
+    lifecycle.save_plan("recovery-bundle", Result())
+    executed = []
+
+    def execute(task):
+        executed.append(task["id"])
+        return queue.run(
+            work_id=f"recovery:{task['id']}",
+            project_identity=identity,
+            task_title=task["id"],
+            task_body="Dependent task",
+            issue_number="42",
+            repo="Barrot-Agent/B-Agent",
+            branch="test/recovery",
+            audit_context={"inventory": "integration test"},
+        )
+
+    def recover(task):
+        saved = queue_store.load(f"recovery:{task['id']}")
+        if not isinstance(saved, dict) or saved.get("status") != "complete":
+            return None
+        cycle = saved.get("repair_cycle") or {}
+        commit = cycle.get("commit") or {}
+        if not (
+            saved.get("queue_advanced") is True
+            and cycle.get("status") == "complete"
+            and cycle.get("local_validation_passed") is True
+            and cycle.get("resolution_verified") is True
+            and commit.get("remote_verified") is True
+            and commit.get("sha")
+        ):
+            return None
+        return saved
+
+    result = dispatch_bundle_tasks(
+        store=lifecycle,
+        work_id="recovery-bundle",
+        bundle={"tasks": [
+            {"id": "task-a", "depends_on": []},
+            {"id": "task-b", "depends_on": ["task-a"]},
+        ]},
+        execute_task=execute,
+        recover_task=recover,
+    )
+
+    assert result["complete"] is True
+    assert result["completed_task_ids"] == ["task-a", "task-b"]
+    assert executed == ["task-b"]
+    assert repair.calls == ["Task A", "task-b"]
+    states = lifecycle.latest_task_states("recovery-bundle")
+    assert states["task-a"]["recovered_from_queue"] is True
+    assert states["task-a"]["commit_sha"] == "verified-sha-1"
+    assert states["task-b"]["status"] == "complete"
+
 def test_dispatcher_resumes_after_interruption_between_tasks(tmp_path):
     from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
 
