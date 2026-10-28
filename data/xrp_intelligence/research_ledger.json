@@ -6408,25 +6408,25 @@
     "current_research_head_before_ledger_update": "6da34d26864869ecf2f9859fbac58013d645d874",
     "current_research_checks": {
       "status": "PREVIOUS_INDEX_HEAD_VERIFIED; SUCCESSOR_INDEX_PENDING",
-      "previous_index_head": "3ab9861648ba22f6bd6ef91380f7c126fb858c13",
+      "previous_index_head": "2ea193a7202979e9ab89f2ca04337d8ac34b6756",
       "previous_index_ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 5.74,
-        "run_id": 40743387181,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743387181"
+        "duration_seconds": 5.56,
+        "run_id": 40743530726,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530726"
       },
       "previous_index_gate": {
         "status": "PASS",
-        "run_id": 40743387149,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743387149"
+        "run_id": 40743530732,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530732"
       },
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "c33004dcc85e29a8068138be8b2f51d8a413c843",
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
     },
-    "current_research_head_before_final_verification_record": "3ab9861648ba22f6bd6ef91380f7c126fb858c13",
+    "current_research_head_before_final_verification_record": "2ea193a7202979e9ab89f2ca04337d8ac34b6756",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -8415,8 +8415,8 @@
       "new_market_observations": 0,
       "latest_market_observation_id": "XRP-PERP-AGGREGATE-2026-10-28T1200Z",
       "forecast_status": "NOT_ISSUED",
-      "source_records": 469,
-      "run_updates": 95,
+      "source_records": 471,
+      "run_updates": 96,
       "limitations": 85,
       "relationship_edges": 104,
       "competing_hypotheses": 65,
@@ -8541,18 +8541,18 @@
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "c33004dcc85e29a8068138be8b2f51d8a413c843",
       "snapshot_commit_sha": "83b7d10442aedd0c548d23a484da2d85bee76135",
-      "verified_index_head": "3ab9861648ba22f6bd6ef91380f7c126fb858c13",
+      "verified_index_head": "2ea193a7202979e9ab89f2ca04337d8ac34b6756",
       "ci": {
         "status": "PASS",
         "tests_passed": 145,
-        "duration_seconds": 5.74,
-        "run_id": 40743387181,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743387181"
+        "duration_seconds": 5.56,
+        "run_id": 40743530726,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530726"
       },
       "gate": {
         "status": "PASS",
-        "run_id": 40743387149,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743387149"
+        "run_id": 40743530732,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530732"
       },
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
@@ -12350,6 +12350,22 @@
       "title": "Research ledger index fail-closed gate passed",
       "accessed_at_utc": "2026-10-28T18:16:06Z",
       "note": "Fail-closed gate succeeded for index commit 3ab9861648ba22f6bd6ef91380f7c126fb858c13; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2EA193-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530726",
+      "title": "Research ledger index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:16:54Z",
+      "note": "Index commit 2ea193a7202979e9ab89f2ca04337d8ac34b6756 passed 145 tests in 5.56 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2EA193-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530732",
+      "title": "Research ledger index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:16:54Z",
+      "note": "Fail-closed gate succeeded for index commit 2ea193a7202979e9ab89f2ca04337d8ac34b6756; no merge was performed."
     }
   ],
   "limitations": [
@@ -14678,6 +14694,30 @@
         "new_index_ci": "PENDING_AFTER_WRITE",
         "new_index_gate": "PENDING_AFTER_WRITE"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T18:16:54Z",
+      "update_type": "RESEARCH_INDEX_CI_AND_GATE_VERIFIED",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1814Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1814Z.json",
+      "details": "Verified index commit 2ea193a7202979e9ab89f2ca04337d8ac34b6756 through exact-head CI (145 tests in 5.56s) and fail-closed gate. The latest snapshot blob SHA matches the index; all source IDs remain unique and source references resolve. The successor index commit will require its own checks.",
+      "source_ids": [
+        "SRC-GH-LEDGER-CI-2EA193-2026-10-28",
+        "SRC-GH-LEDGER-GATE-2EA193-2026-10-28"
+      ],
+      "validation": {
+        "verified_index_head": "2ea193a7202979e9ab89f2ca04337d8ac34b6756",
+        "ci": "PASS_145_TESTS_5.56S",
+        "gate": "PASS",
+        "snapshot_blob_readback": "PASS",
+        "source_ids_unique": "PASS",
+        "missing_source_refs": 0,
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "new_index_ci": "PENDING_AFTER_WRITE",
+        "new_index_gate": "PENDING_AFTER_WRITE"
+      }
     }
   ],
   "mission_priority": {
@@ -14905,22 +14945,22 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "3ab9861648ba22f6bd6ef91380f7c126fb858c13",
-  "current_research_head_this_run": "3ab9861648ba22f6bd6ef91380f7c126fb858c13",
+  "current_research_head_before_ledger_update": "2ea193a7202979e9ab89f2ca04337d8ac34b6756",
+  "current_research_head_this_run": "2ea193a7202979e9ab89f2ca04337d8ac34b6756",
   "current_research_checks": {
     "status": "PREVIOUS_INDEX_HEAD_VERIFIED; SUCCESSOR_INDEX_PENDING",
-    "previous_index_head": "3ab9861648ba22f6bd6ef91380f7c126fb858c13",
+    "previous_index_head": "2ea193a7202979e9ab89f2ca04337d8ac34b6756",
     "previous_index_ci": {
       "status": "PASS",
       "tests_passed": 145,
-      "duration_seconds": 5.74,
-      "run_id": 40743387181,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743387181"
+      "duration_seconds": 5.56,
+      "run_id": 40743530726,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530726"
     },
     "previous_index_gate": {
       "status": "PASS",
-      "run_id": 40743387149,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743387149"
+      "run_id": 40743530732,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530732"
     },
     "snapshot_blob_readback_ok": true,
     "snapshot_blob_sha": "c33004dcc85e29a8068138be8b2f51d8a413c843",
@@ -14937,8 +14977,8 @@
     "new_market_observations": 0,
     "latest_market_observation_id": "XRP-PERP-AGGREGATE-2026-10-28T1200Z",
     "forecast_status": "NOT_ISSUED",
-    "source_records": 469,
-    "run_updates": 95,
+    "source_records": 471,
+    "run_updates": 96,
     "limitations": 85,
     "relationship_edges": 104,
     "competing_hypotheses": 65,
