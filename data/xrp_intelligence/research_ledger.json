@@ -4599,6 +4599,30 @@
       "title": "Final correction snapshot for ledger metrics",
       "note": "Read-back confirmed action counts from decision.action, exact snapshot character count 609,645 and limitations count 104 matching the actual array. Earlier snapshots remain unchanged.",
       "accessed_at_utc": "2026-10-28T23:14:00Z"
+    },
+    {
+      "id": "SRC-RUN14-PR1267-CI-20261028T2315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785367894",
+      "title": "Fresh-main PR #1267 exact-head CI",
+      "accessed_at_utc": "2026-10-28T23:15:00Z",
+      "note": "Exact PR head 3ef16e553397bd76230f265b44da63315e917783, base main a7a38f3c3e54b1073825f0dfb11b0244fae313ad; Tests job 123157099173 passed 150 tests in 5.57 seconds. This verifies the code proposal, not prediction skill."
+    },
+    {
+      "id": "SRC-RUN14-PR1267-GATE-20261028T2315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785367845",
+      "title": "Fresh-main PR #1267 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T23:15:00Z",
+      "note": "Gate job 123157099079 completed successfully in fail-closed/read-only mode. No approval, merge, deployment or external write occurred."
+    },
+    {
+      "id": "SRC-RUN14-INDEX-GATE-20261028T2315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785926776",
+      "title": "Compact ledger index gate on commit 7e9b6c94",
+      "accessed_at_utc": "2026-10-28T23:15:00Z",
+      "note": "Gate job 123158975439 completed successfully on index commit 7e9b6c94a3add7fc606de359bc361bcd97fc0d43. Core CI remains untriggered for PR #1265 because its base is a research branch excluded by the CI pull_request filter. This gate result does not cover the subsequent index update."
     }
   ],
   "limitations": [
@@ -7691,6 +7715,61 @@
         "limitations_count_verified": true,
         "prior_snapshots_preserved": true
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T23:15:00Z",
+      "update_type": "PR1267_EXACT_HEAD_CI_GATE_AND_PRIOR_INDEX_GATE_VERIFIED",
+      "main_sha": "a7a38f3c3e54b1073825f0dfb11b0244fae313ad",
+      "source_ids": [
+        "SRC-RUN14-PR1267-CI-20261028T2315Z",
+        "SRC-RUN14-PR1267-GATE-20261028T2315Z",
+        "SRC-RUN14-INDEX-GATE-20261028T2315Z"
+      ],
+      "pr1267": {
+        "number": 1267,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1267",
+        "head_sha": "3ef16e553397bd76230f265b44da63315e917783",
+        "base_sha": "a7a38f3c3e54b1073825f0dfb11b0244fae313ad",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci": {
+          "status": "PASS",
+          "tests_passed": 150,
+          "duration_seconds": 5.57,
+          "run_id": 40785367894,
+          "job_id": 123157099173,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785367894"
+        },
+        "gate": {
+          "status": "PASS",
+          "run_id": 40785367845,
+          "job_id": 123157099079,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785367845"
+        },
+        "main_modified": false,
+        "merge_performed": false,
+        "deployment": false,
+        "real_money_trade": false
+      },
+      "index_gate": {
+        "status": "PASS_ON_PRIOR_INDEX_HEAD",
+        "head_sha": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
+        "run_id": 40785926776,
+        "job_id": 123158975439,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785926776"
+      },
+      "latest_snapshot": {
+        "path": "data/xrp_intelligence/snapshots/2026-10-28T2314Z-final.json",
+        "blob_sha": "4c8c41cad6967bd431263e3d7e717ec006800572",
+        "snapshot_commit_sha": "f2982bbe1868dc754deb8a64ce87fe7e62e3d145",
+        "pointer_validated": true
+      },
+      "forecast_status": "NOT_ISSUED",
+      "note": "PR #1267 passes exact-head CI and fail-closed gate. The main summary artifact remains provider-unavailable and non-predictive until the proposed fix is approved and merged. The latest index update will need its own gate check; core CI still does not trigger on this research-base PR.",
+      "main_modified": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment": false,
+      "real_money_trade": false
     }
   ],
   "mission_priority": {
@@ -7918,36 +7997,37 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "f2982bbe1868dc754deb8a64ce87fe7e62e3d145",
+  "current_research_head_before_ledger_update": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
   "current_research_head_this_run": "PENDING_AFTER_INDEX_WRITE",
   "current_research_checks": {
-    "status": "LATEST_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SUCCESSOR_INDEX_PENDING; CORE_CI_NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "status": "SNAPSHOT_POINTER_AND_SOURCE_REFERENCES_PASS; PR1267_EXACT_HEAD_CI_AND_GATE_PASS; PRIOR_INDEX_HEAD_GATE_PASS; SUCCESSOR_INDEX_PENDING; CORE_CI_NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2314Z-final.json",
     "snapshot_blob_sha": "4c8c41cad6967bd431263e3d7e717ec006800572",
     "snapshot_commit_sha": "f2982bbe1868dc754deb8a64ce87fe7e62e3d145",
-    "verified_index_head_before_update": "97fff5bbb3a1cc38ce05e5c65366052dbdea3c26",
     "source_reference_count": 365,
     "missing_source_references": 0,
     "snapshot_characters": 609645,
     "snapshot_character_metric_matches": true,
     "prior_index_gate": {
       "status": "PASS",
-      "run_id": 40777959169,
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777959169",
-      "verified_head_sha": "97fff5bbb3a1cc38ce05e5c65366052dbdea3c26"
+      "run_id": 40785926776,
+      "verified_head_sha": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785926776"
+    },
+    "pr1267": {
+      "head_sha": "3ef16e553397bd76230f265b44da63315e917783",
+      "ci_status": "PASS_150_TESTS_5.57S",
+      "ci_run_id": 40785367894,
+      "gate_status": "PASS",
+      "gate_run_id": 40785367845
     },
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "successor_index_ci": "PENDING_AFTER_WRITE",
-    "successor_index_gate": "PENDING_AFTER_WRITE",
-    "pr1267": {
-      "head_sha": "3ef16e553397bd76230f265b44da63315e917783",
-      "ci_status": "PENDING_AT_CAPTURE",
-      "gate_status": "PENDING"
-    }
+    "successor_index_gate": "PENDING_AFTER_WRITE"
   },
   "ledger_metrics": {
-    "source_records": 566,
-    "run_updates": 113,
+    "source_records": 569,
+    "run_updates": 114,
     "limitations": 104,
     "relationship_edges": 104,
     "competing_hypotheses": 69,
@@ -7957,10 +8037,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 495831,
+    "index_characters_before_this_update": 514305,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 609645,
-    "index_characters": 514305
+    "index_characters": 517946
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -7986,9 +8066,9 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T23:14:00Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T23:15:00Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PRIOR_INDEX_GATE_PASS; SUCCESSOR_INDEX_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PR1267_CI_AND_GATE_PASS; PRIOR_INDEX_HEAD_GATE_PASS; SUCCESSOR_INDEX_PENDING",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "4c8c41cad6967bd431263e3d7e717ec006800572",
       "snapshot_commit_sha": "f2982bbe1868dc754deb8a64ce87fe7e62e3d145",
@@ -8006,13 +8086,28 @@
       },
       "gate": {
         "status": "PASS_ON_PRIOR_INDEX_HEAD_ONLY",
-        "run_id": 40777959169,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777959169",
-        "verified_head_sha": "97fff5bbb3a1cc38ce05e5c65366052dbdea3c26"
+        "run_id": 40785926776,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785926776",
+        "verified_head_sha": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43"
       },
       "successor_index_ci": "PENDING_AFTER_WRITE",
       "successor_index_gate": "PENDING_AFTER_WRITE",
-      "verified_index_head": "97fff5bbb3a1cc38ce05e5c65366052dbdea3c26"
+      "verified_index_head": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
+      "pr1267": {
+        "head_sha": "3ef16e553397bd76230f265b44da63315e917783",
+        "ci": {
+          "status": "PASS",
+          "tests_passed": 150,
+          "duration_seconds": 5.57,
+          "run_id": 40785367894
+        },
+        "gate": {
+          "status": "PASS",
+          "run_id": 40785367845
+        },
+        "draft": true,
+        "merged": false
+      }
     },
     "previous_inline_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
     "previous_inline_index_blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
@@ -8065,82 +8160,54 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-28T23:14:00Z",
-    "main_sha": "a7a38f3c3e54b1073825f0dfb11b0244fae313ad",
+    "recorded_at_utc": "2026-10-28T23:15:00Z",
+    "previous_addendum_recorded_at_utc": "2026-10-28T23:14:00Z",
     "source_ids": [
-      "SRC-RUN14-MAIN-HEAD-20261028T2311Z",
-      "SRC-RUN14-PAPER-LOG-20261028T2311Z",
-      "SRC-RUN14-PAPER-STATE-20261028T2311Z",
-      "SRC-RUN14-APPROVAL-WORKFLOW-20261028T2311Z",
-      "SRC-RUN14-SIGNAL-SUMMARY-20261028T2311Z",
-      "SRC-RUN14-XRP-COINCODEX-20261028T2311Z",
-      "SRC-RUN14-XRP-ETF-INSIGHTS-20261028T2311Z",
-      "SRC-RUN14-XRP-ETF-ALPHA-20261028T2311Z",
-      "SRC-RUN14-COINBASE-Q3-DATE-20261028T2311Z",
-      "SRC-RUN14-PR1267-20261028T2311Z",
-      "SRC-RUN14-SNAPSHOT-CORRECTION-20261028T2312Z",
-      "SRC-RUN14-SNAPSHOT-CORRECTION-20261028T2313Z",
-      "SRC-RUN14-SNAPSHOT-CORRECTION-20261028T2314Z"
+      "SRC-RUN14-PR1267-CI-20261028T2315Z",
+      "SRC-RUN14-PR1267-GATE-20261028T2315Z",
+      "SRC-RUN14-INDEX-GATE-20261028T2315Z"
     ],
-    "paper_trading_replay": {
-      "rows": 2353,
-      "malformed": 0,
-      "timestamp_order_errors": 0,
-      "products": [
-        "BTC-USD"
-      ],
-      "action_counts": {
-        "buy": 36,
-        "sell": 89,
-        "hold": 2228,
-        "other": 0
-      },
-      "prior_full_replay_rows": 2351,
-      "incremental_rows": 2,
-      "incremental_rows_all_hold": true,
-      "full_current_replay_rerun": false,
-      "state_mutated": false
-    },
-    "signal_summary": {
-      "score": 44,
-      "confidence": 0,
-      "provider_unavailable": true,
-      "news_score": 88,
-      "news_entries": 11,
-      "forecast_status": "NOT_ISSUED",
-      "fix_pr": 1267
-    },
-    "market_data_quality": {
-      "coincodex_daily_close_usd": 1.33,
-      "coincodex_daily_volume_usd": 1400000000,
-      "etf_insights_oct27_xrp": -433940,
-      "alpha_oct27_usd": 0,
-      "coverage_reconciled": false,
-      "feature_admission": "BLOCKED"
-    },
     "pr1267": {
+      "number": 1267,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1267",
       "head_sha": "3ef16e553397bd76230f265b44da63315e917783",
       "base_sha": "a7a38f3c3e54b1073825f0dfb11b0244fae313ad",
-      "draft": true,
-      "merged": false,
-      "ci_status": "PENDING_AT_CAPTURE",
-      "gate_status": "PENDING"
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": {
+        "status": "PASS",
+        "tests_passed": 150,
+        "duration_seconds": 5.57,
+        "run_id": 40785367894,
+        "job_id": 123157099173,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785367894"
+      },
+      "gate": {
+        "status": "PASS",
+        "run_id": 40785367845,
+        "job_id": 123157099079,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785367845"
+      },
+      "main_modified": false,
+      "merge_performed": false,
+      "deployment": false,
+      "real_money_trade": false
     },
-    "approval_workflow": {
-      "workflow_blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
-      "declared_triggers": [
-        "workflow_dispatch"
-      ],
-      "last_verified_zero_job_run_id": 40777777959,
-      "root_cause": "UNKNOWN"
+    "index_gate": {
+      "status": "PASS_ON_PRIOR_INDEX_HEAD",
+      "head_sha": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
+      "run_id": 40785926776,
+      "job_id": 123158975439,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785926776"
+    },
+    "latest_snapshot": {
+      "path": "data/xrp_intelligence/snapshots/2026-10-28T2314Z-final.json",
+      "blob_sha": "4c8c41cad6967bd431263e3d7e717ec006800572",
+      "snapshot_commit_sha": "f2982bbe1868dc754deb8a64ce87fe7e62e3d145",
+      "pointer_validated": true
     },
     "forecast_status": "NOT_ISSUED",
     "main_modified": false,
-    "merge_performed": false,
-    "force_push": false,
-    "deployment": false,
-    "real_money_trade": false
+    "merge_performed": false
   },
   "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
