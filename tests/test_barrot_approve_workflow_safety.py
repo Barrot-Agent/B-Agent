@@ -21,6 +21,7 @@ def test_only_manual_dispatch_can_run_approval_job():
     assert "if: github.event_name == 'workflow_dispatch'" in approval_job
     assert "Apply approved label" in approval_job
     assert "MERGE_PERFORMED=FALSE" in approval_job
+    assert "the `approved` label only" not in approval_job
 
 
 def test_write_permission_is_scoped_to_approval_job():
