@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T13:03:30Z",
+    "captured_at_utc": "2026-10-28T13:08:30Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
+      "main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -222,14 +222,12 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
-        "message": "Cross-analysis refresh [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/070d538bb90c25bdcb64edd1532f83b082c93d7e",
-        "observed_at_utc": "2026-10-28T13:03:30Z",
+        "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "message": "Paper trade cycle [skip ci]",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "observed_at_utc": "2026-10-28T13:08:30Z",
         "changed_scope": [
-          "ping-pongings/knowledge-base/entity_cooccurrence.json",
-          "ping-pongings/knowledge-base/entity_sentiment_profile.json",
-          "ping-pongings/knowledge-base/sentiment_shift.json"
+          "web/paper_trading_log.jsonl"
         ]
       },
       "current_ci": {
@@ -1035,6 +1033,16 @@
         "consequence": "A variable-horizon mutable metric can misstate forecast skill and the workflow writes generated evaluation state directly to main.",
         "proposed_fix": "PR #1253: https://github.com/Barrot-Agent/B-Agent/pull/1253",
         "verification": "Exact-head CI 147 passed in 6.22s and fail-closed gate passed; draft/unmerged, no deployment."
+      },
+      {
+        "id": "YOUTUBE-XRP-CLAIMS-REQUIRE-CORROBORATION-20261028T1308Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "severity": "medium",
+        "status": "CLAIMS_CAPTURED_NOT_MODEL_ADMISSIBLE",
+        "finding": "Candidate Kamilah Stevenson videos claim 4.09B XRP accumulated by large wallets, 7.03B XRP leaving exchanges in February, and $60.5M weekly XRP ETF inflows in May 2026. These figures have not been independently reconciled to labeled on-chain wallets or sponsor-level fund records.",
+        "consequence": "If treated as facts without provenance, these claims could contaminate supply, liquidity and capital-flow features.",
+        "proposed_fix": "Require source IDs, exact event windows, wallet-label confidence, fund universe and independent corroboration before feature-store admission.",
+        "verification": "Source pages captured as public YouTube search results; claims remain SECONDARY_UNVERIFIED."
       }
     ],
     "research_findings": [
@@ -2050,6 +2058,24 @@
           "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1303Z"
         ],
         "uncertainty": "Name collision is plausible; search results do not prove the requested person's identity or absence of a YouTube channel."
+      },
+      {
+        "id": "YOUTUBE-KAMILAH-CANDIDATE-CHANNEL-AND-CLAIMS-20261028T1308Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "CANDIDATE_CHANNEL_CONFIRMED_ON_YOUTUBE; REQUESTED_CAMILLA_IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
+        "claim": "A YouTube channel titled 'Kamilah Stevenson | XRP & Stocks' is indexed at channel ID UCXm6KAr1WHF6UN7g5b2W7wg. Search surfaced five public video pages dated 3 Dec 2025, 6 Mar 2026, 19 Apr 2026, 26 May 2026 and 30 Jul 2026. The April video description claims 4.09B XRP accumulation, 32% wallet concentration and 7.03B XRP exchange outflows; the May video claims $60.5M weekly XRP ETF inflows while BTC/ETH ETF products had outflows.",
+        "interpretation": "This establishes a candidate Kamilah Stevenson crypto channel and a partial public-video inventory, not identity with Camilla Stephenson. The numeric claims are creator statements and are not admitted as market facts until independently reconciled with on-chain entity labels, exchange wallet movements and sponsor-level ETF data.",
+        "source_ids": [
+          "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-03-06-GLOBAL-FINANCE-XRP-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-07-30-XRPL-UPGRADE-20261028T1308Z",
+          "SRC-YT-KAMILAH-2025-12-03-XRP-2026-SETUP-20261028T1308Z",
+          "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1308Z",
+          "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z"
+        ],
+        "uncertainty": "The canonical identity match and exhaustive uploads list remain unresolved; YouTube channel page fetch was throttled, and the listed videos were surfaced through indexed search results."
       }
     ],
     "relationship_graph": [
@@ -3551,6 +3577,19 @@
           "No synchronized XRP, BTC, DXY, Treasury-yield, funding or liquidation event study has been run."
         ],
         "test_plan": "Use point-in-time DXY, Treasury yields, BTC/XRP returns, funding, open interest and liquidation series; run event studies and rolling out-of-sample regressions with predeclared lags, controls and placebo windows."
+      },
+      {
+        "id": "H-XRP-WHALE-ACCUMULATION-EXCHANGE-OUTFLOWS-202610281308Z",
+        "hypothesis": "If large XRP holders accumulated tokens while exchange balances fell, immediate exchange-side sell supply could tighten; the same observations could instead reflect wallet relabeling, internal exchange transfers or custody migration with little change in economically available supply.",
+        "supporting_evidence": [
+          "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z"
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "The accumulation and exchange-outflow figures are creator-reported and unverified.",
+          "Wallet clustering is uncertain; exchange cold/hot-wallet changes can mimic net outflows.",
+          "Price can fall despite net exchange outflows if demand weakens or derivatives deleveraging dominates."
+        ],
+        "test_plan": "Compare independent labeled exchange netflows, XRPL account clustering confidence, custody disclosures, venue order-book depth, spot volume, derivatives open interest/funding and ETF sponsor creations/redemptions at synchronized UTC cutoffs. Use placebo windows and preserve counterexamples."
       }
     ],
     "market_observations": [
@@ -3971,6 +4010,17 @@
         "source_ids": [
           "SRC-ALPHA-XRP-ETF-FLOW-20261028T1303Z"
         ]
+      },
+      {
+        "id": "YOUTUBE-CREATOR-XRP-WALLET-AND-ETF-CLAIMS-20261028T1308Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-05-26",
+        "observation": "A Kamilah Stevenson video description claims 4.09B XRP accumulation and 7.03B XRP exchange outflows in February; another claims $60.5M weekly XRP ETF inflows in May 2026.",
+        "interpretation": "Creator-reported claims only. Not model-admissible until wallet labels, time windows, ETF fund coverage and sponsor-level records are independently reconciled.",
+        "source_ids": [
+          "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z"
+        ]
       }
     ],
     "phrase_investigation": {
@@ -4007,8 +4057,8 @@
         "next_action": "Locate the original phrase and surrounding context; keep SBIC East Japan distinct from SBI Group unless legal-entity evidence establishes a relationship."
       },
       "Camilla Stephenson": {
-        "status": "IDENTITY_COLLISION_FOUND; REQUESTED_YOUTUBE_INVENTORY_UNRESOLVED",
-        "finding": "A third-party index previously linked four XRP/crypto videos to Kamilah Stevenson and two transcript excerpts use Camila Stevenson. New exact-name results identify a Camilla Stephenson in UK film location management, including Project Hail Mary and 28 Years Later credits. No first-party cross-link proves these are the same person; treat them as separate candidate identities until evidence connects them.",
+        "status": "MULTIPLE_CANDIDATE_CHANNELS; REQUESTED_IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
+        "finding": "A YouTube search result exposes a channel titled 'Kamilah Stevenson | XRP & Stocks' at channel ID UCXm6KAr1WHF6UN7g5b2W7wg and five candidate public video pages dated Dec 2025–Jul 2026. A separate third-party index previously surfaced channel ID UCqUPJMQdkCN6lsLVDnichPA and four video pages attributed to Kamilah/Camila Stevenson. Exact-name web results also identify a Camilla Stephenson in UK film location management. No first-party cross-link connects these identities; treat them as separate candidates until resolved.",
         "source_ids": [
           "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
           "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
@@ -4021,11 +4071,19 @@
           "SRC-GLASP-KAMILAH-CRYPTO-WEALTH-2026-01-15",
           "SRC-CRYPTOKRIOS-KAMILAH-CHANNEL-2026-10-28",
           "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1303Z",
-          "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1303Z"
+          "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1303Z",
+          "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-03-06-GLOBAL-FINANCE-XRP-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-07-30-XRPL-UPGRADE-20261028T1308Z",
+          "SRC-YT-KAMILAH-2025-12-03-XRP-2026-SETUP-20261028T1308Z",
+          "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1308Z",
+          "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z"
         ],
-        "last_searched_at_utc": "2026-10-28T13:03:30Z",
+        "last_searched_at_utc": "2026-10-28T13:08:30Z",
         "inventory_status": "FOUR_THIRD_PARTY_INDEXED_VIDEOS_CAPTURED; NOT_EXHAUSTIVE; OFFICIAL_YOUTUBE_CHANNEL_PAGE_AND_RSS_FETCH_BLOCKED",
-        "next_action": "Find a first-party channel/profile link or original video citation. Do not call the candidate Kamilah/Camila channel an exhaustive Camilla Stephenson inventory.",
+        "next_action": "Resolve identity through a first-party creator profile/cross-link, then enumerate the channel's public uploads via its official uploads list/feed. Until then, preserve separate candidate channel IDs and do not claim an exhaustive Camilla Stephenson inventory.",
         "candidate_channel": {
           "name_as_indexed": "Kamilah Stevenson",
           "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
@@ -4222,8 +4280,8 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T13:03:30Z",
-      "last_run_update": "PR #1253 fresh-main accuracy evaluator proposal passed exact-head CI (147 tests, 6.22s) and fail-closed gate; main remains unchanged and still has the invalid variable-horizon accuracy workflow until an approved merge. No directional XRP forecast issued.",
+      "last_checked_utc": "2026-10-28T13:08:30Z",
+      "last_run_update": "Added a partial candidate-channel inventory for Kamilah Stevenson and captured creator claims about XRP wallet concentration/ETF flows as unverified sources. No claims admitted to model features; exact Camilla identity remains unresolved.",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
         "XRP ETF weekly flow observation excludes GXRP and is not reconciled against all fund-level primary records.",
@@ -4237,7 +4295,9 @@
         "Current main exact-head CI is not verified; latest commit is marked [skip ci].",
         "Current XRP market price and ETF-flow observations have source/timing/fund-universe caveats and are not admitted as model features.",
         "Main's variable-horizon accuracy evaluator still mutates signal_history.jsonl until PR #1253 or an equivalent reviewed fix is merged.",
-        "PR #1253 artifact retention is 30 days and is not a durable feature store."
+        "PR #1253 artifact retention is 30 days and is not a durable feature store.",
+        "Creator-reported XRP wallet and ETF-flow figures are not independently reconciled and remain excluded from model features.",
+        "The requested Camilla Stephenson YouTube identity remains unresolved; candidate Kamilah/Camila channels have different identifiers and no first-party cross-link."
       ],
       "issuance_outcome_contract": {
         "status": "FRESH_MAIN_SUCCESSOR_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NOT_MERGED",
@@ -4272,10 +4332,15 @@
       ]
     },
     "next_actions": [
+      "Resolve the exact requested Camilla Stephenson identity using first-party evidence; enumerate public uploads only after the canonical channel is established.",
+      "Independently reconcile creator-reported XRP wallet accumulation/exchange outflows and ETF-flow figures with labeled on-chain data and sponsor-level fund records.",
+      "Keep PR #1253 draft/unmerged pending review against current main; exact-head CI passed 147 tests and its fail-closed gate passed.",
+      "Build durable append-only point-in-time feature storage; 30-day artifacts are not a permanent feature store.",
+      "Reconcile XRP spot, derivatives, ETF sponsor records and XRPL-native USDC flows at common UTC cutoffs.",
+      "Capture Coinbase Q3 2026 results after the scheduled 29 October release; compare official results with Q2 without inferring XRP-specific flows.",
       "Keep PR #1253 draft and unmerged pending human review; its exact-head CI passed 147 tests and its fail-closed gate passed.",
       "Build a durable append-only point-in-time feature store with provenance and reviewed promotion; 30-day workflow artifacts are temporary.",
       "Reconcile XRP spot, derivatives, ETF sponsor records and XRPL-native USDC flows at common UTC cutoffs before feature admission.",
-      "Capture Coinbase Q3 2026 results after the scheduled 29 October release; compare official results with Q2 without inferring XRP-specific flows.",
       "Investigate the approval workflow's zero-job push-event anomaly; PR #1250 static tests do not verify runtime containment.",
       "Continue exact-phrase research and keep Camilla Stephenson distinct from the Kamilah/Camila crypto-channel candidate until first-party identity evidence connects them.",
       "Review PR #1248 without merging automatically; its exact-head CI and fail-closed gate passed, but it remains draft/unmerged.",
@@ -4403,23 +4468,21 @@
     },
     "repository_ci": {
       "repository": "Barrot-Agent/B-Agent",
-      "main_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
+      "main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
       "main_commit": {
-        "sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
-        "message": "Cross-analysis refresh [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/070d538bb90c25bdcb64edd1532f83b082c93d7e",
-        "observed_at_utc": "2026-10-28T13:03:30Z",
+        "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "message": "Paper trade cycle [skip ci]",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "observed_at_utc": "2026-10-28T13:08:30Z",
         "changed_scope": [
-          "ping-pongings/knowledge-base/entity_cooccurrence.json",
-          "ping-pongings/knowledge-base/entity_sentiment_profile.json",
-          "ping-pongings/knowledge-base/sentiment_shift.json"
+          "web/paper_trading_log.jsonl"
         ]
       },
       "main_branch_protected": true,
       "branch_protection_details": "Branch endpoint reports protected=true but required status-check contexts/checks are empty; detailed protection endpoint returned 403 to this integration.",
       "main_ci": {
         "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-        "note": "Latest main commit is a generated cross-analysis refresh marked [skip ci]; full exact-head main CI is not verified."
+        "note": "Latest main commit is a paper-trading-log append marked [skip ci]; full exact-head main CI is not verified."
       },
       "main_databricks_deploy": {
         "run_id": 40583993212,
@@ -4729,7 +4792,7 @@
         "deployment_executed": false,
         "limitation": "Copies the forecast-ledger contract onto the observed fresh-main base and fixes three validation gaps. Draft only; no merge or deployment."
       },
-      "open_pr_count": 83,
+      "open_pr_count": 84,
       "current_open_prs_observed_at_utc": "2026-10-28T13:03:30Z",
       "required_status_check_contexts": [],
       "required_status_checks": [],
@@ -4738,9 +4801,10 @@
         "pr": 1253,
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
         "state": "OPEN_DRAFT_UNMERGED",
-        "branch": "safety/fixed-horizon-accuracy-fresh-main-20261028-1259z",
         "base_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
         "head_sha": "e05d04605f78b5dc4ad94bdce0c5aed09b6781f6",
+        "ahead_by": 3,
+        "behind_by": 1,
         "ci": {
           "status": "PASS",
           "tests_passed": 147,
@@ -4753,10 +4817,11 @@
           "run_id": 40692786488,
           "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40692786488"
         },
+        "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
         "main_modified_by_this_run": false,
         "merge_performed": false,
         "deployment_executed": false,
-        "limitation": "The 30-day artifact is not a durable feature store; no live market data, fixed-horizon backtest, calibrated forecast or shadow evaluation is included."
+        "limitation": "One generated paper-trading-log commit is ahead of PR base; no code conflict observed, but review against current main before merge."
       },
       "current_pr_1252": {
         "pr": 1252,
@@ -5057,6 +5122,18 @@
           "SRC-ALPHA-XRP-ETF-FLOW-20261028T1303Z"
         ],
         "next_test": "Reconcile sponsor holdings, creations/redemptions, settlement dates, fund universe and source lineage at common UTC cutoffs."
+      },
+      {
+        "id": "YOUTUBE-XRP-WALLET-AND-ETF-CLAIMS-20261028T1308Z",
+        "severity": "HIGH",
+        "status": "MODEL_FEATURE_BLOCKED_PENDING_INDEPENDENT_CORROBORATION",
+        "finding": "Creator descriptions claim 4.09B XRP accumulation, 32% wallet concentration, 7.03B XRP exchange outflows in February, and $60.5M XRP ETF inflows in a May week. No independent wallet clustering or sponsor-level ETF reconciliation has been completed for these exact figures.",
+        "interpretation": "Exchange outflows may reflect custody transfers, wallet re-labeling or internal movements; ETF flows depend on fund universe and settlement date. Neither claim alone proves reduced sell-side liquidity or future price appreciation.",
+        "source_ids": [
+          "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z",
+          "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z"
+        ],
+        "next_test": "Reconcile XRPL ledger transfers and labeled exchange wallets with independent data providers; reconcile ETF sponsor daily holdings, creations/redemptions, settlement dates and fund universe."
       }
     ],
     "mission_priority": {
@@ -5085,12 +5162,12 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-ACCURACY-METRIC-MACRO-AND-IDENTITY-UPDATE-202610281303Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1303Z.json",
-    "current_research_head_before_ledger_update": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
+    "snapshot_id": "XRP-YOUTUBE-CANDIDATE-INVENTORY-AND-MAIN-ADVANCE-202610281308Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1308Z.json",
+    "current_research_head_before_ledger_update": "3f33885456085c3c8763461badbef3e34f73d701",
     "current_research_checks": {
       "status": "PENDING_AFTER_NEW_SNAPSHOT_AND_INDEX_COMMITS",
-      "note": "Exact-head CI and fail-closed gate must be checked after the new snapshot and index commit."
+      "note": "Exact-head CI and fail-closed gate must be checked after this snapshot and its ledger-index update."
     },
     "current_research_head_before_final_verification_record": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
     "platform_coordination_architecture": {
@@ -5822,8 +5899,8 @@
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
-      "observed_at_utc": "2026-10-28T13:03:30Z",
-      "current_main_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
+      "observed_at_utc": "2026-10-28T13:08:30Z",
+      "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
       "findings": [
         {
           "path": ".github/workflows/barrot-ops.yml",
@@ -6069,7 +6146,14 @@
         "containment_pr": 1250,
         "interpretation": "The proposed branch content adds a push no-op job, but GitHub still records push runs with zero jobs. The event origin/workflow-definition resolution is unresolved; PR #1250 does not yet demonstrate effective containment."
       },
-      "next_priority": "Review and, after approval, integrate narrow fresh-main safety fixes; do not merge automatically. Preserve durable ingestion history via a separate reviewed append-only store."
+      "next_priority": "Review and, after approval, integrate narrow fresh-main safety fixes; do not merge automatically. Preserve durable ingestion history via a separate reviewed append-only store.",
+      "latest_main_commit": {
+        "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "message": "Paper trade cycle [skip ci]",
+        "changed_scope": [
+          "web/paper_trading_log.jsonl"
+        ]
+      }
     },
     "current_pr_1241_state": {
       "pr": 1241,
@@ -6202,7 +6286,7 @@
         "index": 12
       }
     ],
-    "current_main_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
+    "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
     "current_pr_1245_state": {
       "pr": 1245,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1245",
@@ -6236,7 +6320,7 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
+    "current_research_head_this_run": "3f33885456085c3c8763461badbef3e34f73d701",
     "correction_note": {
       "previous_snapshot": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
       "issue": "The previous market-data-quality finding referenced a nonexistent 0812Z source ID.",
@@ -6320,7 +6404,10 @@
       "Alpha Finance's XRP ETF tracker covers five funds through 27 Oct 2026; fund universe and source independence are not fully reconciled.",
       "Reuters AI-capital/dollar scenario is macro context only; it does not establish XRP-specific causation.",
       "Exact-name Camilla Stephenson results identify a UK film location-management professional, but no first-party link resolves the requested YouTube identity.",
-      "Main commit 070d538 is a generated cross-analysis refresh marked [skip ci]; exact-head main CI is not verified."
+      "Main commit 070d538 is a generated cross-analysis refresh marked [skip ci]; exact-head main CI is not verified.",
+      "The YouTube inventory is partial: five Kamilah Stevenson video pages surfaced, but the official channel page was throttled and the requested Camilla Stephenson identity is not confirmed.",
+      "The April/May 2026 YouTube claims about XRP accumulation, exchange outflows and ETF flows are creator-reported and not independently verified.",
+      "Main advanced after the 13:03Z snapshot to be4a9f4 with a generated paper-trading-log append; exact-head main CI remains unverified."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -6332,8 +6419,8 @@
       "main_modified_by_this_run": false,
       "merge_performed": false
     },
-    "current_open_pr_count": 83,
-    "current_open_prs_observed_at_utc": "2026-10-28T13:03:30Z",
+    "current_open_pr_count": 84,
+    "current_open_prs_observed_at_utc": "2026-10-28T13:08:30Z",
     "current_open_prs": [
       {
         "number": 1253,
@@ -6342,7 +6429,7 @@
         "state": "open",
         "draft": true,
         "head_sha": "e05d04605f78b5dc4ad94bdce0c5aed09b6781f6",
-        "status": "Exact-head CI 147 passed in 6.22s and fail-closed gate passed; draft/unmerged."
+        "status": "Exact-head CI 147 passed in 6.22s and gate passed; base 070d538 is one generated-data commit behind current main."
       },
       {
         "number": 1252,
@@ -6351,7 +6438,7 @@
         "state": "open",
         "draft": true,
         "head_sha": "430629ecfa777516d9d25559c25e212026006f21",
-        "status": "CI 160 passed and gate passed at the observed head; unrelated geometry PR, base later advanced."
+        "status": "Unrelated geometry proposal; CI/gate passed on observed head; unmerged."
       },
       {
         "number": 1251,
@@ -6359,17 +6446,17 @@
         "title": "Research: carry current XRP intelligence ledger onto main",
         "state": "open",
         "draft": true,
-        "head_sha": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
-        "status": "Research data carry-forward; now 7 commits behind current main at capture; preserve and do not merge as-is."
+        "head_sha": "3f33885456085c3c8763461badbef3e34f73d701",
+        "status": "Research branch 7 ahead/8 behind current main; preserve and do not merge as-is."
       },
       {
         "number": 1250,
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1250",
-        "title": "Safety: handle approval-workflow push events without write access",
+        "title": "Safety: scope approval permissions and add push-event no-op",
         "state": "open",
         "draft": true,
         "head_sha": "ef959edf0507ecf4f603a856719e1d72268bc2f2",
-        "status": "Static CI/gate pass; zero-job push-event runtime anomaly persists; root cause unresolved."
+        "status": "Static CI/gate pass; zero-job push event remains unresolved."
       },
       {
         "number": 1249,
@@ -6378,7 +6465,7 @@
         "state": "open",
         "draft": true,
         "head_sha": "9d46f742a14a7fb8ea448be2ce868dc10650d4c5",
-        "status": "Exact-head CI/gate previously passed; base is now behind main; draft/unmerged."
+        "status": "Draft/unmerged; base behind current main."
       },
       {
         "number": 1246,
@@ -6387,7 +6474,7 @@
         "state": "open",
         "draft": true,
         "head_sha": "65750a1f6309648a4841343ed7ad24985153b22c",
-        "status": "Stale predecessor; fresh-main successor #1253 carries the same narrow safety fix."
+        "status": "Stale predecessor to fresh-main PR #1253."
       }
     ],
     "current_pr_1249_state": {
@@ -6448,9 +6535,10 @@
       "pr": 1253,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
       "state": "OPEN_DRAFT_UNMERGED",
-      "branch": "safety/fixed-horizon-accuracy-fresh-main-20261028-1259z",
       "base_sha": "070d538bb90c25bdcb64edd1532f83b082c93d7e",
       "head_sha": "e05d04605f78b5dc4ad94bdce0c5aed09b6781f6",
+      "ahead_by": 3,
+      "behind_by": 1,
       "ci": {
         "status": "PASS",
         "tests_passed": 147,
@@ -6463,10 +6551,11 @@
         "run_id": 40692786488,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40692786488"
       },
+      "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "deployment_executed": false,
-      "limitation": "The 30-day artifact is not a durable feature store; no live market data, fixed-horizon backtest, calibrated forecast or shadow evaluation is included."
+      "limitation": "One generated paper-trading-log commit is ahead of PR base; no code conflict observed, but review against current main before merge."
     },
     "current_pr_1252_state": {
       "pr": 1252,
@@ -6496,28 +6585,16 @@
       "merge_performed": false,
       "action": "Preserve the branch and historical snapshots; do not merge as-is. Latest main changed generated cross-analysis artifacts."
     },
-    "snapshot_blob_sha": "f46422d566542be799bf42887d4f61baa858ad1f",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:03:30Z",
-    "snapshot_commit_sha": "a1fe277c7439ee05a559e0984fa06de2958715de",
+    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1303Z.json",
+    "snapshot_blob_sha": "e51dc8cea575cd957b5f877ee392f2c539638cdb",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:08:30Z",
+    "snapshot_commit_sha": "c14744782e0d48b0669641320138894840250850",
     "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T13:05:22Z",
-      "status": "SNAPSHOT_HASH_MATCH_AND_INDEX_HEAD_CI_PASS",
-      "snapshot_blob_sha": "f46422d566542be799bf42887d4f61baa858ad1f",
+      "verified_at_utc": "2026-10-28T13:08:30Z",
+      "status": "SNAPSHOT_READBACK_PASS; INDEX_CI_PENDING",
+      "snapshot_blob_sha": "e51dc8cea575cd957b5f877ee392f2c539638cdb",
       "snapshot_hash_matches_index": true,
-      "verified_index_head_sha": "bf6e3fe5f3727ebe696c58a8c2c81098b54283d5",
-      "ci": {
-        "status": "PASS",
-        "tests_passed": 145,
-        "duration_seconds": 4.89,
-        "run_id": 40693236070,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40693236070"
-      },
-      "gate": {
-        "status": "PASS",
-        "run_id": 40693235867,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40693235867"
-      },
-      "note": "The verified CI applies to index head bf6e3fe. A later run-update append is now being recorded in the index and will have its own separate CI result."
+      "note": "Snapshot was read back and JSON-parsed. Exact-head CI/gate on the updated ledger index remains pending."
     }
   },
   "sources": [
@@ -8968,6 +9045,166 @@
       "title": "Research ledger index exact-head CI",
       "accessed_at_utc": "2026-10-28T13:05:22Z",
       "note": "Exact index commit bf6e3fe5f3727ebe696c58a8c2c81098b54283d5 passed 145 tests in 4.89s. Fail-closed gate run 40693235867 passed. This verifies that index head, not any subsequent index commit."
+    },
+    {
+      "id": "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "YouTube channel: Kamilah Stevenson | XRP & Stocks",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result exposes channel ID UCXm6KAr1WHF6UN7g5b2W7wg and handle @KamilahStevensonXrpStocks, with a crypto/stocks education description. This is a Kamilah-named channel, not proof of identity with the requested Camilla Stephenson."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-03-06-GLOBAL-FINANCE-XRP-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson and dates it 6 Mar 2026. Creator narrative links oil shocks, the yen carry trade, global liquidity and XRP infrastructure; this is an opinion/hypothesis, not verified evidence that XRP demand or price was caused by those events."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=YJdK1LvmJSo",
+      "title": "Kamilah Stevenson video on XRP wallet concentration and exchange outflows (title not surfaced)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 19 Apr 2026. Description claims 4.09B XRP accumulated by large wallets since the Oct 2025 flash crash, 32% of circulating supply held by those wallets, and 7.03B XRP leaving centralized exchanges in Feb 2026. These figures are creator-reported and not independently verified; wallet clustering, exchange-label changes and custody transfers can confound interpretation."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=5wVR6MOvWRU",
+      "title": "Kamilah Stevenson video on XRP ETF flows (title not surfaced)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 26 May 2026. Description claims XRP ETFs attracted $60.5M in a week while BTC and ETH ETF products had outflows. Treat as a creator-reported historical claim; reconcile sponsor-level fund flows, covered dates and fund universe before use."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-07-30-XRPL-UPGRADE-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 30 Jul 2026. Creator discusses XRPL amendment proposals including Confidential Transfers, Sponsored Fees and Reserves, Batch, Permission Delegation and Dynamic MPT. Treat commentary and adoption implications as claims; verify proposal status, amendment activation and validator voting against official XRPL sources."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2025-12-03-XRP-2026-SETUP-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 3 Dec 2025. Description references macro events, the CLARITY Act, QE possibilities and global liquidity as potential 2026 catalysts. This is a thesis/opinion, not verified evidence of future flows or price."
+    },
+    {
+      "id": "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.imdb.com/name/nm1016950/",
+      "title": "IMDb profile for Camilla Stephenson (I)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "Exact-name profile identifies a location-management professional associated with 28 Years Later, Project Hail Mary and Les Misérables. This remains a plausible same-name collision; no first-party evidence links this person to the Kamilah Stevenson crypto channel."
+    },
+    {
+      "id": "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.screenglobalproduction.com/news/2026/10/20/project-hail-mary-team-uk-location-manager-awards-2026",
+      "title": "Screen Global: Camilla Stephenson and Project Hail Mary team",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "20 Oct 2026 trade publication names Camilla Stephenson in a UK location-management award. This corroborates a same-name professional identity but does not resolve the requested YouTube creator."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-TRADE-APPEND-20261028T1308Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "title": "Current main commit: paper-trading log append",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "Main advanced after the 13:03Z snapshot through a commit changing only web/paper_trading_log.jsonl. No XRP model or workflow source change was observed. This is generated-data-only drift; main exact-head CI is not verified."
+    },
+    {
+      "id": "SRC-PR1253-CURRENT-BASE-COMPARE-20261028T1308Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
+      "title": "PR #1253 current base comparison",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "PR #1253 head e05d04605f78b5dc4ad94bdce0c5aed09b6781f6 is based on 070d538 and is now 3 commits ahead/1 behind current main be4a9f4. The intervening main commit only appended a paper-trading row. Exact-head CI passed 147 tests in 6.22s and gate passed; draft/unmerged."
+    },
+    {
+      "id": "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "YouTube channel: Kamilah Stevenson | XRP & Stocks",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result exposes channel ID UCXm6KAr1WHF6UN7g5b2W7wg and handle @KamilahStevensonXrpStocks, with a crypto/stocks education description. This is a Kamilah-named channel, not proof of identity with the requested Camilla Stephenson."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-03-06-GLOBAL-FINANCE-XRP-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson and dates it 6 Mar 2026. Creator narrative links oil shocks, the yen carry trade, global liquidity and XRP infrastructure; this is an opinion/hypothesis, not verified evidence that XRP demand or price was caused by those events."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=YJdK1LvmJSo",
+      "title": "Kamilah Stevenson video on XRP wallet concentration and exchange outflows (title not surfaced)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 19 Apr 2026. Description claims 4.09B XRP accumulated by large wallets since the Oct 2025 flash crash, 32% of circulating supply held by those wallets, and 7.03B XRP leaving centralized exchanges in Feb 2026. These figures are creator-reported and not independently verified; wallet clustering, exchange-label changes and custody transfers can confound interpretation."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=5wVR6MOvWRU",
+      "title": "Kamilah Stevenson video on XRP ETF flows (title not surfaced)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 26 May 2026. Description claims XRP ETFs attracted $60.5M in a week while BTC and ETH ETF products had outflows. Treat as a creator-reported historical claim; reconcile sponsor-level fund flows, covered dates and fund universe before use."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-07-30-XRPL-UPGRADE-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 30 Jul 2026. Creator discusses XRPL amendment proposals including Confidential Transfers, Sponsored Fees and Reserves, Batch, Permission Delegation and Dynamic MPT. Treat commentary and adoption implications as claims; verify proposal status, amendment activation and validator voting against official XRPL sources."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2025-12-03-XRP-2026-SETUP-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 3 Dec 2025. Description references macro events, the CLARITY Act, QE possibilities and global liquidity as potential 2026 catalysts. This is a thesis/opinion, not verified evidence of future flows or price."
+    },
+    {
+      "id": "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.imdb.com/name/nm1016950/",
+      "title": "IMDb profile for Camilla Stephenson (I)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "Exact-name profile identifies a location-management professional associated with 28 Years Later, Project Hail Mary and Les Misérables. This remains a plausible same-name collision; no first-party evidence links this person to the Kamilah Stevenson crypto channel."
+    },
+    {
+      "id": "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.screenglobalproduction.com/news/2026/10/20/project-hail-mary-team-uk-location-manager-awards-2026",
+      "title": "Screen Global: Camilla Stephenson and Project Hail Mary team",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "20 Oct 2026 trade publication names Camilla Stephenson in a UK location-management award. This corroborates a same-name professional identity but does not resolve the requested YouTube creator."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-TRADE-APPEND-20261028T1308Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "title": "Current main commit: paper-trading log append",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "Main advanced after the 13:03Z snapshot through a commit changing only web/paper_trading_log.jsonl. No XRP model or workflow source change was observed. This is generated-data-only drift; main exact-head CI is not verified."
+    },
+    {
+      "id": "SRC-PR1253-CURRENT-BASE-COMPARE-20261028T1308Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
+      "title": "PR #1253 current base comparison",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "PR #1253 head e05d04605f78b5dc4ad94bdce0c5aed09b6781f6 is based on 070d538 and is now 3 commits ahead/1 behind current main be4a9f4. The intervening main commit only appended a paper-trading row. Exact-head CI passed 147 tests in 6.22s and gate passed; draft/unmerged."
     }
   ],
   "limitations": [
@@ -9017,7 +9254,10 @@
     "Exact-name Camilla Stephenson results identify a UK film location-management professional, but no first-party link resolves the requested YouTube identity.",
     "Main commit 070d538 is a generated cross-analysis refresh marked [skip ci]; exact-head main CI is not verified.",
     "After the 13:03Z snapshot, main advanced to be4a9f4 with a generated paper-trading-log append; this later state is captured in the run_updates record, while the historical snapshot remains unchanged.",
-    "PR #1253 is now one generated-data-only main commit behind; its exact-head CI/gate remain valid for head e05d046, but review must account for current main before merge."
+    "PR #1253 is now one generated-data-only main commit behind; its exact-head CI/gate remain valid for head e05d046, but review must account for current main before merge.",
+    "The YouTube inventory is partial: five Kamilah Stevenson video pages surfaced, but the official channel page was throttled and the requested Camilla Stephenson identity is not confirmed.",
+    "The April/May 2026 YouTube claims about XRP accumulation, exchange outflows and ETF flows are creator-reported and not independently verified.",
+    "Main advanced after the 13:03Z snapshot to be4a9f4 with a generated paper-trading-log append; exact-head main CI remains unverified."
   ],
   "run_updates": [
     {
@@ -10313,6 +10553,38 @@
         "main_modified_by_this_run": false,
         "merge_performed": false,
         "deployment_executed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T13:08:30Z",
+      "update_type": "YOUTUBE_CANDIDATE_CHANNEL_AND_CLAIM_AUDIT",
+      "snapshot_id": "XRP-YOUTUBE-CANDIDATE-INVENTORY-AND-MAIN-ADVANCE-202610281308Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1308Z.json",
+      "details": "Found an official YouTube search result for the Kamilah Stevenson | XRP & Stocks channel (UCXm6KAr1WHF6UN7g5b2W7wg) and five candidate video pages. Captured the creator's wallet-accumulation, exchange-outflow and ETF-flow statements as unverified claims, retained the exact-name Camilla Stephenson identity collision, and recorded current main/PR state. No video claim was admitted to prediction features.",
+      "source_ids": [
+        "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+        "SRC-YT-KAMILAH-2026-03-06-GLOBAL-FINANCE-XRP-20261028T1308Z",
+        "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z",
+        "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z",
+        "SRC-YT-KAMILAH-2026-07-30-XRPL-UPGRADE-20261028T1308Z",
+        "SRC-YT-KAMILAH-2025-12-03-XRP-2026-SETUP-20261028T1308Z",
+        "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1308Z",
+        "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z",
+        "SRC-GH-MAIN-PAPER-TRADE-APPEND-20261028T1308Z",
+        "SRC-PR1253-CURRENT-BASE-COMPARE-20261028T1308Z"
+      ],
+      "validation": {
+        "channel_identity_match": "UNRESOLVED",
+        "video_inventory": "PARTIAL",
+        "creator_claims": "SECONDARY_UNVERIFIED",
+        "forecast_status": "NOT_ISSUED",
+        "main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false,
+        "snapshot_blob_sha": "e51dc8cea575cd957b5f877ee392f2c539638cdb",
+        "snapshot_hash_matches_index": true,
+        "snapshot_commit_sha": "c14744782e0d48b0669641320138894840250850"
       }
     }
   ],
