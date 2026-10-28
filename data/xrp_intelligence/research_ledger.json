@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T13:08:30Z",
+    "captured_at_utc": "2026-10-28T13:10:45Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
@@ -225,7 +225,7 @@
         "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
         "message": "Paper trade cycle [skip ci]",
         "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
-        "observed_at_utc": "2026-10-28T13:08:30Z",
+        "observed_at_utc": "2026-10-28T13:10:45Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
@@ -2076,6 +2076,20 @@
           "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z"
         ],
         "uncertainty": "The canonical identity match and exhaustive uploads list remain unresolved; YouTube channel page fetch was throttled, and the listed videos were surfaced through indexed search results."
+      },
+      {
+        "id": "YOUTUBE-KAMILAH-CHANNEL-ID-CONFLICT-20261028T1310Z",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "TWO_CANDIDATE_CHANNEL_IDS; REQUESTED_CAMILLA_IDENTITY_UNRESOLVED",
+        "claim": "Search surfaces two different candidate channel IDs under the Kamilah Stevenson name: YouTube's 'Kamilah Stevenson | XRP & Stocks' at UCXm6KAr1WHF6UN7g5b2W7wg and a third-party analytics profile at UCqUPJMQdkCN6lsLVDnichPA reporting about 1.2K videos. Exact-name web results separately identify a Camilla Stephenson in UK film location management.",
+        "interpretation": "There may be multiple channels, a rebrand, or third-party metadata error. No first-party evidence currently links either Kamilah channel to the requested Camilla Stephenson. Do not merge identities or claim the public-video inventory is exhaustive.",
+        "source_ids": [
+          "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+          "SRC-VLING-KAMILAH-UCQUP-20261028T1310Z",
+          "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1308Z",
+          "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z"
+        ],
+        "uncertainty": "The official YouTube channel page was throttled; the 1.2K video count is third-party and may be stale. No first-party cross-link establishes the requested identity."
       }
     ],
     "relationship_graph": [
@@ -4057,8 +4071,8 @@
         "next_action": "Locate the original phrase and surrounding context; keep SBIC East Japan distinct from SBI Group unless legal-entity evidence establishes a relationship."
       },
       "Camilla Stephenson": {
-        "status": "MULTIPLE_CANDIDATE_CHANNELS; REQUESTED_IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
-        "finding": "A YouTube search result exposes a channel titled 'Kamilah Stevenson | XRP & Stocks' at channel ID UCXm6KAr1WHF6UN7g5b2W7wg and five candidate public video pages dated Dec 2025–Jul 2026. A separate third-party index previously surfaced channel ID UCqUPJMQdkCN6lsLVDnichPA and four video pages attributed to Kamilah/Camila Stevenson. Exact-name web results also identify a Camilla Stephenson in UK film location management. No first-party cross-link connects these identities; treat them as separate candidates until resolved.",
+        "status": "TWO_KAMILAH_CHANNEL_IDS_FOUND; CAMILLA_IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
+        "finding": "YouTube search surfaced 'Kamilah Stevenson | XRP & Stocks' at channel ID UCXm6KAr1WHF6UN7g5b2W7wg. A separate third-party Vling profile lists Kamilah Stevenson at UCqUPJMQdkCN6lsVLDnichPA with about 1.2K videos. These are different channel IDs; a rename, separate channels, or third-party metadata mismatch is possible. Exact-name results also identify a Camilla Stephenson in UK film location management. No first-party cross-link establishes that either channel belongs to the requested Camilla Stephenson.",
         "source_ids": [
           "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
           "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
@@ -4079,11 +4093,12 @@
           "SRC-YT-KAMILAH-2026-07-30-XRPL-UPGRADE-20261028T1308Z",
           "SRC-YT-KAMILAH-2025-12-03-XRP-2026-SETUP-20261028T1308Z",
           "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1308Z",
-          "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z"
+          "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z",
+          "SRC-VLING-KAMILAH-UCQUP-20261028T1310Z"
         ],
-        "last_searched_at_utc": "2026-10-28T13:08:30Z",
+        "last_searched_at_utc": "2026-10-28T13:10:45Z",
         "inventory_status": "FOUR_THIRD_PARTY_INDEXED_VIDEOS_CAPTURED; NOT_EXHAUSTIVE; OFFICIAL_YOUTUBE_CHANNEL_PAGE_AND_RSS_FETCH_BLOCKED",
-        "next_action": "Resolve identity through a first-party creator profile/cross-link, then enumerate the channel's public uploads via its official uploads list/feed. Until then, preserve separate candidate channel IDs and do not claim an exhaustive Camilla Stephenson inventory.",
+        "next_action": "Resolve the canonical identity via first-party creator cross-link, then enumerate the official uploads list/feed. Preserve the two Kamilah channel IDs as separate candidate entities until resolved.",
         "candidate_channel": {
           "name_as_indexed": "Kamilah Stevenson",
           "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
@@ -4280,8 +4295,8 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T13:08:30Z",
-      "last_run_update": "Added a partial candidate-channel inventory for Kamilah Stevenson and captured creator claims about XRP wallet concentration/ETF flows as unverified sources. No claims admitted to model features; exact Camilla identity remains unresolved.",
+      "last_checked_utc": "2026-10-28T13:10:45Z",
+      "last_run_update": "Added a second candidate Kamilah Stevenson channel ID from third-party analytics; identity remains unresolved and all creator claims remain outside model features. No forecast issued.",
       "blockers": [
         "Global USDC redemptions are not chain- or destination-attributed.",
         "XRP ETF weekly flow observation excludes GXRP and is not reconciled against all fund-level primary records.",
@@ -4297,7 +4312,9 @@
         "Main's variable-horizon accuracy evaluator still mutates signal_history.jsonl until PR #1253 or an equivalent reviewed fix is merged.",
         "PR #1253 artifact retention is 30 days and is not a durable feature store.",
         "Creator-reported XRP wallet and ETF-flow figures are not independently reconciled and remain excluded from model features.",
-        "The requested Camilla Stephenson YouTube identity remains unresolved; candidate Kamilah/Camila channels have different identifiers and no first-party cross-link."
+        "The requested Camilla Stephenson YouTube identity remains unresolved; candidate Kamilah/Camila channels have different identifiers and no first-party cross-link.",
+        "Two candidate Kamilah channel IDs now exist in public evidence; no first-party link resolves the requested Camilla Stephenson identity.",
+        "Creator-reported wallet accumulation and ETF flow figures remain unverified and excluded from model features."
       ],
       "issuance_outcome_contract": {
         "status": "FRESH_MAIN_SUCCESSOR_DRAFT; EXACT_HEAD_CI_AND_GATE_PASS; NOT_MERGED",
@@ -4332,12 +4349,14 @@
       ]
     },
     "next_actions": [
-      "Resolve the exact requested Camilla Stephenson identity using first-party evidence; enumerate public uploads only after the canonical channel is established.",
+      "Resolve the requested Camilla Stephenson identity using first-party evidence; preserve UCXm6 and UCqUP as separate candidate channel IDs until verified.",
+      "Enumerate the canonical channel's public uploads using its official uploads list/feed after identity resolution; current video inventory is partial.",
       "Independently reconcile creator-reported XRP wallet accumulation/exchange outflows and ETF-flow figures with labeled on-chain data and sponsor-level fund records.",
       "Keep PR #1253 draft/unmerged pending review against current main; exact-head CI passed 147 tests and its fail-closed gate passed.",
       "Build durable append-only point-in-time feature storage; 30-day artifacts are not a permanent feature store.",
       "Reconcile XRP spot, derivatives, ETF sponsor records and XRPL-native USDC flows at common UTC cutoffs.",
       "Capture Coinbase Q3 2026 results after the scheduled 29 October release; compare official results with Q2 without inferring XRP-specific flows.",
+      "Resolve the exact requested Camilla Stephenson identity using first-party evidence; enumerate public uploads only after the canonical channel is established.",
       "Keep PR #1253 draft and unmerged pending human review; its exact-head CI passed 147 tests and its fail-closed gate passed.",
       "Build a durable append-only point-in-time feature store with provenance and reviewed promotion; 30-day workflow artifacts are temporary.",
       "Reconcile XRP spot, derivatives, ETF sponsor records and XRPL-native USDC flows at common UTC cutoffs before feature admission.",
@@ -4473,7 +4492,7 @@
         "sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
         "message": "Paper trade cycle [skip ci]",
         "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
-        "observed_at_utc": "2026-10-28T13:08:30Z",
+        "observed_at_utc": "2026-10-28T13:10:45Z",
         "changed_scope": [
           "web/paper_trading_log.jsonl"
         ]
@@ -4482,7 +4501,7 @@
       "branch_protection_details": "Branch endpoint reports protected=true but required status-check contexts/checks are empty; detailed protection endpoint returned 403 to this integration.",
       "main_ci": {
         "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-        "note": "Latest main commit is a paper-trading-log append marked [skip ci]; full exact-head main CI is not verified."
+        "note": "Latest main commit is a paper-trading-log append marked [skip ci]; exact-head main CI is not verified."
       },
       "main_databricks_deploy": {
         "run_id": 40583993212,
@@ -4821,7 +4840,8 @@
         "main_modified_by_this_run": false,
         "merge_performed": false,
         "deployment_executed": false,
-        "limitation": "One generated paper-trading-log commit is ahead of PR base; no code conflict observed, but review against current main before merge."
+        "limitation": "One generated paper-trading-log commit is ahead of PR base; no code conflict observed, but review against current main before merge.",
+        "status": "OPEN_DRAFT_UNMERGED; EXACT_HEAD_CI_PASS; ONE_GENERATED_LOG_COMMIT_BEHIND"
       },
       "current_pr_1252": {
         "pr": 1252,
@@ -5162,9 +5182,9 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-YOUTUBE-CANDIDATE-INVENTORY-AND-MAIN-ADVANCE-202610281308Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1308Z.json",
-    "current_research_head_before_ledger_update": "3f33885456085c3c8763461badbef3e34f73d701",
+    "snapshot_id": "XRP-YOUTUBE-CHANNEL-ID-RECONCILIATION-202610281310Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1310Z.json",
+    "current_research_head_before_ledger_update": "94616bc46abcc2c47bda5f3fa94efd358ad99ab6",
     "current_research_checks": {
       "status": "PENDING_AFTER_NEW_SNAPSHOT_AND_INDEX_COMMITS",
       "note": "Exact-head CI and fail-closed gate must be checked after this snapshot and its ledger-index update."
@@ -6210,13 +6230,15 @@
       "action": "Preserve history; do not merge. New ledger commit must pass exact-head CI."
     },
     "research_branch_compare_at_capture": {
-      "branch": "research/xrp-ledger-fresh-main-20261028-0004z",
-      "current_main_sha": "72aa77325b3e3b030eada80c6b756a7975f4d336",
-      "ahead_by": 56,
-      "behind_by": 75,
-      "status": "DIVERGED",
-      "mergeable": false,
-      "action": "Preserve historical branch; do not merge as-is."
+      "status": "diverged",
+      "base_branch": "main",
+      "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "head_branch": "research/xrp-ledger-fresh-main-20261028-1217z",
+      "head_sha": "94616bc46abcc2c47bda5f3fa94efd358ad99ab6",
+      "ahead_by": 12,
+      "behind_by": 8,
+      "merge_base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+      "note": "This comparison is captured before adding the current snapshot and index commit; do not merge as-is."
     },
     "id_normalization_log": [
       {
@@ -6320,7 +6342,7 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "3f33885456085c3c8763461badbef3e34f73d701",
+    "current_research_head_this_run": "94616bc46abcc2c47bda5f3fa94efd358ad99ab6",
     "correction_note": {
       "previous_snapshot": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
       "issue": "The previous market-data-quality finding referenced a nonexistent 0812Z source ID.",
@@ -6407,7 +6429,9 @@
       "Main commit 070d538 is a generated cross-analysis refresh marked [skip ci]; exact-head main CI is not verified.",
       "The YouTube inventory is partial: five Kamilah Stevenson video pages surfaced, but the official channel page was throttled and the requested Camilla Stephenson identity is not confirmed.",
       "The April/May 2026 YouTube claims about XRP accumulation, exchange outflows and ETF flows are creator-reported and not independently verified.",
-      "Main advanced after the 13:03Z snapshot to be4a9f4 with a generated paper-trading-log append; exact-head main CI remains unverified."
+      "Main advanced after the 13:03Z snapshot to be4a9f4 with a generated paper-trading-log append; exact-head main CI remains unverified.",
+      "Two different Kamilah Stevenson candidate channel IDs are surfaced by YouTube search and third-party analytics; identity and exhaustive public-video inventory remain unresolved.",
+      "The latest main commit is a paper-trading-log append; exact-head main CI remains unverified."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -6420,7 +6444,7 @@
       "merge_performed": false
     },
     "current_open_pr_count": 84,
-    "current_open_prs_observed_at_utc": "2026-10-28T13:08:30Z",
+    "current_open_prs_observed_at_utc": "2026-10-28T13:10:45Z",
     "current_open_prs": [
       {
         "number": 1253,
@@ -6555,7 +6579,8 @@
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "deployment_executed": false,
-      "limitation": "One generated paper-trading-log commit is ahead of PR base; no code conflict observed, but review against current main before merge."
+      "limitation": "One generated paper-trading-log commit is ahead of PR base; no code conflict observed, but review against current main before merge.",
+      "status": "OPEN_DRAFT_UNMERGED; EXACT_HEAD_CI_PASS; ONE_GENERATED_LOG_COMMIT_BEHIND"
     },
     "current_pr_1252_state": {
       "pr": 1252,
@@ -6578,36 +6603,23 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1251",
       "state": "OPEN_DRAFT_DIVERGED",
       "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
-      "head_sha": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
-      "ahead_by": 5,
-      "behind_by": 7,
+      "head_sha": "94616bc46abcc2c47bda5f3fa94efd358ad99ab6",
+      "ahead_by": 12,
+      "behind_by": 8,
       "main_modified_by_this_run": false,
       "merge_performed": false,
-      "action": "Preserve the branch and historical snapshots; do not merge as-is. Latest main changed generated cross-analysis artifacts."
+      "action": "Preserve the branch and historical snapshots; do not merge as-is."
     },
-    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1303Z.json",
-    "snapshot_blob_sha": "e51dc8cea575cd957b5f877ee392f2c539638cdb",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:08:30Z",
-    "snapshot_commit_sha": "c14744782e0d48b0669641320138894840250850",
+    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1308Z.json",
+    "snapshot_blob_sha": "29824654335e4004885e767d80d0f616a0bbb158",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:10:45Z",
+    "snapshot_commit_sha": "466980a1ce4a87951d2c9275f9dbb39e308b0c86",
     "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T13:10:30Z",
-      "status": "PASS_ON_VERIFIED_INDEX_HEAD_C21639C; NEW_EVIDENCE_APPEND_AWAITS_ITS_OWN_CI",
-      "snapshot_blob_sha": "e51dc8cea575cd957b5f877ee392f2c539638cdb",
+      "verified_at_utc": "2026-10-28T13:10:45Z",
+      "status": "SNAPSHOT_READBACK_PASS; INDEX_CI_PENDING",
+      "snapshot_blob_sha": "29824654335e4004885e767d80d0f616a0bbb158",
       "snapshot_hash_matches_index": true,
-      "verified_index_head_sha": "c21639c9e3c514129270a053d447c747f48aa12f",
-      "ci": {
-        "status": "PASS",
-        "tests_passed": 145,
-        "duration_seconds": 6.17,
-        "run_id": 40694006166,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694006166"
-      },
-      "gate": {
-        "status": "PASS",
-        "run_id": 40694006034,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694006034"
-      },
-      "note": "The snapshot blob SHA matches the index and the referenced index head passed CI/gate. This follow-up evidence append creates a new index commit and must be checked separately."
+      "note": "Snapshot file was read back and parsed; exact-head CI/gate for the subsequent ledger-index update remains pending."
     }
   },
   "sources": [
@@ -9146,6 +9158,14 @@
       "title": "Latest XRP ledger index exact-head CI",
       "accessed_at_utc": "2026-10-28T13:10:30Z",
       "note": "Exact index commit c21639c9e3c514129270a053d447c747f48aa12f passed 145 tests in 6.17s; fail-closed gate run 40694006034 passed. This evidence applies to that exact commit; a subsequent evidence append has its own CI run."
+    },
+    {
+      "id": "SRC-VLING-KAMILAH-UCQUP-20261028T1310Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "title": "Third-party analytics profile for Kamilah Stevenson channel UCqUPJMQdkCN6lsLVDnichPA",
+      "accessed_at_utc": "2026-10-28T13:10:45Z",
+      "note": "Third-party Vling page reports a Kamilah Stevenson channel with ID UCqUPJMQdkCN6lsLVDnichPA, roughly 143K subscribers, 1.2K videos, United States, and a 2015 join date. This ID differs from the YouTube search result for 'Kamilah Stevenson | XRP & Stocks' (UCXm6KAr1WHF6UN7g5b2W7wg). Do not assume they are the same channel or the requested Camilla Stephenson."
     }
   ],
   "limitations": [
@@ -9199,7 +9219,9 @@
     "The YouTube inventory is partial: five Kamilah Stevenson video pages surfaced, but the official channel page was throttled and the requested Camilla Stephenson identity is not confirmed.",
     "The April/May 2026 YouTube claims about XRP accumulation, exchange outflows and ETF flows are creator-reported and not independently verified.",
     "Main advanced after the 13:03Z snapshot to be4a9f4 with a generated paper-trading-log append; exact-head main CI remains unverified.",
-    "A duplicate source-record insertion in the first 13:08 index write was detected by post-write audit and corrected in the following index commit; snapshot file remains unchanged and its blob SHA is still the indexed value."
+    "A duplicate source-record insertion in the first 13:08 index write was detected by post-write audit and corrected in the following index commit; snapshot file remains unchanged and its blob SHA is still the indexed value.",
+    "Two different Kamilah Stevenson candidate channel IDs are surfaced by YouTube search and third-party analytics; identity and exhaustive public-video inventory remain unresolved.",
+    "The latest main commit is a paper-trading-log append; exact-head main CI remains unverified."
   ],
   "run_updates": [
     {
@@ -10567,6 +10589,34 @@
         "main_modified_by_this_run": false,
         "merge_performed": false,
         "deployment_executed": false
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T13:10:45Z",
+      "update_type": "YOUTUBE_CHANNEL_ID_RECONCILIATION",
+      "snapshot_id": "XRP-YOUTUBE-CHANNEL-ID-RECONCILIATION-202610281310Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1310Z.json",
+      "details": "Added a third-party analytics result for a second Kamilah Stevenson channel ID (UCqUP...) distinct from the YouTube search result channel (UCXm6...). Retained both as separate candidates and did not equate either with Camilla Stephenson, whose exact-name search also surfaced a UK film location-management professional. The public video inventory remains partial; creator claims are not model-admissible.",
+      "source_ids": [
+        "SRC-VLING-KAMILAH-UCQUP-20261028T1310Z",
+        "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+        "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1308Z",
+        "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z"
+      ],
+      "validation": {
+        "candidate_channel_ids": [
+          "UCXm6KAr1WHF6UN7g5b2W7wg",
+          "UCqUPJMQdkCN6lsVLDnichPA"
+        ],
+        "identity_match": "UNRESOLVED",
+        "inventory": "PARTIAL",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false,
+        "snapshot_blob_sha": "29824654335e4004885e767d80d0f616a0bbb158",
+        "snapshot_hash_matches_index": true,
+        "snapshot_commit_sha": "466980a1ce4a87951d2c9275f9dbb39e308b0c86"
       }
     }
   ],
