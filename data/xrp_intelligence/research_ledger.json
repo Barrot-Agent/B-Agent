@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T00:15:31Z",
+    "captured_at_utc": "2026-10-28T00:18:42Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "da52a95c17ac2cffc55197593620360ebedd5dea",
@@ -1591,48 +1591,118 @@
     "platform_capability_map": [
       {
         "platform": "ChatGPT",
-        "status": "ACTIVE_IN_THIS_CONVERSATION",
-        "evidence": "Web research and connected GitHub read/write APIs were used; no live cross-agent channel to the other eight platforms was demonstrated."
+        "status": "VERIFIED_IN_SESSION",
+        "auth_state": "VERIFIED_IN_SESSION",
+        "capabilities": [
+          "research synthesis",
+          "public web research",
+          "connected GitHub repository operations"
+        ],
+        "granted_permissions": [
+          "public_read",
+          "repository_read",
+          "branch_write",
+          "pr_write"
+        ],
+        "data_flow": "Public sources and GitHub evidence -> append-only ledger and draft branch/PR; no merge, deployment or trading.",
+        "independent_task_assignment": "Primary synthesis, provenance, relationship graph, causal hypotheses and validation protocol.",
+        "fallback": "Deterministic local checks and cached public snapshots; mark unavailable when sources fail."
       },
       {
         "platform": "Claude",
-        "status": "NOT_VERIFIED_LIVE",
-        "adapter_design": "Read-only research task; structured evidence packet; no credential or API access demonstrated."
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned long-form source review"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live flow observed; shared evidence packet only when authenticated.",
+        "independent_task_assignment": "Independent literature, filings and corporate-strategy review; generate alternatives before seeing other conclusions.",
+        "fallback": "Manual source packet with URLs, timestamps and hashes."
       },
       {
         "platform": "Grok",
-        "status": "NOT_VERIFIED_LIVE",
-        "adapter_design": "Independent counter-hypothesis and event review; repository's Groq API failures are not evidence of a live Grok connection."
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned public-discussion review"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live flow observed. Groq API integration is a different service and is not proof of Grok connectivity.",
+        "independent_task_assignment": "Public discussion, narrative analysis and counter-hypotheses; separate claims from flows.",
+        "fallback": "Public links captured manually; no deceptive or private collection."
       },
       {
         "platform": "Gemini",
-        "status": "NOT_VERIFIED_LIVE",
-        "adapter_design": "Independent source triangulation and document extraction; no live authenticated adapter demonstrated."
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned regulatory and macro cross-check"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live flow observed; no credentials/scopes verified.",
+        "independent_task_assignment": "Independent regulatory, macroeconomic, geopolitical and official-filing cross-check.",
+        "fallback": "Official regulator releases, central-bank series and dated filings."
       },
       {
         "platform": "Copilot",
-        "status": "NOT_VERIFIED_LIVE",
-        "adapter_design": "Repository code review and test suggestions; no live cross-platform handoff demonstrated."
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned code and PR review"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live flow observed; repository existence does not prove Copilot access.",
+        "independent_task_assignment": "Independent diff, workflow permissions, dependencies, secret handling and test-coverage review.",
+        "fallback": "GitHub diffs, CI logs and deterministic tests."
       },
       {
         "platform": "Codex",
-        "status": "NOT_VERIFIED_LIVE",
-        "adapter_design": "Controlled code changes and local test execution; GitHub connector access does not prove a Codex connection."
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned deterministic implementation/testing"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No separate live Codex adapter verified.",
+        "independent_task_assignment": "Minimal branch-only fixes, regression tests and reproducible CI evidence.",
+        "fallback": "Local deterministic scripts; no direct main writes."
       },
       {
         "platform": "Hugging Face",
-        "status": "NOT_VERIFIED_LIVE",
-        "adapter_design": "Versioned model/dataset evaluation; require model IDs, licenses, data splits and reproducible benchmark records."
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned model-card and dataset evaluation"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No authenticated adapter or model deployment verified.",
+        "independent_task_assignment": "Model cards, licenses, dataset provenance, leakage risk and reproducibility review.",
+        "fallback": "Public model cards and versioned datasets."
       },
       {
         "platform": "Kaggle",
-        "status": "NOT_VERIFIED_LIVE",
-        "adapter_design": "Versioned datasets and reproducible notebooks; require dataset provenance, temporal split and leakage audit."
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned benchmark/backtest reproduction"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live adapter or notebook execution verified.",
+        "independent_task_assignment": "Independent historical benchmark reproduction, baseline comparison and leakage audit.",
+        "fallback": "Versioned public datasets and local benchmark scripts."
       },
       {
         "platform": "Databricks",
-        "status": "NOT_VERIFIED_LIVE",
-        "adapter_design": "Governed feature store and historical jobs; require workspace identity, least-privilege scope and execution evidence."
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned feature-store and data-quality pipeline"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No authenticated workspace/API call verified.",
+        "independent_task_assignment": "Feature-store lineage, scheduled ingestion, quality checks, drift monitoring and walk-forward evaluation.",
+        "fallback": "Local append-only staging and deterministic validators."
       }
     ],
     "forecast_engine_status": {
@@ -1683,6 +1753,9 @@
       ]
     },
     "next_actions": [
+      "Verify the new evidence-packet schema and CI test on the updated research PR head.",
+      "Keep ChatGPT/GitHub as the only verified live path; do not claim the other eight target platforms are connected.",
+      "Require independent first-pass outputs, source-dependency checks, minority objections, red-team review and hashed handoffs before cross-platform synthesis.",
       "Keep PR #1228 draft/unmerged; its current exact head passed 146 tests and the fail-closed gate. It prevents fabricated telemetry but does not implement live market data.",
       "Do not execute barrot_agent/tools/upgrade_bundle.py: it overwrites home-directory files and embeds a direct-push workflow plus uncalibrated BUY/SELL/NULL logic. Redesign it separately.",
       "Review PR #1226 to stop scheduled signal workflows from committing generated data directly to main; no merge without approval.",
@@ -2023,21 +2096,293 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-RUN-HANDOFF-2026-10-28T001531Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0015Z.json",
-    "snapshot_blob_sha": "20ad53c42966c770888df17e6998e152132b560f",
-    "current_research_head_before_ledger_update": "6c432e0dc5d0c655e00fe0e71e199f3b93791cab",
+    "snapshot_id": "XRP-PLATFORM-COORDINATION-ARCHITECTURE-2026-10-28T001842Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0018Z.json",
+    "snapshot_blob_sha": "7133f4d68a544d96b2f9642b9247beeeef6de677",
+    "current_research_head_before_ledger_update": "33c87fd5007108960c8974ac1af89332916a495f",
     "current_research_checks": {
       "tests": "PASS",
       "tests_passed": 145,
-      "duration_seconds": 5.92,
+      "duration_seconds": 6.2,
       "gate": "PASS",
-      "as_of_utc": "2026-10-28T00:15:31Z",
-      "validated_head_sha": "6c432e0dc5d0c655e00fe0e71e199f3b93791cab",
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607241515",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607241496"
+      "as_of_utc": "2026-10-28T00:18:42Z",
+      "validated_head_sha": "33c87fd5007108960c8974ac1af89332916a495f",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607722402",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40607722186"
     },
-    "current_research_head_before_final_verification_record": "6c432e0dc5d0c655e00fe0e71e199f3b93791cab"
+    "current_research_head_before_final_verification_record": "33c87fd5007108960c8974ac1af89332916a495f",
+    "platform_coordination_architecture": {
+      "version": "1.0",
+      "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
+      "schema_path": "data/xrp_intelligence/platform_evidence_packet.schema.json",
+      "schema_status": "CREATED_IN_BRANCH_CI_PENDING",
+      "test_path": "tests/test_xrp_platform_evidence_schema.py",
+      "test_status": "ADDED_TO_CI_PENDING",
+      "as_of_utc": "2026-10-28T00:18:42Z",
+      "platform_map": [
+        {
+          "platform": "ChatGPT",
+          "status": "VERIFIED_IN_SESSION",
+          "auth_state": "VERIFIED_IN_SESSION",
+          "capabilities": [
+            "research synthesis",
+            "public web research",
+            "connected GitHub repository operations"
+          ],
+          "granted_permissions": [
+            "public_read",
+            "repository_read",
+            "branch_write",
+            "pr_write"
+          ],
+          "data_flow": "Public sources and GitHub evidence -> append-only ledger and draft branch/PR; no merge, deployment or trading.",
+          "independent_task_assignment": "Primary synthesis, provenance, relationship graph, causal hypotheses and validation protocol.",
+          "fallback": "Deterministic local checks and cached public snapshots; mark unavailable when sources fail."
+        },
+        {
+          "platform": "Claude",
+          "status": "NOT_TESTED",
+          "auth_state": "NOT_TESTED",
+          "capabilities": [
+            "planned long-form source review"
+          ],
+          "granted_permissions": [],
+          "data_flow": "No live flow observed; shared evidence packet only when authenticated.",
+          "independent_task_assignment": "Independent literature, filings and corporate-strategy review; generate alternatives before seeing other conclusions.",
+          "fallback": "Manual source packet with URLs, timestamps and hashes."
+        },
+        {
+          "platform": "Grok",
+          "status": "NOT_TESTED",
+          "auth_state": "NOT_TESTED",
+          "capabilities": [
+            "planned public-discussion review"
+          ],
+          "granted_permissions": [],
+          "data_flow": "No live flow observed. Groq API integration is a different service and is not proof of Grok connectivity.",
+          "independent_task_assignment": "Public discussion, narrative analysis and counter-hypotheses; separate claims from flows.",
+          "fallback": "Public links captured manually; no deceptive or private collection."
+        },
+        {
+          "platform": "Gemini",
+          "status": "NOT_TESTED",
+          "auth_state": "NOT_TESTED",
+          "capabilities": [
+            "planned regulatory and macro cross-check"
+          ],
+          "granted_permissions": [],
+          "data_flow": "No live flow observed; no credentials/scopes verified.",
+          "independent_task_assignment": "Independent regulatory, macroeconomic, geopolitical and official-filing cross-check.",
+          "fallback": "Official regulator releases, central-bank series and dated filings."
+        },
+        {
+          "platform": "Copilot",
+          "status": "NOT_TESTED",
+          "auth_state": "NOT_TESTED",
+          "capabilities": [
+            "planned code and PR review"
+          ],
+          "granted_permissions": [],
+          "data_flow": "No live flow observed; repository existence does not prove Copilot access.",
+          "independent_task_assignment": "Independent diff, workflow permissions, dependencies, secret handling and test-coverage review.",
+          "fallback": "GitHub diffs, CI logs and deterministic tests."
+        },
+        {
+          "platform": "Codex",
+          "status": "NOT_TESTED",
+          "auth_state": "NOT_TESTED",
+          "capabilities": [
+            "planned deterministic implementation/testing"
+          ],
+          "granted_permissions": [],
+          "data_flow": "No separate live Codex adapter verified.",
+          "independent_task_assignment": "Minimal branch-only fixes, regression tests and reproducible CI evidence.",
+          "fallback": "Local deterministic scripts; no direct main writes."
+        },
+        {
+          "platform": "Hugging Face",
+          "status": "NOT_TESTED",
+          "auth_state": "NOT_TESTED",
+          "capabilities": [
+            "planned model-card and dataset evaluation"
+          ],
+          "granted_permissions": [],
+          "data_flow": "No authenticated adapter or model deployment verified.",
+          "independent_task_assignment": "Model cards, licenses, dataset provenance, leakage risk and reproducibility review.",
+          "fallback": "Public model cards and versioned datasets."
+        },
+        {
+          "platform": "Kaggle",
+          "status": "NOT_TESTED",
+          "auth_state": "NOT_TESTED",
+          "capabilities": [
+            "planned benchmark/backtest reproduction"
+          ],
+          "granted_permissions": [],
+          "data_flow": "No live adapter or notebook execution verified.",
+          "independent_task_assignment": "Independent historical benchmark reproduction, baseline comparison and leakage audit.",
+          "fallback": "Versioned public datasets and local benchmark scripts."
+        },
+        {
+          "platform": "Databricks",
+          "status": "NOT_TESTED",
+          "auth_state": "NOT_TESTED",
+          "capabilities": [
+            "planned feature-store and data-quality pipeline"
+          ],
+          "granted_permissions": [],
+          "data_flow": "No authenticated workspace/API call verified.",
+          "independent_task_assignment": "Feature-store lineage, scheduled ingestion, quality checks, drift monitoring and walk-forward evaluation.",
+          "fallback": "Local append-only staging and deterministic validators."
+        }
+      ],
+      "shared_protocol": {
+        "independent_first_pass": "Assign narrow independent tasks against one frozen input snapshot hash; submit initial conclusions before revealing other conclusions.",
+        "evidence_packet": "Versioned JSON Schema. Classify each claim as CONFIRMED_FACT, SOURCED_CLAIM, INFERENCE, SPECULATION, UNKNOWN or DISCONFIRMED; include source IDs, timestamps, source independence, assumptions, support and disconfirming evidence.",
+        "source_independence": "Syndicated copies of one release count as one source. Record shared ownership/data providers and copied wording as dependencies.",
+        "disagreement_resolution": [
+          "Rank directness, source quality, methodology, freshness, reproducibility and independence; do not use majority vote.",
+          "Require an independent reviewer to challenge the strongest hypothesis.",
+          "Retain minority objections and disconfirming evidence.",
+          "If unresolved, mark UNRESOLVED and block affected features/forecasts."
+        ],
+        "red_team": "A reviewer other than the task author challenges assumptions, base rates, source dependence, leakage and alternate causal explanations. NOT_RUN until an actual review packet exists.",
+        "verified_handoff": "Record input/output SHA-256, source IDs, auth state, permission scope, UTC time, tests/CI links, errors and explicit DESIGNED/EXECUTED/VERIFIED status.",
+        "least_privilege": "Public read by default. Repository writes only to reviewed branch/PR changes; no merge, deployment, private-data or trading permission is granted by this architecture.",
+        "rate_limit_fallback": "Use deterministic local validation and aged public snapshots. Provider failures become UNAVAILABLE, never zero or fabricated confidence.",
+        "live_collaboration_rule": "No platform is marked connected until authenticated request/response, scope review, data-flow test and verifiable handoff exist."
+      },
+      "independent_task_assignments": [
+        {
+          "platform": "ChatGPT",
+          "assignment": "Primary synthesis, provenance, relationship graph, causal hypotheses and validation protocol.",
+          "status": "VERIFIED_IN_SESSION"
+        },
+        {
+          "platform": "Claude",
+          "assignment": "Independent literature, filings and corporate-strategy review; generate alternatives before seeing other conclusions.",
+          "status": "NOT_TESTED"
+        },
+        {
+          "platform": "Grok",
+          "assignment": "Public discussion, narrative analysis and counter-hypotheses; separate claims from flows.",
+          "status": "NOT_TESTED"
+        },
+        {
+          "platform": "Gemini",
+          "assignment": "Independent regulatory, macroeconomic, geopolitical and official-filing cross-check.",
+          "status": "NOT_TESTED"
+        },
+        {
+          "platform": "Copilot",
+          "assignment": "Independent diff, workflow permissions, dependencies, secret handling and test-coverage review.",
+          "status": "NOT_TESTED"
+        },
+        {
+          "platform": "Codex",
+          "assignment": "Minimal branch-only fixes, regression tests and reproducible CI evidence.",
+          "status": "NOT_TESTED"
+        },
+        {
+          "platform": "Hugging Face",
+          "assignment": "Model cards, licenses, dataset provenance, leakage risk and reproducibility review.",
+          "status": "NOT_TESTED"
+        },
+        {
+          "platform": "Kaggle",
+          "assignment": "Independent historical benchmark reproduction, baseline comparison and leakage audit.",
+          "status": "NOT_TESTED"
+        },
+        {
+          "platform": "Databricks",
+          "assignment": "Feature-store lineage, scheduled ingestion, quality checks, drift monitoring and walk-forward evaluation.",
+          "status": "NOT_TESTED"
+        }
+      ],
+      "data_flow": "Public/authorized sources -> platform-specific evidence packets -> schema/provenance validator -> append-only ledger/feature staging -> independent red-team review -> versioned branch/PR. No cross-platform live channel is currently verified.",
+      "verification_gates": [
+        "Adapter auth smoke test and least-privilege scope recorded.",
+        "Schema, provenance, UTC cutoff and source-independence checks pass.",
+        "Minority objections and red-team counter-hypotheses retained.",
+        "Input/output hashes and exact test/CI evidence attached.",
+        "No forecast before fixed-horizon walk-forward testing, leakage controls, baselines, calibration and shadow evaluation."
+      ]
+    },
+    "independent_task_assignments": [
+      {
+        "platform": "ChatGPT",
+        "assignment": "Primary synthesis, provenance, relationship graph, causal hypotheses and validation protocol.",
+        "status": "VERIFIED_IN_SESSION"
+      },
+      {
+        "platform": "Claude",
+        "assignment": "Independent literature, filings and corporate-strategy review; generate alternatives before seeing other conclusions.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Grok",
+        "assignment": "Public discussion, narrative analysis and counter-hypotheses; separate claims from flows.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Gemini",
+        "assignment": "Independent regulatory, macroeconomic, geopolitical and official-filing cross-check.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Copilot",
+        "assignment": "Independent diff, workflow permissions, dependencies, secret handling and test-coverage review.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Codex",
+        "assignment": "Minimal branch-only fixes, regression tests and reproducible CI evidence.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Hugging Face",
+        "assignment": "Model cards, licenses, dataset provenance, leakage risk and reproducibility review.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Kaggle",
+        "assignment": "Independent historical benchmark reproduction, baseline comparison and leakage audit.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Databricks",
+        "assignment": "Feature-store lineage, scheduled ingestion, quality checks, drift monitoring and walk-forward evaluation.",
+        "status": "NOT_TESTED"
+      }
+    ],
+    "structured_evidence_exchange": {
+      "independent_first_pass": "Assign narrow independent tasks against one frozen input snapshot hash; submit initial conclusions before revealing other conclusions.",
+      "evidence_packet": "Versioned JSON Schema. Classify each claim as CONFIRMED_FACT, SOURCED_CLAIM, INFERENCE, SPECULATION, UNKNOWN or DISCONFIRMED; include source IDs, timestamps, source independence, assumptions, support and disconfirming evidence.",
+      "source_independence": "Syndicated copies of one release count as one source. Record shared ownership/data providers and copied wording as dependencies.",
+      "disagreement_resolution": [
+        "Rank directness, source quality, methodology, freshness, reproducibility and independence; do not use majority vote.",
+        "Require an independent reviewer to challenge the strongest hypothesis.",
+        "Retain minority objections and disconfirming evidence.",
+        "If unresolved, mark UNRESOLVED and block affected features/forecasts."
+      ],
+      "red_team": "A reviewer other than the task author challenges assumptions, base rates, source dependence, leakage and alternate causal explanations. NOT_RUN until an actual review packet exists.",
+      "verified_handoff": "Record input/output SHA-256, source IDs, auth state, permission scope, UTC time, tests/CI links, errors and explicit DESIGNED/EXECUTED/VERIFIED status.",
+      "least_privilege": "Public read by default. Repository writes only to reviewed branch/PR changes; no merge, deployment, private-data or trading permission is granted by this architecture.",
+      "rate_limit_fallback": "Use deterministic local validation and aged public snapshots. Provider failures become UNAVAILABLE, never zero or fabricated confidence.",
+      "live_collaboration_rule": "No platform is marked connected until authenticated request/response, scope review, data-flow test and verifiable handoff exist."
+    },
+    "disagreement_resolution": [
+      "Rank directness, source quality, methodology, freshness, reproducibility and independence; do not use majority vote.",
+      "Require an independent reviewer to challenge the strongest hypothesis.",
+      "Retain minority objections and disconfirming evidence.",
+      "If unresolved, mark UNRESOLVED and block affected features/forecasts."
+    ],
+    "red_team_review": {
+      "status": "DESIGNED_NOT_EXECUTED",
+      "reviewer_rule": "A reviewer other than the task author challenges assumptions, base rates, source dependence, leakage and alternate causal explanations. NOT_RUN until an actual review packet exists.",
+      "minority_objections_required": true
+    },
+    "platform_coordination_status": "DESIGNED_NOT_EXECUTED_LIVE_ADAPTERS_NOT_VERIFIED"
   },
   "sources": [
     {
@@ -2757,6 +3102,14 @@
       "title": "Push-triggered zero-job approval workflow anomaly",
       "accessed_at_utc": "2026-10-28T00:15:31Z",
       "note": "Run reports push event and failure with zero jobs although .github/workflows/barrot-approve-pr.yml currently declares workflow_dispatch only and the blob is identical on main and tested branch. Root cause unresolved; no fix claimed."
+    },
+    {
+      "id": "SRC-PLATFORM-EVIDENCE-SCHEMA-2026-10-28",
+      "evidence_class": "INTERNAL_SCHEMA_ARTIFACT_PENDING_CI",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-fresh-main-20261028-0004z/data/xrp_intelligence/platform_evidence_packet.schema.json",
+      "title": "Barrot XRP platform evidence packet JSON Schema",
+      "accessed_at_utc": "2026-10-28T00:18:42Z",
+      "note": "Defines nine-platform packets, source provenance, claim classes, causal hypotheses, disagreement/minority objections, red-team review, hashed handoffs, forecast outcomes and security invariants."
     }
   ],
   "limitations": [
@@ -3199,6 +3552,23 @@
         "upgrade_bundle_executed": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T00:20:43.130Z",
+      "update_type": "PLATFORM_COORDINATION_SCHEMA_IMPLEMENTED_PENDING_CI",
+      "snapshot_id": "XRP-PLATFORM-COORDINATION-ARCHITECTURE-2026-10-28T001842Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0018Z.json",
+      "snapshot_blob_sha": "7133f4d68a544d96b2f9642b9247beeeef6de677",
+      "details": "Created the nine-platform evidence packet schema, deterministic contract test and CI invocation on the fresh-main research branch. Architecture is designed; only ChatGPT/GitHub are verified live and other platform adapters remain untested.",
+      "validation": {
+        "schema_json": "CREATED_PENDING_CI",
+        "test_added": "YES",
+        "ci_workflow_updated": "YES",
+        "adapter_authentication": "NOT_TESTED_FOR_EIGHT_PLATFORMS",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified": false,
+        "merge_performed": false
+      }
     }
   ],
   "mission_priority": {
@@ -3226,5 +3596,203 @@
       "Databricks"
     ],
     "forecast_status": "NOT_ISSUED"
+  },
+  "platform_coordination_architecture": {
+    "version": "1.0",
+    "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
+    "schema_path": "data/xrp_intelligence/platform_evidence_packet.schema.json",
+    "schema_status": "CREATED_IN_BRANCH_CI_PENDING",
+    "test_path": "tests/test_xrp_platform_evidence_schema.py",
+    "test_status": "ADDED_TO_CI_PENDING",
+    "as_of_utc": "2026-10-28T00:18:42Z",
+    "platform_map": [
+      {
+        "platform": "ChatGPT",
+        "status": "VERIFIED_IN_SESSION",
+        "auth_state": "VERIFIED_IN_SESSION",
+        "capabilities": [
+          "research synthesis",
+          "public web research",
+          "connected GitHub repository operations"
+        ],
+        "granted_permissions": [
+          "public_read",
+          "repository_read",
+          "branch_write",
+          "pr_write"
+        ],
+        "data_flow": "Public sources and GitHub evidence -> append-only ledger and draft branch/PR; no merge, deployment or trading.",
+        "independent_task_assignment": "Primary synthesis, provenance, relationship graph, causal hypotheses and validation protocol.",
+        "fallback": "Deterministic local checks and cached public snapshots; mark unavailable when sources fail."
+      },
+      {
+        "platform": "Claude",
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned long-form source review"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live flow observed; shared evidence packet only when authenticated.",
+        "independent_task_assignment": "Independent literature, filings and corporate-strategy review; generate alternatives before seeing other conclusions.",
+        "fallback": "Manual source packet with URLs, timestamps and hashes."
+      },
+      {
+        "platform": "Grok",
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned public-discussion review"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live flow observed. Groq API integration is a different service and is not proof of Grok connectivity.",
+        "independent_task_assignment": "Public discussion, narrative analysis and counter-hypotheses; separate claims from flows.",
+        "fallback": "Public links captured manually; no deceptive or private collection."
+      },
+      {
+        "platform": "Gemini",
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned regulatory and macro cross-check"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live flow observed; no credentials/scopes verified.",
+        "independent_task_assignment": "Independent regulatory, macroeconomic, geopolitical and official-filing cross-check.",
+        "fallback": "Official regulator releases, central-bank series and dated filings."
+      },
+      {
+        "platform": "Copilot",
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned code and PR review"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live flow observed; repository existence does not prove Copilot access.",
+        "independent_task_assignment": "Independent diff, workflow permissions, dependencies, secret handling and test-coverage review.",
+        "fallback": "GitHub diffs, CI logs and deterministic tests."
+      },
+      {
+        "platform": "Codex",
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned deterministic implementation/testing"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No separate live Codex adapter verified.",
+        "independent_task_assignment": "Minimal branch-only fixes, regression tests and reproducible CI evidence.",
+        "fallback": "Local deterministic scripts; no direct main writes."
+      },
+      {
+        "platform": "Hugging Face",
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned model-card and dataset evaluation"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No authenticated adapter or model deployment verified.",
+        "independent_task_assignment": "Model cards, licenses, dataset provenance, leakage risk and reproducibility review.",
+        "fallback": "Public model cards and versioned datasets."
+      },
+      {
+        "platform": "Kaggle",
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned benchmark/backtest reproduction"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No live adapter or notebook execution verified.",
+        "independent_task_assignment": "Independent historical benchmark reproduction, baseline comparison and leakage audit.",
+        "fallback": "Versioned public datasets and local benchmark scripts."
+      },
+      {
+        "platform": "Databricks",
+        "status": "NOT_TESTED",
+        "auth_state": "NOT_TESTED",
+        "capabilities": [
+          "planned feature-store and data-quality pipeline"
+        ],
+        "granted_permissions": [],
+        "data_flow": "No authenticated workspace/API call verified.",
+        "independent_task_assignment": "Feature-store lineage, scheduled ingestion, quality checks, drift monitoring and walk-forward evaluation.",
+        "fallback": "Local append-only staging and deterministic validators."
+      }
+    ],
+    "shared_protocol": {
+      "independent_first_pass": "Assign narrow independent tasks against one frozen input snapshot hash; submit initial conclusions before revealing other conclusions.",
+      "evidence_packet": "Versioned JSON Schema. Classify each claim as CONFIRMED_FACT, SOURCED_CLAIM, INFERENCE, SPECULATION, UNKNOWN or DISCONFIRMED; include source IDs, timestamps, source independence, assumptions, support and disconfirming evidence.",
+      "source_independence": "Syndicated copies of one release count as one source. Record shared ownership/data providers and copied wording as dependencies.",
+      "disagreement_resolution": [
+        "Rank directness, source quality, methodology, freshness, reproducibility and independence; do not use majority vote.",
+        "Require an independent reviewer to challenge the strongest hypothesis.",
+        "Retain minority objections and disconfirming evidence.",
+        "If unresolved, mark UNRESOLVED and block affected features/forecasts."
+      ],
+      "red_team": "A reviewer other than the task author challenges assumptions, base rates, source dependence, leakage and alternate causal explanations. NOT_RUN until an actual review packet exists.",
+      "verified_handoff": "Record input/output SHA-256, source IDs, auth state, permission scope, UTC time, tests/CI links, errors and explicit DESIGNED/EXECUTED/VERIFIED status.",
+      "least_privilege": "Public read by default. Repository writes only to reviewed branch/PR changes; no merge, deployment, private-data or trading permission is granted by this architecture.",
+      "rate_limit_fallback": "Use deterministic local validation and aged public snapshots. Provider failures become UNAVAILABLE, never zero or fabricated confidence.",
+      "live_collaboration_rule": "No platform is marked connected until authenticated request/response, scope review, data-flow test and verifiable handoff exist."
+    },
+    "independent_task_assignments": [
+      {
+        "platform": "ChatGPT",
+        "assignment": "Primary synthesis, provenance, relationship graph, causal hypotheses and validation protocol.",
+        "status": "VERIFIED_IN_SESSION"
+      },
+      {
+        "platform": "Claude",
+        "assignment": "Independent literature, filings and corporate-strategy review; generate alternatives before seeing other conclusions.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Grok",
+        "assignment": "Public discussion, narrative analysis and counter-hypotheses; separate claims from flows.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Gemini",
+        "assignment": "Independent regulatory, macroeconomic, geopolitical and official-filing cross-check.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Copilot",
+        "assignment": "Independent diff, workflow permissions, dependencies, secret handling and test-coverage review.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Codex",
+        "assignment": "Minimal branch-only fixes, regression tests and reproducible CI evidence.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Hugging Face",
+        "assignment": "Model cards, licenses, dataset provenance, leakage risk and reproducibility review.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Kaggle",
+        "assignment": "Independent historical benchmark reproduction, baseline comparison and leakage audit.",
+        "status": "NOT_TESTED"
+      },
+      {
+        "platform": "Databricks",
+        "assignment": "Feature-store lineage, scheduled ingestion, quality checks, drift monitoring and walk-forward evaluation.",
+        "status": "NOT_TESTED"
+      }
+    ],
+    "data_flow": "Public/authorized sources -> platform-specific evidence packets -> schema/provenance validator -> append-only ledger/feature staging -> independent red-team review -> versioned branch/PR. No cross-platform live channel is currently verified.",
+    "verification_gates": [
+      "Adapter auth smoke test and least-privilege scope recorded.",
+      "Schema, provenance, UTC cutoff and source-independence checks pass.",
+      "Minority objections and red-team counter-hypotheses retained.",
+      "Input/output hashes and exact test/CI evidence attached.",
+      "No forecast before fixed-horizon walk-forward testing, leakage controls, baselines, calibration and shadow evaluation."
+    ],
+    "schema_blob_sha": "7a56f2c444c5d37aaedb6a8b522d4e57525eb287"
   }
 }
