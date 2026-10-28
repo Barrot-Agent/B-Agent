@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T02:17:26.954Z",
+    "captured_at_utc": "2026-10-28T02:19:29.076Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
@@ -889,6 +889,41 @@
           "SRC-REPO-PR1236-GATE-2026-10-28T0214Z"
         ],
         "uncertainty": "The fix remains an unmerged draft PR; current main behavior is unchanged."
+      },
+      {
+        "id": "ASK-COIN-ENTITY-DISAMBIGUATION-2026",
+        "evidence_class": "MIXED_PUBLIC_PRIMARY_AND_SECONDARY_EVIDENCE",
+        "status": "MULTIPLE_CANDIDATES; XRP_RELATIONSHIP_NOT_ESTABLISHED",
+        "claim": "Ask Coin may refer to an inactive/untracked exchange listing at askcoin.net, Permission.io's historical ASK Coin token, or a current $ASK rewards token described by Permission.ai. The public sources do not establish that these are the same current entity or that any is connected to XRP.",
+        "source_ids": [
+          "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
+          "SRC-ASKCOIN-NET-PARKED-DOMAIN-2026-10-28",
+          "SRC-PERMISSION-ASK-COIN-CHAINWIRE-2022-02-17",
+          "SRC-PERMISSION-AI-ASK-REWARDS-2026-10-28"
+        ],
+        "uncertainty": "The original context for the exact phrase is missing; token contract continuity is unverified."
+      },
+      {
+        "id": "SBIC-CHATGPT-COURSE-CONTEXT-2025",
+        "evidence_class": "OFFICIAL_SBIC_EAST_JAPAN_PAGE",
+        "status": "COURSE_PAGE_CONFIRMED; PHRASE_MEANING_UNRESOLVED",
+        "claim": "SBIC East Japan's official June 2025 generative-AI/ML training page lists ChatGPT in its curriculum. This is a documented SBIC–ChatGPT educational context, not evidence that the phrase 'SBIC, ChatGPT SBIC' refers to the course or that it has an XRP connection.",
+        "source_ids": [
+          "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12"
+        ],
+        "uncertainty": "No original phrase source or XRP linkage has been identified."
+      },
+      {
+        "id": "CAMILLA-STEPHENSON-CANONICAL-CHANNEL-UNRESOLVED-2026-10-28",
+        "evidence_class": "PUBLIC_SEARCH_AND_ACCESS_LIMITATION",
+        "status": "NOT_VERIFIED; PUBLIC_VIDEO_INVENTORY_INCOMPLETE",
+        "claim": "Exact-name searches did not identify a canonical Camilla Stephenson YouTube channel. Kamilah Stevenson | XRP & Stocks remains only a candidate; no first-party identity link was found. Direct YouTube /videos access was disabled in the reader, and vidIQ channel search was unavailable because the connected account had insufficient credits.",
+        "source_ids": [
+          "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
+          "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
+          "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26"
+        ],
+        "uncertainty": "No claim of exhaustive coverage or identity equivalence is made."
       }
     ],
     "relationship_graph": [
@@ -1414,6 +1449,37 @@
           "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
         ],
         "status": "MULTI-RAIL_LINKS_DOCUMENTED; EXCLUSIVITY_AND_NET_XRP_FLOWS_UNKNOWN"
+      },
+      {
+        "id": "EDGE-ASKCOIN-INACTIVE-EXCHANGE-LISTING-2026",
+        "from": "CoinMarketCap Ask Coin exchange listing",
+        "relation": "links_to",
+        "to": "askcoin.net",
+        "evidence_ids": [
+          "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
+          "SRC-ASKCOIN-NET-PARKED-DOMAIN-2026-10-28"
+        ],
+        "status": "SECONDARY_LISTING_MARKED_INACTIVE; DOMAIN_REDIRECT_OBSERVED; NO_XRP_LINK"
+      },
+      {
+        "id": "EDGE-PERMISSION-ASK-REWARDS-UTILITY-2026",
+        "from": "Permission.ai",
+        "relation": "currently_describes",
+        "to": "$ASK Rewards utility token",
+        "evidence_ids": [
+          "SRC-PERMISSION-AI-ASK-REWARDS-2026-10-28"
+        ],
+        "status": "OFFICIAL_CURRENT_PRODUCT_DESCRIPTION; CONTINUITY_WITH_2022_TOKEN_UNVERIFIED"
+      },
+      {
+        "id": "EDGE-SBIC-EAST-JAPAN-CHATGPT-COURSE-2025",
+        "from": "SBIC East Japan",
+        "relation": "offered_training_that_included",
+        "to": "ChatGPT generative-AI curriculum",
+        "evidence_ids": [
+          "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12"
+        ],
+        "status": "OFFICIAL_COURSE_PAGE; NOT_AN_XRP_RELATIONSHIP"
       }
     ],
     "competing_hypotheses": [
@@ -1996,39 +2062,48 @@
     ],
     "phrase_investigation": {
       "ASK Coin": {
-        "status": "UNRESOLVED",
-        "finding": "Exact-phrase public search did not establish a reliable XRP-specific meaning; no definition assigned. Fresh exact-spelling and XRP-context searches did not establish a reliable original source or meaning; no definition assigned.",
-        "last_searched_at_utc": "2026-10-27T21:09:42Z"
+        "status": "MULTIPLE_CANDIDATES; XRP_LINK_UNVERIFIED",
+        "finding": "The exact phrase has at least two materially different public candidates: (1) a CoinMarketCap Ask Coin exchange listing marked inactive/untracked with no volume or reserve data, linking to askcoin.net, which redirected to a domain-profile page at access time; and (2) Permission.io's historical ASK Coin token announcement from 2022. The current Permission site now presents $ASK Rewards in a family-friendly AI platform and calls it a utility token, not an investment product. No contract-address evidence establishes continuity between the 2022 token and current rewards, and no XRP relationship was established for either candidate.",
+        "source_ids": [
+          "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
+          "SRC-ASKCOIN-NET-PARKED-DOMAIN-2026-10-28",
+          "SRC-PERMISSION-ASK-COIN-CHAINWIRE-2022-02-17",
+          "SRC-PERMISSION-AI-ASK-REWARDS-2026-10-28"
+        ],
+        "last_searched_at_utc": "2026-10-28T02:19:29.076Z",
+        "next_action": "Resolve the original context/source of the phrase before choosing an entity; compare contract addresses only if the original source provides one."
       },
       "actual capital": {
         "status": "UNRESOLVED",
-        "finding": "Search results were generic or unrelated; requires original context and source timestamp. Fresh exact-spelling and XRP-context searches did not establish a reliable original source or meaning; no definition assigned.",
-        "last_searched_at_utc": "2026-10-27T21:09:42Z"
+        "finding": "Targeted exact-phrase searches with XRP and creator-name context returned no reliable original-source match. Generic finance usage is insufficient to assign a specific meaning or causal relationship.",
+        "last_searched_at_utc": "2026-10-28T02:19:29.076Z",
+        "next_action": "Find the original video, quote, document or timestamp where the phrase was used; preserve the exact wording and surrounding context."
       },
       "SBIC, ChatGPT SBIC": {
         "status": "MULTIPLE_CANDIDATES; INTENDED_ENTITY_UNRESOLVED",
-        "finding": "Official sources distinguish SBIC East Japan from historical SBI Capital/SBIC. SBI Ripple Asia, SBI Remit and SBI VC Trade are separate entities; official Ripple sources confirm an XRP ODL corridor through SBI Remit/Coins.ph/SBI VC Trade while stating SBI Ripple Asia itself does not handle XRP.",
+        "finding": "Official SBIC East Japan published a June 2025 generative-AI/ML training course that included ChatGPT in its curriculum. This is a possible contextual connection between the terms, not proof that the phrase refers to that course. SBIC East Japan remains distinct from SBI Holdings and historical SBI Capital/SBIC. No direct SBIC-to-XRP relationship is established for these candidates.",
         "source_ids": [
+          "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
           "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
           "SRC-SBI-CAPITAL-SBIC-2005",
           "SRC-SBI-CAPITAL-GS-JV-2007",
-          "SRC-SBI-GROUP-DIRECTORY-2026-10-07",
-          "SRC-RIPPLE-SBI-RIPPLE-ASIA-NO-XRP-2026-10-27",
           "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
         ],
-        "next_action": "Locate the original phrase and current legal-entity record; do not infer a direct SBIC-to-XRP relationship."
+        "last_searched_at_utc": "2026-10-28T02:19:29.076Z",
+        "next_action": "Locate the original phrase and verify legal identity before linking any SBIC candidate to SBI Group or XRP."
       },
       "Camilla Stephenson": {
-        "status": "CANDIDATE_CHANNEL_FOUND; EXACT_IDENTITY_UNRESOLVED",
-        "finding": "Public YouTube indexing found the channel Kamilah Stevenson | Xrp & Stocks (channel ID UCXm6KAr1WHF6UN7g5b2W7wg) and two indexed videos by Kamilah Stevenson about XRP/global liquidity. The requested spelling Camilla Stephenson differs; no first-party cross-link proves the identities match. A separate video uploaded by Alina X is excluded from Kamilah's own uploads.",
+        "status": "CANDIDATE_CHANNEL_FOUND; EXACT_IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
+        "finding": "The candidate channel Kamilah Stevenson | XRP & Stocks (channel ID UCXm6KAr1WHF6UN7g5b2W7wg) remains unconfirmed because the spelling differs and no first-party cross-link was found. Exact-name web searches did not establish a canonical Camilla Stephenson channel. Direct access to the YouTube /videos page was disabled in the web reader; the optional vidIQ channel search did not run because its connected account lacked sufficient credits, and the tool explicitly instructed not to retry. No exhaustive public-upload inventory is claimed.",
         "source_ids": [
           "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
           "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
           "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
           "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16"
         ],
-        "inventory_status": "PARTIAL_INDEXED_RESULTS_ONLY; ALL_PUBLIC_UPLOADS_NOT_VERIFIED",
-        "last_searched_at_utc": "2026-10-27T22:11:49Z"
+        "last_searched_at_utc": "2026-10-28T02:19:29.076Z",
+        "inventory_status": "PARTIAL_INDEXED_RESULTS_ONLY; CANONICAL_IDENTITY_AND_ALL_PUBLIC_UPLOADS_NOT_VERIFIED",
+        "next_action": "Continue public indexed search for the exact spelling and alternate spellings; only enumerate videos after first-party identity confirmation."
       }
     },
     "platform_capability_map": [
@@ -2207,7 +2282,10 @@
       "Continue fixing the scheduled Knowledge Signal Cycle direct-write path; preserve idempotent ingestion and immutable historical snapshots while removing unreviewed main-branch writes.",
       "Reconcile XRP ETF daily flows at fund level using issuer-reported holdings/redemptions and common settlement cutoffs; keep aggregate tracker features blocked until source lineage and universe match.",
       "Verify Circle Arc validator operating status, JCB USDC rollout, and Marex collateral scale from current official sources before treating announced relationships as live flow.",
-      "Continue the exact phrase and canonical Camilla Stephenson channel investigations; do not claim exhaustive video coverage until the identity is verified."
+      "Continue the exact phrase and canonical Camilla Stephenson channel investigations; do not claim exhaustive video coverage until the identity is verified.",
+      "Resolve the original context of ASK Coin before deciding whether it refers to the inactive Ask Coin exchange listing, Permission.io's historical ASK token, or Permission.ai's current $ASK rewards.",
+      "Find the original occurrence of 'actual capital' and 'SBIC, ChatGPT SBIC'; do not assign a meaning without source context.",
+      "Verify Camilla Stephenson's canonical channel through first-party cross-links before compiling an all-public-videos inventory; keep the Kamilah Stevenson channel as an unverified candidate."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -2604,8 +2682,8 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-CIRCLE-SBI-ARC-ETF-FLOWS-PR1236-2026-10-28T0217Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0217Z.json",
+    "snapshot_id": "XRP-ASKCOIN-SBIC-CHATGPT-AND-CREATOR-IDENTITY-2026-10-28T0219Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0219Z.json",
     "current_research_head_before_ledger_update": "f6ff965a2254779f63f0c6726ca786ae6bc31d55",
     "current_research_checks": {
       "tests": "PASS",
@@ -2942,7 +3020,7 @@
         "impact_status": "FIX_VERIFIED_IN_DRAFT_PR; MAIN_UNCHANGED"
       }
     ],
-    "snapshot_blob_sha": "fe9c14da5c192acbd1af43f27aae8fcd32afa02b"
+    "snapshot_blob_sha": "5b598d207100fa50abccfb2b1449695de50b39f4"
   },
   "sources": [
     {
@@ -3838,6 +3916,46 @@
       "title": "Fresh-main deterministic XRP summary fallback PR",
       "accessed_at_utc": "2026-10-28T02:17:26.954Z",
       "note": "PR #1236 is open, draft, unmerged and mergeable at observed state; branch head 0937a9ec4d6e95bd606303f1de4ac20602614566 is based on main db114efe6b70a6a0cceb25f9eadabf5299f89824. No main write, merge, deployment or trade occurred."
+    },
+    {
+      "id": "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
+      "evidence_class": "SECONDARY_LISTING",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "title": "CoinMarketCap Ask Coin exchange listing",
+      "accessed_at_utc": "2026-10-28T02:19:29.076Z",
+      "note": "CoinMarketCap labels Ask Coin as an inactive, untracked exchange listing and reports no tracked volume or reserve data. The listing links to askcoin.net. This does not establish any relationship to XRP or to Permission Coin."
+    },
+    {
+      "id": "SRC-ASKCOIN-NET-PARKED-DOMAIN-2026-10-28",
+      "evidence_class": "PUBLIC_WEB_REDIRECT_OBSERVATION",
+      "url": "https://askcoin.net/",
+      "title": "Askcoin.net direct public URL observation",
+      "accessed_at_utc": "2026-10-28T02:19:29.076Z",
+      "note": "The public URL redirected to a HugeDomains domain-profile page that was not accessible through the reader. This is consistent with a parked domain at the time of access, but does not prove no related entity operates elsewhere."
+    },
+    {
+      "id": "SRC-PERMISSION-ASK-COIN-CHAINWIRE-2022-02-17",
+      "evidence_class": "DATED_PRESS_RELEASE_SYNDICATION",
+      "url": "https://chainwire.org/2022/02/17/permission-ios-ask-coin-listed-on-gate-io-exchange/",
+      "title": "Permission.io's ASK Coin Gate.io listing announcement",
+      "accessed_at_utc": "2026-10-28T02:19:29.076Z",
+      "note": "A Chainwire-distributed release dated Feb 17, 2022 describes Permission.io's ASK Coin as a permission-marketing/consumer-rewards token and announces a Gate.io listing. Historical announcement; current contract identity and continuity are not verified."
+    },
+    {
+      "id": "SRC-PERMISSION-AI-ASK-REWARDS-2026-10-28",
+      "evidence_class": "OFFICIAL_CURRENT_PRODUCT_PAGE",
+      "url": "https://www.permission.ai/",
+      "title": "Permission.ai current $ASK Rewards description",
+      "accessed_at_utc": "2026-10-28T02:19:29.076Z",
+      "note": "The current official Permission site says $ASK Rewards are utility rewards within its family-friendly AI platform and explicitly describes $ASK as a utility token, not an investment product. The former permission.io URL redirects here. Continuity with the 2022 token contract is not established by this page."
+    },
+    {
+      "id": "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
+      "evidence_class": "OFFICIAL_SBIC_EAST_JAPAN_COURSE_PAGE",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "title": "SBIC East Japan generative AI and machine-learning training course",
+      "accessed_at_utc": "2026-10-28T02:19:29.076Z",
+      "note": "Official SBIC East Japan course page for June 12–13, 2025 lists ChatGPT in a generative-AI training curriculum for investee companies. This is a plausible contextual association for the words SBIC and ChatGPT, but does not prove the user's intended phrase and establishes no XRP relationship."
     }
   ],
   "limitations": [
@@ -3851,7 +3969,10 @@
     "Signal-summary run logs were not retrievable through the connected read endpoint; failure stage was verified from workflow-run job metadata and direct code/workflow inspection.",
     "XRP ETF flow dashboards have different fund universes and may share issuer-data lineage; Oct 27 flow data may be provisional.",
     "Circle's Q2 release documents announced Arc/JCB relationships and a reported Marex USDC collateral transaction, but current Arc validator activity, JCB rollout scale, and XRP flow effects are not independently verified.",
-    "PR #1230's nominal fallback test file did not define tests; the fresh-main successor PR #1236 corrects this and has exact-head CI/gate evidence, but remains unmerged."
+    "PR #1230's nominal fallback test file did not define tests; the fresh-main successor PR #1236 corrects this and has exact-head CI/gate evidence, but remains unmerged.",
+    "ASK Coin remains ambiguous between an inactive/untracked exchange listing and Permission-related ASK token/rewards descriptions; current contract continuity is not verified.",
+    "The exact phrase 'actual capital' has no reliable original-source match in the targeted searches.",
+    "Camilla Stephenson's canonical YouTube identity and exhaustive public-upload inventory remain unverified; direct YouTube page access was blocked and vidIQ search was unavailable due insufficient credits."
   ],
   "run_updates": [
     {
@@ -4409,6 +4530,25 @@
         "finding_source_refs": "PASS",
         "prior_research_head_tests": "PASS",
         "prior_research_head_gate": "PASS",
+        "new_ledger_commit_ci": "PENDING",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T02:19:29.076Z",
+      "update_type": "EXACT_PHRASE_AND_CREATOR_IDENTITY_DISAMBIGUATION",
+      "snapshot_id": "XRP-ASKCOIN-SBIC-CHATGPT-AND-CREATOR-IDENTITY-2026-10-28T0219Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0219Z.json",
+      "snapshot_blob_sha": "5b598d207100fa50abccfb2b1449695de50b39f4",
+      "details": "Added distinct public candidates for ASK Coin, an official SBIC East Japan ChatGPT training-page lead, and the current identity/inventory blocker for Camilla Stephenson. No XRP relationship or creator identity was inferred from spelling similarity.",
+      "validation": {
+        "snapshot_json": "PASS",
+        "source_ids_unique": true,
+        "relationship_edge_source_refs": "PASS",
+        "finding_source_refs": "PASS",
+        "previous_research_head_ci": "PASS",
         "new_ledger_commit_ci": "PENDING",
         "main_modified_by_this_run": false,
         "merge_performed": false,
