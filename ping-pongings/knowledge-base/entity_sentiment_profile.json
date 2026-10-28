@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1171,
+    "xrp_entries": 1172,
     "btc_entries": 1200
   },
-  "unique_entities_profiled": 978,
+  "unique_entities_profiled": 980,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -75,11 +75,11 @@
     },
     {
       "entity": "SEC",
-      "total_mentions": 62,
-      "bullish": 44,
+      "total_mentions": 63,
+      "bullish": 45,
       "neutral": 8,
       "bearish": 10,
-      "net_sentiment_score": 0.548,
+      "net_sentiment_score": 0.556,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -109,11 +109,11 @@
     },
     {
       "entity": "Ethereum",
-      "total_mentions": 52,
-      "bullish": 31,
+      "total_mentions": 53,
+      "bullish": 32,
       "neutral": 13,
       "bearish": 8,
-      "net_sentiment_score": 0.442,
+      "net_sentiment_score": 0.453,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -4644,6 +4644,21 @@
       ]
     },
     {
+      "entity": "WisdomTree",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "WisdomTree And MoonPay Expand US Access To Tokenized Funds",
+        "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum"
+      ]
+    },
+    {
       "entity": "Ondo",
       "total_mentions": 2,
       "bullish": 2,
@@ -7939,20 +7954,6 @@
       ]
     },
     {
-      "entity": "WisdomTree",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "WisdomTree And MoonPay Expand US Access To Tokenized Funds"
-      ]
-    },
-    {
       "entity": "MoonPay",
       "total_mentions": 1,
       "bullish": 1,
@@ -11170,6 +11171,34 @@
       ],
       "example_headlines": [
         "EigenLayer Unveils Dual-Staking Extension For Bitcoin Asset Security"
+      ]
+    },
+    {
+      "entity": "Arbitrum",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum"
+      ]
+    },
+    {
+      "entity": "Real World Asset Funds",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum"
       ]
     },
     {
