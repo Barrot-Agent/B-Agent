@@ -5,6 +5,7 @@ BARROT AGENT — deterministic repository repair worker.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
@@ -906,10 +907,14 @@ def main() -> None:
         "Use the existing RepositoryRepairController and WorkQueueController; do not create a parallel executor.",
         "Bound retries, persist state and evidence, and stop safely on invalid output or failed gates.",
     ]
+    request_fingerprint = "sha256:" + hashlib.sha256(
+        "\\0".join([REPO, BRANCH, TITLE.strip(), TASK.strip()]).encode("utf-8")
+    ).hexdigest()
     saved_plan = lifecycle_store.load(work_id)
     bundle_result = None
     if (
         saved_plan
+        and saved_plan.get("request_fingerprint") == request_fingerprint
         and saved_plan.get("status") == "READY_FOR_EXECUTION_REVIEW"
         and isinstance(saved_plan.get("bundle"), dict)
         and saved_plan["bundle"].get("objective") == TITLE.strip()
@@ -945,7 +950,9 @@ def main() -> None:
             post_issue_comment(message)
             raise SystemExit(message) from exc
 
-    lifecycle_path = lifecycle_store.save_plan(work_id, bundle_result)
+    lifecycle_path = lifecycle_store.save_plan(
+        work_id, bundle_result, request_fingerprint=request_fingerprint
+    )
     print(f"Bundle plan persisted: {lifecycle_path}")
     print(
         "Bundle gate:",
