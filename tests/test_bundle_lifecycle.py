@@ -263,3 +263,18 @@ def test_dispatcher_executes_when_recovery_evidence_is_missing(tmp_path):
     assert result["complete"] is True
     assert calls == ["task-a"]
     assert store.latest_task_states("bundle")["task-a"]["recovered_from_queue"] is False
+
+
+
+def test_changed_request_fingerprint_does_not_reuse_old_task_evidence(tmp_path):
+    store = BundleLifecycleStore(tmp_path)
+    result = Result()
+    store.save_plan("resume-me", result, request_fingerprint="sha256:request-one")
+    store.record_task_execution("resume-me", "task-a", {"status": "COMPLETE"})
+    store.record_execution("resume-me", {"status": "COMPLETE"})
+
+    store.save_plan("resume-me", result, request_fingerprint="sha256:request-two")
+    payload = store.load("resume-me")
+    assert payload["request_fingerprint"] == "sha256:request-two"
+    assert payload["task_states"] == {}
+    assert payload["execution_evidence"] == []
