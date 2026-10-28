@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T04:14:00Z",
+    "captured_at_utc": "2026-10-28T04:16:30Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
@@ -252,17 +252,17 @@
         "main_modified_by_this_run": false,
         "merge_performed": false
       },
-      "current_open_prs_observed_at_utc": "2026-10-28T04:14:00Z",
+      "current_open_prs_observed_at_utc": "2026-10-28T04:16:30Z",
       "current_open_prs": [
         {
           "number": 1227,
           "url": "https://github.com/Barrot-Agent/B-Agent/pull/1227",
           "state": "open",
           "draft": true,
-          "head_sha": "ecd62b4241dfc77d3f6c6f38e345a37b8a0bc0c6",
-          "last_verified_ci": "PASS_146_TESTS_5.93S",
+          "head_sha": "a026914aab0b80db7b3fe33ef72e5da6351b6cb0",
+          "last_verified_ci": "PASS_146_TESTS_5.87S",
           "last_verified_gate": "PASS",
-          "note": "Latest ledger snapshot includes new regulatory and quote-quality evidence; draft/unmerged; based on older main."
+          "note": "Latest ledger head a026914 passed CI and fail-closed gate; PR remains draft/unmerged."
         },
         {
           "number": 1236,
@@ -1234,6 +1234,22 @@
           "SRC-COINBASE-XRP-FUTURES-CARD-2026-10-28"
         ],
         "uncertainty": "Could reflect stale page content, an incorrect expiry field or a product-card defect; the correct interpretation was not established."
+      },
+      {
+        "id": "CAMILLA-STEPHENSON-CHANNEL-IDENTITY-CANDIDATE-2026-10-28",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "CANDIDATE_CHANNEL_ID_FOUND; EXACT_NAME_LINK_NOT_CONFIRMED; VIDEO_INVENTORY_PARTIAL",
+        "claim": "Glasp indexes four XRP/crypto videos under Kamilah Stevenson and exposes candidate YouTube channel ID UCqUPJMQdkCN6lsLVDnichPA. Two accessible transcript excerpts self-identify the speaker as Camila Stevenson. A separate third-party analytics page reports 633 videos analyzed but does not provide a verified accuracy figure.",
+        "interpretation": "The indexed material supports a plausible Kamilah/Camila Stevenson identity cluster and gives concrete public video leads. It does not prove that the exact requested name Camilla Stephenson refers to this channel, and four indexed videos do not constitute an exhaustive inventory.",
+        "source_ids": [
+          "SRC-GLASP-KAMILAH-CHANNEL-INDEX-2026-10-28",
+          "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14",
+          "SRC-GLASP-KAMILAH-XRP-ETF-2026-01-13",
+          "SRC-GLASP-KAMILAH-XRP-NEED-2026-03-19",
+          "SRC-GLASP-KAMILAH-CRYPTO-WEALTH-2026-01-15",
+          "SRC-CRYPTOKRIOS-KAMILAH-CHANNEL-2026-10-28"
+        ],
+        "uncertainty": "No first-party channel description/social cross-link was verified. YouTube channel/RSS access was blocked in this run. Third-party view counts and video inventory may be stale or incomplete."
       }
     ],
     "relationship_graph": [
@@ -1845,6 +1861,30 @@
           "SRC-COINBASE-USDC-REWARDS-EEA-MICA-2026-10-28"
         ],
         "status": "COMPANY_REPORTED; ELIGIBILITY_VARIES; EEA_PROGRAM_ENDED_UNDER_MICA"
+      },
+      {
+        "id": "EDGE-GLASP-ATTRIBUTES-KAMILAH-CHANNEL-2026",
+        "from": "Glasp third-party video index",
+        "relation": "attributes public XRP/crypto video pages to",
+        "to": "Kamilah Stevenson candidate channel ID UCqUPJMQdkCN6lsLVDnichPA",
+        "evidence_ids": [
+          "SRC-GLASP-KAMILAH-CHANNEL-INDEX-2026-10-28",
+          "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14",
+          "SRC-GLASP-KAMILAH-XRP-ETF-2026-01-13"
+        ],
+        "status": "THIRD_PARTY_ATTRIBUTION; NOT_FIRST_PARTY_IDENTITY_CONFIRMATION"
+      },
+      {
+        "id": "EDGE-TRANSCRIPT-CAMILA-SELF-IDENTIFICATION-2026",
+        "from": "Speaker in two indexed video transcripts",
+        "relation": "self-identifies in transcript as",
+        "to": "Camila Stevenson",
+        "evidence_ids": [
+          "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14",
+          "SRC-GLASP-KAMILAH-XRP-ETF-2026-01-13",
+          "SRC-GLASP-KAMILAH-CRYPTO-WEALTH-2026-01-15"
+        ],
+        "status": "TRANSCRIPT_EXCERPT; DOES_NOT_PROVE_EXACT_NAME_CAMILLA_STEPHENSON"
       }
     ],
     "competing_hypotheses": [
@@ -2314,6 +2354,25 @@
           "Separately measure XRPL-native USDC supply/transfers, XRP bridge-path share, XRP spot/derivatives flows and broad-market risk controls.",
           "Use pre/post-event windows and walk-forward tests; do not infer XRP price causality from announcements alone."
         ]
+      },
+      {
+        "id": "H-CAMILLA-STEPHENSON-VS-KAMILAH-CAMILA-IDENTITY-2026",
+        "hypothesis": "The requested 'Camilla Stephenson' may refer to the XRP creator indexed as Kamilah Stevenson whose transcripts use 'Camila Stevenson', but this is not yet confirmed.",
+        "supporting_evidence": [
+          "Glasp links four XRP/crypto videos to Kamilah Stevenson and exposes channel ID UCqUPJMQdkCN6lsLVDnichPA.",
+          "Two accessible transcript excerpts begin with the speaker identifying herself as Camila Stevenson.",
+          "The channel topic and requested XRP context align."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "The spelling differs across Camilla Stephenson, Kamilah Stevenson and Camila Stevenson.",
+          "No first-party channel metadata or explicit social cross-link equating these names was verified.",
+          "A different creator could use the exact name Camilla Stephenson; exact-name searches have not resolved the intended identity."
+        ],
+        "test_plan": [
+          "Verify the YouTube channel's own About metadata and linked official social profiles.",
+          "Compare a user-provided original video/phrase timestamp if it becomes available, without assuming identity from topic similarity.",
+          "Only after identity verification, enumerate the complete public upload inventory and extract transcripts with video IDs and timestamps."
+        ]
       }
     ],
     "market_observations": [
@@ -2568,17 +2627,59 @@
         "next_action": "Locate the original phrase and verify legal identity before linking any SBIC candidate to SBI Group or XRP."
       },
       "Camilla Stephenson": {
-        "status": "CANDIDATE_CHANNEL_FOUND; EXACT_IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
-        "finding": "The candidate channel Kamilah Stevenson | XRP & Stocks (channel ID UCXm6KAr1WHF6UN7g5b2W7wg) remains unconfirmed because the spelling differs and no first-party cross-link was found. Exact-name web searches did not establish a canonical Camilla Stephenson channel. Direct access to the YouTube /videos page was disabled in the web reader; the optional vidIQ channel search did not run because its connected account lacked sufficient credits, and the tool explicitly instructed not to retry. No exhaustive public-upload inventory is claimed.",
+        "status": "CANDIDATE_CHANNEL_ID_FOUND; EXACT_REQUESTED_IDENTITY_UNRESOLVED; INVENTORY_INCOMPLETE",
+        "finding": "A third-party Glasp index now links four XRP/crypto videos to Kamilah Stevenson and exposes candidate channel ID UCqUPJMQdkCN6lsLVDnichPA. Two indexed transcripts begin with the speaker self-identifying as Camila Stevenson. This supports a Kamilah/Camila spelling cluster, but no first-party link proves that this is the user-requested Camilla Stephenson. CryptoKrios separately reports 633 videos analyzed, but that count and its AI-generated prediction ratings are not independently verified. The exact phrase 'actual capital' remains unresolved; a video title containing 'ACTUALLY' is not the same phrase.",
         "source_ids": [
           "SRC-YT-KAMILAH-STEVENSON-CHANNEL-2026-10-27",
           "SRC-YT-KAMILAH-XRP-GLOBAL-FINANCE-2026-03-06",
           "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
-          "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16"
+          "SRC-YT-THIRD-PARTY-KAMILAH-REFERENCE-2025-12-16",
+          "SRC-GLASP-KAMILAH-CHANNEL-INDEX-2026-10-28",
+          "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14",
+          "SRC-GLASP-KAMILAH-XRP-ETF-2026-01-13",
+          "SRC-GLASP-KAMILAH-XRP-NEED-2026-03-19",
+          "SRC-GLASP-KAMILAH-CRYPTO-WEALTH-2026-01-15",
+          "SRC-CRYPTOKRIOS-KAMILAH-CHANNEL-2026-10-28"
         ],
-        "last_searched_at_utc": "2026-10-28T02:19:29.076Z",
-        "inventory_status": "PARTIAL_INDEXED_RESULTS_ONLY; CANONICAL_IDENTITY_AND_ALL_PUBLIC_UPLOADS_NOT_VERIFIED",
-        "next_action": "Continue public indexed search for the exact spelling and alternate spellings; only enumerate videos after first-party identity confirmation."
+        "last_searched_at_utc": "2026-10-28T04:16:30Z",
+        "inventory_status": "FOUR_THIRD_PARTY_INDEXED_VIDEOS_CAPTURED; NOT_EXHAUSTIVE; OFFICIAL_YOUTUBE_CHANNEL_PAGE_AND_RSS_FETCH_BLOCKED",
+        "next_action": "Confirm the candidate from first-party channel metadata or an explicit cross-link; then enumerate all public uploads using permitted YouTube metadata and preserve video IDs, dates and transcript/source hashes. Continue exact phrase searches separately.",
+        "candidate_channel": {
+          "name_as_indexed": "Kamilah Stevenson",
+          "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+          "source_type": "THIRD_PARTY_INDEX",
+          "identity_confidence": "CANDIDATE_ONLY"
+        },
+        "indexed_public_videos": [
+          {
+            "video_id": "QslbjGQD0MU",
+            "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+            "published_date": "2025-12-14",
+            "indexed_views": "~76K",
+            "source_id": "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14"
+          },
+          {
+            "video_id": "ci0FH73lbCs",
+            "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+            "published_date": "2026-01-13",
+            "indexed_views": "~20.4K",
+            "source_id": "SRC-GLASP-KAMILAH-XRP-ETF-2026-01-13"
+          },
+          {
+            "video_id": "rv0BAV0vLgo",
+            "title": "How Much XRP Do You ACTUALLY Need?",
+            "published_date": "2026-03-19",
+            "indexed_views": "~74.9K",
+            "source_id": "SRC-GLASP-KAMILAH-XRP-NEED-2026-03-19"
+          },
+          {
+            "video_id": "cxeX_eu_2H0",
+            "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+            "published_date": "2026-01-15",
+            "indexed_views": "~23.1K",
+            "source_id": "SRC-GLASP-KAMILAH-CRYPTO-WEALTH-2026-01-15"
+          }
+        ]
       }
     },
     "platform_capability_map": [
@@ -2701,7 +2802,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "Public XRP quote widgets are asynchronous; Coinbase's futures card has an unresolved contract-date conflict; ETF flows remain tracker-level and uncorroborated at fund level. Main signal has provider failures/confidence zero and no calibrated fixed-horizon out-of-sample skill has been demonstrated.",
+      "reason": "Current quote sources are not synchronized; Coinbase futures card has a contract-date conflict; ETF flow is tracker-level; no calibrated fixed-horizon out-of-sample predictive skill has been demonstrated. Creator identity and phrase evidence remain third-party/incomplete and are not market features.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -2732,7 +2833,7 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T04:14:00Z"
+      "last_checked_utc": "2026-10-28T04:16:30Z"
     },
     "massive_micro_ingestion": {
       "status": "REQUIRED_STANDARD",
@@ -3280,9 +3381,9 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-QUOTE-ETF-FLOW-DATA-QUALITY-2026-10-28T0414Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0414Z.json",
-    "current_research_head_before_ledger_update": "ecd62b4241dfc77d3f6c6f38e345a37b8a0bc0c6",
+    "snapshot_id": "XRP-CREATOR-IDENTITY-CANDIDATE-AND-LEDGER-CI-2026-10-28T0416Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0416Z.json",
+    "current_research_head_before_ledger_update": "a026914aab0b80db7b3fe33ef72e5da6351b6cb0",
     "current_research_checks": {
       "tests": "success",
       "tests_passed": 146,
@@ -3293,7 +3394,7 @@
       "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40624733420",
       "note": "These checks validate research branch head 70f73ddfbf6ca4db845686bc94687d792e4ab702 before this new snapshot commit."
     },
-    "current_research_head_before_final_verification_record": "079b82d1da21d235bbd113ab23ee393761bb85ca",
+    "current_research_head_before_final_verification_record": "9f6c607a6f1df9a906cc8032fb5c092242b5e893",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -3757,7 +3858,7 @@
       "main_modified_by_this_run": false,
       "merge_performed": false
     },
-    "snapshot_blob_sha": "11a4e20525ba8f549bbf4a08f3c685df0a51fb43",
+    "snapshot_blob_sha": "da7367d97891027c01b49fb722f996e2dec9bdde",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
@@ -5083,6 +5184,70 @@
       "title": "Research PR #1227 latest exact-head fail-closed gate",
       "accessed_at_utc": "2026-10-28T04:14:00Z",
       "note": "Fail-closed gate passed for research ledger head ecd62b4."
+    },
+    {
+      "id": "SRC-GLASP-KAMILAH-CHANNEL-INDEX-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://glasp.co/youtube/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "title": "Glasp index for Kamilah Stevenson videos",
+      "accessed_at_utc": "2026-10-28T04:16:30Z",
+      "note": "Third-party index links four XRP/crypto videos to a Kamilah Stevenson channel and exposes channel ID UCqUPJMQdkCN6lsLVDnichPA in the URL. This is a useful candidate identity lead, not first-party confirmation that the user-requested spelling Camilla Stephenson refers to this creator."
+    },
+    {
+      "id": "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "accessed_at_utc": "2026-10-28T04:16:30Z",
+      "note": "Glasp attributes this public video to Kamilah Stevenson, dated Dec 14, 2025, and displays about 76K views. The accessible transcript begins with the speaker identifying herself as Camila Stevenson. Video metadata/transcript are third-party indexed."
+    },
+    {
+      "id": "SRC-GLASP-KAMILAH-XRP-ETF-2026-01-13",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+      "accessed_at_utc": "2026-10-28T04:16:30Z",
+      "note": "Glasp attributes this public video to Kamilah Stevenson, dated Jan 13, 2026, displays about 20.4K views, and shows a transcript self-identification as Camila Stevenson. Not first-party identity proof."
+    },
+    {
+      "id": "SRC-GLASP-KAMILAH-XRP-NEED-2026-03-19",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "accessed_at_utc": "2026-10-28T04:16:30Z",
+      "note": "Glasp attributes this public video to Kamilah Stevenson, dated Mar 19, 2026, and displays about 74.9K views. The page does not expose a transcript in the inspected text. The word ACTUALLY in the title is not evidence for the separate exact phrase 'actual capital'."
+    },
+    {
+      "id": "SRC-GLASP-KAMILAH-CRYPTO-WEALTH-2026-01-15",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "accessed_at_utc": "2026-10-28T04:16:30Z",
+      "note": "Glasp attributes this public video to Kamilah Stevenson, dated Jan 15, 2026, displays about 23.1K views, and exposes a transcript that begins with the speaker identifying herself as Camila Stevenson."
+    },
+    {
+      "id": "SRC-CRYPTOKRIOS-KAMILAH-CHANNEL-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://cryptokrios.com/creators/kamilah-stevenson",
+      "title": "Third-party Kamilah Stevenson channel analysis",
+      "accessed_at_utc": "2026-10-28T04:16:30Z",
+      "note": "Third-party AI-generated analytics page reports 103,000 subscribers and 633 videos analyzed, but its channel count, extraction, prediction labels and scoring methodology were not independently verified. It explicitly says there is not enough verified prediction history to publish a meaningful accuracy figure; do not use its trust score as a calibrated forecast metric."
+    },
+    {
+      "id": "SRC-REPO-PR1227-CI-2026-10-28T0414Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40631122386",
+      "title": "Research PR #1227 latest exact-head CI",
+      "accessed_at_utc": "2026-10-28T04:16:30Z",
+      "note": "Research ledger head a026914 passed the core test suite: 146 tests in 5.87 seconds."
+    },
+    {
+      "id": "SRC-REPO-PR1227-GATE-2026-10-28T0413Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40631122287",
+      "title": "Research PR #1227 latest exact-head fail-closed gate",
+      "accessed_at_utc": "2026-10-28T04:16:30Z",
+      "note": "Fail-closed gate passed for research ledger head a026914."
     }
   ],
   "limitations": [
@@ -5808,6 +5973,29 @@
         "snapshot_blob_sha": "11a4e20525ba8f549bbf4a08f3c685df0a51fb43"
       },
       "snapshot_blob_sha": "11a4e20525ba8f549bbf4a08f3c685df0a51fb43"
+    },
+    {
+      "recorded_at_utc": "2026-10-28T04:16:30Z",
+      "update_type": "CREATOR_CHANNEL_CANDIDATE_AND_CURRENT_LEDGER_CI",
+      "snapshot_id": "XRP-CREATOR-IDENTITY-CANDIDATE-AND-LEDGER-CI-2026-10-28T0416Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0416Z.json",
+      "details": "Added four third-party indexed Kamilah/Camila Stevenson video leads and candidate channel ID UCqUPJMQdkCN6lsLVDnichPA while preserving the exact Camilla Stephenson identity as unresolved. Added a competing identity hypothesis and disconfirming evidence; explicitly kept 'actual capital' unresolved. Re-verified latest research ledger head a026914 passed 146 tests in 5.87s and fail-closed gate passed.",
+      "validation": {
+        "source_ids_unique": true,
+        "creator_identity_exact_match": false,
+        "video_inventory_exhaustive": false,
+        "finding_source_refs": "PASS",
+        "graph_edge_source_refs": "PASS",
+        "hypothesis_disconfirming_evidence": "PRESENT",
+        "pr1227_exact_head_ci": "PASS_146_TESTS_5.87S",
+        "pr1227_fail_closed_gate": "PASS",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "snapshot_json": "PASS",
+        "snapshot_blob_sha": "da7367d97891027c01b49fb722f996e2dec9bdde"
+      },
+      "snapshot_blob_sha": "da7367d97891027c01b49fb722f996e2dec9bdde"
     }
   ],
   "mission_priority": {
