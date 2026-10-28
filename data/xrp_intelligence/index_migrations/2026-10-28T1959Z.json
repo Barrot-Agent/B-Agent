@@ -1,7 +1,7 @@
 {
   "migration_id": "XRP-LEDGER-INDEX-POINTER-20261028T1959Z",
   "recorded_at_utc": "2026-10-28T19:59:48Z",
-  "updated_at_utc": "2026-10-28T20:02:30Z",
+  "updated_at_utc": "2026-10-28T20:08:15Z",
   "status": "DRAFT_NOT_MERGED",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
@@ -19,16 +19,16 @@
     "status": "PRESERVED_SUPERSEDED_FOR_CURRENT_HANDOFF"
   },
   "current_snapshot": {
-    "path": "data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
-    "blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
-    "commit_sha": "5cfa94252bb517c0349762482c1a872d98d0e48c",
-    "characters": 533567,
+    "path": "data/xrp_intelligence/snapshots/2026-10-28T2008Z.json",
+    "blob_sha": "4a018851b109239b9bf9c2a849ebf7568cc5be8a",
+    "commit_sha": "cbfcf2425e6c98d042172b6b34aed6437fe621e1",
+    "characters": 534104,
     "status": "CURRENT_POINTER_TARGET"
   },
   "new_index": {
     "path": "data/xrp_intelligence/research_ledger.json",
     "format_version": "2.0",
-    "characters": 455596
+    "characters": 460621
   },
   "preservation": {
     "source_records_retained": true,
@@ -50,6 +50,13 @@
     "py_compile": "PASS",
     "actual_github_pointer_readback": "PASS",
     "full_repository_local_integration": "NOT_RUN",
-    "reason": "The core CI workflow only triggers pull_request for base main. Local tests used an isolated synthetic repository fixture; the actual branch index/snapshot pointer was separately read back through GitHub and the blob SHA matched."
+    "current_main_paper_replay": "PASS_2347_ROWS",
+    "reason": "Core CI workflow only triggers pull_request for base main. The full repository integration test was not run against a complete local checkout."
+  },
+  "previous_pointer_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
+    "blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
+    "commit_sha": "5cfa94252bb517c0349762482c1a872d98d0e48c",
+    "status": "PRESERVED_PREVIOUS_CAPTURE"
   }
 }
