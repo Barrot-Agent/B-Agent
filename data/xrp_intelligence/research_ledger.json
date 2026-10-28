@@ -6500,9 +6500,24 @@
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T13:03:30Z",
     "snapshot_commit_sha": "a1fe277c7439ee05a559e0984fa06de2958715de",
     "post_snapshot_verification": {
-      "verified_at_utc": "2026-10-28T13:03:30Z",
-      "status": "PENDING_AFTER_INDEX_UPDATE_CI",
-      "note": "Snapshot file was read back and parsed; blob SHA recorded in the index. Exact-head CI/gate on the updated index remains pending."
+      "verified_at_utc": "2026-10-28T13:05:22Z",
+      "status": "SNAPSHOT_HASH_MATCH_AND_INDEX_HEAD_CI_PASS",
+      "snapshot_blob_sha": "f46422d566542be799bf42887d4f61baa858ad1f",
+      "snapshot_hash_matches_index": true,
+      "verified_index_head_sha": "bf6e3fe5f3727ebe696c58a8c2c81098b54283d5",
+      "ci": {
+        "status": "PASS",
+        "tests_passed": 145,
+        "duration_seconds": 4.89,
+        "run_id": 40693236070,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40693236070"
+      },
+      "gate": {
+        "status": "PASS",
+        "run_id": 40693235867,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40693235867"
+      },
+      "note": "The verified CI applies to index head bf6e3fe. A later run-update append is now being recorded in the index and will have its own separate CI result."
     }
   },
   "sources": [
@@ -8929,6 +8944,30 @@
       "title": "Current open pull-request inventory",
       "accessed_at_utc": "2026-10-28T13:03:30Z",
       "note": "GitHub search returned 83 open PR records at capture. Several safety proposals overlap and many use stale bases. PR #1253 is a fresh-main accuracy-evaluator safety proposal; PR #1252 is an unrelated geometry/OBJ feature. No PR was merged by this run."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-TRADE-APPEND-20261028T1306Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "title": "Main advanced after snapshot: paper-trading log append",
+      "accessed_at_utc": "2026-10-28T13:06:30Z",
+      "note": "Latest main commit after the 13:03Z research snapshot. Commit message is Paper trade cycle [skip ci] and changed only web/paper_trading_log.jsonl. This is generated-data-only drift; no XRP code or workflow change was observed."
+    },
+    {
+      "id": "SRC-PR1253-CURRENT-BASE-COMPARE-20261028T1306Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
+      "title": "PR #1253 current base comparison",
+      "accessed_at_utc": "2026-10-28T13:06:30Z",
+      "note": "PR head e05d04605f78b5dc4ad94bdce0c5aed09b6781f6 is based on main 070d538bb90c25bdcb64edd1532f83b082c93d7e. Current main advanced one commit to be4a9f485d15ea74ee82d2aae16ca6879423c7d9; compare is 3 ahead/1 behind, with the intervening main commit only appending a paper-trading row. Exact-head CI 147 passed and gate passed; PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-LEDGER-INDEX-CI-20261028T1305Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40693236070",
+      "title": "Research ledger index exact-head CI",
+      "accessed_at_utc": "2026-10-28T13:05:22Z",
+      "note": "Exact index commit bf6e3fe5f3727ebe696c58a8c2c81098b54283d5 passed 145 tests in 4.89s. Fail-closed gate run 40693235867 passed. This verifies that index head, not any subsequent index commit."
     }
   ],
   "limitations": [
@@ -8976,7 +9015,9 @@
     "Alpha Finance's XRP ETF tracker covers five funds through 27 Oct 2026; fund universe and source independence are not fully reconciled.",
     "Reuters AI-capital/dollar scenario is macro context only; it does not establish XRP-specific causation.",
     "Exact-name Camilla Stephenson results identify a UK film location-management professional, but no first-party link resolves the requested YouTube identity.",
-    "Main commit 070d538 is a generated cross-analysis refresh marked [skip ci]; exact-head main CI is not verified."
+    "Main commit 070d538 is a generated cross-analysis refresh marked [skip ci]; exact-head main CI is not verified.",
+    "After the 13:03Z snapshot, main advanced to be4a9f4 with a generated paper-trading-log append; this later state is captured in the run_updates record, while the historical snapshot remains unchanged.",
+    "PR #1253 is now one generated-data-only main commit behind; its exact-head CI/gate remain valid for head e05d046, but review must account for current main before merge."
   ],
   "run_updates": [
     {
@@ -10244,6 +10285,34 @@
         "deployment_executed": false,
         "snapshot_commit_sha": "a1fe277c7439ee05a559e0984fa06de2958715de",
         "snapshot_readback_json_valid": true
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T13:06:30Z",
+      "update_type": "POST_SNAPSHOT_MAIN_ADVANCE_AND_CI_VERIFICATION",
+      "snapshot_id": "XRP-ACCURACY-METRIC-MACRO-AND-IDENTITY-UPDATE-202610281303Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1303Z.json",
+      "details": "After the immutable 13:03Z snapshot, main advanced to be4a9f4 through a paper-trading-log-only commit. Rechecked PR #1253 (3 ahead/1 behind current main; intervening change is generated log only) and verified exact-head CI/gate for the ledger index commit bf6e3fe (145 tests in 4.89s; gate pass). Updated PR #1251 handoff to state its branch is stale/diverged and must not be merged as-is. No main write or merge.",
+      "source_ids": [
+        "SRC-GH-MAIN-PAPER-TRADE-APPEND-20261028T1306Z",
+        "SRC-PR1253-CURRENT-BASE-COMPARE-20261028T1306Z",
+        "SRC-LEDGER-INDEX-CI-20261028T1305Z"
+      ],
+      "validation": {
+        "verified_index_head_sha": "bf6e3fe5f3727ebe696c58a8c2c81098b54283d5",
+        "index_ci": "PASS_145_TESTS_4.89S",
+        "index_ci_run_id": 40693236070,
+        "fail_closed_gate": "PASS",
+        "gate_run_id": 40693235867,
+        "snapshot_blob_sha": "f46422d566542be799bf42887d4f61baa858ad1f",
+        "snapshot_hash_matches_index": true,
+        "current_main_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "open_prs_returned": 84,
+        "pr1253_status": "OPEN_DRAFT; EXACT_HEAD_CI_PASS_147_TESTS; ONE_GENERATED_DATA_COMMIT_BEHIND_MAIN",
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "deployment_executed": false
       }
     }
   ],
