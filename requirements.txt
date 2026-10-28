@@ -9,3 +9,7 @@ requests>=2.32.0
 python-dotenv>=1.0.1
 pydantic>=2.7.1
 pydantic-settings>=2.3.0
+numpy>=2.2.6,<3
+PyJWT>=2.15.1
+cryptography>=50.0.2
+websockets>=12.0
