@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T01:08:30Z",
+    "captured_at_utc": "2026-10-28T02:17:26.954Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "34812763a099c85a3a25bd1d1037529bb20bc0be",
+      "main_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -32,7 +32,7 @@
           "state": "open",
           "draft": true,
           "head_sha": "ae17e56ab245f575317beab35b96178dff4732a4",
-          "status": "checks previously passed; branch based on older main; not merged"
+          "status": "Draft; based on older main; generated-data direct writes remain active."
         },
         {
           "number": 1227,
@@ -40,8 +40,8 @@
           "title": "Research: carry XRP intelligence ledger onto fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "cc98e2a4f96c06d2c4b6e8ca4773b0026424efbb",
-          "status": "Tests PASS; fail-closed gate PASS; historical branch retained"
+          "head_sha": "f6ff965a2254779f63f0c6726ca786ae6bc31d55",
+          "status": "Research ledger updated in this run; prior exact-head CI/gate passed; new commit requires its own CI."
         },
         {
           "number": 1228,
@@ -50,7 +50,7 @@
           "state": "open",
           "draft": true,
           "head_sha": "649d3f60a4a2924e5124607c43609908ad1ed4c7",
-          "status": "Tests PASS; fail-closed gate PASS; not merged"
+          "status": "Draft; previous exact-head tests/gate passed; not merged."
         },
         {
           "number": 1230,
@@ -59,7 +59,43 @@
           "state": "open",
           "draft": true,
           "head_sha": "6a11fc8f2eb335fa7c5b26e2cb31f1065e372622",
-          "status": "Tests PASS; fail-closed gate PASS; not merged"
+          "status": "Historical draft; test-file coverage gap found and corrected in fresh-main PR #1236."
+        },
+        {
+          "number": 1236,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+          "title": "Safety: fresh-main deterministic XRP summary fallback",
+          "state": "open",
+          "draft": true,
+          "head_sha": "0937a9ec4d6e95bd606303f1de4ac20602614566",
+          "status": "Exact-head CI PASS (151 tests, 6.46s); fail-closed gate PASS; unmerged."
+        },
+        {
+          "number": 1235,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1235",
+          "title": "Safety: require local approval for Termux queue execution (fresh main)",
+          "state": "open",
+          "draft": true,
+          "head_sha": "854e1f15368222af1b311c6ff0a66cdb76868054",
+          "status": "Draft; exact-head checks not revalidated in this snapshot."
+        },
+        {
+          "number": 1225,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1225",
+          "title": "Add dependency-aware bundle task execution and durable resume",
+          "state": "open",
+          "draft": true,
+          "head_sha": "7c9d8f264039e1a8ca3fe5c28a344133f73e4d14",
+          "status": "Draft; latest dedicated smoke workflow verification still required."
+        },
+        {
+          "number": 1224,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1224",
+          "title": "Safety: fresh-main XRP signal integrity and honest forecast evaluation",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ec7a70162cc09ba0ac2450a580b2dab67cd2dbf4",
+          "status": "Draft; older base; broad signal-integrity and fixed-horizon evaluation fix remains unmerged."
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -70,17 +106,18 @@
       },
       "current_main_commit": {
         "message": "Paper trade cycle [skip ci]",
-        "authored_at_utc": "2026-10-28T00:12:40Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/da52a95c17ac2cffc55197593620360ebedd5dea",
-        "scope": "Appended a BTC-USD paper-trading log row; no source-code change identified in the inspected diff."
+        "authored_at_utc": "2026-10-28T02:06:40.085192Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/db114efe6b70a6a0cceb25f9eadabf5299f89824",
+        "scope": "Inspected diff only appended one BTC-USD paper-trading HOLD row; no code or workflow change in this commit."
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
-        "main_sha": "da52a95c17ac2cffc55197593620360ebedd5dea",
+        "main_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
         "main_branch_protected": true,
         "branch_protection_details": "Detailed protection read remains 403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION; effective required checks not independently verified.",
         "main_ci": {
-          "current_head_status": "NOT_CHECKED_THIS_RUN"
+          "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
+          "note": "Latest main commit is a generated-data-only [skip ci] commit; effective branch-protection required checks remain inaccessible to this integration and were not independently verified."
         }
       },
       "current_research_head": "d4fd1a34370ca3d53f736660de11ed9174207cf0",
@@ -141,6 +178,28 @@
         ],
         "changes": 1,
         "interpretation": "One appended generated paper-trading row; no code/workflow change in this delta."
+      },
+      "current_pr_1236_state": {
+        "pr": 1236,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "mergeable": true,
+        "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+        "head_sha": "0937a9ec4d6e95bd606303f1de4ac20602614566",
+        "ci": {
+          "status": "PASS",
+          "tests_passed": 151,
+          "duration_seconds": 6.46,
+          "run_id": 40619690312,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40619690312"
+        },
+        "gate": {
+          "status": "PASS",
+          "run_id": 40619690271,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40619690271"
+        },
+        "main_modified_by_this_run": false,
+        "merge_performed": false
       }
     },
     "critical_engine_findings": [
@@ -396,6 +455,42 @@
           "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40612760845",
           "merged": false
         }
+      },
+      {
+        "id": "SIGNAL-SUMMARY-TEST-COVERAGE-GAP-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "HIGH",
+        "status": "FOUND_IN_PR1230; CORRECTED_IN_PR1236; EXACT_HEAD_CI_AND_GATE_PASS; UNMERGED",
+        "files": [
+          {
+            "path": "tests/test_signal_summary_fallback.py",
+            "blob_sha": "acf79e928628b1af781e17bec411e1a63605cef9",
+            "branch": "safety/signal-summary-fallback-artifact-only-20261028-0102z"
+          },
+          {
+            "path": "tests/test_signal_summary_fallback.py",
+            "blob_sha": "a23c41099428d044c512a84b9394e580af0372a0",
+            "branch": "safety/signal-summary-fallback-fresh-main-20261028-0209z"
+          }
+        ],
+        "finding": "PR #1230's file named tests/test_signal_summary_fallback.py duplicated production implementation and defined no test functions, so its passing CI run did not exercise the new summary fallback. Fresh-main PR #1236 replaced it with six actual regression tests. Exact head 0937a9ec4d6e95bd606303f1de4ac20602614566 passed 151 tests and the fail-closed gate.",
+        "consequence": "A green suite can conceal a missing regression test when the test path exists but contains no test functions.",
+        "proposed_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+        "verification": {
+          "ci": "PASS",
+          "tests_passed": 151,
+          "duration_seconds": 6.46,
+          "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40619690312",
+          "gate": "PASS",
+          "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40619690271",
+          "merged": false
+        },
+        "source_ids": [
+          "SRC-REPO-PR1230-TEST-COVERAGE-GAP-2026-10-28",
+          "SRC-REPO-PR1236-TESTS-2026-10-28T0214Z",
+          "SRC-REPO-PR1236-CI-2026-10-28T0214Z",
+          "SRC-REPO-PR1236-GATE-2026-10-28T0214Z"
+        ]
       }
     ],
     "research_findings": [
@@ -756,6 +851,44 @@
           "SRC-CFTC-XRP-COINBASE-DERIVATIVES-2026-10-20"
         ],
         "uncertainty": "Weekly open interest is not volume or directional flow; contract units and product types differ, and trader-category positions cannot identify motives."
+      },
+      {
+        "id": "CIRCLE-SBI-ARC-USDC-COLLATERAL-2026",
+        "evidence_class": "CONFIRMED_PRIMARY_SOURCE_ANNOUNCEMENTS",
+        "status": "COMPANY_REPORTED_ECOSYSTEM_LINKS; LIVE_VALIDATOR_ACTIVITY_AND_XRP_FLOWS_UNKNOWN",
+        "claim": "Circle's Q2 2026 release names SBI Group in the announced founding third-party validator cohort for Arc, describes JCB/USDC Japan cross-border treasury and merchant-payment use cases, and reports Marex's USDC initial-margin collateral transaction in regulated derivatives clearing. Separately, Ripple and SBI Group/SBI VC Trade announced RLUSD availability in Japan on June 24, 2026. This creates a documented indirect bridge between SBI Group's Ripple/RLUSD relationships and Circle's Arc/USDC ecosystem, alongside separate SBI-linked XRP payment relationships.",
+        "interpretation": "The evidence is consistent with multi-rail institutional positioning, not exclusive allegiance. It does not establish a direct Circle–Ripple commercial agreement, current Arc validator operations, XRP collateral use, XRP purchases, or migration of flows between XRP and USDC.",
+        "source_ids": [
+          "SRC-CIRCLE-Q2-RESULTS-2026-08-05",
+          "SRC-RIPPLE-SBI-RLUSD",
+          "SRC-SBI-RLUSD-JAPAN-2026"
+        ],
+        "uncertainty": "Circle's press release is company-reported; live status/volume of Arc, JCB rollout, and any XRP/USDC flow interaction require independent verification."
+      },
+      {
+        "id": "XRP-ETF-FLOW-TRACKER-CROSSCHECK-2026-10-26",
+        "evidence_class": "SECONDARY_UNVERIFIED_WITH_PARTIAL_CROSSCHECK",
+        "status": "OCT26_OUTFLOW_MAGNITUDE_PLAUSIBLE; PREDICTIVE_VALUE_UNKNOWN",
+        "claim": "XRP Insights reports -2.70M XRP (about -$3.56M) on Oct 26 for six spot funds plus BITW; Alpha Finance reports -$3.6M for a five-fund series at a $1.2957 close, equivalent to roughly -2.78M XRP.",
+        "interpretation": "The observations are directionally similar, but the trackers have different fund universes and may share issuer data lineage. One day's outflow is not a standalone bearish signal and does not establish causal price impact.",
+        "source_ids": [
+          "SRC-XRP-ETF-FLOWS-XRPINSIGHTS-2026-10-26",
+          "SRC-XRP-ETF-FLOWS-ALPHA-2026-10-27"
+        ],
+        "uncertainty": "Fund-level issuer observations, settlement timing and independence have not been fully reconciled."
+      },
+      {
+        "id": "SIGNAL-SUMMARY-TEST-COVERAGE-GAP-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "CORRECTED_IN_PR1236; EXACT_HEAD_CI_AND_GATE_PASS; UNMERGED",
+        "claim": "PR #1230's test file defined no regression tests. PR #1236 now includes six actual summary-fallback tests; its exact head passed 151 tests in 6.46 seconds and the fail-closed gate.",
+        "source_ids": [
+          "SRC-REPO-PR1230-TEST-COVERAGE-GAP-2026-10-28",
+          "SRC-REPO-PR1236-TESTS-2026-10-28T0214Z",
+          "SRC-REPO-PR1236-CI-2026-10-28T0214Z",
+          "SRC-REPO-PR1236-GATE-2026-10-28T0214Z"
+        ],
+        "uncertainty": "The fix remains an unmerged draft PR; current main behavior is unchanged."
       }
     ],
     "relationship_graph": [
@@ -1238,6 +1371,49 @@
           "SRC-CFTC-XRP-COINBASE-DERIVATIVES-2026-10-20"
         ],
         "status": "CONFIRMED_REGULATORY_REPORTING_OBSERVATION"
+      },
+      {
+        "id": "EDGE-CIRCLE-ARC-SBI-GROUP-VALIDATOR-COHORT-2026",
+        "from": "Circle / Arc",
+        "relation": "named_in_announced_founding_third_party_validator_cohort_with",
+        "to": "SBI Group",
+        "evidence_ids": [
+          "SRC-CIRCLE-Q2-RESULTS-2026-08-05"
+        ],
+        "status": "COMPANY_REPORTED_ANNOUNCEMENT; LIVE_VALIDATOR_ACTIVITY_NOT_INDEPENDENTLY_VERIFIED"
+      },
+      {
+        "id": "EDGE-CIRCLE-JCB-USDC-JAPAN-2026",
+        "from": "Circle USDC infrastructure",
+        "relation": "announced_collaboration_with",
+        "to": "JCB Japan cross-border treasury and merchant-payment use cases",
+        "evidence_ids": [
+          "SRC-CIRCLE-Q2-RESULTS-2026-08-05"
+        ],
+        "status": "ANNOUNCED_USE_CASE; CURRENT_ROLLOUT_AND_VOLUME_UNKNOWN"
+      },
+      {
+        "id": "EDGE-USDC-MAREX-DERIVATIVES-COLLATERAL-2026",
+        "from": "USDC",
+        "relation": "company_reported_as_used_for_initial_margin_in",
+        "to": "Marex regulated derivatives clearing",
+        "evidence_ids": [
+          "SRC-CIRCLE-Q2-RESULTS-2026-08-05"
+        ],
+        "status": "COMPANY_REPORTED_TRANSACTION; SCALE_AND_REPLICATION_UNKNOWN"
+      },
+      {
+        "id": "EDGE-SBI-MULTI-RAIL-CIRCLE-RIPPLE-2026",
+        "from": "SBI Group",
+        "relation": "has_separate_announced_ecosystem_relationships_with",
+        "to": "Circle / Arc and Ripple / RLUSD / XRP-linked payment businesses",
+        "evidence_ids": [
+          "SRC-CIRCLE-Q2-RESULTS-2026-08-05",
+          "SRC-RIPPLE-SBI-RLUSD",
+          "SRC-SBI-RLUSD-JAPAN-2026",
+          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+        ],
+        "status": "MULTI-RAIL_LINKS_DOCUMENTED; EXCLUSIVITY_AND_NET_XRP_FLOWS_UNKNOWN"
       }
     ],
     "competing_hypotheses": [
@@ -1632,6 +1808,55 @@
         "test_plan": [
           "Normalize each contract multiplier and expiry/product type; collect time-aligned exchange OI, volume, basis/funding and liquidations; compare with spot CVD, exchange balances and ETF flows; evaluate out-of-sample incremental predictive value."
         ]
+      },
+      {
+        "id": "H-SBI-MULTI-RAIL-COEXISTENCE-VS-EXCLUSIVITY-2026",
+        "hypothesis": "SBI Group's announced links to Circle's Arc validator cohort and Ripple's RLUSD-in-Japan rollout are more consistent with a multi-rail strategy than proof of an exclusive XRP/Ripple alignment.",
+        "supporting_evidence": [
+          "Circle's Q2 release names SBI Group in the announced Arc founding validator cohort.",
+          "Ripple and SBI Group announced RLUSD availability through SBI VC Trade in Japan."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "A validator-cohort announcement may be a limited technical role rather than evidence of production usage or strategic allocation.",
+          "No public evidence in this snapshot establishes exclusivity, actual Arc throughput, XRP inventory, or migration between rails."
+        ],
+        "test_plan": [
+          "Verify current Arc validator membership and operational metrics from official sources.",
+          "Track separate RLUSD/USDC issuance and transfers by chain and venue, SBI product availability, and XRP bridge-path volumes.",
+          "Search filings/contracts for exclusivity or collateral terms; do not infer them from partnerships."
+        ]
+      },
+      {
+        "id": "H-USDC-COLLATERAL-SUBSTITUTION-VS-XRP-COMPLEMENTARITY-2026",
+        "hypothesis": "USDC's reported use as regulated derivatives collateral can substitute for XRP in some dollar-margin use cases, while native USDC on XRPL and RLUSD distribution may also complement XRPL activity without creating direct XRP demand.",
+        "supporting_evidence": [
+          "Circle reports a Marex USDC initial-margin transaction in regulated derivatives clearing.",
+          "Circle documents native USDC on XRPL; Ripple/SBI announce RLUSD availability in Japan."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "USDC collateral use does not establish that collateral is posted on XRPL or that XRP would otherwise have been used.",
+          "No asset-specific data currently shows XRP collateral balances displaced by USDC or incremental XRP bridge demand created by stablecoin growth."
+        ],
+        "test_plan": [
+          "Separate USDC collateral venue data from XRPL transfers and XRP collateral/bridge flows.",
+          "Measure XRP bridge-path share, native USDC supply/transfers, RLUSD circulation, venue balances and margin-product collateral mix.",
+          "Test incremental effects out of sample after controlling for broad market and liquidity conditions."
+        ]
+      },
+      {
+        "id": "H-XRP-ETF-DAILY-FLOW-PRICE-IMPACT-UNKNOWN-2026-10-26",
+        "hypothesis": "The Oct 26 XRP ETF net outflow is a useful flow observation but does not by itself establish a bearish price signal or causal price effect.",
+        "supporting_evidence": [
+          "Two trackers report roughly $3.5M-$3.6M of Oct 26 net outflow after conversion, with slightly different fund universes."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "The trackers may share issuer source data, and daily flows can be small relative to broader spot/derivatives liquidity; price may move independently.",
+          "The Oct 27 $0 figure in one tracker may be provisional or incomplete."
+        ],
+        "test_plan": [
+          "Reconstruct daily fund-level creations/redemptions from issuer-reported holdings and align to XRP spot price/volume, futures basis/funding, and market-wide risk factors.",
+          "Test lagged flow features against price/volatility baselines using walk-forward splits; block until provenance and settlement checks pass."
+        ]
       }
     ],
     "market_observations": [
@@ -1755,6 +1980,18 @@
           "SRC-CFTC-XRP-CME-TFF-2026-10-20"
         ],
         "model_admission": "BLOCKED_PENDING_CROSS-VENUE_OI_VOLUME_BASIS_AND_SPOT_FLOW_ALIGNMENT"
+      },
+      {
+        "id": "XRP-ETF-FLOWS-CROSS-TRACKER-2026-10-26",
+        "evidence_class": "SECONDARY_MARKET_DATA_CROSSCHECK",
+        "as_of_date": "2026-10-26",
+        "observation": "XRP Insights reports net outflow of 2.70M XRP (about $3.56M) across six U.S. spot XRP ETFs plus BITW. Alpha Finance's five-fund series reports about $3.6M net outflow on Oct 26 at an XRP close of $1.2957, approximately 2.78M XRP equivalent. Alpha reports $0 for the Oct 27 session, but its view does not publish fund AUM/holdings and may reflect incomplete settlement.",
+        "interpretation": "The Oct 26 outflow direction and order of magnitude are broadly similar after unit conversion, but fund universe, publication timing and source independence differ. This is not fully independent corroboration and does not establish price impact.",
+        "source_ids": [
+          "SRC-XRP-ETF-FLOWS-XRPINSIGHTS-2026-10-26",
+          "SRC-XRP-ETF-FLOWS-ALPHA-2026-10-27"
+        ],
+        "model_admission": "BLOCKED_PENDING_FUND_LEVEL_HOLDINGS_FLOW_RECONCILIATION_AND_SETTLEMENT_ALIGNMENT"
       }
     ],
     "phrase_investigation": {
@@ -1914,7 +2151,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "Current signal has confidence 0 and provider failure; no synchronized feature set or verified out-of-sample calibration has been established.",
+      "reason": "Main XRP signal remains confidence 0 with provider failures and academic/protocol-news contamination; no calibrated fixed-horizon out-of-sample evidence is available.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -1965,7 +2202,12 @@
       "Review PR #1230: exact-head CI and fail-closed gate passed; keep draft/unmerged pending approval. Main still has the provider-failure and direct-write behavior until a reviewed fix is merged.",
       "Measure actual RLUSD and USDC distribution and Robinhood/Bitstamp XRPL settlement separately; keep competition and XRP bridge-asset demand as hypotheses.",
       "Continue safe persistence redesign for scheduled generated-data writers; preserve paper-trading history and do not modify main.",
-      "Keep forecast status NOT_ISSUED until fixed-horizon walk-forward tests, leakage controls, baselines, calibration, drift checks and shadow evaluation pass."
+      "Keep forecast status NOT_ISSUED until fixed-horizon walk-forward tests, leakage controls, baselines, calibration, drift checks and shadow evaluation pass.",
+      "Review PR #1236 after exact-head tests and gate; keep draft/unmerged until approval and do not deploy automatically.",
+      "Continue fixing the scheduled Knowledge Signal Cycle direct-write path; preserve idempotent ingestion and immutable historical snapshots while removing unreviewed main-branch writes.",
+      "Reconcile XRP ETF daily flows at fund level using issuer-reported holdings/redemptions and common settlement cutoffs; keep aggregate tracker features blocked until source lineage and universe match.",
+      "Verify Circle Arc validator operating status, JCB USDC rollout, and Marex collateral scale from current official sources before treating announced relationships as live flow.",
+      "Continue the exact phrase and canonical Camilla Stephenson channel investigations; do not claim exhaustive video coverage until the identity is verified."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -2052,11 +2294,12 @@
     },
     "repository_ci": {
       "repository": "Barrot-Agent/B-Agent",
-      "main_sha": "34812763a099c85a3a25bd1d1037529bb20bc0be",
+      "main_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
       "main_commit": {
         "message": "Paper trade cycle [skip ci]",
-        "authored_at_utc": "2026-10-27T22:04:47Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741"
+        "authored_at_utc": "2026-10-28T02:06:40.085192Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/db114efe6b70a6a0cceb25f9eadabf5299f89824",
+        "scope": "One appended BTC-USD HOLD row only."
       },
       "main_branch_protected": true,
       "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
@@ -2153,8 +2396,8 @@
         "state": "open_draft_unmerged",
         "note": "Exact-head CI and fail-closed gate passed. No merge or deployment occurred."
       },
-      "as_of_utc": "2026-10-28T01:08:30Z",
-      "main_head_status": "RECENT_SCHEDULED_WORKFLOWS_CONTINUE_TO_WRITE_GENERATED_DATA",
+      "as_of_utc": "2026-10-28T02:17:26.954Z",
+      "main_head_status": "LATEST_MAIN_COMMIT_DATA_ONLY; EXACT_HEAD_CODE_CI_NOT_CHECKED",
       "signal_summary_failure": {
         "run_id": 40611307868,
         "status": "FAILURE",
@@ -2202,7 +2445,34 @@
         "tests_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613156802",
         "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613156767"
       },
-      "new_snapshot_commit_status": "PENDING_EXACT_HEAD_CI_AT_CAPTURE"
+      "new_snapshot_commit_status": "PENDING_EXACT_HEAD_CI_AT_CAPTURE",
+      "signal_summary_pr_1236": {
+        "pr": 1236,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "mergeable": true,
+        "base_sha": "db114efe6b70a6a0cceb25f9eadabf5299f89824",
+        "head_sha": "0937a9ec4d6e95bd606303f1de4ac20602614566",
+        "tests": "PASS",
+        "tests_passed": 151,
+        "duration_seconds": 6.46,
+        "test_run_id": 40619690312,
+        "test_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40619690312",
+        "gate": "PASS",
+        "gate_run_id": 40619690271,
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40619690271",
+        "actual_fallback_tests_executed": 6,
+        "main_modified_by_this_run": false,
+        "merge_performed": false
+      },
+      "signal_summary_test_coverage_gap": {
+        "finding": "PR #1230 test file contained a copy of production script and no test functions; PR #1236 corrected the file with six actual regression tests.",
+        "previous_ci_run": "40619468578",
+        "previous_run_test_count": 145,
+        "corrected_head": "0937a9ec4d6e95bd606303f1de4ac20602614566",
+        "corrected_run_test_count": 151,
+        "status": "CORRECTED_AND_EXACT_HEAD_VERIFIED_IN_DRAFT_PR"
+      }
     },
     "market_data_quality_findings": [
       {
@@ -2294,6 +2564,18 @@
           "SRC-XRPL-MPT-ISSUANCE-DOCS"
         ],
         "next_action": "Check current official protocol docs/amendment status and verify the exact issuance flags before any liquidity conclusion."
+      },
+      {
+        "id": "XRP-ETF-FLOW-UNIVERSE-AND-SETTLEMENT-QUALITY-2026-10-28",
+        "severity": "MEDIUM",
+        "status": "DIRECTIONAL_CROSSCHECK_PLAUSIBLE; FULL_RECONCILIATION_PENDING",
+        "finding": "Two public XRP ETF trackers report similar Oct 26 net outflow magnitude after converting USD to XRP, but one tracks six spot funds plus BITW using issuer-reported holdings while another tracks five funds and does not publish fund-level AUM/holdings in its view. Oct 27 figures may not be fully settled.",
+        "interpretation": "Do not interpret small dashboard differences as a true data conflict until fund universe, source lineage, settlement date and unit conversion are aligned.",
+        "source_ids": [
+          "SRC-XRP-ETF-FLOWS-XRPINSIGHTS-2026-10-26",
+          "SRC-XRP-ETF-FLOWS-ALPHA-2026-10-27"
+        ],
+        "next_action": "Fetch issuer-reported daily holdings/creation-redemption data for each fund; align timestamps and fund universe; preserve raw response hashes; compute flow in XRP and USD from the same close."
       }
     ],
     "mission_priority": {
@@ -2322,19 +2604,19 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-COINBASE-DERIVATIVES-CFTC-2026-10-20-2026-10-28T0108Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0108Z.json",
-    "current_research_head_before_ledger_update": "d5872c089ccfaa0c82f1aaa6eb5adff97e430b28",
+    "snapshot_id": "XRP-CIRCLE-SBI-ARC-ETF-FLOWS-PR1236-2026-10-28T0217Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0217Z.json",
+    "current_research_head_before_ledger_update": "f6ff965a2254779f63f0c6726ca786ae6bc31d55",
     "current_research_checks": {
       "tests": "PASS",
       "gate": "PASS",
-      "as_of_utc": "2026-10-28T01:08:19Z",
-      "validated_head_sha": "d5872c089ccfaa0c82f1aaa6eb5adff97e430b28",
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613156802",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613156767",
-      "note": "These checks validate the immediately preceding ledger head; this new snapshot/ledger commit requires its own exact-head checks."
+      "as_of_utc": "2026-10-28T02:08:00Z",
+      "validated_head_sha": "f6ff965a2254779f63f0c6726ca786ae6bc31d55",
+      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613254431",
+      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40613254459",
+      "note": "These checks validate the previous research branch head f6ff965a2254779f63f0c6726ca786ae6bc31d55. The new snapshot and ledger commit in this run requires its own exact-head CI."
     },
-    "current_research_head_before_final_verification_record": "33c87fd5007108960c8974ac1af89332916a495f",
+    "current_research_head_before_final_verification_record": "f6ff965a2254779f63f0c6726ca786ae6bc31d55",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -2619,9 +2901,48 @@
           "SRC-RIPPLE-ROBINHOOD-2026-10-27"
         ],
         "impact_status": "PRICE_IMPACT_UNKNOWN; NO_XRP_FLOW_DISCLOSED"
+      },
+      {
+        "event_id": "EVT-CIRCLE-Q2-SBI-ARC-JCB-MAREX-2026-08-05",
+        "event_time_utc": "2026-08-05",
+        "captured_at_utc": "2026-10-28T02:17:26.954Z",
+        "entity": "Circle; SBI Group; Arc; JCB; Marex; USDC",
+        "event": "Circle's Q2 2026 results announcement reported SBI Group in Arc's announced founding validator cohort, JCB/USDC Japan use cases, and Marex USDC initial-margin collateral in regulated derivatives.",
+        "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+        "source_ids": [
+          "SRC-CIRCLE-Q2-RESULTS-2026-08-05"
+        ],
+        "impact_status": "CORPORATE_LINKS_CONFIRMED_AS_ANNOUNCED; CURRENT_OPERATING_SCALE_AND_XRP_FLOW_IMPACT_UNKNOWN"
+      },
+      {
+        "event_id": "EVT-XRP-ETF-FLOW-CROSSCHECK-2026-10-26",
+        "event_time_utc": "2026-10-26",
+        "captured_at_utc": "2026-10-28T02:17:26.954Z",
+        "entity": "U.S. spot XRP ETF trackers",
+        "event": "Two public trackers show a roughly $3.5M-$3.6M net outflow for Oct 26 despite different fund universes; Oct 27 data remains provisional in at least one view.",
+        "evidence_class": "SECONDARY_MARKET_DATA_CROSSCHECK",
+        "source_ids": [
+          "SRC-XRP-ETF-FLOWS-XRPINSIGHTS-2026-10-26",
+          "SRC-XRP-ETF-FLOWS-ALPHA-2026-10-27"
+        ],
+        "impact_status": "MODEL_FEATURE_BLOCKED_PENDING_FUND_LEVEL_RECONCILIATION"
+      },
+      {
+        "event_id": "EVT-PR1236-SIGNAL-SUMMARY-TESTS-VERIFIED-2026-10-28T0214Z",
+        "event_time_utc": "2026-10-28T02:17:26.954Z",
+        "captured_at_utc": "2026-10-28T02:17:26.954Z",
+        "entity": "Barrot-Agent/B-Agent PR #1236",
+        "event": "Fresh-main deterministic signal-summary fallback now has six actual regression tests; exact head 0937a9e passed 151 tests in 6.46 seconds and the fail-closed gate.",
+        "evidence_class": "REPOSITORY_CI_VERIFICATION",
+        "source_ids": [
+          "SRC-REPO-PR1236-TESTS-2026-10-28T0214Z",
+          "SRC-REPO-PR1236-CI-2026-10-28T0214Z",
+          "SRC-REPO-PR1236-GATE-2026-10-28T0214Z"
+        ],
+        "impact_status": "FIX_VERIFIED_IN_DRAFT_PR; MAIN_UNCHANGED"
       }
     ],
-    "snapshot_blob_sha": "0b8b2842a5bdd78d740d5fd09ea90bdbaa3f55bd"
+    "snapshot_blob_sha": "fe9c14da5c192acbd1af43f27aae8fcd32afa02b"
   },
   "sources": [
     {
@@ -3445,6 +3766,78 @@
       "title": "CFTC TFF XRP positions on Coinbase Derivatives products as of October 20, 2026",
       "accessed_at_utc": "2026-10-28T01:08:30Z",
       "note": "Official CFTC TFF page updated Oct 23, 2026 lists NANO XRP — Coinbase Derivatives, LLC (500 XRP per contract) with open interest 59,009 contracts, and NANO XRP PERP STYLE — Coinbase Derivatives, LLC (500 XRP per contract) with open interest 40,655 contracts. These are separate product lines from XRP — CME (50,000 XRP per contract). The contract counts must not be compared without multiplier normalization; positions may hedge other exposure and do not establish spot XRP holdings or net directional demand."
+    },
+    {
+      "id": "SRC-CIRCLE-Q2-RESULTS-2026-08-05",
+      "evidence_class": "OFFICIAL_COMPANY_REPORT",
+      "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "title": "Circle Q2 2026 results and ecosystem announcements",
+      "accessed_at_utc": "2026-10-28T02:17:26.954Z",
+      "note": "Circle reported $73.3B USDC circulation and $14.8T Q2 on-chain transaction volume; its release named SBI Group in the announced Arc founding third-party validator cohort, described JCB/USDC Japan use cases, Marex USDC initial-margin collateral for regulated derivatives, and BNY USDC mint/redemption and reserve-custody integration. Announcements are company-reported; live Arc validator activity and rollout scale are not independently verified."
+    },
+    {
+      "id": "SRC-XRP-ETF-FLOWS-XRPINSIGHTS-2026-10-26",
+      "evidence_class": "SECONDARY_MARKET_DATA_TRACKER",
+      "url": "https://xrp-insights.com/",
+      "title": "XRP Insights issuer-reported ETF holdings and daily flow tracker",
+      "accessed_at_utc": "2026-10-28T02:17:26.954Z",
+      "note": "Page reports Oct 26, 2026 net flow of -2.70M XRP (about -$3.56M) across six U.S. spot XRP ETFs plus BITW, with combined holdings around 1.19B XRP. The tracker notes a data gap affecting GXRP flow calculation; treat as derived secondary data pending fund-by-fund issuer reconciliation."
+    },
+    {
+      "id": "SRC-XRP-ETF-FLOWS-ALPHA-2026-10-27",
+      "evidence_class": "SECONDARY_MARKET_DATA_TRACKER",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF flow dashboard",
+      "accessed_at_utc": "2026-10-28T02:17:26.954Z",
+      "note": "Through Oct 27, 2026 the dashboard's five-fund flow series reports Oct 26 about -$3.6M at an XRP close of $1.2957 (roughly 2.78M XRP equivalent) and Oct 27 $0 reported. It states fund AUM/holdings are not published in this view; universe and settlement timing differ from XRP Insights."
+    },
+    {
+      "id": "SRC-REPO-MAIN-XRP-SIGNAL-2026-10-28T0122Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Main-branch XRP signal artifact observed at 2026-10-28T01:22:59Z",
+      "accessed_at_utc": "2026-10-28T02:17:26.954Z",
+      "note": "Blob SHA d74d9b9e8789d662a15a2d6c4173bcb908d62587; reports score 44, confidence 0.0, news_score 88 from 11 entries, and provider-unavailable text (missing GitHub model credentials and Groq HTTP 429). Entries include XRPL protocol/academic research papers labeled bullish. This is not a valid directional forecast."
+    },
+    {
+      "id": "SRC-REPO-PR1230-TEST-COVERAGE-GAP-2026-10-28",
+      "evidence_class": "REPOSITORY_CODE_INSPECTION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/safety/signal-summary-fallback-artifact-only-20261028-0102z/tests/test_signal_summary_fallback.py",
+      "title": "PR #1230 signal-summary fallback test file inspection",
+      "accessed_at_utc": "2026-10-28T02:17:26.954Z",
+      "note": "The file duplicated production signal-summary implementation and defined no test_ functions. Its CI pass therefore did not exercise the intended fallback regressions, although the existing core suite passed."
+    },
+    {
+      "id": "SRC-REPO-PR1236-TESTS-2026-10-28T0214Z",
+      "evidence_class": "REPOSITORY_CODE_INSPECTION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/safety/signal-summary-fallback-fresh-main-20261028-0209z/tests/test_signal_summary_fallback.py",
+      "title": "PR #1236 corrected signal-summary regression tests",
+      "accessed_at_utc": "2026-10-28T02:17:26.954Z",
+      "note": "Corrected test file blob a23c41099428d044c512a84b9394e580af0372a0 contains six actual test functions covering zero/missing confidence, provider failure, valid signal classification, non-finite/out-of-range confidence, and summary persistence when the provider key is missing."
+    },
+    {
+      "id": "SRC-REPO-PR1236-CI-2026-10-28T0214Z",
+      "evidence_class": "EXACT_HEAD_CI_TEST_EVIDENCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40619690312",
+      "title": "PR #1236 exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T02:17:26.954Z",
+      "note": "Head 0937a9ec4d6e95bd606303f1de4ac20602614566 passed 151 tests in 6.46 seconds; logs show all six test_signal_summary_fallback cases executed."
+    },
+    {
+      "id": "SRC-REPO-PR1236-GATE-2026-10-28T0214Z",
+      "evidence_class": "EXACT_HEAD_FAIL_CLOSED_GATE_PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40619690271",
+      "title": "PR #1236 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T02:17:26.954Z",
+      "note": "Fail-closed gate succeeded for exact head 0937a9ec4d6e95bd606303f1de4ac20602614566. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-REPO-PR1236-HEAD-2026-10-28T0214Z",
+      "evidence_class": "REPOSITORY_PULL_REQUEST_STATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1236",
+      "title": "Fresh-main deterministic XRP summary fallback PR",
+      "accessed_at_utc": "2026-10-28T02:17:26.954Z",
+      "note": "PR #1236 is open, draft, unmerged and mergeable at observed state; branch head 0937a9ec4d6e95bd606303f1de4ac20602614566 is based on main db114efe6b70a6a0cceb25f9eadabf5299f89824. No main write, merge, deployment or trade occurred."
     }
   ],
   "limitations": [
@@ -3455,7 +3848,10 @@
     "Aviva MPT supply/transferability readings from third-party explorers conflict; official XRPL docs state MPT DEX trading is not currently implemented. Exact issuance flags require independent public-ledger verification.",
     "PR #1230 has passing exact-head CI and fail-closed gate but remains draft and unmerged; 30-day workflow artifacts are not a permanent feature store.",
     "The Ripple–Robinhood announcement confirms announced capabilities, not actual settlement volumes, XRP purchases, collateral balances or price effects.",
-    "Signal-summary run logs were not retrievable through the connected read endpoint; failure stage was verified from workflow-run job metadata and direct code/workflow inspection."
+    "Signal-summary run logs were not retrievable through the connected read endpoint; failure stage was verified from workflow-run job metadata and direct code/workflow inspection.",
+    "XRP ETF flow dashboards have different fund universes and may share issuer-data lineage; Oct 27 flow data may be provisional.",
+    "Circle's Q2 release documents announced Arc/JCB relationships and a reported Marex USDC collateral transaction, but current Arc validator activity, JCB rollout scale, and XRP flow effects are not independently verified.",
+    "PR #1230's nominal fallback test file did not define tests; the fresh-main successor PR #1236 corrects this and has exact-head CI/gate evidence, but remains unmerged."
   ],
   "run_updates": [
     {
@@ -3994,6 +4390,26 @@
         "previous_ledger_head_tests": "PASS",
         "previous_ledger_head_gate": "PASS",
         "new_head_ci": "PENDING",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T02:17:26.954Z",
+      "update_type": "CIRCLE_SBI_ARC_USDC_COLLATERAL_ETF_FLOW_CROSSCHECK_AND_PR1236_VERIFICATION",
+      "snapshot_id": "XRP-CIRCLE-SBI-ARC-ETF-FLOWS-PR1236-2026-10-28T0217Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0217Z.json",
+      "snapshot_blob_sha": "fe9c14da5c192acbd1af43f27aae8fcd32afa02b",
+      "details": "Added Circle/SBI Group Arc validator-cohort and USDC collateral/payment evidence, cross-checked Oct 26 XRP ETF outflows across two trackers while preserving fund-universe/source-independence caveats, recorded the invalid main signal artifact, and documented the PR #1230 regression-test coverage gap plus PR #1236's corrected six-test exact-head CI.",
+      "validation": {
+        "snapshot_json": "PASS",
+        "source_ids_unique": true,
+        "relationship_edge_source_refs": "PASS",
+        "finding_source_refs": "PASS",
+        "prior_research_head_tests": "PASS",
+        "prior_research_head_gate": "PASS",
+        "new_ledger_commit_ci": "PENDING",
         "main_modified_by_this_run": false,
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
