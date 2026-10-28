@@ -29,7 +29,7 @@ jobs:
 
       - name: Verify durable queue and bundle lifecycle integration
         run: |
-          python -m pytest -q \
+          python -m pytest -q --no-cov \
             tests/test_bundle_lifecycle.py::test_dispatcher_handles_no_change_from_real_work_queue_controller \
             tests/test_bundle_lifecycle.py::test_dispatcher_recovers_real_queue_completion_after_lifecycle_interruption \
             tests/test_bundle_lifecycle.py::test_dispatcher_resumes_after_interruption_between_tasks \
