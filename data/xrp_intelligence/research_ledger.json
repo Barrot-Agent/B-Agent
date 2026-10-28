@@ -4189,6 +4189,46 @@
       "title": "Local synthetic-fixture test evidence for ledger validator",
       "accessed_at_utc": "2026-10-28T20:08:15Z",
       "note": "Six isolated synthetic-fixture tests passed in 0.05 seconds and py_compile passed. This is not a full-repository checkout run; actual GitHub index/snapshot pointer was independently read back and SHA matched. Automated CI was not triggered for this research-base PR."
+    },
+    {
+      "id": "SRC-RUN11-CIRCLE-TRANSPARENCY-20261028T2010Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/es/transparency",
+      "title": "Circle USDC transparency dashboard, Spanish locale",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Official Circle dashboard displays USDC circulation USD 71.0B and reserves USD 71.2B as of 2026-10-26; net circulation change -USD 1.0B over 7 days, -USD 4.2B over 30 days, and -USD 5.2B over 365 days. Issuer-reported global totals; no XRP destination or chain-level flow is identified."
+    },
+    {
+      "id": "SRC-RUN11-XRP-INSIGHTS-ETF-20261028T2010Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/",
+      "title": "XRP Insights ETF flow dashboard, latest table through October 27",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Secondary tracker reports -433,940 XRP on Oct 27 and -3.13M XRP over Oct 26-27 across six US spot funds plus BITW, with approximately 1.19B XRP held. Methodology derives flows from holdings changes and may include effects other than creations/redemptions; sponsor-level reconciliation remains outstanding."
+    },
+    {
+      "id": "SRC-RUN11-ALPHA-ETF-20261028T2010Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF tracker through October 27",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Secondary five-fund series reports USD 0 net flow on Oct 27, approximately +USD 644.8K over the last seven sessions, and approximately USD 1.72B cumulative net inflows. Different covered fund universe from XRP Insights; values are not directly comparable."
+    },
+    {
+      "id": "SRC-RUN11-XRPINVESTOR-ETF-20261028T2010Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://thexrpinvestor.com/xrp-etf-flows",
+      "title": "TheXRPInvestor XRP ETF dashboard, October 28",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Dashboard reports about USD 1.56B AUM, 1.19B XRP in trust and USD 7.28M total daily volume. It says 12 products but enumerates 6 spot, 4 derivative and 1 index category (11), so product coverage needs reconciliation. No sponsor-level flow proof."
+    },
+    {
+      "id": "SRC-RUN11-COINBASE-Q3-DATE-20261028T2010Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "title": "Coinbase official Q3 2026 results schedule",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Official notice published Oct 14 states Q3 2026 financial results will be published Oct 29 after market close. As of this Oct 28 20:10Z capture, Q3 results have not yet been published."
     }
   ],
   "limitations": [
@@ -6927,6 +6967,29 @@
         "SRC-RUN11-PR1265-20261028T2008Z",
         "SRC-RUN11-LOCAL-TESTS-20261028T2008Z"
       ]
+    },
+    {
+      "recorded_at_utc": "2026-10-28T20:10:23Z",
+      "update_type": "CIRCLE_USDC_AND_XRP_ETF_DATA_QUALITY_REFRESH",
+      "main_sha": "428244171d4f24d4962733e9372fe36f5ea4b941",
+      "research_branch_head_before_update": "527e151c3a5afa2267e13a8df7b46070bc565853",
+      "source_ids": [
+        "SRC-RUN11-CIRCLE-TRANSPARENCY-20261028T2010Z",
+        "SRC-RUN11-XRP-INSIGHTS-ETF-20261028T2010Z",
+        "SRC-RUN11-ALPHA-ETF-20261028T2010Z",
+        "SRC-RUN11-XRPINVESTOR-ETF-20261028T2010Z",
+        "SRC-RUN11-COINBASE-Q3-DATE-20261028T2010Z"
+      ],
+      "key_findings": [
+        "Official Circle localized transparency page has a newer Oct 26 snapshot than the English page's Oct 22 display.",
+        "XRP ETF trackers disagree on Oct 27 daily flow: XRP Insights reports -433,940 XRP across six spot funds plus BITW, while Alpha Finance reports USD 0 across five funds.",
+        "TheXRPInvestor's displayed product total (12) does not match its listed category counts (6+4+1=11).",
+        "Coinbase Q3 results remain scheduled for Oct 29 after market close; no Q3 outcome is inferred."
+      ],
+      "model_admission": "BLOCK_ETF_FEATURE_UNTIL_FUND_LEVEL_RECONCILIATION",
+      "forecast_status": "NOT_ISSUED",
+      "main_modified": false,
+      "state_mutated": false
     }
   ],
   "mission_priority": {
@@ -7154,7 +7217,7 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "cbfcf2425e6c98d042172b6b34aed6437fe621e1",
+  "current_research_head_before_ledger_update": "527e151c3a5afa2267e13a8df7b46070bc565853",
   "current_research_head_this_run": "PENDING_AFTER_INDEX_WRITE",
   "current_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -7172,11 +7235,16 @@
     "fail_closed_gate": "NOT_RUN",
     "current_main_sha": "428244171d4f24d4962733e9372fe36f5ea4b941",
     "paper_trading_replay": "PASS_READ_ONLY_2347_ROWS",
-    "reason": "Core CI workflow only triggers pull_request for base main; migration PR targets research branch."
+    "reason": "Core CI workflow only triggers pull_request for base main; migration PR targets research branch.",
+    "latest_snapshot_pointer_readback": "PASS",
+    "local_validator_fixture_tests": "PASS_6_TESTS",
+    "latest_research_addendum": "RECORDED_IN_THIS_INDEX_UPDATE",
+    "forecast_status": "NOT_ISSUED",
+    "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "ledger_metrics": {
-    "source_records": 515,
-    "run_updates": 108,
+    "source_records": 520,
+    "run_updates": 109,
     "limitations": 91,
     "relationship_edges": 104,
     "competing_hypotheses": 65,
@@ -7184,7 +7252,8 @@
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
-    "local_validator_tests_passed": 6
+    "local_validator_tests_passed": 6,
+    "latest_research_addendum_observations": 3
   },
   "previous_research_checks": {
     "status": "PRIOR_INDEX_VERIFIED; SUCCESSOR_INDEX_PENDING",
@@ -7275,5 +7344,63 @@
       "latest_snapshot_captured_at_utc": "2026-10-28T20:08:15Z",
       "automated_ci_status": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR"
     }
-  ]
+  ],
+  "latest_research_addendum": {
+    "recorded_at_utc": "2026-10-28T20:10:23Z",
+    "main_sha": "428244171d4f24d4962733e9372fe36f5ea4b941",
+    "source_ids": [
+      "SRC-RUN11-CIRCLE-TRANSPARENCY-20261028T2010Z",
+      "SRC-RUN11-XRP-INSIGHTS-ETF-20261028T2010Z",
+      "SRC-RUN11-ALPHA-ETF-20261028T2010Z",
+      "SRC-RUN11-XRPINVESTOR-ETF-20261028T2010Z",
+      "SRC-RUN11-COINBASE-Q3-DATE-20261028T2010Z"
+    ],
+    "circle_usdc": {
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "as_of_date": "2026-10-26",
+      "circulation_usd_billions": 71,
+      "reserves_usd_billions": 71.2,
+      "net_circulation_change_usd_billions": {
+        "days_7": -1,
+        "days_30": -4.2,
+        "days_365": -5.2
+      },
+      "limitation": "Global issuer totals do not identify chain-level balances, XRP inflows, or destination of redemptions."
+    },
+    "xrp_etf_flows": {
+      "xrp_insights": {
+        "as_of_date": "2026-10-27",
+        "coverage": "six US spot ETFs plus BITW",
+        "daily_net_flow_xrp": -433940,
+        "oct_26_27_net_flow_xrp": -3130000,
+        "holdings_xrp_billions": 1.19,
+        "classification": "SECONDARY_UNVERIFIED"
+      },
+      "alpha_finance": {
+        "as_of_date": "2026-10-27",
+        "coverage": "five-fund series",
+        "daily_net_flow_usd": 0,
+        "seven_session_net_flow_usd": 644800,
+        "cumulative_net_inflows_usd_billions": 1.72,
+        "classification": "SECONDARY_UNVERIFIED"
+      },
+      "the_xrp_investor": {
+        "as_of_date": "2026-10-28",
+        "reported_aum_usd_billions": 1.56,
+        "reported_xrp_in_trust_billions": 1.19,
+        "reported_daily_volume_usd_millions": 7.28,
+        "reported_total_products": 12,
+        "listed_category_sum": 11,
+        "classification": "SECONDARY_UNVERIFIED"
+      },
+      "resolution": "Different fund universes, aggregation rules and possible holdings-change effects prevent direct reconciliation. Block ETF-flow feature admission until per-fund holdings, creations/redemptions and UTC cutoffs are aligned."
+    },
+    "coinbase_q3": {
+      "schedule_source": "SRC-RUN11-COINBASE-Q3-DATE-20261028T2010Z",
+      "results_due": "2026-10-29 after market close",
+      "published_as_of_capture": false,
+      "rule": "Do not infer Q3 performance or market reaction before the official release."
+    },
+    "prediction_status": "NOT_ISSUED"
+  }
 }
