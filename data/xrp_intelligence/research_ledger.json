@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-28T19:59:48Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T1959Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1959Z.json",
-    "snapshot_blob_sha": "54384e1208c4f794140c1478e00fe3c03d8f9d50",
-    "snapshot_commit_sha": "634990451ccee51646efebf44d5fd30b213e0baa"
+    "captured_at_utc": "2026-10-28T20:01:00Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-28T2001Z-CORRECTION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
+    "snapshot_blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
+    "snapshot_commit_sha": "5cfa94252bb517c0349762482c1a872d98d0e48c"
   },
   "sources": [
     {
@@ -4125,6 +4125,14 @@
       "title": "PR #1264 fail-closed gate",
       "accessed_at_utc": "2026-10-28T19:59:48Z",
       "note": "Gate passed on the PR's tested head. The PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-RUN11-SNAPSHOT-CORRECTION-20261028T2001Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
+      "title": "Corrected immutable XRP research snapshot metrics",
+      "accessed_at_utc": "2026-10-28T20:01:00Z",
+      "note": "New snapshot corrects ledger_metrics counts in the 19:59Z snapshot without rewriting it. Prior snapshot remains preserved. Correction snapshot blob SHA bae917bd6297850667e679a9d1476517a599b38e."
     }
   ],
   "limitations": [
@@ -6781,6 +6789,21 @@
         "SRC-RUN11-PR1264-CI-20261028T1959Z",
         "SRC-RUN11-PR1264-GATE-20261028T1959Z"
       ]
+    },
+    {
+      "recorded_at_utc": "2026-10-28T20:01:00Z",
+      "update_type": "SNAPSHOT_METRIC_CORRECTION",
+      "prior_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1959Z.json",
+      "prior_snapshot_blob_sha": "54384e1208c4f794140c1478e00fe3c03d8f9d50",
+      "correction_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
+      "correction_snapshot_blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
+      "correction_snapshot_commit_sha": "5cfa94252bb517c0349762482c1a872d98d0e48c",
+      "reason": "The first run snapshot retained ledger_metrics counts from before source/run-update append. A second immutable snapshot records the current counts; no prior snapshot was rewritten.",
+      "prior_snapshot_preserved": true,
+      "state_mutated": false,
+      "source_ids": [
+        "SRC-RUN11-SNAPSHOT-CORRECTION-20261028T2001Z"
+      ]
     }
   ],
   "mission_priority": {
@@ -7008,21 +7031,21 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
+  "current_research_head_before_ledger_update": "9d7e36543bd4c5a6e417b1391191606d84d0c7b1",
   "current_research_head_this_run": "PENDING_AFTER_INDEX_WRITE",
   "current_research_checks": {
     "status": "PENDING_LOCAL_VALIDATION",
-    "previous_index_head": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
-    "new_snapshot_blob_readback": "PASS",
+    "previous_index_head": "9d7e36543bd4c5a6e417b1391191606d84d0c7b1",
+    "latest_snapshot_blob_readback": "PASS",
     "index_compaction_commit": "PENDING",
     "local_validator_tests": "PENDING",
     "automated_ci": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR",
     "fail_closed_gate": "NOT_RUN",
-    "reason": "The core CI workflow pull_request trigger is restricted to base main; this draft PR targets the research branch to avoid merging the diverged research branch into main."
+    "reason": "Core CI pull_request filter targets main only; this draft PR targets the research branch."
   },
   "ledger_metrics": {
-    "source_records": 507,
-    "run_updates": 105,
+    "source_records": 508,
+    "run_updates": 106,
     "limitations": 90,
     "relationship_edges": 104,
     "competing_hypotheses": 65,
@@ -7052,7 +7075,7 @@
     "new_index_gate": "PENDING_AFTER_WRITE"
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T19:14:30Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T20:01:00Z",
     "post_snapshot_verification": {
       "status": "SNAPSHOT_READBACK_PASS; INDEX_HEAD_90902F_VERIFIED; SUCCESSOR_INDEX_PENDING",
       "snapshot_blob_readback_ok": true,
@@ -7077,7 +7100,10 @@
     "previous_inline_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
     "previous_inline_index_blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
     "previous_inline_index_characters": 989081,
-    "note": "These four fields were index-only metadata and are preserved here rather than discarded when latest_snapshot becomes a reference."
+    "note": "These four fields were index-only metadata and are preserved here rather than discarded when latest_snapshot becomes a reference.",
+    "latest_snapshot_blob_readback": "PASS",
+    "prior_snapshot_superseded_for_current_handoff": "data/xrp_intelligence/snapshots/2026-10-28T1959Z.json",
+    "correction_reason": "Snapshot metrics were corrected in a new immutable snapshot; earlier snapshot was not rewritten."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -7089,11 +7115,18 @@
       "previous_index_blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
       "previous_index_characters": 989081,
       "previous_inline_snapshot_characters": 462600,
-      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1959Z.json",
-      "snapshot_blob_sha": "54384e1208c4f794140c1478e00fe3c03d8f9d50",
-      "snapshot_commit_sha": "634990451ccee51646efebf44d5fd30b213e0baa",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
+      "snapshot_blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
+      "snapshot_commit_sha": "5cfa94252bb517c0349762482c1a872d98d0e48c",
       "preservation": "All sources, limitations, run updates, and index-only verification metadata retained. The prior full index remains in Git history at previous_index_commit_sha; earlier snapshot files remain unchanged.",
-      "ci_status": "NOT_RUN_FOR_RESEARCH-BASE_PR; current workflow pull_request filter targets main only."
+      "ci_status": "NOT_RUN_FOR_RESEARCH-BASE_PR; current workflow pull_request filter targets main only.",
+      "superseded_snapshot": {
+        "path": "data/xrp_intelligence/snapshots/2026-10-28T1959Z.json",
+        "blob_sha": "54384e1208c4f794140c1478e00fe3c03d8f9d50",
+        "commit_sha": "634990451ccee51646efebf44d5fd30b213e0baa",
+        "reason": "metrics correction; preserved unchanged"
+      },
+      "local_validation_status": "PENDING"
     }
   ]
 }

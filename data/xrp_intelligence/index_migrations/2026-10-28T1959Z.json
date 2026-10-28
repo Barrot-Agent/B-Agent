@@ -1,6 +1,7 @@
 {
   "migration_id": "XRP-LEDGER-INDEX-POINTER-20261028T1959Z",
   "recorded_at_utc": "2026-10-28T19:59:48Z",
+  "updated_at_utc": "2026-10-28T20:01:00Z",
   "status": "DRAFT_NOT_MERGED",
   "repository": "Barrot-Agent/B-Agent",
   "branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
@@ -11,16 +12,23 @@
     "characters": 989081,
     "inline_latest_snapshot_characters": 462600
   },
-  "snapshot": {
+  "initial_snapshot": {
     "path": "data/xrp_intelligence/snapshots/2026-10-28T1959Z.json",
     "blob_sha": "54384e1208c4f794140c1478e00fe3c03d8f9d50",
     "commit_sha": "634990451ccee51646efebf44d5fd30b213e0baa",
-    "characters": 532817
+    "status": "PRESERVED_SUPERSEDED_FOR_CURRENT_HANDOFF"
+  },
+  "current_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
+    "blob_sha": "bae917bd6297850667e679a9d1476517a599b38e",
+    "commit_sha": "5cfa94252bb517c0349762482c1a872d98d0e48c",
+    "characters": 533567,
+    "status": "CURRENT_POINTER_TARGET"
   },
   "new_index": {
     "path": "data/xrp_intelligence/research_ledger.json",
     "format_version": "2.0",
-    "characters": 450341
+    "characters": 452459
   },
   "preservation": {
     "source_records_retained": true,
@@ -32,7 +40,7 @@
     "main_modified": false,
     "merge_performed": false
   },
-  "rationale": "The previous 989,081-character index duplicated almost the entire 462,600-character compact JSON representation of its latest snapshot. A verified pointer reduces index size while retaining the full immutable snapshot as a separate file.",
+  "rationale": "Replace the duplicated inline latest snapshot with a hash-verified pointer. A second immutable snapshot corrects ledger metrics from the first capture; neither prior index nor prior snapshot was rewritten.",
   "validation": {
     "automatic_ci": "NOT_TRIGGERED_FOR_RESEARCH-BASE_PR",
     "local_tests": "PENDING",
