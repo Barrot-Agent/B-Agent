@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T16:58:50Z",
+    "captured_at_utc": "2026-10-28T17:09:44Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "7b33f9be12baa8019cfaf4c49b1c5b71fce9781c",
+      "main_sha": "23b30639e2631364d97a32f2213faab574c345fb",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -141,14 +141,12 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "sha": "7b33f9be12baa8019cfaf4c49b1c5b71fce9781c",
-        "message": "Cross-analysis refresh [skip ci]",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/7b33f9be12baa8019cfaf4c49b1c5b71fce9781c",
-        "observed_at_utc": "2026-10-28T16:51:58Z",
+        "sha": "23b30639e2631364d97a32f2213faab574c345fb",
+        "message": "Paper trade cycle [skip ci]",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/23b30639e2631364d97a32f2213faab574c345fb",
+        "observed_at_utc": "2026-10-28T17:04:56Z",
         "changed_scope": [
-          "ping-pongings/knowledge-base/entity_cooccurrence.json",
-          "ping-pongings/knowledge-base/entity_sentiment_profile.json",
-          "ping-pongings/knowledge-base/sentiment_shift.json"
+          "web/paper_trading_log.jsonl"
         ]
       },
       "current_ci": {
@@ -1214,11 +1212,11 @@
         "id": "PAPER-TRADER-PRODUCT-IDENTITY-MISMATCH-20261028T1658Z",
         "evidence_class": "REPOSITORY_OBSERVATION",
         "severity": "high",
-        "status": "DRAFT_FIX_PR_OPEN; CI_PENDING; CURRENT_STATE_UNMODIFIED",
+        "status": "DRAFT_FIX_PR_OPEN; EXACT_HEAD_CI_AND_GATE_PASS; CURRENT_STATE_UNMODIFIED",
         "finding": "Current main paper_trading_state.json has a nonzero simulated position_size (0.0249012766) and avg_entry_price (80436.84) while position_product is null. The paper-trader buy path never assigns position_product; full close never clears it; PRODUCT_ID is configurable and no pre-decision state/product consistency guard exists.",
         "consequence": "A future configured-product change can make the trader reason about one product while reusing an unidentified open position, corrupting paper-trading accounting and derived performance evaluation. Existing state must not be silently rewritten or inferred.",
         "proposed_fix": "PR #1261 adds a fail-closed validator before model invocation, binds new positions to the configured product, clears identity on full close, and adds eight deterministic tests.",
-        "verification": "Static code/state inspection confirmed the mismatch. PR #1261 is draft/unmerged; exact-head CI and gate are pending. No state/log/main write was made.",
+        "verification": "PR #1261 exact-head CI passed 153 tests in 6.10 seconds (run 40731999180); fail-closed gate passed (run 40731998907). No merge or state rewrite occurred.",
         "source_ids": [
           "SRC-GH-PAPER-TRADER-STATE-2026-10-28T1658Z",
           "SRC-GH-PAPER-TRADER-CODE-2026-10-28T1658Z",
@@ -5731,23 +5729,26 @@
     },
     "repository_ci": {
       "repository": "Barrot-Agent/B-Agent",
-      "main_sha": "7b33f9be12baa8019cfaf4c49b1c5b71fce9781c",
+      "main_sha": "23b30639e2631364d97a32f2213faab574c345fb",
       "main_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
-      "note": "Main head is a generated Cross-analysis refresh [skip ci]; no exact-head main CI result was established.",
+      "note": "Latest main commit is a generated paper-trading-log append marked [skip ci].",
       "pr_1261": {
         "head_sha": "aff4c1a1c37ab3fdb6493f7159284df126d0490f",
-        "status": "NO_STATUS_ENTRIES_OBSERVED_AT_CAPTURE",
-        "ci": "PENDING_OR_NOT_RETURNED",
-        "gate": "PENDING"
+        "ci_status": "PASS",
+        "tests_passed": 153,
+        "duration_seconds": 6.1,
+        "ci_run_id": 40731999180,
+        "gate_status": "PASS",
+        "gate_run_id": 40731998907
       },
-      "approval_workflow": {
-        "blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
-        "latest_observed_runs": [
-          40724544435,
-          40724556490
-        ],
-        "jobs_returned": 0,
-        "root_cause": "UNKNOWN"
+      "research_index_previous_head": {
+        "sha": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
+        "ci_status": "PASS",
+        "tests_passed": 145,
+        "duration_seconds": 6.08,
+        "ci_run_id": 40732780337,
+        "gate_status": "PASS",
+        "gate_run_id": 40732780097
       }
     },
     "market_data_quality_findings": [
@@ -6154,20 +6155,31 @@
         "Databricks"
       ],
       "forecast_status": "NOT_ISSUED",
-      "as_of_utc": "2026-10-28T16:58:50Z",
+      "as_of_utc": "2026-10-28T17:09:12Z",
       "primary": "XRP intelligence and prediction-engine mastery",
       "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
       "current_forecast_status": "NOT_ISSUED",
-      "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1658Z.json",
-      "next_action": "Verify exact-head CI/gate for PR #1261; append this run's snapshot/index and verify hashes; reconcile the existing paper-trading product identity before any approval; then reconcile XRP spot/perps/ETF/chain data at common UTC cutoffs."
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z.json",
+      "next_action": "Record the exact-head CI/gate evidence for PR #1261 and prior index f365a6 in the durable ledger; verify the new 17:09 snapshot/index; reconcile the existing paper-trading product identity before any approval; keep research branch preserved and do not merge as-is."
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1658Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1658Z.json",
-    "current_research_head_before_ledger_update": "9ad34a92230cb37ff02a26bf96173699f9123540",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1709Z-CORRECTED",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z-correction.json",
+    "current_research_head_before_ledger_update": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
     "current_research_checks": {
-      "status": "PREVIOUS_INDEX_HEAD_UNVERIFIED; SNAPSHOT_AND_INDEX_PENDING",
-      "previous_index_head": "9ad34a92230cb37ff02a26bf96173699f9123540",
-      "previous_index_ci": "NO_STATUS_ENTRIES_RETURNED",
+      "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
+      "previous_index_head": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
+      "previous_index_ci": {
+        "status": "PASS",
+        "tests_passed": 145,
+        "duration_seconds": 6.08,
+        "run_id": 40732780337,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780337"
+      },
+      "previous_index_gate": {
+        "status": "PASS",
+        "run_id": 40732780097,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780097"
+      },
       "new_index_ci": "PENDING_AFTER_WRITE",
       "new_index_gate": "PENDING_AFTER_WRITE"
     },
@@ -7470,7 +7482,7 @@
         "index": 12
       }
     ],
-    "current_main_sha": "7b33f9be12baa8019cfaf4c49b1c5b71fce9781c",
+    "current_main_sha": "23b30639e2631364d97a32f2213faab574c345fb",
     "current_pr_1245_state": {
       "pr": 1245,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1245",
@@ -7504,13 +7516,8 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "9ad34a92230cb37ff02a26bf96173699f9123540",
-    "correction_note": {
-      "previous_snapshot": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
-      "issue": "The previous market-data-quality finding referenced a nonexistent 0812Z source ID.",
-      "correction": "This snapshot references the existing 0814Z source record instead. The prior snapshot remains unchanged.",
-      "previous_snapshot_preserved": true
-    },
+    "current_research_head_this_run": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
+    "correction_note": "The preserved 2026-10-28T1709Z.json contains a malformed repository_ci.pr_1261.head_sha field that combines the SHA and status text. This correction snapshot keeps head SHA, CI result, and gate result as separate fields. The earlier file is retained unchanged.",
     "current_pr_1246_state": {
       "pr": 1246,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1246",
@@ -7627,7 +7634,8 @@
       "2026-10-28T16:17:39.305Z: Ripple National Trust Bank final OCC approval is confirmed by Ripple's release; operational opening and any Federal Reserve master account remain unverified.",
       "2026-10-28T1658Z: current main paper-trading state has a nonzero simulated position but null position_product. PR #1261 proposes a fail-closed guard; the existing state was not modified and requires evidence-backed manual reconciliation before the fix is merged.",
       "2026-10-28T1658Z: latest visible TradRadar derivatives observation is as of 15:00 UTC, about two hours old at capture; no synchronized spot/derivatives/ETF/chain feature set was admitted.",
-      "2026-10-28T1658Z: Coinbase Q3 2026 results are scheduled for Oct 29 after market close and are not yet available at this capture."
+      "2026-10-28T1658Z: Coinbase Q3 2026 results are scheduled for Oct 29 after market close and are not yet available at this capture.",
+      "2026-10-28T1709Z: research ledger branch is 49 commits ahead and 36 behind current main. Preserve it and do not merge as-is; any carry-forward must be a reviewed fresh-main successor."
     ],
     "current_pr_1248_state": {
       "pr": 1248,
@@ -7640,7 +7648,7 @@
       "merge_performed": false
     },
     "current_open_pr_count": 91,
-    "current_open_prs_observed_at_utc": "2026-10-28T16:58:50Z",
+    "current_open_prs_observed_at_utc": "2026-10-28T17:09:12Z",
     "current_open_prs": [
       {
         "number": 1260,
@@ -7891,7 +7899,7 @@
         "state": "open",
         "draft": true,
         "head_sha": "aff4c1a1c37ab3fdb6493f7159284df126d0490f",
-        "status": "Eight regression tests added to core CI; exact-head CI/gate pending; existing paper state not modified."
+        "status": "Exact-head CI passed 153 tests in 6.10s; fail-closed gate passed; draft/unmerged; existing paper state remains unreconciled."
       }
     ],
     "current_pr_1249_state": {
@@ -7999,7 +8007,7 @@
       "merge_performed": false,
       "action": "Preserve the branch and historical snapshots; do not merge as-is."
     },
-    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1617Z.json",
+    "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z.json",
     "repository_security_audit": {
       "observed_at_utc": "2026-10-28T16:08:14.181Z",
       "main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
@@ -8127,9 +8135,9 @@
       "new_market_observations": 0,
       "latest_market_observation_id": "XRP-PERP-AGGREGATE-2026-10-28T1200Z",
       "forecast_status": "NOT_ISSUED",
-      "source_records": 432,
-      "run_updates": 84,
-      "limitations": 79,
+      "source_records": 439,
+      "run_updates": 86,
+      "limitations": 80,
       "relationship_edges": 101,
       "competing_hypotheses": 63,
       "market_observations": 47
@@ -8168,7 +8176,7 @@
       "status": "OPEN_DRAFT_UNMERGED; exact-head CI 150 tests/5.78s PASS; fail-closed gate PASS; one generated paper-trading-log commit behind current main.",
       "current_main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76"
     },
-    "current_open_pr_count_status": "GitHub Search API returned 91 open PR results at 2026-10-28T16:58:50Z; current_open_prs is a curated subset, not a complete listing.",
+    "current_open_pr_count_status": "GitHub Search API returned 91 open PR results at 2026-10-28T17:09:12Z; current_open_prs is a curated subset, not a complete listing.",
     "current_pr_1261_state": {
       "pr": 1261,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1261",
@@ -8188,17 +8196,30 @@
       "merge_performed": false,
       "deployment_executed": false,
       "main_modified_by_this_run": false,
-      "limitation": "Current paper_trading_state.json has a nonzero position with null product identity. PR deliberately fails closed rather than inferring or rewriting existing state; manual reconciliation is required before merge."
+      "limitation": "Current paper_trading_state.json has a nonzero position with null product identity. PR deliberately fails closed rather than inferring or rewriting existing state; manual reconciliation is required before merge. Main advanced one generated-log-only commit after the PR base.",
+      "ci": {
+        "status": "PASS",
+        "tests_passed": 153,
+        "duration_seconds": 6.1,
+        "run_id": 40731999180,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40731999180"
+      },
+      "gate": {
+        "status": "PASS",
+        "run_id": 40731998907,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40731998907"
+      },
+      "mergeable": true
     },
-    "snapshot_blob_sha": "6b28504ab9ed726693e80cc0e47edcd9841f4625",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:58:50Z",
-    "snapshot_commit_sha": "a1ce002f23b5af19c1ea63d3906cc96c52df7757",
+    "snapshot_blob_sha": "87a3a067d2ac164cfb314677bc7b8a755e4682c7",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T17:09:44Z",
+    "snapshot_commit_sha": "09a2d2d41c24d9c191e815ae29127507a352904c",
     "post_snapshot_verification": {
       "status": "PENDING_EXACT_HEAD_CI_AND_GATE",
       "snapshot_blob_readback_ok": true,
       "source_ids_unique": true,
       "missing_source_refs": 0,
-      "note": "Snapshot JSON parsed after write and exact blob SHA read back; new index commit still requires its own exact-head CI and fail-closed gate."
+      "note": "Correction snapshot JSON parsed after write and blob SHA read back. New index commit requires its own exact-head CI and fail-closed gate."
     }
   },
   "sources": [
@@ -11697,6 +11718,62 @@
       "title": "Research ledger branch head at start of this run",
       "accessed_at_utc": "2026-10-28T16:58:50Z",
       "note": "PR #1251 branch head was 9ad34a92230cb37ff02a26bf96173699f9123540. Combined status endpoint returned no status entries for that commit. Previous index commit 1349d2cf passed CI/gate, but the later index-only commit's exact-head verification is not established."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/23b30639e2631364d97a32f2213faab574c345fb",
+      "title": "Current main head: paper-trading-log append",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Bidirectional compare confirms main advanced one commit beyond 7b33f9be to 23b30639e2631364d97a32f2213faab574c345fb. Diff changes only web/paper_trading_log.jsonl. Exact-head main CI remains unverified because commit is marked [skip ci]."
+    },
+    {
+      "id": "SRC-GH-PR-1261-CI-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40731999180",
+      "title": "PR #1261 exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "CI job completed successfully on head aff4c1a1c37ab3fdb6493f7159284df126d0490f; decoded log shows 153 tests passed in 6.10 seconds, including the eight new product-identity tests."
+    },
+    {
+      "id": "SRC-GH-PR-1261-GATE-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40731998907",
+      "title": "PR #1261 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Barrot Gated Merge (fail-closed) job completed successfully for PR #1261. This is a gate check, not a merge; PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780337",
+      "title": "Research ledger index f365a6b CI passed",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Exact-head CI job completed successfully on index commit f365a6b21bb57fdd5d74b635701b7ecf2c79c052; decoded log shows 145 tests passed in 6.08 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780097",
+      "title": "Research ledger index f365a6b fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Fail-closed gate job completed successfully for research index commit f365a6b21bb57fdd5d74b635701b7ecf2c79c052. This does not verify the later index commit created in this run."
+    },
+    {
+      "id": "SRC-GH-PR1251-DIVERGENCE-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1251",
+      "title": "Research ledger PR remains substantially diverged",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Compare current main 23b30639... with research index head f365a6b... reports diverged, 49 commits ahead and 36 behind. The changed paths are primarily the research ledger and timestamped snapshots. Preserve the branch; do not merge as-is; use a reviewed fresh-main carry-forward."
+    },
+    {
+      "id": "SRC-GH-SNAPSHOT-CORRECTION-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-fresh-main-20261028-1217z/data/xrp_intelligence/snapshots/2026-10-28T1709Z.json",
+      "title": "Correction snapshot supersedes malformed verification field in prior snapshot",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "The preserved 1709Z snapshot has a malformed repository_ci.pr_1261.head_sha string combining the SHA and status text. The 1709Z-correction snapshot stores head SHA, CI result and gate result separately. The original file was not overwritten."
     }
   ],
   "limitations": [
@@ -11778,7 +11855,8 @@
     "2026-10-28T1506Z: exact-head CI and gate passed on prior ledger index commit b6fb038 (145 tests in 5.02s; gate 40712464446). The new 15:06 index commit remains pending its own checks.",
     "2026-10-28T1658Z: current main paper-trading state has a nonzero simulated position but null position_product. PR #1261 proposes a fail-closed guard; the existing state was not modified and requires evidence-backed manual reconciliation before the fix is merged.",
     "2026-10-28T1658Z: latest visible TradRadar derivatives observation is as of 15:00 UTC, about two hours old at capture; no synchronized spot/derivatives/ETF/chain feature set was admitted.",
-    "2026-10-28T1658Z: Coinbase Q3 2026 results are scheduled for Oct 29 after market close and are not yet available at this capture."
+    "2026-10-28T1658Z: Coinbase Q3 2026 results are scheduled for Oct 29 after market close and are not yet available at this capture.",
+    "2026-10-28T1709Z: research branch remains 49 commits ahead and 36 behind main. Preserve the branch; do not merge as-is. Any carry-forward must be a reviewed fresh-main successor."
   ],
   "run_updates": [
     {
@@ -13759,15 +13837,55 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T17:09:44Z",
+      "update_type": "PAPER_TRADER_IDENTITY_GUARD_AND_EXACT_HEAD_VERIFICATION",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1709Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z.json",
+      "details": "PR #1261's product-identity guard passed exact-head CI (153 tests in 6.10s) and fail-closed gate. The previous research-index head f365a6b passed 145 tests in 6.08s and its gate. Main advanced to 23b30639 via one generated paper-trading-log append; no code path changed. Research branch is 49 ahead/36 behind main and must not be merged as-is.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-2026-10-28T1709Z",
+        "SRC-GH-PR-1261-CI-2026-10-28T1709Z",
+        "SRC-GH-PR-1261-GATE-2026-10-28T1709Z",
+        "SRC-GH-LEDGER-CI-2026-10-28T1709Z",
+        "SRC-GH-LEDGER-GATE-2026-10-28T1709Z",
+        "SRC-GH-PR1251-DIVERGENCE-2026-10-28T1709Z"
+      ],
+      "validation": {
+        "pr1261_ci": "PASS_153_TESTS_6.10S",
+        "pr1261_gate": "PASS",
+        "previous_index_ci": "PASS_145_TESTS_6.08S",
+        "previous_index_gate": "PASS",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T17:09:44Z",
+      "update_type": "SNAPSHOT_METADATA_CORRECTION",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1709Z-CORRECTED",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z-correction.json",
+      "details": "Created a correction snapshot because the preserved 1709Z snapshot contains a malformed repository_ci.pr_1261.head_sha field. The original file remains unchanged; the corrected snapshot separates head SHA, CI and gate metadata.",
+      "source_ids": [
+        "SRC-GH-SNAPSHOT-CORRECTION-2026-10-28T1709Z"
+      ],
+      "validation": {
+        "correction_snapshot_json_parse": "PASS",
+        "original_snapshot_preserved": true,
+        "main_modified_by_this_run": false,
+        "merge_performed": false
+      }
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-28T16:58:50Z",
+    "as_of_utc": "2026-10-28T17:09:44Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
-    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1658Z.json",
-    "next_action": "Verify exact-head CI/gate for PR #1261; verify the new snapshot/index hashes and CI; reconcile the existing paper-trading product identity before any approval; then align XRP spot/perps/ETF/chain data at common UTC cutoffs."
+    "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1709Z-correction.json",
+    "next_action": "Verify the new index commit's exact-head CI and gate; preserve the original 1709Z snapshot and correction note; reconcile the current paper-trading product identity before any PR approval; do not merge the diverged research branch."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -13986,14 +14104,25 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "a1ce002f23b5af19c1ea63d3906cc96c52df7757",
-  "current_research_head_this_run": "a1ce002f23b5af19c1ea63d3906cc96c52df7757",
+  "current_research_head_before_ledger_update": "09a2d2d41c24d9c191e815ae29127507a352904c",
+  "current_research_head_this_run": "09a2d2d41c24d9c191e815ae29127507a352904c",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_OK; NEW_INDEX_COMMIT_CI_AND_GATE_PENDING",
-    "previous_index_head": "9ad34a92230cb37ff02a26bf96173699f9123540",
-    "previous_index_status": "NO_STATUS_ENTRIES_RETURNED",
-    "snapshot_commit_sha": "a1ce002f23b5af19c1ea63d3906cc96c52df7757",
-    "snapshot_blob_sha": "6b28504ab9ed726693e80cc0e47edcd9841f4625",
+    "status": "PRIOR_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_READBACK_OK; NEW_INDEX_CI_AND_GATE_PENDING",
+    "previous_index_head": "f365a6b21bb57fdd5d74b635701b7ecf2c79c052",
+    "previous_index_ci": {
+      "status": "PASS",
+      "tests_passed": 145,
+      "duration_seconds": 6.08,
+      "run_id": 40732780337,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780337"
+    },
+    "previous_index_gate": {
+      "status": "PASS",
+      "run_id": 40732780097,
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780097"
+    },
+    "snapshot_commit_sha": "09a2d2d41c24d9c191e815ae29127507a352904c",
+    "snapshot_blob_sha": "87a3a067d2ac164cfb314677bc7b8a755e4682c7",
     "new_index_ci": "PENDING_AFTER_WRITE",
     "new_index_gate": "PENDING_AFTER_WRITE"
   }
