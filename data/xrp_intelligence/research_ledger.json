@@ -18,10 +18,10 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T04:16:30Z",
+    "captured_at_utc": "2026-10-28T05:05:10.899Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
-      "main_sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
+      "main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
       "main_protected": true,
       "no_merge_performed": true,
       "active_prs": [
@@ -40,8 +40,8 @@
           "title": "Research: carry XRP intelligence ledger onto fresh main",
           "state": "open",
           "draft": true,
-          "head_sha": "70f73ddfbf6ca4db845686bc94687d792e4ab702",
-          "status": "Exact-head CI PASS (146 tests, 6.51s); fail-closed gate PASS; open draft/unmerged. Base a960255f2b7b0418694ee428bc82fbbeed6622dd is behind current main a77c329; refresh base only through reviewed non-destructive process."
+          "head_sha": "91b4a6b3043b37775314991935097797dd1eab7e",
+          "status": "Research-only branch; 36 commits ahead and 38 behind current main. Preserve history; do not merge stale branch without reviewed reconciliation."
         },
         {
           "number": 1228,
@@ -113,7 +113,7 @@
           "state": "open",
           "draft": true,
           "head_sha": "cb2e98d0f1358d924bce2b8bd75f0612fc5519e2",
-          "status": "Exact-head CI PASS (146 tests, 5.96s); fail-closed gate PASS; open draft/unmerged and mergeable at latest read; base d0fd18f is one generated-data commit behind current main a77c329."
+          "status": "CI and gate previously passed; 3 commits ahead and 14 behind current main; unmerged."
         },
         {
           "number": 1239,
@@ -122,7 +122,25 @@
           "state": "open",
           "draft": true,
           "head_sha": "8b215b8c9db2018ebae8a7e42008239b5f05a6e1",
-          "status": "Exact-head CI PASS (150 tests, 5.95s); fail-closed gate PASS; mergeable at latest read; draft/unmerged. Workflow is read-only/no-op pending verified branch protection."
+          "status": "CI and gate previously passed; 4 commits ahead and 13 behind current main; unmerged."
+        },
+        {
+          "number": 1240,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1240",
+          "title": "Safety: gate external platform writes behind manual confirmation",
+          "state": "open",
+          "draft": true,
+          "head_sha": "7b7939758526a6a90e4310aa59babc75541a7443",
+          "status": "CI and gate previously passed; branch diverged 7 ahead/7 behind current main; unmerged."
+        },
+        {
+          "number": 1241,
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+          "title": "Safety: gate external deployments and disable automated merge on fresh main",
+          "state": "open",
+          "draft": true,
+          "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
+          "status": "Exact-head CI PASS (150 tests, 5.30s); fail-closed gate PASS; draft/unmerged; branch was 7 ahead/0 behind at capture."
         }
       ],
       "protection_detail_access": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
@@ -132,11 +150,10 @@
         "enforcement": "disabled"
       },
       "current_main_commit": {
-        "sha": "6a616e75a8afb2917a1c42fd302277fee258d89a",
+        "sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
         "message": "Paper trade cycle [skip ci]",
-        "authored_at_utc": "2026-10-28T04:05:32Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/commit/6a616e75a8afb2917a1c42fd302277fee258d89a",
-        "scope": "One appended paper-trading log row only; no code/workflow changes."
+        "authored_at_utc": "2026-10-28T05:04:57Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/commit/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6"
       },
       "current_ci": {
         "repository": "Barrot-Agent/B-Agent",
@@ -316,7 +333,9 @@
           "last_verified_gate": "PASS",
           "note": "Manual-only external deployment gate; draft/unmerged; no deployment executed."
         }
-      ]
+      ],
+      "required_status_check_contexts": [],
+      "required_status_checks": []
     },
     "critical_engine_findings": [
       {
@@ -637,6 +656,88 @@
           "SRC-REPO-PR1237-CI-2026-10-28T0220Z",
           "SRC-REPO-PR1237-GATE-2026-10-28T0220Z"
         ]
+      },
+      {
+        "id": "WORKFLOW-EXTERNAL-WRITE-AND-MERGE-RISK-PR1241-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "CRITICAL",
+        "status": "FIX_PROPOSED_IN_OPEN_DRAFT_PR_1241; EXACT_HEAD_CI_AND_GATE_PASS",
+        "files": [
+          {
+            "path": ".github/workflows/barrot-ops.yml"
+          },
+          {
+            "path": ".github/workflows/merge-queue.yml"
+          },
+          {
+            "path": ".github/workflows/force-deploy-space.yml"
+          },
+          {
+            "path": ".github/workflows/sync-huggingface.yml"
+          },
+          {
+            "path": ".github/workflows/deploy-databricks.yml"
+          }
+        ],
+        "finding": "Main has a push-triggered Hugging Face/Databricks write workflow, a manual merge queue that can update/merge all open PRs, a force-push to an external Hugging Face Space, a sync workflow that deletes remote files and propagates GitHub secrets, and a Databricks push-triggered workflow with a wrong script path.",
+        "consequence": "Consequential external changes and broad repository mutations can occur without the explicit reviewed gates the mission requires.",
+        "proposed_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+        "verification": "PR #1241 exact-head CI passed 150 tests in 5.30 seconds and the fail-closed gate passed. Draft/unmerged; no external deployment executed."
+      },
+      {
+        "id": "MAIN-BRANCH-REQUIRED-CHECKS-EMPTY-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "CRITICAL",
+        "status": "PROTECTED_FLAG_TRUE; REQUIRED_CHECK_CONTEXTS_EMPTY; REVIEW_RULES_NOT_VERIFIED",
+        "files": [
+          {
+            "path": "main branch protection API summary"
+          }
+        ],
+        "finding": "GitHub's main branch endpoint reports protected=true but required status-check contexts and checks arrays are empty. The fallback ruleset named Fall Back is disabled. The detailed protection endpoint returns 403 to the current integration.",
+        "consequence": "Passing PR CI is not proven to be enforced as a merge prerequisite by the currently observable branch settings.",
+        "next_action": "An authorized repository administrator must independently inspect effective branch protection/rulesets and require the intended CI, approval and stale-review checks; no settings were changed."
+      },
+      {
+        "id": "WORKFLOW-EXTERNAL-WRITE-AND-MERGE-RISK-PR1241-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "CRITICAL",
+        "status": "FIX_PROPOSED_IN_OPEN_DRAFT_PR_1241; EXACT_HEAD_CI_AND_GATE_PASS",
+        "files": [
+          {
+            "path": ".github/workflows/barrot-ops.yml"
+          },
+          {
+            "path": ".github/workflows/merge-queue.yml"
+          },
+          {
+            "path": ".github/workflows/force-deploy-space.yml"
+          },
+          {
+            "path": ".github/workflows/sync-huggingface.yml"
+          },
+          {
+            "path": ".github/workflows/deploy-databricks.yml"
+          }
+        ],
+        "finding": "Main has a push-triggered Hugging Face/Databricks write workflow, a manual merge queue that can update/merge all open PRs, a force-push to an external Hugging Face Space, a sync workflow that deletes remote files and propagates GitHub secrets, and a Databricks push-triggered workflow with a wrong script path.",
+        "consequence": "Consequential external changes and broad repository mutations can occur without the explicit reviewed gates the mission requires.",
+        "proposed_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+        "verification": "PR #1241 exact-head CI passed 150 tests in 5.30 seconds and the fail-closed gate passed. Draft/unmerged; no external deployment executed."
+      },
+      {
+        "id": "MAIN-BRANCH-REQUIRED-CHECKS-EMPTY-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "severity": "CRITICAL",
+        "status": "PROTECTED_FLAG_TRUE; REQUIRED_CHECK_CONTEXTS_EMPTY; REVIEW_RULES_NOT_VERIFIED",
+        "files": [
+          {
+            "path": "main branch protection API summary"
+          }
+        ],
+        "finding": "GitHub's main branch endpoint reports protected=true but required status-check contexts and checks arrays are empty. The fallback ruleset named Fall Back is disabled. The detailed protection endpoint returns 403 to the current integration.",
+        "consequence": "Passing PR CI is not proven to be enforced as a merge prerequisite by the currently observable branch settings.",
+        "next_action": "An authorized repository administrator must independently inspect effective branch protection/rulesets and require the intended CI, approval and stale-review checks; no settings were changed."
       }
     ],
     "research_findings": [
@@ -1250,6 +1351,71 @@
           "SRC-CRYPTOKRIOS-KAMILAH-CHANNEL-2026-10-28"
         ],
         "uncertainty": "No first-party channel description/social cross-link was verified. YouTube channel/RSS access was blocked in this run. Third-party view counts and video inventory may be stale or incomplete."
+      },
+      {
+        "id": "COINBASE-XRP-HOLDING-DISCLOSURE-2026-10-28",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "DISCLOSURE_AS_OF_2026-03-31; QUANTITY_AND_DIRECTION_UNKNOWN",
+        "claim": "Coinbase's U.S. (including New York) trading-assets disclosure lists XRP as Coinbase Holding=Yes and Commercial Engagement=Yes.",
+        "interpretation": "This is direct company disclosure of a holding and a broadly defined commercial engagement, not evidence of net accumulation, the amount held, beneficial ownership by a particular client, or a planned price move.",
+        "source_ids": [
+          "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-2026-10-28"
+        ],
+        "uncertainty": "Disclosure is dated 2026-03-31 for holdings; page does not provide XRP quantity or a current inventory breakdown."
+      },
+      {
+        "id": "CIRCLE-COINBASE-USDC-PARTNER-ECONOMICS-2026-10-28",
+        "evidence_class": "COMPANY_REPORTED",
+        "status": "DIRECT_COMMERCIAL_RELATIONSHIP_CONFIRMED_AS_REPORTED; XRP_FLOW_UNKNOWN",
+        "claim": "Circle describes Coinbase as its largest and longest-standing USDC partner. Circle's Oct 16 post reports H1 2026 USDC settlement above $36T and $819M paid to distribution partners and transaction costs; Coinbase's Q2 release reports $20B average USDC held in Coinbase products and 10.3% crypto trading-volume share.",
+        "interpretation": "Circle/Coinbase have a substantial, disclosed distribution/economic relationship. These company metrics do not establish XRPL-native USDC flow, XRP collateral, XRP purchases or a causal XRP price effect. Circle's $36T H1 figure and Coinbase's stablecoin-volume claims use different periods/denominators and should not be combined without definitions.",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-PARTNER-ECONOMICS-2026-10-16",
+          "SRC-COINBASE-Q2-RESULTS-2026-07-30"
+        ],
+        "uncertainty": "Company-reported metrics; source lineage is not fully independent because Circle cites Coinbase's reported balance figure."
+      },
+      {
+        "id": "XRP-QUOTE-CUTOFF-NORMALIZATION-2026-10-28",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "status": "UNSYNCHRONIZED_QUOTES_BLOCKED",
+        "claim": "CoinCodex's Oct 26-27 daily interval closes near $1.30 while Investing.com displays an Oct 28 intraday quote near $1.3274.",
+        "interpretation": "Different cutoff times, market universes and aggregation methods can explain the difference. Do not treat it as a same-time discrepancy, arbitrage opportunity, or model feature.",
+        "source_ids": [
+          "SRC-COINCODEX-XRP-HISTORY-2026-10-28",
+          "SRC-INVESTING-XRP-HISTORY-2026-10-28"
+        ],
+        "uncertainty": "Intraday timestamp and source venue coverage are not harmonized."
+      },
+      {
+        "id": "REPO-EXTERNAL-WRITE-GATES-PR1241-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "FIX_PROPOSED_IN_OPEN_DRAFT_PR; EXACT_HEAD_CI_AND_GATE_PASS",
+        "claim": "Main still contains push-triggered external deployment paths, a force-push Hugging Face workflow, a sync workflow that deletes remote files and copies GitHub secrets into the Space, and a manual merge queue with write permissions. PR #1241 proposes manual confirmation gates, disables the legacy force-push workflow, removes HF secret propagation/deletion behavior, fixes the Databricks script path, and replaces merge automation with a read-only notice.",
+        "interpretation": "The PR is a high-impact safety proposal but remains unmerged. Its CI verifies text-level guardrails; it does not prove environment approval settings or run a deployment. Main remains exposed to the current workflows until an approved fix is merged.",
+        "source_ids": [
+          "SRC-GH-MAIN-HEAD-2026-10-28T0451Z",
+          "SRC-WF-BARROT-OPS-MAIN-2026-10-28",
+          "SRC-WF-MERGE-QUEUE-MAIN-2026-10-28",
+          "SRC-WF-FORCE-DEPLOY-MAIN-2026-10-28",
+          "SRC-WF-SYNC-HF-MAIN-2026-10-28",
+          "SRC-WF-DEPLOY-DATABRICKS-MAIN-2026-10-28",
+          "SRC-REPO-PR1241-STATE-2026-10-28T0501Z",
+          "SRC-REPO-PR1241-CI-2026-10-28T0501Z",
+          "SRC-REPO-PR1241-GATE-2026-10-28T0501Z"
+        ],
+        "next_action": "Review PR #1241; separately move generated-data workflows to durable append-only staging and reviewed promotion."
+      },
+      {
+        "id": "REPO-APPROVAL-WORKFLOW-ZERO-JOB-2026-10-28",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "status": "ROOT_CAUSE_UNRESOLVED",
+        "claim": "The current barrot-approve-pr.yml content declares workflow_dispatch only, but run 40635570114 is recorded as a push event on PR #1241's head and has zero jobs.",
+        "interpretation": "The current trigger declaration does not explain the observed push-event run. Preserve this as unresolved; do not claim the workflow is fixed or infer a root cause from zero jobs alone.",
+        "source_ids": [
+          "SRC-REPO-APPROVAL-ZERO-JOB-RUN-2026-10-28T0501Z"
+        ],
+        "next_action": "Inspect the run's workflow revision and GitHub event metadata through authorized Actions endpoints; avoid dispatching approval actions for diagnosis."
       }
     ],
     "relationship_graph": [
@@ -1885,6 +2051,36 @@
           "SRC-GLASP-KAMILAH-CRYPTO-WEALTH-2026-01-15"
         ],
         "status": "TRANSCRIPT_EXCERPT; DOES_NOT_PROVE_EXACT_NAME_CAMILLA_STEPHENSON"
+      },
+      {
+        "id": "EDGE-COINBASE-XRP-HOLDING-DISCLOSURE-2026",
+        "from": "Coinbase",
+        "relation": "reports holding and commercial engagement for",
+        "to": "XRP",
+        "evidence_ids": [
+          "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-2026-10-28"
+        ],
+        "status": "COMPANY_DISCLOSURE_AS_OF_2026-03-31; QUANTITY_UNKNOWN"
+      },
+      {
+        "id": "EDGE-CIRCLE-COINBASE-USDC-DISTRIBUTION-2026",
+        "from": "Circle",
+        "relation": "describes as its largest and longest-standing USDC partner",
+        "to": "Coinbase",
+        "evidence_ids": [
+          "SRC-CIRCLE-USDC-PARTNER-ECONOMICS-2026-10-16"
+        ],
+        "status": "COMPANY_REPORTED"
+      },
+      {
+        "id": "EDGE-COINBASE-USDC-AVERAGE-BALANCE-2026",
+        "from": "Coinbase",
+        "relation": "reports average USDC held in its products of $20B in Q2 2026",
+        "to": "USDC",
+        "evidence_ids": [
+          "SRC-COINBASE-Q2-RESULTS-2026-07-30"
+        ],
+        "status": "COMPANY_REPORTED; NOT XRPL-SPECIFIC"
       }
     ],
     "competing_hypotheses": [
@@ -2373,6 +2569,43 @@
           "Compare a user-provided original video/phrase timestamp if it becomes available, without assuming identity from topic similarity.",
           "Only after identity verification, enumerate the complete public upload inventory and extract transcripts with video IDs and timestamps."
         ]
+      },
+      {
+        "id": "H-COINBASE-CIRCLE-XRP-INDIRECT-MICROSTRUCTURE-2026",
+        "hypothesis": "Coinbase's XRP market access/holding and its USDC distribution relationship with Circle could create an indirect XRP microstructure channel through quote currency liquidity, collateral, funding and derivatives.",
+        "supporting_evidence": [
+          "Coinbase discloses XRP holding and commercial engagement as of 2026-03-31.",
+          "Coinbase reports $20B average USDC balances in Q2 2026; Circle calls Coinbase its largest and longest-standing USDC partner."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "No XRP holding quantity, net inventory change, customer flow, or XRP collateral balance is disclosed in the cited page.",
+          "USDC balances may be held on Coinbase products and not on XRPL; trading/hedging activity can be independent of Circle's distribution economics.",
+          "No causal XRP price effect or joint XRP strategy is documented."
+        ],
+        "test_plan": [
+          "Collect timestamped Coinbase XRP spot/derivatives prices, order-book depth, funding and open interest.",
+          "Separate XRP/USDC pair liquidity from XRP/USD and chain-specific USDC balances.",
+          "Run event studies with BTC/ETH and market-wide controls; require out-of-sample replication before feature admission."
+        ],
+        "status": "PLAUSIBLE_MECHANISM_NOT_ESTABLISHED"
+      },
+      {
+        "id": "H-USDC-RAILS-COMPLEMENT-OR-SUBSTITUTE-XRP-2026-10-28",
+        "hypothesis": "USDC's distribution and settlement growth may complement XRPL activity while substituting for XRP as a bridge asset on some dollar-denominated routes.",
+        "supporting_evidence": [
+          "Circle reports broad distribution, large mint/redemption activity and Coinbase as its largest/longest-standing partner.",
+          "Native USDC availability on XRPL is documented in prior ledger evidence."
+        ],
+        "disconfirming_or_alternative_evidence": [
+          "Global USDC volumes do not reveal XRPL-specific usage or which bridge asset a payment used.",
+          "No route-level XRP bridge share, XRPL-native USDC flow attribution or incremental XRP acquisition is established."
+        ],
+        "test_plan": [
+          "Measure XRPL-native USDC supply, transfers and DEX depth using public ledger records.",
+          "Compare XRP bridge-path share and stablecoin settlement volume by corridor and time.",
+          "Keep the hypothesis unresolved until actual route-level data and independent sources support it."
+        ],
+        "status": "UNRESOLVED_COMPETING_CAUSAL_HYPOTHESES"
       }
     ],
     "market_observations": [
@@ -2592,6 +2825,28 @@
           "SRC-DECRYPT-XRP-MARKET-ETF-FLOW-2026-10-28"
         ],
         "approved_for_model_features": false
+      },
+      {
+        "id": "XRP-COINCODEX-OCT26-2026-10-28",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-26/27 interval",
+        "observation": "CoinCodex displays a close near $1.30, volume about $1.24B and market cap about $81.77B for its Oct 26-27 interval.",
+        "interpretation": "Historical daily interval only; not synchronized with the separate Oct 28 intraday quote and not admitted as a current model feature.",
+        "source_ids": [
+          "SRC-COINCODEX-XRP-HISTORY-2026-10-28"
+        ],
+        "approved_for_model_features": false
+      },
+      {
+        "id": "XRP-INVESTING-REALTIME-OCT28-2026",
+        "evidence_class": "SECONDARY_UNVERIFIED",
+        "as_of_date": "2026-10-28; page timestamp/timezone not normalized",
+        "observation": "Investing.com displays XRP around $1.3274 with a displayed daily range around $1.3270-$1.3306 and volume around $189.6M.",
+        "interpretation": "Quote time and market universe are not normalized against CoinCodex; the apparent difference is not an executable spread or a forecast signal.",
+        "source_ids": [
+          "SRC-INVESTING-XRP-HISTORY-2026-10-28"
+        ],
+        "approved_for_model_features": false
       }
     ],
     "phrase_investigation": {
@@ -2802,7 +3057,7 @@
     "forecast_engine_status": {
       "status": "NOT_ISSUED",
       "current_price_forecast": null,
-      "reason": "Current quote sources are not synchronized; Coinbase futures card has a contract-date conflict; ETF flow is tracker-level; no calibrated fixed-horizon out-of-sample predictive skill has been demonstrated. Creator identity and phrase evidence remain third-party/incomplete and are not market features.",
+      "reason": "Coinbase's disclosure confirms a reported XRP holding/commercial engagement as of 2026-03-31 but gives no amount or trade direction. Circle/Coinbase stablecoin economics are company-reported and do not establish XRP flows. XRP quotes are not synchronized, and exact-head model skill/calibration gates remain unmet.",
       "minimum_forecast_record": [
         "forecast_id",
         "data_cutoff_utc",
@@ -2833,7 +3088,7 @@
         "drift and source coverage monitoring",
         "shadow evaluation before any real-money use"
       ],
-      "last_checked_utc": "2026-10-28T04:16:30Z"
+      "last_checked_utc": "2026-10-28T05:05:10.899Z"
     },
     "massive_micro_ingestion": {
       "status": "REQUIRED_STANDARD",
@@ -2848,14 +3103,14 @@
       ]
     },
     "next_actions": [
-      "Review PR #1239: exact-head CI passed 150 tests and the fail-closed gate passed; keep it draft/unmerged until human approval and independent branch-protection verification.",
-      "Review PR #1238: exact-head CI passed 146 tests and the gate passed; it removes the financial-data refresh direct-main write path but 30-day artifacts are not durable storage.",
-      "Preserve and validate the updated research ledger and snapshots; refresh the stale PR #1227 base through a reviewed, non-destructive successor rather than force-pushing.",
-      "Normalize XRP spot price, bid/ask, depth and volume from public exchange endpoints at common UTC cutoffs; dashboard widgets are asynchronous and remain blocked from model features.",
-      "Reconcile USDC supply by same-date issuer values, chain-level supply, mint/burn and bridged representations; do not infer XRP inflows from global USDC changes.",
-      "Continue official SBIC identity work and the exact phrase investigations for ASK Coin, actual capital and SBIC, ChatGPT SBIC; establish the canonical Camilla Stephenson channel before claiming exhaustive video coverage.",
-      "Keep the nine-platform architecture DESIGNED until every adapter has verified authentication, least-privilege permissions and end-to-end evidence handoffs.",
-      "Keep forecast status NOT_ISSUED until immutable fixed-horizon records, synchronized features, leakage controls, baselines, calibration, drift monitoring and shadow evaluation pass."
+      "Review PR #1241; keep draft/unmerged pending human approval and independently verify branch protection requirements.",
+      "Design durable append-only staging/promotion for knowledge-signal-cycle, check-signal-accuracy, financial-data-refresh and cross-analysis without losing ingestion continuity.",
+      "Normalize XRP price and volume observations to one UTC cutoff and venue/quote universe before feature admission.",
+      "Measure XRPL-native USDC supply/transfers, XRP bridge-path share, Coinbase order-book/derivatives positioning and actual collateral evidence; do not infer flows from company announcements.",
+      "Continue SBIC entity disambiguation and exact-phrase research for ASK Coin, actual capital, and SBIC, ChatGPT SBIC.",
+      "Resolve the canonical Camilla Stephenson channel from first-party links before claiming a complete public-video inventory.",
+      "Test each non-ChatGPT platform adapter with least-privilege authentication and a hash-verifiable end-to-end evidence handoff.",
+      "Keep forecast status NOT_ISSUED until fixed-horizon walk-forward performance, leakage controls, baseline comparison, calibration, drift monitoring and shadow evaluation pass."
     ],
     "macro_context": {
       "as_of_utc": "2026-10-28T01:04:30Z",
@@ -2942,7 +3197,7 @@
     },
     "repository_ci": {
       "repository": "Barrot-Agent/B-Agent",
-      "main_sha": "a77c329157c85c3cb914233a5761ab4eac6bd0d4",
+      "main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
       "main_commit": {
         "message": "Paper trade cycle [skip ci]",
         "authored_at_utc": "2026-10-28T03:05:49Z",
@@ -2953,14 +3208,10 @@
         "scope": "One generated paper-trading row only; exact-head code CI not triggered by this [skip ci] commit."
       },
       "main_branch_protected": true,
-      "branch_protection_details": "Read request returned 403 Resource not accessible by integration; effective required checks not independently verified.",
+      "branch_protection_details": "Branch endpoint reports protection enabled, but required status-check contexts/checks are empty; detailed protection endpoint is not accessible to the current integration. Effective review requirements are not verified.",
       "main_ci": {
-        "run_id": 40583993078,
-        "conclusion": "success",
-        "tested_sha": "6c91a862be06c02f01814c47f831da54aa306b88",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40583993078",
-        "current_head_status": "NOT_VERIFIED",
-        "note": "Last recorded successful code CI predates current main; current main changes since then were generated-data-only."
+        "current_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
+        "note": "Main head is a generated cross-analysis refresh commit marked [skip ci]; no exact-head full code CI was verified for this SHA."
       },
       "main_databricks_deploy": {
         "run_id": 40583993212,
@@ -3353,6 +3604,30 @@
           "SRC-COINBASE-XRP-FUTURES-CARD-2026-10-28"
         ],
         "next_action": "Resolve the contract symbol against Coinbase Derivatives Exchange's official product specification and CFTC contract metadata; only then align OI, volume and settlement time."
+      },
+      {
+        "id": "XRP-QUOTE-TIME-ALIGNMENT-2026-10-28",
+        "severity": "HIGH",
+        "status": "BLOCKED_FROM_FEATURE_STORE",
+        "finding": "CoinCodex's Oct 26-27 daily interval and Investing.com's Oct 28 intraday quote differ in cutoff and potentially market coverage.",
+        "interpretation": "Do not compare these observations as a same-time spread or blend them as one price feature.",
+        "source_ids": [
+          "SRC-COINCODEX-XRP-HISTORY-2026-10-28",
+          "SRC-INVESTING-XRP-HISTORY-2026-10-28"
+        ],
+        "next_action": "Normalize venue, timezone, bar boundary, quote currency, volume universe and data retrieval timestamp before admitting any price/volume features."
+      },
+      {
+        "id": "XRP-QUOTE-TIME-ALIGNMENT-2026-10-28",
+        "severity": "HIGH",
+        "status": "BLOCKED_FROM_FEATURE_STORE",
+        "finding": "CoinCodex's Oct 26-27 daily interval and Investing.com's Oct 28 intraday quote differ in cutoff and potentially market coverage.",
+        "interpretation": "Do not compare these observations as a same-time spread or blend them as one price feature.",
+        "source_ids": [
+          "SRC-COINCODEX-XRP-HISTORY-2026-10-28",
+          "SRC-INVESTING-XRP-HISTORY-2026-10-28"
+        ],
+        "next_action": "Normalize venue, timezone, bar boundary, quote currency, volume universe and data retrieval timestamp before admitting any price/volume features."
       }
     ],
     "mission_priority": {
@@ -3381,20 +3656,15 @@
       ],
       "forecast_status": "NOT_ISSUED"
     },
-    "snapshot_id": "XRP-CREATOR-IDENTITY-CANDIDATE-AND-LEDGER-CI-2026-10-28T0416Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0416Z.json",
-    "current_research_head_before_ledger_update": "a026914aab0b80db7b3fe33ef72e5da6351b6cb0",
+    "snapshot_id": "XRP-COINBASE-CIRCLE-WORKFLOW-AUDIT-2026-10-28T05:05Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0505Z.json",
+    "current_research_head_before_ledger_update": "91b4a6b3043b37775314991935097797dd1eab7e",
     "current_research_checks": {
-      "tests": "success",
-      "tests_passed": 146,
-      "duration_seconds": 6.51,
-      "as_of_utc": "2026-10-28T03:08:30Z",
-      "test_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40624733482",
-      "gate": "success",
-      "gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40624733420",
-      "note": "These checks validate research branch head 70f73ddfbf6ca4db845686bc94687d792e4ab702 before this new snapshot commit."
+      "status": "NOT_VERIFIED_AFTER_NEW_SNAPSHOT",
+      "previous_head_checks": "Prior snapshot reported passing checks for an earlier research head; these do not verify the commit created by this update.",
+      "note": "This ledger update will change the research PR head. Recheck exact-head CI and gate after the update."
     },
-    "current_research_head_before_final_verification_record": "9f6c607a6f1df9a906cc8032fb5c092242b5e893",
+    "current_research_head_before_final_verification_record": "91b4a6b3043b37775314991935097797dd1eab7e",
     "platform_coordination_architecture": {
       "version": "1.0",
       "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
@@ -3819,6 +4089,57 @@
           "SRC-CBI-COINBASE-IRELAND-FINE-OFFICIAL-2026-10-22"
         ],
         "interpretation": "€3,252,618 sanction for historical safeguarding/outsourcing breaches; subject to High Court confirmation; no XRP-specific custody failure established."
+      },
+      {
+        "event_id": "EVT-COINBASE-XRP-DISCLOSURE-2026-03-31",
+        "event_time_utc": "2026-03-31",
+        "captured_at_utc": "2026-10-28T05:05:10.899Z",
+        "entity": "Coinbase; XRP",
+        "event": "Coinbase's current digital-asset disclosure page lists XRP as held and commercially engaged in the US including New York trading-assets table; holdings date is 2026-03-31.",
+        "evidence_class": "COMPANY_REPORTED",
+        "source_ids": [
+          "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-2026-10-28"
+        ],
+        "impact_status": "HOLDING_DISCLOSED; AMOUNT_AND_DIRECTION_UNKNOWN"
+      },
+      {
+        "event_id": "EVT-CIRCLE-USDC-ECONOMICS-2026-10-16",
+        "event_time_utc": "2026-10-16",
+        "captured_at_utc": "2026-10-28T05:05:10.899Z",
+        "entity": "Circle; Coinbase; USDC",
+        "event": "Circle published partner-economics details including Coinbase's role and H1 2026 USDC distribution/transaction-cost metrics.",
+        "evidence_class": "COMPANY_REPORTED",
+        "source_ids": [
+          "SRC-CIRCLE-USDC-PARTNER-ECONOMICS-2026-10-16",
+          "SRC-COINBASE-Q2-RESULTS-2026-07-30"
+        ],
+        "impact_status": "COMMERCIAL_LINK_CONFIRMED_AS_REPORTED; XRP_FLOW_IMPACT_UNKNOWN"
+      },
+      {
+        "event_id": "EVT-PR1241-EXTERNAL-WRITE-GATES-VERIFIED-2026-10-28T0501Z",
+        "event_time_utc": "2026-10-28T05:01:31Z",
+        "captured_at_utc": "2026-10-28T05:05:10.899Z",
+        "entity": "Barrot-Agent/B-Agent PR #1241",
+        "event": "Fresh-main proposal gates external deployments, disables the legacy force-push workflow and mutation-capable merge queue, and passes 150 tests plus the fail-closed gate.",
+        "evidence_class": "REPOSITORY_CI_VERIFICATION",
+        "source_ids": [
+          "SRC-REPO-PR1241-STATE-2026-10-28T0501Z",
+          "SRC-REPO-PR1241-CI-2026-10-28T0501Z",
+          "SRC-REPO-PR1241-GATE-2026-10-28T0501Z"
+        ],
+        "impact_status": "VERIFIED_IN_DRAFT_PR; NOT_MERGED; MAIN_UNCHANGED"
+      },
+      {
+        "event_id": "EVT-MAIN-PROTECTION-CHECKS-EMPTY-2026-10-28T0451Z",
+        "event_time_utc": "2026-10-28T04:51:42Z",
+        "captured_at_utc": "2026-10-28T05:05:10.899Z",
+        "entity": "Barrot-Agent/B-Agent main branch",
+        "event": "GitHub branch metadata reports protected=true but empty required status-check contexts/checks; detailed protection access is unavailable to the integration.",
+        "evidence_class": "REPOSITORY_OBSERVATION",
+        "source_ids": [
+          "SRC-GH-MAIN-HEAD-2026-10-28T0451Z"
+        ],
+        "impact_status": "MERGE_GATE_ENFORCEMENT_NOT_VERIFIED"
       }
     ],
     "current_pr_1238_state": {
@@ -3858,45 +4179,123 @@
       "main_modified_by_this_run": false,
       "merge_performed": false
     },
-    "snapshot_blob_sha": "da7367d97891027c01b49fb722f996e2dec9bdde",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "main_workflow_audit": {
-      "observed_at_utc": "2026-10-28T04:11:30Z",
+      "observed_at_utc": "2026-10-28T05:05:10.899Z",
+      "current_main_sha": "4db66fd16604ed7d8b3ba17c6e3469a04a2441d6",
       "findings": [
         {
-          "path": ".github/workflows/knowledge-signal-cycle.yml",
-          "status": "ON_MAIN_WRITE_CAPABLE",
-          "evidence": "contents: write; commits generated knowledge/signal files and pushes main; PR #1237 remains open/unmerged."
-        },
-        {
-          "path": ".github/workflows/financial-data-refresh.yml",
-          "status": "ON_MAIN_WRITE_CAPABLE",
-          "evidence": "contents: write; commits financial data files and pushes main; PR #1238 remains open/unmerged."
+          "path": ".github/workflows/barrot-ops.yml",
+          "status": "PUSH_TRIGGERED_EXTERNAL_WRITES_ON_MAIN",
+          "evidence": "Pushes to main can update a configured Hugging Face Space and overwrite a Databricks workspace notebook.",
+          "source_ids": [
+            "SRC-WF-BARROT-OPS-MAIN-2026-10-28"
+          ]
         },
         {
           "path": ".github/workflows/merge-queue.yml",
-          "status": "ON_MAIN_MUTATION_CAPABLE_MANUAL_DISPATCH",
-          "evidence": "workflow_dispatch only, but has contents/pull-requests write and can update branches/merge PRs; PR #1239 remains open/unmerged."
+          "status": "MANUAL_BUT_MUTATION_CAPABLE",
+          "evidence": "contents:write and pull-requests:write; branch update and merge operations; mode=all can target every open PR.",
+          "source_ids": [
+            "SRC-WF-MERGE-QUEUE-MAIN-2026-10-28"
+          ]
         },
         {
-          "path": ".github/workflows/barrot-ops.yml",
-          "status": "ON_MAIN_PUSH_TRIGGERED_EXTERNAL_WRITES; FIX_PROPOSED_PR1240",
-          "evidence": "Every push to main can push main to a configured Hugging Face Space and overwrite a Databricks workspace notebook. PR #1240 gates this behind manual dispatch plus explicit boolean confirmation; exact-head CI 147 passed and gate passed; unmerged."
+          "path": ".github/workflows/force-deploy-space.yml",
+          "status": "MANUAL_FORCE_PUSH_TO_EXTERNAL_SPACE",
+          "evidence": "Reads HF_TOKEN and performs git push -f to Hugging Face.",
+          "source_ids": [
+            "SRC-WF-FORCE-DEPLOY-MAIN-2026-10-28"
+          ]
         },
         {
-          "path": ".github/workflows/barrot-pr-automerge.yml",
-          "status": "ON_MAIN_DISABLED_READ_ONLY_NOTICE",
-          "evidence": "workflow_dispatch only; contents and pull-requests are read-only."
+          "path": ".github/workflows/sync-huggingface.yml",
+          "status": "PUSH_TRIGGERED_REMOTE_DELETION_AND_SECRET_PROPAGATION",
+          "evidence": "Push trigger uploads with delete_patterns=['*'] and writes GitHub secrets into the Space.",
+          "source_ids": [
+            "SRC-WF-SYNC-HF-MAIN-2026-10-28"
+          ]
+        },
+        {
+          "path": ".github/workflows/deploy-databricks.yml",
+          "status": "PUSH_TRIGGERED_DEPLOYMENT_PATH_BUG",
+          "evidence": "Runs python deploy_databricks.py while implementation is scripts/deploy_databricks.py.",
+          "source_ids": [
+            "SRC-WF-DEPLOY-DATABRICKS-MAIN-2026-10-28"
+          ]
+        },
+        {
+          "path": ".github/workflows/financial-data-refresh.yml",
+          "status": "DIRECT_MAIN_GENERATED_DATA_WRITE",
+          "evidence": "contents:write; commits generated financial data and pushes main.",
+          "source_ids": [
+            "SRC-WF-FINANCIAL-REFRESH-MAIN-2026-10-28"
+          ]
+        },
+        {
+          "path": ".github/workflows/check-signal-accuracy.yml",
+          "status": "DIRECT_MAIN_SIGNAL_HISTORY_WRITE",
+          "evidence": "contents:write; commits signal history/accuracy outputs and pushes main.",
+          "source_ids": [
+            "SRC-WF-CHECK-ACCURACY-MAIN-2026-10-28"
+          ]
+        },
+        {
+          "path": ".github/workflows/knowledge-signal-cycle.yml",
+          "status": "HOURLY_DIRECT_MAIN_SIGNAL_AND_KNOWLEDGE_WRITE",
+          "evidence": "contents:write; commits knowledge logs/config and signal/history to main.",
+          "source_ids": [
+            "SRC-WF-KNOWLEDGE-SIGNAL-MAIN-2026-10-28"
+          ]
+        },
+        {
+          "path": ".github/workflows/cross-analysis.yml",
+          "status": "SCHEDULED_DIRECT_MAIN_GENERATED_ANALYSIS_WRITE",
+          "evidence": "contents:write; commits entity co-occurrence and sentiment analysis files and pushes main.",
+          "source_ids": [
+            "SRC-WF-CROSS-ANALYSIS-MAIN-2026-10-28"
+          ]
         },
         {
           "path": ".github/workflows/barrot-approve-pr.yml",
-          "status": "WORKFLOW_DISPATCH_ONLY; ZERO_JOB_PUSH_RUN_UNRESOLVED",
-          "evidence": "Main and research versions have identical content hash; observed GitHub push-event run failed with zero jobs; root cause unknown."
+          "status": "CURRENT_TRIGGER_DISPATCH_ONLY; PUSH_ZERO_JOB_RUN_UNRESOLVED",
+          "evidence": "Current file is workflow_dispatch-only, while run 40635570114 is recorded as push with zero jobs; cause unresolved.",
+          "source_ids": [
+            "SRC-REPO-APPROVAL-ZERO-JOB-RUN-2026-10-28T0501Z"
+          ]
         }
       ],
-      "limitation": "Repository branch-protection details remain inaccessible to the connected integration; effective required checks and review rules are not independently verified."
-    }
+      "proposed_fresh_main_fix_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+      "proposed_fix_status": "EXACT_HEAD_CI_PASS_150_TESTS_5.30S; FAIL_CLOSED_GATE_PASS; DRAFT_UNMERGED",
+      "limitation": "PR #1241 covers external deployment and merge automation only. Generated-data workflows still write to main and need a durable append-only staging/promotion design. Branch protection is reported enabled but required status-check contexts are empty; detailed review settings remain unverified."
+    },
+    "current_pr_1241_state": {
+      "pr": 1241,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "base_sha": "8beef04c25a3d182c2366c82c1257bacfa1799f2",
+      "head_sha": "ceed1909bff53b04d45b8395374c78b3891593ed",
+      "ahead_by": 7,
+      "behind_by": 0,
+      "ci": {
+        "status": "PASS",
+        "tests_passed": 150,
+        "duration_seconds": 5.3,
+        "run_id": 40635582479,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635582479"
+      },
+      "gate": {
+        "status": "PASS",
+        "run_id": 40635582526,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635582526"
+      },
+      "deployment_executed": false,
+      "main_modified_by_this_run": false,
+      "merge_performed": false
+    },
+    "snapshot_blob_sha": "164984e9e3d6e8f3bd0bb0c6351df30a68706ddd"
   },
   "sources": [
     {
@@ -5248,6 +5647,160 @@
       "title": "Research PR #1227 latest exact-head fail-closed gate",
       "accessed_at_utc": "2026-10-28T04:16:30Z",
       "note": "Fail-closed gate passed for research ledger head a026914."
+    },
+    {
+      "id": "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-2026-10-28",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.coinbase.com/en-nl/legal/digital-asset-disclosures",
+      "title": "Coinbase Digital Asset Disclosures",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "The US including New York trading-assets table lists XRP with Coinbase Holding=Yes and Commercial Engagement=Yes. Page states holdings are as of 2026-03-31 and defines commercial engagement broadly. No XRP quantity or direction of trading is disclosed."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-PARTNER-ECONOMICS-2026-10-16",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "title": "The Economics of USDC and Why Our Partners Win",
+      "published_at_utc": "2026-10-16",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Circle reports H1 2026 USDC settlement volume above $36T, mint/redemption above $315B, and $819M paid to distribution partners and transaction costs. It describes Coinbase as its largest and longest-standing partner and cites Coinbase's Q2 average USDC balances."
+    },
+    {
+      "id": "SRC-COINBASE-Q2-RESULTS-2026-07-30",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q2-Earnings-Everything-Exchange-Drives-3rd-Consecutive-Quarter-of-Record-Crypto-Trading-Volume-Market-Share-Revenue-Diversification-and-Resilience/default.aspx",
+      "title": "Coinbase Q2 2026 earnings release",
+      "published_at_utc": "2026-07-30",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Coinbase reports 10.3% crypto trading-volume market share in Q2 2026, average USDC held in Coinbase products of $20B, and approximately 50% of USDC economics captured over the preceding year. Company-reported metrics; not evidence of XRP accumulation."
+    },
+    {
+      "id": "SRC-COINCODEX-XRP-HISTORY-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://coincodex.com/crypto/ripple/historical-data",
+      "title": "CoinCodex XRP historical data",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Displayed Oct 26-27 interval: close about $1.30, volume about $1.24B, market cap about $81.77B. Daily interval is not synchronized to the Investing.com intraday quote."
+    },
+    {
+      "id": "SRC-INVESTING-XRP-HISTORY-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://se.investing.com/crypto/xrp/historical-data",
+      "title": "Investing.com XRP historical data",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Displayed Oct 28 quote around $1.3274 with daily range around $1.3270-$1.3306 and displayed volume around $189.6M; page timestamp/timezone is not normalized to the CoinCodex daily interval."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T0451Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
+      "title": "GitHub main branch metadata and protection summary",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Main head observed as 4db66fd16604ed7d8b3ba17c6e3469a04a2441d6. Branch reports protected=true but required status-check contexts/checks are empty. Detailed protection endpoint is not accessible to the current integration; do not infer review-rule settings."
+    },
+    {
+      "id": "SRC-REPO-PR1241-STATE-2026-10-28T0501Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1241",
+      "title": "PR #1241 external deployment and merge-queue safety proposal",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Draft/open/unmerged. Head ceed1909bff53b04d45b8395374c78b3891593ed, base 8beef04c25a3d182c2366c82c1257bacfa1799f2; compare at capture showed 7 commits ahead and 0 behind."
+    },
+    {
+      "id": "SRC-REPO-PR1241-CI-2026-10-28T0501Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635582479",
+      "title": "PR #1241 exact-head Tests workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Exact head ceed1909bff53b04d45b8395374c78b3891593ed passed 150 tests in 5.30 seconds. This validates regression assertions, not external deployment behavior or effective branch protection."
+    },
+    {
+      "id": "SRC-REPO-PR1241-GATE-2026-10-28T0501Z",
+      "evidence_class": "REPOSITORY_CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635582526",
+      "title": "PR #1241 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Fail-closed gate passed on exact head ceed1909bff53b04d45b8395374c78b3891593ed."
+    },
+    {
+      "id": "SRC-REPO-APPROVAL-ZERO-JOB-RUN-2026-10-28T0501Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40635570114",
+      "title": "Approval workflow push-event run with zero jobs",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Run event=push on head ceed1909bff53b04d45b8395374c78b3891593ed, conclusion failure, jobs endpoint returned zero jobs. Current main workflow file is workflow_dispatch-only; root cause remains unresolved."
+    },
+    {
+      "id": "SRC-WF-BARROT-OPS-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6/.github/workflows/barrot-ops.yml",
+      "title": "Main Barrot operations workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Push-to-main trigger can push main to a Hugging Face Space and overwrite a Databricks workspace notebook."
+    },
+    {
+      "id": "SRC-WF-MERGE-QUEUE-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6/.github/workflows/merge-queue.yml",
+      "title": "Main mutation-capable merge queue workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Manual workflow has contents:write and pull-requests:write, can update branches and merge PRs, and mode=all can select every open PR."
+    },
+    {
+      "id": "SRC-WF-FORCE-DEPLOY-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6/.github/workflows/force-deploy-space.yml",
+      "title": "Main legacy force-deploy workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Manual workflow uses HF_TOKEN and git push -f to an external Hugging Face Space."
+    },
+    {
+      "id": "SRC-WF-SYNC-HF-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6/.github/workflows/sync-huggingface.yml",
+      "title": "Main Hugging Face sync workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Push-to-main path uploads hf_space with delete_patterns=['*'] and copies GitHub secrets into the external Space."
+    },
+    {
+      "id": "SRC-WF-DEPLOY-DATABRICKS-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6/.github/workflows/deploy-databricks.yml",
+      "title": "Main Databricks deployment workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "Push-to-main trigger runs `python deploy_databricks.py` while the implementation is located at scripts/deploy_databricks.py."
+    },
+    {
+      "id": "SRC-WF-FINANCIAL-REFRESH-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6/.github/workflows/financial-data-refresh.yml",
+      "title": "Main financial-data refresh workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "contents:write; commits generated financial data and pushes directly to main."
+    },
+    {
+      "id": "SRC-WF-CHECK-ACCURACY-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6/.github/workflows/check-signal-accuracy.yml",
+      "title": "Main signal-accuracy workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "contents:write; commits signal history and accuracy results directly to main."
+    },
+    {
+      "id": "SRC-WF-KNOWLEDGE-SIGNAL-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6/.github/workflows/knowledge-signal-cycle.yml",
+      "title": "Main hourly knowledge-signal workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "contents:write; commits knowledge logs/config and generated signal/history directly to main."
+    },
+    {
+      "id": "SRC-WF-CROSS-ANALYSIS-MAIN-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/4db66fd16604ed7d8b3ba17c6e3469a04a2441d6/.github/workflows/cross-analysis.yml",
+      "title": "Main scheduled cross-analysis workflow",
+      "accessed_at_utc": "2026-10-28T05:05:10.899Z",
+      "note": "contents:write; commits generated entity co-occurrence and sentiment analysis files directly to main."
     }
   ],
   "limitations": [
@@ -5266,7 +5819,13 @@
     "The exact phrase 'actual capital' has no reliable original-source match in the targeted searches.",
     "Camilla Stephenson's canonical YouTube identity and exhaustive public-upload inventory remain unverified; direct YouTube page access was blocked and vidIQ search was unavailable due insufficient credits.",
     "PR #1237 removes direct writes from two signal workflows only; financial-data-refresh and merge-queue remain separate write paths.",
-    "PR #1237 stores generated outputs as 30-day artifacts; durable feature-store persistence and reviewed promotion are not implemented."
+    "PR #1237 stores generated outputs as 30-day artifacts; durable feature-store persistence and reviewed promotion are not implemented.",
+    "Coinbase's XRP holding/commercial-engagement disclosure is company-reported and dated 2026-03-31; it provides no quantity, inventory change or trade direction.",
+    "Circle's USDC partner-economics article and Coinbase's Q2 metrics are company-reported and partially source-dependent; they do not establish XRP flows or price causality.",
+    "CoinCodex daily XRP values and Investing.com intraday quotes are not timestamp/venue normalized; neither observation is admitted as a model feature.",
+    "PR #1241 passes CI/gate but remains draft/unmerged. Main still has generated-data direct-write workflows; a durable append-only promotion design is not implemented.",
+    "Main branch metadata reports protection enabled but empty required status-check contexts/checks; detailed review rules remain inaccessible to the integration.",
+    "The zero-job approval workflow run is recorded as a push event although the current workflow is workflow_dispatch-only; root cause remains unresolved."
   ],
   "run_updates": [
     {
@@ -5996,6 +6555,30 @@
         "snapshot_blob_sha": "da7367d97891027c01b49fb722f996e2dec9bdde"
       },
       "snapshot_blob_sha": "da7367d97891027c01b49fb722f996e2dec9bdde"
+    },
+    {
+      "recorded_at_utc": "2026-10-28T05:05:10.899Z",
+      "update_type": "COINBASE_CIRCLE_XRP_DISCLOSURE_AND_EXTERNAL_WORKFLOW_GUARD_AUDIT",
+      "snapshot_id": "XRP-COINBASE-CIRCLE-WORKFLOW-AUDIT-2026-10-28T05:05Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0505Z.json",
+      "details": "Added Coinbase's official XRP holding/commercial-engagement disclosure, Circle's USDC partner-economics statements, a Coinbase Q2 corroboration record, and unsynchronized XRP price observations. Audited main workflows and branch metadata. Opened fresh-main PR #1241; exact-head CI passed 150 tests in 5.30s and the fail-closed gate passed. Main remains unchanged by this run; PR is draft/unmerged. Research branch was 36 ahead/38 behind current main at capture; new ledger head must be revalidated.",
+      "validation": {
+        "source_ids_unique": true,
+        "coinbase_xrp_holding_disclosure_recorded": true,
+        "circle_coinbase_relationship_recorded": true,
+        "market_quotes_synchronized": false,
+        "workflow_fix_pr_1241_ci": "PASS_150_TESTS_5.30S",
+        "workflow_fix_pr_1241_gate": "PASS",
+        "branch_protection_required_checks": "EMPTY",
+        "approval_workflow_zero_job_root_cause": "UNRESOLVED",
+        "research_branch_exact_head_ci": "PENDING_AFTER_LEDGER_UPDATE",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED",
+        "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T0505Z.json",
+        "snapshot_blob_sha": "164984e9e3d6e8f3bd0bb0c6351df30a68706ddd"
+      },
+      "snapshot_blob_sha": "164984e9e3d6e8f3bd0bb0c6351df30a68706ddd"
     }
   ],
   "mission_priority": {
@@ -6031,7 +6614,7 @@
     "schema_status": "JSON_PARSED; CONTRACT_TEST_PASS; FULL_JSON_SCHEMA_VALIDATOR_NOT_RUN",
     "test_path": "tests/test_xrp_platform_evidence_schema.py",
     "test_status": "PASS_146_TESTS",
-    "as_of_utc": "2026-10-28T00:18:42Z",
+    "as_of_utc": "2026-10-28T05:05:10.899Z",
     "platform_map": [
       {
         "platform": "ChatGPT",
