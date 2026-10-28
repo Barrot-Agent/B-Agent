@@ -3561,13 +3561,16 @@
       "snapshot_blob_sha": "7133f4d68a544d96b2f9642b9247beeeef6de677",
       "details": "Created the nine-platform evidence packet schema, deterministic contract test and CI invocation on the fresh-main research branch. Architecture is designed; only ChatGPT/GitHub are verified live and other platform adapters remain untested.",
       "validation": {
-        "schema_json": "CREATED_PENDING_CI",
+        "schema_json": "PARSED",
         "test_added": "YES",
         "ci_workflow_updated": "YES",
         "adapter_authentication": "NOT_TESTED_FOR_EIGHT_PLATFORMS",
         "forecast_status": "NOT_ISSUED",
         "main_modified": false,
-        "merge_performed": false
+        "merge_performed": false,
+        "schema_blob_sha": "7a56f2c444c5d37aaedb6a8b522d4e57525eb287",
+        "implementation_commit": "27ea5e12fe1c033852ea4bcdbbc3544b11d64ab5",
+        "ci_status": "PENDING"
       }
     }
   ],
@@ -3601,7 +3604,7 @@
     "version": "1.0",
     "status": "DESIGNED; LIVE_ADAPTERS_NOT_VERIFIED",
     "schema_path": "data/xrp_intelligence/platform_evidence_packet.schema.json",
-    "schema_status": "CREATED_IN_BRANCH_CI_PENDING",
+    "schema_status": "CREATED_EXECUTED_PENDING_CI",
     "test_path": "tests/test_xrp_platform_evidence_schema.py",
     "test_status": "ADDED_TO_CI_PENDING",
     "as_of_utc": "2026-10-28T00:18:42Z",
@@ -3793,6 +3796,10 @@
       "Input/output hashes and exact test/CI evidence attached.",
       "No forecast before fixed-horizon walk-forward testing, leakage controls, baselines, calibration and shadow evaluation."
     ],
-    "schema_blob_sha": "7a56f2c444c5d37aaedb6a8b522d4e57525eb287"
+    "schema_blob_sha": "7a56f2c444c5d37aaedb6a8b522d4e57525eb287",
+    "implementation_commit": "27ea5e12fe1c033852ea4bcdbbc3544b11d64ab5",
+    "implementation_status": "EXECUTED_PENDING_CI",
+    "test_blob_sha": "fb02ae58d03c0913f2cda8457f6d7aa4601a72cd",
+    "ci_workflow_blob_sha": "680b029df7aa6ff93ea22586592b5fa06ba538ab"
   }
 }
