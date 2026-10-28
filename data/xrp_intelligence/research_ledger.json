@@ -161,10 +161,10 @@
         "main_head_status": "NOT_VERIFIED_AT_EXACT_HEAD",
         "note": "No main-branch write was performed by this run."
       },
-      "current_research_head": "0eec1f0679e9d14d648593d4cd14c18178bf3886",
+      "current_research_head": "2ee4c52b37a3b284d6ca0e8b57f1deef43342519",
       "current_research_checks": {
-        "status": "PENDING_AFTER_LEDGER_INDEX_COMMIT",
-        "note": "The 14:19 snapshot is committed; verify the following index commit separately."
+        "status": "PASS_ON_INDEX_HEAD_2ee4c52; PENDING_ON_FOLLOW_UP_VERIFICATION_RECORD_COMMIT",
+        "note": "The 14:19 snapshot/index head passed exact-head CI and the gate; this verification record is being appended in a new index commit."
       },
       "main_commit_delta_since_last_observed": {
         "previous_sha": "b08d8531ae64f59ba5ead2953ed331192b7dba12",
@@ -5953,10 +5953,10 @@
     },
     "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1419Z",
     "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1419Z.json",
-    "current_research_head_before_ledger_update": "0eec1f0679e9d14d648593d4cd14c18178bf3886",
+    "current_research_head_before_ledger_update": "2ee4c52b37a3b284d6ca0e8b57f1deef43342519",
     "current_research_checks": {
-      "status": "PENDING_AFTER_LEDGER_INDEX_COMMIT",
-      "note": "The 14:19 snapshot is committed; verify the following index commit separately."
+      "status": "PASS_ON_INDEX_HEAD_2ee4c52; PENDING_ON_FOLLOW_UP_VERIFICATION_RECORD_COMMIT",
+      "note": "The 14:19 snapshot/index head passed exact-head CI and the gate; this verification record is being appended in a new index commit."
     },
     "current_research_head_before_final_verification_record": "c58a4e0ad4a2f2e0c3fa6540da02502e751f3cef",
     "platform_coordination_architecture": {
@@ -7154,7 +7154,7 @@
       "main_sha": "cc54769dc249a768b423de9cfed68da06ab0056a",
       "observed_at_utc": "2026-10-28T08:14:53.103Z"
     },
-    "current_research_head_this_run": "PENDING_INDEX_COMMIT",
+    "current_research_head_this_run": "PENDING_VERIFICATION_RECORD_COMMIT",
     "correction_note": {
       "previous_snapshot": "data/xrp_intelligence/snapshots/2026-10-28T0817Z.json",
       "issue": "The previous market-data-quality finding referenced a nonexistent 0812Z source ID.",
@@ -7736,11 +7736,19 @@
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T14:19:27Z",
     "snapshot_commit_sha": "0eec1f0679e9d14d648593d4cd14c18178bf3886",
     "post_snapshot_verification": {
-      "verified_at_utc": null,
-      "status": "PENDING_EXACT_HEAD_CI_AFTER_INDEX_UPDATE",
+      "verified_at_utc": "2026-10-28T14:21:18Z",
+      "status": "PASS",
       "snapshot_blob_sha": "5ab71ed5a373cd6af10e1778b4a7d8d6bcc543aa",
       "snapshot_hash_matches_index": true,
-      "note": "The 14:17 snapshot/index head passed 145 tests and the gate. This 14:19 snapshot/index pair requires its own exact-head CI/gate."
+      "snapshot_commit_sha": "0eec1f0679e9d14d648593d4cd14c18178bf3886",
+      "index_commit_sha": "2ee4c52b37a3b284d6ca0e8b57f1deef43342519",
+      "ci_run_id": 40705041753,
+      "tests_passed": 145,
+      "duration_seconds": 5.8,
+      "gate_run_id": 40705041428,
+      "gate_status": "PASS",
+      "source_reference_audit": "PASS_ZERO_MISSING",
+      "note": "The 14:19 snapshot and index head 2ee4c52 are verified. The follow-up verification-record commit will need its own exact-head CI/gate."
     }
   },
   "sources": [
@@ -10663,6 +10671,14 @@
       "title": "Approval workflow zero-job run on research branch update",
       "accessed_at_utc": "2026-10-28T14:19:27Z",
       "note": "Run recorded event=push, conclusion=failure, and zero jobs. No approval action ran; root cause remains unresolved."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1421Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40705041753",
+      "title": "Exact-head CI and gate verification for 14:19 XRP ledger index",
+      "accessed_at_utc": "2026-10-28T14:21:18Z",
+      "note": "CI run 40705041753 passed 145 tests in 5.80s on index head 2ee4c52b37a3b284d6ca0e8b57f1deef43342519; fail-closed gate run 40705041428 passed. The indexed snapshot blob SHA 5ab71ed5a373cd6af10e1778b4a7d8d6bcc543aa matches the snapshot file, and the source-reference audit found no missing references."
     }
   ],
   "limitations": [
@@ -12396,15 +12412,38 @@
         "main_modified_by_this_run": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T14:21:18Z",
+      "update_type": "LEDGER_HEAD_CI_VERIFICATION",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1419Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1419Z.json",
+      "details": "Verified the 14:19 snapshot/index head after the ETF flow-universe clarification. CI passed 145 tests in 5.80s and the fail-closed gate passed; snapshot blob hash matches the index and all source references resolve. This verification record is itself a new index commit and therefore its new head requires CI verification.",
+      "source_ids": [
+        "SRC-GH-LEDGER-CI-2026-10-28T1421Z"
+      ],
+      "validation": {
+        "verified_index_head": "2ee4c52b37a3b284d6ca0e8b57f1deef43342519",
+        "ci_run_id": 40705041753,
+        "ci_status": "PASS",
+        "tests_passed": 145,
+        "duration_seconds": 5.8,
+        "gate_run_id": 40705041428,
+        "gate_status": "PASS",
+        "snapshot_blob_sha": "5ab71ed5a373cd6af10e1778b4a7d8d6bcc543aa",
+        "index_snapshot_sha_matches": true,
+        "missing_source_refs": 0,
+        "main_modified_by_this_run": false
+      }
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-28T14:19:27Z",
+    "as_of_utc": "2026-10-28T14:21:18Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
     "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1419Z.json",
-    "next_action": "Verify exact-head CI for the 14:19 ledger index; then reconcile ETF daily flows by fund and settlement date."
+    "next_action": "Verify the follow-up ledger-index commit, then reconcile per-fund XRP ETF flows and continue historical feature-store work."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
