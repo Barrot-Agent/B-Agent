@@ -1033,6 +1033,36 @@ def main() -> None:
         recover_task=recover_completed_bundle_task,
     )
     work = dispatch.get("last_result")
+    task_ids = [
+        task.get("id")
+        for task in bundle_result.bundle.get("tasks", [])
+        if isinstance(task, dict) and isinstance(task.get("id"), str)
+    ]
+    if (
+        task_ids
+        and dispatch.get("no_change_task_ids")
+        and set(dispatch["no_change_task_ids"]) == set(task_ids)
+    ):
+        message = (
+            "Barrot made no repository changes because deterministic validation confirmed "
+            "that the requested issue does not reproduce. No repair is being reported as "
+            "complete, and no pull request was created.\n\n"
+            + json.dumps({
+                "status": "NO_CHANGE_REQUIRED",
+                "no_change_task_ids": dispatch["no_change_task_ids"],
+            }, indent=2)
+        )
+        lifecycle_store.record_execution(work_id, {
+            "status": "NO_CHANGE_REQUIRED",
+            "bundle_complete": False,
+            "no_change_task_ids": dispatch["no_change_task_ids"],
+            "blocked_tasks": dispatch["blocked_tasks"],
+            "pull_request_created": False,
+        })
+        post_issue_comment(message)
+        print(message)
+        return
+
     if work is None:
         message = (
             "Barrot bundle execution is blocked: no verified task result is available.\n\n"
