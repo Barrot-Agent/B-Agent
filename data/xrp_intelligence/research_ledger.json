@@ -18,7 +18,7 @@
     "bundle_execution_rule": "Do not run bundle generators that overwrite home-directory files or install direct-push workflows until their write paths, signal semantics, and approval gates are reviewed."
   },
   "latest_snapshot": {
-    "captured_at_utc": "2026-10-28T16:08:14.181Z",
+    "captured_at_utc": "2026-10-28T16:10:48.820Z",
     "repository": {
       "full_name": "Barrot-Agent/B-Agent",
       "main_sha": "03bf7c009bfd166a2993a44cc08ee09f632b6e76",
@@ -169,12 +169,13 @@
           "note": "Latest main commit is generated-data-only and marked [skip ci]."
         }
       },
-      "current_research_head": "9b8a1a09c063a6edd2dd810f316b85ca335a3019",
+      "current_research_head": "c0ece2ea881e906a6440ed04efbca35f3efa050d",
       "current_research_checks": {
         "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
-        "previous_index_ci_run_id": 40722698584,
+        "previous_index_head": "4a43aeccf24c3c7a00d8e6cda51105fa3323f475",
+        "previous_index_ci_run_id": 40723004529,
         "previous_index_tests_passed": 145,
-        "previous_index_gate_run_id": 40722698549
+        "previous_index_gate_run_id": 40723004501
       },
       "main_commit_delta_since_last_observed": {
         "previous_sha": "b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
@@ -678,7 +679,32 @@
         "latest_main_changes_overlap_pr_paths": false,
         "merge_performed": false
       },
-      "current_open_pr_count_status": "LAST_RECORDED_TOTAL_89_AT_2026-10-28T14:10Z; CURRENT_TOTAL_NOT_RECONCILED_AFTER_PR1260"
+      "current_open_pr_count_status": "LAST_RECORDED_TOTAL_89_AT_2026-10-28T14:10Z; CURRENT_TOTAL_NOT_RECONCILED_AFTER_PR1260",
+      "approval_workflow_anomaly": {
+        "status": "REPRODUCED_PUSH_EVENT_ZERO_JOBS; ROOT_CAUSE_UNKNOWN",
+        "latest_run": {
+          "id": 40722991997,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722991997",
+          "event": "push",
+          "branch": "research/xrp-ledger-fresh-main-20261028-1217z",
+          "head_sha": "4a43aeccf24c3c7a00d8e6cda51105fa3323f475",
+          "conclusion": "failure",
+          "jobs": 0
+        },
+        "prior_run": {
+          "id": 40722982080,
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722982080",
+          "event": "push",
+          "head_sha": "9b8a1a09c063a6edd2dd810f316b85ca335a3019",
+          "conclusion": "failure",
+          "jobs": 0
+        },
+        "workflow_blob_at_event_head": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+        "workflow_triggers_at_event_head": [
+          "workflow_dispatch"
+        ],
+        "root_cause": "UNKNOWN"
+      }
     },
     "critical_engine_findings": [
       {
@@ -6117,8 +6143,8 @@
       "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1506Z.json",
       "next_action": "Verify CI and fail-closed gate on the new 15:06 ledger-index head; preserve the 15:01 snapshot and its exact-head verification record."
     },
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1608Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1608Z.json",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1610Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1610Z.json",
     "current_research_head_before_ledger_update": "b6fb038aa15a38101350550ac3644150e8856a78",
     "current_research_checks": {
       "status": "PRIOR_HEAD_PASS; NEW_HEAD_PENDING",
@@ -7923,22 +7949,22 @@
       "merge_performed": false
     },
     "ledger_metrics": {
-      "source_records": 387,
-      "run_updates": 78,
+      "source_records": 392,
+      "run_updates": 79,
       "limitations": 76,
-      "relationship_edges": 82,
-      "competing_hypotheses": 53,
+      "relationship_edges": 88,
+      "competing_hypotheses": 54,
       "market_observations": 45
     },
-    "snapshot_blob_sha": "0eb2947e190a8a6254d56646c89ed04d7df44f4a",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:08:14.181Z",
-    "snapshot_commit_sha": "9b8a1a09c063a6edd2dd810f316b85ca335a3019",
+    "snapshot_blob_sha": "f6363b2a30b367f611bbf399626b75169d012e91",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-28T16:11:10.831Z",
+    "snapshot_commit_sha": "c0ece2ea881e906a6440ed04efbca35f3efa050d",
     "post_snapshot_verification": {
       "status": "PENDING_EXACT_HEAD_CI_AND_GATE",
       "snapshot_blob_readback_ok": true,
       "source_ids_unique": true,
       "missing_source_refs": 0,
-      "note": "Snapshot JSON parsed after write and blob SHA recorded. New index commit requires exact-head CI and gate."
+      "note": "Snapshot read back and parsed; new ledger-index commit requires exact-head CI and gate."
     }
   },
   "sources": [
@@ -11077,6 +11103,46 @@
       "title": "Third-party transcript for a Kamilah Stevenson XRP video",
       "accessed_at_utc": "2026-10-28T16:08:14.181Z",
       "note": "The page attributes the video to Kamilah Stevenson and its transcript has the speaker refer to herself as Camila Stevenson. This supports name-variant ambiguity, not identity equivalence with the requested Camilla Stephenson."
+    },
+    {
+      "id": "SRC-SBI-USDC-REGISTRATION-2025-03-04",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2025/0304_15290.html",
+      "title": "SBI VC Trade registration for USDC handling in Japan",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "SBI Group release dated 2025-03-04 confirms registration as an Electronic Payment Instruments Exchange Service Provider and notes a November 2023 basic agreement with Circle for a broad business alliance. Establishes a regulated distribution path, not XRP flows."
+    },
+    {
+      "id": "SRC-SBI-USDC-RETAIL-2025-03-25",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2025/0325_15332.html",
+      "title": "SBI VC Trade general-customer USDC trading launch announcement",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "SBI Group release dated 2025-03-25 announces general-customer USDC trading from 2025-03-26. Announcement-era first/only wording is not a current market-share statistic."
+    },
+    {
+      "id": "SRC-SBI-USDC-PAYMENT-PILOT-2026-04-30",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0430_16290.html",
+      "title": "SBI VC Trade and Aplus USDC merchant-payment pilot",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "SBI Group release dated 2026-04-30 announces a five-day USDC merchant-payment pilot at Unatoto and Bic Camera for 2026-05-25 to 2026-05-29. Limited pilot announcement, not sustained payment volume."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1608Z-A",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722982080",
+      "title": "Approval workflow push failure with zero jobs after snapshot push",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "Run 40722982080 on research branch snapshot commit 9b8a1a0 reports push event, failure, and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1608Z-B",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722991997",
+      "title": "Approval workflow push failure with zero jobs after index push",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "Run 40722991997 on research branch index commit 4a43aec reports push event, failure, and zero jobs. Workflow file at event head is dispatch-only; no job executed."
     }
   ],
   "limitations": [
@@ -12956,6 +13022,31 @@
         "merge_performed": false,
         "forecast_status": "NOT_ISSUED"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-28T16:11:10.831Z",
+      "update_type": "SBI_CIRCLE_RIPPLE_MULTIRAIL_PRIMARY_SOURCE_RECONCILIATION",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261028T1610Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-28T1610Z.json",
+      "details": "Indexed a new snapshot documenting official SBI Group/SBI VC Trade evidence for USDC registration and retail distribution, a limited USDC merchant-payment pilot, RLUSD handling with Ripple, SBI's Evernorth XRP-treasury investment announcement, and Circle Arc validator participation. Added the latest pair of zero-job approval-workflow failures. SBIC East Japan remains a distinct entity.",
+      "source_ids": [
+        "SRC-SBI-USDC-REGISTRATION-2025-03-04",
+        "SRC-SBI-USDC-RETAIL-2025-03-25",
+        "SRC-SBI-USDC-PAYMENT-PILOT-2026-04-30",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1608Z-A",
+        "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1608Z-B"
+      ],
+      "validation": {
+        "snapshot_json_parse": "PASS",
+        "snapshot_blob_readback": "PASS",
+        "snapshot_blob_sha": "f6363b2a30b367f611bbf399626b75169d012e91",
+        "source_ids_unique": true,
+        "missing_source_refs": 0,
+        "new_index_ci": "PENDING_AFTER_INDEX_UPDATE",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "forecast_status": "NOT_ISSUED"
+      }
     }
   ],
   "mission_priority": {
@@ -13183,12 +13274,13 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "2d37991383b788a23a3741de319ed6f6c9763c35",
-  "current_research_head_this_run": "2d37991383b788a23a3741de319ed6f6c9763c35",
+  "current_research_head_before_ledger_update": "c0ece2ea881e906a6440ed04efbca35f3efa050d",
+  "current_research_head_this_run": "c0ece2ea881e906a6440ed04efbca35f3efa050d",
   "current_research_checks": {
     "status": "PREVIOUS_INDEX_HEAD_VERIFIED; NEW_SNAPSHOT_AND_INDEX_PENDING",
-    "previous_index_ci_run_id": 40722698584,
+    "previous_index_head": "4a43aeccf24c3c7a00d8e6cda51105fa3323f475",
+    "previous_index_ci_run_id": 40723004529,
     "previous_index_tests_passed": 145,
-    "previous_index_gate_run_id": 40722698549
+    "previous_index_gate_run_id": 40723004501
   }
 }
