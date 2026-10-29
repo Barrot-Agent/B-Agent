@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T12:09:30Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1209-PR1307-SBI-DERIVATIVES-ETF",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1209-pr1307-sbi-derivatives-etf-reconciliation.json",
-    "snapshot_blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
-    "snapshot_commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6"
+    "captured_at_utc": "2026-10-29T12:16:30Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1216-SBIC-ASK-ACTUAL-CAPITAL-YOUTUBE-CLEANUP",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1216-sbic-ask-actual-capital-youtube-cleanup.json",
+    "snapshot_blob_sha": "1d6fc67ecf02195d1ced8de5f720da108d5fb783",
+    "snapshot_commit_sha": "2c1cfc149c1b353018171656671f26eca96523b0"
   },
   "sources": [
     {
@@ -7452,6 +7452,112 @@
       "published_at": "2026-10-07",
       "accessed_at_utc": "2026-10-29T12:09:30Z",
       "note": "Circle schedules Q3 results for November 4, 2026 at 8:00 a.m. ET. This is a monitoring event, not a directional signal."
+    },
+    {
+      "id": "SRC-SBIC-EAST-OFFICIAL-PROFILE-20261029T1214Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "title": "SBIC East Japan official company profile",
+      "note": "Official profile identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), established in 1963, with shareholders including local governments, chambers of commerce, financial institutions and operating companies. It is a Japanese SME investment-policy organization; no affiliation with SBI Holdings Group is established by this profile.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "current page"
+    },
+    {
+      "id": "SRC-SBIC-WEST-CHATGPT-PDF-20261029T1214Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "title": "SBIC West Japan ChatGPT introductory seminar material",
+      "note": "Official SBIC West Japan material describes introductory generative-AI/ChatGPT training. Training-topic evidence only; it does not establish an OpenAI partnership or XRP/Ripple activity.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "2024"
+    },
+    {
+      "id": "SRC-ASKCOIN-CMC-INACTIVE-20261029T1214Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/",
+      "title": "CoinMarketCap Ask Coin exchange listing",
+      "note": "CoinMarketCap describes Ask Coin as an inactive exchange with untracked volume and unavailable reserve data. This is one literal ASK Coin candidate and is distinct from the Permission Coin ASK token.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "current listing"
+    },
+    {
+      "id": "SRC-PERMISSION-ASK-CMC-20261029T1214Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "title": "CoinMarketCap Permission Coin ASK token profile",
+      "note": "The profile describes ASK as Permission Coin, a token for the Permission data/advertising ecosystem, with token contracts on Base and Polygon. Separate from the inactive Ask Coin exchange listing; no direct XRP link established.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "current listing"
+    },
+    {
+      "id": "SRC-ACTUAL-CAPITAL-TIMESTABLOID-20261029T1214Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://timestabloid.com/analyst-explains-effect-of-small-capital-movements-on-xrp-price/",
+      "title": "XRP market-cap changes versus exchange flows",
+      "note": "Secondary commentary discusses XRP market-cap changes relative to exchange flows and cautions that wallet flows do not directly measure new capital entering or leaving the whole market. Candidate context for 'actual capital', not primary flow evidence.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "2025"
+    },
+    {
+      "id": "SRC-ACTUAL-CAPITAL-COINTURK-20261029T1214Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://en.coin-turk.com/xrp-market-cap-rose-43-74-billion-as-net-inflows-hit-44-3-million-in-two-days/",
+      "title": "XRP market-cap change and reported exchange inflows",
+      "note": "Secondary report contrasts market-cap change with reported exchange flows. Market capitalization is price times circulating supply, not cash inflow; the article's exchange-flow figures are not audited net capital deployment.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "2026"
+    },
+    {
+      "id": "SRC-CAMILLA-NAMESAKE-MFJF-20261029T1214Z",
+      "evidence_class": "SECONDARY_IDENTITY_REFERENCE",
+      "url": "https://myfirstjobinfilm.com/UK/mentors/camilla-stephenson",
+      "title": "Public film-industry mentor profile for a Camilla Stephenson",
+      "note": "The page describes a Camilla Stephenson working in film location management. Same-name candidate only; no evidence links this person to the XRP YouTube channel attributed to Kamilah Stevenson.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "current page"
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-MARCH2026-20261029T1214Z",
+      "evidence_class": "PUBLIC_VIDEO_INDEX_RESULT",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "note": "Indexed YouTube result attributes the upload to Kamilah Stevenson and discusses oil shocks, yen carry trade, global liquidity and XRP. Candidate upload, not proof this creator is the Camilla Stephenson namesake.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "2026-03-06"
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-DEC2025-20261029T1214Z",
+      "evidence_class": "PUBLIC_VIDEO_INDEX_RESULT",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "note": "Indexed YouTube result attributes the upload to Kamilah Stevenson and discusses XRP utility, institutional holdings and value transfer. Channel-page retrieval remains throttled; inventory is not exhaustive.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "2025-12-24"
+    },
+    {
+      "id": "SRC-GH-MAIN-UNINTENDED-GRAPH-COMMIT-20261029T1216Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+      "title": "Unintended data-only research graph commit on main",
+      "note": "This commit adds one JSON relationship-graph file only. It does not change runtime code, workflows, paper-trading state, signal artifacts or dependencies. The write was unintended because the create-file call omitted the target branch. Draft corrective PR #1308 deletes exactly this file; it remains on main pending approval.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z",
+      "published_at": "2026-10-29T12:14:33Z"
+    },
+    {
+      "id": "SRC-GH-PR1308-CLEANUP-20261029T1216Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308",
+      "title": "Draft cleanup PR for unintended main research artifact",
+      "note": "PR #1308 deletes only the unintended data-only graph file from a branch based on main. It is draft and unmerged; main remains modified until approval and merge. No reset or force-push was used.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z"
+    },
+    {
+      "id": "SRC-GH-MAIN-COMPARE-B60FA-TO-F23A-20261029T1216Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/b60faa26e5859f91beb07f5c778bc7934e99a002...f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+      "title": "Main diff since fresh-main PR #1307 base",
+      "note": "GitHub comparison reports exactly one file added: the unintended data-only relationship-graph JSON. No runtime source, workflow, signal or paper-trading state path changed; PR #1307's code changes do not overlap this artifact.",
+      "accessed_at_utc": "2026-10-29T12:16:30Z"
     }
   ],
   "limitations": [
@@ -7664,7 +7770,8 @@
     "Current main still has an invalid XRP signal/summary mismatch and mutation-capable merge queue. PRs #1304 and #1305 pass exact-head CI/gates but remain draft/unmerged; the main-branch defects are not fixed until approved changes are merged. Full paper-trading replay, synchronized XRP market panel, original SBIC/ASK Coin/actual capital context, canonical Camilla Stephenson identity, exhaustive public-video inventory and live nine-platform handoffs remain unresolved.",
     "Latest paper-trader state still has a nonzero position with null product identity; scheduled main workflow continues to write state until PR #1306 is approved and merged. The full historical paper-trading replay remains blocked by unavailable full-log retrieval. ETF flow proxies remain non-comparable due to differing fund universes, units and settlement status; no market feature admitted.",
     "The Barrot Controlled PR Approval workflow has repeated failed runs labeled event=push on draft-branch commits, while the inspected main workflow declares workflow_dispatch only and the job-list endpoint returns no jobs. Trigger/source mismatch is unresolved and requires workflow-run metadata/log investigation.",
-    "As of main b60faa26... the recurring paper-trader schedule remains active until approval and merge of PR #1307; the open simulated position still has position_product=null. Full historical log replay remains blocked, although the latest hold row is verified from commit diff. Derivatives snapshots are asynchronous and differ by more than 2x OI because venue/contract coverage is not aligned. ETF-flow aggregates are approximately similar in magnitude but remain non-comparable until issuer-level fund membership, units and settlement status are reconciled. No synchronized XRP market feature was admitted; forecast remains NOT_ISSUED."
+    "As of main b60faa26... the recurring paper-trader schedule remains active until approval and merge of PR #1307; the open simulated position still has position_product=null. Full historical log replay remains blocked, although the latest hold row is verified from commit diff. Derivatives snapshots are asynchronous and differ by more than 2x OI because venue/contract coverage is not aligned. ETF-flow aggregates are approximately similar in magnitude but remain non-comparable until issuer-level fund membership, units and settlement status are reconciled. No synchronized XRP market feature was admitted; forecast remains NOT_ISSUED.",
+    "Exact-phrase referents remain unresolved: ASK Coin may refer to an inactive exchange or Permission Coin's ASK token; 'actual capital' may refer to market capitalization versus net capital flows; and 'SBIC, ChatGPT SBIC' may refer to Japanese SME investment-development companies' AI training but original context is missing. Scoped official SBIC searches found no direct XRP/Ripple relationship, which is not proof of absence. Camilla Stephenson and Kamilah Stevenson identity equivalence is unverified; YouTube channel pages were throttled and the upload inventory is partial. Main was unintentionally changed by one data-only graph-file commit due a missing branch argument; draft PR #1308 removes exactly that file but remains unmerged, so main is not yet restored to its prior tree."
   ],
   "run_updates": [
     {
@@ -12929,6 +13036,64 @@
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T12:16:30Z",
+      "update_type": "SBIC_ASK_ACTUAL_CAPITAL_YOUTUBE_AND_CORRECTIVE_MAIN_WRITE_AUDIT",
+      "source_ids": [
+        "SRC-SBIC-EAST-OFFICIAL-PROFILE-20261029T1214Z",
+        "SRC-SBIC-WEST-CHATGPT-PDF-20261029T1214Z",
+        "SRC-ASKCOIN-CMC-INACTIVE-20261029T1214Z",
+        "SRC-PERMISSION-ASK-CMC-20261029T1214Z",
+        "SRC-ACTUAL-CAPITAL-TIMESTABLOID-20261029T1214Z",
+        "SRC-ACTUAL-CAPITAL-COINTURK-20261029T1214Z",
+        "SRC-CAMILLA-NAMESAKE-MFJF-20261029T1214Z",
+        "SRC-YOUTUBE-KAMILAH-MARCH2026-20261029T1214Z",
+        "SRC-YOUTUBE-KAMILAH-DEC2025-20261029T1214Z",
+        "SRC-GH-MAIN-UNINTENDED-GRAPH-COMMIT-20261029T1216Z",
+        "SRC-GH-PR1308-CLEANUP-20261029T1216Z",
+        "SRC-GH-MAIN-COMPARE-B60FA-TO-F23A-20261029T1216Z"
+      ],
+      "summary": "Continued exact-phrase research and recorded an unintended main write transparently. Official Japanese SBIC profiles and a West Japan ChatGPT seminar document support a plausible SBIC/ChatGPT context but do not establish OpenAI partnership or XRP links. ASK Coin has two separate candidates: an inactive exchange listing and Permission Coin's ASK token. 'Actual capital' may refer to market cap versus net flows, but secondary articles are not primary capital-flow evidence. Two indexed Kamilah Stevenson XRP uploads were found; Camilla Stephenson film-industry namesake equivalence remains unverified and the upload inventory is partial. A missing branch argument caused one data-only graph file to be added to main at f23a2b81; no runtime code, workflow, signal or paper-trading state changed. Created draft cleanup PR #1308 to delete only that file; it is unmerged pending approval.",
+      "main_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1216-sbic-ask-actual-capital-youtube-cleanup.json",
+        "blob_sha": "1d6fc67ecf02195d1ced8de5f720da108d5fb783",
+        "commit_sha": "2c1cfc149c1b353018171656671f26eca96523b0",
+        "characters": 6928
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+        "blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+        "commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
+        "new_edges": 7,
+        "new_competing_hypotheses": 4
+      },
+      "pr1307": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1307",
+        "state": "DRAFT_OPEN_UNMERGED",
+        "base_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
+        "head": "717eb13ad61605d037d80c9a193b3e2e19d87423",
+        "ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+        "gate": "PASS_FAIL_CLOSED"
+      },
+      "pr1308": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308",
+        "state": "DRAFT_OPEN_UNMERGED",
+        "base_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+        "head": "1080af2ac25756eb99e7c7c58571b240245aa7ee",
+        "purpose": "remove only accidental data-only graph file"
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "main_modified_by_this_run": true,
+      "main_write_scope": "ONE_DATA_ONLY_GRAPH_FILE; CLEANUP_PR_1308_OPEN",
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false,
+      "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
     }
   ],
   "mission_priority": {
@@ -13156,80 +13321,70 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
-  "current_research_head_this_run": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
+  "current_research_head_before_ledger_update": "2c1cfc149c1b353018171656671f26eca96523b0",
+  "current_research_head_this_run": "2c1cfc149c1b353018171656671f26eca96523b0",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS_193_TESTS_PLUS_4_SUBTESTS; PR1307_GATE_PASS; MAIN_STILL_SCHEDULED; FORECAST_NOT_ISSUED",
-    "latest_main_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1209-pr1307-sbi-derivatives-etf-reconciliation.json",
-    "snapshot_blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
-    "snapshot_commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
-    "snapshot_characters": 15205,
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS; PR1307_GATE_PASS; PR1308_CLEANUP_DRAFT; MAIN_DATA_ONLY_WRITE_INCIDENT_RECORDED; FORECAST_NOT_ISSUED",
+    "latest_main_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1216-sbic-ask-actual-capital-youtube-cleanup.json",
+    "snapshot_blob_sha": "1d6fc67ecf02195d1ced8de5f720da108d5fb783",
+    "snapshot_commit_sha": "2c1cfc149c1b353018171656671f26eca96523b0",
+    "snapshot_characters": 6928,
     "snapshot_character_metric_matches": true,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
-    "graph_addendum_blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
-    "graph_addendum_commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+    "graph_addendum_blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+    "graph_addendum_commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
     "graph_addendum_readback_ok": true,
-    "source_reference_count": 19,
+    "source_reference_count": 12,
     "missing_source_references": 0,
     "source_ids_unique": true,
-    "relationship_edges": 230,
-    "competing_hypotheses": 128,
+    "relationship_edges": 237,
+    "competing_hypotheses": 132,
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
-    "main_modified_by_this_run": false,
+    "main_modified_by_this_run": true,
+    "main_write_scope": "ONE_DATA_ONLY_GRAPH_FILE",
+    "cleanup_pr1308": "DRAFT_OPEN_UNMERGED",
     "merge_performed": false,
     "force_push": false,
     "deployment_executed": false,
     "real_money_trade": false,
     "paper_trading_state_mutated": false,
-    "main_paper_trader_schedule": "ACTIVE_UNTIL_APPROVED_MERGE",
-    "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PR1307_PASS_UNMERGED",
     "pr1307": {
       "head": "717eb13ad61605d037d80c9a193b3e2e19d87423",
       "base_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
       "ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
       "gate": "PASS_FAIL_CLOSED",
-      "state": "DRAFT_OPEN_UNMERGED"
+      "state": "DRAFT_OPEN_UNMERGED_BEHIND_ONE_DATA_ONLY_COMMIT"
     },
-    "pr1306": {
-      "head": "7f91e917eee5bd02499d0dfa3835da277dd05758",
-      "ci": "PASS",
-      "gate": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED_STALE_BASE"
+    "pr1308": {
+      "head": "1080af2ac25756eb99e7c7c58571b240245aa7ee",
+      "base_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "purpose": "delete only unintended data-only graph file"
     },
-    "pr1304": {
-      "head": "2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0",
-      "ci": "PASS",
-      "gate": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED_STALE_BASE"
-    },
-    "pr1305": {
-      "head": "2a7afe9e43fe454252059002be32c165a73611ec",
-      "ci": "PASS",
-      "gate": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED_STALE_BASE"
-    },
-    "verified_at_utc": "2026-10-29T12:09:30Z",
+    "paper_trader_schedule": "ACTIVE_UNTIL_APPROVED_MERGE_OF_PR1307",
+    "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PR1307_PASS_UNMERGED",
+    "verified_at_utc": "2026-10-29T12:16:30Z",
     "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
     "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
   },
   "ledger_metrics": {
-    "source_records": 914,
-    "run_updates": 171,
-    "limitations": 210,
-    "relationship_edges": 230,
-    "competing_hypotheses": 128,
+    "source_records": 926,
+    "run_updates": 172,
+    "limitations": 211,
+    "relationship_edges": 237,
+    "competing_hypotheses": 132,
     "market_observations": 83,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 5,
-    "index_characters_before_this_update": 881014,
+    "latest_research_addendum_observations": 0,
+    "index_characters_before_this_update": 897828,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 15205,
-    "index_characters": 897828
+    "latest_snapshot_characters": 6928,
+    "index_characters": 910119
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -13297,35 +13452,33 @@
     }
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T12:09:30Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T12:16:30Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS_193_TESTS_PLUS_4_SUBTESTS; PR1307_GATE_PASS; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS; PR1307_GATE_PASS; PR1308_CLEANUP_DRAFT; MAIN_DATA_ONLY_WRITE_INCIDENT_RECORDED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
-      "snapshot_commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
-      "snapshot_characters": 15205,
-      "source_reference_count": 19,
+      "snapshot_blob_sha": "1d6fc67ecf02195d1ced8de5f720da108d5fb783",
+      "snapshot_commit_sha": "2c1cfc149c1b353018171656671f26eca96523b0",
+      "snapshot_characters": 6928,
+      "source_reference_count": 12,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
-      "graph_addendum_blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
-      "graph_addendum_commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+      "graph_addendum_blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+      "graph_addendum_commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
       "graph_addendum_readback_ok": true,
-      "graph_edges": 15,
-      "graph_hypotheses": 5,
+      "graph_edges": 7,
+      "graph_hypotheses": 4,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
       "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
-      "main_modified_by_this_run": false,
+      "main_modified_by_this_run": true,
+      "main_write_scope": "ONE_DATA_ONLY_GRAPH_FILE",
+      "cleanup_pr1308": "DRAFT_OPEN_UNMERGED",
       "merge_performed": false,
-      "force_push": false,
-      "deployment_executed": false,
       "real_money_trade": false,
-      "paper_trading_state_mutated": false,
-      "pr1307_ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
-      "pr1307_gate": "PASS_FAIL_CLOSED"
+      "paper_trading_state_mutated": false
     }
   },
   "index_format_version": "2.0",
@@ -13374,70 +13527,62 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T12:09:30Z",
-    "focus": "PR1307 fresh-main paper-trader guard, SBI XRP retail channel, RLUSD Japan distribution, derivatives coverage conflict and ETF-flow normalization",
+    "recorded_at_utc": "2026-10-29T12:16:30Z",
+    "focus": "SBIC/ChatGPT entity disambiguation, ASK Coin candidates, actual-capital semantics, Camilla/Kamilah identity and corrective main-write audit",
     "source_ids": [
-      "SRC-GH-MAIN-HEAD-20261029T1209Z",
-      "SRC-GH-MAIN-PAPER-STATE-20261029T1209Z",
-      "SRC-GH-MAIN-PAPER-LOG-20261029T1209Z",
-      "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1209Z",
-      "SRC-GH-MAIN-XRP-SIGNAL-20261029T1209Z",
-      "SRC-GH-MAIN-XRP-SUMMARY-20261029T1209Z",
-      "SRC-GH-PR1307-20261029T1209Z",
-      "SRC-GH-PR1307-CI-20261029T1209Z",
-      "SRC-GH-PR1307-GATE-20261029T1209Z",
-      "SRC-GH-PR1306-CI-20261029T1209Z",
-      "SRC-GH-PR1306-GATE-20261029T1209Z",
-      "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z",
-      "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z",
-      "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z",
-      "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z",
-      "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z",
-      "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z",
-      "SRC-COINBASE-Q3-DATE-20261014-CAPTURE-20261029T1209Z",
-      "SRC-CIRCLE-Q3-DATE-20261007-CAPTURE-20261029T1209Z"
+      "SRC-SBIC-EAST-OFFICIAL-PROFILE-20261029T1214Z",
+      "SRC-SBIC-WEST-CHATGPT-PDF-20261029T1214Z",
+      "SRC-ASKCOIN-CMC-INACTIVE-20261029T1214Z",
+      "SRC-PERMISSION-ASK-CMC-20261029T1214Z",
+      "SRC-ACTUAL-CAPITAL-TIMESTABLOID-20261029T1214Z",
+      "SRC-ACTUAL-CAPITAL-COINTURK-20261029T1214Z",
+      "SRC-CAMILLA-NAMESAKE-MFJF-20261029T1214Z",
+      "SRC-YOUTUBE-KAMILAH-MARCH2026-20261029T1214Z",
+      "SRC-YOUTUBE-KAMILAH-DEC2025-20261029T1214Z",
+      "SRC-GH-MAIN-UNINTENDED-GRAPH-COMMIT-20261029T1216Z",
+      "SRC-GH-PR1308-CLEANUP-20261029T1216Z",
+      "SRC-GH-MAIN-COMPARE-B60FA-TO-F23A-20261029T1216Z"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
-      "blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
-      "commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
-      "new_edges": 15,
-      "new_competing_hypotheses": 5
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+      "blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+      "commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
+      "new_edges": 7,
+      "new_competing_hypotheses": 4
     },
-    "market_observations": 5,
+    "market_observations": 0,
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T11:07:45Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T12:09:30Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS_193_TESTS_PLUS_4_SUBTESTS; PR1307_GATE_PASS; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
-      "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
-      "snapshot_characters": 9295,
-      "source_reference_count": 9,
+      "snapshot_blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
+      "snapshot_commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
+      "snapshot_characters": 15205,
+      "source_reference_count": 19,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
-      "graph_addendum_blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
-      "graph_addendum_commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
+      "graph_addendum_blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
+      "graph_addendum_commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
       "graph_addendum_readback_ok": true,
-      "graph_edges": 5,
-      "graph_hypotheses": 3,
+      "graph_edges": 15,
+      "graph_hypotheses": 5,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
-      "index_pointer_status": "PASS",
+      "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
       "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
-      "index_blob_sha_at_readback": "615c8df2a04e887082c5ae2e4792e6c05610e38e",
-      "index_commit_sha_at_readback": "bb7f9cedfdb63aef208c948a0dfe5ea7fecc52e1",
-      "index_character_count_match": true,
-      "index_metric_count_match": true,
-      "missing_snapshot_source_references": 0
+      "pr1307_ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+      "pr1307_gate": "PASS_FAIL_CLOSED"
     }
   },
   "snapshot_verification_history": [
@@ -14237,7 +14382,30 @@
       "main_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
       "paper_trader_schedule_still_active": true,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T12:16:30Z",
+      "verification_type": "SBIC_EXACT_PHRASE_AND_CORRECTIVE_MAIN_WRITE_SNAPSHOT_GRAPH_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1216-sbic-ask-actual-capital-youtube-cleanup.json",
+      "snapshot_blob_sha": "1d6fc67ecf02195d1ced8de5f720da108d5fb783",
+      "snapshot_commit_sha": "2c1cfc149c1b353018171656671f26eca96523b0",
+      "snapshot_characters": 6928,
+      "source_reference_count": 12,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+      "graph_addendum_blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+      "graph_addendum_commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
+      "graph_addendum_readback_ok": true,
+      "graph_edges": 7,
+      "graph_hypotheses": 4,
+      "missing_graph_source_references": 0,
+      "source_ids_unique": true,
+      "main_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+      "main_modified_by_this_run": true,
+      "cleanup_pr1308": "DRAFT_OPEN_UNMERGED",
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6"
+  "current_research_head_before_this_update": "2c1cfc149c1b353018171656671f26eca96523b0"
 }
