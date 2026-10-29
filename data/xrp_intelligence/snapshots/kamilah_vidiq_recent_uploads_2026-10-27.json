@@ -1,0 +1,2440 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "KAMILAH-VIDIQ-2026-10-27T0203Z",
+  "captured_at_utc": "2026-10-27T02:03:11Z",
+  "creator": {
+    "display_name": "Kamilah Stevenson",
+    "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA"
+  },
+  "source": {
+    "provider": "vidIQ connected tool",
+    "method": "vidiq_channel_videos",
+    "selection": "popular=false; newest uploads returned per format",
+    "terms": "Public channel metadata; no private channel access used"
+  },
+  "scope": {
+    "formats_requested": [
+      "long",
+      "short",
+      "live"
+    ],
+    "records_returned_per_format": {
+      "long": 50,
+      "short": 50,
+      "live": 50
+    },
+    "raw_records": 150,
+    "unique_video_ids": 150,
+    "complete_channel_inventory": false,
+    "completeness_note": "This is a timestamped recent-upload snapshot limited to the first result page (up to 50 per format). It is not a complete channel archive; older public uploads and pagination completeness remain unverified."
+  },
+  "interpretation_policy": {
+    "video_titles_and_metrics_are_discovery_metadata_not_truth_evidence": true,
+    "claims_must_be_transcribed_and_independently_corroborated": true,
+    "views_likes_comments_vph_are_point_in_time_and_not_historical_series": true,
+    "forecasts_require_original_cutoff_horizon_target_probability_assumptions_and_later_outcome": true
+  },
+  "videos": [
+    {
+      "video_id": "M3SrCk61x88",
+      "title": "BlackRock Helped Rebuild Finance After the Last Crisis. Could XRP Be Part of the Next Reset?",
+      "published_at": "2026-10-26T23:55:24Z",
+      "format": "live",
+      "duration": "PT1H1M3S",
+      "views_at_capture": 5183,
+      "likes_at_capture": 409,
+      "comments_at_capture": 116,
+      "views_per_hour_at_capture": 2591.5,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/M3SrCk61x88/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "_i-ibZEqmEI",
+      "title": "Your 401k Was Never Meant To Be Your Whole Retirement",
+      "published_at": "2026-10-26T15:46:30Z",
+      "format": "short",
+      "duration": "PT52S",
+      "views_at_capture": 641,
+      "likes_at_capture": 48,
+      "comments_at_capture": 12,
+      "views_per_hour_at_capture": 64.1,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/_i-ibZEqmEI/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "AJqjwT5ueG4",
+      "title": "The Biggest Payment Apps Are About To Offer XRP (here's what this means)",
+      "published_at": "2026-10-25T18:55:28Z",
+      "format": "long",
+      "duration": "PT11M11S",
+      "views_at_capture": 13185,
+      "likes_at_capture": 735,
+      "comments_at_capture": 66,
+      "views_per_hour_at_capture": 323.52,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/AJqjwT5ueG4/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "NmWw6Axav7w",
+      "title": "Over 50? Your 401k Catch-Up Money Now Has To Go Roth",
+      "published_at": "2026-10-25T16:14:00Z",
+      "format": "short",
+      "duration": "PT49S",
+      "views_at_capture": 1142,
+      "likes_at_capture": 45,
+      "comments_at_capture": 4,
+      "views_per_hour_at_capture": 34.60606060606061,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/NmWw6Axav7w/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "bNJ4lzZEqtA",
+      "title": "The RIGHT Way to Hold Your XRP in 2026 (For Maximum Security)",
+      "published_at": "2026-10-24T20:13:00Z",
+      "format": "long",
+      "duration": "PT10M",
+      "views_at_capture": 14352,
+      "likes_at_capture": 728,
+      "comments_at_capture": 69,
+      "views_per_hour_at_capture": 128.61111111111111,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/bNJ4lzZEqtA/sddefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "NwujQVtbI_Y",
+      "title": "Why I Would Move 401k Money Into A Roth Now",
+      "published_at": "2026-10-24T15:05:59Z",
+      "format": "short",
+      "duration": "PT48S",
+      "views_at_capture": 1155,
+      "likes_at_capture": 58,
+      "comments_at_capture": 7,
+      "views_per_hour_at_capture": 19.913793103448278,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/NwujQVtbI_Y/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "xxIQc49Ng9k",
+      "title": "Could XRP Become the Backbone of the World’s Money? | Apex Crypto",
+      "published_at": "2026-10-23T17:00:00Z",
+      "format": "long",
+      "duration": "PT19M56S",
+      "views_at_capture": 17446,
+      "likes_at_capture": 742,
+      "comments_at_capture": 77,
+      "views_per_hour_at_capture": 67.8,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/xxIQc49Ng9k/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "2t5Pf6VAduI",
+      "title": "Three Dates Decide How Much Of Your IRA You Keep",
+      "published_at": "2026-10-23T15:51:19Z",
+      "format": "short",
+      "duration": "PT42S",
+      "views_at_capture": 1399,
+      "likes_at_capture": 61,
+      "comments_at_capture": 8,
+      "views_per_hour_at_capture": 17.0609756097561,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/2t5Pf6VAduI/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "DCfrFGOsNdM",
+      "title": "Millions Just Got Locked Out of Their Banks. Do This Now.",
+      "published_at": "2026-10-22T17:30:13Z",
+      "format": "long",
+      "duration": "PT12M12S",
+      "views_at_capture": 22413,
+      "likes_at_capture": 1693,
+      "comments_at_capture": 185,
+      "views_per_hour_at_capture": 78.35483870967742,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/DCfrFGOsNdM/sddefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "prfAWP1X2is",
+      "title": "Morningstar Found Bitcoin Fund Investors Lost 14 Points A Year",
+      "published_at": "2026-10-22T17:17:34Z",
+      "format": "short",
+      "duration": "PT39S",
+      "views_at_capture": 1048,
+      "likes_at_capture": 47,
+      "comments_at_capture": 3,
+      "views_per_hour_at_capture": 10.076923076923077,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/prfAWP1X2is/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "jVrBm0dDJ24",
+      "title": "What’s Stopping XRP From Hitting $10? I Asked For Proof (ft. Apex Crypto)",
+      "published_at": "2026-10-22T02:05:56Z",
+      "format": "live",
+      "duration": "PT2H29M59S",
+      "views_at_capture": 54537,
+      "likes_at_capture": 2451,
+      "comments_at_capture": 304,
+      "views_per_hour_at_capture": 82.92857142857143,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/jVrBm0dDJ24/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "Shd2rwZ6l2s",
+      "title": "Where Your XRP Fee Actually Goes (It's Not Who You Think)",
+      "published_at": "2026-10-21T17:54:49Z",
+      "format": "short",
+      "duration": "PT48S",
+      "views_at_capture": 3556,
+      "likes_at_capture": 149,
+      "comments_at_capture": 12,
+      "views_per_hour_at_capture": 27.78125,
+      "breakout_score_at_capture": 1.0809064747277715,
+      "thumbnail_url": "https://i.ytimg.com/vi/Shd2rwZ6l2s/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "bYe47bYPJ-c",
+      "title": "Ripple Unlocked 1 Billion XRP Again. Most Of It Went Back Under Lock",
+      "published_at": "2026-10-20T18:07:03Z",
+      "format": "short",
+      "duration": "PT45S",
+      "views_at_capture": 7247,
+      "likes_at_capture": 216,
+      "comments_at_capture": 9,
+      "views_per_hour_at_capture": 47.99337748344371,
+      "breakout_score_at_capture": 2.3750573254917886,
+      "thumbnail_url": "https://i.ytimg.com/vi/bYe47bYPJ-c/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "vRlw4BV-cGE",
+      "title": "This NEW Bank Deal Shows Exactly Where XRP Is Headed",
+      "published_at": "2026-10-20T15:50:25Z",
+      "format": "long",
+      "duration": "PT12M58S",
+      "views_at_capture": 38995,
+      "likes_at_capture": 1301,
+      "comments_at_capture": 127,
+      "views_per_hour_at_capture": 67.7244094488189,
+      "breakout_score_at_capture": 1.3565970415494373,
+      "thumbnail_url": "https://i.ytimg.com/vi/vRlw4BV-cGE/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "vPebfa4Mdwo",
+      "title": "XRP Got Everything We Waited For. So Why Isn’t It Soaring?",
+      "published_at": "2026-10-20T00:27:53Z",
+      "format": "live",
+      "duration": "PT1H7M44S",
+      "views_at_capture": 21280,
+      "likes_at_capture": 1039,
+      "comments_at_capture": 131,
+      "views_per_hour_at_capture": 14.380952380952381,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/vPebfa4Mdwo/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "nwpqgl-Rrcw",
+      "title": "Bitcoin Went Up. Why Did You Make Less?",
+      "published_at": "2026-10-19T16:09:11Z",
+      "format": "short",
+      "duration": "PT39S",
+      "views_at_capture": 2314,
+      "likes_at_capture": 92,
+      "comments_at_capture": 3,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/nwpqgl-Rrcw/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "gIwgoCv4BO4",
+      "title": "This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes)",
+      "published_at": "2026-10-18T18:30:17Z",
+      "format": "long",
+      "duration": "PT11M33S",
+      "views_at_capture": 29273,
+      "likes_at_capture": 1186,
+      "comments_at_capture": 67,
+      "views_per_hour_at_capture": 2.9310344827586206,
+      "breakout_score_at_capture": 1.1933473560839838,
+      "thumbnail_url": "https://i.ytimg.com/vi/gIwgoCv4BO4/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "ZKV6VLIHAnk",
+      "title": "Why Japan Is Bringing Its Money Home",
+      "published_at": "2026-10-18T17:32:22Z",
+      "format": "short",
+      "duration": "PT50S",
+      "views_at_capture": 3025,
+      "likes_at_capture": 130,
+      "comments_at_capture": 5,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/ZKV6VLIHAnk/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "SvxxNGA1Xpc",
+      "title": "XRP’s Next Big Move Could Come Down to These 4 Days",
+      "published_at": "2026-10-17T19:37:37Z",
+      "format": "live",
+      "duration": "PT54M",
+      "views_at_capture": 26958,
+      "likes_at_capture": 1255,
+      "comments_at_capture": 104,
+      "views_per_hour_at_capture": 4.5966386554621845,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/SvxxNGA1Xpc/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "UiAcKwMuoIQ",
+      "title": "How Evernorth Plans To Add More XRP",
+      "published_at": "2026-10-17T19:03:04Z",
+      "format": "short",
+      "duration": "PT43S",
+      "views_at_capture": 5514,
+      "likes_at_capture": 178,
+      "comments_at_capture": 7,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.849341864828196,
+      "thumbnail_url": "https://i.ytimg.com/vi/UiAcKwMuoIQ/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "tqeO106GRDo",
+      "title": "They Pay $24 Billion in Interest Every Week",
+      "published_at": "2026-10-17T17:38:56Z",
+      "format": "short",
+      "duration": "PT33S",
+      "views_at_capture": 3118,
+      "likes_at_capture": 94,
+      "comments_at_capture": 5,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.047564869352727,
+      "thumbnail_url": "https://i.ytimg.com/vi/tqeO106GRDo/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "Pe2IMbAoS8E",
+      "title": "Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor)",
+      "published_at": "2026-10-16T22:00:04Z",
+      "format": "long",
+      "duration": "PT15M45S",
+      "views_at_capture": 48206,
+      "likes_at_capture": 1610,
+      "comments_at_capture": 131,
+      "views_per_hour_at_capture": 36.67,
+      "breakout_score_at_capture": 2.44,
+      "thumbnail_url": "https://i.ytimg.com/vi/Pe2IMbAoS8E/sddefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "V8fyGmccweY",
+      "title": "A Nasdaq Company Raised Over A Billion Just To Hold XRP",
+      "published_at": "2026-10-16T19:00:04Z",
+      "format": "short",
+      "duration": "PT35S",
+      "views_at_capture": 4805,
+      "likes_at_capture": 165,
+      "comments_at_capture": 11,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.6306188709797345,
+      "thumbnail_url": "https://i.ytimg.com/vi/V8fyGmccweY/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "hujGeesI5Xc",
+      "title": "XRP vs Banks: Why Your Money Needs Autonomy NOW",
+      "published_at": "2026-10-16T16:30:28Z",
+      "format": "long",
+      "duration": "PT11M41S",
+      "views_at_capture": 9988,
+      "likes_at_capture": 381,
+      "comments_at_capture": 38,
+      "views_per_hour_at_capture": 1.547945205479452,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/hujGeesI5Xc/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "wbfO0SwR1IY",
+      "title": "Did SWIFT Just Change XRP Forever? (The Truth)",
+      "published_at": "2026-10-15T17:59:57Z",
+      "format": "long",
+      "duration": "PT13M9S",
+      "views_at_capture": 79129,
+      "likes_at_capture": 2473,
+      "comments_at_capture": 255,
+      "views_per_hour_at_capture": 8.04,
+      "breakout_score_at_capture": 4.66,
+      "thumbnail_url": "https://i.ytimg.com/vi/wbfO0SwR1IY/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "SXOBhRW28QM",
+      "title": "This Quietly BREAKS Your LLC Protection",
+      "published_at": "2026-10-15T15:10:24Z",
+      "format": "short",
+      "duration": "PT47S",
+      "views_at_capture": 2808,
+      "likes_at_capture": 122,
+      "comments_at_capture": 20,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/SXOBhRW28QM/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "U2_crndigkU",
+      "title": "Bank Of America’s CEO Just ADMITTED What XRP Holders Already Knew",
+      "published_at": "2026-10-14T23:36:40Z",
+      "format": "live",
+      "duration": "PT1H16M42S",
+      "views_at_capture": 20891,
+      "likes_at_capture": 789,
+      "comments_at_capture": 59,
+      "views_per_hour_at_capture": 6.623529411764705,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/U2_crndigkU/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "wjw_Zs1yHEI",
+      "title": "Your Crypto Is In Your Name. That's The Problem.",
+      "published_at": "2026-10-14T19:00:32Z",
+      "format": "short",
+      "duration": "PT39S",
+      "views_at_capture": 4448,
+      "likes_at_capture": 179,
+      "comments_at_capture": 2,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.5455410923527388,
+      "thumbnail_url": "https://i.ytimg.com/vi/wjw_Zs1yHEI/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "4j4nJU_A8ws",
+      "title": "Why Your Portfolio DROPPED: The 10 Year Yield Just Passed 5%",
+      "published_at": "2026-10-13T19:12:48Z",
+      "format": "short",
+      "duration": "PT45S",
+      "views_at_capture": 1919,
+      "likes_at_capture": 91,
+      "comments_at_capture": 20,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/4j4nJU_A8ws/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "JRyWzYTYNFc",
+      "title": "HSBC, Lloyds And NatWest Ran Real Transactions On Quant",
+      "published_at": "2026-10-13T16:04:08Z",
+      "format": "short",
+      "duration": "PT40S",
+      "views_at_capture": 2233,
+      "likes_at_capture": 98,
+      "comments_at_capture": 4,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/JRyWzYTYNFc/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "Zzo61P6Yf78",
+      "title": "BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.",
+      "published_at": "2026-10-13T15:30:24Z",
+      "format": "long",
+      "duration": "PT11M37S",
+      "views_at_capture": 21484,
+      "likes_at_capture": 1133,
+      "comments_at_capture": 47,
+      "views_per_hour_at_capture": 15.798045602605864,
+      "breakout_score_at_capture": 1.265853612081764,
+      "thumbnail_url": "https://i.ytimg.com/vi/Zzo61P6Yf78/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "PFtLCVGzfrY",
+      "title": "I Was WRONG About XRP. The Timeline Just Changed.",
+      "published_at": "2026-10-12T23:33:18Z",
+      "format": "live",
+      "duration": "PT1H18M41S",
+      "views_at_capture": 35936,
+      "likes_at_capture": 1509,
+      "comments_at_capture": 106,
+      "views_per_hour_at_capture": 104.10355029585799,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/PFtLCVGzfrY/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "_mXPuT9L3ks",
+      "title": "The Clearing House Moves Over $2 Trillion A Day And Picked Quant",
+      "published_at": "2026-10-12T16:03:58Z",
+      "format": "short",
+      "duration": "PT47S",
+      "views_at_capture": 4272,
+      "likes_at_capture": 164,
+      "comments_at_capture": 10,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.4916668012612408,
+      "thumbnail_url": "https://i.ytimg.com/vi/_mXPuT9L3ks/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "PrADEKhkLPQ",
+      "title": "$100M Into Crypto Funds In One Week, Price Failed. Here's Why",
+      "published_at": "2026-10-12T13:12:01Z",
+      "format": "short",
+      "duration": "PT44S",
+      "views_at_capture": 2890,
+      "likes_at_capture": 119,
+      "comments_at_capture": 14,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.0340452489012597,
+      "thumbnail_url": "https://i.ytimg.com/vi/PrADEKhkLPQ/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "Idv8oBx3-Ow",
+      "title": "The Fed Rate Just Moved. Here's What It Does to Your Money",
+      "published_at": "2026-10-11T19:02:59Z",
+      "format": "short",
+      "duration": "PT45S",
+      "views_at_capture": 2303,
+      "likes_at_capture": 116,
+      "comments_at_capture": 22,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/Idv8oBx3-Ow/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "bXHWocguTu4",
+      "title": "A $119 Billion African Bank Just Put Its License Behind XRP",
+      "published_at": "2026-10-11T17:35:43Z",
+      "format": "long",
+      "duration": "PT13M38S",
+      "views_at_capture": 27735,
+      "likes_at_capture": 1330,
+      "comments_at_capture": 64,
+      "views_per_hour_at_capture": 0.44,
+      "breakout_score_at_capture": 1.68,
+      "thumbnail_url": "https://i.ytimg.com/vi/bXHWocguTu4/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "KvSUXS5FFR0",
+      "title": "SBI Used XRP To Send Money From Japan To The Philippines",
+      "published_at": "2026-10-11T16:03:09Z",
+      "format": "short",
+      "duration": "PT30S",
+      "views_at_capture": 3970,
+      "likes_at_capture": 143,
+      "comments_at_capture": 8,
+      "views_per_hour_at_capture": 5.747126436781609,
+      "breakout_score_at_capture": 1.2915756441269457,
+      "thumbnail_url": "https://i.ytimg.com/vi/KvSUXS5FFR0/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "SYdQI_Hd8tI",
+      "title": "191,000 Traders Got Wiped Out While XRP Became Wall Street Collateral",
+      "published_at": "2026-10-10T20:44:43Z",
+      "format": "live",
+      "duration": "PT1H1M24S",
+      "views_at_capture": 22296,
+      "likes_at_capture": 995,
+      "comments_at_capture": 47,
+      "views_per_hour_at_capture": 5.223188405797101,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/SYdQI_Hd8tI/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "CVFzAWeg_Ek",
+      "title": "Wall Street Is Paying To Build The Tokenized World, Where XRP Fits",
+      "published_at": "2026-10-10T16:03:05Z",
+      "format": "short",
+      "duration": "PT48S",
+      "views_at_capture": 3009,
+      "likes_at_capture": 132,
+      "comments_at_capture": 5,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/CVFzAWeg_Ek/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "65CT86F4kyY",
+      "title": "A New XRP Tool Can Buy and Sell for You",
+      "published_at": "2026-10-09T22:00:18Z",
+      "format": "long",
+      "duration": "PT16M45S",
+      "views_at_capture": 13839,
+      "likes_at_capture": 612,
+      "comments_at_capture": 51,
+      "views_per_hour_at_capture": 6.676923076923077,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/65CT86F4kyY/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "_iF1Rpa_4X8",
+      "title": "10 Million Payments and Not One Made by a Human",
+      "published_at": "2026-10-09T18:46:57Z",
+      "format": "short",
+      "duration": "PT39S",
+      "views_at_capture": 1785,
+      "likes_at_capture": 86,
+      "comments_at_capture": 3,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/_iF1Rpa_4X8/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "tYcCgje81zc",
+      "title": "Invest NOW or Get Left Behind. Institutions Are Already Moving.",
+      "published_at": "2026-10-09T16:45:06Z",
+      "format": "long",
+      "duration": "PT8M33S",
+      "views_at_capture": 16202,
+      "likes_at_capture": 808,
+      "comments_at_capture": 64,
+      "views_per_hour_at_capture": 37.55769230769231,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/tYcCgje81zc/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "tHMGVvIaK6U",
+      "title": "SoFi Is Buying And Selling Crypto. The Direction Is Set",
+      "published_at": "2026-10-09T16:04:16Z",
+      "format": "short",
+      "duration": "PT53S",
+      "views_at_capture": 2711,
+      "likes_at_capture": 125,
+      "comments_at_capture": 5,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/tHMGVvIaK6U/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "VPZ8VKG6tic",
+      "title": "Central Banks Bought Almost 300 Tons Of Gold In One Quarter",
+      "published_at": "2026-10-08T20:30:21Z",
+      "format": "short",
+      "duration": "PT51S",
+      "views_at_capture": 2475,
+      "likes_at_capture": 129,
+      "comments_at_capture": 0,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/VPZ8VKG6tic/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "pYsaqQabwWw",
+      "title": "The CFTC Just Said What XRP Holders Waited Years to Hear",
+      "published_at": "2026-10-08T17:30:28Z",
+      "format": "long",
+      "duration": "PT10M27S",
+      "views_at_capture": 44821,
+      "likes_at_capture": 1637,
+      "comments_at_capture": 100,
+      "views_per_hour_at_capture": 0.42,
+      "breakout_score_at_capture": 2.86,
+      "thumbnail_url": "https://i.ytimg.com/vi/pYsaqQabwWw/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "FvU1TpbnA2E",
+      "title": "Scammers Target Grieving Families For The 24 Word Recovery Phrase",
+      "published_at": "2026-10-08T16:05:23Z",
+      "format": "short",
+      "duration": "PT35S",
+      "views_at_capture": 1300,
+      "likes_at_capture": 64,
+      "comments_at_capture": 4,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/FvU1TpbnA2E/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "TTNRAdSHhxE",
+      "title": "Wall Street Is Quietly Moving Real Money Onto Blockchain",
+      "published_at": "2026-10-07T20:04:00Z",
+      "format": "short",
+      "duration": "PT1M27S",
+      "views_at_capture": 8426,
+      "likes_at_capture": 410,
+      "comments_at_capture": 19,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.3476595613507807,
+      "thumbnail_url": "https://i.ytimg.com/vi/TTNRAdSHhxE/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "9CvLamM9hq0",
+      "title": "Wall Street Just Got a Company Built to Keep BUYING XRP",
+      "published_at": "2026-10-07T16:30:16Z",
+      "format": "long",
+      "duration": "PT12M51S",
+      "views_at_capture": 16827,
+      "likes_at_capture": 746,
+      "comments_at_capture": 57,
+      "views_per_hour_at_capture": 3.3871733966745845,
+      "breakout_score_at_capture": 1.0690664192071213,
+      "thumbnail_url": "https://i.ytimg.com/vi/9CvLamM9hq0/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "kMHXeDthfEw",
+      "title": "400 Wealth Managers: 60% Are Planning Crypto Allocations",
+      "published_at": "2026-10-07T16:06:11Z",
+      "format": "short",
+      "duration": "PT50S",
+      "views_at_capture": 4720,
+      "likes_at_capture": 192,
+      "comments_at_capture": 12,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/kMHXeDthfEw/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "-B2cNkiGI24",
+      "title": "Goldman Sachs Disclosed $87 Million in XRP Exposure",
+      "published_at": "2026-10-06T19:03:34Z",
+      "format": "short",
+      "duration": "PT31S",
+      "views_at_capture": 9601,
+      "likes_at_capture": 329,
+      "comments_at_capture": 65,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.5188564324056206,
+      "thumbnail_url": "https://i.ytimg.com/vi/-B2cNkiGI24/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "beXOZCoO2Rg",
+      "title": "XRP Ledger Technology Just Reached Europe’s Central Bank",
+      "published_at": "2026-10-06T17:46:59Z",
+      "format": "long",
+      "duration": "PT14M41S",
+      "views_at_capture": 11913,
+      "likes_at_capture": 671,
+      "comments_at_capture": 31,
+      "views_per_hour_at_capture": 10.40388768898488,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/beXOZCoO2Rg/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "yRWBeM3WU7U",
+      "title": "Bad Jobs. Higher Rates. Something Just Broke. Watch Your XRP.",
+      "published_at": "2026-10-05T23:59:57Z",
+      "format": "live",
+      "duration": "PT1H12M11S",
+      "views_at_capture": 23692,
+      "likes_at_capture": 980,
+      "comments_at_capture": 79,
+      "views_per_hour_at_capture": 3.7844827586206895,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/yRWBeM3WU7U/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "UPWsbldPU9M",
+      "title": "UK Banks Picked Quant A Year Before It Tripled",
+      "published_at": "2026-10-05T20:00:31Z",
+      "format": "short",
+      "duration": "PT41S",
+      "views_at_capture": 3211,
+      "likes_at_capture": 134,
+      "comments_at_capture": 23,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/UPWsbldPU9M/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "qSKlOyoucd4",
+      "title": "Russia's Largest Exchange Just Listed XRP",
+      "published_at": "2026-10-04T20:00:24Z",
+      "format": "short",
+      "duration": "PT36S",
+      "views_at_capture": 12289,
+      "likes_at_capture": 481,
+      "comments_at_capture": 22,
+      "views_per_hour_at_capture": 15.6,
+      "breakout_score_at_capture": 3.4,
+      "thumbnail_url": "https://i.ytimg.com/vi/qSKlOyoucd4/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "aVbIN6xN4nw",
+      "title": "If You Die Tonight, Who Gets Your XRP?",
+      "published_at": "2026-10-04T14:30:18Z",
+      "format": "long",
+      "duration": "PT11M48S",
+      "views_at_capture": 14370,
+      "likes_at_capture": 766,
+      "comments_at_capture": 55,
+      "views_per_hour_at_capture": 2.110655737704918,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/aVbIN6xN4nw/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "-z69bR6XfJU",
+      "title": "Japan Just Raised Rates To 1.25%. Here's What It Means For Crypto",
+      "published_at": "2026-10-03T18:00:37Z",
+      "format": "short",
+      "duration": "PT46S",
+      "views_at_capture": 4577,
+      "likes_at_capture": 194,
+      "comments_at_capture": 22,
+      "views_per_hour_at_capture": 1.4163346613545817,
+      "breakout_score_at_capture": 1.273565415153368,
+      "thumbnail_url": "https://i.ytimg.com/vi/-z69bR6XfJU/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "YEoJQcz1k1Q",
+      "title": "Your Advisor Couldn’t Recommend XRP. Now the Gate Is Opening.",
+      "published_at": "2026-10-03T15:30:27Z",
+      "format": "long",
+      "duration": "PT15M15S",
+      "views_at_capture": 17174,
+      "likes_at_capture": 579,
+      "comments_at_capture": 49,
+      "views_per_hour_at_capture": 2.466933867735471,
+      "breakout_score_at_capture": 1.031093109461712,
+      "thumbnail_url": "https://i.ytimg.com/vi/YEoJQcz1k1Q/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "eG-_9vKcRug",
+      "title": "Japan Just Ended 30 Years of Free Money. Watch Your XRP.",
+      "published_at": "2026-10-02T22:00:33Z",
+      "format": "long",
+      "duration": "PT13M8S",
+      "views_at_capture": 57661,
+      "likes_at_capture": 2244,
+      "comments_at_capture": 75,
+      "views_per_hour_at_capture": 0.32,
+      "breakout_score_at_capture": 3.74,
+      "thumbnail_url": "https://i.ytimg.com/vi/eG-_9vKcRug/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "rj9kZ1TO1NY",
+      "title": "XRP Just Entered Bank-Grade Custody in Africa",
+      "published_at": "2026-10-02T19:15:26Z",
+      "format": "short",
+      "duration": "PT36S",
+      "views_at_capture": 7822,
+      "likes_at_capture": 347,
+      "comments_at_capture": 64,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 3.011765104662593,
+      "thumbnail_url": "https://i.ytimg.com/vi/rj9kZ1TO1NY/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "huwNQRnC-Ts",
+      "title": "Can You Really Invest in Crypto Tax-Free? | iTrustCapital Review",
+      "published_at": "2026-10-02T16:45:15Z",
+      "format": "long",
+      "duration": "PT12M47S",
+      "views_at_capture": 5653,
+      "likes_at_capture": 216,
+      "comments_at_capture": 33,
+      "views_per_hour_at_capture": 1.242798353909465,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/huwNQRnC-Ts/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "ChM7EnxKvvI",
+      "title": "Basel III and Why XRP Keeps Getting Left Out",
+      "published_at": "2026-10-02T16:02:52Z",
+      "format": "short",
+      "duration": "PT1M55S",
+      "views_at_capture": 12396,
+      "likes_at_capture": 461,
+      "comments_at_capture": 33,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 4.788072167282692,
+      "thumbnail_url": "https://i.ytimg.com/vi/ChM7EnxKvvI/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "0yPkwHz72-4",
+      "title": "Checking the Price Every Day Is Training Your Brain to Lose Money",
+      "published_at": "2026-10-01T19:03:09Z",
+      "format": "short",
+      "duration": "PT38S",
+      "views_at_capture": 2626,
+      "likes_at_capture": 117,
+      "comments_at_capture": 24,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.0115536583236029,
+      "thumbnail_url": "https://i.ytimg.com/vi/0yPkwHz72-4/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "BN0S2Ke_WzY",
+      "title": "Nasdaq Just Spent $100 Million Building the World XRP Was Made For",
+      "published_at": "2026-10-01T16:30:05Z",
+      "format": "long",
+      "duration": "PT15M16S",
+      "views_at_capture": 14704,
+      "likes_at_capture": 719,
+      "comments_at_capture": 103,
+      "views_per_hour_at_capture": 2.5737122557726466,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/BN0S2Ke_WzY/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "kWMEAN46eRM",
+      "title": "COVID Closed My Business in a Moment. Here's What I Was Missing",
+      "published_at": "2026-10-01T16:02:39Z",
+      "format": "short",
+      "duration": "PT1M14S",
+      "views_at_capture": 1288,
+      "likes_at_capture": 88,
+      "comments_at_capture": 15,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/kWMEAN46eRM/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "6b3h6EulnDo",
+      "title": "Your XRP Can Now Trade Without You",
+      "published_at": "2026-09-30T23:11:26Z",
+      "format": "live",
+      "duration": "PT56M45S",
+      "views_at_capture": 21533,
+      "likes_at_capture": 1097,
+      "comments_at_capture": 94,
+      "views_per_hour_at_capture": 9.052718286655685,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/6b3h6EulnDo/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "EfmIAAzKaYg",
+      "title": "Basel III Makes XRP Expensive for Banks to Hold",
+      "published_at": "2026-09-30T19:03:50Z",
+      "format": "short",
+      "duration": "PT1M35S",
+      "views_at_capture": 38943,
+      "likes_at_capture": 1574,
+      "comments_at_capture": 125,
+      "views_per_hour_at_capture": 13.64,
+      "breakout_score_at_capture": 14.72,
+      "thumbnail_url": "https://i.ytimg.com/vi/EfmIAAzKaYg/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "34iN1p1VvOI",
+      "title": "31.9 Million Forgotten 401(k)s and the 1% Fee Eating Them",
+      "published_at": "2026-09-30T16:04:17Z",
+      "format": "short",
+      "duration": "PT1M35S",
+      "views_at_capture": 960,
+      "likes_at_capture": 70,
+      "comments_at_capture": 8,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/34iN1p1VvOI/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "YrU2EbOJdU8",
+      "title": "The IRS Took Nearly $100,000 From My Account Overnight",
+      "published_at": "2026-09-29T19:03:47Z",
+      "format": "short",
+      "duration": "PT1M33S",
+      "views_at_capture": 83474,
+      "likes_at_capture": 2200,
+      "comments_at_capture": 387,
+      "views_per_hour_at_capture": 0,
+      "breakout_score_at_capture": 30.9,
+      "thumbnail_url": "https://i.ytimg.com/vi/YrU2EbOJdU8/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "CqHHYU6GfXg",
+      "title": "Why I Loaded Up on Quant Before It Exploded",
+      "published_at": "2026-09-29T17:30:38Z",
+      "format": "long",
+      "duration": "PT14M16S",
+      "views_at_capture": 17748,
+      "likes_at_capture": 647,
+      "comments_at_capture": 122,
+      "views_per_hour_at_capture": 8.928684627575278,
+      "breakout_score_at_capture": 1.046474548246132,
+      "thumbnail_url": "https://i.ytimg.com/vi/CqHHYU6GfXg/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "MnGM2Vo7zlM",
+      "title": "XRP ETFs Took In $1.71 Billion While the Price Fell",
+      "published_at": "2026-09-29T16:14:38Z",
+      "format": "short",
+      "duration": "PT43S",
+      "views_at_capture": 2320,
+      "likes_at_capture": 97,
+      "comments_at_capture": 31,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/MnGM2Vo7zlM/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "nRkbAOQ01Os",
+      "title": "America’s Biggest Banks Just Picked Quant. XRP Was Never the Competition.",
+      "published_at": "2026-09-29T00:02:28Z",
+      "format": "live",
+      "duration": "PT1H15M30S",
+      "views_at_capture": 43055,
+      "likes_at_capture": 1727,
+      "comments_at_capture": 177,
+      "views_per_hour_at_capture": 0.824607329842932,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/nRkbAOQ01Os/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "wh-f9efrISA",
+      "title": "The Clarity Act Failed Because of Politics, Not Crypto",
+      "published_at": "2026-09-28T16:05:49Z",
+      "format": "short",
+      "duration": "PT1M25S",
+      "views_at_capture": 2593,
+      "likes_at_capture": 135,
+      "comments_at_capture": 14,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/wh-f9efrISA/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "0O5vv5sfsrc",
+      "title": "4 Crypto Storage Mistakes You Need To Avoid",
+      "published_at": "2026-09-27T18:00:12Z",
+      "format": "short",
+      "duration": "PT1M",
+      "views_at_capture": 1966,
+      "likes_at_capture": 97,
+      "comments_at_capture": 35,
+      "views_per_hour_at_capture": 1.7561327561327562,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/0O5vv5sfsrc/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "N8VrOgmqdcs",
+      "title": "XRP Was Built to Do the ONE Thing the Dollar Can’t",
+      "published_at": "2026-09-27T14:30:22Z",
+      "format": "long",
+      "duration": "PT13M46S",
+      "views_at_capture": 10910,
+      "likes_at_capture": 631,
+      "comments_at_capture": 41,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/N8VrOgmqdcs/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "c4YpBdUoeDo",
+      "title": "The Fed Raised Rates. Your Credit Card Feels It First",
+      "published_at": "2026-09-26T19:02:37Z",
+      "format": "short",
+      "duration": "PT39S",
+      "views_at_capture": 2595,
+      "likes_at_capture": 113,
+      "comments_at_capture": 21,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/c4YpBdUoeDo/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "V_HE-qbBhIU",
+      "title": "Borrow Against Your XRP Without Selling",
+      "published_at": "2026-09-26T15:45:11Z",
+      "format": "long",
+      "duration": "PT12M39S",
+      "views_at_capture": 25114,
+      "likes_at_capture": 1183,
+      "comments_at_capture": 150,
+      "views_per_hour_at_capture": 3.4181240063593004,
+      "breakout_score_at_capture": 1.0991843114674562,
+      "thumbnail_url": "https://i.ytimg.com/vi/V_HE-qbBhIU/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "lwku3NNjPZo",
+      "title": "2 Million XRP Vanished in Two Hours. Is Your Crypto Safe?",
+      "published_at": "2026-09-25T22:00:12Z",
+      "format": "long",
+      "duration": "PT14M29S",
+      "views_at_capture": 60451,
+      "likes_at_capture": 2947,
+      "comments_at_capture": 266,
+      "views_per_hour_at_capture": 84.29,
+      "breakout_score_at_capture": 3.11,
+      "thumbnail_url": "https://i.ytimg.com/vi/lwku3NNjPZo/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "dTrAk2m3INA",
+      "title": "$1.71 Billion Flowed Into XRP Funds While Price Fell",
+      "published_at": "2026-09-25T20:00:08Z",
+      "format": "short",
+      "duration": "PT41S",
+      "views_at_capture": 6995,
+      "likes_at_capture": 224,
+      "comments_at_capture": 80,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.3969928500491764,
+      "thumbnail_url": "https://i.ytimg.com/vi/dTrAk2m3INA/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "vcaWJ0Eh6rg",
+      "title": "XRP Is Exposing a Problem Banks Can’t Ignore",
+      "published_at": "2026-09-25T16:45:34Z",
+      "format": "long",
+      "duration": "PT9M48S",
+      "views_at_capture": 9208,
+      "likes_at_capture": 430,
+      "comments_at_capture": 17,
+      "views_per_hour_at_capture": 10.621333333333334,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/vcaWJ0Eh6rg/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "GnFXFQ-WYhM",
+      "title": "Fake Ripple CEO Promised 2,000 XRP Back For 1,000, It Was A Scam",
+      "published_at": "2026-09-25T16:03:48Z",
+      "format": "short",
+      "duration": "PT38S",
+      "views_at_capture": 12852,
+      "likes_at_capture": 260,
+      "comments_at_capture": 115,
+      "views_per_hour_at_capture": 43.94,
+      "breakout_score_at_capture": 4.11,
+      "thumbnail_url": "https://i.ytimg.com/vi/GnFXFQ-WYhM/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "edU8OiImPqc",
+      "title": "I Lost A Business To COVID. Here's What Was Missing.",
+      "published_at": "2026-09-24T20:19:34Z",
+      "format": "short",
+      "duration": "PT1M10S",
+      "views_at_capture": 1748,
+      "likes_at_capture": 104,
+      "comments_at_capture": 27,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/edU8OiImPqc/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "XgeX9PXcNlc",
+      "title": "Japan Bet on Ripple 10 Years Ago. Wall Street Is Just Catching Up.",
+      "published_at": "2026-09-24T16:45:24Z",
+      "format": "long",
+      "duration": "PT14M15S",
+      "views_at_capture": 16157,
+      "likes_at_capture": 823,
+      "comments_at_capture": 72,
+      "views_per_hour_at_capture": 2.1653333333333333,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/XgeX9PXcNlc/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "WLfbC30SLNI",
+      "title": "If Your XRP Is On An Exchange, It Isn't Your XRP",
+      "published_at": "2026-09-24T16:04:09Z",
+      "format": "short",
+      "duration": "PT40S",
+      "views_at_capture": 6676,
+      "likes_at_capture": 225,
+      "comments_at_capture": 56,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 2.6730853840611823,
+      "thumbnail_url": "https://i.ytimg.com/vi/WLfbC30SLNI/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "-wWxFrsZL6A",
+      "title": "The White House Is Done Waiting on Congress. XRP Moves Forward Anyway",
+      "published_at": "2026-09-23T23:11:45Z",
+      "format": "live",
+      "duration": "PT1H11M57S",
+      "views_at_capture": 19314,
+      "likes_at_capture": 934,
+      "comments_at_capture": 76,
+      "views_per_hour_at_capture": 0.07692307692307693,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/-wWxFrsZL6A/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "u8XGjDCWl_c",
+      "title": "Hope Is Not A Financial Plan",
+      "published_at": "2026-09-23T20:45:09Z",
+      "format": "short",
+      "duration": "PT18S",
+      "views_at_capture": 1683,
+      "likes_at_capture": 50,
+      "comments_at_capture": 15,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/u8XGjDCWl_c/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "_y_ZjkqcDXY",
+      "title": "3 Second Atomic Settlement Leaves Old System Banks Behind",
+      "published_at": "2026-09-23T16:04:02Z",
+      "format": "short",
+      "duration": "PT52S",
+      "views_at_capture": 3347,
+      "likes_at_capture": 159,
+      "comments_at_capture": 12,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": 1.0773533931956152,
+      "thumbnail_url": "https://i.ytimg.com/vi/_y_ZjkqcDXY/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "CdZop833mdg",
+      "title": "Should you invest your 401(k) in crypto?",
+      "published_at": "2026-09-22T18:53:19Z",
+      "format": "short",
+      "duration": "PT52S",
+      "views_at_capture": 2054,
+      "likes_at_capture": 94,
+      "comments_at_capture": 4,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/CdZop833mdg/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "BEVnpA2lnTY",
+      "title": "The BIS Tested the XRP Ledger. It Worked in Seconds.",
+      "published_at": "2026-09-22T16:45:40Z",
+      "format": "long",
+      "duration": "PT14M45S",
+      "views_at_capture": 11988,
+      "likes_at_capture": 796,
+      "comments_at_capture": 54,
+      "views_per_hour_at_capture": 1.252,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/BEVnpA2lnTY/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "ZVs6rIpAyS4",
+      "title": "100 Billion XRP Exist, But Only The Float Sets The Price",
+      "published_at": "2026-09-22T16:04:19Z",
+      "format": "short",
+      "duration": "PT43S",
+      "views_at_capture": 25961,
+      "likes_at_capture": 470,
+      "comments_at_capture": 25,
+      "views_per_hour_at_capture": 32.79,
+      "breakout_score_at_capture": 7.03,
+      "thumbnail_url": "https://i.ytimg.com/vi/ZVs6rIpAyS4/maxresdefault.jpg",
+      "formats_seen": [
+        "short"
+      ]
+    },
+    {
+      "video_id": "VBQBQio6MFw",
+      "title": "The CLARITY Act Exposed the Banks. XRP Just Became More Important",
+      "published_at": "2026-09-21T23:38:39Z",
+      "format": "live",
+      "duration": "PT1H8M55S",
+      "views_at_capture": 23190,
+      "likes_at_capture": 977,
+      "comments_at_capture": 93,
+      "views_per_hour_at_capture": 0.4738292011019284,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/VBQBQio6MFw/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "PmdxwxbdjRY",
+      "title": "XRP’s Biggest Opportunity Has Almost Nothing to Do With Payments",
+      "published_at": "2026-09-20T14:30:10Z",
+      "format": "long",
+      "duration": "PT14M45S",
+      "views_at_capture": 10650,
+      "likes_at_capture": 670,
+      "comments_at_capture": 64,
+      "views_per_hour_at_capture": 8.714942528735632,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/PmdxwxbdjRY/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "G7tIWEbonHg",
+      "title": "The SEC Just Approved Stocks Onchain. XRP Was Built for What Comes Next",
+      "published_at": "2026-09-19T20:00:39Z",
+      "format": "live",
+      "duration": "PT49M51S",
+      "views_at_capture": 24447,
+      "likes_at_capture": 935,
+      "comments_at_capture": 70,
+      "views_per_hour_at_capture": 6.325714285714286,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/G7tIWEbonHg/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "iz9kAWkysPU",
+      "title": "If XRP Hits $10, Will It ACTUALLY Change Your Life?",
+      "published_at": "2026-09-18T22:00:35Z",
+      "format": "long",
+      "duration": "PT14M2S",
+      "views_at_capture": 32097,
+      "likes_at_capture": 1301,
+      "comments_at_capture": 266,
+      "views_per_hour_at_capture": 36.26,
+      "breakout_score_at_capture": 1.65,
+      "thumbnail_url": "https://i.ytimg.com/vi/iz9kAWkysPU/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "HyYpjVn-SY8",
+      "title": "XRP May Not Need Congress After All",
+      "published_at": "2026-09-18T16:45:19Z",
+      "format": "long",
+      "duration": "PT9M31S",
+      "views_at_capture": 20558,
+      "likes_at_capture": 1132,
+      "comments_at_capture": 182,
+      "views_per_hour_at_capture": 17.442748091603054,
+      "breakout_score_at_capture": 1.0592430288377974,
+      "thumbnail_url": "https://i.ytimg.com/vi/HyYpjVn-SY8/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "mMd6hwv0YfE",
+      "title": "Japan Could Move XRP Tomorrow. Almost Nobody Is Watching",
+      "published_at": "2026-09-17T16:45:06Z",
+      "format": "long",
+      "duration": "PT10M56S",
+      "views_at_capture": 49907,
+      "likes_at_capture": 1997,
+      "comments_at_capture": 177,
+      "views_per_hour_at_capture": 54.52,
+      "breakout_score_at_capture": 2.54,
+      "thumbnail_url": "https://i.ytimg.com/vi/mMd6hwv0YfE/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "Kv3chKHfdiI",
+      "title": "The CLARITY Act Vote Failed. XRP Ran 580% Without It",
+      "published_at": "2026-09-16T23:10:12Z",
+      "format": "live",
+      "duration": "PT1H10M28S",
+      "views_at_capture": 22047,
+      "likes_at_capture": 1223,
+      "comments_at_capture": 120,
+      "views_per_hour_at_capture": 4.11578947368421,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/Kv3chKHfdiI/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "Tu0eTAXvvF4",
+      "title": "The CLARITY Act Just Failed in the Senate.  What This Means for XRP",
+      "published_at": "2026-09-15T23:02:38Z",
+      "format": "long",
+      "duration": "PT9M22S",
+      "views_at_capture": 129665,
+      "likes_at_capture": 4054,
+      "comments_at_capture": 881,
+      "views_per_hour_at_capture": 136.17,
+      "breakout_score_at_capture": 6.89,
+      "thumbnail_url": "https://i.ytimg.com/vi/Tu0eTAXvvF4/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "kTpXfwYXKXY",
+      "title": "Half the XRP on Exchanges Is Gone. What Happens When Buyers Return?",
+      "published_at": "2026-09-15T16:45:31Z",
+      "format": "long",
+      "duration": "PT18M14S",
+      "views_at_capture": 18266,
+      "likes_at_capture": 781,
+      "comments_at_capture": 54,
+      "views_per_hour_at_capture": 17.383064516129032,
+      "breakout_score_at_capture": 1.0418773214875345,
+      "thumbnail_url": "https://i.ytimg.com/vi/kTpXfwYXKXY/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "lwpoCxI7z8Q",
+      "title": "The CLARITY Act Won’t Reprice XRP. Here’s What Could.",
+      "published_at": "2026-09-14T23:47:24Z",
+      "format": "live",
+      "duration": "PT1H16M",
+      "views_at_capture": 24732,
+      "likes_at_capture": 1046,
+      "comments_at_capture": 59,
+      "views_per_hour_at_capture": 0.05069124423963134,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/lwpoCxI7z8Q/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "Wa0Teymjaks",
+      "title": "The CLARITY Act Is Not XRP’s Biggest Event This Week",
+      "published_at": "2026-09-13T14:45:02Z",
+      "format": "long",
+      "duration": "PT13M29S",
+      "views_at_capture": 54295,
+      "likes_at_capture": 1920,
+      "comments_at_capture": 171,
+      "views_per_hour_at_capture": 53.57,
+      "breakout_score_at_capture": 3.8,
+      "thumbnail_url": "https://i.ytimg.com/vi/Wa0Teymjaks/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "wrvnYA_plM4",
+      "title": "Mastercard Just Gave AI the Power to Spend. XRP Was Built for This.",
+      "published_at": "2026-09-12T21:03:31Z",
+      "format": "live",
+      "duration": "PT1H3M15S",
+      "views_at_capture": 18612,
+      "likes_at_capture": 807,
+      "comments_at_capture": 90,
+      "views_per_hour_at_capture": 3.6590038314176243,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/wrvnYA_plM4/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "SPiuJOtJR8k",
+      "title": "A Record $110 Million Entered XRP Funds. Wall Street Wasn’t the Buyer.",
+      "published_at": "2026-09-11T22:00:18Z",
+      "format": "long",
+      "duration": "PT13M51S",
+      "views_at_capture": 11804,
+      "likes_at_capture": 493,
+      "comments_at_capture": 31,
+      "views_per_hour_at_capture": 10.11840888066605,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/SPiuJOtJR8k/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "rT8-wPXF9q8",
+      "title": "Stablecoins Will Not Replace XRP. Here’s What Everyone Is Missing.",
+      "published_at": "2026-09-11T16:45:36Z",
+      "format": "long",
+      "duration": "PT8M18S",
+      "views_at_capture": 6151,
+      "likes_at_capture": 309,
+      "comments_at_capture": 24,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/rT8-wPXF9q8/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "RJJ44u3arl8",
+      "title": "Millions Could Use the XRP Ledger Without Ever Buying XRP",
+      "published_at": "2026-09-10T16:45:21Z",
+      "format": "long",
+      "duration": "PT13M5S",
+      "views_at_capture": 16793,
+      "likes_at_capture": 729,
+      "comments_at_capture": 49,
+      "views_per_hour_at_capture": 3.3627992633517496,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/RJJ44u3arl8/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "A3f_WBE7i6c",
+      "title": "Can the Government Take Your XRP? The Truth Behind the Panic",
+      "published_at": "2026-09-09T23:14:24Z",
+      "format": "live",
+      "duration": "PT1H8M45S",
+      "views_at_capture": 15832,
+      "likes_at_capture": 781,
+      "comments_at_capture": 67,
+      "views_per_hour_at_capture": 13.630415561450045,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/A3f_WBE7i6c/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "dZvfl5I8AR8",
+      "title": "Goldman Sachs Walked Away From XRP. Now It’s Back With $86.5 Million",
+      "published_at": "2026-09-08T16:45:24Z",
+      "format": "long",
+      "duration": "PT16M5S",
+      "views_at_capture": 10362,
+      "likes_at_capture": 629,
+      "comments_at_capture": 27,
+      "views_per_hour_at_capture": 7.392733564013841,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/dZvfl5I8AR8/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "0An_76mqkPY",
+      "title": "Half the XRP on Exchanges Is Gone. What Happens When Buyers Return?",
+      "published_at": "2026-09-07T16:30:24Z",
+      "format": "long",
+      "duration": "PT13M56S",
+      "views_at_capture": 20974,
+      "likes_at_capture": 974,
+      "comments_at_capture": 85,
+      "views_per_hour_at_capture": 6.624893435635124,
+      "breakout_score_at_capture": 1.2138184548528823,
+      "thumbnail_url": "https://i.ytimg.com/vi/0An_76mqkPY/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "S1q0X8AZr50",
+      "title": "Most People Will Be RIGHT About XRP and Still Lose Everything",
+      "published_at": "2026-09-06T15:30:22Z",
+      "format": "long",
+      "duration": "PT19M36S",
+      "views_at_capture": 50647,
+      "likes_at_capture": 1606,
+      "comments_at_capture": 256,
+      "views_per_hour_at_capture": 43.97,
+      "breakout_score_at_capture": 2.93,
+      "thumbnail_url": "https://i.ytimg.com/vi/S1q0X8AZr50/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "BlEJT7SWQ4A",
+      "title": "The SEC Fought Ripple Over XRP for Five Years. Now the Rules Are Changing.",
+      "published_at": "2026-09-05T17:15:33Z",
+      "format": "long",
+      "duration": "PT13M57S",
+      "views_at_capture": 19352,
+      "likes_at_capture": 1036,
+      "comments_at_capture": 37,
+      "views_per_hour_at_capture": 1.5437710437710437,
+      "breakout_score_at_capture": 1.1200062618769107,
+      "thumbnail_url": "https://i.ytimg.com/vi/BlEJT7SWQ4A/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "cU4TYzcMct0",
+      "title": "XRP Can Now Be Spent Anywhere Visa Works. Here’s the Catch.",
+      "published_at": "2026-09-04T22:00:11Z",
+      "format": "long",
+      "duration": "PT14M10S",
+      "views_at_capture": 10134,
+      "likes_at_capture": 707,
+      "comments_at_capture": 49,
+      "views_per_hour_at_capture": 1.5138662316476346,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/cU4TYzcMct0/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "mQNu2QmHv_I",
+      "title": "Ripple Is Quietly Buying the Financial System. Here’s Where XRP Fits.",
+      "published_at": "2026-09-04T16:45:38Z",
+      "format": "long",
+      "duration": "PT11M29S",
+      "views_at_capture": 10880,
+      "likes_at_capture": 477,
+      "comments_at_capture": 30,
+      "views_per_hour_at_capture": 2.4718649517684885,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/mQNu2QmHv_I/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "pDQ9JyYZyck",
+      "title": "Wall Street Ignored XRP for Two Years  Not Anymore",
+      "published_at": "2026-09-03T17:00:21Z",
+      "format": "long",
+      "duration": "PT12M53S",
+      "views_at_capture": 17223,
+      "likes_at_capture": 766,
+      "comments_at_capture": 63,
+      "views_per_hour_at_capture": 3.483794466403162,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/pDQ9JyYZyck/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "PwsIDoXwePA",
+      "title": "500 Million XRP Left Binance. Then ETF Money Doubled.",
+      "published_at": "2026-09-02T23:29:41Z",
+      "format": "live",
+      "duration": "PT1H29S",
+      "views_at_capture": 22286,
+      "likes_at_capture": 864,
+      "comments_at_capture": 61,
+      "views_per_hour_at_capture": 1.0877893056664005,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/PwsIDoXwePA/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "054otrvnDzY",
+      "title": "XRP Just Overtook Bitcoin On Korea’s Biggest Exchanges",
+      "published_at": "2026-09-01T16:45:30Z",
+      "format": "long",
+      "duration": "PT13M24S",
+      "views_at_capture": 12620,
+      "likes_at_capture": 622,
+      "comments_at_capture": 53,
+      "views_per_hour_at_capture": 0.5736800630417652,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/054otrvnDzY/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "ONYP5ZhbhLU",
+      "title": "Ripple Dumping 1 Billion XRP Tomorrow? Here’s What Actually Happens",
+      "published_at": "2026-08-31T23:41:16Z",
+      "format": "live",
+      "duration": "PT1H4M7S",
+      "views_at_capture": 18063,
+      "likes_at_capture": 816,
+      "comments_at_capture": 25,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/ONYP5ZhbhLU/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "Zj2rTpJ5Tbw",
+      "title": "XRP Trapped the Bulls AND the Bears. Here's What They Missed",
+      "published_at": "2026-08-30T15:30:12Z",
+      "format": "long",
+      "duration": "PT19M43S",
+      "views_at_capture": 17326,
+      "likes_at_capture": 646,
+      "comments_at_capture": 37,
+      "views_per_hour_at_capture": 1.5222551928783383,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/Zj2rTpJ5Tbw/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "JjYT6pkJuzA",
+      "title": "Ripple Built the Financial Machine. Is XRP the Missing Piece?",
+      "published_at": "2026-08-29T21:06:10Z",
+      "format": "live",
+      "duration": "PT1H11M35S",
+      "views_at_capture": 18121,
+      "likes_at_capture": 787,
+      "comments_at_capture": 44,
+      "views_per_hour_at_capture": null,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/JjYT6pkJuzA/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "5-fA5s92BR8",
+      "title": "A Korean Bank Just Chose Ripple. Is XRP Next?",
+      "published_at": "2026-08-28T22:00:35Z",
+      "format": "long",
+      "duration": "PT14M53S",
+      "views_at_capture": 19731,
+      "likes_at_capture": 774,
+      "comments_at_capture": 43,
+      "views_per_hour_at_capture": 10.431095406360424,
+      "breakout_score_at_capture": 1.1824853288621753,
+      "thumbnail_url": "https://i.ytimg.com/vi/5-fA5s92BR8/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "t8RM7rWIvhk",
+      "title": "XRP Is Up Nearly 50%. Most Investors Still Learned Nothing",
+      "published_at": "2026-08-28T16:45:37Z",
+      "format": "long",
+      "duration": "PT8M43S",
+      "views_at_capture": 11815,
+      "likes_at_capture": 466,
+      "comments_at_capture": 55,
+      "views_per_hour_at_capture": 3.652327221438646,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/t8RM7rWIvhk/maxresdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "TPXJ3Dxd1g8",
+      "title": "Japan Tested XRP Against SWIFT. The Result Surprised EVERYONE",
+      "published_at": "2026-08-27T16:45:17Z",
+      "format": "long",
+      "duration": "PT11M8S",
+      "views_at_capture": 28855,
+      "likes_at_capture": 1297,
+      "comments_at_capture": 87,
+      "views_per_hour_at_capture": 20.35,
+      "breakout_score_at_capture": 2.16,
+      "thumbnail_url": "https://i.ytimg.com/vi/TPXJ3Dxd1g8/hqdefault.jpg",
+      "formats_seen": [
+        "long"
+      ]
+    },
+    {
+      "video_id": "EHlKrqTPRbw",
+      "title": "What the Wealthy Are Doing With Their XRP… Right Now",
+      "published_at": "2026-08-26T23:21:21Z",
+      "format": "live",
+      "duration": "PT1H23S",
+      "views_at_capture": 21500,
+      "likes_at_capture": 1085,
+      "comments_at_capture": 66,
+      "views_per_hour_at_capture": 0.23392857142857143,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/EHlKrqTPRbw/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "9URNMxIn6XU",
+      "title": "How High Can XRP Really Go? I Found What Has to Change First",
+      "published_at": "2026-08-24T23:29:21Z",
+      "format": "live",
+      "duration": "PT1H8M33S",
+      "views_at_capture": 16520,
+      "likes_at_capture": 1147,
+      "comments_at_capture": 54,
+      "views_per_hour_at_capture": 0.9241902136457616,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/9URNMxIn6XU/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "AhgD_oHtm20",
+      "title": "XRP Just Ripped 40%… And It Had NOTHING To Do With XRP",
+      "published_at": "2026-08-22T20:34:40Z",
+      "format": "live",
+      "duration": "PT1H15M34S",
+      "views_at_capture": 24864,
+      "likes_at_capture": 1713,
+      "comments_at_capture": 98,
+      "views_per_hour_at_capture": 2.4303385416666665,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/AhgD_oHtm20/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "ovdT1S5amTk",
+      "title": "Why I Really Hold XRP (And It Has Nothing to Do With the PRICE)",
+      "published_at": "2026-08-17T23:47:21Z",
+      "format": "live",
+      "duration": "PT1H7M48S",
+      "views_at_capture": 13264,
+      "likes_at_capture": 1189,
+      "comments_at_capture": 70,
+      "views_per_hour_at_capture": 2.1189903846153846,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/ovdT1S5amTk/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "xkrcSsIHh0Q",
+      "title": "Congress Still Hasn’t Passed the Crypto Bill. XRP Already Has CLARITY",
+      "published_at": "2026-08-15T19:19:41Z",
+      "format": "live",
+      "duration": "PT59M41S",
+      "views_at_capture": 8857,
+      "likes_at_capture": 903,
+      "comments_at_capture": 81,
+      "views_per_hour_at_capture": 1.2136602451838878,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/xkrcSsIHh0Q/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "vRsfNEcLASE",
+      "title": "XRP Holders Are Panicking. Millionaire Wallets Are MOVING IN.",
+      "published_at": "2026-08-12T22:44:59Z",
+      "format": "live",
+      "duration": "PT50M5S",
+      "views_at_capture": 15932,
+      "likes_at_capture": 1298,
+      "comments_at_capture": 156,
+      "views_per_hour_at_capture": 3.1576299608719953,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/vRsfNEcLASE/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "JzSdmaBt19Q",
+      "title": "XRP Going Up Won't Make You Wealthy. This Will.",
+      "published_at": "2026-08-10T23:47:27Z",
+      "format": "live",
+      "duration": "PT1H5M14S",
+      "views_at_capture": 19189,
+      "likes_at_capture": 1596,
+      "comments_at_capture": null,
+      "views_per_hour_at_capture": 3.89668297988037,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/JzSdmaBt19Q/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "flGAxvOGQ2w",
+      "title": "The XRP Math Wall Street Hopes You Never Check",
+      "published_at": "2026-08-05T23:25:03Z",
+      "format": "live",
+      "duration": "PT1H3M1S",
+      "views_at_capture": 11321,
+      "likes_at_capture": 1048,
+      "comments_at_capture": 101,
+      "views_per_hour_at_capture": 0.5587170201758924,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/flGAxvOGQ2w/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "9WyV4QoqJIM",
+      "title": "XRP Holders, Pay Attention… America Just Stepped In to Save the Yen",
+      "published_at": "2026-08-03T23:05:00Z",
+      "format": "live",
+      "duration": "PT57M31S",
+      "views_at_capture": 18213,
+      "likes_at_capture": 1608,
+      "comments_at_capture": 70,
+      "views_per_hour_at_capture": 2.0660330165082543,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/9WyV4QoqJIM/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "FPkqYkjC9iE",
+      "title": "This Economy Is Breaking... And XRP Was Built for What Comes Next",
+      "published_at": "2026-07-29T23:43:15Z",
+      "format": "live",
+      "duration": "PT59M41S",
+      "views_at_capture": 12071,
+      "likes_at_capture": 1105,
+      "comments_at_capture": 90,
+      "views_per_hour_at_capture": 2.450281425891182,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/FPkqYkjC9iE/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "rslLQazVLGc",
+      "title": "Japan Is Building the System XRP Was Made For... While America Stalls",
+      "published_at": "2026-07-27T23:15:29Z",
+      "format": "live",
+      "duration": "PT1H8M29S",
+      "views_at_capture": 13341,
+      "likes_at_capture": 1155,
+      "comments_at_capture": 94,
+      "views_per_hour_at_capture": 1.3963133640552996,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/rslLQazVLGc/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "Z1ai8L497aM",
+      "title": "While America Argues, Japan Just Moved On XRP. Here's What It's COSTING Us",
+      "published_at": "2026-07-25T19:29:50Z",
+      "format": "live",
+      "duration": "PT1H9M20S",
+      "views_at_capture": 14643,
+      "likes_at_capture": 1262,
+      "comments_at_capture": 141,
+      "views_per_hour_at_capture": 2.1462539255271422,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/Z1ai8L497aM/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "6BHCNnJiQSc",
+      "title": "Most Of Crypto Is About To DIE... Here's Why XRP Won't",
+      "published_at": "2026-07-21T00:01:33Z",
+      "format": "live",
+      "duration": "PT1H14M35S",
+      "views_at_capture": 14771,
+      "likes_at_capture": 1272,
+      "comments_at_capture": 46,
+      "views_per_hour_at_capture": 1.0585954330030158,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/6BHCNnJiQSc/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "bGTejWR1vEA",
+      "title": "The CLARITY Act Is Stuck... But XRP Found Another Way IN",
+      "published_at": "2026-07-15T23:10:50Z",
+      "format": "live",
+      "duration": "PT57M57S",
+      "views_at_capture": 18134,
+      "likes_at_capture": 1520,
+      "comments_at_capture": 176,
+      "views_per_hour_at_capture": 0.09699570815450644,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/bGTejWR1vEA/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "KuKPlfUGKe8",
+      "title": "Wall Street's $114 Trillion Settlement System Turns On, And Ripple Is INSIDE",
+      "published_at": "2026-07-13T23:14:08Z",
+      "format": "live",
+      "duration": "PT1H4M59S",
+      "views_at_capture": 16567,
+      "likes_at_capture": 1379,
+      "comments_at_capture": 44,
+      "views_per_hour_at_capture": 3.292973402143708,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/KuKPlfUGKe8/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "RNEkCJ4YxT8",
+      "title": "They Say SWIFT Just Killed XRP… The Truth Is The OPPOSITE",
+      "published_at": "2026-07-11T21:25:08Z",
+      "format": "live",
+      "duration": "PT59M59S",
+      "views_at_capture": 15392,
+      "likes_at_capture": 1263,
+      "comments_at_capture": 77,
+      "views_per_hour_at_capture": 2.2912280701754386,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/RNEkCJ4YxT8/sddefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "LQEpTmpqEyw",
+      "title": "The Reverse Carry Trade Is Unwinding NOW... And XRP Is The Fix",
+      "published_at": "2026-07-08T23:04:14Z",
+      "format": "live",
+      "duration": "PT1H8M3S",
+      "views_at_capture": 23254,
+      "likes_at_capture": 2088,
+      "comments_at_capture": 78,
+      "views_per_hour_at_capture": 2.7091739626950893,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/LQEpTmpqEyw/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "kj3Qs-yI_Gw",
+      "title": "If XRP Hits $100, Most Holders Still Won't Be RICH",
+      "published_at": "2026-07-06T23:00:06Z",
+      "format": "live",
+      "duration": "PT1H10M16S",
+      "views_at_capture": 19865,
+      "likes_at_capture": 1567,
+      "comments_at_capture": 140,
+      "views_per_hour_at_capture": 3.8153387937453465,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/kj3Qs-yI_Gw/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "31RY35Ersi4",
+      "title": "140 Companies Just Launched The System XRP Was BUILT For",
+      "published_at": "2026-07-01T23:32:09Z",
+      "format": "live",
+      "duration": "PT1H16M4S",
+      "views_at_capture": 17418,
+      "likes_at_capture": 1411,
+      "comments_at_capture": 101,
+      "views_per_hour_at_capture": 2.053986414015016,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/31RY35Ersi4/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "AD7pDsl3meE",
+      "title": "While Retail Panicked... 351 Institutions Revealed Their XRP PLAN",
+      "published_at": "2026-06-30T00:18:20Z",
+      "format": "live",
+      "duration": "PT1H18M48S",
+      "views_at_capture": 11871,
+      "likes_at_capture": 974,
+      "comments_at_capture": 59,
+      "views_per_hour_at_capture": 0.3562322946175637,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/AD7pDsl3meE/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "6voT6rckRcw",
+      "title": "Ripple Just Got Into Europe While 80% Of Crypto Got LOCKED Out",
+      "published_at": "2026-06-24T23:24:31Z",
+      "format": "live",
+      "duration": "PT1H19M48S",
+      "views_at_capture": 16217,
+      "likes_at_capture": 1247,
+      "comments_at_capture": 46,
+      "views_per_hour_at_capture": 0.1387626703949668,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/6voT6rckRcw/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "-H02qaWnv-g",
+      "title": "The Whales Just Pulled 1.5 Billion XRP Off The EXCHANGES... Before You Could",
+      "published_at": "2026-06-22T23:27:25Z",
+      "format": "live",
+      "duration": "PT1H3M23S",
+      "views_at_capture": 23430,
+      "likes_at_capture": 2069,
+      "comments_at_capture": 111,
+      "views_per_hour_at_capture": 0.19612590799031476,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/-H02qaWnv-g/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "Bhmhl2grfEQ",
+      "title": "Ripple Is Turning XRP On... One Switch At A TIME",
+      "published_at": "2026-06-20T20:27:23Z",
+      "format": "live",
+      "duration": "PT1H7M22S",
+      "views_at_capture": 24700,
+      "likes_at_capture": 2386,
+      "comments_at_capture": 209,
+      "views_per_hour_at_capture": 1.0533948582729071,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/Bhmhl2grfEQ/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "7wdlIy-G6Nk",
+      "title": "What Wall Street Knows About XRP That You Do NOT",
+      "published_at": "2026-06-17T23:11:05Z",
+      "format": "live",
+      "duration": "PT1H6S",
+      "views_at_capture": 13629,
+      "likes_at_capture": 1157,
+      "comments_at_capture": 31,
+      "views_per_hour_at_capture": 0.3782467532467532,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/7wdlIy-G6Nk/sddefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "QifqUeLvIJw",
+      "title": "Wall Street Just Set A RECORD On XRP... While You Were Panicking",
+      "published_at": "2026-06-15T23:29:24Z",
+      "format": "live",
+      "duration": "PT1H6S",
+      "views_at_capture": 24955,
+      "likes_at_capture": 2123,
+      "comments_at_capture": 122,
+      "views_per_hour_at_capture": 1.7944601825621656,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/QifqUeLvIJw/sddefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "tC0KsLAqwS8",
+      "title": "Japan Is Moving Without Us... And They Just Put XRP In Front Of MILLIONS",
+      "published_at": "2026-06-13T18:57:38Z",
+      "format": "live",
+      "duration": "PT57M57S",
+      "views_at_capture": 40890,
+      "likes_at_capture": 2728,
+      "comments_at_capture": 220,
+      "views_per_hour_at_capture": 0.3237812911725955,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/tC0KsLAqwS8/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "s4G2a_INrKA",
+      "title": "They Changed The Rules For Your 401k... While XRP Goes ON SALE.",
+      "published_at": "2026-06-08T23:21:18Z",
+      "format": "live",
+      "duration": "PT1H1M44S",
+      "views_at_capture": 23234,
+      "likes_at_capture": 1420,
+      "comments_at_capture": 90,
+      "views_per_hour_at_capture": 0.46378998189499093,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/s4G2a_INrKA/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "xwFt-xCT-cY",
+      "title": "The Real Reason XRP CRASHES Harder Than Bitcoin",
+      "published_at": "2026-06-06T19:39:01Z",
+      "format": "live",
+      "duration": "PT54M45S",
+      "views_at_capture": 29359,
+      "likes_at_capture": 2056,
+      "comments_at_capture": 214,
+      "views_per_hour_at_capture": 0.13729071537290716,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/xwFt-xCT-cY/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "PrBIzSAaw9c",
+      "title": "A Finance CEO Just Revealed What XRP Holders Are Missing",
+      "published_at": "2026-06-03T23:15:40Z",
+      "format": "live",
+      "duration": "PT1H48S",
+      "views_at_capture": 33705,
+      "likes_at_capture": 1850,
+      "comments_at_capture": 77,
+      "views_per_hour_at_capture": 0.9510254055708601,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/PrBIzSAaw9c/sddefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    },
+    {
+      "video_id": "PwaObH6x3Bo",
+      "title": "What Happens To XRP If The CLARITY Act DIES?",
+      "published_at": "2026-06-02T00:11:14Z",
+      "format": "live",
+      "duration": "PT1H10M51S",
+      "views_at_capture": 23279,
+      "likes_at_capture": 1744,
+      "comments_at_capture": 93,
+      "views_per_hour_at_capture": 0.24881376037959668,
+      "breakout_score_at_capture": null,
+      "thumbnail_url": "https://i.ytimg.com/vi/PwaObH6x3Bo/maxresdefault.jpg",
+      "formats_seen": [
+        "live"
+      ]
+    }
+  ]
+}
