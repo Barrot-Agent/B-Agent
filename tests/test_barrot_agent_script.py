@@ -250,16 +250,15 @@ def test_script_brain_executes_repo_browser_tools_with_auto_tool_choice(tmp_path
         assert payload["tools"]
 
 
-def test_repo_browser_rejects_empty_path_arguments(monkeypatch) -> None:
+def test_repo_browser_empty_path_defaults_to_repository_root(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
     module = load_script_module("barrot_agent_repo_browser_test")
 
     browser = module.RepoBrowser(Path(__file__).resolve().parents[1])
-    response = json.loads(browser.print_tree({"path": "", "depth": 1}))
+    response = browser.print_tree({"path": "", "depth": 1})
 
-    assert response["success"] is False
-    assert "non-empty" in response["error"]
+    assert response.splitlines()[0] == "."
 
 
 def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
