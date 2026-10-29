@@ -81,6 +81,24 @@ def test_seed_claim_is_provenance_bound_and_not_marked_solved():
     assert not record["independent_review"]
 
 
+def test_seeded_ai_claims_keep_scope_counterevidence_and_withdrawals():
+    seed = Path(__file__).resolve().parents[1] / "data" / "research" / "millennium_claims_seed.jsonl"
+    records = [json.loads(line) for line in seed.read_text(encoding="utf-8").splitlines() if line.strip()]
+    assert len(records) >= 6
+    assert {record["problem_id"] for record in records} >= {
+        "navier_stokes", "riemann_hypothesis", "hodge_conjecture",
+        "birch_swinnerton_dyer", "p_vs_np", "yang_mills_mass_gap",
+    }
+    assert all(record["source_url"].startswith("https://") for record in records)
+    assert all(record["counterevidence"] and record["unresolved_obligations"] for record in records)
+    assert not any(record["evidence_grade"] == EvidenceGrade.ACCEPTED_RECOGNIZED.value for record in records)
+    hodge = next(record for record in records if record["claim_id"] == "openai-hodge-k3-withdrawn-2026-10")
+    assert hodge["evidence_grade"] == EvidenceGrade.CHALLENGED.value
+    assert any("withdraw" in item.lower() or "sign error" in item.lower() for item in hodge["counterevidence"])
+    riemann = next(record for record in records if record["claim_id"] == "openai-quasi-riemann-2026-10")
+    assert "not the Riemann Hypothesis" in riemann["statement"]
+
+
 def test_claim_id_cannot_be_reassigned_to_another_problem(tmp_path: Path):
     ledger = ClaimLedger(tmp_path / "claims.jsonl")
     ledger.record(sample_claim())
