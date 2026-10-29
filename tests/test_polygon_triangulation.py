@@ -40,6 +40,11 @@ class PolygonTriangulationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             triangulate_polygon(vertices, [0,1,2])
 
+    def test_non_finite_coordinates_are_rejected(self):
+        vertices = [(0, 0, 0), (1, 0, 0), (float("nan"), 1, 0)]
+        with self.assertRaisesRegex(ValueError, "finite"):
+            triangulate_polygon(vertices, [0, 1, 2])
+
     def test_repeated_vertex_is_rejected(self):
         vertices = [(0,0,0), (1,0,0), (0,1,0)]
         with self.assertRaises(ValueError):
