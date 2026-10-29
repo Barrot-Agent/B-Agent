@@ -22,6 +22,7 @@ from barrot_agent.research import (
     ResearchTrack,
     VerificationIndependence,
     is_scientific_discovery_task,
+    should_route_scientific_discovery,
     select_scientific_problem_adapter,
 )
 
@@ -346,7 +347,7 @@ def test_unsupported_formal_command_is_rejected() -> None:
         raise AssertionError("expected unsupported command rejection")
 
 
-def test_research_cycle_persists_and_is_idempotent(tmp_path: Path) -> None:
+def test_research_cycle_persists_and_starts_new_cycle_after_terminal_completion(tmp_path: Path) -> None:
     bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
     controller = ScientificDiscoveryController(workspace=tmp_path)
     adapter = StaticResearchProblemAdapter(bundle)
@@ -356,8 +357,8 @@ def test_research_cycle_persists_and_is_idempotent(tmp_path: Path) -> None:
 
     ledger = tmp_path / ".git" / "barrot_research" / "claim_ledger.json"
     assert ledger.exists()
-    assert second.cycle_id == first.cycle_id
-    assert second.status == first.status
+    assert second.cycle_id != first.cycle_id
+    assert second.status in {"complete", "no_solution_claim", "failed", "blocked"}
 
 
 def test_research_cycle_can_resume_from_checkpoint(tmp_path: Path) -> None:
@@ -468,6 +469,14 @@ def test_scientific_discovery_task_detection() -> None:
     assert is_scientific_discovery_task("Bugfix", "repair parser") is False
 
 
+def test_scientific_route_requires_explicit_mode() -> None:
+    title = "Add evidence-graded Millennium Problems research and AI-claim registry"
+    body = "Track Navier-Stokes, Lean formalizations, and the seven Millennium Prize problems."
+
+    assert should_route_scientific_discovery("engineering", title, body) is False
+    assert should_route_scientific_discovery("scientific_discovery", title, body) is True
+
+
 def test_scientific_problem_selection_chooses_flt_adapter() -> None:
     adapter = select_scientific_problem_adapter("Formalizing Fermat's Last Theorem", "lean theorem benchmark")
 
@@ -478,6 +487,7 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("TASK_BODY", "Investigate the Navier-Stokes Millennium Prize claim with Lean formal verification.")
     monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    monkeypatch.setenv("TASK_MODE", "scientific_discovery")
     monkeypatch.setenv("ISSUE_NUMBER", "42")
     monkeypatch.setenv("BRANCH", "barrot/task-42")
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
@@ -519,12 +529,193 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
     monkeypatch.setattr(module, "configure_git", lambda: calls.setdefault("configured", True))
     monkeypatch.setattr(module, "checkout_branch", lambda branch: calls.setdefault("branch", branch))
     monkeypatch.setattr(module, "ScientificDiscoveryController", FakeScientificDiscoveryController)
-    monkeypatch.setattr(module, "write_collaboration_record", lambda cycle: calls.setdefault("record", cycle))
+    monkeypatch.setattr(module, "persist_scientific_discovery", lambda cycle: calls.setdefault("persistence", {"remote_persisted": True}))
     monkeypatch.setattr(module, "post_issue_comment", lambda message: calls.setdefault("comment", message))
     monkeypatch.setattr(module, "select_scientific_problem_adapter", lambda title, body: "adapter")
 
     module.main()
 
     assert calls["adapter"] == "adapter"
-    assert "record" in calls
+    assert "persistence" in calls
+    assert "persisted to the task branch" in str(calls["comment"]).lower()
     assert "scientific discovery recorded" in str(calls["comment"]).lower()
+
+
+def test_checkout_branch_resumes_remote_branch_and_rejects_unsafe_names(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_agent_resume_branch_test")
+    calls: list[list[str]] = []
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+
+    monkeypatch.setattr(module, "run", fake_run)
+    module.checkout_branch("barrot/task-42")
+    assert calls[0][1] == "fetch"
+    assert "refs/remotes/origin/barrot/task-42" in calls[0][3]
+    assert calls[1] == ["git", "checkout", "-B", "barrot/task-42", "origin/barrot/task-42"]
+
+    import pytest
+    with pytest.raises(ValueError, match="Invalid Barrot task branch"):
+        module.checkout_branch("../main")
+
+
+def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("ISSUE_NUMBER", "42")
+    monkeypatch.setenv("BRANCH", "barrot/task-42")
+    monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    module = load_script_module("barrot_agent_persist_science_test")
+    module.ROOT = tmp_path
+    calls: list[list[str]] = []
+    pr_calls: list[list[str]] = []
+
+    def write_record(cycle):
+        record_dir = tmp_path / ".barrot" / "collaboration_records"
+        record_dir.mkdir(parents=True, exist_ok=True)
+        latest = record_dir / "latest_scientific_discovery.json"
+        latest.write_text(json.dumps(cycle), encoding="utf-8")
+        (record_dir / "cycle-42.json").write_text(json.dumps(cycle), encoding="utf-8")
+        return latest
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        if args[1:4] == ["diff", "--cached", "--quiet"]:
+            return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="")
+        if args[1:3] == ["rev-parse", "HEAD"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="abc123\\n", stderr="")
+        return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+
+    def fake_run_gh(args):
+        pr_calls.append(args)
+        return module.subprocess.CompletedProcess(args, 0, stdout="draft PR created", stderr="")
+
+    monkeypatch.setattr(module, "write_collaboration_record", write_record)
+    monkeypatch.setattr(module, "run", fake_run)
+    monkeypatch.setattr(module, "run_gh", fake_run_gh)
+    cycle = {
+        "cycle_id": "cycle-42",
+        "problem_id": "navier_stokes_millennium_prize",
+        "status": "no_solution_claim",
+        "acceptance_gate_passed": False,
+        "unresolved_questions": ["Independent verification remains incomplete."],
+    }
+
+    result = module.persist_scientific_discovery(cycle)
+
+    assert result["remote_persisted"] is True
+    assert any(args[:3] == ["git", "push", "--set-upstream"] for args in calls)
+    assert "--draft" in pr_calls[0]
+    assert "--head" in pr_calls[0] and "barrot/task-42" in pr_calls[0]
+    saved = json.loads((tmp_path / ".barrot" / "collaboration_records" / "latest_scientific_discovery.json").read_text(encoding="utf-8"))
+    assert saved["cycle_id"] == "cycle-42"
+    assert saved["acceptance_gate_passed"] is False
+
+
+def test_scientific_evidence_survives_real_git_push_and_fresh_clone(tmp_path: Path, monkeypatch) -> None:
+    import subprocess
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("ISSUE_NUMBER", "42")
+    monkeypatch.setenv("BRANCH", "barrot/task-42")
+    monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    module = load_script_module("barrot_agent_real_git_persistence_test")
+    remote = tmp_path / "origin.git"
+    workspace = tmp_path / "workspace"
+    resumed = tmp_path / "resumed"
+
+    subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True, text=True)
+    workspace.mkdir()
+    subprocess.run(["git", "init"], cwd=workspace, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "config", "user.email", "tests@barrot.invalid"], cwd=workspace, check=True)
+    subprocess.run(["git", "config", "user.name", "Barrot Test"], cwd=workspace, check=True)
+    (workspace / "README.md").write_text("test repository\\n", encoding="utf-8")
+    subprocess.run(["git", "add", "README.md"], cwd=workspace, check=True)
+    subprocess.run(["git", "commit", "-m", "initial"], cwd=workspace, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "branch", "-M", "main"], cwd=workspace, check=True)
+    subprocess.run(["git", "remote", "add", "origin", str(remote)], cwd=workspace, check=True)
+    subprocess.run(["git", "push", "-u", "origin", "main"], cwd=workspace, check=True, capture_output=True, text=True)
+
+    module.ROOT = workspace
+    module.BRANCH = "barrot/task-42"
+    module.REPO = "Barrot-Agent/B-Agent"
+    module.ISSUE = "42"
+    module.TITLE = "Navier-Stokes research"
+    module.checkout_branch(module.BRANCH)
+
+    pr_calls: list[list[str]] = []
+
+    def fake_run_gh(args):
+        pr_calls.append(args)
+        return module.subprocess.CompletedProcess(args, 0, stdout="draft PR created", stderr="")
+
+    monkeypatch.setattr(module, "run_gh", fake_run_gh)
+    cycle = {
+        "cycle_id": "cycle-42",
+        "problem_id": "navier_stokes_millennium_prize",
+        "status": "no_solution_claim",
+        "acceptance_gate_passed": False,
+        "state_history": ["IDLE", "NO_SOLUTION_CLAIM"],
+        "sources": [{"source_id": "clay", "url": "https://www.claymath.org/"}],
+        "claims": [],
+        "unresolved_questions": ["Independent verification remains incomplete."],
+    }
+    persisted = module.persist_scientific_discovery(cycle)
+    assert persisted["remote_persisted"] is True
+    assert "--draft" in pr_calls[0]
+
+    subprocess.run(["git", "clone", str(remote), str(resumed)], check=True, capture_output=True, text=True)
+    module.ROOT = resumed
+    module.checkout_branch("barrot/task-42")
+    saved_path = resumed / ".barrot" / "collaboration_records" / "latest_scientific_discovery.json"
+    saved = json.loads(saved_path.read_text(encoding="utf-8"))
+    assert saved["cycle_id"] == "cycle-42"
+    assert saved["problem_id"] == "navier_stokes_millennium_prize"
+    assert saved["remaining_blockers"] == ["Independent verification remains incomplete."]
+
+
+def test_new_research_cycle_imports_prior_committed_evidence_and_restarts_terminal_cycle(tmp_path: Path) -> None:
+    bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
+    record_dir = tmp_path / ".barrot" / "collaboration_records"
+    record_dir.mkdir(parents=True)
+    prior = {
+        "cycle_id": "prior-cycle",
+        "problem_id": "generic_problem",
+        "evidence": {
+            "sources": [{
+                "source_id": "prior.source", "title": "Prior source",
+                "author_or_organization": "Barrot", "source_type": "prior_cycle",
+                "url": "https://example.org/prior"
+            }],
+            "claims": [{
+                "claim_id": "prior.claim", "statement": "Prior scoped claim",
+                "domain": "math", "claim_type": "theorem", "source": "prior.source",
+                "provenance": ["prior-cycle"]
+            }],
+            "evidence": [{
+                "evidence_id": "prior.evidence", "claim_id": "prior.claim",
+                "kind": "unresolved_question", "summary": "Prior evidence remains incomplete.",
+                "source_id": "prior.source", "provenance": ["prior-cycle"]
+            }],
+            "tracks": [{
+                "track_id": "prior.track", "failed_approaches": ["Do not repeat failed approach X."],
+                "unresolved_objections": ["Assumption Y still needs proof."]
+            }],
+            "unresolved_questions": ["Prior verification is incomplete."]
+        }
+    }
+    (record_dir / "prior-cycle.json").write_text(json.dumps(prior), encoding="utf-8")
+    adapter = StaticResearchProblemAdapter(bundle)
+    controller = ScientificDiscoveryController(workspace=tmp_path)
+
+    first = controller.run(adapter)
+    assert any(item["source_id"] == "prior.source" for item in first.sources)
+    assert any(item["claim_id"] == "prior.claim" for item in first.claims)
+    assert any(item["evidence_id"] == "prior.evidence" for item in first.evidence)
+    assert any("Prior verification is incomplete." in item.get("prompt", "") for item in first.questions)
+    assert any("Do not repeat failed approach X." in item.get("prompt", "") for item in first.questions)
+
+    second = controller.run(adapter)
+    assert second.cycle_id != first.cycle_id
+    assert any(item["claim_id"] == "prior.claim" for item in second.claims)

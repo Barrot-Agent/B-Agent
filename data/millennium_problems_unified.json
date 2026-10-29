@@ -5,49 +5,82 @@
       "prize": "$1M",
       "status": "Open",
       "ai_applicability": "High",
-      "progress": "Initial analysis"
+      "progress": "Initial analysis",
+      "official_source": "https://www.claymath.org/millennium-problems/p-vs-np-problem/",
+      "baseline_status": "OPEN",
+      "related_ai_claim_ids": [
+        "openai-eth-disproof-related-to-p-vs-np-2026-10"
+      ]
     },
     {
       "name": "Hodge Conjecture",
       "prize": "$1M",
       "status": "Open",
       "ai_applicability": "Medium",
-      "progress": "Framework study"
+      "progress": "Framework study",
+      "official_source": "https://www.claymath.org/millennium-problems/hodge-conjecture/",
+      "baseline_status": "OPEN",
+      "related_ai_claim_ids": [
+        "openai-hodge-k3-withdrawn-2026-10"
+      ]
     },
     {
       "name": "Riemann Hypothesis",
       "prize": "$1M",
       "status": "Open",
       "ai_applicability": "Medium",
-      "progress": "Framework study"
+      "progress": "Framework study",
+      "official_source": "https://www.claymath.org/millennium-problems/riemann-hypothesis/",
+      "baseline_status": "OPEN",
+      "related_ai_claim_ids": [
+        "openai-quasi-riemann-2026-10"
+      ]
     },
     {
       "name": "Yang-Mills & Mass Gap",
       "prize": "$1M",
       "status": "Open",
       "ai_applicability": "Low",
-      "progress": "Framework study"
+      "progress": "Framework study",
+      "official_source": "https://www.claymath.org/millennium-problems/yang-mills-and-mass-gap/",
+      "baseline_status": "OPEN",
+      "related_ai_claim_ids": [
+        "openai-qcd-result-related-to-yang-mills-2026-10"
+      ]
     },
     {
       "name": "Navier-Stokes",
       "prize": "$1M",
-      "status": "Open",
+      "status": "Active (under evaluation)",
       "ai_applicability": "High",
-      "progress": "Initial analysis"
+      "progress": "Initial analysis",
+      "official_source": "https://www.claymath.org/millennium/Navier-Stokes-Equation/",
+      "baseline_status": "ACTIVE_UNDER_REVIEW",
+      "related_ai_claim_ids": [
+        "openai-navier-stokes-2026-09"
+      ]
     },
     {
       "name": "Birch & Swinnerton-Dyer",
       "prize": "$1M",
       "status": "Open",
       "ai_applicability": "Medium",
-      "progress": "Framework study"
+      "progress": "Framework study",
+      "official_source": "https://www.claymath.org/millennium-problems/birch-and-swinnerton-dyer-conjecture/",
+      "baseline_status": "OPEN",
+      "related_ai_claim_ids": [
+        "openai-bsd-low-selmer-corank-2026-10"
+      ]
     },
     {
-      "name": "Poincar\u00e9 Conjecture",
+      "name": "Poincaré Conjecture",
       "prize": "$1M",
       "status": "**SOLVED** (2003)",
       "ai_applicability": "N/A",
-      "progress": "Historical analysis"
+      "progress": "Historical analysis",
+      "official_source": "https://www.claymath.org/millennium-problems/poincare-conjecture/",
+      "baseline_status": "SOLVED_HISTORICAL",
+      "related_ai_claim_ids": []
     }
   ],
   "problems": [
@@ -68,12 +101,12 @@
         "Study relationship between verification and solution in AI contexts",
         "Analyze NP-complete problems (traveling salesman, SAT, etc.)",
         "Test if neural networks can \"learn\" to solve NP problems efficiently",
-        "Create practical algorithms even if P \u2260 NP"
+        "Create practical algorithms even if P ≠ NP"
       ],
       "current_insights": [
         "**Initial Understanding**: Problem is about the fundamental limits of computation",
         "**AI Connection**: Many ML optimization problems are NP-hard",
-        "**Practical Impact**: Even if P \u2260 NP, good approximations matter for AGI"
+        "**Practical Impact**: Even if P ≠ NP, good approximations matter for AGI"
       ],
       "next_steps": [
         "Deep dive into complexity theory foundations",
@@ -81,7 +114,13 @@
         "Analyze computational patterns in Arc-AGI that relate to P vs NP",
         "Test neural network performance on NP-complete benchmarks"
       ],
-      "progress_status": "Initial Analysis Phase"
+      "progress_status": "Initial Analysis Phase",
+      "baseline_status": "OPEN",
+      "official_source": "https://www.claymath.org/millennium-problems/p-vs-np-problem/",
+      "related_ai_claim_ids": [
+        "openai-eth-disproof-related-to-p-vs-np-2026-10"
+      ],
+      "status_last_checked": "2026-10-28"
     },
     {
       "number": 2,
@@ -113,7 +152,13 @@
         "Explore connections to topological data analysis",
         "Research geometric deep learning applications"
       ],
-      "progress_status": "Framework Study"
+      "progress_status": "Framework Study",
+      "baseline_status": "OPEN",
+      "official_source": "https://www.claymath.org/millennium-problems/hodge-conjecture/",
+      "related_ai_claim_ids": [
+        "openai-hodge-k3-withdrawn-2026-10"
+      ],
+      "status_last_checked": "2026-10-28"
     },
     {
       "number": 3,
@@ -145,7 +190,13 @@
         "Visualize zero distributions with ML tools",
         "Review computational approaches to the hypothesis"
       ],
-      "progress_status": "Framework Study"
+      "progress_status": "Framework Study",
+      "baseline_status": "OPEN",
+      "official_source": "https://www.claymath.org/millennium-problems/riemann-hypothesis/",
+      "related_ai_claim_ids": [
+        "openai-quasi-riemann-2026-10"
+      ],
+      "status_last_checked": "2026-10-28"
     },
     {
       "number": 4,
@@ -177,13 +228,19 @@
         "Understand mass gap concept",
         "Monitor for computational approaches"
       ],
-      "progress_status": "Framework Study"
+      "progress_status": "Framework Study",
+      "baseline_status": "OPEN",
+      "official_source": "https://www.claymath.org/millennium-problems/yang-mills-and-mass-gap/",
+      "related_ai_claim_ids": [
+        "openai-qcd-result-related-to-yang-mills-2026-10"
+      ],
+      "status_last_checked": "2026-10-28"
     },
     {
       "number": 5,
       "name": "Navier-Stokes Existence and Smoothness",
       "problem_statement": "Prove that solutions to the Navier-Stokes equations (describing fluid flow) always exist and remain smooth, or find a counterexample.",
-      "official_status": "Open",
+      "official_status": "Active (proposed solution under evaluation; no prize acceptance recorded)",
       "barrot_analysis_stage": "Framework ingestion complete",
       "ai_ml_relevance": "**HIGH** - Direct applications in physics-informed neural networks",
       "why_matters_for_ai": [
@@ -209,7 +266,13 @@
         "Explore physics-informed neural networks",
         "Analyze turbulence patterns with ML"
       ],
-      "progress_status": "Initial Analysis Phase"
+      "progress_status": "Initial Analysis Phase",
+      "baseline_status": "ACTIVE_UNDER_REVIEW",
+      "official_source": "https://www.claymath.org/millennium/Navier-Stokes-Equation/",
+      "related_ai_claim_ids": [
+        "openai-navier-stokes-2026-09"
+      ],
+      "status_last_checked": "2026-10-28"
     },
     {
       "number": 6,
@@ -241,13 +304,19 @@
         "Explore computational tools (SageMath, PARI/GP)",
         "Analyze elliptic curve databases with ML"
       ],
-      "progress_status": "Framework Study"
+      "progress_status": "Framework Study",
+      "baseline_status": "OPEN",
+      "official_source": "https://www.claymath.org/millennium-problems/birch-and-swinnerton-dyer-conjecture/",
+      "related_ai_claim_ids": [
+        "openai-bsd-low-selmer-corank-2026-10"
+      ],
+      "status_last_checked": "2026-10-28"
     },
     {
       "number": 7,
-      "name": "Poincar\u00e9 Conjecture \u2705",
+      "name": "Poincaré Conjecture ✅",
       "problem_statement": "Every simply connected, closed 3-manifold is homeomorphic to the 3-sphere.",
-      "official_status": "**SOLVED** (Grigori Perelman, 2003)",
+      "official_status": "Solved historically (Perelman, 2002–2003; Clay prize awarded 2010)",
       "barrot_analysis_stage": "Historical study",
       "ai_ml_relevance": "Medium - Topology relevant to manifold learning",
       "why_matters_for_ai": [
@@ -264,7 +333,11 @@
       ],
       "current_insights": [],
       "next_steps": [],
-      "progress_status": "100% (Historical Problem)"
+      "progress_status": "100% (Historical Problem)",
+      "baseline_status": "SOLVED_HISTORICAL",
+      "official_source": "https://www.claymath.org/millennium-problems/poincare-conjecture/",
+      "related_ai_claim_ids": [],
+      "status_last_checked": "2026-10-28"
     }
   ],
   "search_summaries": {
@@ -324,7 +397,7 @@
       ],
       "low": [
         "Yang-Mills & Mass Gap",
-        "Poincar\u00e9 Conjecture"
+        "Poincaré Conjecture"
       ]
     },
     "by_status": {
@@ -337,7 +410,7 @@
         "Birch & Swinnerton-Dyer"
       ],
       "solved": [
-        "Poincar\u00e9 Conjecture"
+        "Poincaré Conjecture"
       ]
     },
     "by_mathematical_domain": {
@@ -350,7 +423,7 @@
       ],
       "geometry_topology": [
         "Hodge Conjecture",
-        "Poincar\u00e9 Conjecture"
+        "Poincaré Conjecture"
       ],
       "analysis_pde": [
         "Navier-Stokes"
@@ -363,7 +436,7 @@
       "high_priority": [
         "P vs NP",
         "Navier-Stokes",
-        "Poincar\u00e9 (historical)"
+        "Poincaré (historical)"
       ],
       "medium_priority": [
         "Riemann Hypothesis",
@@ -376,7 +449,7 @@
     }
   },
   "_meta": {
-    "last_updated": "2026-06-17",
+    "last_updated": "2026-10-28",
     "total_problems": 7,
     "source_files": [
       "millennium_problems_overview.json",
@@ -388,7 +461,10 @@
       "millennium_problem_4_yang-mills_existence_and_mass_gap.json",
       "millennium_problem_5_navier-stokes_existence_and_smoothness.json",
       "millennium_problem_6_birch_and_swinnerton-dyer_conjecture.json",
-      "millennium_problem_7_poincar\u00e9_conjecture.json"
-    ]
+      "millennium_problem_7_poincaré_conjecture.json"
+    ],
+    "evidence_registry_version": "1.0",
+    "status_source": "Clay Mathematics Institute official problem pages; last reviewed 2026-10-28",
+    "ai_claim_registry": "data/research/millennium_claims_seed.jsonl"
   }
 }
