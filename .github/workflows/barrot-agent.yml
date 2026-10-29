@@ -67,12 +67,12 @@ jobs:
       - name: Run Barrot in enforced dry-run mode
         run: python3 scripts/barrot_agent.py
       - name: Upload dry-run plan and evidence
-        if: always() && hashFiles('${{ runner.temp }}/barrot-dry-run.json') != ''
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: barrot-dry-run-evidence-${{ github.run_id }}
           path: ${{ runner.temp }}/barrot-dry-run.json
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 14
 
   agent:
