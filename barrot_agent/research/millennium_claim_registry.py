@@ -41,8 +41,8 @@ MILLENNIUM_PROBLEMS: dict[str, dict[str, str]] = {
     },
     "navier_stokes": {
         "name": "Navier–Stokes Equation",
-        "baseline_status": "OPEN",
-        "official_source": "https://www.claymath.org/millennium-problems/navier-stokes-equation/",
+        "baseline_status": "ACTIVE_UNDER_REVIEW",
+        "official_source": "https://www.claymath.org/millennium/Navier-Stokes-Equation/",
     },
     "p_vs_np": {
         "name": "P vs NP Problem",
