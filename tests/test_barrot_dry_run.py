@@ -66,3 +66,16 @@ def test_workflow_dry_run_job_is_read_only_and_uploads_evidence():
     assert "issues: write" not in dry_job
     assert "actions/upload-artifact@v4" in dry_job
     assert 'DRY_RUN: "true"' in dry_job
+
+def test_groq_messages_are_bounded_for_small_token_budget(monkeypatch):
+    module = _load_script(monkeypatch)
+    messages = [
+        {"role": "system", "content": "system instructions"},
+        {"role": "user", "content": "old context " * 2000},
+        {"role": "user", "content": "CURRENT TASK: repair the 8000 TPM request size"},
+    ]
+    bounded = module._bound_groq_messages(messages, max_chars=1000)
+    assert sum(len(str(item.get("content", ""))) for item in bounded) <= 1000
+    assert bounded[0]["content"] == "system instructions"
+    assert "CURRENT TASK" in bounded[-1]["content"]
+
