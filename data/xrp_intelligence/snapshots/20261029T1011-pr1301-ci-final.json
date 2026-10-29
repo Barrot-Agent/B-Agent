@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1011-PR1301-CI-FINAL",
+  "captured_at_utc": "2026-10-29T10:11:06Z",
+  "data_cutoff_utc": "2026-10-29T10:11:06Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "observed_research_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+  "forecast_status": "NOT_ISSUED",
+  "market_feature_admission": false,
+  "summary": "PR #1301 final exact-head CI passed 187 tests plus 4 subtests in 6.60 seconds and its fail-closed gate passed. The PR is still draft/unmerged; main remains unchanged and continues publishing a confidence-zero XRP signal, a mismatched directional summary, the non-comparable 46.5% accuracy metric and a mutation-capable merge queue. ETF flow sources remain non-comparable. Coinbase Q3 results are scheduled after market close on Oct 29; Circle Q3 results are scheduled Nov 4 at 08:00 ET. No forecast issued.",
+  "repository": {
+    "main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+    "pr1301": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1301",
+      "branch": "safety/fixed-horizon-accuracy-fresh-main-20261029T1007Z",
+      "base_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+      "head_sha": "557fc6032612e56b496ab8f5a3d30f3340d4098a",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "changed_files": 8,
+      "core_ci": {
+        "run_id": 40855279351,
+        "status": "PASS",
+        "tests_passed": 187,
+        "subtests_passed": 4,
+        "duration_seconds": 6.6,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855279351"
+      },
+      "fail_closed_gate": {
+        "run_id": 40855279396,
+        "status": "PASS",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855279396"
+      }
+    },
+    "main_xrp_signal": {
+      "path": "web/latest_signal.json",
+      "blob_sha": "b32d1e55edbe41fdd4356825eb95ddf3d3d90093",
+      "timestamp": "2026-10-29T09:24:32.128435+00:00",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "provider_failures": [
+        "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+        "Groq HTTP 429"
+      ],
+      "validity": "INVALID_NOT_A_FORECAST"
+    },
+    "main_accuracy_artifact": {
+      "path": "web/signal_accuracy.json",
+      "blob_sha": "21385c2ffd54287be3cfe7eaa6cd6eb224465614",
+      "legacy_checked": 1659,
+      "legacy_correct": 772,
+      "legacy_accuracy_pct": 46.5,
+      "validity": "NOT_COMPARABLE_VARIABLE_HORIZON_MUTABLE_HISTORY"
+    },
+    "main_merge_queue": {
+      "path": ".github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+      "risk": "Write permissions, mode=all, dry_run=false default, unlimited max_prs=0, merge-capable commands remain on main."
+    }
+  },
+  "market_observations": [
+    {
+      "source": "Alpha Finance",
+      "date": "2026-10-28",
+      "fund_universe": "5 spot XRP ETFs",
+      "reported_net_flow_usd": 0,
+      "cumulative_net_inflow_usd": 1720000000,
+      "url": "https://alphafinance.io/etf/xrp/",
+      "limitation": "Secondary tracker; not issuer-level holdings; five-fund universe."
+    },
+    {
+      "source": "XRP Insights",
+      "date": "2026-10-26/27",
+      "fund_universe": "6 spot funds plus BITW",
+      "reported_net_flow_xrp": -3132685,
+      "approx_usd": -4100000,
+      "reported_total_held_xrp": 1190077145,
+      "url": "https://xrp-insights.com/data",
+      "limitation": "Oct 28 row provisional at capture; different fund universe, unit and settlement window."
+    }
+  ],
+  "corporate_events": [
+    {
+      "entity": "Coinbase Global",
+      "scheduled": "2026-10-29 after US market close",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "status": "NOT_YET_DUE_AT_CAPTURE"
+    },
+    {
+      "entity": "Circle Internet Group",
+      "scheduled": "2026-11-04 08:00 ET",
+      "url": "https://investor.circle.com/overview/",
+      "status": "FUTURE_EVENT"
+    }
+  ],
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1011-pr1301-final-ci-gate.json",
+    "blob_sha": "1cbc4a5e162ddf6d6b067117bb4dae5d5831bb02",
+    "commit_sha": "1f1dd1dd49036f726675cb3696c899a5b3d957a5",
+    "edges": 3,
+    "hypotheses": 1
+  },
+  "sources": [
+    {
+      "id": "SRC-RUN52-20261029T1009Z-MAIN-HEAD",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/649394b89b957b4719d4b689de47bc004bcd45f0"
+    },
+    {
+      "id": "SRC-RUN52-20261029T1009Z-MAIN-XRP-SIGNAL",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json"
+    },
+    {
+      "id": "SRC-RUN52-20261029T1009Z-MAIN-XRP-SUMMARY",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json"
+    },
+    {
+      "id": "SRC-RUN52-20261029T1009Z-MAIN-ACCURACY",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_accuracy.json"
+    },
+    {
+      "id": "SRC-RUN52-20261029T1009Z-MAIN-MERGE-QUEUE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml"
+    },
+    {
+      "id": "SRC-RUN52-20261029T1009Z-PR1301",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1301"
+    },
+    {
+      "id": "SRC-RUN52-20261029T1009Z-PR1301-CI",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855279351"
+    },
+    {
+      "id": "SRC-RUN52-20261029T1009Z-PR1301-GATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855279396"
+    },
+    {
+      "id": "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-14",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx"
+    },
+    {
+      "id": "SRC-CIRCLE-Q3-RESULTS-DATE-2026-10-07",
+      "url": "https://investor.circle.com/overview/"
+    },
+    {
+      "id": "SRC-ALPHA-XRP-ETF-FLOWS-2026-10-28",
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-ETF-HOLDINGS-2026-10-27",
+      "url": "https://xrp-insights.com/data"
+    },
+    {
+      "id": "SRC-RUN53-20261029T1011Z-PR1301-HEAD",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1301"
+    },
+    {
+      "id": "SRC-RUN53-20261029T1011Z-PR1301-CI-PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855279351"
+    },
+    {
+      "id": "SRC-RUN53-20261029T1011Z-PR1301-GATE-PASS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855279396"
+    }
+  ],
+  "verification": {
+    "snapshot_readback": "PENDING_AFTER_CREATE",
+    "graph_readback": "PASS",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "pr1301_core_ci": "PASS_187_TESTS_4_SUBTESTS_6.60S",
+    "pr1301_fail_closed_gate": "PASS",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T014151-SBI-SBIC-RIPPLE-CIRCLE",
+  "captured_at_utc": "2026-10-29T01:41:51.133Z",
+  "policy": "Append-only. Entity identities are kept distinct; corporate equity, exchange distribution, payment use, and token holdings are separate relation types.",
+  "nodes": [
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings, Inc.",
+      "kind": "JAPANESE_FINANCIAL_GROUP"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "label": "SBI Ripple Asia Co., Ltd.",
+      "kind": "JOINT_VENTURE"
+    },
+    {
+      "id": "SBI_REMIT",
+      "label": "SBI Remit Co., Ltd.",
+      "kind": "REMITTANCE_PROVIDER"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade Co., Ltd.",
+      "kind": "CRYPTO_EXCHANGE_AND_STABLECOIN_DISTRIBUTOR"
+    },
+    {
+      "id": "SBICAH_GK",
+      "label": "SBICAH GK",
+      "kind": "ACQUISITION_VEHICLE_EXPANSION_UNVERIFIED"
+    },
+    {
+      "id": "BITBANK",
+      "label": "Bitbank, Inc.",
+      "kind": "CRYPTO_EXCHANGE"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple Labs, Inc.",
+      "kind": "PRIVATE_FINTECH_COMPANY"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle Internet Group, Inc.",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "EVERNORTH",
+      "label": "Evernorth Holdings, Inc.",
+      "kind": "XRP_TREASURY_VEHICLE"
+    },
+    {
+      "id": "SBIC_EAST",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "kind": "SME_INVESTMENT_AND_CONSULTATION_COMPANY"
+    },
+    {
+      "id": "SBIC_CENTRAL",
+      "label": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan)",
+      "kind": "SME_INVESTMENT_AND_CONSULTATION_COMPANY"
+    },
+    {
+      "id": "SBIC_WEST",
+      "label": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan)",
+      "kind": "SME_INVESTMENT_AND_CONSULTATION_COMPANY"
+    },
+    {
+      "id": "CHATGPT",
+      "label": "ChatGPT",
+      "kind": "GENERATIVE_AI_PRODUCT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN25-20261029T014151-01",
+      "source": "SBI_HOLDINGS",
+      "target": "RIPPLE",
+      "relationship": "EQUITY_INVESTOR",
+      "evidence_class": "CONFIRMED_COMPANY_DISCLOSURE",
+      "status": "APPROXIMATELY_9_PERCENT_AS_REPORTED_IN_2025_PRESENTATION",
+      "claim": "SBI's 2025 investor presentation said SBI Group held approximately 9% of Ripple as its largest external shareholder. This is equity ownership, not an XRP token balance.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-02",
+      "source": "SBI_HOLDINGS",
+      "target": "CIRCLE",
+      "relationship": "EQUITY_INVESTOR_AND_USDC_JV_PARTNER",
+      "evidence_class": "CONFIRMED_COMPANY_DISCLOSURE",
+      "status": "SBI_REPORTED_USD50M_CIRCLE_EQUITY_PURCHASE_AT_IPO_AND_JV_FOR_USDC_IN_JAPAN",
+      "claim": "SBI's Aug 22, 2025 disclosure says it bought $50M of Circle shares at the IPO and formed a joint venture with Circle to promote USDC use in Japan. Exact ongoing ownership percentage is not stated here.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-03",
+      "source": "SBI_HOLDINGS",
+      "target": "SBI_RIPPLE_ASIA",
+      "relationship": "60_PERCENT_VOTING_OWNERSHIP",
+      "evidence_class": "CONFIRMED_COMPANY_PROFILE",
+      "status": "AS_OF_2026-03-31",
+      "claim": "SBI Group owns 60% of SBI Ripple Asia; Ripple owns 40%. The venture develops fintech/blockchain solutions and should not be conflated with the remittance operator that handles XRP flows.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-04",
+      "source": "SBI_REMIT",
+      "target": "XRP",
+      "relationship": "XRP_BRIDGE_ASSET_IN_JAPAN_TO_PHILIPPINES_ODL",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "status": "LIVE_SERVICE_LAUNCHED_2021-07-28; CURRENT_VOLUME_UNKNOWN",
+      "claim": "Ripple announced live Japan-to-Philippines On-Demand Liquidity with SBI Remit, Coins.ph and SBI VC Trade, using XRP as a bridge asset. Current transaction counts and XRP volumes are not publicly established in this review.",
+      "source_ids": [
+        "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-05",
+      "source": "SBI_VC_TRADE",
+      "target": "USDC",
+      "relationship": "JAPAN_RETAIL_TRADING_AND_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "status": "GENERAL_CUSTOMER_TRADING_STARTED_2025-03-26",
+      "claim": "SBI VC Trade launched general-customer USDC trading in Japan; the launch notice initially specified Ethereum-chain deposits and withdrawals. This is a Circle distribution relationship, not an XRP holding.",
+      "source_ids": [
+        "SRC-SBI-USDC-RETAIL-2025-03-25"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-06",
+      "source": "SBI_VC_TRADE",
+      "target": "RLUSD",
+      "relationship": "JAPAN_STABLECOIN_LISTING",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "status": "LIVE_SINCE_2026-06-24",
+      "claim": "SBI VC Trade began handling RLUSD as a Japanese category-4 electronic payment instrument on June 24, 2026, broadening stablecoin choice alongside USDC.",
+      "source_ids": [
+        "SRC-SBI-RLUSD-JAPAN-2026"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-07",
+      "source": "SBI_HOLDINGS",
+      "target": "BITBANK",
+      "relationship": "WHOLLY_OWNED_SUBSIDIARY",
+      "evidence_class": "CONFIRMED_COMPANY_DISCLOSURE",
+      "status": "ACQUISITION_COMPLETED_2026-10-01",
+      "claim": "SBI Holdings confirmed completion of Bitbank's conversion to a wholly owned subsidiary on October 1, 2026.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-08",
+      "source": "SBICAH_GK",
+      "target": "BITBANK",
+      "relationship": "ACQUISITION_VEHICLE",
+      "evidence_class": "CONFIRMED_COMPANY_DISCLOSURE",
+      "status": "USED_IN_2026_ACQUISITION",
+      "claim": "SBI's June 25 notice identifies SBICAH GK as the wholly owned subsidiary through which the Bitbank acquisition was structured. The inspected official notice does not expand the acronym; do not equate it with SBIC East Japan.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-09",
+      "source": "BITBANK",
+      "target": "JAPAN_CRYPTO_EXCHANGE_MARKET",
+      "relationship": "KAIKO_Q3_2026_RANKING",
+      "evidence_class": "COMPANY_REPORTED_THIRD_PARTY_RANKING",
+      "status": "JAPAN_RANK_1_GLOBAL_RANK_23_AS_OF_2026-09-04",
+      "claim": "Bitbank reported that Kaiko's Q3 2026 exchange ranking placed it first in Japan and 23rd globally. This is an exchange-wide ranking, not proof of XRP-specific volume or order-book depth.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-10",
+      "source": "SBI_HOLDINGS",
+      "target": "EVERNORTH",
+      "relationship": "PIPE_INVESTOR_IN_XRP_TREASURY_VEHICLE",
+      "evidence_class": "CONFIRMED_COMPANY_DISCLOSURE",
+      "status": "ANNOUNCED_2025-10-21",
+      "claim": "SBI Holdings announced investment alongside Ripple and others in Evernorth's PIPE, describing Evernorth as an institutional XRP treasury vehicle. The announcement does not establish a current net XRP balance or realized return.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-EVERNORTH"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-11",
+      "source": "SBIC_EAST",
+      "target": "CHATGPT",
+      "relationship": "MENTIONED_IN_COMPLETED_TRAINING_CURRICULUM",
+      "evidence_class": "CONFIRMED_PUBLIC_CURRICULUM",
+      "status": "COURSE_COMPLETED_2025-06-12",
+      "claim": "SBIC East Japan's public training curriculum included ChatGPT usage in a generative-AI course for investee companies. This is a course-topic mention, not an OpenAI partnership or live integration.",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN25-20261029T014151-12",
+      "source": "SBIC_EAST",
+      "target": "SBIC_CENTRAL",
+      "relationship": "SISTER_REGIONAL_COMPANY",
+      "evidence_class": "CONFIRMED_COMPANY_PROFILE",
+      "status": "SEPARATE_LEGAL_ENTITIES",
+      "claim": "SBIC East Japan's official profile lists Nagoya and Osaka sister companies. The regional SBIC entities are distinct from SBI Holdings and SBICAH GK.",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+        "SRC-RUN25-20261029T014151-SBIC-WEST"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN25-20261029T014151-SBI-MULTIISSUER-STRATEGY",
+      "class": "INFERENCE_FROM_CORPORATE_ACTIONS",
+      "hypothesis": "SBI Group's documented Ripple equity, Circle equity/USDC JV, SBI VC Trade USDC and RLUSD distribution, and XRP ODL relationships are more consistent with a multi-rail, multi-issuer digital-asset strategy than an exclusive XRP-only bet.",
+      "confidence": "LOW_TO_MEDIUM",
+      "supporting_source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+        "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+        "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+        "SRC-SBI-USDC-RETAIL-2025-03-25",
+        "SRC-SBI-RLUSD-JAPAN-2026"
+      ],
+      "counter_hypotheses": [
+        "Equity stakes and product listings may be independent investments rather than one coordinated strategy.",
+        "The Circle and Ripple relationships may have different business owners, economics and adoption targets.",
+        "No public evidence here shows direct SBI-to-Coinbase coordination."
+      ],
+      "disconfirming_evidence_needed": [
+        "Official filings or management statements establish an exclusive XRP strategy.",
+        "Measured volumes show one rail dominates and the other relationships are immaterial."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN25-20261029T014151-BITBANK-XRP-MARKET-STRUCTURE",
+      "class": "INFERENCE",
+      "hypothesis": "SBI's full ownership of Bitbank consolidates an important Japanese exchange venue inside the group and may affect XRP/JPY liquidity, routing and distribution, but it does not establish new net XRP buying or market-moving intent.",
+      "confidence": "LOW_TO_MEDIUM",
+      "supporting_source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
+        "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK"
+      ],
+      "counter_hypotheses": [
+        "Trading may migrate between SBI-controlled venues without increasing total XRP demand.",
+        "Exchange-wide rank is not XRP-specific depth or volume.",
+        "Market-making, custody and customer assets remain distinct from SBI proprietary holdings."
+      ],
+      "disconfirming_evidence_needed": [
+        "Venue-level XRP/JPY volume, depth and spreads show no material change after integration.",
+        "Customer transfers explain changes without net new trading or XRP inventory."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN25-20261029T014151-SBIC-IDENTITY-SEPARATION",
+      "class": "ENTITY_RESOLUTION_RULE",
+      "hypothesis": "The direct public match for 'SBIC' is SBIC East Japan (Tokyo Small and Medium Business Investment & Consultation Co., Ltd.), which published a ChatGPT training curriculum; no direct XRP relationship is established. SBICAH GK is a separate SBI Holdings acquisition vehicle. SBI Group's XRP relationships must not be attributed to either entity without direct evidence.",
+      "confidence": "HIGH_FOR_NAME_DISTINCTION_LOW_FOR_ORIGINAL_USER_REFERENCE",
+      "supporting_source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z",
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH"
+      ],
+      "counter_hypotheses": [
+        "The original phrase may have been an abbreviation or transcription of SBI, SBI VC Trade, or SBICAH rather than SBIC East Japan."
+      ],
+      "disconfirming_evidence_needed": [
+        "Original context identifies a different legal entity or a direct SBIC-to-XRP contract."
+      ],
+      "xrp_price_effect": "NOT_APPLICABLE"
+    }
+  ]
+}

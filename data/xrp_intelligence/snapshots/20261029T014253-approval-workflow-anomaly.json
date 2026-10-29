@@ -1,0 +1,945 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T014253-APPROVAL-WORKFLOW-ANOMALY",
+  "captured_at_utc": "2026-10-29T01:42:53.011Z",
+  "snapshot_character_count": 49736,
+  "mission_priority": "XRP intelligence and prediction-engine mastery remains Barrot's highest-priority mission; Barrot V3 remains the execution and verification foundation.",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "default_branch": "main",
+    "main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
+    "main_protected": true,
+    "research_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+    "research_branch_head_before_snapshot": "87b2da8c63ef93700d4d4b18c1d346f8399fb048",
+    "previous_index_pointer": {
+      "record_type": "snapshot_reference",
+      "index_format_version": "2.0",
+      "schema_version": "1.0",
+      "captured_at_utc": "2026-10-29T01:22:22.199Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T012222Z-INCIDENT-CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012222Z-incident-correction.json",
+      "snapshot_blob_sha": "08092911e17ac616c0d86a2768a8b0ee776c8712",
+      "snapshot_commit_sha": "63b04c9f0f028df8a6eab79fe9c4ffa781ed75fe"
+    },
+    "previous_snapshot": {
+      "path": "data/xrp_intelligence/snapshots/2026-10-29T012222Z-incident-correction.json",
+      "blob_sha": "08092911e17ac616c0d86a2768a8b0ee776c8712",
+      "captured_at_utc": "2026-10-29T01:22:22.199Z",
+      "preserved_unchanged": true
+    },
+    "main_commit_since_previous_snapshot": {
+      "sha": "079aa167b3bfbf479500f5878434368d4033add0",
+      "title": "Paper trade cycle [skip ci]",
+      "changed_paths": [
+        "web/paper_trading_log.jsonl"
+      ],
+      "commits_since_previous_snapshot": 1,
+      "main_write_by_this_run": false
+    },
+    "direct_main_write_by_this_run": {
+      "occurred": false,
+      "note": "No direct main write by this run; current main advanced via scheduled paper-trader append."
+    },
+    "external_merge_observed": {
+      "pr_number": 1273,
+      "merged_by": "Barrot-Agent",
+      "merged_at_utc": "2026-10-29T01:07:06Z",
+      "merge_commit_sha": "de30245082545242485b894bda53054b50c313aa",
+      "performed_by_this_run": false,
+      "authorization_evidence": "NOT_ESTABLISHED_IN_THIS_RUN",
+      "causal_workflow": "UNKNOWN; merge queue is a plausible capability path but no matching workflow run was verified."
+    },
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_manually_executed_by_this_run": false,
+    "external_deployments_triggered_by_main_push": true,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false,
+    "prior_direct_main_write_incident": {
+      "occurred": true,
+      "commit_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "commit_message": "Test external deployment workflows fail closed",
+      "path": "tests/test_external_deploys_require_confirmation.py",
+      "cause": "A prior file-creation action omitted the target branch and committed to the default branch.",
+      "correction": "PR #1279 was later merged by Barrot-Agent; its authorization provenance is not established by this run."
+    },
+    "additional_external_merge_observed": [
+      {
+        "pr_number": 1279,
+        "merged_by": "Barrot-Agent",
+        "merged_at_utc": "2026-10-29T01:25:58Z",
+        "merge_commit_sha": "c5bfed8ea1c80f1d30dd9ef4595367bc38e09a83",
+        "performed_by_this_run": false,
+        "authorization_evidence": "NOT_ESTABLISHED_IN_THIS_RUN",
+        "purpose": "Gate Databricks/Hugging Face external deployment workflows behind explicit manual confirmation."
+      }
+    ],
+    "main_protection_assessment": "Branch object was previously reported protected, but effective required reviews/checks are unverified; only returned repository ruleset has enforcement disabled, and detailed protection endpoint returned 403.",
+    "external_deployments_triggered_by_this_run": false,
+    "pr1281_base_recheck": {
+      "pr_base_sha": "1feefe76c9bf34a73335e03b58b7ee77682b384d",
+      "head_sha": "1d3926a712016b937fe102d70f26630f615acd49",
+      "current_main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
+      "main_ahead_by": 1,
+      "overlapping_paths": [],
+      "status": "ONE_PAPER_LOG_APPEND_BEHIND_NO_OVERLAP_OBSERVED"
+    },
+    "workflow_anomaly_audit": {
+      "main_workflow_blob_sha": "bc78b4c4ac9824ffbde99eee64621885e6a52076",
+      "exact_event_commit": "33a7d2828191eb609e9bc886c0a71164546235ba",
+      "event_commit_workflow_blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+      "main_trigger": "workflow_dispatch only",
+      "event_commit_trigger": "workflow_dispatch only",
+      "approve_job_present_in_both": true,
+      "job_level_if_conditions_found": false,
+      "recent_zero_job_push_runs": [
+        {
+          "run_id": 40801984038,
+          "head_sha": "33a7d2828191eb609e9bc886c0a71164546235ba",
+          "created_at": "2026-10-29T01:42:01Z",
+          "jobs": 0,
+          "conclusion": "failure"
+        },
+        {
+          "run_id": 40801977851,
+          "head_sha": "04af1a7b89176f314e3fdb19fa375453a876a619",
+          "created_at": "2026-10-29T01:41:58Z",
+          "jobs": 0,
+          "conclusion": "failure"
+        },
+        {
+          "run_id": 40801973217,
+          "head_sha": "d962aa14ceadaff7fe429d3e2255382dbce02589",
+          "created_at": "2026-10-29T01:41:55Z",
+          "jobs": 0,
+          "conclusion": "failure"
+        }
+      ],
+      "root_cause": "UNRESOLVED",
+      "finding": "Observed push-event runs with zero jobs remain inconsistent with both inspected workflow definitions, which declare workflow_dispatch only and define an approve job. Exact event payload or GitHub Actions service-side trigger diagnostics are unavailable through the current connector."
+    }
+  },
+  "current_run_update": {
+    "run_sequence": 129,
+    "recorded_at_utc": "2026-10-29T01:42:53.011Z",
+    "source_ids": [
+      "SRC-RUN26-20261029T014253-MAIN-APPROVAL-WORKFLOW",
+      "SRC-RUN26-20261029T014253-BRANCH-APPROVAL-WORKFLOW",
+      "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801984038",
+      "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801977851",
+      "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801973217",
+      "SRC-RUN26-20261029T014253-INDEX-GATE-40801991494"
+    ],
+    "summary": "Audited the recurring zero-job approval-workflow failures against the exact workflow definitions at main and the event commit. Both declare workflow_dispatch only and define an approve job, while three push-event runs failed with zero jobs. Root cause remains unresolved; no workflow was modified and no approval action was triggered.",
+    "forecast_status": "NOT_ISSUED",
+    "new_synchronized_xrp_market_observations_admitted": 0,
+    "new_relationship_edges": 0,
+    "new_competing_hypotheses": 0,
+    "main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false
+  },
+  "repository_ci": {
+    "pr1277": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1277",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head_sha": "0fefbded8e2ef39d76ce88c944b0b586c0ba9d44",
+      "ci": "PASS",
+      "ci_run": 40799212550,
+      "gate": "PASS",
+      "gate_run": 40799212538,
+      "base_at_creation": "de30245082545242485b894bda53054b50c313aa",
+      "current_base_comparison": "8 commits behind current main; stale predecessor; do not merge as-is"
+    },
+    "pr1279": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1279",
+      "state": "closed",
+      "draft": false,
+      "merged": true,
+      "merged_at": "2026-10-29T01:25:58Z",
+      "merged_by": "Barrot-Agent",
+      "merge_commit_sha": "c5bfed8ea1c80f1d30dd9ef4595367bc38e09a83",
+      "head_sha": "a30690265141b6d6ebaa527166e1b948ad0ab46a",
+      "ci": "PASS_164_TESTS_4_SUBTESTS_6.28S",
+      "ci_run": 40799922265,
+      "gate": "PASS",
+      "gate_run": 40799922257,
+      "authorization_provenance": "NOT_ESTABLISHED_IN_THIS_RUN"
+    },
+    "pr1278": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1278",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "status": "STALE_PREDECESSOR; DUPLICATE TEST-FILE BRANCH; KEEP UNMERGED"
+    },
+    "pr1274": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1274",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "status": "OLDER EXACT-HEAD CI/GATE PASS; RECHECK CURRENT BASE"
+    },
+    "pr1275": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1275",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "status": "OLDER EXACT-HEAD CI/GATE PASS; RECHECK CURRENT BASE"
+    },
+    "pr1273": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1273",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-29T01:07:06Z",
+      "merged_by": "Barrot-Agent",
+      "merge_commit_sha": "de30245082545242485b894bda53054b50c313aa",
+      "head_sha": "1ed0283b631c021114af05fb991db4e542864564",
+      "authorization_provenance": "NOT_ESTABLISHED_IN_THIS_RUN"
+    },
+    "pr1281": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1281",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head_sha": "1d3926a712016b937fe102d70f26630f615acd49",
+      "base_sha": "1feefe76c9bf34a73335e03b58b7ee77682b384d",
+      "current_main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
+      "base_lag_commits": 1,
+      "overlapping_paths": [],
+      "ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
+      "ci_run": 40800923001,
+      "gate": "PASS",
+      "gate_run": 40800922971,
+      "status": "DRAFT_UNMERGED; RECHECK BASE BEFORE APPROVAL"
+    },
+    "latest_index_gate_for_previous_head": {
+      "run_id": 40801991494,
+      "head_sha": "33a7d2828191eb609e9bc886c0a71164546235ba",
+      "status": "completed",
+      "conclusion": "success",
+      "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR"
+    }
+  },
+  "merge_controls_audit": {
+    "merge_queue": {
+      "path": ".github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+      "trigger": "workflow_dispatch only",
+      "permissions": {
+        "contents": "write",
+        "pull-requests": "write",
+        "checks": "read",
+        "statuses": "read"
+      },
+      "default_mode": "label",
+      "mode_all_available": true,
+      "default_dry_run": false,
+      "default_max_prs": "0 (unlimited)",
+      "contains_gh_pr_merge": true,
+      "risk": "Can merge open PRs when manually dispatched with mode=all; no evidence in this run proves it caused PR #1273 or #1279 merge.",
+      "fail_closed_successor": {
+        "pr_number": 1281,
+        "head_sha": "1d3926a712016b937fe102d70f26630f615acd49",
+        "ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
+        "gate": "PASS",
+        "state": "DRAFT_UNMERGED"
+      }
+    },
+    "gated_merge": {
+      "path": ".github/workflows/barrot-gated-merge.yml",
+      "blob_sha": "a0b08a3587f19d27a1f6fb6102cdc26218304be8",
+      "behavior": "read-only; explicitly says automatic merge disabled"
+    },
+    "pr_automerge": {
+      "path": ".github/workflows/barrot-pr-automerge.yml",
+      "blob_sha": "0bfd821595a350989ee61d3ac15988864b38a413",
+      "behavior": "workflow_dispatch only; read-only fail-closed"
+    },
+    "approval_workflow": {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+      "trigger": "workflow_dispatch only in file, yet push-event zero-job failures continue; root cause unknown"
+    },
+    "branch_protection": {
+      "branch_object_protected": "reported true in prior snapshot",
+      "detailed_endpoint": "403 Resource not accessible by integration",
+      "returned_rulesets": [
+        {
+          "name": "Fall Back",
+          "enforcement": "disabled",
+          "target": "branch"
+        }
+      ],
+      "required_reviews_and_checks": "NOT_VERIFIED"
+    },
+    "queue_run_search": "No Merge Queue run appeared in latest 30 returned workflow runs; workflow-specific runs endpoint unavailable. Not proof no earlier run exists."
+  },
+  "external_workflow_runs": [
+    {
+      "id": 40799576440,
+      "name": ".github/workflows/barrot-approve-pr.yml",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-29T01:18:05Z",
+      "updated_at": "2026-10-29T01:18:05Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799576440"
+    },
+    {
+      "id": 40799401394,
+      "name": "Barrot Operations Pipeline",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-29T01:16:23Z",
+      "updated_at": "2026-10-29T01:16:32Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401394"
+    },
+    {
+      "id": 40799401318,
+      "name": "CI",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-29T01:16:23Z",
+      "updated_at": "2026-10-29T01:16:45Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401318"
+    },
+    {
+      "id": 40799401276,
+      "name": "Deploy to Databricks",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-29T01:16:23Z",
+      "updated_at": "2026-10-29T01:18:15Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401276"
+    },
+    {
+      "id": 40799401243,
+      "name": "Databricks Bundle Deploy",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-29T01:16:23Z",
+      "updated_at": "2026-10-29T01:17:04Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401243"
+    },
+    {
+      "id": 40799400148,
+      "name": ".github/workflows/barrot-approve-pr.yml",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-29T01:16:23Z",
+      "updated_at": "2026-10-29T01:16:23Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799400148"
+    }
+  ],
+  "paper_trading": {
+    "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+    "cash_usd": 8011.936613782476,
+    "position_size": 0.024901276579239066,
+    "position_product": null,
+    "avg_entry_price": 80436.84,
+    "trade_count": 125,
+    "current_log_blob_sha": "70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a",
+    "current_log_blob_url": "https://api.github.com/repos/Barrot-Agent/B-Agent/git/blobs/70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a",
+    "current_log_characters": 1451450,
+    "current_log_records": 2357,
+    "replay": {
+      "method": "Read-only replay of scripts/coinbase_paper_trader.py execute_paper_trade semantics against exact Git blob",
+      "script_blob_sha": "b38ab435f575b6037f05fa8e9ea00fd487d2d9eb",
+      "malformed_jsonl_records": 0,
+      "timestamp_order_errors": 0,
+      "product_universe": [
+        "BTC-USD"
+      ],
+      "action_counts": {
+        "buy": 36,
+        "sell": 89,
+        "hold": 2232
+      },
+      "portfolio_value_mismatches": 0,
+      "portfolio_change_mismatches": 0,
+      "cumulative_return_mismatches": 0,
+      "result_transition_mismatches": 0,
+      "state_numeric_fields_match": true,
+      "position_product_remains_null": true,
+      "first_log_timestamp_offset_from_started_at_seconds": 0.638156,
+      "started_at_offset_interpretation": "Persisted state started about 0.638 seconds before the first log record; expected, not a financial-state mismatch."
+    },
+    "current_full_replay_status": "PASS_READ_ONLY_2357_ROWS",
+    "state_mutated": false,
+    "current_state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+    "log_unchanged_since_full_replay": true,
+    "state_unchanged_since_full_replay": true,
+    "replay_status": "PASS_READ_ONLY_2358_ROWS",
+    "current_log_unchanged_since_last_full_replay": false,
+    "note_for_this_run": "No full replay was rerun. The latest full replay in the previous snapshot passed 2,357 rows, and the main commits compared in this run did not change paper-trading log/state paths; prior replay remains applicable to those unchanged files.",
+    "log_blob_sha": "730edbc6f431a253824555b70cf7880358057063",
+    "log_records": 2358,
+    "malformed_json": 0,
+    "timestamp_order_errors": 0,
+    "non_btc_products": 0,
+    "portfolio_value_mismatches_over_0_02": 0,
+    "result_string_mismatches": 0,
+    "buys": 36,
+    "sells": 89,
+    "holds": 2233,
+    "full_state_transition_replay": true,
+    "persisted_state_matches": true,
+    "latest_record": {
+      "timestamp": "2026-10-29T01:33:49.407180+00:00",
+      "price": 80626.98,
+      "action": "hold",
+      "result": "held -- no action taken",
+      "portfolio_value_usd": 10019.65,
+      "cumulative_return_pct": 0.197
+    },
+    "replay_report_path": "data/xrp_intelligence/validation_runs/20261029T013741-paper-trading-replay.json",
+    "replay_report_blob_sha": "77327e915db3246530f3c567fcb2093d1bb27263"
+  },
+  "market_research": {
+    "forecast_status": "NOT_ISSUED",
+    "synchronized_xrp_market_observations_admitted": 0,
+    "prior_market_observations_carried_forward": 63,
+    "relationship_edges_carried_forward": 116,
+    "competing_hypotheses": 78,
+    "new_hypothesis": {
+      "id": "HYP-RUN16-CIRCLE-RESERVE-REVENUE-SENSITIVITY-20261029T010857Z",
+      "status": "INFERENCE_WITH_SECONDARY_CLAIM",
+      "hypothesis": "Circle's reserve-income exposure may be sensitive to rates and stablecoin distribution shifts; an AI-agent-driven migration of balances is a proposed risk scenario, not an observed cause of USDC outflows or XRP demand.",
+      "supporting_evidence": [
+        "The Block reported on 2026-10-27 that Mizuho estimated 10–20% medium-term reserve-revenue downside risk if AI agents steer USDC holders toward higher-yield fiat alternatives or other platforms."
+      ],
+      "counter_hypotheses": [
+        "USDC distribution network effects and payment integrations may offset any balance migration.",
+        "Reserve revenue may change primarily with policy rates and circulation, not AI-agent routing.",
+        "Even if USDC balances migrate, no XRP demand effect follows without chain- and route-level evidence."
+      ],
+      "disconfirming_evidence_needed": [
+        "Issuer filings and subsequent USDC circulation/reserve revenue data show no material impact.",
+        "No observable change in XRPL USDC balances or XRP bridge-path share after relevant adoption events."
+      ],
+      "xrp_link": "INDIRECT_SPECULATIVE_ONLY",
+      "confidence": "LOW",
+      "source_ids": [
+        "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z"
+      ]
+    },
+    "circle_source_claim": {
+      "source": "https://www.theblock.co/news/business/2026-10-27-mizuho-cuts-circle-price-target-431826",
+      "publication_date": "2026-10-27",
+      "claim": "Mizuho reportedly estimated 10–20% medium-term reserve-revenue downside risk if AI agents steer USDC holders toward higher-yield alternatives.",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "not_observed_impact": true,
+      "direct_xrp_link": "NOT_ESTABLISHED"
+    },
+    "coinbase_q3": {
+      "source_id": "SRC-RUN22-20261029T013450-COINBASE-Q3-SCHEDULE",
+      "scheduled_release_date": "2026-10-29",
+      "timing": "after market close",
+      "status": "NOT_AVAILABLE_AT_CAPTURE",
+      "next_action": "Capture official release and compare against Q2; do not assume an XRP price reaction."
+    },
+    "fomc": "October 28 hold at 3.75%–4.00% with two dissents; no synchronized post-announcement XRP cross-asset panel admitted.",
+    "sbic_identity": "Regional SBIC entities remain distinct; originating phrase does not resolve which entity was intended.",
+    "phrase_investigations": {
+      "ASK_Coin": "UNRESOLVED_ORIGINAL_CONTEXT",
+      "actual_capital": "UNRESOLVED_ORIGINAL_CONTEXT",
+      "SBIC_ChatGPT_SBIC": "UNRESOLVED_ORIGINAL_CONTEXT",
+      "Camilla_Stephenson_YouTube": "CANONICAL_IDENTITY_AND_EXHAUSTIVE_PUBLIC_VIDEO_INVENTORY_UNVERIFIED"
+    },
+    "circle_official_snapshot": {
+      "source_id": "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+      "as_of_date": "2026-10-26",
+      "usdc_circulation_usd_billions": 71,
+      "reserves_usd_billions": 71.2,
+      "native_chains_count": 38,
+      "includes_xrpl": true,
+      "includes_base": true,
+      "evidence_class": "OFFICIAL_ISSUER_DISCLOSURE",
+      "xrp_link": "XRPL_NATIVE_USDC_CONFIRMED; NO_XRP_DEMAND_CAUSALITY_ESTABLISHED",
+      "circulation_usd_billions": 71,
+      "prior_english_dashboard_as_of": "2026-10-22",
+      "prior_circulation_usd_billions": 72,
+      "prior_reserves_usd_billions": 72.2,
+      "change_in_circulation_usd_billions": -1,
+      "method": "CROSS_LOCALE_SNAPSHOT_COMPARISON; VERIFY_SOURCE_VINTAGES"
+    },
+    "coinbase_q2": {
+      "source_id": "SRC-RUN22-20261029T013450-COINBASE-Q2",
+      "period": "2026-Q2",
+      "crypto_trading_volume_market_share_percent": 10.3,
+      "average_usdc_held_in_coinbase_products_usd_billions": 20,
+      "share_of_usdc_circulation_at_quarter_end_percent": "over 30",
+      "usdc_economics_share_over_prior_year_percent": "approximately 50",
+      "evidence_class": "OFFICIAL_COMPANY_EARNINGS_RELEASE",
+      "xrp_link": "CONTEXT_ONLY; NOT_XRP_SPECIFIC"
+    },
+    "coinbase_rlusd_launch": {
+      "source_id": "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH",
+      "announcement_date": "2026-10-28",
+      "channels": [
+        "Coinbase Prime",
+        "Coinbase Exchange",
+        "Coinbase retail app"
+      ],
+      "networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "global_exchange_collateral": "FUTURE_ROLLOUT_AT_ANNOUNCEMENT",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT"
+    },
+    "xrpl_sponsorship": {
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-XRPL-SPONSOR-ADVISORY",
+        "SRC-RUN22-20261029T013450-XRPL-RESERVES",
+        "SRC-RUN22-20261029T013450-XRPL-SPONSOR-DOCS",
+        "SRC-RUN22-20261029T013450-SPONSORED-ACCOUNT-CREATE-PR",
+        "SRC-RUN22-20261029T013450-XLS-68-1-PR",
+        "SRC-RUN22-20261029T013450-COINDESK-SPONSORSHIP-VOTES"
+      ],
+      "current_base_reserve_xrp": 1,
+      "current_owner_reserve_xrp": 0.2,
+      "sponsor_amendment_mainnet_status": "NOT_ACTIVE_AS_OF_OFFICIAL_2026-09-21_DISCLOSURE",
+      "sponsored_account_create_status": "OPEN_UNMERGED_UPSTREAM_PR",
+      "standard_status": "OPEN_UNMERGED_DRAFT_XLS-68.1",
+      "secondary_vote_claim": "CoinDesk reported 11 votes as of 2026-10-19; exact current count not independently verified.",
+      "market_effect": "NOT_OBSERVED; NO_SYNCHRONIZED_XRP_FEATURES_ADMITTED"
+    },
+    "new_hypotheses": [
+      {
+        "id": "HYP-RUN25-20261029T014151-SBI-MULTIISSUER-STRATEGY",
+        "class": "INFERENCE_FROM_CORPORATE_ACTIONS",
+        "hypothesis": "SBI Group's documented Ripple equity, Circle equity/USDC JV, SBI VC Trade USDC and RLUSD distribution, and XRP ODL relationships are more consistent with a multi-rail, multi-issuer digital-asset strategy than an exclusive XRP-only bet.",
+        "confidence": "LOW_TO_MEDIUM",
+        "supporting_source_ids": [
+          "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+          "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+          "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+          "SRC-SBI-USDC-RETAIL-2025-03-25",
+          "SRC-SBI-RLUSD-JAPAN-2026"
+        ],
+        "counter_hypotheses": [
+          "Equity stakes and product listings may be independent investments rather than one coordinated strategy.",
+          "The Circle and Ripple relationships may have different business owners, economics and adoption targets.",
+          "No public evidence here shows direct SBI-to-Coinbase coordination."
+        ],
+        "disconfirming_evidence_needed": [
+          "Official filings or management statements establish an exclusive XRP strategy.",
+          "Measured volumes show one rail dominates and the other relationships are immaterial."
+        ],
+        "xrp_price_effect": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "HYP-RUN25-20261029T014151-BITBANK-XRP-MARKET-STRUCTURE",
+        "class": "INFERENCE",
+        "hypothesis": "SBI's full ownership of Bitbank consolidates an important Japanese exchange venue inside the group and may affect XRP/JPY liquidity, routing and distribution, but it does not establish new net XRP buying or market-moving intent.",
+        "confidence": "LOW_TO_MEDIUM",
+        "supporting_source_ids": [
+          "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+          "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
+          "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK"
+        ],
+        "counter_hypotheses": [
+          "Trading may migrate between SBI-controlled venues without increasing total XRP demand.",
+          "Exchange-wide rank is not XRP-specific depth or volume.",
+          "Market-making, custody and customer assets remain distinct from SBI proprietary holdings."
+        ],
+        "disconfirming_evidence_needed": [
+          "Venue-level XRP/JPY volume, depth and spreads show no material change after integration.",
+          "Customer transfers explain changes without net new trading or XRP inventory."
+        ],
+        "xrp_price_effect": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "HYP-RUN25-20261029T014151-SBIC-IDENTITY-SEPARATION",
+        "class": "ENTITY_RESOLUTION_RULE",
+        "hypothesis": "The direct public match for 'SBIC' is SBIC East Japan (Tokyo Small and Medium Business Investment & Consultation Co., Ltd.), which published a ChatGPT training curriculum; no direct XRP relationship is established. SBICAH GK is a separate SBI Holdings acquisition vehicle. SBI Group's XRP relationships must not be attributed to either entity without direct evidence.",
+        "confidence": "HIGH_FOR_NAME_DISTINCTION_LOW_FOR_ORIGINAL_USER_REFERENCE",
+        "supporting_source_ids": [
+          "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+          "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z",
+          "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH"
+        ],
+        "counter_hypotheses": [
+          "The original phrase may have been an abbreviation or transcription of SBI, SBI VC Trade, or SBICAH rather than SBIC East Japan."
+        ],
+        "disconfirming_evidence_needed": [
+          "Original context identifies a different legal entity or a direct SBIC-to-XRP contract."
+        ],
+        "xrp_price_effect": "NOT_APPLICABLE"
+      }
+    ],
+    "new_relationship_edges": 12,
+    "relationship_edges_total": 128,
+    "new_synchronized_xrp_market_observations_admitted": 0,
+    "rlusd_official_snapshot": {
+      "source_id": "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-TRANSPARENCY",
+      "as_of_date": "2026-10-22",
+      "circulation_usd_billions": 2.3828,
+      "reserves_usd_billions": 2.528,
+      "reserve_excess_usd_millions": 145.2,
+      "reserve_coverage_percent": 106.1
+    },
+    "rlusd_historical_comparison": {
+      "source_id": "SRC-RUN24-20261029T013910-COINOTAG-RLUSD-OCT01",
+      "as_of_date": "2026-10-01",
+      "circulation_usd_billions": 2.5098,
+      "reserves_usd_billions": 2.6338,
+      "change_in_circulation_percent_approx": -5.06,
+      "method": "PROVISIONAL_CROSS_SOURCE_COMPARISON; NOT_HARMONIZED"
+    },
+    "xrp_etf_flow_observations": [
+      {
+        "source_id": "SRC-RUN24-20261029T013910-XRP-ETF-INSIGHTS-OCT27",
+        "as_of_date": "2026-10-27",
+        "window": "2026-10-26_to_2026-10-27",
+        "net_flow_xrp": -3132685,
+        "net_flow_usd_approx": -4100000,
+        "universe": "6 spot funds plus BITW",
+        "method": "day-over-day issuer-reported holdings change"
+      },
+      {
+        "source_id": "SRC-RUN24-20261029T013910-XRP-ETF-ALPHA-OCT27",
+        "as_of_date": "2026-10-27",
+        "window": "2026-10-27_session",
+        "net_flow_usd": 0,
+        "universe": "5 funds",
+        "method": "provider-reported ETF flow series"
+      },
+      {
+        "source_id": "SRC-RUN24-20261029T013910-XRP-ETF-ALPHA-OCT27",
+        "as_of_date": "2026-10-27",
+        "window": "last_7_sessions",
+        "net_flow_usd": 644800,
+        "universe": "5 funds",
+        "method": "provider-reported ETF flow series"
+      }
+    ],
+    "xrp_derivatives_observation": {
+      "source_id": "SRC-RUN24-20261029T013910-XRP-OI-JUSTSCREENER",
+      "as_of": "2026-10-28 21:35 timezone unspecified",
+      "open_interest_usd_billions": 1.7,
+      "exchange_count": 9,
+      "change_24h_percent": -1.15,
+      "admission_status": "BLOCKED_UNSYNCHRONIZED_SECONDARY_SNAPSHOT"
+    },
+    "stablecoin_supply_hypothesis": {
+      "id": "HYP-RUN24-20261029T013910-STABLECOIN-CONTRACTION-VS-REDISTRIBUTION",
+      "class": "INFERENCE_FROM_MIXED_VINTAGE_SNAPSHOTS",
+      "hypothesis": "Recent issuer snapshots may indicate lower circulating supply across USDC and RLUSD, but the dates, locale pages and source lineage differ. The data cannot distinguish broad stablecoin contraction from issuer/chain redistribution or reporting-vintage effects, and does not establish capital flow into XRP.",
+      "confidence": "LOW",
+      "observations": [
+        {
+          "asset": "RLUSD",
+          "date": "2026-10-22",
+          "circulation_usd_billion": 2.3828,
+          "reserves_usd_billion": 2.528,
+          "source_ids": [
+            "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-TRANSPARENCY"
+          ]
+        },
+        {
+          "asset": "RLUSD",
+          "date": "2026-10-01",
+          "circulation_usd_billion": 2.5098,
+          "reserves_usd_billion": 2.6338,
+          "source_ids": [
+            "SRC-RUN24-20261029T013910-COINOTAG-RLUSD-OCT01"
+          ],
+          "source_type": "SECONDARY_REPORT_CITING_RIPPLE"
+        },
+        {
+          "asset": "USDC",
+          "date": "2026-10-26",
+          "circulation_usd_billion": 71,
+          "reserves_usd_billion": 71.2,
+          "source_ids": [
+            "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+          ]
+        },
+        {
+          "asset": "USDC",
+          "date": "2026-10-22",
+          "circulation_usd_billion": 72,
+          "reserves_usd_billion": 72.2,
+          "source_ids": [
+            "SRC-RUN24-20261029T013910-CIRCLE-USDC-OCT22"
+          ],
+          "source_type": "PREVIOUSLY_CAPTURED_OFFICIAL_ENGLISH_DASHBOARD"
+        }
+      ],
+      "counter_hypotheses": [
+        "Issuer-level supply changes can reflect ordinary mint/redemption timing and do not prove a transfer to another stablecoin.",
+        "Cross-chain movements and differences in reporting cutoff can change network balances without changing global supply.",
+        "RLUSD or USDC can grow on XRPL while total issuer supply falls on other networks."
+      ],
+      "disconfirming_evidence_needed": [
+        "Harmonized issuer snapshots show no decline after same-time rechecks.",
+        "Per-chain supply and bridge flows show redistribution rather than net redemption.",
+        "XRPL stablecoin activity and XRP bridge-path share do not move with global supply."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    "raw_market_observations_added": 5,
+    "sbi_group_multirail_context": {
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+        "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+        "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+        "SRC-SBI-USDC-RETAIL-2025-03-25",
+        "SRC-SBI-RLUSD-JAPAN-2026",
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+        "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
+        "SRC-RUN25-20261029T014151-SBI-EVERNORTH"
+      ],
+      "confirmed_facts": [
+        "SBI has corporate equity exposure to Ripple and Circle, a Circle/USDC JV, a Ripple/SBI Ripple Asia JV, XRP-based remittance via SBI Remit, and Japanese USDC/RLUSD distribution via SBI VC Trade."
+      ],
+      "inference": "This is consistent with multi-issuer/multi-rail diversification; it is not evidence of an exclusive XRP bet, coordinated market action, or direct SBI-to-Coinbase coordination.",
+      "current_xrp_market_impact": "NOT_ESTABLISHED"
+    }
+  },
+  "ci_test_coverage": {
+    "current_main_ci_run_id": 40799401318,
+    "status": "PASS",
+    "command": "explicit test-module list omitted tests/test_external_deploys_require_confirmation.py",
+    "pr1279_change": "adds the new test to core CI; exact-head CI passed 164 tests plus four subtests.",
+    "pr1281": {
+      "ci_run": 40800923001,
+      "tests_passed": 169,
+      "subtests_passed": 4,
+      "duration_seconds": 6.34,
+      "gate_run": 40800922971,
+      "ci": "PASS",
+      "gate": "PASS"
+    }
+  },
+  "databricks_failure_hypothesis": {
+    "status": "LIKELY_BUT_UNCONFIRMED",
+    "evidence": "scripts/deploy_databricks.py uploads files to WS_PATH + relative path (default /Barrot-Agent/B-Agent/app.py) but configures the job notebook_path as /Workspace + WS_PATH + /app.py (/Workspace/Barrot-Agent/B-Agent/app.py). The paths do not match.",
+    "counterpoint": "The available workflow-job logs were truncated before the deployment exception; exact failure cause is not verified.",
+    "next_test": "Run a local deterministic path-consistency test and inspect full deployment-step output without re-triggering the deployment."
+  },
+  "platform_coordination": {
+    "verified_live_access": [
+      "ChatGPT",
+      "GitHub repository connector"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "rule": "Do not claim live collaboration without authenticated end-to-end evidence."
+  },
+  "next_actions": [
+    "Keep PR #1281 draft and unmerged; exact-head CI and fail-closed gate passed, but human approval is still required.",
+    "Audit authorization provenance for PR #1273 and #1279; do not assume the merge queue caused either merge and do not automatically revert.",
+    "Obtain effective branch-protection/ruleset evidence through an authorized path; the detailed endpoint was 403 and the only returned ruleset is disabled.",
+    "Track XLS-68 Sponsor amendment activation and SponsoredAccountCreate PR #8606/XLS-68.1 PR #666. Do not model the feature as live until Mainnet activation is verified.",
+    "Measure sponsor-side XRP reserve concentration, user-side XRP funding, fee sponsorship, XRPL stablecoin activity and XRP bridge-path share separately before estimating net demand.",
+    "Capture Coinbase Q3 results after the October 29 after-market release and compare against Q2; distinguish RLUSD distribution from collateral utilization.",
+    "Continue synchronized spot, ETF, derivatives, stablecoin and payment-rail ingestion; admit no market feature until coverage and UTC cutoffs reconcile.",
+    "Continue SBIC identity resolution and exact-phrase investigations for ASK Coin, actual capital, SBIC/ChatGPT SBIC, and Camilla Stephenson's canonical YouTube identity."
+  ],
+  "limitations": [
+    "2026-10-29T01:24:49.096Z: This run accidentally committed tests/test_external_deploys_require_confirmation.py directly to main at c14d8cd because the branch argument was omitted. This was an error; no further direct main writes occurred.",
+    "2026-10-29T01:24:49.096Z: The direct main commit triggered external workflows: Databricks Bundle Deploy and Barrot Operations Pipeline succeeded, Deploy to Databricks failed, and core CI passed without running the new test. An earlier main commit triggered Hugging Face sync and other external workflows. Exact remote state changes are not independently verified.",
+    "2026-10-29T01:24:49.096Z: PR #1273 was merged by Barrot-Agent at 2026-10-29T01:07:06Z. This run did not perform the merge; authorization evidence is not established in this run.",
+    "2026-10-29T01:24:49.096Z: The manual merge-queue workflow can merge PRs with write permissions and mode=all, but no evidence proves it caused PR #1273's merge.",
+    "2026-10-29T01:24:49.096Z: PR #1279's initial CI failed due missing contents:read on the HF workflow; the corrected head passed 164 tests/four subtests and the fail-closed gate. PR remains draft/unmerged.",
+    "2026-10-29T01:24:49.096Z: Databricks deployment failed twice. A notebook path mismatch is a likely code-level cause, but the actual exception was not captured.",
+    "2026-10-29T01:24:49.096Z: Detailed branch protection requirements were inaccessible (403); main is reported protected, but this run's direct write succeeded. Audit bypass permissions before relying on protection.",
+    "2026-10-29T01:24:49.096Z: Main's deployment workflows remain push-triggered until PR #1279 is approved and merged; no such approval or merge occurred in this run.",
+    "2026-10-29T01:34:50.210Z: B-Agent PR #1273 was merged by Barrot-Agent at 2026-10-29T01:07:06Z and PR #1279 at 2026-10-29T01:25:58Z. The inspected records do not establish the approval path. The active merge queue can merge PRs if manually dispatched in mode=all, but no evidence in this run proves it caused either merge.",
+    "2026-10-29T01:34:50.210Z: PR #1281 proposes a read-only merge-queue workflow on fresh main. Exact-head CI passed 169 tests plus four subtests in 6.34 seconds and the fail-closed gate passed; the PR remains draft and unmerged.",
+    "2026-10-29T01:34:50.210Z: The repository ruleset endpoint returned only a ruleset with enforcement disabled; detailed branch-protection requirements were inaccessible (403). Effective required reviews/checks are not verified.",
+    "2026-10-29T01:34:50.210Z: XRPL Sponsor/XLS-68 is not active on Mainnet according to the official 2026-09-21 vulnerability disclosure. SponsoredAccountCreate PR #8606 and XLS-68.1 PR #666 remain open/unmerged; no live-network impact is observed.",
+    "2026-10-29T01:34:50.210Z: Circle's $71.0B USDC circulation and $71.2B reserves are global issuer-level values as of 2026-10-26. They do not establish XRPL-specific USDC balances or XRP bridge demand.",
+    "2026-10-29T01:34:50.210Z: Coinbase Q2 2026 distribution/economics metrics are historical; Q3 results are scheduled for 2026-10-29 after market close and were unavailable at this capture.",
+    "2026-10-29T01:34:50.210Z: No synchronized XRP spot, derivatives, ETF, stablecoin-flow or post-FOMC observations were admitted in this run. Market feature store remains blocked on timestamp/coverage reconciliation.",
+    "2026-10-29T01:34:50.210Z: Approval workflow runs 40800667128 and 40800762072 were push-event failures with zero jobs despite current workflow file declaring workflow_dispatch only. Event-time trigger cause remains unresolved.",
+    "2026-10-29T01:36:13.015Z: An initial new snapshot had a stale snapshot_character_count due to serialization order. It remains preserved and unindexed; this corrected successor recomputes the metric to the final serialized length.",
+    "2026-10-29T01:37:41.136Z: Main advanced from 1feefe76 to 079aa167b3bfbf479500f5878434368d4033add0 through a scheduled paper-trading-log append; current 2,358-row full replay passed and state matched exactly.",
+    "2026-10-29T01:37:41.136Z: Snapshot 20261029T013613 recorded stale main SHA 1feefe76 despite main being 079aa167b3bfbf479500f5878434368d4033add0 at capture. It is preserved unmodified and superseded by this correction snapshot.",
+    "2026-10-29T01:37:41.136Z: PR #1281 is one commit behind current main due a paper-trading-log-only append; no changed-path overlap was observed, but recheck base and checks before review.",
+    "2026-10-29T01:39:10.816Z: RLUSD official page reports $2.3828B circulation/$2.5280B reserves as of 2026-10-22; Oct 1 values come from a secondary report citing Ripple, so the approximately 5.1% change is provisional and not a harmonized series.",
+    "2026-10-29T01:39:10.816Z: Circle USDC $72.0B (Oct 22 English dashboard) and $71.0B (Oct 26 locale page) are distinct page vintages; preserve both and do not infer flows into RLUSD or XRP.",
+    "2026-10-29T01:39:10.816Z: XRP ETF flow sources disagree because XRP Insights covers six spot funds plus BITW while Alpha Finance covers five funds; XRP open interest is a secondary nine-exchange snapshot with timezone unspecified. These observations remain blocked from predictive features.",
+    "2026-10-29T01:41:51.133Z: SBI Group's ~9% Ripple equity stake is reported in a Feb 2025 investor presentation; it is not a current Oct 2026 cap-table verification and is not an XRP token balance.",
+    "2026-10-29T01:41:51.133Z: SBI Group disclosed a $50M Circle share purchase at Circle's IPO and a Circle/USDC JV in Aug 2025; current ownership percentage and realized economics are not established.",
+    "2026-10-29T01:41:51.133Z: SBI's Bitbank acquisition is confirmed complete, but the Q3 Kaiko rank is exchange-wide, not XRP-specific depth/volume; no direct XRP market impact estimate is established.",
+    "2026-10-29T01:41:51.133Z: SBIC East Japan's ChatGPT training curriculum is a course mention only. No direct SBIC East/Central/West relationship to XRP was established; SBICAH GK is a separate acquisition vehicle whose acronym expansion remains unverified.",
+    "2026-10-29T01:41:51.133Z: Current ODL transaction counts and XRP volume for SBI Remit/Coins.ph/SBI VC Trade were not found in reviewed public sources.",
+    "2026-10-29T01:42:53.011Z: Three recent push-event runs for barrot-approve-pr.yml have zero jobs even though both the exact event-commit workflow and current main workflow declare workflow_dispatch only and define an approve job. Root cause remains unknown; event payload/service-side diagnostics are unavailable through current connector.",
+    "2026-10-29T01:42:53.011Z: Latest fail-closed gate run 40801991494 is for index head 33a7d282; core CI remains untriggered for the research-base PR. The new snapshot/index commits require their own subsequent gate verification."
+  ],
+  "source_ids": [
+    "SRC-RUN26-20261029T014253-MAIN-APPROVAL-WORKFLOW",
+    "SRC-RUN26-20261029T014253-BRANCH-APPROVAL-WORKFLOW",
+    "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801984038",
+    "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801977851",
+    "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801973217",
+    "SRC-RUN26-20261029T014253-INDEX-GATE-40801991494"
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_manually_executed": false,
+  "automatic_external_workflows_triggered_by_main_push": false,
+  "real_money_trade": false,
+  "paper_trading_state_mutated": false,
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T014151-sbi-sbic-ripple-circle.json",
+    "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/relationship_graph_addenda/20261029T014151-sbi-sbic-ripple-circle.json",
+    "blob_sha": "50ed6d7ecd7fb6749c974e6dc7e54288627c53f8",
+    "edge_count": 12,
+    "hypothesis_count": 3,
+    "source_ids": [
+      "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+      "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+      "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+      "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+      "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
+      "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
+      "SRC-RUN25-20261029T014151-SBI-EVERNORTH",
+      "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+      "SRC-RUN25-20261029T014151-SBIC-WEST",
+      "SRC-RUN25-20261029T014151-SBI-SBIC-RELATIONSHIP-GRAPH",
+      "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+      "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z",
+      "SRC-SBI-RLUSD-JAPAN-2026",
+      "SRC-SBI-USDC-RETAIL-2025-03-25",
+      "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+    ]
+  },
+  "prior_unindexed_snapshot_with_metric_mismatch": {
+    "path": "data/xrp_intelligence/snapshots/20261029T013450-merge-queue-safety-and-sponsored-account.json",
+    "blob_sha": "4909e1875c19f4395d0432ff6546498e2f4dfcb4",
+    "stored_character_count": 35363,
+    "actual_character_count": 35367,
+    "status": "PRESERVED_UNINDEXED; CORRECTED_SUCCESSOR_CREATED"
+  },
+  "prior_snapshot_main_sha_mismatch": {
+    "path": "data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json",
+    "blob_sha": "fcad7aa594e491779d4f35c63da046acf73071f1",
+    "recorded_main_sha": "1feefe76c9bf34a73335e03b58b7ee77682b384d",
+    "actual_main_sha_at_capture": "079aa167b3bfbf479500f5878434368d4033add0",
+    "status": "PRESERVED_UNMODIFIED; SUPERSEDED_BY_THIS_SNAPSHOT"
+  },
+  "sbi_entity_resolution": {
+    "status": "PARTIAL_RESOLUTION_WITH_ENTITY_SEPARATION",
+    "sbic_east_japan": {
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "official_brand": "SBIC East Japan",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
+      ],
+      "chatgpt_mention": "Completed June 12, 2025 training curriculum included ChatGPT use; no partnership or live integration is established.",
+      "xrp_relationship": "NO_DIRECT_RELATIONSHIP_ESTABLISHED_IN_REVIEWED_PUBLIC_EVIDENCE"
+    },
+    "sbic_central_japan": {
+      "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBIC-CENTRAL"
+      ],
+      "relationship": "Sister regional company to SBIC East Japan; separate legal entity."
+    },
+    "sbic_west_japan": {
+      "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBIC-WEST"
+      ],
+      "relationship": "Sister regional company to SBIC East Japan; separate legal entity."
+    },
+    "sbicah_gk": {
+      "source_id": "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
+      "role": "SBI Holdings wholly owned acquisition vehicle used in Bitbank transaction",
+      "full_name_expansion": "NOT_VERIFIED_FROM_OFFICIAL_NOTICE",
+      "not_same_as": "SBIC East Japan"
+    },
+    "sbi_group": {
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+        "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+        "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+        "SRC-SBI-USDC-RETAIL-2025-03-25",
+        "SRC-SBI-RLUSD-JAPAN-2026",
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+        "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
+        "SRC-RUN25-20261029T014151-SBI-EVERNORTH"
+      ],
+      "confirmed_relationships": [
+        "Approx 9% Ripple equity stake as reported in Feb 2025 investor presentation",
+        "$50M Circle equity purchase at IPO and Circle JV to promote USDC in Japan as disclosed Aug 2025",
+        "SBI Ripple Asia JV: SBI 60%, Ripple 40% as of Mar 31 2026",
+        "SBI Remit ODL using XRP from Japan to Philippines since 2021; current volume unknown",
+        "SBI VC Trade launched USDC retail trading in Japan Mar 26 2025",
+        "SBI VC Trade began RLUSD handling Jun 24 2026",
+        "Bitbank became wholly owned subsidiary Oct 1 2026",
+        "SBI announced investment in Evernorth XRP treasury PIPE in Oct 2025"
+      ],
+      "important_boundary": "SBI Group relationships do not prove SBIC East/Central/West own XRP or have a direct XRP commercial relationship; equity stake in Ripple is not an XRP token balance."
+    }
+  },
+  "relationship_graph_addenda": [
+    {
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T014151-sbi-sbic-ripple-circle.json",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/relationship_graph_addenda/20261029T014151-sbi-sbic-ripple-circle.json",
+      "blob_sha": "50ed6d7ecd7fb6749c974e6dc7e54288627c53f8",
+      "edge_count": 12,
+      "hypothesis_count": 3,
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+        "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
+        "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
+        "SRC-RUN25-20261029T014151-SBI-EVERNORTH",
+        "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+        "SRC-RUN25-20261029T014151-SBIC-WEST",
+        "SRC-RUN25-20261029T014151-SBI-SBIC-RELATIONSHIP-GRAPH",
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z",
+        "SRC-SBI-RLUSD-JAPAN-2026",
+        "SRC-SBI-USDC-RETAIL-2025-03-25",
+        "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+      ]
+    }
+  ]
+}

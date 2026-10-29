@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1017-CIRCLE-ARC-SBI-COINBASE",
+  "captured_at_utc": "2026-10-29T10:17:43Z",
+  "data_cutoff_utc": "2026-10-29T10:17:43Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "forecast_status": "NOT_ISSUED",
+  "market_feature_admission": false,
+  "summary": "Fresh official-source review confirms Circle's Arc public mainnet announcement names SBI Group in the founding validator cohort and Coinbase among exchange participants providing access into Arc. Arc's described fee model uses USDC for gas rather than a volatile native token. SBI Group also has documented Ripple/XRP remittance history and RLUSD/USDC relationships. This supports a multi-rail relationship graph and competing competition/complementarity hypotheses, but does not establish active SBI validation, realized Arc volume, XRP price causality or exclusive strategic alignment.",
+  "findings": [
+    {
+      "claim": "Circle launched Arc public mainnet",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "note": "Official announcement dated Sep 16, 2026; Arc is positioned as a financial-market/payment L1 integrated with Circle's platform."
+    },
+    {
+      "claim": "SBI Group named in Arc founding validator cohort",
+      "status": "CONFIRMED_ANNOUNCED_COHORT",
+      "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "note": "Circle describes a phased rollout from the founding cohort and names SBI Group. Current active validator operation is not independently verified."
+    },
+    {
+      "claim": "Coinbase named as Arc exchange participant",
+      "status": "CONFIRMED_ANNOUNCED_PARTICIPANT",
+      "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "note": "Circle says Coinbase and other exchanges give users/institutions access into Arc; this does not mean Coinbase is a validator or that Arc uses XRP."
+    },
+    {
+      "claim": "Arc uses USDC for gas",
+      "status": "CONFIRMED_COMPANY_DESIGN_STATEMENT",
+      "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "note": "Circle says fees are paid in USDC with no volatile native token required. This differs from XRP-denominated XRPL transaction fees, but substitution or price effect is unproven."
+    },
+    {
+      "claim": "SBI Group has parallel Ripple/XRP and Circle/Arc relationships",
+      "status": "CONFIRMED_RELATIONSHIPS_PLUS_INFERENCE",
+      "source": "https://www.sbigroup.co.jp/news/2023/0906_14052.html; https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/; https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "note": "The public relationships support multi-rail optionality as an inference, not proof of a coordinated strategy, realized transaction volumes or XRP price effect."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-RUN59-SBI-MULTI-RAIL-OPTIONALITY",
+      "status": "PLAUSIBLE_INFERENCE",
+      "summary": "SBI Group may be diversifying or maintaining optionality across Ripple/XRP, USDC/RLUSD and Circle Arc. No relative capital allocation or routing share is disclosed."
+    },
+    {
+      "id": "HYP-RUN59-ARC-COMPETITION-XRP",
+      "status": "UNTESTED",
+      "summary": "Arc's USDC-native fees and institutional settlement may compete with some XRP-related payment workflows, while coexisting with XRP as a bridge asset on different corridors. Route-level cost/liquidity/volume comparisons are missing."
+    },
+    {
+      "id": "HYP-RUN59-COINBASE-MULTICHAIN",
+      "status": "PLAUSIBLE_STRATEGIC_INFERENCE",
+      "summary": "Coinbase's Arc access role and RLUSD distribution alongside Circle/USDC economics is consistent with multi-chain/multi-stablecoin distribution rather than exclusivity. Actual Arc and RLUSD economics remain unknown."
+    }
+  ],
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
+    "blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
+    "commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
+    "nodes": 8,
+    "edges": 5,
+    "hypotheses": 3
+  },
+  "sources": [
+    {
+      "id": "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx"
+    },
+    {
+      "id": "SRC-CIRCLE-ARC-MAINNET-2026-09-16-RECHECK-2026-10-28T1006Z",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx"
+    },
+    {
+      "id": "SRC-CIRCLE-ARC-SBI-FOUNDING-VALIDATOR-2026-10-28T1111Z",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx"
+    },
+    {
+      "id": "SRC-SBI-REMIT",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+    },
+    {
+      "id": "SRC-RIPPLE-SBI-RLUSD",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/"
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf"
+    },
+    {
+      "id": "SRC-SBI-VC-TRADE-ODL-EXPANSION-2023-09-06",
+      "url": "https://www.sbivc.co.jp/newsview/88ut48zo5l"
+    }
+  ],
+  "corporate_events": [
+    {
+      "entity": "Coinbase Global",
+      "scheduled": "2026-10-29 after US market close",
+      "status": "NOT_YET_DUE_AT_CAPTURE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx"
+    },
+    {
+      "entity": "Circle Internet Group",
+      "scheduled": "2026-11-04 08:00 ET",
+      "status": "FUTURE_EVENT",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-to-Announce-Q3-2026-Financial-Results-on-November-4-2026/default.aspx"
+    }
+  ],
+  "verification": {
+    "graph_readback": "PASS",
+    "snapshot_readback": "PENDING_AFTER_CREATE",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "real_money_trade": false
+  }
+}

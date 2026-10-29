@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T190223Z-PR1342-CURRENT-HEAD-CI-MARKET-CONFLICTS",
+  "captured_at_utc": "2026-10-29T19:02:23Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains the execution and verification foundation.",
+  "observed_main_sha": "5dc330a0fb1d7159a27ceafab4bfe35fee071708",
+  "research_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+  "source_ids": [
+    "SRC-GH-MAIN-HEAD-20261029T190223Z",
+    "SRC-GH-XRP-SIGNAL-20261029T190223Z",
+    "SRC-GH-XRP-SUMMARY-20261029T190223Z",
+    "SRC-GH-PAPER-STATE-20261029T190223Z",
+    "SRC-GH-PAPER-WORKFLOW-20261029T190223Z",
+    "SRC-GH-MERGE-QUEUE-20261029T190223Z",
+    "SRC-GH-PR1342-STATE-20261029T190223Z",
+    "SRC-GH-PR1342-CI-20261029T190223Z",
+    "SRC-GH-PR1342-GATE-20261029T190223Z",
+    "SRC-GH-PR1342-EMITTER-20261029T190223Z",
+    "SRC-GH-PR1342-TESTS-20261029T190223Z",
+    "SRC-GH-CI-WORKFLOW-20261029T190223Z",
+    "SRC-GH-GATE-WORKFLOW-20261029T190223Z",
+    "SRC-WEB-LIQWALL-XRP-20261029T190223Z",
+    "SRC-WEB-ALPHA-XRP-LIQ-20261029T190223Z",
+    "SRC-WEB-TRADRADAR-XRP-20261029T190223Z",
+    "SRC-WEB-XRPINSIGHTS-ETF-20261029T190223Z",
+    "SRC-WEB-ALPHA-ETF-20261029T190223Z",
+    "SRC-WEB-CIRCLE-Q3-20261029T190223Z",
+    "SRC-WEB-COINBASE-Q3-SCHEDULE-20261029T190223Z"
+  ],
+  "findings": [
+    {
+      "id": "FINDING-MAIN-SIGNAL-20261029T190223Z",
+      "status": "VERIFIED_MAIN_INVALID_FOR_FORECASTING",
+      "detail": "Main signal blob remains unchanged at timestamp 2026-10-29T13:23:33Z, score 44, confidence 0.0, news score 88 from 11 entries, with missing GitHub model credentials and Groq HTTP 429. At capture it is approximately 5 hours 39 minutes old. It is not a valid return forecast."
+    },
+    {
+      "id": "FINDING-PR1342-20261029T190223Z",
+      "status": "EXACT_HEAD_CI_AND_GATE_PASS; DRAFT_UNMERGED; BASE_LAG",
+      "detail": "PR #1342 head 0b8d3f7adc44b17a22678e70234ee6dad8212f08 passed core CI run 40936500680 (298 tests plus 8 subtests in 6.60 seconds) and fail-closed gate run 40936500732. It consolidates strict emitter validation, a regression test for non-string/unhashable sentiment, and a static NOT_ISSUED public-summary artifact. It remains draft and unmerged. Its base advanced one commit to 5dc330a0fb1d7159a27ceafab4bfe35fee071708; that commit changes only sentiment_shift.json, outside PR paths. GitHub initially reported mergeable=false, so current-base mergeability must be rechecked before approval."
+    },
+    {
+      "id": "FINDING-PAPER-STATE-20261029T190223Z",
+      "status": "VERIFIED_MANUAL_ONLY_STATE_IDENTITY_UNRESOLVED",
+      "detail": "The paper-trader workflow is manual-dispatch-only, not cron-scheduled. Persisted state has position_size 0.012445158497236623, position_product null, cash 9009.9366 and 126 trades. A successful manual run can still push state/log. No dispatch or repair occurred."
+    },
+    {
+      "id": "FINDING-MERGE-QUEUE-20261029T190223Z",
+      "status": "VERIFIED_MAIN_MUTATION_CAPABLE",
+      "detail": "Main merge queue still grants contents/pull-request write permissions, allows mode=all, defaults dry_run=false and max_prs=0, and includes branch-update/comment/merge/delete-branch operations. No workflow was dispatched."
+    },
+    {
+      "id": "FINDING-DERIVATIVES-SCOPE-20261029T190223Z",
+      "status": "SOURCED_CONFLICT_NOT_ADMITTED",
+      "detail": "Liqwall reports $1.44B OI at 15:52 UTC; TradRadar $2.03B at 16:20 UTC; Alpha Finance's liquidation heatmap $3.02B at 13:22 UTC. Their timestamps, venue coverage and aggregation methods are not normalized. No derivatives feature was admitted."
+    },
+    {
+      "id": "FINDING-ETF-FLOW-CONFLICT-20261029T190223Z",
+      "status": "PROVISIONAL_AND_NONCOMPARABLE",
+      "detail": "XRP Insights reports provisional +174,140 XRP for Oct 28 and -2.96M XRP over Oct 26–28 across six spot funds plus BITW, with flow exclusions; Alpha Finance reports $0 Oct 28 across five spot funds and +$90.4M over 30 sessions. Fund universes, units, settlement and missing-data rules differ. No ETF feature was admitted."
+    },
+    {
+      "id": "FINDING-CORPORATE-DISCLOSURES-20261029T190223Z",
+      "status": "SCHEDULES_CONFIRMED_RESULTS_NOT_YET_AVAILABLE",
+      "detail": "Coinbase Q3 results are scheduled after the US market close on Oct 29, and Circle Q3 results for Nov 4 at 8:00 a.m. ET. No unreleased figures or XRP price effects are inferred."
+    }
+  ],
+  "interpretation": "The highest-impact progress is a consolidated, tested safety proposal for the invalid XRP signal and stale public summary. Exact-head CI and the fail-closed gate passed, including a new regression test for a malformed non-string sentiment value that could otherwise raise TypeError. The proposal is not merged and is one main commit behind; main remains unchanged. Derivatives and ETF observations remain secondary, conflicting, and excluded from features. No calibrated price forecast is available.",
+  "unknowns": [
+    "The latest PR's mergeability after the one-commit base advance has not been confirmed; do not merge automatically.",
+    "The current main XRP signal and public summary remain invalid/stale until an approved fix is merged and safe publication is deliberately executed.",
+    "The paper-trading position product remains null and must not be guessed or repaired automatically.",
+    "The merge queue remains mutation-capable; effective branch-protection/ruleset bypass behavior is still unverified.",
+    "No synchronized per-venue XRP derivatives panel or issuer-normalized ETF-flow reconstruction has been produced.",
+    "Coinbase Q3 results were scheduled after the US market close and were not available at this capture; Circle Q3 results remain scheduled for Nov 4.",
+    "No live authentication/handoff tests exist for all nine target AI/data platforms; their coordination remains design-only.",
+    "The original SBIC/ChatGPT SBIC, ASK Coin and actual-capital contexts and the canonical Camilla Stephenson identity/video inventory remain unresolved or partial."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatch_performed": false,
+  "real_money_trade": false
+}

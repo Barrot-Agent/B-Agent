@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T0705-MARKET-STRUCTURE-AND-SIGNAL-SAFETY",
+  "captured_at_utc": "2026-10-29T07:05:30.000Z",
+  "observed_main_sha": "dbc2929e5249ebd7637204e8b279896a8336cf53",
+  "policy": "Record partial market observations as dated snapshots, not synchronized ground truth. Distinguish exchange/account positioning from notional exposure, ETF tracker estimates from issuer-level settled flows, RLUSD distribution from XRP spot demand, and repository test passes from merged production fixes. No forecast is issued without valid inputs and a calibrated fixed-horizon protocol.",
+  "nodes": [
+    {
+      "id": "XRP_PERPETUAL_MARKETS",
+      "label": "XRP spot/perpetual market (partial secondary snapshots)",
+      "kind": "MARKET_STRUCTURE_NODE"
+    },
+    {
+      "id": "XRP_ETF_COMPLEX",
+      "label": "U.S. XRP ETF complex (tracker-derived flow estimates)",
+      "kind": "INSTITUTIONAL_FLOW_PROXY"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase exchange, custody and distribution platform",
+      "kind": "EXCHANGE_AND_CUSTODY_PLATFORM"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD (RLUSD)",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_BLOCKCHAIN_NETWORK"
+    },
+    {
+      "id": "BARROT_XRP_SIGNAL_PIPELINE",
+      "label": "Barrot XRP signal and summary pipeline",
+      "kind": "REPOSITORY_OBSERVED_MODEL_OUTPUT"
+    },
+    {
+      "id": "BARROT_PAPER_TRADER",
+      "label": "Barrot simulated BTC-USD paper trader",
+      "kind": "SIMULATED_TRADING_WORKFLOW"
+    },
+    {
+      "id": "BARROT_MAIN_MERGE_QUEUE",
+      "label": "Barrot main-branch merge queue workflow",
+      "kind": "REPOSITORY_MUTATION_CAPABILITY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN45-XRP-PERP-PARTIAL-OBSERVATION",
+      "source": "XRP_PERPETUAL_MARKETS",
+      "target": "XRP spot/perpetual price and positioning",
+      "relationship": "DATED_PARTIAL_MARKET_OBSERVATION",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "A Kairo Trade page snapshot reports XRP/USDT perpetual price 1.3027, 24-hour change -1.90%, turnover about $1.8B, open interest about $2.0B, funding +0.0085%, and BTC correlation 0.92 as of 2026-10-29 05:15 UTC. Funding interval, full venue universe and correlation window are not specified in the captured excerpt. A separate Coinalyze-based view reports Binance OI $398.28M and 75.83% long accounts, and Bybit OI $284.84M and 80.68% long accounts at 04:00 UTC; account ratios are not notional exposure and coverage is partial.",
+      "source_ids": [
+        "SRC-RUN45-20261029T0705Z-XRP-MARKET-KAIRO",
+        "SRC-RUN45-20261029T0705Z-XRP-DERIVATIVES-COINALYZE"
+      ]
+    },
+    {
+      "id": "EDGE-RUN45-XRP-ETF-FLOW-PROXY",
+      "source": "XRP_ETF_COMPLEX",
+      "target": "XRP spot demand",
+      "relationship": "PROXY_WITH_TRACKER_METHODOLOGY_DISAGREEMENT",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "One five-fund tracker reports $0 net flow on 2026-10-28, +$644.8K over seven sessions and +$90.4M over 30 sessions; a separate tracker using six spot funds plus BITW reports -3,132,685 XRP over 2026-10-26 to 2026-10-27 and labels the 2026-10-28 row provisional. Different universes, units and settlement windows prevent treating these as one reconciled flow series.",
+      "source_ids": [
+        "SRC-RUN45-20261029T0705Z-XRP-ETF-ALPHA",
+        "SRC-RUN45-20261029T0705Z-XRP-ETF-INSIGHTS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN45-COINBASE-RLUSD-DISTRIBUTION",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "EXCHANGE_LISTING_AND_DISTRIBUTION",
+      "evidence_class": "COMPANY_REPORTED",
+      "claim": "On 2026-10-28, Ripple and Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and the retail app, with supported deposits/withdrawals across XRPL, Base and Ethereum. Coinbase Global Exchange availability including RLUSD collateral was described as a future rollout, not current live collateral use at the announcement cutoff.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ]
+    },
+    {
+      "id": "EDGE-RUN45-RLUSD-XRPL-NETWORK",
+      "source": "RLUSD",
+      "target": "XRPL",
+      "relationship": "SUPPORTED_STABLECOIN_NETWORK",
+      "evidence_class": "COMPANY_REPORTED",
+      "claim": "RLUSD is supported on XRPL as well as Base and Ethereum. Stablecoin transfers on XRPL do not necessarily route through XRP as a bridge asset; activity growth alone is not proof of material XRP spot demand.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ]
+    },
+    {
+      "id": "EDGE-RUN45-BARROT-SIGNAL-INVALID",
+      "source": "BARROT_XRP_SIGNAL_PIPELINE",
+      "target": "XRP directional forecast",
+      "relationship": "INVALID_INPUT_BLOCKS_ISSUANCE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main signal artifact timestamp 2026-10-29 06:33:14 UTC reports score 44, confidence 0.0, news score 88 from 11 entries and provider unavailability (missing GitHub model credentials and Groq HTTP 429). The public summary still frames the output as moderate/positive. This is not a valid forecast; status remains NOT_ISSUED.",
+      "source_ids": [
+        "SRC-RUN45-20261029T0705Z-MAIN-XRP-SIGNAL",
+        "SRC-RUN45-20261029T0705Z-MAIN-XRP-SUMMARY"
+      ]
+    },
+    {
+      "id": "EDGE-RUN45-PAPER-TRADER-STATE-IDENTITY",
+      "source": "BARROT_PAPER_TRADER",
+      "target": "BTC-USD simulated position",
+      "relationship": "UNIDENTIFIED_PERSISTED_POSITION",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main state has nonzero position_size 0.024901276579239066, avg_entry_price 80436.84, trade_count 125 and position_product null while the workflow configures BTC-USD. The 2026-10-29 07:05:17 UTC main commit changes only one paper-trading log line; state blob is unchanged. Full log content was not returned by the connected file action, so the latest action and current replay cannot be independently verified.",
+      "source_ids": [
+        "SRC-RUN45-20261029T0705Z-MAIN-HEAD",
+        "SRC-RUN45-20261029T0705Z-MAIN-PAPER-STATE",
+        "SRC-RUN45-20261029T0705Z-MAIN-PAPER-WORKFLOW"
+      ]
+    },
+    {
+      "id": "EDGE-RUN45-MAIN-MERGE-QUEUE-MUTATION",
+      "source": "BARROT_MAIN_MERGE_QUEUE",
+      "target": "Repository branches and pull requests",
+      "relationship": "MANUAL_WORKFLOW_HAS_MUTATION_CAPABILITY",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main merge-queue workflow still has contents:write and pull-requests:write, dry_run defaults false, max_prs defaults to unlimited, offers mode=all, updates PR branches, posts comments, merges PRs and deletes branches. Draft PR #1290 proposes a read-only audit and its exact-head CI/gate passed, but it remains unmerged; main remains mutation-capable.",
+      "source_ids": [
+        "SRC-RUN45-20261029T0705Z-MAIN-MERGE-QUEUE",
+        "SRC-RUN43-20261029T0614Z-PR1290-CI",
+        "SRC-RUN43-20261029T0614Z-PR1290-GATE"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN45-PERP-LONG-SKEW-SQUEEZE-RISK",
+      "class": "MARKET_STRUCTURE_COMPETING_HYPOTHESES",
+      "hypothesis": "Positive reported funding and high long-account ratios on two venues may indicate one-sided positioning that increases liquidation sensitivity if price declines.",
+      "confidence": "LOW; PARTIAL_SECONDARY_SNAPSHOT",
+      "supporting_source_ids": [
+        "SRC-RUN45-20261029T0705Z-XRP-MARKET-KAIRO",
+        "SRC-RUN45-20261029T0705Z-XRP-DERIVATIVES-COINALYZE"
+      ],
+      "counter_hypotheses": [
+        "Account ratios are not notional exposure; high long-account share can persist in a rising trend or coexist with hedged basis trades. Only two venues and one time slice are represented.",
+        "The apparent long skew may be a measurement artifact caused by venue coverage or funding interval ambiguity."
+      ],
+      "disconfirming_evidence_needed": [
+        "Synchronized multi-venue OI and funding history with explicit intervals, price/volume series, liquidations and long/short notional rather than account counts."
+      ],
+      "xrp_price_effect": "NO_DIRECTIONAL_FORECAST; SQUEEZE_SENSITIVITY_ONLY"
+    },
+    {
+      "id": "HYP-RUN45-ETF-FLOW-SUPPORT-VS-FLAT",
+      "class": "INSTITUTIONAL_FLOW_COMPETING_HYPOTHESES",
+      "hypothesis": "Sustained positive net creations across reconciled XRP spot ETFs could provide marginal spot demand; the latest tracker views instead show near-flat recent flow in one universe and a negative two-session XRP-unit change in another.",
+      "confidence": "LOW; FLOW_SERIES_NOT_RECONCILED",
+      "supporting_source_ids": [
+        "SRC-RUN45-20261029T0705Z-XRP-ETF-ALPHA",
+        "SRC-RUN45-20261029T0705Z-XRP-ETF-INSIGHTS"
+      ],
+      "counter_hypotheses": [
+        "Differences may arise from fund universe, units, capture gaps, settlement timing or provisional rows rather than true economic disagreement.",
+        "ETF flows can be outweighed by derivatives positioning, exchange inventory, macro risk appetite or other spot flows."
+      ],
+      "disconfirming_evidence_needed": [
+        "Issuer-level daily holdings and shares outstanding reconciled fund-by-fund, common timestamps and settled flow calculations."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN45-RLUSD-UTILITY-NOT-XRP-SPOT",
+      "class": "ECOSYSTEM_ADOPTION_COMPETING_HYPOTHESES",
+      "hypothesis": "Coinbase distribution may expand RLUSD access and XRPL stablecoin activity without creating proportionate XRP spot demand because RLUSD transfers need not use XRP as a bridge asset.",
+      "confidence": "MEDIUM_FOR_MECHANISM; LOW_FOR_REALIZED_ACTIVITY",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ],
+      "counter_hypotheses": [
+        "Stablecoin distribution could indirectly improve XRPL liquidity, wallet usage, exchange access or cross-asset routes that do use XRP; these are possible spillovers, not established effects."
+      ],
+      "disconfirming_evidence_needed": [
+        "Post-launch XRPL RLUSD transfer and market-making data, path-payment/bridge usage, XRP order-book depth and transaction-level evidence distinguishing direct RLUSD transfers from XRP-routed flows."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN45-TECHNICAL-PAPER-SENTIMENT-NOT-FLOW",
+      "class": "SIGNAL_VALIDITY_COMPETING_HYPOTHESES",
+      "hypothesis": "Labeling XRP Ledger protocol and networking papers bullish may inflate a news score without establishing adoption, capital flows or a price forecast; zero confidence and provider failure require NOT_ISSUED.",
+      "confidence": "HIGH_FOR_CURRENT_SIGNAL_INVALIDITY; PRICE_DIRECTION_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-RUN45-20261029T0705Z-MAIN-XRP-SIGNAL",
+        "SRC-RUN45-20261029T0705Z-MAIN-XRP-SUMMARY"
+      ],
+      "counter_hypotheses": [
+        "A verified technical advance may eventually support usage or developer adoption, but timing and price transmission require separate evidence."
+      ],
+      "disconfirming_evidence_needed": [
+        "Valid independent model inputs, event-to-usage evidence, synchronized market data and calibrated out-of-sample forecast results."
+      ],
+      "xrp_price_effect": "NO_FORECAST_ISSUED"
+    },
+    {
+      "id": "HYP-RUN45-BTC-MACRO-DOMINANCE",
+      "class": "CROSS_ASSET_COMPETING_HYPOTHESES",
+      "hypothesis": "The reported BTC correlation of 0.92 may indicate that broad crypto or macro risk factors dominate the sampled XRP move.",
+      "confidence": "LOW; CORRELATION_WINDOW_UNSPECIFIED",
+      "supporting_source_ids": [
+        "SRC-RUN45-20261029T0705Z-XRP-MARKET-KAIRO"
+      ],
+      "counter_hypotheses": [
+        "The correlation estimate may be window-sensitive or stale; XRP-specific flows, regulatory events or liquidity shocks can produce decoupling."
+      ],
+      "disconfirming_evidence_needed": [
+        "Synchronized XRP/BTC returns across declared horizons, rolling correlations, regime splits and event-window tests using leakage-safe timestamps."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    }
+  ],
+  "notes": [
+    "Market observations are a dated research snapshot, not a synchronized exchange-level panel. The Kairo data cutoff is 2026-10-29 05:15 UTC and the Coinalyze-based account ratios are shown at 04:00 UTC; no forecast is issued from them.",
+    "The ETF trackers do not use the same fund universe, units or settlement rules. Do not admit their aggregate figures into the feature store until reconciled from issuer-level holdings.",
+    "Coinbase Q3 2026 results are scheduled for 2026-10-29 after market close; no result is available at this snapshot cutoff.",
+    "Main remains unchanged by this run. PR #1289 has exact-head CI and fail-closed gate passes but remains draft/unmerged; current main has no changes to its touched paper-trader script/test/CI paths since its base, although the branch is behind due to unrelated generated-data commits.",
+    "PR #1290 and #1291 exact-head CI and fail-closed gates passed; both remain draft/unmerged. No live collaboration across the nine target AI/data platforms was verified."
+  ]
+}

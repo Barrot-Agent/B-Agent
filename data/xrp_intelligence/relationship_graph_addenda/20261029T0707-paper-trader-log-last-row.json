@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T0707-PAPER-TRADER-LOG-ROW-CORRECTION",
+  "captured_at_utc": "2026-10-29T07:07:00.000Z",
+  "observed_main_sha": "dbc2929e5249ebd7637204e8b279896a8336cf53",
+  "policy": "Correct only what the immutable Git commit diff proves. A visible latest appended row does not establish that the full historical log is available or replayable.",
+  "nodes": [
+    {
+      "id": "BARROT_PAPER_TRADER",
+      "label": "Barrot simulated BTC-USD paper trader",
+      "kind": "SIMULATED_TRADING_WORKFLOW"
+    },
+    {
+      "id": "PAPER_LOG_ROW_20261029T070517Z",
+      "label": "Paper-trader log row timestamped 2026-10-29 07:05:17 UTC",
+      "kind": "COMMIT_DIFF_VERIFIED_SIMULATED_OBSERVATION"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN46-PAPER-TRADER-LATEST-ROW",
+      "source": "BARROT_PAPER_TRADER",
+      "target": "PAPER_LOG_ROW_20261029T070517Z",
+      "relationship": "APPENDED_SIMULATED_HOLD_ROW",
+      "evidence_class": "REPOSITORY_OBSERVATION_FROM_COMMIT_DIFF",
+      "claim": "Commit dbc2929e5249ebd7637204e8b279896a8336cf53 adds a BTC-USD simulated log row timestamped 2026-10-29T07:05:17.567610Z: price 79823.89, decision hold, result 'held -- no action taken', portfolio value USD 9999.65, cycle change 0.0 and cumulative return -0.003%. This verifies the latest appended row only; it does not make the full log available or validate the historical replay.",
+      "source_ids": [
+        "SRC-RUN46-20261029T0707Z-PAPER-LOG-LAST-ROW"
+      ]
+    }
+  ],
+  "hypotheses": [],
+  "notes": [
+    "The row is from a simulated BTC-USD paper trader, not XRP and not a real-money trade.",
+    "The persisted state remains position_size 0.024901276579239066 with position_product null and trade_count 125; the latest row records no action and the state blob is unchanged.",
+    "Full web/paper_trading_log.jsonl content remains unavailable through the connected file action. The current replay remains blocked."
+  ]
+}

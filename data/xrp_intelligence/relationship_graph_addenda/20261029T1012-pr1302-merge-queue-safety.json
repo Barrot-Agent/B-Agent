@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1012-PR1302-MERGE-QUEUE-SAFETY",
+  "captured_at_utc": "2026-10-29T10:12:18Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "policy": "The proposal is draft only. Do not merge or dispatch workflows without explicit authorization. The current main workflow remains unchanged.",
+  "nodes": [
+    {
+      "id": "BARROT_MAIN_MERGE_QUEUE",
+      "label": "Main mutation-capable merge queue workflow",
+      "kind": "HIGH_RISK_WORKFLOW"
+    },
+    {
+      "id": "BARROT_PR1302",
+      "label": "Fresh-main read-only merge queue proposal",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    },
+    {
+      "id": "BARROT_PR1302_CI",
+      "label": "PR #1302 core CI",
+      "kind": "CI_EVIDENCE_PENDING"
+    },
+    {
+      "id": "BARROT_PR1302_GATE",
+      "label": "PR #1302 fail-closed gate",
+      "kind": "GATE_EVIDENCE_PENDING"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN54-PR1302-REPLACES-WORKFLOW",
+      "source": "BARROT_PR1302",
+      "target": "BARROT_MAIN_MERGE_QUEUE",
+      "relationship": "PROPOSED_READ_ONLY_REPLACEMENT",
+      "evidence_class": "REPOSITORY_DIFF_OBSERVATION",
+      "claim": "PR #1302 is based on current main 649394b89b957b4719d4b689de47bc004bcd45f0 and changes only the CI workflow, merge-queue workflow and a regression test. It removes write permissions and merge/branch-update/delete behavior on its branch; main is not changed.",
+      "source_ids": [
+        "SRC-RUN54-20261029T1012Z-MAIN-HEAD",
+        "SRC-RUN54-20261029T1012Z-MERGE-WORKFLOW",
+        "SRC-RUN54-20261029T1012Z-PR1302"
+      ]
+    },
+    {
+      "id": "EDGE-RUN54-PR1302-CI-STATUS",
+      "source": "BARROT_PR1302",
+      "target": "BARROT_PR1302_CI",
+      "relationship": "CI_RUNNING_AT_CAPTURE",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "Core CI run 40855667441 and fail-closed gate run 40855667392 were both in progress at the 10:12:18Z cutoff. No pass is claimed yet.",
+      "source_ids": [
+        "SRC-RUN54-20261029T1012Z-PR1302",
+        "SRC-RUN54-20261029T1012Z-CI",
+        "SRC-RUN54-20261029T1012Z-GATE"
+      ]
+    },
+    {
+      "id": "EDGE-RUN54-PR1302-GATE",
+      "source": "BARROT_PR1302",
+      "target": "BARROT_PR1302_GATE",
+      "relationship": "GATE_PENDING",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "Fail-closed gate had started but had not completed at capture. PR remains draft/unmerged; no merge or workflow dispatch was performed manually.",
+      "source_ids": [
+        "SRC-RUN54-20261029T1012Z-PR1302",
+        "SRC-RUN54-20261029T1012Z-GATE"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN54-MERGE-AUTHORIZATION",
+      "statement": "Removing mutation capability from the manually dispatchable merge queue is a safer default than relying on the workflow to be dispatched only with the correct inputs.",
+      "status": "SAFETY_DESIGN_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-RUN54-20261029T1012Z-MERGE-WORKFLOW",
+        "SRC-RUN54-20261029T1012Z-PR1302"
+      ],
+      "disconfirming_evidence": [
+        "A separate protected, explicit approval-based merge process could also be safe if its authorization, required checks and bypass rules were verified."
+      ],
+      "tests_needed": [
+        "Confirm exact-head CI, gate and workflow static tests; verify repository rulesets and administrator bypass settings; require explicit human approval for any future merge."
+      ]
+    }
+  ],
+  "notes": [
+    "DESIGNED: read-only manual PR inventory with least privilege.",
+    "EXECUTED: fresh-main draft PR #1302 created; exact-head CI and gate started.",
+    "VERIFIED: branch changes only three paths and main remains unchanged at capture.",
+    "PENDING: exact-head core CI and fail-closed gate outcomes."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T151120Z-SBIC-DATASET-AND-KAMILAH-VIDEO-CANDIDATES",
+  "captured_at_utc": "2026-10-29T15:11:20Z",
+  "data_cutoff_utc": "2026-10-29T15:11:20Z",
+  "observed_main_sha": "fb2f59012c1ba6d3bf1417d36545bb46028c8f65",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Exact-phrase research found an additional SBIC acronym collision: ACL's 2020 paper uses SBIC for the Social Bias Inference Corpus, and an indexed academic PDF mentions ChatGPT evaluation with an SBIC dataset. This is a distinct candidate meaning, not evidence of a Japanese investment-company/OpenAI relationship. Two more public Kamilah Stevenson XRP videos were surfaced: one on off-exchange custody/execution, one on oil/yen carry-trade liquidity and XRP. The channel is still not verified as the same person as Camilla Stephenson; creator claims are not admitted as market facts. No forecast issued.",
+  "findings": [
+    {
+      "id": "FIND-20261029T151120Z-SBIC-ACRONYM-COLLISION",
+      "evidence_class": "CONFIRMED_ACADEMIC_PRIMARY_SOURCE",
+      "claim": "SBIC is used in NLP research for the Social Bias Inference Corpus, introduced by Sap et al. in an ACL paper. A separate indexed academic PDF mentions ChatGPT evaluation with an SBIC dataset, creating a plausible non-Japanese interpretation of the exact phrase 'ChatGPT SBIC'.",
+      "source_ids": [
+        "SRC-ACL-SBIC-DATASET-20261029T151120Z",
+        "SRC-SCIENGINE-CHATGPT-SBIC-20261029T151120Z"
+      ],
+      "limitation": "The original phrase context remains unavailable; the user's explicit Japan focus may point to a Japanese Small and Medium Business Investment & Consultation entity instead."
+    },
+    {
+      "id": "FIND-20261029T151120Z-KAMILAH-VIDEO-LEADS",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "claim": "Two public videos by a channel/result labeled Kamilah Stevenson discuss XRP custody/execution and a macro-liquidity/yen-carry-trade thesis. The latter is a claim to test, not established causal evidence.",
+      "source_ids": [
+        "SRC-YT-KAMILAH-XRP-CUSTODY-20261029T151120Z",
+        "SRC-YT-KAMILAH-XRP-YEN-CARRY-20261029T151120Z"
+      ],
+      "limitation": "Exact identity equivalence between Kamilah Stevenson and Camilla Stephenson is unverified; public upload inventory remains partial."
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-ACL-SBIC-DATASET-20261029T151120Z",
+      "url": "https://aclanthology.org/2020.acl-main.486/"
+    },
+    {
+      "id": "SRC-SCIENGINE-CHATGPT-SBIC-20261029T151120Z",
+      "url": "https://www.sciengine.com/cfs/files/pdfs/view/2096-9732/F828194D488B4F0AB7E9E09F97E262FF.pdf"
+    },
+    {
+      "id": "SRC-YT-KAMILAH-XRP-CUSTODY-20261029T151120Z",
+      "url": "https://www.youtube.com/watch?v=IUkOKRkbkNo"
+    },
+    {
+      "id": "SRC-YT-KAMILAH-XRP-YEN-CARRY-20261029T151120Z",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+    }
+  ],
+  "market_observations": [],
+  "verification": {
+    "source_reference_count": 4,
+    "missing_source_references": 0,
+    "source_ids_unique": true,
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "readback_status_at_capture": "PENDING"
+  }
+}

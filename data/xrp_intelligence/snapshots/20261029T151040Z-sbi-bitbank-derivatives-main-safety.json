@@ -1,0 +1,258 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T151040Z-SBI-BITBANK-DERIVATIVES-MAIN-SAFETY",
+  "captured_at_utc": "2026-10-29T15:10:40Z",
+  "data_cutoff_utc": "2026-10-29T15:10:40Z",
+  "observed_main_sha": "fb2f59012c1ba6d3bf1417d36545bb46028c8f65",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Current main is fb2f59012c1ba6d3bf1417d36545bb46028c8f65. A main commit on Oct 29 removed the paper-trader cron schedule, so earlier claims that the 30-minute schedule remains active are stale; the workflow is now manual-dispatch-only. The persisted paper position remains nonzero with position_product=null, and manual execution is unsafe until identity validation is merged. Fresh-main PR #1334 adds a position identity guard and passed 303 tests plus 8 subtests and the fail-closed gate. Fresh-main PR #1335 replaces the mutation-capable merge queue with a read-only audit and passed 296 tests plus 8 subtests and the fail-closed gate. SBI completed acquisition of bitbank, which already supports XRP/JPY; SBI also offers an XRP reward-card channel and handles RLUSD through SBI VC Trade. Derivatives dashboards show reported long-biased positioning amid falling XRP prices, but coverage and cutoffs differ. No market features admitted; no forecast issued.",
+  "findings": [
+    {
+      "id": "FIND-20261029T151040Z-MAIN-SCHEDULE-PAUSED",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Commit 0cc8f4c64139800ec138a88196f5db593ae680a7 removed the 30-minute cron trigger from coinbase-paper-trader.yml. Current main is manual-dispatch-only, so previous handoff statements that the schedule remains active are stale.",
+      "source_ids": [
+        "SRC-GH-MAIN-PAUSE-SCHEDULE-20261029T151040Z",
+        "SRC-GH-PAPER-WORKFLOW-20261029T151040Z"
+      ],
+      "limitation": "Manual dispatch still runs the trader and commits/pushes state/log; position identity remains unresolved."
+    },
+    {
+      "id": "FIND-20261029T151040Z-PAPER-STATE-GUARD",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Current persisted simulated state has a nonzero position_size and position_product=null. PR #1334 adds a guard before provider/model calls, records product identity on buys, and clears it on full closes; exact-head CI and fail-closed gate passed.",
+      "source_ids": [
+        "SRC-GH-PAPER-STATE-20261029T151040Z",
+        "SRC-GH-PR1334-20261029T151040Z",
+        "SRC-GH-PR1334-CI-20261029T151040Z",
+        "SRC-GH-PR1334-GATE-20261029T151040Z"
+      ],
+      "limitation": "PR remains draft/unmerged; main is not yet guarded. Do not infer product identity or rewrite state."
+    },
+    {
+      "id": "FIND-20261029T151040Z-MERGE-QUEUE-READONLY",
+      "evidence_class": "PROPOSED_FIX",
+      "claim": "Current main's merge queue can mutate PRs/branches when manually dispatched. Fresh-main PR #1335 removes write permissions and merge commands and passed exact-head CI and fail-closed gate.",
+      "source_ids": [
+        "SRC-GH-MERGE-QUEUE-20261029T151040Z",
+        "SRC-GH-PR1335-20261029T151040Z",
+        "SRC-GH-PR1335-CI-20261029T151040Z",
+        "SRC-GH-PR1335-GATE-20261029T151040Z"
+      ],
+      "limitation": "PR remains draft/unmerged; current main still has the mutation-capable workflow. Branch protection is enabled but required status-check contexts are empty."
+    },
+    {
+      "id": "FIND-20261029T151040Z-SBI-BITBANK-XRP",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Holdings completed the acquisition of bitbank on Oct 1, 2026; bitbank already supports XRP/JPY market access. This expands SBI's owned exchange footprint relevant to Japanese XRP distribution.",
+      "source_ids": [
+        "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z",
+        "SRC-BITBANK-XRP-JPY-MARKET-20261029T151040Z"
+      ],
+      "limitation": "Ownership plus a pre-existing XRP market does not establish increased depth, volume, net inflows, custody integration, or price impact."
+    },
+    {
+      "id": "FIND-20261029T151040Z-SBI-XRP-RLUSD-MULTI-ASSET",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI's official materials describe an XRP reward-card option and RLUSD handling through SBI VC Trade. The combined evidence is consistent with multi-asset distribution rather than an exclusive XRP or stablecoin strategy.",
+      "source_ids": [
+        "SRC-SBI-XRP-CARD-20261029T151040Z",
+        "SRC-SBI-RLUSD-JAPAN-20261029T151040Z"
+      ],
+      "limitation": "Product availability does not measure uptake, actual capital, route-level XRP usage, or causal price impact."
+    },
+    {
+      "id": "FIND-20261029T151040Z-XRP-DERIVATIVES-LONG-SKEW",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "TradRadar reports XRP at $1.2894 (-2.15% 24h), $2.00B OI across seven exchanges (+0.40%), +0.0076% OI-weighted funding per 8h, >=$4.61M liquidations and a 3.73 long/short account ratio. Seandra's Binance subset reports $399.2M OI, 76% long accounts and 69% long by top-trader size. This is consistent with a possible long-crowding/leveraged fragility scenario.",
+      "source_ids": [
+        "SRC-WEB-TRADRADAR-XRP-DERIVATIVES-20261029T151040Z",
+        "SRC-WEB-SEANDRA-XRP-BINANCE-PERPS-20261029T151040Z"
+      ],
+      "limitation": "Dashboards are secondary and not independently reconciled. Account ratios are not notional positions, and the observations are not sufficient for a directional forecast."
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/fb2f59012c1ba6d3bf1417d36545bb46028c8f65"
+    },
+    {
+      "id": "SRC-GH-MAIN-CI-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40898160192"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAUSE-SCHEDULE-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/0cc8f4c64139800ec138a88196f5db593ae680a7"
+    },
+    {
+      "id": "SRC-GH-PAPER-WORKFLOW-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml"
+    },
+    {
+      "id": "SRC-GH-PAPER-STATE-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json"
+    },
+    {
+      "id": "SRC-GH-XRP-SIGNAL-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json"
+    },
+    {
+      "id": "SRC-GH-XRP-SUMMARY-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json"
+    },
+    {
+      "id": "SRC-GH-MERGE-QUEUE-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml"
+    },
+    {
+      "id": "SRC-GH-MAIN-PROTECTION-20261029T151040Z",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main"
+    },
+    {
+      "id": "SRC-GH-PR1334-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1334"
+    },
+    {
+      "id": "SRC-GH-PR1334-CI-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40898495055"
+    },
+    {
+      "id": "SRC-GH-PR1334-GATE-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40898495593"
+    },
+    {
+      "id": "SRC-GH-PR1335-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1335"
+    },
+    {
+      "id": "SRC-GH-PR1335-CI-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40898817569"
+    },
+    {
+      "id": "SRC-GH-PR1335-GATE-20261029T151040Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40898817424"
+    },
+    {
+      "id": "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z",
+      "url": "https://www.sbigroup.co.jp/news/2026/1001_16640.html"
+    },
+    {
+      "id": "SRC-BITBANK-XRP-JPY-MARKET-20261029T151040Z",
+      "url": "https://bitbank.cc/knowledge/chart/xrp"
+    },
+    {
+      "id": "SRC-SBI-XRP-CARD-20261029T151040Z",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html"
+    },
+    {
+      "id": "SRC-SBI-RLUSD-JAPAN-20261029T151040Z",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+    },
+    {
+      "id": "SRC-WEB-TRADRADAR-XRP-DERIVATIVES-20261029T151040Z",
+      "url": "https://tradradar.io/markets/xrp"
+    },
+    {
+      "id": "SRC-WEB-SEANDRA-XRP-BINANCE-PERPS-20261029T151040Z",
+      "url": "https://seandra.ai/perp/xrp"
+    },
+    {
+      "id": "SRC-WEB-COINBASE-Q3-SCHEDULE-20261029T151040Z",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx"
+    },
+    {
+      "id": "SRC-WEB-CIRCLE-Q3-SCHEDULE-20261029T151040Z",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026"
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261029T151040Z-TRADRADAR-XRP-PRICE",
+      "source_id": "SRC-WEB-TRADRADAR-XRP-DERIVATIVES-20261029T151040Z",
+      "period_start": "2026-10-29T13:00:00Z",
+      "period_end": "2026-10-29T13:00:00Z",
+      "metric": "xrp_mark_price",
+      "value": 1.2894,
+      "unit": "USD_per_XRP",
+      "scope": "TradRadar seven-exchange derivatives dashboard snapshot",
+      "quality_status": "SECONDARY_SOURCE_REPORTED",
+      "model_admission": false,
+      "reason_not_admitted": "Snapshot timing/venue aggregation not synchronized with independent spot and derivatives feeds; 24h change reported as -2.15%."
+    },
+    {
+      "observation_id": "OBS-20261029T151040Z-TRADRADAR-XRP-OI",
+      "source_id": "SRC-WEB-TRADRADAR-XRP-DERIVATIVES-20261029T151040Z",
+      "period_start": "2026-10-29T13:00:00Z",
+      "period_end": "2026-10-29T13:00:00Z",
+      "metric": "xrp_perpetual_open_interest",
+      "value": 2000000000,
+      "unit": "USD_notional",
+      "scope": "Seven exchanges per dashboard; reported 24h change +0.40%",
+      "quality_status": "SECONDARY_SOURCE_REPORTED_SCOPE_SPECIFIC",
+      "model_admission": false,
+      "reason_not_admitted": "Universe and methodology not independently reconciled."
+    },
+    {
+      "observation_id": "OBS-20261029T151040Z-TRADRADAR-XRP-FUNDING",
+      "source_id": "SRC-WEB-TRADRADAR-XRP-DERIVATIVES-20261029T151040Z",
+      "period_start": "2026-10-29T13:00:00Z",
+      "period_end": "2026-10-29T13:00:00Z",
+      "metric": "xrp_oi_weighted_funding",
+      "value": 0.0076,
+      "unit": "percent_per_8h",
+      "scope": "Seven exchanges per dashboard",
+      "quality_status": "SECONDARY_SOURCE_REPORTED_SCOPE_SPECIFIC",
+      "model_admission": false,
+      "reason_not_admitted": "Funding aggregation and venue coverage need independent validation."
+    },
+    {
+      "observation_id": "OBS-20261029T151040Z-TRADRADAR-XRP-LIQUIDATIONS",
+      "source_id": "SRC-WEB-TRADRADAR-XRP-DERIVATIVES-20261029T151040Z",
+      "period_start": "2026-10-28T13:00:00Z",
+      "period_end": "2026-10-29T13:00:00Z",
+      "metric": "xrp_perpetual_liquidations",
+      "value": 4610000,
+      "unit": "USD_notional_minimum_reported",
+      "scope": "Five exchanges; longs $3.50M, shorts $1.11M per dashboard",
+      "quality_status": "SECONDARY_SOURCE_REPORTED",
+      "model_admission": false,
+      "reason_not_admitted": "Dashboard reports a lower bound (>=); coverage and liquidation feed not independently reconciled."
+    },
+    {
+      "observation_id": "OBS-20261029T151040Z-SEANDRA-BINANCE-XRP-OI",
+      "source_id": "SRC-WEB-SEANDRA-XRP-BINANCE-PERPS-20261029T151040Z",
+      "period_start": "2026-10-29T11:25:00Z",
+      "period_end": "2026-10-29T11:25:00Z",
+      "metric": "xrp_binance_usdt_perpetual_open_interest",
+      "value": 399200000,
+      "unit": "USD_notional",
+      "scope": "Binance USDT perpetual only; reported 24h change +0.4%",
+      "quality_status": "SECONDARY_SOURCE_REPORTED_SCOPE_SPECIFIC",
+      "model_admission": false,
+      "reason_not_admitted": "Venue subset and cutoff differ from aggregate dashboards."
+    },
+    {
+      "observation_id": "OBS-20261029T151040Z-SEANDRA-XRP-LONG-ACCOUNT-SHARE",
+      "source_id": "SRC-WEB-SEANDRA-XRP-BINANCE-PERPS-20261029T151040Z",
+      "period_start": "2026-10-29T11:25:00Z",
+      "period_end": "2026-10-29T11:25:00Z",
+      "metric": "xrp_binance_long_account_share",
+      "value": 76,
+      "unit": "percent_of_accounts",
+      "scope": "Binance USDT perpetual; top traders 69% long by size per dashboard",
+      "quality_status": "SECONDARY_SOURCE_REPORTED",
+      "model_admission": false,
+      "reason_not_admitted": "Account share is not notional exposure; exact sample/methodology is unspecified."
+    }
+  ],
+  "verification": {
+    "source_reference_count": 23,
+    "missing_source_references": 0,
+    "source_ids_unique": true,
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "readback_status_at_capture": "PENDING"
+  }
+}

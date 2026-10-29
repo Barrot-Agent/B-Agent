@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1009-PR1301-ETF-FLOW-RECONCILIATION",
+  "captured_at_utc": "2026-10-29T10:09:41Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "policy": "Evidence-only update. Main is unchanged by this research operation. No forecast or market feature is admitted from non-synchronized or universe-inconsistent market proxies.",
+  "nodes": [
+    {
+      "id": "BARROT_MAIN_SIGNAL_20261029T0924Z",
+      "label": "Main XRP signal generated 09:24:32 UTC",
+      "kind": "INVALID_SIGNAL_ARTIFACT"
+    },
+    {
+      "id": "BARROT_MAIN_ACCURACY_46_5",
+      "label": "Legacy XRP accuracy artifact: 46.5%",
+      "kind": "NON_COMPARABLE_PERFORMANCE_METRIC"
+    },
+    {
+      "id": "BARROT_PR1301",
+      "label": "Fresh-main fail-closed accuracy proposal",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    },
+    {
+      "id": "BARROT_PR1301_CI",
+      "label": "PR #1301 exact-head core CI",
+      "kind": "CI_EVIDENCE_PENDING"
+    },
+    {
+      "id": "BARROT_PR1301_GATE",
+      "label": "PR #1301 fail-closed gate",
+      "kind": "GATE_EVIDENCE"
+    },
+    {
+      "id": "COINBASE_Q3_2026",
+      "label": "Coinbase Q3 2026 results scheduled after US market close on Oct 29",
+      "kind": "SCHEDULED_CORPORATE_DISCLOSURE"
+    },
+    {
+      "id": "CIRCLE_Q3_2026",
+      "label": "Circle Q3 2026 results scheduled for Nov 4, 2026 at 8:00 a.m. ET",
+      "kind": "SCHEDULED_CORPORATE_DISCLOSURE"
+    },
+    {
+      "id": "XRP_ETF_ALPHA_5_FUNDS",
+      "label": "Alpha Finance XRP ETF series: five funds through Oct 28",
+      "kind": "SECONDARY_MARKET_DATA"
+    },
+    {
+      "id": "XRP_ETF_INSIGHTS_6_FUNDS_BITW",
+      "label": "XRP Insights holdings series: six spot funds plus BITW, Oct 26-27 settled flows",
+      "kind": "SECONDARY_MARKET_DATA"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN52-PR1301-METRIC",
+      "source": "BARROT_MAIN_ACCURACY_46_5",
+      "target": "BARROT_PR1301",
+      "relationship": "REQUIRES_REPLACEMENT_BEFORE_VALID_PERFORMANCE_CLAIM",
+      "evidence_class": "REPOSITORY_CODE_AND_ARTIFACT_OBSERVATION",
+      "claim": "Main still publishes 1,659 checked, 772 correct and 46.5%, while the evaluator scores later live prices at variable elapsed horizons and mutates historical rows. This is not a fixed-horizon out-of-sample metric.",
+      "source_ids": [
+        "SRC-RUN52-20261029T1009Z-MAIN-ACCURACY",
+        "SRC-RUN52-20261029T1009Z-PR1301"
+      ]
+    },
+    {
+      "id": "EDGE-RUN52-PR1301-GATE",
+      "source": "BARROT_PR1301",
+      "target": "BARROT_PR1301_GATE",
+      "relationship": "FAIL_CLOSED_GATE_PASSED_AUTOMERGE_DISABLED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "PR #1301 gate run 40855279396 completed successfully. Core CI run 40855279351 was still in progress at the snapshot cutoff; no full-suite pass is claimed yet.",
+      "source_ids": [
+        "SRC-RUN52-20261029T1009Z-PR1301",
+        "SRC-RUN52-20261029T1009Z-PR1301-GATE",
+        "SRC-RUN52-20261029T1009Z-PR1301-CI"
+      ]
+    },
+    {
+      "id": "EDGE-RUN52-COINBASE-Q3-CATALYST",
+      "source": "COINBASE_Q3_2026",
+      "target": "BARROT_MAIN_SIGNAL_20261029T0924Z",
+      "relationship": "POTENTIAL_INFORMATION_CATALYST_NOT_YET_OBSERVED",
+      "evidence_class": "OFFICIAL_SCHEDULED_DISCLOSURE",
+      "claim": "Coinbase scheduled Q3 results for after market close on Oct 29. At the 10:09 UTC cutoff the release was not yet due; no post-release result or XRP effect is inferred.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-14",
+        "SRC-RUN52-20261029T1009Z-MAIN-XRP-SIGNAL"
+      ]
+    },
+    {
+      "id": "EDGE-RUN52-CIRCLE-Q3-CATALYST",
+      "source": "CIRCLE_Q3_2026",
+      "target": "COINBASE_Q3_2026",
+      "relationship": "SEPARATE_CORPORATE_DISCLOSURES_MAY_AFFECT_STABLECOIN_NARRATIVE",
+      "evidence_class": "OFFICIAL_SCHEDULED_DISCLOSURE",
+      "claim": "Circle scheduled Q3 results for Nov 4 at 8:00 a.m. ET. Coinbase and Circle disclosure dates are separate; common stablecoin exposure does not imply identical revenue drivers or direct XRP demand.",
+      "source_ids": [
+        "SRC-CIRCLE-Q3-RESULTS-DATE-2026-10-07",
+        "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-14"
+      ]
+    },
+    {
+      "id": "EDGE-RUN52-ETF-UNIVERSE-CONFLICT",
+      "source": "XRP_ETF_ALPHA_5_FUNDS",
+      "target": "XRP_ETF_INSIGHTS_6_FUNDS_BITW",
+      "relationship": "NON_COMPARABLE_UNIVERSE_AND_UNIT_COVERAGE",
+      "evidence_class": "SECONDARY_MARKET_DATA_COMPARISON",
+      "claim": "Alpha Finance reports zero net flow for its five-fund series on Oct 28, while XRP Insights reports -3,132,685 XRP across six spot funds plus BITW over Oct 26-27 and labels Oct 28 provisional. Different dates, fund populations, units and settlement states prevent a direct contradiction or feature admission.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-2026-10-28",
+        "SRC-XRP-INSIGHTS-ETF-HOLDINGS-2026-10-27"
+      ]
+    },
+    {
+      "id": "EDGE-RUN52-ETF-CAUSAL-CAUTION",
+      "source": "XRP_ETF_ALPHA_5_FUNDS",
+      "target": "BARROT_MAIN_SIGNAL_20261029T0924Z",
+      "relationship": "FLOW_PROXY_NOT_SUFFICIENT_FOR_DIRECTIONAL_FORECAST",
+      "evidence_class": "INFERENCE_WITH_DISCONFIRMING_ALTERNATIVES",
+      "claim": "Reported zero net flow in the latest Alpha session is not evidence of no institutional demand overall, nor does it establish a price effect. Partial reporting, different fund coverage, derivatives positioning, macro factors and timing are plausible alternatives.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-2026-10-28",
+        "SRC-XRP-INSIGHTS-ETF-HOLDINGS-2026-10-27",
+        "SRC-RUN52-20261029T1009Z-MAIN-XRP-SIGNAL"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN52-ETF-COOLING",
+      "statement": "XRP ETF marginal spot demand may have cooled at the Oct 28 session relative to cumulative holdings.",
+      "status": "LOW_CONFIDENCE_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-2026-10-28"
+      ],
+      "disconfirming_evidence": [
+        "XRP Insights Oct 28 row remains provisional and only 2 of 5 funds had reported at its capture.",
+        "ETF flows are not all spot demand; existing holdings, OTC, non-US funds and direct token purchases are outside the proxy."
+      ],
+      "tests_needed": [
+        "Reconcile daily issuer-level shares outstanding and XRP holdings by fund.",
+        "Normalize USD flows and XRP units to a common date and settlement cutoff.",
+        "Compare with synchronized spot volume, exchange net flows, OI, funding and market beta."
+      ]
+    },
+    {
+      "id": "HYP-RUN52-ETF-PRICE-CAUSALITY",
+      "statement": "ETF flow alone explains XRP price direction.",
+      "status": "NOT_SUPPORTED",
+      "supporting_source_ids": [],
+      "disconfirming_evidence": [
+        "Positive or zero ETF flows can coincide with falling or flat prices.",
+        "The current flow proxies use different fund universes and settlement cutoffs.",
+        "No synchronized causal/event-study dataset has been built."
+      ],
+      "tests_needed": [
+        "Pre-registered event windows, market-beta controls, lead/lag analysis and placebo dates."
+      ]
+    },
+    {
+      "id": "HYP-RUN52-COINBASE-USDC-XRP",
+      "statement": "Coinbase Q3 results could change the market's view of stablecoin-related revenue diversification, but any XRP impact is indirect unless XRP-specific data are disclosed.",
+      "status": "PLAUSIBLE_BUT_UNTESTED",
+      "supporting_source_ids": [
+        "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-14",
+        "SRC-COINBASE-Q2-2026"
+      ],
+      "disconfirming_evidence": [
+        "Q3 results were not yet published at cutoff.",
+        "USDC circulation and gross transaction volume do not equal XRP flows.",
+        "Coinbase revenue and XRP spot demand are distinct variables."
+      ],
+      "tests_needed": [
+        "Extract Q3 reported metrics from official release after publication; separate USDC balances, distribution economics, XRP-specific volumes/custody/collateral and broad market conditions."
+      ]
+    }
+  ],
+  "notes": [
+    "DESIGNED: use fixed-horizon immutable forecast/outcome records and label legacy accuracy NOT_EVALUATED/NOT_COMPARABLE.",
+    "EXECUTED: created fresh-main draft PR #1301; exact-head fail-closed gate passed.",
+    "VERIFIED: PR #1301 head is 557fc6032612e56b496ab8f5a3d30f3340d4098a; gate run 40855279396 succeeded. Core CI run 40855279351 was in progress at cutoff.",
+    "NOT VERIFIED: no CI pass on the final head yet; main still has the legacy accuracy metric and mutation-capable merge queue.",
+    "Market data are retained as source observations only. No forecast or feature was admitted. No real-money action or main write occurred."
+  ]
+}

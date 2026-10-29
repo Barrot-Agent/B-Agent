@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T140741Z-PR1325-1326-CI-CURRENT-MAIN",
+  "captured_at_utc": "2026-10-29T14:07:41.167Z",
+  "data_cutoff_utc": "2026-10-29T14:07:41.167Z",
+  "observed_main_sha": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Fresh-main safety successors #1325 (paper-trader schedule/position identity) and #1326 (XRP emitter/data quality) passed exact-head core CI and fail-closed gates. Both remain draft/unmerged. Main remains at captured SHA, but still has a 30-minute paper-trader schedule and a nonzero simulated position with null product identity. Main XRP signal remains score 44/confidence 0.0 with provider failures; summary still narrates positive headlines. No synchronized XRP market panel admitted; no forecast issued.",
+  "findings": [
+    {
+      "id": "FIND-RUN66-MAIN-PAPER-STATE-UNIDENTIFIED",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main paper trader remains scheduled and persisted simulated position is nonzero while position_product is null. Workflow commits/pushes state/log every 30 minutes; this is a state-integrity risk, not a real-money trade.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T140741Z",
+        "SRC-GH-MAIN-PAPER-STATE-20261029T140741Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T140741Z"
+      ],
+      "limitation": "PR #1325 is unmerged. Do not guess or automatically rewrite the legacy position."
+    },
+    {
+      "id": "FIND-RUN66-PR1325-CI-GATE-PASS",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "Fresh-main PR #1325 passed 196 tests plus 4 subtests in 6.84 seconds and fail-closed gate passed. It removes schedule and validates position identity before provider/model calls.",
+      "source_ids": [
+        "SRC-GH-PR1325-STATUS-20261029T140741Z",
+        "SRC-GH-PR1325-CI-20261029T140741Z",
+        "SRC-GH-PR1325-GATE-20261029T140741Z",
+        "SRC-GH-PR1325-CI-LOG-20261029T140741Z"
+      ],
+      "limitation": "Draft/unmerged; fix is not active on main."
+    },
+    {
+      "id": "FIND-RUN66-PR1326-CI-GATE-PASS",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "Fresh-main PR #1326 passed 189 tests plus 4 subtests in 6.85 seconds and fail-closed gate passed. It rejects malformed schemas and invalid timestamps/weights and marks output NOT_ISSUED absent a calibrated fixed-horizon model.",
+      "source_ids": [
+        "SRC-GH-PR1326-STATUS-20261029T140741Z",
+        "SRC-GH-PR1326-CI-20261029T140741Z",
+        "SRC-GH-PR1326-GATE-20261029T140741Z",
+        "SRC-GH-PR1326-CI-LOG-20261029T140741Z"
+      ],
+      "limitation": "Draft/unmerged; main signal remains invalid until approved merge and subsequent generation."
+    },
+    {
+      "id": "FIND-RUN66-LEGACY-PR-SUCCESSORS",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "PRs #1320 and #1324 remain open/unmerged with stale bases. Fresh-main successors #1325 and #1326 were opened. Older PRs were not closed or merged.",
+      "source_ids": [
+        "SRC-GH-PR1325-STATUS-20261029T140741Z",
+        "SRC-GH-PR1326-STATUS-20261029T140741Z",
+        "SRC-GH-PR1320-STATUS-20261029T140741Z",
+        "SRC-GH-PR1324-STATUS-20261029T140741Z"
+      ],
+      "limitation": "Recheck base and mergeability before any approved merge."
+    },
+    {
+      "id": "FIND-RUN66-MAIN-SIGNAL-NOT-FORECAST",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main score 44/confidence 0.0 with news score 88 and provider failures is not a valid directional forecast. Summary still narrates positive headlines. No synchronized XRP market panel or forecast was produced.",
+      "source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T140741Z",
+        "SRC-GH-MAIN-SUMMARY-20261029T140741Z",
+        "SRC-GH-MAIN-EMITTER-20261029T140741Z"
+      ],
+      "limitation": "No market feature admitted; forecast remains NOT_ISSUED."
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868"
+    },
+    {
+      "id": "SRC-GH-MAIN-SIGNAL-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-SUMMARY-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-STATE-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml"
+    },
+    {
+      "id": "SRC-GH-MAIN-EMITTER-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/emit_signal.py"
+    },
+    {
+      "id": "SRC-GH-MAIN-MERGE-QUEUE-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml"
+    },
+    {
+      "id": "SRC-GH-PR1325-STATUS-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1325"
+    },
+    {
+      "id": "SRC-GH-PR1325-CI-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40887782080"
+    },
+    {
+      "id": "SRC-GH-PR1325-GATE-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40887781858"
+    },
+    {
+      "id": "SRC-GH-PR1325-CI-LOG-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40887782080"
+    },
+    {
+      "id": "SRC-GH-PR1326-STATUS-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1326"
+    },
+    {
+      "id": "SRC-GH-PR1326-CI-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40887854070"
+    },
+    {
+      "id": "SRC-GH-PR1326-GATE-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40887854522"
+    },
+    {
+      "id": "SRC-GH-PR1326-CI-LOG-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40887854070"
+    },
+    {
+      "id": "SRC-GH-PR1320-STATUS-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1320"
+    },
+    {
+      "id": "SRC-GH-PR1324-STATUS-20261029T140741Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1324"
+    }
+  ],
+  "market_observations": [],
+  "verification": {
+    "main_head_verified": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
+    "main_unchanged_by_this_run": true,
+    "pr1325": {
+      "head_sha": "3335b44eb30bbf0b0ffbb7e58b1171d79c0212f1",
+      "base_sha": "86bf1ac4c2114e0ebd468ea0ee032bdbe0947575",
+      "ci_run": 40887782080,
+      "ci": "PASS_196_TESTS_PLUS_4_SUBTESTS_6.84S",
+      "gate_run": 40887781858,
+      "gate": "PASS_FAIL_CLOSED",
+      "state": "DRAFT_OPEN_UNMERGED"
+    },
+    "pr1326": {
+      "head_sha": "be98558d5a8a2cb7f4aef136f407cc4153b367e7",
+      "base_sha": "86bf1ac4c2114e0ebd468ea0ee032bdbe0947575",
+      "ci_run": 40887854070,
+      "ci": "PASS_189_TESTS_PLUS_4_SUBTESTS_6.85S",
+      "gate_run": 40887854522,
+      "gate": "PASS_FAIL_CLOSED",
+      "state": "DRAFT_OPEN_UNMERGED"
+    },
+    "paper_trader_schedule": "ACTIVE_ON_MAIN_UNTIL_APPROVED_MERGE",
+    "position_identity": "UNKNOWN_NONZERO_SIMULATED_POSITION",
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "workflow_dispatch_performed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false,
+    "snapshot_readback": "PENDING_AT_CAPTURE"
+  }
+}

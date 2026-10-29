@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "DECISION-20261029T151200Z-LOSSLESS-LEDGER-INDEX-COMPACTION",
+  "recorded_at_utc": "2026-10-29T15:12:00Z",
+  "title": "Lossless JSON serialization compaction for the XRP intelligence index",
+  "context": {
+    "pre_compaction_characters": 998353,
+    "pre_compaction_sources": 1017,
+    "pre_compaction_run_updates": 182,
+    "pre_compaction_limitations": 225,
+    "reason": "The append-only research ledger approached the GitHub Contents API size boundary, risking future provenance/handoff updates."
+  },
+  "decision": "Serialize the existing index as minified JSON while retaining every record, key, source reference, snapshot pointer and historical field. Keep detailed snapshots and graph addenda as separate formatted JSON artifacts. This is a serialization change, not a schema migration or evidence deletion.",
+  "expected_compacted_characters": 877243,
+  "constraints": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "deployment": false,
+    "real_money_trade": false,
+    "records_deleted": 0,
+    "source_provenance_preserved": true,
+    "git_history_preserved": true
+  },
+  "verification_plan": [
+    "Parse pre-compaction JSON and preserve every existing source/run-update/limitation prefix.",
+    "Write minified JSON with index character metric equal to serialized character count.",
+    "Read the exact blob back from the research branch.",
+    "Verify byte-for-byte readback, JSON parse, unique source IDs, matching index metrics, and preserved historical array prefixes.",
+    "Do not claim full research-branch CI; it is not run by this operation."
+  ],
+  "status": "VERIFICATION_PENDING_AT_CREATION"
+}

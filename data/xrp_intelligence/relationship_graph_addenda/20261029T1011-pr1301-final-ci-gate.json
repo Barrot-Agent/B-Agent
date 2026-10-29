@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1011-PR1301-CI-FINAL",
+  "captured_at_utc": "2026-10-29T10:11:06Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "policy": "Final exact-head CI/gate evidence for a draft safety proposal. No merge or main-branch mutation is authorized by this record.",
+  "nodes": [
+    {
+      "id": "BARROT_PR1301",
+      "label": "Fresh-main fail-closed accuracy proposal #1301",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    },
+    {
+      "id": "BARROT_PR1301_CI_FINAL",
+      "label": "PR #1301 core CI final result",
+      "kind": "CI_EVIDENCE"
+    },
+    {
+      "id": "BARROT_PR1301_GATE_FINAL",
+      "label": "PR #1301 fail-closed gate final result",
+      "kind": "GATE_EVIDENCE"
+    },
+    {
+      "id": "BARROT_MAIN_ACCURACY_LEGACY",
+      "label": "Main legacy 46.5% accuracy metric",
+      "kind": "INVALID_PERFORMANCE_METRIC"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN53-PR1301-CI-FINAL",
+      "source": "BARROT_PR1301",
+      "target": "BARROT_PR1301_CI_FINAL",
+      "relationship": "EXACT_HEAD_CORE_CI_PASSED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "PR #1301 head 557fc6032612e56b496ab8f5a3d30f3340d4098a passed 187 tests plus 4 subtests in 6.60 seconds on CI run 40855279351. This verifies the branch's suite, not main behavior or prediction performance.",
+      "source_ids": [
+        "SRC-RUN53-20261029T1011Z-PR1301-HEAD",
+        "SRC-RUN53-20261029T1011Z-PR1301-CI-PASS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN53-PR1301-GATE-FINAL",
+      "source": "BARROT_PR1301",
+      "target": "BARROT_PR1301_GATE_FINAL",
+      "relationship": "FAIL_CLOSED_GATE_PASSED_AUTOMERGE_DISABLED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "Gate run 40855279396 passed and explicitly states automatic merge is disabled, no approval/label/merge is performed, and no repository content is changed by the gate.",
+      "source_ids": [
+        "SRC-RUN53-20261029T1011Z-PR1301-HEAD",
+        "SRC-RUN53-20261029T1011Z-PR1301-GATE-PASS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN53-PR1301-MAIN-BOUNDARY",
+      "source": "BARROT_PR1301",
+      "target": "BARROT_MAIN_ACCURACY_LEGACY",
+      "relationship": "PROPOSAL_NOT_YET_APPLIED_TO_MAIN",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "PR #1301 remains draft/open/unmerged and main still publishes the legacy 1,659/772/46.5% artifact. CI success does not make that metric valid or change main.",
+      "source_ids": [
+        "SRC-RUN53-20261029T1011Z-PR1301-HEAD",
+        "SRC-RUN52-20261029T1009Z-MAIN-ACCURACY"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN53-ACCURACY-VALIDITY",
+      "statement": "A fixed-horizon, immutable forecast ledger with leakage controls is required before any accuracy percentage can be treated as predictive skill.",
+      "status": "METHODOLGICALLY_REQUIRED",
+      "supporting_source_ids": [
+        "SRC-RUN52-20261029T1009Z-MAIN-ACCURACY",
+        "SRC-RUN53-20261029T1011Z-PR1301-CI-PASS"
+      ],
+      "disconfirming_evidence": [
+        "None found that would make a variable-horizon, mutable-history metric comparable to fixed-horizon out-of-sample performance."
+      ],
+      "tests_needed": [
+        "Define target/horizon before each forecast; freeze inputs at cutoff; score only once outcome window closes; compare naive and market-beta baselines; evaluate Brier/log loss and calibration on walk-forward splits."
+      ]
+    }
+  ],
+  "notes": [
+    "DESIGNED: label legacy accuracy NOT_EVALUATED/NOT_COMPARABLE until a fixed-horizon immutable forecast/outcome ledger exists.",
+    "EXECUTED: PR #1301 exact-head CI and fail-closed gate ran.",
+    "VERIFIED: 187 tests plus 4 subtests passed in 6.60 seconds; gate passed.",
+    "NOT VERIFIED: no forecast skill has been established; main remains unchanged; PR remains draft and unmerged."
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T0614-EVERNORTH-CAPITAL-RELATIONSHIPS",
+  "captured_at_utc": "2026-10-29T06:14:00.000Z",
+  "observed_main_sha": "f319d3d9511c6463bb18c36d9cc2b537888f6b88",
+  "policy": "Evidence-led corporate/asset relationship graph. Separate completed funding, contributed XRP, purchased XRP, related-party debt, and contingent future financing. Partnership announcements and future strategy statements do not prove completed trading, net inflows, or XRP price causation.",
+  "nodes": [
+    {
+      "id": "EVERNORTH",
+      "label": "Evernorth Holdings Inc. (Nasdaq: XRPN)",
+      "kind": "PUBLIC_XRP_TREASURY_COMPANY"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings, Inc.",
+      "kind": "JAPANESE_FINANCIAL_GROUP_AND_SHAREHOLDER"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "XRP_ECOSYSTEM_COMPANY_AND_RELATED_PARTY_LENDER"
+    },
+    {
+      "id": "ARRINGTON_XRP_CAPITAL_FUND",
+      "label": "Arrington XRP Capital Fund",
+      "kind": "SPONSOR_AND_XRP_CONTRIBUTOR"
+    },
+    {
+      "id": "LARSEN_LAM_TRUST",
+      "label": "Larsen Lam Children's Remainder Trust",
+      "kind": "XRP_CONTRIBUTOR"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "CRYPTO_EXCHANGE_AND_INSTITUTIONAL_EXECUTION_PARTNER_ANNOUNCED"
+    },
+    {
+      "id": "KRAKEN",
+      "label": "Kraken",
+      "kind": "CRYPTO_EXCHANGE_AND_INSTITUTIONAL_EXECUTION_PARTNER_ANNOUNCED"
+    },
+    {
+      "id": "BITGO",
+      "label": "BitGo",
+      "kind": "DIGITAL_ASSET_INFRASTRUCTURE_AND_INSTITUTIONAL_EXECUTION_PARTNER_ANNOUNCED"
+    },
+    {
+      "id": "HUGO_JEANDESBOZ",
+      "label": "Hugo Jeandesboz",
+      "kind": "FORMER_COINBASE_ASSET_MANAGEMENT_EXECUTIVE_AND_EVERNORTH_CIO"
+    },
+    {
+      "id": "CF_PRINCIPAL_INVESTMENTS",
+      "label": "CF Principal Investments LLC (Cantor affiliate)",
+      "kind": "EQUITY_LINE_OF_CREDIT_COUNTERPARTY"
+    },
+    {
+      "id": "PUBLIC_WARRANT_HOLDERS",
+      "label": "Public warrant holders",
+      "kind": "CONTINGENT_EQUITY_FINANCING_COUNTERPARTIES"
+    },
+    {
+      "id": "PATHFINDER",
+      "label": "Pathfinder Digital Assets LLC (Evernorth subsidiary)",
+      "kind": "OPERATING_SUBSIDIARY_AND_RIPPLE_RELATED_PARTY_BORROWER"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN43-EVERNORTH-XRP-TREASURY",
+      "source": "EVERNORTH",
+      "target": "XRP",
+      "relationship": "TREASURY_HOLDINGS_AS_OF_2026-10-09",
+      "evidence_class": "CONFIRMED_SEC_FILING_AND_COMPANY_ANNOUNCEMENT",
+      "claim": "Evernorth reported approximately 473 million XRP held at the October 9, 2026 closing. SEC transaction disclosures show the treasury includes contributed XRP and XRP purchased with cash; the full balance must not be described as open-market buying.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-SBI-EVERNORTH-VOTING-OWNERSHIP",
+      "source": "SBI_HOLDINGS",
+      "target": "EVERNORTH",
+      "relationship": "VOTING_CLASS_EQUITY_POSITION_AND_OWNERSHIP_CAP",
+      "evidence_class": "CONFIRMED_SEC_FILING",
+      "claim": "SBI-affiliated subscribers' Class A voting ownership is capped at 39.9%; excess equity interest is allocated to non-voting Class C shares. The filing also reports SBI-affiliated holders with 7.5% of Class C shares. These are class-specific percentages, not 39.9% of all economic interests.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-RIPPLE-EVERNORTH-XRP-CONTRIBUTION",
+      "source": "RIPPLE",
+      "target": "EVERNORTH",
+      "relationship": "XRP_CONTRIBUTION_AND_EQUITY_RELATIONSHIP",
+      "evidence_class": "CONFIRMED_SEC_FILING",
+      "claim": "Ripple contributed 126,791,458 XRP under a contribution agreement. Ripple received equity/units at closing, subject to the disclosed ownership caps. The contributed XRP is not an open-market purchase by Evernorth.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-ARRINGTON-EVERNORTH-XRP-CONTRIBUTION",
+      "source": "ARRINGTON_XRP_CAPITAL_FUND",
+      "target": "EVERNORTH",
+      "relationship": "SPONSOR_AND_XRP_CONTRIBUTION",
+      "evidence_class": "CONFIRMED_SEC_FILING",
+      "claim": "The sponsor's Series C subscription included approximately 211,319,096 XRP. Its voting ownership is capped at 19.9%, with excess economic interest represented by non-voting equity.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-LARSEN-TRUST-EVERNORTH-XRP-CONTRIBUTION",
+      "source": "LARSEN_LAM_TRUST",
+      "target": "EVERNORTH",
+      "relationship": "RELATED_PARTY_XRP_CONTRIBUTION",
+      "evidence_class": "CONFIRMED_SEC_FILING",
+      "claim": "A contributor related-party entity associated with the Larsen Lam Children's Remainder Trust contributed 50 million XRP. It is separate from Ripple's own contribution.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-COINBASE-EVERNORTH-EXECUTION-PARTNER",
+      "source": "COINBASE",
+      "target": "EVERNORTH",
+      "relationship": "ANNOUNCED_INSTITUTIONAL_EXECUTION_PARTNER",
+      "evidence_class": "COMPANY_ANNOUNCEMENT_FORWARD_LOOKING",
+      "claim": "Evernorth announced Coinbase as one of four inaugural institutional execution partners on October 14, 2026. The press release says partnership agreements remain subject to customary closing conditions and required approvals; no executed Coinbase trade volume or net XRP flow is established by the announcement.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-KRAKEN-EVERNORTH-EXECUTION-PARTNER",
+      "source": "KRAKEN",
+      "target": "EVERNORTH",
+      "relationship": "ANNOUNCED_INSTITUTIONAL_EXECUTION_PARTNER",
+      "evidence_class": "COMPANY_ANNOUNCEMENT_FORWARD_LOOKING",
+      "claim": "Evernorth announced Kraken as an institutional execution partner. This establishes the announced relationship, not completed transaction volume or net XRP demand.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-BITGO-EVERNORTH-EXECUTION-PARTNER",
+      "source": "BITGO",
+      "target": "EVERNORTH",
+      "relationship": "ANNOUNCED_INSTITUTIONAL_EXECUTION_PARTNER",
+      "evidence_class": "COMPANY_ANNOUNCEMENT_FORWARD_LOOKING",
+      "claim": "Evernorth announced BitGo as an institutional execution partner. Do not assign a specific custody or settlement mandate without contract-level evidence.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-HUGO-COINBASE-FORMER-ROLE",
+      "source": "HUGO_JEANDESBOZ",
+      "target": "COINBASE",
+      "relationship": "FORMER_EMPLOYMENT_AND_INSTITUTIONAL_TRADING_ROLE",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT_FILED_WITH_SEC",
+      "claim": "Evernorth's October 12 announcement says Jeandesboz joined from Coinbase Asset Management, where he was Co-CIO/head of Solutions, and describes prior institutional trading experience including Coinbase lead derivatives trader. This is a personnel link, not proof Coinbase currently controls or directs his decisions.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CIO-SEC-425"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-HUGO-EVERNORTH-CIO",
+      "source": "HUGO_JEANDESBOZ",
+      "target": "EVERNORTH",
+      "relationship": "CURRENT_CHIEF_INVESTMENT_OFFICER",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT_FILED_WITH_SEC",
+      "claim": "Evernorth appointed Jeandesboz CIO to oversee treasury allocation, liquidity management, active management and counterparty/custody relationships. The role does not prove any particular trade has occurred.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CIO-SEC-425",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-RIPPLE-PATHFINDER-CREDIT-FACILITY",
+      "source": "RIPPLE",
+      "target": "PATHFINDER",
+      "relationship": "RELATED_PARTY_REVOLVING_CREDIT_FACILITY",
+      "evidence_class": "CONFIRMED_SEC_FILING",
+      "claim": "Pathfinder's intercompany facility with Ripple was increased to a $10 million limit on October 7, 2026; Pathfinder had borrowed $9.7 million as of that date. The filing says amounts became repayable within five business days after closing or earlier on Ripple demand. This is related-party debt, not equity capital or XRP spot inflow.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-CANTOR-EVERNORTH-ELOC",
+      "source": "CF_PRINCIPAL_INVESTMENTS",
+      "target": "EVERNORTH",
+      "relationship": "CONTINGENT_COMMITTED_EQUITY_LINE",
+      "evidence_class": "CONFIRMED_SEC_FILING_CONTINGENT_FINANCING",
+      "claim": "The October 23 ELOC registration covers up to 5,218,935 shares and a maximum illustrative gross amount of approximately $80.7 million at the prospectus cover price. Evernorth may elect to sell shares subject to conditions and registration effectiveness; registration alone is not cash raised.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-ELOC-8K"
+      ]
+    },
+    {
+      "id": "EDGE-RUN43-WARRANTS-EVERNORTH-POTENTIAL-PROCEEDS",
+      "source": "PUBLIC_WARRANT_HOLDERS",
+      "target": "EVERNORTH",
+      "relationship": "CONTINGENT_WARRANT_EXERCISE_PROCEEDS",
+      "evidence_class": "CONFIRMED_SEC_FILING_CONTINGENT_FINANCING",
+      "claim": "The prospectus covers 11,499,992 warrant shares at an $11.50 exercise price, implying up to about $132.2 million only if warrants are exercised for cash. Registration does not itself raise money, and the filing does not earmark proceeds specifically for XRP purchases.",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-WARRANT-PROSPECTUS"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN43-ACTUAL-VS-PROSPECTIVE-CAPITAL",
+      "class": "CAPITAL_FLOW_AND_ENTITY_RESOLUTION",
+      "hypothesis": "The unresolved phrase 'actual capital' may refer to Evernorth's distinction between completed closing funding/XRP contributions and contingent future financing. SEC disclosures establish a roughly 473 million XRP treasury at closing, including 84,365,876 XRP purchased with cash and substantial XRP contributions; ELOC and warrant proceeds remain contingent until sales/exercises occur.",
+      "confidence": "HIGH_FOR_DISCLOSED_TRANSACTION_STRUCTURE; LOW_FOR_ORIGINAL_PHRASE_REFERENT",
+      "supporting_source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-ELOC-8K",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-WARRANT-PROSPECTUS"
+      ],
+      "counter_hypotheses": [
+        "The phrase 'actual capital' refers to a different video, token, entity or capital-flow topic; original context is still missing."
+      ],
+      "disconfirming_evidence_needed": [
+        "Original source containing the exact phrase.",
+        "Post-close bank/cash-flow statements and actual ELOC/warrant sales/exercise records before counting new proceeds as realized capital."
+      ],
+      "xrp_price_effect": "The 84.365876 million XRP cash purchase is a disclosed historical acquisition, but no synchronized trade dates, execution venues, market-depth context or present net-flow data were admitted in this run."
+    },
+    {
+      "id": "HYP-RUN43-COINBASE-EVERNORTH-TACTICAL-LINK",
+      "class": "INSTITUTIONAL_MARKET_STRUCTURE",
+      "hypothesis": "Coinbase's announced role as an Evernorth institutional execution partner plus the move of former Coinbase Asset Management Co-CIO Hugo Jeandesboz to Evernorth CIO creates a direct institutional access/personnel link to an XRP treasury.",
+      "confidence": "HIGH_FOR_ANNOUNCED_PARTNER_AND_PERSONNEL_FACTS; LOW_FOR_REALIZED_TRADE_OR_PRICE_EFFECT",
+      "supporting_source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CIO-SEC-425",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE"
+      ],
+      "counter_hypotheses": [
+        "The agreements may not yet have closed or generated material trades; a former employee's new role is not ongoing Coinbase corporate control.",
+        "Coinbase could execute, custody-route or provide liquidity without creating net XRP demand if flows are internalized, hedged, borrowed or offset."
+      ],
+      "disconfirming_evidence_needed": [
+        "Executed agreements, custody disclosures, trading-volume/venue data and transaction-level net-flow evidence."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN43-SBI-GOVERNANCE-INFLUENCE",
+      "class": "CORPORATE_GOVERNANCE",
+      "hypothesis": "SBI-affiliated ownership capped at 39.9% of Class A voting shares gives SBI significant governance influence over Evernorth, while Class C allocations preserve additional economic interest without equal voting rights.",
+      "confidence": "HIGH_FOR_DISCLOSED_CLASS_CAPS; MEDIUM_FOR_PRACTICAL_CONTROL",
+      "supporting_source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K"
+      ],
+      "counter_hypotheses": [
+        "Voting caps, board arrangements, other shareholders and governance documents may constrain practical control; the 39.9% figure is not total economic ownership."
+      ],
+      "disconfirming_evidence_needed": [
+        "Current beneficial ownership schedule, board composition, voting agreements and subsequent ownership changes."
+      ],
+      "xrp_price_effect": "GOVERNANCE_LINK_CONFIRMED; PRICE_CAUSATION_NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN43-TREASURY-DEPLOYMENT-UTILITY-VS-SUPPLY",
+      "class": "COMPETING_MARKET_HYPOTHESES",
+      "hypothesis": "Evernorth's announced plan to accumulate and deploy its XRP treasury through institutional strategies and later XRPL credit markets could increase market participation, lending depth or demand for XRP-denominated collateral.",
+      "confidence": "LOW_TO_MEDIUM; PLAN_IS_FORWARD_LOOKING",
+      "supporting_source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE"
+      ],
+      "counter_hypotheses": [
+        "Deployment may merely circulate already-held XRP, increase lendable supply or counterparty/credit risk, and need not create net spot buying; validator activation and production readiness are prerequisites for on-ledger strategies."
+      ],
+      "disconfirming_evidence_needed": [
+        "Confirmed deployed balances, transaction hashes, loan books, utilization, collateral haircuts, counterparties and net spot purchase records."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN43-SPAC-REDEMPTIONS-AND-CAPITAL-ACCESS",
+      "class": "CAPITAL_STRUCTURE_RISK",
+      "hypothesis": "High SPAC redemptions and the XRP signing-to-closing price change may materially affect Evernorth's post-close capital and equity allocation, so headline gross proceeds or treasury size should not be treated as unrestricted fresh cash or market purchases.",
+      "confidence": "HIGH_FOR_REDEMPTION_AND_TRANSACTION-PRICE_FACTS; MEDIUM_FOR_LIQUIDITY_IMPLICATION",
+      "supporting_source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K"
+      ],
+      "counter_hypotheses": [
+        "Private-placement cash, XRP contributions and contingent facilities may offset some SPAC cash loss, but only reconciled post-close cash-flow disclosures establish net available liquidity."
+      ],
+      "disconfirming_evidence_needed": [
+        "Final closing cash reconciliation, actual cash balances, use-of-proceeds schedule, ELOC draw/sales, warrant exercises and debt repayment schedule."
+      ],
+      "xrp_price_effect": "CAPITAL-ACCESS RISK IS PLAUSIBLE; PRICE EFFECT NOT MEASURED"
+    }
+  ],
+  "notes": [
+    "Evernorth's 473 million XRP headline is a treasury balance, not 473 million XRP purchased on the open market. SEC filings disclose both contributed XRP and 84,365,876 XRP purchased with cash.",
+    "The October 14 partner announcement is forward-looking and states agreements remain subject to customary closing conditions and required approvals. No execution volume or current net XRP flow was established in this run.",
+    "SBI-affiliated ownership is capped at 39.9% of Class A voting shares; excess interests are in non-voting Class C. Do not describe 39.9% as the whole company's total economic ownership.",
+    "The $80.7 million ELOC and approximately $132.2 million warrant amount are contingent financing capacity, not actual proceeds until shares are sold or warrants exercised.",
+    "Pathfinder's $9.7 million draw under the Ripple-related $10 million facility is debt, not equity funding and not an XRP purchase.",
+    "No direct Circle-Evernorth relationship was found in the reviewed sources. Existing Coinbase-Circle USDC and Coinbase-Ripple RLUSD relationships must remain separate graph edges; no transitive XRP price effect is inferred."
+  ]
+}

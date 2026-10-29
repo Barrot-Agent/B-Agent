@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1304-CURRENT-MAIN-1320-1323-SAFETY-AUDIT",
+  "captured_at_utc": "2026-10-29T13:04:00Z",
+  "data_cutoff_utc": "2026-10-29T13:04:00Z",
+  "observed_main_sha": "96ccfc4344c55d419495d75f1360d756a8c10796",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Current main still publishes an XRP signal with score 44 and confidence 0.0 while sentiment-provider calls fail, and the summary narrates positive headline sentiment. The paper trader still has a nonzero simulated position with position_product=null and a 30-minute schedule that commits/pushes state. Fresh-main PR #1320 has exact-head CI and gate passes but remains draft/unmerged. New PR #1323 proposes a read-only merge-queue workflow from current main; its files were read back and compare is 3 commits ahead, 0 behind, but CI/gate were not yet visible at capture. PR #1308 remains the corrective proposal for the unintended data-only file on main; it is still unmerged. No XRP forecast or market feature admission.",
+  "findings": [
+    {
+      "id": "FIND-RUN65-MAIN-XRP-SIGNAL-INVALID",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main signal timestamp is 2026-10-29T12:30:57.988730Z, score 44, confidence 0.0, news score 88 from 11 entries, and source explicitly records missing GITHUB_TOKEN/GH_MODELS_TOKEN plus Groq HTTP 429. The summary describes bullish headline tags despite zero confidence.",
+      "source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T1304Z",
+        "SRC-GH-MAIN-SUMMARY-WORKFLOW-20261029T1304Z"
+      ],
+      "limitation": "No synchronized XRP market panel was admitted; the output is not a valid forecast."
+    },
+    {
+      "id": "FIND-RUN65-PAPER-TRADER-IDENTITY",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main paper state has position_size 0.012445158497236623, average entry 80436.84, cash 9009.936613782476, trade_count 126 and position_product null. The main workflow still schedules every 30 minutes and commits/pushes the state/log.",
+      "source_ids": [
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1304Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1304Z"
+      ],
+      "limitation": "Paper trading only; no real-money transaction. Full historical log replay remains unavailable."
+    },
+    {
+      "id": "FIND-RUN65-PR1320-CI",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "PR #1320 head 9479f08a31c74887afe7d5b89e718a9bf716698e passed core CI (196 tests plus 4 subtests) and the fail-closed gate. It removes the schedule and validates open-position identity before provider calls, but remains draft/unmerged.",
+      "source_ids": [
+        "SRC-GH-PR1320-STATUS-20261029T1304Z",
+        "SRC-GH-PR1320-CI-20261029T1304Z",
+        "SRC-GH-PR1320-GATE-20261029T1304Z"
+      ],
+      "limitation": "Main remains unchanged until approval/merge; position identity is unresolved and intentionally not inferred."
+    },
+    {
+      "id": "FIND-RUN65-PR1319-CI",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "PR #1319 head e3d154fdb6c7766716d6f0547978647f101ae79f passed core CI (190 tests plus 4 subtests) and the fail-closed gate. It makes the summary fail closed and removes scheduled summary auto-push behavior on its branch.",
+      "source_ids": [
+        "SRC-GH-PR1319-STATUS-20261029T1304Z",
+        "SRC-GH-PR1319-CI-20261029T1304Z",
+        "SRC-GH-PR1319-GATE-20261029T1304Z"
+      ],
+      "limitation": "Main remains unchanged; the signal artifact itself still contains score 44/confidence 0.0 until an approved signal-generation fix is applied."
+    },
+    {
+      "id": "FIND-RUN65-PR1323-READONLY-QUEUE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "PR #1323 was created from main SHA 96ccfc4344c55d419495d75f1360d756a8c10796. The branch changes exactly the merge-queue workflow, CI test registration and a new deterministic test. Remote compare reports 3 commits ahead and 0 behind. Branch files were read back and match the intended read-only workflow/test.",
+      "source_ids": [
+        "SRC-GH-PR1323-STATUS-20261029T1304Z",
+        "SRC-GH-PR1323-FILES-READBACK-20261029T1304Z"
+      ],
+      "limitation": "No CI or gate run was visible at capture; no test pass is claimed yet. PR is draft/unmerged."
+    },
+    {
+      "id": "FIND-RUN65-PR1308-INCIDENT-OPEN",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "The unintended data-only relationship graph file remains present on main. PR #1308 proposes deleting only that file and remains open, draft and unmerged.",
+      "source_ids": [
+        "SRC-GH-MAIN-UNINTENDED-GRAPH-20261029T1304Z",
+        "SRC-GH-PR1308-STATUS-20261029T1304Z"
+      ],
+      "limitation": "Main is not restored. No deletion or merge was performed."
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-GH-MAIN-SIGNAL-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-SUMMARY-WORKFLOW-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-STATE-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml"
+    },
+    {
+      "id": "SRC-GH-PR1320-STATUS-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1320"
+    },
+    {
+      "id": "SRC-GH-PR1320-CI-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40877076521"
+    },
+    {
+      "id": "SRC-GH-PR1320-GATE-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40877076520"
+    },
+    {
+      "id": "SRC-GH-PR1319-STATUS-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1319"
+    },
+    {
+      "id": "SRC-GH-PR1319-CI-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40876677096"
+    },
+    {
+      "id": "SRC-GH-PR1319-GATE-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40876677024"
+    },
+    {
+      "id": "SRC-GH-PR1323-STATUS-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1323"
+    },
+    {
+      "id": "SRC-GH-PR1323-FILES-READBACK-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/96ccfc4344c55d419495d75f1360d756a8c10796...safety/read-only-merge-queue-current-main-20261029T1301Z"
+    },
+    {
+      "id": "SRC-GH-MAIN-UNINTENDED-GRAPH-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json"
+    },
+    {
+      "id": "SRC-GH-PR1308-STATUS-20261029T1304Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308"
+    }
+  ],
+  "market_observations": [],
+  "verification": {
+    "main_sha": "96ccfc4344c55d419495d75f1360d756a8c10796",
+    "main_signal_readback": "PASS",
+    "paper_state_readback": "PASS",
+    "paper_trader_workflow_readback": "PASS",
+    "pr1319_ci": "PASS_190_TESTS_PLUS_4_SUBTESTS",
+    "pr1319_gate": "PASS_FAIL_CLOSED",
+    "pr1320_ci": "PASS_196_TESTS_PLUS_4_SUBTESTS",
+    "pr1320_gate": "PASS_FAIL_CLOSED",
+    "pr1323_branch_compare": "PASS_3_AHEAD_0_BEHIND",
+    "pr1323_files_readback": "PASS",
+    "pr1323_ci": "NOT_VISIBLE_AT_CAPTURE",
+    "pr1323_gate": "NOT_VISIBLE_AT_CAPTURE",
+    "pr1308_cleanup": "DRAFT_OPEN_UNMERGED",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "workflow_dispatch_performed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false
+  }
+}

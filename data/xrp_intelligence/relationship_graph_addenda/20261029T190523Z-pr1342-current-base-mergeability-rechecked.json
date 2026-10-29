@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T190523Z-PR1342-CURRENT-BASE-MERGEABILITY-RECHECKED",
+  "captured_at_utc": "2026-10-29T19:05:23Z",
+  "observed_main_sha": "5dc330a0fb1d7159a27ceafab4bfe35fee071708",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_REPOSITORY_OBSERVATION",
+      "INFERENCE",
+      "UNKNOWN"
+    ],
+    "causal_rule": "A passing code check establishes branch behavior, not a price forecast or authorization to merge."
+  },
+  "nodes": [
+    {
+      "id": "PR1342",
+      "label": "Draft XRP emitter and NOT_ISSUED summary PR",
+      "kind": "PROPOSED_CODE_AND_ARTIFACT_CHANGE"
+    },
+    {
+      "id": "MAIN_SIGNAL",
+      "label": "Current main XRP signal artifact",
+      "kind": "INVALID_DESCRIPTIVE_SIGNAL"
+    },
+    {
+      "id": "MAIN_SUMMARY",
+      "label": "Current main public XRP summary",
+      "kind": "STALE_PUBLIC_ARTIFACT"
+    },
+    {
+      "id": "PAPER_STATE",
+      "label": "Persisted simulated paper-trading state",
+      "kind": "SIMULATED_STATE"
+    },
+    {
+      "id": "UNIDENTIFIED_POSITION",
+      "label": "Nonzero simulated position with null product identity",
+      "kind": "UNRESOLVED_STATE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-20261029T190523Z-PR1342-STATUS",
+      "source": "PR1342",
+      "target": "MAIN_SIGNAL",
+      "relationship": "MERGEABLE_PROPOSAL_NOT_YET_APPLIED",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "PR #1342's current metadata reports mergeable=true and its exact-head CI/gate passed; it remains draft and unmerged, so main's invalid signal is unchanged.",
+      "source_ids": [
+        "SRC-GH-PR1342-STATE-RECHECK-20261029T190523Z",
+        "SRC-GH-PR1342-CI-20261029T190223Z",
+        "SRC-GH-PR1342-GATE-20261029T190223Z",
+        "SRC-GH-XRP-SIGNAL-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190523Z-PR1342-SUMMARY",
+      "source": "PR1342",
+      "target": "MAIN_SUMMARY",
+      "relationship": "PROPOSES_STATIC_NOT_ISSUED_REPLACEMENT",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "The PR's summary artifact is non-directional and removes stale audio, but it is not live on main before approval.",
+      "source_ids": [
+        "SRC-GH-PR1342-STATE-RECHECK-20261029T190523Z",
+        "SRC-GH-PR1342-BODY-REVIEW-20261029T190523Z",
+        "SRC-GH-XRP-SUMMARY-20261029T190223Z"
+      ]
+    },
+    {
+      "id": "EDGE-20261029T190523Z-PAPER-STATE",
+      "source": "PAPER_STATE",
+      "target": "UNIDENTIFIED_POSITION",
+      "relationship": "NONZERO_POSITION_NULL_PRODUCT",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Persisted paper state retains a nonzero simulated position with product identity null; no asset identity is inferred and no repair was performed.",
+      "source_ids": [
+        "SRC-GH-PAPER-STATE-20261029T190223Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [],
+  "source_ids": [
+    "SRC-GH-PR1342-STATE-RECHECK-20261029T190523Z",
+    "SRC-GH-PR1342-BODY-REVIEW-20261029T190523Z",
+    "SRC-GH-PR1342-CI-20261029T190223Z",
+    "SRC-GH-PR1342-GATE-20261029T190223Z",
+    "SRC-GH-XRP-SIGNAL-20261029T190223Z",
+    "SRC-GH-XRP-SUMMARY-20261029T190223Z",
+    "SRC-GH-PAPER-STATE-20261029T190223Z",
+    "SRC-GH-MERGE-QUEUE-20261029T190223Z"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "main_modified_by_this_run": false
+}

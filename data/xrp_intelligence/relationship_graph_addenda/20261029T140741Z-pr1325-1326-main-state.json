@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T140741Z-PR1325-1326-MAIN-STATE",
+  "captured_at_utc": "2026-10-29T14:07:41.167Z",
+  "observed_main_sha": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
+  "policy": {
+    "evidence_classes": [
+      "REPOSITORY_OBSERVATION",
+      "PROPOSED_FIX",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "Descriptive sentiment is not a price forecast. Feature-quality defects must be tested for their effect on out-of-sample performance; a proposed code change is not a deployed fix."
+  },
+  "nodes": [
+    {
+      "id": "MAIN_PAPER_TRADER_WORKFLOW",
+      "label": "Main scheduled paper-trader workflow",
+      "kind": "REPOSITORY_COMPONENT"
+    },
+    {
+      "id": "PAPER_TRADING_STATE",
+      "label": "Persisted simulated position state",
+      "kind": "REPOSITORY_STATE"
+    },
+    {
+      "id": "PR1325_SAFETY_PROPOSAL",
+      "label": "Fresh-main paper-trader pause proposal",
+      "kind": "PROPOSED_FIX"
+    },
+    {
+      "id": "MAIN_XRP_EMITTER",
+      "label": "Main XRP signal emitter",
+      "kind": "REPOSITORY_COMPONENT"
+    },
+    {
+      "id": "PR1326_EMITTER_PROPOSAL",
+      "label": "Fresh-main fail-closed emitter proposal",
+      "kind": "PROPOSED_FIX"
+    },
+    {
+      "id": "XRP_FORECAST_ISSUANCE",
+      "label": "XRP price forecast issuance",
+      "kind": "MODEL_OUTPUT"
+    },
+    {
+      "id": "XRP_NEWS_FEATURE",
+      "label": "Timestamped XRP news sentiment feature",
+      "kind": "FEATURE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN66-SCHEDULED-STATE-WRITES",
+      "source": "MAIN_PAPER_TRADER_WORKFLOW",
+      "target": "PAPER_TRADING_STATE",
+      "relationship": "SCHEDULED_MUTATION_AND_PUSH",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main workflow still schedules every 30 minutes and commits/pushes state/log. Persisted position_size is nonzero while position_product is null, so repeated cycles can mutate state whose product identity is unresolved.",
+      "source_ids": [
+        "SRC-GH-MAIN-PAPER-STATE-20261029T140741Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T140741Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN66-PR1325-PAUSE-PROPOSED",
+      "source": "PR1325_SAFETY_PROPOSAL",
+      "target": "MAIN_PAPER_TRADER_WORKFLOW",
+      "relationship": "PROPOSES_MANUAL_ONLY_AND_PREFLIGHT_GUARD",
+      "evidence_class": "PROPOSED_FIX",
+      "claim": "PR #1325 removes recurring schedule and validates persisted identity before provider/model calls; exact-head CI and gate passed. Draft/unmerged means main remains active.",
+      "source_ids": [
+        "SRC-GH-PR1325-STATUS-20261029T140741Z",
+        "SRC-GH-PR1325-CI-20261029T140741Z",
+        "SRC-GH-PR1325-GATE-20261029T140741Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN66-EMITTER-INVALID-SIGNAL",
+      "source": "MAIN_XRP_EMITTER",
+      "target": "XRP_FORECAST_ISSUANCE",
+      "relationship": "DESCRIPTIVE_SCORE_MAY_BE_MISTAKEN_FOR_FORECAST",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main can fabricate score/confidence on malformed JSON; when providers fail it may still blend news score while confidence is zero. Output lacks forecast_status, target, horizon and calibrated probability. Current artifact is not a valid forecast.",
+      "source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T140741Z",
+        "SRC-GH-MAIN-SUMMARY-20261029T140741Z",
+        "SRC-GH-MAIN-EMITTER-20261029T140741Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN66-PR1326-STRICT-VALIDATION-PROPOSED",
+      "source": "PR1326_EMITTER_PROPOSAL",
+      "target": "XRP_NEWS_FEATURE",
+      "relationship": "PROPOSES_STRICT_SCHEMA_AND_TIMESTAMP_VALIDATION",
+      "evidence_class": "PROPOSED_FIX",
+      "claim": "PR #1326 rejects malformed schemas, invalid/missing/timezone-naive timestamps, non-finite/nonpositive relevance weights and unknown labels, and marks outputs NOT_ISSUED absent a calibrated fixed-horizon model. Exact-head CI/gate passed; not merged.",
+      "source_ids": [
+        "SRC-GH-PR1326-STATUS-20261029T140741Z",
+        "SRC-GH-PR1326-CI-20261029T140741Z",
+        "SRC-GH-PR1326-GATE-20261029T140741Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN66-NEWS-TO-PRICE-UNPROVEN",
+      "source": "XRP_NEWS_FEATURE",
+      "target": "XRP_FORECAST_ISSUANCE",
+      "relationship": "PREDICTIVE_VALUE_UNPROVEN",
+      "evidence_class": "UNKNOWN",
+      "claim": "High headline sentiment does not establish incremental predictive value for XRP returns; leakage-safe walk-forward comparisons against price/volume baselines are required.",
+      "source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T140741Z",
+        "SRC-GH-MAIN-SUMMARY-20261029T140741Z",
+        "SRC-GH-MAIN-EMITTER-20261029T140741Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN66-NEWS-ADDS-INCREMENTAL-SIGNAL",
+      "statement": "Timestamp-valid, deduplicated XRP news sentiment may add incremental short-horizon information beyond price/volume baselines.",
+      "status": "UNTESTED",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-EMITTER-20261029T140741Z"
+      ],
+      "disconfirming_evidence": [
+        "Current signal score 44/confidence 0.0 is not a forecast; current headline selection is narrow and model providers failed."
+      ],
+      "tests_needed": [
+        "Freeze features at each cutoff; deduplicate events; compare baseline versus baseline-plus-news using walk-forward splits, ablation, calibration and untouched holdout."
+      ]
+    },
+    {
+      "id": "HYP-RUN66-NEWS-IS-NONPREDICTIVE-OR-ALREADY-PRICED",
+      "statement": "Current headline score may be non-predictive or already priced in, especially for technical XRPL papers whose relation to short-horizon XRP returns is indirect.",
+      "status": "COMPETING_UNTESTED_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T140741Z",
+        "SRC-GH-MAIN-SUMMARY-20261029T140741Z",
+        "SRC-GH-MAIN-EMITTER-20261029T140741Z"
+      ],
+      "disconfirming_evidence": [
+        "A controlled event study could find incremental signal; no such study has yet been admitted."
+      ],
+      "tests_needed": [
+        "Compare source-specific event windows and deduplicated features against price/volume and BTC/market controls using walk-forward out-of-sample evaluation."
+      ]
+    }
+  ],
+  "notes": [
+    "PR #1325 and #1326 passed exact-head CI and fail-closed gates but remain draft/unmerged.",
+    "PR #1320 and #1324 remain open/stale; fresh-main successors were opened rather than force-updating branches.",
+    "Main remained unchanged at captured SHA. No merge, force-push, deployment, workflow dispatch, paper-state mutation or real-money trade occurred in this research run.",
+    "No synchronized XRP market observations were added. Forecast status remains NOT_ISSUED."
+  ]
+}

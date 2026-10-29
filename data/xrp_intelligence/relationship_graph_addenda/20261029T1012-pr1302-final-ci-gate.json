@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1012-PR1302-CI-FINAL",
+  "captured_at_utc": "2026-10-29T10:12:58Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "policy": "CI and gate validate the draft branch only. Main remains unchanged and requires explicit approval for any consequential change.",
+  "nodes": [
+    {
+      "id": "BARROT_PR1302",
+      "label": "Fresh-main read-only merge queue proposal #1302",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    },
+    {
+      "id": "BARROT_PR1302_CI_FINAL",
+      "label": "PR #1302 core CI final result",
+      "kind": "CI_EVIDENCE"
+    },
+    {
+      "id": "BARROT_PR1302_GATE_FINAL",
+      "label": "PR #1302 fail-closed gate final result",
+      "kind": "GATE_EVIDENCE"
+    },
+    {
+      "id": "BARROT_MAIN_MERGE_QUEUE",
+      "label": "Main mutation-capable merge queue workflow",
+      "kind": "HIGH_RISK_WORKFLOW"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN55-PR1302-CI-PASS",
+      "source": "BARROT_PR1302",
+      "target": "BARROT_PR1302_CI_FINAL",
+      "relationship": "EXACT_HEAD_CORE_CI_PASSED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "PR #1302 head 36bf551925b533617c78c806e327c110f437f02b passed 184 tests plus 4 subtests in 6.60 seconds on CI run 40855667441. This verifies the proposal's tests, not main behavior.",
+      "source_ids": [
+        "SRC-RUN55-20261029T1012Z-PR1302-HEAD",
+        "SRC-RUN55-20261029T1012Z-PR1302-CI-PASS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN55-PR1302-GATE-PASS",
+      "source": "BARROT_PR1302",
+      "target": "BARROT_PR1302_GATE_FINAL",
+      "relationship": "FAIL_CLOSED_GATE_PASSED_AUTOMERGE_DISABLED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "Gate run 40855667392 passed. Its log says automatic merge is intentionally disabled, no approval/label/merge occurs, and the gate makes no repository changes.",
+      "source_ids": [
+        "SRC-RUN55-20261029T1012Z-PR1302-HEAD",
+        "SRC-RUN55-20261029T1012Z-PR1302-GATE-PASS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN55-MAIN-RISK-REMAINS",
+      "source": "BARROT_PR1302",
+      "target": "BARROT_MAIN_MERGE_QUEUE",
+      "relationship": "FIX_NOT_APPLIED_TO_MAIN",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "PR #1302 is still draft/open/unmerged. Main continues to contain the mutation-capable merge queue until a separately approved change is merged.",
+      "source_ids": [
+        "SRC-RUN55-20261029T1012Z-PR1302-HEAD",
+        "SRC-RUN54-20261029T1012Z-MERGE-WORKFLOW"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN55-READONLY-QUEUE",
+      "statement": "A read-only inventory is the safer default until a merge process enforces current-base checks, required status checks, explicit authorized approval and no bypass.",
+      "status": "SAFETY_DESIGN_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-RUN55-20261029T1012Z-PR1302-CI-PASS",
+        "SRC-RUN55-20261029T1012Z-PR1302-GATE-PASS"
+      ],
+      "disconfirming_evidence": [
+        "A separately implemented and audited approval-gated merge workflow could be safe; this proposal does not itself configure repository rulesets."
+      ],
+      "tests_needed": [
+        "Verify repository rulesets and administrator bypass; verify approval identity and required status checks; review exact branch diff before any approval."
+      ]
+    }
+  ],
+  "notes": [
+    "DESIGNED: remove workflow write permissions and merge/branch-update/delete operations.",
+    "EXECUTED: PR #1302 exact-head core CI and fail-closed gate completed.",
+    "VERIFIED: 184 tests plus 4 subtests passed in 6.60 seconds; gate passed.",
+    "NOT VERIFIED: main workflow is still dangerous; no merge or ruleset change occurred."
+  ]
+}
