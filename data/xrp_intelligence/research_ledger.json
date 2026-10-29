@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T03:10:30.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T031030-MAIN-PAGES-DEPLOYMENT-INCIDENT",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T031030-main-pages-deployment-incident.json",
-    "snapshot_blob_sha": "c6af7281ce82ecc1e5c44699880d5ab138f95473",
-    "snapshot_commit_sha": "d5faa5a64e2f16531a58a3192e094e5921d20a94"
+    "captured_at_utc": "2026-10-29T04:10:53.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T041053-COINBASE-IDENTITY-AND-SIGNAL-SAFETY-CORRECTION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T041053-coinbase-identity-and-signal-safety-correction.json",
+    "snapshot_blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
+    "snapshot_commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc"
   },
   "sources": [
     {
@@ -5919,6 +5919,87 @@
       "title": "Research ledger gate pass for index head fbc88554",
       "accessed_at_utc": "2026-10-29T03:10:30.000Z",
       "note": "Fail-closed gate completed successfully for research index head fbc88554450055bae78d9a9a664801324ddeb885. The successor index commit will require its own gate."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-YOUTUBE-HANDLE-DRKAMILAHSTEVENSON",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "title": "YouTube channel page for @drkamilahstevenson",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "The official YouTube handle resolves to a page titled Kamilah Stevenson. The page fetch did not expose the channel ID or complete upload inventory in this run; do not treat this as proof that it matches either previously observed channel ID."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-YOUTUBE-PAUL-BARRON-KAMILAH-IDENTITY",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "title": "Crypto Panics! W/ @drkamilahstevenson — Paul Barron Podcast",
+      "published_at": "2026-06-11",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "Public interview episode hosted by Paul Barron Podcast tags @drkamilahstevenson and features Dr. Kamilah Stevenson discussing XRP and Japan. This is a third-party upload, not a video posted by the creator; it links the handle to the guest but does not establish the canonical channel ID or complete upload inventory."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-IHEART-KAMILAH-CAMILA-IDENTITY",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "title": "Crypto Panics! with Dr. Kamilah Stevenson — The XRP Podcast with Paul Barron",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "Public transcript introduces the guest as Camila and includes her first-person direction to YouTube under a 'doctor Camilla Stevenson' name variant. It supports Kamilah/Camila/Camilla spelling variation, but does not establish identity with the separate exact-name Camilla Stephenson or resolve the channel ID."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-MAIN-HEAD",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/45833c0170755bfaa589573bc9fec0190c0b163f",
+      "title": "Current main head before this research update",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "Current main SHA 45833c0170755bfaa589573bc9fec0190c0b163f is a 'Paper trade cycle [skip ci]' commit. Main has advanced beyond the 03:10Z research snapshot; no main write was made by this run."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-MAIN-XRP-SIGNAL-INVALID",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Current main XRP signal artifact — invalid confidence and unavailable providers",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "The artifact timestamp is 2026-10-29T03:26:07.441213Z, score 44, confidence 0.0. Its source field records missing GITHUB_TOKEN/GH_MODELS_TOKEN and Groq HTTP 429. This is not a valid directional forecast and should not be used as a predictive feature."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-MAIN-XRP-SUMMARY-INVALID",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "title": "Current main XRP summary still presents score and headline sentiment despite confidence zero",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "The summary refers to a mixed score of 44 and news_score 88 from 11 entries while carrying source confidence 0.0 and provider failures. It is a presentation defect, not evidence of a valid forecast; the fresh-base fail-closed fix is in draft PR #1288."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-PAPER-LOG-CHANGED",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Paper-trading log changed after last verified replay",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "Current main log blob SHA is 4443646150103c5dc149669f6ac3c689c341f44e. The last verified replay snapshot covered 2,361 rows at 2026-10-29T03:06:20Z; this newer log has not been replay-verified in this run, so prior counts/state are stale for current-main claims."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-PR1288-HEAD",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1288",
+      "title": "Fresh-main fail-closed XRP summary fix PR #1288",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "Draft/open/unmerged. Head 07009da95c8ba964985282de693f6c6571ddd282, base SHA 45833c0170755bfaa589573bc9fec0190c0b163f. Four files: signal_summary.py, signal-summary.yml, test_signal_summary_safety.py, and core CI list. No merge, deployment or main write."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-PR1288-CI-40816036107",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40816036107",
+      "title": "PR #1288 exact-head core CI result",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "Exact head 07009da95c8ba964985282de693f6c6571ddd282 completed successfully. Core suite: 173 passed, 4 subtests passed in 6.67 seconds. This verifies the tested branch head, not merge authorization or production behavior."
+    },
+    {
+      "id": "SRC-RUN38-20261029T040827-PR1288-GATE-40816036119",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40816036119",
+      "title": "PR #1288 fail-closed gate result",
+      "accessed_at_utc": "2026-10-29T04:08:27.000Z",
+      "note": "Exact head 07009da95c8ba964985282de693f6c6571ddd282 completed the fail-closed gate successfully. The workflow explicitly says automatic merge is disabled; PR remains draft/open/unmerged."
     }
   ],
   "limitations": [
@@ -6083,7 +6164,10 @@
     "2026-10-29T03:08:05.000Z: Fail-closed gate run 40810333391 passed for index head 1621b028ee6af7c7d41f94ba2172011871dc1538. This metadata-only successor commit still needs its own gate; the research-base PR does not trigger core CI.",
     "2026-10-29T03:08:15.000Z: Gate run 40810383956 passed for prior index head 3603c918ebba60e06bea94837fce9214d7c5550a. The new index successor requires its own gate; research-branch core CI remains untriggered.",
     "2026-10-29T03:09:30.000Z: PR #1283 latest head 4280f945 passes 171 tests plus 4 subtests and the fail-closed gate, but remains draft/unmerged and the new fields remain research-only pending walk-forward evaluation.",
-    "2026-10-29T03:10:30.000Z: The unintended main snapshot commit triggered GitHub Pages build and deploy run 40810264435, which completed successfully. The exact public path reachability was not checked. No rollback, delete, overwrite or redeployment was performed; a human decision is required."
+    "2026-10-29T03:10:30.000Z: The unintended main snapshot commit triggered GitHub Pages build and deploy run 40810264435, which completed successfully. The exact public path reachability was not checked. No rollback, delete, overwrite or redeployment was performed; a human decision is required.",
+    "2026-10-29T04:10:53.000Z: Current main XRP signal confidence is 0.0 and its source records missing model credentials plus Groq HTTP 429, while the summary still describes score/headline sentiment. PR #1288 passes exact-head CI and the fail-closed gate but remains draft/unmerged; no forecast is issued.",
+    "2026-10-29T04:10:53.000Z: Candidate creator identity is associated with Dr Kamilah/Camila/Camilla Stevenson and handle @drkamilahstevenson, but canonical channel ID remains unresolved, two Kamilah-named channel IDs were previously observed, and the 10-video seed inventory is incomplete. Exact 'actual capital' context remains unresolved; ASK Coin candidates remain separate.",
+    "2026-10-29T04:10:53.000Z: Last verified paper-trading replay covered 2,361 rows at 03:06:20Z; current main paper-trading log blob changed afterward and has not been replay-verified in this run. Do not treat the earlier count/state as current."
   ],
   "run_updates": [
     {
@@ -10010,6 +10094,49 @@
       "merge_performed": false,
       "force_push": false,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T04:10:53.000Z",
+      "update_type": "COINBASE_STABLECOIN_GRAPH_AND_XRP_SIGNAL_SAFETY",
+      "source_ids": [
+        "SRC-RUN38-20261029T040827-YOUTUBE-HANDLE-DRKAMILAHSTEVENSON",
+        "SRC-RUN38-20261029T040827-YOUTUBE-PAUL-BARRON-KAMILAH-IDENTITY",
+        "SRC-RUN38-20261029T040827-IHEART-KAMILAH-CAMILA-IDENTITY",
+        "SRC-RUN38-20261029T040827-MAIN-HEAD",
+        "SRC-RUN38-20261029T040827-MAIN-XRP-SIGNAL-INVALID",
+        "SRC-RUN38-20261029T040827-MAIN-XRP-SUMMARY-INVALID",
+        "SRC-RUN38-20261029T040827-PAPER-LOG-CHANGED",
+        "SRC-RUN38-20261029T040827-PR1288-HEAD",
+        "SRC-RUN38-20261029T040827-PR1288-CI-40816036107",
+        "SRC-RUN38-20261029T040827-PR1288-GATE-40816036119",
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28",
+        "SRC-COINBASE-Q2-2026",
+        "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+        "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
+        "SRC-PERMISSION-ASK-COIN-CHAINWIRE-2022-02-17",
+        "SRC-ACTUAL-CAPITAL-MARKET-CAP-EXPLANATION-2026-10-28T1711Z",
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z",
+        "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+        "SRC-GLASP-KAMILAH-XRP-NEED-2026-03-19",
+        "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+        "SRC-RUN27-20261029T020930-PR1282-CI-40804504273",
+        "SRC-RUN27-20261029T020930-PR1282-GATE-40804504256",
+        "SRC-RUN37-20261029T031030-INDEX-GATE-40810559125"
+      ],
+      "summary": "Added a direct Coinbase-Ripple RLUSD distribution edge and three competing hypotheses covering additive multi-issuer distribution, possible USDC share shift, and XRPL activity versus XRP demand. Rechecked exact-phrase and creator identity work: ASK Coin remains two distinct candidates; actual capital lacks its original context; SBIC East/ChatGPT is a training-course mention only; Kamilah/Camila/Camilla identity is probable but the canonical channel ID and complete public video inventory remain unresolved. Current main XRP signal has confidence 0.0 with providers unavailable while the summary still presents headline sentiment. Created fresh-main draft PR #1288; exact-head CI passed 173 tests plus 4 subtests in 6.67s and the fail-closed gate passed. No forecast, main write, merge or trade.",
+      "index_head_verified": "PENDING_AFTER_THIS_UPDATE",
+      "gate_status": "PR1288_GATE_PASS; RESEARCH_INDEX_SUCCESSOR_GATE_PENDING",
+      "core_ci_status": "PR1288_PASS_173_TESTS_4_SUBTESTS_6.67S; RESEARCH_BASE_PR_CORE_CI_NOT_TRIGGERED",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T041053-coinbase-identity-and-signal-safety-correction.json",
+      "main_sha": "45833c0170755bfaa589573bc9fec0190c0b163f",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
   "mission_priority": {
@@ -10237,51 +10364,67 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "fbc88554450055bae78d9a9a664801324ddeb885",
-  "current_research_head_this_run": "d5faa5a64e2f16531a58a3192e094e5921d20a94",
+  "current_research_head_before_ledger_update": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc",
+  "current_research_head_this_run": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc",
   "current_research_checks": {
-    "status": "INCIDENT_SNAPSHOT_READBACK_PASS; PRIOR_INDEX_GATE_PASS; SUCCESSOR_INDEX_GATE_PENDING; MAIN_WRITE_AND_PAGES_DEPLOYMENT_INCIDENT_RECORDED",
-    "latest_main_sha": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T031030-main-pages-deployment-incident.json",
-    "snapshot_blob_sha": "c6af7281ce82ecc1e5c44699880d5ab138f95473",
-    "snapshot_commit_sha": "d5faa5a64e2f16531a58a3192e094e5921d20a94",
-    "snapshot_characters": 3757,
+    "status": "COINBASE_GRAPH_ADDENDUM_AND_SIGNAL_SAFETY_PR_VERIFIED; CREATOR_CHANNEL_ID_AND_CURRENT_PAPER_REPLAY_PENDING; RESEARCH_INDEX_GATE_PENDING",
+    "latest_main_sha": "45833c0170755bfaa589573bc9fec0190c0b163f",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T041053-coinbase-identity-and-signal-safety-correction.json",
+    "snapshot_blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
+    "snapshot_commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc",
+    "snapshot_characters": 9418,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 6,
+    "source_reference_count": 25,
     "missing_source_references": 0,
-    "previous_index_head": "fbc88554450055bae78d9a9a664801324ddeb885",
+    "previous_index_head": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc",
     "previous_index_gate_run": 40810559125,
     "previous_index_gate_status": "PASS",
     "current_index_gate": "PENDING_OR_UNVERIFIED",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-    "pr1283_head": "4280f945bc0f47e5738bab7b747243cb8efaf96c",
-    "pr1283_core_ci_run": 40810414493,
-    "pr1283_core_ci_status": "PASS_171_TESTS_4_SUBTESTS_4.96S",
-    "pr1283_gate_run": 40810414537,
-    "pr1283_gate_status": "PASS",
-    "paper_trading_replay": "PASS_READ_ONLY_2361_ROWS",
+    "pr1288_head": "07009da95c8ba964985282de693f6c6571ddd282",
+    "pr1288_core_ci_run": 40816036107,
+    "pr1288_core_ci_status": "PASS_173_TESTS_4_SUBTESTS_6.67S",
+    "pr1288_gate_run": 40816036119,
+    "pr1288_gate_status": "PASS_FAIL_CLOSED",
+    "pr1288_state": "DRAFT_OPEN_UNMERGED",
+    "pr1282_head": "b803fcb68d3302f6799b2e5f7aadd1afcc27f568",
+    "pr1282_ci_run": 40804504273,
+    "pr1282_ci_status": "PASS_169_TESTS_4_SUBTESTS_7.57S",
+    "pr1282_gate_run": 40804504256,
+    "pr1282_gate_status": "PASS",
+    "pr1282_state": "DRAFT_OPEN_UNMERGED",
+    "main_signal": {
+      "timestamp": "2026-10-29T03:26:07.441213Z",
+      "score": 44,
+      "confidence": 0,
+      "provider_unavailable": true,
+      "forecast_status": "NOT_ISSUED"
+    },
+    "paper_trading_replay": "STALE_PRIOR_REPLAY_2361_ROWS_AT_2026-10-29T03:06:20Z; CURRENT_LOG_CHANGED; REPLAY_REQUIRED",
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "external_deployments_triggered_by_this_run": false,
     "paper_trading_state_mutated": false,
-    "main_modified_by_this_run": true,
-    "pages_deployment_run": 40810264435,
-    "pages_deployment_status": "SUCCESS",
+    "real_money_trade": false,
     "forecast_status": "NOT_ISSUED"
   },
   "ledger_metrics": {
-    "source_records": 731,
-    "run_updates": 139,
-    "limitations": 162,
-    "relationship_edges": 128,
-    "competing_hypotheses": 78,
+    "source_records": 741,
+    "run_updates": 140,
+    "limitations": 165,
+    "relationship_edges": 129,
+    "competing_hypotheses": 81,
     "market_observations": 68,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 667817,
+    "index_characters_before_this_update": 671589,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 3757,
-    "index_characters": 671589
+    "latest_snapshot_characters": 9418,
+    "index_characters": 685895
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -10302,16 +10445,24 @@
     "forecast_status": "NOT_ISSUED"
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:10:30.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T04:10:53.000Z",
     "post_snapshot_verification": {
-      "status": "INCIDENT_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; SUCCESSOR_INDEX_GATE_PENDING",
+      "status": "CORRECTIVE_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCE_AUDIT_PASS; GRAPH_ADDENDUM_READBACK_PASS; SUCCESSOR_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "c6af7281ce82ecc1e5c44699880d5ab138f95473",
-      "snapshot_commit_sha": "d5faa5a64e2f16531a58a3192e094e5921d20a94",
-      "snapshot_characters": 3757,
-      "source_reference_count": 6,
+      "snapshot_blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
+      "snapshot_commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc",
+      "snapshot_characters": 9418,
+      "source_reference_count": 25,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
+      "relationship_graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T040827-coinbase-multistablecoin-strategy.json",
+      "relationship_graph_addendum_blob_sha": "278c7fb2996c06ce98cab56acb1d29dc641d98a5",
+      "relationship_graph_addendum_readback_ok": true,
+      "superseded_unindexed_snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T040827-coinbase-identity-and-signal-safety.json",
+        "blob_sha": "8df78f43b3aab6db267461ef4d47224adfbbd45a",
+        "reason": "Retained unchanged; superseded by corrective snapshot because addendum blob SHA was null."
+      },
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
@@ -10327,13 +10478,13 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T03:09:30.000Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030930-PR1283-HEAD-AND-MAIN-WRITE-CORRECTION",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030930-pr1283-head-and-main-write-correction.json",
-      "snapshot_blob_sha": "9e54df23dc91a71ab5cd9d7a1d44817678210ecb",
-      "snapshot_commit_sha": "074967ce84fd5ee6b836da5d232d309ed0ae6d83"
+      "captured_at_utc": "2026-10-29T03:10:30.000Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T031030-MAIN-PAGES-DEPLOYMENT-INCIDENT",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T031030-main-pages-deployment-incident.json",
+      "snapshot_blob_sha": "c6af7281ce82ecc1e5c44699880d5ab138f95473",
+      "snapshot_commit_sha": "d5faa5a64e2f16531a58a3192e094e5921d20a94"
     },
-    "note": "The accidental main write triggered a successful Pages deployment. This incident is recorded on the research branch; no further main mutation or redeployment was attempted."
+    "note": "The first snapshot file was preserved unchanged and superseded by a corrective snapshot. Research data and index updates are confined to the explicit research branch; main was not modified."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -10381,46 +10532,73 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T03:10:30.000Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T03:09:30.000Z",
+    "recorded_at_utc": "2026-10-29T04:10:53.000Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T03:10:30.000Z",
     "source_ids": [
-      "SRC-RUN37-20261029T031030-PAGES-DEPLOY-40810264435",
-      "SRC-RUN37-20261029T031030-MAIN-CI-40810265939",
-      "SRC-RUN37-20261029T031030-AUTO-PR-CHECK-40810266221",
+      "SRC-RUN38-20261029T040827-YOUTUBE-HANDLE-DRKAMILAHSTEVENSON",
+      "SRC-RUN38-20261029T040827-YOUTUBE-PAUL-BARRON-KAMILAH-IDENTITY",
+      "SRC-RUN38-20261029T040827-IHEART-KAMILAH-CAMILA-IDENTITY",
+      "SRC-RUN38-20261029T040827-MAIN-HEAD",
+      "SRC-RUN38-20261029T040827-MAIN-XRP-SIGNAL-INVALID",
+      "SRC-RUN38-20261029T040827-MAIN-XRP-SUMMARY-INVALID",
+      "SRC-RUN38-20261029T040827-PAPER-LOG-CHANGED",
+      "SRC-RUN38-20261029T040827-PR1288-HEAD",
+      "SRC-RUN38-20261029T040827-PR1288-CI-40816036107",
+      "SRC-RUN38-20261029T040827-PR1288-GATE-40816036119",
+      "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+      "SRC-COINBASE-RLUSD-BLOG-2026-10-28",
+      "SRC-COINBASE-Q2-2026",
+      "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+      "SRC-ASKCOIN-CMC-INACTIVE-2026-10-28",
+      "SRC-PERMISSION-ASK-COIN-CHAINWIRE-2022-02-17",
+      "SRC-ACTUAL-CAPITAL-MARKET-CAP-EXPLANATION-2026-10-28T1711Z",
+      "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+      "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z",
+      "SRC-YT-KAMILAH-LIQUIDITY-SHIFT-2025-11-26",
+      "SRC-GLASP-KAMILAH-XRP-NEED-2026-03-19",
+      "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+      "SRC-RUN27-20261029T020930-PR1282-CI-40804504273",
+      "SRC-RUN27-20261029T020930-PR1282-GATE-40804504256",
       "SRC-RUN37-20261029T031030-INDEX-GATE-40810559125"
     ],
-    "main_write_incident": {
-      "commit": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
-      "path": "data/xrp_intelligence/snapshots/20261029T030620-paper-replay-2361-index-gate.json",
-      "main_modified_by_this_run": true,
-      "pages_deployment_run": 40810264435,
-      "pages_deployment_status": "SUCCESS",
-      "public_path_reachability": "NOT_CHECKED",
-      "no_rollback_or_redeployment": true
+    "relationship_graph_addendum": {
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T040827-coinbase-multistablecoin-strategy.json",
+      "blob_sha": "278c7fb2996c06ce98cab56acb1d29dc641d98a5",
+      "commit_sha": "9fdc8fa3a8fea27b1109f97a1becab9c7d9da9a5",
+      "new_edges": 1,
+      "new_competing_hypotheses": 3
     },
-    "pr1283": {
-      "head_sha": "4280f945bc0f47e5738bab7b747243cb8efaf96c",
-      "ci_run": 40810414493,
-      "gate_run": 40810414537,
-      "ci": "PASS_171_TESTS_4_SUBTESTS_4.96S",
-      "gate": "PASS",
-      "state": "DRAFT_UNMERGED"
+    "corrected_snapshot": {
+      "path": "data/xrp_intelligence/snapshots/20261029T041053-coinbase-identity-and-signal-safety-correction.json",
+      "blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
+      "commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc",
+      "supersedes": "data/xrp_intelligence/snapshots/20261029T040827-coinbase-identity-and-signal-safety.json"
     },
-    "prior_index_head": "fbc88554450055bae78d9a9a664801324ddeb885",
-    "prior_index_gate_run": 40810559125,
-    "prior_index_gate_status": "PASS",
-    "successor_index_gate": "PENDING_OR_UNVERIFIED",
+    "pr1288": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1288",
+      "head_sha": "07009da95c8ba964985282de693f6c6571ddd282",
+      "ci_run": 40816036107,
+      "ci": "PASS_173_TESTS_4_SUBTESTS_6.67S",
+      "gate_run": 40816036119,
+      "gate": "PASS_FAIL_CLOSED",
+      "state": "DRAFT_OPEN_UNMERGED"
+    },
+    "creator_identity": {
+      "status": "PROBABLE_ALIAS_ASSOCIATION; CANONICAL_CHANNEL_ID_UNRESOLVED",
+      "candidate_handle": "@drkamilahstevenson",
+      "video_inventory": "PARTIAL"
+    },
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:09:30.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:10:30.000Z",
     "post_snapshot_verification": {
-      "status": "CORRECTIVE_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; SUCCESSOR_INDEX_GATE_PENDING",
+      "status": "INCIDENT_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; SUCCESSOR_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "9e54df23dc91a71ab5cd9d7a1d44817678210ecb",
-      "snapshot_commit_sha": "074967ce84fd5ee6b836da5d232d309ed0ae6d83",
-      "snapshot_characters": 3566,
-      "source_reference_count": 5,
+      "snapshot_blob_sha": "c6af7281ce82ecc1e5c44699880d5ab138f95473",
+      "snapshot_commit_sha": "d5faa5a64e2f16531a58a3192e094e5921d20a94",
+      "snapshot_characters": 3757,
+      "source_reference_count": 6,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
       "ci": {
@@ -10438,13 +10616,13 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T03:07:30.000Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030730-UNINTENDED-MAIN-WRITE-CORRECTION",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030730-unintended-main-write-correction.json",
-      "snapshot_blob_sha": "0881a4fc97fae2ecee280a3acda4635925e1ffd8",
-      "snapshot_commit_sha": "86946fd89cb023c43ae32b3e1fc59d02f9356066"
+      "captured_at_utc": "2026-10-29T03:09:30.000Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030930-PR1283-HEAD-AND-MAIN-WRITE-CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030930-pr1283-head-and-main-write-correction.json",
+      "snapshot_blob_sha": "9e54df23dc91a71ab5cd9d7a1d44817678210ecb",
+      "snapshot_commit_sha": "074967ce84fd5ee6b836da5d232d309ed0ae6d83"
     },
-    "note": "Corrective snapshot is on the explicit research branch. The prior index head passed its gate; this successor index commit requires its own gate. The unintended main file remains unchanged."
+    "note": "The accidental main write triggered a successful Pages deployment. This incident is recorded on the research branch; no further main mutation or redeployment was attempted."
   },
   "snapshot_verification_history": [
     {
@@ -10772,6 +10950,27 @@
       "pr1282_gate": "PASS",
       "latest_index_gate": "PENDING_OR_UNVERIFIED",
       "workflow_root_cause": "UNRESOLVED",
+      "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T04:10:53.000Z",
+      "verification_type": "COINBASE_GRAPH_AND_SIGNAL_SAFETY_SNAPSHOT_CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T041053-coinbase-identity-and-signal-safety-correction.json",
+      "snapshot_blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
+      "snapshot_commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc",
+      "snapshot_characters": 9418,
+      "source_reference_count": 25,
+      "missing_source_references": 0,
+      "snapshot_character_metric_matches": true,
+      "relationship_graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T040827-coinbase-multistablecoin-strategy.json",
+      "relationship_graph_addendum_blob_sha": "278c7fb2996c06ce98cab56acb1d29dc641d98a5",
+      "superseded_snapshot_path": "data/xrp_intelligence/snapshots/20261029T040827-coinbase-identity-and-signal-safety.json",
+      "superseded_snapshot_blob_sha": "8df78f43b3aab6db267461ef4d47224adfbbd45a",
+      "pr1288_ci_run": 40816036107,
+      "pr1288_ci": "PASS_173_TESTS_4_SUBTESTS_6.67S",
+      "pr1288_gate_run": 40816036119,
+      "pr1288_gate": "PASS_FAIL_CLOSED",
+      "latest_index_gate": "PENDING_OR_UNVERIFIED",
       "forecast_status": "NOT_ISSUED"
     }
   ]
