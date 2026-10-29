@@ -38,6 +38,19 @@ def test_registry_contains_all_seven_with_official_sources_and_baselines():
     assert MILLENNIUM_PROBLEMS["poincare_conjecture"]["baseline_status"] == "SOLVED_HISTORICAL"
 
 
+def test_canonical_dataset_links_all_problems_to_claim_evidence():
+    dataset_path = Path(__file__).resolve().parents[1] / "data" / "millennium_problems_unified.json"
+    dataset = json.loads(dataset_path.read_text(encoding="utf-8"))
+    assert len(dataset["problems"]) == 7
+    assert all(item["official_source"].startswith("https://www.claymath.org/") for item in dataset["problems"])
+    assert all("related_ai_claim_ids" in item for item in dataset["problems"])
+    navier = next(item for item in dataset["problems"] if item["baseline_status"] == "ACTIVE_UNDER_REVIEW")
+    assert navier["official_status"].startswith("Active")
+    assert "openai-navier-stokes-2026-09" in navier["related_ai_claim_ids"]
+    poincare = next(item for item in dataset["problems"] if item["baseline_status"] == "SOLVED_HISTORICAL")
+    assert "Perelman" in poincare["official_status"]
+
+
 def test_claim_requires_source_and_known_problem():
     with pytest.raises(ValueError, match="source_url"):
         sample_claim(source_url="paper.pdf").validate()
