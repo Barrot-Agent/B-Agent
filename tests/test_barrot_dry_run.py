@@ -89,6 +89,8 @@ def test_groq_messages_are_bounded_for_small_token_budget(monkeypatch):
         ["git", "branch", "-D", "main"],
         ["git", "update-ref", "refs/heads/main", "deadbeef"],
         ["git", "config", "user.name", "unsafe"],
+        ["git", "config", "user.name", "--get"],
+        ["git", "submodule", "foreach", "git push"],
         ["git", "add", "."],
         ["git", "restore", "--worktree", "."],
         ["git", "stash", "push"],
@@ -112,6 +114,7 @@ def test_dry_run_blocks_local_git_mutations(monkeypatch, args):
         ["issue", "edit", "1", "--add-label", "unsafe"],
         ["workflow", "run", "barrot-agent.yml"],
         ["api", "repos/Barrot-Agent/B-Agent/pulls/1", "--method", "PATCH"],
+        ["api", "repos/Barrot-Agent/B-Agent/pulls/1", "-X", "DELETE"],
         ["api", "repos/Barrot-Agent/B-Agent/issues", "-f", "title=unsafe"],
     ],
 )
