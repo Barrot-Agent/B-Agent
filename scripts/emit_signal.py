@@ -184,7 +184,7 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
                 continue
 
             sentiment = distill.get("sentiment")
-            if sentiment not in {"bullish", "neutral", "bearish"}:
+            if not isinstance(sentiment, str) or sentiment not in {"bullish", "neutral", "bearish"}:
                 continue
             sentiment_value = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}[sentiment]
             num += sentiment_value * weight
