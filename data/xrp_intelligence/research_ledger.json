@@ -12950,7 +12950,14 @@
       "main_base_sha": "93ebf983d803b567c88d9026dc64f02732203e4b"
     },
     "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PROPOSAL_PASS; MAIN_STILL_SCHEDULED",
-    "verified_at_utc": "2026-10-29T11:07:45Z"
+    "verified_at_utc": "2026-10-29T11:08:30Z",
+    "index_pointer_status": "PASS",
+    "index_blob_sha_at_readback": "ff892794ada7e6c924410082355288fbb21e46e3",
+    "index_commit_sha_at_readback": "7acd3f410a3f832fe93dddb77822fd190f478008",
+    "index_character_count_match": true,
+    "index_metric_count_match": true,
+    "missing_snapshot_source_references": 0,
+    "missing_graph_source_references": 0
   },
   "ledger_metrics": {
     "source_records": 894,
@@ -12967,7 +12974,7 @@
     "index_characters_before_this_update": 866126,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 9295,
-    "index_characters": 877410
+    "index_characters": 878032
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -13034,13 +13041,18 @@
       "graph_hypotheses": 3,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
-      "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
+      "index_pointer_status": "PASS",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "real_money_trade": false,
-      "paper_trading_state_mutated": false
+      "paper_trading_state_mutated": false,
+      "index_blob_sha_at_readback": "ff892794ada7e6c924410082355288fbb21e46e3",
+      "index_commit_sha_at_readback": "7acd3f410a3f832fe93dddb77822fd190f478008",
+      "index_character_count_match": true,
+      "index_metric_count_match": true,
+      "missing_snapshot_source_references": 0
     }
   },
   "index_format_version": "2.0",
