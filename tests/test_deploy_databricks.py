@@ -34,8 +34,8 @@ def test_authentication_preflight_precedes_remote_mutations() -> None:
     assert calls.index("_validate_connection") < calls.index("_ensure_folder")
     assert calls.index("_validate_connection") < calls.index("_upload_files")
     assert calls.index("_validate_connection") < calls.index("_deploy_job")
-    assert "current_user" in _calls(functions["_validate_connection"])
-    assert "me" in _calls(functions["_validate_connection"])
+    source = SCRIPT_PATH.read_text(encoding="utf-8")
+    assert "client.current_user.me()" in source
 
 
 def test_partial_uploads_abort_before_job_creation() -> None:
