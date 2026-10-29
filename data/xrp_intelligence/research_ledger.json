@@ -4703,6 +4703,22 @@
       "title": "Controlled approval workflow metadata selector defect",
       "accessed_at_utc": "2026-10-29T00:07:21.216Z",
       "note": "Main's gh api jq projection asks for top-level base_ref, head_sha and head_ref. GitHub REST fields are nested at .base.ref, .head.sha and .head.ref. PR #1271 proposes the correction. Historical push-event zero-job runs remain a separate unresolved anomaly."
+    },
+    {
+      "id": "SRC-RUN15-PR1271-CI-PASS-20261029T0007Z",
+      "evidence_class": "TEST_RESULT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40791732695",
+      "title": "PR #1271 corrected-head core CI",
+      "accessed_at_utc": "2026-10-29T00:07:53.675Z",
+      "note": "Latest corrected head b6688a328d24af70c4f234b56aeabf90aab5005e passed 146 tests in 5.33 seconds. The earlier failed run was due to a duplicated def in the added regression test."
+    },
+    {
+      "id": "SRC-RUN15-PR1271-GATE-PASS-20261029T0007Z",
+      "evidence_class": "TEST_RESULT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40791732699",
+      "title": "PR #1271 corrected-head fail-closed gate",
+      "accessed_at_utc": "2026-10-29T00:07:53.675Z",
+      "note": "Fail-closed gate passed on latest corrected head b6688a328d24af70c4f234b56aeabf90aab5005e. No approval action or merge was performed."
     }
   ],
   "limitations": [
@@ -7899,6 +7915,38 @@
       "deployment": false,
       "real_money_trade": false,
       "state_mutated": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T00:07:53.675Z",
+      "update_type": "PR1271_CORRECTED_HEAD_CI_AND_GATE_VERIFIED",
+      "main_sha": "22ffb8458644dfcc46d918136f1ee90eb7f8012c",
+      "source_ids": [
+        "SRC-RUN15-PR1271-CI-PASS-20261029T0007Z",
+        "SRC-RUN15-PR1271-GATE-PASS-20261029T0007Z"
+      ],
+      "pr1271": {
+        "number": 1271,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1271",
+        "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
+        "ci": {
+          "status": "PASS",
+          "tests_passed": 146,
+          "duration_seconds": 5.33,
+          "run_id": 40791732695
+        },
+        "gate": {
+          "status": "PASS",
+          "run_id": 40791732699
+        },
+        "initial_ci_failure": "DUPLICATED_DEF_IN_NEW_TEST_FIXED",
+        "draft": true,
+        "merged": false
+      },
+      "forecast_status": "NOT_ISSUED",
+      "main_modified": false,
+      "merge_performed": false,
+      "deployment": false,
+      "real_money_trade": false
     }
   ],
   "mission_priority": {
@@ -8127,9 +8175,9 @@
     }
   },
   "current_research_head_before_ledger_update": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
-  "current_research_head_this_run": "PENDING_AFTER_INDEX_WRITE",
+  "current_research_head_this_run": "134df11dcff1419428933984f0e19edc9da1634b",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; SOURCE_REFERENCES_PASS; PR1270_CI_GATE_PASS; PR1271_LATEST_HEAD_PENDING; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; INDEX_GATE_PENDING",
+    "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PR1270_CI_GATE_PASS; PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; INDEX_GATE_PENDING",
     "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0007Z.json",
     "snapshot_blob_sha": "9bb1f8b48af5c5497d151788ab0e2538b789a421",
     "snapshot_commit_sha": "134df11dcff1419428933984f0e19edc9da1634b",
@@ -8143,14 +8191,16 @@
     },
     "pr1271": {
       "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
-      "ci": "PENDING",
-      "gate": "PENDING"
+      "ci": "PASS_146_TESTS_5.33S",
+      "run_id": 40791732695,
+      "gate": "PASS",
+      "gate_run_id": 40791732699
     },
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR"
   },
   "ledger_metrics": {
-    "source_records": 579,
-    "run_updates": 115,
+    "source_records": 581,
+    "run_updates": 116,
     "limitations": 107,
     "relationship_edges": 104,
     "competing_hypotheses": 69,
@@ -8163,7 +8213,7 @@
     "index_characters_before_this_update": 517946,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 615082,
-    "index_characters": 524019
+    "index_characters": 526378
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -8191,7 +8241,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T00:07:21.216Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; INDEX_SUCCESSOR_CHECKS_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PR1270_AND_PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "9bb1f8b48af5c5497d151788ab0e2538b789a421",
       "snapshot_commit_sha": "134df11dcff1419428933984f0e19edc9da1634b",
@@ -8261,8 +8311,8 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T00:07:21.216Z",
-    "previous_addendum_recorded_at_utc": "2026-10-28T23:15:00Z",
+    "recorded_at_utc": "2026-10-29T00:07:53.675Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T00:07:21.216Z",
     "source_ids": [
       "SRC-RUN15-MAIN-HEAD-202610290007Z",
       "SRC-RUN15-LEGACY-ACCURACY-202610290007Z",
@@ -8273,7 +8323,9 @@
       "SRC-RUN15-PR1271-SYNTAX-FIX-202610290007Z",
       "SRC-RUN15-PR1271-RETRY-PENDING-202610290007Z",
       "SRC-RUN15-PR1268-CI-GATE-202610290007Z",
-      "SRC-RUN15-APPROVAL-WORKFLOW-202610290007Z"
+      "SRC-RUN15-APPROVAL-WORKFLOW-202610290007Z",
+      "SRC-RUN15-PR1271-CI-PASS-20261029T0007Z",
+      "SRC-RUN15-PR1271-GATE-PASS-20261029T0007Z"
     ],
     "main_sha": "22ffb8458644dfcc46d918136f1ee90eb7f8012c",
     "latest_snapshot": {
@@ -8289,12 +8341,16 @@
       "merged": false
     },
     "pr1271": {
+      "number": 1271,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1271",
       "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
-      "initial_ci": "FAIL_SYNTAX_ERROR_DUPLICATED_DEF",
-      "latest_head_ci": "PENDING",
-      "latest_head_gate": "PENDING",
+      "ci": "PASS_146_TESTS_5.33S",
+      "ci_run_id": 40791732695,
+      "gate": "PASS",
+      "gate_run_id": 40791732699,
       "draft": true,
-      "merged": false
+      "merged": false,
+      "initial_failure_corrected": true
     },
     "legacy_accuracy": {
       "checked_count": 1659,
