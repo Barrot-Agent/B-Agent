@@ -704,3 +704,137 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+def test_emit_signal_classifier_parser_rejects_malformed_responses() -> None:
+    module = load_script(
+        REPO_ROOT / "scripts" / "emit_signal.py",
+        "emit_signal_strict_classifier_parser_test",
+    )
+    assert module._score_from_text(
+        '{"score":73,"confidence":0.8,"label":"bullish"}'
+    ) == (73, 0.8, "bullish")
+
+    invalid_responses = (
+        "not json",
+        "{}",
+        '{"score":73,"confidence":0.8,"label":"bullish","extra":true}',
+        '{"score":true,"confidence":0.8,"label":"bullish"}',
+        '{"score":101,"confidence":0.8,"label":"bullish"}',
+        '{"score":73,"confidence":NaN,"label":"bullish"}',
+        '{"score":73,"confidence":0.8,"label":"up"}',
+    )
+    for response in invalid_responses:
+        try:
+            module._score_from_text(response)
+        except ValueError:
+            continue
+        raise AssertionError(f"invalid classifier response was accepted: {response}")
+
+
+def test_emit_signal_output_explicitly_marks_provider_failure_not_issued() -> None:
+    module = load_script(
+        REPO_ROOT / "scripts" / "emit_signal.py",
+        "emit_signal_not_issued_metadata_test",
+    )
+    output = module._build_signal_output(
+        "Recent XRP headlines",
+        44,
+        0.0,
+        "sentiment unavailable (github_failed:missing token; groq_failed:HTTP 429)",
+        88,
+        11,
+        timestamp="2026-10-29T13:00:00+00:00",
+        generated_at_unix=1793278800,
+    )
+    assert output["forecast_status"] == "NOT_ISSUED"
+    assert output["signal_type"] == "descriptive_news_sentiment"
+    assert output["score_semantics"] == "descriptive_0_to_100_sentiment_blend_not_return_forecast"
+    assert output["confidence_semantics"] == "classifier_self_reported_confidence_not_calibrated_return_probability"
+    assert output["forecast"]["status"] == "NOT_ISSUED"
+    assert output["forecast"]["reason_code"] == "SENTIMENT_PROVIDER_UNAVAILABLE"
+    assert output["forecast"]["data_cutoff_utc"] == "2026-10-29T13:00:00+00:00"
+    assert output["forecast"]["target"] is None
+    assert output["forecast"]["horizon"] is None
+    assert output["forecast"]["probability"] is None
+    assert "fixed outcome-scoring window" in output["forecast"]["outcome_protocol"]
+
+
+def test_emit_signal_never_claims_price_forecast_without_calibrated_model() -> None:
+    module = load_script(
+        REPO_ROOT / "scripts" / "emit_signal.py",
+        "emit_signal_successful_classifier_not_forecast_test",
+    )
+    output = module._build_signal_output(
+        "Recent XRP headlines",
+        72,
+        0.85,
+        "github:bullish",
+        80,
+        4,
+        timestamp="2026-10-29T13:00:00+00:00",
+        generated_at_unix=1793278800,
+    )
+    assert output["forecast_status"] == "NOT_ISSUED"
+    assert output["forecast"]["reason_code"] == "NO_CALIBRATED_FIXED_HORIZON_PRICE_MODEL"
+    assert output["score"] == 72
+    assert output["score_semantics"].endswith("not_return_forecast")
+
+
+def test_emit_signal_news_score_excludes_invalid_time_nonfinite_weight_and_unknown_sentiment(tmp_path: Path) -> None:
+    from datetime import datetime, timezone
+
+    module = load_script(
+        REPO_ROOT / "scripts" / "emit_signal.py",
+        "emit_signal_news_data_quality_test",
+    )
+    valid_timestamp = datetime.now(timezone.utc).isoformat()
+    records = [
+        {
+            "distilled": True,
+            "ingested_at": valid_timestamp,
+            "distill": {"xrp_relevance": 1.0, "sentiment": "bullish"},
+            "title": "valid current XRP record",
+        },
+        {
+            "distilled": True,
+            "ingested_at": "not-a-timestamp",
+            "distill": {"xrp_relevance": 100.0, "sentiment": "bearish"},
+            "title": "invalid timestamp must be excluded",
+        },
+        {
+            "distilled": True,
+            "ingested_at": valid_timestamp,
+            "distill": {"xrp_relevance": float("nan"), "sentiment": "bearish"},
+            "title": "non-finite weight must be excluded",
+        },
+        {
+            "distilled": True,
+            "ingested_at": valid_timestamp.replace("+00:00", ""),
+            "distill": {"xrp_relevance": 10.0, "sentiment": "bearish"},
+            "title": "naive timestamp must be excluded",
+        },
+        {
+            "distilled": True,
+            "ingested_at": valid_timestamp,
+            "distill": {"xrp_relevance": 1.0, "sentiment": "uncertain"},
+            "title": "unknown sentiment must be excluded",
+        },
+        {
+            "distilled": True,
+            "ingested_at": "2020-01-01T00:00:00Z",
+            "distill": {"xrp_relevance": 1.0, "sentiment": "bearish"},
+            "title": "stale record must be excluded",
+        },
+    ]
+    log_path = tmp_path / "knowledge.jsonl"
+    log_path.write_text(
+        "".join(json.dumps(record) + "\\n" for record in records),
+        encoding="utf-8",
+    )
+
+    score, used, headlines = module._news_score(hours=72, path=str(log_path))
+
+    assert score == 100
+    assert used == 1
+    assert headlines == ["[bullish] valid current XRP record"]
