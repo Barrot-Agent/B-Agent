@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030525-INDEX-GATE-PASS",
+  "captured_at_utc": "2026-10-29T03:05:25.000Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; preserve Barrot V3 as execution and verification foundation.",
+  "previous_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/20261029T030445-asset-scoped-entity-features-pr1283.json",
+    "blob_sha": "e9391345c008c1dcddbb37b24a85701ea4ba1f53",
+    "commit_sha": "0f83a69a5e8f43d01b0f0b9ee583d460bcfe8e57",
+    "captured_at_utc": "2026-10-29T03:04:45.000Z"
+  },
+  "index_gate_result": {
+    "head_sha": "9a83efd1a86ba98ccadc773c38eccd848384287a",
+    "run_id": 40810111106,
+    "status": "PASS",
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40810111106"
+  },
+  "pr1283": {
+    "number": 1283,
+    "head_sha": "9c5ad6caee862e000fdfc638c0d0a07923e0ecfb",
+    "core_ci_run": 40809993316,
+    "core_ci": "PASS_170_TESTS_4_SUBTESTS_6.17S",
+    "gate_run": 40809993459,
+    "gate": "PASS",
+    "state": "DRAFT_UNMERGED"
+  },
+  "workflow_anomaly": {
+    "zero_job_push_runs": [
+      40809960387,
+      40809965420,
+      40809969664,
+      40809973844
+    ],
+    "root_cause": "UNRESOLVED"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "real_money_trade": false,
+  "source_ids": [
+    "SRC-RUN31-20261029T030525-INDEX-GATE-40810111106"
+  ],
+  "next_action": "Record the prior index head gate pass; the successor index head remains pending its own gate.",
+  "snapshot_character_count": 1652
+}
