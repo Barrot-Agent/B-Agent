@@ -83,6 +83,17 @@ class ObjMeshLoaderTests(unittest.TestCase):
         self.assertEqual(len(boundary_issues), 1)
         self.assertIn("3 open boundary edges", boundary_issues[0].message)
 
+    def test_lod_zero_does_not_collide_with_default_lod_cache(self):
+        path = self.write_obj(
+            "v 0 0 0\\nv 1 0 0\\nv 0 1 0\\nf 1 2 3\\n"
+        )
+        loader = AssetLoader(default_lod=1)
+        lod_zero = loader.load(str(path), format=AssetFormat.OBJ, target_lod=0)
+        lod_one = loader.load(str(path), format=AssetFormat.OBJ, target_lod=1)
+        self.assertEqual(lod_zero.metadata.lod_level, 0)
+        self.assertEqual(lod_one.metadata.lod_level, 1)
+        self.assertIsNot(lod_zero, lod_one)
+
     def test_loader_uses_real_obj_counts_and_topology(self):
         path = self.write_obj(
             "v 0 0 0\nv 1 0 0\nv 0 1 0\nv 0 0 1\n"
