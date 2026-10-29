@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T13:10:00Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1310-EMITTER-AND-PR1324",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1310-emitter-and-pr1324.json",
-    "snapshot_blob_sha": "124e20fac63bbb555212e4723f9c5c2266ad08e4",
-    "snapshot_commit_sha": "a9f1d1622aa6df1241f7284687659aec41f97d9e"
+    "captured_at_utc": "2026-10-29T13:11:00Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1311-PR1324-CI-GATE-PASS",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1311-pr1324-ci-gate-pass.json",
+    "snapshot_blob_sha": "beb3ec9f442d49c61ae9cf6c9e06e9751cda5a46",
+    "snapshot_commit_sha": "a9031baa2424cac99e46e511e05436ff0a228859"
   },
   "sources": [
     {
@@ -7814,6 +7814,38 @@
       "title": "PR #1324 branch comparison and readback",
       "accessed_at_utc": "2026-10-29T13:10:00Z",
       "note": "Compare 3 ahead/0 behind current main at creation; exactly two paths changed. Branch files were read back. CI and gate were not visible at capture."
+    },
+    {
+      "id": "SRC-GH-PR1324-STATUS-20261029T1311Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1324",
+      "title": "PR #1324 emitter/data-quality proposal status",
+      "accessed_at_utc": "2026-10-29T13:11:00Z",
+      "note": "Open, draft, unmerged, mergeable; exact head 9230e52; four new regression tests included in core CI."
+    },
+    {
+      "id": "SRC-GH-PR1324-CI-20261029T1311Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40879375276",
+      "title": "PR #1324 exact-head core CI",
+      "accessed_at_utc": "2026-10-29T13:11:00Z",
+      "note": "189 tests plus 4 subtests passed in 6.14 seconds; all four new tests passed."
+    },
+    {
+      "id": "SRC-GH-PR1324-GATE-20261029T1311Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40879375288",
+      "title": "PR #1324 fail-closed gate",
+      "accessed_at_utc": "2026-10-29T13:11:00Z",
+      "note": "Fail-closed gate completed successfully on PR #1324 exact head."
+    },
+    {
+      "id": "SRC-GH-PR1324-CI-LOG-20261029T1311Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40879375276",
+      "title": "PR #1324 test log",
+      "accessed_at_utc": "2026-10-29T13:11:00Z",
+      "note": "Job log confirms 189 passed, 4 subtests passed, 6.14s and all four new tests passed; same run as SRC-GH-PR1324-CI-20261029T1311Z, not independent corroboration."
     }
   ],
   "limitations": [
@@ -8030,7 +8062,8 @@
     "Exact-phrase referents remain unresolved: ASK Coin may refer to an inactive exchange or Permission Coin's ASK token; 'actual capital' may refer to market capitalization versus net capital flows; and 'SBIC, ChatGPT SBIC' may refer to Japanese SME investment-development companies' AI training but original context is missing. Scoped official SBIC searches found no direct XRP/Ripple relationship, which is not proof of absence. Camilla Stephenson and Kamilah Stevenson identity equivalence is unverified; YouTube channel pages were throttled and the upload inventory is partial. Main was unintentionally changed by one data-only graph-file commit due a missing branch argument; draft PR #1308 removes exactly that file but remains unmerged, so main is not yet restored to its prior tree.",
     "At 2026-10-29T13:04Z, main remains at 96ccfc4344c55d419495d75f1360d756a8c10796. XRP signal still has confidence 0.0 and provider failures while the summary narrates positive headlines. The paper trader still runs every 30 minutes and commits/pushes a nonzero simulated position with position_product=null. PR #1320's guard and PR #1319's fail-closed summary each passed exact-head CI/gate but remain draft/unmerged. Fresh-main PR #1323 proposes a read-only merge queue; its CI/gate were not visible at capture. PR #1308 cleanup remains unmerged, so the earlier unintended data-only graph file is still on main. Full historical paper-trading replay is blocked by unavailable full-log retrieval. No synchronized XRP market features were admitted; forecast remains NOT_ISSUED.",
     "At 2026-10-29T13:07Z, main advanced to 750ccbaf through an append-only BTC-USD paper-trading log commit. The persisted state remains unchanged with nonzero position_size and position_product=null, and the 30-minute schedule remains active. PR #1323 now has passing exact-head CI (187 tests plus 4 subtests) and fail-closed gate, but is one commit behind main due only to the paper-log append; recheck mergeability and base before approval. PR #1319 and #1320 remain draft/unmerged despite passing checks. PR #1308 remains unmerged, so the prior data-only graph file is still on main. Full historical replay remains blocked by unavailable full-log retrieval. No XRP market features admitted; forecast NOT_ISSUED.",
-    "At 2026-10-29T13:10Z, main's sentiment emitter still fabricates score 50/confidence 0.5 on malformed provider JSON and blends the fallback score with news even when provider confidence is zero; the news feature loop admits malformed/timezone-naive timestamps and non-finite relevance weights. Draft PR #1324 proposes strict schema validation, explicit NOT_ISSUED forecast metadata, and fail-closed timestamp/weight checks. CI/gate are not yet visible, so the proposal is not verified by tests. PR #1323 CI/gate pass, but its branch is one paper-log commit behind main; PR #1320's paper-trader guard remains unmerged and the recurring schedule is active. PR #1308 cleanup remains unmerged. No synchronized XRP market features admitted; forecast NOT_ISSUED."
+    "At 2026-10-29T13:10Z, main's sentiment emitter still fabricates score 50/confidence 0.5 on malformed provider JSON and blends the fallback score with news even when provider confidence is zero; the news feature loop admits malformed/timezone-naive timestamps and non-finite relevance weights. Draft PR #1324 proposes strict schema validation, explicit NOT_ISSUED forecast metadata, and fail-closed timestamp/weight checks. CI/gate are not yet visible, so the proposal is not verified by tests. PR #1323 CI/gate pass, but its branch is one paper-log commit behind main; PR #1320's paper-trader guard remains unmerged and the recurring schedule is active. PR #1308 cleanup remains unmerged. No synchronized XRP market features admitted; forecast NOT_ISSUED.",
+    "PR #1324 exact-head CI and fail-closed gate passed (189 tests plus 4 subtests in 6.14 seconds; all four new tests passed), but the PR remains draft/unmerged. Main therefore still lacks explicit forecast_status in the signal emitter and still contains the timestamp fail-open behavior until an approved merge. PR #1323 read-only merge-queue proposal also has passing CI/gate but is one log-only commit behind main and mergeability should be rechecked. PR #1320 remains unmerged, so the 30-minute paper-trader schedule remains active with position_product=null. PR #1308 cleanup remains unmerged, so the prior unintended data-only graph file remains on main. No synchronized XRP market features admitted; forecast NOT_ISSUED."
   ],
   "run_updates": [
     {
@@ -13621,6 +13654,82 @@
       "deployment_executed": false,
       "paper_trading_state_mutated": false,
       "real_money_trade": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T13:11:00Z",
+      "update_type": "PR1324_EMITTER_AND_NEWS_DATA_QUALITY_CI_GATE_VERIFIED",
+      "source_ids": [
+        "SRC-GH-PR1324-STATUS-20261029T1311Z",
+        "SRC-GH-PR1324-CI-20261029T1311Z",
+        "SRC-GH-PR1324-GATE-20261029T1311Z",
+        "SRC-GH-PR1324-CI-LOG-20261029T1311Z",
+        "SRC-GH-MAIN-EMITTER-20261029T1310Z",
+        "SRC-GH-MAIN-XRP-SIGNAL-20261029T1310Z",
+        "SRC-GH-PR1323-CI-20261029T1307Z",
+        "SRC-GH-PR1323-GATE-20261029T1307Z",
+        "SRC-GH-PR1323-CI-LOG-20261029T1307Z",
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1307Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1304Z",
+        "SRC-GH-PR1308-STATUS-20261029T1307Z",
+        "SRC-GH-PR1320-STATUS-20261029T1304Z"
+      ],
+      "summary": "PR #1324 exact-head core CI passed 189 tests plus 4 subtests in 6.14 seconds; all four new tests passed. Fail-closed gate passed. The proposal rejects malformed classifier schemas, labels all sentiment output as descriptive and forecast_status NOT_ISSUED, and excludes malformed/timezone-naive timestamps, non-finite/nonpositive relevance weights and unknown sentiment labels. PR remains draft/unmerged. Main stays at 750ccbaf; signal remains score 44/confidence 0.0 with provider failures, and paper trader remains scheduled with position_product=null. PR #1323 read-only merge queue has passing CI/gate but is one log-only commit behind main; PR #1308 cleanup and PR #1320 paper-trader guard remain unmerged. No main write, merge, deployment, paper-state mutation or real-money trade. Forecast NOT_ISSUED.",
+      "main_sha": "750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1311-pr1324-ci-gate-pass.json",
+        "blob_sha": "beb3ec9f442d49c61ae9cf6c9e06e9751cda5a46",
+        "commit_sha": "a9031baa2424cac99e46e511e05436ff0a228859",
+        "characters": 6586
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1310-emitter-data-quality.json",
+        "blob_sha": "c0a929a048e36d8237874bd6e4bc3264368c73d7",
+        "commit_sha": "e45502b5ae9fc00b27f4f94dbf87ba9481753b36",
+        "new_edges": 0,
+        "new_competing_hypotheses": 0
+      },
+      "pr1324": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1324",
+        "head": "9230e52ebd359766f136fe031d64cf48ee35578f",
+        "ci": "PASS_189_TESTS_PLUS_4_SUBTESTS_6.14S",
+        "gate": "PASS_FAIL_CLOSED",
+        "new_tests": "ALL_4_PASS",
+        "state": "DRAFT_OPEN_UNMERGED_MERGEABLE"
+      },
+      "pr1323": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1323",
+        "head": "7ff6ec33803edc5f476dadcab26302c448c1b917",
+        "ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.65S",
+        "gate": "PASS_FAIL_CLOSED",
+        "state": "DRAFT_OPEN_UNMERGED",
+        "base_status": "ONE_COMMIT_BEHIND_MAIN_LOG_ONLY"
+      },
+      "pr1320": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1320",
+        "head": "9479f08a31c74887afe7d5b89e718a9bf716698e",
+        "ci": "PASS_196_TESTS_PLUS_4_SUBTESTS_6.77S",
+        "gate": "PASS_FAIL_CLOSED",
+        "state": "DRAFT_OPEN_UNMERGED"
+      },
+      "pr1319": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1319",
+        "head": "e3d154fdb6c7766716d6f0547978647f101ae79f",
+        "ci": "PASS_190_TESTS_PLUS_4_SUBTESTS_6.63S",
+        "gate": "PASS_FAIL_CLOSED",
+        "state": "DRAFT_OPEN_UNMERGED"
+      },
+      "pr1308": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308",
+        "state": "DRAFT_OPEN_UNMERGED"
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false
     }
   ],
   "mission_priority": {
@@ -13848,25 +13957,25 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "a9f1d1622aa6df1241f7284687659aec41f97d9e",
-  "current_research_head_this_run": "a9f1d1622aa6df1241f7284687659aec41f97d9e",
+  "current_research_head_before_ledger_update": "a9031baa2424cac99e46e511e05436ff0a228859",
+  "current_research_head_this_run": "a9031baa2424cac99e46e511e05436ff0a228859",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1319_CI_GATE_PASS; PR1320_CI_GATE_PASS; PR1323_CI_GATE_PASS; PR1323_BASE_ADVANCED_LOG_ONLY; MAIN_UNCHANGED_THIS_RUN; PR1308_CLEANUP_PENDING; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1323_CI_GATE_PASS; PR1324_CI_GATE_PASS; PR1324_ALL_4_NEW_TESTS_PASS; PR1320_GUARD_UNMERGED; PR1308_CLEANUP_UNMERGED; MAIN_UNCHANGED_THIS_RUN; FORECAST_NOT_ISSUED",
     "latest_main_sha": "750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1307-pr1323-ci-pass-latest-main.json",
-    "snapshot_blob_sha": "984a2af516e67c9696c330d488b66ac337d7c8ff",
-    "snapshot_commit_sha": "029ef8a0a43ce2170dc4afc7851050526f690d45",
-    "snapshot_characters": 6078,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1311-pr1324-ci-gate-pass.json",
+    "snapshot_blob_sha": "beb3ec9f442d49c61ae9cf6c9e06e9751cda5a46",
+    "snapshot_commit_sha": "a9031baa2424cac99e46e511e05436ff0a228859",
+    "snapshot_characters": 6586,
     "snapshot_character_metric_matches": true,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1304-signal-paper-trader-merge-queue.json",
-    "graph_addendum_blob_sha": "54046de20badbf2685fb0b950460e55143594054",
-    "graph_addendum_commit_sha": "7977e2a79390c3192b6a3dad9a1504392168e77a",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1310-emitter-data-quality.json",
+    "graph_addendum_blob_sha": "c0a929a048e36d8237874bd6e4bc3264368c73d7",
+    "graph_addendum_commit_sha": "e45502b5ae9fc00b27f4f94dbf87ba9481753b36",
     "graph_addendum_readback_ok": true,
-    "source_reference_count": 8,
+    "source_reference_count": 13,
     "missing_source_references": 0,
     "source_ids_unique": true,
-    "relationship_edges": 240,
-    "competing_hypotheses": 134,
+    "relationship_edges": 242,
+    "competing_hypotheses": 136,
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
     "main_modified_by_this_run": false,
@@ -13894,7 +14003,7 @@
     },
     "paper_trader_schedule": "ACTIVE_UNTIL_APPROVED_MERGE_OF_PR1320",
     "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PR1320_PASS_UNMERGED",
-    "verified_at_utc": "2026-10-29T13:07:00Z",
+    "verified_at_utc": "2026-10-29T13:11:00Z",
     "index_pointer_status": "PENDING_LEDGER_UPDATE_READBACK",
     "pr1319": {
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1319",
@@ -13917,12 +14026,20 @@
       "gate": "PASS_FAIL_CLOSED",
       "state": "DRAFT_OPEN_UNMERGED",
       "base_status": "ONE_COMMIT_BEHIND_MAIN_LOG_ONLY"
+    },
+    "pr1324": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1324",
+      "head": "9230e52ebd359766f136fe031d64cf48ee35578f",
+      "ci": "PASS_189_TESTS_PLUS_4_SUBTESTS_6.14S",
+      "gate": "PASS_FAIL_CLOSED",
+      "new_tests": "ALL_4_PASS",
+      "state": "DRAFT_OPEN_UNMERGED_MERGEABLE"
     }
   },
   "ledger_metrics": {
-    "source_records": 958,
-    "run_updates": 176,
-    "limitations": 214,
+    "source_records": 962,
+    "run_updates": 177,
+    "limitations": 215,
     "relationship_edges": 242,
     "competing_hypotheses": 136,
     "market_observations": 83,
@@ -13931,10 +14048,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 938202,
+    "index_characters_before_this_update": 944974,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 7885,
-    "index_characters": 944974
+    "latest_snapshot_characters": 6586,
+    "index_characters": 951553
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -14098,20 +14215,20 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T13:10:00Z",
-    "focus": "Emitter strict schema, explicit NOT_ISSUED forecast metadata and timestamp/weight feature admission",
+    "recorded_at_utc": "2026-10-29T13:11:00Z",
+    "focus": "PR1324 exact-head CI/gate verification for fail-closed signal metadata and timestamp-safe news features",
     "source_ids": [
-      "SRC-GH-MAIN-EMITTER-20261029T1310Z",
-      "SRC-GH-MAIN-XRP-SIGNAL-20261029T1310Z",
-      "SRC-GH-PR1324-STATUS-20261029T1310Z",
-      "SRC-GH-PR1324-COMPARE-20261029T1310Z"
+      "SRC-GH-PR1324-STATUS-20261029T1311Z",
+      "SRC-GH-PR1324-CI-20261029T1311Z",
+      "SRC-GH-PR1324-GATE-20261029T1311Z",
+      "SRC-GH-PR1324-CI-LOG-20261029T1311Z"
     ],
     "relationship_graph_addendum": {
       "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1310-emitter-data-quality.json",
       "blob_sha": "c0a929a048e36d8237874bd6e4bc3264368c73d7",
       "commit_sha": "e45502b5ae9fc00b27f4f94dbf87ba9481753b36",
-      "new_edges": 2,
-      "new_competing_hypotheses": 2
+      "new_edges": 0,
+      "new_competing_hypotheses": 0
     },
     "market_observations": 0,
     "forecast_status": "NOT_ISSUED"
@@ -15022,5 +15139,5 @@
       "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "a9f1d1622aa6df1241f7284687659aec41f97d9e"
+  "current_research_head_before_this_update": "a9031baa2424cac99e46e511e05436ff0a228859"
 }
