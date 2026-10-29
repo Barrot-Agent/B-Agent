@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1104-MAIN-SIGNAL-AND-SAFETY-PRS",
+  "captured_at_utc": "2026-10-29T11:04:30Z",
+  "data_cutoff_utc": "2026-10-29T11:04:30Z",
+  "observed_main_sha": "8e34859a5fb16b20b78e0906466be805d0d14353",
+  "forecast_status": "NOT_ISSUED",
+  "market_feature_admission": false,
+  "summary": "Live main still publishes an XRP score of 44 with confidence 0.0 and explicit provider failures; its summary retains a positive/mixed narrative. The merge queue remains mutation-capable on main. Two fresh-main draft proposals were prepared: PR #1304 makes the merge queue read-only, and PR #1305 makes summaries fail closed on invalid/unavailable signals. Both proposals passed exact-head core CI and fail-closed gates; neither is merged. No market features or forecast were admitted.",
+  "findings": [
+    {
+      "claim": "Main XRP signal is invalid for forecast issuance",
+      "status": "CONFIRMED_REPOSITORY_ARTIFACT",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "note": "Score 44, confidence 0.0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429."
+    },
+    {
+      "claim": "Summary remains directionally positive despite invalid confidence",
+      "status": "CONFIRMED_REPOSITORY_ARTIFACT",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "note": "Signal and summary timestamps match at 2026-10-29T10:23:01Z; the defect is that the narrative treats bullish labels as meaningful despite unavailable sentiment and zero confidence."
+    },
+    {
+      "claim": "Merge queue on main remains mutation-capable",
+      "status": "CONFIRMED_REPOSITORY_WORKFLOW",
+      "source": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "note": "Write permissions, mode=all, non-dry-run default, unlimited max_prs=0, branch update, comment, merge and delete paths remain in main."
+    },
+    {
+      "claim": "PR #1304 proposes read-only merge queue",
+      "status": "PROPOSED_REMEDIATION_UNMERGED",
+      "source": "https://github.com/Barrot-Agent/B-Agent/pull/1304",
+      "note": "Fresh-main draft; exact-head core CI passed after correcting an initial malformed shell continuation; fail-closed gate passed. No merge."
+    },
+    {
+      "claim": "PR #1305 proposes fail-closed XRP summary",
+      "status": "PROPOSED_REMEDIATION_UNMERGED",
+      "source": "https://github.com/Barrot-Agent/B-Agent/pull/1305",
+      "note": "Fresh-main draft; exact-head core CI and fail-closed gate passed. No merge."
+    },
+    {
+      "claim": "Initial PR #1304 CI failure was corrected and preserved",
+      "status": "CONFIRMED_CI_HISTORY",
+      "source": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862127868",
+      "note": "The test entry was initially emitted with a malformed shell continuation; corrected to one trailing backslash and reverified on exact head."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-RUN60-TECHNICAL-HEADLINES-NOT-PRICE-SIGNAL",
+      "statement": "The high bullish headline score may be a topic/sentiment classification artifact because several entries are XRPL consensus or network-protocol research papers rather than independent market-moving disclosures.",
+      "status": "PLAUSIBLE_UNTESTED_INFERENCE",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T1104Z"
+      ],
+      "disconfirming_evidence": [
+        "Technical protocol research can eventually affect network utility or investor expectations; its relevance cannot be dismissed categorically."
+      ],
+      "tests_needed": [
+        "Label technical papers separately from issuer, regulatory, exchange, flow and market-moving news; compare each class against pre-registered fixed-horizon XRP returns and volatility with leakage-safe walk-forward evaluation."
+      ]
+    },
+    {
+      "id": "HYP-RUN60-INVALID-PROVIDER-OUTPUT-MUST-NOT-BECOME-FORECAST",
+      "statement": "When provider failure is explicit and confidence is zero, any directional summary is unsupported and should be suppressed regardless of headline polarity.",
+      "status": "DIRECTLY_SUPPORTED_BY_ARTIFACT_STATE_AND_PROPOSED_TESTS",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T1104Z",
+        "SRC-GH-MAIN-SUMMARY-20261029T1104Z",
+        "SRC-GH-PR1305-CI-20261029T1104Z"
+      ],
+      "disconfirming_evidence": [
+        "A separately validated deterministic rule could produce a forecast without the unavailable provider, but no such rule or calibration evidence is established here."
+      ],
+      "tests_needed": [
+        "Merge only after review; then verify main output and test fixed-horizon calibration, baselines and outcome recording before issuing any forecast."
+      ]
+    }
+  ],
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
+    "blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
+    "commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
+    "nodes": 6,
+    "edges": 5,
+    "hypotheses": 2
+  },
+  "sources": [
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261029T1104Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/8e34859a5fb16b20b78e0906466be805d0d14353"
+    },
+    {
+      "id": "SRC-GH-MAIN-SIGNAL-20261029T1104Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-SUMMARY-20261029T1104Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-MERGE-QUEUE-20261029T1104Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml"
+    },
+    {
+      "id": "SRC-GH-PR1304-CI-20261029T1104Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862244495"
+    },
+    {
+      "id": "SRC-GH-PR1304-GATE-20261029T1104Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862244472"
+    },
+    {
+      "id": "SRC-GH-PR1305-CI-20261029T1104Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862374966"
+    },
+    {
+      "id": "SRC-GH-PR1305-GATE-20261029T1104Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862375082"
+    },
+    {
+      "id": "SRC-GH-PR1304-CI-INITIAL-FAIL-20261029T1101Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862127868"
+    },
+    {
+      "id": "SRC-GH-PR1305-PROPOSAL-20261029T1104Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1305"
+    }
+  ],
+  "corporate_events": [
+    {
+      "entity": "Coinbase Global",
+      "scheduled": "2026-10-29 after US market close",
+      "status": "NOT_YET_DUE_AT_CUTOFF",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx"
+    },
+    {
+      "entity": "Circle Internet Group",
+      "scheduled": "2026-11-04 08:00 ET",
+      "status": "FUTURE_EVENT",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-to-Announce-Q3-2026-Financial-Results-on-November-4-2026/default.aspx"
+    }
+  ],
+  "verification": {
+    "graph_readback": "PASS",
+    "snapshot_readback": "PENDING_AFTER_CREATE",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "pr1304_ci": "PASS_EXACT_HEAD",
+    "pr1304_gate": "PASS_EXACT_HEAD",
+    "pr1305_ci": "PASS_EXACT_HEAD",
+    "pr1305_gate": "PASS_EXACT_HEAD",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false,
+    "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+  }
+}
