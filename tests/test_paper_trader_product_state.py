@@ -94,14 +94,23 @@ def test_partial_sell_preserves_product_identity():
     assert state["position_product"] == "BTC-USD"
 
 
-def test_run_aborts_before_model_call_for_unidentified_open_position(monkeypatch):
+def test_run_aborts_before_provider_calls_for_unidentified_open_position(monkeypatch):
     trader = load_trader()
     monkeypatch.setattr(trader, "GROQ_KEY", "test-key")
     monkeypatch.setattr(trader, "PRODUCT_ID", "BTC-USD")
-    monkeypatch.setattr(trader, "fetch_ticker", lambda product: {"price": "100", "bid": "99", "ask": "101"})
-    monkeypatch.setattr(trader, "fetch_recent_trades", lambda product: [])
+    monkeypatch.setattr(
+        trader, "fetch_ticker",
+        lambda product: (_ for _ in ()).throw(AssertionError("ticker provider must not run")),
+    )
+    monkeypatch.setattr(
+        trader, "fetch_recent_trades",
+        lambda product: (_ for _ in ()).throw(AssertionError("trade provider must not run")),
+    )
     monkeypatch.setattr(trader, "load_state", lambda: make_state(size=0.25, avg=40000.0))
-    monkeypatch.setattr(trader, "decide", lambda *args: (_ for _ in ()).throw(AssertionError("model must not run")))
+    monkeypatch.setattr(
+        trader, "decide",
+        lambda *args: (_ for _ in ()).throw(AssertionError("model must not run")),
+    )
 
     try:
         trader.run()
@@ -109,3 +118,10 @@ def test_run_aborts_before_model_call_for_unidentified_open_position(monkeypatch
         assert exc.code == 2
     else:
         raise AssertionError("run must stop when an open position lacks product identity")
+
+
+def test_non_finite_position_size_fails_closed():
+    trader = load_trader()
+    for bad_size in (float("nan"), float("inf"), float("-inf")):
+        error = trader.validate_position_product(make_state(size=bad_size), "BTC-USD")
+        assert error == "aborted -- non-finite position size"
