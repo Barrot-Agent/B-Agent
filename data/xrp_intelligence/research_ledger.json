@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T05:06:03.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T050603-CIRCLE-COINBASE-SBIC-AMBIGUITY",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
-    "snapshot_blob_sha": "f4323a171f6158106152b43bb738bdcc41bd6f4d",
-    "snapshot_commit_sha": "4af136b0a1eb7669b653fc151fc90e433a4d1422"
+    "captured_at_utc": "2026-10-29T06:04:45.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0604-PAPER-TRADER-GUARD-HARDENING",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0604-paper-trader-guard-hardening.json",
+    "snapshot_blob_sha": "b29849b0703530b6aaed911dd90cac1ccaea99e2",
+    "snapshot_commit_sha": "c0ce809e796dca32aad3b978ace974bce00c70a5"
   },
   "sources": [
     {
@@ -6168,6 +6168,93 @@
       "published_at": "2005-07-06",
       "accessed_at_utc": "2026-10-29T05:15:25.000Z",
       "note": "Official SBI Holdings release explicitly defines SBI Capital Co., Ltd. as SBIC and describes financing activity through SBI Mezzanine Fund. Read together with the 2007 SBI Holdings release, this confirms historical Japanese use of SBIC for SBI Capital Co., Ltd.; it does not establish current legal status or a direct XRP relationship."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-MAIN-HEAD",
+      "evidence_class": "GITHUB_PRIMARY_SOURCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/c5ef4cb53c09b003983f080937095d5f1a1c74e7",
+      "title": "chore: Barrot telemetry report",
+      "published_at": "2026-10-29T06:04:34Z",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Latest observed main commit at capture. Main continued advancing through generated/telemetry activity; this run did not write to main."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-MAIN-PAPER-STATE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Current persisted paper-trading state",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479. State records cash_usd=8011.936613782476, position_size=0.024901276579239066, position_product=null, avg_entry_price=80436.84, trade_count=125. Nonzero position identity remains unknown; state was not changed."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-MAIN-PAPER-TRADER",
+      "evidence_class": "DIRECT_CODE_INSPECTION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/coinbase_paper_trader.py",
+      "title": "Current main paper-trader control flow",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Main blob SHA b38ab435f575b6037f05fa8e9ea00fd487d2d9eb. Current run() checks the model key, fetches ticker/trades, then loads persisted state and calls the model without validating position_product. The proposed guard is not on main."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-MAIN-XRP-SIGNAL",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Current main XRP signal artifact",
+      "published_at": "2026-10-29T05:22:46.936694+00:00",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Blob SHA c1c8bd814634fd53853bb7038dc38508d5f399ff; score=44, confidence=0, news_score=88, news_entries=11. Source field explicitly reports missing GitHub model credentials and Groq HTTP 429. Status is NOT_ISSUED; this is not a valid directional forecast."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-MAIN-XRP-SUMMARY",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "title": "Current main XRP signal summary",
+      "published_at": "2026-10-29T05:22:46.936694+00:00",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Blob SHA 5c8051288986d1256146b83ebfbe28db6a38a2de. Summary still frames the result as mixed/modestly positive despite confidence 0.0 and provider unavailability; protocol/consensus research headlines are labeled bullish. This remains a summary integrity defect, not evidence of market direction."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-MERGE-QUEUE-WORKFLOW",
+      "evidence_class": "DIRECT_WORKFLOW_INSPECTION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "title": "Current main mutation-capable merge queue",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Workflow blob SHA 19b41e2894fdf1b835498fca3eeab870c3b4c8b1. Grants contents:write and pull-requests:write, defaults dry_run=false and max_prs=0 (unlimited), allows mode=all, updates PR branches, posts comments, and calls gh pr merge with branch deletion. No workflow run was initiated."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-PR1289-CI",
+      "evidence_class": "CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40826979132",
+      "title": "PR #1289 exact-head core CI after guard hardening",
+      "published_at": "2026-10-29T06:04:45.000Z",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Run completed successfully on commit 491e6f14503957da8e8f2cb82eba7f14bdbfe604: 177 tests plus 4 subtests passed in 4.99 seconds. Nine paper-trader product-state regression tests passed, including rejection of NaN/Inf and an assertion that provider calls and model invocation are blocked for an unidentified open position."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-PR1289-GATE",
+      "evidence_class": "CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40826979063",
+      "title": "PR #1289 fail-closed gate after guard hardening",
+      "published_at": "2026-10-29T06:04:45.000Z",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Run completed successfully; the gate's reported job was 'Merge disabled pending gate verification'. This is not merge authorization."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-PR1289-HARDENING-READBACK",
+      "evidence_class": "BRANCH_READBACK_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1289",
+      "title": "Paper-trader position-identity guard follow-up",
+      "published_at": "2026-10-29T06:04:45.000Z",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Readback verified the draft branch now validates position identity before market-data/provider calls, rejects non-finite position sizes, and has regression tests for early abort and product identity. Exact-head CI/gate are green. PR remains draft/unmerged; main remains unfixed."
+    },
+    {
+      "id": "SRC-RUN41-20261029T0604Z-PR1282-STALE-HEAD",
+      "evidence_class": "GITHUB_COMPARE_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1282",
+      "title": "Stale merge-queue safety proposal",
+      "published_at": "2026-10-29T06:04:45.000Z",
+      "accessed_at_utc": "2026-10-29T06:04:45.000Z",
+      "note": "Current compare reports main 29 commits ahead of PR head b803fcb68d3302f6799b2e5f7aadd1afcc27f568; the branch is 3 commits ahead of its merge base. Historical tests do not establish current-main safety. Keep draft/unmerged and prepare a fresh-base successor before approval."
     }
   ],
   "limitations": [
@@ -6339,7 +6426,11 @@
     "2026-10-29T05:06:03.000Z: 'SBIC' remains entity-ambiguous. Official SBIC East Japan materials identify a Japanese SME investment/support company and a ChatGPT training-course mention; a separate 2007 SBI Holdings release uses SBIC for SBI Capital Co., Ltd. Current SBI Capital legal status and the original user-reference meaning are unknown. No direct XRP relationship is established for either candidate.",
     "2026-10-29T05:06:03.000Z: Public XRP ETF trackers disagree in fund universe, units, dates and settlement status: Alpha Finance reports $0 flow for Oct 28 and +$90.4M over 30 sessions; XRP Insights reports -3,132,685 XRP for Oct 26-27 across six spot funds plus BITW and marks Oct 28 provisional. Do not admit these figures into the feature store until fund-level holdings and dates are reconciled.",
     "2026-10-29T05:06:03.000Z: The current paper-trading process is configured for BTC-USD, not XRP. Persisted state has a nonzero position and position_product=null; current paper-trading log content was not returned by the GitHub file connector, so the latest replay is blocked. Do not infer the log is empty, rewrite state, or use the BTC simulation as XRP forecast performance.",
-    "2026-10-29T05:13:44.000Z: Public creator trackers disagree on Kamilah Stevenson channel counts and video totals; the channel candidate UCqUPJMQdkCN6lsLVDnichPA is supported by a secondary profile link and transcript spelling 'Camila', but the exact-name 'Camilla Stephenson' identity remains unproven. Secondary AI-rated forecast labels are not a verified prediction record; original uploads and timestamps must be independently checked."
+    "2026-10-29T05:13:44.000Z: Public creator trackers disagree on Kamilah Stevenson channel counts and video totals; the channel candidate UCqUPJMQdkCN6lsLVDnichPA is supported by a secondary profile link and transcript spelling 'Camila', but the exact-name 'Camilla Stephenson' identity remains unproven. Secondary AI-rated forecast labels are not a verified prediction record; original uploads and timestamps must be independently checked.",
+    "2026-10-29T06:04:45.000Z: Current main's XRP artifact remains score 44/confidence 0 with model-provider failures, while the summary still describes positive/mixed sentiment. Keep forecast_status=NOT_ISSUED; PR #1288 remains an unmerged proposal.",
+    "2026-10-29T06:04:45.000Z: Current main paper trader is BTC-USD and persisted state has a nonzero position with position_product=null. The current log could not be replayed because its full content was unavailable through the connected file action. PR #1289's guard is tested but unmerged; do not rewrite the state without a separate authorized reconciliation.",
+    "2026-10-29T06:04:45.000Z: The current main merge-queue workflow remains mutation-capable. PR #1282 is 29 commits behind main and its historical CI/gate are not current-main verification. Effective branch protection remains unverified.",
+    "2026-10-29T06:04:45.000Z: No synchronized XRP spot/derivatives/ETF panel was captured in this run. No market observation was admitted and no directional forecast was issued."
   ],
   "run_updates": [
     {
@@ -10482,6 +10573,74 @@
       "paper_trading_state_mutated": false,
       "real_money_trade": false,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T06:04:45.000Z",
+      "update_type": "PAPER_TRADER_GUARD_HARDENING_AND_CURRENT_MAIN_SAFETY_AUDIT",
+      "source_ids": [
+        "SRC-RUN41-20261029T0604Z-MAIN-HEAD",
+        "SRC-RUN41-20261029T0604Z-MAIN-PAPER-STATE",
+        "SRC-RUN41-20261029T0604Z-MAIN-PAPER-TRADER",
+        "SRC-RUN41-20261029T0604Z-MAIN-XRP-SIGNAL",
+        "SRC-RUN41-20261029T0604Z-MAIN-XRP-SUMMARY",
+        "SRC-RUN41-20261029T0604Z-MERGE-QUEUE-WORKFLOW",
+        "SRC-RUN41-20261029T0604Z-PR1289-CI",
+        "SRC-RUN41-20261029T0604Z-PR1289-GATE",
+        "SRC-RUN41-20261029T0604Z-PR1289-HARDENING-READBACK",
+        "SRC-RUN41-20261029T0604Z-PR1282-STALE-HEAD"
+      ],
+      "summary": "Current main remains unsafe in three distinct areas: the XRP signal summary describes positive/mixed sentiment despite confidence 0 and provider failures; the BTC-USD paper trader does not validate a nonzero legacy position whose product identity is null; and the manually dispatchable merge queue retains write/merge/delete behavior. Existing PR #1289 was hardened on its draft branch so position identity is checked before any provider call, non-finite sizes fail closed, and the new regression tests run. Exact-head CI and fail-closed gate passed. No main write, state mutation, merge, deployment, or trade occurred.",
+      "main_sha": "c5ef4cb53c09b003983f080937095d5f1a1c74e7",
+      "main_commit_at_utc": "2026-10-29T06:04:34Z",
+      "main_commit_message": "chore: Barrot telemetry report",
+      "paper_state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+      "paper_state": {
+        "cash_usd": 8011.936613782476,
+        "position_size": 0.024901276579239066,
+        "position_product": null,
+        "avg_entry_price": 80436.84,
+        "trade_count": 125,
+        "started_at": "2026-08-25T01:42:34.501971+00:00"
+      },
+      "paper_trader_main_blob_sha": "b38ab435f575b6037f05fa8e9ea00fd487d2d9eb",
+      "main_xrp_signal_blob_sha": "c1c8bd814634fd53853bb7038dc38508d5f399ff",
+      "main_xrp_summary_blob_sha": "5c8051288986d1256146b83ebfbe28db6a38a2de",
+      "main_merge_queue_blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+      "pr1289": {
+        "branch": "safety/paper-position-identity-guard-fresh-main-20261029T0509Z",
+        "head_sha": "491e6f14503957da8e8f2cb82eba7f14bdbfe604",
+        "status": "DRAFT_OPEN_UNMERGED",
+        "changes": [
+          "validate persisted product identity before any provider/network call",
+          "reject malformed, negative, NaN and infinite position sizes",
+          "bind product identity on a new buy",
+          "regression test proves unidentified position blocks provider and model calls"
+        ],
+        "ci_status": "PASS_177_TESTS_PLUS_4_SUBTESTS_4.99S",
+        "ci_run_id": 40826979132,
+        "gate_status": "PASS_FAIL_CLOSED",
+        "gate_run_id": 40826979063,
+        "branch_ahead_of_current_main": 5,
+        "branch_behind_current_main": 7,
+        "current_main_sha": "c5ef4cb53c09b003983f080937095d5f1a1c74e7"
+      },
+      "pr1282": {
+        "head_sha": "b803fcb68d3302f6799b2e5f7aadd1afcc27f568",
+        "status": "DRAFT_OPEN_UNMERGED",
+        "current_main_ahead_of_head": 29,
+        "historical_ci_run_id": 40804504273,
+        "historical_gate_run_id": 40804504256,
+        "current_main_ci_verified": false
+      },
+      "main_merge_queue_status": "MUTATION_CAPABLE_ON_MAIN",
+      "market_feature_admission": "NO_NEW_SYNCHRONIZED_XRP_OBSERVATIONS_ADMITTED",
+      "forecast_status": "NOT_ISSUED",
+      "state_mutated": false,
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false
     }
   ],
   "mission_priority": {
@@ -10709,80 +10868,60 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "ed19b3411464a01bb9df40fcc8797c69bb2e10cf",
-  "current_research_head_this_run": "ed19b3411464a01bb9df40fcc8797c69bb2e10cf",
+  "current_research_head_before_ledger_update": "c0ce809e796dca32aad3b978ace974bce00c70a5",
+  "current_research_head_this_run": "PENDING_AFTER_LEDGER_POINTER_UPDATE",
   "current_research_checks": {
-    "status": "PR1289_EXACT_HEAD_CI_AND_GATE_PASS; SBIC_HISTORICAL_CANDIDATE_CROSSCHECKED; XRP_FORECAST_NOT_ISSUED",
-    "latest_main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
-    "snapshot_blob_sha": "f4323a171f6158106152b43bb738bdcc41bd6f4d",
-    "snapshot_commit_sha": "4af136b0a1eb7669b653fc151fc90e433a4d1422",
-    "snapshot_characters": 11619,
+    "status": "SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING; PR1289_HARDENING_CI_GATE_PASS; MAIN_SIGNAL_INVALID; FORECAST_NOT_ISSUED",
+    "latest_main_sha": "c5ef4cb53c09b003983f080937095d5f1a1c74e7",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0604-paper-trader-guard-hardening.json",
+    "snapshot_blob_sha": "b29849b0703530b6aaed911dd90cac1ccaea99e2",
+    "snapshot_commit_sha": "c0ce809e796dca32aad3b978ace974bce00c70a5",
+    "snapshot_characters": 13187,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 11,
+    "source_reference_count": 21,
     "missing_source_references": 0,
     "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T050603-circle-coinbase-sbic-ambiguity.json",
     "graph_addendum_blob_sha": "b8de39044a3f3252ae489cd4c39a4f8a9dce605c",
-    "graph_addendum_commit_sha": "5b47ec8572e3fb01941b6f63fd36398d79cdc0c9",
     "graph_addendum_readback_ok": true,
     "current_index_gate": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-    "pr1288_head": "07009da95c8ba964985282de693f6c6571ddd282",
-    "pr1288_current_main_ahead_of_head": 7,
-    "pr1288_core_ci_run": 40816036107,
-    "pr1288_core_ci_status": "PASS_173_TESTS_4_SUBTESTS_6.67S",
-    "pr1288_gate_run": 40816036119,
-    "pr1288_gate_status": "PASS_FAIL_CLOSED",
-    "pr1288_state": "DRAFT_OPEN_UNMERGED",
+    "pr1289_head": "491e6f14503957da8e8f2cb82eba7f14bdbfe604",
+    "pr1289_state": "DRAFT_OPEN_UNMERGED",
+    "pr1289_core_ci_run": 40826979132,
+    "pr1289_core_ci_status": "PASS_177_TESTS_4_SUBTESTS_4.99S",
+    "pr1289_gate_run": 40826979063,
+    "pr1289_gate_status": "PASS_FAIL_CLOSED",
+    "pr1289_current_main_ahead_of_head": 7,
     "pr1282_head": "b803fcb68d3302f6799b2e5f7aadd1afcc27f568",
-    "pr1282_current_main_ahead_of_head": 22,
-    "pr1282_head_ahead_of_merge_base": 3,
-    "pr1282_ci_run": 40804504273,
-    "pr1282_ci_status": "PASS_169_TESTS_4_SUBTESTS_7.57S_HISTORICAL_HEAD_ONLY",
-    "pr1282_gate_run": 40804504256,
-    "pr1282_gate_status": "PASS_HISTORICAL_HEAD_ONLY",
+    "pr1282_current_main_ahead_of_head": 29,
+    "pr1282_state": "DRAFT_OPEN_UNMERGED_STALE",
+    "pr1282_current_main_ci_verified": false,
     "main_signal": {
-      "timestamp": "2026-10-29T04:25:35.279352+00:00",
+      "timestamp": "2026-10-29T05:22:46.936694+00:00",
       "score": 44,
       "confidence": 0,
       "provider_unavailable": true,
       "forecast_status": "NOT_ISSUED"
     },
-    "paper_trading_replay": "BLOCKED_CURRENT_LOG_CONTENT_UNAVAILABLE; CURRENT_TRADER_BTC-USD; POSITION_PRODUCT_NULL; PR1289_GUARD_PROPOSED",
-    "main_modified_by_this_run": false,
-    "merge_performed": false,
-    "force_push": false,
-    "external_deployments_triggered_by_this_run": false,
-    "paper_trading_state_mutated": false,
-    "real_money_trade": false,
-    "forecast_status": "NOT_ISSUED",
-    "index_pointer_readback_ok": true,
-    "index_blob_sha_at_readback": "cb4a2d251d0157c22355816050fb74a415570167",
-    "index_commit_sha_at_readback": "1daae0c1ea89003d6b567623d3bd128dc914073d",
-    "pr1289_head": "5ca1ffb3371f4a453be2efbeee5b5ab8ee053920",
-    "pr1289_base_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
-    "pr1289_state": "DRAFT_OPEN_UNMERGED",
-    "pr1289_core_ci_run": 40821904368,
-    "pr1289_core_ci_status": "PASS_176_TESTS_4_SUBTESTS_6.64S",
-    "pr1289_gate_run": 40821904384,
-    "pr1289_gate_status": "PASS_AUTOMATIC_MERGE_DISABLED",
+    "paper_trading_replay": "BLOCKED_CURRENT_LOG_CONTENT_UNAVAILABLE; CURRENT_TRADER_BTC-USD; POSITION_PRODUCT_NULL; PR1289_GUARD_TESTED_UNMERGED",
+    "main_merge_queue_status": "MUTATION_CAPABLE_ON_MAIN",
+    "platform_coordination_status": "DESIGNED_NOT_EXECUTED_LIVE_ADAPTERS_NOT_VERIFIED",
     "creator_channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
     "creator_identity_status": "PROBABLE_KAMILAH_CAMILA_VARIANT; EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
     "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; THIRD_PARTY_VIDEO_COUNTS_DISAGREE",
-    "forecast_track_status": "SECONDARY_AI_TRACKER_LEADS_ONLY; ORIGINAL_VIDEO_TARGETS_AND_OUTCOMES_UNVERIFIED",
-    "circle_h1_usdc_settlement_volume_claimed_by_issuer": ">36T in H1 2026",
-    "circle_h1_usdc_mint_redeem_claimed_by_issuer": ">315B in H1 2026",
-    "circle_june_2026_share_of_global_stablecoin_tx_volume_claimed_by_issuer": "~77%; gross transaction volume, not net capital flow",
-    "circle_q3_results_scheduled_utc": "2026-11-04T13:00:00Z",
-    "coinbase_q3_results_scheduled": "2026-10-29 after market close ET",
-    "sbic_historical_candidate": "SBI Capital Co., Ltd. is explicitly abbreviated SBIC in official SBI Holdings releases dated 2005-07-06 and 2007-05-21",
-    "sbic_identity_status": "HISTORICAL_SBI_CAPITAL_CANDIDATE_CONFIRMED; DISTINCT_FROM_SBIC_EAST_JAPAN; ORIGINAL_REFERENT_AND_CURRENT_STATUS_UNKNOWN",
-    "sbic_direct_xrp_relationship": "NOT_ESTABLISHED"
+    "forecast_status": "NOT_ISSUED",
+    "index_pointer_readback_ok": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "real_money_trade": false,
+    "paper_trading_state_mutated": false
   },
   "ledger_metrics": {
-    "source_records": 761,
-    "run_updates": 147,
-    "limitations": 169,
+    "source_records": 771,
+    "run_updates": 148,
+    "limitations": 173,
     "relationship_edges": 134,
     "competing_hypotheses": 86,
     "market_observations": 68,
@@ -10791,10 +10930,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 2,
-    "index_characters_before_this_update": 714658,
+    "index_characters_before_this_update": 716048,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 11619,
-    "index_characters": 716048
+    "latest_snapshot_characters": 13187,
+    "index_characters": 724771
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -10815,39 +10954,30 @@
     "forecast_status": "NOT_ISSUED"
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T05:06:03.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:04:45.000Z",
     "post_snapshot_verification": {
-      "status": "CORRECTED_SNAPSHOT_READBACK_PASS; INDEX_POINTER_FIELDS_MATCH; SOURCE_REFERENCE_AUDIT_PASS; GRAPH_ADDENDUM_READBACK_PASS; CORE_CI_AND_GATE_NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_UPDATE_PENDING; GRAPH_ADDENDUM_READBACK_PASS",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "f4323a171f6158106152b43bb738bdcc41bd6f4d",
-      "snapshot_commit_sha": "4af136b0a1eb7669b653fc151fc90e433a4d1422",
-      "snapshot_characters": 11619,
-      "source_reference_count": 11,
+      "snapshot_blob_sha": "b29849b0703530b6aaed911dd90cac1ccaea99e2",
+      "snapshot_commit_sha": "c0ce809e796dca32aad3b978ace974bce00c70a5",
+      "snapshot_characters": 13187,
+      "source_reference_count": 21,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
       "relationship_graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T050603-circle-coinbase-sbic-ambiguity.json",
       "relationship_graph_addendum_blob_sha": "b8de39044a3f3252ae489cd4c39a4f8a9dce605c",
       "relationship_graph_addendum_readback_ok": true,
-      "superseded_unindexed_snapshot": {
-        "path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity.json",
-        "blob_sha": "12f1cae1b8fe796de7051bbada799daa9e6d6ca4",
-        "reason": "Preserved unchanged; corrected snapshot adds the required snapshot_path and exact character-count metadata."
-      },
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
         "url": null
       },
       "gate": {
-        "status": "PENDING_OR_UNVERIFIED",
+        "status": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
         "url": null
       },
-      "index_pointer_readback_ok": true,
-      "verified_index_blob_sha": "cb4a2d251d0157c22355816050fb74a415570167",
-      "verified_index_commit_sha": "1daae0c1ea89003d6b567623d3bd128dc914073d",
-      "index_character_count_match": true,
-      "note": "The verified index commit was immediately followed by this additive verification-record commit; the snapshot pointer and source list are unchanged."
+      "index_pointer_readback_ok": false
     },
     "previous_pointer_snapshot": {
       "record_type": "snapshot_reference",
@@ -10859,7 +10989,7 @@
       "snapshot_blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
       "snapshot_commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc"
     },
-    "note": "Research index and snapshot changes are confined to the explicit research branch; main was not modified."
+    "note": "The snapshot is immutable. The index pointer is being updated separately; research-base PR CI/gate results must be reported only if actually observed."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -11348,5 +11478,6 @@
       "gate_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
       "forecast_status": "NOT_ISSUED"
     }
-  ]
+  ],
+  "__unused__": 724771
 }
