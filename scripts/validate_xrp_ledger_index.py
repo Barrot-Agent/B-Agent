@@ -17,6 +17,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INDEX = ROOT / "data" / "xrp_intelligence" / "research_ledger.json"
 SNAPSHOT_PREFIX = "data/xrp_intelligence/snapshots/"
+ARCHIVE_PREFIX = "data/xrp_intelligence/ledger_archive/v1/"
 SHA1_RE = re.compile(r"^[0-9a-f]{40}$")
 INDEX_ONLY_FIELDS = {
     "snapshot_blob_sha",
@@ -43,6 +44,82 @@ def _safe_snapshot_path(value: Any) -> tuple[Path | None, str | None]:
     return path, None
 
 
+def _safe_archive_path(value: Any) -> tuple[Path | None, str | None]:
+    if not isinstance(value, str) or not value:
+        return None, "archive path must be a non-empty string"
+    path = Path(value)
+    if path.is_absolute() or ".." in path.parts or not value.startswith(ARCHIVE_PREFIX):
+        return None, "archive path must stay inside data/xrp_intelligence/ledger_archive/v1/"
+    if path.suffix != ".json":
+        return None, "archive path must point to a JSON shard"
+    return path, None
+
+
+def resolve_archive_array(value: Any, expected_array_name: str, repo_root: Path) -> tuple[list[Any], list[str], int]:
+    """Resolve a legacy inline list or a Git-blob-verified archive pointer."""
+    if isinstance(value, list):
+        return value, [], 0
+    if not isinstance(value, dict) or value.get("record_type") != "archive_pointer":
+        return [], [f"{expected_array_name} must be a list or archive_pointer object"], 0
+    errors: list[str] = []
+    if value.get("array_name") != expected_array_name:
+        errors.append(f"{expected_array_name} archive pointer array_name mismatch")
+    if value.get("archive_schema_version") != "1.0":
+        errors.append(f"{expected_array_name} archive schema version must be 1.0")
+    chunks = value.get("chunks")
+    if not isinstance(chunks, list):
+        return [], errors + [f"{expected_array_name} archive chunks must be a list"], 0
+    expected_chunk_count = value.get("chunk_count")
+    if not isinstance(expected_chunk_count, int) or expected_chunk_count < 1 or len(chunks) != expected_chunk_count:
+        errors.append(f"{expected_array_name} archive chunk_count mismatch")
+    records: list[Any] = []
+    for position, chunk in enumerate(chunks):
+        if not isinstance(chunk, dict):
+            errors.append(f"{expected_array_name} archive chunk {position} must be an object")
+            continue
+        if chunk.get("chunk_index") != position:
+            errors.append(f"{expected_array_name} archive chunk order/index mismatch at {position}")
+        relative_path, path_error = _safe_archive_path(chunk.get("path"))
+        if path_error:
+            errors.append(f"{expected_array_name} archive chunk {position}: {path_error}")
+            continue
+        expected_blob_sha = chunk.get("git_blob_sha")
+        if not isinstance(expected_blob_sha, str) or not SHA1_RE.fullmatch(expected_blob_sha):
+            errors.append(f"{expected_array_name} archive chunk {position} has invalid git_blob_sha")
+            continue
+        try:
+            raw = (repo_root / relative_path).read_bytes()
+        except OSError as exc:
+            errors.append(f"{expected_array_name} archive chunk {position} cannot be read: {exc}")
+            continue
+        if git_blob_sha(raw) != expected_blob_sha:
+            errors.append(f"{expected_array_name} archive chunk {position} Git blob SHA mismatch")
+        try:
+            archive = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            errors.append(f"{expected_array_name} archive chunk {position} JSON invalid: {exc}")
+            continue
+        if not isinstance(archive, dict) or archive.get("record_type") != "xrp_research_ledger_archive_shard":
+            errors.append(f"{expected_array_name} archive chunk {position} has wrong record_type")
+            continue
+        if archive.get("schema_version") != "1.0" or archive.get("archive_schema_version") != "1.0":
+            errors.append(f"{expected_array_name} archive chunk {position} schema mismatch")
+        if archive.get("array_name") != expected_array_name:
+            errors.append(f"{expected_array_name} archive chunk {position} array_name mismatch")
+        if archive.get("chunk_index") != position or archive.get("chunk_count") != expected_chunk_count:
+            errors.append(f"{expected_array_name} archive chunk {position} metadata mismatch")
+        shard_records = archive.get("records")
+        if not isinstance(shard_records, list):
+            errors.append(f"{expected_array_name} archive chunk {position} records must be a list")
+            continue
+        if archive.get("record_count") != len(shard_records) or chunk.get("record_count") != len(shard_records):
+            errors.append(f"{expected_array_name} archive chunk {position} record_count mismatch")
+        records.extend(shard_records)
+    if value.get("record_count") != len(records):
+        errors.append(f"{expected_array_name} archive total record_count mismatch")
+    return records, errors, len(chunks)
+
+
 def validate_index_data(index: dict[str, Any], repo_root: Path) -> dict[str, Any]:
     errors: list[str] = []
     if not isinstance(index, dict):
@@ -50,10 +127,8 @@ def validate_index_data(index: dict[str, Any], repo_root: Path) -> dict[str, Any
     if index.get("record_type") != "xrp_intelligence_research_ledger":
         errors.append("unexpected record_type")
 
-    sources = index.get("sources")
-    if not isinstance(sources, list):
-        errors.append("sources must be a list")
-        sources = []
+    sources, source_errors, source_shards = resolve_archive_array(index.get("sources"), "sources", repo_root)
+    errors.extend(source_errors)
     source_ids: list[str] = []
     for i, source in enumerate(sources):
         if not isinstance(source, dict) or not isinstance(source.get("id"), str) or not source["id"]:
@@ -63,10 +138,10 @@ def validate_index_data(index: dict[str, Any], repo_root: Path) -> dict[str, Any
     if len(source_ids) != len(set(source_ids)):
         errors.append("duplicate source IDs")
 
-    run_updates = index.get("run_updates")
-    if not isinstance(run_updates, list):
-        errors.append("run_updates must be a list")
-        run_updates = []
+    run_updates, run_errors, run_shards = resolve_archive_array(index.get("run_updates"), "run_updates", repo_root)
+    errors.extend(run_errors)
+    limitations, limitation_errors, limitation_shards = resolve_archive_array(index.get("limitations", []), "limitations", repo_root)
+    errors.extend(limitation_errors)
 
     latest = index.get("latest_snapshot")
     if not isinstance(latest, dict):
@@ -120,12 +195,20 @@ def validate_index_data(index: dict[str, Any], repo_root: Path) -> dict[str, Any
             if legacy_payload != snapshot:
                 errors.append("legacy inline snapshot differs from its immutable snapshot file")
 
+    missing_snapshot_source_ids: list[str] = []
+    if snapshot is not None and isinstance(snapshot.get("source_ids"), list):
+        missing_snapshot_source_ids = sorted(set(snapshot["source_ids"]) - set(source_ids))
+        if missing_snapshot_source_ids:
+            errors.append(f"snapshot references unknown source IDs: {missing_snapshot_source_ids}")
+
     return {
         "status": "PASS" if not errors else "BLOCKED",
         "errors": errors,
         "index_format_version": index.get("index_format_version", "legacy-inline"),
         "source_count": len(source_ids),
         "run_update_count": len(run_updates),
+        "limitation_count": len(limitations),
+        "archive_shards_checked": source_shards + run_shards + limitation_shards,
         "snapshot_path": path_value,
         "snapshot_blob_sha_expected": expected_sha,
         "snapshot_blob_sha_actual": actual_sha,
