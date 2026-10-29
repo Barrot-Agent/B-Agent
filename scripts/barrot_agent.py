@@ -474,7 +474,7 @@ class ScriptBrain:
             return _tool_error(f"Tool arguments for {name} must be an object.")
         return self.tool_funcs[name](arguments)
 
-    def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None, use_tools: bool | None = None) -> str:
+    def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None, use_tools: bool | None = None, max_output_tokens: int | None = None) -> str:
         messages: list[dict[str, Any]] = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -489,7 +489,7 @@ class ScriptBrain:
             payload = _groq_payload(
                 messages,
                 tools=self.tools if tools_enabled else None,
-                max_tokens=1536 if tools_enabled else 1024,
+                max_tokens=max_output_tokens or (1536 if tools_enabled else 1024),
                 json_mode=not tools_enabled,
                 reasoning_effort=None if tools_enabled else "low",
             )
@@ -1336,6 +1336,7 @@ def main() -> None:
                 json.dumps(audit_request, ensure_ascii=False, sort_keys=True),
                 system=audit_system,
                 use_tools=False,
+                max_output_tokens=2048,
             )
             try:
                 parsed_report = json.loads(raw_report)
