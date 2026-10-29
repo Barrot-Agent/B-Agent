@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T06:08:30.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0608-SBIC-CRYPTO-ASK-COIN-DISAMBIGUATION-CORRECTED",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0608-sbic-crypto-ask-coin-disambiguation-corrected.json",
-    "snapshot_blob_sha": "c6b38550d687f81dafd6edbe4d167b996c9bdb97",
-    "snapshot_commit_sha": "baa63148c35bda37877f63d6d6c2541d289fd5a5"
+    "captured_at_utc": "2026-10-29T06:14:00.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0614-EVERNORTH-CAPITAL-AND-SAFETY-PRS",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0614-evernorth-capital-and-safety-prs.json",
+    "snapshot_blob_sha": "5aafd245035ddb563fca9d7f701ad3649e57a7ce",
+    "snapshot_commit_sha": "3cabba445230144309060994a1ad1ff3c70155a5"
   },
   "sources": [
     {
@@ -6341,6 +6341,114 @@
       "published_at": "2026-10-29T06:08:23Z",
       "accessed_at_utc": "2026-10-29T06:08:30.000Z",
       "note": "Main advanced to commit f319d3d9511c6463bb18c36d9cc2b537888f6b88 with commit message 'Paper trade cycle [skip ci]'. The persisted state blob remained a20230ac411d1883ced4f92fce10a7ced2172479 at this capture, with nonzero position_size and position_product=null. The paper log content remained unavailable through the connector."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+      "evidence_class": "CONFIRMED_SEC_PRIMARY_SOURCE",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm",
+      "title": "Evernorth October 23, 2026 Form S-1",
+      "published_at": "2026-10-23",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Primary filing for treasury holdings, contributed/purchased XRP, SBI class-specific ownership caps, related-party facilities, transaction risk factors and the Cantor equity-line registration. Treat stated plans and contingent financing separately from completed cash flows."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K",
+      "evidence_class": "CONFIRMED_SEC_PRIMARY_SOURCE",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419146/d24481d8k.htm",
+      "title": "Evernorth closing Form 8-K",
+      "published_at": "2026-10-09",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Primary closing disclosure for the business combination, redemption outcomes and issued securities. Reports approximately 80.3% redemption of eligible SPAC shares and about $195.39 million returned to redeeming holders; gross transaction headlines must not be equated with net post-close cash."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-EVERNORTH-ELOC-8K",
+      "evidence_class": "CONFIRMED_SEC_PRIMARY_SOURCE",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm",
+      "title": "Evernorth October 23 equity-line Form 8-K",
+      "published_at": "2026-10-23",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Documents the CF Principal Investments LLC (Cantor affiliate) equity-line agreement and registration. Up to 5,218,935 shares and an illustrative maximum around $80.7 million gross at the prospectus cover price are potential proceeds only if shares are actually sold under the agreement and conditions are met."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-EVERNORTH-WARRANT-PROSPECTUS",
+      "evidence_class": "CONFIRMED_SEC_PRIMARY_SOURCE",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526425367/d184594d424b3.htm",
+      "title": "Evernorth warrant resale prospectus",
+      "published_at": "2026-10-23",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Covers 11,499,992 shares underlying warrants at an $11.50 exercise price. Approximately $132.2 million is a maximum contingent exercise-proceeds figure, not cash raised by filing or registering the prospectus; proceeds arise only if warrants are exercised for cash."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-EVERNORTH-CIO-SEC-425",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT_FILED_WITH_SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526419605/d118629dex991.htm",
+      "title": "Evernorth CIO appointment announcement",
+      "published_at": "2026-10-12",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Company announcement identifies Hugo Jeandesboz as Evernorth CIO, previously Co-CIO/head of Solutions at Coinbase Asset Management, with prior institutional trading experience including Coinbase lead derivatives trader. This confirms a personnel link, not ongoing Coinbase control or a completed XRP trade."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE",
+      "evidence_class": "COMPANY_PRESS_RELEASE_REPUBLISHED",
+      "url": "https://markets.financialcontent.com/wral/article/gnwcq-2026-10-14-evernorth-to-begin-deploying-from-473-million-xrp-treasury-with-ripple-kraken-coinbase-and-bitgo",
+      "title": "Evernorth announcement of inaugural institutional execution partners",
+      "published_at": "2026-10-14",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Company-issued press release distributed via GlobeNewswire announces Ripple, Kraken, Coinbase and BitGo as institutional execution partners and says deployment is planned to begin in Q4 2026. It explicitly says agreements remain subject to customary closing conditions and required approvals; it does not report executed volume or net XRP flows."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-EVERNORTH-CONVERTIBLE-NOTE",
+      "evidence_class": "CONFIRMED_SEC_PRIMARY_SOURCE_FINANCING_INSTRUMENT",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000119312526393906/d116959d425.htm",
+      "title": "Evernorth $30 million convertible senior PIK note materials",
+      "published_at": "2026-10-07",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "A $30 million convertible senior payment-in-kind note instrument appears in the filed materials. Treat it as a debt financing instrument; verify issuance, funding, proceeds and current balance from the full agreement and subsequent financial statements before counting it as available cash."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-PR1290-CI",
+      "evidence_class": "CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40827759284",
+      "title": "PR #1290 read-only merge-queue core CI",
+      "published_at": "2026-10-29T06:14:00.000Z",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Exact-head core CI completed successfully: 170 tests plus 4 subtests passed in 6.42 seconds. Regression tests verify the replacement merge-queue workflow has read-only permissions and no merge, comment, branch-update, delete, or write path."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-PR1290-GATE",
+      "evidence_class": "CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40827759250",
+      "title": "PR #1290 fail-closed gate",
+      "published_at": "2026-10-29T06:14:00.000Z",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Fail-closed gate completed successfully. The gate reports merge disabled pending verification; this is not merge authorization. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-PR1291-CI",
+      "evidence_class": "CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40827879345",
+      "title": "PR #1291 XRP summary fail-closed core CI",
+      "published_at": "2026-10-29T06:14:00.000Z",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Exact-head core CI completed successfully: 173 tests plus 4 subtests passed in 5.03 seconds. Five signal-summary safety tests passed, including zero-confidence NOT_ISSUED behavior, missing-signal behavior, provider-key fallback, provider-summary failure handling, and read-only artifact workflow."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-PR1291-GATE",
+      "evidence_class": "CI_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40827879426",
+      "title": "PR #1291 fail-closed gate",
+      "published_at": "2026-10-29T06:14:00.000Z",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Fail-closed gate completed successfully. Merge remains disabled pending review; PR #1291 remains draft and unmerged."
+    },
+    {
+      "id": "SRC-RUN43-20261029T0614Z-MAIN-HEAD",
+      "evidence_class": "GITHUB_PRIMARY_SOURCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/f319d3d9511c6463bb18c36d9cc2b537888f6b88",
+      "title": "Latest observed main commit: paper-trade cycle",
+      "published_at": "2026-10-29T06:08:23Z",
+      "accessed_at_utc": "2026-10-29T06:14:00.000Z",
+      "note": "Main head remained f319d3d9511c6463bb18c36d9cc2b537888f6b88 at this capture. Current signal and state blobs match the prior verified capture; current main still has confidence 0.0/provider failures, and the BTC-USD paper position has position_product=null. No main write was performed by this run."
     }
   ],
   "limitations": [
@@ -6521,7 +6629,12 @@
     "2026-10-29T06:08:30.000Z: SBI Holdings reported an unauthorized outflow of SBI Crypto-owned crypto assets in 2025 and considered restructuring; its 2026 group overview still lists SBI Crypto. The notice explicitly distinguishes SBI VC Trade and BITPOINT Japan as separate asset-management entities and says no impact was identified there. Do not infer an XRP incident or customer loss at those exchanges.",
     "2026-10-29T06:08:30.000Z: SBI Crypto and SBI Ripple Asia are separately listed SBI group companies. No direct SBI Crypto-XRP product, custody, payment, trading or partnership relationship is established by the reviewed sources; group membership alone is not price-causal evidence.",
     "2026-10-29T06:08:30.000Z: Permission.io's ASK token is a confirmed exact-phrase candidate, but the original 'ASK Coin' context remains unresolved and no direct XRP relationship is established.",
-    "2026-10-29T06:08:30.000Z: Multiple unrelated public profiles use the exact name Camilla Stephenson. None is linked to the XRP YouTube creator; channel identity and complete public-video inventory remain unresolved."
+    "2026-10-29T06:08:30.000Z: Multiple unrelated public profiles use the exact name Camilla Stephenson. None is linked to the XRP YouTube creator; channel identity and complete public-video inventory remain unresolved.",
+    "2026-10-29T06:14:00.000Z: The original phrase 'actual capital' remains context-unresolved. Evernorth is a relevant candidate topic because its filings separate completed XRP contributions/purchases and closing funding from contingent ELOC/warrant proceeds, but this is not proof it is the phrase's intended referent.",
+    "2026-10-29T06:14:00.000Z: Evernorth's approximately 473 million XRP closing treasury is not 473 million XRP bought on the open market. SEC disclosures identify 84,365,876 XRP purchased with cash plus substantial contributed XRP; transaction-level dates, venues and net market-flow data were not admitted.",
+    "2026-10-29T06:14:00.000Z: The approximately $80.7 million ELOC and $132.2 million warrant amount are contingent, not actual proceeds until shares are sold or warrants exercised. Pathfinder's $9.7 million Ripple-related facility draw is debt; the $30 million PIK note and post-redemption cash/liability reconciliation require follow-up.",
+    "2026-10-29T06:14:00.000Z: Coinbase/Kraken/Ripple/BitGo were announced as Evernorth execution partners, but the press release says agreements remain subject to customary closing conditions and approvals. No executed trading volume, custody mandate, or net XRP flow is established. Hugo Jeandesboz's prior Coinbase role is a personnel link, not proof of ongoing Coinbase control.",
+    "2026-10-29T06:14:00.000Z: PR #1291's artifact-only summary workflow deliberately does not publish a new web/latest_signal_summary.json to main. Main's existing public summary defect therefore remains until a separate approved publishing path is designed and verified."
   ],
   "run_updates": [
     {
@@ -10782,6 +10895,72 @@
       "deployment_executed": false,
       "real_money_trade": false,
       "paper_trading_state_mutated": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T06:14:00.000Z",
+      "update_type": "EVERNORTH_XRP_TREASURY_ACTUAL_VS_CONTINGENT_CAPITAL_AND_FRESH_SAFETY_PR_VERIFICATION",
+      "source_ids": [
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-ELOC-8K",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-WARRANT-PROSPECTUS",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CIO-SEC-425",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE",
+        "SRC-RUN43-20261029T0614Z-EVERNORTH-CONVERTIBLE-NOTE",
+        "SRC-RUN43-20261029T0614Z-PR1290-CI",
+        "SRC-RUN43-20261029T0614Z-PR1290-GATE",
+        "SRC-RUN43-20261029T0614Z-PR1291-CI",
+        "SRC-RUN43-20261029T0614Z-PR1291-GATE",
+        "SRC-RUN43-20261029T0614Z-MAIN-HEAD"
+      ],
+      "summary": "Added an evidence-led Evernorth capital/counterparty graph. SEC filings disclose approximately 473 million XRP at the October 9 closing, including 84,365,876 XRP purchased with cash and substantial contributed XRP; SBI-affiliated Class A voting ownership is capped at 39.9% with additional non-voting Class C interests; Ripple has contributed XRP and provided related-party credit to Pathfinder, an Evernorth subsidiary. Coinbase, Kraken, Ripple and BitGo were announced as execution partners, and former Coinbase Asset Management Co-CIO Hugo Jeandesboz is Evernorth CIO. Potential $80.7M ELOC and ~$132.2M warrant proceeds are contingent, not actual capital. PR #1290 read-only merge queue CI/gate passed; PR #1291 XRP summary fail-closed CI/gate passed. Both remain draft/unmerged. Main signal remains invalid and no forecast was issued.",
+      "main_sha": "f319d3d9511c6463bb18c36d9cc2b537888f6b88",
+      "graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
+        "blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
+        "commit_sha": "911d339af6d7f0d1954756921a331c4b9a71cfe8",
+        "new_edges": 13,
+        "new_competing_hypotheses": 5
+      },
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T0614-evernorth-capital-and-safety-prs.json",
+        "blob_sha": "5aafd245035ddb563fca9d7f701ad3649e57a7ce",
+        "commit_sha": "3cabba445230144309060994a1ad1ff3c70155a5",
+        "characters": 21708
+      },
+      "actual_capital_phrase": "EVERNORTH_IS_A_RELEVANT_CANDIDATE_TOPIC; ORIGINAL_PHRASE_CONTEXT_UNRESOLVED",
+      "evernorth_xrp_holdings": "APPROX_473M_AT_2026-10-09_CLOSE; MIX_OF_CONTRIBUTIONS_AND_CASH_PURCHASES",
+      "evernorth_cash_purchased_xrp": 84365876,
+      "contingent_eloc_gross_max_usd": 80700000,
+      "contingent_warrant_exercise_proceeds_usd": 132200000,
+      "contingent_financing_status": "NOT_COUNTED_AS_ACTUAL_CASH_UNLESS_SALES_OR_EXERCISES_VERIFIED",
+      "coinbase_execution_partner_status": "ANNOUNCED_SUBJECT_TO_CONDITIONS; NO_EXECUTED_VOLUME_VERIFIED",
+      "pr1290": {
+        "head": "6812f91d81807873d53d6efa65c06eb069ec0424",
+        "state": "DRAFT_OPEN_UNMERGED",
+        "ci_run": 40827759284,
+        "ci_status": "PASS_170_TESTS_4_SUBTESTS_6.42S",
+        "gate_run": 40827759250,
+        "gate_status": "PASS",
+        "behind_main": 0
+      },
+      "pr1291": {
+        "head": "6762868d064a854c0126cf74caa7fcdc11df12cc",
+        "state": "DRAFT_OPEN_UNMERGED",
+        "ci_run": 40827879345,
+        "ci_status": "PASS_173_TESTS_4_SUBTESTS_5.03S",
+        "gate_run": 40827879426,
+        "gate_status": "PASS",
+        "behind_main": 0
+      },
+      "forecast_status": "NOT_ISSUED",
+      "new_synchronized_xrp_market_observations_admitted": false,
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false
     }
   ],
   "mission_priority": {
@@ -11009,23 +11188,23 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "baa63148c35bda37877f63d6d6c2541d289fd5a5",
-  "current_research_head_this_run": "81bc2e3f492eef660bf320554121cf5795f5743a",
+  "current_research_head_before_ledger_update": "3cabba445230144309060994a1ad1ff3c70155a5",
+  "current_research_head_this_run": "PENDING_AFTER_LEDGER_POINTER_UPDATE",
   "current_research_checks": {
-    "status": "SBIC_CRYPTO_AND_ASK_COIN_EVIDENCE_ADDED; GRAPH_SNAPSHOT_POINTER_AND_LEDGER_READBACK_PASS; FORECAST_NOT_ISSUED",
+    "status": "EVERNORTH_CAPITAL_GRAPH_ADDED; PR1290_AND_PR1291_CI_GATE_PASS; INDEX_POINTER_UPDATE_PENDING; FORECAST_NOT_ISSUED",
     "latest_main_sha": "f319d3d9511c6463bb18c36d9cc2b537888f6b88",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0608-sbic-crypto-ask-coin-disambiguation-corrected.json",
-    "snapshot_blob_sha": "c6b38550d687f81dafd6edbe4d167b996c9bdb97",
-    "snapshot_commit_sha": "baa63148c35bda37877f63d6d6c2541d289fd5a5",
-    "snapshot_characters": 15475,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0614-evernorth-capital-and-safety-prs.json",
+    "snapshot_blob_sha": "5aafd245035ddb563fca9d7f701ad3649e57a7ce",
+    "snapshot_commit_sha": "3cabba445230144309060994a1ad1ff3c70155a5",
+    "snapshot_characters": 21708,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 31,
+    "source_reference_count": 43,
     "missing_source_references": 0,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0606-sbic-crypto-ask-coin-disambiguation.json",
-    "graph_addendum_blob_sha": "f3365271867695cfd71ed300fc7687b56c32c41f",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
+    "graph_addendum_blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
     "graph_addendum_readback_ok": true,
-    "current_index_gate": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-    "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "current_index_gate": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
+    "core_ci": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
     "pr1289_head": "491e6f14503957da8e8f2cb82eba7f14bdbfe604",
     "pr1289_state": "DRAFT_OPEN_UNMERGED",
     "pr1289_core_ci_run": 40826979132,
@@ -11051,7 +11230,7 @@
     "creator_identity_status": "PROBABLE_KAMILAH_CAMILA_VARIANT; EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
     "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; THIRD_PARTY_VIDEO_COUNTS_DISAGREE",
     "forecast_status": "NOT_ISSUED",
-    "index_pointer_readback_ok": true,
+    "index_pointer_readback_ok": false,
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
@@ -11061,9 +11240,9 @@
     "index_blob_sha_at_readback": "f243fcc2bd66e881772c2b05bd3b8c6b8c591ffe",
     "index_commit_sha_at_readback": "81bc2e3f492eef660bf320554121cf5795f5743a",
     "index_character_count_match": true,
-    "graph_addendum_commit_sha": "0342daeda1a399b9ab514c67a54a6f46e477676b",
-    "new_graph_edges": 2,
-    "new_competing_hypotheses": 3,
+    "graph_addendum_commit_sha": "911d339af6d7f0d1954756921a331c4b9a71cfe8",
+    "new_graph_edges": 13,
+    "new_competing_hypotheses": 5,
     "sbic_candidates": [
       "SBIC East Japan",
       "historical SBI Capital Co., Ltd.",
@@ -11073,24 +11252,45 @@
     "sbic_crypto_direct_xrp_relationship": "NOT_ESTABLISHED",
     "ask_coin_permission_io_candidate": "CONFIRMED_BY_COMPANY_ANNOUNCEMENT; ORIGINAL_CONTEXT_UNRESOLVED",
     "camilla_stephenson_identity": "NAMESAKES_FOUND; CANONICAL_XRP_CHANNEL_UNRESOLVED",
-    "source_ids_unique": true
+    "source_ids_unique": true,
+    "relationship_edges": 149,
+    "competing_hypotheses": 94,
+    "actual_capital_phrase": "EVERNORTH_RELEVANT_CANDIDATE; ORIGINAL_CONTEXT_UNRESOLVED",
+    "evernorth_xrp_holdings": "APPROX_473M; MIX_OF_CONTRIBUTIONS_AND_CASH_PURCHASES",
+    "contingent_eloc": "UP_TO_80.7M_GROSS; NOT_ACTUAL_PROCEEDS_WITHOUT_SALES",
+    "contingent_warrants": "UP_TO_132.2M_IF_EXERCISED; NOT_ACTUAL_PROCEEDS_WITHOUT_EXERCISE",
+    "pr1290_head": "6812f91d81807873d53d6efa65c06eb069ec0424",
+    "pr1290_ci_run": 40827759284,
+    "pr1290_ci_status": "PASS_170_TESTS_4_SUBTESTS_6.42S",
+    "pr1290_gate_run": 40827759250,
+    "pr1290_gate_status": "PASS",
+    "pr1290_state": "DRAFT_OPEN_UNMERGED",
+    "pr1290_current_main_ahead_of_head": 0,
+    "pr1291_head": "6762868d064a854c0126cf74caa7fcdc11df12cc",
+    "pr1291_ci_run": 40827879345,
+    "pr1291_ci_status": "PASS_173_TESTS_4_SUBTESTS_5.03S",
+    "pr1291_gate_run": 40827879426,
+    "pr1291_gate_status": "PASS",
+    "pr1291_state": "DRAFT_OPEN_UNMERGED",
+    "pr1291_current_main_ahead_of_head": 0,
+    "pr1288_current_main_ahead_of_head": 15
   },
   "ledger_metrics": {
-    "source_records": 781,
-    "run_updates": 149,
-    "limitations": 178,
-    "relationship_edges": 136,
-    "competing_hypotheses": 89,
+    "source_records": 793,
+    "run_updates": 150,
+    "limitations": 183,
+    "relationship_edges": 149,
+    "competing_hypotheses": 94,
     "market_observations": 68,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 2,
-    "index_characters_before_this_update": 725372,
+    "latest_research_addendum_observations": 13,
+    "index_characters_before_this_update": 737754,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 15475,
-    "index_characters": 737754
+    "latest_snapshot_characters": 21708,
+    "index_characters": 752015
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -11111,39 +11311,40 @@
     "forecast_status": "NOT_ISSUED"
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:08:30.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:14:00.000Z",
     "post_snapshot_verification": {
-      "status": "GRAPH_ADDENDUM_READBACK_PASS; CORRECTED_SNAPSHOT_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; RESEARCH_BASE_CI_GATE_NOT_TRIGGERED",
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0606-sbic-crypto-ask-coin-disambiguation.json",
-      "graph_addendum_blob_sha": "f3365271867695cfd71ed300fc7687b56c32c41f",
-      "graph_addendum_commit_sha": "0342daeda1a399b9ab514c67a54a6f46e477676b",
+      "status": "GRAPH_ADDENDUM_READBACK_PASS; SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
+      "graph_addendum_blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
+      "graph_addendum_commit_sha": "911d339af6d7f0d1954756921a331c4b9a71cfe8",
       "graph_addendum_readback_ok": true,
-      "graph_edges": 2,
-      "graph_hypotheses": 3,
+      "graph_edges": 13,
+      "graph_hypotheses": 5,
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "c6b38550d687f81dafd6edbe4d167b996c9bdb97",
-      "snapshot_commit_sha": "baa63148c35bda37877f63d6d6c2541d289fd5a5",
-      "snapshot_characters": 15475,
-      "source_reference_count": 31,
+      "snapshot_blob_sha": "5aafd245035ddb563fca9d7f701ad3649e57a7ce",
+      "snapshot_commit_sha": "3cabba445230144309060994a1ad1ff3c70155a5",
+      "snapshot_characters": 21708,
+      "source_reference_count": 43,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "index_pointer_readback_ok": true,
-      "ci": {
-        "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-        "run_id": null,
-        "url": null
+      "index_pointer_readback_ok": false,
+      "research_base_ci": "NOT_TRIGGERED_OR_UNVERIFIED",
+      "ci_pr1290": {
+        "status": "PASS",
+        "run_id": 40827759284
       },
-      "gate": {
-        "status": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
-        "run_id": null,
-        "url": null
+      "gate_pr1290": {
+        "status": "PASS",
+        "run_id": 40827759250
       },
-      "index_blob_sha_at_readback": "f243fcc2bd66e881772c2b05bd3b8c6b8c591ffe",
-      "index_commit_sha_at_readback": "81bc2e3f492eef660bf320554121cf5795f5743a",
-      "index_character_count_match": true,
-      "source_ids_unique": true,
-      "main_modified_by_this_run": false,
-      "merge_performed": false
+      "ci_pr1291": {
+        "status": "PASS",
+        "run_id": 40827879345
+      },
+      "gate_pr1291": {
+        "status": "PASS",
+        "run_id": 40827879426
+      }
     },
     "previous_pointer_snapshot": {
       "record_type": "snapshot_reference",
@@ -11155,7 +11356,7 @@
       "snapshot_blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
       "snapshot_commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc"
     },
-    "note": "Graph addendum and corrected snapshot are immutable commits on the explicit research branch. Research-base PR CI/gate are not claimed."
+    "note": "Graph addendum and snapshot are immutable commits on the explicit research branch. Main was not modified. PRs #1290 and #1291 remain draft/unmerged."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -11203,32 +11404,31 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T06:08:30.000Z",
-    "focus": "SBI Crypto SBIC candidate, ASK Coin primary-source resolution and creator namesake disambiguation",
+    "recorded_at_utc": "2026-10-29T06:14:00.000Z",
+    "focus": "Evernorth XRP treasury, actual vs contingent capital, SBI governance, Coinbase personnel/partner links, related-party debt and safety PR verification",
     "source_ids": [
-      "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-LEGAL-ACRONYM",
-      "SRC-RUN42-20261029T0606Z-SBI-GROUP-OVERVIEW",
-      "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-2025-INCIDENT",
-      "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-MINING",
-      "SRC-RUN42-20261029T0606Z-ASK-COIN-PERMISSION-IO",
-      "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-IMDB-I",
-      "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-IMDB-II",
-      "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-LINKEDIN",
-      "SRC-RUN42-20261029T0606Z-SBIC-TICKER-COLLISION",
-      "SRC-RUN42-20261029T0608Z-MAIN-HEAD"
+      "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
+      "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K",
+      "SRC-RUN43-20261029T0614Z-EVERNORTH-ELOC-8K",
+      "SRC-RUN43-20261029T0614Z-EVERNORTH-WARRANT-PROSPECTUS",
+      "SRC-RUN43-20261029T0614Z-EVERNORTH-CIO-SEC-425",
+      "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE",
+      "SRC-RUN43-20261029T0614Z-EVERNORTH-CONVERTIBLE-NOTE",
+      "SRC-RUN43-20261029T0614Z-PR1290-CI",
+      "SRC-RUN43-20261029T0614Z-PR1290-GATE",
+      "SRC-RUN43-20261029T0614Z-PR1291-CI",
+      "SRC-RUN43-20261029T0614Z-PR1291-GATE",
+      "SRC-RUN43-20261029T0614Z-MAIN-HEAD"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0606-sbic-crypto-ask-coin-disambiguation.json",
-      "blob_sha": "f3365271867695cfd71ed300fc7687b56c32c41f",
-      "commit_sha": "0342daeda1a399b9ab514c67a54a6f46e477676b",
-      "new_edges": 2,
-      "new_competing_hypotheses": 3
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
+      "blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
+      "commit_sha": "911d339af6d7f0d1954756921a331c4b9a71cfe8",
+      "new_edges": 13,
+      "new_competing_hypotheses": 5
     },
-    "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261029T0604-paper-trader-guard-hardening.json",
-    "sbic_identity": "THREE_JAPANESE_CANDIDATES; ORIGINAL_REFERENT_UNRESOLVED",
-    "sbic_crypto_direct_xrp_relationship": "NOT_ESTABLISHED",
-    "ask_coin_identity": "PERMISSION_IO_CANDIDATE_CONFIRMED; ORIGINAL_CONTEXT_UNRESOLVED",
-    "creator_identity": "NAMESAKES_FOUND; CANONICAL_XRP_CHANNEL_UNRESOLVED",
+    "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261029T0608-sbic-crypto-ask-coin-disambiguation-corrected.json",
+    "actual_capital_phrase": "RELEVANT_EVERNORTH_CANDIDATE; ORIGINAL_CONTEXT_UNRESOLVED",
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
