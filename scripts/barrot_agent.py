@@ -979,9 +979,24 @@ def main() -> None:
         rendered = json.dumps(cycle.to_dict(), indent=2)
         print(rendered)
         persistence = persist_scientific_discovery(cycle)
-        if cycle.status not in {"complete", "no_solution_claim"}:
+        track_records = [
+            track.get("execution_records", [])[-1]
+            for track in cycle.to_dict().get("tracks", [])
+            if track.get("execution_records")
+        ]
+        provider_execution_failed = (
+            not track_records
+            or any(
+                record.get("state") != "COMPLETE"
+                or not record.get("response", {}).get("provider_backed", False)
+                for record in track_records
+            )
+        )
+        if cycle.status not in {"complete", "no_solution_claim"} or provider_execution_failed:
             post_issue_comment(
-                "Barrot scientific discovery failed safely.\n\n```json\n"
+                "Barrot scientific discovery failed safely; provider-backed track execution did not fully pass.\n\n"
+                + json.dumps({"persistence": persistence}, indent=2)
+                + "\n\n```json\n"
                 + rendered[:55000]
                 + "\n```"
             )
