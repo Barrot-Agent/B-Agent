@@ -656,7 +656,7 @@ def configure_git() -> None:
 def checkout_branch(branch: str) -> None:
     if not re.fullmatch(r"[A-Za-z0-9._/-]+", branch) or ".." in branch or branch.startswith("-"):
         raise ValueError("Invalid Barrot task branch name")
-    remote = run(["git", "fetch", "origin", branch], check=False, quiet=True)
+    remote = run(["git", "fetch", "origin", f"+refs/heads/{branch}:refs/remotes/origin/{branch}"], check=False, quiet=True)
     if remote.returncode == 0:
         result = run(["git", "checkout", "-B", branch, f"origin/{branch}"], check=False)
     else:
