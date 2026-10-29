@@ -271,10 +271,23 @@ Original bundle:
 Deterministic review:
 {json.dumps(review.to_dict(), ensure_ascii=False, sort_keys=True)}
 
+Required schema repair checklist (exact types are mandatory):
+- Top-level: schema_version (string '1.0'), bundle_id (non-empty string), objective
+  (exactly unchanged), revision (integer), constraints (exactly unchanged list of strings),
+  prerequisites (list of non-empty strings), tasks (non-empty list), completion_gate
+  (non-empty list of strings), recovery_plan (non-empty list of strings), created_by
+  (non-empty string).
+- Every task: id, title, description, risk_level are non-empty strings; files,
+  acceptance_criteria, tests, depends_on, rollback_plan are lists of strings.
+  rollback_plan MUST be a list even when it contains only one rollback instruction.
+- Include every required field. Do not omit a field because it appears unchanged.
+- Keep task dependencies valid and acyclic.
+
 Requirements:
 - Address every critical/high finding where possible; explain unresolved findings in a
   new top-level 'unresolved_findings' list.
-- Preserve the original objective and constraints exactly.
+- Preserve the original objective, bundle_id, and constraints exactly. The controller
+  will enforce these invariants, but do not rely on that normalization.
 - Increment revision by one and set parent_fingerprint to {review.fingerprint!r}.
 - Strengthen acceptance criteria, tests, dependency correctness, safety boundaries,
   completion evidence, and recovery instructions without inventing repository facts.
@@ -398,6 +411,55 @@ Previous response / diagnostic context (replace it; do not copy malformed syntax
             recovered = self.brain.think(recovery_prompt, system=self.SYSTEM)
             return self._parse_bundle(recovered)
 
+    @staticmethod
+    def _preserve_revision_invariants(
+        original: dict[str, Any], revised: dict[str, Any]
+    ) -> tuple[dict[str, Any], list[str]]:
+        """Enforce immutable bundle identity fields outside the model's control.
+
+        A model-generated revision may repair content, but cannot rewrite the
+        objective, constraints, bundle identity, schema version, or revision
+        lineage. These values are restored deterministically before validation.
+        String rollback instructions are safely normalized to one-item lists
+        because the schema explicitly requires a list.
+        """
+        normalized = dict(revised)
+        repaired: list[str] = []
+        original_revision = original.get("revision", 1)
+        if not isinstance(original_revision, int) or isinstance(original_revision, bool):
+            raise BundleEngineeringError("Cannot revise a bundle with an invalid original revision.")
+        original_constraints = original.get("constraints", [])
+        if not isinstance(original_constraints, list):
+            raise BundleEngineeringError("Cannot revise a bundle with invalid original constraints.")
+        invariant_values = {
+            "schema_version": original.get("schema_version", "1.0"),
+            "bundle_id": original.get("bundle_id"),
+            "objective": original.get("objective"),
+            "constraints": list(original_constraints),
+            "revision": original_revision + 1,
+            "parent_fingerprint": bundle_fingerprint(original),
+        }
+        for key, expected in invariant_values.items():
+            if normalized.get(key) != expected:
+                normalized[key] = expected
+                repaired.append(key)
+
+        tasks = normalized.get("tasks")
+        if isinstance(tasks, list):
+            repaired_tasks: list[Any] = []
+            for index, task in enumerate(tasks):
+                if isinstance(task, dict):
+                    task_copy = dict(task)
+                    rollback = task_copy.get("rollback_plan")
+                    if isinstance(rollback, str) and rollback.strip():
+                        task_copy["rollback_plan"] = [rollback.strip()]
+                        repaired.append(f"tasks[{index}].rollback_plan")
+                    repaired_tasks.append(task_copy)
+                else:
+                    repaired_tasks.append(task)
+            normalized["tasks"] = repaired_tasks
+        return normalized, repaired
+
     def run(
         self,
         *,
@@ -453,8 +515,10 @@ Previous draft to correct:
 
         for revision_number in range(1, self.max_revision_attempts + 1):
             improvement_prompt = build_bundle_improvement_prompt(current, review)
+            invariant_repairs: list[str] = []
             try:
                 revised = self._ask(improvement_prompt)
+                revised, invariant_repairs = self._preserve_revision_invariants(current, revised)
                 revised_review = validate_bundle_revision(current, revised)
             except BundleEngineeringError as exc:
                 attempts.append({
@@ -462,6 +526,7 @@ Previous draft to correct:
                     "revision_attempt": revision_number,
                     "accepted": False,
                     "error": str(exc),
+                    "invariant_repairs": invariant_repairs,
                 })
                 continue
 
@@ -472,6 +537,7 @@ Previous draft to correct:
                 "fingerprint": revised_review.fingerprint,
                 "quality_score": revised_review.quality_score,
                 "finding_codes": [item.code for item in revised_review.findings],
+                "invariant_repairs": invariant_repairs,
             })
             current, review = revised, revised_review
             if review.valid:
