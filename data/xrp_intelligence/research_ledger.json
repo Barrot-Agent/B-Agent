@@ -6159,6 +6159,15 @@
       "published_at": "2026-10-07",
       "accessed_at_utc": "2026-10-29T05:14:51.000Z",
       "note": "Circle scheduled Q3 2026 results and webcast for Wednesday 2026-11-04 at 08:00 ET. This is a future catalyst at this capture, not a result or a directional XRP signal."
+    },
+    {
+      "id": "SRC-RUN40-20261029T051525-SBI-CAPITAL-2005-SBIC",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE_HISTORICAL",
+      "url": "https://www.sbigroup.co.jp/news/2005/0706_675.html",
+      "title": "SBI Holdings 2005 release explicitly uses SBIC for SBI Capital Co., Ltd.",
+      "published_at": "2005-07-06",
+      "accessed_at_utc": "2026-10-29T05:15:25.000Z",
+      "note": "Official SBI Holdings release explicitly defines SBI Capital Co., Ltd. as SBIC and describes financing activity through SBI Mezzanine Fund. Read together with the 2007 SBI Holdings release, this confirms historical Japanese use of SBIC for SBI Capital Co., Ltd.; it does not establish current legal status or a direct XRP relationship."
     }
   ],
   "limitations": [
@@ -10430,6 +10439,27 @@
       "force_push": false,
       "real_money_trade": false,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T05:15:25.000Z",
+      "update_type": "SBI_CAPITAL_HISTORICAL_SBIC_CROSSCHECK",
+      "source_ids": [
+        "SRC-RUN40-20261029T051525-SBI-CAPITAL-2005-SBIC",
+        "SRC-RUN39-20261029T050603-SBI-CAPITAL-SBIC",
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z"
+      ],
+      "summary": "Added a second official SBI Holdings source dated 2005 that explicitly defines SBI Capital Co., Ltd. as SBIC and describes its historical mezzanine/buyout-fund activity. Together with the 2007 share-transfer/JV disclosure, this verifies a historical Japanese SBI Capital entity using SBIC. It remains distinct from SBIC East Japan; current legal status and the original reference's intended entity are unresolved. No direct SBI Capital-to-XRP relationship is established.",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T051525-sbi-capital-historical-crosscheck.json",
+      "graph_addendum_blob_sha": "18afd9a92097e1b65ff313bd36d4e54d5b562d78",
+      "graph_addendum_commit_sha": "e6d8d6c0dfbab1b375f452bcd81e074d30b03852",
+      "new_edges": 1,
+      "new_competing_hypotheses": 1,
+      "main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
   "mission_priority": {
@@ -10660,7 +10690,7 @@
   "current_research_head_before_ledger_update": "a5897665429d07b4d45efddb733db90d9da2208b",
   "current_research_head_this_run": "a5897665429d07b4d45efddb733db90d9da2208b",
   "current_research_checks": {
-    "status": "PR1289_EXACT_HEAD_CI_AND_GATE_PASS; KAMILAH_CHANNEL_CANDIDATE_FOUND; INVENTORY_PARTIAL; XRP_FORECAST_NOT_ISSUED",
+    "status": "PR1289_EXACT_HEAD_CI_AND_GATE_PASS; SBIC_HISTORICAL_CANDIDATE_CROSSCHECKED; XRP_FORECAST_NOT_ISSUED",
     "latest_main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
     "snapshot_blob_sha": "f4323a171f6158106152b43bb738bdcc41bd6f4d",
@@ -10722,24 +10752,27 @@
     "circle_h1_usdc_mint_redeem_claimed_by_issuer": ">315B in H1 2026",
     "circle_june_2026_share_of_global_stablecoin_tx_volume_claimed_by_issuer": "~77%; gross transaction volume, not net capital flow",
     "circle_q3_results_scheduled_utc": "2026-11-04T13:00:00Z",
-    "coinbase_q3_results_scheduled": "2026-10-29 after market close ET"
+    "coinbase_q3_results_scheduled": "2026-10-29 after market close ET",
+    "sbic_historical_candidate": "SBI Capital Co., Ltd. is explicitly abbreviated SBIC in official SBI Holdings releases dated 2005-07-06 and 2007-05-21",
+    "sbic_identity_status": "HISTORICAL_SBI_CAPITAL_CANDIDATE_CONFIRMED; DISTINCT_FROM_SBIC_EAST_JAPAN; ORIGINAL_REFERENT_AND_CURRENT_STATUS_UNKNOWN",
+    "sbic_direct_xrp_relationship": "NOT_ESTABLISHED"
   },
   "ledger_metrics": {
-    "source_records": 760,
-    "run_updates": 145,
+    "source_records": 761,
+    "run_updates": 146,
     "limitations": 169,
-    "relationship_edges": 133,
-    "competing_hypotheses": 85,
+    "relationship_edges": 134,
+    "competing_hypotheses": 86,
     "market_observations": 68,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 710484,
+    "index_characters_before_this_update": 713611,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 11619,
-    "index_characters": 713611
+    "index_characters": 714658
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -10852,49 +10885,23 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T05:06:03.000Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T04:10:53.000Z",
+    "recorded_at_utc": "2026-10-29T05:15:25.000Z",
+    "focus": "SBI Capital historical SBIC identity cross-check",
     "source_ids": [
-      "SRC-RUN39-20261029T050603-CIRCLE-USDC-ECONOMICS",
-      "SRC-RUN39-20261029T050603-CIRCLE-BINANCE-AGREEMENT",
+      "SRC-RUN40-20261029T051525-SBI-CAPITAL-2005-SBIC",
       "SRC-RUN39-20261029T050603-SBI-CAPITAL-SBIC",
-      "SRC-RUN39-20261029T050603-COINBASE-Q3-CALENDAR",
-      "SRC-RUN39-20261029T050603-ETF-FLOW-ALPHA",
-      "SRC-RUN39-20261029T050603-ETF-FLOW-XRPINSIGHTS",
-      "SRC-RUN39-20261029T050603-MAIN-HEAD",
-      "SRC-RUN39-20261029T050603-MAIN-XRP-SIGNAL-SUMMARY",
-      "SRC-RUN39-20261029T050603-PR1288-VERIFICATION",
-      "SRC-RUN39-20261029T050603-PR1282-WORKFLOW-AND-STALE-HEAD",
-      "SRC-RUN39-20261029T050603-PAPER-LOG-RETRIEVAL-LIMITATION"
+      "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T050603-circle-coinbase-sbic-ambiguity.json",
-      "blob_sha": "b8de39044a3f3252ae489cd4c39a4f8a9dce605c",
-      "commit_sha": "5b47ec8572e3fb01941b6f63fd36398d79cdc0c9",
-      "new_edges": 4,
-      "new_competing_hypotheses": 4
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T051525-sbi-capital-historical-crosscheck.json",
+      "blob_sha": "18afd9a92097e1b65ff313bd36d4e54d5b562d78",
+      "commit_sha": "e6d8d6c0dfbab1b375f452bcd81e074d30b03852",
+      "new_edges": 1,
+      "new_competing_hypotheses": 1
     },
-    "corrected_snapshot": {
-      "path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
-      "blob_sha": "f4323a171f6158106152b43bb738bdcc41bd6f4d",
-      "commit_sha": "4af136b0a1eb7669b653fc151fc90e433a4d1422",
-      "characters": 11619,
-      "supersedes": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity.json",
-      "previous_pointer": {
-        "record_type": "snapshot_reference",
-        "index_format_version": "2.0",
-        "schema_version": "1.0",
-        "captured_at_utc": "2026-10-29T04:10:53.000Z",
-        "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T041053-COINBASE-IDENTITY-AND-SIGNAL-SAFETY-CORRECTION",
-        "snapshot_path": "data/xrp_intelligence/snapshots/20261029T041053-coinbase-identity-and-signal-safety-correction.json",
-        "snapshot_blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
-        "snapshot_commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc"
-      }
-    },
-    "coinbase_q3_results": "SCHEDULED_2026-10-29_AFTER_MARKET_CLOSE; NOT_YET_PUBLISHED_AT_CAPTURE",
-    "sbic_identity": "AMBIGUOUS_BETWEEN_SBIC_EAST_JAPAN_AND_HISTORICAL_SBI_CAPITAL_USAGE",
-    "etf_flow_data": "DISAGREEMENT; NOT_ADMITTED_TO_FEATURE_STORE",
-    "paper_trading_replay": "BLOCKED_CURRENT_LOG_CONTENT_UNAVAILABLE; BTC-USD_ONLY; POSITION_PRODUCT_NULL",
+    "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
+    "sbic_identity": "HISTORICAL_SBI_CAPITAL_CANDIDATE_CONFIRMED; ORIGINAL_REFERENT_UNRESOLVED",
+    "direct_xrp_relationship": "NOT_ESTABLISHED",
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
