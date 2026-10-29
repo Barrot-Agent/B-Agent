@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
-"""
-BARROT-Ω ENTITY SENTIMENT PROFILER — aggregates sentiment for each named
-entity across all distilled XRP and BTC entries: how often it appears
-alongside bullish/bearish/neutral coverage, and a net sentiment score.
-Pure aggregation over existing distilled entries. No new infrastructure.
-"""
-
+"""Global descriptive entity sentiment plus target-asset relevance-weighted profiles."""
 import json
+import math
 import os
 from collections import defaultdict
 
@@ -14,89 +9,116 @@ KB_DIR = "ping-pongings/knowledge-base"
 XRP_LOG = os.path.join(KB_DIR, "log.jsonl")
 BTC_LOG = os.path.join(KB_DIR, "log_btc.jsonl")
 OUT_PATH = os.path.join(KB_DIR, "entity_sentiment_profile.json")
-
 SENTIMENT_WEIGHT = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}
+ASSET_RELEVANCE_FIELD = {"XRP": "xrp_relevance", "BTC": "btc_relevance"}
 
 
 def load_jsonl(path):
     if not os.path.exists(path):
         return []
     out = []
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line:
                 continue
             try:
                 out.append(json.loads(line))
-            except Exception:
-                pass
+            except (json.JSONDecodeError, TypeError):
+                continue
     return out
 
 
-def main():
-    xrp_entries = load_jsonl(XRP_LOG)
-    btc_entries = load_jsonl(BTC_LOG)
-    all_entries = [(e, "XRP") for e in xrp_entries] + [(e, "BTC") for e in btc_entries]
+def relevance_weight(distill, field):
+    raw_weight = distill.get(field, 0)
+    if isinstance(raw_weight, bool):
+        return 0.0
+    try:
+        weight = float(raw_weight or 0)
+    except (TypeError, ValueError, OverflowError):
+        return 0.0
+    return weight if math.isfinite(weight) and weight > 0 else 0.0
 
-    profiles = defaultdict(lambda: {
-        "bullish": 0, "neutral": 0, "bearish": 0,
-        "assets_seen_in": set(), "example_headlines": [],
-    })
 
-    for e, asset in all_entries:
-        d = e.get("distill", {})
-        sentiment = d.get("sentiment")
+def build_entity_sentiment_profile(xrp_entries, btc_entries):
+    all_entries = [(entry, "XRP") for entry in xrp_entries] + [(entry, "BTC") for entry in btc_entries]
+    profiles = defaultdict(lambda: {"bullish": 0, "neutral": 0, "bearish": 0, "assets_seen_in": set(), "example_headlines": []})
+    scoped = {asset: defaultdict(lambda: {"bullish": 0, "neutral": 0, "bearish": 0, "relevance_weight_sum": 0.0, "weighted_sentiment_sum": 0.0, "example_headlines": []}) for asset in ASSET_RELEVANCE_FIELD}
+
+    for entry, asset in all_entries:
+        distill = entry.get("distill", {})
+        sentiment = distill.get("sentiment")
         if sentiment not in SENTIMENT_WEIGHT:
             continue
-        for ent in d.get("entities", []):
-            ent_norm = ent.strip()
-            if not ent_norm:
+        weight = relevance_weight(distill, ASSET_RELEVANCE_FIELD[asset])
+        for entity in distill.get("entities", []):
+            normalized = entity.strip() if isinstance(entity, str) else ""
+            if not normalized:
                 continue
-            p = profiles[ent_norm]
-            p[sentiment] += 1
-            p["assets_seen_in"].add(asset)
-            if len(p["example_headlines"]) < 3:
-                p["example_headlines"].append(e.get("title", "")[:100])
+            global_profile = profiles[normalized]
+            global_profile[sentiment] += 1
+            global_profile["assets_seen_in"].add(asset)
+            if len(global_profile["example_headlines"]) < 3:
+                global_profile["example_headlines"].append(entry.get("title", "")[:100])
+            if weight <= 0:
+                continue
+            profile = scoped[asset][normalized]
+            profile[sentiment] += 1
+            profile["relevance_weight_sum"] += weight
+            profile["weighted_sentiment_sum"] += SENTIMENT_WEIGHT[sentiment] * weight
+            if len(profile["example_headlines"]) < 3:
+                profile["example_headlines"].append(entry.get("title", "")[:100])
 
-    results = []
-    for entity, p in profiles.items():
-        total = p["bullish"] + p["neutral"] + p["bearish"]
-        net_score = (p["bullish"] - p["bearish"]) / total if total else 0.0
-        results.append(
-            {
+    global_results = []
+    for entity, profile in profiles.items():
+        total = profile["bullish"] + profile["neutral"] + profile["bearish"]
+        global_results.append({
+            "entity": entity, "total_mentions": total,
+            "bullish": profile["bullish"], "neutral": profile["neutral"], "bearish": profile["bearish"],
+            "net_sentiment_score": round((profile["bullish"] - profile["bearish"]) / total, 3) if total else 0.0,
+            "assets_seen_in": sorted(profile["assets_seen_in"]),
+            "example_headlines": profile["example_headlines"],
+        })
+    global_results.sort(key=lambda result: result["total_mentions"], reverse=True)
+
+    asset_results = {}
+    for asset, entities in scoped.items():
+        rows = []
+        for entity, profile in entities.items():
+            mentions = profile["bullish"] + profile["neutral"] + profile["bearish"]
+            total_weight = profile["relevance_weight_sum"]
+            weighted_score = ((profile["weighted_sentiment_sum"] / total_weight) + 1) * 50 if total_weight > 0 else None
+            rows.append({
                 "entity": entity,
-                "total_mentions": total,
-                "bullish": p["bullish"],
-                "neutral": p["neutral"],
-                "bearish": p["bearish"],
-                "net_sentiment_score": round(net_score, 3),
-                "assets_seen_in": sorted(p["assets_seen_in"]),
-                "example_headlines": p["example_headlines"],
-            }
-        )
+                "eligible_mentions": mentions,
+                "bullish_mentions": profile["bullish"],
+                "neutral_mentions": profile["neutral"],
+                "bearish_mentions": profile["bearish"],
+                "relevance_weight_sum": round(total_weight, 6),
+                "relevance_weighted_score_0_100": round(weighted_score, 3) if weighted_score is not None else None,
+                "example_headlines": profile["example_headlines"],
+            })
+        rows.sort(key=lambda row: (-row["relevance_weight_sum"], row["entity"]))
+        asset_results[asset] = rows
 
-    results.sort(key=lambda r: r["total_mentions"], reverse=True)
-
-    out = {
+    return {
         "generated_from": {"xrp_entries": len(xrp_entries), "btc_entries": len(btc_entries)},
-        "unique_entities_profiled": len(results),
-        "entities": results,
+        "unique_entities_profiled": len(global_results),
+        "entities": global_results,
+        "asset_specific_profiles": asset_results,
     }
 
+
+def main():
+    out = build_entity_sentiment_profile(load_jsonl(XRP_LOG), load_jsonl(BTC_LOG))
+    os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
     web_path = os.path.join("web", os.path.basename(OUT_PATH))
     os.makedirs("web", exist_ok=True)
     with open(web_path, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
-
-    print(f"Unique entities profiled: {len(results)}")
-    print("\nTop 10 by mention volume:")
-    for r in results[:10]:
-        print(f"  {r['total_mentions']:3d}x  {r['entity']:25s} net_sentiment={r['net_sentiment_score']:+.2f} "
-              f"(B:{r['bullish']} N:{r['neutral']} Be:{r['bearish']})")
-    print(f"\nWritten to {OUT_PATH}")
+    print(f"Unique entities profiled: {out['unique_entities_profiled']}")
 
 
 if __name__ == "__main__":
