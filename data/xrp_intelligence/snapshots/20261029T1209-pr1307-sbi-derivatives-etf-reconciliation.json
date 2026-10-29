@@ -1,0 +1,341 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1209-PR1307-SBI-DERIVATIVES-ETF",
+  "captured_at_utc": "2026-10-29T12:09:30Z",
+  "data_cutoff_utc": "2026-10-29T12:09:30Z",
+  "observed_main_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
+  "forecast_status": "NOT_ISSUED",
+  "market_feature_admission": {
+    "admitted": false,
+    "reason": "Market sources are asynchronous and scope-mismatched; no synchronized multi-venue panel or issuer-level ETF reconciliation is available."
+  },
+  "summary": "Fresh-main PR #1307 now passes exact-head CI (193 tests plus four subtests) and the fail-closed gate, but remains draft and unmerged. Main still runs the 30-minute paper trader with an unidentified open simulated position; the latest scheduled cycle appended a hold log row without changing state. Current XRP signal confidence remains zero with missing model credentials and Groq 429, while its summary still narrates a moderate positive result. New ecosystem evidence confirms SBI's XRP rewards-card channel and SBI VC Trade's RLUSD distribution, supporting multi-asset optionality but not quantified XRP demand. Derivatives dashboards differ by more than 2x OI because their scopes differ; ETF flow proxies are closer in approximate magnitude but remain non-comparable.",
+  "findings": [
+    {
+      "id": "FIND-RUN63-PR1307",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "PR #1307 is based on current main b60faa26..., remains draft/unmerged, and exact-head CI passed 193 tests plus four subtests in 7.79 seconds; fail-closed gate passed.",
+      "source_ids": [
+        "SRC-GH-PR1307-20261029T1209Z",
+        "SRC-GH-PR1307-CI-20261029T1209Z",
+        "SRC-GH-PR1307-GATE-20261029T1209Z"
+      ],
+      "limitation": "Main's schedule remains active until approval and merge."
+    },
+    {
+      "id": "FIND-RUN63-PAPER-STATE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "The paper trader continues scheduled log commits while position_product remains null. Latest log row is a hold at 11:32:48Z; state values remain nonzero and unchanged.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T1209Z",
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1209Z",
+        "SRC-GH-MAIN-PAPER-LOG-20261029T1209Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1209Z"
+      ],
+      "limitation": "Full historical log replay remains blocked; latest row is verified from commit diff."
+    },
+    {
+      "id": "FIND-RUN63-XRP-SIGNAL",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main signal has score 44, confidence 0.0 and explicit provider failures; the summary still describes a moderate positive result. No forecast is valid.",
+      "source_ids": [
+        "SRC-GH-MAIN-XRP-SIGNAL-20261029T1209Z",
+        "SRC-GH-MAIN-XRP-SUMMARY-20261029T1209Z"
+      ],
+      "limitation": "No synchronized market panel admitted."
+    },
+    {
+      "id": "FIND-RUN63-DERIVATIVES",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "TradRadar reports $1.97B OI at 06:30Z and Kodexius reports $815.85M at 11:12Z; funding and long/short measures are not synchronized or scope-aligned.",
+      "source_ids": [
+        "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z",
+        "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z"
+      ],
+      "limitation": "No derivatives feature admitted."
+    },
+    {
+      "id": "FIND-RUN63-ETF-FLOWS",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "Alpha reports -$3.6M on Oct 26 and $0 on Oct 27-28; XRP Insights reports -3.13M XRP over Oct 26-27, approximately $4.1M. The aggregate magnitude is broadly similar, but fund coverage and settlement status differ.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z"
+      ],
+      "limitation": "No ETF-flow feature admitted until issuer-level per-fund reconciliation."
+    },
+    {
+      "id": "FIND-RUN63-SBI-CHANNELS",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade's card ecosystem permits selecting XRP as a reward asset, while SBI VC Trade and Ripple separately launched RLUSD handling in Japan. This confirms multiple distribution channels, not a quantified price effect.",
+      "source_ids": [
+        "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z",
+        "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z"
+      ],
+      "limitation": "No product-level volume or substitution data."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-RUN63-SBI-REWARDS-INCREMENTAL-XRP-FLOW",
+      "statement": "The SBI VISA Crypto Card could create incremental recurring retail XRP acquisition through points conversions when customers select XRP.",
+      "status": "PLAUSIBLE_CHANNEL_EXISTENCE_CONFIRMED_IMPACT_UNQUANTIFIED",
+      "supporting_source_ids": [
+        "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z"
+      ],
+      "disconfirming_evidence": [
+        "No user counts, reward conversion volumes, XRP execution amounts or market impact are disclosed; cardholders can choose BTC or ETH instead."
+      ],
+      "tests_needed": [
+        "Find public card adoption and reward conversion metrics; if unavailable, keep as a qualitative distribution edge and do not proxy it as capital inflow."
+      ]
+    },
+    {
+      "id": "HYP-RUN63-SBI-MULTI_RAIL_OPTIONALITY",
+      "statement": "SBI's XRP reward channel and RLUSD distribution are more consistent with multi-asset optionality than an exclusive XRP-versus-stablecoin choice.",
+      "status": "INFERENCE_NOT_EXCLUSIVE_STRATEGY_PROOF",
+      "supporting_source_ids": [
+        "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z",
+        "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z"
+      ],
+      "disconfirming_evidence": [
+        "Future public volume, pricing or product decisions may show one rail displacing another in specific corridors."
+      ],
+      "tests_needed": [
+        "Track product-level adoption, stablecoin issuance/redemptions, XRPL activity and XRP market liquidity separately; require evidence of substitution before claiming displacement."
+      ]
+    },
+    {
+      "id": "HYP-RUN63-DERIVATIVES-LONG-CROWDING",
+      "statement": "Positive funding and a high long/short account ratio could indicate crowded long positioning and liquidation sensitivity, but the evidence is not sufficient for a directional forecast.",
+      "status": "LOW_CONFIDENCE_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z",
+        "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z"
+      ],
+      "disconfirming_evidence": [
+        "Funding is not uniform across venues; account ratios are not notional exposure; OI aggregates differ by more than 2x due to unknown coverage; price can rise despite positive funding."
+      ],
+      "tests_needed": [
+        "Build synchronized exchange-level OI/funding/liquidation data with fixed intervals and contract metadata; compare against neutral and simple momentum baselines using walk-forward evaluation."
+      ]
+    },
+    {
+      "id": "HYP-RUN63-ETF-FLOWS-NORMALIZE-BEFORE-USE",
+      "statement": "The two ETF dashboards appear broadly similar in the magnitude of the October 26-27 outflow after approximate USD conversion, but fund membership and settlement status prevent direct equivalence.",
+      "status": "DATA_QUALITY_HYPOTHESIS_NOT_FEATURE_READY",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z"
+      ],
+      "disconfirming_evidence": [
+        "Issuer-level corrections or fund exclusions may create larger differences after normalization."
+      ],
+      "tests_needed": [
+        "Reconstruct issuer-level holdings and shares per fund, normalize XRP/USD units and settlement windows, document excluded funds, and test only lagged flows."
+      ]
+    },
+    {
+      "id": "HYP-RUN63-MAIN-SIGNAL-FAIL-CLOSED",
+      "statement": "The main XRP score must remain NOT_ISSUED until provider failures and zero confidence are resolved and a fixed-horizon, leakage-safe evaluation demonstrates calibrated out-of-sample skill.",
+      "status": "SAFETY_REQUIREMENT_NOT_PRICE_PREDICTION",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-XRP-SIGNAL-20261029T1209Z",
+        "SRC-GH-MAIN-XRP-SUMMARY-20261029T1209Z",
+        "SRC-GH-PR1307-CI-20261029T1209Z"
+      ],
+      "disconfirming_evidence": [
+        "No evidence currently supports issuing a directional forecast from this artifact."
+      ],
+      "tests_needed": [
+        "Repair signal semantics in approved PR; synchronize spot/derivatives/flows; register target, horizon, cutoff and probabilities; compare against naive and market-beta baselines; measure calibration and drift."
+      ]
+    }
+  ],
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
+    "blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
+    "commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
+    "new_edges": 15,
+    "new_competing_hypotheses": 5
+  },
+  "sources": [
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b60faa26e5859f91beb07f5c778bc7934e99a002"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-STATE-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-LOG-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b60faa26e5859f91beb07f5c778bc7934e99a002"
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml"
+    },
+    {
+      "id": "SRC-GH-MAIN-XRP-SIGNAL-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json"
+    },
+    {
+      "id": "SRC-GH-MAIN-XRP-SUMMARY-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json"
+    },
+    {
+      "id": "SRC-GH-PR1307-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1307"
+    },
+    {
+      "id": "SRC-GH-PR1307-CI-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40870843070"
+    },
+    {
+      "id": "SRC-GH-PR1307-GATE-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40870843146"
+    },
+    {
+      "id": "SRC-GH-PR1306-CI-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862852994"
+    },
+    {
+      "id": "SRC-GH-PR1306-GATE-20261029T1209Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862853088"
+    },
+    {
+      "id": "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z",
+      "url": "https://tradradar.io/markets/xrp"
+    },
+    {
+      "id": "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP"
+    },
+    {
+      "id": "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z",
+      "url": "https://alphafinance.io/etf/xrp/"
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z",
+      "url": "https://xrp-insights.com/data"
+    },
+    {
+      "id": "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html"
+    },
+    {
+      "id": "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+    },
+    {
+      "id": "SRC-COINBASE-Q3-DATE-20261014-CAPTURE-20261029T1209Z",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx"
+    },
+    {
+      "id": "SRC-CIRCLE-Q3-DATE-20261007-CAPTURE-20261029T1209Z",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026"
+    }
+  ],
+  "market_observations": [
+    {
+      "id": "MKT-RUN63-XRP-SPOT-TRADRADAR",
+      "asset": "XRP",
+      "measure": "perpetual mark price",
+      "value": 1.2961,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-29T06:30:00Z",
+      "source_ids": [
+        "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z"
+      ],
+      "admission": "CONTEXT_ONLY_NOT_SYNCHRONIZED"
+    },
+    {
+      "id": "MKT-RUN63-XRP-OI-TRADRADAR",
+      "asset": "XRP",
+      "measure": "open interest",
+      "value": 1970000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-29T06:30:00Z",
+      "source_ids": [
+        "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z"
+      ],
+      "admission": "NOT_ADMITTED_SCOPE_UNVERIFIED"
+    },
+    {
+      "id": "MKT-RUN63-XRP-OI-KODEXIUS",
+      "asset": "XRP",
+      "measure": "open interest",
+      "value": 815850000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-29T11:12:00Z",
+      "source_ids": [
+        "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z"
+      ],
+      "admission": "NOT_ADMITTED_SCOPE_UNVERIFIED"
+    },
+    {
+      "id": "MKT-RUN63-XRP-ETF-ALPHA",
+      "asset": "XRP",
+      "measure": "daily ETF net flow",
+      "value": -3600000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-26T20:00:00Z",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z"
+      ],
+      "admission": "NOT_ADMITTED_UNRECONCILED"
+    },
+    {
+      "id": "MKT-RUN63-XRP-ETF-INSIGHTS",
+      "asset": "XRP",
+      "measure": "two-session ETF net flow",
+      "value": -3132685,
+      "unit": "XRP",
+      "observed_at_utc": "2026-10-27T20:00:00Z",
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z"
+      ],
+      "admission": "NOT_ADMITTED_UNRECONCILED"
+    }
+  ],
+  "corporate_events": [
+    {
+      "id": "EVT-RUN63-COINBASE-Q3",
+      "entity": "COINBASE",
+      "event": "Q3 2026 results scheduled after US market close",
+      "event_date": "2026-10-29",
+      "source_ids": [
+        "SRC-COINBASE-Q3-DATE-20261014-CAPTURE-20261029T1209Z"
+      ],
+      "status": "UPCOMING_AT_CUTOFF"
+    },
+    {
+      "id": "EVT-RUN63-CIRCLE-Q3",
+      "entity": "CIRCLE",
+      "event": "Q3 2026 results scheduled for 08:00 ET",
+      "event_date": "2026-11-04",
+      "source_ids": [
+        "SRC-CIRCLE-Q3-DATE-20261007-CAPTURE-20261029T1209Z"
+      ],
+      "status": "UPCOMING"
+    }
+  ],
+  "verification": {
+    "snapshot_readback": "PENDING",
+    "graph_readback": "PASS",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "pr1307_ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+    "pr1307_gate": "PASS_FAIL_CLOSED",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false,
+    "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+  }
+}
