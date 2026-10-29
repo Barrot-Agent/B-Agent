@@ -776,7 +776,8 @@ def test_provider_backed_track_execution_is_recorded_without_promoting_claims(tm
     assert all(claim["acceptance_status"] == ClaimStatus.UNRESOLVED.value for claim in cycle.claims)
 
 
-def test_scientific_track_output_retries_malformed_json_once() -> None:
+def test_scientific_track_output_retries_malformed_json_once(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     module = load_script_module("barrot_scientific_json_retry_test")
     import json
 
@@ -808,7 +809,8 @@ def test_scientific_track_output_retries_malformed_json_once() -> None:
     assert result["open_questions"] == ["Needs independent check"]
 
 
-def test_scientific_track_output_fails_closed_after_bad_retry() -> None:
+def test_scientific_track_output_fails_closed_after_bad_retry(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     module = load_script_module("barrot_scientific_json_retry_fail_test")
     import pytest
 
