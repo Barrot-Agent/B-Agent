@@ -91,7 +91,7 @@ jobs:
           BRANCH: barrot/task-${{ steps.scheduled_task.outputs.issue_number || github.event.issue.number || github.run_id }}
         run: python3 scripts/barrot_agent.py
       - name: Release completed issue from the queue
-        if: success() && env.ISSUE_NUMBER != '0'
+        if: success() && (steps.scheduled_task.outputs.issue_number || github.event.issue.number || '0') != '0'
         env:
           ISSUE_NUMBER: ${{ steps.scheduled_task.outputs.issue_number || github.event.issue.number || '0' }}
         run: |
