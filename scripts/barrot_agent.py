@@ -763,6 +763,59 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         print(result.stderr[:3000])
 
 
+def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, Any]:
+    """Commit research evidence to the resumable task branch and open a draft PR."""
+    payload = _work_dict(cycle)
+    latest = write_collaboration_record(payload)
+    cycle_id = re.sub(r"[^A-Za-z0-9._-]", "_", str(payload.get("cycle_id") or "unknown"))
+    per_cycle = latest.parent / f"{cycle_id}.json"
+    paths = [str(latest.relative_to(ROOT)), str(per_cycle.relative_to(ROOT))]
+    staged = run(["git", "add", "--", *paths], check=False)
+    if staged.returncode != 0:
+        raise RuntimeError(staged.stderr.strip() or "Unable to stage scientific-discovery evidence")
+    diff = run(["git", "diff", "--cached", "--quiet"], check=False, quiet=True)
+    commit_sha = run(["git", "rev-parse", "HEAD"], quiet=True).stdout.strip()
+    if diff.returncode == 1:
+        run(["git", "commit", "-m", f"Barrot: persist scientific research cycle {cycle_id}"])
+        run(["git", "push", "--set-upstream", "origin", BRANCH])
+        commit_sha = run(["git", "rev-parse", "HEAD"], quiet=True).stdout.strip()
+    elif diff.returncode != 0:
+        raise RuntimeError("Unable to determine whether scientific-discovery evidence changed")
+    else:
+        remote = run(["git", "rev-parse", f"origin/{BRANCH}"], check=False, quiet=True)
+        if remote.returncode != 0:
+            raise RuntimeError("No new evidence to commit and no remote task branch exists")
+
+    safe_title = TITLE.replace(chr(96), " ").replace('"', "'").replace("$", " ").replace("\n", " ").replace("\r", " ").strip()[:180] or "Scientific discovery"
+    pr_body = (
+        f"Barrot scientific-discovery evidence for issue #{ISSUE}.\n\n"
+        f"- cycle_id: {cycle_id}\n"
+        f"- problem_id: {payload.get('problem_id')}\n"
+        f"- cycle_status: {payload.get('status')}\n"
+        f"- acceptance_gate_passed: {payload.get('acceptance_gate_passed')}\n"
+        f"- unresolved_questions: {len(payload.get('unresolved_questions', []))}\n\n"
+        "This is an evidence-preserving draft. It makes no claim that the Millennium problem is solved."
+    )
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix="barrot_research_pr_") as tmp_dir:
+        body_path = Path(tmp_dir) / "research_pr_body.md"
+        body_path.write_text(pr_body, encoding="utf-8")
+        result = run_gh([
+            "pr", "create", "--draft", "--repo", REPO,
+            "--title", f"Barrot research: {safe_title}",
+            "--body-file", str(body_path), "--head", BRANCH, "--base", "main",
+        ])
+    combined = (result.stdout + "\n" + result.stderr).lower()
+    if result.returncode != 0 and "already exists" not in combined:
+        raise RuntimeError(result.stderr.strip() or result.stdout.strip() or "Unable to create draft research PR")
+    return {
+        "record_path": str(latest.relative_to(ROOT)),
+        "commit_sha": commit_sha,
+        "remote_persisted": True,
+        "draft_pr": result.stdout.strip() or "existing draft PR",
+    }
+
+
 def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
     payload = _work_dict(cycle)
     record_dir = ROOT / ".barrot" / "collaboration_records"
