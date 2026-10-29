@@ -759,6 +759,53 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         print(result.stderr[:3000])
 
 
+def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[str, Any]) -> dict[str, Any]:
+    def decode_object(candidate: str) -> dict[str, Any]:
+        content = candidate.strip()
+        if content.startswith("```"):
+            content = content.split("\n", 1)[-1]
+            if content.endswith("```"):
+                content = content[:-3].strip()
+        parsed = json.loads(content)
+        if not isinstance(parsed, dict):
+            raise ValueError("Model response must be a JSON object.")
+        return parsed
+
+    try:
+        return decode_object(raw)
+    except (json.JSONDecodeError, ValueError) as first_error:
+        track = request.get("track") if isinstance(request.get("track"), dict) else {}
+        repair_request = {
+            "task": "Retry the research-track response as compact valid JSON.",
+            "track_id": track.get("track_id", "unknown"),
+            "required_keys": ["findings", "open_questions", "counterarguments", "recommended_checks"],
+            "limits": {
+                "maximum_items_per_array": 3,
+                "maximum_characters_per_item": 300,
+                "all_values_must_be_strings": True,
+            },
+            "invalid_response": raw[:6000],
+            "instruction": (
+                "Preserve the meaning only where it is clear. Do not invent evidence or citations. "
+                "If the original is unusable, return empty arrays and explain uncertainty in open_questions."
+            ),
+        }
+        retry_raw = brain.think(
+            json.dumps(repair_request, sort_keys=True),
+            system=(
+                "Return one syntactically valid JSON object only. Required keys are findings, open_questions, "
+                "counterarguments, recommended_checks; each value must be an array of at most three strings, "
+                "each at most 300 characters. No markdown, no prose outside JSON, no invented evidence."
+            ),
+        )
+        try:
+            return decode_object(retry_raw)
+        except (json.JSONDecodeError, ValueError) as retry_error:
+            raise RuntimeError(
+                "Model returned invalid JSON after one compact retry: "
+                f"{str(retry_error)[:250]}; initial response rejected: {str(first_error)[:250]}"
+            ) from retry_error
+
 def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
     payload = _work_dict(cycle)
     record_dir = ROOT / ".barrot" / "collaboration_records"
