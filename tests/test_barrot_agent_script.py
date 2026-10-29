@@ -244,3 +244,55 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
 
     assert calls["args"][8] == "--head"
     assert calls["args"][9] == "repair/from-cycle"
+
+
+
+def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_BODY", "AUDIT AND RECOMMEND ONLY. No implementation changes are authorized by this issue.")
+    monkeypatch.setenv("TASK_TITLE", "Repository-wide read-only audit")
+    monkeypatch.setenv("TASK_MODE", "engineering")
+    monkeypatch.setenv("ISSUE_NUMBER", "1167")
+    monkeypatch.setenv("BRANCH", "barrot/task-1167")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+
+    module = load_script_module("barrot_agent_read_only_audit_test")
+    calls: dict[str, object] = {}
+
+    class FakeBrain:
+        def __init__(self, **kwargs):
+            calls.setdefault("brain_inits", []).append(kwargs)
+
+        def think(self, message, system=None):
+            calls["prompt"] = json.loads(message)
+            calls["system"] = system
+            return "## Evidence report\\n\\nCONFIRMED: repository context inspected."
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("audit-only task must not enter bundle or repair execution")
+
+    monkeypatch.setattr(module, "ScriptBrain", FakeBrain)
+    monkeypatch.setattr(module, "BundleEngineeringController", forbidden)
+    monkeypatch.setattr(module, "RepositoryRepairController", forbidden)
+    monkeypatch.setattr(module, "WorkQueueController", forbidden)
+    monkeypatch.setattr(module, "configure_git", lambda: None)
+    monkeypatch.setattr(module, "checkout_branch", lambda branch: None)
+    monkeypatch.setattr(
+        module,
+        "build_audit_context",
+        lambda title, body: {"inventory": "real inventory", "file_context": "source excerpts"},
+    )
+    monkeypatch.setattr(
+        module,
+        "post_issue_comment",
+        lambda message: calls.setdefault("comment", message),
+    )
+    monkeypatch.setattr(module, "write_collaboration_record", forbidden)
+    monkeypatch.setattr(module, "create_pull_request", forbidden)
+
+    module.main()
+
+    assert "## Barrot Read-Only Audit Report" in calls["comment"]
+    assert "CONFIRMED: repository context inspected." in calls["comment"]
+    assert calls["prompt"]["repository_context"]["inventory"] == "real inventory"
+    assert calls["prompt"]["rules"]
