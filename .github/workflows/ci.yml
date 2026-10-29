@@ -60,6 +60,6 @@ jobs:
             tests/test_bundle_lifecycle.py \
             tests/test_mesh_topology.py \
             tests/test_obj_mesh_loader.py \
-            tests/test_polygon_triangulation.py \ \\
-            tests/test_structural_analysis.py
+            tests/test_polygon_triangulation.py \
+            tests/test_structural_analysis.py \
             -v --no-cov
