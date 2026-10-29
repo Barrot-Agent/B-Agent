@@ -478,6 +478,7 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("TASK_BODY", "Investigate the Navier-Stokes Millennium Prize claim with Lean formal verification.")
     monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    monkeypatch.setenv("TASK_MODE", "scientific_discovery")
     monkeypatch.setenv("ISSUE_NUMBER", "42")
     monkeypatch.setenv("BRANCH", "barrot/task-42")
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
