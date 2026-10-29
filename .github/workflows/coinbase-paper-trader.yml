@@ -2,8 +2,6 @@ name: Coinbase Paper Trader
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '*/30 * * * *'
 
 jobs:
   trade:
@@ -17,8 +15,41 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - run: python3 scripts/coinbase_paper_trader.py
-      - name: Commit
+      - name: Validate persisted paper position before execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import math
+          import os
+          from pathlib import Path
+
+          state_path = Path("web/paper_trading_state.json")
+          try:
+              state = json.loads(state_path.read_text(encoding="utf-8"))
+          except Exception as exc:
+              raise SystemExit(f"ABORT: cannot validate persisted paper state: {type(exc).__name__}: {exc}")
+
+          try:
+              size = float(state.get("position_size", 0) or 0)
+          except (TypeError, ValueError):
+              raise SystemExit("ABORT: invalid persisted position_size")
+          if not math.isfinite(size) or size < 0:
+              raise SystemExit("ABORT: non-finite or negative persisted position_size")
+
+          if size > 1e-8:
+              product = state.get("position_product")
+              configured = os.environ["PRODUCT_ID"]
+              if not isinstance(product, str) or not product.strip():
+                  raise SystemExit("ABORT: open paper position has no product identity; state preserved")
+              if product != configured:
+                  raise SystemExit(f"ABORT: configured product {configured} does not match open position {product}; state preserved")
+          print("Paper position identity preflight passed.")
+          PY
+      - name: Run guarded paper trader
+        run: python3 scripts/coinbase_paper_trader.py
+      - name: Persist validated paper-trading state
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
