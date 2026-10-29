@@ -50,6 +50,7 @@ jobs:
             tests/test_coinbase_trader.py \
             tests/test_repository_repair.py \
             tests/test_v3_scripts.py \
+            tests/test_barrot_agent_script.py \
             tests/test_external_deploys_require_confirmation.py \
             tests/test_deploy_databricks.py \
             tests/test_defensive_runtime.py \
