@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T11:04:30Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1104-MAIN-SIGNAL-AND-SAFETY-PRS",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1104-main-signal-and-safety-prs.json",
-    "snapshot_blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
-    "snapshot_commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd"
+    "captured_at_utc": "2026-10-29T11:07:45Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1107-FOMC-ETF-PAPER-TRADER",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+    "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
+    "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997"
   },
   "sources": [
     {
@@ -7202,6 +7202,87 @@
       "published_at": "2026-10-29T11:03:14Z",
       "accessed_at_utc": "2026-10-29T11:04:30Z",
       "note": "Fresh-main draft proposal replaces directional narration for invalid/unavailable signals with NOT_ISSUED behavior and removes scheduled summary workflow push-to-main behavior. Not merged."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-STATE-20261029T1107Z",
+      "evidence_class": "CONFIRMED_REPOSITORY_ARTIFACT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Current Coinbase paper-trading state",
+      "published_at": "2026-10-29T11:04:23Z",
+      "accessed_at_utc": "2026-10-29T11:07:45Z",
+      "note": "cash_usd 9009.9366, position_size 0.0124451585, position_product null, avg_entry_price 80436.84, trade_count 126. The open simulated position has no product identity; state was not modified in this run."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-LOG-20261029T1107Z",
+      "evidence_class": "CONFIRMED_REPOSITORY_COMMIT_DIFF",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/93ebf983d803b567c88d9026dc64f02732203e4b",
+      "title": "Latest scheduled paper-trading log append",
+      "published_at": "2026-10-29T11:04:23Z",
+      "accessed_at_utc": "2026-10-29T11:07:45Z",
+      "note": "Commit message Paper trade cycle [skip ci]; appended a BTC-USD sell of 998 USD at 80121.27. It is simulated, not a real-money transaction. The state product identity remained null."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1107Z",
+      "evidence_class": "CONFIRMED_REPOSITORY_WORKFLOW",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml",
+      "title": "Scheduled Coinbase paper-trader workflow",
+      "published_at": "2026-10-29T11:04:14Z",
+      "accessed_at_utc": "2026-10-29T11:07:45Z",
+      "note": "Workflow schedules every 30 minutes and commits/pushes the paper state/log to main. No state identity preflight exists on main."
+    },
+    {
+      "id": "SRC-GH-PR1306-CI-20261029T1107Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862852994",
+      "title": "PR #1306 exact-head core CI",
+      "published_at": "2026-10-29T11:06:53Z",
+      "accessed_at_utc": "2026-10-29T11:07:45Z",
+      "note": "Core CI passed for exact head 7f91e917eee5bd02499d0dfa3835da277dd05758."
+    },
+    {
+      "id": "SRC-GH-PR1306-GATE-20261029T1107Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862853088",
+      "title": "PR #1306 fail-closed gate",
+      "published_at": "2026-10-29T11:06:53Z",
+      "accessed_at_utc": "2026-10-29T11:07:45Z",
+      "note": "Fail-closed gate passed for exact head 7f91e917eee5bd02499d0dfa3835da277dd05758. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1306-20261029T1107Z",
+      "evidence_class": "CONFIRMED_PULL_REQUEST_STATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1306",
+      "title": "Draft PR #1306 pause scheduled paper trader and validate identity",
+      "published_at": "2026-10-29T11:06:49Z",
+      "accessed_at_utc": "2026-10-29T11:07:45Z",
+      "note": "Fresh-main proposal removes the schedule, keeps manual dispatch, adds preflight and script guards, and tests fail-closed behavior. It is draft/unmerged; main's scheduled workflow remains active until approval and merge."
+    },
+    {
+      "id": "SRC-FED-FOMC-STATEMENT-20261028",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "title": "FOMC statement, October 28 2026",
+      "published_at": "2026-10-28",
+      "accessed_at_utc": "2026-10-29T11:07:45Z",
+      "note": "FOMC held target range at 3.75%-4.00% on a 10-2 vote; Lisa Cook and Beth Hammack dissented in favor of a 25 bp hike. Statement says activity is strong, inflation elevated, uncertainty remains elevated partly due to geopolitics. This is macro context, not a direct XRP signal."
+    },
+    {
+      "id": "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF flows, updated October 29 2026",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-29T11:07:45Z",
+      "note": "Five-fund US spot series reports zero net flow for Oct 28, +90.4M USD over 30 sessions, and Oct 28 XRP close 1.3309. Secondary aggregator data; fund coverage differs from XRP Insights."
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029",
+      "evidence_class": "SECONDARY_DATA_FROM_ISSUER_HOLDINGS",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP Insights issuer-holdings flow dataset, as of October 27 2026",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-29T11:07:45Z",
+      "note": "Tracks six spot ETFs plus BITW; reports -3,132,685 XRP net flow across Oct 26-27 and labels Oct 28 provisional until issuer holdings settle. Universe, units and cutoff differ from Alpha Finance; do not average the figures."
     }
   ],
   "limitations": [
@@ -7411,7 +7492,8 @@
     "The exact original context of 'SBIC, ChatGPT SBIC' remains unresolved. Official East and West Japan SME investment/consultation companies both publish ChatGPT/generative-AI training material, but this does not prove which entity the phrase refers to or establish an OpenAI/XRP partnership.",
     "Circle's Arc launch announcement names SBI Group in a founding validator cohort with phased rollout; current active validation by SBI is not independently verified in this review.",
     "Arc/Coinbase/SBI relationship announcements do not disclose actual Arc transaction volume, SBI validator activity/revenue, route-level XRP displacement, or causal XRP price impact. These relationships must not be admitted as directional model features without realized activity and matched controls.",
-    "Current main still has an invalid XRP signal/summary mismatch and mutation-capable merge queue. PRs #1304 and #1305 pass exact-head CI/gates but remain draft/unmerged; the main-branch defects are not fixed until approved changes are merged. Full paper-trading replay, synchronized XRP market panel, original SBIC/ASK Coin/actual capital context, canonical Camilla Stephenson identity, exhaustive public-video inventory and live nine-platform handoffs remain unresolved."
+    "Current main still has an invalid XRP signal/summary mismatch and mutation-capable merge queue. PRs #1304 and #1305 pass exact-head CI/gates but remain draft/unmerged; the main-branch defects are not fixed until approved changes are merged. Full paper-trading replay, synchronized XRP market panel, original SBIC/ASK Coin/actual capital context, canonical Camilla Stephenson identity, exhaustive public-video inventory and live nine-platform handoffs remain unresolved.",
+    "Latest paper-trader state still has a nonzero position with null product identity; scheduled main workflow continues to write state until PR #1306 is approved and merged. The full historical paper-trading replay remains blocked by unavailable full-log retrieval. ETF flow proxies remain non-comparable due to differing fund universes, units and settlement status; no market feature admitted."
   ],
   "run_updates": [
     {
@@ -12509,6 +12591,89 @@
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T11:07:45Z",
+      "update_type": "FOMC_ETF_FLOW_RECONCILIATION_AND_PAPER_TRADER_GUARD",
+      "source_ids": [
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1107Z",
+        "SRC-GH-MAIN-PAPER-LOG-20261029T1107Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1107Z",
+        "SRC-GH-PR1306-CI-20261029T1107Z",
+        "SRC-GH-PR1306-GATE-20261029T1107Z",
+        "SRC-GH-PR1306-20261029T1107Z",
+        "SRC-FED-FOMC-STATEMENT-20261028",
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "summary": "Added official October 28 FOMC statement and reconciled the methodological disagreement between Alpha Finance's five-fund dollar ETF series and XRP Insights' six-spot-plus-BITW XRP-unit series. Neither was admitted as a feature. Live main advanced to 93ebf983d803b567c88d9026dc64f02732203e4b via a scheduled paper-trading commit that sold $998 BTC-USD while position_product remained null. Created fresh-main PR #1306 to remove the schedule and fail closed on identity mismatch; exact-head CI and gate passed. PR remains draft/unmerged.",
+      "main_sha": "93ebf983d803b567c88d9026dc64f02732203e4b",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+        "blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
+        "commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
+        "characters": 9295
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+        "blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
+        "commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
+        "new_edges": 5,
+        "new_competing_hypotheses": 3
+      },
+      "pr1304": {
+        "head": "2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0",
+        "ci_run": 40862244495,
+        "ci_status": "PASS",
+        "gate_run": 40862244472,
+        "gate_status": "PASS",
+        "state": "DRAFT_OPEN_UNMERGED",
+        "main_behind": 1,
+        "intervening_commit_paths": [
+          "web/paper_trading_log.jsonl",
+          "web/paper_trading_state.json"
+        ]
+      },
+      "pr1305": {
+        "head": "2a7afe9e43fe454252059002be32c165a73611ec",
+        "ci_run": 40862374966,
+        "ci_status": "PASS",
+        "gate_run": 40862375082,
+        "gate_status": "PASS",
+        "state": "DRAFT_OPEN_UNMERGED",
+        "main_behind": 1,
+        "intervening_commit_paths": [
+          "web/paper_trading_log.jsonl",
+          "web/paper_trading_state.json"
+        ]
+      },
+      "pr1306": {
+        "head": "7f91e917eee5bd02499d0dfa3835da277dd05758",
+        "ci_run": 40862852994,
+        "ci_status": "PASS",
+        "gate_run": 40862853088,
+        "gate_status": "PASS",
+        "state": "DRAFT_OPEN_UNMERGED",
+        "base_sha": "93ebf983d803b567c88d9026dc64f02732203e4b"
+      },
+      "paper_trader_state": {
+        "position_size": 0.012445158497236623,
+        "position_product": null,
+        "avg_entry_price": 80436.84,
+        "trade_count": 126,
+        "cash_usd": 9009.936613782476,
+        "last_action": "sell $998 BTC-USD at $80121.27",
+        "timestamp": "2026-10-29T11:04:23.250470+00:00"
+      },
+      "market_observations": 0,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false,
+      "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
     }
   ],
   "mission_priority": {
@@ -12736,9 +12901,75 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "9b9fb3422ea5fd44fe8f0df8920fb3cf16db7b20",
-  "current_research_head_this_run": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
+  "current_research_head_before_ledger_update": "f3f0a5d97da2daa446e6eb7dda68b182b7c5ecaa",
+  "current_research_head_this_run": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
   "current_research_checks": {
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
+    "latest_main_sha": "93ebf983d803b567c88d9026dc64f02732203e4b",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+    "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
+    "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
+    "snapshot_characters": 9295,
+    "snapshot_character_metric_matches": true,
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+    "graph_addendum_blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
+    "graph_addendum_commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
+    "graph_addendum_readback_ok": true,
+    "source_reference_count": 9,
+    "missing_source_references": 0,
+    "source_ids_unique": true,
+    "relationship_edges": 215,
+    "competing_hypotheses": 123,
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "real_money_trade": false,
+    "paper_trading_state_mutated": false,
+    "pr1304": {
+      "head": "2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0",
+      "ci": "PASS",
+      "gate": "PASS",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "main_behind": 1
+    },
+    "pr1305": {
+      "head": "2a7afe9e43fe454252059002be32c165a73611ec",
+      "ci": "PASS",
+      "gate": "PASS",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "main_behind": 1
+    },
+    "pr1306": {
+      "head": "7f91e917eee5bd02499d0dfa3835da277dd05758",
+      "ci": "PASS",
+      "gate": "PASS",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "main_base_sha": "93ebf983d803b567c88d9026dc64f02732203e4b"
+    },
+    "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PROPOSAL_PASS; MAIN_STILL_SCHEDULED",
+    "verified_at_utc": "2026-10-29T11:07:45Z"
+  },
+  "ledger_metrics": {
+    "source_records": 894,
+    "run_updates": 169,
+    "limitations": 208,
+    "relationship_edges": 215,
+    "competing_hypotheses": 123,
+    "market_observations": 78,
+    "index_format_version": "2.0",
+    "index_characters_before_compaction": 989081,
+    "embedded_latest_snapshot_characters_removed": 462600,
+    "local_validator_tests_passed": 6,
+    "latest_research_addendum_observations": 0,
+    "index_characters_before_this_update": 866126,
+    "prior_index_characters_before_compaction": 989081,
+    "latest_snapshot_characters": 9295,
+    "index_characters": 877410
+  },
+  "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; FORECAST_NOT_ISSUED",
     "latest_main_sha": "8e34859a5fb16b20b78e0906466be805d0d14353",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1104-main-signal-and-safety-prs.json",
@@ -12784,80 +13015,32 @@
     "missing_snapshot_source_references": 0,
     "missing_graph_source_references": 0
   },
-  "ledger_metrics": {
-    "source_records": 885,
-    "run_updates": 168,
-    "limitations": 207,
-    "relationship_edges": 210,
-    "competing_hypotheses": 120,
-    "market_observations": 78,
-    "index_format_version": "2.0",
-    "index_characters_before_compaction": 989081,
-    "embedded_latest_snapshot_characters_removed": 462600,
-    "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 857058,
-    "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 8009,
-    "index_characters": 866126
-  },
-  "previous_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; ARC_SBI_COINBASE_RELATIONSHIPS_RECORDED; FORECAST_NOT_ISSUED",
-    "latest_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1017-circle-arc-sbi-coinbase.json",
-    "snapshot_blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
-    "snapshot_commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
-    "snapshot_characters": 6942,
-    "snapshot_character_metric_matches": true,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
-    "graph_addendum_blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
-    "graph_addendum_commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
-    "graph_addendum_readback_ok": true,
-    "source_reference_count": 7,
-    "missing_source_references": 0,
-    "source_ids_unique": true,
-    "relationship_edges": 205,
-    "competing_hypotheses": 118,
-    "forecast_status": "NOT_ISSUED",
-    "market_features_admitted": false,
-    "main_modified_by_this_run": false,
-    "merge_performed": false,
-    "force_push": false,
-    "deployment_executed": false,
-    "real_money_trade": false,
-    "paper_trading_state_mutated": false,
-    "verified_at_utc": "2026-10-29T10:17:43Z"
-  },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T11:04:30Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T11:07:45Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
-      "snapshot_commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
-      "snapshot_characters": 8009,
-      "source_reference_count": 10,
+      "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
+      "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
+      "snapshot_characters": 9295,
+      "source_reference_count": 9,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
-      "graph_addendum_blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
-      "graph_addendum_commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+      "graph_addendum_blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
+      "graph_addendum_commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
       "graph_addendum_readback_ok": true,
       "graph_edges": 5,
-      "graph_hypotheses": 2,
+      "graph_hypotheses": 3,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
-      "index_pointer_status": "PASS",
+      "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "real_money_trade": false,
-      "index_blob_sha_at_readback": "abb794646ce82646214a31a1608abd9119c603b7",
-      "index_commit_sha_at_readback": "b7678bab85a62fff457a50aa49e6d679efbcb753",
-      "index_character_count_match": true,
-      "index_metric_count_match": true,
-      "missing_snapshot_source_references": 0
+      "paper_trading_state_mutated": false
     }
   },
   "index_format_version": "2.0",
@@ -12906,50 +13089,59 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T11:04:30Z",
-    "focus": "Current main XRP signal invalidity and fresh-main safety PR verification",
+    "recorded_at_utc": "2026-10-29T11:07:45Z",
+    "focus": "FOMC macro event, XRP ETF-flow universe reconciliation and paper-trader identity guard",
     "source_ids": [
-      "SRC-GH-MAIN-HEAD-20261029T1104Z",
-      "SRC-GH-MAIN-SIGNAL-20261029T1104Z",
-      "SRC-GH-MAIN-SUMMARY-20261029T1104Z",
-      "SRC-GH-MAIN-MERGE-QUEUE-20261029T1104Z",
-      "SRC-GH-PR1304-CI-20261029T1104Z",
-      "SRC-GH-PR1304-GATE-20261029T1104Z",
-      "SRC-GH-PR1305-CI-20261029T1104Z",
-      "SRC-GH-PR1305-GATE-20261029T1104Z",
-      "SRC-GH-PR1304-CI-INITIAL-FAIL-20261029T1101Z",
-      "SRC-GH-PR1305-PROPOSAL-20261029T1104Z"
+      "SRC-GH-MAIN-PAPER-STATE-20261029T1107Z",
+      "SRC-GH-MAIN-PAPER-LOG-20261029T1107Z",
+      "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1107Z",
+      "SRC-GH-PR1306-CI-20261029T1107Z",
+      "SRC-GH-PR1306-GATE-20261029T1107Z",
+      "SRC-GH-PR1306-20261029T1107Z",
+      "SRC-FED-FOMC-STATEMENT-20261028",
+      "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
+      "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
-      "blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
-      "commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+      "blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
+      "commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
       "new_edges": 5,
-      "new_competing_hypotheses": 2
+      "new_competing_hypotheses": 3
     },
     "market_observations": 0,
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:17:43Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T11:04:30Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; ARC_SBI_COINBASE_RELATIONSHIPS_RECORDED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
-      "snapshot_commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
-      "snapshot_characters": 6942,
-      "source_reference_count": 7,
+      "snapshot_blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
+      "snapshot_commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
+      "snapshot_characters": 8009,
+      "source_reference_count": 10,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
-      "graph_addendum_blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
-      "graph_addendum_commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
+      "graph_addendum_blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
+      "graph_addendum_commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
       "graph_addendum_readback_ok": true,
-      "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
+      "graph_edges": 5,
+      "graph_hypotheses": 2,
+      "missing_graph_source_references": 0,
+      "source_ids_unique": true,
+      "index_pointer_status": "PASS",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
-      "merge_performed": false
+      "merge_performed": false,
+      "real_money_trade": false,
+      "index_blob_sha_at_readback": "abb794646ce82646214a31a1608abd9119c603b7",
+      "index_commit_sha_at_readback": "b7678bab85a62fff457a50aa49e6d679efbcb753",
+      "index_character_count_match": true,
+      "index_metric_count_match": true,
+      "missing_snapshot_source_references": 0
     }
   },
   "snapshot_verification_history": [
@@ -13696,7 +13888,33 @@
       "pr1305_ci": "PASS",
       "pr1305_gate": "PASS",
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T11:07:45Z",
+      "verification_type": "FOMC_ETF_FLOW_PAPER_TRADER_GUARD_SNAPSHOT_GRAPH_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+      "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
+      "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
+      "snapshot_characters": 9295,
+      "source_reference_count": 9,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+      "graph_addendum_blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
+      "graph_addendum_commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
+      "graph_addendum_readback_ok": true,
+      "graph_edges": 5,
+      "graph_hypotheses": 3,
+      "missing_graph_source_references": 0,
+      "source_ids_unique": true,
+      "pr1304_ci": "PASS",
+      "pr1304_gate": "PASS",
+      "pr1305_ci": "PASS",
+      "pr1305_gate": "PASS",
+      "pr1306_ci": "PASS",
+      "pr1306_gate": "PASS",
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "9b9fb3422ea5fd44fe8f0df8920fb3cf16db7b20"
+  "current_research_head_before_this_update": "f3f0a5d97da2daa446e6eb7dda68b182b7c5ecaa"
 }
