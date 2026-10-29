@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T11:07:45Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1107-FOMC-ETF-PAPER-TRADER",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
-    "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
-    "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997"
+    "captured_at_utc": "2026-10-29T12:09:30Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1209-PR1307-SBI-DERIVATIVES-ETF",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1209-pr1307-sbi-derivatives-etf-reconciliation.json",
+    "snapshot_blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
+    "snapshot_commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6"
   },
   "sources": [
     {
@@ -7292,6 +7292,166 @@
       "published_at": "2026-10-29T11:06:37Z",
       "accessed_at_utc": "2026-10-29T11:08:45Z",
       "note": "GitHub Actions metadata labels this run as a push event and failed conclusion, while the inspected main version of .github/workflows/barrot-approve-pr.yml declares workflow_dispatch only. The job-list endpoint returned no jobs. Cause is unresolved; do not infer a failed approval or merge."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261029T1209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b60faa26e5859f91beb07f5c778bc7934e99a002",
+      "title": "Current main head and latest paper-trade log append",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Main head b60faa26... is a Paper trade cycle commit at 2026-10-29T12:07:29Z. Its diff appends a hold log row at 11:32:48Z; it does not change paper_trading_state.json. The scheduled workflow is still running and appending logs while the open position identity remains null."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-STATE-20261029T1209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Current persisted paper-trading state",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Readback shows position_size 0.012445158497236623, position_product null, average entry $80,436.84, trade_count 126, and cash $9,009.9366. Simulated position identity is unresolved. State was not modified."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-LOG-20261029T1209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b60faa26e5859f91beb07f5c778bc7934e99a002",
+      "title": "Latest paper-trading log entry in main commit diff",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Latest commit diff appends a simulated BTC-USD hold at $80,061.42 at 2026-10-29T11:32:48.597460Z. It is a hold, not a new position mutation; the log still changes every scheduled cycle."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/coinbase-paper-trader.yml",
+      "title": "Current scheduled paper-trader workflow",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Main workflow still has workflow_dispatch plus schedule cron */30 * * * *, runs scripts/coinbase_paper_trader.py, then commits and pushes paper state/log. Identity guard and schedule removal exist only in unmerged PR branches."
+    },
+    {
+      "id": "SRC-GH-MAIN-XRP-SIGNAL-20261029T1209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Current public XRP signal artifact",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Signal timestamp 2026-10-29T11:21:29.855688Z; score 44, confidence 0.0, news score 88 from 11 entries. Source string explicitly reports missing GitHub model credentials and Groq HTTP 429. Not a valid forecast."
+    },
+    {
+      "id": "SRC-GH-MAIN-XRP-SUMMARY-20261029T1209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "title": "Current public XRP summary artifact",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Summary source timestamp matches the 11:21:29Z signal but still narrates a moderate overall score and bullish/neutral headline set despite confidence 0.0 and provider failure. Summary semantics remain unsafe."
+    },
+    {
+      "id": "SRC-GH-PR1307-20261029T1209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1307",
+      "title": "Fresh-main paper-trader identity guard proposal",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Draft PR #1307 targets main, based on b60faa26..., head 717eb13... . It removes the recurring schedule, preserves manual dispatch, adds preflight and script-level product identity checks, and adds regression tests. Open and unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1307-CI-20261029T1209Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40870843070",
+      "title": "PR #1307 exact-head core CI",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Exact head 717eb13... completed successfully. Job log reports 193 passed and 4 subtests passed in 7.79 seconds. This verifies the proposal branch only, not main."
+    },
+    {
+      "id": "SRC-GH-PR1307-GATE-20261029T1209Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40870843146",
+      "title": "PR #1307 fail-closed gate",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Fail-closed gate completed successfully for exact head 717eb13... . PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1306-CI-20261029T1209Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862852994",
+      "title": "Earlier PR #1306 core CI",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Prior equivalent proposal passed exact-head CI, but its base was 93ebf983..., now behind main by eight generated-artifact commits. Fresh-main successor PR #1307 was created and verified."
+    },
+    {
+      "id": "SRC-GH-PR1306-GATE-20261029T1209Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862853088",
+      "title": "Earlier PR #1306 fail-closed gate",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Prior equivalent proposal's fail-closed gate passed. Historical branch evidence only; current-main fix remains unmerged."
+    },
+    {
+      "id": "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "XRP perpetual futures snapshot, TradRadar",
+      "published_at": "2026-10-29T06:30:00Z",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Reports XRP $1.2961, -2.26% 24h, $1.97B OI across seven exchanges, OI -2.22%, OI-weighted funding +0.0030% per 8h, long/short account ratio 3.69, and at least $5.11M liquidations with $3.91M longs and $1.20M shorts. Dashboard scope and liquidation coverage are partial."
+    },
+    {
+      "id": "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "title": "XRP perpetual futures snapshot, Kodexius",
+      "published_at": "2026-10-29T11:12:00Z",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Reports $815.85M OI across seven contracts, +0.0068% funding per 8h, and $1.27B 24h volume. Not directly comparable with TradRadar's seven-exchange aggregate; contract coverage and aggregation method differ."
+    },
+    {
+      "id": "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF flow series, Oct 28 session",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Five-fund dollar series reports Oct 26 -$3.6M, Oct 27 $0, Oct 28 $0, cumulative 30-session flow +$90.4M, and Oct 28 XRP close $1.3309. Aggregates are dashboard-derived and fund universe is narrower than some other trackers."
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP Insights issuer-holdings flow dataset",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Reports -3,132,685 XRP net flow across Oct 26-27, approximately $4.1M at daily prices, and 1,190,077,145 XRP held Oct 27 including BITW. Tracks six spot ETFs plus BITW; GXRP is excluded from flow totals while a data gap is corrected; Oct 28 row provisional. Approximate aggregate magnitude is close to Alpha's -$3.6M Oct 26 reading but universes and units differ."
+    },
+    {
+      "id": "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "title": "SBI Group, Aplus and Visa announce SBI VISA Crypto Card",
+      "published_at": "2026-05-01",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Official Japanese SBI Holdings release says customers choose BTC, ETH or XRP; card points are automatically exchanged to the selected crypto without a fee, requiring an SBI VC Trade account. Confirms a retail XRP acquisition/reward channel, but no adoption volume or net market impact is disclosed."
+    },
+    {
+      "id": "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "title": "SBI VC Trade and Ripple launch RLUSD handling in Japan",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Official SBI Holdings release says SBI VC Trade and Ripple began handling RLUSD in Japan following Japanese regulatory approval. This is a stablecoin distribution relationship, not evidence of XRP price causality."
+    },
+    {
+      "id": "SRC-COINBASE-Q3-DATE-20261014-CAPTURE-20261029T1209Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "title": "Coinbase Q3 2026 results schedule",
+      "published_at": "2026-10-14",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Coinbase states Q3 results will be published October 29, 2026 after US market close. At this 12:09Z capture, the scheduled release had not yet occurred; do not infer results."
+    },
+    {
+      "id": "SRC-CIRCLE-Q3-DATE-20261007-CAPTURE-20261029T1209Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "title": "Circle Q3 2026 results schedule",
+      "published_at": "2026-10-07",
+      "accessed_at_utc": "2026-10-29T12:09:30Z",
+      "note": "Circle schedules Q3 results for November 4, 2026 at 8:00 a.m. ET. This is a monitoring event, not a directional signal."
     }
   ],
   "limitations": [
@@ -7503,7 +7663,8 @@
     "Arc/Coinbase/SBI relationship announcements do not disclose actual Arc transaction volume, SBI validator activity/revenue, route-level XRP displacement, or causal XRP price impact. These relationships must not be admitted as directional model features without realized activity and matched controls.",
     "Current main still has an invalid XRP signal/summary mismatch and mutation-capable merge queue. PRs #1304 and #1305 pass exact-head CI/gates but remain draft/unmerged; the main-branch defects are not fixed until approved changes are merged. Full paper-trading replay, synchronized XRP market panel, original SBIC/ASK Coin/actual capital context, canonical Camilla Stephenson identity, exhaustive public-video inventory and live nine-platform handoffs remain unresolved.",
     "Latest paper-trader state still has a nonzero position with null product identity; scheduled main workflow continues to write state until PR #1306 is approved and merged. The full historical paper-trading replay remains blocked by unavailable full-log retrieval. ETF flow proxies remain non-comparable due to differing fund universes, units and settlement status; no market feature admitted.",
-    "The Barrot Controlled PR Approval workflow has repeated failed runs labeled event=push on draft-branch commits, while the inspected main workflow declares workflow_dispatch only and the job-list endpoint returns no jobs. Trigger/source mismatch is unresolved and requires workflow-run metadata/log investigation."
+    "The Barrot Controlled PR Approval workflow has repeated failed runs labeled event=push on draft-branch commits, while the inspected main workflow declares workflow_dispatch only and the job-list endpoint returns no jobs. Trigger/source mismatch is unresolved and requires workflow-run metadata/log investigation.",
+    "As of main b60faa26... the recurring paper-trader schedule remains active until approval and merge of PR #1307; the open simulated position still has position_product=null. Full historical log replay remains blocked, although the latest hold row is verified from commit diff. Derivatives snapshots are asynchronous and differ by more than 2x OI because venue/contract coverage is not aligned. ETF-flow aggregates are approximately similar in magnitude but remain non-comparable until issuer-level fund membership, units and settlement status are reconciled. No synchronized XRP market feature was admitted; forecast remains NOT_ISSUED."
   ],
   "run_updates": [
     {
@@ -12698,6 +12859,76 @@
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T12:09:30Z",
+      "update_type": "PR1307_CURRENT_MAIN_SAFETY_VERIFICATION_AND_SBI_DERIVATIVES_ETF_RECONCILIATION",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T1209Z",
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1209Z",
+        "SRC-GH-MAIN-PAPER-LOG-20261029T1209Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1209Z",
+        "SRC-GH-MAIN-XRP-SIGNAL-20261029T1209Z",
+        "SRC-GH-MAIN-XRP-SUMMARY-20261029T1209Z",
+        "SRC-GH-PR1307-20261029T1209Z",
+        "SRC-GH-PR1307-CI-20261029T1209Z",
+        "SRC-GH-PR1307-GATE-20261029T1209Z",
+        "SRC-GH-PR1306-CI-20261029T1209Z",
+        "SRC-GH-PR1306-GATE-20261029T1209Z",
+        "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z",
+        "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z",
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z",
+        "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z",
+        "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z",
+        "SRC-COINBASE-Q3-DATE-20261014-CAPTURE-20261029T1209Z",
+        "SRC-CIRCLE-Q3-DATE-20261007-CAPTURE-20261029T1209Z"
+      ],
+      "summary": "Inspected live main and open PRs first. Main head b60faa26... still has the 30-minute paper-trader schedule and an open nonzero simulated position with position_product=null; latest commit appended a hold log row at 11:32:48Z without changing state. Created fresh-main PR #1307 from b60faa26... by porting the tested identity guard and removing the recurring schedule. Exact-head CI passed 193 tests plus four subtests in 7.79 seconds; fail-closed gate passed. PR remains draft/unmerged, so main is not fixed. Added official SBI VISA Crypto Card evidence that users can choose XRP as the reward asset and SBI VC Trade/Ripple RLUSD Japan launch evidence. Current derivatives OI dashboards differ by more than 2x with different scopes; ETF-flow aggregates are closer in approximate magnitude but still use different universes and settlement status. No feature admitted; forecast NOT_ISSUED.",
+      "main_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1209-pr1307-sbi-derivatives-etf-reconciliation.json",
+        "blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
+        "commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
+        "characters": 15205
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
+        "blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
+        "commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
+        "new_edges": 15,
+        "new_competing_hypotheses": 5
+      },
+      "pr1307": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1307",
+        "branch": "safety/paper-trader-pause-current-main-20261029T1208Z",
+        "head": "717eb13ad61605d037d80c9a193b3e2e19d87423",
+        "base_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
+        "ci_run": 40870843070,
+        "ci_status": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+        "gate_run": 40870843146,
+        "gate_status": "PASS_FAIL_CLOSED",
+        "state": "DRAFT_OPEN_UNMERGED"
+      },
+      "paper_trader_state": {
+        "position_size": 0.012445158497236623,
+        "position_product": null,
+        "avg_entry_price": 80436.84,
+        "trade_count": 126,
+        "cash_usd": 9009.936613782476,
+        "latest_log_entry_timestamp": "2026-10-29T11:32:48.597460Z",
+        "latest_log_action": "hold",
+        "main_schedule_still_active": true
+      },
+      "market_observations": 5,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false,
+      "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
     }
   ],
   "mission_priority": {
@@ -12925,25 +13156,25 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "f3f0a5d97da2daa446e6eb7dda68b182b7c5ecaa",
-  "current_research_head_this_run": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
+  "current_research_head_before_ledger_update": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
+  "current_research_head_this_run": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
-    "latest_main_sha": "93ebf983d803b567c88d9026dc64f02732203e4b",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
-    "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
-    "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
-    "snapshot_characters": 9295,
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS_193_TESTS_PLUS_4_SUBTESTS; PR1307_GATE_PASS; MAIN_STILL_SCHEDULED; FORECAST_NOT_ISSUED",
+    "latest_main_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1209-pr1307-sbi-derivatives-etf-reconciliation.json",
+    "snapshot_blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
+    "snapshot_commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
+    "snapshot_characters": 15205,
     "snapshot_character_metric_matches": true,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
-    "graph_addendum_blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
-    "graph_addendum_commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
+    "graph_addendum_blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
+    "graph_addendum_commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
     "graph_addendum_readback_ok": true,
-    "source_reference_count": 9,
+    "source_reference_count": 19,
     "missing_source_references": 0,
     "source_ids_unique": true,
-    "relationship_edges": 215,
-    "competing_hypotheses": 123,
+    "relationship_edges": 230,
+    "competing_hypotheses": 128,
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
     "main_modified_by_this_run": false,
@@ -12952,62 +13183,53 @@
     "deployment_executed": false,
     "real_money_trade": false,
     "paper_trading_state_mutated": false,
-    "pr1304": {
-      "head": "2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0",
-      "ci": "PASS",
-      "gate": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED",
-      "main_behind": 1
-    },
-    "pr1305": {
-      "head": "2a7afe9e43fe454252059002be32c165a73611ec",
-      "ci": "PASS",
-      "gate": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED",
-      "main_behind": 1
+    "main_paper_trader_schedule": "ACTIVE_UNTIL_APPROVED_MERGE",
+    "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PR1307_PASS_UNMERGED",
+    "pr1307": {
+      "head": "717eb13ad61605d037d80c9a193b3e2e19d87423",
+      "base_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
+      "ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+      "gate": "PASS_FAIL_CLOSED",
+      "state": "DRAFT_OPEN_UNMERGED"
     },
     "pr1306": {
       "head": "7f91e917eee5bd02499d0dfa3835da277dd05758",
       "ci": "PASS",
       "gate": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED",
-      "main_base_sha": "93ebf983d803b567c88d9026dc64f02732203e4b"
+      "state": "DRAFT_OPEN_UNMERGED_STALE_BASE"
     },
-    "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PROPOSAL_PASS; MAIN_STILL_SCHEDULED",
-    "verified_at_utc": "2026-10-29T11:08:45Z",
-    "index_pointer_status": "PASS",
-    "index_blob_sha_at_readback": "615c8df2a04e887082c5ae2e4792e6c05610e38e",
-    "index_commit_sha_at_readback": "bb7f9cedfdb63aef208c948a0dfe5ea7fecc52e1",
-    "index_character_count_match": true,
-    "index_metric_count_match": true,
-    "missing_snapshot_source_references": 0,
-    "missing_graph_source_references": 0,
-    "approval_workflow_event_mismatch": {
-      "run_id": 40862819043,
-      "event": "push",
-      "conclusion": "failure",
-      "jobs_returned": 0,
-      "main_workflow_trigger": "workflow_dispatch_only",
-      "status": "UNRESOLVED_METADATA_OR_TRIGGER_MISMATCH",
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862819043"
-    }
+    "pr1304": {
+      "head": "2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0",
+      "ci": "PASS",
+      "gate": "PASS",
+      "state": "DRAFT_OPEN_UNMERGED_STALE_BASE"
+    },
+    "pr1305": {
+      "head": "2a7afe9e43fe454252059002be32c165a73611ec",
+      "ci": "PASS",
+      "gate": "PASS",
+      "state": "DRAFT_OPEN_UNMERGED_STALE_BASE"
+    },
+    "verified_at_utc": "2026-10-29T12:09:30Z",
+    "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
+    "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
   },
   "ledger_metrics": {
-    "source_records": 895,
-    "run_updates": 170,
-    "limitations": 209,
-    "relationship_edges": 215,
-    "competing_hypotheses": 123,
-    "market_observations": 78,
+    "source_records": 914,
+    "run_updates": 171,
+    "limitations": 210,
+    "relationship_edges": 230,
+    "competing_hypotheses": 128,
+    "market_observations": 83,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 878032,
+    "latest_research_addendum_observations": 5,
+    "index_characters_before_this_update": 881014,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 9295,
-    "index_characters": 881014
+    "latest_snapshot_characters": 15205,
+    "index_characters": 897828
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -13075,36 +13297,35 @@
     }
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T11:07:45Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T12:09:30Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS_193_TESTS_PLUS_4_SUBTESTS; PR1307_GATE_PASS; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
-      "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
-      "snapshot_characters": 9295,
-      "source_reference_count": 9,
+      "snapshot_blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
+      "snapshot_commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
+      "snapshot_characters": 15205,
+      "source_reference_count": 19,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
-      "graph_addendum_blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
-      "graph_addendum_commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
+      "graph_addendum_blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
+      "graph_addendum_commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
       "graph_addendum_readback_ok": true,
-      "graph_edges": 5,
-      "graph_hypotheses": 3,
+      "graph_edges": 15,
+      "graph_hypotheses": 5,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
-      "index_pointer_status": "PASS",
+      "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
       "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
-      "index_blob_sha_at_readback": "615c8df2a04e887082c5ae2e4792e6c05610e38e",
-      "index_commit_sha_at_readback": "bb7f9cedfdb63aef208c948a0dfe5ea7fecc52e1",
-      "index_character_count_match": true,
-      "index_metric_count_match": true,
-      "missing_snapshot_source_references": 0
+      "pr1307_ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+      "pr1307_gate": "PASS_FAIL_CLOSED"
     }
   },
   "index_format_version": "2.0",
@@ -13153,46 +13374,56 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T11:07:45Z",
-    "focus": "FOMC macro event, XRP ETF-flow universe reconciliation and paper-trader identity guard",
+    "recorded_at_utc": "2026-10-29T12:09:30Z",
+    "focus": "PR1307 fresh-main paper-trader guard, SBI XRP retail channel, RLUSD Japan distribution, derivatives coverage conflict and ETF-flow normalization",
     "source_ids": [
-      "SRC-GH-MAIN-PAPER-STATE-20261029T1107Z",
-      "SRC-GH-MAIN-PAPER-LOG-20261029T1107Z",
-      "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1107Z",
-      "SRC-GH-PR1306-CI-20261029T1107Z",
-      "SRC-GH-PR1306-GATE-20261029T1107Z",
-      "SRC-GH-PR1306-20261029T1107Z",
-      "SRC-FED-FOMC-STATEMENT-20261028",
-      "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
-      "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      "SRC-GH-MAIN-HEAD-20261029T1209Z",
+      "SRC-GH-MAIN-PAPER-STATE-20261029T1209Z",
+      "SRC-GH-MAIN-PAPER-LOG-20261029T1209Z",
+      "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1209Z",
+      "SRC-GH-MAIN-XRP-SIGNAL-20261029T1209Z",
+      "SRC-GH-MAIN-XRP-SUMMARY-20261029T1209Z",
+      "SRC-GH-PR1307-20261029T1209Z",
+      "SRC-GH-PR1307-CI-20261029T1209Z",
+      "SRC-GH-PR1307-GATE-20261029T1209Z",
+      "SRC-GH-PR1306-CI-20261029T1209Z",
+      "SRC-GH-PR1306-GATE-20261029T1209Z",
+      "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z",
+      "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z",
+      "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z",
+      "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z",
+      "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z",
+      "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z",
+      "SRC-COINBASE-Q3-DATE-20261014-CAPTURE-20261029T1209Z",
+      "SRC-CIRCLE-Q3-DATE-20261007-CAPTURE-20261029T1209Z"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
-      "blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
-      "commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
-      "new_edges": 5,
-      "new_competing_hypotheses": 3
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
+      "blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
+      "commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
+      "new_edges": 15,
+      "new_competing_hypotheses": 5
     },
-    "market_observations": 0,
+    "market_observations": 5,
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T11:04:30Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T11:07:45Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
-      "snapshot_commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
-      "snapshot_characters": 8009,
-      "source_reference_count": 10,
+      "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
+      "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
+      "snapshot_characters": 9295,
+      "source_reference_count": 9,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
-      "graph_addendum_blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
-      "graph_addendum_commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+      "graph_addendum_blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
+      "graph_addendum_commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
       "graph_addendum_readback_ok": true,
       "graph_edges": 5,
-      "graph_hypotheses": 2,
+      "graph_hypotheses": 3,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
       "index_pointer_status": "PASS",
@@ -13201,8 +13432,9 @@
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "real_money_trade": false,
-      "index_blob_sha_at_readback": "abb794646ce82646214a31a1608abd9119c603b7",
-      "index_commit_sha_at_readback": "b7678bab85a62fff457a50aa49e6d679efbcb753",
+      "paper_trading_state_mutated": false,
+      "index_blob_sha_at_readback": "615c8df2a04e887082c5ae2e4792e6c05610e38e",
+      "index_commit_sha_at_readback": "bb7f9cedfdb63aef208c948a0dfe5ea7fecc52e1",
       "index_character_count_match": true,
       "index_metric_count_match": true,
       "missing_snapshot_source_references": 0
@@ -13978,7 +14210,34 @@
       "pr1306_ci": "PASS",
       "pr1306_gate": "PASS",
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T12:09:30Z",
+      "verification_type": "PR1307_FRESH_MAIN_CI_GATE_AND_SBI_DERIVATIVES_ETF_SNAPSHOT_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1209-pr1307-sbi-derivatives-etf-reconciliation.json",
+      "snapshot_blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
+      "snapshot_commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
+      "snapshot_characters": 15205,
+      "source_reference_count": 19,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
+      "graph_addendum_blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
+      "graph_addendum_commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
+      "graph_addendum_readback_ok": true,
+      "graph_edges": 15,
+      "graph_hypotheses": 5,
+      "missing_graph_source_references": 0,
+      "source_ids_unique": true,
+      "pr1307_head": "717eb13ad61605d037d80c9a193b3e2e19d87423",
+      "pr1307_ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+      "pr1307_ci_run": 40870843070,
+      "pr1307_gate": "PASS_FAIL_CLOSED",
+      "pr1307_gate_run": 40870843146,
+      "main_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
+      "paper_trader_schedule_still_active": true,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "f3f0a5d97da2daa446e6eb7dda68b182b7c5ecaa"
+  "current_research_head_before_this_update": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6"
 }
