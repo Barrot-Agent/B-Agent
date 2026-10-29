@@ -6,7 +6,7 @@ Barrot (Groq) makes a real buy/sell/hold decision against real current prices.
 All positions and cash are SIMULATED. No Coinbase API key used or needed here.
 """
 
-import os, json, urllib.request, urllib.error
+import os, json, math, urllib.request, urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -131,6 +131,9 @@ def validate_position_product(state, product_id):
     except (TypeError, ValueError):
         return "aborted -- invalid position size"
 
+    if not math.isfinite(position_size):
+        return "aborted -- non-finite position size"
+
     if position_size < 0:
         return "aborted -- negative position size"
 
@@ -189,6 +192,13 @@ def portfolio_value(state, current_price):
 
 
 def run():
+    # Validate persisted state before any provider/network call or model invocation.
+    state = load_state()
+    identity_error = validate_position_product(state, PRODUCT_ID)
+    if identity_error:
+        print(identity_error)
+        raise SystemExit(2)
+
     if not GROQ_KEY:
         print("GROQ_API_KEY not set")
         raise SystemExit(1)
@@ -199,12 +209,6 @@ def run():
         raise SystemExit(1)
     current_price = float(ticker["price"])
     recent_trades = fetch_recent_trades(PRODUCT_ID)
-
-    state = load_state()
-    identity_error = validate_position_product(state, PRODUCT_ID)
-    if identity_error:
-        print(identity_error)
-        raise SystemExit(2)
 
     starting_value = portfolio_value(state, current_price)
 
