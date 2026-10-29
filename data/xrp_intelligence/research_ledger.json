@@ -11633,7 +11633,7 @@
   "current_research_head_before_ledger_update": "2e153c86a2849c28cdae08b0962aa68ee5034074",
   "current_research_head_this_run": "b8d7c8f84d65ed7d64235fb035fdc1703c000cd9",
   "current_research_checks": {
-    "status": "SNAPSHOT_AND_GRAPH_CREATED; POINTER_READBACK_PENDING; PR1297_CI_GATE_PASS; PR1298_CI_GATE_PENDING_OR_UNVERIFIED; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; PR1297_CI_GATE_PASS; PR1298_CI_GATE_PENDING_OR_UNVERIFIED; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED",
     "latest_main_sha": "eb4422a5897745ec563303ade106cfd2549eac3c",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0810-market-data-and-fresh-safety-prs.json",
     "snapshot_blob_sha": "2019bb94d1d686723ef910da94062929e19cc2c5",
@@ -11646,9 +11646,9 @@
     "graph_addendum_blob_sha": "3d79de6ad08577cb931378ed77d44d2628f32cfb",
     "graph_addendum_commit_sha": "e16f291f9023d16573096a58a695680129e8e922",
     "graph_addendum_readback_ok": true,
-    "index_pointer_readback_ok": false,
-    "index_character_count_match": false,
-    "index_metric_count_match": false,
+    "index_pointer_readback_ok": true,
+    "index_character_count_match": true,
+    "index_metric_count_match": true,
     "source_ids_unique": true,
     "relationship_edges": 163,
     "competing_hypotheses": 102,
@@ -11659,7 +11659,10 @@
     "merge_performed": false,
     "force_push": false,
     "deployment_executed": false,
-    "real_money_trade": false
+    "real_money_trade": false,
+    "pr1297_ci": "PASS",
+    "pr1297_gate": "PASS",
+    "pr1298_ci_gate": "PENDING_OR_UNVERIFIED"
   },
   "ledger_metrics": {
     "source_records": 821,
@@ -11673,10 +11676,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 6,
-    "index_characters_before_this_update": 773194,
+    "index_characters_before_this_update": 783672,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 35686,
-    "index_characters": 783672
+    "index_characters": 785360
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -11754,30 +11757,34 @@
     "missing_graph_source_references": 0
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T07:07:00.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T08:10:30.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; LATEST_PAPER_ROW_VERIFIED; FULL_REPLAY_BLOCKED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; PR1297_CI_GATE_PASS; PR1298_CI_GATE_PENDING_OR_UNVERIFIED; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
-      "snapshot_commit_sha": "2e153c86a2849c28cdae08b0962aa68ee5034074",
-      "snapshot_characters": 32330,
-      "source_reference_count": 57,
+      "snapshot_blob_sha": "2019bb94d1d686723ef910da94062929e19cc2c5",
+      "snapshot_commit_sha": "b8d7c8f84d65ed7d64235fb035fdc1703c000cd9",
+      "snapshot_characters": 35686,
+      "source_reference_count": 71,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
-      "graph_addendum_blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0810-market-structure-and-safety-prs.json",
+      "graph_addendum_blob_sha": "3d79de6ad08577cb931378ed77d44d2628f32cfb",
+      "graph_addendum_commit_sha": "e16f291f9023d16573096a58a695680129e8e922",
       "graph_addendum_readback_ok": true,
       "index_pointer_readback_ok": true,
       "index_character_count_match": true,
       "index_metric_count_match": true,
       "source_ids_unique": true,
       "forecast_status": "NOT_ISSUED",
-      "index_blob_sha_at_readback": "802d6c8583c868fbe564fc98bafdb921c53c534b",
-      "index_commit_sha_at_readback": "3bacc4e3f86005afab0270cd080a0183f15b068a",
+      "index_blob_sha_at_readback": "25c6e4546db6dc04e9ff6f3aae847d965e693d52",
+      "index_commit_sha_at_readback": "c5f17e63eccebaab581460fcdc2d0d806307776d",
       "missing_index_source_references": 0,
-      "verified_source_records": 807,
-      "verified_run_updates": 153,
-      "verified_limitations": 190
+      "verified_source_records": 821,
+      "verified_run_updates": 154,
+      "verified_limitations": 193,
+      "verified_relationship_edges": 163,
+      "verified_competing_hypotheses": 102,
+      "verified_market_observations": 78
     }
   },
   "index_format_version": "2.0",
@@ -12324,6 +12331,30 @@
       "source_ids_unique": true,
       "missing_snapshot_source_references": 0,
       "missing_graph_source_references": 0
+    },
+    {
+      "recorded_at_utc": "2026-10-29T08:10:30.000Z",
+      "verification_type": "XRP_DERIVATIVES_ETF_FLOW_AND_FRESH_SAFETY_PR_SNAPSHOT_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0810-market-data-and-fresh-safety-prs.json",
+      "snapshot_blob_sha": "2019bb94d1d686723ef910da94062929e19cc2c5",
+      "snapshot_commit_sha": "b8d7c8f84d65ed7d64235fb035fdc1703c000cd9",
+      "snapshot_characters": 35686,
+      "source_reference_count": 71,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0810-market-structure-and-safety-prs.json",
+      "graph_addendum_blob_sha": "3d79de6ad08577cb931378ed77d44d2628f32cfb",
+      "graph_addendum_commit_sha": "e16f291f9023d16573096a58a695680129e8e922",
+      "graph_addendum_readback_ok": true,
+      "index_pointer_status": "PASS",
+      "index_blob_sha_at_readback": "25c6e4546db6dc04e9ff6f3aae847d965e693d52",
+      "index_character_count_match": true,
+      "index_metric_count_match": true,
+      "source_ids_unique": true,
+      "pr1297_ci": "PASS",
+      "pr1297_gate": "PASS",
+      "pr1298_ci_gate": "PENDING_OR_UNVERIFIED",
+      "forecast_status": "NOT_ISSUED"
     }
   ]
 }
