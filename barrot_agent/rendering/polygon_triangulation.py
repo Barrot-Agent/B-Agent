@@ -1,6 +1,7 @@
 """Dependency-free ear-clipping triangulation for simple planar polygons."""
 from __future__ import annotations
 
+import math
 from typing import Sequence
 
 
@@ -23,7 +24,13 @@ def triangulate_polygon(
         point = vertices[index]
         if len(point) != 3:
             raise ValueError("vertices must have three coordinates")
-        points.append(tuple(float(v) for v in point))
+        try:
+            converted = tuple(float(v) for v in point)
+        except (TypeError, ValueError) as exc:
+            raise ValueError("vertex coordinates must be finite numbers") from exc
+        if not all(math.isfinite(value) for value in converted):
+            raise ValueError("vertex coordinates must be finite numbers")
+        points.append(converted)
 
     # Newell normal; drop the axis with the largest normal component.
     nx = ny = nz = 0.0
