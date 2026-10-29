@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T0910-COINBASE-CIRCLE-ACCURACY-SAFETY",
+  "captured_at_utc": "2026-10-29T09:10:19Z",
+  "observed_main_sha": "9bfb3010d2a28f486af808c90a2a4565e76a5234",
+  "policy": "Company-reported metrics are not treated as independently audited net flows. Stablecoin issuance, exchange distribution and XRPL support do not by themselves establish XRP spot demand. Repository CI verifies proposed code, not main.",
+  "nodes": [
+    {
+      "id": "COINBASE_Q2_2026",
+      "label": "Coinbase Q2 2026 operating disclosures",
+      "kind": "COMPANY_REPORTED_METRICS"
+    },
+    {
+      "id": "CIRCLE_Q2_2026",
+      "label": "Circle Q2 2026 operating disclosures",
+      "kind": "ISSUER_REPORTED_METRICS"
+    },
+    {
+      "id": "USDC",
+      "label": "USD Coin (USDC)",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD (RLUSD)",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP asset",
+      "kind": "CRYPTO_ASSET"
+    },
+    {
+      "id": "COINBASE_Q3_EVENT",
+      "label": "Coinbase Q3 2026 results scheduled after market close Oct 29",
+      "kind": "SCHEDULED_CORPORATE_DISCLOSURE"
+    },
+    {
+      "id": "BARROT_MAIN_ACCURACY",
+      "label": "Main-branch legacy accuracy metric 46.5%",
+      "kind": "INVALID_PERFORMANCE_METRIC"
+    },
+    {
+      "id": "BARROT_PR1300",
+      "label": "PR #1300 fail-closed accuracy evaluation fix",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN50-COINBASE-USDC-ECONOMICS",
+      "source": "COINBASE_Q2_2026",
+      "target": "USDC",
+      "relationship": "DISTRIBUTION_AND_ECONOMIC_INTEREST",
+      "evidence_class": "OFFICIAL_COMPANY_EARNINGS_RELEASE",
+      "claim": "Coinbase reported 10.3% crypto trading-volume market share in Q2 2026, average USDC held in Coinbase products of $20B, and approximately 50% of USDC economics captured over the prior year. These are company-reported metrics with different denominators; they do not imply ownership of 50% of USDC supply or XRP capital inflows.",
+      "source_ids": [
+        "SRC-COINBASE-Q2-2026",
+        "SRC-RUN50-20261029T0910Z-MAIN-HEAD"
+      ]
+    },
+    {
+      "id": "EDGE-RUN50-CIRCLE-USDC-ISSUANCE-AND-VOLUME",
+      "source": "CIRCLE_Q2_2026",
+      "target": "USDC",
+      "relationship": "ISSUER_AND_REPORTED_NETWORK_METRICS",
+      "evidence_class": "OFFICIAL_ISSUER_EARNINGS_RELEASE",
+      "claim": "Circle reported $73.3B USDC in circulation and $14.8T Q2 onchain transaction volume, alongside $701M total revenue and reserve income. Circulation is a stock and transaction volume is gross activity; neither is net capital inflow or XRP demand.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-RESULTS-2026-08-05"
+      ]
+    },
+    {
+      "id": "EDGE-RUN50-COINBASE-RLUSD-DISTRIBUTION",
+      "source": "COINBASE_Q2_2026",
+      "target": "RLUSD",
+      "relationship": "DISTRIBUTION_LISTING_ON_COINBASE",
+      "evidence_class": "OFFICIAL_COMPANY_AND_ISSUER_ANNOUNCEMENT",
+      "claim": "Coinbase announced RLUSD availability on Coinbase Prime, Coinbase Exchange and retail, with supported networks including XRPL, Base and Ethereum. Coinbase Global Exchange collateral support was described as a future rollout at announcement time, not confirmed live collateral usage.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH"
+      ]
+    },
+    {
+      "id": "EDGE-RUN50-RLUSD-XRPL-NOT-XRP-DEMAND",
+      "source": "RLUSD",
+      "target": "XRPL",
+      "relationship": "SUPPORTED_NETWORK_WITHOUT_PROVEN_XRP-BRIDGE-DEMAND",
+      "evidence_class": "OFFICIAL_PRODUCT_ANNOUNCEMENT_WITH_CAUSAL_LIMITATION",
+      "claim": "RLUSD support on XRPL can expand stablecoin utility on that network, but it does not prove transactions route through XRP, create net XRP spot purchases, or use XRP as collateral. Require path-payment, DEX, order-book, fee and venue-level evidence before asserting XRP demand.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH",
+        "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-PRODUCT"
+      ]
+    },
+    {
+      "id": "EDGE-RUN50-COINBASE-Q3-SCHEDULE",
+      "source": "COINBASE_Q2_2026",
+      "target": "COINBASE_Q3_EVENT",
+      "relationship": "SCHEDULED_RESULTS_DISCLOSURE",
+      "evidence_class": "OFFICIAL_INVESTOR_RELATIONS_SCHEDULE",
+      "claim": "Coinbase Q3 2026 results are scheduled for Oct 29 after the US market close. At the 09:10 UTC cutoff, results were not yet available; no post-release result is inferred.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-28T1111Z",
+        "SRC-RUN50-20261029T0910Z-MAIN-HEAD"
+      ]
+    },
+    {
+      "id": "EDGE-RUN50-INVALID-ACCURACY-PR1300",
+      "source": "BARROT_MAIN_ACCURACY",
+      "target": "BARROT_PR1300",
+      "relationship": "FAIL-CLOSED-REPLACEMENT-PROPOSED",
+      "evidence_class": "REPOSITORY_AND_CI_OBSERVATION",
+      "claim": "Main still exposes 1,659/772/46.5% from a variable-horizon evaluator that mutates history. PR #1300 changes the current status to NOT_EVALUATED, preserves the old number as NOT_COMPARABLE, makes the workflow read-only/artifact-only and updates consumers. CI/gate passed on the initial PR head, but a follow-up commit means current-head CI/gate must be reverified. PR remains draft/unmerged; main is not fixed.",
+      "source_ids": [
+        "SRC-RUN50-20261029T0910Z-MAIN-ACCURACY",
+        "SRC-RUN50-20261029T0910Z-MAIN-ACCURACY-WORKFLOW",
+        "SRC-RUN50-20261029T0910Z-PR1300-PR",
+        "SRC-RUN50-20261029T0910Z-PR1300-CI",
+        "SRC-RUN50-20261029T0910Z-PR1300-GATE"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN50-COINBASE-MULTISTABLECOIN-ADDITIVE",
+      "statement": "Coinbase's RLUSD distribution may be additive to its USDC ecosystem rather than a direct replacement.",
+      "status": "COMPETING_HYPOTHESIS",
+      "supporting_evidence": [
+        "Coinbase reports material USDC distribution economics while also listing RLUSD.",
+        "RLUSD availability spans multiple networks."
+      ],
+      "disconfirming_evidence": [
+        "Sustained RLUSD growth paired with falling Coinbase USDC balances or volume share would support displacement.",
+        "Product placement, incentives and venue-level liquidity changes could reveal a competitive shift."
+      ],
+      "unknowns": [
+        "Coinbase balances and trading volume by stablecoin and network",
+        "Whether RLUSD collateral support actually launched and at what scale"
+      ]
+    },
+    {
+      "id": "HYP-RUN50-STABLECOIN-ACTIVITY-TO-XRP-DEMAND",
+      "statement": "USDC/RLUSD growth may expand onchain dollar activity without proportionate XRP spot demand.",
+      "status": "COMPETING_HYPOTHESIS",
+      "supporting_evidence": [
+        "Stablecoins can settle directly without using XRP as an intermediate asset.",
+        "Current issuer metrics are gross circulation/volume measures, not XRP flows."
+      ],
+      "disconfirming_evidence": [
+        "Sustained growth in XRP-routed payments, XRP/fiat and XRP/stablecoin depth, XRPL DEX activity and independently reconciled net purchases would strengthen a causal link."
+      ],
+      "unknowns": [
+        "XRPL path-payment share through XRP",
+        "Net exchange inflows/outflows and order-book depth attributable to the stablecoin integrations"
+      ]
+    },
+    {
+      "id": "HYP-RUN50-COINBASE-EARNINGS-INDIRECT-XRP",
+      "statement": "Coinbase Q3 results may affect XRP indirectly through exchange-sector risk appetite and broad crypto beta, but a direct XRP causal link is unproven.",
+      "status": "COMPETING_HYPOTHESIS",
+      "supporting_evidence": [
+        "Coinbase is a major exchange and stablecoin distribution venue; results are a scheduled information event."
+      ],
+      "disconfirming_evidence": [
+        "An event study controlling for BTC, ETH, market-wide volatility and contemporaneous macro events may find no XRP-specific residual response."
+      ],
+      "unknowns": [
+        "Actual Q3 disclosures and subsequent event-window returns at synchronized timestamps"
+      ]
+    }
+  ],
+  "notes": [
+    "Confirmed company/issuer disclosures are kept separate from inferred causal relationships.",
+    "Coinbase Q2 average USDC held and Circle quarter-end USDC circulation are not directly comparable denominators.",
+    "No stablecoin metric was admitted as an XRP directional feature in this run.",
+    "DESIGNED, EXECUTED and VERIFIED remain distinct; no live cross-platform collaboration is claimed.",
+    "Current main retains the invalid public accuracy artifact and mutation-capable workflows until approved fixes are merged."
+  ]
+}
