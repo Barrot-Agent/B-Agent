@@ -78,44 +78,68 @@
       "source_class": "PUBLIC_VIDEO_INDEX_CANDIDATE",
       "index_url": "https://glasp.co/youtube/rv0BAV0vLgo",
       "video_url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
-      "published_at": "2026-03-19",
+      "published_at": {
+        "youtube": "2026-03-18",
+        "glasp_index": "2026-03-19"
+      },
       "title": "How Much XRP Do You ACTUALLY Need?",
       "creator_label": "Kamilah Stevenson",
       "claim_type": "creator commentary; not independent market evidence",
-      "status": "direct YouTube availability and channel ownership not exhaustively verified"
+      "status": "direct YouTube availability and channel ownership not exhaustively verified",
+      "index_metadata": {
+        "youtube_views_at_search": 98410,
+        "channel_followers_at_search": 139000,
+        "source": "direct YouTube result"
+      }
     },
     {
       "candidate_id": "Q-CAMILA-RIPPLE-BANK-20251214",
       "source_class": "PUBLIC_VIDEO_INDEX_CANDIDATE",
       "index_url": "https://glasp.co/youtube/QslbjGQD0MU",
       "video_url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
-      "published_at": "2025-12-14",
+      "published_at": {
+        "youtube": "2025-12-13",
+        "glasp_index": "2025-12-14"
+      },
       "title": "Ripple Just Became a BANK and Most XRP Holders Have No Idea",
       "creator_label": "Kamilah Stevenson channel candidate; transcript self-introduction spells name Camila Stevenson",
       "claim_type": "creator commentary; not independent regulatory or price evidence",
-      "status": "identity spelling conflict retained"
+      "status": "identity spelling conflict retained",
+      "index_metadata": {
+        "youtube_views_at_search": 76750,
+        "glasp_views_at_search": 76000,
+        "source": "direct YouTube result plus Glasp index"
+      }
     },
     {
       "candidate_id": "Q-KAMILAH-XRP-ETF-20260113",
       "source_class": "PUBLIC_VIDEO_INDEX_CANDIDATE",
       "index_url": "https://glasp.co/youtube/ci0FH73lbCs",
       "video_url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
-      "published_at": "2026-01-13",
+      "published_at": {
+        "glasp_index": "2026-01-13",
+        "youtube_direct_date": "not yet independently checked"
+      },
       "title": "XRP ETFs are here, but something big is happening in the background",
       "creator_label": "Kamilah Stevenson",
       "claim_type": "creator commentary; claims require independent verification",
-      "status": "inventory partial"
+      "status": "inventory partial",
+      "identity_evidence": "Glasp transcript self-introduction says Camila Stevenson; indexed creator label is Kamilah Stevenson."
     },
     {
       "candidate_id": "Q-KAMILAH-CRYPTO-WEALTH-20260115",
       "source_class": "PUBLIC_VIDEO_INDEX_CANDIDATE",
       "index_url": "https://glasp.co/youtube/cxeX_eu_2H0",
       "video_url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
-      "published_at": "2026-01-15",
+      "published_at": {
+        "youtube": "2026-01-14",
+        "glasp_index": "2026-01-15"
+      },
       "title": "Why most people will lose their crypto wealth in the next 3 years",
       "creator_label": "Kamilah Stevenson",
       "claim_type": "creator commentary; not independent market evidence",
-      "status": "inventory partial"
+      "status": "inventory partial",
+      "identity_evidence": "Direct YouTube page labels creator Kamilah Stevenson; transcript self-introduction says Camila Stevenson."
     },
     {
       "candidate_id": "Q-KAMILAH-CHANNEL-IDENTITY",
@@ -134,7 +158,12 @@
       "Camila Stevenson"
     ],
     "status": "UNRESOLVED",
-    "rule": "Do not merge identities without direct channel/profile evidence. This list is a candidate inventory, not an exhaustive enumeration of every public YouTube upload."
+    "rule": "Do not merge identities without direct channel/profile evidence. This list is a candidate inventory, not an exhaustive enumeration of every public YouTube upload.",
+    "date_discrepancies": [
+      "How Much XRP Do You ACTUALLY Need?: YouTube says 2026-03-18; Glasp index says 2026-03-19.",
+      "Ripple Just Became a BANK: YouTube says 2025-12-13; Glasp index says 2025-12-14.",
+      "Why Most People Will Lose Their Crypto Wealth: YouTube says 2026-01-14; Glasp index says 2026-01-15."
+    ]
   },
   "deduplication_notes": [
     "Circle's official USDC transparency dashboard is already represented in the canonical source archive; do not duplicate it.",
