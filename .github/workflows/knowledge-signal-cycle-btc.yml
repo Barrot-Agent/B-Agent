@@ -1,8 +1,6 @@
 name: Knowledge Signal Cycle BTC
 
 on:
-  schedule:
-    - cron: '33 * * * *'
   workflow_dispatch:
 
 permissions:

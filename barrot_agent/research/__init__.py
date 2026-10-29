@@ -35,6 +35,7 @@ from .scientific_discovery import (
     StaticResearchProblemAdapter,
     VerificationIndependence,
     is_scientific_discovery_task,
+    should_route_scientific_discovery,
 )
 from .formal_benchmarks import (
     ANTHROPIC_FLT_IMPORT_CONFIG,
@@ -84,6 +85,7 @@ __all__ = [
     "StaticResearchProblemAdapter",
     "VerificationIndependence",
     "is_scientific_discovery_task",
+    "should_route_scientific_discovery",
     "ANTHROPIC_FLT_IMPORT_CONFIG",
     "AnthropicFermatBenchmarkAdapter",
     "DEFAULT_ANTHROPIC_FLT_ARCHIVE",

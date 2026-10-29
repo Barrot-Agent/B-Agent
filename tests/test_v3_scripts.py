@@ -695,3 +695,12 @@ def test_groq_json_validation_failure_retries_without_response_format(monkeypatc
     assert "response_format" in seen[0]
     assert "response_format" not in seen[1]
 
+
+def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
+    workflow_path = REPO_ROOT / ".github" / "workflows" / "barrot-approve-pr.yml"
+    workflow = workflow_path.read_text(encoding="utf-8")
+
+    assert "base_ref:.base.ref" in workflow
+    assert "head_sha:.head.sha" in workflow
+    assert "head_ref:.head.ref" in workflow
+    assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow

@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 1160,
-    "btc_entries": 1188
+    "xrp_entries": 1208,
+    "btc_entries": 1245
   },
-  "unique_pairs_found": 3156,
+  "unique_pairs_found": 3217,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 206,
+      "cooccurrence_count": 210,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -68,7 +68,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 31,
+      "cooccurrence_count": 33,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -83,7 +83,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 28,
+      "cooccurrence_count": 30,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -576,6 +576,21 @@
       ]
     },
     {
+      "entity_a": "Bitcoin",
+      "entity_b": "SEC",
+      "cooccurrence_count": 9,
+      "example_headlines": [
+        {
+          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
+          "asset": "XRP"
+        },
+        {
+          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "BTC",
       "entity_b": "ETH",
       "cooccurrence_count": 9,
@@ -751,21 +766,6 @@
         },
         {
           "title": "XRP Price to $0.18? Analysts Warn of Drop as Brad Garlinghouse Bets on Ripple's Crypto Winter - Yaho",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Bitcoin",
-      "entity_b": "SEC",
-      "cooccurrence_count": 8,
-      "example_headlines": [
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Can XRP Flip Bitcoin? - 24/7 Wall St.",
           "asset": "XRP"
         }
       ]
@@ -1326,6 +1326,51 @@
       ]
     },
     {
+      "entity_a": "SEC",
+      "entity_b": "U.S. Securities and Exchange Commission",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
+          "asset": "XRP"
+        },
+        {
+          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Comoros",
       "entity_b": "MEXC",
       "cooccurrence_count": 5,
@@ -1611,6 +1656,21 @@
       ]
     },
     {
+      "entity_a": "Nasdaq",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        },
+        {
+          "title": "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "SEC",
       "cooccurrence_count": 4,
@@ -1671,6 +1731,21 @@
       ]
     },
     {
+      "entity_a": "Ethereum",
+      "entity_b": "SEC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
+          "asset": "XRP"
+        },
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "ETF",
       "entity_b": "XRP",
       "cooccurrence_count": 4,
@@ -1701,51 +1776,6 @@
       ]
     },
     {
-      "entity_a": "SEC",
-      "entity_b": "U.S. Securities and Exchange Commission",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "SEC Charges 38 Entities Over False Investment Adviser Filings",
-          "asset": "XRP"
-        },
-        {
-          "title": "SEC Grants Five-Year Exemption For Tokenized Stock Trading Venues",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoRank",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoRank",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "Bitcoin",
       "cooccurrence_count": 4,
@@ -1756,6 +1786,21 @@
         },
         {
           "title": "Ripple\u2019s David Schwartz Says XRP Can Flip Bitcoin. Here\u2019s the $24.50 Math - 24/7 Wall St.",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
+          "asset": "XRP"
+        },
+        {
+          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
           "asset": "XRP"
         }
       ]
@@ -2301,21 +2346,6 @@
       ]
     },
     {
-      "entity_a": "Nasdaq",
-      "entity_b": "XRP",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-          "asset": "XRP"
-        },
-        {
-          "title": "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Ripple",
       "entity_b": "South Korea",
       "cooccurrence_count": 3,
@@ -2447,21 +2477,6 @@
         {
           "title": "Bitwise Updates XRP ETF Prospectus In New SEC Filing",
           "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ethereum",
-      "entity_b": "SEC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "SEC Opens Comment Period On Cboe 3x Bitcoin And Ethereum ETF Proposal",
-          "asset": "XRP"
-        },
-        {
-          "title": "Bitcoin, Ethereum, XRP, Dogecoin Plummet Even as SEC Chair Paul Atkins Sees Crypto Bill Advancing: A",
-          "asset": "BTC"
         }
       ]
     },
@@ -2751,21 +2766,6 @@
       ]
     },
     {
-      "entity_a": "BTC",
-      "entity_b": "MEXC",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "MEXC\u2019s September 2026 Proof of Reserves Reaffirms Full Backing of User Assets, BTC Reserve Ratio Inc",
-          "asset": "XRP"
-        },
-        {
-          "title": "MEXC Releases July\u2013August Security Report: Over 38 Million USDT in Risk-Related Funds Intercepted, F",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "MEXC",
       "entity_b": "XRP",
       "cooccurrence_count": 3,
@@ -2931,6 +2931,21 @@
       ]
     },
     {
+      "entity_a": "Solana",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia",
+          "asset": "XRP"
+        },
+        {
+          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Brad Garlinghouse",
       "entity_b": "SEC",
       "cooccurrence_count": 3,
@@ -3031,6 +3046,21 @@
         },
         {
           "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
+          "asset": "XRP"
+        },
+        {
+          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
           "asset": "XRP"
         }
       ]
@@ -4906,6 +4936,36 @@
         },
         {
           "title": "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        },
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        },
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
           "asset": "XRP"
         }
       ]
@@ -7386,6 +7446,96 @@
       ]
     },
     {
+      "entity_a": "Stripe",
+      "entity_b": "World",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        },
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stripe",
+      "entity_b": "World Money",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        },
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Stripe",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        },
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "World",
+      "entity_b": "World Money",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        },
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "World",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        },
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "World Money",
+      "entity_b": "stablecoins",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "XRP"
+        },
+        {
+          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
       "entity_a": "Singapore",
       "entity_b": "TOKEN2049",
       "cooccurrence_count": 2,
@@ -7701,8 +7851,8 @@
       ]
     },
     {
-      "entity_a": "Solana",
-      "entity_b": "XRP",
+      "entity_a": "Ripple",
+      "entity_b": "Solana",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -7710,7 +7860,7 @@
           "asset": "XRP"
         },
         {
-          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
           "asset": "XRP"
         }
       ]
@@ -8251,6 +8401,51 @@
         },
         {
           "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Seoul",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bulls Eye $100 XRP Surge as Ripple Teases \u2018Special Announcement\u2019 in Seoul - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Seoul",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bulls Eye $100 XRP Surge as Ripple Teases \u2018Special Announcement\u2019 in Seoul - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
           "asset": "XRP"
         }
       ]
@@ -11793,28 +11988,6 @@
     },
     {
       "entity_a": "$1B",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Evernorth",
-      "entity_b": "Nasdaq",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Evernorth",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -18062,72 +18235,6 @@
       ]
     },
     {
-      "entity_a": "Stripe",
-      "entity_b": "World",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Stripe",
-      "entity_b": "World Money",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Stripe",
-      "entity_b": "stablecoins",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "World",
-      "entity_b": "World Money",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "World",
-      "entity_b": "stablecoins",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "World Money",
-      "entity_b": "stablecoins",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Financial Conduct Authority",
       "entity_b": "London",
       "cooccurrence_count": 1,
@@ -22100,17 +22207,6 @@
     },
     {
       "entity_a": "Coinpedia",
-      "entity_b": "Solana",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "Solana",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -26676,17 +26772,6 @@
     },
     {
       "entity_a": "Brazil",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brazil",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -26747,6 +26832,226 @@
       "example_headlines": [
         {
           "title": "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Market",
+      "entity_b": "NY Hedge Fund",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Market",
+      "entity_b": "Relayer",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Market",
+      "entity_b": "RockawayX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Crypto Market",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "NY Hedge Fund",
+      "entity_b": "Relayer",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "NY Hedge Fund",
+      "entity_b": "RockawayX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "NY Hedge Fund",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Relayer",
+      "entity_b": "RockawayX",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Relayer",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "RockawayX",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan Telecom",
+      "entity_b": "KDDI",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan Telecom",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan Telecom",
+      "entity_b": "au PAY",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Japan Telecom",
+      "entity_b": "crypto wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "KDDI",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "KDDI",
+      "entity_b": "au PAY",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "KDDI",
+      "entity_b": "crypto wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "au PAY",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "crypto wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "au PAY",
+      "entity_b": "crypto wallet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Japan Telecom Giant KDDI Integrates Crypto Wallet Into au PAY Mobile App",
           "asset": "XRP"
         }
       ]
@@ -26835,6 +27140,83 @@
       "example_headlines": [
         {
           "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Ecosystem",
+      "entity_b": "Orderly Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Ecosystem",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Ecosystem",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Ecosystem",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Orderly Network",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Orderly Network",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Orderly Network",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
           "asset": "XRP"
         }
       ]
@@ -26950,6 +27332,171 @@
       ]
     },
     {
+      "entity_a": "Arbitrum",
+      "entity_b": "Ethereum",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arbitrum",
+      "entity_b": "Real World Asset Funds",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arbitrum",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Arbitrum",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "Real World Asset Funds",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ethereum",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Real World Asset Funds",
+      "entity_b": "SEC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Real World Asset Funds",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SEC",
+      "entity_b": "WisdomTree",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "WisdomTree Deploys Tokenized Real World Asset Funds Natively On Arbitrum",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "Solana Foundation",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "Solana Validator",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "Testnet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana Foundation",
+      "entity_b": "Solana Validator",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana Foundation",
+      "entity_b": "Testnet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana Validator",
+      "entity_b": "Testnet",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Solana Validator Codebase Tag v2.1.0 Released On Testnet",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Crypto Infrastructure",
       "entity_b": "Kraken",
       "cooccurrence_count": 1,
@@ -27000,6 +27547,193 @@
       "example_headlines": [
         {
           "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "BTC",
+      "entity_b": "Guardian Fund",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC adds another 1,000 BTC to Guardian Fund, strengthening user protection",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Guardian Fund",
+      "entity_b": "MEXC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "MEXC adds another 1,000 BTC to Guardian Fund, strengthening user protection",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "SPAC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "XRPN",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "SPAC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "XRPN",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SPAC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SPAC",
+      "entity_b": "XRPN",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRPN",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "CryptoRank",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "Securities Giant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Securities Giant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Securities Giant",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Securities Giant",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Seoul",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bulls Eye $100 XRP Surge as Ripple Teases \u2018Special Announcement\u2019 in Seoul - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CineCity Studios",
+      "entity_b": "Polymath",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Polymath And CineCity Explore Regulated Tokenized Film Investment Platform",
           "asset": "XRP"
         }
       ]
@@ -27127,29 +27861,7 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "Seoul",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "privacy tools",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Seoul",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
@@ -37241,6 +37953,17 @@
       "example_headlines": [
         {
           "title": "Bitcoin ETFs Draw $524.8 Million As BlackRock And Fidelity Lead",
+          "asset": "BTC"
+        }
+      ]
+    },
+    {
+      "entity_a": "Bitcoin",
+      "entity_b": "U.S. Securities and Exchange Commission",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "SEC\u2019s Crypto Custody Proposal Could Change How Funds Hold Digital Assets",
           "asset": "BTC"
         }
       ]

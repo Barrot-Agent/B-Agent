@@ -40,12 +40,14 @@ from barrot_agent.orchestration.bundle_lifecycle import BundleLifecycleStore, di
 from barrot_agent.research import (
     ScientificDiscoveryController,
     is_scientific_discovery_task,
+    should_route_scientific_discovery,
     select_scientific_problem_adapter,
 )
 
 REPO = os.environ["REPO"]
 TASK = os.environ.get("TASK_BODY", "")
 TITLE = os.environ.get("TASK_TITLE", "Barrot task")
+TASK_MODE = os.environ.get("TASK_MODE", "engineering").strip().lower()
 ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
 MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
@@ -154,6 +156,42 @@ class RepoBrowser:
 
         walk(target, 0)
         return "\n".join(lines[:500])
+
+    def open_file(self, args: dict[str, Any]) -> str:
+        """Read a bounded line range from one repository file."""
+        try:
+            target = self._resolve(args.get("path", ""))
+            start = int(args.get("line_start", 1) or 1)
+            requested_end = int(args.get("line_end", start + 79) or start + 79)
+        except (TypeError, ValueError) as exc:
+            return _tool_error(str(exc))
+        if start < 1 or requested_end < start:
+            return _tool_error("line_start must be >= 1 and line_end must be >= line_start.")
+        if not target.exists() or not target.is_file():
+            return _tool_error(f"repo_browser file does not exist: {args.get('path', '')}")
+        end = min(requested_end, start + 59)
+        try:
+            lines = target.read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError as exc:
+            return _tool_error(f"could not read repository file: {exc}")
+        selected = [
+            f"{index + 1}: {lines[index][:300]}"
+            for index in range(start - 1, min(end, len(lines)))
+        ]
+        rendered = "\n".join(selected)
+        if len(rendered) > 12000:
+            rendered = rendered[:12000] + "\n...[content truncated]"
+        return json.dumps(
+            {
+                "success": True,
+                "path": str(target.relative_to(self.root)),
+                "line_start": start,
+                "line_end": min(end, len(lines)),
+                "total_lines": len(lines),
+                "content": rendered,
+            },
+            sort_keys=True,
+        )
 
     def search(self, args: dict[str, Any]) -> str:
         query = str(args.get("query") or args.get("pattern") or "").strip()
@@ -369,6 +407,7 @@ class ScriptBrain:
         self.tool_funcs = {
             "repo_browser.print_tree": self.repo_browser.print_tree,
             "repo_browser.search": self.repo_browser.search,
+            "repo_browser.open_file": self.repo_browser.open_file,
         }
         self.tools = [
             {
@@ -388,6 +427,22 @@ class ScriptBrain:
             {
                 "type": "function",
                 "function": {
+                    "name": "repo_browser.open_file",
+                    "description": "Read up to 60 lines from a real repository file path; paths must remain inside the repository root.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "path": {"type": "string", "minLength": 1},
+                            "line_start": {"type": "integer", "minimum": 1},
+                            "line_end": {"type": "integer", "minimum": 1, "maximum": 100000},
+                        },
+                        "required": ["path"],
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
                     "name": "repo_browser.search",
                     "description": "Search real repository file paths and file contents with a regex query inside a relative path.",
                     "parameters": {
@@ -396,7 +451,7 @@ class ScriptBrain:
                             "query": {"type": "string", "minLength": 1},
                             "path": {"type": "string"},
                             "recursive": {"type": "boolean"},
-                            "max_results": {"type": "integer", "minimum": 1, "maximum": MAX_SEARCH_RESULTS},
+                            "max_results": {"type": "integer", "minimum": 1, "maximum": max(20, MAX_SEARCH_RESULTS)},
                         },
                         "required": ["query"],
                     },
@@ -420,7 +475,7 @@ class ScriptBrain:
             return _tool_error(f"Tool arguments for {name} must be an object.")
         return self.tool_funcs[name](arguments)
 
-    def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None) -> str:
+    def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None, use_tools: bool | None = None, max_output_tokens: int | None = None) -> str:
         messages: list[dict[str, Any]] = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -428,13 +483,16 @@ class ScriptBrain:
             messages.extend(history)
         messages.append({"role": "user", "content": message})
 
+        tools_enabled = (
+            self.enable_tools if use_tools is None else bool(use_tools) and bool(self.tools)
+        )
         for _ in range(self.max_tool_rounds):
             payload = _groq_payload(
                 messages,
-                tools=self.tools,
-                max_tokens=1024 if not self.enable_tools else 1536,
-                json_mode=not self.enable_tools,
-                reasoning_effort="low" if not self.enable_tools else None,
+                tools=self.tools if tools_enabled else None,
+                max_tokens=max_output_tokens or (1536 if tools_enabled else 1024),
+                json_mode=not tools_enabled,
+                reasoning_effort=None if tools_enabled else "low",
             )
             data = _send_groq_request(payload, request_sender=self.request_sender)
             try:
@@ -653,7 +711,13 @@ def configure_git() -> None:
 
 
 def checkout_branch(branch: str) -> None:
-    result = run(["git", "checkout", "-B", branch], check=False)
+    if not re.fullmatch(r"[A-Za-z0-9._/-]+", branch) or ".." in branch or branch.startswith("-"):
+        raise ValueError("Invalid Barrot task branch name")
+    remote = run(["git", "fetch", "origin", f"+refs/heads/{branch}:refs/remotes/origin/{branch}"], check=False, quiet=True)
+    if remote.returncode == 0:
+        result = run(["git", "checkout", "-B", branch, f"origin/{branch}"], check=False)
+    else:
+        result = run(["git", "checkout", "-B", branch], check=False)
     if result.returncode != 0:
         raise RuntimeError(result.stderr.strip() or f"Unable to checkout branch {branch}")
 
@@ -757,52 +821,58 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         print(result.stderr[:3000])
 
 
-def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[str, Any]) -> dict[str, Any]:
-    def decode_object(candidate: str) -> dict[str, Any]:
-        content = candidate.strip()
-        if content.startswith("```"):
-            content = content.split("\n", 1)[-1]
-            if content.endswith("```"):
-                content = content[:-3].strip()
-        parsed = json.loads(content)
-        if not isinstance(parsed, dict):
-            raise ValueError("Model response must be a JSON object.")
-        return parsed
+def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, Any]:
+    """Commit research evidence to the resumable task branch and open a draft PR."""
+    payload = _work_dict(cycle)
+    latest = write_collaboration_record(payload)
+    cycle_id = re.sub(r"[^A-Za-z0-9._-]", "_", str(payload.get("cycle_id") or "unknown"))
+    per_cycle = latest.parent / f"{cycle_id}.json"
+    paths = [str(latest.relative_to(ROOT)), str(per_cycle.relative_to(ROOT))]
+    staged = run(["git", "add", "--", *paths], check=False)
+    if staged.returncode != 0:
+        raise RuntimeError(staged.stderr.strip() or "Unable to stage scientific-discovery evidence")
+    diff = run(["git", "diff", "--cached", "--quiet"], check=False, quiet=True)
+    commit_sha = run(["git", "rev-parse", "HEAD"], quiet=True).stdout.strip()
+    if diff.returncode == 1:
+        run(["git", "commit", "-m", f"Barrot: persist scientific research cycle {cycle_id}"])
+        run(["git", "push", "--set-upstream", "origin", BRANCH])
+        commit_sha = run(["git", "rev-parse", "HEAD"], quiet=True).stdout.strip()
+    elif diff.returncode != 0:
+        raise RuntimeError("Unable to determine whether scientific-discovery evidence changed")
+    else:
+        remote = run(["git", "rev-parse", f"origin/{BRANCH}"], check=False, quiet=True)
+        if remote.returncode != 0:
+            raise RuntimeError("No new evidence to commit and no remote task branch exists")
 
-    try:
-        return decode_object(raw)
-    except (json.JSONDecodeError, ValueError) as first_error:
-        track = request.get("track") if isinstance(request.get("track"), dict) else {}
-        repair_request = {
-            "task": "Retry the research-track response as compact valid JSON.",
-            "track_id": track.get("track_id", "unknown"),
-            "required_keys": ["findings", "open_questions", "counterarguments", "recommended_checks"],
-            "limits": {
-                "maximum_items_per_array": 3,
-                "maximum_characters_per_item": 300,
-                "all_values_must_be_strings": True,
-            },
-            "invalid_response": raw[:6000],
-            "instruction": (
-                "Preserve the meaning only where it is clear. Do not invent evidence or citations. "
-                "If the original is unusable, return empty arrays and explain uncertainty in open_questions."
-            ),
-        }
-        retry_raw = brain.think(
-            json.dumps(repair_request, sort_keys=True),
-            system=(
-                "Return one syntactically valid JSON object only. Required keys are findings, open_questions, "
-                "counterarguments, recommended_checks; each value must be an array of at most three strings, "
-                "each at most 300 characters. No markdown, no prose outside JSON, no invented evidence."
-            ),
-        )
-        try:
-            return decode_object(retry_raw)
-        except (json.JSONDecodeError, ValueError) as retry_error:
-            raise RuntimeError(
-                "Model returned invalid JSON after one compact retry: "
-                f"{str(retry_error)[:250]}; initial response rejected: {str(first_error)[:250]}"
-            ) from retry_error
+    safe_title = TITLE.replace(chr(96), " ").replace('"', "'").replace("$", " ").replace("\n", " ").replace("\r", " ").strip()[:180] or "Scientific discovery"
+    pr_body = (
+        f"Barrot scientific-discovery evidence for issue #{ISSUE}.\n\n"
+        f"- cycle_id: {cycle_id}\n"
+        f"- problem_id: {payload.get('problem_id')}\n"
+        f"- cycle_status: {payload.get('status')}\n"
+        f"- acceptance_gate_passed: {payload.get('acceptance_gate_passed')}\n"
+        f"- unresolved_questions: {len(payload.get('unresolved_questions', []))}\n\n"
+        "This is an evidence-preserving draft. It makes no claim that the Millennium problem is solved."
+    )
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix="barrot_research_pr_") as tmp_dir:
+        body_path = Path(tmp_dir) / "research_pr_body.md"
+        body_path.write_text(pr_body, encoding="utf-8")
+        result = run_gh([
+            "pr", "create", "--draft", "--repo", REPO,
+            "--title", f"Barrot research: {safe_title}",
+            "--body-file", str(body_path), "--head", BRANCH, "--base", "main",
+        ])
+    combined = (result.stdout + "\n" + result.stderr).lower()
+    if result.returncode != 0 and "already exists" not in combined:
+        raise RuntimeError(result.stderr.strip() or result.stdout.strip() or "Unable to create draft research PR")
+    return {
+        "record_path": str(latest.relative_to(ROOT)),
+        "commit_sha": commit_sha,
+        "remote_persisted": True,
+        "draft_pr": result.stdout.strip() or "existing draft PR",
+    }
+
 
 def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
     payload = _work_dict(cycle)
@@ -823,6 +893,7 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
                 "problem": payload.get("problem", {}),
                 "sources": payload.get("sources", []),
                 "claims": payload.get("claims", []),
+                "evidence": payload.get("evidence", []),
                 "tracks": payload.get("tracks", []),
                 "cross_pollination": payload.get("cross_pollination", []),
                 "convergence_analysis": payload.get("convergence_analysis", {}),
@@ -837,7 +908,7 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
         }
         latest = record_dir / "latest_scientific_discovery.json"
         latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
-        cycle_id = str(payload.get("cycle_id") or "unknown")
+        cycle_id = re.sub(r"[^A-Za-z0-9._-]", "_", str(payload.get("cycle_id") or "unknown"))
         per_cycle = record_dir / f"{cycle_id}.json"
         per_cycle.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
         return latest
@@ -910,30 +981,308 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
     }
     latest = record_dir / "latest_repository_repair.json"
     latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
-    cycle_id = str(cycle_data.get("cycle_id") or "unknown")
+    cycle_id = re.sub(r"[^A-Za-z0-9._-]", "_", str(cycle_data.get("cycle_id") or "unknown"))
     per_cycle = record_dir / f"{cycle_id}.json"
     per_cycle.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
     return latest
 
 
+def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[str, Any]) -> dict[str, Any]:
+    def decode_object(candidate: str) -> dict[str, Any]:
+        content = candidate.strip()
+        if content.startswith("```"):
+            content = content.split("\n", 1)[-1]
+            if content.endswith("```"):
+                content = content[:-3].strip()
+        parsed = json.loads(content)
+        if not isinstance(parsed, dict):
+            raise ValueError("Model response must be a JSON object.")
+        return parsed
+
+    try:
+        return decode_object(raw)
+    except (json.JSONDecodeError, ValueError) as first_error:
+        track = request.get("track") if isinstance(request.get("track"), dict) else {}
+        repair_request = {
+            "task": "Retry the research-track response as compact valid JSON.",
+            "track_id": track.get("track_id", "unknown"),
+            "required_keys": ["findings", "open_questions", "counterarguments", "recommended_checks"],
+            "limits": {
+                "maximum_items_per_array": 3,
+                "maximum_characters_per_item": 300,
+                "all_values_must_be_strings": True,
+            },
+            "invalid_response": raw[:6000],
+            "instruction": (
+                "Preserve the meaning only where it is clear. Do not invent evidence or citations. "
+                "If the original is unusable, return empty arrays and explain uncertainty in open_questions."
+            ),
+        }
+        retry_raw = brain.think(
+            json.dumps(repair_request, sort_keys=True),
+            system=(
+                "Return one syntactically valid JSON object only. Required keys are findings, open_questions, "
+                "counterarguments, recommended_checks; each value must be an array of at most three strings, "
+                "each at most 300 characters. No markdown, no prose outside JSON, no invented evidence."
+            ),
+        )
+        try:
+            return decode_object(retry_raw)
+        except (json.JSONDecodeError, ValueError) as retry_error:
+            raise RuntimeError(
+                "Model returned invalid JSON after one compact retry: "
+                f"{str(retry_error)[:250]}; initial response rejected: {str(first_error)[:250]}"
+            ) from retry_error
+
+
+def build_read_only_audit_snapshot() -> dict[str, Any]:
+    """Collect bounded, read-only Git and Actions evidence for audit-only tasks."""
+    snapshot: dict[str, Any] = {}
+    commands = {
+        "working_tree": ["git", "status", "--short", "--branch"],
+        "head": ["git", "rev-parse", "HEAD"],
+        "recent_history": [
+            "git", "log", "--all", "-n", "30", "--date=short",
+            "--pretty=format:%h|%ad|%d|%s",
+        ],
+        "branch_refs": [
+            "git", "for-each-ref", "--sort=-committerdate",
+            "--format=%(refname:short)|%(objectname:short)|%(committerdate:short)|%(subject)",
+            "refs/heads", "refs/remotes/origin",
+        ],
+        "geometry_checkpoint_vs_main": [
+            "git", "diff", "--stat",
+            "origin/main...origin/barrot/mesh-topology-obj-triangulation-20261024",
+        ],
+        "geometry_checkpoint_vs_fresh_main": [
+            "git", "diff", "--stat",
+            "origin/barrot/mesh-topology-obj-triangulation-20261024...origin/barrot/mesh-topology-fresh-main-20261026-0837",
+        ],
+    }
+    outputs: dict[str, str] = {}
+    for name, args in commands.items():
+        result = run(args, check=False, quiet=True)
+        limit = 1200 if name.startswith("geometry_") else 4000
+        outputs[name] = result.stdout.strip() if name == "branch_refs" else result.stdout.strip()[:limit]
+        if result.returncode != 0:
+            outputs[name] = (
+                f"UNAVAILABLE (exit={result.returncode}): "
+                + (result.stderr.strip()[:1000] or result.stdout.strip()[:1000])
+            )
+    snapshot["working_tree"] = outputs["working_tree"][:1200]
+    snapshot["head"] = outputs["head"][:200]
+    snapshot["recent_history"] = "\\n".join(outputs["recent_history"].splitlines()[:4])
+
+    branch_output = outputs["branch_refs"]
+    relevant_markers = (
+        "mesh-topology", "structural-core", "mmi", "tool-call-resilience",
+        "barrot/task-1167",
+    )
+    if branch_output.startswith("UNAVAILABLE"):
+        snapshot["branch_count"] = None
+        snapshot["relevant_branch_heads"] = branch_output
+    else:
+        branch_lines = branch_output.splitlines()
+        relevant_branches = [
+            line for line in branch_lines
+            if line.split("|", 1)[0] in {"main", "origin/main"}
+            or any(marker in line.split("|", 1)[0].lower() for marker in relevant_markers)
+        ]
+        snapshot["branch_count"] = len(branch_lines)
+        snapshot["relevant_branch_heads"] = relevant_branches[:10]
+    snapshot["geometry_diffs"] = {
+        "checkpoint_vs_main": outputs["geometry_checkpoint_vs_main"],
+        "checkpoint_vs_fresh_main": outputs["geometry_checkpoint_vs_fresh_main"],
+    }
+
+    actions = run_gh(["api", f"repos/{REPO}/actions/runs?per_page=100"])
+    if actions.returncode == 0:
+        try:
+            payload = json.loads(actions.stdout)
+            runs = payload.get("workflow_runs", [])
+            def summarize(item: dict[str, Any]) -> dict[str, Any]:
+                return {
+                    "id": item.get("id"),
+                    "name": item.get("name"),
+                    "path": item.get("path"),
+                    "event": item.get("event"),
+                    "status": item.get("status"),
+                    "conclusion": item.get("conclusion"),
+                    "created_at": item.get("created_at"),
+                    "branch": item.get("head_branch"),
+                    "title": item.get("display_title"),
+                    "url": item.get("html_url"),
+                    "sha": item.get("head_sha"),
+                }
+            recent = [summarize(item) for item in runs[:2]]
+            relevant = [
+                summarize(item) for item in runs
+                if any(token in (
+                    str(item.get("display_title", "")) + " "
+                    + str(item.get("name", "")) + " "
+                    + str(item.get("head_branch", ""))
+                ).lower() for token in ("mesh", "geometry", "triangulation", "tetrahedron", "audit", "barrot agent"))
+            ]
+            snapshot["actions"] = {
+                "total_count": payload.get("total_count"),
+                "recent_runs": recent,
+                "relevant_runs": relevant[:4],
+            }
+        except (TypeError, ValueError, AttributeError) as exc:
+            snapshot["actions"] = {"status": "UNPARSEABLE", "error": type(exc).__name__}
+    else:
+        snapshot["actions"] = {
+            "status": "UNAVAILABLE",
+            "exit_code": actions.returncode,
+            "error": actions.stderr.strip()[:1000],
+        }
+    return snapshot
+
+
+def build_read_only_source_snapshot() -> dict[str, Any]:
+    """Return compact, read-only source excerpts for one-shot audit inference."""
+    specs = [
+        (".github/workflows/barrot-agent.yml", ("workflow_dispatch", "barrot-task", "permissions:", "scripts/barrot_agent.py"), 6),
+        ("barrot_agent/rendering/mesh_topology.py", ("def analyze_mesh_topology", "degenerate_triangles", "is_watertight", "topology_status"), 6),
+        ("barrot_agent/rendering/obj_mesh_loader.py", ("triangulate_polygon", "triangulation", "EAR_CLIPPING"), 6),
+        ("barrot_agent/rendering/polygon_triangulation.py", ("def triangulate_polygon", "convex", "ear"), 6),
+        ("barrot_agent/rendering/quality_metrics.py", ("def _check_geometry", "NOT_ASSESSED", "mesh_vertices is None"), 6),
+        ("tests/test_mesh_topology.py", ("tetrahedron", "degenerate", "nonmanifold"), 4),
+        ("tests/test_obj_mesh_loader.py", ("tetrahedron", "concave", "degenerate_triangles"), 6),
+        ("tests/test_polygon_triangulation.py", ("concave", "area"), 4),
+        ("barrot_agent/orchestration/repository_repair.py", ("def _barrett_autonomous_audit", "report_only", "PATCHING", "COMMITTING", "REMOTE_VERIFICATION"), 6),
+        ("scripts/barrot_agent.py", ("def think(", "def build_read_only_audit_snapshot", "def is_explicit_read_only_audit_task", "READ_ONLY_AUDIT=COMPLETE", "BundleEngineeringController"), 6),
+        ("scripts/barrot_repo_state_manifest.py", ("manifest", "sha256", "source"), 4),
+        ("barrot_agent/repo_state_corroborator.py", ("stale", "missing", "corrobor"), 4),
+        ("barrot_agent/orchestration/bundle_delivery.py", ("checksum", "verify", "def "), 4),
+    ]
+    result: dict[str, Any] = {}
+    total_chars = 0
+    for relative_path, terms, max_lines in specs:
+        path = ROOT / relative_path
+        if not path.is_file():
+            result[relative_path] = {"status": "MISSING"}
+            continue
+        try:
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError as exc:
+            result[relative_path] = {"status": "UNAVAILABLE", "error": type(exc).__name__}
+            continue
+        selected: set[int] = set()
+        for index, line in enumerate(lines):
+            if any(term.casefold() in line.casefold() for term in terms):
+                selected.update(range(max(0, index - 1), min(len(lines), index + 2)))
+        excerpts = sorted(selected)[:max_lines]
+        rendered = "\n".join(f"{index + 1}: {lines[index][:130]}" for index in excerpts)
+        allowance = max(0, 9000 - total_chars)
+        rendered = rendered[:allowance]
+        result[relative_path] = {
+            "status": "READ",
+            "total_lines": len(lines),
+            "excerpt": rendered,
+        }
+        total_chars += len(rendered)
+        if total_chars >= 9000:
+            break
+    test_paths = [
+        "tests/test_mmi_contract.py",
+        "tests/test_mmi_execution.py",
+        "tests/test_mmi_integration.py",
+        "tests/test_verified_bundle_delivery.py",
+        "tests/test_bundle_delivery.py",
+        "tests/test_termux_self_drop.py",
+        "tests/test_external_deploys_require_confirmation.py",
+    ]
+    result["test_file_presence"] = {
+        path: (ROOT / path).is_file() for path in test_paths
+    }
+    return result
+
+
+def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
+    """Recognize tasks that explicitly forbid repository implementation changes."""
+    normalized = f"{title}\n{body}".casefold()
+    return (
+        "audit and recommend only" in normalized
+        and "no implementation changes are authorized by this issue" in normalized
+    )
+
+
 def main() -> None:
+    global MAX_SEARCH_RESULTS
     configure_git()
     checkout_branch(BRANCH)
 
-    if is_scientific_discovery_task(TITLE, TASK):
-        cycle = ScientificDiscoveryController(workspace=ROOT).run(select_scientific_problem_adapter(TITLE, TASK))
+    if should_route_scientific_discovery(TASK_MODE, TITLE, TASK):
+        if not GROQ_KEY:
+            raise SystemExit("GROQ_API_KEY not set; refusing to label metadata-only research as live scientific discovery.")
+        brain = ScriptBrain(enable_tools=False)
+
+        def execute_scientific_track(track):
+            request = {
+                "task": "Analyze this research track using the supplied record only as context.",
+                "track": track.to_dict(),
+                "rules": [
+                    "Do not claim that a theorem is proved, accepted, or independently verified.",
+                    "Do not invent citations, source URLs, experiments, or formal proof results.",
+                    "Separate hypotheses from established source-backed facts.",
+                    "Return concise findings, open questions, counterarguments, and recommended checks.",
+                    "Any model-generated finding is provisional and must remain unverified until separately corroborated.",
+                    "Return no more than three items per array, each no longer than 300 characters.",
+                ],
+                "output_limits": {"items_per_array": 3, "characters_per_item": 300},
+                "output_schema": {
+                    "findings": ["string"],
+                    "open_questions": ["string"],
+                    "counterarguments": ["string"],
+                    "recommended_checks": ["string"],
+                },
+            }
+            raw = brain.think(
+                json.dumps(request, sort_keys=True),
+                system=(
+                    "You are Barrot's scientific research worker. Return one JSON object only with "
+                    "string arrays named findings, open_questions, counterarguments, and recommended_checks. "
+                    "Do not upgrade claim status or represent model output as independent verification. "
+                    "Keep each string under 300 characters and each array to at most three items."
+                ),
+            )
+            parsed = _parse_scientific_track_output(raw, brain, request)
+            return {"provider": f"groq:{MODEL}", "result": parsed}
+
+        cycle = ScientificDiscoveryController(workspace=ROOT).run(
+            select_scientific_problem_adapter(TITLE, TASK),
+            track_executor=execute_scientific_track,
+        )
         rendered = json.dumps(cycle.to_dict(), indent=2)
         print(rendered)
-        write_collaboration_record(cycle)
-        if cycle.status not in {"complete", "no_solution_claim"}:
+        persistence = persist_scientific_discovery(cycle)
+        track_records = [
+            track.get("execution_records", [])[-1]
+            for track in cycle.to_dict().get("tracks", [])
+            if track.get("execution_records")
+        ]
+        provider_execution_failed = (
+            not track_records
+            or any(
+                record.get("state") != "COMPLETE"
+                or not record.get("response", {}).get("provider_backed", False)
+                for record in track_records
+            )
+        )
+        if cycle.status not in {"complete", "no_solution_claim"} or provider_execution_failed:
             post_issue_comment(
-                "Barrot scientific discovery failed safely.\n\n```json\n"
+                "Barrot scientific discovery failed safely; provider-backed track execution did not fully pass.\n\n"
+                + json.dumps({"persistence": persistence}, indent=2)
+                + "\n\n```json\n"
                 + rendered[:55000]
                 + "\n```"
             )
             raise SystemExit(1)
         post_issue_comment(
-            "Barrot scientific discovery recorded.\n\n```json\n"
+            "Barrot scientific discovery recorded and persisted to the task branch.\n\n"
+            + json.dumps({"persistence": persistence}, indent=2)
+            + "\n\n```json\n"
             + rendered[:55000]
             + "\n```"
         )
@@ -946,6 +1295,71 @@ def main() -> None:
     brain = ScriptBrain()
     bundle_brain = ScriptBrain(enable_tools=False)
     audit_context = build_audit_context(TITLE, TASK)
+    if is_explicit_read_only_audit_task(TITLE, TASK):
+        audit_request = {
+            "objective": TITLE,
+            "task_body_summary": "Read-only repository-wide audit. Known geometry checkpoint: barrot/mesh-topology-obj-triangulation-20261024 at ab362f9fc9512cd7ffea312d24978f11bbc2de3e; duplicate candidate branch barrot/mesh-topology-obj-triangulation-20261024-115709. Investigate the reported tetrahedron degenerate-triangle/watertightness discrepancy, concave OBJ triangulation and metadata, missing-mesh NOT_ASSESSED behavior, CI evidence, agent repair safety, MMI/provenance, and delivery. Return prioritized next steps with acceptance criteria.",
+            "repository_context": {
+                "inventory": str(audit_context.get("inventory", ""))[:500],
+                "github_context": str(audit_context.get("github_context", ""))[:500],
+                "note": str(audit_context.get("note", ""))[:200],
+            },
+            "live_read_only_snapshot": build_read_only_audit_snapshot(),
+            "live_source_snapshot": build_read_only_source_snapshot(),
+            "required_sections": [
+                "Executive status and critical risks",
+                "Repository, branch, and commit map",
+                "CI/workflow configuration versus actual run evidence",
+                "Geometry discrepancy, triangulation, and NOT_ASSESSED behavior",
+                "Agent safety, MMI/provenance, and delivery readiness",
+                "Prioritized next actions with acceptance criteria",
+                "Checks blocked or not performed, with reasons",
+            ],
+            "rules": [
+                "This is a read-only audit. Do not repair, patch, write files, install dependencies, commit, push, merge, open pull requests, or delete/overwrite/reset/clean anything.",
+                "Inspect repository files using only the available read-only repo_browser tools and the supplied repository context.",
+                "Never claim a test ran or passed unless execution output or a specific GitHub Actions run proves it.",
+                "Separate CONFIRMED, LIKELY, UNVERIFIED, and BLOCKED findings.",
+                "Cite exact paths, relevant lines, SHAs, workflow run IDs/URLs, and actual output when available.",
+                "If the local checkout cannot establish remote or historical facts, state the limitation rather than guessing.",
+                "Return the complete evidence-backed report, not a plan to perform the audit later.",
+            ],
+        }
+        audit_system = (
+            "You are Barrot performing a strictly read-only repository audit. "
+            "You are given a compact live Git/Actions snapshot and source excerpts; do not call tools. "
+            "Return one JSON object with a single string field named report. That string must contain the complete Markdown audit. "
+            "Do not execute repair logic or imply changes were made. Do not claim tests ran unless the supplied Actions evidence proves it. "
+            "Separate CONFIRMED, LIKELY, UNVERIFIED, and BLOCKED findings. If evidence is absent, say so."
+        )
+        try:
+            audit_brain = ScriptBrain(enable_tools=False, max_tool_rounds=1)
+            raw_report = audit_brain.think(
+                json.dumps(audit_request, ensure_ascii=False, sort_keys=True),
+                system=audit_system,
+                use_tools=False,
+                max_output_tokens=2048,
+            )
+            try:
+                parsed_report = json.loads(raw_report)
+                report = parsed_report.get("report", raw_report) if isinstance(parsed_report, dict) else raw_report
+            except (TypeError, ValueError):
+                report = raw_report
+        except Exception as exc:
+            message = (
+                "Barrot read-only audit failed safely; repository repair was not started.\n\n"
+                f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
+            )
+            post_issue_comment(message)
+            raise SystemExit(message) from exc
+        if not report.strip():
+            message = "Barrot read-only audit returned an empty report; repository repair was not started."
+            post_issue_comment(message)
+            raise SystemExit(message)
+        post_issue_comment("## Barrot Read-Only Audit Report\n\n" + report)
+        print("READ_ONLY_AUDIT=COMPLETE")
+        return
+
     lifecycle_store = BundleLifecycleStore(ROOT)
     bundle_constraints = [
         "Preserve the exact user objective and constraints across revisions.",
@@ -1146,7 +1560,9 @@ def main() -> None:
     })
 
     rendered = json.dumps(work_data, indent=2)
-    print(json.dumps({"bundle_dispatch": dispatch, "last_work": work_data}, indent=2)[:55000])
+    # last_result is the raw WorkItemEvidence; render the serialized form instead.
+    dispatch_summary = {key: value for key, value in dispatch.items() if key != "last_result"}
+    print(json.dumps({"bundle_dispatch": dispatch_summary, "last_work": work_data}, indent=2, default=str)[:55000])
     write_collaboration_record(work_data)
 
     if not dispatch["complete"]:

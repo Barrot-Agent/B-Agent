@@ -1626,15 +1626,22 @@ class ScientificDiscoveryController:
         adapter: "NavierStokesProblemAdapter | StaticResearchProblemAdapter",
         *,
         formal_runner: Callable[[list[str], str | None], dict[str, Any]] | None = None,
+        track_executor: Callable[[ResearchTrack], dict[str, Any]] | None = None,
         stop_after_state: ResearchState | None = None,
         blind_mode: bool = False,
     ) -> ResearchCycleRecord:
         fingerprint = adapter.problem_fingerprint()
         existing = self.ledger_store.load_cycle_by_fingerprint(fingerprint)
+        # A terminal cycle is a completed checkpoint, not a permanent lock on future
+        # research. A newly triggered run starts a new cycle and imports committed prior
+        # evidence from .barrot/collaboration_records; nonterminal cycles still resume.
+        if existing is not None and existing.status in TERMINAL_RESEARCH_STATUSES:
+            existing = None
         cycle = self._resume_or_create(existing, adapter)
         if cycle.status in TERMINAL_RESEARCH_STATUSES:
             cycle.durable_record_written = True
             return cycle
+        import_prior_records = existing is None
         try:
             cycle.retry_policy = asdict(self.retry_policy)
             self._transition(cycle, ResearchState.AUDITING, "Starting research cycle audit.", fingerprint)
@@ -1642,6 +1649,63 @@ class ScientificDiscoveryController:
                 return cycle
 
             problem, sources, claims, evidence, tracks, reviews, formal_specs, questions = adapter.ingest()
+            if import_prior_records:
+                prior_dir = self.workspace / ".barrot" / "collaboration_records"
+                prior_paths = sorted(
+                    (path for path in prior_dir.glob("*.json") if path.name != "latest_scientific_discovery.json"),
+                    key=lambda path: path.stat().st_mtime,
+                )[-10:] if prior_dir.exists() else []
+                source_ids = {item.source_id for item in sources}
+                claim_ids = {item.claim_id for item in claims}
+                evidence_ids = {item.evidence_id for item in evidence}
+                for prior_path in prior_paths:
+                    try:
+                        prior = json.loads(prior_path.read_text(encoding="utf-8"))
+                    except (OSError, json.JSONDecodeError):
+                        continue
+                    if prior.get("problem_id") != problem.problem_id:
+                        continue
+                    block = prior.get("evidence", {})
+                    for raw in block.get("sources", []):
+                        try:
+                            item = ResearchSource.from_dict(raw)
+                        except (TypeError, ValueError):
+                            continue
+                        if item.source_id not in source_ids:
+                            sources.append(item)
+                            source_ids.add(item.source_id)
+                    for raw in block.get("claims", []):
+                        try:
+                            item = ResearchClaim.from_dict(raw)
+                        except (TypeError, ValueError):
+                            continue
+                        if item.claim_id not in claim_ids:
+                            claims.append(item)
+                            claim_ids.add(item.claim_id)
+                    for raw in block.get("evidence", []):
+                        try:
+                            item = ResearchEvidence.from_dict(raw)
+                        except (TypeError, ValueError):
+                            continue
+                        if item.evidence_id not in evidence_ids:
+                            evidence.append(item)
+                            evidence_ids.add(item.evidence_id)
+                    cycle_ref = str(prior.get("cycle_id") or prior_path.stem)
+                    for index, unresolved in enumerate(block.get("unresolved_questions", [])):
+                        questions.append({
+                            "question_id": f"prior_{cycle_ref}_{index}",
+                            "prompt": f"Previously unresolved: {unresolved}",
+                            "source_cycle_id": cycle_ref,
+                            "source_record": str(prior_path.relative_to(self.workspace)),
+                        })
+                    for track in block.get("tracks", []):
+                        for lesson in list(track.get("failed_approaches", [])) + list(track.get("unresolved_objections", [])):
+                            questions.append({
+                                "question_id": f"lesson_{cycle_ref}_{Fingerprint.create(lesson).value[:10]}",
+                                "prompt": f"Prior approach/objection to account for: {lesson}",
+                                "source_cycle_id": cycle_ref,
+                                "source_record": str(prior_path.relative_to(self.workspace)),
+                            })
             cycle.problem = problem.to_dict()
             cycle.questions = questions
             cycle.artifacts = [
@@ -1669,7 +1733,7 @@ class ScientificDiscoveryController:
             if self._maybe_stop(cycle, fingerprint, stop_after_state):
                 return cycle
 
-            executed_tracks = self._execute_tracks(prepared_tracks)
+            executed_tracks = self._execute_tracks(prepared_tracks, track_executor=track_executor)
             cycle.tracks = [item.to_dict() for item in executed_tracks]
             self._transition(cycle, ResearchState.TRACK_EXECUTION, "Recorded per-track execution state.", fingerprint)
             if self._maybe_stop(cycle, fingerprint, stop_after_state):
@@ -1798,24 +1862,74 @@ class ScientificDiscoveryController:
             prepared.append(track)
         return prepared
 
-    def _execute_tracks(self, tracks: list[ResearchTrack]) -> list[ResearchTrack]:
+    def _execute_tracks(
+        self,
+        tracks: list[ResearchTrack],
+        *,
+        track_executor: Callable[[ResearchTrack], dict[str, Any]] | None = None,
+    ) -> list[ResearchTrack]:
         executed: list[ResearchTrack] = []
         for track in tracks:
+            started = time.perf_counter()
+            provider = "deterministic_fixture" if track_executor is None else "provider_unconfirmed"
+            result_payload: dict[str, Any] = {}
+            failure: Failure | None = None
+            try:
+                if track_executor is not None:
+                    execution = track_executor(track)
+                    if not isinstance(execution, dict):
+                        raise ValueError("Track executor must return an object.")
+                    provider = str(execution.get("provider") or "provider_unconfirmed")[:200]
+                    result_payload = execution.get("result")
+                    if not isinstance(result_payload, dict):
+                        raise ValueError("Provider response must contain a JSON object in 'result'.")
+                    for key in ("findings", "open_questions", "counterarguments", "recommended_checks"):
+                        values = result_payload.get(key, [])
+                        if not isinstance(values, list) or any(not isinstance(item, str) for item in values):
+                            raise ValueError(f"Provider field '{key}' must be a list of strings.")
+                    if not result_payload.get("findings") and not result_payload.get("open_questions") and not result_payload.get("counterarguments"):
+                        raise ValueError("Provider response contained no findings, questions, or counterarguments.")
+                    for finding in result_payload.get("findings", [])[:8]:
+                        track.intermediate_results.append({
+                            "summary": finding[:1500],
+                            "status": "MODEL_GENERATED_UNVERIFIED",
+                            "provenance": [provider],
+                        })
+                    for question in result_payload.get("open_questions", [])[:8]:
+                        track.unresolved_objections.append(f"Model-generated question (unverified): {question[:1000]}")
+                    for objection in result_payload.get("counterarguments", [])[:8]:
+                        track.unresolved_objections.append(f"Model-generated counterargument (unverified): {objection[:1000]}")
+                metadata_valid = bool(track.hypothesis and track.strategy)
+                passed = metadata_valid and failure is None
+            except Exception as exc:  # noqa: BLE001
+                passed = False
+                failure = Failure(
+                    code=FailureCode.VALIDATION_FAILED.value,
+                    message=f"Research track execution failed safely: {str(exc)[:500]}",
+                    failed_operation=track.track_id,
+                    raw_error=str(exc)[:1000],
+                )
+                track.unresolved_objections.append(f"Provider execution failed: {str(exc)[:500]}")
+            duration_ms = int((time.perf_counter() - started) * 1000)
             validation = ValidationResult(
-                passed=bool(track.hypothesis and track.strategy),
-                summary="track metadata complete" if track.hypothesis and track.strategy else "track metadata incomplete",
+                passed=passed,
+                summary=(
+                    "provider-backed output recorded as unverified" if passed and track_executor is not None
+                    else "track metadata complete; no live provider configured" if passed
+                    else "track execution or metadata validation failed"
+                ),
                 checks=[
                     {
                         "track_id": track.track_id,
                         "has_hypothesis": bool(track.hypothesis),
                         "has_strategy": bool(track.strategy),
+                        "provider_backed": track_executor is not None and failure is None,
+                        "provider": provider,
                         "evidence_count": len(track.evidence),
                     }
                 ],
-                failure=(
-                    None
-                    if track.hypothesis and track.strategy
-                    else Failure(
+                failure=failure or (
+                    None if track.hypothesis and track.strategy else Failure(
                         code=FailureCode.VALIDATION_FAILED.value,
                         message="Track must define hypothesis and strategy.",
                         failed_operation=track.track_id,
@@ -1823,26 +1937,32 @@ class ScientificDiscoveryController:
                 ),
             )
             record = ExecutionRecord(
-                record_id=Fingerprint.create(track.track_id, track.hypothesis, track.strategy, track.intermediate_results).value,
+                record_id=Fingerprint.create(track.track_id, track.hypothesis, track.strategy, track.intermediate_results, result_payload, str(failure)).value,
                 operation="research_track_execution",
                 state=TaskState.COMPLETE.value if validation.passed else TaskState.FAILED.value,
                 input_fingerprint=Fingerprint.create(track.track_id, track.focus_claims, track.dependencies).value,
-                output_fingerprint=Fingerprint.create(track.intermediate_results, track.failed_approaches).value,
+                output_fingerprint=Fingerprint.create(track.intermediate_results, track.failed_approaches, result_payload).value,
                 response={
                     "role": track.role,
+                    "provider_backed": track_executor is not None and failure is None,
                     "intermediate_results": track.intermediate_results,
+                    "model_output": result_payload,
                     "failed_approaches": track.failed_approaches,
                     "unresolved_objections": track.unresolved_objections,
                 },
+                provider=provider,
+                duration_ms=duration_ms,
+                failure=validation.failure,
             )
             track.execution_records.append(record.to_dict())
             track.validation = validation.to_dict()
+            track.state = ResearchState.TRACK_EXECUTION.value if validation.passed else ResearchState.FAILED.value
             track.checkpoints.append(
                 Checkpoint(
-                    checkpoint_id=Fingerprint.create(track.track_id, "executed").value,
+                    checkpoint_id=Fingerprint.create(track.track_id, "executed", record.output_fingerprint).value,
                     task_id=track.track_id,
-                    state=TaskState.EXECUTING.value,
-                    summary=f"Executed track {track.role}.",
+                    state=TaskState.EXECUTING.value if validation.passed else TaskState.FAILED.value,
+                    summary="Recorded provider-backed track output without promoting claims." if track_executor is not None and validation.passed else "Recorded deterministic fixture or failed execution state.",
                     fingerprint=record.output_fingerprint,
                 ).to_dict()
             )
@@ -2063,3 +2183,8 @@ def is_scientific_discovery_task(title: str, body: str) -> bool:
         "research question",
     )
     return any(token in text for token in triggers)
+
+
+def should_route_scientific_discovery(mode: str, title: str, body: str) -> bool:
+    """Require an explicit route selection before entering scientific discovery."""
+    return str(mode).strip().lower() == "scientific_discovery" and is_scientific_discovery_task(title, body)
