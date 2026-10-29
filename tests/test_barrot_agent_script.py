@@ -72,28 +72,6 @@ def test_barrot_agent_main_routes_through_work_queue_controller(monkeypatch):
 
     monkeypatch.setattr(module, "BundleEngineeringController", FakeBundleController)
     monkeypatch.setattr(module, "BundleLifecycleStore", FakeLifecycleStore)
-    class FakeBundleController:
-        def __init__(self, *args, **kwargs):
-            pass
-
-        def run(self, **kwargs):
-            return SimpleNamespace(
-                status="READY_FOR_EXECUTION_REVIEW",
-                review=SimpleNamespace(quality_score=100, fingerprint="sha256:test"),
-            )
-
-    class FakeLifecycleStore:
-        def __init__(self, *args, **kwargs):
-            pass
-
-        def save_plan(self, *args, **kwargs):
-            return "test-plan"
-
-        def record_execution(self, *args, **kwargs):
-            return None
-
-    monkeypatch.setattr(module, "BundleEngineeringController", FakeBundleController)
-    monkeypatch.setattr(module, "BundleLifecycleStore", FakeLifecycleStore)
     monkeypatch.setattr(module, "RepositoryRepairController", FakeController)
     monkeypatch.setattr(module, "WorkQueueController", FakeQueue)
     monkeypatch.setattr(module, "configure_git", lambda: calls.setdefault("configured", True))
@@ -144,6 +122,28 @@ def test_barrot_agent_report_only_does_not_post_issue_comment(monkeypatch):
             work.queue_advanced = True
             return work
 
+    class FakeBundleController:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def run(self, **kwargs):
+            return SimpleNamespace(
+                status="READY_FOR_EXECUTION_REVIEW",
+                review=SimpleNamespace(quality_score=100, fingerprint="sha256:test"),
+            )
+
+    class FakeLifecycleStore:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def save_plan(self, *args, **kwargs):
+            return "test-plan"
+
+        def record_execution(self, *args, **kwargs):
+            return None
+
+    monkeypatch.setattr(module, "BundleEngineeringController", FakeBundleController)
+    monkeypatch.setattr(module, "BundleLifecycleStore", FakeLifecycleStore)
     monkeypatch.setattr(module, "RepositoryRepairController", FakeController)
     monkeypatch.setattr(module, "WorkQueueController", FakeQueue)
     monkeypatch.setattr(module, "configure_git", lambda: None)
