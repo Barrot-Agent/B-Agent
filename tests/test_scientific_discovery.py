@@ -742,10 +742,10 @@ def test_provider_backed_track_execution_is_recorded_without_promoting_claims(tm
     cycle = controller.run(adapter, track_executor=execute)
     assert calls
     for track in cycle.tracks:
-        record = track.execution_records[-1]
+        record = track["execution_records"][-1]
         assert record["provider"] == "test-provider/model-v1"
         assert record["duration_ms"] >= 0
         assert record["response"]["provider_backed"] is True
         assert record["response"]["intermediate_results"][-1]["status"] == "MODEL_GENERATED_UNVERIFIED"
-        assert any("Model-generated counterargument" in item for item in track.unresolved_objections)
+        assert any("Model-generated counterargument" in item for item in track["unresolved_objections"])
     assert all(claim["acceptance_status"] == ClaimStatus.UNRESOLVED.value for claim in cycle.claims)
