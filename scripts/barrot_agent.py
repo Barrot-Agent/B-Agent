@@ -421,7 +421,7 @@ class ScriptBrain:
             return _tool_error(f"Tool arguments for {name} must be an object.")
         return self.tool_funcs[name](arguments)
 
-    def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None) -> str:
+    def think(self, message: str, history: list[dict[str, str]] | None = None, system: str | None = None, use_tools: bool | None = None) -> str:
         messages: list[dict[str, Any]] = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -429,13 +429,16 @@ class ScriptBrain:
             messages.extend(history)
         messages.append({"role": "user", "content": message})
 
+        tools_enabled = (
+            self.enable_tools if use_tools is None else bool(use_tools) and bool(self.tools)
+        )
         for _ in range(self.max_tool_rounds):
             payload = _groq_payload(
                 messages,
-                tools=self.tools,
-                max_tokens=1024 if not self.enable_tools else 1536,
-                json_mode=not self.enable_tools,
-                reasoning_effort="low" if not self.enable_tools else None,
+                tools=self.tools if tools_enabled else None,
+                max_tokens=1536 if tools_enabled else 1024,
+                json_mode=not tools_enabled,
+                reasoning_effort=None if tools_enabled else "low",
             )
             data = _send_groq_request(payload, request_sender=self.request_sender)
             try:
