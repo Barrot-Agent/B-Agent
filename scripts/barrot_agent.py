@@ -1137,6 +1137,66 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
     return snapshot
 
 
+def build_read_only_source_snapshot() -> dict[str, Any]:
+    """Return compact, read-only source excerpts for one-shot audit inference."""
+    specs = [
+        (".github/workflows/barrot-agent.yml", ("workflow_dispatch", "barrot-task", "permissions:", "scripts/barrot_agent.py"), 12),
+        ("scripts/barrot_agent.py", ("def think(", "def build_read_only_audit_snapshot", "def is_explicit_read_only_audit_task", "READ_ONLY_AUDIT=COMPLETE", "BundleEngineeringController"), 16),
+        ("barrot_agent/orchestration/repository_repair.py", ("def _barrett_autonomous_audit", "report_only", "PATCHING", "COMMITTING", "REMOTE_VERIFICATION"), 14),
+        ("barrot_agent/rendering/mesh_topology.py", ("def analyze_mesh_topology", "degenerate_triangles", "is_watertight", "topology_status"), 12),
+        ("barrot_agent/rendering/obj_mesh_loader.py", ("triangulate_polygon", "triangulation", "EAR_CLIPPING"), 12),
+        ("barrot_agent/rendering/polygon_triangulation.py", ("def triangulate_polygon", "convex", "ear"), 12),
+        ("barrot_agent/rendering/quality_metrics.py", ("def _check_geometry", "NOT_ASSESSED", "mesh_vertices is None"), 12),
+        ("tests/test_mesh_topology.py", ("tetrahedron", "degenerate", "nonmanifold"), 10),
+        ("tests/test_obj_mesh_loader.py", ("tetrahedron", "concave", "degenerate_triangles"), 12),
+        ("tests/test_polygon_triangulation.py", ("concave", "area"), 10),
+        ("scripts/barrot_repo_state_manifest.py", ("manifest", "sha256", "source"), 7),
+        ("barrot_agent/repo_state_corroborator.py", ("stale", "missing", "corrobor"), 7),
+        ("barrot_agent/orchestration/bundle_delivery.py", ("checksum", "verify", "def "), 7),
+    ]
+    result: dict[str, Any] = {}
+    total_chars = 0
+    for relative_path, terms, max_lines in specs:
+        path = ROOT / relative_path
+        if not path.is_file():
+            result[relative_path] = {"status": "MISSING"}
+            continue
+        try:
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError as exc:
+            result[relative_path] = {"status": "UNAVAILABLE", "error": type(exc).__name__}
+            continue
+        selected: set[int] = set()
+        for index, line in enumerate(lines):
+            if any(term.casefold() in line.casefold() for term in terms):
+                selected.update(range(max(0, index - 1), min(len(lines), index + 2)))
+        excerpts = sorted(selected)[:max_lines]
+        rendered = "\n".join(f"{index + 1}: {lines[index][:200]}" for index in excerpts)
+        allowance = max(0, 9000 - total_chars)
+        rendered = rendered[:allowance]
+        result[relative_path] = {
+            "status": "READ",
+            "total_lines": len(lines),
+            "excerpt": rendered,
+        }
+        total_chars += len(rendered)
+        if total_chars >= 9000:
+            break
+    test_paths = [
+        "tests/test_mmi_contract.py",
+        "tests/test_mmi_execution.py",
+        "tests/test_mmi_integration.py",
+        "tests/test_verified_bundle_delivery.py",
+        "tests/test_bundle_delivery.py",
+        "tests/test_termux_self_drop.py",
+        "tests/test_external_deploys_require_confirmation.py",
+    ]
+    result["test_file_presence"] = {
+        path: (ROOT / path).is_file() for path in test_paths
+    }
+    return result
+
+
 def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
     """Recognize tasks that explicitly forbid repository implementation changes."""
     normalized = f"{title}\n{body}".casefold()
@@ -1238,13 +1298,12 @@ def main() -> None:
             "objective": TITLE,
             "task_body_summary": "Read-only repository-wide audit. Known geometry checkpoint: barrot/mesh-topology-obj-triangulation-20261024 at ab362f9fc9512cd7ffea312d24978f11bbc2de3e; duplicate candidate branch barrot/mesh-topology-obj-triangulation-20261024-115709. Investigate the reported tetrahedron degenerate-triangle/watertightness discrepancy, concave OBJ triangulation and metadata, missing-mesh NOT_ASSESSED behavior, CI evidence, agent repair safety, MMI/provenance, and delivery. Return prioritized next steps with acceptance criteria.",
             "repository_context": {
-                "inventory": str(audit_context.get("inventory", ""))[:800],
-                "file_context": str(audit_context.get("file_context", ""))[:1200],
-                "directory_context": str(audit_context.get("directory_context", ""))[:500],
-                "github_context": str(audit_context.get("github_context", ""))[:600],
+                "inventory": str(audit_context.get("inventory", ""))[:500],
+                "github_context": str(audit_context.get("github_context", ""))[:500],
                 "note": str(audit_context.get("note", ""))[:200],
             },
             "live_read_only_snapshot": build_read_only_audit_snapshot(),
+            "live_source_snapshot": build_read_only_source_snapshot(),
             "required_sections": [
                 "Executive status and critical risks",
                 "Repository, branch, and commit map",
@@ -1266,18 +1325,23 @@ def main() -> None:
         }
         audit_system = (
             "You are Barrot performing a strictly read-only repository audit. "
-            "Use the available repo_browser tools to inspect actual files before making claims. "
-            "Do not execute repair logic or propose changes as already completed. "
-            "Return a concise but complete Markdown report with explicit evidence and uncertainty."
+            "You are given a compact live Git/Actions snapshot and source excerpts; do not call tools. "
+            "Return one JSON object with a single string field named report. That string must contain the complete Markdown audit. "
+            "Do not execute repair logic or imply changes were made. Do not claim tests ran unless the supplied Actions evidence proves it. "
+            "Separate CONFIRMED, LIKELY, UNVERIFIED, and BLOCKED findings. If evidence is absent, say so."
         )
-        previous_search_limit = MAX_SEARCH_RESULTS
-        MAX_SEARCH_RESULTS = min(MAX_SEARCH_RESULTS, 5)
         try:
-            audit_brain = ScriptBrain(max_tool_rounds=3)
-            report = audit_brain.think(
+            audit_brain = ScriptBrain(enable_tools=False, max_tool_rounds=1)
+            raw_report = audit_brain.think(
                 json.dumps(audit_request, ensure_ascii=False, sort_keys=True),
                 system=audit_system,
+                use_tools=False,
             )
+            try:
+                parsed_report = json.loads(raw_report)
+                report = parsed_report.get("report", raw_report) if isinstance(parsed_report, dict) else raw_report
+            except (TypeError, ValueError):
+                report = raw_report
         except Exception as exc:
             message = (
                 "Barrot read-only audit failed safely; repository repair was not started.\n\n"
@@ -1285,8 +1349,6 @@ def main() -> None:
             )
             post_issue_comment(message)
             raise SystemExit(message) from exc
-        finally:
-            MAX_SEARCH_RESULTS = previous_search_limit
         if not report.strip():
             message = "Barrot read-only audit returned an empty report; repository repair was not started."
             post_issue_comment(message)
