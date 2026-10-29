@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1014-PR1303-SUMMARY-SAFETY",
+  "captured_at_utc": "2026-10-29T10:14:11Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "policy": "Draft safety proposal only. Main remains unchanged. No workflow was manually dispatched, and no merge is authorized.",
+  "nodes": [
+    {
+      "id": "BARROT_MAIN_SIGNAL_0924Z",
+      "label": "Main XRP signal: confidence zero and provider failures",
+      "kind": "INVALID_SIGNAL_ARTIFACT"
+    },
+    {
+      "id": "BARROT_MAIN_SUMMARY_WORKFLOW",
+      "label": "Scheduled summary workflow commits and pushes generated output",
+      "kind": "MUTATION_CAPABLE_WORKFLOW"
+    },
+    {
+      "id": "BARROT_PR1303",
+      "label": "Fresh-main fail-closed XRP summary proposal",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    },
+    {
+      "id": "BARROT_PR1303_CI",
+      "label": "PR #1303 core CI",
+      "kind": "CI_EVIDENCE_PENDING"
+    },
+    {
+      "id": "BARROT_PR1303_GATE",
+      "label": "PR #1303 fail-closed gate",
+      "kind": "GATE_EVIDENCE_PENDING"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN56-PR1303-INVALID-SIGNAL",
+      "source": "BARROT_MAIN_SIGNAL_0924Z",
+      "target": "BARROT_PR1303",
+      "relationship": "SUMMARY_MUST_SUPPRESS_DIRECTIONAL_CLAIMS",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main signal has score 44, confidence 0.0 and provider failures from missing GitHub model credentials and Groq HTTP 429; the summary narrates positive headlines. PR #1303 proposes deterministic NOT_ISSUED behavior for invalid or unavailable inputs.",
+      "source_ids": [
+        "SRC-RUN56-20261029T1014Z-MAIN-HEAD",
+        "SRC-RUN56-20261029T1014Z-MAIN-SIGNAL",
+        "SRC-RUN56-20261029T1014Z-MAIN-SUMMARY",
+        "SRC-RUN56-20261029T1014Z-PR1303"
+      ]
+    },
+    {
+      "id": "EDGE-RUN56-PR1303-READONLY-WORKFLOW",
+      "source": "BARROT_PR1303",
+      "target": "BARROT_MAIN_SUMMARY_WORKFLOW",
+      "relationship": "PROPOSED_REMOVE_GIT_PUSH_AND_COMMIT",
+      "evidence_class": "REPOSITORY_DIFF_OBSERVATION",
+      "claim": "Main's signal-summary workflow runs after the knowledge signal cycle and on a schedule, then commits and pushes web/latest_signal_summary.json and generated audio. PR #1303 changes the workflow to artifact-only on its branch; main remains unchanged.",
+      "source_ids": [
+        "SRC-RUN56-20261029T1014Z-MAIN-SUMMARY-WORKFLOW",
+        "SRC-RUN56-20261029T1014Z-PR1303"
+      ]
+    },
+    {
+      "id": "EDGE-RUN56-PR1303-CI-PENDING",
+      "source": "BARROT_PR1303",
+      "target": "BARROT_PR1303_CI",
+      "relationship": "CI_PENDING_AT_CAPTURE",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "At 10:14:11Z no PR-triggered run was yet visible for head de96d0ff97d83f7175a98ba77d3a04cae533d889; root cause/timing is not inferred.",
+      "source_ids": [
+        "SRC-RUN56-20261029T1014Z-PR1303",
+        "SRC-RUN56-20261029T1014Z-CI"
+      ]
+    },
+    {
+      "id": "EDGE-RUN56-PR1303-GATE-PENDING",
+      "source": "BARROT_PR1303",
+      "target": "BARROT_PR1303_GATE",
+      "relationship": "GATE_PENDING_AT_CAPTURE",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "No completed gate result was visible at capture; no pass is claimed.",
+      "source_ids": [
+        "SRC-RUN56-20261029T1014Z-PR1303",
+        "SRC-RUN56-20261029T1014Z-GATE"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN56-SUMMARY-SAFETY",
+      "statement": "A summary generator should not produce a directional narrative from a zero-confidence signal with explicit provider failures.",
+      "status": "SAFETY_INVARIANT",
+      "supporting_source_ids": [
+        "SRC-RUN56-20261029T1014Z-MAIN-SIGNAL",
+        "SRC-RUN56-20261029T1014Z-MAIN-SUMMARY",
+        "SRC-RUN56-20261029T1014Z-PR1303"
+      ],
+      "disconfirming_evidence": [
+        "A summary could accurately report source headlines without endorsing a direction, but it must explicitly separate source sentiment from a valid forecast and must not imply confidence."
+      ],
+      "tests_needed": [
+        "Exercise missing/malformed signal, non-finite score, zero confidence, provider failure, stale timestamp and valid fixed-horizon forecast fixtures."
+      ]
+    }
+  ],
+  "notes": [
+    "DESIGNED: validate signal structure and suppress directional language unless a valid forecast exists.",
+    "EXECUTED: fresh-main draft PR #1303 created.",
+    "PENDING: exact-head CI and fail-closed gate.",
+    "NOT VERIFIED: main still commits/pushes summaries and still exposes the invalid signal/summary combination."
+  ]
+}
