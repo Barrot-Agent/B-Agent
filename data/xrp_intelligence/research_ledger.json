@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T10:17:43Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1017-CIRCLE-ARC-SBI-COINBASE",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1017-circle-arc-sbi-coinbase.json",
-    "snapshot_blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
-    "snapshot_commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba"
+    "captured_at_utc": "2026-10-29T11:04:30Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1104-MAIN-SIGNAL-AND-SAFETY-PRS",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1104-main-signal-and-safety-prs.json",
+    "snapshot_blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
+    "snapshot_commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd"
   },
   "sources": [
     {
@@ -7112,6 +7112,96 @@
       "published_at": "2026-09-16",
       "accessed_at_utc": "2026-10-29T10:17:43Z",
       "note": "Official Circle announcement says Arc public mainnet launched with a phased founding-validator rollout including SBI Group; Coinbase is named among exchanges providing access; gas fees are paid in USDC. It establishes announced participation/design, not proof SBI is actively validating or that XRP demand/price changes."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261029T1104Z",
+      "evidence_class": "CONFIRMED_REPOSITORY_STATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/8e34859a5fb16b20b78e0906466be805d0d14353",
+      "title": "B-Agent live main head",
+      "published_at": "2026-10-29T10:51:49Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Live GitHub ref readback returned this main commit SHA before the current safety proposals were opened. Main was not modified in this run."
+    },
+    {
+      "id": "SRC-GH-MAIN-SIGNAL-20261029T1104Z",
+      "evidence_class": "CONFIRMED_REPOSITORY_ARTIFACT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Current XRP signal artifact",
+      "published_at": "2026-10-29T10:23:01Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Score 44, confidence 0.0, news score 88 from 11 entries; source records missing GitHub model credentials and Groq HTTP 429. Not a valid forecast."
+    },
+    {
+      "id": "SRC-GH-MAIN-SUMMARY-20261029T1104Z",
+      "evidence_class": "CONFIRMED_REPOSITORY_ARTIFACT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "title": "Current XRP signal summary artifact",
+      "published_at": "2026-10-29T10:23:01Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Summary repeats a moderate/positive narrative and bullish headline characterization despite confidence 0.0 and unavailable sentiment provider. Same signal timestamp; the issue is invalid interpretation, not a stale timestamp at this cutoff."
+    },
+    {
+      "id": "SRC-GH-MAIN-MERGE-QUEUE-20261029T1104Z",
+      "evidence_class": "CONFIRMED_REPOSITORY_WORKFLOW",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "title": "Current main merge queue workflow",
+      "published_at": "2026-10-29T10:51:49Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Workflow grants contents and pull-requests write, allows mode=all, defaults dry_run=false and max_prs=0 (unlimited), and includes branch-update, comment, merge and delete-capable behavior."
+    },
+    {
+      "id": "SRC-GH-PR1304-CI-20261029T1104Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862244495",
+      "title": "PR #1304 exact-head core CI",
+      "published_at": "2026-10-29T11:02:18Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Exact head 2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0 completed successfully after correction of a malformed shell line continuation in the first attempt."
+    },
+    {
+      "id": "SRC-GH-PR1304-GATE-20261029T1104Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862244472",
+      "title": "PR #1304 fail-closed gate",
+      "published_at": "2026-10-29T11:02:18Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Fail-closed gate completed successfully for exact head 2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1305-CI-20261029T1104Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862374966",
+      "title": "PR #1305 exact-head core CI",
+      "published_at": "2026-10-29T11:03:17Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Core CI completed successfully for exact head 2a7afe9e43fe454252059002be32c165a73611ec. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1305-GATE-20261029T1104Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862375082",
+      "title": "PR #1305 fail-closed gate",
+      "published_at": "2026-10-29T11:03:17Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Fail-closed gate completed successfully for exact head 2a7afe9e43fe454252059002be32c165a73611ec. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1304-CI-INITIAL-FAIL-20261029T1101Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862127868",
+      "title": "PR #1304 initial CI failure and correction history",
+      "published_at": "2026-10-29T11:01:25Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Initial core CI failed after a malformed continuation was inserted into the pytest command. The branch was corrected with a single trailing backslash; the later exact-head CI run passed. This failed run is retained rather than hidden."
+    },
+    {
+      "id": "SRC-GH-PR1305-PROPOSAL-20261029T1104Z",
+      "evidence_class": "CONFIRMED_PULL_REQUEST_STATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1305",
+      "title": "Draft PR #1305 fail-closed XRP summary",
+      "published_at": "2026-10-29T11:03:14Z",
+      "accessed_at_utc": "2026-10-29T11:04:30Z",
+      "note": "Fresh-main draft proposal replaces directional narration for invalid/unavailable signals with NOT_ISSUED behavior and removes scheduled summary workflow push-to-main behavior. Not merged."
     }
   ],
   "limitations": [
@@ -7320,7 +7410,8 @@
     "PR #1303 core CI and fail-closed gate were not yet visible through the connected run lookup at 2026-10-29T10:14:11Z. Recheck before review; predecessor PR #1298 checks do not verify this fresh head.",
     "The exact original context of 'SBIC, ChatGPT SBIC' remains unresolved. Official East and West Japan SME investment/consultation companies both publish ChatGPT/generative-AI training material, but this does not prove which entity the phrase refers to or establish an OpenAI/XRP partnership.",
     "Circle's Arc launch announcement names SBI Group in a founding validator cohort with phased rollout; current active validation by SBI is not independently verified in this review.",
-    "Arc/Coinbase/SBI relationship announcements do not disclose actual Arc transaction volume, SBI validator activity/revenue, route-level XRP displacement, or causal XRP price impact. These relationships must not be admitted as directional model features without realized activity and matched controls."
+    "Arc/Coinbase/SBI relationship announcements do not disclose actual Arc transaction volume, SBI validator activity/revenue, route-level XRP displacement, or causal XRP price impact. These relationships must not be admitted as directional model features without realized activity and matched controls.",
+    "Current main still has an invalid XRP signal/summary mismatch and mutation-capable merge queue. PRs #1304 and #1305 pass exact-head CI/gates but remain draft/unmerged; the main-branch defects are not fixed until approved changes are merged. Full paper-trading replay, synchronized XRP market panel, original SBIC/ASK Coin/actual capital context, canonical Camilla Stephenson identity, exhaustive public-video inventory and live nine-platform handoffs remain unresolved."
   ],
   "run_updates": [
     {
@@ -12358,6 +12449,66 @@
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T11:04:30Z",
+      "update_type": "MAIN_SIGNAL_FAIL_CLOSED_AND_MERGE_QUEUE_READ_ONLY_PR_VERIFICATION",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T1104Z",
+        "SRC-GH-MAIN-SIGNAL-20261029T1104Z",
+        "SRC-GH-MAIN-SUMMARY-20261029T1104Z",
+        "SRC-GH-MAIN-MERGE-QUEUE-20261029T1104Z",
+        "SRC-GH-PR1304-CI-20261029T1104Z",
+        "SRC-GH-PR1304-GATE-20261029T1104Z",
+        "SRC-GH-PR1305-CI-20261029T1104Z",
+        "SRC-GH-PR1305-GATE-20261029T1104Z",
+        "SRC-GH-PR1304-CI-INITIAL-FAIL-20261029T1101Z",
+        "SRC-GH-PR1305-PROPOSAL-20261029T1104Z"
+      ],
+      "summary": "Inspected live main head 8e34859a5fb16b20b78e0906466be805d0d14353. Confirmed score 44/confidence 0.0 with missing GitHub model credentials and Groq HTTP 429; summary still narrates positive/mixed headlines. Confirmed main merge queue remains write-capable. Created fresh-main draft PR #1304 for read-only merge queue and PR #1305 for fail-closed summary. Both exact-head CI and fail-closed gates passed; both remain unmerged. PR #1304's initial CI failure from a malformed shell continuation was corrected and preserved in evidence.",
+      "main_sha": "8e34859a5fb16b20b78e0906466be805d0d14353",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1104-main-signal-and-safety-prs.json",
+        "blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
+        "commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
+        "characters": 8009
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
+        "blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
+        "commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
+        "new_edges": 5,
+        "new_competing_hypotheses": 2
+      },
+      "pr1304": {
+        "head": "2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0",
+        "ci_run": 40862244495,
+        "ci_status": "PASS",
+        "gate_run": 40862244472,
+        "gate_status": "PASS",
+        "state": "DRAFT_OPEN_UNMERGED"
+      },
+      "pr1305": {
+        "head": "2a7afe9e43fe454252059002be32c165a73611ec",
+        "ci_run": 40862374966,
+        "ci_status": "PASS",
+        "gate_run": 40862375082,
+        "gate_status": "PASS",
+        "state": "DRAFT_OPEN_UNMERGED"
+      },
+      "initial_ci_failure_retained": {
+        "run": 40862127868,
+        "reason": "malformed shell continuation; corrected before passing exact-head CI"
+      },
+      "market_observations": 0,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false,
+      "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
     }
   ],
   "mission_priority": {
@@ -12585,9 +12736,65 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
-  "current_research_head_this_run": "46166e484c63d5b96229718da5af4c84b886a000",
+  "current_research_head_before_ledger_update": "9b9fb3422ea5fd44fe8f0df8920fb3cf16db7b20",
+  "current_research_head_this_run": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
   "current_research_checks": {
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; FORECAST_NOT_ISSUED",
+    "latest_main_sha": "8e34859a5fb16b20b78e0906466be805d0d14353",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1104-main-signal-and-safety-prs.json",
+    "snapshot_blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
+    "snapshot_commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
+    "snapshot_characters": 8009,
+    "snapshot_character_metric_matches": true,
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
+    "graph_addendum_blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
+    "graph_addendum_commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
+    "graph_addendum_readback_ok": true,
+    "source_reference_count": 10,
+    "missing_source_references": 0,
+    "source_ids_unique": true,
+    "relationship_edges": 210,
+    "competing_hypotheses": 120,
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "real_money_trade": false,
+    "paper_trading_state_mutated": false,
+    "pr1304": {
+      "head": "2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0",
+      "ci": "PASS",
+      "gate": "PASS",
+      "state": "DRAFT_OPEN_UNMERGED"
+    },
+    "pr1305": {
+      "head": "2a7afe9e43fe454252059002be32c165a73611ec",
+      "ci": "PASS",
+      "gate": "PASS",
+      "state": "DRAFT_OPEN_UNMERGED"
+    },
+    "verified_at_utc": "2026-10-29T11:04:30Z"
+  },
+  "ledger_metrics": {
+    "source_records": 885,
+    "run_updates": 168,
+    "limitations": 207,
+    "relationship_edges": 210,
+    "competing_hypotheses": 120,
+    "market_observations": 78,
+    "index_format_version": "2.0",
+    "index_characters_before_compaction": 989081,
+    "embedded_latest_snapshot_characters_removed": 462600,
+    "local_validator_tests_passed": 6,
+    "latest_research_addendum_observations": 0,
+    "index_characters_before_this_update": 857058,
+    "prior_index_characters_before_compaction": 989081,
+    "latest_snapshot_characters": 8009,
+    "index_characters": 865504
+  },
+  "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; ARC_SBI_COINBASE_RELATIONSHIPS_RECORDED; FORECAST_NOT_ISSUED",
     "latest_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1017-circle-arc-sbi-coinbase.json",
@@ -12614,118 +12821,31 @@
     "paper_trading_state_mutated": false,
     "verified_at_utc": "2026-10-29T10:17:43Z"
   },
-  "ledger_metrics": {
-    "source_records": 875,
-    "run_updates": 167,
-    "limitations": 206,
-    "relationship_edges": 205,
-    "competing_hypotheses": 118,
-    "market_observations": 78,
-    "index_format_version": "2.0",
-    "index_characters_before_compaction": 989081,
-    "embedded_latest_snapshot_characters_removed": 462600,
-    "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 853550,
-    "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 6942,
-    "index_characters": 857058
-  },
-  "previous_research_checks": {
-    "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
-    "latest_main_sha": "dbc2929e5249ebd7637204e8b279896a8336cf53",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0706-market-structure-and-main-safety.json",
-    "snapshot_blob_sha": "06820e8b404456aef2b3342231cb6eb534f8c634",
-    "snapshot_commit_sha": "9ed53d75997598d86c5a5ab13ec1f3772a1f3ee4",
-    "snapshot_characters": 31563,
-    "snapshot_character_metric_matches": true,
-    "source_reference_count": 56,
-    "missing_source_references": 0,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0705-market-structure-and-signal-safety.json",
-    "graph_addendum_blob_sha": "2a1b14bf61c2e8f54c8c4419ab10bc9003db257a",
-    "graph_addendum_readback_ok": true,
-    "main_modified_by_this_run": false,
-    "merge_performed": false,
-    "force_push": false,
-    "deployment_executed": false,
-    "real_money_trade": false,
-    "paper_trading_state_mutated": false,
-    "forecast_status": "NOT_ISSUED",
-    "market_features_admitted": false,
-    "main_signal": {
-      "timestamp": "2026-10-29T06:33:14.840720+00:00",
-      "score": 44,
-      "confidence": 0,
-      "provider_unavailable": true
-    },
-    "paper_trading_replay": "BLOCKED_CURRENT_LOG_CONTENT_UNAVAILABLE",
-    "main_merge_queue_status": "MUTATION_CAPABLE_ON_MAIN",
-    "pr1289": {
-      "head": "491e6f14503957da8e8f2cb82eba7f14bdbfe604",
-      "ci_run": 40826979132,
-      "ci_status": "PASS_177_TESTS_PLUS_4_SUBTESTS",
-      "gate_run": 40826979063,
-      "gate_status": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED",
-      "main_behind": 15
-    },
-    "pr1290": {
-      "head": "6812f91d81807873d53d6efa65c06eb069ec0424",
-      "ci_run": 40827759284,
-      "ci_status": "PASS_170_TESTS_PLUS_4_SUBTESTS",
-      "gate_run": 40827759250,
-      "gate_status": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED",
-      "main_behind": 7
-    },
-    "pr1291": {
-      "head": "6762868d064a854c0126cf74caa7fcdc11df12cc",
-      "ci_run": 40827879345,
-      "ci_status": "PASS_173_TESTS_PLUS_4_SUBTESTS",
-      "gate_run": 40827879426,
-      "gate_status": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED",
-      "main_behind": 7
-    },
-    "creator_identity_status": "EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
-    "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE",
-    "platform_coordination_status": "DESIGNED_NOT_EXECUTED_LIVE_ADAPTERS_NOT_VERIFIED",
-    "source_ids_unique": true,
-    "relationship_edges": 156,
-    "competing_hypotheses": 99,
-    "sbic_original_referent": "UNRESOLVED",
-    "ask_coin_original_context": "UNRESOLVED",
-    "actual_capital_original_context": "UNRESOLVED",
-    "current_index_gate": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
-    "core_ci": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
-    "index_pointer_readback_ok": true,
-    "index_blob_sha_at_readback": "3e5e03a9f02e84dcad4975d32337a6ce6ba8b63b",
-    "index_commit_sha_at_readback": "ec4ad07cecd819ecd3b9ef942b7608360333dc25",
-    "index_character_count_match": true,
-    "index_metric_count_match": true,
-    "missing_snapshot_source_references": 0,
-    "missing_graph_source_references": 0
-  },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:17:43Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T11:04:30Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; ARC_SBI_COINBASE_RELATIONSHIPS_RECORDED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
-      "snapshot_commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
-      "snapshot_characters": 6942,
-      "source_reference_count": 7,
+      "snapshot_blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
+      "snapshot_commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
+      "snapshot_characters": 8009,
+      "source_reference_count": 10,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
-      "graph_addendum_blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
-      "graph_addendum_commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
+      "graph_addendum_blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
+      "graph_addendum_commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
       "graph_addendum_readback_ok": true,
+      "graph_edges": 5,
+      "graph_hypotheses": 2,
+      "missing_graph_source_references": 0,
+      "source_ids_unique": true,
       "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
-      "merge_performed": false
+      "merge_performed": false,
+      "real_money_trade": false
     }
   },
   "index_format_version": "2.0",
@@ -12774,48 +12894,50 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T10:17:43Z",
-    "focus": "Circle Arc, SBI Group and Coinbase multi-rail relationship graph",
+    "recorded_at_utc": "2026-10-29T11:04:30Z",
+    "focus": "Current main XRP signal invalidity and fresh-main safety PR verification",
     "source_ids": [
-      "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
-      "SRC-CIRCLE-ARC-MAINNET-2026-09-16-RECHECK-2026-10-28T1006Z",
-      "SRC-CIRCLE-ARC-SBI-FOUNDING-VALIDATOR-2026-10-28T1111Z",
-      "SRC-SBI-REMIT",
-      "SRC-RIPPLE-SBI-RLUSD",
-      "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
-      "SRC-SBI-VC-TRADE-ODL-EXPANSION-2023-09-06"
+      "SRC-GH-MAIN-HEAD-20261029T1104Z",
+      "SRC-GH-MAIN-SIGNAL-20261029T1104Z",
+      "SRC-GH-MAIN-SUMMARY-20261029T1104Z",
+      "SRC-GH-MAIN-MERGE-QUEUE-20261029T1104Z",
+      "SRC-GH-PR1304-CI-20261029T1104Z",
+      "SRC-GH-PR1304-GATE-20261029T1104Z",
+      "SRC-GH-PR1305-CI-20261029T1104Z",
+      "SRC-GH-PR1305-GATE-20261029T1104Z",
+      "SRC-GH-PR1304-CI-INITIAL-FAIL-20261029T1101Z",
+      "SRC-GH-PR1305-PROPOSAL-20261029T1104Z"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
-      "blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
-      "commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
+      "blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
+      "commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
       "new_edges": 5,
-      "new_competing_hypotheses": 3
+      "new_competing_hypotheses": 2
     },
     "market_observations": 0,
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:15:49Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:17:43Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS_AFTER_ALIAS_CORRECTION; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; ARC_SBI_COINBASE_RELATIONSHIPS_RECORDED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
-      "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
-      "snapshot_characters": 4955,
-      "source_reference_count": 13,
+      "snapshot_blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
+      "snapshot_commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
+      "snapshot_characters": 6942,
+      "source_reference_count": 7,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
-      "graph_addendum_blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
-      "graph_addendum_commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
+      "graph_addendum_blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
+      "graph_addendum_commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
       "graph_addendum_readback_ok": true,
       "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
-      "merge_performed": false,
-      "source_reference_alias_correction": "SRC-SBI-CAPITAL-2005-SBIC aliases SRC-SBI-CAPITAL-SBIC-2005; same official source, not independent corroboration."
+      "merge_performed": false
     }
   },
   "snapshot_verification_history": [
@@ -13538,7 +13660,31 @@
       "graph_edges": 5,
       "competing_hypotheses": 3,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T11:04:30Z",
+      "verification_type": "MAIN_SIGNAL_AND_SAFETY_PR_SNAPSHOT_GRAPH_LEDGER_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1104-main-signal-and-safety-prs.json",
+      "snapshot_blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
+      "snapshot_commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
+      "snapshot_characters": 8009,
+      "source_reference_count": 10,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
+      "graph_addendum_blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
+      "graph_addendum_commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
+      "graph_addendum_readback_ok": true,
+      "graph_edges": 5,
+      "graph_hypotheses": 2,
+      "missing_graph_source_references": 0,
+      "source_ids_unique": true,
+      "pr1304_ci": "PASS",
+      "pr1304_gate": "PASS",
+      "pr1305_ci": "PASS",
+      "pr1305_gate": "PASS",
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba"
+  "current_research_head_before_this_update": "9b9fb3422ea5fd44fe8f0df8920fb3cf16db7b20"
 }
