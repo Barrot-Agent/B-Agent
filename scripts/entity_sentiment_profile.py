@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Global descriptive entity sentiment plus target-asset relevance-weighted profiles."""
 import json
+import math
 import os
 from collections import defaultdict
 
@@ -29,10 +30,14 @@ def load_jsonl(path):
 
 
 def relevance_weight(distill, field):
-    try:
-        return max(0.0, float(distill.get(field, 0) or 0))
-    except (TypeError, ValueError):
+    raw_weight = distill.get(field, 0)
+    if isinstance(raw_weight, bool):
         return 0.0
+    try:
+        weight = float(raw_weight or 0)
+    except (TypeError, ValueError, OverflowError):
+        return 0.0
+    return weight if math.isfinite(weight) and weight > 0 else 0.0
 
 
 def build_entity_sentiment_profile(xrp_entries, btc_entries):
