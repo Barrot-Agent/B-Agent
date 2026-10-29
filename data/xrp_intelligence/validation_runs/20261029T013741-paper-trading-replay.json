@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "record_type": "paper_trading_replay_validation",
+  "recorded_at_utc": "2026-10-29T01:37:41.136Z",
+  "main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
+  "main_commit_message": "Paper trade cycle [skip ci]",
+  "log_blob_sha": "730edbc6f431a253824555b70cf7880358057063",
+  "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+  "script_blob_sha": "b38ab435f575b6037f05fa8e9ea00fd487d2d9eb",
+  "replay_method": "Read-only deterministic replay of scripts/coinbase_paper_trader.py execute_paper_trade state transitions; no state write or trade performed.",
+  "checks": {
+    "rows": 2358,
+    "malformed_json": 0,
+    "timestamp_order_errors": 0,
+    "non_btc_products": 0,
+    "portfolio_value_mismatches_over_0_02": 0,
+    "result_string_mismatches": 0,
+    "buys": 36,
+    "sells": 89,
+    "holds": 2233,
+    "status": "PASS"
+  },
+  "replayed_state": {
+    "cash_usd": 8011.936613782476,
+    "position_size": 0.024901276579239066,
+    "avg_entry_price": 80436.84,
+    "trade_count": 125,
+    "position_product": null
+  },
+  "persisted_state": {
+    "cash_usd": 8011.936613782476,
+    "position_size": 0.024901276579239066,
+    "position_product": null,
+    "avg_entry_price": 80436.84,
+    "trade_count": 125,
+    "started_at": "2026-08-25T01:42:34.501971+00:00"
+  },
+  "differences": {
+    "cash": 0,
+    "position": 0,
+    "avg_entry": 0,
+    "trade_count": 0,
+    "position_product": true
+  },
+  "latest_record": {
+    "timestamp": "2026-10-29T01:33:49.407180+00:00",
+    "product": "BTC-USD",
+    "price": 80626.98,
+    "action": "hold",
+    "amount_usd": 0,
+    "result": "held -- no action taken",
+    "replayed_result": "held -- no action taken",
+    "logged_portfolio_value_usd": 10019.65,
+    "replayed_portfolio_value_usd": 10019.65,
+    "portfolio_change_this_cycle": 0,
+    "cumulative_return_pct": 0.197
+  },
+  "no_state_mutation": true,
+  "no_real_money_trade": true
+}
