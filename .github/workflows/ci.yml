@@ -58,6 +58,7 @@ jobs:
             tests/test_millennium_claim_registry.py \
             tests/test_formal_benchmark.py \
             tests/test_bundle_engineering.py \
+            tests/test_bundle_schema_normalization.py \
             tests/test_bundle_lifecycle.py \
             tests/test_mesh_topology.py \
             tests/test_obj_mesh_loader.py \
