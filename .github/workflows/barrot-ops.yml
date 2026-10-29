@@ -1,9 +1,16 @@
 name: Barrot Operations Pipeline
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
+    inputs:
+      confirm_external_change:
+        description: "Set to YES only after explicit human approval for this specific run"
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
 
 permissions:
   contents: read
@@ -14,13 +21,13 @@ concurrency:
 
 jobs:
   sync-platforms:
+    if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
 
       # Hugging Face deployment is owned by sync-huggingface.yml.
-      # Do not push the GitHub repository's main branch directly to the Space:
-      # the Space has its own history and hf_space/ is the intended deploy source.
+      # Do not push the GitHub repository's main branch directly to the Space.
 
       - name: Setup Databricks CLI
         uses: databricks/setup-cli@main
