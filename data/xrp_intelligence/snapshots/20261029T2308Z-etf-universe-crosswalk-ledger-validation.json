@@ -1,0 +1,194 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T2308Z-ETF-UNIVERSE-RECONCILIATION-LEDGER-VALIDATION",
+  "captured_at_utc": "2026-10-29T23:08:00Z",
+  "mission_priority": {
+    "primary": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments, workflow dispatches or real-money actions without approval.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "observed_main_sha": "4c4ae6c2611c33254e3d92e1110ce588bf6f59e4",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "source_ids": [
+    "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+    "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+  ],
+  "findings": [
+    {
+      "id": "F-XRPINSIGHTS-ETF-COHORT-REFRESH",
+      "evidence_class": "SECONDARY_TRACKER_REFRESH_FROM_ISSUER_HOLDINGS",
+      "claim": "At capture, XRP Insights displayed 1.19009B XRP and $1.59147B AUM for six US spot XRP ETFs plus BITW; its week-44 flow display was -3.12M XRP, with -2.96M XRP across Oct 26–28 and +174,140 XRP on Oct 28. The page states Oct 29 holdings were not yet settled and that GXRP is excluded from flow totals while a data gap is corrected, though its holdings remain in the holdings total.",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "external_url": "https://xrp-insights.com/",
+      "limitations": [
+        "Dynamic price display showed $1.24 and -6.52% over 24h at capture, but the page did not expose a synchronized exchange quote timestamp.",
+        "Flow window ends Oct 28; no Oct 29 settled flow was available.",
+        "This is the same underlying tracker already represented by canonical source IDs, not an independent source."
+      ]
+    },
+    {
+      "id": "F-CORPSTACKING-BROADER-DIRECT-FUND-UNIVERSE",
+      "evidence_class": "SECONDARY_TRACKER_CANDIDATE_NOT_YET_CANONICAL",
+      "claim": "CorpStacking reports 1,409,496,942 XRP across 10 direct-XRP funds/ETPs as of Oct 29. Its methodology excludes diversified basket funds such as BITW and includes a broader direct-XRP fund universe than XRP Insights' six US spot funds plus BITW.",
+      "source_candidate_id": "Q-CORPSTACKING-XRP-FUND-UNIVERSE-20261029",
+      "external_url": "https://www.corpstacking.com/treasuries/by-token/ripple",
+      "limitations": [
+        "The top-level totals cannot be compared by simple subtraction until products, jurisdictions, as-of dates, custody structures and share counts are cross-walked fund by fund.",
+        "The source is a secondary tracker; linked sponsor disclosures require direct validation."
+      ]
+    },
+    {
+      "id": "F-CRYPTOSLATE-COST-ESTIMATE-DEPENDENCY",
+      "evidence_class": "SECONDARY_METHOD_COMMENTARY_NOT_INDEPENDENT_FLOW_CONFIRMATION",
+      "claim": "CryptoSlate reports a modeled XRP fund acquisition cost around $1.707, or $1.712 including BITW, and a matched-cohort holdings decline of about 0.26% from Oct 23 to Oct 28. The article relies on XRP Insights data. The estimate is not shareholder return, actual investor cost basis, a price floor or a contractual liquidation threshold.",
+      "source_candidate_id": "Q-CRYPTOSLATE-XRP-ETF-COST-METHODOLOGY-20261029",
+      "external_url": "https://cryptoslate.com/crypto-investors-refuse-to-sell-xrp-etf-tokens-despite-a-25-price-crash/",
+      "limitations": [
+        "Do not count CryptoSlate and XRP Insights as independent confirmations of the same flow series.",
+        "Fund holdings changes alone do not distinguish cash creations, in-kind transfers, fees, index changes or data reconstruction."
+      ]
+    },
+    {
+      "id": "F-PR1353-EXACT-HEAD-VALIDATION-ACCESS",
+      "evidence_class": "CONFIRMED_REPOSITORY_OBSERVATION",
+      "claim": "Added a read-only push-triggered workflow scoped to the research branch in commit 44dc24f830dbc3d8928ac9f8e59acd3c694649d3. The PR-associated fail-closed gate run 40971226101 passed. The available GitHub connector returns only pull-request-triggered workflow runs, so the new push-triggered pytest result could not be inspected in this run; the Python validator and regression suite are not claimed as executed or passed.",
+      "external_url": "https://github.com/Barrot-Agent/B-Agent/pull/1353",
+      "limitations": [
+        "The gate is not the pytest suite.",
+        "No workflow dispatch was performed.",
+        "PR #1353 remains draft and unmerged."
+      ]
+    },
+    {
+      "id": "F-MAIN-XRP-SIGNAL-STALE",
+      "evidence_class": "CONFIRMED_REPOSITORY_READBACK",
+      "claim": "Current main SHA is 4c4ae6c2611c33254e3d92e1110ce588bf6f59e4. Main's XRP signal still has timestamp 2026-10-29T13:23:33Z, score 44, confidence 0.0, news score 88 from 11 entries, missing GitHub model credentials and Groq HTTP 429; the public summary still narrates mixed/modestly positive sentiment and references stale audio. This is not a valid price forecast.",
+      "source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T2210Z"
+      ],
+      "external_url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "limitations": [
+        "The cited canonical source record captured an earlier main SHA; the current artifact was independently read back at this run's cutoff. The new current-head observation is recorded here, not retroactively inserted into the old source record."
+      ]
+    }
+  ],
+  "market_observations": [
+    {
+      "id": "M-XRPINSIGHTS-ETF-HOLDINGS-FLOW-20261029T2308Z",
+      "asset": "XRP",
+      "source_id": "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+      "observed_at_utc": "2026-10-29T23:08:00Z",
+      "as_of_date": "2026-10-28 close for holdings/flows",
+      "tracked_xrp_held": 1190090000,
+      "aum_usd": 1591470000,
+      "flow_oct26_to_oct28_xrp": -2960000,
+      "flow_oct28_xrp": 174140,
+      "price_display_usd": 1.24,
+      "displayed_change_24h_pct": -6.52,
+      "universe": "six US spot XRP ETFs plus BITW",
+      "feature_admitted": false
+    },
+    {
+      "id": "M-CORPSTACKING-DIRECT-XRP-FUNDS-20261029T2308Z",
+      "asset": "XRP",
+      "source_candidate_id": "Q-CORPSTACKING-XRP-FUND-UNIVERSE-20261029",
+      "observed_at_utc": "2026-10-29T23:08:00Z",
+      "as_of_date": "Oct 28–29 by fund",
+      "direct_xrp_fund_count": 10,
+      "reported_xrp_held": 1409496942,
+      "universe": "broader direct-XRP funds/ETPs; diversified basket funds such as BITW excluded",
+      "feature_admitted": false
+    },
+    {
+      "id": "M-ETF-MODELED-ACQUISITION-COST-CAVEAT-20261029T2308Z",
+      "asset": "XRP",
+      "source_candidate_id": "Q-CRYPTOSLATE-XRP-ETF-COST-METHODOLOGY-20261029",
+      "observed_at_utc": "2026-10-29T23:08:00Z",
+      "modeled_cost_usd_per_xrp": 1.707,
+      "alternative_nav_based_cost_usd_per_xrp": 1.7458,
+      "matched_cohort_holdings_change_oct23_to_oct28_pct": -0.26,
+      "status": "METHODOLOGY_CONTEXT_ONLY_NOT_PRICE_SIGNAL",
+      "feature_admitted": false
+    }
+  ],
+  "external_source_queue": {
+    "path": "data/xrp_intelligence/queued_source_candidates/20261029T2308Z-etf-universe-crosswalk.json",
+    "status": "DISCOVERED_NOT_INGESTED_IN_CANONICAL_SOURCE_ARCHIVE",
+    "candidate_ids": [
+      "Q-XRPINSIGHTS-REFRESH-20261029T2308Z",
+      "Q-CRYPTOSLATE-XRP-ETF-COST-METHODOLOGY-20261029",
+      "Q-CORPSTACKING-XRP-FUND-UNIVERSE-20261029"
+    ]
+  },
+  "interpretation": "The two headline holdings totals describe different product universes and should not be averaged or treated as contradictory without a fund-level crosswalk. XRP Insights' net holdings reduction over Oct 26–28 was small relative to its tracked holdings and Oct 28 was positive, but the series excludes GXRP from flow totals while its data gap is corrected. CryptoSlate republishes the same underlying tracker and is not independent flow corroboration. AUM and modeled acquisition cost are not investor returns or price floors. No market feature is admitted.",
+  "competing_hypotheses": [
+    {
+      "id": "HYP-XRP-ETF-RETENTION-VS-FLOW-COHORT-20261029",
+      "claim": "Most of the measured XRP Insights fund cohort retained its tracked XRP holdings through the Oct 23–28 price decline; the matched cohort fell about 0.26% while the final Oct 28 session showed a positive 174,140 XRP change.",
+      "supporting_source_ids": [
+        "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "disconfirming_evidence": [
+        "GXRP is excluded from flow totals while a historical data gap is corrected.",
+        "Holdings changes do not reveal whether creations were cash or in-kind.",
+        "The dataset begins with reconstructed historical holdings for some products; no shareholder-level transactions are observed."
+      ],
+      "status": "PLAUSIBLE_TRACKER_DERIVED_NOT_INDEPENDENTLY_CONFIRMED"
+    },
+    {
+      "id": "HYP-ETF-UNIVERSE-DIFFERENCE-VS-DATA-CONFLICT-20261029",
+      "claim": "The 1.190B XRP tracker total and the 1.409B direct-fund total can differ because the products, jurisdictions and basket-fund rules differ, rather than because one tracker is necessarily wrong.",
+      "supporting_source_ids": [
+        "SRC-XRPINSIGHTS-ETF-20261029T211600Z"
+      ],
+      "disconfirming_evidence": [
+        "Fund-by-fund crosswalk and matched as-of dates have not yet been completed.",
+        "CorpStacking's full ten-fund table is not fully visible in its free view.",
+        "Issuer disclosures may reveal actual tracker errors or stale rows."
+      ],
+      "status": "LIKELY_METHODOLOGICAL_EXPLANATION_UNVERIFIED"
+    },
+    {
+      "id": "HYP-ETF-COST-ESTIMATE-NOT-PRICE-FLOOR-20261029",
+      "claim": "The reported $1.707–$1.746 modeled acquisition cost is a historical accounting estimate and should not be used as a price floor or forecast target.",
+      "supporting_source_ids": [
+        "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029"
+      ],
+      "disconfirming_evidence": [
+        "A future analysis could test whether the estimate has incremental predictive value, but no such test has been run.",
+        "Share counts, creations/redemptions and fund NAV data may improve flow attribution but still do not establish a guaranteed support level."
+      ],
+      "status": "METHODOLOGICAL_CONSTRAINT_CONFIRMED"
+    }
+  ],
+  "validation_state": {
+    "ledger_migration": "STRUCTURAL_READBACK_PASS",
+    "validator_tests": "NOT_VERIFIED",
+    "new_push_workflow": "DESIGNED_AND_COMMITTED; PUSH_RUN_RESULT_NOT_ACCESSIBLE_THROUGH_CURRENT_CONNECTOR",
+    "latest_pr_gate_run_id": 40971226101,
+    "latest_pr_gate_conclusion": "success",
+    "latest_pr_head": "44dc24f830dbc3d8928ac9f8e59acd3c694649d3",
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "workflow_dispatch_performed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_executed": false,
+  "workflow_dispatch_performed": false,
+  "real_money_trade": false,
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261029T2308Z-etf-universe-crosswalk-ledger-validation.json"
+}
