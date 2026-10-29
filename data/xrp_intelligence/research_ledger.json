@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T01:39:10.816Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013910-STABLECOIN-VINTAGE-UPDATE",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013910-stablecoin-vintage-update.json",
-    "snapshot_blob_sha": "bf737bae86535fdf7c4e1d912b6057699f214711",
-    "snapshot_commit_sha": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5"
+    "captured_at_utc": "2026-10-29T01:41:51.133Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T014151-SBI-SBIC-ENTITY-RESOLUTION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014151-sbi-sbic-entity-resolution.json",
+    "snapshot_blob_sha": "4f8ab4889759c6da7b2a347c17361f070a99ba77",
+    "snapshot_commit_sha": "04af1a7b89176f314e3fdb19fa375453a876a619"
   },
   "sources": [
     {
@@ -5367,6 +5367,86 @@
       "title": "Append-only RLUSD custody and stablecoin flow graph",
       "accessed_at_utc": "2026-10-29T01:39:10.816Z",
       "note": "Graph blob SHA 724e33a28ebc03b3840c25e09ac9f117a237c57b; six relationship edges and one competing hypothesis, with source-vintage caveats and disconfirming evidence."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+      "evidence_class": "OFFICIAL_SBI_INVESTOR_PRESENTATION",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250207presentations.pdf",
+      "title": "SBI Group investor presentation on Ripple equity and XRP use",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "Feb 2025 presentation reports approx 9% Ripple equity as largest external shareholder, SBI Ripple Asia joint venture and XRP remittance history. Dated stake; not current cap-table verification."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+      "evidence_class": "OFFICIAL_SBI_COMPANY_DISCLOSURE",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+      "title": "SBI Group and Circle USDC joint venture / investment",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "Aug 22, 2025 disclosure says SBI bought $50M of Circle shares at IPO and formed a joint venture to promote USDC use in Japan. Exact ongoing ownership percentage not stated."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+      "evidence_class": "OFFICIAL_SBI_COMPANY_DISCLOSURE",
+      "url": "https://www.sbigroup.co.jp/news/2026/1001_16640.html",
+      "title": "SBI completes full acquisition of Bitbank",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "SBI confirmed Bitbank became its wholly owned subsidiary on Oct 1, 2026."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+      "evidence_class": "OFFICIAL_SBI_GROUP_PROFILE",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "title": "SBI Ripple Asia ownership and remit",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "SBI Group profile reports 60% voting ownership as of Mar 31, 2026; Ripple owns 40% per official group presentation."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
+      "evidence_class": "OFFICIAL_SBI_COMPANY_DISCLOSURE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0625_16429.html",
+      "title": "SBI Bitbank acquisition agreement via SBICAH GK",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "June 25 notice names SBICAH GK as the wholly owned acquisition vehicle. The notice does not expand SBICAH; it is distinct from SBIC East Japan."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
+      "evidence_class": "OFFICIAL_COMPANY_REPORT_OF_THIRD_PARTY_RANKING",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0904_16564.html",
+      "title": "Bitbank Q3 2026 Kaiko exchange ranking",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "Bitbank reported Kaiko's Q3 2026 ranking as Japan #1 and global #23 as of Sep 4; exchange-wide ranking, not XRP-specific depth or volume."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBI-EVERNORTH",
+      "evidence_class": "OFFICIAL_SBI_COMPANY_DISCLOSURE",
+      "url": "https://www.sbigroup.co.jp/news/2025/1021_15831.html",
+      "title": "SBI investment in Evernorth XRP treasury PIPE",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "SBI announced investment alongside Ripple and others in Evernorth, described as an institutional XRP treasury vehicle; no current net XRP balance established."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+      "evidence_class": "OFFICIAL_SISTER_COMPANY_PROFILE",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "title": "SBIC Central Japan company profile",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "Official profile for the Nagoya regional SME investment and consultation company; distinct from SBI Holdings and SBICAH GK."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBIC-WEST",
+      "evidence_class": "OFFICIAL_SISTER_COMPANY_PROFILE",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "title": "SBIC West Japan company profile",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "Official profile for the Osaka regional SME investment and consultation company; distinct from SBI Holdings and SBICAH GK."
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBI-SBIC-RELATIONSHIP-GRAPH",
+      "evidence_class": "INTERNAL_RELATIONSHIP_GRAPH_ADDENDUM",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/relationship_graph_addenda/20261029T014151-sbi-sbic-ripple-circle.json",
+      "title": "Append-only relationship graph: SBI, SBIC, Ripple, Circle and XRP",
+      "accessed_at_utc": "2026-10-29T01:41:51.133Z",
+      "note": "Graph blob SHA 50ed6d7ecd7fb6749c974e6dc7e54288627c53f8; 12 edges and 3 hypotheses."
     }
   ],
   "limitations": [
@@ -5508,7 +5588,11 @@
     "2026-10-29T01:37:41.136Z: PR #1281 exact-head checks passed, but its base is now one commit behind main; the only observed main change is the paper-trading log append and no overlapping paths were found.",
     "2026-10-29T01:39:10.816Z: RLUSD Oct 22 official supply/reserves and Oct 1 secondary-reported figures imply a provisional ~5.1% circulation decline, but source vintages differ; not a harmonized time series.",
     "2026-10-29T01:39:10.816Z: Circle USDC snapshots show $72.0B Oct 22 and $71.0B Oct 26 across different official page vintages; no causal movement to RLUSD or XRP established.",
-    "2026-10-29T01:39:10.816Z: ETF-flow and derivatives snapshots disagree on universe/cutoff; no synchronized XRP market features were admitted."
+    "2026-10-29T01:39:10.816Z: ETF-flow and derivatives snapshots disagree on universe/cutoff; no synchronized XRP market features were admitted.",
+    "2026-10-29T01:41:51.133Z: SBI/SBIC entity graph updated. SBIC East/Central/West are regional SME investment companies; SBICAH GK is a separate SBI Holdings acquisition vehicle; do not transfer SBI Group's XRP relationships to SBIC entities.",
+    "2026-10-29T01:41:51.133Z: SBI's reported Ripple stake and Circle investment are corporate equity exposure, not direct XRP balances or proof of market flows.",
+    "2026-10-29T01:41:51.133Z: Bitbank acquisition and Q3 ranking are verified at group/exchange level; XRP-specific depth, inventory and post-acquisition flow effects remain unknown.",
+    "2026-10-29T01:41:51.133Z: SBI Remit ODL is publicly described as live, but current XRP transaction counts and volumes are not disclosed in reviewed sources."
   ],
   "run_updates": [
     {
@@ -9113,6 +9197,36 @@
       "new_competing_hypotheses": 1,
       "raw_market_observations_added": 5,
       "new_synchronized_xrp_market_observations_admitted": 0
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:41:51.133Z",
+      "update_type": "SBI_SBIC_RIPPLE_CIRCLE_ENTITY_RESOLUTION",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+        "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+        "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
+        "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
+        "SRC-RUN25-20261029T014151-SBI-EVERNORTH",
+        "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+        "SRC-RUN25-20261029T014151-SBIC-WEST",
+        "SRC-RUN25-20261029T014151-SBI-SBIC-RELATIONSHIP-GRAPH",
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z",
+        "SRC-SBI-RLUSD-JAPAN-2026",
+        "SRC-SBI-USDC-RETAIL-2025-03-25",
+        "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+      ],
+      "index_head_verified": "NOT_VERIFIED_AFTER_THIS_UPDATE",
+      "gate_status": "PENDING_OR_UNVERIFIED",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T014151-sbi-sbic-entity-resolution.json",
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "new_relationship_edges": 12,
+      "new_competing_hypotheses": 3
     }
   ],
   "mission_priority": {
@@ -9340,23 +9454,20 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "f828860d2949eb27a5b3590eee474a69262d7025",
-  "current_research_head_this_run": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5",
+  "current_research_head_before_ledger_update": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5",
+  "current_research_head_this_run": "04af1a7b89176f314e3fdb19fa375453a876a619",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PRIOR_INDEX_GATE_PASS; CURRENT_INDEX_CI_GATE_PENDING; NO_SYNCHRONIZED_XRP_FEATURES_ADMITTED",
+    "status": "SBI_SBIC_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PR1281_CI_GATE_PASS; CURRENT_INDEX_GATE_PENDING",
     "latest_main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013910-stablecoin-vintage-update.json",
-    "snapshot_blob_sha": "bf737bae86535fdf7c4e1d912b6057699f214711",
-    "snapshot_commit_sha": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5",
-    "source_reference_count": 10,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014151-sbi-sbic-entity-resolution.json",
+    "snapshot_blob_sha": "4f8ab4889759c6da7b2a347c17361f070a99ba77",
+    "snapshot_commit_sha": "04af1a7b89176f314e3fdb19fa375453a876a619",
+    "source_reference_count": 15,
     "missing_source_references": 0,
-    "snapshot_characters": 42296,
+    "snapshot_characters": 48195,
     "snapshot_character_metric_matches": true,
-    "prior_index_gate": {
-      "run_id": 40801574754,
-      "head_sha": "1074e9255ad080570e174395fef66d738e107d4a",
-      "status": "success"
-    },
+    "pr1281_ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
+    "pr1281_gate": "PASS",
     "current_index_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "current_index_gate": "PENDING_OR_UNVERIFIED",
     "main_modified_by_this_run": false,
@@ -9364,21 +9475,21 @@
     "forecast_status": "NOT_ISSUED"
   },
   "ledger_metrics": {
-    "source_records": 662,
-    "run_updates": 127,
-    "limitations": 139,
-    "relationship_edges": 116,
-    "competing_hypotheses": 75,
+    "source_records": 672,
+    "run_updates": 128,
+    "limitations": 143,
+    "relationship_edges": 128,
+    "competing_hypotheses": 78,
     "market_observations": 68,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 603249,
+    "index_characters_before_this_update": 610190,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 42296,
-    "index_characters": 610190
+    "latest_snapshot_characters": 48195,
+    "index_characters": 620619
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -9404,14 +9515,14 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:39:10.816Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:41:51.133Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS_PENDING_INDEX_READBACK; PRIOR_INDEX_GATE_PASS; CURRENT_INDEX_GATE_PENDING",
+      "status": "SBI_SBIC_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; CURRENT_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "bf737bae86535fdf7c4e1d912b6057699f214711",
-      "snapshot_commit_sha": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5",
-      "snapshot_characters": 42296,
-      "source_reference_count": 10,
+      "snapshot_blob_sha": "4f8ab4889759c6da7b2a347c17361f070a99ba77",
+      "snapshot_commit_sha": "04af1a7b89176f314e3fdb19fa375453a876a619",
+      "snapshot_characters": 48195,
+      "source_reference_count": 15,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
       "ci": {
@@ -9429,11 +9540,11 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T01:37:41.136Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013741-PAPER-REPLAY-CORRECTION",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json",
-      "snapshot_blob_sha": "cc8fc88ae8f45b560ed8b1f0078b378cdd5159e9",
-      "snapshot_commit_sha": "f828860d2949eb27a5b3590eee474a69262d7025"
+      "captured_at_utc": "2026-10-29T01:39:10.816Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013910-STABLECOIN-VINTAGE-UPDATE",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013910-stablecoin-vintage-update.json",
+      "snapshot_blob_sha": "bf737bae86535fdf7c4e1d912b6057699f214711",
+      "snapshot_commit_sha": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5"
     }
   },
   "index_format_version": "2.0",
@@ -9482,47 +9593,88 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T01:39:10.816Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T01:37:41.136Z",
+    "recorded_at_utc": "2026-10-29T01:41:51.133Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T01:39:10.816Z",
     "source_ids": [
-      "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-TRANSPARENCY",
-      "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-PRODUCT",
-      "SRC-RUN24-20261029T013910-BNY-RLUSD-CUSTODY",
-      "SRC-RUN24-20261029T013910-COINOTAG-RLUSD-OCT01",
-      "SRC-RUN24-20261029T013910-XRP-ETF-INSIGHTS-OCT27",
-      "SRC-RUN24-20261029T013910-XRP-ETF-ALPHA-OCT27",
-      "SRC-RUN24-20261029T013910-XRP-OI-JUSTSCREENER",
-      "SRC-RUN24-20261029T013910-PRIOR-INDEX-GATE",
-      "SRC-RUN24-20261029T013910-CIRCLE-USDC-OCT22",
-      "SRC-RUN24-20261029T013910-RLUSD-CUSTODY-GRAPH"
+      "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+      "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+      "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+      "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+      "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
+      "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
+      "SRC-RUN25-20261029T014151-SBI-EVERNORTH",
+      "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+      "SRC-RUN25-20261029T014151-SBIC-WEST",
+      "SRC-RUN25-20261029T014151-SBI-SBIC-RELATIONSHIP-GRAPH",
+      "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+      "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z",
+      "SRC-SBI-RLUSD-JAPAN-2026",
+      "SRC-SBI-USDC-RETAIL-2025-03-25",
+      "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
     ],
     "main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
-    "rlusd": {
-      "as_of": "2026-10-22",
-      "circulation_usd_billions": 2.3828,
-      "reserves_usd_billions": 2.528
-    },
-    "circle_usdc": {
-      "as_of": "2026-10-26",
-      "circulation_usd_billions": 71,
-      "reserves_usd_billions": 71.2
-    },
-    "xrp_etf_flow_conflict": {
-      "xrp_insights_oct26_27_xrp": -3132685,
-      "alpha_finance_oct27_usd": 0,
-      "coverage_mismatch": true
-    },
-    "xrp_open_interest": {
-      "usd_billions": 1.7,
-      "exchange_count": 9,
-      "time_zone": "unspecified",
-      "admission": "blocked"
+    "sbi_entity_resolution": {
+      "status": "PARTIAL_RESOLUTION_WITH_ENTITY_SEPARATION",
+      "sbic_east_japan": {
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "official_brand": "SBIC East Japan",
+        "source_ids": [
+          "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+          "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
+        ],
+        "chatgpt_mention": "Completed June 12, 2025 training curriculum included ChatGPT use; no partnership or live integration is established.",
+        "xrp_relationship": "NO_DIRECT_RELATIONSHIP_ESTABLISHED_IN_REVIEWED_PUBLIC_EVIDENCE"
+      },
+      "sbic_central_japan": {
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "source_ids": [
+          "SRC-RUN25-20261029T014151-SBIC-CENTRAL"
+        ],
+        "relationship": "Sister regional company to SBIC East Japan; separate legal entity."
+      },
+      "sbic_west_japan": {
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "source_ids": [
+          "SRC-RUN25-20261029T014151-SBIC-WEST"
+        ],
+        "relationship": "Sister regional company to SBIC East Japan; separate legal entity."
+      },
+      "sbicah_gk": {
+        "source_id": "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
+        "role": "SBI Holdings wholly owned acquisition vehicle used in Bitbank transaction",
+        "full_name_expansion": "NOT_VERIFIED_FROM_OFFICIAL_NOTICE",
+        "not_same_as": "SBIC East Japan"
+      },
+      "sbi_group": {
+        "source_ids": [
+          "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+          "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
+          "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+          "SRC-SBI-USDC-RETAIL-2025-03-25",
+          "SRC-SBI-RLUSD-JAPAN-2026",
+          "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
+          "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
+          "SRC-RUN25-20261029T014151-SBI-EVERNORTH"
+        ],
+        "confirmed_relationships": [
+          "Approx 9% Ripple equity stake as reported in Feb 2025 investor presentation",
+          "$50M Circle equity purchase at IPO and Circle JV to promote USDC in Japan as disclosed Aug 2025",
+          "SBI Ripple Asia JV: SBI 60%, Ripple 40% as of Mar 31 2026",
+          "SBI Remit ODL using XRP from Japan to Philippines since 2021; current volume unknown",
+          "SBI VC Trade launched USDC retail trading in Japan Mar 26 2025",
+          "SBI VC Trade began RLUSD handling Jun 24 2026",
+          "Bitbank became wholly owned subsidiary Oct 1 2026",
+          "SBI announced investment in Evernorth XRP treasury PIPE in Oct 2025"
+        ],
+        "important_boundary": "SBI Group relationships do not prove SBIC East/Central/West own XRP or have a direct XRP commercial relationship; equity stake in Ripple is not an XRP token balance."
+      }
     },
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T013910-rlusd-custody-and-market-data.json",
-      "blob_sha": "724e33a28ebc03b3840c25e09ac9f117a237c57b",
-      "edges": 6,
-      "hypotheses": 1
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T014151-sbi-sbic-ripple-circle.json",
+      "blob_sha": "50ed6d7ecd7fb6749c974e6dc7e54288627c53f8",
+      "edges": 12,
+      "hypotheses": 3
     },
     "forecast_status": "NOT_ISSUED"
   },
@@ -9829,6 +9981,22 @@
       "snapshot_character_metric_matches": true,
       "prior_index_gate_run": 40801574754,
       "prior_index_gate": "PASS",
+      "current_index_gate": "PENDING_OR_UNVERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:41:51.133Z",
+      "verification_type": "SBI_SBIC_ENTITY_GRAPH_UPDATE",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014151-sbi-sbic-entity-resolution.json",
+      "snapshot_blob_sha": "4f8ab4889759c6da7b2a347c17361f070a99ba77",
+      "snapshot_commit_sha": "04af1a7b89176f314e3fdb19fa375453a876a619",
+      "snapshot_characters": 48195,
+      "source_reference_count": 15,
+      "missing_source_references": 0,
+      "snapshot_character_metric_matches": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T014151-sbi-sbic-ripple-circle.json",
+      "graph_addendum_blob_sha": "50ed6d7ecd7fb6749c974e6dc7e54288627c53f8",
+      "graph_edges": 12,
+      "graph_hypotheses": 3,
       "current_index_gate": "PENDING_OR_UNVERIFIED"
     }
   ]
