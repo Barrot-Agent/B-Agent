@@ -8050,6 +8050,30 @@
       "title": "Circle Q3 2026 results schedule",
       "accessed_at_utc": "2026-10-29T14:08:56.062Z",
       "note": "Official notice schedules Q3 results for Nov 4, 2026 at 8:00 a.m. ET."
+    },
+    {
+      "id": "SRC-GH-MAIN-LOG-ONLY-COMMIT-20261029T141032Z",
+      "evidence_class": "CONFIRMED_REPOSITORY_COMMIT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
+      "title": "Latest automated paper-trader log append",
+      "accessed_at_utc": "2026-10-29T14:10:32.133Z",
+      "note": "Commit diff changes only web/paper_trading_log.jsonl by appending a BTC-USD hold row at 2026-10-29T14:05:18Z; persisted state is unchanged. Main head is now one commit beyond PR #1325/#1326 bases."
+    },
+    {
+      "id": "SRC-GH-PR1325-CURRENT-STATUS-20261029T141032Z",
+      "evidence_class": "CONFIRMED_PR_STATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1325",
+      "title": "PR #1325 current status after CI update",
+      "accessed_at_utc": "2026-10-29T14:10:32.133Z",
+      "note": "Open, draft, unmerged, mergeable after re-fetch. Exact-head CI 196 tests + 4 subtests and fail-closed gate passed. Base is 86bf1ac4c2114e0ebd468ea0ee032bdbe0947575; main has one log-only commit beyond base; compare lists only PR's 5 intended changed paths."
+    },
+    {
+      "id": "SRC-GH-PR1326-CURRENT-STATUS-20261029T141032Z",
+      "evidence_class": "CONFIRMED_PR_STATE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1326",
+      "title": "PR #1326 current status after CI update",
+      "accessed_at_utc": "2026-10-29T14:10:32.133Z",
+      "note": "Open, draft, unmerged, mergeable after re-fetch. Exact-head CI 189 tests + 4 subtests and fail-closed gate passed. Base is 86bf1ac4c2114e0ebd468ea0ee032bdbe0947575; main has one log-only commit beyond base; compare lists only PR's 2 intended changed paths."
     }
   ],
   "limitations": [
@@ -8269,7 +8293,8 @@
     "At 2026-10-29T13:10Z, main's sentiment emitter still fabricates score 50/confidence 0.5 on malformed provider JSON and blends the fallback score with news even when provider confidence is zero; the news feature loop admits malformed/timezone-naive timestamps and non-finite relevance weights. Draft PR #1324 proposes strict schema validation, explicit NOT_ISSUED forecast metadata, and fail-closed timestamp/weight checks. CI/gate are not yet visible, so the proposal is not verified by tests. PR #1323 CI/gate pass, but its branch is one paper-log commit behind main; PR #1320's paper-trader guard remains unmerged and the recurring schedule is active. PR #1308 cleanup remains unmerged. No synchronized XRP market features admitted; forecast NOT_ISSUED.",
     "PR #1324 exact-head CI and fail-closed gate passed (189 tests plus 4 subtests in 6.14 seconds; all four new tests passed), but the PR remains draft/unmerged. Main therefore still lacks explicit forecast_status in the signal emitter and still contains the timestamp fail-open behavior until an approved merge. PR #1323 read-only merge-queue proposal also has passing CI/gate but is one log-only commit behind main and mergeability should be rechecked. PR #1320 remains unmerged, so the 30-minute paper-trader schedule remains active with position_product=null. PR #1308 cleanup remains unmerged, so the prior unintended data-only graph file remains on main. No synchronized XRP market features admitted; forecast NOT_ISSUED.",
     "At 2026-10-29T14:07:41.167Z, PR #1325 and #1326 exact-head CI/gates passed but both remain draft/unmerged. Main paper-trader schedule remains active with a nonzero simulated position and null product identity; main XRP signal remains invalid (score 44/confidence 0.0, provider failures) and summary still narrates positive headlines. No synchronized XRP market panel or full paper-trading replay was produced. PRs #1320 and #1324 remain open/stale; no older PR was closed.",
-    "As of 2026-10-29T14:08:56.062Z, Coinbase's Oct 28 RLUSD launch is confirmed but actual Coinbase Global Exchange collateral usage and any XRP spot-demand effect remain unverified. XRP ETF dashboards are not comparable: Alpha Finance reports $0 on Oct 28 across five funds; XRP Insights reports -3,132,685 XRP for Oct 26-27 across six spot funds plus BITW and marks Oct 28 provisional; CryptoETF.today internally conflicts on 3/5 versus 5/5 funds reporting; XRP Desk's reported -4,000 XRP has unreconciled scope. No flow feature admitted until issuer-level reconstruction."
+    "As of 2026-10-29T14:08:56.062Z, Coinbase's Oct 28 RLUSD launch is confirmed but actual Coinbase Global Exchange collateral usage and any XRP spot-demand effect remain unverified. XRP ETF dashboards are not comparable: Alpha Finance reports $0 on Oct 28 across five funds; XRP Insights reports -3,132,685 XRP for Oct 26-27 across six spot funds plus BITW and marks Oct 28 provisional; CryptoETF.today internally conflicts on 3/5 versus 5/5 funds reporting; XRP Desk's reported -4,000 XRP has unreconciled scope. No flow feature admitted until issuer-level reconstruction.",
+    "PR #1325 and #1326 are one automated log-only commit behind main at 2026-10-29T14:10:32.133Z. Both re-fetched as mergeable and their diffs do not overlap the latest main change, but mergeability/base must be rechecked immediately before any approved merge. The paper-trader schedule remains active until approval; no workflow was disabled or dispatched by this run."
   ],
   "run_updates": [
     {
@@ -14038,6 +14063,51 @@
       "force_push": false,
       "deployment_executed": false,
       "real_money_trade": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T14:10:32.133Z",
+      "update_type": "POST-CI_CURRENT-MAIN_AND_PR_BASE_RECHECK",
+      "source_ids": [
+        "SRC-GH-MAIN-LOG-ONLY-COMMIT-20261029T141032Z",
+        "SRC-GH-PR1325-CURRENT-STATUS-20261029T141032Z",
+        "SRC-GH-PR1326-CURRENT-STATUS-20261029T141032Z"
+      ],
+      "summary": "Rechecked current main after automated cycle: main head 2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868 adds only one BTC-USD hold row to web/paper_trading_log.jsonl; persisted state unchanged. PR #1325 and #1326 remain open, draft, unmerged and currently mergeable. Each base is one commit behind main; compare lists no overlapping paths. Exact-head CI/gates remain green. Recheck base and mergeability immediately before approval; no merge or main write.",
+      "main_sha": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
+      "pr1325": {
+        "head": "3335b44eb30bbf0b0ffbb7e58b1171d79c0212f1",
+        "base": "86bf1ac4c2114e0ebd468ea0ee032bdbe0947575",
+        "mergeable": true,
+        "behind_by": 1,
+        "changed_paths": [
+          ".github/workflows/ci.yml",
+          ".github/workflows/coinbase-paper-trader.yml",
+          "scripts/coinbase_paper_trader.py",
+          "tests/test_paper_trader_product_state.py",
+          "tests/test_paper_trader_workflow_safety.py"
+        ],
+        "ci": "PASS_196_TESTS_PLUS_4_SUBTESTS_6.84S",
+        "gate": "PASS_FAIL_CLOSED"
+      },
+      "pr1326": {
+        "head": "be98558d5a8a2cb7f4aef136f407cc4153b367e7",
+        "base": "86bf1ac4c2114e0ebd468ea0ee032bdbe0947575",
+        "mergeable": true,
+        "behind_by": 1,
+        "changed_paths": [
+          "scripts/emit_signal.py",
+          "tests/test_v3_scripts.py"
+        ],
+        "ci": "PASS_189_TESTS_PLUS_4_SUBTESTS_6.85S",
+        "gate": "PASS_FAIL_CLOSED"
+      },
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false
     }
   ],
   "mission_priority": {
@@ -14265,10 +14335,10 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "8094a3bdd125af4032e57759cfd6fe2f565cf9ed",
-  "current_research_head_this_run": "8094a3bdd125af4032e57759cfd6fe2f565cf9ed",
+  "current_research_head_before_ledger_update": "92307044f2005b1dc16077bdbd299f59717e18ad",
+  "current_research_head_this_run": "92307044f2005b1dc16077bdbd299f59717e18ad",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; COINBASE_RLUSD_OFFICIAL_ANNOUNCEMENT_VERIFIED; ETF_FLOW_CONFLICT_RECORDED; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; COINBASE_RLUSD_OFFICIAL_ANNOUNCEMENT_VERIFIED; ETF_FLOW_CONFLICT_RECORDED; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS; MAIN_LOG_ONLY_COMMIT_RECONCILED; PR1325_PR1326_BASE_RECHECK_PASS",
     "latest_main_sha": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T140856Z-coinbase-rlusd-etf-flow-conflict.json",
     "snapshot_blob_sha": "08f537a075ac68bfa5ec4ac8892bac3d05c91c9f",
@@ -14292,12 +14362,41 @@
     "force_push": false,
     "deployment_executed": false,
     "real_money_trade": false,
-    "index_pointer_status": "PASS_AFTER_LEDGER_READBACK"
+    "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
+    "pr1325": {
+      "head": "3335b44eb30bbf0b0ffbb7e58b1171d79c0212f1",
+      "base_sha": "86bf1ac4c2114e0ebd468ea0ee032bdbe0947575",
+      "mergeable": true,
+      "behind_by": 1,
+      "changed_paths": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/coinbase-paper-trader.yml",
+        "scripts/coinbase_paper_trader.py",
+        "tests/test_paper_trader_product_state.py",
+        "tests/test_paper_trader_workflow_safety.py"
+      ],
+      "ci": "PASS_196_TESTS_PLUS_4_SUBTESTS_6.84S",
+      "gate": "PASS_FAIL_CLOSED",
+      "state": "DRAFT_OPEN_UNMERGED"
+    },
+    "pr1326": {
+      "head": "be98558d5a8a2cb7f4aef136f407cc4153b367e7",
+      "base_sha": "86bf1ac4c2114e0ebd468ea0ee032bdbe0947575",
+      "mergeable": true,
+      "behind_by": 1,
+      "changed_paths": [
+        "scripts/emit_signal.py",
+        "tests/test_v3_scripts.py"
+      ],
+      "ci": "PASS_189_TESTS_PLUS_4_SUBTESTS_6.85S",
+      "gate": "PASS_FAIL_CLOSED",
+      "state": "DRAFT_OPEN_UNMERGED"
+    }
   },
   "ledger_metrics": {
-    "source_records": 987,
-    "run_updates": 179,
-    "limitations": 217,
+    "source_records": 990,
+    "run_updates": 180,
+    "limitations": 218,
     "relationship_edges": 251,
     "competing_hypotheses": 142,
     "market_observations": 87,
@@ -14306,10 +14405,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 4,
-    "index_characters_before_this_update": 970118,
+    "index_characters_before_this_update": 970259,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 7789,
-    "index_characters": 970259
+    "index_characters": 975486
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -15449,5 +15548,5 @@
       "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "8094a3bdd125af4032e57759cfd6fe2f565cf9ed"
+  "current_research_head_before_this_update": "92307044f2005b1dc16077bdbd299f59717e18ad"
 }
