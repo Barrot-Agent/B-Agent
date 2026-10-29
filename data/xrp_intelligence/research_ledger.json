@@ -14268,7 +14268,7 @@
   "current_research_head_before_ledger_update": "8094a3bdd125af4032e57759cfd6fe2f565cf9ed",
   "current_research_head_this_run": "8094a3bdd125af4032e57759cfd6fe2f565cf9ed",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; COINBASE_RLUSD_OFFICIAL_ANNOUNCEMENT_VERIFIED; ETF_FLOW_CONFLICT_RECORDED; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; COINBASE_RLUSD_OFFICIAL_ANNOUNCEMENT_VERIFIED; ETF_FLOW_CONFLICT_RECORDED; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
     "latest_main_sha": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T140856Z-coinbase-rlusd-etf-flow-conflict.json",
     "snapshot_blob_sha": "08f537a075ac68bfa5ec4ac8892bac3d05c91c9f",
@@ -14291,7 +14291,8 @@
     "merge_performed": false,
     "force_push": false,
     "deployment_executed": false,
-    "real_money_trade": false
+    "real_money_trade": false,
+    "index_pointer_status": "PASS_AFTER_LEDGER_READBACK"
   },
   "ledger_metrics": {
     "source_records": 987,
@@ -14305,10 +14306,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 4,
-    "index_characters_before_this_update": 963948,
+    "index_characters_before_this_update": 970118,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 7789,
-    "index_characters": 970118
+    "index_characters": 970259
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -14378,7 +14379,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T14:08:56.062Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; MARKET_OBSERVATIONS_NOT_ADMITTED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; MARKET_OBSERVATIONS_NOT_ADMITTED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "08f537a075ac68bfa5ec4ac8892bac3d05c91c9f",
       "snapshot_commit_sha": "2e0c1e0761c139f28a01d4ce8f63f5de5edc2d91",
@@ -14394,7 +14395,7 @@
       "graph_hypotheses": 4,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
-      "index_pointer_status": "PENDING_LEDGER_READBACK",
+      "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
       "market_observations_logged": 4,
       "market_features_admitted": false,
       "forecast_status": "NOT_ISSUED",
