@@ -14166,7 +14166,7 @@
   "current_research_head_before_ledger_update": "d5d85034fda1479d94dcfe3028e4971278830999",
   "current_research_head_this_run": "d5d85034fda1479d94dcfe3028e4971278830999",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1325_CI_196_PLUS_4_PASS; PR1325_GATE_PASS; PR1326_CI_189_PLUS_4_PASS; PR1326_GATE_PASS; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1325_CI_196_PLUS_4_PASS; PR1325_GATE_PASS; PR1326_CI_189_PLUS_4_PASS; PR1326_GATE_PASS; MAIN_UNCHANGED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
     "latest_main_sha": "2f4aa6d8b34b55cb37ffb430bbac3f7dcff3f868",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T140741Z-pr1325-1326-ci-current-main.json",
     "snapshot_blob_sha": "f31603554b6dbc26aea10f521f12bebb4b10421a",
@@ -14210,7 +14210,8 @@
       "ci": "PASS_189_TESTS_PLUS_4_SUBTESTS_6.85S",
       "gate": "PASS_FAIL_CLOSED",
       "state": "DRAFT_OPEN_UNMERGED"
-    }
+    },
+    "index_pointer_status": "PASS_AFTER_LEDGER_READBACK"
   },
   "ledger_metrics": {
     "source_records": 979,
@@ -14224,10 +14225,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 952054,
+    "index_characters_before_this_update": 963807,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 7814,
-    "index_characters": 963807
+    "index_characters": 963948
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -14297,7 +14298,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T14:07:41.167Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1325_CI_GATE_PASS; PR1326_CI_GATE_PASS; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1325_CI_GATE_PASS; PR1326_CI_GATE_PASS; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "f31603554b6dbc26aea10f521f12bebb4b10421a",
       "snapshot_commit_sha": "00c9d164cf91005768f1b0ea671b97c309039998",
@@ -14313,7 +14314,7 @@
       "graph_hypotheses": 2,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
-      "index_pointer_status": "PENDING_LEDGER_READBACK",
+      "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
