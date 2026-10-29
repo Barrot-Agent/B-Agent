@@ -2063,3 +2063,8 @@ def is_scientific_discovery_task(title: str, body: str) -> bool:
         "research question",
     )
     return any(token in text for token in triggers)
+
+
+def should_route_scientific_discovery(mode: str, title: str, body: str) -> bool:
+    """Require an explicit route selection before entering scientific discovery."""
+    return str(mode).strip().lower() == "scientific_discovery" and is_scientific_discovery_task(title, body)
