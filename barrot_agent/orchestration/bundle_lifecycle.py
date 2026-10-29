@@ -49,22 +49,80 @@ class BundleLifecycleStore:
                 pass
             raise
 
-    def save_plan(self, work_id: str, result: Any) -> Path:
-        """Persist exact plan, deterministic review, revision attempts, and current state."""
+    def save_plan(self, work_id: str, result: Any, *, request_fingerprint: str | None = None) -> Path:
+        """Persist exact plan, deterministic review, request identity, and current state."""
         directory = self._directory(work_id)
+        path = directory / "lifecycle.json"
+        bundle = getattr(result, "bundle", None)
+        fingerprint = None
+        if isinstance(bundle, dict):
+            canonical = json.dumps(bundle, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+            fingerprint = "sha256:" + hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+        previous = None
+        if path.is_file():
+            try:
+                candidate = json.loads(path.read_text(encoding="utf-8"))
+                if (
+                    candidate.get("work_id") == work_id
+                    and candidate.get("bundle_fingerprint") == fingerprint
+                    and candidate.get("request_fingerprint") == request_fingerprint
+                ):
+                    previous = candidate
+            except (OSError, ValueError, TypeError):
+                previous = None
         payload = {
             "schema_version": "1.0",
             "work_id": work_id,
             "updated_at": datetime.now(timezone.utc).isoformat(),
             "status": getattr(result, "status", "UNKNOWN"),
-            "bundle": getattr(result, "bundle", None),
+            "bundle": bundle,
+            "bundle_fingerprint": fingerprint,
+            "request_fingerprint": request_fingerprint,
             "review": result.review.to_dict() if getattr(result, "review", None) else None,
             "attempts": list(getattr(result, "attempts", []) or []),
-            "execution_evidence": [],
+            "execution_evidence": list((previous or {}).get("execution_evidence", [])),
+            "task_states": dict((previous or {}).get("task_states", {})),
         }
-        path = directory / "lifecycle.json"
         self._atomic_json(path, payload)
         return path
+
+    def record_task_execution(self, work_id: str, task_id: str, evidence: dict[str, Any]) -> Path:
+        """Append task-level evidence while retaining the latest state for interruption resume."""
+        if not isinstance(task_id, str) or not task_id.strip():
+            raise ValueError("task_id must be non-empty")
+        path = self._directory(work_id) / "lifecycle.json"
+        if not path.is_file():
+            raise FileNotFoundError("bundle lifecycle must be initialized before task execution")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if payload.get("work_id") != work_id:
+            raise ValueError("bundle lifecycle work_id mismatch")
+        task_states = payload.setdefault("task_states", {})
+        if not isinstance(task_states, dict):
+            raise ValueError("task_states must be an object")
+        history = task_states.setdefault(task_id, [])
+        if not isinstance(history, list):
+            raise ValueError("task state history must be a list")
+        record = {"recorded_at": datetime.now(timezone.utc).isoformat(), **evidence}
+        history.append(record)
+        payload["updated_at"] = datetime.now(timezone.utc).isoformat()
+        self._atomic_json(path, payload)
+        return path
+
+    def latest_task_states(self, work_id: str) -> dict[str, dict[str, Any]]:
+        """Return the latest durable record per task; incomplete histories fail closed."""
+        payload = self.load(work_id)
+        if payload is None:
+            return {}
+        states = payload.get("task_states", {})
+        if not isinstance(states, dict):
+            raise ValueError("task_states must be an object")
+        latest: dict[str, dict[str, Any]] = {}
+        for task_id, history in states.items():
+            if not isinstance(history, list) or not history:
+                continue
+            if isinstance(history[-1], dict):
+                latest[str(task_id)] = history[-1]
+        return latest
 
     def record_execution(self, work_id: str, evidence: dict[str, Any]) -> Path:
         """Append execution evidence to the durable lifecycle record."""
@@ -94,3 +152,168 @@ class BundleLifecycleStore:
         if payload.get("work_id") != work_id:
             raise ValueError("bundle lifecycle work_id mismatch")
         return payload
+
+
+
+def dispatch_bundle_tasks(
+    *,
+    store: BundleLifecycleStore,
+    work_id: str,
+    bundle: dict[str, Any],
+    execute_task: Any,
+    recover_task: Any = None,
+) -> dict[str, Any]:
+    """Execute ready bundle tasks through the caller's existing queue and resume from evidence.
+
+    The dispatcher never interprets a model assertion as completion. A task is reusable
+    on resume only when its latest durable record contains all queue and verification gates.
+    """
+    if not isinstance(bundle, dict) or not isinstance(bundle.get("tasks"), list) or not bundle["tasks"]:
+        raise ValueError("bundle must contain a non-empty tasks list")
+    if not callable(execute_task):
+        raise ValueError("execute_task must be callable")
+    if recover_task is not None and not callable(recover_task):
+        raise ValueError("recover_task must be callable when provided")
+
+    tasks = bundle["tasks"]
+    task_by_id: dict[str, dict[str, Any]] = {}
+    for task in tasks:
+        if not isinstance(task, dict) or not isinstance(task.get("id"), str) or not task["id"].strip():
+            raise ValueError("every bundle task must have a non-empty id")
+        if task["id"] in task_by_id:
+            raise ValueError(f"duplicate bundle task id: {task['id']}")
+        task_by_id[task["id"]] = task
+
+    for task in tasks:
+        deps = task.get("depends_on", [])
+        if not isinstance(deps, list) or any(dep not in task_by_id for dep in deps):
+            raise ValueError(f"invalid dependencies for task {task['id']}")
+
+    def is_complete(record: dict[str, Any] | None) -> bool:
+        return bool(
+            record
+            and record.get("status") == "complete"
+            and record.get("queue_advanced") is True
+            and record.get("local_validation_passed") is True
+            and record.get("remote_verified") is True
+            and record.get("resolution_verified") is True
+        )
+
+    latest = store.latest_task_states(work_id)
+    completed = {task_id for task_id, record in latest.items() if is_complete(record)}
+    last_result: Any = next((latest[task_id].get("result") for task_id in reversed(list(task_by_id)) if task_id in completed and latest[task_id].get("result") is not None), None)
+    executed: list[str] = []
+    blocked: dict[str, str] = {}
+    no_change: list[str] = []
+    remaining = {task["id"] for task in tasks} - completed
+
+    # Iterate until no more dependency-ready work can be advanced.
+    while remaining:
+        progressed = False
+        for task in tasks:
+            task_id = task["id"]
+            if task_id not in remaining:
+                continue
+            dependencies = task.get("depends_on", [])
+            failed_dependencies = [
+                dep for dep in dependencies
+                if dep in blocked or (dep not in completed and dep not in remaining)
+            ]
+            if failed_dependencies:
+                reason = "dependency blocked: " + ", ".join(failed_dependencies)
+                blocked[task_id] = reason
+                store.record_task_execution(work_id, task_id, {
+                    "status": "blocked",
+                    "reason": reason,
+                    "depends_on": dependencies,
+                })
+                remaining.remove(task_id)
+                progressed = True
+                continue
+            if any(dep not in completed for dep in dependencies):
+                continue
+
+            saved_payload = store.load(work_id) or {}
+            task_history = (saved_payload.get("task_states") or {}).get(task_id, [])
+            attempt_number = len(task_history) + 1 if isinstance(task_history, list) else 1
+            store.record_task_execution(work_id, task_id, {
+                "status": "running",
+                "depends_on": dependencies,
+                "attempt": attempt_number,
+            })
+            try:
+                result = recover_task(task) if recover_task is not None else None
+                recovered_from_queue = result is not None
+                if result is None:
+                    result = execute_task(task)
+                last_result = result
+                raw = result if isinstance(result, dict) else result.to_dict()
+                cycle = raw.get("repair_cycle", raw)
+                if not isinstance(cycle, dict):
+                    cycle = {}
+                commit = cycle.get("commit") or {}
+                cycle_status = cycle.get("status", raw.get("status", "UNKNOWN"))
+                verified_no_change = (
+                    cycle_status == "no_repair_required"
+                    and cycle.get("report_only") is not True
+                    and cycle.get("issue_reproduced") is False
+                    and isinstance(cycle.get("validation"), dict)
+                    and isinstance(cycle["validation"].get("issue_reproduction"), dict)
+                    and cycle["validation"]["issue_reproduction"].get("issue_reproduced") is False
+                )
+                evidence = {
+                    "status": "no_change_required" if verified_no_change else cycle_status,
+                    "disposition": "no_change_required" if verified_no_change else "repair_or_blocked",
+                    "cycle_id": cycle.get("cycle_id"),
+                    "queue_advanced": raw.get("queue_advanced") is True,
+                    "local_validation_passed": cycle.get("local_validation_passed") is True,
+                    "remote_verified": commit.get("remote_verified") is True,
+                    "resolution_verified": cycle.get("resolution_verified") is True,
+                    "commit_sha": commit.get("sha", ""),
+                    "failure": cycle.get("failure"),
+                    "depends_on": dependencies,
+                    "result": raw,
+                    "recovered_from_queue": recovered_from_queue,
+                }
+                store.record_task_execution(work_id, task_id, evidence)
+                if is_complete(evidence):
+                    completed.add(task_id)
+                elif verified_no_change:
+                    no_change.append(task_id)
+                    blocked[task_id] = "no repair required: deterministic reproduction showed the issue is absent"
+                else:
+                    blocked[task_id] = str(evidence.get("failure") or evidence["status"])
+                remaining.remove(task_id)
+                executed.append(task_id)
+                progressed = True
+            except Exception as exc:
+                reason = f"{type(exc).__name__}: {str(exc)[:800]}"
+                store.record_task_execution(work_id, task_id, {
+                    "status": "failed",
+                    "reason": reason,
+                    "depends_on": dependencies,
+                })
+                blocked[task_id] = reason
+                remaining.remove(task_id)
+                executed.append(task_id)
+                progressed = True
+        if not progressed:
+            # Any remaining node is dependency-blocked or part of a malformed graph.
+            for task_id in sorted(remaining):
+                reason = "dependencies are not complete; safe to resume after prerequisites pass"
+                blocked[task_id] = reason
+                store.record_task_execution(work_id, task_id, {
+                    "status": "blocked",
+                    "reason": reason,
+                    "depends_on": task_by_id[task_id].get("depends_on", []),
+                })
+            remaining.clear()
+
+    return {
+        "complete": len(completed.intersection(task_by_id)) == len(task_by_id),
+        "completed_task_ids": sorted(completed.intersection(task_by_id)),
+        "executed_task_ids": executed,
+        "blocked_tasks": blocked,
+        "no_change_task_ids": sorted(no_change),
+        "last_result": last_result,
+    }
