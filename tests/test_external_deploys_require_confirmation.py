@@ -18,4 +18,7 @@ def test_external_deploy_workflows_are_manual_and_fail_closed() -> None:
         assert "workflow_dispatch:" in workflow, relative_path
         assert "default: NO" in workflow, relative_path
         assert "options:" in workflow and "- YES" in workflow, relative_path
-        assert "if: ${{ inputs.confirm_external_change == 'YES' }}" in workflow, relative_path
+        assert "if: \${{ inputs.confirm_external_change == 'YES' }}" in workflow, relative_path
+        assert re.search(r"(?m)^\s*(contents|pull-requests):\s*write\b", workflow) is None, relative_path
+        if relative_path.endswith("sync-huggingface.yml"):
+            assert "permissions:\n  contents: read" in workflow, relative_path
