@@ -10936,7 +10936,7 @@
     "index_characters_before_this_update": 716048,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 13187,
-    "index_characters": 725396
+    "index_characters": 725372
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -11488,6 +11488,5 @@
       "gate_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
       "forecast_status": "NOT_ISSUED"
     }
-  ],
-  "__unused__": 724771
+  ]
 }
