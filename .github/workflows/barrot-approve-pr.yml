@@ -1,6 +1,9 @@
 name: Barrot Controlled PR Approval
 
 on:
+  push:
+    paths:
+      - .github/workflows/barrot-approve-pr.yml
   workflow_dispatch:
     inputs:
       pr_number:
@@ -18,10 +21,26 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
+  push-noop:
+    if: github.event_name == 'push'
+    name: Push event is intentionally a no-op
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Explain no-op
+        run: |
+          echo "This workflow only records controlled approvals when manually dispatched."
+          echo "Push events must never apply labels, comment on PRs, or merge code."
+          echo "No approval action performed."
+
   approve:
+    if: github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: read
+      pull-requests: write
     name: Barrot controlled approval
     runs-on: ubuntu-latest
     env:
