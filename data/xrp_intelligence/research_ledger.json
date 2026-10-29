@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T02:09:30.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T020930-MERGE-QUEUE-PR1282-PAPER-REPLAY",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T020930-merge-queue-pr1282-paper-replay.json",
-    "snapshot_blob_sha": "5aa7e8314fa782efcd3fd70bd19aa5338a0263c9",
-    "snapshot_commit_sha": "e3f6c646e2eaccbc20c8635528cb7da84f64fe6d"
+    "captured_at_utc": "2026-10-29T02:58:40.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T025840-MAIN-SAFETY-AND-FEATURE-QA",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T025840-main-safety-and-feature-qa.json",
+    "snapshot_blob_sha": "49ee4760aae2f4da25ffe759af3e79482fc287f9",
+    "snapshot_commit_sha": "0ab61f21294b8dbec8cd591e22a4ceff7efc7cc9"
   },
   "sources": [
     {
@@ -5583,6 +5583,158 @@
       "title": "Open pull-request inventory and safety backlog",
       "accessed_at_utc": "2026-10-29T02:10:30.000Z",
       "note": "Paginated GitHub REST inventory returned 103 open PRs across two pages: 96 drafts and 7 ready for review. Multiple overlapping safety candidates remain open, including merge-queue PRs #1282/#1281/#1277 and variable-horizon accuracy PRs #1274/#1270/#1259. Inventory does not authorize closing or merging any PR."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-MAIN-HEAD-6CDA",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/6cdaff2c725b0013c23a3f35abfaa397eb72e847",
+      "title": "Current main head",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Current main SHA 6cdaff2c725b0013c23a3f35abfaa397eb72e847; Cross-analysis refresh [skip ci], committed 2026-10-29T02:51:40Z. Latest commit modifies generated knowledge-base entity cooccurrence, sentiment profile and sentiment-shift outputs."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-MAIN-MERGE-QUEUE-WORKFLOW",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "title": "Main merge queue remains mutation-capable",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA 19b41e2894fdf1b835498fca3eeab870c3b4c8b1. Grants contents:write and pull-requests:write; dry_run defaults false, max_prs defaults 0 (unlimited), mode=all is available, and the workflow can update branches, comment and run gh pr merge."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-PR1282-STATE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1282",
+      "title": "PR #1282 current state and divergence",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Open, draft, unmerged, mergeable=true; head b803fcb68d3302f6799b2e5f7aadd1afcc27f568. Base SHA 05fdf3c3f0bb864d05673d6c42bb560fba290103, while current main is 6cdaff2c725b0013c23a3f35abfaa397eb72e847. Comparison against original branch base 761870a9ea734d30bd36cbfd0e51aa8505138cd9 reports 3 commits ahead / 6 behind. The six main-side commits modify generated knowledge-base and signal/log data, not the three PR paths; no overlapping changed paths were observed."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-PR1282-CI",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40804504273",
+      "title": "PR #1282 exact-head core CI",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Previously verified exact-head result: 169 tests plus 4 subtests passed in 7.57 seconds. This does not verify the current main head or research ledger index."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-PR1282-GATE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40804504256",
+      "title": "PR #1282 exact-head fail-closed gate",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Previously verified passing gate for PR head b803fcb68d3302f6799b2e5f7aadd1afcc27f568."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-APPROVAL-WORKFLOW",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Main controlled approval workflow",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA bc78b4c4ac9824ffbde99eee64621885e6a52076. Inspected workflow declares workflow_dispatch only and includes an approval-label job; a matching push-event zero-job anomaly remains unexplained."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-ZERO-JOB-RUN-40804796563",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40804796563",
+      "title": "Approval workflow push-event zero-job run",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Run event push, failure, zero jobs; exact service-side event diagnostics were not available through the connector. Root cause remains unresolved."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-SIGNAL-SUMMARY-RUN-40806806734",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40806806734",
+      "title": "Generate Signal Summary failure",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Workflow run failed on 2026-10-29T02:31Z in the Generate summary + TTS step; commit/summary write step was skipped."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-SIGNAL-SUMMARY-LOG",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40806806734",
+      "title": "Signal-summary job log confirms Groq daily token quota",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Job 123227603139 log: HTTP 429 for openai/gpt-oss-120b; daily token limit 200000, used 199459, requested 638; retry-after about 41.904 seconds. Script printed 'Summary generation failed; nothing written.' No directional summary was produced."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-PAPER-LOG-2360",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Current paper-trading log blob",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Exact Git blob SHA f6fd4303116f4f22d976c935092c793be4be1454; fetched by blob SHA after the ordinary contents read returned empty content."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-PAPER-STATE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Persisted paper-trading state",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479. cash_usd=8011.936613782476; position_size=0.024901276579239066 BTC; avg_entry_price=80436.84; trade_count=125; position_product=null. No write was made."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-PAPER-TRADER-SCRIPT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/coinbase_paper_trader.py",
+      "title": "Paper-trader transition implementation",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA b38ab435f575b6037f05fa8e9ea00fd487d2d9eb. Read-only replay used execute_paper_trade semantics from this exact script."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-ENTITY-COOCCURRENCE-OUTPUT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/ping-pongings/knowledge-base/entity_cooccurrence.json",
+      "title": "Generated entity cooccurrence output",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA 972e9a6bb9c964487d9a719355b834295768804d; 3,205 global entity pairs. Examples include Bitcoin/BTC headlines sourced from the XRP pipeline. Pipeline label indicates which log the entry came from, not necessarily the headline's primary asset."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-ENTITY-SENTIMENT-OUTPUT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/ping-pongings/knowledge-base/entity_sentiment_profile.json",
+      "title": "Generated global entity sentiment profile",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA d56ca24f2b8dc8ef1fe4ae2b3685679fbffac379; 987 entities, global unweighted sentiment counts across XRP and BTC logs. Profiles do not provide separate target-asset-specific sentiment scores."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-SENTIMENT-SHIFT-OUTPUT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/ping-pongings/knowledge-base/sentiment_shift.json",
+      "title": "Generated sentiment-shift output",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA 520932b3518c8566c5d9751070379e8a911dd194. XRP recent/prior eligible entries are zero with null scores; BTC recent eligible entries are zero and its prior window has one eligible entry. Null indicates insufficient eligible data, not neutral sentiment."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-ENTITY-COOCCURRENCE-SCRIPT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/entity_cooccurrence.py",
+      "title": "Entity cooccurrence aggregation code",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA 4a40d624f842de662ae92bed8eed5cf15aea9041. Combines XRP and BTC logs into a global pair count and tags examples with pipeline asset."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-ENTITY-SENTIMENT-SCRIPT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/entity_sentiment_profile.py",
+      "title": "Entity sentiment aggregation code",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA 139e0abd58fec9b6fdfdfadd291be74bfcb2135d. Counts each entity's bullish/neutral/bearish mentions across both logs without applying xrp_relevance or btc_relevance weights or producing asset-specific profiles."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-SENTIMENT-SHIFT-SCRIPT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/sentiment_shift.py",
+      "title": "Sentiment shift eligibility logic",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA 31f67e6ed75e95669ca2cb444776d38cdd41d3fe. Uses ingested_at, requires distilled records and positive per-asset relevance; returns null scores when either window has no eligible weighted data."
+    },
+    {
+      "id": "SRC-RUN29-20261029T025840-CROSS-ANALYSIS-WORKFLOW",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/cross-analysis.yml",
+      "title": "Cross-analysis workflow writes generated outputs directly to main",
+      "accessed_at_utc": "2026-10-29T02:58:40.000Z",
+      "note": "Blob SHA 143bb2ed89ef4e2d85071a583896adad2c37c81b. Grants contents:write and commits/pushes generated knowledge-base outputs to main, including a pull-based conflict fallback."
     }
   ],
   "limitations": [
@@ -5735,7 +5887,11 @@
     "2026-10-29T02:09:30Z: A push-event run for barrot-approve-pr.yml on PR #1282's branch failed with zero jobs although the inspected main workflow declares workflow_dispatch only. Root cause remains unresolved; service-side event diagnostics are unavailable.",
     "2026-10-29T02:09:30Z: Current paper-trading log was fully replayed read-only with 2,359 rows and matched persisted numeric state. position_product remains null and was not written.",
     "2026-10-29T02:09:30Z: Latest research-index successor has no verified core CI/gate result; PR #1282 CI/gate evidence does not verify the research ledger.",
-    "2026-10-29T02:10:30Z: The open-PR inventory found 103 open PRs (96 drafts, 7 ready), with overlapping merge-queue and accuracy-metric candidates. This run did not complete a full code/diff review of every PR and did not close or merge any; backlog triage remains."
+    "2026-10-29T02:10:30Z: The open-PR inventory found 103 open PRs (96 drafts, 7 ready), with overlapping merge-queue and accuracy-metric candidates. This run did not complete a full code/diff review of every PR and did not close or merge any; backlog triage remains.",
+    "2026-10-29T02:58:40.000Z: Main merge queue still has write permissions and merge commands; PR #1282 is draft/unmerged and six commits behind current main. Exact-head CI/gate passed on its own head, not current main.",
+    "2026-10-29T02:58:40.000Z: Approval workflow push-event run 40804796563 failed with zero jobs despite the inspected main workflow declaring workflow_dispatch only. Root cause remains unresolved.",
+    "2026-10-29T02:58:40.000Z: Generate Signal Summary run 40806806734 failed with Groq HTTP 429 after daily token usage reached 199459/200000 and requested 638 tokens. No summary was written; main fallback is not verified as deployed.",
+    "2026-10-29T02:58:40.000Z: Entity cooccurrence and sentiment outputs combine XRP and BTC pipelines. Entity sentiment counts are global and unweighted by target relevance; sentiment-shift scores are null due zero eligible recent records. Do not admit these as XRP-only directional features until scope and weighting are explicit."
   ],
   "run_updates": [
     {
@@ -9448,6 +9604,56 @@
       "new_relationship_edges": 0,
       "new_competing_hypotheses": 0,
       "new_synchronized_xrp_market_observations_admitted": 0
+    },
+    {
+      "recorded_at_utc": "2026-10-29T02:58:40.000Z",
+      "update_type": "CURRENT_MAIN_SAFETY_PAPER_REPLAY_AND_XRP_FEATURE_QUALITY_AUDIT",
+      "source_ids": [
+        "SRC-RUN29-20261029T025840-MAIN-HEAD-6CDA",
+        "SRC-RUN29-20261029T025840-MAIN-MERGE-QUEUE-WORKFLOW",
+        "SRC-RUN29-20261029T025840-PR1282-STATE",
+        "SRC-RUN29-20261029T025840-PR1282-CI",
+        "SRC-RUN29-20261029T025840-PR1282-GATE",
+        "SRC-RUN29-20261029T025840-APPROVAL-WORKFLOW",
+        "SRC-RUN29-20261029T025840-ZERO-JOB-RUN-40804796563",
+        "SRC-RUN29-20261029T025840-SIGNAL-SUMMARY-RUN-40806806734",
+        "SRC-RUN29-20261029T025840-SIGNAL-SUMMARY-LOG",
+        "SRC-RUN29-20261029T025840-PAPER-LOG-2360",
+        "SRC-RUN29-20261029T025840-PAPER-STATE",
+        "SRC-RUN29-20261029T025840-PAPER-TRADER-SCRIPT",
+        "SRC-RUN29-20261029T025840-ENTITY-COOCCURRENCE-OUTPUT",
+        "SRC-RUN29-20261029T025840-ENTITY-SENTIMENT-OUTPUT",
+        "SRC-RUN29-20261029T025840-SENTIMENT-SHIFT-OUTPUT",
+        "SRC-RUN29-20261029T025840-ENTITY-COOCCURRENCE-SCRIPT",
+        "SRC-RUN29-20261029T025840-ENTITY-SENTIMENT-SCRIPT",
+        "SRC-RUN29-20261029T025840-SENTIMENT-SHIFT-SCRIPT",
+        "SRC-RUN29-20261029T025840-CROSS-ANALYSIS-WORKFLOW"
+      ],
+      "summary": "Inspected current main, confirmed merge queue remains mutation-capable, verified PR #1282 remains draft with exact-head CI/gate pass but six commits behind current main, replayed all 2360 paper-trading rows read-only with zero result/portfolio mismatches, confirmed signal-summary failure due Groq HTTP 429 daily token quota, and identified global unweighted entity sentiment outputs unsuitable as XRP-only features.",
+      "index_head_verified": "NOT_VERIFIED_AFTER_THIS_UPDATE",
+      "gate_status": "PENDING_OR_UNVERIFIED",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T025840-main-safety-and-feature-qa.json",
+      "forecast_status": "NOT_ISSUED",
+      "main_sha": "6cdaff2c725b0013c23a3f35abfaa397eb72e847",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "paper_trading_replay": "PASS_READ_ONLY_2360_ROWS",
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false,
+      "merge_queue_pr": 1282,
+      "merge_queue_pr_state": "DRAFT_OPEN_UNMERGED",
+      "merge_queue_ci_run": 40804504273,
+      "merge_queue_gate_run": 40804504256,
+      "approval_workflow_zero_job_run": 40804796563,
+      "approval_workflow_root_cause": "UNRESOLVED",
+      "signal_summary_failed_run": 40806806734,
+      "signal_summary_failure": "GROQ_HTTP_429_DAILY_TPD",
+      "cross_analysis_feature_admission": "BLOCKED_UNTIL_TARGET_ASSET_SCOPE_AND_RELEVANCE_WEIGHTING_ARE_EXPLICIT",
+      "new_relationship_edges": 0,
+      "new_competing_hypotheses": 0,
+      "new_synchronized_xrp_market_observations_admitted": 0
     }
   ],
   "mission_priority": {
@@ -9675,36 +9881,36 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "7e954592d11f870e3e8d105849d1f8a9605cb027",
-  "current_research_head_this_run": "e3f6c646e2eaccbc20c8635528cb7da84f64fe6d",
+  "current_research_head_before_ledger_update": "538817a026d3f594b833008a7750c1e512b9f167",
+  "current_research_head_this_run": "0ab61f21294b8dbec8cd591e22a4ceff7efc7cc9",
   "current_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; CURRENT_INDEX_GATE_PENDING",
-    "latest_main_sha": "05fdf3c3f0bb864d05673d6c42bb560fba290103",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T020930-merge-queue-pr1282-paper-replay.json",
-    "snapshot_blob_sha": "5aa7e8314fa782efcd3fd70bd19aa5338a0263c9",
-    "snapshot_commit_sha": "e3f6c646e2eaccbc20c8635528cb7da84f64fe6d",
-    "source_reference_count": 16,
+    "latest_main_sha": "6cdaff2c725b0013c23a3f35abfaa397eb72e847",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T025840-main-safety-and-feature-qa.json",
+    "snapshot_blob_sha": "49ee4760aae2f4da25ffe759af3e79482fc287f9",
+    "snapshot_commit_sha": "0ab61f21294b8dbec8cd591e22a4ceff7efc7cc9",
+    "source_reference_count": 19,
     "missing_source_references": 0,
-    "snapshot_characters": 55038,
+    "snapshot_characters": 9959,
     "snapshot_character_metric_matches": true,
-    "previous_index_gate_run": 40801991494,
-    "previous_index_gate_status": "success",
     "pr1282_core_ci_run": 40804504273,
-    "pr1282_core_ci_status": "success_169_tests_4_subtests",
+    "pr1282_core_ci_status": "PASS_169_TESTS_4_SUBTESTS_7.57S",
     "pr1282_gate_run": 40804504256,
-    "pr1282_gate_status": "success",
+    "pr1282_gate_status": "PASS",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "current_index_gate": "PENDING_OR_UNVERIFIED",
-    "main_modified_by_this_run": false,
+    "paper_trading_replay": "PASS_READ_ONLY_2360_ROWS",
+    "paper_trading_state_mutated": false,
     "merge_performed": false,
-    "forecast_status": "NOT_ISSUED",
-    "paper_trading_replay": "PASS_READ_ONLY_2359_ROWS",
-    "workflow_root_cause": "UNRESOLVED"
+    "main_modified_by_this_run": false,
+    "workflow_root_cause": "UNRESOLVED",
+    "signal_summary_failure": "GROQ_HTTP_429_DAILY_TPD",
+    "forecast_status": "NOT_ISSUED"
   },
   "ledger_metrics": {
-    "source_records": 689,
-    "run_updates": 131,
-    "limitations": 150,
+    "source_records": 708,
+    "run_updates": 132,
+    "limitations": 154,
     "relationship_edges": 128,
     "competing_hypotheses": 78,
     "market_observations": 68,
@@ -9713,10 +9919,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 632052,
+    "index_characters_before_this_update": 634560,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 55038,
-    "index_characters": 634560
+    "latest_snapshot_characters": 9959,
+    "index_characters": 649611
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -9737,8 +9943,28 @@
     "forecast_status": "NOT_ISSUED"
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T02:09:30.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T02:58:40.000Z",
     "post_snapshot_verification": {
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; CURRENT_INDEX_GATE_PENDING",
+      "snapshot_blob_readback_ok": true,
+      "snapshot_blob_sha": "49ee4760aae2f4da25ffe759af3e79482fc287f9",
+      "snapshot_commit_sha": "0ab61f21294b8dbec8cd591e22a4ceff7efc7cc9",
+      "snapshot_characters": 9959,
+      "source_reference_count": 19,
+      "missing_source_references": 0,
+      "snapshot_character_metric_matches": true,
+      "ci": {
+        "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+        "run_id": null,
+        "url": null
+      },
+      "gate": {
+        "status": "PENDING_OR_UNVERIFIED",
+        "run_id": null,
+        "url": null
+      }
+    },
+    "previous_pointer_snapshot": {
       "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; CURRENT_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "5aa7e8314fa782efcd3fd70bd19aa5338a0263c9",
@@ -9758,17 +9984,7 @@
         "url": null
       }
     },
-    "previous_pointer_snapshot": {
-      "record_type": "snapshot_reference",
-      "index_format_version": "2.0",
-      "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T01:42:53.011Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T014253-APPROVAL-WORKFLOW-ANOMALY",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014253-approval-workflow-anomaly.json",
-      "snapshot_blob_sha": "fc505fbd418c2cf515150f0dac60e509f685706f",
-      "snapshot_commit_sha": "7e954592d11f870e3e8d105849d1f8a9605cb027"
-    },
-    "note": "Snapshot was read back from GitHub; pointer path/ID, blob SHA, character count, and all source references were checked. The successor index commit requires its own CI/gate verification."
+    "note": "Immutable snapshot was read back from GitHub and its character metric/source IDs were checked. The successor index commit still requires its own CI/gate verification."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -9816,22 +10032,30 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T02:10:30.000Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T02:09:30.000Z",
+    "recorded_at_utc": "2026-10-29T02:58:40.000Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T02:10:30.000Z",
     "source_ids": [
-      "SRC-RUN27-20261029T020930-MAIN-COMMIT-05FDF",
-      "SRC-RUN27-20261029T020930-MAIN-MERGE-QUEUE",
-      "SRC-RUN27-20261029T020930-MAIN-APPROVAL-WORKFLOW",
-      "SRC-RUN27-20261029T020930-PR1282",
-      "SRC-RUN27-20261029T020930-PR1282-CI-40804504273",
-      "SRC-RUN27-20261029T020930-PR1282-GATE-40804504256",
-      "SRC-RUN27-20261029T020930-ZERO-JOB-40804459929",
-      "SRC-RUN27-20261029T020930-PAPER-LOG-REPLAY-2359",
-      "SRC-RUN27-20261029T020930-PAPER-STATE-READBACK",
-      "SRC-RUN27-20261029T020930-PAPER-TRADER-SCRIPT",
-      "SRC-RUN28-20261029T021030-OPEN-PR-INVENTORY"
+      "SRC-RUN29-20261029T025840-MAIN-HEAD-6CDA",
+      "SRC-RUN29-20261029T025840-MAIN-MERGE-QUEUE-WORKFLOW",
+      "SRC-RUN29-20261029T025840-PR1282-STATE",
+      "SRC-RUN29-20261029T025840-PR1282-CI",
+      "SRC-RUN29-20261029T025840-PR1282-GATE",
+      "SRC-RUN29-20261029T025840-APPROVAL-WORKFLOW",
+      "SRC-RUN29-20261029T025840-ZERO-JOB-RUN-40804796563",
+      "SRC-RUN29-20261029T025840-SIGNAL-SUMMARY-RUN-40806806734",
+      "SRC-RUN29-20261029T025840-SIGNAL-SUMMARY-LOG",
+      "SRC-RUN29-20261029T025840-PAPER-LOG-2360",
+      "SRC-RUN29-20261029T025840-PAPER-STATE",
+      "SRC-RUN29-20261029T025840-PAPER-TRADER-SCRIPT",
+      "SRC-RUN29-20261029T025840-ENTITY-COOCCURRENCE-OUTPUT",
+      "SRC-RUN29-20261029T025840-ENTITY-SENTIMENT-OUTPUT",
+      "SRC-RUN29-20261029T025840-SENTIMENT-SHIFT-OUTPUT",
+      "SRC-RUN29-20261029T025840-ENTITY-COOCCURRENCE-SCRIPT",
+      "SRC-RUN29-20261029T025840-ENTITY-SENTIMENT-SCRIPT",
+      "SRC-RUN29-20261029T025840-SENTIMENT-SHIFT-SCRIPT",
+      "SRC-RUN29-20261029T025840-CROSS-ANALYSIS-WORKFLOW"
     ],
-    "main_sha": "05fdf3c3f0bb864d05673d6c42bb560fba290103",
+    "main_sha": "6cdaff2c725b0013c23a3f35abfaa397eb72e847",
     "merge_queue_safety": {
       "pr": 1282,
       "head_sha": "b803fcb68d3302f6799b2e5f7aadd1afcc27f568",
@@ -9839,18 +10063,12 @@
       "gate_run": 40804504256,
       "ci": "PASS_169_TESTS_4_SUBTESTS_7.57S",
       "gate": "PASS",
-      "state": "DRAFT_UNMERGED"
-    },
-    "workflow_anomaly": {
-      "run_id": 40804459929,
-      "event": "push",
-      "conclusion": "failure",
-      "jobs": 0,
-      "visible_trigger": "workflow_dispatch only",
-      "root_cause": "UNRESOLVED"
+      "state": "DRAFT_UNMERGED",
+      "behind_current_main": 6,
+      "ahead_of_original_base": 3
     },
     "paper_trading_replay": {
-      "records": 2359,
+      "records": 2360,
       "malformed": 0,
       "timestamp_order_errors": 0,
       "result_mismatches": 0,
@@ -9859,57 +10077,65 @@
       "position_product": null,
       "state_mutated": false
     },
-    "synchronized_xrp_market_observations_admitted": 0,
-    "forecast_status": "NOT_ISSUED",
-    "open_pr_inventory": {
-      "captured_at_utc": "2026-10-29T02:10:30.000Z",
-      "open_prs": 103,
-      "drafts": 96,
-      "ready_for_review": 7,
-      "full_diff_audit": "NOT_COMPLETE",
-      "actions_taken": [
-        "Created draft PR #1282",
-        "No PR closed or merged"
-      ],
-      "overlapping_candidates": [
-        1282,
-        1281,
-        1277,
-        1274,
-        1270,
-        1259
-      ]
-    }
+    "signal_summary_failure": {
+      "run_id": 40806806734,
+      "job_id": 123227603139,
+      "http_status": 429,
+      "quota_limit": 200000,
+      "used": 199459,
+      "requested": 638,
+      "output_written": false
+    },
+    "cross_analysis_quality": {
+      "xrp_entries": 1200,
+      "btc_entries": 1230,
+      "btc_only_titles_in_xrp_log": 114,
+      "global_unweighted_entity_sentiment": true,
+      "sentiment_shift_xrp_recent_eligible_entries": 0,
+      "feature_admission": "BLOCKED_FOR_XRP_DIRECTIONAL_MODEL"
+    },
+    "workflow_anomaly": {
+      "run_id": 40804796563,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs": 0,
+      "root_cause": "UNRESOLVED"
+    },
+    "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T02:09:30.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PRIOR_INDEX_HEAD_GATE_PASS; CORE_CI_NOT_TRIGGERED; SUCCESSOR_INDEX_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; CURRENT_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "aa2140b435e07ee9dcf5d7489b5554baa6f91c52",
-      "snapshot_commit_sha": "faeb24d2e4a921f56f627694a8a46ca444754d62",
-      "verified_index_head_before_update": "faeb24d2e4a921f56f627694a8a46ca444754d62",
-      "source_reference_count": 320,
+      "snapshot_blob_sha": "5aa7e8314fa782efcd3fd70bd19aa5338a0263c9",
+      "snapshot_commit_sha": "e3f6c646e2eaccbc20c8635528cb7da84f64fe6d",
+      "snapshot_characters": 55038,
+      "source_reference_count": 16,
       "missing_source_references": 0,
+      "snapshot_character_metric_matches": true,
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
         "url": null
       },
       "gate": {
-        "status": "PASS",
-        "run_id": 40777791185,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777791185",
-        "verified_head_sha": "34893193b0914dee31074a546939e666ea160d02"
-      },
-      "successor_index_ci": "PENDING_AFTER_WRITE",
-      "successor_index_gate": "PENDING_AFTER_WRITE",
-      "verified_index_head": "34893193b0914dee31074a546939e666ea160d02"
+        "status": "PENDING_OR_UNVERIFIED",
+        "run_id": null,
+        "url": null
+      }
     },
-    "previous_inline_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
-    "previous_inline_index_blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
-    "previous_inline_index_characters": 989081,
-    "note": "Snapshot was read back from GitHub; pointer path/ID, blob SHA and source references were checked. The successor index commit itself has no verified CI/gate result yet."
+    "previous_pointer_snapshot": {
+      "record_type": "snapshot_reference",
+      "index_format_version": "2.0",
+      "schema_version": "1.0",
+      "captured_at_utc": "2026-10-29T01:42:53.011Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T014253-APPROVAL-WORKFLOW-ANOMALY",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014253-approval-workflow-anomaly.json",
+      "snapshot_blob_sha": "fc505fbd418c2cf515150f0dac60e509f685706f",
+      "snapshot_commit_sha": "7e954592d11f870e3e8d105849d1f8a9605cb027"
+    },
+    "note": "Snapshot was read back from GitHub; pointer path/ID, blob SHA, character count, and all source references were checked. The successor index commit requires its own CI/gate verification."
   },
   "snapshot_verification_history": [
     {
