@@ -11476,7 +11476,7 @@
   "current_research_head_before_ledger_update": "641d0e764343145aaa371a38dda7590043902194",
   "current_research_head_this_run": "2e153c86a2849c28cdae08b0962aa68ee5034074",
   "current_research_checks": {
-    "status": "PAPER_TRADER_LATEST_ROW_VERIFIED_FROM_COMMIT_DIFF; SNAPSHOT_AND_GRAPH_READBACK_PASS; LEDGER_POINTER_READBACK_PENDING; FORECAST_NOT_ISSUED",
+    "status": "PAPER_TRADER_LATEST_ROW_VERIFIED_FROM_COMMIT_DIFF; SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; FULL_REPLAY_BLOCKED; FORECAST_NOT_ISSUED",
     "latest_main_sha": "dbc2929e5249ebd7637204e8b279896a8336cf53",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0707-paper-trader-log-retrieval-correction.json",
     "snapshot_blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
@@ -11514,7 +11514,14 @@
     "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE",
     "platform_coordination_status": "DESIGNED_NOT_EXECUTED_LIVE_ADAPTERS_NOT_VERIFIED",
     "current_index_gate": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
-    "core_ci": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR"
+    "core_ci": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
+    "index_pointer_readback_ok": true,
+    "index_blob_sha_at_readback": "802d6c8583c868fbe564fc98bafdb921c53c534b",
+    "index_commit_sha_at_readback": "3bacc4e3f86005afab0270cd080a0183f15b068a",
+    "index_character_count_match": true,
+    "index_metric_count_match": true,
+    "missing_snapshot_source_references": 0,
+    "missing_graph_source_references": 0
   },
   "ledger_metrics": {
     "source_records": 807,
@@ -11528,10 +11535,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 1,
-    "index_characters_before_this_update": 771624,
+    "index_characters_before_this_update": 772088,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 32330,
-    "index_characters": 772088
+    "index_characters": 773194
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -11611,7 +11618,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T07:07:00.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; LEDGER_POINTER_READBACK_PENDING; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; LATEST_PAPER_ROW_VERIFIED; FULL_REPLAY_BLOCKED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
       "snapshot_commit_sha": "2e153c86a2849c28cdae08b0962aa68ee5034074",
@@ -11622,11 +11629,17 @@
       "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
       "graph_addendum_blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
       "graph_addendum_readback_ok": true,
-      "index_pointer_readback_ok": false,
-      "index_character_count_match": false,
-      "index_metric_count_match": false,
+      "index_pointer_readback_ok": true,
+      "index_character_count_match": true,
+      "index_metric_count_match": true,
       "source_ids_unique": true,
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "index_blob_sha_at_readback": "802d6c8583c868fbe564fc98bafdb921c53c534b",
+      "index_commit_sha_at_readback": "3bacc4e3f86005afab0270cd080a0183f15b068a",
+      "missing_index_source_references": 0,
+      "verified_source_records": 807,
+      "verified_run_updates": 153,
+      "verified_limitations": 190
     }
   },
   "index_format_version": "2.0",
@@ -12152,9 +12165,16 @@
       "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
       "graph_addendum_blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
       "graph_addendum_readback_ok": true,
-      "index_pointer_status": "PENDING_AFTER_LEDGER_WRITE",
+      "index_pointer_status": "PASS",
       "full_log_replay_status": "BLOCKED_FULL_HISTORICAL_LOG_UNAVAILABLE",
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "index_blob_sha_at_readback": "802d6c8583c868fbe564fc98bafdb921c53c534b",
+      "index_commit_sha_at_readback": "3bacc4e3f86005afab0270cd080a0183f15b068a",
+      "index_character_count_match": true,
+      "index_metric_count_match": true,
+      "source_ids_unique": true,
+      "missing_snapshot_source_references": 0,
+      "missing_graph_source_references": 0
     }
   ]
 }
