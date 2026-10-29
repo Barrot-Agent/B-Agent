@@ -11,6 +11,14 @@ on:
       body:
         description: Task detail
         required: true
+      mode:
+        description: Explicit task route
+        type: choice
+        options:
+          - engineering
+          - scientific_discovery
+        default: engineering
+        required: true
 
 permissions:
   contents: write
@@ -39,6 +47,7 @@ jobs:
       - name: Run Barrot
         env:
           TASK_TITLE: ${{ github.event.issue.title || inputs.title }}
+          TASK_MODE: ${{ inputs.mode || 'engineering' }}
           TASK_BODY: ${{ github.event.issue.body || inputs.body }}
           ISSUE_NUMBER: ${{ github.event.issue.number || '0' }}
           BRANCH: barrot/task-${{ github.event.issue.number || github.run_id }}
