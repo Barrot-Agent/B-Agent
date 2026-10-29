@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T013910-RLUSD-CUSTODY",
+  "captured_at_utc": "2026-10-29T01:39:10.816Z",
+  "policy": "Append-only; supplements earlier graph edges and preserves source-vintage distinctions.",
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "COMPANY"
+    },
+    {
+      "id": "BNY",
+      "label": "BNY",
+      "kind": "CUSTODIAN"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD (RLUSD)",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "NETWORK"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle",
+      "kind": "COMPANY"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_AND_CUSTODY_PLATFORM"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN24-20261029T013910-01",
+      "source": "RIPPLE",
+      "target": "BNY",
+      "relationship": "PRIMARY_CUSTODIAN_OF_RLUSD_RESERVES",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED_2025-07-09",
+      "claim": "Ripple selected BNY as primary custodian for RLUSD reserve assets; this is a custody relationship, not evidence that BNY holds XRP as collateral.",
+      "source_ids": [
+        "SRC-RUN24-20261029T013910-BNY-RLUSD-CUSTODY",
+        "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-PRODUCT"
+      ]
+    },
+    {
+      "id": "EDGE-RUN24-20261029T013910-02",
+      "source": "RLUSD",
+      "target": "XRPL",
+      "relationship": "NATIVE_ISSUANCE_AND_SETTLEMENT_NETWORK",
+      "evidence_class": "CONFIRMED_ISSUER_SOURCE",
+      "status": "CURRENT_PRODUCT_DESCRIPTION",
+      "claim": "Ripple describes RLUSD as natively issued on XRPL and Ethereum; reserve-backed stablecoin settlement on XRPL does not by itself prove use of XRP as a bridge asset.",
+      "source_ids": [
+        "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-PRODUCT",
+        "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-TRANSPARENCY"
+      ]
+    },
+    {
+      "id": "EDGE-RUN24-20261029T013910-03",
+      "source": "CIRCLE",
+      "target": "USDC",
+      "relationship": "ISSUER_AND_RESERVE_REPORTING",
+      "evidence_class": "CONFIRMED_ISSUER_SOURCE",
+      "status": "AS_OF_2026-10-26",
+      "claim": "Circle reports USDC circulation and reserve balances; these are issuer-level totals, not chain-level XRP demand.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+        "SRC-RUN24-20261029T013910-CIRCLE-USDC-OCT22"
+      ]
+    },
+    {
+      "id": "EDGE-RUN24-20261029T013910-04",
+      "source": "USDC",
+      "target": "XRPL",
+      "relationship": "NATIVE_CHAIN_SUPPORT",
+      "evidence_class": "CONFIRMED_ISSUER_SOURCE",
+      "status": "CIRCLE_STATES_XRPL_AMONG_SUPPORTED_CHAINS",
+      "claim": "Circle states native USDC is supported on XRPL among 38 chains; chain-specific circulating balances and transfer volumes remain unverified in this run.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+      ]
+    },
+    {
+      "id": "EDGE-RUN24-20261029T013910-05",
+      "source": "COINBASE",
+      "target": "USDC",
+      "relationship": "DISTRIBUTION_AND_ECONOMIC_RELATIONSHIP",
+      "evidence_class": "CONFIRMED_COMPANY_EARNINGS_RELEASE",
+      "status": "Q2_2026_REPORTED_METRICS",
+      "claim": "Coinbase reported $20B average USDC balances in its products at Q2 end, over 30% of USDC circulation held in Coinbase products, and approximately 50% of USDC economics over the prior year; these are historical issuer/platform metrics.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-COINBASE-Q2"
+      ]
+    },
+    {
+      "id": "EDGE-RUN24-20261029T013910-06",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "DISTRIBUTION_ON_COINBASE_AND_XRPL_RAILS",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED_2026-10-28",
+      "claim": "Coinbase announced RLUSD availability across Prime, Exchange and retail app, with XRPL deposits/withdrawals; Global Exchange collateral support was future rollout at announcement.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN24-20261029T013910-STABLECOIN-CONTRACTION-VS-REDISTRIBUTION",
+      "class": "INFERENCE_FROM_MIXED_VINTAGE_SNAPSHOTS",
+      "hypothesis": "Recent issuer snapshots may indicate lower circulating supply across USDC and RLUSD, but the dates, locale pages and source lineage differ. The data cannot distinguish broad stablecoin contraction from issuer/chain redistribution or reporting-vintage effects, and does not establish capital flow into XRP.",
+      "confidence": "LOW",
+      "observations": [
+        {
+          "asset": "RLUSD",
+          "date": "2026-10-22",
+          "circulation_usd_billion": 2.3828,
+          "reserves_usd_billion": 2.528,
+          "source_ids": [
+            "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-TRANSPARENCY"
+          ]
+        },
+        {
+          "asset": "RLUSD",
+          "date": "2026-10-01",
+          "circulation_usd_billion": 2.5098,
+          "reserves_usd_billion": 2.6338,
+          "source_ids": [
+            "SRC-RUN24-20261029T013910-COINOTAG-RLUSD-OCT01"
+          ],
+          "source_type": "SECONDARY_REPORT_CITING_RIPPLE"
+        },
+        {
+          "asset": "USDC",
+          "date": "2026-10-26",
+          "circulation_usd_billion": 71,
+          "reserves_usd_billion": 71.2,
+          "source_ids": [
+            "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+          ]
+        },
+        {
+          "asset": "USDC",
+          "date": "2026-10-22",
+          "circulation_usd_billion": 72,
+          "reserves_usd_billion": 72.2,
+          "source_ids": [
+            "SRC-RUN24-20261029T013910-CIRCLE-USDC-OCT22"
+          ],
+          "source_type": "PREVIOUSLY_CAPTURED_OFFICIAL_ENGLISH_DASHBOARD"
+        }
+      ],
+      "counter_hypotheses": [
+        "Issuer-level supply changes can reflect ordinary mint/redemption timing and do not prove a transfer to another stablecoin.",
+        "Cross-chain movements and differences in reporting cutoff can change network balances without changing global supply.",
+        "RLUSD or USDC can grow on XRPL while total issuer supply falls on other networks."
+      ],
+      "disconfirming_evidence_needed": [
+        "Harmonized issuer snapshots show no decline after same-time rechecks.",
+        "Per-chain supply and bridge flows show redistribution rather than net redemption.",
+        "XRPL stablecoin activity and XRP bridge-path share do not move with global supply."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    }
+  ]
+}
