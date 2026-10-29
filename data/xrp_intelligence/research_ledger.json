@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T03:09:30.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030930-PR1283-HEAD-AND-MAIN-WRITE-CORRECTION",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030930-pr1283-head-and-main-write-correction.json",
-    "snapshot_blob_sha": "9e54df23dc91a71ab5cd9d7a1d44817678210ecb",
-    "snapshot_commit_sha": "074967ce84fd5ee6b836da5d232d309ed0ae6d83"
+    "captured_at_utc": "2026-10-29T03:10:30.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T031030-MAIN-PAGES-DEPLOYMENT-INCIDENT",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T031030-main-pages-deployment-incident.json",
+    "snapshot_blob_sha": "c6af7281ce82ecc1e5c44699880d5ab138f95473",
+    "snapshot_commit_sha": "d5faa5a64e2f16531a58a3192e094e5921d20a94"
   },
   "sources": [
     {
@@ -5887,6 +5887,38 @@
       "title": "Recurring approval workflow zero-job run",
       "accessed_at_utc": "2026-10-29T03:09:30.000Z",
       "note": "Push-event run on research index head c69239346bb6872bc4c9eee3190fae2e0b4734d8; failed with zero jobs. The workflow trigger discrepancy remains unresolved."
+    },
+    {
+      "id": "SRC-RUN37-20261029T031030-PAGES-DEPLOY-40810264435",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40810264435",
+      "title": "GitHub Pages deployment after unintended main snapshot commit",
+      "accessed_at_utc": "2026-10-29T03:10:30.000Z",
+      "note": "Run completed successfully on main head afd870206ed48bdb74c6bd24f7d7e74d930ceb22. Both build and deploy jobs succeeded; the 'Deploy to GitHub Pages' step completed successfully. The unintended snapshot file was therefore included in a successful site deployment. Public reachability of that exact JSON path was not independently checked."
+    },
+    {
+      "id": "SRC-RUN37-20261029T031030-MAIN-CI-40810265939",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40810265939",
+      "title": "Main CI after unintended snapshot commit",
+      "accessed_at_utc": "2026-10-29T03:10:30.000Z",
+      "note": "CI workflow completed successfully for main commit afd870206ed48bdb74c6bd24f7d7e74d930ceb22. This validates the workflow result, not the authorization of the commit."
+    },
+    {
+      "id": "SRC-RUN37-20261029T031030-AUTO-PR-CHECK-40810266221",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40810266221",
+      "title": "Barrot Auto PR setup check after unintended snapshot commit",
+      "accessed_at_utc": "2026-10-29T03:10:30.000Z",
+      "note": "Workflow completed successfully; its observed job validated workflow setup. No PR creation action was observed in the job steps."
+    },
+    {
+      "id": "SRC-RUN37-20261029T031030-INDEX-GATE-40810559125",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40810559125",
+      "title": "Research ledger gate pass for index head fbc88554",
+      "accessed_at_utc": "2026-10-29T03:10:30.000Z",
+      "note": "Fail-closed gate completed successfully for research index head fbc88554450055bae78d9a9a664801324ddeb885. The successor index commit will require its own gate."
     }
   ],
   "limitations": [
@@ -6050,7 +6082,8 @@
     "2026-10-29T03:07:30.000Z: Process-control breach: commit afd870206ed48bdb74c6bd24f7d7e74d930ceb22 added one snapshot file directly to main because a create_file call omitted its explicit branch. The file embeds an incorrect main_modified_by_this_run=false field. No further main write, delete, revert or overwrite was attempted; corrective evidence is on the research branch. Do not alter the main file without approval.",
     "2026-10-29T03:08:05.000Z: Fail-closed gate run 40810333391 passed for index head 1621b028ee6af7c7d41f94ba2172011871dc1538. This metadata-only successor commit still needs its own gate; the research-base PR does not trigger core CI.",
     "2026-10-29T03:08:15.000Z: Gate run 40810383956 passed for prior index head 3603c918ebba60e06bea94837fce9214d7c5550a. The new index successor requires its own gate; research-branch core CI remains untriggered.",
-    "2026-10-29T03:09:30.000Z: PR #1283 latest head 4280f945 passes 171 tests plus 4 subtests and the fail-closed gate, but remains draft/unmerged and the new fields remain research-only pending walk-forward evaluation."
+    "2026-10-29T03:09:30.000Z: PR #1283 latest head 4280f945 passes 171 tests plus 4 subtests and the fail-closed gate, but remains draft/unmerged and the new fields remain research-only pending walk-forward evaluation.",
+    "2026-10-29T03:10:30.000Z: The unintended main snapshot commit triggered GitHub Pages build and deploy run 40810264435, which completed successfully. The exact public path reachability was not checked. No rollback, delete, overwrite or redeployment was performed; a human decision is required."
   ],
   "run_updates": [
     {
@@ -9955,6 +9988,28 @@
       "approval_zero_job_run": 40810426511,
       "approval_workflow_root_cause": "UNRESOLVED",
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T03:10:30.000Z",
+      "update_type": "UNINTENDED_MAIN_WRITE_AND_PAGES_DEPLOYMENT_RECORDED",
+      "source_ids": [
+        "SRC-RUN37-20261029T031030-PAGES-DEPLOY-40810264435",
+        "SRC-RUN37-20261029T031030-MAIN-CI-40810265939",
+        "SRC-RUN37-20261029T031030-AUTO-PR-CHECK-40810266221",
+        "SRC-RUN37-20261029T031030-INDEX-GATE-40810559125"
+      ],
+      "summary": "The accidental main snapshot commit triggered a successful GitHub Pages build and deploy. The exact public JSON path was not checked. No further main write, delete, revert, overwrite or redeployment was attempted; the incident and next action are recorded on the research branch.",
+      "index_head_verified": "NOT_VERIFIED_AFTER_THIS_UPDATE",
+      "gate_status": "PRIOR_HEAD_PASS_SUCCESSOR_PENDING",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T031030-main-pages-deployment-incident.json",
+      "main_sha": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+      "main_modified_by_this_run": true,
+      "pages_deployment_run": 40810264435,
+      "pages_deployment_status": "SUCCESS",
+      "merge_performed": false,
+      "force_push": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
   "mission_priority": {
@@ -10182,20 +10237,20 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "c69239346bb6872bc4c9eee3190fae2e0b4734d8",
-  "current_research_head_this_run": "074967ce84fd5ee6b836da5d232d309ed0ae6d83",
+  "current_research_head_before_ledger_update": "fbc88554450055bae78d9a9a664801324ddeb885",
+  "current_research_head_this_run": "d5faa5a64e2f16531a58a3192e094e5921d20a94",
   "current_research_checks": {
-    "status": "CORRECTIVE_SNAPSHOT_READBACK_PASS; PRIOR_INDEX_GATE_PASS; SUCCESSOR_INDEX_GATE_PENDING; CORE_CI_NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "status": "INCIDENT_SNAPSHOT_READBACK_PASS; PRIOR_INDEX_GATE_PASS; SUCCESSOR_INDEX_GATE_PENDING; MAIN_WRITE_AND_PAGES_DEPLOYMENT_INCIDENT_RECORDED",
     "latest_main_sha": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030930-pr1283-head-and-main-write-correction.json",
-    "snapshot_blob_sha": "9e54df23dc91a71ab5cd9d7a1d44817678210ecb",
-    "snapshot_commit_sha": "074967ce84fd5ee6b836da5d232d309ed0ae6d83",
-    "snapshot_characters": 3566,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T031030-main-pages-deployment-incident.json",
+    "snapshot_blob_sha": "c6af7281ce82ecc1e5c44699880d5ab138f95473",
+    "snapshot_commit_sha": "d5faa5a64e2f16531a58a3192e094e5921d20a94",
+    "snapshot_characters": 3757,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 5,
+    "source_reference_count": 6,
     "missing_source_references": 0,
-    "previous_index_head": "c69239346bb6872bc4c9eee3190fae2e0b4734d8",
-    "previous_index_gate_run": 40810431252,
+    "previous_index_head": "fbc88554450055bae78d9a9a664801324ddeb885",
+    "previous_index_gate_run": 40810559125,
     "previous_index_gate_status": "PASS",
     "current_index_gate": "PENDING_OR_UNVERIFIED",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
@@ -10206,16 +10261,15 @@
     "pr1283_gate_status": "PASS",
     "paper_trading_replay": "PASS_READ_ONLY_2361_ROWS",
     "paper_trading_state_mutated": false,
-    "merge_performed": false,
     "main_modified_by_this_run": true,
-    "main_write_incident": "UNINTENDED_SINGLE_SNAPSHOT_FILE_WRITE; NO_FURTHER_MAIN_MUTATIONS",
-    "workflow_root_cause": "UNRESOLVED",
+    "pages_deployment_run": 40810264435,
+    "pages_deployment_status": "SUCCESS",
     "forecast_status": "NOT_ISSUED"
   },
   "ledger_metrics": {
-    "source_records": 727,
-    "run_updates": 138,
-    "limitations": 161,
+    "source_records": 731,
+    "run_updates": 139,
+    "limitations": 162,
     "relationship_edges": 128,
     "competing_hypotheses": 78,
     "market_observations": 68,
@@ -10224,10 +10278,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 662718,
+    "index_characters_before_this_update": 667817,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 3566,
-    "index_characters": 667817
+    "latest_snapshot_characters": 3757,
+    "index_characters": 671589
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -10248,14 +10302,14 @@
     "forecast_status": "NOT_ISSUED"
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:09:30.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:10:30.000Z",
     "post_snapshot_verification": {
-      "status": "CORRECTIVE_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; SUCCESSOR_INDEX_GATE_PENDING",
+      "status": "INCIDENT_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; SUCCESSOR_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "9e54df23dc91a71ab5cd9d7a1d44817678210ecb",
-      "snapshot_commit_sha": "074967ce84fd5ee6b836da5d232d309ed0ae6d83",
-      "snapshot_characters": 3566,
-      "source_reference_count": 5,
+      "snapshot_blob_sha": "c6af7281ce82ecc1e5c44699880d5ab138f95473",
+      "snapshot_commit_sha": "d5faa5a64e2f16531a58a3192e094e5921d20a94",
+      "snapshot_characters": 3757,
+      "source_reference_count": 6,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
       "ci": {
@@ -10273,13 +10327,13 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T03:07:30.000Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030730-UNINTENDED-MAIN-WRITE-CORRECTION",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030730-unintended-main-write-correction.json",
-      "snapshot_blob_sha": "0881a4fc97fae2ecee280a3acda4635925e1ffd8",
-      "snapshot_commit_sha": "86946fd89cb023c43ae32b3e1fc59d02f9356066"
+      "captured_at_utc": "2026-10-29T03:09:30.000Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030930-PR1283-HEAD-AND-MAIN-WRITE-CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030930-pr1283-head-and-main-write-correction.json",
+      "snapshot_blob_sha": "9e54df23dc91a71ab5cd9d7a1d44817678210ecb",
+      "snapshot_commit_sha": "074967ce84fd5ee6b836da5d232d309ed0ae6d83"
     },
-    "note": "Corrective snapshot is on the explicit research branch. The prior index head passed its gate; this successor index commit requires its own gate. The unintended main file remains unchanged."
+    "note": "The accidental main write triggered a successful Pages deployment. This incident is recorded on the research branch; no further main mutation or redeployment was attempted."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -10327,15 +10381,23 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T03:09:30.000Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T03:08:15.000Z",
+    "recorded_at_utc": "2026-10-29T03:10:30.000Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T03:09:30.000Z",
     "source_ids": [
-      "SRC-RUN36-20261029T030930-PR1283-HEAD-4280F",
-      "SRC-RUN36-20261029T030930-PR1283-CI-40810414493",
-      "SRC-RUN36-20261029T030930-PR1283-GATE-40810414537",
-      "SRC-RUN36-20261029T030930-INDEX-GATE-40810431252",
-      "SRC-RUN36-20261029T030930-ZEROJOB-40810426511"
+      "SRC-RUN37-20261029T031030-PAGES-DEPLOY-40810264435",
+      "SRC-RUN37-20261029T031030-MAIN-CI-40810265939",
+      "SRC-RUN37-20261029T031030-AUTO-PR-CHECK-40810266221",
+      "SRC-RUN37-20261029T031030-INDEX-GATE-40810559125"
     ],
+    "main_write_incident": {
+      "commit": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+      "path": "data/xrp_intelligence/snapshots/20261029T030620-paper-replay-2361-index-gate.json",
+      "main_modified_by_this_run": true,
+      "pages_deployment_run": 40810264435,
+      "pages_deployment_status": "SUCCESS",
+      "public_path_reachability": "NOT_CHECKED",
+      "no_rollback_or_redeployment": true
+    },
     "pr1283": {
       "head_sha": "4280f945bc0f47e5738bab7b747243cb8efaf96c",
       "ci_run": 40810414493,
@@ -10344,26 +10406,21 @@
       "gate": "PASS",
       "state": "DRAFT_UNMERGED"
     },
-    "prior_index_head": "c69239346bb6872bc4c9eee3190fae2e0b4734d8",
-    "prior_index_gate_run": 40810431252,
+    "prior_index_head": "fbc88554450055bae78d9a9a664801324ddeb885",
+    "prior_index_gate_run": 40810559125,
     "prior_index_gate_status": "PASS",
     "successor_index_gate": "PENDING_OR_UNVERIFIED",
-    "main_write_incident": {
-      "commit": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
-      "path": "data/xrp_intelligence/snapshots/20261029T030620-paper-replay-2361-index-gate.json",
-      "main_modified_by_this_run": true
-    },
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:07:30.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:09:30.000Z",
     "post_snapshot_verification": {
       "status": "CORRECTIVE_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; SUCCESSOR_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "0881a4fc97fae2ecee280a3acda4635925e1ffd8",
-      "snapshot_commit_sha": "86946fd89cb023c43ae32b3e1fc59d02f9356066",
-      "snapshot_characters": 2910,
-      "source_reference_count": 2,
+      "snapshot_blob_sha": "9e54df23dc91a71ab5cd9d7a1d44817678210ecb",
+      "snapshot_commit_sha": "074967ce84fd5ee6b836da5d232d309ed0ae6d83",
+      "snapshot_characters": 3566,
+      "source_reference_count": 5,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
       "ci": {
@@ -10381,13 +10438,13 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T03:05:25.000Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030525-INDEX-GATE-PASS",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030525-index-gate-pass-asset-feature-pr1283.json",
-      "snapshot_blob_sha": "facb292dcd43c9961ce8671a530cf69b8bffd425",
-      "snapshot_commit_sha": "4831f12c796add9187ee14febba7e21a6d4f76d1"
+      "captured_at_utc": "2026-10-29T03:07:30.000Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030730-UNINTENDED-MAIN-WRITE-CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030730-unintended-main-write-correction.json",
+      "snapshot_blob_sha": "0881a4fc97fae2ecee280a3acda4635925e1ffd8",
+      "snapshot_commit_sha": "86946fd89cb023c43ae32b3e1fc59d02f9356066"
     },
-    "note": "Corrective incident snapshot is on the explicit research branch. Gate run 40810383956 passed for prior index head 3603c918; successor index commit requires its own gate. The unintended main commit remains unchanged and is explicitly recorded."
+    "note": "Corrective snapshot is on the explicit research branch. The prior index head passed its gate; this successor index commit requires its own gate. The unintended main file remains unchanged."
   },
   "snapshot_verification_history": [
     {
