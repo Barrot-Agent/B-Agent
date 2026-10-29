@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T1104-MAIN-SIGNAL-AND-SAFETY-PRS",
+  "captured_at_utc": "2026-10-29T11:04:30Z",
+  "observed_main_sha": "8e34859a5fb16b20b78e0906466be805d0d14353",
+  "policy": "Record repository facts and proposed controls separately from verified deployed behavior. A passing PR check does not remediate main until an approved merge; no market forecast is issued from invalid signal artifacts.",
+  "nodes": [
+    {
+      "id": "B_AGENT_MAIN",
+      "label": "B-Agent main branch",
+      "kind": "REPOSITORY_STATE"
+    },
+    {
+      "id": "XRP_SIGNAL_ARTIFACT",
+      "label": "web/latest_signal.json",
+      "kind": "MODEL_OUTPUT_ARTIFACT"
+    },
+    {
+      "id": "XRP_SUMMARY_ARTIFACT",
+      "label": "web/latest_signal_summary.json",
+      "kind": "DERIVED_NARRATIVE_ARTIFACT"
+    },
+    {
+      "id": "MERGE_QUEUE_WORKFLOW",
+      "label": ".github/workflows/merge-queue.yml",
+      "kind": "MUTATION_CAPABLE_AUTOMATION"
+    },
+    {
+      "id": "PR1304",
+      "label": "PR #1304 read-only merge queue proposal",
+      "kind": "DRAFT_UNMERGED_REMEDIATION"
+    },
+    {
+      "id": "PR1305",
+      "label": "PR #1305 fail-closed XRP summary proposal",
+      "kind": "DRAFT_UNMERGED_REMEDIATION"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN60-MAIN-SIGNAL-INVALID",
+      "source": "B_AGENT_MAIN",
+      "target": "XRP_SIGNAL_ARTIFACT",
+      "relationship": "PUBLISHES_INVALID_SIGNAL",
+      "evidence_class": "CONFIRMED_REPOSITORY_STATE",
+      "claim": "At main SHA 8e34859a5fb16b20b78e0906466be805d0d14353, the XRP artifact has score 44, confidence 0.0 and provider failures for missing GitHub model credentials and Groq HTTP 429. Forecast status must be NOT_ISSUED.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T1104Z",
+        "SRC-GH-MAIN-SIGNAL-20261029T1104Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN60-SUMMARY-MISMATCH",
+      "source": "XRP_SIGNAL_ARTIFACT",
+      "target": "XRP_SUMMARY_ARTIFACT",
+      "relationship": "DERIVED_SUMMARY_RETAINS_DIRECTIONAL_NARRATIVE_DESPITE_INVALID_CONFIDENCE",
+      "evidence_class": "CONFIRMED_REPOSITORY_STATE",
+      "claim": "The summary repeats moderate/positive and bullish-headline language even though confidence is zero and sentiment provider failed. The signal and summary timestamps match, so the failure is semantic validation rather than stale timestamp at this cutoff.",
+      "source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T1104Z",
+        "SRC-GH-MAIN-SUMMARY-20261029T1104Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN60-MERGE-QUEUE-CAPABILITY",
+      "source": "B_AGENT_MAIN",
+      "target": "MERGE_QUEUE_WORKFLOW",
+      "relationship": "CONTAINS_MANUALLY_DISPATCHABLE_WRITE_AND_MERGE_CAPABILITIES",
+      "evidence_class": "CONFIRMED_REPOSITORY_WORKFLOW",
+      "claim": "The current main workflow permits mode=all, dry_run=false by default, unlimited max_prs=0 and write permissions; code includes branch update, comments, merge and branch deletion paths. No evidence in this run establishes that it caused prior merges.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T1104Z",
+        "SRC-GH-MAIN-MERGE-QUEUE-20261029T1104Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN60-PR1304-PROPOSED-CONTROL",
+      "source": "PR1304",
+      "target": "MERGE_QUEUE_WORKFLOW",
+      "relationship": "PROPOSES_REPLACE_WITH_READ_ONLY_PR_INVENTORY",
+      "evidence_class": "PROPOSED_REMEDIATION_UNMERGED",
+      "claim": "PR #1304 replaces the workflow with a read-only PR inventory and read-only permissions. Exact-head core CI and fail-closed gate passed; main remains unchanged until approved merge.",
+      "source_ids": [
+        "SRC-GH-PR1304-CI-20261029T1104Z",
+        "SRC-GH-PR1304-GATE-20261029T1104Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN60-PR1305-PROPOSED-CONTROL",
+      "source": "PR1305",
+      "target": "XRP_SUMMARY_ARTIFACT",
+      "relationship": "PROPOSES_FAIL_CLOSED_NOT_ISSUED_SUMMARY_AND_ARTIFACT_ONLY_WORKFLOW",
+      "evidence_class": "PROPOSED_REMEDIATION_UNMERGED",
+      "claim": "PR #1305 validates signal confidence/provider availability, emits NOT_ISSUED for invalid signals, writes a deterministic non-directional fallback, and removes scheduled Git push behavior. Exact-head core CI and gate passed; main remains unchanged.",
+      "source_ids": [
+        "SRC-GH-PR1305-CI-20261029T1104Z",
+        "SRC-GH-PR1305-GATE-20261029T1104Z",
+        "SRC-GH-PR1305-PROPOSAL-20261029T1104Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN60-TECHNICAL-HEADLINES-NOT-PRICE-SIGNAL",
+      "statement": "The high bullish headline score may be a topic/sentiment classification artifact because several entries are XRPL consensus or network-protocol research papers rather than independent market-moving disclosures.",
+      "status": "PLAUSIBLE_UNTESTED_INFERENCE",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T1104Z"
+      ],
+      "disconfirming_evidence": [
+        "Technical protocol research can eventually affect network utility or investor expectations; its relevance cannot be dismissed categorically."
+      ],
+      "tests_needed": [
+        "Label technical papers separately from issuer, regulatory, exchange, flow and market-moving news; compare each class against pre-registered fixed-horizon XRP returns and volatility with leakage-safe walk-forward evaluation."
+      ]
+    },
+    {
+      "id": "HYP-RUN60-INVALID-PROVIDER-OUTPUT-MUST-NOT-BECOME-FORECAST",
+      "statement": "When provider failure is explicit and confidence is zero, any directional summary is unsupported and should be suppressed regardless of headline polarity.",
+      "status": "DIRECTLY_SUPPORTED_BY_ARTIFACT_STATE_AND_PROPOSED_TESTS",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-SIGNAL-20261029T1104Z",
+        "SRC-GH-MAIN-SUMMARY-20261029T1104Z",
+        "SRC-GH-PR1305-CI-20261029T1104Z"
+      ],
+      "disconfirming_evidence": [
+        "A separately validated deterministic rule could produce a forecast without the unavailable provider, but no such rule or calibration evidence is established here."
+      ],
+      "tests_needed": [
+        "Merge only after review; then verify main output and test fixed-horizon calibration, baselines and outcome recording before issuing any forecast."
+      ]
+    }
+  ],
+  "notes": [
+    "Current main state is confirmed; PR proposals are not deployed controls.",
+    "PR #1304 initially failed CI because the new test entry had two trailing backslashes in the shell command. The line was corrected to one backslash and exact-head CI then passed; the failed run remains in the ledger.",
+    "PR #1305 exact-head CI and fail-closed gate passed; it remains draft and unmerged.",
+    "No synchronized market panel or calibrated out-of-sample forecast was produced; forecast status remains NOT_ISSUED."
+  ]
+}
