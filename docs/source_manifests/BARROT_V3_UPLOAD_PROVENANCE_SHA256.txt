@@ -1,0 +1,28 @@
+# Barrot V3 uploaded-source provenance
+
+Hashes are SHA-256 values computed from the exact uploaded artifacts available in this work session on 2026-10-29. They identify the received files; they do not prove that external references listed inside them were downloaded or fully ingested.
+
+- `BARROT_V3_PERMANENT_CONTINUATION_SOURCE(1).md`: `25eb5a6dcb2b6cc54ea0f9ab138ef087b2c211b98a92722e6bb1d5da1cfb4af3`
+- `barrot_structural_analysis_core_v1_1.tar(1).gz`: `2cbcb68743a9224a753a6be4cf64eb154e0bc8734b36d3f1d1a0258b8989e430`
+- `BARROT_V3_SOURCE_SET_01_FOUNDATIONS(1).zip`: `8ef7d8a8c34bf24f6e582cb655add169de1760d13db80c4acb77b886da9f9dda`
+
+## Foundation source-set internal hashes
+
+The following entries were read from `barrot_v3_source_set_01/metadata/LOCAL_FILES_SHA256.txt` inside the uploaded ZIP:
+
+```text
+6a3ae826cd2a1fbc80d5778451a08ee06ae6d345a765f72e450703a70bbeb5e6  README.md
+fc57939afc4b787fb05586729eb324baa9d96dfb670be0e53aaea83b6e643c8f  metadata/manifest.json
+9b5d683eb2dea84671e01982547f992fdec8b9316ff7e207aa3baf28f5496344  sources/01_NIST-AI-100-1.md
+dbf80bab3a6f82ddbda7cedbd71068aa45f8003c0d72cfaf851fe8b09952c7b4  sources/02_NIST-AI-600-1.md
+f83f1c04543b286e3257e475bc97cdc4d28fe6689939907ca4526ff30582bddd  sources/03_OWASP-GENAI-LLM-2026.md
+f9cfcad5e54dd097584f4dc455f7670a7c2c873db853c0fe12d7a5cefab0e739  sources/04_MCP-2026-07-28.md
+1c095d6dcc607f81745406fd13d5ff3dd49a6b5d99745368152e521b84187548  sources/05_A2A-1.0.0.md
+8a3a7b130d7452ebd9673f08a01caf9ae17c02a420dd479b6606a363bcc047a0  sources/06-SLSA-1.2.md
+bf4620c74a3b4558131f22c5084154fd622e5a9bd9deb44bb3e8e5d837656740  sources/07_IN-TOTO.md
+a74378ea263b54ec57f004129c33db6db80bf3461fbd8bbcc1d802e8727aa68c  sources/08_OPENTELEMETRY.md
+cf91f8eda84315036da44e96be686e7d8ed38d63420c48a1fd8f2c9981e90a57  sources/09_JSON-SCHEMA.md
+dd8af610bc6eb56fc545f0b30077a0553d5b90ce8df81ff5077fe97551099493  sources/10_PYTEST.md
+```
+
+**Integrity note:** source-set internal paths are copied as provided; the original manifest's canonical source IDs and official URLs remain in `docs/BARROT_V3_STRUCTURAL_CORE_AND_FOUNDATION_SOURCES.md`.
