@@ -673,3 +673,49 @@ def test_scientific_evidence_survives_real_git_push_and_fresh_clone(tmp_path: Pa
     assert saved["cycle_id"] == "cycle-42"
     assert saved["problem_id"] == "navier_stokes_millennium_prize"
     assert saved["remaining_blockers"] == ["Independent verification remains incomplete."]
+
+
+def test_new_research_cycle_imports_prior_committed_evidence_and_restarts_terminal_cycle(tmp_path: Path) -> None:
+    bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
+    record_dir = tmp_path / ".barrot" / "collaboration_records"
+    record_dir.mkdir(parents=True)
+    prior = {
+        "cycle_id": "prior-cycle",
+        "problem_id": "generic_problem",
+        "evidence": {
+            "sources": [{
+                "source_id": "prior.source", "title": "Prior source",
+                "author_or_organization": "Barrot", "source_type": "prior_cycle",
+                "url": "https://example.org/prior"
+            }],
+            "claims": [{
+                "claim_id": "prior.claim", "statement": "Prior scoped claim",
+                "domain": "math", "claim_type": "theorem", "source": "prior.source",
+                "provenance": ["prior-cycle"]
+            }],
+            "evidence": [{
+                "evidence_id": "prior.evidence", "claim_id": "prior.claim",
+                "kind": "unresolved_question", "summary": "Prior evidence remains incomplete.",
+                "source_id": "prior.source", "provenance": ["prior-cycle"]
+            }],
+            "tracks": [{
+                "track_id": "prior.track", "failed_approaches": ["Do not repeat failed approach X."],
+                "unresolved_objections": ["Assumption Y still needs proof."]
+            }],
+            "unresolved_questions": ["Prior verification is incomplete."]
+        }
+    }
+    (record_dir / "prior-cycle.json").write_text(json.dumps(prior), encoding="utf-8")
+    adapter = StaticResearchProblemAdapter(bundle)
+    controller = ScientificDiscoveryController(workspace=tmp_path)
+
+    first = controller.run(adapter)
+    assert any(item["source_id"] == "prior.source" for item in first.sources)
+    assert any(item["claim_id"] == "prior.claim" for item in first.claims)
+    assert any(item["evidence_id"] == "prior.evidence" for item in first.evidence)
+    assert any("Prior verification is incomplete." in item.get("prompt", "") for item in first.questions)
+    assert any("Do not repeat failed approach X." in item.get("prompt", "") for item in first.questions)
+
+    second = controller.run(adapter)
+    assert second.cycle_id != first.cycle_id
+    assert any(item["claim_id"] == "prior.claim" for item in second.claims)
