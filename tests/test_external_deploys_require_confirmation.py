@@ -6,6 +6,7 @@ DEPLOY_WORKFLOWS = (
     ".github/workflows/barrot-ops.yml",
     ".github/workflows/deploy-databricks.yml",
     ".github/workflows/sync-huggingface.yml",
+    ".github/workflows/databricks-bundle.yml",
 )
 
 
