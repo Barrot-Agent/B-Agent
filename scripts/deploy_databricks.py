@@ -46,7 +46,7 @@ DATABRICKS_TOKEN = os.environ.get("DATABRICKS_TOKEN", "")
 JOB_NAME = os.environ.get("DATABRICKS_JOB_NAME", "barrot-agent")
 WS_PATH = os.environ.get("DATABRICKS_WS_PATH", "/Barrot-Agent/B-Agent")
 CLUSTER_ID = os.environ.get("DATABRICKS_CLUSTER_ID", "")
-LOCAL_DIR = Path(__file__).parent
+LOCAL_DIR = Path(__file__).resolve().parent.parent
 
 UPLOAD_EXTENSIONS = {".py", ".ipynb", ".yml", ".yaml", ".txt", ".md", ".json"}
 SKIP_DIRS = {
@@ -130,7 +130,7 @@ def _get_or_create_cluster_spec() -> dict:
 
 def _deploy_job(client: WorkspaceClient) -> int:
     """Create or update the Databricks job; return the job ID."""
-    notebook_path = f"{WS_PATH}/app.py"
+    notebook_path = f"/Workspace{WS_PATH}/app.py"
     cluster_spec = _get_or_create_cluster_spec()
     environments = [
         sdk_jobs.JobEnvironment(
@@ -143,7 +143,7 @@ def _deploy_job(client: WorkspaceClient) -> int:
         task_key="barrot-main",
         description="Barrot Agent main pipeline",
         spark_python_task=sdk_jobs.SparkPythonTask(
-            python_file=f"dbfs:{notebook_path}",
+            python_file=notebook_path,
         ),
         **cluster_spec,
         environment_key="Default",

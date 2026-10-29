@@ -17,20 +17,22 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install huggingface_hub
-      - name: Deploy hf_space/ as the entire Space (clean mirror)
+      - name: Upload hf_space/ to the Space without deleting remote-only files
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           python3 - << 'SCRIPT'
           from huggingface_hub import HfApi
           import os
-          api = HfApi(token=os.environ["HF_TOKEN"])
+          token = os.environ.get("HF_TOKEN", "")
+          if not token:
+              raise SystemExit("HF_TOKEN is required to sync the Hugging Face Space")
+          api = HfApi(token=token)
           api.upload_folder(
               folder_path="hf_space",
               repo_id="Scribedpengenius/Barrot-Omega",
               repo_type="space",
-              delete_patterns=["*"],
-              commit_message="Deploy v7 from B-Agent hf_space/ (clean mirror)",
+              commit_message="Deploy hf_space/ from B-Agent",
           )
           print("DEPLOYED")
           SCRIPT
@@ -43,7 +45,10 @@ jobs:
           python3 - << 'SCRIPT'
           from huggingface_hub import HfApi
           import os
-          api = HfApi(token=os.environ["HF_TOKEN"])
+          token = os.environ.get("HF_TOKEN", "")
+          if not token:
+              raise SystemExit("HF_TOKEN is required to propagate Space secrets")
+          api = HfApi(token=token)
           repo = "Scribedpengenius/Barrot-Omega"
           # resolve name collisions: variables and secrets must not share names
           for name in ("DATABRICKS_HOST", "DATABRICKS_WAREHOUSE_ID", "GROQ_API_KEY", "DATABRICKS_TOKEN"):
