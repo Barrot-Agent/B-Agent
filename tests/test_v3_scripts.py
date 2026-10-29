@@ -822,6 +822,12 @@ def test_emit_signal_news_score_excludes_invalid_time_nonfinite_weight_and_unkno
         },
         {
             "distilled": True,
+            "ingested_at": valid_timestamp,
+            "distill": {"xrp_relevance": 100.0, "sentiment": ["bullish"]},
+            "title": "non-string sentiment must be excluded",
+        },
+        {
+            "distilled": True,
             "ingested_at": "2020-01-01T00:00:00Z",
             "distill": {"xrp_relevance": 1.0, "sentiment": "bearish"},
             "title": "stale record must be excluded",
