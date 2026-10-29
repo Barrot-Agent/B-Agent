@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T08:11:30.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0811-PR1298-CI-GATE-VERIFIED",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0811-pr1298-ci-gate-verified.json",
-    "snapshot_blob_sha": "df85787f65d349186b49fbcc602e9364c5534b18",
-    "snapshot_commit_sha": "024d9dd1f1cb06679e94b91c312387c5c9001ccb"
+    "captured_at_utc": "2026-10-29T08:15:30.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0815-PR1299-CI-GATE-VERIFIED",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0815-pr1299-ci-gate-verified.json",
+    "snapshot_blob_sha": "106ef9569f5c0261d7284c7aeb1bb34b5c0046fb",
+    "snapshot_commit_sha": "8db95cb7af910e5c919ac35b31c8a6c4aed87206"
   },
   "sources": [
     {
@@ -6692,6 +6692,30 @@
       "title": "PR #1298 exact-head fail-closed gate completed successfully",
       "accessed_at_utc": "2026-10-29T08:11:30.000Z",
       "note": "Run 40840252474 completed successfully on PR #1298 head 4695f4e13c0cb6c40c5b329c661849914e50f7f8; the 'Fail closed' step succeeded. This verifies the gate's safe stop behavior, not a merge. PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-RUN49-20261029T0815Z-PR1299-PR",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1299",
+      "title": "Fresh-main paper-trader position identity guard",
+      "accessed_at_utc": "2026-10-29T08:15:30.000Z",
+      "note": "PR #1299 is draft/open/unmerged, based on main eb4422a5897745ec563303ade106cfd2549eac3c, head 9709246744d1225b118d1fe46813e98d7298712d. It validates a nonzero persisted position's product identity before provider/model calls and does not rewrite the legacy state."
+    },
+    {
+      "id": "SRC-RUN49-20261029T0815Z-PR1299-CI",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40840771105",
+      "title": "PR #1299 exact-head core CI passed",
+      "accessed_at_utc": "2026-10-29T08:15:30.000Z",
+      "note": "Run 40840771105 completed successfully on head 9709246744d1225b118d1fe46813e98d7298712d. Retrieved job log reports 191 tests plus 4 subtests passed in 6.19s, including the nine paper-trader product-state regressions. PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-RUN49-20261029T0815Z-PR1299-GATE",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40840771082",
+      "title": "PR #1299 exact-head fail-closed gate passed",
+      "accessed_at_utc": "2026-10-29T08:15:30.000Z",
+      "note": "Run 40840771082 completed successfully; the fail-closed step passed. This does not merge the PR or repair the persisted state. Main remains unguarded until an approved merge."
     }
   ],
   "limitations": [
@@ -6888,7 +6912,8 @@
     "2026-10-29T08:10:30Z: XRP derivatives aggregators report materially different open-interest totals ($815.6M at Kodexius, $1.95B at TradRadar, $2.28B at Loris Tools) at different cutoffs and with different venue/contract coverage; do not average or admit as one feature.",
     "2026-10-29T08:10:30Z: XRP ETF flow trackers use different universes and settlement status. Alpha Finance reports $0 on Oct 28 in a five-fund series; XRP Insights reports negative Oct 26–27 XRP-unit flows across six spot funds plus BITW and marks Oct 28 provisional. Reconcile issuer holdings before feature admission.",
     "2026-10-29T08:10:30Z: PR #1298 fresh-main summary safety branch passed structural readback, but exact-head CI and fail-closed gate runs were not returned at cutoff; execution verification remains pending.",
-    "2026-10-29T08:11:30Z: PR #1298 CI/gate was pending in the 08:10Z snapshot; that historical pending status is superseded by successful exact-head CI and fail-closed gate runs 40840252498 and 40840252474. The PR remains draft/unmerged."
+    "2026-10-29T08:11:30Z: PR #1298 CI/gate was pending in the 08:10Z snapshot; that historical pending status is superseded by successful exact-head CI and fail-closed gate runs 40840252498 and 40840252474. The PR remains draft/unmerged.",
+    "2026-10-29T08:15:30Z: PR #1299 guard is now exact-head CI/gate verified, but the existing nonzero simulated BTC-USD position still has position_product=null. Merging the guard would safely stop scheduled cycles until a separately approved reconciliation; no state rewrite is authorized."
   ],
   "run_updates": [
     {
@@ -11450,6 +11475,38 @@
       "force_push": false,
       "deployment_executed": false,
       "real_money_trade": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T08:15:30.000Z",
+      "update_type": "PR1299_EXACT_HEAD_POSITION_IDENTITY_GUARD_VERIFIED",
+      "source_ids": [
+        "SRC-RUN49-20261029T0815Z-PR1299-PR",
+        "SRC-RUN49-20261029T0815Z-PR1299-CI",
+        "SRC-RUN49-20261029T0815Z-PR1299-GATE"
+      ],
+      "summary": "Fresh-main PR #1299 passed core CI (191 tests plus 4 subtests in 6.19s) and fail-closed gate. The guard validates legacy position identity before provider/model calls and does not rewrite state. PR remains draft/unmerged; main remains unguarded; state reconciliation remains a separate approval-gated task.",
+      "main_sha": "eb4422a5897745ec563303ade106cfd2549eac3c",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T0815-pr1299-ci-gate-verified.json",
+        "blob_sha": "106ef9569f5c0261d7284c7aeb1bb34b5c0046fb",
+        "commit_sha": "8db95cb7af910e5c919ac35b31c8a6c4aed87206",
+        "characters": 35147
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0815-pr1299-position-guard-verification.json",
+        "blob_sha": "917300cdc10e9f34ff9476e243e58f8f54f4f752",
+        "commit_sha": "1c88b26adb4cac7ded33e67da84a002013ccad7f",
+        "new_edges": 1,
+        "new_competing_hypotheses": 0
+      },
+      "market_observations": 0,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false
     }
   ],
   "mission_priority": {
@@ -11677,46 +11734,48 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "b8d7c8f84d65ed7d64235fb035fdc1703c000cd9",
-  "current_research_head_this_run": "024d9dd1f1cb06679e94b91c312387c5c9001ccb",
+  "current_research_head_before_ledger_update": "024d9dd1f1cb06679e94b91c312387c5c9001ccb",
+  "current_research_head_this_run": "8db95cb7af910e5c919ac35b31c8a6c4aed87206",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; PR1297_CI_GATE_PASS; PR1298_CI_187_TESTS_4_SUBTESTS_GATE_PASS; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_READBACK_PENDING; PR1297_CI_GATE_PASS; PR1298_CI_GATE_PASS; PR1299_CI_191_TESTS_4_SUBTESTS_GATE_PASS; FORECAST_NOT_ISSUED",
     "latest_main_sha": "eb4422a5897745ec563303ade106cfd2549eac3c",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0811-pr1298-ci-gate-verified.json",
-    "snapshot_blob_sha": "df85787f65d349186b49fbcc602e9364c5534b18",
-    "snapshot_commit_sha": "024d9dd1f1cb06679e94b91c312387c5c9001ccb",
-    "snapshot_characters": 35836,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0815-pr1299-ci-gate-verified.json",
+    "snapshot_blob_sha": "106ef9569f5c0261d7284c7aeb1bb34b5c0046fb",
+    "snapshot_commit_sha": "8db95cb7af910e5c919ac35b31c8a6c4aed87206",
+    "snapshot_characters": 35147,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 73,
+    "source_reference_count": 76,
     "missing_source_references": 0,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0811-pr1298-ci-gate-verification.json",
-    "graph_addendum_blob_sha": "21a82faea3b79e7559751ab12c54b9a6f69503cb",
-    "graph_addendum_commit_sha": "130d53839720ef48c977b55a595df259a7dbeb09",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0815-pr1299-position-guard-verification.json",
+    "graph_addendum_blob_sha": "917300cdc10e9f34ff9476e243e58f8f54f4f752",
+    "graph_addendum_commit_sha": "1c88b26adb4cac7ded33e67da84a002013ccad7f",
     "graph_addendum_readback_ok": true,
-    "index_pointer_readback_ok": true,
-    "index_character_count_match": true,
-    "index_metric_count_match": true,
+    "index_pointer_readback_ok": false,
+    "index_character_count_match": false,
+    "index_metric_count_match": false,
     "source_ids_unique": true,
-    "relationship_edges": 164,
+    "relationship_edges": 165,
     "competing_hypotheses": 102,
-    "full_paper_trading_replay": "BLOCKED_FULL_HISTORICAL_LOG_UNAVAILABLE",
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
     "pr1297_ci": "PASS",
     "pr1297_gate": "PASS",
     "pr1298_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.58S",
     "pr1298_gate": "PASS_FAIL_CLOSED",
+    "pr1299_ci": "PASS_191_TESTS_PLUS_4_SUBTESTS_6.19S",
+    "pr1299_gate": "PASS_FAIL_CLOSED",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
     "deployment_executed": false,
-    "real_money_trade": false
+    "real_money_trade": false,
+    "paper_trading_state_mutated": false
   },
   "ledger_metrics": {
-    "source_records": 823,
-    "run_updates": 155,
-    "limitations": 194,
-    "relationship_edges": 164,
+    "source_records": 826,
+    "run_updates": 156,
+    "limitations": 195,
+    "relationship_edges": 165,
     "competing_hypotheses": 102,
     "market_observations": 78,
     "index_format_version": "2.0",
@@ -11724,10 +11783,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 787509,
+    "index_characters_before_this_update": 788949,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 35836,
-    "index_characters": 788949
+    "latest_snapshot_characters": 35147,
+    "index_characters": 792589
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -11885,16 +11944,17 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T08:11:30.000Z",
-    "focus": "Exact-head CI and fail-closed gate verification for fresh-main XRP summary safety PR #1298",
+    "recorded_at_utc": "2026-10-29T08:15:30.000Z",
+    "focus": "Fresh-main paper-trader position identity guard CI/gate verification",
     "source_ids": [
-      "SRC-RUN48-20261029T0811Z-PR1298-CI",
-      "SRC-RUN48-20261029T0811Z-PR1298-GATE"
+      "SRC-RUN49-20261029T0815Z-PR1299-PR",
+      "SRC-RUN49-20261029T0815Z-PR1299-CI",
+      "SRC-RUN49-20261029T0815Z-PR1299-GATE"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0811-pr1298-ci-gate-verification.json",
-      "blob_sha": "21a82faea3b79e7559751ab12c54b9a6f69503cb",
-      "commit_sha": "130d53839720ef48c977b55a595df259a7dbeb09",
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0815-pr1299-position-guard-verification.json",
+      "blob_sha": "917300cdc10e9f34ff9476e243e58f8f54f4f752",
+      "commit_sha": "1c88b26adb4cac7ded33e67da84a002013ccad7f",
       "new_edges": 1,
       "new_competing_hypotheses": 0
     },
