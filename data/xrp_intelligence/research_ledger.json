@@ -10264,6 +10264,35 @@
       "real_money_trade": false,
       "new_synchronized_xrp_market_observations_admitted": 0,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T05:09:24.000Z",
+      "update_type": "INDEX_POINTER_READBACK_VERIFIED_WITH_CI_LIMITATION",
+      "source_ids": [
+        "SRC-RUN39-20261029T050603-CIRCLE-USDC-ECONOMICS",
+        "SRC-RUN39-20261029T050603-CIRCLE-BINANCE-AGREEMENT",
+        "SRC-RUN39-20261029T050603-SBI-CAPITAL-SBIC",
+        "SRC-RUN39-20261029T050603-COINBASE-Q3-CALENDAR",
+        "SRC-RUN39-20261029T050603-ETF-FLOW-ALPHA",
+        "SRC-RUN39-20261029T050603-ETF-FLOW-XRPINSIGHTS",
+        "SRC-RUN39-20261029T050603-MAIN-HEAD",
+        "SRC-RUN39-20261029T050603-MAIN-XRP-SIGNAL-SUMMARY",
+        "SRC-RUN39-20261029T050603-PR1288-VERIFICATION",
+        "SRC-RUN39-20261029T050603-PR1282-WORKFLOW-AND-STALE-HEAD",
+        "SRC-RUN39-20261029T050603-PAPER-LOG-RETRIEVAL-LIMITATION"
+      ],
+      "summary": "Read back the corrected immutable snapshot, relationship graph addendum and compact index. The latest_snapshot pointer matches the snapshot path, ID, capture time and Git blob SHA; graph blob SHA matches; all snapshot/graph source references resolve; source IDs are unique; and index/snapshot character-count metrics match. The GitHub workflow-run wrapper returned no PR-triggered runs for this research-branch-base PR, so full core CI and the automated fail-closed gate remain unverified; do not substitute local structural checks for CI.",
+      "index_head_verified": "STRUCTURAL_READBACK_PASS",
+      "gate_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
+      "main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
   "mission_priority": {
@@ -10494,7 +10523,7 @@
   "current_research_head_before_ledger_update": "4af136b0a1eb7669b653fc151fc90e433a4d1422",
   "current_research_head_this_run": "4af136b0a1eb7669b653fc151fc90e433a4d1422",
   "current_research_checks": {
-    "status": "CIRCLE_COINBASE_SBI_UPDATE_CAPTURED; SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_GATE_PENDING",
+    "status": "SNAPSHOT_GRAPH_AND_INDEX_POINTER_READBACK_PASS; CORE_CI_AND_GATE_NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "latest_main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
     "snapshot_blob_sha": "f4323a171f6158106152b43bb738bdcc41bd6f4d",
@@ -10507,7 +10536,7 @@
     "graph_addendum_blob_sha": "b8de39044a3f3252ae489cd4c39a4f8a9dce605c",
     "graph_addendum_commit_sha": "5b47ec8572e3fb01941b6f63fd36398d79cdc0c9",
     "graph_addendum_readback_ok": true,
-    "current_index_gate": "PENDING_OR_UNVERIFIED",
+    "current_index_gate": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "pr1288_head": "07009da95c8ba964985282de693f6c6571ddd282",
     "pr1288_current_main_ahead_of_head": 7,
@@ -10537,11 +10566,14 @@
     "external_deployments_triggered_by_this_run": false,
     "paper_trading_state_mutated": false,
     "real_money_trade": false,
-    "forecast_status": "NOT_ISSUED"
+    "forecast_status": "NOT_ISSUED",
+    "index_pointer_readback_ok": true,
+    "index_blob_sha_at_readback": "cb4a2d251d0157c22355816050fb74a415570167",
+    "index_commit_sha_at_readback": "1daae0c1ea89003d6b567623d3bd128dc914073d"
   },
   "ledger_metrics": {
     "source_records": 752,
-    "run_updates": 141,
+    "run_updates": 142,
     "limitations": 168,
     "relationship_edges": 133,
     "competing_hypotheses": 85,
@@ -10551,10 +10583,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 685895,
+    "index_characters_before_this_update": 697452,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 11619,
-    "index_characters": 697452
+    "index_characters": 701337
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -10577,7 +10609,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T05:06:03.000Z",
     "post_snapshot_verification": {
-      "status": "CORRECTED_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_READY; SOURCE_REFERENCE_AUDIT_PASS; GRAPH_ADDENDUM_READBACK_PASS; SUCCESSOR_INDEX_GATE_PENDING",
+      "status": "CORRECTED_SNAPSHOT_READBACK_PASS; INDEX_POINTER_FIELDS_MATCH; SOURCE_REFERENCE_AUDIT_PASS; GRAPH_ADDENDUM_READBACK_PASS; CORE_CI_AND_GATE_NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "f4323a171f6158106152b43bb738bdcc41bd6f4d",
       "snapshot_commit_sha": "4af136b0a1eb7669b653fc151fc90e433a4d1422",
@@ -10602,7 +10634,12 @@
         "status": "PENDING_OR_UNVERIFIED",
         "run_id": null,
         "url": null
-      }
+      },
+      "index_pointer_readback_ok": true,
+      "verified_index_blob_sha": "cb4a2d251d0157c22355816050fb74a415570167",
+      "verified_index_commit_sha": "1daae0c1ea89003d6b567623d3bd128dc914073d",
+      "index_character_count_match": true,
+      "note": "The verified index commit was immediately followed by this additive verification-record commit; the snapshot pointer and source list are unchanged."
     },
     "previous_pointer_snapshot": {
       "record_type": "snapshot_reference",
@@ -11105,6 +11142,28 @@
       "relationship_graph_addendum_readback_ok": true,
       "index_gate_status": "PENDING_AFTER_INDEX_WRITE",
       "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T05:09:24.000Z",
+      "verification_type": "INDEX_POINTER_GRAPH_HASH_AND_SOURCE_REFERENCE_READBACK",
+      "verified_index_blob_sha": "cb4a2d251d0157c22355816050fb74a415570167",
+      "verified_index_commit_sha": "1daae0c1ea89003d6b567623d3bd128dc914073d",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
+      "snapshot_blob_sha": "f4323a171f6158106152b43bb738bdcc41bd6f4d",
+      "snapshot_commit_sha": "4af136b0a1eb7669b653fc151fc90e433a4d1422",
+      "snapshot_character_count_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T050603-circle-coinbase-sbic-ambiguity.json",
+      "graph_addendum_blob_sha": "b8de39044a3f3252ae489cd4c39a4f8a9dce605c",
+      "graph_addendum_readback_ok": true,
+      "source_reference_count": 11,
+      "missing_snapshot_source_references": 0,
+      "missing_graph_source_references": 0,
+      "unique_source_ids": true,
+      "index_metric_count_match": true,
+      "index_character_count_match": true,
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "gate_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
       "forecast_status": "NOT_ISSUED"
     }
   ]
