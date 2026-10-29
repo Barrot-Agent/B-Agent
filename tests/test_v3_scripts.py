@@ -829,7 +829,7 @@ def test_emit_signal_news_score_excludes_invalid_time_nonfinite_weight_and_unkno
     ]
     log_path = tmp_path / "knowledge.jsonl"
     log_path.write_text(
-        "".join(json.dumps(record) + "\\n" for record in records),
+        "".join(json.dumps(record) + "\n" for record in records),
         encoding="utf-8",
     )
 
