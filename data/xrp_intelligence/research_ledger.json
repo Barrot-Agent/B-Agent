@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T06:14:00.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0614-EVERNORTH-CAPITAL-AND-SAFETY-PRS",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0614-evernorth-capital-and-safety-prs.json",
-    "snapshot_blob_sha": "5aafd245035ddb563fca9d7f701ad3649e57a7ce",
-    "snapshot_commit_sha": "3cabba445230144309060994a1ad1ff3c70155a5"
+    "captured_at_utc": "2026-10-29T06:16:00.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0616-YOUTUBE-VIDEO-CANDIDATE-INVENTORY",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0616-youtube-video-candidate-inventory.json",
+    "snapshot_blob_sha": "c2449a71891e0fad1d01aa7050fe091b9c018696",
+    "snapshot_commit_sha": "1ed5134d0b3b2ec0590e4596f2fbf0b682afe2f8"
   },
   "sources": [
     {
@@ -6449,6 +6449,33 @@
       "published_at": "2026-10-29T06:08:23Z",
       "accessed_at_utc": "2026-10-29T06:14:00.000Z",
       "note": "Main head remained f319d3d9511c6463bb18c36d9cc2b537888f6b88 at this capture. Current signal and state blobs match the prior verified capture; current main still has confidence 0.0/provider failures, and the BTC-USD paper position has position_product=null. No main write was performed by this run."
+    },
+    {
+      "id": "SRC-RUN44-20261029T0616Z-VIDEO-KAMILAH-MARCH2026",
+      "evidence_class": "YOUTUBE_VIDEO_PAGE_METADATA_FROM_INDEXED_SEARCH",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "published_at": "2026-03-06",
+      "accessed_at_utc": "2026-10-29T06:16:00.000Z",
+      "note": "Indexed YouTube result labels uploader Kamilah Stevenson, duration 13:28, and describes oil shocks, the yen carry trade, global liquidity and XRP infrastructure. The description contains promotional/affiliate links and a financial disclaimer. Candidate upload on the Kamilah-named channel; not verified as a video by a person specifically named Camilla Stephenson, and its macro/XRP claims are creator opinion rather than market-data evidence."
+    },
+    {
+      "id": "SRC-RUN44-20261029T0616Z-VIDEO-KAMILAH-DEC2025",
+      "evidence_class": "YOUTUBE_VIDEO_PAGE_METADATA_FROM_INDEXED_SEARCH",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "published_at": "2025-12-24",
+      "accessed_at_utc": "2026-10-29T06:16:00.000Z",
+      "note": "Indexed YouTube result labels uploader Kamilah Stevenson and includes chapters about XRP versus Bitcoin, institutional holdings and value transfer. Candidate own-channel upload; exact Camilla/Camila/Kamilah identity equivalence remains unverified. Not treated as a forecast unless explicit target/horizon is extracted and timestamped."
+    },
+    {
+      "id": "SRC-RUN44-20261029T0616Z-VIDEO-LARRY-GUEST",
+      "evidence_class": "YOUTUBE_GUEST_APPEARANCE_DISCONFIRMING_SCOPE",
+      "url": "https://www.youtube.com/watch?v=mrts0CEPwIc",
+      "title": "Why Liquidity Comes Before Price XRP Explained",
+      "published_at": "2025-12-21",
+      "accessed_at_utc": "2026-10-29T06:16:00.000Z",
+      "note": "Indexed YouTube result identifies STOCK UP! with LARRY JONES as uploader and Kamilah/Camila Stevenson as a guest. This is related public discussion, not an upload by her channel; do not count it as one of her own videos."
     }
   ],
   "limitations": [
@@ -6634,7 +6661,8 @@
     "2026-10-29T06:14:00.000Z: Evernorth's approximately 473 million XRP closing treasury is not 473 million XRP bought on the open market. SEC disclosures identify 84,365,876 XRP purchased with cash plus substantial contributed XRP; transaction-level dates, venues and net market-flow data were not admitted.",
     "2026-10-29T06:14:00.000Z: The approximately $80.7 million ELOC and $132.2 million warrant amount are contingent, not actual proceeds until shares are sold or warrants exercised. Pathfinder's $9.7 million Ripple-related facility draw is debt; the $30 million PIK note and post-redemption cash/liability reconciliation require follow-up.",
     "2026-10-29T06:14:00.000Z: Coinbase/Kraken/Ripple/BitGo were announced as Evernorth execution partners, but the press release says agreements remain subject to customary closing conditions and approvals. No executed trading volume, custody mandate, or net XRP flow is established. Hugo Jeandesboz's prior Coinbase role is a personnel link, not proof of ongoing Coinbase control.",
-    "2026-10-29T06:14:00.000Z: PR #1291's artifact-only summary workflow deliberately does not publish a new web/latest_signal_summary.json to main. Main's existing public summary defect therefore remains until a separate approved publishing path is designed and verified."
+    "2026-10-29T06:14:00.000Z: PR #1291's artifact-only summary workflow deliberately does not publish a new web/latest_signal_summary.json to main. Main's existing public summary defect therefore remains until a separate approved publishing path is designed and verified.",
+    "2026-10-29T06:16:00.000Z: YouTube indexed search surfaced two candidate own-channel uploads labeled Kamilah Stevenson and one guest appearance on another channel, but the direct videos-page fetch was throttled. The canonical channel identity is not established as Camilla Stephenson and the public-video inventory is partial, not exhaustive."
   ],
   "run_updates": [
     {
@@ -10961,6 +10989,43 @@
       "deployment_executed": false,
       "real_money_trade": false,
       "paper_trading_state_mutated": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T06:16:00.000Z",
+      "update_type": "PUBLIC_YOUTUBE_VIDEO_CANDIDATE_INVENTORY_AND_IDENTITY_DISAMBIGUATION",
+      "source_ids": [
+        "SRC-RUN44-20261029T0616Z-VIDEO-KAMILAH-MARCH2026",
+        "SRC-RUN44-20261029T0616Z-VIDEO-KAMILAH-DEC2025",
+        "SRC-RUN44-20261029T0616Z-VIDEO-LARRY-GUEST"
+      ],
+      "summary": "Added two indexed candidate uploads by a channel labeled Kamilah Stevenson and separated a third video that features Kamilah/Camila as a guest but is uploaded by STOCK UP! with Larry Jones. The two candidate uploads discuss macro liquidity/yen carry trade/XRP and XRP-versus-Bitcoin/institutional positioning. These are creator claims, not verified market evidence. Direct YouTube channel-page retrieval was throttled; exact Camilla Stephenson identity and exhaustive upload inventory remain unresolved.",
+      "candidate_channel": "https://www.youtube.com/@drkamilahstevenson",
+      "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "candidate_own_uploads": [
+        {
+          "video_id": "iwhpNT73zpk",
+          "published_at": "2026-03-06"
+        },
+        {
+          "video_id": "pmJTrXJQ8Vw",
+          "published_at": "2025-12-24"
+        }
+      ],
+      "related_guest_appearance": {
+        "video_id": "mrts0CEPwIc",
+        "uploader": "STOCK UP! with LARRY JONES",
+        "published_at": "2025-12-21"
+      },
+      "exact_identity_status": "CAMILLA_STEPHENSON_NOT_VERIFIED_AS_KAMILAH/CAMILA_STEVENSON",
+      "inventory_status": "PARTIAL_NOT_EXHAUSTIVE",
+      "forecast_status": "NOT_ISSUED",
+      "new_synchronized_xrp_market_observations_admitted": false,
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false
     }
   ],
   "mission_priority": {
@@ -11188,17 +11253,17 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "3cabba445230144309060994a1ad1ff3c70155a5",
-  "current_research_head_this_run": "057f8911d85bfb92c8075228bde170bf8550e1a2",
+  "current_research_head_before_ledger_update": "1ed5134d0b3b2ec0590e4596f2fbf0b682afe2f8",
+  "current_research_head_this_run": "PENDING_AFTER_LEDGER_POINTER_UPDATE",
   "current_research_checks": {
-    "status": "EVERNORTH_CAPITAL_GRAPH_ADDED; PR1290_AND_PR1291_CI_GATE_PASS; GRAPH_SNAPSHOT_POINTER_AND_LEDGER_READBACK_PASS; FORECAST_NOT_ISSUED",
+    "status": "YOUTUBE_CANDIDATE_INVENTORY_ADDED; SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING; FORECAST_NOT_ISSUED",
     "latest_main_sha": "f319d3d9511c6463bb18c36d9cc2b537888f6b88",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0614-evernorth-capital-and-safety-prs.json",
-    "snapshot_blob_sha": "5aafd245035ddb563fca9d7f701ad3649e57a7ce",
-    "snapshot_commit_sha": "3cabba445230144309060994a1ad1ff3c70155a5",
-    "snapshot_characters": 21708,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0616-youtube-video-candidate-inventory.json",
+    "snapshot_blob_sha": "c2449a71891e0fad1d01aa7050fe091b9c018696",
+    "snapshot_commit_sha": "1ed5134d0b3b2ec0590e4596f2fbf0b682afe2f8",
+    "snapshot_characters": 24593,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 43,
+    "source_reference_count": 46,
     "missing_source_references": 0,
     "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
     "graph_addendum_blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
@@ -11227,10 +11292,10 @@
     "main_merge_queue_status": "MUTATION_CAPABLE_ON_MAIN",
     "platform_coordination_status": "DESIGNED_NOT_EXECUTED_LIVE_ADAPTERS_NOT_VERIFIED",
     "creator_channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
-    "creator_identity_status": "PROBABLE_KAMILAH_CAMILA_VARIANT; EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
-    "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; THIRD_PARTY_VIDEO_COUNTS_DISAGREE",
+    "creator_identity_status": "EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
+    "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; YOUTUBE_DIRECT_PAGE_THROTTLED",
     "forecast_status": "NOT_ISSUED",
-    "index_pointer_readback_ok": true,
+    "index_pointer_readback_ok": false,
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
@@ -11273,12 +11338,16 @@
     "pr1291_gate_status": "PASS",
     "pr1291_state": "DRAFT_OPEN_UNMERGED",
     "pr1291_current_main_ahead_of_head": 0,
-    "pr1288_current_main_ahead_of_head": 15
+    "pr1288_current_main_ahead_of_head": 15,
+    "candidate_channel": "https://www.youtube.com/@drkamilahstevenson",
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "candidate_own_upload_count": 2,
+    "related_guest_appearance_count": 1
   },
   "ledger_metrics": {
-    "source_records": 793,
-    "run_updates": 150,
-    "limitations": 183,
+    "source_records": 796,
+    "run_updates": 151,
+    "limitations": 184,
     "relationship_edges": 149,
     "competing_hypotheses": 94,
     "market_observations": 68,
@@ -11286,11 +11355,11 @@
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 13,
-    "index_characters_before_this_update": 737754,
+    "latest_research_addendum_observations": 3,
+    "index_characters_before_this_update": 752450,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 21708,
-    "index_characters": 752450
+    "latest_snapshot_characters": 24593,
+    "index_characters": 756109
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -11311,24 +11380,20 @@
     "forecast_status": "NOT_ISSUED"
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:14:00.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:16:00.000Z",
     "post_snapshot_verification": {
-      "status": "GRAPH_ADDENDUM_READBACK_PASS; SNAPSHOT_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1290_AND_PR1291_CI_GATE_PASS; RESEARCH_BASE_CI_UNVERIFIED",
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
-      "graph_addendum_blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
-      "graph_addendum_commit_sha": "911d339af6d7f0d1954756921a331c4b9a71cfe8",
-      "graph_addendum_readback_ok": true,
-      "graph_edges": 13,
-      "graph_hypotheses": 5,
+      "status": "SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING; GRAPH_POINTER_RETAINED_FROM_PRIOR_VERIFIED_ADDENDUM",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "5aafd245035ddb563fca9d7f701ad3649e57a7ce",
-      "snapshot_commit_sha": "3cabba445230144309060994a1ad1ff3c70155a5",
-      "snapshot_characters": 21708,
-      "source_reference_count": 43,
+      "snapshot_blob_sha": "c2449a71891e0fad1d01aa7050fe091b9c018696",
+      "snapshot_commit_sha": "1ed5134d0b3b2ec0590e4596f2fbf0b682afe2f8",
+      "snapshot_characters": 24593,
+      "source_reference_count": 46,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "index_pointer_readback_ok": true,
-      "research_base_ci": "NOT_TRIGGERED_OR_UNVERIFIED",
+      "index_pointer_readback_ok": false,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
+      "graph_addendum_blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
+      "graph_addendum_readback_ok": true,
       "ci_pr1290": {
         "status": "PASS",
         "run_id": 40827759284
@@ -11345,12 +11410,7 @@
         "status": "PASS",
         "run_id": 40827879426
       },
-      "index_blob_sha_at_readback": "72c906e29a4e7d4550f33d1bb313b0a4f3227095",
-      "index_commit_sha_at_readback": "057f8911d85bfb92c8075228bde170bf8550e1a2",
-      "index_character_count_match": true,
-      "source_ids_unique": true,
-      "main_modified_by_this_run": false,
-      "merge_performed": false
+      "research_base_ci": "NOT_TRIGGERED_OR_UNVERIFIED"
     },
     "previous_pointer_snapshot": {
       "record_type": "snapshot_reference",
@@ -11362,7 +11422,7 @@
       "snapshot_blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
       "snapshot_commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc"
     },
-    "note": "Graph addendum and snapshot are immutable commits on the explicit research branch. Main was not modified. PRs #1290 and #1291 remain draft/unmerged."
+    "note": "The video inventory is explicitly partial because direct YouTube channel-page retrieval was throttled. No identity merge or forecast is inferred."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -11410,31 +11470,26 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T06:14:00.000Z",
-    "focus": "Evernorth XRP treasury, actual vs contingent capital, SBI governance, Coinbase personnel/partner links, related-party debt and safety PR verification",
+    "recorded_at_utc": "2026-10-29T06:16:00.000Z",
+    "focus": "Candidate public YouTube upload inventory and Camilla/Camila/Kamilah identity disambiguation",
     "source_ids": [
-      "SRC-RUN43-20261029T0614Z-EVERNORTH-SEC-S1",
-      "SRC-RUN43-20261029T0614Z-EVERNORTH-CLOSING-8K",
-      "SRC-RUN43-20261029T0614Z-EVERNORTH-ELOC-8K",
-      "SRC-RUN43-20261029T0614Z-EVERNORTH-WARRANT-PROSPECTUS",
-      "SRC-RUN43-20261029T0614Z-EVERNORTH-CIO-SEC-425",
-      "SRC-RUN43-20261029T0614Z-EVERNORTH-PARTNER-PRESS-RELEASE",
-      "SRC-RUN43-20261029T0614Z-EVERNORTH-CONVERTIBLE-NOTE",
-      "SRC-RUN43-20261029T0614Z-PR1290-CI",
-      "SRC-RUN43-20261029T0614Z-PR1290-GATE",
-      "SRC-RUN43-20261029T0614Z-PR1291-CI",
-      "SRC-RUN43-20261029T0614Z-PR1291-GATE",
-      "SRC-RUN43-20261029T0614Z-MAIN-HEAD"
+      "SRC-RUN44-20261029T0616Z-VIDEO-KAMILAH-MARCH2026",
+      "SRC-RUN44-20261029T0616Z-VIDEO-KAMILAH-DEC2025",
+      "SRC-RUN44-20261029T0616Z-VIDEO-LARRY-GUEST"
     ],
+    "candidate_channel": "https://www.youtube.com/@drkamilahstevenson",
+    "candidate_own_upload_count": 2,
+    "related_guest_appearance_count": 1,
+    "inventory_status": "PARTIAL_NOT_EXHAUSTIVE",
+    "identity_status": "EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
     "relationship_graph_addendum": {
       "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
       "blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
       "commit_sha": "911d339af6d7f0d1954756921a331c4b9a71cfe8",
-      "new_edges": 13,
-      "new_competing_hypotheses": 5
+      "new_edges": 0,
+      "new_competing_hypotheses": 0
     },
-    "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261029T0608-sbic-crypto-ask-coin-disambiguation-corrected.json",
-    "actual_capital_phrase": "RELEVANT_EVERNORTH_CANDIDATE; ORIGINAL_CONTEXT_UNRESOLVED",
+    "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261029T0614-evernorth-capital-and-safety-prs.json",
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
