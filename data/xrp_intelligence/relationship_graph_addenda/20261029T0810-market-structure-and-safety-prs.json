@@ -1,0 +1,194 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T0810-MARKET-STRUCTURE-AND-SAFETY-PRS",
+  "captured_at_utc": "2026-10-29T08:10:30.000Z",
+  "observed_main_sha": "eb4422a5897745ec563303ade106cfd2549eac3c",
+  "policy": "Preserve provider timestamps and coverage definitions. Treat cross-provider disagreement as a data-quality finding until populations and cutoffs are aligned. Repository proposals remain unmerged and do not change main.",
+  "nodes": [
+    {
+      "id": "XRP_DERIVATIVES_AGGREGATORS",
+      "label": "Secondary XRP derivatives aggregators",
+      "kind": "MARKET_DATA_SOURCE_GROUP"
+    },
+    {
+      "id": "XRP_ETF_FLOW_TRACKERS",
+      "label": "XRP ETF flow trackers",
+      "kind": "DERIVED_MARKET_DATA_SOURCE_GROUP"
+    },
+    {
+      "id": "XRP_PERPETUAL_POSITIONING",
+      "label": "XRP perpetual open interest, funding and positioning",
+      "kind": "MARKET_STRUCTURE"
+    },
+    {
+      "id": "XRP_ETF_NET_FLOWS",
+      "label": "Issuer-holdings-derived XRP ETF flows",
+      "kind": "INSTITUTIONAL_FLOW_ESTIMATE"
+    },
+    {
+      "id": "BARROT_XRP_SIGNAL_PIPELINE",
+      "label": "Barrot XRP signal and summary pipeline",
+      "kind": "REPOSITORY_OBSERVED_MODEL_OUTPUT"
+    },
+    {
+      "id": "BARROT_MAIN_MERGE_QUEUE",
+      "label": "Barrot main-branch merge-queue workflow",
+      "kind": "REPOSITORY_MUTATION_CAPABILITY"
+    },
+    {
+      "id": "BARROT_PR1297",
+      "label": "PR #1297 fresh-main read-only merge-queue audit",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    },
+    {
+      "id": "BARROT_PR1298",
+      "label": "PR #1298 fresh-main fail-closed XRP summary",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN47-DERIVATIVES-COVERAGE-CONFLICT",
+      "source": "XRP_DERIVATIVES_AGGREGATORS",
+      "target": "XRP_PERPETUAL_POSITIONING",
+      "relationship": "NONCOMPARABLE_OPEN_INTEREST_SNAPSHOTS",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "claim": "At stated cutoffs, Kodexius reports $815.6M OI across 7 contracts (05:22 UTC), TradRadar $1.95B across 7 exchanges (03:30 UTC), and Loris Tools $2.28B across 39 venues (00:25 UTC). Different contract/venue coverage, timestamps and aggregation rules prevent direct averaging; none is a synchronized canonical OI value.",
+      "source_ids": [
+        "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-KODEXIUS",
+        "SRC-RUN47-20261029T0810Z-XRP-MARKET-TRADRADAR",
+        "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-LORIS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN47-FUNDING-LONG-SKEW",
+      "source": "XRP_DERIVATIVES_AGGREGATORS",
+      "target": "XRP_PERPETUAL_POSITIONING",
+      "relationship": "POSITIVE_AGGREGATE_FUNDING_AND_LONG_ACCOUNT_SKEW_REPORTED",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "claim": "TradRadar reports +0.0068% OI-weighted funding per 8h and a 3.49 long/short account ratio (77.7% long). This may indicate a long-skewed account distribution, but account ratios are not notional exposure, venue coverage is partial, and another aggregator reports materially different OI.",
+      "source_ids": [
+        "SRC-RUN47-20261029T0810Z-XRP-MARKET-TRADRADAR",
+        "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-KODEXIUS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN47-ETF-FLOW-UNIVERSE-CONFLICT",
+      "source": "XRP_ETF_FLOW_TRACKERS",
+      "target": "XRP_ETF_NET_FLOWS",
+      "relationship": "NONCOMPARABLE_FLOW_ESTIMATES",
+      "evidence_class": "DERIVED_MARKET_DATA",
+      "claim": "Alpha Finance's five-fund series reports $0 flow on Oct 28 and +$644.8K over seven sessions; XRP Insights' six spot funds plus BITW series reports -3.13M XRP over Oct 26–27 and marks Oct 28 provisional. Different universes, units, capture gaps and settlement status mean the figures cannot be averaged or used as one feature.",
+      "source_ids": [
+        "SRC-RUN47-20261029T0810Z-XRP-ETF-ALPHA",
+        "SRC-RUN47-20261029T0810Z-XRP-ETF-INSIGHTS"
+      ]
+    },
+    {
+      "id": "EDGE-RUN47-BARROT-SIGNAL-INVALID",
+      "source": "BARROT_XRP_SIGNAL_PIPELINE",
+      "target": "XRP directional forecast",
+      "relationship": "INVALID_INPUT_BLOCKS_ISSUANCE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Current main signal timestamp 2026-10-29 07:24:10 UTC has score 44, confidence 0, news score 88 from 11 entries, and provider unavailability due missing model credentials and Groq HTTP 429. The summary still calls the signal moderate/positive. Forecast status remains NOT_ISSUED.",
+      "source_ids": [
+        "SRC-RUN47-20261029T0810Z-MAIN-XRP-SIGNAL",
+        "SRC-RUN47-20261029T0810Z-MAIN-XRP-SUMMARY"
+      ]
+    },
+    {
+      "id": "EDGE-RUN47-PR1297-MERGE-QUEUE-SAFETY",
+      "source": "BARROT_MAIN_MERGE_QUEUE",
+      "target": "BARROT_PR1297",
+      "relationship": "DRAFT_READ_ONLY_REPLACEMENT_PROPOSED",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "PR #1297 replaces the write-capable merge queue with a manual read-only PR inventory. Exact-head core CI and fail-closed gate passed on head e9366a5f401e75246b96dc7c1e5519c2302cc679. The proposal remains draft/unmerged; main remains mutation-capable.",
+      "source_ids": [
+        "SRC-RUN47-20261029T0810Z-MAIN-MERGE-QUEUE",
+        "SRC-RUN47-20261029T0810Z-PR1297-CI",
+        "SRC-RUN47-20261029T0810Z-PR1297-GATE",
+        "SRC-RUN47-20261029T0810Z-PR1297-PR"
+      ]
+    },
+    {
+      "id": "EDGE-RUN47-PR1298-SIGNAL-SAFETY",
+      "source": "BARROT_XRP_SIGNAL_PIPELINE",
+      "target": "BARROT_PR1298",
+      "relationship": "FAIL_CLOSED_SUMMARY_FIX_PROPOSED",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "PR #1298 ports the fail-closed summary and read-only artifact workflow onto fresh main. Branch readback passed, but no CI/gate runs were returned at the cutoff. The PR remains draft/unmerged and is not yet execution-verified.",
+      "source_ids": [
+        "SRC-RUN47-20261029T0810Z-MAIN-XRP-SIGNAL",
+        "SRC-RUN47-20261029T0810Z-MAIN-XRP-SUMMARY",
+        "SRC-RUN47-20261029T0810Z-PR1298-PR"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN47-LEVERAGE-LONG-SKEW",
+      "class": "DERIVATIVES_POSITIONING_COMPETING_HYPOTHESES",
+      "hypothesis": "Positive OI-weighted funding and a high long/short account ratio may indicate long-biased perpetual positioning, which could amplify downside if spot weakens and positions unwind.",
+      "confidence": "LOW; PARTIAL_COVERAGE_AND_ACCOUNT_RATIO_ONLY",
+      "supporting_source_ids": [
+        "SRC-RUN47-20261029T0810Z-XRP-MARKET-TRADRADAR",
+        "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-KODEXIUS"
+      ],
+      "counter_hypotheses": [
+        "Long account counts may be small relative to short notional; venue populations and funding intervals differ; open interest may be hedged or market-maker inventory.",
+        "Positive funding can persist during rising or range-bound markets and is not by itself a reversal signal."
+      ],
+      "disconfirming_evidence_needed": [
+        "Aligned exchange-by-exchange OI in USD and XRP, funding intervals, liquidation and taker-flow series, order-book depth, spot CVD, and fixed-horizon outcome tests."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN47-ETF-FLOW-UNIVERSE",
+      "class": "INSTITUTIONAL_FLOW_COMPETING_HYPOTHESES",
+      "hypothesis": "Recent XRP ETF demand may be near-flat or negative depending on fund universe and settlement status; the apparent disagreement is a measurement/coverage problem until issuer holdings are reconciled.",
+      "confidence": "HIGH_FOR_NONCOMPARABILITY; LOW_FOR_TRUE_NET_FLOW_DIRECTION",
+      "supporting_source_ids": [
+        "SRC-RUN47-20261029T0810Z-XRP-ETF-ALPHA",
+        "SRC-RUN47-20261029T0810Z-XRP-ETF-INSIGHTS"
+      ],
+      "counter_hypotheses": [
+        "The series may genuinely differ because one includes fewer funds and a different trading-day settlement window.",
+        "A confirmed positive or negative net flow can still be outweighed by derivatives, exchange inventory, macro risk appetite or OTC flows."
+      ],
+      "disconfirming_evidence_needed": [
+        "Issuer-level daily holdings, shares outstanding, creations/redemptions, common UTC cutoffs and settled fund-by-fund reconciliation."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN47-PRICE-DOWNSIDE-CAUSE",
+      "class": "PRICE_MOVE_CAUSAL_COMPETING_HYPOTHESES",
+      "hypothesis": "The reported fall toward $1.29–$1.30 and elevated but inconsistently measured derivatives activity may reflect broad crypto risk reduction and deleveraging rather than an XRP-specific institutional flow shock.",
+      "confidence": "LOW; TIME_WINDOWS_NOT_ALIGNED",
+      "supporting_source_ids": [
+        "SRC-RUN47-20261029T0810Z-XRP-PRICE-BLOCKINSIDER",
+        "SRC-RUN47-20261029T0810Z-XRP-MARKET-TRADRADAR",
+        "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-LORIS",
+        "SRC-RUN47-20261029T0810Z-XRP-ETF-ALPHA",
+        "SRC-RUN47-20261029T0810Z-XRP-ETF-INSIGHTS"
+      ],
+      "counter_hypotheses": [
+        "An XRP-specific catalyst, order-book imbalance, or fund redemption could contribute; the current panel cannot isolate causes.",
+        "Cross-provider prices and windows differ, so apparent movement may partly reflect capture timing."
+      ],
+      "disconfirming_evidence_needed": [
+        "Synchronized XRP/BTC/ETH returns, venue-level flows, depth/imbalance, liquidation and ETF timestamps, and event-study controls."
+      ],
+      "xrp_price_effect": "NO_FORECAST_ISSUED"
+    }
+  ],
+  "notes": [
+    "All market data is a timestamped secondary/derived snapshot, not a synchronized exchange-level panel. Do not average open-interest figures with differing coverage.",
+    "ETF flow trackers disagree in scope and settlement status; no ETF flow feature was admitted to the feature store.",
+    "Main signal confidence is 0.0 with explicit provider failures. No price forecast was issued.",
+    "PR #1297 is draft/unmerged with exact-head CI and fail-closed gate success. PR #1298 is draft/unmerged; CI/gate results were not yet returned at cutoff.",
+    "No changes were made to main; no PR was merged, no deployment or workflow dispatch occurred, and no real-money action was taken."
+  ]
+}
