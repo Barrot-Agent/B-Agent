@@ -6092,6 +6092,30 @@
       "title": "Current paper-trading log could not be replayed from connector response",
       "accessed_at_utc": "2026-10-29T05:06:03.000Z",
       "note": "Full-file and line-range reads returned empty content through the connected GitHub file action, so the current log could not be replayed here; this does not mean the log is empty. The paper-trader workflow hardcodes BTC-USD while persisted state has a nonzero position and position_product=null. Do not treat this BTC paper process as XRP forecast evidence; no state was changed."
+    },
+    {
+      "id": "SRC-RUN40-20261029T051225-PR1289-HEAD",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1289",
+      "title": "Fresh-main paper-trading position identity guard PR #1289",
+      "accessed_at_utc": "2026-10-29T05:12:25.000Z",
+      "note": "Draft/open/unmerged PR from base main SHA f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7 to head 5ca1ffb3371f4a453be2efbeee5b5ab8ee053920. Adds a fail-closed guard for nonzero positions with missing or mismatched product identity, binds product on first buy, clears identity on full close, and adds regression tests. No existing paper state was rewritten."
+    },
+    {
+      "id": "SRC-RUN40-20261029T051225-PR1289-CI-40821904368",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40821904368",
+      "title": "PR #1289 exact-head core CI passed",
+      "accessed_at_utc": "2026-10-29T05:12:25.000Z",
+      "note": "Exact head 5ca1ffb3371f4a453be2efbeee5b5ab8ee053920 passed the core test suite: 176 passed and 4 subtests passed in 6.64 seconds. This is branch-level test evidence, not merge authorization or proof of production behavior."
+    },
+    {
+      "id": "SRC-RUN40-20261029T051225-PR1289-GATE-40821904384",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40821904384",
+      "title": "PR #1289 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-29T05:12:25.000Z",
+      "note": "Exact head 5ca1ffb3371f4a453be2efbeee5b5ab8ee053920 passed the gate. Workflow output explicitly states automatic merge is disabled and no repository content was changed by the gate. PR remains draft/open/unmerged."
     }
   ],
   "limitations": [
@@ -10293,15 +10317,40 @@
       "paper_trading_state_mutated": false,
       "real_money_trade": false,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T05:12:25.000Z",
+      "update_type": "FRESH_MAIN_PAPER_POSITION_IDENTITY_GUARD_VERIFIED",
+      "source_ids": [
+        "SRC-RUN40-20261029T051225-PR1289-HEAD",
+        "SRC-RUN40-20261029T051225-PR1289-CI-40821904368",
+        "SRC-RUN40-20261029T051225-PR1289-GATE-40821904384"
+      ],
+      "summary": "Prepared fresh-main PR #1289 from current main f27dcf8. The paper trader is configured for BTC-USD, while persisted state has a nonzero position and position_product=null. The branch now fails closed before invoking the model when position identity is missing/mismatched, binds new positions to the configured product and clears identity only on full close. Exact-head core CI passed 176 tests plus 4 subtests in 6.64s; fail-closed gate passed. PR remains draft/unmerged; existing state, main and real-money balances were untouched.",
+      "index_head_verified": "PR1289_EXACT_HEAD_CI_AND_GATE_PASS",
+      "gate_status": "PASS_ON_PR1289_HEAD; AUTOMATIC_MERGE_DISABLED",
+      "core_ci_status": "PASS_176_TESTS_4_SUBTESTS_6.64S",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
+      "main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
+      "pr1289": 1289,
+      "pr1289_head": "5ca1ffb3371f4a453be2efbeee5b5ab8ee053920",
+      "pr1289_ci_run": 40821904368,
+      "pr1289_gate_run": 40821904384,
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-29T05:06:03.000Z",
+    "as_of_utc": "2026-10-29T05:12:25.000Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
     "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
-    "next_action": "Verify the latest snapshot pointer and inspect the index gate. Keep current-main XRP output NOT_ISSUED, review #1288 and #1282 without merging, and obtain a permitted full paper log for a fresh read-only replay."
+    "next_action": "Keep PR #1289 draft/unmerged pending review; review #1288's zero-confidence summary fix and #1282's merge-queue safety proposal. Obtain a permitted full paper-trading log for a fresh replay and do not use BTC-USD paper results as XRP performance."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -10520,10 +10569,10 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "4af136b0a1eb7669b653fc151fc90e433a4d1422",
-  "current_research_head_this_run": "4af136b0a1eb7669b653fc151fc90e433a4d1422",
+  "current_research_head_before_ledger_update": "a5897665429d07b4d45efddb733db90d9da2208b",
+  "current_research_head_this_run": "a5897665429d07b4d45efddb733db90d9da2208b",
   "current_research_checks": {
-    "status": "SNAPSHOT_GRAPH_AND_INDEX_POINTER_READBACK_PASS; CORE_CI_AND_GATE_NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "status": "PR1289_EXACT_HEAD_CI_AND_GATE_PASS; DRAFT_UNMERGED; XRP_SIGNAL_STILL_NOT_ISSUED",
     "latest_main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
     "snapshot_blob_sha": "f4323a171f6158106152b43bb738bdcc41bd6f4d",
@@ -10559,7 +10608,7 @@
       "provider_unavailable": true,
       "forecast_status": "NOT_ISSUED"
     },
-    "paper_trading_replay": "BLOCKED_CURRENT_LOG_CONTENT_UNAVAILABLE; CURRENT_TRADER_BTC-USD; POSITION_PRODUCT_NULL",
+    "paper_trading_replay": "BLOCKED_CURRENT_LOG_CONTENT_UNAVAILABLE; CURRENT_TRADER_BTC-USD; POSITION_PRODUCT_NULL; PR1289_GUARD_PROPOSED",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
@@ -10569,11 +10618,18 @@
     "forecast_status": "NOT_ISSUED",
     "index_pointer_readback_ok": true,
     "index_blob_sha_at_readback": "cb4a2d251d0157c22355816050fb74a415570167",
-    "index_commit_sha_at_readback": "1daae0c1ea89003d6b567623d3bd128dc914073d"
+    "index_commit_sha_at_readback": "1daae0c1ea89003d6b567623d3bd128dc914073d",
+    "pr1289_head": "5ca1ffb3371f4a453be2efbeee5b5ab8ee053920",
+    "pr1289_base_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
+    "pr1289_state": "DRAFT_OPEN_UNMERGED",
+    "pr1289_core_ci_run": 40821904368,
+    "pr1289_core_ci_status": "PASS_176_TESTS_4_SUBTESTS_6.64S",
+    "pr1289_gate_run": 40821904384,
+    "pr1289_gate_status": "PASS_AUTOMATIC_MERGE_DISABLED"
   },
   "ledger_metrics": {
-    "source_records": 752,
-    "run_updates": 142,
+    "source_records": 755,
+    "run_updates": 143,
     "limitations": 168,
     "relationship_edges": 133,
     "competing_hypotheses": 85,
@@ -10582,11 +10638,11 @@
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 697452,
+    "latest_research_addendum_observations": 3,
+    "index_characters_before_this_update": 701337,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 11619,
-    "index_characters": 701337
+    "index_characters": 705173
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
