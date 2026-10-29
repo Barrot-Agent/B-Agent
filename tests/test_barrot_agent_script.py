@@ -372,7 +372,7 @@ def test_repo_browser_open_file_is_bounded_and_confined(tmp_path: Path, monkeypa
     workspace = tmp_path / "repo"
     workspace.mkdir()
     target = workspace / "sample.py"
-    target.write_text("\\n".join(f"line-{i}" for i in range(1, 151)), encoding="utf-8")
+    target.write_text("\n".join(f"line-{i}" for i in range(1, 151)), encoding="utf-8")
     browser = module.RepoBrowser(workspace)
 
     result = json.loads(browser.open_file({"path": "sample.py", "line_start": 2, "line_end": 200}))
