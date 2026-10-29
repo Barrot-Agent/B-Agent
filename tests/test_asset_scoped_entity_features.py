@@ -53,3 +53,21 @@ def test_unweighted_or_invalid_relevance_is_not_admitted_to_asset_specific_profi
     cooccurrence = build_cooccurrence(xrp_entries, [])
     assert cooccurrence["pairs_by_asset"]["XRP"] == []
     assert cooccurrence["unique_pairs_found"] == 1  # Legacy descriptive aggregate is preserved.
+
+
+def test_nonfinite_and_boolean_relevance_is_not_admitted_to_asset_specific_features():
+    invalid_weights = [float("nan"), float("inf"), float("-inf"), True, False, -1.0]
+    xrp_entries = [
+        entry(f"Invalid weight {index}", "bullish", ["Ripple", "XRP"], xrp_relevance=weight)
+        for index, weight in enumerate(invalid_weights)
+    ]
+
+    profiles = build_entity_sentiment_profile(xrp_entries, [])
+    cooccurrence = build_cooccurrence(xrp_entries, [])
+
+    # Invalid relevance must not enter the weighted features, but global descriptive
+    # counts remain available rather than silently discarding the underlying records.
+    assert profiles["asset_specific_profiles"]["XRP"] == []
+    assert cooccurrence["pairs_by_asset"]["XRP"] == []
+    assert profiles["entities"]
+    assert cooccurrence["unique_pairs_found"] == 1
