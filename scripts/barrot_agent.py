@@ -977,6 +977,15 @@ def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[s
             ) from retry_error
 
 
+def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
+    """Recognize tasks that explicitly forbid repository implementation changes."""
+    normalized = f"{title}\n{body}".casefold()
+    return (
+        "audit and recommend only" in normalized
+        and "no implementation changes are authorized by this issue" in normalized
+    )
+
+
 def main() -> None:
     configure_git()
     checkout_branch(BRANCH)
@@ -1063,6 +1072,57 @@ def main() -> None:
     brain = ScriptBrain()
     bundle_brain = ScriptBrain(enable_tools=False)
     audit_context = build_audit_context(TITLE, TASK)
+    if is_explicit_read_only_audit_task(TITLE, TASK):
+        audit_request = {
+            "objective": TITLE,
+            "task_body": TASK,
+            "repository_context": audit_context,
+            "required_sections": [
+                "Executive status and critical risks",
+                "Repository, branch, and commit map",
+                "CI/workflow configuration versus actual run evidence",
+                "Geometry discrepancy, triangulation, and NOT_ASSESSED behavior",
+                "Agent safety, MMI/provenance, and delivery readiness",
+                "Prioritized next actions with acceptance criteria",
+                "Checks blocked or not performed, with reasons",
+            ],
+            "rules": [
+                "This is a read-only audit. Do not repair, patch, write files, install dependencies, commit, push, merge, open pull requests, or delete/overwrite/reset/clean anything.",
+                "Inspect repository files using only the available read-only repo_browser tools and the supplied repository context.",
+                "Never claim a test ran or passed unless execution output or a specific GitHub Actions run proves it.",
+                "Separate CONFIRMED, LIKELY, UNVERIFIED, and BLOCKED findings.",
+                "Cite exact paths, relevant lines, SHAs, workflow run IDs/URLs, and actual output when available.",
+                "If the local checkout cannot establish remote or historical facts, state the limitation rather than guessing.",
+                "Return the complete evidence-backed report, not a plan to perform the audit later.",
+            ],
+        }
+        audit_system = (
+            "You are Barrot performing a strictly read-only repository audit. "
+            "Use the available repo_browser tools to inspect actual files before making claims. "
+            "Do not execute repair logic or propose changes as already completed. "
+            "Return a concise but complete Markdown report with explicit evidence and uncertainty."
+        )
+        try:
+            audit_brain = ScriptBrain(max_tool_rounds=8)
+            report = audit_brain.think(
+                json.dumps(audit_request, ensure_ascii=False, sort_keys=True),
+                system=audit_system,
+            )
+        except Exception as exc:
+            message = (
+                "Barrot read-only audit failed safely; repository repair was not started.\\n\\n"
+                f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
+            )
+            post_issue_comment(message)
+            raise SystemExit(message) from exc
+        if not report.strip():
+            message = "Barrot read-only audit returned an empty report; repository repair was not started."
+            post_issue_comment(message)
+            raise SystemExit(message)
+        post_issue_comment("## Barrot Read-Only Audit Report\\n\\n" + report)
+        print("READ_ONLY_AUDIT=COMPLETE")
+        return
+
     lifecycle_store = BundleLifecycleStore(ROOT)
     bundle_constraints = [
         "Preserve the exact user objective and constraints across revisions.",
