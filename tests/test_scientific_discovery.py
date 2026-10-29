@@ -611,3 +611,65 @@ def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_
     saved = json.loads((tmp_path / ".barrot" / "collaboration_records" / "latest_scientific_discovery.json").read_text(encoding="utf-8"))
     assert saved["cycle_id"] == "cycle-42"
     assert saved["acceptance_gate_passed"] is False
+
+
+def test_scientific_evidence_survives_real_git_push_and_fresh_clone(tmp_path: Path, monkeypatch) -> None:
+    import subprocess
+
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("ISSUE_NUMBER", "42")
+    monkeypatch.setenv("BRANCH", "barrot/task-42")
+    monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    module = load_script_module("barrot_agent_real_git_persistence_test")
+    remote = tmp_path / "origin.git"
+    workspace = tmp_path / "workspace"
+    resumed = tmp_path / "resumed"
+
+    subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True, text=True)
+    workspace.mkdir()
+    subprocess.run(["git", "init"], cwd=workspace, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "config", "user.email", "tests@barrot.invalid"], cwd=workspace, check=True)
+    subprocess.run(["git", "config", "user.name", "Barrot Test"], cwd=workspace, check=True)
+    (workspace / "README.md").write_text("test repository\\n", encoding="utf-8")
+    subprocess.run(["git", "add", "README.md"], cwd=workspace, check=True)
+    subprocess.run(["git", "commit", "-m", "initial"], cwd=workspace, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "branch", "-M", "main"], cwd=workspace, check=True)
+    subprocess.run(["git", "remote", "add", "origin", str(remote)], cwd=workspace, check=True)
+    subprocess.run(["git", "push", "-u", "origin", "main"], cwd=workspace, check=True, capture_output=True, text=True)
+
+    module.ROOT = workspace
+    module.BRANCH = "barrot/task-42"
+    module.REPO = "Barrot-Agent/B-Agent"
+    module.ISSUE = "42"
+    module.TITLE = "Navier-Stokes research"
+    module.checkout_branch(module.BRANCH)
+
+    pr_calls: list[list[str]] = []
+
+    def fake_run_gh(args):
+        pr_calls.append(args)
+        return module.subprocess.CompletedProcess(args, 0, stdout="draft PR created", stderr="")
+
+    monkeypatch.setattr(module, "run_gh", fake_run_gh)
+    cycle = {
+        "cycle_id": "cycle-42",
+        "problem_id": "navier_stokes_millennium_prize",
+        "status": "no_solution_claim",
+        "acceptance_gate_passed": False,
+        "state_history": ["IDLE", "NO_SOLUTION_CLAIM"],
+        "sources": [{"source_id": "clay", "url": "https://www.claymath.org/"}],
+        "claims": [],
+        "unresolved_questions": ["Independent verification remains incomplete."],
+    }
+    persisted = module.persist_scientific_discovery(cycle)
+    assert persisted["remote_persisted"] is True
+    assert "--draft" in pr_calls[0]
+
+    subprocess.run(["git", "clone", str(remote), str(resumed)], check=True, capture_output=True, text=True)
+    module.ROOT = resumed
+    module.checkout_branch("barrot/task-42")
+    saved_path = resumed / ".barrot" / "collaboration_records" / "latest_scientific_discovery.json"
+    saved = json.loads(saved_path.read_text(encoding="utf-8"))
+    assert saved["cycle_id"] == "cycle-42"
+    assert saved["problem_id"] == "navier_stokes_millennium_prize"
+    assert saved["remaining_blockers"] == ["Independent verification remains incomplete."]
