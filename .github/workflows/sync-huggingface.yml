@@ -11,6 +11,10 @@ on:
           - NO
           - YES
         default: NO
+
+permissions:
+  contents: read
+
 jobs:
   sync-hf:
     if: ${{ inputs.confirm_external_change == 'YES' }}
