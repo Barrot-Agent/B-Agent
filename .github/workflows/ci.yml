@@ -50,6 +50,7 @@ jobs:
             tests/test_coinbase_trader.py \
             tests/test_repository_repair.py \
             tests/test_v3_scripts.py \
+            tests/test_external_deploys_require_confirmation.py \
             tests/test_defensive_runtime.py \
             tests/test_scientific_discovery.py \
             tests/test_formal_benchmark.py \

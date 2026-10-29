@@ -1,12 +1,19 @@
 name: Deploy to Databricks
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
-
+    inputs:
+      confirm_external_change:
+        description: "Set to YES only after explicit human approval for this specific run"
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
 jobs:
   deploy-databricks:
+    if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read

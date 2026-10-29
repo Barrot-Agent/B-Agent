@@ -1,10 +1,16 @@
 name: Barrot Operations Pipeline
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
-
+    inputs:
+      confirm_external_change:
+        description: "Set to YES only after explicit human approval for this specific run"
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
 permissions:
   contents: read
 
@@ -14,6 +20,7 @@ concurrency:
 
 jobs:
   sync-platforms:
+    if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
