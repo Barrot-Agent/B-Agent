@@ -30,6 +30,9 @@ jobs:
           git config user.name "Barrot Self-Upgrade"
           git config user.email "barrot-self-upgrade@users.noreply.github.com"
 
+      - name: Record checked-out commit
+        run: echo "BARROT_CHECKOUT_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
       - name: Capability audit
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
@@ -40,30 +43,21 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python3 scripts/barrot_self_upgrade.py
 
-      - name: Persist generated audit
-        run: |
-          git status --short
-          if git diff --quiet -- barrot_capability_audit.json; then
-            echo "No audit artifact changes."
-          else
-            git add barrot_capability_audit.json
-            git commit -m "chore: update Barrot capability audit"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-          fi
+      - name: Persist generated audit for review
+        run: python3 scripts/barrot_self_upgrade.py --persist-audit-report
 
-      - name: Verify remote ref
+      - name: Verify source checkout was not advanced
         run: |
           local_sha="$(git rev-parse HEAD)"
-          remote_ref="$(git ls-remote --heads origin "${GITHUB_REF_NAME}")"
-          remote_sha="$(printf '%s\n' "${remote_ref}" | awk 'NR==1 {print $1}')"
-          echo "Local SHA: ${local_sha}"
-          echo "Remote ref: ${remote_ref}"
-          if [ -z "${remote_sha}" ] || [ "${local_sha}" != "${remote_sha}" ]; then
-            echo "Remote verification failed for ${GITHUB_REF_NAME}" >&2
+          echo "Initial checkout SHA: $BARROT_CHECKOUT_SHA"
+          echo "Final checkout SHA: $local_sha"
+          if [ -z "$BARROT_CHECKOUT_SHA" ] || [ "$local_sha" != "$BARROT_CHECKOUT_SHA" ]; then
+            echo "Audit workflow unexpectedly changed its checked-out ref." >&2
             exit 1
           fi
+          echo "Audit candidate remote SHA and review PR are verified by the persistence command."
 
       - name: Final state
         run: |
-          echo "Final SHA: $(git rev-parse HEAD)"
+          echo "Final checkout SHA: $(git rev-parse HEAD)"
           git status --short

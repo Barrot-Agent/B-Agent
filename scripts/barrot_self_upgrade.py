@@ -301,7 +301,48 @@ def open_capability_pr(gap_name: str, code: str) -> dict[str, Any]:
     }
 
 
+def create_audit_pull_request(
+    worktree_path: Path,
+    branch: str,
+    commit_sha: str,
+    audit_fingerprint: str,
+) -> str:
+    """Open a review-only PR for a remotely verified audit candidate."""
+    body = (
+        "Automated Barrot capability-audit artifact update.\n\n"
+        "This pull request contains the generated audit artifact only. "
+        "It is not merged automatically and requires review.\n\n"
+        f"- Candidate commit: {commit_sha}\n"
+        f"- Audit fingerprint: {audit_fingerprint}\n"
+        "- The remote branch SHA was verified against the candidate commit before PR creation.\n"
+    )
+    pr = subprocess.run(
+        [
+            "gh", "pr", "create",
+            "--title", "chore: update Barrot capability audit",
+            "--body", body,
+            "--base", "main",
+            "--head", branch,
+        ],
+        cwd=worktree_path,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    output = pr.stdout.strip() or pr.stderr.strip()
+    if pr.returncode != 0:
+        raise SelfUpgradeError(output[:500] or "Unable to create audit review pull request.")
+    match = re.search(r"https://github\.com/[^/\s]+/[^/\s]+/pull/\d+", output)
+    if not match:
+        raise SelfUpgradeError(
+            "GitHub CLI did not return a verifiable pull-request URL; "
+            f"the remote audit branch {branch} is preserved."
+        )
+    return match.group(0)
+
+
 def persist_audit_report(commit_message: str = "Weekly capability audit [skip ci]") -> dict[str, Any]:
+    """Preserve the audit and submit changed content through a verified review branch."""
     if not AUDIT_PATH.exists():
         raise SelfUpgradeError("Capability audit missing; run scripts/barrot_capability_audit.py first.")
     audit_text = AUDIT_PATH.read_text(encoding="utf-8")
@@ -313,88 +354,173 @@ def persist_audit_report(commit_message: str = "Weekly capability audit [skip ci
         backup_path.write_text(audit_text, encoding="utf-8")
 
     retry_policy = RetryPolicy(max_attempts=5, base_delay_seconds=1.0, max_delay_seconds=8.0)
-    last_error = "Audit persistence did not complete."
+    last_error = "Audit review submission did not complete."
+    fingerprint_slug = re.sub(r"[^a-fA-F0-9]", "", audit_fingerprint)[:12] or "audit"
+
     for attempt in range(1, retry_policy.max_attempts + 1):
         fetch = git("fetch", "origin", "main")
         if fetch.returncode != 0:
             last_error = fetch.stderr[:500] or fetch.stdout[:500] or "Unable to fetch origin/main."
-            time.sleep(retry_policy.delay_for(attempt))
+            if attempt < retry_policy.max_attempts:
+                time.sleep(retry_policy.delay_for(attempt))
             continue
 
-        with tempfile.TemporaryDirectory(prefix="barrot-audit-sync-") as worktree_dir:
-            worktree_path = Path(worktree_dir)
+        worktree_path = Path(tempfile.mkdtemp(prefix="barrot-audit-sync-"))
+        worktree_added = False
+        try:
             add_worktree = git("worktree", "add", "--detach", str(worktree_path), "origin/main")
             if add_worktree.returncode != 0:
-                last_error = add_worktree.stderr[:500] or add_worktree.stdout[:500] or "Unable to create main worktree."
-                time.sleep(retry_policy.delay_for(attempt))
+                last_error = (
+                    add_worktree.stderr[:500]
+                    or add_worktree.stdout[:500]
+                    or "Unable to create an origin/main worktree."
+                )
+                try:
+                    worktree_path.rmdir()
+                except OSError:
+                    pass
+                if attempt < retry_policy.max_attempts:
+                    time.sleep(retry_policy.delay_for(attempt))
                 continue
-            try:
-                target_audit = worktree_path / AUDIT_PATH.name
-                target_audit.write_text(audit_text, encoding="utf-8")
-                add = git_in(worktree_path, "add", AUDIT_PATH.name)
-                if add.returncode != 0:
-                    raise SelfUpgradeError(add.stderr[:500] or add.stdout[:500] or "Unable to stage audit artifact.")
-                diff = git_in(worktree_path, "diff", "--cached", "--quiet", "--", AUDIT_PATH.name)
-                if diff.returncode not in (0, 1):
-                    raise SelfUpgradeError(diff.stderr[:500] or diff.stdout[:500] or "Unable to compare staged audit artifact.")
-                if diff.returncode == 0:
-                    head = git_in(worktree_path, "rev-parse", "HEAD")
-                    if head.returncode != 0 or not head.stdout.strip():
-                        raise SelfUpgradeError(head.stderr[:500] or "Unable to determine main HEAD commit.")
-                    remote_check = git_in(worktree_path, "ls-remote", "--heads", "origin", "main")
-                    remote_ref = remote_check.stdout.strip()
-                    remote_sha = remote_ref.split()[0].strip() if remote_ref else ""
-                    remote_verified = (
-                        remote_check.returncode == 0
-                        and bool(remote_sha)
-                        and head.stdout.strip() == remote_sha
-                        and "refs/heads/main" in remote_ref
-                    )
+            worktree_added = True
+
+            target_audit = worktree_path / AUDIT_PATH.name
+            target_audit.write_text(audit_text, encoding="utf-8")
+            add = git_in(worktree_path, "add", AUDIT_PATH.name)
+            if add.returncode != 0:
+                raise SelfUpgradeError(add.stderr[:500] or add.stdout[:500] or "Unable to stage audit artifact.")
+
+            diff = git_in(worktree_path, "diff", "--cached", "--quiet", "--", AUDIT_PATH.name)
+            if diff.returncode not in (0, 1):
+                raise SelfUpgradeError(
+                    diff.stderr[:500] or diff.stdout[:500] or "Unable to compare staged audit artifact."
+                )
+
+            if diff.returncode == 0:
+                head = git_in(worktree_path, "rev-parse", "HEAD")
+                if head.returncode != 0 or not head.stdout.strip():
+                    raise SelfUpgradeError(head.stderr[:500] or "Unable to determine fetched main commit.")
+                remote_check = git_in(worktree_path, "ls-remote", "--heads", "origin", "main")
+                remote_ref = remote_check.stdout.strip()
+                remote_sha = remote_ref.split()[0].strip() if remote_ref else ""
+                remote_verified = (
+                    remote_check.returncode == 0
+                    and bool(remote_sha)
+                    and head.stdout.strip() == remote_sha
+                    and "refs/heads/main" in remote_ref
+                )
+                if remote_verified:
                     return {
                         "status": "NO_CHANGES",
                         "attempts": attempt,
                         "audit_fingerprint": audit_fingerprint,
                         "backup_path": str(backup_path),
                         "commit": head.stdout.strip(),
-                        "remote_verified": remote_verified,
+                        "remote_verified": True,
                         "remote_ref": remote_ref,
+                        "branch": None,
+                        "pr_url": None,
                     }
-                commit = git_in(worktree_path, "commit", "-m", commit_message)
-                if commit.returncode != 0:
-                    raise SelfUpgradeError(commit.stderr[:500] or commit.stdout[:500] or "Unable to commit audit artifact.")
-                head = git_in(worktree_path, "rev-parse", "HEAD")
-                if head.returncode != 0 or not head.stdout.strip():
-                    raise SelfUpgradeError(head.stderr[:500] or "Unable to determine persisted audit commit.")
-                push = git_in(worktree_path, "push", "origin", "HEAD:main")
-                if push.returncode == 0:
-                    remote_check = git_in(worktree_path, "ls-remote", "--heads", "origin", "main")
-                    remote_ref = remote_check.stdout.strip()
-                    remote_sha = remote_ref.split()[0].strip() if remote_ref else ""
-                    remote_verified = (
-                        remote_check.returncode == 0
-                        and bool(remote_sha)
-                        and head.stdout.strip() == remote_sha
-                        and "refs/heads/main" in remote_ref
+                last_error = "origin/main changed during verification; retrying from a fresh fetch."
+                if attempt < retry_policy.max_attempts:
+                    time.sleep(retry_policy.delay_for(attempt))
+                continue
+
+            stamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+            branch = f"barrot/audit-report-{fingerprint_slug}-{stamp}-{attempt}"
+            checkout = git_in(worktree_path, "checkout", "-b", branch)
+            if checkout.returncode != 0:
+                raise SelfUpgradeError(checkout.stderr[:500] or checkout.stdout[:500] or "Unable to create audit branch.")
+
+            commit = git_in(worktree_path, "commit", "-m", commit_message)
+            if commit.returncode != 0:
+                raise SelfUpgradeError(commit.stderr[:500] or commit.stdout[:500] or "Unable to commit audit artifact.")
+            head = git_in(worktree_path, "rev-parse", "HEAD")
+            if head.returncode != 0 or not head.stdout.strip():
+                raise SelfUpgradeError(head.stderr[:500] or "Unable to determine audit candidate commit.")
+            commit_sha = head.stdout.strip()
+
+            push = git_in(worktree_path, "push", "origin", f"HEAD:refs/heads/{branch}")
+            if push.returncode != 0:
+                return {
+                    "status": "BLOCKED",
+                    "attempts": attempt,
+                    "audit_fingerprint": audit_fingerprint,
+                    "backup_path": str(backup_path),
+                    "commit": commit_sha,
+                    "remote_verified": False,
+                    "remote_ref": "",
+                    "branch": branch,
+                    "pr_url": None,
+                    "error": push.stderr[:500] or push.stdout[:500] or "Unable to push the audit review branch.",
+                }
+
+            remote_check = git_in(worktree_path, "ls-remote", "--heads", "origin", branch)
+            remote_ref = remote_check.stdout.strip()
+            remote_sha = remote_ref.split()[0].strip() if remote_ref else ""
+            remote_verified = (
+                remote_check.returncode == 0
+                and bool(remote_sha)
+                and commit_sha == remote_sha
+                and f"refs/heads/{branch}" in remote_ref
+            )
+            if not remote_verified:
+                return {
+                    "status": "BLOCKED",
+                    "attempts": attempt,
+                    "audit_fingerprint": audit_fingerprint,
+                    "backup_path": str(backup_path),
+                    "commit": commit_sha,
+                    "remote_verified": False,
+                    "remote_ref": remote_ref,
+                    "branch": branch,
+                    "pr_url": None,
+                    "error": "Remote audit branch SHA did not match the candidate commit; no PR was opened.",
+                }
+
+            try:
+                pr_url = create_audit_pull_request(worktree_path, branch, commit_sha, audit_fingerprint)
+            except Exception as exc:  # noqa: BLE001
+                return {
+                    "status": "BLOCKED",
+                    "attempts": attempt,
+                    "audit_fingerprint": audit_fingerprint,
+                    "backup_path": str(backup_path),
+                    "commit": commit_sha,
+                    "remote_verified": True,
+                    "remote_ref": remote_ref,
+                    "branch": branch,
+                    "pr_url": None,
+                    "error": f"Remote audit branch verified but PR creation failed: {exc}",
+                }
+
+            return {
+                "status": "PR_OPENED",
+                "attempts": attempt,
+                "audit_fingerprint": audit_fingerprint,
+                "backup_path": str(backup_path),
+                "commit": commit_sha,
+                "remote_verified": True,
+                "remote_ref": remote_ref,
+                "branch": branch,
+                "pr_url": pr_url,
+                "push_output": push.stdout.strip() or push.stderr.strip(),
+            }
+        finally:
+            if worktree_added:
+                cleanup = git("worktree", "remove", str(worktree_path))
+                if cleanup.returncode != 0:
+                    print(
+                        f"Audit recovery worktree retained at {worktree_path}: "
+                        f"{cleanup.stderr[:300] or cleanup.stdout[:300]}",
+                        file=sys.stderr,
                     )
-                    return {
-                        "status": "PERSISTED" if remote_verified else "BLOCKED",
-                        "attempts": attempt,
-                        "audit_fingerprint": audit_fingerprint,
-                        "backup_path": str(backup_path),
-                        "commit": head.stdout.strip(),
-                        "remote_verified": remote_verified,
-                        "remote_ref": remote_ref,
-                        "push_output": push.stdout.strip() or push.stderr.strip(),
-                    }
-                last_error = push.stderr[:500] or push.stdout[:500] or "Unable to push audit artifact to main."
-            finally:
-                git("worktree", "remove", "--force", str(worktree_path))
-        if attempt < retry_policy.max_attempts:
-            time.sleep(retry_policy.delay_for(attempt))
+
     raise SelfUpgradeError(last_error)
 
 
 def persist_audit_report_to_main() -> int:
+    """Backward-compatible CLI entry point; never pushes audit artifacts directly to main."""
     run_record: dict[str, Any] = {
         "run_id": Fingerprint.create("persist_audit_report", now_iso(), str(AUDIT_PATH)).value[:24],
         "timestamp": now_iso(),
@@ -416,33 +542,50 @@ def persist_audit_report_to_main() -> int:
             gate_id=Fingerprint.create("persist_audit_report", "failed").value,
             requirements={
                 "audit_preserved": AUDIT_PATH.exists(),
-                "main_synchronized": False,
+                "direct_main_push_attempted": False,
                 "audit_persisted": False,
+                "review_pr_created": False,
                 "remote_verified": False,
             },
             satisfied=False,
             unresolved=[str(exc)],
         ).to_dict()
-        STATE_STORE.write_state(run_record["run_id"], run_record, fingerprint=Fingerprint.create("persist_audit_report", "failed").value)
-        print("Audit persistence failed")
+        STATE_STORE.write_state(
+            run_record["run_id"],
+            run_record,
+            fingerprint=Fingerprint.create("persist_audit_report", "failed").value,
+        )
+        print("Audit review submission failed")
         return 1
 
     run_record["persistence"] = result
-    run_record["status"] = "COMPLETE" if result.get("remote_verified") else "BLOCKED"
+    successful = result.get("remote_verified") and result.get("status") in {"NO_CHANGES", "PR_OPENED"}
+    run_record["status"] = "COMPLETE" if successful else "BLOCKED"
     run_record["completion_gate"] = CompletionGate(
         gate_id=Fingerprint.create("persist_audit_report", result).value,
         requirements={
             "audit_preserved": True,
-            "main_synchronized": True,
-            "audit_persisted": bool(result.get("commit")),
+            "direct_main_push_attempted": False,
+            "audit_persisted": result.get("status") in {"NO_CHANGES", "PR_OPENED"},
+            "review_pr_required": result.get("status") != "NO_CHANGES",
+            "review_pr_created": bool(result.get("pr_url")),
             "remote_verified": bool(result.get("remote_verified")),
         },
-        satisfied=bool(result.get("remote_verified")),
-        unresolved=[] if result.get("remote_verified") else ["Remote main verification failed."],
+        satisfied=bool(successful),
+        unresolved=[] if successful else [str(result.get("error") or "Audit candidate was not verified and submitted for review.")],
     ).to_dict()
-    STATE_STORE.write_state(run_record["run_id"], run_record, fingerprint=Fingerprint.create("persist_audit_report", result.get("audit_fingerprint", "")).value)
-    print("Audit artifact persisted to main")
-    return 0 if result.get("remote_verified") else 1
+    STATE_STORE.write_state(
+        run_record["run_id"],
+        run_record,
+        fingerprint=Fingerprint.create("persist_audit_report", result.get("audit_fingerprint", "")).value,
+    )
+    if result.get("status") == "PR_OPENED":
+        print(f"Audit report submitted for review: {result.get('pr_url')}")
+    elif result.get("status") == "NO_CHANGES":
+        print("Audit report already matches verified main; no pull request needed.")
+    else:
+        print(f"Audit candidate blocked; preserve branch {result.get('branch') or 'and audit backup'} for recovery.")
+    return 0 if successful else 1
 
 
 def self_upgrade() -> int:
