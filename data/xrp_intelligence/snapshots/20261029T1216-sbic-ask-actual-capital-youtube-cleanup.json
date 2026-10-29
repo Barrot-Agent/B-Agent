@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1216-SBIC-ASK-ACTUAL-CAPITAL-YOUTUBE-CLEANUP",
+  "captured_at_utc": "2026-10-29T12:16:30Z",
+  "data_cutoff_utc": "2026-10-29T12:16:30Z",
+  "observed_main_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Exact-phrase research was advanced and preserved on the dedicated research branch. The Japanese SBIC acronym plausibly refers to regional Small and Medium Business Investment & Consultation organizations, one of which publishes ChatGPT training material, but the original referent remains unresolved and no direct XRP relationship was found in scoped public searches. ASK Coin has two distinct candidates; 'actual capital' may refer to market-cap change versus actual net flows; Camilla Stephenson and Kamilah Stevenson identity equivalence remains unverified and the video inventory is partial. This run also records an unintended data-only graph-file commit to main caused by a missing branch argument; no runtime code or trading state changed. Draft cleanup PR #1308 removes only that file but remains unmerged pending approval.",
+  "findings": [
+    {
+      "id": "FIND-RUN64-SBIC",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies are separate regional Japanese SME investment-development organizations. SBIC West Japan publishes ChatGPT/generative-AI training material.",
+      "source_ids": [
+        "SRC-SBIC-EAST-OFFICIAL-PROFILE-20261029T1214Z",
+        "SRC-SBIC-WEST-CHATGPT-PDF-20261029T1214Z"
+      ],
+      "limitation": "No OpenAI partnership or direct XRP/Ripple relationship established."
+    },
+    {
+      "id": "FIND-RUN64-ASK",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "Two separate ASK candidates exist: an inactive Ask Coin exchange listing and Permission Coin's ASK token. No direct XRP link is established.",
+      "source_ids": [
+        "SRC-ASKCOIN-CMC-INACTIVE-20261029T1214Z",
+        "SRC-PERMISSION-ASK-CMC-20261029T1214Z"
+      ],
+      "limitation": "Original phrase context remains unknown."
+    },
+    {
+      "id": "FIND-RUN64-ACTUAL-CAPITAL",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "Public XRP commentary uses market-cap multipliers to discuss small flows, but market capitalization and exchange wallet flows are not direct measures of actual capital inflow.",
+      "source_ids": [
+        "SRC-ACTUAL-CAPITAL-TIMESTABLOID-20261029T1214Z",
+        "SRC-ACTUAL-CAPITAL-COINTURK-20261029T1214Z"
+      ],
+      "limitation": "Secondary articles are not primary evidence of net cash flows."
+    },
+    {
+      "id": "FIND-RUN64-VIDEO-IDENTITY",
+      "evidence_class": "UNKNOWN",
+      "claim": "Two indexed uploads are attributed to Kamilah Stevenson; a separate public film-industry profile uses Camilla Stephenson. No identity equivalence is established and channel enumeration remains partial.",
+      "source_ids": [
+        "SRC-CAMILLA-NAMESAKE-MFJF-20261029T1214Z",
+        "SRC-YOUTUBE-KAMILAH-MARCH2026-20261029T1214Z",
+        "SRC-YOUTUBE-KAMILAH-DEC2025-20261029T1214Z"
+      ],
+      "limitation": "YouTube channel-page requests were throttled; indexed search cannot prove completeness."
+    },
+    {
+      "id": "FIND-RUN64-MAIN-WRITE-INCIDENT",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main advanced from b60faa26 to f23a2b81 by one data-only graph-file addition. This was an unintended write; runtime code, workflows, signals and paper-trading state did not change. Draft PR #1308 removes only the added file.",
+      "source_ids": [
+        "SRC-GH-MAIN-UNINTENDED-GRAPH-COMMIT-20261029T1216Z",
+        "SRC-GH-PR1308-CLEANUP-20261029T1216Z",
+        "SRC-GH-MAIN-COMPARE-B60FA-TO-F23A-20261029T1216Z"
+      ],
+      "limitation": "Main remains modified until PR #1308 is approved and merged; no merge performed."
+    }
+  ],
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+    "blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+    "commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
+    "new_edges": 7,
+    "new_competing_hypotheses": 4
+  },
+  "sources": [
+    {
+      "id": "SRC-SBIC-EAST-OFFICIAL-PROFILE-20261029T1214Z",
+      "url": "https://www.sbic.co.jp/company/profile/"
+    },
+    {
+      "id": "SRC-SBIC-WEST-CHATGPT-PDF-20261029T1214Z",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf"
+    },
+    {
+      "id": "SRC-ASKCOIN-CMC-INACTIVE-20261029T1214Z",
+      "url": "https://coinmarketcap.com/exchanges/ask-coin/"
+    },
+    {
+      "id": "SRC-PERMISSION-ASK-CMC-20261029T1214Z",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/"
+    },
+    {
+      "id": "SRC-ACTUAL-CAPITAL-TIMESTABLOID-20261029T1214Z",
+      "url": "https://timestabloid.com/analyst-explains-effect-of-small-capital-movements-on-xrp-price/"
+    },
+    {
+      "id": "SRC-ACTUAL-CAPITAL-COINTURK-20261029T1214Z",
+      "url": "https://en.coin-turk.com/xrp-market-cap-rose-43-74-billion-as-net-inflows-hit-44-3-million-in-two-days/"
+    },
+    {
+      "id": "SRC-CAMILLA-NAMESAKE-MFJF-20261029T1214Z",
+      "url": "https://myfirstjobinfilm.com/UK/mentors/camilla-stephenson"
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-MARCH2026-20261029T1214Z",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk"
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-DEC2025-20261029T1214Z",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw"
+    },
+    {
+      "id": "SRC-GH-MAIN-UNINTENDED-GRAPH-COMMIT-20261029T1216Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/f23a2b81899ac12aefb9acd5a313e7bcf2dc0987"
+    },
+    {
+      "id": "SRC-GH-PR1308-CLEANUP-20261029T1216Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308"
+    },
+    {
+      "id": "SRC-GH-MAIN-COMPARE-B60FA-TO-F23A-20261029T1216Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/b60faa26e5859f91beb07f5c778bc7934e99a002...f23a2b81899ac12aefb9acd5a313e7bcf2dc0987"
+    }
+  ],
+  "market_observations": [],
+  "verification": {
+    "snapshot_readback": "PENDING",
+    "graph_readback": "PASS",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": true,
+    "main_write_scope": "ONE_DATA_ONLY_GRAPH_FILE; CLEANUP_PR_1308_OPEN",
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false,
+    "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+  }
+}
