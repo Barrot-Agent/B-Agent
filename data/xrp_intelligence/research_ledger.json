@@ -7094,6 +7094,15 @@
       "title": "Reconfirmed official SBIC West Japan ChatGPT/generative-AI seminar material",
       "accessed_at_utc": "2026-10-29T10:15:49Z",
       "note": "Official West Japan seminar material describes ChatGPT and generative AI. It is a separate regional company and does not establish an XRP/Ripple relation."
+    },
+    {
+      "id": "SRC-SBI-CAPITAL-2005-SBIC",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2005/0621_669.html",
+      "title": "Legacy alias for SBI Holdings release defining SBI Capital as SBIC",
+      "published_at": "2005-06-21",
+      "accessed_at_utc": "2026-10-29T10:17:05.925Z",
+      "note": "Compatibility alias added because the immutable 2026-10-29T1015 SBIC graph/snapshot used this ID. The canonical ledger source ID is SRC-SBI-CAPITAL-SBIC-2005; both point to the same official SBI Holdings release. This is a provenance alias, not an additional independent source."
     }
   ],
   "limitations": [
@@ -12271,6 +12280,36 @@
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T10:17:05.925Z",
+      "update_type": "SBIC_SOURCE_REFERENCE_ALIAS_CORRECTION",
+      "source_ids": [
+        "SRC-SBI-CAPITAL-2005-SBIC",
+        "SRC-SBI-CAPITAL-SBIC-2005"
+      ],
+      "summary": "Index-only correction: added a compatibility alias for the same official SBI Holdings release because the immutable SBIC graph/snapshot referenced SRC-SBI-CAPITAL-2005-SBIC while the canonical ledger entry is SRC-SBI-CAPITAL-SBIC-2005. No snapshot or graph was overwritten; both IDs resolve to the same source and are explicitly marked non-independent.",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1015-sbic-chatgpt-disambiguation.json",
+        "blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
+        "commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
+        "characters": 4955
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
+        "blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
+        "commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+        "new_edges": 0,
+        "new_competing_hypotheses": 0
+      },
+      "market_observations": 0,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false
     }
   ],
   "mission_priority": {
@@ -12501,7 +12540,7 @@
   "current_research_head_before_ledger_update": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
   "current_research_head_this_run": "46166e484c63d5b96229718da5af4c84b886a000",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; SBIC_ENTITY_DISAMBIGUATION_RECORDED; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS_AFTER_ALIAS_CORRECTION; SBIC_ENTITY_DISAMBIGUATION_RECORDED; FORECAST_NOT_ISSUED",
     "latest_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1015-sbic-chatgpt-disambiguation.json",
     "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
@@ -12525,11 +12564,12 @@
     "deployment_executed": false,
     "real_money_trade": false,
     "paper_trading_state_mutated": false,
-    "verified_at_utc": "2026-10-29T10:15:49Z"
+    "verified_at_utc": "2026-10-29T10:15:49Z",
+    "source_reference_alias_correction": "SRC-SBI-CAPITAL-2005-SBIC aliases SRC-SBI-CAPITAL-SBIC-2005; same official source, not independent corroboration."
   },
   "ledger_metrics": {
-    "source_records": 873,
-    "run_updates": 165,
+    "source_records": 874,
+    "run_updates": 166,
     "limitations": 204,
     "relationship_edges": 200,
     "competing_hypotheses": 115,
@@ -12539,10 +12579,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 845685,
+    "index_characters_before_this_update": 850098,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 4955,
-    "index_characters": 850098
+    "index_characters": 853550
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -12622,7 +12662,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:15:49Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; SBIC_ENTITY_DISAMBIGUATION_RECORDED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS_AFTER_ALIAS_CORRECTION; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
       "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
@@ -12638,7 +12678,8 @@
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
-      "merge_performed": false
+      "merge_performed": false,
+      "source_reference_alias_correction": "SRC-SBI-CAPITAL-2005-SBIC aliases SRC-SBI-CAPITAL-SBIC-2005; same official source, not independent corroboration."
     }
   },
   "index_format_version": "2.0",
@@ -13436,6 +13477,21 @@
       "graph_edges": 5,
       "competing_hypotheses": 2,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T10:17:05.925Z",
+      "verification_type": "SBIC_SOURCE_REFERENCE_ALIAS_CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1015-sbic-chatgpt-disambiguation.json",
+      "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
+      "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
+      "snapshot_character_count": 4955,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
+      "graph_addendum_blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
+      "graph_addendum_commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+      "missing_source_references": 0,
+      "alias_id": "SRC-SBI-CAPITAL-2005-SBIC",
+      "canonical_id": "SRC-SBI-CAPITAL-SBIC-2005",
+      "note": "Both identifiers resolve to the same official SBI Holdings release; not independent evidence."
     }
   ],
   "current_research_head_before_this_update": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f"
