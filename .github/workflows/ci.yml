@@ -61,4 +61,5 @@ jobs:
             tests/test_mesh_topology.py \
             tests/test_obj_mesh_loader.py \
             tests/test_polygon_triangulation.py \
+            tests/test_merge_queue_workflow_read_only.py \
             -v --no-cov
