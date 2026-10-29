@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T09:10:19Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0910-ACCURACY-EVALUATION-AND-STABLECOIN-ECONOMICS",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0910-accuracy-evaluation-and-stablecoin-economics.json",
-    "snapshot_blob_sha": "8deb490f0bc72637528b9e54f528d068b4003ca5",
-    "snapshot_commit_sha": "a1fb4ef53bab6dca5525a6794d5f392ad32d925c"
+    "captured_at_utc": "2026-10-29T09:13:13Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0913-PR1300-CURRENT-HEAD-CI-GATE-VERIFIED",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0913-pr1300-current-head-ci-gate-verified.json",
+    "snapshot_blob_sha": "cadba6a9bec171c33bfc0ad37f53ffa52daf4408",
+    "snapshot_commit_sha": "46166e484c63d5b96229718da5af4c84b886a000"
   },
   "sources": [
     {
@@ -6788,6 +6788,30 @@
       "title": "PR #1300 initial exact-head fail-closed gate passed",
       "accessed_at_utc": "2026-10-29T09:10:19Z",
       "note": "Gate passed on head bf8b00aafcc49f04fa6d46f75fc39306885018fd and kept automatic merge disabled. A follow-up commit means current-head gate must be reverified."
+    },
+    {
+      "id": "SRC-RUN51-20261029T0913Z-PR1300-CURRENT-HEAD",
+      "evidence_class": "GITHUB_API_PRIMARY_RECORD",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/ca1bf0b2de81451a5a0db346dafb95672bfee48f",
+      "title": "PR #1300 current branch head after follow-up cleanup",
+      "accessed_at_utc": "2026-10-29T09:13:13Z",
+      "note": "Follow-up cleanup removed an empty adjacent string literal in the Barrot accuracy self-description. Current head is ca1bf0b2de81451a5a0db346dafb95672bfee48f."
+    },
+    {
+      "id": "SRC-RUN51-20261029T0913Z-PR1300-CI",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40847647157",
+      "title": "PR #1300 current-head core CI passed",
+      "accessed_at_utc": "2026-10-29T09:13:13Z",
+      "note": "Exact current head ca1bf0b2de81451a5a0db346dafb95672bfee48f passed 187 tests plus 4 subtests in 6.47 seconds."
+    },
+    {
+      "id": "SRC-RUN51-20261029T0913Z-PR1300-GATE",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40847647324",
+      "title": "PR #1300 current-head fail-closed gate passed",
+      "accessed_at_utc": "2026-10-29T09:13:13Z",
+      "note": "Exact current head passed the fail-closed gate. The gate explicitly leaves automatic merge disabled; PR #1300 remains draft and unmerged."
     }
   ],
   "limitations": [
@@ -11629,8 +11653,8 @@
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
     },
     {
-      "recorded_at_utc": "2026-10-29T09:10:19Z",
-      "update_type": "XRP_ACCURACY_FAIL_CLOSED_PR1300_AND_COINBASE_CIRCLE_ECONOMICS_UPDATE",
+      "recorded_at_utc": "2026-10-29T09:13:13Z",
+      "update_type": "PR1300_CURRENT_HEAD_CI_GATE_VERIFIED_AND_LEDGER_DUPLICATE_CORRECTED",
       "source_ids": [
         "SRC-RUN50-20261029T0910Z-MAIN-HEAD",
         "SRC-RUN50-20261029T0910Z-MAIN-XRP-SIGNAL",
@@ -11646,22 +11670,25 @@
         "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH",
         "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-PRODUCT",
         "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-28T1111Z",
-        "SRC-RUN39-20261029T050603-COINBASE-Q3-CALENDAR"
+        "SRC-RUN39-20261029T050603-COINBASE-Q3-CALENDAR",
+        "SRC-RUN51-20261029T0913Z-PR1300-CURRENT-HEAD",
+        "SRC-RUN51-20261029T0913Z-PR1300-CI",
+        "SRC-RUN51-20261029T0913Z-PR1300-GATE"
       ],
-      "summary": "Inspected current main and open safety PRs; confirmed main still exposes a confidence-zero XRP signal with provider failures, a stale mismatched summary, a variable-horizon mutable 46.5% accuracy metric, and a mutation-capable merge queue. Created draft PR #1300 from current main to label accuracy NOT_EVALUATED/NOT_COMPARABLE, preserve the legacy metric for audit, update consumers, and make the accuracy workflow artifact-only. Initial exact-head CI passed 187 tests plus 4 subtests and the fail-closed gate passed; a small follow-up cleanup commit means current-head CI/gate must be reverified. Official Coinbase and Circle Q2 disclosures were added to the causal graph; their stablecoin metrics are not treated as XRP capital flows. No forecast or market feature admitted.",
+      "summary": "Verified the post-cleanup current head ca1bf0b2de81451a5a0db346dafb95672bfee48f of draft PR #1300: core CI passed 187 tests plus 4 subtests in 6.47 seconds and the fail-closed gate passed with automatic merge disabled. Preserved main unchanged and retained the public 46.5% legacy accuracy artifact as invalid until approval. Added an immutable verification snapshot and graph addendum. Corrected a duplicate run-update/history record created during this run; source IDs remain unique. No forecast or market feature admitted.",
       "main_sha": "9bfb3010d2a28f486af808c90a2a4565e76a5234",
       "snapshot": {
-        "path": "data/xrp_intelligence/snapshots/20261029T0910-accuracy-evaluation-and-stablecoin-economics.json",
-        "blob_sha": "8deb490f0bc72637528b9e54f528d068b4003ca5",
-        "commit_sha": "a1fb4ef53bab6dca5525a6794d5f392ad32d925c",
-        "characters": 7907
+        "path": "data/xrp_intelligence/snapshots/20261029T0913-pr1300-current-head-ci-gate-verified.json",
+        "blob_sha": "cadba6a9bec171c33bfc0ad37f53ffa52daf4408",
+        "commit_sha": "46166e484c63d5b96229718da5af4c84b886a000",
+        "characters": 8775
       },
       "relationship_graph_addendum": {
-        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0910-coinbase-circle-xrp-accuracy-safety.json",
-        "blob_sha": "a0f0d2fdd97ba0f4b7674ab560c35ac20dd98b6e",
-        "commit_sha": "1ff0124cb59180c80a8ec92b6abcda0cc5d662b7",
-        "new_edges": 6,
-        "new_competing_hypotheses": 3
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0913-pr1300-current-head-ci-gate-verified.json",
+        "blob_sha": "41c86d6ad8eec55bfa234793f38dffc1b88f198e",
+        "commit_sha": "7cb5d5903d40ee1ea2f13607efb554e181aed7c2",
+        "new_edges": 2,
+        "new_competing_hypotheses": 0
       },
       "market_observations": 0,
       "forecast_status": "NOT_ISSUED",
@@ -11900,33 +11927,34 @@
     }
   },
   "current_research_head_before_ledger_update": "024d9dd1f1cb06679e94b91c312387c5c9001ccb",
-  "current_research_head_this_run": "a1fb4ef53bab6dca5525a6794d5f392ad32d925c",
+  "current_research_head_this_run": "46166e484c63d5b96229718da5af4c84b886a000",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PENDING; PR1300_INITIAL_CI_GATE_PASS; PR1300_CURRENT_HEAD_CI_GATE_PENDING; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PENDING; PR1300_CURRENT_HEAD_CI_187_TESTS_4_SUBTESTS_PASS; PR1300_CURRENT_HEAD_GATE_PASS; FORECAST_NOT_ISSUED",
     "latest_main_sha": "9bfb3010d2a28f486af808c90a2a4565e76a5234",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0910-accuracy-evaluation-and-stablecoin-economics.json",
-    "snapshot_blob_sha": "8deb490f0bc72637528b9e54f528d068b4003ca5",
-    "snapshot_commit_sha": "a1fb4ef53bab6dca5525a6794d5f392ad32d925c",
-    "snapshot_characters": 7907,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0913-pr1300-current-head-ci-gate-verified.json",
+    "snapshot_blob_sha": "cadba6a9bec171c33bfc0ad37f53ffa52daf4408",
+    "snapshot_commit_sha": "46166e484c63d5b96229718da5af4c84b886a000",
+    "snapshot_characters": 8775,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 15,
+    "source_reference_count": 18,
     "missing_source_references": 0,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0910-coinbase-circle-xrp-accuracy-safety.json",
-    "graph_addendum_blob_sha": "a0f0d2fdd97ba0f4b7674ab560c35ac20dd98b6e",
-    "graph_addendum_commit_sha": "1ff0124cb59180c80a8ec92b6abcda0cc5d662b7",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0913-pr1300-current-head-ci-gate-verified.json",
+    "graph_addendum_blob_sha": "41c86d6ad8eec55bfa234793f38dffc1b88f198e",
+    "graph_addendum_commit_sha": "7cb5d5903d40ee1ea2f13607efb554e181aed7c2",
     "graph_addendum_readback_ok": true,
     "index_pointer_readback_ok": false,
     "index_character_count_match": false,
     "index_metric_count_match": false,
     "source_ids_unique": true,
-    "relationship_edges": 177,
-    "competing_hypotheses": 108,
+    "relationship_edges": 173,
+    "competing_hypotheses": 105,
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
-    "pr1300_initial_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.43S",
-    "pr1300_initial_gate": "PASS",
     "pr1300_current_head": "ca1bf0b2de81451a5a0db346dafb95672bfee48f",
-    "pr1300_current_head_ci_gate": "PENDING_OR_UNVERIFIED",
+    "pr1300_current_head_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.47S",
+    "pr1300_current_head_ci_run": 40847647157,
+    "pr1300_current_head_gate": "PASS_FAIL_CLOSED",
+    "pr1300_current_head_gate_run": 40847647324,
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
@@ -11935,21 +11963,21 @@
     "paper_trading_state_mutated": false
   },
   "ledger_metrics": {
-    "source_records": 835,
+    "source_records": 838,
     "run_updates": 158,
     "limitations": 198,
-    "relationship_edges": 177,
-    "competing_hypotheses": 108,
+    "relationship_edges": 173,
+    "competing_hypotheses": 105,
     "market_observations": 78,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 804045,
+    "index_characters_before_this_update": 807991,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 7907,
-    "index_characters": 807991
+    "latest_snapshot_characters": 8775,
+    "index_characters": 809434
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -12027,32 +12055,32 @@
     "missing_graph_source_references": 0
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T09:10:19Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T09:13:13Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PENDING; PR1300_INITIAL_CI_GATE_PASS; PR1300_CURRENT_HEAD_CI_GATE_PENDING; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PENDING; PR1300_CURRENT_HEAD_CI_187_TESTS_4_SUBTESTS_PASS; PR1300_CURRENT_HEAD_GATE_PASS; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "8deb490f0bc72637528b9e54f528d068b4003ca5",
-      "snapshot_commit_sha": "a1fb4ef53bab6dca5525a6794d5f392ad32d925c",
-      "snapshot_characters": 7907,
-      "source_reference_count": 15,
+      "snapshot_blob_sha": "cadba6a9bec171c33bfc0ad37f53ffa52daf4408",
+      "snapshot_commit_sha": "46166e484c63d5b96229718da5af4c84b886a000",
+      "snapshot_characters": 8775,
+      "source_reference_count": 18,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0910-coinbase-circle-xrp-accuracy-safety.json",
-      "graph_addendum_blob_sha": "a0f0d2fdd97ba0f4b7674ab560c35ac20dd98b6e",
-      "graph_addendum_commit_sha": "1ff0124cb59180c80a8ec92b6abcda0cc5d662b7",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0913-pr1300-current-head-ci-gate-verified.json",
+      "graph_addendum_blob_sha": "41c86d6ad8eec55bfa234793f38dffc1b88f198e",
+      "graph_addendum_commit_sha": "7cb5d5903d40ee1ea2f13607efb554e181aed7c2",
       "graph_addendum_readback_ok": true,
       "index_pointer_readback_ok": false,
       "index_character_count_match": false,
       "index_metric_count_match": false,
       "source_ids_unique": true,
-      "verified_source_records": 835,
+      "verified_source_records": 838,
       "verified_run_updates": 158,
       "verified_limitations": 198,
-      "verified_relationship_edges": 177,
-      "verified_competing_hypotheses": 108,
+      "verified_relationship_edges": 173,
+      "verified_competing_hypotheses": 105,
       "verified_market_observations": 78,
-      "pr1300_initial_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.43S",
-      "pr1300_initial_gate": "PASS",
+      "pr1300_current_head_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.47S",
+      "pr1300_current_head_gate": "PASS_FAIL_CLOSED",
       "forecast_status": "NOT_ISSUED"
     }
   },
@@ -12102,8 +12130,8 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T09:10:19Z",
-    "focus": "Coinbase/Circle stablecoin economics, XRP causal boundaries, invalid accuracy metric and fresh-main PR #1300 verification",
+    "recorded_at_utc": "2026-10-29T09:13:13Z",
+    "focus": "PR #1300 current-head CI/gate verification after follow-up cleanup",
     "source_ids": [
       "SRC-RUN50-20261029T0910Z-MAIN-HEAD",
       "SRC-RUN50-20261029T0910Z-MAIN-XRP-SIGNAL",
@@ -12119,14 +12147,17 @@
       "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH",
       "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-PRODUCT",
       "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-28T1111Z",
-      "SRC-RUN39-20261029T050603-COINBASE-Q3-CALENDAR"
+      "SRC-RUN39-20261029T050603-COINBASE-Q3-CALENDAR",
+      "SRC-RUN51-20261029T0913Z-PR1300-CURRENT-HEAD",
+      "SRC-RUN51-20261029T0913Z-PR1300-CI",
+      "SRC-RUN51-20261029T0913Z-PR1300-GATE"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0910-coinbase-circle-xrp-accuracy-safety.json",
-      "blob_sha": "a0f0d2fdd97ba0f4b7674ab560c35ac20dd98b6e",
-      "commit_sha": "1ff0124cb59180c80a8ec92b6abcda0cc5d662b7",
-      "new_edges": 6,
-      "new_competing_hypotheses": 3
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0913-pr1300-current-head-ci-gate-verified.json",
+      "blob_sha": "41c86d6ad8eec55bfa234793f38dffc1b88f198e",
+      "commit_sha": "7cb5d5903d40ee1ea2f13607efb554e181aed7c2",
+      "new_edges": 2,
+      "new_competing_hypotheses": 0
     },
     "market_observations": 0,
     "forecast_status": "NOT_ISSUED"
@@ -12696,24 +12727,23 @@
       "forecast_status": "NOT_ISSUED"
     },
     {
-      "recorded_at_utc": "2026-10-29T09:10:19Z",
-      "verification_type": "SNAPSHOT_GRAPH_READBACK_AND_PR1300_INITIAL_CI_GATE",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0910-accuracy-evaluation-and-stablecoin-economics.json",
-      "snapshot_blob_sha": "8deb490f0bc72637528b9e54f528d068b4003ca5",
-      "snapshot_commit_sha": "a1fb4ef53bab6dca5525a6794d5f392ad32d925c",
-      "snapshot_characters": 7907,
-      "source_reference_count": 15,
+      "recorded_at_utc": "2026-10-29T09:13:13Z",
+      "verification_type": "PR1300_CURRENT_HEAD_CI_GATE_AND_SNAPSHOT_GRAPH_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0913-pr1300-current-head-ci-gate-verified.json",
+      "snapshot_blob_sha": "cadba6a9bec171c33bfc0ad37f53ffa52daf4408",
+      "snapshot_commit_sha": "46166e484c63d5b96229718da5af4c84b886a000",
+      "snapshot_characters": 8775,
+      "source_reference_count": 18,
       "missing_source_references": 0,
       "snapshot_character_metric_match": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0910-coinbase-circle-xrp-accuracy-safety.json",
-      "graph_addendum_blob_sha": "a0f0d2fdd97ba0f4b7674ab560c35ac20dd98b6e",
-      "graph_addendum_commit_sha": "1ff0124cb59180c80a8ec92b6abcda0cc5d662b7",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0913-pr1300-current-head-ci-gate-verified.json",
+      "graph_addendum_blob_sha": "41c86d6ad8eec55bfa234793f38dffc1b88f198e",
+      "graph_addendum_commit_sha": "7cb5d5903d40ee1ea2f13607efb554e181aed7c2",
       "graph_addendum_readback_ok": true,
-      "pr1300_initial_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.43S",
-      "pr1300_initial_gate": "PASS",
-      "pr1300_current_head_ci_gate": "PENDING_OR_UNVERIFIED",
+      "pr1300_current_head_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.47S",
+      "pr1300_current_head_gate": "PASS_FAIL_CLOSED",
       "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "079bb0d951769f7966c77bb0205353299aede187"
+  "current_research_head_before_this_update": "d2584c11e302e459bf772b474fdc4e8f31ce2d53"
 }
