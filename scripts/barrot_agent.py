@@ -268,6 +268,33 @@ class RepoBrowser:
         )
 
 
+def _bound_groq_messages(messages: list[dict[str, Any]], max_chars: int = 16000) -> list[dict[str, Any]]:
+    """Keep provider input comfortably below small per-minute token budgets.
+
+    Preserve the system instruction and newest user request first. If context
+    exceeds the budget, discard older history before trimming the newest
+    request; never silently send an oversized prompt.
+    """
+    if max_chars < 1000:
+        raise ValueError("max_chars must leave room for task instructions.")
+    bounded = [dict(message) for message in messages]
+    def size(items: list[dict[str, Any]]) -> int:
+        return sum(len(str(item.get("content", ""))) for item in items)
+    while len(bounded) > 2 and size(bounded) > max_chars:
+        bounded.pop(1)
+    if size(bounded) > max_chars:
+        system = bounded[0] if bounded and bounded[0].get("role") == "system" else None
+        latest = bounded[-1] if bounded else {"role": "user", "content": ""}
+        system_text = str(system.get("content", "")) if system else ""
+        available = max(0, max_chars - len(system_text))
+        latest_text = str(latest.get("content", ""))
+        if len(latest_text) > available:
+            latest = dict(latest)
+            latest["content"] = latest_text[:available] + "\n[Context truncated to respect provider token budget.]"
+        bounded = ([system] if system else []) + [latest]
+    return bounded
+
+
 def _groq_payload(
     messages: list[dict[str, Any]],
     *,
@@ -506,8 +533,9 @@ class ScriptBrain:
             self.enable_tools if use_tools is None else bool(use_tools) and bool(self.tools)
         )
         for _ in range(self.max_tool_rounds):
+            request_messages = _bound_groq_messages(messages)
             payload = _groq_payload(
-                messages,
+                request_messages,
                 tools=self.tools if tools_enabled else None,
                 max_tokens=max_output_tokens or (1536 if tools_enabled else 1024),
                 json_mode=not tools_enabled,
