@@ -70,6 +70,17 @@ def test_ledger_survives_recreation_and_keeps_status_history(tmp_path: Path):
     assert all(item["source_url"] == "https://example.org/paper" for item in reopened)
 
 
+def test_seed_claim_is_provenance_bound_and_not_marked_solved():
+    seed = Path(__file__).resolve().parents[1] / "data" / "research" / "millennium_claims_seed.jsonl"
+    record = json.loads(seed.read_text(encoding="utf-8").splitlines()[0])
+    assert record["problem_id"] == "navier_stokes"
+    assert record["evidence_grade"] == EvidenceGrade.UNRESOLVED.value
+    assert record["source_url"].startswith("https://")
+    assert record["counterevidence"]
+    assert record["unresolved_obligations"]
+    assert not record["independent_review"]
+
+
 def test_claim_id_cannot_be_reassigned_to_another_problem(tmp_path: Path):
     ledger = ClaimLedger(tmp_path / "claims.jsonl")
     ledger.record(sample_claim())
