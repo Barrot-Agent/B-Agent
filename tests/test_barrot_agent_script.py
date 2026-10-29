@@ -282,6 +282,7 @@ def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch):
         "build_audit_context",
         lambda title, body: {"inventory": "real inventory", "file_context": "source excerpts"},
     )
+    monkeypatch.setattr(module, "build_read_only_audit_snapshot", lambda: {"branch_count": 1})
     monkeypatch.setattr(
         module,
         "post_issue_comment",
