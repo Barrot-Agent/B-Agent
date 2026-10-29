@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T06:04:45.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0604-PAPER-TRADER-GUARD-HARDENING",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0604-paper-trader-guard-hardening.json",
-    "snapshot_blob_sha": "b29849b0703530b6aaed911dd90cac1ccaea99e2",
-    "snapshot_commit_sha": "c0ce809e796dca32aad3b978ace974bce00c70a5"
+    "captured_at_utc": "2026-10-29T06:08:30.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0608-SBIC-CRYPTO-ASK-COIN-DISAMBIGUATION-CORRECTED",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0608-sbic-crypto-ask-coin-disambiguation-corrected.json",
+    "snapshot_blob_sha": "c6b38550d687f81dafd6edbe4d167b996c9bdb97",
+    "snapshot_commit_sha": "baa63148c35bda37877f63d6d6c2541d289fd5a5"
   },
   "sources": [
     {
@@ -6255,6 +6255,92 @@
       "published_at": "2026-10-29T06:04:45.000Z",
       "accessed_at_utc": "2026-10-29T06:04:45.000Z",
       "note": "Current compare reports main 29 commits ahead of PR head b803fcb68d3302f6799b2e5f7aadd1afcc27f568; the branch is 3 commits ahead of its merge base. Historical tests do not establish current-main safety. Keep draft/unmerged and prepare a fresh-base successor before approval."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-LEGAL-ACRONYM",
+      "evidence_class": "LEGAL_FILING_PRIMARY_DOCUMENT_MIRRORED",
+      "url": "https://wp.decrypt.co/wp-content/uploads/2023/04/SBI-Crypto-vs-Whinstone-US-Inc.pdf",
+      "title": "SBI Crypto Co., Ltd. v. Whinstone US, Inc. — original complaint",
+      "published_at": "2023-04",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "The complaint explicitly defines the plaintiff as SBI Crypto Co., Ltd. ('SBIC') and identifies it as a Tokyo-organized foreign company. This confirms acronym usage in this legal case only; allegations in a complaint are not adjudicated facts, and this does not resolve the user's original SBIC referent or establish an XRP relationship."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0606Z-SBI-GROUP-OVERVIEW",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/english/company/group/overview.html",
+      "title": "SBI Group companies overview as of 2026-10-07",
+      "published_at": "2026-10-07",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "Official SBI Holdings group overview lists SBI Crypto, SBI Capital and SBI Ripple Asia as separate group-company entries. This supports entity separation; it does not mean each entity directly handles XRP or shares the same products, liabilities or market exposure."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-2025-INCIDENT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2025/1002_15808.html",
+      "title": "SBI Holdings notice on unauthorized crypto-asset outflow at SBI Crypto",
+      "published_at": "2025-10-02",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "SBI Holdings describes SBI Crypto as a subsidiary and says an unauthorized outflow of crypto assets owned by SBI Crypto was identified; investigation and possible business restructuring were under consideration. The notice separately states SBI VC Trade and BITPOINT Japan had different asset-management entities and no impact was identified there. Do not generalize this incident to XRP or those exchanges' customers. The 2026 group overview still lists SBI Crypto."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-MINING",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE_HISTORICAL",
+      "url": "https://www.sbigroup.co.jp/news/2021/0319_12372.html",
+      "title": "SBI Crypto mining-pool business launch announcement",
+      "published_at": "2021-03-19",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "Official SBI Crypto release describes an overseas cryptocurrency-mining business and a mining-pool launch. It provides operational context for the SBI Crypto candidate but does not establish XRP use, XRP custody or an XRP payment-rail role."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0606Z-ASK-COIN-PERMISSION-IO",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT_MIRRORED",
+      "url": "https://www.globenewswire.com/news-release/2021/04/08/2206666/0/en/permission-io-launches-browser-extension-on-google-chrome-store.html",
+      "title": "Permission.io announcement identifying ASK Coin",
+      "published_at": "2021-04-08",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "Permission.io's announcement describes ASK coins as rewards within its permission-based advertising/data-engagement ecosystem. This confirms one plausible exact-phrase candidate; it does not establish a connection to XRP. Other unrelated exchange-listing uses of ASK remain distinct."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-IMDB-I",
+      "evidence_class": "SECONDARY_IDENTITY_DISAMBIGUATION",
+      "url": "https://www.imdb.com/name/nm1016950/",
+      "title": "IMDb profile for a Camilla Stephenson with location-management credits",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "A public namesake profile associates this exact spelling with film/television production credits, including location management. No evidence in this source links that profile to the XRP YouTube creator; do not merge identities on name alone."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-IMDB-II",
+      "evidence_class": "SECONDARY_IDENTITY_DISAMBIGUATION",
+      "url": "https://www.imdb.com/name/nm9384687/",
+      "title": "Separate IMDb profile for another Camilla Stephenson",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "A second profile with the same name has different production-department credits. This is additional evidence that exact-name matches are non-unique, not evidence that either profile is the XRP creator."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-LINKEDIN",
+      "evidence_class": "SECONDARY_IDENTITY_DISAMBIGUATION",
+      "url": "https://au.linkedin.com/in/camilla-stephenson-366976108",
+      "title": "Public professional profile for a Camilla Stephenson in marketing/PR",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "A public profile uses the same name for a marketing/PR professional. No link to the XRP YouTube channel was established; treat as a namesake candidate, not an identity match."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0606Z-SBIC-TICKER-COLLISION",
+      "evidence_class": "SECONDARY_MARKET_REFERENCE",
+      "url": "https://jp.investing.com/equities/sbi-cards-and-payment-services-ltd-earnings",
+      "title": "SBIC ticker collision: SBI Cards and Payment Services Ltd.",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "Investing.com uses SBIC as a ticker for SBI Cards and Payment Services Ltd. in India. This is not a Japanese entity and is only a ticker/acronym collision, not a candidate for 'Japan's SBIC' absent contrary context."
+    },
+    {
+      "id": "SRC-RUN42-20261029T0608Z-MAIN-HEAD",
+      "evidence_class": "GITHUB_PRIMARY_SOURCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/f319d3d9511c6463bb18c36d9cc2b537888f6b88",
+      "title": "Latest observed main commit: paper-trade cycle",
+      "published_at": "2026-10-29T06:08:23Z",
+      "accessed_at_utc": "2026-10-29T06:08:30.000Z",
+      "note": "Main advanced to commit f319d3d9511c6463bb18c36d9cc2b537888f6b88 with commit message 'Paper trade cycle [skip ci]'. The persisted state blob remained a20230ac411d1883ced4f92fce10a7ced2172479 at this capture, with nonzero position_size and position_product=null. The paper log content remained unavailable through the connector."
     }
   ],
   "limitations": [
@@ -6430,7 +6516,12 @@
     "2026-10-29T06:04:45.000Z: Current main's XRP artifact remains score 44/confidence 0 with model-provider failures, while the summary still describes positive/mixed sentiment. Keep forecast_status=NOT_ISSUED; PR #1288 remains an unmerged proposal.",
     "2026-10-29T06:04:45.000Z: Current main paper trader is BTC-USD and persisted state has a nonzero position with position_product=null. The current log could not be replayed because its full content was unavailable through the connected file action. PR #1289's guard is tested but unmerged; do not rewrite the state without a separate authorized reconciliation.",
     "2026-10-29T06:04:45.000Z: The current main merge-queue workflow remains mutation-capable. PR #1282 is 29 commits behind main and its historical CI/gate are not current-main verification. Effective branch protection remains unverified.",
-    "2026-10-29T06:04:45.000Z: No synchronized XRP spot/derivatives/ETF panel was captured in this run. No market observation was admitted and no directional forecast was issued."
+    "2026-10-29T06:04:45.000Z: No synchronized XRP spot/derivatives/ETF panel was captured in this run. No market observation was admitted and no directional forecast was issued.",
+    "2026-10-29T06:08:30.000Z: 'SBIC' now has at least three plausible Japanese entity candidates—SBI Crypto Co., Ltd. (legal-complaint acronym), historical SBI Capital Co., Ltd. (official 2005-2007 usage), and SBIC East Japan. The original referent remains unresolved without the source passage.",
+    "2026-10-29T06:08:30.000Z: SBI Holdings reported an unauthorized outflow of SBI Crypto-owned crypto assets in 2025 and considered restructuring; its 2026 group overview still lists SBI Crypto. The notice explicitly distinguishes SBI VC Trade and BITPOINT Japan as separate asset-management entities and says no impact was identified there. Do not infer an XRP incident or customer loss at those exchanges.",
+    "2026-10-29T06:08:30.000Z: SBI Crypto and SBI Ripple Asia are separately listed SBI group companies. No direct SBI Crypto-XRP product, custody, payment, trading or partnership relationship is established by the reviewed sources; group membership alone is not price-causal evidence.",
+    "2026-10-29T06:08:30.000Z: Permission.io's ASK token is a confirmed exact-phrase candidate, but the original 'ASK Coin' context remains unresolved and no direct XRP relationship is established.",
+    "2026-10-29T06:08:30.000Z: Multiple unrelated public profiles use the exact name Camilla Stephenson. None is linked to the XRP YouTube creator; channel identity and complete public-video inventory remain unresolved."
   ],
   "run_updates": [
     {
@@ -10641,6 +10732,56 @@
       "force_push": false,
       "deployment_executed": false,
       "real_money_trade": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T06:08:30.000Z",
+      "update_type": "SBIC_CRYPTO_CANDIDATE_ASK_COIN_PRIMARY_SOURCE_AND_CREATOR_NAME_DISAMBIGUATION",
+      "source_ids": [
+        "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-LEGAL-ACRONYM",
+        "SRC-RUN42-20261029T0606Z-SBI-GROUP-OVERVIEW",
+        "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-2025-INCIDENT",
+        "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-MINING",
+        "SRC-RUN42-20261029T0606Z-ASK-COIN-PERMISSION-IO",
+        "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-IMDB-I",
+        "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-IMDB-II",
+        "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-LINKEDIN",
+        "SRC-RUN42-20261029T0606Z-SBIC-TICKER-COLLISION",
+        "SRC-RUN42-20261029T0608Z-MAIN-HEAD"
+      ],
+      "summary": "Added a third Japanese SBIC candidate: SBI Crypto Co., Ltd., defined as SBIC in a public 2023 federal-court complaint and described as a subsidiary by SBI Holdings in its 2025 notice; the official 2026 group overview still lists SBI Crypto separately from SBI Capital and SBI Ripple Asia. The 2025 notice reports an unauthorized outflow of SBI Crypto-owned assets and explicitly distinguishes SBI VC Trade/BITPOINT Japan. Added a company announcement confirming Permission.io's ASK token as one ASK Coin candidate and disconfirming exact-name Camilla Stephenson profiles. Original SBIC/ASK/video referents remain unresolved; no direct SBI Crypto-XRP or ASK-XRP relationship is established.",
+      "main_sha": "f319d3d9511c6463bb18c36d9cc2b537888f6b88",
+      "main_commit_at_utc": "2026-10-29T06:08:23Z",
+      "main_commit_message": "Paper trade cycle [skip ci]",
+      "main_modified_by_this_run": false,
+      "graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0606-sbic-crypto-ask-coin-disambiguation.json",
+        "blob_sha": "f3365271867695cfd71ed300fc7687b56c32c41f",
+        "commit_sha": "0342daeda1a399b9ab514c67a54a6f46e477676b",
+        "new_edges": 2,
+        "new_competing_hypotheses": 3
+      },
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T0608-sbic-crypto-ask-coin-disambiguation-corrected.json",
+        "blob_sha": "c6b38550d687f81dafd6edbe4d167b996c9bdb97",
+        "commit_sha": "baa63148c35bda37877f63d6d6c2541d289fd5a5",
+        "characters": 15475
+      },
+      "sbic_candidates": [
+        "SBIC East Japan",
+        "historical SBI Capital Co., Ltd.",
+        "SBI Crypto Co., Ltd."
+      ],
+      "sbic_original_referent": "UNRESOLVED",
+      "sbic_crypto_direct_xrp_relationship": "NOT_ESTABLISHED",
+      "ask_coin_permission_io_candidate": "CONFIRMED_BY_COMPANY_ANNOUNCEMENT; ORIGINAL_CONTEXT_UNRESOLVED",
+      "camilla_stephenson_identity": "NAMESAKES_FOUND; XRP_CREATOR_IDENTITY_UNPROVEN",
+      "forecast_status": "NOT_ISSUED",
+      "new_synchronized_xrp_market_observations_admitted": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false
     }
   ],
   "mission_priority": {
@@ -10868,20 +11009,20 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "c0ce809e796dca32aad3b978ace974bce00c70a5",
-  "current_research_head_this_run": "d03395b21cac4cd8d03459680fdb4dee45d9bbca",
+  "current_research_head_before_ledger_update": "baa63148c35bda37877f63d6d6c2541d289fd5a5",
+  "current_research_head_this_run": "PENDING_AFTER_LEDGER_POINTER_UPDATE",
   "current_research_checks": {
-    "status": "SNAPSHOT_POINTER_AND_LEDGER_READBACK_PASS; PR1289_HARDENING_CI_GATE_PASS; MAIN_SIGNAL_INVALID; FORECAST_NOT_ISSUED",
-    "latest_main_sha": "c5ef4cb53c09b003983f080937095d5f1a1c74e7",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0604-paper-trader-guard-hardening.json",
-    "snapshot_blob_sha": "b29849b0703530b6aaed911dd90cac1ccaea99e2",
-    "snapshot_commit_sha": "c0ce809e796dca32aad3b978ace974bce00c70a5",
-    "snapshot_characters": 13187,
+    "status": "SBIC_CRYPTO_AND_ASK_COIN_EVIDENCE_ADDED; GRAPH_SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING; FORECAST_NOT_ISSUED",
+    "latest_main_sha": "f319d3d9511c6463bb18c36d9cc2b537888f6b88",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0608-sbic-crypto-ask-coin-disambiguation-corrected.json",
+    "snapshot_blob_sha": "c6b38550d687f81dafd6edbe4d167b996c9bdb97",
+    "snapshot_commit_sha": "baa63148c35bda37877f63d6d6c2541d289fd5a5",
+    "snapshot_characters": 15475,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 21,
+    "source_reference_count": 31,
     "missing_source_references": 0,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T050603-circle-coinbase-sbic-ambiguity.json",
-    "graph_addendum_blob_sha": "b8de39044a3f3252ae489cd4c39a4f8a9dce605c",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0606-sbic-crypto-ask-coin-disambiguation.json",
+    "graph_addendum_blob_sha": "f3365271867695cfd71ed300fc7687b56c32c41f",
     "graph_addendum_readback_ok": true,
     "current_index_gate": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
@@ -10891,9 +11032,9 @@
     "pr1289_core_ci_status": "PASS_177_TESTS_4_SUBTESTS_4.99S",
     "pr1289_gate_run": 40826979063,
     "pr1289_gate_status": "PASS_FAIL_CLOSED",
-    "pr1289_current_main_ahead_of_head": 7,
+    "pr1289_current_main_ahead_of_head": 8,
     "pr1282_head": "b803fcb68d3302f6799b2e5f7aadd1afcc27f568",
-    "pr1282_current_main_ahead_of_head": 29,
+    "pr1282_current_main_ahead_of_head": 30,
     "pr1282_state": "DRAFT_OPEN_UNMERGED_STALE",
     "pr1282_current_main_ci_verified": false,
     "main_signal": {
@@ -10910,7 +11051,7 @@
     "creator_identity_status": "PROBABLE_KAMILAH_CAMILA_VARIANT; EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
     "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; THIRD_PARTY_VIDEO_COUNTS_DISAGREE",
     "forecast_status": "NOT_ISSUED",
-    "index_pointer_readback_ok": true,
+    "index_pointer_readback_ok": false,
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
@@ -10919,24 +11060,36 @@
     "paper_trading_state_mutated": false,
     "index_blob_sha_at_readback": "2f4ccc3470e95c9a29c93781a2d0ef9526f32a86",
     "index_commit_sha_at_readback": "d03395b21cac4cd8d03459680fdb4dee45d9bbca",
-    "index_character_count_match": true
+    "index_character_count_match": true,
+    "graph_addendum_commit_sha": "0342daeda1a399b9ab514c67a54a6f46e477676b",
+    "new_graph_edges": 2,
+    "new_competing_hypotheses": 3,
+    "sbic_candidates": [
+      "SBIC East Japan",
+      "historical SBI Capital Co., Ltd.",
+      "SBI Crypto Co., Ltd."
+    ],
+    "sbic_original_referent": "UNRESOLVED",
+    "sbic_crypto_direct_xrp_relationship": "NOT_ESTABLISHED",
+    "ask_coin_permission_io_candidate": "CONFIRMED_BY_COMPANY_ANNOUNCEMENT; ORIGINAL_CONTEXT_UNRESOLVED",
+    "camilla_stephenson_identity": "NAMESAKES_FOUND; CANONICAL_XRP_CHANNEL_UNRESOLVED"
   },
   "ledger_metrics": {
-    "source_records": 771,
-    "run_updates": 148,
-    "limitations": 173,
-    "relationship_edges": 134,
-    "competing_hypotheses": 86,
+    "source_records": 781,
+    "run_updates": 149,
+    "limitations": 178,
+    "relationship_edges": 136,
+    "competing_hypotheses": 89,
     "market_observations": 68,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 2,
-    "index_characters_before_this_update": 716048,
+    "index_characters_before_this_update": 725372,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 13187,
-    "index_characters": 725372
+    "latest_snapshot_characters": 15475,
+    "index_characters": 737342
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -10957,19 +11110,23 @@
     "forecast_status": "NOT_ISSUED"
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:04:45.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:08:30.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; GRAPH_ADDENDUM_READBACK_PASS; RESEARCH_BASE_CI_GATE_NOT_TRIGGERED",
+      "status": "GRAPH_ADDENDUM_READBACK_PASS; CORRECTED_SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0606-sbic-crypto-ask-coin-disambiguation.json",
+      "graph_addendum_blob_sha": "f3365271867695cfd71ed300fc7687b56c32c41f",
+      "graph_addendum_commit_sha": "0342daeda1a399b9ab514c67a54a6f46e477676b",
+      "graph_addendum_readback_ok": true,
+      "graph_edges": 2,
+      "graph_hypotheses": 3,
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "b29849b0703530b6aaed911dd90cac1ccaea99e2",
-      "snapshot_commit_sha": "c0ce809e796dca32aad3b978ace974bce00c70a5",
-      "snapshot_characters": 13187,
-      "source_reference_count": 21,
+      "snapshot_blob_sha": "c6b38550d687f81dafd6edbe4d167b996c9bdb97",
+      "snapshot_commit_sha": "baa63148c35bda37877f63d6d6c2541d289fd5a5",
+      "snapshot_characters": 15475,
+      "source_reference_count": 31,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "relationship_graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T050603-circle-coinbase-sbic-ambiguity.json",
-      "relationship_graph_addendum_blob_sha": "b8de39044a3f3252ae489cd4c39a4f8a9dce605c",
-      "relationship_graph_addendum_readback_ok": true,
+      "index_pointer_readback_ok": false,
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
@@ -10979,15 +11136,7 @@
         "status": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
         "url": null
-      },
-      "index_pointer_readback_ok": true,
-      "index_blob_sha_at_readback": "2f4ccc3470e95c9a29c93781a2d0ef9526f32a86",
-      "index_commit_sha_at_readback": "d03395b21cac4cd8d03459680fdb4dee45d9bbca",
-      "index_character_count_match": true,
-      "duplicate_source_ids": 0,
-      "main_modified_by_this_run": false,
-      "merge_performed": false,
-      "forecast_status": "NOT_ISSUED"
+      }
     },
     "previous_pointer_snapshot": {
       "record_type": "snapshot_reference",
@@ -10999,7 +11148,7 @@
       "snapshot_blob_sha": "c09a06ec0b8495ea8c1ad0237c51073eb3e3d7fa",
       "snapshot_commit_sha": "26d7f176bf1b367b8eeb7cec73c14c9fb10ab6fc"
     },
-    "note": "The snapshot is immutable. The index pointer is being updated separately; research-base PR CI/gate results must be reported only if actually observed."
+    "note": "Graph addendum and corrected snapshot are immutable commits on the explicit research branch. Research-base PR CI/gate are not claimed."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -11047,23 +11196,32 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T05:15:25.000Z",
-    "focus": "SBI Capital historical SBIC identity cross-check",
+    "recorded_at_utc": "2026-10-29T06:08:30.000Z",
+    "focus": "SBI Crypto SBIC candidate, ASK Coin primary-source resolution and creator namesake disambiguation",
     "source_ids": [
-      "SRC-RUN40-20261029T051525-SBI-CAPITAL-2005-SBIC",
-      "SRC-RUN39-20261029T050603-SBI-CAPITAL-SBIC",
-      "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z"
+      "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-LEGAL-ACRONYM",
+      "SRC-RUN42-20261029T0606Z-SBI-GROUP-OVERVIEW",
+      "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-2025-INCIDENT",
+      "SRC-RUN42-20261029T0606Z-SBI-CRYPTO-MINING",
+      "SRC-RUN42-20261029T0606Z-ASK-COIN-PERMISSION-IO",
+      "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-IMDB-I",
+      "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-IMDB-II",
+      "SRC-RUN42-20261029T0606Z-CAMILLA-NAMESAKE-LINKEDIN",
+      "SRC-RUN42-20261029T0606Z-SBIC-TICKER-COLLISION",
+      "SRC-RUN42-20261029T0608Z-MAIN-HEAD"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T051525-sbi-capital-historical-crosscheck.json",
-      "blob_sha": "18afd9a92097e1b65ff313bd36d4e54d5b562d78",
-      "commit_sha": "e6d8d6c0dfbab1b375f452bcd81e074d30b03852",
-      "new_edges": 1,
-      "new_competing_hypotheses": 1
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0606-sbic-crypto-ask-coin-disambiguation.json",
+      "blob_sha": "f3365271867695cfd71ed300fc7687b56c32c41f",
+      "commit_sha": "0342daeda1a399b9ab514c67a54a6f46e477676b",
+      "new_edges": 2,
+      "new_competing_hypotheses": 3
     },
-    "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
-    "sbic_identity": "HISTORICAL_SBI_CAPITAL_CANDIDATE_CONFIRMED; ORIGINAL_REFERENT_UNRESOLVED",
-    "direct_xrp_relationship": "NOT_ESTABLISHED",
+    "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261029T0604-paper-trader-guard-hardening.json",
+    "sbic_identity": "THREE_JAPANESE_CANDIDATES; ORIGINAL_REFERENT_UNRESOLVED",
+    "sbic_crypto_direct_xrp_relationship": "NOT_ESTABLISHED",
+    "ask_coin_identity": "PERMISSION_IO_CANDIDATE_CONFIRMED; ORIGINAL_CONTEXT_UNRESOLVED",
+    "creator_identity": "NAMESAKES_FOUND; CANONICAL_XRP_CHANNEL_UNRESOLVED",
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
