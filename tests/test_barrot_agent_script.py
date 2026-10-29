@@ -378,10 +378,10 @@ def test_repo_browser_open_file_is_bounded_and_confined(tmp_path: Path, monkeypa
     result = json.loads(browser.open_file({"path": "sample.py", "line_start": 2, "line_end": 200}))
     assert result["success"] is True
     assert result["line_start"] == 2
-    assert result["line_end"] == 81
+    assert result["line_end"] == 61
     assert "2: line-2" in result["content"]
-    assert "81: line-81" in result["content"]
-    assert "82: line-82" not in result["content"]
+    assert "61: line-61" in result["content"]
+    assert "62: line-62" not in result["content"]
 
     escaped = json.loads(browser.open_file({"path": "../outside.txt"}))
     assert escaped["success"] is False
