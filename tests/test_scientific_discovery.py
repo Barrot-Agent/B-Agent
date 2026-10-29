@@ -510,7 +510,13 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
                 "acceptance_gate_passed": False,
                 "sources": [],
                 "claims": [],
-                "tracks": [],
+                "tracks": [{
+                    "execution_records": [{
+                        "state": "COMPLETE",
+                        "provider": "groq:test-model",
+                        "response": {"provider_backed": True},
+                    }]
+                }],
                 "cross_pollination": [],
                 "formal_verifications": [],
                 "adversarial_reviews": [],
@@ -522,10 +528,29 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
         def __init__(self, **kwargs):
             calls["init"] = kwargs
 
-        def run(self, adapter):
+        def run(self, adapter, *, track_executor=None):
             calls["adapter"] = adapter
+            calls["track_executor"] = track_executor
+            class FakeTrack:
+                track_id = "proof"
+                def to_dict(self):
+                    return {"track_id": self.track_id, "hypothesis": "test", "strategy": "test"}
+            calls["model_execution"] = track_executor(FakeTrack())
             return FakeCycle()
 
+    class FakeBrain:
+        def __init__(self, **kwargs):
+            calls["brain_init"] = kwargs
+        def think(self, message, system=None):
+            calls["model_prompt"] = message
+            return json.dumps({
+                "findings": ["Provisional finding"],
+                "open_questions": ["Open question"],
+                "counterarguments": ["Counterargument"],
+                "recommended_checks": ["Independent check"],
+            })
+
+    monkeypatch.setattr(module, "ScriptBrain", FakeBrain)
     monkeypatch.setattr(module, "configure_git", lambda: calls.setdefault("configured", True))
     monkeypatch.setattr(module, "checkout_branch", lambda branch: calls.setdefault("branch", branch))
     monkeypatch.setattr(module, "ScientificDiscoveryController", FakeScientificDiscoveryController)
@@ -719,3 +744,33 @@ def test_new_research_cycle_imports_prior_committed_evidence_and_restarts_termin
     second = controller.run(adapter)
     assert second.cycle_id != first.cycle_id
     assert any(item["claim_id"] == "prior.claim" for item in second.claims)
+
+
+def test_provider_backed_track_execution_is_recorded_without_promoting_claims(tmp_path: Path) -> None:
+    bundle = write_bundle(tmp_path / "bundle.json", independent=False, adversarial_status=ClaimStatus.CHALLENGED.value)
+    adapter = StaticResearchProblemAdapter(bundle)
+    controller = ScientificDiscoveryController(workspace=tmp_path)
+    calls: list[str] = []
+
+    def execute(track):
+        calls.append(track.track_id)
+        return {
+            "provider": "test-provider/model-v1",
+            "result": {
+                "findings": [f"Provisional finding for {track.track_id}"],
+                "open_questions": ["What assumption remains unproven?"],
+                "counterarguments": ["The supplied evidence may not imply the full theorem."],
+                "recommended_checks": ["Run an independent derivation."],
+            },
+        }
+
+    cycle = controller.run(adapter, track_executor=execute)
+    assert calls
+    for track in cycle.tracks:
+        record = track["execution_records"][-1]
+        assert record["provider"] == "test-provider/model-v1"
+        assert record["duration_ms"] >= 0
+        assert record["response"]["provider_backed"] is True
+        assert record["response"]["intermediate_results"][-1]["status"] == "MODEL_GENERATED_UNVERIFIED"
+        assert any("Model-generated counterargument" in item for item in track["unresolved_objections"])
+    assert all(claim["acceptance_status"] == ClaimStatus.UNRESOLVED.value for claim in cycle.claims)
