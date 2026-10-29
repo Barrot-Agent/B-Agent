@@ -84,6 +84,9 @@ class ObjMeshLoaderTests(unittest.TestCase):
             mesh_faces=asset.mesh_data["faces"],
         )
         self.assertTrue(report.geometry.is_watertight)
+        self.assertEqual(report.geometry.degenerate_triangles, 0)
+        self.assertEqual(report.geometry.open_boundaries, 0)
+        self.assertEqual(report.geometry.non_manifold_edges, 0)
         self.assertEqual(report.geometry.topology_status, "ASSESSED")
 
 
