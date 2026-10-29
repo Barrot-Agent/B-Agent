@@ -1,9 +1,16 @@
 name: Generate Signal Summary
+
 on:
   workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
   summary:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
     steps:
@@ -11,13 +18,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Generate summary + TTS
+      - name: Generate summary
         run: python3 scripts/signal_summary.py
-      - name: Commit
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add web/latest_signal_summary.json
-          git add web/generated_audio/ || true
-          git diff --cached --quiet || git commit -m "Signal summary [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Upload summary artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-summary-${{ github.run_id }}
+          path: |
+            web/latest_signal_summary.json
+            web/generated_audio/latest_signal_summary.wav
+          if-no-files-found: warn
+          retention-days: 30
