@@ -4735,6 +4735,14 @@
       "title": "Corrected immutable snapshot character-count metric",
       "accessed_at_utc": "2026-10-29T00:09:14.462Z",
       "note": "The preserved 0008Z snapshot content is 612,158 characters while its embedded latest_snapshot_characters metric says 612,153. This new correction snapshot recalculates the metric; the earlier snapshot remains unchanged."
+    },
+    {
+      "id": "SRC-RUN15-INDEX-POINTER-VERIFY-20261029T0009Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/research_ledger.json",
+      "title": "Corrected snapshot and compact-index pointer verification",
+      "accessed_at_utc": "2026-10-29T00:09:33.702Z",
+      "note": "Read back latest snapshot 2026-10-29T0009Z-correction.json byte-for-byte; blob SHA matches the index pointer; snapshot character-count metric and index character-count metric match actual content; all 358 referenced source IDs resolve. Core CI for the research-base PR was not triggered; latest index-head gate remains unverified."
     }
   ],
   "limitations": [
@@ -8004,6 +8012,47 @@
       "forecast_status": "NOT_ISSUED",
       "main_modified": false,
       "merge_performed": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T00:09:33.702Z",
+      "update_type": "CORRECTION_SNAPSHOT_AND_INDEX_POINTER_VERIFIED",
+      "main_sha": "950607740de052d804d0b431c481bf2abda37a04",
+      "source_ids": [
+        "SRC-RUN15-INDEX-POINTER-VERIFY-20261029T0009Z"
+      ],
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+        "blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
+        "characters": 611372,
+        "character_metric_matches": true,
+        "source_reference_count": 358,
+        "missing_source_references": 0,
+        "readback_exact": true
+      },
+      "index": {
+        "prior_blob_sha": "9777c1bf2ee5feb33008048a80f5a3da8830a34d",
+        "latest_snapshot_pointer_matches": true,
+        "character_metric_matches": true,
+        "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+        "gate": "PENDING_OR_UNVERIFIED"
+      },
+      "pr1270": {
+        "head_sha": "5476a2353181f61f36b56d9e9bf8a5a5859dfdda",
+        "ci": "PASS_147_TESTS_6.25S",
+        "gate": "PASS",
+        "behind_by": 1
+      },
+      "pr1271": {
+        "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
+        "ci": "PASS_146_TESTS_5.33S",
+        "gate": "PASS",
+        "behind_by": 1
+      },
+      "forecast_status": "NOT_ISSUED",
+      "main_modified": false,
+      "merge_performed": false,
+      "deployment": false,
+      "real_money_trade": false
     }
   ],
   "mission_priority": {
@@ -8234,7 +8283,7 @@
   "current_research_head_before_ledger_update": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
   "current_research_head_this_run": "1853f3660515024efbce3e1ce658b6d7573392fe",
   "current_research_checks": {
-    "status": "CORRECTION_SNAPSHOT_READBACK_PASS; CHARACTER_COUNT_MATCH; SOURCE_REFERENCES_PASS; PR1270_CI_GATE_PASS; PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; INDEX_GATE_PENDING",
+    "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SNAPSHOT_AND_INDEX_CHARACTER_METRICS_MATCH; PR1270_CI_GATE_PASS; PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_GATE_UNVERIFIED",
     "latest_main_sha": "950607740de052d804d0b431c481bf2abda37a04",
     "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
     "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
@@ -8245,11 +8294,15 @@
     "pr1270_gate": "PASS",
     "pr1271_ci": "PASS_146_TESTS_5.33S",
     "pr1271_gate": "PASS",
-    "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR"
+    "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "snapshot_characters": 611372,
+    "snapshot_character_metric_matches": true,
+    "index_character_metric_matches": true,
+    "latest_index_gate": "UNVERIFIED"
   },
   "ledger_metrics": {
-    "source_records": 583,
-    "run_updates": 118,
+    "source_records": 584,
+    "run_updates": 119,
     "limitations": 109,
     "relationship_edges": 104,
     "competing_hypotheses": 69,
@@ -8262,7 +8315,7 @@
     "index_characters_before_this_update": 526931,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 611372,
-    "index_characters": 528193
+    "index_characters": 531371
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -8288,9 +8341,9 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T00:09:14.462Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T00:09:33.702Z",
     "post_snapshot_verification": {
-      "status": "CORRECTION_SNAPSHOT_READBACK_PASS; CHARACTER_COUNT_MATCH; POINTER_UPDATE_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SNAPSHOT_AND_INDEX_CHARACTER_METRICS_MATCH; PR1270_AND_PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_GATE_UNVERIFIED",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
       "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe",
@@ -8298,22 +8351,23 @@
       "snapshot_character_metric_matches": true,
       "source_reference_count": 358,
       "missing_source_references": 0,
+      "index_character_metric_matches": true,
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
         "url": null
       },
       "gate": {
-        "status": "PENDING_AFTER_INDEX_POINTER_UPDATE",
+        "status": "UNVERIFIED",
         "run_id": null,
         "url": null
       },
-      "successor_index_ci": "PENDING_AFTER_WRITE",
-      "successor_index_gate": "PENDING_AFTER_WRITE"
+      "successor_index_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "successor_index_gate": "UNVERIFIED"
     },
     "previous_inline_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
     "previous_inline_index_characters": 989081,
-    "note": "Corrected snapshot is a new immutable file; the 0008Z snapshot and all prior snapshots remain unchanged."
+    "note": "Snapshot and index were read back and their pointer, source references and character metrics match. No full CI or gate result is claimed for this final index head."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -8361,16 +8415,19 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T00:09:14.462Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T00:08:27.758Z",
+    "recorded_at_utc": "2026-10-29T00:09:33.702Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T00:09:14.462Z",
     "source_ids": [
-      "SRC-RUN15-SNAPSHOT-METRIC-CORRECTION-20261029T0009Z"
+      "SRC-RUN15-SNAPSHOT-METRIC-CORRECTION-20261029T0009Z",
+      "SRC-RUN15-INDEX-POINTER-VERIFY-20261029T0009Z"
     ],
     "main_sha": "950607740de052d804d0b431c481bf2abda37a04",
     "latest_snapshot": {
       "path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
       "blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
-      "commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe"
+      "commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe",
+      "character_metric_matches": true,
+      "source_references_pass": true
     },
     "corrects_previous_snapshot_metric": true,
     "forecast_status": "NOT_ISSUED",
@@ -8378,7 +8435,23 @@
     "merge_performed": false,
     "force_push": false,
     "deployment": false,
-    "real_money_trade": false
+    "real_money_trade": false,
+    "pr1270": {
+      "head_sha": "5476a2353181f61f36b56d9e9bf8a5a5859dfdda",
+      "ci": "PASS_147_TESTS_6.25S",
+      "gate": "PASS",
+      "behind_by": 1,
+      "draft": true,
+      "merged": false
+    },
+    "pr1271": {
+      "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
+      "ci": "PASS_146_TESTS_5.33S",
+      "gate": "PASS",
+      "behind_by": 1,
+      "draft": true,
+      "merged": false
+    }
   },
   "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
