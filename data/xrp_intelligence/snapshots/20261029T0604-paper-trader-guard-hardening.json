@@ -1,0 +1,207 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_research_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0604-PAPER-TRADER-GUARD-HARDENING",
+  "captured_at_utc": "2026-10-29T06:04:45.000Z",
+  "mission_priority": {
+    "primary": "XRP intelligence and prediction-engine mastery",
+    "foundation": "Preserve Barrot V3 as the execution and verification foundation. No main writes, merges, deployments, force-pushes or real-money actions without approval.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "c5ef4cb53c09b003983f080937095d5f1a1c74e7",
+    "main_commit_url": "https://github.com/Barrot-Agent/B-Agent/commit/c5ef4cb53c09b003983f080937095d5f1a1c74e7",
+    "research_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+    "research_branch_head_before_this_update": "ed19b3411464a01bb9df40fcc8797c69bb2e10cf",
+    "graph_addendum_commit": "5b47ec8572e3fb01941b6f63fd36398d79cdc0c9",
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_triggered": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false
+  },
+  "current_xrp_signal": {
+    "signal_path": "web/latest_signal.json",
+    "signal_blob_sha": "c1c8bd814634fd53853bb7038dc38508d5f399ff",
+    "timestamp": "2026-10-29T05:22:46.936694+00:00",
+    "score": 44,
+    "confidence": 0,
+    "provider_unavailable": true,
+    "failure_details": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions)+news(11)",
+    "summary_path": "web/latest_signal_summary.json",
+    "summary_blob_sha": "5c8051288986d1256146b83ebfbe28db6a38a2de",
+    "summary_problem": "The published summary still frames the score as mixed/modestly positive despite confidence 0.0 and provider unavailability; protocol/consensus research headlines are labeled bullish.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "paper_trading": {
+    "purpose_boundary": "Current paper trader is configured for BTC-USD, not XRP; its results are not XRP prediction evaluation.",
+    "workflow_path": ".github/workflows/coinbase-paper-trader.yml",
+    "product_id": "BTC-USD",
+    "state_path": "web/paper_trading_state.json",
+    "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+    "state": {
+      "cash_usd": 8011.936613782476,
+      "position_size": 0.024901276579239066,
+      "position_product": null,
+      "avg_entry_price": 80436.84,
+      "trade_count": 125,
+      "started_at": "2026-08-25T01:42:34.501971+00:00"
+    },
+    "replay_status": "BLOCKED_CURRENT_LOG_CONTENT_UNAVAILABLE",
+    "replay_blocker": "The current paper-trading log content was not returned by the connected GitHub file action. Do not infer it is empty or reuse a stale replay.",
+    "prior_replay": "Historical PR #1264 reports a read-only 2,345-row BTC-USD replay at its older cutoff. Current log changed afterward; current replay remains pending.",
+    "state_mutated": false,
+    "current_main_guard_status": "UNFIXED_ON_MAIN",
+    "position_identity_guard_pr": {
+      "number": 1289,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1289",
+      "head_sha": "491e6f14503957da8e8f2cb82eba7f14bdbfe604",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "changes": [
+        "validate persisted product identity before any provider/network call",
+        "reject malformed, negative, NaN and infinite position sizes",
+        "bind product identity on a new buy",
+        "regression test proves unidentified position blocks provider and model calls"
+      ],
+      "ci_run_id": 40826979132,
+      "ci_status": "PASS_177_TESTS_PLUS_4_SUBTESTS_4.99S",
+      "gate_run_id": 40826979063,
+      "gate_status": "PASS_FAIL_CLOSED",
+      "branch_ahead_of_main": 5,
+      "branch_behind_main": 7
+    }
+  },
+  "market_context": {
+    "coinbase": {
+      "source_class": "COMPANY_REPORTED",
+      "q2_2026": "Coinbase reported 10.3% crypto trading-volume market share, $20 billion average USDC held in Coinbase products, and approximately 50% of USDC economics captured over the prior year.",
+      "q3_2026": "Results scheduled for 2026-10-29 after market close; not available at this 05:06 UTC cutoff.",
+      "rlusd": "RLUSD became available on Coinbase Prime, Coinbase Exchange and the retail app on 2026-10-28; deposits/withdrawals were announced across XRPL, Base and Ethereum.",
+      "collateral": "Coinbase Global Exchange collateral availability was described as a future rollout, not live collateral use at announcement."
+    },
+    "circle": {
+      "source_class": "COMPANY_REPORTED",
+      "h1_2026": "Circle's October 2026 blog reports approximately $1.4B revenue, $819M paid to distribution partners and transaction costs, approximately $473M reinvested in licenses, banking, liquidity, compliance and products, and about $0.07 net profit per revenue dollar.",
+      "binance": "On 2026-09-22 Circle and Binance announced a five-year USDC commercial agreement and a $100M strategic equity investment by Binance.",
+      "limitation": "Circle's H1 distribution totals are issuer-reported global figures, not a Coinbase-only amount and not XRP-specific capital flows."
+    },
+    "sbic": {
+      "status": "ACRONYM_AMBIGUOUS; ORIGINAL_REFERENCE_UNRESOLVED",
+      "candidate_1": "SBIC East Japan is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; its public curriculum mentions ChatGPT in a completed training course. No OpenAI partnership or direct XRP link is established.",
+      "candidate_2": "A 2007 SBI Holdings official release uses SBIC for SBI Capital Co., Ltd. in a historical subsidiary/Goldman Sachs joint-venture context. Current entity status is unknown; no direct XRP link is established.",
+      "disambiguation_rule": "Do not assign SBI Group's Ripple/XRP relationships to either SBIC candidate without direct evidence."
+    },
+    "etf_flow_data_quality": {
+      "status": "NOT_ADMITTED_AS_MODEL_FEATURE",
+      "discrepancy": "Alpha Finance reports $0 net XRP ETF flow for 2026-10-28 and $90.4M over 30 sessions in its displayed universe. XRP Insights reports a different XRP-unit flow for 2026-10-26 to 2026-10-27 across six spot funds plus BITW and marks the 2026-10-28 row provisional.",
+      "reason": "Windows, units, fund universes and settlement timing differ. Reconcile issuer holdings fund-by-fund before using a flow feature."
+    }
+  },
+  "relationship_graph": {
+    "addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T050603-circle-coinbase-sbic-ambiguity.json",
+    "addendum_blob_sha": "b8de39044a3f3252ae489cd4c39a4f8a9dce605c",
+    "addendum_commit_sha": "5b47ec8572e3fb01941b6f63fd36398d79cdc0c9",
+    "new_edges": 0,
+    "competing_hypotheses": 4,
+    "key_conclusion": "No new XRP ecosystem relationship edge was established in this run. Preserve the prior Coinbase–Circle–Ripple and ambiguous-SBIC hypotheses; no price-causal claim is upgraded.",
+    "new_competing_hypotheses": 0,
+    "ledger_relationship_edges": 134,
+    "ledger_competing_hypotheses": 86
+  },
+  "exact_phrase_research": {
+    "ASK Coin": "Two candidates remain distinct: an inactive exchange listing and Permission.io's ASK token. No XRP connection established.",
+    "actual capital": "Original context unresolved; do not substitute generic market-capitalization definitions as evidence.",
+    "SBIC, ChatGPT SBIC": "At least two Japanese entity candidates use SBIC in public sources. SBIC East Japan's ChatGPT mention is a training-course topic only; SBI Capital is a separate historical acronym usage.",
+    "Camilla Stephenson": "Candidate association with Dr Kamilah/Camila/Camilla Stevenson remains probable, not canonical. Channel ID and full public-upload inventory remain unresolved; no complete video-ingestion claim."
+  },
+  "platform_coordination": {
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "live_cross_platform_handoffs_verified": [],
+    "github_connector": "Connected and used for read/write operations on the explicit research branch; this is not evidence of nine-platform collaboration.",
+    "adapter_status": "Capability/authentication/permission/data-flow map remains design-only unless each provider's access and a real handoff are tested. Keep least privilege, independent evidence packets, retained disagreements and red-team review."
+  },
+  "repository_safety": {
+    "main_merge_queue": {
+      "path": ".github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+      "observed_risk": "contents:write and pull-requests:write; dry_run defaults false; max_prs defaults 0 (unlimited); mode=all can process all open PRs; workflow can update branches, comment, merge and delete branches.",
+      "pr": 1282,
+      "pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1282",
+      "pr_head": "b803fcb68d3302f6799b2e5f7aadd1afcc27f568",
+      "current_main_ahead_of_head": 29,
+      "historical_ci_run": 40804504273,
+      "historical_gate_run": 40804504256,
+      "status": "DRAFT_UNMERGED_STALE; CURRENT_MAIN_REMAINS_MUTATION_CAPABLE"
+    },
+    "xrp_summary": {
+      "pr": 1288,
+      "pr_head": "07009da95c8ba964985282de693f6c6571ddd282",
+      "exact_head_ci_run": 40816036107,
+      "exact_head_ci": "PASS_173_TESTS_PLUS_4_SUBTESTS_6.67S",
+      "fail_closed_gate_run": 40816036119,
+      "fail_closed_gate": "PASS",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "freshness": "Current main is 7 commits ahead of the PR head; revalidate against current main before approval."
+    },
+    "paper_position_identity": {
+      "current_state": "Nonzero simulated position with position_product=null",
+      "configured_product": "BTC-USD",
+      "current_main_code_status": "No product identity validation before provider/model calls",
+      "proposed_pr": 1289,
+      "proposed_head": "491e6f14503957da8e8f2cb82eba7f14bdbfe604",
+      "exact_head_ci": "PASS_177_TESTS_PLUS_4_SUBTESTS_4.99S",
+      "fail_closed_gate": "PASS",
+      "state_rewrite_authorized": false
+    },
+    "branch_protection": "EFFECTIVE_REQUIRED_CHECKS_AND_PROTECTION_DETAILS_UNVERIFIED"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "new_synchronized_xrp_market_observations_admitted": false,
+  "source_ids": [
+    "SRC-RUN39-20261029T050603-CIRCLE-USDC-ECONOMICS",
+    "SRC-RUN39-20261029T050603-CIRCLE-BINANCE-AGREEMENT",
+    "SRC-RUN39-20261029T050603-SBI-CAPITAL-SBIC",
+    "SRC-RUN39-20261029T050603-COINBASE-Q3-CALENDAR",
+    "SRC-RUN39-20261029T050603-ETF-FLOW-ALPHA",
+    "SRC-RUN39-20261029T050603-ETF-FLOW-XRPINSIGHTS",
+    "SRC-RUN39-20261029T050603-MAIN-HEAD",
+    "SRC-RUN39-20261029T050603-MAIN-XRP-SIGNAL-SUMMARY",
+    "SRC-RUN39-20261029T050603-PR1288-VERIFICATION",
+    "SRC-RUN39-20261029T050603-PR1282-WORKFLOW-AND-STALE-HEAD",
+    "SRC-RUN39-20261029T050603-PAPER-LOG-RETRIEVAL-LIMITATION",
+    "SRC-RUN41-20261029T0604Z-MAIN-HEAD",
+    "SRC-RUN41-20261029T0604Z-MAIN-PAPER-STATE",
+    "SRC-RUN41-20261029T0604Z-MAIN-PAPER-TRADER",
+    "SRC-RUN41-20261029T0604Z-MAIN-XRP-SIGNAL",
+    "SRC-RUN41-20261029T0604Z-MAIN-XRP-SUMMARY",
+    "SRC-RUN41-20261029T0604Z-MERGE-QUEUE-WORKFLOW",
+    "SRC-RUN41-20261029T0604Z-PR1289-CI",
+    "SRC-RUN41-20261029T0604Z-PR1289-GATE",
+    "SRC-RUN41-20261029T0604Z-PR1289-HARDENING-READBACK",
+    "SRC-RUN41-20261029T0604Z-PR1282-STALE-HEAD"
+  ],
+  "next_actions": [
+    "Review PR #1289 against the then-current main; keep it draft/unmerged until approved. Do not repair the legacy paper state without an explicit, evidence-backed reconciliation.",
+    "Create a fresh-main successor to PR #1282 that makes the merge queue read-only; preserve the existing PR as historical evidence and do not merge its stale head.",
+    "Obtain the permitted full paper-trading log and run a deterministic read-only replay against current state; do not claim the log is empty when the connector returns no content.",
+    "Keep the XRP signal NOT_ISSUED while confidence is zero and providers are unavailable; review PR #1288 against current main and address academic/protocol-headline sentiment contamination.",
+    "Capture synchronized XRP/BTC spot, depth, derivatives, ETF holdings/flows, DXY and Treasury yields with explicit UTC cutoffs before admitting new market features.",
+    "Continue Coinbase Q3 results monitoring after the October 29 after-market release and Circle Q3 monitoring for November 4; distinguish company metrics from XRP-specific demand or capital flows.",
+    "Continue exact-phrase and public-video research; keep ASK Coin candidates distinct, actual capital unresolved, SBIC original referent unresolved, and Camilla Stephenson identity/video inventory unverified."
+  ],
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0604-paper-trader-guard-hardening.json",
+  "snapshot_character_count": 13187,
+  "previous_snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json"
+}
