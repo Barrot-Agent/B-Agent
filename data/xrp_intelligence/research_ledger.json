@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T07:07:00.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0707-PAPER-TRADER-LOG-RETRIEVAL-CORRECTION",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0707-paper-trader-log-retrieval-correction.json",
-    "snapshot_blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
-    "snapshot_commit_sha": "2e153c86a2849c28cdae08b0962aa68ee5034074"
+    "captured_at_utc": "2026-10-29T08:10:30.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0810-MARKET-DATA-AND-FRESH-SAFETY-PRS",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0810-market-data-and-fresh-safety-prs.json",
+    "snapshot_blob_sha": "2019bb94d1d686723ef910da94062929e19cc2c5",
+    "snapshot_commit_sha": "b8d7c8f84d65ed7d64235fb035fdc1703c000cd9"
   },
   "sources": [
     {
@@ -6564,6 +6564,118 @@
       "title": "Latest appended simulated paper-trader log row recovered from commit diff",
       "accessed_at_utc": "2026-10-29T07:07:00.000Z",
       "note": "The commit patch proves a row timestamped 2026-10-29T07:05:17.567610Z for simulated BTC-USD: price 79823.89, decision hold, result 'held -- no action taken', portfolio value $9,999.65, cycle change 0.0 and cumulative return -0.003%. This is one appended row only; the full log remains unavailable and no complete replay is verified."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-XRP-MARKET-TRADRADAR",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "XRP futures market data snapshot",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Provider page reports 2026-10-29 03:30 UTC XRP mark price $1.2904, 24h change -3.85%, OI $1.95B across 7 exchanges, OI change -5.09%, OI-weighted funding +0.0068% per 8h, and at least $4.89M liquidations with $3.68M longs. Secondary aggregator; preserve its stated cutoff and universe."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-KODEXIUS",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "title": "XRP perpetual futures by exchange",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Updated 2026-10-29 05:22 UTC: OI $815.60M across 7 contracts, funding +0.0062% (8h-normalized), 24h volume $1.25B. Venue OI includes Binance $435.85M, Bybit $145.40M, Hyperliquid $112.90M, OKX $91.43M, HTX $30.02M. Contract/venue coverage differs from other dashboards."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-LORIS",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "url": "https://loris.tools/markets/perps/xrp",
+      "title": "XRP perpetual market overview across venues",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Updated 2026-10-29 00:25 UTC: reported price $1.324, 24h change -0.1%, 24h volume $2.02B and OI $2.28B across 39 venues. OI difference from other aggregators is not resolvable without aligned contract and venue coverage."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-XRP-PRICE-BLOCKINSIDER",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "url": "https://blockinsider.com/coins/ripple",
+      "title": "XRP price and market capitalization snapshot",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "CoinGecko-derived secondary page timestamped 2026-10-29 05:28 UTC reports XRP near $1.30, 24h -2.1%, 7d -3.6%, 30d -12.9%, market cap $82.35B and circulating supply 63.35B. Community sentiment is user-voted, not a positioning measure."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-XRP-ETF-ALPHA",
+      "evidence_class": "DERIVED_MARKET_DATA",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF flow tracker",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Through 2026-10-28, five-fund series reports $0 flow on Oct 28, +$644.8K over seven sessions, +$90.4M over 30 sessions and approximately $1.72B cumulative net inflow since launch. Not the same fund universe as XRP Insights."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-XRP-ETF-INSIGHTS",
+      "evidence_class": "DERIVED_MARKET_DATA",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP Insights issuer-holdings-derived ETF flows",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Data page says as of Oct 27, six spot funds plus BITW held approximately 1.190B XRP; Oct 26–27 net flow was -3,132,685 XRP (about -$4.13M). Oct 28 row was provisional and may be resettled. Reconcile holdings and settlement before feature admission."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-MAIN-HEAD",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/eb4422a5897745ec563303ade106cfd2549eac3c",
+      "title": "Current main head at research cutoff",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Latest commit search returned eb4422a5897745ec563303ade106cfd2549eac3c, created 2026-10-29 08:06:43 UTC, message 'Paper trade cycle [skip ci]'. Diff changes only web/paper_trading_log.jsonl and appends a simulated BTC-USD hold row."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-MAIN-XRP-SIGNAL",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Current main XRP signal artifact",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Blob SHA 75a653e9571231e07ef16a6af40c715c7c729c73; timestamp 2026-10-29T07:24:10.423184Z, score 44, confidence 0, news score 88 from 11 entries, sentiment provider unavailable due missing GitHub model credentials and Groq HTTP 429. Not a valid forecast."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-MAIN-XRP-SUMMARY",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "title": "Current main public XRP signal summary",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Blob SHA 6c6cd4f1b6e6e5a49810ac495a75854262374604. Summary says moderate overall score 44 and high news impact 88 despite confidence 0.0 and provider failures. Summary must not be treated as a forecast."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-MAIN-MERGE-QUEUE",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+      "title": "Current main merge-queue workflow remains mutation-capable",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Blob SHA 19b41e2894fdf1b835498fca3eeab870c3b4c8b1. Workflow grants contents:write and pull-requests:write, defaults dry_run=false and max_prs=0 (unlimited), offers mode=all, updates branches, comments, merges and deletes branches. Not executed in this run."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-PR1297-CI",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40840175999",
+      "title": "PR #1297 exact-head core CI",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Run 40840175999 completed successfully for head e9366a5f401e75246b96dc7c1e5519c2302cc679. CI is for a draft read-only merge-queue safety proposal, not a main-branch fix."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-PR1297-GATE",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40840176024",
+      "title": "PR #1297 exact-head fail-closed gate",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "Run 40840176024 completed successfully for head e9366a5f401e75246b96dc7c1e5519c2302cc679. The gate passed; the PR remains draft/unmerged and no merge was performed."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-PR1297-PR",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1297",
+      "title": "Fresh-main read-only merge-queue safety proposal",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "PR #1297 is draft/open/unmerged, based on eb4422a5897745ec563303ade106cfd2549eac3c, head e9366a5f401e75246b96dc7c1e5519c2302cc679. Structural readback passed; exact-head CI and fail-closed gate passed. Main remains mutation-capable until approval and merge."
+    },
+    {
+      "id": "SRC-RUN47-20261029T0810Z-PR1298-PR",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1298",
+      "title": "Fresh-main fail-closed XRP summary proposal",
+      "accessed_at_utc": "2026-10-29T08:10:30.000Z",
+      "note": "PR #1298 is draft/open/unmerged, based on eb4422a5897745ec563303ade106cfd2549eac3c, head 4695f4e13c0cb6c40c5b329c661849914e50f7f8. Branch readback checks passed. No workflow runs were returned at the 08:10 UTC cutoff, so CI/gate status is pending or unverified."
     }
   ],
   "limitations": [
@@ -6756,7 +6868,10 @@
     "2026-10-29T07:06:00.000Z: The connected GitHub file action returned empty content for web/paper_trading_log.jsonl despite a nonempty blob SHA. Current replay remains blocked; do not infer the file is empty or claim the latest paper-trading action from an unavailable row.",
     "2026-10-29T07:06:00.000Z: Main branch API reports protected=true but returned an empty required-status-check list. Effective rulesets and administrator bypass behavior are not fully verified.",
     "2026-10-29T07:06:00.000Z: Coinbase/Ripple RLUSD availability on XRPL and Coinbase distribution is confirmed by company releases, but no direct evidence shows stablecoin transfer activity creates material XRP bridge demand or a price effect.",
-    "2026-10-29T07:07:00.000Z: The newest paper-trading row is verified from the main commit diff, but only one appended row is visible. The full historical JSONL remains unavailable through the connected file action, so current full replay, drawdown and performance statistics remain unverified."
+    "2026-10-29T07:07:00.000Z: The newest paper-trading row is verified from the main commit diff, but only one appended row is visible. The full historical JSONL remains unavailable through the connected file action, so current full replay, drawdown and performance statistics remain unverified.",
+    "2026-10-29T08:10:30Z: XRP derivatives aggregators report materially different open-interest totals ($815.6M at Kodexius, $1.95B at TradRadar, $2.28B at Loris Tools) at different cutoffs and with different venue/contract coverage; do not average or admit as one feature.",
+    "2026-10-29T08:10:30Z: XRP ETF flow trackers use different universes and settlement status. Alpha Finance reports $0 on Oct 28 in a five-fund series; XRP Insights reports negative Oct 26–27 XRP-unit flows across six spot funds plus BITW and marks Oct 28 provisional. Reconcile issuer holdings before feature admission.",
+    "2026-10-29T08:10:30Z: PR #1298 fresh-main summary safety branch passed structural readback, but exact-head CI and fail-closed gate runs were not returned at cutoff; execution verification remains pending."
   ],
   "run_updates": [
     {
@@ -11246,6 +11361,48 @@
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T08:10:30.000Z",
+      "update_type": "XRP_DERIVATIVES_AND_ETF_FLOW_DATA_QUALITY_PLUS_FRESH_MAIN_SAFETY_PRS",
+      "source_ids": [
+        "SRC-RUN47-20261029T0810Z-XRP-MARKET-TRADRADAR",
+        "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-KODEXIUS",
+        "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-LORIS",
+        "SRC-RUN47-20261029T0810Z-XRP-PRICE-BLOCKINSIDER",
+        "SRC-RUN47-20261029T0810Z-XRP-ETF-ALPHA",
+        "SRC-RUN47-20261029T0810Z-XRP-ETF-INSIGHTS",
+        "SRC-RUN47-20261029T0810Z-MAIN-HEAD",
+        "SRC-RUN47-20261029T0810Z-MAIN-XRP-SIGNAL",
+        "SRC-RUN47-20261029T0810Z-MAIN-XRP-SUMMARY",
+        "SRC-RUN47-20261029T0810Z-MAIN-MERGE-QUEUE",
+        "SRC-RUN47-20261029T0810Z-PR1297-CI",
+        "SRC-RUN47-20261029T0810Z-PR1297-GATE",
+        "SRC-RUN47-20261029T0810Z-PR1297-PR",
+        "SRC-RUN47-20261029T0810Z-PR1298-PR"
+      ],
+      "summary": "Added timestamped cross-provider XRP market snapshots and retained open-interest/ETF-flow coverage disagreement as data-quality limitations. Created fresh-main draft PR #1297 for read-only merge-queue safety; exact-head CI and fail-closed gate passed. Created fresh-main draft PR #1298 for fail-closed XRP summary; structural readback passed but CI/gate remain pending or unverified. Main remains unchanged, no forecast issued, no market feature admitted.",
+      "main_sha": "eb4422a5897745ec563303ade106cfd2549eac3c",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T0810-market-data-and-fresh-safety-prs.json",
+        "blob_sha": "2019bb94d1d686723ef910da94062929e19cc2c5",
+        "commit_sha": "b8d7c8f84d65ed7d64235fb035fdc1703c000cd9",
+        "characters": 35686
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0810-market-structure-and-safety-prs.json",
+        "blob_sha": "3d79de6ad08577cb931378ed77d44d2628f32cfb",
+        "commit_sha": "e16f291f9023d16573096a58a695680129e8e922",
+        "new_edges": 6,
+        "new_competing_hypotheses": 3
+      },
+      "market_observations": 6,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false
     }
   ],
   "mission_priority": {
@@ -11473,72 +11630,53 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "641d0e764343145aaa371a38dda7590043902194",
-  "current_research_head_this_run": "2e153c86a2849c28cdae08b0962aa68ee5034074",
+  "current_research_head_before_ledger_update": "2e153c86a2849c28cdae08b0962aa68ee5034074",
+  "current_research_head_this_run": "b8d7c8f84d65ed7d64235fb035fdc1703c000cd9",
   "current_research_checks": {
-    "status": "PAPER_TRADER_LATEST_ROW_VERIFIED_FROM_COMMIT_DIFF; SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; FULL_REPLAY_BLOCKED; FORECAST_NOT_ISSUED",
-    "latest_main_sha": "dbc2929e5249ebd7637204e8b279896a8336cf53",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0707-paper-trader-log-retrieval-correction.json",
-    "snapshot_blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
-    "snapshot_commit_sha": "2e153c86a2849c28cdae08b0962aa68ee5034074",
-    "snapshot_characters": 32330,
+    "status": "SNAPSHOT_AND_GRAPH_CREATED; POINTER_READBACK_PENDING; PR1297_CI_GATE_PASS; PR1298_CI_GATE_PENDING_OR_UNVERIFIED; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED",
+    "latest_main_sha": "eb4422a5897745ec563303ade106cfd2549eac3c",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0810-market-data-and-fresh-safety-prs.json",
+    "snapshot_blob_sha": "2019bb94d1d686723ef910da94062929e19cc2c5",
+    "snapshot_commit_sha": "b8d7c8f84d65ed7d64235fb035fdc1703c000cd9",
+    "snapshot_characters": 35686,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 57,
+    "source_reference_count": 71,
     "missing_source_references": 0,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
-    "graph_addendum_blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0810-market-structure-and-safety-prs.json",
+    "graph_addendum_blob_sha": "3d79de6ad08577cb931378ed77d44d2628f32cfb",
+    "graph_addendum_commit_sha": "e16f291f9023d16573096a58a695680129e8e922",
     "graph_addendum_readback_ok": true,
-    "latest_paper_trader_row": {
-      "timestamp": "2026-10-29T07:05:17.567610+00:00",
-      "action": "hold",
-      "result": "held -- no action taken",
-      "price": 79823.89,
-      "product": "BTC-USD"
-    },
-    "paper_trading_replay": "BLOCKED_FULL_HISTORICAL_LOG_UNAVAILABLE",
+    "index_pointer_readback_ok": false,
+    "index_character_count_match": false,
+    "index_metric_count_match": false,
+    "source_ids_unique": true,
+    "relationship_edges": 163,
+    "competing_hypotheses": 102,
+    "full_paper_trading_replay": "BLOCKED_FULL_HISTORICAL_LOG_UNAVAILABLE",
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
     "deployment_executed": false,
-    "real_money_trade": false,
-    "paper_trading_state_mutated": false,
-    "source_ids_unique": true,
-    "relationship_edges": 157,
-    "competing_hypotheses": 99,
-    "sbic_original_referent": "UNRESOLVED",
-    "ask_coin_original_context": "UNRESOLVED",
-    "actual_capital_original_context": "UNRESOLVED",
-    "creator_identity_status": "EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
-    "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE",
-    "platform_coordination_status": "DESIGNED_NOT_EXECUTED_LIVE_ADAPTERS_NOT_VERIFIED",
-    "current_index_gate": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
-    "core_ci": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
-    "index_pointer_readback_ok": true,
-    "index_blob_sha_at_readback": "802d6c8583c868fbe564fc98bafdb921c53c534b",
-    "index_commit_sha_at_readback": "3bacc4e3f86005afab0270cd080a0183f15b068a",
-    "index_character_count_match": true,
-    "index_metric_count_match": true,
-    "missing_snapshot_source_references": 0,
-    "missing_graph_source_references": 0
+    "real_money_trade": false
   },
   "ledger_metrics": {
-    "source_records": 807,
-    "run_updates": 153,
-    "limitations": 190,
-    "relationship_edges": 157,
-    "competing_hypotheses": 99,
-    "market_observations": 72,
+    "source_records": 821,
+    "run_updates": 154,
+    "limitations": 193,
+    "relationship_edges": 163,
+    "competing_hypotheses": 102,
+    "market_observations": 78,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 1,
-    "index_characters_before_this_update": 772088,
+    "latest_research_addendum_observations": 6,
+    "index_characters_before_this_update": 773194,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 32330,
-    "index_characters": 773194
+    "latest_snapshot_characters": 35686,
+    "index_characters": 783672
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -11688,21 +11826,32 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T07:07:00.000Z",
-    "focus": "Correction: verify latest simulated BTC-USD paper-trader log row from main commit diff while retaining full replay blocker",
+    "recorded_at_utc": "2026-10-29T08:10:30.000Z",
+    "focus": "Cross-provider XRP derivatives/ETF flow data-quality audit and fresh-main safety proposals",
     "source_ids": [
-      "SRC-RUN46-20261029T0707Z-PAPER-LOG-LAST-ROW",
-      "SRC-RUN45-20261029T0705Z-MAIN-HEAD",
-      "SRC-RUN45-20261029T0705Z-MAIN-PAPER-STATE"
+      "SRC-RUN47-20261029T0810Z-XRP-MARKET-TRADRADAR",
+      "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-KODEXIUS",
+      "SRC-RUN47-20261029T0810Z-XRP-DERIVATIVES-LORIS",
+      "SRC-RUN47-20261029T0810Z-XRP-PRICE-BLOCKINSIDER",
+      "SRC-RUN47-20261029T0810Z-XRP-ETF-ALPHA",
+      "SRC-RUN47-20261029T0810Z-XRP-ETF-INSIGHTS",
+      "SRC-RUN47-20261029T0810Z-MAIN-HEAD",
+      "SRC-RUN47-20261029T0810Z-MAIN-XRP-SIGNAL",
+      "SRC-RUN47-20261029T0810Z-MAIN-XRP-SUMMARY",
+      "SRC-RUN47-20261029T0810Z-MAIN-MERGE-QUEUE",
+      "SRC-RUN47-20261029T0810Z-PR1297-CI",
+      "SRC-RUN47-20261029T0810Z-PR1297-GATE",
+      "SRC-RUN47-20261029T0810Z-PR1297-PR",
+      "SRC-RUN47-20261029T0810Z-PR1298-PR"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
-      "blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
-      "commit_sha": "b74baac1e97d83f3e3cb95678c3d195d8dba347d",
-      "new_edges": 1,
-      "new_competing_hypotheses": 0
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0810-market-structure-and-safety-prs.json",
+      "blob_sha": "3d79de6ad08577cb931378ed77d44d2628f32cfb",
+      "commit_sha": "e16f291f9023d16573096a58a695680129e8e922",
+      "new_edges": 6,
+      "new_competing_hypotheses": 3
     },
-    "market_observations": 0,
+    "market_observations": 6,
     "paper_trading_observations": 1,
     "replay_status": "BLOCKED_FULL_HISTORICAL_LOG_UNAVAILABLE",
     "forecast_status": "NOT_ISSUED"
