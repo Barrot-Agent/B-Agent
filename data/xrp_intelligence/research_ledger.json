@@ -11254,9 +11254,9 @@
     }
   },
   "current_research_head_before_ledger_update": "1ed5134d0b3b2ec0590e4596f2fbf0b682afe2f8",
-  "current_research_head_this_run": "PENDING_AFTER_LEDGER_POINTER_UPDATE",
+  "current_research_head_this_run": "d0bfa77b77030e6c2c42bbb4a9313162b8488b2d",
   "current_research_checks": {
-    "status": "YOUTUBE_CANDIDATE_INVENTORY_ADDED; SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING; FORECAST_NOT_ISSUED",
+    "status": "YOUTUBE_CANDIDATE_INVENTORY_ADDED; SNAPSHOT_POINTER_AND_LEDGER_READBACK_PASS; FORECAST_NOT_ISSUED",
     "latest_main_sha": "f319d3d9511c6463bb18c36d9cc2b537888f6b88",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0616-youtube-video-candidate-inventory.json",
     "snapshot_blob_sha": "c2449a71891e0fad1d01aa7050fe091b9c018696",
@@ -11295,15 +11295,15 @@
     "creator_identity_status": "EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
     "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; YOUTUBE_DIRECT_PAGE_THROTTLED",
     "forecast_status": "NOT_ISSUED",
-    "index_pointer_readback_ok": false,
+    "index_pointer_readback_ok": true,
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
     "deployment_executed": false,
     "real_money_trade": false,
     "paper_trading_state_mutated": false,
-    "index_blob_sha_at_readback": "72c906e29a4e7d4550f33d1bb313b0a4f3227095",
-    "index_commit_sha_at_readback": "057f8911d85bfb92c8075228bde170bf8550e1a2",
+    "index_blob_sha_at_readback": "bcd0cb721dea674df831a4c3635025cb1cf30c96",
+    "index_commit_sha_at_readback": "d0bfa77b77030e6c2c42bbb4a9313162b8488b2d",
     "index_character_count_match": true,
     "graph_addendum_commit_sha": "911d339af6d7f0d1954756921a331c4b9a71cfe8",
     "new_graph_edges": 13,
@@ -11359,7 +11359,7 @@
     "index_characters_before_this_update": 752450,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 24593,
-    "index_characters": 756109
+    "index_characters": 756372
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -11382,7 +11382,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:16:00.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING; GRAPH_POINTER_RETAINED_FROM_PRIOR_VERIFIED_ADDENDUM",
+      "status": "SNAPSHOT_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; VIDEO_INVENTORY_PARTIAL; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "c2449a71891e0fad1d01aa7050fe091b9c018696",
       "snapshot_commit_sha": "1ed5134d0b3b2ec0590e4596f2fbf0b682afe2f8",
@@ -11390,7 +11390,7 @@
       "source_reference_count": 46,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "index_pointer_readback_ok": false,
+      "index_pointer_readback_ok": true,
       "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
       "graph_addendum_blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
       "graph_addendum_readback_ok": true,
@@ -11410,7 +11410,11 @@
         "status": "PASS",
         "run_id": 40827879426
       },
-      "research_base_ci": "NOT_TRIGGERED_OR_UNVERIFIED"
+      "research_base_ci": "NOT_TRIGGERED_OR_UNVERIFIED",
+      "index_blob_sha_at_readback": "bcd0cb721dea674df831a4c3635025cb1cf30c96",
+      "index_commit_sha_at_readback": "d0bfa77b77030e6c2c42bbb4a9313162b8488b2d",
+      "index_character_count_match": true,
+      "source_ids_unique": true
     },
     "previous_pointer_snapshot": {
       "record_type": "snapshot_reference",
