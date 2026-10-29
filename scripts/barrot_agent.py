@@ -1014,18 +1014,23 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
     snapshot["head"] = outputs["head"]
     snapshot["recent_history"] = outputs["recent_history"]
 
-    branch_lines = outputs["branch_refs"].splitlines()
+    branch_output = outputs["branch_refs"]
     relevant_markers = (
         "mesh-topology", "structural-core", "mmi", "tool-call-resilience",
         "barrot/task-1167",
     )
-    relevant_branches = [
-        line for line in branch_lines
-        if line.split("|", 1)[0] in {"main", "origin/main"}
-        or any(marker in line.split("|", 1)[0].lower() for marker in relevant_markers)
-    ]
-    snapshot["branch_count"] = len(branch_lines)
-    snapshot["relevant_branch_heads"] = relevant_branches[:80]
+    if branch_output.startswith("UNAVAILABLE"):
+        snapshot["branch_count"] = None
+        snapshot["relevant_branch_heads"] = branch_output
+    else:
+        branch_lines = branch_output.splitlines()
+        relevant_branches = [
+            line for line in branch_lines
+            if line.split("|", 1)[0] in {"main", "origin/main"}
+            or any(marker in line.split("|", 1)[0].lower() for marker in relevant_markers)
+        ]
+        snapshot["branch_count"] = len(branch_lines)
+        snapshot["relevant_branch_heads"] = relevant_branches[:80]
     snapshot["geometry_diffs"] = {
         "checkpoint_vs_main": outputs["geometry_checkpoint_vs_main"],
         "checkpoint_vs_fresh_main": outputs["geometry_checkpoint_vs_fresh_main"],
