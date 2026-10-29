@@ -39,6 +39,7 @@ from barrot_agent.orchestration.bundle_lifecycle import BundleLifecycleStore
 from barrot_agent.research import (
     ScientificDiscoveryController,
     is_scientific_discovery_task,
+    should_route_scientific_discovery,
     select_scientific_problem_adapter,
 )
 
@@ -872,7 +873,7 @@ def main() -> None:
     configure_git()
     checkout_branch(BRANCH)
 
-    if TASK_MODE == "scientific_discovery" and is_scientific_discovery_task(TITLE, TASK):
+    if should_route_scientific_discovery(TASK_MODE, TITLE, TASK):
         cycle = ScientificDiscoveryController(workspace=ROOT).run(select_scientific_problem_adapter(TITLE, TASK))
         rendered = json.dumps(cycle.to_dict(), indent=2)
         print(rendered)
