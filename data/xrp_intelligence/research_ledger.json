@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T01:36:13.015Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013613-MERGE-QUEUE-SPONSORSHIP-CORRECTION",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json",
-    "snapshot_blob_sha": "fcad7aa594e491779d4f35c63da046acf73071f1",
-    "snapshot_commit_sha": "6faf9dee912209fd6fcf0fe8fe32b2a07c6d006a"
+    "captured_at_utc": "2026-10-29T01:37:41.136Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013741-PAPER-REPLAY-CORRECTION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json",
+    "snapshot_blob_sha": "cc8fc88ae8f45b560ed8b1f0078b378cdd5159e9",
+    "snapshot_commit_sha": "f828860d2949eb27a5b3590eee474a69262d7025"
   },
   "sources": [
     {
@@ -5231,6 +5231,62 @@
       "title": "Append-only graph: XRPL sponsorship, RLUSD and Coinbase",
       "accessed_at_utc": "2026-10-29T01:36:13.015Z",
       "note": "Graph blob SHA 32a1c1f1fe45b5b739ec7ee4e1154e04a6a518e7; 6 edges and 4 competing hypotheses."
+    },
+    {
+      "id": "SRC-RUN23-20261029T013741-MAIN-HEAD",
+      "evidence_class": "GITHUB_API_PRIMARY_RECORD",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/079aa167b3bfbf479500f5878434368d4033add0",
+      "title": "Current B-Agent main head",
+      "accessed_at_utc": "2026-10-29T01:37:41.136Z",
+      "note": "Current main head 079aa167b3bfbf479500f5878434368d4033add0; scheduled paper-trader appended one hold record at 2026-10-29T01:33:49.407180Z. This run did not modify main."
+    },
+    {
+      "id": "SRC-RUN23-20261029T013741-PAPER-LOG-BLOB",
+      "evidence_class": "GITHUB_BLOB_PRIMARY_RECORD",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/079aa167b3bfbf479500f5878434368d4033add0/web/paper_trading_log.jsonl",
+      "title": "Current paper-trading log blob",
+      "accessed_at_utc": "2026-10-29T01:37:41.136Z",
+      "note": "Exact blob 730edbc6f431a253824555b70cf7880358057063; 2358 JSONL records replayed; all checks passed."
+    },
+    {
+      "id": "SRC-RUN23-20261029T013741-PAPER-STATE",
+      "evidence_class": "GITHUB_BLOB_PRIMARY_RECORD",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/079aa167b3bfbf479500f5878434368d4033add0/web/paper_trading_state.json",
+      "title": "Persisted paper-trading state",
+      "accessed_at_utc": "2026-10-29T01:37:41.136Z",
+      "note": "Blob a20230ac411d1883ced4f92fce10a7ced2172479; cash 8011.936613782476, position 0.024901276579239066 BTC, avg entry 80436.84, trade_count 125, position_product null; matched full replay exactly."
+    },
+    {
+      "id": "SRC-RUN23-20261029T013741-REPLAY-IMPLEMENTATION",
+      "evidence_class": "GITHUB_SOURCE_CODE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/079aa167b3bfbf479500f5878434368d4033add0/scripts/coinbase_paper_trader.py",
+      "title": "Paper-trader state-transition implementation",
+      "accessed_at_utc": "2026-10-29T01:37:41.136Z",
+      "note": "Blob b38ab435f575b6037f05fa8e9ea00fd487d2d9eb; replay used the current execute_paper_trade implementation and portfolio-value formula."
+    },
+    {
+      "id": "SRC-RUN23-20261029T013741-REPLAY-REPORT",
+      "evidence_class": "INTERNAL_VALIDATION_REPORT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/validation_runs/20261029T013741-paper-trading-replay.json",
+      "title": "Full 2,358-row paper-trading replay report",
+      "accessed_at_utc": "2026-10-29T01:37:41.136Z",
+      "note": "Validation report blob 77327e915db3246530f3c567fcb2093d1bb27263; 2,358 rows, zero malformed/order/product/result/portfolio mismatches, exact persisted-state match."
+    },
+    {
+      "id": "SRC-RUN23-20261029T013741-PR1281-CHECKS",
+      "evidence_class": "GITHUB_CHECK_RUNS",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1281",
+      "title": "PR #1281 merge-queue safety checks",
+      "accessed_at_utc": "2026-10-29T01:37:41.136Z",
+      "note": "Exact-head CI passed 169 tests plus four subtests in 6.34 seconds; fail-closed gate passed; PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-RUN23-20261029T013741-PRIOR-SNAPSHOT-CORRECTION",
+      "evidence_class": "INTERNAL_SNAPSHOT_CORRECTION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json",
+      "title": "Prior snapshot superseded for stale main-head field",
+      "accessed_at_utc": "2026-10-29T01:37:41.136Z",
+      "note": "Snapshot 20261029T013613 recorded main SHA 1feefe76 even though main had advanced to 079aa167 by its capture; preserved unmodified and superseded by this correction."
     }
   ],
   "limitations": [
@@ -5366,7 +5422,10 @@
     "2026-10-29T01:36:13.015Z: Coinbase Q2 metrics are historical; Q3 results are scheduled for 2026-10-29 after market close and were unavailable at capture.",
     "2026-10-29T01:36:13.015Z: No synchronized XRP spot, derivatives, ETF, stablecoin-flow or post-FOMC observations were admitted; feature admission remains blocked on timestamp and coverage reconciliation.",
     "2026-10-29T01:36:13.015Z: Approval workflow runs 40800667128 and 40800762072 were push-event failures with zero jobs despite the current workflow content declaring workflow_dispatch only; event-time cause remains unknown.",
-    "2026-10-29T01:36:13.015Z: A first snapshot draft with a mismatched character metric was preserved unmodified and left unindexed; the corrected successor is the indexed snapshot."
+    "2026-10-29T01:36:13.015Z: A first snapshot draft with a mismatched character metric was preserved unmodified and left unindexed; the corrected successor is the indexed snapshot.",
+    "2026-10-29T01:37:41.136Z: Current main head 079aa167b3bfbf479500f5878434368d4033add0 contains a single scheduled paper-trader append after the prior main 1feefe76c9bf34a73335e03b58b7ee77682b384d; full 2,358-row replay matches persisted state.",
+    "2026-10-29T01:37:41.136Z: Snapshot data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json had a stale main SHA field; it is preserved and superseded by data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json.",
+    "2026-10-29T01:37:41.136Z: PR #1281 exact-head checks passed, but its base is now one commit behind main; the only observed main change is the paper-trading log append and no overlapping paths were found."
   ],
   "run_updates": [
     {
@@ -8918,6 +8977,32 @@
       "new_relationship_edges": 6,
       "new_competing_hypotheses": 4,
       "new_synchronized_xrp_market_observations_admitted": 0
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:37:41.136Z",
+      "update_type": "CURRENT_MAIN_AND_PAPER_LOG_REPLAY_CORRECTION",
+      "source_ids": [
+        "SRC-RUN23-20261029T013741-MAIN-HEAD",
+        "SRC-RUN23-20261029T013741-PAPER-LOG-BLOB",
+        "SRC-RUN23-20261029T013741-PAPER-STATE",
+        "SRC-RUN23-20261029T013741-REPLAY-IMPLEMENTATION",
+        "SRC-RUN23-20261029T013741-REPLAY-REPORT",
+        "SRC-RUN23-20261029T013741-PR1281-CHECKS",
+        "SRC-RUN23-20261029T013741-PRIOR-SNAPSHOT-CORRECTION"
+      ],
+      "index_head_verified": "NOT_VERIFIED_AFTER_THIS_UPDATE",
+      "gate_run_id": null,
+      "gate_status": "PENDING_OR_UNVERIFIED",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "successor_index_gate": "PENDING_OR_UNVERIFIED",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json",
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "deployment_manually_executed": false,
+      "paper_trading_replay": "PASS_READ_ONLY_2358_ROWS",
+      "pr1281_ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
+      "pr1281_gate": "PASS"
     }
   ],
   "mission_priority": {
@@ -9145,33 +9230,39 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "a2b2b98d4854393fc08c14243462e188b521bc6b",
-  "current_research_head_this_run": "6faf9dee912209fd6fcf0fe8fe32b2a07c6d006a",
+  "current_research_head_before_ledger_update": "6faf9dee912209fd6fcf0fe8fe32b2a07c6d006a",
+  "current_research_head_this_run": "f828860d2949eb27a5b3590eee474a69262d7025",
   "current_research_checks": {
-    "status": "CORRECTED_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PR1281_CI_GATE_PASS; MAIN_UNCHANGED_BY_THIS_RUN; LATEST_INDEX_CI_GATE_PENDING",
+    "status": "PAPER_REPLAY_PASS_2358; CORRECTED_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PR1281_CI_GATE_PASS; MAIN_UNCHANGED_BY_THIS_RUN; LATEST_INDEX_CI_GATE_PENDING",
     "latest_main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json",
-    "snapshot_blob_sha": "fcad7aa594e491779d4f35c63da046acf73071f1",
-    "snapshot_commit_sha": "6faf9dee912209fd6fcf0fe8fe32b2a07c6d006a",
-    "source_reference_count": 17,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json",
+    "snapshot_blob_sha": "cc8fc88ae8f45b560ed8b1f0078b378cdd5159e9",
+    "snapshot_commit_sha": "f828860d2949eb27a5b3590eee474a69262d7025",
+    "source_reference_count": 7,
     "missing_source_references": 0,
-    "snapshot_characters": 36032,
+    "snapshot_characters": 36672,
     "snapshot_character_metric_matches": true,
+    "paper_log_blob_sha": "730edbc6f431a253824555b70cf7880358057063",
+    "paper_log_records": 2358,
+    "paper_log_replay": "PASS_READ_ONLY_2358_ROWS",
+    "paper_state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
     "pr1281_ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
     "pr1281_gate": "PASS",
     "pr1281_head_sha": "1d3926a712016b937fe102d70f26630f615acd49",
+    "pr1281_base_sha": "1feefe76c9bf34a73335e03b58b7ee77682b384d",
+    "pr1281_base_lag_commits": 1,
+    "pr1281_overlapping_paths": [],
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "latest_index_ci": "PENDING_OR_UNVERIFIED",
     "latest_index_gate": "PENDING_OR_UNVERIFIED",
-    "merge_queue": "MUTATION_CAPABLE_ON_MAIN; PR1281_DRAFT_UNMERGED",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "forecast_status": "NOT_ISSUED"
   },
   "ledger_metrics": {
-    "source_records": 645,
-    "run_updates": 125,
-    "limitations": 133,
+    "source_records": 652,
+    "run_updates": 126,
+    "limitations": 136,
     "relationship_edges": 110,
     "competing_hypotheses": 74,
     "market_observations": 63,
@@ -9180,10 +9271,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 585699,
+    "index_characters_before_this_update": 597116,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 36032,
-    "index_characters": 597116
+    "latest_snapshot_characters": 36672,
+    "index_characters": 603249
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -9209,16 +9300,18 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:36:13.015Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:37:41.136Z",
     "post_snapshot_verification": {
-      "status": "CORRECTED_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; PR1281_CI_GATE_PASS; LATEST_INDEX_CI_GATE_PENDING",
+      "status": "CORRECTED_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS_PENDING_INDEX_READBACK; FULL_PAPER_REPLAY_PASS_2358; PR1281_CI_GATE_PASS; LATEST_INDEX_CI_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "fcad7aa594e491779d4f35c63da046acf73071f1",
-      "snapshot_commit_sha": "6faf9dee912209fd6fcf0fe8fe32b2a07c6d006a",
-      "snapshot_characters": 36032,
-      "source_reference_count": 17,
+      "snapshot_blob_sha": "cc8fc88ae8f45b560ed8b1f0078b378cdd5159e9",
+      "snapshot_commit_sha": "f828860d2949eb27a5b3590eee474a69262d7025",
+      "snapshot_characters": 36672,
+      "source_reference_count": 7,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
+      "paper_log_records": 2358,
+      "paper_replay": "PASS_READ_ONLY_2358_ROWS",
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
@@ -9234,11 +9327,11 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T01:24:49.096Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T012449Z-SAFETY-PR-VERIFIED",
-      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json",
-      "snapshot_blob_sha": "5cbd4352bba95fe18c088ee0337f347247cbd940",
-      "snapshot_commit_sha": "a2b2b98d4854393fc08c14243462e188b521bc6b"
+      "captured_at_utc": "2026-10-29T01:36:13.015Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013613-MERGE-QUEUE-SPONSORSHIP-CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json",
+      "snapshot_blob_sha": "fcad7aa594e491779d4f35c63da046acf73071f1",
+      "snapshot_commit_sha": "6faf9dee912209fd6fcf0fe8fe32b2a07c6d006a"
     }
   },
   "index_format_version": "2.0",
@@ -9287,70 +9380,44 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T01:36:13.015Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T01:24:49.096Z",
+    "recorded_at_utc": "2026-10-29T01:37:41.136Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T01:36:13.015Z",
     "source_ids": [
-      "SRC-RUN22-20261029T013450-MAIN-HEAD",
-      "SRC-RUN22-20261029T013450-MERGE-QUEUE-WORKFLOW",
-      "SRC-RUN22-20261029T013450-PR1273-MERGED-STATE",
-      "SRC-RUN22-20261029T013450-PR1279-MERGED-STATE",
-      "SRC-RUN22-20261029T013450-PR1281-CI-GATE",
-      "SRC-RUN22-20261029T013450-RULESET-AUDIT",
-      "SRC-RUN22-20261029T013450-CIRCLE-USDC",
-      "SRC-RUN22-20261029T013450-COINBASE-Q2",
-      "SRC-RUN22-20261029T013450-COINBASE-Q3-SCHEDULE",
-      "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH",
-      "SRC-RUN22-20261029T013450-XRPL-SPONSOR-ADVISORY",
-      "SRC-RUN22-20261029T013450-XRPL-RESERVES",
-      "SRC-RUN22-20261029T013450-XRPL-SPONSOR-DOCS",
-      "SRC-RUN22-20261029T013450-SPONSORED-ACCOUNT-CREATE-PR",
-      "SRC-RUN22-20261029T013450-XLS-68-1-PR",
-      "SRC-RUN22-20261029T013450-COINDESK-SPONSORSHIP-VOTES",
-      "SRC-RUN22-20261029T013450-RELATIONSHIP-GRAPH-ADDENDUM"
+      "SRC-RUN23-20261029T013741-MAIN-HEAD",
+      "SRC-RUN23-20261029T013741-PAPER-LOG-BLOB",
+      "SRC-RUN23-20261029T013741-PAPER-STATE",
+      "SRC-RUN23-20261029T013741-REPLAY-IMPLEMENTATION",
+      "SRC-RUN23-20261029T013741-REPLAY-REPORT",
+      "SRC-RUN23-20261029T013741-PR1281-CHECKS",
+      "SRC-RUN23-20261029T013741-PRIOR-SNAPSHOT-CORRECTION"
     ],
     "main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
+    "paper_trading_replay": {
+      "status": "PASS_READ_ONLY_2358_ROWS",
+      "log_blob_sha": "730edbc6f431a253824555b70cf7880358057063",
+      "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+      "report_path": "data/xrp_intelligence/validation_runs/20261029T013741-paper-trading-replay.json",
+      "report_blob_sha": "77327e915db3246530f3c567fcb2093d1bb27263",
+      "malformed": 0,
+      "chronology_errors": 0,
+      "product_mismatches": 0,
+      "portfolio_mismatches": 0,
+      "result_mismatches": 0
+    },
     "pr1281": {
       "head_sha": "1d3926a712016b937fe102d70f26630f615acd49",
+      "base_sha": "1feefe76c9bf34a73335e03b58b7ee77682b384d",
       "ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
       "gate": "PASS",
-      "state": "DRAFT_UNMERGED"
+      "state": "DRAFT_UNMERGED",
+      "base_lag_commits": 1,
+      "overlap": []
     },
-    "pr1273": {
-      "merged": true,
-      "merged_at": "2026-10-29T01:07:06Z",
-      "authorization_provenance": "NOT_ESTABLISHED"
-    },
-    "pr1279": {
-      "merged": true,
-      "merged_at": "2026-10-29T01:25:58Z",
-      "authorization_provenance": "NOT_ESTABLISHED"
-    },
-    "merge_queue_risk": "Current main workflow can merge open PRs when manually dispatched with mode=all; causal relation to observed merges is unproven.",
-    "circle_usdc": {
-      "as_of_date": "2026-10-26",
-      "circulation_usd_billions": 71,
-      "reserves_usd_billions": 71.2,
-      "native_chains": 38,
-      "includes_xrpl": true
-    },
-    "coinbase_q2": {
-      "market_share_percent": 10.3,
-      "coinbase_usdc_balances_usd_billions": 20,
-      "usdc_circulation_share": "over 30%",
-      "usdc_economics_share": "approximately 50%"
-    },
-    "coinbase_q3": "Scheduled 2026-10-29 after market close; unavailable at capture.",
-    "xrpl_sponsorship": {
-      "mainnet_active": false,
-      "pr8606": "OPEN_UNMERGED",
-      "xls681": "OPEN_UNMERGED_DRAFT",
-      "market_effect": "NOT_ESTABLISHED"
-    },
-    "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T013450-sponsored-account-create.json",
-      "blob_sha": "32a1c1f1fe45b5b739ec7ee4e1154e04a6a518e7",
-      "edges": 6,
-      "hypotheses": 4
+    "prior_snapshot_correction": {
+      "path": "data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json",
+      "recorded_main_sha": "1feefe76c9bf34a73335e03b58b7ee77682b384d",
+      "actual_main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
+      "corrected_snapshot": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json"
     },
     "forecast_status": "NOT_ISSUED"
   },
@@ -9624,6 +9691,24 @@
       "graph_edges": 6,
       "graph_hypotheses": 4,
       "pr1281_ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
+      "pr1281_gate": "PASS",
+      "latest_index_ci": "PENDING_OR_UNVERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:37:41.136Z",
+      "verification_type": "MAIN_HEAD_AND_PAPER_REPLAY_CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json",
+      "snapshot_blob_sha": "cc8fc88ae8f45b560ed8b1f0078b378cdd5159e9",
+      "snapshot_commit_sha": "f828860d2949eb27a5b3590eee474a69262d7025",
+      "snapshot_characters": 36672,
+      "source_reference_count": 7,
+      "missing_source_references": 0,
+      "snapshot_character_metric_matches": true,
+      "paper_log_blob_sha": "730edbc6f431a253824555b70cf7880358057063",
+      "paper_log_records": 2358,
+      "paper_replay": "PASS_READ_ONLY_2358_ROWS",
+      "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+      "pr1281_ci": "PASS",
       "pr1281_gate": "PASS",
       "latest_index_ci": "PENDING_OR_UNVERIFIED"
     }
