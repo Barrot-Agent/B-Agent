@@ -425,12 +425,18 @@ Previous response / diagnostic context (replace it; do not copy malformed syntax
         """
         normalized = dict(revised)
         repaired: list[str] = []
+        original_revision = original.get("revision", 1)
+        if not isinstance(original_revision, int) or isinstance(original_revision, bool):
+            raise BundleEngineeringError("Cannot revise a bundle with an invalid original revision.")
+        original_constraints = original.get("constraints", [])
+        if not isinstance(original_constraints, list):
+            raise BundleEngineeringError("Cannot revise a bundle with invalid original constraints.")
         invariant_values = {
             "schema_version": original.get("schema_version", "1.0"),
             "bundle_id": original.get("bundle_id"),
             "objective": original.get("objective"),
-            "constraints": list(original.get("constraints", [])),
-            "revision": original.get("revision", 1) + 1,
+            "constraints": list(original_constraints),
+            "revision": original_revision + 1,
             "parent_fingerprint": bundle_fingerprint(original),
         }
         for key, expected in invariant_values.items():
