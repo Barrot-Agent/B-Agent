@@ -51,6 +51,7 @@ jobs:
             tests/test_repository_repair.py \
             tests/test_v3_scripts.py \
             tests/test_external_deploys_require_confirmation.py \
+            tests/test_merge_queue_safety.py \
             tests/test_deploy_databricks.py \
             tests/test_defensive_runtime.py \
             tests/test_scientific_discovery.py \
