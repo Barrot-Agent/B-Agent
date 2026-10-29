@@ -450,7 +450,7 @@ class ScriptBrain:
                             "query": {"type": "string", "minLength": 1},
                             "path": {"type": "string"},
                             "recursive": {"type": "boolean"},
-                            "max_results": {"type": "integer", "minimum": 1, "maximum": MAX_SEARCH_RESULTS},
+                            "max_results": {"type": "integer", "minimum": 1, "maximum": max(20, MAX_SEARCH_RESULTS)},
                         },
                         "required": ["query"],
                     },
