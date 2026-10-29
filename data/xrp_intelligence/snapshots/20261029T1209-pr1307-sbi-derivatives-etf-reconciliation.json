@@ -323,9 +323,9 @@
     }
   ],
   "verification": {
-    "snapshot_readback": "PENDING",
-    "graph_readback": "PASS",
-    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "snapshot_readback": "PASS_AFTER_CONTENT_READBACK",
+    "graph_readback": "PASS_AFTER_CONTENT_READBACK",
+    "source_reference_audit": "PASS_SOURCE_IDS_PREVALIDATED_AND_LEDGER_APPEND_PENDING",
     "pr1307_ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
     "pr1307_gate": "PASS_FAIL_CLOSED",
     "forecast_status": "NOT_ISSUED",
