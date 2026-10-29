@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T01:41:51.133Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T014151-SBI-SBIC-ENTITY-RESOLUTION",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014151-sbi-sbic-entity-resolution.json",
-    "snapshot_blob_sha": "4f8ab4889759c6da7b2a347c17361f070a99ba77",
-    "snapshot_commit_sha": "04af1a7b89176f314e3fdb19fa375453a876a619"
+    "captured_at_utc": "2026-10-29T01:42:53.011Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T014253-APPROVAL-WORKFLOW-ANOMALY",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014253-approval-workflow-anomaly.json",
+    "snapshot_blob_sha": "fc505fbd418c2cf515150f0dac60e509f685706f",
+    "snapshot_commit_sha": "7e954592d11f870e3e8d105849d1f8a9605cb027"
   },
   "sources": [
     {
@@ -5447,6 +5447,54 @@
       "title": "Append-only relationship graph: SBI, SBIC, Ripple, Circle and XRP",
       "accessed_at_utc": "2026-10-29T01:41:51.133Z",
       "note": "Graph blob SHA 50ed6d7ecd7fb6749c974e6dc7e54288627c53f8; 12 edges and 3 hypotheses."
+    },
+    {
+      "id": "SRC-RUN26-20261029T014253-MAIN-APPROVAL-WORKFLOW",
+      "evidence_class": "GITHUB_WORKFLOW_SOURCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Main approval workflow definition",
+      "accessed_at_utc": "2026-10-29T01:42:53.011Z",
+      "note": "Blob SHA bc78b4c4ac9824ffbde99eee64621885e6a52076; trigger is workflow_dispatch only; approve job is defined; no push trigger or job-level if condition was found."
+    },
+    {
+      "id": "SRC-RUN26-20261029T014253-BRANCH-APPROVAL-WORKFLOW",
+      "evidence_class": "GITHUB_WORKFLOW_SOURCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/33a7d2828191eb609e9bc886c0a71164546235ba/.github/workflows/barrot-approve-pr.yml",
+      "title": "Approval workflow at exact research-branch event commit",
+      "accessed_at_utc": "2026-10-29T01:42:53.011Z",
+      "note": "Blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4; exact event commit also declares workflow_dispatch only and includes approve job; no push trigger or job-level if condition found. Blob differs from main, but trigger lines match."
+    },
+    {
+      "id": "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801984038",
+      "evidence_class": "GITHUB_ACTIONS_RUN_METADATA",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40801984038",
+      "title": "Push-event approval workflow run with zero jobs",
+      "accessed_at_utc": "2026-10-29T01:42:53.011Z",
+      "note": "Run event=push, conclusion=failure, head 33a7d282, branch research/xrp-ledger-index-pointer-migration-20261028T1959Z; jobs endpoint returns zero jobs."
+    },
+    {
+      "id": "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801977851",
+      "evidence_class": "GITHUB_ACTIONS_RUN_METADATA",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40801977851",
+      "title": "Push-event approval workflow run with zero jobs",
+      "accessed_at_utc": "2026-10-29T01:42:53.011Z",
+      "note": "Run event=push, conclusion=failure, head 04af1a7b; jobs endpoint returns zero jobs."
+    },
+    {
+      "id": "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801973217",
+      "evidence_class": "GITHUB_ACTIONS_RUN_METADATA",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40801973217",
+      "title": "Push-event approval workflow run with zero jobs",
+      "accessed_at_utc": "2026-10-29T01:42:53.011Z",
+      "note": "Run event=push, conclusion=failure, head d962aa14; jobs endpoint returns zero jobs."
+    },
+    {
+      "id": "SRC-RUN26-20261029T014253-INDEX-GATE-40801991494",
+      "evidence_class": "GITHUB_GATE_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40801991494",
+      "title": "Fail-closed gate for prior index head 33a7d282",
+      "accessed_at_utc": "2026-10-29T01:42:53.011Z",
+      "note": "Gate status at capture: completed/success; head 33a7d282. This does not run the full core CI suite for the research-base PR."
     }
   ],
   "limitations": [
@@ -5592,7 +5640,9 @@
     "2026-10-29T01:41:51.133Z: SBI/SBIC entity graph updated. SBIC East/Central/West are regional SME investment companies; SBICAH GK is a separate SBI Holdings acquisition vehicle; do not transfer SBI Group's XRP relationships to SBIC entities.",
     "2026-10-29T01:41:51.133Z: SBI's reported Ripple stake and Circle investment are corporate equity exposure, not direct XRP balances or proof of market flows.",
     "2026-10-29T01:41:51.133Z: Bitbank acquisition and Q3 ranking are verified at group/exchange level; XRP-specific depth, inventory and post-acquisition flow effects remain unknown.",
-    "2026-10-29T01:41:51.133Z: SBI Remit ODL is publicly described as live, but current XRP transaction counts and volumes are not disclosed in reviewed sources."
+    "2026-10-29T01:41:51.133Z: SBI Remit ODL is publicly described as live, but current XRP transaction counts and volumes are not disclosed in reviewed sources.",
+    "2026-10-29T01:42:53.011Z: Exact event-commit and main workflow definitions both show workflow_dispatch-only triggers and an approve job, yet recent push-event runs have zero jobs. Event payload/service-side diagnostic access is the remaining blocker.",
+    "2026-10-29T01:42:53.011Z: Gate run 40801991494 applies to prior index head 33a7d282; current successor index requires its own gate result, and full core CI is not triggered for the research-base PR."
   ],
   "run_updates": [
     {
@@ -9227,6 +9277,26 @@
       "merge_performed": false,
       "new_relationship_edges": 12,
       "new_competing_hypotheses": 3
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:42:53.011Z",
+      "update_type": "APPROVAL_WORKFLOW_ZERO_JOB_ROOT_CAUSE_AUDIT",
+      "source_ids": [
+        "SRC-RUN26-20261029T014253-MAIN-APPROVAL-WORKFLOW",
+        "SRC-RUN26-20261029T014253-BRANCH-APPROVAL-WORKFLOW",
+        "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801984038",
+        "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801977851",
+        "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801973217",
+        "SRC-RUN26-20261029T014253-INDEX-GATE-40801991494"
+      ],
+      "index_head_verified": "NOT_VERIFIED_AFTER_THIS_UPDATE",
+      "gate_status": "PENDING_OR_UNVERIFIED",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T014253-approval-workflow-anomaly.json",
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "workflow_root_cause": "UNRESOLVED"
     }
   ],
   "mission_priority": {
@@ -9454,30 +9524,30 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5",
-  "current_research_head_this_run": "04af1a7b89176f314e3fdb19fa375453a876a619",
+  "current_research_head_before_ledger_update": "04af1a7b89176f314e3fdb19fa375453a876a619",
+  "current_research_head_this_run": "7e954592d11f870e3e8d105849d1f8a9605cb027",
   "current_research_checks": {
-    "status": "SBI_SBIC_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PR1281_CI_GATE_PASS; CURRENT_INDEX_GATE_PENDING",
+    "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
     "latest_main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014151-sbi-sbic-entity-resolution.json",
-    "snapshot_blob_sha": "4f8ab4889759c6da7b2a347c17361f070a99ba77",
-    "snapshot_commit_sha": "04af1a7b89176f314e3fdb19fa375453a876a619",
-    "source_reference_count": 15,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014253-approval-workflow-anomaly.json",
+    "snapshot_blob_sha": "fc505fbd418c2cf515150f0dac60e509f685706f",
+    "snapshot_commit_sha": "7e954592d11f870e3e8d105849d1f8a9605cb027",
+    "source_reference_count": 6,
     "missing_source_references": 0,
-    "snapshot_characters": 48195,
+    "snapshot_characters": 49736,
     "snapshot_character_metric_matches": true,
-    "pr1281_ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
-    "pr1281_gate": "PASS",
-    "current_index_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "previous_index_gate_run": 40801991494,
+    "previous_index_gate_status": "success",
+    "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "current_index_gate": "PENDING_OR_UNVERIFIED",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "forecast_status": "NOT_ISSUED"
   },
   "ledger_metrics": {
-    "source_records": 672,
-    "run_updates": 128,
-    "limitations": 143,
+    "source_records": 678,
+    "run_updates": 129,
+    "limitations": 145,
     "relationship_edges": 128,
     "competing_hypotheses": 78,
     "market_observations": 68,
@@ -9486,10 +9556,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 610190,
+    "index_characters_before_this_update": 620619,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 48195,
-    "index_characters": 620619
+    "latest_snapshot_characters": 49736,
+    "index_characters": 623766
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -9515,14 +9585,14 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:41:51.133Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:42:53.011Z",
     "post_snapshot_verification": {
-      "status": "SBI_SBIC_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; CURRENT_INDEX_GATE_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; CURRENT_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "4f8ab4889759c6da7b2a347c17361f070a99ba77",
-      "snapshot_commit_sha": "04af1a7b89176f314e3fdb19fa375453a876a619",
-      "snapshot_characters": 48195,
-      "source_reference_count": 15,
+      "snapshot_blob_sha": "fc505fbd418c2cf515150f0dac60e509f685706f",
+      "snapshot_commit_sha": "7e954592d11f870e3e8d105849d1f8a9605cb027",
+      "snapshot_characters": 49736,
+      "source_reference_count": 6,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
       "ci": {
@@ -9540,11 +9610,11 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T01:39:10.816Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013910-STABLECOIN-VINTAGE-UPDATE",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013910-stablecoin-vintage-update.json",
-      "snapshot_blob_sha": "bf737bae86535fdf7c4e1d912b6057699f214711",
-      "snapshot_commit_sha": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5"
+      "captured_at_utc": "2026-10-29T01:41:51.133Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T014151-SBI-SBIC-ENTITY-RESOLUTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014151-sbi-sbic-entity-resolution.json",
+      "snapshot_blob_sha": "4f8ab4889759c6da7b2a347c17361f070a99ba77",
+      "snapshot_commit_sha": "04af1a7b89176f314e3fdb19fa375453a876a619"
     }
   },
   "index_format_version": "2.0",
@@ -9593,88 +9663,55 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T01:41:51.133Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T01:39:10.816Z",
+    "recorded_at_utc": "2026-10-29T01:42:53.011Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T01:41:51.133Z",
     "source_ids": [
-      "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
-      "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
-      "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
-      "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
-      "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
-      "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
-      "SRC-RUN25-20261029T014151-SBI-EVERNORTH",
-      "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
-      "SRC-RUN25-20261029T014151-SBIC-WEST",
-      "SRC-RUN25-20261029T014151-SBI-SBIC-RELATIONSHIP-GRAPH",
-      "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
-      "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z",
-      "SRC-SBI-RLUSD-JAPAN-2026",
-      "SRC-SBI-USDC-RETAIL-2025-03-25",
-      "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28"
+      "SRC-RUN26-20261029T014253-MAIN-APPROVAL-WORKFLOW",
+      "SRC-RUN26-20261029T014253-BRANCH-APPROVAL-WORKFLOW",
+      "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801984038",
+      "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801977851",
+      "SRC-RUN26-20261029T014253-ZERO-JOB-RUN-40801973217",
+      "SRC-RUN26-20261029T014253-INDEX-GATE-40801991494"
     ],
     "main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
-    "sbi_entity_resolution": {
-      "status": "PARTIAL_RESOLUTION_WITH_ENTITY_SEPARATION",
-      "sbic_east_japan": {
-        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
-        "official_brand": "SBIC East Japan",
-        "source_ids": [
-          "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
-          "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z"
-        ],
-        "chatgpt_mention": "Completed June 12, 2025 training curriculum included ChatGPT use; no partnership or live integration is established.",
-        "xrp_relationship": "NO_DIRECT_RELATIONSHIP_ESTABLISHED_IN_REVIEWED_PUBLIC_EVIDENCE"
-      },
-      "sbic_central_japan": {
-        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
-        "source_ids": [
-          "SRC-RUN25-20261029T014151-SBIC-CENTRAL"
-        ],
-        "relationship": "Sister regional company to SBIC East Japan; separate legal entity."
-      },
-      "sbic_west_japan": {
-        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
-        "source_ids": [
-          "SRC-RUN25-20261029T014151-SBIC-WEST"
-        ],
-        "relationship": "Sister regional company to SBIC East Japan; separate legal entity."
-      },
-      "sbicah_gk": {
-        "source_id": "SRC-RUN25-20261029T014151-SBI-BITBANK-SBICAH",
-        "role": "SBI Holdings wholly owned acquisition vehicle used in Bitbank transaction",
-        "full_name_expansion": "NOT_VERIFIED_FROM_OFFICIAL_NOTICE",
-        "not_same_as": "SBIC East Japan"
-      },
-      "sbi_group": {
-        "source_ids": [
-          "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
-          "SRC-RUN25-20261029T014151-SBI-CIRCLE-JV",
-          "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
-          "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
-          "SRC-SBI-USDC-RETAIL-2025-03-25",
-          "SRC-SBI-RLUSD-JAPAN-2026",
-          "SRC-RUN25-20261029T014151-SBI-BITBANK-COMPLETE",
-          "SRC-RUN25-20261029T014151-BITBANK-KAIKO-RANK",
-          "SRC-RUN25-20261029T014151-SBI-EVERNORTH"
-        ],
-        "confirmed_relationships": [
-          "Approx 9% Ripple equity stake as reported in Feb 2025 investor presentation",
-          "$50M Circle equity purchase at IPO and Circle JV to promote USDC in Japan as disclosed Aug 2025",
-          "SBI Ripple Asia JV: SBI 60%, Ripple 40% as of Mar 31 2026",
-          "SBI Remit ODL using XRP from Japan to Philippines since 2021; current volume unknown",
-          "SBI VC Trade launched USDC retail trading in Japan Mar 26 2025",
-          "SBI VC Trade began RLUSD handling Jun 24 2026",
-          "Bitbank became wholly owned subsidiary Oct 1 2026",
-          "SBI announced investment in Evernorth XRP treasury PIPE in Oct 2025"
-        ],
-        "important_boundary": "SBI Group relationships do not prove SBIC East/Central/West own XRP or have a direct XRP commercial relationship; equity stake in Ripple is not an XRP token balance."
-      }
+    "workflow_anomaly_audit": {
+      "main_workflow_blob_sha": "bc78b4c4ac9824ffbde99eee64621885e6a52076",
+      "exact_event_commit": "33a7d2828191eb609e9bc886c0a71164546235ba",
+      "event_commit_workflow_blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+      "main_trigger": "workflow_dispatch only",
+      "event_commit_trigger": "workflow_dispatch only",
+      "approve_job_present_in_both": true,
+      "job_level_if_conditions_found": false,
+      "recent_zero_job_push_runs": [
+        {
+          "run_id": 40801984038,
+          "head_sha": "33a7d2828191eb609e9bc886c0a71164546235ba",
+          "created_at": "2026-10-29T01:42:01Z",
+          "jobs": 0,
+          "conclusion": "failure"
+        },
+        {
+          "run_id": 40801977851,
+          "head_sha": "04af1a7b89176f314e3fdb19fa375453a876a619",
+          "created_at": "2026-10-29T01:41:58Z",
+          "jobs": 0,
+          "conclusion": "failure"
+        },
+        {
+          "run_id": 40801973217,
+          "head_sha": "d962aa14ceadaff7fe429d3e2255382dbce02589",
+          "created_at": "2026-10-29T01:41:55Z",
+          "jobs": 0,
+          "conclusion": "failure"
+        }
+      ],
+      "root_cause": "UNRESOLVED",
+      "finding": "Observed push-event runs with zero jobs remain inconsistent with both inspected workflow definitions, which declare workflow_dispatch only and define an approve job. Exact event payload or GitHub Actions service-side trigger diagnostics are unavailable through the current connector."
     },
-    "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T014151-sbi-sbic-ripple-circle.json",
-      "blob_sha": "50ed6d7ecd7fb6749c974e6dc7e54288627c53f8",
-      "edges": 12,
-      "hypotheses": 3
+    "pr1281": {
+      "state": "DRAFT_UNMERGED",
+      "ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
+      "gate": "PASS"
     },
     "forecast_status": "NOT_ISSUED"
   },
@@ -9998,6 +10035,25 @@
       "graph_edges": 12,
       "graph_hypotheses": 3,
       "current_index_gate": "PENDING_OR_UNVERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:42:53.011Z",
+      "verification_type": "APPROVAL_WORKFLOW_ZERO_JOB_AUDIT",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T014253-approval-workflow-anomaly.json",
+      "snapshot_blob_sha": "fc505fbd418c2cf515150f0dac60e509f685706f",
+      "snapshot_commit_sha": "7e954592d11f870e3e8d105849d1f8a9605cb027",
+      "snapshot_characters": 49736,
+      "source_reference_count": 6,
+      "missing_source_references": 0,
+      "snapshot_character_metric_matches": true,
+      "zero_job_runs": [
+        40801984038,
+        40801977851,
+        40801973217
+      ],
+      "root_cause": "UNRESOLVED",
+      "previous_gate_run": 40801991494,
+      "latest_index_gate": "PENDING_OR_UNVERIFIED"
     }
   ]
 }
