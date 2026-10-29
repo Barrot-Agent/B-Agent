@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T03:05:25.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030525-INDEX-GATE-PASS",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030525-index-gate-pass-asset-feature-pr1283.json",
-    "snapshot_blob_sha": "facb292dcd43c9961ce8671a530cf69b8bffd425",
-    "snapshot_commit_sha": "4831f12c796add9187ee14febba7e21a6d4f76d1"
+    "captured_at_utc": "2026-10-29T03:07:30.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030730-UNINTENDED-MAIN-WRITE-CORRECTION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030730-unintended-main-write-correction.json",
+    "snapshot_blob_sha": "0881a4fc97fae2ecee280a3acda4635925e1ffd8",
+    "snapshot_commit_sha": "86946fd89cb023c43ae32b3e1fc59d02f9356066"
   },
   "sources": [
     {
@@ -5815,6 +5815,22 @@
       "title": "Fail-closed gate for research ledger index head 9a83efd1",
       "accessed_at_utc": "2026-10-29T03:05:25.000Z",
       "note": "Barrot Gated Merge workflow completed successfully for exact index commit 9a83efd1a86ba98ccadc773c38eccd848384287a. This verifies the prior index head only; any subsequent index update creates a new head requiring its own gate."
+    },
+    {
+      "id": "SRC-RUN33-20261029T030730-UNINTENDED-MAIN-WRITE-AFD870",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+      "title": "Unintended direct main-branch snapshot write",
+      "accessed_at_utc": "2026-10-29T03:07:30.000Z",
+      "note": "The commit 'Research: snapshot current paper-trading replay and index gate' at 2026-10-29T03:06:39Z added data/xrp_intelligence/snapshots/20261029T030620-paper-replay-2361-index-gate.json directly to main because the create_file call omitted the explicit branch argument. This violated the user's no-main-write instruction. No further main write, deletion, revert or overwrite was performed."
+    },
+    {
+      "id": "SRC-RUN33-20261029T030730-MAIN-SNAPSHOT-BA4347",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/data/xrp_intelligence/snapshots/20261029T030620-paper-replay-2361-index-gate.json",
+      "title": "Readback of unintended main snapshot",
+      "accessed_at_utc": "2026-10-29T03:07:30.000Z",
+      "note": "Blob SHA ba4347ea2107fe77195f8f9f17d859410e9eecca; 3892 characters. Its embedded main_modified_by_this_run field is false, which is incorrect. Preserve this file as-is for auditability; correction is documented in the research-branch incident snapshot and ledger. Do not delete or rewrite it without approval."
     }
   ],
   "limitations": [
@@ -5974,7 +5990,8 @@
     "2026-10-29T02:58:40.000Z: Entity cooccurrence and sentiment outputs combine XRP and BTC pipelines. Entity sentiment counts are global and unweighted by target relevance; sentiment-shift scores are null due zero eligible recent records. Do not admit these as XRP-only directional features until scope and weighting are explicit.",
     "2026-10-29T03:04:45.000Z: PR #1283 adds asset-scoped relevance-weighted entity features, but it remains draft/unmerged. The fields are not admitted to the XRP directional model pending review, leakage checks, calibration and walk-forward evaluation.",
     "2026-10-29T03:04:45.000Z: Approval workflow zero-job push-event runs 40809960387, 40809965420, 40809969664 and 40809973844 occurred on successive commits while the inspected main workflow declares workflow_dispatch only. Root cause remains unresolved; do not treat these no-job failures as approvals or as a code fix.",
-    "2026-10-29T03:05:25.000Z: Research index head 9a83efd1a86ba98ccadc773c38eccd848384287a passed fail-closed gate run 40810111106. This verification predates the next index commit; successor gate remains pending."
+    "2026-10-29T03:05:25.000Z: Research index head 9a83efd1a86ba98ccadc773c38eccd848384287a passed fail-closed gate run 40810111106. This verification predates the next index commit; successor gate remains pending.",
+    "2026-10-29T03:07:30.000Z: Process-control breach: commit afd870206ed48bdb74c6bd24f7d7e74d930ceb22 added one snapshot file directly to main because a create_file call omitted its explicit branch. The file embeds an incorrect main_modified_by_this_run=false field. No further main write, delete, revert or overwrite was attempted; corrective evidence is on the research branch. Do not alter the main file without approval."
   ],
   "run_updates": [
     {
@@ -9793,6 +9810,26 @@
       "forecast_status": "NOT_ISSUED",
       "main_modified_by_this_run": false,
       "merge_performed": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T03:07:30.000Z",
+      "update_type": "UNINTENDED_MAIN_WRITE_INCIDENT_RECORDED",
+      "source_ids": [
+        "SRC-RUN33-20261029T030730-UNINTENDED-MAIN-WRITE-AFD870",
+        "SRC-RUN33-20261029T030730-MAIN-SNAPSHOT-BA4347"
+      ],
+      "summary": "A snapshot file was unintentionally written directly to main because a create_file call omitted the branch argument. The resulting main commit is preserved for auditability; no further main mutation, deletion or revert was attempted. Corrective record and updated ledger are written only to the explicit research branch.",
+      "index_head_verified": "NOT_VERIFIED_AFTER_THIS_UPDATE",
+      "gate_status": "PENDING_OR_UNVERIFIED",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T030730-unintended-main-write-correction.json",
+      "main_sha": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+      "main_modified_by_this_run": true,
+      "merge_performed": false,
+      "force_push": false,
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
   "mission_priority": {
@@ -10020,35 +10057,28 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "9a83efd1a86ba98ccadc773c38eccd848384287a",
-  "current_research_head_this_run": "4831f12c796add9187ee14febba7e21a6d4f76d1",
+  "current_research_head_before_ledger_update": "8e15e406b68336dfdb97c4be316ae0bccaa34fb3",
+  "current_research_head_this_run": "86946fd89cb023c43ae32b3e1fc59d02f9356066",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; PRIOR_INDEX_GATE_PASS; SUCCESSOR_INDEX_GATE_PENDING; CORE_CI_NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-    "latest_main_sha": "6cdaff2c725b0013c23a3f35abfaa397eb72e847",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030525-index-gate-pass-asset-feature-pr1283.json",
-    "snapshot_blob_sha": "facb292dcd43c9961ce8671a530cf69b8bffd425",
-    "snapshot_commit_sha": "4831f12c796add9187ee14febba7e21a6d4f76d1",
-    "snapshot_characters": 1652,
+    "status": "CORRECTIVE_SNAPSHOT_READBACK_PASS; MAIN_WRITE_INCIDENT_RECORDED; SUCCESSOR_INDEX_GATE_PENDING",
+    "latest_main_sha": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030730-unintended-main-write-correction.json",
+    "snapshot_blob_sha": "0881a4fc97fae2ecee280a3acda4635925e1ffd8",
+    "snapshot_commit_sha": "86946fd89cb023c43ae32b3e1fc59d02f9356066",
+    "snapshot_characters": 2910,
     "snapshot_character_metric_matches": true,
-    "source_reference_count": 1,
+    "source_reference_count": 2,
     "missing_source_references": 0,
-    "previous_index_head": "9a83efd1a86ba98ccadc773c38eccd848384287a",
-    "previous_index_gate_run": 40810111106,
-    "previous_index_gate_status": "PASS",
-    "current_index_gate": "PENDING_OR_UNVERIFIED",
+    "main_modified_by_this_run": true,
+    "main_write_incident": "UNINTENDED_SINGLE_SNAPSHOT_FILE_WRITE; NO_FURTHER_MAIN_MUTATIONS",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-    "pr1283_core_ci_run": 40809993316,
-    "pr1283_core_ci_status": "PASS_170_TESTS_4_SUBTESTS_6.17S",
-    "pr1283_gate_run": 40809993459,
-    "pr1283_gate_status": "PASS",
-    "forecast_status": "NOT_ISSUED",
-    "main_modified_by_this_run": false,
-    "merge_performed": false
+    "current_index_gate": "PENDING_OR_UNVERIFIED",
+    "forecast_status": "NOT_ISSUED"
   },
   "ledger_metrics": {
-    "source_records": 718,
-    "run_updates": 134,
-    "limitations": 157,
+    "source_records": 720,
+    "run_updates": 135,
+    "limitations": 158,
     "relationship_edges": 128,
     "competing_hypotheses": 78,
     "market_observations": 68,
@@ -10057,10 +10087,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 655022,
+    "index_characters_before_this_update": 655799,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 1652,
-    "index_characters": 655799
+    "latest_snapshot_characters": 2910,
+    "index_characters": 658659
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -10081,14 +10111,14 @@
     "forecast_status": "NOT_ISSUED"
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:05:25.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:07:30.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; SUCCESSOR_INDEX_GATE_PENDING",
+      "status": "CORRECTIVE_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; SUCCESSOR_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "facb292dcd43c9961ce8671a530cf69b8bffd425",
-      "snapshot_commit_sha": "4831f12c796add9187ee14febba7e21a6d4f76d1",
-      "snapshot_characters": 1652,
-      "source_reference_count": 1,
+      "snapshot_blob_sha": "0881a4fc97fae2ecee280a3acda4635925e1ffd8",
+      "snapshot_commit_sha": "86946fd89cb023c43ae32b3e1fc59d02f9356066",
+      "snapshot_characters": 2910,
+      "source_reference_count": 2,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
       "ci": {
@@ -10106,13 +10136,13 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T03:04:45.000Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030445-ASSET-SCOPED-FEATURE-PR1283",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030445-asset-scoped-entity-features-pr1283.json",
-      "snapshot_blob_sha": "e9391345c008c1dcddbb37b24a85701ea4ba1f53",
-      "snapshot_commit_sha": "0f83a69a5e8f43d01b0f0b9ee583d460bcfe8e57"
+      "captured_at_utc": "2026-10-29T03:05:25.000Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030525-INDEX-GATE-PASS",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030525-index-gate-pass-asset-feature-pr1283.json",
+      "snapshot_blob_sha": "facb292dcd43c9961ce8671a530cf69b8bffd425",
+      "snapshot_commit_sha": "4831f12c796add9187ee14febba7e21a6d4f76d1"
     },
-    "note": "Gate PASS is recorded for the prior index head only. The successor index commit needs its own gate result."
+    "note": "This corrective record is only on the explicit research branch. The unintended main commit and file were preserved unchanged; no further main mutation was attempted."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -10160,34 +10190,30 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T03:05:25.000Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T03:04:45.000Z",
+    "recorded_at_utc": "2026-10-29T03:07:30.000Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T03:05:25.000Z",
     "source_ids": [
-      "SRC-RUN31-20261029T030525-INDEX-GATE-40810111106"
+      "SRC-RUN33-20261029T030730-UNINTENDED-MAIN-WRITE-AFD870",
+      "SRC-RUN33-20261029T030730-MAIN-SNAPSHOT-BA4347"
     ],
-    "previous_index_head": "9a83efd1a86ba98ccadc773c38eccd848384287a",
-    "previous_index_gate_run": 40810111106,
-    "previous_index_gate_status": "PASS",
-    "successor_index_gate": "PENDING_OR_UNVERIFIED",
-    "pr1283": {
-      "number": 1283,
-      "ci_run": 40809993316,
-      "gate_run": 40809993459,
-      "ci": "PASS_170_TESTS_4_SUBTESTS_6.17S",
-      "gate": "PASS",
-      "state": "DRAFT_UNMERGED"
+    "main_write_incident": {
+      "commit": "afd870206ed48bdb74c6bd24f7d7e74d930ceb22",
+      "path": "data/xrp_intelligence/snapshots/20261029T030620-paper-replay-2361-index-gate.json",
+      "field_error": "main_modified_by_this_run=false; correct value true",
+      "action": "No revert/delete/overwrite; corrective record only on research branch"
     },
+    "main_modified_by_this_run": true,
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:04:45.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:05:25.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; CURRENT_INDEX_GATE_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS; SUCCESSOR_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "e9391345c008c1dcddbb37b24a85701ea4ba1f53",
-      "snapshot_commit_sha": "0f83a69a5e8f43d01b0f0b9ee583d460bcfe8e57",
-      "snapshot_characters": 4536,
-      "source_reference_count": 9,
+      "snapshot_blob_sha": "facb292dcd43c9961ce8671a530cf69b8bffd425",
+      "snapshot_commit_sha": "4831f12c796add9187ee14febba7e21a6d4f76d1",
+      "snapshot_characters": 1652,
+      "source_reference_count": 1,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
       "ci": {
@@ -10205,13 +10231,13 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T02:58:40.000Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T025840-MAIN-SAFETY-AND-FEATURE-QA",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T025840-main-safety-and-feature-qa.json",
-      "snapshot_blob_sha": "49ee4760aae2f4da25ffe759af3e79482fc287f9",
-      "snapshot_commit_sha": "0ab61f21294b8dbec8cd591e22a4ceff7efc7cc9"
+      "captured_at_utc": "2026-10-29T03:04:45.000Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030445-ASSET-SCOPED-FEATURE-PR1283",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T030445-asset-scoped-entity-features-pr1283.json",
+      "snapshot_blob_sha": "e9391345c008c1dcddbb37b24a85701ea4ba1f53",
+      "snapshot_commit_sha": "0f83a69a5e8f43d01b0f0b9ee583d460bcfe8e57"
     },
-    "note": "Immutable snapshot read back and validated. PR #1283 exact-head core CI and gate passed; the research index successor still needs its own supported gate verification."
+    "note": "Gate PASS is recorded for the prior index head only. The successor index commit needs its own gate result."
   },
   "snapshot_verification_history": [
     {
