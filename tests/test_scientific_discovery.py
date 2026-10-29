@@ -539,3 +539,73 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
     assert "persistence" in calls
     assert "persisted to the task branch" in str(calls["comment"]).lower()
     assert "scientific discovery recorded" in str(calls["comment"]).lower()
+
+
+def test_checkout_branch_resumes_remote_branch_and_rejects_unsafe_names(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_agent_resume_branch_test")
+    calls: list[list[str]] = []
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+
+    monkeypatch.setattr(module, "run", fake_run)
+    module.checkout_branch("barrot/task-42")
+    assert calls[0][1] == "fetch"
+    assert "refs/remotes/origin/barrot/task-42" in calls[0][3]
+    assert calls[1] == ["git", "checkout", "-B", "barrot/task-42", "origin/barrot/task-42"]
+
+    import pytest
+    with pytest.raises(ValueError, match="Invalid Barrot task branch"):
+        module.checkout_branch("../main")
+
+
+def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("ISSUE_NUMBER", "42")
+    monkeypatch.setenv("BRANCH", "barrot/task-42")
+    monkeypatch.setenv("TASK_TITLE", "Navier-Stokes research")
+    module = load_script_module("barrot_agent_persist_science_test")
+    module.ROOT = tmp_path
+    calls: list[list[str]] = []
+    pr_calls: list[list[str]] = []
+
+    def write_record(cycle):
+        record_dir = tmp_path / ".barrot" / "collaboration_records"
+        record_dir.mkdir(parents=True, exist_ok=True)
+        latest = record_dir / "latest_scientific_discovery.json"
+        latest.write_text(json.dumps(cycle), encoding="utf-8")
+        (record_dir / "cycle-42.json").write_text(json.dumps(cycle), encoding="utf-8")
+        return latest
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        if args[1:4] == ["diff", "--cached", "--quiet"]:
+            return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="")
+        if args[1:3] == ["rev-parse", "HEAD"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="abc123\\n", stderr="")
+        return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+
+    def fake_run_gh(args):
+        pr_calls.append(args)
+        return module.subprocess.CompletedProcess(args, 0, stdout="draft PR created", stderr="")
+
+    monkeypatch.setattr(module, "write_collaboration_record", write_record)
+    monkeypatch.setattr(module, "run", fake_run)
+    monkeypatch.setattr(module, "run_gh", fake_run_gh)
+    cycle = {
+        "cycle_id": "cycle-42",
+        "problem_id": "navier_stokes_millennium_prize",
+        "status": "no_solution_claim",
+        "acceptance_gate_passed": False,
+        "unresolved_questions": ["Independent verification remains incomplete."],
+    }
+
+    result = module.persist_scientific_discovery(cycle)
+
+    assert result["remote_persisted"] is True
+    assert any(args[:3] == ["git", "push", "--set-upstream"] for args in calls)
+    assert "--draft" in pr_calls[0]
+    assert "--head" in pr_calls[0] and "barrot/task-42" in pr_calls[0]
+    assert "makes no claim" in (tmp_path / ".barrot" / "collaboration_records" / "latest_scientific_discovery.json").read_text(encoding="utf-8") or result["draft_pr"] == "draft PR created"
