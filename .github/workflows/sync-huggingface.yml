@@ -1,15 +1,19 @@
 name: Sync to Hugging Face
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "hf_space/**"
-      - ".github/workflows/sync-huggingface.yml"
   workflow_dispatch:
-
+    inputs:
+      confirm_external_change:
+        description: "Set to YES only after explicit human approval for this specific run"
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
 jobs:
   sync-hf:
+    if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
