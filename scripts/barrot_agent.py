@@ -286,11 +286,12 @@ def _bound_groq_messages(messages: list[dict[str, Any]], max_chars: int = 16000)
         system = bounded[0] if bounded and bounded[0].get("role") == "system" else None
         latest = bounded[-1] if bounded else {"role": "user", "content": ""}
         system_text = str(system.get("content", "")) if system else ""
-        available = max(0, max_chars - len(system_text))
+        marker = "\n[Context truncated to respect provider token budget.]"
+        available = max(0, max_chars - len(system_text) - len(marker))
         latest_text = str(latest.get("content", ""))
         if len(latest_text) > available:
             latest = dict(latest)
-            latest["content"] = latest_text[:available] + "\n[Context truncated to respect provider token budget.]"
+            latest["content"] = latest_text[:available] + marker
         bounded = ([system] if system else []) + [latest]
     return bounded
 
