@@ -106,17 +106,20 @@ jobs:
           repo="$GITHUB_REPOSITORY"
           timestamp="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 
+          body_file="$(mktemp)"
+          {
+            printf '%s\n\n' "Barrot controlled approval recorded."
+            printf 'PR: #%s\n' "$PR_NUMBER"
+            printf 'Head SHA: %s\n' "$EXPECTED_HEAD_SHA"
+            printf 'Reason: %s\n' "$APPROVAL_REASON"
+            printf 'Workflow run: %s/%s/actions/runs/%s\n' "$GITHUB_SERVER_URL" "$repo" "$GITHUB_RUN_ID"
+            printf 'Recorded at: %s\n\n' "$timestamp"
+            printf '%s\n' 'This action applied the `approved` label only. It did not merge the PR.'
+          } > "$body_file"
+
           gh pr comment "$PR_NUMBER" \
             --repo "$repo" \
-            --body "Barrot controlled approval recorded.
-
-PR: #${PR_NUMBER}
-Head SHA: ${EXPECTED_HEAD_SHA}
-Reason: ${APPROVAL_REASON}
-Workflow run: ${GITHUB_SERVER_URL}/${repo}/actions/runs/${GITHUB_RUN_ID}
-Recorded at: ${timestamp}
-
-This action applied the `approved` label only. It did not merge the PR."
+            --body-file "$body_file"
 
           echo "BARROT_APPROVAL=PASS"
           echo "PR_NUMBER=$PR_NUMBER"
