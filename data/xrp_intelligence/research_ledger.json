@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T00:08:27.758Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-29T0008Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0008Z.json",
-    "snapshot_blob_sha": "7fc29f176ff33abade37d270aa8f78de0eebcdcd",
-    "snapshot_commit_sha": "5244c14f68445f8ff03c16732374cc4e2db71009"
+    "captured_at_utc": "2026-10-29T00:09:14.462Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-29T0009Z-CORRECTION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+    "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
+    "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe"
   },
   "sources": [
     {
@@ -4727,6 +4727,14 @@
       "title": "Main advanced with telemetry-only report",
       "accessed_at_utc": "2026-10-29T00:08:27.758Z",
       "note": "Commit changes AUTONOMOUS_DEPLOYMENT_REPORT.md timestamp only. No XRP evaluator, workflow, paper-trading or ledger path changed. PRs #1270 and #1271 are one commit behind main; compare shows no overlapping changed paths."
+    },
+    {
+      "id": "SRC-RUN15-SNAPSHOT-METRIC-CORRECTION-20261029T0009Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+      "title": "Corrected immutable snapshot character-count metric",
+      "accessed_at_utc": "2026-10-29T00:09:14.462Z",
+      "note": "The preserved 0008Z snapshot content is 612,158 characters while its embedded latest_snapshot_characters metric says 612,153. This new correction snapshot recalculates the metric; the earlier snapshot remains unchanged."
     }
   ],
   "limitations": [
@@ -4837,7 +4845,8 @@
     "2026-10-29T00:07:21.216Z: main's signal_accuracy.json reports 46.5% from a variable-horizon live-price evaluator that mutates historical signal rows; not comparable to fixed-horizon out-of-sample forecast skill. PR #1270 passed 147 tests and gate but remains draft/unmerged.",
     "2026-10-29T00:07:21.216Z: PR #1271 initial CI failed because its regression test had a duplicated def keyword; syntax corrected at b6688a328d24af70c4f234b56aeabf90aab5005e, but latest-head CI/gate remain unverified. Approval metadata parsing does not explain historical push-event runs with zero jobs.",
     "2026-10-29T00:07:21.216Z: latest research snapshot/index update needs pointer/source-reference readback and index-head gate; research-base core CI remains untriggered by current PR base filter.",
-    "2026-10-29T00:08:27.758Z: Snapshot 2026-10-29T0007Z recorded main at 22ffb845, but telemetry-only commit 95060774 was already present by its capture time. The earlier snapshot is preserved; this 0008Z snapshot corrects the current-main pointer. PRs #1270/#1271 are one commit behind due to the report-only change, with no overlapping changed paths; recheck before approval."
+    "2026-10-29T00:08:27.758Z: Snapshot 2026-10-29T0007Z recorded main at 22ffb845, but telemetry-only commit 95060774 was already present by its capture time. The earlier snapshot is preserved; this 0008Z snapshot corrects the current-main pointer. PRs #1270/#1271 are one commit behind due to the report-only change, with no overlapping changed paths; recheck before approval.",
+    "2026-10-29T00:09:14.462Z: 2026-10-29T0008Z snapshot's embedded character-count metric was five characters low. The original snapshot is preserved unchanged; 0009Z-correction is the corrected current snapshot."
   ],
   "run_updates": [
     {
@@ -7979,6 +7988,22 @@
       "forecast_status": "NOT_ISSUED",
       "main_modified": false,
       "merge_performed": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T00:09:14.462Z",
+      "update_type": "CORRECT_SNAPSHOT_CHARACTER_COUNT_METRIC",
+      "main_sha": "950607740de052d804d0b431c481bf2abda37a04",
+      "source_ids": [
+        "SRC-RUN15-SNAPSHOT-METRIC-CORRECTION-20261029T0009Z"
+      ],
+      "previous_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0008Z.json",
+      "previous_snapshot_metric": 612153,
+      "previous_snapshot_observed_characters": 612158,
+      "correction_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+      "corrected_metric": 611372,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified": false,
+      "merge_performed": false
     }
   ],
   "mission_priority": {
@@ -8207,13 +8232,13 @@
     }
   },
   "current_research_head_before_ledger_update": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
-  "current_research_head_this_run": "5244c14f68445f8ff03c16732374cc4e2db71009",
+  "current_research_head_this_run": "1853f3660515024efbce3e1ce658b6d7573392fe",
   "current_research_checks": {
-    "status": "CORRECTED_MAIN_HEAD; SNAPSHOT_READBACK_PASS; SOURCE_REFERENCES_PASS; PR1270_CI_GATE_PASS; PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; INDEX_GATE_PENDING",
+    "status": "CORRECTION_SNAPSHOT_READBACK_PASS; CHARACTER_COUNT_MATCH; SOURCE_REFERENCES_PASS; PR1270_CI_GATE_PASS; PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; INDEX_GATE_PENDING",
     "latest_main_sha": "950607740de052d804d0b431c481bf2abda37a04",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0008Z.json",
-    "snapshot_blob_sha": "7fc29f176ff33abade37d270aa8f78de0eebcdcd",
-    "snapshot_commit_sha": "5244c14f68445f8ff03c16732374cc4e2db71009",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+    "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
+    "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe",
     "source_reference_count": 358,
     "missing_source_references": 0,
     "pr1270_ci": "PASS_147_TESTS_6.25S",
@@ -8223,9 +8248,9 @@
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR"
   },
   "ledger_metrics": {
-    "source_records": 582,
-    "run_updates": 117,
-    "limitations": 108,
+    "source_records": 583,
+    "run_updates": 118,
+    "limitations": 109,
     "relationship_edges": 104,
     "competing_hypotheses": 69,
     "market_observations": 63,
@@ -8234,10 +8259,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 526378,
+    "index_characters_before_this_update": 526931,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 612158,
-    "index_characters": 526931
+    "latest_snapshot_characters": 611372,
+    "index_characters": 528193
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -8263,12 +8288,14 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T00:08:27.758Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T00:09:14.462Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PR1270_AND_PR1271_CI_GATE_PASS; INDEX_SUCCESSOR_CHECKS_PENDING",
+      "status": "CORRECTION_SNAPSHOT_READBACK_PASS; CHARACTER_COUNT_MATCH; POINTER_UPDATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "7fc29f176ff33abade37d270aa8f78de0eebcdcd",
-      "snapshot_commit_sha": "5244c14f68445f8ff03c16732374cc4e2db71009",
+      "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
+      "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe",
+      "snapshot_characters": 611372,
+      "snapshot_character_metric_matches": true,
       "source_reference_count": 358,
       "missing_source_references": 0,
       "ci": {
@@ -8286,7 +8313,7 @@
     },
     "previous_inline_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
     "previous_inline_index_characters": 989081,
-    "note": "Corrected current-main head after discovering a telemetry-only commit was already present at the prior snapshot capture time. Prior snapshot remains immutable and preserved."
+    "note": "Corrected snapshot is a new immutable file; the 0008Z snapshot and all prior snapshots remain unchanged."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -8334,33 +8361,18 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T00:08:27.758Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T00:07:53.675Z",
+    "recorded_at_utc": "2026-10-29T00:09:14.462Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T00:08:27.758Z",
     "source_ids": [
-      "SRC-RUN15-MAIN-TELEMETRY-20261029T0008Z"
+      "SRC-RUN15-SNAPSHOT-METRIC-CORRECTION-20261029T0009Z"
     ],
     "main_sha": "950607740de052d804d0b431c481bf2abda37a04",
     "latest_snapshot": {
-      "path": "data/xrp_intelligence/snapshots/2026-10-29T0008Z.json",
-      "blob_sha": "7fc29f176ff33abade37d270aa8f78de0eebcdcd",
-      "commit_sha": "5244c14f68445f8ff03c16732374cc4e2db71009"
+      "path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+      "blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
+      "commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe"
     },
-    "pr1270": {
-      "head_sha": "5476a2353181f61f36b56d9e9bf8a5a5859dfdda",
-      "ci": "PASS_147_TESTS_6.25S",
-      "gate": "PASS",
-      "behind_by": 1,
-      "draft": true,
-      "merged": false
-    },
-    "pr1271": {
-      "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
-      "ci": "PASS_146_TESTS_5.33S",
-      "gate": "PASS",
-      "behind_by": 1,
-      "draft": true,
-      "merged": false
-    },
+    "corrects_previous_snapshot_metric": true,
     "forecast_status": "NOT_ISSUED",
     "main_modified": false,
     "merge_performed": false,
