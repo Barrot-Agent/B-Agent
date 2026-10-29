@@ -934,7 +934,48 @@ def main() -> None:
     checkout_branch(BRANCH)
 
     if should_route_scientific_discovery(TASK_MODE, TITLE, TASK):
-        cycle = ScientificDiscoveryController(workspace=ROOT).run(select_scientific_problem_adapter(TITLE, TASK))
+        if not GROQ_KEY:
+            raise SystemExit("GROQ_API_KEY not set; refusing to label metadata-only research as live scientific discovery.")
+        brain = ScriptBrain(enable_tools=False)
+
+        def execute_scientific_track(track):
+            request = {
+                "task": "Analyze this research track using the supplied record only as context.",
+                "track": track.to_dict(),
+                "rules": [
+                    "Do not claim that a theorem is proved, accepted, or independently verified.",
+                    "Do not invent citations, source URLs, experiments, or formal proof results.",
+                    "Separate hypotheses from established source-backed facts.",
+                    "Return concise findings, open questions, counterarguments, and recommended checks.",
+                    "Any model-generated finding is provisional and must remain unverified until separately corroborated.",
+                ],
+                "output_schema": {
+                    "findings": ["string"],
+                    "open_questions": ["string"],
+                    "counterarguments": ["string"],
+                    "recommended_checks": ["string"],
+                },
+            }
+            raw = brain.think(
+                json.dumps(request, sort_keys=True),
+                system=(
+                    "You are Barrot's scientific research worker. Return one JSON object only with "
+                    "string arrays named findings, open_questions, counterarguments, and recommended_checks. "
+                    "Do not upgrade claim status or represent model output as independent verification."
+                ),
+            )
+            try:
+                parsed = json.loads(raw)
+            except json.JSONDecodeError as exc:
+                raise RuntimeError(f"Model returned invalid JSON: {raw[:400]}") from exc
+            if not isinstance(parsed, dict):
+                raise RuntimeError("Model response must be a JSON object.")
+            return {"provider": f"groq:{MODEL}", "result": parsed}
+
+        cycle = ScientificDiscoveryController(workspace=ROOT).run(
+            select_scientific_problem_adapter(TITLE, TASK),
+            track_executor=execute_scientific_track,
+        )
         rendered = json.dumps(cycle.to_dict(), indent=2)
         print(rendered)
         persistence = persist_scientific_discovery(cycle)
