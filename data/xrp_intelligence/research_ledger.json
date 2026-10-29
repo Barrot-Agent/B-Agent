@@ -10869,9 +10869,9 @@
     }
   },
   "current_research_head_before_ledger_update": "c0ce809e796dca32aad3b978ace974bce00c70a5",
-  "current_research_head_this_run": "PENDING_AFTER_LEDGER_POINTER_UPDATE",
+  "current_research_head_this_run": "d03395b21cac4cd8d03459680fdb4dee45d9bbca",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING; PR1289_HARDENING_CI_GATE_PASS; MAIN_SIGNAL_INVALID; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_POINTER_AND_LEDGER_READBACK_PASS; PR1289_HARDENING_CI_GATE_PASS; MAIN_SIGNAL_INVALID; FORECAST_NOT_ISSUED",
     "latest_main_sha": "c5ef4cb53c09b003983f080937095d5f1a1c74e7",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0604-paper-trader-guard-hardening.json",
     "snapshot_blob_sha": "b29849b0703530b6aaed911dd90cac1ccaea99e2",
@@ -10910,13 +10910,16 @@
     "creator_identity_status": "PROBABLE_KAMILAH_CAMILA_VARIANT; EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
     "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; THIRD_PARTY_VIDEO_COUNTS_DISAGREE",
     "forecast_status": "NOT_ISSUED",
-    "index_pointer_readback_ok": false,
+    "index_pointer_readback_ok": true,
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
     "deployment_executed": false,
     "real_money_trade": false,
-    "paper_trading_state_mutated": false
+    "paper_trading_state_mutated": false,
+    "index_blob_sha_at_readback": "2f4ccc3470e95c9a29c93781a2d0ef9526f32a86",
+    "index_commit_sha_at_readback": "d03395b21cac4cd8d03459680fdb4dee45d9bbca",
+    "index_character_count_match": true
   },
   "ledger_metrics": {
     "source_records": 771,
@@ -10933,7 +10936,7 @@
     "index_characters_before_this_update": 716048,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 13187,
-    "index_characters": 724771
+    "index_characters": 725396
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -10956,7 +10959,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:04:45.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_UPDATE_PENDING; GRAPH_ADDENDUM_READBACK_PASS",
+      "status": "SNAPSHOT_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; GRAPH_ADDENDUM_READBACK_PASS; RESEARCH_BASE_CI_GATE_NOT_TRIGGERED",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "b29849b0703530b6aaed911dd90cac1ccaea99e2",
       "snapshot_commit_sha": "c0ce809e796dca32aad3b978ace974bce00c70a5",
@@ -10977,7 +10980,14 @@
         "run_id": null,
         "url": null
       },
-      "index_pointer_readback_ok": false
+      "index_pointer_readback_ok": true,
+      "index_blob_sha_at_readback": "2f4ccc3470e95c9a29c93781a2d0ef9526f32a86",
+      "index_commit_sha_at_readback": "d03395b21cac4cd8d03459680fdb4dee45d9bbca",
+      "index_character_count_match": true,
+      "duplicate_source_ids": 0,
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "forecast_status": "NOT_ISSUED"
     },
     "previous_pointer_snapshot": {
       "record_type": "snapshot_reference",
