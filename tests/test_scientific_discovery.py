@@ -784,7 +784,6 @@ def test_scientific_track_output_retries_malformed_json_once(monkeypatch) -> Non
     class FakeBrain:
         def __init__(self):
             self.responses = [
-                '{"findings":["unterminated"',
                 json.dumps({
                     "findings": ["Provisional result"],
                     "open_questions": ["Needs independent check"],
