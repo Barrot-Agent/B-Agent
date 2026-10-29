@@ -3,12 +3,12 @@
     "xrp_entries": 1203,
     "btc_entries": 1234
   },
-  "unique_pairs_found": 3205,
+  "unique_pairs_found": 3210,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 208,
+      "cooccurrence_count": 209,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -68,7 +68,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 32,
+      "cooccurrence_count": 33,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -83,7 +83,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 29,
+      "cooccurrence_count": 30,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -3031,6 +3031,21 @@
         },
         {
           "title": "$1,000 and $1M XRP Calls Return as Bulls Eye Ripple at SWIFT Banking Summit - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
+          "asset": "XRP"
+        },
+        {
+          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
           "asset": "XRP"
         }
       ]
@@ -8377,15 +8392,15 @@
     },
     {
       "entity_a": "Brazil",
-      "entity_b": "Ripple",
+      "entity_b": "XRP",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
-          "title": "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
+          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
           "asset": "XRP"
         },
         {
-          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
           "asset": "XRP"
         }
       ]
@@ -27567,11 +27582,55 @@
     },
     {
       "entity_a": "Brazil",
+      "entity_b": "Securities Giant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Securities Giant",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Securities Giant",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
-          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Securities Giant",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Ripple Lands Brazil Deal With $22T Securities Giant as $180 Price Call Emerges - Yahoo Finance",
           "asset": "XRP"
         }
       ]
