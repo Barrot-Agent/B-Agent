@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T07:06:00.000Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0706-MARKET-STRUCTURE-AND-MAIN-SAFETY",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0706-market-structure-and-main-safety.json",
-    "snapshot_blob_sha": "06820e8b404456aef2b3342231cb6eb534f8c634",
-    "snapshot_commit_sha": "9ed53d75997598d86c5a5ab13ec1f3772a1f3ee4"
+    "captured_at_utc": "2026-10-29T07:07:00.000Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T0707-PAPER-TRADER-LOG-RETRIEVAL-CORRECTION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0707-paper-trader-log-retrieval-correction.json",
+    "snapshot_blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
+    "snapshot_commit_sha": "2e153c86a2849c28cdae08b0962aa68ee5034074"
   },
   "sources": [
     {
@@ -6556,6 +6556,14 @@
       "title": "Current main mutation-capable merge-queue workflow",
       "accessed_at_utc": "2026-10-29T07:06:00.000Z",
       "note": "Blob SHA 19b41e2894fdf1b835498fca3eeab870c3b4c8b1; contents:write and pull-requests:write, dry_run defaults false, max_prs defaults unlimited, mode=all can process every open PR, and workflow can update branches, comment, merge and delete branches. PR #1290 is a tested draft proposal, not a main fix."
+    },
+    {
+      "id": "SRC-RUN46-20261029T0707Z-PAPER-LOG-LAST-ROW",
+      "evidence_class": "REPOSITORY_OBSERVATION_FROM_COMMIT_DIFF",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/dbc2929e5249ebd7637204e8b279896a8336cf53",
+      "title": "Latest appended simulated paper-trader log row recovered from commit diff",
+      "accessed_at_utc": "2026-10-29T07:07:00.000Z",
+      "note": "The commit patch proves a row timestamped 2026-10-29T07:05:17.567610Z for simulated BTC-USD: price 79823.89, decision hold, result 'held -- no action taken', portfolio value $9,999.65, cycle change 0.0 and cumulative return -0.003%. This is one appended row only; the full log remains unavailable and no complete replay is verified."
     }
   ],
   "limitations": [
@@ -6747,7 +6755,8 @@
     "2026-10-29T07:06:00.000Z: XRP ETF flow trackers use different fund universes, units, capture-gap handling and settlement windows. Alpha Finance's five-fund USD figures and XRP Insights' six-fund-plus-BITW XRP-unit figures are not directly comparable; reconcile issuer-level holdings and shares outstanding first.",
     "2026-10-29T07:06:00.000Z: The connected GitHub file action returned empty content for web/paper_trading_log.jsonl despite a nonempty blob SHA. Current replay remains blocked; do not infer the file is empty or claim the latest paper-trading action from an unavailable row.",
     "2026-10-29T07:06:00.000Z: Main branch API reports protected=true but returned an empty required-status-check list. Effective rulesets and administrator bypass behavior are not fully verified.",
-    "2026-10-29T07:06:00.000Z: Coinbase/Ripple RLUSD availability on XRPL and Coinbase distribution is confirmed by company releases, but no direct evidence shows stablecoin transfer activity creates material XRP bridge demand or a price effect."
+    "2026-10-29T07:06:00.000Z: Coinbase/Ripple RLUSD availability on XRPL and Coinbase distribution is confirmed by company releases, but no direct evidence shows stablecoin transfer activity creates material XRP bridge demand or a price effect.",
+    "2026-10-29T07:07:00.000Z: The newest paper-trading row is verified from the main commit diff, but only one appended row is visible. The full historical JSONL remains unavailable through the connected file action, so current full replay, drawdown and performance statistics remain unverified."
   ],
   "run_updates": [
     {
@@ -11191,6 +11200,52 @@
         "draft_unmerged": true,
         "main_behind_count": 7
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-29T07:07:00.000Z",
+      "update_type": "PAPER_TRADER_LATEST_ROW_RECOVERED_FROM_COMMIT_DIFF_FULL_REPLAY_STILL_BLOCKED",
+      "source_ids": [
+        "SRC-RUN46-20261029T0707Z-PAPER-LOG-LAST-ROW",
+        "SRC-RUN45-20261029T0705Z-MAIN-HEAD",
+        "SRC-RUN45-20261029T0705Z-MAIN-PAPER-STATE",
+        "SRC-RUN45-20261029T0705Z-MAIN-PAPER-WORKFLOW",
+        "SRC-RUN41-20261029T0604Z-PR1289-CI",
+        "SRC-RUN41-20261029T0604Z-PR1289-GATE"
+      ],
+      "summary": "Recovered the latest appended row from the GitHub commit diff after the file-content action returned empty. The row records a simulated BTC-USD hold at $79,823.89 with no action, portfolio value $9,999.65, cycle change 0.0 and cumulative return -0.003%. The paper-trading state blob is unchanged and still has a nonzero position with position_product=null. The full historical log remains unavailable, so the full replay is still blocked. Added a graph correction edge and an immutable snapshot; no main changes or real-money actions were performed.",
+      "main_sha": "dbc2929e5249ebd7637204e8b279896a8336cf53",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T0707-paper-trader-log-retrieval-correction.json",
+        "blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
+        "commit_sha": "2e153c86a2849c28cdae08b0962aa68ee5034074",
+        "characters": 32330
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
+        "blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
+        "commit_sha": "b74baac1e97d83f3e3cb95678c3d195d8dba347d",
+        "new_edges": 1,
+        "new_competing_hypotheses": 0
+      },
+      "latest_row": {
+        "timestamp": "2026-10-29T07:05:17.567610+00:00",
+        "product": "BTC-USD",
+        "price": 79823.89,
+        "action": "hold",
+        "result": "held -- no action taken",
+        "portfolio_value_usd": 9999.65,
+        "portfolio_change_this_cycle": 0,
+        "cumulative_return_pct": -0.003
+      },
+      "paper_trading_replay": "BLOCKED_FULL_HISTORICAL_LOG_UNAVAILABLE",
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false,
+      "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
     }
   ],
   "mission_priority": {
@@ -11418,9 +11473,67 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "9d562b503ed7cf63af4715eeab73b9fec5f28b09",
-  "current_research_head_this_run": "9ed53d75997598d86c5a5ab13ec1f3772a1f3ee4",
+  "current_research_head_before_ledger_update": "641d0e764343145aaa371a38dda7590043902194",
+  "current_research_head_this_run": "2e153c86a2849c28cdae08b0962aa68ee5034074",
   "current_research_checks": {
+    "status": "PAPER_TRADER_LATEST_ROW_VERIFIED_FROM_COMMIT_DIFF; SNAPSHOT_AND_GRAPH_READBACK_PASS; LEDGER_POINTER_READBACK_PENDING; FORECAST_NOT_ISSUED",
+    "latest_main_sha": "dbc2929e5249ebd7637204e8b279896a8336cf53",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0707-paper-trader-log-retrieval-correction.json",
+    "snapshot_blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
+    "snapshot_commit_sha": "2e153c86a2849c28cdae08b0962aa68ee5034074",
+    "snapshot_characters": 32330,
+    "snapshot_character_metric_matches": true,
+    "source_reference_count": 57,
+    "missing_source_references": 0,
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
+    "graph_addendum_blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
+    "graph_addendum_readback_ok": true,
+    "latest_paper_trader_row": {
+      "timestamp": "2026-10-29T07:05:17.567610+00:00",
+      "action": "hold",
+      "result": "held -- no action taken",
+      "price": 79823.89,
+      "product": "BTC-USD"
+    },
+    "paper_trading_replay": "BLOCKED_FULL_HISTORICAL_LOG_UNAVAILABLE",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "real_money_trade": false,
+    "paper_trading_state_mutated": false,
+    "source_ids_unique": true,
+    "relationship_edges": 157,
+    "competing_hypotheses": 99,
+    "sbic_original_referent": "UNRESOLVED",
+    "ask_coin_original_context": "UNRESOLVED",
+    "actual_capital_original_context": "UNRESOLVED",
+    "creator_identity_status": "EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
+    "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE",
+    "platform_coordination_status": "DESIGNED_NOT_EXECUTED_LIVE_ADAPTERS_NOT_VERIFIED",
+    "current_index_gate": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
+    "core_ci": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR"
+  },
+  "ledger_metrics": {
+    "source_records": 807,
+    "run_updates": 153,
+    "limitations": 190,
+    "relationship_edges": 157,
+    "competing_hypotheses": 99,
+    "market_observations": 72,
+    "index_format_version": "2.0",
+    "index_characters_before_compaction": 989081,
+    "embedded_latest_snapshot_characters_removed": 462600,
+    "local_validator_tests_passed": 6,
+    "latest_research_addendum_observations": 1,
+    "index_characters_before_this_update": 771624,
+    "prior_index_characters_before_compaction": 989081,
+    "latest_snapshot_characters": 32330,
+    "index_characters": 772088
+  },
+  "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
     "latest_main_sha": "dbc2929e5249ebd7637204e8b279896a8336cf53",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0706-market-structure-and-main-safety.json",
@@ -11495,162 +11608,25 @@
     "missing_snapshot_source_references": 0,
     "missing_graph_source_references": 0
   },
-  "ledger_metrics": {
-    "source_records": 806,
-    "run_updates": 152,
-    "limitations": 189,
-    "relationship_edges": 156,
-    "competing_hypotheses": 99,
-    "market_observations": 72,
-    "index_format_version": "2.0",
-    "index_characters_before_compaction": 989081,
-    "embedded_latest_snapshot_characters_removed": 462600,
-    "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 4,
-    "index_characters_before_this_update": 770564,
-    "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 31563,
-    "index_characters": 771624
-  },
-  "previous_research_checks": {
-    "status": "YOUTUBE_CANDIDATE_INVENTORY_ADDED; SNAPSHOT_POINTER_AND_LEDGER_READBACK_PASS; FORECAST_NOT_ISSUED",
-    "latest_main_sha": "f319d3d9511c6463bb18c36d9cc2b537888f6b88",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0616-youtube-video-candidate-inventory.json",
-    "snapshot_blob_sha": "c2449a71891e0fad1d01aa7050fe091b9c018696",
-    "snapshot_commit_sha": "1ed5134d0b3b2ec0590e4596f2fbf0b682afe2f8",
-    "snapshot_characters": 24593,
-    "snapshot_character_metric_matches": true,
-    "source_reference_count": 46,
-    "missing_source_references": 0,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0614-evernorth-capital-relationships.json",
-    "graph_addendum_blob_sha": "97f47fe541c78366e1a086a56ad01d215729ad58",
-    "graph_addendum_readback_ok": true,
-    "current_index_gate": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
-    "core_ci": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
-    "pr1289_head": "491e6f14503957da8e8f2cb82eba7f14bdbfe604",
-    "pr1289_state": "DRAFT_OPEN_UNMERGED",
-    "pr1289_core_ci_run": 40826979132,
-    "pr1289_core_ci_status": "PASS_177_TESTS_4_SUBTESTS_4.99S",
-    "pr1289_gate_run": 40826979063,
-    "pr1289_gate_status": "PASS_FAIL_CLOSED",
-    "pr1289_current_main_ahead_of_head": 8,
-    "pr1282_head": "b803fcb68d3302f6799b2e5f7aadd1afcc27f568",
-    "pr1282_current_main_ahead_of_head": 30,
-    "pr1282_state": "DRAFT_OPEN_UNMERGED_STALE",
-    "pr1282_current_main_ci_verified": false,
-    "main_signal": {
-      "timestamp": "2026-10-29T05:22:46.936694+00:00",
-      "score": 44,
-      "confidence": 0,
-      "provider_unavailable": true,
-      "forecast_status": "NOT_ISSUED"
-    },
-    "paper_trading_replay": "BLOCKED_CURRENT_LOG_CONTENT_UNAVAILABLE; CURRENT_TRADER_BTC-USD; POSITION_PRODUCT_NULL; PR1289_GUARD_TESTED_UNMERGED",
-    "main_merge_queue_status": "MUTATION_CAPABLE_ON_MAIN",
-    "platform_coordination_status": "DESIGNED_NOT_EXECUTED_LIVE_ADAPTERS_NOT_VERIFIED",
-    "creator_channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
-    "creator_identity_status": "EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
-    "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; YOUTUBE_DIRECT_PAGE_THROTTLED",
-    "forecast_status": "NOT_ISSUED",
-    "index_pointer_readback_ok": true,
-    "main_modified_by_this_run": false,
-    "merge_performed": false,
-    "force_push": false,
-    "deployment_executed": false,
-    "real_money_trade": false,
-    "paper_trading_state_mutated": false,
-    "index_blob_sha_at_readback": "bcd0cb721dea674df831a4c3635025cb1cf30c96",
-    "index_commit_sha_at_readback": "d0bfa77b77030e6c2c42bbb4a9313162b8488b2d",
-    "index_character_count_match": true,
-    "graph_addendum_commit_sha": "911d339af6d7f0d1954756921a331c4b9a71cfe8",
-    "new_graph_edges": 13,
-    "new_competing_hypotheses": 5,
-    "sbic_candidates": [
-      "SBIC East Japan",
-      "historical SBI Capital Co., Ltd.",
-      "SBI Crypto Co., Ltd."
-    ],
-    "sbic_original_referent": "UNRESOLVED",
-    "sbic_crypto_direct_xrp_relationship": "NOT_ESTABLISHED",
-    "ask_coin_permission_io_candidate": "CONFIRMED_BY_COMPANY_ANNOUNCEMENT; ORIGINAL_CONTEXT_UNRESOLVED",
-    "camilla_stephenson_identity": "NAMESAKES_FOUND; CANONICAL_XRP_CHANNEL_UNRESOLVED",
-    "source_ids_unique": true,
-    "relationship_edges": 149,
-    "competing_hypotheses": 94,
-    "actual_capital_phrase": "EVERNORTH_RELEVANT_CANDIDATE; ORIGINAL_CONTEXT_UNRESOLVED",
-    "evernorth_xrp_holdings": "APPROX_473M; MIX_OF_CONTRIBUTIONS_AND_CASH_PURCHASES",
-    "contingent_eloc": "UP_TO_80.7M_GROSS; NOT_ACTUAL_PROCEEDS_WITHOUT_SALES",
-    "contingent_warrants": "UP_TO_132.2M_IF_EXERCISED; NOT_ACTUAL_PROCEEDS_WITHOUT_EXERCISE",
-    "pr1290_head": "6812f91d81807873d53d6efa65c06eb069ec0424",
-    "pr1290_ci_run": 40827759284,
-    "pr1290_ci_status": "PASS_170_TESTS_4_SUBTESTS_6.42S",
-    "pr1290_gate_run": 40827759250,
-    "pr1290_gate_status": "PASS",
-    "pr1290_state": "DRAFT_OPEN_UNMERGED",
-    "pr1290_current_main_ahead_of_head": 0,
-    "pr1291_head": "6762868d064a854c0126cf74caa7fcdc11df12cc",
-    "pr1291_ci_run": 40827879345,
-    "pr1291_ci_status": "PASS_173_TESTS_4_SUBTESTS_5.03S",
-    "pr1291_gate_run": 40827879426,
-    "pr1291_gate_status": "PASS",
-    "pr1291_state": "DRAFT_OPEN_UNMERGED",
-    "pr1291_current_main_ahead_of_head": 0,
-    "pr1288_current_main_ahead_of_head": 15,
-    "candidate_channel": "https://www.youtube.com/@drkamilahstevenson",
-    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
-    "candidate_own_upload_count": 2,
-    "related_guest_appearance_count": 1
-  },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T07:06:00.000Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T07:07:00.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; LEDGER_POINTER_READBACK_PENDING; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "06820e8b404456aef2b3342231cb6eb534f8c634",
-      "snapshot_commit_sha": "9ed53d75997598d86c5a5ab13ec1f3772a1f3ee4",
-      "snapshot_characters": 31563,
-      "source_reference_count": 56,
+      "snapshot_blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
+      "snapshot_commit_sha": "2e153c86a2849c28cdae08b0962aa68ee5034074",
+      "snapshot_characters": 32330,
+      "source_reference_count": 57,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0705-market-structure-and-signal-safety.json",
-      "graph_addendum_blob_sha": "2a1b14bf61c2e8f54c8c4419ab10bc9003db257a",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
+      "graph_addendum_blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
       "graph_addendum_readback_ok": true,
-      "ci_pr1289": {
-        "status": "PASS",
-        "run_id": 40826979132
-      },
-      "gate_pr1289": {
-        "status": "PASS",
-        "run_id": 40826979063
-      },
-      "ci_pr1290": {
-        "status": "PASS",
-        "run_id": 40827759284
-      },
-      "gate_pr1290": {
-        "status": "PASS",
-        "run_id": 40827759250
-      },
-      "ci_pr1291": {
-        "status": "PASS",
-        "run_id": 40827879345
-      },
-      "gate_pr1291": {
-        "status": "PASS",
-        "run_id": 40827879426
-      },
-      "research_base_ci": "NOT_TRIGGERED_OR_UNVERIFIED",
-      "index_pointer_readback_ok": true,
-      "index_character_count_match": true,
+      "index_pointer_readback_ok": false,
+      "index_character_count_match": false,
+      "index_metric_count_match": false,
       "source_ids_unique": true,
-      "index_metric_count_match": true,
-      "forecast_status": "NOT_ISSUED",
-      "index_blob_sha_at_readback": "3e5e03a9f02e84dcad4975d32337a6ce6ba8b63b",
-      "index_commit_sha_at_readback": "ec4ad07cecd819ecd3b9ef942b7608360333dc25",
-      "missing_index_source_references": 0,
-      "verified_source_records": 806,
-      "verified_run_updates": 152,
-      "verified_limitations": 189
+      "forecast_status": "NOT_ISSUED"
     }
   },
   "index_format_version": "2.0",
@@ -11699,35 +11675,24 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T07:06:00.000Z",
-    "focus": "XRP derivatives positioning, conflicting ETF flow trackers, Coinbase/RLUSD distribution boundary, and current mainline safety recheck",
+    "recorded_at_utc": "2026-10-29T07:07:00.000Z",
+    "focus": "Correction: verify latest simulated BTC-USD paper-trader log row from main commit diff while retaining full replay blocker",
     "source_ids": [
-      "SRC-RUN45-20261029T0705Z-XRP-MARKET-KAIRO",
-      "SRC-RUN45-20261029T0705Z-XRP-DERIVATIVES-COINALYZE",
-      "SRC-RUN45-20261029T0705Z-XRP-ETF-ALPHA",
-      "SRC-RUN45-20261029T0705Z-XRP-ETF-INSIGHTS",
+      "SRC-RUN46-20261029T0707Z-PAPER-LOG-LAST-ROW",
       "SRC-RUN45-20261029T0705Z-MAIN-HEAD",
-      "SRC-RUN45-20261029T0705Z-MAIN-XRP-SIGNAL",
-      "SRC-RUN45-20261029T0705Z-MAIN-XRP-SUMMARY",
-      "SRC-RUN45-20261029T0705Z-MAIN-PAPER-STATE",
-      "SRC-RUN45-20261029T0705Z-MAIN-PAPER-WORKFLOW",
-      "SRC-RUN45-20261029T0705Z-MAIN-MERGE-QUEUE",
-      "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
-      "SRC-COINBASE-RLUSD-BLOG-2026-10-28",
-      "SRC-RUN39-20261029T050603-COINBASE-Q3-CALENDAR"
+      "SRC-RUN45-20261029T0705Z-MAIN-PAPER-STATE"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0705-market-structure-and-signal-safety.json",
-      "blob_sha": "2a1b14bf61c2e8f54c8c4419ab10bc9003db257a",
-      "commit_sha": "4be9235580c191598ca7a670994fc8cfbeca10f4",
-      "new_edges": 7,
-      "new_competing_hypotheses": 5
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
+      "blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
+      "commit_sha": "b74baac1e97d83f3e3cb95678c3d195d8dba347d",
+      "new_edges": 1,
+      "new_competing_hypotheses": 0
     },
-    "market_observations": 4,
-    "synchronized_market_panel": false,
-    "market_feature_admission": "NONE",
-    "forecast_status": "NOT_ISSUED",
-    "previous_snapshot_path": "data/xrp_intelligence/snapshots/20261029T0706-market-structure-and-main-safety.json"
+    "market_observations": 0,
+    "paper_trading_observations": 1,
+    "replay_status": "BLOCKED_FULL_HISTORICAL_LOG_UNAVAILABLE",
+    "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T03:10:30.000Z",
@@ -12173,6 +12138,23 @@
       "source_ids_unique": true,
       "missing_snapshot_source_references": 0,
       "missing_graph_source_references": 0
+    },
+    {
+      "recorded_at_utc": "2026-10-29T07:07:00.000Z",
+      "verification_type": "PAPER_TRADER_LATEST_ROW_CORRECTION_SNAPSHOT_AND_GRAPH_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0707-paper-trader-log-retrieval-correction.json",
+      "snapshot_blob_sha": "82870747da51b40e9f88e82d27eacc46f4631626",
+      "snapshot_commit_sha": "2e153c86a2849c28cdae08b0962aa68ee5034074",
+      "snapshot_characters": 32330,
+      "source_reference_count": 57,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0707-paper-trader-log-last-row.json",
+      "graph_addendum_blob_sha": "e8895e6e396b0052dfb3d876ccace9a03a9a6d4a",
+      "graph_addendum_readback_ok": true,
+      "index_pointer_status": "PENDING_AFTER_LEDGER_WRITE",
+      "full_log_replay_status": "BLOCKED_FULL_HISTORICAL_LOG_UNAVAILABLE",
+      "forecast_status": "NOT_ISSUED"
     }
   ]
 }
