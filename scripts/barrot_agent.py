@@ -1110,7 +1110,7 @@ def main() -> None:
             )
         except Exception as exc:
             message = (
-                "Barrot read-only audit failed safely; repository repair was not started.\\n\\n"
+                "Barrot read-only audit failed safely; repository repair was not started.\n\n"
                 f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
             )
             post_issue_comment(message)
@@ -1119,7 +1119,7 @@ def main() -> None:
             message = "Barrot read-only audit returned an empty report; repository repair was not started."
             post_issue_comment(message)
             raise SystemExit(message)
-        post_issue_comment("## Barrot Read-Only Audit Report\\n\\n" + report)
+        post_issue_comment("## Barrot Read-Only Audit Report\n\n" + report)
         print("READ_ONLY_AUDIT=COMPLETE")
         return
 
