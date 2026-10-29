@@ -94,6 +94,25 @@ class ObjMeshLoaderTests(unittest.TestCase):
         self.assertEqual(lod_one.metadata.lod_level, 1)
         self.assertIsNot(lod_zero, lod_one)
 
+    def test_missing_or_empty_mesh_data_is_not_assessed(self):
+        cases = [
+            (None, None),
+            ([], []),
+            ([(0.0, 0.0, 0.0)], []),
+            ([], [(0, 1, 2)]),
+        ]
+        for vertices, faces in cases:
+            with self.subTest(vertices=vertices, faces=faces):
+                report = QualityMetrics().validate(
+                    asset_name="missing-mesh",
+                    triangle_count=0,
+                    texture_count=0,
+                    mesh_vertices=vertices,
+                    mesh_faces=faces,
+                )
+                self.assertIsNone(report.geometry.is_watertight)
+                self.assertEqual(report.geometry.topology_status, "NOT_ASSESSED")
+
     def test_loader_uses_real_obj_counts_and_topology(self):
         path = self.write_obj(
             "v 0 0 0\nv 1 0 0\nv 0 1 0\nv 0 0 1\n"
