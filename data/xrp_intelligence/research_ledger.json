@@ -12775,7 +12775,14 @@
       "gate": "PASS",
       "state": "DRAFT_OPEN_UNMERGED"
     },
-    "verified_at_utc": "2026-10-29T11:04:30Z"
+    "verified_at_utc": "2026-10-29T11:05:30Z",
+    "index_pointer_status": "PASS",
+    "index_blob_sha_at_readback": "abb794646ce82646214a31a1608abd9119c603b7",
+    "index_commit_sha_at_readback": "b7678bab85a62fff457a50aa49e6d679efbcb753",
+    "index_character_count_match": true,
+    "index_metric_count_match": true,
+    "missing_snapshot_source_references": 0,
+    "missing_graph_source_references": 0
   },
   "ledger_metrics": {
     "source_records": 885,
@@ -12792,7 +12799,7 @@
     "index_characters_before_this_update": 857058,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 8009,
-    "index_characters": 865504
+    "index_characters": 866126
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; ARC_SBI_COINBASE_RELATIONSHIPS_RECORDED; FORECAST_NOT_ISSUED",
@@ -12840,12 +12847,17 @@
       "graph_hypotheses": 2,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
-      "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
+      "index_pointer_status": "PASS",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
       "merge_performed": false,
-      "real_money_trade": false
+      "real_money_trade": false,
+      "index_blob_sha_at_readback": "abb794646ce82646214a31a1608abd9119c603b7",
+      "index_commit_sha_at_readback": "b7678bab85a62fff457a50aa49e6d679efbcb753",
+      "index_character_count_match": true,
+      "index_metric_count_match": true,
+      "missing_snapshot_source_references": 0
     }
   },
   "index_format_version": "2.0",
