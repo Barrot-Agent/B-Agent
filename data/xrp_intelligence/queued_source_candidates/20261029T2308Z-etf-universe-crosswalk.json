@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "record_type": "queued_source_candidates_batch",
+  "batch_id": "XRP-ETF-UNIVERSE-CROSSWALK-20261029T2308Z",
+  "captured_on_utc_date": "2026-10-29",
+  "captured_at_utc": "2026-10-29T23:08:00Z",
+  "status": "DISCOVERED_NOT_INGESTED_IN_CANONICAL_SOURCE_ARCHIVE",
+  "not_for_model_features": true,
+  "purpose": "Reconcile differing XRP fund universes and document the current ETF-flow methodology. The tracker refresh is a repeat observation from an existing canonical source; CryptoSlate is derivative of XRP Insights, not independent flow corroboration; CorpStacking uses a different direct-XRP fund universe. Ingest only after the sharded-ledger validator and regression tests pass.",
+  "candidates": [
+    {
+      "candidate_id": "Q-XRPINSIGHTS-REFRESH-20261029T2308Z",
+      "source_class": "EXISTING_SECONDARY_SOURCE_REFRESH",
+      "url": "https://xrp-insights.com/",
+      "accessed_at_utc": "2026-10-29T23:08:00Z",
+      "canonical_related_source_id": "SRC-XRPINSIGHTS-ETF-20261029T211600Z",
+      "observed_claims": {
+        "displayed_xrp_price_usd": 1.24,
+        "displayed_24h_change_pct": -6.52,
+        "tracked_xrp_held": 1190090000,
+        "displayed_aum_usd": 1591470000,
+        "week_44_net_flow_xrp": -3120000,
+        "net_flow_oct26_to_oct28_xrp": -2960000,
+        "oct28_net_flow_xrp": 174140,
+        "oct27_net_flow_xrp": -433900,
+        "oct26_net_flow_xrp": -2700000,
+        "tracker_universe": "six US spot XRP ETFs plus BITW",
+        "flow_exclusion": "GXRP excluded from flow totals while a historical data gap is corrected; holdings still included",
+        "oct29_holdings_status": "not yet settled at page capture; expected next morning"
+      },
+      "evidence_class": "SECONDARY_TRACKER_REFRESH; ISSUER-HOLDINGS-DERIVED",
+      "limitations": [
+        "Price is a dynamic display captured after market close; no synchronized exchange quote timestamp is exposed in the captured page.",
+        "Flow data ends at October 28 and is not a same-day October 29 flow.",
+        "Tracker methodology excludes GXRP from flow totals while still including its holdings.",
+        "Not independent of the prior canonical XRP Insights tracker source."
+      ]
+    },
+    {
+      "candidate_id": "Q-CRYPTOSLATE-XRP-ETF-COST-METHODOLOGY-20261029",
+      "source_class": "SECONDARY_ARTICLE_DERIVED_FROM_XRP_INSIGHTS",
+      "url": "https://cryptoslate.com/crypto-investors-refuse-to-sell-xrp-etf-tokens-despite-a-25-price-crash/",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-29T23:08:00Z",
+      "observed_claims": {
+        "tracker_modeled_acquisition_cost_usd_per_xrp": 1.707,
+        "alternative_nav_based_cost_estimate_usd_per_xrp": 1.7458,
+        "matched_cohort_holdings_change_oct23_to_oct28_pct": -0.26,
+        "net_flow_oct26_to_oct28_xrp": -2960000,
+        "oct28_net_flow_xrp": 174140
+      },
+      "evidence_class": "SECONDARY_METHODOLOGY_COMMENTARY_NOT_INDEPENDENT_FLOW_CONFIRMATION",
+      "dependency": "Uses XRP Insights' holdings/flow dataset; count as one underlying flow source, not two independent confirmations.",
+      "limitations": [
+        "Modeled fund acquisition cost is not shareholder return, actual investor cost basis, price floor, liquidation threshold or proof of a market purchase.",
+        "Fund holdings may change due to cash creations, in-kind transfers, fees, index adjustments or data reconstruction.",
+        "Share counts and authorized-participant creation/redemption records are needed for stronger flow attribution."
+      ]
+    },
+    {
+      "candidate_id": "Q-CORPSTACKING-XRP-FUND-UNIVERSE-20261029",
+      "source_class": "SECONDARY_FUND_HOLDINGS_CROSSCHECK",
+      "url": "https://www.corpstacking.com/treasuries/by-token/ripple",
+      "accessed_at_utc": "2026-10-29T23:08:00Z",
+      "observed_claims": {
+        "reported_direct_xrp_fund_count": 10,
+        "reported_total_xrp_held": 1409496942,
+        "largest_fund": "Bitwise XRP ETF",
+        "bitwise_xrp_held": 413822149.44,
+        "franklin_xrp_held": 306089302.91,
+        "canary_xrp_held": 243423450.15
+      },
+      "evidence_class": "SECONDARY_TRACKER_WITH_LINKED_SPONSOR_DISCLOSURES",
+      "methodology_notes": [
+        "Tracks direct-XRP funds/ETPs across a broader universe and explicitly excludes diversified basket funds such as BITW.",
+        "XRP Insights tracks six US spot funds plus BITW; its universe and treatment of non-US ETPs differ.",
+        "The two headline totals are not contradictory by themselves and must not be subtracted or averaged without a fund-by-fund crosswalk."
+      ],
+      "limitations": [
+        "The page exposes only the top three fund rows in the free view; remaining fund-level rows require further source inspection.",
+        "Fund balances have different as-of dates (Oct 28 or Oct 29).",
+        "Tracker totals are not net ETF flow and do not by themselves prove same-day spot purchases."
+      ]
+    }
+  ],
+  "reconciliation_status": "UNRESOLVED_UNIVERSE_CROSSWALK_REQUIRED",
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED",
+  "next_action": "Build a fund-level table with issuer, product type, jurisdiction, XRP balance, shares outstanding, as-of date, custody route, basket inclusion/exclusion and creation/redemption evidence. Do not infer price direction from these aggregate totals."
+}
