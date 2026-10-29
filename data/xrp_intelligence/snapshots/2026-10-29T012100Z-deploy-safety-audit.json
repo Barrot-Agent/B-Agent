@@ -1,0 +1,483 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T012100Z-DEPLOY-SAFETY",
+  "captured_at_utc": "2026-10-29T01:21:00.031Z",
+  "snapshot_character_count": 22069,
+  "mission_priority": "XRP intelligence and prediction-engine mastery remains Barrot's highest-priority mission; Barrot V3 remains the execution and verification foundation.",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "default_branch": "main",
+    "main_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+    "main_protected": true,
+    "research_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+    "research_branch_head_before_snapshot": "9a3ec4eee8e319f2d2efc1f8c4de0d70332266bb",
+    "previous_index_pointer": {
+      "record_type": "snapshot_reference",
+      "index_format_version": "2.0",
+      "schema_version": "1.0",
+      "captured_at_utc": "2026-10-29T01:11:20.367Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T011120Z-CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T011120Z-correction.json",
+      "snapshot_blob_sha": "274be95dc3b6b71c2ecfb674682edfe0ebe91f55",
+      "snapshot_commit_sha": "81e33a43f167387a0d71333b9d0b4f1e248b5a55"
+    },
+    "previous_snapshot": {
+      "path": "data/xrp_intelligence/snapshots/2026-10-29T011120Z-correction.json",
+      "blob_sha": "274be95dc3b6b71c2ecfb674682edfe0ebe91f55",
+      "captured_at_utc": "2026-10-29T01:11:20.367Z",
+      "preserved_unchanged": true
+    },
+    "direct_main_write_by_this_run": {
+      "occurred": true,
+      "commit_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "commit_message": "Test external deployment workflows fail closed",
+      "path": "tests/test_external_deploys_require_confirmation.py",
+      "cause": "The file-creation action omitted the target branch and committed to the default branch. This was an error.",
+      "correction": "No further direct main writes; fresh-main draft PR #1279 gates external deployment workflows. The test remains on main and is not included in the current core-CI explicit test list."
+    },
+    "external_merge_observed": {
+      "pr_number": 1273,
+      "merged_by": "Barrot-Agent",
+      "merged_at_utc": "2026-10-29T01:07:06Z",
+      "merge_commit_sha": "de30245082545242485b894bda53054b50c313aa",
+      "performed_by_this_run": false,
+      "authorization_evidence_in_this_run": "NOT_PRESENT; audit provenance separately"
+    },
+    "main_modified_by_this_run": true,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_manually_executed_by_this_run": false,
+    "deployment_runs_triggered_by_main_push": true,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false
+  },
+  "current_run_update": {
+    "run_sequence": 121,
+    "source_ids": [
+      "SRC-RUN16-MAIN-HEAD-20261029T010857Z",
+      "SRC-RUN16-LATEST-SIGNAL-20261029T010857Z",
+      "SRC-RUN16-ACCURACY-WORKFLOW-20261029T010857Z",
+      "SRC-RUN16-SUMMARY-WORKFLOW-20261029T010857Z",
+      "SRC-RUN16-PAPER-STATE-20261029T010857Z",
+      "SRC-RUN16-PAPER-LOG-READBACK-20261029T010857Z",
+      "SRC-RUN16-PR1274-CHECKS-20261029T010857Z",
+      "SRC-RUN16-PR1275-CHECKS-20261029T010857Z",
+      "SRC-RUN16-PR1273-STATE-20261029T010857Z",
+      "SRC-RUN16-LEDGER-BRANCH-20261029T010857Z",
+      "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z",
+      "SRC-RUN16-SNAPSHOT-READBACK-20261029T010857Z",
+      "SRC-RUN17-MAIN-HEAD-20261029T011120Z",
+      "SRC-RUN17-PAPER-LOG-BLOB-REPLAY-20261029T011120Z",
+      "SRC-RUN17-PAPER-STATE-20261029T011120Z",
+      "SRC-RUN17-PR1273-MERGE-20261029T011120Z",
+      "SRC-RUN17-PR1274-CHECKS-20261029T011120Z",
+      "SRC-RUN17-PR1275-CHECKS-20261029T011120Z",
+      "SRC-RUN17-ACCURACY-WORKFLOW-20261029T011120Z",
+      "SRC-RUN17-SUMMARY-WORKFLOW-20261029T011120Z",
+      "SRC-RUN17-APPROVAL-WORKFLOW-20261029T011120Z",
+      "SRC-RUN18-DIRECT-MAIN-COMMIT-20261029T012100Z",
+      "SRC-RUN18-EXTERNAL-ACTIONS-20261029T012100Z",
+      "SRC-RUN18-MERGE-QUEUE-AUDIT-20261029T012100Z",
+      "SRC-RUN18-BRANCH-PROTECTION-AUDIT-20261029T012100Z",
+      "SRC-RUN18-PR1277-STATE-20261029T012100Z",
+      "SRC-RUN18-PR1279-STATE-20261029T012100Z",
+      "SRC-RUN18-CI-TEST-COVERAGE-20261029T012100Z",
+      "SRC-RUN18-MAIN-HEAD-20261029T012100Z"
+    ],
+    "summary": "Audited the PR #1273 merge and active merge/deployment workflows; full paper-trading replay remains verified; an accidental direct main commit added the deployment regression test and triggered external workflows. Created draft PR #1279 to gate all four deployment workflows and include the test in core CI.",
+    "forecast_status": "NOT_ISSUED",
+    "new_synchronized_xrp_market_observations_admitted": 0,
+    "new_relationship_edges": 0,
+    "new_competing_hypotheses": 0
+  },
+  "repository_ci": {
+    "pr1277": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1277",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "mergeable": true,
+      "workflow_runs": [
+        {
+          "id": 40799212538,
+          "name": "Barrot Gated Merge (fail-closed)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 40799212550,
+          "name": "CI",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ],
+      "purpose": "Make merge-queue workflow read-only until authorization controls are reviewed."
+    },
+    "pr1279": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1279",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "mergeable": true,
+      "workflow_runs": [
+        {
+          "id": 40799810648,
+          "name": "Barrot Gated Merge (fail-closed)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 40799810659,
+          "name": "CI",
+          "status": "completed",
+          "conclusion": "failure"
+        }
+      ],
+      "purpose": "Remove push-triggered external deployment and require explicit YES input; adds test to core CI."
+    },
+    "pr1278": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1278",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "status": "STALE_PREDECESSOR; TEST_FILE_DUPLICATES_MAIN_CHANGE; KEEP_UNMERGED"
+    },
+    "pr1274": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1274",
+      "title": "Safety: retire invalid XRP accuracy scoring on fresh main",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "exact_head_ci": {
+        "status": "PASS",
+        "tests_passed": 147,
+        "duration_seconds": 5.14,
+        "run_id": 40798107398,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798107398"
+      },
+      "fail_closed_gate": {
+        "status": "PASS",
+        "run_id": 40798107409,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798107409"
+      },
+      "behind_current_main_by": 21,
+      "changed_paths": [
+        ".github/workflows/check-signal-accuracy.yml",
+        "scripts/check_signal_accuracy.py",
+        "tests/test_v3_scripts.py"
+      ],
+      "overlap_with_main_since_base": [],
+      "mergeability_at_capture": true,
+      "recheck_required": true
+    },
+    "pr1275": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1275",
+      "title": "Safety: fix controlled approval PR metadata parsing on fresh main",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "exact_head_ci": {
+        "status": "PASS",
+        "tests_passed": 146,
+        "duration_seconds": 6.35,
+        "run_id": 40798190526,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798190526"
+      },
+      "fail_closed_gate": {
+        "status": "PASS",
+        "run_id": 40798190515,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798190515"
+      },
+      "behind_current_main_by": 21,
+      "changed_paths": [
+        ".github/workflows/barrot-approve-pr.yml",
+        "tests/test_v3_scripts.py"
+      ],
+      "overlap_with_main_since_base": [],
+      "mergeability_at_capture": true,
+      "recheck_required": true
+    }
+  },
+  "merge_controls_audit": {
+    "merge_queue": {
+      "path": ".github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+      "trigger": "workflow_dispatch only",
+      "permissions": {
+        "contents": "write",
+        "pull-requests": "write",
+        "checks": "read",
+        "statuses": "read"
+      },
+      "default_mode": "label",
+      "mode_all_available": true,
+      "default_dry_run": false,
+      "default_max_prs": "0 (unlimited)",
+      "contains_gh_pr_merge": true,
+      "risk": "Can merge PRs when manually dispatched; no evidence proves it caused PR #1273 merge."
+    },
+    "gated_merge": {
+      "path": ".github/workflows/barrot-gated-merge.yml",
+      "blob_sha": "a0b08a3587f19d27a1f6fb6102cdc26218304be8",
+      "behavior": "read-only; explicitly says automatic merge disabled"
+    },
+    "pr_automerge": {
+      "path": ".github/workflows/barrot-pr-automerge.yml",
+      "blob_sha": "0bfd821595a350989ee61d3ac15988864b38a413",
+      "behavior": "workflow_dispatch only; read-only fail-closed"
+    },
+    "approval_workflow": {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "blob_sha": "7047d1ebf27c5151b5a844ad375ac583a2e193e4",
+      "trigger": "workflow_dispatch only in file, yet push-event zero-job failures continue; root cause unknown"
+    },
+    "branch_protection": {
+      "branch_object_protected": true,
+      "detailed_endpoint": "403 Resource not accessible by integration",
+      "rulesets_returned": [
+        {
+          "name": "Fall Back",
+          "enforcement": "disabled"
+        }
+      ],
+      "required_reviews_and_checks": "NOT_VERIFIED"
+    },
+    "queue_run_search": "No Merge Queue run appeared in latest 30 returned workflow runs; workflow-specific runs endpoint unavailable. Not proof no earlier run exists."
+  },
+  "external_workflow_runs": [
+    {
+      "id": 40799576440,
+      "name": ".github/workflows/barrot-approve-pr.yml",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-29T01:18:05Z",
+      "updated_at": "2026-10-29T01:18:05Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799576440"
+    },
+    {
+      "id": 40799401394,
+      "name": "Barrot Operations Pipeline",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-29T01:16:23Z",
+      "updated_at": "2026-10-29T01:16:32Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401394"
+    },
+    {
+      "id": 40799401276,
+      "name": "Deploy to Databricks",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-29T01:16:23Z",
+      "updated_at": "2026-10-29T01:18:15Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401276"
+    },
+    {
+      "id": 40799401243,
+      "name": "Databricks Bundle Deploy",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-29T01:16:23Z",
+      "updated_at": "2026-10-29T01:17:04Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401243"
+    },
+    {
+      "id": 40799400148,
+      "name": ".github/workflows/barrot-approve-pr.yml",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-29T01:16:23Z",
+      "updated_at": "2026-10-29T01:16:23Z",
+      "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799400148"
+    },
+    {
+      "id": 40799382600,
+      "name": ".github/workflows/barrot-approve-pr.yml",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-29T01:16:12Z",
+      "updated_at": "2026-10-29T01:16:12Z",
+      "head_sha": "bc8fec421f4c7726db9db5941b7bbc577ab96def",
+      "actor": "Barrot-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799382600"
+    }
+  ],
+  "paper_trading": {
+    "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
+    "cash_usd": 8011.936613782476,
+    "position_size": 0.024901276579239066,
+    "position_product": null,
+    "avg_entry_price": 80436.84,
+    "trade_count": 125,
+    "current_log_blob_sha": "70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a",
+    "current_log_blob_url": "https://api.github.com/repos/Barrot-Agent/B-Agent/git/blobs/70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a",
+    "current_log_characters": 1451450,
+    "current_log_records": 2357,
+    "replay": {
+      "method": "Read-only replay of scripts/coinbase_paper_trader.py execute_paper_trade semantics against exact Git blob",
+      "script_blob_sha": "b38ab435f575b6037f05fa8e9ea00fd487d2d9eb",
+      "malformed_jsonl_records": 0,
+      "timestamp_order_errors": 0,
+      "product_universe": [
+        "BTC-USD"
+      ],
+      "action_counts": {
+        "buy": 36,
+        "sell": 89,
+        "hold": 2232
+      },
+      "portfolio_value_mismatches": 0,
+      "portfolio_change_mismatches": 0,
+      "cumulative_return_mismatches": 0,
+      "result_transition_mismatches": 0,
+      "state_numeric_fields_match": true,
+      "position_product_remains_null": true,
+      "first_log_timestamp_offset_from_started_at_seconds": 0.638156,
+      "started_at_offset_interpretation": "Persisted state started about 0.638 seconds before the first log record; expected, not a financial-state mismatch."
+    },
+    "current_full_replay_status": "PASS_READ_ONLY_2357_ROWS",
+    "state_mutated": false
+  },
+  "market_research": {
+    "forecast_status": "NOT_ISSUED",
+    "synchronized_xrp_market_observations_admitted": 0,
+    "prior_market_observations_carried_forward": 63,
+    "relationship_edges_carried_forward": 104,
+    "competing_hypotheses": 70,
+    "new_hypothesis": {
+      "id": "HYP-RUN16-CIRCLE-RESERVE-REVENUE-SENSITIVITY-20261029T010857Z",
+      "status": "INFERENCE_WITH_SECONDARY_CLAIM",
+      "hypothesis": "Circle's reserve-income exposure may be sensitive to rates and stablecoin distribution shifts; an AI-agent-driven migration of balances is a proposed risk scenario, not an observed cause of USDC outflows or XRP demand.",
+      "supporting_evidence": [
+        "The Block reported on 2026-10-27 that Mizuho estimated 10–20% medium-term reserve-revenue downside risk if AI agents steer USDC holders toward higher-yield fiat alternatives or other platforms."
+      ],
+      "counter_hypotheses": [
+        "USDC distribution network effects and payment integrations may offset any balance migration.",
+        "Reserve revenue may change primarily with policy rates and circulation, not AI-agent routing.",
+        "Even if USDC balances migrate, no XRP demand effect follows without chain- and route-level evidence."
+      ],
+      "disconfirming_evidence_needed": [
+        "Issuer filings and subsequent USDC circulation/reserve revenue data show no material impact.",
+        "No observable change in XRPL USDC balances or XRP bridge-path share after relevant adoption events."
+      ],
+      "xrp_link": "INDIRECT_SPECULATIVE_ONLY",
+      "confidence": "LOW",
+      "source_ids": [
+        "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z"
+      ]
+    },
+    "circle_source_claim": {
+      "source": "https://www.theblock.co/news/business/2026-10-27-mizuho-cuts-circle-price-target-431826",
+      "publication_date": "2026-10-27",
+      "claim": "Mizuho reportedly estimated 10–20% medium-term reserve-revenue downside risk if AI agents steer USDC holders toward higher-yield alternatives.",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "not_observed_impact": true,
+      "direct_xrp_link": "NOT_ESTABLISHED"
+    },
+    "coinbase_q3": "Official results scheduled for 2026-10-29 after market close; not available at this capture (local 2026-10-28 evening).",
+    "fomc": "October 28 hold at 3.75%–4.00% with two dissents; no synchronized post-announcement XRP cross-asset panel admitted.",
+    "sbic_identity": "Regional SBIC entities remain distinct; originating phrase does not resolve which entity was intended.",
+    "phrase_investigations": {
+      "ASK_Coin": "UNRESOLVED_ORIGINAL_CONTEXT",
+      "actual_capital": "UNRESOLVED_ORIGINAL_CONTEXT",
+      "SBIC_ChatGPT_SBIC": "UNRESOLVED_ORIGINAL_CONTEXT",
+      "Camilla_Stephenson_YouTube": "CANONICAL_IDENTITY_AND_EXHAUSTIVE_PUBLIC_VIDEO_INVENTORY_UNVERIFIED"
+    }
+  },
+  "ci_test_coverage": {
+    "current_main_ci_run_id": 40799401318,
+    "status": "PASS",
+    "command": "explicit list of test modules; tests/test_external_deploys_require_confirmation.py was not listed and therefore was not exercised",
+    "pr1279_change": "adds the new regression test to the explicit core CI command"
+  },
+  "platform_coordination": {
+    "verified_live_access": [
+      "ChatGPT",
+      "GitHub repository connector"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "rule": "Do not claim live collaboration without authenticated end-to-end evidence."
+  },
+  "next_actions": [
+    "Review PR #1279 on its exact head; wait for CI and fail-closed gate. Keep draft and unmerged.",
+    "Review PR #1277 to make merge queue read-only; keep draft and unmerged.",
+    "Audit provenance and authorization for PR #1273 merged by Barrot-Agent; do not automatically revert.",
+    "Do not make further direct main writes. The accidental test-file commit is preserved and is corrected through PR #1279.",
+    "Track the external workflows triggered by main commits; Deploy to Databricks failed twice, while Databricks Bundle Deploy and Barrot Operations Pipeline succeeded. Exact external state changes are not independently verified.",
+    "Obtain full CI/gate verification for the compact-ledger research branch; latest index head remains unverified.",
+    "Continue XRP market-data synchronization, Circle/Coinbase/SBI/SBIC research, and exact-phrase/YouTube identity work.",
+    "Keep forecast status NOT_ISSUED until synchronized features and out-of-sample evaluation justify a prediction."
+  ],
+  "limitations": [
+    "2026-10-29T01:21:00.031Z: This run accidentally committed tests/test_external_deploys_require_confirmation.py directly to main at c14d8cd1bfc96c738cce49a95555b9e0e1443e7c because the branch argument was omitted from a file-creation call. This was an error. No further main writes were made; the file is preserved and PR #1279 fixes the workflows it tests.",
+    "2026-10-29T01:21:00.031Z: The direct main commit triggered Databricks Bundle Deploy (success), Barrot Operations Pipeline (success), Deploy to Databricks (failure), CI (success but did not include the new test), and zero-job approval-workflow failures. The prior bc8fec commit also triggered Hugging Face sync and external workflows. This run did not manually dispatch or cancel these workflows; remote state changes are not independently verified.",
+    "2026-10-29T01:21:00.031Z: PR #1273 was merged by Barrot-Agent at 2026-10-29T01:07:06Z. This run did not perform the merge; authorization evidence is not established in this run.",
+    "2026-10-29T01:21:00.031Z: The manual merge-queue workflow can merge PRs with write permissions and mode=all, but no evidence proves it caused PR #1273's merge.",
+    "2026-10-29T01:21:00.031Z: PR #1279 CI/gate was still in progress at capture; PR #1277's CI/gate status must be refreshed.",
+    "2026-10-29T01:21:00.031Z: Detailed branch protection requirements were inaccessible (403); the main branch object reports protected=true, but required reviews/checks were not verified."
+  ],
+  "source_ids": [
+    "SRC-RUN16-MAIN-HEAD-20261029T010857Z",
+    "SRC-RUN16-LATEST-SIGNAL-20261029T010857Z",
+    "SRC-RUN16-ACCURACY-WORKFLOW-20261029T010857Z",
+    "SRC-RUN16-SUMMARY-WORKFLOW-20261029T010857Z",
+    "SRC-RUN16-PAPER-STATE-20261029T010857Z",
+    "SRC-RUN16-PAPER-LOG-READBACK-20261029T010857Z",
+    "SRC-RUN16-PR1274-CHECKS-20261029T010857Z",
+    "SRC-RUN16-PR1275-CHECKS-20261029T010857Z",
+    "SRC-RUN16-PR1273-STATE-20261029T010857Z",
+    "SRC-RUN16-LEDGER-BRANCH-20261029T010857Z",
+    "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z",
+    "SRC-RUN16-SNAPSHOT-READBACK-20261029T010857Z",
+    "SRC-RUN17-MAIN-HEAD-20261029T011120Z",
+    "SRC-RUN17-PAPER-LOG-BLOB-REPLAY-20261029T011120Z",
+    "SRC-RUN17-PAPER-STATE-20261029T011120Z",
+    "SRC-RUN17-PR1273-MERGE-20261029T011120Z",
+    "SRC-RUN17-PR1274-CHECKS-20261029T011120Z",
+    "SRC-RUN17-PR1275-CHECKS-20261029T011120Z",
+    "SRC-RUN17-ACCURACY-WORKFLOW-20261029T011120Z",
+    "SRC-RUN17-SUMMARY-WORKFLOW-20261029T011120Z",
+    "SRC-RUN17-APPROVAL-WORKFLOW-20261029T011120Z",
+    "SRC-RUN18-DIRECT-MAIN-COMMIT-20261029T012100Z",
+    "SRC-RUN18-EXTERNAL-ACTIONS-20261029T012100Z",
+    "SRC-RUN18-MERGE-QUEUE-AUDIT-20261029T012100Z",
+    "SRC-RUN18-BRANCH-PROTECTION-AUDIT-20261029T012100Z",
+    "SRC-RUN18-PR1277-STATE-20261029T012100Z",
+    "SRC-RUN18-PR1279-STATE-20261029T012100Z",
+    "SRC-RUN18-CI-TEST-COVERAGE-20261029T012100Z",
+    "SRC-RUN18-MAIN-HEAD-20261029T012100Z"
+  ],
+  "main_modified_by_this_run": true,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_manually_executed": false,
+  "automatic_external_workflows_triggered_by_main_push": true,
+  "real_money_trade": false,
+  "paper_trading_state_mutated": false
+}
