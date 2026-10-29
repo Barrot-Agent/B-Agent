@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1217-PR1308-CLEANUP-CI",
+  "captured_at_utc": "2026-10-29T12:17:30Z",
+  "data_cutoff_utc": "2026-10-29T12:17:30Z",
+  "observed_main_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Corrective PR #1308 now passes core CI and the fail-closed gate. It removes only the unintended data-only graph file added to main at f23a2b81; the PR is mergeable but remains draft and unmerged pending approval. Main still contains that file, but the compare against b60faa26 shows no runtime-code, workflow, signal or paper-trading-state changes. PR #1307 also remains draft/unmerged with passing exact-head checks and a fail-closed gate; the scheduled paper trader remains active and the simulated open position identity remains null. No XRP forecast issued.",
+  "findings": [
+    {
+      "id": "FIND-RUN64-PR1308-CI",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "PR #1308 core CI and fail-closed gate passed; the draft PR deletes exactly one data-only graph file and is mergeable. Main remains changed until approval and merge.",
+      "source_ids": [
+        "SRC-GH-PR1308-STATUS-20261029T1217Z",
+        "SRC-GH-PR1308-CI-20261029T1217Z",
+        "SRC-GH-PR1308-GATE-20261029T1217Z"
+      ],
+      "limitation": "No merge was authorized or performed."
+    },
+    {
+      "id": "FIND-RUN64-MAIN-DIFF",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main differs from b60faa26 by one added JSON graph file only; no runtime code, workflow, signal or paper-trading state path changed.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T1217Z",
+        "SRC-GH-PR1308-STATUS-20261029T1217Z"
+      ],
+      "limitation": "The main tree is not yet restored to its prior state."
+    },
+    {
+      "id": "FIND-RUN64-PR1307",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "PR #1307 has passing exact-head CI (193 tests plus four subtests) and a passing fail-closed gate; main remains scheduled until approval and merge.",
+      "source_ids": [
+        "SRC-GH-PR1307-STATUS-20261029T1217Z"
+      ],
+      "limitation": "PR #1307 base is one commit behind main, with only the unrelated data-only graph file in the intervening commit."
+    }
+  ],
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+    "blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+    "commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
+    "new_edges": 0,
+    "new_competing_hypotheses": 0
+  },
+  "sources": [
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261029T1217Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/f23a2b81899ac12aefb9acd5a313e7bcf2dc0987"
+    },
+    {
+      "id": "SRC-GH-PR1308-STATUS-20261029T1217Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308"
+    },
+    {
+      "id": "SRC-GH-PR1308-CI-20261029T1217Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40871883656"
+    },
+    {
+      "id": "SRC-GH-PR1308-GATE-20261029T1217Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40871883635"
+    },
+    {
+      "id": "SRC-GH-PR1307-STATUS-20261029T1217Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1307"
+    }
+  ],
+  "market_observations": [],
+  "verification": {
+    "snapshot_readback": "PENDING",
+    "graph_readback": "PASS",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "pr1308_ci": "PASS",
+    "pr1308_gate": "PASS_FAIL_CLOSED",
+    "pr1307_ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+    "pr1307_gate": "PASS_FAIL_CLOSED",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": true,
+    "cleanup_pr1308": "DRAFT_OPEN_UNMERGED",
+    "merge_performed": false,
+    "force_push": false,
+    "deployment_executed": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false
+  }
+}
