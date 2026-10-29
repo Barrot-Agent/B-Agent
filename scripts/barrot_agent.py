@@ -105,7 +105,7 @@ def _is_mutating_git(args: list[str]) -> bool:
         return True
     if command == "config":
         read_only = {"--get", "--get-all", "--get-regexp", "--get-urlmatch", "--list", "-l", "--show-origin", "--show-scope", "--name-only"}
-        return not rest or not any(token in read_only for token in rest[:3])
+        return not rest or rest[0] not in read_only
     if command == "branch":
         read_only = {"--show-current", "--list", "-l", "-a", "-r", "--all", "--remotes", "--contains", "--merged", "--no-merged", "--format", "--sort", "--verbose", "-v", "--column", "--no-column"}
         return any((not token.startswith("-")) or token not in read_only for token in rest)
