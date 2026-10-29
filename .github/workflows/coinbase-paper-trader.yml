@@ -2,8 +2,9 @@ name: Coinbase Paper Trader
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '*/30 * * * *'
+
+permissions:
+  contents: read
 
 jobs:
   trade:
@@ -17,11 +18,15 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - run: python3 scripts/coinbase_paper_trader.py
-      - name: Commit
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add web/paper_trading_state.json web/paper_trading_log.jsonl
-          git diff --cached --quiet || git commit -m "Paper trade cycle [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Run simulated paper-trading cycle
+        run: python3 scripts/coinbase_paper_trader.py
+      - name: Upload simulation state and log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coinbase-paper-trader-${{ github.run_id }}
+          path: |
+            web/paper_trading_state.json
+            web/paper_trading_log.jsonl
+          if-no-files-found: ignore
+          retention-days: 14
