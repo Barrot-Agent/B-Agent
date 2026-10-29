@@ -85,7 +85,7 @@ class ObjMeshLoaderTests(unittest.TestCase):
 
     def test_lod_zero_does_not_collide_with_default_lod_cache(self):
         path = self.write_obj(
-            "v 0 0 0\\nv 1 0 0\\nv 0 1 0\\nf 1 2 3\\n"
+            "v 0 0 0\nv 1 0 0\nv 0 1 0\nf 1 2 3\n"
         )
         loader = AssetLoader(default_lod=1)
         lod_zero = loader.load(str(path), format=AssetFormat.OBJ, target_lod=0)
