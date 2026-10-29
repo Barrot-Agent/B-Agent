@@ -1631,10 +1631,16 @@ class ScientificDiscoveryController:
     ) -> ResearchCycleRecord:
         fingerprint = adapter.problem_fingerprint()
         existing = self.ledger_store.load_cycle_by_fingerprint(fingerprint)
+        # A terminal cycle is a completed checkpoint, not a permanent lock on future
+        # research. A newly triggered run starts a new cycle and imports committed prior
+        # evidence from .barrot/collaboration_records; nonterminal cycles still resume.
+        if existing is not None and existing.status in TERMINAL_RESEARCH_STATUSES:
+            existing = None
         cycle = self._resume_or_create(existing, adapter)
         if cycle.status in TERMINAL_RESEARCH_STATUSES:
             cycle.durable_record_written = True
             return cycle
+        import_prior_records = existing is None
         try:
             cycle.retry_policy = asdict(self.retry_policy)
             self._transition(cycle, ResearchState.AUDITING, "Starting research cycle audit.", fingerprint)
@@ -1642,6 +1648,63 @@ class ScientificDiscoveryController:
                 return cycle
 
             problem, sources, claims, evidence, tracks, reviews, formal_specs, questions = adapter.ingest()
+            if import_prior_records:
+                prior_dir = self.workspace / ".barrot" / "collaboration_records"
+                prior_paths = sorted(
+                    (path for path in prior_dir.glob("*.json") if path.name != "latest_scientific_discovery.json"),
+                    key=lambda path: path.stat().st_mtime,
+                )[-10:] if prior_dir.exists() else []
+                source_ids = {item.source_id for item in sources}
+                claim_ids = {item.claim_id for item in claims}
+                evidence_ids = {item.evidence_id for item in evidence}
+                for prior_path in prior_paths:
+                    try:
+                        prior = json.loads(prior_path.read_text(encoding="utf-8"))
+                    except (OSError, json.JSONDecodeError):
+                        continue
+                    if prior.get("problem_id") != problem.problem_id:
+                        continue
+                    block = prior.get("evidence", {})
+                    for raw in block.get("sources", []):
+                        try:
+                            item = ResearchSource.from_dict(raw)
+                        except (TypeError, ValueError):
+                            continue
+                        if item.source_id not in source_ids:
+                            sources.append(item)
+                            source_ids.add(item.source_id)
+                    for raw in block.get("claims", []):
+                        try:
+                            item = ResearchClaim.from_dict(raw)
+                        except (TypeError, ValueError):
+                            continue
+                        if item.claim_id not in claim_ids:
+                            claims.append(item)
+                            claim_ids.add(item.claim_id)
+                    for raw in block.get("evidence", []):
+                        try:
+                            item = ResearchEvidence.from_dict(raw)
+                        except (TypeError, ValueError):
+                            continue
+                        if item.evidence_id not in evidence_ids:
+                            evidence.append(item)
+                            evidence_ids.add(item.evidence_id)
+                    cycle_ref = str(prior.get("cycle_id") or prior_path.stem)
+                    for index, unresolved in enumerate(block.get("unresolved_questions", [])):
+                        questions.append({
+                            "question_id": f"prior_{cycle_ref}_{index}",
+                            "prompt": f"Previously unresolved: {unresolved}",
+                            "source_cycle_id": cycle_ref,
+                            "source_record": str(prior_path.relative_to(self.workspace)),
+                        })
+                    for track in block.get("tracks", []):
+                        for lesson in list(track.get("failed_approaches", [])) + list(track.get("unresolved_objections", [])):
+                            questions.append({
+                                "question_id": f"lesson_{cycle_ref}_{Fingerprint.create(lesson).value[:10]}",
+                                "prompt": f"Prior approach/objection to account for: {lesson}",
+                                "source_cycle_id": cycle_ref,
+                                "source_record": str(prior_path.relative_to(self.workspace)),
+                            })
             cycle.problem = problem.to_dict()
             cycle.questions = questions
             cycle.artifacts = [
