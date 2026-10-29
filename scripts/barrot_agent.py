@@ -1094,6 +1094,7 @@ def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
 
 
 def main() -> None:
+    global MAX_SEARCH_RESULTS
     configure_git()
     checkout_branch(BRANCH)
 
