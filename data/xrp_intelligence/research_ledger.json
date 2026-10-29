@@ -7283,6 +7283,15 @@
       "published_at": "2026-10-29",
       "accessed_at_utc": "2026-10-29T11:07:45Z",
       "note": "Tracks six spot ETFs plus BITW; reports -3,132,685 XRP net flow across Oct 26-27 and labels Oct 28 provisional until issuer holdings settle. Universe, units and cutoff differ from Alpha Finance; do not average the figures."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-WORKFLOW-PUSH-FAIL-20261029T1108Z",
+      "evidence_class": "CONFIRMED_CI_RUN_ANOMALY",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862819043",
+      "title": "Unexplained approval-workflow failure on push event",
+      "published_at": "2026-10-29T11:06:37Z",
+      "accessed_at_utc": "2026-10-29T11:08:45Z",
+      "note": "GitHub Actions metadata labels this run as a push event and failed conclusion, while the inspected main version of .github/workflows/barrot-approve-pr.yml declares workflow_dispatch only. The job-list endpoint returned no jobs. Cause is unresolved; do not infer a failed approval or merge."
     }
   ],
   "limitations": [
@@ -7493,7 +7502,8 @@
     "Circle's Arc launch announcement names SBI Group in a founding validator cohort with phased rollout; current active validation by SBI is not independently verified in this review.",
     "Arc/Coinbase/SBI relationship announcements do not disclose actual Arc transaction volume, SBI validator activity/revenue, route-level XRP displacement, or causal XRP price impact. These relationships must not be admitted as directional model features without realized activity and matched controls.",
     "Current main still has an invalid XRP signal/summary mismatch and mutation-capable merge queue. PRs #1304 and #1305 pass exact-head CI/gates but remain draft/unmerged; the main-branch defects are not fixed until approved changes are merged. Full paper-trading replay, synchronized XRP market panel, original SBIC/ASK Coin/actual capital context, canonical Camilla Stephenson identity, exhaustive public-video inventory and live nine-platform handoffs remain unresolved.",
-    "Latest paper-trader state still has a nonzero position with null product identity; scheduled main workflow continues to write state until PR #1306 is approved and merged. The full historical paper-trading replay remains blocked by unavailable full-log retrieval. ETF flow proxies remain non-comparable due to differing fund universes, units and settlement status; no market feature admitted."
+    "Latest paper-trader state still has a nonzero position with null product identity; scheduled main workflow continues to write state until PR #1306 is approved and merged. The full historical paper-trading replay remains blocked by unavailable full-log retrieval. ETF flow proxies remain non-comparable due to differing fund universes, units and settlement status; no market feature admitted.",
+    "The Barrot Controlled PR Approval workflow has repeated failed runs labeled event=push on draft-branch commits, while the inspected main workflow declares workflow_dispatch only and the job-list endpoint returns no jobs. Trigger/source mismatch is unresolved and requires workflow-run metadata/log investigation."
   ],
   "run_updates": [
     {
@@ -12674,6 +12684,20 @@
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T11:08:45Z",
+      "update_type": "APPROVAL_WORKFLOW_EVENT_MISMATCH_RECORDED",
+      "source_ids": [
+        "SRC-GH-APPROVAL-WORKFLOW-PUSH-FAIL-20261029T1108Z"
+      ],
+      "summary": "Recorded an unexplained GitHub Actions anomaly: .github/workflows/barrot-approve-pr.yml runs are labeled push/failure on draft branch commits, but the current main file declares workflow_dispatch only and the job-list endpoint returned no jobs. This is an unresolved trigger/metadata discrepancy, not evidence of a failed approval or merge.",
+      "main_sha": "93ebf983d803b567c88d9026dc64f02732203e4b",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
   "mission_priority": {
@@ -12950,19 +12974,28 @@
       "main_base_sha": "93ebf983d803b567c88d9026dc64f02732203e4b"
     },
     "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PROPOSAL_PASS; MAIN_STILL_SCHEDULED",
-    "verified_at_utc": "2026-10-29T11:08:30Z",
+    "verified_at_utc": "2026-10-29T11:08:45Z",
     "index_pointer_status": "PASS",
     "index_blob_sha_at_readback": "ff892794ada7e6c924410082355288fbb21e46e3",
     "index_commit_sha_at_readback": "7acd3f410a3f832fe93dddb77822fd190f478008",
     "index_character_count_match": true,
     "index_metric_count_match": true,
     "missing_snapshot_source_references": 0,
-    "missing_graph_source_references": 0
+    "missing_graph_source_references": 0,
+    "approval_workflow_event_mismatch": {
+      "run_id": 40862819043,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs_returned": 0,
+      "main_workflow_trigger": "workflow_dispatch_only",
+      "status": "UNRESOLVED_METADATA_OR_TRIGGER_MISMATCH",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862819043"
+    }
   },
   "ledger_metrics": {
-    "source_records": 894,
-    "run_updates": 169,
-    "limitations": 208,
+    "source_records": 895,
+    "run_updates": 170,
+    "limitations": 209,
     "relationship_edges": 215,
     "competing_hypotheses": 123,
     "market_observations": 78,
@@ -12971,28 +13004,28 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 866126,
+    "index_characters_before_this_update": 878032,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 9295,
-    "index_characters": 878032
+    "index_characters": 881014
   },
   "previous_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; FORECAST_NOT_ISSUED",
-    "latest_main_sha": "8e34859a5fb16b20b78e0906466be805d0d14353",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1104-main-signal-and-safety-prs.json",
-    "snapshot_blob_sha": "0ec46f7ed626bad5e640ec58b6930d6d3a439df3",
-    "snapshot_commit_sha": "9cfeb9409475effc56bad0f80b2645b32a045dbd",
-    "snapshot_characters": 8009,
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
+    "latest_main_sha": "93ebf983d803b567c88d9026dc64f02732203e4b",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+    "snapshot_blob_sha": "e8bafe3d580f4c06df092abf5cf6457f7ffbed73",
+    "snapshot_commit_sha": "f93043ce9bb7586b1bdc270eb8ac3f157d92f997",
+    "snapshot_characters": 9295,
     "snapshot_character_metric_matches": true,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1104-main-signal-and-safety-prs.json",
-    "graph_addendum_blob_sha": "06da3355e98dd8c8aac8ebdd57ed4b00e4c18fcb",
-    "graph_addendum_commit_sha": "897a32d5831e32c1520c7062af6e2779d206ab6d",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1107-fomc-etf-flows-and-paper-trader-guard.json",
+    "graph_addendum_blob_sha": "72ee1060a8771a40f8b22f114dd0a697f60c4cbf",
+    "graph_addendum_commit_sha": "256648e3024eee09dfbe7c8fa8b4558aff30dce2",
     "graph_addendum_readback_ok": true,
-    "source_reference_count": 10,
+    "source_reference_count": 9,
     "missing_source_references": 0,
     "source_ids_unique": true,
-    "relationship_edges": 210,
-    "competing_hypotheses": 120,
+    "relationship_edges": 215,
+    "competing_hypotheses": 123,
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
     "main_modified_by_this_run": false,
@@ -13005,22 +13038,41 @@
       "head": "2cf87d3a117f93bca222fd5d5e9e7f10ceb41ba0",
       "ci": "PASS",
       "gate": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED"
+      "state": "DRAFT_OPEN_UNMERGED",
+      "main_behind": 1
     },
     "pr1305": {
       "head": "2a7afe9e43fe454252059002be32c165a73611ec",
       "ci": "PASS",
       "gate": "PASS",
-      "state": "DRAFT_OPEN_UNMERGED"
+      "state": "DRAFT_OPEN_UNMERGED",
+      "main_behind": 1
     },
-    "verified_at_utc": "2026-10-29T11:05:30Z",
+    "pr1306": {
+      "head": "7f91e917eee5bd02499d0dfa3835da277dd05758",
+      "ci": "PASS",
+      "gate": "PASS",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "main_base_sha": "93ebf983d803b567c88d9026dc64f02732203e4b"
+    },
+    "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PROPOSAL_PASS; MAIN_STILL_SCHEDULED",
+    "verified_at_utc": "2026-10-29T11:08:45Z",
     "index_pointer_status": "PASS",
-    "index_blob_sha_at_readback": "abb794646ce82646214a31a1608abd9119c603b7",
-    "index_commit_sha_at_readback": "b7678bab85a62fff457a50aa49e6d679efbcb753",
+    "index_blob_sha_at_readback": "ff892794ada7e6c924410082355288fbb21e46e3",
+    "index_commit_sha_at_readback": "7acd3f410a3f832fe93dddb77822fd190f478008",
     "index_character_count_match": true,
     "index_metric_count_match": true,
     "missing_snapshot_source_references": 0,
-    "missing_graph_source_references": 0
+    "missing_graph_source_references": 0,
+    "approval_workflow_event_mismatch": {
+      "run_id": 40862819043,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs_returned": 0,
+      "main_workflow_trigger": "workflow_dispatch_only",
+      "status": "UNRESOLVED_METADATA_OR_TRIGGER_MISMATCH",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40862819043"
+    }
   },
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T11:07:45Z",
