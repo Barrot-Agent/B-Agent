@@ -1153,6 +1153,7 @@ def build_read_only_source_snapshot() -> dict[str, Any]:
         ("scripts/barrot_repo_state_manifest.py", ("manifest", "sha256", "source"), 4),
         ("barrot_agent/repo_state_corroborator.py", ("stale", "missing", "corrobor"), 4),
         ("barrot_agent/orchestration/bundle_delivery.py", ("checksum", "verify", "def "), 4),
+    ]
     result: dict[str, Any] = {}
     total_chars = 0
     for relative_path, terms, max_lines in specs:
