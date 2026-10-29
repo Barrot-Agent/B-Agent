@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T12:16:30Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1216-SBIC-ASK-ACTUAL-CAPITAL-YOUTUBE-CLEANUP",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1216-sbic-ask-actual-capital-youtube-cleanup.json",
-    "snapshot_blob_sha": "1d6fc67ecf02195d1ced8de5f720da108d5fb783",
-    "snapshot_commit_sha": "2c1cfc149c1b353018171656671f26eca96523b0"
+    "captured_at_utc": "2026-10-29T12:17:30Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1217-PR1308-CLEANUP-CI",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1217-pr1308-cleanup-ci-verified.json",
+    "snapshot_blob_sha": "892b7aeddc0696f0c0be63007d4e0ad46165d38e",
+    "snapshot_commit_sha": "5adbac4251021ca31faff34705f01dfb5385bf10"
   },
   "sources": [
     {
@@ -7558,6 +7558,46 @@
       "title": "Main diff since fresh-main PR #1307 base",
       "note": "GitHub comparison reports exactly one file added: the unintended data-only relationship-graph JSON. No runtime source, workflow, signal or paper-trading state path changed; PR #1307's code changes do not overlap this artifact.",
       "accessed_at_utc": "2026-10-29T12:16:30Z"
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-20261029T1217Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+      "title": "Current main head after accidental data-only graph commit",
+      "note": "Main remains at f23a2b81. Compared with b60faa26, the only changed path is the new relationship-graph JSON; runtime code, workflows, signal artifacts and paper-trading state are unchanged by that commit.",
+      "accessed_at_utc": "2026-10-29T12:17:30Z"
+    },
+    {
+      "id": "SRC-GH-PR1308-STATUS-20261029T1217Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308",
+      "title": "PR #1308 cleanup status",
+      "note": "Draft PR #1308 targets current main and deletes only the unintended 229-line data-only graph file. GitHub reports mergeable=true, one changed file, zero additions and 229 deletions. It remains open and unmerged.",
+      "accessed_at_utc": "2026-10-29T12:17:30Z"
+    },
+    {
+      "id": "SRC-GH-PR1308-CI-20261029T1217Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40871883656",
+      "title": "PR #1308 exact-head CI",
+      "note": "Core CI completed successfully on cleanup head 1080af2ac25756eb99e7c7c58571b240245aa7ee. This verifies the cleanup branch only; it does not remove the file from main.",
+      "accessed_at_utc": "2026-10-29T12:17:30Z"
+    },
+    {
+      "id": "SRC-GH-PR1308-GATE-20261029T1217Z",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40871883635",
+      "title": "PR #1308 fail-closed gate",
+      "note": "The fail-closed gate completed successfully; job explicitly reports 'Merge disabled pending gate verification'. PR remains draft/unmerged pending approval.",
+      "accessed_at_utc": "2026-10-29T12:17:30Z"
+    },
+    {
+      "id": "SRC-GH-PR1307-STATUS-20261029T1217Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1307",
+      "title": "PR #1307 paper-trader safety status",
+      "note": "PR #1307 remains draft/open/mergeable, base b60faa26, head 717eb13. Its exact-head CI passed 193 tests plus four subtests in 7.79 seconds and its fail-closed gate passed. Main is one commit ahead only because of the unrelated data-only graph artifact; the recurring paper-trader schedule remains active until approved merge.",
+      "accessed_at_utc": "2026-10-29T12:17:30Z"
     }
   ],
   "limitations": [
@@ -13094,6 +13134,59 @@
       "paper_trading_state_mutated": false,
       "real_money_trade": false,
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T12:17:30Z",
+      "update_type": "PR1308_CLEANUP_CI_AND_GATE_VERIFICATION",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T1217Z",
+        "SRC-GH-PR1308-STATUS-20261029T1217Z",
+        "SRC-GH-PR1308-CI-20261029T1217Z",
+        "SRC-GH-PR1308-GATE-20261029T1217Z",
+        "SRC-GH-PR1307-STATUS-20261029T1217Z"
+      ],
+      "summary": "Verified PR #1308 exact-head core CI and fail-closed gate both pass. PR deletes only the unintended data-only graph file from a branch based on current main; it is mergeable but remains draft/unmerged pending approval. Main still contains the file because no merge was performed. Main differs from b60faa26 only by this one data-only file; runtime code, workflows, signal artifacts and paper-trading state are unchanged by the accidental commit. PR #1307 remains draft/unmerged with 193 tests plus four subtests and fail-closed gate passing; the scheduled paper trader remains active pending approval. Forecast NOT_ISSUED.",
+      "main_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1217-pr1308-cleanup-ci-verified.json",
+        "blob_sha": "892b7aeddc0696f0c0be63007d4e0ad46165d38e",
+        "commit_sha": "5adbac4251021ca31faff34705f01dfb5385bf10",
+        "characters": 4141
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+        "blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+        "commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
+        "new_edges": 0,
+        "new_competing_hypotheses": 0
+      },
+      "pr1308": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1308",
+        "head": "1080af2ac25756eb99e7c7c58571b240245aa7ee",
+        "ci_run": 40871883656,
+        "ci": "PASS",
+        "gate_run": 40871883635,
+        "gate": "PASS_FAIL_CLOSED",
+        "state": "DRAFT_OPEN_UNMERGED",
+        "mergeable": true
+      },
+      "pr1307": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1307",
+        "head": "717eb13ad61605d037d80c9a193b3e2e19d87423",
+        "ci_run": 40870843070,
+        "ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+        "gate_run": 40870843146,
+        "gate": "PASS_FAIL_CLOSED",
+        "state": "DRAFT_OPEN_UNMERGED"
+      },
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": true,
+      "main_write_scope": "ONE_DATA_ONLY_GRAPH_FILE; CLEANUP_PR_1308_OPEN",
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false
     }
   ],
   "mission_priority": {
@@ -13321,21 +13414,21 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "2c1cfc149c1b353018171656671f26eca96523b0",
-  "current_research_head_this_run": "2c1cfc149c1b353018171656671f26eca96523b0",
+  "current_research_head_before_ledger_update": "5adbac4251021ca31faff34705f01dfb5385bf10",
+  "current_research_head_this_run": "5adbac4251021ca31faff34705f01dfb5385bf10",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS; PR1307_GATE_PASS; PR1308_CLEANUP_DRAFT; MAIN_DATA_ONLY_WRITE_INCIDENT_RECORDED; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1308_CI_PASS; PR1308_GATE_PASS; PR1307_CI_PASS; PR1307_GATE_PASS; MAIN_DATA_ONLY_WRITE_INCIDENT_RECORDED; FORECAST_NOT_ISSUED",
     "latest_main_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1216-sbic-ask-actual-capital-youtube-cleanup.json",
-    "snapshot_blob_sha": "1d6fc67ecf02195d1ced8de5f720da108d5fb783",
-    "snapshot_commit_sha": "2c1cfc149c1b353018171656671f26eca96523b0",
-    "snapshot_characters": 6928,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1217-pr1308-cleanup-ci-verified.json",
+    "snapshot_blob_sha": "892b7aeddc0696f0c0be63007d4e0ad46165d38e",
+    "snapshot_commit_sha": "5adbac4251021ca31faff34705f01dfb5385bf10",
+    "snapshot_characters": 4141,
     "snapshot_character_metric_matches": true,
     "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
     "graph_addendum_blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
     "graph_addendum_commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
     "graph_addendum_readback_ok": true,
-    "source_reference_count": 12,
+    "source_reference_count": 5,
     "missing_source_references": 0,
     "source_ids_unique": true,
     "relationship_edges": 237,
@@ -13350,28 +13443,29 @@
     "deployment_executed": false,
     "real_money_trade": false,
     "paper_trading_state_mutated": false,
+    "pr1308": {
+      "head": "1080af2ac25756eb99e7c7c58571b240245aa7ee",
+      "base_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+      "ci": "PASS",
+      "gate": "PASS_FAIL_CLOSED",
+      "state": "DRAFT_OPEN_UNMERGED",
+      "mergeable": true
+    },
     "pr1307": {
       "head": "717eb13ad61605d037d80c9a193b3e2e19d87423",
       "base_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
       "ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
       "gate": "PASS_FAIL_CLOSED",
-      "state": "DRAFT_OPEN_UNMERGED_BEHIND_ONE_DATA_ONLY_COMMIT"
-    },
-    "pr1308": {
-      "head": "1080af2ac25756eb99e7c7c58571b240245aa7ee",
-      "base_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
-      "state": "DRAFT_OPEN_UNMERGED",
-      "purpose": "delete only unintended data-only graph file"
+      "state": "DRAFT_OPEN_UNMERGED"
     },
     "paper_trader_schedule": "ACTIVE_UNTIL_APPROVED_MERGE_OF_PR1307",
     "paper_trader_position_identity": "UNKNOWN_OPEN_POSITION_FAIL_CLOSED_PR1307_PASS_UNMERGED",
-    "verified_at_utc": "2026-10-29T12:16:30Z",
-    "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
-    "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    "verified_at_utc": "2026-10-29T12:17:30Z",
+    "index_pointer_status": "PASS_AFTER_LEDGER_READBACK"
   },
   "ledger_metrics": {
-    "source_records": 926,
-    "run_updates": 172,
+    "source_records": 931,
+    "run_updates": 173,
     "limitations": 211,
     "relationship_edges": 237,
     "competing_hypotheses": 132,
@@ -13381,10 +13475,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 897828,
+    "index_characters_before_this_update": 910119,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 6928,
-    "index_characters": 910119
+    "latest_snapshot_characters": 4141,
+    "index_characters": 916084
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -13452,14 +13546,14 @@
     }
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T12:16:30Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T12:17:30Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS; PR1307_GATE_PASS; PR1308_CLEANUP_DRAFT; MAIN_DATA_ONLY_WRITE_INCIDENT_RECORDED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1308_CI_PASS; PR1308_GATE_PASS; PR1307_CI_PASS; PR1307_GATE_PASS; MAIN_DATA_ONLY_WRITE_INCIDENT_RECORDED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "1d6fc67ecf02195d1ced8de5f720da108d5fb783",
-      "snapshot_commit_sha": "2c1cfc149c1b353018171656671f26eca96523b0",
-      "snapshot_characters": 6928,
-      "source_reference_count": 12,
+      "snapshot_blob_sha": "892b7aeddc0696f0c0be63007d4e0ad46165d38e",
+      "snapshot_commit_sha": "5adbac4251021ca31faff34705f01dfb5385bf10",
+      "snapshot_characters": 4141,
+      "source_reference_count": 5,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
       "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
@@ -13474,7 +13568,6 @@
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": true,
-      "main_write_scope": "ONE_DATA_ONLY_GRAPH_FILE",
       "cleanup_pr1308": "DRAFT_OPEN_UNMERGED",
       "merge_performed": false,
       "real_money_trade": false,
@@ -13527,62 +13620,53 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T12:16:30Z",
-    "focus": "SBIC/ChatGPT entity disambiguation, ASK Coin candidates, actual-capital semantics, Camilla/Kamilah identity and corrective main-write audit",
+    "recorded_at_utc": "2026-10-29T12:17:30Z",
+    "focus": "PR1308 cleanup CI/gate verification and current main tree status",
     "source_ids": [
-      "SRC-SBIC-EAST-OFFICIAL-PROFILE-20261029T1214Z",
-      "SRC-SBIC-WEST-CHATGPT-PDF-20261029T1214Z",
-      "SRC-ASKCOIN-CMC-INACTIVE-20261029T1214Z",
-      "SRC-PERMISSION-ASK-CMC-20261029T1214Z",
-      "SRC-ACTUAL-CAPITAL-TIMESTABLOID-20261029T1214Z",
-      "SRC-ACTUAL-CAPITAL-COINTURK-20261029T1214Z",
-      "SRC-CAMILLA-NAMESAKE-MFJF-20261029T1214Z",
-      "SRC-YOUTUBE-KAMILAH-MARCH2026-20261029T1214Z",
-      "SRC-YOUTUBE-KAMILAH-DEC2025-20261029T1214Z",
-      "SRC-GH-MAIN-UNINTENDED-GRAPH-COMMIT-20261029T1216Z",
-      "SRC-GH-PR1308-CLEANUP-20261029T1216Z",
-      "SRC-GH-MAIN-COMPARE-B60FA-TO-F23A-20261029T1216Z"
+      "SRC-GH-MAIN-HEAD-20261029T1217Z",
+      "SRC-GH-PR1308-STATUS-20261029T1217Z",
+      "SRC-GH-PR1308-CI-20261029T1217Z",
+      "SRC-GH-PR1308-GATE-20261029T1217Z",
+      "SRC-GH-PR1307-STATUS-20261029T1217Z"
     ],
     "relationship_graph_addendum": {
       "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
       "blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
       "commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
-      "new_edges": 7,
-      "new_competing_hypotheses": 4
+      "new_edges": 0,
+      "new_competing_hypotheses": 0
     },
     "market_observations": 0,
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T12:09:30Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T12:16:30Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS_193_TESTS_PLUS_4_SUBTESTS; PR1307_GATE_PASS; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1307_CI_PASS; PR1307_GATE_PASS; PR1308_CLEANUP_DRAFT; MAIN_DATA_ONLY_WRITE_INCIDENT_RECORDED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "cec8149f1d234fdacb3ccfab01ae8ba9b5c4d22a",
-      "snapshot_commit_sha": "3d5bc9711dca30b25a4011a20cf9ce24bc02b5f6",
-      "snapshot_characters": 15205,
-      "source_reference_count": 19,
+      "snapshot_blob_sha": "1d6fc67ecf02195d1ced8de5f720da108d5fb783",
+      "snapshot_commit_sha": "2c1cfc149c1b353018171656671f26eca96523b0",
+      "snapshot_characters": 6928,
+      "source_reference_count": 12,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1209-sbi-xrp-derivatives-etf-reconciliation.json",
-      "graph_addendum_blob_sha": "6689ead86c598c5f54b6e362371197fa29976ec0",
-      "graph_addendum_commit_sha": "ced12991187cc67e241918e0bf39cbff386631ab",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+      "graph_addendum_blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+      "graph_addendum_commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
       "graph_addendum_readback_ok": true,
-      "graph_edges": 15,
-      "graph_hypotheses": 5,
+      "graph_edges": 7,
+      "graph_hypotheses": 4,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
       "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
-      "main_modified_by_this_run": false,
+      "main_modified_by_this_run": true,
+      "main_write_scope": "ONE_DATA_ONLY_GRAPH_FILE",
+      "cleanup_pr1308": "DRAFT_OPEN_UNMERGED",
       "merge_performed": false,
-      "force_push": false,
-      "deployment_executed": false,
       "real_money_trade": false,
-      "paper_trading_state_mutated": false,
-      "pr1307_ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
-      "pr1307_gate": "PASS_FAIL_CLOSED"
+      "paper_trading_state_mutated": false
     }
   },
   "snapshot_verification_history": [
@@ -14405,7 +14489,33 @@
       "main_modified_by_this_run": true,
       "cleanup_pr1308": "DRAFT_OPEN_UNMERGED",
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T12:17:30Z",
+      "verification_type": "PR1308_CLEANUP_CI_GATE_SNAPSHOT_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1217-pr1308-cleanup-ci-verified.json",
+      "snapshot_blob_sha": "892b7aeddc0696f0c0be63007d4e0ad46165d38e",
+      "snapshot_commit_sha": "5adbac4251021ca31faff34705f01dfb5385bf10",
+      "snapshot_characters": 4141,
+      "source_reference_count": 5,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1214-sbic-ask-actual-capital-youtube-identity.json",
+      "graph_addendum_blob_sha": "dd9f408c16a205cd0f2dea656df7b99a0ec3bf73",
+      "graph_addendum_commit_sha": "d1d13072355fdf351d021c853487689200f923a8",
+      "graph_addendum_readback_ok": true,
+      "graph_edges": 7,
+      "graph_hypotheses": 4,
+      "missing_graph_source_references": 0,
+      "source_ids_unique": true,
+      "main_sha": "f23a2b81899ac12aefb9acd5a313e7bcf2dc0987",
+      "pr1308_ci": "PASS",
+      "pr1308_gate": "PASS_FAIL_CLOSED",
+      "pr1307_ci": "PASS_193_TESTS_PLUS_4_SUBTESTS_7.79S",
+      "pr1307_gate": "PASS_FAIL_CLOSED",
+      "main_modified_by_this_run": true,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "2c1cfc149c1b353018171656671f26eca96523b0"
+  "current_research_head_before_this_update": "d3fac9f2d6c87ff681f3931992ab630c4eb1161c"
 }
