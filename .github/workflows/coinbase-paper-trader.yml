@@ -2,8 +2,6 @@ name: Coinbase Paper Trader
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '*/30 * * * *'
 
 jobs:
   trade:
