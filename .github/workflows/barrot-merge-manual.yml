@@ -19,6 +19,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Validate merge configuration before dependency installation or token access
+        shell: bash
+        run: |
+          set -euo pipefail
+          CONFIG_PATH="merges/barrot-superior/config.yaml"
+          if [[ ! -f "$CONFIG_PATH" ]]; then
+            echo "::error::Required model merge configuration is missing: $CONFIG_PATH"
+            echo "No dependency installation or Hugging Face token access will occur."
+            exit 1
+          fi
+
       - name: Install deps
         run: |
           sudo apt-get update
