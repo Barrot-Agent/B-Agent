@@ -3,10 +3,20 @@ from __future__ import annotations
 import importlib.util
 import json
 from types import SimpleNamespace
+
+import pytest
 from pathlib import Path
 
 from barrot_agent.orchestration.repository_repair import RepairCycleEvidence, WorkItemEvidence
 
+
+_SINGLE_TASK_BUNDLE = {
+    "objective": "Repair issue",
+    "tasks": [{
+        "id": "task-1", "title": "Repair", "description": "Repair the issue", "depends_on": [],
+        "files": [], "acceptance_criteria": ["validated"], "tests": ["pytest"], "rollback_plan": ["revert"],
+    }],
+}
 
 SCRIPT_PATH = Path(__file__).resolve().parents[1] / "scripts" / "barrot_agent.py"
 
@@ -19,7 +29,7 @@ def load_script_module(name: str):
     return module
 
 
-def test_barrot_agent_main_routes_through_work_queue_controller(monkeypatch):
+def test_barrot_agent_main_routes_through_work_queue_controller(monkeypatch, tmp_path):
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("TASK_BODY", "Fix the reproduced issue.")
     monkeypatch.setenv("TASK_TITLE", "Repair issue")
@@ -37,6 +47,7 @@ def test_barrot_agent_main_routes_through_work_queue_controller(monkeypatch):
     class FakeQueue:
         def __init__(self, **kwargs):
             calls["queue_init"] = kwargs
+            self.work_store = SimpleNamespace(load=lambda work_id: None)
 
         def run(self, **kwargs):
             calls["run"] = kwargs
@@ -45,7 +56,12 @@ def test_barrot_agent_main_routes_through_work_queue_controller(monkeypatch):
             cycle.status = "no_repair_required"
             cycle.current_state = "NO_REPAIR_REQUIRED"
             cycle.report = "Already healthy."
-            work.repair_cycle = cycle.to_dict()
+            cycle.report_only = False
+            repair_cycle = cycle.to_dict()
+            # Deterministic reproduction evidence: the issue does not reproduce.
+            repair_cycle["issue_reproduced"] = False
+            repair_cycle["validation"] = {"issue_reproduction": {"issue_reproduced": False}}
+            work.repair_cycle = repair_cycle
             work.status = "complete"
             work.queue_advanced = True
             return work
@@ -57,21 +73,14 @@ def test_barrot_agent_main_routes_through_work_queue_controller(monkeypatch):
         def run(self, **kwargs):
             return SimpleNamespace(
                 status="READY_FOR_EXECUTION_REVIEW",
-                review=SimpleNamespace(quality_score=100, fingerprint="sha256:test"),
+                bundle=_SINGLE_TASK_BUNDLE,
+                attempts=(),
+                review=SimpleNamespace(quality_score=100, fingerprint="sha256:test", to_dict=lambda: {"valid": True}),
             )
 
-    class FakeLifecycleStore:
-        def __init__(self, *args, **kwargs):
-            pass
-
-        def save_plan(self, *args, **kwargs):
-            return "test-plan"
-
-        def record_execution(self, *args, **kwargs):
-            return None
-
+    # Real durable lifecycle store, isolated in a temporary workspace.
+    monkeypatch.setattr(module, "ROOT", tmp_path)
     monkeypatch.setattr(module, "BundleEngineeringController", FakeBundleController)
-    monkeypatch.setattr(module, "BundleLifecycleStore", FakeLifecycleStore)
     monkeypatch.setattr(module, "RepositoryRepairController", FakeController)
     monkeypatch.setattr(module, "WorkQueueController", FakeQueue)
     monkeypatch.setattr(module, "configure_git", lambda: calls.setdefault("configured", True))
@@ -86,12 +95,13 @@ def test_barrot_agent_main_routes_through_work_queue_controller(monkeypatch):
     assert "init" in calls
     assert "run" in calls
     assert calls["run"]["branch"] == "barrot/task-42"
-    assert calls["comment"] == "Already healthy."
-    assert "record" in calls
+    assert "no pull request was created" in calls["comment"]
+    assert "NO_CHANGE_REQUIRED" in calls["comment"]
     assert "pr" not in calls
 
 
-def test_barrot_agent_report_only_does_not_post_issue_comment(monkeypatch):
+def test_barrot_agent_report_only_bundle_task_is_not_reported_complete(monkeypatch, tmp_path):
+    """A report-only result is not verified completion: the bundle fails closed and opens no PR."""
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("TASK_BODY", "Audit only.")
     monkeypatch.setenv("TASK_TITLE", "Repair issue")
@@ -108,6 +118,7 @@ def test_barrot_agent_report_only_does_not_post_issue_comment(monkeypatch):
     class FakeQueue:
         def __init__(self, **kwargs):
             calls["queue_init"] = kwargs
+            self.work_store = SimpleNamespace(load=lambda work_id: None)
 
         def run(self, **kwargs):
             calls["run"] = kwargs
@@ -129,21 +140,14 @@ def test_barrot_agent_report_only_does_not_post_issue_comment(monkeypatch):
         def run(self, **kwargs):
             return SimpleNamespace(
                 status="READY_FOR_EXECUTION_REVIEW",
-                review=SimpleNamespace(quality_score=100, fingerprint="sha256:test"),
+                bundle=_SINGLE_TASK_BUNDLE,
+                attempts=(),
+                review=SimpleNamespace(quality_score=100, fingerprint="sha256:test", to_dict=lambda: {"valid": True}),
             )
 
-    class FakeLifecycleStore:
-        def __init__(self, *args, **kwargs):
-            pass
-
-        def save_plan(self, *args, **kwargs):
-            return "test-plan"
-
-        def record_execution(self, *args, **kwargs):
-            return None
-
+    # Real durable lifecycle store, isolated in a temporary workspace.
+    monkeypatch.setattr(module, "ROOT", tmp_path)
     monkeypatch.setattr(module, "BundleEngineeringController", FakeBundleController)
-    monkeypatch.setattr(module, "BundleLifecycleStore", FakeLifecycleStore)
     monkeypatch.setattr(module, "RepositoryRepairController", FakeController)
     monkeypatch.setattr(module, "WorkQueueController", FakeQueue)
     monkeypatch.setattr(module, "configure_git", lambda: None)
@@ -151,11 +155,14 @@ def test_barrot_agent_report_only_does_not_post_issue_comment(monkeypatch):
     monkeypatch.setattr(module, "build_audit_context", lambda title, body: {"inventory": f"{title}:{body}"})
     monkeypatch.setattr(module, "post_issue_comment", lambda message: calls.setdefault("comment", message))
     monkeypatch.setattr(module, "write_collaboration_record", lambda cycle: calls.setdefault("record", cycle))
+    monkeypatch.setattr(module, "create_pull_request", lambda cycle: calls.setdefault("pr", cycle))
 
-    module.main()
+    with pytest.raises(SystemExit):
+        module.main()
 
-    assert "record" in calls
-    assert "comment" not in calls
+    assert "run" in calls
+    assert "pr" not in calls
+    assert "unfinished tasks were not reported complete" in calls["comment"]
 
 
 def test_groq_payload_omits_tool_choice_when_tools_not_supplied(monkeypatch):
@@ -275,6 +282,9 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
 
     def fake_run_gh(args):
         calls["args"] = args
+        body_path = Path(args[7])
+        calls["body_exists_during_call"] = body_path.is_file()
+        calls["body_text"] = body_path.read_text(encoding="utf-8") if body_path.is_file() else ""
 
         class Result:
             returncode = 0
@@ -288,6 +298,10 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
 
     assert calls["args"][8] == "--head"
     assert calls["args"][9] == "repair/from-cycle"
+    assert calls["body_exists_during_call"] is True
+    assert "cycle-123" in str(calls["body_text"])
+    assert "abc123" in str(calls["body_text"])
+    assert Path(calls["args"][7]).exists() is False
 
 
 

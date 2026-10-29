@@ -3,6 +3,12 @@ import json
 import pytest
 
 from barrot_agent.orchestration.bundle_lifecycle import BundleLifecycleStore
+from barrot_agent.orchestration.repository_repair import (
+    DurableWorkStore,
+    ProjectIdentity,
+    RepairCycleEvidence,
+    WorkQueueController,
+)
 
 
 class Review:
@@ -74,3 +80,471 @@ def test_live_entrypoint_wires_bundle_gate_before_repair():
     assert "READY_FOR_EXECUTION_REVIEW" in source
     assert "record_execution" in source
     assert "WorkQueueController" in imports
+
+
+
+def test_task_evidence_is_append_only_and_latest_state_survives_reload(tmp_path):
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("resume-me", Result())
+    store.record_task_execution("resume-me", "task-a", {"status": "RUNNING"})
+    store.record_task_execution("resume-me", "task-a", {"status": "COMPLETE", "queue_advanced": True})
+    latest = store.latest_task_states("resume-me")
+    assert latest["task-a"]["status"] == "COMPLETE"
+    payload = store.load("resume-me")
+    assert len(payload["task_states"]["task-a"]) == 2
+
+
+def test_task_evidence_requires_existing_plan_and_task_id(tmp_path):
+    store = BundleLifecycleStore(tmp_path)
+    with pytest.raises(FileNotFoundError):
+        store.record_task_execution("missing", "task-a", {"status": "RUNNING"})
+    store.save_plan("resume-me", Result())
+    with pytest.raises(ValueError, match="task_id"):
+        store.record_task_execution("resume-me", " ", {"status": "RUNNING"})
+
+
+def test_save_plan_preserves_execution_evidence_for_identical_bundle(tmp_path):
+    store = BundleLifecycleStore(tmp_path)
+    result = Result()
+    store.save_plan("resume-me", result)
+    store.record_task_execution("resume-me", "task-a", {"status": "COMPLETE"})
+    store.record_execution("resume-me", {"status": "COMPLETE"})
+    store.save_plan("resume-me", result)
+    payload = store.load("resume-me")
+    assert payload["task_states"]["task-a"][-1]["status"] == "COMPLETE"
+    assert payload["execution_evidence"][-1]["status"] == "COMPLETE"
+
+
+
+def _complete_task_result(task_id):
+    return {
+        "status": "complete",
+        "queue_advanced": True,
+        "repair_cycle": {
+            "cycle_id": "cycle-" + task_id,
+            "status": "complete",
+            "local_validation_passed": True,
+            "resolution_verified": True,
+            "commit": {"sha": "sha-" + task_id, "remote_verified": True},
+        },
+    }
+
+
+def test_dispatcher_respects_dependencies_and_records_evidence(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    bundle = {"tasks": [
+        {"id": "task-c", "depends_on": ["task-b"]},
+        {"id": "task-a", "depends_on": []},
+        {"id": "task-b", "depends_on": ["task-a"]},
+    ]}
+    calls = []
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle=bundle,
+        execute_task=lambda task: (calls.append(task["id"]) or _complete_task_result(task["id"])),
+    )
+    assert result["complete"] is True
+    assert calls == ["task-a", "task-b", "task-c"]
+    states = store.latest_task_states("bundle")
+    assert all(states[task_id]["status"] == "complete" for task_id in calls)
+    assert states["task-a"]["result"]["repair_cycle"]["commit"]["sha"] == "sha-task-a"
+
+
+def test_dispatcher_resume_skips_completed_tasks(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    store.record_task_execution("bundle", "task-a", {
+        "status": "complete", "queue_advanced": True, "local_validation_passed": True,
+        "remote_verified": True, "resolution_verified": True, "result": _complete_task_result("task-a"),
+    })
+    calls = []
+    bundle = {"tasks": [
+        {"id": "task-a", "depends_on": []},
+        {"id": "task-b", "depends_on": ["task-a"]},
+    ]}
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle=bundle,
+        execute_task=lambda task: (calls.append(task["id"]) or _complete_task_result(task["id"])),
+    )
+    assert result["complete"] is True
+    assert calls == ["task-b"]
+    assert result["last_result"]["repair_cycle"]["cycle_id"] == "cycle-task-b"
+
+
+def test_dispatcher_blocks_dependents_when_prerequisite_fails(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    calls = []
+    bundle = {"tasks": [
+        {"id": "task-a", "depends_on": []},
+        {"id": "task-b", "depends_on": ["task-a"]},
+        {"id": "task-c", "depends_on": []},
+    ]}
+    def execute(task):
+        calls.append(task["id"])
+        if task["id"] == "task-a":
+            return {"status": "failed", "queue_advanced": False, "repair_cycle": {"status": "failed"}}
+        return _complete_task_result(task["id"])
+    result = dispatch_bundle_tasks(store=store, work_id="bundle", bundle=bundle, execute_task=execute)
+    assert result["complete"] is False
+    assert calls == ["task-a", "task-c"]
+    assert "task-b" in result["blocked_tasks"]
+
+
+
+def test_dispatcher_increments_attempt_after_interrupted_failed_attempt(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    store.record_task_execution("bundle", "task-a", {"status": "failed", "reason": "transient"})
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=lambda task: _complete_task_result(task["id"]),
+    )
+    assert result["complete"] is True
+    history = store.load("bundle")["task_states"]["task-a"]
+    running_records = [item for item in history if item.get("status") == "running"]
+    assert running_records[-1]["attempt"] == 2
+
+
+
+def test_dispatcher_recovers_verified_queue_result_without_reexecuting_task(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    recovered = _complete_task_result("task-a")
+    execute_calls = []
+    recover_calls = []
+
+    def recover(task):
+        recover_calls.append(task["id"])
+        return recovered
+
+    def execute(task):
+        execute_calls.append(task["id"])
+        return _complete_task_result(task["id"])
+
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=execute,
+        recover_task=recover,
+    )
+    assert result["complete"] is True
+    assert recover_calls == ["task-a"]
+    assert execute_calls == []
+    latest = store.latest_task_states("bundle")["task-a"]
+    assert latest["recovered_from_queue"] is True
+    assert latest["result"]["repair_cycle"]["commit"]["sha"] == "sha-task-a"
+
+
+def test_dispatcher_executes_when_recovery_evidence_is_missing(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("bundle", Result())
+    calls = []
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=lambda task: (calls.append(task["id"]) or _complete_task_result(task["id"])),
+        recover_task=lambda task: None,
+    )
+    assert result["complete"] is True
+    assert calls == ["task-a"]
+    assert store.latest_task_states("bundle")["task-a"]["recovered_from_queue"] is False
+
+
+
+def test_changed_request_fingerprint_does_not_reuse_old_task_evidence(tmp_path):
+    store = BundleLifecycleStore(tmp_path)
+    result = Result()
+    store.save_plan("resume-me", result, request_fingerprint="sha256:request-one")
+    store.record_task_execution("resume-me", "task-a", {"status": "COMPLETE"})
+    store.record_execution("resume-me", {"status": "COMPLETE"})
+
+    store.save_plan("resume-me", result, request_fingerprint="sha256:request-two")
+    payload = store.load("resume-me")
+    assert payload["request_fingerprint"] == "sha256:request-two"
+    assert payload["task_states"] == {}
+    assert payload["execution_evidence"] == []
+
+
+
+
+def test_dispatcher_marks_verified_no_change_without_claiming_repair_completion(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("no-change-bundle", Result())
+    no_change_result = {
+        "status": "blocked",
+        "queue_advanced": False,
+        "repair_cycle": {
+            "status": "no_repair_required",
+            "report_only": False,
+            "issue_reproduced": False,
+            "validation": {
+                "issue_reproduction": {"issue_reproduced": False}
+            },
+            "report": "The issue did not reproduce during deterministic validation.",
+        },
+    }
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="no-change-bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=lambda task: no_change_result,
+    )
+
+    assert result["complete"] is False
+    assert result["completed_task_ids"] == []
+    assert result["no_change_task_ids"] == ["task-a"]
+    assert "no repair required" in result["blocked_tasks"]["task-a"]
+    latest = store.latest_task_states("no-change-bundle")["task-a"]
+    assert latest["status"] == "no_change_required"
+    assert latest["disposition"] == "no_change_required"
+
+
+def test_dispatcher_does_not_treat_report_only_as_verified_no_change(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("report-only-bundle", Result())
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="report-only-bundle",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=lambda task: {
+            "status": "blocked",
+            "queue_advanced": False,
+            "repair_cycle": {
+                "status": "no_repair_required",
+                "report_only": True,
+                "issue_reproduced": False,
+                "validation": {"issue_reproduction": {"issue_reproduced": False}},
+            },
+        },
+    )
+
+    assert result["complete"] is False
+    assert result["no_change_task_ids"] == []
+    assert result["blocked_tasks"]["task-a"] == "no_repair_required"
+
+
+
+def test_dispatcher_handles_no_change_from_real_work_queue_controller(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    class NoChangeRepairController:
+        workspace = tmp_path
+
+        def run(self, **kwargs):
+            cycle = RepairCycleEvidence(cycle_id="no-change-cycle")
+            cycle.status = "no_repair_required"
+            cycle.current_state = "NO_REPAIR_REQUIRED"
+            cycle.issue_reproduced = False
+            cycle.validation = {
+                "issue_reproduction": {"issue_reproduced": False}
+            }
+            cycle.report = "Issue did not reproduce."
+            return cycle
+
+    queue = WorkQueueController(
+        repair_controller=NoChangeRepairController(),
+        work_store=DurableWorkStore(tmp_path),
+    )
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("real-queue-no-change", Result())
+
+    def execute(task):
+        return queue.run(
+            work_id="real-queue-no-change-task-a",
+            project_identity=ProjectIdentity.from_seed("Barrot-Agent/B-Agent"),
+            task_title="No-change integration test",
+            task_body="Verify that absent issues do not create a repair PR.",
+            issue_number="42",
+            repo="Barrot-Agent/B-Agent",
+            branch="test/no-change",
+            audit_context={"inventory": "integration test"},
+        )
+
+    result = dispatch_bundle_tasks(
+        store=store,
+        work_id="real-queue-no-change",
+        bundle={"tasks": [{"id": "task-a", "depends_on": []}]},
+        execute_task=execute,
+    )
+
+    assert result["complete"] is False
+    assert result["no_change_task_ids"] == ["task-a"]
+    assert result["blocked_tasks"]["task-a"].startswith("no repair required")
+    latest = store.latest_task_states("real-queue-no-change")["task-a"]
+    assert latest["status"] == "no_change_required"
+    persisted_queue = queue.work_store.load("real-queue-no-change-task-a")
+    assert persisted_queue["status"] == "blocked"
+    assert persisted_queue["queue_advanced"] is False
+    assert persisted_queue["repair_cycle"]["status"] == "no_repair_required"
+
+
+def test_dispatcher_recovers_real_queue_completion_after_lifecycle_interruption(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    class SuccessfulRepairController:
+        workspace = tmp_path
+        calls = []
+
+        def run(self, **kwargs):
+            self.calls.append(kwargs["task_title"])
+            cycle = RepairCycleEvidence(cycle_id=f"cycle-{len(self.calls)}")
+            cycle.status = "complete"
+            cycle.current_state = "COMPLETE"
+            cycle.local_validation_passed = True
+            cycle.resolution_verified = True
+            cycle.commit.created = True
+            cycle.commit.exists = True
+            cycle.commit.sha = f"verified-sha-{len(self.calls)}"
+            cycle.commit.remote_verified = True
+            cycle.report = "Repair validated."
+            return cycle
+
+    repair = SuccessfulRepairController()
+    queue_store = DurableWorkStore(tmp_path)
+    queue = WorkQueueController(repair_controller=repair, work_store=queue_store)
+    identity = ProjectIdentity.from_seed("Barrot-Agent/B-Agent")
+
+    # Simulate a crash after the durable queue has completed task-a but before
+    # the bundle lifecycle store has recorded that result.
+    seeded = queue.run(
+        work_id="recovery:task-a",
+        project_identity=identity,
+        task_title="Task A",
+        task_body="First dependency",
+        issue_number="42",
+        repo="Barrot-Agent/B-Agent",
+        branch="test/recovery",
+        audit_context={"inventory": "integration test"},
+    )
+    assert seeded.status == "complete"
+    assert seeded.queue_advanced is True
+    assert seeded.repair_cycle["commit"]["remote_verified"] is True
+
+    lifecycle = BundleLifecycleStore(tmp_path)
+    lifecycle.save_plan("recovery-bundle", Result())
+    executed = []
+
+    def execute(task):
+        executed.append(task["id"])
+        return queue.run(
+            work_id=f"recovery:{task['id']}",
+            project_identity=identity,
+            task_title=task["id"],
+            task_body="Dependent task",
+            issue_number="42",
+            repo="Barrot-Agent/B-Agent",
+            branch="test/recovery",
+            audit_context={"inventory": "integration test"},
+        )
+
+    def recover(task):
+        saved = queue_store.load(f"recovery:{task['id']}")
+        if not isinstance(saved, dict) or saved.get("status") != "complete":
+            return None
+        cycle = saved.get("repair_cycle") or {}
+        commit = cycle.get("commit") or {}
+        if not (
+            saved.get("queue_advanced") is True
+            and cycle.get("status") == "complete"
+            and cycle.get("local_validation_passed") is True
+            and cycle.get("resolution_verified") is True
+            and commit.get("remote_verified") is True
+            and commit.get("sha")
+        ):
+            return None
+        return saved
+
+    result = dispatch_bundle_tasks(
+        store=lifecycle,
+        work_id="recovery-bundle",
+        bundle={"tasks": [
+            {"id": "task-a", "depends_on": []},
+            {"id": "task-b", "depends_on": ["task-a"]},
+        ]},
+        execute_task=execute,
+        recover_task=recover,
+    )
+
+    assert result["complete"] is True
+    assert result["completed_task_ids"] == ["task-a", "task-b"]
+    assert executed == ["task-b"]
+    assert repair.calls == ["Task A", "task-b"]
+    states = lifecycle.latest_task_states("recovery-bundle")
+    assert states["task-a"]["recovered_from_queue"] is True
+    assert states["task-a"]["commit_sha"] == "verified-sha-1"
+    assert states["task-b"]["status"] == "complete"
+
+def test_dispatcher_resumes_after_interruption_between_tasks(tmp_path):
+    from barrot_agent.orchestration.bundle_lifecycle import dispatch_bundle_tasks
+
+    store = BundleLifecycleStore(tmp_path)
+    store.save_plan("interrupted-bundle", Result())
+    bundle = {"tasks": [
+        {"id": "task-a", "depends_on": []},
+        {"id": "task-b", "depends_on": ["task-a"]},
+    ]}
+    calls = []
+
+    def interrupted_execute(task):
+        calls.append(task["id"])
+        if task["id"] == "task-b":
+            # Simulate interruption/failure before the dependent task completes.
+            return {"status": "failed", "queue_advanced": False,
+                    "repair_cycle": {"status": "failed", "failure": "simulated interruption"}}
+        return _complete_task_result(task["id"])
+
+    first = dispatch_bundle_tasks(
+        store=store,
+        work_id="interrupted-bundle",
+        bundle=bundle,
+        execute_task=interrupted_execute,
+    )
+    assert first["complete"] is False
+    assert first["completed_task_ids"] == ["task-a"]
+
+    # A fresh dispatcher/store instance represents a process restart. The first
+    # task must remain durably complete; only the unfinished dependent is retried.
+    restarted_store = BundleLifecycleStore(tmp_path)
+    resumed_calls = []
+    resumed = dispatch_bundle_tasks(
+        store=restarted_store,
+        work_id="interrupted-bundle",
+        bundle=bundle,
+        execute_task=lambda task: (
+            resumed_calls.append(task["id"]) or _complete_task_result(task["id"])
+        ),
+    )
+
+    assert calls == ["task-a", "task-b"]
+    assert resumed_calls == ["task-b"]
+    assert resumed["complete"] is True
+    assert resumed["completed_task_ids"] == ["task-a", "task-b"]
+    latest = restarted_store.latest_task_states("interrupted-bundle")
+    assert latest["task-a"]["status"] == "complete"
+    assert latest["task-b"]["status"] == "complete"
+

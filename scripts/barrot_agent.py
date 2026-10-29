@@ -5,6 +5,7 @@ BARROT AGENT — deterministic repository repair worker.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
@@ -34,8 +35,8 @@ from barrot_agent.orchestration.repository_repair import (
     RepositoryRepairController,
     WorkQueueController,
 )
-from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
-from barrot_agent.orchestration.bundle_lifecycle import BundleLifecycleStore
+from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController, BundleEngineeringResult, review_work_bundle
+from barrot_agent.orchestration.bundle_lifecycle import BundleLifecycleStore, dispatch_bundle_tasks
 from barrot_agent.research import (
     ScientificDiscoveryController,
     is_scientific_discovery_task,
@@ -795,22 +796,23 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
     with tempfile.TemporaryDirectory(prefix="barrot_pr_") as tmp_dir:
         pr_path = Path(tmp_dir) / "barrot_pr_body.md"
         pr_path.write_text("\n".join(body), encoding="utf-8")
-    result = run_gh(
-        [
-            "pr",
-            "create",
-            "--repo",
-            REPO,
-            "--title",
-            f"Barrot: {safe_title}",
-            "--body-file",
-            str(pr_path),
-            "--head",
-            head_branch,
-            "--base",
-            "main",
-        ]
-    )
+        # GitHub CLI must read the body before the temporary directory is removed.
+        result = run_gh(
+            [
+                "pr",
+                "create",
+                "--repo",
+                REPO,
+                "--title",
+                f"Barrot: {safe_title}",
+                "--body-file",
+                str(pr_path),
+                "--head",
+                head_branch,
+                "--base",
+                "main",
+            ]
+        )
     if result.returncode != 0 and "already exists" not in (result.stderr + result.stdout).lower():
         raise RuntimeError(result.stderr.strip() or result.stdout.strip() or "gh pr create failed")
     if result.stdout.strip():
@@ -1366,26 +1368,52 @@ def main() -> None:
         "Use the existing RepositoryRepairController and WorkQueueController; do not create a parallel executor.",
         "Bound retries, persist state and evidence, and stop safely on invalid output or failed gates.",
     ]
-    try:
-        bundle_result = BundleEngineeringController(bundle_brain, max_revision_attempts=2).run(
-            objective=TITLE.strip(),
-            constraints=bundle_constraints,
-            task_context=TASK.strip(),
-            repository_context=(
-                audit_context.get("inventory", "")
-                + audit_context.get("file_context", "")
-                + audit_context.get("directory_context", "")
-            )[:2000],
-        )
-    except Exception as exc:  # fail closed before repository mutation
-        message = (
-            "Barrot bundle authoring/review failed safely; repository repair was not started.\n\n"
-            f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
-        )
-        post_issue_comment(message)
-        raise SystemExit(message) from exc
+    request_fingerprint = "sha256:" + hashlib.sha256(
+        "\\0".join([REPO, BRANCH, TITLE.strip(), TASK.strip()]).encode("utf-8")
+    ).hexdigest()
+    saved_plan = lifecycle_store.load(work_id)
+    bundle_result = None
+    if (
+        saved_plan
+        and saved_plan.get("request_fingerprint") == request_fingerprint
+        and saved_plan.get("status") == "READY_FOR_EXECUTION_REVIEW"
+        and isinstance(saved_plan.get("bundle"), dict)
+        and saved_plan["bundle"].get("objective") == TITLE.strip()
+        and saved_plan["bundle"].get("constraints") == bundle_constraints
+    ):
+        saved_review = review_work_bundle(saved_plan["bundle"])
+        if saved_review.valid:
+            bundle_result = BundleEngineeringResult(
+                status="READY_FOR_EXECUTION_REVIEW",
+                bundle=saved_plan["bundle"],
+                review=saved_review,
+                attempts=tuple(saved_plan.get("attempts") or ()),
+            )
+            print("Resuming persisted bundle:", saved_review.fingerprint)
 
-    lifecycle_path = lifecycle_store.save_plan(work_id, bundle_result)
+    if bundle_result is None:
+        try:
+            bundle_result = BundleEngineeringController(bundle_brain, max_revision_attempts=2).run(
+                objective=TITLE.strip(),
+                constraints=bundle_constraints,
+                task_context=TASK.strip(),
+                repository_context=(
+                    audit_context.get("inventory", "")
+                    + audit_context.get("file_context", "")
+                    + audit_context.get("directory_context", "")
+                )[:2000],
+            )
+        except Exception as exc:  # fail closed before repository mutation
+            message = (
+                "Barrot bundle authoring/review failed safely; repository repair was not started.\n\n"
+                f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
+            )
+            post_issue_comment(message)
+            raise SystemExit(message) from exc
+
+    lifecycle_path = lifecycle_store.save_plan(
+        work_id, bundle_result, request_fingerprint=request_fingerprint
+    )
     print(f"Bundle plan persisted: {lifecycle_path}")
     print(
         "Bundle gate:",
@@ -1403,28 +1431,127 @@ def main() -> None:
         post_issue_comment(message)
         raise SystemExit(1)
 
+    task_work_scope = request_fingerprint.split(":", 1)[-1][:16]
     controller = RepositoryRepairController(
         brain=brain,
         workspace=ROOT,
         workspace_verifier=verify_result,
     )
     queue = WorkQueueController(repair_controller=controller)
-    work = queue.run(
+    def execute_bundle_task(task: dict[str, Any]) -> Any:
+        task_title = f"{TITLE} — {task['title']}"
+        task_body = "\n".join([
+            f"Parent objective: {TITLE}",
+            f"Original user request: {TASK}",
+            f"Bundle task ID: {task['id']}",
+            f"Task description: {task['description']}",
+            "Target files: " + ", ".join(task.get("files", [])),
+            "Acceptance criteria:\n- " + "\n- ".join(task.get("acceptance_criteria", [])),
+            "Required tests:\n- " + "\n- ".join(task.get("tests", [])),
+            "Rollback plan:\n- " + "\n- ".join(task.get("rollback_plan", [])),
+            "Only perform this task after its declared dependencies are complete. Validate the result using the existing repair workflow.",
+        ])
+        task_context = build_audit_context(task_title, task_body)
+        return queue.run(
+            work_id=f"{work_id}:request:{task_work_scope}:task:{task['id']}",
+            project_identity=build_project_identity(REPO),
+            task_title=task_title,
+            task_body=task_body,
+            issue_number=ISSUE,
+            repo=REPO,
+            branch=BRANCH,
+            audit_context=task_context,
+        )
+
+    def recover_completed_bundle_task(task: dict[str, Any]) -> dict[str, Any] | None:
+        # Close the crash window where WorkQueueController persisted a successful
+        # repair but the process died before bundle lifecycle evidence was appended.
+        task_work_id = f"{work_id}:request:{task_work_scope}:task:{task['id']}"
+        saved_work = queue.work_store.load(task_work_id)
+        if not isinstance(saved_work, dict) or saved_work.get("status") != "complete":
+            return None
+        if saved_work.get("queue_advanced") is not True:
+            return None
+        cycle = saved_work.get("repair_cycle")
+        if not isinstance(cycle, dict) or cycle.get("status") != "complete":
+            return None
+        commit = cycle.get("commit") or {}
+        if not (
+            cycle.get("local_validation_passed") is True
+            and commit.get("remote_verified") is True
+            and cycle.get("resolution_verified") is True
+            and isinstance(commit.get("sha"), str)
+            and commit.get("sha")
+        ):
+            return None
+        return saved_work
+
+    dispatch = dispatch_bundle_tasks(
+        store=lifecycle_store,
         work_id=work_id,
-        project_identity=build_project_identity(REPO),
-        task_title=TITLE,
-        task_body=TASK,
-        issue_number=ISSUE,
-        repo=REPO,
-        branch=BRANCH,
-        audit_context=audit_context,
+        bundle=bundle_result.bundle,
+        execute_task=execute_bundle_task,
+        recover_task=recover_completed_bundle_task,
     )
-    cycle = work.repair_cycle
+    work = dispatch.get("last_result")
+    task_ids = [
+        task.get("id")
+        for task in bundle_result.bundle.get("tasks", [])
+        if isinstance(task, dict) and isinstance(task.get("id"), str)
+    ]
+    if (
+        task_ids
+        and dispatch.get("no_change_task_ids")
+        and set(dispatch["no_change_task_ids"]) == set(task_ids)
+    ):
+        message = (
+            "Barrot made no repository changes because deterministic validation confirmed "
+            "that the requested issue does not reproduce. No repair is being reported as "
+            "complete, and no pull request was created.\n\n"
+            + json.dumps({
+                "status": "NO_CHANGE_REQUIRED",
+                "no_change_task_ids": dispatch["no_change_task_ids"],
+            }, indent=2)
+        )
+        lifecycle_store.record_execution(work_id, {
+            "status": "NO_CHANGE_REQUIRED",
+            "bundle_complete": False,
+            "no_change_task_ids": dispatch["no_change_task_ids"],
+            "blocked_tasks": dispatch["blocked_tasks"],
+            "pull_request_created": False,
+        })
+        post_issue_comment(message)
+        print(message)
+        return
+
+    if work is None:
+        message = (
+            "Barrot bundle execution is blocked: no verified task result is available.\n\n"
+            + json.dumps({
+                "completed_task_ids": dispatch["completed_task_ids"],
+                "blocked_tasks": dispatch["blocked_tasks"],
+            }, indent=2)
+        )
+        lifecycle_store.record_execution(work_id, {
+            "status": "BLOCKED",
+            "bundle_complete": False,
+            "completed_task_ids": dispatch["completed_task_ids"],
+            "blocked_tasks": dispatch["blocked_tasks"],
+        })
+        post_issue_comment(message)
+        raise SystemExit(1)
+
+    work_data = _work_dict(work)
+    cycle = work_data.get("repair_cycle") or {}
     cycle_data = cycle if isinstance(cycle, dict) else {}
     lifecycle_store.record_execution(work_id, {
-        "status": cycle_data.get("status", getattr(work, "status", "UNKNOWN")),
+        "status": "COMPLETE" if dispatch["complete"] else "BLOCKED",
+        "bundle_complete": dispatch["complete"],
+        "completed_task_ids": dispatch["completed_task_ids"],
+        "executed_task_ids": dispatch["executed_task_ids"],
+        "blocked_tasks": dispatch["blocked_tasks"],
         "cycle_id": cycle_data.get("cycle_id"),
-        "queue_advanced": getattr(work, "queue_advanced", False),
+        "queue_advanced": work_data.get("queue_advanced", False),
         "commit_sha": (cycle_data.get("commit") or {}).get("sha", ""),
         "local_validation_passed": cycle_data.get("local_validation_passed"),
         "remote_verified": (cycle_data.get("commit") or {}).get("remote_verified", False),
@@ -1432,9 +1559,19 @@ def main() -> None:
         "failure": cycle_data.get("failure"),
     })
 
-    rendered = json.dumps(work.to_dict(), indent=2)
-    print(rendered)
-    write_collaboration_record(work)
+    rendered = json.dumps(work_data, indent=2)
+    # last_result is the raw WorkItemEvidence; render the serialized form instead.
+    dispatch_summary = {key: value for key, value in dispatch.items() if key != "last_result"}
+    print(json.dumps({"bundle_dispatch": dispatch_summary, "last_work": work_data}, indent=2, default=str)[:55000])
+    write_collaboration_record(work_data)
+
+    if not dispatch["complete"]:
+        post_issue_comment(
+            "Barrot bundle execution is blocked; unfinished tasks were not reported complete.\n\n```json\n"
+            + json.dumps({"completed_task_ids": dispatch["completed_task_ids"], "blocked_tasks": dispatch["blocked_tasks"]}, indent=2)[:50000]
+            + "\n```"
+        )
+        raise SystemExit(1)
 
     if cycle.get("status") == "no_repair_required":
         if cycle.get("report_only"):
@@ -1443,7 +1580,7 @@ def main() -> None:
         post_issue_comment(message)
         return
 
-    if cycle.get("status") != "complete" or not work.queue_advanced:
+    if cycle.get("status") != "complete" or not work_data.get("queue_advanced", False):
         post_issue_comment(
             "Barrot repair failed safely.\n\n```json\n"
             + rendered[:55000]
