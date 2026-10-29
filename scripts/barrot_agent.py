@@ -1140,20 +1140,19 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
 def build_read_only_source_snapshot() -> dict[str, Any]:
     """Return compact, read-only source excerpts for one-shot audit inference."""
     specs = [
-        (".github/workflows/barrot-agent.yml", ("workflow_dispatch", "barrot-task", "permissions:", "scripts/barrot_agent.py"), 12),
-        ("scripts/barrot_agent.py", ("def think(", "def build_read_only_audit_snapshot", "def is_explicit_read_only_audit_task", "READ_ONLY_AUDIT=COMPLETE", "BundleEngineeringController"), 16),
-        ("barrot_agent/orchestration/repository_repair.py", ("def _barrett_autonomous_audit", "report_only", "PATCHING", "COMMITTING", "REMOTE_VERIFICATION"), 14),
-        ("barrot_agent/rendering/mesh_topology.py", ("def analyze_mesh_topology", "degenerate_triangles", "is_watertight", "topology_status"), 12),
-        ("barrot_agent/rendering/obj_mesh_loader.py", ("triangulate_polygon", "triangulation", "EAR_CLIPPING"), 12),
-        ("barrot_agent/rendering/polygon_triangulation.py", ("def triangulate_polygon", "convex", "ear"), 12),
-        ("barrot_agent/rendering/quality_metrics.py", ("def _check_geometry", "NOT_ASSESSED", "mesh_vertices is None"), 12),
-        ("tests/test_mesh_topology.py", ("tetrahedron", "degenerate", "nonmanifold"), 10),
-        ("tests/test_obj_mesh_loader.py", ("tetrahedron", "concave", "degenerate_triangles"), 12),
-        ("tests/test_polygon_triangulation.py", ("concave", "area"), 10),
-        ("scripts/barrot_repo_state_manifest.py", ("manifest", "sha256", "source"), 7),
-        ("barrot_agent/repo_state_corroborator.py", ("stale", "missing", "corrobor"), 7),
-        ("barrot_agent/orchestration/bundle_delivery.py", ("checksum", "verify", "def "), 7),
-    ]
+        (".github/workflows/barrot-agent.yml", ("workflow_dispatch", "barrot-task", "permissions:", "scripts/barrot_agent.py"), 6),
+        ("barrot_agent/rendering/mesh_topology.py", ("def analyze_mesh_topology", "degenerate_triangles", "is_watertight", "topology_status"), 6),
+        ("barrot_agent/rendering/obj_mesh_loader.py", ("triangulate_polygon", "triangulation", "EAR_CLIPPING"), 6),
+        ("barrot_agent/rendering/polygon_triangulation.py", ("def triangulate_polygon", "convex", "ear"), 6),
+        ("barrot_agent/rendering/quality_metrics.py", ("def _check_geometry", "NOT_ASSESSED", "mesh_vertices is None"), 6),
+        ("tests/test_mesh_topology.py", ("tetrahedron", "degenerate", "nonmanifold"), 4),
+        ("tests/test_obj_mesh_loader.py", ("tetrahedron", "concave", "degenerate_triangles"), 6),
+        ("tests/test_polygon_triangulation.py", ("concave", "area"), 4),
+        ("barrot_agent/orchestration/repository_repair.py", ("def _barrett_autonomous_audit", "report_only", "PATCHING", "COMMITTING", "REMOTE_VERIFICATION"), 6),
+        ("scripts/barrot_agent.py", ("def think(", "def build_read_only_audit_snapshot", "def is_explicit_read_only_audit_task", "READ_ONLY_AUDIT=COMPLETE", "BundleEngineeringController"), 6),
+        ("scripts/barrot_repo_state_manifest.py", ("manifest", "sha256", "source"), 4),
+        ("barrot_agent/repo_state_corroborator.py", ("stale", "missing", "corrobor"), 4),
+        ("barrot_agent/orchestration/bundle_delivery.py", ("checksum", "verify", "def "), 4),
     result: dict[str, Any] = {}
     total_chars = 0
     for relative_path, terms, max_lines in specs:
@@ -1171,7 +1170,7 @@ def build_read_only_source_snapshot() -> dict[str, Any]:
             if any(term.casefold() in line.casefold() for term in terms):
                 selected.update(range(max(0, index - 1), min(len(lines), index + 2)))
         excerpts = sorted(selected)[:max_lines]
-        rendered = "\n".join(f"{index + 1}: {lines[index][:200]}" for index in excerpts)
+        rendered = "\n".join(f"{index + 1}: {lines[index][:130]}" for index in excerpts)
         allowance = max(0, 9000 - total_chars)
         rendered = rendered[:allowance]
         result[relative_path] = {
