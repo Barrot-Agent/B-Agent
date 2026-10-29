@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+from types import SimpleNamespace
 from pathlib import Path
 
 from barrot_agent.orchestration.repository_repair import RepairCycleEvidence, WorkItemEvidence
@@ -49,6 +50,28 @@ def test_barrot_agent_main_routes_through_work_queue_controller(monkeypatch):
             work.queue_advanced = True
             return work
 
+    class FakeBundleController:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def run(self, **kwargs):
+            return SimpleNamespace(
+                status="READY_FOR_EXECUTION_REVIEW",
+                review=SimpleNamespace(quality_score=100, fingerprint="sha256:test"),
+            )
+
+    class FakeLifecycleStore:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def save_plan(self, *args, **kwargs):
+            return "test-plan"
+
+        def record_execution(self, *args, **kwargs):
+            return None
+
+    monkeypatch.setattr(module, "BundleEngineeringController", FakeBundleController)
+    monkeypatch.setattr(module, "BundleLifecycleStore", FakeLifecycleStore)
     monkeypatch.setattr(module, "RepositoryRepairController", FakeController)
     monkeypatch.setattr(module, "WorkQueueController", FakeQueue)
     monkeypatch.setattr(module, "configure_git", lambda: calls.setdefault("configured", True))
@@ -99,6 +122,28 @@ def test_barrot_agent_report_only_does_not_post_issue_comment(monkeypatch):
             work.queue_advanced = True
             return work
 
+    class FakeBundleController:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def run(self, **kwargs):
+            return SimpleNamespace(
+                status="READY_FOR_EXECUTION_REVIEW",
+                review=SimpleNamespace(quality_score=100, fingerprint="sha256:test"),
+            )
+
+    class FakeLifecycleStore:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def save_plan(self, *args, **kwargs):
+            return "test-plan"
+
+        def record_execution(self, *args, **kwargs):
+            return None
+
+    monkeypatch.setattr(module, "BundleEngineeringController", FakeBundleController)
+    monkeypatch.setattr(module, "BundleLifecycleStore", FakeLifecycleStore)
     monkeypatch.setattr(module, "RepositoryRepairController", FakeController)
     monkeypatch.setattr(module, "WorkQueueController", FakeQueue)
     monkeypatch.setattr(module, "configure_git", lambda: None)
@@ -205,16 +250,15 @@ def test_script_brain_executes_repo_browser_tools_with_auto_tool_choice(tmp_path
         assert payload["tools"]
 
 
-def test_repo_browser_rejects_empty_path_arguments(monkeypatch) -> None:
+def test_repo_browser_empty_path_defaults_to_repository_root(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
     module = load_script_module("barrot_agent_repo_browser_test")
 
     browser = module.RepoBrowser(Path(__file__).resolve().parents[1])
-    response = json.loads(browser.print_tree({"path": "", "depth": 1}))
+    response = browser.print_tree({"path": "", "depth": 1})
 
-    assert response["success"] is False
-    assert "non-empty" in response["error"]
+    assert response.splitlines()[0] == "."
 
 
 def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
@@ -244,3 +288,56 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
 
     assert calls["args"][8] == "--head"
     assert calls["args"][9] == "repair/from-cycle"
+
+
+
+def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch):
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("TASK_BODY", "AUDIT AND RECOMMEND ONLY. No implementation changes are authorized by this issue.")
+    monkeypatch.setenv("TASK_TITLE", "Repository-wide read-only audit")
+    monkeypatch.setenv("TASK_MODE", "engineering")
+    monkeypatch.setenv("ISSUE_NUMBER", "1167")
+    monkeypatch.setenv("BRANCH", "barrot/task-1167")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+
+    module = load_script_module("barrot_agent_read_only_audit_test")
+    calls: dict[str, object] = {}
+
+    class FakeBrain:
+        def __init__(self, **kwargs):
+            calls.setdefault("brain_inits", []).append(kwargs)
+
+        def think(self, message, system=None):
+            calls["prompt"] = json.loads(message)
+            calls["system"] = system
+            return "## Evidence report\\n\\nCONFIRMED: repository context inspected."
+
+    def forbidden(*args, **kwargs):
+        raise AssertionError("audit-only task must not enter bundle or repair execution")
+
+    monkeypatch.setattr(module, "ScriptBrain", FakeBrain)
+    monkeypatch.setattr(module, "BundleEngineeringController", forbidden)
+    monkeypatch.setattr(module, "RepositoryRepairController", forbidden)
+    monkeypatch.setattr(module, "WorkQueueController", forbidden)
+    monkeypatch.setattr(module, "configure_git", lambda: None)
+    monkeypatch.setattr(module, "checkout_branch", lambda branch: None)
+    monkeypatch.setattr(
+        module,
+        "build_audit_context",
+        lambda title, body: {"inventory": "real inventory", "file_context": "source excerpts"},
+    )
+    monkeypatch.setattr(module, "build_read_only_audit_snapshot", lambda: {"branch_count": 1})
+    monkeypatch.setattr(
+        module,
+        "post_issue_comment",
+        lambda message: calls.setdefault("comment", message),
+    )
+    monkeypatch.setattr(module, "write_collaboration_record", forbidden)
+    monkeypatch.setattr(module, "create_pull_request", forbidden)
+
+    module.main()
+
+    assert "## Barrot Read-Only Audit Report" in calls["comment"]
+    assert "CONFIRMED: repository context inspected." in calls["comment"]
+    assert calls["prompt"]["repository_context"]["inventory"] == "real inventory"
+    assert calls["prompt"]["rules"]

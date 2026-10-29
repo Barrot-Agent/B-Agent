@@ -977,6 +977,118 @@ def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[s
             ) from retry_error
 
 
+def build_read_only_audit_snapshot() -> dict[str, Any]:
+    """Collect bounded, read-only Git and Actions evidence for audit-only tasks."""
+    snapshot: dict[str, Any] = {}
+    commands = {
+        "working_tree": ["git", "status", "--short", "--branch"],
+        "head": ["git", "rev-parse", "HEAD"],
+        "recent_history": [
+            "git", "log", "--all", "-n", "30", "--date=short",
+            "--pretty=format:%h|%ad|%d|%s",
+        ],
+        "branch_refs": [
+            "git", "for-each-ref", "--sort=-committerdate",
+            "--format=%(refname:short)|%(objectname:short)|%(committerdate:short)|%(subject)",
+            "refs/heads", "refs/remotes/origin",
+        ],
+        "geometry_checkpoint_vs_main": [
+            "git", "diff", "--stat",
+            "origin/main...origin/barrot/mesh-topology-obj-triangulation-20261024",
+        ],
+        "geometry_checkpoint_vs_fresh_main": [
+            "git", "diff", "--stat",
+            "origin/barrot/mesh-topology-obj-triangulation-20261024...origin/barrot/mesh-topology-fresh-main-20261026-0837",
+        ],
+    }
+    outputs: dict[str, str] = {}
+    for name, args in commands.items():
+        result = run(args, check=False, quiet=True)
+        outputs[name] = result.stdout.strip() if name == "branch_refs" else result.stdout.strip()[:16000]
+        if result.returncode != 0:
+            outputs[name] = (
+                f"UNAVAILABLE (exit={result.returncode}): "
+                + (result.stderr.strip()[:1000] or result.stdout.strip()[:1000])
+            )
+    snapshot["working_tree"] = outputs["working_tree"]
+    snapshot["head"] = outputs["head"]
+    snapshot["recent_history"] = outputs["recent_history"]
+
+    branch_output = outputs["branch_refs"]
+    relevant_markers = (
+        "mesh-topology", "structural-core", "mmi", "tool-call-resilience",
+        "barrot/task-1167",
+    )
+    if branch_output.startswith("UNAVAILABLE"):
+        snapshot["branch_count"] = None
+        snapshot["relevant_branch_heads"] = branch_output
+    else:
+        branch_lines = branch_output.splitlines()
+        relevant_branches = [
+            line for line in branch_lines
+            if line.split("|", 1)[0] in {"main", "origin/main"}
+            or any(marker in line.split("|", 1)[0].lower() for marker in relevant_markers)
+        ]
+        snapshot["branch_count"] = len(branch_lines)
+        snapshot["relevant_branch_heads"] = relevant_branches[:80]
+    snapshot["geometry_diffs"] = {
+        "checkpoint_vs_main": outputs["geometry_checkpoint_vs_main"],
+        "checkpoint_vs_fresh_main": outputs["geometry_checkpoint_vs_fresh_main"],
+    }
+
+    actions = run_gh(["api", f"repos/{REPO}/actions/runs?per_page=100"])
+    if actions.returncode == 0:
+        try:
+            payload = json.loads(actions.stdout)
+            runs = payload.get("workflow_runs", [])
+            def summarize(item: dict[str, Any]) -> dict[str, Any]:
+                return {
+                    "id": item.get("id"),
+                    "name": item.get("name"),
+                    "path": item.get("path"),
+                    "event": item.get("event"),
+                    "status": item.get("status"),
+                    "conclusion": item.get("conclusion"),
+                    "created_at": item.get("created_at"),
+                    "branch": item.get("head_branch"),
+                    "title": item.get("display_title"),
+                    "url": item.get("html_url"),
+                    "sha": item.get("head_sha"),
+                }
+            recent = [summarize(item) for item in runs[:12]]
+            relevant = [
+                summarize(item) for item in runs
+                if any(token in (
+                    str(item.get("display_title", "")) + " "
+                    + str(item.get("name", "")) + " "
+                    + str(item.get("head_branch", ""))
+                ).lower() for token in ("mesh", "geometry", "triangulation", "tetrahedron", "audit", "barrot agent"))
+            ]
+            snapshot["actions"] = {
+                "total_count": payload.get("total_count"),
+                "recent_runs": recent,
+                "relevant_runs": relevant[:25],
+            }
+        except (TypeError, ValueError, AttributeError) as exc:
+            snapshot["actions"] = {"status": "UNPARSEABLE", "error": type(exc).__name__}
+    else:
+        snapshot["actions"] = {
+            "status": "UNAVAILABLE",
+            "exit_code": actions.returncode,
+            "error": actions.stderr.strip()[:1000],
+        }
+    return snapshot
+
+
+def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
+    """Recognize tasks that explicitly forbid repository implementation changes."""
+    normalized = f"{title}\n{body}".casefold()
+    return (
+        "audit and recommend only" in normalized
+        and "no implementation changes are authorized by this issue" in normalized
+    )
+
+
 def main() -> None:
     configure_git()
     checkout_branch(BRANCH)
@@ -1063,6 +1175,58 @@ def main() -> None:
     brain = ScriptBrain()
     bundle_brain = ScriptBrain(enable_tools=False)
     audit_context = build_audit_context(TITLE, TASK)
+    if is_explicit_read_only_audit_task(TITLE, TASK):
+        audit_request = {
+            "objective": TITLE,
+            "task_body": TASK,
+            "repository_context": audit_context,
+            "live_read_only_snapshot": build_read_only_audit_snapshot(),
+            "required_sections": [
+                "Executive status and critical risks",
+                "Repository, branch, and commit map",
+                "CI/workflow configuration versus actual run evidence",
+                "Geometry discrepancy, triangulation, and NOT_ASSESSED behavior",
+                "Agent safety, MMI/provenance, and delivery readiness",
+                "Prioritized next actions with acceptance criteria",
+                "Checks blocked or not performed, with reasons",
+            ],
+            "rules": [
+                "This is a read-only audit. Do not repair, patch, write files, install dependencies, commit, push, merge, open pull requests, or delete/overwrite/reset/clean anything.",
+                "Inspect repository files using only the available read-only repo_browser tools and the supplied repository context.",
+                "Never claim a test ran or passed unless execution output or a specific GitHub Actions run proves it.",
+                "Separate CONFIRMED, LIKELY, UNVERIFIED, and BLOCKED findings.",
+                "Cite exact paths, relevant lines, SHAs, workflow run IDs/URLs, and actual output when available.",
+                "If the local checkout cannot establish remote or historical facts, state the limitation rather than guessing.",
+                "Return the complete evidence-backed report, not a plan to perform the audit later.",
+            ],
+        }
+        audit_system = (
+            "You are Barrot performing a strictly read-only repository audit. "
+            "Use the available repo_browser tools to inspect actual files before making claims. "
+            "Do not execute repair logic or propose changes as already completed. "
+            "Return a concise but complete Markdown report with explicit evidence and uncertainty."
+        )
+        try:
+            audit_brain = ScriptBrain(max_tool_rounds=8)
+            report = audit_brain.think(
+                json.dumps(audit_request, ensure_ascii=False, sort_keys=True),
+                system=audit_system,
+            )
+        except Exception as exc:
+            message = (
+                "Barrot read-only audit failed safely; repository repair was not started.\n\n"
+                f"Failure: {type(exc).__name__}: {str(exc)[:1200]}"
+            )
+            post_issue_comment(message)
+            raise SystemExit(message) from exc
+        if not report.strip():
+            message = "Barrot read-only audit returned an empty report; repository repair was not started."
+            post_issue_comment(message)
+            raise SystemExit(message)
+        post_issue_comment("## Barrot Read-Only Audit Report\n\n" + report)
+        print("READ_ONLY_AUDIT=COMPLETE")
+        return
+
     lifecycle_store = BundleLifecycleStore(ROOT)
     bundle_constraints = [
         "Preserve the exact user objective and constraints across revisions.",
