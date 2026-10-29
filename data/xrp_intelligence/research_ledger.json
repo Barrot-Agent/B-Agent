@@ -11929,7 +11929,7 @@
   "current_research_head_before_ledger_update": "024d9dd1f1cb06679e94b91c312387c5c9001ccb",
   "current_research_head_this_run": "46166e484c63d5b96229718da5af4c84b886a000",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PENDING; PR1300_CURRENT_HEAD_CI_187_TESTS_4_SUBTESTS_PASS; PR1300_CURRENT_HEAD_GATE_PASS; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; PR1300_CURRENT_HEAD_CI_187_TESTS_4_SUBTESTS_PASS; PR1300_CURRENT_HEAD_GATE_PASS; FORECAST_NOT_ISSUED",
     "latest_main_sha": "9bfb3010d2a28f486af808c90a2a4565e76a5234",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0913-pr1300-current-head-ci-gate-verified.json",
     "snapshot_blob_sha": "cadba6a9bec171c33bfc0ad37f53ffa52daf4408",
@@ -11942,9 +11942,9 @@
     "graph_addendum_blob_sha": "41c86d6ad8eec55bfa234793f38dffc1b88f198e",
     "graph_addendum_commit_sha": "7cb5d5903d40ee1ea2f13607efb554e181aed7c2",
     "graph_addendum_readback_ok": true,
-    "index_pointer_readback_ok": false,
-    "index_character_count_match": false,
-    "index_metric_count_match": false,
+    "index_pointer_readback_ok": true,
+    "index_character_count_match": true,
+    "index_metric_count_match": true,
     "source_ids_unique": true,
     "relationship_edges": 173,
     "competing_hypotheses": 105,
@@ -11960,7 +11960,10 @@
     "force_push": false,
     "deployment_executed": false,
     "real_money_trade": false,
-    "paper_trading_state_mutated": false
+    "paper_trading_state_mutated": false,
+    "verified_at_utc": "2026-10-29T09:13:13Z",
+    "index_blob_sha_at_readback": "043c7c8f722cc525048e59bf7b5c8b407f104aaa",
+    "index_commit_sha_at_readback": "4bf2b2a8a65a6f3340a88ab72d027293f4b376e5"
   },
   "ledger_metrics": {
     "source_records": 838,
@@ -11974,10 +11977,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 807991,
+    "index_characters_before_this_update": 809434,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 8775,
-    "index_characters": 809434
+    "index_characters": 809833
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -12057,7 +12060,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T09:13:13Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PENDING; PR1300_CURRENT_HEAD_CI_187_TESTS_4_SUBTESTS_PASS; PR1300_CURRENT_HEAD_GATE_PASS; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; PR1300_CURRENT_HEAD_CI_187_TESTS_4_SUBTESTS_PASS; PR1300_CURRENT_HEAD_GATE_PASS; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "cadba6a9bec171c33bfc0ad37f53ffa52daf4408",
       "snapshot_commit_sha": "46166e484c63d5b96229718da5af4c84b886a000",
@@ -12069,9 +12072,9 @@
       "graph_addendum_blob_sha": "41c86d6ad8eec55bfa234793f38dffc1b88f198e",
       "graph_addendum_commit_sha": "7cb5d5903d40ee1ea2f13607efb554e181aed7c2",
       "graph_addendum_readback_ok": true,
-      "index_pointer_readback_ok": false,
-      "index_character_count_match": false,
-      "index_metric_count_match": false,
+      "index_pointer_readback_ok": true,
+      "index_character_count_match": true,
+      "index_metric_count_match": true,
       "source_ids_unique": true,
       "verified_source_records": 838,
       "verified_run_updates": 158,
@@ -12081,7 +12084,10 @@
       "verified_market_observations": 78,
       "pr1300_current_head_ci": "PASS_187_TESTS_PLUS_4_SUBTESTS_6.47S",
       "pr1300_current_head_gate": "PASS_FAIL_CLOSED",
-      "forecast_status": "NOT_ISSUED"
+      "forecast_status": "NOT_ISSUED",
+      "index_blob_sha_at_readback": "043c7c8f722cc525048e59bf7b5c8b407f104aaa",
+      "index_commit_sha_at_readback": "4bf2b2a8a65a6f3340a88ab72d027293f4b376e5",
+      "missing_index_source_references": 0
     }
   },
   "index_format_version": "2.0",
