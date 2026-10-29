@@ -241,7 +241,7 @@ def test_script_brain_executes_repo_browser_tools_with_auto_tool_choice(tmp_path
         }
 
     brain = module.ScriptBrain(request_sender=sender, repo_root=workspace)
-    result = brain.think("Inspect the repository.", system="Return JSON only.")
+    result = brain.think("Inspect the repository.", system="Return JSON only.", use_tools=True)
 
     assert json.loads(result) == {"mode": "report", "report": "done"}
     assert len(payloads) == 3
@@ -341,3 +341,25 @@ def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch):
     assert "CONFIRMED: repository context inspected." in calls["comment"]
     assert calls["prompt"]["repository_context"]["inventory"] == "real inventory"
     assert calls["prompt"]["rules"]
+
+
+def test_script_brain_can_disable_tools_per_call(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_tool_mode_test")
+    workspace = tmp_path / "repo"
+    workspace.mkdir()
+    payloads: list[dict[str, object]] = []
+
+    def sender(payload: dict[str, object]) -> dict[str, object]:
+        payloads.append(json.loads(json.dumps(payload)))
+        return {"choices": [{"message": {"role": "assistant", "content": "{}"}}]}
+
+    brain = module.ScriptBrain(request_sender=sender, repo_root=workspace)
+    result = brain.think("Return a JSON object.", system="JSON only.", use_tools=False)
+
+    assert json.loads(result) == {}
+    assert len(payloads) == 1
+    assert "tools" not in payloads[0]
+    assert payloads[0]["response_format"] == {"type": "json_object"}
+    assert payloads[0]["reasoning_effort"] == "low"
