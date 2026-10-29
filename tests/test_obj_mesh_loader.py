@@ -63,6 +63,26 @@ class ObjMeshLoaderTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             load_obj_mesh(path)
 
+    def test_quality_metrics_report_open_boundaries(self):
+        path = self.write_obj(
+            "v 0 0 0\nv 1 0 0\nv 0 1 0\nf 1 2 3\n"
+        )
+        mesh = load_obj_mesh(path)
+        report = QualityMetrics().validate(
+            asset_name=path.name,
+            triangle_count=len(mesh["faces"]),
+            texture_count=0,
+            mesh_vertices=mesh["vertices"],
+            mesh_faces=mesh["faces"],
+        )
+        self.assertFalse(report.geometry.is_watertight)
+        self.assertEqual(report.geometry.open_boundaries, 3)
+        boundary_issues = [
+            issue for issue in report.geometry.issues if issue.code == "GEO_003"
+        ]
+        self.assertEqual(len(boundary_issues), 1)
+        self.assertIn("3 open boundary edges", boundary_issues[0].message)
+
     def test_loader_uses_real_obj_counts_and_topology(self):
         path = self.write_obj(
             "v 0 0 0\nv 1 0 0\nv 0 1 0\nv 0 0 1\n"
