@@ -45,6 +45,7 @@ from barrot_agent.research import (
 REPO = os.environ["REPO"]
 TASK = os.environ.get("TASK_BODY", "")
 TITLE = os.environ.get("TASK_TITLE", "Barrot task")
+TASK_MODE = os.environ.get("TASK_MODE", "engineering").strip().lower()
 ISSUE = os.environ.get("ISSUE_NUMBER", "")
 BRANCH = os.environ.get("BRANCH", "barrot/task")
 MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
@@ -871,7 +872,7 @@ def main() -> None:
     configure_git()
     checkout_branch(BRANCH)
 
-    if is_scientific_discovery_task(TITLE, TASK):
+    if TASK_MODE == "scientific_discovery" and is_scientific_discovery_task(TITLE, TASK):
         cycle = ScientificDiscoveryController(workspace=ROOT).run(select_scientific_problem_adapter(TITLE, TASK))
         rendered = json.dumps(cycle.to_dict(), indent=2)
         print(rendered)
