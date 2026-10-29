@@ -156,6 +156,42 @@ class RepoBrowser:
         walk(target, 0)
         return "\n".join(lines[:500])
 
+    def open_file(self, args: dict[str, Any]) -> str:
+        """Read a bounded line range from one repository file."""
+        try:
+            target = self._resolve(args.get("path", ""))
+            start = int(args.get("line_start", 1) or 1)
+            requested_end = int(args.get("line_end", start + 79) or start + 79)
+        except (TypeError, ValueError) as exc:
+            return _tool_error(str(exc))
+        if start < 1 or requested_end < start:
+            return _tool_error("line_start must be >= 1 and line_end must be >= line_start.")
+        if not target.exists() or not target.is_file():
+            return _tool_error(f"repo_browser file does not exist: {args.get('path', '')}")
+        end = min(requested_end, start + 79)
+        try:
+            lines = target.read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError as exc:
+            return _tool_error(f"could not read repository file: {exc}")
+        selected = [
+            f"{index + 1}: {lines[index][:300]}"
+            for index in range(start - 1, min(end, len(lines)))
+        ]
+        rendered = "\n".join(selected)
+        if len(rendered) > 12000:
+            rendered = rendered[:12000] + "\n...[content truncated]"
+        return json.dumps(
+            {
+                "success": True,
+                "path": str(target.relative_to(self.root)),
+                "line_start": start,
+                "line_end": min(end, len(lines)),
+                "total_lines": len(lines),
+                "content": rendered,
+            },
+            sort_keys=True,
+        )
+
     def search(self, args: dict[str, Any]) -> str:
         query = str(args.get("query") or args.get("pattern") or "").strip()
         if not query:
@@ -370,6 +406,7 @@ class ScriptBrain:
         self.tool_funcs = {
             "repo_browser.print_tree": self.repo_browser.print_tree,
             "repo_browser.search": self.repo_browser.search,
+            "repo_browser.open_file": self.repo_browser.open_file,
         }
         self.tools = [
             {
@@ -383,6 +420,22 @@ class ScriptBrain:
                             "path": {"type": "string"},
                             "depth": {"type": "integer", "minimum": 0, "maximum": 6},
                         },
+                    },
+                },
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "repo_browser.open_file",
+                    "description": "Read up to 80 lines from a real repository file path; paths must remain inside the repository root.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "path": {"type": "string", "minLength": 1},
+                            "line_start": {"type": "integer", "minimum": 1},
+                            "line_end": {"type": "integer", "minimum": 1, "maximum": 100000},
+                        },
+                        "required": ["path"],
                     },
                 },
             },
