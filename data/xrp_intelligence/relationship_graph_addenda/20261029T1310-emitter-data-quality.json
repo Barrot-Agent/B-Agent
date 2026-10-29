@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T1310-EMITTER-FAIL-CLOSED-NEWS-TIMESTAMP-QUALITY",
+  "captured_at_utc": "2026-10-29T13:10:00Z",
+  "observed_main_sha": "750ccbaf27ac7f9f6c1c0b11e08653ed38eb6736",
+  "policy": {
+    "evidence_classes": [
+      "REPOSITORY_OBSERVATION",
+      "PROPOSED_FIX",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "Descriptive sentiment is not a price forecast. Feature-quality defects must be tested for their effect on out-of-sample performance; a proposed code change is not a deployed fix."
+  },
+  "nodes": [
+    {
+      "id": "XRP_SIGNAL_PIPELINE",
+      "label": "Barrot XRP signal emitter",
+      "kind": "REPOSITORY_COMPONENT"
+    },
+    {
+      "id": "XRP_FORECAST",
+      "label": "XRP price forecast issuance",
+      "kind": "MODEL_OUTPUT"
+    },
+    {
+      "id": "NEWS_FEATURE_STORE",
+      "label": "Distilled XRP-relevant news log",
+      "kind": "FEATURE_SOURCE"
+    },
+    {
+      "id": "FEATURE_ADMISSION",
+      "label": "Leakage-safe feature admission",
+      "kind": "MODEL_GOVERNANCE"
+    },
+    {
+      "id": "PR1324",
+      "label": "Draft PR #1324 emitter and data-quality guard",
+      "kind": "PROPOSED_CODE_CHANGE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN65-EMITTER-DESCRIPTIVE-NOT-FORECAST",
+      "source": "XRP_SIGNAL_PIPELINE",
+      "target": "XRP_FORECAST",
+      "relationship": "CURRENT_EMITTER_HAS_NO_EXPLICIT_FORECAST_STATUS",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "At main 750ccb, scripts/emit_signal.py can fall back to score 50/confidence 0.5 for malformed model JSON; when providers fail it returns zero confidence but still blends with news_score. The output has no forecast_status, target, horizon or calibrated return probability. PR #1324 proposes strict schema validation and explicit NOT_ISSUED metadata; the proposal is not merged.",
+      "source_ids": [
+        "SRC-GH-MAIN-EMITTER-20261029T1310Z",
+        "SRC-GH-PR1324-STATUS-20261029T1310Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN65-NEWS-TIMESTAMP-FAIL-OPEN",
+      "source": "NEWS_FEATURE_STORE",
+      "target": "FEATURE_ADMISSION",
+      "relationship": "INVALID_TIMESTAMPS_AND_NONFINITE_WEIGHTS_CAN_ENTER_AGGREGATION",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "The current news score loop ignored timestamp parse failures and did not reject non-finite relevance weights; this can admit stale or malformed rows into a time-windowed feature. PR #1324 proposes excluding missing/malformed/timezone-naive timestamps, non-finite/nonpositive weights and unknown sentiment labels.",
+      "source_ids": [
+        "SRC-GH-MAIN-EMITTER-20261029T1310Z",
+        "SRC-GH-PR1324-COMPARE-20261029T1310Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN65-NEWS-SENTIMENT-INCREMENTAL-VALUE",
+      "statement": "Asset-scoped, timestamp-valid news sentiment may add incremental short-horizon information beyond price/volume baselines, but current headline score alone does not establish predictive value.",
+      "status": "UNTESTED",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-EMITTER-20261029T1310Z"
+      ],
+      "disconfirming_evidence": [
+        "News may be noisy, duplicated, stale, already priced in, or weakly related to XRP returns; model-generated labels can reflect source selection bias."
+      ],
+      "tests_needed": [
+        "Build immutable timestamped features; deduplicate by stable event/source identity; compare price/volume baseline versus baseline-plus-news using walk-forward splits, leakage checks, calibration, and ablation. Keep a separate holdout and log all rejected records."
+      ]
+    },
+    {
+      "id": "HYP-RUN65-TIMESTAMP-LEAKAGE-IMPACT",
+      "statement": "Fail-open timestamp parsing may admit stale records into a rolling 72-hour news feature and create leakage or distort its effective window.",
+      "status": "PLAUSIBLE_DATA_QUALITY_RISK_NOT_YET_QUANTIFIED",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-EMITTER-20261029T1310Z"
+      ],
+      "disconfirming_evidence": [
+        "If the underlying log has few malformed or naive timestamps, empirical impact may be small; the size of the affected population is not yet measured."
+      ],
+      "tests_needed": [
+        "Profile timestamp parse failures and timezone-naive records by source/date, preserve rejected-row counts and provenance, then compare pre/post feature distributions and walk-forward performance without changing historical records."
+      ]
+    }
+  ],
+  "notes": [
+    "PR #1324 is draft and unmerged. Its CI and gate were not visible at the 13:10Z cutoff.",
+    "Even a successful sentiment classifier remains a descriptive signal, not a price forecast, until a calibrated fixed-horizon model is separately implemented and evaluated.",
+    "No XRP market feature was admitted and no forecast was issued."
+  ]
+}
