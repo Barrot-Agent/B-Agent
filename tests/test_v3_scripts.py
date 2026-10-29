@@ -704,3 +704,18 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+def test_controlled_approval_push_events_are_explicit_read_only_noops() -> None:
+    workflow_path = REPO_ROOT / ".github" / "workflows" / "barrot-approve-pr.yml"
+    workflow = workflow_path.read_text(encoding="utf-8")
+
+    assert "push:" in workflow
+    assert "'safety/**'" in workflow
+    assert "'fix/**'" in workflow
+    assert "if: github.event_name == 'push'" in workflow
+    assert "if: github.event_name == 'workflow_dispatch'" in workflow
+    assert "Push event is intentionally a no-op" in workflow
+    assert "No approval action performed." in workflow
+    assert "pull-requests: write" in workflow
+    assert "gh pr merge" not in workflow
