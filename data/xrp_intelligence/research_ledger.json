@@ -11010,9 +11010,9 @@
     }
   },
   "current_research_head_before_ledger_update": "baa63148c35bda37877f63d6d6c2541d289fd5a5",
-  "current_research_head_this_run": "PENDING_AFTER_LEDGER_POINTER_UPDATE",
+  "current_research_head_this_run": "81bc2e3f492eef660bf320554121cf5795f5743a",
   "current_research_checks": {
-    "status": "SBIC_CRYPTO_AND_ASK_COIN_EVIDENCE_ADDED; GRAPH_SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING; FORECAST_NOT_ISSUED",
+    "status": "SBIC_CRYPTO_AND_ASK_COIN_EVIDENCE_ADDED; GRAPH_SNAPSHOT_POINTER_AND_LEDGER_READBACK_PASS; FORECAST_NOT_ISSUED",
     "latest_main_sha": "f319d3d9511c6463bb18c36d9cc2b537888f6b88",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0608-sbic-crypto-ask-coin-disambiguation-corrected.json",
     "snapshot_blob_sha": "c6b38550d687f81dafd6edbe4d167b996c9bdb97",
@@ -11051,15 +11051,15 @@
     "creator_identity_status": "PROBABLE_KAMILAH_CAMILA_VARIANT; EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
     "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; THIRD_PARTY_VIDEO_COUNTS_DISAGREE",
     "forecast_status": "NOT_ISSUED",
-    "index_pointer_readback_ok": false,
+    "index_pointer_readback_ok": true,
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "force_push": false,
     "deployment_executed": false,
     "real_money_trade": false,
     "paper_trading_state_mutated": false,
-    "index_blob_sha_at_readback": "2f4ccc3470e95c9a29c93781a2d0ef9526f32a86",
-    "index_commit_sha_at_readback": "d03395b21cac4cd8d03459680fdb4dee45d9bbca",
+    "index_blob_sha_at_readback": "f243fcc2bd66e881772c2b05bd3b8c6b8c591ffe",
+    "index_commit_sha_at_readback": "81bc2e3f492eef660bf320554121cf5795f5743a",
     "index_character_count_match": true,
     "graph_addendum_commit_sha": "0342daeda1a399b9ab514c67a54a6f46e477676b",
     "new_graph_edges": 2,
@@ -11072,7 +11072,8 @@
     "sbic_original_referent": "UNRESOLVED",
     "sbic_crypto_direct_xrp_relationship": "NOT_ESTABLISHED",
     "ask_coin_permission_io_candidate": "CONFIRMED_BY_COMPANY_ANNOUNCEMENT; ORIGINAL_CONTEXT_UNRESOLVED",
-    "camilla_stephenson_identity": "NAMESAKES_FOUND; CANONICAL_XRP_CHANNEL_UNRESOLVED"
+    "camilla_stephenson_identity": "NAMESAKES_FOUND; CANONICAL_XRP_CHANNEL_UNRESOLVED",
+    "source_ids_unique": true
   },
   "ledger_metrics": {
     "source_records": 781,
@@ -11089,7 +11090,7 @@
     "index_characters_before_this_update": 725372,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 15475,
-    "index_characters": 737342
+    "index_characters": 737754
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -11112,7 +11113,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T06:08:30.000Z",
     "post_snapshot_verification": {
-      "status": "GRAPH_ADDENDUM_READBACK_PASS; CORRECTED_SNAPSHOT_READBACK_PASS; INDEX_POINTER_UPDATE_PENDING",
+      "status": "GRAPH_ADDENDUM_READBACK_PASS; CORRECTED_SNAPSHOT_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; RESEARCH_BASE_CI_GATE_NOT_TRIGGERED",
       "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0606-sbic-crypto-ask-coin-disambiguation.json",
       "graph_addendum_blob_sha": "f3365271867695cfd71ed300fc7687b56c32c41f",
       "graph_addendum_commit_sha": "0342daeda1a399b9ab514c67a54a6f46e477676b",
@@ -11126,7 +11127,7 @@
       "source_reference_count": 31,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "index_pointer_readback_ok": false,
+      "index_pointer_readback_ok": true,
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
@@ -11136,7 +11137,13 @@
         "status": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
         "url": null
-      }
+      },
+      "index_blob_sha_at_readback": "f243fcc2bd66e881772c2b05bd3b8c6b8c591ffe",
+      "index_commit_sha_at_readback": "81bc2e3f492eef660bf320554121cf5795f5743a",
+      "index_character_count_match": true,
+      "source_ids_unique": true,
+      "main_modified_by_this_run": false,
+      "merge_performed": false
     },
     "previous_pointer_snapshot": {
       "record_type": "snapshot_reference",
