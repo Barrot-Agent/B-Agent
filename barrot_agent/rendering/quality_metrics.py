@@ -297,7 +297,12 @@ class QualityMetrics:
         mesh_vertices: Sequence[Sequence[float]] | None = None,
         mesh_faces: Sequence[Sequence[int]] | None = None,
     ) -> GeometryReport:
-        if mesh_vertices is None or mesh_faces is None:
+        if (
+            mesh_vertices is None
+            or mesh_faces is None
+            or len(mesh_vertices) == 0
+            or len(mesh_faces) == 0
+        ):
             # Preserve the legacy triangle-count heuristic without pretending
             # topology was measured. Callers can distinguish it via status.
             score = max(1.0, 5.0 - (tris / 1_000_000))
