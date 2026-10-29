@@ -23,14 +23,14 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T15:10:40Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T151040Z-SBI-BITBANK-DERIVATIVES-MAIN-SAFETY",
-    "path": "data/xrp_intelligence/snapshots/20261029T151040Z-sbi-bitbank-derivatives-main-safety.json",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T151040Z-sbi-bitbank-derivatives-main-safety.json",
-    "snapshot_blob_sha": "9dab1e06c49fd2857a79e1e4f9ad57772cb12692",
-    "snapshot_commit_sha": "89476451d2b7393e0450124665ba8f729278517f",
-    "snapshot_characters": 13036,
-    "source_reference_count": 23,
+    "captured_at_utc": "2026-10-29T15:11:20Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T151120Z-SBIC-DATASET-AND-KAMILAH-VIDEO-CANDIDATES",
+    "path": "data/xrp_intelligence/snapshots/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+    "snapshot_blob_sha": "a108ad5138c68ae0c237444f107bc0f1d7cbeffc",
+    "snapshot_commit_sha": "f095ef57c69b21dddf21becaceaf551655749b9d",
+    "snapshot_characters": 3273,
+    "source_reference_count": 4,
     "missing_source_references": 0
   },
   "sources": [
@@ -8258,6 +8258,38 @@
       "title": "Circle Q3 results schedule",
       "accessed_at_utc": "2026-10-29T15:10:40Z",
       "note": "Official schedule states Q3 2026 results on Nov 4, 2026 at 8:00 a.m. ET. Scheduled event only; not a price signal."
+    },
+    {
+      "id": "SRC-ACL-SBIC-DATASET-20261029T151120Z",
+      "evidence_class": "CONFIRMED_ACADEMIC_PRIMARY_SOURCE",
+      "url": "https://aclanthology.org/2020.acl-main.486/",
+      "title": "ACL paper defines SBIC as Social Bias Inference Corpus",
+      "accessed_at_utc": "2026-10-29T15:11:20Z",
+      "note": "The ACL Anthology paper Social Bias Frames introduces the Social Bias Inference Corpus with roughly 150k structured social-media annotations. This is a distinct acronym meaning unrelated to Japanese investment companies unless the original context proves otherwise."
+    },
+    {
+      "id": "SRC-SCIENGINE-CHATGPT-SBIC-20261029T151120Z",
+      "evidence_class": "SECONDARY_ACADEMIC_SOURCE",
+      "url": "https://www.sciengine.com/cfs/files/pdfs/view/2096-9732/F828194D488B4F0AB7E9E09F97E262FF.pdf",
+      "title": "Academic PDF search result mentions ChatGPT evaluation using SBIC",
+      "accessed_at_utc": "2026-10-29T15:11:20Z",
+      "note": "Indexed text describes ChatGPT-generated explanations evaluated against an SBIC column/dataset. Publication metadata and whether this is the user's original phrase context are not verified; use only as a candidate disambiguation lead."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-XRP-CUSTODY-20261029T151120Z",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "url": "https://www.youtube.com/watch?v=IUkOKRkbkNo",
+      "title": "Kamilah Stevenson — Why I Moved My XRP Off Exchanges",
+      "accessed_at_utc": "2026-10-29T15:11:20Z",
+      "note": "Public YouTube result dated 2026-02-01. Description discusses custody, execution/slippage and moving XRP off exchanges; it promotes Caleb & Brown and Tangem and contains an affiliate disclosure. This is creator commentary, not independent evidence of institutional flows or an identity link to Camilla Stephenson."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-XRP-YEN-CARRY-20261029T151120Z",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_RESULT",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "title": "Kamilah Stevenson — Something Just Broke in Global Finance and It's Connected to XRP",
+      "accessed_at_utc": "2026-10-29T15:11:20Z",
+      "note": "Public YouTube result dated 2026-03-06. Description proposes a chain from oil/yen carry-trade liquidity stress to XRP infrastructure relevance. This is a causal thesis to test, not verified evidence that XRP benefits from a carry-trade unwind; affiliate disclosures are present."
     }
   ],
   "limitations": [
@@ -8484,7 +8516,8 @@
     "SBI completed its bitbank acquisition and bitbank already lists XRP/JPY, but no post-acquisition liquidity, turnover, net capital flow or price impact was measured.",
     "Main's mutation-capable merge queue remains active as a manual workflow; fresh-main PR #1335 has passing exact-head CI/gate but remains draft/unmerged.",
     "Main's XRP signal remains stale and invalid (confidence 0.0; model credentials missing; Groq 429) and the public summary remains inconsistent. Forecast remains NOT_ISSUED.",
-    "SBIC, ChatGPT SBIC, ASK Coin, actual capital and the canonical Camilla Stephenson YouTube identity remain unresolved in their original context; current SBI Group evidence must not be used to collapse distinct acronym candidates."
+    "SBIC, ChatGPT SBIC, ASK Coin, actual capital and the canonical Camilla Stephenson YouTube identity remain unresolved in their original context; current SBI Group evidence must not be used to collapse distinct acronym candidates.",
+    "Exact phrase 'ChatGPT SBIC' has a verified acronym collision candidate in NLP research (Social Bias Inference Corpus) alongside Japanese Small and Medium Business Investment & Consultation entities; original context still required to identify the intended referent. Kamilah Stevenson XRP video candidates are not verified as the same person as Camilla Stephenson, and their custody/yen-carry claims remain creator commentary rather than admitted market evidence."
   ],
   "run_updates": [
     {
@@ -14369,6 +14402,40 @@
       "deployment_executed": false,
       "paper_trading_state_mutated_by_this_run": false,
       "real_money_trade": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T15:11:20Z",
+      "update_type": "SBIC_ACRONYM_COLLISION_AND_PUBLIC_VIDEO_CANDIDATES",
+      "source_ids": [
+        "SRC-ACL-SBIC-DATASET-20261029T151120Z",
+        "SRC-SCIENGINE-CHATGPT-SBIC-20261029T151120Z",
+        "SRC-YT-KAMILAH-XRP-CUSTODY-20261029T151120Z",
+        "SRC-YT-KAMILAH-XRP-YEN-CARRY-20261029T151120Z"
+      ],
+      "summary": "Added an academic acronym-collision candidate: SBIC is the Social Bias Inference Corpus in ACL research, and an indexed academic PDF mentions ChatGPT evaluation using an SBIC dataset. Added two public Kamilah Stevenson XRP videos on off-exchange custody/execution and yen carry-trade liquidity; creator descriptions include promotional/affiliate context and are not admitted as independent market evidence. Camilla/Kamilah identity remains unresolved; no forecast issued.",
+      "main_sha": "fb2f59012c1ba6d3bf1417d36545bb46028c8f65",
+      "research_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+        "blob_sha": "a108ad5138c68ae0c237444f107bc0f1d7cbeffc",
+        "commit_sha": "f095ef57c69b21dddf21becaceaf551655749b9d",
+        "characters": 3273
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+        "blob_sha": "c2f922e40b9208aa2bce4a7ee81e728a86da0a01",
+        "commit_sha": "b72188f86da9219c43c87ca08a93980ed9d5e04e",
+        "new_edges": 5,
+        "new_competing_hypotheses": 2
+      },
+      "market_observations": 0,
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false
     }
   ],
   "mission_priority": {
@@ -14596,25 +14663,25 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "77ada032f225eb96bca1796fc3b20ac866dae373",
-  "current_research_head_this_run": "77ada032f225eb96bca1796fc3b20ac866dae373",
+  "current_research_head_before_ledger_update": "b72188f86da9219c43c87ca08a93980ed9d5e04e",
+  "current_research_head_this_run": "b72188f86da9219c43c87ca08a93980ed9d5e04e",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; MAIN_SCHEDULE_PAUSE_CONFIRMED; PR1334_CI_PASS; PR1334_GATE_PASS; PR1335_CI_PASS; PR1335_GATE_PASS; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; SBIC_ACRONYM_COLLISION_RECORDED; KAMILAH_VIDEO_CANDIDATES_ADDED; CAMILLA_KAMILAH_IDENTITY_UNRESOLVED; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
     "latest_main_sha": "fb2f59012c1ba6d3bf1417d36545bb46028c8f65",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T151040Z-sbi-bitbank-derivatives-main-safety.json",
-    "snapshot_blob_sha": "9dab1e06c49fd2857a79e1e4f9ad57772cb12692",
-    "snapshot_commit_sha": "89476451d2b7393e0450124665ba8f729278517f",
-    "snapshot_characters": 13036,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+    "snapshot_blob_sha": "a108ad5138c68ae0c237444f107bc0f1d7cbeffc",
+    "snapshot_commit_sha": "f095ef57c69b21dddf21becaceaf551655749b9d",
+    "snapshot_characters": 3273,
     "snapshot_character_metric_matches": true,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T151040Z-sbi-bitbank-derivatives-main-safety.json",
-    "graph_addendum_blob_sha": "fbe95f459f680f997559fb3a9ff9095b9ad60621",
-    "graph_addendum_commit_sha": "77ada032f225eb96bca1796fc3b20ac866dae373",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+    "graph_addendum_blob_sha": "c2f922e40b9208aa2bce4a7ee81e728a86da0a01",
+    "graph_addendum_commit_sha": "b72188f86da9219c43c87ca08a93980ed9d5e04e",
     "graph_addendum_readback_ok": true,
-    "source_reference_count": 23,
+    "source_reference_count": 4,
     "missing_source_references": 0,
     "source_ids_unique": true,
-    "relationship_edges": 259,
-    "competing_hypotheses": 146,
+    "relationship_edges": 264,
+    "competing_hypotheses": 148,
     "market_observations": 93,
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED",
@@ -14622,36 +14689,25 @@
     "merge_performed": false,
     "force_push": false,
     "deployment_executed": false,
-    "paper_trading_state_mutated": false,
     "real_money_trade": false,
-    "pr1334": {
-      "state": "DRAFT_OPEN_UNMERGED",
-      "ci": "PASS_303_TESTS_PLUS_8_SUBTESTS_7.64S",
-      "gate": "PASS_FAIL_CLOSED"
-    },
-    "pr1335": {
-      "state": "DRAFT_OPEN_UNMERGED",
-      "ci": "PASS_296_TESTS_PLUS_8_SUBTESTS_8.00S",
-      "gate": "PASS_FAIL_CLOSED"
-    },
     "research_branch_full_ci": "NOT_RUN_STRUCTURAL_READBACK_ONLY"
   },
   "ledger_metrics": {
-    "source_records": 1013,
-    "run_updates": 181,
-    "limitations": 224,
-    "relationship_edges": 259,
-    "competing_hypotheses": 146,
+    "source_records": 1017,
+    "run_updates": 182,
+    "limitations": 225,
+    "relationship_edges": 264,
+    "competing_hypotheses": 148,
     "market_observations": 93,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 6,
-    "index_characters_before_this_update": 975486,
+    "latest_research_addendum_observations": 0,
+    "index_characters_before_this_update": 993704,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 13036,
-    "index_characters": 993704
+    "latest_snapshot_characters": 3273,
+    "index_characters": 998353
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1304_CI_PASS; PR1304_GATE_PASS; PR1305_CI_PASS; PR1305_GATE_PASS; PR1306_CI_PASS; PR1306_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -14719,38 +14775,33 @@
     }
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T15:10:40Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T15:11:20Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; MARKET_OBSERVATIONS_NOT_ADMITTED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; MARKET_FEATURES_NOT_ADMITTED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "9dab1e06c49fd2857a79e1e4f9ad57772cb12692",
-      "snapshot_commit_sha": "89476451d2b7393e0450124665ba8f729278517f",
-      "snapshot_characters": 13036,
-      "source_reference_count": 23,
+      "snapshot_blob_sha": "a108ad5138c68ae0c237444f107bc0f1d7cbeffc",
+      "snapshot_commit_sha": "f095ef57c69b21dddf21becaceaf551655749b9d",
+      "snapshot_characters": 3273,
+      "source_reference_count": 4,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T151040Z-sbi-bitbank-derivatives-main-safety.json",
-      "graph_addendum_blob_sha": "fbe95f459f680f997559fb3a9ff9095b9ad60621",
-      "graph_addendum_commit_sha": "77ada032f225eb96bca1796fc3b20ac866dae373",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+      "graph_addendum_blob_sha": "c2f922e40b9208aa2bce4a7ee81e728a86da0a01",
+      "graph_addendum_commit_sha": "b72188f86da9219c43c87ca08a93980ed9d5e04e",
       "graph_addendum_readback_ok": true,
-      "graph_edges": 8,
-      "graph_hypotheses": 4,
+      "graph_edges": 5,
+      "graph_hypotheses": 2,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
       "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
-      "market_observations_logged": 6,
+      "market_observations_logged": 0,
       "market_features_admitted": false,
       "forecast_status": "NOT_ISSUED",
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "force_push": false,
       "deployment_executed": false,
-      "real_money_trade": false,
-      "paper_trading_state_mutated": false,
-      "pr1334_ci": "PASS_303_TESTS_PLUS_8_SUBTESTS_7.64S",
-      "pr1334_gate": "PASS_FAIL_CLOSED",
-      "pr1335_ci": "PASS_296_TESTS_PLUS_8_SUBTESTS_8.00S",
-      "pr1335_gate": "PASS_FAIL_CLOSED"
+      "real_money_trade": false
     }
   },
   "index_format_version": "2.0",
@@ -14799,71 +14850,57 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T15:10:40Z",
-    "focus": "Corrected current paper-trader schedule status; fresh-main paper-position identity guard and read-only merge-queue PR verification; SBI bitbank acquisition, XRP/JPY venue, XRP reward card and RLUSD Japan relationships; non-admitted derivatives snapshots.",
+    "recorded_at_utc": "2026-10-29T15:11:20Z",
+    "focus": "SBIC acronym collision, ChatGPT/SBIC academic candidate, and additional Kamilah Stevenson XRP video candidates with Camilla/Kamilah identity kept unresolved.",
     "source_ids": [
-      "SRC-GH-MAIN-HEAD-20261029T151040Z",
-      "SRC-GH-MAIN-CI-20261029T151040Z",
-      "SRC-GH-MAIN-PAUSE-SCHEDULE-20261029T151040Z",
-      "SRC-GH-PAPER-WORKFLOW-20261029T151040Z",
-      "SRC-GH-PAPER-STATE-20261029T151040Z",
-      "SRC-GH-XRP-SIGNAL-20261029T151040Z",
-      "SRC-GH-XRP-SUMMARY-20261029T151040Z",
-      "SRC-GH-MERGE-QUEUE-20261029T151040Z",
-      "SRC-GH-MAIN-PROTECTION-20261029T151040Z",
-      "SRC-GH-PR1334-20261029T151040Z",
-      "SRC-GH-PR1334-CI-20261029T151040Z",
-      "SRC-GH-PR1334-GATE-20261029T151040Z",
-      "SRC-GH-PR1335-20261029T151040Z",
-      "SRC-GH-PR1335-CI-20261029T151040Z",
-      "SRC-GH-PR1335-GATE-20261029T151040Z",
-      "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z",
-      "SRC-BITBANK-XRP-JPY-MARKET-20261029T151040Z",
-      "SRC-SBI-XRP-CARD-20261029T151040Z",
-      "SRC-SBI-RLUSD-JAPAN-20261029T151040Z",
-      "SRC-WEB-TRADRADAR-XRP-DERIVATIVES-20261029T151040Z",
-      "SRC-WEB-SEANDRA-XRP-BINANCE-PERPS-20261029T151040Z",
-      "SRC-WEB-COINBASE-Q3-SCHEDULE-20261029T151040Z",
-      "SRC-WEB-CIRCLE-Q3-SCHEDULE-20261029T151040Z"
+      "SRC-ACL-SBIC-DATASET-20261029T151120Z",
+      "SRC-SCIENGINE-CHATGPT-SBIC-20261029T151120Z",
+      "SRC-YT-KAMILAH-XRP-CUSTODY-20261029T151120Z",
+      "SRC-YT-KAMILAH-XRP-YEN-CARRY-20261029T151120Z"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T151040Z-sbi-bitbank-derivatives-main-safety.json",
-      "blob_sha": "fbe95f459f680f997559fb3a9ff9095b9ad60621",
-      "commit_sha": "77ada032f225eb96bca1796fc3b20ac866dae373",
-      "new_edges": 8,
-      "new_competing_hypotheses": 4
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+      "blob_sha": "c2f922e40b9208aa2bce4a7ee81e728a86da0a01",
+      "commit_sha": "b72188f86da9219c43c87ca08a93980ed9d5e04e",
+      "new_edges": 5,
+      "new_competing_hypotheses": 2
     },
-    "market_observations": 6,
+    "market_observations": 0,
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T14:08:56.062Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T15:10:40Z",
     "post_snapshot_verification": {
       "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; MARKET_OBSERVATIONS_NOT_ADMITTED; FORECAST_NOT_ISSUED; LEDGER_READBACK_AND_INDEX_POINTER_PASS",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "08f537a075ac68bfa5ec4ac8892bac3d05c91c9f",
-      "snapshot_commit_sha": "2e0c1e0761c139f28a01d4ce8f63f5de5edc2d91",
-      "snapshot_characters": 7789,
-      "source_reference_count": 8,
+      "snapshot_blob_sha": "9dab1e06c49fd2857a79e1e4f9ad57772cb12692",
+      "snapshot_commit_sha": "89476451d2b7393e0450124665ba8f729278517f",
+      "snapshot_characters": 13036,
+      "source_reference_count": 23,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T140856Z-coinbase-rlusd-etf-flow-conflict.json",
-      "graph_addendum_blob_sha": "55d8102b3545a7df5419bff45012778706df7d9c",
-      "graph_addendum_commit_sha": "8094a3bdd125af4032e57759cfd6fe2f565cf9ed",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T151040Z-sbi-bitbank-derivatives-main-safety.json",
+      "graph_addendum_blob_sha": "fbe95f459f680f997559fb3a9ff9095b9ad60621",
+      "graph_addendum_commit_sha": "77ada032f225eb96bca1796fc3b20ac866dae373",
       "graph_addendum_readback_ok": true,
-      "graph_edges": 4,
+      "graph_edges": 8,
       "graph_hypotheses": 4,
       "missing_graph_source_references": 0,
       "source_ids_unique": true,
       "index_pointer_status": "PASS_AFTER_LEDGER_READBACK",
-      "market_observations_logged": 4,
+      "market_observations_logged": 6,
       "market_features_admitted": false,
       "forecast_status": "NOT_ISSUED",
       "main_modified_by_this_run": false,
       "merge_performed": false,
       "force_push": false,
       "deployment_executed": false,
-      "real_money_trade": false
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false,
+      "pr1334_ci": "PASS_303_TESTS_PLUS_8_SUBTESTS_7.64S",
+      "pr1334_gate": "PASS_FAIL_CLOSED",
+      "pr1335_ci": "PASS_296_TESTS_PLUS_8_SUBTESTS_8.00S",
+      "pr1335_gate": "PASS_FAIL_CLOSED"
     }
   },
   "snapshot_verification_history": [
@@ -15832,7 +15869,26 @@
       "market_observations_logged": 6,
       "market_features_admitted": false,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T15:11:20Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+      "snapshot_blob_sha": "a108ad5138c68ae0c237444f107bc0f1d7cbeffc",
+      "snapshot_commit_sha": "f095ef57c69b21dddf21becaceaf551655749b9d",
+      "snapshot_characters": 3273,
+      "source_reference_count": 4,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T151120Z-sbic-dataset-and-kamilah-video-candidates.json",
+      "graph_addendum_blob_sha": "c2f922e40b9208aa2bce4a7ee81e728a86da0a01",
+      "graph_addendum_commit_sha": "b72188f86da9219c43c87ca08a93980ed9d5e04e",
+      "graph_addendum_readback_ok": true,
+      "graph_edges": 5,
+      "graph_hypotheses": 2,
+      "market_observations_logged": 0,
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "77ada032f225eb96bca1796fc3b20ac866dae373"
+  "current_research_head_before_this_update": "b72188f86da9219c43c87ca08a93980ed9d5e04e"
 }
