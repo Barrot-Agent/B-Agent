@@ -5087,6 +5087,14 @@
       "title": "Latest safety-PR verification snapshot read back from GitHub",
       "accessed_at_utc": "2026-10-29T01:24:49.096Z",
       "note": "Blob SHA 5cbd4352bba95fe18c088ee0337f347247cbd940; 23101 characters; embedded character-count metric matches."
+    },
+    {
+      "id": "SRC-RUN21-LEDGER-GATE-PASS-20261029T012552Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40800329417",
+      "title": "Fail-closed gate passed for the latest research-ledger index head",
+      "accessed_at_utc": "2026-10-29T01:25:52.956Z",
+      "note": "Gate run 40800329417 passed on index commit f32b6a20e74711d2e52f13cef6cdbb42101f6002. Core CI was not triggered because the ledger PR targets the research branch. Recording this evidence creates a successor index commit whose own gate must be checked separately."
     }
   ],
   "limitations": [
@@ -5212,7 +5220,8 @@
     "2026-10-29T01:22:22.199Z: The Databricks deploy workflow failed on two push-triggered runs. A notebook path mismatch is a likely code-level cause, but the actual exception was not captured.",
     "2026-10-29T01:22:22.199Z: Detailed branch protection requirements were inaccessible (403); main is reported protected, but this run's direct main write succeeded. Audit bypass permissions before relying on protection.",
     "2026-10-29T01:23:25.689Z: The first post-update source-reference audit found two missing catalog records (CI test coverage and external workflow outcomes). Both were added in this index-only correction; the final audit reports zero missing references.",
-    "2026-10-29T01:24:49.096Z: PR #1279 passed exact-head CI and gate but remains draft/unmerged and one commit behind main; recheck base and mergeability before review. Automatic external deployment workflows remain active on main until the safety PR is approved and merged."
+    "2026-10-29T01:24:49.096Z: PR #1279 passed exact-head CI and gate but remains draft/unmerged and one commit behind main; recheck base and mergeability before review. Automatic external deployment workflows remain active on main until the safety PR is approved and merged.",
+    "2026-10-29T01:25:52.956Z: Fail-closed gate passed on index head f32b6a20e74711d2e52f13cef6cdbb42101f6002, but core CI was not triggered for the research-base ledger PR. The index-only metadata update creates a successor head whose gate is not yet verified."
   ],
   "run_updates": [
     {
@@ -8706,6 +8715,23 @@
       "force_push": false,
       "deployment_manually_executed": false,
       "state_mutated": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:25:52.956Z",
+      "update_type": "LEDGER_GATE_RESULT_RECORDED",
+      "source_ids": [
+        "SRC-RUN21-LEDGER-GATE-PASS-20261029T012552Z"
+      ],
+      "index_head_verified": "f32b6a20e74711d2e52f13cef6cdbb42101f6002",
+      "gate_run_id": 40800329417,
+      "gate_status": "PASS",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "successor_index_gate": "PENDING_OR_UNVERIFIED",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json",
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "deployment_manually_executed": false
     }
   ],
   "mission_priority": {
@@ -8933,7 +8959,7 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "a2b2b98d4854393fc08c14243462e188b521bc6b",
+  "current_research_head_before_ledger_update": "f32b6a20e74711d2e52f13cef6cdbb42101f6002",
   "current_research_head_this_run": "a2b2b98d4854393fc08c14243462e188b521bc6b",
   "current_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING; FULL_PAPER_LOG_REPLAY_PASS_2357; PR1277_CI_GATE_PASS; PR1279_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_CI_GATE_UNVERIFIED; DIRECT_MAIN_WRITE_INCIDENT_RECORDED",
@@ -8953,12 +8979,18 @@
     "pr1279_gate": "PASS",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "latest_index_ci": "UNVERIFIED",
-    "latest_index_gate": "UNVERIFIED"
+    "latest_index_gate": "PASS",
+    "latest_index_head_gate_verified": "f32b6a20e74711d2e52f13cef6cdbb42101f6002",
+    "latest_index_gate_run_id": 40800329417,
+    "latest_index_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40800329417",
+    "latest_index_core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "successor_index_gate": "PENDING_OR_UNVERIFIED",
+    "ledger_gate_result_recorded_at_utc": "2026-10-29T01:25:52.956Z"
   },
   "ledger_metrics": {
-    "source_records": 627,
-    "run_updates": 123,
-    "limitations": 123,
+    "source_records": 628,
+    "run_updates": 124,
+    "limitations": 124,
     "relationship_edges": 104,
     "competing_hypotheses": 70,
     "market_observations": 63,
@@ -8967,10 +8999,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 5,
-    "index_characters_before_this_update": 577745,
+    "index_characters_before_this_update": 582630,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 23101,
-    "index_characters": 582630
+    "index_characters": 585699
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -9030,7 +9062,14 @@
     "pointer_fields_match": true,
     "source_ids_unique": true,
     "missing_source_references": 0,
-    "note": "Latest snapshot includes PR #1279 exact-head CI/gate pass and the current main generated-data commit; index pointer will be verified after this update."
+    "note": "Latest snapshot includes PR #1279 exact-head CI/gate pass and the current main generated-data commit; index pointer will be verified after this update.",
+    "index_head_gate_result": {
+      "index_head_sha": "f32b6a20e74711d2e52f13cef6cdbb42101f6002",
+      "run_id": 40800329417,
+      "status": "PASS",
+      "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "successor_index_gate": "PENDING_OR_UNVERIFIED"
+    }
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -9159,7 +9198,15 @@
     "main_modified_by_this_run": true,
     "merge_performed": false,
     "deployment_manually_executed": false,
-    "state_mutated": false
+    "state_mutated": false,
+    "ledger_gate_result": {
+      "recorded_at_utc": "2026-10-29T01:25:52.956Z",
+      "index_head_sha": "f32b6a20e74711d2e52f13cef6cdbb42101f6002",
+      "gate_run_id": 40800329417,
+      "status": "PASS",
+      "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "successor_gate": "PENDING_OR_UNVERIFIED"
+    }
   },
   "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
@@ -9399,6 +9446,16 @@
       "source_ids_unique": true,
       "missing_source_references": 0,
       "note": "Latest snapshot includes PR #1279 exact-head CI/gate pass and the current main generated-data commit; index pointer will be verified after this update."
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:25:52.956Z",
+      "verification_type": "INDEX_GATE_RESULT_RECORDED",
+      "index_head_sha": "f32b6a20e74711d2e52f13cef6cdbb42101f6002",
+      "gate_run_id": 40800329417,
+      "gate_status": "PASS",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "successor_index_gate": "PENDING_OR_UNVERIFIED",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json"
     }
   ]
 }
