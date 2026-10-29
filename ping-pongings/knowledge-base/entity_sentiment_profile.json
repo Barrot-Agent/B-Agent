@@ -1,7 +1,7 @@
 {
   "generated_from": {
     "xrp_entries": 1201,
-    "btc_entries": 1230
+    "btc_entries": 1231
   },
   "unique_entities_profiled": 987,
   "entities": [
@@ -897,6 +897,23 @@
       ]
     },
     {
+      "entity": "stablecoins",
+      "total_mentions": 7,
+      "bullish": 6,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.714,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
+        "OKX Tightens European Institutional Trading Guidance Under MiCA"
+      ]
+    },
+    {
       "entity": "TRON",
       "total_mentions": 7,
       "bullish": 4,
@@ -1015,20 +1032,20 @@
       ]
     },
     {
-      "entity": "stablecoins",
+      "entity": "Stripe",
       "total_mentions": 6,
-      "bullish": 5,
+      "bullish": 6,
       "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.667,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
       "assets_seen_in": [
         "BTC",
         "XRP"
       ],
       "example_headlines": [
-        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
-        "The ECB Just Launched a Way to Settle Tokenized Assets Without Stablecoins. What It Means for RLUSD ",
-        "OKX Tightens European Institutional Trading Guidance Under MiCA"
+        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
+        "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
       ]
     },
     {
@@ -1343,22 +1360,6 @@
         "MEXC Reports 21% MoM Growth in New-Token Traders and 31% Increase in Tokenized Stock Trading Volume ",
         "MEXC Stock Futures Trading Volume Rises 130% in August as Trading Activity Broadens Across U.S. and ",
         "From Information to Action: MEXC Upgrades AI Across the Trading Journey"
-      ]
-    },
-    {
-      "entity": "Stripe",
-      "total_mentions": 5,
-      "bullish": 5,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple adds XRP payments to Stripe and Tempo\u2019s AI standard in new developer kit - CoinDesk",
-        "Ripple Just Connected XRP to Stripe\u2019s AI Agent Payments. Why the Sessions Run on XRP, Not RLUSD - Ya",
-        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
       ]
     },
     {
@@ -4672,6 +4673,38 @@
       "example_headlines": [
         "Ondo\u2019s Oasis Pro Joins DTCC Fund/SERV In Tokenized Fund Milestone",
         "Ondo Puts BlackRock-Designed Portfolios Into Single Onchain Tokens"
+      ]
+    },
+    {
+      "entity": "World",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
+      ]
+    },
+    {
+      "entity": "World Money",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration",
+        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
       ]
     },
     {
@@ -8054,34 +8087,6 @@
       ],
       "example_headlines": [
         "Ondo\u2019s Oasis Pro Joins DTCC Fund/SERV In Tokenized Fund Milestone"
-      ]
-    },
-    {
-      "entity": "World",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
-      ]
-    },
-    {
-      "entity": "World Money",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "World Rolls Out World Money App With Stablecoins And Stripe Integration"
       ]
     },
     {
