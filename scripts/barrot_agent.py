@@ -977,6 +977,104 @@ def _parse_scientific_track_output(raw: str, brain: ScriptBrain, request: dict[s
             ) from retry_error
 
 
+def build_read_only_audit_snapshot() -> dict[str, Any]:
+    """Collect bounded, read-only Git and Actions evidence for audit-only tasks."""
+    snapshot: dict[str, Any] = {}
+    commands = {
+        "working_tree": ["git", "status", "--short", "--branch"],
+        "head": ["git", "rev-parse", "HEAD"],
+        "recent_history": [
+            "git", "log", "--all", "-n", "30", "--date=short",
+            "--pretty=format:%h|%ad|%d|%s",
+        ],
+        "branch_refs": [
+            "git", "for-each-ref", "--sort=-committerdate",
+            "--format=%(refname:short)|%(objectname:short)|%(committerdate:short)|%(subject)",
+            "refs/heads", "refs/remotes/origin",
+        ],
+        "geometry_checkpoint_vs_main": [
+            "git", "diff", "--stat",
+            "origin/main...origin/barrot/mesh-topology-obj-triangulation-20261024",
+        ],
+        "geometry_checkpoint_vs_fresh_main": [
+            "git", "diff", "--stat",
+            "origin/barrot/mesh-topology-obj-triangulation-20261024...origin/barrot/mesh-topology-fresh-main-20261026-0837",
+        ],
+    }
+    outputs: dict[str, str] = {}
+    for name, args in commands.items():
+        result = run(args, check=False, quiet=True)
+        outputs[name] = result.stdout.strip()[:16000]
+        if result.returncode != 0:
+            outputs[name] = (
+                f"UNAVAILABLE (exit={result.returncode}): "
+                + (result.stderr.strip()[:1000] or result.stdout.strip()[:1000])
+            )
+    snapshot["working_tree"] = outputs["working_tree"]
+    snapshot["head"] = outputs["head"]
+    snapshot["recent_history"] = outputs["recent_history"]
+
+    branch_lines = outputs["branch_refs"].splitlines()
+    relevant_markers = (
+        "mesh-topology", "structural-core", "mmi", "tool-call-resilience",
+        "barrot/task-1167",
+    )
+    relevant_branches = [
+        line for line in branch_lines
+        if line.split("|", 1)[0] in {"main", "origin/main"}
+        or any(marker in line.split("|", 1)[0].lower() for marker in relevant_markers)
+    ]
+    snapshot["branch_count"] = len(branch_lines)
+    snapshot["relevant_branch_heads"] = relevant_branches[:80]
+    snapshot["geometry_diffs"] = {
+        "checkpoint_vs_main": outputs["geometry_checkpoint_vs_main"],
+        "checkpoint_vs_fresh_main": outputs["geometry_checkpoint_vs_fresh_main"],
+    }
+
+    actions = run_gh(["api", f"repos/{REPO}/actions/runs?per_page=100"])
+    if actions.returncode == 0:
+        try:
+            payload = json.loads(actions.stdout)
+            runs = payload.get("workflow_runs", [])
+            def summarize(item: dict[str, Any]) -> dict[str, Any]:
+                return {
+                    "id": item.get("id"),
+                    "name": item.get("name"),
+                    "path": item.get("path"),
+                    "event": item.get("event"),
+                    "status": item.get("status"),
+                    "conclusion": item.get("conclusion"),
+                    "created_at": item.get("created_at"),
+                    "branch": item.get("head_branch"),
+                    "title": item.get("display_title"),
+                    "url": item.get("html_url"),
+                    "sha": item.get("head_sha"),
+                }
+            recent = [summarize(item) for item in runs[:12]]
+            relevant = [
+                summarize(item) for item in runs
+                if any(token in (
+                    str(item.get("display_title", "")) + " "
+                    + str(item.get("name", "")) + " "
+                    + str(item.get("head_branch", ""))
+                ).lower() for token in ("mesh", "geometry", "triangulation", "tetrahedron", "audit", "barrot agent"))
+            ]
+            snapshot["actions"] = {
+                "total_count": payload.get("total_count"),
+                "recent_runs": recent,
+                "relevant_runs": relevant[:25],
+            }
+        except (TypeError, ValueError, AttributeError) as exc:
+            snapshot["actions"] = {"status": "UNPARSEABLE", "error": type(exc).__name__}
+    else:
+        snapshot["actions"] = {
+            "status": "UNAVAILABLE",
+            "exit_code": actions.returncode,
+            "error": actions.stderr.strip()[:1000],
+        }
+    return snapshot
+
+
 def is_explicit_read_only_audit_task(title: str, body: str) -> bool:
     """Recognize tasks that explicitly forbid repository implementation changes."""
     normalized = f"{title}\n{body}".casefold()
@@ -1077,6 +1175,7 @@ def main() -> None:
             "objective": TITLE,
             "task_body": TASK,
             "repository_context": audit_context,
+            "live_read_only_snapshot": build_read_only_audit_snapshot(),
             "required_sections": [
                 "Executive status and critical risks",
                 "Repository, branch, and commit map",
