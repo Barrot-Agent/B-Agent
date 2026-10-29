@@ -363,3 +363,26 @@ def test_script_brain_can_disable_tools_per_call(tmp_path: Path, monkeypatch) ->
     assert "tools" not in payloads[0]
     assert payloads[0]["response_format"] == {"type": "json_object"}
     assert payloads[0]["reasoning_effort"] == "low"
+
+
+def test_repo_browser_open_file_is_bounded_and_confined(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    module = load_script_module("barrot_agent_open_file_test")
+    workspace = tmp_path / "repo"
+    workspace.mkdir()
+    target = workspace / "sample.py"
+    target.write_text("\\n".join(f"line-{i}" for i in range(1, 151)), encoding="utf-8")
+    browser = module.RepoBrowser(workspace)
+
+    result = json.loads(browser.open_file({"path": "sample.py", "line_start": 2, "line_end": 200}))
+    assert result["success"] is True
+    assert result["line_start"] == 2
+    assert result["line_end"] == 81
+    assert "2: line-2" in result["content"]
+    assert "81: line-81" in result["content"]
+    assert "82: line-82" not in result["content"]
+
+    escaped = json.loads(browser.open_file({"path": "../outside.txt"}))
+    assert escaped["success"] is False
+    assert "escapes the repository root" in escaped["error"]
