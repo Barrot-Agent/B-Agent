@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T10:15:49Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1015-SBIC-CHATGPT-DISAMBIGUATION",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1015-sbic-chatgpt-disambiguation.json",
-    "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
-    "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f"
+    "captured_at_utc": "2026-10-29T10:17:43Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1017-CIRCLE-ARC-SBI-COINBASE",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1017-circle-arc-sbi-coinbase.json",
+    "snapshot_blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
+    "snapshot_commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba"
   },
   "sources": [
     {
@@ -7103,6 +7103,15 @@
       "published_at": "2005-06-21",
       "accessed_at_utc": "2026-10-29T10:17:05.925Z",
       "note": "Compatibility alias added because the immutable 2026-10-29T1015 SBIC graph/snapshot used this ID. The canonical ledger source ID is SRC-SBI-CAPITAL-SBIC-2005; both point to the same official SBI Holdings release. This is a provenance alias, not an additional independent source."
+    },
+    {
+      "id": "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+      "title": "Circle Arc public mainnet: SBI Group validator cohort, Coinbase exchange access and USDC gas design",
+      "published_at": "2026-09-16",
+      "accessed_at_utc": "2026-10-29T10:17:43Z",
+      "note": "Official Circle announcement says Arc public mainnet launched with a phased founding-validator rollout including SBI Group; Coinbase is named among exchanges providing access; gas fees are paid in USDC. It establishes announced participation/design, not proof SBI is actively validating or that XRP demand/price changes."
     }
   ],
   "limitations": [
@@ -7309,7 +7318,9 @@
     "Coinbase Q3 2026 results were scheduled after the US market close on 2026-10-29 and Circle Q3 results for 2026-11-04 08:00 ET. At the snapshot cutoff, neither upcoming result is treated as known.",
     "PR #1302's exact-head core CI and fail-closed gate were still in progress at the 2026-10-29T10:12:18Z cutoff. Recheck their final outcomes before review; prior PR #1297 checks do not verify this fresh branch.",
     "PR #1303 core CI and fail-closed gate were not yet visible through the connected run lookup at 2026-10-29T10:14:11Z. Recheck before review; predecessor PR #1298 checks do not verify this fresh head.",
-    "The exact original context of 'SBIC, ChatGPT SBIC' remains unresolved. Official East and West Japan SME investment/consultation companies both publish ChatGPT/generative-AI training material, but this does not prove which entity the phrase refers to or establish an OpenAI/XRP partnership."
+    "The exact original context of 'SBIC, ChatGPT SBIC' remains unresolved. Official East and West Japan SME investment/consultation companies both publish ChatGPT/generative-AI training material, but this does not prove which entity the phrase refers to or establish an OpenAI/XRP partnership.",
+    "Circle's Arc launch announcement names SBI Group in a founding validator cohort with phased rollout; current active validation by SBI is not independently verified in this review.",
+    "Arc/Coinbase/SBI relationship announcements do not disclose actual Arc transaction volume, SBI validator activity/revenue, route-level XRP displacement, or causal XRP price impact. These relationships must not be admitted as directional model features without realized activity and matched controls."
   ],
   "run_updates": [
     {
@@ -12310,6 +12321,43 @@
       "deployment_executed": false,
       "real_money_trade": false,
       "paper_trading_state_mutated": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T10:17:43Z",
+      "update_type": "CIRCLE_ARC_SBI_COINBASE_MULTI_RAIL_RELATIONSHIP_UPDATE",
+      "source_ids": [
+        "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
+        "SRC-CIRCLE-ARC-MAINNET-2026-09-16-RECHECK-2026-10-28T1006Z",
+        "SRC-CIRCLE-ARC-SBI-FOUNDING-VALIDATOR-2026-10-28T1111Z",
+        "SRC-SBI-REMIT",
+        "SRC-RIPPLE-SBI-RLUSD",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+        "SRC-SBI-VC-TRADE-ODL-EXPANSION-2023-09-06"
+      ],
+      "summary": "Added official Circle Arc launch evidence to the XRP relationship graph. Circle announced Arc public mainnet; SBI Group is named in a phased founding-validator cohort; Coinbase is named among exchanges providing access; Arc fees are designed to use USDC. Combined with SBI's documented Ripple/XRP remittance and RLUSD/USDC relationships, this supports multi-rail optionality and competition/complementarity hypotheses, not exclusivity or XRP price causality. Active SBI validation and actual route-level volumes remain unknown.",
+      "main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1017-circle-arc-sbi-coinbase.json",
+        "blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
+        "commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
+        "characters": 6942
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
+        "blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
+        "commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
+        "new_edges": 5,
+        "new_competing_hypotheses": 3
+      },
+      "market_observations": 0,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false,
+      "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
     }
   ],
   "mission_priority": {
@@ -12537,25 +12585,25 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
+  "current_research_head_before_ledger_update": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
   "current_research_head_this_run": "46166e484c63d5b96229718da5af4c84b886a000",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS_AFTER_ALIAS_CORRECTION; SBIC_ENTITY_DISAMBIGUATION_RECORDED; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; ARC_SBI_COINBASE_RELATIONSHIPS_RECORDED; FORECAST_NOT_ISSUED",
     "latest_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1015-sbic-chatgpt-disambiguation.json",
-    "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
-    "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
-    "snapshot_characters": 4955,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1017-circle-arc-sbi-coinbase.json",
+    "snapshot_blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
+    "snapshot_commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
+    "snapshot_characters": 6942,
     "snapshot_character_metric_matches": true,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
-    "graph_addendum_blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
-    "graph_addendum_commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
+    "graph_addendum_blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
+    "graph_addendum_commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
     "graph_addendum_readback_ok": true,
-    "source_reference_count": 13,
+    "source_reference_count": 7,
     "missing_source_references": 0,
     "source_ids_unique": true,
-    "relationship_edges": 200,
-    "competing_hypotheses": 115,
+    "relationship_edges": 205,
+    "competing_hypotheses": 118,
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
     "main_modified_by_this_run": false,
@@ -12564,25 +12612,24 @@
     "deployment_executed": false,
     "real_money_trade": false,
     "paper_trading_state_mutated": false,
-    "verified_at_utc": "2026-10-29T10:15:49Z",
-    "source_reference_alias_correction": "SRC-SBI-CAPITAL-2005-SBIC aliases SRC-SBI-CAPITAL-SBIC-2005; same official source, not independent corroboration."
+    "verified_at_utc": "2026-10-29T10:17:43Z"
   },
   "ledger_metrics": {
-    "source_records": 874,
-    "run_updates": 166,
-    "limitations": 204,
-    "relationship_edges": 200,
-    "competing_hypotheses": 115,
+    "source_records": 875,
+    "run_updates": 167,
+    "limitations": 206,
+    "relationship_edges": 205,
+    "competing_hypotheses": 118,
     "market_observations": 78,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 850098,
+    "index_characters_before_this_update": 853550,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 4955,
-    "index_characters": 853550
+    "latest_snapshot_characters": 6942,
+    "index_characters": 857058
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -12660,26 +12707,25 @@
     "missing_graph_source_references": 0
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:15:49Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:17:43Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS_AFTER_ALIAS_CORRECTION; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; ARC_SBI_COINBASE_RELATIONSHIPS_RECORDED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
-      "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
-      "snapshot_characters": 4955,
-      "source_reference_count": 13,
+      "snapshot_blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
+      "snapshot_commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
+      "snapshot_characters": 6942,
+      "source_reference_count": 7,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
-      "graph_addendum_blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
-      "graph_addendum_commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
+      "graph_addendum_blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
+      "graph_addendum_commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
       "graph_addendum_readback_ok": true,
       "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
-      "merge_performed": false,
-      "source_reference_alias_correction": "SRC-SBI-CAPITAL-2005-SBIC aliases SRC-SBI-CAPITAL-SBIC-2005; same official source, not independent corroboration."
+      "merge_performed": false
     }
   },
   "index_format_version": "2.0",
@@ -12728,66 +12774,48 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T10:15:49Z",
-    "focus": "SBIC acronym collision and ChatGPT training context",
+    "recorded_at_utc": "2026-10-29T10:17:43Z",
+    "focus": "Circle Arc, SBI Group and Coinbase multi-rail relationship graph",
     "source_ids": [
-      "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
-      "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
-      "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
-      "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z",
-      "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+      "SRC-RUN59-20261029T1017Z-CIRCLE-ARC-RECHECK",
+      "SRC-CIRCLE-ARC-MAINNET-2026-09-16-RECHECK-2026-10-28T1006Z",
+      "SRC-CIRCLE-ARC-SBI-FOUNDING-VALIDATOR-2026-10-28T1111Z",
       "SRC-SBI-REMIT",
       "SRC-RIPPLE-SBI-RLUSD",
-      "SRC-SBI-CAPITAL-SBIC-2005",
-      "SRC-SBI-CAPITAL-GS-JV-2007",
-      "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
-      "SRC-RUN25-20261029T014151-SBIC-WEST",
-      "SRC-RUN58-20261029T1015Z-EAST-TRAINING-RECONFIRM",
-      "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM"
+      "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+      "SRC-SBI-VC-TRADE-ODL-EXPANSION-2023-09-06"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
-      "blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
-      "commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
+      "blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
+      "commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
       "new_edges": 5,
-      "new_competing_hypotheses": 2
+      "new_competing_hypotheses": 3
     },
     "market_observations": 0,
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:14:55Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:15:49Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1303_CORE_CI_187_TESTS_4_SUBTESTS_PASS; PR1303_FAIL_CLOSED_GATE_PASS; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS_AFTER_ALIAS_CORRECTION; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "9347c9c93a3b374fa561d0ac7efe00d938b64b2d",
-      "snapshot_commit_sha": "a635298b95e2ec7ddc1443f18518d038da9569cb",
-      "snapshot_characters": 4425,
-      "source_reference_count": 10,
+      "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
+      "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
+      "snapshot_characters": 4955,
+      "source_reference_count": 13,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1014-pr1303-final-ci-gate.json",
-      "graph_addendum_blob_sha": "59cef5b8f1fb41338c0e34ea641d6c5b2cc2c98c",
-      "graph_addendum_commit_sha": "e0bf66a463cc9a442f72450fbe94ac502fd40318",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
+      "graph_addendum_blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
+      "graph_addendum_commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
       "graph_addendum_readback_ok": true,
       "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
-      "ci": {
-        "status": "PASS",
-        "run_id": 40855936989,
-        "tests_passed": 187,
-        "subtests_passed": 4,
-        "duration_seconds": 6.63,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855936989"
-      },
-      "gate": {
-        "status": "PASS",
-        "run_id": 40855937424,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855937424"
-      },
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
-      "merge_performed": false
+      "merge_performed": false,
+      "source_reference_alias_correction": "SRC-SBI-CAPITAL-2005-SBIC aliases SRC-SBI-CAPITAL-SBIC-2005; same official source, not independent corroboration."
     }
   },
   "snapshot_verification_history": [
@@ -13492,7 +13520,25 @@
       "alias_id": "SRC-SBI-CAPITAL-2005-SBIC",
       "canonical_id": "SRC-SBI-CAPITAL-SBIC-2005",
       "note": "Both identifiers resolve to the same official SBI Holdings release; not independent evidence."
+    },
+    {
+      "recorded_at_utc": "2026-10-29T10:17:43Z",
+      "verification_type": "CIRCLE_ARC_SBI_COINBASE_RELATIONSHIP_SNAPSHOT_GRAPH_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1017-circle-arc-sbi-coinbase.json",
+      "snapshot_blob_sha": "e96b65af4d67cf6766bc89ec9b0afca5711520a3",
+      "snapshot_commit_sha": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba",
+      "snapshot_characters": 6942,
+      "source_reference_count": 7,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1017-circle-arc-sbi-coinbase.json",
+      "graph_addendum_blob_sha": "a218a27e02f69cd33032bb756ffeb16fbfaa429d",
+      "graph_addendum_commit_sha": "3f58b3795cfb5bc225182e040a4d85ffd94f9367",
+      "graph_addendum_readback_ok": true,
+      "graph_edges": 5,
+      "competing_hypotheses": 3,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f"
+  "current_research_head_before_this_update": "6f9a2cd8b9e8718f39fbe82ab81422cbcf8011ba"
 }
