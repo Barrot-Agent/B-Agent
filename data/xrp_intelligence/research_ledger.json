@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T01:22:22.199Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T012222Z-INCIDENT-CORRECTION",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012222Z-incident-correction.json",
-    "snapshot_blob_sha": "08092911e17ac616c0d86a2768a8b0ee776c8712",
-    "snapshot_commit_sha": "63b04c9f0f028df8a6eab79fe9c4ffa781ed75fe"
+    "captured_at_utc": "2026-10-29T01:24:49.096Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T012449Z-SAFETY-PR-VERIFIED",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json",
+    "snapshot_blob_sha": "5cbd4352bba95fe18c088ee0337f347247cbd940",
+    "snapshot_commit_sha": "a2b2b98d4854393fc08c14243462e188b521bc6b"
   },
   "sources": [
     {
@@ -5039,6 +5039,54 @@
       "title": "External workflows triggered by main commits",
       "accessed_at_utc": "2026-10-29T01:22:22.199Z",
       "note": "On bc8fec, Sync to Hugging Face, Barrot Operations Pipeline and Databricks Bundle Deploy succeeded; Deploy to Databricks failed. On c14d8cd, Barrot Operations Pipeline and Databricks Bundle Deploy succeeded, Deploy to Databricks failed, CI passed without running the new regression test, and approval-workflow push events failed with zero jobs. Exact remote state changes are not independently verified."
+    },
+    {
+      "id": "SRC-RUN20-PR1279-CI-GATE-PASS-20261029T012449Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799922265",
+      "title": "PR #1279 exact-head CI passed after the Hugging Face permission fix",
+      "accessed_at_utc": "2026-10-29T01:24:49.096Z",
+      "note": "164 tests and four subtests passed in 6.28 seconds. The previously failing sync-huggingface workflow now declares contents:read; the test is included in the explicit core CI command. Fail-closed gate run 40799922257 passed. PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-RUN20-MAIN-CROSS-ANALYSIS-COMMIT-20261029T012449Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/693e626379643eac32cf3eb51bd6ab83f3ba7201",
+      "title": "Main advanced with a generated cross-analysis refresh",
+      "accessed_at_utc": "2026-10-29T01:24:49.096Z",
+      "note": "Commit message Cross-analysis refresh [skip ci]. Changed only ping-pongings/knowledge-base/entity_cooccurrence.json, entity_sentiment_profile.json, and sentiment_shift.json. This commit was not made by this run; current paper-trading log/state blobs remain unchanged."
+    },
+    {
+      "id": "SRC-RUN20-PR1277-CI-GATE-PASS-20261029T012449Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1277",
+      "title": "PR #1277 merge-queue fail-closed proposal passed CI and gate on its head",
+      "accessed_at_utc": "2026-10-29T01:24:49.096Z",
+      "note": "CI run 40799212550 passed; fail-closed gate run 40799212538 passed. PR remains draft and unmerged; main has advanced since its base, so refresh checks before review."
+    },
+    {
+      "id": "SRC-RUN20-PAPER-LOG-UNCHANGED-20261029T012449Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Paper-trading log blob unchanged after generated-data main commit",
+      "accessed_at_utc": "2026-10-29T01:24:49.096Z",
+      "note": "Current main log blob SHA remains 70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a and state blob SHA remains a20230ac411d1883ced4f92fce10a7ced2172479. The full read-only 2,357-row replay remains applicable; no state write occurred."
+    },
+    {
+      "id": "SRC-RUN20-PR1279-BASE-RECHECK-20261029T012449Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1279",
+      "title": "PR #1279 remains draft and is one commit behind current main",
+      "accessed_at_utc": "2026-10-29T01:24:49.096Z",
+      "note": "Head a30690265141b6d6ebaa527166e1b948ad0ab46a passed 164 tests/four subtests and gate. Base recorded as c14d8cd while main is now 693e626; the intervening main commit changes only generated knowledge-base files, but recheck base and mergeability before review."
+    },
+    {
+      "id": "SRC-RUN20-SNAPSHOT-READBACK-20261029T012449Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json",
+      "title": "Latest safety-PR verification snapshot read back from GitHub",
+      "accessed_at_utc": "2026-10-29T01:24:49.096Z",
+      "note": "Blob SHA 5cbd4352bba95fe18c088ee0337f347247cbd940; 23101 characters; embedded character-count metric matches."
     }
   ],
   "limitations": [
@@ -5163,7 +5211,8 @@
     "2026-10-29T01:22:22.199Z: PR #1279 first CI failed because the Hugging Face workflow lacked explicit contents: read; the fix is committed to the PR branch, but CI/gate on the corrected head are not yet verified.",
     "2026-10-29T01:22:22.199Z: The Databricks deploy workflow failed on two push-triggered runs. A notebook path mismatch is a likely code-level cause, but the actual exception was not captured.",
     "2026-10-29T01:22:22.199Z: Detailed branch protection requirements were inaccessible (403); main is reported protected, but this run's direct main write succeeded. Audit bypass permissions before relying on protection.",
-    "2026-10-29T01:23:25.689Z: The first post-update source-reference audit found two missing catalog records (CI test coverage and external workflow outcomes). Both were added in this index-only correction; the final audit reports zero missing references."
+    "2026-10-29T01:23:25.689Z: The first post-update source-reference audit found two missing catalog records (CI test coverage and external workflow outcomes). Both were added in this index-only correction; the final audit reports zero missing references.",
+    "2026-10-29T01:24:49.096Z: PR #1279 passed exact-head CI and gate but remains draft/unmerged and one commit behind main; recheck base and mergeability before review. Automatic external deployment workflows remain active on main until the safety PR is approved and merged."
   ],
   "run_updates": [
     {
@@ -8581,6 +8630,82 @@
       "missing_snapshot_source_references_after_repair": 0,
       "missing_run_update_source_references_after_repair": 0,
       "note": "The first post-update audit found two referenced source IDs missing from the source catalog. Both records were added in this index-only correction; the immutable snapshot was not modified."
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:24:49.096Z",
+      "update_type": "SAFETY_PR_CI_VERIFIED_AND_MAIN_RECHECKED",
+      "main_sha": "693e626379643eac32cf3eb51bd6ab83f3ba7201",
+      "source_ids": [
+        "SRC-RUN16-MAIN-HEAD-20261029T010857Z",
+        "SRC-RUN16-LATEST-SIGNAL-20261029T010857Z",
+        "SRC-RUN16-ACCURACY-WORKFLOW-20261029T010857Z",
+        "SRC-RUN16-SUMMARY-WORKFLOW-20261029T010857Z",
+        "SRC-RUN16-PAPER-STATE-20261029T010857Z",
+        "SRC-RUN16-PAPER-LOG-READBACK-20261029T010857Z",
+        "SRC-RUN16-PR1274-CHECKS-20261029T010857Z",
+        "SRC-RUN16-PR1275-CHECKS-20261029T010857Z",
+        "SRC-RUN16-PR1273-STATE-20261029T010857Z",
+        "SRC-RUN16-LEDGER-BRANCH-20261029T010857Z",
+        "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z",
+        "SRC-RUN16-SNAPSHOT-READBACK-20261029T010857Z",
+        "SRC-RUN17-MAIN-HEAD-20261029T011120Z",
+        "SRC-RUN17-PAPER-LOG-BLOB-REPLAY-20261029T011120Z",
+        "SRC-RUN17-PAPER-STATE-20261029T011120Z",
+        "SRC-RUN17-PR1273-MERGE-20261029T011120Z",
+        "SRC-RUN17-PR1274-CHECKS-20261029T011120Z",
+        "SRC-RUN17-PR1275-CHECKS-20261029T011120Z",
+        "SRC-RUN17-ACCURACY-WORKFLOW-20261029T011120Z",
+        "SRC-RUN17-SUMMARY-WORKFLOW-20261029T011120Z",
+        "SRC-RUN17-APPROVAL-WORKFLOW-20261029T011120Z",
+        "SRC-RUN18-DIRECT-MAIN-COMMIT-20261029T012100Z",
+        "SRC-RUN18-EXTERNAL-ACTIONS-20261029T012100Z",
+        "SRC-RUN18-MERGE-QUEUE-AUDIT-20261029T012100Z",
+        "SRC-RUN18-BRANCH-PROTECTION-AUDIT-20261029T012100Z",
+        "SRC-RUN18-PR1277-STATE-20261029T012100Z",
+        "SRC-RUN18-PR1279-STATE-20261029T012100Z",
+        "SRC-RUN18-CI-TEST-COVERAGE-20261029T012100Z",
+        "SRC-RUN18-MAIN-HEAD-20261029T012100Z",
+        "SRC-RUN19-PR1279-CI-FAILURE-AND-FIX-20261029T012222Z",
+        "SRC-RUN19-EXTERNAL-WORKFLOW-OUTCOMES-20261029T012222Z",
+        "SRC-RUN19-DATABRICKS-PATH-HYPOTHESIS-20261029T012222Z",
+        "SRC-RUN19-CI-TEST-COVERAGE-GAP-20261029T012222Z",
+        "SRC-RUN19-PR1277-PR1279-STATUS-20261029T012222Z",
+        "SRC-RUN19-SNAPSHOT-READBACK-20261029T012222Z",
+        "SRC-RUN20-PR1279-CI-GATE-PASS-20261029T012449Z",
+        "SRC-RUN20-MAIN-CROSS-ANALYSIS-COMMIT-20261029T012449Z",
+        "SRC-RUN20-PR1277-CI-GATE-PASS-20261029T012449Z",
+        "SRC-RUN20-PAPER-LOG-UNCHANGED-20261029T012449Z",
+        "SRC-RUN20-PR1279-BASE-RECHECK-20261029T012449Z",
+        "SRC-RUN20-SNAPSHOT-READBACK-20261029T012449Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json",
+      "snapshot_blob_sha": "5cbd4352bba95fe18c088ee0337f347247cbd940",
+      "snapshot_commit_sha": "a2b2b98d4854393fc08c14243462e188b521bc6b",
+      "paper_trading_replay": "PASS_READ_ONLY_2357_ROWS; log and state blob SHAs unchanged",
+      "pr1277": {
+        "ci": "PASS",
+        "gate": "PASS",
+        "draft": true,
+        "merged": false
+      },
+      "pr1279": {
+        "ci": "PASS_164_TESTS_4_SUBTESTS_6.28S",
+        "gate": "PASS",
+        "draft": true,
+        "merged": false,
+        "head_sha": "a30690265141b6d6ebaa527166e1b948ad0ab46a"
+      },
+      "direct_main_write_incident": {
+        "occurred": true,
+        "commit_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+        "correction_pr": "PR #1279"
+      },
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": true,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_manually_executed": false,
+      "state_mutated": false
     }
   ],
   "mission_priority": {
@@ -8808,39 +8933,32 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "63b04c9f0f028df8a6eab79fe9c4ffa781ed75fe",
-  "current_research_head_this_run": "63b04c9f0f028df8a6eab79fe9c4ffa781ed75fe",
+  "current_research_head_before_ledger_update": "a2b2b98d4854393fc08c14243462e188b521bc6b",
+  "current_research_head_this_run": "a2b2b98d4854393fc08c14243462e188b521bc6b",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCE_REPAIR_PASS; FULL_PAPER_LOG_REPLAY_PASS_2357; PR1277_CI_GATE_PASS; PR1279_CORRECTED_HEAD_CI_UNVERIFIED; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_CI_GATE_UNVERIFIED",
-    "latest_main_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012222Z-incident-correction.json",
-    "snapshot_blob_sha": "08092911e17ac616c0d86a2768a8b0ee776c8712",
-    "snapshot_commit_sha": "63b04c9f0f028df8a6eab79fe9c4ffa781ed75fe",
-    "source_reference_count": 34,
+    "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING; FULL_PAPER_LOG_REPLAY_PASS_2357; PR1277_CI_GATE_PASS; PR1279_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_CI_GATE_UNVERIFIED; DIRECT_MAIN_WRITE_INCIDENT_RECORDED",
+    "latest_main_sha": "693e626379643eac32cf3eb51bd6ab83f3ba7201",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json",
+    "snapshot_blob_sha": "5cbd4352bba95fe18c088ee0337f347247cbd940",
+    "snapshot_commit_sha": "a2b2b98d4854393fc08c14243462e188b521bc6b",
+    "source_reference_count": 40,
     "missing_source_references": 0,
-    "snapshot_characters": 22285,
+    "snapshot_characters": 23101,
     "snapshot_character_metric_matches": true,
     "paper_log_records": 2357,
     "paper_log_replay": "PASS_READ_ONLY_2357_ROWS",
-    "pr1277_ci_gate": "PASS",
-    "pr1279_current_head_ci": "UNVERIFIED",
+    "pr1277_ci": "PASS",
+    "pr1277_gate": "PASS",
+    "pr1279_ci": "PASS_164_TESTS_4_SUBTESTS_6.28S",
+    "pr1279_gate": "PASS",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
     "latest_index_ci": "UNVERIFIED",
-    "latest_index_gate": "UNVERIFIED",
-    "direct_main_write_by_this_run": true,
-    "main_commit": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
-    "missing_run_update_source_references": 0,
-    "source_reference_repair_at_utc": "2026-10-29T01:23:25.689Z",
-    "source_reference_repair_ids": [
-      "SRC-RUN18-CI-TEST-COVERAGE-20261029T012100Z",
-      "SRC-RUN19-EXTERNAL-WORKFLOW-OUTCOMES-20261029T012222Z"
-    ],
-    "index_commit_sha_pending": true
+    "latest_index_gate": "UNVERIFIED"
   },
   "ledger_metrics": {
-    "source_records": 621,
-    "run_updates": 122,
-    "limitations": 122,
+    "source_records": 627,
+    "run_updates": 123,
+    "limitations": 123,
     "relationship_edges": 104,
     "competing_hypotheses": 70,
     "market_observations": 63,
@@ -8848,11 +8966,11 @@
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 6,
-    "index_characters_before_this_update": 573853,
+    "latest_research_addendum_observations": 5,
+    "index_characters_before_this_update": 577745,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 22285,
-    "index_characters": 577745
+    "latest_snapshot_characters": 23101,
+    "index_characters": 582630
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -8878,14 +8996,14 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:22:22.199Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:24:49.096Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCE_REPAIR_PASS; SNAPSHOT_METRIC_MATCH; FULL_PAPER_LOG_REPLAY_PASS_2357; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_CI_GATE_UNVERIFIED",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; FULL_PAPER_LOG_REPLAY_PASS_2357; PR1277_CI_GATE_PASS; PR1279_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_CI_GATE_UNVERIFIED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "08092911e17ac616c0d86a2768a8b0ee776c8712",
-      "snapshot_commit_sha": "63b04c9f0f028df8a6eab79fe9c4ffa781ed75fe",
-      "snapshot_characters": 22285,
-      "source_reference_count": 34,
+      "snapshot_blob_sha": "5cbd4352bba95fe18c088ee0337f347247cbd940",
+      "snapshot_commit_sha": "a2b2b98d4854393fc08c14243462e188b521bc6b",
+      "snapshot_characters": 23101,
+      "source_reference_count": 40,
       "missing_source_references": 0,
       "index_character_metric_matches": true,
       "ci": {
@@ -8897,28 +9015,22 @@
         "status": "UNVERIFIED",
         "run_id": null,
         "url": null
-      },
-      "missing_run_update_source_references": 0,
-      "source_reference_repair_at_utc": "2026-10-29T01:23:25.689Z"
+      }
     },
     "previous_pointer_snapshot": {
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T01:22:22.199Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T012222Z-INCIDENT-CORRECTION",
-      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012222Z-incident-correction.json",
-      "snapshot_blob_sha": "08092911e17ac616c0d86a2768a8b0ee776c8712",
-      "snapshot_commit_sha": "63b04c9f0f028df8a6eab79fe9c4ffa781ed75fe"
-    },
-    "previous_intermediate_snapshot": {
-      "path": "data/xrp_intelligence/snapshots/2026-10-29T012100Z-deploy-safety-audit.json",
-      "blob_sha": "50519ce9168ea14129c0a7d448411a57e8990021"
+      "captured_at_utc": "2026-10-29T01:24:49.096Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T012449Z-SAFETY-PR-VERIFIED",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json",
+      "snapshot_blob_sha": "5cbd4352bba95fe18c088ee0337f347247cbd940",
+      "snapshot_commit_sha": "a2b2b98d4854393fc08c14243462e188b521bc6b"
     },
     "pointer_fields_match": true,
     "source_ids_unique": true,
     "missing_source_references": 0,
-    "note": "Latest snapshot preserves prior snapshots, records the accidental main write, all observed external workflow outcomes, the PR #1273 merge by Barrot-Agent, full paper-trading replay, and the current state of safety PRs. No main write or deployment was performed after the accidental test-file commit."
+    "note": "Latest snapshot includes PR #1279 exact-head CI/gate pass and the current main generated-data commit; index pointer will be verified after this update."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -8966,8 +9078,8 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T01:22:22.199Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T01:11:20.367Z",
+    "recorded_at_utc": "2026-10-29T01:24:49.096Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T01:22:22.199Z",
     "source_ids": [
       "SRC-RUN16-MAIN-HEAD-20261029T010857Z",
       "SRC-RUN16-LATEST-SIGNAL-20261029T010857Z",
@@ -9003,146 +9115,51 @@
       "SRC-RUN19-DATABRICKS-PATH-HYPOTHESIS-20261029T012222Z",
       "SRC-RUN19-CI-TEST-COVERAGE-GAP-20261029T012222Z",
       "SRC-RUN19-PR1277-PR1279-STATUS-20261029T012222Z",
-      "SRC-RUN19-SNAPSHOT-READBACK-20261029T012222Z"
+      "SRC-RUN19-SNAPSHOT-READBACK-20261029T012222Z",
+      "SRC-RUN20-PR1279-CI-GATE-PASS-20261029T012449Z",
+      "SRC-RUN20-MAIN-CROSS-ANALYSIS-COMMIT-20261029T012449Z",
+      "SRC-RUN20-PR1277-CI-GATE-PASS-20261029T012449Z",
+      "SRC-RUN20-PAPER-LOG-UNCHANGED-20261029T012449Z",
+      "SRC-RUN20-PR1279-BASE-RECHECK-20261029T012449Z",
+      "SRC-RUN20-SNAPSHOT-READBACK-20261029T012449Z"
     ],
-    "main_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+    "main_sha": "693e626379643eac32cf3eb51bd6ab83f3ba7201",
     "latest_snapshot": {
-      "path": "data/xrp_intelligence/snapshots/2026-10-29T012222Z-incident-correction.json",
-      "blob_sha": "08092911e17ac616c0d86a2768a8b0ee776c8712",
-      "commit_sha": "63b04c9f0f028df8a6eab79fe9c4ffa781ed75fe",
-      "character_metric_matches": true,
-      "source_references_pass": true
+      "path": "data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json",
+      "blob_sha": "5cbd4352bba95fe18c088ee0337f347247cbd940",
+      "commit_sha": "a2b2b98d4854393fc08c14243462e188b521bc6b",
+      "character_metric_matches": true
     },
-    "direct_main_write_by_this_run": {
-      "occurred": true,
-      "commit_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
-      "cause": "Omitted branch argument; test file committed to main",
-      "correction_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1279"
-    },
-    "external_workflow_outcomes": [
-      {
-        "id": 40799576440,
-        "name": ".github/workflows/barrot-approve-pr.yml",
-        "event": "push",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-10-29T01:18:05Z",
-        "updated_at": "2026-10-29T01:18:05Z",
-        "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
-        "actor": "Barrot-Agent",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799576440"
-      },
-      {
-        "id": 40799401394,
-        "name": "Barrot Operations Pipeline",
-        "event": "push",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-10-29T01:16:23Z",
-        "updated_at": "2026-10-29T01:16:32Z",
-        "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
-        "actor": "Barrot-Agent",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401394"
-      },
-      {
-        "id": 40799401318,
-        "name": "CI",
-        "event": "push",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-10-29T01:16:23Z",
-        "updated_at": "2026-10-29T01:16:45Z",
-        "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
-        "actor": "Barrot-Agent",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401318"
-      },
-      {
-        "id": 40799401276,
-        "name": "Deploy to Databricks",
-        "event": "push",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-10-29T01:16:23Z",
-        "updated_at": "2026-10-29T01:18:15Z",
-        "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
-        "actor": "Barrot-Agent",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401276"
-      },
-      {
-        "id": 40799401243,
-        "name": "Databricks Bundle Deploy",
-        "event": "push",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-10-29T01:16:23Z",
-        "updated_at": "2026-10-29T01:17:04Z",
-        "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
-        "actor": "Barrot-Agent",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799401243"
-      },
-      {
-        "id": 40799400148,
-        "name": ".github/workflows/barrot-approve-pr.yml",
-        "event": "push",
-        "status": "completed",
-        "conclusion": "failure",
-        "created_at": "2026-10-29T01:16:23Z",
-        "updated_at": "2026-10-29T01:16:23Z",
-        "head_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
-        "actor": "Barrot-Agent",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40799400148"
-      }
-    ],
     "paper_trading_replay": {
       "status": "PASS_READ_ONLY_2357_ROWS",
-      "malformed_jsonl": 0,
-      "timestamp_order_errors": 0,
-      "portfolio_value_mismatches": 0,
-      "portfolio_change_mismatches": 0,
-      "cumulative_return_mismatches": 0,
-      "result_transition_mismatches": 0,
+      "log_blob_sha": "70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a",
+      "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
       "state_matches": true
     },
-    "external_merge_observed": {
-      "pr_number": 1273,
-      "merged_by": "Barrot-Agent",
-      "merged_at_utc": "2026-10-29T01:07:06Z",
-      "merge_commit_sha": "de30245082545242485b894bda53054b50c313aa",
-      "performed_by_this_run": false,
-      "authorization_evidence_in_this_run": "NOT_PRESENT; audit provenance separately"
-    },
     "pr1277": {
-      "head_sha": "0fefbded8e2ef39d76ce88c944b0b586c0ba9d44",
       "ci": "PASS",
       "gate": "PASS",
       "draft": true,
       "merged": false
     },
     "pr1279": {
-      "head_sha": "a30690265141b6d6ebaa527166e1b948ad0ab46a",
-      "prior_ci": "FAIL_163_PASS_1_FAIL",
-      "fix": "READ_ONLY_PERMISSIONS_ADDED",
-      "current_ci": "UNVERIFIED",
+      "ci": "PASS_164_TESTS_4_SUBTESTS_6.28S",
+      "gate": "PASS",
       "draft": true,
-      "merged": false
+      "merged": false,
+      "head_sha": "a30690265141b6d6ebaa527166e1b948ad0ab46a"
     },
+    "direct_main_write_by_this_run": {
+      "occurred": true,
+      "commit_sha": "c14d8cd1bfc96c738cce49a95555b9e0e1443e7c",
+      "correction_pr": "PR #1279"
+    },
+    "external_workflows_triggered_by_main_push": true,
     "forecast_status": "NOT_ISSUED",
     "main_modified_by_this_run": true,
     "merge_performed": false,
-    "force_push": false,
     "deployment_manually_executed": false,
-    "real_money_trade": false,
-    "state_mutated": false,
-    "source_reference_repair": {
-      "recorded_at_utc": "2026-10-29T01:23:25.689Z",
-      "added_source_ids": [
-        "SRC-RUN18-CI-TEST-COVERAGE-20261029T012100Z",
-        "SRC-RUN19-EXTERNAL-WORKFLOW-OUTCOMES-20261029T012222Z"
-      ],
-      "missing_snapshot_references_after_repair": 0,
-      "missing_run_update_references_after_repair": 0,
-      "immutable_snapshot_unchanged": true
-    }
+    "state_mutated": false
   },
   "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
@@ -9345,6 +9362,43 @@
       "missing_run_update_source_references": 0,
       "snapshot_blob_sha": "08092911e17ac616c0d86a2768a8b0ee776c8712",
       "note": "Index-only correction added two missing source catalog entries. Snapshot content remains unchanged."
+    },
+    {
+      "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:24:49.096Z",
+      "post_snapshot_verification": {
+        "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; FULL_PAPER_LOG_REPLAY_PASS_2357; PR1277_CI_GATE_PASS; PR1279_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_CI_GATE_UNVERIFIED",
+        "snapshot_blob_readback_ok": true,
+        "snapshot_blob_sha": "5cbd4352bba95fe18c088ee0337f347247cbd940",
+        "snapshot_commit_sha": "a2b2b98d4854393fc08c14243462e188b521bc6b",
+        "snapshot_characters": 23101,
+        "source_reference_count": 40,
+        "missing_source_references": 0,
+        "index_character_metric_matches": true,
+        "ci": {
+          "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+          "run_id": null,
+          "url": null
+        },
+        "gate": {
+          "status": "UNVERIFIED",
+          "run_id": null,
+          "url": null
+        }
+      },
+      "previous_pointer_snapshot": {
+        "record_type": "snapshot_reference",
+        "index_format_version": "2.0",
+        "schema_version": "1.0",
+        "captured_at_utc": "2026-10-29T01:24:49.096Z",
+        "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T012449Z-SAFETY-PR-VERIFIED",
+        "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T012449Z-safety-pr-verified.json",
+        "snapshot_blob_sha": "5cbd4352bba95fe18c088ee0337f347247cbd940",
+        "snapshot_commit_sha": "a2b2b98d4854393fc08c14243462e188b521bc6b"
+      },
+      "pointer_fields_match": true,
+      "source_ids_unique": true,
+      "missing_source_references": 0,
+      "note": "Latest snapshot includes PR #1279 exact-head CI/gate pass and the current main generated-data commit; index pointer will be verified after this update."
     }
   ]
 }
