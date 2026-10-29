@@ -1,8 +1,6 @@
 name: Ping-Pong Chain
 
 on:
-  schedule:
-    - cron: '30 */12 * * *'
   workflow_dispatch:
     inputs:
       task:

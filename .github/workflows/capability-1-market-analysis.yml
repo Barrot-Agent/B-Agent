@@ -2,8 +2,6 @@ name: Capability 1 - Market Analysis
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */4 * * *'  # Every 4 hours
 
 jobs:
   analyze:

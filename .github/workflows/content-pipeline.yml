@@ -1,9 +1,6 @@
 name: Content Pipeline
 
 on:
-  schedule:
-    # Runs at :55 every 6 hours — after cross-analysis (at :50) has enriched the knowledge base
-    - cron: '55 */6 * * *'
   workflow_dispatch:
 
 permissions:

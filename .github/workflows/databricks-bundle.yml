@@ -2,14 +2,21 @@ name: Databricks Bundle Deploy
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-
+    inputs:
+      confirm_external_change:
+        description: "Set to YES only after explicit human approval for this specific run"
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
 permissions:
   contents: read
 
 jobs:
   validate-deploy-run:
+    if: ${{ inputs.confirm_external_change == 'YES' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

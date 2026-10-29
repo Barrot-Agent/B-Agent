@@ -361,3 +361,51 @@ def test_authoring_prompt_keeps_task_context_separate_from_exact_objective():
     assert "Persist bundle lifecycle and execution outcome evidence." in prompt
     assert "Observed repository context" in prompt
 
+
+
+def test_improvement_prompt_spells_out_exact_required_schema_types():
+    bundle = sample_bundle()
+    bundle["tasks"][0]["tests"] = []
+    prompt = build_bundle_improvement_prompt(bundle, review_work_bundle(bundle))
+    assert "completion_gate" in prompt
+    assert "recovery_plan" in prompt
+    assert "created_by" in prompt
+    assert "rollback_plan MUST be a list" in prompt
+
+
+def test_controller_restores_revision_invariants_and_normalizes_rollback_plan():
+    import json
+
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+
+    original = sample_bundle()
+    original["tasks"][0]["tests"] = []
+    revised = copy.deepcopy(original)
+    revised["revision"] = 2
+    revised["parent_fingerprint"] = bundle_fingerprint(original)
+    revised["objective"] = "Model changed the objective"
+    revised["bundle_id"] = "model-changed-id"
+    revised["constraints"] = ["Model weakened the constraints"]
+    revised["tasks"][0]["tests"] = ["python -m pytest -q tests/test_bundle_engineering.py"]
+    revised["tasks"][0]["rollback_plan"] = "Preserve the current state and stop if validation fails."
+    responses = iter([json.dumps(original), json.dumps(revised)])
+
+    class FakeBrain:
+        def think(self, prompt, system=None):
+            return next(responses)
+
+    result = BundleEngineeringController(FakeBrain(), max_revision_attempts=1).run(
+        objective=original["objective"],
+        constraints=original["constraints"],
+    )
+
+    assert result.status == "READY_FOR_EXECUTION_REVIEW"
+    assert result.bundle["objective"] == original["objective"]
+    assert result.bundle["bundle_id"] == original["bundle_id"]
+    assert result.bundle["constraints"] == original["constraints"]
+    assert result.bundle["tasks"][0]["rollback_plan"] == [
+        "Preserve the current state and stop if validation fails."
+    ]
+    assert "constraints" in result.attempts[1]["invariant_repairs"]
+    assert "objective" in result.attempts[1]["invariant_repairs"]
+    assert "tasks[0].rollback_plan" in result.attempts[1]["invariant_repairs"]
