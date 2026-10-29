@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-INTELLIGENCE-20261029T0811-PR1298-CI-GATE-VERIFIED",
+  "captured_at_utc": "2026-10-29T08:11:30.000Z",
+  "observed_main_sha": "eb4422a5897745ec563303ade106cfd2549eac3c",
+  "policy": "Record exact-head verification without implying the proposal is merged or the main-branch defect is fixed.",
+  "nodes": [
+    {
+      "id": "BARROT_XRP_SIGNAL_PIPELINE",
+      "label": "Barrot XRP signal and summary pipeline",
+      "kind": "REPOSITORY_OBSERVED_MODEL_OUTPUT"
+    },
+    {
+      "id": "BARROT_PR1298",
+      "label": "PR #1298 fresh-main fail-closed XRP summary",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN48-PR1298-CI-GATE-PASS",
+      "source": "BARROT_XRP_SIGNAL_PIPELINE",
+      "target": "BARROT_PR1298",
+      "relationship": "EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE_PASS",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "claim": "PR #1298 head 4695f4e13c0cb6c40c5b329c661849914e50f7f8 passed core CI run 40840252498 (187 tests plus 4 subtests in 6.58s) and fail-closed gate run 40840252474. The PR remains draft/open/unmerged; main still publishes the invalid confidence-zero signal and positive/mixed summary.",
+      "source_ids": [
+        "SRC-RUN48-20261029T0811Z-PR1298-CI",
+        "SRC-RUN48-20261029T0811Z-PR1298-GATE"
+      ]
+    }
+  ],
+  "hypotheses": [],
+  "notes": [
+    "DESIGNED: fail-closed validation and read-only artifact workflow are proposed.",
+    "EXECUTED: GitHub Actions ran core CI and fail-closed gate on the exact PR head.",
+    "VERIFIED: both runs succeeded; PR is still draft/unmerged and no main-branch change occurred."
+  ]
+}
