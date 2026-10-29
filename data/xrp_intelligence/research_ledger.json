@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T01:37:41.136Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013741-PAPER-REPLAY-CORRECTION",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json",
-    "snapshot_blob_sha": "cc8fc88ae8f45b560ed8b1f0078b378cdd5159e9",
-    "snapshot_commit_sha": "f828860d2949eb27a5b3590eee474a69262d7025"
+    "captured_at_utc": "2026-10-29T01:39:10.816Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013910-STABLECOIN-VINTAGE-UPDATE",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013910-stablecoin-vintage-update.json",
+    "snapshot_blob_sha": "bf737bae86535fdf7c4e1d912b6057699f214711",
+    "snapshot_commit_sha": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5"
   },
   "sources": [
     {
@@ -5287,6 +5287,86 @@
       "title": "Prior snapshot superseded for stale main-head field",
       "accessed_at_utc": "2026-10-29T01:37:41.136Z",
       "note": "Snapshot 20261029T013613 recorded main SHA 1feefe76 even though main had advanced to 079aa167 by its capture; preserved unmodified and superseded by this correction."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-TRANSPARENCY",
+      "evidence_class": "OFFICIAL_ISSUER_TRANSPARENCY",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "title": "Ripple RLUSD transparency snapshot",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Official page reports $2.3828B circulating RLUSD and $2.5280B reserve funds as of 2026-10-22; reserve coverage is approximately 106.1%, excess $145.2M."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-PRODUCT",
+      "evidence_class": "OFFICIAL_ISSUER_PRODUCT_PAGE",
+      "url": "https://ripple.com/products/stablecoin/",
+      "title": "Ripple RLUSD product and network description",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Ripple describes RLUSD as natively issued on XRPL and Ethereum and lists BNY as primary reserve custodian; current product page lists additional supported networks."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-BNY-RLUSD-CUSTODY",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+      "url": "https://ripple.com/ripple-press/ripple-selects-bny-to-custody-ripple-usd-reserves/",
+      "title": "Ripple selects BNY to custody RLUSD reserves",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Ripple's July 9, 2025 announcement identifies BNY as primary custodian for RLUSD reserve assets. Does not establish BNY XRP collateral holdings."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-COINOTAG-RLUSD-OCT01",
+      "evidence_class": "SECONDARY_REPORT_OF_ISSUER_DISCLOSURE",
+      "url": "https://en.coinotag.com/ripple-rlusd-tops-2-5-billion-circulation-xrp-ledger",
+      "title": "Secondary report of RLUSD supply as of Oct 1",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Reports $2.5098B RLUSD circulation and $2.6338B reserves as of 2026-10-01, citing Ripple disclosure. Compared with the Oct 22 official page, this implies a provisional ~5.1% lower supply; source-vintage differences prevent treating it as a harmonized time series."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-XRP-ETF-INSIGHTS-OCT27",
+      "evidence_class": "SECONDARY_ISSUER_HOLDINGS_DERIVED",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP ETF holdings and flow dataset through Oct 27",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Reports -3,132,685 XRP across six US spot funds plus BITW over Oct 26-27, based on day-over-day issuer-reported holdings; blanks and excluded fund gaps are explicitly distinguished."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-XRP-ETF-ALPHA-OCT27",
+      "evidence_class": "SECONDARY_ETF_FLOW_TRACKER",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF dashboard through Oct 27",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Reports $0 net flow on Oct 27 across its five-fund series, +$644.8K over seven sessions and +$85.3M over 30 sessions; universe differs from XRP Insights."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-XRP-OI-JUSTSCREENER",
+      "evidence_class": "SECONDARY_DERIVATIVES_SNAPSHOT",
+      "url": "https://justscreener.com/en/market/XRP/open-interest",
+      "title": "XRP open interest snapshot",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Reports $1.7B open interest across nine exchanges, down 1.15% over 24h, updated 2026-10-28 21:35 with timezone unspecified. Not synchronized to other venues/cutoffs and not admitted to features."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-PRIOR-INDEX-GATE",
+      "evidence_class": "GITHUB_GATE_RUN",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40801574754",
+      "title": "Prior compact-ledger index gate",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Fail-closed gate passed on prior index commit 1074e925; does not verify the successor index commit created after this observation."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-CIRCLE-USDC-OCT22",
+      "evidence_class": "OFFICIAL_ISSUER_TRANSPARENCY_HISTORICAL_CAPTURE",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle USDC transparency snapshot as of Oct 22",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Previously captured official English dashboard reported $72.0B USDC circulation and $72.2B reserves as of 2026-10-22. Current Circle locale page reports $71.0B/$71.2B as of Oct 26; preserve distinct page vintages."
+    },
+    {
+      "id": "SRC-RUN24-20261029T013910-RLUSD-CUSTODY-GRAPH",
+      "evidence_class": "INTERNAL_GRAPH_ADDENDUM",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/relationship_graph_addenda/20261029T013910-rlusd-custody-and-market-data.json",
+      "title": "Append-only RLUSD custody and stablecoin flow graph",
+      "accessed_at_utc": "2026-10-29T01:39:10.816Z",
+      "note": "Graph blob SHA 724e33a28ebc03b3840c25e09ac9f117a237c57b; six relationship edges and one competing hypothesis, with source-vintage caveats and disconfirming evidence."
     }
   ],
   "limitations": [
@@ -5425,7 +5505,10 @@
     "2026-10-29T01:36:13.015Z: A first snapshot draft with a mismatched character metric was preserved unmodified and left unindexed; the corrected successor is the indexed snapshot.",
     "2026-10-29T01:37:41.136Z: Current main head 079aa167b3bfbf479500f5878434368d4033add0 contains a single scheduled paper-trader append after the prior main 1feefe76c9bf34a73335e03b58b7ee77682b384d; full 2,358-row replay matches persisted state.",
     "2026-10-29T01:37:41.136Z: Snapshot data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json had a stale main SHA field; it is preserved and superseded by data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json.",
-    "2026-10-29T01:37:41.136Z: PR #1281 exact-head checks passed, but its base is now one commit behind main; the only observed main change is the paper-trading log append and no overlapping paths were found."
+    "2026-10-29T01:37:41.136Z: PR #1281 exact-head checks passed, but its base is now one commit behind main; the only observed main change is the paper-trading log append and no overlapping paths were found.",
+    "2026-10-29T01:39:10.816Z: RLUSD Oct 22 official supply/reserves and Oct 1 secondary-reported figures imply a provisional ~5.1% circulation decline, but source vintages differ; not a harmonized time series.",
+    "2026-10-29T01:39:10.816Z: Circle USDC snapshots show $72.0B Oct 22 and $71.0B Oct 26 across different official page vintages; no causal movement to RLUSD or XRP established.",
+    "2026-10-29T01:39:10.816Z: ETF-flow and derivatives snapshots disagree on universe/cutoff; no synchronized XRP market features were admitted."
   ],
   "run_updates": [
     {
@@ -9003,6 +9086,33 @@
       "paper_trading_replay": "PASS_READ_ONLY_2358_ROWS",
       "pr1281_ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
       "pr1281_gate": "PASS"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:39:10.816Z",
+      "update_type": "RLUSD_CIRCLE_ETF_AND_CUSTODY_RESEARCH",
+      "source_ids": [
+        "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-TRANSPARENCY",
+        "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-PRODUCT",
+        "SRC-RUN24-20261029T013910-BNY-RLUSD-CUSTODY",
+        "SRC-RUN24-20261029T013910-COINOTAG-RLUSD-OCT01",
+        "SRC-RUN24-20261029T013910-XRP-ETF-INSIGHTS-OCT27",
+        "SRC-RUN24-20261029T013910-XRP-ETF-ALPHA-OCT27",
+        "SRC-RUN24-20261029T013910-XRP-OI-JUSTSCREENER",
+        "SRC-RUN24-20261029T013910-PRIOR-INDEX-GATE",
+        "SRC-RUN24-20261029T013910-CIRCLE-USDC-OCT22",
+        "SRC-RUN24-20261029T013910-RLUSD-CUSTODY-GRAPH"
+      ],
+      "index_head_verified": "NOT_VERIFIED_AFTER_THIS_UPDATE",
+      "gate_status": "PENDING_OR_UNVERIFIED",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T013910-stablecoin-vintage-update.json",
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "new_relationship_edges": 6,
+      "new_competing_hypotheses": 1,
+      "raw_market_observations_added": 5,
+      "new_synchronized_xrp_market_observations_admitted": 0
     }
   ],
   "mission_priority": {
@@ -9230,51 +9340,45 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "6faf9dee912209fd6fcf0fe8fe32b2a07c6d006a",
-  "current_research_head_this_run": "f828860d2949eb27a5b3590eee474a69262d7025",
+  "current_research_head_before_ledger_update": "f828860d2949eb27a5b3590eee474a69262d7025",
+  "current_research_head_this_run": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5",
   "current_research_checks": {
-    "status": "PAPER_REPLAY_PASS_2358; CORRECTED_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PR1281_CI_GATE_PASS; MAIN_UNCHANGED_BY_THIS_RUN; LATEST_INDEX_CI_GATE_PENDING",
+    "status": "SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PRIOR_INDEX_GATE_PASS; CURRENT_INDEX_CI_GATE_PENDING; NO_SYNCHRONIZED_XRP_FEATURES_ADMITTED",
     "latest_main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json",
-    "snapshot_blob_sha": "cc8fc88ae8f45b560ed8b1f0078b378cdd5159e9",
-    "snapshot_commit_sha": "f828860d2949eb27a5b3590eee474a69262d7025",
-    "source_reference_count": 7,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013910-stablecoin-vintage-update.json",
+    "snapshot_blob_sha": "bf737bae86535fdf7c4e1d912b6057699f214711",
+    "snapshot_commit_sha": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5",
+    "source_reference_count": 10,
     "missing_source_references": 0,
-    "snapshot_characters": 36672,
+    "snapshot_characters": 42296,
     "snapshot_character_metric_matches": true,
-    "paper_log_blob_sha": "730edbc6f431a253824555b70cf7880358057063",
-    "paper_log_records": 2358,
-    "paper_log_replay": "PASS_READ_ONLY_2358_ROWS",
-    "paper_state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
-    "pr1281_ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
-    "pr1281_gate": "PASS",
-    "pr1281_head_sha": "1d3926a712016b937fe102d70f26630f615acd49",
-    "pr1281_base_sha": "1feefe76c9bf34a73335e03b58b7ee77682b384d",
-    "pr1281_base_lag_commits": 1,
-    "pr1281_overlapping_paths": [],
-    "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-    "latest_index_ci": "PENDING_OR_UNVERIFIED",
-    "latest_index_gate": "PENDING_OR_UNVERIFIED",
+    "prior_index_gate": {
+      "run_id": 40801574754,
+      "head_sha": "1074e9255ad080570e174395fef66d738e107d4a",
+      "status": "success"
+    },
+    "current_index_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "current_index_gate": "PENDING_OR_UNVERIFIED",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "forecast_status": "NOT_ISSUED"
   },
   "ledger_metrics": {
-    "source_records": 652,
-    "run_updates": 126,
-    "limitations": 136,
-    "relationship_edges": 110,
-    "competing_hypotheses": 74,
-    "market_observations": 63,
+    "source_records": 662,
+    "run_updates": 127,
+    "limitations": 139,
+    "relationship_edges": 116,
+    "competing_hypotheses": 75,
+    "market_observations": 68,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 597116,
+    "index_characters_before_this_update": 603249,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 36672,
-    "index_characters": 603249
+    "latest_snapshot_characters": 42296,
+    "index_characters": 610190
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -9300,18 +9404,16 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:37:41.136Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:39:10.816Z",
     "post_snapshot_verification": {
-      "status": "CORRECTED_SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS_PENDING_INDEX_READBACK; FULL_PAPER_REPLAY_PASS_2358; PR1281_CI_GATE_PASS; LATEST_INDEX_CI_GATE_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SNAPSHOT_METRIC_MATCH; SOURCE_REFERENCE_AUDIT_PASS_PENDING_INDEX_READBACK; PRIOR_INDEX_GATE_PASS; CURRENT_INDEX_GATE_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "cc8fc88ae8f45b560ed8b1f0078b378cdd5159e9",
-      "snapshot_commit_sha": "f828860d2949eb27a5b3590eee474a69262d7025",
-      "snapshot_characters": 36672,
-      "source_reference_count": 7,
+      "snapshot_blob_sha": "bf737bae86535fdf7c4e1d912b6057699f214711",
+      "snapshot_commit_sha": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5",
+      "snapshot_characters": 42296,
+      "source_reference_count": 10,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "paper_log_records": 2358,
-      "paper_replay": "PASS_READ_ONLY_2358_ROWS",
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
         "run_id": null,
@@ -9327,11 +9429,11 @@
       "record_type": "snapshot_reference",
       "index_format_version": "2.0",
       "schema_version": "1.0",
-      "captured_at_utc": "2026-10-29T01:36:13.015Z",
-      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013613-MERGE-QUEUE-SPONSORSHIP-CORRECTION",
-      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json",
-      "snapshot_blob_sha": "fcad7aa594e491779d4f35c63da046acf73071f1",
-      "snapshot_commit_sha": "6faf9dee912209fd6fcf0fe8fe32b2a07c6d006a"
+      "captured_at_utc": "2026-10-29T01:37:41.136Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T013741-PAPER-REPLAY-CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json",
+      "snapshot_blob_sha": "cc8fc88ae8f45b560ed8b1f0078b378cdd5159e9",
+      "snapshot_commit_sha": "f828860d2949eb27a5b3590eee474a69262d7025"
     }
   },
   "index_format_version": "2.0",
@@ -9380,44 +9482,47 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T01:37:41.136Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T01:36:13.015Z",
+    "recorded_at_utc": "2026-10-29T01:39:10.816Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T01:37:41.136Z",
     "source_ids": [
-      "SRC-RUN23-20261029T013741-MAIN-HEAD",
-      "SRC-RUN23-20261029T013741-PAPER-LOG-BLOB",
-      "SRC-RUN23-20261029T013741-PAPER-STATE",
-      "SRC-RUN23-20261029T013741-REPLAY-IMPLEMENTATION",
-      "SRC-RUN23-20261029T013741-REPLAY-REPORT",
-      "SRC-RUN23-20261029T013741-PR1281-CHECKS",
-      "SRC-RUN23-20261029T013741-PRIOR-SNAPSHOT-CORRECTION"
+      "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-TRANSPARENCY",
+      "SRC-RUN24-20261029T013910-RIPPLE-RLUSD-PRODUCT",
+      "SRC-RUN24-20261029T013910-BNY-RLUSD-CUSTODY",
+      "SRC-RUN24-20261029T013910-COINOTAG-RLUSD-OCT01",
+      "SRC-RUN24-20261029T013910-XRP-ETF-INSIGHTS-OCT27",
+      "SRC-RUN24-20261029T013910-XRP-ETF-ALPHA-OCT27",
+      "SRC-RUN24-20261029T013910-XRP-OI-JUSTSCREENER",
+      "SRC-RUN24-20261029T013910-PRIOR-INDEX-GATE",
+      "SRC-RUN24-20261029T013910-CIRCLE-USDC-OCT22",
+      "SRC-RUN24-20261029T013910-RLUSD-CUSTODY-GRAPH"
     ],
     "main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
-    "paper_trading_replay": {
-      "status": "PASS_READ_ONLY_2358_ROWS",
-      "log_blob_sha": "730edbc6f431a253824555b70cf7880358057063",
-      "state_blob_sha": "a20230ac411d1883ced4f92fce10a7ced2172479",
-      "report_path": "data/xrp_intelligence/validation_runs/20261029T013741-paper-trading-replay.json",
-      "report_blob_sha": "77327e915db3246530f3c567fcb2093d1bb27263",
-      "malformed": 0,
-      "chronology_errors": 0,
-      "product_mismatches": 0,
-      "portfolio_mismatches": 0,
-      "result_mismatches": 0
+    "rlusd": {
+      "as_of": "2026-10-22",
+      "circulation_usd_billions": 2.3828,
+      "reserves_usd_billions": 2.528
     },
-    "pr1281": {
-      "head_sha": "1d3926a712016b937fe102d70f26630f615acd49",
-      "base_sha": "1feefe76c9bf34a73335e03b58b7ee77682b384d",
-      "ci": "PASS_169_TESTS_4_SUBTESTS_6.34S",
-      "gate": "PASS",
-      "state": "DRAFT_UNMERGED",
-      "base_lag_commits": 1,
-      "overlap": []
+    "circle_usdc": {
+      "as_of": "2026-10-26",
+      "circulation_usd_billions": 71,
+      "reserves_usd_billions": 71.2
     },
-    "prior_snapshot_correction": {
-      "path": "data/xrp_intelligence/snapshots/20261029T013613-merge-queue-safety-and-sponsored-account-correction.json",
-      "recorded_main_sha": "1feefe76c9bf34a73335e03b58b7ee77682b384d",
-      "actual_main_sha": "079aa167b3bfbf479500f5878434368d4033add0",
-      "corrected_snapshot": "data/xrp_intelligence/snapshots/20261029T013741-paper-replay-correction.json"
+    "xrp_etf_flow_conflict": {
+      "xrp_insights_oct26_27_xrp": -3132685,
+      "alpha_finance_oct27_usd": 0,
+      "coverage_mismatch": true
+    },
+    "xrp_open_interest": {
+      "usd_billions": 1.7,
+      "exchange_count": 9,
+      "time_zone": "unspecified",
+      "admission": "blocked"
+    },
+    "relationship_graph_addendum": {
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T013910-rlusd-custody-and-market-data.json",
+      "blob_sha": "724e33a28ebc03b3840c25e09ac9f117a237c57b",
+      "edges": 6,
+      "hypotheses": 1
     },
     "forecast_status": "NOT_ISSUED"
   },
@@ -9711,6 +9816,20 @@
       "pr1281_ci": "PASS",
       "pr1281_gate": "PASS",
       "latest_index_ci": "PENDING_OR_UNVERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:39:10.816Z",
+      "verification_type": "RLUSD_CIRCLE_ETF_MARKET_DATA_UPDATE",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T013910-stablecoin-vintage-update.json",
+      "snapshot_blob_sha": "bf737bae86535fdf7c4e1d912b6057699f214711",
+      "snapshot_commit_sha": "e1962e2ceadcccbae18b4afba464ace71fb1f1a5",
+      "snapshot_characters": 42296,
+      "source_reference_count": 10,
+      "missing_source_references": 0,
+      "snapshot_character_metric_matches": true,
+      "prior_index_gate_run": 40801574754,
+      "prior_index_gate": "PASS",
+      "current_index_gate": "PENDING_OR_UNVERIFIED"
     }
   ]
 }
