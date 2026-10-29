@@ -22,6 +22,7 @@ from barrot_agent.research import (
     ResearchTrack,
     VerificationIndependence,
     is_scientific_discovery_task,
+    should_route_scientific_discovery,
     select_scientific_problem_adapter,
 )
 
@@ -466,6 +467,14 @@ def test_scientific_discovery_task_detection() -> None:
     assert is_scientific_discovery_task("Navier-Stokes review", "formal verification") is True
     assert is_scientific_discovery_task("FLT benchmark", "Fermat theorem import") is True
     assert is_scientific_discovery_task("Bugfix", "repair parser") is False
+
+
+def test_scientific_route_requires_explicit_mode() -> None:
+    title = "Add evidence-graded Millennium Problems research and AI-claim registry"
+    body = "Track Navier-Stokes, Lean formalizations, and the seven Millennium Prize problems."
+
+    assert should_route_scientific_discovery("engineering", title, body) is False
+    assert should_route_scientific_discovery("scientific_discovery", title, body) is True
 
 
 def test_scientific_problem_selection_chooses_flt_adapter() -> None:
