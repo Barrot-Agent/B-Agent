@@ -510,7 +510,13 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
                 "acceptance_gate_passed": False,
                 "sources": [],
                 "claims": [],
-                "tracks": [],
+                "tracks": [{
+                    "execution_records": [{
+                        "state": "COMPLETE",
+                        "provider": "groq:test-model",
+                        "response": {"provider_backed": True},
+                    }]
+                }],
                 "cross_pollination": [],
                 "formal_verifications": [],
                 "adversarial_reviews": [],
@@ -522,10 +528,29 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
         def __init__(self, **kwargs):
             calls["init"] = kwargs
 
-        def run(self, adapter):
+        def run(self, adapter, *, track_executor=None):
             calls["adapter"] = adapter
+            calls["track_executor"] = track_executor
+            class FakeTrack:
+                track_id = "proof"
+                def to_dict(self):
+                    return {"track_id": self.track_id, "hypothesis": "test", "strategy": "test"}
+            calls["model_execution"] = track_executor(FakeTrack())
             return FakeCycle()
 
+    class FakeBrain:
+        def __init__(self, **kwargs):
+            calls["brain_init"] = kwargs
+        def think(self, message, system=None):
+            calls["model_prompt"] = message
+            return json.dumps({
+                "findings": ["Provisional finding"],
+                "open_questions": ["Open question"],
+                "counterarguments": ["Counterargument"],
+                "recommended_checks": ["Independent check"],
+            })
+
+    monkeypatch.setattr(module, "ScriptBrain", FakeBrain)
     monkeypatch.setattr(module, "configure_git", lambda: calls.setdefault("configured", True))
     monkeypatch.setattr(module, "checkout_branch", lambda branch: calls.setdefault("branch", branch))
     monkeypatch.setattr(module, "ScientificDiscoveryController", FakeScientificDiscoveryController)
