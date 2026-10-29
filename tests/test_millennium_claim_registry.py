@@ -33,7 +33,8 @@ def sample_claim(**overrides):
 def test_registry_contains_all_seven_with_official_sources_and_baselines():
     assert len(MILLENNIUM_PROBLEMS) == 7
     assert all(item["official_source"].startswith("https://www.claymath.org/") for item in MILLENNIUM_PROBLEMS.values())
-    assert sum(item["baseline_status"] == "OPEN" for item in MILLENNIUM_PROBLEMS.values()) == 6
+    assert sum(item["baseline_status"] == "OPEN" for item in MILLENNIUM_PROBLEMS.values()) == 5
+    assert MILLENNIUM_PROBLEMS["navier_stokes"]["baseline_status"] == "ACTIVE_UNDER_REVIEW"
     assert MILLENNIUM_PROBLEMS["poincare_conjecture"]["baseline_status"] == "SOLVED_HISTORICAL"
 
 
