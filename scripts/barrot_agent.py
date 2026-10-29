@@ -835,6 +835,7 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
                 "problem": payload.get("problem", {}),
                 "sources": payload.get("sources", []),
                 "claims": payload.get("claims", []),
+                "evidence": payload.get("evidence", []),
                 "tracks": payload.get("tracks", []),
                 "cross_pollination": payload.get("cross_pollination", []),
                 "convergence_analysis": payload.get("convergence_analysis", {}),
