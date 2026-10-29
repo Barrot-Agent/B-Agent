@@ -1216,6 +1216,8 @@ def main() -> None:
             "Do not execute repair logic or propose changes as already completed. "
             "Return a concise but complete Markdown report with explicit evidence and uncertainty."
         )
+        previous_search_limit = MAX_SEARCH_RESULTS
+        MAX_SEARCH_RESULTS = min(MAX_SEARCH_RESULTS, 8)
         try:
             audit_brain = ScriptBrain(max_tool_rounds=5)
             report = audit_brain.think(
@@ -1229,6 +1231,8 @@ def main() -> None:
             )
             post_issue_comment(message)
             raise SystemExit(message) from exc
+        finally:
+            MAX_SEARCH_RESULTS = previous_search_limit
         if not report.strip():
             message = "Barrot read-only audit returned an empty report; repository repair was not started."
             post_issue_comment(message)
