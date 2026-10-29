@@ -1,0 +1,379 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T1209-SBI-DERIVATIVES-ETF-PR1307",
+  "captured_at_utc": "2026-10-29T12:09:30Z",
+  "observed_main_sha": "b60faa26e5859f91beb07f5c778bc7934e99a002",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY_SOURCE",
+      "COMPANY_REPORTED",
+      "REPOSITORY_OBSERVATION",
+      "CONFIRMED_CI_RUN",
+      "SECONDARY_UNVERIFIED",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "Relationships and announcements do not establish XRP price causality. Do not admit asynchronous secondary snapshots as a synchronized model feature."
+  },
+  "nodes": [
+    {
+      "id": "XRP_MARKET",
+      "label": "XRP spot market",
+      "kind": "CRYPTO_ASSET_MARKET"
+    },
+    {
+      "id": "XRP_DERIVATIVES",
+      "label": "XRP perpetual futures and derivatives",
+      "kind": "DERIVATIVES_MARKET"
+    },
+    {
+      "id": "TRADRADAR",
+      "label": "TradRadar derivatives dashboard",
+      "kind": "SECONDARY_DATA_AGGREGATOR"
+    },
+    {
+      "id": "KODEXIUS",
+      "label": "Kodexius derivatives dashboard",
+      "kind": "SECONDARY_DATA_AGGREGATOR"
+    },
+    {
+      "id": "XRP_SPOT_ETF_FLOWS",
+      "label": "US XRP spot ETF flow proxies",
+      "kind": "INSTITUTIONAL_FLOW_DATA"
+    },
+    {
+      "id": "ALPHA_FINANCE",
+      "label": "Alpha Finance ETF flow series",
+      "kind": "SECONDARY_DATA_AGGREGATOR"
+    },
+    {
+      "id": "XRP_INSIGHTS",
+      "label": "XRP Insights issuer-holdings dataset",
+      "kind": "SECONDARY_DATA_AGGREGATOR"
+    },
+    {
+      "id": "SBI_GROUP",
+      "label": "SBI Holdings group",
+      "kind": "FINANCIAL_SERVICES_GROUP"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "CRYPTO_EXCHANGE_AND_EPI_PROVIDER"
+    },
+    {
+      "id": "APLUS",
+      "label": "Aplus",
+      "kind": "CREDIT_CARD_ISSUER"
+    },
+    {
+      "id": "VISA",
+      "label": "Visa",
+      "kind": "PAYMENT_NETWORK"
+    },
+    {
+      "id": "SBI_VISA_CRYPTO_CARD",
+      "label": "SBI VISA Crypto Card",
+      "kind": "RETAIL_CRYPTO_REWARD_PRODUCT"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "DIGITAL_ASSET_INFRASTRUCTURE_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD stablecoin",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "CRYPTO_EXCHANGE_AND_CUSTODY"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "BARROT_PAPER_TRADER",
+      "label": "Barrot simulated paper trader",
+      "kind": "SIMULATED_TRADING_SYSTEM"
+    },
+    {
+      "id": "B_AGENT_MAIN",
+      "label": "B-Agent main branch",
+      "kind": "SOFTWARE_REPOSITORY"
+    },
+    {
+      "id": "BARROT_PR1307",
+      "label": "PR #1307 paper-trader identity guard",
+      "kind": "DRAFT_SAFETY_PROPOSAL"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN63-SBI-CRYPTO-CARD-XRP",
+      "source": "SBI_VC_TRADE",
+      "target": "SBI_VISA_CRYPTO_CARD",
+      "relationship": "RETAIL_CRYPTO_REWARD_CHANNEL_INCLUDES_XRP",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade, Aplus and Visa announced a card whose user-selected reward asset can be XRP; card points are automatically exchanged into the selected crypto. No adoption volume is disclosed.",
+      "source_ids": [
+        "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-SBI-CARD-PAYMENT-PARTNERS",
+      "source": "SBI_VISA_CRYPTO_CARD",
+      "target": "VISA",
+      "relationship": "ANNOUNCED_CARD_NETWORK_PARTICIPATION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The official announcement names Aplus and Visa as participating companies. This confirms product structure, not XRP net inflow magnitude.",
+      "source_ids": [
+        "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-SBI-RLUSD-JAPAN",
+      "source": "SBI_VC_TRADE",
+      "target": "RLUSD",
+      "relationship": "JAPAN_STABLECOIN_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade and Ripple announced RLUSD handling in Japan on June 24, 2026. Stablecoin distribution and XRP demand remain separate quantities.",
+      "source_ids": [
+        "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-SBI-MULTI_ASSET_OPTIONALITY",
+      "source": "SBI_GROUP",
+      "target": "XRP_MARKET",
+      "relationship": "MULTI_ASSET_RETAIL_CHANNEL",
+      "evidence_class": "INFERENCE",
+      "claim": "The XRP rewards card and separate RLUSD distribution relationship are consistent with SBI supporting multiple digital-asset rails rather than an exclusive XRP or stablecoin strategy. Relative volume and substitution are unknown.",
+      "source_ids": [
+        "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z",
+        "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-TRADRADAR-OI",
+      "source": "TRADRADAR",
+      "target": "XRP_DERIVATIVES",
+      "relationship": "SECONDARY_OI_FUNDING_LIQUIDATION_SNAPSHOT",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "TradRadar reports $1.97B open interest across seven exchanges, +0.0030% OI-weighted funding per eight hours and a 3.69 long/short account ratio at 06:30Z. Coverage is partial and account ratios are not notional exposure.",
+      "source_ids": [
+        "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-KODEXIUS-OI",
+      "source": "KODEXIUS",
+      "target": "XRP_DERIVATIVES",
+      "relationship": "SECONDARY_OI_FUNDING_VOLUME_SNAPSHOT",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "Kodexius reports $815.85M OI across seven contracts, +0.0068% funding and $1.27B 24h volume at 11:12Z. Its coverage differs from TradRadar's seven-exchange set.",
+      "source_ids": [
+        "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-DERIVATIVES-COVERAGE-MISMATCH",
+      "source": "TRADRADAR",
+      "target": "KODEXIUS",
+      "relationship": "NONCOMPARABLE_AGGREGATE_COVERAGE",
+      "evidence_class": "CONFIRMED_DATA_QUALITY_LIMITATION",
+      "claim": "Reported open interest differs by more than 2x, but one source describes seven exchanges and the other seven contracts. Until contract/venue membership, units and capture times are reconciled, this is not a market movement or model feature.",
+      "source_ids": [
+        "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z",
+        "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-ALPHA-ETF-FLOWS",
+      "source": "ALPHA_FINANCE",
+      "target": "XRP_SPOT_ETF_FLOWS",
+      "relationship": "FIVE_FUND_DOLLAR_FLOW_PROXY",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "Alpha's series reports -$3.6M on Oct 26 and $0 on Oct 27 and Oct 28, with +$90.4M over 30 sessions. It is a five-fund dollar aggregate.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-XRP-INSIGHTS-ETF-FLOWS",
+      "source": "XRP_INSIGHTS",
+      "target": "XRP_SPOT_ETF_FLOWS",
+      "relationship": "ISSUER_HOLDINGS_XRP_UNIT_FLOW_PROXY",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "claim": "XRP Insights reports -3.13M XRP across Oct 26-27, about $4.1M at daily prices, across six spot ETFs plus BITW; GXRP flow is excluded while a data gap is corrected and Oct 28 is provisional.",
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-ETF-FLOW-NEAR-ALIGNMENT",
+      "source": "ALPHA_FINANCE",
+      "target": "XRP_INSIGHTS",
+      "relationship": "APPROXIMATE_AGGREGATE_MAGNITUDE_ALIGNMENT_WITH_METHOD_DIFFERENCES",
+      "evidence_class": "INFERENCE",
+      "claim": "The approximate $3.6M Alpha Oct 26 outflow is broadly similar in scale to XRP Insights' roughly $4.1M Oct 26-27 outflow, but the windows and fund universes differ; this is not a reconciled feature.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-MAIN-INVALID-XRP-SIGNAL",
+      "source": "B_AGENT_MAIN",
+      "target": "XRP_MARKET",
+      "relationship": "INVALID_SIGNAL_ARTIFACT_NOT_A_FORECAST",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main publishes score 44 and confidence 0.0 while explicitly reporting missing model credentials and Groq HTTP 429; its summary still narrates positive sentiment. Forecast issuance is unsafe.",
+      "source_ids": [
+        "SRC-GH-MAIN-XRP-SIGNAL-20261029T1209Z",
+        "SRC-GH-MAIN-XRP-SUMMARY-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-MAIN-PAPER-IDENTITY-UNRESOLVED",
+      "source": "B_AGENT_MAIN",
+      "target": "BARROT_PAPER_TRADER",
+      "relationship": "SCHEDULED_SIMULATION_WITH_UNKNOWN_OPEN_POSITION_IDENTITY",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "claim": "Main's 30-minute scheduled workflow still commits logs/state while an open simulated position has position_product=null. Latest cycle appended a hold log row; state remains unchanged but identity remains unresolved.",
+      "source_ids": [
+        "SRC-GH-MAIN-HEAD-20261029T1209Z",
+        "SRC-GH-MAIN-PAPER-STATE-20261029T1209Z",
+        "SRC-GH-MAIN-PAPER-LOG-20261029T1209Z",
+        "SRC-GH-MAIN-PAPER-WORKFLOW-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-PR1307-SAFETY-PROPOSAL",
+      "source": "BARROT_PR1307",
+      "target": "BARROT_PAPER_TRADER",
+      "relationship": "DRAFT_PROPOSAL_TO_PAUSE_SCHEDULE_AND_FAIL_CLOSED",
+      "evidence_class": "CONFIRMED_CI_RUN",
+      "claim": "Fresh-main PR #1307 removes the schedule, adds identity guards and regression tests; exact-head CI passed 193 tests plus four subtests and the fail-closed gate passed. It remains draft/unmerged, so main is not fixed.",
+      "source_ids": [
+        "SRC-GH-PR1307-20261029T1209Z",
+        "SRC-GH-PR1307-CI-20261029T1209Z",
+        "SRC-GH-PR1307-GATE-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-COINBASE-Q3-WATCH",
+      "source": "COINBASE",
+      "target": "XRP_MARKET",
+      "relationship": "UPCOMING_CORPORATE_DISCLOSURE_NOT_YET_AVAILABLE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Coinbase Q3 results are scheduled for October 29 after US market close; at the snapshot cutoff no results were available. Do not infer financial results or XRP impact.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-DATE-20261014-CAPTURE-20261029T1209Z"
+      ]
+    },
+    {
+      "id": "EDGE-RUN63-CIRCLE-Q3-WATCH",
+      "source": "CIRCLE",
+      "target": "XRP_MARKET",
+      "relationship": "UPCOMING_CORPORATE_DISCLOSURE_NOT_YET_AVAILABLE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Circle Q3 results are scheduled for November 4 at 08:00 ET; the schedule is a monitoring event, not a directional signal.",
+      "source_ids": [
+        "SRC-CIRCLE-Q3-DATE-20261007-CAPTURE-20261029T1209Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN63-SBI-REWARDS-INCREMENTAL-XRP-FLOW",
+      "statement": "The SBI VISA Crypto Card could create incremental recurring retail XRP acquisition through points conversions when customers select XRP.",
+      "status": "PLAUSIBLE_CHANNEL_EXISTENCE_CONFIRMED_IMPACT_UNQUANTIFIED",
+      "supporting_source_ids": [
+        "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z"
+      ],
+      "disconfirming_evidence": [
+        "No user counts, reward conversion volumes, XRP execution amounts or market impact are disclosed; cardholders can choose BTC or ETH instead."
+      ],
+      "tests_needed": [
+        "Find public card adoption and reward conversion metrics; if unavailable, keep as a qualitative distribution edge and do not proxy it as capital inflow."
+      ]
+    },
+    {
+      "id": "HYP-RUN63-SBI-MULTI_RAIL_OPTIONALITY",
+      "statement": "SBI's XRP reward channel and RLUSD distribution are more consistent with multi-asset optionality than an exclusive XRP-versus-stablecoin choice.",
+      "status": "INFERENCE_NOT_EXCLUSIVE_STRATEGY_PROOF",
+      "supporting_source_ids": [
+        "SRC-SBI-VISA-XRP-REWARDS-20260501-CAPTURE-20261029T1209Z",
+        "SRC-SBI-RLUSD-JAPAN-20260624-CAPTURE-20261029T1209Z"
+      ],
+      "disconfirming_evidence": [
+        "Future public volume, pricing or product decisions may show one rail displacing another in specific corridors."
+      ],
+      "tests_needed": [
+        "Track product-level adoption, stablecoin issuance/redemptions, XRPL activity and XRP market liquidity separately; require evidence of substitution before claiming displacement."
+      ]
+    },
+    {
+      "id": "HYP-RUN63-DERIVATIVES-LONG-CROWDING",
+      "statement": "Positive funding and a high long/short account ratio could indicate crowded long positioning and liquidation sensitivity, but the evidence is not sufficient for a directional forecast.",
+      "status": "LOW_CONFIDENCE_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-XRP-TRADRADAR-DERIVATIVES-20261029T0630Z",
+        "SRC-XRP-KODEXIUS-DERIVATIVES-20261029T1112Z"
+      ],
+      "disconfirming_evidence": [
+        "Funding is not uniform across venues; account ratios are not notional exposure; OI aggregates differ by more than 2x due to unknown coverage; price can rise despite positive funding."
+      ],
+      "tests_needed": [
+        "Build synchronized exchange-level OI/funding/liquidation data with fixed intervals and contract metadata; compare against neutral and simple momentum baselines using walk-forward evaluation."
+      ]
+    },
+    {
+      "id": "HYP-RUN63-ETF-FLOWS-NORMALIZE-BEFORE-USE",
+      "statement": "The two ETF dashboards appear broadly similar in the magnitude of the October 26-27 outflow after approximate USD conversion, but fund membership and settlement status prevent direct equivalence.",
+      "status": "DATA_QUALITY_HYPOTHESIS_NOT_FEATURE_READY",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029T1209Z",
+        "SRC-XRP-INSIGHTS-ETF-FLOWS-20261029T1209Z"
+      ],
+      "disconfirming_evidence": [
+        "Issuer-level corrections or fund exclusions may create larger differences after normalization."
+      ],
+      "tests_needed": [
+        "Reconstruct issuer-level holdings and shares per fund, normalize XRP/USD units and settlement windows, document excluded funds, and test only lagged flows."
+      ]
+    },
+    {
+      "id": "HYP-RUN63-MAIN-SIGNAL-FAIL-CLOSED",
+      "statement": "The main XRP score must remain NOT_ISSUED until provider failures and zero confidence are resolved and a fixed-horizon, leakage-safe evaluation demonstrates calibrated out-of-sample skill.",
+      "status": "SAFETY_REQUIREMENT_NOT_PRICE_PREDICTION",
+      "supporting_source_ids": [
+        "SRC-GH-MAIN-XRP-SIGNAL-20261029T1209Z",
+        "SRC-GH-MAIN-XRP-SUMMARY-20261029T1209Z",
+        "SRC-GH-PR1307-CI-20261029T1209Z"
+      ],
+      "disconfirming_evidence": [
+        "No evidence currently supports issuing a directional forecast from this artifact."
+      ],
+      "tests_needed": [
+        "Repair signal semantics in approved PR; synchronize spot/derivatives/flows; register target, horizon, cutoff and probabilities; compare against naive and market-beta baselines; measure calibration and drift."
+      ]
+    }
+  ],
+  "notes": [
+    "SBI's retail XRP reward channel is a confirmed product announcement; volume and net market demand are unknown.",
+    "RLUSD distribution through SBI VC Trade is a separate stablecoin relationship and does not imply XRP displacement.",
+    "TradRadar and Kodexius derivatives aggregates are not comparable until contract and venue coverage is aligned.",
+    "ETF flow series are closer in aggregate magnitude than previously implied, but still not a reconciled feature.",
+    "Main remains unsafe: paper trader scheduled, open position identity null, XRP signal confidence zero with provider failures and summary still directional.",
+    "PR #1307 exact-head CI and fail-closed gate passed; the proposal is draft and unmerged.",
+    "No XRP forecast issued; no market feature admitted; no real-money trade."
+  ]
+}
