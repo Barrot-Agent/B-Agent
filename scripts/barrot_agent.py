@@ -1437,6 +1437,9 @@ def main() -> None:
             + json.dumps(bundle_result.to_dict(), indent=2)[:12000]
         )
         post_issue_comment(message)
+        # Also log it: dispatch runs without an issue (ISSUE_NUMBER=0) post no comment,
+        # and the findings would otherwise be lost.
+        print(message)
         raise SystemExit(1)
 
     task_work_scope = request_fingerprint.split(":", 1)[-1][:16]
