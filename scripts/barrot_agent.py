@@ -114,9 +114,7 @@ class RepoBrowser:
         self.root = root.resolve()
 
     def _resolve(self, path: str) -> Path:
-        cleaned = str(path).strip()
-        if not cleaned:
-            raise ValueError("repo_browser path must be non-empty and relative to the repository root.")
+        cleaned = str(path).strip() or "."
         if Path(cleaned).is_absolute():
             raise ValueError("repo_browser path must be relative to the repository root.")
         target = (self.root / cleaned).resolve()
