@@ -10460,6 +10460,28 @@
       "merge_performed": false,
       "force_push": false,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T05:15:25.500Z",
+      "update_type": "FINAL_STRUCTURAL_HANDOFF_CHECK",
+      "source_ids": [
+        "SRC-RUN40-20261029T051525-SBI-CAPITAL-2005-SBIC",
+        "SRC-RUN40-20261029T051344-KAMILAH-CHANNEL-ID",
+        "SRC-RUN40-20261029T051451-CIRCLE-H1-SETTLEMENT-VOLUME",
+        "SRC-RUN40-20261029T051225-PR1289-CI-40821904368",
+        "SRC-RUN40-20261029T051225-PR1289-GATE-40821904384"
+      ],
+      "summary": "Final structural review confirms source IDs remain unique, snapshot pointer metadata and snapshot/graph blob references are intact, index character-count metrics match, and the current main branch was not modified. PR #1289 is exact-head CI/gate green but draft/unmerged. Research-base PR #1265 has no CI/gate result exposed by the current wrapper; its structural checks do not substitute for repository CI.",
+      "index_head_verified": "STRUCTURAL_READBACK_PASS",
+      "gate_status": "PR1289_PASS; RESEARCH_BRANCH_GATE_NOT_TRIGGERED",
+      "core_ci_status": "PR1289_PASS_176_TESTS_PLUS_4_SUBTESTS; RESEARCH_BRANCH_CORE_CI_NOT_TRIGGERED",
+      "main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "paper_trading_state_mutated": false,
+      "real_money_trade": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
   "mission_priority": {
@@ -10687,8 +10709,8 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "a5897665429d07b4d45efddb733db90d9da2208b",
-  "current_research_head_this_run": "a5897665429d07b4d45efddb733db90d9da2208b",
+  "current_research_head_before_ledger_update": "ed19b3411464a01bb9df40fcc8797c69bb2e10cf",
+  "current_research_head_this_run": "ed19b3411464a01bb9df40fcc8797c69bb2e10cf",
   "current_research_checks": {
     "status": "PR1289_EXACT_HEAD_CI_AND_GATE_PASS; SBIC_HISTORICAL_CANDIDATE_CROSSCHECKED; XRP_FORECAST_NOT_ISSUED",
     "latest_main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
@@ -10759,7 +10781,7 @@
   },
   "ledger_metrics": {
     "source_records": 761,
-    "run_updates": 146,
+    "run_updates": 147,
     "limitations": 169,
     "relationship_edges": 134,
     "competing_hypotheses": 86,
@@ -10768,11 +10790,11 @@
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 713611,
+    "latest_research_addendum_observations": 2,
+    "index_characters_before_this_update": 714658,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 11619,
-    "index_characters": 714658
+    "index_characters": 716048
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
