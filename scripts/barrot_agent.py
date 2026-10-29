@@ -1004,7 +1004,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
     outputs: dict[str, str] = {}
     for name, args in commands.items():
         result = run(args, check=False, quiet=True)
-        outputs[name] = result.stdout.strip()[:16000]
+        outputs[name] = result.stdout.strip() if name == "branch_refs" else result.stdout.strip()[:16000]
         if result.returncode != 0:
             outputs[name] = (
                 f"UNAVAILABLE (exit={result.returncode}): "
