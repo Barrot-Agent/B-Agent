@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T10:12:18Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1012-PR1302-MERGE-QUEUE-SAFETY",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1012-pr1302-merge-queue-safety.json",
-    "snapshot_blob_sha": "6e4d3af08e61124e4a42ea435c05faa0f2db2a31",
-    "snapshot_commit_sha": "e8c661471d447f01a1e83b2159fc99663a2f0c7a"
+    "captured_at_utc": "2026-10-29T10:12:58Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1012-PR1302-CI-FINAL",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1012-pr1302-ci-final.json",
+    "snapshot_blob_sha": "3a45fd380e54296ee5183bb9b02d77a13d304014",
+    "snapshot_commit_sha": "b5c431e28ef092549e6e0ca462d341acfb159617"
   },
   "sources": [
     {
@@ -6974,6 +6974,30 @@
       "title": "PR #1302 fail-closed gate status",
       "accessed_at_utc": "2026-10-29T10:12:18Z",
       "note": "Fail-closed gate was in progress at snapshot cutoff. No gate pass is claimed yet."
+    },
+    {
+      "id": "SRC-RUN55-20261029T1012Z-PR1302-HEAD",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1302",
+      "title": "PR #1302 final exact-head verification",
+      "accessed_at_utc": "2026-10-29T10:12:58Z",
+      "note": "PR #1302 remains draft/open/unmerged, based on current main 649394b89b957b4719d4b689de47bc004bcd45f0, head 36bf551925b533617c78c806e327c110f437f02b."
+    },
+    {
+      "id": "SRC-RUN55-20261029T1012Z-PR1302-CI-PASS",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667441",
+      "title": "PR #1302 core CI passed",
+      "accessed_at_utc": "2026-10-29T10:12:58Z",
+      "note": "Job log readback shows 184 tests passed plus 4 subtests in 6.60 seconds. This verifies the branch's core suite, not main behavior or repository rulesets."
+    },
+    {
+      "id": "SRC-RUN55-20261029T1012Z-PR1302-GATE-PASS",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667392",
+      "title": "PR #1302 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-29T10:12:58Z",
+      "note": "Gate log confirms automatic merge is disabled, no approval/label/merge is performed, and the gate does not modify repository content."
     }
   ],
   "limitations": [
@@ -11988,6 +12012,45 @@
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T10:12:58Z",
+      "update_type": "PR1302_FINAL_CI_GATE_AND_RESEARCH_SNAPSHOT_READBACK",
+      "source_ids": [
+        "SRC-RUN54-20261029T1012Z-MAIN-HEAD",
+        "SRC-RUN54-20261029T1012Z-MERGE-WORKFLOW",
+        "SRC-RUN54-20261029T1012Z-PR1302",
+        "SRC-RUN54-20261029T1012Z-CI",
+        "SRC-RUN54-20261029T1012Z-GATE",
+        "SRC-RUN55-20261029T1012Z-PR1302-HEAD",
+        "SRC-RUN55-20261029T1012Z-PR1302-CI-PASS",
+        "SRC-RUN55-20261029T1012Z-PR1302-GATE-PASS"
+      ],
+      "summary": "Verified PR #1302 exact-head core CI from job logs: 184 tests plus 4 subtests passed in 6.60 seconds. The fail-closed gate passed and explicitly disables automatic merge. PR #1302 remains draft/unmerged and is based on current main. Read back the final snapshot and graph addendum; source IDs are unique and all references resolve. Main's mutation-capable merge queue remains unchanged pending approval.",
+      "main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1012-pr1302-ci-final.json",
+        "blob_sha": "3a45fd380e54296ee5183bb9b02d77a13d304014",
+        "commit_sha": "b5c431e28ef092549e6e0ca462d341acfb159617",
+        "characters": 3880
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-final-ci-gate.json",
+        "blob_sha": "b7638f4a689044deb3cf7aa8c2291e6e3963507f",
+        "commit_sha": "b6015bcd782d40ba0e6b4f3fb9be55343ffcabf6",
+        "new_edges": 3,
+        "new_competing_hypotheses": 1
+      },
+      "market_observations": 0,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "workflow_dispatched": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false,
+      "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
     }
   ],
   "mission_priority": {
@@ -12215,32 +12278,32 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "e8c661471d447f01a1e83b2159fc99663a2f0c7a",
+  "current_research_head_before_ledger_update": "b5c431e28ef092549e6e0ca462d341acfb159617",
   "current_research_head_this_run": "46166e484c63d5b96229718da5af4c84b886a000",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1302_CI_PENDING_AT_CAPTURE; PR1302_GATE_PENDING_AT_CAPTURE; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1302_CI_184_TESTS_4_SUBTESTS_PASS; PR1302_GATE_PASS; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
     "latest_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1012-pr1302-merge-queue-safety.json",
-    "snapshot_blob_sha": "6e4d3af08e61124e4a42ea435c05faa0f2db2a31",
-    "snapshot_commit_sha": "e8c661471d447f01a1e83b2159fc99663a2f0c7a",
-    "snapshot_characters": 3330,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1012-pr1302-ci-final.json",
+    "snapshot_blob_sha": "3a45fd380e54296ee5183bb9b02d77a13d304014",
+    "snapshot_commit_sha": "b5c431e28ef092549e6e0ca462d341acfb159617",
+    "snapshot_characters": 3880,
     "snapshot_character_metric_matches": true,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-merge-queue-safety.json",
-    "graph_addendum_blob_sha": "c55f8f417684ad3666c0070cabbe04243f7190f2",
-    "graph_addendum_commit_sha": "d4726a5c7995530afbca5de2882773c60916adb7",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-final-ci-gate.json",
+    "graph_addendum_blob_sha": "b7638f4a689044deb3cf7aa8c2291e6e3963507f",
+    "graph_addendum_commit_sha": "b6015bcd782d40ba0e6b4f3fb9be55343ffcabf6",
     "graph_addendum_readback_ok": true,
-    "source_reference_count": 5,
+    "source_reference_count": 8,
     "missing_source_references": 0,
     "source_ids_unique": true,
-    "relationship_edges": 185,
-    "competing_hypotheses": 110,
+    "relationship_edges": 188,
+    "competing_hypotheses": 111,
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
     "pr1302_head": "36bf551925b533617c78c806e327c110f437f02b",
     "pr1302_ci_run": 40855667441,
-    "pr1302_ci_status": "IN_PROGRESS_AT_CAPTURE",
+    "pr1302_ci_status": "PASS_184_TESTS_4_SUBTESTS_6.60S",
     "pr1302_gate_run": 40855667392,
-    "pr1302_gate_status": "IN_PROGRESS_AT_CAPTURE",
+    "pr1302_gate_status": "PASS",
     "main_modified_by_this_run": false,
     "merge_performed": false,
     "workflow_dispatched": false,
@@ -12248,24 +12311,24 @@
     "deployment_executed": false,
     "real_money_trade": false,
     "paper_trading_state_mutated": false,
-    "verified_at_utc": "2026-10-29T10:12:18Z"
+    "verified_at_utc": "2026-10-29T10:12:58Z"
   },
   "ledger_metrics": {
-    "source_records": 858,
-    "run_updates": 161,
+    "source_records": 861,
+    "run_updates": 162,
     "limitations": 202,
-    "relationship_edges": 185,
-    "competing_hypotheses": 110,
+    "relationship_edges": 188,
+    "competing_hypotheses": 111,
     "market_observations": 78,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 824516,
+    "index_characters_before_this_update": 829628,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 3330,
-    "index_characters": 829628
+    "latest_snapshot_characters": 3880,
+    "index_characters": 834295
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -12343,28 +12406,31 @@
     "missing_graph_source_references": 0
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:12:18Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:12:58Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1302_CI_PENDING_AT_CAPTURE; PR1302_GATE_PENDING_AT_CAPTURE; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1302_CORE_CI_184_TESTS_4_SUBTESTS_PASS; PR1302_FAIL_CLOSED_GATE_PASS; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "6e4d3af08e61124e4a42ea435c05faa0f2db2a31",
-      "snapshot_commit_sha": "e8c661471d447f01a1e83b2159fc99663a2f0c7a",
-      "snapshot_characters": 3330,
-      "source_reference_count": 5,
+      "snapshot_blob_sha": "3a45fd380e54296ee5183bb9b02d77a13d304014",
+      "snapshot_commit_sha": "b5c431e28ef092549e6e0ca462d341acfb159617",
+      "snapshot_characters": 3880,
+      "source_reference_count": 8,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-merge-queue-safety.json",
-      "graph_addendum_blob_sha": "c55f8f417684ad3666c0070cabbe04243f7190f2",
-      "graph_addendum_commit_sha": "d4726a5c7995530afbca5de2882773c60916adb7",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-final-ci-gate.json",
+      "graph_addendum_blob_sha": "b7638f4a689044deb3cf7aa8c2291e6e3963507f",
+      "graph_addendum_commit_sha": "b6015bcd782d40ba0e6b4f3fb9be55343ffcabf6",
       "graph_addendum_readback_ok": true,
       "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
       "ci": {
-        "status": "IN_PROGRESS_AT_CAPTURE",
+        "status": "PASS",
         "run_id": 40855667441,
+        "tests_passed": 184,
+        "subtests_passed": 4,
+        "duration_seconds": 6.6,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667441"
       },
       "gate": {
-        "status": "IN_PROGRESS_AT_CAPTURE",
+        "status": "PASS",
         "run_id": 40855667392,
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667392"
       },
@@ -12420,19 +12486,22 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T10:12:18Z",
-    "focus": "Fresh-main merge-queue read-only safety proposal #1302",
+    "recorded_at_utc": "2026-10-29T10:12:58Z",
+    "focus": "PR #1302 final exact-head CI/gate verification for read-only merge-queue safety",
     "source_ids": [
       "SRC-RUN54-20261029T1012Z-MAIN-HEAD",
       "SRC-RUN54-20261029T1012Z-MERGE-WORKFLOW",
       "SRC-RUN54-20261029T1012Z-PR1302",
       "SRC-RUN54-20261029T1012Z-CI",
-      "SRC-RUN54-20261029T1012Z-GATE"
+      "SRC-RUN54-20261029T1012Z-GATE",
+      "SRC-RUN55-20261029T1012Z-PR1302-HEAD",
+      "SRC-RUN55-20261029T1012Z-PR1302-CI-PASS",
+      "SRC-RUN55-20261029T1012Z-PR1302-GATE-PASS"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-merge-queue-safety.json",
-      "blob_sha": "c55f8f417684ad3666c0070cabbe04243f7190f2",
-      "commit_sha": "d4726a5c7995530afbca5de2882773c60916adb7",
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-final-ci-gate.json",
+      "blob_sha": "b7638f4a689044deb3cf7aa8c2291e6e3963507f",
+      "commit_sha": "b6015bcd782d40ba0e6b4f3fb9be55343ffcabf6",
       "new_edges": 3,
       "new_competing_hypotheses": 1
     },
@@ -12440,33 +12509,30 @@
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:11:06Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:12:18Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1301_CORE_CI_187_TESTS_4_SUBTESTS_PASS; PR1301_FAIL_CLOSED_GATE_PASS; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1302_CI_PENDING_AT_CAPTURE; PR1302_GATE_PENDING_AT_CAPTURE; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "276d00ef7e599f8661ac023481f1717257453188",
-      "snapshot_commit_sha": "6db4d2e64c7ca74826e778f77da47be464de9a15",
-      "snapshot_characters": 7193,
-      "source_reference_count": 15,
+      "snapshot_blob_sha": "6e4d3af08e61124e4a42ea435c05faa0f2db2a31",
+      "snapshot_commit_sha": "e8c661471d447f01a1e83b2159fc99663a2f0c7a",
+      "snapshot_characters": 3330,
+      "source_reference_count": 5,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1011-pr1301-final-ci-gate.json",
-      "graph_addendum_blob_sha": "1cbc4a5e162ddf6d6b067117bb4dae5d5831bb02",
-      "graph_addendum_commit_sha": "1f1dd1dd49036f726675cb3696c899a5b3d957a5",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-merge-queue-safety.json",
+      "graph_addendum_blob_sha": "c55f8f417684ad3666c0070cabbe04243f7190f2",
+      "graph_addendum_commit_sha": "d4726a5c7995530afbca5de2882773c60916adb7",
       "graph_addendum_readback_ok": true,
       "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
       "ci": {
-        "status": "PASS",
-        "run_id": 40855279351,
-        "tests_passed": 187,
-        "subtests_passed": 4,
-        "duration_seconds": 6.6,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855279351"
+        "status": "IN_PROGRESS_AT_CAPTURE",
+        "run_id": 40855667441,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667441"
       },
       "gate": {
-        "status": "PASS",
-        "run_id": 40855279396,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855279396"
+        "status": "IN_PROGRESS_AT_CAPTURE",
+        "run_id": 40855667392,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855667392"
       },
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
@@ -13082,7 +13148,28 @@
       "pr1302_gate": "IN_PROGRESS_AT_CAPTURE",
       "pr1302_gate_run": 40855667392,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T10:12:58Z",
+      "verification_type": "PR1302_FINAL_CI_GATE_AND_SNAPSHOT_GRAPH_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1012-pr1302-ci-final.json",
+      "snapshot_blob_sha": "3a45fd380e54296ee5183bb9b02d77a13d304014",
+      "snapshot_commit_sha": "b5c431e28ef092549e6e0ca462d341acfb159617",
+      "snapshot_characters": 3880,
+      "source_reference_count": 8,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1012-pr1302-final-ci-gate.json",
+      "graph_addendum_blob_sha": "b7638f4a689044deb3cf7aa8c2291e6e3963507f",
+      "graph_addendum_commit_sha": "b6015bcd782d40ba0e6b4f3fb9be55343ffcabf6",
+      "graph_addendum_readback_ok": true,
+      "pr1302_head": "36bf551925b533617c78c806e327c110f437f02b",
+      "pr1302_ci": "PASS_184_TESTS_PLUS_4_SUBTESTS_6.60S",
+      "pr1302_ci_run": 40855667441,
+      "pr1302_gate": "PASS_FAIL_CLOSED",
+      "pr1302_gate_run": 40855667392,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "e8c661471d447f01a1e83b2159fc99663a2f0c7a"
+  "current_research_head_before_this_update": "b5c431e28ef092549e6e0ca462d341acfb159617"
 }
