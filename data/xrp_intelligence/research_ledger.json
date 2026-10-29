@@ -6141,6 +6141,24 @@
       "published_at": "2025-12-14",
       "accessed_at_utc": "2026-10-29T05:13:44.000Z",
       "note": "The transcript page attributes the video 'Ripple Just Became a BANK — And XRP Holders Need to Understand This' to Kamilah Stevenson and its transcript speaker says 'Camila Stevenson'. This supports a spelling/alias variant in the XRP-content context but does not establish that an exact-name 'Camilla Stephenson' channel is the same entity."
+    },
+    {
+      "id": "SRC-RUN40-20261029T051451-CIRCLE-H1-SETTLEMENT-VOLUME",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "title": "Circle H1 2026 USDC settlement and distribution scale",
+      "published_at": "2026-10-16",
+      "accessed_at_utc": "2026-10-29T05:14:51.000Z",
+      "note": "Circle states USDC settled more than $36T of onchain transaction volume in H1 2026, Circle minted/redeemed more than $315B of USDC, and USDC represented about 77% of global stablecoin transaction volume in June. Circle describes Coinbase as its largest and longest-standing partner and quotes Coinbase's $20B average USDC balance. These are company-reported metrics; stablecoin transaction volume is not the same as net capital inflow, XRP demand, or unique economic settlement."
+    },
+    {
+      "id": "SRC-RUN40-20261029T051451-CIRCLE-Q3-CALENDAR",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-to-Announce-Q3-2026-Financial-Results-on-November-4-2026/default.aspx",
+      "title": "Circle Q3 2026 earnings schedule",
+      "published_at": "2026-10-07",
+      "accessed_at_utc": "2026-10-29T05:14:51.000Z",
+      "note": "Circle scheduled Q3 2026 results and webcast for Wednesday 2026-11-04 at 08:00 ET. This is a future catalyst at this capture, not a result or a directional XRP signal."
     }
   ],
   "limitations": [
@@ -10393,15 +10411,34 @@
       "paper_trading_state_mutated": false,
       "real_money_trade": false,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T05:14:51.000Z",
+      "update_type": "CIRCLE_USDC_SCALE_AND_Q3_CATALYST",
+      "source_ids": [
+        "SRC-RUN40-20261029T051451-CIRCLE-H1-SETTLEMENT-VOLUME",
+        "SRC-RUN40-20261029T051451-CIRCLE-Q3-CALENDAR"
+      ],
+      "summary": "Expanded the Circle-Coinbase evidence with Circle's own H1 metrics: over $36T USDC onchain transaction volume, over $315B minted/redeemed, and about 77% of global stablecoin transaction volume in June. These are issuer-reported gross transaction metrics, not net capital flows or XRP demand. Circle Q3 results are scheduled for November 4, 2026 at 08:00 ET; Coinbase Q3 results are scheduled after market close on October 29. No event-driven price forecast was issued.",
+      "index_head_verified": "STRUCTURAL_READBACK_PENDING_AFTER_UPDATE",
+      "gate_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
+      "main_sha": "f27dcf8fbf3e54888f1ea6d25b2e43131184dbc7",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "real_money_trade": false,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
   "mission_priority": {
-    "as_of_utc": "2026-10-29T05:13:44.000Z",
+    "as_of_utc": "2026-10-29T05:14:51.000Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 execution and verification; no main writes, merges, deployments or real-money actions without approval.",
     "current_forecast_status": "NOT_ISSUED",
     "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T050603-circle-coinbase-sbic-ambiguity-correction.json",
-    "next_action": "Keep PR #1289 draft/unmerged despite passing exact-head CI/gate; review #1288 and #1282 without merging. Continue official public-video inventory for the Kamilah/Camila candidate, verify each alleged forecast against original timestamps and realized outcomes, and do not equate this candidate with the exact-name Camilla Stephenson without evidence."
+    "next_action": "Track Coinbase Q3 results after market close on Oct 29 and Circle Q3 results on Nov 4; compare disclosed USDC/RLUSD mix, custody/collateral details and stablecoin flows against prior baselines. Do not convert gross stablecoin transaction volume into an XRP price signal."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -10680,11 +10717,16 @@
     "creator_channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
     "creator_identity_status": "PROBABLE_KAMILAH_CAMILA_VARIANT; EXACT_CAMILLA_STEPHENSON_IDENTITY_UNPROVEN",
     "public_video_inventory": "PARTIAL_NOT_EXHAUSTIVE; THIRD_PARTY_VIDEO_COUNTS_DISAGREE",
-    "forecast_track_status": "SECONDARY_AI_TRACKER_LEADS_ONLY; ORIGINAL_VIDEO_TARGETS_AND_OUTCOMES_UNVERIFIED"
+    "forecast_track_status": "SECONDARY_AI_TRACKER_LEADS_ONLY; ORIGINAL_VIDEO_TARGETS_AND_OUTCOMES_UNVERIFIED",
+    "circle_h1_usdc_settlement_volume_claimed_by_issuer": ">36T in H1 2026",
+    "circle_h1_usdc_mint_redeem_claimed_by_issuer": ">315B in H1 2026",
+    "circle_june_2026_share_of_global_stablecoin_tx_volume_claimed_by_issuer": "~77%; gross transaction volume, not net capital flow",
+    "circle_q3_results_scheduled_utc": "2026-11-04T13:00:00Z",
+    "coinbase_q3_results_scheduled": "2026-10-29 after market close ET"
   },
   "ledger_metrics": {
-    "source_records": 758,
-    "run_updates": 144,
+    "source_records": 760,
+    "run_updates": 145,
     "limitations": 169,
     "relationship_edges": 133,
     "competing_hypotheses": 85,
@@ -10694,10 +10736,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 705173,
+    "index_characters_before_this_update": 710484,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 11619,
-    "index_characters": 710484
+    "index_characters": 713611
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
