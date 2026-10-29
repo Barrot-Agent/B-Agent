@@ -11421,7 +11421,7 @@
   "current_research_head_before_ledger_update": "9d562b503ed7cf63af4715eeab73b9fec5f28b09",
   "current_research_head_this_run": "9ed53d75997598d86c5a5ab13ec1f3772a1f3ee4",
   "current_research_checks": {
-    "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; LEDGER_POINTER_WRITE_PENDING_READBACK; FORECAST_NOT_ISSUED",
+    "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
     "latest_main_sha": "dbc2929e5249ebd7637204e8b279896a8336cf53",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261029T0706-market-structure-and-main-safety.json",
     "snapshot_blob_sha": "06820e8b404456aef2b3342231cb6eb534f8c634",
@@ -11486,7 +11486,14 @@
     "ask_coin_original_context": "UNRESOLVED",
     "actual_capital_original_context": "UNRESOLVED",
     "current_index_gate": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
-    "core_ci": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR"
+    "core_ci": "NOT_TRIGGERED_OR_UNVERIFIED_FOR_RESEARCH_BASE_PR",
+    "index_pointer_readback_ok": true,
+    "index_blob_sha_at_readback": "3e5e03a9f02e84dcad4975d32337a6ce6ba8b63b",
+    "index_commit_sha_at_readback": "ec4ad07cecd819ecd3b9ef942b7608360333dc25",
+    "index_character_count_match": true,
+    "index_metric_count_match": true,
+    "missing_snapshot_source_references": 0,
+    "missing_graph_source_references": 0
   },
   "ledger_metrics": {
     "source_records": 806,
@@ -11500,10 +11507,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 4,
-    "index_characters_before_this_update": 756372,
+    "index_characters_before_this_update": 770564,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 31563,
-    "index_characters": 770564
+    "index_characters": 771624
   },
   "previous_research_checks": {
     "status": "YOUTUBE_CANDIDATE_INVENTORY_ADDED; SNAPSHOT_POINTER_AND_LEDGER_READBACK_PASS; FORECAST_NOT_ISSUED",
@@ -11597,7 +11604,7 @@
   "latest_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-29T07:06:00.000Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; LEDGER_POINTER_READBACK_PENDING; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
       "snapshot_blob_sha": "06820e8b404456aef2b3342231cb6eb534f8c634",
       "snapshot_commit_sha": "9ed53d75997598d86c5a5ab13ec1f3772a1f3ee4",
@@ -11633,11 +11640,17 @@
         "run_id": 40827879426
       },
       "research_base_ci": "NOT_TRIGGERED_OR_UNVERIFIED",
-      "index_pointer_readback_ok": false,
-      "index_character_count_match": false,
+      "index_pointer_readback_ok": true,
+      "index_character_count_match": true,
       "source_ids_unique": true,
-      "index_metric_count_match": false,
-      "forecast_status": "NOT_ISSUED"
+      "index_metric_count_match": true,
+      "forecast_status": "NOT_ISSUED",
+      "index_blob_sha_at_readback": "3e5e03a9f02e84dcad4975d32337a6ce6ba8b63b",
+      "index_commit_sha_at_readback": "ec4ad07cecd819ecd3b9ef942b7608360333dc25",
+      "missing_index_source_references": 0,
+      "verified_source_records": 806,
+      "verified_run_updates": 152,
+      "verified_limitations": 189
     }
   },
   "index_format_version": "2.0",
@@ -12151,8 +12164,15 @@
       "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T0705-market-structure-and-signal-safety.json",
       "graph_addendum_blob_sha": "2a1b14bf61c2e8f54c8c4419ab10bc9003db257a",
       "graph_addendum_readback_ok": true,
-      "index_pointer_status": "PENDING_AFTER_LEDGER_WRITE",
-      "forecast_status": "NOT_ISSUED"
+      "index_pointer_status": "PASS",
+      "forecast_status": "NOT_ISSUED",
+      "index_blob_sha_at_readback": "3e5e03a9f02e84dcad4975d32337a6ce6ba8b63b",
+      "index_commit_sha_at_readback": "ec4ad07cecd819ecd3b9ef942b7608360333dc25",
+      "index_character_count_match": true,
+      "index_metric_count_match": true,
+      "source_ids_unique": true,
+      "missing_snapshot_source_references": 0,
+      "missing_graph_source_references": 0
     }
   ]
 }
