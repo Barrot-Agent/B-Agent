@@ -68,7 +68,15 @@ NOISE_PREFIXES = (".git", ".npm", "node_modules", ".cache", "_cacache")
 def run(args: list[str], *, check: bool = True, quiet: bool = False) -> subprocess.CompletedProcess[str]:
     normalized = [str(part).strip().lower() for part in args]
     joined = " ".join(normalized)
-    forbidden = (normalized and normalized[0] == "git" and any(token in normalized[1:] for token in ("push", "commit", "merge", "reset", "clean"))) or (normalized and normalized[0] == "gh" and (normalized[1:3] in (["pr", "create"], ["issue", "comment"], ["issue", "edit"]))
+    forbidden = False
+    if normalized and normalized[0] == "git":
+        forbidden = any(token in normalized[1:] for token in ("push", "commit", "merge", "reset", "clean"))
+    elif normalized and normalized[0] == "gh":
+        forbidden = normalized[1:3] in (
+            ["pr", "create"],
+            ["issue", "comment"],
+            ["issue", "edit"],
+        )
     if DRY_RUN and forbidden:
         raise RuntimeError("DRY_RUN_WRITE_GUARD: blocked attempted mutation: " + joined)
     print("+", " ".join(args))
