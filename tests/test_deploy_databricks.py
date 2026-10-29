@@ -17,14 +17,14 @@ def _functions() -> dict[str, ast.FunctionDef]:
 
 
 def _calls(function: ast.FunctionDef) -> list[str]:
-    names: list[str] = []
+    found: list[tuple[int, int, str]] = []
     for node in ast.walk(function):
         if isinstance(node, ast.Call):
             if isinstance(node.func, ast.Name):
-                names.append(node.func.id)
+                found.append((node.lineno, node.col_offset, node.func.id))
             elif isinstance(node.func, ast.Attribute):
-                names.append(node.func.attr)
-    return names
+                found.append((node.lineno, node.col_offset, node.func.attr))
+    return [name for _, _, name in sorted(found)]
 
 
 def test_authentication_preflight_precedes_remote_mutations() -> None:
