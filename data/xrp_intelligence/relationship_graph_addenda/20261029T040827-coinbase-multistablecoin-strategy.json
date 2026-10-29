@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T040827-COINBASE-MULTISTABLECOIN-STRATEGY",
+  "captured_at_utc": "2026-10-29T04:08:27.000Z",
+  "policy": "Append-only. Distinguish issuer/distribution relationships from stablecoin reserves, collateral eligibility, XRPL activity, and XRP spot demand. Hypotheses remain unverified until measured.",
+  "nodes": [
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_CUSTODY_AND_STABLECOIN_DISTRIBUTION_PLATFORM"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "DIGITAL_ASSET_INFRASTRUCTURE_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle Internet Group",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN38-20261029T040827-COINBASE-RIPPLE-RLUSD-PARTNERSHIP",
+      "source": "COINBASE",
+      "target": "RIPPLE",
+      "relationship": "OFFICIAL_RLUSD_DISTRIBUTION_PARTNERSHIP",
+      "evidence_class": "CONFIRMED_BILATERAL_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED_2026-10-28",
+      "claim": "Coinbase and Ripple announced RLUSD distribution across Coinbase Prime, Coinbase Exchange and the retail app. Coinbase supports RLUSD deposits and withdrawals across XRPL, Base and Ethereum; Global Exchange collateral availability was described as a future rollout. This confirms a distribution partnership, not exclusivity, customer migration, collateral activation, or XRP price impact.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN38-COINBASE-ADDITIVE-STABLECOIN-STACK",
+      "class": "INFERENCE",
+      "hypothesis": "Coinbase may be expanding an additive multi-issuer stablecoin distribution stack: RLUSD can broaden supported customer/settlement options while Coinbase retains substantial USDC distribution economics.",
+      "confidence": "LOW_TO_MEDIUM",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28",
+        "SRC-COINBASE-Q2-2026",
+        "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26"
+      ],
+      "counter_hypotheses": [
+        "RLUSD could take meaningful distribution share from USDC on Coinbase.",
+        "The launch could be a competitive positioning move with economics that are not yet visible in public data."
+      ],
+      "disconfirming_evidence_needed": [
+        "Time-aligned Coinbase product balances by stablecoin and chain.",
+        "Issuer/platform revenue-share disclosures and actual RLUSD trading/deposit/withdrawal volumes.",
+        "Evidence of USDC balances or Coinbase USDC economics declining after the RLUSD launch, controlling for total stablecoin growth."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN38-COINBASE-CIRCLE-COMPETITIVE-SHIFT",
+      "class": "COMPETING_INFERENCE",
+      "hypothesis": "RLUSD distribution could gradually reduce Circle/USDC's relative position within Coinbase, but the listing alone does not prove customer migration or a change in Coinbase-Circle economics.",
+      "confidence": "LOW",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28",
+        "SRC-COINBASE-Q2-2026"
+      ],
+      "counter_hypotheses": [
+        "RLUSD may be an additional product and Coinbase may continue to promote USDC because of existing balances and revenue-sharing incentives."
+      ],
+      "disconfirming_evidence_needed": [
+        "Coinbase stablecoin balance mix before/after launch, chain-adjusted net flows, conversion volume, and updated SEC-filed revenue disclosures."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN38-XRPL-ACTIVITY-NOT-XRP-DEMAND",
+      "class": "INFERENCE",
+      "hypothesis": "RLUSD support on XRPL can increase XRPL utility without proportionate spot XRP demand; fees, DEX routing, and bridge-asset use must be measured separately from stablecoin availability.",
+      "confidence": "LOW_TO_MEDIUM",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+        "SRC-COINBASE-RLUSD-BLOG-2026-10-28"
+      ],
+      "counter_hypotheses": [
+        "If measurable RLUSD flows use XRP as a bridge asset on XRPL DEX paths, they could create incremental short-duration XRP liquidity demand."
+      ],
+      "disconfirming_evidence_needed": [
+        "XRPL RLUSD supply and transfer flows by chain and time; XRP DEX/pathfinding volumes; XRP order-book depth/spreads; exchange net flows; event-study controls for BTC, rates and broader liquidity."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    }
+  ],
+  "notes": [
+    "The official Coinbase and Ripple announcements are counterpart company sources, not independent market-flow evidence.",
+    "Coinbase Global Exchange collateral support was not live at the announcement cutoff; do not encode it as current collateral demand.",
+    "USDC issuer circulation is a global issuer metric, not XRPL-specific balance or XRP demand."
+  ]
+}
