@@ -61,4 +61,5 @@ jobs:
             tests/test_mesh_topology.py \
             tests/test_obj_mesh_loader.py \
             tests/test_polygon_triangulation.py \
+            tests/test_signal_summary.py \
             -v --no-cov
