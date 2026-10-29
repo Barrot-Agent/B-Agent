@@ -307,9 +307,11 @@ def test_explicit_read_only_audit_bypasses_bundle_and_repair(monkeypatch):
         def __init__(self, **kwargs):
             calls.setdefault("brain_inits", []).append(kwargs)
 
-        def think(self, message, system=None):
+        def think(self, message, system=None, use_tools=None, max_output_tokens=None):
             calls["prompt"] = json.loads(message)
             calls["system"] = system
+            calls["use_tools"] = use_tools
+            calls["max_output_tokens"] = max_output_tokens
             return "## Evidence report\\n\\nCONFIRMED: repository context inspected."
 
     def forbidden(*args, **kwargs):
@@ -356,13 +358,14 @@ def test_script_brain_can_disable_tools_per_call(tmp_path: Path, monkeypatch) ->
         return {"choices": [{"message": {"role": "assistant", "content": "{}"}}]}
 
     brain = module.ScriptBrain(request_sender=sender, repo_root=workspace)
-    result = brain.think("Return a JSON object.", system="JSON only.", use_tools=False)
+    result = brain.think("Return a JSON object.", system="JSON only.", use_tools=False, max_output_tokens=1536)
 
     assert json.loads(result) == {}
     assert len(payloads) == 1
     assert "tools" not in payloads[0]
     assert payloads[0]["response_format"] == {"type": "json_object"}
     assert payloads[0]["reasoning_effort"] == "low"
+    assert payloads[0]["max_tokens"] == 1536
 
 
 def test_repo_browser_open_file_is_bounded_and_confined(tmp_path: Path, monkeypatch) -> None:
