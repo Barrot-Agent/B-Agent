@@ -158,7 +158,8 @@ class AssetLoader:
         stream_from_cloud:
             Fetch the source from its remote URL rather than disk.
         """
-        cache_key = f"{source}:lod{target_lod or self.default_lod}"
+        lod_for_cache = target_lod if target_lod is not None else self.default_lod
+        cache_key = f"{source}:lod{lod_for_cache}"
         if cache_key in self._cache:
             return self._cache[cache_key]
 
