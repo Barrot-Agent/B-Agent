@@ -168,7 +168,7 @@ class RepoBrowser:
             return _tool_error("line_start must be >= 1 and line_end must be >= line_start.")
         if not target.exists() or not target.is_file():
             return _tool_error(f"repo_browser file does not exist: {args.get('path', '')}")
-        end = min(requested_end, start + 79)
+        end = min(requested_end, start + 59)
         try:
             lines = target.read_text(encoding="utf-8", errors="replace").splitlines()
         except OSError as exc:
@@ -427,7 +427,7 @@ class ScriptBrain:
                 "type": "function",
                 "function": {
                     "name": "repo_browser.open_file",
-                    "description": "Read up to 80 lines from a real repository file path; paths must remain inside the repository root.",
+                    "description": "Read up to 60 lines from a real repository file path; paths must remain inside the repository root.",
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -1060,7 +1060,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
     outputs: dict[str, str] = {}
     for name, args in commands.items():
         result = run(args, check=False, quiet=True)
-        limit = 2500 if name.startswith("geometry_") else 6000
+        limit = 1200 if name.startswith("geometry_") else 4000
         outputs[name] = result.stdout.strip() if name == "branch_refs" else result.stdout.strip()[:limit]
         if result.returncode != 0:
             outputs[name] = (
@@ -1069,7 +1069,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
             )
     snapshot["working_tree"] = outputs["working_tree"][:1200]
     snapshot["head"] = outputs["head"][:200]
-    snapshot["recent_history"] = "\\n".join(outputs["recent_history"].splitlines()[:6])
+    snapshot["recent_history"] = "\\n".join(outputs["recent_history"].splitlines()[:4])
 
     branch_output = outputs["branch_refs"]
     relevant_markers = (
@@ -1087,7 +1087,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
             or any(marker in line.split("|", 1)[0].lower() for marker in relevant_markers)
         ]
         snapshot["branch_count"] = len(branch_lines)
-        snapshot["relevant_branch_heads"] = relevant_branches[:15]
+        snapshot["relevant_branch_heads"] = relevant_branches[:10]
     snapshot["geometry_diffs"] = {
         "checkpoint_vs_main": outputs["geometry_checkpoint_vs_main"],
         "checkpoint_vs_fresh_main": outputs["geometry_checkpoint_vs_fresh_main"],
@@ -1112,7 +1112,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
                     "url": item.get("html_url"),
                     "sha": item.get("head_sha"),
                 }
-            recent = [summarize(item) for item in runs[:3]]
+            recent = [summarize(item) for item in runs[:2]]
             relevant = [
                 summarize(item) for item in runs
                 if any(token in (
@@ -1124,7 +1124,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
             snapshot["actions"] = {
                 "total_count": payload.get("total_count"),
                 "recent_runs": recent,
-                "relevant_runs": relevant[:6],
+                "relevant_runs": relevant[:4],
             }
         except (TypeError, ValueError, AttributeError) as exc:
             snapshot["actions"] = {"status": "UNPARSEABLE", "error": type(exc).__name__}
@@ -1238,11 +1238,11 @@ def main() -> None:
             "objective": TITLE,
             "task_body_summary": "Read-only repository-wide audit. Known geometry checkpoint: barrot/mesh-topology-obj-triangulation-20261024 at ab362f9fc9512cd7ffea312d24978f11bbc2de3e; duplicate candidate branch barrot/mesh-topology-obj-triangulation-20261024-115709. Investigate the reported tetrahedron degenerate-triangle/watertightness discrepancy, concave OBJ triangulation and metadata, missing-mesh NOT_ASSESSED behavior, CI evidence, agent repair safety, MMI/provenance, and delivery. Return prioritized next steps with acceptance criteria.",
             "repository_context": {
-                "inventory": str(audit_context.get("inventory", ""))[:1500],
-                "file_context": str(audit_context.get("file_context", ""))[:2500],
-                "directory_context": str(audit_context.get("directory_context", ""))[:1200],
-                "github_context": str(audit_context.get("github_context", ""))[:1000],
-                "note": str(audit_context.get("note", ""))[:300],
+                "inventory": str(audit_context.get("inventory", ""))[:800],
+                "file_context": str(audit_context.get("file_context", ""))[:1200],
+                "directory_context": str(audit_context.get("directory_context", ""))[:500],
+                "github_context": str(audit_context.get("github_context", ""))[:600],
+                "note": str(audit_context.get("note", ""))[:200],
             },
             "live_read_only_snapshot": build_read_only_audit_snapshot(),
             "required_sections": [
@@ -1271,9 +1271,9 @@ def main() -> None:
             "Return a concise but complete Markdown report with explicit evidence and uncertainty."
         )
         previous_search_limit = MAX_SEARCH_RESULTS
-        MAX_SEARCH_RESULTS = min(MAX_SEARCH_RESULTS, 8)
+        MAX_SEARCH_RESULTS = min(MAX_SEARCH_RESULTS, 5)
         try:
-            audit_brain = ScriptBrain(max_tool_rounds=5)
+            audit_brain = ScriptBrain(max_tool_rounds=3)
             report = audit_brain.think(
                 json.dumps(audit_request, ensure_ascii=False, sort_keys=True),
                 system=audit_system,
