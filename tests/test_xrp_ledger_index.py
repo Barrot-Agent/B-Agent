@@ -97,3 +97,79 @@ def test_current_repository_ledger_validates_read_only():
     assert report["status"] == "PASS", report
     assert report["snapshot_reference_mode"] is True
     assert report["state_mutated"] is False
+
+
+def _write_archive_shard(tmp_path, array_name, records, *, chunk_index=0, chunk_count=1):
+    relative = f"data/xrp_intelligence/ledger_archive/v1/{array_name}-{chunk_index:03d}.json"
+    payload = {"schema_version": "1.0", "record_type": "xrp_research_ledger_archive_shard", "archive_schema_version": "1.0", "array_name": array_name, "chunk_index": chunk_index, "chunk_count": chunk_count, "record_count": len(records), "records": records}
+    raw = (json.dumps(payload, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
+    path = tmp_path / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(raw)
+    return {"chunk_index": chunk_index, "path": relative, "git_blob_sha": VALIDATOR.git_blob_sha(raw), "record_count": len(records)}
+
+
+def _archive_pointer(array_name, shard_specs, record_count):
+    return {"record_type": "archive_pointer", "archive_schema_version": "1.0", "array_name": array_name, "record_count": record_count, "chunk_count": len(shard_specs), "chunks": shard_specs}
+
+
+def test_sharded_arrays_resolve_and_roundtrip_exactly(tmp_path):
+    source_records = [{"id": "SRC-A", "title": "alpha"}, {"id": "SRC-B", "title": "beta"}]
+    run_records = [{"recorded_at_utc": "2026-10-29T00:00:00Z", "source_ids": ["SRC-A", "SRC-B"]}]
+    limit_records = ["one limitation", "second limitation"]
+    source_specs = [_write_archive_shard(tmp_path, "sources", [source_records[0]], chunk_index=0, chunk_count=2), _write_archive_shard(tmp_path, "sources", [source_records[1]], chunk_index=1, chunk_count=2)]
+    run_specs = [_write_archive_shard(tmp_path, "run_updates", run_records)]
+    limit_specs = [_write_archive_shard(tmp_path, "limitations", limit_records)]
+    a, ea, _ = VALIDATOR.resolve_archive_array(_archive_pointer("sources", source_specs, 2), "sources", tmp_path)
+    b, eb, _ = VALIDATOR.resolve_archive_array(_archive_pointer("run_updates", run_specs, 1), "run_updates", tmp_path)
+    c, ec, _ = VALIDATOR.resolve_archive_array(_archive_pointer("limitations", limit_specs, 2), "limitations", tmp_path)
+    assert ea == eb == ec == []
+    assert a == source_records and b == run_records and c == limit_records
+
+
+def test_sharded_index_validates_and_reports_archive_counts(tmp_path):
+    index, _ = fixture_pair(tmp_path)
+    ss = [_write_archive_shard(tmp_path, "sources", [{"id": "SRC-ONE"}])]
+    rs = [_write_archive_shard(tmp_path, "run_updates", [{"source_ids": ["SRC-ONE"]}])]
+    ls = [_write_archive_shard(tmp_path, "limitations", ["preserve me"])]
+    index["sources"] = _archive_pointer("sources", ss, 1)
+    index["run_updates"] = _archive_pointer("run_updates", rs, 1)
+    index["limitations"] = _archive_pointer("limitations", ls, 1)
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "PASS", report
+    assert report["source_count"] == 1 and report["run_update_count"] == 1 and report["limitation_count"] == 1
+    assert report["archive_shards_checked"] == 3
+
+
+def test_archive_digest_mismatch_fails_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path)
+    specs = [_write_archive_shard(tmp_path, "sources", [{"id": "SRC-ONE"}])]
+    specs[0]["git_blob_sha"] = "0" * 40
+    index["sources"] = _archive_pointer("sources", specs, 1)
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("Git blob SHA mismatch" in error for error in report["errors"])
+
+
+def test_archive_path_traversal_fails_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path)
+    pointer = _archive_pointer("sources", [{"chunk_index": 0, "path": "../escape.json", "git_blob_sha": "0" * 40, "record_count": 1}], 1)
+    index["sources"] = pointer
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED" and any("stay inside" in error for error in report["errors"])
+
+
+def test_archive_missing_file_fails_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path)
+    pointer = _archive_pointer("sources", [{"chunk_index": 0, "path": "data/xrp_intelligence/ledger_archive/v1/missing.json", "git_blob_sha": "0" * 40, "record_count": 1}], 1)
+    index["sources"] = pointer
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED" and any("cannot be read" in error for error in report["errors"])
+
+
+def test_duplicate_source_ids_across_archive_shards_fail_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path)
+    specs = [_write_archive_shard(tmp_path, "sources", [{"id": "SRC-DUP"}], chunk_index=0, chunk_count=2), _write_archive_shard(tmp_path, "sources", [{"id": "SRC-DUP"}], chunk_index=1, chunk_count=2)]
+    index["sources"] = _archive_pointer("sources", specs, 2)
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED" and "duplicate source IDs" in report["errors"]
