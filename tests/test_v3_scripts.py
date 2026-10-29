@@ -695,3 +695,52 @@ def test_groq_json_validation_failure_retries_without_response_format(monkeypatc
     assert "response_format" in seen[0]
     assert "response_format" not in seen[1]
 
+
+def test_signal_accuracy_fails_closed_and_preserves_legacy_history(tmp_path, monkeypatch) -> None:
+    script_path = REPO_ROOT / "scripts" / "check_signal_accuracy.py"
+    module = load_script(script_path, "signal_accuracy_fixed_horizon_gate_test")
+
+    history_path = tmp_path / "signal_history.jsonl"
+    original_history = (
+        '{"generated_at_unix": 100, "score": 80, "checked": true, "correct": true}\n'
+        '{"generated_at_unix": 200, "score": 20}\n'
+    )
+    history_path.write_text(original_history, encoding="utf-8")
+
+    summary_path = tmp_path / "signal_accuracy.json"
+    summary_path.write_text(
+        json.dumps(
+            {
+                "checked_count": 1635,
+                "correct_count": 750,
+                "accuracy_pct": 45.9,
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(module, "HISTORY_PATH", history_path)
+    monkeypatch.setattr(module, "SUMMARY_PATH", summary_path)
+
+    module.main()
+
+    result = json.loads(summary_path.read_text(encoding="utf-8"))
+    assert result["status"] == "NOT_EVALUATED"
+    assert result["metric_status"] == "NOT_COMPARABLE"
+    assert result["accuracy_pct"] is None
+    assert result["evaluation_protocol"]["status"] == "NOT_IMPLEMENTED"
+    assert result["evaluation_protocol"]["horizon_seconds"] is None
+    assert result["legacy_metric"]["checked_count"] == 1635
+    assert result["legacy_metric"]["correct_count"] == 750
+    assert result["legacy_metric"]["accuracy_pct"] == 45.9
+    assert history_path.read_text(encoding="utf-8") == original_history
+
+
+def test_signal_accuracy_workflow_is_read_only_and_artifact_based() -> None:
+    workflow_path = REPO_ROOT / ".github" / "workflows" / "check-signal-accuracy.yml"
+    workflow = workflow_path.read_text(encoding="utf-8")
+
+    assert "contents: read" in workflow
+    assert "actions/upload-artifact@v4" in workflow
+    assert "git push" not in workflow
+    assert "git commit" not in workflow
+    assert "git add web/signal_history.jsonl" not in workflow
