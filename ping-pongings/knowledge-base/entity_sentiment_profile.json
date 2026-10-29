@@ -1,9 +1,9 @@
 {
   "generated_from": {
-    "xrp_entries": 1196,
+    "xrp_entries": 1197,
     "btc_entries": 1226
   },
-  "unique_entities_profiled": 985,
+  "unique_entities_profiled": 987,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 281,
-      "bullish": 181,
+      "total_mentions": 284,
+      "bullish": 184,
       "neutral": 44,
       "bearish": 56,
-      "net_sentiment_score": 0.445,
+      "net_sentiment_score": 0.451,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 215,
-      "bullish": 139,
+      "total_mentions": 217,
+      "bullish": 141,
       "neutral": 39,
       "bearish": 37,
-      "net_sentiment_score": 0.474,
+      "net_sentiment_score": 0.479,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -92,11 +92,11 @@
     },
     {
       "entity": "Yahoo Finance",
-      "total_mentions": 58,
-      "bullish": 37,
+      "total_mentions": 59,
+      "bullish": 38,
       "neutral": 7,
       "bearish": 14,
-      "net_sentiment_score": 0.397,
+      "net_sentiment_score": 0.407,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -663,6 +663,23 @@
       ]
     },
     {
+      "entity": "Nasdaq",
+      "total_mentions": 9,
+      "bullish": 9,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
+        "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk"
+      ]
+    },
+    {
       "entity": "Metaplanet",
       "total_mentions": 9,
       "bullish": 7,
@@ -726,23 +743,6 @@
         "Why XRP remains pressured despite Ripple Mint launch - FXStreet",
         "XRP and XLM outlook: Why are Ripple and Stellar rallying? - FXStreet",
         "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
-      "entity": "Nasdaq",
-      "total_mentions": 8,
-      "bullish": 8,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-        "Tron Inc. Expands TRX Treasury To $245M In Nasdaq Corporate Crypto Bet",
-        "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk"
       ]
     },
     {
@@ -1314,6 +1314,22 @@
       ]
     },
     {
+      "entity": "CryptoRank",
+      "total_mentions": 5,
+      "bullish": 4,
+      "neutral": 0,
+      "bearish": 1,
+      "net_sentiment_score": 0.6,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+        "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
+        "Top Ripple Price Predictions as XRP Reclaims $1.50 - CryptoRank"
+      ]
+    },
+    {
       "entity": "Comoros",
       "total_mentions": 5,
       "bullish": 5,
@@ -1629,22 +1645,6 @@
       ]
     },
     {
-      "entity": "CryptoRank",
-      "total_mentions": 4,
-      "bullish": 3,
-      "neutral": 0,
-      "bearish": 1,
-      "net_sentiment_score": 0.5,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-        "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
-        "Top Ripple Price Predictions as XRP Reclaims $1.50 - CryptoRank"
-      ]
-    },
-    {
       "entity": "SOL",
       "total_mentions": 4,
       "bullish": 3,
@@ -1891,6 +1891,22 @@
         "Kansai Electric Rewards App Opens JPYC Stablecoin Conversion On Polygon",
         "SBI values Ripple stake at $41.2B despite XRP price slump - Crypto News",
         "US hints at more yen intervention: Five things to know in Bitcoin this week"
+      ]
+    },
+    {
+      "entity": "Evernorth",
+      "total_mentions": 3,
+      "bullish": 3,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
+        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+        "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury"
       ]
     },
     {
@@ -3280,21 +3296,6 @@
       "example_headlines": [
         "Is XRP the Best Crypto You Can Buy Right Now? - Yahoo Finance",
         "Why is XRP rallying? - FXStreet"
-      ]
-    },
-    {
-      "entity": "Evernorth",
-      "total_mentions": 2,
-      "bullish": 2,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Breaking: Ripple-Backed XRP Treasury Evernorth Files S-4, Finalizes Executive Agreements - CoinGape",
-        "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie"
       ]
     },
     {
@@ -5232,6 +5233,21 @@
       ]
     },
     {
+      "entity": "Brazil",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
+        "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry"
+      ]
+    },
+    {
       "entity": "Crypto Market",
       "total_mentions": 2,
       "bullish": 1,
@@ -5245,6 +5261,21 @@
       "example_headlines": [
         "RockawayX Acquires NY Hedge Fund Relayer To Expand Crypto Empire Past $2 Billion",
         "CLARITY Act Delay Shows Crypto Market Structure Fight Is Not Over"
+      ]
+    },
+    {
+      "entity": "Seoul",
+      "total_mentions": 2,
+      "bullish": 2,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Bulls Eye $100 XRP Surge as Ripple Teases \u2018Special Announcement\u2019 in Seoul - Yahoo Finance",
+        "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders"
       ]
     },
     {
@@ -11036,20 +11067,6 @@
       ]
     },
     {
-      "entity": "Brazil",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger"
-      ]
-    },
-    {
       "entity": "RockawayX",
       "total_mentions": 1,
       "bullish": 1,
@@ -11316,6 +11333,34 @@
       ]
     },
     {
+      "entity": "XRPN",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury"
+      ]
+    },
+    {
+      "entity": "SPAC",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury"
+      ]
+    },
+    {
       "entity": "Polymath",
       "total_mentions": 1,
       "bullish": 0,
@@ -11355,20 +11400,6 @@
       ],
       "example_headlines": [
         "XRP Price Prediction October 2026: Today, Weekly, 2030, 2040 - coindcx.com"
-      ]
-    },
-    {
-      "entity": "Seoul",
-      "total_mentions": 1,
-      "bullish": 1,
-      "neutral": 0,
-      "bearish": 0,
-      "net_sentiment_score": 1.0,
-      "assets_seen_in": [
-        "XRP"
-      ],
-      "example_headlines": [
-        "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders"
       ]
     },
     {

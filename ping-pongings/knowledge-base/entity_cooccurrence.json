@@ -1,14 +1,14 @@
 {
   "generated_from": {
-    "xrp_entries": 1196,
+    "xrp_entries": 1197,
     "btc_entries": 1226
   },
-  "unique_pairs_found": 3195,
+  "unique_pairs_found": 3205,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 206,
+      "cooccurrence_count": 208,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -68,7 +68,7 @@
     {
       "entity_a": "XRP",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 31,
+      "cooccurrence_count": 32,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -83,7 +83,7 @@
     {
       "entity_a": "Ripple",
       "entity_b": "Yahoo Finance",
-      "cooccurrence_count": 28,
+      "cooccurrence_count": 29,
       "example_headlines": [
         {
           "title": "How Much XRP (Ripple) Is Enough to Retire? - Yahoo Finance",
@@ -1341,6 +1341,36 @@
       ]
     },
     {
+      "entity_a": "CryptoRank",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "CryptoRank",
+      "entity_b": "XRP",
+      "cooccurrence_count": 5,
+      "example_headlines": [
+        {
+          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
+          "asset": "XRP"
+        },
+        {
+          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "Comoros",
       "entity_b": "MEXC",
       "cooccurrence_count": 5,
@@ -1626,6 +1656,21 @@
       ]
     },
     {
+      "entity_a": "Nasdaq",
+      "entity_b": "XRP",
+      "cooccurrence_count": 4,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        },
+        {
+          "title": "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "24/7 Wall St.",
       "entity_b": "SEC",
       "cooccurrence_count": 4,
@@ -1727,36 +1772,6 @@
         {
           "title": "Bitcoin coils at $64K as Hormuz reopening timeline sends S&P 500 to $70T record",
           "asset": "BTC"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoRank",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "CryptoRank",
-      "entity_b": "XRP",
-      "cooccurrence_count": 4,
-      "example_headlines": [
-        {
-          "title": "Ripple Price Analysis: XRP Hits Critical Decision Point as Key Support Comes Under Pressure - Crypto",
-          "asset": "XRP"
-        },
-        {
-          "title": "Ripple (XRP) Prints an Extremely Bullish Signal: Is This the Perfect Buying Opportunity? - CryptoRan",
-          "asset": "XRP"
         }
       ]
     },
@@ -2318,21 +2333,6 @@
     {
       "entity_a": "Nasdaq",
       "entity_b": "Ripple",
-      "cooccurrence_count": 3,
-      "example_headlines": [
-        {
-          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-          "asset": "XRP"
-        },
-        {
-          "title": "An XRP treasury company backed by Ripple is a shareholder vote away from Nasdaq - CoinDesk",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Nasdaq",
-      "entity_b": "XRP",
       "cooccurrence_count": 3,
       "example_headlines": [
         {
@@ -4906,6 +4906,36 @@
         },
         {
           "title": "Visa Study Says Bank-Style Protections Could Push Stablecoin Use Sharply Higher",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "Nasdaq",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        },
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
+          "asset": "XRP"
+        },
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
           "asset": "XRP"
         }
       ]
@@ -8251,6 +8281,51 @@
         },
         {
           "title": "Kraken Completes Acquisition Of TradeStation Crypto Infrastructure Assets",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
+          "asset": "XRP"
+        },
+        {
+          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Ripple",
+      "entity_b": "Seoul",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bulls Eye $100 XRP Surge as Ripple Teases \u2018Special Announcement\u2019 in Seoul - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Seoul",
+      "entity_b": "XRP",
+      "cooccurrence_count": 2,
+      "example_headlines": [
+        {
+          "title": "Bulls Eye $100 XRP Surge as Ripple Teases \u2018Special Announcement\u2019 in Seoul - Yahoo Finance",
+          "asset": "XRP"
+        },
+        {
+          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
           "asset": "XRP"
         }
       ]
@@ -11793,28 +11868,6 @@
     },
     {
       "entity_a": "$1B",
-      "entity_b": "XRP",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Evernorth",
-      "entity_b": "Nasdaq",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple-Backed Evernorth Rewrites $1 Billion Nasdaq Listing Formula Because of XRP Price - TradingVie",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Evernorth",
       "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -26676,17 +26729,6 @@
     },
     {
       "entity_a": "Brazil",
-      "entity_b": "Ripple",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple Tokenizes Brazilian Investment Fund & Real Estate Records On XRP Ledger",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Brazil",
       "entity_b": "XRP Ledger",
       "cooccurrence_count": 1,
       "example_headlines": [
@@ -27412,6 +27454,116 @@
       ]
     },
     {
+      "entity_a": "Evernorth",
+      "entity_b": "SPAC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Evernorth",
+      "entity_b": "XRPN",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "SPAC",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Nasdaq",
+      "entity_b": "XRPN",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SPAC",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "SPAC",
+      "entity_b": "XRPN",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "XRP",
+      "entity_b": "XRPN",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Evernorth clears shareholder vote ahead of Nasdaq debut with 473M XRP treasury",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "CryptoRank",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Brazil",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Major Ripple (XRP) Partnership Targeting Brazil\u2019s $22 Trillion Financial Market Infrastructure - Cry",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Seoul",
+      "entity_b": "Yahoo Finance",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Bulls Eye $100 XRP Surge as Ripple Teases \u2018Special Announcement\u2019 in Seoul - Yahoo Finance",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
       "entity_a": "CineCity Studios",
       "entity_b": "Polymath",
       "cooccurrence_count": 1,
@@ -27545,29 +27697,7 @@
     },
     {
       "entity_a": "Ripple",
-      "entity_b": "Seoul",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Ripple",
       "entity_b": "privacy tools",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "XRP Bulls Called for $100 Before Seoul: Ripple Unveils Privacy Tools and AI Wallets. What Do Holders",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
-      "entity_a": "Seoul",
-      "entity_b": "XRP",
       "cooccurrence_count": 1,
       "example_headlines": [
         {
