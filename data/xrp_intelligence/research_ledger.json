@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T10:14:55Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1014-PR1303-CI-FINAL",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1014-pr1303-ci-final.json",
-    "snapshot_blob_sha": "9347c9c93a3b374fa561d0ac7efe00d938b64b2d",
-    "snapshot_commit_sha": "a635298b95e2ec7ddc1443f18518d038da9569cb"
+    "captured_at_utc": "2026-10-29T10:15:49Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1015-SBIC-CHATGPT-DISAMBIGUATION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1015-sbic-chatgpt-disambiguation.json",
+    "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
+    "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f"
   },
   "sources": [
     {
@@ -7078,6 +7078,22 @@
       "title": "PR #1303 fail-closed gate passed",
       "accessed_at_utc": "2026-10-29T10:14:55Z",
       "note": "Gate log confirms automatic merge is disabled, no approval/label/merge is performed, and no repository content is changed by the gate."
+    },
+    {
+      "id": "SRC-RUN58-20261029T1015Z-EAST-TRAINING-RECONFIRM",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "title": "Reconfirmed official SBIC East Japan ChatGPT training curriculum",
+      "accessed_at_utc": "2026-10-29T10:15:49Z",
+      "note": "Official East Japan page lists ChatGPT usage within a June 12-13, 2025 generative-AI/machine-learning course for investee companies. It does not claim an OpenAI partnership or XRP relation."
+    },
+    {
+      "id": "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf",
+      "title": "Reconfirmed official SBIC West Japan ChatGPT/generative-AI seminar material",
+      "accessed_at_utc": "2026-10-29T10:15:49Z",
+      "note": "Official West Japan seminar material describes ChatGPT and generative AI. It is a separate regional company and does not establish an XRP/Ripple relation."
     }
   ],
   "limitations": [
@@ -7283,7 +7299,8 @@
     "XRP ETF flow proxies are not directly comparable: Alpha Finance reports five-fund USD flows through Oct 28, while XRP Insights reports six spot funds plus BITW in XRP units for Oct 26-27 and marks Oct 28 provisional. Issuer-level, same-date holdings and shares-outstanding reconciliation is required.",
     "Coinbase Q3 2026 results were scheduled after the US market close on 2026-10-29 and Circle Q3 results for 2026-11-04 08:00 ET. At the snapshot cutoff, neither upcoming result is treated as known.",
     "PR #1302's exact-head core CI and fail-closed gate were still in progress at the 2026-10-29T10:12:18Z cutoff. Recheck their final outcomes before review; prior PR #1297 checks do not verify this fresh branch.",
-    "PR #1303 core CI and fail-closed gate were not yet visible through the connected run lookup at 2026-10-29T10:14:11Z. Recheck before review; predecessor PR #1298 checks do not verify this fresh head."
+    "PR #1303 core CI and fail-closed gate were not yet visible through the connected run lookup at 2026-10-29T10:14:11Z. Recheck before review; predecessor PR #1298 checks do not verify this fresh head.",
+    "The exact original context of 'SBIC, ChatGPT SBIC' remains unresolved. Official East and West Japan SME investment/consultation companies both publish ChatGPT/generative-AI training material, but this does not prove which entity the phrase refers to or establish an OpenAI/XRP partnership."
   ],
   "run_updates": [
     {
@@ -12211,6 +12228,49 @@
       "real_money_trade": false,
       "paper_trading_state_mutated": false,
       "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T10:15:49Z",
+      "update_type": "SBIC_EAST_WEST_CHATGPT_TRAINING_DISAMBIGUATION",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+        "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
+        "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+        "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z",
+        "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+        "SRC-SBI-REMIT",
+        "SRC-RIPPLE-SBI-RLUSD",
+        "SRC-SBI-CAPITAL-SBIC-2005",
+        "SRC-SBI-CAPITAL-GS-JV-2007",
+        "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+        "SRC-RUN25-20261029T014151-SBIC-WEST",
+        "SRC-RUN58-20261029T1015Z-EAST-TRAINING-RECONFIRM",
+        "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM"
+      ],
+      "summary": "Cross-checked official company profiles and training material. SBIC East Japan (Tokyo), SBIC Central Japan (Nagoya) and SBIC West Japan (Osaka) are distinct regional SME investment/consultation companies described as sister companies. East and West both publish ChatGPT/generative-AI training material. The phrase 'ChatGPT SBIC' may refer to training but remains unresolved without its original context. No direct East/West SBIC-to-XRP relationship is established in reviewed sources; this bounded absence of evidence is not proof of nonexistence. Historical SBI Capital and SBI Crypto remain separate acronym collisions.",
+      "main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+      "snapshot": {
+        "path": "data/xrp_intelligence/snapshots/20261029T1015-sbic-chatgpt-disambiguation.json",
+        "blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
+        "commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
+        "characters": 4955
+      },
+      "relationship_graph_addendum": {
+        "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
+        "blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
+        "commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+        "new_edges": 5,
+        "new_competing_hypotheses": 2
+      },
+      "market_observations": 0,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "real_money_trade": false,
+      "paper_trading_state_mutated": false,
+      "platform_coordination": "DESIGNED_ONLY; NO_LIVE_CROSS_PLATFORM_HANDOFF_VERIFIED"
     }
   ],
   "mission_priority": {
@@ -12438,57 +12498,51 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "a635298b95e2ec7ddc1443f18518d038da9569cb",
+  "current_research_head_before_ledger_update": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
   "current_research_head_this_run": "46166e484c63d5b96229718da5af4c84b886a000",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1303_CI_187_TESTS_4_SUBTESTS_PASS; PR1303_GATE_PASS; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
+    "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; SBIC_ENTITY_DISAMBIGUATION_RECORDED; FORECAST_NOT_ISSUED",
     "latest_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1014-pr1303-ci-final.json",
-    "snapshot_blob_sha": "9347c9c93a3b374fa561d0ac7efe00d938b64b2d",
-    "snapshot_commit_sha": "a635298b95e2ec7ddc1443f18518d038da9569cb",
-    "snapshot_characters": 4425,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1015-sbic-chatgpt-disambiguation.json",
+    "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
+    "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
+    "snapshot_characters": 4955,
     "snapshot_character_metric_matches": true,
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1014-pr1303-final-ci-gate.json",
-    "graph_addendum_blob_sha": "59cef5b8f1fb41338c0e34ea641d6c5b2cc2c98c",
-    "graph_addendum_commit_sha": "e0bf66a463cc9a442f72450fbe94ac502fd40318",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
+    "graph_addendum_blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
+    "graph_addendum_commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
     "graph_addendum_readback_ok": true,
-    "source_reference_count": 10,
+    "source_reference_count": 13,
     "missing_source_references": 0,
     "source_ids_unique": true,
-    "relationship_edges": 195,
-    "competing_hypotheses": 113,
+    "relationship_edges": 200,
+    "competing_hypotheses": 115,
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
-    "pr1303_head": "de96d0ff97d83f7175a98ba77d3a04cae533d889",
-    "pr1303_ci_run": 40855936989,
-    "pr1303_ci_status": "PASS_187_TESTS_4_SUBTESTS_6.63S",
-    "pr1303_gate_run": 40855937424,
-    "pr1303_gate_status": "PASS",
     "main_modified_by_this_run": false,
     "merge_performed": false,
-    "workflow_dispatched": false,
     "force_push": false,
     "deployment_executed": false,
     "real_money_trade": false,
     "paper_trading_state_mutated": false,
-    "verified_at_utc": "2026-10-29T10:14:55Z"
+    "verified_at_utc": "2026-10-29T10:15:49Z"
   },
   "ledger_metrics": {
-    "source_records": 871,
-    "run_updates": 164,
-    "limitations": 203,
-    "relationship_edges": 195,
-    "competing_hypotheses": 113,
+    "source_records": 873,
+    "run_updates": 165,
+    "limitations": 204,
+    "relationship_edges": 200,
+    "competing_hypotheses": 115,
     "market_observations": 78,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 0,
-    "index_characters_before_this_update": 840834,
+    "index_characters_before_this_update": 845685,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 4425,
-    "index_characters": 845685
+    "latest_snapshot_characters": 4955,
+    "index_characters": 850098
   },
   "previous_research_checks": {
     "status": "MARKET_STRUCTURE_SNAPSHOT_AND_GRAPH_READBACK_PASS; INDEX_POINTER_AND_METRICS_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; FORECAST_NOT_ISSUED",
@@ -12566,34 +12620,21 @@
     "missing_graph_source_references": 0
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:14:55Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:15:49Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1303_CORE_CI_187_TESTS_4_SUBTESTS_PASS; PR1303_FAIL_CLOSED_GATE_PASS; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; SBIC_ENTITY_DISAMBIGUATION_RECORDED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "9347c9c93a3b374fa561d0ac7efe00d938b64b2d",
-      "snapshot_commit_sha": "a635298b95e2ec7ddc1443f18518d038da9569cb",
-      "snapshot_characters": 4425,
-      "source_reference_count": 10,
+      "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
+      "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
+      "snapshot_characters": 4955,
+      "source_reference_count": 13,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1014-pr1303-final-ci-gate.json",
-      "graph_addendum_blob_sha": "59cef5b8f1fb41338c0e34ea641d6c5b2cc2c98c",
-      "graph_addendum_commit_sha": "e0bf66a463cc9a442f72450fbe94ac502fd40318",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
+      "graph_addendum_blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
+      "graph_addendum_commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
       "graph_addendum_readback_ok": true,
       "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
-      "ci": {
-        "status": "PASS",
-        "run_id": 40855936989,
-        "tests_passed": 187,
-        "subtests_passed": 4,
-        "duration_seconds": 6.63,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855936989"
-      },
-      "gate": {
-        "status": "PASS",
-        "run_id": 40855937424,
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855937424"
-      },
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
       "main_modified_by_this_run": false,
@@ -12646,53 +12687,61 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T10:14:55Z",
-    "focus": "PR #1303 final exact-head CI/gate verification for fail-closed XRP summary",
+    "recorded_at_utc": "2026-10-29T10:15:49Z",
+    "focus": "SBIC acronym collision and ChatGPT training context",
     "source_ids": [
-      "SRC-RUN56-20261029T1014Z-MAIN-HEAD",
-      "SRC-RUN56-20261029T1014Z-MAIN-SIGNAL",
-      "SRC-RUN56-20261029T1014Z-MAIN-SUMMARY",
-      "SRC-RUN56-20261029T1014Z-MAIN-SUMMARY-WORKFLOW",
-      "SRC-RUN56-20261029T1014Z-PR1303",
-      "SRC-RUN56-20261029T1014Z-CI",
-      "SRC-RUN56-20261029T1014Z-GATE",
-      "SRC-RUN57-20261029T1014Z-PR1303-HEAD",
-      "SRC-RUN57-20261029T1014Z-PR1303-CI-PASS",
-      "SRC-RUN57-20261029T1014Z-PR1303-GATE-PASS"
+      "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+      "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
+      "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+      "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z",
+      "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+      "SRC-SBI-REMIT",
+      "SRC-RIPPLE-SBI-RLUSD",
+      "SRC-SBI-CAPITAL-SBIC-2005",
+      "SRC-SBI-CAPITAL-GS-JV-2007",
+      "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+      "SRC-RUN25-20261029T014151-SBIC-WEST",
+      "SRC-RUN58-20261029T1015Z-EAST-TRAINING-RECONFIRM",
+      "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM"
     ],
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1014-pr1303-final-ci-gate.json",
-      "blob_sha": "59cef5b8f1fb41338c0e34ea641d6c5b2cc2c98c",
-      "commit_sha": "e0bf66a463cc9a442f72450fbe94ac502fd40318",
-      "new_edges": 3,
-      "new_competing_hypotheses": 1
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
+      "blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
+      "commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+      "new_edges": 5,
+      "new_competing_hypotheses": 2
     },
     "market_observations": 0,
     "forecast_status": "NOT_ISSUED"
   },
   "previous_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:14:11Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T10:14:55Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1303_CI_PENDING_AT_CAPTURE; PR1303_GATE_PENDING_AT_CAPTURE; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
+      "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1303_CORE_CI_187_TESTS_4_SUBTESTS_PASS; PR1303_FAIL_CLOSED_GATE_PASS; MAIN_UNCHANGED; FORECAST_NOT_ISSUED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "453e955e18a751a730fbff30b720195815e52a09",
-      "snapshot_commit_sha": "b3d8c24e538ab9a06f1ca2963041c427815d2868",
-      "snapshot_characters": 3733,
-      "source_reference_count": 7,
+      "snapshot_blob_sha": "9347c9c93a3b374fa561d0ac7efe00d938b64b2d",
+      "snapshot_commit_sha": "a635298b95e2ec7ddc1443f18518d038da9569cb",
+      "snapshot_characters": 4425,
+      "source_reference_count": 10,
       "missing_source_references": 0,
       "snapshot_character_metric_matches": true,
-      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1014-pr1303-summary-safety.json",
-      "graph_addendum_blob_sha": "c71598690956d5b87949a40cc320fba3ecf369d8",
-      "graph_addendum_commit_sha": "1431ff55e0d8fa2c083eae7a70f8b5d045f96f6a",
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1014-pr1303-final-ci-gate.json",
+      "graph_addendum_blob_sha": "59cef5b8f1fb41338c0e34ea641d6c5b2cc2c98c",
+      "graph_addendum_commit_sha": "e0bf66a463cc9a442f72450fbe94ac502fd40318",
       "graph_addendum_readback_ok": true,
       "index_pointer_status": "TO_BE_VERIFIED_AFTER_LEDGER_UPDATE",
       "ci": {
-        "status": "NOT_YET_VISIBLE_AT_CAPTURE",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions"
+        "status": "PASS",
+        "run_id": 40855936989,
+        "tests_passed": 187,
+        "subtests_passed": 4,
+        "duration_seconds": 6.63,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855936989"
       },
       "gate": {
-        "status": "NOT_YET_VISIBLE_AT_CAPTURE",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions"
+        "status": "PASS",
+        "run_id": 40855937424,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40855937424"
       },
       "forecast_status": "NOT_ISSUED",
       "market_features_admitted": false,
@@ -13369,7 +13418,25 @@
       "pr1303_gate": "PASS_FAIL_CLOSED",
       "pr1303_gate_run": 40855937424,
       "forecast_status": "NOT_ISSUED"
+    },
+    {
+      "recorded_at_utc": "2026-10-29T10:15:49Z",
+      "verification_type": "SBIC_EAST_WEST_CHATGPT_TRAINING_SNAPSHOT_GRAPH_READBACK",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261029T1015-sbic-chatgpt-disambiguation.json",
+      "snapshot_blob_sha": "0f905ee519f5c7fcf15dedba2ba6f125edcb729e",
+      "snapshot_commit_sha": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f",
+      "snapshot_characters": 4955,
+      "source_reference_count": 13,
+      "missing_source_references": 0,
+      "snapshot_character_metric_match": true,
+      "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
+      "graph_addendum_blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
+      "graph_addendum_commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+      "graph_addendum_readback_ok": true,
+      "graph_edges": 5,
+      "competing_hypotheses": 2,
+      "forecast_status": "NOT_ISSUED"
     }
   ],
-  "current_research_head_before_this_update": "a635298b95e2ec7ddc1443f18518d038da9569cb"
+  "current_research_head_before_this_update": "4853e27953a10136e6b5f0a0e5b0430233ce5b0f"
 }
