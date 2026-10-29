@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T030620-PAPER-REPLAY-2361-INDEX-GATE",
+  "captured_at_utc": "2026-10-29T03:06:20.000Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; preserve Barrot V3 as execution and verification foundation.",
+  "previous_snapshot": {
+    "path": "data/xrp_intelligence/snapshots/20261029T030525-index-gate-pass-asset-feature-pr1283.json",
+    "blob_sha": "facb292dcd43c9961ce8671a530cf69b8bffd425",
+    "commit_sha": "4831f12c796add9187ee14febba7e21a6d4f76d1",
+    "captured_at_utc": "2026-10-29T03:05:25.000Z"
+  },
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha": "0803c393444a9125cbe084d1d75f5b57c9369235",
+    "main_commit_message": "Paper trade cycle [skip ci]",
+    "main_modified_by_this_run": false
+  },
+  "paper_trading_replay": {
+    "log_blob_sha": "1546c5b42d1442226052ff70cecd8fbf36213c62",
+    "records": 2361,
+    "malformed_records": 0,
+    "timestamp_order_errors": 0,
+    "actions": {
+      "buy": 36,
+      "sell": 89,
+      "hold": 2236
+    },
+    "products": {
+      "BTC-USD": 2361
+    },
+    "result_mismatches": 0,
+    "portfolio_value_mismatches": 0,
+    "portfolio_change_mismatches": 0,
+    "cumulative_return_mismatches": 0,
+    "persisted_state_matches": true,
+    "state": {
+      "cash_usd": 8011.936613782476,
+      "position_size": 0.024901276579239066,
+      "avg_entry_price": 80436.84,
+      "trade_count": 125,
+      "position_product": null
+    },
+    "latest_record_timestamp": "2026-10-29T03:05:58.226627+00:00",
+    "latest_price": 79750.4,
+    "latest_portfolio_value_usd": 9997.82,
+    "state_mutated": false,
+    "real_money_trade": false
+  },
+  "pr1283": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1283",
+    "state": "DRAFT_OPEN_UNMERGED",
+    "head_sha": "9c5ad6caee862e000fdfc638c0d0a07923e0ecfb",
+    "core_ci_run": 40809993316,
+    "core_ci": "PASS_170_TESTS_4_SUBTESTS_6.17S",
+    "gate_run": 40809993459,
+    "gate": "PASS",
+    "feature_admission": "BLOCKED_PENDING_REVIEW_AND_WALK_FORWARD"
+  },
+  "research_index_gate": {
+    "prior_head_sha": "8e15e406b68336dfdb97c4be316ae0bccaa34fb3",
+    "run_id": 40810190498,
+    "status": "PASS",
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40810190498",
+    "successor_head_status": "PENDING_OR_UNVERIFIED"
+  },
+  "approval_workflow_anomaly": {
+    "latest_zero_job_run": 40810187100,
+    "event": "push",
+    "jobs": 0,
+    "conclusion": "failure",
+    "root_cause": "UNRESOLVED"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "source_ids": [
+    "SRC-RUN32-20261029T030620-MAIN-PAPER-LOG-COMMIT",
+    "SRC-RUN32-20261029T030620-PAPER-TRADER-RUN-40810179250",
+    "SRC-RUN32-20261029T030620-PAPER-LOG-BLOB-1546",
+    "SRC-RUN32-20261029T030620-PAPER-STATE-BLOB-A202",
+    "SRC-RUN32-20261029T030620-PAPER-TRADER-SCRIPT-B38",
+    "SRC-RUN32-20261029T030620-INDEX-GATE-40810190498",
+    "SRC-RUN32-20261029T030620-APPROVAL-ZEROJOB-40810187100"
+  ],
+  "next_actions": [
+    "Keep PR #1282 and PR #1283 draft and unmerged pending human review.",
+    "Run a supported core-CI path for the research index if available; record the gate result for each exact index head.",
+    "Investigate zero-job approval workflow behavior without claiming a root cause or triggering approval actions.",
+    "Keep the paper-trading identity field null until separately approved; current full replay matches persisted state exactly.",
+    "Do not admit global entity sentiment outputs as XRP-specific prediction features; review PR #1283 and then perform leakage-controlled walk-forward evaluation."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_manually_executed": false,
+  "paper_trading_state_mutated": false,
+  "real_money_trade": false,
+  "snapshot_character_count": 3892
+}
