@@ -72,21 +72,37 @@ def _build_client() -> WorkspaceClient:
     """Return a WorkspaceClient, preferring env-var auth over cfg file."""
     if DATABRICKS_HOST and DATABRICKS_TOKEN:
         return WorkspaceClient(host=DATABRICKS_HOST, token=DATABRICKS_TOKEN)
-    # Fall back to profile-based auth (reads ~/.databrickscfg or local file)
+    local_config = LOCAL_DIR / ".databrickscfg"
+    if local_config.is_file():
+        return WorkspaceClient(config_file=str(local_config))
+    # Fall back to the standard ~/.databrickscfg profile.
     return WorkspaceClient()
 
 
-def _ensure_folder(client: WorkspaceClient, path: str) -> None:
+def _validate_connection(client: WorkspaceClient) -> None:
+    """Validate credentials before making any remote changes."""
     try:
-        client.workspace.mkdirs(path=path)
-        log.info("Workspace folder ready: %s", path)
+        client.current_user.me()
     except Exception as exc:
-        log.warning("mkdirs(%s): %s", path, exc)
+        # Avoid echoing SDK error details, which can include workspace metadata.
+        raise RuntimeError(
+            "Databricks authentication preflight failed. Verify DATABRICKS_HOST "
+            "and DATABRICKS_TOKEN in repository secrets, or refresh the configured "
+            "Databricks profile. No workspace changes were made."
+        ) from exc
+    log.info("Databricks authentication preflight succeeded.")
+
+
+def _ensure_folder(client: WorkspaceClient, path: str) -> None:
+    """Create a destination folder or fail instead of hiding permission errors."""
+    client.workspace.mkdirs(path=path)
+    log.info("Workspace folder ready: %s", path)
 
 
 def _upload_files(client: WorkspaceClient) -> int:
     """Upload Python (and other text) files preserving directory structure."""
     uploaded = 0
+    failed_paths: list[str] = []
     for local_file in LOCAL_DIR.rglob("*"):
         if local_file.is_dir():
             continue
@@ -116,8 +132,16 @@ def _upload_files(client: WorkspaceClient) -> int:
             log.info("  uploaded: %s", dest)
             uploaded += 1
         except Exception as exc:
-            log.warning("  failed to upload %s: %s", dest, exc)
+            # Keep logs free of raw SDK error bodies and never deploy a partial tree.
+            log.error("  failed to upload %s (%s)", dest, type(exc).__name__)
+            failed_paths.append(rel.as_posix())
 
+    if failed_paths:
+        preview = ", ".join(failed_paths[:5])
+        raise RuntimeError(
+            f"Databricks upload incomplete: {len(failed_paths)} file(s) failed; "
+            f"first failures: {preview}. Job creation was skipped."
+        )
     return uploaded
 
 
@@ -200,16 +224,31 @@ def _run_job(client: WorkspaceClient, job_id: int) -> None:
 
 
 def main() -> None:
-    if not (DATABRICKS_HOST or os.path.exists(Path.home() / ".databrickscfg")):
+    has_host = bool(DATABRICKS_HOST)
+    has_token = bool(DATABRICKS_TOKEN)
+    if has_host != has_token:
         log.error(
-            "No Databricks credentials found.  Set DATABRICKS_HOST and "
-            "DATABRICKS_TOKEN, or configure ~/.databrickscfg."
+            "DATABRICKS_HOST and DATABRICKS_TOKEN must be configured together, "
+            "or use a valid Databricks profile."
         )
-        sys.exit(1)
+        sys.exit(2)
+
+    config_candidates = (Path.home() / ".databrickscfg", LOCAL_DIR / ".databrickscfg")
+    if not (has_host and has_token) and not any(path.is_file() for path in config_candidates):
+        log.error(
+            "No Databricks credentials found. Set DATABRICKS_HOST and "
+            "DATABRICKS_TOKEN, or configure a Databricks profile."
+        )
+        sys.exit(2)
 
     client = _build_client()
-    log.info("Connected to Databricks workspace: %s", client.config.host)
+    try:
+        _validate_connection(client)
+    except RuntimeError as exc:
+        log.error("%s", exc)
+        sys.exit(2)
 
+    log.info("Connected to Databricks workspace: %s", client.config.host)
     _ensure_folder(client, WS_PATH)
     n = _upload_files(client)
     log.info("Uploaded %d file(s) to %s", n, WS_PATH)
