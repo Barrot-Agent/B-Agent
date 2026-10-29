@@ -63,6 +63,15 @@ class GeometryReport:
                     suggestion="Repair manifold topology before export",
                 )
             )
+        if self.topology_status == "ASSESSED" and self.open_boundaries > 0:
+            result.append(
+                ValidationIssue(
+                    code="GEO_003",
+                    severity=Severity.WARNING,
+                    message=f"{self.open_boundaries} open boundary edges detected",
+                    suggestion="Inspect whether open edges are intentional; close gaps when a watertight mesh is required",
+                )
+            )
         return result
 
 
