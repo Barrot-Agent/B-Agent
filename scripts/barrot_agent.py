@@ -35,7 +35,12 @@ from barrot_agent.orchestration.repository_repair import (
     RepositoryRepairController,
     WorkQueueController,
 )
-from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController, BundleEngineeringResult, review_work_bundle
+from barrot_agent.orchestration.bundle_engineering import (
+    BundleEngineeringController,
+    BundleEngineeringResult,
+    extract_authorization_boundaries,
+    review_work_bundle,
+)
 from barrot_agent.orchestration.bundle_lifecycle import BundleLifecycleStore, dispatch_bundle_tasks
 from barrot_agent.research import (
     ScientificDiscoveryController,
@@ -1368,6 +1373,9 @@ def main() -> None:
         "Use the existing RepositoryRepairController and WorkQueueController; do not create a parallel executor.",
         "Bound retries, persist state and evidence, and stop safely on invalid output or failed gates.",
     ]
+    # Quote the user's explicit authorization boundaries (if the task states them).
+    # Without such a section the gate's AUTHORIZATION_CONSTRAINT_MISSING check still applies.
+    bundle_constraints.extend(extract_authorization_boundaries(TASK))
     request_fingerprint = "sha256:" + hashlib.sha256(
         "\\0".join([REPO, BRANCH, TITLE.strip(), TASK.strip()]).encode("utf-8")
     ).hexdigest()

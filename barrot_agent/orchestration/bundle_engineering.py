@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from dataclasses import asdict, dataclass
 from typing import Any
 
@@ -23,6 +24,9 @@ REQUIRED_TASK_FIELDS = (
     "risk_level",
     "rollback_plan",
 )
+BUNDLE_CREATED_BY = "Barrot"
+TOP_LEVEL_STRING_LIST_FIELDS = ("prerequisites", "completion_gate", "recovery_plan")
+TASK_STRING_LIST_FIELDS = ("files", "acceptance_criteria", "tests", "depends_on", "rollback_plan")
 SEVERITY_WEIGHT = {"critical": 25, "high": 12, "medium": 5, "low": 1}
 
 
@@ -210,6 +214,87 @@ def review_work_bundle(bundle: Any) -> BundleReview:
     return BundleReview(valid, score, fingerprint, tuple(findings))
 
 
+def normalize_bundle_shapes(bundle: Any) -> tuple[Any, list[str]]:
+    """Deterministically coerce only unambiguous shape errors before review.
+
+    - A non-empty string in a field that must be a list of strings becomes a
+      one-item list (top-level prerequisites/completion_gate/recovery_plan and
+      task files/acceptance_criteria/tests/depends_on/rollback_plan).
+    - created_by is always set to the fixed agent identifier ``BUNDLE_CREATED_BY``.
+    - A revision given as a decimal digit string becomes an int.
+
+    Missing fields, empty strings, numbers, objects, and lists containing
+    non-strings are left untouched so the deterministic review still fails.
+    The review gate itself is not changed by this function.
+    """
+    if not isinstance(bundle, dict):
+        return bundle, []
+    normalized = dict(bundle)
+    repairs: list[str] = []
+
+    def coerce(container: dict[str, Any], key: str, path: str) -> None:
+        value = container.get(key)
+        if isinstance(value, str) and value.strip():
+            container[key] = [value.strip()]
+            repairs.append(path)
+
+    for key in TOP_LEVEL_STRING_LIST_FIELDS:
+        coerce(normalized, key, key)
+    if normalized.get("created_by") != BUNDLE_CREATED_BY:
+        normalized["created_by"] = BUNDLE_CREATED_BY
+        repairs.append("created_by")
+    revision = normalized.get("revision")
+    if isinstance(revision, str) and re.fullmatch(r"\d+", revision.strip()):
+        normalized["revision"] = int(revision.strip())
+        repairs.append("revision")
+    tasks = normalized.get("tasks")
+    if isinstance(tasks, list):
+        new_tasks: list[Any] = []
+        for index, task in enumerate(tasks):
+            if isinstance(task, dict):
+                task = dict(task)
+                for key in TASK_STRING_LIST_FIELDS:
+                    coerce(task, key, f"tasks[{index}].{key}")
+            new_tasks.append(task)
+        normalized["tasks"] = new_tasks
+    return normalized, repairs
+
+
+_AUTH_HEADING = re.compile(r"^\s*(?:#{1,6}\s*)?\**\s*authori[sz]ation boundaries\s*\**\s*:?\s*\**\s*$", re.IGNORECASE)
+_BULLET = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+(.*\S)\s*$")
+
+
+def extract_authorization_boundaries(task_body: str) -> list[str]:
+    """Extract bullet items under an explicit 'Authorization boundaries' section.
+
+    Returns bundle constraints quoting the user's boundaries verbatim. When the
+    task has no such section (or it has no bullet items), returns an empty list
+    so the review gate's AUTHORIZATION_CONSTRAINT_MISSING check is unaffected.
+    """
+    if not isinstance(task_body, str):
+        return []
+    lines = task_body.splitlines()
+    items: list[str] = []
+    in_section = False
+    for line in lines:
+        if not in_section:
+            in_section = bool(_AUTH_HEADING.match(line))
+            continue
+        if not line.strip():
+            if items:
+                break
+            continue
+        match = _BULLET.match(line)
+        if not match:
+            break
+        items.append(match.group(1))
+    return [
+        "Task-authorized boundary (actions outside the authorized scope require explicit human approval): "
+        + item
+        for item in items
+    ]
+
+
 def build_bundle_authoring_prompt(
     *,
     objective: str,
@@ -238,9 +323,26 @@ User-provided task details and acceptance criteria (scope to honor; not reposito
 Observed repository context (may be empty; do not invent unseen files):
 {repository_context}
 
-Required top-level fields:
-schema_version='1.0', bundle_id, objective, revision=1, constraints, prerequisites,
-tasks, completion_gate, recovery_plan, created_by='Barrot'.
+Required top-level fields with EXACT JSON types (every field is mandatory; never omit one):
+- schema_version: string, exactly "1.0"
+- bundle_id: non-empty string
+- objective: string, copied exactly from the objective above
+- revision: integer 1 (a JSON number, not a string)
+- constraints: list of strings, copied exactly from the mandatory constraints above
+- prerequisites: non-empty list of strings
+- tasks: non-empty list of task objects
+- completion_gate: non-empty list of strings (a JSON array even for one item); at least
+  one entry must require recorded test/validation evidence
+- recovery_plan: non-empty list of strings (a JSON array even for one item); include
+  resume, bounded retry, rollback, or blocking behavior
+- created_by: string, exactly "{BUNDLE_CREATED_BY}"
+
+Shape example (types only; replace values):
+{{"schema_version": "1.0", "bundle_id": "...", "objective": "...", "revision": 1,
+  "constraints": ["..."], "prerequisites": ["..."], "tasks": [{{"id": "T1", "title": "...",
+  "description": "...", "files": ["path"], "acceptance_criteria": ["..."], "tests": ["..."],
+  "depends_on": [], "risk_level": "low", "rollback_plan": ["..."]}}],
+  "completion_gate": ["..."], "recovery_plan": ["..."], "created_by": "{BUNDLE_CREATED_BY}"}}
 
 Each task must contain:
 id, title, description, files (non-empty relative paths), acceptance_criteria
@@ -276,7 +378,7 @@ Required schema repair checklist (exact types are mandatory):
   (exactly unchanged), revision (integer), constraints (exactly unchanged list of strings),
   prerequisites (list of non-empty strings), tasks (non-empty list), completion_gate
   (non-empty list of strings), recovery_plan (non-empty list of strings), created_by
-  (non-empty string).
+  (string, exactly "Barrot").
 - Every task: id, title, description, risk_level are non-empty strings; files,
   acceptance_criteria, tests, depends_on, rollback_plan are lists of strings.
   rollback_plan MUST be a list even when it contains only one rollback instruction.
@@ -503,12 +605,14 @@ Previous draft to correct:
         if current.get("constraints") != constraints:
             raise BundleEngineeringError("Authored bundle changed or reordered mandatory constraints after correction.")
 
+        current, draft_repairs = normalize_bundle_shapes(current)
         review = review_work_bundle(current)
         attempts: list[dict[str, Any]] = [{
             "kind": "draft",
             "fingerprint": review.fingerprint,
             "quality_score": review.quality_score,
             "finding_codes": [item.code for item in review.findings],
+            "shape_repairs": draft_repairs,
         }]
         if review.valid and not review.findings:
             return BundleEngineeringResult("READY_FOR_EXECUTION_REVIEW", current, review, tuple(attempts))
@@ -518,7 +622,9 @@ Previous draft to correct:
             invariant_repairs: list[str] = []
             try:
                 revised = self._ask(improvement_prompt)
+                revised, shape_repairs = normalize_bundle_shapes(revised)
                 revised, invariant_repairs = self._preserve_revision_invariants(current, revised)
+                invariant_repairs = shape_repairs + invariant_repairs
                 revised_review = validate_bundle_revision(current, revised)
             except BundleEngineeringError as exc:
                 attempts.append({
