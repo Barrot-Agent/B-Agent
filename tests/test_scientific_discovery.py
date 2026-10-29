@@ -719,3 +719,33 @@ def test_new_research_cycle_imports_prior_committed_evidence_and_restarts_termin
     second = controller.run(adapter)
     assert second.cycle_id != first.cycle_id
     assert any(item["claim_id"] == "prior.claim" for item in second.claims)
+
+
+def test_provider_backed_track_execution_is_recorded_without_promoting_claims(tmp_path: Path) -> None:
+    bundle = write_bundle(tmp_path / "bundle.json", independent=False, adversarial_status=ClaimStatus.CHALLENGED.value)
+    adapter = StaticResearchProblemAdapter(bundle)
+    controller = ScientificDiscoveryController(workspace=tmp_path)
+    calls: list[str] = []
+
+    def execute(track):
+        calls.append(track.track_id)
+        return {
+            "provider": "test-provider/model-v1",
+            "result": {
+                "findings": [f"Provisional finding for {track.track_id}"],
+                "open_questions": ["What assumption remains unproven?"],
+                "counterarguments": ["The supplied evidence may not imply the full theorem."],
+                "recommended_checks": ["Run an independent derivation."],
+            },
+        }
+
+    cycle = controller.run(adapter, track_executor=execute)
+    assert calls
+    for track in cycle.tracks:
+        record = track.execution_records[-1]
+        assert record["provider"] == "test-provider/model-v1"
+        assert record["duration_ms"] >= 0
+        assert record["response"]["provider_backed"] is True
+        assert record["response"]["intermediate_results"][-1]["status"] == "MODEL_GENERATED_UNVERIFIED"
+        assert any("Model-generated counterargument" in item for item in track.unresolved_objections)
+    assert all(claim["acceptance_status"] == ClaimStatus.UNRESOLVED.value for claim in cycle.claims)
