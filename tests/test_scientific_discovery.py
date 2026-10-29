@@ -347,7 +347,7 @@ def test_unsupported_formal_command_is_rejected() -> None:
         raise AssertionError("expected unsupported command rejection")
 
 
-def test_research_cycle_persists_and_is_idempotent(tmp_path: Path) -> None:
+def test_research_cycle_persists_and_starts_new_cycle_after_terminal_completion(tmp_path: Path) -> None:
     bundle = write_bundle(tmp_path / "bundle.json", independent=True, adversarial_status=ClaimStatus.SUPPORTED.value)
     controller = ScientificDiscoveryController(workspace=tmp_path)
     adapter = StaticResearchProblemAdapter(bundle)
@@ -357,8 +357,8 @@ def test_research_cycle_persists_and_is_idempotent(tmp_path: Path) -> None:
 
     ledger = tmp_path / ".git" / "barrot_research" / "claim_ledger.json"
     assert ledger.exists()
-    assert second.cycle_id == first.cycle_id
-    assert second.status == first.status
+    assert second.cycle_id != first.cycle_id
+    assert second.status in {"complete", "no_solution_claim", "failed", "blocked"}
 
 
 def test_research_cycle_can_resume_from_checkpoint(tmp_path: Path) -> None:
