@@ -1012,7 +1012,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
             )
     snapshot["working_tree"] = outputs["working_tree"][:1200]
     snapshot["head"] = outputs["head"][:200]
-    snapshot["recent_history"] = "\\n".join(outputs["recent_history"].splitlines()[:12])
+    snapshot["recent_history"] = "\\n".join(outputs["recent_history"].splitlines()[:6])
 
     branch_output = outputs["branch_refs"]
     relevant_markers = (
@@ -1030,7 +1030,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
             or any(marker in line.split("|", 1)[0].lower() for marker in relevant_markers)
         ]
         snapshot["branch_count"] = len(branch_lines)
-        snapshot["relevant_branch_heads"] = relevant_branches[:35]
+        snapshot["relevant_branch_heads"] = relevant_branches[:15]
     snapshot["geometry_diffs"] = {
         "checkpoint_vs_main": outputs["geometry_checkpoint_vs_main"],
         "checkpoint_vs_fresh_main": outputs["geometry_checkpoint_vs_fresh_main"],
@@ -1055,7 +1055,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
                     "url": item.get("html_url"),
                     "sha": item.get("head_sha"),
                 }
-            recent = [summarize(item) for item in runs[:5]]
+            recent = [summarize(item) for item in runs[:3]]
             relevant = [
                 summarize(item) for item in runs
                 if any(token in (
@@ -1067,7 +1067,7 @@ def build_read_only_audit_snapshot() -> dict[str, Any]:
             snapshot["actions"] = {
                 "total_count": payload.get("total_count"),
                 "recent_runs": recent,
-                "relevant_runs": relevant[:10],
+                "relevant_runs": relevant[:6],
             }
         except (TypeError, ValueError, AttributeError) as exc:
             snapshot["actions"] = {"status": "UNPARSEABLE", "error": type(exc).__name__}
@@ -1178,13 +1178,13 @@ def main() -> None:
     if is_explicit_read_only_audit_task(TITLE, TASK):
         audit_request = {
             "objective": TITLE,
-            "task_body": TASK,
+            "task_body_summary": "Read-only repository-wide audit. Known geometry checkpoint: barrot/mesh-topology-obj-triangulation-20261024 at ab362f9fc9512cd7ffea312d24978f11bbc2de3e; duplicate candidate branch barrot/mesh-topology-obj-triangulation-20261024-115709. Investigate the reported tetrahedron degenerate-triangle/watertightness discrepancy, concave OBJ triangulation and metadata, missing-mesh NOT_ASSESSED behavior, CI evidence, agent repair safety, MMI/provenance, and delivery. Return prioritized next steps with acceptance criteria.",
             "repository_context": {
-                "inventory": str(audit_context.get("inventory", ""))[:2500],
-                "file_context": str(audit_context.get("file_context", ""))[:4500],
-                "directory_context": str(audit_context.get("directory_context", ""))[:2500],
-                "github_context": str(audit_context.get("github_context", ""))[:2500],
-                "note": str(audit_context.get("note", ""))[:500],
+                "inventory": str(audit_context.get("inventory", ""))[:1500],
+                "file_context": str(audit_context.get("file_context", ""))[:2500],
+                "directory_context": str(audit_context.get("directory_context", ""))[:1200],
+                "github_context": str(audit_context.get("github_context", ""))[:1000],
+                "note": str(audit_context.get("note", ""))[:300],
             },
             "live_read_only_snapshot": build_read_only_audit_snapshot(),
             "required_sections": [
