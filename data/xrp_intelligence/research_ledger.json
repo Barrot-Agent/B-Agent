@@ -5575,6 +5575,14 @@
       "title": "Paper-trader state transition implementation",
       "accessed_at_utc": "2026-10-29T02:09:30.000Z",
       "note": "Blob SHA b38ab435f575b6037f05fa8e9ea00fd487d2d9eb. Replay used execute_paper_trade semantics from this exact current file."
+    },
+    {
+      "id": "SRC-RUN28-20261029T021030-OPEN-PR-INVENTORY",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/pulls?state=open&per_page=100",
+      "title": "Open pull-request inventory and safety backlog",
+      "accessed_at_utc": "2026-10-29T02:10:30.000Z",
+      "note": "Paginated GitHub REST inventory returned 103 open PRs across two pages: 96 drafts and 7 ready for review. Multiple overlapping safety candidates remain open, including merge-queue PRs #1282/#1281/#1277 and variable-horizon accuracy PRs #1274/#1270/#1259. Inventory does not authorize closing or merging any PR."
     }
   ],
   "limitations": [
@@ -5726,7 +5734,8 @@
     "2026-10-29T02:09:30Z: PR #1282 core CI and fail-closed gate passed on its exact head, but the PR remains draft/unmerged; its branch is based on main before the latest paper-trading-log-only commit.",
     "2026-10-29T02:09:30Z: A push-event run for barrot-approve-pr.yml on PR #1282's branch failed with zero jobs although the inspected main workflow declares workflow_dispatch only. Root cause remains unresolved; service-side event diagnostics are unavailable.",
     "2026-10-29T02:09:30Z: Current paper-trading log was fully replayed read-only with 2,359 rows and matched persisted numeric state. position_product remains null and was not written.",
-    "2026-10-29T02:09:30Z: Latest research-index successor has no verified core CI/gate result; PR #1282 CI/gate evidence does not verify the research ledger."
+    "2026-10-29T02:09:30Z: Latest research-index successor has no verified core CI/gate result; PR #1282 CI/gate evidence does not verify the research ledger.",
+    "2026-10-29T02:10:30Z: The open-PR inventory found 103 open PRs (96 drafts, 7 ready), with overlapping merge-queue and accuracy-metric candidates. This run did not complete a full code/diff review of every PR and did not close or merge any; backlog triage remains."
   ],
   "run_updates": [
     {
@@ -9419,6 +9428,26 @@
       "new_relationship_edges": 0,
       "new_competing_hypotheses": 0,
       "new_synchronized_xrp_market_observations_admitted": 0
+    },
+    {
+      "recorded_at_utc": "2026-10-29T02:10:30.000Z",
+      "update_type": "OPEN_PR_BACKLOG_AUDIT",
+      "source_ids": [
+        "SRC-RUN28-20261029T021030-OPEN-PR-INVENTORY"
+      ],
+      "summary": "Completed paginated open-PR inventory: 103 open PRs, 96 drafts and 7 ready for review. Identified overlapping merge-queue safety candidates #1282/#1281/#1277 and multiple variable-horizon accuracy candidates. No PR was closed, merged, or retargeted.",
+      "index_head_verified": "NOT_VERIFIED_AFTER_THIS_UPDATE",
+      "gate_status": "LATEST_INDEX_GATE_PENDING",
+      "core_ci_status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+      "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261029T020930-merge-queue-pr1282-paper-replay.json",
+      "forecast_status": "NOT_ISSUED",
+      "main_sha": "05fdf3c3f0bb864d05673d6c42bb560fba290103",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "new_relationship_edges": 0,
+      "new_competing_hypotheses": 0,
+      "new_synchronized_xrp_market_observations_admitted": 0
     }
   ],
   "mission_priority": {
@@ -9673,9 +9702,9 @@
     "workflow_root_cause": "UNRESOLVED"
   },
   "ledger_metrics": {
-    "source_records": 688,
-    "run_updates": 130,
-    "limitations": 149,
+    "source_records": 689,
+    "run_updates": 131,
+    "limitations": 150,
     "relationship_edges": 128,
     "competing_hypotheses": 78,
     "market_observations": 68,
@@ -9684,10 +9713,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 8,
-    "index_characters_before_this_update": 623766,
+    "index_characters_before_this_update": 632052,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 55038,
-    "index_characters": 632052
+    "index_characters": 634560
   },
   "previous_research_checks": {
     "status": "APPROVAL_WORKFLOW_ANOMALY_SNAPSHOT_READBACK_PASS; POINTER_AND_METRICS_MATCH; SOURCE_REFERENCE_AUDIT_PENDING_UNTIL_INDEX_READBACK; PREVIOUS_GATE_STATUS_RECORDED; CURRENT_INDEX_GATE_PENDING",
@@ -9787,8 +9816,8 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T02:09:30.000Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T01:42:53.011Z",
+    "recorded_at_utc": "2026-10-29T02:10:30.000Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T02:09:30.000Z",
     "source_ids": [
       "SRC-RUN27-20261029T020930-MAIN-COMMIT-05FDF",
       "SRC-RUN27-20261029T020930-MAIN-MERGE-QUEUE",
@@ -9799,7 +9828,8 @@
       "SRC-RUN27-20261029T020930-ZERO-JOB-40804459929",
       "SRC-RUN27-20261029T020930-PAPER-LOG-REPLAY-2359",
       "SRC-RUN27-20261029T020930-PAPER-STATE-READBACK",
-      "SRC-RUN27-20261029T020930-PAPER-TRADER-SCRIPT"
+      "SRC-RUN27-20261029T020930-PAPER-TRADER-SCRIPT",
+      "SRC-RUN28-20261029T021030-OPEN-PR-INVENTORY"
     ],
     "main_sha": "05fdf3c3f0bb864d05673d6c42bb560fba290103",
     "merge_queue_safety": {
@@ -9830,7 +9860,26 @@
       "state_mutated": false
     },
     "synchronized_xrp_market_observations_admitted": 0,
-    "forecast_status": "NOT_ISSUED"
+    "forecast_status": "NOT_ISSUED",
+    "open_pr_inventory": {
+      "captured_at_utc": "2026-10-29T02:10:30.000Z",
+      "open_prs": 103,
+      "drafts": 96,
+      "ready_for_review": 7,
+      "full_diff_audit": "NOT_COMPLETE",
+      "actions_taken": [
+        "Created draft PR #1282",
+        "No PR closed or merged"
+      ],
+      "overlapping_candidates": [
+        1282,
+        1281,
+        1277,
+        1274,
+        1270,
+        1259
+      ]
+    }
   },
   "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
