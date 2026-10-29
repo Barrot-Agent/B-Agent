@@ -608,4 +608,6 @@ def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_
     assert any(args[:3] == ["git", "push", "--set-upstream"] for args in calls)
     assert "--draft" in pr_calls[0]
     assert "--head" in pr_calls[0] and "barrot/task-42" in pr_calls[0]
-    assert "makes no claim" in (tmp_path / ".barrot" / "collaboration_records" / "latest_scientific_discovery.json").read_text(encoding="utf-8") or result["draft_pr"] == "draft PR created"
+    saved = json.loads((tmp_path / ".barrot" / "collaboration_records" / "latest_scientific_discovery.json").read_text(encoding="utf-8"))
+    assert saved["cycle_id"] == "cycle-42"
+    assert saved["acceptance_gate_passed"] is False
