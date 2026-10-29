@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261029T013450-SPONSORED-ACCOUNT-CREATE",
+  "captured_at_utc": "2026-10-29T01:34:50.210Z",
+  "policy": "Append-only. This addendum supplements prior relationship counts; it does not overwrite earlier graph evidence.",
+  "nodes": [
+    {
+      "id": "XRPL_MAINNET",
+      "label": "XRP Ledger Mainnet",
+      "kind": "NETWORK"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_ASSET"
+    },
+    {
+      "id": "SPONSOR_XLS68",
+      "label": "Sponsor amendment / XLS-68 Sponsored Fees and Reserves",
+      "kind": "PROTOCOL_AMENDMENT"
+    },
+    {
+      "id": "SPONSORED_ACCOUNT_CREATE_XLS681",
+      "label": "SponsoredAccountCreate / XLS-68.1 proposal",
+      "kind": "PROPOSED_PROTOCOL_FEATURE"
+    },
+    {
+      "id": "SPONSOR_ACCOUNT",
+      "label": "Sponsor account (platform, issuer, or institution)",
+      "kind": "NETWORK_ROLE"
+    },
+    {
+      "id": "SPONSORED_ACCOUNT",
+      "label": "Sponsored user / agent account",
+      "kind": "NETWORK_ROLE"
+    },
+    {
+      "id": "RLUSD_XRPL",
+      "label": "RLUSD on XRPL",
+      "kind": "STABLECOIN_ISSUANCE"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_AND_CUSTODY_PLATFORM"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RUN22-20261029T013450-01",
+      "source": "XRPL_MAINNET",
+      "target": "XRP",
+      "relationship": "ACCOUNT_AND_OBJECT_RESERVE_REQUIREMENTS",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "status": "CURRENT_DOCUMENTED_RULE",
+      "claim": "XRPL documentation lists a 1 XRP base reserve per account and 0.2 XRP owner reserve per owned item on Mainnet; requirements may change through fee voting.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-XRPL-RESERVES"
+      ]
+    },
+    {
+      "id": "EDGE-RUN22-20261029T013450-02",
+      "source": "SPONSOR_XLS68",
+      "target": "SPONSOR_ACCOUNT",
+      "relationship": "SPONSOR_PAYS_FEES_OR_RESERVES",
+      "evidence_class": "CONFIRMED_SPECIFICATION_NOT_ACTIVE_ON_MAINNET",
+      "status": "SPECIFIED_BUT_NOT_ACTIVE_ON_MAINNET",
+      "claim": "The sponsorship design lets a sponsor cover fees and reserve requirements for another account while the sponsee retains control of its keys; XRP is not transferred into the sponsee merely by reserve sponsorship.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-XRPL-SPONSOR-DOCS",
+        "SRC-RUN22-20261029T013450-XRPL-SPONSOR-ADVISORY"
+      ]
+    },
+    {
+      "id": "EDGE-RUN22-20261029T013450-03",
+      "source": "SPONSOR_XLS68",
+      "target": "XRPL_MAINNET",
+      "relationship": "MAINNET_ACTIVATION_STATUS",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "status": "NOT_ACTIVATED_AS_OF_OFFICIAL_2026_09_21_DISCLOSURE",
+      "claim": "XRPL Foundation's official vulnerability disclosure says Sponsor was not yet activated on Mainnet; activation was conditioned on a fix included in xrpld 3.4.0.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-XRPL-SPONSOR-ADVISORY"
+      ]
+    },
+    {
+      "id": "EDGE-RUN22-20261029T013450-04",
+      "source": "SPONSORED_ACCOUNT_CREATE_XLS681",
+      "target": "SPONSORED_ACCOUNT",
+      "relationship": "PROPOSED_ZERO_BALANCE_ACCOUNT_CREATION",
+      "evidence_class": "PROPOSED_FEATURE",
+      "status": "OPEN_UNMERGED_UPSTREAM_PR",
+      "claim": "The open rippled PR proposes creating a zero-balance account whose base reserve is sponsored, optionally with a prefunded sponsorship object; it depends on SponsorV1_1 and is not a live Mainnet capability.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-SPONSORED-ACCOUNT-CREATE-PR",
+        "SRC-RUN22-20261029T013450-XLS-68-1-PR"
+      ]
+    },
+    {
+      "id": "EDGE-RUN22-20261029T013450-05",
+      "source": "COINBASE",
+      "target": "RLUSD_XRPL",
+      "relationship": "DISTRIBUTES_RLUSD_WITH_XRPL_DEPOSITS_AND_WITHDRAWALS",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED_LIVE_IN_SUPPORTED_REGIONS_2026_10_28",
+      "claim": "Coinbase announced RLUSD availability on Prime, Exchange and retail app, with deposits/withdrawals across XRPL, Base and Ethereum; Global Exchange collateral support was described as a future rollout.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH"
+      ]
+    },
+    {
+      "id": "EDGE-RUN22-20261029T013450-06",
+      "source": "SPONSORED_ACCOUNT_CREATE_XLS681",
+      "target": "RLUSD_XRPL",
+      "relationship": "POTENTIAL_STABLECOIN_ONLY_ONBOARDING_USE_CASE",
+      "evidence_class": "INFERENCE_NOT_CONFIRMED_INTEGRATION",
+      "status": "HYPOTHESIS_ONLY",
+      "claim": "If the proposal is implemented and activated, sponsored accounts could reduce the need for stablecoin-only users to acquire XRP personally for account reserve and sponsored fees. No Coinbase/RLUSD integration with SponsoredAccountCreate has been established.",
+      "source_ids": [
+        "SRC-RUN22-20261029T013450-SPONSORED-ACCOUNT-CREATE-PR",
+        "SRC-RUN22-20261029T013450-XLS-68-1-PR",
+        "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH",
+        "SRC-RUN22-20261029T013450-XRPL-SPONSOR-DOCS"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-RUN22-20261029T013450-SPONSOR-USER-ACQUISITION-SHIFT",
+      "class": "INFERENCE",
+      "hypothesis": "If account sponsorship and SponsoredAccountCreate activate and achieve meaningful adoption, some stablecoin-only users may no longer need to buy XRP personally to open and transact from a wallet.",
+      "confidence": "LOW",
+      "supporting_evidence": [
+        "SRC-RUN22-20261029T013450-XRPL-RESERVES",
+        "SRC-RUN22-20261029T013450-XRPL-SPONSOR-DOCS",
+        "SRC-RUN22-20261029T013450-SPONSORED-ACCOUNT-CREATE-PR",
+        "SRC-RUN22-20261029T013450-XLS-68-1-PR"
+      ],
+      "counter_hypotheses": [
+        "Sponsors must still bear reserve obligations in XRP and may need to acquire or lock XRP themselves.",
+        "Sponsored fees shift payment responsibility; they do not make network costs disappear.",
+        "The amendment is not active on Mainnet and the account-creation proposal remains open."
+      ],
+      "disconfirming_evidence_needed": [
+        "Sponsor activation does not occur or adoption is negligible.",
+        "Wallet and sponsor data show no reduction in end-user XRP funding.",
+        "Sponsored reserve demand is offset by sponsor-side XRP acquisition and no net change in aggregate XRP balances."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN22-20261029T013450-SPONSOR-RESERVE-CONCENTRATION",
+      "class": "INFERENCE",
+      "hypothesis": "Sponsorship may consolidate reserve balances at platforms and issuers rather than eliminate reserve-related XRP holdings, increasing sponsor-level concentration while lowering user onboarding friction.",
+      "confidence": "LOW",
+      "supporting_evidence": [
+        "SRC-RUN22-20261029T013450-XRPL-SPONSOR-DOCS",
+        "SRC-RUN22-20261029T013450-XRPL-RESERVES"
+      ],
+      "counter_hypotheses": [
+        "Sponsor economics and account scale may make sponsorship unattractive.",
+        "Sponsorship budgets can cap reserve exposure and sponsors can use different business models."
+      ],
+      "disconfirming_evidence_needed": [
+        "Sponsor-side reserve balances do not increase after activation or are consistently offset by lower XRP balances."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN22-20261029T013450-SPONSOR-ADOPTION-COMPLEMENTARITY",
+      "class": "INFERENCE",
+      "hypothesis": "Lower wallet activation friction could increase XRPL stablecoin and automated-payment activity, but transaction growth does not automatically imply material XRP spot demand or price appreciation.",
+      "confidence": "LOW",
+      "supporting_evidence": [
+        "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH",
+        "SRC-RUN22-20261029T013450-SPONSORED-ACCOUNT-CREATE-PR",
+        "SRC-RUN22-20261029T013450-XLS-68-1-PR",
+        "SRC-RUN22-20261029T013450-XRPL-SPONSOR-DOCS"
+      ],
+      "counter_hypotheses": [
+        "Stablecoin transfers may be direct issuer-to-user movements with limited bridge-asset demand.",
+        "Fees are small and may be sponsor-paid; increased activity may have little price effect.",
+        "The proposal may not activate or achieve scale."
+      ],
+      "disconfirming_evidence_needed": [
+        "After activation, sponsored-account creation and XRPL stablecoin transaction counts fail to grow.",
+        "XRPL payment routing shows negligible XRP bridge-path use despite higher stablecoin volume."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-RUN22-20261029T013450-COINBASE-MULTIISSUER-DISTRIBUTION",
+      "class": "INFERENCE",
+      "hypothesis": "Coinbase's USDC-linked economics and new RLUSD distribution may reflect a multi-issuer stablecoin distribution strategy; the direction and size of any XRP demand effect are unknown.",
+      "confidence": "LOW",
+      "supporting_evidence": [
+        "SRC-RUN22-20261029T013450-COINBASE-Q2",
+        "SRC-RUN22-20261029T013450-COINBASE-Q3-SCHEDULE",
+        "SRC-RUN22-20261029T013450-COINBASE-RLUSD-LAUNCH",
+        "SRC-RUN22-20261029T013450-CIRCLE-USDC"
+      ],
+      "counter_hypotheses": [
+        "RLUSD may substitute for USDC in some routes rather than complement it.",
+        "RLUSD adoption may remain small and have no measurable effect on XRP.",
+        "Coinbase's stablecoin economics may be driven more by USDC than by RLUSD."
+      ],
+      "disconfirming_evidence_needed": [
+        "Coinbase filings show no material RLUSD activity or economics.",
+        "XRPL RLUSD transfers, Coinbase flows, and XRP bridge-path share do not change after distribution."
+      ],
+      "xrp_price_effect": "NOT_ESTABLISHED"
+    }
+  ],
+  "explicit_unknowns": [
+    "Current Sponsor/SponsorV1_1 Mainnet validator vote count was not independently fetched from a live validator dashboard in this run.",
+    "The exact approval path for B-Agent PRs #1273 and #1279 is not established by the inspected metadata.",
+    "No production transaction count or XRP reserve balance attributable to SponsoredAccountCreate exists because the proposal is not active on Mainnet.",
+    "No causal price effect from Coinbase RLUSD distribution, Circle USDC circulation, or sponsored-account adoption has been measured."
+  ]
+}
