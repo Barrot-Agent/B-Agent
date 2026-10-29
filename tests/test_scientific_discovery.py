@@ -528,3 +528,34 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
     assert calls["adapter"] == "adapter"
     assert "record" in calls
     assert "scientific discovery recorded" in str(calls["comment"]).lower()
+
+def test_scientific_track_output_retries_malformed_json_once(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_scientific_json_retry_test")
+
+    class FakeBrain:
+        def __init__(self):
+            self.responses = [
+                '{"findings":["unterminated"',
+                json.dumps({
+                    "findings": ["Provisional result"],
+                    "open_questions": ["Needs independent check"],
+                    "counterarguments": ["Assumption may be too strong"],
+                    "recommended_checks": ["Reproduce the derivation"],
+                }),
+            ]
+            self.calls = 0
+
+        def think(self, message, history=None, system=None):
+            self.calls += 1
+            return self.responses.pop(0)
+
+    brain = FakeBrain()
+    result = module._parse_scientific_track_output(
+        '{"findings":["unterminated"',
+        brain,
+        {"track": {"track_id": "proof_construction"}},
+    )
+    assert brain.calls == 1
+    assert result["findings"] == ["Provisional result"]
+    assert result["open_questions"] == ["Needs independent check"]
