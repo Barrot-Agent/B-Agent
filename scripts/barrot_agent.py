@@ -849,7 +849,7 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
         }
         latest = record_dir / "latest_scientific_discovery.json"
         latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
-        cycle_id = str(payload.get("cycle_id") or "unknown")
+        cycle_id = re.sub(r"[^A-Za-z0-9._-]", "_", str(payload.get("cycle_id") or "unknown"))
         per_cycle = record_dir / f"{cycle_id}.json"
         per_cycle.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
         return latest
@@ -922,7 +922,7 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
     }
     latest = record_dir / "latest_repository_repair.json"
     latest.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
-    cycle_id = str(cycle_data.get("cycle_id") or "unknown")
+    cycle_id = re.sub(r"[^A-Za-z0-9._-]", "_", str(cycle_data.get("cycle_id") or "unknown"))
     per_cycle = record_dir / f"{cycle_id}.json"
     per_cycle.write_text(json.dumps(record, indent=2, sort_keys=True), encoding="utf-8")
     return latest
@@ -936,7 +936,7 @@ def main() -> None:
         cycle = ScientificDiscoveryController(workspace=ROOT).run(select_scientific_problem_adapter(TITLE, TASK))
         rendered = json.dumps(cycle.to_dict(), indent=2)
         print(rendered)
-        write_collaboration_record(cycle)
+        persistence = persist_scientific_discovery(cycle)
         if cycle.status not in {"complete", "no_solution_claim"}:
             post_issue_comment(
                 "Barrot scientific discovery failed safely.\n\n```json\n"
@@ -945,7 +945,9 @@ def main() -> None:
             )
             raise SystemExit(1)
         post_issue_comment(
-            "Barrot scientific discovery recorded.\n\n```json\n"
+            "Barrot scientific discovery recorded and persisted to the task branch.\n\n"
+            + json.dumps({"persistence": persistence}, indent=2)
+            + "\n\n```json\n"
             + rendered[:55000]
             + "\n```"
         )
