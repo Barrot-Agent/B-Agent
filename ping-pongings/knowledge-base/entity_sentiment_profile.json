@@ -3,7 +3,7 @@
     "xrp_entries": 1203,
     "btc_entries": 1236
   },
-  "unique_entities_profiled": 988,
+  "unique_entities_profiled": 990,
   "entities": [
     {
       "entity": "Bitcoin",
@@ -24,11 +24,11 @@
     },
     {
       "entity": "XRP",
-      "total_mentions": 285,
-      "bullish": 185,
+      "total_mentions": 286,
+      "bullish": 186,
       "neutral": 44,
       "bearish": 56,
-      "net_sentiment_score": 0.453,
+      "net_sentiment_score": 0.455,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -41,11 +41,11 @@
     },
     {
       "entity": "Ripple",
-      "total_mentions": 218,
-      "bullish": 142,
+      "total_mentions": 219,
+      "bullish": 143,
       "neutral": 39,
       "bearish": 37,
-      "net_sentiment_score": 0.482,
+      "net_sentiment_score": 0.484,
       "assets_seen_in": [
         "BTC",
         "XRP"
@@ -528,6 +528,23 @@
       ]
     },
     {
+      "entity": "Solana",
+      "total_mentions": 11,
+      "bullish": 9,
+      "neutral": 1,
+      "bearish": 1,
+      "net_sentiment_score": 0.727,
+      "assets_seen_in": [
+        "BTC",
+        "XRP"
+      ],
+      "example_headlines": [
+        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
+        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
+        "Ondo Pushes USDY Deeper Into Solana DeFi"
+      ]
+    },
+    {
       "entity": "USDT",
       "total_mentions": 10,
       "bullish": 6,
@@ -576,23 +593,6 @@
         "JPMorgan boosts Bitcoin, Ether ETF positions in Q2 filing",
         "Hyperliquid Trader Loses $26M As Ether Short Unwinds In Seconds",
         "Bitcoin ETFs notch best month of 2026 as BTC gains 25% in August"
-      ]
-    },
-    {
-      "entity": "Solana",
-      "total_mentions": 10,
-      "bullish": 8,
-      "neutral": 1,
-      "bearish": 1,
-      "net_sentiment_score": 0.7,
-      "assets_seen_in": [
-        "BTC",
-        "XRP"
-      ],
-      "example_headlines": [
-        "Charles Schwab Expands Crypto Platform Beyond Bitcoin And Ethereum",
-        "Solana ETFs Record $925K In Daily Inflows As New Month Opens",
-        "Ondo Pushes USDY Deeper Into Solana DeFi"
       ]
     },
     {
@@ -11196,6 +11196,34 @@
       ],
       "example_headlines": [
         "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base"
+      ]
+    },
+    {
+      "entity": "Orderly Network",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume"
+      ]
+    },
+    {
+      "entity": "Digital Asset Ecosystem",
+      "total_mentions": 1,
+      "bullish": 1,
+      "neutral": 0,
+      "bearish": 0,
+      "net_sentiment_score": 1.0,
+      "assets_seen_in": [
+        "XRP"
+      ],
+      "example_headlines": [
+        "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume"
       ]
     },
     {

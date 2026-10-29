@@ -3,12 +3,12 @@
     "xrp_entries": 1203,
     "btc_entries": 1236
   },
-  "unique_pairs_found": 3210,
+  "unique_pairs_found": 3217,
   "pairs": [
     {
       "entity_a": "Ripple",
       "entity_b": "XRP",
-      "cooccurrence_count": 209,
+      "cooccurrence_count": 210,
       "example_headlines": [
         {
           "title": "Why Is XRP Underperforming? 3 Reasons Ripple Still Can't Catch Up With the Crypto Market - Bitcoin F",
@@ -2926,6 +2926,21 @@
         },
         {
           "title": "Bitget hacker moves $83 million in stolen XRP that Ripple cannot freeze - CoinDesk",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Solana",
+      "entity_b": "XRP",
+      "cooccurrence_count": 3,
+      "example_headlines": [
+        {
+          "title": "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia",
+          "asset": "XRP"
+        },
+        {
+          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
           "asset": "XRP"
         }
       ]
@@ -7836,8 +7851,8 @@
       ]
     },
     {
-      "entity_a": "Solana",
-      "entity_b": "XRP",
+      "entity_a": "Ripple",
+      "entity_b": "Solana",
       "cooccurrence_count": 2,
       "example_headlines": [
         {
@@ -7845,7 +7860,7 @@
           "asset": "XRP"
         },
         {
-          "title": "US crypto ETF inflows cool after $3.3B week but streaks hold",
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
           "asset": "XRP"
         }
       ]
@@ -22202,17 +22217,6 @@
       ]
     },
     {
-      "entity_a": "Ripple",
-      "entity_b": "Solana",
-      "cooccurrence_count": 1,
-      "example_headlines": [
-        {
-          "title": "Ripple CEO Says Buy The Top Five Cryptocurrencies; Refuses To Call Solana A Rival To XRP - Coinpedia",
-          "asset": "XRP"
-        }
-      ]
-    },
-    {
       "entity_a": "Privy",
       "entity_b": "Stripe",
       "cooccurrence_count": 1,
@@ -27136,6 +27140,83 @@
       "example_headlines": [
         {
           "title": "Superstate Expands Tokenized Short-Duration US Treasury Fund (USTB) To Base",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Ecosystem",
+      "entity_b": "Orderly Network",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Ecosystem",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Ecosystem",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Digital Asset Ecosystem",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Orderly Network",
+      "entity_b": "Ripple",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Orderly Network",
+      "entity_b": "Solana",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
+          "asset": "XRP"
+        }
+      ]
+    },
+    {
+      "entity_a": "Orderly Network",
+      "entity_b": "XRP",
+      "cooccurrence_count": 1,
+      "example_headlines": [
+        {
+          "title": "Orderly Network Surpasses $100 Billion In Cumulative Trading Volume",
           "asset": "XRP"
         }
       ]
