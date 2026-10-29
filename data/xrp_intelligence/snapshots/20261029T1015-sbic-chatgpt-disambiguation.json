@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T1015-SBIC-CHATGPT-DISAMBIGUATION",
+  "captured_at_utc": "2026-10-29T10:15:49Z",
+  "data_cutoff_utc": "2026-10-29T10:15:49Z",
+  "observed_main_sha": "649394b89b957b4719d4b689de47bc004bcd45f0",
+  "forecast_status": "NOT_ISSUED",
+  "market_feature_admission": false,
+  "summary": "Fresh official-source cross-check confirms SBIC is an overloaded label. SBIC East Japan (Tokyo), SBIC Central Japan (Nagoya) and SBIC West Japan (Osaka) are distinct regional SME investment/consultation companies described as sister companies. East and West both publish ChatGPT/generative-AI training material. The original phrase 'ChatGPT SBIC' remains unresolved; these course pages do not establish an OpenAI partnership or XRP/Ripple relationship. Historical SBI Capital Co., Ltd. and SBI Crypto Co., Ltd. are separate acronym collisions.",
+  "findings": [
+    {
+      "claim": "SBIC East Japan legal identity",
+      "status": "CONFIRMED",
+      "source": "https://www.sbic.co.jp/company/profile/",
+      "note": "Official profile identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. and its regional coverage."
+    },
+    {
+      "claim": "SBIC West Japan legal identity",
+      "status": "CONFIRMED",
+      "source": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "note": "Official profile identifies Osaka Small and Medium Business Investment & Consultation Co., Ltd., with separate West Japan coverage."
+    },
+    {
+      "claim": "SBIC Central Japan",
+      "status": "CONFIRMED",
+      "source": "https://www.sbic-cj.co.jp/company/about/",
+      "note": "Official profile identifies the Nagoya regional company; official East/West profiles call the three regional firms sister companies."
+    },
+    {
+      "claim": "ChatGPT/GenAI training",
+      "status": "CONFIRMED",
+      "source": "https://www.sbic.co.jp/training/20250612co/; https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf",
+      "note": "East Japan's June 2025 curriculum includes ChatGPT use; West Japan's public seminar material describes ChatGPT and generative AI."
+    },
+    {
+      "claim": "Direct SBIC East/West relation to XRP/Ripple",
+      "status": "NOT_ESTABLISHED_IN_REVIEWED_SOURCES",
+      "note": "No direct partnership, custody, payment, token holding or investment edge is established by the reviewed profiles/training pages. This is bounded absence of evidence, not proof of nonexistence."
+    }
+  ],
+  "relationship_graph_addendum": {
+    "path": "data/xrp_intelligence/relationship_graph_addenda/20261029T1015-sbic-chatgpt-disambiguation.json",
+    "blob_sha": "a61184d2a25fa7208ce6dd958a762df074594b25",
+    "commit_sha": "03cf9eb1d0119a6355b738708242ebb2a414ff71",
+    "nodes": 8,
+    "edges": 5,
+    "hypotheses": 2
+  },
+  "sources": [
+    {
+      "id": "SRC-SBIC-EAST-JAPAN-OFFICIAL-PROFILE-2026-10-28T0900Z",
+      "url": "https://www.sbic.co.jp/company/profile/"
+    },
+    {
+      "id": "SRC-SBIC-EAST-JAPAN-CHATGPT-TRAINING-2025-06-12",
+      "url": "https://www.sbic.co.jp/training/20250612co/"
+    },
+    {
+      "id": "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/"
+    },
+    {
+      "id": "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf"
+    },
+    {
+      "id": "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+      "url": "https://www.sbic-cj.co.jp/company/about/"
+    },
+    {
+      "id": "SRC-SBI-REMIT",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+    },
+    {
+      "id": "SRC-RIPPLE-SBI-RLUSD",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/"
+    },
+    {
+      "id": "SRC-SBI-CAPITAL-2005-SBIC",
+      "url": "https://www.sbigroup.co.jp/news/2005/0621_669.html"
+    },
+    {
+      "id": "SRC-SBI-CAPITAL-GS-JV-2007",
+      "url": "https://www.sbigroup.co.jp/news/2007/0521_852.html"
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+      "url": "https://www.sbic-cj.co.jp/company/about/"
+    },
+    {
+      "id": "SRC-RUN25-20261029T014151-SBIC-WEST",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/"
+    },
+    {
+      "id": "SRC-RUN58-20261029T1015Z-EAST-TRAINING-RECONFIRM",
+      "url": "https://www.sbic.co.jp/training/20250612co/"
+    },
+    {
+      "id": "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf"
+    }
+  ],
+  "verification": {
+    "graph_readback": "PASS",
+    "snapshot_readback": "PENDING_AFTER_CREATE",
+    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "real_money_trade": false
+  }
+}
