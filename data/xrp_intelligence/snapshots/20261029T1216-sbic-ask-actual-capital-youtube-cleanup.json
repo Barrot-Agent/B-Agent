@@ -120,9 +120,9 @@
   ],
   "market_observations": [],
   "verification": {
-    "snapshot_readback": "PENDING",
-    "graph_readback": "PASS",
-    "source_reference_audit": "PENDING_LEDGER_UPDATE",
+    "snapshot_readback": "PASS_AFTER_CONTENT_READBACK",
+    "graph_readback": "PASS_AFTER_CONTENT_READBACK",
+    "source_reference_audit": "SOURCE_IDS_PREVALIDATED_LEDGER_APPEND_PENDING",
     "forecast_status": "NOT_ISSUED",
     "market_features_admitted": false,
     "main_modified_by_this_run": true,
