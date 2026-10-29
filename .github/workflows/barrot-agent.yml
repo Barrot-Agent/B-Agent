@@ -3,8 +3,6 @@ name: Barrot Agent
 on:
   issues:
     types: [labeled]
-  schedule:
-    - cron: "*/15 * * * *"
   workflow_dispatch:
     inputs:
       title:
