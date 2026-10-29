@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T00:09:14.462Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-29T0009Z-CORRECTION",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
-    "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
-    "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe"
+    "captured_at_utc": "2026-10-29T01:11:20.367Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-20261029T011120Z-CORRECTION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T011120Z-correction.json",
+    "snapshot_blob_sha": "274be95dc3b6b71c2ecfb674682edfe0ebe91f55",
+    "snapshot_commit_sha": "81e33a43f167387a0d71333b9d0b4f1e248b5a55"
   },
   "sources": [
     {
@@ -4743,6 +4743,182 @@
       "title": "Corrected snapshot and compact-index pointer verification",
       "accessed_at_utc": "2026-10-29T00:09:33.702Z",
       "note": "Read back latest snapshot 2026-10-29T0009Z-correction.json byte-for-byte; blob SHA matches the index pointer; snapshot character-count metric and index character-count metric match actual content; all 358 referenced source IDs resolve. Core CI for the research-base PR was not triggered; latest index-head gate remains unverified."
+    },
+    {
+      "id": "SRC-RUN16-MAIN-HEAD-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/de30245082545242485b894bda53054b50c313aa",
+      "title": "Current main head inspected at the October 29 capture",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Main head de30245082545242485b894bda53054b50c313aa; main protected. This run did not write to main."
+    },
+    {
+      "id": "SRC-RUN16-LATEST-SIGNAL-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Current main XRP signal artifact remains non-predictive",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Blob SHA d81cb0d68869cb7e633888d8d0c136858f12e59a; timestamp 2026-10-29T00:46:33.621455Z; score 44, confidence 0, news score 88 from 11 entries. Missing GitHub model credentials and Groq HTTP 429. Not a directional forecast."
+    },
+    {
+      "id": "SRC-RUN16-ACCURACY-WORKFLOW-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/check-signal-accuracy.yml",
+      "title": "Main accuracy workflow still writes generated evaluation data directly to main",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Blob SHA 014806e842a14b3961c4b80f9c4a6e855da3f65e; contents:write and direct git push remain. PR #1274 proposes read-only artifact output and NOT_EVALUATED status."
+    },
+    {
+      "id": "SRC-RUN16-SUMMARY-WORKFLOW-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml",
+      "title": "Main signal-summary workflow still commits generated summary/audio",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Blob SHA 1718b45beaf1f8aa002ce332b2b828d27049508b; direct git commit/push remains. PR #1267's proposed fix is not confirmed in main."
+    },
+    {
+      "id": "SRC-RUN16-PAPER-STATE-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Paper-trading persisted state read-only check",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479; cash $8,011.936613782476; position 0.024901276579239066; product identity null; average entry $80,436.84; trade count 125. No state write performed."
+    },
+    {
+      "id": "SRC-RUN16-PAPER-LOG-READBACK-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Initial paper-trading log contents endpoint returned empty content",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Contents endpoint returned a blob SHA but zero content in that response. This was a connector retrieval limitation, not evidence the Git blob was empty. Later exact Git-blob fetch and full read-only replay passed."
+    },
+    {
+      "id": "SRC-RUN16-PR1274-CHECKS-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798107398",
+      "title": "PR #1274 fixed-horizon evaluator exact-head CI passed",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Exact PR head 07c51940606483003c5a728b5ecd3d56293eec2c: 147 tests passed in 5.14 seconds; fail-closed gate run 40798107409 passed. Draft and unmerged."
+    },
+    {
+      "id": "SRC-RUN16-PR1275-CHECKS-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798190526",
+      "title": "PR #1275 controlled-approval metadata fix exact-head CI passed",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Exact PR head ec607983c3958ee54e0b1a986d754026121fe3d4: 146 tests passed in 6.35 seconds; fail-closed gate run 40798190515 passed. Draft and unmerged. Fixes metadata parsing only; does not explain zero-job push events."
+    },
+    {
+      "id": "SRC-RUN16-PR1273-STATE-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1273",
+      "title": "PR #1273 merge event observed during the run",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Correction: PR #1273 was closed as merged by Barrot-Agent at 2026-10-29T01:07:06Z, merge commit de30245082545242485b894bda53054b50c313aa, head 1ed0283b631c021114af05fb991db4e542864564. This run did not perform the merge. Authorization evidence was not established in this run; audit separately and do not revert automatically."
+    },
+    {
+      "id": "SRC-RUN16-LEDGER-BRANCH-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1265",
+      "title": "Compact research ledger branch remains diverged and lacks full CI for its research-base PR",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Research branch remains substantially ahead/behind main. Core CI is not triggered for this PR's research branch base. Historical snapshots remain preserved."
+    },
+    {
+      "id": "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.theblock.co/news/business/2026-10-27-mizuho-cuts-circle-price-target-431826",
+      "title": "The Block reports Mizuho scenario for Circle reserve-revenue downside",
+      "accessed_at_utc": "2026-10-29T01:08:57.802Z",
+      "note": "Published October 27, 2026. Secondary report says Mizuho estimated 10–20% medium-term reserve-revenue downside if AI agents steer USDC holders to higher-yield alternatives. Analyst scenario, not observed impact; no direct XRP link established."
+    },
+    {
+      "id": "SRC-RUN16-SNAPSHOT-READBACK-20261029T010857Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-29T010857Z-handoff.json",
+      "title": "Intermediate immutable handoff snapshot preserved",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "Blob SHA 74fd87473f852700981c172860f1640f7f409434; 14130 characters; readback exact. It was committed but not indexed at capture; the 01:11Z correction snapshot supersedes it while preserving it unchanged."
+    },
+    {
+      "id": "SRC-RUN17-MAIN-HEAD-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/de30245082545242485b894bda53054b50c313aa",
+      "title": "Current main head and merge commit inspected",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "Main is protected and at de30245082545242485b894bda53054b50c313aa. This is the merge commit for PR #1273; this run did not write to main or merge a PR."
+    },
+    {
+      "id": "SRC-RUN17-PAPER-LOG-BLOB-REPLAY-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/git/blobs/70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a",
+      "title": "Current paper-trading log fully replayed from exact Git blob",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "Blob SHA 70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a; 1,451,450 characters; 2,357 JSONL records; zero malformed records, timestamp-order errors, portfolio value mismatches, portfolio-change mismatches, cumulative-return mismatches, or result-transition mismatches. All rows use BTC-USD; actions 36 buy, 89 sell, 2,232 hold. Read-only replay of actual execute_paper_trade semantics matches persisted cash, position, average entry, and trade count exactly."
+    },
+    {
+      "id": "SRC-RUN17-PAPER-STATE-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Paper-trading persisted state matched by full replay",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "State blob SHA a20230ac411d1883ced4f92fce10a7ced2172479. Cash $8,011.936613782476; position 0.024901276579239066 BTC; average entry $80,436.84; trade count 125. position_product remains null; no state write authorized."
+    },
+    {
+      "id": "SRC-RUN17-PR1273-MERGE-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/de30245082545242485b894bda53054b50c313aa",
+      "title": "PR #1273 merged by Barrot-Agent; authorization audit required",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "GitHub REST identifies merged_by Barrot-Agent, merged_at 2026-10-29T01:07:06Z, merge commit de30245082545242485b894bda53054b50c313aa. This merge was not performed by this run. Approval evidence was not present in this run's context; no rollback was attempted."
+    },
+    {
+      "id": "SRC-RUN17-PR1274-CHECKS-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798107398",
+      "title": "PR #1274 exact-head CI and fail-closed gate passed",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "147 tests passed in 5.14 seconds on head 07c51940606483003c5a728b5ecd3d56293eec2c; gate run 40798107409 passed. PR remains draft/unmerged, 21 commits behind current main at snapshot capture, with no overlapping changed paths observed."
+    },
+    {
+      "id": "SRC-RUN17-PR1275-CHECKS-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40798190526",
+      "title": "PR #1275 exact-head CI and fail-closed gate passed",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "146 tests passed in 6.35 seconds on head ec607983c3958ee54e0b1a986d754026121fe3d4; gate run 40798190515 passed. PR remains draft/unmerged, 21 commits behind current main at snapshot capture, with no overlapping changed paths observed."
+    },
+    {
+      "id": "SRC-RUN17-ACCURACY-WORKFLOW-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/check-signal-accuracy.yml",
+      "title": "Main accuracy workflow still writes generated evaluation data directly to main",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "Blob SHA 014806e842a14b3961c4b80f9c4a6e855da3f65e; contents:write and git push remain in main. PR #1274 proposes read-only artifact output and NOT_EVALUATED status."
+    },
+    {
+      "id": "SRC-RUN17-SUMMARY-WORKFLOW-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml",
+      "title": "Main signal-summary workflow still commits generated summary/audio",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "Blob SHA 1718b45beaf1f8aa002ce332b2b828d27049508b; direct git commit/push remains. PR #1267's fix is not merged."
+    },
+    {
+      "id": "SRC-RUN17-APPROVAL-WORKFLOW-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Main approval workflow contains invalid top-level REST selectors",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "Blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4; workflow declares workflow_dispatch only and queries base_ref/head_sha/head_ref as top-level fields. PR #1275 corrects selectors; historical zero-job push event root cause remains unknown."
+    },
+    {
+      "id": "SRC-RUN17-SNAPSHOT-READBACK-20261029T011120Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-29T011120Z-correction.json",
+      "title": "Corrected immutable XRP handoff snapshot read back from GitHub",
+      "accessed_at_utc": "2026-10-29T01:11:20.367Z",
+      "note": "Blob SHA 274be95dc3b6b71c2ecfb674682edfe0ebe91f55; 18924 characters; embedded character-count metric matches. Snapshot records full 2,357-row replay and the observed PR #1273 merge."
     }
   ],
   "limitations": [
@@ -4854,7 +5030,12 @@
     "2026-10-29T00:07:21.216Z: PR #1271 initial CI failed because its regression test had a duplicated def keyword; syntax corrected at b6688a328d24af70c4f234b56aeabf90aab5005e, but latest-head CI/gate remain unverified. Approval metadata parsing does not explain historical push-event runs with zero jobs.",
     "2026-10-29T00:07:21.216Z: latest research snapshot/index update needs pointer/source-reference readback and index-head gate; research-base core CI remains untriggered by current PR base filter.",
     "2026-10-29T00:08:27.758Z: Snapshot 2026-10-29T0007Z recorded main at 22ffb845, but telemetry-only commit 95060774 was already present by its capture time. The earlier snapshot is preserved; this 0008Z snapshot corrects the current-main pointer. PRs #1270/#1271 are one commit behind due to the report-only change, with no overlapping changed paths; recheck before approval.",
-    "2026-10-29T00:09:14.462Z: 2026-10-29T0008Z snapshot's embedded character-count metric was five characters low. The original snapshot is preserved unchanged; 0009Z-correction is the corrected current snapshot."
+    "2026-10-29T00:09:14.462Z: 2026-10-29T0008Z snapshot's embedded character-count metric was five characters low. The original snapshot is preserved unchanged; 0009Z-correction is the corrected current snapshot.",
+    "2026-10-29T01:11:20.367Z: PR #1273 was merged by Barrot-Agent at 2026-10-29T01:07:06Z. This run did not perform the merge; authorization evidence is not established in this run. Preserve the merge and audit provenance before any rollback.",
+    "2026-10-29T01:11:20.367Z: Current paper-trading log retrieval via Contents returned empty content, but the exact Git blob endpoint returned 2,357 records and the read-only replay passed. Preserve both observations; the earlier empty response was a connector retrieval limitation.",
+    "2026-10-29T01:11:20.367Z: PRs #1274 and #1275 remain draft/unmerged and are 21 commits behind current main; their exact-head CI/gates passed and no path overlap was observed at capture, but refresh checks and mergeability before review.",
+    "2026-10-29T01:11:20.367Z: Current paper-trading state matches replay but position_product remains null; BTC-USD is the identity candidate. No state write was authorized.",
+    "2026-10-29T01:11:20.367Z: Compact-ledger research-base PR still lacks verified full core CI and a verified gate for the newest index head; snapshot/readback checks are not full repository CI."
   ],
   "run_updates": [
     {
@@ -8053,6 +8234,78 @@
       "merge_performed": false,
       "deployment": false,
       "real_money_trade": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T01:11:20.367Z",
+      "update_type": "CORRECT_SNAPSHOT_AFTER_FULL_PAPER_REPLAY_AND_EXTERNAL_MERGE_AUDIT",
+      "main_sha": "de30245082545242485b894bda53054b50c313aa",
+      "source_ids": [
+        "SRC-RUN16-MAIN-HEAD-20261029T010857Z",
+        "SRC-RUN16-LATEST-SIGNAL-20261029T010857Z",
+        "SRC-RUN16-ACCURACY-WORKFLOW-20261029T010857Z",
+        "SRC-RUN16-SUMMARY-WORKFLOW-20261029T010857Z",
+        "SRC-RUN16-PAPER-STATE-20261029T010857Z",
+        "SRC-RUN16-PAPER-LOG-READBACK-20261029T010857Z",
+        "SRC-RUN16-PR1274-CHECKS-20261029T010857Z",
+        "SRC-RUN16-PR1275-CHECKS-20261029T010857Z",
+        "SRC-RUN16-PR1273-STATE-20261029T010857Z",
+        "SRC-RUN16-LEDGER-BRANCH-20261029T010857Z",
+        "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z",
+        "SRC-RUN16-SNAPSHOT-READBACK-20261029T010857Z",
+        "SRC-RUN17-MAIN-HEAD-20261029T011120Z",
+        "SRC-RUN17-PAPER-LOG-BLOB-REPLAY-20261029T011120Z",
+        "SRC-RUN17-PAPER-STATE-20261029T011120Z",
+        "SRC-RUN17-PR1273-MERGE-20261029T011120Z",
+        "SRC-RUN17-PR1274-CHECKS-20261029T011120Z",
+        "SRC-RUN17-PR1275-CHECKS-20261029T011120Z",
+        "SRC-RUN17-ACCURACY-WORKFLOW-20261029T011120Z",
+        "SRC-RUN17-SUMMARY-WORKFLOW-20261029T011120Z",
+        "SRC-RUN17-APPROVAL-WORKFLOW-20261029T011120Z",
+        "SRC-RUN17-SNAPSHOT-READBACK-20261029T011120Z"
+      ],
+      "previous_intermediate_snapshot": "data/xrp_intelligence/snapshots/2026-10-29T010857Z-handoff.json",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T011120Z-correction.json",
+      "snapshot_blob_sha": "274be95dc3b6b71c2ecfb674682edfe0ebe91f55",
+      "snapshot_commit_sha": "81e33a43f167387a0d71333b9d0b4f1e248b5a55",
+      "paper_trading_replay": {
+        "status": "PASS_READ_ONLY_2357_ROWS",
+        "malformed": 0,
+        "timestamp_order_errors": 0,
+        "portfolio_mismatches": 0,
+        "change_mismatches": 0,
+        "return_mismatches": 0,
+        "result_transition_mismatches": 0,
+        "state_matches": true
+      },
+      "external_merge": {
+        "pr_number": 1273,
+        "merged_by": "Barrot-Agent",
+        "merged_at_utc": "2026-10-29T01:07:06Z",
+        "merge_commit_sha": "de30245082545242485b894bda53054b50c313aa",
+        "performed_by_this_run": false,
+        "authorization_evidence_in_this_run": "NOT_PRESENT"
+      },
+      "pr1274": {
+        "ci": "PASS_147_TESTS_5.14S",
+        "gate": "PASS",
+        "draft": true,
+        "merged": false,
+        "behind_current_main": 21
+      },
+      "pr1275": {
+        "ci": "PASS_146_TESTS_6.35S",
+        "gate": "PASS",
+        "draft": true,
+        "merged": false,
+        "behind_current_main": 21
+      },
+      "forecast_status": "NOT_ISSUED",
+      "main_modified": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment": false,
+      "real_money_trade": false,
+      "state_mutated": false
     }
   ],
   "mission_priority": {
@@ -8280,42 +8533,51 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
-  "current_research_head_this_run": "1853f3660515024efbce3e1ce658b6d7573392fe",
+  "current_research_head_before_ledger_update": "81e33a43f167387a0d71333b9d0b4f1e248b5a55",
+  "current_research_head_this_run": "81e33a43f167387a0d71333b9d0b4f1e248b5a55",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SNAPSHOT_AND_INDEX_CHARACTER_METRICS_MATCH; PR1270_CI_GATE_PASS; PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_GATE_UNVERIFIED",
-    "latest_main_sha": "950607740de052d804d0b431c481bf2abda37a04",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
-    "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
-    "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe",
-    "source_reference_count": 358,
+    "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; FULL_PAPER_LOG_REPLAY_PASS_2357; PR1274_CI_GATE_PASS; PR1275_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_CI_GATE_UNVERIFIED; EXTERNAL_PR1273_MERGE_OBSERVED",
+    "latest_main_sha": "de30245082545242485b894bda53054b50c313aa",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T011120Z-correction.json",
+    "snapshot_blob_sha": "274be95dc3b6b71c2ecfb674682edfe0ebe91f55",
+    "snapshot_commit_sha": "81e33a43f167387a0d71333b9d0b4f1e248b5a55",
+    "source_reference_count": 21,
     "missing_source_references": 0,
-    "pr1270_ci": "PASS_147_TESTS_6.25S",
-    "pr1270_gate": "PASS",
-    "pr1271_ci": "PASS_146_TESTS_5.33S",
-    "pr1271_gate": "PASS",
-    "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
-    "snapshot_characters": 611372,
+    "snapshot_characters": 18924,
     "snapshot_character_metric_matches": true,
-    "index_character_metric_matches": true,
-    "latest_index_gate": "UNVERIFIED"
+    "paper_log_blob_sha": "70940ce2a11ab6006bd0ac8aa9e9a15c25f37b5a",
+    "paper_log_records": 2357,
+    "paper_log_replay": "PASS_READ_ONLY_2357_ROWS",
+    "pr1274_ci": "PASS_147_TESTS_5.14S",
+    "pr1274_gate": "PASS",
+    "pr1275_ci": "PASS_146_TESTS_6.35S",
+    "pr1275_gate": "PASS",
+    "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+    "latest_index_ci": "UNVERIFIED",
+    "latest_index_gate": "UNVERIFIED",
+    "external_merge_pr1273": {
+      "merged_by": "Barrot-Agent",
+      "merged_at_utc": "2026-10-29T01:07:06Z",
+      "authorization_evidence_in_this_run": "NOT_PRESENT",
+      "performed_by_this_run": false
+    }
   },
   "ledger_metrics": {
-    "source_records": 584,
-    "run_updates": 119,
-    "limitations": 109,
+    "source_records": 606,
+    "run_updates": 120,
+    "limitations": 114,
     "relationship_edges": 104,
-    "competing_hypotheses": 69,
+    "competing_hypotheses": 70,
     "market_observations": 63,
     "index_format_version": "2.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
-    "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 526931,
+    "latest_research_addendum_observations": 5,
+    "index_characters_before_this_update": 531371,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 611372,
-    "index_characters": 531371
+    "latest_snapshot_characters": 18924,
+    "index_characters": 554546
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -8341,15 +8603,14 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T00:09:33.702Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:11:20.367Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SNAPSHOT_AND_INDEX_CHARACTER_METRICS_MATCH; PR1270_AND_PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_GATE_UNVERIFIED",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SNAPSHOT_METRIC_MATCH; FULL_PAPER_LOG_REPLAY_PASS_2357; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_CI_GATE_UNVERIFIED",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
-      "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe",
-      "snapshot_characters": 611372,
-      "snapshot_character_metric_matches": true,
-      "source_reference_count": 358,
+      "snapshot_blob_sha": "274be95dc3b6b71c2ecfb674682edfe0ebe91f55",
+      "snapshot_commit_sha": "81e33a43f167387a0d71333b9d0b4f1e248b5a55",
+      "snapshot_characters": 18924,
+      "source_reference_count": 21,
       "missing_source_references": 0,
       "index_character_metric_matches": true,
       "ci": {
@@ -8365,9 +8626,24 @@
       "successor_index_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
       "successor_index_gate": "UNVERIFIED"
     },
-    "previous_inline_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
-    "previous_inline_index_characters": 989081,
-    "note": "Snapshot and index were read back and their pointer, source references and character metrics match. No full CI or gate result is claimed for this final index head."
+    "previous_pointer_snapshot": {
+      "record_type": "snapshot_reference",
+      "index_format_version": "2.0",
+      "schema_version": "1.0",
+      "captured_at_utc": "2026-10-29T00:09:14.462Z",
+      "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-29T0009Z-CORRECTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+      "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
+      "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe"
+    },
+    "intermediate_snapshot_preserved": {
+      "path": "data/xrp_intelligence/snapshots/2026-10-29T010857Z-handoff.json",
+      "blob_sha": "74fd87473f852700981c172860f1640f7f409434"
+    },
+    "pointer_fields_match": true,
+    "source_ids_unique": true,
+    "missing_source_references": 0,
+    "note": "Correction snapshot supersedes the unindexed 01:08:57Z snapshot for current handoff; both earlier snapshots remain unchanged. Full paper-trading replay is verified; the compact research-base index still lacks core CI/gate verification."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -8415,43 +8691,103 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T00:09:33.702Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T00:09:14.462Z",
+    "recorded_at_utc": "2026-10-29T01:11:20.367Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T00:09:33.702Z",
     "source_ids": [
-      "SRC-RUN15-SNAPSHOT-METRIC-CORRECTION-20261029T0009Z",
-      "SRC-RUN15-INDEX-POINTER-VERIFY-20261029T0009Z"
+      "SRC-RUN16-MAIN-HEAD-20261029T010857Z",
+      "SRC-RUN16-LATEST-SIGNAL-20261029T010857Z",
+      "SRC-RUN16-ACCURACY-WORKFLOW-20261029T010857Z",
+      "SRC-RUN16-SUMMARY-WORKFLOW-20261029T010857Z",
+      "SRC-RUN16-PAPER-STATE-20261029T010857Z",
+      "SRC-RUN16-PAPER-LOG-READBACK-20261029T010857Z",
+      "SRC-RUN16-PR1274-CHECKS-20261029T010857Z",
+      "SRC-RUN16-PR1275-CHECKS-20261029T010857Z",
+      "SRC-RUN16-PR1273-STATE-20261029T010857Z",
+      "SRC-RUN16-LEDGER-BRANCH-20261029T010857Z",
+      "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z",
+      "SRC-RUN16-SNAPSHOT-READBACK-20261029T010857Z",
+      "SRC-RUN17-MAIN-HEAD-20261029T011120Z",
+      "SRC-RUN17-PAPER-LOG-BLOB-REPLAY-20261029T011120Z",
+      "SRC-RUN17-PAPER-STATE-20261029T011120Z",
+      "SRC-RUN17-PR1273-MERGE-20261029T011120Z",
+      "SRC-RUN17-PR1274-CHECKS-20261029T011120Z",
+      "SRC-RUN17-PR1275-CHECKS-20261029T011120Z",
+      "SRC-RUN17-ACCURACY-WORKFLOW-20261029T011120Z",
+      "SRC-RUN17-SUMMARY-WORKFLOW-20261029T011120Z",
+      "SRC-RUN17-APPROVAL-WORKFLOW-20261029T011120Z",
+      "SRC-RUN17-SNAPSHOT-READBACK-20261029T011120Z"
     ],
-    "main_sha": "950607740de052d804d0b431c481bf2abda37a04",
+    "main_sha": "de30245082545242485b894bda53054b50c313aa",
     "latest_snapshot": {
-      "path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
-      "blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
-      "commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe",
+      "path": "data/xrp_intelligence/snapshots/2026-10-29T011120Z-correction.json",
+      "blob_sha": "274be95dc3b6b71c2ecfb674682edfe0ebe91f55",
+      "commit_sha": "81e33a43f167387a0d71333b9d0b4f1e248b5a55",
       "character_metric_matches": true,
       "source_references_pass": true
     },
-    "corrects_previous_snapshot_metric": true,
+    "paper_trading_replay": {
+      "status": "PASS_READ_ONLY_2357_ROWS",
+      "malformed_jsonl": 0,
+      "timestamp_order_errors": 0,
+      "portfolio_value_mismatches": 0,
+      "portfolio_change_mismatches": 0,
+      "cumulative_return_mismatches": 0,
+      "result_transition_mismatches": 0,
+      "state_matches": true
+    },
+    "external_merge_observed": {
+      "pr_number": 1273,
+      "merged_by": "Barrot-Agent",
+      "merged_at_utc": "2026-10-29T01:07:06Z",
+      "merge_commit_sha": "de30245082545242485b894bda53054b50c313aa",
+      "performed_by_this_run": false,
+      "authorization_evidence_in_this_run": "NOT_PRESENT"
+    },
+    "pr1274": {
+      "head_sha": "07c51940606483003c5a728b5ecd3d56293eec2c",
+      "ci": "PASS_147_TESTS_5.14S",
+      "gate": "PASS",
+      "draft": true,
+      "merged": false,
+      "behind_by": 21
+    },
+    "pr1275": {
+      "head_sha": "ec607983c3958ee54e0b1a986d754026121fe3d4",
+      "ci": "PASS_146_TESTS_6.35S",
+      "gate": "PASS",
+      "draft": true,
+      "merged": false,
+      "behind_by": 21
+    },
+    "circle_hypothesis": {
+      "id": "HYP-RUN16-CIRCLE-RESERVE-REVENUE-SENSITIVITY-20261029T010857Z",
+      "status": "INFERENCE_WITH_SECONDARY_CLAIM",
+      "hypothesis": "Circle's reserve-income exposure may be sensitive to rates and stablecoin distribution shifts; an AI-agent-driven migration of balances is a proposed risk scenario, not an observed cause of USDC outflows or XRP demand.",
+      "supporting_evidence": [
+        "The Block reported on 2026-10-27 that Mizuho estimated 10–20% medium-term reserve-revenue downside risk if AI agents steer USDC holders toward higher-yield fiat alternatives or other platforms."
+      ],
+      "counter_hypotheses": [
+        "USDC distribution network effects and payment integrations may offset any balance migration.",
+        "Reserve revenue may change primarily with policy rates and circulation, not AI-agent routing.",
+        "Even if USDC balances migrate, no XRP demand effect follows without chain- and route-level evidence."
+      ],
+      "disconfirming_evidence_needed": [
+        "Issuer filings and subsequent USDC circulation/reserve revenue data show no material impact.",
+        "No observable change in XRPL USDC balances or XRP bridge-path share after relevant adoption events."
+      ],
+      "xrp_link": "INDIRECT_SPECULATIVE_ONLY",
+      "confidence": "LOW",
+      "source_ids": [
+        "SRC-RUN16-CIRCLE-ANALYST-CLAIM-20261029T010857Z"
+      ]
+    },
     "forecast_status": "NOT_ISSUED",
     "main_modified": false,
     "merge_performed": false,
     "force_push": false,
     "deployment": false,
     "real_money_trade": false,
-    "pr1270": {
-      "head_sha": "5476a2353181f61f36b56d9e9bf8a5a5859dfdda",
-      "ci": "PASS_147_TESTS_6.25S",
-      "gate": "PASS",
-      "behind_by": 1,
-      "draft": true,
-      "merged": false
-    },
-    "pr1271": {
-      "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
-      "ci": "PASS_146_TESTS_5.33S",
-      "gate": "PASS",
-      "behind_by": 1,
-      "draft": true,
-      "merged": false
-    }
+    "state_mutated": false
   },
   "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
@@ -8557,6 +8893,49 @@
       "previous_inline_index_blob_sha": "43bd8941513820cdc8a1aacbf59c3a67de8893d4",
       "previous_inline_index_characters": 989081,
       "note": "Snapshot was read back from GitHub; pointer path/ID, blob SHA and source references were checked. The successor index commit itself has no verified CI/gate result yet."
+    },
+    {
+      "snapshot_blob_sha_checked_at_utc": "2026-10-29T01:11:20.367Z",
+      "post_snapshot_verification": {
+        "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; SNAPSHOT_METRIC_MATCH; FULL_PAPER_LOG_REPLAY_PASS_2357; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; LATEST_INDEX_CI_GATE_UNVERIFIED",
+        "snapshot_blob_readback_ok": true,
+        "snapshot_blob_sha": "274be95dc3b6b71c2ecfb674682edfe0ebe91f55",
+        "snapshot_commit_sha": "81e33a43f167387a0d71333b9d0b4f1e248b5a55",
+        "snapshot_characters": 18924,
+        "source_reference_count": 21,
+        "missing_source_references": 0,
+        "index_character_metric_matches": true,
+        "ci": {
+          "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+          "run_id": null,
+          "url": null
+        },
+        "gate": {
+          "status": "UNVERIFIED",
+          "run_id": null,
+          "url": null
+        },
+        "successor_index_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
+        "successor_index_gate": "UNVERIFIED"
+      },
+      "previous_pointer_snapshot": {
+        "record_type": "snapshot_reference",
+        "index_format_version": "2.0",
+        "schema_version": "1.0",
+        "captured_at_utc": "2026-10-29T00:09:14.462Z",
+        "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-29T0009Z-CORRECTION",
+        "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+        "snapshot_blob_sha": "db5578bd5b73a61e8020734711ab6c49e21c3baa",
+        "snapshot_commit_sha": "1853f3660515024efbce3e1ce658b6d7573392fe"
+      },
+      "intermediate_snapshot_preserved": {
+        "path": "data/xrp_intelligence/snapshots/2026-10-29T010857Z-handoff.json",
+        "blob_sha": "74fd87473f852700981c172860f1640f7f409434"
+      },
+      "pointer_fields_match": true,
+      "source_ids_unique": true,
+      "missing_source_references": 0,
+      "note": "Correction snapshot supersedes the unindexed 01:08:57Z snapshot for current handoff; both earlier snapshots remain unchanged. Full paper-trading replay is verified; the compact research-base index still lacks core CI/gate verification."
     }
   ]
 }
