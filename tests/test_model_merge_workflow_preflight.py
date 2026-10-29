@@ -25,7 +25,11 @@ def test_duplicate_model_merge_workflows_keep_same_fail_fast_preflight():
     assert first == second
 
 
-def test_missing_merge_config_is_not_present_in_current_checkout_tree():
-    # Static sentinel: if the config is later added, the preflight remains valid and the
-    # workflow can proceed to its normal merge steps; until then it fails before secrets.
-    assert CONFIG_PATH == "merges/barrot-superior/config.yaml"
+def test_preflight_segment_does_not_install_dependencies_or_access_hf_token():
+    for workflow in WORKFLOWS:
+        content = workflow.read_text(encoding="utf-8")
+        preflight_segment = content.split("      - name: Install deps", 1)[0]
+        assert "HF_TOKEN" not in preflight_segment
+        assert "pip install" not in preflight_segment
+        assert "test -f" not in preflight_segment  # only the expected -f absence guard is present
+        assert '[[ ! -f "$CONFIG_PATH" ]]' in preflight_segment
