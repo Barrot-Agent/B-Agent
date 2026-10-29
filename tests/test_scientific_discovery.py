@@ -529,12 +529,13 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
     monkeypatch.setattr(module, "configure_git", lambda: calls.setdefault("configured", True))
     monkeypatch.setattr(module, "checkout_branch", lambda branch: calls.setdefault("branch", branch))
     monkeypatch.setattr(module, "ScientificDiscoveryController", FakeScientificDiscoveryController)
-    monkeypatch.setattr(module, "write_collaboration_record", lambda cycle: calls.setdefault("record", cycle))
+    monkeypatch.setattr(module, "persist_scientific_discovery", lambda cycle: calls.setdefault("persistence", {"remote_persisted": True}))
     monkeypatch.setattr(module, "post_issue_comment", lambda message: calls.setdefault("comment", message))
     monkeypatch.setattr(module, "select_scientific_problem_adapter", lambda title, body: "adapter")
 
     module.main()
 
     assert calls["adapter"] == "adapter"
-    assert "record" in calls
+    assert "persistence" in calls
+    assert "persisted to the task branch" in str(calls["comment"]).lower()
     assert "scientific discovery recorded" in str(calls["comment"]).lower()
