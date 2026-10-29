@@ -23,11 +23,11 @@
     "record_type": "snapshot_reference",
     "index_format_version": "2.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-29T00:07:21.216Z",
-    "snapshot_id": "BARROT-XRP-INTELLIGENCE-202610290007Z",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0007Z.json",
-    "snapshot_blob_sha": "9bb1f8b48af5c5497d151788ab0e2538b789a421",
-    "snapshot_commit_sha": "134df11dcff1419428933984f0e19edc9da1634b"
+    "captured_at_utc": "2026-10-29T00:08:27.758Z",
+    "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-29T0008Z",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0008Z.json",
+    "snapshot_blob_sha": "7fc29f176ff33abade37d270aa8f78de0eebcdcd",
+    "snapshot_commit_sha": "5244c14f68445f8ff03c16732374cc4e2db71009"
   },
   "sources": [
     {
@@ -4719,6 +4719,14 @@
       "title": "PR #1271 corrected-head fail-closed gate",
       "accessed_at_utc": "2026-10-29T00:07:53.675Z",
       "note": "Fail-closed gate passed on latest corrected head b6688a328d24af70c4f234b56aeabf90aab5005e. No approval action or merge was performed."
+    },
+    {
+      "id": "SRC-RUN15-MAIN-TELEMETRY-20261029T0008Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/950607740de052d804d0b431c481bf2abda37a04",
+      "title": "Main advanced with telemetry-only report",
+      "accessed_at_utc": "2026-10-29T00:08:27.758Z",
+      "note": "Commit changes AUTONOMOUS_DEPLOYMENT_REPORT.md timestamp only. No XRP evaluator, workflow, paper-trading or ledger path changed. PRs #1270 and #1271 are one commit behind main; compare shows no overlapping changed paths."
     }
   ],
   "limitations": [
@@ -4828,7 +4836,8 @@
     "2026-10-28T2313Z correction: final snapshot corrects the snapshot character-count metric and preserves the corrected decision.action counts. Earlier 23:11Z and 23:12Z snapshots remain immutable and are superseded only for the latest handoff.",
     "2026-10-29T00:07:21.216Z: main's signal_accuracy.json reports 46.5% from a variable-horizon live-price evaluator that mutates historical signal rows; not comparable to fixed-horizon out-of-sample forecast skill. PR #1270 passed 147 tests and gate but remains draft/unmerged.",
     "2026-10-29T00:07:21.216Z: PR #1271 initial CI failed because its regression test had a duplicated def keyword; syntax corrected at b6688a328d24af70c4f234b56aeabf90aab5005e, but latest-head CI/gate remain unverified. Approval metadata parsing does not explain historical push-event runs with zero jobs.",
-    "2026-10-29T00:07:21.216Z: latest research snapshot/index update needs pointer/source-reference readback and index-head gate; research-base core CI remains untriggered by current PR base filter."
+    "2026-10-29T00:07:21.216Z: latest research snapshot/index update needs pointer/source-reference readback and index-head gate; research-base core CI remains untriggered by current PR base filter.",
+    "2026-10-29T00:08:27.758Z: Snapshot 2026-10-29T0007Z recorded main at 22ffb845, but telemetry-only commit 95060774 was already present by its capture time. The earlier snapshot is preserved; this 0008Z snapshot corrects the current-main pointer. PRs #1270/#1271 are one commit behind due to the report-only change, with no overlapping changed paths; recheck before approval."
   ],
   "run_updates": [
     {
@@ -7947,6 +7956,29 @@
       "merge_performed": false,
       "deployment": false,
       "real_money_trade": false
+    },
+    {
+      "recorded_at_utc": "2026-10-29T00:08:27.758Z",
+      "update_type": "CURRENT_MAIN_HEAD_CORRECTION_AND_PR_BASE_RECHECK",
+      "main_sha": "950607740de052d804d0b431c481bf2abda37a04",
+      "source_ids": [
+        "SRC-RUN15-MAIN-TELEMETRY-20261029T0008Z"
+      ],
+      "pr1270": {
+        "head_sha": "5476a2353181f61f36b56d9e9bf8a5a5859dfdda",
+        "ci": "PASS_147_TESTS_6.25S",
+        "gate": "PASS",
+        "behind_by": 1
+      },
+      "pr1271": {
+        "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
+        "ci": "PASS_146_TESTS_5.33S",
+        "gate": "PASS",
+        "behind_by": 1
+      },
+      "forecast_status": "NOT_ISSUED",
+      "main_modified": false,
+      "merge_performed": false
     }
   ],
   "mission_priority": {
@@ -8175,33 +8207,25 @@
     }
   },
   "current_research_head_before_ledger_update": "7e9b6c94a3add7fc606de359bc361bcd97fc0d43",
-  "current_research_head_this_run": "134df11dcff1419428933984f0e19edc9da1634b",
+  "current_research_head_this_run": "5244c14f68445f8ff03c16732374cc4e2db71009",
   "current_research_checks": {
-    "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PR1270_CI_GATE_PASS; PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; INDEX_GATE_PENDING",
-    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0007Z.json",
-    "snapshot_blob_sha": "9bb1f8b48af5c5497d151788ab0e2538b789a421",
-    "snapshot_commit_sha": "134df11dcff1419428933984f0e19edc9da1634b",
-    "source_reference_count": 367,
+    "status": "CORRECTED_MAIN_HEAD; SNAPSHOT_READBACK_PASS; SOURCE_REFERENCES_PASS; PR1270_CI_GATE_PASS; PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; INDEX_GATE_PENDING",
+    "latest_main_sha": "950607740de052d804d0b431c481bf2abda37a04",
+    "snapshot_path": "data/xrp_intelligence/snapshots/2026-10-29T0008Z.json",
+    "snapshot_blob_sha": "7fc29f176ff33abade37d270aa8f78de0eebcdcd",
+    "snapshot_commit_sha": "5244c14f68445f8ff03c16732374cc4e2db71009",
+    "source_reference_count": 358,
     "missing_source_references": 0,
-    "pr1270": {
-      "ci": "PASS_147_TESTS_6.25S",
-      "run_id": 40791531951,
-      "gate": "PASS",
-      "gate_run_id": 40791531864
-    },
-    "pr1271": {
-      "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
-      "ci": "PASS_146_TESTS_5.33S",
-      "run_id": 40791732695,
-      "gate": "PASS",
-      "gate_run_id": 40791732699
-    },
+    "pr1270_ci": "PASS_147_TESTS_6.25S",
+    "pr1270_gate": "PASS",
+    "pr1271_ci": "PASS_146_TESTS_5.33S",
+    "pr1271_gate": "PASS",
     "core_ci": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR"
   },
   "ledger_metrics": {
-    "source_records": 581,
-    "run_updates": 116,
-    "limitations": 107,
+    "source_records": 582,
+    "run_updates": 117,
+    "limitations": 108,
     "relationship_edges": 104,
     "competing_hypotheses": 69,
     "market_observations": 63,
@@ -8210,10 +8234,10 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 6,
     "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 517946,
+    "index_characters_before_this_update": 526378,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 615082,
-    "index_characters": 526378
+    "latest_snapshot_characters": 612158,
+    "index_characters": 526931
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_POINTER_READBACK_PASS; LOCAL_FIXTURE_TESTS_PASS; AUTOMATED_CI_NOT_TRIGGERED",
@@ -8239,13 +8263,13 @@
     "note": "This index update is a research-data change; no CI run is claimed for the research-base PR."
   },
   "latest_snapshot_verification": {
-    "snapshot_blob_sha_checked_at_utc": "2026-10-29T00:07:21.216Z",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-29T00:08:27.758Z",
     "post_snapshot_verification": {
-      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PR1270_AND_PR1271_CI_GATE_PASS; RESEARCH_BASE_CORE_CI_NOT_TRIGGERED; INDEX_GATE_PENDING",
+      "status": "SNAPSHOT_READBACK_PASS; POINTER_FIELDS_MATCH; SOURCE_REFERENCES_PASS; PR1270_AND_PR1271_CI_GATE_PASS; INDEX_SUCCESSOR_CHECKS_PENDING",
       "snapshot_blob_readback_ok": true,
-      "snapshot_blob_sha": "9bb1f8b48af5c5497d151788ab0e2538b789a421",
-      "snapshot_commit_sha": "134df11dcff1419428933984f0e19edc9da1634b",
-      "source_reference_count": 367,
+      "snapshot_blob_sha": "7fc29f176ff33abade37d270aa8f78de0eebcdcd",
+      "snapshot_commit_sha": "5244c14f68445f8ff03c16732374cc4e2db71009",
+      "source_reference_count": 358,
       "missing_source_references": 0,
       "ci": {
         "status": "NOT_TRIGGERED_FOR_RESEARCH_BASE_PR",
@@ -8257,13 +8281,12 @@
         "run_id": null,
         "url": null
       },
-      "verified_index_head_before_update": "9e2ca5774131609a354eadb40af21721004a3c22",
       "successor_index_ci": "PENDING_AFTER_WRITE",
       "successor_index_gate": "PENDING_AFTER_WRITE"
     },
     "previous_inline_index_commit_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
     "previous_inline_index_characters": 989081,
-    "note": "Snapshot created as a separate immutable file and read back byte-for-byte. New index pointer and successor verification metadata are being written separately."
+    "note": "Corrected current-main head after discovering a telemetry-only commit was already present at the prior snapshot capture time. Prior snapshot remains immutable and preserved."
   },
   "index_format_version": "2.0",
   "index_migration_history": [
@@ -8311,60 +8334,39 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-29T00:07:53.675Z",
-    "previous_addendum_recorded_at_utc": "2026-10-29T00:07:21.216Z",
+    "recorded_at_utc": "2026-10-29T00:08:27.758Z",
+    "previous_addendum_recorded_at_utc": "2026-10-29T00:07:53.675Z",
     "source_ids": [
-      "SRC-RUN15-MAIN-HEAD-202610290007Z",
-      "SRC-RUN15-LEGACY-ACCURACY-202610290007Z",
-      "SRC-RUN15-SIGNAL-SUMMARY-202610290007Z",
-      "SRC-RUN15-PR1270-CI-202610290007Z",
-      "SRC-RUN15-PR1270-GATE-202610290007Z",
-      "SRC-RUN15-PR1271-CI-FAIL-202610290007Z",
-      "SRC-RUN15-PR1271-SYNTAX-FIX-202610290007Z",
-      "SRC-RUN15-PR1271-RETRY-PENDING-202610290007Z",
-      "SRC-RUN15-PR1268-CI-GATE-202610290007Z",
-      "SRC-RUN15-APPROVAL-WORKFLOW-202610290007Z",
-      "SRC-RUN15-PR1271-CI-PASS-20261029T0007Z",
-      "SRC-RUN15-PR1271-GATE-PASS-20261029T0007Z"
+      "SRC-RUN15-MAIN-TELEMETRY-20261029T0008Z"
     ],
-    "main_sha": "22ffb8458644dfcc46d918136f1ee90eb7f8012c",
+    "main_sha": "950607740de052d804d0b431c481bf2abda37a04",
     "latest_snapshot": {
-      "path": "data/xrp_intelligence/snapshots/2026-10-29T0007Z.json",
-      "blob_sha": "9bb1f8b48af5c5497d151788ab0e2538b789a421",
-      "commit_sha": "134df11dcff1419428933984f0e19edc9da1634b"
+      "path": "data/xrp_intelligence/snapshots/2026-10-29T0008Z.json",
+      "blob_sha": "7fc29f176ff33abade37d270aa8f78de0eebcdcd",
+      "commit_sha": "5244c14f68445f8ff03c16732374cc4e2db71009"
     },
     "pr1270": {
       "head_sha": "5476a2353181f61f36b56d9e9bf8a5a5859dfdda",
       "ci": "PASS_147_TESTS_6.25S",
       "gate": "PASS",
+      "behind_by": 1,
       "draft": true,
       "merged": false
     },
     "pr1271": {
-      "number": 1271,
-      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1271",
       "head_sha": "b6688a328d24af70c4f234b56aeabf90aab5005e",
       "ci": "PASS_146_TESTS_5.33S",
-      "ci_run_id": 40791732695,
       "gate": "PASS",
-      "gate_run_id": 40791732699,
+      "behind_by": 1,
       "draft": true,
-      "merged": false,
-      "initial_failure_corrected": true
-    },
-    "legacy_accuracy": {
-      "checked_count": 1659,
-      "correct_count": 772,
-      "accuracy_pct": 46.5,
-      "status": "NOT_COMPARABLE_VARIABLE_HORIZON_MUTABLE_HISTORY"
+      "merged": false
     },
     "forecast_status": "NOT_ISSUED",
     "main_modified": false,
     "merge_performed": false,
     "force_push": false,
     "deployment": false,
-    "real_money_trade": false,
-    "state_mutated": false
+    "real_money_trade": false
   },
   "previous_snapshot_verification": {
     "snapshot_blob_sha_checked_at_utc": "2026-10-28T22:09:08.131Z",
