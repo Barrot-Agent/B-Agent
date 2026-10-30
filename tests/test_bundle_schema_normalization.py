@@ -47,12 +47,12 @@ def test_gate_still_rejects_string_list_fields_without_normalization():
     assert codes(review).count("REQUIRED_FIELD_INVALID") == 3
 
 
-def test_gate_accepts_authorization_noun():
+def test_gate_still_requires_explicit_authorization_boundary():
     bundle = sample_bundle()
-    bundle["constraints"] = list(DEFAULT_CONSTRAINTS)
+    bundle["constraints"] = list(DEFAULT_CONSTRAINTS)  # generic "authorization" wording is not an extracted boundary
     review = review_work_bundle(bundle)
-    assert "AUTHORIZATION_CONSTRAINT_MISSING" not in codes(review)
-    assert review.valid is True
+    assert "AUTHORIZATION_CONSTRAINT_MISSING" in codes(review)
+    assert review.valid is False
 
 
 # --- unambiguous coercions -----------------------------------------------
