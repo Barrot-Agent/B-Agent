@@ -69,6 +69,7 @@ jobs:
     needs: merge
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    permissions: {}
     env:
       MODEL_NAME: ${{ inputs.model_name }}
     steps:
