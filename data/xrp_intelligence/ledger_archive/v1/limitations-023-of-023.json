@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 22,
+  "chunk_count": 23,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T08:28:30Z",
+  "records": [
+    "XRP Insights' 22.58B exchange-wallet total includes cold storage, deposit hubs, wrapped-token backing and exchange-controlled insurance/charity funds; it is not tradable float or customer liabilities. Its 701-wallet coverage is limited to XRPSCAN public labels, with 38.4% of storage labels unclassified and known coverage gaps.",
+    "XRP Insights' same-wallet change of -17.4M XRP over seven days and +35.8M over 30 days is a pre-incident baseline ending October 29 08:00 UTC. It cannot be compared directly with TrackWhale's incident-period large-transfer netflow of -210.09M XRP; wallet universe, time window and event inclusion differ.",
+    "TokenPost and Gate News both report Binance's October 1 XRP PoR ratio of 100.77%, but neither supplies the raw XRP customer-liability balance, on-chain reserve balance or official five-wallet address crosswalk. CoinLaw's summary omission is not disconfirming evidence; it displays only four selected assets.",
+    "TokenPost's September 30 Binance reserve figure of 2.647B XRP is a narrower CryptoQuant-derived series, while XRP Insights' October 29 2.80B includes Binance-Peg reserve and Binance US and uses XRPSCAN-labelled wallets. Do not compare as if the series were identical.",
+    "The 100.77% October 1 reserve ratio is a historical secondary-reported snapshot, not the post-incident XRP ratio. A conditional shortfall scenario requires proof that the five incident wallets were in scope and that Binance did not replenish them."
+  ]
+}
