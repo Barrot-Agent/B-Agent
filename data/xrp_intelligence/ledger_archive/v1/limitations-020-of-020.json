@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 19,
+  "chunk_count": 20,
+  "record_count": 8,
+  "created_at_utc": "2026-10-30T08:12:00Z",
+  "records": [
+    "Three initial append-only shards created in this run failed exact-head validation because their record_type envelope used xrp_intelligence_archive_shard instead of the validator-required xrp_research_ledger_archive_shard. Corrected copies are appended under new paths; malformed originals remain preserved but unreferenced. The exact-head validator must pass before the index is considered verified.",
+    "Bitquery's Binance PoR labels and CoinDesk's Ethereum Binance 14 finding do not establish membership of the five XRPL source wallets in Binance's official October 1 XRP reserve address set. CoinLaw's summary omits an XRP ratio; the 100.77% XRP figure remains uncorroborated by the sources inspected.",
+    "JPYSC's JPY 6.9B lending applications are not additional issued stablecoin supply. Do not add them to the JPY 20.1B outstanding balance; only JPY 1.0B of backing was reported allocated to short-term Japanese government bonds as of September 7.",
+    "SBI's JPYSC/OUSD interoperability is only a PoC under consideration. No live bridge, chain route, production settlement volume or direct XRP role is established. The October 27 BlackRock/tokenized-MMF agreement is an MOU, not a launched fund or collateral product.",
+    "SBI's START bond page confirms the bond sold out and a one-time eligible XRP reward; actual XRP distributed is not disclosed. Later 2027/2028/2029 coupon-date reward terms were undecided and are not promised. The XRP reward is not recurring demand evidence.",
+    "SBI Clearing Trust's merger into SBI Shinsei Trust Bank is planned for December 31, 2026 and remains subject to regulatory approvals; it is not yet effective. Its trust custody business is not an XRP-specific custody disclosure.",
+    "SBICAH GK/SBI Crypto Asset Holdings Co., Ltd. is distinct from SBIC East Japan, the Tokyo SME investment/consultation company associated with the ChatGPT seminar. The user's intended meaning of the bare acronym SBIC remains unresolved.",
+    "CoinGecko's Bitbank XRP/JPY volume and depth are a third-party snapshot with no exact exchange timestamp; no post-acquisition time series or official Bitbank XRP liquidity report has been reconciled."
+  ]
+}
