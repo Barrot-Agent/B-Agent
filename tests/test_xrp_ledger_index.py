@@ -115,10 +115,18 @@ def test_legacy_inline_index_remains_readable(tmp_path):
 
 
 def test_current_repository_ledger_validates_read_only():
-    report = VALIDATOR.validate_index(ROOT / "data" / "xrp_intelligence" / "research_ledger.json", ROOT)
+    index_path = ROOT / "data" / "xrp_intelligence" / "research_ledger.json"
+    index_data = json.loads(index_path.read_text(encoding="utf-8"))
+    report = VALIDATOR.validate_index(index_path, ROOT)
     assert report["status"] == "PASS", report
     assert report["snapshot_reference_mode"] is True
     assert report["state_mutated"] is False
+    assert report["source_count"] == index_data["sources"]["record_count"]
+    assert report["run_update_count"] == index_data["run_updates"]["record_count"]
+    assert report["limitation_count"] == index_data["limitations"]["record_count"]
+    assert report["archive_shards_checked"] == sum(
+        index_data[name]["chunk_count"] for name in ("sources", "run_updates", "limitations")
+    )
 
 
 def _write_archive_shard(tmp_path, array_name, records, *, chunk_index=0, chunk_count=1):
