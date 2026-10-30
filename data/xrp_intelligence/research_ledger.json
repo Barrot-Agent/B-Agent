@@ -30,7 +30,7 @@
     "snapshot_commit_sha": "5e910ebc424a48f74de90b2d320d327eb1b70dad",
     "snapshot_blob_sha_checked_at_utc": "2026-10-30T08:20:00Z",
     "post_snapshot_verification": {
-      "status": "STRUCTURAL_READBACK_PASS; PREVIOUS_HEAD_EXACT_VALIDATION_PASS; CURRENT_APPEND_REVALIDATION_PENDING",
+      "status": "EXACT_HEAD_VALIDATION_PASS_ON_PREVIOUS_HEAD; CURRENT_VERIFICATION_RECORD_APPEND_REVALIDATION_PENDING",
       "snapshot_blob_sha": "232b093cc4f62cf8e4f869eafda1b872d674aed2",
       "snapshot_characters": 13856,
       "snapshot_source_reference_count": 36,
@@ -56,11 +56,11 @@
         "limitations": 382
       },
       "source_ids_unique": "PENDING_CURRENT_HEAD_VALIDATOR",
-      "previous_verified_head_sha": "8798099fd344e6d9f98c37abde9deb6629deb130",
-      "previous_validator_run_id": 41025502034,
+      "previous_verified_head_sha": "e873a464b8cbcf544131fd6f3bf4b4d2510c8ee9",
+      "previous_validator_run_id": 41026027736,
       "previous_validator_pr_run_id": 41025506041,
       "previous_validator_tests_passed": 18,
-      "previous_gate_run_id": 41025506060,
+      "previous_gate_run_id": 41026027735,
       "previous_gate_status": "PASS_MERGE_DISABLED",
       "current_validator_head_sha": "PENDING",
       "current_validator_run_id": null,
@@ -375,8 +375,8 @@
     "record_type": "archive_pointer",
     "archive_schema_version": "1.0",
     "array_name": "run_updates",
-    "record_count": 226,
-    "chunk_count": 25,
+    "record_count": 227,
+    "chunk_count": 26,
     "chunks": [
       {
         "chunk_index": 0,
@@ -527,15 +527,21 @@
         "path": "data/xrp_intelligence/ledger_archive/v1/run_updates-025-of-025.json",
         "git_blob_sha": "5f2a1cb074104700e97e3927fa0382a8ef27a6d6",
         "record_count": 1
+      },
+      {
+        "chunk_index": 25,
+        "path": "data/xrp_intelligence/ledger_archive/v1/run_updates-026-of-026.json",
+        "git_blob_sha": "dbb064016126bed3a87bc72bec8379358b0b46c7",
+        "record_count": 1
       }
     ]
   },
   "mission_priority": {
-    "as_of_utc": "2026-10-30T08:20:00Z",
+    "as_of_utc": "2026-10-30T08:23:00Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 as execution, verification and safety foundation",
     "current_forecast_status": "NOT_ISSUED",
-    "next_action": "Crosswalk the five Binance XRPL source wallets and XRP-BF2 backing address against Binance's official October 1 PoR address download; monitor the attacker receiver after 07:23 UTC; reconcile the 9-versus-10 chain count and October 29 ETF issuer files."
+    "next_action": "Retrieve Binance's official October 1 PoR address download and crosswalk the five XRPL source wallets and XRP-BF2 backing address; monitor the attacker receiver after 07:23 UTC; reconcile 9-versus-10 incident chain attribution and October 29 ETF issuer files."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -754,10 +760,10 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "7a0b9e6ede9f3cd4107a8d66cd393aad519c960f",
+  "current_research_head_before_ledger_update": "1f280312820792ecb86776acff15a47c1a6275d3",
   "current_research_head_this_run": "9abbdf9722ecf328d16237719eb0c7dcccfdefe3",
   "current_research_checks": {
-    "status": "PREVIOUS EXACT-HEAD LEDGER VALIDATOR PASSED 18/18 AND FAIL-CLOSED GATE PASSED; CURRENT APPEND HAS STRUCTURAL READBACK PASS AND A NEW EXACT-HEAD RUN IS PENDING.",
+    "status": "EXACT-HEAD LEDGER VALIDATOR PASSED 18/18 ON e873a464; FAIL-CLOSED GATE PASSED; VERIFICATION-RECORD APPEND REVALIDATION PENDING.",
     "latest_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261030T082000Z-sbi-multirail-binance-incident-current-market-panel.json",
     "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T082000Z-binance-chain-count-derivatives-etf-flow-reconciliation.json",
@@ -838,9 +844,9 @@
     },
     "latest_validator_run_id": 41020246389,
     "latest_validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41020246389",
-    "latest_validator_head_sha": "9abbdf9722ecf328d16237719eb0c7dcccfdefe3",
+    "latest_validator_head_sha": "e873a464b8cbcf544131fd6f3bf4b4d2510c8ee9",
     "latest_validator_tests_passed": 18,
-    "latest_gate_run_id": 41020246522,
+    "latest_gate_run_id": 41026027735,
     "latest_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41020246522",
     "latest_gate_head_sha": "9abbdf9722ecf328d16237719eb0c7dcccfdefe3",
     "latest_gate_status": "PASS_MERGE_DISABLED",
@@ -851,7 +857,7 @@
       "gate_run_id": 41019705690,
       "gate": "PASS_MERGE_DISABLED"
     },
-    "latest_validator_status": "PENDING_CURRENT_APPEND_HEAD",
+    "latest_validator_status": "PASS_ON_PREVIOUS_HEAD",
     "pr1366_fresh_main_cross_analysis": {
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1366",
       "branch": "safety/cross-analysis-read-only-main-20261030T0803Z",
@@ -917,11 +923,15 @@
       "long_account_share_percent": 78.8,
       "etf_alpha_2026_10_29_usd": 8400000,
       "etf_cryptoetf_partial_2026_10_29_usd": 7100000
-    }
+    },
+    "latest_validator_pr_run_id": 41026027736,
+    "latest_validator_tests_failed": 0,
+    "push_validator_run_id": 41026022846,
+    "push_validator_status": "PENDING_AT_CAPTURE"
   },
   "ledger_metrics": {
     "source_records": 1344,
-    "run_updates": 226,
+    "run_updates": 227,
     "limitations": 382,
     "relationship_edges": 569,
     "competing_hypotheses": 286,
@@ -931,14 +941,14 @@
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 12,
     "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 136681,
+    "index_characters_before_this_update": 139774,
     "prior_index_characters_before_compaction": 989081,
     "latest_snapshot_characters": 13856,
-    "index_characters": 139774,
+    "index_characters": 141053,
     "serialization": "MINIFIED_JSON_LOSSLESS",
     "lossless_compaction_count": 1,
-    "archive_shards": 72,
-    "archive_records_roundtrip": "PREVIOUS HEAD 8798099 EXACT-HEAD VALIDATOR PASS 18/18 AND FAIL-CLOSED GATE PASS; CURRENT APPEND HEAD REVALIDATION PENDING.",
+    "archive_shards": 73,
+    "archive_records_roundtrip": "EXACT-HEAD VALIDATOR PASS 18/18 ON HEAD e873a464; FAIL-CLOSED GATE PASS; CURRENT VERIFICATION-RECORD APPEND REVALIDATION PENDING.",
     "validator_regression_tests_passed": 18,
     "validator_exact_head_run_id": 41020246389,
     "validator_exact_head_sha": "9abbdf9722ecf328d16237719eb0c7dcccfdefe3",
@@ -948,7 +958,7 @@
     "validator_regression_tests_failed": 0,
     "duplicate_source_ids_before_update": 1,
     "duplicate_source_ids_after_update": 0,
-    "current_exact_head_validator_status": "PREVIOUS_HEAD_PASS; CURRENT_APPEND_REVALIDATION_PENDING",
+    "current_exact_head_validator_status": "PASS_ON_PREVIOUS_HEAD; CURRENT_VERIFICATION_RECORD_APPEND_PENDING",
     "source_ids_unique": true,
     "latest_gate_run_id": 41020246522,
     "latest_gate_status": "PASS_AUTOMATIC_MERGE_DISABLED",
@@ -990,7 +1000,7 @@
     "research_branch_full_ci": "NOT_RUN_STRUCTURAL_READBACK_ONLY"
   },
   "latest_snapshot_verification": {
-    "status": "PREVIOUS_HEAD_EXACT_VALIDATION_PASS; CURRENT_APPEND_REVALIDATION_PENDING",
+    "status": "EXACT_HEAD_VALIDATION_PASS_ON_PREVIOUS_HEAD; CURRENT_VERIFICATION_RECORD_APPEND_REVALIDATION_PENDING",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261030T082000Z-sbi-multirail-binance-incident-current-market-panel.json",
     "snapshot_blob_sha": "232b093cc4f62cf8e4f869eafda1b872d674aed2",
     "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T082000Z-binance-chain-count-derivatives-etf-flow-reconciliation.json",
@@ -999,19 +1009,18 @@
     "missing_source_references": 0,
     "graph_source_reference_count": 36,
     "missing_graph_source_references": 0,
-    "archive_shards_total": 72,
+    "archive_shards_total": 73,
     "archive_record_counts": {
       "sources": 1344,
-      "run_updates": 226,
+      "run_updates": 227,
       "limitations": 382
     },
-    "source_ids_unique": "PENDING_CURRENT_HEAD_VALIDATOR",
-    "previous_verified_head_sha": "8798099fd344e6d9f98c37abde9deb6629deb130",
-    "previous_validator_run_id": 41025502034,
-    "previous_validator_pr_run_id": 41025506041,
-    "previous_validator_tests_passed": 18,
-    "previous_gate_run_id": 41025506060,
-    "previous_gate_status": "PASS_MERGE_DISABLED",
+    "source_ids_unique": true,
+    "previous_verified_head_sha": "e873a464b8cbcf544131fd6f3bf4b4d2510c8ee9",
+    "validator_run_id": 41026027736,
+    "validator_tests_passed": 18,
+    "gate_run_id": 41026027735,
+    "gate_status": "PASS_MERGE_DISABLED",
     "current_validator_run_id": null,
     "current_gate_run_id": null,
     "forecast_status": "NOT_ISSUED"
@@ -2822,12 +2831,28 @@
       "fail_closed_gate_run_id": 41025506060,
       "fail_closed_gate_status": "PASS_MERGE_DISABLED",
       "note": "Exact-head pass before the next append; the current index now includes six additional sources, one run update, five limitations and a new snapshot/graph. Current head requires its own run."
+    },
+    {
+      "verified_at_utc": "2026-10-30T08:22:54Z",
+      "verified_head_sha": "e873a464b8cbcf544131fd6f3bf4b4d2510c8ee9",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T082000Z-sbi-multirail-binance-incident-current-market-panel.json",
+      "snapshot_blob_sha": "232b093cc4f62cf8e4f869eafda1b872d674aed2",
+      "archive_shards_checked": 72,
+      "sources": 1344,
+      "run_updates": 226,
+      "limitations": 382,
+      "validator_pr_run_id": 41026027736,
+      "tests_passed": 18,
+      "tests_failed": 0,
+      "fail_closed_gate_run_id": 41026027735,
+      "fail_closed_gate_status": "PASS_MERGE_DISABLED",
+      "note": "Corrected archive shard record_type and snapshot_path. All 72 referenced shards and 36 snapshot/graph source references passed the exact-head validator. A subsequent run-update record was appended; current index head revalidation is pending."
     }
   ],
-  "current_research_head_before_this_update": "7a0b9e6ede9f3cd4107a8d66cd393aad519c960f",
+  "current_research_head_before_this_update": "1f280312820792ecb86776acff15a47c1a6275d3",
   "archive_policy": {
     "schema_version": "1.0",
-    "status": "APPEND_ONLY; PREVIOUS HEAD VALIDATED 18/18; CURRENT APPEND EXACT-HEAD VALIDATION PENDING.",
+    "status": "APPEND_ONLY; EXACT-HEAD VALIDATOR PASS 18/18 ON PREVIOUS HEAD; CURRENT VERIFICATION-RECORD APPEND REVALIDATION PENDING.",
     "archive_schema_version": "1.0",
     "digest_algorithm": "Git blob SHA-1 over exact shard bytes",
     "archive_root": "data/xrp_intelligence/ledger_archive/v1/",
@@ -2837,15 +2862,15 @@
         "chunk_count": 25
       },
       "run_updates": {
-        "record_count": 226,
-        "chunk_count": 25
+        "record_count": 227,
+        "chunk_count": 26
       },
       "limitations": {
         "record_count": 382,
         "chunk_count": 22
       }
     },
-    "preservation": "The 61 previously verified archive shards remain unchanged. Three initial malformed shards remain preserved unreferenced; corrected copies are referenced. Additional source/run-update/limitation shards were appended. The first two snapshot copies remain preserved unreferenced; the latest pointer references a new immutable snapshot with a matching snapshot_path. No historical source, run update, limitation, graph or forecast record was deleted.",
-    "preserving": "Append-only archive policy retained. Previous exact-head validation passed 18/18. Current append has structural readback and awaits exact-head validation."
+    "preservation": "The 61 previously verified archive shards remain unchanged. Three initial malformed shards remain preserved unreferenced; corrected copies are referenced. Additional source/run-update/limitation shards were appended. Two prior snapshot copies remain preserved unreferenced; latest pointer references the current immutable snapshot. The previous head e873a464 passed the 18-test validator and fail-closed gate. No historical source, run update, limitation, graph or forecast record was deleted.",
+    "preserving": "Append-only archive policy retained. The previous exact head passed 18/18; the latest verification-record append is awaiting its own exact-head run."
   }
 }
