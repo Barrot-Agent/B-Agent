@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 56,
+  "chunk_count": 57,
+  "record_count": 12,
+  "created_at_utc": "2026-10-30T16:59:00Z",
+  "records": [
+    {
+      "id": "SRC-COINBASE-Q3-2026-10Q-COLLATERAL-20261030",
+      "evidence_class": "PRIMARY_SEC_FILING",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "title": "Coinbase Global Q3 2026 Form 10-Q: lending and derivatives collateral",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "period_end": "2026-09-30",
+      "loan_receivables_usd": 1976137000,
+      "collateral_requirement_pct_of_loan_fair_value": "100%-250%",
+      "recognized_lending_collateral_usd": 1009297000,
+      "recognized_lending_collateral_breakdown_usd": {
+        "bitcoin": 920649000,
+        "ethereum": 67005000,
+        "other_crypto_assets": 9903000,
+        "fiat_and_payment_stablecoins": 11740000
+      },
+      "unrecognized_customer_collateral_usd": 3284562000,
+      "unrecognized_customer_collateral_breakdown_usd": {
+        "crypto_assets": 2804112000,
+        "fiat_and_payment_stablecoins": 480450000
+      },
+      "recognized_derivatives_collateral_usd": 325766000,
+      "recognized_derivatives_collateral_breakdown_usd": {
+        "bitcoin": 322341000,
+        "ethereum": 3731000
+      },
+      "derivatives_collateral_requirement": "at least 100% of derivative notional",
+      "xrp_specific_collateral": "not disclosed; XRP not separately named in recognized derivative collateral table; unrecognized customer crypto collateral is not asset-level disaggregated",
+      "note": "Other recognized lending crypto assets total only USD9.903M; unrecognized customer crypto collateral USD2.804B is not broken down by token. Do not infer zero total XRP collateral."
+    },
+    {
+      "id": "SRC-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION-20261030",
+      "evidence_class": "PRIMARY_SEC_FILING",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "title": "Circle Q2 2026 Form 10-Q: Coinbase/Binance distribution economics and SBI JV",
+      "published_at": "2026-08-2026",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "period_end": "2026-06-30",
+      "usdc_circulation_end_usd": 73269000000,
+      "usdc_circulation_average_usd": 76524000000,
+      "usdc_on_platform_end_usd": 12442000000,
+      "usdc_on_platform_daily_weighted_average_pct": 19.5,
+      "distribution_costs_to_coinbase_usd": {
+        "q2_2026": 324600000,
+        "h1_2026": 655300000
+      },
+      "distribution_costs_basis": "Coinbase allocations depend on USDC held on its platform after issuer retention plus a share of broader ecosystem growth",
+      "strategic_distributors": [
+        "Coinbase",
+        "Binance"
+      ],
+      "circle_sbi_japan_equity_pct": 50,
+      "sbi_contribution_november_2025_usd_equivalent": 1500000,
+      "circle_controlled_vie": true,
+      "significant_operating_results_to_june_2026": false,
+      "note": "Circle consolidates Circle SBI Japan K.K. because it controls the VIE despite 50% equity; SBI's share is noncontrolling interest. Circle's USDC-on-platform measure is not directly comparable to Coinbase's later Q3 average USDC-in-products measure."
+    },
+    {
+      "id": "SRC-COINBASE-Q3-2026-EARNINGS-USDC-20261030",
+      "evidence_class": "PRIMARY_COMPANY_EARNINGS_RELEASE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "title": "Coinbase Q3 2026 earnings release",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "total_revenue_usd": 1216000000,
+      "transaction_revenue_usd": 590200000,
+      "subscription_services_revenue_usd": 570000000,
+      "stablecoin_revenue_usd": 306905000,
+      "average_usdc_in_coinbase_products_usd": 22000000000,
+      "global_crypto_trading_volume_share_pct": 10.7,
+      "assets_on_platform_usd": 377000000000,
+      "prediction_market_annualized_revenue_run_rate_usd": 200000000,
+      "adjusted_net_income_usd": 78000000,
+      "gaap_net_income_usd": 719000000,
+      "note": "Annualized prediction-market run-rate is not recognized quarterly revenue. Circle Q2 platform balance definitions differ from Coinbase Q3 average product balance."
+    },
+    {
+      "id": "SRC-SBI-CIRCLE-JV-50-50-AND-CIRCLE-CONTROL-20261030",
+      "evidence_class": "PRIMARY_COMPANY_PRESENTATION_AND_SEC_FILING",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf",
+      "title": "SBI Circle Holdings / Circle SBI Japan K.K. 50:50 joint venture",
+      "published_at": "2025-05-09",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "legal_equity_split": {
+        "sbi": 50,
+        "circle": 50
+      },
+      "purpose": "Promote USDC distribution in Japan and develop use cases",
+      "corroborating_sec_filing": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "accounting_control": "Circle controls and consolidates the VIE; SBI interest presented as noncontrolling interest",
+      "note": "Equal equity does not imply equal accounting control or operating decision rights."
+    },
+    {
+      "id": "SRC-SBI-CIRCLE-ARC-INVESTMENT-20260512",
+      "evidence_class": "PRIMARY_SBI_REGULATORY_COMPANY_NOTICE",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf",
+      "title": "SBI strategic investment in Circle and Arc token presale participation",
+      "published_at": "2026-05-12",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "sbi_investment_in_circle_shares_usd": 50000000,
+      "investment_timing": "Following Circle NYSE listing",
+      "arc_token_presale_participation": true,
+      "note": "This USD50M strategic investment in Circle is separate from SBI's USD50M investment in Startale Group in March 2026."
+    },
+    {
+      "id": "SRC-SBI-JPYSC-LAUNCH-ACCOUNT-ONLY-20260624",
+      "evidence_class": "PRIMARY_SBI_COMPANY_RELEASE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "title": "JPYSC launch: trust-type yen stablecoin, initially limited to SBI VC Trade accounts",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "issuer": "SBI Shinsei Trust Bank",
+      "distributor": "SBI VC Trade",
+      "co_developer": "Startale Group",
+      "initial_availability": "SBI VC Trade account balances only",
+      "public_chain_transfer": "future conditional on legal and tax practice clarification",
+      "note": "JPYSC was issued and made available within SBI VC Trade accounts; this is not evidence of public-chain transfer liquidity at launch."
+    },
+    {
+      "id": "SRC-SBI-JPYSC-JGB-RESERVE-AND-LENDING-20260907",
+      "evidence_class": "PRIMARY_SBI_TRUST_BANK_RELEASE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "title": "JPYSC backing assets include Japanese government bonds",
+      "published_at": "2026-09-07",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "jgb_investment_usd_equivalent_jpy": 1000000000,
+      "reported_issued_balance_jpy": 20100000000,
+      "lending_applications_jpy": 6900000000,
+      "actual_loans_confirmed": false,
+      "jgb_share_of_issued_balance_pct": 4.98,
+      "note": "JPY6.9B is applications, not confirmed lending. JPY1B JGB allocation is approximately 4.98% of the JPY20.1B reported issued balance."
+    },
+    {
+      "id": "SRC-SBI-SMBC-JPYSC-CAPITAL-ALLIANCE-20261030",
+      "evidence_class": "PRIMARY_SBI_RELEASE_WITH_SECONDARY_EQUITY_DETAIL",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "title": "SBI Holdings and SMBC Group capital/business alliance on stablecoin services",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "officially_confirmed": "Capital and business alliance to jointly study new financial services using stablecoins and related technology",
+      "secondary_reported_equity_interest_pct": 5,
+      "secondary_report": "https://www.ababnews.com/en/news/774454aa-86d2-4279-8f62-02d521a255d0",
+      "target": "SBI Startale Marketing Co., Ltd.",
+      "note": "The SBI release confirms the alliance; approximately 5% investment detail is reported by secondary business press and should remain a sourced claim until the share subscription closes."
+    },
+    {
+      "id": "SRC-SBI-STARTALE-BLACKROCK-JPYSC-MMF-MOU-20261027",
+      "evidence_class": "PRIMARY_SBI_COMPANY_RELEASE",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "title": "SBI, Startale and BlackRock MOU to connect tokenized MMF and JPYSC",
+      "published_at": "2026-10-27",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "parties": [
+        "SBI Holdings",
+        "Startale Group",
+        "BlackRock Financial Management",
+        "BlackRock Japan"
+      ],
+      "status": "MOU_NOT_EXECUTED",
+      "purpose": "Explore digital-asset ecosystem connecting tokenized money-market funds and JPYSC",
+      "note": "An MOU is not proof of a live collateral or settlement integration."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-XRPL-NATIVE-AND-XRP-AUTO-BRIDGE-20250612",
+      "evidence_class": "PRIMARY_CIRCLE_AND_RIPPLE_RELEASE",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "title": "Native USDC launches on XRP Ledger",
+      "published_at": "2025-06-12",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "network": "XRPL mainnet",
+      "issuer": "Circle regulated affiliate",
+      "circle_mint_and_api_support": true,
+      "ripple_corroboration": "https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/",
+      "xrp_auto_bridge_role": "XRPL DEX auto-bridging uses XRP as an essential bridge currency",
+      "actual_executed_bridge_volume": "not disclosed",
+      "note": "Native USDC availability creates a direct Circle-XRPL relationship; it does not quantify actual XRP bridge usage."
+    },
+    {
+      "id": "SRC-COINBASE-RLUSD-THREE-NETWORK-LISTING-20261028",
+      "evidence_class": "PRIMARY_COINBASE_PRODUCT_RELEASE",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "title": "Coinbase adds RLUSD to Prime, Exchange and retail app",
+      "published_at": "2026-10-28",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "networks_at_launch": [
+        "XRP Ledger",
+        "Base",
+        "Ethereum"
+      ],
+      "global_exchange_collateral_use": "planned to follow; not live at launch",
+      "ripple_base_liquidity_support": true,
+      "note": "RLUSD access is live on three networks; Coinbase Global Exchange collateral functionality was announced as future availability."
+    },
+    {
+      "id": "SRC-CIRCLE-ARC-MAINNET-INSTITUTIONAL-RAILS-20260916",
+      "evidence_class": "PRIMARY_CIRCLE_MAINNET_ANNOUNCEMENT",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+      "title": "Circle Arc mainnet launch and institutional network",
+      "published_at": "2026-09-16",
+      "accessed_at_utc": "2026-10-30T16:59:00Z",
+      "gas_asset": "USDC",
+      "finality": "sub-second deterministic finality",
+      "validator_set": "permissioned; phased founding cohort",
+      "founding_validator_sbi_group": true,
+      "exchange_access_partners": [
+        "Binance",
+        "Coinbase",
+        "Upbit"
+      ],
+      "collateral_assets": [
+        "USYC",
+        "BUIDL",
+        "private credit funds",
+        "cirBTC"
+      ],
+      "xrp_native_gas_or_collateral": "not announced",
+      "regulatory_approval": "Circle states Arc has not been reviewed or approved by NYDFS or another regulator",
+      "note": "SBI Group is a founding validator; Coinbase/Binance/Upbit are exchange access partners, not validators. Arc is distinct from XRPL."
+    }
+  ]
+}
