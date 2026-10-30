@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-2026-10-30T125500Z-SBI-APAC-RAIL-MATURITY-AND-CAPITAL-SEMANTICS",
+  "captured_at_utc": "2026-10-30T12:55:00Z",
+  "title": "Separate SBI stablecoin reserve assets, payment-network scale, consortium membership and production maturity",
+  "status": "ADOPTED_FOR_RESEARCH_SCHEMA",
+  "decisions": [
+    {
+      "field_family": "jpysc_reserve_and_lending",
+      "required_fields": [
+        "issued_amount_jpy",
+        "short_term_jgb_assets_jpy",
+        "lending_applications_jpy",
+        "accepted_loans_jpy",
+        "reserve_liquidity",
+        "as_of"
+      ],
+      "rule": "JPYSC issuance, short-term JGB allocation and lending applications are separate. Do not treat lending applications as loans or reserve assets as XRP collateral."
+    },
+    {
+      "field_family": "jpysc_public_chain_status",
+      "required_fields": [
+        "account_only",
+        "external_deposit_enabled",
+        "external_withdrawal_enabled",
+        "public_chain",
+        "network",
+        "supervisory_confirmation",
+        "first_validated_transaction"
+      ],
+      "rule": "JPYSC remains account-only until official external transfer activation and validated public-chain transactions. A future Open Standard or BlackRock MOU does not override current route status."
+    },
+    {
+      "field_family": "sbi_corporate_network",
+      "required_fields": [
+        "investor",
+        "investee",
+        "stake_pct",
+        "investment_amount",
+        "vehicle",
+        "purpose",
+        "as_of"
+      ],
+      "rule": "Record SBI's USD50M Startale investment, SMBC's 5% SBI Startale Marketing stake and SBI's separate Circle JV/equity as distinct capital relationships."
+    },
+    {
+      "field_family": "payment_platform_scale",
+      "required_fields": [
+        "total_tpv",
+        "fiat_share",
+        "stablecoin_share",
+        "xrp_share",
+        "currencies",
+        "routes",
+        "licenses",
+        "as_of"
+      ],
+      "rule": "PhotonPay's USD65B annualized TPV is all-rail volume; do not infer stablecoin-only or XRP volume when asset/rail composition is undisclosed."
+    },
+    {
+      "field_family": "consortium_membership",
+      "required_fields": [
+        "consortium",
+        "member",
+        "role",
+        "bilateral_contract",
+        "pilot_status",
+        "production_volume"
+      ],
+      "rule": "Shared Open Standard membership with Coinbase/Mastercard is a network relationship, not proof of direct bilateral integration or XRP settlement."
+    },
+    {
+      "field_family": "tokenized_mmf_stablecoin_mou",
+      "required_fields": [
+        "fund_identity",
+        "token_network",
+        "settlement_asset",
+        "mou_or_production",
+        "balances",
+        "transactions"
+      ],
+      "rule": "SBI/Startale/BlackRock tokenized-MMF/JPYSC work remains an MOU until fund identity, network, production issuance and settlement transactions are evidenced."
+    }
+  ],
+  "feature_admission": "NONE. JPYSC JGB reserves, PhotonPay total TPV, Open Standard membership, SMBC equity participation and BlackRock MOU remain context features. No XRP price predictor feature is admitted.",
+  "forecast_status": "NOT_ISSUED"
+}
