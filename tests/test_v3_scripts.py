@@ -704,3 +704,27 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+def test_cognitive_pingpong_workflow_is_manual_read_only_and_artifact_based():
+    from pathlib import Path
+
+    workflow = (
+        Path(__file__).resolve().parents[1]
+        / ".github"
+        / "workflows"
+        / "Barrot.Cognitive.PingPong.Engine.yml"
+    ).read_text(encoding="utf-8")
+
+    assert "workflow_dispatch:" in workflow
+    assert "schedule:" not in workflow
+    assert "  push:" not in workflow
+    assert "  contents: read" in workflow
+    assert "issues: write" not in workflow
+    assert "pull-requests: write" not in workflow
+    assert "git push" not in workflow
+    assert "git pull" not in workflow
+    assert "secrets.GITHUB_TOKEN" not in workflow
+    assert "Signal strength: High" not in workflow
+    assert "Response quality: Optimal" not in workflow
+    assert "actions/upload-artifact@" in workflow
