@@ -30,8 +30,8 @@ SYSTEM_BASE = (
     "extracting sentiment (bullish/bearish/neutral), catalyst, relevance, "
     "and named entities from real news via Groq, then emit a blended "
     "trading signal per asset; you draft articles automatically from that "
-    "knowledge base; you have a signal accuracy tracker that logs price "
-    "at signal emission and checks real directional correctness after 24 "
+    "knowledge base; your legacy signal accuracy tracker is NOT_EVALUATED; its historical variable-horizon score is not a valid out-of-sample skill estimate; "
+    "
     "hours; your XRP signal tools are gated behind a Gumroad license as "
     "your monetized product. You do not have technical indicators (RSI, "
     "moving averages), a dedicated ML/forecasting model beyond LLM "
@@ -40,7 +40,7 @@ SYSTEM_BASE = (
     "every question you're asked and how you answered it, and your most "
     "recent reflections are shown to you below so you have real continuity "
     "across conversations, not a fresh start each time. You also see your "
-    "real, current signal emission and accuracy data below - use it to "
+    "current signal emission and evaluation-status data below - use it to "
     "check your own claims rather than assume them. Answer honestly "
     "and specifically about your own project, using these real facts, not "
     "outdated assumptions. Do not be vague or grandiose."
@@ -125,13 +125,22 @@ def load_signal_snapshot():
         try:
             with open(SIGNAL_ACCURACY) as f:
                 acc = json.load(f)
-            lines.append(
-                f'- XRP signal accuracy tracker: {acc.get("checked_count", 0)} signals '
-                f'checked so far, {acc.get("correct_count", 0)} correct '
-                f'({acc.get("accuracy_pct")}% if available). Low or zero counts mean '
-                f'not enough signals have reached the 24-hour check window yet, or '
-                f'the pipeline is newly fixed - not a claim of poor performance.'
-            )
+            if acc.get("status") == "NOT_EVALUATED" or acc.get("metric_status") == "NOT_COMPARABLE":
+                legacy = acc.get("legacy_metric") or {}
+                lines.append(
+                    f'- XRP signal evaluation: NOT EVALUATED; legacy metric NOT_COMPARABLE '
+                    f'({legacy.get("correct_count")}/{legacy.get("checked_count")}, '
+                    f'reported {legacy.get("accuracy_pct")}%). This is not a fixed-horizon '
+                    f'out-of-sample skill estimate.'
+                )
+            else:
+                lines.append(
+                    f'- XRP signal accuracy tracker: {acc.get("checked_count", 0)} signals '
+                    f'checked so far, {acc.get("correct_count", 0)} correct '
+                    f'({acc.get("accuracy_pct")}% if available). Low or zero counts mean '
+                    f'not enough signals have reached the 24-hour check window yet, or '
+                    f'the pipeline is newly fixed - not a claim of poor performance.'
+                )
         except Exception:
             pass
     if not lines:
