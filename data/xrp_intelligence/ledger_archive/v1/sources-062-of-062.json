@@ -1,0 +1,332 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 61,
+  "chunk_count": 62,
+  "record_count": 14,
+  "created_at_utc": "2026-10-30T18:29:47Z",
+  "records": [
+    {
+      "id": "SRC-LIQWALL-XRP-PERPETUAL-SNAPSHOT-20261030T1402Z",
+      "evidence_class": "SECONDARY_SINGLE_PROVIDER_MARKET_DATA",
+      "url": "https://liqwall.com/coins/xrp",
+      "title": "XRP perpetual derivatives and liquidation panel, 2026-10-30 14:02 UTC",
+      "author": "Liqwall",
+      "published_at": "2026-10-30T14:02:00Z",
+      "updated_at": "2026-10-30T14:02:00Z",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "SINGLE_PROVIDER_MARKET_SNAPSHOT",
+      "findings": {
+        "price_usd": 1.24,
+        "open_interest_usd": 1300000000,
+        "open_interest_change_24h_pct": -4.5,
+        "liquidations_24h_usd": 41200000,
+        "long_liquidations_usd": 38700000,
+        "short_liquidations_usd": 2400000,
+        "aggregate_funding_8h_pct": -0.0003,
+        "binance_funding_8h_pct": 0.01,
+        "binance_long_account_ratio_pct": 71.9
+      },
+      "limitations": [
+        "Provider contract universe and OI aggregation are not fully harmonized with other trackers.",
+        "Account ratios are account counts, not notional exposure."
+      ]
+    },
+    {
+      "id": "SRC-ALPHA-XRP-ETF-FLOWS-20261029",
+      "evidence_class": "SECONDARY_ETF_FLOW_AGGREGATOR",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "XRP Spot ETF flow tracker, October 29, 2026",
+      "author": "Alpha Finance",
+      "published_at": "2026-10-30",
+      "updated_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "SECONDARY_AGGREGATOR_FULL_FUND_COVERAGE",
+      "findings": {
+        "date": "2026-10-29",
+        "net_flow_usd": 8400000,
+        "reported_funds": 5,
+        "total_funds": 5,
+        "cumulative_net_inflows_usd": 1730000000,
+        "rolling_30_session_net_flow_usd": 98900000
+      },
+      "limitations": [
+        "Aggregator-derived flow, not a direct fund administrator file or proof of immediate spot execution."
+      ]
+    },
+    {
+      "id": "SRC-CRYPTOETF-XRP-ETF-PARTIAL-20261029",
+      "evidence_class": "SECONDARY_ETF_FLOW_AGGREGATOR",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "title": "XRP ETF daily flow tracker, partial October 29 coverage",
+      "author": "CryptoETF.today",
+      "published_at": "2026-10-30T05:47:00Z",
+      "updated_at": "2026-10-30T05:47:00Z",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "SECONDARY_AGGREGATOR_PARTIAL_COVERAGE",
+      "findings": {
+        "date": "2026-10-29",
+        "reported_net_flow_usd": 7100000,
+        "reported_funds": 2,
+        "total_funds": 5,
+        "missing_funds": [
+          "XRPZ",
+          "XRPC",
+          "GXRP"
+        ]
+      },
+      "limitations": [
+        "Partial 2-of-5 fund coverage; not comparable to a complete five-fund total."
+      ]
+    },
+    {
+      "id": "SRC-XRPINSIGHTS-XRP-ETF-FLOWS-20261029",
+      "evidence_class": "SECONDARY_ETF_HOLDINGS_AND_FLOW_RECONSTRUCTION",
+      "url": "https://xrp-insights.com/",
+      "title": "XRP spot ETF holdings and flow reconstruction, October 29, 2026",
+      "author": "XRP Insights",
+      "published_at": "2026-10-30",
+      "updated_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "SECONDARY_RECONSTRUCTED_FUND_UNIVERSE",
+      "findings": {
+        "date": "2026-10-29",
+        "net_flow_xrp": 6400000,
+        "approx_net_flow_usd": 8000000,
+        "fund_universe": "six spot funds plus BITW",
+        "reported_holdings_xrp": 1196650000,
+        "reported_aum_usd": 1560000000,
+        "GXRP_flow_treatment": "excluded from flow due to data gap; included in holdings"
+      },
+      "limitations": [
+        "Different fund universe and unit than Alpha Finance; not directly additive."
+      ]
+    },
+    {
+      "id": "SRC-BINANCE-GLOBAL-SECURITY-UPDATE-20261030T0223Z",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT_PRELIMINARY",
+      "url": "https://www.binance.com/en/support/announcement/detail/c5a8729a97ac486d963784d96c5642d7",
+      "title": "Binance security incident update, October 30, 2026",
+      "author": "Binance",
+      "published_at": "2026-10-30T02:23:00Z",
+      "updated_at": "2026-10-30T02:23:00Z",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "PRIMARY_PRELIMINARY_INCIDENT_STATEMENT",
+      "findings": {
+        "estimated_total_impact_usd": 6300000000,
+        "reported_frozen_assets_usd": 3000000000,
+        "private_key_leak_evidence": "Binance stated it had found no evidence of wallet private-key leakage",
+        "customer_funds": "Binance stated user funds were safe",
+        "withdrawals": "temporarily paused pending security work",
+        "postmortem": "pending"
+      },
+      "limitations": [
+        "Company estimates are preliminary; frozen assets are not necessarily recovered assets; no XRP-specific replenishment amount disclosed."
+      ]
+    },
+    {
+      "id": "SRC-BINANCE-JAPAN-SECURITY-UPDATE-20261030T0906",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "url": "https://www.binance.com/en-JP/support/announcement/detail/062daeb5a08b444ca5248113154457ae",
+      "title": "Binance Japan customer asset segregation update, October 30, 2026",
+      "author": "Binance Japan",
+      "published_at": "2026-10-30 09:06 (page-displayed; timezone not explicitly stated)",
+      "updated_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "PRIMARY_JAPAN_ENTITY_CUSTODY_STATEMENT",
+      "findings": {
+        "custody": "Binance Japan stated customer assets are held safely in cold wallets separate from Binance Global hot wallets",
+        "impact": "no impact confirmed by Binance Japan",
+        "deposits": "normal",
+        "trading": "normal",
+        "fiat_operations": "normal",
+        "withdrawals": "temporarily suspended"
+      },
+      "limitations": [
+        "Company statement, not an independent audit; applies to the Japan entity and does not establish Global wallet or reserve status."
+      ]
+    },
+    {
+      "id": "SRC-SAP-ACL2020-SBIC-FOUNDATION",
+      "evidence_class": "PRIMARY_PEER_REVIEWED_DATASET_PAPER",
+      "url": "https://aclanthology.org/2020.acl-main.486/",
+      "title": "Social Bias Frames: Reasoning about Social and Power Implications of Language",
+      "author": "Sap, Gabriel, Qin, Jurafsky, Smith and Choi",
+      "published_at": "2020-07",
+      "updated_at": "2020",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "PRIMARY_DATASET_PAPER",
+      "findings": {
+        "dataset": "Social Bias Inference Corpus (SBIC)",
+        "structured_annotations_approx": 150000,
+        "posts_approx": 44671,
+        "implications_over": 34000,
+        "demographic_groups_approx": 1000
+      },
+      "limitations": [
+        "Dataset is a social-bias research corpus; acronym overlap with Japanese SBIC East Japan does not establish an organizational relationship."
+      ]
+    },
+    {
+      "id": "SRC-ZIEMS-CL2024-SBIC-GENERATION-EVAL",
+      "evidence_class": "PRIMARY_PEER_REVIEWED_EVALUATION_PAPER",
+      "url": "https://aclanthology.org/anthology-files/pdf/cl/2024.cl-1.8.pdf",
+      "title": "Can LLMs Transform Computational Social Science?",
+      "author": "Ziems et al.",
+      "published_at": "2024",
+      "updated_at": "2024",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "PRIMARY_HUMAN_RANKING_EVALUATION",
+      "findings": {
+        "task": "zero-shot generation of implied social-bias statements for Social Bias Inference (SBIC)",
+        "metric": "proportion of pairwise rankings where two author-annotators unanimously preferred model generation over a gold human explanation",
+        "gpt_3_5_preference_pct": 65.9,
+        "gpt_4_preference_pct": 60.6,
+        "annotators": 2,
+        "annotator_method": "two authors served as blind annotators; unanimous vote required"
+      },
+      "limitations": [
+        "The 65.9% and 60.6% values are preference rates, not accuracy, not a general ChatGPT score, and not a financial prediction metric."
+      ]
+    },
+    {
+      "id": "SRC-PERMISSION-ASK-CONTRACTS-BASE-POLYGON",
+      "evidence_class": "PRIMARY_ISSUER_CONTRACT_DOCUMENTATION",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "title": "Official ASK token contract addresses",
+      "author": "Permission",
+      "published_at": "live documentation; retrieved 2026-10-30",
+      "updated_at": "live documentation",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "PRIMARY_TOKEN_DEPLOYMENT_DOCUMENTATION",
+      "findings": {
+        "standard": "LayerZero OFT-20",
+        "official_contracts": {
+          "Base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+          "Polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+        },
+        "stargate_support": true,
+        "other_chains": "planned; not listed as current official contracts"
+      },
+      "limitations": [
+        "The reviewed official contract list contains Base and Polygon, not XRPL. This is negative evidence within the reviewed official documentation, not proof that no unofficial wrapper exists."
+      ]
+    },
+    {
+      "id": "SRC-PERMISSION-COINBASE-ASK-WALLET-20260922",
+      "evidence_class": "PRIMARY_ISSUER_PARTNERSHIP_ANNOUNCEMENT",
+      "url": "https://www.permission.ai/blog/ask-wallet-update",
+      "title": "Your ASK Wallet, Now Powered by Coinbase",
+      "author": "Permission",
+      "published_at": "2026-09-22",
+      "updated_at": "2026-09-22",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "PRIMARY_COINBASE_EMBEDDED_WALLET_RELATIONSHIP",
+      "findings": {
+        "relationship": "Permission moved ASK wallet infrastructure to Coinbase Embedded Wallet",
+        "key_custody": "Coinbase secures the private key on the user's behalf under user authorization",
+        "permission_role": "Permission states it no longer holds the wallet keys",
+        "data_shared_with_coinbase": [
+          "email address",
+          "account identifier",
+          "wallet information"
+        ],
+        "key_export": "Coinbase supports key export"
+      },
+      "limitations": [
+        "This is wallet infrastructure and key custody for ASK users, not evidence Coinbase owns proprietary ASK inventory, lists ASK on its exchange, or has an XRP/XRPL integration through this relationship."
+      ]
+    },
+    {
+      "id": "SRC-PERMISSION-ASK-TOKENOMICS-2026",
+      "evidence_class": "PRIMARY_ISSUER_TOKENOMICS_CLAIM",
+      "url": "https://docs.permission.ai/ask-token/ask-tokenomics",
+      "title": "ASK tokenomics and subscription-funded buyback description",
+      "author": "Permission",
+      "published_at": "live documentation; retrieved 2026-10-30",
+      "updated_at": "live documentation",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "ISSUER_DESCRIBED_DEMAND_MECHANISM",
+      "findings": {
+        "total_supply": 100000000000,
+        "claim": "a portion of family-product subscription revenue is used to buy ASK from the open market; acquired ASK funds rewards and incentives",
+        "staking": "described as future"
+      },
+      "limitations": [
+        "Issuer description; no transaction-level evidence of executed buybacks or independently verified subscription-to-token flow was established in this run."
+      ]
+    },
+    {
+      "id": "SRC-COINGECKO-ASK-CIRCULATING-20261030",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "url": "https://www.coingecko.com/en/coins/permission-coin",
+      "title": "Permission Coin market and supply page",
+      "author": "CoinGecko",
+      "published_at": "page snapshot accessed 2026-10-30",
+      "updated_at": "page snapshot accessed 2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "SECONDARY_CIRCULATING_SUPPLY_ESTIMATE",
+      "findings": {
+        "reported_circulating_supply": 23107000000,
+        "total_supply": 100000000000
+      },
+      "limitations": [
+        "Circulating-supply methodology differs from CoinMarketCap; page crawl and update timing are not fully aligned."
+      ]
+    },
+    {
+      "id": "SRC-CMC-ASK-CIRCULATING-20261030",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "title": "Permission Coin market and supply page",
+      "author": "CoinMarketCap",
+      "published_at": "page snapshot accessed 2026-10-30",
+      "updated_at": "page snapshot accessed 2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "SECONDARY_CIRCULATING_SUPPLY_ESTIMATE",
+      "findings": {
+        "reported_circulating_supply": 16160000000,
+        "total_supply": 100000000000
+      },
+      "limitations": [
+        "Circulating-supply estimate differs materially from CoinGecko; do not use for market-cap or float inference until reconciled against issuer API and chain unlock data."
+      ]
+    },
+    {
+      "id": "SRC-GITHUB-BAGENT-REPO-AUDIT-20261030T182947Z",
+      "evidence_class": "PRIMARY_REPOSITORY_AND_CI_EVIDENCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/617d48a4980c6f1d0d6bafc168321c8410916e26",
+      "title": "Barrot-Agent/B-Agent main-head and PR/workflow audit",
+      "author": "GitHub repository state and Actions records",
+      "published_at": "2026-10-30T18:29:47Z",
+      "updated_at": "2026-10-30T18:29:47Z",
+      "accessed_at_utc": "2026-10-30T18:29:47Z",
+      "classification": "PRIMARY_REPOSITORY_STATE",
+      "findings": {
+        "main_sha": "617d48a4980c6f1d0d6bafc168321c8410916e26",
+        "open_prs": [
+          1353,
+          1355,
+          1363,
+          1367,
+          1369,
+          1370,
+          1373,
+          1374,
+          1375
+        ],
+        "closed_unmerged_prs": [
+          1376
+        ],
+        "failed_agent_issue": 1377,
+        "failed_agent_run_id": 41106456565,
+        "scheduled_cross_analysis_run_id": 41102016226
+      },
+      "limitations": [
+        "GitHub connector verified; other eight target platforms not authenticated or tested live. Full repository CI and dependency vulnerability scan not run."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.0",
+  "record_type": "barrot_repository_audit",
+  "audit_id": "BAGENT-AUDIT-20261030T182947Z",
+  "captured_at_utc": "2026-10-30T18:29:47Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_branch": {
+    "sha": "617d48a4980c6f1d0d6bafc168321c8410916e26",
+    "ref_verified": true,
+    "modified_by_this_run": false
+  },
+  "current_research_branch": {
+    "name": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "sha_before_append": "4f0717b6f4557d0d78d81f86bd24d4ddb5331b47"
+  },
+  "main_workflow_risks": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "blob_sha": "143bb2ed7a3f1e9fbd7e2d2b7e9a9b91d2e",
+      "triggers": [
+        "hourly schedule",
+        "workflow_run",
+        "workflow_dispatch"
+      ],
+      "permissions": "contents: write",
+      "behavior": "runs entity co-occurrence, sentiment shift and entity sentiment profiling; commits and pushes generated output to main",
+      "evidence": {
+        "run_id": 41102016226,
+        "job_id": 124220690449,
+        "run_conclusion": "success",
+        "commit": "53d1bec",
+        "push": "0ba8067..53d1bec main -> main"
+      },
+      "risk": "HIGH_AUTOMATIC_MAIN_MUTATION",
+      "proposal_pr": 1373,
+      "proposal_status": "open draft unmerged; base is 7 commits behind current main; intervening changed paths are non-overlapping; exact current-main CI not rerun"
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "blob_sha": "014806e",
+      "triggers": [
+        "daily schedule",
+        "workflow_dispatch"
+      ],
+      "permissions": "contents: write",
+      "behavior": "runs mutable variable-elapsed-horizon accuracy evaluator and commits/pushes updated history and summary",
+      "risk": "HIGH_INVALID_METRIC_AND_AUTOMATIC_MAIN_MUTATION",
+      "proposal_pr": 1355,
+      "proposal_status": "open draft unmerged; base is 24 commits behind current main; compare showed 3 intervening non-overlapping paths; exact current-main CI not rerun"
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e",
+      "triggers": [
+        "workflow_dispatch"
+      ],
+      "permissions": "contents: write; pull-requests: write",
+      "behavior": "manual queue can update branches, merge PRs and delete branches; defaults include dry_run=false and max_prs=0",
+      "risk": "HIGH_MANUAL_MUTATION_CAPABILITY",
+      "proposal_pr": 1369,
+      "proposal_status": "open draft unmerged; no merge or dispatch performed"
+    },
+    {
+      "path": ".github/workflows/barrot-agent.yml",
+      "triggers": [
+        "issues labeled",
+        "workflow_dispatch"
+      ],
+      "permissions": "contents: write; pull-requests: write; issues: write",
+      "behavior": "runs repository repair worker after issue label/dispatch; scheduled scientific-discovery queue also exists",
+      "risk": "HIGH_PRIVILEGED_AUTONOMOUS_WORKER_REQUIRES_VALID_BUNDLE_AND_APPROVAL_GATES"
+    }
+  ],
+  "prediction_engine": {
+    "signal_artifact": "web/latest_signal.json",
+    "last_signal_timestamp": "2026-10-29T13:23:33Z",
+    "score": 44,
+    "confidence": 0,
+    "news_score": 88,
+    "news_items": 11,
+    "status": "STALE_NOT_A_VALID_CURRENT_FORECAST",
+    "legacy_accuracy_artifact": "web/signal_accuracy.json",
+    "legacy_accuracy_claim": "45.9% from 772/1683",
+    "evaluation_defect": "variable elapsed horizons, mutable historical records and neutral-band hit rule make the aggregate NOT_COMPARABLE as out-of-sample skill",
+    "remediation_pr": 1355,
+    "remediation_status": "open draft unmerged; 347 tests + 8 subtests passed on PR head; fail-closed gate passed; no approval or merge"
+  },
+  "pull_requests": [
+    {
+      "number": 1353,
+      "status": "open_draft_mergeable",
+      "head": "4f0717b6f4557d0d78d81f86bd24d4ddb5331b47",
+      "purpose": "lossless XRP research ledger archive migration",
+      "latest_verified_data_head": "02bf387",
+      "validator_run": 41106929458,
+      "validator_tests": 19,
+      "gate_run": 41106929322,
+      "gate": "PASS_MERGE_DISABLED",
+      "note": "latest metadata successor is not the same SHA as the last data-bearing validated head"
+    },
+    {
+      "number": 1355,
+      "status": "open_draft_mergeable",
+      "head": "33776a0f838e875a8c1dfedc046105520b75659f",
+      "purpose": "fixed-horizon accuracy safety and stale metric correction",
+      "core_tests": "347 passed + 8 subtests",
+      "gate": "PASS_MERGE_DISABLED",
+      "base": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+      "main_ahead_by": 24,
+      "changed_path_overlap": false
+    },
+    {
+      "number": 1363,
+      "status": "open_draft_mergeable",
+      "purpose": "unidentified paper-trading position guard",
+      "prior_exact_head_tests": "352 passed + 8 subtests",
+      "gate": "PASS_MERGE_DISABLED",
+      "paper_state_mutated": false
+    },
+    {
+      "number": 1367,
+      "status": "open_draft_mergeable",
+      "purpose": "paper-trader unidentified-position guard follow-up",
+      "note": "current PR retained; no paper-state mutation"
+    },
+    {
+      "number": 1369,
+      "status": "open_draft_mergeable",
+      "purpose": "read-only merge queue proposal",
+      "note": "manual merge-capability risk remains on main"
+    },
+    {
+      "number": 1370,
+      "status": "open_draft_mergeable",
+      "head": "4eb9768ccbefc3735a651d14220e1273392ee471",
+      "purpose": "free-image generation read-only safety",
+      "latest_head_core_tests": "343 passed + 8 subtests",
+      "latest_head_gate": "PASS_MERGE_DISABLED",
+      "note": "earlier run 41055219131 failed because a test expected literal backslash-n; later head corrected the test and passed"
+    },
+    {
+      "number": 1373,
+      "status": "open_draft_mergeable",
+      "head": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+      "purpose": "read-only cross-analysis",
+      "core_tests": "347 passed + 8 subtests",
+      "gate": "PASS_MERGE_DISABLED",
+      "base": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+      "main_ahead_by": 7,
+      "changed_path_overlap": false
+    },
+    {
+      "number": 1374,
+      "status": "open_draft_mergeable",
+      "head": "5f70b26eac93b4835130db2541e085dd2e107ce2",
+      "purpose": "Hugging Face upload credential isolation",
+      "core_tests": "347 passed + 8 subtests",
+      "gate": "PASS_MERGE_DISABLED",
+      "remaining_risks": [
+        "dependency lockfile not added",
+        "GitHub Actions not all immutable-SHA pinned",
+        "remote-code/artifact trust and upload path need further verification"
+      ]
+    },
+    {
+      "number": 1375,
+      "status": "open_draft_mergeable",
+      "head": "1939bf96426ecfe74c607f054f29bb84291b78d0",
+      "purpose": "MMI V1 first remediation slice: unknown freshness and fail-closed append",
+      "core_tests": "347 passed + 8 subtests",
+      "gate": "PASS_MERGE_DISABLED",
+      "base": "617d48a4980c6f1d0d6bafc168321c8410916e26",
+      "note": "does not satisfy full 30-point MMI acceptance matrix"
+    },
+    {
+      "number": 1376,
+      "status": "closed_unmerged",
+      "purpose": "duplicate MMI package proposal",
+      "note": "superseded; do not merge"
+    }
+  ],
+  "failed_agent_task": {
+    "issue": 1377,
+    "url": "https://github.com/Barrot-Agent/B-Agent/issues/1377",
+    "run_id": 41106456565,
+    "job_id": 124237444534,
+    "state": "open",
+    "labels": [
+      "barrot-task",
+      "barrot-dispatch-attempted"
+    ],
+    "outcome": "BLOCKED_BEFORE_REPOSITORY_MUTATION",
+    "quality_score": 38,
+    "findings": [
+      "completion_gate missing/invalid list",
+      "recovery_plan missing/invalid list",
+      "AUTHORIZATION_CONSTRAINT_MISSING"
+    ],
+    "cause": "Generated bundle omitted mandatory completion_gate and recovery_plan arrays; issue had no explicit Authorization Boundaries heading, so extraction returned no task-specific boundaries. Deterministic review failed closed and revision attempts did not improve the score.",
+    "action": "Do not remove the dispatch-attempted label or rerun automatically until a valid, explicitly bounded task bundle is reviewed. No branch, PR or code mutation was created by this failed run."
+  },
+  "checks": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "main_status": "not comprehensively re-run in this audit",
+    "workflow_dispatch_performed": false,
+    "merge_performed": false,
+    "force_push": false,
+    "deployment": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  },
+  "platform_access": {
+    "GitHub": "VERIFIED_CONNECTED",
+    "Claude": "NOT_TESTED",
+    "Grok": "NOT_TESTED",
+    "Gemini": "NOT_TESTED",
+    "Copilot": "NOT_TESTED",
+    "Codex": "NOT_TESTED",
+    "HuggingFace": "NOT_TESTED",
+    "Kaggle": "NOT_TESTED",
+    "Databricks": "NOT_TESTED"
+  }
+}
