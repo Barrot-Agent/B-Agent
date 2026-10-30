@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-20261030T170330Z-SBI-OPEN-STANDARD-EVIDENCE-STATUS",
+  "captured_at_utc": "2026-10-30T17:03:30Z",
+  "status": "ADOPTED_FOR_RESEARCH",
+  "decisions": [
+    {
+      "area": "SBI-SMBC-equity",
+      "rule": "Classify SMBC's 5% capital participation in SBI Startale Marketing as confirmed by SBI's primary October 30 release; distinguish agreement from completed closing."
+    },
+    {
+      "area": "Open-Standard",
+      "rule": "Represent JPYSC/OUSD interoperability as an exploratory proof-of-concept, not a live bridge or settlement route."
+    },
+    {
+      "area": "Coinbase-indirect-link",
+      "rule": "Coinbase's Open Standard membership is a consortium-level overlap; do not infer a direct Coinbase-JPYSC commercial agreement."
+    },
+    {
+      "area": "JPYSC-supply",
+      "rule": "Keep issuer-confirmed September 7 JPY20.1B and secondary-reported October 30 JPY20.8B as separate timestamped observations until issuer confirmation."
+    }
+  ],
+  "prior_evidence_preserved": true
+}
