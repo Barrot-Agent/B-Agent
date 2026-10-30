@@ -31,6 +31,12 @@ jobs:
         run: python3 scripts/knowledge_distill.py
       - name: Emit blended sentiment score
         run: python3 scripts/emit_signal.py
+      - name: Install focused safety test runner
+        run: python -m pip install pytest==8.4.2
+      - name: Compile scripts and run workflow safety tests
+        run: |
+          python -m compileall -q scripts
+          python -m pytest --noconftest -o addopts= tests/test_knowledge_signal_cycle_branch_pr_safety.py tests/test_signal_accuracy_fail_closed.py tests/test_cross_analysis_workflow_safety.py -q
       - name: Publish a reviewed branch and draft PR, never main
         env:
           GH_TOKEN: ${{ github.token }}
