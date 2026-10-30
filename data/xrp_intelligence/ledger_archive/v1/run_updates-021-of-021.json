@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 20,
+  "chunk_count": 21,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T07:23:30Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T07:23:30Z",
+      "update_type": "BINANCE_XRPL_FIVE_SOURCE_WALLETS_EXACT_TRANSACTION_RECONCILIATION_AND_ACTUAL_CAPITAL_MEASUREMENT",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "Last exact-head validator pass af53dde404fa92111983de54564546d03ef4ab2a; latest verification-only metadata commit e8b861c1c189ca1f8fa0c53bdc1920e7b26a653f had a successful validator and gate run retrieved after PR body update.",
+      "observed_main_sha": "6739e05dc427f0db167a10f23730ced1acf0b9b8",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-14693052-20261029T200700Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-13140680-20261029T200820Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-11955157-20261029T200850Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-8655567-20261029T200920Z",
+        "SRC-BITHOMP-BINANCE-XRPL-RECEIVER-TRANSACTIONS-20261030T072330Z",
+        "SRC-BITHOMP-BINANCE-XRPL-SOURCE-CLUSTER-20261030T072330Z",
+        "SRC-BITHOMP-XRP-DEX-AND-TRANSFER-STATS-20261030T072330Z",
+        "SRC-TRM-BINANCE-THEFT-XRPL-RLUSD-20261030T0508Z",
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+        "SRC-BINANCE-POR-XRP-RATIO-SECONDARY-20261030T0508Z",
+        "SRC-BINANCE-XRP-BF2-BACKING-20191010"
+      ],
+      "findings": {
+        "five_source_wallets": [
+          {
+            "address": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+            "amount_xrp": 185017485.5,
+            "tx_hash": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+            "ledger": 107986693,
+            "confirmed_at_utc": "2026-10-29T20:05:00Z"
+          },
+          {
+            "address": "rBtttd61FExHC68vsZ8dqmS3DfjFEceA1A",
+            "amount_xrp": 14693052.5,
+            "tx_hash": "6DDF398B6950B34057A7B817E761A1E2A1C59ECAFD594536C54AA6963C5B7E67",
+            "ledger": 107986721,
+            "confirmed_at_utc": "2026-10-29T20:07:00Z"
+          },
+          {
+            "address": "rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+            "amount_xrp": 13140680.4,
+            "tx_hash": "9FE8F79876B30E24843031CBE89EA75496FE75BD2F0B9779D91D55BEE52C6AAA",
+            "ledger": 107986740,
+            "confirmed_at_utc": "2026-10-29T20:08:20Z"
+          },
+          {
+            "address": "rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk",
+            "amount_xrp": 11955157.6,
+            "tx_hash": "27C7D0D5EDAD05B5F8C7616DF6CB64C872DD22DED8697B380824A8C5B8D385F5",
+            "ledger": 107986748,
+            "confirmed_at_utc": "2026-10-29T20:08:50Z"
+          },
+          {
+            "address": "rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK",
+            "amount_xrp": 8655567.1,
+            "tx_hash": "0571C4D9703DECA7D03B8D63E9EEB2AB0E8E6D949150A7355519AEEE9A595DB0",
+            "ledger": 107986754,
+            "confirmed_at_utc": "2026-10-29T20:09:20Z"
+          }
+        ],
+        "exact_total_xrp": 233461943.1,
+        "receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "receiver_displayed_balance_xrp": 233461943.10004,
+        "receiver_outgoing_xrp_in_captured_list": false,
+        "all_five_explorer_label": "Binance",
+        "four_accounts_activated_by": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+        "official_por_membership": "UNKNOWN",
+        "xrp_bf2_crosswalk": "UNKNOWN",
+        "bithomp_dex_volume_usd": 13068997.98,
+        "bithomp_transfer_volume_usd": 902324194.69,
+        "transfer_to_dex_ratio": 69.04
+      },
+      "repository": {
+        "pr1353_head": "e8b861c1c189ca1f8fa0c53bdc1920e7b26a653f",
+        "last_exact_head_validator_run": 41019705697,
+        "last_exact_head_validator_tests": 18,
+        "last_gate_run": 41019705690,
+        "last_gate": "PASS_MERGE_DISABLED",
+        "new_append_validation": "PENDING"
+      },
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}
