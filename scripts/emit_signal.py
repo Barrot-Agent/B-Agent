@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import math
 import os
 import time
 from datetime import datetime, timezone
@@ -29,15 +30,30 @@ def _extract_text(resp_json: dict) -> str:
 
 
 def _score_from_text(text: str):
+    """Parse the exact classifier contract; malformed output must not become fake confidence."""
     try:
         data = json.loads(text)
-        score = int(max(0, min(100, int(data.get("score", 50)))))
-        confidence = float(max(0.0, min(1.0, float(data.get("confidence", 0.5)))))
-        label = str(data.get("label", "neutral"))
-        return score, confidence, label
-    except Exception:
-        return 50, 0.5, "neutral"
+    except (TypeError, ValueError) as exc:
+        raise ValueError("classifier response is not valid JSON") from exc
 
+    if not isinstance(data, dict) or set(data) != {"score", "confidence", "label"}:
+        raise ValueError("classifier response must contain exactly score, confidence, and label")
+
+    score = data["score"]
+    confidence = data["confidence"]
+    label = data["label"]
+
+    if isinstance(score, bool) or not isinstance(score, int) or not 0 <= score <= 100:
+        raise ValueError("classifier score must be an integer from 0 through 100")
+    if isinstance(confidence, bool) or not isinstance(confidence, (int, float)):
+        raise ValueError("classifier confidence must be numeric")
+    confidence = float(confidence)
+    if not math.isfinite(confidence) or not 0.0 <= confidence <= 1.0:
+        raise ValueError("classifier confidence must be finite and between 0 and 1")
+    if label not in {"bullish", "neutral", "bearish"}:
+        raise ValueError("classifier label is not in the allowed set")
+
+    return score, confidence, label
 
 def _build_messages(signal_text: str):
     return [
@@ -128,7 +144,7 @@ def analyze_signal(signal_text: str):
 
 
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
-    """Relevance-weighted sentiment from distilled news. Returns (score_0_100, n, headlines) or (None,0,[])."""
+    """Return a timestamp-valid, finite, XRP-relevance-weighted sentiment summary."""
     from datetime import timedelta
 
     if not os.path.exists(path):
@@ -137,34 +153,108 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
     num = den = 0.0
     used = 0
     heads = []
-    with open(path) as f:
-        for line in f:
+    with open(path, encoding="utf-8") as source_file:
+        for line in source_file:
             try:
-                e = json.loads(line)
-            except Exception:
+                entry = json.loads(line)
+            except (TypeError, ValueError):
                 continue
-            if not e.get("distilled"):
+            if not isinstance(entry, dict) or not entry.get("distilled"):
                 continue
-            d = e.get("distill", {})
-            w = float(d.get("xrp_relevance", 0) or 0)
-            if w <= 0:
+            distill = entry.get("distill")
+            if not isinstance(distill, dict):
                 continue
             try:
-                ts = datetime.fromisoformat(e.get("ingested_at", "").replace("Z", "+00:00"))
-                if ts < cutoff:
-                    continue
-            except Exception:
-                pass
-            s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(d.get("sentiment"), 0.0)
-            num += s * w
-            den += w
+                weight = float(distill.get("xrp_relevance", 0) or 0)
+            except (TypeError, ValueError, OverflowError):
+                continue
+            if not math.isfinite(weight) or weight <= 0:
+                continue
+
+            raw_timestamp = entry.get("ingested_at")
+            if not isinstance(raw_timestamp, str) or not raw_timestamp.strip():
+                continue
+            try:
+                timestamp = datetime.fromisoformat(raw_timestamp.replace("Z", "+00:00"))
+            except (TypeError, ValueError, OverflowError):
+                continue
+            if timestamp.tzinfo is None or timestamp.utcoffset() is None:
+                continue
+            if timestamp < cutoff:
+                continue
+
+            sentiment = distill.get("sentiment")
+            if sentiment not in {"bullish", "neutral", "bearish"}:
+                continue
+            sentiment_value = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}[sentiment]
+            num += sentiment_value * weight
+            den += weight
             used += 1
-            if w >= 0.5 and len(heads) < 6:
-                heads.append(f"[{d.get('sentiment')}] {e.get('title','')[:80]}")
+            if weight >= 0.5 and len(heads) < 6:
+                title = entry.get("title", "")
+                if not isinstance(title, str):
+                    title = ""
+                heads.append(f"[{sentiment}] {title[:80]}")
+
     if den == 0:
         return None, 0, []
     return int(round((num / den + 1) * 50)), used, heads
 
+
+def _forecast_metadata(source: str, confidence, data_cutoff_utc: str):
+    """This script emits descriptive sentiment only, never a calibrated price forecast."""
+    source_text = source.lower() if isinstance(source, str) else ""
+    unavailable_markers = ("unavailable", "failed:", "missing ", "http 429", "rate limit")
+    if any(marker in source_text for marker in unavailable_markers):
+        reason = "SENTIMENT_PROVIDER_UNAVAILABLE"
+    else:
+        try:
+            value = float(confidence)
+        except (TypeError, ValueError, OverflowError):
+            value = float("nan")
+        if not math.isfinite(value) or not 0.0 < value <= 1.0:
+            reason = "INVALID_OR_ZERO_CLASSIFIER_CONFIDENCE"
+        else:
+            reason = "NO_CALIBRATED_FIXED_HORIZON_PRICE_MODEL"
+
+    return {
+        "status": "NOT_ISSUED",
+        "reason_code": reason,
+        "data_cutoff_utc": data_cutoff_utc,
+        "target": None,
+        "horizon": None,
+        "probability": None,
+        "assumptions": [],
+        "alternatives": [],
+        "outcome_protocol": (
+            "Do not score this record as a forecast. A future forecast must pre-register "
+            "its target, horizon, calibrated probability, assumptions, alternatives, and "
+            "fixed outcome-scoring window before the outcome is observed."
+        ),
+    }
+
+
+def _build_signal_output(signal_text, score, confidence, source, news_score, n_news,
+                         timestamp=None, generated_at_unix=None):
+    """Build a backward-compatible descriptive signal with an explicit forecast gate."""
+    timestamp = timestamp or datetime.now(timezone.utc).isoformat()
+    if generated_at_unix is None:
+        generated_at_unix = int(time.time())
+    return {
+        "timestamp": timestamp,
+        "signal_text": signal_text,
+        "score": score,
+        "confidence": confidence,
+        "source": source,
+        "news_score": news_score,
+        "news_entries": n_news,
+        "generated_at_unix": generated_at_unix,
+        "signal_type": "descriptive_news_sentiment",
+        "score_semantics": "descriptive_0_to_100_sentiment_blend_not_return_forecast",
+        "confidence_semantics": "classifier_self_reported_confidence_not_calibrated_return_probability",
+        "forecast_status": "NOT_ISSUED",
+        "forecast": _forecast_metadata(source, confidence, timestamp),
+    }
 
 def main():
     news_score, n_news, headlines = _news_score()
@@ -178,16 +268,9 @@ def main():
         score = int(round((score + news_score) / 2))
         source = f"{source}+news({n_news})"
 
-    out = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "signal_text": signal_text,
-        "score": score,
-        "confidence": confidence,
-        "source": source,
-        "news_score": news_score,
-        "news_entries": n_news,
-        "generated_at_unix": int(time.time()),
-    }
+    out = _build_signal_output(
+        signal_text, score, confidence, source, news_score, n_news
+    )
 
     os.makedirs("web", exist_ok=True)
     with open("web/latest_signal.json", "w", encoding="utf-8") as f:
@@ -203,6 +286,8 @@ def main():
         price_now = 0.0
     hist_entry = dict(out)
     hist_entry["price_at_emission"] = price_now
+    hist_entry["price_at_emission_status"] = "OBSERVED" if price_now > 0 else "UNAVAILABLE"
+    hist_entry["price_reference_semantics"] = "reference_price_only_not_forecast_outcome"
     with open("web/signal_history.jsonl", "a", encoding="utf-8") as hf:
         print(json.dumps(hist_entry), file=hf)
 
