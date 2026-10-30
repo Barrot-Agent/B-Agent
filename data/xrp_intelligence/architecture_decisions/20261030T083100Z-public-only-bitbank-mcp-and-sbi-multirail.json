@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "XRP-ADR-20261030T083100Z-PUBLIC-ONLY-BITBANK-MCP-AND-SBI-MULTIRAIL",
+  "captured_at_utc": "2026-10-30T08:31:00Z",
+  "title": "Model SBI as a multi-rail digital-asset group and evaluate bitbank MCP as a public-only XRP/JPY data adapter",
+  "status": "RESEARCH_INGESTION_EXECUTED; ADAPTER_DESIGNED_NOT_CONNECTED; EXACT_HEAD_VALIDATION_PENDING",
+  "decision": [
+    "Keep XRP distribution, XRP Ledger technical work, JPYSC, OUSD, RLUSD and USDC as separate rails until production transaction evidence demonstrates an actual bridge or settlement relationship.",
+    "Record SMFG's 5% participation in SBI Startale Marketing as an official capital relationship; keep the 24M customer-base and JPY20.8B October 30 issuance figures in a secondary-claim class.",
+    "Record the SBI Shinsei Trust/SBI Clearing Trust merger as planned for December 31, 2026, not completed; do not infer XRP-specific custody.",
+    "Record bitbank's October 1 acquisition as completed and its XRP/JPY liquidity as one third-party snapshot; do not infer post-acquisition volume growth without a pre/post panel.",
+    "Treat bitbank-lab-mcp as an experimental local adapter candidate. A Barrot implementation, if later approved, should use public endpoints only with no API keys or private tools.",
+    "Preserve raw ticker, order-book, candle and transaction payloads with exchange time, retrieval time, pair, timezone, endpoint, coverage and rate-limit metadata; never convert missing intervals into zero volume.",
+    "Recompute Barrot's own features from raw data. Do not import bitbank's composite market-signal score as a calibrated XRP prediction.",
+    "Keep private API tools disabled. Do not request trade or withdrawal permissions. The optional MCP Apps _meta execution path remains disabled because its safety premise is host-dependent.",
+    "Reconcile tool count (32 versus 33) and release version metadata (0.0.0-dev versus 0.1.1) before pinning a production MCP package.",
+    "Keep Claude, Codex and Gemini platform states NOT_TESTED until authenticated request/response, permission review and verifiable evidence handoff occur; documented client compatibility is not live collaboration."
+  ],
+  "rationale": [
+    "SBI's official October 30 SMFG alliance, October 29 trust merger, October 1 bitbank acquisition, JPYSC, RLUSD/USDC, XRP rewards, Open Standard and BlackRock exploratory agreement show a multi-rail group strategy rather than one XRP-only architecture.",
+    "bitbank-lab-mcp offers potentially useful Japanese XRP/JPY public market data and basic reproducible analytics without credentials, but it is experimental and its docs/manifests contain drift.",
+    "The Binance incident and the need to distinguish exchange custody from tradable float make venue-level order-book, trade and candle provenance important."
+  ],
+  "data_contract": {
+    "venue": "bitbank",
+    "candidate_pair": "xrp_jpy",
+    "auth_mode": "PUBLIC_ONLY_NO_CREDENTIALS",
+    "fields": [
+      "ticker",
+      "orderbook",
+      "candles",
+      "transactions",
+      "flow_cvd",
+      "volatility"
+    ],
+    "required_metadata": [
+      "exchange_timestamp",
+      "retrieved_at_utc",
+      "pair",
+      "interval",
+      "timezone",
+      "coverage",
+      "rate_limit",
+      "raw_payload_hash",
+      "schema_version"
+    ],
+    "missing_data_policy": "MISSING_NOT_ZERO",
+    "feature_admission": "BLOCKED_UNTIL_SYNCHRONIZED_MULTI_VENUE_VALIDATION_AND_WALK_FORWARD_TESTS",
+    "execution_tools": "DISABLED",
+    "withdrawal_permission": "PROHIBITED"
+  },
+  "platform_map_delta": {
+    "status": "DESIGNED_NOT_CONNECTED",
+    "named_compatible_clients": [
+      "Claude Desktop",
+      "Claude Code",
+      "Codex",
+      "Gemini CLI"
+    ],
+    "actual_platform_authentication": "NOT_TESTED",
+    "actual_barrot_handoff": "NOT_TESTED",
+    "public_api_only_candidate": true,
+    "private_api_enabled": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "next_action": "Crosswalk Binance's five XRPL source wallets with official October 1 PoR and XRP-BF2 reserve; separately inspect a pinned bitbank MCP release and public XRP/JPY endpoints for a no-key data-quality smoke test."
+}
