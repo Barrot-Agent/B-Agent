@@ -1,0 +1,53 @@
+{
+  "record_type": "xrp_relationship_graph_addendum",
+  "schema_version": "1.0",
+  "graph_id": "GRAPH-20261030T220000Z-NATIVE-LENDING-THIRD-AMENDMENT-CORRECTION",
+  "captured_at_utc": "2026-10-30T22:00:00Z",
+  "source_ids": [
+    "SRC-XRPLDASHBOARD-THREE-AMENDMENTS-AND-LOAN-BOARD-20261030T2200Z",
+    "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+    "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z",
+    "SRC-XRPL-ORG-AMENDMENT-ACTIVATION-RULE-20261030T2145Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z"
+  ],
+  "edges": [
+    {
+      "edge_id": "E-20261030T220000Z-01",
+      "from": "XRPL Dashboard",
+      "relation": "reports_in_validator_voting",
+      "to": "LendingProtocolV1_1 (closed-ended vaults and cash-basis accounting)",
+      "status": "SECONDARY_LIVE_STATUS_VOTE_COUNT_UNKNOWN",
+      "source_ids": [
+        "SRC-XRPLDASHBOARD-THREE-AMENDMENTS-AND-LOAN-BOARD-20261030T2200Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T220000Z-02",
+      "from": "XRPL Dashboard",
+      "relation": "loan_broker_board_waits_for",
+      "to": "LendingProtocol + SingleAssetVault + LendingProtocolV1_1 activation",
+      "status": "AWAITING_ACTIVATION",
+      "source_ids": [
+        "SRC-XRPLDASHBOARD-THREE-AMENDMENTS-AND-LOAN-BOARD-20261030T2200Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T220000Z-03",
+      "from": "XRPLWin",
+      "relation": "reports_vote_status",
+      "to": "LendingProtocol 19/35 and SingleAssetVault 21/35, both below 29/35 threshold",
+      "status": "BELOW_ACTIVATION_THRESHOLD",
+      "source_ids": [
+        "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+        "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z"
+      ]
+    }
+  ],
+  "disconfirming_evidence": [
+    "No active loan-broker board is reported.",
+    "No raRVLN vault or loan-broker object ID was retrieved.",
+    "V1_1 vote count remains unknown."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

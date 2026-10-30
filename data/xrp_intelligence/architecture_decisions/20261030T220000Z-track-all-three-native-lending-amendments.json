@@ -1,0 +1,20 @@
+{
+  "record_type": "xrp_intelligence_architecture_decision",
+  "schema_version": "1.0",
+  "decision_id": "ADR-20261030T220000Z-TRACK-ALL-THREE-NATIVE-LENDING-AMENDMENTS",
+  "captured_at_utc": "2026-10-30T22:00:00Z",
+  "status": "ADOPTED_FOR_RESEARCH_BRANCH",
+  "context": "The live XRPL Dashboard identifies three amendments in voting. LendingProtocol and SingleAssetVault are the core native-lending requirements; LendingProtocolV1_1 adds closed-ended vaults and cash-basis accounting. The loan-broker board waits for all three.",
+  "decision": [
+    "Track LendingProtocol, SingleAssetVault and LendingProtocolV1_1 independently.",
+    "Do not treat the native loan-broker board as live until the required amendments activate and live objects appear.",
+    "Keep raRVLN's AMM classification separate from the unverified vault/loan-broker sections.",
+    "Do not infer collateralization from the 20M XRP transfer or unloaded explorer tables."
+  ],
+  "invariants": [
+    "No main-branch modification.",
+    "No merge, force-push, workflow dispatch, paper-state mutation or real-money trade.",
+    "No collateral inference without activated amendments and verified ledger objects.",
+    "Forecast remains NOT_ISSUED."
+  ]
+}
