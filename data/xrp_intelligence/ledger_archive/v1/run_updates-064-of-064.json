@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 63,
+  "chunk_count": 64,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T15:03:37Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T15:03:37Z",
+      "update_type": "BINANCE_IN_KIND_REPLENISHMENT_AND_EXCHANGE_BALANCE_RECONCILIATION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T150337Z-binance-in-kind-replenishment-and-exchange-balance-reconciliation.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T150337Z-binance-in-kind-replenishment-and-exchange-balance-reconciliation.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T150337Z-token-specific-replenishment-and-exchange-float-contract.json",
+      "repository_audit_snapshot_path": "data/repository_audits/20261030T150337Z-cross-analysis-and-hf-token-exposure-audit.json",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-XRP-POR-LABELS-20261030",
+        "SRC-COINDESK-BINANCE-OCT1-POR-WALLET-CROSSWALK-20261030",
+        "SRC-BINANCE-OFFICIAL-POR-METHOD-20261030",
+        "SRC-BINANCE-OFFICIAL-WITHDRAWAL-STATUS-20261030",
+        "SRC-BINANCE-OFFICIAL-IN-KIND-REPLENISHMENT-20261030T150337Z",
+        "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261030T150337Z",
+        "SRC-REPO-PR-WORKFLOW-AUDIT-20261030T150337Z"
+      ],
+      "finding": "Binance's verified official account reports >$6.34B allocated, $5B already in exact affected token assets and approximately $1.34B still being acquired via market/OTC; $3B frozen is excluded. XRP-specific allocation is unknown. XRP Insights' 08:00 UTC same-wallet exchange data shows -234.9M across all tracked exchanges and -173.2M at Binance over 7d, while the incident transfer was 233.4619431M; magnitude similarity is not attribution. Coinbase +1.1M 7d does not establish migration.",
+      "new_sources": 3,
+      "new_relationship_edges": 8,
+      "new_hypotheses": 4,
+      "new_market_observations": 2,
+      "exact_prior_head": "47f5cbda35cb4aebe8e8f3ff7d0b72c3fb79a9cf",
+      "prior_head_validator_run": 41076072940,
+      "prior_head_validator_tests_passed": 18,
+      "prior_head_gate_run": 41076072904,
+      "prior_head_gate_status": "PASS_MERGE_DISABLED",
+      "new_append_validation": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "no_main_write": true,
+      "no_merge": true,
+      "no_force_push": true,
+      "no_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true,
+      "forecast_status": "NOT_ISSUED"
+    }
+  ]
+}

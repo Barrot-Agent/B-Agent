@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T150337Z-BINANCE-IN-KIND-REPLENISHMENT-AND-EXCHANGE-BALANCE",
+  "captured_at_utc": "2026-10-30T15:03:37Z",
+  "source_ids": [
+    "SRC-BITQUERY-BINANCE-XRP-POR-LABELS-20261030",
+    "SRC-COINDESK-BINANCE-OCT1-POR-WALLET-CROSSWALK-20261030",
+    "SRC-BINANCE-OFFICIAL-POR-METHOD-20261030",
+    "SRC-BINANCE-OFFICIAL-WITHDRAWAL-STATUS-20261030",
+    "SRC-BINANCE-OFFICIAL-IN-KIND-REPLENISHMENT-20261030T150337Z",
+    "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261030T150337Z",
+    "SRC-REPO-PR-WORKFLOW-AUDIT-20261030T150337Z"
+  ],
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "AFFECTED_TOKEN_REPLENISHMENT",
+      "relationship": "Company reports >$6.34B allocated; $5B already held in exact affected token assets and approximately $1.34B still being acquired through market and OTC channels; approximately $3B frozen is excluded.",
+      "status": "OFFICIAL_VERIFIED_ACCOUNT_ANNOUNCEMENT; TOKEN_LEVEL_ALLOCATION_UNKNOWN"
+    },
+    {
+      "from": "BINANCE",
+      "to": "XRP_233461943_1_INCIDENT_SHORTFALL",
+      "relationship": "Native XRP was among affected assets; in-kind restoration may require XRP replenishment if an XRP-specific shortfall remains.",
+      "status": "INFERENCE; XRP_QUANTITY_NOT_DISCLOSED"
+    },
+    {
+      "from": "BITQUERY",
+      "to": "BINANCE_FIVE_XRPL_SOURCE_WALLETS",
+      "relationship": "Provider labels five XRPL source accounts as Binance PoR wallets.",
+      "status": "PROVIDER_LABEL; OFFICIAL_ADDRESS_FILE_CROSSWALK_PENDING"
+    },
+    {
+      "from": "COINDESK",
+      "to": "BINANCE_14_ETHEREUM_HOT_WALLET",
+      "relationship": "Identifies Binance 14 as included in October 1 PoR; this is an Ethereum wallet and does not identify the five XRPL accounts.",
+      "status": "SECONDARY_CROSSWALK; CHAIN_SCOPE_LIMITATION"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "BINANCE_XRP_AGGREGATE",
+      "relationship": "2.58B XRP attributed; same-wallet change -173.2M over 7d and -164.5M over 30d as of 2026-10-30 08:00 UTC.",
+      "status": "PUBLIC_LABELLED_WALLET_AGGREGATE; NOT_CUSTOMER_FLOW"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "COINBASE_XRP_AGGREGATE",
+      "relationship": "5.84B XRP attributed; same-wallet change +1.1M over 7d and +12.5M over 30d; includes 151.4M cbXRP backing.",
+      "status": "PUBLIC_LABELLED_WALLET_AGGREGATE; NOT_MIGRATION_EVIDENCE"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "ALL_24_TRACKED_EXCHANGE_WALLETS",
+      "relationship": "22.37B XRP across 701 wallets; same-wallet change -234.9M over 7d and -146.1M over 30d; cold storage included.",
+      "status": "PUBLIC_LABELLED_WALLET_AGGREGATE; NOT_TRADABLE_FLOAT"
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "SBI_VC_TRADE_XRP_AGGREGATE",
+      "relationship": "59.5M XRP attributed; same-wallet change -893K over 7d and -10.5M over 30d.",
+      "status": "PUBLIC_LABELLED_WALLET_AGGREGATE; NO_CAUSAL_LINK_TO_SBIC"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T150337Z-XRP-IN-KIND-REPLENISHMENT",
+      "claim": "Binance's in-kind restoration program could create incremental XRP market or OTC demand if a token-specific XRP shortfall remains.",
+      "status": "PLAUSIBLE_UNQUANTIFIED",
+      "counter_hypothesis": "The $5B already held in affected token assets may already include sufficient XRP; existing inventory, frozen recoveries or internal transfers may satisfy the obligation without new spot purchases."
+    },
+    {
+      "id": "HYP-20261030T150337Z-EXCHANGE-BALANCE-HACK-MAGNITUDE",
+      "claim": "The 234.9M XRP seven-day decline across tracked exchange wallets is close in magnitude to the 233.46M XRP incident transfer.",
+      "status": "MAGNITUDE_CORRELATION_ONLY",
+      "counter_hypothesis": "Binance-specific same-wallet decline is 173.2M, below the theft amount; per-wallet daily balances are unavailable and other flows, offsets, wallet-set coverage and internal transfers are unresolved."
+    },
+    {
+      "id": "HYP-20261030T150337Z-COINBASE-FLIGHT-TO-QUALITY",
+      "claim": "XRP custody migrated from Binance to Coinbase after the incident.",
+      "status": "NOT_SUPPORTED_BY_AGGREGATE_DATA",
+      "counter_hypothesis": "Coinbase rose only 1.1M XRP over seven days while Binance declined 173.2M; self-custody, other venues and internal wallet movements remain plausible."
+    },
+    {
+      "id": "HYP-20261030T150337Z-OFFICIAL-POR-XRPL-MEMBERSHIP",
+      "claim": "All five XRPL source accounts were included in Binance's official October 1 PoR wallet file.",
+      "status": "BITQUERY_LABELS_SUPPORT; OFFICIAL_FILE_CROSSWALK_PENDING",
+      "counter_hypothesis": "CoinDesk's documented Binance 14 PoR crosswalk is Ethereum-specific; provider labels alone do not prove official downloadable-file membership."
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
