@@ -37,15 +37,39 @@ def fixture_pair(tmp_path, *, unsafe_path=False, wrong_sha=False, duplicate_ids=
         "snapshot_blob_sha": sha,
         "snapshot_commit_sha": "1" * 40,
     }
-    sources = [{"id": "SRC-ONE"}, {"id": "SRC-ONE"}] if duplicate_ids else [{"id": "SRC-ONE"}]
+    source_records = [{"id": "SRC-ONE"}, {"id": "SRC-ONE"}] if duplicate_ids else [{"id": "SRC-ONE"}]
+    if index_format_version == "2.0":
+        sources = source_records
+        run_updates = []
+        limitations = []
+        archive_policy = None
+    else:
+        source_specs = [_write_archive_shard(tmp_path, "sources", source_records)]
+        run_specs = [_write_archive_shard(tmp_path, "run_updates", [])]
+        limitation_specs = [_write_archive_shard(tmp_path, "limitations", [])]
+        sources = _archive_pointer("sources", source_specs, len(source_records))
+        run_updates = _archive_pointer("run_updates", run_specs, 0)
+        limitations = _archive_pointer("limitations", limitation_specs, 0)
+        archive_policy = {
+            "archive_schema_version": "1.0",
+            "archive_shards_total": 3,
+            "arrays": {
+                "sources": {"record_count": len(source_records), "chunk_count": 1},
+                "run_updates": {"record_count": 0, "chunk_count": 1},
+                "limitations": {"record_count": 0, "chunk_count": 1},
+            },
+        }
     index = {
         "schema_version": "1.0",
         "record_type": "xrp_intelligence_research_ledger",
         "index_format_version": index_format_version,
         "latest_snapshot": latest,
         "sources": sources,
-        "run_updates": [],
+        "run_updates": run_updates,
+        "limitations": limitations,
     }
+    if archive_policy is not None:
+        index["archive_policy"] = archive_policy
     return index, snapshot
 
 
