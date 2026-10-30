@@ -76,3 +76,9 @@ def test_knowledge_cycle_runs_safety_checks_before_upload():
 
 def test_knowledge_cycle_safety_tests_are_registered_in_core_ci():
     assert "tests/test_knowledge_signal_cycle_branch_pr_safety.py" in CI_WORKFLOW
+
+
+def test_publish_fails_closed_when_cycle_or_artifact_upload_fails():
+    assert "needs: cycle" in PUBLISH
+    assert "if: always()" not in PUBLISH
+    assert "if-no-files-found: error" in CYCLE
