@@ -817,9 +817,84 @@ def test_scientific_track_output_fails_closed_after_bad_retry(monkeypatch) -> No
         def think(self, message, system=None):
             return "still not JSON"
 
-    with pytest.raises(RuntimeError, match="invalid JSON after one compact retry"):
+    with pytest.raises(RuntimeError, match="invalid response after one compact retry"):
         module._parse_scientific_track_output(
             "not JSON",
             FakeBrain(),
             {"track": {"track_id": "adversarial_mathematical_verification"}},
         )
+
+def test_scientific_track_output_retries_schema_violations(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_scientific_schema_retry_test")
+    import json
+
+    valid = {
+        "findings": ["Provisional result"],
+        "open_questions": ["Needs independent check"],
+        "counterarguments": ["Assumption may be too strong"],
+        "recommended_checks": ["Reproduce the derivation"],
+    }
+    invalid_cases = []
+    wrong_type = dict(valid)
+    wrong_type["findings"] = "not an array"
+    invalid_cases.append(wrong_type)
+    missing_key = dict(valid)
+    del missing_key["recommended_checks"]
+    invalid_cases.append(missing_key)
+    extra_key = dict(valid)
+    extra_key["unreviewed_claim"] = ["must not pass"]
+    invalid_cases.append(extra_key)
+    too_many = dict(valid)
+    too_many["findings"] = ["one", "two", "three", "four"]
+    invalid_cases.append(too_many)
+    non_string = dict(valid)
+    non_string["findings"] = [7]
+    invalid_cases.append(non_string)
+    too_long = dict(valid)
+    too_long["findings"] = ["x" * 301]
+    invalid_cases.append(too_long)
+
+    class FakeBrain:
+        def __init__(self):
+            self.calls = 0
+
+        def think(self, message, system=None):
+            self.calls += 1
+            return json.dumps(valid)
+
+    for index, invalid in enumerate(invalid_cases):
+        brain = FakeBrain()
+        result = module._parse_scientific_track_output(
+            json.dumps(invalid),
+            brain,
+            {"track": {"track_id": f"schema_case_{index}"}},
+        )
+        assert brain.calls == 1
+        assert result == valid
+
+
+def test_scientific_track_output_fails_closed_after_schema_retry(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_scientific_schema_retry_fail_test")
+    import json
+    import pytest
+
+    invalid = {
+        "findings": ["x" * 301],
+        "open_questions": [],
+        "counterarguments": [],
+        "recommended_checks": [],
+    }
+
+    class FakeBrain:
+        def think(self, message, system=None):
+            return json.dumps(invalid)
+
+    with pytest.raises(RuntimeError, match="invalid response after one compact retry"):
+        module._parse_scientific_track_output(
+            json.dumps(invalid),
+            FakeBrain(),
+            {"track": {"track_id": "schema_failure"}},
+        )
+
