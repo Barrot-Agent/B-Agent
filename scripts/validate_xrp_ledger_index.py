@@ -153,6 +153,55 @@ def validate_index_data(index: dict[str, Any], repo_root: Path) -> dict[str, Any
     limitations, limitation_errors, limitation_shards = resolve_archive_array(index.get("limitations", []), "limitations", repo_root)
     errors.extend(limitation_errors)
 
+    # The compact v3 index duplicates archive totals in archive_policy and
+    # ledger_metrics for human/audit consumers. Fail closed if those summaries
+    # drift from the authoritative immutable pointers.
+    archive_policy_counts_reconciled: bool | None = None
+    if index.get("index_format_version") == "3.0":
+        policy_errors: list[str] = []
+        archive_policy = index.get("archive_policy")
+        if not isinstance(archive_policy, dict):
+            policy_errors.append("v3 archive_policy must be an object")
+        else:
+            if archive_policy.get("archive_schema_version") != "1.0":
+                policy_errors.append("archive_policy archive_schema_version must be 1.0")
+            policy_arrays = archive_policy.get("arrays")
+            if not isinstance(policy_arrays, dict):
+                policy_errors.append("archive_policy arrays must be an object")
+            else:
+                for array_name in ("sources", "run_updates", "limitations"):
+                    pointer = index.get(array_name)
+                    policy_entry = policy_arrays.get(array_name)
+                    if not isinstance(pointer, dict) or pointer.get("record_type") != "archive_pointer":
+                        policy_errors.append(f"{array_name} v3 index must use an archive_pointer")
+                        continue
+                    if not isinstance(policy_entry, dict):
+                        policy_errors.append(f"archive_policy arrays.{array_name} must be an object")
+                        continue
+                    for count_name in ("record_count", "chunk_count"):
+                        pointer_count = pointer.get(count_name)
+                        policy_count = policy_entry.get(count_name)
+                        if type(pointer_count) is not int or type(policy_count) is not int or policy_count != pointer_count:
+                            policy_errors.append(
+                                f"archive_policy arrays.{array_name} {count_name} must match live pointer"
+                            )
+            expected_shards = source_shards + run_shards + limitation_shards
+            if type(archive_policy.get("archive_shards_total")) is not int or archive_policy.get("archive_shards_total") != expected_shards:
+                policy_errors.append("archive_policy archive_shards_total must match live pointer chunk totals")
+        ledger_metrics = index.get("ledger_metrics")
+        if isinstance(ledger_metrics, dict):
+            expected_metrics = {
+                "source_records": len(source_ids),
+                "run_updates": len(run_updates),
+                "limitations": len(limitations),
+                "archive_shards": source_shards + run_shards + limitation_shards,
+            }
+            for metric_name, expected_value in expected_metrics.items():
+                if metric_name in ledger_metrics and ledger_metrics.get(metric_name) != expected_value:
+                    policy_errors.append(f"ledger_metrics.{metric_name} must match live archive pointers")
+        errors.extend(policy_errors)
+        archive_policy_counts_reconciled = not policy_errors
+
     latest = index.get("latest_snapshot")
     if not isinstance(latest, dict):
         errors.append("latest_snapshot must be an object")
@@ -222,6 +271,7 @@ def validate_index_data(index: dict[str, Any], repo_root: Path) -> dict[str, Any
         "run_update_count": len(run_updates),
         "limitation_count": len(limitations),
         "archive_shards_checked": source_shards + run_shards + limitation_shards,
+        "archive_policy_counts_reconciled": archive_policy_counts_reconciled,
         "snapshot_path": path_value,
         "snapshot_blob_sha_expected": expected_sha,
         "snapshot_blob_sha_actual": actual_sha,
