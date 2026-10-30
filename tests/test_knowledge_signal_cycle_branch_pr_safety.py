@@ -50,3 +50,10 @@ def test_knowledge_cycle_uploads_generated_outputs_for_audit():
 
 def test_knowledge_cycle_safety_tests_are_registered_in_core_ci():
     assert "tests/test_knowledge_signal_cycle_branch_pr_safety.py" in CI_WORKFLOW
+
+
+
+def test_knowledge_cycle_runs_safety_checks_before_creating_branch():
+    assert "python -m compileall -q scripts" in WORKFLOW
+    assert "python -m pytest --noconftest -o addopts=" in WORKFLOW
+    assert WORKFLOW.index("python -m pytest") < WORKFLOW.index('git checkout -b "$BRANCH"')
