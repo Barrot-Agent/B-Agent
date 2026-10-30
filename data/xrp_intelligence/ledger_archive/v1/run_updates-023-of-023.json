@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 22,
+  "chunk_count": 23,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:12:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:12:00Z",
+      "update_type": "SBI_JPYSC_TRUST_CUSTODY_OPENSTANDARD_BITBANK_XRP_DISTRIBUTION_AND_LEDGER_VALIDATOR_SCHEMA_REPAIR",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "877342ad7ff3ee14ca7f13145e411242a4053125",
+      "observed_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+      "source_ids": [
+        "SRC-SBI-TRUST-MERGER-20261029",
+        "SRC-SBI-JPYSC-JGB-RESERVES-20260907",
+        "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+        "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624",
+        "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001",
+        "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+        "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030",
+        "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+        "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+        "SRC-SBICAH-SBI-CRYPTO-ASSET-HOLDINGS-20230214",
+        "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z",
+        "SRC-COINLAW-BINANCE-POR-ASSET-SUMMARY-20261012",
+        "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930",
+        "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630",
+        "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624"
+      ],
+      "findings": {
+        "validator_failure": {
+          "run_id": 41024602495,
+          "exact_head": "877342ad7ff3ee14ca7f13145e411242a4053125",
+          "result": "FAILURE",
+          "tests": "17 passed, 1 failed",
+          "root_cause": "Three newly created archive shards used record_type xrp_intelligence_archive_shard, while the validator requires xrp_research_ledger_archive_shard.",
+          "fail_closed_gate_run_id": 41024602574,
+          "fail_closed_gate": "PASS_MERGE_DISABLED",
+          "repair": "Created corrected append-only replacement copies with the required record_type; original malformed shards preserved unreferenced. Exact-head revalidation pending."
+        },
+        "sbi_entity_resolution": {
+          "sbic_east_japan": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; linked to the ChatGPT/generative-AI seminar.",
+          "sbicah": "SBICAH GK is a wholly owned SBI Holdings acquisition vehicle; SBI Crypto Asset Holdings Co., Ltd. is its representative member.",
+          "sbi_clearing_trust": "Separate SBI group trust company; not SBIC East Japan or SBICAH.",
+          "intended_bare_sbic_meaning": "UNRESOLVED"
+        },
+        "sbi_digital_asset_stack": {
+          "bitbank_acquisition": "Completed 2026-10-01; Bitbank became wholly owned SBI Holdings subsidiary through SBICAH GK.",
+          "bitbank_xrp_jpy": "CoinGecko snapshot approx USD 7.54M 24h volume, 0.01% spread, +2% depth USD 354,397, -2% depth USD 915,209; exact venue timestamp unavailable.",
+          "sbi_crypto_card": "Announced 2026-05-01; points automatically convert to selected BTC/ETH/XRP through SBI VC Trade; aggregate XRP credited unknown.",
+          "sbi_start_bond": "JPY 10B issue, sold out, 2.150% coupon, A- rating; one-time eligibility reward JPY 200 equivalent XRP per JPY 100,000 purchased; actual XRP distribution unknown; future coupon-date rewards not promised.",
+          "rlUSD_usdc": "SBI VC Trade distributes RLUSD since 2026-06-24 and USDC since 2025-03; actual volumes unknown.",
+          "xrpl_ecosystem": "SBI Ripple Asia and AWAJ announced XRPL technical support for startups; implementation outcomes and XRP demand unknown."
+        },
+        "jpy_sc_and_custody": {
+          "jpy_sc_issuer": "SBI Shinsei Trust Bank",
+          "distributor": "SBI VC Trade",
+          "co_developer": "Startale Group",
+          "issued_balance_jpy_2026_09_07": 20100000000,
+          "lending_applications_jpy_2026_09_07": 6900000000,
+          "short_term_jgb_allocation_jpy_2026_09_07": 1000000000,
+          "legal_short_term_asset_cap_percent": 50,
+          "legal_maturity_limit_months": 3,
+          "lending_applications_added_to_supply": false,
+          "initial_distribution_scope": "SBI VC Trade account balances only; public-chain circulation contingent on legal/tax readiness",
+          "trust_merger": "SBI Clearing Trust into SBI Shinsei Trust Bank planned effective 2026-12-31 subject to regulatory approvals",
+          "xrp_specific_custody": "NOT_ESTABLISHED"
+        },
+        "open_standard": {
+          "sbi_startale_membership_announced": "2026-10-16",
+          "jpy_sc_ousd_interoperability": "PoC being considered; no live bridge, chain route or production settlement established",
+          "blackrock_tokenized_mmf_jpysc_mou": "2026-10-27; exploration only; no named fund, chain, volume or XRP role",
+          "founding_partners": [
+            "Coinbase",
+            "Mastercard",
+            "Shopify",
+            "Stripe",
+            "Visa"
+          ],
+          "ripple_network_participation": "Reported by The Block; not an issuer role or direct bilateral agreement",
+          "circle_founder_or_partner": "Not listed among the five founding partners; no direct OUSD/Circle agreement established",
+          "ousd_xrpl_deployment": "Not established; Stripe lists Base, Ethereum, Solana and Tempo"
+        },
+        "binance_por_disconfirmation": {
+          "coinlaw_tracker": "Displayed October 1 Binance summary shows BTC, ETH, USDT and USDC ratios but no XRP ratio.",
+          "interpretation": "Does not prove XRP absent from full official PoR; fails to independently corroborate the secondary 100.77% XRP ratio.",
+          "official_five_xrpl_wallet_crosswalk": "NOT_COMPLETED"
+        }
+      },
+      "repository": {
+        "latest_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+        "pr1366_url": "https://github.com/Barrot-Agent/B-Agent/pull/1366",
+        "pr1366_head_sha": "4a826f1130418bcd1eb475b8af48e50c2a267a26",
+        "pr1366_core_ci_run_id": 41024099995,
+        "pr1366_core_ci_tests_passed": 347,
+        "pr1366_core_ci_subtests_passed": 8,
+        "pr1366_gate_run_id": 41024100209,
+        "pr1366_gate_status": "PASS_MERGE_DISABLED",
+        "pr1366_state": "OPEN_DRAFT_UNMERGED"
+      },
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}
