@@ -106,8 +106,18 @@ def resolve_archive_array(value: Any, expected_array_name: str, repo_root: Path)
             errors.append(f"{expected_array_name} archive chunk {position} schema mismatch")
         if archive.get("array_name") != expected_array_name:
             errors.append(f"{expected_array_name} archive chunk {position} array_name mismatch")
-        if archive.get("chunk_index") != position or archive.get("chunk_count") != expected_chunk_count:
-            errors.append(f"{expected_array_name} archive chunk {position} metadata mismatch")
+        if archive.get("chunk_index") != position:
+            errors.append(f"{expected_array_name} archive chunk {position} global index mismatch")
+        # Append-only archives preserve the chunk_count recorded when each shard
+        # was created. Older shards therefore legitimately carry a smaller
+        # generation count than the current pointer's total chunk_count.
+        archive_chunk_count = archive.get("chunk_count")
+        if (
+            type(archive_chunk_count) is not int
+            or archive_chunk_count < position + 1
+            or archive_chunk_count > expected_chunk_count
+        ):
+            errors.append(f"{expected_array_name} archive chunk {position} append-generation metadata mismatch")
         shard_records = archive.get("records")
         if not isinstance(shard_records, list):
             errors.append(f"{expected_array_name} archive chunk {position} records must be a list")
