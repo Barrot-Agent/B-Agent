@@ -42,7 +42,7 @@ def test_write_permissions_are_isolated_to_the_publish_job():
 
 def test_publish_job_uses_exact_dispatch_commit_and_unique_review_branch():
     assert "ref: ${{ github.sha }}" in PUBLISH
-    assert 'BRANCH="barrot/knowledge-cycle-\${GITHUB_RUN_ID}"' in PUBLISH
+    assert 'BRANCH="barrot/knowledge-cycle-${GITHUB_RUN_ID}"' in PUBLISH
     assert 'git checkout -b "$BRANCH"' in PUBLISH
     assert 'git push --set-upstream origin "$BRANCH"' in PUBLISH
     lowered = PUBLISH.lower()
