@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T071128Z-BINANCE-INCIDENT-STATUS-AND-ETF-CROSSCHECK",
+  "captured_at_utc": "2026-10-30T07:11:28Z",
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance exchange and custody platform",
+      "kind": "CENTRALIZED_EXCHANGE"
+    },
+    {
+      "id": "BINANCE_XRPL_COMPROMISED_WALLETS",
+      "label": "Five Binance-attributed compromised XRPL source wallets",
+      "kind": "XRPL_SOURCE_WALLET_CLUSTER"
+    },
+    {
+      "id": "BINANCE_XRPL_ATTACKER_RECEIVER",
+      "label": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "kind": "XRPL_RECEIVER_ADDRESS"
+    },
+    {
+      "id": "BINANCE_14_ETH_WALLET",
+      "label": "Binance 14 Ethereum hot wallet",
+      "kind": "ETHEREUM_HOT_WALLET"
+    },
+    {
+      "id": "BINANCE_OCT1_POR",
+      "label": "Binance October 1 2026 proof-of-reserves snapshot",
+      "kind": "EXCHANGE_PROOF_OF_RESERVES"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "XRPL_NATIVE_ASSET"
+    },
+    {
+      "id": "OKX_XRP_USD",
+      "label": "OKX XRP/USD venue-specific market observation",
+      "kind": "SPOT_MARKET_OBSERVATION"
+    },
+    {
+      "id": "XRP_ETF_AGGREGATORS",
+      "label": "XRP ETF flow and AUM aggregators",
+      "kind": "SECONDARY_FUND_DATA"
+    },
+    {
+      "id": "BARROT_MAIN_CROSS_ANALYSIS",
+      "label": "Barrot main cross-analysis workflow",
+      "kind": "GITHUB_AUTOMATION"
+    },
+    {
+      "id": "BARROT_PR1365",
+      "label": "Fresh-main read-only cross-analysis proposal PR #1365",
+      "kind": "OPEN_DRAFT_PULL_REQUEST"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BINANCE-XRPL-DRAIN-TO-RECEIVER-20261030",
+      "source": "BINANCE_XRPL_COMPROMISED_WALLETS",
+      "target": "BINANCE_XRPL_ATTACKER_RECEIVER",
+      "relationship": "233_46M_NATIVE_XRP_TRANSFERRED",
+      "evidence_class": "INDEPENDENT_BLOCKCHAIN_ANALYTICS_OF_PUBLIC_XRPL_TRANSACTIONS",
+      "claim": "TRM reports 233.46M XRP drained from five Binance-attributed XRPL wallets; Bitquery independently reports approximately 233.5M XRP at the same receiver and no outgoing transaction through 03:54 UTC. Later disposition is unknown.",
+      "source_ids": [
+        "SRC-TRM-BINANCE-THEFT-XRPL-RLUSD-20261030T0508Z",
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE14-ETH-WALLET-IN-POR-20261030",
+      "source": "BINANCE_14_ETH_WALLET",
+      "target": "BINANCE_OCT1_POR",
+      "relationship": "ETHEREUM_HOT_WALLET_INCLUDED_IN_OCTOBER_1_POR",
+      "evidence_class": "SECONDARY_RECONCILIATION_OF_PUBLIC_EXCHANGE_RESERVE_DATA",
+      "claim": "CoinDesk reports Binance 14 appears in Binance's October 1 PoR wallet set and that approximately 204,500 ETH was drained, implying ETH customer backing near 94% until replenishment. This is an Ethereum-specific finding, not evidence about the five XRPL source wallets or XRP reserve ratio.",
+      "source_ids": [
+        "SRC-COINDESK-BINANCE-POR-WALLET-IMPACT-20261030T0508Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-OFFICIAL-STATUS-DISCREPANCY-20261030",
+      "source": "BINANCE",
+      "target": "BINANCE",
+      "relationship": "DEPOSITS_NORMAL_WITHDRAWALS_PAUSED_VS_EARLIER_BOTH_SUSPENDED",
+      "evidence_class": "CONFLICTING_PRIMARY_COMPANY_STATUS_SNAPSHOTS",
+      "claim": "The 02:23 UTC Binance Support update said deposits and withdrawals were temporarily suspended; a verified Binance News post later reported deposits normal and withdrawals paused, but its exact publication time and per-network scope were not exposed.",
+      "source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-20261030T0508Z",
+        "SRC-BINANCE-VERIFIED-STATUS-20261030T0709Z"
+      ]
+    },
+    {
+      "id": "EDGE-OKX-XRP-OBSERVATION-20261030",
+      "source": "OKX_XRP_USD",
+      "target": "XRP",
+      "relationship": "VENUE_SPECIFIC_XRP_USD_OBSERVATION_AT_034135Z",
+      "evidence_class": "SECONDARY_VENUE_MARKET_DATA",
+      "claim": "Investing.com displayed OKX XRP/USD at $1.2256, -5.41% over 24 hours at 03:41:35 UTC. The quote is stale by the 07:09 UTC capture and is not a consolidated spot price.",
+      "source_ids": [
+        "SRC-INVESTING-OKX-XRP-20261030T034135Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-ETF-AGGREGATOR-UNIVERSE-DISAGREEMENT-20261030",
+      "source": "XRP_ETF_AGGREGATORS",
+      "target": "XRP",
+      "relationship": "MIXED_PRODUCT_UNIVERSE_AND_INCONSISTENT_PRODUCT_COUNT",
+      "evidence_class": "SECONDARY_AGGREGATOR_DATA_QUALITY_CONFLICT",
+      "claim": "Alpha Finance reports +$8.4M October 29 flow across five spot funds; TheXRPInvestor reports 12 products but categories totaling 11 and includes spot, derivatives and index products. These figures are not directly comparable.",
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-ETF-20261029-20261030T0608Z",
+        "SRC-THEXRPINVESTOR-ETF-DASHBOARD-20261030T0709Z"
+      ]
+    },
+    {
+      "id": "EDGE-BARROT-CROSS-ANALYSIS-READ-ONLY-PROPOSAL-20261030",
+      "source": "BARROT_MAIN_CROSS_ANALYSIS",
+      "target": "BARROT_PR1365",
+      "relationship": "DRAFT_REPLACEMENT_REMOVES_MAIN_WRITE_PATH",
+      "evidence_class": "REPOSITORY_OBSERVATION_AND_EXACT_HEAD_CI",
+      "claim": "Main still has scheduled/workflow-run triggers, contents:write and git commit/push. PR #1365 replaces these with read-only artifacts; exact-head core CI passed 342 tests plus 8 subtests and the fail-closed gate passed. PR remains draft/unmerged.",
+      "source_ids": []
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-BINANCE-STOLEN-XRP-FUTURE-OVERHANG-20261030T0711Z",
+      "claim": "The 233.46M XRP theft creates a potential future supply overhang if the attacker moves or sells it.",
+      "support": [
+        "TRM and Bitquery report approximately 233.5M XRP moved to the same receiver.",
+        "Bitquery observed no outgoing transaction through 03:54 UTC."
+      ],
+      "counter": [
+        "No sale or exchange deposit was confirmed by that cutoff.",
+        "The receiver's later disposition is unknown.",
+        "On-chain transfer alone does not establish sell intent."
+      ],
+      "status": "POTENTIAL_RISK_NOT_REALIZED_SELLING"
+    },
+    {
+      "id": "HYP-BINANCE-XRP-RESERVE-SHORTFALL-20261030T0711Z",
+      "claim": "Binance customer XRP reserve coverage may have been impaired if one of the five stolen source wallets was included in the October 1 XRP proof-of-reserves wallet set.",
+      "support": [
+        "Five Binance-attributed XRPL wallets lost 233.46M native XRP.",
+        "October 1 secondary reporting placed Binance XRP reserve ratio near 100.77%."
+      ],
+      "counter": [
+        "The five source wallet addresses and XRP-BF2 reserve address have not been cross-referenced.",
+        "CoinDesk's Binance 14 reserve-wallet finding concerns Ethereum, not XRPL.",
+        "Binance says it will cover all losses; replenishment not yet independently measured."
+      ],
+      "status": "UNRESOLVED_SCENARIO_NOT_A_CONFIRMED_XRP_SHORTFALL"
+    },
+    {
+      "id": "HYP-XRP-ETF-FLOWS-PRICE-DIVERGENCE-20261030T0711Z",
+      "claim": "Reported positive October 29 spot ETF flows may coexist with falling XRP spot prices because ETF demand is not the only marginal price-setting flow.",
+      "support": [
+        "Alpha Finance reports +$8.4M across five spot funds for October 29.",
+        "OKX venue-specific snapshot at 03:41 UTC showed XRP down 5.41% over 24 hours."
+      ],
+      "counter": [
+        "ETF universes and cutoffs differ.",
+        "TheXRPInvestor mixes spot, derivative and index products and has a product-count mismatch.",
+        "The market quote is stale and venue-specific; no synchronized global spot panel."
+      ],
+      "status": "OBSERVED_DIVERGENCE_WITH_INCOMPLETE_MEASUREMENT"
+    },
+    {
+      "id": "HYP-CROSS-ANALYSIS-AUTOMATED-MAIN-MUTATION-20261030T0711Z",
+      "claim": "The scheduled cross-analysis workflow continues to mutate main hourly until a read-only replacement is approved and merged.",
+      "support": [
+        "Seven Cross-analysis refresh commits were observed from 01:00 through 06:52 UTC.",
+        "Main workflow still has contents: write, persisted checkout credentials, git add/commit/push."
+      ],
+      "counter": [
+        "A fresh-main replacement PR #1365 has exact-head CI and fail-closed gate passing.",
+        "The replacement is still draft and unmerged."
+      ],
+      "status": "CURRENT_MAIN_DEFECT_CONFIRMED; FIX_PROPOSED_NOT_DEPLOYED"
+    }
+  ],
+  "source_independence": {
+    "binance_official_updates": "Same issuer; support-page and verified News status snapshots conflict and have unequal timestamp precision.",
+    "trm_vs_bitquery": "Separate analytics providers inspecting the same public XRPL transactions; independent methods, not independent underlying transactions.",
+    "coindesk_por": "Secondary analysis of Binance's October 1 PoR wallet set; the Binance 14 example is Ethereum-specific.",
+    "investing_okx": "Venue-specific OKX data surfaced through Investing.com; stale at capture and not a consolidated multi-venue quote.",
+    "etf_aggregators": "Alpha Finance and TheXRPInvestor have different product universes; TheXRPInvestor count/categories are internally inconsistent."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}
