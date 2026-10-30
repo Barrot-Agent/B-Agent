@@ -180,7 +180,7 @@ def review_work_bundle(bundle: Any) -> BundleReview:
 
     constraints = bundle.get("constraints")
     if isinstance(constraints, list) and not any(
-        isinstance(item, str) and any(word in item.lower() for word in ("approval", "authorize", "authorization", "human", "permission"))
+        isinstance(item, str) and any(word in item.lower() for word in ("approval", "authorize", "human", "permission"))
         for item in constraints
     ):
         findings.append(_finding(
