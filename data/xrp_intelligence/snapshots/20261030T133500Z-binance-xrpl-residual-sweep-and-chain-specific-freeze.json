@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T133500Z-BINANCE-XRPL-RESIDUAL-SWEEP-AND-CHAIN-SPECIFIC-FREEZE",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T133500Z-binance-xrpl-residual-sweep-and-chain-specific-freeze.json",
+  "captured_at_utc": "2026-10-30T13:35:00Z",
+  "data_cutoff_utc": "2026-10-30T13:35:00Z",
+  "previous_snapshot_reference": "data/xrp_intelligence/snapshots/20261030T132500Z-coinbase-circle-equity-revenue-rate-sensitivity-corrected.json",
+  "source_ids": [
+    "SRC-XRPLWIN-BINANCE-XRP-RLUSD-TRACE-20261030",
+    "SRC-BITHOMP-TX-RDAE53-RLUSD-TO-RS8ZPB-20261030",
+    "SRC-BITHOMP-TX-RDAE53-XRP-TO-RS8ZPB-20261029",
+    "SRC-BITHOMP-RS8ZPB-BINANCE-ACCOUNT-20261030",
+    "SRC-BITHOMP-RS8ZPB-RECEIVED-TRANSACTIONS-20261030",
+    "SRC-BITHOMP-RDAE53-BINANCE-ACCOUNT-20261030",
+    "SRC-BITHOMP-TX-RDAE53-TO-RK21T6-185M-20261029"
+  ],
+  "confirmed_facts": [
+    {
+      "claim": "The five Binance-attributed XRPL source wallets transferred a combined 233,461,943.1 native XRP to the separate receiver rK21t6... between 20:05 and 20:09 UTC on October 29. The largest leg was 185,017,485.5 XRP from rDAE53... to rK21t6... in ledger 107986693.",
+      "source_ids": [
+        "SRC-XRPLWIN-BINANCE-XRP-RLUSD-TRACE-20261030",
+        "SRC-BITHOMP-TX-RDAE53-TO-RK21T6-185M-20261029"
+      ],
+      "evidence_class": "ONCHAIN_PRIMARY_TRANSACTION_PLUS_SECONDARY_RECONSTRUCTION"
+    },
+    {
+      "claim": "After the 185M XRP drain, rDAE53... sent 11,141,435.843 XRP to rs8ZPb... at 23:12:20 UTC on October 29. Bithomp labels both accounts Binance; the source AccountRoot balance after the payment was 12.99715 XRP.",
+      "source_ids": [
+        "SRC-BITHOMP-TX-RDAE53-XRP-TO-RS8ZPB-20261029",
+        "SRC-BITHOMP-RDAE53-BINANCE-ACCOUNT-20261030"
+      ],
+      "evidence_class": "PRIMARY_VALIDATED_XRPL_TRANSACTION"
+    },
+    {
+      "claim": "At 01:27:10 UTC on October 30, rDAE53... sent 51,172,508 RLUSD on XRPL to rs8ZPb... . Bithomp labels both accounts Binance. The source RLUSD trustline balance fell from 51,172,511.53865526 to 3.53865526; the receiver's trustline rose from zero to 51,172,508. This was a successful Payment, not an issuer freeze.",
+      "source_ids": [
+        "SRC-BITHOMP-TX-RDAE53-RLUSD-TO-RS8ZPB-20261030",
+        "SRC-BITHOMP-RS8ZPB-RECEIVED-TRANSACTIONS-20261030"
+      ],
+      "evidence_class": "PRIMARY_VALIDATED_XRPL_TRANSACTION"
+    },
+    {
+      "claim": "The rs8ZPb... destination is an old Bithomp-labelled Binance account activated on November 15, 2018 by Binance-labelled rJb5...; the profile displayed approximately 1.6B XRP and $2.0B total worth at capture. Its transaction history shows the RLUSD receipt and small 0.25 XRP payments from four other Binance-labelled source wallets.",
+      "source_ids": [
+        "SRC-BITHOMP-RS8ZPB-BINANCE-ACCOUNT-20261030",
+        "SRC-BITHOMP-RS8ZPB-RECEIVED-TRANSACTIONS-20261030"
+      ],
+      "evidence_class": "PRIMARY_EXPLORER_ACCOUNT_AND_TRANSACTION_HISTORY_WITH_THIRD_PARTY_LABELS"
+    },
+    {
+      "claim": "The 51,172,508 RLUSD transfer on XRPL to rs8ZPb... is separate from TRM/XRPLWin's reported 88.5M RLUSD theft on Ethereum and Ripple's reported 40.5M RLUSD freeze on Ethereum. The XRPL transfer is an ordinary successful Payment on the XRPL ledger.",
+      "source_ids": [
+        "SRC-BITHOMP-TX-RDAE53-RLUSD-TO-RS8ZPB-20261030",
+        "SRC-XRPLWIN-BINANCE-XRP-RLUSD-TRACE-20261030"
+      ],
+      "evidence_class": "PRIMARY_XRPL_TRANSACTION_AND_SECONDARY_CROSS_CHAIN_RECONCILIATION"
+    }
+  ],
+  "inferences": [
+    {
+      "claim": "The 11.141M XRP and 51.172508M RLUSD movements from rDAE53... to the old Binance-labelled rs8ZPb... wallet are strongly consistent with post-incident internal Binance consolidation or recovery, rather than additional transfers to the attacker. The receiver's 2018 activation, large existing XRP balance, Binance label and inbound transfers from other Binance hot wallets support this interpretation.",
+      "supporting_source_ids": [
+        "SRC-BITHOMP-TX-RDAE53-XRP-TO-RS8ZPB-20261029",
+        "SRC-BITHOMP-TX-RDAE53-RLUSD-TO-RS8ZPB-20261030",
+        "SRC-BITHOMP-RS8ZPB-BINANCE-ACCOUNT-20261030",
+        "SRC-BITHOMP-RS8ZPB-RECEIVED-TRANSACTIONS-20261030"
+      ],
+      "confidence": "HIGH_FOR_BINANCE_INTERNAL_DESTINATION; AUTHORIZATION_AND_OPERATOR_NOT_PROVEN"
+    },
+    {
+      "claim": "The 233.462M XRP sent to rK21t6... remains a distinct potential supply overhang. XRPLWin reported no outgoing XRP from that receiver through 07:36 UTC October 30; no sale is established at that cutoff.",
+      "supporting_source_ids": [
+        "SRC-XRPLWIN-BINANCE-XRP-RLUSD-TRACE-20261030"
+      ],
+      "confidence": "HIGH_AT_REPORTED_CUTOFF; LATER_DISPOSITION_UNKNOWN"
+    },
+    {
+      "claim": "Ripple's Ethereum RLUSD freeze should not be generalized to XRPL RLUSD. The 51.172508M XRPL RLUSD transfer succeeded normally; XRPLWin's claim that no issuer freeze transaction occurred on XRPL during Oct25-30 remains secondary and has not been independently exhaustively audited.",
+      "supporting_source_ids": [
+        "SRC-BITHOMP-TX-RDAE53-RLUSD-TO-RS8ZPB-20261030",
+        "SRC-XRPLWIN-BINANCE-XRP-RLUSD-TRACE-20261030"
+      ],
+      "confidence": "HIGH_FOR_CHAIN_SPECIFIC_TRANSACTION; MEDIUM_FOR_NO_FREEZE_WINDOW"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "HYP-BINANCE-POST-INCIDENT-RESIDUAL-SWEEP-INTERNAL-RECOVERY-20261030",
+      "claim": "The later XRP and RLUSD transfers from rDAE53... to rs8ZPb... represent Binance's internal recovery/consolidation after the theft.",
+      "supporting_source_ids": [
+        "SRC-BITHOMP-TX-RDAE53-XRP-TO-RS8ZPB-20261029",
+        "SRC-BITHOMP-TX-RDAE53-RLUSD-TO-RS8ZPB-20261030",
+        "SRC-BITHOMP-RS8ZPB-BINANCE-ACCOUNT-20261030",
+        "SRC-BITHOMP-RS8ZPB-RECEIVED-TRANSACTIONS-20261030"
+      ],
+      "counterevidence": "On-chain signatures do not identify the human/operator controlling the hot wallet; a compromised source wallet could theoretically send to a Binance-labelled destination. Bithomp labels are third-party attribution, not proof of authorization.",
+      "status": "STRONGLY_SUPPORTED_NOT_PROVEN"
+    },
+    {
+      "hypothesis_id": "HYP-ATTACKER-RETAINED-CONTROL-OF-HOT-WALLET-DURING-RESIDUAL-MOVEMENTS-20261030",
+      "claim": "The actor who drained XRP could have retained access to rDAE53... and initiated later transfers, even if the destination was a Binance-labelled reserve wallet.",
+      "supporting_source_ids": [
+        "SRC-XRPLWIN-BINANCE-XRP-RLUSD-TRACE-20261030",
+        "SRC-BITHOMP-RDAE53-BINANCE-ACCOUNT-20261030"
+      ],
+      "counterevidence": "Both later destinations are the same old Binance-labelled reserve wallet; the XRP and RLUSD transfers were successful and the destination received dust from other Binance-labelled hot wallets.",
+      "status": "POSSIBLE_ALTERNATIVE; LESS_SUPPORTED"
+    },
+    {
+      "hypothesis_id": "HYP-RLUSD-ISSUER-FREEZE-IS-CHAIN-SPECIFIC-20261030",
+      "claim": "The 40.5M RLUSD freeze reported by Ripple occurred on Ethereum; it does not imply the 51.172508M RLUSD on XRPL was frozen. The XRPL transfer was a successful payment.",
+      "supporting_source_ids": [
+        "SRC-BITHOMP-TX-RDAE53-RLUSD-TO-RS8ZPB-20261030",
+        "SRC-XRPLWIN-BINANCE-XRP-RLUSD-TRACE-20261030"
+      ],
+      "counterevidence": "No independent complete issuer-account transaction audit for the entire Oct25-30 XRPL window was performed; the no-freeze assertion remains secondary.",
+      "status": "CHAIN_SPECIFIC_TRANSFER_CONFIRMED; FULL_XRPL_FREEZE_AUDIT_PENDING"
+    }
+  ],
+  "unknowns": [
+    "Whether Binance explicitly authorized the later rDAE53-to-rs8ZPb transfers or the source hot wallet remained compromised.",
+    "Whether rs8ZPb is included in the October 1 Binance XRP proof-of-reserves address set.",
+    "Whether the 233.4619431M XRP attacker receiver moved after the XRPLWin 07:36 UTC cutoff.",
+    "Whether Ripple performed any XRPL RLUSD freeze action outside the XRPLWin review window or in a transaction not captured by its analysis.",
+    "Whether the 40.5M Ethereum RLUSD freeze was fully recoverable or returned to Binance/customer balances."
+  ],
+  "disconfirming_evidence": [
+    "Bithomp's Binance labels are third-party classifications, not cryptographic proof of ownership or authorization.",
+    "A valid XRPL signature proves control of the signing key, not the identity of the operator at the time.",
+    "The receiver rs8ZPb is a known old Binance-labelled wallet, but the actual internal recovery instruction is not public.",
+    "The no-XRPL-freeze conclusion is currently supported by secondary XRPLWin analysis, not a completed independent full issuer-account audit.",
+    "The attacker receiver's later movement after 07:36 UTC is unknown."
+  ],
+  "chain_specific_freeze_reconciliation": {
+    "native_xrp": "Cannot be frozen by a token issuer at the XRPL protocol level.",
+    "rlusd_ethereum": "TRM/XRPLWin report 40.5M RLUSD frozen by Ripple on Ethereum.",
+    "rlusd_xrpl": "51.172508M RLUSD was transferred successfully from rDAE53 to Binance-labelled rs8ZPb; no issuer freeze is evidenced by this transaction. XRPLWin reports no issuer freeze transactions during Oct25-30, but full independent audit pending.",
+    "separate_ethereum_rlusd_theft_reported": 88500000,
+    "ripple_reported_freeze": 40500000,
+    "rlusd_xrpl_internal_transfer": 51172508
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
