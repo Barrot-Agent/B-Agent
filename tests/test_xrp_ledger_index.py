@@ -10,7 +10,7 @@ VALIDATOR = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(VALIDATOR)
 
 
-def fixture_pair(tmp_path, *, unsafe_path=False, wrong_sha=False, duplicate_ids=False):
+def fixture_pair(tmp_path, *, unsafe_path=False, wrong_sha=False, duplicate_ids=False, index_format_version="2.0"):
     relative = "../escape.json" if unsafe_path else "data/xrp_intelligence/snapshots/fixture.json"
     snapshot = {
         "captured_at_utc": "2026-10-28T00:00:00Z",
@@ -29,7 +29,7 @@ def fixture_pair(tmp_path, *, unsafe_path=False, wrong_sha=False, duplicate_ids=
         sha = "0" * 40
     latest = {
         "record_type": "snapshot_reference",
-        "index_format_version": "2.0",
+        "index_format_version": index_format_version,
         "schema_version": "1.0",
         "captured_at_utc": snapshot["captured_at_utc"],
         "snapshot_id": snapshot["snapshot_id"],
@@ -41,7 +41,7 @@ def fixture_pair(tmp_path, *, unsafe_path=False, wrong_sha=False, duplicate_ids=
     index = {
         "schema_version": "1.0",
         "record_type": "xrp_intelligence_research_ledger",
-        "index_format_version": "2.0",
+        "index_format_version": index_format_version,
         "latest_snapshot": latest,
         "sources": sources,
         "run_updates": [],
