@@ -57,6 +57,28 @@ def test_pointer_resolves_and_hash_verifies(tmp_path):
     assert report["state_mutated"] is False
 
 
+def test_v3_snapshot_pointer_matches_ledger_format(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="3.0")
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "PASS", report
+    assert report["index_format_version"] == "3.0"
+
+
+def test_snapshot_pointer_format_must_match_ledger_format(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="3.0")
+    index["latest_snapshot"]["index_format_version"] = "2.0"
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("must match ledger index_format_version" in error for error in report["errors"])
+
+
+def test_unsupported_sharded_index_format_fails_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="4.0")
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("must be 2.0 or 3.0" in error for error in report["errors"])
+
+
 def test_bad_snapshot_hash_fails_closed(tmp_path):
     index, _ = fixture_pair(tmp_path, wrong_sha=True)
     report = VALIDATOR.validate_index_data(index, tmp_path)
