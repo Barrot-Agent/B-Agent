@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-30T030830Z-RIPPLE-PRIME-ACTUAL-CAPITAL-COINBASE-FCM",
+  "captured_at_utc": "2026-10-30T03:08:30Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T030830Z-ripple-prime-actual-capital-coinbase-fcm.json",
+  "observed_main_sha": "84f991932d3137ae8df49cead40f611a83a97c2c",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "research_head_before_append": "7730a0759ed372ccc9ca6c7184b23f77b1a3f034",
+  "focus": "Reconcile Ripple Prime's actual FCM capital, customer segregation, audited repo balance sheet and parent funding with Coinbase Financial Markets; separate traditional repo capital from XRP collateral and measure only what public data support.",
+  "source_ids": [
+    "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+    "SRC-SEC-HIDDENROAD-SOFC-20251231",
+    "SRC-KBRA-RIPPLE-PRIME-BBB-RATING-20260402",
+    "SRC-CFTC-FCM-FINANCIAL-DATA-METHODOLOGY-20261030",
+    "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+    "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+  ],
+  "findings": [
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_FINANCIAL_DATA",
+      "claim": "CFTC July 31 2026 FCM report: Hidden Road Partners CIV US LLC adjusted net capital $731.397M, excess $709.984M, customer assets in segregation $642.769M; Coinbase Financial Markets Inc. adjusted net capital $310.422M, excess $302.070M, customer assets in segregation $283.373M, plus separate Part 30 and cleared-swap account funds.",
+      "source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_AUDITED_FINANCIAL_STATEMENT",
+      "claim": "Hidden Road's audited Dec 31 2025 statement reports $39.019B assets, $38.499B liabilities, $520.401M equity, $38.183B reverse-repo assets and $37.770B repo liabilities. It describes matched-book U.S. Treasury/MBS/agency financing, not proprietary inventory or customer positions.",
+      "source_ids": [
+        "SRC-SEC-HIDDENROAD-SOFC-20251231"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_AUDITED_FINANCIAL_STATEMENT",
+      "claim": "The audited statement discloses $100M of U.S. Treasury repo transactions outstanding with ultimate parent Ripple at Dec 31 2025 and $70M additional parent capital contributions through Feb 26 2026.",
+      "source_ids": [
+        "SRC-SEC-HIDDENROAD-SOFC-20251231"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_CREDIT_RATING_AGENCY",
+      "claim": "KBRA assigned BBB issuer ratings to Ripple Prime HoldCo and Hidden Road Partners CIV US LLC, describing a scaling FCM/broker-dealer with ETD clearing/intermediation and short-duration Treasury/agency repo activity; it reported profitability in 2025 supported by approximately $500M Ripple parent capital injections.",
+      "source_ids": [
+        "SRC-KBRA-RIPPLE-PRIME-BBB-RATING-20260402"
+      ]
+    },
+    {
+      "evidence_class": "UNKNOWN",
+      "claim": "Neither CFTC monthly FCM data nor the audited SEC statement identifies XRP collateral balances, customer XRP holdings, Bitnomial posting, token-specific margin use or spot-market XRP purchases.",
+      "source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+        "SRC-SEC-HIDDENROAD-SOFC-20251231"
+      ]
+    }
+  ],
+  "capital_observations": [
+    {
+      "id": "FCM-HIDDEN-ROAD-20260731",
+      "entity": "Hidden Road Partners CIV US LLC",
+      "as_of": "2026-07-31",
+      "adjusted_net_capital_usd": 731397154,
+      "required_net_capital_usd": 21413624,
+      "excess_net_capital_usd": 709983530,
+      "customer_assets_in_segregation_usd": 642769243,
+      "customer_segregation_required_usd": 581460604,
+      "excess_segregated_funds_usd": 61308639,
+      "target_residual_interest_usd": 27300000,
+      "source_id": "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+      "xrp_specific": false
+    },
+    {
+      "id": "FCM-COINBASE-FINANCIAL-MARKETS-20260731",
+      "entity": "Coinbase Financial Markets Inc.",
+      "as_of": "2026-07-31",
+      "adjusted_net_capital_usd": 310422285,
+      "required_net_capital_usd": 8351941,
+      "excess_net_capital_usd": 302070344,
+      "customer_assets_in_segregation_usd": 283373035,
+      "customer_segregation_required_usd": 155332638,
+      "excess_segregated_funds_usd": 128040397,
+      "target_residual_interest_usd": 15000000,
+      "part30_customer_assets_usd": 6009150,
+      "cleared_swap_customer_assets_usd": 155749427,
+      "source_id": "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+      "xrp_specific": false
+    },
+    {
+      "id": "HIDDEN-ROAD-SOFC-20251231",
+      "entity": "Hidden Road Partners CIV US LLC",
+      "as_of": "2025-12-31",
+      "total_assets_usd": 39019093000,
+      "total_liabilities_usd": 38498692000,
+      "member_equity_usd": 520401000,
+      "cash_usd": 17696000,
+      "reverse_repo_assets_usd": 38182647000,
+      "repo_liabilities_usd": 37769582000,
+      "parent_ripple_repo_usd": 100000000,
+      "parent_capital_contributions_after_year_end_through_2026_02_26_usd": 70000000,
+      "source_id": "SRC-SEC-HIDDENROAD-SOFC-20251231",
+      "xrp_specific": false
+    }
+  ],
+  "data_quality": {
+    "cftc_fcm_data_as_of": "2026-07-31",
+    "cftc_data_not_current_october": true,
+    "customer_funds_asset_composition_disclosed": false,
+    "repo_balances_are_not_free_cash_or_equity": true,
+    "parent_repo_is_ust_secured_not_xrp": true,
+    "token_level_xrp_collateral_measured": false,
+    "market_features_admitted": false
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Institutional balance-sheet data are dated and do not identify XRP collateral, customer token composition or spot purchases. No synchronized calibrated fixed-horizon model has passed out-of-sample validation.",
+    "data_cutoff_utc": "2026-10-30T03:08:30Z",
+    "target": null,
+    "horizon": null,
+    "probability": null,
+    "confidence": null,
+    "assumptions": [],
+    "alternatives": [],
+    "outcome_protocol": "No forecast issued."
+  },
+  "repository_state": {
+    "main_sha": "84f991932d3137ae8df49cead40f611a83a97c2c",
+    "pr_1353_verified_head": "7730a0759ed372ccc9ca6c7184b23f77b1a3f034",
+    "pr_1353_validator_run_id": 40995575523,
+    "pr_1353_validator_status": "PASS_15_TESTS",
+    "pr_1353_gate_run_id": 40995579814,
+    "pr_1353_gate_status": "PASS_AUTOMATIC_MERGE_DISABLED",
+    "pr_1353_state": "OPEN_DRAFT_UNMERGED",
+    "pr_1362_state": "OPEN_DRAFT_UNMERGED; CI_AND_GATE_PASS; MAIN_ADVANCED_ONE_NON_OVERLAPPING_GENERATED_DATA_COMMIT"
+  }
+}
