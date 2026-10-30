@@ -38,23 +38,36 @@ jobs:
           [[ "$PR_NUMBER" == "1225" ]] || { echo "Only Barrot PR #1225 is currently allowlisted." >&2; exit 1; }
           [[ "$EXPECTED_HEAD_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "Expected SHA must be 40 lowercase hex characters." >&2; exit 1; }
 
-          pr_json="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq '{state,base_ref:.base.ref,head_sha:.head.sha,head_ref:.head.ref,head_repo:.head.repo.full_name}')"
+          pr_json="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq '{state,merged,base_ref:.base.ref,head_sha:.head.sha,head_ref:.head.ref,head_repo:.head.repo.full_name}')"
           echo "$pr_json"
 
           state="$(jq -r '.state' <<<"$pr_json")"
+          merged="$(jq -r '.merged' <<<"$pr_json")"
           base_ref="$(jq -r '.base_ref' <<<"$pr_json")"
           head_sha="$(jq -r '.head_sha' <<<"$pr_json")"
           head_ref="$(jq -r '.head_ref' <<<"$pr_json")"
           head_repo="$(jq -r '.head_repo' <<<"$pr_json")"
 
-          [[ "$state" == "open" ]] || { echo "PR is not open." >&2; exit 1; }
           [[ "$base_ref" == "main" ]] || { echo "PR must target main." >&2; exit 1; }
           [[ "$head_ref" == "feat/bundle-task-dispatch-resume-20261027" ]] || { echo "Unexpected feature branch." >&2; exit 1; }
           [[ "$head_repo" == "$GITHUB_REPOSITORY" ]] || { echo "Cross-repository PRs are not permitted." >&2; exit 1; }
-          [[ "$head_sha" == "$EXPECTED_HEAD_SHA" ]] || { echo "PR head SHA does not match the requested SHA." >&2; exit 1; }
 
-          echo "validated_sha=$head_sha" >> "$GITHUB_OUTPUT"
-          echo "Validated PR #$PR_NUMBER at $head_sha"
+          if [[ "$state" == "open" ]]; then
+            [[ "$head_sha" == "$EXPECTED_HEAD_SHA" ]] || { echo "Open PR head SHA does not match the requested SHA." >&2; exit 1; }
+          elif [[ "$state" == "closed" && "$merged" == "true" ]]; then
+            # A merged PR's head can advance after the requested feature commit was recorded.
+            # Accept only a SHA that is actually present in this PR's commit list.
+            if ! gh api --paginate "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/commits" --jq '.[].sha' | grep -Fxq "$EXPECTED_HEAD_SHA"; then
+              echo "Requested SHA is not a commit in the merged PR." >&2
+              exit 1
+            fi
+          else
+            echo "PR must be open or successfully merged; closed-unmerged PRs are rejected." >&2
+            exit 1
+          fi
+
+          echo "validated_sha=$EXPECTED_HEAD_SHA" >> "$GITHUB_OUTPUT"
+          echo "Validated PR #$PR_NUMBER at requested commit $EXPECTED_HEAD_SHA (current PR head: $head_sha; state: $state; merged: $merged)"
 
       - name: Checkout the validated commit
         id: checkout
