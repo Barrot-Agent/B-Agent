@@ -35,5 +35,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check pytest==8.4.2
       - name: Compile validator and tests
         run: python -m compileall -q scripts/validate_xrp_ledger_index.py tests/test_xrp_ledger_index.py
+      - name: Validate actual repository ledger and archive pointers
+        run: python scripts/validate_xrp_ledger_index.py --root .
       - name: Run isolated ledger validator regression suite
         run: python -m pytest --noconftest -o addopts= tests/test_xrp_ledger_index.py -q

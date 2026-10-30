@@ -295,3 +295,13 @@ def test_archive_chunk_count_cannot_exceed_pointer_total(tmp_path):
     report = VALIDATOR.validate_index_data(index, tmp_path)
     assert report["status"] == "BLOCKED"
     assert any("append-generation metadata mismatch" in error for error in report["errors"])
+
+def test_workflow_runs_actual_repository_validator_before_fixture_suite():
+    workflow = ROOT / ".github" / "workflows" / "xrp-ledger-validation.yml"
+    content = workflow.read_text(encoding="utf-8")
+    command = "python scripts/validate_xrp_ledger_index.py --root ."
+    fixture_suite = "python -m pytest --noconftest -o addopts= tests/test_xrp_ledger_index.py -q"
+    assert command in content
+    assert content.index(command) < content.index(fixture_suite)
+    assert "contents: read" in content
+    assert "persist-credentials: false" in content
