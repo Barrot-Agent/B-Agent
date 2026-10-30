@@ -712,7 +712,8 @@ def test_free_image_generation_workflow_is_read_only_and_uses_existing_script() 
 
     assert (REPO_ROOT / "scripts" / "free_image_gen.py").is_file()
     assert not (REPO_ROOT / "free_image_gen.py").exists()
-    assert "permissions:\\n  contents: read" in workflow
+    assert "permissions:" in workflow.splitlines()
+    assert "  contents: read" in workflow.splitlines()
     assert "persist-credentials: false" in workflow
     assert "run: python3 scripts/free_image_gen.py" in workflow
     assert "actions/upload-artifact@v7" in workflow
