@@ -30,6 +30,7 @@ class ProvenanceClass(str, Enum):
 
 
 class Freshness(str, Enum):
+    UNKNOWN = "UNKNOWN"
     STATIC = "STATIC"
     SLOW_CHANGE = "SLOW_CHANGE"
     TIME_SENSITIVE = "TIME_SENSITIVE"
@@ -315,7 +316,7 @@ class FreshnessPolicy:
 
     def classify(self, observed_at: float | None, now: float | None = None) -> Freshness:
         if observed_at is None:
-            return Freshness.STATIC
+            return Freshness.UNKNOWN
 
         now = time.time() if now is None else now
         age = max(0.0, now - observed_at)
@@ -350,6 +351,10 @@ class MMIExecutionLedger:
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
     def append(self, event: dict) -> str:
+        # Fail closed: never append to a malformed or tampered history.
+        if not self.verify():
+            raise RuntimeError("MMI execution ledger verification failed; append denied")
+
         previous = ""
         if self.path.exists():
             lines = self.path.read_text().splitlines()
