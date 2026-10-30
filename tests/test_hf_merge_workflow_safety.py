@@ -35,6 +35,7 @@ def test_remote_code_merge_isolated_from_huggingface_upload_credentials():
         assert "actions/upload-artifact@" in merge_job
         assert "actions/download-artifact@" in upload_job
         assert "needs: merge" in upload_job
+        assert "permissions: {}" in upload_job
         assert "persist-credentials: false" in merge_job
         assert "git-credentials" not in content
         assert "credential.helper store" not in content
