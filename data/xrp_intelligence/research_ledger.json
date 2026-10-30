@@ -23,49 +23,53 @@
     "record_type": "snapshot_reference",
     "index_format_version": "3.0",
     "schema_version": "1.0",
-    "captured_at_utc": "2026-10-30T08:05:12Z",
-    "snapshot_id": "BARROT-XRP-2026-10-30T080512Z-BINANCE-POR-MARKET-DELEVERAGING-XRPL-COMPLIANCE-PR1366",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261030T080512Z-binance-por-market-deleveraging-xrpl-compliance-pr1366.json",
-    "snapshot_blob_sha": "bdcdd45936af66b126a915c756aca75a8ce94d1e",
-    "snapshot_commit_sha": "892f2cea4bdbcb1ac61a69efb66411e6f1d417af",
-    "snapshot_blob_sha_checked_at_utc": "2026-10-30T08:05:12Z",
+    "captured_at_utc": "2026-10-30T08:12:00Z",
+    "snapshot_id": "BARROT-XRP-2026-10-30T081200Z-SBI-JPYSC-TRUST-CUSTODY-OPENSTANDARD-BITBANK-XRP-DISTRIBUTION",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution.json",
+    "snapshot_blob_sha": "829a31c29bb4e64e354d7d2bac5fe9fd1fc1c768",
+    "snapshot_commit_sha": "730dd1810a273038ab2fc315525f2b178c34eaaf",
+    "snapshot_blob_sha_checked_at_utc": "2026-10-30T08:12:00Z",
     "post_snapshot_verification": {
-      "status": "STRUCTURAL_READBACK_PASS; EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE_PENDING",
-      "snapshot_blob_sha": "bdcdd45936af66b126a915c756aca75a8ce94d1e",
-      "snapshot_characters": 8865,
-      "snapshot_source_reference_count": 9,
+      "status": "STRUCTURAL_READBACK_PASS; EXACT_HEAD_VALIDATION_PENDING_AFTER_SCHEMA_REPAIR",
+      "snapshot_blob_sha": "829a31c29bb4e64e354d7d2bac5fe9fd1fc1c768",
+      "snapshot_characters": 13560,
+      "snapshot_source_reference_count": 30,
       "missing_snapshot_source_references": 0,
-      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T080512Z-binance-por-market-deleveraging-xrpl-compliance-pr1366.json",
-      "graph_blob_sha": "7459217fd9f36bcd307d4e1018d9b5e89e732fce",
-      "graph_commit_sha": "181e35e62724ce601d3b252c93fb8c7db8297095",
-      "graph_edges": 13,
-      "graph_hypotheses": 6,
-      "graph_source_reference_count": 9,
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution.json",
+      "graph_blob_sha": "a7c7bd114cc1c1562207d56c23f62b1253084578",
+      "graph_commit_sha": "75de5d46515a585435cfb586a5215f22f4379212",
+      "graph_edges": 26,
+      "graph_hypotheses": 8,
+      "graph_source_reference_count": 30,
       "missing_graph_source_references": 0,
-      "archive_shards_total": 64,
-      "previously_verified_archive_shards": 61,
-      "newly_appended_archive_shards_readback": 3,
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T081200Z-sbi-multirail-jpysc-trust-and-xrp-distribution.json",
+      "architecture_decision_blob_sha": "9293d3fb5b88974caad743524fbb84068ac9394b",
+      "archive_shards_total": 67,
+      "prior_referenced_shards": 61,
+      "corrected_replacement_shards": 3,
+      "new_append_shards": 3,
+      "unreferenced_malformed_shards_preserved": 3,
       "archive_record_counts": {
-        "sources": 1322,
-        "run_updates": 223,
-        "limitations": 368
+        "sources": 1338,
+        "run_updates": 224,
+        "limitations": 376
       },
       "source_ids_unique": "PENDING_EXACT_HEAD_VALIDATOR",
-      "forecast_status": "NOT_ISSUED",
-      "market_features_admitted": false,
       "validator_head_sha": "PENDING",
       "validator_run_id": null,
       "validator_tests_passed": null,
       "fail_closed_gate_run_id": null,
-      "fail_closed_gate_status": "PENDING"
+      "fail_closed_gate_status": "PENDING",
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false
     }
   },
   "sources": {
     "record_type": "archive_pointer",
     "archive_schema_version": "1.0",
     "array_name": "sources",
-    "record_count": 1322,
-    "chunk_count": 23,
+    "record_count": 1338,
+    "chunk_count": 24,
     "chunks": [
       {
         "chunk_index": 0,
@@ -201,9 +205,15 @@
       },
       {
         "chunk_index": 22,
-        "path": "data/xrp_intelligence/ledger_archive/v1/sources-023-of-023.json",
-        "git_blob_sha": "f3152eeff1235a2a7122989c771328f9cd5dc875",
+        "path": "data/xrp_intelligence/ledger_archive/v1/sources-023-of-023-v2.json",
+        "git_blob_sha": "945a318c6409a1dc4459885f292f473deb5486cf",
         "record_count": 9
+      },
+      {
+        "chunk_index": 23,
+        "path": "data/xrp_intelligence/ledger_archive/v1/sources-024-of-024.json",
+        "git_blob_sha": "383c45604d6caaabec3abe2bad121c83e4d07c77",
+        "record_count": 16
       }
     ]
   },
@@ -211,8 +221,8 @@
     "record_type": "archive_pointer",
     "archive_schema_version": "1.0",
     "array_name": "limitations",
-    "record_count": 368,
-    "chunk_count": 19,
+    "record_count": 376,
+    "chunk_count": 20,
     "chunks": [
       {
         "chunk_index": 0,
@@ -324,8 +334,14 @@
       },
       {
         "chunk_index": 18,
-        "path": "data/xrp_intelligence/ledger_archive/v1/limitations-019-of-019.json",
-        "git_blob_sha": "5f3f2dc4d724da76a27da5d44a59554f309db8f7",
+        "path": "data/xrp_intelligence/ledger_archive/v1/limitations-019-of-019-v2.json",
+        "git_blob_sha": "114e56aa2547bb0fb17b0a367e7fb115319bdd1a",
+        "record_count": 8
+      },
+      {
+        "chunk_index": 19,
+        "path": "data/xrp_intelligence/ledger_archive/v1/limitations-020-of-020.json",
+        "git_blob_sha": "88795395b8895eb28e6bd7c35f204fb0f4dc793f",
         "record_count": 8
       }
     ]
@@ -334,8 +350,8 @@
     "record_type": "archive_pointer",
     "archive_schema_version": "1.0",
     "array_name": "run_updates",
-    "record_count": 223,
-    "chunk_count": 22,
+    "record_count": 224,
+    "chunk_count": 23,
     "chunks": [
       {
         "chunk_index": 0,
@@ -465,18 +481,24 @@
       },
       {
         "chunk_index": 21,
-        "path": "data/xrp_intelligence/ledger_archive/v1/run_updates-022-of-022.json",
-        "git_blob_sha": "62e96ef15ad9e332b1b698671f902b8e25847f46",
+        "path": "data/xrp_intelligence/ledger_archive/v1/run_updates-022-of-022-v2.json",
+        "git_blob_sha": "36822c60aaf3bc74e593a4bfab78b43232144290",
+        "record_count": 1
+      },
+      {
+        "chunk_index": 22,
+        "path": "data/xrp_intelligence/ledger_archive/v1/run_updates-023-of-023.json",
+        "git_blob_sha": "96a9db2e1a92b65390f4588515da3f788571ad24",
         "record_count": 1
       }
     ]
   },
   "mission_priority": {
-    "as_of_utc": "2026-10-30T08:05:12Z",
+    "as_of_utc": "2026-10-30T08:12:00Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Preserve Barrot V3 as execution, verification and safety foundation",
     "current_forecast_status": "NOT_ISSUED",
-    "next_action": "Retrieve and crosswalk Binance's official October 1 PoR address download against all five Binance-labelled XRPL source wallets and the XRP-BF2 backing address; monitor the attacker receiver after 07:23 UTC; separate theft-driven exchange outflows from voluntary custody migration."
+    "next_action": "Verify corrected archive shard envelopes on exact research-branch head; then retrieve Binance's official October 1 PoR address download and crosswalk the five XRPL source accounts and XRP-BF2 backing address. Continue SBI/JPYSC/OUSD/Bitbank flow quantification."
   },
   "platform_coordination_architecture": {
     "version": "1.0",
@@ -695,20 +717,20 @@
       "live_adapters": "NOT_TESTED"
     }
   },
-  "current_research_head_before_ledger_update": "1dce4d6bc536086d4ba1a46bf7378fa7f82e6e4a",
+  "current_research_head_before_ledger_update": "810aba5d000ed47754ca40abe55699088e1a3b7c",
   "current_research_head_this_run": "9abbdf9722ecf328d16237719eb0c7dcccfdefe3",
   "current_research_checks": {
-    "status": "STRUCTURAL_READBACK_PASS; EXACT_HEAD_VALIDATION_PENDING; PR1366_CORE_CI_347_PLUS_8_PASS; FAIL_CLOSED_GATE_PASS",
+    "status": "PREVIOUS EXACT-HEAD VALIDATOR FAILED 17/18 DUE TO WRONG RECORD_TYPE IN THREE NEW SHARDS; CORRECTED APPEND-ONLY COPIES CREATED; REVALIDATION PENDING. PR1366 CORE CI 347+8 PASS AND FAIL-CLOSED GATE PASS.",
     "latest_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261030T080512Z-binance-por-market-deleveraging-xrpl-compliance-pr1366.json",
-    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T080512Z-binance-por-market-deleveraging-xrpl-compliance-pr1366.json",
-    "source_reference_count": 9,
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution.json",
+    "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution.json",
+    "source_reference_count": 30,
     "missing_source_references": 0,
-    "archive_shards_readback": 64,
+    "archive_shards_readback": 67,
     "archive_record_counts": {
-      "sources": 1322,
-      "run_updates": 223,
-      "limitations": 368
+      "sources": 1338,
+      "run_updates": 224,
+      "limitations": 376
     },
     "source_ids_unique": "PENDING_EXACT_HEAD_VALIDATOR",
     "prior_exact_head_validator": {
@@ -792,7 +814,7 @@
       "gate_run_id": 41019705690,
       "gate": "PASS_MERGE_DISABLED"
     },
-    "latest_validator_status": "PENDING_EXACT_HEAD_CI",
+    "latest_validator_status": "PENDING_AFTER_SCHEMA_REPAIR",
     "pr1366_fresh_main_cross_analysis": {
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1366",
       "branch": "safety/cross-analysis-read-only-main-20261030T0803Z",
@@ -811,28 +833,43 @@
       "gate_run_id": 41024100209,
       "gate_status": "PASS_MERGE_DISABLED",
       "merge_performed": false
-    }
+    },
+    "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T081200Z-sbi-multirail-jpysc-trust-and-xrp-distribution.json",
+    "graph_source_reference_count": 30,
+    "missing_graph_source_references": 0,
+    "corrected_shards": {
+      "sources": "data/xrp_intelligence/ledger_archive/v1/sources-023-of-023-v2.json",
+      "run_updates": "data/xrp_intelligence/ledger_archive/v1/run_updates-022-of-022-v2.json",
+      "limitations": "data/xrp_intelligence/ledger_archive/v1/limitations-019-of-019-v2.json",
+      "original_malformed_shards_preserved_unreferenced": true
+    },
+    "previous_validator_run_id": 41024602495,
+    "previous_validator_tests_passed": 17,
+    "previous_validator_tests_failed": 1,
+    "previous_validator_failure": "Wrong record_type envelope; validator requires xrp_research_ledger_archive_shard.",
+    "previous_gate_run_id": 41024602574,
+    "previous_gate_status": "PASS_MERGE_DISABLED"
   },
   "ledger_metrics": {
-    "source_records": 1322,
-    "run_updates": 223,
-    "limitations": 368,
-    "relationship_edges": 537,
-    "competing_hypotheses": 275,
-    "market_observations": 168,
+    "source_records": 1338,
+    "run_updates": 224,
+    "limitations": 376,
+    "relationship_edges": 563,
+    "competing_hypotheses": 283,
+    "market_observations": 169,
     "index_format_version": "3.0",
     "index_characters_before_compaction": 989081,
     "embedded_latest_snapshot_characters_removed": 462600,
     "local_validator_tests_passed": 12,
-    "latest_research_addendum_observations": 3,
-    "index_characters_before_this_update": 132105,
+    "latest_research_addendum_observations": 1,
+    "index_characters_before_this_update": 132137,
     "prior_index_characters_before_compaction": 989081,
-    "latest_snapshot_characters": 8865,
-    "index_characters": 132137,
+    "latest_snapshot_characters": 13560,
+    "index_characters": 135482,
     "serialization": "MINIFIED_JSON_LOSSLESS",
     "lossless_compaction_count": 1,
-    "archive_shards": 64,
-    "archive_records_roundtrip": "PENDING_EXACT_HEAD_VALIDATION_FOR_64_REFERENCED_SHARDS; 61 PRIOR SHARDS PREVIOUSLY VERIFIED; THREE NEW SHARDS STRUCTURALLY READ BACK.",
+    "archive_shards": 67,
+    "archive_records_roundtrip": "PENDING_EXACT_HEAD_VALIDATION; THREE MALFORMED INITIAL APPEND SHARDS PRESERVED UNREFERENCED AND REPLACED BY CORRECTLY TYPED APPEND-ONLY COPIES.",
     "validator_regression_tests_passed": 18,
     "validator_exact_head_run_id": 41020246389,
     "validator_exact_head_sha": "9abbdf9722ecf328d16237719eb0c7dcccfdefe3",
@@ -842,7 +879,7 @@
     "validator_regression_tests_failed": 0,
     "duplicate_source_ids_before_update": 1,
     "duplicate_source_ids_after_update": 0,
-    "current_exact_head_validator_status": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+    "current_exact_head_validator_status": "PENDING_AFTER_SCHEMA_ENVELOPE_REPAIR",
     "source_ids_unique": true,
     "latest_gate_run_id": 41020246522,
     "latest_gate_status": "PASS_AUTOMATIC_MERGE_DISABLED",
@@ -850,8 +887,9 @@
     "latest_gate_head_sha": "9abbdf9722ecf328d16237719eb0c7dcccfdefe3",
     "fail_closed_gate_head_sha": "9abbdf9722ecf328d16237719eb0c7dcccfdefe3",
     "duplicate_source_ids_after_append": 0,
-    "latest_snapshot_source_reference_count": 9,
-    "latest_graph_source_reference_count": 9
+    "latest_snapshot_source_reference_count": 30,
+    "latest_graph_source_reference_count": 30,
+    "unreferenced_preserved_shards": 3
   },
   "previous_research_checks": {
     "status": "SNAPSHOT_READBACK_PASS; GRAPH_READBACK_PASS; SOURCE_REFERENCE_AUDIT_PASS; PR1338_CI_GATE_PASS; PR1339_CI_GATE_PASS; PR1340_EXACT_HEAD_CI_PASS; PR1340_GATE_PASS; FORECAST_NOT_ISSUED",
@@ -882,23 +920,26 @@
     "research_branch_full_ci": "NOT_RUN_STRUCTURAL_READBACK_ONLY"
   },
   "latest_snapshot_verification": {
-    "status": "STRUCTURAL_READBACK_PASS; EXACT_HEAD_VALIDATION_PENDING",
-    "snapshot_path": "data/xrp_intelligence/snapshots/20261030T080512Z-binance-por-market-deleveraging-xrpl-compliance-pr1366.json",
-    "snapshot_blob_sha": "bdcdd45936af66b126a915c756aca75a8ce94d1e",
-    "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T080512Z-binance-por-market-deleveraging-xrpl-compliance-pr1366.json",
-    "graph_blob_sha": "7459217fd9f36bcd307d4e1018d9b5e89e732fce",
-    "source_reference_count": 9,
+    "status": "STRUCTURAL_READBACK_PASS; EXACT_HEAD_VALIDATION_PENDING_AFTER_SCHEMA_REPAIR",
+    "snapshot_path": "data/xrp_intelligence/snapshots/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution.json",
+    "snapshot_blob_sha": "829a31c29bb4e64e354d7d2bac5fe9fd1fc1c768",
+    "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution.json",
+    "graph_blob_sha": "a7c7bd114cc1c1562207d56c23f62b1253084578",
+    "source_reference_count": 30,
     "missing_source_references": 0,
-    "graph_source_reference_count": 9,
+    "graph_source_reference_count": 30,
     "missing_graph_source_references": 0,
-    "archive_shards_total": 64,
+    "archive_shards_total": 67,
     "archive_record_counts": {
-      "sources": 1322,
-      "run_updates": 223,
-      "limitations": 368
+      "sources": 1338,
+      "run_updates": 224,
+      "limitations": 376
     },
-    "new_shards_readback": true,
+    "corrected_shards_readback": true,
+    "original_malformed_shards_preserved_unreferenced": true,
     "source_ids_unique": "PENDING_EXACT_HEAD_VALIDATOR",
+    "previous_validator_run_id": 41024602495,
+    "previous_validator_result": "17 passed, 1 failed due record_type mismatch",
     "validator_run_id": null,
     "gate_run_id": null,
     "forecast_status": "NOT_ISSUED"
@@ -968,9 +1009,14 @@
     }
   ],
   "latest_research_addendum": {
-    "recorded_at_utc": "2026-10-30T08:05:12Z",
-    "focus": "Cross-check Binance PoR attribution without conflating ETH Binance 14 with the five XRP wallets; capture current receiver status; classify incident-contaminated exchange flow, current XRP derivatives liquidations, Coinbase cbXRP custody and proposed XRPL restricted-token compliance fixes; prepare and verify fresh-main PR #1366.",
+    "recorded_at_utc": "2026-10-30T08:12:00Z",
+    "focus": "SBI multi-rail XRP and stablecoin stack: Bitbank acquisition and XRP/JPY liquidity, SBI Visa and START bond XRP incentives, JPYSC trust reserves and short-JGB allocation, SBI Clearing Trust merger, JPYSC/OUSD PoC, BlackRock tokenized-MMF MOU, RLUSD/USDC distribution, SBIC/SBICAH legal-entity disambiguation, and repair of the prior archive-shard record_type validator failure.",
     "source_ids": [
+      "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+      "SRC-BITHOMP-BINANCE-XRPL-TX-14693052-20261029T200700Z",
+      "SRC-BITHOMP-BINANCE-XRPL-TX-13140680-20261029T200820Z",
+      "SRC-BITHOMP-BINANCE-XRPL-TX-11955157-20261029T200850Z",
+      "SRC-BITHOMP-BINANCE-XRPL-TX-8655567-20261029T200920Z",
       "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z",
       "SRC-COINDESK-XRP-LIQUIDATIONS-20261030T0622Z",
       "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0700Z",
@@ -979,18 +1025,34 @@
       "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z",
       "SRC-COINBASE-CBXRP-POR-REFRESH-20261030T0805Z",
       "SRC-BINANCE-OFFICIAL-POR-METHODOLOGY-20261030T0805Z",
-      "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z"
+      "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z",
+      "SRC-SBI-TRUST-MERGER-20261029",
+      "SRC-SBI-JPYSC-JGB-RESERVES-20260907",
+      "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+      "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+      "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624",
+      "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001",
+      "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+      "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030",
+      "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+      "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+      "SRC-SBICAH-SBI-CRYPTO-ASSET-HOLDINGS-20230214",
+      "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z",
+      "SRC-COINLAW-BINANCE-POR-ASSET-SUMMARY-20261012",
+      "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930",
+      "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630",
+      "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624"
     ],
-    "market_observation_count": 3,
+    "market_observation_count": 1,
     "relationship_graph_addendum": {
-      "path": "data/xrp_intelligence/relationship_graph_addenda/20261030T080512Z-binance-por-market-deleveraging-xrpl-compliance-pr1366.json",
-      "commit_sha": "181e35e62724ce601d3b252c93fb8c7db8297095",
-      "blob_sha": "7459217fd9f36bcd307d4e1018d9b5e89e732fce",
-      "new_edges": 13,
-      "new_competing_hypotheses": 6,
-      "blob_sha_checked_at_utc": "2026-10-30T08:05:12Z"
+      "path": "data/xrp_intelligence/relationship_graph_addenda/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution.json",
+      "commit_sha": "75de5d46515a585435cfb586a5215f22f4379212",
+      "blob_sha": "a7c7bd114cc1c1562207d56c23f62b1253084578",
+      "new_edges": 26,
+      "new_competing_hypotheses": 8,
+      "blob_sha_checked_at_utc": "2026-10-30T08:12:00Z"
     },
-    "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T080512Z-binance-por-wallet-attribution-and-incident-contaminated-flows.json",
+    "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T081200Z-sbi-multirail-jpysc-trust-and-xrp-distribution.json",
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED"
   },
@@ -2659,28 +2721,28 @@
       "fail_closed_gate_status": "PASS_MERGE_DISABLED"
     }
   ],
-  "current_research_head_before_this_update": "9da8094c0b3014df4ded9a9a45c086581d380567",
+  "current_research_head_before_this_update": "810aba5d000ed47754ca40abe55699088e1a3b7c",
   "archive_policy": {
     "schema_version": "1.0",
-    "status": "APPEND_ONLY_SHARDS_UPDATED; BINANCE POR ATTRIBUTION KEPT CONDITIONAL; INCIDENT-CONTAMINATED FLOWS SEPARATED; PR1366 CORE CI AND FAIL-CLOSED GATE PASS; EXACT-HEAD LEDGER VALIDATION PENDING",
+    "status": "APPEND_ONLY; THREE INITIAL MALFORMED SHARDS PRESERVED UNREFERENCED AND REPLACED BY CORRECTLY TYPED COPIES; THREE NEW SHARDS ADDED; EXACT-HEAD VALIDATION PENDING.",
     "archive_schema_version": "1.0",
     "digest_algorithm": "Git blob SHA-1 over exact shard bytes",
     "archive_root": "data/xrp_intelligence/ledger_archive/v1/",
     "arrays": {
       "sources": {
-        "record_count": 1322,
-        "chunk_count": 23
+        "record_count": 1338,
+        "chunk_count": 24
       },
       "run_updates": {
-        "record_count": 223,
-        "chunk_count": 22
+        "record_count": 224,
+        "chunk_count": 23
       },
       "limitations": {
-        "record_count": 368,
-        "chunk_count": 19
+        "record_count": 376,
+        "chunk_count": 20
       }
     },
-    "preservation": "All 61 previously referenced archive shards remain unchanged. Three new immutable shards appended: nine sources, one run update and eight limitations. The five Binance XRP source wallets, official PoR uncertainty, CoinDesk/Bitquery distinctions, Coinbase cbXRP reserve, derivatives/liquidation snapshots and XRPL restricted-token proposal are separately recorded. No prior evidence, forecasts, outcomes or limitations were deleted.",
-    "preserving": "All prior referenced shards remain byte-for-byte unchanged. New source, run-update and limitation shards are append-only. The official October 1 Binance XRP PoR address crosswalk remains unknown until the address download is retrieved and parsed."
+    "preservation": "The 61 previously verified archive shards remain unchanged. Three initial malformed append shards are preserved unreferenced. Corrected replacement copies are referenced at the same chunk indexes, and three additional new shards are appended. No historical source, run update, limitation, graph or forecast record was deleted.",
+    "preserving": "Append-only archive policy retained. Malformed initial append shards remain in Git but are unreferenced; corrected copies are referenced. Exact-head validator must pass before the new index is treated as verified."
   }
 }
