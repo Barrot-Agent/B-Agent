@@ -4,7 +4,7 @@ name: Barrot Superior Merge
   workflow_dispatch:
     inputs:
       model_name:
-        description: "Merged model name"
+        description: "Merged model name (letters, numbers, dot, underscore, hyphen; max 64)"
         required: true
         default: "barrot-superior-v1"
 
@@ -15,6 +15,8 @@ jobs:
   merge:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      MODEL_NAME: ${{ inputs.model_name }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -29,18 +31,74 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install -U "huggingface_hub[cli]" "mergekit>=0.0.4.6" safetensors sentencepiece protobuf
 
-      - name: Merge
+      - name: Validate model name
+        shell: bash
         run: |
-          mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
+          set -euo pipefail
+          if [[ ! "$MODEL_NAME" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ ]]; then
+            echo "Invalid model_name: use 1-64 letters, numbers, dots, underscores or hyphens; first character must be alphanumeric." >&2
+            exit 1
+          fi
+
+      - name: Merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          mergekit-yaml merges/barrot-superior/config.yaml "output/$MODEL_NAME" \
             --copy-tokenizer --out-shard-size 2B --trust-remote-code
 
-      - name: Verify
+      - name: Verify output
+        shell: bash
         run: |
-          ls -lah output/${{ github.event.inputs.model_name }}
+          set -euo pipefail
+          test -d "output/$MODEL_NAME"
+          if find "output/$MODEL_NAME" -type l -print -quit | grep -q .; then
+            echo "Refusing to export a model directory containing symlinks." >&2
+            exit 1
+          fi
+
+      - name: Package merged model
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-model
+          path: output/
+          if-no-files-found: error
+          retention-days: 1
+
+  upload:
+    needs: merge
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      MODEL_NAME: ${{ inputs.model_name }}
+    steps:
+      - name: Download merged model
+        uses: actions/download-artifact@v4
+        with:
+          name: merged-model
+          path: output
+
+      - name: Validate upload input
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$MODEL_NAME" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ ]]; then
+            echo "Invalid model_name." >&2
+            exit 1
+          fi
+          test -d "output/$MODEL_NAME"
+          if find "output/$MODEL_NAME" -type l -print -quit | grep -q .; then
+            echo "Refusing to upload a model directory containing symlinks." >&2
+            exit 1
+          fi
+
+      - name: Install upload client
+        run: python3 -m pip install --no-cache-dir "huggingface_hub==0.36.0"
 
       - name: Upload
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
+        shell: bash
         run: |
-          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} . --repo-type model
+          set -euo pipefail
+          hf upload "Barrot-Agent/$MODEL_NAME" "output/$MODEL_NAME" . --repo-type model
