@@ -1,0 +1,230 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 78,
+  "chunk_count": 79,
+  "created_at_utc": "2026-10-30T21:00:54Z",
+  "record_count": 20,
+  "records": [
+    {
+      "limitation_id": "LIM-20261030T204000Z-01",
+      "category": "custody",
+      "statement": "BNY's support for XRP custody is an institutional product capability; no XRP-specific assets under custody, customer balances, net inflows or collateral utilization are disclosed.",
+      "affected_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-02",
+      "category": "future_product",
+      "statement": "BNY mint/redeem RLUSD through BNY and tokenized trade-finance plans are expressly future intentions subject to final BNY/regulatory approvals and client requirements.",
+      "affected_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z"
+      ],
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-03",
+      "category": "actual_capital",
+      "statement": "C2FO Instant Pay is a limited rollout/waitlist. No actual XRPL settlement volume, named capital-provider commitment or deployed XRP amount is disclosed; C2FO's historical $520B+ Early Pay figure is not XRPL capital.",
+      "affected_source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261030T2040Z",
+        "SRC-C2FO-INSTANT-PAY-20261030T2040Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-04",
+      "category": "collateral",
+      "statement": "Bitnomial's XRP 40% haircut and $15M notional limit establish published eligibility only; no XRP collateral balance, utilization, customer or margin concentration is disclosed.",
+      "affected_source_ids": [
+        "SRC-BITNOMIAL-COLLATERAL-SCHEDULE-20261030T2040Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-05",
+      "category": "collateral",
+      "statement": "Ripple Prime product page says XRP can be posted as collateral, but supported jurisdiction, haircut, limits, eligible counterparty and actual utilization are not disclosed.",
+      "affected_source_ids": [
+        "SRC-RIPPLE-PRIME-XRP-COLLATERAL-20261030T2040Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-06",
+      "category": "collateral",
+      "statement": "Ripple Prime's October RWA swap release specifies RLUSD collateral for that product; it must not be generalized into evidence that XRP is used in those RWA swap positions.",
+      "affected_source_ids": [
+        "SRC-RIPPLE-PRIME-RWA-SWAPS-20261030T2040Z",
+        "SRC-RIPPLE-PRIME-XRP-COLLATERAL-20261030T2040Z"
+      ],
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-07",
+      "category": "custody",
+      "statement": "Standard Chartered RLUSD custody is live according to the bank, while LMAX collateral mirroring remains planned and conditional; the announcement does not establish XRP custody or XRP collateral.",
+      "affected_source_ids": [
+        "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261030T2040Z"
+      ],
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-08",
+      "category": "regulatory_status",
+      "statement": "Coinbase National Trust Company is recorded as approved/conditional, not consummated/effective in the reviewed OCC record; do not describe it as an operational national trust bank.",
+      "affected_source_ids": [
+        "SRC-OCC-COINBASE-STATUS-20261030T2040Z",
+        "SRC-COINBASE-OCC-CONDITIONAL-20261030T2040Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-09",
+      "category": "regulatory_status",
+      "statement": "Circle and Ripple trust-bank applications show consummated/effective status, but actual commencement of all announced custody, reserve-management and collateral services has not been verified.",
+      "affected_source_ids": [
+        "SRC-OCC-CIRCLE-TRUST-BANK-20261030T2040Z",
+        "SRC-OCC-RIPPLE-TRUST-BANK-20261030T2040Z",
+        "SRC-CIRCLE-OCC-FINAL-20261030T2040Z",
+        "SRC-RIPPLE-OCC-FINAL-20261030T2040Z"
+      ],
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-10",
+      "category": "stablecoin_reserves",
+      "statement": "BNY is custodian of the Circle Reserve Fund, one component of Circle's reserve structure; this does not mean all USDC reserves are held at BNY.",
+      "affected_source_ids": [
+        "SRC-SEC-CIRCLE-RESERVE-FUND-BNY-20261030T2040Z",
+        "SRC-BNY-CIRCLE-USDC-CUSTODY-20261030T2040Z"
+      ],
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-11",
+      "category": "stablecoin_data",
+      "statement": "Circle's $71B USDC circulation and $71.2B reserve snapshot is global, not XRPL-specific; the XRPL stablecoin panel is dominated by RLUSD and shows different 7-day and 30-day directions.",
+      "affected_source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T2040Z",
+        "SRC-DEFILLAMA-XRPL-STABLECOINS-20261030T2040Z"
+      ],
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-12",
+      "category": "network_activity",
+      "statement": "XRPL transaction and active-address counts do not establish economic throughput; automated and non-economic activity may be included, while DEX volume and TVL are separate measures.",
+      "affected_source_ids": [
+        "SRC-DEFILLAMA-XRPL-CHAIN-20261030T2040Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-13",
+      "category": "market_data",
+      "statement": "CoinPaprika's XRP quote is timestamped 15:38 UTC and is stale relative to the 20:40 UTC cutoff; other provider windows must not be averaged without venue/time harmonization.",
+      "affected_source_ids": [
+        "SRC-COINPAPRIKA-XRP-20261030T2040Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-14",
+      "category": "etf_data",
+      "statement": "ETF flows are reconstructed from holdings deltas; GXRP is excluded from flow calculations due capture gaps, BITW rebalancing and fee accruals can affect deltas, and estimated cost basis is not investor-level realized P&L.",
+      "affected_source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-20261030T2040Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-15",
+      "category": "company_claims",
+      "statement": "Ripple's $900M annualized product revenue run rate and transaction/partner figures are company-reported corporate metrics, not audited XRP purchases, XRP spot demand or posted collateral.",
+      "affected_source_ids": [
+        "SRC-RIPPLE-900M-RUNRATE-20261030T2040Z"
+      ],
+      "severity": "medium",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-16",
+      "category": "onchain_attribution",
+      "statement": "The rJqi→raRVLN→r39TA→Binance-labelled rNxp4h route is account-level tracing of fungible XRP. It does not prove the same XRP units moved end-to-end, that Ripple directed the later Binance transfers, or that any XRP was sold.",
+      "affected_source_ids": [
+        "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2040Z",
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2040Z"
+      ],
+      "severity": "critical",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-17",
+      "category": "onchain_entity_identity",
+      "statement": "raRVLN is identified by XRPLWin as an AMM pool and as belonging to a vault and loan broker, but the AMM pair, vault identity, loan-broker identity and exact asset composition were not loaded because the explorer hit rate limits.",
+      "affected_source_ids": [
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2040Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T204000Z-18",
+      "category": "binance_incident",
+      "statement": "The 68.9246M XRP transfer to Binance-labelled rNxp4h is not proven to be incident replenishment. Binance's $1.34B market/OTC acquisition statement is not XRP-specific, and rNxp4h's activation by rDAE53 does not make it one of the five compromised wallets.",
+      "affected_source_ids": [
+        "SRC-BINANCE-REPLENISHMENT-20261030T2040Z",
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2040Z",
+        "SRC-BITHOMP-BINANCE-RDAE53-ACCOUNT-20261030T2040Z"
+      ],
+      "severity": "critical",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T210054Z-01",
+      "category": "onchain_data_quality",
+      "statement": "Bithomp's r39TA overview displays 5.9M XRP at the 21:00 UTC capture, while the 20:40 snapshot recorded 25.9M and the transaction-history page still displays a 20M receipt at 20:16 with no later outgoing row. The views are not synchronized. Do not infer a 20M outgoing payment until a validated transaction or independently refreshed history resolves the discrepancy.",
+      "affected_source_ids": [
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2100Z",
+        "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2100Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    },
+    {
+      "limitation_id": "LIM-20261030T210054Z-02",
+      "category": "beneficial_ownership_and_unit_provenance",
+      "statement": "The observed sequence from Bithomp-labelled rJqi through raRVLN to unlabelled r39TA and a Binance-labelled destination does not prove same-unit XRP movement, Ripple control of the intermediary or Binance purchase/replenishment. raRVLN is classified as an AMM pool/vault/loan broker; no sale, collateral posting or legal-owner mapping is established.",
+      "affected_source_ids": [
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2100Z",
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2100Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2100Z",
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2100Z",
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z"
+      ],
+      "severity": "high",
+      "status": "open"
+    }
+  ]
+}
