@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 57,
+  "chunk_count": 58,
+  "record_count": 2,
+  "created_at_utc": "2026-10-30T16:15:01Z",
+  "records": [
+    "Liqwall and TradRadar report materially different XRP open-interest and liquidation totals because their venue sets, aggregation and timestamps differ. The long-liquidation skew is directionally consistent, but exact totals must remain provider-specific. XRP Insights and Alpha Finance use different ETF fund populations and units; the October 29 US session flow closed at approximately 20:00 UTC, before the first Binance XRPL drain at 20:04 UTC. No new derivatives or ETF feature is admitted without point-in-time alignment and walk-forward validation.",
+    "Binance's $6.34B company reserve, $5B already held in affected tokens and approximately $1.34B to acquire through market/OTC channels are aggregate commitments with no XRP-specific allocation or execution details. Bitquery's Binance PoR labels are not a raw official address-file crosswalk; CoinDesk's independent PoR review is Ethereum-specific. On main, the Kaggle daily workflow's path mismatch currently blocks its auto-submission script, the free-image path mismatch blocks its workflow, and the model-merge config is absent; these blockers do not remove the latent mutation/credential risks. PR #1374's artifact transfer and upload were not executed, and dependency/action pinning remains incomplete."
+  ]
+}
