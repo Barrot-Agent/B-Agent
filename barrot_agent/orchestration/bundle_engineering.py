@@ -7,6 +7,7 @@ bundle can be considered ready for execution.
 from __future__ import annotations
 
 import hashlib
+import inspect
 import json
 import re
 from dataclasses import asdict, dataclass
@@ -260,7 +261,7 @@ def normalize_bundle_shapes(bundle: Any) -> tuple[Any, list[str]]:
     return normalized, repairs
 
 
-_AUTH_HEADING = re.compile(r"^\s*(?:#{1,6}\s*)?\**\s*authori[sz]ation boundaries\s*\**\s*:?\s*\**\s*$", re.IGNORECASE)
+_AUTH_HEADING = re.compile(r"^\s*(?:#{1,6}\s*)?\**\s*(?:authori[sz]ation boundaries|safety and execution constraints|safety boundaries)\s*\**\s*:?\s*\**\s*$", re.IGNORECASE)
 _BULLET = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+(.*\S)\s*$")
 
 
@@ -448,6 +449,8 @@ class BundleEngineeringResult:
 class BundleEngineeringController:
     """Bounded model-assisted author/review/revise loop with deterministic gates."""
 
+    MAX_OUTPUT_TOKENS = 4096
+
     SYSTEM = (
         "You are Barrot's work-bundle engineer. Return one JSON object only. "
         "Do not execute tasks, claim completion, weaken user constraints, or treat "
@@ -482,10 +485,31 @@ class BundleEngineeringController:
             raise BundleEngineeringError("Model bundle must be a JSON object.")
         return payload
 
+    def _think(self, prompt: str) -> Any:
+        """Request enough completion space for a complete structured bundle.
+
+        Keep compatibility with lightweight test/custom brains that implement
+        only ``think(prompt, system=...)``; ScriptBrain accepts the explicit
+        output budget and must not fall back to its 1,024-token no-tools default.
+        """
+        think = self.brain.think
+        kwargs: dict[str, Any] = {"system": self.SYSTEM}
+        try:
+            parameters = inspect.signature(think).parameters.values()
+        except (TypeError, ValueError):
+            parameters = ()
+        if any(
+            parameter.name == "max_output_tokens"
+            or parameter.kind == inspect.Parameter.VAR_KEYWORD
+            for parameter in parameters
+        ):
+            kwargs["max_output_tokens"] = self.MAX_OUTPUT_TOKENS
+        return think(prompt, **kwargs)
+
     def _ask(self, prompt: str) -> dict[str, Any]:
         raw: Any = None
         try:
-            raw = self.brain.think(prompt, system=self.SYSTEM)
+            raw = self._think(prompt)
             return self._parse_bundle(raw)
         except (RuntimeError, BundleEngineeringError) as exc:
             reason = str(exc).lower()
@@ -510,7 +534,7 @@ Original request:
 Previous response / diagnostic context (replace it; do not copy malformed syntax):
 {diagnostic}
 """
-            recovered = self.brain.think(recovery_prompt, system=self.SYSTEM)
+            recovered = self._think(recovery_prompt)
             return self._parse_bundle(recovered)
 
     @staticmethod
