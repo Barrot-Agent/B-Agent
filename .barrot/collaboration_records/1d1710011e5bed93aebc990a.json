@@ -1,0 +1,4540 @@
+{
+  "actions_performed": [
+    "IDLE",
+    "AUDITING",
+    "SOURCE_INGESTION",
+    "TRACK_PLANNING",
+    "TRACK_EXECUTION",
+    "SYNTHESIS",
+    "FORMALIZATION",
+    "FORMAL_VERIFICATION",
+    "ADVERSARIAL_REVIEW",
+    "INDEPENDENT_VERIFICATION",
+    "ACCEPTANCE_GATE",
+    "NO_SOLUTION_CLAIM"
+  ],
+  "cycle_id": "1d1710011e5bed93aebc990a",
+  "evidence": {
+    "adversarial_reviews": [
+      {
+        "claim_id": "openai_breakdown_r3",
+        "evidence": [],
+        "objections": [
+          "The theorem statement is not enough without verifying that the smooth force remains in the admissible Clay class throughout the construction.",
+          "The current bundle does not yet include an independent derivation of the energy-versus-blowup implication."
+        ],
+        "provenance": [
+          "adversarial_mathematical_verification"
+        ],
+        "responses": [],
+        "review_id": "adv_force_regularization",
+        "reviewer_role": "adversarial_mathematician",
+        "status": "CHALLENGED"
+      }
+    ],
+    "artifacts": [
+      {
+        "artifact_id": "0d7de70d2a22cf1bbe1a394e9fae632e78cfeb47dcbf0a7809bdbf73a0ad0933",
+        "fingerprint": "907729a92fd37e3ab7b69b411022fa2ea0d9626d422d1d4a7052b25ddf04cd5b",
+        "kind": "research_bundle",
+        "metadata": {
+          "problem_id": "navier_stokes_millennium_prize"
+        },
+        "path": "/home/runner/work/B-Agent/B-Agent/data/research/navier_stokes_research_bundle.json"
+      },
+      {
+        "artifact_id": "d611782a3e79b10ae72783d1435e59fc12b510eac6096c807c734863171f7d7e",
+        "fingerprint": "926104dd6e4b54d0db3b578cc94bc77b71d52efe0f5a50cf5d3bf329e5f1283b",
+        "kind": "convergence_analysis",
+        "metadata": {
+          "analysis_id": "d19a08e6d38f7416b07e933ee95afe6ab080979b16247b64c0975c5c94ae9c13",
+          "blind_mode": false
+        },
+        "path": ""
+      }
+    ],
+    "claims": [
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "3D incompressible Navier\u2013Stokes equations",
+          "whole-space domain \u211d\u00b3",
+          "smooth divergence-free initial data",
+          "bounded kinetic-energy requirement"
+        ],
+        "child_claims": [],
+        "claim_id": "clay_problem_r3",
+        "claim_type": "problem_requirement",
+        "confidence": 0.35,
+        "contradicting_evidence": [],
+        "dependencies": [],
+        "derivation_status": "SUPPORTED",
+        "domain": "navier_stokes",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "INDEPENDENTLY_VERIFIED",
+        "parent_claims": [],
+        "provenance": [
+          "clay_problem_statement"
+        ],
+        "source": "clay_problem_statement",
+        "source_commit": "",
+        "source_location": "problem description / alternatives",
+        "statement": "Clay asks whether smooth divergence-free initial data in 3D incompressible Navier\u2013Stokes on \u211d\u00b3 can yield a unique global smooth solution with bounded kinetic energy, or whether a finite-time breakdown example exists.",
+        "supporting_evidence": [
+          "ev_clay_equations"
+        ],
+        "timestamp": 1793259756.7737544
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "periodic domain \u211d\u00b3/\u2124\u00b3",
+          "smooth periodic data"
+        ],
+        "child_claims": [],
+        "claim_id": "clay_problem_periodic",
+        "claim_type": "problem_requirement",
+        "confidence": 0.2,
+        "contradicting_evidence": [],
+        "dependencies": [],
+        "derivation_status": "UNRESOLVED",
+        "domain": "navier_stokes",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "UNASSESSED",
+        "parent_claims": [],
+        "provenance": [
+          "clay_problem_statement"
+        ],
+        "source": "clay_problem_statement",
+        "source_commit": "",
+        "source_location": "alternatives (C) and (D)",
+        "statement": "Clay also includes the periodic torus alternative asking for smooth periodic data leading either to global smoothness or a breakdown example on \u211d\u00b3/\u2124\u00b3.",
+        "supporting_evidence": [],
+        "timestamp": 1793259756.7737582
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "CHALLENGED",
+        "assumptions": [
+          "positive viscosity \u03bd > 0",
+          "smooth initial data",
+          "smooth forcing",
+          "whole-space domain \u211d\u00b3"
+        ],
+        "child_claims": [],
+        "claim_id": "openai_breakdown_r3",
+        "claim_type": "theorem",
+        "confidence": 0.45,
+        "contradicting_evidence": [],
+        "dependencies": [
+          "clay_problem_r3",
+          "mechanism_residual_cancellation",
+          "scaling_tau",
+          "bounded_energy_with_blowup"
+        ],
+        "derivation_status": "SUPPORTED",
+        "domain": "navier_stokes",
+        "formalization_status": "FORMALIZED",
+        "independent_verification_status": "UNRESOLVED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_lean_repo",
+          "openai_navier_stokes_paper"
+        ],
+        "source": "openai_lean_repo",
+        "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+        "source_location": "README / NavierStokes/R3/Theorem.lean theorem_1_1",
+        "statement": "For every positive viscosity, there exist smooth initial data and forcing on \u211d\u00b3 for which no global smooth solution with uniformly bounded kinetic energy exists.",
+        "supporting_evidence": [
+          "ev_r3_theorem"
+        ],
+        "timestamp": 1793259756.7737608
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "positive viscosity \u03bd > 0",
+          "smooth periodic initial data",
+          "smooth periodic forcing",
+          "periodic torus domain"
+        ],
+        "child_claims": [],
+        "claim_id": "openai_breakdown_periodic",
+        "claim_type": "theorem",
+        "confidence": 0.45,
+        "contradicting_evidence": [],
+        "dependencies": [
+          "clay_problem_periodic",
+          "openai_breakdown_r3"
+        ],
+        "derivation_status": "SUPPORTED",
+        "domain": "navier_stokes",
+        "formalization_status": "FORMALIZED",
+        "independent_verification_status": "UNRESOLVED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_lean_repo",
+          "openai_navier_stokes_paper"
+        ],
+        "source": "openai_lean_repo",
+        "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+        "source_location": "README / ComparatorChallenges/NavierStokes.json",
+        "statement": "For every positive viscosity, there exist smooth periodic initial data and forcing on \u211d\u00b3/\u2124\u00b3 for which no global smooth solution exists.",
+        "supporting_evidence": [
+          "ev_periodic_theorem"
+        ],
+        "timestamp": 1793259756.7737632
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "\u03c4 = 1 - t",
+          "0 < h < 1/2"
+        ],
+        "child_claims": [],
+        "claim_id": "scaling_tau",
+        "claim_type": "estimate",
+        "confidence": 0.35,
+        "contradicting_evidence": [],
+        "dependencies": [],
+        "derivation_status": "SUPPORTED",
+        "domain": "navier_stokes",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "UNRESOLVED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_navier_stokes_paper",
+          "openai_lean_repo"
+        ],
+        "source": "openai_navier_stokes_paper",
+        "source_commit": "",
+        "source_location": "similarity scaling / NavierStokes/SimilarityHomogeneity.lean",
+        "statement": "The claimed singular regime is parameterized by \u03c4 = 1 - t with radial scale ~ \u03c4^(1/2) and axial scale ~ \u03c4^(1/2-h), for 0 < h < 1/2.",
+        "supporting_evidence": [
+          "ev_similarity_scaling"
+        ],
+        "timestamp": 1793259756.773765
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "anisotropic collapsing support",
+          "bounded global kinetic-energy integral",
+          "velocity becomes unbounded near singular time"
+        ],
+        "child_claims": [],
+        "claim_id": "bounded_energy_with_blowup",
+        "claim_type": "consequence",
+        "confidence": 0.2,
+        "contradicting_evidence": [],
+        "dependencies": [
+          "scaling_tau"
+        ],
+        "derivation_status": "UNRESOLVED",
+        "domain": "navier_stokes",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "UNASSESSED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_navier_stokes_paper",
+          "openai_lean_repo"
+        ],
+        "source": "openai_navier_stokes_paper",
+        "source_commit": "",
+        "source_location": "whole-space theorem / energy discussion",
+        "statement": "The claim distinguishes pointwise velocity blow-up from total kinetic energy, asserting that concentration on a shrinking anisotropic region can coexist with bounded kinetic energy.",
+        "supporting_evidence": [],
+        "timestamp": 1793259756.7737672
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "self-similar collapsing geometry",
+          "axial stretching",
+          "spiraling transport"
+        ],
+        "child_claims": [],
+        "claim_id": "mechanism_collapsing_vortex",
+        "claim_type": "intermediate_claim",
+        "confidence": 0.2,
+        "contradicting_evidence": [],
+        "dependencies": [
+          "scaling_tau"
+        ],
+        "derivation_status": "UNRESOLVED",
+        "domain": "navier_stokes",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "UNASSESSED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_report",
+          "openai_navier_stokes_paper"
+        ],
+        "source": "openai_navier_stokes_paper",
+        "source_commit": "",
+        "source_location": "mechanism summary / cited by report",
+        "statement": "The claimed mechanism uses a collapsing vortex / self-similar structure with inward spiral and axial stretching to drive the singular regime.",
+        "supporting_evidence": [],
+        "timestamp": 1793259756.7737696
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "finite slow residual matching",
+          "truncation residual control",
+          "pressure defect initialization"
+        ],
+        "child_claims": [],
+        "claim_id": "mechanism_residual_cancellation",
+        "claim_type": "intermediate_claim",
+        "confidence": 0.35,
+        "contradicting_evidence": [],
+        "dependencies": [
+          "mechanism_collapsing_vortex",
+          "scaling_tau"
+        ],
+        "derivation_status": "SUPPORTED",
+        "domain": "navier_stokes",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "UNRESOLVED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_lean_repo",
+          "openai_navier_stokes_paper"
+        ],
+        "source": "openai_lean_repo",
+        "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+        "source_location": "NavierStokes/SlowResidualMatching.lean / NavierStokes/CorrectionInitialization.lean",
+        "statement": "The claimed oscillatory correction and nonlinear momentum flux cancel the singular background residual while leaving a smooth forcing term.",
+        "supporting_evidence": [
+          "ev_residual_matching"
+        ],
+        "timestamp": 1793259756.7737732
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "force must stay within the claimed admissible class"
+        ],
+        "child_claims": [],
+        "claim_id": "smooth_force_requirement",
+        "claim_type": "consequence",
+        "confidence": 0.2,
+        "contradicting_evidence": [],
+        "dependencies": [
+          "mechanism_residual_cancellation"
+        ],
+        "derivation_status": "UNRESOLVED",
+        "domain": "navier_stokes",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "UNASSESSED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_report",
+          "openai_navier_stokes_paper"
+        ],
+        "source": "openai_report",
+        "source_commit": "",
+        "source_location": "forcing-class discussion",
+        "statement": "The construction requires the external force to remain smooth so the example stays within the admissible Clay forcing class rather than winning by leaving the problem statement.",
+        "supporting_evidence": [],
+        "timestamp": 1793259756.7737756
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "Lean files correspond to stated theorem names",
+          "formal verification requires successful compilation or comparator checking"
+        ],
+        "child_claims": [],
+        "claim_id": "lean_formalization_scope",
+        "claim_type": "formalized_statement",
+        "confidence": 0.3,
+        "contradicting_evidence": [],
+        "dependencies": [
+          "openai_breakdown_r3",
+          "openai_breakdown_periodic"
+        ],
+        "derivation_status": "UNRESOLVED",
+        "domain": "formal_verification",
+        "formalization_status": "FORMALIZED",
+        "independent_verification_status": "UNRESOLVED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_lean_repo"
+        ],
+        "source": "openai_lean_repo",
+        "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+        "source_location": "README / theorem files / comparator challenge json",
+        "statement": "The Lean repository formalizes theorem statements, candidate properties, residual identities, energy estimates, and comparator bridges, but formalization is distinct from independent proof acceptance.",
+        "supporting_evidence": [],
+        "timestamp": 1793259756.7737777
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "unforced incompressible Euler",
+          "smooth compactly supported divergence-free initial velocity"
+        ],
+        "child_claims": [],
+        "claim_id": "euler_precursor_blowup",
+        "claim_type": "theorem",
+        "confidence": 0.35,
+        "contradicting_evidence": [],
+        "dependencies": [],
+        "derivation_status": "SUPPORTED",
+        "domain": "euler",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "UNRESOLVED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_euler_paper",
+          "openai_lean_repo"
+        ],
+        "source": "openai_lean_repo",
+        "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+        "source_location": "README / Euler/Solution.lean",
+        "statement": "The related Euler result constructs smooth compactly supported divergence-free initial velocity on \u211d\u00b3 whose unforced incompressible Euler solution develops a finite-time singularity.",
+        "supporting_evidence": [
+          "ev_euler_precursor"
+        ],
+        "timestamp": 1793259756.7737794
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [
+          "simpler-related-problem-first methodology"
+        ],
+        "child_claims": [],
+        "claim_id": "euler_to_navier_strategy",
+        "claim_type": "consequence",
+        "confidence": 0.2,
+        "contradicting_evidence": [],
+        "dependencies": [
+          "euler_precursor_blowup"
+        ],
+        "derivation_status": "UNRESOLVED",
+        "domain": "research_strategy",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "UNASSESSED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_report",
+          "openai_euler_paper"
+        ],
+        "source": "openai_report",
+        "source_commit": "",
+        "source_location": "Euler precursor discussion",
+        "statement": "The research ladder treats the Euler singularity result as a related simpler problem whose mechanism and proof technology inform the Navier\u2013Stokes construction.",
+        "supporting_evidence": [],
+        "timestamp": 1793259756.773781
+      },
+      {
+        "acceptance_status": "UNRESOLVED",
+        "adversarial_status": "UNASSESSED",
+        "assumptions": [],
+        "child_claims": [],
+        "claim_id": "independent_verification_requirement",
+        "claim_type": "definition",
+        "confidence": 0.35,
+        "contradicting_evidence": [],
+        "dependencies": [],
+        "derivation_status": "SUPPORTED",
+        "domain": "research_methodology",
+        "formalization_status": "UNASSESSED",
+        "independent_verification_status": "UNRESOLVED",
+        "parent_claims": [],
+        "provenance": [
+          "openai_report"
+        ],
+        "source": "openai_report",
+        "source_commit": "",
+        "source_location": "verification policy",
+        "statement": "Independent verification requires more than repeated agreement among related LLM outputs or source descendants; it requires at least one genuinely independent derivation, implementation, formal check, or corroborating literature path.",
+        "supporting_evidence": [
+          "ev_independence_policy"
+        ],
+        "timestamp": 1793259756.7737825
+      }
+    ],
+    "convergence_analysis": {
+      "analysis_id": "d19a08e6d38f7416b07e933ee95afe6ab080979b16247b64c0975c5c94ae9c13",
+      "assumptions": [
+        "Lean toolchain and comparator config are correctly identified",
+        "Research ladder can transfer mechanism but not conclusion",
+        "openai theorem statements correspond to the manuscript claims",
+        "scaling bundle is internally consistent"
+      ],
+      "blind_mode": false,
+      "completion_gate": {
+        "gate_id": "6a6241847f8ea2c76be0297c38b84e639100971cbd7c0bd181e65f7632bdb3b9",
+        "requirements": {
+          "independent_convergence_requires_external_verification": true,
+          "no_hypothesis_marked_verified_without_evidence": true,
+          "observations_recorded": true
+        },
+        "satisfied": true,
+        "unresolved": []
+      },
+      "consequences": [],
+      "contradictions": [],
+      "controlled_release_ready": false,
+      "converging_features": [],
+      "current_state": {
+        "observation_count": 8,
+        "pattern_count": 28
+      },
+      "dependencies": [
+        "ComparatorChallenges/NavierStokes.json",
+        "Lake",
+        "Mathlib",
+        "bounded_energy_with_blowup",
+        "clay_problem_periodic",
+        "clay_problem_r3",
+        "euler_precursor_blowup",
+        "euler_to_navier_strategy",
+        "lean_formalization_scope",
+        "mechanism_residual_cancellation",
+        "openai_breakdown_r3",
+        "scaling_tau",
+        "smooth_force_requirement"
+      ],
+      "emerging_signals": [],
+      "evidence_status": "UNRESOLVED",
+      "external_verification_required": false,
+      "falsification_tests": [],
+      "hypotheses": [],
+      "observations": [
+        {
+          "confidence": 0.62,
+          "dependencies": [
+            "mechanism_residual_cancellation",
+            "bounded_energy_with_blowup"
+          ],
+          "evidence_ids": [
+            "ev_r3_theorem"
+          ],
+          "features": [
+            "ancestry:openai_navier_stokes_lineage",
+            "assumption:openai theorem statements correspond to the manuscript claims",
+            "claim:openai_breakdown_periodic",
+            "claim:openai_breakdown_r3",
+            "dependency:bounded_energy_with_blowup",
+            "dependency:mechanism_residual_cancellation",
+            "evidence:ev_r3_theorem",
+            "provenance:openai_lean_repo",
+            "role:proof_construction",
+            "source:openai_lean_repo",
+            "status:SUPPORTED"
+          ],
+          "independence_status": "DEPENDENT",
+          "observation_id": "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696",
+          "parent_observations": [
+            "disproof_counterexample_search",
+            "computational_exploration",
+            "literature_research",
+            "alternative_derivation",
+            "formalization",
+            "adversarial_mathematical_verification"
+          ],
+          "provenance_id": "79dab64b87d406aa3aa7441f27db17cd9bd72a1124b59acf0b15355cbcb54274",
+          "research_problem_id": "navier_stokes_millennium_prize",
+          "source": "openai_lean_repo",
+          "statement": "whole-space theorem statement loaded",
+          "timestamp": 1793259756.8312917,
+          "track_id": "proof_construction"
+        },
+        {
+          "confidence": 0.41,
+          "dependencies": [
+            "smooth_force_requirement",
+            "bounded_energy_with_blowup"
+          ],
+          "evidence_ids": [],
+          "features": [
+            "claim:smooth_force_requirement",
+            "dependency:bounded_energy_with_blowup",
+            "dependency:smooth_force_requirement",
+            "provenance:barrot_adversarial_track",
+            "role:disproof/counterexample_search",
+            "status:SUPPORTED"
+          ],
+          "independence_status": "DEPENDENT",
+          "observation_id": "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d",
+          "parent_observations": [
+            "proof_construction",
+            "computational_exploration",
+            "literature_research",
+            "alternative_derivation",
+            "formalization",
+            "adversarial_mathematical_verification"
+          ],
+          "provenance_id": "367fcd931d10f576755e877e81bbdd6a35885a822c2f252ef1598af227ca2a64",
+          "research_problem_id": "navier_stokes_millennium_prize",
+          "source": "barrot_adversarial_track",
+          "statement": "forcing admissibility is a critical attack surface",
+          "timestamp": 1793259756.831323,
+          "track_id": "disproof_counterexample_search"
+        },
+        {
+          "confidence": 0.53,
+          "dependencies": [
+            "scaling_tau",
+            "bounded_energy_with_blowup"
+          ],
+          "evidence_ids": [
+            "ev_similarity_scaling"
+          ],
+          "features": [
+            "ancestry:openai_navier_stokes_lineage",
+            "assumption:scaling bundle is internally consistent",
+            "claim:bounded_energy_with_blowup",
+            "claim:scaling_tau",
+            "dependency:bounded_energy_with_blowup",
+            "dependency:scaling_tau",
+            "evidence:ev_similarity_scaling",
+            "provenance:openai_navier_stokes_paper",
+            "role:computational_exploration",
+            "source:openai_navier_stokes_paper",
+            "status:SUPPORTED"
+          ],
+          "independence_status": "DEPENDENT",
+          "observation_id": "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9",
+          "parent_observations": [
+            "proof_construction",
+            "disproof_counterexample_search",
+            "literature_research",
+            "alternative_derivation",
+            "formalization",
+            "adversarial_mathematical_verification"
+          ],
+          "provenance_id": "f0b0060df08e33fbe41a9e4c0b435650450a31caaa049e03d5c01e01715c2a96",
+          "research_problem_id": "navier_stokes_millennium_prize",
+          "source": "openai_navier_stokes_paper",
+          "statement": "energy-versus-velocity tradeoff captured as structured consequence",
+          "timestamp": 1793259756.8313792,
+          "track_id": "computational_exploration"
+        },
+        {
+          "confidence": 0.68,
+          "dependencies": [
+            "clay_problem_r3",
+            "clay_problem_periodic"
+          ],
+          "evidence_ids": [
+            "ev_clay_equations"
+          ],
+          "features": [
+            "ancestry:clay_problem_statement",
+            "claim:clay_problem_periodic",
+            "claim:clay_problem_r3",
+            "dependency:clay_problem_periodic",
+            "dependency:clay_problem_r3",
+            "evidence:ev_clay_equations",
+            "provenance:clay_problem_statement",
+            "role:literature_research",
+            "source:clay_problem_statement",
+            "status:SUPPORTED"
+          ],
+          "independence_status": "DEPENDENT",
+          "observation_id": "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090",
+          "parent_observations": [
+            "proof_construction",
+            "disproof_counterexample_search",
+            "computational_exploration",
+            "alternative_derivation",
+            "formalization",
+            "adversarial_mathematical_verification"
+          ],
+          "provenance_id": "ffc5925780942a12086bfbfa64479aea9bab8d7aefd6d7c5c7723c4cb4b97980",
+          "research_problem_id": "navier_stokes_millennium_prize",
+          "source": "clay_problem_statement",
+          "statement": "Clay alternatives C and D loaded into source graph",
+          "timestamp": 1793259756.83141,
+          "track_id": "literature_research"
+        },
+        {
+          "confidence": 0.56,
+          "dependencies": [
+            "euler_precursor_blowup",
+            "euler_to_navier_strategy"
+          ],
+          "evidence_ids": [
+            "ev_euler_precursor"
+          ],
+          "features": [
+            "ancestry:openai_euler_lineage",
+            "assumption:Research ladder can transfer mechanism but not conclusion",
+            "claim:euler_precursor_blowup",
+            "claim:euler_to_navier_strategy",
+            "dependency:euler_precursor_blowup",
+            "dependency:euler_to_navier_strategy",
+            "evidence:ev_euler_precursor",
+            "provenance:openai_euler_paper",
+            "provenance:openai_report",
+            "role:alternative_derivation",
+            "source:openai_lean_repo",
+            "status:SUPPORTED"
+          ],
+          "independence_status": "DEPENDENT",
+          "observation_id": "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5",
+          "parent_observations": [
+            "proof_construction",
+            "disproof_counterexample_search",
+            "computational_exploration",
+            "literature_research",
+            "formalization",
+            "adversarial_mathematical_verification"
+          ],
+          "provenance_id": "6b66a3c8fe3da1cbf1fae9eb8a93fdcf8e5bd4d032998b22f9bf3b84b29f23ca",
+          "research_problem_id": "navier_stokes_millennium_prize",
+          "source": "openai_report",
+          "statement": "Euler precursor contributes transferable research strategy, not automatic proof",
+          "timestamp": 1793259756.8314407,
+          "track_id": "alternative_derivation"
+        },
+        {
+          "confidence": 0.72,
+          "dependencies": [
+            "lean_formalization_scope"
+          ],
+          "evidence_ids": [
+            "ev_residual_matching"
+          ],
+          "features": [
+            "ancestry:openai_navier_stokes_lineage",
+            "assumption:Lean toolchain and comparator config are correctly identified",
+            "claim:lean_formalization_scope",
+            "dependency:lean_formalization_scope",
+            "evidence:ev_residual_matching",
+            "provenance:openai_lean_repo",
+            "role:formalization",
+            "source:openai_lean_repo",
+            "status:FORMALIZED"
+          ],
+          "independence_status": "DEPENDENT",
+          "observation_id": "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23",
+          "parent_observations": [
+            "proof_construction",
+            "disproof_counterexample_search",
+            "computational_exploration",
+            "literature_research",
+            "alternative_derivation",
+            "adversarial_mathematical_verification"
+          ],
+          "provenance_id": "39ad13f3af03dcfa7e2717f5ab6c08f4083c67cf26157d751eff848f3147aa03",
+          "research_problem_id": "navier_stokes_millennium_prize",
+          "source": "openai_lean_repo",
+          "statement": "formalization loci and theorem names loaded",
+          "timestamp": 1793259756.8314664,
+          "track_id": "formalization"
+        },
+        {
+          "confidence": 0.49,
+          "dependencies": [
+            "openai_breakdown_r3",
+            "mechanism_residual_cancellation",
+            "smooth_force_requirement"
+          ],
+          "evidence_ids": [],
+          "features": [
+            "claim:mechanism_residual_cancellation",
+            "claim:openai_breakdown_r3",
+            "claim:smooth_force_requirement",
+            "dependency:mechanism_residual_cancellation",
+            "dependency:openai_breakdown_r3",
+            "dependency:smooth_force_requirement",
+            "provenance:barrot_adversarial_track",
+            "role:adversarial_mathematical_verification",
+            "status:SUPPORTED"
+          ],
+          "independence_status": "DEPENDENT",
+          "observation_id": "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001",
+          "parent_observations": [
+            "proof_construction",
+            "disproof_counterexample_search",
+            "computational_exploration",
+            "literature_research",
+            "alternative_derivation",
+            "formalization"
+          ],
+          "provenance_id": "f34afb4a187147cd93ee1de17e60f73886c1132a34c0826ae78218cf3f312b68",
+          "research_problem_id": "navier_stokes_millennium_prize",
+          "source": "barrot_adversarial_track",
+          "statement": "challenge loaded: theorem statement alone is insufficient for acceptance",
+          "timestamp": 1793259756.831492,
+          "track_id": "adversarial_mathematical_verification"
+        },
+        {
+          "confidence": 0.5,
+          "dependencies": [
+            "Mathlib",
+            "Lake",
+            "ComparatorChallenges/NavierStokes.json"
+          ],
+          "evidence_ids": [
+            "lean_navier_stokes_bundle"
+          ],
+          "features": [
+            "dependency:ComparatorChallenges/NavierStokes.json",
+            "dependency:Lake",
+            "dependency:Mathlib",
+            "formal:NavierStokes.Comparator.navier_stokes_breakdown_R3",
+            "formal:NavierStokes.Comparator.navier_stokes_breakdown_periodic",
+            "repository:https://github.com/openai/NavierStokesAndEuler",
+            "source_commit:f9e8bc5b38b6e212696e8a30e3e91517af887bbd"
+          ],
+          "independence_status": "DEPENDENT",
+          "observation_id": "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53",
+          "parent_observations": [],
+          "provenance_id": "03364706b428ebb005b9bfd3ac476d4ebc09728449e97f0054b3633873c658a1",
+          "research_problem_id": "navier_stokes_millennium_prize",
+          "source": "https://github.com/openai/NavierStokesAndEuler",
+          "statement": "Formal verification record for NavierStokes.Comparator.navier_stokes_breakdown_R3, NavierStokes.Comparator.navier_stokes_breakdown_periodic: formalized only",
+          "timestamp": 1793259756.8315182,
+          "track_id": "lean_navier_stokes_bundle"
+        }
+      ],
+      "patterns": [
+        {
+          "ancestry_graph": {
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696": {
+              "parents": [
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "79dab64b87d406aa3aa7441f27db17cd9bd72a1124b59acf0b15355cbcb54274"
+              ]
+            },
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d": {
+              "parents": [
+                "proof_construction",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "367fcd931d10f576755e877e81bbdd6a35885a822c2f252ef1598af227ca2a64"
+              ]
+            }
+          },
+          "common_features": [
+            "dependency:bounded_energy_with_blowup",
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.5,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696",
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d"
+          ],
+          "pattern_id": "28fe709be7383262392982b8265c7ae272363ed6a57704fae77054e7c74f3382",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_r3_theorem"
+          ],
+          "timestamp": 1793259756.8315916
+        },
+        {
+          "ancestry_graph": {
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696": {
+              "parents": [
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "79dab64b87d406aa3aa7441f27db17cd9bd72a1124b59acf0b15355cbcb54274"
+              ]
+            },
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_navier_stokes_paper",
+                "f0b0060df08e33fbe41a9e4c0b435650450a31caaa049e03d5c01e01715c2a96"
+              ]
+            }
+          },
+          "common_features": [
+            "ancestry:openai_navier_stokes_lineage",
+            "dependency:bounded_energy_with_blowup",
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.65,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696",
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9"
+          ],
+          "pattern_id": "0296f86821c8302a1c08211e7f4389396a477b6b61915e76997e3662a5b1bd17",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_r3_theorem",
+            "ev_similarity_scaling"
+          ],
+          "timestamp": 1793259756.8316784
+        },
+        {
+          "ancestry_graph": {
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "clay_problem_statement",
+                "ffc5925780942a12086bfbfa64479aea9bab8d7aefd6d7c5c7723c4cb4b97980"
+              ]
+            },
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696": {
+              "parents": [
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "79dab64b87d406aa3aa7441f27db17cd9bd72a1124b59acf0b15355cbcb54274"
+              ]
+            }
+          },
+          "common_features": [
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696",
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090"
+          ],
+          "pattern_id": "ea500f1f79ad54233a1ed451eece8396bbb8c93b0fd90ea35f3718e6b7525c2b",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_clay_equations",
+            "ev_r3_theorem"
+          ],
+          "timestamp": 1793259756.8317199
+        },
+        {
+          "ancestry_graph": {
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696": {
+              "parents": [
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "79dab64b87d406aa3aa7441f27db17cd9bd72a1124b59acf0b15355cbcb54274"
+              ]
+            },
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_report",
+                "6b66a3c8fe3da1cbf1fae9eb8a93fdcf8e5bd4d032998b22f9bf3b84b29f23ca"
+              ]
+            }
+          },
+          "common_features": [
+            "source:openai_lean_repo",
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.5,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696",
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5"
+          ],
+          "pattern_id": "09d260c15c65aed34310a366d885dcc1016b40a13483671af24c60bc139feb7f",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_euler_precursor",
+            "ev_r3_theorem"
+          ],
+          "timestamp": 1793259756.8317595
+        },
+        {
+          "ancestry_graph": {
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696": {
+              "parents": [
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "79dab64b87d406aa3aa7441f27db17cd9bd72a1124b59acf0b15355cbcb54274"
+              ]
+            },
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "39ad13f3af03dcfa7e2717f5ab6c08f4083c67cf26157d751eff848f3147aa03"
+              ]
+            }
+          },
+          "common_features": [
+            "ancestry:openai_navier_stokes_lineage",
+            "provenance:openai_lean_repo",
+            "source:openai_lean_repo"
+          ],
+          "confidence": 0.65,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [
+              "openai_lean_repo"
+            ],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696",
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23"
+          ],
+          "pattern_id": "b3809ca236eec31c5209f979d39b806f24ec621ed193cdcee6399bee857ce644",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_r3_theorem",
+            "ev_residual_matching"
+          ],
+          "timestamp": 1793259756.8317974
+        },
+        {
+          "ancestry_graph": {
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696": {
+              "parents": [
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "79dab64b87d406aa3aa7441f27db17cd9bd72a1124b59acf0b15355cbcb54274"
+              ]
+            },
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "f34afb4a187147cd93ee1de17e60f73886c1132a34c0826ae78218cf3f312b68"
+              ]
+            }
+          },
+          "common_features": [
+            "claim:openai_breakdown_r3",
+            "dependency:mechanism_residual_cancellation",
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.65,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696",
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001"
+          ],
+          "pattern_id": "87e29355f7ae3c13810022ec09cd24e063042d9b86f29132169af3e4f5001c6f",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_r3_theorem"
+          ],
+          "timestamp": 1793259756.8318357
+        },
+        {
+          "ancestry_graph": {
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696": {
+              "parents": [
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "79dab64b87d406aa3aa7441f27db17cd9bd72a1124b59acf0b15355cbcb54274"
+              ]
+            },
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53": {
+              "parents": [],
+              "provenance": [
+                "https://github.com/openai/NavierStokesAndEuler",
+                "03364706b428ebb005b9bfd3ac476d4ebc09728449e97f0054b3633873c658a1"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "UNKNOWN"
+          },
+          "observations": [
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696",
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53"
+          ],
+          "pattern_id": "978209cac00913ae9a571de43e0032fe6c5e82bf68a80006e29bf84e8b3cedad",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "ev_r3_theorem",
+            "lean_navier_stokes_bundle"
+          ],
+          "timestamp": 1793259756.831883
+        },
+        {
+          "ancestry_graph": {
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d": {
+              "parents": [
+                "proof_construction",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "367fcd931d10f576755e877e81bbdd6a35885a822c2f252ef1598af227ca2a64"
+              ]
+            },
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_navier_stokes_paper",
+                "f0b0060df08e33fbe41a9e4c0b435650450a31caaa049e03d5c01e01715c2a96"
+              ]
+            }
+          },
+          "common_features": [
+            "dependency:bounded_energy_with_blowup",
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.5,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d",
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9"
+          ],
+          "pattern_id": "d1fed732681efd8a98a567c35b96793ca11f1e9c8d3fdf48454c43cea420b2fe",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_similarity_scaling"
+          ],
+          "timestamp": 1793259756.8319342
+        },
+        {
+          "ancestry_graph": {
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "clay_problem_statement",
+                "ffc5925780942a12086bfbfa64479aea9bab8d7aefd6d7c5c7723c4cb4b97980"
+              ]
+            },
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d": {
+              "parents": [
+                "proof_construction",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "367fcd931d10f576755e877e81bbdd6a35885a822c2f252ef1598af227ca2a64"
+              ]
+            }
+          },
+          "common_features": [
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d",
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090"
+          ],
+          "pattern_id": "698eb43045517cbd9322e82ec46813a78d348a320fd8c6d5df5e5b52ba1e62b1",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_clay_equations"
+          ],
+          "timestamp": 1793259756.8319721
+        },
+        {
+          "ancestry_graph": {
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d": {
+              "parents": [
+                "proof_construction",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "367fcd931d10f576755e877e81bbdd6a35885a822c2f252ef1598af227ca2a64"
+              ]
+            },
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_report",
+                "6b66a3c8fe3da1cbf1fae9eb8a93fdcf8e5bd4d032998b22f9bf3b84b29f23ca"
+              ]
+            }
+          },
+          "common_features": [
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d",
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5"
+          ],
+          "pattern_id": "0affdade3fba59eff7adf24ad923c633b674921b440b2fca56935b297004f6fc",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_euler_precursor"
+          ],
+          "timestamp": 1793259756.8320074
+        },
+        {
+          "ancestry_graph": {
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "39ad13f3af03dcfa7e2717f5ab6c08f4083c67cf26157d751eff848f3147aa03"
+              ]
+            },
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d": {
+              "parents": [
+                "proof_construction",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "367fcd931d10f576755e877e81bbdd6a35885a822c2f252ef1598af227ca2a64"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d",
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23"
+          ],
+          "pattern_id": "58d348bd1d77af4dcedda1c34c7cc35b6390a7602b093ff929190947fbd573e1",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "ev_residual_matching"
+          ],
+          "timestamp": 1793259756.8320386
+        },
+        {
+          "ancestry_graph": {
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d": {
+              "parents": [
+                "proof_construction",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "367fcd931d10f576755e877e81bbdd6a35885a822c2f252ef1598af227ca2a64"
+              ]
+            },
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "f34afb4a187147cd93ee1de17e60f73886c1132a34c0826ae78218cf3f312b68"
+              ]
+            }
+          },
+          "common_features": [
+            "claim:smooth_force_requirement",
+            "dependency:smooth_force_requirement",
+            "provenance:barrot_adversarial_track",
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.8,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [
+              "barrot_adversarial_track"
+            ],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d",
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001"
+          ],
+          "pattern_id": "0b4af663ae73c004f5f693afac84136a4937d7a2f8315a605561cbe6fa20adb4",
+          "status": "DUPLICATION",
+          "supporting_evidence": [],
+          "timestamp": 1793259756.8320804
+        },
+        {
+          "ancestry_graph": {
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53": {
+              "parents": [],
+              "provenance": [
+                "https://github.com/openai/NavierStokesAndEuler",
+                "03364706b428ebb005b9bfd3ac476d4ebc09728449e97f0054b3633873c658a1"
+              ]
+            },
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d": {
+              "parents": [
+                "proof_construction",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "367fcd931d10f576755e877e81bbdd6a35885a822c2f252ef1598af227ca2a64"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "UNKNOWN"
+          },
+          "observations": [
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d",
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53"
+          ],
+          "pattern_id": "1a1d264453b9b7d69e1e452e206dac448d3ff3c369269a7509f490969cb97160",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "lean_navier_stokes_bundle"
+          ],
+          "timestamp": 1793259756.8321247
+        },
+        {
+          "ancestry_graph": {
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "clay_problem_statement",
+                "ffc5925780942a12086bfbfa64479aea9bab8d7aefd6d7c5c7723c4cb4b97980"
+              ]
+            },
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_navier_stokes_paper",
+                "f0b0060df08e33fbe41a9e4c0b435650450a31caaa049e03d5c01e01715c2a96"
+              ]
+            }
+          },
+          "common_features": [
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9",
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090"
+          ],
+          "pattern_id": "27314c39051f87c596ffe2edf714419f797c927d3e057b8590393bef71047e26",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_clay_equations",
+            "ev_similarity_scaling"
+          ],
+          "timestamp": 1793259756.83216
+        },
+        {
+          "ancestry_graph": {
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_report",
+                "6b66a3c8fe3da1cbf1fae9eb8a93fdcf8e5bd4d032998b22f9bf3b84b29f23ca"
+              ]
+            },
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_navier_stokes_paper",
+                "f0b0060df08e33fbe41a9e4c0b435650450a31caaa049e03d5c01e01715c2a96"
+              ]
+            }
+          },
+          "common_features": [
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9",
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5"
+          ],
+          "pattern_id": "dbbc998188014cef19fa0d43c5ff363f12c38b148dd578fa3c54096faf6582dd",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_euler_precursor",
+            "ev_similarity_scaling"
+          ],
+          "timestamp": 1793259756.8321936
+        },
+        {
+          "ancestry_graph": {
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "39ad13f3af03dcfa7e2717f5ab6c08f4083c67cf26157d751eff848f3147aa03"
+              ]
+            },
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_navier_stokes_paper",
+                "f0b0060df08e33fbe41a9e4c0b435650450a31caaa049e03d5c01e01715c2a96"
+              ]
+            }
+          },
+          "common_features": [
+            "ancestry:openai_navier_stokes_lineage"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9",
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23"
+          ],
+          "pattern_id": "b3d13e4542e77daf446373ceacb2d9b5b3cda11032ce7d9c845352f0fdf891af",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_residual_matching",
+            "ev_similarity_scaling"
+          ],
+          "timestamp": 1793259756.8322248
+        },
+        {
+          "ancestry_graph": {
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "f34afb4a187147cd93ee1de17e60f73886c1132a34c0826ae78218cf3f312b68"
+              ]
+            },
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_navier_stokes_paper",
+                "f0b0060df08e33fbe41a9e4c0b435650450a31caaa049e03d5c01e01715c2a96"
+              ]
+            }
+          },
+          "common_features": [
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9",
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001"
+          ],
+          "pattern_id": "5825d187ebc1d93fe3277f9e8638a7a68aff213599dc87f6c5e48394b7e5f1d3",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_similarity_scaling"
+          ],
+          "timestamp": 1793259756.8322566
+        },
+        {
+          "ancestry_graph": {
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53": {
+              "parents": [],
+              "provenance": [
+                "https://github.com/openai/NavierStokesAndEuler",
+                "03364706b428ebb005b9bfd3ac476d4ebc09728449e97f0054b3633873c658a1"
+              ]
+            },
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "literature_research",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_navier_stokes_paper",
+                "f0b0060df08e33fbe41a9e4c0b435650450a31caaa049e03d5c01e01715c2a96"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "UNKNOWN"
+          },
+          "observations": [
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9",
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53"
+          ],
+          "pattern_id": "a43809b08c67c8f3cb596b626932a4bc65c6307c6d1cf5f6ac4db4d8debf84a2",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "ev_similarity_scaling",
+            "lean_navier_stokes_bundle"
+          ],
+          "timestamp": 1793259756.8322968
+        },
+        {
+          "ancestry_graph": {
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "clay_problem_statement",
+                "ffc5925780942a12086bfbfa64479aea9bab8d7aefd6d7c5c7723c4cb4b97980"
+              ]
+            },
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_report",
+                "6b66a3c8fe3da1cbf1fae9eb8a93fdcf8e5bd4d032998b22f9bf3b84b29f23ca"
+              ]
+            }
+          },
+          "common_features": [
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090",
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5"
+          ],
+          "pattern_id": "d8b920bc10b2e30e1842c62c6f8ce67a2783d0842c77ac46b435bd29b6a1bbbc",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_clay_equations",
+            "ev_euler_precursor"
+          ],
+          "timestamp": 1793259756.8323317
+        },
+        {
+          "ancestry_graph": {
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "clay_problem_statement",
+                "ffc5925780942a12086bfbfa64479aea9bab8d7aefd6d7c5c7723c4cb4b97980"
+              ]
+            },
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "39ad13f3af03dcfa7e2717f5ab6c08f4083c67cf26157d751eff848f3147aa03"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090",
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23"
+          ],
+          "pattern_id": "3b99a374d8bf34a4b4c7db0bd6a6ed22fc6969117c1fc02bbd51ad0d7d502b26",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "ev_clay_equations",
+            "ev_residual_matching"
+          ],
+          "timestamp": 1793259756.832363
+        },
+        {
+          "ancestry_graph": {
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "clay_problem_statement",
+                "ffc5925780942a12086bfbfa64479aea9bab8d7aefd6d7c5c7723c4cb4b97980"
+              ]
+            },
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "f34afb4a187147cd93ee1de17e60f73886c1132a34c0826ae78218cf3f312b68"
+              ]
+            }
+          },
+          "common_features": [
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090",
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001"
+          ],
+          "pattern_id": "edd708f4bfded3a4240d4b9c5452d31b16e26e7157433f6404022966416ea1a9",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_clay_equations"
+          ],
+          "timestamp": 1793259756.8323946
+        },
+        {
+          "ancestry_graph": {
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "alternative_derivation",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "clay_problem_statement",
+                "ffc5925780942a12086bfbfa64479aea9bab8d7aefd6d7c5c7723c4cb4b97980"
+              ]
+            },
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53": {
+              "parents": [],
+              "provenance": [
+                "https://github.com/openai/NavierStokesAndEuler",
+                "03364706b428ebb005b9bfd3ac476d4ebc09728449e97f0054b3633873c658a1"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "UNKNOWN"
+          },
+          "observations": [
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090",
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53"
+          ],
+          "pattern_id": "59dcd6b72c3101a2f46d86d3bb40a49bd40705cba3de43126e19180147da82da",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "ev_clay_equations",
+            "lean_navier_stokes_bundle"
+          ],
+          "timestamp": 1793259756.8324342
+        },
+        {
+          "ancestry_graph": {
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "39ad13f3af03dcfa7e2717f5ab6c08f4083c67cf26157d751eff848f3147aa03"
+              ]
+            },
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_report",
+                "6b66a3c8fe3da1cbf1fae9eb8a93fdcf8e5bd4d032998b22f9bf3b84b29f23ca"
+              ]
+            }
+          },
+          "common_features": [
+            "source:openai_lean_repo"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5",
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23"
+          ],
+          "pattern_id": "0b34cfa0ded98373588ef914cd749f95d3925ef55d23ecb152c3c5a17383715a",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_euler_precursor",
+            "ev_residual_matching"
+          ],
+          "timestamp": 1793259756.8324676
+        },
+        {
+          "ancestry_graph": {
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "f34afb4a187147cd93ee1de17e60f73886c1132a34c0826ae78218cf3f312b68"
+              ]
+            },
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_report",
+                "6b66a3c8fe3da1cbf1fae9eb8a93fdcf8e5bd4d032998b22f9bf3b84b29f23ca"
+              ]
+            }
+          },
+          "common_features": [
+            "status:SUPPORTED"
+          ],
+          "confidence": 0.35,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5",
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001"
+          ],
+          "pattern_id": "70f2240f3a96ff4f3c498567495768239c0f5e1f0aa3d3964ded955d14d3e1f1",
+          "status": "DUPLICATION",
+          "supporting_evidence": [
+            "ev_euler_precursor"
+          ],
+          "timestamp": 1793259756.8325
+        },
+        {
+          "ancestry_graph": {
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53": {
+              "parents": [],
+              "provenance": [
+                "https://github.com/openai/NavierStokesAndEuler",
+                "03364706b428ebb005b9bfd3ac476d4ebc09728449e97f0054b3633873c658a1"
+              ]
+            },
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "formalization",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_report",
+                "6b66a3c8fe3da1cbf1fae9eb8a93fdcf8e5bd4d032998b22f9bf3b84b29f23ca"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "UNKNOWN"
+          },
+          "observations": [
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5",
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53"
+          ],
+          "pattern_id": "70e740a9d8e36ca90ec6acf55d082f96b3bc0ae5cdb86804e0a9d92fc104eb53",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "ev_euler_precursor",
+            "lean_navier_stokes_bundle"
+          ],
+          "timestamp": 1793259756.8325422
+        },
+        {
+          "ancestry_graph": {
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "39ad13f3af03dcfa7e2717f5ab6c08f4083c67cf26157d751eff848f3147aa03"
+              ]
+            },
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "f34afb4a187147cd93ee1de17e60f73886c1132a34c0826ae78218cf3f312b68"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "DEPENDENT"
+          },
+          "observations": [
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23",
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001"
+          ],
+          "pattern_id": "941b3390013028b35a92b42cb1f6d5ea8c9d15e6c464c6b83731fd3c8519fed7",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "ev_residual_matching"
+          ],
+          "timestamp": 1793259756.832573
+        },
+        {
+          "ancestry_graph": {
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53": {
+              "parents": [],
+              "provenance": [
+                "https://github.com/openai/NavierStokesAndEuler",
+                "03364706b428ebb005b9bfd3ac476d4ebc09728449e97f0054b3633873c658a1"
+              ]
+            },
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "adversarial_mathematical_verification"
+              ],
+              "provenance": [
+                "openai_lean_repo",
+                "39ad13f3af03dcfa7e2717f5ab6c08f4083c67cf26157d751eff848f3147aa03"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "UNKNOWN"
+          },
+          "observations": [
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23",
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53"
+          ],
+          "pattern_id": "33b3f451a97ca07019fb4e5bc0ad5f2f95f038ce7c88c6dd4dc6a9e9a504a8d7",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "ev_residual_matching",
+            "lean_navier_stokes_bundle"
+          ],
+          "timestamp": 1793259756.8326554
+        },
+        {
+          "ancestry_graph": {
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53": {
+              "parents": [],
+              "provenance": [
+                "https://github.com/openai/NavierStokesAndEuler",
+                "03364706b428ebb005b9bfd3ac476d4ebc09728449e97f0054b3633873c658a1"
+              ]
+            },
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001": {
+              "parents": [
+                "proof_construction",
+                "disproof_counterexample_search",
+                "computational_exploration",
+                "literature_research",
+                "alternative_derivation",
+                "formalization"
+              ],
+              "provenance": [
+                "barrot_adversarial_track",
+                "f34afb4a187147cd93ee1de17e60f73886c1132a34c0826ae78218cf3f312b68"
+              ]
+            }
+          },
+          "common_features": [],
+          "confidence": 0.2,
+          "contradicting_evidence": [],
+          "independence_analysis": {
+            "shared_evidence": [],
+            "shared_provenance": [],
+            "shared_sources": [],
+            "status": "UNKNOWN"
+          },
+          "observations": [
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001",
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53"
+          ],
+          "pattern_id": "54ad66419098d8d7a5f5ae76e55895082f26cb7ee3e2b8ca7fd9b85890189c96",
+          "status": "INSUFFICIENT_DATA",
+          "supporting_evidence": [
+            "lean_navier_stokes_bundle"
+          ],
+          "timestamp": 1793259756.8327014
+        }
+      ],
+      "possible_transitions": [],
+      "research_problem_id": "navier_stokes_millennium_prize",
+      "scenario_graph": [],
+      "scenario_materials": [],
+      "temporal_analysis": [
+        {
+          "disappearing_features": [
+            "ancestry:openai_navier_stokes_lineage",
+            "assumption:openai theorem statements correspond to the manuscript claims",
+            "claim:openai_breakdown_periodic",
+            "claim:openai_breakdown_r3",
+            "dependency:bounded_energy_with_blowup",
+            "dependency:mechanism_residual_cancellation",
+            "evidence:ev_r3_theorem",
+            "provenance:openai_lean_repo",
+            "role:proof_construction",
+            "source:openai_lean_repo",
+            "status:SUPPORTED"
+          ],
+          "new_features": [
+            "dependency:ComparatorChallenges/NavierStokes.json",
+            "dependency:Lake",
+            "dependency:Mathlib",
+            "formal:NavierStokes.Comparator.navier_stokes_breakdown_R3",
+            "formal:NavierStokes.Comparator.navier_stokes_breakdown_periodic",
+            "repository:https://github.com/openai/NavierStokesAndEuler",
+            "source_commit:f9e8bc5b38b6e212696e8a30e3e91517af887bbd"
+          ],
+          "observation_ids": [
+            "34ffdc79a7b73eac507961926a70d439b7e216eee7d61f2037fd4a2547930696",
+            "89126472f97928a2e38bf6f5c73877d1990ad0d4eff77faec8b04125aea0fc9d",
+            "d7b0b7d2a703f22c59343deeb21fd1e63d10b876e81e4bbc3c451b3156c505c9",
+            "33d0654a933fc6a798a65983e83107da0f558f53e388e3749dd9a485d7394090",
+            "ba67fa4ad49543f25ae4cf0013c29c32d40900e2e53f027f60b5802c2e3534b5",
+            "71763e74b0222803df4d45c2b563a00fb5e091570ab4f1b1dd05cb882c119c23",
+            "a581bd6f823827bfda9c7db7337b139cbada9eee43400e58a779c384d7bb8001",
+            "43d5e82db204bffb412868ebe171382fcd7b8c57b736f320111b11ab37af3f53"
+          ],
+          "provenance": [
+            "openai_lean_repo",
+            "barrot_adversarial_track",
+            "openai_navier_stokes_paper",
+            "clay_problem_statement",
+            "openai_report",
+            "openai_lean_repo",
+            "barrot_adversarial_track",
+            "https://github.com/openai/NavierStokesAndEuler"
+          ],
+          "recurring_features": [],
+          "trend_hypothesis": "No recurring structured feature set was established."
+        }
+      ],
+      "timestamp": 1793259756.834381
+    },
+    "cross_pollination": [
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "whole-space theorem statement loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use openai_breakdown_r3 to strengthen disproof/counterexample_search.",
+        "provenance": [
+          "openai_lean_repo",
+          "barrot_adversarial_track",
+          "proof_construction",
+          "disproof_counterexample_search"
+        ],
+        "recipient_track_id": "disproof_counterexample_search",
+        "result": "transferred",
+        "source_track_id": "proof_construction",
+        "synthesis": "Reusable lemma candidate: openai_breakdown_r3 from proof_construction.",
+        "transfer_id": "407f948b5b0bff5e706bf9236263ff1e5e3f9d1d0cf4c969e21e04996c1fdaf3",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "whole-space theorem statement loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use openai_breakdown_r3 to strengthen computational_exploration.",
+        "provenance": [
+          "openai_lean_repo",
+          "openai_navier_stokes_paper",
+          "proof_construction",
+          "computational_exploration"
+        ],
+        "recipient_track_id": "computational_exploration",
+        "result": "transferred",
+        "source_track_id": "proof_construction",
+        "synthesis": "Reusable lemma candidate: openai_breakdown_r3 from proof_construction.",
+        "transfer_id": "175a896f940f00352fd3affd5e5b122c4a3dc7fa7ed3aed4e737799aca0bb3a9",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "whole-space theorem statement loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use openai_breakdown_r3 to strengthen literature_research.",
+        "provenance": [
+          "openai_lean_repo",
+          "clay_problem_statement",
+          "proof_construction",
+          "literature_research"
+        ],
+        "recipient_track_id": "literature_research",
+        "result": "transferred",
+        "source_track_id": "proof_construction",
+        "synthesis": "Reusable lemma candidate: openai_breakdown_r3 from proof_construction.",
+        "transfer_id": "c785a5831eea74b8ae4144163b40fc99337548fbc8573f09e0f63ea2a34c31f4",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "whole-space theorem statement loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use openai_breakdown_r3 to strengthen alternative_derivation.",
+        "provenance": [
+          "openai_lean_repo",
+          "openai_report",
+          "openai_euler_paper",
+          "proof_construction",
+          "alternative_derivation"
+        ],
+        "recipient_track_id": "alternative_derivation",
+        "result": "transferred",
+        "source_track_id": "proof_construction",
+        "synthesis": "Reusable lemma candidate: openai_breakdown_r3 from proof_construction.",
+        "transfer_id": "191b216534c9229e95717482903188d3edcc4a547d232a8a4dec4ab112cce12c",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "whole-space theorem statement loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use openai_breakdown_r3 to strengthen formalization.",
+        "provenance": [
+          "openai_lean_repo",
+          "proof_construction",
+          "formalization"
+        ],
+        "recipient_track_id": "formalization",
+        "result": "transferred",
+        "source_track_id": "proof_construction",
+        "synthesis": "Reusable lemma candidate: openai_breakdown_r3 from proof_construction.",
+        "transfer_id": "262769b2c4e6c6f02d7e2eb4c68e44fd55091eb3f6083751d413881fa6acaa06",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "whole-space theorem statement loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "",
+        "provenance": [
+          "openai_lean_repo",
+          "barrot_adversarial_track",
+          "proof_construction",
+          "adversarial_mathematical_verification"
+        ],
+        "recipient_track_id": "adversarial_mathematical_verification",
+        "result": "duplicate_skipped",
+        "source_track_id": "proof_construction",
+        "synthesis": "Shared focus already present for claims: openai_breakdown_r3",
+        "transfer_id": "fc26e9d5c33c107ba0d09447a30e23ed780e7e3f010a5c9da54fe841ebbc6960",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "forcing admissibility is a critical attack surface",
+        "failed_approaches": [
+          "No contradiction loaded from current primary bundle"
+        ],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use smooth_force_requirement to strengthen proof_construction.",
+        "provenance": [
+          "barrot_adversarial_track",
+          "openai_lean_repo",
+          "disproof_counterexample_search",
+          "proof_construction"
+        ],
+        "recipient_track_id": "proof_construction",
+        "result": "transferred",
+        "source_track_id": "disproof_counterexample_search",
+        "synthesis": "Reusable lemma candidate: smooth_force_requirement from disproof_counterexample_search.",
+        "transfer_id": "5d8f14a4127e15c56abeef65f5ccc3d0801ad5b30e3489abd88f317edd3c3bb2",
+        "transferred_claim_ids": [
+          "smooth_force_requirement"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "forcing admissibility is a critical attack surface",
+        "failed_approaches": [
+          "No contradiction loaded from current primary bundle"
+        ],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use smooth_force_requirement to strengthen computational_exploration.",
+        "provenance": [
+          "barrot_adversarial_track",
+          "openai_navier_stokes_paper",
+          "disproof_counterexample_search",
+          "computational_exploration"
+        ],
+        "recipient_track_id": "computational_exploration",
+        "result": "transferred",
+        "source_track_id": "disproof_counterexample_search",
+        "synthesis": "Reusable lemma candidate: smooth_force_requirement from disproof_counterexample_search.",
+        "transfer_id": "4c5a42a480334c38075d67c71fb0bfbb83134084f6beb267c92750f464e7b207",
+        "transferred_claim_ids": [
+          "smooth_force_requirement"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "forcing admissibility is a critical attack surface",
+        "failed_approaches": [
+          "No contradiction loaded from current primary bundle"
+        ],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use smooth_force_requirement to strengthen literature_research.",
+        "provenance": [
+          "barrot_adversarial_track",
+          "clay_problem_statement",
+          "disproof_counterexample_search",
+          "literature_research"
+        ],
+        "recipient_track_id": "literature_research",
+        "result": "transferred",
+        "source_track_id": "disproof_counterexample_search",
+        "synthesis": "Reusable lemma candidate: smooth_force_requirement from disproof_counterexample_search.",
+        "transfer_id": "4fef3914c4f8a17a894f78136a549d7902b2868d41d968b4f7eb727541c26b7c",
+        "transferred_claim_ids": [
+          "smooth_force_requirement"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "forcing admissibility is a critical attack surface",
+        "failed_approaches": [
+          "No contradiction loaded from current primary bundle"
+        ],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use smooth_force_requirement to strengthen alternative_derivation.",
+        "provenance": [
+          "barrot_adversarial_track",
+          "openai_report",
+          "openai_euler_paper",
+          "disproof_counterexample_search",
+          "alternative_derivation"
+        ],
+        "recipient_track_id": "alternative_derivation",
+        "result": "transferred",
+        "source_track_id": "disproof_counterexample_search",
+        "synthesis": "Reusable lemma candidate: smooth_force_requirement from disproof_counterexample_search.",
+        "transfer_id": "80c5c043ea2c2bc7305ce2af15137c43a23cb36e7d2767f9759dc23d01fb002e",
+        "transferred_claim_ids": [
+          "smooth_force_requirement"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "forcing admissibility is a critical attack surface",
+        "failed_approaches": [
+          "No contradiction loaded from current primary bundle"
+        ],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use smooth_force_requirement to strengthen formalization.",
+        "provenance": [
+          "barrot_adversarial_track",
+          "openai_lean_repo",
+          "disproof_counterexample_search",
+          "formalization"
+        ],
+        "recipient_track_id": "formalization",
+        "result": "transferred",
+        "source_track_id": "disproof_counterexample_search",
+        "synthesis": "Reusable lemma candidate: smooth_force_requirement from disproof_counterexample_search.",
+        "transfer_id": "9b34818e665a70a9cb66cfbdd1dbe8a8879f8678f26c6a994b85a01efe23bfa7",
+        "transferred_claim_ids": [
+          "smooth_force_requirement"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "forcing admissibility is a critical attack surface",
+        "failed_approaches": [
+          "No contradiction loaded from current primary bundle"
+        ],
+        "independent_confirmation": false,
+        "new_hypothesis": "",
+        "provenance": [
+          "barrot_adversarial_track",
+          "disproof_counterexample_search",
+          "adversarial_mathematical_verification"
+        ],
+        "recipient_track_id": "adversarial_mathematical_verification",
+        "result": "duplicate_skipped",
+        "source_track_id": "disproof_counterexample_search",
+        "synthesis": "Shared focus already present for claims: smooth_force_requirement",
+        "transfer_id": "2908d747bd14f9493858b4f00fba91bf753a0e34e09fac1814ee45752c35ef6e",
+        "transferred_claim_ids": [
+          "smooth_force_requirement"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "energy-versus-velocity tradeoff captured as structured consequence",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use bounded_energy_with_blowup to strengthen proof_construction.",
+        "provenance": [
+          "openai_navier_stokes_paper",
+          "openai_lean_repo",
+          "computational_exploration",
+          "proof_construction"
+        ],
+        "recipient_track_id": "proof_construction",
+        "result": "transferred",
+        "source_track_id": "computational_exploration",
+        "synthesis": "Reusable lemma candidate: bounded_energy_with_blowup from computational_exploration.",
+        "transfer_id": "733a332fd1d7d388aa75fef23e49cc9b3b0716da9bfee8253ed5d67f3514d710",
+        "transferred_claim_ids": [
+          "bounded_energy_with_blowup"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "energy-versus-velocity tradeoff captured as structured consequence",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use bounded_energy_with_blowup to strengthen disproof/counterexample_search.",
+        "provenance": [
+          "openai_navier_stokes_paper",
+          "barrot_adversarial_track",
+          "computational_exploration",
+          "disproof_counterexample_search"
+        ],
+        "recipient_track_id": "disproof_counterexample_search",
+        "result": "transferred",
+        "source_track_id": "computational_exploration",
+        "synthesis": "Reusable lemma candidate: bounded_energy_with_blowup from computational_exploration.",
+        "transfer_id": "40dd285de7b52d48447092b87bfbb244f42effdfcccb839fc6cf1626dfb80900",
+        "transferred_claim_ids": [
+          "bounded_energy_with_blowup"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "energy-versus-velocity tradeoff captured as structured consequence",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use bounded_energy_with_blowup to strengthen literature_research.",
+        "provenance": [
+          "openai_navier_stokes_paper",
+          "clay_problem_statement",
+          "computational_exploration",
+          "literature_research"
+        ],
+        "recipient_track_id": "literature_research",
+        "result": "transferred",
+        "source_track_id": "computational_exploration",
+        "synthesis": "Reusable lemma candidate: bounded_energy_with_blowup from computational_exploration.",
+        "transfer_id": "ce5886f4cbfabe1b14b318d481cbc13bfb820b0c10cdf6edb48819fb6634b297",
+        "transferred_claim_ids": [
+          "bounded_energy_with_blowup"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "energy-versus-velocity tradeoff captured as structured consequence",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use bounded_energy_with_blowup to strengthen alternative_derivation.",
+        "provenance": [
+          "openai_navier_stokes_paper",
+          "openai_report",
+          "openai_euler_paper",
+          "computational_exploration",
+          "alternative_derivation"
+        ],
+        "recipient_track_id": "alternative_derivation",
+        "result": "transferred",
+        "source_track_id": "computational_exploration",
+        "synthesis": "Reusable lemma candidate: bounded_energy_with_blowup from computational_exploration.",
+        "transfer_id": "fee6114c28837839a60d7bf8af89f3818c0d2c787ff0d604435c83e6cad57798",
+        "transferred_claim_ids": [
+          "bounded_energy_with_blowup"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "energy-versus-velocity tradeoff captured as structured consequence",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use bounded_energy_with_blowup to strengthen formalization.",
+        "provenance": [
+          "openai_navier_stokes_paper",
+          "openai_lean_repo",
+          "computational_exploration",
+          "formalization"
+        ],
+        "recipient_track_id": "formalization",
+        "result": "transferred",
+        "source_track_id": "computational_exploration",
+        "synthesis": "Reusable lemma candidate: bounded_energy_with_blowup from computational_exploration.",
+        "transfer_id": "69a994a1dc47ce6ff7c4cd3926caaba6552da8faef63d35fa3f277274ab13b57",
+        "transferred_claim_ids": [
+          "bounded_energy_with_blowup"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "energy-versus-velocity tradeoff captured as structured consequence",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use bounded_energy_with_blowup to strengthen adversarial_mathematical_verification.",
+        "provenance": [
+          "openai_navier_stokes_paper",
+          "barrot_adversarial_track",
+          "computational_exploration",
+          "adversarial_mathematical_verification"
+        ],
+        "recipient_track_id": "adversarial_mathematical_verification",
+        "result": "transferred",
+        "source_track_id": "computational_exploration",
+        "synthesis": "Reusable lemma candidate: bounded_energy_with_blowup from computational_exploration.",
+        "transfer_id": "3e780ac1ed91a90ed427f710874e882cacf97cab8de07117e497ad7e7e4a1acd",
+        "transferred_claim_ids": [
+          "bounded_energy_with_blowup"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Clay alternatives C and D loaded into source graph",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use clay_problem_r3 to strengthen proof_construction.",
+        "provenance": [
+          "clay_problem_statement",
+          "openai_lean_repo",
+          "literature_research",
+          "proof_construction"
+        ],
+        "recipient_track_id": "proof_construction",
+        "result": "transferred",
+        "source_track_id": "literature_research",
+        "synthesis": "Reusable lemma candidate: clay_problem_r3 from literature_research.",
+        "transfer_id": "bc69e932dc9393012028d1f87ee77e4249d0fdd9e7f839d220cb01cfd4e93e40",
+        "transferred_claim_ids": [
+          "clay_problem_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Clay alternatives C and D loaded into source graph",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use clay_problem_r3 to strengthen disproof/counterexample_search.",
+        "provenance": [
+          "clay_problem_statement",
+          "barrot_adversarial_track",
+          "literature_research",
+          "disproof_counterexample_search"
+        ],
+        "recipient_track_id": "disproof_counterexample_search",
+        "result": "transferred",
+        "source_track_id": "literature_research",
+        "synthesis": "Reusable lemma candidate: clay_problem_r3 from literature_research.",
+        "transfer_id": "e4092bafe46d67a924fea17f6daef949406194037a1beed4b52c02a8c32cc7fe",
+        "transferred_claim_ids": [
+          "clay_problem_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Clay alternatives C and D loaded into source graph",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use clay_problem_r3 to strengthen computational_exploration.",
+        "provenance": [
+          "clay_problem_statement",
+          "openai_navier_stokes_paper",
+          "literature_research",
+          "computational_exploration"
+        ],
+        "recipient_track_id": "computational_exploration",
+        "result": "transferred",
+        "source_track_id": "literature_research",
+        "synthesis": "Reusable lemma candidate: clay_problem_r3 from literature_research.",
+        "transfer_id": "89250368480d09cfb38da2be9c4accdfee485548d77cb94145e8833d68178abf",
+        "transferred_claim_ids": [
+          "clay_problem_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Clay alternatives C and D loaded into source graph",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use clay_problem_r3 to strengthen alternative_derivation.",
+        "provenance": [
+          "clay_problem_statement",
+          "openai_report",
+          "openai_euler_paper",
+          "literature_research",
+          "alternative_derivation"
+        ],
+        "recipient_track_id": "alternative_derivation",
+        "result": "transferred",
+        "source_track_id": "literature_research",
+        "synthesis": "Reusable lemma candidate: clay_problem_r3 from literature_research.",
+        "transfer_id": "61372bc06900afd6325efe9dbc0ccb4a8d48dfd47833dc1c2d096ce9a2c46878",
+        "transferred_claim_ids": [
+          "clay_problem_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Clay alternatives C and D loaded into source graph",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use clay_problem_r3 to strengthen formalization.",
+        "provenance": [
+          "clay_problem_statement",
+          "openai_lean_repo",
+          "literature_research",
+          "formalization"
+        ],
+        "recipient_track_id": "formalization",
+        "result": "transferred",
+        "source_track_id": "literature_research",
+        "synthesis": "Reusable lemma candidate: clay_problem_r3 from literature_research.",
+        "transfer_id": "03db10607a949480a9dbd33cfc7de1f72f4df66d844d86cdf5f33b7b3d04f459",
+        "transferred_claim_ids": [
+          "clay_problem_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Clay alternatives C and D loaded into source graph",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use clay_problem_r3 to strengthen adversarial_mathematical_verification.",
+        "provenance": [
+          "clay_problem_statement",
+          "barrot_adversarial_track",
+          "literature_research",
+          "adversarial_mathematical_verification"
+        ],
+        "recipient_track_id": "adversarial_mathematical_verification",
+        "result": "transferred",
+        "source_track_id": "literature_research",
+        "synthesis": "Reusable lemma candidate: clay_problem_r3 from literature_research.",
+        "transfer_id": "b9ca9eb91851ad73e7615fb4f9eccd734479df608461023281d15284220f47de",
+        "transferred_claim_ids": [
+          "clay_problem_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Euler precursor contributes transferable research strategy, not automatic proof",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use euler_to_navier_strategy to strengthen proof_construction.",
+        "provenance": [
+          "openai_report",
+          "openai_euler_paper",
+          "openai_lean_repo",
+          "alternative_derivation",
+          "proof_construction"
+        ],
+        "recipient_track_id": "proof_construction",
+        "result": "transferred",
+        "source_track_id": "alternative_derivation",
+        "synthesis": "Reusable lemma candidate: euler_to_navier_strategy from alternative_derivation.",
+        "transfer_id": "326e367d8a15c64716b7f3b75446f81f8e6a558aaa529d24597dc4f86ef9a35f",
+        "transferred_claim_ids": [
+          "euler_to_navier_strategy"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Euler precursor contributes transferable research strategy, not automatic proof",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use euler_to_navier_strategy to strengthen disproof/counterexample_search.",
+        "provenance": [
+          "openai_report",
+          "openai_euler_paper",
+          "barrot_adversarial_track",
+          "alternative_derivation",
+          "disproof_counterexample_search"
+        ],
+        "recipient_track_id": "disproof_counterexample_search",
+        "result": "transferred",
+        "source_track_id": "alternative_derivation",
+        "synthesis": "Reusable lemma candidate: euler_to_navier_strategy from alternative_derivation.",
+        "transfer_id": "d1bcb5fa67de579d1574de1436d9013b57fd1c82f1157e481b724ab7a396cce1",
+        "transferred_claim_ids": [
+          "euler_to_navier_strategy"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Euler precursor contributes transferable research strategy, not automatic proof",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use euler_to_navier_strategy to strengthen computational_exploration.",
+        "provenance": [
+          "openai_report",
+          "openai_euler_paper",
+          "openai_navier_stokes_paper",
+          "alternative_derivation",
+          "computational_exploration"
+        ],
+        "recipient_track_id": "computational_exploration",
+        "result": "transferred",
+        "source_track_id": "alternative_derivation",
+        "synthesis": "Reusable lemma candidate: euler_to_navier_strategy from alternative_derivation.",
+        "transfer_id": "72a69c99f14049c5cdc11bad5bde32aec9f96c990bbda57541181e7cdb8d1330",
+        "transferred_claim_ids": [
+          "euler_to_navier_strategy"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Euler precursor contributes transferable research strategy, not automatic proof",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use euler_to_navier_strategy to strengthen literature_research.",
+        "provenance": [
+          "openai_report",
+          "openai_euler_paper",
+          "clay_problem_statement",
+          "alternative_derivation",
+          "literature_research"
+        ],
+        "recipient_track_id": "literature_research",
+        "result": "transferred",
+        "source_track_id": "alternative_derivation",
+        "synthesis": "Reusable lemma candidate: euler_to_navier_strategy from alternative_derivation.",
+        "transfer_id": "ea8727415b1c6838b5ebeeb6f67968bff145fdfbae1fd69fe75b2bb484cbf3c4",
+        "transferred_claim_ids": [
+          "euler_to_navier_strategy"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Euler precursor contributes transferable research strategy, not automatic proof",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use euler_to_navier_strategy to strengthen formalization.",
+        "provenance": [
+          "openai_report",
+          "openai_euler_paper",
+          "openai_lean_repo",
+          "alternative_derivation",
+          "formalization"
+        ],
+        "recipient_track_id": "formalization",
+        "result": "transferred",
+        "source_track_id": "alternative_derivation",
+        "synthesis": "Reusable lemma candidate: euler_to_navier_strategy from alternative_derivation.",
+        "transfer_id": "531b402b9c0725c17ebc6dc3f6e3b5dff2bafc0c9a0a70b66a9c1b9e957bcd03",
+        "transferred_claim_ids": [
+          "euler_to_navier_strategy"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "Euler precursor contributes transferable research strategy, not automatic proof",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use euler_to_navier_strategy to strengthen adversarial_mathematical_verification.",
+        "provenance": [
+          "openai_report",
+          "openai_euler_paper",
+          "barrot_adversarial_track",
+          "alternative_derivation",
+          "adversarial_mathematical_verification"
+        ],
+        "recipient_track_id": "adversarial_mathematical_verification",
+        "result": "transferred",
+        "source_track_id": "alternative_derivation",
+        "synthesis": "Reusable lemma candidate: euler_to_navier_strategy from alternative_derivation.",
+        "transfer_id": "f09cb008e4e06ac40467be2f8a61f980ffbc2bab013cf8e29cb429fb0fef0b81",
+        "transferred_claim_ids": [
+          "euler_to_navier_strategy"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "formalization loci and theorem names loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use lean_formalization_scope to strengthen proof_construction.",
+        "provenance": [
+          "openai_lean_repo",
+          "formalization",
+          "proof_construction"
+        ],
+        "recipient_track_id": "proof_construction",
+        "result": "transferred",
+        "source_track_id": "formalization",
+        "synthesis": "Reusable lemma candidate: lean_formalization_scope from formalization.",
+        "transfer_id": "705cbb93dff93abdd21cee60227e1d9c255fc7e16a9b50a49eed87d8cbb03273",
+        "transferred_claim_ids": [
+          "lean_formalization_scope"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "formalization loci and theorem names loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use lean_formalization_scope to strengthen disproof/counterexample_search.",
+        "provenance": [
+          "openai_lean_repo",
+          "barrot_adversarial_track",
+          "formalization",
+          "disproof_counterexample_search"
+        ],
+        "recipient_track_id": "disproof_counterexample_search",
+        "result": "transferred",
+        "source_track_id": "formalization",
+        "synthesis": "Reusable lemma candidate: lean_formalization_scope from formalization.",
+        "transfer_id": "aca9c67a3dbb58c107f9e56e1112a246b7a07c92d9695e1dbb8db29f2f677608",
+        "transferred_claim_ids": [
+          "lean_formalization_scope"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "formalization loci and theorem names loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use lean_formalization_scope to strengthen computational_exploration.",
+        "provenance": [
+          "openai_lean_repo",
+          "openai_navier_stokes_paper",
+          "formalization",
+          "computational_exploration"
+        ],
+        "recipient_track_id": "computational_exploration",
+        "result": "transferred",
+        "source_track_id": "formalization",
+        "synthesis": "Reusable lemma candidate: lean_formalization_scope from formalization.",
+        "transfer_id": "b0bad1335d074b4666d77a15393c53c73705650410045cab6248a32b72cf72e8",
+        "transferred_claim_ids": [
+          "lean_formalization_scope"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "formalization loci and theorem names loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use lean_formalization_scope to strengthen literature_research.",
+        "provenance": [
+          "openai_lean_repo",
+          "clay_problem_statement",
+          "formalization",
+          "literature_research"
+        ],
+        "recipient_track_id": "literature_research",
+        "result": "transferred",
+        "source_track_id": "formalization",
+        "synthesis": "Reusable lemma candidate: lean_formalization_scope from formalization.",
+        "transfer_id": "580be7ac939d85f4e95de999d8263e4760ced28cc1a4a5560ed5f79e1e36dcf7",
+        "transferred_claim_ids": [
+          "lean_formalization_scope"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "formalization loci and theorem names loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use lean_formalization_scope to strengthen alternative_derivation.",
+        "provenance": [
+          "openai_lean_repo",
+          "openai_report",
+          "openai_euler_paper",
+          "formalization",
+          "alternative_derivation"
+        ],
+        "recipient_track_id": "alternative_derivation",
+        "result": "transferred",
+        "source_track_id": "formalization",
+        "synthesis": "Reusable lemma candidate: lean_formalization_scope from formalization.",
+        "transfer_id": "fcc1572ba157ae60a8f7a3445f1c302a1af05c13fc14188db965f8aaec08ebaf",
+        "transferred_claim_ids": [
+          "lean_formalization_scope"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "formalization loci and theorem names loaded",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use lean_formalization_scope to strengthen adversarial_mathematical_verification.",
+        "provenance": [
+          "openai_lean_repo",
+          "barrot_adversarial_track",
+          "formalization",
+          "adversarial_mathematical_verification"
+        ],
+        "recipient_track_id": "adversarial_mathematical_verification",
+        "result": "transferred",
+        "source_track_id": "formalization",
+        "synthesis": "Reusable lemma candidate: lean_formalization_scope from formalization.",
+        "transfer_id": "d6ff8e9449e415ada85201f5b953254af2ecba00706d8daea7321054933803a1",
+        "transferred_claim_ids": [
+          "lean_formalization_scope"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "challenge loaded: theorem statement alone is insufficient for acceptance",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "",
+        "provenance": [
+          "barrot_adversarial_track",
+          "openai_lean_repo",
+          "adversarial_mathematical_verification",
+          "proof_construction"
+        ],
+        "recipient_track_id": "proof_construction",
+        "result": "duplicate_skipped",
+        "source_track_id": "adversarial_mathematical_verification",
+        "synthesis": "Shared focus already present for claims: openai_breakdown_r3",
+        "transfer_id": "15302d3077d1b09c57270217a45ea5ad432d6286f4e65a0f8d104abf5ed0d668",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "challenge loaded: theorem statement alone is insufficient for acceptance",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "",
+        "provenance": [
+          "barrot_adversarial_track",
+          "adversarial_mathematical_verification",
+          "disproof_counterexample_search"
+        ],
+        "recipient_track_id": "disproof_counterexample_search",
+        "result": "duplicate_skipped",
+        "source_track_id": "adversarial_mathematical_verification",
+        "synthesis": "Shared focus already present for claims: smooth_force_requirement",
+        "transfer_id": "584a586c5cd55577c444632c26fb2c678ab7c1c4fd746bc2f48d25833ba97913",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "challenge loaded: theorem statement alone is insufficient for acceptance",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use openai_breakdown_r3 to strengthen computational_exploration.",
+        "provenance": [
+          "barrot_adversarial_track",
+          "openai_navier_stokes_paper",
+          "adversarial_mathematical_verification",
+          "computational_exploration"
+        ],
+        "recipient_track_id": "computational_exploration",
+        "result": "transferred",
+        "source_track_id": "adversarial_mathematical_verification",
+        "synthesis": "Reusable lemma candidate: openai_breakdown_r3 from adversarial_mathematical_verification.",
+        "transfer_id": "36707b1a8c82260d3ebd8a907517c3993ada0c7f4e69236a7fd83273bf03650a",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "challenge loaded: theorem statement alone is insufficient for acceptance",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use openai_breakdown_r3 to strengthen literature_research.",
+        "provenance": [
+          "barrot_adversarial_track",
+          "clay_problem_statement",
+          "adversarial_mathematical_verification",
+          "literature_research"
+        ],
+        "recipient_track_id": "literature_research",
+        "result": "transferred",
+        "source_track_id": "adversarial_mathematical_verification",
+        "synthesis": "Reusable lemma candidate: openai_breakdown_r3 from adversarial_mathematical_verification.",
+        "transfer_id": "4fa5806bb762658a04803d597d4832d861750478d88a6ad0481b2e4af4f312d9",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "challenge loaded: theorem statement alone is insufficient for acceptance",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use openai_breakdown_r3 to strengthen alternative_derivation.",
+        "provenance": [
+          "barrot_adversarial_track",
+          "openai_report",
+          "openai_euler_paper",
+          "adversarial_mathematical_verification",
+          "alternative_derivation"
+        ],
+        "recipient_track_id": "alternative_derivation",
+        "result": "transferred",
+        "source_track_id": "adversarial_mathematical_verification",
+        "synthesis": "Reusable lemma candidate: openai_breakdown_r3 from adversarial_mathematical_verification.",
+        "transfer_id": "0d483adc8acd1ecbeac6ff401e7bf054414c6059b9e0e544289cb62402016023",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      },
+      {
+        "contradiction_with_recipient": false,
+        "discovery": "challenge loaded: theorem statement alone is insufficient for acceptance",
+        "failed_approaches": [],
+        "independent_confirmation": false,
+        "new_hypothesis": "Use openai_breakdown_r3 to strengthen formalization.",
+        "provenance": [
+          "barrot_adversarial_track",
+          "openai_lean_repo",
+          "adversarial_mathematical_verification",
+          "formalization"
+        ],
+        "recipient_track_id": "formalization",
+        "result": "transferred",
+        "source_track_id": "adversarial_mathematical_verification",
+        "synthesis": "Reusable lemma candidate: openai_breakdown_r3 from adversarial_mathematical_verification.",
+        "transfer_id": "18721166844b5e9780b69e65ef57765c9a130e31ee456303e023fde4cd1a4e08",
+        "transferred_claim_ids": [
+          "openai_breakdown_r3"
+        ],
+        "validation_status": "TRACK_EXECUTION"
+      }
+    ],
+    "evidence": [
+      {
+        "claim_id": "clay_problem_r3",
+        "details": {
+          "ancestry": "clay_problem_statement"
+        },
+        "evidence_id": "ev_clay_equations",
+        "independence": "independent_literature_corroboration",
+        "kind": "definition",
+        "provenance": [
+          "clay_problem_statement"
+        ],
+        "source_id": "clay_problem_statement",
+        "source_location": "equations / alternatives",
+        "status": "SUPPORTED",
+        "summary": "Clay source defines the 3D incompressible Navier\u2013Stokes equations and global smoothness alternatives."
+      },
+      {
+        "claim_id": "openai_breakdown_r3",
+        "details": {
+          "ancestry": "openai_navier_stokes_lineage"
+        },
+        "evidence_id": "ev_r3_theorem",
+        "independence": "same_source_confirmation",
+        "kind": "theorem",
+        "provenance": [
+          "openai_lean_repo"
+        ],
+        "source_id": "openai_lean_repo",
+        "source_location": "README / theorem_1_1",
+        "status": "SUPPORTED",
+        "summary": "OpenAI README and NavierStokes/R3/Theorem.lean state theorem_1_1 for whole-space breakdown at every positive viscosity."
+      },
+      {
+        "claim_id": "openai_breakdown_periodic",
+        "details": {
+          "ancestry": "openai_navier_stokes_lineage"
+        },
+        "evidence_id": "ev_periodic_theorem",
+        "independence": "same_source_confirmation",
+        "kind": "theorem",
+        "provenance": [
+          "openai_lean_repo"
+        ],
+        "source_id": "openai_lean_repo",
+        "source_location": "ComparatorChallenges/NavierStokes.json",
+        "status": "SUPPORTED",
+        "summary": "Comparator challenge theorem names and README assert the periodic torus breakdown alternative."
+      },
+      {
+        "claim_id": "scaling_tau",
+        "details": {
+          "ancestry": "openai_navier_stokes_lineage"
+        },
+        "evidence_id": "ev_similarity_scaling",
+        "independence": "same_source_confirmation",
+        "kind": "estimate",
+        "provenance": [
+          "openai_navier_stokes_paper",
+          "openai_lean_repo"
+        ],
+        "source_id": "openai_navier_stokes_paper",
+        "source_location": "similarity scaling",
+        "status": "SUPPORTED",
+        "summary": "The structured source bundle records \u03c4 = 1 - t, radial scale ~ \u03c4^(1/2), and axial scale ~ \u03c4^(1/2-h), aligned with SimilarityHomogeneity formalization loci."
+      },
+      {
+        "claim_id": "mechanism_residual_cancellation",
+        "details": {
+          "ancestry": "openai_navier_stokes_lineage"
+        },
+        "evidence_id": "ev_residual_matching",
+        "independence": "formal_verification",
+        "kind": "formalization",
+        "provenance": [
+          "openai_lean_repo"
+        ],
+        "source_id": "openai_lean_repo",
+        "source_location": "NavierStokes/SlowResidualMatching.lean",
+        "status": "FORMALIZED",
+        "summary": "SlowResidualMatching formalizes finite slow residuals, radial stress primitives, omitted quadratic interactions, and controlled tail bounds."
+      },
+      {
+        "claim_id": "euler_precursor_blowup",
+        "details": {
+          "ancestry": "openai_euler_lineage"
+        },
+        "evidence_id": "ev_euler_precursor",
+        "independence": "same_source_confirmation",
+        "kind": "theorem",
+        "provenance": [
+          "openai_lean_repo",
+          "openai_euler_paper"
+        ],
+        "source_id": "openai_lean_repo",
+        "source_location": "README / Euler/Solution.lean",
+        "status": "SUPPORTED",
+        "summary": "OpenAI README and Euler/Solution.lean expose euler_breakdown_R3 as the precursor singularity theorem."
+      },
+      {
+        "claim_id": "independent_verification_requirement",
+        "details": {
+          "ancestry": "openai_navier_stokes_lineage"
+        },
+        "evidence_id": "ev_independence_policy",
+        "independence": "cross_model_confirmation",
+        "kind": "definition",
+        "provenance": [
+          "openai_report"
+        ],
+        "source_id": "openai_report",
+        "source_location": "verification policy",
+        "status": "SUPPORTED",
+        "summary": "The research policy rejects same-lineage confirmations as independent verification."
+      }
+    ],
+    "formal_verifications": [
+      {
+        "attribution": "",
+        "axiom_command": [],
+        "axiom_result": {},
+        "build_command": [
+          "lake",
+          "build"
+        ],
+        "build_result": {},
+        "command": [
+          "lake",
+          "build"
+        ],
+        "comparator_result": {},
+        "compiled": false,
+        "compiler_configuration": {},
+        "dependencies": [
+          "Mathlib",
+          "Lake",
+          "ComparatorChallenges/NavierStokes.json"
+        ],
+        "dependency_graph": {},
+        "dependency_manifest": {},
+        "execution_timestamp": 1793259756.8077884,
+        "external_checker_configuration": {},
+        "failed_attempts": [],
+        "formal_statement": "",
+        "independent_checker": {},
+        "independent_checker_result": {},
+        "independently_verified": false,
+        "lean_version": "",
+        "license": "",
+        "mathlib_version": "",
+        "primary_kernel_result": {},
+        "proof_path": [],
+        "provenance": [],
+        "repository": "https://github.com/openai/NavierStokesAndEuler",
+        "resource_requirements": {},
+        "returncode": null,
+        "root_theorem": "",
+        "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+        "source_files": [
+          "NavierStokes/R3/Theorem.lean",
+          "ComparatorChallenges/NavierStokes.json",
+          "NavierStokes/ComparatorSolution.lean"
+        ],
+        "source_location": "",
+        "source_repository": "https://github.com/openai/NavierStokesAndEuler",
+        "status": "IMPORTED",
+        "status_history": [
+          "IMPORTED"
+        ],
+        "stderr": "",
+        "stdout": "",
+        "system": "lean",
+        "theorem_metadata": [],
+        "theorem_names": [
+          "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+          "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
+        ],
+        "theorem_statement": "",
+        "timestamp": 1793259756.807787,
+        "toolchain_version": "leanprover/lean4:v4.34.0-rc2",
+        "verification_id": "lean_navier_stokes_bundle",
+        "verification_scripts": {}
+      }
+    ],
+    "problem": {
+      "acceptance_requirements": {
+        "formal_verification_required": true,
+        "independent_verification_required": true,
+        "resolved_adversarial_reviews_required": true
+      },
+      "domain": "mathematics.fluid_dynamics",
+      "primary_claims": [
+        "openai_breakdown_r3",
+        "openai_breakdown_periodic"
+      ],
+      "primary_question": "Does the claimed OpenAI construction establish a valid Clay-alternative breakdown result for 3D incompressible Navier\u2013Stokes?",
+      "problem_id": "navier_stokes_millennium_prize",
+      "related_problems": [
+        "euler_finite_time_singularity"
+      ],
+      "research_questions": [
+        {
+          "prompt": "What exactly does Clay require?",
+          "question_id": "clay_requirements"
+        },
+        {
+          "prompt": "Which Clay alternative does the construction establish?",
+          "question_id": "clay_alternative"
+        },
+        {
+          "prompt": "Why can velocity become unbounded while kinetic energy remains bounded?",
+          "question_id": "energy_vs_velocity"
+        }
+      ],
+      "title": "Navier\u2013Stokes Millennium Prize structured research bundle"
+    },
+    "sources": [
+      {
+        "author_or_organization": "Clay Mathematics Institute / Charles L. Fefferman",
+        "citations": [],
+        "definitions": [
+          "3D incompressible Navier\u2013Stokes equations",
+          "global smooth solution",
+          "finite / bounded kinetic energy"
+        ],
+        "equations": [
+          "\u2202_t u + (u \u00b7 \u2207)u + \u2207p = \u03bd\u0394u + f",
+          "\u2207 \u00b7 u = 0"
+        ],
+        "publication_date": "",
+        "relationships": [
+          {
+            "target": "navier_stokes_millennium_prize",
+            "type": "defines_problem"
+          }
+        ],
+        "sections": [
+          "Problem description",
+          "Alternatives (C) and (D)",
+          "Whole-space and periodic formulations"
+        ],
+        "source_commit": "",
+        "source_id": "clay_problem_statement",
+        "source_type": "official_problem_statement",
+        "theorem_names": [],
+        "title": "Navier\u2013Stokes Equations",
+        "url": "https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf",
+        "version": "official pdf"
+      },
+      {
+        "author_or_organization": "OpenAI",
+        "citations": [
+          "clay_problem_statement",
+          "openai_navier_stokes_paper",
+          "openai_lean_repo"
+        ],
+        "definitions": [
+          "claimed collapsing vortex mechanism",
+          "claimed oscillatory correction",
+          "claimed smooth force construction"
+        ],
+        "equations": [
+          "\u03c4 = 1 - t"
+        ],
+        "publication_date": "2026-09-08",
+        "relationships": [
+          {
+            "target": "openai_breakdown_r3",
+            "type": "announces"
+          },
+          {
+            "target": "openai_breakdown_periodic",
+            "type": "announces"
+          }
+        ],
+        "sections": [
+          "Navier\u2013Stokes summary",
+          "Euler precursor",
+          "Formalization overview"
+        ],
+        "source_commit": "",
+        "source_id": "openai_report",
+        "source_type": "research_report",
+        "theorem_names": [],
+        "title": "On the Navier\u2013Stokes Millennium Prize Problem",
+        "url": "https://openai.com/index/navier-stokes-solution/",
+        "version": "public report"
+      },
+      {
+        "author_or_organization": "OpenAI",
+        "citations": [
+          "clay_problem_statement",
+          "openai_lean_repo",
+          "literature_leray",
+          "literature_ckn",
+          "literature_ess",
+          "literature_tao",
+          "literature_buckmaster_vicol",
+          "literature_albritton_brue_colombo",
+          "literature_lifschitz_hameiri",
+          "literature_friedlander_vishik",
+          "literature_craik_criminale"
+        ],
+        "definitions": [
+          "collapsing vortex / self-similar structure",
+          "inward spiral",
+          "axial stretching",
+          "oscillatory correction",
+          "nonlinear momentum flux",
+          "residual cancellation"
+        ],
+        "equations": [
+          "\u03c4 = 1 - t",
+          "radial scale ~ \u03c4^(1/2)",
+          "axial scale ~ \u03c4^(1/2-h)"
+        ],
+        "publication_date": "2026-09-08",
+        "relationships": [
+          {
+            "target": "openai_lean_repo",
+            "type": "formalized_by"
+          }
+        ],
+        "sections": [
+          "whole-space theorem",
+          "periodic theorem",
+          "similarity scaling",
+          "residual matching"
+        ],
+        "source_commit": "",
+        "source_id": "openai_navier_stokes_paper",
+        "source_type": "mathematical_paper",
+        "theorem_names": [
+          "Theorem 1.1"
+        ],
+        "title": "Finite time blowup for Navier\u2013Stokes",
+        "url": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+        "version": "pdf manuscript"
+      },
+      {
+        "author_or_organization": "OpenAI",
+        "citations": [
+          "openai_navier_stokes_paper",
+          "openai_euler_paper"
+        ],
+        "definitions": [
+          "CandidateProperties",
+          "GlobalFiniteEnergySolution",
+          "Comparator challenge theorem names"
+        ],
+        "equations": [
+          "whole-space breakdownStatement",
+          "periodic breakdown theorem"
+        ],
+        "publication_date": "2026-09-10",
+        "relationships": [
+          {
+            "target": "openai_breakdown_r3",
+            "type": "formalizes"
+          },
+          {
+            "target": "openai_breakdown_periodic",
+            "type": "formalizes"
+          },
+          {
+            "target": "euler_precursor_blowup",
+            "type": "formalizes"
+          }
+        ],
+        "sections": [
+          "README whole-space statement",
+          "README periodic statement",
+          "Building the formalizations",
+          "Independent proof checking"
+        ],
+        "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+        "source_id": "openai_lean_repo",
+        "source_type": "lean_formalization_repository",
+        "theorem_names": [
+          "NavierStokesR3.theorem_1_1",
+          "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+          "NavierStokes.Comparator.navier_stokes_breakdown_periodic",
+          "Euler.euler_breakdown_R3"
+        ],
+        "title": "NavierStokesAndEuler",
+        "url": "https://github.com/openai/NavierStokesAndEuler",
+        "version": "leanprover/lean4:v4.34.0-rc2"
+      },
+      {
+        "author_or_organization": "OpenAI",
+        "citations": [
+          "openai_lean_repo"
+        ],
+        "definitions": [
+          "unforced incompressible Euler finite-time singularity"
+        ],
+        "equations": [],
+        "publication_date": "2026-09-08",
+        "relationships": [
+          {
+            "target": "openai_navier_stokes_paper",
+            "type": "precedes"
+          }
+        ],
+        "sections": [
+          "Euler singularity theorem",
+          "transition to Navier\u2013Stokes"
+        ],
+        "source_commit": "",
+        "source_id": "openai_euler_paper",
+        "source_type": "mathematical_paper",
+        "theorem_names": [
+          "euler_breakdown_R3"
+        ],
+        "title": "Finite time blowup for the Euler equation",
+        "url": "https://cdn.openai.com/pdf/315b36cd-ec98-4023-8342-93345194ece1/euler.pdf",
+        "version": "pdf manuscript"
+      },
+      {
+        "author_or_organization": "Leray",
+        "citations": [],
+        "definitions": [],
+        "equations": [],
+        "publication_date": "",
+        "relationships": [],
+        "sections": [
+          "classical weak-solution background"
+        ],
+        "source_commit": "",
+        "source_id": "literature_leray",
+        "source_type": "literature_reference_cluster",
+        "theorem_names": [],
+        "title": "Referenced prior work cluster: Leray",
+        "url": "",
+        "version": ""
+      },
+      {
+        "author_or_organization": "Caffarelli\u2013Kohn\u2013Nirenberg",
+        "citations": [],
+        "definitions": [],
+        "equations": [],
+        "publication_date": "",
+        "relationships": [],
+        "sections": [
+          "partial regularity background"
+        ],
+        "source_commit": "",
+        "source_id": "literature_ckn",
+        "source_type": "literature_reference_cluster",
+        "theorem_names": [],
+        "title": "Referenced prior work cluster: Caffarelli\u2013Kohn\u2013Nirenberg",
+        "url": "",
+        "version": ""
+      },
+      {
+        "author_or_organization": "Escauriaza\u2013Seregin\u2013\u0160ver\u00e1k",
+        "citations": [],
+        "definitions": [],
+        "equations": [],
+        "publication_date": "",
+        "relationships": [],
+        "sections": [
+          "regularity / blow-up criteria background"
+        ],
+        "source_commit": "",
+        "source_id": "literature_ess",
+        "source_type": "literature_reference_cluster",
+        "theorem_names": [],
+        "title": "Referenced prior work cluster: Escauriaza\u2013Seregin\u2013\u0160ver\u00e1k",
+        "url": "",
+        "version": ""
+      },
+      {
+        "author_or_organization": "Tao",
+        "citations": [],
+        "definitions": [],
+        "equations": [],
+        "publication_date": "",
+        "relationships": [],
+        "sections": [
+          "blow-up and critical-scaling background"
+        ],
+        "source_commit": "",
+        "source_id": "literature_tao",
+        "source_type": "literature_reference_cluster",
+        "theorem_names": [],
+        "title": "Referenced prior work cluster: Tao",
+        "url": "",
+        "version": ""
+      },
+      {
+        "author_or_organization": "Buckmaster/Vicol",
+        "citations": [],
+        "definitions": [],
+        "equations": [],
+        "publication_date": "",
+        "relationships": [],
+        "sections": [
+          "Euler / convex-integration context"
+        ],
+        "source_commit": "",
+        "source_id": "literature_buckmaster_vicol",
+        "source_type": "literature_reference_cluster",
+        "theorem_names": [],
+        "title": "Referenced prior work cluster: Buckmaster/Vicol",
+        "url": "",
+        "version": ""
+      },
+      {
+        "author_or_organization": "Albritton/Bru\u00e9/Colombo",
+        "citations": [],
+        "definitions": [],
+        "equations": [],
+        "publication_date": "",
+        "relationships": [],
+        "sections": [
+          "modern regularity background"
+        ],
+        "source_commit": "",
+        "source_id": "literature_albritton_brue_colombo",
+        "source_type": "literature_reference_cluster",
+        "theorem_names": [],
+        "title": "Referenced prior work cluster: Albritton/Bru\u00e9/Colombo",
+        "url": "",
+        "version": ""
+      },
+      {
+        "author_or_organization": "Lifschitz/Hameiri",
+        "citations": [],
+        "definitions": [],
+        "equations": [],
+        "publication_date": "",
+        "relationships": [],
+        "sections": [
+          "vortex / stretching context"
+        ],
+        "source_commit": "",
+        "source_id": "literature_lifschitz_hameiri",
+        "source_type": "literature_reference_cluster",
+        "theorem_names": [],
+        "title": "Referenced prior work cluster: Lifschitz/Hameiri",
+        "url": "",
+        "version": ""
+      },
+      {
+        "author_or_organization": "Friedlander/Vishik",
+        "citations": [],
+        "definitions": [],
+        "equations": [],
+        "publication_date": "",
+        "relationships": [],
+        "sections": [
+          "hydrodynamic-instability context"
+        ],
+        "source_commit": "",
+        "source_id": "literature_friedlander_vishik",
+        "source_type": "literature_reference_cluster",
+        "theorem_names": [],
+        "title": "Referenced prior work cluster: Friedlander/Vishik",
+        "url": "",
+        "version": ""
+      },
+      {
+        "author_or_organization": "Craik/Criminale",
+        "citations": [],
+        "definitions": [],
+        "equations": [],
+        "publication_date": "",
+        "relationships": [],
+        "sections": [
+          "spiral / strain mechanism context"
+        ],
+        "source_commit": "",
+        "source_id": "literature_craik_criminale",
+        "source_type": "literature_reference_cluster",
+        "theorem_names": [],
+        "title": "Referenced prior work cluster: Craik/Criminale",
+        "url": "",
+        "version": ""
+      }
+    ],
+    "tracks": [
+      {
+        "artifacts": [],
+        "assumptions": [
+          "openai theorem statements correspond to the manuscript claims"
+        ],
+        "checkpoints": [
+          {
+            "checkpoint_id": "c1bb3884ad075abe1c557e6b245eb3fa9eec1a81999a370a964418ad1241eda7",
+            "fingerprint": "5bab15409a4c52e6eeb5d50fe8fea2a56739568630070f5e513c6fd7baf51d5f",
+            "payload": {},
+            "state": "PLANNING",
+            "summary": "Prepared track proof_construction.",
+            "task_id": "proof_construction",
+            "timestamp": 1793259756.7800095
+          },
+          {
+            "checkpoint_id": "91f056a6ff22218ef719b0b54f2df2dc2b05c78ff865728df53a2e20b2fb575a",
+            "fingerprint": "6ee149da129d5ef0c538ba8e1621ce61be4763b8d04e4fe1347edc820ebb5157",
+            "payload": {},
+            "state": "EXECUTING",
+            "summary": "Executed track proof_construction.",
+            "task_id": "proof_construction",
+            "timestamp": 1793259756.7851703
+          }
+        ],
+        "confidence": 0.62,
+        "dependencies": [
+          "mechanism_residual_cancellation",
+          "bounded_energy_with_blowup"
+        ],
+        "evidence": [
+          "ev_r3_theorem"
+        ],
+        "execution_records": [
+          {
+            "duration_ms": 0,
+            "failure": null,
+            "input_fingerprint": "1457277b11d4ab1a4a8cb827190dd76ba06dbef7c78b60532f1d455f4c086dcf",
+            "operation": "research_track_execution",
+            "output_fingerprint": "6ee149da129d5ef0c538ba8e1621ce61be4763b8d04e4fe1347edc820ebb5157",
+            "provider": "",
+            "record_id": "365690d7047bc009c02bc483792a2e94d59e0af50dde3c5cbec5b3e7b3280654",
+            "request": {},
+            "response": {
+              "failed_approaches": [],
+              "intermediate_results": [
+                {
+                  "claim_id": "openai_breakdown_r3",
+                  "status": "SUPPORTED",
+                  "summary": "whole-space theorem statement loaded"
+                }
+              ],
+              "role": "proof_construction",
+              "unresolved_objections": [
+                "independent verification not yet satisfied"
+              ]
+            },
+            "retry_attempt": 1,
+            "state": "COMPLETE"
+          }
+        ],
+        "failed_approaches": [],
+        "focus_claims": [
+          "openai_breakdown_r3",
+          "openai_breakdown_periodic"
+        ],
+        "hypothesis": "The claimed whole-space and periodic breakdown results follow if the candidate construction, residual cancellation, and energy statements all hold simultaneously.",
+        "intermediate_results": [
+          {
+            "claim_id": "openai_breakdown_r3",
+            "status": "SUPPORTED",
+            "summary": "whole-space theorem statement loaded"
+          }
+        ],
+        "provenance": [
+          "openai_lean_repo"
+        ],
+        "role": "proof_construction",
+        "state": "TRACK_EXECUTION",
+        "strategy": "constructive PDE claim graph anchored in theorem statements and dependencies",
+        "track_id": "proof_construction",
+        "unresolved_objections": [
+          "independent verification not yet satisfied"
+        ],
+        "validation": {
+          "checks": [
+            {
+              "evidence_count": 1,
+              "has_hypothesis": true,
+              "has_strategy": true,
+              "track_id": "proof_construction"
+            }
+          ],
+          "failure": null,
+          "passed": true,
+          "summary": "track metadata complete"
+        }
+      },
+      {
+        "artifacts": [],
+        "assumptions": [],
+        "checkpoints": [
+          {
+            "checkpoint_id": "9be9cfa421b9a197614eceaa5bfdf0bc87c2563d6279244cb3d543c9c4674369",
+            "fingerprint": "61c5497a268a644d86d17e7e8a9d81e805496cdeb6f5f97d2ccc935ba8ca29bd",
+            "payload": {},
+            "state": "PLANNING",
+            "summary": "Prepared track disproof/counterexample_search.",
+            "task_id": "disproof_counterexample_search",
+            "timestamp": 1793259756.7801206
+          },
+          {
+            "checkpoint_id": "d5cbbd7ccb1d6a0a869b9b30960addcacea2480d57c6ebc6402b72f424e18386",
+            "fingerprint": "f29cca56da24cf1b7af3edc5d16bf44f4828a277ad233cc9327b7cb4ee73583f",
+            "payload": {},
+            "state": "EXECUTING",
+            "summary": "Executed track disproof/counterexample_search.",
+            "task_id": "disproof_counterexample_search",
+            "timestamp": 1793259756.7852764
+          }
+        ],
+        "confidence": 0.41,
+        "dependencies": [
+          "smooth_force_requirement",
+          "bounded_energy_with_blowup"
+        ],
+        "evidence": [],
+        "execution_records": [
+          {
+            "duration_ms": 0,
+            "failure": null,
+            "input_fingerprint": "5942641da7ba89ec43d1cd6fce5d66d2e4786eafe28b632946fd2ae0d1286221",
+            "operation": "research_track_execution",
+            "output_fingerprint": "f29cca56da24cf1b7af3edc5d16bf44f4828a277ad233cc9327b7cb4ee73583f",
+            "provider": "",
+            "record_id": "1e685effeb2b04043fa52a7ccdab5e80240b093bc8ed59739d2d468ef9fac122",
+            "request": {},
+            "response": {
+              "failed_approaches": [
+                "No contradiction loaded from current primary bundle"
+              ],
+              "intermediate_results": [
+                {
+                  "claim_id": "smooth_force_requirement",
+                  "status": "SUPPORTED",
+                  "summary": "forcing admissibility is a critical attack surface"
+                }
+              ],
+              "role": "disproof/counterexample_search",
+              "unresolved_objections": [
+                "Need independent forcing-class reproduction"
+              ]
+            },
+            "retry_attempt": 1,
+            "state": "COMPLETE"
+          }
+        ],
+        "failed_approaches": [
+          "No contradiction loaded from current primary bundle"
+        ],
+        "focus_claims": [
+          "smooth_force_requirement"
+        ],
+        "hypothesis": "A defect should appear if the forcing class, energy control, or singularity definition is inconsistent.",
+        "intermediate_results": [
+          {
+            "claim_id": "smooth_force_requirement",
+            "status": "SUPPORTED",
+            "summary": "forcing admissibility is a critical attack surface"
+          }
+        ],
+        "provenance": [
+          "barrot_adversarial_track"
+        ],
+        "role": "disproof/counterexample_search",
+        "state": "TRACK_EXECUTION",
+        "strategy": "search for missing assumptions, incorrect scaling, or contradiction with known regularity criteria",
+        "track_id": "disproof_counterexample_search",
+        "unresolved_objections": [
+          "Need independent forcing-class reproduction"
+        ],
+        "validation": {
+          "checks": [
+            {
+              "evidence_count": 0,
+              "has_hypothesis": true,
+              "has_strategy": true,
+              "track_id": "disproof_counterexample_search"
+            }
+          ],
+          "failure": null,
+          "passed": true,
+          "summary": "track metadata complete"
+        }
+      },
+      {
+        "artifacts": [],
+        "assumptions": [
+          "scaling bundle is internally consistent"
+        ],
+        "checkpoints": [
+          {
+            "checkpoint_id": "1c49e597355a1a905d3ee712953eca4ae4301be24431a46f64d0251713595879",
+            "fingerprint": "10564a16733097c3bdef549cf8b75e5a3decef660218dfdd19e8404a3f571beb",
+            "payload": {},
+            "state": "PLANNING",
+            "summary": "Prepared track computational_exploration.",
+            "task_id": "computational_exploration",
+            "timestamp": 1793259756.7801945
+          },
+          {
+            "checkpoint_id": "0ee29795575d9cabe6124c1a0c3aed7c2befd88c1572d5296671de4f67a4cc41",
+            "fingerprint": "76a467f31cfdc8a44a8b189fc4fea9ff35c2ef7e6694e02a032a1947b40fac7f",
+            "payload": {},
+            "state": "EXECUTING",
+            "summary": "Executed track computational_exploration.",
+            "task_id": "computational_exploration",
+            "timestamp": 1793259756.7853734
+          }
+        ],
+        "confidence": 0.53,
+        "dependencies": [
+          "scaling_tau",
+          "bounded_energy_with_blowup"
+        ],
+        "evidence": [
+          "ev_similarity_scaling"
+        ],
+        "execution_records": [
+          {
+            "duration_ms": 0,
+            "failure": null,
+            "input_fingerprint": "65ab8a35b389761ac00ffb8d97df33a0a0cb040cb68247862a039b6556bcac8e",
+            "operation": "research_track_execution",
+            "output_fingerprint": "76a467f31cfdc8a44a8b189fc4fea9ff35c2ef7e6694e02a032a1947b40fac7f",
+            "provider": "",
+            "record_id": "a87a34567b1f8b2cc9ea3a502ba6a40f58c019ba2de5d826dad1109173b33724",
+            "request": {},
+            "response": {
+              "failed_approaches": [],
+              "intermediate_results": [
+                {
+                  "claim_id": "bounded_energy_with_blowup",
+                  "status": "SUPPORTED",
+                  "summary": "energy-versus-velocity tradeoff captured as structured consequence"
+                }
+              ],
+              "role": "computational_exploration",
+              "unresolved_objections": [
+                "No independent numerical reproduction included"
+              ]
+            },
+            "retry_attempt": 1,
+            "state": "COMPLETE"
+          }
+        ],
+        "failed_approaches": [],
+        "focus_claims": [
+          "scaling_tau",
+          "bounded_energy_with_blowup"
+        ],
+        "hypothesis": "The anisotropic shrinking region can explain bounded L2 energy despite local blow-up only if the scaling ledger is internally coherent.",
+        "intermediate_results": [
+          {
+            "claim_id": "bounded_energy_with_blowup",
+            "status": "SUPPORTED",
+            "summary": "energy-versus-velocity tradeoff captured as structured consequence"
+          }
+        ],
+        "provenance": [
+          "openai_navier_stokes_paper"
+        ],
+        "role": "computational_exploration",
+        "state": "TRACK_EXECUTION",
+        "strategy": "treat scaling identities and energy-volume tradeoffs as reproducible numerical sanity checks",
+        "track_id": "computational_exploration",
+        "unresolved_objections": [
+          "No independent numerical reproduction included"
+        ],
+        "validation": {
+          "checks": [
+            {
+              "evidence_count": 1,
+              "has_hypothesis": true,
+              "has_strategy": true,
+              "track_id": "computational_exploration"
+            }
+          ],
+          "failure": null,
+          "passed": true,
+          "summary": "track metadata complete"
+        }
+      },
+      {
+        "artifacts": [],
+        "assumptions": [],
+        "checkpoints": [
+          {
+            "checkpoint_id": "63c1609715b602eace7ce344e6326494d28d6731a19f9f77ca394cb8e2021960",
+            "fingerprint": "fc58285119f95f4f2f9100a162a53326073ea3d4490399562617d090bc2aeb27",
+            "payload": {},
+            "state": "PLANNING",
+            "summary": "Prepared track literature_research.",
+            "task_id": "literature_research",
+            "timestamp": 1793259756.7802613
+          },
+          {
+            "checkpoint_id": "0463e1c77222e0612b9089ba26684ab05d0241f3e18563e9740b1e2d052356af",
+            "fingerprint": "1b9b5758e66273142bac581a41e18e81799a2d58745e18bd7d0be386104e0af0",
+            "payload": {},
+            "state": "EXECUTING",
+            "summary": "Executed track literature_research.",
+            "task_id": "literature_research",
+            "timestamp": 1793259756.7854671
+          }
+        ],
+        "confidence": 0.68,
+        "dependencies": [
+          "clay_problem_r3",
+          "clay_problem_periodic"
+        ],
+        "evidence": [
+          "ev_clay_equations"
+        ],
+        "execution_records": [
+          {
+            "duration_ms": 0,
+            "failure": null,
+            "input_fingerprint": "e747f4fd72beac295ceaa4282dbc216dad76e6582930961f3fc1667b5af61b42",
+            "operation": "research_track_execution",
+            "output_fingerprint": "1b9b5758e66273142bac581a41e18e81799a2d58745e18bd7d0be386104e0af0",
+            "provider": "",
+            "record_id": "5fccbf2a9210ea0561c3ff20a710ef459c1954101d9d2963db4fb8759335bd8b",
+            "request": {},
+            "response": {
+              "failed_approaches": [],
+              "intermediate_results": [
+                {
+                  "claim_id": "clay_problem_r3",
+                  "status": "SUPPORTED",
+                  "summary": "Clay alternatives C and D loaded into source graph"
+                }
+              ],
+              "role": "literature_research",
+              "unresolved_objections": [
+                "Individual cited papers not yet expanded into per-theorem source cards"
+              ]
+            },
+            "retry_attempt": 1,
+            "state": "COMPLETE"
+          }
+        ],
+        "failed_approaches": [],
+        "focus_claims": [
+          "clay_problem_r3",
+          "clay_problem_periodic"
+        ],
+        "hypothesis": "Prior regularity and blow-up literature defines the strongest external challenge surface for the claim.",
+        "intermediate_results": [
+          {
+            "claim_id": "clay_problem_r3",
+            "status": "SUPPORTED",
+            "summary": "Clay alternatives C and D loaded into source graph"
+          }
+        ],
+        "provenance": [
+          "clay_problem_statement"
+        ],
+        "role": "literature_research",
+        "state": "TRACK_EXECUTION",
+        "strategy": "map theorem claims onto Clay alternatives and cited prior-work clusters",
+        "track_id": "literature_research",
+        "unresolved_objections": [
+          "Individual cited papers not yet expanded into per-theorem source cards"
+        ],
+        "validation": {
+          "checks": [
+            {
+              "evidence_count": 1,
+              "has_hypothesis": true,
+              "has_strategy": true,
+              "track_id": "literature_research"
+            }
+          ],
+          "failure": null,
+          "passed": true,
+          "summary": "track metadata complete"
+        }
+      },
+      {
+        "artifacts": [],
+        "assumptions": [
+          "Research ladder can transfer mechanism but not conclusion"
+        ],
+        "checkpoints": [
+          {
+            "checkpoint_id": "36d6095da82c704282aafecf6c89ebc3ab79862caae6a03498e8821d929fc31e",
+            "fingerprint": "7419a5b5164152493319032d72c6d2e492fed2e73e36f3a611ff100a68124208",
+            "payload": {},
+            "state": "PLANNING",
+            "summary": "Prepared track alternative_derivation.",
+            "task_id": "alternative_derivation",
+            "timestamp": 1793259756.7803328
+          },
+          {
+            "checkpoint_id": "05be37b2ac741956db9b0e5e24ca1c0a4d44006d70f5d285b217bbfddb37be27",
+            "fingerprint": "7d10559e855a7a12860eadad86b624df18771fa2eec5e4266a7f2280eb235851",
+            "payload": {},
+            "state": "EXECUTING",
+            "summary": "Executed track alternative_derivation.",
+            "task_id": "alternative_derivation",
+            "timestamp": 1793259756.7855644
+          }
+        ],
+        "confidence": 0.56,
+        "dependencies": [
+          "euler_precursor_blowup",
+          "euler_to_navier_strategy"
+        ],
+        "evidence": [
+          "ev_euler_precursor"
+        ],
+        "execution_records": [
+          {
+            "duration_ms": 0,
+            "failure": null,
+            "input_fingerprint": "c6d9c0d537e722fdd0b30e8ba6159119b4d97d26675c4e737a02dcbed9ef3e93",
+            "operation": "research_track_execution",
+            "output_fingerprint": "7d10559e855a7a12860eadad86b624df18771fa2eec5e4266a7f2280eb235851",
+            "provider": "",
+            "record_id": "855255427b993d5acf5ac8687c940aaeea89b4bdf3f58038cb997bb6897b5b8e",
+            "request": {},
+            "response": {
+              "failed_approaches": [],
+              "intermediate_results": [
+                {
+                  "claim_id": "euler_to_navier_strategy",
+                  "status": "SUPPORTED",
+                  "summary": "Euler precursor contributes transferable research strategy, not automatic proof"
+                }
+              ],
+              "role": "alternative_derivation",
+              "unresolved_objections": [
+                "Transfer from Euler to Navier\u2013Stokes requires explicit justification claim-by-claim"
+              ]
+            },
+            "retry_attempt": 1,
+            "state": "COMPLETE"
+          }
+        ],
+        "failed_approaches": [],
+        "focus_claims": [
+          "euler_precursor_blowup",
+          "euler_to_navier_strategy"
+        ],
+        "hypothesis": "Useful singularity mechanisms can transfer from Euler to Navier\u2013Stokes without assuming the main claim is already solved.",
+        "intermediate_results": [
+          {
+            "claim_id": "euler_to_navier_strategy",
+            "status": "SUPPORTED",
+            "summary": "Euler precursor contributes transferable research strategy, not automatic proof"
+          }
+        ],
+        "provenance": [
+          "openai_report",
+          "openai_euler_paper"
+        ],
+        "role": "alternative_derivation",
+        "state": "TRACK_EXECUTION",
+        "strategy": "use the Euler precursor as the research-ladder starting point and transfer only mechanism-level insights",
+        "track_id": "alternative_derivation",
+        "unresolved_objections": [
+          "Transfer from Euler to Navier\u2013Stokes requires explicit justification claim-by-claim"
+        ],
+        "validation": {
+          "checks": [
+            {
+              "evidence_count": 1,
+              "has_hypothesis": true,
+              "has_strategy": true,
+              "track_id": "alternative_derivation"
+            }
+          ],
+          "failure": null,
+          "passed": true,
+          "summary": "track metadata complete"
+        }
+      },
+      {
+        "artifacts": [],
+        "assumptions": [
+          "Lean toolchain and comparator config are correctly identified"
+        ],
+        "checkpoints": [
+          {
+            "checkpoint_id": "c397b657d13e3dc128f3d699ba134220868af593ae3d1723c20b020b7c4a40e4",
+            "fingerprint": "5ce00a78ff833c060faa4b8de81054392a2ecbfbd8f6e899cdc33e9d8d31e84c",
+            "payload": {},
+            "state": "PLANNING",
+            "summary": "Prepared track formalization.",
+            "task_id": "formalization",
+            "timestamp": 1793259756.780398
+          },
+          {
+            "checkpoint_id": "c48530d9c360e5a60c6583d455784e0747a642fdc5288403e6348e0d55300612",
+            "fingerprint": "9864bbac9ba75904805b443610bb47d255fb878c6680bcff38f2e380d32df0b1",
+            "payload": {},
+            "state": "EXECUTING",
+            "summary": "Executed track formalization.",
+            "task_id": "formalization",
+            "timestamp": 1793259756.7857056
+          }
+        ],
+        "confidence": 0.72,
+        "dependencies": [
+          "lean_formalization_scope"
+        ],
+        "evidence": [
+          "ev_residual_matching"
+        ],
+        "execution_records": [
+          {
+            "duration_ms": 0,
+            "failure": null,
+            "input_fingerprint": "65e2db10efaeb82829f0e0055c795f456d60bb21eb1abb9781428350604e9b92",
+            "operation": "research_track_execution",
+            "output_fingerprint": "9864bbac9ba75904805b443610bb47d255fb878c6680bcff38f2e380d32df0b1",
+            "provider": "",
+            "record_id": "9cd0a657122de0cc62d69734392182840454ef2309dcf314fdd02087933f47a1",
+            "request": {},
+            "response": {
+              "failed_approaches": [],
+              "intermediate_results": [
+                {
+                  "claim_id": "lean_formalization_scope",
+                  "status": "FORMALIZED",
+                  "summary": "formalization loci and theorem names loaded"
+                }
+              ],
+              "role": "formalization",
+              "unresolved_objections": [
+                "No local Lean build was run in this repository"
+              ]
+            },
+            "retry_attempt": 1,
+            "state": "COMPLETE"
+          }
+        ],
+        "failed_approaches": [],
+        "focus_claims": [
+          "lean_formalization_scope"
+        ],
+        "hypothesis": "The formal repository can certify exact theorem statements and comparator bridges, but only after controlled compilation and version capture.",
+        "intermediate_results": [
+          {
+            "claim_id": "lean_formalization_scope",
+            "status": "FORMALIZED",
+            "summary": "formalization loci and theorem names loaded"
+          }
+        ],
+        "provenance": [
+          "openai_lean_repo"
+        ],
+        "role": "formalization",
+        "state": "TRACK_EXECUTION",
+        "strategy": "treat Lean theorem/file coverage as distinct evidence from mathematical acceptance",
+        "track_id": "formalization",
+        "unresolved_objections": [
+          "No local Lean build was run in this repository"
+        ],
+        "validation": {
+          "checks": [
+            {
+              "evidence_count": 1,
+              "has_hypothesis": true,
+              "has_strategy": true,
+              "track_id": "formalization"
+            }
+          ],
+          "failure": null,
+          "passed": true,
+          "summary": "track metadata complete"
+        }
+      },
+      {
+        "artifacts": [],
+        "assumptions": [],
+        "checkpoints": [
+          {
+            "checkpoint_id": "c335f905eca85ddfe0d99ed9e52260b66c3097d8059d5c9ee8517f2af1a4f22a",
+            "fingerprint": "0ebbae2175783cc0da6cc74d3ac1b5e4370500a700d7f897cb7a49ef555a8093",
+            "payload": {},
+            "state": "PLANNING",
+            "summary": "Prepared track adversarial_mathematical_verification.",
+            "task_id": "adversarial_mathematical_verification",
+            "timestamp": 1793259756.7804644
+          },
+          {
+            "checkpoint_id": "2eea4e0d6d9f9e120b0db86a7c2a37bde8e0f72a2be60081fd032c1decd6e630",
+            "fingerprint": "8bba0f6a435c47e5d239cb59bac5d67b68c2dd91f25687f571580a2a05b6a9c0",
+            "payload": {},
+            "state": "EXECUTING",
+            "summary": "Executed track adversarial_mathematical_verification.",
+            "task_id": "adversarial_mathematical_verification",
+            "timestamp": 1793259756.7858036
+          }
+        ],
+        "confidence": 0.49,
+        "dependencies": [
+          "openai_breakdown_r3",
+          "mechanism_residual_cancellation",
+          "smooth_force_requirement"
+        ],
+        "evidence": [],
+        "execution_records": [
+          {
+            "duration_ms": 0,
+            "failure": null,
+            "input_fingerprint": "515abc63bdfa2257277fc97d01585abff7e1376f5b31dae1ee3ca33c2be20c93",
+            "operation": "research_track_execution",
+            "output_fingerprint": "8bba0f6a435c47e5d239cb59bac5d67b68c2dd91f25687f571580a2a05b6a9c0",
+            "provider": "",
+            "record_id": "8c3e8915bec7c90a50855c1558f75d69e3900f550db6dfb54e5f5c7a89c2aaab",
+            "request": {},
+            "response": {
+              "failed_approaches": [],
+              "intermediate_results": [
+                {
+                  "claim_id": "openai_breakdown_r3",
+                  "status": "SUPPORTED",
+                  "summary": "challenge loaded: theorem statement alone is insufficient for acceptance"
+                }
+              ],
+              "role": "adversarial_mathematical_verification",
+              "unresolved_objections": [
+                "Need independent reproduction of the force regularity and implication chain"
+              ]
+            },
+            "retry_attempt": 1,
+            "state": "COMPLETE"
+          }
+        ],
+        "failed_approaches": [],
+        "focus_claims": [
+          "openai_breakdown_r3",
+          "mechanism_residual_cancellation",
+          "smooth_force_requirement"
+        ],
+        "hypothesis": "A valid challenge should block acceptance until resolved, even if the main theorem statements are formalized.",
+        "intermediate_results": [
+          {
+            "claim_id": "openai_breakdown_r3",
+            "status": "SUPPORTED",
+            "summary": "challenge loaded: theorem statement alone is insufficient for acceptance"
+          }
+        ],
+        "provenance": [
+          "barrot_adversarial_track"
+        ],
+        "role": "adversarial_mathematical_verification",
+        "state": "TRACK_EXECUTION",
+        "strategy": "independently challenge assumptions, scaling, force regularity, and whether formalization actually covers the manuscript implication chain",
+        "track_id": "adversarial_mathematical_verification",
+        "unresolved_objections": [
+          "Need independent reproduction of the force regularity and implication chain"
+        ],
+        "validation": {
+          "checks": [
+            {
+              "evidence_count": 0,
+              "has_hypothesis": true,
+              "has_strategy": true,
+              "track_id": "adversarial_mathematical_verification"
+            }
+          ],
+          "failure": null,
+          "passed": true,
+          "summary": "track metadata complete"
+        }
+      }
+    ],
+    "unresolved_questions": [
+      "No compiled formal proof was recorded.",
+      "At least one adversarial mathematical objection remains unresolved.",
+      "Independent verification remains incomplete or non-independent for primary claim openai_breakdown_r3.",
+      "Independent verification remains incomplete or non-independent for primary claim openai_breakdown_periodic."
+    ]
+  },
+  "failures": null,
+  "final_state": "NO_SOLUTION_CLAIM",
+  "problem_id": "navier_stokes_millennium_prize",
+  "remaining_blockers": [
+    "No compiled formal proof was recorded.",
+    "At least one adversarial mathematical objection remains unresolved.",
+    "Independent verification remains incomplete or non-independent for primary claim openai_breakdown_r3.",
+    "Independent verification remains incomplete or non-independent for primary claim openai_breakdown_periodic."
+  ],
+  "results": {
+    "acceptance_gate_passed": false,
+    "problem_resolution_status": "UNRESOLVED",
+    "status": "no_solution_claim"
+  },
+  "work_bundle": "scientific_discovery"
+}
