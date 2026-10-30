@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-2026-10-30T133500Z-CLASSIFY-THEFT-RESIDUAL-SWEEP-AND-CHAIN-SPECIFIC-FREEZE",
+  "captured_at_utc": "2026-10-30T13:35:00Z",
+  "title": "Separate theft drains, residual sweeps, internal exchange consolidation and chain-specific issuer freezes",
+  "status": "ADOPTED_FOR_RESEARCH_SCHEMA",
+  "decisions": [
+    {
+      "field_family": "asset_movement_classification",
+      "required_fields": [
+        "chain",
+        "asset",
+        "issuer",
+        "source_account",
+        "destination_account",
+        "amount",
+        "transaction_hash",
+        "ledger_or_block",
+        "timestamp_utc",
+        "movement_class",
+        "source_label",
+        "destination_label",
+        "label_confidence",
+        "operator_authorization_status"
+      ],
+      "rule": "Classify theft drain, residual sweep, internal consolidation, recovery transfer, issuer freeze and ordinary customer flow separately. Never combine a successful transfer to an old exchange reserve wallet with a transfer to an attacker receiver."
+    },
+    {
+      "field_family": "wallet_identity_confidence",
+      "required_fields": [
+        "provider_label",
+        "account_activation_date",
+        "activation_source",
+        "historical_balance",
+        "inbound_counterparties",
+        "outbound_counterparties",
+        "proof_of_reserves_crosswalk",
+        "operator_authorization"
+      ],
+      "rule": "Provider labels and account clustering support wallet attribution but do not prove legal ownership or the identity of the operator signing a transaction."
+    },
+    {
+      "field_family": "issuer_freeze_scope",
+      "required_fields": [
+        "token",
+        "issuer",
+        "chain",
+        "contract_or_issuer_account",
+        "freeze_transaction_hash",
+        "freeze_amount",
+        "freeze_time_utc",
+        "affected_holder"
+      ],
+      "rule": "Track freeze actions by chain and token issuer. An Ethereum ERC-20 freeze is not evidence of an XRPL-issued token freeze. Native XRP cannot be issuer-frozen."
+    },
+    {
+      "field_family": "incident_cutoff",
+      "required_fields": [
+        "receiver_address",
+        "observed_balance",
+        "last_checked_at_utc",
+        "outgoing_transactions_after_theft",
+        "data_provider",
+        "coverage_limit"
+      ],
+      "rule": "Every stolen-asset balance observation must include a precise cutoff; absence of observed movement is not proof of no later movement."
+    }
+  ],
+  "feature_admission": "NONE. Incident flows are event-study/context data only until synchronized venue liquidity and execution effects are measured.",
+  "forecast_status": "NOT_ISSUED"
+}
