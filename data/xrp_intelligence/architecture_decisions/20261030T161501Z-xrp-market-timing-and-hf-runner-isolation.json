@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-20261030T161501Z-MARKET-TIMING-AND-HF-RUNNER-ISOLATION",
+  "captured_at_utc": "2026-10-30T16:15:01Z",
+  "status": "ADOPTED_FOR_RESEARCH_AND_SECURITY_REVIEW",
+  "decisions": [
+    {
+      "area": "derivatives_provider_reconciliation",
+      "rule": "Preserve each provider's timestamp, exchange set, funding weighting and liquidation coverage. Do not average Liqwall and TradRadar open interest or liquidation totals."
+    },
+    {
+      "area": "etf_event_timing",
+      "rule": "Store the session-close cutoff for issuer holdings flows. October 29 ETF flow precedes the first Binance XRPL drain at 20:04 UTC and must not be labelled a post-incident response."
+    },
+    {
+      "area": "binance_in_kind_replenishment",
+      "rule": "Treat the approximately $1.34B aggregate market/OTC acquisition as a possible demand channel only. Require XRP-specific quantities, execution venues, timestamps and prices before estimating XRP demand."
+    },
+    {
+      "area": "proof_of_reserves_crosswalk",
+      "rule": "Keep Bitquery provider address labels separate from direct official Binance PoR file membership. Do not calculate an XRP reserve ratio without the raw official address snapshot and corresponding XRP customer liabilities."
+    },
+    {
+      "area": "remote_code_secret_isolation",
+      "rule": "Any workflow executing remote model code must not expose upload credentials later on the same runner. Use a separate clean upload job/runner, artifact boundary, no GitHub token permissions in the upload job, validated inputs and symlink rejection."
+    },
+    {
+      "area": "workflow_input_safety",
+      "rule": "Never interpolate workflow_dispatch inputs directly into shell source. Pass through environment variables, enforce a strict allowlist, and quote all path/repository arguments."
+    },
+    {
+      "area": "supply_chain_residual",
+      "rule": "Pin action references to immutable SHAs and lock transitive Python dependencies with hashes before treating the workflow as fully supply-chain hardened. Artifact transfer and real upload remain untested."
+    },
+    {
+      "area": "scheduled_external_actions",
+      "rule": "Kaggle competition submission must be disabled by default and require explicit per-run opt-in. Current main's daily workflow has a wrong script path, but the implementation auto-submits if invoked."
+    },
+    {
+      "area": "paper_trading_state",
+      "rule": "Do not dispatch or reset a persisted open paper position with null product identity. Preserve the state until its product is proven from durable records."
+    },
+    {
+      "area": "main_branch_mutation",
+      "rule": "Cross-analysis and merge-queue safety PRs remain unmerged. Do not merge, update branches or dispatch mutation-capable workflows without approval."
+    },
+    {
+      "area": "prediction_admission",
+      "rule": "No new market feature is admitted from asynchronous provider snapshots. Require point-in-time alignment, coverage metadata, leakage controls and walk-forward validation; forecast remains NOT_ISSUED."
+    }
+  ],
+  "prior_evidence_preserved": true
+}
