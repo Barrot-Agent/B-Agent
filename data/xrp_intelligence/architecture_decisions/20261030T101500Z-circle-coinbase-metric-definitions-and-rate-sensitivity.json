@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "XRP-ADR-20261030T101500Z-CIRCLE-COINBASE-METRIC-DEFINITIONS",
+  "captured_at_utc": "2026-10-30T10:15:00Z",
+  "title": "Separate Circle platform share, Coinbase eligible-product average balances and Coinbase AOP custody balances",
+  "status": "EXECUTED_PRIMARY_SOURCE_CORRECTION; MARKET_FEATURES_NOT_ADMITTED",
+  "decisions": [
+    "Supersede the mislabeled MOBS-CIRCLE-Q2-USDC-RESERVE-PLATFORM-20261030 with a corrected Circle-specific observation; preserve the prior graph and snapshot immutably.",
+    "Record Circle Q2 USDC-on-platform as USD12.442B end balance and 19.5% daily weighted-average share of circulation on Circle's own platform, including Circle Mint, corporate-held USDC and Circle-provided non-custodial wallets.",
+    "Record Coinbase Q3 average USD22B USDC held in eligible Coinbase products as a separate company-defined metric; the earnings deck says it was approximately 30% of average USDC market capitalization and up 49% year over year.",
+    "Record Coinbase Q3 AOP USDC USD8.616B at September 30 as a separate point-in-time custody/digital-wallet measure. Do not reconcile it directly to the USD22B average eligible-product metric without aligning definitions and time bases.",
+    "Record Circle Q2 USD655.3M H1 and USD324.6M Q2 distribution costs under Coinbase agreements. Do not infer Coinbase's numeric share of Circle's average USDC on-platform balances from Circle's 19.5% Circle-platform metric.",
+    "Retain Coinbase Q3 stablecoin revenue USD306.905M, down approximately 5.4% YoY, with higher balances contributing USD84.6M and lower rates reducing revenue USD52.8M.",
+    "Keep Circle/SBI JV and SBI equity investment as confirmed direct Circle-SBI relationships; do not infer Circle-Ripple partnership or XRP demand.",
+    "Do not admit these company metrics as XRP prediction features until synchronized, independently sourced, causally mapped and shown to add out-of-sample value."
+  ],
+  "rationale": [
+    "Circle Q2 2026 10-Q lines 1578-1580 explicitly define Circle's own USDC-on-platform measure and its reserve-income use.",
+    "Coinbase Q3 2026 earnings deck defines average USDC held in Coinbase products as corporate balances plus customer balances in eligible Coinbase products.",
+    "Coinbase Q3 2026 10-Q separately defines Assets on Platform and reports USD8.616B USDC at September 30.",
+    "Circle Q2 2026 10-Q separately reports distribution costs under Coinbase agreements and states Coinbase's share of average USDC on-platform balances decreased, without assigning it the 19.5% Circle metric."
+  ],
+  "feature_admission": {
+    "circle_q2_usdc_on_platform": "CONTEXT_ONLY_CIRCLE_PLATFORM",
+    "coinbase_q3_average_usdc_products": "CONTEXT_ONLY_COINBASE_ELIGIBLE_PRODUCTS",
+    "coinbase_q3_aop_usdc": "CONTEXT_ONLY_POINT_IN_TIME_AOP",
+    "circle_coinbase_distribution_costs": "CONTEXT_ONLY_DISTRIBUTION_ECONOMICS",
+    "xrp_prediction_feature_admission": false
+  },
+  "source_ids": [
+    "SRC-COINBASE-Q3-2026-10Q-SEC-20261030",
+    "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030",
+    "SRC-COINBASE-Q3-2026-IR-RELEASE-USDC-20261030",
+    "SRC-CIRCLE-Q2-2026-PLATFORM-METRIC-ATTRIBUTION-CORRECTION-20261030",
+    "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030",
+    "SRC-SBI-CIRCLE-JV-50-50-PRESENTATION-RECHECK-20261030",
+    "SRC-CIRCLE-USDC-XRPL-NATIVE-RECHECK-20261030",
+    "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030",
+    "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+    "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624",
+    "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501"
+  ],
+  "next_action": "On Circle's November 4 Q3 results, extract the same Circle-defined USDC-on-platform, reserve-return, Coinbase distribution-cost and Circle SBI JV metrics. Reconcile Coinbase Q3 eligible-product averages and AOP only after matching definitions and time bases.",
+  "forecast_status": "NOT_ISSUED"
+}
