@@ -184,6 +184,31 @@ def test_controller_authors_and_returns_ready_bundle():
     assert result.attempts[0]["kind"] == "draft"
 
 
+def test_controller_uses_explicit_output_budget_for_draft_and_revision():
+    import json
+
+    original = sample_bundle()
+    original["tasks"][0]["tests"] = []
+    revised = copy.deepcopy(original)
+    revised["revision"] = 2
+    revised["parent_fingerprint"] = bundle_fingerprint(original)
+    revised["tasks"][0]["tests"] = ["python -m pytest -q tests/test_bundle_engineering.py"]
+    budgets = []
+
+    class FakeBrain:
+        def think(self, prompt, system=None, max_output_tokens=None):
+            budgets.append(max_output_tokens)
+            return json.dumps(original if len(budgets) == 1 else revised)
+
+    result = BundleEngineeringController(FakeBrain(), max_revision_attempts=1).run(
+        objective=original["objective"],
+        constraints=original["constraints"],
+    )
+
+    assert result.status == "READY_FOR_EXECUTION_REVIEW"
+    assert budgets == [4096, 4096]
+
+
 def test_controller_revises_a_deficient_bundle_before_ready():
     import json
 
