@@ -51,6 +51,7 @@ jobs:
             tests/test_repository_repair.py \
             tests/test_v3_scripts.py \
             tests/test_signal_accuracy_fail_closed.py \
+            tests/test_knowledge_signal_cycle_branch_pr_safety.py \
             tests/test_barrot_agent_script.py \
             tests/test_external_deploys_require_confirmation.py \
             tests/test_deploy_databricks.py \
