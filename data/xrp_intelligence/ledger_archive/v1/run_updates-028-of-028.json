@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 27,
+  "chunk_count": 28,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:28:30Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:28:30Z",
+      "update_type": "PREINCIDENT_EXCHANGE_BALANCE_BASELINE_AND_BINANCE_XRP_POR_SECONDARY_CORROBORATION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "c7dc0bb9376f9ea5ae185cd9d816819c070e38bb",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-PREINCIDENT-20261029T0800Z",
+        "SRC-TOKENPOST-BINANCE-XRP-POR-10077-20261029T2250EDT",
+        "SRC-GATENEWS-BINANCE-XRP-POR-10077-20261030T0231Z",
+        "SRC-TOKENPOST-BINANCE-XRP-RESERVES-SEP30-20261002"
+      ],
+      "findings": {
+        "xrp_insights_preincident_snapshot": {
+          "snapshot_utc": "2026-10-29T08:00:00Z",
+          "tracked_xrp": 22580000000,
+          "wallets": 701,
+          "exchanges": 24,
+          "same_wallet_7d_change_xrp": -17400000,
+          "same_wallet_7d_change_percent": -0.08,
+          "same_wallet_30d_change_xrp": 35800000,
+          "same_wallet_30d_change_percent": 0.18,
+          "cold_labeled_share_percent": 48,
+          "hot_labeled_share_percent": 14,
+          "unlabeled_storage_share_percent": 38.4,
+          "newly_tracked_wallets": 22,
+          "newly_tracked_xrp": 2210000000,
+          "binance_xrp": 2800000000,
+          "binance_peg_xrpbf2_reserve_xrp": 327400000,
+          "binance_us_xrp_included": 14300000,
+          "coinbase_xrp": 5840000000,
+          "coinbase_cbxrp_reserve_xrp": 151400000,
+          "coinbase_cold_labeled_xrp_approx": 5790000000,
+          "bitbank_xrp": 575400000,
+          "sbi_vc_trade_xrp": 60900000,
+          "upbit_xrp": 6420000000,
+          "bithumb_xrp": 1850000000,
+          "coinone_xrp": 317700000,
+          "tracked_non_customer_reserves_and_funds_xrp": 488400000,
+          "methodology": "Daily rippled account_info on validated ledger; XRPSCAN public labels; same-wallet comparisons exclude newly tracked wallets.",
+          "interpretation": "PRE-INCIDENT BASELINE; NOT TRADABLE FLOAT; NOT BENEFICIAL OWNERSHIP"
+        },
+        "binance_xrp_por": {
+          "october_1_secondary_reported_ratio_percent": 100.77,
+          "secondary_sources": [
+            "TokenPost",
+            "Gate News"
+          ],
+          "coinlaw_summary_omission": "CoinLaw's displayed summary lists BTC/ETH/USDT/USDC only; this is an incomplete summary, not evidence XRP was absent.",
+          "official_raw_xrp_balance_payload": "NOT_INDEPENDENTLY_RETRIEVED",
+          "five_incident_wallet_official_por_membership": "UNKNOWN",
+          "conditional_risk": "If the five source wallets were included in October 1 XRP PoR and the 233.46M XRP was not replenished, a 0.77% reported reserve cushion could be materially insufficient. This is a conditional stress scenario, not an observed post-hack reserve ratio."
+        },
+        "trackwhale_vs_samewallet": {
+          "trackwhale_7d_large_transfer_netflow_xrp": -210090000,
+          "xrp_insights_same_wallet_7d_balance_change_xrp": -17400000,
+          "reconciliation": "Different wallet universes and methods; TrackWhale includes incident transfer and only four large outflows, while XRP Insights compares 701 same wallets. The 17.4M series is a pre-incident baseline; neither is a direct customer-withdrawal or capital-flow measure."
+        },
+        "prior_exact_head_validation": {
+          "head_sha": "c7dc0bb9376f9ea5ae185cd9d816819c070e38bb",
+          "validator_push_run_id": 41026402233,
+          "validator_pr_run_id": 41026409290,
+          "tests_passed": 18,
+          "tests_failed": 0,
+          "gate_run_id": 41026409516,
+          "gate_status": "PASS_MERGE_DISABLED"
+        }
+      },
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}
