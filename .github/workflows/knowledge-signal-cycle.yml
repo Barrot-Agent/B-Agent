@@ -5,6 +5,11 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
+
+concurrency:
+  group: knowledge-signal-cycle
+  cancel-in-progress: false
 
 jobs:
   cycle:
@@ -14,6 +19,8 @@ jobs:
       BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: true
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
@@ -22,12 +29,37 @@ jobs:
         run: python3 scripts/knowledge_ingest.py
       - name: Distill new entries
         run: python3 scripts/knowledge_distill.py
-      - name: Emit blended signal
+      - name: Emit blended sentiment score
         run: python3 scripts/emit_signal.py
-      - name: Commit knowledge + signal
+      - name: Publish a reviewed branch and draft PR, never main
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
+          command -v gh >/dev/null
+          BRANCH="barrot/knowledge-cycle-${GITHUB_RUN_ID}"
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
+          git checkout -b "$BRANCH"
           git add ping-pongings/knowledge-base/log.jsonl ping-pongings/knowledge-base/config.json web/latest_signal.json web/signal_history.jsonl
-          git diff --cached --quiet || git commit -m "Auto cycle: ingest + distill + blended signal [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          if git diff --cached --quiet; then
+            echo "No knowledge or signal changes; no PR created."
+            exit 0
+          fi
+          git commit -m "Barrot: knowledge cycle output [skip ci]"
+          git push --set-upstream origin "$BRANCH"
+          gh pr create --draft --base main --head "$BRANCH" \
+            --title "Barrot knowledge cycle #${GITHUB_RUN_ID}" \
+            --body "Automated knowledge-cycle output for review. This draft PR contains generated knowledge and sentiment artifacts only. No main-branch write or automatic merge is performed."
+      - name: Upload generated knowledge and sentiment artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: knowledge-cycle-${{ github.run_id }}
+          path: |
+            ping-pongings/knowledge-base/log.jsonl
+            ping-pongings/knowledge-base/config.json
+            web/latest_signal.json
+            web/signal_history.jsonl
+          if-no-files-found: warn
+          retention-days: 30
