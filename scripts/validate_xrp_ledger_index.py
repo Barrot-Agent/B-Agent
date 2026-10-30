@@ -193,8 +193,11 @@ def validate_index_data(index: dict[str, Any], repo_root: Path) -> dict[str, Any
             if latest.get(field) != snapshot.get(field):
                 errors.append(f"snapshot reference {field} does not match snapshot file")
         if is_pointer:
-            if latest.get("index_format_version") != "2.0":
-                errors.append("snapshot reference must declare index_format_version 2.0")
+            index_format_version = index.get("index_format_version")
+            if index_format_version not in {"2.0", "3.0"}:
+                errors.append("sharded ledger index_format_version must be 2.0 or 3.0")
+            if latest.get("index_format_version") != index_format_version:
+                errors.append("snapshot reference index_format_version must match ledger index_format_version")
             commit_sha = latest.get("snapshot_commit_sha")
             if not isinstance(commit_sha, str) or not SHA1_RE.fullmatch(commit_sha):
                 errors.append("snapshot_commit_sha must be a 40-character lowercase SHA")
