@@ -193,16 +193,26 @@ def _train_and_predict(comp_dir: Path) -> Optional[Path]:
     return out_path
 
 
-def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> None:
+def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> str:
+    allow_submission = os.environ.get("KAGGLE_ALLOW_SUBMISSIONS", "false").strip().lower()
+    if allow_submission not in {"1", "true", "yes"}:
+        log.info(
+            "Submission disabled for %s; generated file is retained locally only.",
+            competition,
+        )
+        return "prepared (submission disabled)"
+
     try:
         api.competition_submit(
             file_name=str(submission_path),
             message=SUBMISSION_MESSAGE,
             competition=competition,
         )
-        log.info("✅ Submitted to %s", competition)
+        log.info("Submitted to %s", competition)
+        return "submitted"
     except Exception as exc:
         log.warning("Submission to %s failed: %s", competition, exc)
+        return "submission failed"
 
 
 # ---------------------------------------------------------------------------
@@ -229,8 +239,8 @@ def main() -> None:
             results.append({"competition": name, "status": "skipped (data parse error)"})
             continue
 
-        _submit(api, name, submission_path)
-        results.append({"competition": name, "status": "submitted"})
+        submission_status = _submit(api, name, submission_path)
+        results.append({"competition": name, "status": submission_status})
 
     log.info("\n=== Summary ===")
     for r in results:
