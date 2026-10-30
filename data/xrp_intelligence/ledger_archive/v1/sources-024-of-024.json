@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 23,
+  "chunk_count": 24,
+  "record_count": 16,
+  "created_at_utc": "2026-10-30T08:12:00Z",
+  "records": [
+    {
+      "id": "SRC-SBI-TRUST-MERGER-20261029",
+      "evidence_class": "OFFICIAL_SBI_GROUP_CORPORATE_RELEASE",
+      "url": "https://www.sbigroup.co.jp/news/2026/1029_16692.html",
+      "title": "SBI Shinsei Trust Bank and SBI Clearing Trust merger agreement",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI Holdings, SBI Shinsei Bank, SBI Shinsei Trust Bank and SBI Clearing Trust announced a merger agreement on October 29. SBI Shinsei Trust Bank is the surviving company; planned effective date is December 31, 2026, subject to required Financial Services Agency and Kanto Local Finance Bureau approvals. SBI Clearing Trust began accepting trusts of spot crypto assets in July 2023. SBI Shinsei Trust Bank issues JPYSC and manages its trust backing; SBI VC Trade distributes it. The merger is planned consolidation of trust/custody capability, not yet effective and not an XRP-specific custody announcement."
+    },
+    {
+      "id": "SRC-SBI-JPYSC-JGB-RESERVES-20260907",
+      "evidence_class": "OFFICIAL_SBI_JPYSC_RESERVE_AND_JGB_DISCLOSURE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "title": "JPYSC reserve allocation to Japanese short-term government bonds",
+      "published_at": "2026-09-07",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI Shinsei Trust Bank and SBI VC Trade report JPYSC issuance outstanding of approximately JPY 20.1B as of September 7, JPYSC lending applications of approximately JPY 6.9B, and JPY 1.0B of trust backing assets allocated to short-term Japanese government bonds. The 6.9B lending figure is an application/lending-program measure, not additional issued supply; do not add it to 20.1B. The June 2026 legal change permits, subject to requirements, up to 50% of trust-backed stablecoin issuance to be invested in short-term government bonds with maturity no longer than three months or term deposits. The announcement says redemption liquidity is to be maintained."
+    },
+    {
+      "id": "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+      "evidence_class": "OFFICIAL_SBI_OPENSTANDARD_MEMBERSHIP_AND_PILOT_CONSIDERATION",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "title": "SBI Holdings and Startale join Open Standard; consider JPYSC/OUSD interoperability PoC",
+      "published_at": "2026-10-16",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI Holdings and Startale Group announced membership in Open Standard, whose participants include Visa, Stripe, Mastercard, BlackRock and Coinbase among more than 140 companies. They are considering a proof of concept for interoperability between JPYSC, issued by SBI Shinsei Trust Bank, and OUSD. The stated aim is faster, more efficient JPY/USD settlement. This is consideration of a PoC, not a live bridge, production settlement, named blockchain route or measured volume. Coinbase is identified as an Open Standard founding partner, not as a separately named party to this SBI/Startale PoC."
+    },
+    {
+      "id": "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+      "evidence_class": "OFFICIAL_SBI_BLACKROCK_STARTALE_MOU",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "title": "SBI, Startale and BlackRock sign basic agreement on tokenized MMF and JPYSC ecosystem",
+      "published_at": "2026-10-27",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI Holdings, Startale Group, BlackRock Financial Management and BlackRock Japan signed a basic agreement to explore a digital-asset ecosystem using tokenized money-market funds and JPYSC. This is an MOU/basic agreement, not a launched fund or live settlement integration. The announcement does not identify the specific fund, chain, tokenized MMF supply, collateral eligibility or XRP role."
+    },
+    {
+      "id": "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624",
+      "evidence_class": "OFFICIAL_SBI_JPYSC_ISSUANCE_AND_DISTRIBUTION_RELEASE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "title": "JPYSC trust-backed yen stablecoin launch",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI Shinsei Trust Bank is the JPYSC issuer and manages trust backing; SBI VC Trade is the distribution operator and electronic-payment-instrument business; Startale co-developed the system. Initial service was limited to SBI VC Trade account balances, with public-chain circulation to follow once relevant legal and tax practices were clarified. The trust structure is classified by SBI as a Type 3 electronic payment instrument and is not subject to the JPY 1M retention/transfer limit described for fund-transfer-type stablecoins. No public-chain deployment or external-wallet transfer is established by this launch notice."
+    },
+    {
+      "id": "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001",
+      "evidence_class": "OFFICIAL_SBI_HOLDINGS_ACQUISITION_COMPLETION",
+      "url": "https://www.sbigroup.co.jp/news/2026/1001_16640.html",
+      "title": "SBI Holdings completes full acquisition of Bitbank",
+      "published_at": "2026-10-01",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI Holdings announced that the final transaction steps completed on October 1 and Bitbank became a wholly owned subsidiary. The acquisition was executed through SBICAH GK. This is completed ownership, not merely a proposed acquisition. It does not by itself prove increased XRP trading volume, custody balances or market share after the acquisition."
+    },
+    {
+      "id": "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+      "evidence_class": "OFFICIAL_SBI_VISA_XRP_REWARD_PRODUCT_ANNOUNCEMENT",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "title": "SBI VISA Crypto Card with automatic BTC, ETH or XRP point conversion",
+      "published_at": "2026-05-01",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI VC Trade, Aplus and Visa announced SBI VISA Crypto Card and Gold. Applicants select BTC, ETH or XRP; card points are automatically exchanged into the selected crypto without a conversion fee and credited through an SBI VC Trade account. Promotional reward rates were announced as up to 2.5% standard and 10% Gold at launch. Current campaign eligibility and aggregate XRP credited are not established in this capture; this is a retail distribution mechanism, not measured XRP net buying."
+    },
+    {
+      "id": "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030",
+      "evidence_class": "OFFICIAL_SBI_SECURITIES_BOND_TERMS_AND_XRP_REWARD_STATUS",
+      "url": "https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html",
+      "title": "SBI START security-token bond: sold out and XRP reward terms",
+      "published_at": "2026-02-20",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI Securities' live product page now states the JPY 10B, three-year SBI START bond is sold out. Final coupon is 2.150% per year, rating A- (R&I), issue date March 24, 2026. Domestic buyers of at least JPY 100,000 during March 11–23 were eligible for JPY 200-equivalent XRP per JPY 100,000, to be credited by May 15, 2026, subject to an SBI VC Trade account and eligibility. The page explicitly says later 2027, 2028 and 2029 coupon-date rewards were undecided as of February 20 and does not imply they will occur. Total XRP actually distributed is not disclosed. The bond is issued/managed on ibet for Fin, not XRPL; the reward asset is XRP."
+    },
+    {
+      "id": "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+      "evidence_class": "OFFICIAL_SBI_RIPPLE_RLUSD_LISTING_AND_USDC_DISTRIBUTION",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "title": "SBI VC Trade begins RLUSD distribution in Japan",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI VC Trade and Ripple announced RLUSD availability on VCTRADE from June 24, classified by SBI VC Trade under Japanese law as a Type 4 electronic payment instrument. The release says SBI VC Trade had already offered USDC since March 2025, creating a single Japanese distribution platform for both Circle's USDC and Ripple's RLUSD. Deposits and withdrawals are free under the announced service. This proves product availability, not actual volume, reserve balances, XRPL route use or displacement of USDC."
+    },
+    {
+      "id": "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+      "evidence_class": "OFFICIAL_SBI_RIPPLE_ASIA_XRPL_STARTUP_SUPPORT_ANNOUNCEMENT",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0220_16124.html",
+      "title": "SBI Ripple Asia and Asia Web3 Alliance Japan technical support for XRPL financial services",
+      "published_at": "2026-02-20",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI Ripple Asia announced a technical-support partnership with Asia Web3 Alliance Japan to support startups implementing blockchain-based financial services, with XRPL explicitly identified as the expected technology. This is an ecosystem enablement/support arrangement, not proof that each supported startup has launched on XRPL or generated XRP demand."
+    },
+    {
+      "id": "SRC-SBICAH-SBI-CRYPTO-ASSET-HOLDINGS-20230214",
+      "evidence_class": "OFFICIAL_SBI_HOLDINGS_CORPORATE_FILING",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2023/0214_b_en.pdf",
+      "title": "SBI Holdings filing identifying SBICAH GK and SBI Crypto Asset Holdings Co., Ltd.",
+      "published_at": "2023-02-14",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI Holdings' official filing identifies SBICAH Godo Kaisha as a wholly owned subsidiary used in the BITPoint ownership transaction and names SBI Crypto Asset Holdings Co., Ltd. as its representative member. This entity is distinct from Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), the entity that held the ChatGPT/generative-AI seminar. The user's intended meaning of the bare acronym SBIC remains unresolved; do not conflate these entities."
+    },
+    {
+      "id": "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z",
+      "evidence_class": "SECONDARY_EXCHANGE_MARKET_LIQUIDITY_SNAPSHOT",
+      "url": "https://www.coingecko.com/en/exchanges/bitbank",
+      "title": "CoinGecko Bitbank XRP/JPY spot-market snapshot",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "CoinGecko's current Bitbank market table shows XRP/JPY with approximately $7.54M 24-hour volume, 0.01% spread, +2% depth around $354,397 and -2% depth around $915,209. The page labels the update 'Recently' without an exact exchange timestamp. This is a third-party single snapshot, not a post-SBI-acquisition time series or official Bitbank volume report."
+    },
+    {
+      "id": "SRC-COINLAW-BINANCE-POR-ASSET-SUMMARY-20261012",
+      "evidence_class": "SECONDARY_PROOF_OF_RESERVES_TRACKER",
+      "url": "https://coinlaw.io/proof-of-reserves/",
+      "title": "CoinLaw proof-of-reserves tracker — Binance asset summary",
+      "published_at": "2026-10-12",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "CoinLaw's displayed Binance October 1 PoR summary lists BTC, ETH, USDT and USDC ratios but does not display an XRP ratio. This does not prove XRP was absent from Binance's full PoR report; it does mean the tracker's summary does not independently corroborate the 100.77% XRP ratio reported by another secondary source. The tracker also says its latest independent verification is dated October 12."
+    },
+    {
+      "id": "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930",
+      "evidence_class": "OFFICIAL_STRIPE_OUSD_LAUNCH_AND_DISTRIBUTION_ANNOUNCEMENT",
+      "url": "https://stripe.com/newsroom/news/ousd-is-now-available-on-stripe",
+      "title": "Stripe launches OUSD availability through Stripe products",
+      "published_at": "2026-09-30",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "Stripe announced OUSD availability on September 30 through Stripe products. Open Standard is an independent company founded by Coinbase, Mastercard, Shopify, Stripe and Visa. Businesses can use Stripe Treasury, Issuing, Payments, Onramp and Global Payouts with OUSD, and OUSD is available on Base, Ethereum, Solana and Tempo. Stripe describes no mint/burn fee and partner rewards for OUSD activity. This is a competing/complementary enterprise stablecoin rail; it is not an XRPL deployment."
+    },
+    {
+      "id": "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630",
+      "evidence_class": "SECONDARY_REPORT_OF_OPENSTANDARD_PARTNER_NETWORK",
+      "url": "https://www.theblock.co/news/markets/2026-06-30-visa-stripe-coinbase-join-open-usd-stablecoin-shares-reserve-revenue-406736",
+      "title": "The Block reports Ripple among Open Standard participants",
+      "published_at": "2026-06-30",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "The Block's June 30 report lists Ripple among the crypto firms participating in the Open Standard network, alongside Coinbase, Visa, Mastercard, Stripe and other partners. This is a network-participation relationship, not evidence Ripple issues OUSD, that OUSD runs on XRPL, or that Ripple and Coinbase entered a separate bilateral agreement."
+    },
+    {
+      "id": "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624",
+      "evidence_class": "OFFICIAL_SBI_VC_TRADE_RIPPLE_RLUSD_USDC_RELEASE",
+      "url": "https://www.sbivc.co.jp/newsview/bsqs09vn_yzv",
+      "title": "SBI VC Trade's official RLUSD and USDC distribution notice",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-30T08:12:00Z",
+      "note": "SBI VC Trade's own notice confirms RLUSD distribution from June 24 and USDC availability since March 2025. This is a second official SBI source for the dual-issuer distribution relationship; it is not independent volume corroboration."
+    }
+  ]
+}
