@@ -186,6 +186,7 @@ def test_controller_authors_and_returns_ready_bundle():
 
 def test_controller_uses_explicit_output_budget_for_draft_and_revision():
     import json
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
 
     original = sample_bundle()
     original["tasks"][0]["tests"] = []
