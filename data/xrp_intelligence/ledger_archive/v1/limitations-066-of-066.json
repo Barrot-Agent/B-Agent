@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 65,
+  "chunk_count": 66,
+  "record_count": 9,
+  "created_at_utc": "2026-10-30T18:02:31Z",
+  "records": [
+    "CoinMarketCap's $1.25 XRP quote is a single-provider page snapshot retrieved at 2026-10-30T18:02:31Z; the provider's own observation timestamp and venue aggregation details are not exposed in the returned page. It is context-only and not a synchronized market feature.",
+    "Alpha Finance and SoSoValue-derived reporting show close October 29 daily ETF inflows (+USD8.4M and +USD8.4316M) but different cumulative inflows (USD1.73B versus USD1.809B). Fund universes, settlement completeness and cumulative definitions are not reconciled; do not average.",
+    "The Fed decision and Reuters weekly US fund flows are broad macro/allocation context. They do not establish XRP-specific subscriptions, redemptions, order flow or causal price impact.",
+    "TraderTraitor attribution is reported as an assessment by TRM Labs and Chainalysis, not a Binance-confirmed actor identity. Bitquery reports nine chains while TRM reports ten; cross-provider scope and totals differ.",
+    "The last cited attacker-receiver no-outgoing observation was captured at 2026-10-30T07:23:00Z. A fresh receiver read at the 18:02:31Z cutoff was not obtained because the explorer page could not be retrieved; no claim is made about intervening movement.",
+    "October 29 ETF flow data precede the first identified Binance XRPL transfer by five minutes (20:00 versus 20:05 UTC); those flows cannot be interpreted as a reaction to the incident.",
+    "Main's XRP signal remains stale and provider-degraded; the legacy 45.9% accuracy result is variable-horizon and mutable-outcome scoring. Neither is admitted as predictive performance.",
+    "Only the GitHub connector was authenticated and tested in this run. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested; no live collaboration is claimed.",
+    "The archive_policy summary had stale duplicated counts while the authoritative archive pointers were current. The metadata was reconciled and validator coverage added; exact-head CI and fail-closed verification are pending."
+  ]
+}
