@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 55,
+  "chunk_count": 56,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T13:35:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T13:35:00Z",
+      "update_type": "BINANCE_XRPL_RESIDUAL_SWEEP_AND_CHAIN_SPECIFIC_RLUSD_FREEZE_RECONCILIATION",
+      "prior_validator_failure": {
+        "head_sha": "f4fcd7dbc9d2ee01b57606d7670af55a111c1a4e",
+        "run_id": 41063241879,
+        "tests_passed": 17,
+        "tests_failed": 1,
+        "error": "latest snapshot JSON omitted snapshot_path; validator rejected snapshot pointer",
+        "gate_run_id": 41063241890,
+        "gate_status": "PASS_MERGE_DISABLED"
+      },
+      "snapshot_correction": {
+        "original_path": "data/xrp_intelligence/snapshots/20261030T132500Z-coinbase-circle-equity-revenue-rate-sensitivity.json",
+        "corrected_path": "data/xrp_intelligence/snapshots/20261030T132500Z-coinbase-circle-equity-revenue-rate-sensitivity-corrected.json",
+        "original_preserved_unreferenced": true,
+        "no_financial_data_changed": true
+      },
+      "incident_findings": {
+        "stolen_xrp_total": 233461943.1,
+        "attacker_receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "attacker_receiver_last_no_outgoing_cutoff": "2026-10-30T07:36:00Z",
+        "rdaE53_to_binance_reserve_xrp": 11141435.843,
+        "rdaE53_to_binance_reserve_xrp_time": "2026-10-29T23:12:20Z",
+        "rdaE53_to_binance_reserve_rlusd": 51172508,
+        "rdaE53_to_binance_reserve_rlusd_time": "2026-10-30T01:27:10Z",
+        "destination": "rs8ZPbYqgecRcDzQpJYAMhSxSi5htsjnza",
+        "destination_bithomp_label": "Binance",
+        "destination_activated": "2018-11-15 by Binance-labelled rJb5...",
+        "classification": "PROBABLE_INTERNAL_CONSOLIDATION_NOT_PROVEN_AUTHORIZED_RECOVERY"
+      },
+      "chain_specific_freeze": {
+        "ethereum_rlusd_stolen_reported": 88500000,
+        "ethereum_rlusd_frozen_by_ripple_reported": 40500000,
+        "xrpl_rlusd_internal_transfer": 51172508,
+        "xrpl_freeze_window_claim": "XRPLWin reports no issuer freeze transactions Oct25-30; independent full audit not completed"
+      },
+      "source_shard_path": "data/xrp_intelligence/ledger_archive/v1/sources-042-of-042.json",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T133500Z-binance-xrpl-residual-sweep-and-chain-specific-freeze.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T133500Z-binance-xrpl-residual-sweep-and-chain-specific-freeze.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T133500Z-classify-theft-residual-sweep-and-chain-specific-freeze.json",
+      "main_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+      "fresh_main_safety_pr": 1373,
+      "fresh_main_safety_pr_status": "OPEN_DRAFT_UNMERGED_CORE_CI_AND_GATE_PASS",
+      "no_merge": true,
+      "no_force_push": true,
+      "no_deployment": true,
+      "no_workflow_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true,
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED"
+    }
+  ]
+}
