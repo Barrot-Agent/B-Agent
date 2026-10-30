@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 21,
+  "chunk_count": 22,
+  "record_count": 8,
+  "created_at_utc": "2026-10-30T07:23:30Z",
+  "records": [
+    {
+      "id": "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+      "evidence_class": "DIRECT_PUBLIC_XRPL_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/tx/78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+      "title": "Bithomp validated XRPL payment to Binance-incident receiver",
+      "published_at": "2026-10-29T20:05:00Z",
+      "accessed_at_utc": "2026-10-30T07:23:30Z",
+      "note": "Bithomp labels sender rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr as Binance and destination rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx; delivered amount 185017485.5 XRP; successful/confirmed Payment; ledger 107986693, transaction index 103, hash 78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A. Bithomp's Binance label is third-party attribution, not an official Binance proof-of-reserves designation."
+    },
+    {
+      "id": "SRC-BITHOMP-BINANCE-XRPL-TX-14693052-20261029T200700Z",
+      "evidence_class": "DIRECT_PUBLIC_XRPL_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/tx/6DDF398B6950B34057A7B817E761A1E2A1C59ECAFD594536C54AA6963C5B7E67",
+      "title": "Bithomp validated XRPL payment to Binance-incident receiver",
+      "published_at": "2026-10-29T20:07:00Z",
+      "accessed_at_utc": "2026-10-30T07:23:30Z",
+      "note": "Bithomp labels sender rBtttd61FExHC68vsZ8dqmS3DfjFEceA1A as Binance and destination rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx; delivered amount 14693052.5 XRP; successful/confirmed Payment; ledger 107986721, transaction index 150, hash 6DDF398B6950B34057A7B817E761A1E2A1C59ECAFD594536C54AA6963C5B7E67. Bithomp's Binance label is third-party attribution, not an official Binance proof-of-reserves designation."
+    },
+    {
+      "id": "SRC-BITHOMP-BINANCE-XRPL-TX-13140680-20261029T200820Z",
+      "evidence_class": "DIRECT_PUBLIC_XRPL_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/tx/9FE8F79876B30E24843031CBE89EA75496FE75BD2F0B9779D91D55BEE52C6AAA",
+      "title": "Bithomp validated XRPL payment to Binance-incident receiver",
+      "published_at": "2026-10-29T20:08:20Z",
+      "accessed_at_utc": "2026-10-30T07:23:30Z",
+      "note": "Bithomp labels sender rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi as Binance and destination rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx; delivered amount 13140680.4 XRP; successful/confirmed Payment; ledger 107986740, transaction index 1, hash 9FE8F79876B30E24843031CBE89EA75496FE75BD2F0B9779D91D55BEE52C6AAA. Bithomp's Binance label is third-party attribution, not an official Binance proof-of-reserves designation."
+    },
+    {
+      "id": "SRC-BITHOMP-BINANCE-XRPL-TX-11955157-20261029T200850Z",
+      "evidence_class": "DIRECT_PUBLIC_XRPL_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/tx/27C7D0D5EDAD05B5F8C7616DF6CB64C872DD22DED8697B380824A8C5B8D385F5",
+      "title": "Bithomp validated XRPL payment to Binance-incident receiver",
+      "published_at": "2026-10-29T20:08:50Z",
+      "accessed_at_utc": "2026-10-30T07:23:30Z",
+      "note": "Bithomp labels sender rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk as Binance and destination rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx; delivered amount 11955157.6 XRP; successful/confirmed Payment; ledger 107986748, transaction index 426, hash 27C7D0D5EDAD05B5F8C7616DF6CB64C872DD22DED8697B380824A8C5B8D385F5. Bithomp's Binance label is third-party attribution, not an official Binance proof-of-reserves designation."
+    },
+    {
+      "id": "SRC-BITHOMP-BINANCE-XRPL-TX-8655567-20261029T200920Z",
+      "evidence_class": "DIRECT_PUBLIC_XRPL_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/tx/0571C4D9703DECA7D03B8D63E9EEB2AB0E8E6D949150A7355519AEEE9A595DB0",
+      "title": "Bithomp validated XRPL payment to Binance-incident receiver",
+      "published_at": "2026-10-29T20:09:20Z",
+      "accessed_at_utc": "2026-10-30T07:23:30Z",
+      "note": "Bithomp labels sender rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK as Binance and destination rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx; delivered amount 8655567.1 XRP; successful/confirmed Payment; ledger 107986754, transaction index 18, hash 0571C4D9703DECA7D03B8D63E9EEB2AB0E8E6D949150A7355519AEEE9A595DB0. Bithomp's Binance label is third-party attribution, not an official Binance proof-of-reserves designation."
+    },
+    {
+      "id": "SRC-BITHOMP-BINANCE-XRPL-RECEIVER-TRANSACTIONS-20261030T072330Z",
+      "evidence_class": "DIRECT_PUBLIC_XRPL_ACCOUNT_AND_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/account/rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx/transactions",
+      "title": "Bithomp transaction list for Binance-incident XRP receiver",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T07:23:30Z",
+      "note": "Receiver account page displays approximately 233.5M XRP. Its transaction list reports five incoming XRP payments from Binance-labelled accounts totaling 233461943.1 XRP and one unrelated Check in XGO; no outgoing XRP payment appears in the displayed list. This is a page-time observation, not a guarantee of future immobility or a substitute for raw-ledger monitoring."
+    },
+    {
+      "id": "SRC-BITHOMP-BINANCE-XRPL-SOURCE-CLUSTER-20261030T072330Z",
+      "evidence_class": "PUBLIC_EXPLORER_ACCOUNT_LABEL_AND_ACTIVATION_CLUSTER",
+      "url": "https://bithomp.com/account/rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "related_urls": [
+        "https://bithomp.com/account/rBtttd61FExHC68vsZ8dqmS3DfjFEceA1A",
+        "https://bithomp.com/account/rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+        "https://bithomp.com/account/rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk",
+        "https://bithomp.com/account/rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK"
+      ],
+      "title": "Bithomp Binance-labelled XRPL source-wallet cluster",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T07:23:30Z",
+      "note": "Bithomp labels all five source accounts as Binance. Four accounts (rBtttd..., rfQ9..., rarG6..., rNU4...) show activation by rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr, itself Binance-labelled. This supports a connected Binance-labelled XRPL operational-wallet cluster. It is third-party explorer attribution and activation metadata, not proof of inclusion in Binance's October 1 PoR address download. Balances displayed on the account pages are dynamic and must not be treated as pre-incident reserves."
+    },
+    {
+      "id": "SRC-BITHOMP-XRP-DEX-AND-TRANSFER-STATS-20261030T072330Z",
+      "evidence_class": "PUBLIC_XRPL_NETWORK_ACTIVITY_DASHBOARD",
+      "url": "https://bithomp.com/token/XRP",
+      "title": "Bithomp XRP token page — DEX volume versus transfer volume",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T07:23:30Z",
+      "note": "At page capture Bithomp displayed XRP at $1.23874, 24h change -6.59%, 1h change -1.11%; 24h XRPL DEX/trading volume $13,068,997.98 (10,549,894.23 XRP), buy volume $6,497,868.43 and sell volume $6,571,129.55; separate transfer volume $902,324,194.69 (728,397,451.27 XRP) across 240,797 transfer transactions. These are XRPL-specific dashboard measures, not global exchange volume. Exact quote timestamp and full volume methodology are not exposed. Transfer volume is not executed trading volume or net new capital."
+    }
+  ]
+}
