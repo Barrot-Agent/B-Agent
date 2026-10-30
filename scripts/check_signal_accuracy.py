@@ -1,88 +1,94 @@
 #!/usr/bin/env python3
-import json
-import time
-from pathlib import Path
+"""Fail-closed signal evaluation status until a fixed-horizon ledger exists.
 
-import requests
+The legacy evaluator compared signals with a later live price at variable
+elapsed horizons and rewrote historical signal rows. That metric is not a
+valid out-of-sample forecast-skill estimate. This script deliberately performs
+no market-data request and never mutates signal_history.jsonl.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
 
 HISTORY_PATH = Path("web/signal_history.jsonl")
 SUMMARY_PATH = Path("web/signal_accuracy.json")
-MIN_AGE_SECONDS = 24 * 3600
 
 
-def _get_xrp_price():
+def _read_previous_summary() -> dict[str, Any]:
     try:
-        r = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price",
-            params={"ids": "ripple", "vs_currencies": "usd"},
-            timeout=6,
-        )
-        return float(r.json().get("ripple", {}).get("usd", 0))
-    except Exception:
-        return 0.0
+        value = json.loads(SUMMARY_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return value if isinstance(value, dict) else {}
 
 
-def _load_entries():
-    if not HISTORY_PATH.exists():
-        return []
-    out = []
-    for line in HISTORY_PATH.read_text(encoding="utf-8").splitlines():
-        try:
-            out.append(json.loads(line))
-        except Exception:
-            continue
-    return out
+def _preserve_legacy_metric(previous: dict[str, Any]) -> dict[str, Any] | None:
+    existing = previous.get("legacy_metric")
+    if isinstance(existing, dict):
+        return existing
 
+    keys = ("checked_count", "correct_count", "accuracy_pct")
+    if not any(key in previous for key in keys):
+        return None
 
-def main():
-    entries = _load_entries()
-    now = time.time()
-    current_price = _get_xrp_price()
-
-    checked = 0
-    correct = 0
-    for e in entries:
-        if e.get("checked"):
-            if e.get("correct"):
-                correct += 1
-            checked += 1
-            continue
-        emitted_at = e.get("generated_at_unix", 0)
-        if not emitted_at or (now - emitted_at) < MIN_AGE_SECONDS:
-            continue
-        price_then = e.get("price_at_emission", 0)
-        score = e.get("score", 50)
-        if not price_then or not current_price:
-            continue
-        moved_up = current_price > price_then
-        called_bullish = score > 60
-        called_bearish = score < 40
-        if called_bullish:
-            was_correct = moved_up
-        elif called_bearish:
-            was_correct = not moved_up
-        else:
-            was_correct = abs(current_price - price_then) / price_then < 0.02
-        e["checked"] = True
-        e["correct"] = was_correct
-        e["price_at_check"] = current_price
-        checked += 1
-        if was_correct:
-            correct += 1
-
-    with open(HISTORY_PATH, "w", encoding="utf-8") as f:
-        for e in entries:
-            print(json.dumps(e), file=f)
-
-    accuracy = round(100 * correct / checked, 1) if checked else None
-    summary = {
-        "checked_count": checked,
-        "correct_count": correct,
-        "accuracy_pct": accuracy,
+    return {
+        "status": "NOT_COMPARABLE",
+        "reason": (
+            "Legacy result used variable elapsed horizons and a later live price; "
+            "historical rows were mutable, so this is not fixed-horizon out-of-sample skill."
+        ),
+        **{key: previous.get(key) for key in keys},
     }
-    with open(SUMMARY_PATH, "w", encoding="utf-8") as f:
-        json.dump(summary, f, indent=2)
-    print(json.dumps(summary))
+
+
+def build_summary(previous: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "schema_version": "2.0",
+        "status": "NOT_EVALUATED",
+        "metric_status": "NOT_COMPARABLE",
+        "checked_count": 0,
+        "correct_count": 0,
+        "accuracy_pct": None,
+        "reason": (
+            "A fixed-horizon, timestamped forecast/outcome ledger with leakage "
+            "controls and immutable outcomes is required before forecast skill "
+            "can be measured. No live market data was queried."
+        ),
+        "legacy_metric": _preserve_legacy_metric(previous),
+        "evaluation_protocol": {
+            "status": "NOT_IMPLEMENTED",
+            "target": "XRP/USD return and direction",
+            "horizon_seconds": None,
+            "data_cutoff_utc": None,
+            "requirements": [
+                "immutable forecast timestamp and data cutoff",
+                "predeclared fixed horizon and target definition",
+                "point-in-time features with leakage prevention",
+                "baseline comparison and walk-forward evaluation",
+                "probability calibration and uncertainty reporting",
+                "recorded outcome after the horizon closes",
+            ],
+        },
+    }
+
+
+def _atomic_write(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(path)
+
+
+def main() -> None:
+    previous = _read_previous_summary()
+    summary = build_summary(previous)
+    _atomic_write(SUMMARY_PATH, summary)
+    print(json.dumps(summary, sort_keys=True))
 
 
 if __name__ == "__main__":
