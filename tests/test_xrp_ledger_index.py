@@ -173,3 +173,36 @@ def test_duplicate_source_ids_across_archive_shards_fail_closed(tmp_path):
     index["sources"] = _archive_pointer("sources", specs, 2)
     report = VALIDATOR.validate_index_data(index, tmp_path)
     assert report["status"] == "BLOCKED" and "duplicate source IDs" in report["errors"]
+
+
+def test_append_only_shards_allow_prior_generation_chunk_counts(tmp_path):
+    # The first shard was created when the archive had one chunk; the second
+    # was appended later. Both immutable shards remain valid under a two-chunk
+    # pointer without rewriting the first shard's creation-time metadata.
+    first = _write_archive_shard(tmp_path, "sources", [{"id": "SRC-A"}], chunk_index=0, chunk_count=1)
+    second = _write_archive_shard(tmp_path, "sources", [{"id": "SRC-B"}], chunk_index=1, chunk_count=2)
+    pointer = _archive_pointer("sources", [first, second], 2)
+    records, errors, checked = VALIDATOR.resolve_archive_array(pointer, "sources", tmp_path)
+    assert errors == []
+    assert records == [{"id": "SRC-A"}, {"id": "SRC-B"}]
+    assert checked == 2
+
+
+def test_archive_chunk_count_before_global_index_fails_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path)
+    first = _write_archive_shard(tmp_path, "sources", [{"id": "SRC-A"}], chunk_index=0, chunk_count=1)
+    invalid_second = _write_archive_shard(tmp_path, "sources", [{"id": "SRC-B"}], chunk_index=1, chunk_count=1)
+    index["sources"] = _archive_pointer("sources", [first, invalid_second], 2)
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("append-generation metadata mismatch" in error for error in report["errors"])
+
+
+def test_archive_chunk_count_cannot_exceed_pointer_total(tmp_path):
+    index, _ = fixture_pair(tmp_path)
+    invalid_first = _write_archive_shard(tmp_path, "sources", [{"id": "SRC-A"}], chunk_index=0, chunk_count=3)
+    second = _write_archive_shard(tmp_path, "sources", [{"id": "SRC-B"}], chunk_index=1, chunk_count=2)
+    index["sources"] = _archive_pointer("sources", [invalid_first, second], 2)
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("append-generation metadata mismatch" in error for error in report["errors"])
