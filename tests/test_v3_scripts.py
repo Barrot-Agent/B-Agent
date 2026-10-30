@@ -704,3 +704,21 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+def test_free_image_generation_workflow_is_read_only_and_uses_existing_script() -> None:
+    workflow_path = REPO_ROOT / ".github" / "workflows" / "free-image-gen.yml"
+    workflow = workflow_path.read_text(encoding="utf-8")
+
+    assert (REPO_ROOT / "scripts" / "free_image_gen.py").is_file()
+    assert not (REPO_ROOT / "free_image_gen.py").exists()
+    assert "permissions:" in workflow.splitlines()
+    assert "  contents: read" in workflow.splitlines()
+    assert "persist-credentials: false" in workflow
+    assert "run: python3 scripts/free_image_gen.py" in workflow
+    assert "actions/upload-artifact@v7" in workflow
+    assert "retention-days: 30" in workflow
+    assert "contents: write" not in workflow
+    assert "git commit" not in workflow
+    assert "git push" not in workflow
+    assert workflow.count("HF_TOKEN: ${{ secrets.HF_TOKEN }}") == 1
