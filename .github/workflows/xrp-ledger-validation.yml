@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - research/xrp-ledger-shard-migration-20261029T2210Z
+  pull_request:
+    branches:
+      - research/xrp-ledger-index-pointer-migration-20261028T1959Z
 
 permissions:
   contents: read
@@ -14,6 +17,7 @@ concurrency:
 
 jobs:
   validate-ledger:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.ref == 'research/xrp-ledger-shard-migration-20261029T2210Z'
     name: Validate sharded XRP ledger and regression tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -22,6 +26,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
