@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 41,
+  "chunk_count": 42,
+  "record_count": 7,
+  "created_at_utc": "2026-10-30T13:35:00Z",
+  "records": [
+    {
+      "id": "SRC-XRPLWIN-BINANCE-XRP-RLUSD-TRACE-20261030",
+      "evidence_class": "SECONDARY_ONCHAIN_INCIDENT_ANALYSIS",
+      "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "title": "XRPLWin — Binance incident: 233M XRP drain and subsequent XRPL RLUSD movement",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T13:35:00Z",
+      "note": "Secondary XRPL incident reconstruction. Reports 233,461,943.1 XRP moved from five Binance-attributed hot wallets to fresh receiver rK21t6... between 20:05-20:09 UTC Oct29, with no outgoing XRP from that receiver through 07:36 UTC Oct30. Reports a separate 51,172,508 RLUSD payment from rDAE53... to rs8ZPb... at 01:27:10 UTC Oct30, and says the destination is Binance-labelled. It distinguishes 88.5M RLUSD stolen on Ethereum and 40.5M RLUSD frozen by Ripple on Ethereum from the separate XRPL transfer. It reports no issuer-signed RLUSD freeze transactions on XRPL during Oct25-30; this is a secondary chain-history audit and has not been independently exhaustively reproduced here."
+    },
+    {
+      "id": "SRC-BITHOMP-TX-RDAE53-RLUSD-TO-RS8ZPB-20261030",
+      "evidence_class": "PRIMARY_XRPL_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/tx/0B9D3AF460BA9C5EA84D75F369854D90C57A441752C3608AB78208A39B1683B7",
+      "title": "Bithomp validated XRPL transaction — 51,172,508 RLUSD from Binance-labelled rDAE53 to Binance-labelled rs8ZPb",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T13:35:00Z",
+      "note": "Validated successful XRPL Payment, ledger 107991454, 2026-10-30 01:27:10 UTC. Delivered 51,172,508 RLUSD issued by Ripple account rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De from rDAE53... to rs8ZPb... . Bithomp labels both source and destination Binance. Source trustline balance changed from 51,172,511.53865526 RLUSD to 3.53865526 RLUSD, so this moved nearly the entire remaining RLUSD balance. Destination trustline increased from zero to 51,172,508 RLUSD. Transaction hash 0B9D3AF...1683B7; ctid C66FD19E00390000. This is a transfer, not an issuer freeze."
+    },
+    {
+      "id": "SRC-BITHOMP-TX-RDAE53-XRP-TO-RS8ZPB-20261029",
+      "evidence_class": "PRIMARY_XRPL_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/tx/A3385338DABFD08E63B5718566FF0E6E5A352876166B421E0450B68729BB6410",
+      "title": "Bithomp validated XRPL transaction — 11,141,435.843 XRP from Binance-labelled rDAE53 to Binance-labelled rs8ZPb",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T13:35:00Z",
+      "note": "Validated successful XRPL Payment, ledger 107989480, 2026-10-29 23:12:20 UTC. Delivered 11,141,435.843 XRP from rDAE53... to rs8ZPb... . Bithomp labels both source and destination Binance. The source's AccountRoot balance after payment was 12,997,150 drops (12.99715 XRP), indicating the transfer swept nearly all remaining native XRP after the earlier 185M XRP drain. Transaction hash A3385338...BB6410; ctid C66FC9E8001D0000."
+    },
+    {
+      "id": "SRC-BITHOMP-RS8ZPB-BINANCE-ACCOUNT-20261030",
+      "evidence_class": "PRIMARY_EXPLORER_ACCOUNT_METADATA_WITH_THIRD_PARTY_LABEL",
+      "url": "https://bithomp.com/account/rs8ZPbYqgecRcDzQpJYAMhSxSi5htsjnza",
+      "title": "Bithomp account profile — rs8ZPb Binance-labelled reserve wallet",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T13:35:00Z",
+      "note": "Bithomp labels rs8ZPb... as Binance, activated 2018-11-15 07:37 UTC by Binance-labelled rJb5... with 22 XRP; page showed approximately 1.6B XRP and $2.0B total worth at capture and recent activity. The label is a third-party attribution, not cryptographic proof of legal ownership or operator authorization."
+    },
+    {
+      "id": "SRC-BITHOMP-RS8ZPB-RECEIVED-TRANSACTIONS-20261030",
+      "evidence_class": "PRIMARY_XRPL_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/account/rs8ZPbYqgecRcDzQpJYAMhSxSi5htsjnza/transactions",
+      "title": "Bithomp transaction history — Binance-labelled rs8ZPb receives RLUSD and dust transfers from Binance hot wallets",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T13:35:00Z",
+      "note": "Transaction history shows the 51,172,508 RLUSD payment from rDAE53... at 01:27 UTC Oct30, plus 0.25 XRP payments around 00:23 UTC from four other Binance-labelled source wallets (rBtttd..., rfQ9..., rhWj9..., rNU4e...). This is consistent with a coordinated Binance wallet operation, but does not prove the sending operator or authorization."
+    },
+    {
+      "id": "SRC-BITHOMP-RDAE53-BINANCE-ACCOUNT-20261030",
+      "evidence_class": "PRIMARY_EXPLORER_ACCOUNT_METADATA_WITH_THIRD_PARTY_LABEL",
+      "url": "https://bithomp.com/account/rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "title": "Bithomp account profile — Binance-labelled rDAE53 hot wallet",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T13:35:00Z",
+      "note": "Bithomp labels rDAE53... as Binance, activated 2021-11-24 by Binance-labelled rJb5... . The account page shows the 185.0M XRP activation/transfer to rK21t6... and a small remaining XRP balance (about 11.6 XRP) at capture. This supports the source wallet's Binance attribution and the separate later 11.141M XRP transfer to rs8ZPb."
+    },
+    {
+      "id": "SRC-BITHOMP-TX-RDAE53-TO-RK21T6-185M-20261029",
+      "evidence_class": "PRIMARY_XRPL_TRANSACTION_EXPLORER",
+      "url": "https://bithomp.com/tx/78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+      "title": "Bithomp validated XRPL transaction — 185,017,485.5 XRP from rDAE53 to new receiver rK21t6",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T13:35:00Z",
+      "note": "Previously captured Bithomp transaction record for the largest of the five incident transfers: 185,017,485.5 native XRP from Binance-labelled rDAE53... to rK21t6... in ledger 107986693 on Oct29. The receiver was activated by the payment. The page was not accessible in the current web refresh, so use the prior validated transaction capture plus the current XRPLWin reconstruction; do not claim a fresh page read in this run."
+    }
+  ]
+}
