@@ -1,5 +1,30 @@
 {
-  "checked_count": 1683,
-  "correct_count": 772,
-  "accuracy_pct": 45.9
+  "schema_version": "2.0",
+  "status": "NOT_EVALUATED",
+  "metric_status": "NOT_COMPARABLE",
+  "checked_count": 0,
+  "correct_count": 0,
+  "accuracy_pct": null,
+  "reason": "The legacy score used variable elapsed horizons and later live prices while historical rows were mutable. It is not a fixed-horizon out-of-sample skill estimate.",
+  "legacy_metric": {
+    "status": "NOT_COMPARABLE",
+    "checked_count": 1683,
+    "correct_count": 772,
+    "accuracy_pct": 45.9,
+    "reason": "Preserved for audit only; variable-horizon scoring and mutable historical rows prevent interpretation as predictive skill."
+  },
+  "evaluation_protocol": {
+    "status": "NOT_IMPLEMENTED",
+    "target": "XRP/USD return and direction",
+    "horizon_seconds": null,
+    "data_cutoff_utc": null,
+    "requirements": [
+      "immutable forecast timestamp and data cutoff",
+      "predeclared fixed horizon and target definition",
+      "point-in-time features with leakage prevention",
+      "baseline comparison and walk-forward evaluation",
+      "probability calibration and uncertainty reporting",
+      "recorded outcome after the horizon closes"
+    ]
+  }
 }
