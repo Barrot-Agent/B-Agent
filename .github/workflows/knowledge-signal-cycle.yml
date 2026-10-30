@@ -3,9 +3,7 @@ name: Knowledge Signal Cycle
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pull-requests: write
+permissions: {}
 
 concurrency:
   group: knowledge-signal-cycle
@@ -13,6 +11,8 @@ concurrency:
 
 jobs:
   cycle:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          persist-credentials: true
+          persist-credentials: false
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
@@ -37,12 +37,43 @@ jobs:
         run: |
           python -m compileall -q scripts
           python -m pytest --noconftest -o addopts= tests/test_knowledge_signal_cycle_branch_pr_safety.py tests/test_signal_accuracy_fail_closed.py tests/test_cross_analysis_workflow_safety.py -q
-      - name: Publish a reviewed branch and draft PR, never main
+      - name: Upload generated knowledge and sentiment outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: knowledge-cycle-${{ github.run_id }}
+          path: |
+            ping-pongings/knowledge-base/log.jsonl
+            ping-pongings/knowledge-base/config.json
+            web/latest_signal.json
+            web/signal_history.jsonl
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    needs: cycle
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the exact dispatch commit without credentials
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Download reviewed output payload
+        uses: actions/download-artifact@v4
+        with:
+          name: knowledge-cycle-${{ github.run_id }}
+          path: .
+      - name: Publish only a run-specific review branch and draft PR
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           command -v gh >/dev/null
+          gh auth setup-git
           BRANCH="barrot/knowledge-cycle-${GITHUB_RUN_ID}"
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
@@ -57,15 +88,3 @@ jobs:
           gh pr create --draft --base main --head "$BRANCH" \
             --title "Barrot knowledge cycle #${GITHUB_RUN_ID}" \
             --body "Automated knowledge-cycle output for review. This draft PR contains generated knowledge and sentiment artifacts only. No main-branch write or automatic merge is performed."
-      - name: Upload generated knowledge and sentiment artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: knowledge-cycle-${{ github.run_id }}
-          path: |
-            ping-pongings/knowledge-base/log.jsonl
-            ping-pongings/knowledge-base/config.json
-            web/latest_signal.json
-            web/signal_history.jsonl
-          if-no-files-found: warn
-          retention-days: 30
