@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_ci_verification_delta",
+  "snapshot_id": "XRP-CI-VERIFICATION-2026-10-27T220923Z",
+  "captured_at_utc": "2026-10-27T22:09:23Z",
+  "classification": "REPOSITORY_VERIFICATION_NO_FORECAST",
+  "repository_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "observed_main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+    "main_unchanged_since_last_checkpoint": true,
+    "main_commit_url": "https://github.com/Barrot-Agent/B-Agent/commit/a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+    "safety_pr": {
+      "number": 1220,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+      "state": "open",
+      "draft": true,
+      "mergeable": true,
+      "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+      "base_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+      "changed_files": 10,
+      "ci": {
+        "run_id": 40592404749,
+        "name": "CI",
+        "status": "completed",
+        "conclusion": "success",
+        "tests_passed": 164,
+        "duration_seconds": 6.11,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404749"
+      },
+      "gate": {
+        "run_id": 40592404758,
+        "name": "Barrot Gated Merge (fail-closed)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40592404758"
+      },
+      "changes": [
+        "Fail closed on unavailable sentiment-provider output.",
+        "Reject malformed/incomplete sentiment contracts and stale/future or academic/protocol-paper news contamination.",
+        "Retire the legacy variable-horizon accuracy result as NOT_COMPARABLE and preserve historical rows unchanged.",
+        "Use deterministic summary fallback when providers are missing or rate-limited.",
+        "Make summary and accuracy workflows artifact-only/read-only and add regression coverage.",
+        "Preserve current main CI bundle-engineering tests."
+      ],
+      "verification_limits": [
+        "CI and gate validate this PR head only; no merge or deployment occurred.",
+        "Scheduled knowledge-signal-cycle still writes generated outputs directly to main and remains a separate persistence risk.",
+        "No price-prediction skill has been established by these software tests."
+      ]
+    },
+    "research_pr_1195": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "state": "open",
+      "draft": true,
+      "status": "diverged",
+      "ahead_by": 27,
+      "behind_by": 45,
+      "action": "Preserve; do not merge. Prepare a fresh-main successor after validating all historical artifacts and links."
+    },
+    "safety_boundary": "No main write, merge, force-push, reset, clean, stash, deployment, secret mutation or real-money action was performed."
+  },
+  "current_signal_observation": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+    "timestamp_utc": "2026-10-27T21:20:24.451175Z",
+    "score": 44,
+    "confidence": 0,
+    "news_score": 88,
+    "news_entries": 11,
+    "provider_failure": "GitHub model token missing; Groq HTTP 429",
+    "status": "INVALID_FOR_DIRECTIONAL_FORECAST_UNTIL_FIX_IS_REVIEWED_AND_DEPLOYED"
+  },
+  "legacy_accuracy_observation": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_accuracy.json",
+    "checked_count": 1612,
+    "correct_count": 749,
+    "accuracy_pct": 46.5,
+    "status": "NOT_COMPARABLE",
+    "reason": "Variable-horizon evaluator with mutable historical outcomes; not calibrated fixed-horizon forecast performance."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "platform_status": {
+    "verified_active": [
+      "ChatGPT in this conversation",
+      "GitHub repository connector"
+    ],
+    "not_verified_live": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "next_actions": [
+    "Keep PR #1220 draft and unmerged pending independent review; exact-head CI and fail-closed gate passed.",
+    "Design and test safe append-only persistence before modifying the scheduled direct-main data writer.",
+    "Keep XRP open-interest aggregates and two-snapshot USDC circulation changes excluded from features until harmonized and corroborated.",
+    "Preserve PR #1195 and all historical snapshots; its branch remains 45 commits behind and 27 ahead of observed main."
+  ],
+  "validation": {
+    "ci_exact_head": "PASS",
+    "tests_passed": 164,
+    "fail_closed_gate": "PASS",
+    "pr_draft": true,
+    "merge_performed": false,
+    "main_modified": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}

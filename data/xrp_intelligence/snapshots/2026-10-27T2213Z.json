@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "record_type": "usdc_supply_cross_source_reconciliation",
+  "snapshot_id": "USDC-SUPPLY-RECONCILIATION-2026-10-27T221313Z",
+  "captured_at_utc": "2026-10-27T22:13:13Z",
+  "classification": "PUBLIC_MARKET_DATA_RECONCILIATION; FEATURE_BLOCKED; NO_XRP_FORECAST",
+  "observations": [
+    {
+      "source": "Circle public USDC page",
+      "url": "https://www.circle.com/usdc",
+      "as_of": "2026-10-26",
+      "displayed_circulation_usd": 71000000000,
+      "metric_type": "ISSUER_DISPLAY_ROUNDED",
+      "status": "PRIMARY_SOURCE"
+    },
+    {
+      "source": "DefiLlama values summarized by Coindaro",
+      "url": "https://www.coindaro.com/stablecoin-supply-drop-usdc-usdt-defillama/",
+      "as_of": "2026-10-26T06:54:00Z",
+      "usdc_usd": 71710000000,
+      "prior_date": "2026-10-07",
+      "prior_usdc_usd": 74310000000,
+      "change_usd": -2600000000,
+      "change_pct": -3.5,
+      "global_usd_stablecoin_supply_usd": 302400000000,
+      "status": "SECONDARY_REPORT_OF_PUBLIC_AGGREGATOR_DATA"
+    },
+    {
+      "source": "SatoshiMacro stablecoin supply dashboard",
+      "url": "https://satoshimacro.com/tools/crypto/markets/stablecoin-supply/",
+      "as_of": "2026-10-27",
+      "usdc_usd": 71260000000,
+      "change_30d_pct": -5.5,
+      "global_usd_stablecoin_supply_usd": 301500000000,
+      "status": "SECONDARY_PUBLIC_TRACKER"
+    },
+    {
+      "source": "USDC.org stats page using CoinGecko",
+      "url": "https://usdc.org/stats",
+      "as_of": "2026-10-27",
+      "usdc_units": 71189358490,
+      "market_cap_usd": 71149663998,
+      "status": "THIRD_PARTY_MARKET_DATA"
+    },
+    {
+      "source": "Stablecoin Beat market-cap tracker",
+      "url": "https://stablecoinbeat.com/charts/market-cap/",
+      "as_of": "2026-10-26T15:40:00Z",
+      "usdc_usd": 71200000000,
+      "total_stablecoin_market_usd": 299900000000,
+      "status": "THIRD_PARTY_TRACKER"
+    },
+    {
+      "source": "CoinLore USDC historical market-cap table",
+      "url": "https://www.coinlore.com/coin/USD-Coin/historical-data",
+      "as_of": "2026-10-22",
+      "market_cap_usd": 74000000000,
+      "adjacent_date": "2026-10-23",
+      "adjacent_market_cap_usd": 74100000000,
+      "status": "THIRD_PARTY_PRICE_TIMES_SUPPLY_ESTIMATE"
+    },
+    {
+      "source": "Prior Circle transparency snapshot in ledger",
+      "as_of": "2026-10-22",
+      "displayed_circulation_usd": 72000000000,
+      "metric_type": "ISSUER_REPORTED_CIRCULATION",
+      "status": "PRIOR_PRIMARY_SOURCE_SNAPSHOT"
+    }
+  ],
+  "reconciliation": {
+    "current_window": "Third-party trackers cluster around $71.2B-$71.7B for Oct 26-27; Circle's public page rounds to $71.0B for Oct 26. This is broadly consistent after rounding/timing differences.",
+    "historical_conflict": "The prior issuer-reported $72.0B on Oct 22 differs from third-party market-cap estimates around $74.0B for Oct 22. These are not guaranteed to be the same metric, timestamp or supply universe.",
+    "corrected_interpretation": "Do not treat the Circle-page comparison of $72B on Oct 22 to $71B on Oct 26 as a reliable $1B net-redemption estimate. A separate DefiLlama-derived series reports approximately $2.6B lower USDC supply from Oct 7 to Oct 26; that contraction is plausible but still does not reveal destination, venue allocation or XRP flow.",
+    "model_feature_admission": false,
+    "reason": "Mixed source definitions and snapshot times; no harmonized daily mint/burn series, XRPL-specific USDC supply, exchange balances or linked XRP order flow."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H15-USDC-SUPPLY-SCOPE-VS-FLOW",
+      "hypothesis": "The apparent USDC supply changes combine real contraction with differences in measurement definitions, timestamps and source coverage; a raw issuer-page delta is not a clean flow feature.",
+      "supporting": [
+        "Circle page and third-party trackers broadly agree around $71B on Oct 26-27",
+        "DefiLlama-derived series reports USDC down about $2.6B from Oct 7 to Oct 26"
+      ],
+      "disconfirming_or_alternative": [
+        "Third-party daily series could be consistent with real net redemptions; the source mismatch does not negate the broader contraction signal.",
+        "Stablecoin supply contraction may affect crypto liquidity indirectly, but does not identify where funds went or establish XRP demand."
+      ],
+      "test_plan": "Store daily same-provider observations with exact metric definition and timestamps; reconcile issuer mint/burn and reserve reports; measure chain-specific USDC and venue balances; test any lagged XRP association out of sample."
+    }
+  ],
+  "repository_state": {
+    "main_sha": "a3719189041c3e27b9d55864cb5a62ebe8bd1741",
+    "main_unchanged_since_last_checkpoint": true,
+    "research_pr_1195": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1195",
+      "head_sha": "87003b6ff4c85c0f698c38199385538133be7403",
+      "state": "open_draft",
+      "ahead_by": 35,
+      "behind_by": 45,
+      "ci_run_id": 40593004800,
+      "ci": "success",
+      "tests_passed": 145,
+      "gate_run_id": 40593004803,
+      "gate": "success",
+      "note": "These checks validate head 87003b6. This snapshot and subsequent ledger update are newer."
+    },
+    "safety_pr_1220": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1220",
+      "head_sha": "32699de5938559ee1080ed05dac91195d7efebd0",
+      "state": "open_draft",
+      "ci_run_id": 40592404749,
+      "ci": "success",
+      "tests_passed": 164,
+      "gate_run_id": 40592404758,
+      "gate": "success"
+    }
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Use same-provider daily USDC supply and mint/burn observations for model features; do not mix issuer circulation with market-cap estimates.",
+    "Acquire XRPL-native USDC supply/transfer and venue balance series before testing any XRP linkage.",
+    "Keep all USDC supply observations blocked from directional XRP forecasting until time-aligned, source-harmonized and validated out of sample.",
+    "Preserve the research ledger and current Barrot V3 code; no merge or main write."
+  ],
+  "source_ids": [
+    "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26",
+    "SRC-CIRCLE-TRANSPARENCY-2026",
+    "SRC-COINDARO-DEFILLAMA-USDC-SUPPLY-2026-10-26",
+    "SRC-SATOSHI-MACRO-USDC-2026-10-27",
+    "SRC-USDCORG-COINGECKO-2026-10-27",
+    "SRC-STABLECOINBEAT-USDC-2026-10-26",
+    "SRC-COINLORE-USDC-HIST-2026-10-22"
+  ],
+  "validation": {
+    "cross_source_reconciliation": "OBSERVATIONS_RECORDED; METRIC_SCOPE_MISMATCH_EXPLICIT",
+    "model_feature_admission": "BLOCKED",
+    "forecast_status": "NOT_ISSUED",
+    "main_modified": false,
+    "merge_performed": false
+  }
+}
