@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-2026-10-30T125300Z-SBI-VCTRADE-ETHEREUM-ONLY-XRPL-FUTURE",
+  "captured_at_utc": "2026-10-30T12:53:00Z",
+  "previous_addendum": "data/xrp_intelligence/relationship_graph_addenda/20261030T124900Z-sbi-circle-ripple-source-reference-correction.json",
+  "edges": [
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "relationship": "Japanese VCTRADE distribution launched June 24 2026; current deposit/withdrawal network Ethereum only; XRPL planned for future",
+      "status": "PRIMARY_SBI_PRODUCT_PAGE_AND_LAUNCH_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+        "SRC-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY-XRPL-PLANNED-20261030"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "USDC",
+      "relationship": "Current listed VCTRADE network is Ethereum; no native XRPL route is listed",
+      "status": "PRIMARY_SBI_SUPPORT_FAQ",
+      "source_ids": [
+        "SRC-SBI-VCTRADE-USDC-RLUSD-ETHEREUM-CHAIN-FAQ-20261030"
+      ]
+    },
+    {
+      "from": "CIRCLE_SBI_JAPAN_KK",
+      "to": "USDC_JAPAN",
+      "relationship": "50/50 SBI-Circle JV promotes USDC adoption and use cases in Japan",
+      "status": "PRIMARY_SBI_INVESTOR_PRESENTATION_AND_CORPORATE_RELEASE",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+        "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+        "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "XRPL_USDC",
+      "relationship": "Native USDC on XRPL with Circle Mint/API support",
+      "status": "PRIMARY_CIRCLE_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612"
+      ]
+    },
+    {
+      "from": "RIPPLE",
+      "to": "CIRCLE",
+      "relationship": "Direct product partnership to launch USDC on XRPL; Ripple separately issues RLUSD",
+      "status": "PRIMARY_RIPPLE_ANNOUNCEMENT; PRODUCT_COOPETITION",
+      "source_ids": [
+        "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612"
+      ]
+    },
+    {
+      "from": "XRPL_USDC",
+      "to": "XRP",
+      "relationship": "Ripple describes XRP as essential bridge currency in XRPL DEX/auto-bridging; executed volume unquantified",
+      "status": "PRODUCT_CLAIM_NOT_MEASURED_MARKET_DEMAND",
+      "source_ids": [
+        "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "RIPPLE",
+      "relationship": "Historical approx. 9% equity stake reported in Feb 2025; current stake unknown",
+      "status": "DATED_PRIMARY_SBI_PRESENTATION",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY"
+      ]
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "SBI_HOLDINGS",
+      "relationship": "No affiliation established; separate SME investment corporation",
+      "status": "ENTITY_DISAMBIGUATION",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z"
+      ]
+    }
+  ],
+  "hypothesis_additions": [
+    {
+      "hypothesis_id": "HYP-SBI-VCTRADE-XRPL-STABLECOIN-ROUTE-LIVE-20261030",
+      "claim": "SBI VC Trade currently provides a native XRPL route for USDC or RLUSD.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+        "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612",
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624"
+      ],
+      "counterevidence": "Current SBI product and FAQ pages list USDC and RLUSD on Ethereum; RLUSD page explicitly says XRP Ledger support is planned for the future.",
+      "status": "DISCONFIRMED_FOR_CURRENT_VCTRADE_ROUTE"
+    },
+    {
+      "hypothesis_id": "HYP-SBI-RLUSD-FUTURE-XRPL-ROUTE-20261030",
+      "claim": "SBI VC Trade may later add an XRPL RLUSD route, creating a potential institutional/retail bridge to XRPL.",
+      "supporting_source_ids": [
+        "SRC-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY-XRPL-PLANNED-20261030"
+      ],
+      "counterevidence": "No launch date, implementation, deposit/withdrawal transaction or user-volume evidence is published in the reviewed page.",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "hypothesis_id": "HYP-SBI-MULTI-ISSUER-DISTRIBUTION-20261030",
+      "claim": "SBI is pursuing multi-issuer stablecoin distribution through Circle/USDC and Ripple/RLUSD rather than an exclusive issuer relationship.",
+      "supporting_source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+        "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609",
+        "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624"
+      ],
+      "counterevidence": "Public issuer-level balances, distribution economics and commercial exclusivity terms are not disclosed.",
+      "status": "STRONGLY_SUPPORTED_STRATEGY_INFERENCE"
+    },
+    {
+      "hypothesis_id": "HYP-CIRCLE-RIPPLE-XRP-BRIDGE-DEMAND-20261030",
+      "claim": "USDC on XRPL and Ripple's bridge design create measurable native-XRP demand.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+        "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612"
+      ],
+      "counterevidence": "Product announcements do not provide executed auto-bridge volume, XRP leg sizes, market-maker inventory or incremental XRP purchases.",
+      "status": "TECHNICAL_PATH_CONFIRMED_MARKET_DEMAND_UNQUANTIFIED"
+    }
+  ],
+  "source_ids": [
+    "SRC-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY-XRPL-PLANNED-20261030",
+    "SRC-SBI-VCTRADE-USDC-RLUSD-ETHEREUM-CHAIN-FAQ-20261030",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+    "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+    "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609",
+    "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+    "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612",
+    "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+    "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+    "SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z"
+  ]
+}
