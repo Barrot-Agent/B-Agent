@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T165400Z-MAIN-PREDICTION-AND-WORKFLOW-SAFETY-AUDIT",
+  "captured_at_utc": "2026-10-30T16:54:00Z",
+  "data_cutoff_utc": "2026-10-30T16:54:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T165400Z-main-prediction-and-workflow-safety-audit.json",
+  "source_ids": [
+    "SRC-REPO-MAIN-XRP-SIGNAL-STALE-20261030T165400Z",
+    "SRC-REPO-MAIN-LEGACY-ACCURACY-20261030T165400Z",
+    "SRC-PR1355-FIXED-HORIZON-SAFETY-20261030T165400Z",
+    "SRC-REPO-MAIN-CROSS-ANALYSIS-WRITE-20261030T165400Z",
+    "SRC-REPO-MAIN-MERGE-QUEUE-MUTATION-20261030T165400Z",
+    "SRC-REPO-MAIN-PAPER-POSITION-IDENTITY-20261030T165400Z",
+    "SRC-PR1374-HF-TOKEN-ISOLATION-20261030T165400Z",
+    "SRC-PR1373-CROSS-ANALYSIS-READONLY-20261030T165400Z",
+    "SRC-REPO-APPROVAL-WORKFLOW-PUSH-ANOMALY-20261030T165400Z"
+  ],
+  "repository": {
+    "name": "Barrot-Agent/B-Agent",
+    "main_sha": "dd907496d7989c4f421fb137cca6794314e9812a",
+    "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "research_head": "ee4aa0e8f9cf1e1f63db68f80b552a57080284cd",
+    "full_repository_ci": "NOT_RUN"
+  },
+  "findings": {
+    "prediction_engine": {
+      "latest_signal": {
+        "timestamp": "2026-10-29T13:23:33Z",
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "source_errors": [
+          "GitHub model token missing",
+          "Groq HTTP 429"
+        ],
+        "status": "STALE_INVALID_NOT_A_FORECAST"
+      },
+      "legacy_accuracy": {
+        "checked": 1683,
+        "correct": 772,
+        "reported_pct": 45.9,
+        "method": "variable elapsed horizons after minimum 24h; one later live price; neutral ±2% band counted as hit; historical rows rewritten",
+        "status": "NOT_COMPARABLE"
+      },
+      "proposed_safety_fix": {
+        "pr": 1355,
+        "state": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+        "head": "33776a0f838e875a8c1dfedc046105520b75659f",
+        "tests": "347 + 8 subtests",
+        "gate": "PASS_MERGE_DISABLED",
+        "scope": "mark NOT_EVALUATED; preserve legacy metric; stop history mutation; read-only artifact workflow"
+      },
+      "next_model_requirement": "Build a separate immutable fixed-horizon forecast/outcome ledger; do not revive the legacy percentage."
+    },
+    "workflow_safety": {
+      "cross_analysis": {
+        "main_permission": "contents:write",
+        "triggers": [
+          "hourly schedule",
+          "workflow_run",
+          "workflow_dispatch"
+        ],
+        "auto_commit_push": true,
+        "proposal_pr": 1373
+      },
+      "merge_queue": {
+        "main_permissions": [
+          "contents:write",
+          "pull-requests:write"
+        ],
+        "default_dry_run": false,
+        "max_prs": 0,
+        "mode_all_available": true,
+        "proposal_pr": 1369
+      },
+      "hf_merge": {
+        "main_remote_code_token_exposure": true,
+        "proposal_pr": 1374,
+        "separate_upload_runner": true,
+        "upload_not_executed": true
+      },
+      "paper_trading": {
+        "position_size": 0.012445158497236623,
+        "position_product": null,
+        "avg_entry_price": 80436.84,
+        "cash_usd": 9009.936613782476,
+        "trade_count": 126,
+        "protection_pr": 1367,
+        "state_mutated": false
+      },
+      "approval_workflow_anomaly": {
+        "workflow_dispatch_only": true,
+        "push_event_failures": true,
+        "zero_jobs": true,
+        "root_cause": "UNKNOWN"
+      }
+    },
+    "pull_requests": {
+      "#1355": "Open draft, unmerged, mergeable; 21 commits behind main; changed paths do not overlap intervening main-only changes; no fresh current-main merge-commit CI.",
+      "#1373": "Open draft, unmerged, mergeable; 4 commits behind main; no changed-path overlap; exact-head CI/gate previously passed.",
+      "#1374": "Open draft, unmerged, mergeable; 3 commits behind main; no changed-path overlap; exact-head CI/gate previously passed.",
+      "#1369": "Open draft, unmerged, mergeable; 9 commits behind main; mutation-capable queue read-only replacement proposal.",
+      "#1367": "Open draft, unmerged, mergeable; unidentified paper-position guard."
+    },
+    "safety_actions": {
+      "main_modified": false,
+      "pr_merged": false,
+      "force_push": false,
+      "workflow_dispatch": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false,
+      "external_upload": false
+    }
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
