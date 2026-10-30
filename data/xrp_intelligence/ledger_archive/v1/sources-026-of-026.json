@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 25,
+  "chunk_count": 26,
+  "record_count": 4,
+  "created_at_utc": "2026-10-30T08:28:30Z",
+  "records": [
+    {
+      "id": "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-PREINCIDENT-20261029T0800Z",
+      "evidence_class": "PUBLIC_XRPL_BALANCE_DATASET_WITH_PUBLISHED_METHODOLOGY",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "dataset_url": "https://xrp-insights.com/exchange-balances/data.json",
+      "title": "XRP Insights exchange balances — pre-Binance-incident daily snapshot",
+      "published_at": "2026-10-29T08:00:00Z",
+      "accessed_at_utc": "2026-10-30T08:28:30Z",
+      "note": "The October 29 08:00 UTC pre-incident snapshot totals 22.58B XRP in 701 XRPL wallets publicly attributed by XRPSCAN labels to 24 exchanges. The same-wallet change is -17.4M XRP (-0.08%) over Oct 22–29 and +35.8M (+0.18%) over Sep 29–Oct 29. Exchange balances include hot wallets, deposit hubs and cold storage, not tradable float. Binance 2.80B includes 327.4M Binance-Peg XRP reserve and 14.3M Binance US; Coinbase 5.84B includes 151.4M cbXRP reserve and 5.79B cold-labeled wallets; Bitbank 575.4M; SBI VC Trade 60.9M; Upbit 6.42B; Bithumb 1.85B; Coinone 317.7M. 488.4M tracked XRP is identified as non-customer reserves/funds: 325.8M Binance-Peg, 151.4M cbXRP, 11.2M insurance/charity. 48% of tracked XRP is cold-labeled, 14% hot-labeled and 38.4% unclassified. Twenty-two newly tracked wallets added 2.21B XRP to the naive total; same-wallet changes exclude this coverage jump. Method: daily rippled account_info on validated ledger; XRPSCAN public labels for attribution. Same-wallet change still cannot distinguish customer withdrawal from transfer to an untracked wallet. Snapshot predates the October 29 Binance incident."
+    },
+    {
+      "id": "SRC-TOKENPOST-BINANCE-XRP-POR-10077-20261029T2250EDT",
+      "evidence_class": "SECONDARY_REPORT_CITING_BINANCE_OFFICIAL_POR_PAGE",
+      "url": "https://www.tokenpost.com/news/business/44164",
+      "title": "TokenPost — Binance October 1 PoR reports XRP reserve ratio 100.77%",
+      "published_at": "2026-10-29T22:50:00-04:00",
+      "accessed_at_utc": "2026-10-30T08:28:30Z",
+      "note": "TokenPost reports Binance's October 1, 2026 PoR snapshot showed XRP reserve ratio 100.77%, alongside BTC 100.35%, ETH 100.00%, USDT 103.88%, USDC 108.26%, BNB 100.47% and SOL 100.00%. The article provides BTC and ETH balances but not the raw XRP customer-liability and on-chain reserve balances or XRP address list. This is secondary corroboration of the 100.77% figure, not an independently extracted official XRP PoR payload."
+    },
+    {
+      "id": "SRC-GATENEWS-BINANCE-XRP-POR-10077-20261030T0231Z",
+      "evidence_class": "SECONDARY_EXCHANGE_NEWS_REPORT_CITING_BINANCE_OFFICIAL_POR",
+      "url": "https://www.gate.com/news/detail/binance-maintains-100-reserve-ratios-customer-assets-reach-1294-billion-as-25293502",
+      "title": "Gate News — Binance October 1 PoR asset ratios",
+      "published_at": "2026-10-30T02:31:32Z",
+      "accessed_at_utc": "2026-10-30T08:28:30Z",
+      "note": "Gate News reports, citing Binance's official October 1 PoR page, XRP reserve ratio 100.77% alongside BNB 100.47%, SOL 100.00%, BTC 100.35%, ETH 100.00%, USDT 103.88% and USDC 108.26%. It does not provide the raw XRP account-liability balance, wallet balances or five-wallet crosswalk. Secondary corroboration of the ratio only."
+    },
+    {
+      "id": "SRC-TOKENPOST-BINANCE-XRP-RESERVES-SEP30-20261002",
+      "evidence_class": "SECONDARY_CRYPTOQUANT_DERIVED_EXCHANGE_RESERVE_SERIES",
+      "url": "https://www.tokenpost.com/news/investing/26286",
+      "title": "TokenPost — Binance XRP reserve series at September 30",
+      "published_at": "2026-10-02T00:19:00-04:00",
+      "accessed_at_utc": "2026-10-30T08:28:30Z",
+      "note": "TokenPost, citing CryptoQuant-derived exchange reserve data, reports Binance XRP reserves around 2.647B on September 30, down approximately 57M from September 27. This is a narrower exchange-reserve series and predates the October 1 PoR snapshot. It is not directly comparable to XRP Insights' 2.80B October 29 attributed-wallet total, which explicitly includes 327.4M Binance-Peg reserve and 14.3M Binance US."
+    }
+  ]
+}
