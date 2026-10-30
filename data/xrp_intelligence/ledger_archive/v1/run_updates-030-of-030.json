@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 29,
+  "chunk_count": 30,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:49:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:49:00Z",
+      "update_type": "FIX_SNAPSHOT_PATH_REFERENCE_VALIDATION_FAILURE",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "failed_head_sha": "d7e6bc4379ac6efee2a0d501be72182b6e4a3c72",
+      "validator_run_id": 41028884793,
+      "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41028884793",
+      "validator_tests_passed": 17,
+      "validator_tests_failed": 1,
+      "validator_error": "snapshot reference snapshot_path does not match snapshot file",
+      "root_cause": "The immutable snapshot JSON did not contain the required snapshot_path field matching the index pointer. All 80 archive shards were checked; the only reported error was the snapshot-path mismatch.",
+      "gate_run_id": 41028884874,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41028884874",
+      "fix": "Create a new v2 immutable snapshot with captured_at_utc, snapshot_id and snapshot_path matching the latest index pointer; preserve v1 unchanged.",
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "main_modified": false,
+      "merge_performed": false
+    }
+  ]
+}
