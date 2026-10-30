@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "XRP-ADR-20261030T102200Z-CIRCLE-MINT-FIAT-FLOW-CONTRACT",
+  "captured_at_utc": "2026-10-30T10:22:00Z",
+  "title": "Treat Circle Mint fiat mint/redemption as a scoped actual-capital series, separate from on-chain volume and XRP demand",
+  "status": "DESIGNED_AND_RESEARCHED; FEATURE_NOT_ADMITTED",
+  "feature_contract": {
+    "name": "circle_mint_net_fiat_conversion_usd",
+    "raw_inputs": [
+      "circle_mint_usdc_minted_usd",
+      "circle_mint_usdc_redeemed_usd"
+    ],
+    "derived_formula": "minted_usd - redeemed_usd",
+    "aggregation_windows": [
+      "quarter",
+      "half_year",
+      "monthly_when_disclosed"
+    ],
+    "sign_convention": "positive=net fiat conversion into USDC through Circle Mint customers; negative=net USDC conversion back to fiat",
+    "provenance": "Circle SEC 10-Q; report period and publication timestamp preserved",
+    "scope": "Circle Mint customers only",
+    "exclusions": [
+      "secondary-market exchange trades",
+      "on-chain transfers between existing USDC holders",
+      "non-Circle-Mint distribution routes not included in the filing's metric",
+      "XRP spot purchases",
+      "XRP collateral deposits"
+    ],
+    "point_in_time_rules": "Do not use a filing before its public filing timestamp in backtests; retain both period-end and publication timestamps.",
+    "feature_admission": "CONTEXT_ONLY; not an XRP directional feature"
+  },
+  "decisions": [
+    "Record Q2 2026 gross mint USD83.004B, redemption USD86.784B, net -USD3.780B.",
+    "Record H1 2026 gross mint USD156.543B, redemption USD158.540B, net -USD1.997B.",
+    "Record 2025 comparatives separately: Q2 net +USD1.357B; H1 net +USD17.476B.",
+    "Do not treat the gross flows as unique new capital or as all USDC market activity; they are customer-initiated Circle Mint fiat conversions.",
+    "Record Coinbase-agreement distribution costs and the derived 78.7% Q2 / 80.0% H1 ratios, but label the denominator precisely as total distribution, transaction and other costs.",
+    "Do not equate these ratios with Coinbase's share of USDC balances, reserve income, total distributor payouts or XRP demand.",
+    "Use these measures only in stablecoin issuer economics and macro context until a point-in-time, source-independent, out-of-sample test demonstrates incremental predictive value."
+  ],
+  "rationale": [
+    "Circle Q2 2026 10-Q lines 1598-1605 explicitly defines mint/redemption as fiat conversion initiated by Circle Mint customers.",
+    "Circle Q2 2026 10-Q lines 1628-1631 discloses Coinbase agreement cost mechanics and amounts.",
+    "Circle Q2 2026 10-Q lines 1507-1510 states distribution costs to key distributors such as Coinbase and Binance depend on platform balances and actions/policies the company does not control."
+  ],
+  "derived_metrics": {
+    "q2_2026_coinbase_agreement_cost_share_of_total_distribution_transaction_other_costs_percent": 78.6966,
+    "h1_2026_coinbase_agreement_cost_share_of_total_distribution_transaction_other_costs_percent": 79.9877
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "next_action": "Reconcile Circle Q3 mint/redeem, USDC circulation and Coinbase distribution costs when the Q3 filing is published; compare with exchange netflows and stablecoin market-cap changes without treating them as interchangeable."
+}
