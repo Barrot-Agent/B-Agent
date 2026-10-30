@@ -127,6 +127,41 @@ def test_current_repository_ledger_validates_read_only():
     assert report["archive_shards_checked"] == sum(
         index_data[name]["chunk_count"] for name in ("sources", "run_updates", "limitations")
     )
+    assert report["archive_policy_counts_reconciled"] is True
+
+
+def test_archive_policy_counts_must_match_live_pointers(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="3.0")
+    source_specs = [_write_archive_shard(tmp_path, "sources", [{"id": "SRC-POLICY"}])]
+    run_specs = [_write_archive_shard(tmp_path, "run_updates", [{"source_ids": ["SRC-POLICY"]}])]
+    limitation_specs = [_write_archive_shard(tmp_path, "limitations", ["preserve"])]
+    index["sources"] = _archive_pointer("sources", source_specs, 1)
+    index["run_updates"] = _archive_pointer("run_updates", run_specs, 1)
+    index["limitations"] = _archive_pointer("limitations", limitation_specs, 1)
+    index["archive_policy"] = {
+        "archive_schema_version": "1.0",
+        "archive_shards_total": 3,
+        "arrays": {
+            "sources": {"record_count": 1, "chunk_count": 1},
+            "run_updates": {"record_count": 1, "chunk_count": 1},
+            "limitations": {"record_count": 1, "chunk_count": 1},
+        },
+    }
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "PASS", report
+    assert report["archive_policy_counts_reconciled"] is True
+
+    index["archive_policy"]["arrays"]["sources"]["record_count"] = 2
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert report["archive_policy_counts_reconciled"] is False
+    assert any("archive_policy arrays.sources record_count" in error for error in report["errors"])
+
+    index["archive_policy"]["arrays"]["sources"]["record_count"] = 1
+    index["archive_policy"]["archive_shards_total"] = 4
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("archive_shards_total" in error for error in report["errors"])
 
 
 def _write_archive_shard(tmp_path, array_name, records, *, chunk_index=0, chunk_count=1):
