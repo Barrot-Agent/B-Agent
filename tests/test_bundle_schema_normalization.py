@@ -47,12 +47,12 @@ def test_gate_still_rejects_string_list_fields_without_normalization():
     assert codes(review).count("REQUIRED_FIELD_INVALID") == 3
 
 
-def test_gate_still_requires_authorization_keyword():
+def test_gate_accepts_authorization_noun():
     bundle = sample_bundle()
-    bundle["constraints"] = list(DEFAULT_CONSTRAINTS)  # 'authorization' is not 'authorize'
+    bundle["constraints"] = list(DEFAULT_CONSTRAINTS)
     review = review_work_bundle(bundle)
-    assert "AUTHORIZATION_CONSTRAINT_MISSING" in codes(review)
-    assert review.valid is False
+    assert "AUTHORIZATION_CONSTRAINT_MISSING" not in codes(review)
+    assert review.valid is True
 
 
 # --- unambiguous coercions -----------------------------------------------
@@ -168,6 +168,26 @@ def test_extracts_authorization_boundaries_verbatim():
 ])
 def test_heading_variants(body):
     assert len(extract_authorization_boundaries(body)) == 1
+
+
+def test_extracts_safety_and_execution_constraints_verbatim():
+    body = """## Safety and execution constraints
+
+- Work only on a new branch from current main.
+- Never force-push, reset, clean, stash, or discard user work.
+- Never merge PRs or deploy production.
+
+## Definition of done
+A reviewable PR.
+"""
+    items = extract_authorization_boundaries(body)
+    assert len(items) == 3
+    assert items[0].endswith("Work only on a new branch from current main.")
+    assert items[1].endswith("Never force-push, reset, clean, stash, or discard user work.")
+    assert items[2].endswith("Never merge PRs or deploy production.")
+    bundle = sample_bundle()
+    bundle["constraints"] = DEFAULT_CONSTRAINTS + items
+    assert "AUTHORIZATION_CONSTRAINT_MISSING" not in codes(review_work_bundle(bundle))
 
 
 @pytest.mark.parametrize("body", [
