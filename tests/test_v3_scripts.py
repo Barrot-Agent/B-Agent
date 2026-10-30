@@ -718,8 +718,8 @@ def test_cognitive_pingpong_workflow_is_manual_read_only_and_artifact_based():
 
     assert "workflow_dispatch:" in workflow
     assert "schedule:" not in workflow
-    assert "\\n  push:" not in workflow
-    assert "permissions:\\n  contents: read" in workflow
+    assert "  push:" not in workflow
+    assert "  contents: read" in workflow
     assert "issues: write" not in workflow
     assert "pull-requests: write" not in workflow
     assert "git push" not in workflow
