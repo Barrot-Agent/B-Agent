@@ -1,0 +1,289 @@
+{
+  "record_type": "xrp_relationship_graph_addendum",
+  "schema_version": "1.0",
+  "graph_id": "GRAPH-20261030T212826Z-RIPPLE-AMM-VAULT-BINANCE-DEPOSIT-REFRESH",
+  "captured_at_utc": "2026-10-30T21:28:26Z",
+  "source_ids": [
+    "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2128Z",
+    "SRC-BITHOMP-RP4X2H-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z",
+    "SRC-BITHOMP-RNXP4H-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RNXP4H-TRANSACTIONS-20261030T2128Z",
+    "SRC-TRACKWHALE-XRP-EXCHANGE-FLOWS-20261030T2120Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z",
+    "SRC-BINANCE-REPLENISHMENT-20261030T2040Z"
+  ],
+  "edges": [
+    {
+      "edge_id": "E-20261030T212826Z-01",
+      "from": "Ripple rsV5XY4tm9dBN8mPX7RPEDuHLaA5fZjFSA",
+      "relation": "activated",
+      "to": "rJqi",
+      "amount_xrp": 100,
+      "activation_date": "2021-10-27",
+      "status": "CONFIRMED_EXPLORER_ACTIVATION_WITH_LABEL_LIMITATION",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z"
+      ],
+      "notes": "Bithomp also displays Xaman Account: Ripple for rJqi; neither label nor activation proves legal beneficial ownership."
+    },
+    {
+      "edge_id": "E-20261030T212826Z-02",
+      "from": "rJqi (Xaman Account label: Ripple)",
+      "relation": "transfers_XRP_to",
+      "to": "raRVLN",
+      "amount_xrp": 35000000,
+      "time_utc": "2026-10-30T20:07:00Z",
+      "status": "CONFIRMED_PUBLIC_LEDGER_TRANSFER_WITH_ACCOUNT_LABEL_LIMITATION",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z",
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2128Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T212826Z-03",
+      "from": "rJqi",
+      "relation": "transfers_XRP_to",
+      "to": "raRVLN",
+      "amount_xrp": 120000000,
+      "time_utc": "2026-10-30T08:30:00Z",
+      "status": "CONFIRMED_PUBLIC_LEDGER_TRANSFER",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2128Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T212826Z-04",
+      "from": "rJqi",
+      "relation": "transfers_XRP_to",
+      "to": "raRVLN",
+      "amount_xrp": 28000000,
+      "time_utc": "2026-10-30T06:42:00Z",
+      "status": "CONFIRMED_PUBLIC_LEDGER_TRANSFER",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2128Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T212826Z-05",
+      "from": "rJqi",
+      "relation": "funded_activated",
+      "to": "rP4X2h",
+      "amount_xrp": 70000000,
+      "activation_date": "2023-10-02",
+      "status": "CONFIRMED_EXPLORER_ACTIVATION_HISTORY",
+      "source_ids": [
+        "SRC-BITHOMP-RP4X2H-ACCOUNT-20261030T2128Z"
+      ],
+      "notes": "Historical funding/activation edge, not proof of current common control."
+    },
+    {
+      "edge_id": "E-20261030T212826Z-06",
+      "from": "rP4X2h",
+      "relation": "funded_activated",
+      "to": "raRVLN",
+      "amount_xrp": 2000,
+      "activation_date": "2024-12-02",
+      "status": "CONFIRMED_EXPLORER_ACTIVATION_HISTORY",
+      "source_ids": [
+        "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z"
+      ],
+      "notes": "Historical activation edge, not proof of current common control."
+    },
+    {
+      "edge_id": "E-20261030T212826Z-07",
+      "from": "raRVLN (AMM pool; vault/loan-broker association)",
+      "relation": "transfers_XRP_to",
+      "to": "r39TA (unlabelled)",
+      "amount_xrp": 20000000,
+      "time_utc": "2026-10-30T20:16:00Z",
+      "status": "CONFIRMED_PUBLIC_LEDGER_TRANSFER_WITH_POOL_PROVENANCE_LIMITATION",
+      "source_ids": [
+        "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z",
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T212826Z-08",
+      "from": "raRVLN",
+      "relation": "transfers_XRP_to",
+      "to": "r39TA",
+      "amount_xrp": 186000000,
+      "time_window_utc": "2026-10-30T13:44:00Z/2026-10-30T14:09:00Z",
+      "status": "CONFIRMED_VISIBLE_EXPLORER_TRANSFERS",
+      "source_ids": [
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z"
+      ],
+      "notes": "Six visible payments; same-unit provenance not established."
+    },
+    {
+      "edge_id": "E-20261030T212826Z-09",
+      "from": "r39TA (unlabelled)",
+      "relation": "deposits_XRP_to",
+      "to": "rNxp4h (Binance-labelled)",
+      "amount_xrp": 19999197.11,
+      "time_utc": "2026-10-30T20:47:00Z",
+      "destination_tag": 499932645,
+      "status": "CONFIRMED_EXCHANGE_DEPOSITS_NOT_SALES",
+      "source_ids": [
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z",
+        "SRC-BITHOMP-RNXP4H-TRANSACTIONS-20261030T2128Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T212826Z-10",
+      "from": "r39TA",
+      "relation": "deposits_XRP_to",
+      "to": "rNxp4h",
+      "amount_xrp": 68924571.602513,
+      "time_window_utc": "2026-10-30T17:56:00Z/2026-10-30T19:54:00Z",
+      "destination_tag": 499932645,
+      "status": "CONFIRMED_VISIBLE_EXCHANGE_DEPOSITS_NOT_SALES",
+      "source_ids": [
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z",
+        "SRC-BITHOMP-RNXP4H-TRANSACTIONS-20261030T2128Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T212826Z-11",
+      "from": "rDAE53 (Binance-labelled; incident source account)",
+      "relation": "activated_historically",
+      "to": "rNxp4h (Binance-labelled)",
+      "activation_date": "2023-01-19",
+      "status": "CONFIRMED_PRE_INCIDENT_ACCOUNT_FAMILY_LINK",
+      "source_ids": [
+        "SRC-BITHOMP-RNXP4H-ACCOUNT-20261030T2128Z"
+      ],
+      "notes": "The activation predates the incident by years and does not establish compromise or PoR inclusion."
+    },
+    {
+      "edge_id": "E-20261030T212826Z-12",
+      "from": "Bithomp account profile",
+      "relation": "labels_and_reports",
+      "to": "rNxp4h as Binance; signer for five addresses; balance about 204.2M XRP",
+      "status": "EXPLORER_LABEL_AND_POINT_IN_TIME_BALANCE",
+      "source_ids": [
+        "SRC-BITHOMP-RNXP4H-ACCOUNT-20261030T2128Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T212826Z-13",
+      "from": "XRPLWin",
+      "relation": "classifies",
+      "to": "raRVLN as AMM pool associated with vault and loan broker",
+      "status": "EXPLORER_CLASSIFICATION_OBJECTS_UNRESOLVED",
+      "source_ids": [
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T212826Z-14",
+      "from": "TrackWhale tracked-large-transfer sample",
+      "relation": "reports_seven_day_XRP_exchange_netflow",
+      "to": "-97.28M XRP",
+      "status": "SECONDARY_SELECTED_TRANSFER_SAMPLE_NOT_TOTAL_EXCHANGE_FLOW",
+      "source_ids": [
+        "SRC-TRACKWHALE-XRP-EXCHANGE-FLOWS-20261030T2120Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-20261030T212826Z-01",
+      "claim": "Ripple-associated treasury or institutional liquidity routing passed through an AMM/vault/loan-broker account and an intermediary before Binance deposit.",
+      "assessment": "POSSIBLE_BUT_UNPROVEN",
+      "supporting_evidence": [
+        "rJqi has a Ripple Xaman label and Ripple activation history.",
+        "rJqi transferred 35M XRP to raRVLN at 20:07 UTC.",
+        "rJqi historically funded rP4X2h, which activated raRVLN.",
+        "raRVLN transferred 20M XRP to r39TA at 20:16 UTC; r39TA sent about 20M to Binance-labelled rNxp4h at 20:47 UTC."
+      ],
+      "disconfirming_evidence": [
+        "AMM/pool activity breaks same-unit provenance.",
+        "r39TA has no identified owner or service.",
+        "rNxp4h is not established as a reserve wallet.",
+        "No instruction, contract, settlement or sale record links the parties."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-02",
+      "claim": "Market-maker inventory rebalancing through an AMM pool followed by exchange deposit.",
+      "assessment": "PLAUSIBLE_ALTERNATIVE",
+      "supporting_evidence": [
+        "raRVLN is classified as an AMM pool and associated vault/loan broker.",
+        "Large XRP transfers and a destination-tagged Binance deposit are consistent with inventory routing."
+      ],
+      "disconfirming_evidence": [
+        "No market maker, trading strategy, pool pair or executed order is identified."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-03",
+      "claim": "Vault or loan-broker collateral settlement generated the observed XRP transfers.",
+      "assessment": "PLAUSIBLE_BUT_UNVERIFIED",
+      "supporting_evidence": [
+        "XRPLWin associates raRVLN with a vault and loan broker.",
+        "The route includes large XRP movements and partial RLUSD activity at the intermediary."
+      ],
+      "disconfirming_evidence": [
+        "No vault ID, loan record, collateral posting, borrower, lender or liquidation is resolved."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-04",
+      "claim": "The route is a mixture of unrelated user deposits and shared AMM activity rather than one institution-directed flow.",
+      "assessment": "STRONG_COUNTER_HYPOTHESIS",
+      "supporting_evidence": [
+        "r39TA is unlabelled and activated by an unlabelled account.",
+        "AMM pools are shared liquidity mechanisms.",
+        "rNxp4h uses a destination tag and receives ordinary deposits from multiple venues."
+      ],
+      "disconfirming_evidence": [
+        "Repeated large transfers and the historical rJqi→rP4X2h→raRVLN activation lineage make the sequence worth further investigation."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-05",
+      "claim": "The r39TA deposits represent Binance's post-incident XRP replenishment purchases.",
+      "assessment": "WEAK_SPECULATION_NOT_ADMITTED",
+      "supporting_evidence": [
+        "Binance announced aggregate acquisition of affected tokens and the destination is Binance-labelled."
+      ],
+      "disconfirming_evidence": [
+        "No XRP-specific acquisition amount is disclosed.",
+        "rNxp4h is not proven to be a reserve address.",
+        "The source is unlabelled and could be customer deposits.",
+        "No reserve accounting or executed purchase is shown."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-06",
+      "claim": "The Ripple-associated route establishes immediate XRP sell pressure or a direct price effect.",
+      "assessment": "NOT_SUPPORTED",
+      "supporting_evidence": [
+        "A portion of XRP reached a Binance-labelled account."
+      ],
+      "disconfirming_evidence": [
+        "Deposits are not executed sales.",
+        "No order-book fill or OTC settlement is identified.",
+        "TrackWhale's tracked sample is net outflow over seven days.",
+        "ETF flows predate the incident and market data are not synchronized."
+      ]
+    }
+  ],
+  "disconfirming_evidence": [
+    "AMM pool activity prevents same-unit tracing through raRVLN.",
+    "r39TA is unlabelled and its beneficial owner is unknown.",
+    "rNxp4h is Binance-labelled but its hot/cold/deposit/reserve function and PoR inclusion are unknown.",
+    "The two 20:47 deposits are 31 minutes after the 20M receipt, and amount/balance consistency does not prove same XRP units or instructions.",
+    "rNxp4h activation by rDAE53 occurred in 2023, long before the 2026 incident.",
+    "TrackWhale's selected seven-day sample is net exchange outflow, countering a broad exchange-accumulation interpretation.",
+    "No executed sale, reserve purchase, OTC settlement or XRP-specific Binance replenishment is disclosed."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

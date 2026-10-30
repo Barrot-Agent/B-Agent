@@ -1,0 +1,466 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "index_format_version": "3.0",
+  "snapshot_id": "XRP-20261030T212826Z-RIPPLE-AMM-VAULT-BINANCE-DEPOSIT-REFRESH",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T212826Z-ripple-amm-vault-to-binance-deposit-refresh.json",
+  "captured_at_utc": "2026-10-30T21:28:26Z",
+  "data_cutoff_utc": "2026-10-30T21:28:26Z",
+  "research_scope": [
+    "XRP custody and exchange positioning",
+    "XRPL account-level capital-flow reconstruction",
+    "Ripple-associated wallet lineage",
+    "AMM/vault/loan-broker collateral hypotheses",
+    "Binance deposit and post-incident reserve hypotheses",
+    "ETF and derivatives source-coverage reconciliation",
+    "Barrot prediction-engine and repository safety"
+  ],
+  "source_ids": [
+    "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2128Z",
+    "SRC-BITHOMP-RP4X2H-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z",
+    "SRC-BITHOMP-RNXP4H-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RNXP4H-TRANSACTIONS-20261030T2128Z",
+    "SRC-TRACKWHALE-XRP-EXCHANGE-FLOWS-20261030T2120Z",
+    "SRC-MAKETO-XRP-ETF-FLOWS-20261030T2120Z",
+    "SRC-ALPHAFINANCE-XRP-LIQUIDATIONS-20261030T1330Z",
+    "SRC-SWIFTEDGE-XRP-POSITION-LIQUIDATIONS-20261030T1405Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z",
+    "SRC-XRP-INSIGHTS-ETF-20261030T2040Z",
+    "SRC-BINANCE-REPLENISHMENT-20261030T2040Z",
+    "SRC-REUTERS-CRYPTO-RISKOFF-20261030T2040Z"
+  ],
+  "sources": [
+    "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2128Z",
+    "SRC-BITHOMP-RP4X2H-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z",
+    "SRC-BITHOMP-RNXP4H-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RNXP4H-TRANSACTIONS-20261030T2128Z",
+    "SRC-TRACKWHALE-XRP-EXCHANGE-FLOWS-20261030T2120Z",
+    "SRC-MAKETO-XRP-ETF-FLOWS-20261030T2120Z",
+    "SRC-ALPHAFINANCE-XRP-LIQUIDATIONS-20261030T1330Z",
+    "SRC-SWIFTEDGE-XRP-POSITION-LIQUIDATIONS-20261030T1405Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z",
+    "SRC-XRP-INSIGHTS-ETF-20261030T2040Z",
+    "SRC-BINANCE-REPLENISHMENT-20261030T2040Z",
+    "SRC-REUTERS-CRYPTO-RISKOFF-20261030T2040Z"
+  ],
+  "source_reference_count": 16,
+  "event_timeline": [
+    {
+      "time_utc": "2026-10-30T06:42:00Z",
+      "event": "rJqi sends 28M XRP to raRVLN"
+    },
+    {
+      "time_utc": "2026-10-30T08:30:00Z",
+      "event": "rJqi sends 120M XRP to raRVLN"
+    },
+    {
+      "time_utc": "2026-10-30T13:44:00Z",
+      "event": "Visible raRVLN-to-r39TA transfer sequence begins; six payments total 186M XRP through 14:09 UTC"
+    },
+    {
+      "time_utc": "2026-10-30T17:56:00Z",
+      "event": "Previously captured r39TA-to-Binance-labelled rNxp4h deposits begin"
+    },
+    {
+      "time_utc": "2026-10-30T19:54:00Z",
+      "event": "Previously captured six r39TA-to-rNxp4h deposits end, totaling 68,924,571.602513 XRP"
+    },
+    {
+      "time_utc": "2026-10-30T20:07:00Z",
+      "event": "rJqi sends 35M XRP to raRVLN"
+    },
+    {
+      "time_utc": "2026-10-30T20:16:00Z",
+      "event": "raRVLN sends 20M XRP to r39TA"
+    },
+    {
+      "time_utc": "2026-10-30T20:47:00Z",
+      "event": "r39TA sends 9,999,197.11 XRP and 10M XRP to Binance-labelled rNxp4h using destination tag 499932645"
+    },
+    {
+      "time_utc": "2026-10-30T21:20:00Z",
+      "event": "TrackWhale seven-day tracked-large-transfer snapshot reports net exchange outflow of 97.28M XRP"
+    },
+    {
+      "time_utc": "2026-10-30T21:28:26Z",
+      "event": "Bithomp account overview pages show rJqi 30.5M XRP, raRVLN 19.6M, r39TA 5.9M and rNxp4h 204.2M XRP"
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261030T212826Z-01",
+      "asset": "XRP",
+      "metric": "rJqi_to_raRVLN_35M_payment",
+      "value": {
+        "amount_xrp": 35000000,
+        "time_utc": "2026-10-30T20:07:00Z",
+        "tx_hash": "6EB9F228D2D58631A047D2D8AD003538CD81D7E056028DDD48B809B23B7AD9C7"
+      },
+      "classification": "CONFIRMED_PUBLIC_LEDGER_TRANSFER_WITH_ACCOUNT_LABEL_LIMITATION",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z",
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2128Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-02",
+      "asset": "XRP",
+      "metric": "visible_rJqi_to_raRVLN_total",
+      "value": {
+        "payments_xrp": [
+          28000000,
+          120000000,
+          35000000
+        ],
+        "total_xrp": 183000000
+      },
+      "classification": "PUBLIC_EXPLORER_VISIBLE_WINDOW",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2128Z"
+      ],
+      "admission_status": "NOT_ADMITTED",
+      "caveat": "Partial transaction window; no same-unit provenance after receipt."
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-03",
+      "asset": "XRP",
+      "metric": "Ripple_associated_activation_lineage",
+      "value": {
+        "ripple_account": "rsV5XY4tm9dBN8mPX7RPEDuHLaA5fZjFSA",
+        "rJqi": "rJqiMb94hyz41SBTNr2AyPNW8AzELa8nE",
+        "rJqi_to_rP4X2h_funding_xrp": 70000000,
+        "rP4X2h": "rP4X2hTa7A7udDbE6wczXvPz7XZ63sKxv3",
+        "rP4X2h_to_raRVLN_activation_xrp": 2000,
+        "raRVLN": "raRVLN1i5QFF6w8cwV3RovtTkjFj3qyNRf"
+      },
+      "classification": "CONFIRMED_EXPLORER_ACTIVATION_AND_FUNDING_HISTORY_WITH_OWNERSHIP_LIMITATION",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z",
+        "SRC-BITHOMP-RP4X2H-ACCOUNT-20261030T2128Z",
+        "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-04",
+      "asset": "XRP",
+      "metric": "raRVLN_to_r39TA_visible_transfers",
+      "value": {
+        "six_payments_13_44_to_14_09_utc_xrp": 186000000,
+        "separate_payment_20_16_utc_xrp": 20000000,
+        "total_visible_xrp": 206000000
+      },
+      "classification": "CONFIRMED_PUBLIC_EXPLORER_ACCOUNT_TRANSFERS",
+      "source_ids": [
+        "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z",
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z"
+      ],
+      "admission_status": "NOT_ADMITTED",
+      "caveat": "AMM pool/vault/loan-broker intermediary; no same-unit provenance."
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-05",
+      "asset": "XRP",
+      "metric": "r39TA_to_Binance_labelled_rNxp4h_deposits",
+      "value": {
+        "earlier_six_payments_xrp": 68924571.602513,
+        "new_two_payments_xrp": 19999197.11,
+        "total_visible_xrp": 88923768.712513,
+        "new_payment_times_utc": [
+          "2026-10-30T20:47:00Z",
+          "2026-10-30T20:47:00Z"
+        ],
+        "destination_tag": 499932645
+      },
+      "classification": "CONFIRMED_EXCHANGE_DEPOSITS_NOT_EXECUTED_SALES",
+      "source_ids": [
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z",
+        "SRC-BITHOMP-RNXP4H-TRANSACTIONS-20261030T2128Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-06",
+      "asset": "XRP",
+      "metric": "r39TA_balance_change_between_page_captures",
+      "value": {
+        "prior_20_40_capture_xrp": 25900000,
+        "current_capture_xrp": 5900000,
+        "approximate_change_xrp": -20000000
+      },
+      "classification": "ROUNDED_POINT_IN_TIME_BALANCE_COMPARISON",
+      "source_ids": [
+        "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2128Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2128Z"
+      ],
+      "admission_status": "NOT_ADMITTED",
+      "caveat": "Dynamic overview and partial transaction history; balance change is consistent with, but does not prove, onward movement of the 20M receipt."
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-07",
+      "asset": "XRP",
+      "metric": "rNxp4h_balance_change_between_page_captures",
+      "value": {
+        "prior_20_40_capture_xrp": 184200000,
+        "current_capture_xrp": 204200000,
+        "approximate_change_xrp": 20000000
+      },
+      "classification": "ROUNDED_POINT_IN_TIME_BALANCE_COMPARISON",
+      "source_ids": [
+        "SRC-BITHOMP-RNXP4H-ACCOUNT-20261030T2128Z",
+        "SRC-BITHOMP-RNXP4H-TRANSACTIONS-20261030T2128Z"
+      ],
+      "admission_status": "NOT_ADMITTED",
+      "caveat": "Balance is not classified as customer, hot, cold or reserve inventory."
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-08",
+      "asset": "XRP",
+      "metric": "seven_day_tracked_large_transfer_exchange_netflow",
+      "value": {
+        "inflows_xrp": 210950000,
+        "outflows_xrp": 308230000,
+        "netflow_xrp": -97280000,
+        "inflow_transfer_count": 14,
+        "outflow_transfer_count": 6,
+        "cutoff_utc": "2026-10-30T21:20:00Z"
+      },
+      "classification": "SECONDARY_TRACKED_LARGE_TRANSFER_SAMPLE",
+      "source_ids": [
+        "SRC-TRACKWHALE-XRP-EXCHANGE-FLOWS-20261030T2120Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-09",
+      "asset": "XRP",
+      "metric": "spot_XRP_ETF_flows_USD",
+      "value": {
+        "latest_completed_day": "2026-10-29",
+        "daily_net_flow_usd": 8430000,
+        "thirty_session_net_flow_usd": 98900000,
+        "cumulative_net_flow_usd": 1730000000,
+        "funds_with_inflow": 2,
+        "funds_with_no_movement": 3
+      },
+      "classification": "SECONDARY_HOLDINGS_BASED_AGGREGATE",
+      "source_ids": [
+        "SRC-MAKETO-XRP-ETF-FLOWS-20261030T2120Z"
+      ],
+      "admission_status": "NOT_ADMITTED",
+      "caveat": "Latest completed flow predates Binance XRP outflow at 20:05 UTC on October 29."
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-10",
+      "asset": "XRP",
+      "metric": "spot_XRP_ETF_holdings_delta",
+      "value": {
+        "settled_days": "2026-10-26_to_2026-10-29",
+        "net_change_xrp": 3440000,
+        "october_29_change_xrp": 6400000,
+        "holdings_xrp": 1196650000
+      },
+      "classification": "SECONDARY_HOLDINGS_DELTA_RECONSTRUCTION",
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-20261030T2040Z"
+      ],
+      "admission_status": "NOT_ADMITTED",
+      "caveat": "Fund coverage and adjustments differ from Maketo."
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-11",
+      "asset": "XRP",
+      "metric": "perpetual_derivatives_open_interest_and_liquidations",
+      "value": {
+        "provider": "Alpha Finance",
+        "cutoff_utc": "2026-10-30T13:30:00Z",
+        "price_usd": 1.2466,
+        "open_interest_usd": 2830000000,
+        "volume_24h_usd": 4710000000,
+        "long_liquidations_usd": 36800000,
+        "short_liquidations_usd": 2500000
+      },
+      "classification": "PROVIDER_SPECIFIC_AGGREGATED_AND_PARTLY_MODELLED",
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-LIQUIDATIONS-20261030T1330Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T212826Z-12",
+      "asset": "XRP",
+      "metric": "partial_public_positions_at_risk",
+      "value": {
+        "provider": "Swiftedge",
+        "cutoff_utc": "2026-10-30T14:05:00Z",
+        "price_usd": 1.2377,
+        "longs_within_2pct_downside_usd": 6500000,
+        "shorts_within_2pct_upside_usd": 0,
+        "coverage": "subset_of_publicly_followed_positions"
+      },
+      "classification": "PARTIAL_POSITION_SAMPLE_NOT_MARKET_TOTAL",
+      "source_ids": [
+        "SRC-SWIFTEDGE-XRP-POSITION-LIQUIDATIONS-20261030T1405Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    }
+  ],
+  "findings": [
+    {
+      "classification": "CONFIRMED_EXPLORER_LABEL_AND_ACTIVATION_EVIDENCE",
+      "statement": "Bithomp shows rJqi with Xaman Account: Ripple and activation by a Ripple-labelled account; this is stronger attribution evidence than a generic unlabeled wallet but is not legal beneficial-ownership proof."
+    },
+    {
+      "classification": "CONFIRMED_PUBLIC_LEDGER_TRANSFER",
+      "statement": "Bithomp displays 35M XRP from rJqi to raRVLN at 20:07 UTC, after earlier 28M and 120M transfers to the same account."
+    },
+    {
+      "classification": "CONFIRMED_HISTORICAL_ACTIVATION_LINEAGE",
+      "statement": "Bithomp shows rJqi funded/activated rP4X2h with 70M XRP in 2023, and rP4X2h activated raRVLN with 2,000 XRP in 2024; this creates an account-lineage edge, not proof of common beneficial ownership."
+    },
+    {
+      "classification": "EXPLORER_CLASSIFICATION_WITH_RATE_LIMIT",
+      "statement": "XRPLWin classifies raRVLN as an AMM pool and says it belongs to a vault and a loan broker; the pair, vault, loan-broker and collateral objects remain unresolved."
+    },
+    {
+      "classification": "CONFIRMED_PUBLIC_LEDGER_TRANSFER",
+      "statement": "Bithomp displays a 20M XRP payment from raRVLN to unlabelled r39TA at 20:16 UTC."
+    },
+    {
+      "classification": "CONFIRMED_PUBLIC_LEDGER_EXCHANGE_DEPOSITS",
+      "statement": "Bithomp displays two 20:47 UTC payments from r39TA to Binance-labelled rNxp4h totaling 19,999,197.11 XRP, with destination tag 499932645; together with six earlier deposits, visible transfers total 88,923,768.712513 XRP."
+    },
+    {
+      "classification": "CONFIRMED_EXPLORER_LABEL_AND_WALLET_FAMILY_LINK",
+      "statement": "Bithomp labels rNxp4h as Binance, reports 204.2M XRP and signer status for five addresses, and shows historical activation by rDAE53, one of the five incident source accounts; this predates the incident and does not establish compromise or PoR inclusion."
+    },
+    {
+      "classification": "SOURCE_COUNTER_EVIDENCE",
+      "statement": "TrackWhale's seven-day tracked-large-transfer sample shows net exchange outflow of 97.28M XRP despite the specific r39TA deposit route; this is not a full exchange-flow measure."
+    },
+    {
+      "classification": "TEMPORAL_DISCONFIRMATION",
+      "statement": "The latest completed October 29 ETF flows predate the first identified Binance XRP drain at 20:05 UTC, so they cannot be a response to that incident."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261030T212826Z-01",
+      "claim": "Ripple-associated treasury or institutional liquidity routing passed through an AMM/vault/loan-broker account and an intermediary before Binance deposit.",
+      "assessment": "POSSIBLE_BUT_UNPROVEN",
+      "supporting_evidence": [
+        "rJqi has a Ripple Xaman label and Ripple activation history.",
+        "rJqi transferred 35M XRP to raRVLN at 20:07 UTC.",
+        "rJqi historically funded rP4X2h, which activated raRVLN.",
+        "raRVLN transferred 20M XRP to r39TA at 20:16 UTC; r39TA sent about 20M to Binance-labelled rNxp4h at 20:47 UTC."
+      ],
+      "disconfirming_evidence": [
+        "AMM/pool activity breaks same-unit provenance.",
+        "r39TA has no identified owner or service.",
+        "rNxp4h is not established as a reserve wallet.",
+        "No instruction, contract, settlement or sale record links the parties."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-02",
+      "claim": "Market-maker inventory rebalancing through an AMM pool followed by exchange deposit.",
+      "assessment": "PLAUSIBLE_ALTERNATIVE",
+      "supporting_evidence": [
+        "raRVLN is classified as an AMM pool and associated vault/loan broker.",
+        "Large XRP transfers and a destination-tagged Binance deposit are consistent with inventory routing."
+      ],
+      "disconfirming_evidence": [
+        "No market maker, trading strategy, pool pair or executed order is identified."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-03",
+      "claim": "Vault or loan-broker collateral settlement generated the observed XRP transfers.",
+      "assessment": "PLAUSIBLE_BUT_UNVERIFIED",
+      "supporting_evidence": [
+        "XRPLWin associates raRVLN with a vault and loan broker.",
+        "The route includes large XRP movements and partial RLUSD activity at the intermediary."
+      ],
+      "disconfirming_evidence": [
+        "No vault ID, loan record, collateral posting, borrower, lender or liquidation is resolved."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-04",
+      "claim": "The route is a mixture of unrelated user deposits and shared AMM activity rather than one institution-directed flow.",
+      "assessment": "STRONG_COUNTER_HYPOTHESIS",
+      "supporting_evidence": [
+        "r39TA is unlabelled and activated by an unlabelled account.",
+        "AMM pools are shared liquidity mechanisms.",
+        "rNxp4h uses a destination tag and receives ordinary deposits from multiple venues."
+      ],
+      "disconfirming_evidence": [
+        "Repeated large transfers and the historical rJqi→rP4X2h→raRVLN activation lineage make the sequence worth further investigation."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-05",
+      "claim": "The r39TA deposits represent Binance's post-incident XRP replenishment purchases.",
+      "assessment": "WEAK_SPECULATION_NOT_ADMITTED",
+      "supporting_evidence": [
+        "Binance announced aggregate acquisition of affected tokens and the destination is Binance-labelled."
+      ],
+      "disconfirming_evidence": [
+        "No XRP-specific acquisition amount is disclosed.",
+        "rNxp4h is not proven to be a reserve address.",
+        "The source is unlabelled and could be customer deposits.",
+        "No reserve accounting or executed purchase is shown."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T212826Z-06",
+      "claim": "The Ripple-associated route establishes immediate XRP sell pressure or a direct price effect.",
+      "assessment": "NOT_SUPPORTED",
+      "supporting_evidence": [
+        "A portion of XRP reached a Binance-labelled account."
+      ],
+      "disconfirming_evidence": [
+        "Deposits are not executed sales.",
+        "No order-book fill or OTC settlement is identified.",
+        "TrackWhale's tracked sample is net outflow over seven days.",
+        "ETF flows predate the incident and market data are not synchronized."
+      ]
+    }
+  ],
+  "limitations": [
+    "LIM-20261030T212826Z-01",
+    "LIM-20261030T212826Z-02",
+    "LIM-20261030T212826Z-03",
+    "LIM-20261030T212826Z-04",
+    "LIM-20261030T212826Z-05",
+    "LIM-20261030T212826Z-06",
+    "LIM-20261030T212826Z-07",
+    "LIM-20261030T212826Z-08"
+  ],
+  "data_quality": {
+    "source_independence": "Bithomp, XRPLWin and TrackWhale read the same public XRPL ledger; different explorers/indexers corroborate presentation but not independent underlying transactions.",
+    "account_balance_semantics": "Explorer overview balances are point-in-time and may be cached or rounded; transaction histories are partial and not necessarily synchronized to overview capture.",
+    "market_coverage": "ETF aggregators and derivatives dashboards use different fund/contract universes and cutoffs; no cross-provider averaging.",
+    "feature_admission": "All on-chain account-route, ETF, derivatives and large-transfer observations remain NOT_ADMITTED pending synchronized historical panel and leakage-safe validation."
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Crosswalk the five compromised Binance XRPL source accounts, rNxp4h and XRP-BF2 reserve address against the official October 1 Binance PoR export.",
+    "Resolve raRVLN AMM pair, vault ID, loan-broker ID and collateral objects from a rate-limit-safe XRPL data source.",
+    "Reconcile r39TA's complete XRP/RLUSD history and identify the service or beneficial owner only from public evidence.",
+    "Monitor rNxp4h separately from the attacker receiver; distinguish deposit, inventory, reserve, replenishment and sale.",
+    "Reconcile ETF holdings and derivative contracts by provider and venue before feature admission.",
+    "Build fixed-horizon XRP outcomes and point-in-time features; keep shadow evaluation separate from live trading."
+  ]
+}
