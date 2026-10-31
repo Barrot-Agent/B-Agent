@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 99,
+  "chunk_count": 100,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "LIM-20261031T002909Z-01",
+      "category": "cbxrp_dex_single_provider_turnover_not_net_flow",
+      "statement": "DexTrading's 00:28 UTC cbXRP market snapshot is a single third-party aggregator. The $3.57M volume and $485K main-pool liquidity do not establish executable depth under stress or net external capital; trade counts are not notional amounts and no independent wash-trade/arbitrage filter was verified.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T002909Z-02",
+      "category": "cbxrp_third_party_supply_staleness_and_conflict",
+      "statement": "CoinDesk's opened cbXRP page reports 107.04M supply and Trading Strategy's opened page body reports 60.95M while its search snippet reports 151.403M. These stale/inconsistent values conflict with Coinbase's first-party 151.403M display and are excluded from current supply features. Independent Base totalSupply() verification is still required.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z",
+        "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T002909Z-03",
+      "category": "coinbase_pofr_refresh_timestamp_locale_variance",
+      "statement": "Coinbase's localized cbXRP proof-of-reserves page variants display different 30 October refresh times (9:09 AM and 1:29 PM) without timezone metadata. The reserve/supply values match, but exact point-in-time freshness is not established.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ]
+    }
+  ]
+}
