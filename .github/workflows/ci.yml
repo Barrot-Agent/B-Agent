@@ -85,4 +85,5 @@ jobs:
             tests/test_sbi_xrp_visa_crypto_card.py \
             tests/test_sbi_xrp_visa_current_campaign.py \
             tests/test_coinbase_circle_sbi_institutional_rails.py \
+            tests/test_sbi_xrp_dca_terms.py \
             -v --no-cov

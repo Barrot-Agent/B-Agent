@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "SBI-XRP-DCA-CARD-CAPITAL-20261031T162903Z",
+  "captured_at_utc": "2026-10-31T16:29:03Z",
+  "data_cutoff_utc": "2026-10-31T16:29:03Z",
+  "japan_local_capture_time": "2026-11-01T01:29:03+09:00",
+  "extends_snapshot": "data/xrp_intelligence/snapshots/20261031T133048Z-sbi-recurring-xrp-distribution-and-multirail.json",
+  "source_bundle_path": "data/xrp_intelligence/sources/20261031T162903Z-sbi-xrp-dca-card-terms.json",
+  "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T162903Z-sbi-xrp-dca-card-graph.json",
+  "source_ids": [
+    "SRC-SBI-VC-TRADE-DCA-TERMS-20261031T162903Z",
+    "SRC-SBI-VISA-CRYPTO-CARD-TERMS-20261031T162903Z"
+  ],
+  "confirmed_findings": [
+    {
+      "id": "F1",
+      "statement": "SBI VC Trade offers a customer-funded XRP accumulation order: JPY 500–2,000,000 per order, daily/weekly/monthly scheduling, with customer JPY prefunding required.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-DCA-TERMS-20261031T162903Z"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "The SBI VISA Crypto Card converts eligible points monthly into one selected crypto asset, including XRP; Standard and Gold base reward rates are 0.5% and 1.0% of eligible spend respectively.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-TERMS-20261031T162903Z"
+      ]
+    },
+    {
+      "id": "F3",
+      "statement": "The September–October 2026 card acquisition campaign's application window had ended by 2026-11-01 01:29 JST. The card product and ordinary monthly reward mechanics remain distinct from the expired sign-up campaign.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-TERMS-20261031T162903Z"
+      ]
+    }
+  ],
+  "actual_capital_separation": {
+    "customer_funded_scheduled_purchase": "MECHANISM_CONFIRMED; XRP-SPECIFIC ORDERS AND EXECUTION VOLUME UNKNOWN",
+    "card_points_conversion": "REWARD_DISTRIBUTION; NOT EVIDENCE OF CUSTOMER-FUNDED OPEN-MARKET BUY",
+    "campaign_rewards": "TIME-LIMITED REWARD LIABILITY; APPLICATION WINDOW CLOSED IN JAPAN",
+    "xrp_selected_card_share": "UNKNOWN",
+    "active_xrp_dca_plan_count": "UNKNOWN",
+    "monthly_xrp_order_value_jpy": "UNKNOWN",
+    "monthly_xrp_units_filled": "UNKNOWN",
+    "external_spot_or_otc_sourcing": "UNKNOWN",
+    "net_external_xrp_capital": "UNKNOWN"
+  },
+  "hypotheses": [
+    {
+      "id": "HYP-SBI-DCA-RECURRING-DEMAND",
+      "claim": "The scheduled accumulation service can generate recurring customer-funded XRP purchase demand when customers select XRP and maintain sufficient JPY balances.",
+      "status": "PRODUCT_MECHANISM_CONFIRMED; AGGREGATE_USE_AND_MARKET_IMPACT_UNKNOWN",
+      "support": [
+        "Official SBI VC Trade product page specifies automatic scheduled purchases, XRP eligibility and JPY order limits."
+      ],
+      "disconfirming": [
+        "No XRP-specific subscriber, order, fill, sourcing or venue data is disclosed.",
+        "SBI VC Trade may internalize orders or source inventory away from the public order book."
+      ],
+      "next_test": "Obtain XRP-specific monthly plan counts, executed order quantities, price/venue records and inventory reconciliation."
+    },
+    {
+      "id": "HYP-SBI-CARD-REWARD-DISTRIBUTION",
+      "claim": "Monthly card-point conversion may distribute XRP to cardholders but does not prove open-market XRP buying.",
+      "status": "CONVERSION_MECHANISM_CONFIRMED; XRP_SHARE_AND_SOURCING_UNKNOWN",
+      "support": [
+        "Official card page documents monthly conversion and one-asset selection including XRP."
+      ],
+      "disconfirming": [
+        "No XRP selection share, reward units or inventory procurement data is disclosed."
+      ],
+      "next_test": "Obtain monthly selected-asset mix, reward liability, XRP credited and source-of-inventory disclosures."
+    }
+  ],
+  "feature_admission": {
+    "distribution_event_timeline": "ADMITTED",
+    "customer_funded_dca_mechanism": "ADMITTED_AS_PRODUCT_MECHANIC_ONLY",
+    "actual_capital_quantity": "BLOCKED_PENDING_EXECUTION_AND_SOURCING_DATA",
+    "directional_xrp_price_feature": "NOT_ADMITTED"
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Product availability and reward mechanics do not provide measured executed flow or predictive validation."
+  },
+  "safety": "Research only. No orders, paper-trading state changes, account access or external financial actions."
+}

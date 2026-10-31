@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "SBI-XRP-DCA-CARD-TERMS-20261031T162903Z",
+  "captured_at_utc": "2026-10-31T16:29:03Z",
+  "data_cutoff_utc": "2026-10-31T16:29:03Z",
+  "observed_branch_head": "73cb9b2b4a57998bc7db55797fbf5ba064f981b7",
+  "sources": [
+    {
+      "source_id": "SRC-SBI-VC-TRADE-DCA-TERMS-20261031T162903Z",
+      "publisher": "SBI VC Trade Co., Ltd.",
+      "title": "Kantan Tsumitate — official scheduled crypto-asset accumulation service terms",
+      "url": "https://www.sbivc.co.jp/services/tsumitate",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T16:29:03Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_VC_TRADE_OFFICIAL_PRODUCT_PAGE",
+      "claims": [
+        "XRP is one of 28 assets eligible for the Kantan Tsumitate scheduled accumulation service.",
+        "Each scheduled order can be set from JPY 500 to JPY 2,000,000 in one-yen increments.",
+        "Customers may configure daily, weekly or monthly frequency per asset. Scheduled order windows begin after 10:00 Japan time: daily, Tuesday weekly, and the 28th monthly.",
+        "Orders start at the next eligible order time after the application and next business day. The customer must pre-fund sufficient Japanese yen in the SBI VC Trade account.",
+        "The service does not automatically debit the customer's bank account; insufficient buying power can cause an order to be skipped."
+      ],
+      "limitations": [
+        "No XRP-specific active-plan count, order count, aggregate JPY amount, filled XRP units, cancellations or execution venue is disclosed.",
+        "The product page confirms customer purchase orders through SBI VC Trade but does not establish whether the dealer sources XRP from an external spot venue, B2C2, OTC counterparties or existing inventory.",
+        "A configured plan is not evidence that every scheduled order executed; insufficient balance and service conditions can prevent execution.",
+        "No net external XRP capital or price impact can be calculated from product availability alone."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VISA-CRYPTO-CARD-TERMS-20261031T162903Z",
+      "publisher": "SBI VC Trade Co., Ltd.; APLUS",
+      "title": "SBI VISA Crypto Card — current reward mechanics and campaign status",
+      "url": "https://www.sbivc.co.jp/cryptocard",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T16:29:03Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_VC_TRADE_APLUS_OFFICIAL_CARD_PAGE",
+      "claims": [
+        "Each card selects one reward asset from BTC, ETH or XRP; card points are automatically converted into the selected crypto-asset.",
+        "Standard earns one point worth JPY 1 per JPY 200 of eligible card shopping; Gold earns two points worth JPY 2 per JPY 200.",
+        "Eligible shopping is measured from the 6th through the 5th, points are generally credited around the 17th of the following month, and conversion occurs by that month's end.",
+        "The conversion quantity uses SBI VC Trade's displayed sales price as of 06:59:59 Japan time on the preceding day; XRP quantity is truncated to seven decimal places.",
+        "The temporary campaign accepted applications from September 1 through October 31, 2026 Japan time; the page displayed the campaign as ended at capture time, 2026-11-01 01:29 JST. Eligible spending ran through December 5, issuance deadline is November 30, and reward delivery is targeted by February 2027.",
+        "Campaign reward ceilings were JPY 2,000 equivalent for Standard and JPY 4,000 equivalent for Gold, plus a JPY 500-equivalent joining benefit subject to the published asset-priority rules."
+      ],
+      "limitations": [
+        "The campaign application window had closed by the capture time in Japan; it must not be described as currently open.",
+        "No XRP-selected card count, customer reward-point total, XRP units credited or inventory procurement source is disclosed.",
+        "Point conversion is a reward-distribution mechanism and is not proof of a customer-funded open-market XRP purchase.",
+        "The displayed sales-price reference is not a transaction-level execution record or proof of an external venue fill."
+      ]
+    }
+  ],
+  "independence_policy": "Both sources are official SBI product pages but are not independent corroboration. Product mechanics are confirmed; aggregate XRP usage, inventory sourcing and market impact remain unknown."
+}
