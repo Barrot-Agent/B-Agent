@@ -191,3 +191,27 @@ def test_resolver_closes_only_after_verified_same_branch_success():
     assert gh.call_count == 2
     assert gh.call_args_list[0].args[:3] == ("issue", "comment", "42")
     assert gh.call_args_list[1].args == ("issue", "close", "42")
+
+
+def test_resolver_leaves_issue_open_after_later_same_branch_failure():
+    issue = {
+        "title": "[Auto] Workflow failing: CI",
+        "body": issue_body(),
+        "state": "OPEN",
+    }
+    evidence = {
+        "original": original_run(),
+        "latest": later_run(conclusion="failure"),
+    }
+    with (
+        patch.object(resolver, "get_issue", return_value=issue),
+        patch.object(resolver, "find_workflow_file", return_value={"id": 77, "path": ".github/workflows/ci.yml"}),
+        patch.object(resolver, "get_verified_recovery_runs", return_value=evidence),
+        patch.object(resolver, "get_run_log_tail", return_value="failure trace"),
+        patch.object(resolver, "gh") as gh,
+    ):
+        resolver.resolve(42)
+
+    assert gh.call_count == 1
+    assert gh.call_args.args[:3] == ("issue", "comment", "42")
+    assert "still failed" in gh.call_args.kwargs["--body"]
