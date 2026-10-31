@@ -152,6 +152,11 @@ def test_current_repository_ledger_validates_read_only():
         index_data[name]["chunk_count"] for name in ("sources", "run_updates", "limitations")
     )
     assert report["archive_policy_counts_reconciled"] is True
+    assert report["source_revision_addenda_checked"] == len(index_data["latest_snapshot"].get("source_revision_addenda", []))
+    assert report["source_revision_addenda_pending_archive_append"] == sum(
+        1 for item in index_data["latest_snapshot"].get("source_revision_addenda", [])
+        if "PENDING_ARCHIVE_APPEND" in item.get("status", "")
+    )
 
 
 def test_archive_policy_counts_must_match_live_pointers(tmp_path):
@@ -317,7 +322,7 @@ def _write_source_revision(tmp_path, *, revision_id="REV-ONE", source_id="SRC-PE
         "captured_at_utc": "2026-10-31T17:00:00Z",
         "pending_archive_append": pending_archive_append,
     }
-    raw = (json.dumps(payload, indent=2) + "\\n").encode("utf-8")
+    raw = (json.dumps(payload, indent=2) + "\n").encode("utf-8")
     path = tmp_path / relative
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(raw)
