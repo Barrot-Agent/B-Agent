@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T052000Z-XRP-RESERVE-AND-ISSUER-FREEZE-RECONCILIATION",
+  "created_at_utc": "2026-10-31T05:20:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_AND_FRESH_MAIN_BRIDGE",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Treat the 220M CryptoQuant Binance XRP reserve decline and 233.46M TRM incident transfer as a strong magnitude/timing alignment, not a wallet-level proof. Crosswalk all five source wallets to CryptoQuant and official PoR addresses before attributing the entire reserve change.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D2",
+      "decision": "Do not infer post-incident undercollateralization by comparing Oct30 CryptoQuant exchange reserves with Oct1 Binance PoR customer liabilities. Require same-time customer balances and reserve-address totals.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D3",
+      "decision": "Classify Circle USDC, Ripple RLUSD and Tether USDT freezes separately from native XRP. Issuer freeze capability does not extend to native XRP.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D4",
+      "decision": "Do not interpret the Binance XRP reserve decline as bullish exchange outflow or voluntary accumulation; the dominant known event in the window is unauthorized theft. Keep the reserve feature excluded until wallet-level classification.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D5",
+      "decision": "The Binance News restoration-begun statement is not proof of XRP-specific customer credits, replacement purchases or withdrawal-service restoration.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D6",
+      "decision": "Preserve PR #1353's 340-shard exact-head-validated archive branch, but do not merge/rebase/force-push it because GitHub compare reports 1,185 ahead/351 behind. Use a fresh-main bridge PR containing a bounded snapshot and migration manifest.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D7",
+      "decision": "No directional XRP forecast or market feature admission. Fixed-horizon walk-forward and calibration gates remain unmet.",
+      "status": "ACTIVE"
+    }
+  ],
+  "source_ids": [
+    "SRC-CRYPTOQUANT-BINANCE-XRP-RESERVES-20261031",
+    "SRC-TOKENPOST-BINANCE-XRP-RESERVES-20261030",
+    "SRC-THEEDGE-BINANCE-POR-OCT1-20261030",
+    "SRC-TRM-BINANCE-HACK-20261030",
+    "SRC-BITQUERY-BINANCE-HACK-20261030",
+    "SRC-BINANCE-UPDATE2-20261030",
+    "SRC-BINANCE-NEWS-RESTORATION-20261030",
+    "SRC-COINDESK-BINANCE-POR-20261029",
+    "SRC-XRPL-NATIVE-XRP-FREEZE-DOCS",
+    "SRC-OLDLEDGER-RDAE53-XRP-LEG-20261030",
+    "SRC-GITHUB-PR1353-COMPARE-20261031T0512Z",
+    "SRC-GITHUB-PR1353-VALIDATOR-20261031T0514Z",
+    "SRC-GITHUB-PR1353-GATE-20261031T0514Z"
+  ],
+  "reserve_reconciliation": {
+    "cryptoquant_binance_xrp_reserves_oct28": 2690000000,
+    "cryptoquant_binance_xrp_reserves_oct30": 2470000000,
+    "decline_xrp": 220000000,
+    "decline_percent": 8.18,
+    "incident_xrp_transfer_trm": 233461943.1,
+    "incident_xrp_transfer_bitquery_rounded": 233500000,
+    "reserve_decline_as_share_of_trm_transfer_percent": 94.23,
+    "arithmetic_difference_xrp": 13461943.1,
+    "tokenpost_tracked_xrp_outflow": 185000000,
+    "tokenpost_vs_trm_difference_xrp": 48461943.1,
+    "prior_research_main_wallet_leg_xrp": 185017485.5,
+    "tokenpost_185m_vs_prior_main_leg_difference_xrp": 17485.5,
+    "status": "STRONG_MAGNITUDE_AND_TIMING_ALIGNMENT_NOT_WALLET_LEVEL_PROOF",
+    "interpretation": "The 220M Binance exchange-reserve decline over Oct28–30 is close to the 233.46M XRP transferred from five Binance-labelled XRPL wallets on Oct29. The difference is about 13.46M XRP. The 185M figure in TokenPost is close to the previously recorded 185.017M primary wallet leg, but TokenPost does not reconcile the other four wallets.",
+    "limitations": [
+      "CryptoQuant reserve address universe has not been crosswalked to all five incident source wallets.",
+      "Reserve metrics can change through theft, internal wallet reclassification, deposits, customer withdrawals or custody transfers.",
+      "The 2.47B Oct30 exchange-reserve metric is not a new official PoR balance and cannot be divided by Oct1 customer liabilities to infer current coverage.",
+      "No token-specific Binance replenishment fills or reserve-address replacements have been disclosed."
+    ]
+  },
+  "por_comparison": {
+    "official_snapshot_date": "2026-10-01T00:00:00Z",
+    "xrp_customer_net_balances": 2496000000,
+    "xrp_reserve_coverage_percent": 100.77,
+    "implied_oct1_reserve_balance": 2515219200,
+    "cryptoquant_oct30_exchange_reserves": 2470000000,
+    "difference_vs_oct1_customer_liabilities": -26000000,
+    "difference_vs_implied_oct1_reserves": -45219200,
+    "comparable": false,
+    "reason": "The Oct1 official PoR snapshot reports customer liabilities and reserve coverage; CryptoQuant's Oct30 exchange-reserve metric has a different observation date and potentially different address universe. No Oct30 customer-liability snapshot was published at cutoff.",
+    "conclusion": "Do not infer post-incident undercollateralization or restored 1:1 backing from these mixed snapshots. Binance's promised updated PoR is the required evidence."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "next_actions": [
+    "Crosswalk five Binance XRPL source wallets to the CryptoQuant reserve address set and official Binance PoR list.",
+    "Wait for Binance's initial post-incident PoR target and Nov2 results; compare same-time customer liabilities and reserve addresses.",
+    "Refresh attacker receiver raw XRPL account_info/transactions; last public analytics snapshot is Oct30 06:43 UTC.",
+    "Separate issuer-freezable stablecoins from native XRP in incident features.",
+    "Migrate the full research archive only through a fresh-main Git-tree/blob audit; preserve original diverged branch."
+  ]
+}
