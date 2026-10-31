@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 123,
+  "chunk_count": 124,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T051200Z-BINANCE-RESTORATION-LIVE-OI-PR1353-DIVERGENCE",
+      "created_at_utc": "2026-10-31T05:12:00Z",
+      "data_cutoff_utc": "2026-10-31T05:12:00Z",
+      "summary": "Added a verified Binance News account claim that asset restoration has begun, without quantifying credits or XRP allocation. Refreshed XRP derivatives: Kodexius reports $734.17M OI across seven contracts at 04:54Z; TradRadar reports $1.84B across seven exchanges at 04:35Z. Their overlapping venue totals differ materially, so feeds remain separate. Investing.com spot snapshot is older and partial. The research ledger append on PR #1353 passed exact-head validation at a3db8ba: 337 shards, 1,880 sources, 326 run updates, 809 limitations and 20 tests; fail-closed gate passed. GitHub compare reports the long-lived PR branch diverged 1,177 ahead/351 behind main despite PR metadata saying mergeable=true; no merge/rebase/force-push is safe. No market feature admitted and no forecast issued.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+        "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+        "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+        "SRC-20261031-INVESTING-XRP-LIVE-0047Z",
+        "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z",
+        "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+        "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T051200Z-binance-restoration-and-live-derivatives-update.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T051200Z-binance-restoration-and-oi-coverage-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T051200Z-binance-restoration-oi-and-ledger-branch-safety.json",
+      "repository_audit_path": "data/repository_audits/20261031T051200Z-pr1353-divergence-and-current-market-correction.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "expected_archive_shards": 340,
+        "validator_tests_required": 20,
+        "fail_closed_gate_required": true,
+        "main_mutated": false,
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false,
+        "real_money_trade_performed": false
+      }
+    }
+  ]
+}
