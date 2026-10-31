@@ -77,3 +77,42 @@ def test_ci_registers_workflow_and_signal_integrity_tests():
     assert "tests/test_main_workflow_safety.py" in ci
     assert "tests/test_signal_accuracy_fail_closed.py" in ci
     assert "tests/test_sentiment_shift_data_quality.py" in ci
+
+def test_cognitive_pingpong_is_manual_diagnostic_not_a_writer():
+    workflow = read("Barrot.Cognitive.PingPong.Engine.yml")
+    assert "workflow_dispatch:" in workflow
+    assert "schedule:" not in workflow
+    assert "push:" not in workflow
+    assert "contents: read" in workflow
+    assert "contents: write" not in workflow
+    assert "issues: write" not in workflow
+    assert "pull-requests: write" not in workflow
+    assert "NOT_IMPLEMENTED" in workflow
+    assert "actions/upload-artifact@v4" in workflow
+    assert "git push" not in workflow
+
+
+def test_scheduled_research_writers_are_artifact_only():
+    for name in (
+        "riemann-harvest.yml",
+        "gumroad-metrics.yml",
+        "barrot-transparency-audit.yml",
+        "webmcp-live-sandbox.yml",
+        "webmcp-monetization-enrich.yml",
+    ):
+        workflow = read(name)
+        assert "contents: read" in workflow, name
+        assert "contents: write" not in workflow, name
+        assert "persist-credentials: false" in workflow, name
+        assert "actions/upload-artifact@" in workflow, name
+        assert "git push" not in workflow, name
+        assert "git commit" not in workflow, name
+
+
+def test_hover_bike_workflow_needs_no_repository_write_permission():
+    workflow = read("hover_bike_updates.yml")
+    assert "contents: read" in workflow
+    assert "contents: write" not in workflow
+    assert "persist-credentials: false" in workflow
+    assert "actions/upload-artifact@v7" in workflow
+    assert "git push" not in workflow
