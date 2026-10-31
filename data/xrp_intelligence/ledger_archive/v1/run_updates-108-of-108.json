@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 107,
+  "chunk_count": 108,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T002909Z-CBXRP-DEX-LIQUIDITY-AND-SUPPLY-QUALITY",
+      "created_at_utc": "2026-10-31T00:29:09Z",
+      "data_cutoff_utc": "2026-10-31T00:29:09Z",
+      "summary": "Added fresh Base cbXRP DEX activity: DexTrading's 00:28 UTC page shows $1.25 price, $189.98M market cap, $3.57M 24h volume, $485K main Aero cbXRP/WETH liquidity and 4,965 trades (2,477 buys / 2,488 sells). Volume/liquidity is about 7.36x, but the near-balanced trade counts and lack of notional flow prevent a net-capital inference. Identified stale/inconsistent third-party cbXRP supply data: CoinDesk page shows 107.04M, Trading Strategy body 60.95M while its search snippet shows 151.403M. These are excluded; Coinbase's first-party 151.403M supply / 151.405M XRP reserve page remains the best published baseline pending independent Base totalSupply() verification. No forecast or market feature admitted.",
+      "source_ids": [
+        "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z",
+        "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z",
+        "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T002909Z-cbxrp-base-dex-liquidity-and-supply-quality.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T002909Z-cbxrp-base-dex-liquidity-and-supply-quality-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T002909Z-cbxrp-dex-turnover-and-supply-quality-gates.json",
+      "actions": [
+        "Captured DexTrading Base cbXRP pools at 00:28 UTC and recorded main-pool liquidity, 24-hour volume, trades and visible pair list.",
+        "Calculated 24-hour turnover relative to main-pool liquidity at 7.36x; explicitly did not classify as net inflow.",
+        "Compared CoinDesk and Trading Strategy cbXRP supply pages with Coinbase's first-party reserve/supply page; marked stale/inconsistent values as excluded.",
+        "Updated the feature gate: pool-level events, notional buy/sell amounts, mint/burn and independent Base totalSupply() required before cbXRP market features can enter a model."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "DexTrading is a single third-party aggregator; pool volume/liquidity and buy/sell counts are not independent chain-derived net capital.",
+        "CoinDesk and Trading Strategy cbXRP supply pages are stale/inconsistent.",
+        "Independent Base totalSupply() verification remains unavailable; Coinbase's page is first-party, not an independent audit."
+      ],
+      "next_actions": [
+        "Verify Base totalSupply() via accessible RPC and reconcile against Coinbase PoR page at a common block/time.",
+        "Extract pool swap events and LP positions from public Base data to calculate notional net flows, slippage and concentration.",
+        "Track cbXRP mint/burn events against Coinbase XRPL reserve-address changes."
+      ],
+      "source_reference_count": 3,
+      "missing_source_references": 0
+    }
+  ]
+}
