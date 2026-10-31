@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T011325Z-MARKET-FEATURE-ADMISSION-AND-COINBASE-LOAN-RAIL",
+  "created_at_utc": "2026-10-31T01:13:25Z",
+  "status": "ACCEPTED_FOR_RESEARCH_NOT_MODEL_ADMISSION",
+  "context": "New current observations span XRP derivatives, ETF holdings, Circle USDC supply, Coinbase XRP-backed loans, U.S. macro fund flows and Binance's aggregate incident response. The sources have different coverage and cannot be flattened into one directional signal.",
+  "decisions": [
+    "Store derivatives observations by provider, venue/contract universe, observation timestamp and metric definition; never average incompatible open-interest aggregates.",
+    "Build ETF flow history from issuer-native holdings and fund-specific settled timestamps. Preserve provisional and flow-excluded funds as explicit missing/partial states rather than treating them as zero economic flow.",
+    "Store ETF holdings changes separately from net external capital, spot purchases and price; issuer holdings are not proof of unhedged new demand.",
+    "Store Circle's global USDC circulation separately from Base and XRPL chain supplies, Circle Mint fiat flows and Morpho vault suppliers.",
+    "Represent Coinbase's XRP-backed USDC loan product as a collateral-utility rail: XRP underlying, cbXRP representation, Morpho collateral, USDC debt, Coinbase interface and borrower proceeds are distinct series.",
+    "Respect Coinbase's official restriction against using loan proceeds to trade on Coinbase; do not infer spot XRP purchases from loan issuance.",
+    "Treat U.S. macro fund flows and Binance aggregate reserve statements as contextual event variables, not XRP-specific capital or collateral measurements.",
+    "Keep all new observations out of the price-prediction feature set until synchronized point-in-time history, independent corroboration, leakage controls, walk-forward baseline comparisons and calibration are complete."
+  ],
+  "invariants": [
+    "A provider's account-count long/short ratio is not notional exposure.",
+    "A market-wide Morpho balance is not Coinbase customer volume or Circle-provided lending capital.",
+    "cbXRP collateral seized by a Morpho liquidator is not automatically native XRP sold on an exchange.",
+    "ETF holdings change is not automatically net new external capital or unhedged spot buying.",
+    "Global USDC circulation does not establish Base/XRPL chain balances or a Circle lender position.",
+    "Macro flows from U.S. mutual funds do not establish crypto or XRP fund flows.",
+    "Aggregate Binance incident reserves do not establish XRP-specific reserve restoration."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
