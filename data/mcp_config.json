@@ -1,0 +1,76 @@
+{
+  "mcpServers": {
+    "barrot-core-repository": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "/workspace/B-Agent"
+      ],
+      "env": {
+        "XRP_ENV": "production",
+        "STABILITY_ANCHOR": "0.707"
+      }
+    },
+    "barrot-memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "/workspace/B-Agent/ping-pongings/knowledge-base/barrot_memory.jsonl"
+      }
+    },
+    "barrot-filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/workspace/B-Agent"
+      ]
+    },
+    "github": {
+      "command": "uvx",
+      "args": ["mcp-server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "_requires_approval": true,
+      "_note": "Requires human approval for repo writes and workflow execution."
+    },
+    "filesystem": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-filesystem",
+        "--allowed-directories",
+        "/workspace/B-Agent/sandbox"
+      ],
+      "_note": "Read-only access scoped to /sandbox. Write ops require approval."
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"],
+      "_note": "Read-only HTTP fetch. No auth required."
+    },
+    "memory": {
+      "command": "uvx",
+      "args": ["mcp-server-memory"],
+      "_note": "Persistent knowledge-graph memory for Barrot agent sessions."
+    }
+  },
+  "_integration_framework": {
+    "version": "1.0.0",
+    "entry_point": "barrot_agent.mcp_integration.MCPIntegration",
+    "default_dry_run": true,
+    "approval_required_for": [
+      "install",
+      "repo_write",
+      "workflow_execution",
+      "production_deploy",
+      "registry_promote"
+    ],
+    "registry_path": "barrot_agent/mcp_registry.json",
+    "provenance_path": "barrot_agent/mcp_provenance.jsonl"
+  }
+}

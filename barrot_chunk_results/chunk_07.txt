@@ -1,0 +1,122 @@
+**1. Actual modules & public API surface (as defined in this chunk)**  
+
+| Module (file)                              | Public objects (import‑able) | Public call‑sites (methods / functions) |
+|--------------------------------------------|------------------------------|----------------------------------------|
+| `barrot_agent.evolution.evidence_quality`  | `EvidenceQualityEngine`      | `EvidenceQualityEngine.score(evidence)`, `EvidenceQualityEngine._recency_score(value)` (static, can be called directly) |
+| `barrot_agent.evolution.evolution_engine` | `EvolutionEngine`            | `EvolutionEngine.__init__()`, `EvolutionEngine.load_corpus()`, `EvolutionEngine.ingest(source, content, domain, confidence=0.5)`, `EvolutionEngine.synthesize()`, `EvolutionEngine.improvement_targets()` |
+| (module‑level constants)                  | `ROOT`, `DATA_DIR`, `CORPUS_FILE` | – (used internally) |
+
+No other symbols are exported (`__all__` is not defined, but the above are the only names a user would normally import).
+
+---
+
+**2. Executable branches & error‑paths**
+
+| Location | Branch / decision point | Description |
+|----------|------------------------|-------------|
+| **EvidenceQualityEngine.score** | `if source and source_url` / `elif source` / `else` | Determines `factors["provenance"]` (three possible values). |
+| **EvidenceQualityEngine._recency_score** | `if not value` | Returns `0.5` for missing/falsey timestamp. |
+| | `try … except (TypeError, ValueError)` | Returns `0.5` on parsing failure. |
+| | `if age_days <= 30` → `1.0` |
+| | `elif age_days <= 180` → `0.8` |
+| | `elif age_days <= 365` → `0.6` |
+| | `else` → `0.4` | Four age‑based buckets. |
+| **EvolutionEngine.ingest** | `if any(item["id"] == digest for item in corpus)` | Duplicate detection – returns `"duplicate"`. |
+| | `confidence = max(0.0, min(1.0, confidence))` | Clamps confidence (three logical paths: <0, >1, in‑range). |
+| **EvolutionEngine.synthesize** | Loop over `corpus` → `domain = item.get("domain", "general")` | Implicit branch when a domain is missing (falls back to `"general"`). |
+| **EvolutionEngine.improvement_targets** | `domains = {item.get("domain") for item in corpus}` – may contain `None` if a record lacks `domain`. |
+| | List‑comprehension filter `if domain not in domains` | Generates 0‑N target dicts based on missing domains. |
+| **Filesystem I/O** (both `load_corpus` and `ingest`) | `if not CORPUS_FILE.exists()` | Returns empty list vs. reading JSON. |
+| | `json.loads(...)` and `json.dumps(...)` – can raise if the file is corrupted (not caught, bubbles up). |
+
+These are the only “meaningful” decision points that can be exercised by tests.
+
+---
+
+**3. Practical pytest cases (strictly supported by the code)**  
+
+*EvidenceQualityEngine*  
+
+| Test case | Input `evidence` dict | Expected branch(s) exercised | Assertion |
+|-----------|----------------------|------------------------------|-----------|
+| `test_provenance_both` | `{"source":"src","source_url":"http://u","claim_id":"c","claim":"x"}` | `source and source_url` → 1.0 | `factors["provenance"] == 1.0` |
+| `test_provenance_source_only` | `{"source":"src","claim_id":"c","claim":"x"}` | `source only` → 0.7 | `factors["provenance"] == 0.7` |
+| `test_provenance_none` | `{"claim_id":"c","claim":"x"}` | `else` → 0.3 | `factors["provenance"] == 0.3` |
+| `test_completeness_partial` | `{"source":"s","claim":"c"}` | `present = 2 / 3` | `factors["completeness"] == pytest.approx(2/3)` |
+| `test_completeness_full` | `{"source":"s","claim_id":"i","claim":"c"}` | `present = 3 / 3` | `factors["completeness"] == 1.0` |
+| `test_recency_missing` | `{"source":"s","claim_id":"i","claim":"c","retrieved_at": None}` | `if not value` → 0.5 | `factors["recency"] == 0.5` |
+| `test_recency_invalid_string` | `{"retrieved_at":"not-a-date"}` | exception branch → 0.5 | `factors["recency"] == 0.5` |
+| `test_recency_recent` | timestamp ≤ 30 days ago | `age_days <=30` → 1.0 | `factors["recency"] == 1.0` |
+| `test_recency_mid` | 90 days ago | `<=180` → 0.8 | `factors["recency"] == 0.8` |
+| `test_recency_year` | 300 days ago | `<=365` → 0.6 | `factors["recency"] == 0.6` |
+| `test_recency_old` | 400 days ago | `else` → 0.4 | `factors["recency"] == 0.4` |
+| `test_overall_score_rounding` | combine known factor values (e.g., prov = 1, comp = 1, rec = 1) | Full formula, rounding to 3 decimals | `quality_score == 1.0` |
+
+*EvolutionEngine*  
+
+| Test case | Setup actions | Expected branch(es) exercised | Assertion |
+|-----------|---------------|------------------------------|-----------|
+| `test_load_corpus_missing_file` | Ensure `CORPUS_FILE` does **not** exist (tmp_path + monkeypatch) | `if not CORPUS_FILE.exists()` → `[]` | `engine.load_corpus() == []` |
+| `test_ingest_new_item` | Empty corpus file, call `ingest` with unique content | Duplicate check false, confidence clamped, file write | Return dict contains `"status":"ingested"` and file now contains one JSON object with matching `id` |
+| `test_ingest_duplicate` | Pre‑populate corpus JSON with a digest, then call `ingest` with same content | Duplicate branch true | Return dict contains `"status":"duplicate"` |
+| `test_ingest_confidence_clamping_low` | Call `ingest(..., confidence=-0.2)` | `max(0.0, …)` → 0.0 stored | Loaded item `"confidence"` equals `0.0` |
+| `test_ingest_confidence_clamping_high` | Call `ingest(..., confidence=1.7)` | `min(1.0, …)` → 1.0 stored | `"confidence"` equals `1.0` |
+| `test_synthesize_empty` | Ensure corpus file empty | Loop runs 0 times | `knowledge_items == 0` and `domains == {}` |
+| `test_synthesize_counts` | Pre‑populate corpus with several items across two domains | Domain counting logic | `knowledge_items` equals number of items; `domains` maps each domain to its count |
+| `test_improvement_targets_all_missing` | Empty corpus | `domains` set empty → all four priorities emitted | Length of result == 4 |
+| `test_improvement_targets_some_present` | Corpus contains items with `domain="software_engineering"` | Filtering removes that priority only | Result contains the other three domains |
+| `test_improvement_targets_none_present_due_to_none` | Corpus contains one item **without** a `domain` key (or `None`) | Set includes `None`; no priority matches → all four emitted | Length == 4 |
+
+*Time‑dependent branches* (`_recency_score`) can be tested reliably by **patching** `datetime.datetime.now` (or using `freezegun`) to a fixed UTC instant, then providing ISO‑8601 timestamps that differ by the required number of days.
+
+---
+
+**4. Estimated newly covered lines**
+
+| File | Approx. total executable lines | Lines currently uncovered (≈36 % of file) | Lines exercised by the tests above |
+|------|------------------------------|--------------------------------------------|--------------------------------------|
+| `evidence_quality.py` | ~45 | ~16 | All 45 (provenance three branches, completeness, recency 5 branches, exception path, final return) |
+| `evolution_engine.py` | ~120 | ~43 | All major paths: missing file, duplicate, confidence clamping (3 branches), synthesize counting, improvement_targets filtering, file‑write path, load‑corpus path. Roughly 95‑100 lines become executed. |
+
+**Coverage impact**  
+Current repository coverage ≈ 64 %. Adding ~140 exercised lines (out of the ~300‑odd lines that belong to this chunk) should push the overall coverage **≈ 70 %–71 %** (exact number depends on the rest of the repo, but the jump is comfortably above the 6 % threshold required).
+
+---
+
+**5. Dependencies that need mocking / patching**
+
+| Dependency | Why it must be mocked | Suggested pytest fixture |
+|------------|----------------------|--------------------------|
+| `pathlib.Path` file system (`CORPUS_FILE`, `DATA_DIR`) | Tests must not touch the real repository data directory. | `tmp_path` fixture + `monkeypatch.setattr(barrot_agent.evolution.evolution_engine, "CORPUS_FILE", tmp_path / "corpus.json")` (same for `DATA_DIR` if needed). |
+| `datetime.now(timezone.utc)` (used in `ingest` and `synthesize`) | To make the generated timestamps deterministic for assertions. | `monkeypatch` on `barrot_agent.evolution.evidence_quality.datetime` and `barrot_agent.evolution.evolution_engine.datetime` (or use `freezegun.freeze_time`). |
+| `json.loads / json.dumps` | No external effect; can be left real, but errors can be simulated by writing malformed JSON to the temp file (optional). | Not mandatory, but you could `write_text("not json")` to test error bubbling if desired. |
+| `hashlib.sha256` | Pure function, no need to mock. |
+| `EvidenceQualityEngine._recency_score` parsing of ISO strings | Not a dependency; only need to control input strings. |
+
+All other imports (`typing`, `dataclasses`, etc.) are pure and need no stubbing.
+
+---
+
+**6. Implementation defects that the source itself reveals (and that tests will surface)**  
+
+| Defect / edge case | Explanation | Test that would catch it |
+|--------------------|-------------|--------------------------|
+| **`_recency_score` treats any truthy but non‑ISO value as “parse error” → returns 0.5** – this is intentional, but the fallback value (0.5) is the same as the “no timestamp” case, making it impossible to distinguish between “missing” and “malformed”. If the spec expected a different penalty, the current implementation is a bug. | A test feeding `"2023-13-01"` (invalid month) expects a distinct value (e.g., 0.3) – it will fail, revealing the design issue. |
+| **`Improvement_targets` includes `None` in the domain set when an item lacks a `domain` key**, potentially causing *every* priority to be reported even though the corpus already has a record (albeit malformed). | Test `test_improvement_targets_none_present` (corpus item without `domain`). The current code will **still** emit all priorities – this is arguably a defect in the domain‑extraction logic. |
+| **`ingest` writes the entire corpus even if the JSON file is corrupted** – `load_corpus` will raise a `json.JSONDecodeError`, bubbling up and aborting the whole engine. The engine has no graceful recovery. | A test that writes malformed JSON into the temp file, then calls `engine.ingest(...)` expects a clean exception; the failure demonstrates the missing error handling. |
+| **`ingest` uses `any(item["id"] == digest …)` without guarding against missing `id` keys**. If an external process manually edits the corpus and removes an `id`, a `KeyError` will be raised. | Craft a corrupted corpus entry missing `"id"` and call `ingest`; the test will raise `KeyError`, exposing the assumption that the file is always well‑formed. |
+| **`synthesize` treats missing `domain` as `"general"` – this is fine, but the return type’s `domains` mapping will contain `"general"` even when *all* items lack a domain.** If the caller expects only real domains, this could be misleading. | A test where every corpus item omits `domain`; assert that `"general"` appears exactly once per item. If the spec says it should be omitted, the test flags the behavior. |
+
+These defects are **directly observable** with the pytest cases outlined above; they will either be caught as failing assertions (if the test encodes the intended contract) or will surface as unexpected exceptions, prompting a design discussion.
+
+---
+
+**Summary of actionable items for the chunk**
+
+1. **Create a test module** (e.g., `tests/test_evidence_quality.py`) containing the 12‑plus cases listed under *EvidenceQualityEngine*.
+2. **Create a test module** (e.g., `tests/test_evolution_engine.py`) covering the 9‑plus cases under *EvolutionEngine*, using `tmp_path` + `monkeypatch` to isolate file I/O and patching `datetime.now`.
+3. **Patch `datetime.now`** for deterministic recency and ingestion timestamps.
+4. **Assert on the exact structure** of the returned dictionaries (status, id, confidence, domains, etc.) to guarantee that the logic pathways are exercised.
+5. **Optionally add a negative‑JSON test** to surface the lack of robust error handling (demonstrates a defect).
+
+Executing these tests will exercise **all logical branches** in the two modules, adding roughly 140 new line executions and moving the repository’s overall pytest coverage comfortably **above the 70 % target**.

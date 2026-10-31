@@ -1,0 +1,49 @@
+name: Barrot Subscriber Sync
+on:
+  schedule:
+    - cron: "30 * * * *"
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - run: pip install requests
+      - name: Fetch subscribers from Gumroad
+        env:
+          GUMROAD_ACCESS_TOKEN: ${{ secrets.GUMROAD_ACCESS_TOKEN }}
+        run: |
+          python3 << 'SCRIPT'
+          import os, json, hashlib, requests
+          token = os.getenv("GUMROAD_ACCESS_TOKEN")
+          emails = set()
+          page_key = None
+          while True:
+              params = {"access_token": token}
+              if page_key: params["page_key"] = page_key
+              r = requests.get("https://api.gumroad.com/v2/sales", params=params, timeout=20)
+              if r.status_code != 200:
+                  print(f"Sales API not yet available (HTTP {r.status_code}) — likely pending first sale/payout setup. Exiting clean.")
+                  break
+              data = r.json()
+              for sale in data.get("sales", []):
+                  if "opvxi" in (sale.get("product_permalink") or "") or "XRP Signal" in (sale.get("product_name") or ""):
+                      if not sale.get("refunded") and not sale.get("chargebacked"):
+                          e = (sale.get("email") or "").strip().lower()
+                          if e: emails.add(hashlib.sha256(e.encode()).hexdigest())
+              page_key = data.get("next_page_key")
+              if not page_key: break
+          out = {"emails": sorted(emails), "count": len(emails)}
+          with open("web/subscribers.json","w") as f:
+              json.dump(out, f)
+          print(f"Synced {len(emails)} active subscribers (hashed)")
+          SCRIPT
+      - name: Commit
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add web/subscribers.json
+          git diff --staged --quiet || (git commit -m "chore: subscriber sync" && git push origin main)

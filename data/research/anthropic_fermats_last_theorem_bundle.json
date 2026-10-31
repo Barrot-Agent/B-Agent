@@ -1,0 +1,1034 @@
+{
+  "adversarial_reviews": [
+    {
+      "claim_id": "claim.fermat_last_theorem",
+      "objections": [
+        "Imported external proof must not be treated as BARROT_DISCOVERED_RESULT.",
+        "Verification status must stay below independently checked until Barrot executes its own build and checker runs."
+      ],
+      "provenance": [
+        "barrot_policy"
+      ],
+      "responses": [
+        "Bundle provenance is EXTERNAL_AI_FORMALIZATION and the formal verification record uses staged status values.",
+        "Independent checker fields are recorded separately from import metadata and remain execution-gated."
+      ],
+      "review_id": "anthropic-flt-provenance-review",
+      "status": "SUPPORTED"
+    }
+  ],
+  "claims": [
+    {
+      "assumptions": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "claim_id": "claim.fermat_last_theorem",
+      "claim_type": "theorem",
+      "dependencies": [
+        "proof-step-1",
+        "proof-step-2",
+        "proof-step-3",
+        "proof-step-4",
+        "proof-step-5",
+        "proof-step-6"
+      ],
+      "domain": "mathematics.number_theory",
+      "provenance": [
+        "EXTERNAL_AI_FORMALIZATION"
+      ],
+      "source": "anthropic_repo",
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_location": "Theorems/Thm_fermat_last_theorem.lean:4",
+      "statement": "theorem fermat_last_theorem (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n"
+    },
+    {
+      "assumptions": [],
+      "claim_id": "proof-step-1",
+      "claim_type": "lemma",
+      "dependencies": [],
+      "domain": "mathematics.number_theory",
+      "provenance": [
+        "EXTERNAL_AI_FORMALIZATION"
+      ],
+      "source": "anthropic_proof_path",
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_location": "PROOF-PATH.md",
+      "statement": "`fermat_last_theorem` follows in one line from `FLT.fermatLastTheorem : FermatLastTheorem`"
+    },
+    {
+      "assumptions": [],
+      "claim_id": "proof-step-2",
+      "claim_type": "lemma",
+      "dependencies": [
+        "proof-step-3"
+      ],
+      "domain": "mathematics.number_theory",
+      "provenance": [
+        "EXTERNAL_AI_FORMALIZATION"
+      ],
+      "source": "anthropic_proof_path",
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_location": "PROOF-PATH.md",
+      "statement": "A Frey package (`Definitions/Def_FLTPrelim_FreyPackage.lean`, adapted from the Imperial College"
+    },
+    {
+      "assumptions": [],
+      "claim_id": "proof-step-3",
+      "claim_type": "lemma",
+      "dependencies": [],
+      "domain": "mathematics.number_theory",
+      "provenance": [
+        "EXTERNAL_AI_FORMALIZATION"
+      ],
+      "source": "anthropic_proof_path",
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_location": "PROOF-PATH.md",
+      "statement": "`FreyPackage.Mazur_Frey` proves `GaloisRepIsIrreducible \u211a P.freyCurve P.p`"
+    },
+    {
+      "assumptions": [],
+      "claim_id": "proof-step-4",
+      "claim_type": "lemma",
+      "dependencies": [],
+      "domain": "mathematics.number_theory",
+      "provenance": [
+        "EXTERNAL_AI_FORMALIZATION"
+      ],
+      "source": "anthropic_proof_path",
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_location": "PROOF-PATH.md",
+      "statement": "`FreyPackage.frey_isModular` follows from `WeierstrassCurve.modularity_of_semistableModel`."
+    },
+    {
+      "assumptions": [],
+      "claim_id": "proof-step-5",
+      "claim_type": "lemma",
+      "dependencies": [],
+      "domain": "mathematics.number_theory",
+      "provenance": [
+        "EXTERNAL_AI_FORMALIZATION"
+      ],
+      "source": "anthropic_proof_path",
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_location": "PROOF-PATH.md",
+      "statement": "`FreyPackage.level_lowering_to_two`: E_P modular and \u03c1\u0304_{E_P,p} irreducible give a nonzero"
+    },
+    {
+      "assumptions": [],
+      "claim_id": "proof-step-6",
+      "claim_type": "lemma",
+      "dependencies": [],
+      "domain": "mathematics.number_theory",
+      "provenance": [
+        "EXTERNAL_AI_FORMALIZATION"
+      ],
+      "source": "anthropic_proof_path",
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_location": "PROOF-PATH.md",
+      "statement": "`ModularForm.S2_Gamma0_2_eq_zero`: every `f : CuspForm (CongruenceSubgroup.Gamma0 2) 2` is 0,"
+    }
+  ],
+  "evidence": [
+    {
+      "claim_id": "claim.fermat_last_theorem",
+      "details": {
+        "formalization_manifest_present": true,
+        "mathlib_version": "db584cd6d46c92f209a44c0f1c829460d327499d",
+        "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+        "toolchain": "leanprover/lean4:v4.33.1"
+      },
+      "evidence_id": "anthropic-import-metadata",
+      "independence": "formally_verified_by_source_team",
+      "kind": "formalization",
+      "provenance": [
+        "EXTERNAL_AI_FORMALIZATION",
+        "origin:Anthropic/Claude formalization"
+      ],
+      "source_id": "anthropic_repo",
+      "source_location": "Theorems/Thm_fermat_last_theorem.lean",
+      "status": "FORMALIZED",
+      "summary": "Imported external Lean metadata, theorem declaration, toolchain pin, and dependency manifest."
+    },
+    {
+      "claim_id": "claim.fermat_last_theorem",
+      "details": {
+        "step_count": 6
+      },
+      "evidence_id": "anthropic-proof-path",
+      "independence": "same_source_confirmation",
+      "kind": "theorem",
+      "provenance": [
+        "anthropic_proof_path"
+      ],
+      "source_id": "anthropic_proof_path",
+      "source_location": "PROOF-PATH.md",
+      "status": "SUPPORTED",
+      "summary": "Imported the published proof-path structure and mapped it into Barrot's dependency graph."
+    }
+  ],
+  "formal_verification": [
+    {
+      "attribution": "Origin = Anthropic/Claude formalization; formalization provenance = Anthropic/Prove2Me project; mathematical lineage = Frey/Serre/Ribet/Wiles/Taylor-Wiles.",
+      "axiom_command": [
+        "lake",
+        "env",
+        "lean",
+        "FinalCheck.lean"
+      ],
+      "axiom_result": {
+        "declared_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "final_check_guard_present": true,
+        "permitted_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "prohibited_escape_hits": {},
+        "scanned_file_count": 2,
+        "scanned_paths": [
+          "Theorems/Thm_fermat_last_theorem.lean",
+          "FinalCheck.lean"
+        ],
+        "status": "clean",
+        "used_environment_data": true
+      },
+      "build_command": [
+        "lake",
+        "build"
+      ],
+      "claim_ids": [
+        "claim.fermat_last_theorem"
+      ],
+      "command": [
+        "lake",
+        "build"
+      ],
+      "comparator_result": {
+        "command": [
+          "bash",
+          "verification/comparator/run.sh"
+        ],
+        "statement_alignment": {
+          "basis": "published comparator theorem",
+          "equivalent": true,
+          "local_statement": "theorem fermat_last_theorem (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n",
+          "mathlib_bridge": "FinalCheck.lean declares theorem flt_mathlib : FermatLastTheorem.",
+          "target": "FLT_for_comparator",
+          "target_statement": "theorem FLT_for_comparator (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n"
+        },
+        "status": "pending"
+      },
+      "compiler_configuration": {
+        "lean_options": {
+          "autoImplicit": "false",
+          "backward.isDefEq.respectTransparency.types": "false",
+          "maxHeartbeats": "(4000000 : Nat)",
+          "synthInstance.maxHeartbeats": "(400000 : Nat)"
+        },
+        "toolchain": "leanprover/lean4:v4.33.1"
+      },
+      "dependencies": [
+        "Cli",
+        "LeanSearchClient",
+        "Mathlib.NumberTheory.FLT.Basic",
+        "P2M.Sol.S_fermat_last_theorem",
+        "P2M.Util",
+        "Qq",
+        "Theorems.Thm_fermat_last_theorem",
+        "aesop",
+        "batteries",
+        "importGraph",
+        "mathlib",
+        "plausible",
+        "proofwidgets"
+      ],
+      "dependency_graph": {
+        "edges": [
+          {
+            "from": "fermat_last_theorem",
+            "relationship": "DEPENDS_ON",
+            "to": "proof-step-1"
+          },
+          {
+            "from": "fermat_last_theorem",
+            "relationship": "DEPENDS_ON",
+            "to": "proof-step-2"
+          },
+          {
+            "from": "fermat_last_theorem",
+            "relationship": "DEPENDS_ON",
+            "to": "proof-step-3"
+          },
+          {
+            "from": "fermat_last_theorem",
+            "relationship": "DEPENDS_ON",
+            "to": "proof-step-4"
+          },
+          {
+            "from": "fermat_last_theorem",
+            "relationship": "DEPENDS_ON",
+            "to": "proof-step-5"
+          },
+          {
+            "from": "fermat_last_theorem",
+            "relationship": "DEPENDS_ON",
+            "to": "proof-step-6"
+          },
+          {
+            "from": "proof-step-2",
+            "relationship": "DEPENDS_ON",
+            "to": "proof-step-3"
+          }
+        ],
+        "nodes": [
+          {
+            "dependencies": [
+              "proof-step-1",
+              "proof-step-2",
+              "proof-step-3",
+              "proof-step-4",
+              "proof-step-5",
+              "proof-step-6"
+            ],
+            "kind": "theorem",
+            "node_id": "fermat_last_theorem",
+            "proof_artifact": "Theorems/Thm_fermat_last_theorem.lean",
+            "provenance": "EXTERNAL_AI_FORMALIZATION",
+            "source": "Theorems/Thm_fermat_last_theorem.lean",
+            "statement": "theorem fermat_last_theorem (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n",
+            "status": "IMPORTED",
+            "verification_result": "pending"
+          },
+          {
+            "dependencies": [],
+            "kind": "theorem_step",
+            "node_id": "proof-step-1",
+            "proof_artifact": "PROOF-PATH.md",
+            "provenance": "EXTERNAL_AI_FORMALIZATION",
+            "source": "PROOF-PATH.md",
+            "statement": "`fermat_last_theorem` follows in one line from `FLT.fermatLastTheorem : FermatLastTheorem`",
+            "status": "IMPORTED",
+            "verification_result": "pending"
+          },
+          {
+            "dependencies": [
+              "proof-step-3"
+            ],
+            "kind": "theorem_step",
+            "node_id": "proof-step-2",
+            "proof_artifact": "PROOF-PATH.md",
+            "provenance": "EXTERNAL_AI_FORMALIZATION",
+            "source": "PROOF-PATH.md",
+            "statement": "A Frey package (`Definitions/Def_FLTPrelim_FreyPackage.lean`, adapted from the Imperial College",
+            "status": "IMPORTED",
+            "verification_result": "pending"
+          },
+          {
+            "dependencies": [],
+            "kind": "theorem_step",
+            "node_id": "proof-step-3",
+            "proof_artifact": "PROOF-PATH.md",
+            "provenance": "EXTERNAL_AI_FORMALIZATION",
+            "source": "PROOF-PATH.md",
+            "statement": "`FreyPackage.Mazur_Frey` proves `GaloisRepIsIrreducible \u211a P.freyCurve P.p`",
+            "status": "IMPORTED",
+            "verification_result": "pending"
+          },
+          {
+            "dependencies": [],
+            "kind": "theorem_step",
+            "node_id": "proof-step-4",
+            "proof_artifact": "PROOF-PATH.md",
+            "provenance": "EXTERNAL_AI_FORMALIZATION",
+            "source": "PROOF-PATH.md",
+            "statement": "`FreyPackage.frey_isModular` follows from `WeierstrassCurve.modularity_of_semistableModel`.",
+            "status": "IMPORTED",
+            "verification_result": "pending"
+          },
+          {
+            "dependencies": [],
+            "kind": "theorem_step",
+            "node_id": "proof-step-5",
+            "proof_artifact": "PROOF-PATH.md",
+            "provenance": "EXTERNAL_AI_FORMALIZATION",
+            "source": "PROOF-PATH.md",
+            "statement": "`FreyPackage.level_lowering_to_two`: E_P modular and \u03c1\u0304_{E_P,p} irreducible give a nonzero",
+            "status": "IMPORTED",
+            "verification_result": "pending"
+          },
+          {
+            "dependencies": [],
+            "kind": "theorem_step",
+            "node_id": "proof-step-6",
+            "proof_artifact": "PROOF-PATH.md",
+            "provenance": "EXTERNAL_AI_FORMALIZATION",
+            "source": "PROOF-PATH.md",
+            "statement": "`ModularForm.S2_Gamma0_2_eq_zero`: every `f : CuspForm (CongruenceSubgroup.Gamma0 2) 2` is 0,",
+            "status": "IMPORTED",
+            "verification_result": "pending"
+          }
+        ],
+        "root": "fermat_last_theorem"
+      },
+      "dependency_manifest": {
+        "manifest_version": "1.2.0",
+        "package_count": 9,
+        "packages": [
+          {
+            "input_rev": "db584cd6d46c92f209a44c0f1c829460d327499d",
+            "name": "mathlib",
+            "rev": "db584cd6d46c92f209a44c0f1c829460d327499d",
+            "scope": "",
+            "url": "https://github.com/leanprover-community/mathlib4.git"
+          },
+          {
+            "input_rev": "main",
+            "name": "plausible",
+            "rev": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+            "scope": "leanprover-community",
+            "url": "https://github.com/leanprover-community/plausible"
+          },
+          {
+            "input_rev": "main",
+            "name": "LeanSearchClient",
+            "rev": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+            "scope": "leanprover-community",
+            "url": "https://github.com/leanprover-community/LeanSearchClient"
+          },
+          {
+            "input_rev": "main",
+            "name": "importGraph",
+            "rev": "16f02aa7642864af59f1ff0e384a015994db9118",
+            "scope": "leanprover-community",
+            "url": "https://github.com/leanprover-community/import-graph"
+          },
+          {
+            "input_rev": "main",
+            "name": "proofwidgets",
+            "rev": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+            "scope": "leanprover-community",
+            "url": "https://github.com/leanprover-community/ProofWidgets4"
+          },
+          {
+            "input_rev": "master",
+            "name": "aesop",
+            "rev": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+            "scope": "leanprover-community",
+            "url": "https://github.com/leanprover-community/aesop"
+          },
+          {
+            "input_rev": "master",
+            "name": "Qq",
+            "rev": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+            "scope": "leanprover-community",
+            "url": "https://github.com/leanprover-community/quote4"
+          },
+          {
+            "input_rev": "main",
+            "name": "batteries",
+            "rev": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+            "scope": "leanprover-community",
+            "url": "https://github.com/leanprover-community/batteries"
+          },
+          {
+            "input_rev": "v4.33.0",
+            "name": "Cli",
+            "rev": "6130a47896ce867c6a4a55373441e59e565bad0f",
+            "scope": "leanprover",
+            "url": "https://github.com/leanprover/lean4-cli"
+          }
+        ]
+      },
+      "external_checker_configuration": {
+        "comparator": {
+          "challenge_module": "Challenge",
+          "enable_nanoda": false,
+          "permitted_axioms": [
+            "propext",
+            "Quot.sound",
+            "Classical.choice"
+          ],
+          "solution_module": "Solution",
+          "theorem_names": [
+            "FLT_for_comparator",
+            "FLT_mathlib_for_comparator"
+          ]
+        },
+        "independent_checker": {
+          "export_file_path": "solution.export",
+          "nat_extension": true,
+          "num_threads": 16,
+          "permitted_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "pp_declars": [
+            "FLT_for_comparator",
+            "FLT_mathlib_for_comparator",
+            "fermat_last_theorem",
+            "FermatLastTheorem"
+          ],
+          "string_extension": true,
+          "unpermitted_axiom_hard_error": true,
+          "use_stdin": false
+        }
+      },
+      "failed_attempts": [],
+      "formal_statement": "theorem fermat_last_theorem (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n",
+      "independent_checker": {
+        "command": [
+          "bash",
+          "verification/nanoda/run.sh"
+        ],
+        "config_path": "verification/nanoda/nanoda-config.json",
+        "name": "nanoda",
+        "script_path": "verification/nanoda/run.sh",
+        "version": "0.4.13"
+      },
+      "independent_checker_result": {
+        "checker": "nanoda",
+        "command": [
+          "bash",
+          "verification/nanoda/run.sh"
+        ],
+        "status": "pending"
+      },
+      "lean_version": "v4.33.1",
+      "license": "Apache-2.0",
+      "mathlib_version": "db584cd6d46c92f209a44c0f1c829460d327499d",
+      "proof_path": [
+        {
+          "dependencies": [],
+          "node_id": "proof-step-1",
+          "provenance": [
+            "EXTERNAL_AI_FORMALIZATION"
+          ],
+          "source": "PROOF-PATH.md",
+          "statement": "`fermat_last_theorem` follows in one line from `FLT.fermatLastTheorem : FermatLastTheorem`",
+          "status": "IMPORTED",
+          "theorem_references": [
+            "fermat_last_theorem",
+            "FLT.fermatLastTheorem : FermatLastTheorem",
+            "FermatLastTheorem.of_odd_primes",
+            "fermatLastTheoremThree",
+            "FreyPackage.fermatLastTheoremFor_of_five_le",
+            "FreyPackage.of_counterexample",
+            "FreyPackage.no_frey_package"
+          ],
+          "title": "Reduction to a prime p \u2265 5."
+        },
+        {
+          "dependencies": [
+            "proof-step-3"
+          ],
+          "node_id": "proof-step-2",
+          "provenance": [
+            "EXTERNAL_AI_FORMALIZATION"
+          ],
+          "source": "PROOF-PATH.md",
+          "statement": "A Frey package (`Definitions/Def_FLTPrelim_FreyPackage.lean`, adapted from the Imperial College",
+          "status": "IMPORTED",
+          "theorem_references": [
+            "Definitions/Def_FLTPrelim_FreyPackage.lean",
+            "FreyPackage.of_counterexample",
+            "FreyPackage.no_frey_package (P : FreyPackage) : False"
+          ],
+          "title": "Frey package."
+        },
+        {
+          "dependencies": [],
+          "node_id": "proof-step-3",
+          "provenance": [
+            "EXTERNAL_AI_FORMALIZATION"
+          ],
+          "source": "PROOF-PATH.md",
+          "statement": "`FreyPackage.Mazur_Frey` proves `GaloisRepIsIrreducible \u211a P.freyCurve P.p`",
+          "status": "IMPORTED",
+          "theorem_references": [
+            "FreyPackage.Mazur_Frey",
+            "GaloisRepIsIrreducible \u211a P.freyCurve P.p",
+            "Definitions/Def_FLTPrelim_GaloisRep.lean"
+          ],
+          "title": "Irreducibility."
+        },
+        {
+          "dependencies": [],
+          "node_id": "proof-step-4",
+          "provenance": [
+            "EXTERNAL_AI_FORMALIZATION"
+          ],
+          "source": "PROOF-PATH.md",
+          "statement": "`FreyPackage.frey_isModular` follows from `WeierstrassCurve.modularity_of_semistableModel`.",
+          "status": "IMPORTED",
+          "theorem_references": [
+            "FreyPackage.frey_isModular",
+            "WeierstrassCurve.modularity_of_semistableModel"
+          ],
+          "title": "Modularity."
+        },
+        {
+          "dependencies": [],
+          "node_id": "proof-step-5",
+          "provenance": [
+            "EXTERNAL_AI_FORMALIZATION"
+          ],
+          "source": "PROOF-PATH.md",
+          "statement": "`FreyPackage.level_lowering_to_two`: E_P modular and \u03c1\u0304_{E_P,p} irreducible give a nonzero",
+          "status": "IMPORTED",
+          "theorem_references": [
+            "FreyPackage.level_lowering_to_two",
+            "f : CuspForm (CongruenceSubgroup.Gamma0 2) 2"
+          ],
+          "title": "Level lowering."
+        },
+        {
+          "dependencies": [],
+          "node_id": "proof-step-6",
+          "provenance": [
+            "EXTERNAL_AI_FORMALIZATION"
+          ],
+          "source": "PROOF-PATH.md",
+          "statement": "`ModularForm.S2_Gamma0_2_eq_zero`: every `f : CuspForm (CongruenceSubgroup.Gamma0 2) 2` is 0,",
+          "status": "IMPORTED",
+          "theorem_references": [
+            "ModularForm.S2_Gamma0_2_eq_zero",
+            "f : CuspForm (CongruenceSubgroup.Gamma0 2) 2"
+          ],
+          "title": "S\u2082(\u0393\u2080(2)) = 0."
+        }
+      ],
+      "provenance": [
+        "EXTERNAL_AI_FORMALIZATION",
+        "origin:Anthropic/Claude formalization",
+        "lineage:Frey/Serre/Ribet/Wiles/Taylor-Wiles"
+      ],
+      "repository": "https://github.com/anthropics/fermats-last-theorem",
+      "repository_path": null,
+      "resource_requirements": {
+        "build": {
+          "disk_gb": 287,
+          "memory_per_parallel_job_gb": 5,
+          "notes": "Published README values; actual Barrot runs must record observed resources separately.",
+          "peak_memory_gb": 153
+        },
+        "comparator": {
+          "elapsed_hours": 15,
+          "peak_memory_gb": 230,
+          "recommended_memory_gb": 300
+        },
+        "independent_checker": {
+          "check_memory_gb": 40,
+          "export_memory_gb": 90,
+          "threads": 16
+        }
+      },
+      "root_theorem": "fermat_last_theorem",
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_files": [
+        "Theorems/Thm_fermat_last_theorem.lean",
+        "FinalCheck.lean"
+      ],
+      "source_location": "Theorems/Thm_fermat_last_theorem.lean:4",
+      "source_repository": "https://github.com/anthropics/fermats-last-theorem",
+      "status": "IMPORTED",
+      "system": "lean",
+      "theorem_metadata": [
+        {
+          "comparison_target": {
+            "basis": "published comparator theorem",
+            "name": "FLT_for_comparator",
+            "statement": "theorem FLT_for_comparator (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n"
+          },
+          "declaration": "theorem fermat_last_theorem (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n := by p2m_exact_reverting @_root_.P2MW.S_fermat_last_theorem.solution",
+          "imports": [
+            "Mathlib.NumberTheory.FLT.Basic",
+            "P2M.Util",
+            "P2M.Sol.S_fermat_last_theorem"
+          ],
+          "kind": "theorem",
+          "line": 4,
+          "name": "fermat_last_theorem",
+          "proof_path": [],
+          "relative_path": "Theorems/Thm_fermat_last_theorem.lean",
+          "source_location": "Theorems/Thm_fermat_last_theorem.lean:4",
+          "statement": "theorem fermat_last_theorem (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n"
+        },
+        {
+          "comparison_target": {
+            "basis": "published FinalCheck bridge theorem",
+            "name": "FermatLastTheorem",
+            "statement": "theorem flt_mathlib : FermatLastTheorem"
+          },
+          "declaration": "theorem flt_mathlib : FermatLastTheorem := fun n hn a b c ha hb hc => fermat_last_theorem n hn a b c (Nat.pos_of_ne_zero ha) (Nat.pos_of_ne_zero hb) (Nat.pos_of_ne_zero hc)",
+          "imports": [
+            "Theorems.Thm_fermat_last_theorem"
+          ],
+          "kind": "theorem",
+          "line": 7,
+          "name": "flt_mathlib",
+          "proof_path": [],
+          "relative_path": "FinalCheck.lean",
+          "source_location": "FinalCheck.lean:7",
+          "statement": "theorem flt_mathlib : FermatLastTheorem"
+        }
+      ],
+      "theorem_names": [
+        "fermat_last_theorem",
+        "flt_mathlib"
+      ],
+      "theorem_statement": "theorem fermat_last_theorem (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n",
+      "toolchain_version": "leanprover/lean4:v4.33.1",
+      "verification_id": "formal.anthropic_fermat_last_theorem",
+      "verification_scripts": {
+        "axiom_audit": {
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "FinalCheck.lean"
+          ],
+          "source": "FinalCheck.lean"
+        },
+        "build": {
+          "command": [
+            "lake",
+            "build"
+          ],
+          "source": "README.md"
+        },
+        "comparator": {
+          "command": [
+            "bash",
+            "verification/comparator/run.sh"
+          ],
+          "config": {
+            "challenge_module": "Challenge",
+            "enable_nanoda": false,
+            "permitted_axioms": [
+              "propext",
+              "Quot.sound",
+              "Classical.choice"
+            ],
+            "solution_module": "Solution",
+            "theorem_names": [
+              "FLT_for_comparator",
+              "FLT_mathlib_for_comparator"
+            ]
+          },
+          "script_path": "verification/comparator/run.sh"
+        },
+        "independent_checker": {
+          "command": [
+            "bash",
+            "verification/nanoda/run.sh"
+          ],
+          "config": {
+            "export_file_path": "solution.export",
+            "nat_extension": true,
+            "num_threads": 16,
+            "permitted_axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "pp_declars": [
+              "FLT_for_comparator",
+              "FLT_mathlib_for_comparator",
+              "fermat_last_theorem",
+              "FermatLastTheorem"
+            ],
+            "string_extension": true,
+            "unpermitted_axiom_hard_error": true,
+            "use_stdin": false
+          },
+          "script_path": "verification/nanoda/run.sh"
+        }
+      }
+    }
+  ],
+  "problem": {
+    "acceptance_requirements": {
+      "formal_verification_required": true,
+      "independent_verification_required": true,
+      "resolved_adversarial_reviews_required": true
+    },
+    "domain": "mathematics.number_theory.formal_verification",
+    "primary_claims": [
+      "claim.fermat_last_theorem"
+    ],
+    "primary_question": "Can Barrot ingest and independently reproduce the published Fermat's Last Theorem Lean benchmark?",
+    "problem_id": "anthropic_fermats_last_theorem_benchmark",
+    "related_problems": [],
+    "title": "Anthropic Fermat's Last Theorem benchmark"
+  },
+  "question_map": [
+    {
+      "answer": {
+        "root_theorem": "fermat_last_theorem",
+        "statement": "theorem fermat_last_theorem (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n",
+        "verification_status": "IMPORTED"
+      },
+      "claim_ids": [
+        "claim.fermat_last_theorem"
+      ],
+      "prompt": "What root theorem does the imported FLT benchmark target?",
+      "question_id": "flt_root_theorem",
+      "source_ids": [
+        "anthropic_repo",
+        "anthropic_proof_path"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "author_or_organization": "Anthropic",
+      "citations": [
+        "anthropic_repo"
+      ],
+      "definitions": [
+        "EXTERNAL_AI_FORMALIZATION"
+      ],
+      "equations": [],
+      "publication_date": "2026-08-27",
+      "relationships": [
+        {
+          "target": "claim.fermat_last_theorem",
+          "type": "announces"
+        }
+      ],
+      "sections": [
+        "Formalization overview",
+        "Verification model"
+      ],
+      "source_commit": "",
+      "source_id": "anthropic_article",
+      "source_type": "research_announcement",
+      "theorem_names": [
+        "fermat_last_theorem",
+        "flt_mathlib"
+      ],
+      "title": "Formalizing Fermat's Last Theorem",
+      "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
+      "version": "published article"
+    },
+    {
+      "author_or_organization": "Anthropic",
+      "citations": [
+        "anthropic_article",
+        "anthropic_proof_path",
+        "anthropic_comparator",
+        "anthropic_nanoda"
+      ],
+      "definitions": [
+        "FinalCheck",
+        "proof DAG",
+        "axiom audit"
+      ],
+      "equations": [
+        "theorem fermat_last_theorem (n : \u2115) (hn : 3 \u2264 n) (a b c : \u2115) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a ^ n + b ^ n \u2260 c ^ n",
+        "theorem flt_mathlib : FermatLastTheorem"
+      ],
+      "publication_date": "2026-08-27",
+      "relationships": [
+        {
+          "target": "claim.fermat_last_theorem",
+          "type": "formalizes"
+        }
+      ],
+      "sections": [
+        "Theorems/Thm_fermat_last_theorem.lean",
+        "PROOF-PATH.md",
+        "FinalCheck.lean"
+      ],
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_id": "anthropic_repo",
+      "source_type": "lean_formalization_repository",
+      "theorem_names": [
+        "fermat_last_theorem",
+        "flt_mathlib"
+      ],
+      "title": "Fermat's Last Theorem in Lean 4",
+      "url": "https://github.com/anthropics/fermats-last-theorem",
+      "version": "leanprover/lean4:v4.33.1"
+    },
+    {
+      "author_or_organization": "Anthropic",
+      "citations": [
+        "anthropic_repo"
+      ],
+      "definitions": [],
+      "equations": [],
+      "publication_date": "2026-08-27",
+      "relationships": [
+        {
+          "target": "claim.fermat_last_theorem",
+          "type": "supports"
+        }
+      ],
+      "sections": [
+        "Reduction to a prime p \u2265 5.",
+        "Frey package.",
+        "Irreducibility.",
+        "Modularity.",
+        "Level lowering.",
+        "S\u2082(\u0393\u2080(2)) = 0."
+      ],
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_id": "anthropic_proof_path",
+      "source_type": "proof_path",
+      "theorem_names": [
+        "fermat_last_theorem",
+        "FLT.fermatLastTheorem : FermatLastTheorem",
+        "FermatLastTheorem.of_odd_primes",
+        "fermatLastTheoremThree",
+        "FreyPackage.fermatLastTheoremFor_of_five_le",
+        "FreyPackage.of_counterexample",
+        "FreyPackage.no_frey_package",
+        "Definitions/Def_FLTPrelim_FreyPackage.lean",
+        "FreyPackage.of_counterexample",
+        "FreyPackage.no_frey_package (P : FreyPackage) : False",
+        "FreyPackage.Mazur_Frey",
+        "GaloisRepIsIrreducible \u211a P.freyCurve P.p",
+        "Definitions/Def_FLTPrelim_GaloisRep.lean",
+        "FreyPackage.frey_isModular",
+        "WeierstrassCurve.modularity_of_semistableModel",
+        "FreyPackage.level_lowering_to_two",
+        "f : CuspForm (CongruenceSubgroup.Gamma0 2) 2",
+        "ModularForm.S2_Gamma0_2_eq_zero",
+        "f : CuspForm (CongruenceSubgroup.Gamma0 2) 2"
+      ],
+      "title": "Anthropic FLT proof path",
+      "url": "https://github.com/anthropics/fermats-last-theorem/blob/aa2d8b34692b16c70f699536de0d8e75b9a3e9ef/PROOF-PATH.md",
+      "version": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef"
+    },
+    {
+      "author_or_organization": "leanprover/comparator via Anthropic benchmark",
+      "citations": [
+        "anthropic_repo"
+      ],
+      "definitions": [
+        "permitted axioms comparator"
+      ],
+      "equations": [],
+      "publication_date": "2026-08-27",
+      "relationships": [
+        {
+          "target": "claim.fermat_last_theorem",
+          "type": "checks"
+        }
+      ],
+      "sections": [
+        "verification/comparator/config.json"
+      ],
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_id": "anthropic_comparator",
+      "source_type": "external_checker_configuration",
+      "theorem_names": [
+        "FLT_for_comparator",
+        "FLT_mathlib_for_comparator"
+      ],
+      "title": "Comparator configuration",
+      "url": "https://github.com/anthropics/fermats-last-theorem/blob/aa2d8b34692b16c70f699536de0d8e75b9a3e9ef/verification/comparator/config.json",
+      "version": "v4.33.0"
+    },
+    {
+      "author_or_organization": "nanoda via Anthropic benchmark",
+      "citations": [
+        "anthropic_repo"
+      ],
+      "definitions": [
+        "independent kernel replay"
+      ],
+      "equations": [],
+      "publication_date": "2026-08-27",
+      "relationships": [
+        {
+          "target": "claim.fermat_last_theorem",
+          "type": "independently_checks"
+        }
+      ],
+      "sections": [
+        "verification/nanoda/nanoda-config.json"
+      ],
+      "source_commit": "aa2d8b34692b16c70f699536de0d8e75b9a3e9ef",
+      "source_id": "anthropic_nanoda",
+      "source_type": "independent_checker_configuration",
+      "theorem_names": [
+        "FLT_for_comparator",
+        "FLT_mathlib_for_comparator",
+        "fermat_last_theorem",
+        "FermatLastTheorem"
+      ],
+      "title": "Nanoda checker configuration",
+      "url": "https://github.com/anthropics/fermats-last-theorem/blob/aa2d8b34692b16c70f699536de0d8e75b9a3e9ef/verification/nanoda/nanoda-config.json",
+      "version": "0.4.13"
+    }
+  ],
+  "tracks": [
+    {
+      "assumptions": [],
+      "confidence": 0.8,
+      "dependencies": [],
+      "evidence": [
+        "anthropic-import-metadata",
+        "anthropic-proof-path"
+      ],
+      "failed_approaches": [],
+      "focus_claims": [
+        "claim.fermat_last_theorem"
+      ],
+      "hypothesis": "The imported benchmark can be represented without treating it as Barrot-generated mathematics.",
+      "intermediate_results": [
+        {
+          "claim_id": "claim.fermat_last_theorem",
+          "status": "FORMALIZED",
+          "summary": "External FLT formalization imported with provenance preserved."
+        }
+      ],
+      "provenance": [
+        "anthropic_repo"
+      ],
+      "role": "formalization_ingestion",
+      "strategy": "import published external Lean theorem metadata, proof path, and checker configuration",
+      "track_id": "formal_import",
+      "unresolved_objections": []
+    },
+    {
+      "assumptions": [],
+      "confidence": 0.4,
+      "dependencies": [
+        "claim.fermat_last_theorem"
+      ],
+      "evidence": [],
+      "failed_approaches": [],
+      "focus_claims": [
+        "claim.fermat_last_theorem"
+      ],
+      "hypothesis": "Barrot can reproduce the published verification evidence rather than trusting repository claims.",
+      "intermediate_results": [
+        {
+          "claim_id": "claim.fermat_last_theorem",
+          "status": "UNRESOLVED",
+          "summary": "Verification remains pending until Barrot executes the primary and independent checks."
+        }
+      ],
+      "provenance": [
+        "anthropic_nanoda",
+        "anthropic_comparator"
+      ],
+      "role": "independent_checker_reproduction",
+      "strategy": "re-run the Lean build, axiom audit, comparator, and independent checker when resources permit",
+      "track_id": "formal_verification",
+      "unresolved_objections": [
+        "Barrot has not yet reproduced the external verification evidence."
+      ]
+    }
+  ]
+}

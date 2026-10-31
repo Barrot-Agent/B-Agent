@@ -1,0 +1,23 @@
+{
+  "COMMAND": "ScientificDiscoveryController.run(source-team only)",
+  "COMPONENTS_TESTED": [
+    "ScientificDiscoveryController",
+    "CompletionGate"
+  ],
+  "DESCRIPTION": "false mathematical proof does not satisfy acceptance",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-19.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:40Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "independent": "UNRESOLVED",
+    "status": "no_solution_claim"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-19",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

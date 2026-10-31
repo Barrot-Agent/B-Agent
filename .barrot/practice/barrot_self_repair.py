@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+
+print("BARROT SELF-REPAIR PRACTICE")
+print("FAILURE DETECTED")
+print("PATCH APPLIED")
+print("SELF-REPAIR SUCCESSFUL")

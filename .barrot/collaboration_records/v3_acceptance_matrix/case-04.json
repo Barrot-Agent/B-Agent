@@ -1,0 +1,22 @@
+{
+  "COMMAND": "RepositoryRepairController.run(invalid JSON)",
+  "COMPONENTS_TESTED": [
+    "RepairPlanner"
+  ],
+  "DESCRIPTION": "invalid JSON fails safely",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-04.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:33Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "failure": "LLM_INVALID_JSON",
+    "status": "failed"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-04",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

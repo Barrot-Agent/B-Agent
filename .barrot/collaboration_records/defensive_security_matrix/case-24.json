@@ -1,0 +1,19 @@
+{
+  "DESCRIPTION": "unauthorized network action is denied in safe mode",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-16T14:26:43Z",
+  "RESULT": {
+    "allowed": false,
+    "capability": "NETWORK",
+    "incident_id": "9c93bcf5f59a8111",
+    "reason": "BARROT_SAFE_MODE is active.",
+    "requested_action": "call external API",
+    "safe_mode_active": true,
+    "threat_classification": "CONTAINED"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-24",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

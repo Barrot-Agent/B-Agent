@@ -1,0 +1,111 @@
+**1. Actual modules & their public API (as present in this chunk)**  
+
+| Module (file) | Public classes / dataclasses | Public methods / functions that are meant to be called from outside the file |
+|---------------|-----------------------------|-----------------------------------------------------------------------------|
+| `barrot_agent/tools/trial_tracker.py` | `TrialMetadata` (dataclass – fields only) <br> `ParticipantCohort` (dataclass) | `ParticipantCohort.add_participant_outcome` <br> `ParticipantCohort.calculate_mean_age_reversal` <br> `ParticipantCohort.identify_responders` <br> `ParticipantCohort.compare_treatment_arms` |
+| | `EfficacyAnalyzer` (class) | `EfficacyAnalyzer.estimate_success_probability` |
+| | `SafetyMonitor` (class) | `SafetyMonitor.log_adverse_event` <br> `SafetyMonitor.calculate_safety_score` <br> `SafetyMonitor.events_by_arm` |
+| | `DiscoveryExtractor` (class) | `DiscoveryExtractor.surface_high_impact_discoveries` <br> `DiscoveryExtractor.to_mmi_payload` |
+| **(implicit) `barrot_agent/<something>.py`** – the snippet that contains `drop()` | The *containing* class (let’s call it `Repository` for the discussion) | `Repository.drop(source, destination, overwrite=False)` – the only public entry point in the snippet. |
+| `barrot_agent/tools/free_image_gen.py` | – No public symbols are defined in the visible part of the file (only a docstring). | – (nothing to test in this chunk). |
+
+> **Note:** The `DropResult` type used by `drop()` is defined elsewhere in the repo; it is part of the public API of the `drop` method because the method returns an instance of it.
+
+---
+
+**2. Executable branches & error paths**
+
+| Location | Branch / decision point | What it guards / error path |
+|----------|------------------------|-----------------------------|
+| `drop()` – source handling | `if not source_path.exists()` | Returns `DropResult` (“Source does not exist.”) |
+| | `if not source_path.is_file()` | Returns `DropResult` (“Source is not a file.”) |
+| | `try: destination_path = self._safe_destination(destination)` **except ValueError** | Returns `DropResult` (error message from `_safe_destination`) |
+| | `if destination_path.suffix == ""` | *Directory* case – creates directory, then uses `source_path.name` as file name |
+| | `else` (suffix present) | *File* case – ensures parent directory exists |
+| | `if destination_path.exists() and not overwrite` | Returns `DropResult` (“Destination already exists. Overwrite disabled.”) |
+| | `if source_path.stat().st_dev == destination_path.parent.stat().st_dev` | **Same‑device path** → `os.replace` (move) |
+| | `else` | **Cross‑device** → `shutil.copy2` (copy) |
+| | **Copy‑verification branch** – after copy: <br> `if self._checksum(destination_path) != source_checksum` | Deletes the bad copy, returns `DropResult` (“Checksum verification failed.”) |
+| | **Exception handling** – any exception raised inside the `try` block (move / copy / checksum) | Returns `DropResult` (error string from caught exception) |
+| | `if not destination_path.exists()` (post‑operation sanity) | Returns `DropResult` (“Destination verification failed.”) |
+| | `if final_checksum != source_checksum` (final checksum compare) | Returns `DropResult` (“Final checksum verification failed.”) |
+| | **Success path** – all checks pass | Returns `DropResult` (success = `True`) |
+| `ParticipantCohort.calculate_mean_age_reversal` | `if not self.outcomes:` | Returns `0.0` |
+| `ParticipantCohort.identify_responders` | List‑comprehension filter on `age_reversal >= threshold_years` (default 5.0) – exercised by varying threshold |
+| `ParticipantCohort.compare_treatment_arms` | Builds a `defaultdict(list)`; final dict comprehension skips empty value lists |
+| `EfficacyAnalyzer.estimate_success_probability` | `if not outcomes:` → `0.0` |
+| | Ratio `len(responders) / len(outcomes)` – exercised by different efficacy thresholds |
+| `SafetyMonitor.calculate_safety_score` | `if not self._events:` → `1.0` |
+| | Weight lookup (`severity_weights.get(event["severity"], 0.2)`) – exercised by unknown severity |
+| | `max(0.0, 1.0 - penalty / max(len(self._events), 1))` – exercised by varying numbers/severities |
+| `SafetyMonitor.events_by_arm` | `defaultdict(int)` aggregation – exercised by multiple arms |
+| `DiscoveryExtractor.surface_high_impact_discoveries` | Loop over `arm_comparison.items()` – triggers discovery when `value >= 4.0` |
+| | Safety‑score check `>= 0.8` – triggers safety discovery |
+| `DiscoveryExtractor.to_mmi_payload` | Pure mapping – always returns the same shape; coverage comes from the call to `surface_high_impact_discoveries`. |
+
+---
+
+**3. Practical pytest cases (strictly supported by the code)**  
+
+Below are *concrete* test ideas that map one‑to‑one to the branches above.  
+Each test can be written with the standard `pytest` fixtures (`tmp_path`, `monkeypatch`) and *does not* require any speculative APIs.
+
+| Test # | Targeted code | Scenario & assertions |
+|--------|---------------|-----------------------|
+| **Drop – source missing** | `if not source_path.exists()` | Create a temporary file path that does **not** exist. Call `repo.drop(missing, dest)`. Assert `result.success is False` and `result.message == "Source does not exist."` |
+| **Drop – source is a directory** | `if not source_path.is_file()` | Create a temporary **directory**. Call `drop(dir_path, dest)`. Expect failure with message “Source is not a file.” |
+| **Drop – destination escapes repo** | `_safe_destination` → `ValueError` | Monkey‑patch `repo._safe_destination` to raise `ValueError("escaped")`. Verify `result.success is False` and message contains “escaped”. |
+| **Drop – destination is a directory (suffix == \"\")** | `if destination_path.suffix == ""` | Use a destination path that ends with a directory name (no extension). After the call, assert that the file now lives inside that directory with the original source filename, and `result.action == "move"` or `"copy-verify-delete"` depending on device mock. |
+| **Drop – destination is a file (suffix present)** | `else:` branch | Pass a destination path ending with `.txt`. Verify parent directory creation and final file location. |
+| **Drop – destination exists & overwrite=False** | `if destination_path.exists() and not overwrite` | Pre‑create the destination file. Call `drop(..., overwrite=False)`. Expect failure with “Destination already exists. Overwrite disabled.” |
+| **Drop – same‑device move** | `if source_path.stat().st_dev == destination_path.parent.stat().st_dev` | Monkey‑patch `Path.stat` to return identical `st_dev` for source and dest‑parent. Monkey‑patch `os.replace` to record call. Ensure `result.action == "move"` and `os.replace` was invoked. |
+| **Drop – cross‑device copy, checksum OK** | `else:` copy branch, checksum match | Monkey‑patch `Path.stat` to give different `st_dev`. Monkey‑patch `shutil.copy2` (no‑op). Monkey‑patch `repo._checksum` to return the *same* value for source and destination. Verify `result.action == "copy-verify-delete"` and source file was deleted (`source_path.exists() is False`). |
+| **Drop – cross‑device copy, checksum FAIL** | `if self._checksum(destination_path) != source_checksum` | Same as above but make `_checksum(dest)` return a **different** value. Expect `result.success is False`, message “Checksum verification failed.” and that the bad destination file has been removed (`dest_path.exists() is False`). |
+| **Drop – exception inside try** | `except Exception as error` | Monkey‑patch `shutil.copy2` to raise `RuntimeError("boom")`. Verify the returned `DropResult` contains `error` string “boom”. |
+| **Drop – post‑operation missing file** | `if not destination_path.exists():` | After a successful copy, monkey‑patch `Path.exists` on the destination to return `False`. Expect failure with “Destination verification failed.” |
+| **Drop – final checksum mismatch** | `if final_checksum != source_checksum:` | Make `_checksum(dest)` return a different value after copy. Expect failure with “Final checksum verification failed.” |
+| **ParticipantCohort – empty outcomes mean** | `calculate_mean_age_reversal` empty | Create a cohort with no outcomes. Call method, assert `0.0`. |
+| **ParticipantCohort – non‑empty mean** | `calculate_mean_age_reversal` | Add three outcomes (ages 2.5, 3.5, 4.0). Expect `round(mean(...),3) == 3.333`. |
+| **ParticipantCohort – responders threshold** | `identify_responders` | Add outcomes with reversals 4, 6, 7. Call with default threshold (5). Expect list of ids for 6 and 7 only. |
+| **ParticipantCohort – compare arms** | `compare_treatment_arms` | Add outcomes for arms “A” (2,4) and “B” (5). Expect `{'A': 3.0, 'B': 5.0}`. |
+| **EfficacyAnalyzer – empty cohort** | `estimate_success_probability` | Pass a cohort with no outcomes. Expect `0.0`. |
+| **EfficacyAnalyzer – normal** | `estimate_success_probability` | Populate cohort, set `efficacy_threshold=4`. Verify proportion of rows ≥4. |
+| **SafetyMonitor – no events** | `calculate_safety_score` empty | New monitor, call method → `1.0`. |
+| **SafetyMonitor – known severities** | `calculate_safety_score` | Log three events: mild, moderate, severe. Expected penalty = 0.1+0.3+0.6 = 1.0 → score `max(0,1-1/3)=0.667` rounded → `0.667`. |
+| **SafetyMonitor – unknown severity** | `calculate_safety_score` | Log one event with severity “critical”. Weight fallback = 0.2 → score `0.8`. |
+| **SafetyMonitor – events_by_arm** | `events_by_arm` | Log events on arms “A”, “A”, “B”. Expect `{'A':2,'B':1}`. |
+| **DiscoveryExtractor – efficacy breakthrough** | `surface_high_impact_discoveries` | Cohort with arm “X” having mean age reversal 4.2. Safety score ≥0.8. Expect discovery list containing an entry with `type="efficacy_breakthrough"` and one with `type="safety_signal"`. |
+| **DiscoveryExtractor – no breakthrough, low safety** | `surface_high_impact_discoveries` | Cohort mean <4, safety score <0.8. Expect empty list. |
+| **DiscoveryExtractor – to_mmi_payload** | `to_mmi_payload` | Verify payload keys (`topic`, `discoveries`, `source`) and that `discoveries` matches the result of `surface_high_impact_discoveries`. |
+
+All tests can be expressed with pure pytest; no external services are needed.
+
+---
+
+**4. Estimated newly covered lines**
+
+| Module / function | Approx. lines (total) | Lines that will be exercised by the test matrix above |
+|-------------------|----------------------|--------------------------------------------------------|
+| `Repository.drop` (the snippet) | ~70 | ~60‑65 (every branch except the very rare `os.replace`‑exception path – covered by the “exception” test). |
+| `ParticipantCohort` (4 methods) | ~30 | ~28 (both empty‑ and non‑empty paths, arm‑grouping, threshold filter). |
+| `EfficacyAnalyzer.estimate_success_probability` | ~10 | ~9 (empty & non‑empty). |
+| `SafetyMonitor` (3 methods) | ~25 | ~23 (empty, known, unknown severity, events_by_arm). |
+| `DiscoveryExtractor` (2 methods) | ~30 | ~27 (breakthrough vs no‑breakthrough, safety‑signal gating). |
+| **Total lines in this chunk** | ~165 | **≈ 150** lines will be executed by the proposed suite.  
+
+Assuming the current pytest coverage is ~64 %, exercising ~150 of the ~250 executable statements in this chunk will push the overall coverage comfortably above **70 %** (often into the 73‑77 % range, depending on the rest of the repository).
+
+---
+
+**5. External dependencies that need to be mocked / monkey‑patched**
+
+| Dependency | Why it must be mocked | Typical pytest fixture / monkeypatch usage |
+|------------|----------------------|-------------------------------------------|
+| `Path.resolve`, `Path.expanduser` | File‑system‑independent tests; resolve may touch the real FS. | Use `tmp_path` and feed already‑resolved `Path` objects, or monkey‑patch `Path.resolve` to return the input path. |
+| `Path.exists`, `Path.is_file`, `Path.is_dir` | To simulate missing source, existing destination, directory vs file cases without touching real disk. | `monkeypatch` on the `Path` instance methods, or create real temporary files/directories with `tmp_path`. |
+| `Path.stat().st_dev` | Determines same‑vs‑cross‑device branch. | Monkey‑patch `Path.stat` to return a simple object with attribute `st_dev` (e.g., `types.SimpleNamespace(st_dev=1)`). |
+| `os.replace` | Side‑effect of moving a file; we only need to assert it was called. | Monkey‑patch to a lambda that records the call or raises a controlled exception. |
+| `shutil.copy2` | Expensive real copy; we only need to verify it is called. | Monkey‑patch to a no‑op function. |
+| `self._checksum` (method of the class) | Real checksum would read file contents; we want deterministic values. | `monkeypatch` the bound method on the repo instance to return a preset string per path. |
+| `destination_path.mkdir`, `destination_path.parent.mkdir` | Directory creation on the real FS is unnecessary. | Monkey‑patch `Path.mkdir` to a harmless lambda. |
+| `destination_path.unlink` | Deleting real temp files may be fine, but for checksum‑failure path we want to assert it was invoked without actually removing a file

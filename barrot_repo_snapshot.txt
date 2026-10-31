@@ -1,0 +1,356 @@
+ M barrot_agent/barrot_brain.py
+ M barrot_agent/evolution/corroboration.py
+ M barrot_agent/mcp_provenance.jsonl
+ M barrot_agent/smart_agent.py
+ M data/evolution/confidence_calibration.json
+ M data/evolution/outcome_ledger.json
+ M data/research/riemann_hypothesis_harvest.json
+ D tests/test_email_integration.py
+ D tests/test_longevity_modules.py
+ D tests/test_merge_conflict_integration.py
+ D tests/test_transformative_insights.py
+?? .agents/
+?? .barrot/disabled_tests/
+?? .barrot/orbit/
+?? barrot_agent/tools/drop_router.py
+?? barrot_agent/tools/file_drop_tool.py
+?? barrot_agent/tools/repo_command_tool.py
+?? barrot_agent/tools/repo_inspect_tool.py
+?? barrot_repo_snapshot.txt
+?? feedback_loops/
+?? sandbox/autonomous_destination/
+?? sandbox/drop_test/
+?? sandbox/takeover_test/
+
+=== PYTEST / COVERAGE CONFIGURATION ===
+
+--- pytest.ini ---
+[pytest]
+markers =
+    cinematic: tests for the cinematic production subsystem
+testpaths = tests
+python_files = test_*.py
+python_classes = Test*
+python_functions = test_*
+addopts =
+    --cov=barrot_agent
+    --cov-report=term-missing
+    --cov-report=xml:coverage.xml
+    --cov-fail-under=70
+    -v
+
+--- pyproject.toml ---
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "b-agent"
+version = "0.1.0"
+description = "B-Agent: Barrot Agent with IBM Granite 4.0-3B Vision"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.40.0",
+    "streamlit>=1.35.0",
+    "accelerate>=0.30.0",
+    "bitsandbytes>=0.43.0",
+    "safetensors>=0.4.3",
+    "pillow>=10.3.0",
+    "requests>=2.32.0",
+    "python-dotenv>=1.0.1",
+    "pydantic>=2.7.1",
+    "pydantic-settings>=2.3.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+disallow_untyped_defs = true
+
+[tool.coverage.run]
+source = ["barrot_agent"]
+omit = [
+    "tests/*",
+    "**/__init__.py",
+    "barrot_agent/rendering/*",
+    "barrot_agent/smart_agent.py",
+    # subpackages migrated from root level where they were previously not measured;
+    # no pre-existing tests existed for these modules before this restructuring.
+    "barrot_agent/agi/*",
+    "barrot_agent/ingestion/*",
+    "barrot_agent/analysis/*",
+    "barrot_agent/monetization/*",
+    "barrot_agent/orchestration/*",
+    "barrot_agent/mem_palace.py",
+]
+
+[tool.coverage.report]
+fail_under = 70
+show_missing = true
+
+=== SOURCE TREE ===
+barrot_agent/__init__.py
+barrot_agent/agi/__init__.py
+barrot_agent/agi/advanced_algorithms.py
+barrot_agent/agi/agi_orchestrator.py
+barrot_agent/agi/agi_reasoning.py
+barrot_agent/agi/quantum_entanglement.py
+barrot_agent/agi/transformative_insights.py
+barrot_agent/analysis/__init__.py
+barrot_agent/analysis/character_capability_analyzer.py
+barrot_agent/analysis/character_figure_search.py
+barrot_agent/analysis/email_analyzer.py
+barrot_agent/analysis/epigenetic_reprogramming_engine.py
+barrot_agent/analysis/score_to_signal.py
+barrot_agent/analysis/sindy_video_pipeline.py
+barrot_agent/analysis/vision_pipeline.py
+barrot_agent/analysis/xrp_telemetry_matrix.py
+barrot_agent/barrot_brain.py
+barrot_agent/cinematic/__init__.py
+barrot_agent/cinematic/asset_registry.py
+barrot_agent/cinematic/character_registry.py
+barrot_agent/cinematic/continuity_engine.py
+barrot_agent/cinematic/production_pipeline.py
+barrot_agent/cinematic/project_manager.py
+barrot_agent/cinematic/scene_planner.py
+barrot_agent/cinematic/shot_director.py
+barrot_agent/cinematic/story_bible.py
+barrot_agent/config.py
+barrot_agent/core.py
+barrot_agent/evolution/__init__.py
+barrot_agent/evolution/claim_integrity.py
+barrot_agent/evolution/claim_lifecycle.py
+barrot_agent/evolution/cognitive_integrity.py
+barrot_agent/evolution/confidence_calibration.py
+barrot_agent/evolution/corroboration.py
+barrot_agent/evolution/event_bus.py
+barrot_agent/evolution/evidence_normalization.py
+barrot_agent/evolution/evidence_quality.py
+barrot_agent/evolution/evidence_store.py
+barrot_agent/evolution/evolution_engine.py
+barrot_agent/evolution/intelligence_pipeline.py
+barrot_agent/evolution/ledger_maintenance.py
+barrot_agent/evolution/reactive_observers.py
+barrot_agent/evolution/source_independence.py
+barrot_agent/github_client.py
+barrot_agent/github_service.py
+barrot_agent/gpt_api.py
+barrot_agent/inference.py
+barrot_agent/ingestion/__init__.py
+barrot_agent/ingestion/academic_harvest.py
+barrot_agent/ingestion/barrot_polymath_ingestion.py
+barrot_agent/ingestion/biomarker_analyzer.py
+barrot_agent/ingestion/build_riemann_a2a_corpus.py
+barrot_agent/ingestion/corroborate_riemann_research.py
+barrot_agent/ingestion/council_ingest_node.py
+barrot_agent/ingestion/dependency_micro_ingestion.py
+barrot_agent/ingestion/docs_ingestion.py
+barrot_agent/ingestion/longevity_micro_ingestion.py
+barrot_agent/ingestion/merge_conflict_micro_ingestion.py
+barrot_agent/ingestion/millennium_problems_micro_ingestion.py
+barrot_agent/ingestion/riemann_harvest.py
+barrot_agent/ingestion/score_riemann_research.py
+barrot_agent/ingestion/validate_riemann_research.py
+barrot_agent/kimi_integration.py
+barrot_agent/logger.py
+barrot_agent/mcp_adapters.py
+barrot_agent/mcp_approval.py
+barrot_agent/mcp_discovery.py
+barrot_agent/mcp_github.py
+barrot_agent/mcp_integration.py
+barrot_agent/mcp_pingpong.py
+barrot_agent/mcp_provenance.py
+barrot_agent/mcp_registry.py
+barrot_agent/mcp_sandbox.py
+barrot_agent/mcp_scheduler.py
+barrot_agent/mcp_scorer.py
+barrot_agent/mcp_targets.py
+barrot_agent/mem_palace.py
+barrot_agent/models.py
+barrot_agent/monetization/__init__.py
+barrot_agent/monetization/grant_generator.py
+barrot_agent/monetization/mmi_compiler.py
+barrot_agent/monetization/mmi_data_analyzer.py
+barrot_agent/monetization/monetization_engine.py
+barrot_agent/monetization/trial_tracker.py
+barrot_agent/orchestration/__init__.py
+barrot_agent/orchestration/barrot_integration.py
+barrot_agent/orchestration/deploy_databricks.py
+barrot_agent/orchestration/deploy_huggingface.py
+barrot_agent/orchestration/inference_node.py
+barrot_agent/orchestration/inference_provider.py
+barrot_agent/orchestration/mcp_databricks.py
+barrot_agent/orchestration/mcp_github.py
+barrot_agent/orchestration/mcp_huggingface.py
+barrot_agent/orchestration/mcp_orchestrator.py
+barrot_agent/orchestration/orchestrator_bridge.py
+barrot_agent/orchestration/sync_manager.py
+barrot_agent/reconfiguration.py
+barrot_agent/recursive_feedback.py
+barrot_agent/rendering/__init__.py
+barrot_agent/rendering/asset_loader.py
+barrot_agent/rendering/dataset_analytics.py
+barrot_agent/rendering/dataset_cache.py
+barrot_agent/rendering/dataset_indexing.py
+barrot_agent/rendering/dataset_manager.py
+barrot_agent/rendering/dataset_renderer.py
+barrot_agent/rendering/format_converter.py
+barrot_agent/rendering/material_integration.py
+barrot_agent/rendering/nerf_integration.py
+barrot_agent/rendering/photogrammetry_pipeline.py
+barrot_agent/rendering/point_cloud_system.py
+barrot_agent/rendering/quality_metrics.py
+barrot_agent/rendering/scene_database.py
+barrot_agent/rendering/streaming_loader.py
+barrot_agent/rendering/world_mapping.py
+barrot_agent/smart_agent.py
+barrot_agent/specialist_role_engine.py
+barrot_agent/ternary.py
+barrot_agent/tools/__init__.py
+barrot_agent/tools/drop_router.py
+barrot_agent/tools/file_drop_tool.py
+barrot_agent/tools/free_image_gen.py
+barrot_agent/tools/granite_model_config.py
+barrot_agent/tools/grant_generator.py
+barrot_agent/tools/kaggle_competitions_automation.py
+barrot_agent/tools/patch_preservation.py
+barrot_agent/tools/patch_report_mode.py
+barrot_agent/tools/repo_command_tool.py
+barrot_agent/tools/repo_inspect_tool.py
+barrot_agent/tools/stupid_sindy_series_generator.py
+barrot_agent/tools/trial_tracker.py
+barrot_agent/tools/upgrade_bundle.py
+barrot_agent/trading/__init__.py
+barrot_agent/trading/coinbase_trader.py
+barrot_agent/trading/risk_manager.py
+barrot_agent/upgrade_flywheel.py
+
+=== TEST TREE ===
+tests/test_cinematic.py
+tests/test_cinematic_production.py
+tests/test_claim_events.py
+tests/test_claim_integrity.py
+tests/test_claim_lifecycle.py
+tests/test_cognitive_integrity.py
+tests/test_coinbase_trader.py
+tests/test_confidence_calibration.py
+tests/test_config.py
+tests/test_core.py
+tests/test_corroboration.py
+tests/test_corroboration_events.py
+tests/test_data_registry.py
+tests/test_event_bus.py
+tests/test_evidence_corroboration.py
+tests/test_evidence_normalization.py
+tests/test_evidence_pipeline_integration.py
+tests/test_evidence_quality.py
+tests/test_evidence_store.py
+tests/test_evolution_engine.py
+tests/test_github_service.py
+tests/test_inference.py
+tests/test_intelligence_events.py
+tests/test_ledger_maintenance.py
+tests/test_logger.py
+tests/test_mcp_integration.py
+tests/test_models.py
+tests/test_reactive_observers.py
+tests/test_recursive_feedback.py
+tests/test_riemann_a2a_smoke.py
+tests/test_riemann_corroboration_smoke.py
+tests/test_riemann_harvest.py
+tests/test_riemann_quality_gate_smoke.py
+tests/test_riemann_research_intelligence_smoke.py
+tests/test_riemann_validation_smoke.py
+tests/test_risk_manager.py
+tests/test_smart_agent_smoke.py
+tests/test_source_independence.py
+tests/test_source_independent_corroboration.py
+tests/test_upgrade_flywheel.py
+tests/test_weighted_corroboration.py
+
+=== CURRENT COVERAGE REPORT ===
+<unknown>:105: SyntaxWarning: invalid escape sequence '\['
+/data/data/com.termux/files/home/barrot/Barrot-Agent/barrot_agent/tools/upgrade_bundle.py:105: SyntaxWarning: invalid escape sequence '\['
+  titles = re.findall(r"<title><!\[CDATA\[(.*?)\]\]></title>",
+Name                                                   Stmts   Miss  Cover   Missing
+------------------------------------------------------------------------------------
+barrot_agent/barrot_brain.py                             127    127     0%   1-264
+barrot_agent/cinematic/asset_registry.py                  28      7    75%   34-42, 45-47, 53
+barrot_agent/cinematic/character_registry.py              38     16    58%   32-33, 37, 46-49, 63-79
+barrot_agent/cinematic/continuity_engine.py               64      1    98%   135
+barrot_agent/cinematic/production_pipeline.py             51      1    98%   117
+barrot_agent/cinematic/project_manager.py                 44      3    93%   87-89
+barrot_agent/cinematic/scene_planner.py                   28      1    96%   55
+barrot_agent/cinematic/shot_director.py                   27      1    96%   56
+barrot_agent/cinematic/story_bible.py                     31      8    74%   49-50, 63-75
+barrot_agent/config.py                                    60      0   100%
+barrot_agent/core.py                                      14      0   100%
+barrot_agent/evolution/claim_integrity.py                 27      0   100%
+barrot_agent/evolution/claim_lifecycle.py                 14      0   100%
+barrot_agent/evolution/cognitive_integrity.py             40      5    88%   34-35, 73, 100-101
+barrot_agent/evolution/confidence_calibration.py          40      3    92%   31-32, 71
+barrot_agent/evolution/corroboration.py                   65      1    98%   146
+barrot_agent/evolution/event_bus.py                       33      2    94%   71-72
+barrot_agent/evolution/evidence_normalization.py          15      0   100%
+barrot_agent/evolution/evidence_quality.py                34     14    59%   50-68
+barrot_agent/evolution/evidence_store.py                  37      4    89%   31-32, 44, 68
+barrot_agent/evolution/evolution_engine.py                37     15    59%   33, 43-63, 71-72, 82-92
+barrot_agent/evolution/intelligence_pipeline.py           69     16    77%   44-67, 94, 169-170, 174-175
+barrot_agent/evolution/ledger_maintenance.py              15      2    87%   22, 38
+barrot_agent/evolution/reactive_observers.py              17      1    94%   32
+barrot_agent/evolution/source_independence.py             16      0   100%
+barrot_agent/github_client.py                             29      1    97%   47
+barrot_agent/github_service.py                            20      0   100%
+barrot_agent/gpt_api.py                                  117    117     0%   13-276
+barrot_agent/inference.py                                 27      0   100%
+barrot_agent/kimi_integration.py                          52     10    81%   98, 104-106, 167-169, 195-212
+barrot_agent/logger.py                                    47      0   100%
+barrot_agent/mcp_adapters.py                             109     37    66%   84, 132-148, 153-161, 164-172, 175-183, 188-196, 224, 232, 248, 251-258, 261-269
+barrot_agent/mcp_approval.py                              69      9    87%   115, 157-172, 190
+barrot_agent/mcp_discovery.py                            109     41    62%   119-120, 125, 158-162, 183-195, 203-216, 220-229, 271-283
+barrot_agent/mcp_github.py                                64      8    88%   129, 132, 141, 165-166, 197, 211, 259
+barrot_agent/mcp_integration.py                          111     27    76%   162-173, 198-203, 209-222, 241-270, 290-291, 303, 308, 324-329
+barrot_agent/mcp_pingpong.py                             100      3    97%   265-266, 276
+barrot_agent/mcp_provenance.py                            67      4    94%   146, 154-155, 166
+barrot_agent/mcp_registry.py                              77      8    90%   100-101, 114, 131, 149-150, 167, 171
+barrot_agent/mcp_sandbox.py                               92      4    96%   172, 247-249
+barrot_agent/mcp_scheduler.py                             77      9    88%   142, 151-152, 158-161, 188, 206
+barrot_agent/mcp_scorer.py                               117     21    82%   59, 61, 64-66, 69, 145, 155, 165-166, 168, 170, 187-190, 206, 217, 219, 221, 228
+barrot_agent/mcp_targets.py                               41      0   100%
+barrot_agent/models.py                                    49     27    45%   64-102, 107-108, 110-111
+barrot_agent/reconfiguration.py                           87     20    77%   98-144, 147, 191, 213
+barrot_agent/recursive_feedback.py                       196     54    72%   129-131, 159-182, 209-210, 216-217, 223-224, 230-231, 237-238, 258-293, 334-339, 431, 450-453
+barrot_agent/specialist_role_engine.py                    47     47     0%   11-465
+barrot_agent/ternary.py                                   33     33     0%   8-60
+barrot_agent/tools/drop_router.py                         73     51    30%   28-32, 35-39, 42-54, 63-150
+barrot_agent/tools/file_drop_tool.py                      14      3    79%   30-36, 47
+barrot_agent/tools/free_image_gen.py                      68     68     0%   29-129
+barrot_agent/tools/granite_model_config.py                 7      7     0%   7-59
+barrot_agent/tools/grant_generator.py                      4      4     0%   2-5
+barrot_agent/tools/kaggle_competitions_automation.py     131    131     0%   24-243
+barrot_agent/tools/patch_preservation.py                  14     14     0%   1-37
+barrot_agent/tools/patch_report_mode.py                   16     16     0%   1-52
+barrot_agent/tools/repo_command_tool.py                   11      3    73%   21-38
+barrot_agent/tools/repo_inspect_tool.py                   32     24    25%   20-71
+barrot_agent/tools/stupid_sindy_series_generator.py       68     68     0%   9-783
+barrot_agent/tools/trial_tracker.py                       71     71     0%   4-139
+barrot_agent/tools/upgrade_bundle.py                      38     38     0%   19-496
+barrot_agent/trading/coinbase_trader.py                   44      8    82%   45, 76-81, 92-111
+barrot_agent/trading/risk_manager.py                      28      2    93%   24, 29
+barrot_agent/upgrade_flywheel.py                         139     16    88%   83, 104-105, 126, 149-150, 180, 203, 217-234
+------------------------------------------------------------------------------------
+TOTAL                                                   3466   1232    64%
+Coverage failure: total of 64 is less than fail-under=70

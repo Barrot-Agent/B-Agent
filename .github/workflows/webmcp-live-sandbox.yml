@@ -1,0 +1,29 @@
+name: WebMCP Live Sandbox
+
+on:
+  schedule:
+    - cron: '30 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sandbox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install playwright
+      - run: python3 -m playwright install --with-deps chromium
+      - name: Run live WebMCP sandbox
+        run: python3 scripts/webmcp_live_sandbox.py
+      - name: Commit sandbox log
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/webmcp_sandbox_log.jsonl
+          git diff --cached --quiet || git commit -m "WebMCP live sandbox run [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

@@ -1,0 +1,32 @@
+# DISABLED
+on:
+  workflow_dispatch:
+    inputs:
+      disabled:
+        description: "This workflow is disabled"
+
+name: Barrot-Ω Absolution Sync
+on:
+  push:
+    branches: [ omega-sandbox/mutation-alpha ]
+  workflow_dispatch:
+    inputs:
+      job_id:
+        description: 'APEX Job ID'
+        required: true
+        default: 'APEX-130M-RECLAMATION'
+
+jobs:
+  synchronize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Seat the Council
+        run: |
+          echo "Stability Anchor: 0.707 Shear"
+          echo "Genome: Qwen, Loihi 3, Grok, arXiv"
+      - name: Trigger Databricks Sync
+        run: |
+          curl -X POST -H "Authorization: Bearer ${{ secrets.DATABRICKS_TOKEN }}" \
+          -d '{"job_id": "${{ github.event.inputs.job_id }}", "logic": "1.58-ternary"}' \
+          https://adb-26479705.4.azuredatabricks.net/api/2.1/jobs/run-now

@@ -1,0 +1,114 @@
+**1.  Actual modules and public APIs in this chunk**
+
+| Module (file) | Public symbols defined here (i.e. import‑able) |
+|---------------|------------------------------------------------|
+| `barrot_agent.mcp_integration` | `IntegrationConfig` – dataclass configuration object  <br> `MCPIntegration` – class that owns the whole pipeline, exposing the public method `run_pipeline(self) → Dict[str, int]` |
+| (no other symbols are exported – `__all__` is not defined, so everything that is not name‑mangled is technically public, but the only intended public API are the two names above.) |
+
+*All other names referenced (`MCPDiscovery`, `MCPScorer`, `MCPPingPong`, …) are imported from sibling modules – they are **dependencies** of the integration pipeline, not part of its own public surface.*
+
+---
+
+**2.  Meaningful executable branches / error‑paths**
+
+| Location (line‑concept) | Condition / branch | Effect on control‑flow / stats |
+|--------------------------|--------------------|--------------------------------|
+| **Score threshold** | `if score_val < self._cfg.min_score:` | → records a rejection, increments `stats["rejected"]`, **continues** to next component |
+| **Ping‑pong outcome** | `if exchange.final_phase != Phase.ACCEPTANCE:` | → records a rejection, increments `stats["rejected"]`, **continues** |
+| **Dry‑run guard** | `if not self._cfg.dry_run:` (sandbox block) | – when `dry_run=True` sandbox is *skipped* (no sandbox stats). |
+| **Sandbox result** (inside dry‑run‑off block) | `if not sb_report.passed:` | → records a rejection, increments `stats["rejected"]`, **continues** |
+| **Human‑approval decision** | `if not decision.approved:` | → records a rejection, increments `stats["rejected"]`, **continues** |
+| **Successful acceptance path** | All above checks passed | → increments `stats["accepted"]` (and later, after the part of the file that was cut off, presumably `stats["promoted"]`). |
+| **Stat counters** | Various `stats["…"] += 1` lines | Each branch updates a different counter – exercising each branch proves the counter logic. |
+| **Provenance recording** | Calls to `self._provenance.record_*` – they are side‑effects but do not change control flow; they are still useful to assert that they are called with the right arguments. |
+
+There are **no explicit exception‑raising paths** in this file, but failures in the *mocked* dependencies (e.g. `discover_all` returning an empty dict) exercise the “no‑components” path (the `for component_score in ranked:` loop is never entered).
+
+---
+
+**3.  Practical pytest cases strictly supported by the code**
+
+Below are the minimal, *behaviour‑driven* test scenarios you can write **without inventing any new API** – they only rely on the existing public symbols and the contracts of the imported collaborators (which we will mock).
+
+| # | Test purpose | Required mock set‑up | Expected assertions |
+|---|---------------|----------------------|----------------------|
+| 1 | **Discovery returns zero components** – pipeline should return all counters = 0. | `MCPDiscovery.discover_all → {}`; other collaborators can stay default (they will never be called). | `stats == {"discovered":0,"proposals":0,"accepted":0,"rejected":0,"sandbox_passed":0,"promoted":0}` |
+| 2 | **Component score below `min_score`** – should be counted as a rejection, no ping‑pong, sandbox or approval invoked. | `discover_all → {“srv”: inv}`; `MCPScorer.score_all → {“srv”: score_obj}` where `score_obj.total < cfg.min_score`; `rank → [score_obj]`. | `stats["rejected"] == 1`, `stats["proposals"] == 0`. Verify `MCPPingPong.run` **not** called, `MCPSandbox.run` **not** called, `MCPApprovalGate.request_approval` **not** called. |
+| 3 | **Ping‑pong rejects (final_phase ≠ ACCEPTANCE)** – counted as rejection, provenance recorded. | Same as #2 but `score_val >= min_score`. Mock `MCPPingPong.run → exchange` where `exchange.final_phase = Phase.NEGOTIATION` (any non‑ACCEPTANCE). | `stats["rejected"] == 1`, `stats["proposals"] == 1`, `stats["accepted"] == 0`. Verify `self._provenance.record_rejection` called with reason containing the phase value. |
+| 4 | **Sandbox fails (dry_run=False)** – should reject after ping‑pong acceptance. | `dry_run=False` in config. Mock ping‑pong to return `final_phase = Phase.ACCEPTANCE`. Mock `MCPSandbox.run → report` where `report.passed = False` and `report.failed_checks = [obj1, obj2]`. | `stats["rejected"] == 1`, `stats["sandbox_passed"] == 0`. Verify `record_rejection` reason contains list of failed check names. |
+| 5 | **Human approval denied** – after successful sandbox (or dry‑run) the pipeline rejects. | `dry_run=True` (skip sandbox). Mock ping‑pong acceptance. Mock `MCPApprovalGate.request_approval → decision` where `decision.approved = False` and `decision.reason = "nope"`. | `stats["rejected"] == 1`, `stats["accepted"] == 1` (acceptance counted before approval), `stats["sandbox_passed"] == 0`. Verify provenance rejection reason contains “Approval denied”. |
+| 6 | **Full successful path (dry_run=True)** – no sandbox, approval granted, should end with accepted & promoted counters incremented. | `dry_run=True`. Mock ping‑pong acceptance, mock approval decision `approved=True`. Provide a minimal `inv` with needed attributes (`description`, `tool_categories`, `security.risk_level`, `security.known_cves`, `dependencies`, `license`). | `stats["accepted"] == 1`, `stats["proposals"] == 1`, `stats["rejected"] == 0`. Verify `record_integration` called once. |
+| 7 | **Full successful path (dry_run=False)** – sandbox passes, approval granted – verifies the sandbox‑pass counter and the promotion flow (the part of the file after the cut‑off). | Same as #6 but `dry_run=False` and mock `MCPSandbox.run → report(passed=True, failed_checks=[])`. | `stats["sandbox_passed"] == 1`. If the downstream code increments `stats["promoted"]`, the test will also assert that; otherwise it will expose the missing increment (see defects below). |
+
+Each of the above tests exercises **one distinct branch** (or a combination that is required for the branch to be reachable). With the seven cases you will cover **all conditional paths** inside `run_pipeline` and guarantee that every stat counter is touched at least once.
+
+---
+
+**4.  Estimate of newly covered lines**
+
+| Category | Approx. lines in this file | Lines exercised by the test matrix |
+|----------|---------------------------|-------------------------------------|
+| Straight‑line code (imports, dataclass, `__init__`) | ~30 | Covered by *any* test that instantiates `MCPIntegration` (all 7). |
+| Discovery block (lines that set `stats["discovered"]` and provenance loop) | ~8 | Covered by tests #1‑#7 (the loop iterates when inventories non‑empty). |
+| Scoring block (calls to scorer) | ~4 | Covered by all tests that provide a non‑empty inventory (#2‑#7). |
+| **Score‑threshold branch** | 4 | Covered by #2 (below) and #3‑#7 (above). |
+| **Ping‑pong branch** | 6 | Covered by #3 (reject) and #4‑#7 (accept). |
+| **Sandbox block** (dry‑run guard + pass/fail) | 9 | Covered by #4 (fails) and #6‑#7 (dry‑run skips) and #5 (dry‑run skips). |
+| **Approval branch** | 6 | Covered by #5 (denied) and #6‑#7 (approved). |
+| **Provenance recording** (rejection & integration) | 8 | All tests hit at least one of the recording calls; #6‑#7 hit the integration record. |
+| **Stat counters** | 10 | All tests assert on at least one counter. |
+
+Total lines in the visible portion ≈ **75**. The proposed matrix touches **≈ 70‑73** lines (≈ 94 % line coverage for this file). Because the file also contains a trailing *“promoted”* counter that is not touched in the visible excerpt, the overall file coverage will still be **≥ 90 %**, comfortably pushing the repo‑wide coverage from ~64 % to **≥ 70 %** once these tests are added.
+
+---
+
+**5.  Dependencies that must be mocked (and why)**  
+
+| Dependency | Method(s) used by `MCPIntegration.run_pipeline` | Reason for mocking |
+|------------|-----------------------------------------------|--------------------|
+| `barrot_agent.mcp_discovery.MCPDiscovery` | `discover_all()` | External discovery touches the file system / network; we need a deterministic dict of `ServerInventory` objects. |
+| `barrot_agent.mcp_scorer.MCPScorer` | `score_all(inventories)`, `rank(scores)` | Scoring logic is heavy and irrelevant for branch testing – we supply simple objects with `.total` and `.grade`. |
+| `barrot_agent.mcp_adapters.build_adapter` | `build_adapter(inv)` | May instantiate real adapters that have side‑effects; tests only need a dummy object (or `None`). |
+| `barrot_agent.mcp_pingpong.MCPPingPong` | `run(proposal) → exchange` | Exchange decides acceptance; we mock the `final_phase` attribute (`Phase.ACCEPTANCE` or other). |
+| `barrot_agent.mcp_sandbox.MCPSandbox` | `run(server_id, proposed_files, declared_deps) → sb_report` | Sandbox performs filesystem checks; we supply a lightweight mock with `.passed` and `.failed_checks`. |
+| `barrot_agent.mcp_approval.MCPApprovalGate` | `request_approval(approval_req) → decision` | Human gate; mock to return an object with `.approved` and `.reason`. |
+| `barrot_agent.mcp_provenance.MCPProvenanceRecorder` | `record_discovery`, `record_rejection`, `record_integration` | Side‑effect only (writes JSON/JSONL). Use a mock or a `MagicMock` to assert call arguments. |
+| `barrot_agent.mcp_registry.MCPRegistry` | Instantiated but **not used** in the visible code | Still mock to avoid accidental file I/O when the constructor reads the registry JSON. |
+| `barrot_agent.reconfiguration.build_reconfiguration_report` – not used directly here but imported elsewhere in the repo; no need to mock for this file. |
+| `SchedulerConfig` – only passed to the constructor of `MCPScheduler` (unused in the snippet) | Mock the class if you want to avoid heavy init, otherwise let it be a lightweight dataclass (its default constructor is cheap). |
+
+All mocks can be `unittest.mock.Mock`/`MagicMock` objects with the required attributes. No need to create full‑blown fake implementations; the tests only care about the *return values* and *attributes* inspected by the integration logic.
+
+---
+
+**6.  Implementation defects that are *directly* visible from the source**
+
+| Defect | Location / description | Why it matters (test will expose) |
+|--------|------------------------|-----------------------------------|
+| **`stats["promoted"]` never updated** | The visible code never touches `stats["promoted"]`. The downstream part of the file (cut‑off) likely should increment it after a successful registry promotion, but that line is missing. | A test exercising the full successful path (dry‑run **or** real run) will see `stats["promoted"]` remain `0` even though the component was “integrated”. This is a logical bug – the counter does not reflect reality. |
+| **Potential `adapter` `None` handling** | The code builds `adapter = build_adapter(inv)` and later accesses `adapter.__class__.__name__` **only if `adapter` is truthy**; otherwise it falls back to `"NoAdapter"`. If `build_adapter` returns an object that is falsy but still has a `__class__` (e.g. an object that implements `__bool__` returning `False`), the fallback would be wrong. | Not a failing test today, but a hidden contract – the test can deliberately make `build_adapter` return a custom object with `__bool__` = `False` to see that the code mis‑labels it. |
+| **Missing handling of empty `ranked` list** | If `MCPScorer.rank` returns an empty list (e.g. all components filtered out before ranking), the `for component_score in ranked:` loop is skipped, and only `stats["discovered"]` is non‑zero. This is *not* an error, but the function returns without ever calling provenance for “no‑integration” events. If the business logic expects a “no‑action” provenance entry, it is absent. | A test where `ranked` is empty (e.g. mock `rank` → `[]`) will confirm that the pipeline finishes cleanly without raising and that `stats` reflects zero proposals, accepted, etc. |
+| **`self._cfg.dry_run` guard does not affect provenance “sandbox” status** | The provenance call later (outside the snippet) records `test_results={"sandbox": "passed" if not self._cfg.dry_run else "skipped"}` – that part is correct, but the earlier *sandbox* block only runs when `dry_run=False`. If a user mistakenly sets `dry_run=False` but the sandbox returns `passed=False`, the code will still record a rejection *and* later record a “sandbox”: “passed” in provenance (since the guard is only on the `if not self._cfg.dry_run`). The snippet we have does not show the provenance call, but the logic suggests a possible inconsistency. | A test that sets `dry_run=False` and forces `sandbox.passed=False` will see `stats["rejected"]` incremented, yet the provenance record (once the later code runs) would claim `"sandbox": "passed"` – a mismatch. |
+| **No explicit handling of unknown `Phase` values** | The code assumes `exchange.final_phase` is a `Phase` enum with a `.value` attribute. If a buggy `MCPPingPong` implementation returns something else (e.g. `None`), the string interpolation will raise `AttributeError`. | A defensive test could mock `run` to return an object lacking `.final_phase` to see that the pipeline crashes – indicating missing validation. |
+
+These defects are **detectable** with the pytest matrix described above (especially #1 and #4). Adding assertions for the missing `promoted` counter will surface #1 immediately.
+
+---
+
+### TL;DR – What to write now
+
+1. **Create a `tests/unit/test_mcp_integration.py`** file.
+2. **Patch** (`monkeypatch` or `unittest.mock.patch`) each external class imported at the top of `mcp_integration.py` so that:
+   * `discover_all` returns a deterministic dict of **minimal** `ServerInventory`‑like objects (you can use `SimpleNamespace` with the required attributes).
+   * `score_all` returns a dict mapping the same server‑id to a **simple score object** (`SimpleNamespace(total=…, grade='A')`).
+   * `rank` returns a list containing that score object.
+   * `build_adapter` returns either a dummy object (`object()`) or `None` depending on the scenario.
+   * `MCPPingPong.run` returns an object with `.final_phase` set to the desired `Phase`.
+   * `MCPSandbox.run` returns a mock with `.passed` and `.failed_checks`.
+   * `MCPApprovalGate.request_approval` returns a mock decision (`approved=True/False`, `reason=…`).
+   * `MCPProvenanceRecorder` is a `MagicMock` so you can assert `record_*` calls.
+3. **Instantiate** `MCPIntegration` with an `IntegrationConfig` that flips `dry_run`, `min_score`, and `pingpong_max_cycles` as needed for each test case.
+4. **Call** `run_pipeline()` and **assert**:
+   * The exact values of the `stats` dictionary for the scenario.
+   * That the appropriate provenance methods were called (using `assert_called_with`).
+   * That sandbox and approval mocks were or were not invoked according

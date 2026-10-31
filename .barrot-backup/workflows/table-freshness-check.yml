@@ -1,0 +1,17 @@
+name: Table Freshness Check
+on:
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - run: python scripts/check_table_freshness.py
+        env:
+          DATABRICKS_HOST: dbc-82d64fee-1c2e.cloud.databricks.com
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_WAREHOUSE_ID: c85b8f4fea8cd527

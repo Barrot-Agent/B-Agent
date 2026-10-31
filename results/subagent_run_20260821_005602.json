@@ -1,0 +1,5 @@
+{
+  "spawned": false,
+  "reason": "DECOMPOSITION_PARSE_FAILED (raw: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmczycagen5v1qkvdp0cpp6s` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199609, Re)",
+  "fallback": "run sequentially via a single ask_barrot.py call instead"
+}

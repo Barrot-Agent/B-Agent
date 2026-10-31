@@ -1,0 +1,22 @@
+{
+  "protocol_library": [
+    {
+      "protocol_id": "transient-oskm-baseline",
+      "factors": ["Oct4", "Sox2", "Klf4", "c-Myc"],
+      "expression_mode": "transient",
+      "on_days": 4,
+      "off_days": 10,
+      "cycles": 6,
+      "target_cell_types": ["brain", "muscle", "eye", "skin"],
+      "safety_notes": [
+        "Avoid continuous c-Myc exposure",
+        "Monitor senescence and tumorigenesis markers"
+      ]
+    }
+  ],
+  "_meta": {
+    "template": true,
+    "version": "1.0",
+    "last_updated": "2026-08-13"
+  }
+}

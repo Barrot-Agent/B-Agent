@@ -1,0 +1,140 @@
+name: Barrot Controlled Feature Validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "PR number to validate (currently restricted to #1225)"
+        required: true
+        type: string
+      expected_head_sha:
+        description: "Exact 40-character feature-branch commit SHA"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: barrot-controlled-feature-validation
+  cancel-in-progress: false
+
+jobs:
+  validate-feature-commit:
+    name: Validate exact Barrot feature commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Validate PR and pin exact commit
+        id: validate
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ inputs.pr_number }}
+          EXPECTED_HEAD_SHA: ${{ inputs.expected_head_sha }}
+        run: |
+          set -euo pipefail
+          [[ "$PR_NUMBER" == "1225" ]] || { echo "Only Barrot PR #1225 is currently allowlisted." >&2; exit 1; }
+          [[ "$EXPECTED_HEAD_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "Expected SHA must be 40 lowercase hex characters." >&2; exit 1; }
+
+          pr_json="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq '{state,merged,base_ref:.base.ref,head_sha:.head.sha,head_ref:.head.ref,head_repo:.head.repo.full_name}')"
+          echo "$pr_json"
+
+          state="$(jq -r '.state' <<<"$pr_json")"
+          merged="$(jq -r '.merged' <<<"$pr_json")"
+          base_ref="$(jq -r '.base_ref' <<<"$pr_json")"
+          head_sha="$(jq -r '.head_sha' <<<"$pr_json")"
+          head_ref="$(jq -r '.head_ref' <<<"$pr_json")"
+          head_repo="$(jq -r '.head_repo' <<<"$pr_json")"
+
+          [[ "$base_ref" == "main" ]] || { echo "PR must target main." >&2; exit 1; }
+          [[ "$head_ref" == "feat/bundle-task-dispatch-resume-20261027" ]] || { echo "Unexpected feature branch." >&2; exit 1; }
+          [[ "$head_repo" == "$GITHUB_REPOSITORY" ]] || { echo "Cross-repository PRs are not permitted." >&2; exit 1; }
+
+          if [[ "$state" == "open" ]]; then
+            [[ "$head_sha" == "$EXPECTED_HEAD_SHA" ]] || { echo "Open PR head SHA does not match the requested SHA." >&2; exit 1; }
+          elif [[ "$state" == "closed" && "$merged" == "true" ]]; then
+            # A merged PR's head can advance after the requested feature commit was recorded.
+            # Accept only a SHA that is actually present in this PR's commit list.
+            if ! gh api --paginate "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/commits" --jq '.[].sha' | grep -Fxq "$EXPECTED_HEAD_SHA"; then
+              echo "Requested SHA is not a commit in the merged PR." >&2
+              exit 1
+            fi
+          else
+            echo "PR must be open or successfully merged; closed-unmerged PRs are rejected." >&2
+            exit 1
+          fi
+
+          echo "validated_sha=$EXPECTED_HEAD_SHA" >> "$GITHUB_OUTPUT"
+          echo "Validated PR #$PR_NUMBER at requested commit $EXPECTED_HEAD_SHA (current PR head: $head_sha; state: $state; merged: $merged)"
+
+      - name: Checkout the validated commit
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.validate.outputs.validated_sha }}
+          persist-credentials: false
+
+      - name: Set up Python
+        id: setup_python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: .github/workflows/barrot-controlled-feature-validation.yml
+
+      - name: Install only required test dependencies
+        id: install_test_dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests
+
+      - name: Run durable lifecycle and recovery tests
+        id: lifecycle_tests
+        run: |
+          python -m pytest -q --no-cov tests/test_bundle_lifecycle.py tests/test_barrot_agent_script.py
+
+      - name: Record exact validation evidence
+        if: always()
+        env:
+          PR_NUMBER: ${{ inputs.pr_number }}
+          EXPECTED_HEAD_SHA: ${{ inputs.expected_head_sha }}
+          VALIDATED_SHA: ${{ steps.validate.outputs.validated_sha }}
+          VALIDATION_OUTCOME: ${{ steps.validate.outcome }}
+          CHECKOUT_OUTCOME: ${{ steps.checkout.outcome }}
+          PYTHON_SETUP_OUTCOME: ${{ steps.setup_python.outcome }}
+          DEPENDENCY_INSTALL_OUTCOME: ${{ steps.install_test_dependencies.outcome }}
+          TEST_OUTCOME: ${{ steps.lifecycle_tests.outcome }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p validation-evidence
+          {
+            printf 'workflow=Barrot Controlled Feature Validation\n'
+            printf 'run_id=%s\n' "$RUN_ID"
+            printf 'run_attempt=%s\n' "$RUN_ATTEMPT"
+            printf 'pr_number=%s\n' "$PR_NUMBER"
+            printf 'expected_head_sha=%s\n' "$EXPECTED_HEAD_SHA"
+            printf 'validated_sha=%s\n' "${VALIDATED_SHA:-validation-failed}"
+            printf 'validation_step=%s\n' "$VALIDATION_OUTCOME"
+            printf 'checkout_step=%s\n' "$CHECKOUT_OUTCOME"
+            printf 'python_setup_step=%s\n' "$PYTHON_SETUP_OUTCOME"
+            printf 'dependency_install_step=%s\n' "$DEPENDENCY_INSTALL_OUTCOME"
+            printf 'lifecycle_tests_step=%s\n' "$TEST_OUTCOME"
+            printf 'groq_api_key_used=false\n'
+            printf 'repository_write_permissions=false\n'
+            printf 'purpose=Feature-branch lifecycle and recovery validation only\n'
+          } > validation-evidence/evidence.txt
+          cat validation-evidence/evidence.txt
+
+      - name: Upload validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: barrot-controlled-validation-${{ github.run_id }}
+          path: validation-evidence/evidence.txt
+          if-no-files-found: error
+          retention-days: 30

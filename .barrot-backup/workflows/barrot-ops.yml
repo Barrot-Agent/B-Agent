@@ -1,0 +1,64 @@
+name: Barrot Operations Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: barrot-ops-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync-platforms:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Deploy HF Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "::warning::HF_TOKEN not set, skipping HF Space deploy"
+            exit 0
+          fi
+          git fetch origin main
+          printf '%s\n' "machine huggingface.co login Scribedpengenius password $HF_TOKEN" > ~/.netrc
+          chmod 600 ~/.netrc
+          trap 'rm -f ~/.netrc' EXIT
+          git remote add hf https://huggingface.co/spaces/Scribedpengenius/barrot-omega || true
+          git push hf origin/main:main
+
+      - name: Setup Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Run Databricks Job
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: |
+          if [ -z "$DATABRICKS_HOST" ] || [ -z "$DATABRICKS_TOKEN" ]; then
+            echo "::warning::DATABRICKS_HOST or DATABRICKS_TOKEN not set, skipping notebook run"
+            exit 0
+          fi
+          databricks workspace import src/barrot_databricks_job.py /Shared/barrot_databricks_job --language PYTHON --overwrite || \
+            echo "::warning::Notebook upload failed; skipping run"
+
+      - name: Kaggle Data Refresh
+        env:
+          KAGGLE_JSON: ${{ secrets.KAGGLE_JSON }}
+        run: |
+          if [ -z "$KAGGLE_JSON" ]; then
+            echo "::warning::KAGGLE_JSON not set, skipping Kaggle refresh"
+            exit 0
+          fi
+          pip install kaggle
+          export KAGGLE_CONFIG_DIR="$RUNNER_TEMP/.kaggle"
+          mkdir -p "$KAGGLE_CONFIG_DIR"
+          printf '%s' "$KAGGLE_JSON" > "$KAGGLE_CONFIG_DIR/kaggle.json"
+          chmod 600 "$KAGGLE_CONFIG_DIR/kaggle.json"
+          kaggle datasets download scribedpengenius/barrot-kaggle-featured --unzip

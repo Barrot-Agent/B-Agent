@@ -1,0 +1,23 @@
+{
+  "COMMAND": "RepositoryRepairController.run(resolution failure)",
+  "COMPONENTS_TESTED": [
+    "Validator",
+    "CompletionGate"
+  ],
+  "DESCRIPTION": "resolution failure blocks COMPLETE",
+  "DESIGN_STATUS": "DESIGNED",
+  "EVIDENCE_PATH": "/data/data/com.termux/files/home/barrot/Barrot-Agent/.barrot/collaboration_records/v3_acceptance_matrix/case-10.json",
+  "EVIDENCE_SCOPE": "LOCAL_LIVE",
+  "EXECUTION_STATUS": "EXECUTED",
+  "EXECUTION_TIMESTAMP": "2026-09-17T06:09:35Z",
+  "LIMITATIONS": [],
+  "NEW_STATUS": "VERIFIED",
+  "PREVIOUS_STATUS": "VERIFIED",
+  "RESULT": {
+    "resolution_verified": false,
+    "status": "failed"
+  },
+  "STATUS": "VERIFIED",
+  "TEST_ID": "case-10",
+  "VERIFICATION_LEVEL": "VERIFIED"
+}

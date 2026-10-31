@@ -1,0 +1,35 @@
+name: Knowledge Signal Cycle BTC
+
+on:
+  schedule:
+    - cron: '33 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install requests vaderSentiment
+      - name: Ingest fresh BTC news
+        run: python3 scripts/knowledge_ingest_btc.py
+      - name: Distill new BTC entries
+        run: python3 scripts/knowledge_distill_btc.py
+      - name: Emit blended BTC signal
+        run: python3 scripts/emit_signal_btc.py
+      - name: Commit knowledge + signal
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/log_btc.jsonl ping-pongings/knowledge-base/config_btc.json web/latest_signal_btc.json web/signal_history_btc.jsonl
+          git diff --cached --quiet || git commit -m "Auto cycle (BTC): ingest + distill + blended signal [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

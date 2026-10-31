@@ -1,0 +1,350 @@
+{
+  "schema_version": "1.0",
+  "record_type": "creator_source_profile",
+  "source_id": "YOUTUBE_CREATOR_KAMILAH_STEVENSON",
+  "mission": "Ingest all publicly available videos from the verified Kamilah Stevenson XRP/markets YouTube channel into Barrot's source database; extract timestamped claims and forecasts; cross-corroborate before using as predictive features.",
+  "creator": {
+    "display_name": "Kamilah Stevenson",
+    "alternate_spelling_seen_in_transcripts": [
+      "Camila Stevenson"
+    ],
+    "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+    "videos_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
+    "identity_status": "PROBABLE_MATCH",
+    "identity_evidence": [
+      "Public channel listing for Kamilah Stevenson points to this channel ID.",
+      "Indexed YouTube results attribute XRP-focused videos to Kamilah Stevenson.",
+      "User-provided screenshot shows the title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' and creator name Kamilah Stevenson; exact video ID remains to be resolved."
+    ],
+    "caveats": [
+      "Third-party channel analytics pages report inconsistent video/subscriber counts; do not use those counts as canonical.",
+      "Do not conflate this creator with other similarly named accounts without channel-ID verification."
+    ]
+  },
+  "ingestion_policy": {
+    "scope": "ALL_PUBLIC_CHANNEL_VIDEOS",
+    "required_fields": [
+      "video_id",
+      "canonical_url",
+      "title",
+      "published_at",
+      "duration_seconds",
+      "description",
+      "transcript_language",
+      "transcript_availability",
+      "transcript_hash",
+      "retrieved_at_utc",
+      "source_provenance",
+      "claims",
+      "forecast_records",
+      "entities",
+      "citations_in_video",
+      "affiliate_or_sponsorship_disclosures",
+      "independent_corroboration",
+      "contradictions",
+      "confidence",
+      "review_status"
+    ],
+    "content_access": "Public metadata and publicly available transcripts only; respect platform terms and access controls.",
+    "transcript_policy": "Store transcript or authorized transcript reference where permitted; preserve timestamps and transcript hash; if unavailable, record unavailable scope rather than fabricate.",
+    "prediction_policy": "Extract each explicit prediction with original publication cutoff, target, direction, horizon, probability/confidence if stated, assumptions, and later outcome. Do not infer an unstated probability.",
+    "evidence_policy": "Creator statements are claims, not ground truth. Independently corroborate with primary filings, official statements, market data, on-chain data, regulatory records, and independent sources.",
+    "forecasting_policy": "Never use a video published after the forecast cutoff as a feature for that forecast. Prevent look-ahead and survivorship leakage.",
+    "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution."
+  },
+  "video_inventory_status": {
+    "status": "PARTIAL_INDEXED_INVENTORY",
+    "completeness_verified": false,
+    "discovered_total_count": null,
+    "indexed_seed_video_count": 10,
+    "missing_work": [
+      "Enumerate every public upload from the canonical channel's videos, Shorts, live, and archived-stream surfaces; current inventory is incomplete.",
+      "Deduplicate by canonical video ID and retain timestamped inventory snapshots with pagination/change-detection cursors.",
+      "Retrieve permitted/public transcript text or references; hash the exact captured transcript and preserve timestamps.",
+      "Extract each explicit claim and forecast separately; preserve source wording and classify fact, interpretation, forecast, opinion, and promotional claim.",
+      "Verify numeric claims using official XRPL/Ripple/issuer data and reproducible on-chain or market datasets.",
+      "Score time-bound forecasts only after their horizon closes, with predeclared target, venue, timestamp, and baseline.",
+      "Resolve the screenshot title 'XRP Got Everything We Waited For. So Why Isn’t It Soaring?' to a canonical video ID; no ID guessed."
+    ]
+  },
+  "seed_videos": [
+    {
+      "video_id": "ywQEoYPzhlQ",
+      "title": "XRP Was Built for What's Coming",
+      "canonical_url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "published_date_reported": "2026-03-03",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "themes": [
+        "XRP bridge-asset thesis",
+        "cross-border settlement",
+        "de-dollarization",
+        "institutional adoption"
+      ],
+      "initial_claims_to_test": [
+        "XRP was designed as a neutral bridge asset.",
+        "Geopolitical pressure to reduce reliance on the U.S. dollar could increase demand for alternative settlement infrastructure.",
+        "Institutional adoption may precede visible price appreciation."
+      ],
+      "claim_status": "EXTRACTED_FROM_TITLE_AND_DESCRIPTION_ONLY; FULL_TRANSCRIPT_REVIEW_PENDING"
+    },
+    {
+      "video_id": "pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "canonical_url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "published_date_reported": "2025-12-24",
+      "source": "YouTube indexed result",
+      "themes": [
+        "XRP versus BTC",
+        "store-of-value versus value-transfer thesis",
+        "institutional holdings"
+      ],
+      "initial_claims_to_test": [
+        "XRP's use case should not be evaluated as if it were identical to Bitcoin's store-of-value narrative.",
+        "Institutional XRP holdings and corporate Bitcoin treasury strategies are different phenomena."
+      ],
+      "claim_status": "EXTRACTED_FROM_TITLE_AND_DESCRIPTION_ONLY; FULL_TRANSCRIPT_REVIEW_PENDING"
+    },
+    {
+      "video_id": "rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "canonical_url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "published_date_reported": "2026-03-19",
+      "source": "Glasp indexed transcript page",
+      "source_url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "themes": [
+        "XRP allocation",
+        "portfolio sizing",
+        "wealth planning"
+      ],
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; TRANSCRIPT NOT YET INGESTED"
+    },
+    {
+      "video_id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "canonical_url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "published_date_reported": "2025-12-14",
+      "source": "Glasp indexed transcript page",
+      "source_url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "themes": [
+        "Ripple corporate/regulatory status",
+        "XRP price versus adoption",
+        "institutional utility"
+      ],
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; PRIMARY CLAIMS REQUIRE OFFICIAL REGULATORY/CORPORATE VERIFICATION"
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "canonical_url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "published_date_reported": "2026-01-13",
+      "source": "Glasp indexed transcript page",
+      "source_url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "themes": [
+        "ETF flows",
+        "price impact",
+        "institutional demand"
+      ],
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; FULL CLAIM EXTRACTION PENDING"
+    },
+    {
+      "video_id": "cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "canonical_url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "published_date_reported": "2026-01-15",
+      "source": "Glasp indexed transcript page",
+      "source_url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "themes": [
+        "portfolio risk",
+        "market-cycle scenarios",
+        "investor behavior"
+      ],
+      "claim_status": "VIDEO ID AND TITLE DISCOVERED; FULL CLAIM EXTRACTION PENDING"
+    },
+    {
+      "video_id": "8xiy8w2YlfY",
+      "title": "XRP’s Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "canonical_url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "published_date_reported": "2026-07-30",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "themes": [
+        "XRPL amendments",
+        "Confidential Transfers",
+        "Sponsored Fees and Reserves",
+        "institutional adoption",
+        "validator voting"
+      ],
+      "claims_to_extract_and_test": [
+        "Confidential Transfers are a major institutional adoption catalyst.",
+        "Sponsored Fees and Reserves could let users transact without personally holding XRP.",
+        "The 80% validator threshold and two-week voting period are correctly characterized in the video."
+      ],
+      "claim_status": "DESCRIPTION_AND_CHAPTERS_INDEXED; FULL_TRANSCRIPT_AND_PRIMARY_SOURCE_CHECKS_PENDING"
+    },
+    {
+      "video_id": "pFru4idBTMA",
+      "title": "XRP Tokenization: $3.5 Billion Just Settled on XRPL — And Nobody Is Watching",
+      "canonical_url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+      "published_date_reported": "2026-05-12",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=pFru4idBTMA",
+      "themes": [
+        "XRPL tokenized real-world assets",
+        "RLUSD",
+        "institutional adoption",
+        "ledger activity versus XRP price"
+      ],
+      "claims_to_extract_and_test": [
+        "Claim that $3.5 billion in tokenized real-world assets settled on XRPL over the preceding 30 days and $900 million on April 24, 2026.",
+        "Claim that RLUSD market capitalization crossed $1 billion.",
+        "Claim that daily XRPL payment volume consistently exceeded $1.7 million in settlement flow.",
+        "Claim that Archax committed to bringing another $1 billion in tokenized assets onto XRPL by mid-2026.",
+        "Claim that Ondo Finance, Guggenheim, OpenEden, and Archax are building on XRPL for the described reasons."
+      ],
+      "corroboration_priority": "HIGH",
+      "claim_status": "DESCRIPTION_ONLY; NUMERIC CLAIMS NOT YET INDEPENDENTLY VERIFIED",
+      "disclosure_note": "Video description includes affiliate disclosures and financial disclaimer."
+    },
+    {
+      "video_id": "Gy4BuGhAWE8",
+      "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+      "canonical_url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "published_date_reported": "2025-12-03",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "themes": [
+        "XRP ETFs",
+        "macro liquidity",
+        "Federal Reserve policy",
+        "U.S. legislation",
+        "market scenarios"
+      ],
+      "claims_to_extract_and_test": [
+        "Forecasts or scenarios relating to 2026 Federal Reserve policy, stimulus, Digital Asset Clarity Act, quantitative easing, and global liquidity shifts.",
+        "Any explicit XRP price target, directional prediction, or time-bound catalyst stated in the video."
+      ],
+      "claim_status": "DESCRIPTION_ONLY; EXPLICIT FORECASTS AND OUTCOMES NOT YET SCORED",
+      "disclosure_note": "Video description includes affiliate disclosures and financial disclaimer."
+    },
+    {
+      "video_id": "qtT2hLeFkM0",
+      "title": "More Than 100 Million XRP Just Moved Into Flare — And Holders Did It Voluntarily",
+      "canonical_url": "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "published_date_reported": "2026-08-25",
+      "source": "YouTube indexed result",
+      "source_url": "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "themes": [
+        "XRP wrapped into FXRP",
+        "Flare DeFi",
+        "XRP supply availability",
+        "on-chain activity",
+        "custody and smart-contract risk"
+      ],
+      "claims_to_extract_and_test": [
+        "Claim that more than 100 million XRP was moved into Flare's FXRP system.",
+        "Claim that the XRP was voluntarily locked by holders and represented one-to-one by FXRP rather than newly created XRP.",
+        "Claim that wrapped XRP reduces freely available sale supply and creates organic demand.",
+        "Claim that lending, borrowing, collateral, staking, and potential yield materially alter XRP demand or market structure."
+      ],
+      "corroboration_priority": "HIGH",
+      "claim_status": "TITLE_AND_DESCRIPTION_INDEXED; METRIC AND FLOW VERIFICATION PENDING",
+      "counterpoints_to_test": [
+        "FXRP minting/wrapping is not the same as burning XRP; backing can return to circulation through redemption.",
+        "Locked/wrapped supply may reduce immediate liquid float but does not by itself establish net buying pressure or a price impact.",
+        "Verify the 100-million figure against timestamped, independently reproducible on-chain and bridge data."
+      ],
+      "disclosure_note": "Description includes affiliate disclosures and financial/DeFi risk disclaimer."
+    }
+  ],
+  "required_cross_corroboration_domains": [
+    "Ripple official statements and filings",
+    "XRPL official documentation, amendment status, ledger data, and validated on-chain metrics",
+    "Coinbase, Circle, issuer, exchange, and custodian official statements",
+    "ETF issuer filings and independently reproducible fund-flow data",
+    "Spot and derivatives market data with venue, timestamp, and methodology",
+    "Regulatory primary sources and court/agency documents",
+    "Macro data from official statistical agencies and central banks",
+    "Independent research and public discussion, clearly marked as secondary evidence"
+  ],
+  "forecast_scoring": {
+    "immutable_forecast_id": true,
+    "fixed_horizons": [
+      "24h",
+      "7d",
+      "30d"
+    ],
+    "exact_target_time_price_required": true,
+    "same_venue_or_explicit_cross_venue_normalization": true,
+    "include_transaction_costs_and_baselines": true,
+    "track_calibration_and_brier_score_when_probabilities_exist": true,
+    "missing_target_price_policy": "UNSCORABLE_NOT_A_MISS",
+    "no_claim_of_predictive_accuracy_until_walk_forward_validation": true
+  },
+  "provenance": {
+    "created_at_utc": "2026-10-26T22:15:00Z",
+    "created_by": "Barrot XRP research handoff",
+    "supporting_public_sources": [
+      "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "https://glasp.co/youtube/rv0BAV0vLgo",
+      "https://glasp.co/youtube/QslbjGQD0MU",
+      "https://glasp.co/youtube/ci0FH73lbCs",
+      "https://glasp.co/youtube/cxeX_eu_2H0",
+      "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "https://www.youtube.com/watch?v=pFru4idBTMA",
+      "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "https://www.youtube.com/watch?v=qtT2hLeFkM0"
+    ],
+    "last_updated_at_utc": "2026-10-26T23:35:00Z"
+  },
+  "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
+  "cross_corroboration_findings": [
+    {
+      "finding_id": "XRPL-CONFIDENTIAL-TRANSFERS-001",
+      "related_video_id": "8xiy8w2YlfY",
+      "claim": "Confidential Transfers could improve institutional suitability by shielding MPT balances and transfer amounts while retaining cryptographic verification and optional auditor disclosure.",
+      "evidence_class": "PRIMARY_SOURCE_CONFIRMS_FEATURE_DESIGN; ADOPTION_IMPACT_IS_HYPOTHESIS",
+      "primary_sources": [
+        "https://xrpl.org/docs/concepts/tokens/fungible-tokens/confidential-transfers",
+        "https://xls.xrpl.org/xls/XLS-0096-confidential-mpt.html",
+        "https://xrpl.org/resources/known-amendments"
+      ],
+      "corroborated_details": [
+        "The specification describes confidential transfers for Multi-Purpose Tokens using EC-ElGamal and zero-knowledge proofs.",
+        "The design preserves supply/accounting invariants and includes optional auditor encryption.",
+        "Feature availability and amendment activation must be checked separately from the existence of a final specification."
+      ],
+      "counterpoints": [
+        "Technical capability does not prove banks have deployed it or that it increases demand for XRP as an asset.",
+        "The documented feature applies to MPT balances/transfers; it should not be generalized to every XRP payment or every XRPL transaction type.",
+        "The known-amendments page lists ConfidentialTransfer with default vote No in the latest stable release; activation status must be checked at each data cutoff."
+      ],
+      "prediction_use": "Do not encode as bullish price signal without independent evidence of activation, production use, measurable flows, and market response."
+    },
+    {
+      "finding_id": "XRPL-SPONSOR-AMENDMENT-001",
+      "related_video_id": "8xiy8w2YlfY",
+      "claim": "Sponsored Fees and Reserves may let an end user transact without personally holding XRP.",
+      "evidence_class": "FEATURE_DESIGN_CONFIRMED; MAINNET_ACTIVATION_NOT_CONFIRMED",
+      "primary_sources": [
+        "https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves",
+        "https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-aug2026",
+        "https://xrpl.org/resources/known-amendments"
+      ],
+      "corroborated_details": [
+        "The official documentation describes sponsors paying fees and reserve requirements for sponsees.",
+        "Sponsorship does not transfer XRP to the sponsee; the sponsor retains the XRP used to back reserves.",
+        "An official September 21, 2026 vulnerability report states the Sponsor amendment had not been activated on Mainnet at that report date and would wait for the fix in xrpld v3.4.0."
+      ],
+      "counterpoints": [
+        "Do not describe the feature as live on Mainnet without a fresh official amendment-status check.",
+        "Lower onboarding friction could increase XRPL activity without proportionally increasing spot XRP demand.",
+        "The reserve sponsorship model itself has operational/security constraints and was subject to a disclosed Devnet vulnerability."
+      ],
+      "prediction_use": "Track amendment status, sponsor usage, new active accounts, fee/reserve sponsorship volumes, and market liquidity separately; no direct bullish inference."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+name: Rotate Databricks Token
+
+on:
+  workflow_dispatch:
+    inputs:
+      new_token:
+        description: Paste the new Databricks PAT here
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  rotate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set new secret
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh secret set DATABRICKS_TOKEN --body "${{ inputs.new_token }}"
+      - name: Verify by re-running deploy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run "Deploy to Databricks"

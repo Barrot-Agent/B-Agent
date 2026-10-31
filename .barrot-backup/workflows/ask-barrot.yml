@@ -1,0 +1,50 @@
+name: Ask Barrot
+
+on:
+  workflow_dispatch:
+    inputs:
+      question:
+        description: 'Custom question to ask Barrot (leave blank for default self-assessment)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  ask:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      ASK_BARROT_QUESTION: ${{ github.event.inputs.question }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 30
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Ask Barrot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/ask_barrot.py
+      - name: Post as issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          Q="${ASK_BARROT_QUESTION}"
+          if [ -n "$Q" ]; then
+            TITLE="Barrot answers - ${Q:0:230}"
+          else
+            TITLE="Barrot self-assessment"
+          fi
+          gh issue create --title "$TITLE" --body-file barrot_answer.md
+      - name: Commit memory
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/barrot_memory.jsonl
+          git diff --cached --quiet || git commit -m "Barrot memory: new reflection recorded [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

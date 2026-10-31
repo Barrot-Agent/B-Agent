@@ -1,0 +1,28 @@
+ingestion_config:
+  version: "1.0"
+  domain: "longevity_research"
+  settings:
+    update_frequency: "weekly"
+    include_trial_updates: true
+    include_epigenetic_clocks: true
+    include_biomarker_timelines: true
+  research_domains:
+    aging_reversal:
+      primary_researchers:
+        - "David Sinclair"
+      key_mechanisms:
+        - "Yamanaka factors"
+        - "Transient epigenetic reprogramming"
+      biomarkers:
+        - "Horvath clock"
+        - "Hannum clock"
+        - "NAD+"
+        - "Senescence markers"
+      tissues:
+        - "brain"
+        - "muscle"
+        - "eye"
+        - "skin"
+  trial_tracking:
+    active_phase: "phase_2"
+    projected_phase_2_completion: "2026"

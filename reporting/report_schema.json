@@ -1,0 +1,51 @@
+{
+  "cycle_id": "string",
+  "run_date_utc": "string",
+  "agent_name": "string",
+  "protocol_version": "v1.0",
+  "xrp_mandatory_included": true,
+  "reports": [
+    {
+      "id": 1,
+      "domain": "XRP Ledger on-chain activity",
+      "scores": {
+        "impact": 0,
+        "data_availability": 0,
+        "actionability": 0,
+        "timeliness": 0
+      },
+      "total": 0,
+      "trend": "up|flat|down",
+      "notes": "string"
+    }
+  ],
+  "top10": [
+    {
+      "rank": 1,
+      "report_id": 1,
+      "domain": "string",
+      "total": 0,
+      "why_now": "string",
+      "recommended_action": "string"
+    }
+  ],
+  "alerts": [
+    {
+      "severity": "critical|high|medium",
+      "domain": "string",
+      "trigger": "string",
+      "evidence": "string",
+      "owner": "string",
+      "eta": "YYYY-MM-DD"
+    }
+  ],
+  "actions": [
+    {
+      "action": "string",
+      "owner": "string",
+      "priority": "P0|P1|P2",
+      "due_date": "YYYY-MM-DD",
+      "success_metric": "string"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "by_ai_applicability": {
+    "high": [
+      "P vs NP",
+      "Navier-Stokes"
+    ],
+    "medium": [
+      "Hodge Conjecture",
+      "Riemann Hypothesis",
+      "Birch & Swinnerton-Dyer"
+    ],
+    "low": [
+      "Yang-Mills & Mass Gap",
+      "Poincaré Conjecture"
+    ]
+  },
+  "by_status": {
+    "open": [
+      "P vs NP",
+      "Hodge Conjecture",
+      "Riemann Hypothesis",
+      "Yang-Mills & Mass Gap",
+      "Navier-Stokes",
+      "Birch & Swinnerton-Dyer"
+    ],
+    "solved": [
+      "Poincaré Conjecture"
+    ]
+  },
+  "by_mathematical_domain": {
+    "computer_science": [
+      "P vs NP"
+    ],
+    "number_theory": [
+      "Riemann Hypothesis",
+      "Birch & Swinnerton-Dyer"
+    ],
+    "geometry_topology": [
+      "Hodge Conjecture",
+      "Poincaré Conjecture"
+    ],
+    "analysis_pde": [
+      "Navier-Stokes"
+    ],
+    "quantum_physics": [
+      "Yang-Mills & Mass Gap"
+    ]
+  },
+  "by_barrot_priority": {
+    "high_priority": [
+      "P vs NP",
+      "Navier-Stokes",
+      "Poincaré (historical)"
+    ],
+    "medium_priority": [
+      "Riemann Hypothesis",
+      "Hodge Conjecture",
+      "Birch & Swinnerton-Dyer"
+    ],
+    "lower_priority": [
+      "Yang-Mills"
+    ]
+  }
+}

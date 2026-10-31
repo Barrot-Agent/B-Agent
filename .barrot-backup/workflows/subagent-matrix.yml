@@ -1,0 +1,50 @@
+name: Sub-Agent Matrix (true parallel runners)
+
+on:
+  workflow_dispatch:
+    inputs:
+      subtasks:
+        description: "JSON array of subtask objects: [{id, prompt}]"
+        required: true
+        default: '[{"id":"a","prompt":"test task A"},{"id":"b","prompt":"test task B"}]'
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set.outputs.matrix }}
+    steps:
+      - id: set
+        run: echo "matrix=${{ toJson(fromJson(github.event.inputs.subtasks)) }}" >> "$GITHUB_OUTPUT"
+
+  run_subtask:
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        subtask: ${{ fromJson(github.event.inputs.subtasks) }}
+      fail-fast: false
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Run one subtask on its own runner
+        env:
+          SPAWN_TASK: ${{ toJson(matrix.subtask) }}
+        run: |
+          python3 - << 'PY'
+import os, json
+from scripts.subagent_spawner import call_groq
+subtask = json.loads(os.environ["SPAWN_TASK"])
+result = call_groq(subtask["prompt"])
+with open(f"subagent_matrix_{subtask['id']}.json", "w") as f:
+    json.dump({"id": subtask["id"], "result": result}, f, indent=2)
+print(result[:200])
+PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: subagent-${{ matrix.subtask.id }}
+          path: subagent_matrix_*.json

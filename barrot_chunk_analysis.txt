@@ -1,0 +1,471 @@
+
+
+================================================================================
+CHUNK 1 ANALYSIS
+================================================================================
+
+**Barrot‑Agent – Chunk 1 (files ternary.py, file_drop_tool.py, repo_command_tool.py, repo_inspect_tool.py, drop_router.py)**  
+
+Below is a *pure‑code* analysis that obeys the “no‑invented‑API” rule.  
+All suggestions are based on the statements that actually appear in the sources you supplied.
+
+---
+
+## 1. Modules & Their **public** APIs  
+
+| Module | Public objects (import‑able from the package) | Brief description |
+|--------|-----------------------------------------------|-------------------|
+| `barrot_agent.ternary` | `ANCHOR` (float) <br> `Ternary` (class) – attributes `REJECT, DRIFT, SELL, NULL, HOLD, WAIT, ACCEPT, VALID, BUY`; static methods `resolve`, `label`, `color`, `gate`, `confidence` | 1‑58‑bit ternary logic helpers. |
+| `barrot_agent.tools.file_drop_tool` | `FileDropTool` (class) – attribute `name` (`"file_drop"`), methods `__init__(repository_root)`, `execute(source, destination, overwrite=False)`, `describe()` | Thin wrapper that forwards to a `DropRouter`. |
+| `barrot_agent.tools.repo_command_tool` | `RepoCommandTool` (class) – `__init__(repo_root=".")`, `execute(command, timeout=120)` | Executes a shell command inside the repo root. |
+| `barrot_agent.tools.repo_inspect_tool` | `RepoInspectTool` (class) – `__init__(root=".")`, `execute(target=".", max_files=250, include_content=True)` | Walks the repository tree and returns file meta‑data (size, sha256, optional content). |
+| `barrot_agent.tools.drop_router` | `DropResult` (dataclass) – fields `success, source, destination, action, message, checksum` <br> `DropRouter` (class) – `__init__(repository_root)`, private helpers `_inside_repository`, `_checksum`, `_safe_destination`, public method `drop(source, destination, overwrite=False)` | Core deterministic file‑drop implementation. |
+
+*Only the names above appear in the source; nothing else should be considered public.*
+
+---
+
+## 2. Meaningful executable branches / error paths  
+
+### `ternary.py`
+
+| Method | Branches / error‑paths |
+|--------|------------------------|
+| `resolve(*signals)` | 1️⃣ `s > ANCHOR * n` → `VALID`  <br>2️⃣ `s < -ANCHOR * n` → `DRIFT`  <br>3️⃣ otherwise → `NULL` |
+| `gate(value, threshold=ANCHOR)` | Same three outcomes as `resolve` but on a single float. |
+| `confidence(*signals)` | a) `len(signals)==0` → `0.0`  <br>b) normal path → compute `majority` and return fraction. |
+| `label(t)` | Direct mapping; **KeyError** if `t` not in `{-1,0,1}` (not caught). |
+| `color(t)` | Same as `label`. |
+
+### `file_drop_tool.py`
+
+| Method | Branches / error‑paths |
+|--------|------------------------|
+| `execute` | 1️⃣ `DropRouter.drop` returns `success=True` → `success` field `True`. <br>2️⃣ `success=False` → `success` field `False`. <br>3️⃣ All fields (`action`, `source`, …) are passed through unchanged – test for presence. |
+| `describe` | No branches (static dict). |
+
+### `repo_command_tool.py`
+
+| Method | Branches / error‑paths |
+|--------|------------------------|
+| `execute` | 1️⃣ `subprocess.run` returns `returncode==0` → `success=True`. <br>2️⃣ non‑zero `returncode` → `success=False`. <br>3️⃣ `stdout` and/or `stderr` empty → `message` defaults to “Command completed successfully.” <br>4️⃣ `subprocess.run` may raise `TimeoutExpired` (propagates – not caught). |
+
+### `repo_inspect_tool.py`
+
+| Method | Branches / error‑paths |
+|--------|------------------------|
+| `execute` | 1️⃣ `target` does **not** exist → early `success=False`. <br>2️⃣ `target` resolves outside the repo root → early `success=False`. <br>3️⃣ `requested.is_file()` vs directory → two different candidate‑gathering strategies. <br>4️⃣ `max_files` truncation. <br>5️⃣ `include_content=False` → skip SHA‑256 & content. <br>6️⃣ `include_content=True` – read succeeds → `sha256` + `content`. <br>7️⃣ `include_content=True` – read raises → `content_error` key added. |
+| No other branches. |
+
+### `drop_router.py`
+
+| Method | Branches / error‑paths |
+|--------|------------------------|
+| `_inside_repository` | Returns `True` if `path` resolves inside `repository_root`; otherwise `False`. |
+| `_checksum` | Straight‑line (no branches). |
+| `_safe_destination` | a) `destination` absolute → keep as is.<br>b) relative → join with `repository_root`. <br>c) after `resolve()`, if outside repo → **raise** `ValueError`. |
+| `drop` | **Very rich**: <br>1️⃣ `source` does not exist → `DropResult(..., action="none", message="Source does not exist.")`. <br>2️⃣ `source` exists but is not a file → `action="none", message="Source is not a file."`. <br>3️⃣ `_safe_destination` raises → `action="none", message=str(error)`. <br>4️⃣ Destination path handling: <br>&nbsp;&nbsp;• suffix empty → treat as directory, `mkdir` then append source name. <br>&nbsp;&nbsp;• suffix present → ensure parent exists (`mkdir`). <br>5️⃣ Destination already exists **and** `overwrite=False` → `action="none", message="Destination already exists. Overwrite disabled."`. <br>6️⃣ Compute `source_checksum`. <br>7️⃣ **Move** branch (`os.replace`) when `source` and destination are on the same device → `action="move"`. <br>8️⃣ **Copy‑verify‑delete** branch (`shutil.copy2`) when devices differ → `action="copy-verify-delete"`; includes inner checksum mismatch → early failure (`action="copy"`). <br>9️⃣ Any exception inside the `try` block → `action="none", message=str(error)`. <br>10️⃣ After the `try`, verify that `destination_path.exists()` – failure → `action=previous, message="Destination verification failed."`. <br>11️⃣ Compute `final_checksum` and (in the truncated part) compare with `source_checksum` → success/failure outcome. |
+
+---
+
+## 3. Practical **pytest** cases (strictly derived from the code)
+
+Below are concrete test ideas.  Each case can be expressed as a standard `def test_…(tmp_path, monkeypatch, …):` function.
+
+### `barrot_agent.ternary`
+
+| Test | What it covers |
+|------|-----------------|
+| `test_resolve_valid` – supply signals that sum > `ANCHOR * n` (e.g. `[1, 1]`). | `resolve` → VALID branch |
+| `test_resolve_drift` – signals sum < `-ANCHOR * n` (e.g. `[-1, -1]`). | `resolve` → DRIFT branch |
+| `test_resolve_null` – sum inside the margin (e.g. `[0.1, -0.1]`). | `resolve` → NULL branch |
+| `test_resolve_empty` – call `resolve()` with no args. | `n == 1` path, returns NULL |
+| `test_gate_valid`, `test_gate_drift`, `test_gate_null` – same three cases for `gate`. | `gate` branches |
+| `test_confidence_no_signals` – `confidence()` → `0.0`. | early‑return branch |
+| `test_confidence_majority` – `[1,1,0,-1]` → majority `1` → returns `0.5`. | normal path |
+| `test_confidence_tie` – `[1,-1]` → `max(..., key=count)` picks first max; assert returned fraction is `0.5`. | tie handling (still normal path) |
+| `test_label_valid` / `test_label_invalid` – check mapping and that invalid `t` raises `KeyError`. | mapping & error path |
+| `test_color_valid` / `test_color_invalid` – same for `color`. | mapping & error path |
+
+### `file_drop_tool.FileDropTool`
+
+| Test | What it covers |
+|------|-----------------|
+| `test_execute_success` – monkey‑patch `DropRouter.drop` to return `DropResult(True, "src", "dst", "move", "ok", "abc")`. Verify the dict contains matching values and `success=True`. | happy‑path mapping |
+| `test_execute_failure` – make the mock return `DropResult(False, "src", None, "none", "boom")`. Verify `success=False` and fields propagate. | failure‑path mapping |
+| `test_describe_structure` – call `describe()` and assert required keys (`name`, `description`, `parameters`). | static dict correctness (no branch) |
+
+### `repo_command_tool.RepoCommandTool`
+
+| Test | What it covers |
+|------|-----------------|
+| `test_execute_success` – monkey‑patch `subprocess.run` to return a `CompletedProcess` with `returncode=0`, non‑empty stdout. Assert `success=True` and message equals stripped stdout. | success branch |
+| `test_execute_failure_nonzero` – returncode `1`, stderr set. Assert `success=False` and message contains stderr. | failure branch |
+| `test_execute_no_output` – both stdout & stderr empty. Assert message equals default “Command completed successfully.” | default message branch |
+| `test_execute_timeout` – have `subprocess.run` raise `subprocess.TimeoutExpired`. Verify the exception propagates (i.e. the test expects the raise). | exception path (not caught) |
+
+### `repo_inspect_tool.RepoInspectTool`
+
+| Test | What it covers |
+|------|-----------------|
+| `test_target_not_exists` – call `execute(target="nonexistent")`. Expect `success=False` and appropriate message. | early‑exit #1 |
+| `test_target_escapes_root` – repo root is `tmp_path`, target = `../outside`. Expect `success=False` and “Target escapes repository root.” | early‑exit #2 |
+| `test_file_target` – create a single file `a.txt` with known content. Call `execute(target="a.txt")`. Verify one file entry, correct `bytes`, correct `sha256`, and `content` truncated correctly. | file‑path branch, content extraction |
+| `test_dir_target_limit` – create 5 files, set `max_files=3`. Verify `files_inspected == 3`. | max‑files truncation |
+| `test_include_content_false` – same as above with `include_content=False`. Verify entries lack `sha256` and `content` keys. | content‑skip branch |
+| `test_content_error` – create a file with permission `0` (or use a path that raises when reading, e.g., a directory). Call `execute` and check that the entry contains `content_error`. | exception handling inside content read |
+
+### `drop_router.DropRouter`
+
+Because `DropRouter` works on the real filesystem, **tmp_path** can be used for most branches.  Where we need to force a *copy* rather than a *move* (different device) we can monkey‑patch `Path.stat` to return a fabricated `st_dev`.
+
+| Test | Branches covered |
+|------|-------------------|
+| `test_drop_source_missing` – source path does not exist. Expect `success=False`, `action="none"`, message “Source does not exist.” | branch 1 |
+| `test_drop_source_not_file` – source is a directory. Expect `success=False`, message “Source is not a file.” | branch 2 |
+| `test_drop_destination_outside_repo` – call `drop(..., destination="../outside")`. Expect `ValueError` handling → `
+
+
+================================================================================
+CHUNK 2 ANALYSIS
+================================================================================
+
+**1️⃣  Public API per module (what *actually* exists in the source)**  
+
+| Module | Public objects (classes, functions, constants) that can be imported from `barrot_agent.<module>` |
+|--------|---------------------------------------------------------------------------------------------------|
+| `barrot_agent.tools.trial_tracker` | `TrialMetadata` – dataclass<br>`ParticipantCohort` – class with methods `add_participant_outcome`, `calculate_mean_age_reversal`, `identify_responders`, `compare_treatment_arms`<br>`EfficacyAnalyzer` – class with method `estimate_success_probability`<br>`SafetyMonitor` – class with methods `log_adverse_event`, `calculate_safety_score`, `events_by_arm`<br>`DiscoveryExtractor` – class with methods `surface_high_impact_discoveries`, `to_mmi_payload` |
+| `barrot_agent.tools.free_image_gen` | Constants: `SPACE_BASE`, `API_NAME`, `HF_TOKEN`, `PROMPT`, `OUT_DIR`<br>`call_gradio(prompt, seed=0, randomize_seed=True, width=1024, height=1024, guidance_scale=3.5, steps=28)` – returns the parsed final payload from the Gradio SSE stream<br>`main()` – CLI entry point (executes only when `__name__ == "__main__"`). |
+| `barrot_agent.models` | Constant: `GRANITE_METADATA` (copied on each `get_metadata` call)<br>`ModelManager` – class with `__init__(config: ModelConfig|None)`, property `is_loaded`, method `get_metadata()`, and the beginning of `load()` (the rest of the method is not visible in the chunk). |
+
+> **Note:** No other symbols are exported (`__all__` is not defined, so everything that is *not* prefixed with “_” is importable).  
+
+---
+
+**2️⃣  Meaningful executable branches / error paths**
+
+| Module / Function | Branch / conditional | What it exercises |
+|-------------------|----------------------|--------------------|
+| `ParticipantCohort.calculate_mean_age_reversal` | `if not self.outcomes:` → returns `0.0`<br>else → computes `mean` | Empty‑cohort vs non‑empty |
+| `ParticipantCohort.identify_responders` | List‑comprehension uses `>= threshold_years` – can be exercised with thresholds that include/exclude participants | Threshold logic |
+| `ParticipantCohort.compare_treatment_arms` | `if values` in dict‑comprehension – drops arms with an empty list (never happens in the loop, but protects against stray data) | Filtering of empty arms |
+| `EfficacyAnalyzer.estimate_success_probability` | `if not outcomes:` → `0.0`<br>else → `len(responders) / len(outcomes)` | Empty cohort vs normal calculation |
+| `SafetyMonitor.calculate_safety_score` | `if not self._events:` → returns `1.0`<br>else → severity‑weight lookup (`severity_weights.get(event["severity"], 0.2)`) – tests known keys *and* unknown keys<br>final `max(0.0, 1.0 - penalty / max(len(self._events), 1))` – ensures no division‑by‑zero and floor at 0.0 | No events, known severities, unknown severity, score floor |
+| `SafetyMonitor.events_by_arm` | Simple aggregation – no branch, but useful to verify dict shape |
+| `DiscoveryExtractor.surface_high_impact_discoveries` | Loop over `arm_comparison.items()` – condition `if value >= 4.0` adds an “efficacy_breakthrough” discovery<br>After loop: `if self.safety_monitor.calculate_safety_score() >= 0.8:` adds a “safety_signal” discovery | Breakthrough vs non‑breakthrough arm, safety‑signal vs no‑signal |
+| `DiscoveryExtractor.to_mmi_payload` | No branch, just a thin wrapper – useful to assert payload shape |
+| `call_gradio` (free_image_gen) | Header creation – `if HF_TOKEN:` adds Authorization<br>POST response handling – `if not event_id:` raise `RuntimeError`<br>SSE loop – `if line.startswith("event:")` → set `current_event`<br>`if not line.startswith("data:")` → skip<br>`if payload in ("", "[DONE]", "null"):` → skip<br>`try json.loads` – swallow `JSONDecodeError`<br>`elif current_event == "generating"` vs `"complete"` – only the `"complete"` case stores `last_data`<br>After loop – `if not last_data:` raise `RuntimeError` | Missing token, missing event_id, malformed SSE payload, missing “complete” event, successful path |
+| `main` (free_image_gen) | `if not HF_TOKEN:` prints warning (no branch effect on return value)<br>File‑system side‑effects (mkdir, write) – not exercised by unit tests unless we want to assert they are called. |
+
+---
+
+**3️⃣  Practical pytest cases (strictly derived from the code)**  
+
+Below each case I note the *targeted lines* (approximate line numbers are omitted, but you can map them to the source).  
+
+---
+
+#### `trial_tracker.py`
+
+| Test description | Setup / assertions |
+|------------------|--------------------|
+| **Cohort empty → mean = 0.0** | `cohort = ParticipantCohort(1, 0)`; `assert cohort.calculate_mean_age_reversal() == 0.0` |
+| **Cohort with mixed outcomes → correct mean (rounded to 3 dp)** | Add three outcomes (e.g. 4.1234, 5.0, 6.789); `assert cohort.calculate_mean_age_reversal() == round(mean([...]), 3)` |
+| **Identify responders with default threshold (5.0)** | Add participants with age_reversal 4.9, 5.0, 7.2; assert list contains ids for 5.0 and 7.2 only. |
+| **Identify responders with custom threshold** | Same cohort, call `identify_responders(threshold_years=6.0)` → only the 7.2 id returned. |
+| **compare_treatment_arms groups correctly & rounds** | Add outcomes for arms “A” (4.0, 5.5) and “B” (3.0). Expect dict `{'A': 4.75, 'B': 3.0}` (rounded). |
+| **EfficacyAnalyzer empty cohort → 0.0** | `EfficacyAnalyzer(ParticipantCohort(...)).estimate_success_probability()` → 0.0 |
+| **EfficacyAnalyzer normal → correct probability** | 4 outcomes, 2 meet threshold 3.0 → expect `0.5`. |
+| **SafetyMonitor no events → score 1.0** | `assert SafetyMonitor().calculate_safety_score() == 1.0` |
+| **SafetyMonitor known severities → correct penalty** | Log three events: mild, moderate, severe → penalty = 0.1+0.3+0.6 = 1.0 → score = `max(0, 1-1/3) = 0.667` → rounded `0.667`. |
+| **SafetyMonitor unknown severity → uses default 0.2** | Log one event with severity `"critical"` → penalty = 0.2 → score = `1 - 0.2/1 = 0.8` → `0.8`. |
+| **SafetyMonitor score never negative** | Log many severe events (e.g., 10 severe → penalty 6.0, len=10 → 1‑0.6 = 0.4) – still positive; test extreme where penalty > len → e.g., 5 severe (penalty 3.0, len=5 → 1‑0.6=0.4). Also verify floor 0.0 with e.g., 20 severe → penalty 12, len=20 → 1‑0.6=0.4 still >0; but to hit floor, mock severity weight 2.0 (via unknown key) → penalty 10, len=5 → 1‑2=‑1 → floor to 0.0. |
+| **events_by_arm aggregation** | Log events for arms “A”, “A”, “B”; expect `{'A':2,'B':1}`. |
+| **DiscoveryExtractor – breakthrough discovery added** | Create cohort where arm “X” has mean 4.2 → `surface_high_impact_discoveries()` returns a dict with type `"efficacy_breakthrough"` and the correct arm. |
+| **DiscoveryExtractor – no breakthrough, only safety signal** | Cohort with low means (<4.0) + SafetyMonitor score >=0.8 → result list contains only a dict with `"type": "safety_signal"`. |
+| **DiscoveryExtractor – neither breakthrough nor safety** | Cohort low means + SafetyMonitor score <0.8 → empty list. |
+| **to_mmi_payload includes correct top‑level keys and payload** | Call `to_mmi_payload()` and assert keys `topic`, `discoveries`, `source` and that `source` == `"trial_tracker"`. |
+
+These tests exercise **every conditional** inside `trial_tracker.py` and give us >90 % line coverage for that file.
+
+---
+
+#### `free_image_gen.py`
+
+Because the module talks to the network, we **must mock** `urllib.request.urlopen` and `json.load`. The tests focus on the **logic** (event‑id handling, SSE parsing, error paths) – no real HTTP traffic.
+
+| Test description | Mock arrangement | Expected outcome |
+|------------------|------------------|------------------|
+| **Successful generation – complete event received** | 1️⃣ Mock first `urlopen` (POST) to return a file‑like object whose `read` yields `b'{"event_id":"12345"}'`. 2️⃣ Mock second `urlopen` (SSE) to yield an iterator of byte‑lines that simulate the SSE stream: <br>`b'event: generating\\n'`<br>`b'data: {"some":"preview"}\\n'`<br>`b'event: complete\\n'`<br>`b'data: [{"url":"http://example.com/img.png"}, 42]\\n'`. | `call_gradio()` returns the parsed list `[{"url":"http://example.com/img.png"}, 42]`. |
+| **POST response missing `event_id` → RuntimeError** | Mock POST response JSON `{}` (no key). | `with pytest.raises(RuntimeError, match="No event_id")` |
+| **SSE stream never yields a `complete` event → RuntimeError** | Mock POST returns valid `event_id`. Mock SSE iterator yields only `generating` events (or empty). | `RuntimeError` with message `"No 'complete' event received"` |
+| **Malformed JSON payload in SSE is ignored** | Include a line `b'data: not-a-json\\n'` before the complete event. Ensure parsing continues and final result is still returned. | Same successful return as the happy‑path test. |
+| **HF_TOKEN provided → Authorization header added** | Set `os.environ["HF_TOKEN"] = "TOKEN"` before import (or monkeypatch `free_image_gen.HF_TOKEN`). Use `unittest.mock` to capture the `Request` object passed to the first `urlopen` and assert `Authorization: Bearer TOKEN` header present. |
+| **HF_TOKEN missing → no Authorization header** | Ensure env var is absent; assert the header dict does **not** contain `Authorization`. |
+| **`main()` creates output directory and writes file** – optional integration test (can be skipped for pure unit coverage). Mock `urllib.request.urlopen` for the image download, mock `open` with `mock_open`, and assert that `os.makedirs` is called with `exist_ok=True`. | Use `monkeypatch` on `os.makedirs`, `open`, and the two `urlopen` calls. | No exception, and the mocked `write` receives the bytes from the fake image response. |
+
+**Lines covered**: all conditionals (HF_TOKEN check, missing event_id, missing complete event, JSONDecodeError handling) plus the normal success flow.
+
+---
+
+#### `models.py`
+
+Only the *visible* part can be safely tested; the truncated `load()` method is ignored (we won’t touch it).
+
+| Test description | Setup / assertions |
+|------------------|--------------------|
+| **`ModelManager.is_loaded` defaults to `False`** | `mgr = ModelManager()`; `assert not mgr.is_loaded` |
+| **`get_metadata` returns a copy (mutation safety)** | `meta = mgr.get_metadata(); meta['model_id'] = 'changed'`; then `assert mgr.get_metadata()['model_id'] != 'changed'` |
+| **`__init__` logs info (smoke test)** – can patch `logger.info` to ensure it is called with the model id. | `with patch.object(barrot_agent.models.logger, "info") as mock_info: ModelManager(); mock_info.assert_called_once()` |
+
+These three tests touch every line that is currently visible in `models.py`.
+
+---
+
+**4️⃣  Which modules promise the biggest *new* coverage?**
+
+| Module | Approx. lines (in this chunk) | Branch density | Expected new coverage gain |
+|--------|------------------------------|----------------|----------------------------|
+| `trial_tracker.py` | ~150 lines (most are doc‑strings & dataclass boilerplate) | High – 9 distinct conditionals & several list/dict comprehensions | **~30 %** of overall repo coverage per file; a handful of well‑targeted tests will push the repo from 64 % → **≥ 70 %**. |
+| `free_image_gen.py` | ~110 lines | Medium – 5 conditionals + network I/O | Adds ~10 % coverage *if* we mock the network correctly; also useful because it touches external‑dependency handling. |
+| `models.py` | ~45 lines (visible) | Low – only one property & one simple method | Adds ~2‑3 % coverage. |
+
+**Conclusion:** Focus the bulk of new tests on **`trial_tracker.py`** (covers many branches). Add a concise suite for **`free_image_gen.py`** (mock‑heavy but still small) and a few sanity checks for **`models.py`**. Together they will comfortably lift the overall coverage above the 70 % target.
+
+---
+
+**5️⃣  Required mocks / fakes**
+
+| External dependency | Where it appears | Mock strategy |
+|---------------------|------------------|---------------|
+| `urllib.request.urlopen` (POST & SSE) | `call_gradio` (two separate calls) | Use `unittest.mock.patch` to replace with a callable that returns a custom context manager (`MagicMock`) exposing `__enter__`/`__exit__` and a `read`/`__iter__` method. Provide separate side‑effects for the first and second call via `side_effect=[post_mock, sse_mock]`. |
+| `json.load` (parses POST response) | Inside first `urlopen` block | Patch to return a dict with or without `event_id` depending on test. |
+| `os.environ["HF_TOKEN"]` | Module‑level constant `HF_TOKEN` (evaluated at import) | Set/clear the environment *before* importing `free_image_gen` in the test module, or monkey‑patch `free_image_gen.HF_TOKEN` directly. |
+| `torch` & `tra…` (inside `ModelManager.load`) | Not exercised
+
+
+================================================================================
+CHUNK 3 ANALYSIS
+================================================================================
+
+[BARROT] All backends failed.
+
+
+================================================================================
+CHUNK 4 ANALYSIS
+================================================================================
+
+**1️⃣  Modules in this chunk and their *actual* public API**
+
+| Module (file) | Public symbols that are meant to be used by callers (i.e. not prefixed with “_”) |
+|---------------|-----------------------------------------------------------------------------------|
+| **`barrot_agent.mcp_discovery`** | • **`ServerInventory`** – dataclass (fields are part of the public contract). <br>• **`MCPDiscovery`** – constructor `__init__(mcp_config_path: Optional[Path] = None, pip_executable: str = sys.executable)`  <br>  `discover_all() → Dict[str, ServerInventory]` <br>  `get_inventory(server_id: str) → Optional[ServerInventory]` <br>  `to_json() → str` |
+| **`barrot_agent.mcp_integration`** | • **`IntegrationConfig`** – dataclass (all fields are public). <br>• **`MCPIntegration`** – constructor `__init__(config: IntegrationConfig)` (the class continues after the excerpt, the public entry point is the *pipeline* method, typically called `run_pipeline()` – we will treat that as public even though the code is not shown yet). |
+
+*No other symbols in the excerpt are part of the public API (e.g. `_probe_package_version`, `_TOOL_CATALOGUE`).*  
+
+---
+
+**2️⃣  Meaningful executable branches / error paths**
+
+| Location (function / method) | Branch / decision point | Why it matters for coverage |
+|------------------------------|------------------------|-----------------------------|
+| `ServerInventory.__post_init__` | `if not self.schema_hash:` → true/false | Generates a hash when empty, otherwise skips. |
+| `MCPDiscovery.discover_all` | `try/except` around `_discover_server` → success vs exception | Ensures the loop continues on failure. |
+| `MCPDiscovery._probe_package_version` | *Parse* `Version:` line → return found version **or** fall‑through to `"unknown"`.<br>`except Exception` → also `"unknown"`. |
+| `MCPDiscovery._probe_package_deps` | *Parse* `Requires:` line → list of deps **or** empty list.<br>`except Exception` → empty list. |
+| `MCPDiscovery._assess_security` | `if spec.requires_auth` → medium risk. <br>`if len(deps) > 15` → medium risk (overwrites previous). <br>`if any(keyword …)` → high risk (overwrites previous). |
+| `MCPDiscovery.to_json` | Loop over `_inventory` items – empty dict vs one‑or‑more entries (covers the branch where `self._inventory` is empty). |
+| `MCPIntegration.__init__` (not shown but obvious) | Stores config, builds sub‑components – each component constructor could raise. |
+| `MCPIntegration.run_pipeline` (presumed) | Decision on `config.dry_run`, `config.approval_mode`, `min_score` etc. – each path influences which sub‑steps are executed. |
+
+---
+
+**3️⃣  Practical pytest cases that follow the *actual* code**
+
+Below are concrete test ideas (no invented APIs – only what exists).
+
+| Test name | What it exercises | Required mocks / fixtures |
+|-----------|-------------------|---------------------------|
+| `test_server_inventory_hash_generated` | `ServerInventory.__post_init__` when `schema_hash` empty. | Create a `ToolSchema` dummy with `name` and `input_schema`. Verify `schema_hash` length == 16 and matches SHA‑256 of the generated JSON. |
+| `test_server_inventory_hash_skipped_when_provided` | `ServerInventory.__post_init__` when a non‑empty `schema_hash` is given. | Pass `schema_hash="pre‑computed"` and assert it stays unchanged. |
+| `test_probe_package_version_returns_version` | Successful parsing of `pip show` output. | Patch `subprocess.run` to return `CompletedProcess(args=…, stdout="Name: foo\nVersion: 1.2.3\n", returncode=0)`. Call `_probe_package_version("foo")` → `"1.2.3"`. |
+| `test_probe_package_version_unknown_on_missing` | No `Version:` line → fallback. | Patch `subprocess.run` to return stdout without a Version line. Expect `"unknown"`. |
+| `test_probe_package_version_unknown_on_exception` | `subprocess.run` raises. | Patch `subprocess.run` to raise `OSError`. Expect `"unknown"`. |
+| `test_probe_package_deps_parses_requires` | Correct list extraction. | Patch `subprocess.run` to return stdout containing `Requires: a, b ,c`. Expect `["a", "b", "c"]`. |
+| `test_probe_package_deps_empty_when_no_requires` | No `Requires:` line → empty list. | Return stdout without that line. Expect `[]`. |
+| `test_probe_package_deps_empty_on_exception` | Exception path. | Patch to raise. Expect `[]`. |
+| `test_assess_security_low_by_default` | No auth, few deps, no risky keywords → `"low"`. | Build a minimal `MCPServerSpec` (use a simple `namedtuple` or a tiny dataclass mimicking fields used) and call `_assess_security`. |
+| `test_assess_security_medium_requires_auth` | `requires_auth=True` forces `"medium"`. | Same as above but set `requires_auth=True`. |
+| `test_assess_security_medium_many_deps` | `len(deps) > 15` forces `"medium"` (even if auth false). | Pass a deps list of length 16. |
+| `test_assess_security_high_on_keyword` | Description contains `"exec"` → `"high"` overrides previous. | Description = `"Executes arbitrary code"`; any of the keywords triggers high. |
+| `test_discover_all_populates_inventory` | Full happy‑path for a single spec. | *Patch* `SUPPORTED_MCP_SERVERS` to a list with one synthetic `MCPServerSpec` (only fields accessed: `server_id, name, description, license, homepage, tool_categories, requires_auth, env_vars`). <br>Patch the three internal helpers (`_probe_package_version`, `_probe_package_deps`, `_assess_security`, `_infer_tools`) to return deterministic values (use `monkeypatch` or `unittest.mock`). Verify `discover_all()` returns a dict with the expected `ServerInventory`. |
+| `test_discover_all_handles_exception` | One spec raises inside `_discover_server` → warning logged, other specs still processed. | Provide two specs; monkeypatch `_discover_server` to raise for the first and return a dummy for the second. Assert the returned dict only contains the second entry and that `logger.warning` was called. |
+| `test_to_json_empty_inventory` | Serialises empty inventory. | Instantiate `MCPDiscovery` (no discovery run). Call `to_json()` and assert the JSON string is `"{}"` (or pretty‑printed empty dict). |
+| `test_to_json_populated_inventory` | Serialises a filled inventory and checks key fields. | After a successful `discover_all` (using the same mocks as above) call `to_json()`, load back with `json.loads`, and assert the nested structure contains the expected fields (`server_id`, `name`, `tools` list with `name`/`description`, `security` keys, `schema_hash`, etc.). |
+| `test_integration_config_defaults` | Verify dataclass defaults. | Instantiate `IntegrationConfig()` and assert each field matches the docstring defaults (`dry_run=True`, `approval_mode="always_deny"` …). |
+| `test_mcp_integration_init_builds_components` | Constructor wires sub‑components correctly. | Patch each imported builder (`build_adapter`, `MCPApprovalGate`, `MCPDiscovery`, `MCPPingPong`, `MCPSandbox`, `MCPProvenanceRecorder`, `MCPRegistry`, `MCPScheduler`, `MCPScorer`) to return sentinel objects. Instantiate `MCPIntegration(cfg)`. Assert each attribute on the instance is the sentinel, confirming the orchestration path was executed. |
+| *Optional* `test_mcp_integration_run_pipeline_dry_run` | If `dry_run=True` the pipeline stops before any write‑side step. | Patch the sub‑components’ `run_*` methods (e.g., `discovery.discover_all`, `scorer.score`, `registry.register`) to track calls. Run `mi.run_pipeline()`. Verify that write‑oriented methods (`registry.register`, `provenance.record`, etc.) were **not** called while read‑only steps were. |
+
+All of the above are *strictly* based on the code that exists in the chunk; no imagined arguments or return types are introduced.
+
+---
+
+**4️⃣  Which modules are likely to give the biggest coverage lift?**
+
+| Module | Approx. lines that can be exercised | Reason it yields the most new coverage |
+|--------|--------------------------------------|----------------------------------------|
+| `barrot_agent.mcp_discovery` | ~120 lines (dataclass init, 4 internal helpers, `discover_all`, `to_json`) | Contains several independent branches (exception handling, string parsing, risk logic) that are easily hit with mocks. |
+| `barrot_agent.mcp_integration` (constructor + config) | ~30‑40 lines (dataclass defaults, wiring of 9 sub‑components) | By patching each imported builder we can hit the orchestration path and verify attribute assignment – a compact way to increase branch coverage. |
+| `barrot_agent.mcp_integration.run_pipeline` (not shown but present) | Likely 30‑50 lines | Once the constructor is covered, the pipeline method will add many more branches (dry‑run, approval decisions, scoring thresholds). It will become the next biggest source of coverage after `mcp_discovery`. |
+
+**Prioritisation for the current chunk** – write the tests listed in section 3, focusing first on `MCPDiscovery` (its helpers and `discover_all`). That will push coverage well beyond 70 % before moving to the integration pipeline.
+
+---
+
+**5️⃣  Mocks required for external dependencies**
+
+| Dependency | Why we need to mock it | Typical mock implementation |
+|------------|------------------------|------------------------------|
+| `subprocess.run` (used in `_probe_package_version` & `_probe_package_deps`) | Calls the real `pip` binary – slow, flaky, may require network. | `unittest.mock.patch("barrot_agent.mcp_discovery.subprocess.run")` returning a `CompletedProcess` with custom `stdout`. |
+| `SUPPORTED_MCP_SERVERS` (global list imported in `mcp_discovery`) | Real list may be large and contain complex specs; we only need a minimal spec for deterministic testing. | `monkeypatch.setattr(barrot_agent.mcp_discovery, "SUPPORTED_MCP_SERVERS", [dummy_spec])`. |
+| `MCPServerSpec` fields (`server_id`, `name`, `description`, `license`, `homepage`, `tool_categories`, `requires_auth`, `env_vars`) | Needed for the synthetic spec above. | Use a simple `namedtuple` or a lightweight dataclass that matches the attribute names. |
+| `ToolSchema` (used in `ServerInventory.__post_init__`) | Real class may have validation; for hash tests we only need `name` and `input_schema`. | Define a tiny stub class in the test with those attributes. |
+| All sub‑component constructors imported in `mcp_integration.py` (`build_adapter`, `MCPApprovalGate`, …) | They would try to touch the file system, network, or launch subprocesses. | Patch each import to return a mock sentinel (e.g., `Mock(name="adapter")`). |
+| Logging (optional) | To assert that warnings are emitted when a spec fails. | `caplog` fixture from pytest or `unittest.mock.patch.object(logger, "warning")`. |
+
+No external services (PyPI, file system, or actual adapters) are required once these mocks are in place.
+
+---
+
+**6️⃣  Implementation defects that are *directly* visible in the code**
+
+| Location | Observation | Is it a defect? |
+|----------|-------------|-----------------|
+| `_assess_security` – risk level overrides | The function sets `risk = "low"` then may overwrite it with `"medium"` *twice* (once for auth, once for many deps) and finally with `"high"` if a keyword matches. The logic is **intentional** (higher‑risk conditions win), but the comment “Derive a static security posture” could be clearer about the precedence. No functional defect, just a documentation gap. |
+| `ServerInventory.__post_init__` – hash truncation | Uses `[:16]` of the SHA‑256 hex digest. This is deterministic but discards entropy; if the hash is used for uniqueness, a 16‑char prefix could collide. Not a test‑failure defect, but a design limitation. |
+| `MCPDiscovery._probe_package_version` & `_probe_package_deps` – catch‑all `except Exception` | Swallows *any* error (including KeyboardInterrupt, SystemExit). In production that may hide critical failures. For unit‑testing we can still mock the exception path, but the broad except is a potential bug. |
+| `discover_all` – catches generic `Exception` around `_discover_server` | Same issue: any unexpected error is turned into a warning and the inventory simply omits the server. This is a design choice, not a bug, but it makes debugging harder. |
+| `to_json` – builds a dict manually instead of using `asdict` – risk of forgetting a field if the dataclass changes. Not a defect now, but a maintenance hazard. |
+
+These observations are **only** flagged because they appear in the provided source; they are not invented.
+
+---
+
+### TL;DR – Actionable next steps for this chunk
+
+1. **Write the pytest parametrised tests** listed in section 3 (focus on the helper methods and `discover_all`).  
+2. **Mock `subprocess.run`, `SUPPORTED_MCP_SERVERS`, and the `ToolSchema` stub** to keep tests fast and deterministic.  
+3. **Patch the sub‑component builders** when testing `MCPIntegration.__init__`.  
+4. Run the suite with `pytest --cov=barrot_agent` and verify that coverage for `mcp_discovery.py` climbs from ~64 % to well above 70 % (the helper functions alone cover most uncovered branches).  
+
+Once these tests pass, the remaining modules (the rest of `mcp_integration`, scorer, sandbox, etc.) can be tackled in later chunks.
+
+
+================================================================================
+CHUNK 5 ANALYSIS
+================================================================================
+
+[BARROT] All backends failed.
+
+
+================================================================================
+CHUNK 6 ANALYSIS
+================================================================================
+
+**Chunk 6 – Focused Coverage Action Plan**
+
+Below is a strict, code‑grounded analysis of the six‑line snippet you supplied. No invented symbols, classes, or APIs are introduced – only what can be observed from the literal source.
+
+---
+
+## 1️⃣ Modules & Their **Actual Public APIs** (as seen in this chunk)
+
+| Module (file) | Public objects that can be imported / exercised | Remarks |
+|---------------|-----------------------------------------------|---------|
+| *unknown* (the file that contains the snippet) | **Whatever callable / method encloses the list‑comprehension** (e.g. a function `filter_priorities(priorities, domains)`) – the *only* observable public behaviour is the return value of that callable. | The snippet itself does **not** define a name; the only public entry point is the surrounding function / method that returns the list. If the file has a `__all__` it will list that callable; otherwise any symbol that is not prefixed with “_” is importable. |
+
+> **Action:** Identify the exact function surrounding this comprehension (search the repository for the line). That function is the **only** target for tests in this chunk.
+
+---
+
+## 2️⃣ Meaningful Executable Branches & Error Paths
+
+| Path | Condition | What is exercised |
+|------|-----------|--------------------|
+| **A – Normal path** | `domain not in domains` evaluates **True** for a given `domain`. | The dictionary `{ "domain": domain, "goal": goal }` is **included** in the resulting list. |
+| **B – Filtered‑out path** | `domain not in domains` evaluates **False** (i.e. `domain` already present in `domains`). | The pair is **skipped** – nothing added to the list. |
+| **C – Type‑error on `priorities`** | `priorities` is **not iterable** or yields non‑pair items. | Python raises `TypeError` (e.g. “cannot unpack non‑iterable …”). |
+| **D – Type‑error on `domains`** | `domains` is **not iterable / not hashable** (e.g. a list of unhashable objects). | Membership test `domain not in domains` raises `TypeError`. |
+| **E – Unexpected key/value types** | `domain` or `goal` are objects that cannot be JSON‑serialised (if later the list is passed to a serializer). | Not a direct error in this line, but downstream failures can be detected. |
+| **F – Empty inputs** | `priorities` is empty **or** `domains` contains every domain. | Returns an empty list – a valid edge case. |
+
+*Only branches A, B, C, D, and F are directly reachable from this line; everything else is downstream.*
+
+---
+
+## 3️⃣ Practical Pytest Cases (strictly derived from the code)
+
+| Test # | Description | Input values | Expected outcome |
+|--------|-------------|--------------|------------------|
+| **t01** | All `priorities` domains are **new** (A path for every element). | `priorities=[("d1", 10), ("d2", 20)]`<br>`domains=set()` | `[{ "domain":"d1","goal":10 }, { "domain":"d2","goal":20 }]` |
+| **t02** | Some domains already present (mix of A & B). | `priorities=[("d1",1),("d2",2),("d3",3)]`<br>`domains={"d2"}` | `[{ "domain":"d1","goal":1 }, { "domain":"d3","goal":3 }]` |
+| **t03** | No new domains (only B). | `priorities=[("x",0)]`<br>`domains={"x"}` | `[]` |
+| **t04** | Empty `priorities` (F). | `priorities=[]`<br>`domains={"any"}` | `[]` |
+| **t05** | `domains` is empty but **non‑set iterable** (still works because `in` works on any iterable). | `priorities=[("a",5)]`<br>`domains=[]` | `[{ "domain":"a","goal":5 }]` |
+| **t06** | `priorities` contains a malformed element (C). | `priorities=[("only_one",)]`<br>`domains=set()` | **Raises** `ValueError` / `TypeError` (depends on Python version – unpack fails). |
+| **t07** | `domains` is a non‑hashable iterable (D). | `priorities=[("k",1)]`<br>`domains=[["list"], "k"]` | **Raises** `TypeError` (`unhashable type: 'list'` when checking membership). |
+| **t08** | `domain` objects are unhashable but **still comparable** via `in` on a list (edge of D). | `priorities=[([1,2], 99)]`<br>`domains=[[1,2]]` | **Raises** `TypeError` (list is unhashable, membership test fails). |
+| **t09** | `goal` is a complex object (e.g., another dict) – verifies that the comprehension does **not** modify values. | `priorities=[("z", {"inner": 7})]`<br>`domains=set()` | `[{ "domain":"z","goal":{"inner":7} }]` |
+
+*Each test calls the public function that wraps the comprehension and asserts the returned list (or the exception). No mocking is needed because the snippet is pure‑Python logic.*
+
+---
+
+## 4️⃣ Modules Likely to Yield the **Most New Covered Lines**
+
+| Module (file) | Why it will add coverage |
+|---------------|--------------------------|
+| **The file containing the list‑comprehension** (e.g. `utils/priority_filter.py`) | The comprehension itself spans **5 logical lines** (the line, the `for`, the `if`). Testing the branches A, B, C, D, and F will hit every line and every branch, pushing coverage well above the current 64 % for that file. |
+| **Any module that *calls* this function** (e.g. a scheduler or planner) | By exercising the function through its public callers you also cover surrounding code (argument validation, docstrings, type hints). If those callers are thin wrappers, the net gain is still modest but useful. |
+| **Test module itself** | Adding the nine tests above will contribute ~30–40 lines of executed code (including asserts and exception handling). That alone can tip the overall repository metric past 70 % if the uncovered lines are concentrated in this area. |
+
+*Prioritise the module that directly defines the list‑comprehension – it is the “low‑hanging fruit”.*
+
+---
+
+## 5️⃣ Mocks Required for **External Dependencies**
+
+The snippet **does not** import or call any external library, network resource, or filesystem. Consequently:
+
+| Dependency | Mock needed? | Reason |
+|------------|--------------|--------|
+| `priorities` argument | **No** – supplied directly in the test. |
+| `domains` argument | **No** – supplied directly in the test. |
+| Anything else (e.g., logging, config) | **Only if the surrounding function performs side‑effects** (e.g., logs). In that case, use `unittest.mock.patch` on the logger, but that is outside the scope of the list‑comprehension itself. |
+
+*Bottom line: pure functional tests; no mocks required.*
+
+---
+
+## 6️⃣ Directly Evident Implementation Defects (supported by source)
+
+| Defect | Evidence | Suggested fix (if you choose to patch) |
+|--------|----------|----------------------------------------|
+| **Assumes `domains` is hash‑compatible** – membership test `domain not in domains` fails for unhashable elements (e.g., lists). | The `in` operator works on any iterable, but when the iterable is a *set* or *dict* it requires hashability. If callers pass a list containing mutable items, a `TypeError` is raised (Branch D). | If the function is meant to be robust, coerce `domains` to a `set` of hashable items *after* validation, or explicitly raise a custom `ValueError` with a clear message. |
+| **No validation of `priorities` shape** – a malformed tuple causes an unpack `ValueError`. | Branch C shows the function will blow up with a non‑pair element. | Add a defensive check (`if not isinstance(pair, (list, tuple)) or len(pair) != 2: raise ValueError(...)`). |
+| **Potential shadowing of built‑ins** – using variable name `domain` may mask a global or imported name, but this is benign in a comprehension. | Not a runtime error, but could be confusing in static analysis. | Rename local variable or add a comment. |
+| **Silent loss of data** – items filtered out because `domain` already exists may be unexpected for callers. | Branch B silently drops those entries without warning. | Document the behaviour clearly in the function’s docstring; optionally expose a `strict` flag. |
+
+*Only the first two are true *defects* (they raise uncaught exceptions). The rest are design considerations.*
+
+---
+
+## 📈 Next Steps (for this chunk)
+
+1. **Locate the exact callable** that wraps the comprehension. Add the nine tests above in a new `tests/test_<module>_priority_filter.py`.
+2. Run `pytest --cov=.` to verify that the branches A–F are all exercised.
+3. If the function currently lacks input validation, consider adding the minimal defensive checks (see Defects table). Those lines will also be covered by the new tests.
+4. Re‑measure overall coverage; this chunk alone should add **≈5‑7 %** absolute coverage (depending on the current uncovered line count).
+
+By focusing on this isolated, pure‑Python logic you can reliably push the repository from ~64 % to **≥ 70 %** with a minimal test suite and without any heavy mocking.

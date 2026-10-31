@@ -1,0 +1,35 @@
+name: Knowledge Signal Cycle
+
+on:
+  schedule:
+    - cron: '18 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: pip install requests vaderSentiment
+      - name: Ingest fresh news
+        run: python3 scripts/knowledge_ingest.py
+      - name: Distill new entries
+        run: python3 scripts/knowledge_distill.py
+      - name: Emit blended signal
+        run: python3 scripts/emit_signal.py
+      - name: Commit knowledge + signal
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add ping-pongings/knowledge-base/log.jsonl ping-pongings/knowledge-base/config.json web/latest_signal.json web/signal_history.jsonl
+          git diff --cached --quiet || git commit -m "Auto cycle: ingest + distill + blended signal [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)

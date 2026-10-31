@@ -1,0 +1,27 @@
+name: Coinbase Paper Trader
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    env:
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      PRODUCT_ID: "BTC-USD"
+      STARTING_BALANCE_USD: "10000"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: python3 scripts/coinbase_paper_trader.py
+      - name: Commit
+        run: |
+          git config user.email "barrot@barrot-agent.com"
+          git config user.name "Barrot-Agent"
+          git add web/paper_trading_state.json web/paper_trading_log.jsonl
+          git diff --cached --quiet || git commit -m "Paper trade cycle [skip ci]"
+          git push || (git pull --no-rebase --no-edit origin main && git push)
