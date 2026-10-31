@@ -1,0 +1,395 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-BNY-C2FO-AVIVA-SGFORGE-RNTB-CIRCLE-20261031T181303Z",
+  "captured_at_utc": "2026-10-31T18:13:42.938Z",
+  "source_ids": [
+    "SRC-OCC-RIPPLE-CAS-20261026",
+    "SRC-RIPPLE-RNTB-APPROVAL-20261026",
+    "SRC-OCC-CIRCLE-CAS-20260724",
+    "SRC-CIRCLE-TRUST-BANK-APPROVAL-20260710",
+    "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027",
+    "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027",
+    "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729",
+    "SRC-SGFORGE-EURCV-XRPL-20260218",
+    "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "type": "company",
+      "name": "Ripple"
+    },
+    {
+      "id": "RNTB",
+      "type": "national_trust_bank",
+      "name": "Ripple National Trust Bank"
+    },
+    {
+      "id": "SCTC",
+      "type": "trust_company",
+      "name": "Standard Custody & Trust Company"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin",
+      "name": "Ripple USD"
+    },
+    {
+      "id": "CIRCLE",
+      "type": "company",
+      "name": "Circle"
+    },
+    {
+      "id": "CIRCLE_NT",
+      "type": "national_trust_bank",
+      "name": "First National Digital Currency Bank / Circle National Trust"
+    },
+    {
+      "id": "BNY",
+      "type": "custodian",
+      "name": "BNY"
+    },
+    {
+      "id": "XRPL",
+      "type": "network",
+      "name": "XRP Ledger"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset",
+      "name": "XRP"
+    },
+    {
+      "id": "C2FO",
+      "type": "working_capital_platform",
+      "name": "C2FO"
+    },
+    {
+      "id": "CAPITAL_PROVIDERS",
+      "type": "capital_provider_group",
+      "name": "Participating capital providers"
+    },
+    {
+      "id": "AVIVA",
+      "type": "asset_manager",
+      "name": "Aviva Investors"
+    },
+    {
+      "id": "AVIVA_FUND",
+      "type": "tokenized_fund_share_class",
+      "name": "Aviva Investors USD Liquidity Fund tokenised share class"
+    },
+    {
+      "id": "KOMAINU",
+      "type": "custodian",
+      "name": "Komainu"
+    },
+    {
+      "id": "LICUIDO",
+      "type": "tokenization_provider",
+      "name": "Licuido"
+    },
+    {
+      "id": "SGFORGE",
+      "type": "issuer",
+      "name": "SG-FORGE"
+    },
+    {
+      "id": "EURCV",
+      "type": "stablecoin",
+      "name": "EUR CoinVertible"
+    },
+    {
+      "id": "MASTERCARD",
+      "type": "payments_network",
+      "name": "Mastercard"
+    },
+    {
+      "id": "WEBBANK",
+      "type": "bank",
+      "name": "WebBank"
+    },
+    {
+      "id": "GEMINI",
+      "type": "exchange",
+      "name": "Gemini"
+    }
+  ],
+  "edges": [
+    {
+      "from": "RIPPLE",
+      "to": "RNTB",
+      "relation": "SPONSORS_TRUST_BANK",
+      "detail": "OCC CAS lists consummated/effective 2026-10-26; Ripple describes reserve management, collateral trustee and fiduciary custody scope",
+      "source_ids": [
+        "SRC-OCC-RIPPLE-CAS-20261026",
+        "SRC-RIPPLE-RNTB-APPROVAL-20261026"
+      ],
+      "evidence_class": "REGULATOR_RECORD_PLUS_COMPANY_SCOPE"
+    },
+    {
+      "from": "SCTC",
+      "to": "RLUSD",
+      "relation": "ISSUER",
+      "detail": "RLUSD issuance remains with NYDFS-regulated Standard Custody & Trust Company",
+      "source_ids": [
+        "SRC-RIPPLE-RNTB-APPROVAL-20261026"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "RNTB",
+      "to": "RLUSD",
+      "relation": "PLANNED_RESERVE_MANAGEMENT_AND_COLLATERAL_TRUSTEE",
+      "detail": "Authorized plan as described by Ripple; operations upon opening not verified",
+      "source_ids": [
+        "SRC-RIPPLE-RNTB-APPROVAL-20261026"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "RLUSD",
+      "relation": "PRIMARY_RESERVE_CUSTODIAN",
+      "source_ids": [
+        "SRC-RIPPLE-RNTB-APPROVAL-20261026",
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "XRP",
+      "relation": "DIGITAL_ASSET_CUSTODY_PLATFORM_SUPPORT",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "RLUSD",
+      "relation": "DIGITAL_ASSET_CUSTODY_PLATFORM_SUPPORT",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "RIPPLE",
+      "relation": "CUSTODY_RELATIONSHIP_WITH_RIPPLE_PRIME",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "C2FO",
+      "relation": "EXPLORATORY_TOKENIZED_TRADE_FINANCE_WITH_RIPPLE",
+      "detail": "BNY and Ripple say they are exploring a supply-chain finance initiative with C2FO",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "C2FO",
+      "to": "XRPL",
+      "relation": "INSTANT_PAY_SETTLEMENT_NETWORK",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027"
+      ],
+      "evidence_class": "ANNOUNCED_PRODUCT_WAITLIST"
+    },
+    {
+      "from": "C2FO",
+      "to": "RLUSD",
+      "relation": "INSTANT_PAY_SETTLEMENT_ASSET",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027"
+      ],
+      "evidence_class": "ANNOUNCED_PRODUCT_WAITLIST"
+    },
+    {
+      "from": "CAPITAL_PROVIDERS",
+      "to": "C2FO",
+      "relation": "PROPOSED_INSTANT_PAY_FUNDING",
+      "detail": "Participating capital providers fund accelerated supplier payments against approved invoices; actual XRPL funding volume not disclosed",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027"
+      ],
+      "evidence_class": "ANNOUNCED_PRODUCT_DESIGN"
+    },
+    {
+      "from": "AVIVA",
+      "to": "AVIVA_FUND",
+      "relation": "ISSUES_TOKENIZED_SHARE_CLASS",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "LAUNCHED_PRODUCT_COMPANY_STATEMENT"
+    },
+    {
+      "from": "AVIVA_FUND",
+      "to": "XRPL",
+      "relation": "TOKENIZED_SHARE_CLASS_ISSUED_ON",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "LAUNCHED_PRODUCT_COMPANY_STATEMENT"
+    },
+    {
+      "from": "KOMAINU",
+      "to": "AVIVA_FUND",
+      "relation": "DIGITAL_ASSET_CUSTODY_SUPPORT",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "LICUIDO",
+      "to": "AVIVA_FUND",
+      "relation": "TOKENIZATION_INFRASTRUCTURE",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "AVIVA_FUND",
+      "relation": "UNDERLYING_FUND_ASSET_CUSTODY",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "SGFORGE",
+      "to": "EURCV",
+      "relation": "ISSUER",
+      "source_ids": [
+        "SRC-SGFORGE-EURCV-XRPL-20260218"
+      ],
+      "evidence_class": "ISSUER_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "EURCV",
+      "to": "XRPL",
+      "relation": "LAUNCHED_ON",
+      "source_ids": [
+        "SRC-SGFORGE-EURCV-XRPL-20260218"
+      ],
+      "evidence_class": "ISSUER_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "EURCV",
+      "relation": "CUSTODY_SUPPORT",
+      "source_ids": [
+        "SRC-SGFORGE-EURCV-XRPL-20260218"
+      ],
+      "evidence_class": "ISSUER_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "MASTERCARD",
+      "to": "RLUSD",
+      "relation": "EXPLORATORY_CARD_SETTLEMENT_INITIATIVE",
+      "source_ids": [
+        "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+      ],
+      "evidence_class": "ANNOUNCED_NOT_PRODUCTION_VERIFIED"
+    },
+    {
+      "from": "WEBBANK",
+      "to": "RLUSD",
+      "relation": "EXPLORATORY_CARD_SETTLEMENT_INITIATIVE",
+      "source_ids": [
+        "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+      ],
+      "evidence_class": "ANNOUNCED_NOT_PRODUCTION_VERIFIED"
+    },
+    {
+      "from": "GEMINI",
+      "to": "RLUSD",
+      "relation": "EXPLORATORY_CARD_SETTLEMENT_INITIATIVE",
+      "source_ids": [
+        "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+      ],
+      "evidence_class": "ANNOUNCED_NOT_PRODUCTION_VERIFIED"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-INSTITUTIONAL-CUSTODY-ACCESS",
+      "claim": "BNY custody support and effective trust-bank charters reduce operational barriers to institutional holding and servicing of XRP/RLUSD.",
+      "status": "SUPPORTED_AS_INFRASTRUCTURE_ACCESS_NOT_DEMAND",
+      "supporting": [
+        "BNY says it supports XRP and RLUSD custody.",
+        "OCC CAS records show Ripple and Circle trust-bank charters effective on 2026-10-26 and 2026-07-24."
+      ],
+      "disconfirming": [
+        "No client XRP balances, custody AUM, operating launch metrics or new net XRP purchases are disclosed."
+      ]
+    },
+    {
+      "id": "H-C2FO-ACTUAL-CAPITAL",
+      "claim": "C2FO Instant Pay may route actual supplier-financing capital through XRPL with RLUSD settlement.",
+      "status": "ANNOUNCED_DESIGN_WAITLIST_NOT_LIVE_VOLUME",
+      "supporting": [
+        "Ripple/C2FO say participating capital providers fund instant supplier payments and XRPL/RLUSD settle them.",
+        "C2FO has an existing platform-wide early-payment history."
+      ],
+      "disconfirming": [
+        "Instant Pay waitlist is the stated availability path; no XRPL funded invoice or settlement volume is disclosed.",
+        "The USD 520B figure belongs to existing C2FO Early Pay programs, not XRPL Instant Pay."
+      ]
+    },
+    {
+      "id": "H-AVIVA-TOKENIZED-FUND",
+      "claim": "A launched Aviva tokenized liquidity-fund share class establishes a live institutional fund asset on XRPL.",
+      "status": "CONFIRMED_LAUNCH; CAPITAL_SCALE_UNKNOWN",
+      "supporting": [
+        "Aviva confirms launch on XRPL and CBI approval.",
+        "Komainu, Licuido and BNY roles are identified."
+      ],
+      "disconfirming": [
+        "Tokenized share-class AUM, holdings, investor count and secondary turnover are not disclosed.",
+        "This is not evidence of XRP collateral or material XRP spot demand."
+      ]
+    },
+    {
+      "id": "H-EURCV-COLLATERAL",
+      "claim": "EUR CoinVertible could become trading collateral in Ripple products.",
+      "status": "FUTURE_OPPORTUNITY_ONLY",
+      "supporting": [
+        "SG-FORGE confirms EURCV launched on XRPL with Ripple custody support."
+      ],
+      "disconfirming": [
+        "SG-FORGE describes collateral use as an opportunity to explore; no live collateral integration or balances are disclosed."
+      ]
+    },
+    {
+      "id": "H-XRP-DIRECT-DEMAND",
+      "claim": "These custody, trust-bank and tokenized-finance relationships prove net XRP buying or a directional price catalyst.",
+      "status": "UNSUPPORTED_NO_FEATURE_ADMISSION",
+      "supporting": [],
+      "disconfirming": [
+        "RLUSD and EURCV are issued stablecoins; Aviva fund shares are tokenized fund interests; custody support is not a proprietary purchase.",
+        "No XRP net-flow, collateral balance, funded trade-finance volume or XRP purchase quantity is disclosed."
+      ]
+    }
+  ],
+  "limitations": [
+    "Effective OCC charter status is not proof of a bank's operational opening or live customer services.",
+    "RLUSD remains issued by Standard Custody & Trust Company; Ripple National Trust Bank is not the issuer.",
+    "BNY custody platform support does not disclose client balances or imply BNY is buying XRP.",
+    "C2FO's historical USD 520B Early Pay figure is not XRPL activity and must not be attributed to Instant Pay.",
+    "Aviva's tokenized fund share class is live, but AUM, investor count and on-chain turnover are not disclosed.",
+    "SG-FORGE collateral use and Mastercard/WebBank/Gemini settlement remain exploratory in the cited announcements."
+  ]
+}
