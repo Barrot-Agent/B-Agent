@@ -5,7 +5,7 @@
   "array_name": "limitations",
   "chunk_index": 113,
   "chunk_count": 114,
-  "record_count": 6,
+  "record_count": 7,
   "records": [
     {
       "id": "LIM-20261031T063200Z-BINANCE-RESERVE-INCIDENT-CAUSALITY",
@@ -70,6 +70,16 @@
       "status": "OPEN",
       "affected_source_ids": [
         "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T064200Z-PR-BACKLOG-BASE-DRIFT",
+      "category": "open_pull_request_base_sha_drift",
+      "statement": "GitHub returned 173 open PRs: 163 drafts, 10 ready for review; 171 target main, of which 169 are based on a SHA older than current main 33a490e and only two are current-base. Stale base metadata does not establish conflicts, but exact-head checks and changed-path/merge-base review are required before merge consideration. Do not bulk rebase, force-push, merge or close PRs without approval.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GITHUB-OPEN-PR-INVENTORY-0642Z"
       ]
     }
   ]
