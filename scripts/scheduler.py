@@ -27,7 +27,6 @@ WORKFLOWS_DIR = ".github/workflows"
 # Privileged workflows (merge, deployment, secret rotation, issue mutation,
 # repository writes, or external service changes) require direct human dispatch.
 ALLOWED_SCHEDULED_WORKFLOWS = frozenset({
-    "barrot-bundle-operational-smoke.yml",
     "barrot-controlled-feature-validation.yml",
 })
 
