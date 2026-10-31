@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_run_handoff",
+  "handoff_id": "HANDOFF-XRP-20261031T232127Z-PRE-ESCROW-BITHOMP-CONFLICT-PR1432",
+  "recorded_at_utc": "2026-10-31T23:21:27Z",
+  "current_local_time": "2026-10-31T19:21:27-04:00",
+  "escrow": {
+    "scheduled_finish_after_utc": "2026-11-01T00:00:00Z",
+    "seconds_until_at_capture": 2313,
+    "latest_tracker_ledger_index": 108031214,
+    "tracker_data_as_of_utc": "2026-10-31T21:13:00Z",
+    "tracker_age_at_capture_seconds": 7707,
+    "raw_account_objects_verified": false,
+    "status": "SCHEDULED_ELIGIBILITY_REPORTED; OWNER-PAGE CONFLICT UNRESOLVED"
+  },
+  "escrow_conflict": {
+    "xrp_insights": "Reports two objects totaling 1B XRP and 13 objects/4.5B XRP per owner account at ledger #108031214.",
+    "bithomp": "Both public account pages display 500M XRP, no transactions and no escrow objects; one says active 6 months ago.",
+    "interpretation": "Likely stale/incomplete explorer pages are a plausible explanation, but raw validated-ledger account_objects/account_tx are required to resolve.",
+    "october_1_escrowfinish_hashes": [
+      "5D4BFA6F6758638E37701C6C3C4728ED8F08451D55FDBD2E9E8949A3F7CA19D2",
+      "CE74096B4027F936FA1D157A76CF02D4D95E3FA1D39943CA706E0C880A745DE8",
+      "B5668A27B7C71C90FE434D25815CDC957544BE659899BD9833E1291F93BA0F5F",
+      "65FCEB474F815A8B295C8029C337193156D857C33EB8FB970F0EDBB578D41D77"
+    ],
+    "raw_state": "NOT_OBTAINED"
+  },
+  "exchange_reserves": {
+    "total_attributed_xrp": 22480000000,
+    "same_wallet_7d_change_xrp": -133000000,
+    "binance_xrp": 2780000000,
+    "binance_7d_change_xrp": 17600000,
+    "binance_30d_change_xrp": 30300000,
+    "binance_overview_delta_xrp": 196200000,
+    "interval": "UNLABELED_LIKELY_DAILY_INFERENCE",
+    "inference_support": "Rounded venue deltas sum approximately +106.58M vs detailed +105.9M daily aggregate.",
+    "limitations": "No per-wallet history or five-wallet incident crosswalk; balances are not tradable float."
+  },
+  "repository": {
+    "main_sha": "b51099e04b410f49e28d9c80201f68847aa8118a",
+    "pr1431": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1431",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci": "PASS",
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    "pr1432": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1432",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "91eae69c3994f9aebfb7ce3a866bb09bb569af33",
+      "ci_run": 41252147218,
+      "ci": "PASS",
+      "gate_run": 41252147202,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    "main_writers": "Cross Analysis, Knowledge Signal Cycle and Scheduler Tick still have write-capable paths on main; PRs are not merged.",
+    "signal_quality": "Main log empty; latest signal 57.74 hours old, score 44/confidence 0 with provider failure; not a forecast.",
+    "signal_fix": "PR1432 proposes fail-closed output and read-only artifact workflow; manual-only, no schedule until durable storage/promotion exists."
+  },
+  "archive": {
+    "data_head": "853d49dc1db4631b1aaaa81f67a531ea6c6ebac2",
+    "validation": "PASS",
+    "validator_run": 41252001740,
+    "pr_validator_run": 41252004448,
+    "gate_run": 41252004489,
+    "shards": 442,
+    "records": 3477,
+    "source_revision_addenda_checked": 34,
+    "pending_archive_append": 29,
+    "tests": 32,
+    "errors": 0,
+    "state_mutated": false,
+    "metadata_successor_validation": "PENDING"
+  },
+  "approval_workflow_zero_job": {
+    "run": 41252000889,
+    "status": "FAILURE_ZERO_JOBS_PUSH_EVENT",
+    "root_cause": "UNKNOWN"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "blockers": [
+    "No raw XRPL account_objects/account_tx response; Bithomp pages conflict with XRP Insights.",
+    "Binance +196.2M interval remains inferred until machine-readable daily data is retrieved.",
+    "29 source-revision addenda pending archive append (28 inherited plus Bithomp conflict).",
+    "Full repository CI, dependency scan and branch-protection detail remain incomplete."
+  ],
+  "next_action": "At 00:00 UTC and immediately after, obtain fresh validated XRPL ledger/account_objects and verify actual EscrowFinish, destinations, follow-on transfers and EscrowCreate. Do not infer sale or market supply from eligibility.",
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}
