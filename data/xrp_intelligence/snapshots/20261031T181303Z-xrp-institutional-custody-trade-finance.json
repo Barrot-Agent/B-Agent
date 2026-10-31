@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_institutional_custody_and_trade_finance_snapshot",
+  "snapshot_id": "XRP-INSTITUTIONAL-CUSTODY-TRADE-FINANCE-20261031T181303Z",
+  "captured_at_utc": "2026-10-31T18:13:42.938Z",
+  "data_cutoff_utc": "2026-10-31T18:13:42.938Z",
+  "source_ids": [
+    "SRC-OCC-RIPPLE-CAS-20261026",
+    "SRC-RIPPLE-RNTB-APPROVAL-20261026",
+    "SRC-OCC-CIRCLE-CAS-20260724",
+    "SRC-CIRCLE-TRUST-BANK-APPROVAL-20260710",
+    "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027",
+    "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027",
+    "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729",
+    "SRC-SGFORGE-EURCV-XRPL-20260218",
+    "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+  ],
+  "regulatory_status": {
+    "ripple_national_trust_bank": {
+      "occ_control_number": "2025-Charter-342347",
+      "occ_cas_status": "CONSUMMATED_EFFECTIVE",
+      "effective_date": "2026-10-26",
+      "source_status": "OCC_CAS_PRIMARY_RECORD",
+      "ripple_company_statement": "FINAL_OCC_APPROVAL",
+      "authorized_plan_claims": [
+        "manage segregated RLUSD reserves",
+        "act as collateral trustee for RLUSD holders",
+        "provide fiduciary digital-asset custody upon opening"
+      ],
+      "rlusd_issuer": "Standard Custody & Trust Company (NYDFS-regulated limited-purpose trust company)",
+      "opening_and_live_operations": "NOT_VERIFIED"
+    },
+    "circle_national_trust": {
+      "occ_control_number": "2025-Charter-342299",
+      "legal_name": "First National Digital Currency Bank, N.A.",
+      "operating_name": "Circle National Trust",
+      "occ_cas_status": "CONSUMMATED_EFFECTIVE",
+      "effective_date": "2026-07-24",
+      "circle_announcement_date": "2026-07-10",
+      "initial_scope": "federally supervised custody for Circle and affiliates",
+      "usdc_reserve_management": "PLANNED_FUTURE_CAPABILITY_NOT_CONFIRMED_LIVE"
+    }
+  },
+  "bny_custody_and_trade_finance": {
+    "xrp_custody_platform_support": "CONFIRMED_BY_BNY_COMPANY_STATEMENT",
+    "rlusd_custody_platform_support": "CONFIRMED_BY_BNY_COMPANY_STATEMENT",
+    "rlusd_primary_reserve_custodian": "BNY",
+    "ripple_prime_custody_relationship": "CONFIRMED_BY_BNY_COMPANY_STATEMENT",
+    "direct_bny_rlusd_mint_redeem": "INTENDED_FUTURE_SERVICE_SUBJECT_TO_BNY_AND_REGULATORY_APPROVALS",
+    "tokenized_trade_finance": "EXPLORATORY_SUBJECT_TO_CLIENT_REQUIREMENTS",
+    "c2fo_supply_chain_finance": "EXPLORATORY"
+  },
+  "c2fo_instant_pay": {
+    "settlement_network": "XRPL",
+    "settlement_asset": "RLUSD",
+    "funding_source": "PARTICIPATING_CAPITAL_PROVIDERS",
+    "product_status": "WAITLIST_ANNOUNCED",
+    "historical_c2fo_early_pay_working_capital_access_usd": 520000000000,
+    "historical_520b_scope": "EXISTING_C2FO_EARLY_PAY_PROGRAMS_PLATFORM_WIDE; NOT XRPL OR INSTANT PAY VOLUME",
+    "actual_xrpl_funded_invoice_volume": "NOT_DISCLOSED",
+    "actual_rlusd_settlement_volume": "NOT_DISCLOSED"
+  },
+  "tokenized_fund_and_euro_stablecoin": {
+    "aviva_usd_liquidity_fund_share_class": {
+      "status": "LAUNCHED",
+      "launch_date": "2026-07-29",
+      "network": "XRPL",
+      "regulatory_approval": "Central Bank of Ireland",
+      "digital_asset_custodian": "Komainu",
+      "tokenization_infrastructure": "Licuido",
+      "underlying_fund_asset_custodian": "BNY",
+      "tokenized_share_class_aum": "NOT_DISCLOSED",
+      "native_xrp_purchase_or_collateral": "NOT_ESTABLISHED"
+    },
+    "sg_forge_eur_coinvertible": {
+      "status": "LAUNCHED_ON_XRPL",
+      "launch_date": "2026-02-18",
+      "custody_support": "Ripple custody solution",
+      "trading_collateral_use": "OPPORTUNITY_TO_EXPLORE_NOT_CONFIRMED_LIVE"
+    }
+  },
+  "card_settlement": {
+    "mastercard_webbank_gemini_rlusd": {
+      "announcement_date": "2025-11-05",
+      "network": "XRPL",
+      "settlement_asset": "RLUSD",
+      "status": "EXPLORATORY_INTEGRATION_PLANNING_SUBJECT_TO_REGULATORY_APPROVALS",
+      "production_settlement_volume": "NOT_VERIFIED"
+    }
+  },
+  "actual_capital_classification": {
+    "existing_c2fo_platform_volume": "HISTORICAL_PLATFORM_WIDE_ACCESS_NOT_XRPL_VOLUME",
+    "c2fo_instant_pay": "WAITLIST_AND_FUNDING_DESIGN_NOT_COMPLETED_XRPL_CAPITAL_FLOW",
+    "aviva_tokenized_fund": "LIVE_TOKENIZED_SHARE_CLASS_AUM_AND_ONCHAIN_HOLDINGS_NOT_DISCLOSED",
+    "bny_xrp_custody": "PLATFORM_SUPPORT_NOT_DISCLOSED_XRP_HOLDINGS",
+    "rntb_and_circle_trust_banks": "REGULATORY_EFFECTIVE_STATUS_NOT_PROOF_OF_OPERATIONAL_RESERVE_MOVEMENT"
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_features_admitted": [],
+    "reason": "Institutional custody, charter status and announced tokenization/payment integrations establish infrastructure access or plans, not measured net XRP purchases, collateral balances or settled capital flows."
+  },
+  "safety": {
+    "main_modified_by_this_research": false,
+    "merge": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "real_money_trade": false
+  }
+}
