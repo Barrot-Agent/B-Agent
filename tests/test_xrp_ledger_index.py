@@ -300,8 +300,8 @@ def test_workflow_runs_actual_repository_validator_before_fixture_suite():
     workflow = ROOT / ".github" / "workflows" / "xrp-ledger-validation.yml"
     content = workflow.read_text(encoding="utf-8")
     command = "python scripts/validate_xrp_ledger_index.py --root ."
-    fixture_suite = "python -m pytest --noconftest -o addopts= tests/test_xrp_ledger_index.py -q"
+    fixture_suite_prefix = "python -m pytest --noconftest -o addopts= tests/test_xrp_ledger_index.py"
     assert command in content
-    assert content.index(command) < content.index(fixture_suite)
+    assert content.index(command) < content.index(fixture_suite_prefix)
     assert "contents: read" in content
     assert "persist-credentials: false" in content
