@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T064600Z-SBI-VC-TRADE-XRP-CUSTODY-AND-EXCHANGE-FLOW",
+  "captured_at_utc": "2026-10-31T06:46:00Z",
+  "source_reference_count": 2,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "id": "EDGE-SBI-VC-TRADE-XRPL-WALLETS",
+      "from": "SBI VC Trade",
+      "relation": "publicly_attributed_to_two_XRPL_exchange_wallets_holding",
+      "to": "59.5M XRP as of 2026-10-30 08:00 UTC",
+      "evidence_class": "PUBLIC_XRPSCAN_LABEL_ATTRIBUTION_VIA_XRP_INSIGHTS",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z"
+      ],
+      "caveat": "Exchange/custody wallet attribution, not SBI Group proprietary holdings or an official PoR/customer-liability disclosure. >99% cold-labeled by source."
+    },
+    {
+      "id": "EDGE-XRP-INSIGHTS-BINANCE-SAME-WALLET-CHANGE",
+      "from": "XRP Insights tracked Binance wallet set",
+      "relation": "same_wallet_net_change_7d",
+      "to": "-173.2M XRP",
+      "evidence_class": "PUBLIC_ONCHAIN_BALANCE_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z"
+      ],
+      "caveat": "153 publicly attributed wallets; no per-wallet history; not reconciled to five incident source wallets."
+    },
+    {
+      "id": "EDGE-XRP-INSIGHTS-ALL-EXCHANGES-CHANGE",
+      "from": "XRP Insights tracked 24-exchange wallet set",
+      "relation": "same_wallet_net_change_7d",
+      "to": "-234.9M XRP",
+      "evidence_class": "PUBLIC_ONCHAIN_BALANCE_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z"
+      ],
+      "caveat": "All exchanges, not Binance only; magnitude similarity to 233.46M theft is not causal evidence."
+    },
+    {
+      "id": "EDGE-XRP-INSIGHTS-COINBASE-SAME-WALLET-CHANGE",
+      "from": "XRP Insights tracked Coinbase wallet set",
+      "relation": "same_wallet_net_change_7d",
+      "to": "+1.1M XRP",
+      "evidence_class": "PUBLIC_ONCHAIN_BALANCE_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z"
+      ],
+      "caveat": "Includes cold custody and cbXRP backing reserve; not customer flows or tradable float."
+    },
+    {
+      "id": "EDGE-EXCHANGE-WRAPPED-RESERVE-COMPONENTS",
+      "from": "Binance-Peg XRP, cbXRP and insurance/charity wallets",
+      "relation": "represent_non_customer_reserve_or_fund_balances_of",
+      "to": "488.4M XRP within tracked exchange wallet totals",
+      "evidence_class": "PUBLIC_ONCHAIN_WALLET_ATTRIBUTION",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z"
+      ],
+      "caveat": "Controlled by exchange/fund wallets but not customer-tradable balances; excluded from free-float inference."
+    },
+    {
+      "id": "EDGE-JAPAN-EXCHANGE-XRP-CUSTODY",
+      "from": "Japan exchange wallet set (including SBI VC Trade, bitbank, Coincheck, bitFlyer)",
+      "relation": "publicly_attributed_aggregate_balance",
+      "to": "1.38B XRP / 6.2% of tracked exchange-wallet total",
+      "evidence_class": "PUBLIC_ONCHAIN_WALLET_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z"
+      ],
+      "caveat": "Exchange registration/HQ grouping, not beneficial-owner residence or SBI Group proprietary holdings."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-SBI-VC-TRADE-XRP-CUSTODY",
+      "statement": "SBI VC Trade has an identifiable XRP exchange/custody footprint of 59.5M XRP across two publicly attributed XRPL wallets.",
+      "classification": "PUBLIC_WALLET_ATTRIBUTION_CONFIRMED; BENEFICIAL_OWNERSHIP_UNKNOWN",
+      "supporting_evidence": [
+        "Two XRPSCAN-labeled SBI VC Trade wallets",
+        "59.5M XRP combined balance",
+        "Cold-labeled share >99%"
+      ],
+      "alternative_explanation": "Omnibus customer custody rather than SBI proprietary treasury.",
+      "confidence": "ATTRIBUTION_CONFIRMED; OWNERSHIP_UNRESOLVED"
+    },
+    {
+      "id": "H-BINANCE-INCIDENT-RESERVE-CHANGE",
+      "statement": "The October 29 theft may explain part of Binance's -173.2M XRP same-wallet seven-day change.",
+      "classification": "HYPOTHESIS",
+      "supporting_evidence": [
+        "233.46M XRP transferred from five Binance-labeled wallets",
+        "Binance tracked wallet set shows -173.2M same-wallet change"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No five-wallet membership crosswalk",
+        "No per-wallet daily history",
+        "No same-time liabilities/PoR reconciliation",
+        "CryptoQuant reserve series uses a different universe"
+      ],
+      "confidence": "UNQUANTIFIED"
+    },
+    {
+      "id": "H-ALL-EXCHANGE-DECLINE-COINCIDENCE",
+      "statement": "The -234.9M total same-wallet decline across all tracked exchanges is numerically close to the 233.46M theft but is not evidence that the whole decline is the theft.",
+      "classification": "NON_CAUSAL_MAGNITUDE_SIMILARITY",
+      "supporting_evidence": [
+        "All-exchange series includes 24 venues",
+        "Binance-specific decline is only -173.2M"
+      ],
+      "alternative_explanation": "Other exchanges' independent net movements account for the remainder.",
+      "confidence": "NO_CAUSAL_CLAIM"
+    }
+  ],
+  "competing_explanations_retained": true,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
