@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-CAMILA-KAMILAH-IDENTITY-AND-VIDEO-CLAIM-AUDIT-20261031T184158Z",
+  "captured_at_utc": "2026-10-31T18:41:58Z",
+  "source_ids": [
+    "SRC-YOUTUBE-DRKAMILAH-CHANNEL",
+    "SRC-VLING-KAMILAH-CHANNEL-ID",
+    "SRC-IHEART-PAUL-BARRON-CAMILA-IDENTITY",
+    "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT",
+    "SRC-GLASP-XRP-ETF-VIDEO-TRANSCRIPT",
+    "SRC-GLASP-WEALTH-VIDEO-TRANSCRIPT",
+    "SRC-GLASP-XRP-NEED-VIDEO",
+    "SRC-OCC-RIPPLE-PRELIMINARY-CONDITIONAL-APPROVAL-20251212",
+    "SRC-OCC-RIPPLE-CHARTER-CAS-20261026",
+    "SRC-RIPPLE-DEC12-2025-CHARTER-ANNOUNCEMENT"
+  ],
+  "creator_identity": {
+    "user_requested_name": "Camilla Stephenson",
+    "exact_name_match": "NOT_FOUND_IN_REVIEWED_PUBLIC_CHANNEL_RECORDS",
+    "probable_candidate": {
+      "display_name": "Kamilah Stevenson",
+      "spoken_names": [
+        "Camila Stevenson",
+        "Camilla Stevenson"
+      ],
+      "youtube_handle": "@drkamilahstevenson",
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA"
+    },
+    "identity_status": "PROBABLE_MATCH_NOT_FULLY_VERIFIED",
+    "basis": [
+      "Public YouTube channel title and handle candidate",
+      "Third-party channel directory maps the channel to ID UCqUPJMQdkCN6lsLVDnichPA",
+      "Podcast transcript guest self-identifies as Camila/Camilla Stevenson and names YouTube as 'doctor Camilla Stevenson'",
+      "Multiple indexed video transcript pages attribute XRP videos to Kamilah Stevenson and contain self-introductions as Camila Stevenson"
+    ],
+    "limitation": "No captured first-party crosslink from the podcast guest's official website/social profile to the exact @drkamilahstevenson handle. Keep the exact requested 'Camilla Stephenson' identity separate until direct verification."
+  },
+  "channel_inventory": {
+    "channel_url": "https://www.youtube.com/@drkamilahstevenson",
+    "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "third_party_reported_video_count": "approximately 1.2K",
+    "inventory_status": "PARTIAL_SEED_NOT_EXHAUSTIVE",
+    "known_public_video_seeds": [
+      {
+        "video_id": "QslbjGQD0MU",
+        "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+        "published_date": "2025-12-14",
+        "attributed_creator": "Kamilah Stevenson",
+        "transcript_status": "FULL_THIRD_PARTY_TRANSCRIPT_REVIEWED",
+        "original_url": "https://www.youtube.com/watch?v=QslbjGQD0MU"
+      },
+      {
+        "video_id": "ci0FH73lbCs",
+        "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+        "published_date": "2026-01-13",
+        "attributed_creator": "Kamilah Stevenson",
+        "transcript_status": "OPENING_EXCERPT_ONLY",
+        "original_url": "https://www.youtube.com/watch?v=ci0FH73lbCs"
+      },
+      {
+        "video_id": "cxeX_eu_2H0",
+        "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+        "published_date": "2026-01-15",
+        "attributed_creator": "Kamilah Stevenson",
+        "transcript_status": "OPENING_EXCERPT_ONLY",
+        "original_url": "https://www.youtube.com/watch?v=cxeX_eu_2H0"
+      },
+      {
+        "video_id": "rv0BAV0vLgo",
+        "title": "How Much XRP Do You ACTUALLY Need?",
+        "published_date": "2026-03-19",
+        "attributed_creator": "Kamilah Stevenson",
+        "transcript_status": "CATALOG_ENTRY_ONLY",
+        "original_url": "https://www.youtube.com/watch?v=rv0BAV0vLgo"
+      }
+    ],
+    "completeness": "Only four indexed videos are seeded; the channel directory reports approximately 1.2K uploads. No claim of exhaustive inventory."
+  },
+  "transcript_claim_audit": {
+    "video_id": "QslbjGQD0MU",
+    "publication_date": "2025-12-14",
+    "claims": [
+      {
+        "id": "V1-C1",
+        "claim": "Ripple had become a bank / the title says Ripple just became a bank.",
+        "classification": "OVERSTATED_IF_READ_AS_ALREADY_OPERATIONAL_ON_PUBLICATION_DATE",
+        "evidence": [
+          "SRC-OCC-RIPPLE-PRELIMINARY-CONDITIONAL-APPROVAL-20251212",
+          "SRC-RIPPLE-DEC12-2025-CHARTER-ANNOUNCEMENT"
+        ],
+        "counter_evidence": "On 2025-12-12 OCC granted preliminary conditional approval only; final approval and authorization to commence business remained contingent on pre-opening requirements.",
+        "later_update": "OCC CAS records consummated/effective 2026-10-26.",
+        "conclusion": "The video was published two days after conditional approval, not after the bank commenced operations. The title is premature if interpreted literally; later charter effectiveness is a separate event."
+      },
+      {
+        "id": "V1-C2",
+        "claim": "The trust bank gives Ripple direct access to banking rails and lets it settle/clear/route liquidity without intermediaries.",
+        "classification": "NOT_ESTABLISHED_BY_THE_CHARTER_DECISION",
+        "evidence": [
+          "SRC-OCC-RIPPLE-PRELIMINARY-CONDITIONAL-APPROVAL-20251212"
+        ],
+        "counter_evidence": "The OCC decision describes a national trust bank conducting trust-company and fiduciary activities. It does not grant or document a Federal Reserve master account, Fedwire/ACH access, deposit-taking authority or a direct payment-rail connection.",
+        "conclusion": "Do not infer payment-rail access from a trust-bank charter alone."
+      },
+      {
+        "id": "V1-C3",
+        "claim": "XRP becomes a liquidity instrument involving collateral, yield and lending because Ripple is becoming a bank.",
+        "classification": "OPINION_WITH_SEPARATE_LATER_PRODUCT_EVIDENCE",
+        "evidence": [
+          "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT"
+        ],
+        "counter_evidence": "Coinbase/Morpho cbXRP borrowing and Coinbase Global Exchange XRP collateral are separate third-party/product mechanisms; they are not created by Ripple's OCC trust charter. The video does not supply measured XRP collateral balances or bank-specific XRP demand.",
+        "conclusion": "Treat the general use-case thesis as a scenario, not a proven consequence of the charter."
+      },
+      {
+        "id": "V1-C4",
+        "claim": "Japan's reverse carry-trade unwind and oil shock could make XRP a logical liquidity solution.",
+        "classification": "SPECULATIVE_MACRO_SCENARIO",
+        "evidence": [
+          "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT"
+        ],
+        "counter_evidence": "No bank, central bank or settlement operator commitment to use XRP in such a stress event is cited in the transcript.",
+        "conclusion": "Model yen funding stress, oil shocks, USD liquidity and XRP market depth as separate variables; do not assume a causal XRP inflow."
+      },
+      {
+        "id": "V1-C5",
+        "claim": "Dark pools, OTC and ETF flows create an impending XRP supply shock.",
+        "classification": "UNQUANTIFIED_CLAIM",
+        "evidence": [
+          "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT"
+        ],
+        "counter_evidence": "No dark-pool inventory, OTC net flow, dealer inventory, ETF unit holdings or available-float calculation is provided in the transcript.",
+        "conclusion": "Do not admit the supply-shock claim as a feature without measured net flows and float reconciliation."
+      }
+    ],
+    "model_admission": "NONE",
+    "overall_assessment": "The video is useful as a map of retail/influencer narratives and hypotheses. It is not a primary source for OCC powers, payment-rail access, institutional XRP demand or net capital flows."
+  },
+  "exact_phrase_status": {
+    "ASK Coin": "No direct match in the reviewed channel transcript subset; unresolved.",
+    "actual capital": "No exact match in the reviewed channel transcript subset; unresolved. Do not conflate with the title 'How Much XRP Do You ACTUALLY Need?'.",
+    "SBIC, ChatGPT SBIC": "No direct match in the reviewed channel transcript subset; unresolved."
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "reason": "Creator narrative claims are not market observations or validated predictive features."
+  }
+}
