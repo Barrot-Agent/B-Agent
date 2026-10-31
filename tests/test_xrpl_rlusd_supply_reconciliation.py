@@ -148,3 +148,37 @@ def test_xrp_etf_provider_conflict_blocks_directional_feature_admission():
     assert set(graph["source_ids"]) <= source_ids
     assert snapshot["prediction"]["forecast_status"] == "NOT_ISSUED"
     assert snapshot["prediction"]["directional_features_admitted"] == []
+
+
+def test_japanese_sbic_candidates_are_distinct_and_chatgpt_event_is_not_sbi_capital():
+    snapshot = _load("snapshots/20261031T183925Z-sbic-candidates-and-xrp-derivatives-oi-conflict.json")
+    candidates = {item["id"]: item for item in snapshot["sbic_candidates"]}
+    assert candidates["TOKYO_SBIC_EAST_JAPAN"]["legal_name"] == "Tokyo Small and Medium Business Investment & Consultation Co., Ltd."
+    historical = candidates["SBI_CAPITAL_CO_LTD_HISTORICAL_SBIC"]
+    assert "SBIC in SBI Holdings' 2007 release" == historical["abbreviation"]
+    assert historical["ownership_timeline"][1]["status"] == "SBI release describes 60% SBI Holdings / 40% Goldman Sachs group ownership"
+    assert historical["ownership_timeline"][2]["status"].startswith("SBI's 2012 restructuring release lists SBI Capital Co., Ltd. as 100%")
+    assert "exact transaction/date" in historical["unresolved"]
+    assert snapshot["sbic_resolution"]["best_supported_context"].startswith("Tokyo SBIC East Japan")
+    assert snapshot["sbic_resolution"]["no_openai_partnership_established"] is True
+    graph = _load("relationship_graph_addenda/20261031T183925Z-sbic-candidates-and-xrp-derivatives-oi-conflict.json")
+    edge_types = {(e["from"], e["to"], e["type"], e["status"]) for e in graph["edges"]}
+    assert ("TOKYO_SBIC_EAST_JAPAN", "CHATGPT", "hosted_educational_seminar_and_training", "CONFIRMED") in edge_types
+    assert ("SBI_CAPITAL_JP_HISTORICAL", "XRP", "investment_or_commercial_relationship", "NOT_ESTABLISHED") in edge_types
+
+
+def test_xrp_open_interest_provider_disagreement_is_not_averaged_or_admitted():
+    snapshot = _load("snapshots/20261031T183925Z-sbic-candidates-and-xrp-derivatives-oi-conflict.json")
+    oi = snapshot["derivatives_open_interest"]
+    values = [item["open_interest_usd"] for item in oi["observations"]]
+    assert min(values) == 738990000
+    assert max(values) == 1860000000
+    assert oi["max_to_min_ratio"] > 2.5
+    assert oi["same_venue_disagreement"]["bybit"]["tradradar_usd"] > 2 * oi["same_venue_disagreement"]["bybit"]["kodexius_usd"]
+    assert oi["source_independence"].startswith("All are secondary aggregators")
+    assert oi["admission"] == "NOT_ADMITTED_TO_DIRECTIONAL_MODEL"
+    assert snapshot["prediction"]["forecast_status"] == "NOT_ISSUED"
+    graph = _load("relationship_graph_addenda/20261031T183925Z-sbic-candidates-and-xrp-derivatives-oi-conflict.json")
+    assert "H-XRP-OI-UNIVERSE-MISMATCH" in {h["id"] for h in graph["hypotheses"]}
+    bundle = _load("sources/20261031T183925Z-sbic-candidates-and-xrp-derivatives-source-bundle.json")
+    assert set(snapshot["source_ids"]) <= {s["source_id"] for s in bundle["sources"]}
