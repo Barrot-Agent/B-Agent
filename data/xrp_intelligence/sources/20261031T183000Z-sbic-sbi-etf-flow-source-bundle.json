@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_source_bundle",
+  "bundle_id": "XRP-SBIC-SBI-ETF-FLOW-CONFLICT-20261031T183000Z",
+  "captured_at_utc": "2026-10-31T18:30:00Z",
+  "sources": [
+    {
+      "source_id": "SRC-SBIC-EAST-JAPAN-PROFILE-20261031",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Company profile — SBIC East Japan",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "published_at": "undated; accessed 2026-10-31",
+      "retrieved_at_utc": "2026-10-31T18:30:00Z",
+      "evidence_class": "ENTITY_PRIMARY_DISCLOSURE",
+      "independence_group": "SBIC_EAST_JAPAN_OFFICIAL",
+      "claims": [
+        "The legal name is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; the company identifies itself as SBIC East Japan.",
+        "Corporate number 9011001030621; established 1963-11-15.",
+        "Shareholders are described as local governments across 18 prefectures, chambers of commerce, financial institutions and business companies.",
+        "The company states it was originally established with some government investment but is now a privatized independent corporation conducting investment activity."
+      ],
+      "limitations": [
+        "The profile does not establish any affiliation with SBI Holdings, SBI VC Trade, Ripple, Coinbase or Circle.",
+        "Absence of a disclosed relationship is not proof that no commercial contact has ever occurred."
+      ]
+    },
+    {
+      "source_id": "SRC-SBIC-CHATGPT-GENERATIVE-AI-SEMINAR-20260305",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Generative AI (ChatGPT): present and future — SBIC seminar",
+      "url": "https://www.sbic.co.jp/wordpress/file/2026.03.05%E3%82%BB%E3%83%9F%E3%83%8A%E3%83%BC%E6%A1%88%E5%86%85%E7%8A%B6%EF%BC%88%E6%9C%80%E7%B5%82.pdf",
+      "published_at": "2026-03-05",
+      "retrieved_at_utc": "2026-10-31T18:30:00Z",
+      "evidence_class": "EVENT_PRIMARY_DOCUMENT",
+      "independence_group": "SBIC_EAST_JAPAN_OFFICIAL",
+      "claims": [
+        "SBIC Tokyo Small and Medium Business Investment & Consultation hosted a seminar titled Generative AI (ChatGPT): present and future on 2026-03-05.",
+        "The seminar program described ChatGPT business-use demonstrations and identified a Microsoft Japan executive evangelist as speaker.",
+        "The document lists Hamamatsu Iwata Shinkin Bank as co-host."
+      ],
+      "limitations": [
+        "This is an educational event, not evidence of an OpenAI partnership, investment, product integration or XRP relationship.",
+        "The speaker's Microsoft affiliation does not make the event a Microsoft-SBIC product partnership."
+      ]
+    },
+    {
+      "source_id": "SRC-SBIC-GENAI-CHATGPT-COPILOT-TRAINING-20250612",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Generative AI and machine-learning introductory training for manufacturing",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "published_at": "2025-06-12 to 2025-06-13",
+      "retrieved_at_utc": "2026-10-31T18:30:00Z",
+      "evidence_class": "EVENT_PRIMARY_DISCLOSURE",
+      "independence_group": "SBIC_EAST_JAPAN_OFFICIAL",
+      "claims": [
+        "The two-day SBIC training program included ChatGPT use on day one and Microsoft Copilot capabilities on day two.",
+        "The training was aimed at investee-company personnel and was delivered as an educational program."
+      ],
+      "limitations": [
+        "The program does not establish an OpenAI, Microsoft, SBI Holdings or XRP commercial partnership."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VC-TRADE-RLUSD-JAPAN-LISTING-20260624",
+      "publisher": "SBI Holdings / SBI VC Trade and Ripple",
+      "title": "SBI VC Trade begins handling RLUSD in Japan",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "published_at": "2026-06-24",
+      "retrieved_at_utc": "2026-10-31T18:30:00Z",
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT",
+      "independence_group": "SBI_RIPPLE_JOINT_OFFICIAL",
+      "claims": [
+        "SBI VC Trade, identified as a consolidated subsidiary of SBI Holdings, announced RLUSD handling on its VCTRADE service beginning 2026-06-24 after maintenance.",
+        "SBI VC Trade classified RLUSD under Japan's Type 4 electronic payment instrument framework for its domestic handling; this is the companies' stated Japanese-law classification.",
+        "The announcement says deposits and withdrawals are fee-free.",
+        "The release describes the listing as a result of the SBI Group and Ripple partnership, with collaboration dating to 2016."
+      ],
+      "limitations": [
+        "The Japanese Type 4 classification is reported as the companies' legal characterization; this record is not an independent legal opinion.",
+        "The announcement proves distribution availability, not measured RLUSD transaction volume, XRP purchases, XRP collateral deposits or net capital inflows."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VISA-XRP-REWARDS-CARD-20260501",
+      "publisher": "SBI Holdings / SBI VC Trade / Aplus",
+      "title": "SBI Group and Visa announce a credit card that accrues BTC, ETH and XRP rewards",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "published_at": "2026-05-01",
+      "retrieved_at_utc": "2026-10-31T18:30:00Z",
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT",
+      "independence_group": "SBI_GROUP_OFFICIAL",
+      "claims": [
+        "SBI Holdings announced a Visa-linked credit-card initiative involving SBI VC Trade and Aplus.",
+        "The published product description includes BTC, ETH and XRP as reward assets."
+      ],
+      "limitations": [
+        "The release establishes a reward-distribution product design, not the amount of XRP purchased, the source of reward inventory, customer uptake or net spot-market demand."
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-RLUSD-LISTING-20261028",
+      "publisher": "Coinbase",
+      "title": "RLUSD is now available on Coinbase",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "published_at": "2026-10-28",
+      "retrieved_at_utc": "2026-10-31T18:30:00Z",
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT",
+      "independence_group": "COINBASE_OFFICIAL",
+      "claims": [
+        "RLUSD became available through Coinbase Prime, Coinbase Exchange and the Coinbase retail app.",
+        "Deposits and withdrawals are supported on XRPL, Base and Ethereum in supported regions.",
+        "Coinbase states Ripple will provide liquidity on Base.",
+        "Coinbase Global Exchange collateral use was deferred at launch and described as a future capability."
+      ],
+      "limitations": [
+        "Listing and network support do not establish net XRP demand or a measured RLUSD cross-chain flow.",
+        "Ripple liquidity support on Base is not a disclosed XRP purchase commitment."
+      ]
+    },
+    {
+      "source_id": "SRC-CRYPTOETF-XRP-FLOWS-20261031T0548Z",
+      "publisher": "CryptoETF.today",
+      "title": "XRP ETF flows — 2026-10-30 partial T+1 report",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "published_at": "2026-10-31T05:48:00Z",
+      "retrieved_at_utc": "2026-10-31T18:30:00Z",
+      "evidence_class": "SECONDARY_ETF_FLOW_AGGREGATOR",
+      "independence_group": "ETF_ISSUER_HOLDINGS_COMMON_UPSTREAM",
+      "claims": [
+        "The provider reported +USD 0.2M for 2026-10-30, marked partial with 3 of 5 funds reported.",
+        "Reported components were XRPC +USD 0.9M, Bitwise XRP -USD 0.7M and TOXR zero; XRPZ and GXRP were pending.",
+        "The provider described its data as T+1 and said the total is recomputed as fund data arrives."
+      ],
+      "limitations": [
+        "The report is explicitly partial and cannot be treated as the final five-fund total.",
+        "The source is an aggregator, not the ETF issuers' consolidated official report.",
+        "Its upstream issuer-file mapping and exact fund-level timestamp alignment were not independently reproduced in this run."
+      ]
+    },
+    {
+      "source_id": "SRC-MAKETO-XRP-ETF-FLOWS-20261031T0229Z",
+      "publisher": "Maketo",
+      "title": "XRP ETF flows — 2026-10-30",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "published_at": "page updated 2026-10-31T02:29:00Z",
+      "retrieved_at_utc": "2026-10-31T18:30:00Z",
+      "evidence_class": "SECONDARY_ETF_FLOW_AGGREGATOR",
+      "independence_group": "ETF_ISSUER_HOLDINGS_COMMON_UPSTREAM",
+      "claims": [
+        "The provider displayed -USD 496.50K for 2026-10-30 and described all five funds as represented: Bitwise -USD 694K, XRPZ zero, XRPC +USD 922K, GXRP -USD 725K and TOXR zero.",
+        "The page says its source is figures reported by the XRP funds each trading day."
+      ],
+      "limitations": [
+        "The page does not expose issuer-file publication timestamps or a sufficiently detailed fund-by-fund alignment method in the captured view.",
+        "The aggregate is a secondary provider observation and conflicts with other same-date provider displays."
+      ]
+    },
+    {
+      "source_id": "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261031T1803Z",
+      "publisher": "CryptoKeyhole",
+      "title": "XRP ETF flows — issuer-file-derived partial 2026-10-30 observation",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "published_at": "page updated 2026-10-31T18:03:00Z",
+      "retrieved_at_utc": "2026-10-31T18:30:00Z",
+      "evidence_class": "SECONDARY_AGGREGATION_OF_ISSUER_HOLDINGS",
+      "independence_group": "ETF_ISSUER_HOLDINGS_COMMON_UPSTREAM",
+      "claims": [
+        "The provider displayed -USD 1.412M for 2026-10-30, partial 3 of 4 daily-collected funds: Bitwise -USD 866K, XRPC -USD 545K and TOXR zero; it was waiting for Franklin XRPZ.",
+        "It states that flows are changes in XRP holdings from the previous US trading day, converted to USD using its own XRP/USD close.",
+        "It excludes Grayscale GXRP from daily totals because its site blocks automated reads; it says it does not work around that restriction.",
+        "It describes checking issuer files every five minutes and says the page was updated 2026-10-31 18:03 UTC."
+      ],
+      "limitations": [
+        "The source page contains a confusing issuer-file date/timestamp statement for Canary/XRPC; retain the raw page and do not assume all labels map cleanly to the US trading session.",
+        "It uses a different daily-collected fund universe from the five-fund CryptoETF/Maketo views.",
+        "The USD conversion uses the provider's own XRP/USD close, so USD totals need not match fund-NAV-based values."
+      ]
+    }
+  ]
+}

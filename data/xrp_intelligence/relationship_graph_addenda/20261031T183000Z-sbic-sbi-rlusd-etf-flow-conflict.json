@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-SBIC-SBI-RLUSD-ETF-CONFLICT-GRAPH-20261031T183000Z",
+  "captured_at_utc": "2026-10-31T18:30:00Z",
+  "source_ids": [
+    "SRC-SBIC-EAST-JAPAN-PROFILE-20261031",
+    "SRC-SBIC-CHATGPT-GENERATIVE-AI-SEMINAR-20260305",
+    "SRC-SBIC-GENAI-CHATGPT-COPILOT-TRAINING-20250612",
+    "SRC-SBI-VC-TRADE-RLUSD-JAPAN-LISTING-20260624",
+    "SRC-SBI-VISA-XRP-REWARDS-CARD-20260501",
+    "SRC-COINBASE-RLUSD-LISTING-20261028",
+    "SRC-CRYPTOETF-XRP-FLOWS-20261031T0548Z",
+    "SRC-MAKETO-XRP-ETF-FLOWS-20261031T0229Z",
+    "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261031T1803Z"
+  ],
+  "nodes": [
+    {
+      "id": "SBIC_EAST_JAPAN",
+      "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "type": "Japanese SME investment-development policy implementation company"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "name": "SBI Holdings",
+      "type": "Japanese financial group"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "name": "SBI VC Trade",
+      "type": "SBI Holdings consolidated subsidiary; cryptoasset and electronic payment instrument services"
+    },
+    {
+      "id": "RIPPLE",
+      "name": "Ripple Labs",
+      "type": "Digital asset infrastructure company"
+    },
+    {
+      "id": "RLUSD",
+      "name": "Ripple USD",
+      "type": "USD stablecoin issued by Ripple affiliate"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "Native XRPL digital asset"
+    },
+    {
+      "id": "COINBASE",
+      "name": "Coinbase",
+      "type": "Exchange, custody and institutional infrastructure provider"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle",
+      "type": "USDC issuer and payments infrastructure provider"
+    },
+    {
+      "id": "VISA",
+      "name": "Visa",
+      "type": "Payment network"
+    },
+    {
+      "id": "APLUS",
+      "name": "Aplus",
+      "type": "Card and consumer finance provider"
+    },
+    {
+      "id": "ETF_AGGREGATORS",
+      "name": "CryptoETF.today, Maketo, CryptoKeyhole",
+      "type": "Secondary ETF-flow aggregators"
+    }
+  ],
+  "edges": [
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "CHATGPT",
+      "type": "hosted_educational_seminar",
+      "status": "CONFIRMED",
+      "evidence": [
+        "SRC-SBIC-CHATGPT-GENERATIVE-AI-SEMINAR-20260305"
+      ],
+      "caveat": "Not an OpenAI partnership."
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "SBI_HOLDINGS",
+      "type": "corporate_affiliation",
+      "status": "NOT_ESTABLISHED",
+      "evidence": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-20261031"
+      ],
+      "caveat": "Separate legal identity; no affiliation shown in reviewed official profile."
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "XRP",
+      "type": "commercial_or_asset_relationship",
+      "status": "NOT_ESTABLISHED",
+      "evidence": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-20261031",
+        "SRC-SBIC-CHATGPT-GENERATIVE-AI-SEMINAR-20260305"
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "SBI_VC_TRADE",
+      "type": "subsidiary",
+      "status": "CONFIRMED",
+      "evidence": [
+        "SRC-SBI-VC-TRADE-RLUSD-JAPAN-LISTING-20260624"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "type": "Japan_distribution_and_handling",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "evidence": [
+        "SRC-SBI-VC-TRADE-RLUSD-JAPAN-LISTING-20260624"
+      ],
+      "caveat": "No transaction volume disclosed."
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "RIPPLE",
+      "type": "strategic_partnership",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "evidence": [
+        "SRC-SBI-VC-TRADE-RLUSD-JAPAN-LISTING-20260624"
+      ]
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "XRP",
+      "type": "retail_reward_asset",
+      "status": "CONFIRMED_PRODUCT_ANNOUNCEMENT",
+      "evidence": [
+        "SRC-SBI-VISA-XRP-REWARDS-CARD-20260501"
+      ],
+      "caveat": "Reward quantity, inventory source and net spot demand unknown."
+    },
+    {
+      "from": "VISA",
+      "to": "APLUS",
+      "type": "card_network_and_issuer_partner",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "evidence": [
+        "SRC-SBI-VISA-XRP-REWARDS-CARD-20260501"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "RLUSD",
+      "type": "distribution_on_XRPL_Base_Ethereum",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "evidence": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ]
+    },
+    {
+      "from": "RIPPLE",
+      "to": "COINBASE",
+      "type": "RLUSD_listing_and_Base_liquidity_support",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "evidence": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "COINBASE",
+      "type": "USDC_distribution_economics",
+      "status": "PREVIOUSLY_DOCUMENTED_SEPARATE_RELATIONSHIP",
+      "evidence": [],
+      "caveat": "This addendum does not quantify or revise the Circle-Coinbase agreement."
+    },
+    {
+      "from": "ETF_AGGREGATORS",
+      "to": "XRP",
+      "type": "reported_ETF_flow_observations",
+      "status": "CONFLICTED_SECONDARY_DATA",
+      "evidence": [
+        "SRC-CRYPTOETF-XRP-FLOWS-20261031T0548Z",
+        "SRC-MAKETO-XRP-ETF-FLOWS-20261031T0229Z",
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261031T1803Z"
+      ],
+      "caveat": "No directional feature admission."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-SBIC-NAME-COLLISION",
+      "claim": "The SBIC reference is to SBIC East Japan rather than SBI Holdings.",
+      "status": "SUPPORTED_BY_OFFICIAL_IDENTITY_RECORDS",
+      "support": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-20261031"
+      ],
+      "disconfirming": "A separate source explicitly linking SBIC East Japan to SBI Holdings would change this classification.",
+      "implication": "Do not transfer SBI Group XRP relationships to SBIC East Japan."
+    },
+    {
+      "id": "H-SBIC-CHATGPT-EDUCATION",
+      "claim": "The phrase ChatGPT SBIC refers to an SBIC-hosted educational event/training context.",
+      "status": "SUPPORTED",
+      "support": [
+        "SRC-SBIC-CHATGPT-GENERATIVE-AI-SEMINAR-20260305",
+        "SRC-SBIC-GENAI-CHATGPT-COPILOT-TRAINING-20250612"
+      ],
+      "disconfirming": "No OpenAI partnership or investment evidence in these event records.",
+      "implication": "Classify as education, not corporate collaboration."
+    },
+    {
+      "id": "H-SBI-RLUSD-DISTRIBUTION",
+      "claim": "SBI VC Trade provides a Japanese RLUSD distribution route through its VCTRADE service.",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "support": [
+        "SRC-SBI-VC-TRADE-RLUSD-JAPAN-LISTING-20260624"
+      ],
+      "disconfirming": "Actual volume, settlement use and XRP collateral balances are not disclosed.",
+      "implication": "Infrastructure/access edge only; no XRP demand inference."
+    },
+    {
+      "id": "H-SBI-XRP-REWARDS",
+      "claim": "SBI's Visa-linked credit card creates a retail XRP reward-distribution channel.",
+      "status": "CONFIRMED_PRODUCT_ANNOUNCEMENT",
+      "support": [
+        "SRC-SBI-VISA-XRP-REWARDS-CARD-20260501"
+      ],
+      "disconfirming": "No reward inventory source, quantity, redemption rate or customer uptake disclosed.",
+      "implication": "Track as distribution, not confirmed spot buying."
+    },
+    {
+      "id": "H-ETF-FLOW-SESSION-ALIGNMENT",
+      "claim": "The ETF flow sign conflict is materially affected by issuer-file dates, prior-session alignment and provider capture time.",
+      "status": "PLAUSIBLE_UNRESOLVED",
+      "support": [
+        "SRC-CRYPTOETF-XRP-FLOWS-20261031T0548Z",
+        "SRC-MAKETO-XRP-ETF-FLOWS-20261031T0229Z",
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261031T1803Z"
+      ],
+      "disconfirming": "No raw issuer-file crosswalk has yet resolved the discrepancies.",
+      "implication": "Do not average or admit daily flow to model."
+    },
+    {
+      "id": "H-ETF-FLOW-UNIVERSE",
+      "claim": "Different fund universes and missing-fund policies explain part of aggregate disagreement.",
+      "status": "SUPPORTED_FOR_SCOPE_DIFFERENCE",
+      "support": [
+        "SRC-CRYPTOETF-XRP-FLOWS-20261031T0548Z",
+        "SRC-MAKETO-XRP-ETF-FLOWS-20261031T0229Z",
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261031T1803Z"
+      ],
+      "disconfirming": "Universe mismatch alone does not explain the XRPC sign conflict.",
+      "implication": "Store per-fund coverage and missingness; never fill missing as zero."
+    }
+  ],
+  "minority_objections": [
+    "The three ETF providers may share upstream issuer files, so they are not independent confirmations.",
+    "The latest CryptoKeyhole aggregate is not necessarily more accurate merely because its page timestamp is later; its issuer-file date mapping contains an apparent timestamp inconsistency.",
+    "SBI's RLUSD listing may increase RLUSD accessibility without increasing native XRP use or demand.",
+    "XRP rewards may be sourced from existing inventory or treasury holdings rather than open-market purchases."
+  ]
+}

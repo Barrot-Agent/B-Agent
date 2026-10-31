@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_source_bundle",
+  "bundle_id": "SRCBUNDLE-XRP-ETF-INSTITUTIONAL-FLOWS-MACRO-20261031T181303Z",
+  "captured_at_utc": "2026-10-31T18:24:02.075Z",
+  "sources": [
+    {
+      "source_id": "SRC-CRYPTOETF-XRP-FLOWS-AND-HOLDINGS-20261031",
+      "publisher": "CryptoETF.today",
+      "title": "XRP ETF flows, holdings and Q2 2026 institutional holders",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "retrieved_at_utc": "2026-10-31T18:24:02.075Z",
+      "evidence_class": "SECONDARY_ETF_FLOW_AND_13F_AGGREGATION",
+      "independence_group": "CRYPTOETF_TODAY",
+      "claims": [
+        "Five US spot XRP ETFs are tracked, with series start 2025-11-14.",
+        "For 2026-10-30, the displayed XRP ETF net flow was +USD 0.2M, but only 3 of 5 funds had reported; XRPZ and GXRP were pending. XRPC reported +USD 0.9M, Bitwise XRP -USD 0.7M and TOXR zero.",
+        "The same page reports a two-day inflow streak totaling +USD 8.7M, 30-trading-day net inflow +USD 146.6M, YTD net inflow +USD 649.2M, cumulative net inflow +USD 1.82B and net assets USD 1.42B.",
+        "The five funds reported holdings of 1,142,785,690 XRP at 2026-10-30, approximately 1.80% of circulating supply.",
+        "Q2 2026 13F aggregation reports 127 institutions holding USD 179M across five XRP ETFs as of 2026-06-30; Goldman Sachs USD 86.5M, Jane Street USD 16.4M, Millennium Management USD 16.2M and Intesa Sanpaolo USD 14.4M."
+      ],
+      "limitations": [
+        "The 2026-10-30 daily flow is explicitly partial: XRPZ and GXRP had not reported; pending is not zero.",
+        "13F positions are lagged long positions at quarter end, not current holdings, beneficial ownership of XRP or complete exposure; shorts, futures and retail positions are excluded.",
+        "ETF creations/redemptions settle with a lag and may reflect AP arbitrage/hedging rather than same-day directional demand.",
+        "All flow and 13F aggregation claims on this page share one provider/methodology and are not independent source confirmations."
+      ]
+    },
+    {
+      "source_id": "SRC-FED-FOMC-20261028",
+      "publisher": "Federal Reserve",
+      "title": "FOMC statement — October 28, 2026",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "published_at": "2026-10-28",
+      "retrieved_at_utc": "2026-10-31T18:24:02.075Z",
+      "evidence_class": "CENTRAL_BANK_PRIMARY_STATEMENT",
+      "independence_group": "FEDERAL_RESERVE",
+      "claims": [
+        "The FOMC voted 10–2 to maintain the federal funds target range at 3.75%–4.00%.",
+        "Both dissenters, Lisa D. Cook and Beth M. Hammack, preferred a 25-basis-point increase at that meeting.",
+        "The statement says economic activity is expanding at a strong pace, inflation remains elevated and uncertainty remains elevated partly due to geopolitical developments."
+      ],
+      "limitations": [
+        "The statement is macroeconomic context, not an XRP-specific causal explanation.",
+        "Two hawkish dissents do not determine the future policy path; subsequent data and decisions can change the outlook."
+      ]
+    }
+  ]
+}

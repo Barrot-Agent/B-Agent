@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-CAMILA-KAMILAH-VIDEO-CLAIM-GRAPH-20261031T184158Z",
+  "captured_at_utc": "2026-10-31T18:41:58Z",
+  "source_ids": [
+    "SRC-YOUTUBE-DRKAMILAH-CHANNEL",
+    "SRC-VLING-KAMILAH-CHANNEL-ID",
+    "SRC-IHEART-PAUL-BARRON-CAMILA-IDENTITY",
+    "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT",
+    "SRC-GLASP-XRP-ETF-VIDEO-TRANSCRIPT",
+    "SRC-GLASP-WEALTH-VIDEO-TRANSCRIPT",
+    "SRC-GLASP-XRP-NEED-VIDEO",
+    "SRC-OCC-RIPPLE-PRELIMINARY-CONDITIONAL-APPROVAL-20251212",
+    "SRC-OCC-RIPPLE-CHARTER-CAS-20261026",
+    "SRC-RIPPLE-DEC12-2025-CHARTER-ANNOUNCEMENT"
+  ],
+  "nodes": [
+    {
+      "id": "KAMILAH_STEVENSON_CHANNEL_CANDIDATE",
+      "name": "Kamilah Stevenson / @drkamilahstevenson",
+      "type": "XRP and macro YouTube creator; identity candidate"
+    },
+    {
+      "id": "VIDEO_QSLBJGQD0MU",
+      "name": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "type": "Public YouTube video"
+    },
+    {
+      "id": "RIPPLE_NATIONAL_TRUST_BANK",
+      "name": "Ripple National Trust Bank",
+      "type": "OCC national trust bank charter"
+    },
+    {
+      "id": "OCC",
+      "name": "Office of the Comptroller of the Currency",
+      "type": "US bank regulator"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "Native XRPL digital asset"
+    },
+    {
+      "id": "JAPAN_REVERSE_CARRY_TRADE",
+      "name": "Japan reverse carry-trade stress scenario",
+      "type": "Macro scenario"
+    }
+  ],
+  "edges": [
+    {
+      "from": "KAMILAH_STEVENSON_CHANNEL_CANDIDATE",
+      "to": "VIDEO_QSLBJGQD0MU",
+      "type": "creator_attribution",
+      "status": "PROBABLE_MATCH",
+      "evidence": [
+        "SRC-YOUTUBE-DRKAMILAH-CHANNEL",
+        "SRC-VLING-KAMILAH-CHANNEL-ID",
+        "SRC-IHEART-PAUL-BARRON-CAMILA-IDENTITY",
+        "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT"
+      ],
+      "caveat": "Exact first-party handle crosslink remains unverified."
+    },
+    {
+      "from": "OCC",
+      "to": "RIPPLE_NATIONAL_TRUST_BANK",
+      "type": "preliminary_conditional_approval",
+      "status": "CONFIRMED_2025-12-12",
+      "evidence": [
+        "SRC-OCC-RIPPLE-PRELIMINARY-CONDITIONAL-APPROVAL-20251212"
+      ]
+    },
+    {
+      "from": "OCC",
+      "to": "RIPPLE_NATIONAL_TRUST_BANK",
+      "type": "consummated_effective_status",
+      "status": "CONFIRMED_2026-10-26",
+      "evidence": [
+        "SRC-OCC-RIPPLE-CHARTER-CAS-20261026"
+      ]
+    },
+    {
+      "from": "VIDEO_QSLBJGQD0MU",
+      "to": "RIPPLE_NATIONAL_TRUST_BANK",
+      "type": "describes_as_bank",
+      "status": "OVERSTATED_AT_PUBLICATION_IF_LITERAL",
+      "evidence": [
+        "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT",
+        "SRC-OCC-RIPPLE-PRELIMINARY-CONDITIONAL-APPROVAL-20251212"
+      ]
+    },
+    {
+      "from": "VIDEO_QSLBJGQD0MU",
+      "to": "XRP",
+      "type": "liquidity_collateral_yield_and_lending_thesis",
+      "status": "OPINION_NOT_CAUSALLY_ESTABLISHED",
+      "evidence": [
+        "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT"
+      ]
+    },
+    {
+      "from": "VIDEO_QSLBJGQD0MU",
+      "to": "JAPAN_REVERSE_CARRY_TRADE",
+      "type": "proposed_macro_catalyst_for_XRP",
+      "status": "SPECULATIVE",
+      "evidence": [
+        "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-VIDEO-IDENTITY",
+      "claim": "The intended Camilla Stephenson reference probably points to Dr Kamilah/Camila Stevenson and the @drkamilahstevenson channel.",
+      "status": "PROBABLE_NOT_CONFIRMED",
+      "support": [
+        "SRC-IHEART-PAUL-BARRON-CAMILA-IDENTITY",
+        "SRC-VLING-KAMILAH-CHANNEL-ID",
+        "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT"
+      ],
+      "disconfirming": "No captured first-party crosslink to the exact handle; exact requested spelling 'Camilla Stephenson' differs.",
+      "implication": "Use this as a candidate inventory, not a definitive identity assertion."
+    },
+    {
+      "id": "H-RIPPLE-CHARTER-RAILS",
+      "claim": "Ripple's national trust bank charter by itself grants direct payment-rail access.",
+      "status": "NOT_ESTABLISHED",
+      "support": [],
+      "disconfirming": "OCC preliminary decision is for trust-company and fiduciary activities and does not grant or document Fed master-account or Fedwire/ACH access.",
+      "implication": "Require separate payment-system membership/connection evidence."
+    },
+    {
+      "id": "H-XRP-CHARTER-DEMAND",
+      "claim": "Ripple's bank charter causes measurable XRP collateral or liquidity demand.",
+      "status": "NOT_ESTABLISHED",
+      "support": [],
+      "disconfirming": "No charter-linked XRP balance, collateral agreement, or settlement volume cited in the video.",
+      "implication": "Track product-level collateral and actual flows separately."
+    },
+    {
+      "id": "H-JAPAN-CARRY-XRP",
+      "claim": "A Japan carry-trade unwind would route stressed liquidity through XRP.",
+      "status": "SPECULATIVE",
+      "support": [
+        "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT"
+      ],
+      "disconfirming": "No institutional commitment, payment corridor, market-depth evidence or event study establishes this pathway.",
+      "implication": "Treat as a scenario variable, not a prediction."
+    }
+  ],
+  "minority_objections": [
+    "The creator may be the intended person, but exact channel ownership is not fully verified from a first-party crosslink.",
+    "A trust-bank charter can materially expand fiduciary/custody capabilities without automatically creating deposit-taking or Federal Reserve payment access.",
+    "The video predates the charter's 2026-10-26 effective date; later effectiveness does not retroactively make the 2025-12-14 title accurate at publication.",
+    "Narrative confidence and audience reach do not establish forecast accuracy; no calibrated prediction track record was independently verified."
+  ]
+}

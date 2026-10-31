@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_etf_institutional_flows_and_macro_snapshot",
+  "snapshot_id": "XRP-ETF-INSTITUTIONAL-FLOWS-MACRO-20261031T181303Z",
+  "captured_at_utc": "2026-10-31T18:24:02.075Z",
+  "data_cutoff_utc": "2026-10-31T05:48:00Z",
+  "source_ids": [
+    "SRC-CRYPTOETF-XRP-FLOWS-AND-HOLDINGS-20261031",
+    "SRC-FED-FOMC-20261028"
+  ],
+  "xrp_etf_flows": {
+    "provider": "CryptoETF.today",
+    "fund_universe": [
+      "XRP (Bitwise)",
+      "XRPC (Canary Capital)",
+      "XRPZ (Franklin Templeton)",
+      "GXRP (Grayscale)",
+      "TOXR (21Shares)"
+    ],
+    "series_start": "2025-11-14",
+    "trading_days": 181,
+    "latest_session": "2026-10-30",
+    "latest_daily_net_flow_usd": 200000,
+    "latest_daily_status": "PARTIAL_3_OF_5_FUNDS",
+    "reported_funds": {
+      "XRPC": 900000,
+      "XRP": -700000,
+      "TOXR": 0
+    },
+    "pending_funds": [
+      "XRPZ",
+      "GXRP"
+    ],
+    "two_day_inflow_streak_usd": 8700000,
+    "thirty_trading_day_net_flow_usd": 146600000,
+    "ytd_net_flow_usd": 649200000,
+    "cumulative_net_flow_usd": 1820000000,
+    "net_assets_usd": 1420000000,
+    "reported_xrp_holdings": 1142785690,
+    "share_of_circulating_supply_pct": 1.8,
+    "daily_flow_as_pct_of_net_assets_pct": 0.01,
+    "methodology_caveat": "T+1 fund creations/redemptions; missing funds remain pending, not zero; creations settle in baskets and APs may hedge before the reported flow date."
+  },
+  "institutional_13f": {
+    "quarter": "2026-Q2",
+    "as_of_date": "2026-06-30",
+    "institution_count": 127,
+    "reported_value_usd": 179000000,
+    "share_of_tracked_etf_shares_outstanding_pct": 19,
+    "top_reported_holders": {
+      "Goldman_Sachs": {
+        "reported_value_usd": 86500000,
+        "share_of_reported_13f_value_pct": 48
+      },
+      "Jane_Street": {
+        "reported_value_usd": 16400000
+      },
+      "Millennium_Management": {
+        "reported_value_usd": 16200000
+      },
+      "Intesa_Sanpaolo": {
+        "reported_value_usd": 14400000
+      }
+    },
+    "reported_share_change_qoq_usd": 108000000,
+    "reported_share_change_qoq_pct": 150.1,
+    "limitations": [
+      "13F reports lag quarter-end and capture long reportable securities positions only.",
+      "13F does not include shorts, futures or retail exposure.",
+      "Reported ETF shares are not direct XRP beneficial ownership."
+    ]
+  },
+  "cross_asset_etf_flows": {
+    "session": "2026-10-30",
+    "published_at_utc": "2026-10-31T05:48:00Z",
+    "BTC_net_flow_usd": -643300000,
+    "ETH_net_flow_usd": -155700000,
+    "SOL_net_flow_usd": -10700000,
+    "XRP_net_flow_usd": 200000,
+    "xrp_status": "PARTIAL_3_OF_5",
+    "interpretation": "Relative XRP ETF flow resilience versus BTC/ETH is provisional because the XRP total is partial and small (+0.01% of reported net assets)."
+  },
+  "macro_context": {
+    "fomc_date": "2026-10-28",
+    "target_range_low_pct": 3.75,
+    "target_range_high_pct": 4,
+    "vote": "10-2",
+    "dissenters": [
+      "Lisa D. Cook",
+      "Beth M. Hammack"
+    ],
+    "dissent_preference": "Both preferred a 25bp increase.",
+    "fed_assessment": [
+      "Economic activity expanding at a strong pace",
+      "Inflation remains elevated",
+      "Uncertainty remains elevated partly owing to geopolitical developments"
+    ],
+    "classification": "RESTRICTIVE_POLICY_WITH_HAWKISH_DISSENTS; NOT_A_DIRECTIONAL_XRP_SIGNAL"
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_features_admitted": [],
+    "reason": "ETF daily flow is partial, 13F is lagged, and macro conditions are context variables; no leakage-safe out-of-sample predictive validation is complete."
+  }
+}

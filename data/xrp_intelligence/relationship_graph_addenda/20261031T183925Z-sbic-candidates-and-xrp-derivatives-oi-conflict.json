@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-SBIC-CANDIDATE-AND-DERIVATIVES-OI-GRAPH-20261031T183925Z",
+  "captured_at_utc": "2026-10-31T18:39:25Z",
+  "source_ids": [
+    "SRC-SBI-CAPITAL-SBIC-2007-0216",
+    "SRC-SBI-CAPITAL-GOLDMAN-JV-2007-0521",
+    "SRC-SBI-CAPITAL-OWNERSHIP-2007-0710",
+    "SRC-SBI-CAPITAL-MANAGEMENT-RESTRUCTURE-2012-0523",
+    "SRC-KODEXIUS-XRP-OI-20261031T1234Z",
+    "SRC-TRADRADAR-XRP-OI-20261031T1500Z",
+    "SRC-SHARPE-XRP-OI-20261031T1400Z",
+    "SRC-JUSTSCREENER-XRP-OI-20261031T1154Z",
+    "SRC-SWOLECHARTS-XRP-OI-20261031T1100Z"
+  ],
+  "nodes": [
+    {
+      "id": "TOKYO_SBIC_EAST_JAPAN",
+      "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "Japanese SME investment-development corporation"
+    },
+    {
+      "id": "SBI_CAPITAL_JP_HISTORICAL",
+      "name": "SBI Capital Co., Ltd. (Japanese historical SBIC abbreviation)",
+      "type": "SBI Group buy-out / enterprise-revitalization investment company"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "name": "SBI Holdings",
+      "type": "Japanese financial group"
+    },
+    {
+      "id": "GOLDMAN_SACHS",
+      "name": "Goldman Sachs group",
+      "type": "Financial institution"
+    },
+    {
+      "id": "CHATGPT",
+      "name": "ChatGPT",
+      "type": "Generative AI product"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "Native XRPL asset"
+    },
+    {
+      "id": "DERIVATIVES_AGGREGATORS",
+      "name": "Kodexius, TradRadar, Sharpe.ai, JustScreener, SwoleCharts",
+      "type": "Secondary derivatives market-data aggregators"
+    }
+  ],
+  "edges": [
+    {
+      "from": "TOKYO_SBIC_EAST_JAPAN",
+      "to": "CHATGPT",
+      "type": "hosted_educational_seminar_and_training",
+      "status": "CONFIRMED",
+      "evidence": [
+        "SRC-SBIC-CHATGPT-GENERATIVE-AI-SEMINAR-20260305",
+        "SRC-SBIC-GENAI-CHATGPT-COPILOT-TRAINING-20250612"
+      ],
+      "caveat": "Education only; not an OpenAI partnership."
+    },
+    {
+      "from": "TOKYO_SBIC_EAST_JAPAN",
+      "to": "SBI_HOLDINGS",
+      "type": "corporate_affiliation",
+      "status": "NOT_ESTABLISHED",
+      "evidence": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-20261031"
+      ]
+    },
+    {
+      "from": "SBI_CAPITAL_JP_HISTORICAL",
+      "to": "SBI_HOLDINGS",
+      "type": "subsidiary_and_ownership",
+      "status": "CONFIRMED_HISTORICALLY_WITH_TIMELINE_CHANGE",
+      "evidence": [
+        "SRC-SBI-CAPITAL-SBIC-2007-0216",
+        "SRC-SBI-CAPITAL-GOLDMAN-JV-2007-0521",
+        "SRC-SBI-CAPITAL-OWNERSHIP-2007-0710",
+        "SRC-SBI-CAPITAL-MANAGEMENT-RESTRUCTURE-2012-0523"
+      ],
+      "caveat": "2007 60/40 JV; 2012 table lists 100% SBI Holdings; exact change date not established."
+    },
+    {
+      "from": "SBI_CAPITAL_JP_HISTORICAL",
+      "to": "GOLDMAN_SACHS",
+      "type": "equity_joint_venture",
+      "status": "CONFIRMED_2007",
+      "evidence": [
+        "SRC-SBI-CAPITAL-GOLDMAN-JV-2007-0521",
+        "SRC-SBI-CAPITAL-OWNERSHIP-2007-0710"
+      ]
+    },
+    {
+      "from": "SBI_CAPITAL_JP_HISTORICAL",
+      "to": "XRP",
+      "type": "investment_or_commercial_relationship",
+      "status": "NOT_ESTABLISHED",
+      "evidence": [
+        "SRC-SBI-CAPITAL-SBIC-2007-0216",
+        "SRC-SBI-CAPITAL-OWNERSHIP-2007-0710",
+        "SRC-SBI-CAPITAL-MANAGEMENT-RESTRUCTURE-2012-0523"
+      ]
+    },
+    {
+      "from": "DERIVATIVES_AGGREGATORS",
+      "to": "XRP",
+      "type": "perpetual_futures_open_interest_and_funding_observations",
+      "status": "CONFLICTED_SECONDARY_DATA",
+      "evidence": [
+        "SRC-KODEXIUS-XRP-OI-20261031T1234Z",
+        "SRC-TRADRADAR-XRP-OI-20261031T1500Z",
+        "SRC-SHARPE-XRP-OI-20261031T1400Z",
+        "SRC-JUSTSCREENER-XRP-OI-20261031T1154Z",
+        "SRC-SWOLECHARTS-XRP-OI-20261031T1100Z"
+      ],
+      "caveat": "No same-contract same-time crosswalk; not a directional feature."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-SBIC-TWO-JAPAN-CANDIDATES",
+      "claim": "At least two distinct Japanese legal entities appear under the SBIC shorthand: Tokyo SBIC East Japan and SBI Capital Co., Ltd. historically abbreviated SBIC by SBI Holdings.",
+      "status": "CONFIRMED_ENTITY_DISTINCTION",
+      "support": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-20261031",
+        "SRC-SBI-CAPITAL-SBIC-2007-0216"
+      ],
+      "disconfirming": "A source identifying the originating reference's exact legal entity would select one candidate.",
+      "implication": "Do not conflate their ChatGPT and XRP relationships."
+    },
+    {
+      "id": "H-SBIC-CHATGPT-EVENT",
+      "claim": "The phrase ChatGPT SBIC most directly matches Tokyo SBIC East Japan's educational seminar/training.",
+      "status": "SUPPORTED_CONTEXTUAL_MATCH",
+      "support": [
+        "SRC-SBIC-CHATGPT-GENERATIVE-AI-SEMINAR-20260305",
+        "SRC-SBIC-GENAI-CHATGPT-COPILOT-TRAINING-20250612"
+      ],
+      "disconfirming": "No OpenAI partnership or SBI Capital product relationship is evidenced.",
+      "implication": "Treat as education, not commercial collaboration."
+    },
+    {
+      "id": "H-SBI-CAPITAL-OWNERSHIP-CHANGE",
+      "claim": "The 2007 60/40 SBI-Goldman ownership and 2012 100% SBI ownership snapshots imply a later ownership change.",
+      "status": "INFERENCE_WITH_DATE_UNKNOWN",
+      "support": [
+        "SRC-SBI-CAPITAL-OWNERSHIP-2007-0710",
+        "SRC-SBI-CAPITAL-MANAGEMENT-RESTRUCTURE-2012-0523"
+      ],
+      "disconfirming": "No exact transaction/date is identified by the two records.",
+      "implication": "Do not interpolate the ownership-change date."
+    },
+    {
+      "id": "H-XRP-OI-UNIVERSE-MISMATCH",
+      "claim": "XRP OI provider disagreement is materially driven by contract coverage, conversion and aggregation differences.",
+      "status": "PLAUSIBLE_UNRESOLVED",
+      "support": [
+        "SRC-KODEXIUS-XRP-OI-20261031T1234Z",
+        "SRC-TRADRADAR-XRP-OI-20261031T1500Z",
+        "SRC-SHARPE-XRP-OI-20261031T1400Z",
+        "SRC-JUSTSCREENER-XRP-OI-20261031T1154Z",
+        "SRC-SWOLECHARTS-XRP-OI-20261031T1100Z"
+      ],
+      "disconfirming": "No raw same-timestamp contract-level crosswalk yet.",
+      "implication": "Preserve separate provider series; no averaging or directional feature admission."
+    }
+  ],
+  "minority_objections": [
+    "The SBIC acronym cannot be uniquely resolved from the acronym alone; the ChatGPT event points to Tokyo SBIC East Japan, but SBI Capital was also explicitly abbreviated SBIC in SBI Holdings' 2007 records.",
+    "The 2007-to-2012 SBI Capital ownership snapshots do not reveal the exact Goldman exit or restructuring transaction.",
+    "The OI aggregator totals may not be comparable because contract units, collateral currencies, mark prices and missing venues differ.",
+    "Positive funding and long-account share do not establish directional expected return."
+  ]
+}
