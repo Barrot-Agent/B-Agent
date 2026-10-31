@@ -1,4 +1,0 @@
-#!/usr/bin/env python3
-
-print("BARROT GENERATED THIS CODE")
-print("TERMUX EXECUTION PRACTICE SUCCESSFUL")

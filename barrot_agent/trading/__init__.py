@@ -1,1 +1,0 @@
-"""Barrot trading capabilities."""
