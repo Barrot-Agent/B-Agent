@@ -36,6 +36,7 @@ def original_run(**overrides):
         "id": 1001,
         "workflow_id": 77,
         "head_branch": "main",
+        "head_repository": {"id": 1078973139, "full_name": "Barrot-Agent/B-Agent"},
         "status": "completed",
         "conclusion": "failure",
         "created_at": "2026-10-31T10:00:00Z",
@@ -109,6 +110,34 @@ def test_success_not_later_than_original_failure_does_not_prove_recovery():
                     later_run(created_at="2026-10-31T09:59:00Z")
                 ]
             }),
+        ],
+    ):
+        assert resolver.get_verified_recovery_runs(issue_body(), 77) is None
+
+
+
+def test_same_branch_name_from_a_different_fork_does_not_prove_recovery():
+    fork_run = later_run(
+        head_repository={"id": 999999, "full_name": "untrusted-fork/B-Agent"}
+    )
+    with patch.object(
+        resolver.requests,
+        "get",
+        side_effect=[
+            FakeResponse(original_run()),
+            FakeResponse({"workflow_runs": [fork_run]}),
+        ],
+    ):
+        assert resolver.get_verified_recovery_runs(issue_body(), 77) is None
+
+
+def test_missing_head_repository_fails_closed():
+    with patch.object(
+        resolver.requests,
+        "get",
+        side_effect=[
+            FakeResponse(original_run(head_repository=None)),
+            FakeResponse({"workflow_runs": [later_run()]}),
         ],
     ):
         assert resolver.get_verified_recovery_runs(issue_body(), 77) is None

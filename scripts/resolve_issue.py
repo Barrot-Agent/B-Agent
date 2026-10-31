@@ -122,11 +122,25 @@ def get_latest_run_status(workflow_id, branch):
     return runs[0] if runs else None
 
 
-def get_verified_recovery_runs(issue_body, workflow_id):
-    """Require a newer successful run of the same workflow on the failed run's branch.
+def _head_repository_identity(run):
+    repository = run.get("head_repository")
+    if not isinstance(repository, dict):
+        return None
+    repository_id = repository.get("id")
+    if isinstance(repository_id, int) and not isinstance(repository_id, bool):
+        return ("id", repository_id)
+    full_name = repository.get("full_name")
+    if isinstance(full_name, str) and full_name.strip():
+        return ("name", full_name.strip().lower())
+    return None
 
-    A success on an unrelated PR branch must never close an issue raised by a
-    different branch's failure. Missing or inconsistent evidence fails closed.
+
+def get_verified_recovery_runs(issue_body, workflow_id):
+    """Require a later completed run of the same workflow, branch and head repository.
+
+    A success on a fork using the same branch name must never close an issue
+    raised by a run from the canonical repository (or a different fork).
+    Missing or inconsistent evidence fails closed.
     """
     original_run_id = extract_original_run_id(issue_body)
     if original_run_id is None:
@@ -142,6 +156,10 @@ def get_verified_recovery_runs(issue_body, workflow_id):
     if not isinstance(branch, str) or not branch.strip():
         print("Linked failed run has no verifiable head branch.")
         return None
+    original_repository = _head_repository_identity(original)
+    if original_repository is None:
+        print("Linked failed run has no verifiable head repository.")
+        return None
 
     latest = get_latest_run_status(workflow_id, branch)
     if not latest:
@@ -154,6 +172,9 @@ def get_verified_recovery_runs(issue_body, workflow_id):
         or latest.get("status") != "completed"
     ):
         print("Latest run does not establish a completed recovery on the same branch.")
+        return None
+    if _head_repository_identity(latest) != original_repository:
+        print("Latest run originates from a different or unverifiable head repository.")
         return None
 
     original_created = _parse_github_timestamp(original.get("created_at"))
