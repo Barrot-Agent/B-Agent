@@ -13,7 +13,8 @@
     "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027",
     "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729",
     "SRC-SGFORGE-EURCV-XRPL-20260218",
-    "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+    "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105",
+    "SRC-OCC-COINBASE-CD1370-20260402"
   ],
   "regulatory_status": {
     "ripple_national_trust_bank": {
@@ -39,6 +40,24 @@
       "circle_announcement_date": "2026-07-10",
       "initial_scope": "federally supervised custody for Circle and affiliates",
       "usdc_reserve_management": "PLANNED_FUTURE_CAPABILITY_NOT_CONFIRMED_LIVE"
+    },
+    "coinbase_national_trust": {
+      "occ_control_number": "2025-Charter-343449",
+      "occ_decision": "Corporate Decision #1370",
+      "approval_status": "PRELIMINARY_CONDITIONAL_APPROVAL_ONLY",
+      "conditional_approval_date": "2026-04-02",
+      "final_approval_and_authorization_to_commence_business": "NOT_GRANTED_IN_THE_DECISION; REQUIRES_ALL_PREOPENING_REQUIREMENTS",
+      "current_custody_provider": "Coinbase Custody Trust Company LLC (NYDFS limited-purpose trust company)",
+      "planned_migration": "OCC decision says entirety of custody business is planned to migrate from CCTC to the national trust bank over a three-year de novo period",
+      "proposed_bank_services": [
+        "fiduciary digital-asset custody primarily for institutional clients",
+        "related transactional services for custodied assets",
+        "finder access for custody clients to affiliate staking, Prime Trading and Prime Financing"
+      ],
+      "underlying_affiliate_services": "NOT_PROVIDED_BY_THE_PROPOSED_BANK_ITSELF",
+      "insured_deposit_taking": "NOT_AUTHORIZED",
+      "operational_opening": "NOT_VERIFIED",
+      "later_occ_cas_consummated_effective_action": "NOT_FOUND_IN_CAS_RECORD_RETRIEVED_2026-10-31"
     }
   },
   "bny_custody_and_trade_finance": {
@@ -107,5 +126,18 @@
     "force_push": false,
     "workflow_dispatch": false,
     "real_money_trade": false
+  },
+  "coinbase_tactical_position": {
+    "existing_stack": [
+      "exchange and spot trading",
+      "XRP derivatives and perpetual-futures margin",
+      "cbXRP reserve and wrapped-asset infrastructure",
+      "Morpho-based USDC borrowing against cbXRP",
+      "USDC distribution relationship with Circle",
+      "RLUSD listing/distribution across supported networks",
+      "existing NYDFS-chartered Coinbase Custody Trust Company"
+    ],
+    "federal_trust_bank_status": "CONDITIONAL_ONLY_NOT_OPERATIONAL",
+    "distinction": "Coinbase's proposed federal trust bank is custody/finder infrastructure, not a commercial deposit-taking or lending bank; existing Coinbase products and affiliate services remain separate."
   }
 }
