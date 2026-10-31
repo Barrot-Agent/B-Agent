@@ -12,7 +12,8 @@
     "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027",
     "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729",
     "SRC-SGFORGE-EURCV-XRPL-20260218",
-    "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+    "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105",
+    "SRC-OCC-COINBASE-CD1370-20260402"
   ],
   "nodes": [
     {
@@ -114,6 +115,21 @@
       "id": "GEMINI",
       "type": "exchange",
       "name": "Gemini"
+    },
+    {
+      "id": "COINBASE",
+      "type": "company",
+      "name": "Coinbase"
+    },
+    {
+      "id": "COINBASE_NT",
+      "type": "proposed_national_trust_bank",
+      "name": "Coinbase National Trust Company"
+    },
+    {
+      "id": "CCTC",
+      "type": "trust_company",
+      "name": "Coinbase Custody Trust Company LLC"
     }
   ],
   "edges": [
@@ -321,6 +337,36 @@
         "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
       ],
       "evidence_class": "ANNOUNCED_NOT_PRODUCTION_VERIFIED"
+    },
+    {
+      "from": "COINBASE",
+      "to": "COINBASE_NT",
+      "relation": "WHOLLY_OWNED_PROPOSED_SUBSIDIARY",
+      "detail": "OCC Corporate Decision #1370 describes the proposed bank as a wholly owned Coinbase subsidiary",
+      "source_ids": [
+        "SRC-OCC-COINBASE-CD1370-20260402"
+      ],
+      "evidence_class": "REGULATOR_PRIMARY_DECISION"
+    },
+    {
+      "from": "CCTC",
+      "to": "COINBASE_NT",
+      "relation": "PLANNED_CUSTODY_BUSINESS_MIGRATION",
+      "detail": "OCC decision says the entirety of the current NYDFS-chartered custody business is planned to migrate over a three-year de novo period after the bank is authorized to operate",
+      "source_ids": [
+        "SRC-OCC-COINBASE-CD1370-20260402"
+      ],
+      "evidence_class": "REGULATOR_PRIMARY_DECISION"
+    },
+    {
+      "from": "COINBASE_NT",
+      "to": "COINBASE",
+      "relation": "PROPOSED_FINDER_ACCESS_TO_AFFILIATE_SERVICES",
+      "detail": "Custody clients may access affiliate staking, Prime Trading and Prime Financing; the proposed bank does not itself provide those underlying services",
+      "source_ids": [
+        "SRC-OCC-COINBASE-CD1370-20260402"
+      ],
+      "evidence_class": "REGULATOR_PRIMARY_DECISION"
     }
   ],
   "hypotheses": [
@@ -382,6 +428,20 @@
         "RLUSD and EURCV are issued stablecoins; Aviva fund shares are tokenized fund interests; custody support is not a proprietary purchase.",
         "No XRP net-flow, collateral balance, funded trade-finance volume or XRP purchase quantity is disclosed."
       ]
+    },
+    {
+      "id": "H-COINBASE-FEDERAL-CUSTODY",
+      "claim": "Coinbase's proposed national trust bank could consolidate federal oversight of institutional custody and facilitate custody-adjacent affiliate services.",
+      "status": "CONDITIONAL_APPROVAL_ONLY_NOT_OPERATIONAL",
+      "supporting": [
+        "OCC Corporate Decision #1370 grants preliminary conditional approval and describes fiduciary custody, related transactions and finder access.",
+        "The decision describes a planned migration of the existing NYDFS-chartered custody business over a three-year de novo period."
+      ],
+      "disconfirming": [
+        "The OCC decision explicitly says final approval and authorization to commence business require preopening conditions.",
+        "No later Consummated/Effective action or operational launch was identified in the OCC CAS record retrieved on 2026-10-31.",
+        "The proposed bank does not itself provide the underlying staking, Prime Trading or Prime Financing services."
+      ]
     }
   ],
   "limitations": [
@@ -390,6 +450,7 @@
     "BNY custody platform support does not disclose client balances or imply BNY is buying XRP.",
     "C2FO's historical USD 520B Early Pay figure is not XRPL activity and must not be attributed to Instant Pay.",
     "Aviva's tokenized fund share class is live, but AUM, investor count and on-chain turnover are not disclosed.",
-    "SG-FORGE collateral use and Mastercard/WebBank/Gemini settlement remain exploratory in the cited announcements."
+    "SG-FORGE collateral use and Mastercard/WebBank/Gemini settlement remain exploratory in the cited announcements.",
+    "Coinbase National Trust's conditional charter must not be compared as an effective operating charter with Ripple National Trust Bank and Circle National Trust; the OCC decision is preliminary and the CAS record retrieved on 2026-10-31 shows Approved but no Consummated/Effective action."
   ]
 }
