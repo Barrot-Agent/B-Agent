@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "SBI-XRP-RECURRING-DISTRIBUTION-20261031",
+  "captured_at_utc": "2026-10-31T13:30:48.865Z",
+  "observed_main_sha": "52ce593d7f4075eb0cb6cac078bf8486d6fab2c1",
+  "purpose": "Record primary-source evidence for SBI-linked recurring XRP acquisition and reward-distribution channels, market-making relationships, and the group's simultaneous Circle/USDC and Ripple/XRPL rails.",
+  "sources": [
+    {
+      "source_id": "SRC-SBI-VC-TRADE-ACCUMULATION-20261031",
+      "publisher": "SBI Holdings",
+      "title": "Crypto-asset Exchange — SBI VC Trade",
+      "url": "https://www.sbigroup.co.jp/english/business/cryptoasset/exchange.html",
+      "published_at_utc": null,
+      "source_type": "official_product_description",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_HOLDINGS_CORPORATE",
+      "claims": [
+        "SBI states that its exchange handles XRP.",
+        "SBI describes an Accumulation Service that automatically purchases selected crypto-assets on a regular schedule using a predetermined amount and frequency."
+      ],
+      "limitations": [
+        "No XRP-specific subscriber count, purchase volume, execution venue, order-flow amount, or asset-selection share is disclosed.",
+        "The product description does not establish whether purchases are sourced from open-market execution, internal inventory, or another liquidity arrangement."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VISA-CRYPTO-CARD-20260501",
+      "publisher": "SBI VC Trade, APLUS and Visa Japan",
+      "title": "SBI VISA Crypto Card — BTC, ETH or XRP rewards",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "published_at_utc": "2026-05-01T00:00:00Z",
+      "source_type": "official_product_launch",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_VC_TRADE_APLUS_VISA_PRODUCT_RELEASE",
+      "claims": [
+        "Card applicants can select one reward asset from BTC, ETH or XRP.",
+        "Accumulated card points are automatically exchanged into the selected crypto-asset once per month, with no exchange fee stated in the release.",
+        "The card can also be used for SBI Securities credit-card mutual-fund accumulation, with crypto rewards accruing based on the investment amount.",
+        "The May 2026 launch campaign offered temporary elevated reward rates; those campaign dates have expired."
+      ],
+      "limitations": [
+        "The release does not disclose the percentage of customers selecting XRP, XRP reward units distributed, total reward value, or how SBI sources the XRP.",
+        "The temporary May–August 2026 campaign must not be represented as a currently active promotion.",
+        "Reward conversion is a distribution mechanism, not proof of net open-market XRP buying."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-ORICO-XRP-POINTS-20260731",
+      "publisher": "SBI VC Trade and Orient Corporation",
+      "title": "Orico Points can be exchanged for BTC, ETH or XRP",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0731_16511.php",
+      "published_at_utc": "2026-07-31T00:00:00Z",
+      "source_type": "official_product_launch",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_VC_TRADE_ORICO_PRODUCT_RELEASE",
+      "claims": [
+        "From July 31, 2026, eligible Orico Point members can exchange 1,200 points for 1,000 yen worth of BTC, ETH or XRP through an SBI VC Trade account.",
+        "The crypto-asset amount is calculated using the VCTRADE sales price at the specified following-month valuation time and is credited to the customer's account."
+      ],
+      "limitations": [
+        "No XRP-specific redemption count, aggregate value, customer selection share, or sourcing method is disclosed.",
+        "The program is an opt-in points redemption channel, not a published market-buy schedule."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VC-TRADE-OWNERSHIP-20260623",
+      "publisher": "SBI Holdings",
+      "title": "SBI VC Trade corporate profile and ownership",
+      "url": "https://www.sbigroup.co.jp/english/company/group/sbivc.html",
+      "published_at_utc": null,
+      "source_type": "official_corporate_profile",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_HOLDINGS_CORPORATE",
+      "claims": [
+        "SBI's corporate profile states that SBI Group holds 100% of the voting rights in SBI VC Trade as of June 23, 2026."
+      ],
+      "limitations": [
+        "Ownership establishes group control, not the amount of XRP owned, purchased, or held for customers."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-B2C2-MARKET-MAKER-20261031",
+      "publisher": "SBI Holdings",
+      "title": "B2C2 market-maker business and SBI VC Trade connection",
+      "url": "https://www.sbigroup.co.jp/english/business/cryptoasset/marketmaker.html",
+      "published_at_utc": null,
+      "source_type": "official_business_description",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_HOLDINGS_CORPORATE",
+      "claims": [
+        "SBI states that B2C2 became a consolidated subsidiary on December 15, 2020.",
+        "SBI states that B2C2 has been connected to SBI VC Trade since September 2020 and that SBI VC Trade daily trading volume increased tenfold after the connection."
+      ],
+      "limitations": [
+        "The tenfold comparison is a company-reported historical aggregate, not an independently measured current figure.",
+        "The page does not isolate XRP pairs, current XRP order-book depth, bid–ask spreads, market-maker inventory, or B2C2's share of XRP turnover."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-RIPPLE-ASIA-XRPL-POC-20260226",
+      "publisher": "SBI Ripple Asia",
+      "title": "Conceptual proof of concept for tokenized deposits and deposit-backed digital money",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "published_at_utc": "2026-02-26T00:00:00Z",
+      "source_type": "official_conceptual_poc_announcement",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_RIPPLE_ASIA",
+      "claims": [
+        "SBI Ripple Asia described a conceptual model combining SBI MoneyTap and its token-issuance platform, with XRPL as the proposed blockchain.",
+        "SBI Ripple Asia is a joint venture established by SBI Holdings and Ripple."
+      ],
+      "limitations": [
+        "The announcement describes a conceptual proof of concept, not a production deposit-token network.",
+        "No production settlement volume, bank participation, XRP bridge usage, or XRP collateral requirement is disclosed."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CIRCLE-JV-20250822",
+      "publisher": "SBI Holdings",
+      "title": "Joint venture with Circle Internet Holdings",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf",
+      "published_at_utc": "2025-08-22T00:00:00Z",
+      "source_type": "official_joint_venture_announcement",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_HOLDINGS_CORPORATE",
+      "claims": [
+        "SBI Holdings announced a joint venture with Circle Internet Holdings to promote USDC circulation and new Web3/digital-finance use cases in Japan.",
+        "SBI states that the group acquired USD 50 million of Circle shares as a strategic investor in connection with Circle's NYSE listing."
+      ],
+      "limitations": [
+        "The equity investment is in Circle, not XRP, and does not establish a purchase of XRP or an XRP reserve.",
+        "The joint venture does not imply that SBI has chosen Circle's network exclusively."
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-ARC-SBI-VALIDATOR-20260916",
+      "publisher": "Circle Internet Group",
+      "title": "Circle launches Arc mainnet",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+      "published_at_utc": "2026-09-16T00:00:00Z",
+      "source_type": "official_network_launch",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "CIRCLE_OFFICIAL",
+      "claims": [
+        "Circle announced Arc mainnet with USDC-denominated gas fees and a founding-validator cohort that includes SBI Group.",
+        "Circle lists Coinbase among the digital-asset exchanges providing access to Arc.",
+        "Circle describes USDC, EURC and tokenized assets as core Arc assets."
+      ],
+      "limitations": [
+        "Founding-validator status does not establish transaction volume or capital deployed by SBI.",
+        "Coinbase's presence in the Arc exchange list does not establish a Coinbase–SBI partnership.",
+        "Arc's USDC gas model does not require XRP as the network fee asset."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-RLUSD-LISTING-20260624",
+      "publisher": "SBI VC Trade and Ripple",
+      "title": "SBI VC Trade begins handling RLUSD in Japan",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "published_at_utc": "2026-06-24T00:00:00Z",
+      "source_type": "official_stablecoin_listing",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_VC_TRADE_RIPPLE_RELEASE",
+      "claims": [
+        "SBI VC Trade announced RLUSD handling beginning June 24, 2026, describing it as a Japan-first Type IV electronic payment instrument under its legal classification.",
+        "SBI and Ripple describe the listing as a result of their longstanding partnership."
+      ],
+      "limitations": [
+        "The announcement establishes listing availability, not RLUSD balances, payment volume, or XRP demand.",
+        "The announcement alone does not establish that SBI VC Trade supports RLUSD deposits or withdrawals on XRPL; network-specific support must be checked separately."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-JPYSC-LAUNCH-20260624",
+      "publisher": "SBI Holdings, SBI Shinsei Bank, SBI Shinsei Trust, SBI VC Trade and Startale",
+      "title": "JPYSC trust-type yen stablecoin launch",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "published_at_utc": "2026-06-24T00:00:00Z",
+      "source_type": "official_stablecoin_launch",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_GROUP_JPYSC_RELEASE",
+      "claims": [
+        "SBI Shinsei Trust is the issuer of JPYSC, while SBI VC Trade handles distribution.",
+        "The initial launch was limited to balances within SBI VC Trade accounts; the release described public-chain circulation as a later step after legal and tax practice was clarified.",
+        "Startale Group participated in joint development."
+      ],
+      "limitations": [
+        "The release does not establish that JPYSC is live on XRPL or Circle Arc.",
+        "Initial account-limited distribution is not public-chain transaction volume."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VC-TRADE-XRP-WALLET-BALANCES-20261031",
+      "publisher": "XRP Insights",
+      "title": "Tracked exchange-wallet balances for SBI VC Trade",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "published_at_utc": "2026-10-31T08:00:00Z",
+      "source_type": "third_party_wallet_classification_snapshot",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "independence_group": "XRP_INSIGHTS_PROVIDER",
+      "claims": [
+        "The provider reports approximately 59.5 million XRP across two wallets classified as SBI VC Trade at its 2026-10-31 08:00 UTC snapshot.",
+        "The provider reports a same-wallet balance change of approximately -899,000 XRP over seven days and -10.5 million XRP over 30 days."
+      ],
+      "limitations": [
+        "Wallet labels and balances are provider-derived, not an official SBI proof-of-reserves statement.",
+        "Exchange wallets may contain pooled customer custody, operational reserves and internal transfers; balance changes are not equivalent to net customer selling, net buying, or tradable float."
+      ]
+    }
+  ],
+  "independence_policy": {
+    "rule": "SBI corporate pages and releases are primary sources but not independent corroboration of one another. Circle's Arc announcement is a separate issuer source. XRP Insights is a third-party wallet-classification provider and is not treated as an official SBI source.",
+    "no_market_flow_inference": "Product availability, rewards, account balances and market capitalization must not be substituted for reconciled executed XRP purchase/sale flow."
+  }
+}
