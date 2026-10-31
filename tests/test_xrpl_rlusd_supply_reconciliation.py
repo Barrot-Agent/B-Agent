@@ -106,3 +106,45 @@ def test_coinbase_xrp_products_keep_collateral_and_derivatives_risk_models_separ
     assert cb["xrp_perpetual_futures"]["physical_xrp_delivery"] is False
     assert cb["cbxrp_reserve"]["status"].startswith("MATERIAL_RENDER_DATE_CONFLICT")
     assert cb["morpho_cbXRP_usdc_market"]["max_ltv_pct"] == 62.5
+
+
+def test_sbic_identity_is_not_conflated_with_sbi_holdings_or_xrp():
+    snapshot = _load("snapshots/20261031T183000Z-sbic-sbi-rlusd-etf-flow-conflict.json")
+    identity = snapshot["sbic_identity"]
+    assert identity["legal_name"] == "Tokyo Small and Medium Business Investment & Consultation Co., Ltd."
+    assert identity["public_name"] == "SBIC East Japan"
+    assert identity["distinction"]["relationship_to_sbi_holdings"].startswith("NO_AFFILIATION")
+    assert identity["distinction"]["relationship_to_xrp"] == "NO_DIRECT_XRP_OR_RIPPLE_RELATIONSHIP_ESTABLISHED"
+    assert identity["chatgpt_context"]["speaker_affiliation"] == "Microsoft Japan executive evangelist"
+
+
+def test_sbi_vc_trade_rlusd_listing_is_distribution_not_xrp_capital_flow():
+    snapshot = _load("snapshots/20261031T183000Z-sbic-sbi-rlusd-etf-flow-conflict.json")
+    sbi = snapshot["sbi_group_xrp_and_rlusd"]
+    assert sbi["sbi_vc_trade_relationship"] == "SBI Holdings consolidated subsidiary"
+    assert sbi["rlusd_japan_distribution"]["start_date"] == "2026-06-24"
+    assert sbi["rlusd_japan_distribution"]["actual_rlusd_volume"] == "NOT_DISCLOSED"
+    assert sbi["rlusd_japan_distribution"]["xrp_purchase_or_collateral_flow"] == "NOT_ESTABLISHED"
+    assert sbi["visa_rewards_card"]["reward_assets"] == ["BTC", "ETH", "XRP"]
+    assert sbi["visa_rewards_card"]["xrp_reward_inventory_source"] == "UNKNOWN"
+
+
+def test_xrp_etf_provider_conflict_blocks_directional_feature_admission():
+    snapshot = _load("snapshots/20261031T183000Z-sbic-sbi-rlusd-etf-flow-conflict.json")
+    flows = snapshot["xrp_etf_flow_observations"]
+    totals = {item["provider"]: item["reported_total_usd"] for item in flows["observations"]}
+    assert totals["CryptoETF.today"] == 200000
+    assert totals["Maketo"] == -496500
+    assert totals["CryptoKeyhole"] == -1412000
+    assert len(flows["material_conflicts"]) >= 4
+    assert flows["source_independence"].startswith("All three are secondary aggregators")
+    assert flows["admission"] == "NOT_ADMITTED_TO_DIRECTIONAL_MODEL"
+    graph = _load("relationship_graph_addenda/20261031T183000Z-sbic-sbi-rlusd-etf-flow-conflict.json")
+    ids = {item["id"] for item in graph["hypotheses"]}
+    assert {"H-SBIC-NAME-COLLISION", "H-SBI-RLUSD-DISTRIBUTION", "H-ETF-FLOW-SESSION-ALIGNMENT", "H-ETF-FLOW-UNIVERSE"} <= ids
+    bundle = _load("sources/20261031T183000Z-sbic-sbi-etf-flow-source-bundle.json")
+    source_ids = {item["source_id"] for item in bundle["sources"]}
+    assert set(snapshot["source_ids"]) <= source_ids
+    assert set(graph["source_ids"]) <= source_ids
+    assert snapshot["prediction"]["forecast_status"] == "NOT_ISSUED"
+    assert snapshot["prediction"]["directional_features_admitted"] == []
