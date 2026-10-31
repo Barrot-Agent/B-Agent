@@ -1,0 +1,112 @@
+{
+  "record_type": "repository_audit_snapshot",
+  "schema_version": "1.0",
+  "audit_id": "AUDIT-20261031T085233Z-SBI-JAPAN-REGULATION-AND-RESEARCH-BRANCH-STATE",
+  "captured_at_utc": "2026-10-31T08:52:33Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+  "source_reference_count": 12,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031T085233Z-SBI-BITBANK-CLOSE",
+    "SRC-20261031T085233Z-SBI-BITBANK-COMBINATION",
+    "SRC-20261031T085233Z-BITBANK-XRPJPY",
+    "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+    "SRC-20261031T085233Z-ORICO-XRP-POINTS",
+    "SRC-20261031T085233Z-SBI-SHINSEI-XRP-DEPOSIT-REWARD",
+    "SRC-20261031T085233Z-RIPPLE-RLUSD-JAPAN-SBI",
+    "SRC-20261031T085233Z-SBIVC-RLUSD-CUSTODY-GROWTH",
+    "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM",
+    "SRC-20261031T085233Z-XRPL-NO-NEW-XRP-ISSUANCE",
+    "SRC-20261031T085233Z-SBI-VC-TRADE-XRPJPY-LEVERAGE"
+  ],
+  "research_branch": {
+    "head_sha": "3700b322c0d56d3056c805c2506c2207297e49f7",
+    "validator_run_id": 41186290754,
+    "validator_status": "PASS",
+    "shards_checked": 372,
+    "tests_passed": 20,
+    "errors": [],
+    "state_mutated": false,
+    "pr_validator_run_id": 41186294402,
+    "pr_validator_status": "PASS",
+    "gate_run_id": 41186294445,
+    "gate_status": "PASS_MERGE_DISABLED"
+  },
+  "main": {
+    "sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "main_changed_by_this_run": false,
+    "scheduled_cross_analysis_writer_remains_active": true
+  },
+  "approval_workflow": {
+    "run_id": 41186289976,
+    "event": "push",
+    "conclusion": "failure",
+    "jobs": 0,
+    "main_fix_status": "NOT_ACTIVE_UNTIL_PR1402_MERGED"
+  },
+  "prs": {
+    "1400": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head": "005b03e73a22778fe384af14f477969b2eaba503",
+      "ci": 41185194437,
+      "tests": 370,
+      "subtests": 8,
+      "gate": 41185194439
+    },
+    "1401": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head": "275ca3b3856db4324e89f9adb46225f1a2772956",
+      "ci": 41183168254,
+      "tests": 345,
+      "subtests": 8,
+      "gate": 41183168176
+    },
+    "1402": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head": "da31a8392fa4f9acd09a55dff77ba7892f143751",
+      "push_test": 41184448544,
+      "push_test_status": "PASS_ON_PR_BRANCH",
+      "default_workflow_zero_job_runs": [
+        41185678470,
+        41185804211,
+        41186047415,
+        41186289976
+      ],
+      "manual_dispatch_tested": false
+    }
+  },
+  "open_pr_inventory": {
+    "total_open": 176,
+    "drafts": 166,
+    "ready_for_review": 10,
+    "main_based": 174,
+    "current_main_base": 2,
+    "stale_main_base": 172,
+    "non_main_base": 2,
+    "base_breakdown_captured_at_utc": "2026-10-31T08:24:52Z"
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "model_training": "NOT_IMPLEMENTED",
+    "walk_forward": "NOT_IMPLEMENTED",
+    "calibration": "NOT_VERIFIED",
+    "concurrency_lock": "NOT_IMPLEMENTED"
+  },
+  "platforms": {
+    "designed": 9,
+    "external_authenticated": 0,
+    "live_external_collaborators": 0,
+    "verified_handoffs": 0
+  },
+  "safety": {
+    "main_changed_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "manual_workflow_dispatch_performed": false,
+    "paper_position_mutated": false,
+    "real_money_trade_performed": false
+  }
+}

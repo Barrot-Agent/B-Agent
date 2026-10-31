@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "BARROT-XRP-ARCH-20261029T2210Z-LOSSLESS-LEDGER-SHARDING",
+  "recorded_at_utc": "2026-10-29T22:10:00Z",
+  "status": "EXECUTED_PENDING_VALIDATION",
+  "context": {
+    "previous_ledger_characters": 995011,
+    "source_records": 1161,
+    "run_updates": 202,
+    "limitations": 260,
+    "reason": "The inline index approached the GitHub Contents API boundary. Historical arrays are externalized into immutable shards; the pre-migration ledger remains in Git history."
+  },
+  "decision": "Replace inline sources/run_updates/limitations arrays with archive_pointer objects. Each shard stores ordered records and is referenced by path, Git blob SHA, chunk index/count and record count. A backward-compatible read-only validator resolves legacy inline arrays and sharded pointers.",
+  "preservation": [
+    "No source/run-update/limitation records are discarded; concatenated archive records must equal prior arrays exactly.",
+    "All prior snapshots and graph addenda remain unchanged.",
+    "The pre-migration ledger remains in the parent commit and Git history.",
+    "Dedicated research branch only; no main write or merge."
+  ],
+  "required_tests": [
+    "Legacy inline index remains readable.",
+    "Sharded arrays reconstruct exactly in original order.",
+    "Git blob hashes verify for every shard.",
+    "Missing shard, bad digest, path traversal, count mismatch and duplicate source IDs fail closed.",
+    "Latest snapshot pointer and source references resolve.",
+    "Validation does not mutate state."
+  ],
+  "branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "parent_sha": "99a1880fa6fb2f0ef681ce816c2421f6de24a676",
+  "main_sha": "98e9107d92a1e19cfcec0b268c64f834c88208ae",
+  "archive_schema_version": "1.0",
+  "digest_algorithm": "Git blob SHA-1 over exact shard bytes",
+  "validator_path": "scripts/validate_xrp_ledger_index.py",
+  "test_path": "tests/test_xrp_ledger_index.py",
+  "full_ci_status": "NOT_RUN_FOR_RESEARCH_BASE_BRANCH",
+  "forecast_status": "NOT_ISSUED"
+}

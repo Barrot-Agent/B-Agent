@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 15,
+  "chunk_count": 16,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T07:11:28Z",
+  "records": [
+    "Binance Support's 2026-10-30 02:23 UTC incident update said deposits and withdrawals were temporarily suspended; a verified Binance News post later said deposits were normal and withdrawals paused, but its exact publication time and per-network scope were not exposed. Preserve the conflict until timestamped network-specific status is available.",
+    "Investing.com displayed an OKX XRP/USD quote at 03:41:35 UTC; it was over three hours old at the 07:09 UTC capture. Its separate daily-row last/high/low/volume fields have different or unclear cutoffs and volume denomination. Do not use as a current consolidated spot price.",
+    "TheXRPInvestor dashboard headline says 12 products while its categories (6 spot, 4 derivative, 1 index) sum to 11. Its universe mixes product types and is not comparable to spot-only ETF flow data until a product-level crosswalk is built.",
+    "CoinDesk's Binance 14 proof-of-reserves crosswalk concerns an Ethereum hot wallet and ETH customer backing. It does not identify the five compromised XRPL source wallets, the XRP-BF2 reserve address or an XRP-specific post-incident reserve shortfall.",
+    "TRM and Bitquery provide separate analytics of the same public XRPL transfer. Bitquery's no-outgoing observation ends at 03:54 UTC; subsequent disposition is unknown. A transfer to an attacker address is not proof of sale."
+  ]
+}

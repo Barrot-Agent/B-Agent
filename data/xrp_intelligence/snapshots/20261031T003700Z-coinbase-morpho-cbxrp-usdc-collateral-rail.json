@@ -1,0 +1,634 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T003700Z-COINBASE-MORPHO-CBXRP-USDC-COLLATERAL-RAIL",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T003700Z-coinbase-morpho-cbxrp-usdc-collateral-rail.json",
+  "created_at_utc": "2026-10-31T00:37:00Z",
+  "captured_at_utc": "2026-10-31T00:36:00Z",
+  "data_cutoff_utc": "2026-10-31T00:36:00Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T002909Z-cbxrp-base-dex-liquidity-and-supply-quality.json",
+  "source_ids": [
+    "SRC-COINBASE-LOAN-BLOG-20261031T0037Z",
+    "SRC-COINBASE-LOAN-COLLATERAL-20261031T0037Z",
+    "SRC-COINBASE-LOAN-BACKUP-CBXRP-20261031T0037Z",
+    "SRC-COINBASE-LOAN-HEALTH-20261031T0037Z",
+    "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+    "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z",
+    "SRC-CIRCLE-USDC-BASE-20261031T0037Z",
+    "SRC-CIRCLE-USDC-XRPL-20261031T0037Z",
+    "SRC-THEBLOCK-COINBASE-XRP-MORPHO-20260218",
+    "SRC-GITHUB-BARROT-MAIN-PR1388-AUDIT-20261031T0037Z",
+    "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+    "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+  ],
+  "source_reference_count": 12,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "F-20261031T003700Z-01",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Coinbase's official product materials confirm XRP-backed USDC loans through Morpho on Base and explicitly require cbXRP on Base when adding collateral to an XRP loan.",
+      "source_ids": [
+        "SRC-COINBASE-LOAN-BLOG-20261031T0037Z",
+        "SRC-COINBASE-LOAN-COLLATERAL-20261031T0037Z",
+        "SRC-COINBASE-LOAN-BACKUP-CBXRP-20261031T0037Z",
+        "SRC-COINBASE-LOAN-HEALTH-20261031T0037Z"
+      ],
+      "disconfirming_evidence": "No official Coinbase disclosure in this run identifies the exact market ID or the fraction of market activity generated through its interface."
+    },
+    {
+      "finding_id": "F-20261031T003700Z-02",
+      "classification": "STRONGLY_SUPPORTED_INFERENCE",
+      "statement": "Morpho market 0xd4a903…6e4109 is the likely primary market behind Coinbase's XRP loan product: it is the cbXRP/USDC Base market, uses 62.5% LLTV, predates the Coinbase XRP-loan expansion and is identified as such by an independent Morpho-data project. The market is permissionless, so not all market volume belongs to Coinbase customers.",
+      "source_ids": [
+        "SRC-COINBASE-LOAN-BLOG-20261031T0037Z",
+        "SRC-COINBASE-LOAN-BACKUP-CBXRP-20261031T0037Z",
+        "SRC-COINBASE-LOAN-HEALTH-20261031T0037Z",
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z",
+        "SRC-THEBLOCK-COINBASE-XRP-MORPHO-20260218"
+      ],
+      "disconfirming_evidence": "No official Coinbase market-ID mapping or Coinbase-only borrower/volume disclosure."
+    },
+    {
+      "finding_id": "F-20261031T003700Z-03",
+      "classification": "SOURCED_CLAIM",
+      "statement": "At 00:31 UTC the market-data snapshot reports $59.11M USDC borrowed against 118.46M cbXRP valued at $148.9M, 90.4% utilization and 62.5% LLTV. It also reports 1,120 liquidations in 30 days and $3.94M debt repaid.",
+      "source_ids": [
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z"
+      ],
+      "disconfirming_evidence": "Market-wide third-party API-derived values; Morpho app liquidity/utilization fields differ and need block-consistent reconciliation."
+    },
+    {
+      "finding_id": "F-20261031T003700Z-04",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Circle issues native USDC on Base and on XRPL. USDC is the debt asset in the cbXRP/USDC Morpho market; no direct Circle lender role or Base↔XRPL bridge flow was established.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-BASE-20261031T0037Z",
+        "SRC-CIRCLE-USDC-XRPL-20261031T0037Z",
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z"
+      ],
+      "disconfirming_evidence": "No Circle market-supply address or cross-chain transfer route was identified."
+    },
+    {
+      "finding_id": "F-20261031T003700Z-05",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Coinbase's published cbXRP reserve page lists 20 XRPL reserve addresses and 151,405,263.6 XRP against 151,403,016.069 cbXRP. The 20 addresses have zero exact matches with the five Binance incident source wallets.",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ],
+      "disconfirming_evidence": "Coinbase's reserve page is first-party and not an independent audit; zero exact address overlap does not rule out indirect flows or common beneficial control."
+    },
+    {
+      "finding_id": "F-20261031T003700Z-06",
+      "classification": "INFERENCE",
+      "statement": "The collateralized-loan rail may reduce forced sales by allowing some XRP holders to borrow USDC while retaining exposure, but the same structure creates a conditional liquidation channel during drawdowns. Neither net XRP demand nor forced XRP spot selling is demonstrated.",
+      "source_ids": [
+        "SRC-COINBASE-LOAN-BLOG-20261031T0037Z",
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z",
+        "SRC-THEBLOCK-COINBASE-XRP-MORPHO-20260218"
+      ],
+      "disconfirming_evidence": "Loan proceeds are reportedly barred from Coinbase trading; no onchain trace from borrowed USDC to XRP purchases or from cbXRP liquidation to native XRP sales was established."
+    },
+    {
+      "finding_id": "F-20261031T003700Z-07",
+      "classification": "UNKNOWN",
+      "statement": "Coinbase's share of the permissionless cbXRP/USDC market, Circle's direct USDC lending exposure, and the ultimate beneficial source of vault deposits remain unknown.",
+      "source_ids": [
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z",
+        "SRC-CIRCLE-USDC-BASE-20261031T0037Z"
+      ],
+      "disconfirming_evidence": "None; the available sources do not disclose these allocations."
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261031T003700Z-01",
+      "asset": "cbXRP/USDC",
+      "metric": "morpho_market_aggregate_20261031T0031Z",
+      "value": {
+        "network": "Base",
+        "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+        "usdc_supplied_usd": 65420000,
+        "usdc_borrowed_usd": 59110000,
+        "utilization_pct": 90.4,
+        "available_to_borrow_usd": 6310000,
+        "cbxrp_collateral_units": 118460000,
+        "collateral_value_usd": 148900000,
+        "lltv_pct": 62.5,
+        "supply_apy_pct": 6.83,
+        "borrow_apy_pct": 7.59,
+        "open_loans": 11968,
+        "liquidations_30d": 1120,
+        "debt_repaid_by_liquidations_30d_usd": 3940000,
+        "liquidation_bonus_pct": 12.68,
+        "collateral_at_risk_if_price_down_20pct_usd": 21480000,
+        "as_of_utc": "2026-10-31T00:31:00Z"
+      },
+      "unit": "USD_XRP_cbXRP_USDC_percent",
+      "as_of_utc": "2026-10-31T00:31:00Z",
+      "retrieved_at_utc": "2026-10-31T00:37:00Z",
+      "source_ids": [
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z"
+      ],
+      "classification": "THIRD_PARTY_MORPHO_API_AND_ONCHAIN_MARKET_SNAPSHOT",
+      "admission_status": "COLLATERAL_AND_LIQUIDITY_CONTEXT_ONLY_NOT_XRP_PRICE_FEATURE",
+      "notes": "Market-wide permissionless data; not Coinbase customer-only. 20% downside risk is collateral at risk, not expected liquidation or spot sale."
+    },
+    {
+      "observation_id": "OBS-20261031T003700Z-02",
+      "asset": "cbXRP/USDC",
+      "metric": "morpho_protocol_market_risk_and_oracle",
+      "value": {
+        "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+        "outstanding_loans_usd": 59160000,
+        "lltv_pct": 62.5,
+        "liquidation_bonus_pct": 12.67,
+        "realized_bad_debt_usdc": 0,
+        "unrealized_bad_debt_usdc": 0,
+        "oracle_provider": "Chainlink",
+        "oracle_heartbeat": "1 day",
+        "oracle_deviation_pct": 0.5,
+        "created_at": "2026-01-15",
+        "as_of_utc": "2026-10-31T00:36:00Z"
+      },
+      "unit": "USD_percent_protocol_parameters",
+      "as_of_utc": "2026-10-31T00:36:00Z",
+      "retrieved_at_utc": "2026-10-31T00:37:00Z",
+      "source_ids": [
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z"
+      ],
+      "classification": "MORPHO_PROTOCOL_INTERFACE_SNAPSHOT",
+      "admission_status": "RISK_CONTEXT_ONLY; LIQUIDITY_FIELDS_EXCLUDED_PENDING_RECONCILIATION",
+      "notes": "Morpho app reports $15.31M total liquidity, $74.47M market size and 91.67% utilization; those values are not arithmetically consistent and are excluded."
+    },
+    {
+      "observation_id": "OBS-20261031T003700Z-03",
+      "asset": "cbXRP",
+      "metric": "coinbase_published_reserve_and_supply",
+      "value": {
+        "reserve_xrp": 151405263.6,
+        "supply_cbxrp": 151403016.069,
+        "coverage_pct": 100.0014844691066,
+        "surplus_xrp": 2247.531,
+        "reserve_addresses": 20,
+        "listed_address_sum_xrp": 151405263.598,
+        "exact_overlap_with_five_binance_incident_sources": 0,
+        "refresh_display": "2026-10-30 13:29 local display; timezone unspecified"
+      },
+      "unit": "XRP_cbXRP_percent_addresses",
+      "as_of_utc": "COINBASE_PAGE_REFRESH_TIMEZONE_UNSPECIFIED",
+      "retrieved_at_utc": "2026-10-31T00:26:53Z",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ],
+      "classification": "COINBASE_FIRST_PARTY_PROOF_OF_RESERVES_DISPLAY",
+      "admission_status": "CUSTODY_AND_BACKING_CONTEXT_ONLY_NOT_TRADABLE_FLOAT",
+      "notes": "Coinbase says reserve may exceed supply due to timing differences, delayed transactions, fees or operational movements; not an independent audit."
+    },
+    {
+      "observation_id": "OBS-20261031T003700Z-04",
+      "asset": "USDC",
+      "metric": "morpho_vault_supply_concentration",
+      "value": {
+        "market_total_supply_usd": 65420000,
+        "listed_vault_supply_usd": 58560000,
+        "top_steakhouse_two_vaults_usd": 39090000,
+        "top_three_vaults_usd": 52280000,
+        "top_three_share_of_listed_vault_supply_pct": 89.275956284153,
+        "top_three_share_of_market_supply_pct": 79.914399266279,
+        "curators": [
+          "Steakhouse",
+          "Clearstar",
+          "K3",
+          "Gauntlet",
+          "Yearn"
+        ]
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-31T00:31:00Z",
+      "retrieved_at_utc": "2026-10-31T00:37:00Z",
+      "source_ids": [
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z"
+      ],
+      "classification": "MORPHO_API_VAULT_ALLOCATION_SNAPSHOT",
+      "admission_status": "LENDER_CONCENTRATION_CONTEXT_ONLY",
+      "notes": "Vault allocation is not ultimate beneficial-depositor concentration and does not establish Circle as a lender."
+    },
+    {
+      "observation_id": "OBS-20261031T003700Z-05",
+      "asset": "XRP",
+      "metric": "coinbase_xrp_loan_product_parameters",
+      "value": {
+        "maximum_usdc_loan_reported_usd": 100000,
+        "reported_initial_max_ltv_pct": 49,
+        "market_lltv_pct": 62.5,
+        "region": "United States excluding New York",
+        "loan_asset": "USDC",
+        "collateral_representation": "cbXRP on Base",
+        "coinbase_interface": true,
+        "morpho_execution": true
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-31T00:37:00Z",
+      "retrieved_at_utc": "2026-10-31T00:37:00Z",
+      "source_ids": [
+        "SRC-COINBASE-LOAN-BLOG-20261031T0037Z",
+        "SRC-COINBASE-LOAN-BACKUP-CBXRP-20261031T0037Z",
+        "SRC-COINBASE-LOAN-HEALTH-20261031T0037Z",
+        "SRC-THEBLOCK-COINBASE-XRP-MORPHO-20260218"
+      ],
+      "classification": "OFFICIAL_PRODUCT_PLUS_SECONDARY_PARAMETER_CROSSCHECK",
+      "admission_status": "PRODUCT_AND_COLLATERAL_CONTEXT_NOT_MARKET_DEMAND"
+    },
+    {
+      "observation_id": "OBS-20261031T003700Z-06",
+      "asset": "USDC",
+      "metric": "circle_native_network_support",
+      "value": {
+        "base_native": true,
+        "xrpl_native": true,
+        "base_contract_suffix": "...2913",
+        "direct_base_xrpl_bridge_established": false
+      },
+      "unit": "boolean_networks",
+      "as_of_utc": "2026-10-31T00:37:00Z",
+      "retrieved_at_utc": "2026-10-31T00:37:00Z",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-BASE-20261031T0037Z",
+        "SRC-CIRCLE-USDC-XRPL-20261031T0037Z"
+      ],
+      "classification": "OFFICIAL_CIRCLE_NETWORK_DEPLOYMENTS",
+      "admission_status": "NETWORK_CONTEXT_ONLY_NOT_CROSSCHAIN_FLOW"
+    },
+    {
+      "observation_id": "OBS-20261031T003700Z-07",
+      "asset": "cbXRP/USDC",
+      "metric": "morpho_market_liquidation_stress",
+      "value": {
+        "collateral_at_risk_if_cbXRP_down_20pct_usd": 21480000,
+        "liquidations_30d": 1120,
+        "debt_repaid_30d_usd": 3940000,
+        "realized_bad_debt_displayed_usdc": 0,
+        "liquidation_bonus_pct": 12.68
+      },
+      "unit": "USD_events_percent",
+      "as_of_utc": "2026-10-31T00:31:00Z",
+      "retrieved_at_utc": "2026-10-31T00:37:00Z",
+      "source_ids": [
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z"
+      ],
+      "classification": "THIRD_PARTY_STRESS_SCENARIO_AND_PROTOCOL_DISPLAY",
+      "admission_status": "SCENARIO_ONLY_NOT_EXPECTED_LOSS_OR_XRP_SELL_FLOW"
+    },
+    {
+      "observation_id": "OBS-20261031T003700Z-08",
+      "asset": "XRP",
+      "metric": "binance_incident_vs_coinbase_cbxrp_reserve_address_overlap",
+      "value": {
+        "binance_incident_source_wallets": 5,
+        "coinbase_cbxrp_reserve_addresses": 20,
+        "exact_string_matches": 0
+      },
+      "unit": "addresses",
+      "as_of_utc": "2026-10-31T00:26:53Z",
+      "retrieved_at_utc": "2026-10-31T00:37:00Z",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "classification": "EXACT_ADDRESS_CROSSWALK",
+      "admission_status": "IDENTITY_SEPARATION_ONLY_NOT_BENEFICIAL_OWNERSHIP"
+    },
+    {
+      "observation_id": "OBS-20261031T003700Z-09",
+      "asset": "B-Agent",
+      "metric": "current_main_open_pr_inventory_and_safety",
+      "value": {
+        "main_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+        "open_prs": 163,
+        "draft_prs": 153,
+        "ready_prs": 10,
+        "main_based_prs": 161,
+        "stale_main_base_prs": 159,
+        "current_main_base_prs": 2,
+        "non_main_base_prs": 2,
+        "pr1388_ci_tests": 343,
+        "pr1388_ci_subtests": 8,
+        "pr1388_gate": "PASS_MERGE_DISABLED"
+      },
+      "unit": "repository_records",
+      "as_of_utc": "2026-10-31T00:37:00Z",
+      "retrieved_at_utc": "2026-10-31T00:37:00Z",
+      "source_ids": [
+        "SRC-GITHUB-BARROT-MAIN-PR1388-AUDIT-20261031T0037Z"
+      ],
+      "classification": "GITHUB_API_AND_EXACT_HEAD_CI_AUDIT",
+      "admission_status": "ENGINEERING_STATE_NOT_MARKET_FEATURE"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T003700Z-01",
+      "claim": "The 62.5% cbXRP/USDC Morpho market is the principal market accessed by Coinbase's XRP-backed loan interface.",
+      "assessment": "STRONGLY_SUPPORTED_INFERENCE_NOT_OFFICIALLY_CONFIRMED",
+      "supporting_evidence": [
+        "Coinbase confirms XRP loans use Morpho on Base and requires cbXRP on Base as collateral.",
+        "Morpho market is cbXRP/USDC on Base with 62.5% LLTV and was created January 15, 2026, before Coinbase's February 18 XRP-loan expansion.",
+        "Morpho Watch independently identifies it as the market behind Coinbase XRP loans."
+      ],
+      "disconfirming_evidence": [
+        "Morpho market is permissionless and can be accessed outside Coinbase.",
+        "Coinbase does not publish a market ID or channel-level customer volume."
+      ],
+      "unknowns": [
+        "Coinbase UI share of total market borrowing.",
+        "Whether Coinbase customers use other cbXRP markets or direct Morpho routes."
+      ],
+      "confidence": "HIGH_FOR_PRODUCT_MATCH; MEDIUM_FOR_EXCLUSIVE_OR_PRIMARY_CHANNEL"
+    },
+    {
+      "hypothesis_id": "H-20261031T003700Z-02",
+      "claim": "cbXRP collateralized borrowing can reduce the need for some XRP holders to sell existing XRP to raise liquidity, but does not establish incremental XRP purchases.",
+      "assessment": "MECHANISM_CONFIRMED_PRICE_IMPACT_UNKNOWN",
+      "supporting_evidence": [
+        "Coinbase markets the product as borrowing USDC without selling XRP.",
+        "cbXRP is locked on Morpho while underlying XRP remains in Coinbase custody."
+      ],
+      "disconfirming_evidence": [
+        "Loan proceeds cannot be used to trade on Coinbase under reported product terms.",
+        "No traced USDC-to-XRP purchase flow was found.",
+        "Borrowers may use proceeds for consumption, debt repayment, other assets or external venues."
+      ],
+      "unknowns": [
+        "Onward use of borrowed USDC.",
+        "Counterfactual amount of XRP that would otherwise have been sold."
+      ],
+      "confidence": "MEDIUM_FOR_LIQUIDITY_SUBSTITUTION; LOW_FOR_NET_XRP_PRICE_EFFECT"
+    },
+    {
+      "hypothesis_id": "H-20261031T003700Z-03",
+      "claim": "cbXRP liquidations can create a Base-side sell-pressure channel that may reach native XRP only if liquidators redeem or transfer the wrapped asset through Coinbase.",
+      "assessment": "POSSIBLE_TRANSMISSION_PATH_NOT_OBSERVED_END_TO_END",
+      "supporting_evidence": [
+        "Market has 62.5% LLTV, 12.68% bonus, 1,120 liquidations and $3.94M debt repaid over 30 days.",
+        "Approximately $21.48M collateral is estimated at risk under a 20% cbXRP decline."
+      ],
+      "disconfirming_evidence": [
+        "Morpho app displays zero realized and unrealized bad debt.",
+        "No complete liquidation→cbXRP sale→unwrap→XRPL/CEX sale path was traced.",
+        "Risk-at-price-decline is not an expected liquidation amount."
+      ],
+      "unknowns": [
+        "Liquidator inventory disposition.",
+        "Coinbase unwrap/redemption latency and resulting XRP transfers.",
+        "Actual slippage and pool depth at liquidation times."
+      ],
+      "confidence": "LOW_TO_MEDIUM"
+    },
+    {
+      "hypothesis_id": "H-20261031T003700Z-04",
+      "claim": "Circle's USDC is a core debt asset in this XRP collateral rail, but Circle is not shown to be the lender or collateral custodian.",
+      "assessment": "DEBT_ASSET_CONFIRMED_LENDER_ROLE_UNKNOWN",
+      "supporting_evidence": [
+        "Morpho market loan asset is USDC on Base.",
+        "Circle officially supports native USDC on Base and XRPL.",
+        "Vault allocations are listed under Steakhouse, Clearstar, K3, Gauntlet and Yearn."
+      ],
+      "disconfirming_evidence": [
+        "No Circle treasury or Circle Mint address was identified as a direct market supplier in this review.",
+        "Vault underlying depositor identities are not fully observable from the aggregate table."
+      ],
+      "unknowns": [
+        "Beneficial source of USDC deposits into vaults.",
+        "Any direct Circle market-making or lending allocation."
+      ],
+      "confidence": "HIGH_FOR_ISSUER_AND_ASSET; UNKNOWN_FOR_DIRECT_CIRCLE_CAPITAL"
+    },
+    {
+      "hypothesis_id": "H-20261031T003700Z-05",
+      "claim": "USDC supply concentration and high market utilization create a liquidity/rate sensitivity even when borrower positions are numerous.",
+      "assessment": "SUPPORTED_WITH_PROVIDER_FIELD_LIMITATIONS",
+      "supporting_evidence": [
+        "Morpho Watch reports 90.4% utilization and $6.31M available against $59.11M borrowed.",
+        "Top three listed vaults allocate $52.28M, about 79.9% of reported market supply.",
+        "Variable borrowing rates rise as utilization exceeds the 90% target."
+      ],
+      "disconfirming_evidence": [
+        "Additional vault liquidity may be allocated; the page estimates up to $7.18M available including allocator capacity.",
+        "Morpho app liquidity fields do not reconcile with the aggregator snapshot."
+      ],
+      "unknowns": [
+        "Block-consistent free liquidity and withdrawal queue behavior.",
+        "Vault-level concentration of ultimate depositors."
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "hypothesis_id": "H-20261031T003700Z-06",
+      "claim": "The Coinbase cbXRP reserve is separate from the Binance incident wallet cluster and should not be treated as exchange tradable float.",
+      "assessment": "EXACT_ADDRESS_SEPARATION_CONFIRMED; INDIRECT_RELATIONSHIP_UNKNOWN",
+      "supporting_evidence": [
+        "Coinbase publishes 20 cbXRP backing addresses and a 1:1 reserve/supply table.",
+        "None of the five Binance incident source addresses exactly matches the Coinbase reserve set.",
+        "Coinbase says underlying wrapped-asset backing is not sold, transferred or used for other purposes."
+      ],
+      "disconfirming_evidence": [
+        "Coinbase page is self-reported and not an independent audit.",
+        "Zero exact overlap does not rule out historical transfers or shared beneficial control."
+      ],
+      "unknowns": [
+        "Independent direct Base totalSupply and XRP reserve address balance verification at one block cutoff.",
+        "Any indirect historical flow between exchange clusters."
+      ],
+      "confidence": "HIGH_FOR_NO_EXACT_OVERLAP; MEDIUM_FOR_RESERVE_INDEPENDENCE"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "edge_id": "E-20261031T003700Z-01",
+      "from_entity": "Coinbase",
+      "relation": "offers_crypto_backed_USDC_loans_through",
+      "to_entity": "Morpho on Base",
+      "status": "OFFICIAL_COINBASE_PRODUCT_DISCLOSURE",
+      "source_ids": [
+        "SRC-COINBASE-LOAN-BLOG-20261031T0037Z",
+        "SRC-COINBASE-LOAN-COLLATERAL-20261031T0037Z",
+        "SRC-THEBLOCK-COINBASE-XRP-MORPHO-20260218"
+      ],
+      "details": "Coinbase provides the borrower interface; Morpho holds collateral and executes the onchain lending market."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-02",
+      "from_entity": "XRP",
+      "relation": "is_eligible_underlying_collateral_for",
+      "to_entity": "Coinbase USDC loan product",
+      "status": "OFFICIAL_COINBASE_PRODUCT_DISCLOSURE",
+      "source_ids": [
+        "SRC-COINBASE-LOAN-BLOG-20261031T0037Z",
+        "SRC-COINBASE-LOAN-BACKUP-CBXRP-20261031T0037Z"
+      ],
+      "details": "Coinbase's official product material includes XRP among supported collateral assets."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-03",
+      "from_entity": "XRP collateral",
+      "relation": "is_represented_on_Base_as",
+      "to_entity": "cbXRP",
+      "status": "OFFICIAL_COINBASE_ASSET_REQUIREMENT",
+      "source_ids": [
+        "SRC-COINBASE-LOAN-BACKUP-CBXRP-20261031T0037Z",
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ],
+      "details": "Coinbase's backup collateral table maps XRP loans to cbXRP on Base at contract 0xcb585250f852c6c6bf90434ab21a00f02833a4af."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-04",
+      "from_entity": "Coinbase",
+      "relation": "holds_1_to_1_underlying_reserves_for",
+      "to_entity": "cbXRP",
+      "status": "OFFICIAL_COINBASE_PROOF_OF_RESERVES_AND_WRAPPED_ASSETS_TERMS",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ],
+      "details": "Published reserve 151,405,263.6 XRP backs 151,403,016.069 cbXRP across 20 listed XRPL addresses; underlying backing is stated not to be sold, transferred or used for another purpose."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-05",
+      "from_entity": "cbXRP",
+      "relation": "is_collateral_in",
+      "to_entity": "Morpho Base market 0xd4a903…6e4109",
+      "status": "MORPHO_PROTOCOL_MARKET_INTERFACE",
+      "source_ids": [
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z",
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z"
+      ],
+      "details": "The market pairs cbXRP collateral with USDC debt and has a fixed 62.5% LLTV."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-06",
+      "from_entity": "Morpho Base market 0xd4a903…6e4109",
+      "relation": "borrows",
+      "to_entity": "USDC on Base",
+      "status": "MORPHO_PROTOCOL_MARKET_INTERFACE",
+      "source_ids": [
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z",
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z"
+      ],
+      "details": "Market-wide borrowed amount is approximately $59.1M at the 00:31 UTC snapshot."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-07",
+      "from_entity": "Circle",
+      "relation": "issues_native",
+      "to_entity": "USDC on Base",
+      "status": "OFFICIAL_CIRCLE_NETWORK_SUPPORT",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-BASE-20261031T0037Z"
+      ],
+      "details": "Circle Mint and APIs support native USDC on Base; Circle is the loan-asset issuer, not thereby a lender to this market."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-08",
+      "from_entity": "Circle",
+      "relation": "issues_native",
+      "to_entity": "USDC on XRPL",
+      "status": "OFFICIAL_CIRCLE_DEPLOYMENT_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-XRPL-20261031T0037Z"
+      ],
+      "details": "USDC is also natively available on XRPL; this separate deployment does not establish a direct Base↔XRPL transfer route."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-09",
+      "from_entity": "Steakhouse, Clearstar, K3, Gauntlet and Yearn vaults",
+      "relation": "allocate_USDC_supply_to",
+      "to_entity": "Morpho cbXRP/USDC market",
+      "status": "MORPHO_API_AND_PROTOCOL_INTERFACE",
+      "source_ids": [
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z"
+      ],
+      "details": "Nine listed vaults provide $58.56M of $65.42M supplied; top three provide $52.28M, approximately 79.9% of total market supply."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-10",
+      "from_entity": "Chainlink",
+      "relation": "provides_XRP_USD_price_oracle_for",
+      "to_entity": "Morpho cbXRP collateral market",
+      "status": "MORPHO_PROTOCOL_INTERFACE",
+      "source_ids": [
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z"
+      ],
+      "details": "Morpho app lists ChainlinkOracleV2, 1-day heartbeat and 0.5% deviation for the collateral price feed."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-11",
+      "from_entity": "Morpho liquidators",
+      "relation": "receive_liquidation_bonus_in",
+      "to_entity": "cbXRP",
+      "status": "MORPHO_MARKET_RISK_PARAMETERS",
+      "source_ids": [
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z"
+      ],
+      "details": "The market displays a 12.67–12.68% liquidation bonus; this is distinct from Coinbase Help's unresolved 4.38% penalty statement."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-12",
+      "from_entity": "Coinbase USDC loan borrowers",
+      "relation": "are_prohibited_by_reported_product_terms_from_using_proceeds_to_trade_on",
+      "to_entity": "Coinbase exchange",
+      "status": "SECONDARY_REPORT_OF_PRODUCT_TERMS",
+      "source_ids": [
+        "SRC-THEBLOCK-COINBASE-XRP-MORPHO-20260218"
+      ],
+      "details": "This limits claims that the loan product mechanically generates Coinbase spot XRP buying."
+    },
+    {
+      "edge_id": "E-20261031T003700Z-13",
+      "from_entity": "Coinbase cbXRP reserve addresses",
+      "relation": "have_zero_exact_address_overlap_with",
+      "to_entity": "Five Binance incident source wallets",
+      "status": "EXACT_STRING_CROSSWALK",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "details": "No exact address match; this does not rule out indirect ownership or historical transfers."
+    }
+  ],
+  "limitation_ids": [
+    "LIM-20261031T003700Z-01",
+    "LIM-20261031T003700Z-02",
+    "LIM-20261031T003700Z-03",
+    "LIM-20261031T003700Z-04",
+    "LIM-20261031T003700Z-05",
+    "LIM-20261031T003700Z-06",
+    "LIM-20261031T003700Z-07",
+    "LIM-20261031T003700Z-08"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Reconcile Morpho market supply, borrow, available liquidity, utilization and rates from one block-consistent public API snapshot; resolve Morpho app/aggregator field differences.",
+    "Obtain the exact Coinbase UI-to-Morpho market mapping and distinguish Coinbase-originated borrowers from permissionless direct users without inferring identity from wallet heuristics.",
+    "Build 30/90-day immutable series for cbXRP supply, Morpho borrow, collateral, vault allocation, rates, liquidations and Base DEX depth.",
+    "Trace sampled liquidation transactions from Morpho collateral seizure through cbXRP DEX sale, Coinbase redemption and any XRPL/CEX transfer; do not assume the full chain.",
+    "Clarify the Coinbase 4.38% penalty versus Morpho 12.67–12.68% liquidation bonus and the generic 86% note versus the market-specific 62.5% LLTV.",
+    "Identify vault-level USDC suppliers only from public, attributable records; do not attribute vault capital to Circle without direct evidence.",
+    "Keep all collateral and stablecoin measures out of price-prediction features until point-in-time history, data-quality checks, leakage controls and walk-forward tests pass."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatches": 0,
+  "paper_state_mutations": 0,
+  "real_money_trades": 0
+}

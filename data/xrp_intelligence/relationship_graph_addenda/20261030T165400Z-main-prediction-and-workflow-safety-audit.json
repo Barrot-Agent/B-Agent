@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T165400Z-MAIN-PREDICTION-AND-WORKFLOW-SAFETY-AUDIT",
+  "captured_at_utc": "2026-10-30T16:54:00Z",
+  "source_ids": [
+    "SRC-REPO-MAIN-XRP-SIGNAL-STALE-20261030T165400Z",
+    "SRC-REPO-MAIN-LEGACY-ACCURACY-20261030T165400Z",
+    "SRC-PR1355-FIXED-HORIZON-SAFETY-20261030T165400Z",
+    "SRC-REPO-MAIN-CROSS-ANALYSIS-WRITE-20261030T165400Z",
+    "SRC-REPO-MAIN-MERGE-QUEUE-MUTATION-20261030T165400Z",
+    "SRC-REPO-MAIN-PAPER-POSITION-IDENTITY-20261030T165400Z",
+    "SRC-PR1374-HF-TOKEN-ISOLATION-20261030T165400Z",
+    "SRC-PR1373-CROSS-ANALYSIS-READONLY-20261030T165400Z",
+    "SRC-REPO-APPROVAL-WORKFLOW-PUSH-ANOMALY-20261030T165400Z"
+  ],
+  "edges": [
+    {
+      "from": "MAIN_LATEST_XRP_SIGNAL",
+      "to": "PREDICTION_ENGINE",
+      "relationship": "Stale signal with confidence 0.0 and missing-model/Groq rate-limit errors; not a forecast.",
+      "status": "VERIFIED_REPOSITORY_ARTIFACT"
+    },
+    {
+      "from": "MAIN_LEGACY_ACCURACY_EVALUATOR",
+      "to": "PUBLIC_ACCURACY_METRIC_45_9_PERCENT",
+      "relationship": "Variable elapsed horizons, one later live price, mutable historical rows and neutral-band hits; metric is not comparable.",
+      "status": "VERIFIED_CODE_AND_ARTIFACT"
+    },
+    {
+      "from": "PR1355",
+      "to": "MAIN_LEGACY_ACCURACY_EVALUATOR",
+      "relationship": "Proposes NOT_EVALUATED/NOT_COMPARABLE status and read-only artifact workflow; draft and unmerged.",
+      "status": "PROPOSED_NOT_ACTIVE"
+    },
+    {
+      "from": "MAIN_CROSS_ANALYSIS_WORKFLOW",
+      "to": "MAIN_BRANCH_MUTATION",
+      "relationship": "Hourly and workflow_run triggers with contents:write and automatic commit/push.",
+      "status": "VERIFIED_MAIN_WORKFLOW"
+    },
+    {
+      "from": "PR1373",
+      "to": "MAIN_CROSS_ANALYSIS_WORKFLOW",
+      "relationship": "Proposes read-only artifact-only behavior; draft and unmerged.",
+      "status": "PROPOSED_NOT_ACTIVE"
+    },
+    {
+      "from": "MAIN_MERGE_QUEUE",
+      "to": "REPOSITORY_MUTATION_CAPABILITY",
+      "relationship": "contents:write, pull-requests:write, dry_run=false default and max_prs=0 unlimited.",
+      "status": "VERIFIED_MAIN_WORKFLOW"
+    },
+    {
+      "from": "MAIN_HF_MERGE_WORKFLOWS",
+      "to": "HF_TOKEN_EXPOSURE",
+      "relationship": "Main exposes HF_TOKEN in credential store and remote-code merge step; PR1374 moves token to a separate upload runner.",
+      "status": "VERIFIED_MAIN_AND_PROPOSED_MITIGATION"
+    },
+    {
+      "from": "PAPER_TRADING_STATE",
+      "to": "UNKNOWN_PRODUCT_POSITION",
+      "relationship": "Persisted nonzero position has position_product null; fail-closed guard proposed in PR1367.",
+      "status": "VERIFIED_STATE_UNMUTATED"
+    },
+    {
+      "from": "BARROT_APPROVAL_WORKFLOW",
+      "to": "PUSH_EVENT_ZERO_JOB_FAILURES",
+      "relationship": "Workflow file declares workflow_dispatch only, but repeated push-event failures create zero jobs and no logs.",
+      "status": "OBSERVED_ROOT_CAUSE_UNKNOWN"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T165400Z-LEGACY-ACCURACY-INVALID",
+      "claim": "The displayed 45.9% legacy metric is not a valid estimate of out-of-sample forecast skill.",
+      "status": "SUPPORTED_BY_CODE",
+      "support": [
+        "variable elapsed horizons",
+        "later live price used at first run after 24h",
+        "historical rows rewritten",
+        "neutral-band hit rule",
+        "no fixed target/horizon/calibration"
+      ],
+      "counter_hypothesis": [
+        "It can be retained as a historical operational statistic if explicitly labelled non-comparable; it cannot be used as predictive skill."
+      ]
+    },
+    {
+      "id": "HYP-20261030T165400Z-MAIN-WORKFLOW-WRITE-RISK",
+      "claim": "Scheduled automation can mutate main without a new human approval for each generated artifact.",
+      "status": "CONFIRMED_BY_WORKFLOW_CONFIGURATION",
+      "support": [
+        "cross-analysis contents:write and git push",
+        "merge queue write permissions and dry_run false default"
+      ],
+      "counter_hypothesis": [
+        "Current default merge queue mode is label-filtered, but still mutation-capable and unlimited; no dispatch was performed."
+      ]
+    },
+    {
+      "id": "HYP-20261030T165400Z-HF-TOKEN-EXPOSURE",
+      "claim": "Current HF merge workflows expose a write token to untrusted remote-code execution.",
+      "status": "CONFIRMED_CODE_PATH_NOT_EXPLOIT",
+      "support": [
+        "HF_TOKEN written to ~/.git-credentials",
+        "HF_TOKEN/HUGGINGFACE_HUB_TOKEN exposed to mergekit --trust-remote-code"
+      ],
+      "counter_hypothesis": [
+        "No exploit or compromise is evidenced; PR1374 proposes a separate upload runner but remains unmerged."
+      ]
+    },
+    {
+      "id": "HYP-20261030T165400Z-APPROVAL-WORKFLOW-ANOMALY",
+      "claim": "The repeated push-event approval-workflow failures arise from a GitHub workflow parsing or event-routing defect.",
+      "status": "UNRESOLVED_HYPOTHESIS",
+      "support": [
+        "push event metadata despite workflow_dispatch-only YAML",
+        "zero jobs and no logs"
+      ],
+      "counter_hypothesis": [
+        "Available evidence cannot distinguish platform routing, workflow parsing, connector representation or another GitHub-side cause."
+      ]
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

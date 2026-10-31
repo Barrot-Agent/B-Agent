@@ -1,0 +1,154 @@
+{
+  "record_type": "xrp_relationship_graph_addendum",
+  "schema_version": "1.0",
+  "graph_id": "GRAPH-20261030T213000Z-R39TA-BINANCE-OMNIBUS-RLUSD-DISAMBIGUATION",
+  "captured_at_utc": "2026-10-30T21:30:00Z",
+  "source_ids": [
+    "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2130Z",
+    "SRC-BITHOMP-RNXP4H-TRANSACTIONS-20261030T2130Z",
+    "SRC-BITHOMP-RNHSFM-ACCOUNT-20261030T2130Z",
+    "SRC-BITHOMP-RNHSFM-TO-R39TA-RLUSD-TX-20261030T2130Z",
+    "SRC-BITHOMP-RA-RVLN-TO-R39TA-20M-XRP-TX-20261030T2130Z",
+    "SRC-BITHOMP-R39TA-TO-BINANCE-10M-XRP-TX-20261030T2130Z",
+    "SRC-BITHOMP-R39TA-TO-BINANCE-9999197-XRP-TX-20261030T2130Z",
+    "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2128Z",
+    "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RNXP4H-ACCOUNT-20261030T2128Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z",
+    "SRC-BINANCE-REPLENISHMENT-20261030T2040Z",
+    "SRC-COINBASE-RIPPLE-RLUSD-20261030T2040Z"
+  ],
+  "edges": [
+    {
+      "edge_id": "E-20261030T213000Z-01",
+      "from": "raRVLN",
+      "relation": "transfers_XRP_to",
+      "to": "r39TA",
+      "amount_xrp": 20000000,
+      "time_utc": "2026-10-30T20:16:10Z",
+      "ledger_index": 108008372,
+      "destination_tag": 3861282475,
+      "status": "CONFIRMED_LEDGER_TRANSFER_AND_BALANCE_CHANGE",
+      "source_ids": [
+        "SRC-BITHOMP-RA-RVLN-TO-R39TA-20M-XRP-TX-20261030T2130Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T213000Z-02",
+      "from": "r39TA",
+      "relation": "deposits_XRP_to",
+      "to": "rNxp4h (Binance-labelled)",
+      "amount_xrp": 10000000,
+      "time_utc": "2026-10-30T20:47:00Z",
+      "ledger_index": 108008828,
+      "destination_tag": 499932645,
+      "status": "CONFIRMED_LEDGER_DEPOSIT_NOT_SALE",
+      "source_ids": [
+        "SRC-BITHOMP-R39TA-TO-BINANCE-10M-XRP-TX-20261030T2130Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T213000Z-03",
+      "from": "r39TA",
+      "relation": "deposits_XRP_to",
+      "to": "rNxp4h (Binance-labelled)",
+      "amount_xrp": 9999197.11,
+      "time_utc": "2026-10-30T20:47:20Z",
+      "ledger_index": 108008833,
+      "destination_tag": 499932645,
+      "status": "CONFIRMED_LEDGER_DEPOSIT_NOT_SALE",
+      "source_ids": [
+        "SRC-BITHOMP-R39TA-TO-BINANCE-9999197-XRP-TX-20261030T2130Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T213000Z-04",
+      "from": "Bitso/Uphold/Bitget/other tagged depositors",
+      "relation": "send_tagged_customer_deposits_to",
+      "to": "rNxp4h (Binance-labelled)",
+      "status": "CONFIRMED_VISIBLE_DEPOSIT_PATTERN; INTERNAL_WALLET_ROLE_INFERRED",
+      "source_ids": [
+        "SRC-BITHOMP-RNXP4H-TRANSACTIONS-20261030T2130Z"
+      ],
+      "notes": "Multiple distinct destination tags and labelled exchange senders are consistent with a shared exchange deposit/omnibus account; not proof of reserve exclusion."
+    },
+    {
+      "edge_id": "E-20261030T213000Z-05",
+      "from": "rnhSfm (unlabelled)",
+      "relation": "transfers_RLUSD_to",
+      "to": "r39TA",
+      "amount": 10000000,
+      "currency": "RLUSD",
+      "time_utc": "2026-10-30T18:46:51Z",
+      "destination_tag": 3861282475,
+      "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+      "status": "CONFIRMED_RIPPLE_ISSUED_TOKEN_TRANSFER_FROM_UNLABELLED_SENDER",
+      "source_ids": [
+        "SRC-BITHOMP-RNHSFM-ACCOUNT-20261030T2130Z",
+        "SRC-BITHOMP-RNHSFM-TO-R39TA-RLUSD-TX-20261030T2130Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261030T213000Z-06",
+      "from": "Bithomp transaction label",
+      "relation": "identifies_token_issuer_not_sender",
+      "to": "Ripple RLUSD issuer rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+      "status": "CONFIRMED_RAW_TRANSACTION_ISSUER_FIELD; SENDER_OWNERSHIP_UNKNOWN",
+      "source_ids": [
+        "SRC-BITHOMP-RNHSFM-ACCOUNT-20261030T2130Z",
+        "SRC-BITHOMP-RNHSFM-TO-R39TA-RLUSD-TX-20261030T2130Z",
+        "SRC-COINBASE-RIPPLE-RLUSD-20261030T2040Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-20261030T213000Z-01",
+      "claim": "rNxp4h is a shared Binance exchange deposit/omnibus wallet rather than a proof-of-reserves or reserve-replenishment wallet.",
+      "assessment": "STRONG_PATTERN_INFERENCE_NOT_OFFICIALLY_CONFIRMED",
+      "supporting_evidence": [
+        "Multiple small tagged deposits from Bitso, Uphold, Bitget and other senders are visible on the same account.",
+        "The two large r39TA transfers use a destination tag and increase the account balance."
+      ],
+      "disconfirming_evidence": [
+        "Binance has not published the internal role of rNxp4h.",
+        "A deposit wallet could also sweep into a reserve wallet; PoR address crosswalk is still required."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T213000Z-02",
+      "claim": "The 20M XRP received by r39TA from raRVLN was almost entirely forwarded to Binance-labelled rNxp4h within 31 minutes.",
+      "assessment": "CONFIRMED_ACCOUNT_LEVEL_SEQUENCE_PURPOSE_UNKNOWN",
+      "supporting_evidence": [
+        "Ledger metadata shows +20M XRP at 20:16:10 UTC.",
+        "Ledger metadata shows 10M and 9,999,197.11 XRP sent at 20:47:00 and 20:47:20 UTC.",
+        "Account balances reconcile to a residual of about 802.88 XRP relative to the 20M receipt."
+      ],
+      "disconfirming_evidence": [
+        "Fungible XRP cannot be traced as identical units.",
+        "No trade, sale, customer, reserve or collateral instruction is identified."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T213000Z-03",
+      "claim": "The 10M RLUSD transfer to r39TA is a direct Ripple-company payment.",
+      "assessment": "DISCONFIRMED_BY_SENDER_ACCOUNT_EVIDENCE",
+      "supporting_evidence": [
+        "The asset is RLUSD issued by Ripple."
+      ],
+      "disconfirming_evidence": [
+        "Sender rnhSfm has no Ripple account label and was activated by an unlabelled account.",
+        "The Ripple label on Bithomp's transaction row identifies the token issuer, not the sender's beneficial owner."
+      ]
+    }
+  ],
+  "disconfirming_evidence": [
+    "rNxp4h internal wallet role is not disclosed by Binance; deposit pattern is an inference, not an official classification.",
+    "rnhSfm is unlabelled and activated by an unlabelled account; token issuer is not sender owner.",
+    "Exact account balance deltas do not trace identical XRP units or establish trade execution.",
+    "No reserve accounting, OTC settlement, customer instruction or collateral posting is identified."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

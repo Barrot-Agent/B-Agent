@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T072330Z-BINANCE-XRPL-FIVE-WALLET-EXACT-RECONCILIATION",
+  "captured_at_utc": "2026-10-30T07:23:30Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T072330Z-binance-xrpl-five-wallets-exact-reconciliation.json",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "research_head_before_append": "Last exact-head validator pass was on af53dde404fa92111983de54564546d03ef4ab2a; the verification-only metadata commit e8b861c1c189ca1f8fa0c53bdc1920e7b26a653f had not yet had a newly retrieved run result at capture.",
+  "observed_main_sha": "6739e05dc427f0db167a10f23730ced1acf0b9b8",
+  "public_chain_capture_at_utc": "2026-10-30T07:23:30Z",
+  "focus": "Identify all five Binance-labelled XRPL source wallets, verify all five validated payments to the incident receiver, reconcile the exact native XRP total, inspect receiver balance/disposition, establish the common wallet-activation cluster, and distinguish XRPL transfer volume from DEX trading volume.",
+  "source_ids": [
+    "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-14693052-20261029T200700Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-13140680-20261029T200820Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-11955157-20261029T200850Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-8655567-20261029T200920Z",
+    "SRC-BITHOMP-BINANCE-XRPL-RECEIVER-TRANSACTIONS-20261030T072330Z",
+    "SRC-BITHOMP-BINANCE-XRPL-SOURCE-CLUSTER-20261030T072330Z",
+    "SRC-BITHOMP-XRP-DEX-AND-TRANSFER-STATS-20261030T072330Z",
+    "SRC-TRM-BINANCE-THEFT-XRPL-RLUSD-20261030T0508Z",
+    "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+    "SRC-BINANCE-POR-XRP-RATIO-SECONDARY-20261030T0508Z",
+    "SRC-BINANCE-XRP-BF2-BACKING-20191010"
+  ],
+  "incident": {
+    "receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "exact_total_xrp": 233461943.1,
+    "source_wallet_count": 5,
+    "payments": [
+      {
+        "from": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+        "to": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "amount_xrp": 185017485.5,
+        "tx_hash": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+        "validated_ledger": 107986693,
+        "transaction_index": 103,
+        "confirmed_at_utc": "2026-10-29T20:05:00Z",
+        "explorer_label": "Binance"
+      },
+      {
+        "from": "rBtttd61FExHC68vsZ8dqmS3DfjFEceA1A",
+        "to": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "amount_xrp": 14693052.5,
+        "tx_hash": "6DDF398B6950B34057A7B817E761A1E2A1C59ECAFD594536C54AA6963C5B7E67",
+        "validated_ledger": 107986721,
+        "transaction_index": 150,
+        "confirmed_at_utc": "2026-10-29T20:07:00Z",
+        "explorer_label": "Binance"
+      },
+      {
+        "from": "rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+        "to": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "amount_xrp": 13140680.4,
+        "tx_hash": "9FE8F79876B30E24843031CBE89EA75496FE75BD2F0B9779D91D55BEE52C6AAA",
+        "validated_ledger": 107986740,
+        "transaction_index": 1,
+        "confirmed_at_utc": "2026-10-29T20:08:20Z",
+        "explorer_label": "Binance"
+      },
+      {
+        "from": "rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk",
+        "to": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "amount_xrp": 11955157.6,
+        "tx_hash": "27C7D0D5EDAD05B5F8C7616DF6CB64C872DD22DED8697B380824A8C5B8D385F5",
+        "validated_ledger": 107986748,
+        "transaction_index": 426,
+        "confirmed_at_utc": "2026-10-29T20:08:50Z",
+        "explorer_label": "Binance"
+      },
+      {
+        "from": "rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK",
+        "to": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "amount_xrp": 8655567.1,
+        "tx_hash": "0571C4D9703DECA7D03B8D63E9EEB2AB0E8E6D949150A7355519AEEE9A595DB0",
+        "validated_ledger": 107986754,
+        "transaction_index": 18,
+        "confirmed_at_utc": "2026-10-29T20:09:20Z",
+        "explorer_label": "Binance"
+      }
+    ],
+    "arithmetic_check": "185017485.5 + 14693052.5 + 13140680.4 + 11955157.6 + 8655567.1 = 233461943.1 XRP",
+    "matches_trm_approx_233460000": true,
+    "matches_bitquery_approx_233500000": true,
+    "receiver_current_displayed_balance_xrp": 233461943.10004,
+    "receiver_transactions_page": "Five incoming XRP payments plus one unrelated XGO Check; no outgoing XRP payment displayed as of page capture.",
+    "receiver_disposition": "233.4619431M XRP remains displayed at receiver; no sale or exchange deposit is established by the captured transactions list.",
+    "source_cluster": {
+      "central_wallet": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "other_wallets": [
+        "rBtttd61FExHC68vsZ8dqmS3DfjFEceA1A",
+        "rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+        "rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk",
+        "rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK"
+      ],
+      "explorer_label": "All five labelled Binance by Bithomp",
+      "activation": "Four other accounts show activation by rDAE53; rDAE53 itself was activated by another Binance-labelled account.",
+      "interpretation": "Strong public evidence of a common Binance-labelled operational-wallet cluster; not proof of inclusion in Binance October 1 PoR address set."
+    },
+    "proof_of_reserves": {
+      "october_1_secondary_xrp_ratio_percent": 100.77,
+      "exact_source_wallet_membership_in_october_1_por": "UNKNOWN",
+      "xrp_bf2_reserve_address_crosswalk": "UNKNOWN",
+      "binance14_eth_wallet_is_separate_chain_asset": true,
+      "conclusion": "Do not claim an XRP-specific reserve deficit until the five addresses are compared with the official Binance PoR address download and XRP-BF2 backing address."
+    }
+  },
+  "actual_capital_context": {
+    "bithomp_xrpl_dex_volume_24h_usd": 13068997.98,
+    "bithomp_xrpl_transfer_volume_24h_usd": 902324194.69,
+    "transfer_to_dex_volume_ratio": 69.04,
+    "trades_24h": 155204,
+    "dex_transactions_24h": 139881,
+    "transfer_transactions_24h": 240797,
+    "buy_volume_usd": 6497868.43,
+    "sell_volume_usd": 6571129.55,
+    "interpretation": "XRPL transfer volume is approximately 69x displayed DEX volume, but transfers are not trades or net capital. DEX buy/sell values are near balanced. These are XRPL-only dashboard metrics, not global XRP market volume."
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

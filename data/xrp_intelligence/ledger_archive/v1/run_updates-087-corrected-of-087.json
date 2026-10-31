@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 86,
+  "chunk_count": 87,
+  "created_at_utc": "2026-10-30T21:00:54Z",
+  "record_count": 2,
+  "records": [
+    {
+      "run_id": "RUN-20261030T204000Z-INSTITUTIONAL-COLLATERAL-AND-XRPL-ROUTE",
+      "created_at_utc": "2026-10-30T20:40:00Z",
+      "data_cutoff_utc": "2026-10-30T20:40:00Z",
+      "summary": "Added BNY/Standard Chartered/Bitnomial institutional custody and collateral evidence; corrected OCC trust-bank status comparison; captured Ripple-labelled XRP movement through an XRPL AMM/vault/loan-broker account and an intermediary that sent XRP to a Binance-labelled wallet; refreshed market, ETF, stablecoin and macro context; audited current main workflows and PRs.",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z",
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261030T2040Z",
+        "SRC-C2FO-INSTANT-PAY-20261030T2040Z",
+        "SRC-BITNOMIAL-COLLATERAL-SCHEDULE-20261030T2040Z",
+        "SRC-RIPPLE-PRIME-XRP-COLLATERAL-20261030T2040Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20261030T2040Z",
+        "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261030T2040Z",
+        "SRC-RIPPLE-PRIME-RWA-SWAPS-20261030T2040Z",
+        "SRC-COINBASE-RIPPLE-RLUSD-20261030T2040Z",
+        "SRC-COINBASE-Q3-2026-20261030T2040Z",
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T2040Z",
+        "SRC-DEFILLAMA-XRPL-STABLECOINS-20261030T2040Z",
+        "SRC-DEFILLAMA-XRPL-CHAIN-20261030T2040Z",
+        "SRC-XRP-INSIGHTS-ETF-20261030T2040Z",
+        "SRC-COINPAPRIKA-XRP-20261030T2040Z",
+        "SRC-OCC-RIPPLE-TRUST-BANK-20261030T2040Z",
+        "SRC-OCC-CIRCLE-TRUST-BANK-20261030T2040Z",
+        "SRC-OCC-COINBASE-STATUS-20261030T2040Z",
+        "SRC-COINBASE-OCC-CONDITIONAL-20261030T2040Z",
+        "SRC-CIRCLE-OCC-FINAL-20261030T2040Z",
+        "SRC-RIPPLE-OCC-FINAL-20261030T2040Z",
+        "SRC-SEC-CIRCLE-RESERVE-FUND-BNY-20261030T2040Z",
+        "SRC-RIPPLE-900M-RUNRATE-20261030T2040Z",
+        "SRC-RIPPLE-TREASURY-24-7-20261030T2040Z",
+        "SRC-FED-FOMC-20261030T2040Z",
+        "SRC-BEA-GDP-Q3-20261030T2040Z",
+        "SRC-BEA-PCE-SEP-20261030T2040Z",
+        "SRC-REUTERS-CRYPTO-RISKOFF-20261030T2040Z",
+        "SRC-BNY-CIRCLE-USDC-CUSTODY-20261030T2040Z",
+        "SRC-BINANCE-REPLENISHMENT-20261030T2040Z",
+        "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2040Z",
+        "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2040Z",
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2040Z",
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2040Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2040Z",
+        "SRC-BITHOMP-BINANCE-RDAE53-ACCOUNT-20261030T2040Z",
+        "SRC-BINANCE-ATTACKER-XRP-STATUS-20261030T2040Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T204000Z-bny-bitnomial-ripple-to-binance-capital-flow.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T204000Z-bny-bitnomial-ripple-to-binance-capital-flow.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T204000Z-institutional-collateral-and-account-flow-separation.json",
+      "repository_audit_path": "data/repository_audits/20261030T204000Z-main-writers-subscriber-privacy-and-pr-queue.json",
+      "actions": [
+        "Inspected current main and research branch before changes",
+        "Reviewed current open PRs and exact-head checks",
+        "Reviewed scheduled and manual workflows on main",
+        "Captured BNY, Bitnomial, Ripple Prime, Standard Chartered, Coinbase, Circle and OCC evidence",
+        "Reconciled visible XRPL account-flow path and explicitly retained attribution uncertainty",
+        "Appended immutable research shards and evidence artifacts on the research branch only"
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "No actual XRP collateral utilization or client-level custody balances disclosed",
+        "raRVLN AMM pair/vault/loan-broker identity not loaded due explorer rate limits",
+        "r39TA beneficial owner and complete transaction history unknown",
+        "No direct evidence that XRP sent to Binance-labelled rNxp4h is incident replenishment or sold",
+        "No synchronized market panel or calibrated fixed-horizon model"
+      ],
+      "next_actions": [
+        "Crosswalk rDAE53 and rNxp4h against Binance PoR and XRP-BF2 reserve addresses",
+        "Trace raRVLN vault/AMM objects and all incoming/outgoing balances",
+        "Reconcile r39TA complete XRP/RLUSD history and identify the legal/service entity only from public evidence",
+        "Monitor attacker receiver after 14:40 UTC",
+        "Verify actual XRP collateral balances at Bitnomial and Ripple Prime if public disclosures emerge"
+      ]
+    },
+    {
+      "run_id": "RUN-20261030T210054Z-RIPPLE-AMM-BINANCE-FLOW-AND-LEDGER-REPAIR",
+      "created_at_utc": "2026-10-30T21:00:54Z",
+      "data_cutoff_utc": "2026-10-30T21:00:54Z",
+      "summary": "Bithomp now independently displays the 35M XRP rJqi-to-raRVLN payment, six r39TA-to-Binance-labelled rNxp4h deposits totaling 68,924,571.602513 XRP, and a separate 20M raRVLN-to-r39TA payment at 20:16. The r39TA account overview/transaction-history discrepancy remains unresolved. Exact-head archive validation on 802ef30 failed because the newest source shard omitted archive_schema_version and used source_id instead of canonical id; the newest run-update and limitation shards also omitted archive_schema_version. Immutable corrected replacements are prepared; original malformed files remain preserved unreferenced.",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2100Z",
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2100Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2100Z",
+        "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2100Z",
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2100Z",
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T210054Z-ripple-rvlln-binance-flow-and-ledger-schema-repair.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T210054Z-ripple-rvlln-binance-flow-and-ledger-schema-repair.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T210054Z-immutable-archive-shard-schema-normalization.json",
+      "repository_audit_path": "data/repository_audits/20261030T210054Z-main-workflow-and-ledger-validator-audit.json",
+      "actions": [
+        "Reconciled current Bithomp account histories and balances.",
+        "Separated exchange deposits from sales, purchases and replenishment.",
+        "Created immutable schema-corrected replacements for three malformed archive shards.",
+        "Updated pointers and counts without deleting original archive files.",
+        "No main write, merge, force-push, workflow dispatch, paper-state mutation or trade."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_ARCHIVE_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "Exact-head validator failed on prior head; corrected head must pass.",
+        "r39TA account overview and transaction history disagree.",
+        "Beneficial ownership and unit-level provenance through raRVLN unknown.",
+        "Official Binance October 1 XRP PoR address membership unverified."
+      ],
+      "next_actions": [
+        "Run exact-head archive validator and fail-closed gate.",
+        "Crosswalk five compromised source wallets against official PoR address data.",
+        "Monitor r39TA, raRVLN, rNxp4h and attacker receiver.",
+        "Keep observations out of model features until synchronized, corroborated and leakage-safe."
+      ]
+    }
+  ]
+}

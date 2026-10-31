@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 45,
+  "chunk_count": 46,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T12:49:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T12:49:00Z",
+      "update_type": "XRP_LEDGER_VALIDATOR_FAILURE_SBIC_SOURCE_REFERENCE_CORRECTION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "8caf532646529caedd8b3e3dacc274ca6b3d136b",
+      "validator_failure": {
+        "run_id": 41058015161,
+        "head_sha": "8caf532646529caedd8b3e3dacc274ca6b3d136b",
+        "tests_passed": 17,
+        "tests_failed": 1,
+        "failing_test": "tests/test_xrp_ledger_index.py::test_current_repository_ledger_validates_read_only",
+        "error": "snapshot references unknown source IDs: ['SRC-SBIC-EAST-JAPAN-CHATGPT-EVENT-20260305']",
+        "root_cause": "A newly authored SBI/Circle snapshot and graph used an invented/noncanonical SBIC event source ID. The canonical source already existed in the immutable source archive as SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z. The validator correctly rejected the missing reference; validator code itself compiled and 17 other tests passed."
+      },
+      "gate": {
+        "run_id": 41058015221,
+        "status": "PASS",
+        "detail": "Fail-closed job explicitly kept merging disabled."
+      },
+      "corrective_action": {
+        "snapshot_path": "data/xrp_intelligence/snapshots/20261030T124900Z-sbi-circle-ripple-source-reference-correction.json",
+        "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T124900Z-sbi-circle-ripple-source-reference-correction.json",
+        "canonical_source_id": "SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z",
+        "historical_snapshot_preserved": true,
+        "historical_graph_preserved": true,
+        "code_changed": false,
+        "next_step": "Read back successor snapshot and graph, update ledger pointers, then inspect exact-head validator and gate on the new index commit."
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "main_modified": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}

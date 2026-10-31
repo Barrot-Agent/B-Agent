@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 55,
+  "chunk_count": 56,
+  "record_count": 4,
+  "created_at_utc": "2026-10-30T15:03:37Z",
+  "records": [
+    "Binance's $6.34B restoration reserve and approximately $1.34B market/OTC acquisition amount are aggregate USD figures. The official statement does not disclose per-token quantities, whether the 233.46M XRP shortfall is already fully covered by the $5B held, or how much XRP will be bought. Do not convert the aggregate budget into XRP demand.",
+    "CoinDesk's documented October 1 PoR crosswalk identifies Binance 14 on Ethereum; it does not prove official Binance address-file membership for the five XRPL source wallets. Bitquery's PoR labels remain third-party labels until the official downloadable address file is cross-referenced.",
+    "XRP Insights exchange balances include cold storage, wrapped-token backing and other non-customer reserves. Its same-wallet net changes are not customer withdrawals, executed spot selling, tradable float or direct evidence of Binance hack attribution. The dataset does not provide per-wallet daily history.",
+    "The all-exchange 7-day decline (-234.9M XRP) is close in magnitude to the incident transfer (233.4619M), but Binance's own 7-day decline (-173.2M) is smaller. Unknown wallet-set membership, inflows, internal transfers, coverage and movements at other exchanges prevent causal attribution or Coinbase migration claims."
+  ]
+}

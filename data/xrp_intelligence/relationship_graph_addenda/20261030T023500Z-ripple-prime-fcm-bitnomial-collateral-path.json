@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T023500Z-RIPPLE-PRIME-FCM-BITNOMIAL-COLLATERAL-PATH",
+  "captured_at_utc": "2026-10-30T02:35:00Z",
+  "observed_main_sha": "ec52a66b1c1067920e29cf16d8c3044dd3ec3451",
+  "nodes": [
+    {
+      "id": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "label": "Hidden Road Partners CIV US LLC",
+      "kind": "REGISTERED_FCM_AND_BROKER_DEALER"
+    },
+    {
+      "id": "RIPPLE_PRIME",
+      "label": "Ripple Prime",
+      "kind": "RIPPLE_GROUP_PRIME_BROKER"
+    },
+    {
+      "id": "BITNOMIAL_DCO",
+      "label": "Bitnomial Clearinghouse LLC",
+      "kind": "CFTC_REGISTERED_DCO"
+    },
+    {
+      "id": "CFTC_LETTER_26_05",
+      "label": "CFTC Staff Letter 26-05",
+      "kind": "CONDITIONAL_FCM_NO_ACTION_POSITION"
+    },
+    {
+      "id": "COINBASE_FINANCIAL_MARKETS",
+      "label": "Coinbase Financial Markets Inc.",
+      "kind": "REGISTERED_FCM_REQUESTOR"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_DIGITAL_ASSET"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_AND_MULTI_PRODUCT_DISTRIBUTION"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-HRP-CIV-REGISTERED-FCM-20261030",
+      "source": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "target": "RIPPLE_PRIME",
+      "relationship": "RIPPLE_PRIME_DISCLOSURE_IDENTIFIES_THIS_LEGAL_ENTITY_AS_REGISTERED_FCM_AND_BROKER_DEALER",
+      "evidence_class": "CONFIRMED_PRIMARY_FCM_DISCLOSURE",
+      "claim": "Ripple's official FCM disclosure identifies Hidden Road Partners CIV US LLC as a registered FCM and SEC/FINRA-registered broker-dealer. Ripple separately states Hidden Road is now Ripple Prime.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ]
+    },
+    {
+      "id": "EDGE-HRP-CIV-IS-BITNOMIAL-CLEARING-MEMBER-20261030",
+      "source": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "target": "BITNOMIAL_DCO",
+      "relationship": "EXACT_LEGAL_ENTITY_NAMED_AS_CLEARING_MEMBER",
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "claim": "The exact legal entity named in Ripple's FCM disclosure appears on Bitnomial Clearinghouse's current clearing-member list. This is a direct clearing-network connection.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-HRP-CIV-CONDITIONAL-26-05-XRP-PATH-20261030",
+      "source": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "target": "XRP",
+      "relationship": "ELIGIBLE_TO_CONSIDER_XRP_CUSTOMER_COLLATERAL_IF_FCM_SPECIFIC_NOTICE_AND_ALL_CONDITIONS_MET",
+      "evidence_class": "CONDITIONAL_REGULATORY_PATH_INFERENCE",
+      "claim": "As a registered FCM and Bitnomial clearing member, HRP CIV US LLC is structurally positioned to use the conditional FCM collateral framework. It would need its own prior Letter 26-05 notice, satisfy the initial three-month restriction and continuing risk/segregation/reporting conditions, and use DCO-accepted XRP subject to the DCO haircut. No public notice or actual XRP use is verified.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-Q3-PREDICTION-DERIVATIVES-MIX-20261030",
+      "source": "COINBASE",
+      "target": "COINBASE_FINANCIAL_MARKETS",
+      "relationship": "GROUP_LEVEL_DIVERSIFICATION_AND_FCM_REQUESTOR_CONTEXT",
+      "evidence_class": "CONFIRMED_SECONDARY_COMPANY_RESULTS_REPORT",
+      "claim": "Coinbase Q3 prediction markets exceeded $200M annualized run-rate revenue; prediction markets plus derivatives were about 25% of transaction revenue and subscription/services about 49% of net revenue. Coinbase Financial Markets separately requested Letter 26-05. These are distinct group-level and legal-entity facts; neither proves Coinbase XRP collateral use.",
+      "source_ids": [
+        "SRC-REUTERS-COINBASE-Q3-PREDICTION-MARKETS-20261030T0235Z",
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-RIPPLE-PRIME-BITNOMIAL-XRP-COLLATERAL-ROUTE-20261030",
+      "claim": "Ripple Prime has a direct legal-entity path into Bitnomial's clearing network through Hidden Road Partners CIV US LLC, and the combination of FCM registration, Bitnomial's XRP collateral acceptance and CFTC Letter 26-05 creates a plausible institutional XRP collateral channel.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z"
+      ],
+      "disconfirming_evidence": [
+        "No public FCM-specific WinJammer reliance notice or commencement date identified.",
+        "No public XRP customer collateral balances, deposits, utilization or turnover identified.",
+        "40% DCO haircut and $15M notional limit constrain scale.",
+        "XRP's status under the Letter 26-05 non-security-asset conditions requires legal verification."
+      ],
+      "status": "DIRECT_STRUCTURAL_LINK_CONFIRMED; REGULATORY_RELIANCE_AND_ACTUAL_XRP_USE_UNVERIFIED"
+    },
+    {
+      "id": "HYP-COINBASE-REVENUE-DIVERSIFICATION-REDUCES-SPOT-CYCLE-SENSITIVITY-20261030",
+      "claim": "Coinbase's growth in prediction markets, derivatives, subscriptions and stablecoin revenue reduces the company's sensitivity to crypto spot trading cycles.",
+      "supporting_source_ids": [
+        "SRC-REUTERS-COINBASE-Q3-PREDICTION-MARKETS-20261030T0235Z",
+        "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z"
+      ],
+      "disconfirming_evidence": [
+        "Transaction revenue still fell 43% year-over-year.",
+        "The $200M prediction-market figure is an annualized run-rate, not Q3 recognized revenue.",
+        "GAAP profitability was aided by crypto-investment gains.",
+        "Stablecoin revenue remains exposed to reserve yield, rates and USDC balances."
+      ],
+      "status": "PARTIALLY_SUPPORTED; DIVERSIFICATION_REAL_BUT_CYCLE_RISK_REMAINS"
+    }
+  ],
+  "source_ids": [
+    "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+    "SRC-REUTERS-COINBASE-Q3-PREDICTION-MARKETS-20261030T0235Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+    "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+    "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024",
+    "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

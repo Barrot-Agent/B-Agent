@@ -1,0 +1,164 @@
+{
+  "record_type": "xrp_architecture_decision",
+  "schema_version": "1.0",
+  "decision_id": "ADR-20261031T121200Z-SBI-MULTIRAIL-REWARD-SOURCING-ESCROW",
+  "title": "Separate SBI Multi-Rail Distribution, Actual Capital, Chain Scope and Scheduled XRP Escrow Events",
+  "created_at_utc": "2026-10-31T12:12:00Z",
+  "data_cutoff_utc": "2026-10-31T12:12:00Z",
+  "source_ids": [
+    "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2",
+    "SRC-20261031T121200Z-XRP-INSIGHTS-NOV1-ESCROW",
+    "SRC-20261031T121200Z-XRPL-ESCROW-DOCS",
+    "SRC-20261031T121200Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS",
+    "SRC-20261031T121200Z-ALPHA-FINANCE-XRP-ETF-FLOWS",
+    "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
+    "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD-BIZ",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-SBI-CIRCLE-ARC-50M",
+    "SRC-20261031T121200Z-SBI-SMFG-STABLECOIN-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T121200Z-SBI-OPEN-STANDARD-JPYSC-OUSD",
+    "SRC-20261031T121200Z-SBI-BITBANK-ACQUISITION-CONDITIONAL",
+    "SRC-20261031T121200Z-SBI-START-BOND-XRP-REWARD",
+    "SRC-20261031T121200Z-SBI-SHAREHOLDER-XRP-COUPON",
+    "SRC-20261031T121200Z-SBI-NEWWBANK-XRP-DEPOSIT-VOUCHER",
+    "SRC-20261031T121200Z-SBI-VCTRADE-2M-ACCOUNTS",
+    "SRC-20261031T121200Z-SBI-JPYSC-RESERVE-LENDING",
+    "SRC-20261031T121200Z-SBI-JPYSC-LAUNCH-ACCOUNT-BOUND",
+    "SRC-20261031T121200Z-SBIC-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE",
+    "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T121200Z-GITHUB-PR1400-EXACT-HORIZON",
+    "SRC-20261031T121200Z-GITHUB-PR1410-TARGET-SAMPLING",
+    "SRC-20261031T121200Z-GITHUB-PR1411-TOKEN-SAFETY",
+    "SRC-20261031T121200Z-GITHUB-MAIN-PR-WORKFLOW-INVENTORY",
+    "SRC-20261031T121200Z-GITHUB-MAIN-COMMIT-C779",
+    "SRC-20261031T121200Z-SBI-SOLANA-STRATEGIC-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-CLEARING-TRUST-MERGER-CUSTODY",
+    "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+    "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+    "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+    "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK"
+  ],
+  "source_reference_count": 37,
+  "missing_source_references": 0,
+  "status": "EXECUTED_PENDING_EXACT_HEAD_VALIDATION",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Treat SBI as a multi-rail strategy: XRP rewards/exchange, USDC/RLUSD, JPYSC, Arc, Open Standard/OUSD, Solana, tokenized MMF and trust/custody.",
+      "rationale": "Official announcements document multiple distinct rails; no exclusive XRP strategy is established."
+    },
+    {
+      "id": "D2",
+      "decision": "Classify card points, shareholder coupons and START bond XRP rewards as distribution/incentives, not spot demand.",
+      "rationale": "No aggregate conversion volumes or inventory-versus-market sourcing disclosed."
+    },
+    {
+      "id": "D3",
+      "decision": "Record VCTRADE RLUSD as Ethereum-only.",
+      "rationale": "Official service terms explicitly exclude XRPL for VCTRADE RLUSD deposits/withdrawals."
+    },
+    {
+      "id": "D4",
+      "decision": "Correct Bitbank acquisition status to conditional agreement, completion unverified.",
+      "rationale": "Official June25 release conditions closing on regulatory clearance and other terms; no official completion notice found. Prior 'completed Oct1' ledger wording is superseded, not deleted."
+    },
+    {
+      "id": "D5",
+      "decision": "Treat Arc as a separate USDC-native network, not an XRP network.",
+      "rationale": "Circle names SBI validator, Coinbase exchange access, Morpho credit; Arc fees are USDC."
+    },
+    {
+      "id": "D6",
+      "decision": "Treat Nov1 1B escrow event as scheduled release, not sale or net-supply forecast.",
+      "rationale": "Actual EscrowFinish, re-escrow, destination and exchange disposition are unknown."
+    },
+    {
+      "id": "D7",
+      "decision": "Do not infer XRP replenishment from Binance aggregate $1.34B token acquisition plan.",
+      "rationale": "No XRP-specific allocation disclosed; initial PoR target elapsed and no completed snapshot surfaced in current search."
+    },
+    {
+      "id": "D8",
+      "decision": "Keep TradRadar, CryptoKeyhole and Alpha Finance market observations as separate provider-scoped series; admit none as predictive feature.",
+      "rationale": "ETF coverage/cutoff differs; OI contract universe not reconciled."
+    },
+    {
+      "id": "D9",
+      "decision": "Use PR #1410's latest-at-or-before target sampling/effective-horizon contract as preferred design for sparse feeds; retain PR #1400 strict-equality branch as conservative alternative.",
+      "rationale": "Both exact-head CI/gates passed, but #1410 records effective horizon/lag rather than forcing exact timestamp equality."
+    },
+    {
+      "id": "D10",
+      "decision": "Keep PR #1411 as a draft security proposal; main token-input workflow remains active until approved merge.",
+      "rationale": "The unsafe input and shell interpolation are removed only on the PR branch; no secret or deployment operation was performed."
+    },
+    {
+      "id": "D11",
+      "decision": "Correct archive pointer chunk metadata and immutable snapshot reference fields after the exact-head validator failed closed.",
+      "rationale": "The validator requires git_blob_sha on archive chunks and a snapshot_reference pointer with matching record_type, snapshot_id, captured_at_utc and index_format_version. The initial append used noncanonical metadata; no archive data was lost."
+    },
+    {
+      "id": "D12",
+      "decision": "Use node IDs rather than display labels in relationship graph edge endpoints and ensure every endpoint resolves.",
+      "rationale": "Graph schema integrity requires stable node references; the two card product nodes were added and the planned SBI Clearing Trust merger edge was corrected."
+    }
+  ],
+  "alternatives_considered": [
+    "Treat all SBI rewards as net XRP spot buying — rejected for lack of sourcing/volume evidence.",
+    "Treat RLUSD on VCTRADE as XRPL support — rejected by Ethereum-only service terms.",
+    "Treat Bitbank as already consolidated — rejected by conditional official transaction terms.",
+    "Treat gross escrow unlock as immediate sell supply — rejected; escrow finish/re-escrow/sale are distinct.",
+    "Merge stale PRs or rebase branches automatically — rejected by preservation and approval constraints."
+  ],
+  "consequences": [
+    "Market features remain unadmitted; no directional forecast.",
+    "XRP escrow event is added to the event calendar with post-event outcome capture.",
+    "SBI's XRP retail distribution is monitored as a possible demand channel but not scored as spot purchases until market-source evidence exists.",
+    "Bitbank ownership state remains conditional until official closing confirmation.",
+    "Main workflow write risks remain open; #1411 is a proposal only."
+  ],
+  "next_actions": [
+    "Capture XRPL EscrowFinish transactions at/after Nov1 00:00 UTC and track re-escrow/destination for 24h and 7d.",
+    "Recheck Binance official PoR publication and crosswalk XRP reserve addresses against customer liabilities.",
+    "Request/ingest SBI public reward and custody disclosures; do not infer reward sourcing.",
+    "Verify Bitbank completion from an official closing announcement and any JFTC clearance.",
+    "Measure Arc USDC supply, Morpho markets, Coinbase access and SBI validator activity separately from XRPL.",
+    "Build point-in-time fixed-horizon feature store and walk-forward baselines; no live forecast before leakage/calibration gates."
+  ],
+  "verification": {
+    "status": "PENDING_EXACT_HEAD_VALIDATION_AFTER_SCHEMA_CORRECTION",
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "paper_position_mutated": false,
+    "real_money_trade": false,
+    "initial_validator_failure": {
+      "attempted_head": "a40813c00c62b04413e6f756a529ea5d90f7a811",
+      "validator_run_id": 41200887742,
+      "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41200887742",
+      "gate_run_id": 41200887751,
+      "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41200887751",
+      "validator_status": "BLOCKED",
+      "gate_status": "PASS_MERGE_DISABLED",
+      "root_cause": "The three new archive pointer chunks used blob_sha instead of the validator-required git_blob_sha; the latest_snapshot pointer omitted record_type, snapshot_id, captured_at_utc and index_format_version. The validator therefore could not load the new shards and correctly rejected the snapshot references. The archive files themselves were readable and their blob SHA readbacks matched.",
+      "corrective_actions": [
+        "Changed new archive chunk metadata to git_blob_sha and removed noncanonical chunk_count fields.",
+        "Added snapshot_reference record_type, snapshot_id, captured_at_utc and index_format_version to the ledger pointer.",
+        "Corrected graph edge endpoints to node IDs; added missing card-product nodes and corrected the planned trust merger edge."
+      ],
+      "data_loss": false
+    },
+    "graph_endpoints_resolved": true
+  },
+  "updated_at_utc": "2026-10-31T12:25:00Z"
+}

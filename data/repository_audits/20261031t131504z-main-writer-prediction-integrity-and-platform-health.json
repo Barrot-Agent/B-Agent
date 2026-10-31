@@ -1,0 +1,167 @@
+{
+  "record_type": "repository_audit",
+  "schema_version": "1.0",
+  "audit_id": "BAGENT-AUDIT-20261031T131504Z-MAIN-WRITERS-PREDICTION-INTEGRITY-PLATFORM-HEALTH",
+  "captured_at_utc": "2026-10-31T13:15:04Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "52ce593d7f4075eb0cb6cac078bf8486d6fab2c1",
+  "open_pr_inventory": {
+    "open": 187,
+    "draft": 177,
+    "ready": 10,
+    "main_based": 185,
+    "current_main_base": 2,
+    "current_main_base_numbers": [
+      1413,
+      1414
+    ],
+    "stale_main_based": 183,
+    "non_main_base": 2
+  },
+  "verified_prs": [
+    {
+      "number": 1413,
+      "head_sha": "7c043ac09127ad1f428db3d85db02ce189aabfd5",
+      "base_sha": "52ce593d7f4075eb0cb6cac078bf8486d6fab2c1",
+      "files": 15,
+      "ci_run": 41204462296,
+      "tests": 357,
+      "subtests": 8,
+      "gate_run": 41204462298,
+      "gate": "PASS_MERGE_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "number": 1414,
+      "head_sha": "20d8457329631548fc8c4dabd8c4e25898dddb0a",
+      "base_sha": "52ce593d7f4075eb0cb6cac078bf8486d6fab2c1",
+      "files": 8,
+      "ci_run": 41204392169,
+      "tests": 380,
+      "subtests": 8,
+      "gate_run": 41204392114,
+      "gate": "PASS_MERGE_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    }
+  ],
+  "main_active_risks": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "scheduled main write",
+      "details": "hourly commit to sentiment_shift.json; last observed main commit 52ce593d"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "broad workflow dispatch and queue main write",
+      "details": "15-minute schedule; contents:write/actions:write"
+    },
+    {
+      "path": ".github/workflows/autonomous_self_deployment.yml",
+      "risk": "scheduled telemetry main write",
+      "details": "six-hour telemetry commit"
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "risk": "legacy variable-horizon accuracy and main write",
+      "details": "PR1414 proposes read-only artifact and NOT_EVALUATED status"
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "manual unrestricted merge",
+      "details": "dry_run=false, mode=all, max_prs=0, gh pr merge --delete-branch"
+    },
+    {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "risk": "critical credential input/shell interpolation",
+      "details": "new_token workflow input passed to gh secret set"
+    },
+    {
+      "path": ".github/workflows/deploy-a2a-worker.yml",
+      "risk": "push-triggered external deployment",
+      "details": "Cloudflare worker deploy on main path changes"
+    },
+    {
+      "path": ".github/workflows/sync-self-hosted-brain.yml",
+      "risk": "push-triggered external deployment",
+      "details": "Hugging Face Space sync on main path changes"
+    },
+    {
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "risk": "scheduled issue/PR mutation",
+      "details": "hourly issue creation and assignment; no merge observed"
+    }
+  ],
+  "pillars_check": {
+    "run_id": 41203691664,
+    "status": "FAILED_EXTERNAL_READINESS",
+    "missing_github_app_credentials": true,
+    "databricks_http_status": 403,
+    "hugging_face_space_stage": "BUILD_ERROR",
+    "deploy_sync": "SUCCEEDED",
+    "system_prompt_fiction_check": "CLEAN",
+    "secret_values_accessed": false
+  },
+  "runs": {
+    "cross_analysis": 41202947500,
+    "pages_deploy": 41202957837,
+    "scheduler_tick": 41202656964,
+    "autonomous_resolver": 41203662825,
+    "pillars_check": 41203691664
+  },
+  "remaining_manual_main_writers": [
+    "financial-data-refresh.yml",
+    "knowledge-signal-cycle.yml",
+    "knowledge-signal-cycle-btc.yml",
+    "data-value-triage.yml",
+    "entity-relations.yml",
+    "research-topics.yml",
+    "coinbase-paper-trader.yml"
+  ],
+  "security": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_lockfiles": "NONE_IN_LAST_COMPLETE_INVENTORY",
+    "vulnerability_scan": "NOT_COMPLETED",
+    "github_security_alert_access": "NOT_ACCESSIBLE_THROUGH_TESTED_READ_ACTIONS",
+    "branch_protection_details": "403_NOT_VERIFIED"
+  },
+  "platform_coordination": {
+    "verified_active": [
+      "ChatGPT",
+      "GitHub connector"
+    ],
+    "not_authenticated_or_tested": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "live_external_collaboration_claimed": false
+  },
+  "worktree": {
+    "dirty_state": "NOT_INSPECTED",
+    "local_operations": false
+  },
+  "changes_by_this_run": {
+    "main_modified": false,
+    "merges": 0,
+    "force_pushes": 0,
+    "manual_workflow_dispatches": 0,
+    "secret_access": 0,
+    "deployments": 0,
+    "paper_position_mutations": 0,
+    "real_money_trades": 0
+  },
+  "next_actions": [
+    "Verify November 1 XRP escrow finishes and destinations",
+    "Verify Binance withdrawal restoration and November 2 PoR",
+    "Crosswalk Binance incident wallets to same-wallet exchange data",
+    "Continue Coinbase/Ripple/Circle/SBI stablecoin and collateral flow research",
+    "Extend fixed-horizon predictor with baseline cutoff, walk-forward and calibration",
+    "Resolve Pillars provider blockers with authorized access",
+    "Keep main unchanged until user-approved merges"
+  ]
+}

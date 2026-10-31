@@ -1,0 +1,88 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "index_format_version": "3.0",
+  "snapshot_id": "XRP-20261030T220000Z-NATIVE-LENDING-THIRD-AMENDMENT-CORRECTION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T220000Z-xrpl-native-lending-third-amendment-correction.json",
+  "captured_at_utc": "2026-10-30T22:00:00Z",
+  "data_cutoff_utc": "2026-10-30T22:00:00Z",
+  "source_ids": [
+    "SRC-XRPLDASHBOARD-THREE-AMENDMENTS-AND-LOAN-BOARD-20261030T2200Z",
+    "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+    "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z",
+    "SRC-XRPL-ORG-AMENDMENT-ACTIVATION-RULE-20261030T2145Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z"
+  ],
+  "sources": [
+    "SRC-XRPLDASHBOARD-THREE-AMENDMENTS-AND-LOAN-BOARD-20261030T2200Z",
+    "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+    "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z",
+    "SRC-XRPL-ORG-AMENDMENT-ACTIVATION-RULE-20261030T2145Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z"
+  ],
+  "source_reference_count": 5,
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261030T220000Z-01",
+      "asset": "XRPL",
+      "metric": "LendingProtocolV1_1_amendment_status",
+      "value": {
+        "amendment": "LendingProtocolV1_1",
+        "status": "Voting",
+        "purpose": "closed-ended vaults and cash-basis accounting",
+        "vote_count": null,
+        "cutoff_utc": "2026-10-30T21:12:00Z",
+        "ledger_index": 108009204
+      },
+      "classification": "SECONDARY_LIVE_DASHBOARD_STATUS_VOTE_COUNT_UNKNOWN",
+      "source_ids": [
+        "SRC-XRPLDASHBOARD-THREE-AMENDMENTS-AND-LOAN-BOARD-20261030T2200Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T220000Z-02",
+      "asset": "XRPL",
+      "metric": "native_loan_broker_board_activation",
+      "value": {
+        "required_amendments": [
+          "LendingProtocol",
+          "SingleAssetVault",
+          "LendingProtocolV1_1"
+        ],
+        "status": "Awaiting amendment activation",
+        "ledger_index": 108009204
+      },
+      "classification": "SECONDARY_LIVE_DASHBOARD_NOT_ACTIVE",
+      "source_ids": [
+        "SRC-XRPLDASHBOARD-THREE-AMENDMENTS-AND-LOAN-BOARD-20261030T2200Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    }
+  ],
+  "findings": [
+    {
+      "classification": "CONFIRMED_SECONDARY_LIVE_STATUS",
+      "statement": "The XRPL Dashboard identifies three amendments in voting: LendingProtocol, SingleAssetVault and LendingProtocolV1_1. V1_1 adds closed-ended vaults and cash-basis accounting."
+    },
+    {
+      "classification": "PROTOCOL_REQUIREMENT_NUANCE",
+      "statement": "The dashboard describes LendingProtocol and SingleAssetVault as the core native-lending requirements, while its loan-broker board waits for all three amendments, including V1_1."
+    },
+    {
+      "classification": "NO_LIVE_NATIVE_LENDING",
+      "statement": "The loan-broker board remains awaiting activation; no native lending collateral or loan-broker object can be inferred from raRVLN's unloaded explorer sections."
+    }
+  ],
+  "limitations": [
+    "LIM-20261030T220000Z-01",
+    "LIM-20261030T220000Z-02"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Track the vote count and activation of LendingProtocolV1_1.",
+    "Keep raRVLN as AMM_POOL_CONFIRMED; vault/loan-broker association remains UNVERIFIED.",
+    "Revisit collateral analysis only after the relevant amendments activate and live ledger objects are readable."
+  ]
+}

@@ -1,0 +1,2325 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 1,
+  "chunk_count": 6,
+  "record_count": 289,
+  "records": [
+    {
+      "id": "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1303Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.imdb.com/name/nm1016950/",
+      "title": "IMDb profile for Camilla Stephenson (I)",
+      "accessed_at_utc": "2026-10-28T13:03:30Z",
+      "note": "Exact-name profile identifies a location-management professional associated with 28 Years Later (2025), Project Hail Mary (2026), and Les Misérables (2012). This is a plausible identity collision, not proof that no separate crypto creator with the same name exists."
+    },
+    {
+      "id": "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1303Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.screenglobalproduction.com/news/2026/10/20/project-hail-mary-team-uk-location-manager-awards-2026",
+      "title": "Screen Global report on UK Location Manager Awards",
+      "accessed_at_utc": "2026-10-28T13:03:30Z",
+      "note": "20 Oct 2026 trade-publication report identifies Camilla Stephenson and the Project Hail Mary team as winners of a location-management award. Corroborates a real same-name professional identity; does not link her to the candidate XRP/crypto YouTube channel."
+    },
+    {
+      "id": "SRC-GH-OPEN-PR-INVENTORY-20261028T1303Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pulls",
+      "title": "Current open pull-request inventory",
+      "accessed_at_utc": "2026-10-28T13:03:30Z",
+      "note": "GitHub search returned 83 open PR records at capture. Several safety proposals overlap and many use stale bases. PR #1253 is a fresh-main accuracy-evaluator safety proposal; PR #1252 is an unrelated geometry/OBJ feature. No PR was merged by this run."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-TRADE-APPEND-20261028T1306Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "title": "Main advanced after snapshot: paper-trading log append",
+      "accessed_at_utc": "2026-10-28T13:06:30Z",
+      "note": "Latest main commit after the 13:03Z research snapshot. Commit message is Paper trade cycle [skip ci] and changed only web/paper_trading_log.jsonl. This is generated-data-only drift; no XRP code or workflow change was observed."
+    },
+    {
+      "id": "SRC-PR1253-CURRENT-BASE-COMPARE-20261028T1306Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
+      "title": "PR #1253 current base comparison",
+      "accessed_at_utc": "2026-10-28T13:06:30Z",
+      "note": "PR head e05d04605f78b5dc4ad94bdce0c5aed09b6781f6 is based on main 070d538bb90c25bdcb64edd1532f83b082c93d7e. Current main advanced one commit to be4a9f485d15ea74ee82d2aae16ca6879423c7d9; compare is 3 ahead/1 behind, with the intervening main commit only appending a paper-trading row. Exact-head CI 147 passed and gate passed; PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-LEDGER-INDEX-CI-20261028T1305Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40693236070",
+      "title": "Research ledger index exact-head CI",
+      "accessed_at_utc": "2026-10-28T13:05:22Z",
+      "note": "Exact index commit bf6e3fe5f3727ebe696c58a8c2c81098b54283d5 passed 145 tests in 4.89s. Fail-closed gate run 40693235867 passed. This verifies that index head, not any subsequent index commit."
+    },
+    {
+      "id": "SRC-YT-CHANNEL-KAMILAH-XRPSTOCKS-20261028T1308Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "YouTube channel: Kamilah Stevenson | XRP & Stocks",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result exposes channel ID UCXm6KAr1WHF6UN7g5b2W7wg and handle @KamilahStevensonXrpStocks, with a crypto/stocks education description. This is a Kamilah-named channel, not proof of identity with the requested Camilla Stephenson."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-03-06-GLOBAL-FINANCE-XRP-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson and dates it 6 Mar 2026. Creator narrative links oil shocks, the yen carry trade, global liquidity and XRP infrastructure; this is an opinion/hypothesis, not verified evidence that XRP demand or price was caused by those events."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-04-19-XRP-WALLET-FLOWS-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=YJdK1LvmJSo",
+      "title": "Kamilah Stevenson video on XRP wallet concentration and exchange outflows (title not surfaced)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 19 Apr 2026. Description claims 4.09B XRP accumulated by large wallets since the Oct 2025 flash crash, 32% of circulating supply held by those wallets, and 7.03B XRP leaving centralized exchanges in Feb 2026. These figures are creator-reported and not independently verified; wallet clustering, exchange-label changes and custody transfers can confound interpretation."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-05-26-XRP-ETF-FLOWS-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=5wVR6MOvWRU",
+      "title": "Kamilah Stevenson video on XRP ETF flows (title not surfaced)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 26 May 2026. Description claims XRP ETFs attracted $60.5M in a week while BTC and ETH ETF products had outflows. Treat as a creator-reported historical claim; reconcile sponsor-level fund flows, covered dates and fund universe before use."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2026-07-30-XRPL-UPGRADE-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 30 Jul 2026. Creator discusses XRPL amendment proposals including Confidential Transfers, Sponsored Fees and Reserves, Batch, Permission Delegation and Dynamic MPT. Treat commentary and adoption implications as claims; verify proposal status, amendment activation and validator voting against official XRPL sources."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-2025-12-03-XRP-2026-SETUP-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "YouTube search result attributes the video to Kamilah Stevenson, published 3 Dec 2025. Description references macro events, the CLARITY Act, QE possibilities and global liquidity as potential 2026 catalysts. This is a thesis/opinion, not verified evidence of future flows or price."
+    },
+    {
+      "id": "SRC-IMDB-CAMILLA-STEPHENSON-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.imdb.com/name/nm1016950/",
+      "title": "IMDb profile for Camilla Stephenson (I)",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "Exact-name profile identifies a location-management professional associated with 28 Years Later, Project Hail Mary and Les Misérables. This remains a plausible same-name collision; no first-party evidence links this person to the Kamilah Stevenson crypto channel."
+    },
+    {
+      "id": "SRC-SCREEN-GLOBAL-CAMILLA-STEPHENSON-20261028T1308Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.screenglobalproduction.com/news/2026/10/20/project-hail-mary-team-uk-location-manager-awards-2026",
+      "title": "Screen Global: Camilla Stephenson and Project Hail Mary team",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "20 Oct 2026 trade publication names Camilla Stephenson in a UK location-management award. This corroborates a same-name professional identity but does not resolve the requested YouTube creator."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPER-TRADE-APPEND-20261028T1308Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+      "title": "Current main commit: paper-trading log append",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "Main advanced after the 13:03Z snapshot through a commit changing only web/paper_trading_log.jsonl. No XRP model or workflow source change was observed. This is generated-data-only drift; main exact-head CI is not verified."
+    },
+    {
+      "id": "SRC-PR1253-CURRENT-BASE-COMPARE-20261028T1308Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1253",
+      "title": "PR #1253 current base comparison",
+      "accessed_at_utc": "2026-10-28T13:08:30Z",
+      "note": "PR #1253 head e05d04605f78b5dc4ad94bdce0c5aed09b6781f6 is based on 070d538 and is now 3 commits ahead/1 behind current main be4a9f4. The intervening main commit only appended a paper-trading row. Exact-head CI passed 147 tests in 6.22s and gate passed; draft/unmerged."
+    },
+    {
+      "id": "SRC-LEDGER-INDEX-CI-20261028T1310Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694006166",
+      "title": "Latest XRP ledger index exact-head CI",
+      "accessed_at_utc": "2026-10-28T13:10:30Z",
+      "note": "Exact index commit c21639c9e3c514129270a053d447c747f48aa12f passed 145 tests in 6.17s; fail-closed gate run 40694006034 passed. This evidence applies to that exact commit; a subsequent evidence append has its own CI run."
+    },
+    {
+      "id": "SRC-VLING-KAMILAH-UCQUP-20261028T1310Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "title": "Third-party analytics profile for Kamilah Stevenson channel UCqUPJMQdkCN6lsLVDnichPA",
+      "accessed_at_utc": "2026-10-28T13:10:45Z",
+      "note": "Third-party Vling page reports a Kamilah Stevenson channel with ID UCqUPJMQdkCN6lsLVDnichPA, roughly 143K subscribers, 1.2K videos, United States, and a 2015 join date. This ID differs from the YouTube search result for 'Kamilah Stevenson | XRP & Stocks' (UCXm6KAr1WHF6UN7g5b2W7wg). Do not assume they are the same channel or the requested Camilla Stephenson."
+    },
+    {
+      "id": "SRC-XRPL-SECURITY-DISCLOSURE-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/blog/2026/vulnerabilitydisclosurereport-bug-20261009",
+      "title": "XRPL official vulnerability disclosure for xrpld 3.4.1",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "Official 9 Oct 2026 disclosure covers two bugs fixed in xrpld 3.4.1: a Batch inner-transaction wrapper validation/consensus-risk bug and a payment-engine integer overflow that could theoretically mint XRP. The report says there is no evidence the overflow was exploited on a public network. The overflow fix applies upon upgrading to 3.4.1; fixBatchV1_2 became enabled on Mainnet 9 Oct, alongside BatchV1_1."
+    },
+    {
+      "id": "SRC-XRPL-RELEASE-3.4.1-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/blog/2026/xrpld-3.4.1",
+      "title": "XRPL official xrpld 3.4.1 emergency release",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "Official release dated 25 Sep 2026 describes 3.4.1 as an emergency release for security-sensitive protocol issues. Operators are instructed to upgrade to 3.4.1 or newer."
+    },
+    {
+      "id": "SRC-XRPL-RELEASE-3.3.0-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/blog/2026/xrpld-3.3.0",
+      "title": "XRPL official xrpld 3.3.0 release and amendment support",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "Official 6 Aug 2026 release introduces support for BatchV1_1, ConfidentialTransfer, DynamicMPT, PermissionDelegationV1_1 and Sponsor (Sponsored Fees and Reserves), among other changes. Release support is not itself proof of Mainnet amendment activation; activation is a separate voting/status fact."
+    },
+    {
+      "id": "SRC-XRPL-KNOWN-AMENDMENTS-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xrpl.org/resources/known-amendments",
+      "title": "XRPL official known-amendments registry",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "Official registry describes amendment lifecycle and separates Mainnet status from in-development proposals. The page's dynamically rendered current-status fields were shown as Loading in this capture; use it for definitions and standards links, but do not infer live activation from the unloaded badges."
+    },
+    {
+      "id": "SRC-XLS-0096-20261028T1311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://xls.xrpl.org/xls/XLS-0096-confidential-mpt.html",
+      "title": "XLS-0096 Confidential Transfers for Multi-Purpose Tokens",
+      "accessed_at_utc": "2026-10-28T13:11:30Z",
+      "note": "XLS-0096 is marked Final as a specification for confidential MPT transfers. 'Final' standard status does not by itself prove the corresponding amendment is enabled on XRPL Mainnet."
+    },
+    {
+      "id": "SRC-LEDGER-INDEX-CI-20261028T1313Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694488133",
+      "title": "Exact-head CI for XRPL security research snapshot",
+      "accessed_at_utc": "2026-10-28T13:13:30Z",
+      "note": "Ledger index head b48e69e43fd9bc8da0e8d7358eaf5a07ae70b682 passed 145 tests in 5.78s; fail-closed gate run 40694488294 passed. Snapshot blob c6b0a41bcd67b8fc937bd0217afe826ad179a130 matched the index. This verification applies to that exact head."
+    },
+    {
+      "id": "SRC-GH-RULESET-FALLBACK-20261028T1315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/rules/10863829",
+      "title": "Repository ruleset Fall Back",
+      "accessed_at_utc": "2026-10-28T13:15:30Z",
+      "note": "GitHub rulesets API returned one repository-level branch ruleset named Fall Back with enforcement=disabled, created 6 Dec 2025. This proves this ruleset is disabled; it does not prove there is no separate classic branch protection or other enforcement."
+    },
+    {
+      "id": "SRC-GH-BRANCH-PROTECTION-403-20261028T1315Z",
+      "evidence_class": "UNKNOWN",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main/protection",
+      "title": "Main branch-protection endpoint unavailable to current integration",
+      "accessed_at_utc": "2026-10-28T13:15:30Z",
+      "note": "GitHub API returned 403 Resource not accessible by integration for GET /branches/main/protection. Required status checks and effective branch-protection rules therefore remain unverified; do not infer absence or presence from this denied response."
+    },
+    {
+      "id": "SRC-GH-DEPENDABOT-CONFIG-20261028T1315Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/dependabot.yml",
+      "title": "Dependabot configuration",
+      "accessed_at_utc": "2026-10-28T13:15:30Z",
+      "note": "Dependabot is configured weekly for pip and GitHub Actions with up to five open update PRs per ecosystem. This is automated update coverage, not proof that all vulnerabilities are detected or remediated."
+    },
+    {
+      "id": "SRC-GH-PRIMARY-MANIFESTS-20261028T1315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/requirements.txt",
+      "title": "Primary runtime dependency manifests",
+      "accessed_at_utc": "2026-10-28T13:15:30Z",
+      "note": "Main requirements.txt and pyproject.toml omit numpy, PyJWT, cryptography and websockets, while active code imports jwt in barrot_agent/barrot_brain.py and websockets in barrot_agent/tools/upgrade_bundle.py. The CI workflow manually installs PyJWT and cryptography, masking their omission from primary manifests. Normal install paths use requirements.txt or pyproject dependencies."
+    },
+    {
+      "id": "SRC-GH-ORPHAN-REQUIREMENTS-TX-20261028T1315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/requirements.tx",
+      "title": "Unreferenced requirements.tx manifest",
+      "accessed_at_utc": "2026-10-28T13:15:30Z",
+      "note": "The file contains numpy, PyJWT, cryptography and websockets requirements, but repository search found no install command referencing requirements.tx; Makefile, Dockerfile, docs and dev manifest use requirements.txt. Treat it as an apparently orphaned/typo-named manifest until its intended role is confirmed. The file was not deleted or modified."
+    },
+    {
+      "id": "SRC-GH-WORKFLOW-INVENTORY-20261028T1315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/tree/main/.github/workflows",
+      "title": "GitHub Actions workflow inventory",
+      "accessed_at_utc": "2026-10-28T13:15:30Z",
+      "note": "GitHub returned 84 workflow files. The inventory includes autonomous_self_deployment.yml, force-deploy-space.yml, sync-huggingface.yml, deploy-databricks.yml, rotate-databricks-token.yml, merge/automerge workflows, scheduler-tick.yml, coinbase-paper-trader.yml, financial-data-refresh.yml, cross-analysis.yml, pingpong.yml, signal-summary.yml and check-signal-accuracy.yml. This is a high automation surface; audit remains targeted, not exhaustive."
+    },
+    {
+      "id": "SRC-GH-SECURITY-ALERTS-ENDPOINT-20261028T1315Z",
+      "evidence_class": "UNKNOWN",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/dependabot/alerts?state=open&per_page=100",
+      "title": "Dependency/security alert status unavailable",
+      "accessed_at_utc": "2026-10-28T13:15:30Z",
+      "note": "The current GitHub connector rejected Dependabot and code-scanning alert endpoints as outside its allowed public repository/search endpoint set. Alert counts and findings are unknown; this is not evidence that there are no alerts."
+    },
+    {
+      "id": "SRC-PR1256-STATE-20261028T1315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
+      "title": "PR #1256 runtime dependency manifest fix",
+      "accessed_at_utc": "2026-10-28T13:15:30Z",
+      "note": "Fresh-main draft PR from base be4a9f4 adds numpy, PyJWT, cryptography and websockets to requirements.txt and pyproject.toml, adds a manifest regression test, and includes it in core CI. At capture the fail-closed gate passed and core CI was still in progress; PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-LEDGER-INDEX-CI-20261028T1315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694643874",
+      "title": "Exact-head CI for prior XRPL research index",
+      "accessed_at_utc": "2026-10-28T13:14:57Z",
+      "note": "Index head 48e6ba19f1db28e74751a53378c18d60dc5de7a9 passed 145 tests in 6.00s; fail-closed gate run 40694643433 passed. The current snapshot/index append will have its own separate CI result."
+    },
+    {
+      "id": "SRC-PR1256-CI-20261028T1318Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40694932828",
+      "title": "PR #1256 runtime dependency manifest exact-head CI",
+      "accessed_at_utc": "2026-10-28T13:18:30Z",
+      "note": "Fresh-main head 13998c17f0fe93ab62960dc45dfa51cf4f527637 passed 147 tests in 7.31s. Fail-closed gate run 40694932868 passed. PR #1256 remains draft/open/unmerged; main was not changed."
+    },
+    {
+      "id": "SRC-LEDGER-INDEX-CI-20261028T1318Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40695123231",
+      "title": "Exact-head CI for repository security/dependency snapshot index",
+      "accessed_at_utc": "2026-10-28T13:18:08Z",
+      "note": "Ledger index commit 3d6ac5ba7594a85b757663ef2e2ebab5e52965db passed 145 tests in 6.22s. Fail-closed gate run 40695123808 passed. This evidence applies to that exact index commit; the next evidence append has its own CI."
+    },
+    {
+      "id": "SRC-LEDGER-INDEX-CI-20261028T1320Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40695255777",
+      "title": "Exact-head CI for latest security/dependency ledger index",
+      "accessed_at_utc": "2026-10-28T13:20:00Z",
+      "note": "Index commit 2eaa61bac23fe217712abb6026106ece7e56e73a passed 145 tests in 5.96s; fail-closed gate run 40695255815 passed. Snapshot blob 23f39da1939a5b1a9f8f6445713709d8514a6308 matched the index. This verification applies to that exact index head."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-CIRCULATION-2026-10-26-RERUN",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/fr/transparency",
+      "title": "Circle USDC transparency dashboard, as of 26 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official Circle dashboard as of 26 Oct reports $71.0B USDC circulation, $71.2B reserves, 7-day issuance/redemption $11.6B/$12.7B, 30-day $44.5B/$48.7B, and 365-day $358.7B/$363.8B. Global figures; not chain- or destination-attributed."
+    },
+    {
+      "id": "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-XRPINSIGHTS",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/",
+      "title": "XRP Insights ETF tracker, 27 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Tracker reports 27 Oct net outflows of 433,940 XRP (about $577.1K), holdings about 1.19B XRP and $1.56B net assets across six spot funds plus BITW; GXRP excluded from flow calculation during a data-capture gap."
+    },
+    {
+      "id": "SRC-XRP-ETF-FLOW-TRACKER-2026-10-27-MAKETO",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "title": "Maketo XRP ETF flows page, 27 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Page displays $0 for the latest 27 Oct observation and warns that a day without a bar may mean funds did not fully report. Fund universe and completeness are not aligned to XRP Insights in the captured page."
+    },
+    {
+      "id": "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-29",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.nasdaq.com/press-release/coinbase-announces-date-third-quarter-2026-financial-results-2026-10-14",
+      "title": "Coinbase Q3 2026 results date announcement",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Coinbase announced Q3 2026 results and related materials will publish Thursday 29 Oct 2026 after market close; the Q&A is scheduled later that day. Results were not yet published at this capture."
+    },
+    {
+      "id": "SRC-GH-MAIN-CROSS-ANALYSIS-2026-10-28T1351Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b390c3aa469401b07a470e3718a4e6fff9f2e547",
+      "title": "Main cross-analysis refresh commit",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Commit b390c3a at 13:51:40Z changed generated entity_cooccurrence.json, entity_sentiment_profile.json and sentiment_shift.json only. It followed the scheduled Cross Analysis run; this is generated-data writing to main, not reviewed model-code change."
+    },
+    {
+      "id": "SRC-GH-ACTIONS-CROSS-ANALYSIS-2026-10-28T1351Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40700310719",
+      "title": "Scheduled Cross Analysis workflow run",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Run completed successfully at 13:51:33Z on prior head 4448889; main commit b390c3a followed at 13:51:40Z with generated cross-analysis JSON changes."
+    },
+    {
+      "id": "SRC-GH-MAIN-PAPERTRADER-2026-10-28T1404Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b08d8531ae64f59ba5ead2953ed331192b7dba12",
+      "title": "Latest main paper-trading-log append",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Current main head b08d8531ae64f59ba5ead2953ed331192b7dba12 is a paper-trading-log append at 2026-10-28T14:04:51Z; changed file: web/paper_trading_log.jsonl. Exact-head main CI is not verified; commit message is marked [skip ci]."
+    },
+    {
+      "id": "SRC-GH-PR1256-CURRENT-DIVERGENCE-2026-10-28T1410Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1256",
+      "title": "PR #1256 stale-base comparison",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Original dependency-manifest branch compares 4 commits ahead and 7 behind current main. Exact-head CI passed on its older head, but do not merge it as-is; fresh-main successor #1258 exists."
+    },
+    {
+      "id": "SRC-GH-PR1258-CI-2026-10-28T1403Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702184825",
+      "title": "Fresh-main runtime dependency manifest CI",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "PR #1258 exact head dfc400d passed 147 tests in 6.41s; fail-closed gate run 40702184699 passed. Main later advanced by one generated paper-trading-log commit; current compare is 1 ahead/1 behind with no overlapping changed paths. PR remains draft/unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1259-CI-2026-10-28T1409Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40703061966",
+      "title": "Fresh-main fixed-horizon accuracy evaluator CI",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "PR #1259 exact head 46c92f8 passed 147 tests in 4.18s; fail-closed gate run 40703061949 passed. Base b08d853; branch 1 ahead/0 behind at capture. Draft/unmerged."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1403Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702168314",
+      "title": "Approval workflow zero-job run, first observed event metadata mismatch",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Run has zero jobs and failure. Branch-filtered runs listing reported event=push, while direct run endpoint reported event=pull_request. Event attribution is inconsistent across endpoints; root cause unresolved."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1408Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40702993670",
+      "title": "Approval workflow zero-job run on PR #1259 branch push",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Run reported event=push, failure, and zero jobs. The workflow file on main declares workflow_dispatch only. This does not establish why GitHub records the run or prove a containment fix."
+    },
+    {
+      "id": "SRC-GH-MAIN-SIGNAL-SUMMARY-WORKFLOW-2026-10-28T1410Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml",
+      "title": "Current main signal-summary workflow still writes generated output",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Current main workflow declares workflow_dispatch, workflow_run and schedule triggers, then commits generated summary JSON/audio and git-pushes to main. The artifact-only replacement remains unmerged."
+    },
+    {
+      "id": "SRC-PYPI-PYJWT-2.15.1-2026-10-28",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://pypi.org/project/PyJWT/2.15.1/",
+      "title": "PyJWT 2.15.1 release on PyPI",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official PyPI page confirms PyJWT 2.15.1 was released 28 Sep 2026 with publishing provenance. This confirms the proposed minimum version exists, not that the repository dependency set is fully resolved."
+    },
+    {
+      "id": "SRC-PYPI-CRYPTOGRAPHY-50.0.2-2026-10-28",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://pypi.org/project/cryptography/50.0.2/",
+      "title": "cryptography 50.0.2 release on PyPI",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official PyPI page confirms cryptography 50.0.2 was released 30 Sep 2026. This confirms the proposed minimum version exists, not that the full dependency set is vulnerability-free."
+    },
+    {
+      "id": "SRC-GH-OPEN-PR-INVENTORY-2026-10-28T1410Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/pulls?state=open&per_page=100",
+      "title": "Current open PR inventory",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "GitHub returned 89 open PRs in the first 100-item page. Several historical safety and research PRs have stale bases; no PR was merged or closed."
+    },
+    {
+      "id": "SRC-GH-PR1258-BASE-COMPARE-2026-10-28T1410Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1258",
+      "title": "PR #1258 current-main compare",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Compare against current main: 1 ahead / 1 behind. The main-side commit after its base changes web/paper_trading_log.jsonl; no overlapping changed paths. Keep draft/unmerged."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-MULTICHAIN-PAGE-202610281219Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/usdc",
+      "title": "Circle USDC supported networks page",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official Circle page states USDC is natively issued on 38 blockchain networks as of 16 Sep 2026 and lists XRPL among supported networks. This confirms native USDC support, not XRPL supply volume or XRP price impact."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-H1-ECONOMICS-202610281219Z",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "title": "The Economics of USDC and Why Our Partners Win",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Circle article dated 16 Oct 2026 reports H1 USDC on-chain transaction volume above $36T, mint/redemption above $315B, and $819M in distribution-partner and transaction costs. These are issuer-reported totals, not independent economic-payment or XRP-flow measurements."
+    },
+    {
+      "id": "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-202610281219Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "title": "SBIC East Japan generative AI and machine-learning training curriculum",
+      "accessed_at_utc": "2026-10-28T14:10:26Z",
+      "note": "Official SBIC East Japan course page for 12-13 Jun 2025 includes ChatGPT usage in its curriculum and was limited to investee companies. It does not establish an OpenAI partnership or direct XRP relationship."
+    },
+    {
+      "id": "SRC-XRP-PRICE-COINCODEX-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://coincodex.com/crypto/ripple/historical-data/",
+      "title": "CoinCodex XRP historical data, 27-28 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Displayed daily bar: open about $1.31, high $1.33, low $1.29, close $1.33; reported volume about $1.40B and market cap about $82.97B. Daily bar boundary and venue universe are not normalized to other trackers."
+    },
+    {
+      "id": "SRC-XRP-PRICE-DECRYPT-2026-10-28",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://decrypt.co/price/xrp",
+      "title": "Decrypt XRP price page, 28 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Displayed XRP near $1.33, 24-hour range $1.29-$1.34, volume about $94.6M and market cap about $84.25B. Rolling 24-hour volume is not comparable to CoinCodex daily-bar volume without matching source coverage."
+    },
+    {
+      "id": "SRC-CFTC-XRP-POSITIONS-2026-10-13",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.cftc.gov/sites/default/files/files/dea/cotarchives/2026/futures/financial_lf101326.htm",
+      "title": "CFTC Traders in Financial Futures, positions as of 13 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Report updated 16 Oct. Lists CME XRP futures open interest 7,613 contracts (50,000 XRP each; -258 vs 6 Oct), Coinbase Nano XRP 59,801 contracts (500 XRP each; +514), and Coinbase Nano XRP Perp Style 38,798 contracts (500 XRP each; +38). This is historical futures-only positioning, not current all-venue exposure."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1416Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704246913",
+      "title": "Research ledger source-catalog backfill CI",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Exact-head CI passed 145 tests in 4.78s on d4ef807; fail-closed gate run 40704246886 passed. This verifies the previous snapshot/index head before the new 14:17 snapshot/index pair."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1415Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704232417",
+      "title": "Approval workflow zero-job run, 28 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:17:05Z",
+      "note": "Run reported event=push, failure, and zero jobs on the research branch update. No job executed. Root cause remains unknown."
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-ETF-TOTALS-2026-10-27-20261028T1419Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/data/xrp-etf-totals.json",
+      "title": "XRP Insights ETF Daily Totals JSON, data as of 27 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:19:27Z",
+      "note": "JSON metadata generated 2026-10-28T13:50:05Z, data_as_of 2026-10-27. Page reports -3,132,685 XRP (about -$4.1M) net flow across two settled trading days, 26-27 Oct, and 1,190,077,145 XRP holdings. Coverage is six US spot XRP ETFs plus BITW; GXRP flow is excluded. Flow is derived from holdings deltas and may include BITW rebalancing or XRP-denominated fee effects."
+    },
+    {
+      "id": "SRC-MAKETO-XRP-ETF-FLOWS-2026-10-28T1419Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "title": "Maketo XRP ETF daily flow page, refreshed 28 Oct 2026",
+      "accessed_at_utc": "2026-10-28T14:19:27Z",
+      "note": "Page reports $0 for 27 Oct, -$3.6M for 26 Oct, about +$0.6M over the past week and +$15M over the past month. Visible daily table lists XRP, XRPZ, XRPC, TOXR and GXRP; this differs from XRP Insights' stated six spot ETFs plus BITW coverage."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1418Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704638698",
+      "title": "Research ledger index CI on c1e42a3",
+      "accessed_at_utc": "2026-10-28T14:19:27Z",
+      "note": "Exact-head CI passed 145 tests in 5.85s on c1e42a30f632e4ceedb9cf368390843f1c77a035; fail-closed gate run 40704638807 passed. This verifies the prior 14:17 snapshot/index head, not the new 14:19 pair."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1418Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40704629868",
+      "title": "Approval workflow zero-job run on research branch update",
+      "accessed_at_utc": "2026-10-28T14:19:27Z",
+      "note": "Run recorded event=push, conclusion=failure, and zero jobs. No approval action ran; root cause remains unresolved."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1421Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40705041753",
+      "title": "Exact-head CI and gate verification for 14:19 XRP ledger index",
+      "accessed_at_utc": "2026-10-28T14:21:18Z",
+      "note": "CI run 40705041753 passed 145 tests in 5.80s on index head 2ee4c52b37a3b284d6ca0e8b57f1deef43342519; fail-closed gate run 40705041428 passed. The indexed snapshot blob SHA 5ab71ed5a373cd6af10e1778b4a7d8d6bcc543aa matches the snapshot file, and the source-reference audit found no missing references."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1501Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/6230b75f35dd629b3f07969a4360069d5e1ecd40",
+      "title": "Current main head, generated paper-trading append",
+      "accessed_at_utc": "2026-10-28T15:01:34Z",
+      "note": "Main advanced from b08d8531ae64f59ba5ead2953ed331192b7dba12 to 6230b75f35dd629b3f07969a4360069d5e1ecd40. Commit message is Paper trade cycle [skip ci] and the commit diff changes only web/paper_trading_log.jsonl. Comparing b08d to current main shows four commits since the prior base; their changed paths are generated knowledge-base/signal/paper-trading data. Exact-head main CI remains unverified."
+    },
+    {
+      "id": "SRC-GH-PR-BASE-COMPARE-2026-10-28T1501Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/b08d8531ae64f59ba5ead2953ed331192b7dba12...6230b75f35dd629b3f07969a4360069d5e1ecd40",
+      "title": "Current-main comparison for safety PRs #1259 and #1258",
+      "accessed_at_utc": "2026-10-28T15:01:34Z",
+      "note": "GitHub compare reports PR #1259 head 46c92f895246216869633b74ee452e3e279dff43 as one commit ahead and four behind current main; its changed files are .github/workflows/check-signal-accuracy.yml, scripts/check_signal_accuracy.py, tests/test_v3_scripts.py. PR #1258 head dfc400d87bf8e759c054a2148f8f7e07a6cf6c80 is one ahead and five behind; changed files are .github/workflows/ci.yml, pyproject.toml, requirements.txt, tests/test_dependency_manifest.py. Main commits since their bases touch generated-data paths only, with no overlapping paths in these comparisons. Both PRs remain draft/unmerged; GitHub mergeability still needs refresh and must not be inferred solely from compare status."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1501Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40705198768",
+      "title": "Approval workflow push-event failure with zero jobs",
+      "accessed_at_utc": "2026-10-28T15:01:34Z",
+      "note": "Run 40705198768 reports event=push, conclusion=failure, branch research/xrp-ledger-fresh-main-20261028-1217z, head 1f72dca424853411435516715df006c37903c1a9, and zero jobs. The workflow file at that exact head has blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4 and declares workflow_dispatch only; current main and research branch have the same blob. No approval job ran. PR #1250 has a push no-op on a separate unmerged branch, so it does not explain or resolve this observed run. Root cause remains unknown."
+    },
+    {
+      "id": "SRC-GH-SIGNAL-SUMMARY-WRITE-2026-10-28T1501Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/signal-summary.yml",
+      "title": "Main signal-summary workflow still writes generated output directly to main",
+      "accessed_at_utc": "2026-10-28T15:01:34Z",
+      "note": "Current main file blob SHA 1718b45beaf1f8aa002ce332b2b828d27049508b runs on workflow_dispatch, workflow_run and hourly schedule, executes scripts/signal_summary.py, stages web/latest_signal_summary.json and web/generated_audio/, commits, and pushes to main with a pull-and-push retry. This is a current direct generated-data write path. Artifact-only proposals remain unmerged; durable append-only staging and reviewed promotion are not implemented."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1506Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/c50ec170923b90ec1f18f3c80af3cf452337c887",
+      "title": "Main advanced again through automated paper-trading append",
+      "accessed_at_utc": "2026-10-28T15:06:20Z",
+      "note": "Latest observed main head c50ec170923b90ec1f18f3c80af3cf452337c887 is another Paper trade cycle [skip ci] commit. Its diff changes only web/paper_trading_log.jsonl. This confirms automated generated-data writes continued during the run. Exact-head main CI is not verified."
+    },
+    {
+      "id": "SRC-GH-PR-BASE-COMPARE-2026-10-28T1506Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/b08d8531ae64f59ba5ead2953ed331192b7dba12...c50ec170923b90ec1f18f3c80af3cf452337c887",
+      "title": "PR safety branches rechecked against newest main head",
+      "accessed_at_utc": "2026-10-28T15:06:20Z",
+      "note": "After main advanced to c50ec170, PR #1259 is one commit ahead and five behind current main; PR #1258 is one ahead and six behind. Intervening main commits touch generated knowledge-base/signal/paper-trading paths only and do not overlap the PR's changed files. Keep both draft/unmerged; refresh mergeability and checks before review."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1506Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40712464523",
+      "title": "Exact-head CI for 15:01 XRP research ledger index",
+      "accessed_at_utc": "2026-10-28T15:06:20Z",
+      "note": "Exact-head CI on ledger index commit b6fb038aa15a38101350550ac3644150e8856a78 completed successfully. Tests job reported 145 passed in 5.02 seconds; fail-closed gate run 40712464446 passed. Snapshot blob SHA bddf90559c9653d014e5580ccb6c8208987403bb matched the ledger index and source references resolved. This verifies the 15:01 index head, not the new 15:06 index commit."
+    },
+    {
+      "id": "SRC-TRADRADAR-XRP-PERP-2026-10-28T1200Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "XRP perpetual futures aggregate snapshot, 28 Oct 2026 12:00 UTC",
+      "accessed_at_utc": "2026-10-28T16:06:19.676Z",
+      "note": "Page reports mark price $1.324 (+1.74% 24h), aggregate open interest $1.85B across 7 exchanges (+1.95%), OI-weighted funding +0.0100% per 8h, 24h liquidations at least $1.46M across 5 exchanges (shorts $1.28M, longs $178.54K), and long/short account ratio 3.58 with 78.2% long. Data is shown with 15-minute delay; single secondary provider; metric universes differ; not admitted as a forecast feature."
+    },
+    {
+      "id": "SRC-REUTERS-USD-YIELDS-FED-2026-10-28T1600Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.reuters.com/business/dollar-holds-gains-ahead-fed-policy-signal-rbnz-decision-2026-10-28/",
+      "title": "Reuters: dollar holds gains ahead of Fed policy signal, 28 Oct 2026",
+      "accessed_at_utc": "2026-10-28T16:06:19.676Z",
+      "note": "Reuters reports DXY near 102.40 and US 10-year Treasury yield near 5.0112% before the Fed decision, with markets expecting a hold and pricing an 84% chance of a December hike. Time-sensitive media snapshot; verify with official market series and the actual Fed statement before feature use."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1551Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
+      "title": "Current main head: cross-analysis refresh, 28 Oct 2026 15:51:40 UTC",
+      "accessed_at_utc": "2026-10-28T16:06:19.676Z",
+      "note": "GitHub API identifies b85a5ce07c396ecaee296ec31f8744f95e3f4d3b as main head at 15:51:40 UTC. Commit message is Cross-analysis refresh [skip ci]. Main exact-head CI was not verified."
+    },
+    {
+      "id": "SRC-GH-GENERATED-WRITER-BURST-2026-10-28T1551Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/c50ec170923b90ec1f18f3c80af3cf452337c887...b85a5ce07c396ecaee296ec31f8744f95e3f4d3b",
+      "title": "Six generated-data commits and 13 changed files on main",
+      "accessed_at_utc": "2026-10-28T16:06:19.676Z",
+      "note": "Comparison from c50ec170 (15:05 UTC) to b85a5ce (15:51 UTC) shows six commits changing 13 generated data files: knowledge configs/logs, entity co-occurrence/sentiment files, latest XRP/BTC signal JSON, signal summaries, signal history and paper-trading logs. This confirms automated generated-data writes continued; it does not establish whether every writer is faulty."
+    },
+    {
+      "id": "SRC-GH-SIGNAL-ARTIFACT-2026-10-28T1523Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal.json",
+      "title": "Main XRP signal artifact has zero confidence and provider failures",
+      "accessed_at_utc": "2026-10-28T16:06:19.676Z",
+      "note": "At the inspected main file blob bc5a2268d29e8dbf3d663b73f26d7b5c1a873f97, latest_signal.json timestamp is 2026-10-28T15:23:25.776808Z, score 44, confidence 0, news score 88 over 11 entries, and source string reports missing GitHub model credentials and Groq HTTP 429. Several XRPL technical research papers are classified bullish. This is not valid directional market evidence."
+    },
+    {
+      "id": "SRC-GH-WORKFLOW-INVENTORY-2026-10-28T1602Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/tree/main/.github/workflows",
+      "title": "Main workflow inventory: 84 workflow files",
+      "accessed_at_utc": "2026-10-28T16:06:19.676Z",
+      "note": "GitHub API directory inventory returned 84 workflow files. Targeted inspection confirms signal-summary.yml still has schedule and workflow_run triggers, contents write behavior, and a git commit/push retry; knowledge-signal-cycle.yml also retains contents:write and generated-data commits. Inventory is broad but not a complete risk review of every workflow."
+    },
+    {
+      "id": "SRC-GH-PR1260-CI-2026-10-28T1603Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722169980",
+      "title": "PR #1260 exact-head CI passed 150 tests",
+      "accessed_at_utc": "2026-10-28T16:06:19.676Z",
+      "note": "Exact-head CI run 40722169980 completed successfully on commit c4ce599faeed469760b093484919785b74cda123. Job log reports 150 passed in 5.78 seconds. This verifies regression tests for the proposed signal-summary fail-closed and artifact-only change, not predictive skill or deployment."
+    },
+    {
+      "id": "SRC-GH-PR1260-GATE-2026-10-28T1603Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722169872",
+      "title": "PR #1260 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T16:06:19.676Z",
+      "note": "Fail-closed gate run 40722169872 completed successfully for PR #1260. The PR remains draft, open, and unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1260-OPEN-2026-10-28T1603Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1260",
+      "title": "Fresh-main signal-summary safety PR #1260",
+      "accessed_at_utc": "2026-10-28T16:06:19.676Z",
+      "note": "Draft PR #1260 is based on main b85a5ce07c396ecaee296ec31f8744f95e3f4d3b and head c4ce599faeed469760b093484919785b74cda123. It changes only ci.yml, signal-summary.yml, scripts/signal_summary.py, and a new safety test. Exact-head CI passed 150 tests in 5.78s and fail-closed gate passed. PR is open and unmerged; no main changes."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1605Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/03bf7c009bfd166a2993a44cc08ee09f632b6e76",
+      "title": "Main advanced to paper-trading log append at 16:05:07 UTC",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "GitHub API reports main head 03bf7c009bfd166a2993a44cc08ee09f632b6e76, commit message Paper trade cycle [skip ci], at 2026-10-28T16:05:07Z. Exact-head main CI is not verified."
+    },
+    {
+      "id": "SRC-GH-PR1260-CURRENT-BASE-COMPARE-2026-10-28T1608Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/main...safety/signal-summary-readonly-fresh-main-20261028T1602Z",
+      "title": "PR #1260 current comparison after main advanced",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "At comparison time, PR #1260 is four commits ahead and one behind current main. Its changed files are ci.yml, signal-summary.yml, scripts/signal_summary.py and tests/test_signal_summary_safety.py; the intervening main commit changes web/paper_trading_log.jsonl, with no overlapping changed path observed. Recheck before approval."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1606Z-A",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722665371",
+      "title": "Approval workflow push-event failure with zero jobs on snapshot commit",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Run 40722665371 on research branch commit 8be3ff9608a399913821204a4b3317ac3b5e0673 reports event push, conclusion failure and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1606Z-B",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722685264",
+      "title": "Approval workflow push-event failure with zero jobs on index commit",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Run 40722685264 on research branch commit 2d37991383b788a23a3741de319ed6f6c9763c35 reports event push, conclusion failure and zero jobs. Its workflow path is .github/workflows/barrot-approve-pr.yml; exact workflow blob at event head is 7047d1ebf27c5151b5a844ad375ac583a2e193e4 and declares workflow_dispatch only. No job executed; root cause unknown."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-WORKFLOW-CURRENT-BLOB-2026-10-28T1608Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Current approval workflow remains manual-dispatch-only",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Main file blob 7047d1ebf27c5151b5a844ad375ac583a2e193e4 declares workflow_dispatch inputs only. This does not explain repeated push-event zero-job failures. PR #1250's proposed explicit push no-op is unmerged and did not govern runs 40722665371 or 40722685264."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1606Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722698584",
+      "title": "Research ledger index commit 2d379913 CI passed",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Exact-head CI run 40722698584 completed successfully on commit 2d37991383b788a23a3741de319ed6f6c9763c35; job log reports 145 tests passed in 5.95 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1606Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722698549",
+      "title": "Research ledger index commit 2d379913 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Fail-closed gate run 40722698549 completed successfully for the same ledger-index commit 2d37991383b788a23a3741de319ed6f6c9763c35."
+    },
+    {
+      "id": "SRC-YT-KAMILAH-XRP-STOCKS-CHANNEL-20261028",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "Public YouTube channel named Kamilah Stevenson | XRP & Stocks",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "YouTube search result identifies a channel with this name and a crypto/stocks description. The requested name is Camilla Stephenson; this channel is only a candidate and no first-party evidence proves identity equivalence."
+    },
+    {
+      "id": "SRC-VLING-KAMILAH-CHANNEL-UCqUPJMQdkCN6lsVLDnichPA-20261028",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsVLDnichPA/channel-info",
+      "title": "Third-party analytics profile for a second Kamilah Stevenson channel ID",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "Third-party profile reports a Kamilah Stevenson channel with ID UCqUPJMQdkCN6lsVLDnichPA and approximately 1.2K videos. This is a different ID from UCXm6KAr1WHF6UN7g5b2W7wg; no first-party cross-link or match to Camilla Stephenson is established."
+    },
+    {
+      "id": "SRC-GLASP-KAMILAH-TRANSCRIPT-QSLBJGQD0MU-20261028",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "title": "Third-party transcript for a Kamilah Stevenson XRP video",
+      "accessed_at_utc": "2026-10-28T16:08:14.181Z",
+      "note": "The page attributes the video to Kamilah Stevenson and its transcript has the speaker refer to herself as Camila Stevenson. This supports name-variant ambiguity, not identity equivalence with the requested Camilla Stephenson."
+    },
+    {
+      "id": "SRC-SBI-USDC-REGISTRATION-2025-03-04",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2025/0304_15290.html",
+      "title": "SBI VC Trade registration for USDC handling in Japan",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "SBI Group release dated 2025-03-04 confirms registration as an Electronic Payment Instruments Exchange Service Provider and notes a November 2023 basic agreement with Circle for a broad business alliance. Establishes a regulated distribution path, not XRP flows."
+    },
+    {
+      "id": "SRC-SBI-USDC-RETAIL-2025-03-25",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2025/0325_15332.html",
+      "title": "SBI VC Trade general-customer USDC trading launch announcement",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "SBI Group release dated 2025-03-25 announces general-customer USDC trading from 2025-03-26. Announcement-era first/only wording is not a current market-share statistic."
+    },
+    {
+      "id": "SRC-SBI-USDC-PAYMENT-PILOT-2026-04-30",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0430_16290.html",
+      "title": "SBI VC Trade and Aplus USDC merchant-payment pilot",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "SBI Group release dated 2026-04-30 announces a five-day USDC merchant-payment pilot at Unatoto and Bic Camera for 2026-05-25 to 2026-05-29. Limited pilot announcement, not sustained payment volume."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1608Z-A",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722982080",
+      "title": "Approval workflow push failure with zero jobs after snapshot push",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "Run 40722982080 on research branch snapshot commit 9b8a1a0 reports push event, failure, and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1608Z-B",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40722991997",
+      "title": "Approval workflow push failure with zero jobs after index push",
+      "accessed_at_utc": "2026-10-28T16:11:10.831Z",
+      "note": "Run 40722991997 on research branch index commit 4a43aec reports push event, failure, and zero jobs. Workflow file at event head is dispatch-only; no job executed."
+    },
+    {
+      "id": "SRC-RIPPLE-COINBASE-RLUSD-PARTNERSHIP-2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "title": "Ripple and Coinbase announce RLUSD distribution partnership",
+      "evidence_class": "COMPANY_REPORTED",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Ripple's joint-announcement release dated 2026-10-28 says RLUSD is available for retail and institutional clients through Coinbase Prime, Coinbase Exchange and Coinbase Retail, with 1:1 conversion from USD and supported USD stablecoins; deposits/withdrawals are supported on XRPL, Base and Ethereum; Ripple will provide liquidity on Base. It says RLUSD collateral availability for Coinbase Global Exchange customers will follow, so collateral support is announced future functionality, not live at this cutoff. Coinbase-side corroboration and actual volumes are not yet captured."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1611Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723476174",
+      "title": "Research ledger index b5e4a8f CI passed 145 tests",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Exact-head CI on research index commit b5e4a8f438e20c43e5a9c651933901c955df7a83 passed 145 tests in 4.89 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1611Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723476214",
+      "title": "Research ledger index b5e4a8f fail-closed gate passed",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Fail-closed gate run 40723476214 passed for research index commit b5e4a8f438e20c43e5a9c651933901c955df7a83."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1610Z-A",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723406339",
+      "title": "Approval workflow push failure with zero jobs after snapshot commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Run 40723406339 on research branch snapshot commit c0ece2ea881e906a6440ed04efbca35f3efa050d reports push event, failure, and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1610Z-B",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723467039",
+      "title": "Approval workflow push failure with zero jobs after index commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:12:47.105Z",
+      "note": "Run 40723467039 on research branch index commit b5e4a8f438e20c43e5a9c651933901c955df7a83 reports push event, failure, and zero jobs. Workflow content at the event head declares workflow_dispatch only; no job executed."
+    },
+    {
+      "id": "SRC-COINBASE-GLOBAL-EXCHANGE-COLLATERAL-HELP-2026-10-28",
+      "url": "https://help.coinbase.com/en/global-exchange/trading-deposits-withdrawals/deposit-funds",
+      "title": "Coinbase Global Exchange collateral eligibility help page",
+      "evidence_class": "COMPANY_REPORTED",
+      "accessed_at_utc": "2026-10-28T16:14:00.840Z",
+      "note": "Current Coinbase Help page lists BTC, ETH, SOL, EUR, XRP, ADA, cbETH, DOGE, HBAR, LINK, AAVE, NEAR, TAO, HYPE, PAXG and USDT as collateral assets in addition to USDC. Page publication/effective date is not shown; record as observed page state, not proof of actual XRP collateral balances, haircuts, utilization or customer positions."
+    },
+    {
+      "id": "SRC-COINBASE-RLUSD-PRICE-PAGE-STALE-2026-10-28",
+      "url": "https://www.coinbase.com/price/ripple-usd",
+      "title": "Coinbase RLUSD price page still says not tradable on Coinbase",
+      "evidence_class": "COMPANY_REPORTED_STALE_CONFLICT",
+      "accessed_at_utc": "2026-10-28T16:14:00.840Z",
+      "note": "Coinbase price page captured by search says RLUSD is not tradable on Coinbase and appears to reflect an older DEX-only state. It was crawled last month; it conflicts with the 2026-10-28 Ripple/Coinbase launch announcement and should be treated as stale/lagging metadata, not as proof the new listing is unavailable. Its market stats aggregate third-party data and are not Coinbase venue volumes."
+    },
+    {
+      "id": "SRC-REUTERS-COINBASE-RLUSD-LISTING-2026-10-28",
+      "url": "https://www.investing.com/news/stock-market-news/coinbase-adds-ripples-stablecoin-to-its-exchange-4978888",
+      "title": "Reuters report: Coinbase adds Ripple's RLUSD stablecoin",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "accessed_at_utc": "2026-10-28T16:14:00.840Z",
+      "note": "Reuters report dated 2026-10-28 independently reports the Coinbase RLUSD listing and quotes Ripple's stablecoin executive. It reports RLUSD market capitalization above $2.5B based on CoinGecko; this is third-party market data, not Coinbase trading volume or collateral usage."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1613Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723753640",
+      "title": "Research ledger index 294ae245 CI passed 145 tests",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:14:00.840Z",
+      "note": "Exact-head CI on index commit 294ae245774db645e4e173761b4aebe4b5be4c59 passed 145 tests in 5.58 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1613Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723753371",
+      "title": "Research ledger index 294ae245 fail-closed gate passed",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:14:00.840Z",
+      "note": "Fail-closed gate run 40723753371 passed for index commit 294ae245774db645e4e173761b4aebe4b5be4c59."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1612Z-A",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723730565",
+      "title": "Approval workflow push failure with zero jobs after RLUSD snapshot commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:14:00.840Z",
+      "note": "Run 40723730565 on research branch snapshot commit 9b8c8ff reports push event, failure and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1612Z-B",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723742229",
+      "title": "Approval workflow push failure with zero jobs after RLUSD index commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:14:00.840Z",
+      "note": "Run 40723742229 on research branch index commit 294ae24 reports push event, failure and zero jobs. Workflow content declares workflow_dispatch only; no job executed."
+    },
+    {
+      "id": "SRC-CIRCLE-COINBASE-COLLABORATION-SEC-S1-2025",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000119312525178989/d839239ds1.htm",
+      "title": "Circle SEC S-1: Coinbase USDC collaboration economics",
+      "evidence_class": "CONFIRMED_REGULATORY_FILING",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Circle's 2025 SEC S-1 describes the August 2023 Collaboration Agreement: Circle pays Coinbase for USDC distribution and ecosystem growth; Coinbase receives 50% of the residual payment base after issuer retention and payments to other approved participants, with the allocation linked to platform-held balances. The agreement also afforded Coinbase a minority equity stake at that time. The filing reports Coinbase platform-held USDC at about 21% of circulation on 2025-06-30 and daily weighted average about 23% during H1 2025. Current equity ownership percentage after the IPO is not established here."
+    },
+    {
+      "id": "SRC-COINGECKO-XRP-MARKET-2026-10-28T1615Z",
+      "url": "https://www.coingecko.com/en/coins/xrp?chart=7_days",
+      "title": "CoinGecko XRP spot and derivatives aggregate snapshot",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Dynamic page captured around 2026-10-28 16:15 UTC displays XRP around $1.31, roughly +0.3% over 24h, $1.662B 24h volume, $4.013B perps open interest, 0.0102% 8h funding and $1.31-$1.34 24h range. Exact data cutoff and contract universe are not explicit; not admitted as a fixed-cutoff feature."
+    },
+    {
+      "id": "SRC-COINMARKETCAP-XRP-MARKET-2026-10-28T1615Z",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "title": "CoinMarketCap XRP market snapshot",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Dynamic page captured around 2026-10-28 16:15 UTC displays price around $1.31, +0.32% 24h, market cap about $83.01B, 24h volume about $1.81B and $1.31-$1.34 range. Exact cutoff/venue universe not explicit; not admitted as a fixed-cutoff feature."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1614Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723952011",
+      "title": "Research ledger index a782a6ee CI passed 145 tests",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Exact-head CI on index commit a782a6ee8e1d903240fed3de88171fe9b65b5eb1 passed 145 tests in 6.01 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1614Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723952236",
+      "title": "Research ledger index a782a6ee fail-closed gate passed",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Fail-closed gate run 40723952236 passed for index commit a782a6ee8e1d903240fed3de88171fe9b65b5eb1."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1614Z-A",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723937393",
+      "title": "Approval workflow push failure with zero jobs after collateral snapshot",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Run 40723937393 on research branch snapshot commit 4161f6c reports push event, failure and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1614Z-B",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40723947446",
+      "title": "Approval workflow push failure with zero jobs after index update",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:15:36.321Z",
+      "note": "Run 40723947446 on research branch index commit a782a6e reports push event, failure and zero jobs. Workflow content declares workflow_dispatch only; no job executed."
+    },
+    {
+      "id": "SRC-COINBASE-RLUSD-BLOG-2026-10-28",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "title": "Coinbase: RLUSD is now available on Coinbase",
+      "evidence_class": "COMPANY_REPORTED",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Coinbase's own blog dated 2026-10-28 independently corroborates the Ripple joint announcement: RLUSD is available through Coinbase Prime, Coinbase Exchange and the Coinbase app, with deposits/withdrawals on XRPL, Base and Ethereum. Coinbase Global Exchange collateral support will follow; no timeline or current collateral use is given."
+    },
+    {
+      "id": "SRC-RIPPLE-BNY-CUSTODY-TRADE-FINANCE-2026-10-27",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "title": "Ripple and BNY expand custody and tokenized trade-finance collaboration",
+      "evidence_class": "COMPANY_REPORTED",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Ripple release dated 2026-10-27 says BNY, already RLUSD's primary reserve custodian and custodian for Ripple Prime, now supports XRP and RLUSD on its Digital Asset Custody platform. BNY intends to enable direct RLUSD mint/redeem and explore XRPL tokenized trade finance with C2FO; those initiatives are intended/future, not proven live volume."
+    },
+    {
+      "id": "SRC-RIPPLE-C2FO-XRPL-TRADE-FINANCE-2026-10-27",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "title": "C2FO and Ripple announce Instant Pay settlement on XRPL using RLUSD",
+      "evidence_class": "COMPANY_REPORTED",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Ripple release dated 2026-10-27 describes C2FO Instant Pay as using XRPL and RLUSD for settlement against approved invoices, funded by participating capital providers, with invoice terms/due dates unchanged. The page offers a waitlist; production scale, transaction volume and live utilization are not established."
+    },
+    {
+      "id": "SRC-RIPPLE-OCC-FINAL-APPROVAL-2026-10-26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "title": "Ripple receives final OCC approval to establish National Trust Bank",
+      "evidence_class": "COMPANY_REPORTED_REGULATORY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Ripple release dated 2026-10-26 says OCC final approval was granted for Ripple National Trust Bank, whose approved plan includes managing segregated RLUSD reserves, acting as collateral trustee for reserves and fiduciary digital-asset custody upon opening. RLUSD continues to be issued by NYDFS-regulated Standard Custody & Trust Company. Approval is not evidence the bank is already operating or has a Federal Reserve master account."
+    },
+    {
+      "id": "SRC-NODAL-RIPPLE-COINBASE-DERIVATIVES-2026-03-05",
+      "url": "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf",
+      "title": "Nodal Clear: Ripple Prime clients gain access to Coinbase Derivatives contracts",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Joint Nodal Clear press release dated 2026-03-05 says Ripple Prime clients can access Coinbase Derivatives contracts cleared by Nodal Clear, including XRP futures, via the acquired Hidden Road FCM. This confirms an institutional market-access relationship; it does not reveal client positions, flow direction or proprietary XRP exposure."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1615Z-A",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724204693",
+      "title": "Approval workflow push failure with zero jobs after final snapshot commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Run 40724204693 on research snapshot commit 18d7ef9 reports push event, failure and zero jobs."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1615Z-B",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724215431",
+      "title": "Approval workflow push failure with zero jobs after final index commit",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Run 40724215431 on research index commit 1349d2c reports push event, failure and zero jobs. The workflow blob at the event head declares workflow_dispatch only; no job executed."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1615Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724228255",
+      "title": "Research index 1349d2cf CI passed 145 tests",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Exact-head CI on index commit 1349d2cf360de51e6f39a9a9d880337ead744dda passed 145 tests in 6.06 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1615Z",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724228152",
+      "title": "Research index 1349d2cf fail-closed gate passed",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "accessed_at_utc": "2026-10-28T16:17:39.305Z",
+      "note": "Fail-closed gate run 40724228152 passed for index commit 1349d2cf360de51e6f39a9a9d880337ead744dda."
+    },
+    {
+      "id": "SRC-TRADRADAR-XRP-PERP-2026-10-28T1500Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "XRP perpetual futures dashboard, reported 15:00 UTC",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "Page reported mark price $1.3156 (-0.34% 24h), open interest $1.84B across seven exchanges (-1.18% 24h), OI-weighted funding +0.0100% per 8h, and at least $1.90M 24h liquidations (longs $809.13K, shorts $1.09M). Single secondary provider snapshot about two hours old at capture; not a synchronized all-venue feature."
+    },
+    {
+      "id": "SRC-CIRCLE-TRANSPARENCY-RECHECK-2026-10-28T1658Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle USDC transparency dashboard recheck",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "Visible dashboard still identifies latest USDC snapshot as of Oct 22, 2026: $72.0B circulation and $72.2B reserves; -$0.6B 7-day, -$3.2B 30-day, -$4.4B 365-day net circulation changes. Not an Oct 28 supply observation; no XRP destination attribution."
+    },
+    {
+      "id": "SRC-COINBASE-Q3-DATE-RECHECK-2026-10-28T1658Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "title": "Coinbase Q3 2026 results date rechecked",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "Official IR notice says Q3 results publish Oct 29, 2026 after market close. At this Oct 28 16:58 UTC capture, the Q3 release is still upcoming."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1658Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/7b33f9be12baa8019cfaf4c49b1c5b71fce9781c",
+      "title": "Main branch exact head verified by bidirectional compare",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "GitHub compare(main, 7b33f9be...) and compare(7b33f9be..., main) both returned identical, confirming main at 7b33f9be12baa8019cfaf4c49b1c5b71fce9781c. Commit is Cross-analysis refresh [skip ci], modifying generated knowledge-base files only. Exact-head main CI remains unverified."
+    },
+    {
+      "id": "SRC-GH-PAPER-TRADER-STATE-2026-10-28T1658Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Paper-trading state contains nonzero position with missing product identity",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "Current main state blob a20230ac411d1883ced4f92fce10a7ced2172479 contains cash_usd 8011.9366, position_size 0.0249012766, position_product null, avg_entry_price 80436.84 and trade_count 125. Simulated state, not real custody. Missing product identity prevents safe attribution of the open position."
+    },
+    {
+      "id": "SRC-GH-PAPER-TRADER-CODE-2026-10-28T1658Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/coinbase_paper_trader.py",
+      "title": "Paper-trader code omits product identity updates and validation",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "Main script blob b38ab435f575b6037f05fa8e9ea00fd487d2d9eb updates position_size, avg_entry_price and cash on buys but does not set position_product; full closes do not clear it. PRODUCT_ID is configurable and open position identity is not checked before model decision."
+    },
+    {
+      "id": "SRC-GH-CI-WORKFLOW-2026-10-28T1658Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/ci.yml",
+      "title": "Core CI workflow inspected for paper-trader test integration",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "Current main CI workflow blob 0aa98728f6b236d2d90d413ccbc7fb1d7596b3ed runs tests/test_v3_scripts.py and tests/test_coinbase_trader.py; new product-identity regression tests are added to a draft PR branch, not main."
+    },
+    {
+      "id": "SRC-GH-PR-1261-2026-10-28T1658Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1261",
+      "title": "Draft PR: bind paper-trading positions to product identity",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "PR #1261 created on branch safety/paper-trader-product-identity-20261028-1658z from verified main SHA 7b33f9be. It adds fail-closed position/product validation, sets identity on buys, clears identity on full close, and adds eight deterministic tests to core CI. Draft/unmerged; exact-head CI and gate have not appeared in connector status."
+    },
+    {
+      "id": "SRC-GH-PR-1261-STATUS-2026-10-28T1658Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/aff4c1a1c37ab3fdb6493f7159284df126d0490f",
+      "title": "PR #1261 exact-head status query returned no status entries",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "Combined commit-status endpoint returned an empty status list and PR-triggered workflow-runs wrapper returned no runs at capture. CI is pending/unobserved, not passed."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1658Z-A",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724544435",
+      "title": "Approval workflow run with zero jobs, observed during current inspection",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "Workflow jobs endpoint returned an empty list for run 40724544435. No approval job executed; dispatch-only workflow and push-event anomaly remain unexplained."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-2026-10-28T1658Z-B",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40724556490",
+      "title": "Second approval workflow run with zero jobs, observed during current inspection",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "Workflow jobs endpoint returned an empty list for run 40724556490. No approval job executed; root cause remains unresolved."
+    },
+    {
+      "id": "SRC-GH-RESEARCH-HEAD-2026-10-28T1658Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/9ad34a92230cb37ff02a26bf96173699f9123540",
+      "title": "Research ledger branch head at start of this run",
+      "accessed_at_utc": "2026-10-28T16:58:50Z",
+      "note": "PR #1251 branch head was 9ad34a92230cb37ff02a26bf96173699f9123540. Combined status endpoint returned no status entries for that commit. Previous index commit 1349d2cf passed CI/gate, but the later index-only commit's exact-head verification is not established."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/23b30639e2631364d97a32f2213faab574c345fb",
+      "title": "Current main head: paper-trading-log append",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Bidirectional compare confirms main advanced one commit beyond 7b33f9be to 23b30639e2631364d97a32f2213faab574c345fb. Diff changes only web/paper_trading_log.jsonl. Exact-head main CI remains unverified because commit is marked [skip ci]."
+    },
+    {
+      "id": "SRC-GH-PR-1261-CI-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40731999180",
+      "title": "PR #1261 exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "CI job completed successfully on head aff4c1a1c37ab3fdb6493f7159284df126d0490f; decoded log shows 153 tests passed in 6.10 seconds, including the eight new product-identity tests."
+    },
+    {
+      "id": "SRC-GH-PR-1261-GATE-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40731998907",
+      "title": "PR #1261 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Barrot Gated Merge (fail-closed) job completed successfully for PR #1261. This is a gate check, not a merge; PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780337",
+      "title": "Research ledger index f365a6b CI passed",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Exact-head CI job completed successfully on index commit f365a6b21bb57fdd5d74b635701b7ecf2c79c052; decoded log shows 145 tests passed in 6.08 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40732780097",
+      "title": "Research ledger index f365a6b fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Fail-closed gate job completed successfully for research index commit f365a6b21bb57fdd5d74b635701b7ecf2c79c052. This does not verify the later index commit created in this run."
+    },
+    {
+      "id": "SRC-GH-PR1251-DIVERGENCE-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1251",
+      "title": "Research ledger PR remains substantially diverged",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "Compare current main 23b30639... with research index head f365a6b... reports diverged, 49 commits ahead and 36 behind. The changed paths are primarily the research ledger and timestamped snapshots. Preserve the branch; do not merge as-is; use a reviewed fresh-main carry-forward."
+    },
+    {
+      "id": "SRC-GH-SNAPSHOT-CORRECTION-2026-10-28T1709Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-fresh-main-20261028-1217z/data/xrp_intelligence/snapshots/2026-10-28T1709Z.json",
+      "title": "Correction snapshot supersedes malformed verification field in prior snapshot",
+      "accessed_at_utc": "2026-10-28T17:09:44Z",
+      "note": "The preserved 1709Z snapshot has a malformed repository_ci.pr_1261.head_sha string combining the SHA and status text. The 1709Z-correction snapshot stores head SHA, CI result and gate result separately. The original file was not overwritten."
+    },
+    {
+      "id": "SRC-ACTUAL-CAPITAL-MARKET-CAP-EXPLANATION-2026-10-28T1711Z",
+      "evidence_class": "SECONDARY_EXPLANATORY",
+      "url": "https://blog.zendwallet.com/market-capitalization/",
+      "title": "Crypto market capitalization versus actual capital inflow",
+      "accessed_at_utc": "2026-10-28T17:11:09Z",
+      "note": "Generic explainer states market cap is price multiplied by circulating supply and is not actual capital inflow. Plausible general meaning for the phrase, not proof of the original context in the user's research thread."
+    },
+    {
+      "id": "SRC-INVESTING-XRP-UK-TIMESTAMP-2026-10-28T1711Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://uk.investing.com/crypto/xrp",
+      "title": "Investing.com UK XRP quote with unresolved page timestamp",
+      "accessed_at_utc": "2026-10-28T17:11:09Z",
+      "note": "Page displayed XRP $1.2892, -0.57% daily change, $1.2734-$1.2997 day range, $1.45B 24h volume and $81.84B market cap. Visible time label 13:29:12 could not be normalized to UTC at 17:11:09Z capture; exclude from synchronized feature store."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1711Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733146260",
+      "title": "Research index 52f339c CI passed",
+      "accessed_at_utc": "2026-10-28T17:11:09Z",
+      "note": "Exact-head CI completed successfully on research index commit 52f339c071b0bd2f4cf3810e135a309e252c16bc; decoded job log shows 145 tests passed in 4.30 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1711Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733145934",
+      "title": "Research index 52f339c fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T17:11:09Z",
+      "note": "Fail-closed gate completed successfully for research index commit 52f339c071b0bd2f4cf3810e135a309e252c16bc. The new snapshot/index commit requires its own checks."
+    },
+    {
+      "id": "SRC-GH-SNAPSHOT-CORRECTION-2026-10-28T1712Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-fresh-main-20261028-1217z/data/xrp_intelligence/snapshots/2026-10-28T1711Z.json",
+      "title": "Correction snapshot supersedes first exact-phrase snapshot",
+      "accessed_at_utc": "2026-10-28T17:12:23Z",
+      "note": "The preserved 1711Z snapshot's new Camilla/Kamilah finding used two source IDs not present in the catalog. A correction snapshot fixed one spelling; a second correction was needed for the Vling source ID. Original files remain unchanged."
+    },
+    {
+      "id": "SRC-GH-SNAPSHOT-CORRECTION2-2026-10-28T1712Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-fresh-main-20261028-1217z/data/xrp_intelligence/snapshots/2026-10-28T1712Z-correction2.json",
+      "title": "Second correction snapshot uses canonical Vling source ID",
+      "accessed_at_utc": "2026-10-28T17:12:57Z",
+      "note": "Corrected finding references SRC-VLING-KAMILAH-UCQUP-20261028T1310Z, the exact source ID already present in the ledger. Earlier 1711Z and correction snapshots remain unchanged."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1714Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733635623",
+      "title": "Research index ace47adb CI passed",
+      "accessed_at_utc": "2026-10-28T17:14:18Z",
+      "note": "Exact-head CI completed successfully on index commit ace47adb77a43892986763ae217509905fccaaac; decoded job log shows 145 tests passed in 6.32 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1714Z",
+      "evidence_class": "REPOSITORY_CI_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40733637093",
+      "title": "Research index ace47adb fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T17:14:18Z",
+      "note": "Fail-closed gate completed successfully for research index commit ace47adb77a43892986763ae217509905fccaaac. The new 1714 snapshot/index commit requires its own checks."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/d45da0ccefcf1f6131201f3498a5bdafebddd1e0",
+      "title": "Current main head and generated paper-trading log append",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Search/compare verified main at this commit; diff changes web/paper_trading_log.jsonl only. This run did not write main."
+    },
+    {
+      "id": "SRC-GH-PAPER-STATE-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Current simulated paper-trading state identity gap",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479; position_size is nonzero and avg_entry_price is set while position_product is null. State was read only and not changed."
+    },
+    {
+      "id": "SRC-GH-PR1262-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1262",
+      "title": "Fresh-main paper-trader position identity safety PR",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Draft PR head 646ab4e837da4fc08a058e9be576e0b97b200221, based on main d45da0ccefcf1f6131201f3498a5bdafebddd1e0; 3 commits ahead, 0 behind at comparison. No merge or state rewrite."
+    },
+    {
+      "id": "SRC-GH-PR1262-CI-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742371827",
+      "title": "PR #1262 exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Exact head 646ab4e837da4fc08a058e9be576e0b97b200221; Tests job succeeded; logs report 153 passed in 5.56 seconds."
+    },
+    {
+      "id": "SRC-GH-PR1262-GATE-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742372165",
+      "title": "PR #1262 fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Gated workflow completed successfully in fail-closed mode; this is not merge approval."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-WORKFLOW-2026-10-28T1811Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Current approval workflow contents",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Current main file blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4; declares workflow_dispatch only. Previously observed push-event zero-job runs remain unexplained; this file inspection alone does not establish root cause."
+    },
+    {
+      "id": "SRC-FED-FOMC-STATEMENT-2026-10-28",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "title": "Federal Reserve FOMC statement, October 28, 2026",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Official statement says target range maintained at 3.75%-4.00%, vote 10-2; Lisa D. Cook and Beth M. Hammack dissented in favor of a 25 bp increase. Statement says activity strong, inflation elevated, geopolitical uncertainty elevated."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-TRANSPARENCY-2026-10-28T1811Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle USDC transparency dashboard",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Page displays Oct 22, 2026 snapshot: $72.0B circulation, $72.2B reserves; -$0.6B 7-day, -$3.2B 30-day, -$4.4B 365-day net circulation. Not a live Oct 28 chain-attributed flow."
+    },
+    {
+      "id": "SRC-COINBASE-Q3-RESULTS-DATE-2026-10-28T1811Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "title": "Coinbase Q3 2026 results schedule",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Official IR notice says Q3 2026 results will publish Oct 29, 2026 after market close; results not yet available at this capture."
+    },
+    {
+      "id": "SRC-YAHOO-XRP-HISTORY-2026-10-28T1811Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://au.finance.yahoo.com/quote/XRP-USD/history/",
+      "title": "Yahoo Finance XRP-USD historical data page",
+      "accessed_at_utc": "2026-10-28T18:11:35Z",
+      "note": "Displayed historical row for Oct 26, 2026 close near $1.2820. This is a dated historical bar, not a synchronized current quote; retain only as historical context pending provider/interval normalization."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1813Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742820484",
+      "title": "Research ledger index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:13:09Z",
+      "note": "Commit e7498d61868f1046e0dd4ed57a97bdd2d7f7294b passed the Tests job; workflow logs report 145 passed in 6.08 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1813Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40742820463",
+      "title": "Research ledger index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:13:09Z",
+      "note": "Fail-closed gate completed successfully for the index commit e7498d61868f1046e0dd4ed57a97bdd2d7f7294b; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1814Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063339",
+      "title": "Research index CI passed",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Index commit 6da34d26864869ecf2f9859fbac58013d645d874 passed 145 tests in 5.26 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1814Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743063330",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Fail-closed gate succeeded for index commit 6da34d26864869ecf2f9859fbac58013d645d874; no merge was performed."
+    },
+    {
+      "id": "SRC-SBIC-WEST-PROFILE-2026-10-28T1814Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "title": "SBIC West Japan official company profile",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Identifies Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan), established 1963, under Japan's SME investment law; names Tokyo and Nagoya sister companies and defines western regional coverage."
+    },
+    {
+      "id": "SRC-SBIC-CENTRAL-PROFILE-2026-10-28T1814Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic-cj.co.jp/company/about/",
+      "title": "SBIC Central Japan official company profile",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Identifies Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan), established 1963, and names Tokyo and Osaka sister companies."
+    },
+    {
+      "id": "SRC-SBIC-WEST-CHATGPT-SEMINAR-2026-10-28T1814Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2025/08/kk122.pdf",
+      "title": "SBIC West Japan ChatGPT generative-AI seminar",
+      "accessed_at_utc": "2026-10-28T18:14:16Z",
+      "note": "Official SBIC West Japan PDF announces a seminar on using generative AI including ChatGPT, scheduled for 2025-12-04. Training-topic evidence only; not a partnership or XRP relationship."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2026-10-28T1815Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235352",
+      "title": "Research index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:15:13Z",
+      "note": "Index commit d6cea418fdee41941834455800cbb4ea0b038904 passed 145 tests in 5.92 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2026-10-28T1815Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743235324",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:15:13Z",
+      "note": "Fail-closed gate succeeded for index commit d6cea418fdee41941834455800cbb4ea0b038904; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-PAPER-LOG-RETRIEVAL-EMPTY-2026-10-28T1815Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Paper-trading log retrieval limitation",
+      "accessed_at_utc": "2026-10-28T18:15:13Z",
+      "note": "Authorized connector returned blob SHA 25ccd93ab30b7efb9afb3fc09a82bced0a2de557 but empty content for full and line-range reads. This is a retrieval limitation, not evidence that the GitHub file is empty; trade-log replay and state reconciliation remain unverified."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-3AB986-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743387181",
+      "title": "Research ledger index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:16:06Z",
+      "note": "Index commit 3ab9861648ba22f6bd6ef91380f7c126fb858c13 passed 145 tests in 5.74 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-3AB986-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743387149",
+      "title": "Research ledger index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:16:06Z",
+      "note": "Fail-closed gate succeeded for index commit 3ab9861648ba22f6bd6ef91380f7c126fb858c13; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2EA193-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530726",
+      "title": "Research ledger index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:16:54Z",
+      "note": "Index commit 2ea193a7202979e9ab89f2ca04337d8ac34b6756 passed 145 tests in 5.56 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2EA193-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743530732",
+      "title": "Research ledger index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:16:54Z",
+      "note": "Fail-closed gate succeeded for index commit 2ea193a7202979e9ab89f2ca04337d8ac34b6756; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-2C82A5-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743651729",
+      "title": "Research ledger index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:17:49Z",
+      "note": "Index commit 2c82a5f06a39e481fdd5b485f49cebcae487a42b passed 145 tests in 4.98 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-2C82A5-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743651741",
+      "title": "Research ledger index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:17:49Z",
+      "note": "Fail-closed gate succeeded for index commit 2c82a5f06a39e481fdd5b485f49cebcae487a42b; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-803D90-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800580",
+      "title": "Research index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T18:18:41Z",
+      "note": "Index commit 803d90db08629411b556e023ad6c3f5fcffe1bb8 passed 145 tests in 6.24 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-803D90-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743800218",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T18:18:41Z",
+      "note": "Fail-closed gate succeeded for index commit 803d90db08629411b556e023ad6c3f5fcffe1bb8; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-1443580-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/1443580cd8f0926536aa40aaedf319ce43c1126b",
+      "title": "Main commit at 19:03 snapshot",
+      "accessed_at_utc": "2026-10-28T19:03:15Z",
+      "note": "Commit created 18:51:45Z; changed three generated knowledge-base files."
+    },
+    {
+      "id": "SRC-GH-PAPER-STATE-BLOB-2026-10-28T1903Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Paper state blob at 19:03",
+      "accessed_at_utc": "2026-10-28T19:03:15Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479; nonzero position with position_product=null; read only."
+    },
+    {
+      "id": "SRC-GH-PAPER-LOG-BLOB-2026-10-28T1903Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Paper log replay at 19:03",
+      "accessed_at_utc": "2026-10-28T19:03:15Z",
+      "note": "Blob SHA 47e0d56ed94c30972673a27cfd4b39020ee0e85c; 2,344 rows, no malformed JSON, all BTC-USD, exact numeric state replay, portfolio values within USD 0.02."
+    },
+    {
+      "id": "SRC-GH-PR1263-2026-10-28T1903Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1263",
+      "title": "Draft read-only paper-state audit predecessor",
+      "accessed_at_utc": "2026-10-28T19:03:15Z",
+      "note": "PR #1263; 152 tests passed in 6.28s and gate passed; later superseded by fresh-main PR #1264."
+    },
+    {
+      "id": "SRC-GH-PR1263-CI-2026-10-28T1903Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40750625995",
+      "title": "PR #1263 CI",
+      "accessed_at_utc": "2026-10-28T19:03:15Z",
+      "note": "Exact-head CI passed 152 tests in 6.28 seconds."
+    },
+    {
+      "id": "SRC-GH-PR1263-GATE-2026-10-28T1903Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40750625975",
+      "title": "PR #1263 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T19:03:15Z",
+      "note": "Gate passed; no merge."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-B66580-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743928670",
+      "title": "Prior research-index CI",
+      "accessed_at_utc": "2026-10-28T19:03:15Z",
+      "note": "Commit b66580cd4259b347d72678f62966b49d31b30e1e passed 145 tests in 5.30 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-B66580-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40743928684",
+      "title": "Prior research-index gate",
+      "accessed_at_utc": "2026-10-28T19:03:15Z",
+      "note": "Fail-closed gate passed for index commit b66580cd4259b347d72678f62966b49d31b30e1e."
+    },
+    {
+      "id": "SRC-GH-MAIN-HEAD-760E12-2026-10-28T1907Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/760e12f4a0e336f5c1cb8d3ffe65817a597e5a57",
+      "title": "Main paper-trading log append",
+      "accessed_at_utc": "2026-10-28T19:07:50Z",
+      "note": "Main commit at 19:04:04Z appended one paper-trading log row only."
+    },
+    {
+      "id": "SRC-GH-PAPER-STATE-BLOB-2026-10-28T1907Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Paper state blob at 19:07",
+      "accessed_at_utc": "2026-10-28T19:07:50Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479 unchanged; position_product remains null; no write."
+    },
+    {
+      "id": "SRC-GH-PAPER-LOG-BLOB-2026-10-28T1907Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Paper log blob at 19:07",
+      "accessed_at_utc": "2026-10-28T19:07:50Z",
+      "note": "Blob SHA 1223d5617ccea73e3d406ed35b56351c1d42722a; 2,345 rows, zero malformed, chronological, all BTC-USD; 2,220 hold/36 buy/89 sell; exact numeric state replay and zero portfolio-value mismatches above USD 0.02."
+    },
+    {
+      "id": "SRC-GH-PR1264-2026-10-28T1907Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1264",
+      "title": "Fresh-main paper-state replay audit PR",
+      "accessed_at_utc": "2026-10-28T19:07:50Z",
+      "note": "PR #1264 head dba1bc56171ced721429950db6b067ee46800d73, base 760e12f4a0e336f5c1cb8d3ffe65817a597e5a57; draft/open/unmerged."
+    },
+    {
+      "id": "SRC-GH-PR1264-CI-2026-10-28T1907Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751350854",
+      "title": "PR #1264 corrected exact-head CI",
+      "accessed_at_utc": "2026-10-28T19:07:50Z",
+      "note": "153 tests passed in 5.40 seconds, including the current repository replay integration test."
+    },
+    {
+      "id": "SRC-GH-PR1264-GATE-2026-10-28T1907Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751350858",
+      "title": "PR #1264 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T19:07:50Z",
+      "note": "Gate passed for corrected head; no merge."
+    },
+    {
+      "id": "SRC-GH-PR1264-CI-INITIAL-FAIL-2026-10-28T1906Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751237331",
+      "title": "PR #1264 initial test failure",
+      "accessed_at_utc": "2026-10-28T19:06:40Z",
+      "note": "Initial head failed because REPO_ROOT was undefined; fixed in dba1bc56171ced721429950db6b067ee46800d73, rerun passed."
+    },
+    {
+      "id": "SRC-MKT-JUSTSCREENER-XRP-OI-2026-10-28T1606Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://justscreener.com/en/market/XRP/open-interest",
+      "title": "XRP OI tracker, nine-exchange coverage",
+      "accessed_at_utc": "2026-10-28T19:07:50Z",
+      "note": "Displays about USD 1.7B OI across nine exchanges, -1.16% over 24h, with displayed time 16:06 and no timezone."
+    },
+    {
+      "id": "SRC-MKT-TRDESK-XRP-OI-2026-10-28T1907Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://trdesk.com/open-interest/xrp",
+      "title": "XRP OI tracker, 26-exchange coverage",
+      "accessed_at_utc": "2026-10-28T19:07:50Z",
+      "note": "Reports USD 2.80B OI across 26 exchanges, -1.90% 24h, 2.139B XRP; underlying quote timestamp unresolved."
+    },
+    {
+      "id": "SRC-MKT-COINGLASS-XRP-METRICS-2026-10-28T1907Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://www.coinglass.com/currencies/XRP",
+      "title": "CoinGlass XRP market overview",
+      "accessed_at_utc": "2026-10-28T19:07:50Z",
+      "note": "Displays USD 2.93B OI, USD 2.23B futures volume, USD 398.58M spot volume and USD 83.05B market cap; underlying timestamp and full venue universe unresolved."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-0D95CF-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862391",
+      "title": "Research index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T19:10:45Z",
+      "note": "Index commit 0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3 passed 145 tests in 6.24 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-0D95CF-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751862668",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T19:10:45Z",
+      "note": "Fail-closed gate passed for index commit 0d95cfbca28d8f2a95910f3b62c7d7ee9e4706f3."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-00B1F6-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752042243",
+      "title": "Research-index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T19:12:00Z",
+      "note": "Index commit 00b1f654abad45eca9a154db3522beb2b3c06418 passed 145 tests in 5.78 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-00B1F6-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752042245",
+      "title": "Research-index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T19:12:00Z",
+      "note": "Fail-closed gate passed for index commit 00b1f654abad45eca9a154db3522beb2b3c06418."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-8F37FB-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752184194",
+      "title": "Research index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T19:13:00Z",
+      "note": "Index commit 8f37fb8c42e1bc7194a8783aece194cd9ef73e8d passed 145 tests in 6.45 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-8F37FB-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752184571",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T19:13:00Z",
+      "note": "Fail-closed gate passed for index commit 8f37fb8c42e1bc7194a8783aece194cd9ef73e8d."
+    },
+    {
+      "id": "SRC-GH-LEDGER-CI-90902F-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752359005",
+      "title": "Research index exact-head CI passed",
+      "accessed_at_utc": "2026-10-28T19:14:30Z",
+      "note": "Index commit 90902f20a33110a4f5f9c77e1320c3a92b2fe042 passed 145 tests in 6.25 seconds."
+    },
+    {
+      "id": "SRC-GH-LEDGER-GATE-90902F-2026-10-28",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40752358867",
+      "title": "Research index fail-closed gate passed",
+      "accessed_at_utc": "2026-10-28T19:14:30Z",
+      "note": "Fail-closed gate passed for index commit 90902f20a33110a4f5f9c77e1320c3a92b2fe042."
+    },
+    {
+      "id": "SRC-RUN11-MAIN-REF-20261028T1959Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/d0d29046c7455a326735ab98edd556e9e98e013d",
+      "title": "B-Agent main branch head at research capture",
+      "accessed_at_utc": "2026-10-28T19:59:48Z",
+      "note": "Git ref read returned main SHA d0d29046c7455a326735ab98edd556e9e98e013d. No main mutation performed by this run."
+    },
+    {
+      "id": "SRC-RUN11-PAPER-STATE-20261028T1959Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Persisted paper-trading state",
+      "accessed_at_utc": "2026-10-28T19:59:48Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479. Position size 0.024901276579239066, average entry 80436.84, trade_count 125, position_product null. Read-only; no mutation."
+    },
+    {
+      "id": "SRC-RUN11-PAPER-LOG-20261028T1959Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Append-only paper-trading log at current main",
+      "accessed_at_utc": "2026-10-28T19:59:48Z",
+      "note": "Blob SHA 9ecaea69c86da799150b571d0635f58ce66b2cbc; 2,346 JSONL records; zero malformed records; timestamps chronological; all records BTC-USD; 36 buys, 89 sells, 2,221 holds; zero portfolio-value mismatches under the documented replay rules."
+    },
+    {
+      "id": "SRC-RUN11-PR1264-20261028T1959Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1264",
+      "title": "PR #1264 read-only paper-trading state replay audit",
+      "accessed_at_utc": "2026-10-28T19:59:48Z",
+      "note": "Open draft, unmerged; head dba1bc56171ced721429950db6b067ee46800d73; base 760e12f4a0e336f5c1cb8d3ffe65817a597e5a57. Exact-head tests and gate passed. PR integration test covers the 2,345-row PR-base log; current main's 2,346-row log was replayed separately."
+    },
+    {
+      "id": "SRC-RUN11-PR1264-CI-20261028T1959Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751350854",
+      "title": "PR #1264 exact-head core CI",
+      "accessed_at_utc": "2026-10-28T19:59:48Z",
+      "note": "Passed 153 tests in 5.40 seconds on head dba1bc56171ced721429950db6b067ee46800d73."
+    },
+    {
+      "id": "SRC-RUN11-PR1264-GATE-20261028T1959Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40751350858",
+      "title": "PR #1264 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T19:59:48Z",
+      "note": "Gate passed on the PR's tested head. The PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-RUN11-SNAPSHOT-CORRECTION-20261028T2001Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-28T2001Z-correction.json",
+      "title": "Corrected immutable XRP research snapshot metrics",
+      "accessed_at_utc": "2026-10-28T20:01:00Z",
+      "note": "New snapshot corrects ledger_metrics counts in the 19:59Z snapshot without rewriting it. Prior snapshot remains preserved. Correction snapshot blob SHA bae917bd6297850667e679a9d1476517a599b38e."
+    },
+    {
+      "id": "SRC-RUN11-LEDGER-VALIDATOR-20261028T2002Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/scripts/validate_xrp_ledger_index.py",
+      "title": "Read-only XRP ledger index and snapshot pointer validator",
+      "accessed_at_utc": "2026-10-28T20:02:30Z",
+      "note": "Validator blob SHA 39de2e4f8c6750f6f99c4bdb34e6d997d03544a0. Supports legacy inline and compact pointer formats; verifies exact Git blob SHA and rejects path traversal."
+    },
+    {
+      "id": "SRC-RUN11-LEDGER-TESTS-20261028T2002Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/tests/test_xrp_ledger_index.py",
+      "title": "XRP ledger pointer validator regression tests",
+      "accessed_at_utc": "2026-10-28T20:02:30Z",
+      "note": "Test blob SHA e450774d9d21c94879259fe9043a6ab877c1c1ea. Six tests cover pointer resolution/hash, fail-closed SHA mismatch, path traversal, duplicate source IDs, legacy inline compatibility and repository index validation."
+    },
+    {
+      "id": "SRC-RUN11-MAIN-REF-20261028T2008Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/428244171d4f24d4962733e9372fe36f5ea4b941",
+      "title": "Current B-Agent main commit at 20:08Z capture",
+      "accessed_at_utc": "2026-10-28T20:08:15Z",
+      "note": "Paper trade cycle [skip ci]; appends one hold row to web/paper_trading_log.jsonl. Main SHA verified from Git ref."
+    },
+    {
+      "id": "SRC-RUN11-PAPER-STATE-20261028T2008Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Persisted paper-trading state at 20:08Z",
+      "accessed_at_utc": "2026-10-28T20:08:15Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479. Numeric state unchanged; position_product remains null. Read-only."
+    },
+    {
+      "id": "SRC-RUN11-PAPER-LOG-20261028T2008Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Append-only paper-trading log at 20:08Z",
+      "accessed_at_utc": "2026-10-28T20:08:15Z",
+      "note": "Blob SHA 0126b3255022d7052ff47ed5bd6100a0cfc2d0fd; 2,347 JSONL rows; zero parse errors; chronological timestamps; only BTC-USD; 36 buys, 89 sells, 2,222 holds; zero portfolio-value replay mismatches."
+    },
+    {
+      "id": "SRC-RUN11-PR1265-20261028T2008Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1265",
+      "title": "PR #1265 compact XRP ledger index migration",
+      "accessed_at_utc": "2026-10-28T20:08:15Z",
+      "note": "Open draft, unmerged, base research/xrp-ledger-fresh-main-20261028-1217z. Index compacted from 989,081 to 455,596 characters at the previous head; pointer-based schema and read-only validator added. Current snapshot pointer advances in this commit."
+    },
+    {
+      "id": "SRC-RUN11-LOCAL-TESTS-20261028T2008Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/tests/test_xrp_ledger_index.py",
+      "title": "Local synthetic-fixture test evidence for ledger validator",
+      "accessed_at_utc": "2026-10-28T20:08:15Z",
+      "note": "Six isolated synthetic-fixture tests passed in 0.05 seconds and py_compile passed. This is not a full-repository checkout run; actual GitHub index/snapshot pointer was independently read back and SHA matched. Automated CI was not triggered for this research-base PR."
+    },
+    {
+      "id": "SRC-RUN11-CIRCLE-TRANSPARENCY-20261028T2010Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.circle.com/es/transparency",
+      "title": "Circle USDC transparency dashboard, Spanish locale",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Official Circle dashboard displays USDC circulation USD 71.0B and reserves USD 71.2B as of 2026-10-26; net circulation change -USD 1.0B over 7 days, -USD 4.2B over 30 days, and -USD 5.2B over 365 days. Issuer-reported global totals; no XRP destination or chain-level flow is identified."
+    },
+    {
+      "id": "SRC-RUN11-XRP-INSIGHTS-ETF-20261028T2010Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/",
+      "title": "XRP Insights ETF flow dashboard, latest table through October 27",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Secondary tracker reports -433,940 XRP on Oct 27 and -3.13M XRP over Oct 26-27 across six US spot funds plus BITW, with approximately 1.19B XRP held. Methodology derives flows from holdings changes and may include effects other than creations/redemptions; sponsor-level reconciliation remains outstanding."
+    },
+    {
+      "id": "SRC-RUN11-ALPHA-ETF-20261028T2010Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF tracker through October 27",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Secondary five-fund series reports USD 0 net flow on Oct 27, approximately +USD 644.8K over the last seven sessions, and approximately USD 1.72B cumulative net inflows. Different covered fund universe from XRP Insights; values are not directly comparable."
+    },
+    {
+      "id": "SRC-RUN11-XRPINVESTOR-ETF-20261028T2010Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://thexrpinvestor.com/xrp-etf-flows",
+      "title": "TheXRPInvestor XRP ETF dashboard, October 28",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Dashboard reports about USD 1.56B AUM, 1.19B XRP in trust and USD 7.28M total daily volume. It says 12 products but enumerates 6 spot, 4 derivative and 1 index category (11), so product coverage needs reconciliation. No sponsor-level flow proof."
+    },
+    {
+      "id": "SRC-RUN11-COINBASE-Q3-DATE-20261028T2010Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "title": "Coinbase official Q3 2026 results schedule",
+      "accessed_at_utc": "2026-10-28T20:10:23Z",
+      "note": "Official notice published Oct 14 states Q3 2026 financial results will be published Oct 29 after market close. As of this Oct 28 20:10Z capture, Q3 results have not yet been published."
+    },
+    {
+      "id": "SRC-RUN12-MAIN-HEAD-20261028T2107Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/801e071ed5e75a9c207b9feb655a027f9b8df4f9",
+      "title": "Current main head: paper-trading log append",
+      "published_at": "2026-10-28T21:04:08Z",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Main head 801e071ed5e75a9c207b9feb655a027f9b8df4f9; message Paper trade cycle [skip ci]; adds one JSONL row to web/paper_trading_log.jsonl. Current main exact-head CI remains unverified."
+    },
+    {
+      "id": "SRC-RUN12-PAPER-STATE-20261028T2107Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Persisted paper-trading state at current main",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479; cash 8011.936613782476; position_size 0.024901276579239066; avg_entry_price 80436.84; trade_count 125; position_product remains null. Read-only; no mutation."
+    },
+    {
+      "id": "SRC-RUN12-PAPER-LOG-20261028T2107Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/801e071ed5e75a9c207b9feb655a027f9b8df4f9/web/paper_trading_log.jsonl",
+      "title": "Current main append-only paper-trading log",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Blob SHA 21c5f510f9c386cf302e567fe20c63256d7366a7; parsed 2,349 JSONL rows. Zero parse errors, zero timestamp-order errors, one product BTC-USD, actions buy 36/sell 89/hold 2224. Mark-to-market discrepancy versus final recorded value is 0.002076 USD, within 0.02 tolerance."
+    },
+    {
+      "id": "SRC-RUN12-APPROVAL-ZERO-JOBS-20261028T2107Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40760954364",
+      "title": "Approval workflow push event with zero jobs",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Workflow ID 361313759; event=push; branch research/xrp-ledger-index-pointer-migration-20261028T1959Z; head 240ccf2f83f5e8888f387243292fc4cdab0c97a2; conclusion=failure; created 2026-10-28T20:10:57Z; job count 0. Root cause unresolved."
+    },
+    {
+      "id": "SRC-RUN12-APPROVAL-WORKFLOW-BLOB-20261028T2107Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Approval workflow definition and cross-ref comparison",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4 is identical on main and research/xrp-ledger-index-pointer-migration-20261028T1959Z. Workflow declares workflow_dispatch only; observed run is event=push with zero jobs. Metadata/runtime discrepancy confirmed; cause not established."
+    },
+    {
+      "id": "SRC-RUN12-XRP-COINGECKO-20261028T2107Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://blockinsider.com/coins/ripple",
+      "title": "XRP market snapshot powered by CoinGecko",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Page states as of 2026-10-28 16:48 UTC: XRP $1.31, 24h volume $1.66B, market cap $82.87B, circulating supply 63.35B XRP, 7-day change -5.4%, 30-day change -11.8%. Secondary page; not a synchronized quote for this run."
+    },
+    {
+      "id": "SRC-RUN12-XRP-CMC-20261028T2107Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "title": "CoinMarketCap XRP live page capture",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Page displayed approximately $1.33 XRP, $2.0075B 24h volume, $84.13B market cap and 63.35B circulating XRP. Exact quote timestamp not exposed in capture; not synchronized with other providers."
+    },
+    {
+      "id": "SRC-RUN12-XRP-COINCODEX-20261028T2107Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://coincodex.com/crypto/ripple/historical-data//",
+      "title": "CoinCodex XRP daily historical bar",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Displayed Oct 27-Oct 28 daily interval: open $1.31, high $1.33, low $1.29, close $1.33, volume $1.40B, market cap $82.97B. Historical interval; not a live quote."
+    },
+    {
+      "id": "SRC-RUN12-XRP-ETF-INSIGHTS-20261028T2107Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP Insights ETF holdings and flow dataset",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Dataset as of Oct 27 reports -433,940 XRP daily across six US spot ETFs plus BITW, and -3,132,685 XRP across Oct 26-27; total holdings 1,190,077,145 XRP. Flows are calculated from holdings changes; GXRP is excluded from flow totals while holdings count it."
+    },
+    {
+      "id": "SRC-RUN12-XRP-ETF-MAKETO-20261028T2107Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "title": "Maketo XRP ETF flows tracker",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Page updated Oct 28 02:20 UTC, with five-fund holdings as of Oct 27 around $1.51B/1.14B XRP; it displays $0 for Oct 27 but also notes a trading day may have no bar when funds did not fully report. It reports about $38M added over the month while holdings value fell about $255M as XRP price declined. Do not treat a blank/missing day as zero."
+    },
+    {
+      "id": "SRC-RUN12-XRP-ETF-XRPINVESTOR-20261028T2107Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://thexrpinvestor.com/xrp-etf-flows",
+      "title": "TheXRPInvestor ETF tracker",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "Page last updated Oct 28; reports 12 products but category counts 6 spot + 4 derivative + 1 index sum to 11. It reports around $1.57B AUM and 1.18-1.19B XRP held; product count inconsistency remains unresolved."
+    },
+    {
+      "id": "SRC-RUN12-PR1265-20261028T2107Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1265",
+      "title": "Ledger pointer-migration PR current state",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "PR open/draft/unmerged; head prior to this run 240ccf2f83f5e8888f387243292fc4cdab0c97a2; base research/xrp-ledger-fresh-main-20261028-1217z at 5dc82c5d3665ac379f75bd4e75da2301f305b6f1; 8 commits ahead and 0 behind PR base. Compared to main it is diverged (84 ahead/65 behind). Six local synthetic tests passed; automated core CI did not trigger for research-base PR."
+    },
+    {
+      "id": "SRC-RUN12-PR1264-20261028T2107Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1264",
+      "title": "Paper-trading replay audit PR current state",
+      "accessed_at_utc": "2026-10-28T21:07:38Z",
+      "note": "PR open/draft/unmerged at dba1bc56171ced721429950db6b067ee46800d73; base 760e12f4a0e336f5c1cb8d3ffe65817a597e5a57 is stale relative to main. Exact-head CI/gate passed 153 tests, but PR-base integration uses 2,345 rows. Current main separately replays cleanly at 2,349 rows."
+    },
+    {
+      "id": "SRC-RUN13-MAIN-HEAD-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/fadcb97e28854889ea69ebb90fcd12909cfa5640",
+      "title": "Current main head after paper-trading append",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Latest commit appends one paper-trading log row; branch metadata reports protected=true, while exact-head combined status has zero entries."
+    },
+    {
+      "id": "SRC-RUN13-MAIN-CROSS-ANALYSIS-20261028T2151Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/3a52d4977b5d795079c4f51403d146a25fbd4a9d",
+      "title": "Cross-analysis refresh commit",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Modified only entity co-occurrence, entity sentiment profile and sentiment shift generated files."
+    },
+    {
+      "id": "SRC-RUN13-MAIN-STATUS-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/commits/fadcb97e28854889ea69ebb90fcd12909cfa5640/status",
+      "title": "Current main combined status",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Exact-head main status has zero status entries; exact-head main CI is NOT_VERIFIED. Detailed branch-protection enforcement remains unknown."
+    },
+    {
+      "id": "SRC-RUN13-PAPER-LOG-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Paper-trading log at current main",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Fetched exact blob SHA 9959f23847bfd644f612769f000e08048e94205d; 2,351 JSONL rows, zero malformed rows, chronological, all BTC-USD; 36 buy, 89 sell, 2,226 hold."
+    },
+    {
+      "id": "SRC-RUN13-PAPER-STATE-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Persisted paper-trading state",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479. Full replay using execute_paper_trade logic matches cash, position, average entry and trade count exactly; position_product remains null and was not written."
+    },
+    {
+      "id": "SRC-RUN13-GROQ-RATE-LIMIT-20261028T2121Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40771243683/job/123108700683",
+      "title": "Signal summary failed on Groq token-per-day quota",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Job log: HTTP 429; TPD limit 200,000, used 199,784, requested 638, retry hint about 3m2s; script exited before writing summary."
+    },
+    {
+      "id": "SRC-RUN13-PR1266-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1266",
+      "title": "Fresh-main deterministic signal-summary fallback PR",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Draft/open/unmerged; four files changed: core CI test registration, artifact-only workflow, deterministic non-directional fallback and regression tests."
+    },
+    {
+      "id": "SRC-RUN13-PR1266-CI-20261028T2205Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777101158",
+      "title": "PR #1266 exact-head core CI",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Passed 150 tests in 5.63 seconds on head 3cade14183ec61df00e3fb67a11eb4e01585513f."
+    },
+    {
+      "id": "SRC-RUN13-PR1266-GATE-20261028T2205Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777100966",
+      "title": "PR #1266 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Gate passed on exact PR #1266 head; proposal remains draft/unmerged."
+    },
+    {
+      "id": "SRC-RUN13-APPROVAL-ZERO-JOBS-20261028T2204Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777082543",
+      "title": "Approval workflow zero-job recurrence",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Run reports event=push, failure, zero jobs on PR #1266 branch. Root cause remains unknown."
+    },
+    {
+      "id": "SRC-RUN13-APPROVAL-WORKFLOW-CONTENT-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Approval workflow content at main",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4; inspected triggers declare workflow_dispatch only, which does not explain push-event zero-job runs."
+    },
+    {
+      "id": "SRC-RUN13-FOMC-STATEMENT-20261028",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "title": "Federal Reserve FOMC statement, October 28, 2026",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Official statement: 10–2 vote to hold the target range at 3.75%–4.00%; Lisa D. Cook and Beth M. Hammack dissented for a 25bp hike. Strong activity, elevated inflation and geopolitical uncertainty noted."
+    },
+    {
+      "id": "SRC-RUN13-TRADRADAR-XRP-20261028T1500Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "TradRadar XRP derivatives snapshot, 15:00 UTC",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Pre-FOMC: XRP $1.3156; OI $1.84B across seven exchanges; OI −1.18%/24h; funding +0.0100%/8h; 24h liquidations ≥$1.90M. About seven hours old at capture."
+    },
+    {
+      "id": "SRC-RUN13-KAIRO-XRP-20261028T1630Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://kairotrade.net/en/coin/XRP",
+      "title": "Kairo Trade XRP perpetual snapshot, 16:30 UTC",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Pre-FOMC: XRP $1.3111; turnover $1.5B; OI $2.0B; funding +0.0100%/8h; displayed BTC correlation 0.75. Venue universe/window not fully specified."
+    },
+    {
+      "id": "SRC-RUN13-CIRCLE-USDC-20261028T2208Z",
+      "evidence_class": "COMPANY_REPORTED",
+      "url": "https://www.circle.com/transparency",
+      "title": "Circle USDC transparency dashboard, October 26 snapshot",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Circle reports $71.0B circulation, $71.2B reserves as of Oct 26; seven-day circulation change −$1.0B and 30-day −$4.2B. Global totals do not identify XRPL balances or XRP flows."
+    },
+    {
+      "id": "SRC-RUN13-COINBASE-Q3-DATE-20261028T2208Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "title": "Coinbase Q3 2026 earnings date",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "Official notice schedules results for October 29 after market close; Q3 results were not yet available at capture."
+    },
+    {
+      "id": "SRC-RUN13-OPEN-PR-INVENTORY-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/pulls?state=open&per_page=100",
+      "title": "Open pull-request inventory",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "GitHub API returned 96 open PRs at this point-in-time capture, including draft PR #1266."
+    },
+    {
+      "id": "SRC-RUN13-PR1265-STATE-20261028T2208Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1265",
+      "title": "Ledger compaction PR state before this run's ledger append",
+      "accessed_at_utc": "2026-10-28T22:09:08.131Z",
+      "note": "PR #1265 is draft/open/unmerged; base research/xrp-ledger-fresh-main-20261028-1217z at 5dc82c5d3665ac379f75bd4e75da2301f305b6f1; head 4582ca9f0b516345046a25090375561b57dd9236 before this run; automated CI/gate not triggered for this research-base PR."
+    },
+    {
+      "id": "SRC-RUN13-PR1265-GATE-20261028T2209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777791185",
+      "title": "Ledger-compaction PR fail-closed gate on index commit 3489319",
+      "accessed_at_utc": "2026-10-28T22:10:46.935Z",
+      "note": "The fail-closed gate passed on index commit 34893193b0914dee31074a546939e666ea160d02. This is gate evidence only; the core CI workflow did not run for the research-base PR."
+    },
+    {
+      "id": "SRC-RUN13-APPROVAL-ZERO-JOBS-20261028T2209Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40777777959",
+      "title": "Approval workflow zero-job recurrence after ledger-index push",
+      "accessed_at_utc": "2026-10-28T22:10:46.935Z",
+      "note": "Push-event run on the ledger index commit failed with zero jobs; the inspected approval workflow declares workflow_dispatch only. Root cause remains unknown."
+    },
+    {
+      "id": "SRC-RUN14-MAIN-HEAD-20261028T2311Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/a7a38f3c3e54b1073825f0dfb11b0244fae313ad",
+      "title": "Current main head at run 14 capture",
+      "note": "Latest observed main commit; Paper trade cycle [skip ci], changed path web/paper_trading_log.jsonl. Main exact-head CI not verified.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-PAPER-LOG-20261028T2311Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_log.jsonl",
+      "title": "Current paper-trading JSONL blob read by exact SHA",
+      "note": "Blob SHA b696f385d201075cb04e08aef0d1a54777b37aa3; 2,353 records; zero malformed rows and timestamp-order errors; all records identify BTC-USD; action counts 36 buy, 89 sell, 2,228 hold. Two rows after prior exact full replay are holds with zero portfolio change; current full replay was not rerun.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-PAPER-STATE-20261028T2311Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/paper_trading_state.json",
+      "title": "Current persisted paper-trading state",
+      "note": "Blob SHA a20230ac411d1883ced4f92fce10a7ced2172479; cash 8011.936613782476; position 0.024901276579239066 BTC; average entry 80436.84; trade count 125; position_product null. State unchanged.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-APPROVAL-WORKFLOW-20261028T2311Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Current controlled approval workflow contents",
+      "note": "Main and research branch share workflow blob SHA 7047d1ebf27c5151b5a844ad375ac583a2e193e4. Current file declares workflow_dispatch only. Last verified zero-job push run 40777777959 at 22:10Z; newer run listing unavailable through current connector. Root cause unknown.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-SIGNAL-SUMMARY-20261028T2311Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "title": "Current XRP signal-summary artifact on main",
+      "note": "Blob SHA 79abe6b62d50c14f0ee6ef1dd09f25b0a5422f03; generated at 2026-10-28T22:21:53.034182+00:00; score 44, confidence 0; source explicitly records missing GitHub model credentials and Groq HTTP 429, while news score is 88 across 11 entries, mostly bullish academic-paper headlines. Not a valid directional forecast; PR #1267 proposes NOT_ISSUED fallback and artifact-only output.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-XRP-COINCODEX-20261028T2311Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://coincodex.com/crypto/ripple/historical-data//",
+      "title": "CoinCodex XRP daily historical bar",
+      "note": "Oct 27–28 daily bar: open $1.31, high $1.33, low $1.29, close $1.33, volume $1.40B, market cap $82.97B. Provider-specific daily bar; not synchronized intraday quote.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-XRP-ETF-INSIGHTS-20261028T2311Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP Insights ETF holdings-change tracker",
+      "note": "Reports Oct 27 change −433,940 XRP and −3.13M XRP over Oct 26–27; six US spot funds plus BITW; GXRP excluded from flow totals while included in holdings.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-XRP-ETF-ALPHA-20261028T2311Z",
+      "evidence_class": "SECONDARY_UNVERIFIED",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF flow tracker",
+      "note": "Reports $0 net flow Oct 27 in a five-fund universe and approximately +$644.8K over the preceding seven sessions. Different coverage from XRP Insights; not directly comparable.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-COINBASE-Q3-DATE-20261028T2311Z",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Announces-Date-of-Third-Quarter-2026-Financial-Results/default.aspx",
+      "title": "Coinbase Q3 2026 earnings date",
+      "published_at": "2026-10-14",
+      "note": "Official notice schedules Q3 results for Oct 29, 2026 after market close. Results not available at this capture.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-PR1267-20261028T2311Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1267",
+      "title": "Fresh-main deterministic XRP summary safety PR",
+      "note": "PR #1267 open, draft and unmerged; base a7a38f3c3e54b1073825f0dfb11b0244fae313ad, head 3ef16e553397bd76230f265b44da63315e917783, four files changed. Exact-head CI/gate pending; commit-run lookup returned no PR-triggered run at capture.",
+      "accessed_at_utc": "2026-10-28T23:11:00Z"
+    },
+    {
+      "id": "SRC-RUN14-SNAPSHOT-CORRECTION-20261028T2312Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-28T2312Z-correction.json",
+      "title": "Correction snapshot for paper-log action field mapping",
+      "note": "Corrects the 23:11Z snapshot action_counts field: the JSONL schema stores action at decision.action, not row.action. Prior snapshot remains immutable.",
+      "accessed_at_utc": "2026-10-28T23:12:00Z"
+    },
+    {
+      "id": "SRC-RUN14-SNAPSHOT-CORRECTION-20261028T2313Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-28T2313Z-final-correction.json",
+      "title": "Correction snapshot for exact character-count metric",
+      "note": "Corrected decision.action counts are preserved; this intermediate snapshot was superseded to correct the limitations metric. It remains immutable.",
+      "accessed_at_utc": "2026-10-28T23:13:00Z"
+    },
+    {
+      "id": "SRC-RUN14-SNAPSHOT-CORRECTION-20261028T2314Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-28T2314Z-final.json",
+      "title": "Final correction snapshot for ledger metrics",
+      "note": "Read-back confirmed action counts from decision.action, exact snapshot character count 609,645 and limitations count 104 matching the actual array. Earlier snapshots remain unchanged.",
+      "accessed_at_utc": "2026-10-28T23:14:00Z"
+    },
+    {
+      "id": "SRC-RUN14-PR1267-CI-20261028T2315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785367894",
+      "title": "Fresh-main PR #1267 exact-head CI",
+      "accessed_at_utc": "2026-10-28T23:15:00Z",
+      "note": "Exact PR head 3ef16e553397bd76230f265b44da63315e917783, base main a7a38f3c3e54b1073825f0dfb11b0244fae313ad; Tests job 123157099173 passed 150 tests in 5.57 seconds. This verifies the code proposal, not prediction skill."
+    },
+    {
+      "id": "SRC-RUN14-PR1267-GATE-20261028T2315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785367845",
+      "title": "Fresh-main PR #1267 fail-closed gate",
+      "accessed_at_utc": "2026-10-28T23:15:00Z",
+      "note": "Gate job 123157099079 completed successfully in fail-closed/read-only mode. No approval, merge, deployment or external write occurred."
+    },
+    {
+      "id": "SRC-RUN14-INDEX-GATE-20261028T2315Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785926776",
+      "title": "Compact ledger index gate on commit 7e9b6c94",
+      "accessed_at_utc": "2026-10-28T23:15:00Z",
+      "note": "Gate job 123158975439 completed successfully on index commit 7e9b6c94a3add7fc606de359bc361bcd97fc0d43. Core CI remains untriggered for PR #1265 because its base is a research branch excluded by the CI pull_request filter. This gate result does not cover the subsequent index update."
+    },
+    {
+      "id": "SRC-RUN15-MAIN-HEAD-202610290007Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/22ffb8458644dfcc46d918136f1ee90eb7f8012c",
+      "title": "Current main head: daily signal accuracy check",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Main head at capture. Commit changed web/signal_accuracy.json and web/signal_history.jsonl; the latter was rewritten in the same daily accuracy run."
+    },
+    {
+      "id": "SRC-RUN15-LEGACY-ACCURACY-202610290007Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/signal_accuracy.json",
+      "title": "Legacy variable-horizon XRP accuracy summary",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Main reports checked_count=1659, correct_count=772, accuracy_pct=46.5. The evaluator compares later live prices at variable elapsed horizons and mutates historical rows; this is not valid fixed-horizon out-of-sample skill."
+    },
+    {
+      "id": "SRC-RUN15-SIGNAL-SUMMARY-202610290007Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/web/latest_signal_summary.json",
+      "title": "Current XRP summary with provider-unavailable signal",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Summary says score 44, confidence 0, news_score 88 across 11 entries; source signal records missing GitHub model credentials and Groq HTTP 429. Treat as NOT_ISSUED, not directional evidence."
+    },
+    {
+      "id": "SRC-RUN15-PR1270-CI-202610290007Z",
+      "evidence_class": "TEST_RESULT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40791531951",
+      "title": "PR #1270 fixed-horizon accuracy safety CI",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Exact head 5476a2353181f61f36b56d9e9bf8a5a5859dfdda; core CI passed 147 tests in 6.25 seconds."
+    },
+    {
+      "id": "SRC-RUN15-PR1270-GATE-202610290007Z",
+      "evidence_class": "TEST_RESULT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40791531864",
+      "title": "PR #1270 fail-closed gate",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Gate passed on exact head 5476a2353181f61f36b56d9e9bf8a5a5859dfdda. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-RUN15-PR1271-CI-FAIL-202610290007Z",
+      "evidence_class": "TEST_RESULT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40791651783",
+      "title": "PR #1271 initial CI failure",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Initial CI failed during test collection due to a duplicated def in the new approval-workflow regression test."
+    },
+    {
+      "id": "SRC-RUN15-PR1271-SYNTAX-FIX-202610290007Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/b6688a328d24af70c4f234b56aeabf90aab5005e",
+      "title": "PR #1271 regression-test syntax correction",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Corrected duplicated def def to def. Latest exact-head CI rerun and gate are not yet verified."
+    },
+    {
+      "id": "SRC-RUN15-PR1271-RETRY-PENDING-202610290007Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1271",
+      "title": "PR #1271 latest exact-head checks pending",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Latest head b6688a328d24af70c4f234b56aeabf90aab5005e, based on main 22ffb8458644dfcc46d918136f1ee90eb7f8012c. No completed run was returned for this corrected head at capture."
+    },
+    {
+      "id": "SRC-RUN15-PR1268-CI-GATE-202610290007Z",
+      "evidence_class": "TEST_RESULT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40785492835",
+      "title": "PR #1268 predecessor CI for approval metadata parsing",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Older PR #1268 passed 145 tests and its gate passed. It is stale against current main; the fresh-main successor #1271 adds a regression test. This does not explain the historical zero-job push-event anomaly."
+    },
+    {
+      "id": "SRC-RUN15-APPROVAL-WORKFLOW-202610290007Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "title": "Controlled approval workflow metadata selector defect",
+      "accessed_at_utc": "2026-10-29T00:07:21.216Z",
+      "note": "Main's gh api jq projection asks for top-level base_ref, head_sha and head_ref. GitHub REST fields are nested at .base.ref, .head.sha and .head.ref. PR #1271 proposes the correction. Historical push-event zero-job runs remain a separate unresolved anomaly."
+    },
+    {
+      "id": "SRC-RUN15-PR1271-CI-PASS-20261029T0007Z",
+      "evidence_class": "TEST_RESULT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40791732695",
+      "title": "PR #1271 corrected-head core CI",
+      "accessed_at_utc": "2026-10-29T00:07:53.675Z",
+      "note": "Latest corrected head b6688a328d24af70c4f234b56aeabf90aab5005e passed 146 tests in 5.33 seconds. The earlier failed run was due to a duplicated def in the added regression test."
+    },
+    {
+      "id": "SRC-RUN15-PR1271-GATE-PASS-20261029T0007Z",
+      "evidence_class": "TEST_RESULT",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/40791732699",
+      "title": "PR #1271 corrected-head fail-closed gate",
+      "accessed_at_utc": "2026-10-29T00:07:53.675Z",
+      "note": "Fail-closed gate passed on latest corrected head b6688a328d24af70c4f234b56aeabf90aab5005e. No approval action or merge was performed."
+    },
+    {
+      "id": "SRC-RUN15-MAIN-TELEMETRY-20261029T0008Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/950607740de052d804d0b431c481bf2abda37a04",
+      "title": "Main advanced with telemetry-only report",
+      "accessed_at_utc": "2026-10-29T00:08:27.758Z",
+      "note": "Commit changes AUTONOMOUS_DEPLOYMENT_REPORT.md timestamp only. No XRP evaluator, workflow, paper-trading or ledger path changed. PRs #1270 and #1271 are one commit behind main; compare shows no overlapping changed paths."
+    },
+    {
+      "id": "SRC-RUN15-SNAPSHOT-METRIC-CORRECTION-20261029T0009Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/snapshots/2026-10-29T0009Z-correction.json",
+      "title": "Corrected immutable snapshot character-count metric",
+      "accessed_at_utc": "2026-10-29T00:09:14.462Z",
+      "note": "The preserved 0008Z snapshot content is 612,158 characters while its embedded latest_snapshot_characters metric says 612,153. This new correction snapshot recalculates the metric; the earlier snapshot remains unchanged."
+    },
+    {
+      "id": "SRC-RUN15-INDEX-POINTER-VERIFY-20261029T0009Z",
+      "evidence_class": "REPOSITORY_OBSERVATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-index-pointer-migration-20261028T1959Z/data/xrp_intelligence/research_ledger.json",
+      "title": "Corrected snapshot and compact-index pointer verification",
+      "accessed_at_utc": "2026-10-29T00:09:33.702Z",
+      "note": "Read back latest snapshot 2026-10-29T0009Z-correction.json byte-for-byte; blob SHA matches the index pointer; snapshot character-count metric and index character-count metric match actual content; all 358 referenced source IDs resolve. Core CI for the research-base PR was not triggered; latest index-head gate remains unverified."
+    }
+  ]
+}

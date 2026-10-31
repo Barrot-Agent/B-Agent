@@ -1,0 +1,244 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "snapshot_id": "XRP-20261031T083758Z-BINANCE-POR-MARKET-AND-PREDICTION-LEDGER-UPDATE",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T083758Z-binance-por-market-and-prediction-ledger-update.json",
+  "captured_at_utc": "2026-10-31T08:37:58Z",
+  "data_cutoff_utc": "2026-10-31T08:37:58Z",
+  "source_reference_count": 14,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-GH-MAIN-CROSS-ANALYSIS-075151Z",
+    "SRC-20261031-GH-PR1401-CROSS-ANALYSIS-READONLY",
+    "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP",
+    "SRC-20261031-GH-PR1400-FORECAST-LEDGER-SOURCE-REGISTRY",
+    "SRC-20261031-GH-PR1353-LEDGER-VALIDATOR-RECOVERY",
+    "SRC-20261031-BINANCE-SECURITY-UPDATE2-POR",
+    "SRC-20261031-COINDESK-POR-SNAPSHOT-NOV1",
+    "SRC-20261031-COINDESK-POR-FULL-REPORT-NOV2",
+    "SRC-20261031-BITQUERY-BINANCE-HACK-XRP-RECEIVER-0643Z",
+    "SRC-20261031-TRADRADAR-XRP-DERIVATIVES-0750Z",
+    "SRC-20261031-KODEXIUS-XRP-DERIVATIVES-0644Z",
+    "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+    "SRC-20261031-COINCODEX-XRP-HISTORICAL-OCT31",
+    "SRC-20261031-COINGECKO-XRP-HISTORICAL-OCT30"
+  ],
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T082001Z-japan-sbic-three-entity-resolution-camilla-channel-identity.json",
+  "binance_incident": {
+    "official_update_2": {
+      "company_funds_allocated_usd": 6340000000,
+      "affected_token_assets_already_held_usd": 5000000000,
+      "remaining_to_acquire_usd": 1340000000,
+      "reported_frozen_usd": 3000000000,
+      "results_deadline": "2026-11-02",
+      "xrp_specific_replenishment": "NOT_DISCLOSED",
+      "evidence_class": "COMPANY_STATEMENT_NOT_INDEPENDENT_AUDIT"
+    },
+    "por_publication_status": "NO_POST_INCIDENT_RESULTS_LOCATED_BY_2026-10-31T08:37:58Z",
+    "timing_reports": {
+      "coindesk_snapshot_date": "2026-11-01",
+      "coindesk_full_report_target": "2026-11-02",
+      "binance_stated_results_deadline": "2026-11-02"
+    },
+    "bitquery_snapshot": {
+      "captured_at_utc": "2026-10-30T06:43:00Z",
+      "reported_attacker_holdings_usd": 3200000000,
+      "reported_frozen_usd": 2700000000,
+      "xrpl_receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "xrp_balance": 233500000,
+      "receiver_outgoing_transaction_observed": false,
+      "receiver_state": "STALE"
+    },
+    "cross_chain_scope": {
+      "bitquery_chains": 9,
+      "trm_chains": 10,
+      "scope_status": "PROVIDER_METHODOLOGY_DIFFERENCE_UNRECONCILED",
+      "xrp_and_solana_address_overlap_with_other_clusters": false,
+      "linkage_basis": "TIMING_AND_TRANSACTION_CONSTRUCTION; BINANCE_AGGREGATE_LOSS"
+    },
+    "reserve_causality": "THEFT_MAGNITUDE_AND_EXCHANGE_RESERVE_DECLINES_ARE_NOT_YET_WALLET_LEVEL_RECONCILED"
+  },
+  "market_observations": [
+    {
+      "provider": "TradRadar",
+      "observed_at_utc": "2026-10-31T07:50:00Z",
+      "asset": "XRP",
+      "spot_mark_usd": 1.2445,
+      "change_24h_pct": -0.42,
+      "oi_usd": 1850000000,
+      "oi_coverage": "7 exchanges",
+      "oi_change_24h_pct": 1.24,
+      "funding_8h_pct": 0.0049,
+      "liquidations_24h_lower_bound_usd": 2050000,
+      "long_liquidations_usd": 1460000,
+      "short_liquidations_usd": 592360,
+      "long_account_share_pct": 78.4,
+      "long_short_coverage": "5 exchanges"
+    },
+    {
+      "provider": "Kodexius",
+      "observed_at_utc": "2026-10-31T06:44:00Z",
+      "asset": "XRP",
+      "oi_usd": 738720000,
+      "oi_coverage": "7 contracts",
+      "funding_8h_pct": 0.0053,
+      "volume_24h_usd": 1140000000
+    },
+    {
+      "provider": "CryptoETF.today",
+      "observed_at_utc": "2026-10-31T05:48:00Z",
+      "session_date": "2026-10-30",
+      "asset": "XRP",
+      "net_flow_usd": -700000,
+      "funds_reported": 2,
+      "funds_total": 5,
+      "flow_status": "PARTIAL",
+      "five_day_flow_usd": 8400000,
+      "ytd_flow_usd": 648200000,
+      "cumulative_flow_usd": 1810000000
+    },
+    {
+      "provider": "CoinCodex",
+      "interval_start": "2026-10-30",
+      "interval_end": "2026-10-31",
+      "asset": "XRP",
+      "open_usd": 1.24,
+      "high_usd": 1.27,
+      "low_usd": 1.21,
+      "close_usd": 1.26,
+      "volume_usd": 3800000000,
+      "market_cap_usd": 78850000000
+    },
+    {
+      "provider": "CoinGecko",
+      "session_date_utc": "2026-10-30",
+      "asset": "XRP",
+      "close_usd": null,
+      "market_cap_usd": 78280676313,
+      "volume_usd": 2709102355
+    }
+  ],
+  "data_quality": {
+    "oi_provider_ratio_tradradar_to_kodexius": 2.5043318171973143,
+    "oi_comparability": "NOT_COMPARABLE; 7 exchange aggregation versus 7 contract aggregation; retain separate series",
+    "volume_comparability": "NOT_COMPARABLE; CoinCodex Oct30–31 interval versus CoinGecko UTC Oct30 row",
+    "etf_flow_status": "PARTIAL_2_OF_5; missing funds are not zero",
+    "long_short_semantics": "ACCOUNT_SHARE_NOT_NOTIONAL_EXPOSURE",
+    "liquidations_semantics": "LOWER_BOUND_DUE_TO_PARTIAL_EXCHANGE_PUBLICATION"
+  },
+  "prediction_engine": {
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "fixed_horizon_ledger_pr": 1400,
+    "head_sha": "005b03e73a22778fe384af14f477969b2eaba503",
+    "source_registry_validation": "OPTIONAL; REGISTERED WHEN CALLER SUPPLIES REGISTRY; OTHERWISE NOT_CHECKED",
+    "ci_run_id": 41185194437,
+    "tests_passed": 370,
+    "subtests_passed": 8,
+    "gate_run_id": 41185194439,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "limitations": [
+      "NO_MODEL_TRAINING",
+      "NO_WALK_FORWARD",
+      "NO_DRIFT_DETECTION",
+      "NO_CONCURRENT_WRITER_LOCK",
+      "FEATURE_SNAPSHOT_HASH_NOT_RESOLVED_TO_ARCHIVE_SOURCE"
+    ]
+  },
+  "repository_state": {
+    "main_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "main_commit_signed": false,
+    "main_commit_message": "Cross-analysis refresh [skip ci]",
+    "main_commit_at_utc": "2026-10-31T07:51:51Z",
+    "main_changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "main_change": "generated_at timestamp only",
+    "main_writer_workflow_run_id": 41182259549,
+    "main_writer_event": "schedule",
+    "main_writer_status": "SUCCESS",
+    "cross_analysis_log": {
+      "entity_pairs": 3217,
+      "entity_profiles": 990,
+      "xrp_sentiment_recent_n": 0,
+      "xrp_sentiment_prior_n": 0,
+      "btc_sentiment_recent_n": 0,
+      "btc_sentiment_prior_n": 0
+    },
+    "main_write_path_status": "ACTIVE; PR1401 UNMERGED",
+    "open_pr_inventory": {
+      "total_open": 176,
+      "drafts": 166,
+      "ready": 10,
+      "main_based": 174,
+      "current_main_base": 2,
+      "stale_main_base": 172,
+      "non_main_base": 2,
+      "inventory_detail_captured_at_utc": "2026-10-31T08:24:52Z",
+      "total_open_rechecked_at_utc": "2026-10-31T08:37:58Z"
+    },
+    "pr1401": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+      "head_sha": "275ca3b3856db4324e89f9adb46225f1a2772956",
+      "ci_run_id": 41183168254,
+      "tests_passed": 345,
+      "subtests_passed": 8,
+      "gate_run_id": 41183168176,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "impact": "READ_ONLY_ARTIFACTS; PUBLIC_PAGES_REFRESH_NOT_PRESERVED"
+    },
+    "pr1402": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+      "head_sha": "da31a8392fa4f9acd09a55dff77ba7892f143751",
+      "ci_run_id": 41184451373,
+      "tests_passed": 342,
+      "subtests_passed": 8,
+      "gate_run_id": 41184451359,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "push_run_id": 41184448544,
+      "push_noop_job": "SUCCESS",
+      "approval_job": "SKIPPED",
+      "manual_workflow_dispatch_tested": false
+    },
+    "pr1400": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "005b03e73a22778fe384af14f477969b2eaba503",
+      "merge_base_sha": "b28f43c907517e939e299e8766e2ebe655a0df13",
+      "current_main_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+      "compare": "2_AHEAD_1_BEHIND; GITHUB_MERGEABLE_TRUE",
+      "ci_run_id": 41185194437,
+      "tests_passed": 370,
+      "subtests_passed": 8,
+      "gate_run_id": 41185194439,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    "pr1353": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "current_branch_head": "ce75aba8a2c95ed50be5433acef8eba31876c4ae",
+      "last_verified_data_head": "ac1b479d5418b87dae1ab389a030eb235854fb6b",
+      "validator_failure_run_id": 41184340974,
+      "validator_failure": "latest_snapshot.index_format_version missing",
+      "validator_success_run_id": 41184590640,
+      "validator_tests_passed": 20,
+      "validator_archive_shards_checked": 361,
+      "gate_run_id": 41184594225,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "current_metadata_successor_validation": "PENDING"
+    }
+  },
+  "continuing_threads": {
+    "japan_sbic": "THREE_REGIONAL_SISTER_ENTITIES_CONFIRMED (TOKYO/EAST, OSAKA/WEST, NAGOYA/CENTRAL); SPECIFIC REFERENT OF USER PHRASE UNRESOLVED; CHATGPT EVENTS ARE EDUCATIONAL ONLY; NO OPENAI PARTNERSHIP OR XRP RELATIONSHIP",
+    "ask_coin": "PERMISSION_COIN_ASK_REMAINS_LEADING_CANDIDATE; COINBASE EMBEDDED WALLET RELATIONSHIP CONFIRMED; NO DIRECT XRPL INTEGRATION ESTABLISHED",
+    "actual_capital": "ORIGINAL_PHRASE_CONTEXT_UNRESOLVED; MARKET CAP, GROSS VOLUME, NET EXTERNAL CAPITAL AND EXECUTED XRP PURCHASES KEPT SEPARATE",
+    "camilla_stephenson": "NO VERIFIED YOUTUBE CHANNEL; SAME-NAME PROFILES NOT LINKED; NO EXHAUSTIVE VIDEO INVENTORY"
+  },
+  "platform_coordination": {
+    "platforms_designed": 9,
+    "platforms_authenticated_external": 0,
+    "platforms_live_external_collaborators": 0,
+    "verified_handoffs": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

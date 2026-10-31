@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 62,
+  "chunk_count": 63,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T16:54:00Z",
+  "records": [
+    "The exact root cause of repeated push-event failures for the workflow_dispatch-only Barrot Controlled PR Approval workflow is unknown: runs have zero jobs and no job logs. Full repository CI and a current-main merge-commit CI for PRs #1355, #1373 and #1374 were not run. Branch protection/admin policy was not verified in this run. PRs remain draft and unmerged. Hugging Face artifact upload and Kaggle submissions were not executed. The XRP prediction engine still lacks a validated fixed-horizon outcome ledger; current main signal and 45.9% legacy metric are not forecast evidence."
+  ]
+}

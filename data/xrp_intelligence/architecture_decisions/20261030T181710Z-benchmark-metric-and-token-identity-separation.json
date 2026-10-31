@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "ADR-20261030T181710Z-BENCHMARK-METRIC-AND-TOKEN-IDENTITY-SEPARATION",
+  "captured_at_utc": "2026-10-30T18:17:10Z",
+  "decision": "Benchmark claims and related-asset identity must be resolved at the task, dataset, model-version, metric-denominator and contract/network levels. Never label pairwise human preference as accuracy; never infer XRP demand from a ticker collision or an EVM token's presence on Base.",
+  "rules": [
+    "Every model benchmark record stores exact dataset expansion, task, model/version, prompt regime, evaluation population, reference type, denominator, aggregation and uncertainty. Pairwise preference over gold is a separate metric from accuracy, F1 and calibration.",
+    "SBIC in the ChatGPT benchmark context resolves to Social Bias Inference Corpus (Sap et al., ACL 2020); Japanese SBIC East Japan is a separate legal entity.",
+    "Preserve secondary-source acronym conflicts and resolve them using primary dataset and benchmark papers.",
+    "Permission Coin ASK remains a candidate, not a confirmed interpretation of the user's phrase. Its official current positioning is a Permission utility/rewards token, not an investment product.",
+    "ASK's Base deployment creates an indirect Coinbase-incubated-network relationship, not a direct Coinbase commercial relationship. Official ASK docs list Base and Polygon, not XRPL.",
+    "Market cap is price multiplied by circulating supply, not actual cash invested. Actual capital flows must be separately reconstructed from subscriptions, redemptions, executed trades, OTC settlements and collateral movements.",
+    "Do not admit Permission ASK market price or supply into XRP model features; current CMC and CoinGecko observations are materially inconsistent and market depth is extremely thin."
+  ],
+  "status": "DESIGNED_AND_RECORDED",
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "ADR-20261031-044233-MAIN-WRITE-AND-SCHEDULER-BOUNDARIES",
+  "created_at_utc": "2026-10-31T04:42:33Z",
+  "title": "Main-branch write containment and safe research scheduler boundaries",
+  "status": "DESIGNED_NOT_EXECUTED",
+  "source_references": [
+    "SRC-20261031-GITHUB-PR1393-CI-043633Z",
+    "SRC-20261031-GITHUB-PR1393-GATE-043633Z",
+    "SRC-20261031-GITHUB-XRP-LEDGER-VALIDATOR-044139Z",
+    "SRC-20261031-GITHUB-XRP-LEDGER-GATE-044139Z",
+    "SRC-20261031-GITHUB-MAIN-HEAD-044233Z",
+    "SRC-20261031-GITHUB-MAIN-WORKFLOWS-044233Z",
+    "SRC-20261031-GITHUB-PR1392-044233Z",
+    "SRC-20261031-GITHUB-PR1394-044233Z",
+    "SRC-20261031-GITHUB-PR1390-044233Z"
+  ],
+  "source_reference_count": 9,
+  "missing_source_references": 0,
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Treat the unsigned main cross-analysis refresh at 03:51:40 UTC as a repository write whose causal workflow remains unknown; do not revert it or infer an actor beyond the commit metadata.",
+      "status": "RECORDED"
+    },
+    {
+      "id": "D2",
+      "decision": "PR #1392's read-only cross-analysis and accuracy changes are useful but insufficient for a strict no-main-write policy because scheduler-tick still writes schedule_queue.jsonl to main and retains contents:write/actions:write.",
+      "status": "OPEN_REVIEW_REQUIRED"
+    },
+    {
+      "id": "D3",
+      "decision": "Do not merge PR #1390 separately from #1392 without overlap/base reconciliation; #1392 contains the narrower scheduler allowlist and has a current-main base.",
+      "status": "OPEN_REVIEW_REQUIRED"
+    },
+    {
+      "id": "D4",
+      "decision": "Do not expand the scheduler allowlist to arbitrary XRP workflows until an exact-commit, read-only workflow_dispatch contract is implemented, bounded to the research branch and expected SHA.",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "id": "D5",
+      "decision": "Keep PR #1393 live Morpho API ingestion and schedule inactive until explicit review/approval; its mocked core suite passed but no live provider request has been executed.",
+      "status": "DESIGNED_NOT_EXECUTED"
+    },
+    {
+      "id": "D6",
+      "decision": "Preserve main, open PRs, research branches, queue state and historical artifacts. No reset, clean, stash, overwrite, force-push or merge.",
+      "status": "ACTIVE_SAFETY_BOUNDARY"
+    }
+  ],
+  "platform_coordination": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "authenticated_external_platforms": 0,
+    "verified_handoffs": 0
+  },
+  "safety": {
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_manual_workflow_dispatch": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 39,
+  "chunk_count": 40,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T12:43:54Z",
+  "records": [
+    "Circle SBI Japan KK / SBI Circle Holdings Co., Ltd. is documented as a 50/50 JV, but current operating revenue, USDC balances, payments volume, commercial activity and present legal filings were not quantified in this pass.",
+    "SBI's USD50M Circle IPO investment and approximately 9% Ripple stake are dated historical disclosures. Current market value and current ownership percentages are unknown; neither amount is a token purchase or XRP flow.",
+    "SBI VC Trade's USDC inbound deposit FAQ specifies Ethereum only. Withdrawal network policy and RLUSD's exact supported network(s) at VCTRADE remain unverified; no SBI-linked XRPL settlement is established.",
+    "Ripple's description of XRP as an essential bridge currency for XRPL USDC trading is a product/architecture claim. Executed DEX auto-bridge volume, XRP leg size, market-maker inventory and incremental XRP demand are not quantified.",
+    "SBI VC Trade's USDC lending rates are an initial promotional offer and planned normal rate, not realized customer yield or proof of outstanding lending balances, borrower exposure or collateral use."
+  ]
+}

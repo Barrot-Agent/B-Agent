@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+  "source_id": "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+      "publisher": "CryptoSlate — Why Ripple's $16 trillion payment volume isn't boosting XRP",
+      "url": "https://cryptoslate.com/ripple-is-winning-everywhere-so-why-isnt-xrp/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-31",
+      "evidence_class": "SECONDARY_EDITORIAL_ANALYSIS",
+      "claims": [
+        "CryptoSlate distinguishes Ripple's $16T product-enabled volume from XRP-specific payments and reports $13T 2025 Ripple Treasury payment volume.",
+        "The analysis notes Ripple products can grow without customers buying XRP; RLUSD can settle directly on Base/Ethereum and some XRPL corridors.",
+        "It calculates that one million standard XRPL transactions at 10 drops each burn 10 XRP.",
+        "It cites SBI Remit's XRP bridge use and BNY XRP/RLUSD custody support."
+      ],
+      "limitations": [
+        "$13T Treasury figure is secondary-reported and not independently reconciled to a primary filing in this run.",
+        "Fee calculation assumes standard 10-drop fees and standard transactions.",
+        "Editorial analysis is not a substitute for corridor-level XRP volume or inventory data."
+      ]
+    }
+  ],
+  "findings": [
+    "CryptoSlate distinguishes Ripple's $16T product-enabled volume from XRP-specific payments and reports $13T 2025 Ripple Treasury payment volume.",
+    "The analysis notes Ripple products can grow without customers buying XRP; RLUSD can settle directly on Base/Ethereum and some XRPL corridors.",
+    "It calculates that one million standard XRPL transactions at 10 drops each burn 10 XRP.",
+    "It cites SBI Remit's XRP bridge use and BNY XRP/RLUSD custody support."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "$13T Treasury figure is secondary-reported and not independently reconciled to a primary filing in this run.",
+    "Fee calculation assumes standard 10-drop fees and standard transactions.",
+    "Editorial analysis is not a substitute for corridor-level XRP volume or inventory data."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

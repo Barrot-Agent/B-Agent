@@ -1,0 +1,38 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 122,
+  "chunk_count": 123,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "LIM-20261031T084614Z-XRP-ETF-AUM-FLOW-RECONCILIATION",
+      "category": "capital_flow_measurement",
+      "statement": "Maketo estimates approximately +$19M net cash flow while XRP ETF marked holdings value fell $254.3M from Sep 30 to Oct 30. Its coin counts are estimated on days without issuer files; CryptoETF.today and CryptoKeyhole show different partial Oct 30 totals (-$700K at 2/5 and -$866K at 2/4). No single consolidated actual-capital figure is established.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30",
+        "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+        "SRC-20261031-CRYPTOKEYHOLE-XRP-ISSUER-FLOWS-OCT30-PARTIAL"
+      ]
+    },
+    {
+      "id": "LIM-20261031T084614Z-SBIC-CHATGPT-ACRONYM-CONTEXT",
+      "category": "entity_resolution",
+      "statement": "SBIC has at least three distinct documented contexts relevant to searches: Japan's Tokyo/Osaka/Nagoya sister companies, the U.S. SBA Small Business Investment Company program, and the Social Bias Inference Corpus. Japanese SBIC ChatGPT workshops are educational; the low-authority OpenAI/SBIC financing speculation is not evidence of a transaction. The original phrase context remains unresolved.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-TOKYO-SBIC-OFFICIAL-PROFILE",
+        "SRC-20261031-NAGOYA-SBIC-SISTER-COMPANY-RELATIONSHIP",
+        "SRC-20261031-OSAKA-SBIC-CHATGPT-WORKSHOP",
+        "SRC-20261031-US-SBA-SBIC-OFFICIAL-PROGRAM",
+        "SRC-20261031-OPENAI-SBIC-LOW-AUTHORITY-SPECULATION",
+        "SRC-20261031-SOCIAL-BIAS-INFERENCE-CORPUS-ACL"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,533 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "index_format_version": 3,
+  "snapshot_id": "XRP-20261030T204000Z-BNY-BITNOMIAL-RIPPLE-BINANCE-FLOW",
+  "captured_at_utc": "2026-10-30T20:40:00Z",
+  "data_cutoff_utc": "2026-10-30T20:40:00Z",
+  "research_scope": [
+    "XRP market structure and capital flows",
+    "institutional custody and collateral",
+    "RLUSD and USDC distribution",
+    "Coinbase, Circle, Ripple and BNY strategy",
+    "OCC national trust bank status",
+    "XRPL account-flow tracing",
+    "macro risk controls",
+    "Barrot V3 repository safety"
+  ],
+  "sources": [
+    "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z",
+    "SRC-RIPPLE-C2FO-INSTANT-PAY-20261030T2040Z",
+    "SRC-C2FO-INSTANT-PAY-20261030T2040Z",
+    "SRC-BITNOMIAL-COLLATERAL-SCHEDULE-20261030T2040Z",
+    "SRC-RIPPLE-PRIME-XRP-COLLATERAL-20261030T2040Z",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20261030T2040Z",
+    "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261030T2040Z",
+    "SRC-RIPPLE-PRIME-RWA-SWAPS-20261030T2040Z",
+    "SRC-COINBASE-RIPPLE-RLUSD-20261030T2040Z",
+    "SRC-COINBASE-Q3-2026-20261030T2040Z",
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T2040Z",
+    "SRC-DEFILLAMA-XRPL-STABLECOINS-20261030T2040Z",
+    "SRC-DEFILLAMA-XRPL-CHAIN-20261030T2040Z",
+    "SRC-XRP-INSIGHTS-ETF-20261030T2040Z",
+    "SRC-COINPAPRIKA-XRP-20261030T2040Z",
+    "SRC-OCC-RIPPLE-TRUST-BANK-20261030T2040Z",
+    "SRC-OCC-CIRCLE-TRUST-BANK-20261030T2040Z",
+    "SRC-OCC-COINBASE-STATUS-20261030T2040Z",
+    "SRC-COINBASE-OCC-CONDITIONAL-20261030T2040Z",
+    "SRC-CIRCLE-OCC-FINAL-20261030T2040Z",
+    "SRC-RIPPLE-OCC-FINAL-20261030T2040Z",
+    "SRC-SEC-CIRCLE-RESERVE-FUND-BNY-20261030T2040Z",
+    "SRC-RIPPLE-900M-RUNRATE-20261030T2040Z",
+    "SRC-RIPPLE-TREASURY-24-7-20261030T2040Z",
+    "SRC-FED-FOMC-20261030T2040Z",
+    "SRC-BEA-GDP-Q3-20261030T2040Z",
+    "SRC-BEA-PCE-SEP-20261030T2040Z",
+    "SRC-REUTERS-CRYPTO-RISKOFF-20261030T2040Z",
+    "SRC-BNY-CIRCLE-USDC-CUSTODY-20261030T2040Z",
+    "SRC-BINANCE-REPLENISHMENT-20261030T2040Z",
+    "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2040Z",
+    "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2040Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2040Z",
+    "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2040Z",
+    "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2040Z",
+    "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2040Z",
+    "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2040Z",
+    "SRC-BITHOMP-BINANCE-RDAE53-ACCOUNT-20261030T2040Z",
+    "SRC-BINANCE-ATTACKER-XRP-STATUS-20261030T2040Z"
+  ],
+  "market_observations": [
+    {
+      "observation_id": "MKT-20261030T204000Z-XRP-PRICE",
+      "as_of_utc": "2026-10-30T15:38:00Z",
+      "metric": "XRP/USD spot reference",
+      "value": 1.2477,
+      "unit": "USD",
+      "source_ids": [
+        "SRC-COINPAPRIKA-XRP-20261030T2040Z"
+      ],
+      "quality": "single_provider_timestamped_snapshot",
+      "admitted_to_model": false,
+      "notes": "24h -3.92%, 7d -5.0%, 30d -16.2%, YTD -31.6%; quote is stale by about five hours at data cutoff."
+    },
+    {
+      "observation_id": "MKT-20261030T204000Z-XRPL-STABLECOINS",
+      "as_of_utc": "2026-10-30T20:40:00Z",
+      "metric": "XRPL stablecoin capitalization and activity",
+      "value": {
+        "total_usd": 1083000000,
+        "rlusd_usd": 991980000,
+        "rlusd_share_pct": 91.59,
+        "total_change_7d_pct": 4.96,
+        "total_change_30d_pct": -11,
+        "rlusd_change_7d_pct": 5.54,
+        "rlusd_change_30d_pct": -11.8,
+        "usdc_usd": 4470000,
+        "usdc_change_7d_pct": -15.76,
+        "usdc_change_30d_pct": -16.21,
+        "tvl_usd": 321090000,
+        "dex_volume_usd": 4200000,
+        "dex_volume_7d_usd": 29160000,
+        "dex_volume_change_7d_pct": -24.86,
+        "active_addresses": 48537,
+        "transactions": 4410000,
+        "rwa_aum_usd": 21960000
+      },
+      "unit": "mixed",
+      "source_ids": [
+        "SRC-DEFILLAMA-XRPL-STABLECOINS-20261030T2040Z",
+        "SRC-DEFILLAMA-XRPL-CHAIN-20261030T2040Z"
+      ],
+      "quality": "third_party_aggregator_snapshot",
+      "admitted_to_model": false,
+      "notes": "Stablecoin capitalization has a positive 7-day but negative 30-day change; DEX volume and TVL are separate measures. Transactions/active addresses are not proof of economic throughput."
+    },
+    {
+      "observation_id": "MKT-20261030T204000Z-ETF-FLOWS",
+      "as_of_utc": "2026-10-29T20:00:00Z",
+      "metric": "XRP spot ETF holdings-delta reconstruction",
+      "value": {
+        "net_xrp_4_settled_days": 3440000,
+        "total_holdings_xrp": 1196650000,
+        "estimated_average_cost_basis_usd": 1.71,
+        "reference_spot_usd": 1.25
+      },
+      "unit": "XRP/USD",
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-20261030T2040Z"
+      ],
+      "quality": "reconstructed_provider_dataset",
+      "admitted_to_model": false,
+      "notes": "Positive holdings delta is not a complete issuer-level cash-flow ledger; cost basis is an estimate, not investor-level realized P&L."
+    },
+    {
+      "observation_id": "MKT-20261030T204000Z-CIRCLE-USDC",
+      "as_of_utc": "2026-10-26T00:00:00Z",
+      "metric": "Global USDC circulation and reserve snapshot",
+      "value": {
+        "circulation_usd": 71000000000,
+        "reserves_usd": 71200000000,
+        "change_7d_usd": -1000000000,
+        "change_30d_usd": -4200000000,
+        "change_365d_usd": -5200000000
+      },
+      "unit": "USD",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T2040Z"
+      ],
+      "quality": "issuer_transparency_snapshot",
+      "admitted_to_model": false,
+      "notes": "Global Circle figures; not XRPL-specific and not all reserve assets are held at BNY."
+    },
+    {
+      "observation_id": "MKT-20261030T204000Z-XRPL-ACCOUNT-FLOW",
+      "as_of_utc": "2026-10-30T20:40:00Z",
+      "metric": "Ripple-attributed XRPL account route and Binance-labelled wallet inflows",
+      "value": {
+        "ripple_labelled_rJqi_to_raRVLN_xrp": {
+          "at_0830": 120000000,
+          "at_2007": 35000000
+        },
+        "other_r3mSX_to_raRVLN_xrp": 19500000,
+        "raRVLN_to_r39TA_xrp": {
+          "six_payments_1344_to_1409": 186000000,
+          "additional_2016": 20000000
+        },
+        "r39TA_to_binance_labelled_rNxp4h_xrp": 68924571.602513,
+        "r39TA_ripple_labelled_rlusd_gross_inbound": 60000000,
+        "r39TA_ripple_labelled_rlusd_gross_outbound": 30000000,
+        "point_in_time_balances": {
+          "rJqi_xrp": 30500000,
+          "raRVLN_xrp": 19600000,
+          "r39TA_xrp": 25900000,
+          "rNxp4h_xrp": 184200000
+        }
+      },
+      "unit": "XRP and RLUSD",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2040Z",
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2040Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2040Z",
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2040Z"
+      ],
+      "quality": "public_explorer_account_level_trace",
+      "admitted_to_model": false,
+      "notes": "raRVLN is classified by XRPLWin as an AMM pool and as belonging to a vault and loan broker; its pair and vault identity remain unknown. r39TA has no service label. rNxp4h is Binance-labelled and was activated by rDAE53, one of the five incident source wallets. Account-level fungible flows do not prove same-unit provenance, beneficial ownership, replenishment or sale."
+    },
+    {
+      "observation_id": "MKT-20261030T204000Z-MACRO",
+      "as_of_utc": "2026-10-29T00:00:00Z",
+      "metric": "Macro and risk-off context",
+      "value": {
+        "fed_target_range_pct": [
+          3.75,
+          4
+        ],
+        "fomc_vote": "10-2",
+        "dissent_for_hike_bp": 25,
+        "q3_real_gdp_annualized_pct": 3.4,
+        "q3_pce_annualized_pct": 2.1,
+        "q3_core_pce_annualized_pct": 2.5,
+        "sep_pce_yoy_pct": 3.6,
+        "sep_core_pce_yoy_pct": 3.1
+      },
+      "unit": "rates and percentages",
+      "source_ids": [
+        "SRC-FED-FOMC-20261030T2040Z",
+        "SRC-BEA-GDP-Q3-20261030T2040Z",
+        "SRC-BEA-PCE-SEP-20261030T2040Z",
+        "SRC-REUTERS-CRYPTO-RISKOFF-20261030T2040Z"
+      ],
+      "quality": "official_macro_plus_secondary_market_context",
+      "admitted_to_model": false,
+      "notes": "FOMC dissent and sticky inflation coexist with a 3.4% annualized Q3 GDP advance estimate. The October 30 equity/crypto risk-off move has multiple concurrent causes, including Binance incident and technology-sector repricing."
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "F-20261030T204000Z-01",
+      "classification": "CONFIRMED_OFFICIAL_PRODUCT_CAPABILITY",
+      "claim": "BNY now supports XRP and RLUSD on its Digital Asset Custody platform and is the primary reserve custodian for RLUSD.",
+      "evidence_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "No XRP-specific AUC, client balances or collateral utilization; future mint/redeem is conditional."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-02",
+      "classification": "CONFIRMED_VENUE_ELIGIBILITY",
+      "claim": "Bitnomial's published clearinghouse schedule lists XRP with a 40% haircut and a $15M notional limit; Ripple Prime separately advertises XRP as eligible collateral.",
+      "evidence_source_ids": [
+        "SRC-BITNOMIAL-COLLATERAL-SCHEDULE-20261030T2040Z",
+        "SRC-RIPPLE-PRIME-XRP-COLLATERAL-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "Eligibility is not actual posted collateral. No utilization, client exposure or collateral balances are public."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-03",
+      "classification": "CONFIRMED_WITH_CONDITIONAL_FOLLOW_ON",
+      "claim": "Standard Chartered's DIFC branch offers RLUSD custody on XRPL; its LMAX collateral-mirroring integration remains planned and conditional.",
+      "evidence_source_ids": [
+        "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "No XRP custody or XRP collateral support is asserted; no LMAX collateral volume."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-04",
+      "classification": "LIMITED_ROLLOUT_NOT_PROVEN_VOLUME",
+      "claim": "C2FO Instant Pay is designed to use participating capital providers to fund approved invoices and settle suppliers in RLUSD on XRPL.",
+      "evidence_source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261030T2040Z",
+        "SRC-C2FO-INSTANT-PAY-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "Limited rollout/waitlist; no actual volume, provider names or XRP purchase requirement disclosed. Historical C2FO Early Pay activity is not XRPL capital."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-05",
+      "classification": "CONFIRMED_COMMON_SERVICE_PROVIDER",
+      "claim": "BNY is a common institutional infrastructure node: it is primary RLUSD reserve custodian, supports XRP custody, provides Circle Reserve Fund custody and offers USDC custody/mint/burn workflows.",
+      "evidence_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z",
+        "SRC-SEC-CIRCLE-RESERVE-FUND-BNY-20261030T2040Z",
+        "SRC-BNY-CIRCLE-USDC-CUSTODY-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "Circle Reserve Fund is one component of USDC reserves; shared custodian does not establish direct Circle-Ripple coordination."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-06",
+      "classification": "REGULATORY_STATUS_COMPARISON",
+      "claim": "OCC records show Circle's First National Digital Currency Bank consummated/effective July 24, Ripple National Trust Bank consummated/effective October 26, while Coinbase National Trust Company is recorded as approved/conditional without a reviewed consummated/effective entry.",
+      "evidence_source_ids": [
+        "SRC-OCC-CIRCLE-TRUST-BANK-20261030T2040Z",
+        "SRC-OCC-RIPPLE-TRUST-BANK-20261030T2040Z",
+        "SRC-OCC-COINBASE-STATUS-20261030T2040Z",
+        "SRC-COINBASE-OCC-CONDITIONAL-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "Legal charter status is not proof of service commencement; Coinbase may have later filings not present in the reviewed record."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-07",
+      "classification": "COINBASE_CORPORATE_STRATEGY",
+      "claim": "Coinbase is positioning as a multi-rail platform across exchange trading, derivatives, stablecoin distribution, custody and prediction markets; Q3 release reports 10.7% global trading share, $22B average USDC held in products and prediction markets above $200M annualized revenue.",
+      "evidence_source_ids": [
+        "SRC-COINBASE-Q3-2026-20261030T2040Z",
+        "SRC-COINBASE-RIPPLE-RLUSD-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "USDC balances are customer-held, not Coinbase-owned XRP capital; RLUSD collateral availability on Global Exchange is future, not verified live."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-08",
+      "classification": "EXPLORER_OBSERVED_ACCOUNT_FLOW",
+      "claim": "Bithomp shows Ripple-labelled rJqi transferring 120M XRP at 08:30 and 35M at 20:07 to raRVLN; raRVLN sent 186M XRP to unlabelled r39TA in six payments and another 20M at 20:16; r39TA sent 68.9246M XRP to Binance-labelled rNxp4h and received/sent RLUSD with Ripple-labelled issuer accounts.",
+      "evidence_source_ids": [
+        "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2040Z",
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "Account-level flow only; r39TA owner unknown; raRVLN pool/vault pair unknown; fungible XRP cannot be attributed unit-for-unit; no sale or replenishment proof."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-09",
+      "classification": "EXPLORER_CLASSIFICATION_WITH_UNKNOWN_ASSET_ROLE",
+      "claim": "XRPLWin identifies raRVLN as an AMM pool and says it belongs to a vault and loan broker, making it a potentially important collateral/liquidity node.",
+      "evidence_source_ids": [
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "The underlying AMM pair, vault, loan broker and actual asset composition were not loaded due explorer rate limits; classification is not proof that a particular transfer was collateral."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-10",
+      "classification": "THIRD_PARTY_MARKET_DATA",
+      "claim": "XRPL stablecoin capitalization is about $1.083B with RLUSD about 91.59%; seven-day stablecoin cap is up while 30-day cap, TVL and DEX volume are down.",
+      "evidence_source_ids": [
+        "SRC-DEFILLAMA-XRPL-STABLECOINS-20261030T2040Z",
+        "SRC-DEFILLAMA-XRPL-CHAIN-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "Aggregator definitions and timestamps vary; high transaction count does not prove organic economic throughput."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-11",
+      "classification": "RECONSTRUCTED_ETF_DATA",
+      "claim": "XRP Insights estimates +3.44M XRP net ETF holdings change over four settled days, while estimated average cost basis around $1.71 exceeds the contemporaneous $1.25 reference price.",
+      "evidence_source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "Reconstructed holdings deltas and cost basis are not actual issuer cash-flow or investor-level P&L; no directional inference admitted."
+    },
+    {
+      "finding_id": "F-20261030T204000Z-12",
+      "classification": "COMPANY_REPORTED_CORPORATE_SCALE",
+      "claim": "Ripple reports an approximately $900M annualized product revenue run rate and large institutional/network reach, while Treasury and prime-brokerage products increasingly use RLUSD and other collateral.",
+      "evidence_source_ids": [
+        "SRC-RIPPLE-900M-RUNRATE-20261030T2040Z",
+        "SRC-RIPPLE-TREASURY-24-7-20261030T2040Z",
+        "SRC-RIPPLE-PRIME-RWA-SWAPS-20261030T2040Z"
+      ],
+      "counterevidence_or_limit": "Company claims and product announcements do not measure XRP purchases, collateral balances or realized XRPL settlement volume."
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-20261030T204000Z-01",
+      "claim": "The 68.9246M XRP transfer to Binance-labelled rNxp4h may be connected to post-incident inventory restoration or market-making.",
+      "status": "UNCONFIRMED_COMPETING_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2040Z",
+        "SRC-BINANCE-REPLENISHMENT-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "No XRP-specific replenishment amount in Binance's statement",
+        "r39TA has no identified owner and may be a customer/market-maker account",
+        "rNxp4h is linked to rDAE53 by activation but is not established as one of the five compromised source wallets",
+        "No sale or direct link to the 233.46M attacker receiver is shown"
+      ],
+      "test_next": "Compare rNxp4h and rDAE53 against Binance PoR snapshots, trace subsequent flows and look for public XRP-specific replenishment disclosures."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-02",
+      "claim": "The Ripple-labelled rJqi→raRVLN→r39TA route is routine treasury, OTC or market-maker rebalancing unrelated to the Binance incident.",
+      "status": "PLAUSIBLE_ALTERNATIVE",
+      "supporting_source_ids": [
+        "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2040Z",
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2040Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "The route occurs immediately after a major Binance security event and ends in a Binance-labelled wallet for part of the flow",
+        "Binance separately announced market/OTC replenishment, but did not identify XRP"
+      ],
+      "test_next": "Compare prior-week and prior-month routes and recurring counterparties; do not infer intent from timing alone."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-03",
+      "claim": "XRP transfers into raRVLN may represent AMM liquidity, vault funding or lending collateral rather than an intended sale.",
+      "status": "PLAUSIBLE_BUT_UNVERIFIED",
+      "supporting_source_ids": [
+        "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2040Z",
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "Underlying AMM pair, vault identity and loan-broker identity are unknown",
+        "No LP token mint, vault deposit/withdrawal or loan object was independently decoded"
+      ],
+      "test_next": "Resolve raRVLN ledger objects, AMM asset pair, vault ID and loan-broker relationships from a second explorer or public XRPL node."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-04",
+      "claim": "Institutional custody and collateral eligibility increase XRP's addressable utility but do not yet establish material new spot demand.",
+      "status": "SUPPORTED_AS_CAPACITY_NOT_FLOW",
+      "supporting_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z",
+        "SRC-BITNOMIAL-COLLATERAL-SCHEDULE-20261030T2040Z",
+        "SRC-RIPPLE-PRIME-XRP-COLLATERAL-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "No posted XRP collateral balances or client-level custody flows disclosed",
+        "Bitnomial limit is $15M notional and 40% haircut; venue-specific"
+      ],
+      "test_next": "Seek actual collateral utilization, borrow/lend balances, haircuts, limits and custody AUC disclosures."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-05",
+      "claim": "RLUSD-led enterprise settlement can grow XRPL usage without proportionate native XRP demand.",
+      "status": "PLAUSIBLE_WITH_DIRECT_SUPPORT",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261030T2040Z",
+        "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261030T2040Z",
+        "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z",
+        "SRC-COINBASE-RIPPLE-RLUSD-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "XRP remains a native bridge/DEX and fee asset and is advertised as collateral in Ripple Prime/Bitnomial",
+        "Actual transaction mix and bridge usage are unknown"
+      ],
+      "test_next": "Measure XRPL payment currency mix, DEX auto-bridging, XRP fee consumption and actual collateral positions."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-06",
+      "claim": "BNY is a shared custody and reserve-infrastructure node for Circle and Ripple, but this does not prove a direct Circle-Ripple commercial partnership.",
+      "status": "CONFIRMED_COMMON_PROVIDER_WITH_CAUSAL_LIMIT",
+      "supporting_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z",
+        "SRC-SEC-CIRCLE-RESERVE-FUND-BNY-20261030T2040Z",
+        "SRC-BNY-CIRCLE-USDC-CUSTODY-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "Circle and Ripple have separate issuers, reserve structures and product strategies",
+        "No direct Circle-Ripple commercial agreement established by shared BNY provider"
+      ],
+      "test_next": "Map specific custody mandates, reserve vehicles, mint/burn contracts and any publicly disclosed cross-issuer settlement arrangements."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-07",
+      "claim": "Coinbase is becoming a multi-rail distribution and custody platform, retaining deep USDC economics while adding RLUSD access and cbXRP custody.",
+      "status": "SUPPORTED_STRATEGIC_POSITIONING",
+      "supporting_source_ids": [
+        "SRC-COINBASE-Q3-2026-20261030T2040Z",
+        "SRC-COINBASE-RIPPLE-RLUSD-20261030T2040Z",
+        "SRC-BNY-CIRCLE-USDC-CUSTODY-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "Transaction revenue remains cyclical and the USDC concentration is economically significant",
+        "No token-level XRP amount in recognized collateral tables; RLUSD exchange collateral is future"
+      ],
+      "test_next": "Track Coinbase stablecoin balances/revenue share, cbXRP reserves, RLUSD volumes, XRP custody and product-specific collateral disclosures."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-08",
+      "claim": "Circle and Ripple have advanced OCC trust-bank status relative to Coinbase, whose national trust company remains conditionally approved in the reviewed record.",
+      "status": "SUPPORTED_BY_REGULATORY_STATUS_RECORDS",
+      "supporting_source_ids": [
+        "SRC-OCC-CIRCLE-TRUST-BANK-20261030T2040Z",
+        "SRC-OCC-RIPPLE-TRUST-BANK-20261030T2040Z",
+        "SRC-OCC-COINBASE-STATUS-20261030T2040Z",
+        "SRC-COINBASE-OCC-CONDITIONAL-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "Operational service scope and actual commencement are not fully verified for Circle or Ripple",
+        "A later Coinbase effective filing could change the comparison"
+      ],
+      "test_next": "Recheck OCC CAS records and each entity's service commencement/operating disclosures."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-09",
+      "claim": "XRPL stablecoin supply growth is not yet translating proportionally into DeFi trading activity.",
+      "status": "SUPPORTED_BY_MIXED_AGGREGATE_METRICS",
+      "supporting_source_ids": [
+        "SRC-DEFILLAMA-XRPL-STABLECOINS-20261030T2040Z",
+        "SRC-DEFILLAMA-XRPL-CHAIN-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "Seven-day stablecoin cap growth is positive and RLUSD supply is up over seven days",
+        "Aggregator definitions and automated activity may distort comparison"
+      ],
+      "test_next": "Build daily synchronized stablecoin supply, TVL, DEX volume, fees, payment volume and organic-active-address series."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-10",
+      "claim": "Positive ETF holdings deltas may coexist with latent redemption risk if the estimated aggregate cost basis remains well above spot.",
+      "status": "SCENARIO_ONLY_NOT_DIRECTIONAL",
+      "supporting_source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "Estimated cost basis is not investor-level P&L",
+        "Positive net holdings changes do not prove future creations or redemptions"
+      ],
+      "test_next": "Reconcile issuer daily holdings and cash flows by fund, then evaluate flows against price, AUM and premium/discount."
+    },
+    {
+      "hypothesis_id": "H-20261030T204000Z-11",
+      "claim": "The October 30 XRP decline reflects a mixture of Binance incident risk, broader technology/equity risk-off and macro uncertainty; the Binance causal contribution is not isolated.",
+      "status": "CONFOUNDED_CAUSAL_HYPOTHESIS",
+      "supporting_source_ids": [
+        "SRC-FED-FOMC-20261030T2040Z",
+        "SRC-BEA-GDP-Q3-20261030T2040Z",
+        "SRC-BEA-PCE-SEP-20261030T2040Z",
+        "SRC-REUTERS-CRYPTO-RISKOFF-20261030T2040Z"
+      ],
+      "disconfirming_evidence": [
+        "XRP-specific incident timing and wallet flows are material event evidence",
+        "A synchronized event study with BTC, ETH, Nasdaq, dollar, rates and other exchanges has not yet been run"
+      ],
+      "test_next": "Run a timestamp-aligned event study with market controls and pre-registered windows; retain multiple competing causal models."
+    }
+  ],
+  "limitations": [
+    "LIM-20261030T204000Z-01",
+    "LIM-20261030T204000Z-02",
+    "LIM-20261030T204000Z-03",
+    "LIM-20261030T204000Z-04",
+    "LIM-20261030T204000Z-05",
+    "LIM-20261030T204000Z-06",
+    "LIM-20261030T204000Z-07",
+    "LIM-20261030T204000Z-08",
+    "LIM-20261030T204000Z-09",
+    "LIM-20261030T204000Z-10",
+    "LIM-20261030T204000Z-11",
+    "LIM-20261030T204000Z-12",
+    "LIM-20261030T204000Z-13",
+    "LIM-20261030T204000Z-14",
+    "LIM-20261030T204000Z-15",
+    "LIM-20261030T204000Z-16",
+    "LIM-20261030T204000Z-17",
+    "LIM-20261030T204000Z-18"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "next_actions": [
+    "Crosswalk Binance rDAE53 and rNxp4h against official PoR wallet exports and XRP-BF2 reserve addresses.",
+    "Trace raRVLN AMM, vault and loan-broker ledger objects; identify asset pair and all relevant counterparties.",
+    "Reconcile the complete r39TA XRP/RLUSD transaction history and determine whether any service identity can be publicly verified.",
+    "Refresh the 233.46M XRP attacker receiver after the 14:40 UTC secondary observation; do not claim current inactivity until refreshed.",
+    "Measure actual XRP collateral posted at Bitnomial/Ripple Prime if public data become available; retain eligibility-only status otherwise.",
+    "Track BNY XRP custody, RLUSD reserve and future mint/redeem activation; track Standard Chartered/LMAX collateral integration separately.",
+    "Build synchronized daily XRPL stablecoin supply, TVL, DEX, payments, fees, ETF holdings and cross-venue derivatives data.",
+    "Continue SBIC East Japan versus Social Bias Inference Corpus disambiguation, ASK Coin transaction-level buyback verification and Camilla Stephenson identity/video inventory.",
+    "Keep all nine platform adapters design-only until each platform's authentication, permissions and evidence handoff are tested."
+  ]
+}

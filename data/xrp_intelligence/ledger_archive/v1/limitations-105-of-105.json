@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 104,
+  "chunk_count": 105,
+  "record_count": 4,
+  "records": [
+    {
+      "id": "LIM-20261031T023200Z-01",
+      "category": "main_branch_protection_details",
+      "statement": "The GitHub branch-protection endpoint returned 403 Resource not accessible by integration. The branch object reports protected=true and a workflow successfully pushed to main, but the exact bypass actors, required reviews and ruleset exemptions cannot be inspected.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-RUN-41157339221-20261031T015150Z",
+        "SRC-GH-APPROVAL-WORKFLOW-YAML-MAIN-20261031T023200Z",
+        "SRC-GH-PR1386-CROSS-ANALYSIS-SAFETY-20261031T023200Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T023200Z-02",
+      "category": "cross_analysis_zero_sample_output",
+      "statement": "The scheduled Cross Analysis run reported recent and prior sample counts of zero for both XRP and BTC, wrote null sentiment-shift scores, and nevertheless committed a generated_at-only update to main. The sentiment output is not a valid observation or forecast.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-RUN-41157339221-20261031T015150Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T023200Z-03",
+      "category": "scheduler_tick_future_write_capability",
+      "statement": "The inspected Scheduler Tick fired zero entries and its push was a no-op, but the workflow still contains a credentialed commit/push path and scheduler dispatch capability. A no-op run does not prove future queue entries cannot mutate main or dispatch privileged workflows.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-SCHEDULER-TICK-RUN-41159578270-20261031T022048Z",
+        "SRC-GH-PR1390-SCHEDULER-SAFETY-20261031T023200Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T023200Z-04",
+      "category": "approval_workflow_push_event_zero_jobs",
+      "statement": "The approval workflow file declares workflow_dispatch only, while GitHub recorded push-event failures with zero jobs and no logs. The event mismatch's root cause is unresolved; no manual dispatch was attempted.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-APPROVAL-ZERO-JOB-RUN-41160207764-20261031T022906Z",
+        "SRC-GH-APPROVAL-WORKFLOW-YAML-MAIN-20261031T023200Z"
+      ]
+    }
+  ]
+}

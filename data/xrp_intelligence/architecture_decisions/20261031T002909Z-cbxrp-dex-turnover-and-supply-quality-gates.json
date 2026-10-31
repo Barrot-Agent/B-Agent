@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T002909Z-CBXRP-DEX-TURNOVER-AND-SUPPLY-QUALITY-GATES",
+  "created_at_utc": "2026-10-31T00:29:09Z",
+  "status": "ADOPTED_FOR_CBXRP_MARKET_DATA_GATING",
+  "decisions": [
+    "Store cbXRP DEX liquidity and turnover by pool, venue, pair, block/time and provider; do not treat aggregate 24-hour volume or buy/sell trade counts as net capital flow.",
+    "Keep pool liquidity, token market cap, reserve collateral and wrapped supply as separate measurements. A 7.36x volume-to-main-pool-liquidity ratio is turnover, not an inflow or price signal.",
+    "Quarantine stale/inconsistent CoinDesk and Trading Strategy cbXRP supply values; use Coinbase's first-party reserve/supply display as the best published baseline until independent Base totalSupply() verification is obtained.",
+    "Track cbXRP mint/burn events against the 20 Coinbase XRPL reserve addresses and Base totalSupply() at common block/time cutoffs to estimate actual locked XRP and redemptions.",
+    "No cbXRP DEX or supply observation from this snapshot is admitted to the XRP price-prediction feature store."
+  ],
+  "invariants": [
+    "Third-party supply pages are inconsistent and cannot override the first-party Coinbase reserve/supply display.",
+    "DEX volume is not net capital; buy/sell counts are not notional amounts.",
+    "cbXRP is a wrapped asset backed by Coinbase-held XRP; do not count its Base market capitalization as incremental XRP market capitalization.",
+    "No forecast issued."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

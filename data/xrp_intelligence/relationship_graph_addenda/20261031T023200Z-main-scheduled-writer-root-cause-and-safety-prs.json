@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T023200Z-MAIN-SCHEDULED-WRITER-ROOT-CAUSE",
+  "created_at_utc": "2026-10-31T02:32:00Z",
+  "captured_at_utc": "2026-10-31T02:32:00Z",
+  "source_ids": [
+    "SRC-GH-CROSS-ANALYSIS-RUN-41157339221-20261031T015150Z",
+    "SRC-GH-SCHEDULER-TICK-RUN-41159578270-20261031T022048Z",
+    "SRC-GH-APPROVAL-ZERO-JOB-RUN-41160207764-20261031T022906Z",
+    "SRC-GH-APPROVAL-WORKFLOW-YAML-MAIN-20261031T023200Z",
+    "SRC-GH-PR1386-CROSS-ANALYSIS-SAFETY-20261031T023200Z",
+    "SRC-GH-PR1390-SCHEDULER-SAFETY-20261031T023200Z",
+    "SRC-GH-PR1388-MERGE-QUEUE-SAFETY-20261031T023200Z"
+  ],
+  "source_reference_count": 7,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T023200Z-01",
+      "from_entity": "Cross Analysis workflow",
+      "relation": "committed_and_pushed_to",
+      "to_entity": "main",
+      "status": "CONFIRMED_SCHEDULED_WRITE",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-RUN-41157339221-20261031T015150Z"
+      ],
+      "details": "Run 41157339221 was scheduled and pushed commit 7a780de; only sentiment_shift.json changed, with null scores and zero samples."
+    },
+    {
+      "edge_id": "E-20261031T023200Z-02",
+      "from_entity": "Scheduler Tick workflow",
+      "relation": "has_credentialed_commit_push_and_dispatch_capability_for",
+      "to_entity": "main",
+      "status": "CAPABILITY_CONFIRMED_NOOP_AT_0220Z",
+      "source_ids": [
+        "SRC-GH-SCHEDULER-TICK-RUN-41159578270-20261031T022048Z"
+      ],
+      "details": "Run 41159578270 fired zero queue entries and push was a no-op; future write capability remains."
+    },
+    {
+      "edge_id": "E-20261031T023200Z-03",
+      "from_entity": "PR #1386",
+      "relation": "proposes_read_only_artifact_remediation_for",
+      "to_entity": "Cross Analysis workflow",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-GH-PR1386-CROSS-ANALYSIS-SAFETY-20261031T023200Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T023200Z-04",
+      "from_entity": "PR #1390",
+      "relation": "proposes_allowlist_remediation_for",
+      "to_entity": "Scheduler Tick workflow",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-GH-PR1390-SCHEDULER-SAFETY-20261031T023200Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T023200Z-05",
+      "from_entity": "PR #1388",
+      "relation": "proposes_read_only_remediation_for",
+      "to_entity": "Merge Queue workflow",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-GH-PR1388-MERGE-QUEUE-SAFETY-20261031T023200Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T023200Z-01",
+      "claim": "The 7a780de main-branch write was caused by the scheduled Cross Analysis workflow.",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-RUN-41157339221-20261031T015150Z"
+      ],
+      "disconfirming_evidence": "No material disconfirmation; exact run log records the commit and successful push."
+    },
+    {
+      "hypothesis_id": "H-20261031T023200Z-02",
+      "claim": "Scheduler Tick is a potential future main writer when queue state changes or a permitted workflow is dispatched.",
+      "status": "SUPPORTED_CAPABILITY_NOT_ACTUALIZED_IN_THIS_RUN",
+      "source_ids": [
+        "SRC-GH-SCHEDULER-TICK-RUN-41159578270-20261031T022048Z",
+        "SRC-GH-PR1390-SCHEDULER-SAFETY-20261031T023200Z"
+      ],
+      "disconfirming_evidence": "The 02:20 run fired zero entries and pushed no changes."
+    },
+    {
+      "hypothesis_id": "H-20261031T023200Z-03",
+      "claim": "The successful workflow push may have used a branch-protection bypass or an exemption.",
+      "status": "UNKNOWN",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-RUN-41157339221-20261031T015150Z"
+      ],
+      "disconfirming_evidence": "The branch object reports protected=true, but branch-protection details endpoint is 403; exact rules and bypass actors are unavailable."
+    },
+    {
+      "hypothesis_id": "H-20261031T023200Z-04",
+      "claim": "The approval workflow push-event/zero-job anomaly is caused by its YAML trigger configuration.",
+      "status": "UNRESOLVED",
+      "source_ids": [
+        "SRC-GH-APPROVAL-ZERO-JOB-RUN-41160207764-20261031T022906Z",
+        "SRC-GH-APPROVAL-WORKFLOW-YAML-MAIN-20261031T023200Z"
+      ],
+      "disconfirming_evidence": "The main YAML declares workflow_dispatch only; no job logs or event payload are available to establish the cause."
+    }
+  ]
+}

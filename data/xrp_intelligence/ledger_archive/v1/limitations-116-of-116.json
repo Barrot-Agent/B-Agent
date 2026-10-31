@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 115,
+  "chunk_count": 116,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "LIM-20261031T064800Z-BINANCE-INCIDENT-DAILY-AGGREGATE-ATTRIBUTION",
+      "category": "post_incident_all_exchange_daily_change_not_binance_attribution",
+      "statement": "XRP Insights' Oct30 08:00 UTC daily same-wallet change is -207.3M XRP across the tracked exchange universe. The five-wallet Binance incident transfer was 233.4619431M XRP at Oct29 20:05–20:09 UTC, between the Oct29 08:00 and Oct30 08:00 snapshots. The -207.3M aggregate is 88.8% of the transfer amount and is a strong temporal/magnitude lead, but it is not Binance-specific and cannot be attributed to the theft without a per-exchange/per-wallet crosswalk. The 26.16M arithmetic difference is not assigned to any flow.",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z",
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T064800Z-BINANCE-RESERVE-SERIES-UNIVERSE",
+      "category": "provider_and_window_mismatch_in_exchange_reserve_series",
+      "statement": "Do not equate XRP Insights' -234.9M seven-day all-exchange change, its -173.2M Binance-specific seven-day change, and CryptoQuant's earlier approximately -220M Binance reserve decline. They have different exchange coverage, wallet universes, snapshot windows and reserve definitions. The theft's 233.46M amount is not reconciled to any of these aggregate series.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z",
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    }
+  ]
+}

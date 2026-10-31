@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+  "source_id": "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+      "publisher": "Alpha Finance — XRP spot ETF flow dashboard",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-31",
+      "evidence_class": "SECONDARY_MARKET_DATA_AGGREGATION",
+      "claims": [
+        "Five-fund series is through Oct29; reports +$8.4M on Oct29, +$98.9M over 30 sessions and about $1.73B cumulative net inflow.",
+        "Dashboard publishes flow series but not XRP fund holdings, net assets or fees.",
+        "Methodology warns creations can settle after the flow print and redemptions can reflect arbitrage unwinds."
+      ],
+      "limitations": [
+        "Cutoff is Oct29, one session earlier than TokenPost/SoSoValue Oct30.",
+        "Provider universe and methodology differ; cumulative totals must not be averaged.",
+        "No holdings or custody allocation can be inferred."
+      ]
+    }
+  ],
+  "findings": [
+    "Five-fund series is through Oct29; reports +$8.4M on Oct29, +$98.9M over 30 sessions and about $1.73B cumulative net inflow.",
+    "Dashboard publishes flow series but not XRP fund holdings, net assets or fees.",
+    "Methodology warns creations can settle after the flow print and redemptions can reflect arbitrage unwinds."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Cutoff is Oct29, one session earlier than TokenPost/SoSoValue Oct30.",
+    "Provider universe and methodology differ; cumulative totals must not be averaged.",
+    "No holdings or custody allocation can be inferred."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

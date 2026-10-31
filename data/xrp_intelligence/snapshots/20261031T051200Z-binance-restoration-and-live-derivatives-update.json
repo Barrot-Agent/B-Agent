@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T051200Z-BINANCE-RESTORATION-AND-LIVE-DERIVATIVES",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T051200Z-binance-restoration-and-live-derivatives-update.json",
+  "captured_at_utc": "2026-10-31T05:12:00Z",
+  "data_cutoff_utc": "2026-10-31T05:12:00Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T050500Z-binance-market-and-main-writer-audit.json",
+  "source_references": [
+    "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+    "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+    "SRC-20261031-INVESTING-XRP-LIVE-0047Z",
+    "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z",
+    "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+    "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+  ],
+  "source_ids": [
+    "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+    "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+    "SRC-20261031-INVESTING-XRP-LIVE-0047Z",
+    "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z",
+    "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+    "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+  ],
+  "source_reference_count": 7,
+  "findings": [
+    {
+      "id": "F-051200-01",
+      "classification": "CONFIRMED_OFFICIAL_CHANNEL_CLAIM",
+      "claim": "A verified Binance News account post dated Oct30 says Binance has begun restoring affected assets to users; it reiterates $5B already held in exact affected token assets, approximately $1.34B remaining to acquire through market/OTC channels, and approximately $3B frozen separately.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z"
+      ],
+      "counterevidence_or_limit": "No amount restored, user-credit ledger, XRP-specific allocation, purchase fill or settlement was disclosed. This is a company statement, not independent transaction proof."
+    },
+    {
+      "id": "F-051200-02",
+      "classification": "CONFIRMED_OFFICIAL_PLAN_NOT_COMPLETION",
+      "claim": "Binance Support Update #2 targets an initial PoR snapshot around 2026-10-31 07:33 UTC, withdrawal restoration around 2026-11-01 05:33 UTC subject to security checks, and PoR results by Nov2.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ],
+      "counterevidence_or_limit": "The restoration-begun statement is not proof that withdrawals resumed or the PoR snapshot was published."
+    },
+    {
+      "id": "F-051200-03",
+      "classification": "SOURCED_DERIVATIVES_SNAPSHOT",
+      "claim": "Kodexius at 04:54 UTC reports $734.17M XRP OI across seven contracts, +0.0062% weighted funding per eight hours and $1.25B 24h volume.",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0454Z"
+      ],
+      "counterevidence_or_limit": "Provider-specific contract universe; not a market-wide OI total."
+    },
+    {
+      "id": "F-051200-04",
+      "classification": "SOURCED_DERIVATIVES_SNAPSHOT",
+      "claim": "TradRadar at 04:35 UTC reports $1.84B XRP OI across seven exchanges, +0.0068% weighted funding, mark price $1.2437 (-0.77%/24h), at least $2.91M liquidations and 75.6% long accounts.",
+      "source_ids": [
+        "SRC-20261031-TRADRADAR-XRP-OI-0435Z"
+      ],
+      "counterevidence_or_limit": "Liquidations are incomplete lower bounds; account ratios are not notional exposure."
+    },
+    {
+      "id": "F-051200-05",
+      "classification": "DATA_QUALITY_DISCREPANCY",
+      "claim": "OI divergence persists on overlapping venues: Binance $360.05M vs $414.15M; Bybit $150.78M vs $339.41M; OKX $97.54M vs $108.89M; Hyperliquid $97.44M vs $195.05M.",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+        "SRC-20261031-TRADRADAR-XRP-OI-0435Z"
+      ],
+      "counterevidence_or_limit": "Contract membership, linear/inverse treatment, price conversion, position aggregation and timestamps are not reconciled."
+    },
+    {
+      "id": "F-051200-06",
+      "classification": "SOURCED_HISTORICAL_SPOT_SNAPSHOT",
+      "claim": "Investing.com displayed $1.2423 at 00:47:55 UTC and a partial Oct31 row at $1.2425; that observation is several hours older than the cutoff. TradRadar's 04:35 mark was $1.2437.",
+      "source_ids": [
+        "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+        "SRC-20261031-INVESTING-XRP-LIVE-0047Z"
+      ],
+      "counterevidence_or_limit": "Not an exchange-execution benchmark; Investing.com row is incomplete."
+    },
+    {
+      "id": "F-051200-07",
+      "classification": "VERIFIED_EXACT_HEAD_RESEARCH_LEDGER_VALIDATION",
+      "claim": "Research branch head a3db8ba passed actual ledger validation: 337 archive shards, 1,880 sources, 326 run updates, 809 limitations, 24 source references, zero missing and 20 regression tests; fail-closed gate passed.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+        "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+      ],
+      "counterevidence_or_limit": "Validates that exact branch head only; does not establish merge safety or full repository CI."
+    },
+    {
+      "id": "F-051200-08",
+      "classification": "CONFIRMED_GITHUB_COMPARE_RISK",
+      "claim": "GitHub compare reports PR #1353 branch history diverged from main, 1,177 commits ahead and 351 behind, despite PR metadata reporting mergeable=true.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z"
+      ],
+      "counterevidence_or_limit": "The conflicting signals require a fresh-main migration/split. Do not merge or rebase the existing branch."
+    }
+  ],
+  "market_observations": [
+    {
+      "id": "M-051200-01",
+      "metric": "XRP_MARK_PRICE_TRADRADAR",
+      "value": 1.2437,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:35:00Z",
+      "source_id": "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-051200-02",
+      "metric": "XRP_RETURN_24H_TRADRADAR",
+      "value": -0.77,
+      "unit": "percent",
+      "observed_at_utc": "2026-10-31T04:35:00Z",
+      "source_id": "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-051200-03",
+      "metric": "XRP_OI_KODEXIUS",
+      "value": 734170000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:54:00Z",
+      "source_id": "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+      "admitted_to_model": false,
+      "coverage": "7 contracts"
+    },
+    {
+      "id": "M-051200-04",
+      "metric": "XRP_FUNDING_KODEXIUS",
+      "value": 0.0062,
+      "unit": "percent_per_8h",
+      "observed_at_utc": "2026-10-31T04:54:00Z",
+      "source_id": "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-051200-05",
+      "metric": "XRP_VOLUME_24H_KODEXIUS",
+      "value": 1250000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:54:00Z",
+      "source_id": "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-051200-06",
+      "metric": "XRP_OI_TRADRADAR",
+      "value": 1840000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:35:00Z",
+      "source_id": "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+      "admitted_to_model": false,
+      "coverage": "7 exchanges"
+    },
+    {
+      "id": "M-051200-07",
+      "metric": "XRP_FUNDING_TRADRADAR",
+      "value": 0.0068,
+      "unit": "percent_per_8h",
+      "observed_at_utc": "2026-10-31T04:35:00Z",
+      "source_id": "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-051200-08",
+      "metric": "XRP_LIQUIDATIONS_24H_TRADRADAR",
+      "value": 2910000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T04:35:00Z",
+      "source_id": "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+      "admitted_to_model": false,
+      "qualifier": "AT_LEAST"
+    },
+    {
+      "id": "M-051200-09",
+      "metric": "XRP_LONG_ACCOUNT_SHARE_TRADRADAR",
+      "value": 75.6,
+      "unit": "percent",
+      "observed_at_utc": "2026-10-31T04:35:00Z",
+      "source_id": "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+      "admitted_to_model": false,
+      "coverage": "4 exchanges; accounts not notional"
+    },
+    {
+      "id": "M-051200-10",
+      "metric": "BINANCE_RESTORATION_STATUS",
+      "value": 1,
+      "unit": "official_claim_indicator",
+      "observed_at_utc": "2026-10-30",
+      "source_id": "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+      "admitted_to_model": false,
+      "qualifier": "RESTORATION_BEGUN_AMOUNT_UNKNOWN"
+    }
+  ],
+  "provider_overlap_comparison": {
+    "kodexius_oi_usd": 734170000,
+    "tradradar_oi_usd": 1840000000,
+    "total_ratio_tradradar_to_kodexius": 2.506,
+    "overlapping_exchange_oi_usd": {
+      "Binance": {
+        "kodexius": 360050000,
+        "tradradar": 414150000
+      },
+      "Bybit": {
+        "kodexius": 150780000,
+        "tradradar": 339410000
+      },
+      "OKX": {
+        "kodexius": 97540000,
+        "tradradar": 108890000
+      },
+      "Hyperliquid": {
+        "kodexius": 97440000,
+        "tradradar": 195050000
+      }
+    },
+    "kodexius_common_exchange_sum_usd": 705810000,
+    "tradradar_common_exchange_sum_usd": 1057500000,
+    "common_exchange_sum_ratio": 1.498,
+    "status": "NON_COMPARABLE; CONTRACT_MEMBERSHIP_AND_METHODOLOGY_RECONCILIATION_REQUIRED"
+  },
+  "event_timeline": [
+    {
+      "event_date": "2026-10-30",
+      "event": "Verified Binance News account says affected-asset restoration has begun; amount and token breakdown not provided.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-31T04:35:00Z",
+      "event": "TradRadar XRP derivatives snapshot: $1.84B OI, +0.0068% funding, $1.2437 mark and 75.6% long accounts.",
+      "source_ids": [
+        "SRC-20261031-TRADRADAR-XRP-OI-0435Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-31T04:54:00Z",
+      "event": "Kodexius XRP derivatives snapshot: $734.17M OI across seven contracts, +0.0062% funding.",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0454Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-31T05:10:02Z",
+      "event": "PR #1353 exact-head validator and fail-closed gate passed on a3db8ba.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+        "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-31T05:12:00Z",
+      "event": "GitHub compare reports PR #1353 research branch diverged 1,177 ahead and 351 behind main.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z"
+      ]
+    }
+  ],
+  "upcoming_milestones": [
+    {
+      "target": "2026-10-31T07:33:00Z",
+      "event": "Binance initial post-incident PoR snapshot target.",
+      "status": "PLANNED_NOT_OBSERVED"
+    },
+    {
+      "target": "2026-11-01T05:33:00Z",
+      "event": "Binance withdrawal-service restoration target, subject to security checks.",
+      "status": "PLANNED_NOT_OBSERVED"
+    },
+    {
+      "target": "2026-11-02",
+      "event": "Binance stated target for PoR results.",
+      "status": "PLANNED_NOT_OBSERVED"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "notes": "Binance restoration-begun statement is a company claim distinct from withdrawal restoration. XRP OI remains provider-specific; no composite feature admitted. PR #1353 data head is exact-head validated but branch history is diverged; no merge/rebase/force-push."
+}

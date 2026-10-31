@@ -1,0 +1,178 @@
+{
+  "main_sha": "c779b26c68e7e3f0fa50dd99cc2f03c58e198148",
+  "open_pr_inventory": {
+    "open": 185,
+    "draft": 175,
+    "ready": 10,
+    "main_based": 183,
+    "current_main_base": 2,
+    "current_main_base_numbers": [
+      1411,
+      1412
+    ],
+    "stale_main_based": 181,
+    "non_main_base": 2,
+    "captured_at_utc": "2026-10-31T12:36:52Z"
+  },
+  "workflow_files_total": 85,
+  "targeted_workflows_reviewed": 13,
+  "scheduler": {
+    "path": ".github/workflows/scheduler-tick.yml",
+    "permissions": [
+      "contents:write",
+      "actions:write"
+    ],
+    "trigger": "15-minute schedule and workflow_dispatch",
+    "behavior": "scheduler.py tick dispatches queued workflow and commits queue state to main",
+    "workflow_allowlist": "NONE; any existing .github/workflows file accepted",
+    "queue_entries": 1,
+    "pending_entries": 0,
+    "completed_entries": 1,
+    "risk": "HIGH"
+  },
+  "main_write_capable_workflows": [
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "HIGH",
+      "status": "ACTIVE_ON_MAIN",
+      "proposed_fix_pr": 1412
+    },
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "HIGH",
+      "status": "ACTIVE_ON_MAIN",
+      "permissions": [
+        "contents:write"
+      ]
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "HIGH",
+      "status": "ACTIVE_ON_MAIN_NOT_DISPATCHED",
+      "permissions": [
+        "contents:write",
+        "pull-requests:write"
+      ],
+      "behavior": "contains gh pr merge path"
+    },
+    {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "risk": "CRITICAL_CREDENTIAL_INPUT_AND_SHELL_INTERPOLATION",
+      "status": "ACTIVE_ON_MAIN",
+      "proposed_fix_pr": 1411
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "risk": "HIGH",
+      "status": "ACTIVE_SCHEDULED_MAIN_WRITER"
+    },
+    {
+      "path": ".github/workflows/autonomous_self_deployment.yml",
+      "risk": "HIGH",
+      "status": "ACTIVE_SCHEDULED_TELEMETRY_MAIN_WRITER"
+    }
+  ],
+  "additional_manual_main_writers": [
+    "financial-data-refresh.yml",
+    "knowledge-signal-cycle.yml",
+    "knowledge-signal-cycle-btc.yml",
+    "data-value-triage.yml",
+    "entity-relations.yml",
+    "research-topics.yml",
+    "coinbase-paper-trader.yml"
+  ],
+  "relevant_prs": [
+    {
+      "number": 1412,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1412",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "c779b26c68e7e3f0fa50dd99cc2f03c58e198148",
+      "head_sha": "06d71140cc4370d66f2b147901224d1143b3c8b1",
+      "changed_files": 3,
+      "additions": 64,
+      "deletions": 17,
+      "ci_run_id": 41201696996,
+      "tests_passed": 344,
+      "subtests_passed": 8,
+      "gate_run_id": 41201697094,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "mergeable": true
+    },
+    {
+      "number": 1411,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1411",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "c779b26c68e7e3f0fa50dd99cc2f03c58e198148",
+      "head_sha": "423df27bd8aed5018ccffb5d89bba00bbdccf792",
+      "ci_run_id": 41199778823,
+      "tests_passed": 344,
+      "subtests_passed": 8,
+      "gate_run_id": 41199778834,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "mergeable": true,
+      "impact": "proposes to disable unsafe token input; main workflow remains active"
+    }
+  ],
+  "approval_workflow": {
+    "path": ".github/workflows/barrot-approve-pr.yml",
+    "zero_job_push_failures": "ROOT_CAUSE_UNKNOWN",
+    "invalid_yaml_explanation": "NOT_ESTABLISHED"
+  },
+  "dependencies": {
+    "lockfiles_found_in_last_complete_inventory": 0,
+    "status": "REPRODUCIBILITY_RISK",
+    "vulnerability_scan": "NOT_COMPLETED"
+  },
+  "security": {
+    "github_security_alert_access": "NOT_ACCESSIBLE_THROUGH_TESTED_READ_ACTIONS",
+    "branch_protection_details": "403_NOT_VERIFIED",
+    "full_repository_ci": "NOT_RUN"
+  },
+  "platform_coordination": {
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "verified_active": [
+      "ChatGPT"
+    ],
+    "github_connector": "VERIFIED",
+    "not_authenticated_or_tested": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "live_external_collaboration_claimed": false
+  },
+  "worktree": {
+    "local_dirty_worktree_state": "NOT_INSPECTED",
+    "local_operations_performed": false,
+    "preservation_actions": "No local worktree operation was performed."
+  },
+  "changes_by_this_run": {
+    "main_modified": false,
+    "branch_updates": [
+      "Created PR #1412 from current main; updated PR body with exact-head CI and gate evidence."
+    ],
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "deployment": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  },
+  "status": "CURRENT_MAIN_AUDIT; PR1412_EXACT_HEAD_CI_AND_GATE_PASS; MAIN_REMEDIATION_PENDING_APPROVAL"
+}

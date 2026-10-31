@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T022100Z-COINBASE-Q3-MULTI-ISSUER-POSITION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T022100Z-coinbase-q3-multi-issuer-position-and-xrp-value-capture.json",
+  "created_at_utc": "2026-10-31T02:21:00Z",
+  "captured_at_utc": "2026-10-31T02:21:00Z",
+  "data_cutoff_utc": "2026-10-31T02:21:00Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T020816Z-institutional-xrp-custody-stablecoin-and-trade-finance.json",
+  "source_ids": [
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+  ],
+  "source_reference_count": 2,
+  "missing_source_references": 0,
+  "event_timeline": [
+    {
+      "date": "2026-09-30",
+      "event": "Coinbase Q3 reporting period ended; all Q3 balance and operating metrics predate the RLUSD Coinbase listing.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "event": "Coinbase made RLUSD available across Prime, Exchange and Retail, with deposits/withdrawals on XRPL, Base and Ethereum; Global Exchange collateral functionality was described as future.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "event": "Coinbase published Q3 2026 results and reported record average USDC held in its products, market-share gains and prediction-market growth.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "F-20261031T022100Z-01",
+      "classification": "COMPANY_REPORTED",
+      "statement": "Coinbase reported average USDC held in Coinbase products of $22B in Q3 2026, approximately 30% of average USDC market capitalization and 49% higher year over year.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ],
+      "disconfirming_evidence": "This is an average platform-balance measure, not net external capital; it is a company-defined metric and the reporting period ended before the October 28 RLUSD listing."
+    },
+    {
+      "finding_id": "F-20261031T022100Z-02",
+      "classification": "COMPANY_REPORTED",
+      "statement": "Coinbase reported 10.7% crypto trading-volume market share, its fourth consecutive quarter of gains, and 12.5% share of total crypto market capitalization in Assets on Platform.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ],
+      "disconfirming_evidence": "These are company-reported aggregate Coinbase metrics, not XRP-specific spot share, XRP custody balances or independent market-share measurements."
+    },
+    {
+      "finding_id": "F-20261031T022100Z-03",
+      "classification": "COMPANY_REPORTED",
+      "statement": "Coinbase reported crypto derivatives trading volume compound annual growth of 179% over two years and prediction markets exceeding $200M in annualized revenue, with 82% quarterly compound growth since launch.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ],
+      "disconfirming_evidence": "The 179% figure is a two-year growth rate and the $200M figure is an annualized run rate, not Q3 recognized prediction-market revenue; neither establishes XRP-specific derivatives demand."
+    },
+    {
+      "finding_id": "F-20261031T022100Z-04",
+      "classification": "COMPANY_REPORTED",
+      "statement": "Coinbase reported Q3 GAAP net income of $718.7M, adjusted net income of $77.7M and adjusted EBITDA of $332.9M. The earnings release attributes a substantial difference between GAAP and adjusted results to gains on crypto assets held for investment.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ],
+      "disconfirming_evidence": "Adjusted measures are non-GAAP and management-defined; they should supplement, not replace, GAAP results."
+    },
+    {
+      "finding_id": "F-20261031T022100Z-05",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Coinbase's Q3 2026 SEC filing states that its arrangement with Circle Internet Financial was renewed on the same terms. The same filing reports Q3 stablecoin revenue of $306.905M versus $324.534M in Q3 2025, with higher average USDC balances adding $84.6M and lower average interest rates reducing revenue by $52.8M.",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "The filing does not disclose post-October 28 RLUSD balances or any change in Circle's distribution economics after the RLUSD listing."
+    },
+    {
+      "finding_id": "F-20261031T022100Z-06",
+      "classification": "INFERENCE",
+      "statement": "Coinbase's Q3 results plus its October 28 RLUSD launch are consistent with a multi-issuer distribution strategy: Circle/USDC economics continue while Ripple/RLUSD gains a new Coinbase distribution channel. The evidence does not show that RLUSD displaced USDC.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "The Q3 USDC metrics predate the RLUSD listing, and no comparable post-launch USDC/RLUSD balance or volume series is yet available."
+    },
+    {
+      "finding_id": "F-20261031T022100Z-07",
+      "classification": "UNKNOWN",
+      "statement": "The net new external capital attributable to Coinbase's Q3 USDC balance growth, and any post-listing substitution between USDC and RLUSD, cannot be calculated from the disclosed metrics.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No transaction-level customer inflow/outflow, beneficial-owner or post-listing balance decomposition is disclosed."
+    },
+    {
+      "finding_id": "F-20261031T022100Z-08",
+      "classification": "INFERENCE",
+      "statement": "Coinbase's diversified revenue mix may reduce dependence on spot trading cycles over time, but Q3 results still show material transaction-revenue exposure; this is a business-model hypothesis, not an XRP price signal.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Q3 transaction revenue was $590.2M versus approximately $1.0B a year earlier, and total revenue was materially lower year over year."
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T022100Z-01",
+      "name": "Coinbase multi-issuer distribution expansion",
+      "status": "SUPPORTED_INFERENCE",
+      "claim": "Coinbase is broadening stablecoin distribution while retaining Circle/USDC economics and adding Ripple/RLUSD.",
+      "supporting_source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No post-listing balances, revenue split or RLUSD/USDC substitution data; Q3 USDC figures predate RLUSD launch."
+    },
+    {
+      "hypothesis_id": "H-20261031T022100Z-02",
+      "name": "RLUSD displaces USDC on Coinbase",
+      "status": "UNTESTED_COMPETITIVE_HYPOTHESIS",
+      "claim": "RLUSD could compete for Coinbase stablecoin balances, trading activity and institutional settlement over time.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Coinbase renewed the Circle arrangement on the same terms and reported record Q3 USDC balances before RLUSD became available; no post-launch displacement evidence."
+    },
+    {
+      "hypothesis_id": "H-20261031T022100Z-03",
+      "name": "Coinbase revenue diversification reduces spot-cycle sensitivity",
+      "status": "MIXED_EVIDENCE",
+      "claim": "Derivatives, subscriptions, stablecoins, lending and prediction markets may make Coinbase less dependent on spot trading cycles.",
+      "supporting_source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Transaction revenue remained $590.2M in Q3 and fell substantially year over year; company-wide diversification does not eliminate market-cycle exposure."
+    },
+    {
+      "hypothesis_id": "H-20261031T022100Z-04",
+      "name": "RLUSD adoption creates material XRP buying demand",
+      "status": "NOT_ESTABLISHED",
+      "claim": "More RLUSD settlement on XRPL could indirectly increase XRP use through fees, account reserves, AMM liquidity or bridge transactions.",
+      "supporting_source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "RLUSD is the announced settlement asset; XRP bridge use is optional and not demonstrated by Coinbase listing or C2FO announcements. No incremental XRP acquisition, AMM execution or net reserve demand is measured."
+    }
+  ],
+  "market_observations": [],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "prediction_contract": {
+    "status": "NOT_ISSUED",
+    "reason": "Coinbase Q3 issuer-reported business metrics are structural/event context and are not validated as predictive XRP features. No fixed-horizon out-of-sample signal is available."
+  }
+}

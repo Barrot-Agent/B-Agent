@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 13,
+  "chunk_count": 14,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T06:08:00Z",
+  "records": [
+    "Bitquery's public chain trace observes XRP holdings only through 03:54 UTC on Oct 30; subsequent receiver activity is unknown. A static balance at that cutoff is not proof of future non-disposition.",
+    "Bitquery reports nine chains while TRM reports ten. The XRPL/Solana wallets do not share addresses with the other chain clusters in Bitquery's analysis; linkage relies on timing, transaction construction and Binance's aggregate incident total. Do not present a single cross-chain address cluster as established.",
+    "Bitquery's PoR address labels and CoinDesk's Binance 14 Ethereum crosswalk do not establish a current XRP reserve ratio or a full liability match. The previously circulated 100.77% XRP ratio was not independently recomputed from official Oct 1 XRP wallet and liability files.",
+    "Oct29 XRP ETF daily flows are not comparable: Alpha Finance reports +$8.4M across five funds; CryptoETF.today reports +$7.1M with only two of five reported; XRP Insights' latest settled date is Oct28, uses six spot funds plus BITW, excludes GXRP from flow sums, and reports Oct29 provisional.",
+    "Binance's user-funds guarantee, SAFU/company coverage and 48-hour withdrawal target are company statements, not an audited reimbursement/replenishment result. No Binance-to-Coinbase customer migration or XRP flow is measured."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T020816Z-INSTITUTIONAL-CAPITAL-AND-TOKEN-VALUE-CAPTURE-SEPARATION",
+  "created_at_utc": "2026-10-31T02:08:16Z",
+  "status": "ACCEPTED_FOR_RESEARCH_NOT_MODEL_ADMISSION",
+  "context": "New BNY custody, C2FO Instant Pay, Coinbase RLUSD distribution, Ripple OCC charter, Circle Arc, SBI multi-rail and SBIC identity evidence materially expands the institutional relationship graph. These events must not be collapsed into one XRP-demand signal.",
+  "decisions": [
+    "Separate custody, issuance, settlement, collateral, liquidity provision, exchange listing, network validation, and actual XRP acquisition into different graph edge types and time series.",
+    "Classify BNY XRP custody as live institutional safekeeping access, not disclosed XRP holdings, purchase demand or collateral acceptance.",
+    "Classify C2FO Instant Pay as an XRPL/RLUSD settlement initiative funded by participating capital providers; do not attribute C2FO's historical $520B working-capital access to XRPL or XRP.",
+    "Treat RLUSD settlement and XRP-native network fees/reserves as separate mechanisms. No XRP bridge role is claimed for C2FO Instant Pay without transaction evidence.",
+    "Treat Coinbase as a multi-issuer distributor: Circle USDC arrangement renewed on the same terms, RLUSD added to Prime/Exchange/Retail, and Arc exchange access listed. Do not infer Circle displacement.",
+    "Keep Circle Arc separate from XRPL. SBI validator and Coinbase exchange-access roles are not interchangeable.",
+    "Treat SBI as multi-rail across Ripple/RLUSD, Circle/USDC/Arc, JPYSC/Startale and Open Standard; consortium co-participation is weaker than a bilateral commercial contract.",
+    "Resolve SBIC as Tokyo Small and Medium Business Investment & Consultation Co., Ltd. for the ChatGPT seminar context; never merge it with SBI Holdings or OpenAI.",
+    "Treat Ripple National Trust Bank's OCC charter effective date as confirmed, while operational launch and reserve migration remain unknown; RLUSD issuer remains Standard Custody & Trust Company.",
+    "Cluster Ripple Swell announcements for source-independence and event-study purposes; do not treat correlated announcements as independent confirmations.",
+    "Keep Binance OI and ETF flow provider universes separate. No market feature is admitted until point-in-time completeness, synchronization, leakage controls and out-of-sample value are established."
+  ],
+  "invariants": [
+    "Institutional custody does not equal asset purchase or collateralization.",
+    "RLUSD settlement on XRPL does not equal XRP bridge demand.",
+    "C2FO historical working-capital volume does not equal new Instant Pay capital or XRPL volume.",
+    "Coinbase RLUSD collateral functionality was future at announcement, not live.",
+    "Circle's USDC-on-platform metric is not Coinbase AOP.",
+    "Arc is not XRPL.",
+    "SBI is not SBIC.",
+    "Company-wide Ripple product revenue/transaction claims are not XRP-specific.",
+    "ETF flows and perpetual OI remain source/venue-scoped.",
+    "Forecasts require fixed horizon, target, cutoff, assumptions, alternatives, calibrated probability and later outcome."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "fixed_horizon_contract_status": "DESIGNED_NOT_EXECUTED_OR_VALIDATED"
+}

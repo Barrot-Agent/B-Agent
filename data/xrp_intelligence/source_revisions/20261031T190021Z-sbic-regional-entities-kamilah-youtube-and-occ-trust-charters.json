@@ -1,0 +1,967 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-SBIC-JAPAN-KAMILAH-YOUTUBE-OCC-TRUST-CHARTER-20261031T190021Z",
+  "source_id": "SRC-20261031T190021Z-SBIC-REGIONAL-ENTITIES-KAMILAH-YOUTUBE-OCC-CHARTERS",
+  "captured_at_utc": "2026-10-31T19:00:21Z",
+  "created_at_utc": "2026-10-31T19:00:21Z",
+  "source_count": 27,
+  "source_ids": [
+    "SRC-20261031T190021Z-SBIC-TOKYO-PROFILE",
+    "SRC-20261031T190021Z-SBIC-TOKYO-OCT2026-GENAI",
+    "SRC-20261031T190021Z-SBIC-TOKYO-MAR2026-CHATGPT",
+    "SRC-20261031T190021Z-SBIC-TOKYO-FEB2025-CHATGPT",
+    "SRC-20261031T190021Z-SBIC-OSAKA-OCT2024-CHATGPT",
+    "SRC-20261031T190021Z-KAMILAH-YOUTUBE-CHANNEL",
+    "SRC-20261031T190021Z-KAMILAH-VIDEO-RIPPLE-BANK",
+    "SRC-20261031T190021Z-KAMILAH-VIDEO-XRP-ETFS",
+    "SRC-20261031T190021Z-KAMILAH-VIDEO-HOW-MUCH-XRP",
+    "SRC-20261031T190021Z-KAMILAH-VIDEO-CRYPTO-WEALTH",
+    "SRC-20261031T190021Z-KAMILAH-VIDEO-GLOBAL-FINANCE-XRP",
+    "SRC-20261031T190021Z-KAMILAH-VIDEO-XRPL-UPGRADE",
+    "SRC-20261031T190021Z-KAMILAH-VIDEO-2026-SETUP",
+    "SRC-20261031T190021Z-KAMILAH-VIDEO-100M-XRP",
+    "SRC-20261031T190021Z-KAMILAH-IHEART-INTERVIEW",
+    "SRC-20261031T190021Z-KAMILAH-VLING-CHANNEL-STATS",
+    "SRC-20261031T190021Z-KAMILAH-IDCRAWL-IDENTITY-RESULTS",
+    "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL",
+    "SRC-20261031T190021Z-RIPPLE-OCC-CONDITIONAL-2025",
+    "SRC-20261031T190021Z-OCC-RIPPLE-DECISION-INDEX",
+    "SRC-20261031T190021Z-OCC-RIPPLE-CONDITIONAL-LETTER",
+    "SRC-20261031T190021Z-CIRCLE-OCC-FINAL-APPROVAL",
+    "SRC-20261031T190021Z-CIRCLE-NATIONAL-TRUST-PRESSROOM",
+    "SRC-20261031T190021Z-CIRCLE-OCC-REUTERS",
+    "SRC-20261031T190021Z-COINBASE-OCC-CONDITIONAL-APPROVAL",
+    "SRC-20261031T190021Z-OCC-TRUST-CHARTER-FINAL-RULE",
+    "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL-BLOOMBERG"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T190021Z-SBIC-TOKYO-PROFILE",
+      "source_id": "SRC-20261031T190021Z-SBIC-TOKYO-PROFILE",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (official)",
+      "title": "Company profile — SBIC East Japan",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_CORPORATE_IDENTITY",
+      "independence_group": "SBIC_TOKYO_OFFICIAL",
+      "claims": [
+        "Identifies the Tokyo regional SME investment and consultation corporation and its English name.",
+        "Lists Osaka and Nagoya sister companies; this is a regional company family, not one unique Japanese SBIC entity."
+      ],
+      "limitations": [
+        "The acronym SBIC is also used by unrelated organizations internationally; identity must be resolved from context."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-SBIC-TOKYO-OCT2026-GENAI",
+      "source_id": "SRC-20261031T190021Z-SBIC-TOKYO-OCT2026-GENAI",
+      "publisher": "Tokyo SBIC (official)",
+      "title": "Generative AI: current state and future — October 6, 2026 seminar",
+      "url": "https://www.sbic.co.jp/seminar/20261006js/",
+      "published_at_utc": "2026-10-06",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_EVENT_LISTING",
+      "independence_group": "SBIC_TOKYO_OFFICIAL",
+      "claims": [
+        "Tokyo SBIC hosted a generative-AI seminar featuring a Microsoft Japan speaker.",
+        "The page discusses ChatGPT as part of the generative-AI context."
+      ],
+      "limitations": [
+        "An educational event does not establish an OpenAI partnership, investment, product integration or XRP relationship."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-SBIC-TOKYO-MAR2026-CHATGPT",
+      "source_id": "SRC-20261031T190021Z-SBIC-TOKYO-MAR2026-CHATGPT",
+      "publisher": "Tokyo SBIC (official)",
+      "title": "Generative AI (ChatGPT): current state and future — March 5, 2026 seminar",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "published_at_utc": "2026-03-05",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_EVENT_LISTING",
+      "independence_group": "SBIC_TOKYO_OFFICIAL",
+      "claims": [
+        "Tokyo SBIC event explicitly names ChatGPT and generative AI.",
+        "Event was conducted with Hamamatsu Iwata Shinkin and a Microsoft Japan speaker."
+      ],
+      "limitations": [
+        "No OpenAI sponsorship or commercial relationship is established by the event listing."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-SBIC-TOKYO-FEB2025-CHATGPT",
+      "source_id": "SRC-20261031T190021Z-SBIC-TOKYO-FEB2025-CHATGPT",
+      "publisher": "Tokyo SBIC (official)",
+      "title": "ChatGPT business seminar — February 26, 2025",
+      "url": "https://www.sbic.co.jp/seminar/20250226ym/",
+      "published_at_utc": "2025-02-26",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_EVENT_LISTING",
+      "independence_group": "SBIC_TOKYO_OFFICIAL",
+      "claims": [
+        "Tokyo SBIC hosted a ChatGPT business seminar with the Tokyo Chamber of Commerce Taito branch and Japan Finance Corporation Tokyo/Ueno support."
+      ],
+      "limitations": [
+        "Educational use of ChatGPT is not an OpenAI partnership."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-SBIC-OSAKA-OCT2024-CHATGPT",
+      "source_id": "SRC-20261031T190021Z-SBIC-OSAKA-OCT2024-CHATGPT",
+      "publisher": "SBIC West Japan (official PDF)",
+      "title": "Generative AI introductory seminar for accounting firms and support organizations — October 23, 2024",
+      "url": "https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf",
+      "published_at_utc": "2024-10-23",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_EVENT_PDF",
+      "independence_group": "SBIC_WEST_JAPAN_OFFICIAL",
+      "claims": [
+        "A separate Osaka-based SBIC West Japan entity hosted a ChatGPT/generative-AI seminar for accounting firms and support organizations.",
+        "The listed instructor was attorney Taichi Kakinuma of STORIA."
+      ],
+      "limitations": [
+        "SBIC West Japan is a sister company of Tokyo SBIC, not the same legal entity; event does not establish an OpenAI partnership."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-YOUTUBE-CHANNEL",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-YOUTUBE-CHANNEL",
+      "publisher": "Glasp author link / YouTube channel URL",
+      "title": "Candidate Kamilah Stevenson YouTube channel",
+      "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "THIRD_PARTY_AUTHOR_LINK_TO_CHANNEL",
+      "independence_group": "KAMILAH_STEVENSON_CREATOR_ATTRIBUTION",
+      "claims": [
+        "Glasp video pages attribute XRP videos to Kamilah Stevenson and the author link resolves to channel ID UCqUPJMQdkCN6lsLVDnichPA.",
+        "Some transcripts self-introduce the speaker as Camila Stevenson (one L), while the byline is Kamilah Stevenson."
+      ],
+      "limitations": [
+        "User-specified name is Camilla Stephenson; spelling and identity do not match exactly. No direct self-identification as Camilla Stephenson was found. Treat as a candidate, not confirmed identity."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-VIDEO-RIPPLE-BANK",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-VIDEO-RIPPLE-BANK",
+      "publisher": "Glasp / YouTube video",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "published_at_utc": "2025-12-14",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "CREATOR_COMMENTARY_VIDEO",
+      "independence_group": "KAMILAH_STEVENSON_CHANNEL",
+      "claims": [
+        "Public video attributed to Kamilah Stevenson; transcript self-identifies as Camila Stevenson.",
+        "Video discusses Ripple's bank-charter development and XRP implications."
+      ],
+      "limitations": [
+        "At publication, Ripple had conditional OCC approval dated Dec12 2025, not final approval; the title overstates the legal stage if read as final charter approval. Ripple received company-announced final approval Oct26 2026. Creator commentary is not primary regulatory evidence."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-VIDEO-XRP-ETFS",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-VIDEO-XRP-ETFS",
+      "publisher": "Glasp / YouTube video",
+      "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "published_at_utc": "2026-01-13",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "CREATOR_COMMENTARY_VIDEO",
+      "independence_group": "KAMILAH_STEVENSON_CHANNEL",
+      "claims": [
+        "Public video attributed to Kamilah Stevenson; transcript self-identifies as Camila Stevenson.",
+        "Discusses XRP ETF launch/flows and price response."
+      ],
+      "limitations": [
+        "ETF data and causal claims require independent fund-flow and market-data verification."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-VIDEO-HOW-MUCH-XRP",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-VIDEO-HOW-MUCH-XRP",
+      "publisher": "Glasp / YouTube video",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "published_at_utc": "2026-03-19",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "CREATOR_COMMENTARY_VIDEO",
+      "independence_group": "KAMILAH_STEVENSON_CHANNEL",
+      "claims": [
+        "Public video attributed to Kamilah Stevenson; title uses ACTUALLY."
+      ],
+      "limitations": [
+        "The title does not establish the exact phrase 'actual capital'; no reliable match to the user's 'actual capital' phrase was found in indexed material."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-VIDEO-CRYPTO-WEALTH",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-VIDEO-CRYPTO-WEALTH",
+      "publisher": "Glasp / YouTube video",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "published_at_utc": "2026-01-15",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "CREATOR_COMMENTARY_VIDEO",
+      "independence_group": "KAMILAH_STEVENSON_CHANNEL",
+      "claims": [
+        "Public video attributed to Kamilah Stevenson; discusses portfolio and market risk."
+      ],
+      "limitations": [
+        "General creator commentary; not primary market research."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-VIDEO-GLOBAL-FINANCE-XRP",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-VIDEO-GLOBAL-FINANCE-XRP",
+      "publisher": "YouTube video search result",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "published_at_utc": "2026-03-06",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "YOUTUBE_PUBLIC_VIDEO_METADATA_AND_SEARCH_INDEX",
+      "independence_group": "KAMILAH_STEVENSON_CHANNEL",
+      "claims": [
+        "Search result attributes the video to Kamilah Stevenson; reported 32,040 views and 2,300 likes at capture.",
+        "Topics include oil shock, yen carry trade, liquidity and XRP."
+      ],
+      "limitations": [
+        "Search-index metadata is a point-in-time observation; macro/price claims require independent evidence."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-VIDEO-XRPL-UPGRADE",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-VIDEO-XRPL-UPGRADE",
+      "publisher": "YouTube video search result",
+      "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "published_at_utc": "2026-07-30",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "YOUTUBE_PUBLIC_VIDEO_METADATA_AND_SEARCH_INDEX",
+      "independence_group": "KAMILAH_STEVENSON_CHANNEL",
+      "claims": [
+        "Search result attributes video to Kamilah Stevenson; reported 10,090 views and 740 likes at capture.",
+        "Topics include XRPL amendments, Confidential Transfers, sponsored fees/reserves, batch, permission delegation and Dynamic MPT."
+      ],
+      "limitations": [
+        "Creator commentary; validator thresholds and amendment status must be checked against XRPL amendment/validator data."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-VIDEO-2026-SETUP",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-VIDEO-2026-SETUP",
+      "publisher": "YouTube video search result",
+      "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+      "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "published_at_utc": "2025-12-03",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "YOUTUBE_PUBLIC_VIDEO_METADATA_AND_SEARCH_INDEX",
+      "independence_group": "KAMILAH_STEVENSON_CHANNEL",
+      "claims": [
+        "Search result attributes video to Kamilah Stevenson; reported 21,568 views at capture.",
+        "Topics include Fed policy, CLARITY Act, QE and global liquidity."
+      ],
+      "limitations": [
+        "Creator scenario commentary; not an official forecast or primary regulatory source."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-VIDEO-100M-XRP",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-VIDEO-100M-XRP",
+      "publisher": "YouTube video search result",
+      "title": "More Than 100 Million XRP Just Moved",
+      "url": "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "published_at_utc": "2026-08-25",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "YOUTUBE_PUBLIC_VIDEO_METADATA_AND_SEARCH_INDEX",
+      "independence_group": "KAMILAH_STEVENSON_CHANNEL",
+      "claims": [
+        "Search result attributes video to Kamilah Stevenson; reported 89,042 views and 2,700 likes at capture.",
+        "Discusses 100M XRP entering Flare FXRP, collateral, lending, borrowing and yield."
+      ],
+      "limitations": [
+        "FXRP representation/locking is not newly created XRP or proof of spot buying; verify actual Flare/XRPL transactions and collateral positions independently."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-IHEART-INTERVIEW",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-IHEART-INTERVIEW",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "PODCAST_GUEST_ATTRIBUTION",
+      "independence_group": "INDEPENDENT_PODCAST_PUBLISHER",
+      "claims": [
+        "Podcast episode title identifies guest as Dr. Kamilah Stevenson and discusses crypto market conditions."
+      ],
+      "limitations": [
+        "Confirms a public Kamilah Stevenson XRP commentator, not identity equivalence with Camilla Stephenson."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-VLING-CHANNEL-STATS",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-VLING-CHANNEL-STATS",
+      "publisher": "Vling channel analytics",
+      "title": "YouTube channel analytics for candidate channel UCqUPJMQdkCN6lsLVDnichPA",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "THIRD_PARTY_CHANNEL_ANALYTICS",
+      "independence_group": "THIRD_PARTY_CHANNEL_METRICS",
+      "claims": [
+        "Third-party channel analytics reports approximately 1.2K videos and 143K subscribers."
+      ],
+      "limitations": [
+        "Not YouTube's own count; time-varying estimate; not an exhaustive video inventory."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-KAMILAH-IDCRAWL-IDENTITY-RESULTS",
+      "source_id": "SRC-20261031T190021Z-KAMILAH-IDCRAWL-IDENTITY-RESULTS",
+      "publisher": "IDCrawl",
+      "title": "Kamilah Stevenson public profile aggregation",
+      "url": "https://www.idcrawl.com/kamilah-stevenson",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "THIRD_PARTY_IDENTITY_AGGREGATOR",
+      "independence_group": "THIRD_PARTY_IDENTITY_METRICS",
+      "claims": [
+        "Search page surfaces multiple similarly named profiles/channels."
+      ],
+      "limitations": [
+        "Aggregator may include clones, unrelated people or scraped profiles; reinforces need not to merge identities without direct evidence."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL",
+      "source_id": "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL",
+      "publisher": "Ripple (official)",
+      "title": "Ripple Receives Final OCC Approval to Establish National Trust Bank",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "published_at_utc": "2026-10-26",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_COMPANY_REGULATORY_ANNOUNCEMENT",
+      "independence_group": "RIPPLE_OFFICIAL",
+      "claims": [
+        "Ripple announced final OCC approval for Ripple National Trust Bank on Oct26 2026 after conditional approval in Dec2025.",
+        "Approved activities include managing segregated RLUSD reserves, acting as collateral trustee for RLUSD holders and fiduciary digital-asset custody.",
+        "RLUSD continues to be issued by NYDFS-regulated Standard Custody & Trust Company; BNY is named primary reserve custodian.",
+        "Fiduciary digital-asset custody is described as available upon opening; Ripple says RNTB is beginning operations."
+      ],
+      "limitations": [
+        "Company announcement is primary for Ripple's position but the separate final OCC decision letter was not located in the OCC public index during this run.",
+        "The release does not identify XRP as RNTB reserve asset, collateral or lending inventory; do not infer that from 'digital asset custody'.",
+        "Final charter approval is not proof the bank is already operational or that RLUSD reserves have migrated to it."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-RIPPLE-OCC-CONDITIONAL-2025",
+      "source_id": "SRC-20261031T190021Z-RIPPLE-OCC-CONDITIONAL-2025",
+      "publisher": "Ripple (official)",
+      "title": "Ripple Secures Federal Approval to Establish National Trust Bank — conditional stage",
+      "url": "https://ripple.com/ripple-press/ripple-secures-federal-approval-to-establish-national-trust-bank/",
+      "published_at_utc": "2025-12-12",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+      "independence_group": "RIPPLE_OFFICIAL",
+      "claims": [
+        "Ripple described conditional OCC approval on Dec12 2025, not final approval.",
+        "The release says RLUSD was already used as collateral by prime brokers such as Ripple Prime."
+      ],
+      "limitations": [
+        "Marketing statements do not establish XRP collateral or bank operations; distinguish conditional from final approval."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-OCC-RIPPLE-DECISION-INDEX",
+      "source_id": "SRC-20261031T190021Z-OCC-RIPPLE-DECISION-INDEX",
+      "publisher": "Office of the Comptroller of the Currency",
+      "title": "Interpretations and decisions index — Ripple conditional approval listing",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_REGULATOR_INDEX",
+      "independence_group": "OCC_OFFICIAL",
+      "claims": [
+        "The public index surfaced Ripple Conditional Approval No. 1359 dated Dec12 2025; no separate final approval decision letter was located in the index during this run."
+      ],
+      "limitations": [
+        "A missing/lagging index entry is not proof final approval did not occur; Ripple's Oct26 official release says it did. Record as publication/evidence gap, not contradiction resolved against Ripple."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-OCC-RIPPLE-CONDITIONAL-LETTER",
+      "source_id": "SRC-20261031T190021Z-OCC-RIPPLE-CONDITIONAL-LETTER",
+      "publisher": "Office of the Comptroller of the Currency",
+      "title": "Ripple National Trust Bank conditional approval letter",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf",
+      "published_at_utc": "2025-12-12",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_REGULATOR_DECISION_LETTER",
+      "independence_group": "OCC_OFFICIAL",
+      "claims": [
+        "OCC conditional approval letter establishes the initial conditional stage of Ripple's trust-bank application."
+      ],
+      "limitations": [
+        "This is the 2025 conditional letter, not the final approval letter announced by Ripple in Oct2026."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-CIRCLE-OCC-FINAL-APPROVAL",
+      "source_id": "SRC-20261031T190021Z-CIRCLE-OCC-FINAL-APPROVAL",
+      "publisher": "Circle (official investor relations)",
+      "title": "Circle Receives Final OCC Approval to Establish National Trust Bank",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Receives-Final-OCC-Approval-to-Establish-National-Trust-Bank/default.aspx",
+      "published_at_utc": "2026-07-10",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_COMPANY_REGULATORY_ANNOUNCEMENT",
+      "independence_group": "CIRCLE_OFFICIAL",
+      "claims": [
+        "Circle announced final OCC approval to establish First National Digital Currency Bank, N.A., operating as Circle National Trust.",
+        "Upon opening it will provide fiduciary digital-asset custody to Circle and affiliates; direct institutional custody may follow for a limited set of institutions.",
+        "USDC reserve management is described as a future capability, not a current launch service.",
+        "USDC is issued by regulated Circle affiliates, not the trust bank itself."
+      ],
+      "limitations": [
+        "Final approval to establish is not proof the bank is already open or managing USDC reserves."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-CIRCLE-NATIONAL-TRUST-PRESSROOM",
+      "source_id": "SRC-20261031T190021Z-CIRCLE-NATIONAL-TRUST-PRESSROOM",
+      "publisher": "Circle (official pressroom)",
+      "title": "Circle National Trust — final OCC approval details",
+      "url": "https://www.circle.com/pressroom/circle-receives-final-occ-approval-to-establish-national-trust-bank",
+      "published_at_utc": "2026-07-10",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_COMPANY_REGULATORY_ANNOUNCEMENT",
+      "independence_group": "CIRCLE_OFFICIAL",
+      "claims": [
+        "Confirms Circle National Trust name, federally supervised charter, affiliate custody on opening and future USDC reserve-management capability."
+      ],
+      "limitations": [
+        "Same issuer announcement as Circle investor relations; not an independent second source."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-CIRCLE-OCC-REUTERS",
+      "source_id": "SRC-20261031T190021Z-CIRCLE-OCC-REUTERS",
+      "publisher": "Reuters",
+      "title": "Circle wins final regulatory approval to establish U.S. trust bank",
+      "url": "https://www.reuters.com/legal/transactional/circle-wins-final-regulatory-approval-to-establish-us-trust-bank-shares-rise-2026-07-10/",
+      "published_at_utc": "2026-07-10",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "INDEPENDENT_NEWS_REPORT",
+      "independence_group": "REUTERS",
+      "claims": [
+        "Reuters independently reports Circle received final OCC approval on July10 2026."
+      ],
+      "limitations": [
+        "The report summarizes the announcement and does not supply the bank's final operating date or detailed OCC charter conditions."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-COINBASE-OCC-CONDITIONAL-APPROVAL",
+      "source_id": "SRC-20261031T190021Z-COINBASE-OCC-CONDITIONAL-APPROVAL",
+      "publisher": "Office of the Comptroller of the Currency",
+      "title": "Corporate Decision #1370 — Coinbase National Trust Company preliminary conditional approval",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1370.pdf",
+      "published_at_utc": "2026-04-02",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_REGULATOR_DECISION_LETTER",
+      "independence_group": "OCC_OFFICIAL",
+      "claims": [
+        "OCC granted preliminary conditional approval only; final approval and authorization to commence business require all preopening requirements.",
+        "Proposed bank is wholly owned by Coinbase; planned fiduciary digital-asset custody primarily for institutions; Coinbase plans to migrate NYDFS CCTC custody business over a three-year de novo period.",
+        "Bank may facilitate custody customers' access to affiliate staking, Prime Trading and Prime Financing as finder, but will not itself provide those underlying services.",
+        "The bank must limit operations to trust-company activities and related activities and will not be an insured depository institution."
+      ],
+      "limitations": [
+        "Conditional approval is not a final charter or operating authorization. The bank's proposed services must not be described as live."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-OCC-TRUST-CHARTER-FINAL-RULE",
+      "source_id": "SRC-20261031T190021Z-OCC-TRUST-CHARTER-FINAL-RULE",
+      "publisher": "Office of the Comptroller of the Currency",
+      "title": "OCC Bulletin 2026-4 — National Bank Chartering: Final Rule",
+      "url": "https://occ.gov/news-issuances/bulletins/2026/bulletin-2026-4.html",
+      "published_at_utc": "2026-02-27",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "OFFICIAL_REGULATORY_RULE",
+      "independence_group": "OCC_OFFICIAL",
+      "claims": [
+        "Final rule effective April1 2026 clarifies national banks limited to trust-company operations and related activities may conduct non-fiduciary activities as well as fiduciary activities."
+      ],
+      "limitations": [
+        "The rule does not make a national trust bank equivalent to a full-service retail/commercial deposit-taking bank; each bank remains bounded by its approved business plan and charter conditions."
+      ]
+    },
+    {
+      "id": "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL-BLOOMBERG",
+      "source_id": "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL-BLOOMBERG",
+      "publisher": "Bloomberg",
+      "title": "Ripple gets final U.S. approval for national trust bank",
+      "url": "https://www.bloomberg.com/news/articles/2026-10-27/ripple-gets-final-us-approval-for-national-trust-bank",
+      "published_at_utc": "2026-10-27",
+      "retrieved_at_utc": "2026-10-31T19:00:21Z",
+      "evidence_class": "INDEPENDENT_NEWS_REPORT",
+      "independence_group": "BLOOMBERG",
+      "claims": [
+        "Bloomberg reports Ripple received final OCC approval for its national trust bank on Oct26 2026."
+      ],
+      "limitations": [
+        "Paywalled/restricted in this run; used as secondary corroboration of Ripple's official announcement, not as the sole basis."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "SBIC-NOT-UNIQUE",
+      "classification": "CONFIRMED",
+      "statement": "Japan's SBIC reference is not a unique entity. Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) and Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan) are separate sister companies; Tokyo's official profile lists Osaka and Nagoya sister companies.",
+      "source_ids": [
+        "SRC-20261031T190021Z-SBIC-TOKYO-PROFILE",
+        "SRC-20261031T190021Z-SBIC-OSAKA-OCT2024-CHATGPT"
+      ]
+    },
+    {
+      "id": "SBIC-CHATGPT-TOKYO",
+      "classification": "CONFIRMED",
+      "statement": "Tokyo SBIC hosted explicit ChatGPT seminars on 2025-02-26 and 2026-03-05, and a broader generative-AI seminar on 2026-10-06. Osaka SBIC West Japan separately hosted a ChatGPT seminar on 2024-10-23.",
+      "source_ids": [
+        "SRC-20261031T190021Z-SBIC-TOKYO-OCT2026-GENAI",
+        "SRC-20261031T190021Z-SBIC-TOKYO-MAR2026-CHATGPT",
+        "SRC-20261031T190021Z-SBIC-TOKYO-FEB2025-CHATGPT",
+        "SRC-20261031T190021Z-SBIC-OSAKA-OCT2024-CHATGPT"
+      ]
+    },
+    {
+      "id": "SBIC-NO-OPENAI-PARTNERSHIP",
+      "classification": "NOT_ESTABLISHED",
+      "statement": "The official event listings establish education/training, not an OpenAI partnership, investment, product integration or commercial tie to XRP, Coinbase, Circle or SBI Holdings.",
+      "source_ids": [
+        "SRC-20261031T190021Z-SBIC-TOKYO-PROFILE",
+        "SRC-20261031T190021Z-SBIC-TOKYO-OCT2026-GENAI",
+        "SRC-20261031T190021Z-SBIC-TOKYO-MAR2026-CHATGPT",
+        "SRC-20261031T190021Z-SBIC-TOKYO-FEB2025-CHATGPT",
+        "SRC-20261031T190021Z-SBIC-OSAKA-OCT2024-CHATGPT"
+      ]
+    },
+    {
+      "id": "KAMILAH-CHANNEL-CANDIDATE",
+      "classification": "SOURCED_CLAIM_AND_INFERENCE",
+      "statement": "A likely XRP-video creator is Kamilah Stevenson, associated by Glasp with YouTube channel UCqUPJMQdkCN6lsLVDnichPA. Video transcripts sometimes self-identify as Camila Stevenson. This is not yet proven to be the user-requested Camilla Stephenson.",
+      "source_ids": [
+        "SRC-20261031T190021Z-KAMILAH-YOUTUBE-CHANNEL",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-RIPPLE-BANK",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-XRP-ETFS",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-HOW-MUCH-XRP",
+        "SRC-20261031T190021Z-KAMILAH-IHEART-INTERVIEW",
+        "SRC-20261031T190021Z-KAMILAH-VLING-CHANNEL-STATS",
+        "SRC-20261031T190021Z-KAMILAH-IDCRAWL-IDENTITY-RESULTS"
+      ]
+    },
+    {
+      "id": "KAMILAH-VIDEO-SAMPLE",
+      "classification": "PARTIAL_INVENTORY",
+      "statement": "Eight public XRP-related videos were identified from the candidate channel. Third-party analytics estimate about 1.2K channel videos; the eight-video list is not exhaustive and the channel identity is not confirmed against the exact requested spelling.",
+      "source_ids": [
+        "SRC-20261031T190021Z-KAMILAH-YOUTUBE-CHANNEL",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-RIPPLE-BANK",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-XRP-ETFS",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-HOW-MUCH-XRP",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-CRYPTO-WEALTH",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-GLOBAL-FINANCE-XRP",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-XRPL-UPGRADE",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-2026-SETUP",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-100M-XRP",
+        "SRC-20261031T190021Z-KAMILAH-VLING-CHANNEL-STATS"
+      ]
+    },
+    {
+      "id": "ASK-COIN-ACTUAL-CAPITAL",
+      "classification": "UNRESOLVED",
+      "statement": "No reliable indexed match for exact phrase 'ASK Coin' or 'actual capital' was found in the candidate channel material. 'How Much XRP Do You ACTUALLY Need?' is a different phrase and must not be conflated.",
+      "source_ids": [
+        "SRC-20261031T190021Z-KAMILAH-YOUTUBE-CHANNEL",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-RIPPLE-BANK",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-XRP-ETFS",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-HOW-MUCH-XRP",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-CRYPTO-WEALTH",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-GLOBAL-FINANCE-XRP",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-XRPL-UPGRADE",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-2026-SETUP",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-100M-XRP"
+      ]
+    },
+    {
+      "id": "RIPPLE-RNTB-FINAL",
+      "classification": "OFFICIAL_COMPANY_ANNOUNCEMENT_WITH_PUBLIC_INDEX_GAP",
+      "statement": "Ripple announced final OCC approval for RNTB on 2026-10-26. Approved activities: manage segregated RLUSD reserves, act as collateral trustee for RLUSD holders, and provide fiduciary digital-asset custody. RLUSD remains issued by Standard Custody; BNY is identified as primary reserve custodian. Custody is described as available upon opening; operational commencement is not established.",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL",
+        "SRC-20261031T190021Z-RIPPLE-OCC-CONDITIONAL-2025",
+        "SRC-20261031T190021Z-OCC-RIPPLE-DECISION-INDEX",
+        "SRC-20261031T190021Z-OCC-RIPPLE-CONDITIONAL-LETTER",
+        "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL-BLOOMBERG"
+      ]
+    },
+    {
+      "id": "CIRCLE-NT-FINAL",
+      "classification": "OFFICIAL_COMPANY_ANNOUNCEMENT_AND_REUTERS_CORROBORATION",
+      "statement": "Circle announced final OCC approval on 2026-07-10 for First National Digital Currency Bank, N.A., operating as Circle National Trust. Custody for Circle/affiliates is planned upon opening; institutional custody may follow; USDC reserve management is a future capability. USDC remains issued by regulated Circle affiliates.",
+      "source_ids": [
+        "SRC-20261031T190021Z-CIRCLE-OCC-FINAL-APPROVAL",
+        "SRC-20261031T190021Z-CIRCLE-NATIONAL-TRUST-PRESSROOM",
+        "SRC-20261031T190021Z-CIRCLE-OCC-REUTERS"
+      ]
+    },
+    {
+      "id": "COINBASE-NT-CONDITIONAL",
+      "classification": "OFFICIAL_REGULATOR_DECISION",
+      "statement": "OCC Corporate Decision #1370 dated 2026-04-02 grants Coinbase National Trust Company preliminary conditional approval only. Final approval and commencement require preopening requirements. Proposed scope is fiduciary custody, custody-related transactions and finder access to Coinbase affiliate staking/Prime Trading/Prime Financing; it does not itself provide those underlying services. Existing NYDFS CCTC custody is planned to migrate over three years.",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-OCC-CONDITIONAL-APPROVAL"
+      ]
+    },
+    {
+      "id": "TRUST-BANK-SCOPE",
+      "classification": "OFFICIAL_REGULATORY_RULE_AND_DECISION",
+      "statement": "A national trust bank charter is limited to trust-company operations and related activities under its approved business plan; it is not equivalent to a full-service retail bank. The OCC's 2026-4 rule clarifies fiduciary and related non-fiduciary activities. Coinbase's decision explicitly says its proposed bank will not be an insured depository institution.",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-OCC-CONDITIONAL-APPROVAL",
+        "SRC-20261031T190021Z-OCC-TRUST-CHARTER-FINAL-RULE"
+      ]
+    },
+    {
+      "id": "RIPPLE-BANK-VIDEO-TIMING",
+      "classification": "DISCONFIRMING_CONTEXT",
+      "statement": "The Dec14 2025 video title 'Ripple Just Became a BANK' was premature if it implied final charter approval: Ripple's own Dec12 2025 release described conditional approval only. Ripple later announced final approval on Oct26 2026. Neither event establishes a full-service bank or XRP reserve role.",
+      "source_ids": [
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-RIPPLE-BANK",
+        "SRC-20261031T190021Z-RIPPLE-OCC-CONDITIONAL-2025",
+        "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL",
+        "SRC-20261031T190021Z-COINBASE-OCC-CONDITIONAL-APPROVAL",
+        "SRC-20261031T190021Z-OCC-TRUST-CHARTER-FINAL-RULE"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "id": "SBIC-EAST-WEST-SISTER",
+      "source": "SBIC_EAST_JAPAN",
+      "target": "SBIC_WEST_JAPAN",
+      "relationship": "SISTER_COMPANIES",
+      "evidence_class": "OFFICIAL_CORPORATE_PROFILE",
+      "source_ids": [
+        "SRC-20261031T190021Z-SBIC-TOKYO-PROFILE",
+        "SRC-20261031T190021Z-SBIC-OSAKA-OCT2024-CHATGPT"
+      ]
+    },
+    {
+      "id": "SBIC-TOKYO-CHATGPT-TRAINING",
+      "source": "SBIC_EAST_JAPAN",
+      "target": "CHATGPT",
+      "relationship": "HOSTS_EDUCATIONAL_SEMINARS",
+      "evidence_class": "OFFICIAL_EVENT_LISTINGS",
+      "source_ids": [
+        "SRC-20261031T190021Z-SBIC-TOKYO-OCT2026-GENAI",
+        "SRC-20261031T190021Z-SBIC-TOKYO-MAR2026-CHATGPT",
+        "SRC-20261031T190021Z-SBIC-TOKYO-FEB2025-CHATGPT"
+      ]
+    },
+    {
+      "id": "SBIC-OSAKA-CHATGPT-TRAINING",
+      "source": "SBIC_WEST_JAPAN",
+      "target": "CHATGPT",
+      "relationship": "HOSTED_EDUCATIONAL_SEMINAR",
+      "evidence_class": "OFFICIAL_EVENT_PDF",
+      "source_ids": [
+        "SRC-20261031T190021Z-SBIC-OSAKA-OCT2024-CHATGPT"
+      ]
+    },
+    {
+      "id": "KAMILAH-CHANNEL",
+      "source": "KAMILAH_STEVENSON",
+      "target": "YOUTUBE_CHANNEL_UCqUPJMQdkCN6lsLVDnichPA",
+      "relationship": "CANDIDATE_CREATOR_CHANNEL_LINK",
+      "evidence_class": "THIRD_PARTY_AUTHOR_LINK_AND_VIDEO_BYLINE",
+      "source_ids": [
+        "SRC-20261031T190021Z-KAMILAH-YOUTUBE-CHANNEL",
+        "SRC-20261031T190021Z-KAMILAH-VIDEO-RIPPLE-BANK",
+        "SRC-20261031T190021Z-KAMILAH-IHEART-INTERVIEW"
+      ]
+    },
+    {
+      "id": "RIPPLE-RNTB",
+      "source": "RIPPLE",
+      "target": "RIPPLE_NATIONAL_TRUST_BANK",
+      "relationship": "FINAL_OCC_APPROVAL_ANNOUNCED_2026_10_26",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL",
+        "SRC-20261031T190021Z-OCC-RIPPLE-DECISION-INDEX"
+      ]
+    },
+    {
+      "id": "RNTB-RLUSD-RESERVES",
+      "source": "RIPPLE_NATIONAL_TRUST_BANK",
+      "target": "RLUSD",
+      "relationship": "APPROVED_RESERVE_MANAGER_AND_COLLATERAL_TRUSTEE_ROLE",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL"
+      ]
+    },
+    {
+      "id": "STANDARD-CUSTODY-RLUSD",
+      "source": "STANDARD_CUSTODY",
+      "target": "RLUSD",
+      "relationship": "ISSUER_REMAINS_STANDARD_CUSTODY",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL"
+      ]
+    },
+    {
+      "id": "BNY-RLUSD-RESERVES",
+      "source": "BNY",
+      "target": "RLUSD",
+      "relationship": "PRIMARY_RESERVE_CUSTODIAN_AS_STATED_BY_RIPPLE",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL"
+      ]
+    },
+    {
+      "id": "CIRCLE-CIRCLE-NT",
+      "source": "CIRCLE",
+      "target": "CIRCLE_NATIONAL_TRUST",
+      "relationship": "FINAL_OCC_APPROVAL_2026_07_10",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT_AND_REUTERS",
+      "source_ids": [
+        "SRC-20261031T190021Z-CIRCLE-OCC-FINAL-APPROVAL",
+        "SRC-20261031T190021Z-CIRCLE-OCC-REUTERS"
+      ]
+    },
+    {
+      "id": "CIRCLE-NT-USDC",
+      "source": "CIRCLE_NATIONAL_TRUST",
+      "target": "USDC",
+      "relationship": "AFFILIATE_CUSTODY_ON_OPENING_FUTURE_RESERVE_MANAGEMENT",
+      "evidence_class": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T190021Z-CIRCLE-OCC-FINAL-APPROVAL"
+      ]
+    },
+    {
+      "id": "COINBASE-COINBASE-NT",
+      "source": "COINBASE",
+      "target": "COINBASE_NATIONAL_TRUST",
+      "relationship": "PRELIMINARY_CONDITIONAL_OCC_APPROVAL_2026_04_02",
+      "evidence_class": "OCC_DECISION_1370",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-OCC-CONDITIONAL-APPROVAL"
+      ]
+    },
+    {
+      "id": "COINBASE-NT-CCTC",
+      "source": "COINBASE_NATIONAL_TRUST",
+      "target": "COINBASE_CUSTODY_TRUST_COMPANY",
+      "relationship": "PLANNED_THREE_YEAR_CUSTODY_MIGRATION",
+      "evidence_class": "OCC_DECISION_1370",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-OCC-CONDITIONAL-APPROVAL"
+      ]
+    },
+    {
+      "id": "COINBASE-RIPPLE-RLUSD",
+      "source": "COINBASE",
+      "target": "RIPPLE",
+      "relationship": "RLUSD_DISTRIBUTION_PARTNERSHIP",
+      "evidence_class": "JOINT_COMPANY_ANNOUNCEMENT_ARCHIVED_PREVIOUSLY",
+      "source_ids": []
+    },
+    {
+      "id": "COINBASE-CIRCLE-USDC",
+      "source": "COINBASE",
+      "target": "CIRCLE",
+      "relationship": "USDC_DISTRIBUTION_AND_ECONOMIC_RELATIONSHIP",
+      "evidence_class": "PUBLIC_FILINGS_ARCHIVED_PREVIOUSLY",
+      "source_ids": []
+    },
+    {
+      "id": "RIPPLE-CIRCLE-PARALLEL-CHARTERS",
+      "source": "RIPPLE",
+      "target": "CIRCLE",
+      "relationship": "PARALLEL_COMPETING_STABLECOIN_AND_CUSTODY_RAILS",
+      "evidence_class": "INFERENCE_NOT_DIRECT_PARTNERSHIP",
+      "source_ids": [
+        "SRC-20261031T190021Z-RIPPLE-OCC-FINAL-APPROVAL",
+        "SRC-20261031T190021Z-CIRCLE-OCC-FINAL-APPROVAL"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-TRUST-CHARTER-ADVANTAGE",
+      "claim": "Circle and Ripple's announced final OCC approvals may give them a federal trust-charter timing advantage over Coinbase, whose OCC approval remains conditional.",
+      "status": "SUPPORTED_WITH_OPERATIONAL_CAVEATS",
+      "support": [
+        "Circle final approval July10; Ripple final approval announced Oct26; Coinbase OCC decision #1370 remains conditional."
+      ],
+      "disconfirming": [
+        "Final approval to establish does not prove opening/operational scale; OCC public index still only surfaced Ripple's conditional #1359; Coinbase already has NYDFS custody, exchange, prime and derivatives infrastructure."
+      ],
+      "next_test": "Verify actual opening dates, OCC active institution listings, fiduciary assets under custody, reserve mandates and audited bank financials."
+    },
+    {
+      "id": "HYP-STABLECOIN-RAIL-COMPETITION",
+      "claim": "Circle USDC/Arc and Ripple RLUSD/XRPL/Prime are competing institutional stablecoin and settlement rails, while Coinbase's distribution supports both.",
+      "status": "PLAUSIBLE_STRATEGIC_INFERENCE",
+      "support": [
+        "Circle final trust charter and Arc/USDC; Ripple final trust charter and RLUSD; Coinbase RLUSD partnership plus existing USDC distribution economics."
+      ],
+      "disconfirming": [
+        "Both stablecoins can coexist and are distributed on multiple networks; no exclusivity or net substitution volume demonstrated."
+      ],
+      "next_test": "Compare chain-level supply, net mint/burn, settlement volume, custody, collateral use, reserve yield economics and Coinbase product balances."
+    },
+    {
+      "id": "HYP-SBIC-CHATGPT-CONTEXT",
+      "claim": "The user's 'SBIC, ChatGPT SBIC' phrase likely points to Tokyo SBIC's ChatGPT seminars, but Osaka SBIC West Japan also ran a separate ChatGPT seminar.",
+      "status": "LIKELY_CONTEXT_NOT_EXACT_PHRASE_RESOLUTION",
+      "support": [
+        "Tokyo official 2025/2026 ChatGPT event listings; Osaka official 2024 seminar PDF; official Tokyo profile lists Osaka as sister company."
+      ],
+      "disconfirming": [
+        "No original phrase/source context proves which regional entity the user meant; SBIC acronym has unrelated meanings."
+      ],
+      "next_test": "Compare the original quoted phrase/context if it becomes available; do not conflate Tokyo and Osaka."
+    },
+    {
+      "id": "HYP-KAMILAH-IDENTITY-MATCH",
+      "claim": "Kamilah Stevenson channel UCqUPJMQdkCN6lsLVDnichPA is the likely XRP-video creator the user calls Camilla Stephenson.",
+      "status": "CANDIDATE_ONLY",
+      "support": [
+        "Glasp author link resolves to channel ID; video bylines Kamilah Stevenson; transcript self-identifies Camila Stevenson; iHeart episode identifies Dr Kamilah Stevenson."
+      ],
+      "disconfirming": [
+        "Spelling differs materially; multiple similarly named channels/profiles; no direct evidence of the exact requested identity."
+      ],
+      "next_test": "Verify channel owner self-description or a direct public profile linking the exact name Camilla Stephenson to this channel."
+    },
+    {
+      "id": "HYP-RIPPLE-BANK-VIDEO-CLAIM",
+      "claim": "The Dec14 2025 video title that Ripple 'just became a bank' was premature at publication; final OCC approval was announced Oct26 2026, but RNTB is not shown as operational and its approved reserve/collateral role names RLUSD, not XRP.",
+      "status": "SUPPORTED_WITH_DATE_AND_SCOPE_DISTINCTIONS",
+      "support": [
+        "Ripple Dec12 2025 conditional announcement; Ripple Oct26 2026 final approval announcement; OCC trust-bank scope rule."
+      ],
+      "disconfirming": [
+        "Ripple's final approval is a genuine regulatory milestone and includes fiduciary digital-asset custody; exact opening date and final OCC letter remain unverified."
+      ],
+      "next_test": "Find OCC final decision letter and opening/active-bank record; track RNTB actual reserve mandates, assets under custody and any XRP-specific authorization."
+    }
+  ],
+  "video_inventory": [
+    {
+      "video_id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "published_at": "2025-12-14",
+      "views_at_capture": "about 76K",
+      "channel_candidate": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "notes": "At publication Ripple had conditional, not final, OCC approval; title premature if interpreted as final charter."
+    },
+    {
+      "video_id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+      "published_at": "2026-01-13",
+      "views_at_capture": "about 20.4K",
+      "channel_candidate": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "notes": "ETF flow and price commentary; verify fund data independently."
+    },
+    {
+      "video_id": "rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "published_at": "2026-03-19",
+      "views_at_capture": "about 74.9K",
+      "channel_candidate": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "notes": "ACTUALLY is in the title; not an exact match for 'actual capital'."
+    },
+    {
+      "video_id": "cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "published_at": "2026-01-15",
+      "views_at_capture": "about 23.1K",
+      "channel_candidate": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "notes": "Portfolio/market-risk commentary."
+    },
+    {
+      "video_id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "published_at": "2026-03-06",
+      "views_at_capture": "32,040",
+      "likes_at_capture": "2,300",
+      "channel_candidate": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "notes": "Oil, yen carry, global liquidity and XRP commentary."
+    },
+    {
+      "video_id": "8xiy8w2YlfY",
+      "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "published_at": "2026-07-30",
+      "views_at_capture": "10,090",
+      "likes_at_capture": "740",
+      "channel_candidate": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "notes": "XRPL amendments and institutional-use commentary; verify amendment status independently."
+    },
+    {
+      "video_id": "Gy4BuGhAWE8",
+      "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+      "published_at": "2025-12-03",
+      "views_at_capture": "21,568",
+      "channel_candidate": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=Gy4BuGhAWE8",
+      "notes": "Fed, CLARITY Act, QE and global liquidity scenario commentary."
+    },
+    {
+      "video_id": "qtT2hLeFkM0",
+      "title": "More Than 100 Million XRP Just Moved",
+      "published_at": "2026-08-25",
+      "views_at_capture": "89,042",
+      "likes_at_capture": "2,700",
+      "channel_candidate": "Kamilah Stevenson",
+      "url": "https://www.youtube.com/watch?v=qtT2hLeFkM0",
+      "notes": "FXRP/Flare collateral and lending commentary; wrapped/locked XRP is not newly created or necessarily spot-bought."
+    }
+  ],
+  "video_inventory_exhaustive": false,
+  "channel_total_video_estimate": "about 1.2K according to third-party analytics",
+  "exact_phrase_status": {
+    "ASK_Coin": "NO_RELIABLE_MATCH_FOUND_IN_INDEXED_CANDIDATE_CHANNEL_MATERIAL; UNRESOLVED",
+    "actual_capital": "NO_EXACT_MATCH_FOUND; 'ACTUALLY' IN ONE TITLE IS NOT THE SAME PHRASE",
+    "SBIC_ChatGPT": "TOKYO_AND_OSAKA_JAPANESE_SME_INVESTMENT_COMPANIES_HAVE_CHATGPT_TRAINING_EVENTS; EXACT_ORIGINAL_CONTEXT_UNRESOLVED"
+  },
+  "limitations": [
+    "The exact identity 'Camilla Stephenson' is not confirmed; Kamilah Stevenson/Camila Stevenson is only a candidate match.",
+    "Eight XRP-related videos are a targeted sample, not all public uploads; third-party analytics estimate about 1.2K channel videos. Direct channel RSS/API enumeration was unavailable in this run.",
+    "YouTube channel pages were not directly accessible through the current web reader; video bylines and indexed metadata are used, with third-party analytics clearly labelled.",
+    "SBIC is not unique. Tokyo SBIC East Japan and Osaka SBIC West Japan are separate sister companies; the original phrase context remains unknown.",
+    "No evidence establishes an OpenAI partnership or direct SBIC relationship with Ripple, XRP, Coinbase or Circle.",
+    "Ripple's final OCC approval is company-announced and independently reported, but a separate final OCC decision letter was not found in the public OCC index during this run.",
+    "Circle and Ripple final approval to establish does not establish their banks have opened or begun managing reserves; Coinbase's approval remains conditional.",
+    "None of the reviewed national trust bank approvals identifies XRP as a bank reserve asset or an XRP-specific lending mandate."
+  ],
+  "corrections": [
+    "Earlier shorthand 'Japan's SBIC is Tokyo SBIC' was incomplete. Tokyo SBIC is the exact host for the identified 2025/2026 Tokyo ChatGPT events, but Osaka SBIC West Japan is a separate sister company with its own 2024 ChatGPT seminar.",
+    "Earlier implication that the video creator might be 'Camilla Stephenson' is not established. The surfaced channel byline is Kamilah Stevenson and some transcripts say Camila Stevenson; retain as a candidate only."
+  ],
+  "pending_archive_append": true,
+  "exact_head_validation": "NOT_RUN",
+  "status": "PENDING_ARCHIVE_APPEND_AND_EXACT_HEAD_VALIDATION"
+}

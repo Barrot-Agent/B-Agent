@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261030T182947Z-MARKET-ETF-ASK-SBIC-QUALITY",
+  "created_at_utc": "2026-10-30T18:29:47Z",
+  "status": "RECORDED_NOT_YET_MODEL_ADMITTED",
+  "decisions": [
+    {
+      "id": "ADR-XRP-OI-FUNDING-VENUE-SCOPE",
+      "decision": "Keep provider-level and venue-level OI/funding observations separate until instrument universe, contract coverage, notional basis and timestamp alignment are reconciled.",
+      "reason": "Current Liqwall snapshot shows aggregate negative funding but positive Binance funding; other trackers report materially different OI totals."
+    },
+    {
+      "id": "ADR-XRP-ETF-COVERAGE-MANIFEST",
+      "decision": "Every ETF flow record must carry fund universe, coverage numerator/denominator, missing funds, unit (USD or XRP), event date, retrieval time and source method. Never combine partial and complete totals.",
+      "reason": "October 29 trackers report +$8.4M at 5/5, +$7.1M at 2/5 and +6.4M XRP across a different universe."
+    },
+    {
+      "id": "ADR-BINANCE-INCIDENT-EVIDENCE-LAYERS",
+      "decision": "Store company incident estimates, frozen amounts, recovered amounts, on-chain transfers and wallet attribution as separate evidence types. Do not equate frozen with recovered or explorer labels with official ownership.",
+      "reason": "The incident estimate and five-wallet XRP trace have different provenance and confidence."
+    },
+    {
+      "id": "ADR-ASK-COINBASE-RELATIONSHIP",
+      "decision": "Represent Coinbase's Permission relationship as embedded-wallet infrastructure and private-key custody for ASK users. Do not infer proprietary ASK exposure, exchange listing, XRP demand or XRPL integration.",
+      "reason": "Permission's own announcement explicitly describes the wallet/key arrangement; its official ASK contracts list Base and Polygon only."
+    },
+    {
+      "id": "ADR-ASK-BUYBACK-EVIDENCE",
+      "decision": "Keep subscription-funded ASK buybacks as an issuer-described mechanism until actual on-chain buyback transactions and subscription revenue are reconciled.",
+      "reason": "Tokenomics documentation is not execution evidence."
+    },
+    {
+      "id": "ADR-SBIC-ENTITY-NAMESPACES",
+      "decision": "Maintain separate identifiers SBIC_EAST_JAPAN and SBIC_SOCIAL_BIAS_INFERENCE_CORPUS. Treat the 65.9%/60.6% paper values as human preference rates, never accuracy.",
+      "reason": "The same acronym refers to unrelated entities; Table 7 defines its metric as model preferred over gold annotations."
+    },
+    {
+      "id": "ADR-XRP-FEATURE-ADMISSION",
+      "decision": "Do not admit this run's market observations into the prediction model yet; preserve as timestamped research observations and keep forecast status NOT_ISSUED.",
+      "reason": "Provider coverage, fund universe and point-in-time comparability remain incomplete."
+    }
+  ],
+  "source_ids": [
+    "SRC-LIQWALL-XRP-PERPETUAL-SNAPSHOT-20261030T1402Z",
+    "SRC-ALPHA-XRP-ETF-FLOWS-20261029-R11-182947Z",
+    "SRC-CRYPTOETF-XRP-ETF-PARTIAL-20261029",
+    "SRC-XRPINSIGHTS-XRP-ETF-FLOWS-20261029",
+    "SRC-BINANCE-GLOBAL-SECURITY-UPDATE-20261030T0223Z",
+    "SRC-BINANCE-JAPAN-SECURITY-UPDATE-20261030T0906",
+    "SRC-SAP-ACL2020-SBIC-FOUNDATION",
+    "SRC-ZIEMS-CL2024-SBIC-GENERATION-EVAL",
+    "SRC-PERMISSION-ASK-CONTRACTS-BASE-POLYGON",
+    "SRC-PERMISSION-COINBASE-ASK-WALLET-20260922",
+    "SRC-PERMISSION-ASK-TOKENOMICS-2026",
+    "SRC-COINGECKO-ASK-CIRCULATING-20261030",
+    "SRC-CMC-ASK-CIRCULATING-20261030",
+    "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030",
+    "SRC-GITHUB-BAGENT-REPO-AUDIT-20261030T182947Z"
+  ]
+}

@@ -1,0 +1,428 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T083100Z-SBI-SMFG-JPYSC-TRUST-CUSTODY-BITBANK-MCP",
+  "captured_at_utc": "2026-10-30T08:31:00Z",
+  "data_cutoff_utc": "2026-10-30T08:30:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T083100Z-sbi-smfg-jpysc-trust-custody-bitbank-mcp.json",
+  "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261030T082000Z-sbi-multirail-binance-incident-current-market-panel.json",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; preserve Barrot V3 as execution and verification foundation.",
+  "confirmed_facts": [
+    {
+      "claim": "SBI Holdings and SMFG signed a capital/business alliance on October 30, 2026; the official SBI release confirms SMFG's 5% capital participation in SBI Startale Marketing and joint research/use-case/PoC work for JPYSC and other stablecoins.",
+      "source_ids": [
+        "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030"
+      ],
+      "qualification": "The official release does not establish production settlement, live customer use or an XRP role."
+    },
+    {
+      "claim": "SBI Shinsei Trust and SBI Clearing Trust signed a merger agreement on October 29 with December 31, 2026 as the planned effective date; SBI Clearing Trust has a crypto-asset trust custody business and SBI Shinsei Trust issues JPYSC.",
+      "source_ids": [
+        "SRC-SBI-TRUST-MERGER-20261029"
+      ],
+      "qualification": "The merger is not effective at this snapshot and does not identify XRP-specific custody balances."
+    },
+    {
+      "claim": "SBI completed the full acquisition of bitbank on October 1, making bitbank a wholly owned subsidiary.",
+      "source_ids": [
+        "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001"
+      ],
+      "qualification": "Ownership does not itself establish post-acquisition changes in XRP/JPY volume or customer balances."
+    },
+    {
+      "claim": "bitbank announced an experimental local MCP server and CLI beta for AI clients, with public market data and optional private API functions.",
+      "source_ids": [
+        "SRC-BITBANK-MCP-OFFICIAL-BETA-20260710"
+      ],
+      "qualification": "No Barrot installation, remote service, authentication or live API call was tested."
+    },
+    {
+      "claim": "The inspected bitbank-lab-mcp source tree contains 33 public tool definitions and 16 private tools; public tools cover market data, flow, volatility, technical analysis and backtesting.",
+      "source_ids": [
+        "SRC-BITBANK-MCP-GITHUB-REPO-AUDIT-20261030"
+      ],
+      "qualification": "The documentation says 32 public tools in one page and 33 in others; package and Gemini extension version fields differ."
+    },
+    {
+      "claim": "bitbank-lab-mcp vendor documentation describes read-only permission for private asset inspection, read-plus-trade for order operations, no withdrawal tool, and preview/explicit-confirmation/execute order flow.",
+      "source_ids": [
+        "SRC-BITBANK-MCP-HITL-SECURITY-DOCS-20261030"
+      ],
+      "qualification": "Vendor-authored design documentation is not an independent security audit; optional MCP Apps _meta execution is default-off and depends on host behavior."
+    },
+    {
+      "claim": "CoinGecko's Bitbank XRP/JPY market snapshot displayed approximately USD7.54M 24-hour volume, 0.01% spread, approximately USD354k bid-side depth and USD915k ask-side depth within ±2%.",
+      "source_ids": [
+        "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z"
+      ],
+      "qualification": "Third-party single snapshot without an exact exchange timestamp; not a synchronized market panel."
+    },
+    {
+      "claim": "SBI's September 7 JPYSC disclosure reported approximately JPY20.1B issuance, JPY1B allocated to short-term JGBs and JPY6.9B in JPYSC lending applications.",
+      "source_ids": [
+        "SRC-SBI-JPYSC-JGB-RESERVES-20260907"
+      ],
+      "qualification": "Lending applications are not additional issued supply."
+    },
+    {
+      "claim": "SBI and Startale joined Open Standard and are considering JPYSC/OUSD interoperability; SBI, Startale and BlackRock separately signed an exploratory tokenized-MMF/JPYSC MOU.",
+      "source_ids": [
+        "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027"
+      ],
+      "qualification": "These are exploratory arrangements; no live chain route, production settlement or XRP use is established."
+    },
+    {
+      "claim": "SBI VC Trade's XRP reward card, RLUSD/USDC distribution and SBI Ripple Asia's XRPL tokenized-deposit PoC are documented in earlier official releases.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+        "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+        "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220"
+      ],
+      "qualification": "Distribution, reward and technical-PoC announcements do not quantify XRP purchases, balances or settlement volumes."
+    }
+  ],
+  "sourced_claims": [
+    {
+      "claim": "NADA News, citing Nikkei, reports SMBC has approximately 24 million individual customers and that JPYSC issuance was approximately JPY20.8B on October 30.",
+      "source_ids": [
+        "SRC-NADA-SMFG-SBI-STARTALE-JPYSC-SECONDARY-20261030"
+      ],
+      "qualification": "Secondary report; the official SBI release confirms the 5% stake but does not independently confirm these figures."
+    },
+    {
+      "claim": "Open Standard's five named founding partners include Coinbase, Mastercard, Shopify, Stripe and Visa; a secondary report identifies Ripple among a broader participant network.",
+      "source_ids": [
+        "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030",
+        "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930",
+        "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630"
+      ],
+      "qualification": "Circle is not among the five named founding partners in the cited list; broader Circle participation or a direct SBI/Circle relationship is not established."
+    }
+  ],
+  "inferences": [
+    {
+      "claim": "SBI is assembling a multi-rail digital-asset stack spanning an acquired exchange, XRP retail distribution, XRPL technical work, JPYSC issuance, RLUSD/USDC distribution, Open Standard interoperability, tokenized-MMF exploration and consolidated trust/custody capability.",
+      "basis": "Multiple official SBI, bitbank and Startale announcements. This is a group-level strategic inference; no single integrated production architecture or shared ledger is disclosed."
+    },
+    {
+      "claim": "SBI's Bitbank acquisition may increase its control over a major Japanese XRP/JPY venue and customer channel.",
+      "basis": "Wholly owned acquisition and one observed XRP/JPY market snapshot. Post-acquisition volume change, customer migration and market share are not measured."
+    },
+    {
+      "claim": "SMFG's 5% participation may improve JPYSC distribution through an established banking customer base.",
+      "basis": "Official 5% capital participation plus secondary reporting of SMBC's customer base. Customer count is not JPYSC adoption or committed distribution."
+    },
+    {
+      "claim": "The trust merger may combine digital-asset custody expertise with JPYSC issuance and reserve management.",
+      "basis": "Official planned merger and the two entities' disclosed functions. Specific XRP custody acceptance and balances are unknown."
+    },
+    {
+      "claim": "The bitbank MCP could be a useful public-only XRP/JPY market-data adapter for Barrot and selected MCP clients.",
+      "basis": "Public source registry includes ticker, order book, candles, transactions, flow/CVD and volatility tools. It is experimental, local and not connected to Barrot."
+    },
+    {
+      "claim": "SBI's stablecoin rails could complement or substitute for XRP as a JPY/USD settlement bridge; XRP remains separately distributed through exchange and reward products.",
+      "basis": "JPYSC/OUSD exploration, RLUSD/USDC distribution and XRP reward products. No production route or measured substitution is established."
+    }
+  ],
+  "unknowns": [
+    "Whether the planned SBI Shinsei Trust/SBI Clearing Trust merger receives all required approvals and completes on December 31.",
+    "Whether SBI Clearing Trust or the surviving trust bank accepts or holds XRP specifically, and in what amount.",
+    "Actual post-acquisition bitbank XRP/JPY customer balances, net deposits, turnover, market share and market-maker inventory.",
+    "Whether SMBC's approximately 24 million customers will receive JPYSC services and the actual number of users, balances and transactions.",
+    "Whether the secondary-reported JPY20.8B JPYSC issuance is independently reconcilable to issuer or on-chain records.",
+    "The chain, bridge, custody, redemption and settlement design for any JPYSC/OUSD interoperability pilot.",
+    "Whether the BlackRock tokenized MMF will accept JPYSC as subscription/redemption or collateral, which chain will be used and whether XRP appears in any route.",
+    "Whether Circle participates in Open Standard beyond the five founding partners cited; no direct Circle-SBI/SMFG agreement is established in the captured sources.",
+    "Whether the bitbank MCP public XRP/JPY data endpoints have been tested by Barrot, whether client support is compatible with current versions, and whether a stable release/tool manifest exists."
+  ],
+  "disconfirming_evidence": [
+    {
+      "claim": "SBI/SMFG and SBI/Startale announcements do not name XRP as the settlement asset for JPYSC/OUSD or SMFG use cases.",
+      "source_ids": [
+        "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030",
+        "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "claim": "The SBI/BlackRock document is an exploratory MOU, not evidence of a live tokenized-MMF or XRP collateral flow.",
+      "source_ids": [
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027"
+      ]
+    },
+    {
+      "claim": "SBI's XRP reward card and bond incentive establish distribution mechanisms, not XRP's use as the underlying payment or bond settlement rail.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+        "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030"
+      ]
+    },
+    {
+      "claim": "The bitbank MCP beta has not been connected to Barrot; public repository compatibility targets do not prove live authentication or nine-platform collaboration.",
+      "source_ids": [
+        "SRC-BITBANK-MCP-OFFICIAL-BETA-20260710",
+        "SRC-BITBANK-MCP-GITHUB-REPO-AUDIT-20261030"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "source": "SBI_HOLDINGS",
+      "target": "SMFG",
+      "relationship": "CAPITAL_AND_BUSINESS_ALLIANCE_SIGNED_2026_10_30",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030"
+      ]
+    },
+    {
+      "source": "SMFG",
+      "target": "SBI_STARTALE_MARKETING",
+      "relationship": "AGREED_5_PERCENT_CAPITAL_PARTICIPATION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030"
+      ]
+    },
+    {
+      "source": "SBI_STARTALE_MARKETING",
+      "target": "JPYSC",
+      "relationship": "PROMOTION_USE_CASE_RESEARCH_AND_POC_COORDINATION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030"
+      ]
+    },
+    {
+      "source": "SBI_SHINSEI_TRUST",
+      "target": "JPYSC",
+      "relationship": "ISSUER_AND_TRUST_BACKING_MANAGER",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-TRUST-MERGER-20261029",
+        "SRC-SBI-JPYSC-JGB-RESERVES-20260907"
+      ]
+    },
+    {
+      "source": "SBI_CLEARING_TRUST",
+      "target": "SBI_SHINSEI_TRUST",
+      "relationship": "PLANNED_MERGER_EFFECTIVE_2026_12_31",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE_FUTURE_EFFECTIVE",
+      "source_ids": [
+        "SRC-SBI-TRUST-MERGER-20261029"
+      ]
+    },
+    {
+      "source": "SBI_CLEARING_TRUST",
+      "target": "DIGITAL_ASSET_CUSTODY",
+      "relationship": "CRYPTO_ASSET_TRUST_CUSTODY_BUSINESS",
+      "evidence_class": "CONFIRMED_COMPANY_REPORTED",
+      "source_ids": [
+        "SRC-SBI-TRUST-MERGER-20261029"
+      ]
+    },
+    {
+      "source": "SBI_HOLDINGS",
+      "target": "BITBANK",
+      "relationship": "WHOLLY_OWNED_SUBSIDIARY_FROM_2026_10_01",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001"
+      ]
+    },
+    {
+      "source": "BITBANK",
+      "target": "XRP_JPY_SPOT_MARKET",
+      "relationship": "JAPANESE_EXCHANGE_TRADING_VENUE",
+      "evidence_class": "CONFIRMED_MARKET_LISTING_WITH_SECONDARY_LIQUIDITY_SNAPSHOT",
+      "source_ids": [
+        "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z"
+      ]
+    },
+    {
+      "source": "BITBANK",
+      "target": "BITBANK_LAB_MCP",
+      "relationship": "PUBLISHED_EXPERIMENTAL_LOCAL_MCP_SERVER",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT_AND_PUBLIC_REPOSITORY",
+      "source_ids": [
+        "SRC-BITBANK-MCP-OFFICIAL-BETA-20260710",
+        "SRC-BITBANK-MCP-GITHUB-REPO-AUDIT-20261030"
+      ]
+    },
+    {
+      "source": "BITBANK_LAB_MCP",
+      "target": "BITBANK_PUBLIC_API",
+      "relationship": "PUBLIC_TICKER_ORDERBOOK_CANDLES_TRADES_FLOW_VOLATILITY_AND_ANALYSIS_TOOLS",
+      "evidence_class": "PUBLIC_SOURCE_CODE_INSPECTION",
+      "source_ids": [
+        "SRC-BITBANK-MCP-GITHUB-REPO-AUDIT-20261030"
+      ]
+    },
+    {
+      "source": "BITBANK_LAB_MCP",
+      "target": "BITBANK_PRIVATE_API",
+      "relationship": "OPTIONAL_ACCOUNT_PORTFOLIO_AND_ORDER_TOOLS_REQUIRING_API_KEY",
+      "evidence_class": "VENDOR_AUTHORED_DOCUMENTATION",
+      "source_ids": [
+        "SRC-BITBANK-MCP-HITL-SECURITY-DOCS-20261030"
+      ]
+    },
+    {
+      "source": "BITBANK_LAB_MCP",
+      "target": "CLAUDE_CODEX_GEMINI_CLI",
+      "relationship": "DOCUMENTED_CLIENT_TARGETS_NOT_LIVE_AUTHENTICATION",
+      "evidence_class": "COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-BITBANK-MCP-OFFICIAL-BETA-20260710"
+      ]
+    },
+    {
+      "source": "SBI_STARTALE",
+      "target": "OPEN_STANDARD",
+      "relationship": "JOINED_AND_EXPLORING_JPYSC_OUSD_INTEROPERABILITY_POC",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "source": "SBI_STARTALE_BLACKROCK",
+      "target": "TOKENIZED_MMF_JPYSC",
+      "relationship": "EXPLORATORY_MOU_SIGNED_2026_10_27",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027"
+      ]
+    },
+    {
+      "source": "SBI_VC_TRADE",
+      "target": "XRP",
+      "relationship": "XRP_REWARD_CARD_AND_EXCHANGE_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_COMPANY_REPORTED",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501"
+      ]
+    },
+    {
+      "source": "SBI_VC_TRADE",
+      "target": "RLUSD_USDC",
+      "relationship": "STABLECOIN_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_COMPANY_REPORTED",
+      "source_ids": [
+        "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624"
+      ]
+    },
+    {
+      "source": "SBI_RIPPLE_ASIA",
+      "target": "XRPL",
+      "relationship": "TOKENIZED_DEPOSIT_AND_DEPOSIT_MONEY_POC",
+      "evidence_class": "CONFIRMED_COMPANY_REPORTED_POC",
+      "source_ids": [
+        "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-SBI-SMFG-JPYSC-DISTRIBUTION-20261030",
+      "claim": "SMFG's 5% participation and customer distribution capabilities will materially expand JPYSC use.",
+      "support": [
+        "Official 5% capital participation and joint use-case/PoC program.",
+        "Secondary report cites approximately 24M SMBC individual customers."
+      ],
+      "counter": [
+        "Customer count is not adoption.",
+        "No active service, user count, balances by channel or settlement volumes are disclosed."
+      ],
+      "disconfirming_test": "No material JPYSC balance or transaction growth after launch of any SMBC distribution channel."
+    },
+    {
+      "id": "HYP-SBI-XRP-DISTRIBUTION-VS-STABLECOIN-SUBSTITUTION-20261030",
+      "claim": "SBI's broader financial ecosystem can increase XRP access while stablecoin rails simultaneously reduce XRP's role as a JPY/USD bridge.",
+      "support": [
+        "Bitbank ownership, XRP reward products, SBI VC Trade XRP access and XRPL technical work.",
+        "JPYSC/OUSD interoperability and RLUSD/USDC distribution create alternative stablecoin rails."
+      ],
+      "counter": [
+        "No production JPYSC/OUSD route or measured bridge substitution exists.",
+        "Stablecoins and XRP may serve different legs/use cases."
+      ],
+      "disconfirming_test": "Production settlement data shows XRP is the dominant bridge in the relevant JPY/USD routes, or stablecoin routes remain unused."
+    },
+    {
+      "id": "HYP-SBI-TRUST-CUSTODY-CONSOLIDATION-20261030",
+      "claim": "The planned SBI Shinsei Trust/SBI Clearing Trust merger will strengthen regulated digital-asset custody and stablecoin backing capabilities.",
+      "support": [
+        "SBI Clearing Trust has a crypto-asset trust custody business; SBI Shinsei Trust issues JPYSC.",
+        "Official merger agreement and December 31 planned effective date."
+      ],
+      "counter": [
+        "Merger is not yet effective.",
+        "No XRP-specific custody acceptance or balance is disclosed."
+      ],
+      "disconfirming_test": "Regulatory approval fails, merger is delayed, or the surviving entity does not add crypto-asset custody scope."
+    },
+    {
+      "id": "HYP-BITBANK-MCP-PUBLIC-XRPJPY-ADAPTER-20261030",
+      "claim": "bitbank-lab-mcp can provide Barrot with a useful Japanese XRP/JPY public market-data feed and reproducible baseline analysis.",
+      "support": [
+        "Local MCP beta and public tools for ticker, order book, candles, transactions, CVD/flow and volatility.",
+        "Documented intended support for Claude Desktop, Codex and Gemini CLI."
+      ],
+      "counter": [
+        "No Barrot connection or live API call tested.",
+        "Experimental beta, inconsistent tool counts and package version metadata.",
+        "Single-venue data cannot substitute for synchronized multi-venue market data."
+      ],
+      "disconfirming_test": "Public XRP/JPY tools fail deterministic schema/time-quality tests or cannot be pinned to a stable release."
+    },
+    {
+      "id": "HYP-SBI-BITBANK-XRPJPY-LIQUIDITY-CONTROL-20261030",
+      "claim": "SBI's completed bitbank acquisition increases group control over Japanese XRP/JPY liquidity and customer distribution.",
+      "support": [
+        "Official full-acquisition completion on October 1.",
+        "Third-party snapshot shows approximately USD7.54M 24h XRP/JPY volume and 0.01% spread."
+      ],
+      "counter": [
+        "Only one third-party snapshot; no pre/post acquisition baseline or market-share panel.",
+        "Exchange volume and custody balances do not equal net XRP demand."
+      ],
+      "disconfirming_test": "Post-acquisition XRP/JPY volume, depth and customer balances show no durable change after controlling for market-wide volume."
+    },
+    {
+      "id": "HYP-SBI-OPENSTANDARD-COINBASE-CIRCLE-RELATIONSHIP-20261030",
+      "claim": "SBI/Startale's Open Standard participation creates an indirect ecosystem connection to Coinbase but does not establish a direct Circle partnership.",
+      "support": [
+        "SBI/Startale joined Open Standard and are exploring JPYSC/OUSD.",
+        "Coinbase is named among five founding partners of Open Standard."
+      ],
+      "counter": [
+        "The wider participant network may include other firms; absence from the five founders is not proof of no participation.",
+        "No direct SBI/Circle agreement or XRP settlement route is identified."
+      ],
+      "disconfirming_test": "A direct Circle-SBI/SMFG agreement or production Circle-issued USDC integration into the JPYSC/OUSD route is documented."
+    }
+  ],
+  "source_ids": [
+    "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030",
+    "SRC-NADA-SMFG-SBI-STARTALE-JPYSC-SECONDARY-20261030",
+    "SRC-BITBANK-MCP-OFFICIAL-BETA-20260710",
+    "SRC-BITBANK-MCP-GITHUB-REPO-AUDIT-20261030",
+    "SRC-BITBANK-MCP-HITL-SECURITY-DOCS-20261030",
+    "SRC-BITBANK-MCP-SECURITY-POLICY-20261030",
+    "SRC-SBI-TRUST-MERGER-20261029",
+    "SRC-SBI-JPYSC-JGB-RESERVES-20260907",
+    "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+    "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+    "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624",
+    "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001",
+    "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+    "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+    "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+    "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930",
+    "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630",
+    "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z",
+    "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030"
+  ]
+}

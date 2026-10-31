@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0",
+  "record_type": "queued_source_candidates_batch",
+  "batch_id": "XRP-INSTITUTIONAL-AND-CREATOR-SOURCE-QUEUE-20261029T2220Z",
+  "captured_on_utc_date": "2026-10-29",
+  "status": "DISCOVERED_NOT_INGESTED_IN_CANONICAL_SOURCE_ARCHIVE",
+  "not_for_model_features": true,
+  "purpose": "Queue primary institutional announcements and public-video identity candidates for source deduplication and ingestion after the sharded-ledger validator/regression tests are executed. These candidates do not change canonical source counts or forecast status.",
+  "institutional_candidates": [
+    {
+      "candidate_id": "Q-BNY-RIPPLE-CUSTODY-20261027",
+      "source_class": "PRIMARY_COUNTERPARTY_ANNOUNCEMENT",
+      "url": "https://prodcs.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "published_at": "2026-10-27",
+      "claim": "BNY says its Digital Asset Custody platform supports XRP and RLUSD; BNY is RLUSD's primary reserve custodian; direct mint/redeem and expanded tokenized-asset support are intended future capabilities subject to approvals.",
+      "evidence_class": "CONFIRMED_ANNOUNCEMENT; FUTURE_CAPABILITIES_NOT_LIVE"
+    },
+    {
+      "candidate_id": "Q-OCC-RIPPLE-CHARTER-STATUS-20261026",
+      "source_class": "PRIMARY_REGULATOR_RECORD",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "published_at": "status page; approved 2025-12-12; consummated/effective 2026-10-26",
+      "claim": "OCC Corporate Applications Search lists Ripple National Trust Bank, application 2025-Charter-342347, approved Dec 12 2025 and consummated/effective Oct 26 2026. This does not establish that every banking activity is live.",
+      "evidence_class": "REGULATOR_RECORD"
+    },
+    {
+      "candidate_id": "Q-RIPPLE-ROBINHOOD-20261027",
+      "source_class": "PRIMARY_CORPORATE_ANNOUNCEMENT",
+      "url": "https://ripple.com/ripple-press/ripple-and-robinhood-partner-to-power-the-next-generation-of-finance/",
+      "published_at": "2026-10-27",
+      "claim": "Ripple says RLUSD is live on Robinhood Chain and Bitstamp by Robinhood, expected later in the Robinhood app, and intended for institutional settlement on XRPL; the announcement also covers Ripple Treasury and Ripple Prime. Actual production volume and XRP bridge usage remain unmeasured.",
+      "evidence_class": "COMPANY_REPORTED_ANNOUNCEMENT"
+    },
+    {
+      "candidate_id": "Q-RIPPLE-TREASURY-247-20261026",
+      "source_class": "PRIMARY_CORPORATE_ANNOUNCEMENT",
+      "url": "https://ripple.com/ripple-press/ripple-treasury-introduces-always-on-corporate-treasury-platform-to-modernize-corporate-cash-management/",
+      "published_at": "2026-10-26",
+      "claim": "Ripple announced always-on corporate treasury orchestration and a 24/7 Returns capability for eligible digital assets including RLUSD. Actual customer balances, flows and realized returns were not measured.",
+      "evidence_class": "COMPANY_REPORTED_ANNOUNCEMENT"
+    },
+    {
+      "candidate_id": "Q-RIPPLE-DRIVEWEALTH-COLLATERAL-20261014",
+      "source_class": "PRIMARY_CORPORATE_ANNOUNCEMENT",
+      "url": "https://ripple.com/ripple-press/drivewealth-and-ripple-partner-to-bring-institutional-digital-asset-infrastructure-to-global-investing/",
+      "published_at": "2026-10-14",
+      "claim": "Ripple/DriveWealth describe planned RLUSD settlement on XRPL in Europe with US expansion planned, custody integration, stablecoin funding of collateral accounts and exploration of equity financing through Ripple Prime. Announced plans are not measured production flows.",
+      "evidence_class": "COMPANY_REPORTED_ANNOUNCEMENT"
+    },
+    {
+      "candidate_id": "Q-RIPPLE-COINBASE-RLUSD-COLLATERAL-20261028",
+      "source_class": "PRIMARY_CORPORATE_ANNOUNCEMENT",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "published_at": "2026-10-28",
+      "claim": "RLUSD trading/management announced for Coinbase Prime, Exchange and retail, with XRPL/Base/Ethereum deposit-withdrawal support; Coinbase Global Exchange collateral availability was described as future rollout.",
+      "evidence_class": "COMPANY_REPORTED_ANNOUNCEMENT"
+    },
+    {
+      "candidate_id": "Q-RIPPLE-C2FO-RLUSD-SUPPLY-CLAIM-20261027",
+      "source_class": "PRIMARY_CORPORATE_ANNOUNCEMENT",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "published_at": "2026-10-27",
+      "claim": "Ripple's announcement states RLUSD market capitalization exceeded $2.5B and more than $1B was issued on XRPL; issuer-reported metrics require independent supply/circulation corroboration. C2FO's $520B refers to historical working-capital programs, not XRPL volume.",
+      "evidence_class": "COMPANY_REPORTED_METRICS"
+    },
+    {
+      "candidate_id": "Q-RIPPLE-BANNER-20261028",
+      "source_class": "PRIMARY_CORPORATE_ANNOUNCEMENT",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "published_at": "2026-10-28",
+      "claim": "Ripple reports a $900M annualized product-revenue run rate, $16T in transactions enabled across products in 2025, 1,700+ institutional/corporate/enterprise clients and 3x growth in customers/partners using multiple solutions. These are company-reported claims, not independently audited XRP flow data.",
+      "evidence_class": "COMPANY_REPORTED_METRICS"
+    }
+  ],
+  "creator_video_candidates": [
+    {
+      "candidate_id": "Q-KAMILAH-XRP-NEED-20260319",
+      "source_class": "PUBLIC_VIDEO_INDEX_CANDIDATE",
+      "index_url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "video_url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "published_at": {
+        "youtube": "2026-03-18",
+        "glasp_index": "2026-03-19"
+      },
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "creator_label": "Kamilah Stevenson",
+      "claim_type": "creator commentary; not independent market evidence",
+      "status": "direct YouTube availability and channel ownership not exhaustively verified",
+      "index_metadata": {
+        "youtube_views_at_search": 98410,
+        "channel_followers_at_search": 139000,
+        "source": "direct YouTube result"
+      }
+    },
+    {
+      "candidate_id": "Q-CAMILA-RIPPLE-BANK-20251214",
+      "source_class": "PUBLIC_VIDEO_INDEX_CANDIDATE",
+      "index_url": "https://glasp.co/youtube/QslbjGQD0MU",
+      "video_url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "published_at": {
+        "youtube": "2025-12-13",
+        "glasp_index": "2025-12-14"
+      },
+      "title": "Ripple Just Became a BANK and Most XRP Holders Have No Idea",
+      "creator_label": "Kamilah Stevenson channel candidate; transcript self-introduction spells name Camila Stevenson",
+      "claim_type": "creator commentary; not independent regulatory or price evidence",
+      "status": "identity spelling conflict retained",
+      "index_metadata": {
+        "youtube_views_at_search": 76750,
+        "glasp_views_at_search": 76000,
+        "source": "direct YouTube result plus Glasp index"
+      }
+    },
+    {
+      "candidate_id": "Q-KAMILAH-XRP-ETF-20260113",
+      "source_class": "PUBLIC_VIDEO_INDEX_CANDIDATE",
+      "index_url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "video_url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "published_at": {
+        "glasp_index": "2026-01-13",
+        "youtube_direct_date": "not yet independently checked"
+      },
+      "title": "XRP ETFs are here, but something big is happening in the background",
+      "creator_label": "Kamilah Stevenson",
+      "claim_type": "creator commentary; claims require independent verification",
+      "status": "inventory partial",
+      "identity_evidence": "Glasp transcript self-introduction says Camila Stevenson; indexed creator label is Kamilah Stevenson."
+    },
+    {
+      "candidate_id": "Q-KAMILAH-CRYPTO-WEALTH-20260115",
+      "source_class": "PUBLIC_VIDEO_INDEX_CANDIDATE",
+      "index_url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "video_url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "published_at": {
+        "youtube": "2026-01-14",
+        "glasp_index": "2026-01-15"
+      },
+      "title": "Why most people will lose their crypto wealth in the next 3 years",
+      "creator_label": "Kamilah Stevenson",
+      "claim_type": "creator commentary; not independent market evidence",
+      "status": "inventory partial",
+      "identity_evidence": "Direct YouTube page labels creator Kamilah Stevenson; transcript self-introduction says Camila Stevenson."
+    },
+    {
+      "candidate_id": "Q-KAMILAH-CHANNEL-IDENTITY",
+      "source_class": "SECONDARY_CHANNEL_DIRECTORY",
+      "source_url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "creator_label": "Kamilah Stevenson",
+      "claim": "Secondary directory associates the channel ID with Kamilah Stevenson. One indexed transcript self-identifies as Camila Stevenson. No evidence yet proves equivalence to the requested Camilla Stephenson.",
+      "status": "identity unresolved"
+    }
+  ],
+  "identity_resolution": {
+    "requested_identity": "Camilla Stephenson",
+    "observed_labels": [
+      "Kamilah Stevenson",
+      "Camila Stevenson"
+    ],
+    "status": "UNRESOLVED",
+    "rule": "Do not merge identities without direct channel/profile evidence. This list is a candidate inventory, not an exhaustive enumeration of every public YouTube upload.",
+    "date_discrepancies": [
+      "How Much XRP Do You ACTUALLY Need?: YouTube says 2026-03-18; Glasp index says 2026-03-19.",
+      "Ripple Just Became a BANK: YouTube says 2025-12-13; Glasp index says 2025-12-14.",
+      "Why Most People Will Lose Their Crypto Wealth: YouTube says 2026-01-14; Glasp index says 2026-01-15."
+    ]
+  },
+  "deduplication_notes": [
+    "Circle's official USDC transparency dashboard is already represented in the canonical source archive; do not duplicate it.",
+    "C2FO/Ripple and Coinbase/RLUSD announcements may already have earlier related source records; reconcile by URL and claim date before adding source IDs.",
+    "The queued items are not admitted as model features and are not counted in canonical source_records."
+  ],
+  "next_action": "After the archive validator and regression tests pass, deduplicate these candidates against the canonical source archive, add new source IDs, rebuild a versioned source archive set, and update the relationship graph with BNY custody, Ripple National Trust Bank status, Robinhood/Ripple Treasury, DriveWealth collateral, and creator identity uncertainty."
+}

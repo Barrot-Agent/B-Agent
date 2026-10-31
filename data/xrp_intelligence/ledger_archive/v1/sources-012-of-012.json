@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 11,
+  "chunk_count": 12,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+      "evidence_class": "CONFIRMED_PRIMARY_FCM_DISCLOSURE",
+      "url": "https://ripple.com/prime-brokerage-disclosures/hrp-civ-us-llc/",
+      "title": "Ripple Prime disclosure: Hidden Road Partners CIV US LLC is a registered FCM",
+      "accessed_at_utc": "2026-10-30T02:35:00Z",
+      "note": "Ripple's official FCM-specific disclosure identifies Hidden Road Partners CIV US LLC as a registered futures commission merchant and also an SEC/FINRA-registered broker-dealer. The exact same legal-entity name appears in Bitnomial Clearinghouse's current clearing-member list. Ripple separately states the Hidden Road acquisition closed and Hidden Road is now Ripple Prime. This establishes a direct legal-entity/clearing-member connection; it does not establish Letter 26-05 reliance, XRP collateral deposits, customer balances or utilization."
+    },
+    {
+      "id": "SRC-REUTERS-COINBASE-Q3-PREDICTION-MARKETS-20261030T0235Z",
+      "evidence_class": "INDEPENDENT_SECONDARY_COMPANY_RESULTS_REPORT",
+      "url": "https://www.reuters.com/business/finance/coinbase-snaps-losing-streak-with-third-quarter-profit-crypto-trading-rebound-2026-10-29/",
+      "title": "Reuters Coinbase Q3 2026: prediction markets, derivatives and revenue diversification",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T02:35:00Z",
+      "note": "Reuters reports prediction-market revenue exceeded $200M on an annualized run-rate basis; prediction markets plus derivatives accounted for about 25% of Q3 transaction revenue; subscription/services were about 49% of net revenue. These are run-rate/mix measures, not realized XRP trading or settlement flows. Coinbase's transaction revenue still fell 43% year-over-year to $590.2M; GAAP profit was helped by crypto-investment gains."
+    }
+  ]
+}

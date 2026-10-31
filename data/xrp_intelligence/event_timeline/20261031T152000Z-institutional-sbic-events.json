@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0",
+  "record_type": "event_timeline",
+  "timeline_id": "XRP-INSTITUTIONAL-SBIC-EVENTS-20261031T152000Z",
+  "captured_at_utc": "2026-10-31T15:20:00Z",
+  "events": [
+    {
+      "date": "2024-03-05",
+      "entity": "Tokyo SBIC",
+      "event": "ChatGPT/generative-AI seminar",
+      "status": "HELD",
+      "source": "SRC-20261031T152000Z-SBIC-INDEX"
+    },
+    {
+      "date": "2024-09-11",
+      "entity": "Tokyo SBIC",
+      "event": "Further ChatGPT/generative-AI seminar",
+      "status": "HELD",
+      "source": "SRC-20261031T152000Z-SBIC-INDEX"
+    },
+    {
+      "date": "2025-02-26",
+      "entity": "Tokyo SBIC",
+      "event": "ChatGPT seminar with Microsoft Japan participation",
+      "status": "HELD",
+      "source": "SRC-20261031T152000Z-SBIC-20250226"
+    },
+    {
+      "date": "2026-03-05",
+      "entity": "Tokyo SBIC",
+      "event": "ChatGPT seminar listed in official past-event index",
+      "status": "HELD",
+      "source": "SRC-20261031T152000Z-SBIC-INDEX"
+    },
+    {
+      "date": "2026-06-09",
+      "entity": "Ripple",
+      "event": "XRPL AI Starter Kit with Claude MCP/x402 skills",
+      "status": "PUBLIC_TOOLING",
+      "source": "SRC-20261031T152000Z-XRPL-AI-KIT"
+    },
+    {
+      "date": "2026-10-06",
+      "entity": "Tokyo SBIC",
+      "event": "Separate generative-AI seminar",
+      "status": "HELD",
+      "source": "SRC-20261031T152000Z-SBIC-INDEX"
+    },
+    {
+      "date": "2026-10-12",
+      "entity": "Standard Chartered",
+      "event": "RLUSD custody live; LMAX collateral planned",
+      "status": "MIXED_LIVE_PLANNED",
+      "source": "SRC-20261031T152000Z-SC-RLUSD"
+    },
+    {
+      "date": "2026-10-15",
+      "entity": "Ripple Prime",
+      "event": "RWA perpetual swaps with RLUSD collateral",
+      "status": "LIVE_SUBJECT_TO_JURISDICTION",
+      "source": "SRC-20261031T152000Z-RIPPLE-PRIME"
+    },
+    {
+      "date": "2026-10-26",
+      "entity": "OCC/Ripple National Trust Bank",
+      "event": "Charter consummated/effective",
+      "status": "EFFECTIVE",
+      "source": "SRC-20261031T152000Z-OCC-RIPPLE-NTB"
+    },
+    {
+      "date": "2026-10-26",
+      "entity": "Aviva Investors",
+      "event": "GBP tokenized liquidity-fund share class on XRPL; GBP 50M investment",
+      "status": "LAUNCHED",
+      "source": "SRC-20261031T152000Z-AVIVA-XRPL"
+    },
+    {
+      "date": "2026-10-26",
+      "entity": "Ripple Treasury",
+      "event": "Always-on corporate treasury/24-7 Returns announcement",
+      "status": "ANNOUNCED",
+      "source": "SRC-20261031T152000Z-RIPPLE-TREASURY"
+    },
+    {
+      "date": "2026-10-27",
+      "entity": "BNY/Ripple",
+      "event": "XRP/RLUSD custody and tokenized trade finance",
+      "status": "MIXED_LIVE_EXPLORATORY",
+      "source": "SRC-20261031T152000Z-BNY-RIPPLE"
+    },
+    {
+      "date": "2026-10-27",
+      "entity": "C2FO/Ripple",
+      "event": "Instant Pay on XRPL with capital providers and RLUSD settlement",
+      "status": "ANNOUNCED_WAITLIST",
+      "source": "SRC-20261031T152000Z-C2FO"
+    },
+    {
+      "date": "2026-10-27",
+      "entity": "Ripple/Robinhood",
+      "event": "Multi-product partnership; XRPL institutional settlement planned",
+      "status": "MIXED_LIVE_PLANNED",
+      "source": "SRC-20261031T152000Z-ROBINHOOD"
+    },
+    {
+      "date": "2026-10-28",
+      "entity": "Ripple/Coinbase",
+      "event": "RLUSD distribution on Coinbase across XRPL/Base/Ethereum; Global Exchange collateral later",
+      "status": "LIVE_ACCESS_PLANNED_COLLATERAL",
+      "source": "SRC-20261031T152000Z-COINBASE-RLUSD"
+    },
+    {
+      "date": "2026-10-28",
+      "entity": "Ripple",
+      "event": "Multi-product strategy update, approaching USD 900M product revenue run rate",
+      "status": "COMPANY_REPORTED",
+      "source": "SRC-20261031T152000Z-RIPPLE-STRATEGY"
+    },
+    {
+      "date": "2026-10-29",
+      "entity": "Coinbase",
+      "event": "Q3 earnings and 10-Q; Circle distribution arrangement renewed on same terms",
+      "status": "FILED",
+      "source": "SRC-20261031T152000Z-COINBASE-Q3-10Q"
+    },
+    {
+      "date": "2026-10-30",
+      "entity": "XRP ETFs",
+      "event": "XRP Insights holdings row and partial aggregator differences",
+      "status": "RECONCILIATION_REQUIRED",
+      "source": "SRC-20261031T152000Z-XRP-INSIGHTS"
+    },
+    {
+      "date": "2026-10-31",
+      "entity": "Binance",
+      "event": "Recovery Update #3 claims 90% stolen-asset replenishment and top-ten 1:1 coverage including XRP",
+      "status": "COMPANY_CLAIM_ZK_PROOF_TARGET_NOV3",
+      "source": "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3"
+    },
+    {
+      "date": "2026-10-31",
+      "entity": "SBI VC Trade",
+      "event": "Crypto-card application campaign reaches Japan-date end",
+      "status": "ENDED_AT_JAPAN_DATE_BOUNDARY",
+      "source": "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T092042Z-COINBASE-Q3-INVESTMENT-COLLATERAL-AND-MARKET-SHARE-QUALITY",
+  "captured_at_utc": "2026-10-31T09:20:42Z",
+  "source_ids": [
+    "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+    "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+    "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+    "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+    "SRC-20261031T090517Z-GH-MAIN-CROSS-ANALYSIS-COMMIT",
+    "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY",
+    "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+    "SRC-20261031T090517Z-GH-PR1400-EXACT-HEAD-CI",
+    "SRC-20261031T090517Z-GH-PR1400-FAIL-CLOSED-GATE",
+    "SRC-20261031T090517Z-GH-PR1401-READONLY-CROSS-ANALYSIS",
+    "SRC-20261031T090517Z-GH-PR1402-APPROVAL-PUSH-NOOP",
+    "SRC-20261031T090517Z-GH-PR1398-DATABRICKS-TOKEN-SAFETY",
+    "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+    "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+    "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+    "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+    "SRC-CIRCLE-ARC-MAINNET-20260916",
+    "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z"
+  ],
+  "source_reference_count": 22,
+  "missing_source_references": 0,
+  "nodes": [
+    {
+      "id": "COINBASE",
+      "type": "crypto_platform",
+      "label": "Coinbase"
+    },
+    {
+      "id": "BTC",
+      "type": "cryptoasset",
+      "label": "Bitcoin"
+    },
+    {
+      "id": "ETH",
+      "type": "cryptoasset",
+      "label": "Ethereum"
+    },
+    {
+      "id": "XRP",
+      "type": "cryptoasset",
+      "label": "XRP"
+    },
+    {
+      "id": "CRYPTO_COLLATERAL_POOL",
+      "type": "aggregate_balance",
+      "label": "Coinbase crypto assets held as collateral"
+    },
+    {
+      "id": "CRYPTO_BORROWED_POOL",
+      "type": "aggregate_balance",
+      "label": "Coinbase crypto assets borrowed"
+    },
+    {
+      "id": "COINBASE_Q3_2026",
+      "type": "financial_period",
+      "label": "Coinbase Q3 2026"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-COINBASE-Q3-BTC-INVESTMENT",
+      "from": "COINBASE",
+      "relation": "reported_holding_of_17954_BTC_fair_value_about_1_501B_USD",
+      "to": "BTC",
+      "evidence_class": "SEC_10Q_REPORTED_INVESTMENT_HOLDING",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ]
+    },
+    {
+      "id": "E-COINBASE-Q3-ETH-INVESTMENT",
+      "from": "COINBASE",
+      "relation": "reported_holding_of_152649_ETH_fair_value_about_410M_USD",
+      "to": "ETH",
+      "evidence_class": "SEC_10Q_REPORTED_INVESTMENT_HOLDING",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ]
+    },
+    {
+      "id": "E-COINBASE-Q3-OTHER-CRYPTO-INVESTMENT",
+      "from": "COINBASE",
+      "relation": "reported_other_crypto_investment_fair_value_about_314M_USD_without_individual_positions_above_5pct",
+      "to": "XRP",
+      "evidence_class": "XRP_SPECIFIC_POSITION_NOT_DISCLOSED; NODE_IS_UNKNOWN_NOT_CONFIRMED_HOLDING",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ]
+    },
+    {
+      "id": "E-COINBASE-Q3-AGGREGATE-COLLATERAL",
+      "from": "COINBASE",
+      "relation": "reported_aggregate_crypto_assets_held_as_collateral_about_1_3B_USD_composition_unknown",
+      "to": "CRYPTO_COLLATERAL_POOL",
+      "evidence_class": "SEC_10Q_AGGREGATE_BALANCE",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ]
+    },
+    {
+      "id": "E-COINBASE-Q3-AGGREGATE-BORROWED",
+      "from": "COINBASE",
+      "relation": "reported_aggregate_crypto_assets_borrowed_about_389_7M_USD_composition_unknown",
+      "to": "CRYPTO_BORROWED_POOL",
+      "evidence_class": "SEC_10Q_AGGREGATE_BALANCE",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ]
+    },
+    {
+      "id": "E-COINBASE-Q3-INVESTMENT-GAIN",
+      "from": "COINBASE",
+      "relation": "reported_715_022M_USD_gain_on_crypto_assets_held_for_investment_primarily_BTC_ETH_fair_value_remeasurement",
+      "to": "COINBASE_Q3_2026",
+      "evidence_class": "SEC_10Q_OPERATING_VS_NONOPERATING_EARNINGS_SEPARATION",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ]
+    },
+    {
+      "id": "E-COINBASE-Q3-MARKET-SHARE-METHOD",
+      "from": "COINBASE",
+      "relation": "reported_10_7pct_trading_volume_market_share_including_stablecoin_conversion_activity",
+      "to": "COINBASE_Q3_2026",
+      "evidence_class": "COMPANY_DECK_METHODOLOGY_NOTE",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-COINBASE-Q3-EARNINGS-QUALITY",
+      "statement": "Coinbase's Q3 GAAP net income overstates underlying operating momentum because $715.0M of crypto investment remeasurement gains drove most of $718.7M net income while revenue fell 35% and transaction revenue fell 44% year over year.",
+      "classification": "STRONGLY_SUPPORTED_BY_SEC_10Q",
+      "supporting_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ],
+      "disconfirming_or_alternative": [
+        "Subscription and services still represented 49% of net revenue.",
+        "Average USDC held reached $22B.",
+        "Market share reached 10.7%, AOP share 12.5%, and prediction-markets annualized revenue exceeded $200M."
+      ],
+      "status": "OPERATING_EARNINGS_AND_INVESTMENT_REVALUATION_MUST_BE_SEPARATED"
+    },
+    {
+      "id": "H-COINBASE-XRP-COLLATERAL-UNKNOWN",
+      "statement": "Coinbase has material aggregate crypto collateral and borrowed-crypto balances, but the public Q3 filing does not disclose XRP-specific amounts.",
+      "classification": "CONFIRMED_AGGREGATE; XRP_COMPONENT_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ],
+      "disconfirming_or_alternative": [
+        "Coinbase separately supports XRP collateral in perpetual futures and cbXRP-backed Morpho borrowing, but product eligibility does not establish balances."
+      ],
+      "status": "NO_XRP_COLLATERAL_FEATURE_ADMISSION"
+    }
+  ]
+}

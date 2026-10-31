@@ -1,0 +1,364 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T050500Z-BINANCE-MARKET-MAIN-WRITE",
+  "created_at_utc": "2026-10-31T05:05:00Z",
+  "source_ids": [
+    "SRC-20261031-BINANCE-UPDATE2-0505Z",
+    "SRC-20261031-REUTERS-BINANCE-RESERVE-0505Z",
+    "SRC-20261031-COINDESK-BINANCE-BREACH-0505Z",
+    "SRC-20261031-INVESTING-XRP-HISTORY-0505Z",
+    "SRC-20261031-KODEXIUS-XRP-OI-0014Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-2320Z",
+    "SRC-20261031-GITHUB-MAIN-COMMIT-0505Z",
+    "SRC-20261031-GITHUB-CROSS-ANALYSIS-0505Z",
+    "SRC-20261031-GITHUB-ACCURACY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SCHEDULER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SELFDEPLOY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SUBSCRIBER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-PINGPONG-ENGINE-0505Z",
+    "SRC-20261031-GITHUB-RIEMANN-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-GUMROAD-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-WEBMCP-SANDBOX-0505Z",
+    "SRC-20261031-GITHUB-WEBMCP-MONETIZATION-0505Z",
+    "SRC-20261031-GITHUB-TRANSPARENCY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-HOVER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-PR1392-0505Z",
+    "SRC-20261031-GITHUB-PR1393-0505Z",
+    "SRC-20261031-GITHUB-PR1395-0505Z",
+    "SRC-20261031-GITHUB-PR1395-CI-0505Z",
+    "SRC-20261031-GITHUB-PR1395-GATE-0505Z"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "type": "exchange"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "type": "native_crypto_asset"
+    },
+    {
+      "id": "BINANCE_RESERVE_PLAN",
+      "label": "Binance incident reserve plan",
+      "type": "corporate_reserve_claim"
+    },
+    {
+      "id": "BINANCE_POR",
+      "label": "Binance post-incident Proof of Reserves",
+      "type": "disclosure"
+    },
+    {
+      "id": "KODEXIUS",
+      "label": "Kodexius",
+      "type": "market_data_provider"
+    },
+    {
+      "id": "TRADRADAR",
+      "label": "TradRadar",
+      "type": "market_data_provider"
+    },
+    {
+      "id": "B_AGENT_MAIN",
+      "label": "B-Agent main branch",
+      "type": "repository_branch"
+    },
+    {
+      "id": "CROSS_ANALYSIS",
+      "label": "Cross-analysis workflow",
+      "type": "github_workflow"
+    },
+    {
+      "id": "SIGNAL_ACCURACY",
+      "label": "Signal-accuracy workflow",
+      "type": "github_workflow"
+    },
+    {
+      "id": "SCHEDULER_TICK",
+      "label": "Scheduler tick workflow",
+      "type": "github_workflow"
+    },
+    {
+      "id": "AUTONOMOUS_DEPLOY",
+      "label": "Autonomous self-deployment workflow",
+      "type": "github_workflow"
+    },
+    {
+      "id": "PR1392",
+      "label": "PR #1392 read-only workflow consolidation",
+      "type": "pull_request"
+    },
+    {
+      "id": "PR1393",
+      "label": "PR #1393 Morpho ingestion",
+      "type": "pull_request"
+    },
+    {
+      "id": "PR1395",
+      "label": "PR #1395 read-only scheduler queue audit",
+      "type": "pull_request"
+    },
+    {
+      "id": "MORPHO_API",
+      "label": "Morpho public API",
+      "type": "public_data_api"
+    }
+  ],
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_RESERVE_PLAN",
+      "relation": "announced_company_funded_replacement",
+      "status": "OFFICIAL_AGGREGATE_CLAIM; TOKEN_LEVEL_XRP_ALLOCATION_UNKNOWN",
+      "source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z",
+        "SRC-20261031-REUTERS-BINANCE-RESERVE-0505Z"
+      ]
+    },
+    {
+      "from": "BINANCE_RESERVE_PLAN",
+      "to": "XRP",
+      "relation": "possible_token_specific_replenishment_demand",
+      "status": "UNKNOWN_NOT_QUANTIFIED; NO_XRP_FILL_EVIDENCE",
+      "source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ]
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_POR",
+      "relation": "planned_post_incident_reserve_disclosure",
+      "status": "TARGET_2026_11_02_NOT_COMPLETED",
+      "source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z",
+        "SRC-20261031-COINDESK-BINANCE-BREACH-0505Z"
+      ]
+    },
+    {
+      "from": "KODEXIUS",
+      "to": "XRP",
+      "relation": "reports_perpetual_oi_and_funding",
+      "status": "739.41M_OI_7_CONTRACTS_2026_10_31_0014Z",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0014Z"
+      ]
+    },
+    {
+      "from": "TRADRADAR",
+      "to": "XRP",
+      "relation": "reports_perpetual_oi_and_funding",
+      "status": "1.85B_OI_7_EXCHANGES_2026_10_30_2320Z",
+      "source_ids": [
+        "SRC-20261031-TRADRADAR-XRP-OI-2320Z"
+      ]
+    },
+    {
+      "from": "KODEXIUS",
+      "to": "TRADRADAR",
+      "relation": "provider_coverage_reconciliation",
+      "status": "OPEN_NON_COMPARABLE; DO_NOT_AVERAGE",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0014Z",
+        "SRC-20261031-TRADRADAR-XRP-OI-2320Z"
+      ]
+    },
+    {
+      "from": "CROSS_ANALYSIS",
+      "to": "B_AGENT_MAIN",
+      "relation": "scheduled_commit_push_capability",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1392_MERGED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-CROSS-ANALYSIS-0505Z",
+        "SRC-20261031-GITHUB-PR1392-0505Z"
+      ]
+    },
+    {
+      "from": "SIGNAL_ACCURACY",
+      "to": "B_AGENT_MAIN",
+      "relation": "scheduled_accuracy_artifact_commit_push_capability",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1392_MERGED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-ACCURACY-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-PR1392-0505Z"
+      ]
+    },
+    {
+      "from": "SCHEDULER_TICK",
+      "to": "B_AGENT_MAIN",
+      "relation": "scheduled_queue_commit_and_workflow_dispatch",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1395_MERGED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-SCHEDULER-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-PR1395-0505Z"
+      ]
+    },
+    {
+      "from": "AUTONOMOUS_DEPLOY",
+      "to": "B_AGENT_MAIN",
+      "relation": "scheduled_telemetry_commit_push",
+      "status": "PR1392_PROPOSES_ARTIFACT_ONLY; UNMERGED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-SELFDEPLOY-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-PR1392-0505Z"
+      ]
+    },
+    {
+      "from": "PR1392",
+      "to": "CROSS_ANALYSIS",
+      "relation": "proposes_read_only_artifact_output",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1392-0505Z"
+      ]
+    },
+    {
+      "from": "PR1392",
+      "to": "SIGNAL_ACCURACY",
+      "relation": "proposes_read_only_artifact_output",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1392-0505Z"
+      ]
+    },
+    {
+      "from": "PR1392",
+      "to": "AUTONOMOUS_DEPLOY",
+      "relation": "proposes_read_only_telemetry_artifact",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1392-0505Z"
+      ]
+    },
+    {
+      "from": "PR1395",
+      "to": "SCHEDULER_TICK",
+      "relation": "proposes_manual_only_read_only_queue_audit",
+      "status": "OPEN_DRAFT_UNMERGED; CI_AND_GATE_PASS",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1395-0505Z",
+        "SRC-20261031-GITHUB-PR1395-CI-0505Z",
+        "SRC-20261031-GITHUB-PR1395-GATE-0505Z"
+      ]
+    },
+    {
+      "from": "PR1393",
+      "to": "MORPHO_API",
+      "relation": "implements_read_only_morpho_market_ingestion",
+      "status": "MOCK_TESTED; LIVE_API_NOT_EXECUTED; OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1393-0505Z"
+      ]
+    },
+    {
+      "from": "MORPHO_API",
+      "to": "XRP",
+      "relation": "potential_historical_cbxrp_collateral_feature_source",
+      "status": "DESIGNED_NOT_EXECUTED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1393-0505Z"
+      ]
+    },
+    {
+      "from": "B_AGENT_MAIN",
+      "to": "PR1392",
+      "relation": "base_branch_one_commit_ahead_of_pr_base",
+      "status": "FRESH_MAIN_REVALIDATION_REQUIRED",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1392-0505Z"
+      ]
+    },
+    {
+      "from": "B_AGENT_MAIN",
+      "to": "PR1395",
+      "relation": "pr_base_matches_inspected_main",
+      "status": "EXACT_BASE_AB053B0; HEAD_CI_PASS; GATE_PASS",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1395-0505Z",
+        "SRC-20261031-GITHUB-PR1395-CI-0505Z",
+        "SRC-20261031-GITHUB-PR1395-GATE-0505Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-050500-01",
+      "hypothesis": "Binance's replacement program creates measurable XRP market or OTC demand.",
+      "status": "POSSIBLE_NOT_ESTABLISHED",
+      "support": [
+        "Binance says it is acquiring remaining relevant affected tokens through market and OTC channels.",
+        "XRP was among assets transferred in the incident."
+      ],
+      "disconfirming_or_alternative": [
+        "No XRP-specific quantity, order, fill, OTC settlement or reserve-address movement has been disclosed.",
+        "Existing inventory, internal transfers or OTC sourcing may satisfy obligations without visible spot-market buying."
+      ],
+      "test": "Compare token-level PoR addresses before/after the incident, official XRP wallet movements and any execution disclosure."
+    },
+    {
+      "id": "H-050500-02",
+      "hypothesis": "The October 29 XRP daily decline was materially caused by the Binance incident.",
+      "status": "NOT_IDENTIFIED",
+      "support": [
+        "The Oct29 daily candle includes the incident timestamp and shows a -6.84% close-to-close move."
+      ],
+      "disconfirming_or_alternative": [
+        "Daily candles are coarse; broader BTC/ETH weakness, macro news, ETF flows and derivatives positioning are confounders.",
+        "No event-level return or synthetic-control study has been run."
+      ],
+      "test": "Run synchronized event study with BTC/ETH controls, spot depth, venue-specific OI/funding, ETF flows and incident wallet events."
+    },
+    {
+      "id": "H-050500-03",
+      "hypothesis": "Kodexius and TradRadar OI divergence is a provider coverage/aggregation difference rather than a market move.",
+      "status": "LIKELY_MEASUREMENT_SCOPE_DIFFERENCE",
+      "support": [
+        "Kodexius specifies seven contracts; TradRadar specifies seven exchanges; their OI totals differ materially and timestamps differ."
+      ],
+      "disconfirming_or_alternative": [
+        "Contract-level membership and methodology have not yet been independently compared."
+      ],
+      "test": "Map exact contracts, quote currencies, linear/inverse treatment, exchange inclusion and timestamp alignment."
+    },
+    {
+      "id": "H-050500-04",
+      "hypothesis": "Main commit ab053b0 was generated by Cross-analysis workflow.",
+      "status": "STRONGLY_SUPPORTED_NOT_EXACT_RUN_LINKED",
+      "support": [
+        "Commit message matches workflow naming.",
+        "Changed path is a Cross-analysis output.",
+        "Workflow contains hourly schedule/workflow_run triggers and a commit/push step."
+      ],
+      "disconfirming_or_alternative": [
+        "No associated Actions run was returned; exact trigger and run remain unknown."
+      ],
+      "test": "Correlate workflow run event/created_at with commit timestamp and Actions check-suite records."
+    },
+    {
+      "id": "H-050500-05",
+      "hypothesis": "PR #1395 resolves all main-branch mutation risk.",
+      "status": "FALSE_SCOPE_OVERREACH",
+      "support": [
+        "PR #1395 removes the scheduler tick's schedule, dispatch and queue commit path if merged."
+      ],
+      "disconfirming_or_alternative": [
+        "Cross-analysis, signal-accuracy, telemetry and multiple other scheduled/manual write-capable workflows remain on main.",
+        "PR #1392 is still unmerged and does not cover all scheduled writers."
+      ],
+      "test": "Complete workflow-by-workflow permission, trigger, destination, token and run audit; separate automatic from manual writes."
+    },
+    {
+      "id": "H-050500-06",
+      "hypothesis": "Current market data support a calibrated directional XRP forecast.",
+      "status": "REJECTED_NOT_EVALUATED",
+      "support": [
+        "Daily candles and provider-specific derivatives snapshots exist."
+      ],
+      "disconfirming_or_alternative": [
+        "OI universes are not reconciled, spot snapshot is historical, Binance reserve XRP quantity is unknown, and no fixed-horizon walk-forward evaluation is complete."
+      ],
+      "test": "Build point-in-time feature store and immutable outcomes, then compare baselines and calibrate out-of-sample probabilities."
+    }
+  ]
+}

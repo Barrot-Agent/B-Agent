@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 155,
+  "chunk_count": 156,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "RUN-XRP-ESCROW-RLUSD-COINBASE-V3-AUDIT-20261031T190021Z",
+      "recorded_at_utc": "2026-10-31T19:00:21Z",
+      "update_type": "XRP_ESCROW_EVENT_RLUSD_CHAIN_SUPPLY_AND_CURRENT_MAIN_AUDIT",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "data_cutoff_utc": "2026-10-31T19:00:21Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T190000Z-xrp-escrow-unlock-rlusd-coinbase-and-v3-audit.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T190000Z-xrp-escrow-rlusd-coinbase-relationship-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T190000Z-escrow-event-and-rlusd-chain-supply-admission.json",
+      "source_bundle_path": "data/xrp_intelligence/sources/20261031T190000Z-xrp-escrow-rlusd-coinbase-source-bundle.json",
+      "repository_audit_path": "data/repository_audits/20261031T190000Z-main-200-pr-workflow-and-prediction-audit.json",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE",
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP",
+        "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE",
+        "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION",
+        "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+        "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+        "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY",
+        "SRC-20261031T190021Z-XRLINEAGE-RLUSD-SUPPLY-CONFLICT",
+        "SRC-20261031T190021Z-GITHUB-MAIN-200-PR-WORKFLOW-AUDIT"
+      ],
+      "findings": [
+        "Two Ripple-owned escrow objects totaling 1B XRP become eligible at 2026-11-01T00:00Z, about 4.99 hours after cutoff; eligibility is not sale.",
+        "Prior 12 releases: 12B released, 8.4B re-escrowed (70%), 3.6B net outside escrow; 300M is scenario only.",
+        "Coinbase/Ripple announced RLUSD on Prime, Exchange and Retail with XRPL/Base/Ethereum support; Ripple Base liquidity; Global Exchange collateral deferred.",
+        "RLUSD XRPL supply cluster about 707.4M; XR-Lineage 910.3M is unresolved outlier.",
+        "Deloitte Sep30 attestation and Ripple Oct29 live display show reserves above outstanding/circulation, with different dates/assurance.",
+        "200 open PRs, 190 drafts, 10 ready; 196/198 main-based stale; #1426/#1427 only current base.",
+        "Main retains active workflow writes and public unsalted subscriber hashes; #1423 stale and unmerged."
+      ],
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 10,
+        "missing_source_references": 0,
+        "expected_archive_shards": 430
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_modified": false,
+        "merge": false,
+        "force_push": false,
+        "manual_workflow_dispatch": false,
+        "deployment": false,
+        "secret_access": false,
+        "paper_position_mutation": false,
+        "real_money_trade": false
+      },
+      "next_actions": [
+        "After Nov1 00:00Z, capture EscrowFinish hashes, actual time, destination balances and EscrowCreate at pinned ledgers.",
+        "Reconcile RLUSD issuer obligations on XRPL, Ethereum totalSupply and Base/other approved chain/bridge flows.",
+        "Resolve XR-Lineage raw query and 2,000-trustline scope.",
+        "Verify Coinbase Global Exchange collateral launch and parameters before claiming collateral utility.",
+        "Review main writers and stale PRs individually; no bulk rebase/merge."
+      ]
+    }
+  ]
+}

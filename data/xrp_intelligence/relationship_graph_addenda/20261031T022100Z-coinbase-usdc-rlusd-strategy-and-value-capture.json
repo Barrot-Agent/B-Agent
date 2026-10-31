@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T022100Z-COINBASE-Q3-MULTI-ISSUER-STRATEGY",
+  "created_at_utc": "2026-10-31T02:21:00Z",
+  "captured_at_utc": "2026-10-31T02:21:00Z",
+  "source_ids": [
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T022100Z-01",
+      "from_entity": "Coinbase",
+      "relation": "reports_average_platform_balance_of",
+      "to_entity": "USDC",
+      "status": "COMPANY_REPORTED_Q3_2026_22B",
+      "value_usd": 22000000000,
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ],
+      "details": "Average balance in Coinbase products during Q3; approximately 30% of average USDC market capitalization per Coinbase. Not net new capital or XRP purchases."
+    },
+    {
+      "edge_id": "E-20261031T022100Z-02",
+      "from_entity": "Coinbase",
+      "relation": "renewed_USDC_distribution_collaboration_with",
+      "to_entity": "Circle",
+      "status": "SAME_TERMS_STATED_IN_Q3_2026_10Q",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "details": "Coinbase's SEC filing states the arrangement was renewed on the same terms; this does not imply a new or expanded Circle agreement."
+    },
+    {
+      "edge_id": "E-20261031T022100Z-03",
+      "from_entity": "Coinbase",
+      "relation": "reports_crypto_trading_volume_market_share",
+      "to_entity": "Crypto trading markets",
+      "status": "COMPANY_REPORTED_Q3_2026_10_7_PERCENT",
+      "value_pct": 10.7,
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ],
+      "details": "Coinbase reports fourth consecutive quarterly market-share gain; aggregate company metric, not XRP-specific share."
+    },
+    {
+      "edge_id": "E-20261031T022100Z-04",
+      "from_entity": "Coinbase",
+      "relation": "reports_annualized_revenue_run_rate_for",
+      "to_entity": "Prediction markets",
+      "status": "COMPANY_REPORTED_ABOVE_200M_USD",
+      "value_usd": 200000000,
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ],
+      "details": "Annualized revenue run rate, not recognized Q3 revenue and not an XRP market measure."
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T022100Z-01",
+      "claim": "Coinbase is expanding into multi-issuer stablecoin distribution while retaining Circle/USDC economics and adding Ripple/RLUSD access.",
+      "status": "SUPPORTED_INFERENCE",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "minority_objection": "The RLUSD listing may become a substitute rather than an additive channel; no post-launch balances are available."
+    },
+    {
+      "hypothesis_id": "H-20261031T022100Z-02",
+      "claim": "RLUSD could displace some USDC balances or distribution economics on Coinbase.",
+      "status": "UNTESTED",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "minority_objection": "Q3 USDC balances were record-high and the Circle arrangement was renewed on the same terms, but both observations predate the RLUSD listing."
+    },
+    {
+      "hypothesis_id": "H-20261031T022100Z-03",
+      "claim": "Coinbase's revenue mix is becoming less dependent on spot crypto trading.",
+      "status": "MIXED",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "minority_objection": "Transaction revenue fell sharply year over year; diversification has not removed cyclical exposure."
+    },
+    {
+      "hypothesis_id": "H-20261031T022100Z-04",
+      "claim": "RLUSD settlement growth on XRPL will create material XRP demand.",
+      "status": "NOT_ESTABLISHED",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "minority_objection": "RLUSD can settle directly; only measured XRP bridge/AMM/fee/reserve demand would establish value capture."
+    }
+  ]
+}

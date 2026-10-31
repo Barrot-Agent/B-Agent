@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 49,
+  "chunk_count": 50,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T12:59:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T12:59:00Z",
+      "update_type": "XRP_LEDGER_DUPLICATE_SOURCE_ID_CORRECTION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "prior_validation": {
+        "head_sha": "1e602ee2ce1f6cc3d980fd566abd2fcb7390920f",
+        "validator_run_id": 41059362112,
+        "tests_passed": 17,
+        "tests_failed": 1,
+        "error": "duplicate source IDs",
+        "gate_run_id": 41059362130,
+        "gate_status": "PASS_MERGE_DISABLED"
+      },
+      "root_cause": {
+        "duplicate_source_id": "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+        "existing_canonical_record": "data/xrp_intelligence/ledger_archive/v1/sources-024-of-024.json",
+        "duplicate_append": "data/xrp_intelligence/ledger_archive/v1/sources-040-of-040.json",
+        "cause": "A source ID was reused for a second primary-source record instead of reusing the existing canonical record."
+      },
+      "corrective_action": {
+        "corrected_shard": "data/xrp_intelligence/ledger_archive/v1/sources-040-corrected-of-040.json",
+        "corrected_record_count": 7,
+        "original_duplicate_shard_preserved_unreferenced": true,
+        "index_pointer_replacement_required": true,
+        "source_count_decremented_by_one": true,
+        "code_changed": false,
+        "next_step": "Replace only the index pointer for chunk 39 with the corrected shard, append this run/limitation, then validate exact head."
+      },
+      "main_modified": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false,
+      "forecast_status": "NOT_ISSUED"
+    }
+  ]
+}

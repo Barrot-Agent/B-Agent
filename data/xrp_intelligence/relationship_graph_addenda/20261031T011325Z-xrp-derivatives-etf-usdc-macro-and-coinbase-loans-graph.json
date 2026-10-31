@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T011325Z-XRP-MARKET-ETF-USDC-MACRO-COINBASE-LOANS",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T011325Z-xrp-derivatives-etf-usdc-macro-and-coinbase-loans-graph.json",
+  "created_at_utc": "2026-10-31T01:13:25Z",
+  "captured_at_utc": "2026-10-31T01:13:25Z",
+  "source_ids": [
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261031T0052Z",
+    "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z",
+    "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z",
+    "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z",
+    "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+    "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z",
+    "SRC-REUTERS-US-FUND-FLOWS-20261030T1317Z",
+    "SRC-REUTERS-BINANCE-RESERVE-20261030T1403Z",
+    "SRC-GITHUB-BARROT-MAIN-SCHEDULER-PR-AUDIT-20261031T0113Z"
+  ],
+  "source_reference_count": 9,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T011325Z-01",
+      "from_entity": "Coinbase",
+      "relation": "offers_XRP_collateralized_USDC_loans_through",
+      "to_entity": "Morpho on Base",
+      "status": "OFFICIAL_COINBASE_PRODUCT_DISCLOSURE",
+      "source_ids": [
+        "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z"
+      ],
+      "details": "Coinbase provides the interface; the loan asset is USDC and collateral is moved onchain to Morpho. Coinbase's current product page lists a $100,000 USDC limit for XRP collateral."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-02",
+      "from_entity": "XRP",
+      "relation": "is_eligible_underlying_collateral_for",
+      "to_entity": "Coinbase USDC loan product via cbXRP",
+      "status": "OFFICIAL_COINBASE_COLLATERAL_ELIGIBILITY",
+      "source_ids": [
+        "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z"
+      ],
+      "details": "Coinbase Help lists XRP as eligible collateral; the previously verified backup collateral table maps XRP to cbXRP on Base."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-03",
+      "from_entity": "Coinbase USDC loan borrowers",
+      "relation": "are_prohibited_from_using_proceeds_to_trade_on",
+      "to_entity": "Coinbase exchange",
+      "status": "OFFICIAL_COINBASE_HELP_TERMS",
+      "source_ids": [
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z"
+      ],
+      "details": "Coinbase Help states loan proceeds cannot be used for trading on Coinbase; no off-platform use is inferred."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-04",
+      "from_entity": "Circle",
+      "relation": "issues_native",
+      "to_entity": "USDC on Base",
+      "status": "OFFICIAL_CIRCLE_NETWORK_SUPPORT",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z"
+      ],
+      "details": "Circle lists Base among the networks where USDC is natively issued."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-05",
+      "from_entity": "Circle",
+      "relation": "issues_native",
+      "to_entity": "USDC on XRPL",
+      "status": "OFFICIAL_CIRCLE_NETWORK_SUPPORT",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z"
+      ],
+      "details": "Circle lists XRPL among the networks where USDC is natively issued; this does not establish Base↔XRPL flow."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-06",
+      "from_entity": "USDC on Base",
+      "relation": "is_the_debt_asset_in",
+      "to_entity": "Morpho cbXRP/USDC market",
+      "status": "MORPHO_PROTOCOL_MARKET_DATA",
+      "source_ids": [
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z",
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z"
+      ],
+      "details": "Circle is the issuer of USDC; no direct Circle lending/supply position in the market is established."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-07",
+      "from_entity": "U.S. spot XRP ETF trusts",
+      "relation": "report_issuer_holdings_of",
+      "to_entity": "XRP",
+      "status": "ISSUER_HOLDINGS_AGGREGATION",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z",
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z"
+      ],
+      "details": "Aggregators report approximately 1.197B XRP held on October 29 across six spot funds plus BITW in one dataset; exact universe and flow eligibility vary by provider."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-08",
+      "from_entity": "Binance",
+      "relation": "announced_aggregate_incident_reserve_and_freezes",
+      "to_entity": "Affected customer assets",
+      "status": "COMPANY_STATEMENT_REPORTED_BY_REUTERS",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-RESERVE-20261030T1403Z"
+      ],
+      "details": "The $6.34B reserve, $5B in impacted tokens and $3B frozen are aggregate USD values, not XRP-specific reserve evidence."
+    }
+  ],
+  "disconfirming_evidence": [
+    {
+      "claim": "Coinbase XRP-backed loans necessarily create spot XRP buying.",
+      "evidence": "Coinbase says loan proceeds cannot be used for trading on Coinbase; no off-platform USDC-to-XRP purchase path is traced."
+    },
+    {
+      "claim": "All cbXRP/USDC Morpho borrowing is Coinbase-originated or Circle-funded.",
+      "evidence": "Morpho is permissionless; Coinbase has not disclosed interface share and Circle is not identified as a direct lender."
+    },
+    {
+      "claim": "ETF inflows prove new unhedged external capital into XRP.",
+      "evidence": "Fund universes differ, some flows are excluded/provisional, and holdings changes can reflect fund creations/redemptions or hedging."
+    },
+    {
+      "claim": "The derivatives long-account ratio proves net notional longs dominate.",
+      "evidence": "Liqwall's 72.1% is an account-count share, not notional position size, and is one provider snapshot."
+    },
+    {
+      "claim": "U.S. equity-fund outflows establish crypto risk-off.",
+      "evidence": "Technology and bond funds had inflows and money-market outflows may represent redeployment; Reuters' series is not crypto-specific."
+    },
+    {
+      "claim": "Binance's aggregate reserve response proves XRP reserves are restored.",
+      "evidence": "No token-level XRP replenishment amount or official October 1 XRPL source-wallet membership has been verified."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

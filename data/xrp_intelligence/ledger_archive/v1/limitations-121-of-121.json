@@ -1,0 +1,74 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 120,
+  "chunk_count": 121,
+  "record_count": 6,
+  "records": [
+    {
+      "id": "LIM-20261031T083758Z-BINANCE-POR-AND-XRP-ALLOCATION",
+      "category": "reserve_reconciliation",
+      "statement": "No post-incident Binance Proof of Reserves result was located by 2026-10-31T08:37:58Z. Binance's update says results by Nov 2; CoinDesk reports a Nov 1 snapshot. The aggregate $1.34B acquisition plan has no disclosed XRP allocation.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-BINANCE-SECURITY-UPDATE2-POR",
+        "SRC-20261031-COINDESK-POR-SNAPSHOT-NOV1",
+        "SRC-20261031-COINDESK-POR-FULL-REPORT-NOV2"
+      ]
+    },
+    {
+      "id": "LIM-20261031T083758Z-BITQUERY-XRP-RECEIVER-STALE",
+      "category": "onchain_state_freshness",
+      "statement": "Bitquery's 233.5M XRP receiver balance and no-outgoing-transaction observation are cut off at 2026-10-30T06:43Z. No fresh XRPL account_info or full transaction-history query was executed in this run.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-BITQUERY-BINANCE-HACK-XRP-RECEIVER-0643Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T083758Z-PR1402-MANUAL-DISPATCH-UNTESTED",
+      "category": "workflow_verification",
+      "statement": "PR #1402's push no-op path is verified on a push event, but its manual workflow_dispatch approval path remains untested and the PR is unmerged.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+      ]
+    },
+    {
+      "id": "LIM-20261031T083758Z-PR1401-PAGES-REFRESH-GAP",
+      "category": "workflow_functionality",
+      "statement": "PR #1401 removes repository writes and preserves generated outputs as artifacts, but does not deploy GitHub Pages or update tracked web files. The current main writer remains active until a reviewed change is approved and merged.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GH-MAIN-CROSS-ANALYSIS-075151Z",
+        "SRC-20261031-GH-PR1401-CROSS-ANALYSIS-READONLY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T083758Z-PR1400-OPTIONAL-REGISTRY-AND-SINGLE-WRITER",
+      "category": "prediction_ledger_integrity",
+      "statement": "PR #1400 checks source-registry membership only when the caller supplies a registry; otherwise records say NOT_CHECKED. It still has no concurrent-writer lock, model training, walk-forward evaluation or drift detection.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GH-PR1400-FORECAST-LEDGER-SOURCE-REGISTRY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T083758Z-PR1353-METADATA-SUCCESSOR-PENDING",
+      "category": "archive_validation",
+      "statement": "PR #1353's 361-shard data head ac1b479 passed exact-head validation, but current branch head ce75aba is a later metadata successor and has not yet received its own exact-head validator run.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GH-PR1353-LEDGER-VALIDATOR-RECOVERY"
+      ]
+    }
+  ]
+}

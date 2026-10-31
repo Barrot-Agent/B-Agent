@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-20261031",
+  "captured_at_utc": "2026-10-31T17:19:41Z",
+  "source_url": "https://xrp-insights.com/exchange-balances",
+  "source_publisher": "XRP Insights",
+  "underlying_balance_snapshot_utc": "2026-10-31T08:00:00Z",
+  "field": "binance_peg_reserve_xrp",
+  "previous_capture_value": 327400000,
+  "latest_displayed_value": 325800000,
+  "delta_xrp": -1600000,
+  "status": "LATEST_PAGE_REVISION_SUPERSEDES_PREVIOUS_CAPTURE; NOT_PROVEN_ONCHAIN_FLOW",
+  "reconciliation": {
+    "binance_peg_xrp": 325800000,
+    "coinbase_cbxrp_xrp": 150200000,
+    "insurance_and_charity_xrp": 11200000,
+    "total_non_customer_reserve_operational_xrp": 487200000
+  },
+  "interpretation": "The latest page revision now displays 325.8M XRP for Binance-Peg backing, not the 327.4M carried into the immediately preceding snapshot. The three components sum to the provider's stated 487.2M reserve/operational total. This is a correction to the page's displayed attribution/value, not evidence of a 1.6M XRP on-chain movement.",
+  "additional_methodology_findings": [
+    "22 newly tracked wallets hold 2.17B XRP; naive total change of +2.15B is a coverage change, not an inflow.",
+    "The provider identifies approximately 323M XRP in labeled wallets across about 36 exchanges outside its tracked 24-exchange set, so its total is a floor for labeled exchange wallets.",
+    "48.4% of tracked XRP is labeled cold, 14.0% hot and 37.8% unclassified; Coinbase cold-labeled wallets account for about 5.81B XRP.",
+    "Same-wallet daily changes are +105.9M on October 31 and -207.3M on October 30; same-wallet 7-day change is -133.0M and 30-day change -12.3M."
+  ],
+  "source_independence": "Single XRP Insights provider page; no independent second-source confirmation of the 325.8M reserve split.",
+  "pending_archive_append": true,
+  "market_feature_admission": "CUSTODY_AND_RESERVE_CONTEXT_ONLY; NOT_TRADABLE_FLOAT; NO_DIRECTIONAL_FEATURE"
+}

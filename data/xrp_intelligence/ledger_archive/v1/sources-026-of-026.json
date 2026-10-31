@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 25,
+  "chunk_count": 26,
+  "record_count": 6,
+  "created_at_utc": "2026-10-30T08:31:00Z",
+  "records": [
+    {
+      "id": "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "title": "SBI Holdings and SMFG sign capital/business alliance to study stablecoin financial services",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Official SBI release confirms a capital and business alliance between SBI Holdings and Sumitomo Mitsui Financial Group. SMFG agreed to a 5% capital participation in SBI Startale Marketing. The parties will research JPYSC and other stablecoin use cases and conduct exploratory proof-of-concept work. This is not a live production service, does not specify an XRP settlement role, and does not report transaction volume."
+    },
+    {
+      "id": "SRC-NADA-SMFG-SBI-STARTALE-JPYSC-SECONDARY-20261030",
+      "evidence_class": "SECONDARY_REPORT_CITING_NIKKEI",
+      "url": "https://www.nadanews.com/388688/",
+      "title": "NADA report citing Nikkei on SMFG's 5% SBI Startale Marketing stake, JPYSC distribution and scale",
+      "published_at": "2026-10-30T09:41:00+09:00",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Secondary report citing Nikkei says SMFG's 5% participation in SBI Startale Marketing is intended to use SMBC's approximately 24 million individual customers to expand JPYSC asset-management and payment use cases, and reports JPYSC issuance of approximately JPY20.8B as of October 30. The 5% stake is independently confirmed by SBI's official release; the 24M customer base and JPY20.8B current issuance figure remain secondary claims in this record. Customer count is not adoption, and no on-chain supply proof was inspected."
+    },
+    {
+      "id": "SRC-BITBANK-MCP-OFFICIAL-BETA-20260710",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "url": "https://corporate.bitbank.cc/news/20260710_01",
+      "title": "bitbank publishes experimental local MCP server and CLI beta",
+      "published_at": "2026-07-10",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "bitbank says its experimental MCP server and CLI run locally. Public market data are the first integration stage; private account information and trading functions require user API-key linkage. Named target clients include Claude Desktop, Claude Code, Codex and Gemini CLI. This announcement does not establish a remote hosted MCP service, a Barrot connection, live authentication or permission to trade."
+    },
+    {
+      "id": "SRC-BITBANK-MCP-GITHUB-REPO-AUDIT-20261030",
+      "evidence_class": "PUBLIC_SOURCE_CODE_INSPECTION",
+      "url": "https://github.com/bitbankinc/bitbank-lab-mcp",
+      "title": "bitbank-lab-mcp public repository inspection — tool registry, package metadata and clients",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Inspected public main tree at tree SHA 8013621b1163e49bf4ed14edac2c7309cf80b13c. src/tool-registry.ts contains 33 public tool definitions and dynamically adds 16 private tools when API credentials are present. Documentation is inconsistent: private-api/setup.md says 32 public plus 16 private, while other docs/README describe 33 public and 16 private. package.json reports 0.0.0-dev while gemini-extension.json reports 0.1.1. Public tool families include ticker, order book, candles, transactions, flow/CVD, volatility, technical analysis, charting and backtesting. No package installation or live API call was performed."
+    },
+    {
+      "id": "SRC-BITBANK-MCP-HITL-SECURITY-DOCS-20261030",
+      "evidence_class": "VENDOR_AUTHORED_SECURITY_DESIGN_DOCUMENTATION",
+      "url": "https://github.com/bitbankinc/bitbank-lab-mcp/blob/main/docs/gitbook/private-api/safety.md",
+      "title": "bitbank-lab-mcp private API safety documentation and confirmation flow",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Vendor documentation describes read-only API permission for asset/portfolio inspection and read-plus-trade permission for order operations; it says withdrawal permission is not needed and no withdrawal tool is implemented. Order/cancel operations use preview, explicit user confirmation and execute; confirmation tokens are HMAC-SHA256, one-time and default to 60-second TTL, with argument/session binding. The optional MCP Apps _meta execution path is default-off and the docs acknowledge it depends on observed host behavior rather than a protocol guarantee. This is a design claim, not an independent security audit."
+    },
+    {
+      "id": "SRC-BITBANK-MCP-SECURITY-POLICY-20261030",
+      "evidence_class": "VENDOR_SECURITY_POLICY",
+      "url": "https://github.com/bitbankinc/bitbank-lab-mcp/blob/main/SECURITY.md",
+      "title": "bitbank-lab-mcp published security policy",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "SECURITY.md states that the project uses npm audit in CI, weekly Dependabot updates, OIDC trusted publishing with provenance, an npm package files allowlist, and disabled retries for private POST order/cancel operations. These are repository policy statements; this run did not independently execute npm audit, verify the publishing workflow or conduct a full dependency/security audit."
+    }
+  ]
+}

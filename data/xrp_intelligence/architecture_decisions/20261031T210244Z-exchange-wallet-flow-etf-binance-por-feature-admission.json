@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T210244Z-EXCHANGE-WALLET-ETF-BINANCE-POR-AND-ESCROW",
+  "captured_at_utc": "2026-10-31T21:02:44Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NO_DIRECTIONAL_FEATURES",
+  "decisions": [
+    "Keep the 22.48B XRP exchange-labelled wallet total as custody context, not tradable float; it includes cold, wrapped, operational and affiliate balances.",
+    "Do not interpret the 133M seven-day same-wallet aggregate decline as confirmed customer withdrawals or net capital leaving exchanges.",
+    "Revise the Binance incident-reserve hypothesis downward: XRP Insights' Binance same-wallet set is +17.6M over 7d and +30.3M over 30d, while prior CryptoQuant reserve measurements use a different address universe and window.",
+    "Keep Binance's 100% XRP backing as a company claim pending full zk proof and same-time reserve-address/customer-liability reconciliation; 90% aggregate incident coverage is not an XRP-specific purchase quantity.",
+    "Treat ETF flows as issuer-holdings-derived creations/redemptions proxies, not gross spot execution or total actual capital; keep GXRP reporting gap explicit.",
+    "Keep RLUSD Coinbase distribution separate from native XRP purchases; Coinbase Global Exchange RLUSD collateral support was planned, not live, at the October 28 announcement.",
+    "Keep TradRadar OI, funding, liquidations and account ratios provider-specific; negative Bybit/OKX funding and account/notional distinction prevent simplistic crowded-long classification.",
+    "Treat the November 1 1B XRP escrow as FinishAfter eligibility only; require validated EscrowFinish, Destination, subsequent transfer and EscrowCreate evidence before classifying supply or selling.",
+    "Main Cross Analysis still writes a timestamp-only sentiment_shift file when sample counts are zero; PR #1429 proposes read-only artifact output and is CI/gate verified but unmerged.",
+    "No market feature is admitted and no directional forecast is issued."
+  ],
+  "required_verification": [
+    "At 2026-11-01 00:00 UTC and after, query both escrow objects at pinned validated ledgers; record EscrowFinish hashes, senders, amounts, Destination and ledger indexes.",
+    "Trace destination balance changes, subsequent transfers and new EscrowCreate objects.",
+    "Obtain official Binance XRP PoR address export and full zk proof; reconcile exact XRP customer liabilities and reserves at the same cutoff.",
+    "Crosswalk five incident source wallets against Binance PoR and provider-specific exchange-reserve address sets.",
+    "Reconcile XRP ETF issuer holdings and daily creations/redemptions; preserve missing funds as pending, not zero.",
+    "Obtain wallet-level transfer histories for Coinbase, Binance, Upbit and SBI-labelled wallets before interpreting exchange changes as customer flows.",
+    "Extend derivatives data to contract-level aligned history, notional long/short and order-book depth.",
+    "PR #1429 remains draft; merge requires approval."
+  ],
+  "feature_admission": {
+    "exchange_wallet_balances": "CUSTODY_CONTEXT_ONLY",
+    "etf_holdings_derived_flows": "INSTITUTIONAL_CONTEXT_ONLY",
+    "binance_100pct_xrp_por": "COMPANY_ASSERTION_PENDING_PROOF",
+    "rlusd_coinbase_listing": "EVENT_CONTEXT_ONLY",
+    "escrow_unlock": "EVENT_CONTEXT_ONLY",
+    "derivatives": "PROVIDER_SPECIFIC_CONTEXT_ONLY",
+    "directional_xrp_features": [],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "main_modified_by_scheduled_workflow": true,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "paper_state_mutation": false,
+    "real_money_trade": false
+  }
+}

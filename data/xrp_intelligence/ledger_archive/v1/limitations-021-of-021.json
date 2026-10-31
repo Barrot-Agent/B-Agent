@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 20,
+  "chunk_count": 21,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:17:00Z",
+  "records": [
+    "In pointer mode, the immutable snapshot file must contain snapshot_path exactly equal to latest_snapshot.snapshot_path in the ledger index. The validator caught the mismatch; a corrected snapshot copy is appended and the prior snapshot remains preserved unreferenced."
+  ]
+}

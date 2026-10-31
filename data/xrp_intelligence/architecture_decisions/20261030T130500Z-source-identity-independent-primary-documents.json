@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-2026-10-30T130500Z-SOURCE-IDENTITY-INDEPENDENT-PRIMARY-DOCUMENTS",
+  "captured_at_utc": "2026-10-30T13:05:00Z",
+  "title": "Assign source identity at the document level, not the event level",
+  "status": "ADOPTED_FOR_RESEARCH_SCHEMA",
+  "decisions": [
+    {
+      "field_family": "source_identity",
+      "required_fields": [
+        "source_id",
+        "publisher",
+        "canonical_url",
+        "published_at",
+        "accessed_at_utc",
+        "evidence_class"
+      ],
+      "rule": "Each distinct source document receives its own unique source ID, even when multiple documents describe the same event or agreement."
+    },
+    {
+      "field_family": "event_corroboration",
+      "required_fields": [
+        "event_id",
+        "source_ids",
+        "publisher_independence",
+        "shared_event_dependency",
+        "corroboration_scope"
+      ],
+      "rule": "Represent one event as a graph node/edge with multiple source IDs. Do not reuse an event ID as a source ID or collapse distinct primary documents."
+    },
+    {
+      "field_family": "source_independence",
+      "required_fields": [
+        "publisher",
+        "party_role",
+        "shared_event",
+        "independent_verification_scope"
+      ],
+      "rule": "Two counterparties' announcements may corroborate that an announcement occurred, but do not independently verify production execution or economic outcomes."
+    },
+    {
+      "field_family": "archive_correction",
+      "required_fields": [
+        "original_shard_path",
+        "corrected_shard_path",
+        "prior_pointer_state",
+        "preservation_status",
+        "exact_head_validation"
+      ],
+      "rule": "Correct immutable shards by creating a new corrected shard and updating only the index pointer. Preserve all superseded shards unreferenced; never overwrite or delete historical files."
+    }
+  ],
+  "incident": {
+    "duplicate_source_id": "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+    "prior_documents": [
+      "data/xrp_intelligence/ledger_archive/v1/sources-024-of-024.json",
+      "data/xrp_intelligence/ledger_archive/v1/sources-040-of-040.json"
+    ],
+    "corrected_startale_source_id": "SRC-STARTALE-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+    "previous_seven_record_correction": "data/xrp_intelligence/ledger_archive/v1/sources-040-corrected-of-040.json",
+    "new_eight_record_correction": "data/xrp_intelligence/ledger_archive/v1/sources-040-corrected-independent-of-040.json",
+    "previous_correction_superseded": true,
+    "prior_shards_preserved": true
+  },
+  "feature_admission": "No market feature is admitted by this source-identity correction.",
+  "forecast_status": "NOT_ISSUED"
+}

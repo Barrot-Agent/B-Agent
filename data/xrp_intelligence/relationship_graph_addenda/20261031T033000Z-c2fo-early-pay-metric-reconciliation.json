@@ -1,0 +1,333 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T033000Z-C2FO-EARLY-PAY-METRIC-RECONCILIATION",
+  "created_at_utc": "2026-10-31T03:30:00Z",
+  "captured_at_utc": "2026-10-31T03:30:00Z",
+  "source_ids": [
+    "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+    "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+    "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+    "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+    "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+    "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+    "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z",
+    "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z",
+    "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+    "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+    "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z",
+    "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z",
+    "SRC-C2FO-OFFICIAL-INSTANTPAY-20261031T033000Z"
+  ],
+  "source_reference_count": 16,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T030700Z-01",
+      "from_entity": "XRPL Sponsor amendment (XLS-68)",
+      "relation": "enables_sponsor_to_pay",
+      "to_entity": "Sponsee transaction fees and reserve requirements",
+      "status": "DOCUMENTED_NOT_ACTIVE",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-02",
+      "from_entity": "XRPL Sponsor amendment",
+      "relation": "current_vote_state",
+      "to_entity": "9 yes / 34 heard / 28 required",
+      "status": "OBSERVED_NO_MAJORITY_2026-10-31T0252Z",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-03",
+      "from_entity": "fixCleanup3_4_0",
+      "relation": "enforces_safe_reserve_exit_for",
+      "to_entity": "Object-level sponsorship",
+      "status": "COUNTDOWN_PROJECTED_2026-11-04",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+        "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-04",
+      "from_entity": "PR #8606",
+      "relation": "introduces",
+      "to_entity": "SponsorV1_1 amendment",
+      "status": "OPEN_BLOCKED_UNMERGED",
+      "source_ids": [
+        "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-05",
+      "from_entity": "PR #8606",
+      "relation": "introduces",
+      "to_entity": "SponsoredAccountCreate transaction type 96",
+      "status": "OPEN_BLOCKED_UNMERGED",
+      "source_ids": [
+        "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-06",
+      "from_entity": "SponsoredAccountCreate",
+      "relation": "would_create",
+      "to_entity": "Zero-balance XRPL account with sponsor-backed reserve",
+      "status": "PROPOSED_NOT_LIVE",
+      "source_ids": [
+        "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-07",
+      "from_entity": "Sponsor amendment",
+      "relation": "requires_separate_activation_before",
+      "to_entity": "Sponsorship functionality",
+      "status": "NOT_ACTIVE",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-08",
+      "from_entity": "BNY",
+      "relation": "provides_announced_custody_for",
+      "to_entity": "XRP and RLUSD eligible clients",
+      "status": "ANNOUNCED",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-09",
+      "from_entity": "BNY",
+      "relation": "acts_as_primary_reserve_custodian_for",
+      "to_entity": "RLUSD",
+      "status": "ANNOUNCED",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-10",
+      "from_entity": "BNY",
+      "relation": "has_custody_relationship_with",
+      "to_entity": "Ripple Prime",
+      "status": "ANNOUNCED",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-11",
+      "from_entity": "BNY",
+      "relation": "explores_tokenized_trade_finance_on_XRPL_with",
+      "to_entity": "C2FO",
+      "status": "EXPLORATORY",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-12",
+      "from_entity": "C2FO Instant Pay",
+      "relation": "uses_settlement_asset",
+      "to_entity": "RLUSD on XRPL",
+      "status": "ANNOUNCED_WAITLIST_INITIATIVE",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-13",
+      "from_entity": "C2FO Early Pay",
+      "relation": "historically_enabled",
+      "to_entity": "$525B working capital",
+      "status": "COMPANY_REPORTED_HISTORICAL_NOT_INSTANT_PAY",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-C2FO-OFFICIAL-INSTANTPAY-20261031T033000Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-14",
+      "from_entity": "Ripple National Trust Bank",
+      "relation": "received_final_OCC_approval",
+      "to_entity": "National trust bank charter",
+      "status": "ANNOUNCED_2026-10-26",
+      "source_ids": [
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-15",
+      "from_entity": "Standard Custody & Trust Company",
+      "relation": "issues",
+      "to_entity": "RLUSD",
+      "status": "ISSUER_ROLE_DISTINCT_FROM_RNTB",
+      "source_ids": [
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-16",
+      "from_entity": "Coinbase",
+      "relation": "distributes_and_economically_participates_in",
+      "to_entity": "Circle USDC",
+      "status": "MATERIAL_COMPANY_REPORTED_RELATIONSHIP",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-17",
+      "from_entity": "Coinbase",
+      "relation": "lists",
+      "to_entity": "Ripple RLUSD on XRPL, Base and Ethereum",
+      "status": "ANNOUNCED_MULTI_ISSUER_DISTRIBUTION",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-18",
+      "from_entity": "Coinbase",
+      "relation": "offers_collateralized_borrowing_via",
+      "to_entity": "cbXRP / Morpho on Base",
+      "status": "DOCUMENTED_PRODUCT_PATHWAY",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T030700Z-19",
+      "from_entity": "RLUSD stablecoin transfers on XRPL",
+      "relation": "may_generate",
+      "to_entity": "XRP network fees and sponsor-held reserves",
+      "status": "MECHANISM_DEPENDENT_NOT_QUANTIFIED",
+      "source_ids": [
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T033000Z-01",
+      "from_entity": "C2FO",
+      "relation": "reports_historical_early_pay_working_capital",
+      "to_entity": "> $525B in C2FO release / > $520B in Ripple release",
+      "status": "PUBLISHER_SPECIFIC_DISCREPANCY_NOT_INSTANT_PAY_VOLUME",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-C2FO-OFFICIAL-INSTANTPAY-20261031T033000Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T030700Z-01",
+      "claim": "If Sponsor activates and scales, it can reduce direct retail XRP balances while shifting reserve and fee obligations to institutional sponsors.",
+      "status": "MECHANISTIC_INFERENCE_NOT_LIVE",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z"
+      ],
+      "disconfirming_evidence": "Sponsor has only 9 of 34 votes heard; no Mainnet sponsorship usage is established."
+    },
+    {
+      "hypothesis_id": "H-20261031T030700Z-02",
+      "claim": "Sponsor-held XRP reserve lock-up could create institutional inventory demand, but does not prove incremental spot buying because sponsors may use existing balances or OTC inventory.",
+      "status": "PLAUSIBLE_UNQUANTIFIED",
+      "source_ids": [
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+        "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z"
+      ],
+      "disconfirming_evidence": "No sponsor balance, acquisition, exchange inflow or reserve-lock data have been identified."
+    },
+    {
+      "hypothesis_id": "H-20261031T030700Z-03",
+      "claim": "fixCleanup3_4_0 may activate around Nov 4 if its current majority holds, but Sponsor itself remains far below its own threshold.",
+      "status": "CONDITIONAL_SCENARIO",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z"
+      ],
+      "disconfirming_evidence": "The 14-day countdown can reset; Sponsor currently has no majority."
+    },
+    {
+      "hypothesis_id": "H-20261031T030700Z-04",
+      "claim": "Zero-balance SponsoredAccountCreate requires PR #8606 to be accepted and a separate SponsorV1_1 activation in addition to the base Sponsor pathway.",
+      "status": "PROPOSED_MULTI_GATE_DEPENDENCY",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+      ],
+      "disconfirming_evidence": "PR #8606 is open and blocked; SponsorV1_1 has not been activated."
+    },
+    {
+      "hypothesis_id": "H-20261031T030700Z-05",
+      "claim": "C2FO Instant Pay could create measurable XRPL working-capital flows, but the historical $525B Early Pay figure cannot be used as current XRPL capital or demand.",
+      "status": "UNPROVEN_PRODUCTION_ADOPTION",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-C2FO-OFFICIAL-INSTANTPAY-20261031T033000Z"
+      ],
+      "disconfirming_evidence": "Instant Pay is a waitlist initiative with no disclosed funded volume, invoices or settled value."
+    },
+    {
+      "hypothesis_id": "H-20261031T030700Z-06",
+      "claim": "BNY's custody and reserve-custodian roles provide institutional access but do not establish direct XRP buying, collateral holdings or net market demand.",
+      "status": "CONFIRMED_ROLE_SEPARATION_WITH_UNKNOWN_FLOWS",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No custody balances or token-level holdings were disclosed."
+    },
+    {
+      "hypothesis_id": "H-20261031T030700Z-07",
+      "claim": "Coinbase's RLUSD listing is a multi-issuer distribution strategy while its USDC relationship remains economically material; it is not evidence of Circle displacement.",
+      "status": "SUPPORTED_STRATEGIC_INTERPRETATION",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Future changes in USDC balances, distribution economics or RLUSD adoption could alter this relationship."
+    },
+    {
+      "hypothesis_id": "H-20261031T030700Z-08",
+      "claim": "RNTB and BNY may occupy complementary RLUSD reserve/custody roles rather than one replacing the other.",
+      "status": "ROLE_COMPLEMENTARITY_INFERENCE",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Operational arrangements and any future migration of reserve duties are not yet disclosed."
+    }
+  ],
+  "extends_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T030700Z-sponsor-amendment-and-institutional-value-capture.json",
+  "source_discrepancies": [
+    {
+      "metric": "C2FO historical Early Pay working capital",
+      "c2fo_official_usd": 525000000000,
+      "ripple_release_usd": 520000000000,
+      "status": "PUBLISHER_SPECIFIC_DISCREPANCY",
+      "counter_hypothesis": "Neither figure measures Instant Pay deployment or XRP demand."
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-2026-10-30T131600Z-SBI-VCTRADE-NETWORK-ROUTE-MATRIX",
+  "captured_at_utc": "2026-10-30T13:16:00Z",
+  "title": "Model venue network support separately from issuer-native token deployment",
+  "status": "ADOPTED_FOR_RESEARCH_SCHEMA",
+  "decisions": [
+    {
+      "field_family": "venue_network_route_matrix",
+      "required_fields": [
+        "venue",
+        "asset",
+        "network",
+        "deposit_status",
+        "withdrawal_status",
+        "per_transaction_limits",
+        "captured_at_utc",
+        "source_id"
+      ],
+      "rule": "Store network support per venue, asset and transfer direction. A token's native deployment on a chain does not imply that a particular exchange accepts deposits or withdrawals on that chain."
+    },
+    {
+      "field_family": "issuer_vs_distributor_route",
+      "required_fields": [
+        "issuer",
+        "token",
+        "issuer_native_network",
+        "distributor",
+        "distributor_network",
+        "planned_or_live",
+        "first_validated_transaction"
+      ],
+      "rule": "Keep issuer-level chain deployment separate from distributor/custodian network support. Label planned support as planned, never live."
+    },
+    {
+      "field_family": "cross_asset_conversion",
+      "required_fields": [
+        "venue",
+        "asset_in",
+        "asset_out",
+        "trading_pair",
+        "conversion_route",
+        "executed_volume",
+        "as_of"
+      ],
+      "rule": "Do not infer that separate XRP and stablecoin transfer support creates an internal conversion or settlement route; require documented pairs and executed volume."
+    },
+    {
+      "field_family": "scope",
+      "required_fields": [
+        "venue_scope",
+        "affiliate_scope",
+        "external_venue_scope"
+      ],
+      "rule": "A VCTRADE FAQ supports claims about VCTRADE only; do not generalize to all SBI Group affiliates, Circle services or external venues."
+    }
+  ],
+  "verified_route_matrix": {
+    "venue": "SBI VC Trade VCTRADE",
+    "observed_at_utc": "2026-10-30T13:16:00Z",
+    "assets": [
+      {
+        "asset": "XRP",
+        "network": "XRP Ledger",
+        "deposit": "SUPPORTED",
+        "withdrawal": "SUPPORTED"
+      },
+      {
+        "asset": "USDC",
+        "network": "Ethereum",
+        "deposit": "SUPPORTED",
+        "withdrawal": "SUPPORTED_PER_NETWORK_TABLE",
+        "deposit_limit_jpy_equivalent": 1000000
+      },
+      {
+        "asset": "RLUSD",
+        "network": "Ethereum",
+        "deposit": "SUPPORTED",
+        "withdrawal": "SUPPORTED_PER_NETWORK_TABLE",
+        "xrpl_status": "PLANNED_NOT_LIVE"
+      },
+      {
+        "asset": "JPYSC",
+        "network": null,
+        "deposit": "NOT_SUPPORTED",
+        "withdrawal": "NOT_SUPPORTED"
+      }
+    ],
+    "scope_limit": "VCTRADE only; not all SBI Group affiliates or external venues."
+  },
+  "feature_admission": "NONE. No XRP price feature is admitted from this venue network-support matrix.",
+  "forecast_status": "NOT_ISSUED"
+}

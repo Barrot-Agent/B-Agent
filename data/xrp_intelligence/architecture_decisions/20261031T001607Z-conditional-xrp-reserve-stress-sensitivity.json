@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T001607Z-CONDITIONAL-XRP-RESERVE-STRESS-SENSITIVITY",
+  "created_at_utc": "2026-10-31T00:16:07Z",
+  "status": "ADOPTED_AS_CONDITIONAL_SCENARIO_ONLY",
+  "context": "Secondary reporting of Binance's 1 October 2026 PoR snapshot shows an XRP reserve ratio of 100.77% and customer net balances of approximately 2.496B XRP. The five incident XRPL source wallets have not been matched to the official PoR address export.",
+  "decisions": [
+    "Record the 100.77% ratio and 2.496B XRP customer net balance as secondary-reported, pre-incident baseline values; do not represent them as independently recomputed official address balances.",
+    "Use the formula post_coverage = (customer_net_balance * preincident_ratio - incident_XRP_from_PoR) / customer_net_balance. For the full 233.4619431M XRP transfer, the conditional ratio is approximately 91.42%, the conditional shortfall approximately 214.243M XRP, and the pre-incident surplus approximately 19.219M XRP.",
+    "Record the 8.23% incident-transfer threshold as the approximate fraction of the transfer that would exhaust the reported 0.77% reserve cushion absent offsets.",
+    "Keep the scenario status CONDITIONAL_NOT_OBSERVED until the official October 1 address export confirms the five source wallets' PoR membership and exact on-chain balances.",
+    "Do not add this sensitivity to market features, price forecasts or a claim of actual Binance XRP under-collateralization. The $6.34B corporate backstop, frozen assets, SAFU and token-specific replenishment are separate potential offsets that require verification."
+  ],
+  "invariants": [
+    "Binance 14 Ethereum PoR membership does not establish XRPL wallet membership.",
+    "The Edge and Gate News are secondary reports of the same Binance snapshot, not independent on-chain balance calculations.",
+    "The 91.42% and 214.243M XRP values are conditional arithmetic, not an observed post-incident reserve ratio or shortfall.",
+    "No forecast is issued and no market feature is admitted."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

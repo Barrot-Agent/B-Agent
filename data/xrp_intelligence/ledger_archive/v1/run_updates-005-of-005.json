@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 4,
+  "chunk_count": 5,
+  "record_count": 1,
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T00:58:00Z",
+      "update_type": "MULTIVENUE_XRP_MARKET_SCOPE_CIRCLE_USDC_SUPPLY_AND_EXACT_HEAD_LEDGER_VALIDATION",
+      "main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T0058Z",
+        "SRC-COINGECKO-XRP-MARKET-DERIVATIVES-20261030T0058Z",
+        "SRC-KODEXIUS-XRP-PERP-20261029T2332Z",
+        "SRC-FIBONOMY-BINANCE-XRP-PERP-20261030T0058Z",
+        "SRC-COINPAPRIKA-XRP-QUOTE-20261029T1846Z",
+        "SRC-COINDESK-XRP-QUOTE-20261030T0058Z",
+        "SRC-XRP-INSIGHTS-ETF-20261030T0058Z",
+        "SRC-ALPHA-XRP-ETF-20261030T0058Z"
+      ],
+      "research_snapshot_path": "data/xrp_intelligence/snapshots/20261030T0058Z-multivenue-market-scope-circle-supply-and-ci.json",
+      "research_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T0058Z-multivenue-market-scope-circle-supply.json",
+      "verification_at_recording": {
+        "status": "PR1353_EXACT_HEAD_ARCHIVE_VALIDATOR_PASS_12_TESTS_AND_GATE_PASS; MARKET_DATA_SCOPE_CONFLICTS_RETAINED; FORECAST_NOT_ISSUED",
+        "pr1353": {
+          "number": 1353,
+          "head_sha": "20272c96ba090b6dd8413a3736f54b3c65d404b2",
+          "validator_run_id": 40979596408,
+          "tests_passed": 12,
+          "duration_seconds": 0.05,
+          "gate_run_id": 40979600272,
+          "gate": "PASS",
+          "draft": true,
+          "merged": false
+        },
+        "main": {
+          "sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+          "signal_status": "STALE_INVALID_NOT_A_RETURN_FORECAST",
+          "summary_status": "STALE",
+          "accuracy_status": "LEGACY_VARIABLE_HORIZON_NOT_COMPARABLE",
+          "paper_position_identity": "UNRESOLVED"
+        },
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

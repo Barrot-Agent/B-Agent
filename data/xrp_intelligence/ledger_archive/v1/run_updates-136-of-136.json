@@ -1,0 +1,48 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 135,
+  "chunk_count": 136,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T085233Z-SBI-BITBANK-RLUSD-AND-FIEA-RESEARCH-UPDATE",
+      "created_at_utc": "2026-10-31T08:52:33Z",
+      "data_cutoff_utc": "2026-10-31T08:52:33Z",
+      "source_ids": [
+        "SRC-20261031T085233Z-SBI-BITBANK-CLOSE",
+        "SRC-20261031T085233Z-SBI-BITBANK-COMBINATION",
+        "SRC-20261031T085233Z-BITBANK-XRPJPY",
+        "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+        "SRC-20261031T085233Z-ORICO-XRP-POINTS",
+        "SRC-20261031T085233Z-SBI-SHINSEI-XRP-DEPOSIT-REWARD",
+        "SRC-20261031T085233Z-RIPPLE-RLUSD-JAPAN-SBI",
+        "SRC-20261031T085233Z-SBIVC-RLUSD-CUSTODY-GROWTH",
+        "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC",
+        "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM",
+        "SRC-20261031T085233Z-XRPL-NO-NEW-XRP-ISSUANCE",
+        "SRC-20261031T085233Z-SBI-VC-TRADE-XRPJPY-LEVERAGE"
+      ],
+      "summary": "Appended 12 sources, one run update and five limitations in three immutable shards. Confirmed SBI Holdings completed its 100% Bitbank acquisition on Oct 1; Bitbank lists XRP/JPY, while SBI VC Trade has separate XRP/JPY spot/leverage and multiple retail XRP reward routes (Visa Crypto Card, Orico points, historical SBI Shinsei deposit campaign). Ripple's JFSA-approved RLUSD launched in Japan through SBI VC Trade; SBI VC Trade ranked RLUSD first in September custody-balance growth, JPYSC second and TON third, a relative ranking only. SBI Ripple Asia's tokenized-deposit XRPL work is a conceptual PoC, not production. Japan's 2026 FIEA/PSA amendment creates disclosure, insider-trading, tipping, market-manipulation, stealth-marketing and custody-system-provider rules; XRP likely is non-specified due no single issuance authority, but classification is inference and implementing rules are pending. Current prior research head 3700b322 passed 372-shard validator, 20 tests and fail-closed gate with merging disabled; default approval workflow still fails zero jobs on push because PR #1402 remains unmerged. No market feature admitted and no forecast issued.",
+      "repository_audit_path": "data/repository_audits/20261031T085233Z-sbi-japan-regulatory-update-and-current-repo-audit.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "prior_verified_head": "3700b322c0d56d3056c805c2506c2207297e49f7",
+        "prior_validator_run_id": 41186290754,
+        "prior_validator_status": "PASS",
+        "prior_gate_run_id": 41186294445,
+        "prior_gate_status": "PASS_MERGE_DISABLED",
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_changed_by_this_run": false,
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false,
+        "paper_position_mutated": false,
+        "real_money_trade_performed": false
+      }
+    }
+  ]
+}

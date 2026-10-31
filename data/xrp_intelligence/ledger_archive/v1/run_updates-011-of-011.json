@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 10,
+  "chunk_count": 11,
+  "record_count": 1,
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T03:01:30Z",
+      "update_type": "BITNOMIAL_XRP_COLLATERAL_FCM_PATH_CFTC_RULES_CIRCLE_RAILS_COINBASE_Q3_AND_MARKET_DATA_RECONCILIATION",
+      "main_sha": "84f991932d3137ae8df49cead40f611a83a97c2c",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_update": "1c1259e561abee0c267d66e735092333a4ef6094",
+      "source_ids": [
+        "SRC-BITNOMIAL-RLUSD-XRP-COLLATERAL-LAUNCH-20251103",
+        "SRC-CFTC-FAQ-26-05-Q7-Q11-202603",
+        "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20250717",
+        "SRC-COINBASE-Q3-2026-OFFICIAL-20261029",
+        "SRC-CIRCLE-ACI-USDC-COLOMBIA-PILOT-20261027",
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0215Z",
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-20261030T0230Z",
+        "SRC-XRP-INSIGHTS-ETF-20261030T0301Z",
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20260305",
+        "SRC-COINMARKETCAP-XRP-UNSTAMPED-SPOT-20261030T0301Z",
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ],
+      "finding": "Bitnomial's own November 3, 2025 announcement says XRP and RLUSD margin deposits became available to institutional clients, subject to applicable approvals. Its current DCO page lists XRP collateral at a 40% haircut and $15M notional limit; XRP product maintenance margin is separately 17%. CFTC staff FAQ Q7-Q8 addresses DCO acceptance and monthly haircut review, while Q9-Q11 imposes a separate FCM notice and initial three-month restriction before other crypto assets may be accepted. Ripple's official disclosure identifies Hidden Road Partners CIV US LLC as a registered FCM/broker-dealer, and Bitnomial lists that exact legal entity as a clearing member. This creates a direct clearing-network relationship and a conditional FCM collateral path, but no public notice, reliance date, customer XRP deposits or utilization was verified. Do not conflate DCO-level XRP acceptance with FCM-level acceptance from customers.",
+      "coinbase_strategy": "Coinbase's official Q3 release reports 10.7% crypto trading-volume share, $22B average USDC held in Coinbase products, prediction markets above $200M annualized run-rate, derivatives volume growth and 49% of net revenue from subscription/services. Reuters reports transaction revenue fell 43% YoY and GAAP net income benefited from crypto-investment gains. This supports diversification but not immunity to crypto-market cycles; no XRP-specific capital flow is established.",
+      "circle_strategy": "Circle and ACI announced a Colombia-focused USDC settlement pilot through ACI Connetic and Bre-B. It is an announced evaluation of USDC alongside existing rails, not measured production volume and not an XRPL-specific implementation. This is evidence of a parallel stablecoin distribution route, not proof of direct competition with Ripple on the same ledger.",
+      "market_data": "TradRadar's 02:15 UTC panel shows price down 6.15%, OI down 7.74%, at least $31.86M liquidations (mostly longs), negative aggregate funding and 79.6% long-account share. The combination is consistent with deleveraging but mixed funding and account/notional distinctions prevent a directional inference. CryptoKeyhole's four-fund Oct 28 +4.338M XRP figure and XRP Insights' six-spot-plus-BITW provisional +174K XRP figure use different universes and are not combinable.",
+      "sbic": "Official SBIC.co.jp identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. and documents a March 5, 2026 ChatGPT/generative-AI seminar. It is an educational event with a Microsoft speaker, not evidence of OpenAI partnership or XRP/SBI Holdings relationship.",
+      "verification": {
+        "sources_appended": 10,
+        "new_source_ids_unique": true,
+        "exact_head_python_validator": "PENDING",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "paper_state_mutated": false,
+        "real_money_trade": false,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    }
+  ]
+}

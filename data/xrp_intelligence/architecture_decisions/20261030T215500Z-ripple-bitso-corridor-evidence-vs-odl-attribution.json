@@ -1,0 +1,23 @@
+{
+  "record_type": "xrp_intelligence_architecture_decision",
+  "schema_version": "1.0",
+  "decision_id": "ADR-20261030T215500Z-RIPPLE-BITSO-CORRIDOR-EVIDENCE-VS-ODL-ATTRIBUTION",
+  "captured_at_utc": "2026-10-30T21:55:00Z",
+  "status": "ADOPTED_FOR_RESEARCH_BRANCH",
+  "context": "Public XRPL records show repeated tagged transfers from a Ripple-labelled wallet family through three unlabelled intermediaries into a Bitso-labelled account. Ripple's official disclosures establish a long-standing ODL relationship and a 2026 expansion involving XRP, RLUSD and MXNB, but no public payment ID or fiat leg links the observed transfers to a specific Ripple Payments/ODL transaction.",
+  "decision": [
+    "Represent the observed route as a repeated Ripple-associated-to-Bitso exchange deposit corridor, not as a confirmed Ripple Payments or ODL transaction.",
+    "Keep each intermediate account as an independent entity; record activation lineage, destination tags and transaction timing separately from ownership claims.",
+    "Distinguish gross transfer volume from net account change; the 310M gross sum across two inbound transfers and one outbound transfer is about+70M net at rJqi, not 310M net outflow.",
+    "Treat Bitso's destination tag as an internal routing field with unknown customer identity; a deposit is not proof of conversion to MXN or completed payout.",
+    "Retain Ripple's 2019/2026 Bitso partnership and investment statements as strategic context, not transaction-level attribution.",
+    "Do not admit the route as a predictive feature until a synchronized historical panel and independent payment/settlement evidence are available."
+  ],
+  "invariants": [
+    "No main-branch modification.",
+    "No merge, force-push, workflow dispatch, paper-state mutation or real-money trade.",
+    "No Ripple Payments/ODL attribution without a payment ID, fiat leg or other direct evidence.",
+    "No beneficial-ownership inference from activation lineage alone.",
+    "Forecast remains NOT_ISSUED."
+  ]
+}

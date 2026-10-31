@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T190021Z-ESCROW-RLUSD-CHAIN-SUPPLY-AND-MAIN-SAFETY",
+  "captured_at_utc": "2026-10-31T19:00:21Z",
+  "status": "ACCEPTED_WITH_OPEN_VERIFICATION",
+  "decisions": [
+    "Separate FinishAfter eligibility, EscrowFinish execution, subsequent transfer, re-escrow and market disposition; never equate 1B scheduled unlock with 1B tradable float or sell pressure.",
+    "Use prior 12-month 70% re-escrow only as a scenario, not a guaranteed November outcome.",
+    "Keep RLUSD chain-specific and pin XRPL issuer obligations to a validated ledger, Ethereum totalSupply to a block, and additional networks to approved contract/bridge mappings.",
+    "Treat XRP Insights, stables.cool and XRPL.to as correlated observations, not three independent confirmations.",
+    "Quarantine XR-Lineage 910.3M until its 2,000-trustline scope and raw query are resolved.",
+    "Separate Ripple's Oct29 live issuer display from Deloitte's Sep21/30 independent attestation.",
+    "Treat Coinbase listing as distribution/network access; Global Exchange RLUSD collateral is deferred until separately launched and verified.",
+    "Do not infer actual capital or XRP demand from RLUSD chain supply, transfer counts, exchange custody or RWA registry notional.",
+    "Admit no directional XRP feature or forecast from this run.",
+    "Do not merge/rebase stale PRs or modify main; preserve writer/privacy findings for approved remediation."
+  ],
+  "required_verification": [
+    "After Nov1 00:00Z, capture EscrowFinish hashes, timestamps, destination balances and subsequent EscrowCreate transactions at pinned ledgers.",
+    "Trace subsequent Ripple transfers and exchange/OTC destinations without equating internal treasury moves with sales.",
+    "Recompute RLUSD issuer obligations on XRPL and totalSupply on Ethereum at aligned cutoffs; reconcile Base, Optimism, Ink, Unichain and XRPL EVM flows.",
+    "Obtain XR-Lineage raw response and reconcile 910.3M with canonical issuer obligations.",
+    "Verify any Coinbase Global Exchange RLUSD collateral launch and live parameters.",
+    "Extend fixed-horizon ledger with mandatory source registry, concurrent-writer safety and leakage-safe walk-forward evaluation before forecasting.",
+    "Resolve main workflow quarantine and subscriber privacy only through approved changes."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED",
+  "rationale": "Escrow and RLUSD supply are event/custody context, not validated directional predictors; no model has passed walk-forward skill and calibration gates."
+}

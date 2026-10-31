@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_source_bundle",
+  "bundle_id": "BUNDLE-XRP-20261031T214005Z-RIPPLE-TREASURY-PRIMARY-CORRECTION",
+  "captured_at_utc": "2026-10-31T21:40:05Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS",
+      "publisher": "Ripple Treasury — First TMS with native digital asset capabilities",
+      "url": "https://treasury.ripple.com/news/ripple-treasury-launches-first-treasury-management-system-tms-digital-asset",
+      "retrieved_at_utc": "2026-10-31T21:40:05Z",
+      "publication_time_utc": "2026-04-01",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "Ripple Treasury states it facilitated $13 trillion in payments volume for customers in 2025.",
+        "Ripple Treasury announced launch of Digital Account Management and Unified Treasury on April 1, 2026, describing them as its first native digital-asset capabilities embedded directly into a treasury management system.",
+        "Digital Account Management enables treasury teams to create and manage a regulated Ripple-native digital asset account within the platform; balances including XRP and RLUSD can appear in the same account structure as cash.",
+        "Ripple says customers can view, hold, receive and manage fiat and digital liquidity; multiple customers were in beta before global general availability.",
+        "Ripple says the digital-asset framework will soon expand to cross-border/intercompany settlement and 24/7 yield through overnight repo."
+      ],
+      "limitations": [
+        "The $13T is 2025 treasury-software payments volume; the digital-asset capabilities were launched in 2026, so the $13T is not evidence of 2025 XRP or RLUSD settlement.",
+        "The announcement does not disclose customer XRP balances, actual XRP purchases, on-chain settlement share, XRP-routed payment volume or inventory requirements.",
+        "Cross-border/intercompany settlement and overnight repo expansion are described as future capabilities, not verified live production flows.",
+        "Product and service availability varies by geography; this is a company statement, not independent customer-level adoption evidence."
+      ]
+    }
+  ]
+}

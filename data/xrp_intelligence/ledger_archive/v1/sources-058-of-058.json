@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 57,
+  "chunk_count": 58,
+  "record_count": 3,
+  "created_at_utc": "2026-10-30T17:03:30Z",
+  "records": [
+    {
+      "id": "SRC-SBI-SMBC-5PCT-PRIMARY-20261030",
+      "evidence_class": "PRIMARY_SBI_COMPANY_RELEASE",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "title": "SBI official release confirms SMBC Group 5% capital participation in SBI Startale Marketing",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T17:03:30Z",
+      "capital_participation_pct": 5,
+      "investor": "SMBC Group",
+      "target": "SBI Startale Marketing Co., Ltd.",
+      "purpose": "Jointly study new financial services using stablecoins, including JPYSC",
+      "status": "AGREED_IN_CAPITAL_AND_BUSINESS_ALLIANCE; closing not independently verified",
+      "correction": "Primary SBI release explicitly states the 5% participation, superseding the earlier secondary-only classification."
+    },
+    {
+      "id": "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-20261016",
+      "evidence_class": "PRIMARY_SBI_AND_STARTALE_RELEASE",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "title": "SBI and Startale join Open Standard and explore JPYSC/OUSD interoperability",
+      "published_at": "2026-10-16",
+      "accessed_at_utc": "2026-10-30T17:03:30Z",
+      "participants": "More than 140 organizations including Visa, Stripe, Mastercard, BlackRock and Coinbase",
+      "initiative": "Open Standard",
+      "stablecoins": [
+        "JPYSC",
+        "Open USD (OUSD)"
+      ],
+      "status": "Interoperability proof-of-concept under consideration; not live",
+      "note": "Coinbase's membership in the wider Open Standard is an indirect consortium overlap, not proof of a direct Coinbase-JPYSC commercial contract."
+    },
+    {
+      "id": "SRC-BINANCE-NEWS-JPYSC-OUTSTANDING-20261030",
+      "evidence_class": "SECONDARY_EXCHANGE_NEWS_REPORT",
+      "url": "https://www.binance.com/en/square/post/10-30-2026-sumitomo-mitsui-financial-group-plans-5-stake-in-sbi-startale-stablecoin-venture-382706099377437",
+      "title": "Secondary report of JPYSC outstanding issuance at approximately JPY20.8B on October 30",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T17:03:30Z",
+      "reported_outstanding_jpy": 20800000000,
+      "source_attribution": "Foresight News citing Nikkei",
+      "status": "SECONDARY_REPORTED_NOT_ISSUER_CONFIRMED",
+      "note": "Do not replace SBI's official September 7 JPY20.1B figure without an issuer filing or reserve report."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 18,
+  "chunk_count": 19,
+  "record_count": 8,
+  "created_at_utc": "2026-10-30T08:12:00Z",
+  "records": [
+    "Bitquery's Binance proof-of-reserves labels are third-party address attribution. The five XRPL source accounts have not been directly matched against Binance's official October 1 downloadable PoR address set.",
+    "CoinDesk's October 1 PoR crosswalk names Ethereum Binance 14; it does not establish the five XRPL source addresses' PoR membership or an XRP-specific reserve deficit.",
+    "TrackWhale's seven-day tracked large-transfer net outflow includes the Binance theft window and may be dominated by the incident. It is not a clean measure of voluntary holder withdrawals, broad exchange flow or new capital.",
+    "CoinDesk's institutional exchange-withdrawal report relies on anonymous sources and provides no amounts, destinations, assets or XRP-specific attribution.",
+    "CoinGlass/CoinDesk market-wide liquidations and TradRadar XRP-only rolling-window liquidations use different providers, venue coverage and timestamps; do not combine or average them without harmonized definitions.",
+    "Coinbase's cbXRP reserve page is an issuer-published point-in-time snapshot refreshed October 29. One reserve snapshot does not establish growth, net new XRP purchases or independent audit assurance.",
+    "XRPL fixCleanup3_5_0 is proposed but not merged or activated; no user impact or exploited exception was established in the cited Foundation statement.",
+    "No market feature was admitted from the new dashboards. The current panel is asynchronous, incident-contaminated and not calibrated for a fixed-horizon forecast."
+  ]
+}

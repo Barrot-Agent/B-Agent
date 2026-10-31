@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_delta",
+  "captured_at_utc": "2026-10-31T17:23:06Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "research_head_sha": "3340be4cc1d1efb4bf159100495fb2001f3b1ed8",
+  "open_pr_inventory": {
+    "total": 194,
+    "drafts": 184,
+    "ready_for_review": 10,
+    "main_based": 192,
+    "stale_main_based": 189,
+    "current_main_based": [
+      1419,
+      1420,
+      1421
+    ],
+    "non_main_based": 2
+  },
+  "fresh_main_prs": [
+    {
+      "number": 1419,
+      "head_sha": "4fd68e3b0a00868e52ae10aa9369372b9df12df4",
+      "base_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41222623134,
+      "tests_passed": 345,
+      "subtests_passed": 8,
+      "gate_run_id": 41222623112,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1419"
+    },
+    {
+      "number": 1420,
+      "head_sha": "9950a00fae54afed0c84db2e1946f6c6f1f9fa15",
+      "base_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41222627119,
+      "tests_passed": 346,
+      "subtests_passed": 8,
+      "gate_run_id": 41222627169,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1420"
+    },
+    {
+      "number": 1421,
+      "head_sha": "97f45c0b9ac19bd5a1bc1d32a3e34f34f53fe3be",
+      "base_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41223787473,
+      "tests_passed": 344,
+      "subtests_passed": 8,
+      "gate_run_id": 41223787607,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1421"
+    }
+  ],
+  "validator_workflow": {
+    "workflow_file": ".github/workflows/xrp-ledger-validation.yml",
+    "status_on_main": "ABSENT_AT_CAPTURE",
+    "proposed_default_branch_pr": 1421,
+    "proposal_head_sha": "97f45c0b9ac19bd5a1bc1d32a3e34f34f53fe3be",
+    "proposal_permissions": "contents:read",
+    "proposal_triggers": [
+      "push to research/xrp-ledger-shard-migration-20261029T2210Z",
+      "pull_request targeting research/xrp-ledger-index-pointer-migration"
+    ],
+    "manual_dispatch_added": false,
+    "ci_gate": "PASS; PR remains draft/unmerged"
+  },
+  "research_archive_validation": {
+    "current_archive_shards": 427,
+    "current_research_head": "3340be4cc1d1efb4bf159100495fb2001f3b1ed8",
+    "current_head_validator_run": "NONE_RETURNED",
+    "current_head_combined_statuses": [],
+    "partial_readback": "All three newly appended shard blobs, snapshot, graph, source references and pointer SHAs were read back and matched.",
+    "previous_verified_head": "ea53c01005eded1884c9072e293b33d104a3ba5b",
+    "previous_validator_run": 41223290770,
+    "previous_gate_run": 41223290735,
+    "previous_shards_checked": 424,
+    "previous_tests_passed": 26,
+    "previous_gate_status": "PASS_MERGE_DISABLED",
+    "current_427_shard_status": "PARTIAL_READBACK; FULL_VALIDATOR_NOT_RUN"
+  },
+  "main_write_risks": {
+    "active_paths": [
+      ".github/workflows/cross-analysis.yml",
+      ".github/workflows/scheduler-tick.yml",
+      ".github/workflows/rotate-databricks-token.yml"
+    ],
+    "remediation_prs": [
+      1419,
+      1420
+    ],
+    "status": "MAIN_WORKFLOWS_UNCHANGED_UNTIL_APPROVED_MERGE"
+  },
+  "approval_workflow_zero_job_anomaly": "ROOT_CAUSE_UNKNOWN; current-main workflow declares workflow_dispatch only, but push-event runs with zero jobs have been observed. No invalid-YAML cause established.",
+  "full_repository_ci": "NOT_RUN",
+  "dependency_vulnerability_scan": "NOT_RUN",
+  "security_alert_access": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+  "branch_protection_details": "403_FROM_AVAILABLE_READ_ACTION",
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "deployment": false,
+    "secret_access": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  }
+}

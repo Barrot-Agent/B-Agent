@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 48,
+  "chunk_count": 49,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T12:55:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T12:55:00Z",
+      "update_type": "SBI_APAC_STABLECOIN_PAYMENT_RAIL_AND_JPYSC_ACTUAL_CAPITAL_RECONCILIATION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "prior_exact_head_validation": {
+        "head_sha": "0e65ea4c901245b85adfe029f09dd0d40d93220c",
+        "validator_run_id": 41058832850,
+        "tests_passed": 18,
+        "tests_failed": 0,
+        "archive_shards_checked": 129,
+        "gate_run_id": 41058832767,
+        "gate_status": "PASS_MERGE_DISABLED"
+      },
+      "research_addendum": {
+        "snapshot_path": "data/xrp_intelligence/snapshots/20261030T125500Z-sbi-apac-stablecoin-payment-rail-network.json",
+        "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T125500Z-sbi-apac-stablecoin-payment-rail-network.json",
+        "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T125500Z-sbi-apac-rail-maturity-and-capital-semantics.json",
+        "source_ids": [
+          "SRC-SBI-SMBC-STARTALE-MARKETING-5PCT-20261030",
+          "SRC-SBI-PHOTONPAY-INVESTMENT-20261030",
+          "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016",
+          "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+          "SRC-JPYSC-ISSUANCE-JGB-RESERVE-AND-LENDING-20260907",
+          "SRC-JPYSC-ACCOUNT-ONLY-PUBLIC-CHAIN-PLANNED-20260624",
+          "SRC-JPYSC-LENDING-INITIAL-3PCT-20260713",
+          "SRC-SBI-STARTALE-50M-EQUITY-INVESTMENT-20260326"
+        ],
+        "new_relationship_edges": 14,
+        "new_hypotheses": 5,
+        "new_market_observations": 7,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      },
+      "findings": [
+        "SBI's October 30 capital/business alliance with SMBC Group includes a 5% SMBC equity stake in SBI Startale Marketing, the JPYSC promotion JV; investment amount undisclosed.",
+        "SBI's SBI-Sygnum-Azimut Digital Asset Opportunity Fund decided to invest in PhotonPay. Amount undisclosed. SBI reports USD65B annualized total payment volume as of August 2026, 60+ currencies, 100+ remittance routes and 33 licences; the TPV covers all rails, not stablecoin-only volume.",
+        "PhotonPay conducted a Mastercard AI-agent payment PoC in May 2026; this is not production and does not establish XRP settlement.",
+        "SBI and Startale joined Open Standard with named participants including Coinbase, Mastercard, Visa, Stripe and BlackRock. They will explore a JPYSC-OUSD pilot; this is shared consortium membership and pilot exploration, not a direct Coinbase contract or production settlement.",
+        "SBI, Startale and BlackRock signed an MOU to explore tokenized MMF and JPYSC interoperability; the specific fund, network and production volumes are not disclosed.",
+        "JPYSC issuance was approximately JPY20.1B on September 7; SBI Shinsei Trust Bank began investing JPY10B in short-term JGBs; JPYSC lending applications were approximately JPY6.9B, not accepted loan balances.",
+        "JPYSC remains account-only at VCTRADE; external wallet transfers/public-chain circulation are planned subject to legal/tax treatment and supervisory confirmation. No XRPL route is live.",
+        "SBI invested approximately USD50M in Startale Group in March 2026. This is equity capital, not JPYSC reserve capital or XRP purchases."
+      ],
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T165200Z-MARKET-MACRO-AND-BINANCE-REPLENISHMENT",
+  "captured_at_utc": "2026-10-30T16:52:00Z",
+  "source_ids": [
+    "SRC-ALPHAFINANCE-XRP-DERIVATIVES-20261030T1330Z",
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261030T1102Z",
+    "SRC-XRPINSIGHTS-ETF-FLOWS-20261029-20261030T1652Z",
+    "SRC-ALPHAFINANCE-ETF-FLOWS-20261029-20261030T1652Z",
+    "SRC-CRYPTOETF-PARTIAL-XRP-FLOWS-20261029-20261030T1652Z",
+    "SRC-BINANCE-VERIFIED-RESERVE-REPLENISHMENT-20261030T1055Z",
+    "SRC-REUTERS-BOJ-YEN-MACRO-20261030",
+    "SRC-BITQUERY-BINANCE-HACK-20261030-UPDATE",
+    "SRC-BINANCE-SUPPORT-INCIDENT-UPDATED-20261030T1136Z"
+  ],
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "CORPORATE_IN_KIND_REPLENISHMENT",
+      "relationship": "Reserved over USD6.34B; USD5B already held in affected token assets; USD1.34B being acquired through market and OTC; XRP allocation undisclosed.",
+      "status": "PRIMARY_VERIFIED_BINANCE_STATEMENT"
+    },
+    {
+      "from": "BINANCE_CORPORATE_REPLENISHMENT",
+      "to": "XRP_SPOT_DEMAND",
+      "relationship": "Potential demand only if XRP is among affected tokens still to be acquired; no XRP quantity, venue or execution is disclosed.",
+      "status": "INFERENCE_NOT_MEASURED"
+    },
+    {
+      "from": "XRP_ETF_FLOWS_2026_10_29",
+      "to": "BINANCE_XRPL_INCIDENT_TIMELINE",
+      "relationship": "US ETF session closed 20:00 UTC; first XRPL incident transfer at 20:04 UTC. October 29 ETF flow cannot be a reaction to the incident.",
+      "status": "TIMESTAMP_CONFIRMED"
+    },
+    {
+      "from": "ALPHA_FINANCE",
+      "to": "XRP_DERIVATIVES_PANEL",
+      "relationship": "Reports USD2.83B open interest at 13:30 UTC; provider-specific coverage.",
+      "status": "PUBLIC_PROVIDER_OBSERVATION"
+    },
+    {
+      "from": "LIQWALL",
+      "to": "XRP_DERIVATIVES_PANEL",
+      "relationship": "Reports USD1.31B open interest at 11:02 UTC and long-dominated liquidations; provider-specific coverage.",
+      "status": "PUBLIC_PROVIDER_OBSERVATION"
+    },
+    {
+      "from": "BANK_OF_JAPAN",
+      "to": "YEN_CARRY_AND_GLOBAL_LIQUIDITY",
+      "relationship": "Held 1.25% policy rate but signalled a more hawkish outlook; yen reached about 157 per USD.",
+      "status": "REUTERS_REPORTED_MACRO_EVENT"
+    },
+    {
+      "from": "BITQUERY",
+      "to": "BINANCE_ATTACKER_ASSET_LOCATION",
+      "relationship": "Reports approximately USD3.1B still with attacker at 03:54 UTC and no exchange/mixer transfer observed by that cutoff.",
+      "status": "BLOCKCHAIN_ANALYTICS_CUTOFF_BOUND"
+    },
+    {
+      "from": "BINANCE_SUPPORT",
+      "to": "WITHDRAWAL_AND_DEPOSIT_STATUS",
+      "relationship": "Withdrawals temporarily suspended; deposits reported normal; updated PoR promised after remediation.",
+      "status": "PRIMARY_BINANCE_STATUS"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T165200Z-IN_KIND-XRP-DEMAND",
+      "claim": "Binance's USD1.34B in-kind acquisition could create XRP spot or OTC demand if XRP is included in affected tokens still needing replacement.",
+      "status": "POSSIBLE_NOT_MEASURED",
+      "support": [
+        "Binance says purchases are made in affected token assets through market and OTC channels"
+      ],
+      "counter_hypothesis": [
+        "XRP-specific allocation, amount, execution venue and timing are undisclosed",
+        "Some of the USD1.34B may be allocated to other tokens or OTC counterparties"
+      ]
+    },
+    {
+      "id": "HYP-20261030T165200Z-LONG-DELEVERAGING",
+      "claim": "XRP derivatives are experiencing long-dominated deleveraging.",
+      "status": "SUPPORTED_DIRECTIONALLY_PROVIDER_SPECIFIC",
+      "support": [
+        "Alpha Finance reports USD36.8M long versus USD2.5M short liquidations",
+        "Liqwall reports USD38.4M long versus USD2.4M short liquidations",
+        "Prior TradRadar panel also showed long-dominated liquidations"
+      ],
+      "counter_hypothesis": [
+        "Open-interest aggregates differ by more than 100% between providers",
+        "Funding is venue-dependent; Binance funding is positive while aggregate funding is slightly negative",
+        "Account ratios are not notional exposure"
+      ]
+    },
+    {
+      "id": "HYP-20261030T165200Z-ETF-INCIDENT-REACTION",
+      "claim": "October 29 ETF inflows were caused by or responded to the Binance XRP incident.",
+      "status": "DISCONFIRMED_BY_CHRONOLOGY",
+      "support": [],
+      "counter_hypothesis": [
+        "ETF session closed 20:00 UTC, four minutes before the first XRPL incident transfer at 20:04 UTC"
+      ]
+    },
+    {
+      "id": "HYP-20261030T165200Z-MACRO-LIQUIDITY-MIXED",
+      "claim": "The macro regime is mixed for crypto liquidity: yen normalization may tighten carry liquidity while USD weakness and lower Treasury yields can offset some pressure.",
+      "status": "INFERENCE_SINGLE_SESSION",
+      "support": [
+        "BOJ held 1.25% with hawkish outlook; yen about 157",
+        "Dollar weakened and Treasury yields fell"
+      ],
+      "counter_hypothesis": [
+        "No stable XRP-specific macro beta or causal estimate has been validated"
+      ]
+    },
+    {
+      "id": "HYP-20261030T165200Z-ATTACKER-XRP-OVERHANG",
+      "claim": "The 233.46M XRP stolen from Binance remains a latent supply overhang if moved or sold.",
+      "status": "RISK_SCENARIO_NOT_EXECUTED",
+      "support": [
+        "Five XRPL transfers total 233,461,943.1 XRP",
+        "Bitquery's early cutoff shows no exchange or mixer transfer and about USD3.1B still with attacker"
+      ],
+      "counter_hypothesis": [
+        "No sale or outgoing XRP payment was established by the captured cutoff",
+        "No receiver-specific chain refresh later than 07:23 UTC was obtained in this run"
+      ]
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 68,
+  "chunk_count": 69,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T16:50:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T16:50:00Z",
+      "update_type": "YOUTUBE_CANDIDATE_INVENTORY_EXPANSION_AND_IDENTITY_DISAMBIGUATION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T165000Z-youtube-kamilah-candidate-expanded-inventory.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T165000Z-youtube-kamilah-candidate-expanded-inventory.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T165000Z-creator-identity-and-video-inventory.json",
+      "source_ids": [
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-PAYCHECK-20260417",
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-NEED-20260319",
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-RIPPLE-BANK-20251214",
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-ETF-PRICE-20260113",
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-CRYPTO-WEALTH-20260115",
+        "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-BTC-DISTINCTION-20251224",
+        "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-20261030"
+      ],
+      "findings": "Added six public video candidates and one third-party channel-profile candidate for Kamilah Stevenson. Combined candidate inventory now has ten URLs. Exact requested Camilla Stephenson identity remains unresolved; channel identity and inventory completeness are unverified.",
+      "new_sources": 7,
+      "new_relationship_edges": 6,
+      "new_hypotheses": 1,
+      "new_market_observations": 0,
+      "prior_research_head": "9260bf1813159116b1b7802b9b7a2565ca61f3d7",
+      "new_append_validation": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "no_main_write": true,
+      "no_merge": true,
+      "no_force_push": true,
+      "no_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true
+    }
+  ]
+}

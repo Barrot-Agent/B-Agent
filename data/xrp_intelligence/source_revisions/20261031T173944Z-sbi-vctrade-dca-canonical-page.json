@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-SBI-VCTRADE-DCA-CANONICAL-20261031T173944Z",
+  "captured_at_utc": "2026-10-31T17:39:44Z",
+  "source_id": "SRC-20261031T173944Z-SBI-VC-TRADE-DCA-CANONICAL",
+  "source": {
+    "publisher": "SBI VC Trade",
+    "title": "かんたん積立 (Easy Accumulation) — VCTRADE service",
+    "url": "https://www.sbivc.co.jp/services/tsumitate",
+    "retrieved_at_utc": "2026-10-31T17:39:44Z",
+    "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+    "independence_group": "SBI_VC_TRADE_OFFICIAL",
+    "relevant_lines": [
+      91,
+      93,
+      96,
+      98,
+      103,
+      106,
+      110,
+      114,
+      124,
+      167,
+      171,
+      178,
+      180,
+      181,
+      183,
+      185,
+      196,
+      198,
+      200,
+      201
+    ]
+  },
+  "confirmed_terms": {
+    "service_scope": "The page explicitly identifies itself as the VCTRADE service and says VCTRADE and BITPOINT currently offer different services.",
+    "displayed_eligible_asset_count": 28,
+    "eligible_assets": [
+      "BTC",
+      "ETH",
+      "XRP",
+      "SOL",
+      "TRX",
+      "DOGE",
+      "ADA",
+      "BCH",
+      "LINK",
+      "CANTON",
+      "XLM",
+      "LTC",
+      "HBAR",
+      "AVAX",
+      "SUI",
+      "TON",
+      "SHIB",
+      "DOT",
+      "NEAR",
+      "POL",
+      "ATOM",
+      "FLR",
+      "ALGO",
+      "XDC",
+      "CHZ",
+      "BERA",
+      "ZPG",
+      "JPYSC"
+    ],
+    "xrp_eligible": true,
+    "jpy_per_order_min": 500,
+    "jpy_per_order_max": 2000000,
+    "frequencies": [
+      "DAILY",
+      "WEEKLY",
+      "MONTHLY"
+    ],
+    "order_times_jst": {
+      "daily": "10:00 onward at a time selected by SBI",
+      "weekly": "Tuesday 10:00 onward at a time selected by SBI",
+      "monthly": "28th 10:00 onward at a time selected by SBI"
+    },
+    "start_rule": "The first order occurs at the next scheduled order time on or after the next business day after enrollment.",
+    "enrollment_funds_reserved": false,
+    "automatic_bank_debit": false,
+    "prefunding_required": true,
+    "insufficient_jpy_behavior": "An order is skipped when available trading capacity is below the configured amount or other SBI conditions apply.",
+    "plan_cancellation": "Customer may cancel at any time; changes require cancellation and a new plan.",
+    "plan_duration_options": {
+      "daily": "30 to 365 days",
+      "weekly": "4 to 52 weeks",
+      "monthly": "1 to 12 months"
+    }
+  },
+  "host_variant_reconciliation": {
+    "www_sbivc_co_jp_count": 28,
+    "home_sbivc_co_jp_count": 31,
+    "status": "CANONICAL_VCTRADE_PAGE_VERIFIED_AT_28; HOME_HOST_31_COUNT_REMAINS_A_SEPARATE_HOST_VARIANT_NOT_ASSUMED_EQUIVALENT",
+    "interpretation": "The accessible www.sbivc.co.jp page explicitly scopes the product to VCTRADE and lists 28 assets including XRP and JPYSC. The home.sbivc.co.jp page previously captured 31 assets but returned 502 on direct revisit. Do not merge the two asset counts or assume they represent the same service/version without a reliable crosswalk."
+  },
+  "actual_capital": {
+    "customer_funded_purchase_mechanism": "CONFIRMED_IF_CUSTOMER_HAS_PREFUNDED_JPY_AND_XRP_PLAN_IS_ACTIVE",
+    "automatic_bank_debit": "NO",
+    "xrp_plan_count": "UNKNOWN",
+    "xrp_executed_units": "UNKNOWN",
+    "monthly_jpy_xrp_fills": "UNKNOWN",
+    "execution_venue": "UNKNOWN",
+    "inventory_source": "UNKNOWN",
+    "external_spot_or_otc_purchase": "NOT_ESTABLISHED",
+    "net_external_capital": "UNKNOWN"
+  },
+  "limitations": [
+    "The public product page documents mechanics but publishes no XRP-specific active-plan count, execution volume, fill price, or market sourcing.",
+    "Customer prefunding is required; a configured plan can be skipped for insufficient funds.",
+    "A customer-funded dealer sale does not prove contemporaneous external spot-market buying; internal inventory, OTC procurement and later hedging remain alternatives.",
+    "The separate home.sbivc.co.jp host previously displayed 31 assets; its equivalence to the VCTRADE page was not established."
+  ],
+  "feature_admission": "PRODUCT_MECHANICS_ONLY; ACTUAL_XRP_ORDERS_UNKNOWN; NO_DIRECTIONAL_PRICE_FEATURE",
+  "pending_archive_append": true,
+  "exact_head_validation": {
+    "status": "PASS",
+    "validated_head_sha": "06afecc01c4d268d7be7ea7054383cfda547a2eb",
+    "validator_run_id": 41226227001,
+    "fail_closed_gate_run_id": 41226227002,
+    "archive_shards_checked": 427,
+    "source_revision_addenda_checked": 5,
+    "source_revision_addenda_pending_archive_append": 5,
+    "regression_tests_passed": 32,
+    "state_mutated": false,
+    "verified_at_utc": "2026-10-31T17:47:41Z",
+    "limitation": "The addendum's file hash and index pointer were verified. The source record remains pending append to the immutable sources archive."
+  }
+}

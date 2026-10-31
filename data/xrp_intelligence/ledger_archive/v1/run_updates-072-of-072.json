@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 71,
+  "chunk_count": 72,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T16:59:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T16:59:00Z",
+      "update_type": "COINBASE_CIRCLE_SBI_ACTUAL_COLLATERAL_AND_MULTIRAIL_ENTITY_RESOLUTION",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T165900Z-coinbase-circle-sbi-collateral-and-multirail.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T165900Z-coinbase-circle-sbi-collateral-and-multirail.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T165900Z-actual-collateral-and-multirail-entity-resolution.json",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-COLLATERAL-20261030",
+        "SRC-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION-20261030",
+        "SRC-COINBASE-Q3-2026-EARNINGS-USDC-20261030",
+        "SRC-SBI-CIRCLE-JV-50-50-AND-CIRCLE-CONTROL-20261030",
+        "SRC-SBI-CIRCLE-ARC-INVESTMENT-20260512",
+        "SRC-SBI-JPYSC-LAUNCH-ACCOUNT-ONLY-20260624",
+        "SRC-SBI-JPYSC-JGB-RESERVE-AND-LENDING-20260907",
+        "SRC-SBI-SMBC-JPYSC-CAPITAL-ALLIANCE-20261030",
+        "SRC-SBI-STARTALE-BLACKROCK-JPYSC-MMF-MOU-20261027",
+        "SRC-CIRCLE-USDC-XRPL-NATIVE-AND-XRP-AUTO-BRIDGE-20250612",
+        "SRC-COINBASE-RLUSD-THREE-NETWORK-LISTING-20261028",
+        "SRC-CIRCLE-ARC-MAINNET-INSTITUTIONAL-RAILS-20260916"
+      ],
+      "findings": "Added Coinbase Q3 SEC collateral disclosures, Circle Q2 Coinbase distribution costs and SBI Circle JV accounting control, SBI's separate Circle and Startale USD50M investments, JPYSC/SMBC/BlackRock developments, Arc validator/exchange-access distinction, native USDC on XRPL and Coinbase RLUSD launch. Kept actual XRP collateral and network usage unknown where token-level data is absent.",
+      "new_sources": 12,
+      "new_relationship_edges": 11,
+      "new_hypotheses": 4,
+      "new_market_observations": 0,
+      "prior_research_head": "a181da7e6db88b44df78413449f7e314bcc82e62",
+      "new_append_validation": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "no_main_write": true,
+      "no_merge": true,
+      "no_force_push": true,
+      "no_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true
+    }
+  ]
+}

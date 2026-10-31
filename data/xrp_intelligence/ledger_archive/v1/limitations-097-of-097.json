@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 96,
+  "chunk_count": 97,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "LIM-20261031T001607Z-01",
+      "category": "conditional_por_reserve_sensitivity_not_observed",
+      "statement": "The Edge reports Binance XRP PoR coverage of 100.77% and customer net balances of 2.496B XRP on 1 October 2026, but the five XRPL incident source wallets have not been matched to the official PoR address export. The 91.42% post-loss ratio and 214.243M XRP shortfall are conditional arithmetic only, assuming all 233.4619431M XRP came from PoR-listed reserves and no offsets. Do not report them as actual post-incident coverage.",
+      "severity": "critical",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z",
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001607Z-02",
+      "category": "official_por_address_export_not_retrieved",
+      "statement": "Binance's PoR landing page displays a Download All Address control and describes wallet ownership verification, but the actual address file, exact report audit time, Merkle root and XRP address rows were not retrieved. Official XRP wallet membership remains unknown.",
+      "severity": "critical",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 12,
+  "chunk_count": 13,
+  "record_count": 10,
+  "records": [
+    {
+      "id": "SRC-BITNOMIAL-RLUSD-XRP-COLLATERAL-LAUNCH-20251103",
+      "evidence_class": "COMPANY_REPORTED_PRIMARY_OPERATIONAL_ANNOUNCEMENT",
+      "url": "https://bitnomial.com/news/2025-11-03/rlusd-xrp-margin-collateral/",
+      "title": "Bitnomial announces RLUSD and XRP margin deposits available to institutional clients",
+      "published_at": "2025-11-03",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "Bitnomial states RLUSD and XRP margin deposits are available to institutional clients trading leveraged perpetuals, futures and options; retail access through Botanical was described as forthcoming. The announcement says acceptance is subject to applicable regulatory approvals. It establishes a company-announced capability, not actual deposited balances, customer count, utilization, turnover or XRP spot purchases."
+    },
+    {
+      "id": "SRC-CFTC-FAQ-26-05-Q7-Q11-202603",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_STAFF_FAQ",
+      "url": "https://www.cftc.gov/media/13521/Registrant%26RegisteredEntity_FAQs032026/download",
+      "title": "CFTC staff FAQ on digital-asset collateral, DCO haircuts and FCM reliance on Letter 26-05",
+      "published_at": "2026-03",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "Q7 says a DCO may accept crypto assets as initial margin if they satisfy CFTC Regulation 39.13(g)(10) minimal credit, market and liquidity risk requirements. Q8 assigns the DCO responsibility for appropriate stressed-market haircuts and review at least monthly. Q9 requires an FCM to file a prior WinJammer notice including its commencement date before relying on Letter 26-05. Q10 limits customer crypto collateral to payment stablecoins, BTC and ETH during the initial three months and imposes incident and weekly reporting. Q11 says other crypto assets may be accepted after that period if the continuing conditions are met. The FAQ states it is staff guidance and creates no binding rights or rules."
+    },
+    {
+      "id": "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20250717",
+      "evidence_class": "CONFIRMED_PRIMARY_CLEARINGHOUSE_METHODOLOGY",
+      "url": "https://bitnomial.com/clearinghouse/margin-methodology",
+      "title": "Bitnomial Clearinghouse margin methodology and default waterfall",
+      "published_at": "2025-07-17",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "Bitnomial says margins are set to cover 99% of expected price movement over a historical period and portfolio margin uses CME SPAN methodology over a one-day period. Its published waterfall includes a $5M clearinghouse guaranty-fund contribution, up to $1M in non-defaulting clearing-member assessments, and possible partial or full contract extinguishment. This is a general methodology disclosure, not an XRP-specific realized loss or utilization report."
+    },
+    {
+      "id": "SRC-COINBASE-Q3-2026-OFFICIAL-20261029",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_RESULTS",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "title": "Coinbase Q3 2026 official earnings highlights",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "Coinbase reports Q3 net income $719M, adjusted net income $78M, adjusted EBITDA $333M, crypto trading-volume market share 10.7%, assets on platform 12.5% of total crypto market capitalization, average USDC held in Coinbase products $22B (49% YoY growth), prediction markets above $200M annualized revenue, and subscription/services at 49% of net revenue. It reports 179% compound annual growth in crypto derivatives trading volume over two years and market-share gains in spot and derivatives. The prediction-market figure is annualized run-rate, not Q3 recognized revenue; these are group-level metrics, not XRP-specific flows."
+    },
+    {
+      "id": "SRC-CIRCLE-ACI-USDC-COLOMBIA-PILOT-20261027",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "url": "https://investor.circle.com/news/news-details/2026/ACI-Worldwide-and-Circle-Collaborate-to-Bring-USDC-Settlement-to-Existing-Payments-Infrastructure-in-Latin-America/default.aspx",
+      "title": "Circle and ACI Worldwide announce USDC settlement pilot with Colombian payment infrastructure",
+      "published_at": "2026-10-27",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "Circle and ACI describe an initiative initially focused on Colombia, using ACI Connetic and USDC to demonstrate stablecoin settlement alongside existing banking/payment operations and the Bre-B instant-payment ecosystem. The announcement describes an evaluation/pilot, not measured production settlement volume. It does not identify XRPL or XRP as part of this specific implementation."
+    },
+    {
+      "id": "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0215Z",
+      "evidence_class": "SECONDARY_UNVERIFIED_MARKET_DATA",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "TradRadar XRP perpetual-futures snapshot at 2026-10-30 02:15 UTC",
+      "published_at_utc": "2026-10-30T02:15:00Z",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "The dashboard reports XRP $1.216, -6.15% over 24 hours; open interest $1.80B across seven exchanges, -7.74% over 24 hours; OI-weighted funding -0.0028% per eight hours; at least $31.86M in 24-hour liquidations, including $30.65M long and $1.21M short; and 79.6% long-account share across five venues. Funding differs materially by venue, and the dashboard reports only five-venue liquidation coverage. Account ratios are not notional exposure. This is a secondary, delayed observation and is not admitted as a model feature."
+    },
+    {
+      "id": "SRC-CRYPTOKEYHOLE-XRP-ETF-20261030T0230Z",
+      "evidence_class": "SECONDARY_ISSUER_FILE_AGGREGATION",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "title": "CryptoKeyhole XRP ETF issuer-file aggregation, latest read 2026-10-29 23:02 UTC",
+      "published_at_utc": "2026-10-29T23:02:00Z",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "The tracker reports +4,337,696 XRP net holdings change on October 28 across four funds with daily issuer files, and 1,074,971,554 XRP held by those four funds. It says none of those four funds had published an October 29 issuer file by its 23:02 UTC read. Its coverage is not the same as XRP Insights' six spot funds plus BITW; Grayscale GXRP daily files are not collected in this tracker due to a bot challenge. This is a source-universe-specific holdings-change estimate, not a complete market-wide ETF flow."
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-ETF-20261030T0301Z",
+      "evidence_class": "SECONDARY_ISSUER_FILE_AGGREGATION",
+      "url": "https://xrp-insights.com/data",
+      "title": "XRP Insights issuer-holdings and ETF-flow dataset through October 28, 2026",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "The tracker reports October 28 provisional net inflow of 174,140 XRP across six US spot funds plus BITW, combined holdings around 1.190B XRP, and a net reduction around 2.96M XRP over October 26-28. It excludes GXRP from flow totals while retaining its holdings in the holdings total during a data-gap correction. The daily October 28 row was marked provisional. The fund universe and settlement treatment differ from CryptoKeyhole; values must not be averaged or treated as a same-universe contradiction."
+    },
+    {
+      "id": "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20260305",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_EVENT",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "title": "Tokyo Small and Medium Business Investment & Consultation Co. ChatGPT/generative-AI seminar, Hamamatsu",
+      "published_at": "2026-03-05",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "The official page identifies the organizer as Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社) and describes a seminar on generative AI/ChatGPT, co-hosted with Hamamatsu Iwata Shinkin, with a Microsoft speaker. This supports the Tokyo SBIC identity and an educational event; it does not establish an OpenAI partnership, SBI Holdings affiliation, XRP investment or Ripple relationship."
+    },
+    {
+      "id": "SRC-COINMARKETCAP-XRP-UNSTAMPED-SPOT-20261030T0301Z",
+      "evidence_class": "SECONDARY_UNVERIFIED_MARKET_SNAPSHOT",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "title": "CoinMarketCap XRP spot-market page snapshot without explicit capture timestamp",
+      "accessed_at_utc": "2026-10-30T03:01:30Z",
+      "note": "The search-rendered page displayed approximately $1.29, market capitalization about $82.22B, 24-hour volume about $2.13B and circulating supply about 63.35B XRP, but did not provide a precise quote timestamp in the captured result. This conflicts with the time-stamped TradRadar $1.216 observation and is retained only as a timestamp-quality warning, not a price feature."
+    }
+  ]
+}

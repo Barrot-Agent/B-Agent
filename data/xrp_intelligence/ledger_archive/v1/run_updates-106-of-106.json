@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 105,
+  "chunk_count": 106,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T001930Z-RDAE53-POR-LABEL-SBIC-CAMILLA-RESOLUTION",
+      "created_at_utc": "2026-10-31T00:19:30Z",
+      "data_cutoff_utc": "2026-10-31T00:19:30Z",
+      "summary": "Strengthened the Binance XRP reserve crosswalk: Bitquery explicitly says rDAE53 is labeled Binance in the exchange's published proof-of-reserves list and that its exchange labels are drawn from PoR lists. Whale Alert independently identifies the 185,017,485 XRP (Bithomp's prior record: 185,017,485.5 XRP) transfer from that same address to the incident receiver at 20:05 UTC on 29 October. If, and only if, rDAE53 was in the 1 October XRP PoR numerator and that transfer depleted the reserve, the rounded 100.77%/2.496B baseline yields conditional coverage about 93.36% and a 165.798M XRP shortfall before offsets. The label's list version and XRP asset mapping remain unknown; four other incident source wallets remain unverified. Separately resolved Japanese SBIC as three statutory regional companies (Tokyo East, Nagoya Central, Osaka West) and identified the 'ChatGPT SBIC' clue as consistent with a Tokyo SBIC 26 February 2025 educational seminar, not an OpenAI partnership. Identified a public Camilla Stephenson film-location-manager credit but no verified YouTube channel or video inventory. No market feature admitted and no forecast issued.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-BOTS-POR-LABEL-REVIEW-20261031T001930Z",
+        "SRC-WHALEALERT-RDAE53-185M-XRP-20261029T2005Z",
+        "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-NAGOYA-CENTRAL-PROFILE-20261031T001930Z",
+        "SRC-SBIC-OSAKA-WEST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z",
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226",
+        "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+      ],
+      "snapshot_paths": [
+        "data/xrp_intelligence/snapshots/20261031T001930Z-rdae53-por-label-and-conditional-xrp-sensitivity.json",
+        "data/xrp_intelligence/snapshots/20261031T001930Z-japan-sbic-and-camilla-identity-audit.json"
+      ],
+      "graph_paths": [
+        "data/xrp_intelligence/relationship_graph_addenda/20261031T001930Z-rdae53-por-label-and-conditional-xrp-graph.json",
+        "data/xrp_intelligence/relationship_graph_addenda/20261031T001930Z-japan-sbic-and-camilla-identity-graph.json"
+      ],
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T001930Z-rdae53-por-label-and-sbic-identity-classification.json",
+      "actions": [
+        "Re-read Bitquery's full investigation and extracted the explicit statement that rDAE53 is labeled Binance in the published PoR list; source says labels are drawn from exchange-published PoR lists.",
+        "Cross-checked Whale Alert's exact 20:05 UTC transaction and reconciled the rounded alert amount with Bithomp's prior 185,017,485.5 XRP record.",
+        "Recomputed the rDAE53-only conditional PoR stress sensitivity against the secondary-reported 1 October 2026 baseline; kept date and XRP asset membership unknown.",
+        "Read the Japanese Small and Medium Business Investment & Consultation Companies Act Article 2 and official Tokyo, Nagoya and Osaka company profiles; resolved the statutory three-company network.",
+        "Read the official Tokyo SBIC 26 February 2025 ChatGPT seminar program and classified it as an educational event, not a partnership.",
+        "Verified a Camilla Stephenson location-manager credit on Film Edinburgh's official page; exact YouTube creator identity remains unresolved."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "Bitquery does not state the exact PoR snapshot version used for rDAE53's label or prove its XRP balance was included in the October 1 XRP reserve numerator.",
+        "Official Binance address export and exact XRP asset rows remain unavailable; four other XRPL incident source wallets remain unverified.",
+        "The 93.36% rDAE53-only stress case excludes company funds, frozen/recovered assets, SAFU and token-specific replenishment.",
+        "No verified YouTube channel for the intended Camilla Stephenson was found; an exhaustive video list cannot be produced."
+      ],
+      "next_actions": [
+        "Obtain the exact Binance October 1 PoR address export and confirm rDAE53's row, asset mapping and XRP balance; then check the other four source wallets.",
+        "Compare the November 1 PoR snapshot to October 1 and reconcile XRP liabilities and reserves after the incident.",
+        "Keep the 93.36% stress case conditional and outside forecast features until official crosswalk is verified.",
+        "Continue exact-name Camilla Stephenson YouTube channel discovery without merging identities."
+      ],
+      "source_reference_count": 8,
+      "missing_source_references": 0
+    }
+  ]
+}

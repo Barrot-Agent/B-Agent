@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 53,
+  "chunk_count": 54,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T13:19:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T13:19:00Z",
+      "update_type": "EXACT_HEAD_LEDGER_VALIDATION_PASSED_AFTER_SBI_VCTRADE_ROUTE_MATRIX_APPEND",
+      "validated_head_sha": "043bf0d444d0aff10d5e8872ede83efad836ef3d",
+      "validator": {
+        "run_id": 41062076627,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41062076627",
+        "event": "pull_request",
+        "status": "success",
+        "tests_passed": 18,
+        "tests_failed": 0,
+        "python_compileall": "PASS"
+      },
+      "push_validator": {
+        "run_id": 41062070218,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41062070218",
+        "event": "push",
+        "status": "success"
+      },
+      "fail_closed_gate": {
+        "run_id": 41062076590,
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41062076590",
+        "status": "PASS_MERGE_DISABLED",
+        "automatic_merge": "DISABLED"
+      },
+      "validated_snapshot": "data/xrp_intelligence/snapshots/20261030T131600Z-sbi-vctrade-network-route-matrix.json",
+      "validated_graph": "data/xrp_intelligence/relationship_graph_addenda/20261030T131600Z-sbi-vctrade-network-route-matrix.json",
+      "referenced_archive_shards_on_validated_head": 139,
+      "source_ids_unique": true,
+      "archive_pointer_and_hash_validation": "PASS",
+      "current_main_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+      "fresh_main_safety_pr": {
+        "number": 1373,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1373",
+        "head_sha": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+        "core_ci": "347 tests + 8 subtests passed",
+        "gate": "PASS_MERGE_DISABLED",
+        "status": "OPEN_DRAFT_UNMERGED"
+      },
+      "outstanding": {
+        "full_repository_ci": "NOT_RUN",
+        "approval_workflow_push_event_runs": [
+          41062067808,
+          41062053010
+        ],
+        "approval_workflow_jobs": 0,
+        "approval_workflow_root_cause": "UNRESOLVED",
+        "main_cross_analysis_workflow_write_enabled": true
+      },
+      "no_merge": true,
+      "no_force_push": true,
+      "no_deployment": true,
+      "no_workflow_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true,
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false
+    }
+  ]
+}

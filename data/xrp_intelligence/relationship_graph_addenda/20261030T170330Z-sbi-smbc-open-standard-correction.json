@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T170330Z-SBI-SMBC-OPEN-STANDARD-CORRECTION",
+  "captured_at_utc": "2026-10-30T17:03:30Z",
+  "source_ids": [
+    "SRC-SBI-SMBC-5PCT-PRIMARY-20261030",
+    "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-20261016",
+    "SRC-BINANCE-NEWS-JPYSC-OUTSTANDING-20261030"
+  ],
+  "edges": [
+    {
+      "from": "SMBC_GROUP",
+      "to": "SBI_STARTALE_MARKETING",
+      "relationship": "Official SBI release confirms agreed 5% capital participation and capital/business alliance to study stablecoin services including JPYSC.",
+      "status": "PRIMARY_CONFIRMED"
+    },
+    {
+      "from": "SBI_STARTALE",
+      "to": "OPEN_STANDARD",
+      "relationship": "Joined Open Standard and is exploring JPYSC/OUSD interoperability proof-of-concept.",
+      "status": "PRIMARY_CONFIRMED_EXPLORATORY"
+    },
+    {
+      "from": "COINBASE",
+      "to": "OPEN_STANDARD",
+      "relationship": "Named by SBI among more than 140 Open Standard participants; indirect consortium overlap, not a direct Coinbase-JPYSC contract.",
+      "status": "PRIMARY_PARTICIPANT_LIST"
+    },
+    {
+      "from": "JPYSC",
+      "to": "OUTSTANDING_ISSUANCE",
+      "relationship": "Approximately JPY20.8B reported on Oct30 by secondary source; latest issuer-confirmed balance remains JPY20.1B as of Sep7.",
+      "status": "SECONDARY_REPORT_WITH_PRIMARY_PRIOR_CUTOFF"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T170330Z-SBI-OPEN-STANDARD-MULTIRAIL",
+      "claim": "SBI/Startale are expanding JPYSC's potential interoperability beyond the initial SBI VC Trade account rail through Open Standard/OUSD and SMBC distribution partnerships.",
+      "status": "SUPPORTED_AS_STRATEGIC_INTENT_NOT_EXECUTION",
+      "support": [
+        "Official SMBC 5% capital participation",
+        "Official JPYSC/OUSD interoperability exploration",
+        "Coinbase listed among Open Standard participants"
+      ],
+      "counter_hypothesis": [
+        "No live JPYSC/OUSD transfer or direct Coinbase-JPYSC settlement contract is established",
+        "The JPY20.8B October balance is secondary reported, not issuer confirmed"
+      ]
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

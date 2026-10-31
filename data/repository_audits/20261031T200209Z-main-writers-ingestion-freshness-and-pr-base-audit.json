@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_snapshot",
+  "audit_id": "BAGENT-20261031T200209Z-WRITER-INGESTION-PR-BASE-AUDIT",
+  "captured_at_utc": "2026-10-31T20:02:09Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "004d8b92c755dc96a9653e1d5979e18765a55d37",
+  "main_commit": {
+    "time_utc": "2026-10-31T19:52:13Z",
+    "message": "Cross-analysis refresh [skip ci]",
+    "signed": false,
+    "changed": [
+      "sentiment_shift.json"
+    ],
+    "run_id": 41236207642,
+    "pages_run_id": 41236219853
+  },
+  "prs": {
+    "total": 200,
+    "drafts": 190,
+    "ready": 10,
+    "main_based": 198,
+    "current_base": 0,
+    "stale": 198,
+    "non_main": 2
+  },
+  "reviewed_prs": [
+    {
+      "number": 1423,
+      "ahead": 19,
+      "behind": 3,
+      "ci": "353+8",
+      "gate": "PASS_MERGE_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "number": 1424,
+      "ahead": 8,
+      "behind": 3,
+      "ci": "385+8",
+      "gate": "PASS_MERGE_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "number": 1425,
+      "ahead": 3,
+      "behind": 3,
+      "ci": "346+8",
+      "gate": "PASS_MERGE_DISABLED",
+      "dependency_audit": "132 packages, zero reported, no lockfile",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "number": 1427,
+      "ahead": 1,
+      "behind": 1,
+      "ci": "342+8",
+      "gate": "PASS_MERGE_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "number": 1426,
+      "state": "DUPLICATE_OF_1427"
+    }
+  ],
+  "main_write_paths": [
+    "cross-analysis.yml hourly contents:write push main",
+    "scheduler-tick.yml every 15m contents:write/actions:write",
+    "check-signal-accuracy.yml daily contents:write",
+    "autonomous_self_deployment.yml every 6h push main",
+    "knowledge-signal-cycle.yml manual-only contents:write",
+    "knowledge-signal-cycle-btc.yml manual-only contents:write",
+    "rotate-databricks-token.yml new_token shell interpolation",
+    "subscriber_sync.yml hourly unsalted SHA-256 email hashes; public file count 0",
+    "merge-queue.yml manual write; dry_run false default; max_prs 0"
+  ],
+  "ingestion": {
+    "xrp_rows": 1208,
+    "xrp_latest_utc": "2026-10-29T13:23:01.047Z",
+    "xrp_age_hours": 54.6522,
+    "xrp_recent_48h": 0,
+    "btc_rows": 1245,
+    "btc_latest_utc": "2026-10-29T13:38:11.448Z",
+    "btc_age_hours": 54.3993,
+    "btc_recent_48h": 0,
+    "knowledge_cycle_manual_only": true,
+    "sentiment_shift_zero_samples": true,
+    "entity_profile_lifetime_only": true
+  },
+  "branch_protection": {
+    "enabled": true,
+    "required_status_contexts": []
+  },
+  "dependency_security": {
+    "pr1425_packages": 132,
+    "reported_vulnerabilities": 0,
+    "lockfile_present": false,
+    "full_repo_ci": "NOT_RUN",
+    "security_alerts": "NOT_ACCESSIBLE"
+  },
+  "research_branch_compare": {
+    "branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "ahead": 1365,
+    "behind": 370,
+    "status": "DIVERGED_DO_NOT_MERGE_AS_IS"
+  },
+  "accidental_file": {
+    "path": "tests/test_pillars_check_readonly.py",
+    "status": "PRESENT_ON_MAIN",
+    "deletion_prs": [
+      1426,
+      1427
+    ],
+    "merged": false
+  },
+  "safety": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "manual_dispatch": false,
+    "secret_access": false,
+    "trade": false
+  }
+}

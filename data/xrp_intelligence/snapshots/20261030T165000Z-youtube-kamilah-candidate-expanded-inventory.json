@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T165000Z-YOUTUBE-KAMILAH-CANDIDATE-EXPANDED-INVENTORY",
+  "captured_at_utc": "2026-10-30T16:50:00Z",
+  "data_cutoff_utc": "2026-10-30T16:50:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T165000Z-youtube-kamilah-candidate-expanded-inventory.json",
+  "source_ids": [
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-PAYCHECK-20260417",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-NEED-20260319",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-RIPPLE-BANK-20251214",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-ETF-PRICE-20260113",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-CRYPTO-WEALTH-20260115",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-BTC-DISTINCTION-20251224",
+    "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-20261030"
+  ],
+  "findings": {
+    "requested_identity": {
+      "requested_creator": "Camilla Stephenson",
+      "exact_channel_match": "NOT_RESOLVED",
+      "identity_equivalence_to_kamilah": "UNVERIFIED"
+    },
+    "candidate_channel": {
+      "display_name": "Kamilah Stevenson",
+      "channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
+      "handle_candidate": "@drkamilahstevenson",
+      "direct_youtube_channel_verification": "NOT_OBTAINED",
+      "third_party_metadata_conflicts": true
+    },
+    "newly_indexed_candidate_videos": [
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-PAYCHECK-20260417",
+        "title": "Why XRP Matters More Than Your Paycheck",
+        "published": "2026-04-17",
+        "url": "https://www.youtube.com/watch?v=Us_FIT4RByY",
+        "views": 30004,
+        "likes": 2100
+      },
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-NEED-20260319",
+        "title": "How Much XRP Do You ACTUALLY Need?",
+        "published": "2026-03-19",
+        "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+        "views": 74900,
+        "likes": null
+      },
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-RIPPLE-BANK-20251214",
+        "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+        "published": "2025-12-14",
+        "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+        "views": 76000,
+        "likes": null
+      },
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-ETF-PRICE-20260113",
+        "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+        "published": "2026-01-13",
+        "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+        "views": 20400,
+        "likes": null
+      },
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-CRYPTO-WEALTH-20260115",
+        "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+        "published": "2026-01-15",
+        "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+        "views": 23100,
+        "likes": null
+      },
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-BTC-DISTINCTION-20251224",
+        "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+        "published": "2025-12-24",
+        "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+        "views": 44991,
+        "likes": 3100
+      }
+    ],
+    "combined_candidate_inventory_count": 10,
+    "inventory_status": "PARTIAL_NOT_EXHAUSTIVE",
+    "content_classification": "CREATOR_COMMENTARY_AND_OPINION_NOT_PRIMARY_MARKET_EVIDENCE",
+    "prediction_use": "PUBLIC_DISCOURSE_ONLY; NO MARKET_FEATURE_ADMISSION",
+    "key_limitations": [
+      "Exact Camilla Stephenson channel remains unresolved.",
+      "YouTube page/feeds remain throttled or unavailable to this research path.",
+      "Third-party candidate channel metrics conflict materially.",
+      "A channel ID candidate is not proof of identity equivalence or complete video ownership."
+    ]
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

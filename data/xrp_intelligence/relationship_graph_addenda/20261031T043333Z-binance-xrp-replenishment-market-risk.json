@@ -1,0 +1,273 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T043333Z-BINANCE-XRP-REPLENISHMENT",
+  "captured_at_utc": "2026-10-31T04:33:33Z",
+  "source_references": [
+    "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+    "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+    "SRC-20261031-XRPL-FREEZE-DOCS-043333Z",
+    "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+    "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+    "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z",
+    "SRC-20261031-BINANCE-POR-PAGE-043333Z"
+  ],
+  "source_reference_count": 7,
+  "missing_source_references": 0,
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "type": "exchange",
+      "name": "Binance"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset",
+      "name": "XRP"
+    },
+    {
+      "id": "XRPL_ATTACKER_RECEIVER",
+      "type": "account",
+      "name": "TRM-attributed Binance incident XRP receiver"
+    },
+    {
+      "id": "TRM_LABS",
+      "type": "analytics_provider",
+      "name": "TRM Labs"
+    },
+    {
+      "id": "TRADERTRAITOR",
+      "type": "threat_actor_attribution",
+      "name": "TraderTraitor"
+    },
+    {
+      "id": "BINANCE_SAFU_TREASURY",
+      "type": "funding_source",
+      "name": "Binance SAFU and corporate treasury"
+    },
+    {
+      "id": "BINANCE_MARKET_OTC",
+      "type": "market_channel",
+      "name": "Market and OTC channels"
+    },
+    {
+      "id": "BINANCE_POR",
+      "type": "disclosure_process",
+      "name": "Binance Proof of Reserves"
+    },
+    {
+      "id": "CIRCLE",
+      "type": "company",
+      "name": "Circle"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin",
+      "name": "USDC"
+    },
+    {
+      "id": "TETHER",
+      "type": "company",
+      "name": "Tether"
+    },
+    {
+      "id": "USDT",
+      "type": "stablecoin",
+      "name": "USDT"
+    },
+    {
+      "id": "RIPPLE",
+      "type": "company",
+      "name": "Ripple"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin",
+      "name": "RLUSD"
+    },
+    {
+      "id": "WLFI",
+      "type": "company",
+      "name": "World Liberty Financial"
+    },
+    {
+      "id": "USD1",
+      "type": "stablecoin",
+      "name": "USD1"
+    },
+    {
+      "id": "XRPL_PROTOCOL",
+      "type": "protocol",
+      "name": "XRP Ledger"
+    }
+  ],
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "XRPL_ATTACKER_RECEIVER",
+      "relation": "five_wallets_transferred_233_46m_xrp",
+      "status": "CONFIRMED_BY_TRM_ONCHAIN_ANALYSIS; CURRENT_RECEIVER_BALANCE_STALE",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_SAFU_TREASURY",
+      "relation": "customer_loss_reimbursement_commitment",
+      "status": "OFFICIAL_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z"
+      ]
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_MARKET_OTC",
+      "relation": "replacement_purchase_of_remaining_relevant_tokens",
+      "status": "OFFICIAL_AGGREGATE_ANNOUNCEMENT; XRP_ALLOCATION_UNKNOWN",
+      "source_ids": [
+        "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z"
+      ]
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_POR",
+      "relation": "post_incident_reserve_snapshot_planned",
+      "status": "OFFICIAL_PLAN_RESULTS_EXPECTED_2026_11_02",
+      "source_ids": [
+        "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+        "SRC-20261031-BINANCE-POR-PAGE-043333Z"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "USDC",
+      "relation": "issuer_froze_attacker_related_balance",
+      "status": "TRM_CONFIRMED_APPROX_825M_USDC",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    },
+    {
+      "from": "TETHER",
+      "to": "USDT",
+      "relation": "issuer_froze_attacker_related_balance",
+      "status": "TRM_CONFIRMED_APPROX_1_77B_USDT",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD",
+      "relation": "issuer_froze_attacker_related_balance",
+      "status": "TRM_CONFIRMED_40_5M_RLUSD_ONCHAIN; NOT_NATIVE_XRP",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    },
+    {
+      "from": "WLFI",
+      "to": "USD1",
+      "relation": "issuer_froze_attacker_related_balance",
+      "status": "TRM_REPORTED_APPROX_27_8M_USD1",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    },
+    {
+      "from": "XRPL_PROTOCOL",
+      "to": "XRP",
+      "relation": "native_asset_cannot_be_issuer_frozen",
+      "status": "CONFIRMED_PROTOCOL_DOCUMENTATION",
+      "source_ids": [
+        "SRC-20261031-XRPL-FREEZE-DOCS-043333Z"
+      ]
+    },
+    {
+      "from": "TRM_LABS",
+      "to": "TRADERTRAITOR",
+      "relation": "high_confidence_attribution_of_binance_incident",
+      "status": "THIRD_PARTY_INTELLIGENCE_ASSESSMENT_NOT_OFFICIAL_LAW_ENFORCEMENT_CONFIRMATION",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-043333-01",
+      "hypothesis": "Binance's replacement program creates measurable XRP spot or OTC demand.",
+      "status": "POSSIBLE_NOT_QUANTIFIED",
+      "support": [
+        "Binance says it is buying remaining relevant token assets through market and OTC channels.",
+        "XRP was among the assets transferred in the incident."
+      ],
+      "disconfirming_or_alternative": [
+        "The announcement does not name XRP or disclose token-by-token quantities.",
+        "Binance may satisfy obligations from existing inventory, internal transfers or OTC counterparties."
+      ],
+      "test": "Reconcile the post-incident PoR address export, token-specific reserve balances, public XRP wallet inflows and any disclosed execution data."
+    },
+    {
+      "id": "H-043333-02",
+      "hypothesis": "The 233.46M XRP remains at the incident receiver as of the current cutoff.",
+      "status": "UNKNOWN_STALE_EVIDENCE",
+      "support": [
+        "TRM reported the XRP remained at the receiver as of 2026-10-30 00:30 UTC."
+      ],
+      "disconfirming_or_alternative": [
+        "No fresh XRPL account_info or transaction-history read was completed by 2026-10-31 04:24 UTC."
+      ],
+      "test": "Read the receiver's validated XRPL account state and complete transaction history from an authorized public node; preserve ledger index and query timestamp."
+    },
+    {
+      "id": "H-043333-03",
+      "hypothesis": "The XRP Ledger protocol itself was exploited in the Binance incident.",
+      "status": "DISFAVORED",
+      "support": [
+        "The first observed large transfers in the multi-chain incident occurred on XRPL."
+      ],
+      "disconfirming_or_alternative": [
+        "TRM describes ordinary signed XRPL transfers and a broader Binance hot-wallet signing-infrastructure compromise; no XRPL consensus or protocol exploit is evidenced."
+      ],
+      "test": "Compare transaction validity and signing-path findings in Binance's technical postmortem; keep protocol-level and exchange-infrastructure causes separate."
+    },
+    {
+      "id": "H-043333-04",
+      "hypothesis": "Circle or Ripple could freeze the stolen native XRP using their stablecoin issuer controls.",
+      "status": "FALSE_FOR_NATIVE_XRP",
+      "support": [
+        "Circle froze USDC and Ripple froze RLUSD issued-token balances."
+      ],
+      "disconfirming_or_alternative": [
+        "XRPL documentation explicitly states issuer freeze controls do not apply to native XRP."
+      ],
+      "test": "Maintain asset-type checks in the graph: XRP native balance, RLUSD/USDC/USDT issued balances and custodial exchange claims are separate."
+    },
+    {
+      "id": "H-043333-05",
+      "hypothesis": "The Binance incident establishes a directional XRP price effect.",
+      "status": "NOT_IDENTIFIED",
+      "support": [
+        "Incident timing coincides with elevated long liquidations and a subsequent market shock."
+      ],
+      "disconfirming_or_alternative": [
+        "24h windows straddle the incident, OI providers differ by 2.13x, ETF flow is partial, and broader crypto/macro events confound attribution."
+      ],
+      "test": "Run a timestamped event study against BTC/ETH controls, spot depth, venue-specific OI/funding, ETF final flows and verified incident-wallet movements."
+    },
+    {
+      "id": "H-043333-06",
+      "hypothesis": "TraderTraitor is conclusively established as the perpetrator.",
+      "status": "HIGH_CONFIDENCE_THIRD_PARTY_ATTRIBUTION_NOT_OFFICIALLY_CONFIRMED",
+      "support": [
+        "TRM attributes the attack with high confidence using on-chain and off-chain intelligence."
+      ],
+      "disconfirming_or_alternative": [
+        "Binance's public update says the investigation is ongoing and does not name the threat actor."
+      ],
+      "test": "Wait for corroborating law-enforcement or independently attributable evidence; preserve TRM's confidence as a sourced claim, not an official finding."
+    }
+  ]
+}

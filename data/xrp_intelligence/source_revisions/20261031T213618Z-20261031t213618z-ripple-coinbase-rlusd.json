@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+  "source_id": "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+      "publisher": "Ripple — Ripple and Coinbase partner to expand access to RLUSD",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-28",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "RLUSD launched on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum.",
+        "Ripple said it would provide liquidity for RLUSD on Base.",
+        "Coinbase Global Exchange RLUSD collateral support was described as a later phase, not live at announcement."
+      ],
+      "limitations": [
+        "RLUSD distribution is not native XRP buying or collateral usage.",
+        "Base/Ethereum transfers do not require XRPL or XRP as bridge.",
+        "Do not record planned collateral support as live without confirmation."
+      ]
+    }
+  ],
+  "findings": [
+    "RLUSD launched on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum.",
+    "Ripple said it would provide liquidity for RLUSD on Base.",
+    "Coinbase Global Exchange RLUSD collateral support was described as a later phase, not live at announcement."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "RLUSD distribution is not native XRP buying or collateral usage.",
+    "Base/Ethereum transfers do not require XRPL or XRP as bridge.",
+    "Do not record planned collateral support as live without confirmation."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

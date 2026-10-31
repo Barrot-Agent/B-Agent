@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "record_type": "barrot_repository_audit",
+  "audit_id": "BARROT-REPO-AUDIT-20261030T180231Z",
+  "captured_at_utc": "2026-10-30T18:02:31Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "current_main_sha": "53d1becbefe622badc550178fbfe125312df5795",
+  "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
+  "latest_main_commit_at_utc": "2026-10-30T17:51:50Z",
+  "latest_main_commit_changed_paths": [
+    "ping-pongings/knowledge-base/sentiment_shift.json"
+  ],
+  "risks": [
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/cross-analysis.yml",
+      "blob_sha": "143bb2ed89ef4e2d85071a583896adad2c37c81b",
+      "finding": "Hourly schedule and workflow_run trigger, contents:write, checkout credentials persisted by default, and automatic git add/commit/push to main remain active."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+      "finding": "Manual workflow has contents:write and pull-requests:write; default dry_run=false, max_prs=0 (unlimited), and can update branches, merge PRs and delete branches."
+    },
+    {
+      "severity": "HIGH",
+      "path": "web/latest_signal.json",
+      "finding": "Stale 2026-10-29T13:23:33Z signal score 44/confidence 0; source records missing GitHub model credentials and Groq HTTP 429; not a forecast."
+    },
+    {
+      "severity": "HIGH",
+      "path": "web/signal_accuracy.json",
+      "finding": "45.9% (772/1683) is variable-horizon mutable-outcome scoring and is not comparable to fixed-horizon out-of-sample accuracy."
+    },
+    {
+      "severity": "MEDIUM",
+      "path": "scripts/validate_xrp_ledger_index.py",
+      "finding": "Validator previously reconciled pointer counts and shard hashes but did not validate duplicated archive_policy summary counts. This run adds that check and a regression test; exact-head CI pending."
+    }
+  ],
+  "prs": [
+    {
+      "number": 1353,
+      "head_sha": "f86fbb525d9f3586d083778bfde4a0f76551a770",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "latest_validator_runs": "queued"
+    },
+    {
+      "number": 1373,
+      "head_sha": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+      "base_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "main_ahead_by": 6,
+      "core_ci_run": 41061593599,
+      "core_ci": "347 tests plus 8 subtests passed",
+      "gate_run": 41061593629,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1374,
+      "head_sha": "5f70b26eac93b4835130db2541e085dd2e107ce2",
+      "base_sha": "3a1b1e7a2cf2a22e262d73592ceec9196356fbae",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "main_ahead_by": 5,
+      "core_ci_run": 41087890290,
+      "core_ci": "347 tests plus 8 subtests passed",
+      "gate_run": 41087890315,
+      "gate": "PASS_MERGE_DISABLED",
+      "remaining_limitations": [
+        "merges/barrot-superior/config.yaml absent from main",
+        "artifact transfer and actual Hugging Face upload not executed",
+        "mergekit and transitive dependencies not pinned",
+        "GitHub Actions references not pinned to immutable commit SHAs"
+      ]
+    },
+    {
+      "number": 1369,
+      "head_sha": "6592cdc199f73645f850d96718a4f32ad46e27e8",
+      "base_sha": "71a95b330a1c82ed5ccb6ccb3abe76e8c37a49d6",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "main_ahead_by": 11
+    },
+    {
+      "number": 1367,
+      "head_sha": "9ee42d8a6d2e90a43e15f80558b7ec599aad84a0",
+      "base_sha": "7bc248654412643af1baf071db707771cb1ce2e5",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "main_ahead_by": 12
+    }
+  ],
+  "access": {
+    "github_connector": "VERIFIED_IN_THIS_RUN",
+    "claude": "NOT_TESTED",
+    "grok": "NOT_TESTED",
+    "gemini": "NOT_TESTED",
+    "copilot": "NOT_TESTED",
+    "codex": "NOT_TESTED",
+    "hugging_face": "NOT_TESTED",
+    "kaggle": "NOT_TESTED",
+    "databricks": "NOT_TESTED"
+  },
+  "full_repository_ci": "NOT_RUN",
+  "main_modified": false,
+  "merge_performed": false,
+  "workflow_dispatch_performed": false,
+  "paper_state_mutated": false,
+  "real_money_trade": false
+}

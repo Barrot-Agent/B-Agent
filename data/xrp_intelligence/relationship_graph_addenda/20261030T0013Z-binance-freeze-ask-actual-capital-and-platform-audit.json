@@ -1,0 +1,554 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T0013Z-BINANCE-ASK-ACTUAL-CAPITAL-SBI-CREATOR",
+  "captured_at_utc": "2026-10-30T00:13:00Z",
+  "observed_main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY_PROTOCOL_DOCUMENTATION",
+      "CONFIRMED_PRIMARY_CORPORATE_ANNOUNCEMENT",
+      "CONFIRMED_SEC_FILED_COMPANY_REPORT",
+      "SECONDARY_WIRE_REPORT",
+      "SECONDARY_DYNAMIC_MARKET_DATA",
+      "SOURCED_CLAIM",
+      "INFERENCE",
+      "SPECULATION",
+      "UNKNOWN",
+      "DISCONFIRMED"
+    ],
+    "causal_rule": "Do not infer XRP price impact from announcements, stablecoin freezes, exchange transfers, market-cap changes or platform user ratios without synchronized, reconciled, out-of-sample evidence. Preserve asset/chain identity uncertainty and disconfirming evidence."
+  },
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "SECURITY_INCIDENT_20261029",
+      "label": "Potential security incident, Oct 29 2026",
+      "kind": "UNCONFIRMED_EVENT"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "TETHER",
+      "label": "Tether",
+      "kind": "STABLECOIN_ISSUER"
+    },
+    {
+      "id": "USDT",
+      "label": "USDT",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "PAYMENT_AND_DIGITAL_ASSET_COMPANY"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_LEDGER"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "ISSUER_STABLECOIN"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_AND_FINANCIAL_PLATFORM"
+    },
+    {
+      "id": "PRIVY",
+      "label": "Privy",
+      "kind": "WALLET_INFRASTRUCTURE"
+    },
+    {
+      "id": "STRIPE",
+      "label": "Stripe",
+      "kind": "PAYMENTS_COMPANY"
+    },
+    {
+      "id": "PERMISSION",
+      "label": "Permission",
+      "kind": "AGENTIC_DATA_AND_CONSENT_PLATFORM"
+    },
+    {
+      "id": "ASK_PERMISSION",
+      "label": "Permission Coin ASK",
+      "kind": "UTILITY_TOKEN"
+    },
+    {
+      "id": "GOASK",
+      "label": "GoAsk",
+      "kind": "SEPARATE_ASK_TICKER_TOKEN"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings",
+      "kind": "JAPANESE_FINANCIAL_GROUP"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "label": "SBI Ripple Asia",
+      "kind": "JOINT_VENTURE"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "BITBANK",
+      "label": "bitbank",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "SBIC_REGIONAL_COMPANIES",
+      "label": "SBIC East/West/Central",
+      "kind": "REGIONAL_SME_INVESTMENT_COMPANIES"
+    },
+    {
+      "id": "SBI_CAPITAL_CO_LTD",
+      "label": "SBI Capital Co., Ltd. (historical SBIC abbreviation)",
+      "kind": "HISTORICAL_CORPORATE_ENTITY"
+    },
+    {
+      "id": "KAMILAH_STEVENSON_CHANNEL",
+      "label": "Kamilah Stevenson | XRP & Stocks channel",
+      "kind": "PUBLIC_CREATOR_CHANNEL_CANDIDATE"
+    },
+    {
+      "id": "CAMILA_STEVENSON_SELF_INTRO",
+      "label": "Camila/Camilla Stevenson self-introduction variants",
+      "kind": "PUBLIC_IDENTITY_CLAIM"
+    },
+    {
+      "id": "CAMILLA_STEPHENSON_REQUESTED_IDENTITY",
+      "label": "Camilla Stephenson (requested spelling)",
+      "kind": "UNVERIFIED_IDENTITY"
+    },
+    {
+      "id": "ACTUAL_CAPITAL",
+      "label": "Actual capital and market-flow measurement",
+      "kind": "RESEARCH_CONCEPT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BINANCE-POTENTIAL-SECURITY-INCIDENT-20261030",
+      "source": "BINANCE",
+      "target": "SECURITY_INCIDENT_20261029",
+      "relationship": "UNDER_INVESTIGATION",
+      "evidence_class": "SECONDARY_WIRE_REPORT_CORROBORATED_BY_AP_AND_REUTERS",
+      "claim": "Binance said it was investigating a potential security issue and said user funds were safe; theft/damage was not confirmed in the cited reports.",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-20261029",
+        "SRC-AP-BINANCE-SECURITY-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-CIRCLE-USDC-FREEZE-BINANCE-20261030",
+      "source": "CIRCLE",
+      "target": "USDC",
+      "relationship": "REPORTED_FREEZE_ASSOCIATED_WITH_BINANCE_INCIDENT",
+      "evidence_class": "ISSUER_STATEMENT_REPORTED_BY_AP_AND_REUTERS",
+      "claim": "Circle reported freezing more than $800M equivalent associated with the incident, in coordination with law enforcement; frozen is not the same as recovered.",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-20261029",
+        "SRC-AP-BINANCE-SECURITY-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-TETHER-USDT-FREEZE-BINANCE-20261030",
+      "source": "TETHER",
+      "target": "USDT",
+      "relationship": "REPORTED_FREEZE_ASSOCIATED_WITH_BINANCE_INCIDENT",
+      "evidence_class": "ISSUER_STATEMENT_REPORTED_BY_AP_AND_REUTERS",
+      "claim": "Tether reported freezing roughly $1.5B to $1.57B associated with the incident; the event's full loss/recovery amount remains unknown.",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-20261029",
+        "SRC-AP-BINANCE-SECURITY-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-RIPPLE-UNSPECIFIED-FREEZE-BINANCE-20261030",
+      "source": "RIPPLE",
+      "target": "UNSPECIFIED_ASSETS",
+      "relationship": "REPORTED_FREEZE_ASSOCIATED_WITH_BINANCE_INCIDENT",
+      "evidence_class": "ATTRIBUTED_CLAIM_FROM_BINANCE_COFOUNDER",
+      "claim": "Yi He was reported as saying Ripple froze roughly $200M. No token, chain, wallet addresses or custody mechanism were identified; do not label this XRP or RLUSD.",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-XRPL-NATIVE-XRP-NO-ISSUER-FREEZE",
+      "source": "XRPL_PROTOCOL",
+      "target": "XRP",
+      "relationship": "NATIVE_ASSET_NOT_FREEZEABLE_BY_ISSUER",
+      "evidence_class": "CONFIRMED_PRIMARY_PROTOCOL_DOCUMENTATION",
+      "claim": "XRPL documentation states no one can freeze native XRP; issuers can freeze issued tokens and custodians can freeze assets held in their own custody.",
+      "source_ids": [
+        "SRC-XRPL-FREEZE-CONTROLS-20261030"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-USDC-Q3-ECONOMICS-2026",
+      "source": "COINBASE",
+      "target": "USDC",
+      "relationship": "DISTRIBUTION_AND_REVENUE_ECONOMICS",
+      "evidence_class": "CONFIRMED_SEC_FILED_COMPANY_REPORT",
+      "claim": "Coinbase Q3 reported $22B average USDC held in Coinbase products and $307M stablecoin revenue; this is material company-wide USDC economics, not XRP-specific capital flow.",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z",
+        "SRC-REUTERS-COINBASE-Q3-20261029T211600Z"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-RLUSD-DISTRIBUTION-20261028",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "RETAIL_PRIME_EXCHANGE_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_CORPORATE_ANNOUNCEMENT",
+      "claim": "Coinbase announced RLUSD access through Prime, Exchange and retail, with deposits/withdrawals on XRPL, Base and Ethereum; Global Exchange collateral availability was described as future rollout.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261029T211600Z"
+      ]
+    },
+    {
+      "id": "EDGE-CIRCLE-USDC-ON-XRPL",
+      "source": "CIRCLE",
+      "target": "XRPL",
+      "relationship": "USDC_ISSUANCE_AND_SUPPORT_ON_LEDGER",
+      "evidence_class": "CONFIRMED_CORPORATE_ANNOUNCEMENT",
+      "claim": "Circle and Ripple previously announced USDC on XRPL; Circle USDC and Ripple RLUSD can coexist on the same ledger, so their relationship includes cooperation as well as issuer competition.",
+      "source_ids": [
+        "SRC-RIPPLE-CIRCLE-USDC"
+      ]
+    },
+    {
+      "id": "EDGE-PRIVY-STRIPE-RIPPLE-XRPL-AGENTIC-PAYMENTS",
+      "source": "PRIVY",
+      "target": "XRPL",
+      "relationship": "PROGRAMMABLE_WALLET_AND_AGENTIC_COMMERCE_PARTNERSHIP",
+      "evidence_class": "CONFIRMED_PRIMARY_PARTNERSHIP_ANNOUNCEMENT",
+      "claim": "Privy, part of Stripe, announced a Ripple/XRPL integration for programmable wallets and agentic commerce; announcement does not establish production volume or XRP demand.",
+      "source_ids": [
+        "SRC-PRIVY-RIPPLE-XRPL-20261013"
+      ]
+    },
+    {
+      "id": "EDGE-PERMISSION-ASK-BASE-POLYGON-NOT-XRPL",
+      "source": "PERMISSION",
+      "target": "ASK_PERMISSION",
+      "relationship": "NATIVE_AGENT_ECONOMY_TOKEN",
+      "evidence_class": "CONFIRMED_PRIMARY_TOKEN_DOCUMENTATION",
+      "claim": "Permission's ASK token supports consent/rewards and agent-to-agent coordination; official docs list LayerZero OFT on Base and Polygon, not XRPL.",
+      "source_ids": [
+        "SRC-PERMISSION-ASK-DOCS-20261030"
+      ]
+    },
+    {
+      "id": "EDGE-GOASK-TICKER-COLLISION",
+      "source": "GOASK",
+      "target": "ASK_TICKER",
+      "relationship": "DISTINCT_ASSET_TICKER_COLLISION",
+      "evidence_class": "SECONDARY_TOKEN_CATALOG",
+      "claim": "GoAsk is a separate ASK-ticker asset with different supply and contract; do not merge its data with Permission Coin.",
+      "source_ids": [
+        "SRC-CMC-GOASK-20261030"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-HOLDINGS-RIPPLE-EQUITY-2025",
+      "source": "SBI_HOLDINGS",
+      "target": "RIPPLE",
+      "relationship": "MINORITY_EQUITY_INVESTOR",
+      "evidence_class": "OFFICIAL_SBI_INVESTOR_PRESENTATION_AS_OF_2025_02",
+      "claim": "SBI's February 2025 investor presentation reported approximately 9% Ripple equity as its largest external shareholder position at that date; this is not a verified current cap table and does not identify SBIC East/West/Central as shareholders.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-RIPPLE-ASIA-ECOSYSTEM-2026",
+      "source": "SBI_HOLDINGS",
+      "target": "SBI_RIPPLE_ASIA",
+      "relationship": "JOINT_VENTURE_AND_XRPL_REMITTANCE_ECOSYSTEM",
+      "evidence_class": "CONFIRMED_PRIMARY_CORPORATE_SOURCES",
+      "claim": "SBI Ripple Asia, SBI VC Trade, SBI Remit and bitbank have distinct documented XRP/XRPL/RLUSD activities. SBI Holdings' group-level activity must not be attributed to SBIC regional SME investment companies.",
+      "source_ids": [
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+        "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+        "SRC-SBI-RLUSD-JAPAN-2026",
+        "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z",
+        "SRC-SBI-XRP-CARD-20261029T151040Z"
+      ]
+    },
+    {
+      "id": "EDGE-SBIC-REGIONAL-ENTITIES-DISTINCT-FROM-SBI-HOLDINGS",
+      "source": "SBIC_REGIONAL_COMPANIES",
+      "target": "SBI_HOLDINGS",
+      "relationship": "NAME_ACRONYM_COLLISION_NOT_AFFILIATION",
+      "evidence_class": "OFFICIAL_COMPANY_PROFILES_AND_GROUP_DIRECTORY",
+      "claim": "SBIC East, West and Central are regional Small and Medium Business Investment & Consultation companies; they are not SBI Holdings or SBI Ripple Asia. No direct XRP relationship for these SBIC entities is established.",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+        "SRC-RUN25-20261029T014151-SBIC-WEST",
+        "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+        "SRC-SBI-GROUP-DIRECTORY-2026-10-07"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-CAPITAL-HISTORICAL-SBIC-ALIAS",
+      "source": "SBI_HOLDINGS",
+      "target": "SBI_CAPITAL_CO_LTD",
+      "relationship": "HISTORICAL_USE_OF_SBIC_ABBREVIATION",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_RELEASE",
+      "claim": "SBI Holdings used SBIC for SBI Capital Co., Ltd. in historical 2005/2007 materials; this is a separate acronym expansion from the regional SME investment/consultation companies.",
+      "source_ids": [
+        "SRC-SBI-CAPITAL-2005-SBIC",
+        "SRC-SBI-CAPITAL-SBIC-2005"
+      ]
+    },
+    {
+      "id": "EDGE-SBIC-CHATGPT-TRAINING-NO-XRP-LINK",
+      "source": "SBIC_EAST_WEST",
+      "target": "CHATGPT_TRAINING",
+      "relationship": "PUBLIC_GENERATIVE_AI_EDUCATION",
+      "evidence_class": "CONFIRMED_PRIMARY_COURSE_MATERIAL",
+      "claim": "SBIC East/West published ChatGPT/generative-AI training material; this is an education event, not evidence of an OpenAI partnership, SBI Holdings affiliation or XRP investment.",
+      "source_ids": [
+        "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z",
+        "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-USER-BUYING-SHARE-NOTIONAL-LIMIT",
+      "source": "COINBASE",
+      "target": "XRP",
+      "relationship": "PLATFORM_SPECIFIC_RETAIL_POSITIONING_INDICATOR",
+      "evidence_class": "SECONDARY_DYNAMIC_PLATFORM_METRIC",
+      "claim": "Coinbase page reports 98% of customers increased net XRP position over 24h; user-count share is not dollar-weighted and cannot be called actual capital inflow.",
+      "source_ids": [
+        "SRC-COINBASE-XRP-QUOTE-20261030T0012Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-AGGREGATOR-QUOTE-DISAGREEMENT",
+      "source": "XRP_MARKET",
+      "target": "AGGREGATOR_QUOTES",
+      "relationship": "UNSYNCHRONIZED_DYNAMIC_QUOTE_CONFLICT",
+      "evidence_class": "SECONDARY_DYNAMIC_MARKET_DATA",
+      "claim": "CoinMarketCap, CoinDesk and Coinbase pages report differing market-cap, volume and return values without a shared quote timestamp; do not average or admit as a synchronized feature.",
+      "source_ids": [
+        "SRC-CMC-XRP-QUOTE-20261030T0012Z",
+        "SRC-COINDESK-XRP-QUOTE-20261030T0012Z",
+        "SRC-COINBASE-XRP-QUOTE-20261030T0012Z"
+      ]
+    },
+    {
+      "id": "EDGE-ACTUAL-CAPITAL-EXCHANGE-NETFLOW-DISTINCTION",
+      "source": "EXCHANGE_NETFLOWS",
+      "target": "ACTUAL_CAPITAL",
+      "relationship": "MEASUREMENT_NOT_EQUIVALENT",
+      "evidence_class": "SECONDARY_COMMENTARY_WITH_METHOD_LIMITATION",
+      "claim": "Exchange deposits/withdrawals are inventory transfers, not executed purchases or fiat/stablecoin capital entering the market. Market-cap change divided by netflows is not a causal capital multiplier; CVD is an order-flow proxy, not total capital.",
+      "source_ids": [
+        "SRC-TIMESTABLOID-ACTUAL-CAPITAL-20251015",
+        "SRC-COINTURK-XRP-MULTIPLIER-202610"
+      ]
+    },
+    {
+      "id": "EDGE-KAMILAH-CAMILA-CHANNEL-IDENTITY-CANDIDATE",
+      "source": "KAMILAH_STEVENSON_CHANNEL",
+      "target": "CAMILA_STEVENSON_SELF_INTRO",
+      "relationship": "PUBLIC_NAME_VARIANT_IN_CHANNEL_AND_INTERVIEW",
+      "evidence_class": "PUBLIC_CHANNEL_AND_INTERVIEW_TRANSCRIPT",
+      "claim": "A Kamilah-branded YouTube channel and a podcast transcript self-introduction using Camila/Camilla are plausible same-creator candidates, but exact equivalence to requested Camilla Stephenson remains unverified; fake-page warning exists.",
+      "source_ids": [
+        "SRC-YOUTUBE-KAMILAH-CHANNEL-20261030",
+        "SRC-IHEART-KAMILAH-CAMILLA-INTERVIEW-20261030"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-STABLECOIN-FREEZE-COMPLIANCE-VS-CENSORSHIP-20261030",
+      "claim": "Large issuer freezes can improve law-enforcement containment and institutional compliance confidence while simultaneously highlighting centralized censorship/counterparty risk in fiat-backed stablecoins.",
+      "supporting_source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-20261029",
+        "SRC-AP-BINANCE-SECURITY-20261029",
+        "SRC-XRPL-FREEZE-CONTROLS-20261030"
+      ],
+      "disconfirming_evidence": [
+        "Binance had not confirmed theft and frozen funds are not proven recovered.",
+        "Issuer freezes may be required by law and can be viewed as a compliance feature rather than an adverse event.",
+        "No evidence yet of post-event changes in stablecoin supply, exchange balances or institutional demand."
+      ],
+      "status": "PLAUSIBLE_CAUSAL_HYPOTHESIS_NOT_TESTED"
+    },
+    {
+      "id": "HYP-RIPPLE-200M-FREEZE-ASSET-IDENTITY-20261030",
+      "claim": "Ripple's reported roughly $200M freeze likely concerns an issuer-controlled token, custodial asset or off-chain restriction rather than native XRP protocol freezing, but the asset remains unknown.",
+      "supporting_source_ids": [
+        "SRC-REUTERS-BINANCE-SECURITY-20261029",
+        "SRC-XRPL-FREEZE-CONTROLS-20261030"
+      ],
+      "disconfirming_evidence": [
+        "Reuters attributes the amount to Yi He's X statement but provides no token, chain or addresses.",
+        "XRPL docs explicitly say native XRP cannot be frozen at protocol level.",
+        "A custodial exchange can freeze assets it holds, independent of XRPL issuer controls."
+      ],
+      "status": "UNRESOLVED_ASSET_ATTRIBUTION"
+    },
+    {
+      "id": "HYP-COINBASE-MULTIISSUER-STABLECOIN-HEDGE-20261030",
+      "claim": "Coinbase's USDC economics remain substantial while RLUSD distribution broadens its multi-issuer stablecoin offering; this may be a distribution hedge and product expansion rather than USDC displacement.",
+      "supporting_source_ids": [
+        "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z",
+        "SRC-REUTERS-COINBASE-Q3-20261029T211600Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261029T211600Z",
+        "SRC-RIPPLE-CIRCLE-USDC"
+      ],
+      "disconfirming_evidence": [
+        "No post-listing Coinbase RLUSD balances, volume, revenue share or collateral usage measured.",
+        "Q3 USDC metrics are company-wide and predate the RLUSD listing.",
+        "RLUSD and USDC may compete for the same institutional balances in some use cases."
+      ],
+      "status": "PLAUSIBLE_STRATEGIC_HYPOTHESIS"
+    },
+    {
+      "id": "HYP-XRPL-AGENTIC-PAYMENTS-UTILITY-VS-XRP-DEMAND-20261030",
+      "claim": "Privy programmable-wallet integration may expand agentic commerce on XRPL, but network transaction counts and stablecoin settlement do not automatically create proportional XRP inventory demand.",
+      "supporting_source_ids": [
+        "SRC-PRIVY-RIPPLE-XRPL-20261013",
+        "SRC-RIPPLE-CIRCLE-USDC",
+        "SRC-RIPPLE-C2FO-XRPL-TRADE-FINANCE-2026-10-27"
+      ],
+      "disconfirming_evidence": [
+        "Partnership announcement does not establish live production volume.",
+        "RLUSD and USDC can settle on XRPL without using XRP as bridge asset for every transaction.",
+        "No route-level XRP bridge, order-book, inventory or fee-demand series measured."
+      ],
+      "status": "PLAUSIBLE_NOT_QUANTIFIED"
+    },
+    {
+      "id": "HYP-ASK-COIN-PERMISSION-AGENTIC-ECONOMY-20261030",
+      "claim": "Permission Coin ASK is a plausible candidate for the exact phrase ASK Coin because its official utility explicitly includes agent-to-agent value exchange; it is an adjacent agentic-economy project, not a verified XRPL/XRP integration.",
+      "supporting_source_ids": [
+        "SRC-PERMISSION-ASK-DOCS-20261030",
+        "SRC-CMC-PERMISSION-ASK-20261030",
+        "SRC-CMC-GOASK-20261030"
+      ],
+      "disconfirming_evidence": [
+        "GoAsk is a separate ASK ticker candidate.",
+        "Permission docs list Base and Polygon, not XRPL.",
+        "Original phrase context remains unavailable; no direct relationship with Ripple, Coinbase or Circle found."
+      ],
+      "status": "LEADING_CANDIDATE_IDENTITY_NOT_CONFIRMED_BY_CONTEXT"
+    },
+    {
+      "id": "HYP-ACTUAL-CAPITAL-MARKETCAP-MULTIPLIER-20261030",
+      "claim": "Reported 986x/1,200x market-cap-to-exchange-netflow ratios mainly reflect marginal price repricing divided by transfer metrics, not a stable capital multiplier or the amount of cash required to move XRP.",
+      "supporting_source_ids": [
+        "SRC-TIMESTABLOID-ACTUAL-CAPITAL-20251015",
+        "SRC-COINTURK-XRP-MULTIPLIER-202610"
+      ],
+      "disconfirming_evidence": [
+        "Exchange netflows can still be useful for venue inventory and supply-risk analysis when reconciled with wallet labels.",
+        "Order-book depth, CVD, OTC and ETF creations/redemptions can jointly explain price impact; no complete synchronized dataset is assembled yet."
+      ],
+      "status": "METHODOLOGICAL_CORRECTION_PENDING_REPRODUCTION"
+    },
+    {
+      "id": "HYP-SBIC-ACRONYM-ENTITY-DISAMBIGUATION-20261030",
+      "claim": "Japan's SBIC can refer to regional Small and Medium Business Investment & Consultation companies or historical SBI Capital Co., Ltd. abbreviation; neither should be conflated with SBI Holdings, whose Ripple stake/partnership is separately documented.",
+      "supporting_source_ids": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+        "SRC-RUN25-20261029T014151-SBIC-WEST",
+        "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+        "SRC-SBI-CAPITAL-2005-SBIC",
+        "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY"
+      ],
+      "disconfirming_evidence": [
+        "The original user's phrase context may identify one specific SBIC; exact referent remains unresolved.",
+        "The 9% SBI Holdings Ripple stake is dated February 2025 and is not a current cap-table verification."
+      ],
+      "status": "MULTIPLE_CONFIRMED_EXPANSIONS_OR_ENTITIES_CONTEXT_UNRESOLVED"
+    },
+    {
+      "id": "HYP-KAMILAH-CAMILA-CAMILLA-CREATOR-IDENTITY-20261030",
+      "claim": "Kamilah Stevenson channel branding and Camila/Camilla transcript introductions may refer to one creator, but cannot yet be equated to the exact requested Camilla Stephenson or used as a complete channel inventory.",
+      "supporting_source_ids": [
+        "SRC-YOUTUBE-KAMILAH-CHANNEL-20261030",
+        "SRC-IHEART-KAMILAH-CAMILLA-INTERVIEW-20261030",
+        "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14"
+      ],
+      "disconfirming_evidence": [
+        "Multiple similar-name channels and fake pages are publicly noted.",
+        "The spelling difference Stephenson/Stevenson is material.",
+        "No verified channel owner statement linking the exact requested identity has been obtained."
+      ],
+      "status": "IDENTITY_UNRESOLVED"
+    }
+  ],
+  "source_ids": [
+    "SRC-REUTERS-BINANCE-SECURITY-20261029",
+    "SRC-AP-BINANCE-SECURITY-20261029",
+    "SRC-XRPL-FREEZE-CONTROLS-20261030",
+    "SRC-PRIVY-RIPPLE-XRPL-20261013",
+    "SRC-TRADRADAR-XRP-PERP-20261029T1905Z",
+    "SRC-CMC-XRP-QUOTE-20261030T0012Z",
+    "SRC-COINDESK-XRP-QUOTE-20261030T0012Z",
+    "SRC-COINBASE-XRP-QUOTE-20261030T0012Z",
+    "SRC-PERMISSION-ASK-DOCS-20261030",
+    "SRC-CMC-PERMISSION-ASK-20261030",
+    "SRC-CMC-GOASK-20261030",
+    "SRC-TIMESTABLOID-ACTUAL-CAPITAL-20251015",
+    "SRC-COINTURK-XRP-MULTIPLIER-202610",
+    "SRC-YOUTUBE-KAMILAH-CHANNEL-20261030",
+    "SRC-IHEART-KAMILAH-CAMILLA-INTERVIEW-20261030",
+    "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z",
+    "SRC-REUTERS-COINBASE-Q3-20261029T211600Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261029T211600Z",
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261029T2210Z",
+    "SRC-RIPPLE-CIRCLE-USDC",
+    "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY",
+    "SRC-RUN25-20261029T014151-SBI-RIPPLE-ASIA",
+    "SRC-RIPPLE-SBI-REMIT-ODL-XRP-2021-07-28",
+    "SRC-SBI-RLUSD-JAPAN-2026",
+    "SRC-SBI-BITBANK-COMPLETE-20261029T151040Z",
+    "SRC-SBI-XRP-CARD-20261029T151040Z",
+    "SRC-SBIC-EAST-JAPAN-PROFILE-2026-10-27",
+    "SRC-RUN25-20261029T014151-SBIC-WEST",
+    "SRC-RUN25-20261029T014151-SBIC-CENTRAL",
+    "SRC-SBI-GROUP-DIRECTORY-2026-10-07",
+    "SRC-SBI-CAPITAL-2005-SBIC",
+    "SRC-SBIC-CHATGPT-TRAINING-CURRICULUM-20261028T1219Z",
+    "SRC-RUN58-20261029T1015Z-WEST-TRAINING-RECONFIRM",
+    "SRC-GLASP-KAMILAH-RIPPLE-BANK-2025-12-14",
+    "SRC-RIPPLE-C2FO-XRPL-TRADE-FINANCE-2026-10-27"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false
+}

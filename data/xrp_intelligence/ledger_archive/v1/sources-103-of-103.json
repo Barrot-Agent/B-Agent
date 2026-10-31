@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 102,
+  "chunk_count": 103,
+  "record_count": 7,
+  "records": [
+    {
+      "id": "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+      "source_id": "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+      "publisher": "Binance News",
+      "title": "Binance News Update — $6.34B reserve and restoration begun",
+      "url": "https://www.binance.com/en/square/post/10-30-2026-binance-news-update-binance-reserves-6-34-billion-to-cover-security-incident-with-5-billion-already-held-in-the-affected-tokens-and-3-billion-frozen-382841282807553",
+      "published_at": "2026-10-30",
+      "retrieved_at_utc": "2026-10-31T05:12:00Z",
+      "evidence_class": "PRIMARY_OFFICIAL_CHANNEL_VERIFIED_ACCOUNT",
+      "independence_group": "binance_official",
+      "summary": "Verified Binance News account states Binance has begun restoring affected assets to users, $5B is already held in exact affected token assets, approximately $1.34B remains to be acquired through market/OTC channels, and approximately $3B frozen is separate from the reserve.",
+      "limitations": "Company statement; no amount restored, token-level allocation, user-credit ledger, XRP-specific purchase or transaction-level proof is disclosed. This post is not independent of Binance Support Update #2."
+    },
+    {
+      "id": "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+      "source_id": "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+      "publisher": "Kodexius",
+      "title": "XRP perpetual futures — live contract-level OI and funding snapshot",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "published_at": "2026-10-31T04:54:00Z",
+      "retrieved_at_utc": "2026-10-31T05:12:00Z",
+      "evidence_class": "DERIVATIVES_AGGREGATOR_SNAPSHOT",
+      "independence_group": "kodexius_derivatives",
+      "summary": "At 04:54 UTC reports $734.17M OI across seven contracts, +0.0062% weighted funding per eight hours, $1.25B 24h volume and OI/volume 0.59. Contract-level OI: Binance XRPUSDT $328.86M, Bybit XRPUSDT $148.22M, OKX XRP-USDT-SWAP $97.54M, Hyperliquid XRP-USDC $97.44M, Binance XRPUSDC $31.19M, HTX XRP-USDT $28.36M and Bybit XRPPERP $2.56M.",
+      "limitations": "Provider-specific contract universe; values are not directly interchangeable with exchange-level aggregators. Public market data only."
+    },
+    {
+      "id": "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+      "source_id": "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+      "publisher": "TradRadar",
+      "title": "XRP futures market data — live seven-exchange snapshot",
+      "url": "https://tradradar.io/markets/xrp",
+      "published_at": "2026-10-31T04:35:00Z",
+      "retrieved_at_utc": "2026-10-31T05:12:00Z",
+      "evidence_class": "DERIVATIVES_AGGREGATOR_SNAPSHOT",
+      "independence_group": "tradradar_derivatives",
+      "summary": "At 04:35 UTC reports $1.84B OI across seven exchanges, +0.0068% OI-weighted funding per eight hours, mark price $1.2437 (-0.77% in 24h), at least $2.91M liquidations across five exchanges (long $1.80M, short $1.11M) and 75.6% long accounts across four exchanges.",
+      "limitations": "Exchange-level aggregate differs materially from Kodexius even on overlapping venues. Liquidations are partial lower bounds; account ratio is not notional exposure."
+    },
+    {
+      "id": "SRC-20261031-INVESTING-XRP-LIVE-0047Z",
+      "source_id": "SRC-20261031-INVESTING-XRP-LIVE-0047Z",
+      "publisher": "Investing.com",
+      "title": "XRP real-time and October 31 partial daily data",
+      "url": "https://www.investing.com/crypto/xrp/historical-data",
+      "published_at": "2026-10-31T00:47:55Z",
+      "retrieved_at_utc": "2026-10-31T05:12:00Z",
+      "evidence_class": "MARKET_DATA_AGGREGATOR_SNAPSHOT",
+      "independence_group": "investing_market_data",
+      "summary": "At 00:47:55 UTC displayed XRP $1.2423 (-1.00%); partial Oct31 daily row showed $1.2425, open $1.2559, high $1.2610, low $1.2418, volume $259.04M and -1.07%.",
+      "limitations": "This observation is several hours older than the 05:12 UTC research cutoff and is not a current live mark. Daily row is incomplete."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z",
+      "source_id": "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z",
+      "publisher": "GitHub",
+      "title": "B-Agent PR #1353 branch comparison against current main",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/main...research/xrp-ledger-shard-migration-20261029T2210Z",
+      "published_at": "2026-10-31T05:12:00Z",
+      "retrieved_at_utc": "2026-10-31T05:12:00Z",
+      "evidence_class": "PRIMARY_GITHUB_COMPARE_API_RECORD",
+      "independence_group": "github_repository",
+      "summary": "GitHub compare reports status diverged, 1,177 commits ahead and 351 behind main, merge base 7a558c0. PR info simultaneously reports mergeable=true; treat the inconsistent mergeability signal as a blocker and do not merge as-is.",
+      "limitations": "Compare result is a branch-history signal, not a proof of every file conflict. Full split/rebase analysis is required; no rebase or force-push performed."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+      "source_id": "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+      "publisher": "GitHub",
+      "title": "B-Agent PR #1353 exact-head XRP ledger validator run 41171491785",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41171491785",
+      "published_at": "2026-10-31T05:10:02Z",
+      "retrieved_at_utc": "2026-10-31T05:12:00Z",
+      "evidence_class": "PRIMARY_GITHUB_ACTIONS_EXECUTION_RECORD",
+      "independence_group": "github_repository",
+      "summary": "Exact head a3db8ba passed actual repository validation: 337 archive shards, 1,880 sources, 326 run updates, 809 limitations, snapshot blob SHA matched, all 24 source references resolved and 20 validator regression tests passed.",
+      "limitations": "Validates this exact research-branch head only; does not establish merge safety or full repository CI."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-PR1353-GATE-0510Z",
+      "source_id": "SRC-20261031-GITHUB-PR1353-GATE-0510Z",
+      "publisher": "GitHub",
+      "title": "B-Agent PR #1353 fail-closed gate run 41171491778",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41171491778",
+      "published_at": "2026-10-31T05:10:02Z",
+      "retrieved_at_utc": "2026-10-31T05:12:00Z",
+      "evidence_class": "PRIMARY_GITHUB_ACTIONS_EXECUTION_RECORD",
+      "independence_group": "github_repository",
+      "summary": "Exact head a3db8ba passed the fail-closed gate; automatic merging remained disabled.",
+      "limitations": "Gate success is not merge approval; PR #1353 remains draft and no merge was performed."
+    }
+  ]
+}
