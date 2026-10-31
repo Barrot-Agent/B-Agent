@@ -82,4 +82,5 @@ jobs:
             tests/test_cross_analysis_workflow_safety.py \
             tests/test_scheduler_queue_workflow_safety.py \
             tests/test_databricks_token_rotation_safety.py \
+            tests/test_scheduled_main_writer_quarantine.py \
             -v --no-cov
