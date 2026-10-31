@@ -124,5 +124,17 @@
   },
   "prediction_feature_admission": "EVENT_AND_CUSTODY_CONTEXT_ONLY; DO_NOT_TREAT_90_PERCENT_REPLENISHMENT_AS_XRP_SPOT_BUY_FLOW; DO_NOT_TREAT_POR_SURPLUS_AS_PURCHASE_VOLUME",
   "pending_archive_append": true,
-  "exact_head_validation": "NOT_RUN"
+  "exact_head_validation": {
+    "status": "PASS",
+    "validated_head_sha": "3a439153ddf57750bd7fe11d567e903dfd0d9b93",
+    "validator_run_id": 41226651996,
+    "fail_closed_gate_run_id": 41226651999,
+    "archive_shards_checked": 427,
+    "source_revision_addenda_checked": 7,
+    "source_revision_addenda_pending_archive_append": 7,
+    "regression_tests_passed": 32,
+    "state_mutated": false,
+    "verified_at_utc": "2026-10-31T17:52:56Z",
+    "limitation": "The revision file and index pointer were hash-verified. This source record remains pending append to the immutable sources archive."
+  }
 }
