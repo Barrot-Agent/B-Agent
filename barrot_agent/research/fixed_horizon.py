@@ -110,7 +110,7 @@ def _ledger_lock(directory: Path) -> Iterator[None]:
             except ImportError as exc:
                 raise RuntimeError("No supported operating-system file-lock API is available") from exc
             if os.fstat(descriptor).st_size == 0:
-                os.write(descriptor, b"\\0")
+                os.write(descriptor, b"\0")
             os.lseek(descriptor, 0, os.SEEK_SET)
             msvcrt.locking(descriptor, msvcrt.LK_LOCK, 1)
             try:
@@ -131,7 +131,7 @@ def _ledger_lock(directory: Path) -> Iterator[None]:
 def _append_jsonl(path: Path, record: dict[str, Any], duplicate_message: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = (
-        json.dumps(record, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\\n"
+        json.dumps(record, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n"
     ).encode("utf-8")
     forecast_id = record.get("forecast_id")
     if not isinstance(forecast_id, str) or not forecast_id:
