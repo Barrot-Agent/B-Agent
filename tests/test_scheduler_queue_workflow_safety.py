@@ -10,6 +10,7 @@ def test_scheduler_queue_audit_is_scheduled_and_read_only():
     assert 'cron: "*/15 * * * *"' in WORKFLOW
     assert "workflow_dispatch:" in WORKFLOW
     assert re.search(r"(?m)^permissions:\s*\n\s+contents:\s*read\s*$", WORKFLOW)
+    assert "persist-credentials: false" in WORKFLOW
     assert "contents: write" not in WORKFLOW
     assert "actions: write" not in WORKFLOW
     assert "GH_TOKEN:" not in WORKFLOW
@@ -17,7 +18,6 @@ def test_scheduler_queue_audit_is_scheduled_and_read_only():
     assert "scheduler.py tick" not in WORKFLOW
     assert "gh workflow run" not in WORKFLOW
     assert "git push" not in WORKFLOW
-    assert "persist-credentials: false" in WORKFLOW
     assert "actions/upload-artifact@v4" in WORKFLOW
     assert "retention-days: 30" in WORKFLOW
 
