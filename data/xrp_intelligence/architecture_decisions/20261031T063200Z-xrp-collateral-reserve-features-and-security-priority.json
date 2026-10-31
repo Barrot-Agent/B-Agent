@@ -77,6 +77,12 @@
       "implementation_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1398",
       "verification": "Exact-head CI 41176897933 passed 344 tests plus 8 subtests; fail-closed gate 41176897925 passed with merging disabled.",
       "admission_status": "DESIGNED_AND_EXECUTED_IN_DRAFT_PR; UNMERGED"
+    },
+    {
+      "id": "DEC-APPROVAL-WORKFLOW-ZERO-JOBS",
+      "rule": "Preserve approval-workflow push-event failures with zero jobs as UNKNOWN until event/check-suite evidence establishes a root cause; do not label the YAML invalid or bypass the gate.",
+      "evidence": "Run 41177228657 was event=push, conclusion=failure, jobs=0; inspected workflow declares workflow_dispatch only; no job logs available.",
+      "admission_status": "OPEN_BLOCKER; NO_REPAIR_OR_MANUAL_DISPATCH_PERFORMED"
     }
   ],
   "platform_coordination": {
@@ -106,7 +112,15 @@
     "workflow_review": "24_TARGETED_FILES_OF_77_ACTIVE_YAML_FILES; NOT_EXHAUSTIVE",
     "manual_main_writer_workflows": "PRESENT; NOT_DISPATCHED",
     "full_repository_ci": "NOT_RUN",
-    "dependency_vulnerability_scan": "NOT_RUN"
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "approval_workflow_anomaly": {
+      "run_id": 41177228657,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs_count": 0,
+      "root_cause": "UNKNOWN"
+    },
+    "research_branch_validator": "PENDING; no exact-head validator run returned for latest branch head"
   },
   "market_features_admitted": false,
   "forecast_status": "NOT_ISSUED",
