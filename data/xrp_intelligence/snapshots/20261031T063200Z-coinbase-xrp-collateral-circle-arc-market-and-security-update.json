@@ -7,7 +7,7 @@
   "data_cutoff_utc": "2026-10-31T06:32:00Z",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "execution_foundation": "Barrot V3",
-  "source_reference_count": 15,
+  "source_reference_count": 16,
   "missing_source_references": 0,
   "source_ids": [
     "SRC-20261031-COINBASE-GLOBAL-XRP-COLLATERAL-0632Z",
@@ -24,7 +24,8 @@
     "SRC-20261031-GITHUB-MAIN-BRANCH-PROTECTION-0632Z",
     "SRC-20261031-GITHUB-WORKFLOW-SAFETY-AUDIT-0632Z",
     "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
-    "SRC-20261031-BINANCE-UPDATE2-0505Z"
+    "SRC-20261031-BINANCE-UPDATE2-0505Z",
+    "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z"
   ],
   "market_observations": {
     "xrp_derivatives": {
@@ -220,9 +221,18 @@
     "token_rotation_workflow": "DISABLED_IN_PR_1398; exact-head CI passed",
     "manual_main_writers": "PRESENT; not dispatched",
     "full_repository_ci": "NOT_RUN",
-    "dependency_vulnerability_scan": "NOT_RUN"
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "approval_workflow_anomaly": {
+      "run_id": 41177228657,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs_count": 0,
+      "root_cause": "UNKNOWN",
+      "exact_head_validator": "PENDING"
+    }
   },
   "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
   "market_features_admitted": false,
-  "forecast_status": "NOT_ISSUED"
+  "forecast_status": "NOT_ISSUED",
+  "exact_head_validation": false
 }
