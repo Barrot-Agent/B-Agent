@@ -157,6 +157,11 @@ def _market_list_items(payload: Any) -> list[dict[str, Any]]:
 
 
 def _market_list_cursor(payload: Any) -> Any:
+    # Morpho list responses place the pagination cursor beside the data field.
+    # Keep compatibility with wrappers that nest pagination metadata in data.
+    cursor = _field(payload, "next_cursor", "nextCursor", "cursor")
+    if cursor is not None:
+        return cursor
     value = _data(payload)
     return _field(value, "next_cursor", "nextCursor", "cursor") if isinstance(value, dict) else None
 
