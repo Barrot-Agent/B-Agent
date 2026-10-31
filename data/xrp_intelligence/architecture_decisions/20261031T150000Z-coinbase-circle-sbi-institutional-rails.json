@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031-COINBASE-CIRCLE-SBI-INSTITUTIONAL-RAILS-ACTUAL-CAPITAL",
+  "captured_at_utc": "2026-10-31T15:00:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NOT_A_TRADE_SIGNAL",
+  "context": "New official disclosures establish broader institutional distribution and tokenized-asset activity across Coinbase, Circle, Ripple, SBI, Standard Chartered and Aviva. The objective is to separate real product access and custody from actual XRP capital and price effects.",
+  "decisions": [
+    "Admit Coinbase's RLUSD listing on XRPL, Base and Ethereum to the institutional event timeline; do not treat it as XRP buying.",
+    "Record Coinbase Global Exchange RLUSD collateral support as planned at launch, not live.",
+    "Record Coinbase Q3 USDC economics and trading share as company-reported platform context, not XRP-specific metrics.",
+    "Record Ripple National Trust Bank charter as OCC-approved and effective on October 26, 2026, with trust powers requested; do not infer general commercial banking powers or XRP reserves.",
+    "Record Aviva's GBP 50M as investment in a tokenized fund share class on XRPL, not XRP purchases; keep the GBP 22B conventional fund AUM off-chain.",
+    "Record Standard Chartered RLUSD custody as live for eligible clients through its DIFC branch; record LMAX collateral mirroring as planned and conditional.",
+    "Record SBI recurring accumulation, Visa rewards and Orico points as XRP distribution channels; actual XRP units, sourcing and net market purchases remain unknown.",
+    "Retain SBI's Circle/USDC and Ripple/RLUSD/XRP relationships as simultaneous multi-rail strategy; do not infer exclusivity or forced winner.",
+    "Admit institutional events to the timeline and relationship graph only; do not admit directional price features without measured usage, flows, fee impact or actual XRP execution evidence."
+  ],
+  "required_verification": [
+    "Obtain Coinbase RLUSD deposits, withdrawals, balances and trading volumes by supported network when publicly available.",
+    "Verify the first live Coinbase Global Exchange RLUSD collateral schedule and balances before changing status from planned.",
+    "Obtain Ripple National Trust Bank approved powers, operating launch and public product disclosures.",
+    "Track Aviva XRPL token issuance, redemptions, eligible holders, secondary transfers, network fees and repeat subscriptions.",
+    "Verify Standard Chartered/LMAX collateral launch and actual collateral balances.",
+    "Obtain SBI aggregate XRP accumulation purchases, reward credits, Orico redemptions and inventory/venue sourcing.",
+    "Cross-check Circle and SBI USDC activity against XRPL and Arc chain data without assuming all SBI activity is on one network."
+  ],
+  "actual_capital_policy": "A fund-share investment, stablecoin balance, reward credit, issuer mint, customer custody balance, OTC transfer and spot execution are different capital categories. Only actual XRP spot/OTC execution or a reconciled net XRP acquisition is admitted as XRP purchase capital.",
+  "prediction_status": "NOT_ISSUED",
+  "feature_admission": {
+    "institutional_event_timeline": "ADMITTED",
+    "relationship_graph": "ADMITTED",
+    "actual_xrp_capital": "BLOCKED_PENDING_EXECUTION_AND_INVENTORY_DATA",
+    "directional_xrp_feature": "NOT_ADMITTED"
+  }
+}
