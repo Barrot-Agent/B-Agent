@@ -182,3 +182,33 @@ def test_xrp_open_interest_provider_disagreement_is_not_averaged_or_admitted():
     assert "H-XRP-OI-UNIVERSE-MISMATCH" in {h["id"] for h in graph["hypotheses"]}
     bundle = _load("sources/20261031T183925Z-sbic-candidates-and-xrp-derivatives-source-bundle.json")
     assert set(snapshot["source_ids"]) <= {s["source_id"] for s in bundle["sources"]}
+
+
+def test_camila_kamilah_video_identity_remains_probable_and_inventory_partial():
+    snapshot = _load("snapshots/20261031T184158Z-camila-kamilah-identity-and-video-claim-audit.json")
+    identity = snapshot["creator_identity"]
+    assert identity["user_requested_name"] == "Camilla Stephenson"
+    assert identity["identity_status"] == "PROBABLE_MATCH_NOT_FULLY_VERIFIED"
+    assert identity["probable_candidate"]["youtube_handle"] == "@drkamilahstevenson"
+    inventory = snapshot["channel_inventory"]
+    assert inventory["inventory_status"] == "PARTIAL_SEED_NOT_EXHAUSTIVE"
+    assert len(inventory["known_public_video_seeds"]) == 4
+    assert "No claim of exhaustive inventory" in inventory["completeness"]
+    assert snapshot["exact_phrase_status"]["actual capital"].startswith("No exact match")
+    assert snapshot["prediction"]["forecast_status"] == "NOT_ISSUED"
+
+
+def test_ripple_bank_video_claims_are_time_scoped_and_not_model_features():
+    snapshot = _load("snapshots/20261031T184158Z-camila-kamilah-identity-and-video-claim-audit.json")
+    claims = {item["id"]: item for item in snapshot["transcript_claim_audit"]["claims"]}
+    assert claims["V1-C1"]["classification"] == "OVERSTATED_IF_READ_AS_ALREADY_OPERATIONAL_ON_PUBLICATION_DATE"
+    assert "preliminary conditional approval only" in claims["V1-C1"]["counter_evidence"]
+    assert "2026-10-26" in claims["V1-C1"]["later_update"]
+    assert claims["V1-C2"]["classification"] == "NOT_ESTABLISHED_BY_THE_CHARTER_DECISION"
+    assert claims["V1-C4"]["classification"] == "SPECULATIVE_MACRO_SCENARIO"
+    assert claims["V1-C5"]["classification"] == "UNQUANTIFIED_CLAIM"
+    graph = _load("relationship_graph_addenda/20261031T184158Z-camila-kamilah-video-claim-graph.json")
+    assert "H-RIPPLE-CHARTER-RAILS" in {h["id"] for h in graph["hypotheses"]}
+    assert "H-JAPAN-CARRY-XRP" in {h["id"] for h in graph["hypotheses"]}
+    bundle = _load("sources/20261031T184158Z-camila-kamilah-video-source-bundle.json")
+    assert set(snapshot["source_ids"]) <= {s["source_id"] for s in bundle["sources"]}
