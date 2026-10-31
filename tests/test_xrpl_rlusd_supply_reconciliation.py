@@ -66,7 +66,7 @@ def test_bny_custody_and_c2fo_capital_are_not_misclassified_as_xrp_buying():
     assert snapshot["bny_custody_and_trade_finance"]["direct_bny_rlusd_mint_redeem"].startswith("INTENDED_FUTURE")
     c2fo = snapshot["c2fo_instant_pay"]
     assert c2fo["product_status"] == "WAITLIST_ANNOUNCED"
-    assert c2fo["historical_c2fo_early_pay_working_capital_access_usd"] == 520000000000
+    assert c2fo["historical_c2fo_early_pay_working_capital_access_usd_lower_bound"] == 520000000000 and c2fo["historical_c2fo_early_pay_working_capital_access_comparison"] == "GREATER_THAN"
     assert c2fo["historical_520b_scope"].startswith("EXISTING_C2FO_EARLY_PAY_PROGRAMS")
     assert c2fo["actual_xrpl_funded_invoice_volume"] == "NOT_DISCLOSED"
 
