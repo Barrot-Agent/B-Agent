@@ -188,6 +188,101 @@
         "No later Consummated/Effective action was identified in the OCC CAS record retrieved on 2026-10-31.",
         "The planned three-year custody migration is prospective; no migration completion or Coinbase National Trust client balance is disclosed."
       ]
+    },
+    {
+      "source_id": "SRC-COINBASE-CBXRP-POR-RENDER-20261031",
+      "publisher": "Coinbase",
+      "title": "cbXRP Proof of Reserves — conflicting current and direct page renders",
+      "url": "https://www.coinbase.com/en-in/cbxrp/proof-of-reserves",
+      "retrieved_at_utc": "2026-10-31T18:19:13.204Z",
+      "evidence_class": "ISSUER_PRIMARY_RESERVE_DISCLOSURE_WITH_RENDER_CONFLICT",
+      "independence_group": "COINBASE_OFFICIAL",
+      "claims": [
+        "Coinbase states cbXRP is a wrapped token backed 1:1 by XRP held by Coinbase and publishes reserve addresses.",
+        "A search-indexed page capture reported data refreshed 2026-10-31 06:15 UTC: 150,237,152.13 XRP reserve and 150,234,904.6 cbXRP supply, a 2,247.53 XRP surplus.",
+        "A direct page open during this run displayed an older snapshot refreshed 2026-10-29 05:19 UTC: 151,405,263.6 XRP reserve and 151,403,016.07 cbXRP supply, also a 2,247.53 XRP surplus."
+      ],
+      "limitations": [
+        "The current 2026-10-31 indexed figures were not reproduced by the direct page open, which returned a 2026-10-29 snapshot; treat the newer figures as a current indexed observation, not fully verified live data.",
+        "The equal surplus in both renders is consistent with 1:1 backing but does not establish the reason for the change in outstanding cbXRP.",
+        "Reserve proof does not identify beneficial ownership of XRP or whether any reserve XRP was purchased in the open market."
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-BORROW-XRP-20261031",
+      "publisher": "Coinbase",
+      "title": "Crypto-backed loans — current product terms",
+      "url": "https://www.coinbase.com/borrow",
+      "retrieved_at_utc": "2026-10-31T18:19:13.204Z",
+      "evidence_class": "PRODUCT_PRIMARY_STATEMENT",
+      "independence_group": "COINBASE_OFFICIAL",
+      "claims": [
+        "Coinbase says eligible customers can borrow up to 100,000 USDC against XRP, DOGE, ADA or LTC; availability is region-dependent and the page identifies the U.S. excluding New York.",
+        "Borrowing is powered by Morpho on Base; Coinbase provides the interface and the selected crypto is moved onchain as collateral.",
+        "The public page states a general LTV threshold of 86% for automatic liquidation but does not publish an XRP-specific initial LTV on the page."
+      ],
+      "limitations": [
+        "Do not apply the generic 86% LTV threshold to the XRP market without an asset-specific Coinbase term.",
+        "Coinbase is the interface; Morpho is the permissionless onchain lending protocol. The product does not establish that Coinbase lends from its own balance sheet.",
+        "Loan balances and customer-level XRP collateral are not disclosed."
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-GLOBAL-EXCHANGE-CROSS-COLLATERAL-20261031",
+      "publisher": "Coinbase",
+      "title": "How cross collateral works — Coinbase Global Exchange",
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "retrieved_at_utc": "2026-10-31T18:19:13.204Z",
+      "evidence_class": "PRODUCT_PRIMARY_DOCUMENTATION",
+      "independence_group": "COINBASE_OFFICIAL",
+      "claims": [
+        "Coinbase Global Exchange lists XRP among assets accepted as collateral for perpetual-futures positions.",
+        "Collateral value is market value multiplied by collateral weight after haircuts; the greater of base and closeout-horizon haircuts applies.",
+        "Asset concentration limits are calculated as a percentage of average daily quantity; excess collateral above the limit does not contribute to portfolio value.",
+        "Collateral can be automatically liquidated when portfolio margin falls below maintenance requirements."
+      ],
+      "limitations": [
+        "Coinbase does not publish an XRP-specific haircut or current organization-level XRP collateral balance in this document.",
+        "This Global Exchange margin system is separate from Coinbase Borrow/Morpho."
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-XRP-PERP-SPEC-20261031",
+      "publisher": "Coinbase",
+      "title": "Perpetual Futures Product Specifications — XRP-PERP",
+      "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/perpetual-futures-product-specifications",
+      "retrieved_at_utc": "2026-10-31T18:19:13.204Z",
+      "evidence_class": "PRODUCT_PRIMARY_DOCUMENTATION",
+      "independence_group": "COINBASE_OFFICIAL",
+      "claims": [
+        "XRP-PERP is a linear perpetual contract settled in USDC every five minutes.",
+        "Coinbase lists all INTX-offered collateral as acceptable margin for XRP-PERP.",
+        "The displayed specification lists maximum leverage 50x and default initial margin 25% (4x).",
+        "The XRP/USD index updates every second."
+      ],
+      "limitations": [
+        "Perpetual futures exposure is not physical XRP delivery and does not by itself establish spot purchases.",
+        "Acceptable collateral is a platform-wide set; the document does not publish the quantity of XRP currently posted as margin."
+      ]
+    },
+    {
+      "source_id": "SRC-DEFILLAMA-CBXRP-USDC-MORPHO-20261031",
+      "publisher": "DeFiLlama",
+      "title": "cbXRP/USDC Morpho Blue market on Base",
+      "url": "https://investors.defillama.com/yields/pool/7ad0dc44-ab47-4690-bd31-e9df6c9f6e50",
+      "retrieved_at_utc": "2026-10-31T18:19:13.204Z",
+      "evidence_class": "SECONDARY_DEFI_MARKET_AGGREGATION",
+      "independence_group": "DEFILLAMA",
+      "claims": [
+        "The displayed cbXRP/USDC Morpho Blue market on Base has pool ID 7ad0dc44-ab47-4690-bd31-e9df6c9f6e50.",
+        "At direct page capture, DeFiLlama displayed 30-day average supply APY 0.00%, 30-day average borrow APY 6.30%, total supplied USD 150.84M, total borrowed USD 57.18M, available USD 7.02M and maximum LTV 62.5%."
+      ],
+      "limitations": [
+        "The page does not provide an exact observation timestamp in the captured view.",
+        "These are provider-reported pool metrics; the semantics of Available are not reconciled in this run.",
+        "Coinbase's product documentation says it uses Morpho but does not identify this exact market or attribute every position to Coinbase customers.",
+        "Do not calculate utilization from total supplied and total borrowed without confirming the units and market accounting semantics."
+      ]
     }
   ]
 }
