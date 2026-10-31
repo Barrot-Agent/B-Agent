@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 85,
+  "chunk_count": 86,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z",
+      "source_id": "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z",
+      "publisher": "Binance",
+      "title": "Proof of Reserves methodology and address-download page",
+      "url": "https://www.binance.com/en/proof-of-reserves",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T00:16:07Z",
+      "evidence_class": "OFFICIAL_EXCHANGE_POR_METHODOLOGY_PAGE",
+      "independence_group": "BINANCE_OFFICIAL",
+      "summary": "Binance's official Proof of Reserves page states that PoR covers assets held in custody for users, describes a 1:1 backing objective, says wallet ownership is verified for reserve addresses including cold and hot wallets, describes customer-balance snapshots and zk-SNARK/Merkle verification, and displays a 'Download All Address' control. The retrieved page did not expose the downloaded address file, audit timestamp, Merkle root or actual XRP address rows.",
+      "limitations": "The page's general methodology and 1:1 claim are company statements. The address-download control was visible but its file was not retrieved in this run; no address membership can be inferred from the page alone."
+    },
+    {
+      "id": "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+      "source_id": "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+      "publisher": "The Edge Research Team",
+      "title": "Binance Estimates $6.3bn Impact From Security Incident, Pledges to Cover All Losses",
+      "url": "https://edgeconsultancykw.com/binance-security-incident-6-3bn-impact-october-2026/",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T00:16:07Z",
+      "evidence_class": "SECONDARY_ANALYSIS_OF_BINANCE_OFFICIAL_POR_SNAPSHOT",
+      "independence_group": "THE_EDGE_POR_ANALYSIS",
+      "summary": "The Edge reports that Binance's 1 October 2026 00:00 GMT PoR snapshot showed XRP reserves at 100.77% of customer net account balances, down from 102.91% on 1 October 2025. It reports 2.496B XRP in customer net balances on 1 October 2026, rounded to the nearest million, down 9.3% year over year. It explains that reserve ratio is on-chain wallet balance as a share of customer net account balances and says the official PoR page's next snapshot after the incident would be the first check on replenishment.",
+      "limitations": "Secondary analysis based on Binance's official PoR page; the reported customer balance is rounded and reserve ratio is shown to two decimals. The Edge article does not list the five XRPL incident source addresses or prove they were in the PoR address set."
+    },
+    {
+      "id": "SRC-GATE-XRP-POR-OCT1-20261030T0231Z",
+      "source_id": "SRC-GATE-XRP-POR-OCT1-20261030T0231Z",
+      "publisher": "Gate News",
+      "title": "Binance Maintains 100%+ Reserve Ratios, Customer Assets Reach $129.4 Billion as of October 1",
+      "url": "https://www.gate.com/news/detail/binance-maintains-100-reserve-ratios-customer-assets-reach-1294-billion-as-25293502",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T00:16:07Z",
+      "evidence_class": "SECONDARY_REPORT_OF_BINANCE_OCTOBER_POR",
+      "independence_group": "GATE_NEWS_REPORTING_BINANCE_POR",
+      "summary": "Gate News reports from Binance's official PoR page that XRP's 1 October 2026 reserve ratio was 100.77%, alongside BTC 100.35%, ETH 100.00%, USDT 103.88%, USDC 108.26%, BNB 100.47% and SOL 100.00%. It reports aggregate customer assets of about $129.404B.",
+      "limitations": "Secondary report of the same Binance PoR snapshot, not independent wallet-by-wallet recomputation. It corroborates the displayed ratio but does not provide the XRPL address export or post-incident balances."
+    }
+  ]
+}
