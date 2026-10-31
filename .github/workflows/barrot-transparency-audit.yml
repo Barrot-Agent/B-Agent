@@ -1,4 +1,4 @@
-name: Barrot Transparency Audit
+name: Barrot Transparency Audit (artifact only)
 
 on:
   schedule:
@@ -6,13 +6,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
@@ -20,10 +23,15 @@ jobs:
         run: python3 scripts/apex_audit_summary.py
       - name: Summarize self-benchmark history
         run: python3 scripts/benchmark_summary.py
-      - name: Commit summaries
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/apex_audit_summary.json ping-pongings/knowledge-base/apex_audit_history.jsonl ping-pongings/knowledge-base/benchmark_summary.json web/apex_audit_summary.json web/benchmark_summary.json
-          git diff --cached --quiet || git commit -m "Barrot transparency audit refresh [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Upload audit summaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: barrot-transparency-audit-${{ github.run_id }}
+          path: |
+            ping-pongings/knowledge-base/apex_audit_summary.json
+            ping-pongings/knowledge-base/apex_audit_history.jsonl
+            ping-pongings/knowledge-base/benchmark_summary.json
+            web/apex_audit_summary.json
+            web/benchmark_summary.json
+          if-no-files-found: error
+          retention-days: 30
