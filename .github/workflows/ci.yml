@@ -84,4 +84,5 @@ jobs:
             tests/test_barrot_approve_pr_push_noop.py \
             tests/test_databricks_token_rotation_safety.py \
             tests/test_telemetry_workflow_readonly.py \
+            tests/test_external_mutation_workflows_manual_only.py \
             -v --no-cov
