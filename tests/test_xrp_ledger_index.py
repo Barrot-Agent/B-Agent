@@ -305,3 +305,91 @@ def test_workflow_runs_actual_repository_validator_before_fixture_suite():
     assert content.index(command) < content.index(fixture_suite_prefix)
     assert "contents: read" in content
     assert "persist-credentials: false" in content
+
+
+def _write_source_revision(tmp_path, *, revision_id="REV-ONE", source_id="SRC-PENDING", pending_archive_append=True):
+    relative = f"data/xrp_intelligence/source_revisions/{revision_id.lower()}.json"
+    payload = {
+        "schema_version": "1.0",
+        "record_type": "source_revision_addendum",
+        "revision_id": revision_id,
+        "source_id": source_id,
+        "captured_at_utc": "2026-10-31T17:00:00Z",
+        "pending_archive_append": pending_archive_append,
+    }
+    raw = (json.dumps(payload, indent=2) + "\\n").encode("utf-8")
+    path = tmp_path / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(raw)
+    return {
+        "path": relative,
+        "blob_sha": VALIDATOR.git_blob_sha(raw),
+        "revision_id": revision_id,
+        "source_id": source_id,
+        "captured_at_utc": payload["captured_at_utc"],
+        "status": "PENDING_ARCHIVE_APPEND" if pending_archive_append else "ARCHIVED",
+    }
+
+
+def test_source_revision_addenda_are_hash_verified_and_pending_is_explicit(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="3.0")
+    pointer = _write_source_revision(tmp_path)
+    index["latest_snapshot"]["source_revision_addenda"] = [pointer]
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "PASS", report
+    assert report["source_revision_addenda_checked"] == 1
+    assert report["source_revision_addenda_pending_archive_append"] == 1
+    assert report["state_mutated"] is False
+
+
+def test_source_revision_blob_mismatch_fails_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="3.0")
+    pointer = _write_source_revision(tmp_path)
+    pointer["blob_sha"] = "0" * 40
+    index["latest_snapshot"]["source_revision_addenda"] = [pointer]
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("source_revision_addenda[0] Git blob SHA mismatch" in error for error in report["errors"])
+
+
+def test_source_revision_path_traversal_fails_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="3.0")
+    index["latest_snapshot"]["source_revision_addenda"] = [{
+        "path": "../escape.json",
+        "blob_sha": "0" * 40,
+        "revision_id": "REV-ESCAPE",
+        "captured_at_utc": "2026-10-31T17:00:00Z",
+        "status": "PENDING_ARCHIVE_APPEND",
+    }]
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("source revision path must stay inside" in error for error in report["errors"])
+
+
+def test_source_revision_identity_mismatch_fails_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="3.0")
+    pointer = _write_source_revision(tmp_path)
+    pointer["revision_id"] = "REV-WRONG"
+    index["latest_snapshot"]["source_revision_addenda"] = [pointer]
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("revision_id pointer mismatch" in error for error in report["errors"])
+
+
+def test_source_revision_not_archived_must_be_explicitly_pending(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="3.0")
+    pointer = _write_source_revision(tmp_path, source_id="SRC-NOT-ARCHIVED", pending_archive_append=False)
+    index["latest_snapshot"]["source_revision_addenda"] = [pointer]
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("source_id is absent from archive but not marked pending" in error for error in report["errors"])
+
+
+def test_duplicate_source_revision_ids_fail_closed(tmp_path):
+    index, _ = fixture_pair(tmp_path, index_format_version="3.0")
+    first = _write_source_revision(tmp_path, revision_id="REV-DUP", source_id="SRC-PENDING-A")
+    second = _write_source_revision(tmp_path, revision_id="REV-DUP", source_id="SRC-PENDING-B")
+    index["latest_snapshot"]["source_revision_addenda"] = [first, second]
+    report = VALIDATOR.validate_index_data(index, tmp_path)
+    assert report["status"] == "BLOCKED"
+    assert any("duplicate source revision ID" in error for error in report["errors"])
