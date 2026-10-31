@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 133,
+  "chunk_count": 134,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT",
+      "publisher": "Ripple — DriveWealth partnership for institutional digital-asset infrastructure",
+      "url": "https://ripple.com/ripple-press/drivewealth-and-ripple-partner-to-bring-institutional-digital-asset-infrastructure-to-global-investing/",
+      "retrieved_at_utc": "2026-10-31T21:51:23Z",
+      "publication_time_utc": "2026-10-14",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "DriveWealth is integrating Ripple stablecoin infrastructure to support settlement in Europe using RLUSD on XRPL and Ripple Mint burn/mint capabilities, with plans to expand to the United States.",
+        "DriveWealth is integrating Ripple Payments for cross-border acceptance from global partners.",
+        "DriveWealth is working with Ripple on digital-asset custody in Europe, with plans to expand to additional markets.",
+        "DriveWealth and Ripple Prime are exploring equity financing opportunities through Ripple Prime Delta One.",
+        "DriveWealth states clients can fund and manage collateral accounts with stablecoins that convert to cash near real time.",
+        "DriveWealth says it powers investing experiences for more than 100 partners globally."
+      ],
+      "limitations": [
+        "The release says the companies are integrating and working on these capabilities; production launch and live transaction volume were not verified.",
+        "No RLUSD settlement volume, collateral balances, XRP holdings, XRP purchases or XRP bridge volume are disclosed.",
+        "Stablecoin funding of brokerage collateral accounts does not establish that native XRP is accepted as collateral.",
+        "DriveWealth's 100-plus partner network is distribution reach, not proof that all partners adopt Ripple or RLUSD."
+      ]
+    }
+  ]
+}
