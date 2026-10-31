@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-TRADRADAR-XRP-1945Z-UPDATE-20261031T201433Z-V2",
+  "captured_at_utc": "2026-10-31T20:14:33Z",
+  "source_reference_count": 1,
+  "missing_source_references": 0,
+  "sources": [
+    {
+      "id": "SRC-20261031T200209Z-TRADRADAR-XRP",
+      "publisher": "TradRadar",
+      "title": "XRP futures market data — 19:45 UTC refresh",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-10-31T20:14:33Z",
+      "evidence_class": "SAME_PROVIDER_FRESHER_MARKET_SNAPSHOT",
+      "independence_group": "TRADRADAR_EXCHANGE_AGGREGATION",
+      "claims": [
+        "19:45Z, 15-minute delayed: XRP mark price $1.2536, +0.34% over 24h.",
+        "Open interest $1.87B across seven exchanges, +0.37% over 24h.",
+        "OI-weighted funding +0.0046% per eight hours.",
+        "At least $358.24K liquidations across five exchanges: $129.60K long and $228.64K short.",
+        "Long/short account ratio 3.05 (75.3% long) across four exchanges.",
+        "Per-exchange funding: Binance +0.0100%, Bybit -0.0090%, Gate +0.0018%, MEXC +0.0100%, Bitget +0.0100%, Hyperliquid +0.0100%, OKX -0.0025% per eight hours."
+      ],
+      "limitations": [
+        "Same provider, not independent corroboration.",
+        "15-minute display delay.",
+        "Long/short ratio is account-count based, not notional exposure.",
+        "Liquidation amount is a lower bound.",
+        "Rolling 24h values are successive snapshots; do not interpret differences as a discrete 40-minute flow. No directional forecast or causal link to escrow is established."
+      ]
+    }
+  ],
+  "pending_archive_append": true,
+  "supersedes_observation_at_utc": "2026-10-31T19:05:00Z",
+  "superseding_observation_at_utc": "2026-10-31T19:45:00Z",
+  "interpretation": "This 19:45Z update supersedes the 19:05Z TradRadar observation for the latest market state. OI 24h change is now +0.37% rather than +1.70%, price 24h change +0.34% rather than +1.10%, and aggregate funding +0.0046% rather than +0.0050%. These are rolling-window provider snapshots, not a discrete flow event.",
+  "feature_admission": "MARKET_CONTEXT_ONLY; NOT_A_DIRECTIONAL_FEATURE",
+  "forecast_status": "NOT_ISSUED"
+}
