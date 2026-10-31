@@ -1,10 +1,16 @@
 name: Dump Brain Corpus
 on:
   workflow_dispatch:
+    inputs:
+      confirm_private_data_processing:
+        description: "Explicitly authorize this one-time export of the private Barrot brain corpus to a short-lived workflow artifact"
+        required: true
+        default: "NO"
 permissions:
-  contents: write
+  contents: read
 jobs:
   dump:
+    if: inputs.confirm_private_data_processing == 'YES'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -17,9 +23,10 @@ jobs:
           DATABRICKS_HOST: dbc-82d64fee-1c2e.cloud.databricks.com
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_WAREHOUSE_ID: c85b8f4fea8cd527
-      - run: |
-          git config user.name "Barrot-Agent"
-          git config user.email "barrot@barrot-agent.com"
-          git add brain_corpus/
-          git commit -m "Dump full brain corpus for review" || echo "nothing to commit"
-          git push
+      - name: Upload explicitly authorized corpus artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: brain-corpus-${{ github.run_number }}
+          path: brain_corpus/
+          if-no-files-found: error
+          retention-days: 1

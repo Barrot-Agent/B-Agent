@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   draft:
@@ -19,10 +19,11 @@ jobs:
       - run: pip install requests
       - name: Draft content
         run: python3 scripts/content_pipeline.py
-      - name: Commit draft
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add content/
-          git diff --cached --quiet || git commit -m "Barrot: new content draft [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Upload content-pipeline artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-pipeline-${{ github.run_number }}
+          path: |
+            content/
+          if-no-files-found: warn
+          retention-days: 7
