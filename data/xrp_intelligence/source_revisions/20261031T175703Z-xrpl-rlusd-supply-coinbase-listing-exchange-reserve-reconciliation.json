@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-XRPL-RLUSD-SUPPLY-EXCHANGE-RESERVES-COINBASE-LISTING-20261031T175703Z",
+  "captured_at_utc": "2026-10-31T17:57:03Z",
+  "source_id": "SRC-20261031T175703Z-XRPL-SUPPLY-RESERVES-COINBASE-RLUSD-LISTING",
+  "sources": [
+    {
+      "source_id": "SRC-XRP-INSIGHTS-EXCHANGE-BALANCES-20261031",
+      "publisher": "XRP Insights",
+      "title": "XRP Exchange Balances",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "evidence_class": "SECONDARY_WALLET_LABEL_AGGREGATION",
+      "independence_group": "XRP_INSIGHTS"
+    },
+    {
+      "source_id": "SRC-XRP-INSIGHTS-ETF-FLOWS-20261031",
+      "publisher": "XRP Insights",
+      "title": "XRP ETF flows and holdings",
+      "url": "https://xrp-insights.com/data",
+      "evidence_class": "SECONDARY_ISSUER_HOLDINGS_AGGREGATION",
+      "independence_group": "XRP_INSIGHTS"
+    },
+    {
+      "source_id": "SRC-XRPLDASHBOARD-RLUSD-SUPPLY-20261031",
+      "publisher": "xrpldashboard",
+      "title": "RLUSD on the XRP Ledger — live supply and finalized flow",
+      "url": "https://xrpldashboard.com/rlusd",
+      "evidence_class": "INDEPENDENT_XRPL_NODE_AND_GATEWAY_BALANCES_SNAPSHOT; SIGNATURE_PUBLISHED_NOT_INDEPENDENTLY_RECOMPUTED_IN_THIS_RUN",
+      "independence_group": "XRPLDASHBOARD"
+    },
+    {
+      "source_id": "SRC-XRPLDASHBOARD-SIGNED-SNAPSHOT-20261031",
+      "publisher": "xrpldashboard",
+      "title": "2026-10-31 signed daily snapshot",
+      "url": "https://xrpldashboard.com/.well-known/snapshots/2026-10-31.json",
+      "evidence_class": "ED25519_SIGNED_SNAPSHOT_PUBLISHED; SIGNATURE_NOT_RECOMPUTED_IN_THIS_RUN",
+      "independence_group": "XRPLDASHBOARD"
+    },
+    {
+      "source_id": "SRC-XRPLDASHBOARD-OPENAPI-20261031",
+      "publisher": "xrpldashboard",
+      "title": "Read-only API/OpenAPI data-scope contract",
+      "url": "https://xrpldashboard.com/openapi.json",
+      "evidence_class": "PRIMARY_PROVIDER_METHOD_AND_SCOPE_DOCUMENTATION",
+      "independence_group": "XRPLDASHBOARD"
+    },
+    {
+      "source_id": "SRC-STABLES-COOL-XRPL-RLUSD-20261031",
+      "publisher": "stables.cool",
+      "title": "XRP Ledger stablecoin supply",
+      "url": "https://stables.cool/chains/xrpl",
+      "evidence_class": "SECONDARY_STABLECOIN_AGGREGATOR",
+      "independence_group": "STABLES_COOL"
+    },
+    {
+      "source_id": "SRC-COINBASE-RLUSD-LISTING-20261028",
+      "publisher": "Coinbase",
+      "title": "RLUSD is now available on Coinbase",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "published_at": "2026-10-28",
+      "evidence_class": "CONFIRMED_PRIMARY_COMMERCIAL_ANNOUNCEMENT",
+      "independence_group": "COINBASE_OFFICIAL"
+    },
+    {
+      "source_id": "SRC-COINBASE-XRP-MARKET-SNAPSHOT-20261031",
+      "publisher": "Coinbase",
+      "title": "XRP price and market stats",
+      "url": "https://www.coinbase.com/price/xrp",
+      "retrieved_at_utc": "2026-10-31T17:57:03Z",
+      "evidence_class": "SECONDARY_EXCHANGE_DISPLAYED_MARKET_SNAPSHOT",
+      "independence_group": "COINBASE_OFFICIAL"
+    }
+  ],
+  "exchange_balance_observation": {
+    "capture_date": "2026-10-31",
+    "tracked_wallet_count": 153,
+    "tracked_exchange_wallet_total_xrp": 22480000000,
+    "tracked_total_7d_change_xrp": -133000000,
+    "tracked_total_30d_change_xrp": -140400000,
+    "exchange_rows": {
+      "Binance": {
+        "balance_xrp": 2780000000,
+        "change_7d_xrp": 17600000,
+        "change_30d_xrp": 30300000
+      },
+      "Coinbase": {
+        "balance_xrp": 5850000000,
+        "change_7d_xrp": 1100000,
+        "change_30d_xrp": 12500000
+      },
+      "Upbit": {
+        "balance_xrp": 6430000000,
+        "change_7d_xrp": 115000000,
+        "change_30d_xrp": 66700000
+      },
+      "SBI_VC_Trade": {
+        "balance_xrp": 59500000,
+        "change_7d_xrp": -893000,
+        "change_30d_xrp": -10500000
+      }
+    },
+    "tagged_subbalances": {
+      "Binance_XRP_BF2_xrp": 325800000,
+      "Coinbase_cbXRP_xrp": 150200000,
+      "included_in_exchange_total": true
+    },
+    "interpretation": "This provider's October 31 7-day Binance wallet-label aggregate is +17.6M XRP, not the -173.2M previously captured on October 30. The one-day update and provider wallet-set revisions require a time-series diff and five-source-wallet crosswalk. The current positive 7-day balance is a disconfirming observation to a persistent Binance reserve-depletion narrative, but it does not prove whether the incident wallets were replenished or excluded/reclassified.",
+    "limitations": [
+      "Wallet labels are provider-attributed, not an official Binance reserve export.",
+      "Tracked exchange balances include cold custody and tagged wrapped/custody balances; they are not tradable order-book float.",
+      "The earlier -173.2M Binance 7-day figure and current +17.6M figure differ sharply; this may reflect the different end date, subsequent inflows, wallet-label revision or methodology change. Do not splice without raw daily series.",
+      "No same-time customer-liability denominator is provided."
+    ]
+  },
+  "etf_flow_observation": {
+    "as_of": "2026-10-30",
+    "daily_net_change_xrp": -49932,
+    "seven_day_net_change_xrp": 3390000,
+    "displayed_assets_under_management_usd": 1510000000,
+    "status": "PROVISIONAL_ISSUER_HOLDINGS_AGGREGATION",
+    "limitation": "Holdings change is not automatically external net capital or unhedged spot buying; fund universe and settlement corrections remain relevant."
+  },
+  "rlusd_supply_observation": {
+    "xrpl_daily_snapshot_previous_utc": "2026-10-30T01:00:00Z",
+    "xrpl_supply_previous_usd": 981760000,
+    "xrpl_daily_snapshot_current_utc": "2026-10-31T01:00:00Z",
+    "xrpl_supply_current_usd": 707358109.94,
+    "xrpl_daily_net_change_usd": -274401890.06,
+    "xrpl_daily_change_pct": -27.95,
+    "live_snapshot_capture_utc": "2026-10-31T17:24:00Z",
+    "xrpl_live_supply_usd": 707358109.94,
+    "xrpl_rolling_24h_net_change_usd": -67600000,
+    "ethereum_rolling_24h_net_mint_usd": 19600000,
+    "tracked_ethereum_plus_xrpl_rolling_24h_net_change_usd": -48000000,
+    "provider_displayed_cross_chain_total_ethereum_plus_xrpl_usd": 2417350000,
+    "provider_displayed_ethereum_supply_usd": 1709990000,
+    "provider_displayed_xrpl_supply_usd": 707358109.94,
+    "stables_cool_xrpl_supply_usd": 707400000,
+    "stables_cool_24h_change_pct": -27.18,
+    "signed_snapshot_date": "2026-10-31",
+    "signed_snapshot_payload_field": "rlusd_xrpl_supply",
+    "signed_snapshot_signature_recomputed_by_this_run": false,
+    "key_scope_limit": "The xrpldashboard OpenAPI contract explicitly defines get_rlusd_supply as Ethereum + XRPL only and get_rlusd_flow_24h as finalized XRPL net change. Base is not included in this provider's stated two-chain total."
+  },
+  "coinbase_ripple_distribution_relationship": {
+    "listing_date": "2026-10-28",
+    "products": [
+      "Coinbase Prime",
+      "Coinbase Exchange",
+      "Coinbase retail app"
+    ],
+    "supported_deposit_withdrawal_networks": [
+      "XRPL",
+      "Base",
+      "Ethereum"
+    ],
+    "fiat_conversion": "USD to RLUSD at 1:1 in supported regions",
+    "ripple_base_liquidity_support": "Ripple states it will provide liquidity on Base",
+    "global_exchange_rlusd_collateral_use": "Deferred; Coinbase says collateral use will follow later",
+    "relationship_class": "DIRECT_COMMERCIAL_DISTRIBUTION_AND_NETWORK_ACCESS",
+    "causal_link_to_xrpl_supply_decline": "POSSIBLE_TIMING_ASSOCIATION_ONLY; NO BRIDGE/REDEMPTION TRANSACTION CROSSWALK"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H-RLUSD-XRPL-TO-BASE-ETH-MIGRATION",
+      "claim": "Part of the XRPL RLUSD decline reflects migration to Ethereum/Base after Coinbase added all three deposit/withdrawal networks on Oct 28.",
+      "supporting": "Coinbase listing timing; Ethereum supply increased in the same rolling 24h window; Base is excluded from the dashboard's Ethereum+XRPL scope.",
+      "disconfirming": "Ethereum's +19.6M rolling mint offsets only part of the -67.6M XRPL rolling change; Base supply and bridge transaction paths are not captured."
+    },
+    {
+      "id": "H-RLUSD-REDEMPTIONS",
+      "claim": "Part of the XRPL decline reflects net redemptions/burns rather than chain migration.",
+      "supporting": "XRPL issuer-obligation snapshots fell; the dashboard's rolling XRPL flow is negative; historical Bitquery research documents large RLUSD redemption-wallet transfers to issuer.",
+      "disconfirming": "The current source does not publish transaction-level burn/redemption IDs for this exact window; Base chain supply is excluded."
+    },
+    {
+      "id": "H-RLUSD-PROVIDER-SCOPE-REVISION",
+      "claim": "Some discrepancy reflects stale or differing provider coverage and snapshot methodology.",
+      "supporting": "DefiLlama, XR-Lineage, stables.cool and xrpldashboard displayed materially different XRPL supply levels/cutoffs.",
+      "disconfirming": "xrpldashboard reports a daily gateway_balances snapshot and an independent RPC cross-check; stables.cool shows a similar 707.4M level."
+    }
+  ],
+  "feature_admission": "CHAIN_SPECIFIC_STABLECOIN_LIQUIDITY_CONTEXT_ONLY; DO_NOT_LABEL_AS_GLOBAL_REDEMPTION_OR_XRP_PRICE_SIGNAL_UNTIL_BASE_ETH_XRPL_FLOWS_RECONCILED",
+  "pending_archive_append": true,
+  "exact_head_validation": "NOT_RUN"
+}
