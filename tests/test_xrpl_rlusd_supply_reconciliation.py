@@ -91,3 +91,18 @@ def test_coinbase_national_trust_is_conditional_and_custody_migration_is_prospec
     assert coinbase["operational_opening"] == "NOT_VERIFIED"
     assert "over a three-year" in coinbase["planned_migration"]
     assert coinbase["insured_deposit_taking"] == "NOT_AUTHORIZED"
+
+
+
+def test_coinbase_xrp_products_keep_collateral_and_derivatives_risk_models_separate():
+    snapshot = _load("snapshots/20261031T181303Z-xrp-institutional-custody-trade-finance.json")
+    cb = snapshot["coinbase_tactical_position"]
+    assert cb["borrow"]["maximum_borrow_usdc"] == 100000
+    assert cb["borrow"]["protocol"] == "Morpho Blue on Base"
+    assert cb["borrow"]["xrp_specific_initial_ltv"] == "NOT_PUBLISHED_ON_CURRENT_COINBASE_PRODUCT_PAGE"
+    assert cb["global_exchange_cross_collateral"]["xrp_accepted"] is True
+    assert cb["global_exchange_cross_collateral"]["xrp_specific_haircut"] == "NOT_DISCLOSED"
+    assert cb["xrp_perpetual_futures"]["settlement_asset"] == "USDC"
+    assert cb["xrp_perpetual_futures"]["physical_xrp_delivery"] is False
+    assert cb["cbxrp_reserve"]["status"].startswith("MATERIAL_RENDER_DATE_CONFLICT")
+    assert cb["morpho_cbXRP_usdc_market"]["max_ltv_pct"] == 62.5
