@@ -138,7 +138,7 @@ def test_outcome_uses_latest_observation_at_or_before_fixed_horizon(tmp_path):
     ledger = ForecastLedger(tmp_path)
     forecast = ledger.append_forecast(forecast_payload())
     assert forecast["target_resolution_policy"] == "LATEST_OBSERVATION_AT_OR_BEFORE_HORIZON"
-    assert forecast["max_pre_horizon_observation_lag_seconds"] == 900
+    assert forecast["max_pre_horizon_observation_lag_seconds"] == 120
     outcome = ledger.append_outcome(
         "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
         "2026-10-31T01:00:10Z", "SRC-PRICE-001"
@@ -384,3 +384,60 @@ def test_concurrent_jsonl_appends_serialize_duplicate_forecast_ids(tmp_path):
     assert results.count("written") == 1
     assert results.count("duplicate") == 7
     assert [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()] == [record]
+
+
+
+def _ledger_with_valid_outcome(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    ledger.append_outcome(
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
+        "2026-10-31T01:00:10Z", "SRC-PRICE-001"
+    )
+    return ledger
+
+
+def _rewrite_single_outcome(ledger, **changes):
+    rows = [json.loads(line) for line in ledger.outcomes_path.read_text(encoding="utf-8").splitlines()]
+    rows[0].update(changes)
+    ledger.outcomes_path.write_text(
+        "".join(json.dumps(row) + "\\n" for row in rows),
+        encoding="utf-8",
+    )
+
+
+def test_metrics_reject_persisted_post_horizon_observation(tmp_path):
+    ledger = _ledger_with_valid_outcome(tmp_path)
+    _rewrite_single_outcome(ledger, price_observed_at_utc="2026-10-31T01:00:01Z")
+    with pytest.raises(ValueError, match="outside the forecast horizon"):
+        ledger.metrics()
+
+
+def test_metrics_reject_persisted_observation_lag_tampering(tmp_path):
+    ledger = _ledger_with_valid_outcome(tmp_path)
+    _rewrite_single_outcome(ledger, observation_lag_seconds=0.0)
+    with pytest.raises(ValueError, match="observation_lag_seconds is inconsistent"):
+        ledger.metrics()
+
+
+def test_metrics_reject_persisted_realized_class_tampering(tmp_path):
+    ledger = _ledger_with_valid_outcome(tmp_path)
+    _rewrite_single_outcome(ledger, realized_class="down")
+    with pytest.raises(ValueError, match="realized_class is inconsistent"):
+        ledger.metrics()
+
+
+def test_metrics_reject_persisted_realized_return_tampering(tmp_path):
+    ledger = _ledger_with_valid_outcome(tmp_path)
+    _rewrite_single_outcome(ledger, realized_return_pct=-99.0)
+    with pytest.raises(ValueError, match="realized_return_pct is inconsistent"):
+        ledger.metrics()
+
+
+def test_metrics_exposes_effective_horizon_and_observation_lag(tmp_path):
+    ledger = _ledger_with_valid_outcome(tmp_path)
+    metrics = ledger.metrics()
+    assert metrics["mean_observation_lag_seconds"] == pytest.approx(1.0)
+    assert metrics["max_observation_lag_seconds"] == pytest.approx(1.0)
+    assert metrics["min_effective_horizon_seconds"] == pytest.approx(3599.0)
+    assert metrics["max_effective_horizon_seconds"] == pytest.approx(3599.0)

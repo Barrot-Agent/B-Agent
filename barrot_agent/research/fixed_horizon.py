@@ -155,13 +155,90 @@ def _append_jsonl(path: Path, record: dict[str, Any], duplicate_message: str) ->
         finally:
             os.close(descriptor)
 
+
+def _validate_outcome_record(forecast: Mapping[str, Any], outcome: Mapping[str, Any]) -> None:
+    """Re-validate persisted outcome rows before they can affect reported metrics."""
+    if forecast.get("record_type") != "xrp_forecast":
+        raise ValueError("forecast record_type is invalid")
+    if outcome.get("record_type") != "xrp_forecast_outcome":
+        raise ValueError("outcome record_type is invalid")
+    if outcome.get("forecast_id") != forecast.get("forecast_id"):
+        raise ValueError("outcome forecast_id does not match its forecast")
+
+    issued_at = _parse_utc(forecast.get("issued_at_utc"), "issued_at_utc")
+    target_end = _parse_utc(forecast.get("target_end_at_utc"), "target_end_at_utc")
+    horizon = forecast.get("horizon_seconds")
+    if isinstance(horizon, bool) or not isinstance(horizon, int) or horizon <= 0:
+        raise ValueError("stored forecast horizon_seconds is invalid")
+    if target_end != issued_at + timedelta(seconds=horizon):
+        raise ValueError("stored forecast target_end_at_utc does not match its horizon")
+
+    outcome_target_end = _parse_utc(outcome.get("target_end_at_utc"), "outcome.target_end_at_utc")
+    if outcome_target_end != target_end:
+        raise ValueError("outcome target_end_at_utc does not match its forecast")
+    policy = forecast.get("target_resolution_policy")
+    if policy != "LATEST_OBSERVATION_AT_OR_BEFORE_HORIZON" or outcome.get("target_resolution_policy") != policy:
+        raise ValueError("outcome target_resolution_policy does not match its forecast")
+
+    observed_at = _parse_utc(outcome.get("price_observed_at_utc"), "outcome.price_observed_at_utc")
+    recorded_at = _parse_utc(outcome.get("outcome_recorded_at_utc"), "outcome.outcome_recorded_at_utc")
+    if observed_at < issued_at or observed_at > target_end:
+        raise ValueError("persisted outcome price observation is outside the forecast horizon")
+    if recorded_at < target_end or recorded_at < observed_at:
+        raise ValueError("persisted outcome was recorded before its permitted time")
+
+    observation_lag = (target_end - observed_at).total_seconds()
+    max_lag = forecast.get("max_pre_horizon_observation_lag_seconds")
+    if isinstance(max_lag, bool) or not isinstance(max_lag, int) or max_lag <= 0:
+        raise ValueError("stored forecast observation-lag limit is invalid")
+    if observation_lag < 0 or observation_lag > max_lag:
+        raise ValueError("persisted outcome exceeds the forecast observation-lag limit")
+    try:
+        stored_lag = float(outcome.get("observation_lag_seconds"))
+        stored_effective_horizon = float(outcome.get("effective_horizon_seconds"))
+    except (TypeError, ValueError) as exc:
+        raise ValueError("persisted outcome timing fields must be numeric") from exc
+    effective_horizon = (observed_at - issued_at).total_seconds()
+    if not math.isfinite(stored_lag) or not math.isclose(stored_lag, observation_lag, rel_tol=0.0, abs_tol=1e-6):
+        raise ValueError("persisted outcome observation_lag_seconds is inconsistent")
+    if not math.isfinite(stored_effective_horizon) or not math.isclose(stored_effective_horizon, effective_horizon, rel_tol=0.0, abs_tol=1e-6):
+        raise ValueError("persisted outcome effective_horizon_seconds is inconsistent")
+
+    issue_price = _positive_number(forecast.get("price_at_issue_usd"), "forecast.price_at_issue_usd")
+    stored_issue_price = _positive_number(outcome.get("price_at_issue_usd"), "outcome.price_at_issue_usd")
+    horizon_price = _positive_number(outcome.get("price_at_horizon_usd"), "outcome.price_at_horizon_usd")
+    if not math.isclose(stored_issue_price, issue_price, rel_tol=1e-12, abs_tol=1e-12):
+        raise ValueError("persisted outcome issue price does not match its forecast")
+    realized_return = (horizon_price / issue_price - 1.0) * 100.0
+    try:
+        stored_return = float(outcome.get("realized_return_pct"))
+    except (TypeError, ValueError) as exc:
+        raise ValueError("persisted outcome realized_return_pct must be numeric") from exc
+    if not math.isfinite(stored_return) or not math.isclose(stored_return, realized_return, rel_tol=1e-9, abs_tol=1e-9):
+        raise ValueError("persisted outcome realized_return_pct is inconsistent")
+
+    target = forecast.get("target")
+    if not isinstance(target, Mapping):
+        raise ValueError("stored forecast target is invalid")
+    up_threshold = float(target["up_threshold_pct"])
+    down_threshold = float(target["down_threshold_pct"])
+    if realized_return > up_threshold:
+        expected_class = "up"
+    elif realized_return < down_threshold:
+        expected_class = "down"
+    else:
+        expected_class = "flat"
+    if outcome.get("realized_class") != expected_class:
+        raise ValueError("persisted outcome realized_class is inconsistent with its prices")
+
+
 class ForecastLedger:
     """Persist immutable forecasts and separate, timestamped outcomes."""
 
     def __init__(
         self,
         root: str | Path | None = None,
-        max_observation_lag_seconds: int = 900,
+        max_observation_lag_seconds: int = 120,
         max_issue_price_lag_seconds: int = 120,
         source_registry: Iterable[str] | None = None,
     ) -> None:
@@ -471,6 +548,9 @@ class ForecastLedger:
                 raise ValueError("duplicate outcomes found for a forecast")
             outcome_by_id[forecast_id] = outcome
 
+        for forecast_id, outcome in outcome_by_id.items():
+            _validate_outcome_record(by_id[forecast_id], outcome)
+
         resolved = [(by_id[key], value) for key, value in outcome_by_id.items()]
         pending_count = len(forecasts) - len(resolved)
         if not resolved:
@@ -485,6 +565,10 @@ class ForecastLedger:
                 "mean_baseline_log_loss": None,
                 "brier_skill_score": None,
                 "mean_entropy_nats": None,
+                "mean_observation_lag_seconds": None,
+                "max_observation_lag_seconds": None,
+                "min_effective_horizon_seconds": None,
+                "max_effective_horizon_seconds": None,
                 "top_label_calibration_bins": [],
                 "top_label_tie_break_order": list(TIE_BREAK_ORDER),
                 "walk_forward_baseline_status": "NO_RESOLVED_OUTCOMES",
@@ -559,6 +643,10 @@ class ForecastLedger:
                 else None
             ),
             "mean_entropy_nats": sum(entropies) / len(entropies),
+            "mean_observation_lag_seconds": sum(float(item[1]["observation_lag_seconds"]) for item in resolved) / len(resolved),
+            "max_observation_lag_seconds": max(float(item[1]["observation_lag_seconds"]) for item in resolved),
+            "min_effective_horizon_seconds": min(float(item[1]["effective_horizon_seconds"]) for item in resolved),
+            "max_effective_horizon_seconds": max(float(item[1]["effective_horizon_seconds"]) for item in resolved),
             "top_label_calibration_bins": calibration,
             "top_label_tie_break_order": list(TIE_BREAK_ORDER),
             "walk_forward_baseline_status": (
