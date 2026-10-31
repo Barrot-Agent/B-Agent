@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "B-AGENT-20261031T152000Z-MAIN-191PR-AUDIT",
+  "captured_at_utc": "2026-10-31T15:20:00Z",
+  "main": {
+    "sha": "88977235524c7b021211c6694df7f5527b9c36c8",
+    "message": "Cross-analysis refresh [skip ci]",
+    "signed": false,
+    "associated_workflow_runs": 0,
+    "changed_file": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "main_modified_by_this_run": false
+  },
+  "prs": {
+    "open": 191,
+    "drafts": 181,
+    "ready": 10,
+    "main_based": 189,
+    "stale_main_based": 188,
+    "current_main_based": 1,
+    "current_main_pr": 1418,
+    "non_main_based": 2
+  },
+  "key_prs": [
+    {
+      "number": 1418,
+      "head": "dd9fe584489772f579561d20099a042d29095115",
+      "base": "88977235524c7b021211c6694df7f5527b9c36c8",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": 41213269078,
+      "tests": 345,
+      "subtests": 8,
+      "gate": 41213268997,
+      "gate_status": "PASS_MERGING_DISABLED"
+    },
+    {
+      "number": 1416,
+      "head": "73cb9b2b4a57998bc7db55797fbf5ba064f981b7",
+      "base_prefix": "e560d0b6d77b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": 41213218867,
+      "tests": 382,
+      "subtests": 8,
+      "gate": 41213218865,
+      "gate_status": "PASS_MERGING_DISABLED"
+    },
+    {
+      "number": 1417,
+      "head": "1e0ec0029814db36f8984b8018dbc0ebcb546e2c",
+      "base_prefix": "e560d0b6d77b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": 41211016595,
+      "tests": 349,
+      "subtests": 8,
+      "gate": 41211016596,
+      "gate_status": "PASS_MERGING_DISABLED"
+    },
+    {
+      "number": 1414,
+      "head_prefix": "ba4ef9c5",
+      "base_prefix": "e560d0b6d77b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": 41211327544,
+      "tests": 385,
+      "subtests": 8,
+      "gate": 41211327534,
+      "gate_status": "PASS_MERGING_DISABLED",
+      "note": "Fixed-horizon ledger, not trained prediction model."
+    },
+    {
+      "number": 1413,
+      "head_prefix": "8b8eddc0",
+      "base_prefix": "e560d0b6d77b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": 41210994654,
+      "tests": 369,
+      "subtests": 8,
+      "gate": 41210994741,
+      "gate_status": "PASS_MERGING_DISABLED"
+    },
+    {
+      "number": 1415,
+      "head_prefix": "a0349c3d",
+      "base_prefix": "e560d0b6d77b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": 41211473170,
+      "tests": 354,
+      "subtests": 8,
+      "gate": 41211473171,
+      "gate_status": "PASS_MERGING_DISABLED"
+    },
+    {
+      "number": 1353,
+      "head": "4b6526f9899313bd9e51849a2854ce32aaa04fea",
+      "state": "OPEN_RESEARCH_BRANCH_UNMERGED",
+      "last_verified_data_head_prefix": "dd24a0f6",
+      "last_verified_shards": 404,
+      "last_validator": 41212198059,
+      "last_gate": 41212198055
+    }
+  ],
+  "main_write_paths": [
+    {
+      "workflow": "cross-analysis.yml",
+      "risk": "contents:write and git push to main",
+      "status": "ACTIVE; PR #1418 proposes read-only replacement"
+    },
+    {
+      "workflow": "scheduler-tick.yml",
+      "risk": "contents:write and actions:write",
+      "status": "ACTIVE; last observed tick fired zero entries"
+    },
+    {
+      "workflow": "rotate-databricks-token.yml",
+      "risk": "new_token input and gh secret mutation",
+      "status": "ACTIVE; safety proposal unmerged"
+    },
+    {
+      "workflow": "coinbase-paper-trader.yml",
+      "risk": "workflow_dispatch and paper-state write",
+      "status": "ACTIVE; not dispatched"
+    },
+    {
+      "workflow": "merge-queue.yml",
+      "risk": "merge-capable automation",
+      "status": "ACTIVE; not dispatched"
+    }
+  ],
+  "blockers": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "lockfiles": "NOT_FOUND_IN_PARTIAL_MANIFEST_INVENTORY",
+    "security_alert_access": "403_UNAVAILABLE",
+    "branch_protection_details": "403_UNAVAILABLE",
+    "approval_workflow_zero_job_root_cause": "UNKNOWN",
+    "external_platforms": "ONLY_CHATGPT_AND_GITHUB_VERIFIED; OTHER_EIGHT_NOT_TESTED"
+  },
+  "preservation": {
+    "main_writes": 0,
+    "merges": 0,
+    "force_pushes": 0,
+    "deployments": 0,
+    "manual_dispatches": 0,
+    "paper_positions_mutated": 0,
+    "real_money_trades": 0
+  }
+}

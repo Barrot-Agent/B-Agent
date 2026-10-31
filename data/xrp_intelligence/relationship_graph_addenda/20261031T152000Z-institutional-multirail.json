@@ -1,0 +1,403 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T152000Z-INSTITUTIONAL-MULTIRAIL",
+  "captured_at_utc": "2026-10-31T15:20:00Z",
+  "source_ids": [
+    "SRC-20261031T152000Z-COINBASE-RLUSD",
+    "SRC-20261031T152000Z-COINBASE-Q3-IR",
+    "SRC-20261031T152000Z-COINBASE-Q3-10Q",
+    "SRC-20261031T152000Z-OCC-RIPPLE-NTB",
+    "SRC-20261031T152000Z-AVIVA-XRPL",
+    "SRC-20261031T152000Z-SC-RLUSD",
+    "SRC-20261031T152000Z-RIPPLE-STRATEGY",
+    "SRC-20261031T152000Z-BNY-RIPPLE",
+    "SRC-20261031T152000Z-C2FO",
+    "SRC-20261031T152000Z-ROBINHOOD",
+    "SRC-20261031T152000Z-RIPPLE-PRIME",
+    "SRC-20261031T152000Z-XRPL-AI-KIT",
+    "SRC-20261031T152000Z-RIPPLE-TREASURY",
+    "SRC-20261031T152000Z-SBI-ACCUMULATION",
+    "SRC-20261031T152000Z-ORICO",
+    "SRC-20261031T152000Z-XRPL-UTILS-METHOD",
+    "SRC-20261031T152000Z-XRPL-UTILS-HEALTH",
+    "SRC-20261031T152000Z-XRP-INSIGHTS",
+    "SRC-20261031T152000Z-CRYPTOETF",
+    "SRC-20261031T152000Z-CRYPTOKEYHOLE",
+    "SRC-20261031T152000Z-BINANCE-PRICE",
+    "SRC-20261031T152000Z-TRADRADAR",
+    "SRC-20261031T152000Z-KODEXIUS",
+    "SRC-20261031T152000Z-SBIC-INDEX",
+    "SRC-20261031T152000Z-SBIC-20250226",
+    "SRC-20261031T152000Z-GITHUB-AUDIT",
+    "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+    "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+    "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU",
+    "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER",
+    "SRC-202610311448Z-SBI-RLUSD-LISTING",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T121200Z-SBI-SMFG-STABLECOIN-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T121200Z-SBI-OPEN-STANDARD-JPYSC-OUSD",
+    "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE"
+  ],
+  "edges": [
+    {
+      "id": "E20261031-1",
+      "source": "COINBASE",
+      "target": "RIPPLE",
+      "relationship": "RLUSD distribution partnership",
+      "status": "ANNOUNCED",
+      "source_ids": [
+        "SRC-20261031T152000Z-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "E20261031-2",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "Prime/Exchange/app listing",
+      "status": "LIVE_SUPPORTED_REGIONS",
+      "source_ids": [
+        "SRC-20261031T152000Z-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "E20261031-3",
+      "source": "RLUSD",
+      "target": "XRPL",
+      "relationship": "deposit/withdrawal network",
+      "status": "LIVE",
+      "source_ids": [
+        "SRC-20261031T152000Z-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "E20261031-4",
+      "source": "RLUSD",
+      "target": "BASE",
+      "relationship": "deposit/withdrawal network",
+      "status": "LIVE",
+      "source_ids": [
+        "SRC-20261031T152000Z-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "E20261031-5",
+      "source": "RLUSD",
+      "target": "ETHEREUM",
+      "relationship": "deposit/withdrawal network",
+      "status": "LIVE",
+      "source_ids": [
+        "SRC-20261031T152000Z-COINBASE-RLUSD"
+      ]
+    },
+    {
+      "id": "E20261031-6",
+      "source": "COINBASE",
+      "target": "CIRCLE",
+      "relationship": "USDC distribution agreement",
+      "status": "RENEWED_SAME_TERMS",
+      "source_ids": [
+        "SRC-20261031T152000Z-COINBASE-Q3-10Q"
+      ]
+    },
+    {
+      "id": "E20261031-7",
+      "source": "OCC",
+      "target": "RIPPLE_NTB",
+      "relationship": "national trust bank charter",
+      "status": "EFFECTIVE_2026-10-26",
+      "source_ids": [
+        "SRC-20261031T152000Z-OCC-RIPPLE-NTB"
+      ]
+    },
+    {
+      "id": "E20261031-8",
+      "source": "RIPPLE_NTB",
+      "target": "RLUSD",
+      "relationship": "reserve manager/collateral trustee",
+      "status": "APPROVED_POWERS_AS_DESCRIBED",
+      "source_ids": [
+        "SRC-20261031T152000Z-OCC-RIPPLE-NTB"
+      ]
+    },
+    {
+      "id": "E20261031-9",
+      "source": "AVIVA",
+      "target": "XRPL",
+      "relationship": "tokenized GBP fund share class",
+      "status": "LAUNCHED",
+      "source_ids": [
+        "SRC-20261031T152000Z-AVIVA-XRPL"
+      ]
+    },
+    {
+      "id": "E20261031-10",
+      "source": "AVIVA",
+      "target": "BNY",
+      "relationship": "underlying fund custody",
+      "status": "LIVE_AS_ANNOUNCED",
+      "source_ids": [
+        "SRC-20261031T152000Z-AVIVA-XRPL"
+      ]
+    },
+    {
+      "id": "E20261031-11",
+      "source": "AVIVA",
+      "target": "KOMAINU",
+      "relationship": "digital asset custody",
+      "status": "LIVE_AS_ANNOUNCED",
+      "source_ids": [
+        "SRC-20261031T152000Z-AVIVA-XRPL"
+      ]
+    },
+    {
+      "id": "E20261031-12",
+      "source": "AVIVA",
+      "target": "LICUIDO",
+      "relationship": "tokenization infrastructure",
+      "status": "LIVE_AS_ANNOUNCED",
+      "source_ids": [
+        "SRC-20261031T152000Z-AVIVA-XRPL"
+      ]
+    },
+    {
+      "id": "E20261031-13",
+      "source": "BNY",
+      "target": "XRP",
+      "relationship": "institutional custody",
+      "status": "LIVE_ELIGIBLE_CLIENTS_AS_ANNOUNCED",
+      "source_ids": [
+        "SRC-20261031T152000Z-BNY-RIPPLE"
+      ]
+    },
+    {
+      "id": "E20261031-14",
+      "source": "BNY",
+      "target": "RLUSD",
+      "relationship": "institutional and primary reserve custody",
+      "status": "LIVE_AS_ANNOUNCED",
+      "source_ids": [
+        "SRC-20261031T152000Z-BNY-RIPPLE"
+      ]
+    },
+    {
+      "id": "E20261031-15",
+      "source": "RIPPLE",
+      "target": "BNY",
+      "relationship": "tokenized trade finance on XRPL",
+      "status": "EXPLORATORY",
+      "source_ids": [
+        "SRC-20261031T152000Z-BNY-RIPPLE"
+      ]
+    },
+    {
+      "id": "E20261031-16",
+      "source": "C2FO",
+      "target": "RLUSD",
+      "relationship": "receivables settlement asset",
+      "status": "ANNOUNCED_WAITLIST",
+      "source_ids": [
+        "SRC-20261031T152000Z-C2FO"
+      ]
+    },
+    {
+      "id": "E20261031-17",
+      "source": "C2FO",
+      "target": "XRPL",
+      "relationship": "RLUSD settlement rail",
+      "status": "ANNOUNCED_WAITLIST",
+      "source_ids": [
+        "SRC-20261031T152000Z-C2FO"
+      ]
+    },
+    {
+      "id": "E20261031-18",
+      "source": "CAPITAL_PROVIDERS",
+      "target": "C2FO",
+      "relationship": "fund early payment on receivables",
+      "status": "PLANNED",
+      "source_ids": [
+        "SRC-20261031T152000Z-C2FO"
+      ]
+    },
+    {
+      "id": "E20261031-19",
+      "source": "RIPPLE_PRIME",
+      "target": "RLUSD",
+      "relationship": "collateral for RWA perpetual swaps",
+      "status": "LIVE_SUBJECT_TO_JURISDICTION",
+      "source_ids": [
+        "SRC-20261031T152000Z-RIPPLE-PRIME"
+      ]
+    },
+    {
+      "id": "E20261031-20",
+      "source": "RIPPLE_PRIME",
+      "target": "HYPERLIQUID",
+      "relationship": "institutional RWA perpetual access",
+      "status": "LIVE_AS_ANNOUNCED",
+      "source_ids": [
+        "SRC-20261031T152000Z-RIPPLE-PRIME"
+      ]
+    },
+    {
+      "id": "E20261031-21",
+      "source": "ROBINHOOD",
+      "target": "RIPPLE",
+      "relationship": "multi-product partnership",
+      "status": "MIXED_LIVE_PLANNED",
+      "source_ids": [
+        "SRC-20261031T152000Z-ROBINHOOD"
+      ]
+    },
+    {
+      "id": "E20261031-22",
+      "source": "ROBINHOOD",
+      "target": "RLUSD",
+      "relationship": "XRPL institutional settlement",
+      "status": "PLANNED",
+      "source_ids": [
+        "SRC-20261031T152000Z-ROBINHOOD"
+      ]
+    },
+    {
+      "id": "E20261031-23",
+      "source": "RIPPLE",
+      "target": "RLUSD",
+      "relationship": "corporate treasury returns",
+      "status": "ANNOUNCED",
+      "source_ids": [
+        "SRC-20261031T152000Z-RIPPLE-TREASURY"
+      ]
+    },
+    {
+      "id": "E20261031-24",
+      "source": "CLAUDE",
+      "target": "XRPL",
+      "relationship": "MCP docs and developer skills",
+      "status": "PUBLIC_TOOLING_NOT_BARROT_CONNECTION",
+      "source_ids": [
+        "SRC-20261031T152000Z-XRPL-AI-KIT"
+      ]
+    },
+    {
+      "id": "E20261031-25",
+      "source": "SBI_VC_TRADE",
+      "target": "XRP",
+      "relationship": "recurring accumulation product",
+      "status": "PRODUCT_EXISTS_VOLUME_UNKNOWN",
+      "source_ids": [
+        "SRC-20261031T152000Z-SBI-ACCUMULATION"
+      ]
+    },
+    {
+      "id": "E20261031-26",
+      "source": "ORICO",
+      "target": "XRP",
+      "relationship": "points redemption",
+      "status": "PRODUCT_EXISTS_VOLUME_UNKNOWN",
+      "source_ids": [
+        "SRC-20261031T152000Z-ORICO"
+      ]
+    },
+    {
+      "id": "E20261031-27",
+      "source": "SBIC_TOKYO",
+      "target": "MICROSOFT_JAPAN",
+      "relationship": "ChatGPT/generative-AI educational events",
+      "status": "2024_TO_2026_NOT_OPENAI_PARTNERSHIP",
+      "source_ids": [
+        "SRC-20261031T152000Z-SBIC-INDEX",
+        "SRC-20261031T152000Z-SBIC-20250226"
+      ]
+    },
+    {
+      "id": "E20261031-28",
+      "source": "XRPL_UTILITIES",
+      "target": "XRPL",
+      "relationship": "public data API/MCP",
+      "status": "FREE_READS_AND_PAID_X402_NOT_USED",
+      "source_ids": [
+        "SRC-20261031T152000Z-XRPL-UTILS-METHOD",
+        "SRC-20261031T152000Z-XRPL-UTILS-HEALTH"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Coinbase RLUSD listing expands stablecoin distribution but does not establish XRP buying.",
+      "counter": "No transfer volume, XRP purchases or fee totals."
+    },
+    {
+      "id": "H2",
+      "claim": "Coinbase diversifies stablecoin distribution while retaining material Circle/USDC economics.",
+      "counter": "No USDC displacement or RLUSD market share disclosed."
+    },
+    {
+      "id": "H3",
+      "claim": "Ripple multi-product growth strengthens the company but XRP value capture remains unproven.",
+      "counter": "Metrics are company-reported and multi-product."
+    },
+    {
+      "id": "H4",
+      "claim": "RLUSD institutional custody/collateral stack is expanding across BNY, RNTB, Ripple Prime and Standard Chartered/LMAX.",
+      "counter": "Some channels planned; no aggregate balances/utilization."
+    },
+    {
+      "id": "H5",
+      "claim": "BNY custody support is a direct institutional custody development for native XRP.",
+      "counter": "No AUC, client counts or XRP balances."
+    },
+    {
+      "id": "H6",
+      "claim": "C2FO Instant Pay could create RLUSD settlement on XRPL backed by receivables financing.",
+      "counter": "Waitlist; no production volume; principal is not XRP."
+    },
+    {
+      "id": "H7",
+      "claim": "Aviva tokenized GBP share class adds RWA representation on XRPL.",
+      "counter": "Underlying assets off-chain; GBP 50M is not XRP."
+    },
+    {
+      "id": "H8",
+      "claim": "SBI is pursuing simultaneous Ripple/XRP/RLUSD and Circle/USDC/Arc rails.",
+      "counter": "Different subsidiaries/products; no exclusivity."
+    },
+    {
+      "id": "H9",
+      "claim": "SBI accumulation, rewards and points may distribute XRP to customers.",
+      "counter": "No subscribers, units, selection share or inventory source."
+    },
+    {
+      "id": "H10",
+      "claim": "XRPL MCP/x402 tools create possible agentic payments using XRP/RLUSD.",
+      "counter": "No Barrot connection or production volume."
+    },
+    {
+      "id": "H11",
+      "claim": "ETF-flow disagreement is a universe/method/freshness problem, not a directional signal.",
+      "counter": "Issuer share-count reconciliation may resolve it."
+    },
+    {
+      "id": "H12",
+      "claim": "Binance Update #3 includes XRP in its top-ten coverage claim but does not establish XRP purchases.",
+      "counter": "No XRP units, venues or reserve-address crosswalk."
+    }
+  ],
+  "separation_rules": [
+    "No direct Circle-Ripple partnership established.",
+    "Coinbase Global Exchange RLUSD collateral was planned at launch; Ripple Prime's live RWA collateral is RLUSD, not XRP.",
+    "Aviva GBP 50M is fund-share capital, not XRP.",
+    "C2FO principal is receivables financing; settlement is RLUSD, not XRP.",
+    "SBI has simultaneous Circle and Ripple rails; no exclusivity.",
+    "XRPL AI and XRPL-Utilities MCP tools are public capabilities, not live Barrot collaborators."
+  ]
+}
