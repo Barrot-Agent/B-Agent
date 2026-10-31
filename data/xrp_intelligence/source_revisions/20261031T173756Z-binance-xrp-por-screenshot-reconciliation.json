@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-BINANCE-XRP-POR-20261031T173756Z",
+  "captured_at_utc": "2026-10-31T17:37:56Z",
+  "underlying_snapshot_utc": "2026-10-31T00:00:00Z",
+  "source_id": "SRC-20261031T173756Z-CRYPTOTIMES-BINANCE-POR-SCREENSHOT",
+  "source": {
+    "publisher": "The Crypto Times",
+    "title": "Binance Reports 90% Replenishment, Updates PoR After $6.3B Hack",
+    "url": "https://www.cryptotimes.io/2026/10/31/binance-reports-90-replenishment-updates-por-after-6-3b-hack/",
+    "published_at": "2026-10-31",
+    "retrieved_at_utc": "2026-10-31T17:37:56Z",
+    "independence_group": "CRYPTOTIMES_REPORTING",
+    "evidence_class": "SECONDARY_SCREENSHOT_TRANSCRIPTION_OF_PRIMARY_EXCHANGE_PAGE",
+    "screenshot_url": "https://www.cryptotimes.io/wp-content/uploads/2026/10/Proof-of-Reserve-.png"
+  },
+  "xrp_published_snapshot_values": {
+    "displayed_reserve_ratio_pct": 100.99,
+    "net_account_balances_xrp": 2516373182.286,
+    "onchain_wallet_balance_xrp": 2541393612.546,
+    "exchange_balance_xrp": 2458677298.071,
+    "third_party_custody_xrp": 82716314.475,
+    "merkle_root_status": "IN_PROGRESS",
+    "verification_mechanism_displayed": "zk-SNARKs",
+    "bitcoin_block_height": 973895
+  },
+  "derived": {
+    "reserve_surplus_over_net_account_balances_xrp": 25020430.26,
+    "calculated_reserve_ratio_pct": 100.9943052341,
+    "exchange_plus_third_party_custody_reconciles_to_onchain_balance": true,
+    "surplus_as_pct_of_233461943_1_incident_xrp": 10.7171344193
+  },
+  "interpretation": [
+    "The screenshot reports a 100.99% XRP reserve ratio at the 2026-10-31 00:00 UTC snapshot, with exchange wallets plus third-party custody totaling 2,541,393,612.546 XRP against 2,516,373,182.286 XRP in net customer account balances.",
+    "The displayed reserve surplus is approximately 25.02M XRP. This is a point-in-time coverage margin, not an XRP purchase quantity, not proof that the 233.46M XRP theft was recovered, and not evidence of a particular funding source.",
+    "The screenshot shows the Merkle root hash as In Progress. The full zero-knowledge proof remains pending; the screenshot is not independent cryptographic verification.",
+    "Binance's separate 90% figure is aggregate affected-asset replenishment across all incident tokens. It must not be conflated with 100% coverage of the top-ten customer asset set, including XRP."
+  ],
+  "limitations": [
+    "The Crypto Times screenshot is secondary evidence of the Binance page's displayed figures; the Binance page's live dynamic table was not directly extractable in this capture.",
+    "The PoR snapshot's coverage depends on the completeness and scope of reported customer liabilities and reserve ownership attribution.",
+    "Third-party custody is included in the total; the 82.716M XRP is not necessarily held in Binance-controlled exchange wallets.",
+    "No XRP-specific replacement purchase quantity, execution venue, OTC trade record or SAFU allocation is disclosed.",
+    "The displayed ratio is rounded to two decimals; the derived ratio uses the displayed underlying balances."
+  ],
+  "feature_admission": "CUSTODY_AND_RESERVE_CONTEXT_ONLY; NO_DIRECTIONAL_FEATURE; ACTUAL_XRP_PURCHASE_CAPITAL_UNKNOWN",
+  "pending_archive_append": true,
+  "exact_head_validation": "NOT_RUN"
+}
