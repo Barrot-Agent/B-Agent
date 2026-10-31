@@ -225,8 +225,8 @@ def resolve(issue_number):
         comment = (
             f"Checked the latest completed run of '{workflow_name}' on the same branch "
             f"as the original failed run ([#{run_id}]({run_url})): it still failed. "
-            f"Leaving this issue open for diagnosis. Log tail:\\n\\n"
-            f"```\\n{log_tail}\\n```"
+            f"Leaving this issue open for diagnosis. Log tail:\n\n"
+            f"```\n{log_tail}\n```"
         )
         print("Same-branch run still failing - posting diagnostic comment, leaving open.")
         gh("issue", "comment", str(issue_number), "--body", comment)
