@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 87,
+  "chunk_count": 88,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+      "source_id": "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+      "publisher": "Coinbase",
+      "title": "cbXRP Proof of Reserves — live reserve and supply address table",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T00:26:53Z",
+      "evidence_class": "OFFICIAL_CUSTODIAN_PROOF_OF_RESERVES_PAGE",
+      "independence_group": "COINBASE_OFFICIAL",
+      "summary": "Coinbase states cbXRP is backed 1:1 by XRP held by Coinbase. The page displays a refresh timestamp of 10/30/2026 1:29 PM (timezone not stated), total reserve 151,405,263.6 XRP, total supply 151,403,016.069 cbXRP on Base, and 20 XRPL reserve addresses with individual balances. Summing the 20 displayed balances yields 151,405,263.598 XRP, only 0.002 XRP below the displayed reserve total due to display rounding. The linked Base token contract is 0xcb585250f852C6c6bf90434AB21A00f02833a4af.",
+      "limitations": "First-party Coinbase page, not an independent audit. Display refresh timezone is unspecified. The BaseScan contract link returned HTTP 403 in this run, so the Base total supply was not independently re-read from the chain. Address balances are displayed rounded to three decimals."
+    },
+    {
+      "id": "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-20260331",
+      "source_id": "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-20260331",
+      "publisher": "Coinbase",
+      "title": "Digital Asset Disclosures — XRP and cbXRP holdings/commercial engagement",
+      "url": "https://www.coinbase.com/en-es/legal/digital-asset-disclosures",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T00:26:53Z",
+      "evidence_class": "OFFICIAL_COINBASE_ASSET_HOLDINGS_AND_COMMERCIAL_ENGAGEMENT_DISCLOSURE",
+      "independence_group": "COINBASE_OFFICIAL",
+      "summary": "Coinbase says its holdings data are as of 31 March 2026 and defines 'Commercial Engagement' broadly to include financial engagements, business engagements and custody arrangements. In the US (including New York) trading-assets table, XRP is marked Coinbase Holding Yes / Commercial Engagement Yes. In the Coinbase Custody Trust Company table, XRP is Yes/Yes and cbXRP is Yes/Yes; RLUSD is No/Yes. The disclosure does not publish the XRP holding amount in this table.",
+      "limitations": "Dated 31 March 2026, not current balances. 'Commercial Engagement' is broad and does not identify the specific engagement or amount. Holdings Yes does not reveal balance size."
+    },
+    {
+      "id": "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z",
+      "source_id": "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z",
+      "publisher": "Coinbase Help",
+      "title": "Coinbase Wrapped Assets — 1:1 backing and cbXRP network support",
+      "url": "https://help.coinbase.com/en/exchange/crypto-transfers/wrapped-assets",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T00:26:53Z",
+      "evidence_class": "OFFICIAL_PRODUCT_AND_CUSTODY_DOCUMENTATION",
+      "independence_group": "COINBASE_OFFICIAL",
+      "summary": "Coinbase states its wrapped assets are backed 1:1 by the underlying assets held in Coinbase custody. It lists Coinbase Wrapped XRP (cbXRP) as supported on Base. Depositing cbXRP to a Coinbase Exchange account is automatically unwrapped and credited as native XRP; withdrawing native XRP to a supported network can result in wrapped cbXRP. Coinbase's help page lists geographic restrictions for cbXRP send/receive, including Japan and New York State.",
+      "limitations": "Product documentation is not an independent reserve audit. Availability is region-specific and can change; the restrictions page should not be treated as individualized legal advice."
+    }
+  ]
+}
