@@ -17,7 +17,14 @@
     "Do not admit custody, charter, tokenization or partnership announcements as directional XRP features without measured XRP-specific capital flows or out-of-sample predictive value.",
     "Classify Coinbase National Trust as preliminary conditional approval only as of the OCC Corporate Decision #1370 dated 2026-04-02; do not treat it as an effective or operational federal charter.",
     "Keep Coinbase's existing NYDFS-chartered Coinbase Custody Trust Company separate from the proposed national trust bank; the OCC decision describes a planned three-year migration, not a completed migration.",
-    "Classify the proposed Coinbase National Trust's staking, Prime Trading and Prime Financing access as finder access to affiliate services for custody clients; the proposed bank itself does not provide those underlying services."
+    "Classify the proposed Coinbase National Trust's staking, Prime Trading and Prime Financing access as finder access to affiliate services for custody clients; the proposed bank itself does not provide those underlying services.",
+    "Keep Coinbase Borrow/Morpho, Coinbase Global Exchange cross-collateral and Coinbase XRP-PERP as separate product datasets; do not transfer one product's LTV or liquidation threshold to another.",
+    "Treat cbXRP as a 1:1 wrapped representation backed by Coinbase-held XRP; distinguish reserve backing from open-market purchases and customer beneficial ownership.",
+    "Preserve the Coinbase cbXRP proof-of-reserves search-indexed 2026-10-31 snapshot and direct-open 2026-10-29 snapshot as separate observations because the direct page did not reproduce the newer indexed figures.",
+    "Record the Morpho cbXRP/USDC 62.5% LLTV market as a public Base lending market; do not attribute all of its borrowers or supplied liquidity to Coinbase customers without a market-level crosswalk.",
+    "Use the Coinbase Borrow product's $100,000 XRP borrowing cap as a product limit; do not apply the page's generic 86% liquidation LTV to XRP absent an asset-specific Coinbase term.",
+    "Record Coinbase Global Exchange XRP collateral haircuts and ADQ concentration limits as risk controls; XRP-specific haircut and posted balances remain undisclosed.",
+    "Treat XRP-PERP as USDC-settled derivatives exposure, not physical XRP delivery or direct spot demand."
   ],
   "actual_capital_taxonomy": [
     "platform_cumulative_working_capital",
@@ -37,12 +44,17 @@
     "Verify EURCV collateral integration and any actual collateral balances.",
     "Verify whether Mastercard/WebBank/Gemini has progressed from integration planning to production settlement.",
     "Monitor the OCC CAS record for a Coinbase National Trust Consummated/Effective action and verify the bank's actual opening date.",
-    "Verify whether the planned migration from Coinbase Custody Trust Company LLC to Coinbase National Trust has begun and how XRP custody balances are allocated between entities."
+    "Verify whether the planned migration from Coinbase Custody Trust Company LLC to Coinbase National Trust has begun and how XRP custody balances are allocated between entities.",
+    "Re-fetch the Coinbase cbXRP proof-of-reserves page and reconcile the 2026-10-31 indexed snapshot with the 2026-10-29 direct-page render.",
+    "Obtain Morpho market-level raw API data and identify whether the cbXRP/USDC 62.5% market is the market used by Coinbase Borrow.",
+    "Track cbXRP total supply, Coinbase reserve addresses, Morpho collateral balances, loan originations, liquidations and unwrapping separately.",
+    "Seek Coinbase Global Exchange XRP collateral quantities and XRP-specific haircuts; do not infer them from published general methodology."
   ],
   "feature_admission": {
     "institutional_events": "EVENT_CONTEXT_ONLY",
     "native_xrp_directional_features": [],
     "forecast_status": "NOT_ISSUED",
-    "coinbase_charter": "REGULATORY_EVENT_CONTEXT_ONLY; CONDITIONAL_NOT_OPERATIONAL"
+    "coinbase_charter": "REGULATORY_EVENT_CONTEXT_ONLY; CONDITIONAL_NOT_OPERATIONAL",
+    "coinbase_collateral": "CUSTODY_AND_CREDIT_CONTEXT_ONLY; NO_DIRECTIONAL_XRP_FEATURE"
   }
 }
