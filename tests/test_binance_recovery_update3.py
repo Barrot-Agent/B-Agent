@@ -60,11 +60,11 @@ def test_graph_edges_resolve_and_retain_evidence_class():
 def test_coinbase_security_response_is_not_misclassified_as_xrp_demand():
     edge = next(edge for edge in GRAPH["edges"] if edge["id"] == "EDGE-COINBASE-OFFLINE-KEY-HARDENING")
     assert edge["relationship"] == "PRECAUTIONARY_SECURITY_ADJUSTMENT_AFTER_BINANCE_INCIDENT"
-    assert "not evidence of a new XRP market position" in edge["claim"]
+    assert "XRP-specific effects are unknown" in edge["claim"]
 
 
 def test_prediction_remains_not_issued_and_market_feature_admission_is_bounded():
     assert SNAPSHOT["forecast"]["status"] == "NOT_ISSUED"
-    assert SNAPSHOT["feature_admission"]["directional_xrp_signal"] == "NOT_ADMITTED"
+    assert SNAPSHOT["feature_admission"]["xrp_directional_signal"] == "NOT_ADMITTED"
     assert DECISION["prediction_status"] == "NOT_ISSUED"
     assert DECISION["feature_admission"]["incident_timeline"] == "ADMITTED"
