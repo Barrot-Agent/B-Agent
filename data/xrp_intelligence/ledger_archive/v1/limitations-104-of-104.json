@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 103,
+  "chunk_count": 104,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "LIM-20261031T022100Z-01",
+      "category": "coinbase_q3_company_reported_metrics",
+      "statement": "Coinbase's market-share, Assets-on-Platform share, average USDC held and prediction-market annualized revenue figures are company-reported and partly management-defined. They are not independent third-party measurements; annualized revenue is not recognized Q3 revenue.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T022100Z-02",
+      "category": "coinbase_q3_pre_rlusd_listing",
+      "statement": "The Q3 reporting period ended 2026-09-30, while Coinbase RLUSD availability began 2026-10-28. Q3 USDC balances and revenue cannot establish post-listing RLUSD adoption, USDC displacement or incremental XRP demand.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T022100Z-03",
+      "category": "average_stablecoin_balance_not_net_capital",
+      "statement": "The $22B average USDC balance held in Coinbase products is a platform balance measure. It is not $22B of new external capital during Q3, not a net-flow measure, and not evidence of XRP purchases or collateral.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ]
+    }
+  ]
+}
