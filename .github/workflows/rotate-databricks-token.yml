@@ -1,25 +1,28 @@
-name: Rotate Databricks Token
+name: Databricks Token Rotation (disabled; manual secret management only)
 
 on:
   workflow_dispatch:
-    inputs:
-      new_token:
-        description: Paste the new Databricks PAT here
-        required: true
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
-  rotate:
+  disabled:
+    name: Explain secure token-rotation boundary
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     steps:
-      - uses: actions/checkout@v7
-      - name: Set new secret
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh secret set DATABRICKS_TOKEN --body "${{ inputs.new_token }}"
-      - name: Verify by re-running deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run "Deploy to Databricks"
+      - name: Report that no rotation was performed
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "# Databricks token rotation"
+            echo
+            echo "**Status:** ROTATION_NOT_PERFORMED"
+            echo
+            echo "This workflow intentionally accepts no token value and has no repository, Actions, or secret-write permissions."
+            echo "Rotate DATABRICKS_TOKEN only through the repository's authorized secret-management interface or an approved external secret manager."
+            echo "After rotation, run a separately authorized read-only connectivity check."
+            echo "No token was received, logged, stored, forwarded, or used by this workflow."
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "ROTATION_NOT_PERFORMED"
