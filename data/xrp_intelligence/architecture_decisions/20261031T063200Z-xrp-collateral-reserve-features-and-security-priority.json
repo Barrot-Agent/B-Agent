@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T063200Z-XRP-COLLATERAL-RESERVE-FEATURES-AND-SECURITY",
+  "captured_at_utc": "2026-10-31T06:32:00Z",
+  "title": "Separate Coinbase XRP collateral channels, Arc institutional rails and exchange-reserve definitions",
+  "status": "ACCEPTED_FOR_RESEARCH_ARCHITECTURE",
+  "context": [
+    "Coinbase Global Exchange lists XRP as perpetual-futures margin collateral; the product applies collateral haircuts, ADQ caps and automatic collateral liquidation.",
+    "Coinbase separately offers Morpho-backed USDC loans using cbXRP on Base as collateral; this is not the same market as Global Exchange margin.",
+    "Coinbase's loan terms prohibit use of loan proceeds for trading on Coinbase, but do not establish zero downstream market effect.",
+    "Circle's Arc launch announcement lists SBI Group as a founding validator, Coinbase as exchange-access partner and Morpho as credit-layer participant. Arc is a USDC-gas network distinct from XRPL.",
+    "XRP Insights exchange-wallet totals include cold storage and wrapped-token backing reserves; CryptoQuant reserve series use different wallet universes."
+  ],
+  "decisions": [
+    {
+      "id": "DEC-COLLATERAL-CHANNEL-SEPARATION",
+      "rule": "Store Coinbase Global Exchange XRP margin collateral and Coinbase/Morpho cbXRP loan collateral as separate product channels.",
+      "rationale": "Different custody, collateral representation, market mechanics, counterparties and liquidation pathways.",
+      "data_fields": [
+        "product_channel",
+        "asset_native_or_wrapped",
+        "network",
+        "posted_amount",
+        "haircut",
+        "ADQ_cap",
+        "LLTV",
+        "liquidation_event",
+        "redemption_tx",
+        "native_XRP_sale_tx"
+      ],
+      "admission_status": "STRUCTURAL_ELIGIBILITY_ONLY; posted amount unknown; no predictive feature admitted"
+    },
+    {
+      "id": "DEC-CIRCLE-ARC-RAIL-SEPARATION",
+      "rule": "Model Arc as a parallel Circle institutional rail with explicit SBI, Coinbase and Morpho participation; do not merge Arc activity with XRPL activity.",
+      "rationale": "Arc uses USDC gas and a permissioned validator cohort; Circle USDC also has a separate XRPL deployment.",
+      "admission_status": "RELATIONSHIP_GRAPH_ONLY; actual settlement flows and substitution effects unknown"
+    },
+    {
+      "id": "DEC-EXCHANGE-RESERVE-UNIVERSE",
+      "rule": "Preserve CryptoQuant, XRP Insights and official exchange PoR as separate time series with explicit wallet universe, snapshot date, wrapped-reserve inclusion and customer-liability scope.",
+      "rationale": "XRP Insights reports Binance 2.58B and Coinbase 5.84B across public labeled wallets; these include 327.4M Binance-Peg and 151.4M cbXRP backing reserves. These figures are not directly comparable to narrower exchange reserve series or official PoR.",
+      "admission_status": "NO_SYNTHETIC_EXCHANGE_RESERVE_FEATURE"
+    },
+    {
+      "id": "DEC-BINANCE-INCIDENT-CAUSALITY",
+      "rule": "Treat the 233.46M XRP incident and reported reserve declines as a causal hypothesis until source wallet membership, provider coverage and same-time customer liabilities are reconciled.",
+      "disconfirming_evidence_required": [
+        "all five source wallet crosswalks",
+        "provider wallet set version",
+        "same-time reserve balances",
+        "same-time customer liabilities",
+        "other inflows/outflows",
+        "wrapped-reserve adjustments"
+      ],
+      "admission_status": "EVENT_STUDY_CANDIDATE_ONLY"
+    },
+    {
+      "id": "DEC-DERIVATIVES-PROVIDER-SEPARATION",
+      "rule": "Keep TradRadar contract/exchange aggregation as a provider-specific series; never infer notional positioning from account ratios.",
+      "admission_status": "RAW_OBSERVATION_ONLY"
+    },
+    {
+      "id": "DEC-SBIC-IDENTITY",
+      "rule": "Resolve SBIC in the current ChatGPT context to Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; preserve Social Bias Inference Corpus as a distinct research-dataset meaning.",
+      "admission_status": "IDENTITY_AND_EVENT_CONFIRMED; no partnership inference"
+    },
+    {
+      "id": "DEC-PREDICTION-GATE",
+      "rule": "Do not issue directional XRP probabilities until fixed-horizon outcomes, point-in-time features, walk-forward baselines, calibration and shadow evaluation pass.",
+      "admission_status": "NOT_ISSUED"
+    },
+    {
+      "id": "DEC-TOKEN-ROTATION-SECURITY",
+      "rule": "Disable token rotation via workflow_dispatch inputs. Never pass credentials through event inputs or interpolate untrusted inputs into shell. Use approved secret-management interfaces; this workflow must not set secrets or dispatch deployments.",
+      "implementation_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1398",
+      "verification": "Exact-head CI 41176897933 passed 344 tests plus 8 subtests; fail-closed gate 41176897925 passed with merging disabled.",
+      "admission_status": "DESIGNED_AND_EXECUTED_IN_DRAFT_PR; UNMERGED"
+    }
+  ],
+  "platform_coordination": {
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "status": "DESIGNED_NOT_EXECUTED",
+    "authenticated_external_platforms": 0,
+    "live_external_collaborators_verified": 0,
+    "verified_handoffs": 0,
+    "github_connector": "VERIFIED_READ_AND_PR_BRANCH_WRITE; NO_MAIN_WRITE"
+  },
+  "repository_safety": {
+    "main_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+    "main_mutated": false,
+    "protected_flag": true,
+    "required_status_check_contexts": [],
+    "detailed_protection": "NOT_ACCESSIBLE_403",
+    "workflow_review": "24_TARGETED_FILES_OF_77_ACTIVE_YAML_FILES; NOT_EXHAUSTIVE",
+    "manual_main_writer_workflows": "PRESENT; NOT_DISPATCHED",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN"
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Crosswalk the five Binance incident source wallets to XRP Insights, CryptoQuant and official PoR wallet universes.",
+    "Obtain fresh raw XRPL account_info and transaction history for the incident receiver.",
+    "Obtain the post-incident Binance PoR and compare same-time customer liabilities and reserve balances.",
+    "Retrieve Coinbase Global Exchange per-asset collateral haircuts and any public API balances if available.",
+    "Execute Morpho public API ingestion with pagination, block timestamp, market IDs and collateral/debt reconciliation.",
+    "Trace cbXRP liquidation recipients through unwrap and any native XRP sale.",
+    "Build fixed-horizon XRP event study with BTC/ETH controls and immutable point-in-time snapshots.",
+    "Extend workflow audit to all active workflows, especially manual main writers and scheduled issue/PR mutation paths."
+  ]
+}
