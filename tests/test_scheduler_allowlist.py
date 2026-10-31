@@ -29,6 +29,7 @@ def test_scheduler_allows_only_reviewed_unattended_validation_workflows(tmp_path
         "release.yml",
         "formal-verification-benchmarks.yml",
         "sindy-mcp-cicd.yml",
+        "barrot-bundle-operational-smoke.yml",
     }
     _prepare_workflows(tmp_path, monkeypatch, names)
 
@@ -76,13 +77,13 @@ def test_tick_marks_disallowed_pending_entry_failed_without_dispatch(tmp_path, m
 
 
 def test_tick_still_dispatches_an_allowlisted_validation_workflow(tmp_path, monkeypatch):
-    _prepare_workflows(tmp_path, monkeypatch, {"barrot-bundle-operational-smoke.yml"})
+    _prepare_workflows(tmp_path, monkeypatch, {"barrot-controlled-feature-validation.yml"})
     queue = tmp_path / "schedule_queue.jsonl"
     queue.write_text(
         json.dumps({
             "id": "safe0001",
-            "workflow": "barrot-bundle-operational-smoke.yml",
-            "inputs": {},
+            "workflow": "barrot-controlled-feature-validation.yml",
+            "inputs": {"pr_number": "1225", "expected_head_sha": "0123456789abcdef0123456789abcdef01234567"},
             "run_after": "2026-10-30T00:00:00Z",
             "status": "pending",
         }) + "\n",
@@ -97,7 +98,7 @@ def test_tick_still_dispatches_an_allowlisted_validation_workflow(tmp_path, monk
     updated = json.loads(queue.read_text(encoding="utf-8").splitlines()[0])
     assert updated["status"] == "done"
     dispatch.assert_called_once_with(
-        ["gh", "workflow", "run", "barrot-bundle-operational-smoke.yml"],
+        ["gh", "workflow", "run", "barrot-controlled-feature-validation.yml", "-f", "pr_number=1225", "-f", "expected_head_sha=0123456789abcdef0123456789abcdef01234567"],
         capture_output=True,
         text=True,
     )
@@ -107,3 +108,9 @@ def test_scheduler_tick_serializes_concurrent_dispatch_runs():
     root = Path(__file__).resolve().parents[1]
     workflow = (root / ".github" / "workflows" / "scheduler-tick.yml").read_text(encoding="utf-8")
     assert "concurrency:\n  group: barrot-scheduler-tick\n  cancel-in-progress: false" in workflow
+
+
+def test_operational_smoke_does_not_persist_checkout_credentials():
+    root = Path(__file__).resolve().parents[1]
+    workflow = (root / ".github" / "workflows" / "barrot-bundle-operational-smoke.yml").read_text(encoding="utf-8")
+    assert "persist-credentials: false" in workflow
