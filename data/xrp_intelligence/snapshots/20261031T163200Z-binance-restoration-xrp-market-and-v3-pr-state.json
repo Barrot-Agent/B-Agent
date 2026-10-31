@@ -211,5 +211,10 @@
     "Reconcile Liqwall, TradRadar, Kodexius and Alpha OI contract universes.",
     "Continue leakage-safe fixed-horizon walk-forward benchmarking and calibration."
   ],
-  "safety": "Public-source research only. No trading, account access, manual workflow dispatch, merge, deployment or main-branch write."
+  "safety": "Public-source research only. No trading, account access, manual workflow dispatch, merge, deployment or main-branch write.",
+  "index_format_version": "3.0",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T163200Z-binance-restoration-xrp-market-and-v3-pr-state.json",
+  "revision": 2,
+  "supersedes_blob_sha": "5db6a54ecad914a211590215166f3cec0b51045e",
+  "revision_reason": "Added the required self-identifying snapshot_path and index_format_version fields before publishing the ledger pointer; evidence and claims are unchanged."
 }
