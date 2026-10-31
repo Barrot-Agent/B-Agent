@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-SBI-DCA-ASSET-COUNT-AND-BIZ-CARD-CAMPAIGN-20261031",
+  "captured_at_utc": "2026-10-31T17:22:22Z",
+  "sources": [
+    {
+      "publisher": "SBI VC Trade",
+      "url": "https://www.sbivc.co.jp/services/tsumitate",
+      "claim": "The previously captured official page version listed 28 eligible accumulation assets."
+    },
+    {
+      "publisher": "SBI VC Trade",
+      "url": "https://home.sbivc.co.jp/services/tsumitate",
+      "claim": "The current home subdomain page lists 31 eligible assets, including XRP and JPYSC; JPY 500–2,000,000 per order; daily/weekly/monthly; daily 10:00 JST, weekly Tuesday 10:00 JST, monthly 28th 10:00 JST; next-business-day start; requires JPY prefunding and does not support automatic bank debit."
+    },
+    {
+      "publisher": "SBI VC Trade",
+      "url": "https://home.sbivc.co.jp/campaigns",
+      "claim": "A separate SBI VISA Crypto Card BIZ campaign runs October 1 through November 30, 2026 for applications, with card issuance by December 31 and eligible spend through January 5, 2027."
+    },
+    {
+      "publisher": "SBI VC Trade",
+      "url": "https://home.sbivc.co.jp/cryptocard",
+      "claim": "The standard consumer card converts points into crypto automatically; Standard earns 1 point per JPY 200 (0.5%) and Gold 2 points per JPY 200 (1.0%), with BTC/ETH/XRP asset selection."
+    }
+  ],
+  "dca_asset_count_conflict": {
+    "www_sbivc_co_jp_page_count": 28,
+    "home_sbivc_co_jp_page_count": 31,
+    "status": "OFFICIAL_HOST_VERSION_CONFLICT; DO_NOT_USE_SINGLE_ASSET_COUNT_AS_FEATURE",
+    "common_confirmed_mechanics": {
+      "xrp_eligible": true,
+      "min_jpy_per_order": 500,
+      "max_jpy_per_order": 2000000,
+      "frequencies": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY"
+      ],
+      "requires_prefunded_jpy": true,
+      "automatic_bank_debit": false
+    },
+    "published_order_schedule_jst": {
+      "daily": "10:00 onward",
+      "weekly": "Tuesday 10:00 onward",
+      "monthly": "28th 10:00 onward"
+    },
+    "start_rule": "Orders begin at the first scheduled order time on or after the next business day following enrollment.",
+    "caveat": "Configured plans can be skipped if available JPY or other platform conditions are insufficient; no XRP-specific plan count or execution volume is disclosed."
+  },
+  "biz_card_campaign": {
+    "separate_from_consumer_card": true,
+    "application_period_jst": "2026-10-01 through 2026-11-30",
+    "card_issuance_deadline": "2026-12-31",
+    "eligible_spend_period": "2026-10-01 through 2027-01-05",
+    "reward_delivery_target": "By 2027-02",
+    "reward_asset_choices": [
+      "BTC",
+      "ETH",
+      "XRP"
+    ],
+    "standard_signup_reward_jpy_equivalent": 1000,
+    "gold_signup_reward_jpy_equivalent": 1500,
+    "standard_spend_rewards": [
+      {
+        "spend_jpy": 500000,
+        "reward_jpy": 5000
+      },
+      {
+        "spend_jpy": 1000000,
+        "reward_jpy": 10000
+      }
+    ],
+    "gold_spend_rewards": [
+      {
+        "spend_jpy": 1000000,
+        "reward_jpy": 15000
+      },
+      {
+        "spend_jpy": 2000000,
+        "reward_jpy": 30000
+      }
+    ],
+    "maximum_gold_campaign_reward_jpy_equivalent": 31500,
+    "ordinary_reward_rates": {
+      "standard_pct": 0.5,
+      "gold_pct": 1
+    },
+    "status": "APPLICATION_WINDOW_OPEN_AT_CAPTURE; REWARD_ASSET_SELECTION_AND PARTICIPANT COUNTS UNKNOWN"
+  },
+  "capital_interpretation": "DCA is a customer-funded purchase mechanism but actual XRP fills and execution source are unknown. Card rewards and campaign bonuses are reward distributions, not proof of external XRP purchases or net new capital.",
+  "feature_admission": "PRODUCT_MECHANICS_ONLY; NO_DIRECTIONAL PRICE FEATURE",
+  "pending_archive_append": true
+}
