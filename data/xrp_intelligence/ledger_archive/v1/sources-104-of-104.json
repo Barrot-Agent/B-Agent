@@ -5,7 +5,7 @@
   "array_name": "sources",
   "chunk_index": 103,
   "chunk_count": 104,
-  "record_count": 13,
+  "record_count": 14,
   "records": [
     {
       "id": "SRC-20261031-COINBASE-GLOBAL-XRP-COLLATERAL-0632Z",
@@ -175,6 +175,19 @@
       "independence_group": "github_repository",
       "summary": "The workflow directory contained 77 active YAML files. A targeted read-only review inspected 24 high-risk candidates. rotate-databricks-token.yml accepted new_token and interpolated it directly into a shell command invoking gh secret set, then attempted a workflow dispatch; PR #1398 disables this path. Several manual workflow_dispatch jobs still have contents:write and git-push behavior; no such workflow was dispatched.",
       "limitations": "Targeted 24-file review is not an exhaustive audit of all 77 active workflows. Scheduled issue/PR mutation workflows and manual repository writers require separate scoped review. No workflow execution or secret access occurred."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z",
+      "source_id": "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z",
+      "publisher": "GitHub Actions",
+      "title": "B-Agent approval workflow push-event failure with zero jobs — run 41177228657",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41177228657",
+      "published_at": "2026-10-31T06:35:17Z",
+      "retrieved_at_utc": "2026-10-31T06:38:00Z",
+      "evidence_class": "PRIMARY_GITHUB_ACTIONS_EXECUTION_RECORD",
+      "independence_group": "github_repository",
+      "summary": "A push-event run of the approval workflow completed as failure with zero jobs returned. The inspected workflow declares workflow_dispatch only. No job logs exist; root cause remains unknown.",
+      "limitations": "No job executed and no repository mutation is evidenced. Do not attribute the failure to YAML syntax, permissions or a specific GitHub service defect without further evidence."
     }
   ]
 }
