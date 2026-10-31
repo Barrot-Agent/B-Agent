@@ -16,7 +16,8 @@ def test_xrp_ledger_validator_is_read_only_and_branch_scoped():
     assert "gh workflow run" not in WORKFLOW
     assert "persist-credentials: false" in WORKFLOW
     assert "research/xrp-ledger-shard-migration-20261029T2210Z" in WORKFLOW
-    assert "research/xrp-ledger-index-pointer-migration" in WORKFLOW
+    assert "research/xrp-ledger-index-pointer-migration-20261028T1959Z" in WORKFLOW
+    assert "research/xrp-ledger-index-pointer-migration\n" not in WORKFLOW
 
 
 def test_xrp_ledger_validator_pins_test_runner_and_checks_actual_archive():
