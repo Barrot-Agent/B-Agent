@@ -1,0 +1,133 @@
+{
+  "record_type": "repository_audit_snapshot",
+  "schema_version": "1.0",
+  "audit_id": "AUDIT-20261031T083758Z-PR1400-REGISTRY-PR1401-PR1402-XRP-MARKET",
+  "captured_at_utc": "2026-10-31T08:37:58Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+  "source_reference_count": 14,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-GH-MAIN-CROSS-ANALYSIS-075151Z",
+    "SRC-20261031-GH-PR1401-CROSS-ANALYSIS-READONLY",
+    "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP",
+    "SRC-20261031-GH-PR1400-FORECAST-LEDGER-SOURCE-REGISTRY",
+    "SRC-20261031-GH-PR1353-LEDGER-VALIDATOR-RECOVERY",
+    "SRC-20261031-BINANCE-SECURITY-UPDATE2-POR",
+    "SRC-20261031-COINDESK-POR-SNAPSHOT-NOV1",
+    "SRC-20261031-COINDESK-POR-FULL-REPORT-NOV2",
+    "SRC-20261031-BITQUERY-BINANCE-HACK-XRP-RECEIVER-0643Z",
+    "SRC-20261031-TRADRADAR-XRP-DERIVATIVES-0750Z",
+    "SRC-20261031-KODEXIUS-XRP-DERIVATIVES-0644Z",
+    "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+    "SRC-20261031-COINCODEX-XRP-HISTORICAL-OCT31",
+    "SRC-20261031-COINGECKO-XRP-HISTORICAL-OCT30"
+  ],
+  "main_commit": {
+    "sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "message": "Cross-analysis refresh [skip ci]",
+    "author_date": "2026-10-31T07:51:51Z",
+    "signed": false,
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "diff": "Only generated_at changed. Scheduled run 41182259549 created 3,217 entity pairs and 990 entity profiles; sentiment shift reported XRP n=0 and BTC n=0 in both windows."
+  },
+  "root_cause": {
+    "cross_analysis_main_writer": "Workflow declares contents:write and explicitly git add/commit/pushes generated files to main.",
+    "approval_zero_job": "PR #1402 now verifies a push no-op job on its branch; manual dispatch approval path remains untested."
+  },
+  "pull_request_inventory": {
+    "total_open": 176,
+    "drafts": 166,
+    "ready_for_review": 10,
+    "main_based": 174,
+    "current_main_base": 2,
+    "stale_main_base": 172,
+    "non_main_base": 2,
+    "total_count_rechecked_at_utc": "2026-10-31T08:37:58Z",
+    "base_breakdown_captured_at_utc": "2026-10-31T08:24:52Z"
+  },
+  "pr1400": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1400",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "head_sha": "005b03e73a22778fe384af14f477969b2eaba503",
+    "merge_base_sha": "b28f43c907517e939e299e8766e2ebe655a0df13",
+    "current_main_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "compare": "2_AHEAD_1_BEHIND; MERGEABLE_TRUE",
+    "ci_run_id": 41185194437,
+    "tests_passed": 370,
+    "subtests_passed": 8,
+    "gate_run_id": 41185194439,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "change": "Optional source_registry membership checks; NOT_CHECKED when no registry supplied.",
+    "remaining": "No concurrency lock, training, walk-forward or drift detection."
+  },
+  "pr1401": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1401",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "base_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "head_sha": "275ca3b3856db4324e89f9adb46225f1a2772956",
+    "ci_run_id": 41183168254,
+    "tests_passed": 345,
+    "subtests_passed": 8,
+    "gate_run_id": 41183168176,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "change": "Read-only analysis artifacts; no repository push.",
+    "limitation": "No tracked web refresh or GitHub Pages deployment."
+  },
+  "pr1402": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1402",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "base_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "head_sha": "da31a8392fa4f9acd09a55dff77ba7892f143751",
+    "ci_run_id": 41184451373,
+    "tests_passed": 342,
+    "subtests_passed": 8,
+    "gate_run_id": 41184451359,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "push_run_id": 41184448544,
+    "push_job_status": "SUCCESS",
+    "approval_job_status": "SKIPPED",
+    "manual_dispatch_tested": false
+  },
+  "pr1353": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1353",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "current_branch_head": "ce75aba8a2c95ed50be5433acef8eba31876c4ae",
+    "last_verified_data_head": "ac1b479d5418b87dae1ab389a030eb235854fb6b",
+    "failed_run_id": 41184340974,
+    "failed_reason": "latest_snapshot.index_format_version missing",
+    "successful_validator_run_id": 41184590640,
+    "tests_passed": 20,
+    "shards_checked": 361,
+    "gate_run_id": 41184594225,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "current_head_validation": "PENDING"
+  },
+  "workflow_safety": {
+    "cross_analysis_main_write_active": true,
+    "approval_push_noop_verified_on_pr_branch": true,
+    "manual_approval_dispatch_tested": false,
+    "scheduled_scheduler_queue_writer_remains_active": true,
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "dependency_lockfile_inventory": "PARTIAL_PRIOR_AUDIT_NO_LOCKFILE_FOUND"
+  },
+  "platform_coordination": {
+    "platforms_designed": 9,
+    "platforms_authenticated_external": 0,
+    "platforms_live_external_collaborators": 0,
+    "verified_handoffs": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "safety": {
+    "main_changed_by_this_run": false,
+    "main_changed_by_scheduled_workflow": true,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "manual_workflow_dispatch_performed": false,
+    "paper_position_mutated": false,
+    "real_money_trade_performed": false
+  }
+}
