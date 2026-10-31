@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_ledger_bridge_manifest",
+  "manifest_id": "XRP-LEDGER-BRIDGE-20261031T052000Z",
+  "created_at_utc": "2026-10-31T05:20:00Z",
+  "bridge_scope": "This fresh-main PR carries a bounded Binance XRP reserve/issuer-freeze crosswalk and a pointer to the full research archive. It does not copy or merge the full 340-shard archive.",
+  "current_main_sha": "ab053b0fc9714ef7fe368636a1fd3f6b02aab85c",
+  "bridge_branch": "research/xrp-reserve-reconciliation-bridge-20261031T0520Z",
+  "original_archive": {
+    "branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "head_sha": "5f22bbf363b3f0f9617770837b34ac0cf5200e85",
+    "pr_number": 1353,
+    "pr_state": "OPEN_DRAFT_UNMERGED",
+    "compare_status": "diverged",
+    "ahead_by": 1185,
+    "behind_by": 351,
+    "pr_metadata_mergeable": true,
+    "merge_safety_decision": "DO_NOT_MERGE_AS_IS",
+    "exact_head_validation": {
+      "validator_run_id": 41171765853,
+      "gate_run_id": 41171765729,
+      "archive_shards": 340,
+      "sources": 1887,
+      "run_updates": 327,
+      "limitations": 812,
+      "tests_passed": 20,
+      "missing_source_references": 0,
+      "validator_status": "PASS",
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    "preserve_original_branch": true,
+    "rebase_or_force_push_prohibited": true
+  },
+  "latest_bridge_artifacts": {
+    "snapshot": "data/xrp_intelligence/snapshots/20261031T052000Z-binance-reserve-stablecoin-freeze-reconciliation.json",
+    "graph": "data/xrp_intelligence/relationship_graph_addenda/20261031T052000Z-binance-reserve-stablecoin-issuer-graph.json",
+    "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261031T052000Z-xrp-reserve-crosswalk-and-ledger-migration.json"
+  },
+  "migration_plan": {
+    "phase": "BRIDGE_ONLY",
+    "full_archive_copied_to_main": false,
+    "next_step": "After review, create a separate fresh-main archival-import PR using a complete path-collision audit and Git tree/blob references to copy the exact referenced archive files without replaying the old branch's 1,185 commits.",
+    "no_force_push": true,
+    "no_rebase_of_original_branch": true,
+    "no_merge_without_user_approval": true
+  },
+  "prediction_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "external_platform_status": {
+    "designed": 9,
+    "authenticated_external": 0,
+    "verified_live_collaborators": 0
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "manual_workflow_dispatch_performed": false,
+    "real_money_trade_performed": false
+  }
+}
