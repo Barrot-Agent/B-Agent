@@ -5,7 +5,7 @@
   "array_name": "sources",
   "chunk_index": 103,
   "chunk_count": 104,
-  "record_count": 14,
+  "record_count": 15,
   "records": [
     {
       "id": "SRC-20261031-COINBASE-GLOBAL-XRP-COLLATERAL-0632Z",
@@ -188,6 +188,19 @@
       "independence_group": "github_repository",
       "summary": "A push-event run of the approval workflow completed as failure with zero jobs returned. The inspected workflow declares workflow_dispatch only. No job logs exist; root cause remains unknown.",
       "limitations": "No job executed and no repository mutation is evidenced. Do not attribute the failure to YAML syntax, permissions or a specific GitHub service defect without further evidence."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-OPEN-PR-INVENTORY-0642Z",
+      "source_id": "SRC-20261031-GITHUB-OPEN-PR-INVENTORY-0642Z",
+      "publisher": "GitHub",
+      "title": "B-Agent open pull-request inventory and base-SHA drift",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pulls",
+      "published_at": "2026-10-31T06:42:00Z",
+      "retrieved_at_utc": "2026-10-31T06:42:00Z",
+      "evidence_class": "PRIMARY_GITHUB_PULL_REQUEST_API_SNAPSHOT",
+      "independence_group": "github_repository",
+      "summary": "REST pagination returned 173 open PRs: 163 drafts and 10 ready for review. 171 target main, 169 of those have a base SHA older than current main 33a490e2793f2c4250c7b370d4cc7cf308dbf6fe; only two main-based PRs target the current main SHA. Two PRs target non-main bases.",
+      "limitations": "Point-in-time repository inventory. Base SHA drift does not by itself prove conflicts, but requires fresh comparison and exact-head validation before merge consideration."
     }
   ]
 }
