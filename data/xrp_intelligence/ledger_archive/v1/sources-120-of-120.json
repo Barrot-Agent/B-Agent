@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 119,
+  "chunk_count": 120,
+  "record_count": 4,
+  "created_at_utc": "2026-10-31T12:36:52Z",
+  "records": [
+    {
+      "id": "SRC-20261031T123652Z-BINANCE-POR-PAGE-STATUS",
+      "url": "https://www.binance.com/en/proof-of-reserves",
+      "title": "Binance Proof of Reserves page — rendered public metadata at 2026-10-31T12:31Z",
+      "publisher": "Binance",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T12:31:30Z",
+      "evidence_type": "OFFICIAL_PAGE_RENDER_OBSERVATION",
+      "independence_group": "binance_official",
+      "status": "VERIFIED",
+      "notes": "Rendered page exposed blank Audit Time, Verification Mechanism, Merkle Root Hash and address-download metadata at retrieval. Binance Security Incident Update #2 had announced an initial snapshot within 12 hours of 2026-10-30 19:33 UTC (target approximately 2026-10-31 07:33 UTC) and results by 2026-11-02. The target elapsed by retrieval. Blank rendered fields do not prove no snapshot was taken; dynamic rendering or publication lag remain alternatives. No token-level XRP reserve result was verified."
+    },
+    {
+      "id": "SRC-20261031T123652Z-GITHUB-PR1412-SCHEDULER-QUARANTINE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1412",
+      "title": "PR #1412 — Fresh-main read-only scheduler queue quarantine",
+      "publisher": "GitHub / Barrot-Agent/B-Agent",
+      "published_at_utc": "2026-10-31T12:34:10Z",
+      "retrieved_at_utc": "2026-10-31T12:36:52Z",
+      "evidence_type": "REPOSITORY_SECURITY_FIX_AND_CI_EVIDENCE",
+      "independence_group": "github_repository",
+      "status": "VERIFIED",
+      "notes": "Draft/open/unmerged; base main SHA c779b26c68e7e3f0fa50dd99cc2f03c58e198148; head 06d71140cc4370d66f2b147901224d1143b3c8b1. Replaces scheduler tick/dispatch/main queue writes with read-only queue listing and bounded artifact upload; checkout credentials disabled; contents:read only. Exact-head CI run 41201696996: 344 tests and 8 subtests passed, including both scheduler safety assertions. Fail-closed gate 41201697094 passed with merging disabled. The scheduled audit workflow itself was not manually dispatched."
+    },
+    {
+      "id": "SRC-20261031T123652Z-GITHUB-MAIN-PR-INVENTORY",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/pulls?state=open",
+      "title": "Live open pull-request inventory at 2026-10-31T12:36:52Z",
+      "publisher": "GitHub REST API / Barrot-Agent/B-Agent",
+      "published_at_utc": "2026-10-31T12:36:52Z",
+      "retrieved_at_utc": "2026-10-31T12:36:52Z",
+      "evidence_type": "LIVE_REPOSITORY_READ_AUDIT",
+      "independence_group": "github_repository",
+      "status": "VERIFIED",
+      "notes": "185 open PRs: 175 drafts and 10 ready. 183 target main; 181 have stale base SHAs; two are based on current main c779b26: #1411 and #1412. Two PRs target non-main bases. Counts were obtained from both pages of the GitHub REST open-pulls listing and the current main branch endpoint."
+    },
+    {
+      "id": "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/scheduler-tick.yml",
+      "title": "Main scheduler workflow, implementation and queue audit",
+      "publisher": "GitHub / Barrot-Agent/B-Agent",
+      "published_at_utc": "2026-10-31T12:36:52Z",
+      "retrieved_at_utc": "2026-10-31T12:36:52Z",
+      "evidence_type": "REPOSITORY_SECURITY_AUDIT",
+      "independence_group": "github_repository",
+      "status": "VERIFIED",
+      "notes": "On main c779b26, scheduler-tick.yml grants contents:write and actions:write, supplies GITHUB_TOKEN as GH_TOKEN, runs scripts/scheduler.py tick and commits/pushes schedule_queue.jsonl to main. scripts/scheduler.py _valid_workflow accepts any file present in .github/workflows; there is no reviewed allowlist. The queue contained one historical entry with status done and zero pending entries. The workflow can dispatch existing workflow files if a due queue entry is present; no dispatch was performed during this audit."
+    }
+  ]
+}
