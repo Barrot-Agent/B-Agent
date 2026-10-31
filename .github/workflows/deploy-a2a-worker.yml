@@ -1,19 +1,36 @@
 name: Deploy A2A Worker
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'a2a/**'
   workflow_dispatch:
+    inputs:
+      confirm_external_deploy:
+        description: "Select YES only after the deployment has been explicitly approved."
+        required: true
+        default: NO
+        type: choice
+        options:
+          - NO
+          - YES
+
+permissions:
+  contents: read
+
+concurrency:
+  group: barrot-production-deploy
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    if: github.event_name == 'workflow_dispatch' && inputs.confirm_external_deploy == 'YES'
+    environment: barrot-production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
-      - name: Deploy Worker (creates the script first)
+      - name: Deploy Worker
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -21,7 +38,7 @@ jobs:
           workingDirectory: a2a
           command: deploy
 
-      - name: Upload secrets (script now exists)
+      - name: Upload secrets after deployment
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
