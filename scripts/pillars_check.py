@@ -21,9 +21,9 @@ def check_github():
     import jwt
     now = int(time.time())
     token = jwt.encode({"iat": now - 60, "exp": now + 300, "iss": app_id}, priv, algorithm="RS256")
-    r = requests.post(f"https://api.github.com/app/installations/{inst}/access_tokens",
+    r = requests.get(f"https://api.github.com/app/installations/{inst}",
         headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}, timeout=15)
-    return r.status_code == 201, f"HTTP {r.status_code}"
+    return r.status_code == 200, f"HTTP {r.status_code}"
 
 def check_databricks():
     host, token, wh = os.getenv("DATABRICKS_HOST"), os.getenv("DATABRICKS_TOKEN"), os.getenv("DATABRICKS_WAREHOUSE_ID")

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_security_audit",
+  "audit_id": "PUBLIC-SUBSCRIBER-HASH-EXPOSURE-20261031T185300Z",
+  "captured_at_utc": "2026-10-31T18:53:00Z",
+  "observed_default_branch_head": "97546c3f47bf64cb52956fab306f0a2d6fe473ce",
+  "repository_visibility": "PUBLIC",
+  "findings": [
+    {
+      "id": "SUBSCRIBER-HASH-PUBLIC-EXPOSURE",
+      "severity": "HIGH_IF_POPULATED",
+      "status": "LATENT_RISK_CURRENT_FILE_EMPTY",
+      "evidence": [
+        {
+          "path": ".github/workflows/subscriber_sync.yml",
+          "blob_sha": "584fd4e8c064fa49316b0968f0f9158119969b38",
+          "claims": [
+            "Hourly schedule at 30 minutes past each hour",
+            "No explicit workflow permissions block",
+            "Reads Gumroad sales using GUMROAD_ACCESS_TOKEN",
+            "Normalizes purchaser email and stores SHA-256(email) values in web/subscribers.json",
+            "Commits and pushes web/subscribers.json to main"
+          ]
+        },
+        {
+          "path": "web/subscribers.json",
+          "blob_sha": "03b1293765cb89c152aa1a06c56c3cb67c327cea",
+          "claims": [
+            "Public file currently contains keys emails and count",
+            "Current count is 0 and emails array length is 0; no hashes are currently exposed in this snapshot"
+          ]
+        },
+        {
+          "path": "web/signals.html",
+          "blob_sha": "18f5f53b6a6e79831cf2cb6890908b464a06bab4",
+          "claims": [
+            "Browser fetches subscribers.json",
+            "Browser computes SHA-256 of a user-entered email and compares it to the public emails array"
+          ]
+        },
+        {
+          "path": "",
+          "blob_sha": "",
+          "claims": [
+            "GitHub repository metadata reports visibility public at the observed head."
+          ]
+        }
+      ],
+      "risk": "If populated, the public repository/site exposes unsalted deterministic SHA-256 hashes of customer email addresses. Email addresses have a constrained search space, so an attacker can dictionary/hash common addresses and infer membership. A hash is not anonymization in this design.",
+      "current_exposure": "NONE_OBSERVED_AT_CAPTURE; current public JSON has zero entries.",
+      "product_dependency": "The public signals page uses this list for client-side subscriber membership verification. Removing the list without a replacement would break the current gate.",
+      "remediation": "Move membership verification to an authenticated server-side endpoint using a secret-keyed HMAC or payment-provider verification. Never ship the key or a subscriber-hash list to the browser. Rate-limit and minimize logs; publish only aggregate counts if needed.",
+      "decision": "NO_CODE_CHANGE_IN_THIS_PR. A secure endpoint host, secret storage and product behavior decision are not established. Do not disable the workflow or membership gate without a reviewed replacement.",
+      "classification": "CONFIRMED_CODE_PATH_AND_PUBLIC_REPO; FUTURE_HASH_EXPOSURE_RISK; CURRENT_FILE_EMPTY"
+    }
+  ],
+  "next_action": "Design and test a server-side subscriber verification endpoint or a provider-signed verification flow before changing subscriber_sync or web/signals.html."
+}

@@ -15,9 +15,9 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
 
@@ -79,4 +79,9 @@ jobs:
             tests/test_autonomous_real_bundle.py \
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
+            tests/test_cross_analysis_workflow_safety.py \
+            tests/test_scheduler_queue_workflow_safety.py \
+            tests/test_databricks_token_rotation_safety.py \
+            tests/test_scheduled_main_writer_quarantine.py \
+            tests/test_pillars_check_readonly.py \
             -v --no-cov
