@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-INTERNAL-CONFLICT-20261031",
+  "captured_at_utc": "2026-10-31T17:20:43Z",
+  "source_url": "https://xrp-insights.com/exchange-balances",
+  "source_publisher": "XRP Insights",
+  "underlying_balance_snapshot_utc": "2026-10-31T08:00:00Z",
+  "status": "SOURCE_INTERNAL_CONFLICT_UNRESOLVED; DO_NOT_SELECT_SINGLE_VALUE",
+  "conflicting_displayed_values": {
+    "exchange_table_row_binance_peg_reserve_xrp": 327400000,
+    "wrapped_asset_reserves_methodology_note_binance_peg_xrp": 325800000
+  },
+  "provider_stated_total_non_customer_reserve_operational_xrp": 487200000,
+  "arithmetic": {
+    "narrative_value_plus_cbxrp_plus_insurance_charity": 487200000,
+    "table_value_plus_cbxrp_plus_insurance_charity": 488800000,
+    "narrative_sum_matches_provider_total": true,
+    "table_sum_exceeds_provider_total_by_xrp": 1600000
+  },
+  "interpretation": "The same page's exchange table says 327.4M XRP while its wrapped-asset reserves methodology paragraph says 325.8M. The stated 487.2M aggregate reconciles with 325.8M + 150.2M + 11.2M, not with 327.4M. This is an internal page inconsistency, not evidence of an on-chain 1.6M XRP movement. Preserve both values until the provider clarifies or an address-level reserve crosswalk resolves it.",
+  "source_independence": "One provider page; no independent confirmation of either Binance-Peg reserve value.",
+  "pending_archive_append": true,
+  "market_feature_admission": "CUSTODY_AND_RESERVE_CONTEXT_ONLY; NOT_TRADABLE_FLOAT; NO_DIRECTIONAL_FEATURE"
+}
