@@ -1,0 +1,281 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "XRP-202610311448Z-BINANCE-RECOVERY3-SBI-CARD-AND-V3-AUDIT",
+  "captured_at_utc": "2026-10-31T14:48:24.128Z",
+  "data_cutoff_utc": "2026-10-31T14:48:24.128Z",
+  "observed_research_head": "b945d0054a1acabb95ae3be4a20b4d309c6bc0e3",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "source_ids": [
+    "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+    "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+    "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU",
+    "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER",
+    "SRC-202610311448Z-SBI-RLUSD-LISTING",
+    "SRC-202610311448Z-REUTERS-COINBASE-KEY-HARDENING",
+    "SRC-202610311448Z-GITHUB-PR-WORKFLOW-AUDIT"
+  ],
+  "binance_recovery_update3": {
+    "published_at_utc": "2026-10-31T14:24:00Z",
+    "new_por_snapshot_utc": "2026-10-31T00:00:00Z",
+    "aggregate_coverage_percent_claimed": 90,
+    "previous_coverage_percent_claimed": 80,
+    "top_ten_assets_claimed_at_least_1_to_1": [
+      "BTC",
+      "ETH",
+      "USDT",
+      "BNB",
+      "SOL",
+      "USDC",
+      "XRP",
+      "USD1",
+      "RLUSD",
+      "ZEC"
+    ],
+    "remaining_10_percent": "Less-liquid tokens outside the ten named assets, according to Binance; exact token list and USD amount undisclosed.",
+    "xrp": {
+      "coverage_claim": "AT_LEAST_1_TO_1_BY_COMPANY_STATEMENT",
+      "full_zk_proof_available_at_capture": false,
+      "proof_eta": "2026-11-03",
+      "xrp_units_replenished": "UNKNOWN",
+      "spot_purchase_usd": "UNKNOWN",
+      "otc_purchase_usd": "UNKNOWN",
+      "source_wallet_crosswalk_complete": false,
+      "customer_liability_units_extracted": false
+    },
+    "funding": {
+      "partial_safu": "ANNOUNCED; PARTIAL DEPLOYMENT EXPECTED WITHIN 24 HOURS OF UPDATE",
+      "futures_insurance_fund": "BINANCE SAYS A PORTION WAS USED; EXACT BALANCE UNKNOWN",
+      "corporate_treasury": "BINANCE SAYS USED; TOKEN ALLOCATION UNKNOWN",
+      "safu_replenishment_target_usd": "APPROXIMATELY 1 BILLION"
+    },
+    "withdrawal_target": "2026-11-01; not verified complete",
+    "interpretation": "XRP is included in Binance's named top-ten assets claimed at least 1:1 coverage. This reduces the immediate company-claimed XRP customer-custody shortfall concern, but does not prove XRP-specific spot buying or independent reserve verification."
+  },
+  "sbi_current_crypto_card": {
+    "application_window": "2026-09-01 through 2026-10-31 JST",
+    "deadline_utc": "2026-10-31T14:59:00Z",
+    "card_issue_deadline": "2026-11-30",
+    "eligible_spend_through": "2026-12-05",
+    "reward_delivery_target": "2027-02-28",
+    "crypto_options": [
+      "BTC",
+      "ETH",
+      "XRP"
+    ],
+    "one_asset_per_card": true,
+    "base_rewards": {
+      "standard": "JPY 1 equivalent per JPY 200 spend",
+      "gold": "JPY 2 equivalent per JPY 200 spend"
+    },
+    "monthly_conversion": "Points for 6th-to-5th cycle credited around 17th and converted by month-end.",
+    "price_reference": "SBI VC Trade displayed sales price at 06:59:59 on the prior day; XRP precision truncated to seven decimals.",
+    "campaign_rewards": {
+      "joining_jpy_equivalent": 500,
+      "standard_max_jpy_equivalent": 2000,
+      "gold_max_jpy_equivalent": 4000,
+      "combined_usage_max_if_both_card_types_jpy_equivalent": 6000,
+      "multiple_card_priority": [
+        "GOLD_BEFORE_STANDARD",
+        "BTC_BEFORE_ETH_BEFORE_XRP"
+      ]
+    },
+    "actual_capital": {
+      "xrp_cardholder_share": "UNKNOWN",
+      "xrp_reward_units": "UNKNOWN",
+      "xrp_inventory_source": "UNKNOWN",
+      "spot_purchases": "UNKNOWN",
+      "otc_purchases": "UNKNOWN",
+      "net_external_capital": "UNKNOWN"
+    },
+    "interpretation": "Confirmed XRP-selectable retail distribution mechanism; reward price reference is not proof of an executed market purchase."
+  },
+  "sbi_institutional_relationships": {
+    "sbi_holdings_visa": "Exploratory digital-finance/payments/stablecoin MOU; no XRP-specific Visa agreement established.",
+    "sbi_vc_trade_ripple": "RLUSD listing on VCTRADE began 2026-06-24; RLUSD is distinct from native XRP.",
+    "sbi_shinsei": "XRP time-deposit voucher campaign announced; total issuance/redemption and XRP sourcing unknown.",
+    "sbi_vc_trade_wallets": "Previously provider-labelled two SBI VC Trade wallets total approximately 59.5M XRP; exchange custody attribution, not proprietary treasury proof.",
+    "circle": "Circle SBI Japan and Arc validator relationships are separate from SBI/Visa MOU; no evidence of an exclusive XRP strategy.",
+    "sbic": "Japanese SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., distinct from SBI Holdings; ChatGPT seminar is educational, not an OpenAI partnership."
+  },
+  "institutional_map": {
+    "coinbase": "XRP futures, XRP collateral on Global Exchange, cbXRP custody and Morpho USDC borrowing; RLUSD distribution and USDC economics; Reuters reports offline-key control adjustments after the Binance incident.",
+    "circle": "USDC on XRPL and Base, CCTP cross-chain infrastructure, Arc/USDC network, Coinbase distribution economics, issuer-level USDC freeze capability; no direct Circle supply to cbXRP Morpho market established.",
+    "ripple": "RLUSD issuer and XRP ecosystem company; issuer-level RLUSD controls do not extend to native XRP.",
+    "morpho": "Independent credit protocol; cbXRP/USDC markets create a potential liquidation-to-native-XRP redemption pathway, but actual liquidator unwrap/sale not established."
+  },
+  "other_threads": {
+    "ask_coin": "Permission Coin ASK remains the leading candidate; Coinbase Embedded Wallet relationship documented; no XRP/XRPL integration established.",
+    "actual_capital": "Exact originating phrase/context remains unresolved. Aggregate recovery, card reward value, gross transfer volume, ETF net flow and executed XRP buying are distinct.",
+    "camilla_stephenson": "Exact YouTube channel identity not verified; no exhaustive public-video inventory claimed; similarly named people are not conflated."
+  },
+  "market_context": {
+    "latest_published_spot_xrp_etf_flow": {
+      "session": "2026-10-29",
+      "net_usd": 8400000,
+      "trailing_30_session_net_usd": 98900000,
+      "cumulative_net_flow_usd": 1730000000,
+      "source_id": "Alpha Finance dashboard previously archived; not current AUM or holdings."
+    },
+    "derivatives": "Provider-specific open-interest universes remain materially non-comparable; no synthetic aggregate admitted.",
+    "market_price": "Not captured in this snapshot.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "near_term_events": [
+    {
+      "event": "SBI VISA Crypto Card current campaign application cutoff",
+      "time_utc": "2026-10-31T14:59:00Z",
+      "status": "OFFICIAL_PRODUCT_PAGE_DEADLINE; no action taken"
+    },
+    {
+      "event": "Binance targeted withdrawal restoration",
+      "date": "2026-11-01",
+      "status": "COMPANY_TARGET; completion unverified"
+    },
+    {
+      "event": "Binance full zk-SNARK PoR proof estimate",
+      "date": "2026-11-03",
+      "status": "COMPANY_ESTIMATE"
+    },
+    {
+      "event": "Provider-reported XRPL 1B XRP escrow event",
+      "time_utc": "2026-11-01T00:00:00Z",
+      "status": "PREVIOUSLY_REPORTED_SCHEDULE; RAW_ESCROW_OBJECT_NOT_REVERIFIED_IN_THIS_RUN"
+    }
+  ],
+  "research_architecture": {
+    "provenance_snapshots": "EXECUTED_IN_APPEND_ONLY_RESEARCH_BRANCH",
+    "source_independence": "DESIGNED; issuer claims and secondary reporting remain separately classified",
+    "historical_feature_store": "PARTIAL",
+    "fixed_horizon_ledger": "PR1414_OPEN_DRAFT_CI_VERIFIED; LEDGER_ONLY",
+    "trained_model": "NOT_IMPLEMENTED",
+    "walk_forward_backtest": "NOT_IMPLEMENTED",
+    "leakage_controls": "PARTIAL",
+    "probability_calibration": "NOT_IMPLEMENTED",
+    "drift_detection": "NOT_IMPLEMENTED",
+    "paper_shadow_evaluation": "NOT_EXECUTED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "platform_coordination": {
+    "targets": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "verified_active": [
+      "ChatGPT",
+      "GitHub connector"
+    ],
+    "external_platforms_authenticated": 0,
+    "live_external_collaborators": 0,
+    "verified_external_handoffs": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "repository_audit": {
+    "main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+    "open_pr_count": 190,
+    "draft_pr_count": 180,
+    "ready_pr_count": 10,
+    "main_based_pr_count": 188,
+    "current_main_base_pr_count": 5,
+    "stale_main_based_pr_count": 183,
+    "non_main_base_pr_count": 2,
+    "reviewed_prs": [
+      {
+        "number": 1413,
+        "head": "8b8edd9442fc00cb735241bace1e991a63da2825",
+        "ci_run": 41210994654,
+        "tests": 369,
+        "subtests": 8,
+        "gate_run": 41210994741,
+        "gate": "PASS_MERGE_DISABLED"
+      },
+      {
+        "number": 1414,
+        "head": "ba4ef0804ca25e2cbf9bd7d8ccbfde6bf54ec4c9",
+        "ci_run": 41211327544,
+        "tests": 385,
+        "subtests": 8,
+        "gate_run": 41211327534,
+        "gate": "PASS_MERGE_DISABLED"
+      },
+      {
+        "number": 1415,
+        "head": "a0349c53da48b8c6d09fdc75cfca6573cfa97589",
+        "ci_run": 41211473170,
+        "tests": 354,
+        "subtests": 8,
+        "gate_run": 41211473171,
+        "gate": "PASS_MERGE_DISABLED"
+      },
+      {
+        "number": 1416,
+        "head": "b118eb2578764032f509a267e2da78a26f435e59",
+        "ci_run": 41211272080,
+        "tests": 373,
+        "subtests": 8,
+        "gate_run": 41211272079,
+        "gate": "PASS_MERGE_DISABLED"
+      },
+      {
+        "number": 1417,
+        "head": "1e0ec0029814db36f8984b8018dbc0ebcb546e2c",
+        "ci_run": 41211016595,
+        "tests": 349,
+        "subtests": 8,
+        "gate_run": 41211016596,
+        "gate": "PASS_MERGE_DISABLED"
+      }
+    ],
+    "main_write_capable_workflows": [
+      "cross-analysis.yml",
+      "check-signal-accuracy.yml",
+      "scheduler-tick.yml",
+      "rotate-databricks-token.yml",
+      "merge-queue.yml",
+      "autonomous_self_deployment.yml",
+      "financial-data-refresh.yml",
+      "knowledge-signal-cycle.yml",
+      "knowledge-signal-cycle-btc.yml",
+      "data-value-triage.yml",
+      "entity-relations.yml",
+      "research-topics.yml",
+      "coinbase-paper-trader.yml"
+    ],
+    "scheduler_queue": {
+      "entries": 1,
+      "pending": 0,
+      "completed": 1
+    },
+    "critical_token_workflow": "rotate-databricks-token.yml accepts new_token input and interpolates it into shell; PR1413 proposes removal but is unmerged.",
+    "latest_main_write_commit": {
+      "sha": "e560236d494e5f24548abfc53c23829865a565f9",
+      "message": "Cross-analysis refresh [skip ci]",
+      "signed": false,
+      "associated_actions_runs_returned": 0
+    },
+    "approval_workflow_zero_job_failure": "ROOT_CAUSE_UNKNOWN",
+    "branch_protection_details": "403_NOT_VERIFIED",
+    "dependency_lockfiles_found_last_inventory": 0,
+    "vulnerability_scan": "NOT_COMPLETED",
+    "full_repository_ci": "NOT_RUN",
+    "worktree": "NOT_INSPECTED; no local operations performed"
+  },
+  "status": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "deployment": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}
