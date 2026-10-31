@@ -17,6 +17,7 @@ def _fixtures():
             "oracle_address": "0x1111111111111111111111111111111111111111",
             "lltv_wad": "625000000000000000",
         }}, 200),
+        "market_liquidity": ({"data": {"available_liquidity": "250"}}, 200),
         "state": ({"data": {
             "total_supply_assets": "1000",
             "total_borrow_assets": "750",
@@ -37,6 +38,7 @@ def test_build_request_urls_uses_exact_base_market_and_tokens():
     assert ingest.CBXRP_ADDRESS.lower() in urls["market_list"].lower()
     assert ingest.USDC_ADDRESS.lower() in urls["market_list"].lower()
     assert "lookback=thirty_days" in urls["state_history"]
+    assert urls["market_liquidity"].endswith("/liquidity")
     assert "lookback=thirty_days" in urls["apy_history"]
 
 
@@ -62,7 +64,7 @@ def test_collect_snapshot_derives_utilization_from_raw_assets_and_never_admits_f
     assert normalized["lltv_fraction"] == "0.625"
     assert snap["status"] == "COMPLETE"
     assert snap["market_features_admitted"] is False
-    assert len(calls) == 9
+    assert len(calls) == 10
 
 
 def test_rate_limit_is_recorded_without_retry_or_further_requests():
