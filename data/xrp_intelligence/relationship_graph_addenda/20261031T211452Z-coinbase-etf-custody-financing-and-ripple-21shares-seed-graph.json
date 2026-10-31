@@ -1,0 +1,381 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-20261031T211452Z-COINBASE-ETF-CUSTODY-CREDIT-RIPPLE-SEED",
+  "captured_at_utc": "2026-10-31T21:14:52Z",
+  "source_ids": [
+    "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-S1A-TRADE-CREDIT",
+    "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-FRANKLIN-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-CANARY-XRP-ETF-10Q",
+    "SRC-20261031T211452Z-SEC-GRAYSCALE-XRP-ETF-424B3",
+    "SRC-20261031T211452Z-XRP-INSIGHTS-ETF-CUSTODY-AND-HOLDINGS",
+    "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+  ],
+  "nodes": [
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "ASSET"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "INSTITUTIONAL_CRYPTO_SERVICES"
+    },
+    {
+      "id": "COINBASE_CUSTODY",
+      "label": "Coinbase Custody Trust Company",
+      "kind": "CUSTODIAN"
+    },
+    {
+      "id": "COINBASE_INC",
+      "label": "Coinbase Inc",
+      "kind": "PRIME_BROKER_EXECUTION_AGENT"
+    },
+    {
+      "id": "COINBASE_CREDIT",
+      "label": "Coinbase Credit Inc",
+      "kind": "TRADE_CREDIT_LENDER"
+    },
+    {
+      "id": "BITWISE_XRP",
+      "label": "Bitwise XRP ETF",
+      "kind": "SPOT_ETF"
+    },
+    {
+      "id": "FRANKLIN_XRP",
+      "label": "Franklin XRP ETF",
+      "kind": "SPOT_ETF"
+    },
+    {
+      "id": "21SHARES_XRP",
+      "label": "21Shares XRP ETF",
+      "kind": "SPOT_ETF"
+    },
+    {
+      "id": "CANARY_XRP",
+      "label": "Canary XRP ETF",
+      "kind": "SPOT_ETF"
+    },
+    {
+      "id": "GRAYSCALE_XRP",
+      "label": "Grayscale XRP Trust ETF",
+      "kind": "SPOT_ETF"
+    },
+    {
+      "id": "RIPPLE_MARKETS",
+      "label": "Ripple Markets Inc",
+      "kind": "SEED_INVESTOR"
+    },
+    {
+      "id": "BITWISE_TRADING_BALANCE",
+      "label": "Bitwise Trust Trading Balance",
+      "kind": "COLLATERAL_ACCOUNT"
+    },
+    {
+      "id": "BITWISE_XRP_ACCOUNT",
+      "label": "Bitwise Trust XRP Account",
+      "kind": "CUSTODY_COLLATERAL_ACCOUNT"
+    },
+    {
+      "id": "BITWISE_AP",
+      "label": "Bitwise Authorized Participants and liquidity providers",
+      "kind": "ETF_MARKET_PARTICIPANTS"
+    },
+    {
+      "id": "ETF_CUSTODY_SET",
+      "label": "Five XRP ETF custodian sets include Coinbase",
+      "kind": "INSTITUTIONAL_CUSTODY_UNIVERSE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-BITWISE-CUSTODY",
+      "source": "BITWISE_XRP",
+      "target": "COINBASE_CUSTODY",
+      "relationship": "XRP_CUSTODIAN",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Coinbase Custody was custodian for 286.838M XRP held by Bitwise Trust at June30 2026.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q"
+      ]
+    },
+    {
+      "id": "E-BITWISE-PRIME",
+      "source": "BITWISE_XRP",
+      "target": "COINBASE_INC",
+      "relationship": "PRIME_EXECUTION_AGENT",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Coinbase Inc provides Prime Execution Agent services; Trust-Directed Trade Model is the normal route.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q",
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-S1A-TRADE-CREDIT"
+      ]
+    },
+    {
+      "id": "E-BITWISE-CREDIT",
+      "source": "BITWISE_XRP",
+      "target": "COINBASE_CREDIT",
+      "relationship": "SHORT_TERM_CASH_OR_XRP_TRADE_CREDIT",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Coinbase Credit may lend cash/XRP for trades on Coinbase; actual utilization and authorized amount are unknown.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-S1A-TRADE-CREDIT"
+      ]
+    },
+    {
+      "id": "E-BITWISE-TRADING-LIEN",
+      "source": "BITWISE_TRADING_BALANCE",
+      "target": "COINBASE_CREDIT",
+      "relationship": "FIRST_PRIORITY_LIEN_AND_SET_OFF",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Trading Balance secures repayment of Trade Credits and fees.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-S1A-TRADE-CREDIT"
+      ]
+    },
+    {
+      "id": "E-BITWISE-XRP-LIEN",
+      "source": "BITWISE_XRP_ACCOUNT",
+      "target": "COINBASE_CREDIT",
+      "relationship": "FIRST_PRIORITY_LIEN_AND_DEFAULT_LIQUIDATION_REMEDY",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Trust XRP Account is collateral; default remedies can include liquidation of XRP.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-S1A-TRADE-CREDIT"
+      ]
+    },
+    {
+      "id": "E-BITWISE-PRINCIPAL-MARKET",
+      "source": "BITWISE_XRP",
+      "target": "COINBASE",
+      "relationship": "PRINCIPAL_MARKET_FOR_FUND_NAV_2026-06-30",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Coinbase was the principal market for this Trust's GAAP XRP valuation at June30 2026.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q"
+      ]
+    },
+    {
+      "id": "E-BITWISE-FLOWS",
+      "source": "BITWISE_XRP",
+      "target": "XRP",
+      "relationship": "H1_NET_INVENTORY_CHANGE_PLUS_155_615M",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "H1 2026: 181.53M XRP additions, 25.61M redemptions and 0.305M sponsor-fee disposals.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q"
+      ]
+    },
+    {
+      "id": "E-FRANKLIN-CUSTODY",
+      "source": "FRANKLIN_XRP",
+      "target": "COINBASE_CUSTODY",
+      "relationship": "XRP_CUSTODIAN",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Franklin identifies Coinbase Custody as XRP custodian.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-FRANKLIN-XRP-ETF-10Q"
+      ]
+    },
+    {
+      "id": "E-FRANKLIN-PRIME",
+      "source": "FRANKLIN_XRP",
+      "target": "COINBASE_INC",
+      "relationship": "PRIME_BROKER",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Coinbase Inc is Franklin's Prime Broker.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-FRANKLIN-XRP-ETF-10Q"
+      ]
+    },
+    {
+      "id": "E-21SHARES-CUSTODY",
+      "source": "21SHARES_XRP",
+      "target": "COINBASE_CUSTODY",
+      "relationship": "ONE_OF_THREE_CUSTODIANS",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Other custodians: BitGo and Anchorage; split undisclosed.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q"
+      ]
+    },
+    {
+      "id": "E-CANARY-CUSTODY",
+      "source": "CANARY_XRP",
+      "target": "COINBASE_CUSTODY",
+      "relationship": "ONE_OF_TWO_CUSTODIANS",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Other custodian: BitGo; split undisclosed.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-CANARY-XRP-ETF-10Q"
+      ]
+    },
+    {
+      "id": "E-GRAYSCALE-CUSTODY",
+      "source": "GRAYSCALE_XRP",
+      "target": "COINBASE_CUSTODY",
+      "relationship": "PRIMARY_CUSTODIAN",
+      "evidence_class": "SEC_FILING_MIRROR",
+      "claim": "Anchorage is an additional custodian; split undisclosed.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-GRAYSCALE-XRP-ETF-424B3"
+      ]
+    },
+    {
+      "id": "E-RIPPLE-SEED-21SHARES",
+      "source": "RIPPLE_MARKETS",
+      "target": "21SHARES_XRP",
+      "relationship": "INITIAL_SEED_SHARE_PURCHASE_220_676M_USD",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "Ripple Markets purchased 10M initial ETF shares for $220.676M on Dec20 2024; ETF-share lock-up applies.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q"
+      ]
+    },
+    {
+      "id": "E-21SHARES-H1-FLOWS",
+      "source": "21SHARES_XRP",
+      "target": "XRP",
+      "relationship": "H1_NET_XRP_INVENTORY_CHANGE_MINUS_27_303M",
+      "evidence_class": "PRIMARY_REGULATORY_FILING",
+      "claim": "H1 contributions 14.339M XRP, redemptions 41.459M, expenses 0.1825M; net -27.303M.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q"
+      ]
+    },
+    {
+      "id": "E-ETF-CUSTODY-UNIVERSE",
+      "source": "ETF_CUSTODY_SET",
+      "target": "COINBASE_CUSTODY",
+      "relationship": "FIVE_OF_SIX_FUND_CUSTODIAN_SETS_INCLUDE_COINBASE",
+      "evidence_class": "SECONDARY_ISSUER_DATA_AGGREGATION",
+      "claim": "Those funds held 1.1422B XRP in aggregate at Oct30; actual Coinbase allocation unknown.",
+      "source_ids": [
+        "SRC-20261031T211452Z-XRP-INSIGHTS-ETF-CUSTODY-AND-HOLDINGS"
+      ]
+    },
+    {
+      "id": "E-ETF-VAULTS-EXCLUDED",
+      "source": "ETF_CUSTODY_SET",
+      "target": "XRP",
+      "relationship": "ETF_CUSTODY_VAULTS_EXCLUDED_FROM_EXCHANGE_WALLET_TOTAL",
+      "evidence_class": "SECONDARY_ONCHAIN_METHODOLOGY",
+      "claim": "Do not add ETF holdings to the exchange-wallet aggregate.",
+      "source_ids": [
+        "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+      ]
+    },
+    {
+      "id": "E-COINBASE-COLD-WALLETS",
+      "source": "COINBASE",
+      "target": "XRP",
+      "relationship": "5_81B_COLD_LABELLED_AND_150_2M_CBXRP_RESERVE",
+      "evidence_class": "SECONDARY_ONCHAIN_METHODOLOGY",
+      "claim": "Cold-labelled and cbXRP reserve balances are not all customer tradable balances.",
+      "source_ids": [
+        "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-COINBASE-95PCT-CUSTODY",
+      "statement": "Coinbase actually holds 95.45% of all US spot XRP ETF XRP.",
+      "status": "NOT_ESTABLISHED",
+      "support": [
+        "Five fund custodian sets include Coinbase; their aggregate holdings were 1.1422B XRP."
+      ],
+      "disconfirming": [
+        "Multi-custodian allocations are not disclosed; 1.1422B is fund holdings, not Coinbase's custody balance."
+      ],
+      "next_test": "Obtain same-date custodian attestations or account-level allocations."
+    },
+    {
+      "id": "H-COINBASE-TRADE-CREDIT-ACTIVE",
+      "statement": "Coinbase Credit currently finances substantial XRP ETF purchases/sales.",
+      "status": "CONTRACTUAL_CAPABILITY_CONFIRMED; UTILIZATION_UNKNOWN",
+      "support": [
+        "SEC S-1 discloses cash/XRP trade credits and first-priority lien."
+      ],
+      "disconfirming": [
+        "Agent Execution Model is rare; Trust-Directed Trade Model is normal; authorized amount and outstanding use undisclosed."
+      ],
+      "next_test": "Search subsequent filings for drawdowns, balances, fees and amended credit limits."
+    },
+    {
+      "id": "H-COINBASE-FORCED-SELL",
+      "statement": "Coinbase could liquidate Bitwise Trust XRP after an unpaid trade-credit default.",
+      "status": "CONTRACTUAL_REMEDY_CONFIRMED; NO_DEFAULT_EVIDENCE",
+      "support": [
+        "First-priority security interest and default remedies permit liquidation."
+      ],
+      "disconfirming": [
+        "No default or current outstanding credit established; use described as rare."
+      ],
+      "next_test": "Monitor default, credit balance and collateral disclosures."
+    },
+    {
+      "id": "H-RIPPLE-SEED-EQUALS-XRP-BUY",
+      "statement": "Ripple's $220.676M seed investment was a direct spot XRP purchase.",
+      "status": "NOT_CONFIRMED",
+      "support": [
+        "Ripple Markets purchased 10M ETF shares; the ETF holds XRP."
+      ],
+      "disconfirming": [
+        "The filing records an ETF-share purchase, not equivalent spot execution."
+      ],
+      "next_test": "Trace fund cash/in-kind creations and Ripple Markets beneficial ownership separately."
+    },
+    {
+      "id": "H-DEC20-SHARE-UNLOCK-EQUALS-XRP-SUPPLY",
+      "statement": "The Dec20 2026 Ripple seed-share lock-up expiry will release XRP into the market.",
+      "status": "SPECULATION",
+      "support": [
+        "A two-year ETF-share restriction date falls on Dec20 2026."
+      ],
+      "disconfirming": [
+        "The locked asset is ETF shares, not XRP; redemption is not automatic; no sale intent disclosed."
+      ],
+      "next_test": "Monitor beneficial ownership, ETF redemptions and actual XRP transfers after lock-up."
+    },
+    {
+      "id": "H-ETF-CREATIONS-ALL-SPOT",
+      "statement": "All ETF creations are new spot market purchases.",
+      "status": "FALSE_AS_GENERAL_RULE",
+      "support": [
+        "Cash creations can trigger XRP counterparty purchases."
+      ],
+      "disconfirming": [
+        "In-kind creations transfer XRP directly; Bitwise Trust does not itself trade on digital-asset markets."
+      ],
+      "next_test": "Separate cash and in-kind creation/redemption amounts in each issuer filing."
+    },
+    {
+      "id": "H-COINBASE-PRINCIPAL-MARKET-GLOBAL",
+      "statement": "Coinbase is the principal market for all XRP ETF valuation.",
+      "status": "NOT_ESTABLISHED_GLOBALLY",
+      "support": [
+        "Bitwise filing identifies Coinbase as principal market for its own NAV at June30."
+      ],
+      "disconfirming": [
+        "The determination is fund-specific and can change."
+      ],
+      "next_test": "Compare each fund's principal-market methodology."
+    },
+    {
+      "id": "H-EXCHANGE-OUTFLOW-COINBASE-BINANCE",
+      "statement": "The 133M seven-day exchange-wallet decline is caused by Binance and Coinbase outflows.",
+      "status": "DISCONFIRMED_BY_TRACKED_SERIES",
+      "support": [
+        "The aggregate series fell 133M XRP."
+      ],
+      "disconfirming": [
+        "Binance +17.6M and Coinbase +17.7M over 7d; Kraken and Uphold account for the largest listed declines; no per-wallet history is stored."
+      ],
+      "next_test": "Obtain transaction-level wallet movements and reconcile untracked destinations."
+    }
+  ]
+}
