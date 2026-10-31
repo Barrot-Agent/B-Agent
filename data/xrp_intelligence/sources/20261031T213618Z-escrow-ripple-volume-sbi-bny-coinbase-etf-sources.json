@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_source_bundle",
+  "bundle_id": "BUNDLE-XRP-20261031T213618Z-ESCROW-CAPITAL-SBI-BNY-COINBASE-ETF",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "data_cutoff_utc": "2026-10-31T21:36:18Z",
+  "source_count": 11,
+  "source_ids": [
+    "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+    "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+    "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+    "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+    "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+    "SRC-20261031T213618Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+    "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+    "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+    "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+      "publisher": "XRP Insights — XRPL escrow tracker",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-31",
+      "evidence_class": "SECONDARY_ONCHAIN_DATA_AGGREGATION",
+      "claims": [
+        "Two Ripple-associated escrow objects totaling 1B XRP have FinishAfter eligibility at 2026-11-01T00:00:00Z.",
+        "Tracker lists 31.4B XRP in 98 escrow objects across eight Ripple-associated accounts.",
+        "Trailing 12 monthly cycles: 12B released, 8.4B re-escrowed (70%), 3.6B net outside escrow."
+      ],
+      "limitations": [
+        "Secondary tracker; raw XRPL JSON-RPC state was not obtained in this run.",
+        "FinishAfter is eligibility, not EscrowFinish, transfer, exchange deposit or sale.",
+        "Historical re-escrow is not a rule or guaranteed November outcome."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+      "publisher": "TokenPost — Two Ripple Accounts Still Hold 1 Billion XRP Ahead of Nov. 1",
+      "url": "https://www.tokenpost.com/news/investing/43438",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-29T10:48:00Z",
+      "evidence_class": "SECONDARY_ONCHAIN_TRANSACTION_HISTORY_REPORT",
+      "claims": [
+        "Two Ripple-labelled XRPL accounts each showed a 500M XRP balance on Oct29.",
+        "Four EscrowFinish transactions on Oct1 delivered 100M+400M to one account and 200M+300M to the other.",
+        "The report found no later outgoing XRP payment from either account through its Oct29 observation.",
+        "The same two accounts were associated with two Nov1 escrow objects containing another 500M each."
+      ],
+      "limitations": [
+        "Wallet balances are dated Oct29, not a fresh Oct31 raw account-state check.",
+        "No sale, exchange deposit, OTC sale or current balance is established.",
+        "The 2B framing is 1B previously released and held plus 1B still escrowed/eligible, not 2B already unlocked or sold."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+      "publisher": "Ripple — October 28 corporate update",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-28",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "Ripple says its products enabled more than $16T in transactions during 2025.",
+        "Ripple says it is on track to exit 2026 with $900M annualized product revenue run rate; this is a forward run-rate statement.",
+        "Ripple Payments is approaching $150B lifetime volume by year-end and serves 60+ payout markets.",
+        "Ripple reports 85+ licenses, 1,700+ institutional/corporate/enterprise customers and RLUSD around $2.6B market cap."
+      ],
+      "limitations": [
+        "$16T covers the broader product portfolio, not XRP-routed payment volume.",
+        "$150B Ripple Payments lifetime volume does not mean all flows use XRP.",
+        "$900M is a projected annualized run rate, not audited 2026 revenue."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+      "publisher": "BNY — Ripple collaboration expands custody and tokenized trade-finance exploration",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-27",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "BNY supports XRP and RLUSD on its Digital Asset Custody platform for eligible clients.",
+        "BNY identifies itself as primary reserve custodian for RLUSD and cites an existing Ripple Prime custody relationship.",
+        "BNY and Ripple are exploring tokenized trade finance on XRPL with C2FO.",
+        "Direct RLUSD mint/redeem through BNY is a future initiative subject to BNY and regulatory approvals."
+      ],
+      "limitations": [
+        "No XRP customer custody balances, client count or purchase volume are disclosed.",
+        "Custody availability does not prove XRP acquisition or collateral utilization.",
+        "Future mint/redeem and trade-finance plans are conditional."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+      "publisher": "SBI Remit — XRP-based international money transfer service expansion",
+      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2023-09-06",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "SBI Remit says it has used Ripple Payments since 2017 and XRP as a bridge between fiat currencies for Japan-to-Philippines remittances since 2021.",
+        "The Sep2023 expansion covered bank-account payouts in the Philippines, Vietnam and Indonesia.",
+        "SBI VC Trade sends XRP in response to SBI Remit payment requests in real time; Tranglo processes payouts.",
+        "SBI Remit says XRP bridge use reduces the need to pre-fund destination accounts."
+      ],
+      "limitations": [
+        "This documents a 2023 use case, not current volume or inventory.",
+        "Payment throughput is not permanent XRP capital; tokens may turn over and be reused.",
+        "Current corridor volumes and XRP sourcing are undisclosed."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+      "publisher": "Ripple — Ushering in the Future of Crypto Payments with Stablecoins",
+      "url": "https://ripple.com/insights/ushering-in-the-future-of-crypto-payments-with-stablecoins/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2024-11-14",
+      "evidence_class": "PRIMARY_COMPANY_STRATEGY_STATEMENT",
+      "claims": [
+        "Ripple positions XRP as a bridge asset for complex currency flows and lower-liquidity long-tail corridors.",
+        "Ripple positions RLUSD as dollar-denominated settlement for customers requiring USD stability and corridors where XRP is not required as a bridge.",
+        "Ripple describes RLUSD as additive and complementary to XRP.",
+        "Ripple states RLUSD is issued on XRPL and Ethereum."
+      ],
+      "limitations": [
+        "Company strategy statement, not independent route-share evidence.",
+        "Substitution versus complementarity requires corridor-level routing and inventory data."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+      "publisher": "Ripple — Ripple and Coinbase partner to expand access to RLUSD",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-28",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "RLUSD launched on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum.",
+        "Ripple said it would provide liquidity for RLUSD on Base.",
+        "Coinbase Global Exchange RLUSD collateral support was described as a later phase, not live at announcement."
+      ],
+      "limitations": [
+        "RLUSD distribution is not native XRP buying or collateral usage.",
+        "Base/Ethereum transfers do not require XRPL or XRP as bridge.",
+        "Do not record planned collateral support as live without confirmation."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+      "publisher": "TokenPost — U.S. altcoin spot ETF flows, citing SoSoValue",
+      "url": "https://www.tokenpost.com/news/investing/45315",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-31T03:43:00Z",
+      "evidence_class": "SECONDARY_MARKET_DATA_AGGREGATION",
+      "claims": [
+        "TokenPost reports Oct30 U.S. spot XRP ETF net outflow of $496,496 across five funds.",
+        "Canary XRPC +$922,005; Bitwise XRP -$693,551; Grayscale GXRP -$724,950.",
+        "Cumulative net inflows $1.81B, trading volume $30.92M and net assets $1.42B."
+      ],
+      "limitations": [
+        "Secondary aggregation citing SoSoValue; issuer-level reconciliation remains required.",
+        "Net redemptions do not prove same-day spot selling; cash/in-kind routes and AP hedges shift timing.",
+        "Five-fund universe and cutoff may differ from other providers."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+      "publisher": "Alpha Finance — XRP spot ETF flow dashboard",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-31",
+      "evidence_class": "SECONDARY_MARKET_DATA_AGGREGATION",
+      "claims": [
+        "Five-fund series is through Oct29; reports +$8.4M on Oct29, +$98.9M over 30 sessions and about $1.73B cumulative net inflow.",
+        "Dashboard publishes flow series but not XRP fund holdings, net assets or fees.",
+        "Methodology warns creations can settle after the flow print and redemptions can reflect arbitrage unwinds."
+      ],
+      "limitations": [
+        "Cutoff is Oct29, one session earlier than TokenPost/SoSoValue Oct30.",
+        "Provider universe and methodology differ; cumulative totals must not be averaged.",
+        "No holdings or custody allocation can be inferred."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+      "publisher": "CryptoSlate — Why Ripple's $16 trillion payment volume isn't boosting XRP",
+      "url": "https://cryptoslate.com/ripple-is-winning-everywhere-so-why-isnt-xrp/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-31",
+      "evidence_class": "SECONDARY_EDITORIAL_ANALYSIS",
+      "claims": [
+        "CryptoSlate distinguishes Ripple's $16T product-enabled volume from XRP-specific payments and reports $13T 2025 Ripple Treasury payment volume.",
+        "The analysis notes Ripple products can grow without customers buying XRP; RLUSD can settle directly on Base/Ethereum and some XRPL corridors.",
+        "It calculates that one million standard XRPL transactions at 10 drops each burn 10 XRP.",
+        "It cites SBI Remit's XRP bridge use and BNY XRP/RLUSD custody support."
+      ],
+      "limitations": [
+        "$13T Treasury figure is secondary-reported and not independently reconciled to a primary filing in this run.",
+        "Fee calculation assumes standard 10-drop fees and standard transactions.",
+        "Editorial analysis is not a substitute for corridor-level XRP volume or inventory data."
+      ]
+    },
+    {
+      "id": "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT",
+      "publisher": "GitHub — Barrot-Agent/B-Agent live repository audit",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-31T21:36:18Z",
+      "evidence_class": "AUTHORIZED_REPOSITORY_API_OBSERVATION",
+      "claims": [
+        "Main is c4d24176169ea1307b0eada82a6cbc62ca96e029.",
+        "GitHub REST search reports 202 open PRs.",
+        "PR #1429 is open/draft/unmerged on current main; exact-head CI 345 tests plus 8 subtests and fail-closed gate passed.",
+        "PR #1430 is open/draft/unmerged on current main; exact-head CI 346 tests plus 8 subtests and fail-closed gate passed; PR description updated with verification.",
+        "PR #1427 is open/draft/unmerged on stale main base 97546c3f47bf64cb52956fab306f0a2d6fe473ce.",
+        "Main Cross Analysis retains write permission and last wrote timestamp-only sentiment with zero XRP/BTC samples; Knowledge Signal Cycle remains manual-only and writes to main.",
+        "Full repository CI and dependency vulnerability scan remain unexecuted."
+      ],
+      "limitations": [
+        "Full base-SHA classification was not re-enumerated for all 202 PRs.",
+        "PR CI is not full repository CI or security clearance.",
+        "Proposals remain unmerged; main permissions are unchanged.",
+        "Security alerts and full branch-protection details are unavailable through current integration."
+      ]
+    }
+  ]
+}

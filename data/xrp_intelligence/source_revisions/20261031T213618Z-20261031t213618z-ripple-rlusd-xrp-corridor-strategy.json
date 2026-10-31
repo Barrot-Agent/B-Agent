@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+  "source_id": "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+      "publisher": "Ripple — Ushering in the Future of Crypto Payments with Stablecoins",
+      "url": "https://ripple.com/insights/ushering-in-the-future-of-crypto-payments-with-stablecoins/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2024-11-14",
+      "evidence_class": "PRIMARY_COMPANY_STRATEGY_STATEMENT",
+      "claims": [
+        "Ripple positions XRP as a bridge asset for complex currency flows and lower-liquidity long-tail corridors.",
+        "Ripple positions RLUSD as dollar-denominated settlement for customers requiring USD stability and corridors where XRP is not required as a bridge.",
+        "Ripple describes RLUSD as additive and complementary to XRP.",
+        "Ripple states RLUSD is issued on XRPL and Ethereum."
+      ],
+      "limitations": [
+        "Company strategy statement, not independent route-share evidence.",
+        "Substitution versus complementarity requires corridor-level routing and inventory data."
+      ]
+    }
+  ],
+  "findings": [
+    "Ripple positions XRP as a bridge asset for complex currency flows and lower-liquidity long-tail corridors.",
+    "Ripple positions RLUSD as dollar-denominated settlement for customers requiring USD stability and corridors where XRP is not required as a bridge.",
+    "Ripple describes RLUSD as additive and complementary to XRP.",
+    "Ripple states RLUSD is issued on XRPL and Ethereum."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Company strategy statement, not independent route-share evidence.",
+    "Substitution versus complementarity requires corridor-level routing and inventory data."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-BAGENT-20261031T213618Z",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+  "open_pr_count": 202,
+  "current_main_base_prs_verified": [
+    1429,
+    1430
+  ],
+  "pr1429": {
+    "head_sha": "d83f82438621308d7173770bb2539a179f25db7c",
+    "base_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41241608596,
+    "tests": 345,
+    "subtests": 8,
+    "gate": 41241608616,
+    "gate_status": "PASS_MERGE_DISABLED"
+  },
+  "pr1430": {
+    "head_sha": "962d0b23f84c4aaa84496bac10da0b62aa006c5d",
+    "base_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41243412000,
+    "tests": 346,
+    "subtests": 8,
+    "gate": 41243411930,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "description_updated_at_utc": "2026-10-31T21:29:01Z"
+  },
+  "pr1427": {
+    "base_sha": "97546c3f47bf64cb52956fab306f0a2d6fe473ce",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "classification": "STALE_BASE"
+  },
+  "workflows": {
+    "cross_analysis": "contents:write on main; timestamp-only zero-sample sentiment output; PR1429 proposes read-only artifacts but is unmerged.",
+    "knowledge_signal_cycle": "workflow_dispatch only; contents:write; direct main commit/push.",
+    "scheduler_tick": "15-minute schedule; contents:write and actions:write.",
+    "databricks_token_rotation": "new_token input interpolated into gh secret set shell command; unsafe design remains on main."
+  },
+  "open_pr_base_classification": "PARTIAL; all 202 not re-enumerated",
+  "full_repository_ci": "NOT_RUN",
+  "dependency_vulnerability_scan": "NOT_RUN",
+  "security_alerts": "NOT_ACCESSIBLE_THROUGH_CURRENT_INTEGRATION",
+  "safety": {
+    "main_modified_by_this_run": false,
+    "main_modified_by_scheduled_workflow": true,
+    "merge": false,
+    "force_push": false,
+    "manual_dispatch": false,
+    "secret_access": false
+  }
+}
