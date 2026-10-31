@@ -13,7 +13,12 @@
     "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729",
     "SRC-SGFORGE-EURCV-XRPL-20260218",
     "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105",
-    "SRC-OCC-COINBASE-CD1370-20260402"
+    "SRC-OCC-COINBASE-CD1370-20260402",
+    "SRC-COINBASE-CBXRP-POR-RENDER-20261031",
+    "SRC-COINBASE-BORROW-XRP-20261031",
+    "SRC-COINBASE-GLOBAL-EXCHANGE-CROSS-COLLATERAL-20261031",
+    "SRC-COINBASE-XRP-PERP-SPEC-20261031",
+    "SRC-DEFILLAMA-CBXRP-USDC-MORPHO-20261031"
   ],
   "nodes": [
     {
@@ -130,6 +135,26 @@
       "id": "CCTC",
       "type": "trust_company",
       "name": "Coinbase Custody Trust Company LLC"
+    },
+    {
+      "id": "CBXRP",
+      "type": "wrapped_asset",
+      "name": "Coinbase Wrapped XRP (cbXRP)"
+    },
+    {
+      "id": "MORPHO",
+      "type": "lending_protocol",
+      "name": "Morpho Blue"
+    },
+    {
+      "id": "COINBASE_GLOBAL_EXCHANGE",
+      "type": "exchange",
+      "name": "Coinbase Global Exchange"
+    },
+    {
+      "id": "COINBASE_INTX",
+      "type": "derivatives_exchange",
+      "name": "Coinbase International Exchange"
     }
   ],
   "edges": [
@@ -367,6 +392,66 @@
         "SRC-OCC-COINBASE-CD1370-20260402"
       ],
       "evidence_class": "REGULATOR_PRIMARY_DECISION"
+    },
+    {
+      "from": "COINBASE",
+      "to": "CBXRP",
+      "relation": "ISSUES_AND_BACKS_1_TO_1",
+      "detail": "Coinbase states cbXRP is backed 1:1 by XRP held by Coinbase; current reserve page has conflicting indexed/direct render timestamps",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-POR-RENDER-20261031"
+      ],
+      "evidence_class": "ISSUER_PRIMARY_WITH_RENDER_CONFLICT"
+    },
+    {
+      "from": "CBXRP",
+      "to": "XRP",
+      "relation": "REDEEMABLE_BACKING_ASSET",
+      "detail": "cbXRP reserve disclosure lists XRP backing held by Coinbase",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-POR-RENDER-20261031"
+      ],
+      "evidence_class": "ISSUER_PRIMARY"
+    },
+    {
+      "from": "COINBASE",
+      "to": "MORPHO",
+      "relation": "PROVIDES_BORROW_INTERFACE",
+      "detail": "Coinbase says its USDC crypto-backed loans are powered by Morpho on Base",
+      "source_ids": [
+        "SRC-COINBASE-BORROW-XRP-20261031"
+      ],
+      "evidence_class": "PRODUCT_PRIMARY"
+    },
+    {
+      "from": "CBXRP",
+      "to": "MORPHO",
+      "relation": "COLLATERAL_IN_CBXRP_USDC_MARKET",
+      "detail": "DeFiLlama displays a cbXRP/USDC Morpho Blue Base market; exact Coinbase customer attribution is not established",
+      "source_ids": [
+        "SRC-DEFILLAMA-CBXRP-USDC-MORPHO-20261031"
+      ],
+      "evidence_class": "SECONDARY_MARKET_AGGREGATION"
+    },
+    {
+      "from": "COINBASE_GLOBAL_EXCHANGE",
+      "to": "XRP",
+      "relation": "ACCEPTS_AS_CROSS_COLLATERAL",
+      "detail": "Haircuts and average-daily-quantity concentration limits apply; XRP-specific haircut not disclosed",
+      "source_ids": [
+        "SRC-COINBASE-GLOBAL-EXCHANGE-CROSS-COLLATERAL-20261031"
+      ],
+      "evidence_class": "PRODUCT_PRIMARY"
+    },
+    {
+      "from": "COINBASE_INTX",
+      "to": "XRP",
+      "relation": "LISTS_USDC_SETTLED_XRP_PERPETUAL",
+      "detail": "XRP-PERP settles in USDC every five minutes; 50x maximum leverage and 25% default initial margin",
+      "source_ids": [
+        "SRC-COINBASE-XRP-PERP-SPEC-20261031"
+      ],
+      "evidence_class": "PRODUCT_PRIMARY"
     }
   ],
   "hypotheses": [
@@ -442,6 +527,34 @@
         "No later Consummated/Effective action or operational launch was identified in the OCC CAS record retrieved on 2026-10-31.",
         "The proposed bank does not itself provide the underlying staking, Prime Trading or Prime Financing services."
       ]
+    },
+    {
+      "id": "H-COINBASE-CBXRP-COLLATERAL-RECYCLING",
+      "claim": "Coinbase's cbXRP reserve and Morpho market create a pathway for existing XRP holdings to be wrapped, posted as collateral and reused for USDC credit without selling native XRP.",
+      "status": "MECHANISM_CONFIRMED; CUSTOMER_FLOW_AND_MARKET_IMPACT_UNKNOWN",
+      "supporting": [
+        "Coinbase publishes 1:1 cbXRP reserve backing.",
+        "Coinbase says USDC loans against XRP use Morpho on Base.",
+        "A cbXRP/USDC Morpho market is publicly displayed with a 62.5% maximum LTV."
+      ],
+      "disconfirming": [
+        "Coinbase's current reserve page has conflicting search-indexed and direct-page snapshot dates.",
+        "The exact Morpho market is not proven to be exclusively Coinbase customer activity.",
+        "No customer-level collateral, mint/redeem, loan-originations or liquidator-sale data is disclosed."
+      ]
+    },
+    {
+      "id": "H-COINBASE-DERIVATIVES-SPOT-DEMAND",
+      "claim": "Coinbase XRP derivatives and cross-margin acceptance create additional XRP exposure and potential collateral demand.",
+      "status": "PRODUCT_ACCESS_CONFIRMED; NET_SPOT_DEMAND_UNKNOWN",
+      "supporting": [
+        "Coinbase documents XRP as accepted Global Exchange collateral and lists XRP-PERP.",
+        "Coinbase also offers a separate cash-settled XRP futures product."
+      ],
+      "disconfirming": [
+        "Perpetual and dated futures settle in USDC/cash and do not require physical XRP delivery.",
+        "XRP-specific posted collateral, position size and hedge flows are not disclosed."
+      ]
     }
   ],
   "limitations": [
@@ -451,6 +564,9 @@
     "C2FO's historical USD 520B Early Pay figure is not XRPL activity and must not be attributed to Instant Pay.",
     "Aviva's tokenized fund share class is live, but AUM, investor count and on-chain turnover are not disclosed.",
     "SG-FORGE collateral use and Mastercard/WebBank/Gemini settlement remain exploratory in the cited announcements.",
-    "Coinbase National Trust's conditional charter must not be compared as an effective operating charter with Ripple National Trust Bank and Circle National Trust; the OCC decision is preliminary and the CAS record retrieved on 2026-10-31 shows Approved but no Consummated/Effective action."
+    "Coinbase National Trust's conditional charter must not be compared as an effective operating charter with Ripple National Trust Bank and Circle National Trust; the OCC decision is preliminary and the CAS record retrieved on 2026-10-31 shows Approved but no Consummated/Effective action.",
+    "cbXRP reserve search snippet and direct page open displayed different snapshot dates; preserve both and do not claim a verified current reserve change.",
+    "Coinbase Borrow, Global Exchange cross-collateral and XRP-PERP are separate products with different collateral and liquidation rules.",
+    "The 62.5% Morpho market parameter is not automatically the Coinbase retail loan's initial LTV or proof of Coinbase-only borrower activity."
   ]
 }
