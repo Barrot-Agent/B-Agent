@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "record_type": "repository_audit",
-  "audit_id": "AUDIT-20261031T011325Z-MAIN-SCHEDULER-PR-AND-XRP-LEDGER",
-  "created_at_utc": "2026-10-31T01:13:25Z",
+  "audit_id": "AUDIT-20261031T012914Z-MAIN-SCHEDULER-PR-AND-XRP-LEDGER",
+  "created_at_utc": "2026-10-31T01:29:14Z",
   "repository": "Barrot-Agent/B-Agent",
   "main_sha": "cd085b63060f470badb2a87c03d0b558e9953fa7",
   "main_latest_commit": {
@@ -15,7 +15,11 @@
         "run_id": 41154651093,
         "name": "Scheduler Tick",
         "event": "schedule",
-        "status": "in_progress"
+        "status": "completed",
+        "conclusion": "success",
+        "entries_fired": 0,
+        "total_queue_entries": 1,
+        "queue_commit": "no changes; git push reported Everything up-to-date"
       },
       {
         "run_id": 41153726319,
@@ -49,7 +53,7 @@
     "stale_main_base": 161,
     "current_main_base": 2,
     "non_main_base": 2,
-    "captured_at_utc": "2026-10-31T01:13:25Z"
+    "captured_at_utc": "2026-10-31T01:29:14Z"
   },
   "relevant_prs": [
     {
@@ -87,44 +91,51 @@
       "title": "Safety: narrow scheduler allowlist to reviewed workflows",
       "base_ref": "main",
       "base_sha": "cd085b63060f470badb2a87c03d0b558e9953fa7",
-      "head_sha": "5265793c025639c5622c94255e14de2439de94c1",
+      "head_sha": "0db7bfb7ee3967a0eb5b45ebe277f9f429ad45f7",
       "draft": true,
       "mergeable": true,
-      "ci_run_id": 41154400460,
-      "ci_tests_passed": 347,
+      "ci_run_id": 41155302780,
+      "ci_tests_passed": 348,
       "ci_subtests_passed": 8,
-      "gate_run_id": 41154400335,
+      "gate_run_id": 41155302667,
       "gate_status": "PASS_MERGE_DISABLED",
-      "change": "Retains only barrot-bundle-operational-smoke.yml and barrot-controlled-feature-validation.yml; explicitly denies formal-verification-benchmarks.yml and sindy-mcp-cicd.yml; preserves exact-name/path checks and scheduler tick concurrency."
+      "change": "Only barrot-controlled-feature-validation.yml remains in the unattended scheduler allowlist. The smoke, formal-verification and SINDy workflows are denied. The smoke workflow checkout is hardened with persist-credentials:false; its unpinned test dependencies remain a follow-up."
     },
     {
       "number": 1353,
       "title": "Research: losslessly shard XRP ledger with hash-verified read-only validation",
       "base_ref": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
       "base_sha": "99a1880fa6fb2f0ef681ce816c2421f6de24a676",
-      "head_sha": "566e1cd7da024f7e1a53f4875a036f058d3a9015",
+      "head_sha": "30df8ff1e42218f79d8cb08500536f1b52a1635d",
       "draft": true,
       "mergeable": true,
-      "validator_run_id": 41152007768,
+      "validator_run_id": 41155560408,
       "validator_tests_passed": 20,
-      "archive_shards_checked": 297,
-      "gate_run_id": 41152007696,
+      "archive_shards_checked": 303,
+      "gate_run_id": 41155560399,
       "gate_status": "PASS_MERGE_DISABLED",
-      "limitation": "Stacked research PR targets a research-index branch, not main; full repository CI remains unrun."
+      "limitation": "The latest data head b2f5596 passed exact-head validation; current branch head 30df8ff is a metadata receipt successor and its own validation is pending. PR remains stacked on a research-index base, not main; full repository CI remains unrun.",
+      "source_count": 1768,
+      "run_update_count": 313,
+      "limitation_count": 763
     }
   ],
   "main_workflow_risks": [
     "The main scheduler-tick workflow still has contents:write and actions:write and commits queue updates to main; PR #1389/#1390 are unmerged.",
     "The current queue contains one historical ask-barrot.yml entry marked done and no pending entries at the last queue read.",
     "The scheduled cross-analysis writer remains active; the latest main commit is a cross-analysis refresh.",
-    "The merge queue and external deployment trigger restrictions in PR #1388 remain unmerged."
+    "The merge queue and external deployment trigger restrictions in PR #1388 remain unmerged.",
+    "A push-event run for .github/workflows/barrot-approve-pr.yml completed with zero jobs (run 41155555882); the current workflow file declares workflow_dispatch only. No job logs exist, so the root cause is not established."
   ],
   "dependency_and_security": {
     "full_repository_ci": "NOT_RUN",
     "dependency_vulnerability_scan": "NOT_RUN",
     "dependency_lockfile_inventory": "PARTIAL",
     "security_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
-    "detailed_branch_protection_admin_settings": "NOT_ACCESSIBLE"
+    "detailed_branch_protection_admin_settings": "NOT_ACCESSIBLE",
+    "root_python_manifests": "requirements.txt, requirements-dev.txt and pyproject.toml use lower-bound version constraints rather than a fully pinned root environment; no root lockfile was found in the inspected inventory, but nested lockfile inventory is incomplete.",
+    "scheduler_smoke_workflow": "Main version previously persisted checkout credentials and installed unpinned test dependencies; PR #1390 branch adds persist-credentials:false and removes it from unattended dispatch. Main remains unchanged until review/merge.",
+    "approval_workflow_zero_job_push_runs": "OBSERVED_REPEATED_ZERO_JOB_PUSH_EVENT_ROOT_CAUSE_UNKNOWN"
   },
   "safety": {
     "main_modified_by_this_run": false,
@@ -134,5 +145,21 @@
     "paper_state_mutations": 0,
     "real_money_trades": 0
   },
-  "status": "PENDING_EXACT_HEAD_LEDGER_VALIDATION"
+  "status": "PENDING_EXACT_HEAD_LEDGER_VALIDATION",
+  "scheduler_tick_observation": {
+    "run_id": 41154651093,
+    "head_sha": "cd085b63060f470badb2a87c03d0b558e9953fa7",
+    "event": "schedule",
+    "status": "completed",
+    "conclusion": "success",
+    "entries_fired": 0,
+    "total_queue_entries": 1,
+    "queue_update_commit": "NO_CHANGE",
+    "job_log": "Tick complete: 0 entries fired, 1 total in queue; git push reported Everything up-to-date.",
+    "permissions_on_main_workflow": {
+      "contents": "write",
+      "actions": "write"
+    },
+    "interpretation": "The scheduled tick did not change main in this run, but the main workflow still retains repository and Actions write permissions until safety PRs are approved/merged."
+  }
 }
