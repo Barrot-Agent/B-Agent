@@ -31,12 +31,31 @@ def _extract_text(resp_json: dict) -> str:
 def _score_from_text(text: str):
     try:
         data = json.loads(text)
-        score = int(max(0, min(100, int(data.get("score", 50)))))
-        confidence = float(max(0.0, min(1.0, float(data.get("confidence", 0.5)))))
-        label = str(data.get("label", "neutral"))
-        return score, confidence, label
-    except Exception:
-        return 50, 0.5, "neutral"
+    except Exception as exc:
+        raise ValueError("invalid sentiment response JSON") from exc
+
+    if not isinstance(data, dict):
+        raise ValueError("sentiment response must be a JSON object")
+    if not {"score", "confidence", "label"}.issubset(data):
+        raise ValueError("sentiment response is missing required fields")
+
+    raw_score = data["score"]
+    raw_confidence = data["confidence"]
+    if isinstance(raw_score, bool) or isinstance(raw_confidence, bool):
+        raise ValueError("boolean score/confidence is invalid")
+    try:
+        score = int(raw_score)
+        confidence = float(raw_confidence)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("score/confidence must be numeric") from exc
+    if float(raw_score) != score or not 0 <= score <= 100:
+        raise ValueError("score must be an integer from 0 to 100")
+    if not 0.0 <= confidence <= 1.0:
+        raise ValueError("confidence must be between 0 and 1")
+    label = str(data["label"]).strip().lower()
+    if label not in {"bullish", "neutral", "bearish"}:
+        raise ValueError("label must be bullish, neutral or bearish")
+    return score, confidence, label
 
 
 def _build_messages(signal_text: str):
@@ -124,7 +143,7 @@ def analyze_signal(signal_text: str):
     except Exception as e:
         last_err = f"{last_err}; groq_failed:{e}"
 
-    return 0, 0.0, f"sentiment unavailable ({last_err})"
+    return None, None, f"sentiment unavailable ({last_err})"
 
 
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
@@ -168,43 +187,73 @@ def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
 
 def main():
     news_score, n_news, headlines = _news_score()
+    explicit_text = os.getenv("BARROT_SIGNAL_TEXT", "").strip()
     if headlines:
         signal_text = "Recent XRP-relevant headlines: " + " | ".join(headlines)
+    elif explicit_text:
+        signal_text = explicit_text
     else:
-        signal_text = os.getenv("BARROT_SIGNAL_TEXT", "market sideways; low conviction")
-    score, confidence, source = analyze_signal(signal_text)
-    if news_score is not None:
-        # blend: LLM read of headlines + weighted news score, equal weight
+        signal_text = None
+
+    if signal_text is None:
+        score, confidence, source = None, None, "unavailable:no_qualifying_headlines_or_explicit_signal_text"
+    else:
+        score, confidence, source = analyze_signal(signal_text)
+
+    valid_output = (
+        score is not None
+        and confidence is not None
+        and float(confidence) > 0.0
+    )
+    if valid_output and news_score is not None:
+        # Blend only after a valid provider response; a failed provider must
+        # never turn a missing score into a numeric signal.
         score = int(round((score + news_score) / 2))
         source = f"{source}+news({n_news})"
 
     out = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
+        "status": "SENTIMENT_OBSERVATION" if valid_output else "UNAVAILABLE",
+        "forecast_status": "NOT_ISSUED",
         "signal_text": signal_text,
-        "score": score,
-        "confidence": confidence,
+        "score": int(score) if valid_output else None,
+        "confidence": float(confidence) if valid_output else None,
+        "confidence_kind": "MODEL_REPORTED_NOT_CALIBRATED" if valid_output else None,
         "source": source,
         "news_score": news_score,
         "news_entries": n_news,
         "generated_at_unix": int(time.time()),
+        "history_appended": False,
     }
+
+    if valid_output:
+        price_now = None
+        try:
+            response = requests.get(
+                "https://api.coingecko.com/api/v3/simple/price",
+                params={"ids": "ripple", "vs_currencies": "usd"},
+                timeout=6,
+            )
+            response.raise_for_status()
+            candidate = float(response.json().get("ripple", {}).get("usd"))
+            if candidate > 0:
+                price_now = candidate
+        except Exception:
+            price_now = None
+
+        hist_entry = dict(out)
+        hist_entry["price_at_emission"] = price_now
+        hist_entry["history_appended"] = True
+        os.makedirs("web", exist_ok=True)
+        with open("web/signal_history.jsonl", "a", encoding="utf-8") as hf:
+            print(json.dumps(hist_entry), file=hf)
+        out["history_appended"] = True
+    else:
+        out["reason"] = "No qualifying input or no valid provider response; no numeric sentiment score emitted."
 
     os.makedirs("web", exist_ok=True)
     with open("web/latest_signal.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
-    try:
-        _pr = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price",
-            params={"ids": "ripple", "vs_currencies": "usd"},
-            timeout=6,
-        )
-        price_now = float(_pr.json().get("ripple", {}).get("usd", 0))
-    except Exception:
-        price_now = 0.0
-    hist_entry = dict(out)
-    hist_entry["price_at_emission"] = price_now
-    with open("web/signal_history.jsonl", "a", encoding="utf-8") as hf:
-        print(json.dumps(hist_entry), file=hf)
 
     print(json.dumps(out))
 
