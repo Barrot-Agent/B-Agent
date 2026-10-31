@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261031T063200Z-MAIN-WORKFLOW-AND-TOKEN-ROTATION",
+  "captured_at_utc": "2026-10-31T06:32:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+  "main_commit": {
+    "message": "chore: Barrot telemetry report",
+    "authored_at_utc": "2026-10-31T06:03:33Z",
+    "signed": false,
+    "changed_by_this_run": false
+  },
+  "branch_protection": {
+    "protected_flag": true,
+    "required_status_checks_contexts": [],
+    "detailed_protection_endpoint": "403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+    "conclusion": "Branch API reports protected=true, but no required status-check contexts are configured in the returned metadata. Full review/approval/force-push settings remain unknown."
+  },
+  "workflow_inventory": {
+    "active_yaml_workflows": 77,
+    "targeted_files_inspected": 24,
+    "exhaustive": false,
+    "critical_finding": {
+      "file": ".github/workflows/rotate-databricks-token.yml",
+      "main_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+      "unsafe_input": "new_token",
+      "unsafe_interpolation": "gh secret set DATABRICKS_TOKEN --body \"${{ inputs.new_token }}\"",
+      "secondary_action": "gh workflow run \"Deploy to Databricks\"",
+      "declared_token_permissions": [
+        "contents:read"
+      ],
+      "risks": [
+        "Untrusted workflow-dispatch input is interpolated directly into a shell command, creating command-injection risk.",
+        "Credential is supplied through workflow input rather than a dedicated secret-management channel.",
+        "The declared GITHUB_TOKEN permission does not grant the secret mutation and workflow-dispatch capabilities the workflow appears to require.",
+        "The subsequent deployment dispatch would use the deployment workflow's default confirmation input unless explicitly supplied; the claimed verification path is not established."
+      ],
+      "main_status": "UNSAFE_WORKFLOW_REMAINS_ON_MAIN_UNTIL_PR_MERGED"
+    },
+    "remediation": {
+      "pr": 1398,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1398",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "2ea9a8dcad1c51f85d345fcdca02c50902ec5285",
+      "changes": [
+        "Removed credential input.",
+        "Set permissions: {}.",
+        "Removed secret-setting command.",
+        "Removed deployment dispatch.",
+        "Replaced with a diagnostic explicitly stating ROTATION_NOT_PERFORMED.",
+        "Added two regression tests and registered them in CI."
+      ],
+      "ci_run_id": 41176897933,
+      "ci_tests_passed": 344,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41176897925,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "verified_exact_head": true
+    },
+    "residual_manual_repository_writers": [
+      ".github/workflows/financial-data-refresh.yml",
+      ".github/workflows/knowledge-signal-cycle.yml",
+      ".github/workflows/knowledge-signal-cycle-btc.yml",
+      ".github/workflows/data-value-triage.yml",
+      ".github/workflows/entity-relations.yml",
+      ".github/workflows/research-topics.yml",
+      ".github/workflows/coinbase-paper-trader.yml"
+    ],
+    "residual_manual_writer_notes": "These workflows are workflow_dispatch-only in the inspected versions but declare contents:write and commit/push to main without a separate confirm_external_change input. None was dispatched. They require a separate review and either artifact-only output or explicit approval gating.",
+    "scheduled_issue_or_pr_mutation_paths": [
+      ".github/workflows/self-schedule.yml",
+      ".github/workflows/daily-digest.yml",
+      ".github/workflows/barrot-autonomous-resolver.yml"
+    ],
+    "scheduled_issue_mutation_notes": "These paths use issue/PR write permissions and scheduled triggers. They do not represent direct repository-main file writes in the inspected workflow bodies, but they do mutate GitHub issue/PR state and require a separate authorization/scope review.",
+    "guarded_external_action_workflows": [
+      ".github/workflows/barrot-ops.yml",
+      ".github/workflows/deploy-databricks.yml",
+      ".github/workflows/sync-huggingface.yml"
+    ],
+    "guarded_external_action_notes": "Inspected versions require confirm_external_change=YES before the external-action job proceeds. No such workflow was dispatched."
+  },
+  "related_prs": {
+    "pr1397": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1397",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+      "head_sha": "4638e36181884dbc0a616e2fef0d3826d8268d77",
+      "ci_run_id": 41176091981,
+      "ci_status": "PASS",
+      "gate_run_id": 41176091978,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "scope_note": "Quarantines selected scheduled main writers and changes selected workflows to artifact/read-only paths; does not address the manual writer list above or all 77 workflows."
+    },
+    "pr1398": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1398",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+      "head_sha": "2ea9a8dcad1c51f85d345fcdca02c50902ec5285",
+      "ci_run_id": 41176897933,
+      "ci_tests_passed": 344,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41176897925,
+      "gate_status": "PASS_MERGE_DISABLED"
+    }
+  },
+  "full_repository_ci": "NOT_RUN",
+  "dependency_vulnerability_scan": "NOT_RUN",
+  "dependency_lockfile_inventory": "NOT_REAUDITED_THIS_RUN; prior inventory was partial",
+  "security_alert_access": "NOT_TESTED_THIS_RUN",
+  "main_mutated": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false,
+  "secrets_accessed": false,
+  "deployment_performed": false,
+  "next_actions": [
+    "Keep PR #1398 draft and unmerged until human review; main still contains the unsafe original workflow.",
+    "Add explicit approval gates or artifact-only behavior to the seven manual main writers.",
+    "Review scheduled issue/PR mutation workflows for bounded scope, idempotency and approval policy.",
+    "Audit all remaining active workflows, not only the 24 targeted high-risk files.",
+    "Read full branch-protection settings when the integration permits; ensure required CI and fail-closed gate checks are actually required.",
+    "Run a full repository CI and dependency/security scan when safe and authorized."
+  ]
+}
