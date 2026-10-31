@@ -291,8 +291,8 @@
     "source_revision_addenda_count": 28,
     "source_revision_addenda_pending_archive_append": 28,
     "created_at_utc": "2026-10-31T21:45:45Z",
-    "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
-    "exact_head_validation": false,
+    "verification_status": "PASS_EXACT_HEAD_VALIDATION",
+    "exact_head_validation": true,
     "pending_data_head_sha": "cef69ddc7e347d0b22fa170ffc059e585c7f642d",
     "expected_archive_shards": 439,
     "expected_archive_records_roundtrip": 3474,
@@ -307,7 +307,18 @@
     "preserved_unreferenced_originals": [
       "data/xrp_intelligence/snapshots/20261031T211452Z-coinbase-etf-custody-prime-execution-credit-and-ripple-seed-capital.json",
       "data/xrp_intelligence/ledger_archive/v1/run_updates-159-of-159-corrected.json"
-    ]
+    ],
+    "verified_head_sha": "3c11839bfdea977a24516d5826197fd0b235da14",
+    "verification_at_utc": "2026-10-31T21:48:00Z",
+    "push_validator_run_id": 41245238852,
+    "validator_run_id": 41245242757,
+    "gate_run_id": 41245242747,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "archive_shards_checked": 439,
+    "source_revision_addenda_checked": 28,
+    "tests_passed": 32,
+    "errors": [],
+    "state_mutated": false
   },
   "sources": {
     "record_type": "archive_pointer",
@@ -3963,10 +3974,34 @@
     "source_revision_addenda_pending_archive_append": 28,
     "archive_shards_expected": 439,
     "archive_records_expected": 3474,
-    "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+    "verification_status": "PASS_EXACT_HEAD_VALIDATION",
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED",
-    "findings": {
+    "findings": [
+      "Ripple CEO interview states 99.9 percent of $13T Treasury and 99 percent plus of $3T-$4T Ripple Prime volume was off-chain; one percent of $16T equals a $160B scenario, not XRP-specific demand.",
+      "RLUSD XRPL share is unresolved: CEO says about half; XRP Insights Oct31 reports 29.2 percent; Stablecoin Insider/DefiLlama Oct27 reports 39.4 percent; DefiLlama Oct29 fields imply about $978M.",
+      "Standard Chartered says RLUSD custody on XRPL is live for eligible DIFC clients; LMAX collateral mirroring remains planned, not live; Ripple's $150M LMAX financing is corporate financing, not an XRP purchase."
+    ],
+    "limitations": [
+      "CEO figures are approximate executive statements, not audited asset-level data.",
+      "RLUSD chain-split sources conflict; raw issuer and contract reconciliation is outstanding.",
+      "LMAX collateral mirroring is planned, not live.",
+      "No asset-specific on-chain conversion volume or XRP purchases are disclosed.",
+      "The RLUSD chain-split discrepancy requires raw issuer/holder balance and ERC20 totalSupply reconciliation at one pinned cutoff.",
+      "The CEO interview figures are approximate and not audited asset-level data; the $160B figure is scenario arithmetic, not a forecast."
+    ],
+    "verified_head_sha": "3c11839bfdea977a24516d5826197fd0b235da14",
+    "verification_at_utc": "2026-10-31T21:48:00Z",
+    "push_validator_run_id": 41245238852,
+    "validator_run_id": 41245242757,
+    "gate_run_id": 41245242747,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "archive_shards_checked": 439,
+    "source_revision_addenda_checked": 28,
+    "tests_passed": 32,
+    "errors": [],
+    "state_mutated": false,
+    "prior_findings": {
       "ripple_treasury_2025_payment_volume_usd": 13000000000000,
       "ripple_treasury_evidence": "PRIMARY_COMPANY_STATEMENT",
       "ceo_estimated_offchain_share_pct": 99.9,
@@ -3982,13 +4017,7 @@
       "xrp_routed_share": "UNKNOWN",
       "rlusd_routed_share": "UNKNOWN",
       "interpretation": "The headline $16T is overwhelmingly off-chain per the CEO interview; it is not current XRP liquidity or XRP transaction volume. Approximate residuals are executive estimates, not audited."
-    },
-    "limitations": [
-      "CEO figures are approximate executive statements, not audited asset-level data.",
-      "RLUSD chain-split sources conflict; raw issuer and contract reconciliation is outstanding.",
-      "LMAX collateral mirroring is planned, not live.",
-      "No asset-specific on-chain conversion volume or XRP purchases are disclosed."
-    ]
+    }
   },
   "previous_snapshot_verification": {
     "status": "PASS",
@@ -7151,6 +7180,20 @@
           "head_sha": "1dd62701a323167084a1d4b2c5f16b53f6bd8308",
           "conclusion": "failure",
           "job_count": 0
+        },
+        {
+          "run_id": 41245225997,
+          "event": "push",
+          "head_sha": "cef69ddc7e347d0b22fa170ffc059e585c7f642d",
+          "conclusion": "failure",
+          "job_count": 0
+        },
+        {
+          "run_id": 41245237858,
+          "event": "push",
+          "head_sha": "3c11839bfdea977a24516d5826197fd0b235da14",
+          "conclusion": "failure",
+          "job_count": 0
         }
       ],
       "workflow_path": ".github/workflows/barrot-approve-pr.yml",
@@ -7161,7 +7204,7 @@
         "workflow_dispatch"
       ],
       "observed_event": "push",
-      "root_cause": "UNKNOWN",
+      "root_cause": "UNKNOWN; four push-event runs across research commits contain zero jobs despite inspected main and research workflow files declaring workflow_dispatch only. Invalid YAML is not established.",
       "invalid_yaml_claim": "NOT_ESTABLISHED"
     },
     "main_commit_diff": {
@@ -7184,7 +7227,7 @@
       "btc_shift": null
     },
     "workflow_risk_status": "MAIN_WRITE_CAPABILITIES_REMAIN; PR1429 AND PR1430 ARE UNMERGED",
-    "approval_workflow_root_cause": "UNKNOWN; repeated push-event runs contain zero jobs despite inspected workflow trigger declaring workflow_dispatch only."
+    "approval_workflow_root_cause": "UNKNOWN; four push-event runs across research commits contain zero jobs despite inspected main and research workflow files declaring workflow_dispatch only. Invalid YAML is not established."
   },
   "latest_exchange_balance_reconciliation": {
     "recorded_at_utc": "2026-10-31T16:01:37Z",
@@ -7217,15 +7260,15 @@
     "causal_attribution": "NOT_ESTABLISHED; OCT30 ALL-EXCHANGE DECLINE PARTIALLY REVERSED OCT31; BINANCE SAME-WALLET 7D AND 30D ARE POSITIVE; CRYPTOQUANT SERIES SEPARATE; NO INCIDENT-SOURCE WALLET CROSSWALK",
     "market_feature_admission": "CUSTODY_TIMELINE_ONLY_NOT_DIRECTIONAL"
   },
-  "latest_snapshot_verification_status": "PENDING_EXACT_HEAD_VALIDATION",
-  "latest_snapshot_verification_head_sha": "cef69ddc7e347d0b22fa170ffc059e585c7f642d",
-  "latest_snapshot_verification_at_utc": "2026-10-31T21:41:27Z",
+  "latest_snapshot_verification_status": "PASS_EXACT_HEAD_VALIDATION",
+  "latest_snapshot_verification_head_sha": "3c11839bfdea977a24516d5826197fd0b235da14",
+  "latest_snapshot_verification_at_utc": "2026-10-31T21:48:00Z",
   "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261031T214545Z-actual-capital-rlusd-split-and-collateral-status.json",
-  "last_verified_head_sha": "7df50ae7621dca437e4e49e39cb1218eea58a404",
+  "last_verified_head_sha": "3c11839bfdea977a24516d5826197fd0b235da14",
   "last_verified_at_utc": "2026-10-31T21:20:49Z",
-  "last_validator_run_id": 41244745154,
+  "last_validator_run_id": 41245242757,
   "last_validator_tests_passed": 32,
-  "last_fail_closed_gate_run_id": 41244745074,
+  "last_fail_closed_gate_run_id": 41245242747,
   "last_fail_closed_gate_status": "PASS_MERGE_DISABLED",
   "snapshot_revision_history": [
     {
@@ -7310,10 +7353,10 @@
   "latest_verified_validator_tests_passed": 20,
   "latest_verified_gate_run_id": 41194367355,
   "latest_verified_gate_status": "PASS_MERGE_DISABLED",
-  "latest_validator_run_id": 41244745154,
+  "latest_validator_run_id": 41245242757,
   "latest_validator_head_sha": "75c62b02c4fa4ef0cde55c09f5650b0ba0d3cfb8",
   "latest_validator_tests_passed": 32,
-  "latest_gate_run_id": 41244745074,
+  "latest_gate_run_id": 41245242747,
   "latest_gate_status": "PASS_MERGE_DISABLED",
   "latest_gate_head_sha": "61bb69e02a3e99510820c60468406eb905480458",
   "latest_fail_closed_gate_run_id": 41243145642,
@@ -7321,7 +7364,7 @@
   "latest_fail_closed_gate_head_sha": "75c62b02c4fa4ef0cde55c09f5650b0ba0d3cfb8",
   "latest_snapshot_verification_method": "GITHUB_ACTIONS_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
   "latest_append_validation": "PASS_EXACT_HEAD_VALIDATION",
-  "current_append_validation": "PENDING_EXACT_HEAD_VALIDATION",
+  "current_append_validation": "PASS_EXACT_HEAD_VALIDATION",
   "current_exact_head_validator_status": "PASS_ON_06845A53",
   "archive_policy_counts_reconciled": true,
   "archive_shards_pending_validation": 3,
@@ -7657,7 +7700,7 @@
   "latest_accuracy_safety_pr_gate_status": "PASS_MERGE_DISABLED",
   "latest_cross_analysis_safety_pr": 1429,
   "latest_cross_analysis_fix_consolidated_into_pr": 1386,
-  "latest_repository_audit_status": "PARTIAL_LIVE_REAUDIT; APPROVAL WORKFLOW ZERO-JOB PUSH ANOMALY REPEATED; ROOT CAUSE UNKNOWN",
+  "latest_repository_audit_status": "PARTIAL_LIVE_REAUDIT; FOUR APPROVAL WORKFLOW ZERO-JOB PUSH RUNS; ROOT CAUSE UNKNOWN",
   "latest_coinbase_cbxrp_snapshot": {
     "path": "data/xrp_intelligence/snapshots/20261031T002653Z-coinbase-cbxrp-reserve-and-custody.json",
     "blob_sha": "884a2cef3b81eb946d88dd4f35c0ee0835750662",
@@ -8911,7 +8954,7 @@
   "latest_append_validator_run_id": 41238341077,
   "latest_append_gate_run_id": 41238342364,
   "latest_append_gate_status": "PASS_MERGE_DISABLED",
-  "latest_append_validation_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "latest_append_validation_status": "PASS_EXACT_HEAD_VALIDATION",
   "current_research_head_before_current_append": "35516b39526ccee0a3f970fdf76a3db8939ec8d6",
   "current_research_head_this_run_status": "DATA_HEAD_VERIFIED; THIS_COMMIT_RECORDS_VERIFICATION_RECEIPT",
   "latest_snapshot_commit_sha": "cef69ddc7e347d0b22fa170ffc059e585c7f642d",
@@ -13348,7 +13391,7 @@
   "latest_ripple_escrow_current_status": "SCHEDULED_NOT_YET_ELIGIBLE_AT_2026-10-31T21:02:44Z",
   "latest_ripple_escrow_prior_12m_relock_pct": 70,
   "latest_source_reference_count": 8,
-  "latest_push_validator_run_id": 41244742273,
+  "latest_push_validator_run_id": 41245238852,
   "latest_push_validator_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41242243793",
   "latest_coinbase_etf_custody": {
     "funds_with_coinbase_in_custodian_set": 5,
@@ -13402,5 +13445,5 @@
   "latest_run_update_path": null,
   "latest_limitation_path": null,
   "metadata_successor_validation_pending": true,
-  "last_push_validator_run_id": 41244742273
+  "last_push_validator_run_id": 41245238852
 }
