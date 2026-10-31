@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+  "source_id": "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+  "captured_at_utc": "2026-10-31T21:45:45Z",
+  "created_at_utc": "2026-10-31T21:45:45Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+      "publisher": "DefiLlama — XRPL chain metrics",
+      "url": "https://defillama.com/chain/xrpl",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-29",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "claims": [
+        "Oct29 XRPL total stablecoin market capitalization was reported at $1.069B.",
+        "RLUSD dominance was reported at 91.48 percent of XRPL stablecoin capitalization.",
+        "Those two fields imply about $978M RLUSD on XRPL; this is a derived estimate, not a direct displayed RLUSD supply figure."
+      ],
+      "limitations": [
+        "The $978M is calculated from two dashboard fields.",
+        "Different cutoff and methodology from XRP Insights and the CEO interview.",
+        "Not a direct issuer-account or ERC20 contract read."
+      ]
+    }
+  ],
+  "findings": [
+    "Oct29 XRPL total stablecoin market capitalization was reported at $1.069B.",
+    "RLUSD dominance was reported at 91.48 percent of XRPL stablecoin capitalization.",
+    "Those two fields imply about $978M RLUSD on XRPL; this is a derived estimate, not a direct displayed RLUSD supply figure."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "The $978M is calculated from two dashboard fields.",
+    "Different cutoff and methodology from XRP Insights and the CEO interview.",
+    "Not a direct issuer-account or ERC20 contract read."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

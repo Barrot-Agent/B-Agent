@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T214545Z-STABLECOININSIDER-RLUSD",
+  "source_id": "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD",
+  "captured_at_utc": "2026-10-31T21:45:45Z",
+  "created_at_utc": "2026-10-31T21:45:45Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD",
+      "publisher": "Stablecoin Insider — RLUSD stablecoin guide, updated Oct27",
+      "url": "https://stablecoininsider.org/rlusd-stablecoin/",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-27",
+      "evidence_class": "SECONDARY_MARKET_DATA_SUMMARY",
+      "claims": [
+        "The guide reports approximately $2.59B total RLUSD supply, attributed to DefiLlama.",
+        "It reports about $1.02B on XRPL and $1.57B on Ethereum, implying roughly 39.4 percent on XRPL."
+      ],
+      "limitations": [
+        "Secondary summary citing DefiLlama.",
+        "Rounded figures and date differ from the Oct31 XRP Insights snapshot.",
+        "Does not reconcile the difference with the CEO estimate."
+      ]
+    }
+  ],
+  "findings": [
+    "The guide reports approximately $2.59B total RLUSD supply, attributed to DefiLlama.",
+    "It reports about $1.02B on XRPL and $1.57B on Ethereum, implying roughly 39.4 percent on XRPL."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Secondary summary citing DefiLlama.",
+    "Rounded figures and date differ from the Oct31 XRP Insights snapshot.",
+    "Does not reconcile the difference with the CEO estimate."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

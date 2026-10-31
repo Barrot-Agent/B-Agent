@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_source_bundle",
+  "bundle_id": "BUNDLE-XRP-20261031T214545Z-ACTUAL-CAPITAL-RLUSD-COLLATERAL",
+  "captured_at_utc": "2026-10-31T21:45:45Z",
+  "source_count": 6,
+  "source_ids": [
+    "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+    "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+    "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+    "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD",
+    "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+    "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+      "publisher": "CoinDesk Live at Ripple Swell 2026; transcript capture",
+      "url": "https://ceointerviews.ai/interview/3153871/",
+      "primary_video_url": "https://www.youtube.com/watch?v=ZN9bz0FQKoY",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-28",
+      "evidence_class": "CEO_INTERVIEW_TRANSCRIPT_CAPTURE",
+      "claims": [
+        "Brad Garlinghouse said Ripple Treasury handled $13T of 2025 payments and about 99.9 percent did not touch crypto rails or stablecoins.",
+        "He said Ripple Prime handled about $3T to $4T, with more than 99 percent off-chain.",
+        "He said one percent of $16T equals $160B and that Ripple would measure its on-chain conversion share in 2027.",
+        "He said about half of RLUSD was on XRPL and about half on Ethereum.",
+        "He said Ripple wants to drive XRP liquidity, utility and trust; he characterized Coinbase as exchange-led, Circle as stablecoin-led and Ripple as bridging traditional finance and blockchain."
+      ],
+      "limitations": [
+        "This is a secondary transcript capture of a CoinDesk interview video.",
+        "Figures are executive estimates, not audited asset-level data.",
+        "The $160B is scenario arithmetic, not an XRP forecast or committed amount.",
+        "The RLUSD chain-split statement conflicts with provider snapshots and remains unverified."
+      ]
+    },
+    {
+      "id": "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+      "publisher": "XRP Insights — Week 44 RLUSD chain-supply snapshot",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-10-31",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-31T12:54:00Z",
+      "evidence_class": "SECONDARY_ONCHAIN_SUPPLY_AGGREGATION",
+      "claims": [
+        "The indexed Oct31 report gives total RLUSD supply around $2.42B.",
+        "It attributes about $707M to XRPL and $1.71B to Ethereum, or roughly 29 percent on XRPL."
+      ],
+      "limitations": [
+        "Page could not be opened directly in this run; figures are from the indexed public summary.",
+        "Provider contract/account inclusion and frozen or treasury balance treatment require raw-chain reconciliation.",
+        "This differs from other providers and the CEO statement."
+      ]
+    },
+    {
+      "id": "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+      "publisher": "DefiLlama — XRPL chain metrics",
+      "url": "https://defillama.com/chain/xrpl",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-29",
+      "evidence_class": "SECONDARY_ONCHAIN_AGGREGATION",
+      "claims": [
+        "Oct29 XRPL total stablecoin market capitalization was reported at $1.069B.",
+        "RLUSD dominance was reported at 91.48 percent of XRPL stablecoin capitalization.",
+        "Those two fields imply about $978M RLUSD on XRPL; this is a derived estimate, not a direct displayed RLUSD supply figure."
+      ],
+      "limitations": [
+        "The $978M is calculated from two dashboard fields.",
+        "Different cutoff and methodology from XRP Insights and the CEO interview.",
+        "Not a direct issuer-account or ERC20 contract read."
+      ]
+    },
+    {
+      "id": "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD",
+      "publisher": "Stablecoin Insider — RLUSD stablecoin guide, updated Oct27",
+      "url": "https://stablecoininsider.org/rlusd-stablecoin/",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-27",
+      "evidence_class": "SECONDARY_MARKET_DATA_SUMMARY",
+      "claims": [
+        "The guide reports approximately $2.59B total RLUSD supply, attributed to DefiLlama.",
+        "It reports about $1.02B on XRPL and $1.57B on Ethereum, implying roughly 39.4 percent on XRPL."
+      ],
+      "limitations": [
+        "Secondary summary citing DefiLlama.",
+        "Rounded figures and date differ from the Oct31 XRP Insights snapshot.",
+        "Does not reconcile the difference with the CEO estimate."
+      ]
+    },
+    {
+      "id": "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+      "publisher": "Standard Chartered — RLUSD custody and planned LMAX collateral integration",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-12",
+      "evidence_class": "PRIMARY_BANK_STATEMENT",
+      "claims": [
+        "Standard Chartered says institutional custody for RLUSD issued on XRPL is live for eligible clients through its DIFC branch regulated by DFSA.",
+        "Standard Chartered is working with Ripple and LMAX to make RLUSD eligible collateral using a collateral-mirroring model that does not require transfer of the underlying RLUSD to the venue."
+      ],
+      "limitations": [
+        "The live service is RLUSD custody, not native XRP custody.",
+        "LMAX collateral mirroring remains subject to documentation, testing, regulation and internal approvals.",
+        "No custody balances, collateral utilization or client counts are disclosed."
+      ]
+    },
+    {
+      "id": "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP",
+      "publisher": "LMAX Group — Ripple partnership and RLUSD collateral integration",
+      "url": "https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/",
+      "supporting_urls": [
+        "https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/"
+      ],
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-01-15",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "LMAX and Ripple announced a multi-year partnership to integrate RLUSD as a core collateral asset across institutional trading infrastructure.",
+        "Ripple committed $150M in financing to LMAX.",
+        "The Jan15 announcement described RLUSD collateral and settlement integration and Ripple Prime connectivity with LMAX Digital.",
+        "The Oct12 LMAX update with Standard Chartered describes collateral mirroring as planned and subject to documentation, testing and approvals."
+      ],
+      "limitations": [
+        "The later Oct12 update confirms the collateral-mirroring feature was still planned, not live.",
+        "The $150M is corporate financing to LMAX, not an XRP purchase or XRP reserve allocation.",
+        "No RLUSD collateral balances, XRP trading volumes or venue-level asset inventory are disclosed."
+      ]
+    }
+  ]
+}
