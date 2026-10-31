@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T084614Z-ETF-AUM-FLOW-AND-SBIC-ACRONYM",
+  "captured_at_utc": "2026-10-31T08:46:14Z",
+  "status": "ACCEPTED_FOR_RESEARCH_ARCHITECTURE",
+  "source_ids": [
+    "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30",
+    "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+    "SRC-20261031-CRYPTOKEYHOLE-XRP-ISSUER-FLOWS-OCT30-PARTIAL",
+    "SRC-20261031-TOKYO-SBIC-OFFICIAL-PROFILE",
+    "SRC-20261031-NAGOYA-SBIC-SISTER-COMPANY-RELATIONSHIP",
+    "SRC-20261031-OSAKA-SBIC-CHATGPT-WORKSHOP",
+    "SRC-20261031-US-SBA-SBIC-OFFICIAL-PROGRAM",
+    "SRC-20261031-OPENAI-SBIC-LOW-AUTHORITY-SPECULATION",
+    "SRC-20261031-SOCIAL-BIAS-INFERENCE-CORPUS-ACL"
+  ],
+  "decisions": [
+    {
+      "id": "DEC-AUM-IS-NOT-CAPITAL-FLOW",
+      "rule": "Store marked ETF AUM, XRP units held, issuer creations/redemptions, net flows and estimated holdings as separate fields. Never infer net capital from the change in marked AUM.",
+      "rationale": "Maketo estimates positive ~$19M net flow while marked value fell ~$254.3M due to price decline; issuer-file providers show incomplete and differing daily totals.",
+      "feature_admission": "FLOW_FEATURE_REQUIRES_ISSUER_FILE_COVERAGE"
+    },
+    {
+      "id": "DEC-XRP-ETF-PARTIAL-COVERAGE",
+      "rule": "Treat Oct 30 -$700K (2/5) and -$866K (2/4) as separate partial provider observations; missing funds are not zero and values are not averaged.",
+      "rationale": "CryptoETF.today and CryptoKeyhole have different fund coverage and valuation methodology.",
+      "feature_admission": "PARTIAL_OBSERVATION_ONLY"
+    },
+    {
+      "id": "DEC-SBIC-ACRONYM-DISAMBIGUATION",
+      "rule": "Keep Japanese Tokyo/Osaka/Nagoya SBIC entities separate from the U.S. SBA SBIC program and the Social Bias Inference Corpus. Treat ChatGPT seminars as educational unless a commercial agreement is documented.",
+      "rationale": "Official company, government and peer-reviewed sources confirm three distinct acronym contexts.",
+      "feature_admission": "NO_XRP_OR_OPENAI_PARTNERSHIP_INFERENCE"
+    },
+    {
+      "id": "DEC-ACTUAL-CAPITAL-PHRASE-UNRESOLVED",
+      "rule": "The exact phrase 'actual capital' remains unresolved; use the ETF AUM/flow distinction as a research lead, not as the phrase's origin.",
+      "rationale": "Exact phrase searches did not identify a reliable originating video, post or document.",
+      "feature_admission": "NO_PHRASE_ATTRIBUTION"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
