@@ -96,9 +96,12 @@ def _append_jsonl(path: Path, record: dict[str, Any]) -> None:
     ).encode("utf-8")
     descriptor = os.open(str(path), os.O_CREAT | os.O_APPEND | os.O_WRONLY, 0o600)
     try:
-        written = os.write(descriptor, payload)
-        if written != len(payload):
-            raise OSError("Short append while writing the forecast ledger")
+        offset = 0
+        while offset < len(payload):
+            written = os.write(descriptor, payload[offset:])
+            if written <= 0:
+                raise OSError("Short append while writing the forecast ledger")
+            offset += written
         os.fsync(descriptor)
     finally:
         os.close(descriptor)
@@ -112,7 +115,11 @@ class ForecastLedger:
         root: str | Path | None = None,
         max_observation_lag_seconds: int = 900,
     ) -> None:
-        if isinstance(max_observation_lag_seconds, bool) or max_observation_lag_seconds <= 0:
+        if (
+            isinstance(max_observation_lag_seconds, bool)
+            or not isinstance(max_observation_lag_seconds, int)
+            or max_observation_lag_seconds <= 0
+        ):
             raise ValueError("max_observation_lag_seconds must be a positive integer")
         self.root = Path(root) if root is not None else Path("data/xrp_forecasts")
         self.forecasts_path = self.root / "forecasts.jsonl"
@@ -212,8 +219,13 @@ class ForecastLedger:
         baseline_trained_through = _parse_utc(
             baseline.get("trained_through_utc"), "baseline.trained_through_utc"
         )
+        baseline_computed_at = _parse_utc(
+            baseline.get("computed_at_utc"), "baseline.computed_at_utc"
+        )
         if baseline_trained_through > cutoff:
             raise ValueError("baseline cannot use information after the data cutoff")
+        if baseline_computed_at > issued or baseline_computed_at > cutoff:
+            raise ValueError("baseline must be computed no later than the forecast data cutoff")
         baseline_probabilities = _probabilities(
             baseline.get("probabilities"), "baseline.probabilities"
         )
@@ -221,6 +233,17 @@ class ForecastLedger:
         assumptions = _string_list(payload.get("assumptions"), "assumptions")
         alternatives = _string_list(payload.get("alternatives"), "alternatives")
         source_ids = _string_list(payload.get("source_ids"), "source_ids")
+        price_source_id = payload.get("price_at_issue_source_id")
+        if not isinstance(price_source_id, str) or not price_source_id.strip():
+            raise ValueError("price_at_issue_source_id is required")
+        price_source_id = price_source_id.strip()
+        if price_source_id not in source_ids:
+            raise ValueError("price_at_issue_source_id must be included in source_ids")
+        price_observed_at = _parse_utc(
+            payload.get("price_at_issue_observed_at_utc"), "price_at_issue_observed_at_utc"
+        )
+        if price_observed_at > cutoff or price_observed_at > issued:
+            raise ValueError("issue price observation cannot be later than the data cutoff")
         price_at_issue = _positive_number(payload.get("price_at_issue_usd"), "price_at_issue_usd")
 
         record = {
@@ -251,10 +274,13 @@ class ForecastLedger:
             "baseline": {
                 "id": baseline_id.strip(),
                 "trained_through_utc": _format_utc(baseline_trained_through),
+                "computed_at_utc": _format_utc(baseline_computed_at),
                 "probabilities": baseline_probabilities,
             },
             "source_ids": source_ids,
             "price_at_issue_usd": price_at_issue,
+            "price_at_issue_source_id": price_source_id,
+            "price_at_issue_observed_at_utc": _format_utc(price_observed_at),
             "status": "OPEN",
         }
         _append_jsonl(self.forecasts_path, record)
@@ -418,6 +444,8 @@ class ForecastLedger:
             ),
             "mean_entropy_nats": sum(entropies) / len(entropies),
             "top_label_calibration_bins": calibration,
-            "walk_forward_baseline_status": "POINT_IN_TIME_BASELINE_CUTOFF_VALIDATED",
+            "walk_forward_baseline_status": (
+                "NOT_IMPLEMENTED_STORED_BASELINE_CUTOFF_CHECKED"
+            ),
             "performance_claim_status": "DESCRIPTIVE_ONLY_NO_MODEL_SKILL_CLAIM",
         }

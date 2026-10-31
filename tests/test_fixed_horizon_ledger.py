@@ -29,10 +29,13 @@ def forecast_payload(**overrides):
         "baseline": {
             "id": "uniform-v1",
             "trained_through_utc": "2026-10-30T23:59:00Z",
+            "computed_at_utc": "2026-10-30T23:59:00Z",
             "probabilities": {"up": 1 / 3, "flat": 1 / 3, "down": 1 / 3},
         },
         "source_ids": ["SRC-MARKET-001"],
         "price_at_issue_usd": 1.25,
+        "price_at_issue_source_id": "SRC-MARKET-001",
+        "price_at_issue_observed_at_utc": "2026-10-30T23:59:00Z",
     }
     payload.update(overrides)
     return payload
@@ -70,6 +73,33 @@ def test_forecast_rejects_baseline_trained_after_data_cutoff(tmp_path):
     payload["baseline"]["trained_through_utc"] = "2026-10-31T00:00:01Z"
     with pytest.raises(ValueError, match="baseline"):
         ledger.append_forecast(payload)
+
+
+def test_forecast_rejects_baseline_computed_after_issue_time(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    payload = forecast_payload()
+    payload["baseline"]["computed_at_utc"] = "2026-10-31T00:00:01Z"
+    with pytest.raises(ValueError, match="baseline must be computed"):
+        ledger.append_forecast(payload)
+
+
+def test_forecast_rejects_issue_price_observed_after_cutoff(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    payload = forecast_payload(price_at_issue_observed_at_utc="2026-10-31T00:00:01Z")
+    with pytest.raises(ValueError, match="issue price observation"):
+        ledger.append_forecast(payload)
+
+
+def test_forecast_requires_issue_price_source_in_source_registry(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    payload = forecast_payload(price_at_issue_source_id="SRC-UNREGISTERED")
+    with pytest.raises(ValueError, match="included in source_ids"):
+        ledger.append_forecast(payload)
+
+
+def test_observation_lag_must_be_an_integer(tmp_path):
+    with pytest.raises(ValueError, match="positive integer"):
+        ForecastLedger(tmp_path, max_observation_lag_seconds=1.5)
 
 
 def test_forecast_rejects_invalid_probability_distribution(tmp_path):
@@ -157,6 +187,7 @@ def test_metrics_report_brier_log_loss_baseline_and_calibration(tmp_path):
     assert metrics["brier_skill_score"] > 0
     assert metrics["top_label_calibration_bins"][0]["count"] == 1
     assert metrics["performance_claim_status"] == "DESCRIPTIVE_ONLY_NO_MODEL_SKILL_CLAIM"
+    assert metrics["walk_forward_baseline_status"] == "NOT_IMPLEMENTED_STORED_BASELINE_CUTOFF_CHECKED"
 
 
 def test_metrics_do_not_claim_skill_without_resolved_outcomes(tmp_path):
