@@ -5,7 +5,7 @@
   "array_name": "limitations",
   "chunk_index": 113,
   "chunk_count": 114,
-  "record_count": 5,
+  "record_count": 6,
   "records": [
     {
       "id": "LIM-20261031T063200Z-BINANCE-RESERVE-INCIDENT-CAUSALITY",
@@ -60,6 +60,16 @@
       "status": "OPEN",
       "affected_source_ids": [
         "SRC-20261031-TOKYO-SBIC-GENAI-SEMINAR-0632Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T063800Z-APPROVAL-WORKFLOW-ZERO-JOBS",
+      "category": "github_approval_workflow_push_event_zero_jobs",
+      "statement": "GitHub Actions run 41177228657 was triggered by a push event, completed as failure and returned zero jobs, while the inspected approval workflow declares workflow_dispatch only. No job logs are available and the root cause is unknown. Do not attribute the failure to invalid YAML, permission configuration or a specific GitHub service defect without further evidence. The research-branch XRP validator workflow was present in the research branch but no exact-head validator run was returned for the latest branch head; full repository validator status remains pending.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z"
       ]
     }
   ]
