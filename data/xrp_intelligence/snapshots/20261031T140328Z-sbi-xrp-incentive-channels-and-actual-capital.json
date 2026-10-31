@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "20261031T140328Z-sbi-xrp-incentive-channels-and-actual-capital",
+  "captured_at_utc": "2026-10-31T14:03:28Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "scope": [
+    "SBI recurring XRP accumulation and reward distribution",
+    "SBI START Bond tokenized-debt incentive",
+    "SBI Shinsei Bank deposit campaign",
+    "SBI Global Asset Management and SBI ARUHI shareholder rewards",
+    "SBI VC Trade distribution reach",
+    "actual capital versus reward face value"
+  ],
+  "source_bundle_path": "data/xrp_intelligence/sources/sbi_xrp_incentive_channels_20261031.json",
+  "relationship_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T140328Z-sbi-xrp-incentive-channels.json",
+  "confirmed_findings": [
+    {
+      "id": "F1",
+      "statement": "SBI VC Trade offers scheduled crypto-asset accumulation and reward-conversion channels including XRP; the card and Orico programs are opt-in distribution mechanisms.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-ACCUMULATION-20261031",
+        "SRC-SBI-VISA-CRYPTO-CARD-20260501",
+        "SRC-SBI-ORICO-XRP-POINTS-20260731"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "The SBI START Bond was a JPY 10 billion security-token bond issued on ibet for Fin and sold out; eligible investors were offered JPY 200 equivalent XRP per JPY 100,000 purchased.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-START-BOND-XRP-REWARD-20260220"
+      ]
+    },
+    {
+      "id": "F3",
+      "statement": "The maximum theoretical SBI START Bond XRP reward face value is JPY 20 million if the entire JPY 10 billion issue qualifies and every eligible holder claims; actual claims and XRP units delivered remain unknown.",
+      "evidence_class": "INFERENCE",
+      "source_ids": [
+        "SRC-SBI-START-BOND-XRP-REWARD-20260220"
+      ]
+    },
+    {
+      "id": "F4",
+      "statement": "SBI Shinsei Bank offered JPY 500–20,000 equivalent XRP vouchers for qualifying six-month yen deposits; campaign windows ended March 31, 2026.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-SHINSEI-DEPOSIT-XRP-COUPON-20260202"
+      ]
+    },
+    {
+      "id": "F5",
+      "statement": "The SBI Shinsei release says vouchers would be emailed by the end of May but also references a July 2 XRP valuation time; the published chronology is internally inconsistent.",
+      "evidence_class": "DISCONFIRMING_EVIDENCE",
+      "source_ids": [
+        "SRC-SBI-SHINSEI-DEPOSIT-XRP-COUPON-20260202"
+      ]
+    },
+    {
+      "id": "F6",
+      "statement": "SBI Global Asset Management and SBI ARUHI published separate XRP shareholder-benefit programs; their recipient populations and claims must not be combined with SBI Holdings.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-GLOBAL-ASSET-XRP-BENEFIT-20251027",
+        "SRC-SBI-ARUHI-XRP-BENEFIT-20260312"
+      ]
+    },
+    {
+      "id": "F7",
+      "statement": "SBI VC Trade reported more than two million registered service accounts as of July 6, 2026, after the BITPoint Japan merger; this is not an XRP-holder or active-trader count.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-ACCOUNT-COUNT-20260707"
+      ]
+    },
+    {
+      "id": "F8",
+      "statement": "SBI's XRP reward channels coexist with separate Circle/USDC/Arc, JPYSC and Ripple/XRPL initiatives; no exclusive XRP strategy is established.",
+      "evidence_class": "INFERENCE",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-20250822",
+        "SRC-CIRCLE-ARC-SBI-VALIDATOR-20260916",
+        "SRC-SBI-JPYSC-LAUNCH-20260624",
+        "SRC-SBI-RIPPLE-ASIA-XRPL-POC-20260226"
+      ]
+    }
+  ],
+  "actual_capital_separation": {
+    "bond_principal_jpy": 10000000000,
+    "bond_xrp_reward_rate": 0.002,
+    "bond_max_theoretical_reward_jpy": 20000000,
+    "bond_max_reward_status": "INFERRED_UPPER_BOUND_NOT_ACTUAL_REDEMPTION",
+    "bond_rail": "ibet for Fin",
+    "bond_reward_asset": "XRP on XRPL",
+    "bank_deposit_campaign": {
+      "minimum_deposit_jpy": 300000,
+      "maximum_xrp_voucher_per_customer_jpy": 20000,
+      "campaign_end": "2026-03-31",
+      "aggregate_reward_value": "UNKNOWN",
+      "date_inconsistency": "Voucher email by end of May; XRP quantity reference dated July 2, 2026."
+    },
+    "registered_vc_trade_accounts": 2000000,
+    "account_count_cutoff": "2026-07-06",
+    "account_count_is_xrp_holders": false,
+    "open_market_xrp_purchase_value": "UNKNOWN",
+    "net_external_xrp_capital": "UNKNOWN"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "HYP-SBI-XRP-REWARD-FUNNEL-ACTUAL-FLOW",
+      "status": "OPEN",
+      "statement": "SBI's accumulation, card, points, bond and shareholder-benefit products create a recurring/periodic XRP distribution funnel, but do not yet establish the amount of incremental spot buying."
+    },
+    {
+      "id": "HYP-SBI-REWARD-INVENTORY-VS-SPOT",
+      "status": "OPEN",
+      "statement": "SBI may fulfill rewards from existing inventory or OTC supply rather than open-market XRP purchases."
+    },
+    {
+      "id": "HYP-SBI-START-BOND-REWARD-UPPER-BOUND",
+      "status": "INFERENCE",
+      "statement": "The SBI START Bond's published terms imply a JPY 20 million maximum theoretical XRP reward face value if the entire JPY 10 billion issue qualified and all eligible investors claimed."
+    },
+    {
+      "id": "HYP-SBI-MULTIRAIL-NOT-EXCLUSIVE",
+      "status": "OPEN",
+      "statement": "SBI's XRP distribution channels coexist with its Ripple/XRPL, Circle/USDC/Arc and JPYSC activities; the evidence supports a multi-rail strategy, not exclusivity for XRP."
+    },
+    {
+      "id": "HYP-SBI-ACCOUNT-COUNT-NOT-XRP-ADOPTION",
+      "status": "SUPPORTED",
+      "statement": "The two-million SBI VC Trade registered-account figure measures platform reach, not XRP holders, active traders or net XRP capital."
+    },
+    {
+      "id": "HYP-SBI-SHINSEI-REWARD-DATE-ANOMALY",
+      "status": "SUPPORTED",
+      "statement": "The SBI Shinsei deposit-campaign release contains an internal fulfillment-date inconsistency that prevents precise reconstruction of the XRP voucher delivery and valuation sequence."
+    }
+  ],
+  "feature_admission": {
+    "status": "NOT_ADMITTED",
+    "reason": "No disclosed program-level redemption totals, XRP sourcing, execution venue, customer selection share or reconciled net spot purchases."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Product terms and theoretical reward face value do not establish incremental spot demand or a calibrated market signal."
+  },
+  "next_actions": [
+    "Obtain actual XRP units credited and claim counts for the SBI START Bond, card, Orico, deposit and shareholder programs.",
+    "Determine whether reward XRP is sourced from inventory, affiliate treasury, OTC counterparties or open-market executions.",
+    "Measure XRP/JPY depth, spreads, slippage and executed volume around each program's launch and fulfillment windows.",
+    "Separate SBI VC Trade registered accounts from active accounts and XRP-specific participation.",
+    "Track SBI Ripple Asia XRPL production milestones separately from conceptual proof-of-concept announcements.",
+    "Track SBI Circle Holdings, Arc, USDC and JPYSC as distinct rails; do not treat them as XRP capital.",
+    "Keep Japanese SBIC East Japan separate from SBI Holdings and SBI Circle Holdings."
+  ],
+  "safety": "Public-source research only. No orders, credentials, private data, paper-position changes or external financial actions."
+}

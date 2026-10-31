@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "SBI-XRP-INCENTIVE-CHANNELS-20261031",
+  "captured_at_utc": "2026-10-31T14:03:28Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "purpose": "Append primary-source evidence for SBI-group XRP incentives, tokenized bond rewards, deposit vouchers, subsidiary shareholder benefits and distribution reach; separate reward face value from actual spot purchases.",
+  "sources": [
+    {
+      "source_id": "SRC-SBI-START-BOND-XRP-REWARD-20260220",
+      "publisher": "SBI Securities / SBI Holdings",
+      "title": "SBI START tokenized bond with XRP purchase reward",
+      "url": "https://www.sbisec.co.jp/contents/lp/2026/bond_st_260220_sbistart.html",
+      "published_at_utc": "2026-02-20T00:00:00Z",
+      "source_type": "official_tokenized_bond_product_terms",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_SECURITIES_START_BOND_PRODUCT",
+      "claims": [
+        "The SBI START Bond is a three-year, JPY 10 billion unsecured security-token bond issued by SBI Holdings and administered on ibet for Fin; the product page states that the offering sold out.",
+        "Purchasers of at least JPY 100,000 during the March 11–23, 2026 offering were eligible for JPY 200 equivalent of XRP per JPY 100,000 purchased.",
+        "The XRP reward required an SBI VC Trade account and completed receipt procedures by May 15, 2026; the quantity was calculated using SBI VC Trade's May 13, 2026 06:59 sales-price reference.",
+        "The reward was separate from bond coupon payments; the page explicitly says later coupon-date XRP rewards were not implied."
+      ],
+      "limitations": [
+        "The maximum theoretical reward face value is JPY 20 million if the entire JPY 10 billion issue qualified and all eligible holders completed claims; actual claims and XRP units distributed are undisclosed.",
+        "The 0.2% reward ratio is not evidence of a 0.2% open-market XRP purchase; inventory, OTC and spot sourcing are unknown.",
+        "The bond's issuance/recordkeeping rail is ibet for Fin, not XRPL. XRP is a separate investor incentive, not the bond settlement asset.",
+        "The current page's sold-out notice establishes completion of the offering, not the amount of XRP actually delivered."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-SHINSEI-DEPOSIT-XRP-COUPON-20260202",
+      "publisher": "SBI Shinsei Bank / SBI VC Trade",
+      "title": "Power Direct six-month yen deposit campaign with XRP voucher",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0202_16075.html",
+      "published_at_utc": "2026-02-02T00:00:00Z",
+      "source_type": "official_deposit_campaign_terms",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_SHINSEI_VC_TRADE_CAMPAIGN",
+      "claims": [
+        "Eligible customers who entered and placed at least JPY 300,000 in a six-month Power Direct yen time deposit during the stated campaign windows could receive an XRP exchange voucher.",
+        "The published reward tiers range from JPY 500 to JPY 20,000 equivalent, with the top tier requiring at least JPY 30 million in qualifying deposits.",
+        "The published entry period was February 2–March 31, 2026, and the deposit window was January 21–March 31, 2026."
+      ],
+      "limitations": [
+        "The campaign is historical; the published entry and deposit windows have ended.",
+        "The release says vouchers would be emailed by the end of May but also says XRP units would be calculated using a July 2, 2026 06:59 price reference. Those dates are internally inconsistent; do not infer the actual fulfillment sequence.",
+        "No participant count, aggregate voucher value, redeemed XRP units, or XRP procurement method is disclosed.",
+        "The qualifying yen deposit is bank funding, not XRP investment or XRP collateral."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-GLOBAL-ASSET-XRP-BENEFIT-20251027",
+      "publisher": "SBI Global Asset Management",
+      "title": "FY2026 shareholder benefits include XRP and a separate commemorative XRP award",
+      "url": "https://www.sbigroup.co.jp/news/2025/1027_15845.html",
+      "published_at_utc": "2025-10-27T00:00:00Z",
+      "source_type": "official_subsidiary_shareholder_benefit_terms",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_GLOBAL_ASSET_MANAGEMENT_SHAREHOLDER_RELEASE",
+      "claims": [
+        "For the March 2026 record date, the published XRP benefit schedule was JPY 2,500 for 100–499 shares, JPY 10,000 for 500 or more shares with less than one year of continuous holding, and JPY 12,000 for 500 or more shares with more than one year of continuous holding.",
+        "A separate commemorative benefit offered an additional JPY 3,000 equivalent XRP to holders of at least 1,000 shares, making the stated combined amount JPY 15,000 for the qualifying long-term tier."
+      ],
+      "limitations": [
+        "This is a separate listed group company, not the SBI Holdings parent-company benefit; do not combine shareholder populations.",
+        "The release establishes benefit terms, not aggregate redemptions, units delivered, procurement source or market impact.",
+        "The XRP award is a distribution to shareholders, not evidence of net external XRP capital inflow."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-ARUHI-XRP-BENEFIT-20260312",
+      "publisher": "SBI ARUHI",
+      "title": "FY2026 shareholder benefit includes JPY 500 or JPY 1,000 XRP",
+      "url": "https://www.sbigroup.co.jp/news/2026/0312_16171.html",
+      "published_at_utc": "2026-03-12T00:00:00Z",
+      "source_type": "official_subsidiary_shareholder_benefit_terms",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_ARUHI_SHAREHOLDER_RELEASE",
+      "claims": [
+        "SBI ARUHI announced JPY 500 equivalent XRP for eligible shareholders and JPY 1,000 for holders of at least 1,000 shares with the stated one-year continuous holding condition.",
+        "The release describes delivery through an SBI VC Trade account and an August 2026 application process."
+      ],
+      "limitations": [
+        "The application period is historical by the October 31, 2026 cutoff.",
+        "No eligible-holder count, claims, aggregate XRP units, procurement source or market impact is disclosed.",
+        "SBI ARUHI is a separate group subsidiary; do not merge its shareholder population with SBI Holdings or SBI Global Asset Management."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VC-TRADE-ACCOUNT-COUNT-20260707",
+      "publisher": "SBI VC Trade",
+      "title": "SBI VC Trade reports more than two million registered crypto accounts",
+      "url": "https://www.sbigroup.co.jp/news/2026/0707_16468.html",
+      "published_at_utc": "2026-07-07T00:00:00Z",
+      "source_type": "official_exchange_account_count",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_VC_TRADE_CORPORATE",
+      "claims": [
+        "SBI VC Trade reported more than two million registered service accounts as of July 6, 2026.",
+        "The announcement attributes the platform expansion partly to the April 2026 merger with BITPoint Japan and describes plans to integrate service brands by around December 2026."
+      ],
+      "limitations": [
+        "Registered service accounts are not equivalent to active monthly traders, unique beneficial owners, XRP holders, XRP balances or XRP market purchases.",
+        "The count is company-reported and does not disclose XRP-specific customer penetration."
+      ]
+    }
+  ],
+  "independence_policy": {
+    "rule": "Related SBI group releases are primary evidence for their own terms but are not independent corroboration of aggregate market impact.",
+    "no_market_flow_inference": "Reward face value, bond principal, bank deposits, account registrations and wallet labels are not substitutes for executed spot XRP purchases or net external capital.",
+    "time_policy": "Expired offers remain historical evidence and are not represented as active."
+  }
+}
