@@ -263,10 +263,10 @@
       "data/xrp_intelligence/snapshots/20261031T211452Z-coinbase-etf-custody-prime-execution-credit-and-ripple-seed-capital.json",
       "data/xrp_intelligence/ledger_archive/v1/run_updates-159-of-159-corrected.json"
     ],
-    "verified_head_sha": "99e7af8f535ac47a43075703590afcc008cbcb8b",
-    "verification_at_utc": "2026-10-31T21:37:40Z",
-    "validator_run_id": 41244460564,
-    "gate_run_id": 41244463390,
+    "verified_head_sha": "1dd62701a323167084a1d4b2c5f16b53f6bd8308",
+    "verification_at_utc": "2026-10-31T21:38:40Z",
+    "validator_run_id": 41244532923,
+    "gate_run_id": 41244535757,
     "gate_status": "PASS_MERGE_DISABLED",
     "archive_shards_checked": 439,
     "source_revision_addenda_checked": 21,
@@ -3945,10 +3945,10 @@
     "verification_status": "PASS_EXACT_HEAD_VALIDATION",
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED",
-    "verified_head_sha": "99e7af8f535ac47a43075703590afcc008cbcb8b",
-    "verification_at_utc": "2026-10-31T21:37:40Z",
-    "validator_run_id": 41244460564,
-    "gate_run_id": 41244463390,
+    "verified_head_sha": "1dd62701a323167084a1d4b2c5f16b53f6bd8308",
+    "verification_at_utc": "2026-10-31T21:38:40Z",
+    "validator_run_id": 41244532923,
+    "gate_run_id": 41244535757,
     "gate_status": "PASS_MERGE_DISABLED",
     "archive_shards_checked": 439,
     "source_revision_addenda_checked": 21,
@@ -3961,14 +3961,16 @@
       "SBI Remit's 2023 announcement documents XRP bridge use with SBI VC Trade supply and Tranglo payout; current volumes unknown.",
       "BNY supports XRP and RLUSD custody; actual XRP customer balances are undisclosed.",
       "Coinbase RLUSD distribution is a stablecoin channel across XRPL, Base and Ethereum; planned Global Exchange collateral support was not live at launch.",
-      "TokenPost/SoSoValue reports -$496,496 Oct30 ETF flow; AlphaFinance reports +$8.4M Oct29, different dates and provider scopes."
+      "TokenPost/SoSoValue reports -$496,496 Oct30 ETF flow; AlphaFinance reports +$8.4M Oct29, different dates and provider scopes.",
+      "The approval workflow again generated push-event runs with zero jobs on research commits 99e7af8 and 1dd6270, although the inspected main and research workflow files declare workflow_dispatch only. Root cause remains unknown; no invalid-YAML claim is made."
     ],
     "limitations": [
       "No raw current XRPL account_info/account_tx was obtained; account balances are secondary observations dated Oct29.",
       "No EscrowFinish, exchange deposit, OTC sale or spot sale was verified at the cutoff.",
       "The $13T Ripple Treasury figure remains secondary and not reconciled to a primary filing.",
       "New source revisions are exact-head validated but still pending append into immutable source archive shards.",
-      "Full base-SHA classification of all 202 open PRs was not completed."
+      "Full base-SHA classification of all 202 open PRs was not completed.",
+      "The approval workflow zero-job anomaly is documented from two exact run records but its trigger source/root cause remains unresolved."
     ]
   },
   "previous_snapshot_verification": {
@@ -7116,7 +7118,56 @@
     "status": "STORED; XRP_LEDGER_VALIDATOR_DOES_NOT_AUDIT_WORKFLOW_CONTENT",
     "source_reference_count": 1,
     "missing_source_references": 0,
-    "verified_head_sha": "99e7af8f535ac47a43075703590afcc008cbcb8b"
+    "verified_head_sha": "99e7af8f535ac47a43075703590afcc008cbcb8b",
+    "approval_workflow_zero_job_anomaly": {
+      "runs": [
+        {
+          "run_id": 41244459740,
+          "event": "push",
+          "head_sha": "99e7af8f535ac47a43075703590afcc008cbcb8b",
+          "conclusion": "failure",
+          "job_count": 0
+        },
+        {
+          "run_id": 41244532032,
+          "event": "push",
+          "head_sha": "1dd62701a323167084a1d4b2c5f16b53f6bd8308",
+          "conclusion": "failure",
+          "job_count": 0
+        }
+      ],
+      "workflow_path": ".github/workflows/barrot-approve-pr.yml",
+      "inspected_trigger_on_main": [
+        "workflow_dispatch"
+      ],
+      "inspected_trigger_on_research_branch": [
+        "workflow_dispatch"
+      ],
+      "observed_event": "push",
+      "root_cause": "UNKNOWN",
+      "invalid_yaml_claim": "NOT_ESTABLISHED"
+    },
+    "main_commit_diff": {
+      "sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+      "title": "Cross-analysis refresh [skip ci]",
+      "parent_sha": "004d8b92c755dc96a9653e1d5979e18765a55d37",
+      "changed_files": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "only_value_change": "generated_at",
+      "xrp_recent_entries": 0,
+      "xrp_prior_entries": 0,
+      "xrp_recent_score": null,
+      "xrp_prior_score": null,
+      "xrp_shift": null,
+      "btc_recent_entries": 0,
+      "btc_prior_entries": 0,
+      "btc_recent_score": null,
+      "btc_prior_score": null,
+      "btc_shift": null
+    },
+    "workflow_risk_status": "MAIN_WRITE_CAPABILITIES_REMAIN; PR1429 AND PR1430 ARE UNMERGED",
+    "approval_workflow_root_cause": "UNKNOWN; repeated push-event runs contain zero jobs despite inspected workflow trigger declaring workflow_dispatch only."
   },
   "latest_exchange_balance_reconciliation": {
     "recorded_at_utc": "2026-10-31T16:01:37Z",
@@ -7150,14 +7201,14 @@
     "market_feature_admission": "CUSTODY_TIMELINE_ONLY_NOT_DIRECTIONAL"
   },
   "latest_snapshot_verification_status": "PASS_EXACT_HEAD_VALIDATION",
-  "latest_snapshot_verification_head_sha": "99e7af8f535ac47a43075703590afcc008cbcb8b",
-  "latest_snapshot_verification_at_utc": "2026-10-31T21:37:40Z",
+  "latest_snapshot_verification_head_sha": "1dd62701a323167084a1d4b2c5f16b53f6bd8308",
+  "latest_snapshot_verification_at_utc": "2026-10-31T21:38:40Z",
   "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261031T213618Z-escrow-2b-actual-capital-and-route-attribution.json",
-  "last_verified_head_sha": "99e7af8f535ac47a43075703590afcc008cbcb8b",
+  "last_verified_head_sha": "1dd62701a323167084a1d4b2c5f16b53f6bd8308",
   "last_verified_at_utc": "2026-10-31T21:20:49Z",
-  "last_validator_run_id": 41244460564,
+  "last_validator_run_id": 41244532923,
   "last_validator_tests_passed": 32,
-  "last_fail_closed_gate_run_id": 41244463390,
+  "last_fail_closed_gate_run_id": 41244535757,
   "last_fail_closed_gate_status": "PASS_MERGE_DISABLED",
   "snapshot_revision_history": [
     {
@@ -7242,10 +7293,10 @@
   "latest_verified_validator_tests_passed": 20,
   "latest_verified_gate_run_id": 41194367355,
   "latest_verified_gate_status": "PASS_MERGE_DISABLED",
-  "latest_validator_run_id": 41244460564,
+  "latest_validator_run_id": 41244532923,
   "latest_validator_head_sha": "75c62b02c4fa4ef0cde55c09f5650b0ba0d3cfb8",
   "latest_validator_tests_passed": 32,
-  "latest_gate_run_id": 41244463390,
+  "latest_gate_run_id": 41244535757,
   "latest_gate_status": "PASS_MERGE_DISABLED",
   "latest_gate_head_sha": "61bb69e02a3e99510820c60468406eb905480458",
   "latest_fail_closed_gate_run_id": 41243145642,
@@ -7589,7 +7640,7 @@
   "latest_accuracy_safety_pr_gate_status": "PASS_MERGE_DISABLED",
   "latest_cross_analysis_safety_pr": 1429,
   "latest_cross_analysis_fix_consolidated_into_pr": 1386,
-  "latest_repository_audit_status": "PARTIAL_LIVE_REAUDIT; BASE CLASSIFICATION NOT FULLY RECOUNTED",
+  "latest_repository_audit_status": "PARTIAL_LIVE_REAUDIT; APPROVAL WORKFLOW ZERO-JOB PUSH ANOMALY REPEATED; ROOT CAUSE UNKNOWN",
   "latest_coinbase_cbxrp_snapshot": {
     "path": "data/xrp_intelligence/snapshots/20261031T002653Z-coinbase-cbxrp-reserve-and-custody.json",
     "blob_sha": "884a2cef3b81eb946d88dd4f35c0ee0835750662",
