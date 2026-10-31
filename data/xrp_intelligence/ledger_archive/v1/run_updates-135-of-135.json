@@ -1,0 +1,45 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 134,
+  "chunk_count": 135,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T084846Z-DUPLICATE-SOURCE-ID-POINTER-CORRECTION",
+      "created_at_utc": "2026-10-31T08:48:46Z",
+      "data_cutoff_utc": "2026-10-31T08:48:46Z",
+      "source_ids": [
+        "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30",
+        "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+        "SRC-20261031-CRYPTOKEYHOLE-XRP-ISSUER-FLOWS-OCT30-PARTIAL",
+        "SRC-20261031-TOKYO-SBIC-OFFICIAL-PROFILE",
+        "SRC-20261031-NAGOYA-SBIC-SISTER-COMPANY-RELATIONSHIP",
+        "SRC-20261031-OSAKA-SBIC-CHATGPT-WORKSHOP",
+        "SRC-20261031-US-SBA-SBIC-OFFICIAL-PROGRAM",
+        "SRC-20261031-OPENAI-SBIC-LOW-AUTHORITY-SPECULATION",
+        "SRC-20261031-SOCIAL-BIAS-INFERENCE-CORPUS-ACL"
+      ],
+      "summary": "The exact-head validator on ad7a616 detected one duplicate source ID: the Oct 30 CryptoETF.today source had already been archived in the 08:37 snapshot. Corrected the current unverified append by removing the duplicate record from the referenced source shard and reusing the existing archived source ID. The original newly created duplicate shard is retained unreferenced; no previously verified shard or snapshot was modified. Updated the archive pointer and counts; exact-head revalidation is pending.",
+      "repository_audit_path": "data/repository_audits/20261031T084614Z-etf-capital-sbic-identity-and-current-repo-audit.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "prior_failed_head": "ad7a616b335a44fe69ad72ca6d8d36ff34f42fcb",
+        "prior_failed_run_id": 41186048449,
+        "prior_error": "duplicate source IDs",
+        "duplicate_source_id": "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+        "duplicate_record_removed_from_referenced_archive": true,
+        "original_shard_preserved_unreferenced": true,
+        "previous_verified_shards_unchanged": true,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_changed_by_this_run": false,
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false
+      }
+    }
+  ]
+}

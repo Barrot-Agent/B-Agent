@@ -1,0 +1,21 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 123,
+  "chunk_count": 124,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "LIM-20261031T084846Z-DUPLICATE-SOURCE-ID-CORRECTED",
+      "category": "archive_integrity",
+      "statement": "The 08:46 append initially reused a CryptoETF.today source ID already present in the 08:37 archive. Exact-head validation detected the duplicate. The unverified append was corrected by removing the duplicate from the referenced source shard, reusing the existing source record and preserving the original duplicate shard unreferenced. Revalidation is pending.",
+      "severity": "MEDIUM",
+      "status": "RESOLVED_PENDING_REVALIDATION",
+      "affected_source_ids": [
+        "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL"
+      ]
+    }
+  ]
+}
