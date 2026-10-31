@@ -83,6 +83,8 @@ jobs:
             tests/test_cross_analysis_workflow_safety.py \
             tests/test_barrot_approve_pr_push_noop.py \
             tests/test_databricks_token_rotation_safety.py \
+            tests/test_workflow_main_write_quarantine.py \
+            tests/test_barrot_agent_branch_safety.py \
             tests/test_telemetry_workflow_readonly.py \
             tests/test_external_mutation_workflows_manual_only.py \
             -v --no-cov

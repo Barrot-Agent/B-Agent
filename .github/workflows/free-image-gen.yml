@@ -9,7 +9,7 @@ on:
         default: ''
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   generate:
@@ -24,10 +24,11 @@ jobs:
           python-version: "3.11"
       - name: Generate image (free, ZeroGPU)
         run: python3 free_image_gen.py
-      - name: Commit image
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add generated_images/
-          git diff --cached --quiet || git commit -m "New free-generated image [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Upload free-image-generation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: free-image-generation-${{ github.run_number }}
+          path: |
+            generated_images/
+          if-no-files-found: warn
+          retention-days: 7

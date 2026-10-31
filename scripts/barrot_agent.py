@@ -54,7 +54,7 @@ TASK = os.environ.get("TASK_BODY", "")
 TITLE = os.environ.get("TASK_TITLE", "Barrot task")
 TASK_MODE = os.environ.get("TASK_MODE", "engineering").strip().lower()
 ISSUE = os.environ.get("ISSUE_NUMBER", "")
-BRANCH = os.environ.get("BRANCH", "barrot/task")
+BRANCH = os.environ.get("BRANCH", "barrot/task-0")
 MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
@@ -716,8 +716,8 @@ def configure_git() -> None:
 
 
 def checkout_branch(branch: str) -> None:
-    if not re.fullmatch(r"[A-Za-z0-9._/-]+", branch) or ".." in branch or branch.startswith("-"):
-        raise ValueError("Invalid Barrot task branch name")
+    if not re.fullmatch(r"barrot/task-[0-9]+", branch):
+        raise ValueError("Barrot Agent may write only to unique barrot/task-<numeric-id> branches; protected and arbitrary branches are forbidden.")
     remote = run(["git", "fetch", "origin", f"+refs/heads/{branch}:refs/remotes/origin/{branch}"], check=False, quiet=True)
     if remote.returncode == 0:
         result = run(["git", "checkout", "-B", branch, f"origin/{branch}"], check=False)
@@ -782,6 +782,8 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         or str(cycle_data.get("issue", {}).get("branch", "")).strip()
         or BRANCH
     )
+    if not re.fullmatch(r"barrot/task-[0-9]+", head_branch):
+        raise RuntimeError("Refusing to create a Barrot PR from a non-task branch.")
     body = [
         f"Autonomous execution of #{ISSUE} by Barrot." if ISSUE and ISSUE != "0" else "Autonomous execution by Barrot.",
         "",
