@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T002653Z-COINBASE-CBXRP-RESERVE-CUSTODY",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T002653Z-coinbase-cbxrp-reserve-custody-graph.json",
+  "created_at_utc": "2026-10-31T00:26:53Z",
+  "captured_at_utc": "2026-10-31T00:26:53Z",
+  "source_ids": [
+    "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY",
+    "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-20260331",
+    "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T002653Z-01",
+      "from_entity": "Coinbase",
+      "relation": "publishes_1_to_1_reserve_backing_for",
+      "to_entity": "cbXRP on Base",
+      "status": "OFFICIAL_COINBASE_PROOF_OF_RESERVES_PAGE",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "details": "Displayed reserve 151,405,263.6 XRP versus 151,403,016.069 cbXRP supply."
+    },
+    {
+      "edge_id": "E-20261031T002653Z-02",
+      "from_entity": "Coinbase cbXRP reserve set",
+      "relation": "comprises",
+      "to_entity": "20 XRPL reserve addresses",
+      "status": "OFFICIAL_PAGE_ADDRESS_TABLE",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "details": "Displayed address balances sum to 151,405,263.598 XRP, within 0.002 XRP of displayed total."
+    },
+    {
+      "edge_id": "E-20261031T002653Z-03",
+      "from_entity": "Coinbase cbXRP reserve set",
+      "relation": "has_derived_coverage",
+      "to_entity": "100.001484% with 2,247.531 XRP surplus",
+      "status": "DERIVED_FROM_FIRST_PARTY_TOTALS",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "details": "First-party page is dynamic and not an independent audit."
+    },
+    {
+      "edge_id": "E-20261031T002653Z-04",
+      "from_entity": "Coinbase Wrapped XRP (cbXRP)",
+      "relation": "is_supported_on",
+      "to_entity": "Base",
+      "status": "OFFICIAL_COINBASE_HELP",
+      "source_ids": [
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ],
+      "details": "Coinbase says wrapped assets are 1:1 backed by underlying assets held in custody."
+    },
+    {
+      "edge_id": "E-20261031T002653Z-05",
+      "from_entity": "Coinbase digital asset disclosure",
+      "relation": "marks_XRP_holding_and_commercial_engagement",
+      "to_entity": "Yes as of 31 March 2026",
+      "status": "OFFICIAL_COINBASE_DISCLOSURE",
+      "source_ids": [
+        "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-20260331"
+      ],
+      "details": "The disclosure defines commercial engagement broadly and does not state amount."
+    },
+    {
+      "edge_id": "E-20261031T002653Z-06",
+      "from_entity": "Coinbase Custody Trust Company",
+      "relation": "marks_XRP_and_cbXRP_holding_and_commercial_engagement",
+      "to_entity": "Yes/Yes as of 31 March 2026",
+      "status": "OFFICIAL_COINBASE_DISCLOSURE",
+      "source_ids": [
+        "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-20260331"
+      ],
+      "details": "RLUSD is marked no holding / yes commercial engagement in the same custody table."
+    },
+    {
+      "edge_id": "E-20261031T002653Z-07",
+      "from_entity": "Coinbase cbXRP reserve addresses",
+      "relation": "exact_address_overlap_with",
+      "to_entity": "Five Binance incident source wallets",
+      "status": "ZERO_EXACT_STRING_MATCHES",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ],
+      "details": "No exact address overlap among 20 Coinbase-published reserve addresses and the five Binance source addresses."
+    },
+    {
+      "edge_id": "E-20261031T002653Z-08",
+      "from_entity": "Coinbase cbXRP send/receive functionality",
+      "relation": "regional_restrictions_include",
+      "to_entity": "Japan and New York State",
+      "status": "OFFICIAL_HELP_PAGE_SUBJECT_TO_CHANGE",
+      "source_ids": [
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ],
+      "details": "Native XRP and wrapped cbXRP availability differ by region; do not infer cbXRP availability from XRP listing."
+    }
+  ],
+  "disconfirming_evidence": [
+    {
+      "hypothesis_id": "H-20261031T002653Z-01",
+      "disconfirming_evidence": [
+        "First-party disclosure is not independent audit; Base contract supply was not independently verified due 403.",
+        "cbXRP supply is approximately 0.239% of circulating XRP supply, so its scale is limited relative to total float."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261031T002653Z-02",
+      "disconfirming_evidence": [
+        "Commercial engagement is broadly defined and no holding amount is disclosed.",
+        "RLUSD collateral is future availability and cbXRP supply is modest versus XRP circulation.",
+        "No evidence of coordinated market-making, proprietary directional positioning or price manipulation."
+      ]
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}
