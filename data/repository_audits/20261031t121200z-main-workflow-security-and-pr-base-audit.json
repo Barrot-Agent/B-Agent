@@ -202,5 +202,29 @@
     "paper_position_mutation": false,
     "real_money_trade": false
   },
-  "status": "READ_ONLY_MAIN_AUDIT_AND_DRAFT_BRANCH_FIXES; NO_MAIN_CHANGE"
+  "status": "CORRECTION_COMMITTED; EXACT_HEAD_RETRY_PENDING",
+  "updated_at_utc": "2026-10-31T12:25:00Z",
+  "post_capture_validation": {
+    "attempted_head": "a40813c00c62b04413e6f756a529ea5d90f7a811",
+    "validator_run_id": 41200887742,
+    "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41200887742",
+    "gate_run_id": 41200887751,
+    "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41200887751",
+    "validator_status": "BLOCKED",
+    "gate_status": "PASS_MERGE_DISABLED",
+    "root_cause": "The three new archive pointer chunks used blob_sha instead of the validator-required git_blob_sha; the latest_snapshot pointer omitted record_type, snapshot_id, captured_at_utc and index_format_version. The validator therefore could not load the new shards and correctly rejected the snapshot references. The archive files themselves were readable and their blob SHA readbacks matched.",
+    "corrective_actions": [
+      "Changed new archive chunk metadata to git_blob_sha and removed noncanonical chunk_count fields.",
+      "Added snapshot_reference record_type, snapshot_id, captured_at_utc and index_format_version to the ledger pointer.",
+      "Corrected graph edge endpoints to node IDs; added missing card-product nodes and corrected the planned trust merger edge."
+    ],
+    "data_loss": false
+  },
+  "post_capture_graph_correction": {
+    "commit_sha": "c093faf3dddd72ecc6688a947e7af9db9cb18223",
+    "blob_sha": "5304fb8e9d136f69e85fcfcb5288f0f03ddf96ff",
+    "node_count": 35,
+    "edge_count": 40,
+    "missing_endpoints": 0
+  }
 }

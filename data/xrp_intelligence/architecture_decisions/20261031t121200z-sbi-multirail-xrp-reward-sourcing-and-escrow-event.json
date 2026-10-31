@@ -97,6 +97,16 @@
       "id": "D10",
       "decision": "Keep PR #1411 as a draft security proposal; main token-input workflow remains active until approved merge.",
       "rationale": "The unsafe input and shell interpolation are removed only on the PR branch; no secret or deployment operation was performed."
+    },
+    {
+      "id": "D11",
+      "decision": "Correct archive pointer chunk metadata and immutable snapshot reference fields after the exact-head validator failed closed.",
+      "rationale": "The validator requires git_blob_sha on archive chunks and a snapshot_reference pointer with matching record_type, snapshot_id, captured_at_utc and index_format_version. The initial append used noncanonical metadata; no archive data was lost."
+    },
+    {
+      "id": "D12",
+      "decision": "Use node IDs rather than display labels in relationship graph edge endpoints and ensure every endpoint resolves.",
+      "rationale": "Graph schema integrity requires stable node references; the two card product nodes were added and the planned SBI Clearing Trust merger edge was corrected."
     }
   ],
   "alternatives_considered": [
@@ -122,7 +132,7 @@
     "Build point-in-time fixed-horizon feature store and walk-forward baselines; no live forecast before leakage/calibration gates."
   ],
   "verification": {
-    "status": "PENDING_EXACT_HEAD_VALIDATION",
+    "status": "PENDING_EXACT_HEAD_VALIDATION_AFTER_SCHEMA_CORRECTION",
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED",
     "main_modified_by_this_run": false,
@@ -131,6 +141,24 @@
     "manual_workflow_dispatch": false,
     "secret_access": false,
     "paper_position_mutated": false,
-    "real_money_trade": false
-  }
+    "real_money_trade": false,
+    "initial_validator_failure": {
+      "attempted_head": "a40813c00c62b04413e6f756a529ea5d90f7a811",
+      "validator_run_id": 41200887742,
+      "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41200887742",
+      "gate_run_id": 41200887751,
+      "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41200887751",
+      "validator_status": "BLOCKED",
+      "gate_status": "PASS_MERGE_DISABLED",
+      "root_cause": "The three new archive pointer chunks used blob_sha instead of the validator-required git_blob_sha; the latest_snapshot pointer omitted record_type, snapshot_id, captured_at_utc and index_format_version. The validator therefore could not load the new shards and correctly rejected the snapshot references. The archive files themselves were readable and their blob SHA readbacks matched.",
+      "corrective_actions": [
+        "Changed new archive chunk metadata to git_blob_sha and removed noncanonical chunk_count fields.",
+        "Added snapshot_reference record_type, snapshot_id, captured_at_utc and index_format_version to the ledger pointer.",
+        "Corrected graph edge endpoints to node IDs; added missing card-product nodes and corrected the planned trust merger edge."
+      ],
+      "data_loss": false
+    },
+    "graph_endpoints_resolved": true
+  },
+  "updated_at_utc": "2026-10-31T12:25:00Z"
 }
