@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "BARROT-XRP-SOURCES-BINANCE-RECOVERY-UPDATE3-20261031T1431Z",
+  "captured_at_utc": "2026-10-31T14:31:32Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "sources": [
+    {
+      "source_id": "SRC-BINANCE-RECOVERY-UPDATE3-20261031",
+      "publisher": "Binance",
+      "title": "Security Incident | Recovery Update #3: 90% of Stolen Assets Replenished; Proof of Reserves Snapshot Provided",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "published_at_utc": "2026-10-31T14:24:00Z",
+      "source_type": "official_exchange_incident_recovery_announcement",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "BINANCE_OFFICIAL",
+      "claims": [
+        "Binance states that the covered amount has increased from approximately 80% to 90% of the incident loss.",
+        "Binance states that BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC are fully backed at 100% in the new snapshot.",
+        "Binance states that the new Proof of Reserves snapshot was taken at 2026-10-31 00:00 UTC and has been updated on its PoR website.",
+        "Binance estimates that full zero-knowledge proof generation requires 40 to 50 hours and may be available by 2026-11-03 UTC.",
+        "Binance states that the remaining 10% consists of tokens outside the ten named assets and that these assets are less liquid.",
+        "Binance states that replenishment uses a partial SAFU deployment, a portion of the Futures Insurance Fund and corporate treasury.",
+        "Binance says partial SAFU deployment is expected over the following 24 hours and that SAFU will be replenished to approximately USD 1 billion.",
+        "Binance says the remaining Futures Insurance Fund is above its required risk-management level.",
+        "Binance targets resuming withdrawals on 2026-11-01, subject to its security process."
+      ],
+      "limitations": [
+        "These are Binance's own statements and have not yet been independently reconciled to the complete address-level reserve set and customer-liability dataset.",
+        "The full zero-knowledge proof was not yet available at the capture cutoff; Binance estimated availability by 2026-11-03.",
+        "The announcement does not disclose XRP units purchased, XRP-specific USD purchases, venue split between spot and OTC, or the exact source of XRP replenishment.",
+        "The statement '100% backed' is recorded as a minimum 1:1 coverage claim, not an independently recomputed exact reserve ratio.",
+        "The aggregate 90% coverage figure is not converted into a dollar amount because the announcement does not provide a token-by-token reconciliation.",
+        "A Proof of Reserves snapshot covers the disclosed custody scope; it is not a complete audit of all liabilities, corporate solvency or operational controls."
+      ]
+    },
+    {
+      "source_id": "SRC-BINANCE-RECOVERY-UPDATE2-20261030",
+      "publisher": "Binance",
+      "title": "Security Incident Update #2",
+      "url": "https://www.binance.com/en/support/announcement/detail/d3306d9dca5243548c813b605e1d1751",
+      "published_at_utc": "2026-10-30T19:33:00Z",
+      "source_type": "official_exchange_incident_announcement",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "BINANCE_OFFICIAL",
+      "claims": [
+        "Binance previously stated that more than USD 6.34 billion in company funds had been set aside.",
+        "Binance stated that approximately USD 5 billion was already held in exact affected token assets at that time.",
+        "Binance said it was acquiring remaining affected token assets through market and OTC channels."
+      ],
+      "limitations": [
+        "The update predates Recovery Update #3 and is a prior-state company statement.",
+        "It does not disclose XRP-specific purchase amounts or execution venues."
+      ]
+    },
+    {
+      "source_id": "SRC-BINANCE-POR-METHODOLOGY-20261031",
+      "publisher": "Binance",
+      "title": "Proof of Reserves methodology",
+      "url": "https://www.binance.com/en/proof-of-reserves",
+      "published_at_utc": null,
+      "source_type": "official_exchange_proof_of_reserves_methodology",
+      "evidence_class": "PRIMARY_DOCUMENTATION",
+      "independence_group": "BINANCE_OFFICIAL",
+      "claims": [
+        "Binance describes address ownership verification, customer-balance snapshots, zk-SNARK proof generation and Merkle-tree inclusion verification.",
+        "The page describes user self-verification of inclusion in the liabilities report."
+      ],
+      "limitations": [
+        "The web-rendered page did not expose the newly updated asset-level table in machine-readable text at this capture.",
+        "The methodology page is not an independent third-party audit."
+      ]
+    },
+    {
+      "source_id": "SRC-COINDESK-BINANCE14-POR-20261030",
+      "publisher": "CoinDesk",
+      "title": "Binance hack drained wallets backing customer assets, reserve data shows",
+      "url": "https://www.coindesk.com/business/2026/10/30/binance-hack-drained-wallets-backing-customer-assets-reserve-data-shows",
+      "published_at_utc": "2026-10-29T20:17:00Z",
+      "source_type": "independent_secondary_reserve_address_review",
+      "evidence_class": "SECONDARY_REPORTING",
+      "independence_group": "COINDESK_REVIEW_OF_BINANCE_POR_AND_ETHEREUM_CHAIN",
+      "claims": [
+        "CoinDesk reports that the Ethereum wallet labelled Binance 14 appeared in Binance's 2026-10-01 Proof of Reserves address set.",
+        "CoinDesk reports that Binance 14 held approximately 89,475 ETH and 1.26 billion USDT at the October 1 snapshot."
+      ],
+      "limitations": [
+        "This source's wallet example is Ethereum-specific and does not establish that the five XRPL source wallets were in the October 1 XRP reserve set.",
+        "Its analysis predates Recovery Update #3 and must not be used as the current October 31 reserve ratio."
+      ]
+    },
+    {
+      "source_id": "SRC-EDGE-BINANCE-OCT1-XRP-POR-20261030",
+      "publisher": "The Edge",
+      "title": "Binance Estimates $6.3bn Impact From Security Incident, Pledges to Cover All Losses",
+      "url": "https://edgeconsultancykw.com/binance-security-incident-6-3bn-impact-october-2026/",
+      "published_at_utc": "2026-10-30T00:00:00Z",
+      "source_type": "secondary_reproduction_of_october_1_por_data",
+      "evidence_class": "SECONDARY_REPORTING",
+      "independence_group": "EDGE_REPRODUCTION_OF_BINANCE_OCT1_POR",
+      "claims": [
+        "The report reproduces an October 1, 2026 XRP reserve ratio of 100.77%.",
+        "The report gives October 1 XRP customer net account balances of approximately 2.496 billion XRP.",
+        "The report gives October 1, 2025 XRP customer net account balances of approximately 2.753 billion XRP."
+      ],
+      "limitations": [
+        "The values are historical October 1 figures, not the October 31 post-incident snapshot.",
+        "The displayed token quantities are rounded; any implied reserve balance is approximate.",
+        "The source reproduces exchange PoR data and is not a separate custody attestation."
+      ]
+    },
+    {
+      "source_id": "SRC-REUTERS-COINBASE-OFFLINE-KEY-CHANGES-20261031",
+      "publisher": "Reuters",
+      "title": "Crypto exchanges call for quick moves to bolster defenses after Binance heist",
+      "url": "https://www.reuters.com/legal/government/crypto-exchanges-call-quick-moves-bolster-defenses-after-binance-heist-2026-10-31/",
+      "published_at_utc": "2026-10-31T00:26:00Z",
+      "source_type": "independent_exchange_security_reporting",
+      "evidence_class": "SECONDARY_REPORTING_OF_COMPANY_STATEMENT",
+      "independence_group": "REUTERS_REPORTING",
+      "claims": [
+        "Reuters reports that Coinbase said it adjusted systems that store cryptocurrency keys offline as a precaution after the Binance incident.",
+        "Reuters reports that exchanges called for faster industry-wide incident information sharing and coordinated response."
+      ],
+      "limitations": [
+        "This is a custody/security response, not evidence of a Coinbase XRP-specific product or reserve change.",
+        "Reuters does not disclose the exact Coinbase control changes."
+      ]
+    },
+    {
+      "source_id": "SRC-ALPHA-XRP-SPOT-ETF-FLOWS-20261029",
+      "publisher": "Alpha Finance",
+      "title": "XRP ETF dashboard",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "published_at_utc": "2026-10-31T00:00:00Z",
+      "source_type": "secondary_fund_flow_aggregator",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "independence_group": "ALPHA_FINANCE_ETF_FLOW_SERIES",
+      "claims": [
+        "The dashboard reports a USD 8.4 million net inflow on October 29, 2026 across five U.S. spot XRP funds.",
+        "The dashboard reports USD 98.9 million net inflow over the preceding 30 sessions and USD 1.73 billion cumulative net inflow since November 14, 2025."
+      ],
+      "limitations": [
+        "The dashboard's latest completed session at capture was October 29.",
+        "It states that fund net assets and holdings are not published in its flow series; cumulative flow is not current AUM or a current coin-balance measure.",
+        "ETF creations/redemptions can settle after the flow report and do not by themselves predict same-day XRP price."
+      ]
+    }
+  ],
+  "independence_policy": {
+    "rule": "Binance statements are one issuer/exchange source family. CoinDesk, The Edge, Reuters and Alpha Finance are separate publishers but must not be assumed fully independent of underlying exchange data.",
+    "corroboration": "Treat primary company statements, independent address-level chain reconstruction, reserve-address ownership, customer-liability proofs and third-party market data as distinct evidence classes.",
+    "feature_admission": "The recovery announcement may enter the event timeline. Do not admit its aggregate coverage percentage or ETF gross/cumulative flow as a directional XRP price feature without point-in-time reconciliation."
+  }
+}

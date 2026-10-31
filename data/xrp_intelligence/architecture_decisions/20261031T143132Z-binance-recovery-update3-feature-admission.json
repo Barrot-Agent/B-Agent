@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031-BINANCE-RECOVERY-UPDATE3-RESERVE-AND-FEATURE-ADMISSION",
+  "captured_at_utc": "2026-10-31T14:31:32Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NOT_A_TRADE_SIGNAL",
+  "context": "Binance's 2026-10-31 Recovery Update #3 claims 90% aggregate incident coverage and at least 1:1 coverage for ten named tokens including XRP, based on a 00:00 UTC PoR snapshot. The full zk-SNARK proof is estimated by 2026-11-03.",
+  "decisions": [
+    "Record Binance's top-ten XRP coverage as a primary company assertion with full proof pending.",
+    "Do not treat the 90% aggregate incident recovery figure as an XRP-specific purchase or capital-flow quantity.",
+    "Keep XRP spot purchases, XRP OTC purchases, SAFU funding, Futures Insurance Fund funding and corporate treasury funding as separate unknown or disclosed categories.",
+    "Admit the event to the incident timeline only; do not admit it as a directional price feature until reserve-address and customer-liability reconciliation is complete.",
+    "Track Futures Insurance Fund balances separately because its stated purpose includes liquidation-deficit and ADL protection.",
+    "Treat Coinbase's reported offline-key changes as a custody/security response, not an XRP demand signal.",
+    "Use ETF flow data only with its published session cutoff and distinguish cumulative net flows from current AUM, holdings and actual spot executions."
+  ],
+  "required_verification": [
+    "Obtain the October 31 PoR address export and complete zk-SNARK proof when published.",
+    "Reconcile XRP reserve addresses and customer net liabilities at the same snapshot time.",
+    "Crosswalk all five XRPL incident source wallets against Binance's reserve-address set.",
+    "Obtain token-specific replenishment quantities and public/OTC execution evidence before making any actual-capital claim.",
+    "Capture daily Futures Insurance Fund balances and compare with liquidation/ADL stress history."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "feature_admission": {
+    "incident_timeline": "ADMITTED",
+    "directional_xrp_feature": "NOT_ADMITTED",
+    "actual_capital_feature": "BLOCKED",
+    "reserve_flow_feature": "BLOCKED_PENDING_ADDRESS_AND_LIABILITY_CROSSWALK"
+  }
+}
