@@ -72,5 +72,5 @@ def test_sbi_graph_edges_resolve_to_source_and_entity_ids():
 def test_sbi_prediction_and_actual_capital_are_not_issued():
     assert SNAPSHOT["feature_admission"]["xrp_directional_price_feature"] == "NOT_ADMITTED"
     assert SNAPSHOT["feature_admission"]["xrp_actual_capital_feature"] == "BLOCKED_PENDING_REDEMPTION_AND_SOURCING_DATA"
-    assert SNAPSHOT["forecast_status"] == "NOT_ISSUED"
+    assert SNAPSHOT["feature_admission"]["forecast_status"] == "NOT_ISSUED"
     assert DECISION["forecast_status"] == "NOT_ISSUED"
