@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-20261031T215123Z-DRIVEWEALTH-RIPPLE-RLUSD-XRPL",
+  "captured_at_utc": "2026-10-31T21:51:23Z",
+  "source_ids": [
+    "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+  ],
+  "nodes": [
+    {
+      "id": "DRIVEWEALTH",
+      "label": "DriveWealth",
+      "kind": "BROKERAGE_AS_A_SERVICE"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "DIGITAL_ASSET_INFRASTRUCTURE_PROVIDER"
+    },
+    {
+      "id": "RLUSD",
+      "label": "RLUSD",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_LEDGER"
+    },
+    {
+      "id": "RIPPLE_PAYMENTS",
+      "label": "Ripple Payments",
+      "kind": "PAYMENT_PRODUCT"
+    },
+    {
+      "id": "RIPPLE_PRIME",
+      "label": "Ripple Prime Delta One",
+      "kind": "PRIME_BROKER"
+    },
+    {
+      "id": "BROKERAGE_COLLATERAL",
+      "label": "DriveWealth brokerage collateral accounts",
+      "kind": "COLLATERAL_ACCOUNT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "DW1",
+      "source": "DRIVEWEALTH",
+      "target": "RLUSD",
+      "relationship": "INTEGRATING_RLUSD_SETTLEMENT_IN_EUROPE_US_EXPANSION_PLANNED",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+      ]
+    },
+    {
+      "id": "DW2",
+      "source": "RLUSD",
+      "target": "XRPL",
+      "relationship": "SETTLEMENT_NETWORK_FOR_DRIVEWEALTH_INTEGRATION",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+      ]
+    },
+    {
+      "id": "DW3",
+      "source": "DRIVEWEALTH",
+      "target": "RIPPLE_PAYMENTS",
+      "relationship": "CROSS_BORDER_ACCEPTANCE_INTEGRATION",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+      ]
+    },
+    {
+      "id": "DW4",
+      "source": "DRIVEWEALTH",
+      "target": "RIPPLE_PRIME",
+      "relationship": "EXPLORING_EQUITY_FINANCING_VIA_DELTA_ONE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+      ]
+    },
+    {
+      "id": "DW5",
+      "source": "RLUSD",
+      "target": "BROKERAGE_COLLATERAL",
+      "relationship": "STABLECOIN_FUNDING_AND_NEAR_REAL_TIME_CASH_CONVERSION_CAPABILITY",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+      ],
+      "claim": "Company says clients can fund collateral accounts with stablecoins; actual RLUSD usage and balances are unknown."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-DW-RLUSD",
+      "status": "INTEGRATION_ANNOUNCED_PRODUCTION_UNVERIFIED",
+      "statement": "DriveWealth integration may create institutional RLUSD settlement volume on XRPL.",
+      "support": [
+        "Ripple says RLUSD on XRPL and Ripple Mint will support European settlement."
+      ],
+      "disconfirming": [
+        "Integration in progress; no live volumes or production launch verified."
+      ],
+      "next_test": "Verify production cutover, daily RLUSD settlement and mint/burn totals."
+    },
+    {
+      "id": "H-DW-XRP-DEMAND",
+      "status": "NOT_ESTABLISHED",
+      "statement": "DriveWealth RLUSD settlement creates material native XRP demand.",
+      "support": [
+        "XRPL transactions require XRP fees and account reserves."
+      ],
+      "disconfirming": [
+        "RLUSD settlement does not require XRP as bridge; no XRP holdings/purchases or fee volume disclosed."
+      ],
+      "next_test": "Measure XRPL fee burn, account reserves and any XRP bridge routing."
+    },
+    {
+      "id": "H-DW-COLLATERAL",
+      "status": "CAPABILITY_ANNOUNCED_USAGE_UNKNOWN",
+      "statement": "Stablecoin-funded brokerage collateral accounts may improve institutional capital efficiency.",
+      "support": [
+        "DriveWealth announcement says stablecoins can fund collateral accounts and convert to cash near real time."
+      ],
+      "disconfirming": [
+        "No asset-level collateral, RLUSD balances or adoption data."
+      ],
+      "next_test": "Obtain product terms, accepted assets, haircuts, balances and conversion volumes."
+    }
+  ]
+}
