@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "B-AGENT-20261031T163200Z-MAIN-PR-AND-WORKFLOW-RISK",
+  "captured_at_utc": "2026-10-31T16:32:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+  "open_pr_count": 191,
+  "draft_pr_count": 181,
+  "ready_pr_count": 10,
+  "main_based_pr_count": 189,
+  "current_main_base_pr_count": 4,
+  "stale_main_based_pr_count": 185,
+  "non_main_base_pr_count": 2,
+  "current_main_base_prs": [
+    {
+      "number": 1411,
+      "title": "Disable unsafe Databricks token input workflow",
+      "head_sha": "cb0ab3d3b8c6958fde75c4368ec8837605de43a2",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_tests_passed": 344,
+      "ci_subtests_passed": 8,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1414,
+      "title": "Fixed-horizon XRP ledger and retire legacy accuracy",
+      "head_sha": "d0d2101850842ce93f4d2e95bc5a3d6d86e2aae8",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_tests_passed": 385,
+      "ci_subtests_passed": 8,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1416,
+      "title": "SBI recurring XRP distribution and multi-rail evidence",
+      "head_sha": "e742790e608be205fb111ae94a6cf5c95a229632",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_tests_passed": 386,
+      "ci_subtests_passed": 8,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1418,
+      "title": "Stop scheduled Cross Analysis writes",
+      "head_sha": "b9c60eda3fa3ff159b8e0d456b3c3f42da6f44e9",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_tests_passed": 345,
+      "ci_subtests_passed": 8,
+      "gate": "PASS_MERGE_DISABLED"
+    }
+  ],
+  "main_write_capable_workflows": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "capabilities": [
+        "contents:write"
+      ],
+      "behavior": "workflow_run and hourly schedule; commits generated knowledge-base outputs and pushes to main",
+      "risk": "AUTOMATIC_MAIN_WRITER"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "capabilities": [
+        "contents:write",
+        "actions:write"
+      ],
+      "behavior": "15-minute schedule; runs scheduler and commits queue changes to main",
+      "risk": "AUTOMATIC_MAIN_WRITER_AND_WORKFLOW_DISPATCH"
+    },
+    {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "capabilities": [
+        "workflow_dispatch",
+        "GITHUB_TOKEN"
+      ],
+      "behavior": "accepts new_token input, passes it to gh secret set, then dispatches Databricks deployment",
+      "risk": "CREDENTIAL_INPUT_AND_DEPLOYMENT_PATH; PROPOSED_FIX_PR1411_NOT_MERGED"
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "capabilities": [
+        "contents:write",
+        "pull-requests:write"
+      ],
+      "behavior": "manual dispatch can update branches and merge PRs; mode=all exists; dry_run defaults false",
+      "risk": "CONSEQUENTIAL_MERGE_PATH; NOT_DISPATCHED"
+    },
+    {
+      "path": ".github/workflows/coinbase-paper-trader.yml",
+      "capabilities": [
+        "workflow_dispatch"
+      ],
+      "behavior": "manual paper-trader run commits paper-trading state/log to main",
+      "risk": "MAIN_STATE_WRITER; NOT_DISPATCHED"
+    }
+  ],
+  "approval_workflow_anomaly": {
+    "run_id": 41219676779,
+    "event": "push",
+    "head_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "jobs": 0,
+    "conclusion": "failure",
+    "workflow_path": ".github/workflows/barrot-approve-pr.yml",
+    "declared_trigger": "workflow_dispatch only",
+    "root_cause": "UNKNOWN"
+  },
+  "repository_limitations": [
+    "Full repository CI was not run.",
+    "Dependency vulnerability scan was not run; dependency lockfile inventory remains incomplete.",
+    "GitHub security-alert read access remains unavailable through the tested connector.",
+    "Branch-protection details endpoint remains unavailable; required status-check context list is not fully verified."
+  ],
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "deployment": false,
+    "credential_mutation": false
+  },
+  "status": "CURRENT_READ_ONLY_AUDIT; SELECTED_SAFETY_PR_HEADS_GREEN; MAIN_WRITE_PATHS_STILL_ACTIVE"
+}

@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T163200Z-BINANCE-RESTORATION-MARKET",
+  "captured_at_utc": "2026-10-31T16:32:00Z",
+  "source_ids": [
+    "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3",
+    "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+    "SRC-20261031T163200Z-LIQWALL-XRP-MARKET",
+    "SRC-20261031T163200Z-BINANCE-XRP-PRICE"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "CENTRALIZED_EXCHANGE"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "BINANCE_POR",
+      "label": "Binance Proof of Reserves",
+      "kind": "EXCHANGE_RESERVE_ATTESTATION"
+    },
+    {
+      "id": "SAFU",
+      "label": "Secure Asset Fund for Users",
+      "kind": "EXCHANGE_INSURANCE_RESERVE"
+    },
+    {
+      "id": "LIQWALL",
+      "label": "Liqwall",
+      "kind": "DERIVATIVES_DATA_PROVIDER"
+    },
+    {
+      "id": "XRP_DERIVATIVES",
+      "label": "XRP derivatives markets",
+      "kind": "MULTI_EXCHANGE_MARKET"
+    },
+    {
+      "id": "XRP_SPOT_MARKET",
+      "label": "XRP spot market",
+      "kind": "GLOBAL_SPOT_MARKET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BINANCE-90PCT-RESTORATION",
+      "source": "BINANCE",
+      "target": "XRP",
+      "relationship": "AGGREGATE_INCIDENT_REPLENISHMENT_AND_ASSET_COVERAGE_CLAIM",
+      "evidence_class": "SOURCED_COMPANY_CLAIM",
+      "claim": "Binance said 90% of aggregate stolen asset value had been replenished; XRP was among ten assets named for minimum 1:1 verification in the 00:00 GMT October 31 PoR snapshot. No XRP-specific purchase quantity was disclosed.",
+      "source_ids": [
+        "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3",
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-SAFU-DEPLOYMENT",
+      "source": "SAFU",
+      "target": "BINANCE",
+      "relationship": "PARTIAL_RESERVE_DEPLOYMENT_REPORTED",
+      "evidence_class": "SOURCED_COMPANY_CLAIM",
+      "claim": "Reuters reports Binance said it partially deployed its SAFU bitcoin reserve in the aggregate replenishment.",
+      "source_ids": [
+        "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3"
+      ]
+    },
+    {
+      "id": "EDGE-LIQWALL-XRP-DERIVATIVES",
+      "source": "LIQWALL",
+      "target": "XRP_DERIVATIVES",
+      "relationship": "PROVIDER_OBSERVATION",
+      "evidence_class": "THIRD_PARTY_PROVIDER_OBSERVATION",
+      "claim": "Liqwall reported OI, funding, liquidations and account ratios at 2026-10-31 16:32 UTC; these remain provider-specific and unverified by independent contract-level data.",
+      "source_ids": [
+        "SRC-20261031T163200Z-LIQWALL-XRP-MARKET"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRP-SPOT-REFERENCE",
+      "source": "BINANCE",
+      "target": "XRP_SPOT_MARKET",
+      "relationship": "EXCHANGE_PRICE_AND_VOLUME_PAGE",
+      "evidence_class": "EXCHANGE_PAGE_OBSERVATION",
+      "claim": "Binance's page displayed XRP at approximately $1.25 and $1.3B 24-hour volume as of 16:19 UTC.",
+      "source_ids": [
+        "SRC-20261031T163200Z-BINANCE-XRP-PRICE"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-BINANCE-RESTORATION-CONFIDENCE",
+      "statement": "The reported 90% aggregate replenishment and inclusion of XRP in the named 1:1 coverage set may reduce exchange-counterparty concern once the full proof is independently verifiable.",
+      "status": "PLAUSIBLE; VERIFICATION_PENDING",
+      "support": [
+        "Reuters reports Binance's 90% aggregate claim and the 10-asset 1:1 verification statement."
+      ],
+      "disconfirming": [
+        "The full proof was not available at the capture cutoff.",
+        "No XRP-specific replacement quantity or reserve-address reconciliation was disclosed.",
+        "A company reserve claim is not independent proof of liabilities and assets."
+      ],
+      "tests_needed": [
+        "Retrieve the complete post-incident PoR and asset-level XRP liabilities/reserves.",
+        "Reconcile proof addresses with pre-incident reserve addresses and the five incident source wallets.",
+        "Verify withdrawal restoration and subsequent XRP deposits/withdrawals."
+      ]
+    },
+    {
+      "id": "HYP-XRP-LONG-POSITIONING-VULNERABILITY",
+      "statement": "Positive funding, rising open interest and a 73% Binance long-account share may leave leveraged positioning vulnerable to a downside liquidation cascade if spot weakens.",
+      "status": "MONITORING_HYPOTHESIS_NOT_A_DIRECTIONAL_FORECAST",
+      "support": [
+        "Liqwall's synchronized 16:32 UTC provider observation."
+      ],
+      "disconfirming": [
+        "The funding rate is modest; OI rose only 0.9% over 24h; rolling liquidations were $808K at capture.",
+        "Account counts are not notional exposure and no contract-level margin distribution is available.",
+        "A single provider snapshot cannot establish crowded notional positioning."
+      ],
+      "tests_needed": [
+        "Reconcile contract-level OI and funding across Binance, Bybit, OKX and Hyperliquid.",
+        "Obtain notional long/short exposure and liquidation-price distributions.",
+        "Compare with realized volatility, spot order-book depth and BTC/ETH controls."
+      ]
+    },
+    {
+      "id": "HYP-BINANCE-RESERVE-DROP-INCIDENT-CAUSALITY",
+      "statement": "The earlier Binance XRP reserve decline may partly reflect the October 29 theft rather than voluntary customer withdrawals.",
+      "status": "OPEN_CAUSAL_HYPOTHESIS",
+      "support": [
+        "The incident transfer quantity and some provider reserve changes are similar in magnitude."
+      ],
+      "disconfirming": [
+        "Provider wallet universes and timestamps differ; no five-wallet address crosswalk is complete.",
+        "Customer withdrawals, wallet migrations and internal reclassification remain alternatives."
+      ],
+      "tests_needed": [
+        "Crosswalk all five source wallets against Binance's official reserve-address export and provider labels.",
+        "Reconcile customer liabilities and reserve balances at identical timestamps."
+      ]
+    }
+  ],
+  "policy": "Do not convert aggregate reserve coverage into XRP purchases; do not convert account percentages into notional exposure; preserve alternative explanations and source independence."
+}
