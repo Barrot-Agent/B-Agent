@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 88,
+  "chunk_count": 89,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z",
+      "source_id": "SRC-DEXTRADING-CBXRP-BASE-LIQUIDITY-20261031T0028Z",
+      "publisher": "DexTrading",
+      "title": "cbXRP live Base DEX market and pool snapshot",
+      "url": "https://dextrading.com/tokens/base/0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T00:29:09Z",
+      "evidence_class": "THIRD_PARTY_DEX_MARKET_AGGREGATOR_SNAPSHOT",
+      "independence_group": "DEXTRADING",
+      "summary": "Page states data as of 31 October 2026 00:28 UTC: cbXRP about $1.25, +1.59% 24h, market cap $189.98M, total displayed 24h volume $3.57M and 4,965 trades (2,477 buys, 2,488 sells). Main cbXRP/WETH Aero pool shows $485.0K liquidity and $3.57M 24h volume. Other displayed pools include cbXRP/cbBTC on Aero ($152.3K liquidity), cbXRP/WETH on PancakeSwap ($117.0K), cbXRP/USDC on Uniswap V3 ($92.7K) and additional smaller pools. Contract shown is 0xcb585250f852c6c6bf90434ab21a00f02833a4af.",
+      "limitations": "Single third-party DEX aggregator; pool liquidity and trade counts are snapshots and do not establish net capital inflow, executable depth under stress or independent wash-trade filtering. Volume may include arbitrage/market-making and cannot be interpreted as net buys."
+    },
+    {
+      "id": "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z",
+      "source_id": "SRC-COINDESK-CBXRP-SUPPLY-STALE-20261031T002909Z",
+      "publisher": "CoinDesk",
+      "title": "Coinbase Wrapped XRP price/supply page — stale third-party data outlier",
+      "url": "https://www.coindesk.com/ja/price/cbxrp",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T00:29:09Z",
+      "evidence_class": "THIRD_PARTY_TOKEN_AGGREGATOR_STALE_OR_INCONSISTENT_PAGE",
+      "independence_group": "COINDESK_PRICE_PAGE",
+      "summary": "The opened Japanese CoinDesk cbXRP page displays price about $1.0826, market cap $115.884M, 24-hour volume $150,208 and circulating/total supply 107.04M cbXRP. Its page content was marked as crawled about three months ago and is materially inconsistent with Coinbase's 31 October first-party proof-of-reserves display of 151.403M cbXRP supply and the current DexTrading market cap around $189.98M.",
+      "limitations": "Stale/inconsistent third-party aggregator page; not suitable as a current supply or price source. The page's narrative text about reserve and governance is not treated as an independent audit or proof."
+    },
+    {
+      "id": "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z",
+      "source_id": "SRC-TRADINGSTRATEGY-CBXRP-SUPPLY-STALE-20261031T002909Z",
+      "publisher": "Trading Strategy",
+      "title": "Coinbase Wrapped XRP Base token page — cached supply inconsistency",
+      "url": "https://tradingstrategy.ai/trading-view/base/tokens/0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T00:29:09Z",
+      "evidence_class": "THIRD_PARTY_ONCHAIN_INDEXER_CACHED_TOKEN_PAGE",
+      "independence_group": "TRADING_STRATEGY",
+      "summary": "The opened page body reports total supply 60,954,937 cbXRP and a 24-hour volume of $8.35K, while its search-result snippet returned 151,403,016 cbXRP. The page body is marked as crawled six months ago; its search snippet and body are inconsistent. It confirms the same Base contract address but is excluded from current supply measurement.",
+      "limitations": "The page is stale/cached and internally inconsistent; no current supply inference should be drawn from it. Coinbase's first-party reserve/supply page remains the primary published source, with independent on-chain verification still pending."
+    }
+  ]
+}
