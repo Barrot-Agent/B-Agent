@@ -121,3 +121,42 @@ def test_missing_or_stale_oracle_is_flagged():
     snap = ingest.collect_snapshot(fake_fetch, dt.datetime(2026, 10, 31, 4, 10, tzinfo=dt.timezone.utc))
     assert "ORACLE_STALE_OVER_24H" in snap["data_quality_flags"]
     assert snap["status"] == "PARTIAL"
+
+
+def test_market_list_cursor_reads_documented_top_level_and_nested_shapes():
+    assert ingest._market_list_cursor({"data": [], "cursor": "next-page"}) == "next-page"
+    assert ingest._market_list_cursor({"data": {"items": [], "cursor": "nested-page"}}) == "nested-page"
+    assert ingest._market_list_cursor({"data": [], "cursor": None}) is None
+
+
+def test_top_level_market_list_cursor_marks_snapshot_partial():
+    fixtures = _fixtures()
+    fixtures["market_list"] = (
+        {"data": [{"market_id": ingest.MARKET_ID}], "cursor": "next-page"},
+        200,
+    )
+
+    def fake_fetch(url):
+        if "/oracles/" in url:
+            return (
+                {"data": {
+                    "price": "1250550000000000000",
+                    "last_updated_at": "2026-10-31T04:00:00Z",
+                    "last_indexed_block": 123,
+                }},
+                200,
+            )
+        for key, value in fixtures.items():
+            if key == "market_list" and "/v1/blue/markets?" in url:
+                return value
+            if key != "market_list" and url == ingest.build_request_urls()[key]:
+                return value
+        raise AssertionError(f"unexpected URL: {url}")
+
+    snap = ingest.collect_snapshot(
+        fake_fetch,
+        dt.datetime(2026, 10, 31, 4, 10, tzinfo=dt.timezone.utc),
+    )
+    assert "MARKET_LIST_PAGINATION_INCOMPLETE" in snap["data_quality_flags"]
+    assert snap["status"] == "PARTIAL"
+    assert snap["market_features_admitted"] is False
