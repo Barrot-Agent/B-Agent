@@ -19,11 +19,19 @@ on:
         required: false
         default: merge-queue
       max_prs:
-        description: "Maximum number of PRs to process in one run (0 = unlimited)"
+        description: "Maximum number of PRs to process in one run (0 = unlimited; live runs require explicit confirmation)"
         required: false
-        default: "0"
+        default: "5"
       dry_run:
         description: "Dry run – report what would happen without making any changes"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      confirm_merge:
+        description: "Explicitly authorize live branch updates and PR merges for this manual run"
         required: false
         default: "false"
         type: choice
@@ -41,8 +49,8 @@ on:
           - rebase
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  pull-requests: read
   checks: read
   statuses: read
 
@@ -58,12 +66,14 @@ jobs:
 
       - name: Process PRs
         env:
-          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ inputs.dry_run == 'false' && inputs.confirm_merge == 'true' && secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          HAS_GH_PAT: ${{ secrets.GH_PAT != '' }}
           REPO: ${{ github.repository }}
           MODE: ${{ inputs.mode }}
           LABEL: ${{ inputs.label }}
           MAX_PRS: ${{ inputs.max_prs }}
           DRY_RUN: ${{ inputs.dry_run }}
+          CONFIRM_MERGE: ${{ inputs.confirm_merge }}
           MERGE_METHOD: ${{ inputs.merge_method }}
         run: |
           set -euo pipefail
@@ -73,8 +83,19 @@ jobs:
           echo "  label        : ${LABEL:-<none>} (only used when mode=label)"
           echo "  max_prs      : $MAX_PRS (0 = unlimited)"
           echo "  dry_run      : $DRY_RUN"
+          echo "  confirm_merge: $CONFIRM_MERGE"
           echo "  merge_method : $MERGE_METHOD"
           echo ""
+
+          # Fail closed before any branch update, PR comment or merge operation.
+          if [ "$DRY_RUN" != "true" ] && [ "$CONFIRM_MERGE" != "true" ]; then
+            echo "ERROR: live branch updates/merges require confirm_merge=true."
+            exit 1
+          fi
+          if [ "$DRY_RUN" != "true" ] && [ "$CONFIRM_MERGE" = "true" ] && [ "$HAS_GH_PAT" != "true" ]; then
+            echo "ERROR: a write-scoped GH_PAT is required for an explicitly confirmed live run."
+            exit 1
+          fi
 
           if [ "$MODE" = "all" ]; then
             echo "⚠️  mode=all: processing EVERY open PR. See docs/merge-queue.md for risks."
