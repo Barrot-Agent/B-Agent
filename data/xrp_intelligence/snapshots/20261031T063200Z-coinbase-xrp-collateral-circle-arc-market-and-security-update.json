@@ -7,7 +7,7 @@
   "data_cutoff_utc": "2026-10-31T06:32:00Z",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "execution_foundation": "Barrot V3",
-  "source_reference_count": 16,
+  "source_reference_count": 17,
   "missing_source_references": 0,
   "source_ids": [
     "SRC-20261031-COINBASE-GLOBAL-XRP-COLLATERAL-0632Z",
@@ -25,7 +25,8 @@
     "SRC-20261031-GITHUB-WORKFLOW-SAFETY-AUDIT-0632Z",
     "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
     "SRC-20261031-BINANCE-UPDATE2-0505Z",
-    "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z"
+    "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z",
+    "SRC-20261031-GITHUB-OPEN-PR-INVENTORY-0642Z"
   ],
   "market_observations": {
     "xrp_derivatives": {
@@ -229,7 +230,18 @@
       "jobs_count": 0,
       "root_cause": "UNKNOWN",
       "exact_head_validator": "PENDING"
-    }
+    },
+    "open_pr_inventory": {
+      "total_open": 173,
+      "drafts": 163,
+      "ready_for_review": 10,
+      "base_main": 171,
+      "current_main_base": 2,
+      "stale_main_base": 169,
+      "non_main_base": 2,
+      "captured_at_utc": "2026-10-31T06:42:00Z"
+    },
+    "latest_audit_path": "data/repository_audits/20261031T063200Z-main-workflow-and-token-rotation-security-audit.json"
   },
   "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
   "market_features_admitted": false,
