@@ -295,6 +295,10 @@ class ForecastLedger:
         )
         if baseline_trained_through > cutoff:
             raise ValueError("baseline cannot use information after the data cutoff")
+        if baseline_trained_through > baseline_computed_at:
+            raise ValueError(
+                "baseline cannot be trained through a time later than it was computed"
+            )
         if baseline_computed_at > issued or baseline_computed_at > cutoff:
             raise ValueError("baseline must be computed no later than the forecast data cutoff")
         baseline_probabilities = _probabilities(

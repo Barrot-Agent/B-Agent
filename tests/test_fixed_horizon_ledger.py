@@ -78,6 +78,15 @@ def test_forecast_rejects_baseline_trained_after_data_cutoff(tmp_path):
         ledger.append_forecast(payload)
 
 
+def test_forecast_rejects_baseline_trained_after_computation(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    payload = forecast_payload()
+    payload["baseline"]["trained_through_utc"] = "2026-10-30T23:58:30Z"
+    payload["baseline"]["computed_at_utc"] = "2026-10-30T23:58:00Z"
+    with pytest.raises(ValueError, match="trained through a time later"):
+        ledger.append_forecast(payload)
+
+
 def test_forecast_rejects_baseline_computed_after_issue_time(tmp_path):
     ledger = ForecastLedger(tmp_path)
     payload = forecast_payload()
