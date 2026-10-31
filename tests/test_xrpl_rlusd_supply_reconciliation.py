@@ -43,3 +43,39 @@ def test_graph_retains_competing_rlusd_causality_hypotheses():
     assert {"H-RLUSD-CHAIN-MIGRATION", "H-RLUSD-REDEMPTION", "H-RLUSD-PROVIDER-SCOPE", "H-XRP-PRICE-CAUSALITY"} <= ids
     price = next(item for item in graph["hypotheses"] if item["id"] == "H-XRP-PRICE-CAUSALITY")
     assert price["status"] == "UNSUPPORTED_NO_FEATURE_ADMISSION"
+
+
+
+def test_occ_charter_effective_status_is_separate_from_operational_launch():
+    snapshot = _load("snapshots/20261031T181303Z-xrp-institutional-custody-trade-finance.json")
+    regulatory = snapshot["regulatory_status"]
+    ripple = regulatory["ripple_national_trust_bank"]
+    circle = regulatory["circle_national_trust"]
+    assert ripple["occ_cas_status"] == "CONSUMMATED_EFFECTIVE"
+    assert ripple["effective_date"] == "2026-10-26"
+    assert ripple["rlusd_issuer"] == "Standard Custody & Trust Company (NYDFS-regulated limited-purpose trust company)"
+    assert ripple["opening_and_live_operations"] == "NOT_VERIFIED"
+    assert circle["occ_cas_status"] == "CONSUMMATED_EFFECTIVE"
+    assert circle["effective_date"] == "2026-07-24"
+    assert circle["usdc_reserve_management"] == "PLANNED_FUTURE_CAPABILITY_NOT_CONFIRMED_LIVE"
+
+
+def test_bny_custody_and_c2fo_capital_are_not_misclassified_as_xrp_buying():
+    snapshot = _load("snapshots/20261031T181303Z-xrp-institutional-custody-trade-finance.json")
+    assert snapshot["bny_custody_and_trade_finance"]["xrp_custody_platform_support"] == "CONFIRMED_BY_BNY_COMPANY_STATEMENT"
+    assert snapshot["bny_custody_and_trade_finance"]["direct_bny_rlusd_mint_redeem"].startswith("INTENDED_FUTURE")
+    c2fo = snapshot["c2fo_instant_pay"]
+    assert c2fo["product_status"] == "WAITLIST_ANNOUNCED"
+    assert c2fo["historical_c2fo_early_pay_working_capital_access_usd"] == 520000000000
+    assert c2fo["historical_520b_scope"].startswith("EXISTING_C2FO_EARLY_PAY_PROGRAMS")
+    assert c2fo["actual_xrpl_funded_invoice_volume"] == "NOT_DISCLOSED"
+
+
+def test_launched_tokenized_fund_is_distinguished_from_future_collateral_and_pilot_use():
+    snapshot = _load("snapshots/20261031T181303Z-xrp-institutional-custody-trade-finance.json")
+    products = snapshot["tokenized_fund_and_euro_stablecoin"]
+    assert products["aviva_usd_liquidity_fund_share_class"]["status"] == "LAUNCHED"
+    assert products["aviva_usd_liquidity_fund_share_class"]["tokenized_share_class_aum"] == "NOT_DISCLOSED"
+    assert products["sg_forge_eur_coinvertible"]["trading_collateral_use"] == "OPPORTUNITY_TO_EXPLORE_NOT_CONFIRMED_LIVE"
+    assert snapshot["card_settlement"]["mastercard_webbank_gemini_rlusd"]["status"].startswith("EXPLORATORY")
+    assert snapshot["prediction"]["directional_features_admitted"] == []
