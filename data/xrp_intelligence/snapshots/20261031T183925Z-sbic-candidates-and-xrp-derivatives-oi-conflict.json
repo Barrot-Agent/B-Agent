@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-SBIC-ENTITY-CANDIDATES-AND-DERIVATIVES-OI-CONFLICT-20261031T183925Z",
+  "captured_at_utc": "2026-10-31T18:39:25Z",
+  "data_cutoff_utc": "2026-10-31T15:00:00Z",
+  "scope": "Resolve multiple Japanese SBIC uses; distinguish Tokyo SBIC East Japan from historical SBI Capital Co., Ltd.; preserve XRP derivatives open-interest provider disagreement.",
+  "source_ids": [
+    "SRC-SBI-CAPITAL-SBIC-2007-0216",
+    "SRC-SBI-CAPITAL-GOLDMAN-JV-2007-0521",
+    "SRC-SBI-CAPITAL-OWNERSHIP-2007-0710",
+    "SRC-SBI-CAPITAL-MANAGEMENT-RESTRUCTURE-2012-0523",
+    "SRC-KODEXIUS-XRP-OI-20261031T1234Z",
+    "SRC-TRADRADAR-XRP-OI-20261031T1500Z",
+    "SRC-SHARPE-XRP-OI-20261031T1400Z",
+    "SRC-JUSTSCREENER-XRP-OI-20261031T1154Z",
+    "SRC-SWOLECHARTS-XRP-OI-20261031T1100Z"
+  ],
+  "sbic_candidates": [
+    {
+      "id": "TOKYO_SBIC_EAST_JAPAN",
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "public_name": "SBIC East Japan",
+      "corporate_number": "9011001030621",
+      "established": "1963-11-15",
+      "current_profile": "Independent privatized investment-development corporation",
+      "relationship_to_sbi_holdings": "No affiliation established from reviewed official profile",
+      "chatgpt_context": "Hosted a 2026-03-05 seminar titled Generative AI (ChatGPT): present and future; separate 2025 training covered ChatGPT and Microsoft Copilot.",
+      "relationship_to_xrp": "No direct Ripple/XRP relationship established in reviewed sources",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-20261031",
+        "SRC-SBIC-CHATGPT-GENERATIVE-AI-SEMINAR-20260305",
+        "SRC-SBIC-GENAI-CHATGPT-COPILOT-TRAINING-20250612"
+      ]
+    },
+    {
+      "id": "SBI_CAPITAL_CO_LTD_HISTORICAL_SBIC",
+      "legal_name": "SBI Capital Co., Ltd. (SBIキャピタル株式会社)",
+      "abbreviation": "SBIC in SBI Holdings' 2007 release",
+      "business": "Buy-out, enterprise-revitalization and middle-market investment fund management",
+      "ownership_timeline": [
+        {
+          "date": "2007-05-21",
+          "status": "SBI announced transfer of 40% to a Goldman Sachs group company"
+        },
+        {
+          "date": "2007-07-10",
+          "status": "SBI release describes 60% SBI Holdings / 40% Goldman Sachs group ownership"
+        },
+        {
+          "date": "2012-03-31",
+          "status": "SBI's 2012 restructuring release lists SBI Capital Co., Ltd. as 100% owned by SBI Holdings under the asset-management intermediate holding company structure"
+        }
+      ],
+      "unresolved": "The exact transaction/date explaining the 2007 60/40 to 2012 100% ownership-table change is not established by these sources.",
+      "relationship_to_xrp": "No direct XRP/Ripple relationship established in reviewed corporate records",
+      "source_ids": [
+        "SRC-SBI-CAPITAL-SBIC-2007-0216",
+        "SRC-SBI-CAPITAL-GOLDMAN-JV-2007-0521",
+        "SRC-SBI-CAPITAL-OWNERSHIP-2007-0710",
+        "SRC-SBI-CAPITAL-MANAGEMENT-RESTRUCTURE-2012-0523"
+      ]
+    },
+    {
+      "id": "SBI_CAPITAL_KOREA_2021",
+      "legal_name": "SBI Capital Co., Ltd. (Seoul, South Korea)",
+      "status": "Separate SBI Group 100%-owned Korean investment company established 2021-02-08",
+      "relevance": "A third name collision; not Japan's Tokyo SBIC East Japan or the 2007 Japanese SBI Capital entity.",
+      "source_ids": []
+    }
+  ],
+  "sbic_resolution": {
+    "exact_phrase": "SBIC, ChatGPT SBIC",
+    "best_supported_context": "Tokyo SBIC East Japan's official ChatGPT seminar/training materials, because the same legal entity's primary pages explicitly name ChatGPT.",
+    "alternative_candidate": "Historical SBI Capital Co., Ltd., which SBI Holdings explicitly abbreviated SBIC in a 2007 corporate release.",
+    "conclusion": "SBIC is not a unique Japanese entity identifier. Keep both Japanese entities as separate graph nodes until the originating source/context is pinned down. The ChatGPT event belongs to Tokyo SBIC East Japan, not SBI Capital.",
+    "no_openai_partnership_established": true,
+    "no_xrp_relationship_established_for_either_sbic_candidate": true
+  },
+  "derivatives_open_interest": {
+    "captured_at_utc": "2026-10-31T18:39:25Z",
+    "comparison_cutoff_utc": "2026-10-31T15:00:00Z",
+    "observations": [
+      {
+        "provider": "Kodexius",
+        "observed_at_utc": "2026-10-31T12:34:00Z",
+        "open_interest_usd": 738990000,
+        "coverage": "7 contracts",
+        "funding_8h": 0.000073,
+        "volume_24h_usd": 876430000
+      },
+      {
+        "provider": "SwoleCharts",
+        "observed_at_utc": "2026-10-31T11:00:00Z",
+        "open_interest_usd": 1110000000,
+        "coverage": "9 exchanges",
+        "funding_binance_8h": 0.0001
+      },
+      {
+        "provider": "Sharpe.ai",
+        "observed_at_utc": "2026-10-31T14:00:00Z",
+        "open_interest_usd": 1440000000,
+        "coverage": "22 venues"
+      },
+      {
+        "provider": "JustScreener",
+        "observed_at_utc": "2026-10-31T11:54:00Z",
+        "open_interest_usd": 1600000000,
+        "coverage": "9 exchanges",
+        "change_24h_pct": 0.94
+      },
+      {
+        "provider": "TradRadar",
+        "observed_at_utc": "2026-10-31T15:00:00Z",
+        "open_interest_usd": 1860000000,
+        "coverage": "7 exchanges",
+        "change_24h_pct": 1.78,
+        "price_usd": 1.2497,
+        "price_change_24h_pct": 0.42,
+        "funding_oi_weighted_8h": 0.000066,
+        "liquidations_24h_min_usd": 1040000,
+        "long_account_share": 0.753
+      }
+    ],
+    "min_open_interest_usd": 738990000,
+    "max_open_interest_usd": 1860000000,
+    "max_to_min_ratio": 2.517,
+    "same_venue_disagreement": {
+      "binance": {
+        "kodexius_usd": 363110000,
+        "tradradar_usd": 417520000
+      },
+      "bybit": {
+        "kodexius_usd": 149850000,
+        "tradradar_usd": 339070000
+      },
+      "hyperliquid": {
+        "kodexius_usd": 97170000,
+        "tradradar_usd": 194620000
+      },
+      "interpretation": "Overlapping venues differ materially, so venue-count differences alone do not explain the aggregate mismatch."
+    },
+    "source_independence": "All are secondary aggregators drawing on overlapping public exchange feeds; they are not independent primary confirmations.",
+    "plausible_causes": [
+      "contract inclusion (USDT, USDC and other margined products)",
+      "open-interest unit conversion and mark/index price choice",
+      "venue/contract coverage and missingness",
+      "snapshot timestamp and stale venue updates",
+      "aggregation/deduplication differences"
+    ],
+    "unresolved": "No raw per-contract response set was captured for a same-timestamp, same-contract crosswalk.",
+    "admission": "NOT_ADMITTED_TO_DIRECTIONAL_MODEL",
+    "interpretation": "Positive funding and long-skewed account counts indicate positioning/carry conditions, not a directional price forecast. Account share is not notional exposure; liquidation totals are partial."
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_features_admitted": [],
+    "reason": "SBIC identity ambiguity is resolved only at the entity-candidate level; derivatives OI remains materially inconsistent across providers and no fixed-horizon model has passed walk-forward calibration."
+  },
+  "safety": {
+    "main_modified_by_this_research": false,
+    "merge": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  }
+}
