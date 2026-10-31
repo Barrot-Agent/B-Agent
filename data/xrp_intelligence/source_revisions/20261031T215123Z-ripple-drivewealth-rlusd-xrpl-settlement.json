@@ -51,6 +51,10 @@
   ],
   "corrections": [],
   "pending_archive_append": false,
-  "exact_head_validation": false,
-  "status": "APPENDED_PENDING_EXACT_HEAD_VALIDATION"
+  "exact_head_validation": true,
+  "status": "VERIFIED_ARCHIVED",
+  "verified_head_sha": "f89557964ddc53024214210ed55e90fd6b0d2be2",
+  "validator_run_id": 41246834315,
+  "fail_closed_gate_run_id": 41246834314,
+  "verified_at_utc": "2026-10-31T22:08:55Z"
 }
