@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 147,
+  "chunk_count": 148,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "LIM-XRP-DRIVEWEALTH-RLUSD-COLLATERAL-AND-NATIVE-XRP-DEMAND-20261031T215123Z",
+      "recorded_at_utc": "2026-10-31T21:51:23Z",
+      "category": "INSTITUTIONAL_STABLECOIN_SETTLEMENT_AND_NATIVE_XRP_DEMAND",
+      "severity": "HIGH",
+      "status": "OPEN_UNKNOWN",
+      "statement": "DriveWealth/Ripple announced RLUSD settlement on XRPL and related payments/custody work, but the integration remains unverified in production. Stablecoin funding of brokerage collateral accounts does not establish native XRP collateral, XRP bridge routing or meaningful XRP demand.",
+      "impact": "Conflating RLUSD settlement, stablecoin-funded collateral accounts, XRPL network fees and native XRP bridge/collateral demand would overstate XRP adoption and actual capital flows.",
+      "source_ids": [
+        "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+      ],
+      "unresolved": [
+        "European production cutover date, participating legal entities and supported jurisdictions.",
+        "Daily RLUSD settlement volume, mint/burn totals and active partner/customer counts.",
+        "Actual collateral-account asset balances, accepted stablecoins, conversion fees, haircuts and utilization.",
+        "Whether any DriveWealth corridor uses XRP as a bridge asset rather than RLUSD-only settlement.",
+        "XRPL transaction count, fee burn and XRP account-reserve changes attributable to this integration.",
+        "US expansion date and product scope.",
+        "Whether Ripple Prime Delta One equity-financing exploration becomes a signed and operating facility."
+      ],
+      "feature_admission": "NO_DIRECTIONAL_FEATURE; INTEGRATION_ANNOUNCED_NOT_LIVE_VERIFIED; NO_FORECAST"
+    }
+  ]
+}
