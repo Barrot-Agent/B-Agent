@@ -50,6 +50,7 @@ def later_run(**overrides):
         "id": 1002,
         "workflow_id": 77,
         "head_branch": "main",
+        "head_repository": {"id": 1078973139, "full_name": "Barrot-Agent/B-Agent"},
         "status": "completed",
         "conclusion": "success",
         "created_at": "2026-10-31T10:05:00Z",
