@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_source_bundle",
+  "bundle_id": "SRCBUNDLE-XRP-INSTITUTIONAL-CUSTODY-TRADE-FINANCE-20261031T181303Z",
+  "captured_at_utc": "2026-10-31T18:13:42.938Z",
+  "sources": [
+    {
+      "source_id": "SRC-OCC-RIPPLE-CAS-20261026",
+      "publisher": "Office of the Comptroller of the Currency",
+      "title": "Corporate Applications Search — Ripple National Trust Bank",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "retrieved_at_utc": "2026-10-31T18:13:42.938Z",
+      "evidence_class": "REGULATOR_PRIMARY_RECORD",
+      "independence_group": "OCC_CAS",
+      "claims": [
+        "OCC control number 2025-Charter-342347; proposed bank name Ripple National Trust Bank; proposed charter 25364.",
+        "Filing status lists receipt 2025-07-02, Approved 2025-12-12 and Consummated/Effective 2026-10-26."
+      ],
+      "limitations": [
+        "The CAS record establishes the effective/consummated filing status; it does not establish that the bank has opened or begun providing services to clients.",
+        "No separate final approval letter was retrieved in this run."
+      ]
+    },
+    {
+      "source_id": "SRC-RIPPLE-RNTB-APPROVAL-20261026",
+      "publisher": "Ripple",
+      "title": "Ripple Receives Final OCC Approval to Establish National Trust Bank",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "published_at": "2026-10-26",
+      "retrieved_at_utc": "2026-10-31T18:13:42.938Z",
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT",
+      "independence_group": "RIPPLE_OFFICIAL",
+      "claims": [
+        "Ripple says OCC granted final approval for Ripple National Trust Bank on 2026-10-26.",
+        "Ripple says the bank's approved activities include managing segregated RLUSD reserves, acting as collateral trustee for RLUSD holders and providing fiduciary digital-asset custody upon opening.",
+        "Ripple says RLUSD will continue to be issued by Standard Custody & Trust Company, its NYDFS-regulated limited-purpose trust company.",
+        "Ripple says BNY is the primary reserve custodian for RLUSD."
+      ],
+      "limitations": [
+        "This is Ripple's description of the approved business plan; the CAS record is the regulator-side status evidence.",
+        "The release does not establish the date the bank opens or the date any reserve-management/custody service begins."
+      ]
+    },
+    {
+      "source_id": "SRC-OCC-CIRCLE-CAS-20260724",
+      "publisher": "Office of the Comptroller of the Currency",
+      "title": "Corporate Applications Search — First National Digital Currency Bank",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=D79Z71vmerN8&FilingSubtypeID=1093&FilingTypeID=2",
+      "retrieved_at_utc": "2026-10-31T18:13:42.938Z",
+      "evidence_class": "REGULATOR_PRIMARY_RECORD",
+      "independence_group": "OCC_CAS",
+      "claims": [
+        "OCC control number 2025-Charter-342299; proposed bank name First National Digital Currency Bank, N.A.",
+        "Filing status lists receipt 2025-06-30, Approved 2025-12-12 and Consummated/Effective 2026-07-24."
+      ],
+      "limitations": [
+        "The CAS record establishes effective/consummated status, not the date Circle National Trust began serving clients."
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-TRUST-BANK-APPROVAL-20260710",
+      "publisher": "Circle",
+      "title": "Circle Receives Final OCC Approval to Establish National Trust Bank",
+      "url": "https://www.circle.com/pressroom/circle-receives-final-occ-approval-to-establish-national-trust-bank",
+      "published_at": "2026-07-10",
+      "retrieved_at_utc": "2026-10-31T18:13:42.938Z",
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT",
+      "independence_group": "CIRCLE_OFFICIAL",
+      "claims": [
+        "Circle says First National Digital Currency Bank, N.A. will operate as Circle National Trust under OCC supervision.",
+        "Circle says the initial milestone supports federally supervised custody and that management of USDC reserves is planned as a future capability."
+      ],
+      "limitations": [
+        "The announcement does not establish that the bank is already managing USDC reserves or has opened all planned services."
+      ]
+    },
+    {
+      "source_id": "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027",
+      "publisher": "BNY",
+      "title": "Ripple Expands Strategic Digital Assets Collaboration with BNY Across Custody and Tokenized Trade Finance",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "published_at": "2026-10-27",
+      "retrieved_at_utc": "2026-10-31T18:13:42.938Z",
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT",
+      "independence_group": "BNY_RIPPLE_JOINT",
+      "claims": [
+        "BNY says it now supports XRP and RLUSD on its Digital Asset Custody platform.",
+        "BNY identifies itself as primary reserve custodian for RLUSD and says it has a custody relationship with Ripple Prime.",
+        "BNY intends to work with Ripple to enable clients to mint and redeem RLUSD directly through BNY, subject to final BNY and regulatory approvals.",
+        "BNY and Ripple intend to advance tokenized trade finance on XRPL and are exploring a supply-chain finance initiative with C2FO, subject to client requirements."
+      ],
+      "limitations": [
+        "The release publishes no XRP or RLUSD custody balances, client count or transaction volume.",
+        "Mint/redeem services and tokenized trade-finance plans are intended future capabilities, not confirmed live services."
+      ]
+    },
+    {
+      "source_id": "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027",
+      "publisher": "Ripple and C2FO",
+      "title": "C2FO and Ripple Partner to Modernize Trade Finance Using the XRP Ledger",
+      "url": "https://ripple.com/ripple-press/c2fo-and-ripple-partner-to-modernize-trade-finance-using-the-xrp-ledger/",
+      "published_at": "2026-10-27",
+      "retrieved_at_utc": "2026-10-31T18:13:42.938Z",
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT",
+      "independence_group": "RIPPLE_C2FO_JOINT",
+      "claims": [
+        "C2FO Instant Pay is described as using XRPL and RLUSD for settlement, with participating capital providers funding instant supplier payments against approved invoices.",
+        "The release says businesses can join a waitlist for C2FO Instant Pay.",
+        "C2FO says its existing Early Pay programs have helped businesses access more than USD 520B in working capital through accelerated payment of approved invoices."
+      ],
+      "limitations": [
+        "The USD 520B figure is historical platform-wide working-capital access, not XRPL volume or C2FO Instant Pay volume.",
+        "The waitlist and announcement do not establish any completed XRPL invoice-funding transaction, funded amount or RLUSD settlement volume."
+      ]
+    },
+    {
+      "source_id": "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729",
+      "publisher": "Aviva Investors",
+      "title": "Aviva Investors launches tokenised share class for USD Liquidity Fund with Ripple",
+      "url": "https://www.avivainvestors.com/en-se/about/company-news/2026/07/aviva-investors-launches-tokenised-share-class-for-usd-liquidity-fund/",
+      "published_at": "2026-07-29",
+      "retrieved_at_utc": "2026-10-31T18:13:42.938Z",
+      "evidence_class": "ASSET_MANAGER_PRIMARY_STATEMENT",
+      "independence_group": "AVIVA_OFFICIAL",
+      "claims": [
+        "Aviva Investors says it successfully launched a tokenised share class of its USD Liquidity Fund on XRPL.",
+        "The tokenised share class was approved by the Central Bank of Ireland.",
+        "Komainu provided regulated institutional digital-asset custody; Licuido provided tokenisation infrastructure; BNY remains custodian of the fund's underlying assets."
+      ],
+      "limitations": [
+        "The release does not disclose tokenised share-class AUM, XRPL token supply, investor count or secondary-market turnover.",
+        "A tokenised fund share is not XRP collateral and does not establish net XRP purchases."
+      ]
+    },
+    {
+      "source_id": "SRC-SGFORGE-EURCV-XRPL-20260218",
+      "publisher": "SG-FORGE",
+      "title": "EUR CoinVertible is now available on the XRP Ledger",
+      "url": "https://www.sgforge.com/sgf-coinvertible-on-the-xrp-ledger/",
+      "published_at": "2026-02-18",
+      "retrieved_at_utc": "2026-10-31T18:13:42.938Z",
+      "evidence_class": "ISSUER_PRIMARY_STATEMENT",
+      "independence_group": "SGFORGE_OFFICIAL",
+      "claims": [
+        "SG-FORGE says EUR CoinVertible launched on XRPL on 2026-02-18.",
+        "The launch is supported by Ripple's custody solution.",
+        "SG-FORGE says use of EUR CoinVertible in Ripple products and as trading collateral is an opportunity to explore."
+      ],
+      "limitations": [
+        "The source does not state that EUR CoinVertible is currently used as collateral or that a live Ripple product integration exists."
+      ]
+    },
+    {
+      "source_id": "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105",
+      "publisher": "Ripple",
+      "title": "Ripple Teams up with Mastercard, WebBank, and Gemini to Bring Stablecoin Settlement with RLUSD",
+      "url": "https://ripple.com/ripple-press/ripple-teams-up-with-mastercard-webbank-and-gemini/",
+      "published_at": "2025-11-05",
+      "retrieved_at_utc": "2026-10-31T18:13:42.938Z",
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT",
+      "independence_group": "RIPPLE_OFFICIAL",
+      "claims": [
+        "Ripple announced an initiative to explore RLUSD on XRPL for stablecoin settlement of Gemini Credit Card fiat transactions involving Mastercard and WebBank.",
+        "The release says initial RLUSD onboarding and integration planning were subject to regulatory approvals."
+      ],
+      "limitations": [
+        "The announcement is a collaboration and exploration statement, not evidence of completed settlement volume or an operational production integration."
+      ]
+    }
+  ]
+}
