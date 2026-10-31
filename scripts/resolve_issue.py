@@ -77,7 +77,7 @@ def extract_original_run_id(issue_body):
     """Return the run ID explicitly linked by the issue, only for this repository."""
     if not isinstance(issue_body, str):
         return None
-    pattern = rf"https://github\\.com/{re.escape(REPO)}/actions/runs/(\\d+)(?:[/?#\\s)]|$)"
+    pattern = rf"https://github\.com/{re.escape(REPO)}/actions/runs/(\d+)(?:[/?#\s)]|$)"
     match = re.search(pattern, issue_body, flags=re.IGNORECASE)
     return int(match.group(1)) if match else None
 
@@ -226,7 +226,7 @@ def resolve(issue_number):
             f"Checked the latest completed run of '{workflow_name}' on the same branch "
             f"as the original failed run ([#{run_id}]({run_url})): it still failed. "
             f"Leaving this issue open for diagnosis. Log tail:\\n\\n"
-            f"\\x60\\x60\\x60\\n{log_tail}\\n\\x60\\x60\\x60"
+            f"```\\n{log_tail}\\n```"
         )
         print("Same-branch run still failing - posting diagnostic comment, leaving open.")
         gh("issue", "comment", str(issue_number), "--body", comment)
