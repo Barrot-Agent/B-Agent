@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T003700Z-CBXRP-USDC-COLLATERAL-FEATURE-GATES",
+  "created_at_utc": "2026-10-31T00:37:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_NOT_MODEL_ADMISSION",
+  "context": "Coinbase's XRP-backed USDC loans connect XRP custody, cbXRP on Base, Morpho lending markets and Circle-issued USDC. The relationship is economically material but not a direct XRP spot-demand measure.",
+  "decisions": [
+    "Represent XRP underlying, Coinbase cbXRP reserve, cbXRP Base supply, cbXRP DEX liquidity, Morpho collateral, USDC debt, vault supply, liquidations and native XRP spot flows as separate entities/series.",
+    "Classify the 62.5% cbXRP/USDC Morpho market as a strongly supported likely Coinbase product market, not an officially confirmed exclusive Coinbase market. Preserve permissionless access and unknown Coinbase channel share.",
+    "Treat the $59.11M borrow and $148.9M collateral snapshot as market-wide public API observations, not Coinbase customer balances or Circle-provided capital.",
+    "Treat Circle as the issuer of the USDC debt asset on Base and XRPL; do not classify Circle as lender, vault supplier or cross-chain bridge operator without address-level evidence.",
+    "Treat liquidations as cbXRP collateral transfers first. Do not convert collateral seized into native XRP selling pressure without a traced redemption/unwrap and subsequent market sale.",
+    "Keep market utilization, vault concentration, LLTV, Chainlink oracle parameters, liquidation count, debt repaid and collateral-at-risk as risk-context candidates, not admitted price predictors.",
+    "Preserve the Morpho app/aggregator liquidity discrepancy and Coinbase/Morpho liquidation-penalty discrepancy as explicit data-quality blockers."
+  ],
+  "invariants": [
+    "Underlying XRP backing cbXRP is not the same asset as cbXRP collateral on Base.",
+    "Coinbase states wrapped-asset backing is held 1:1 and not sold, transferred or used for another purpose; this is a company statement, not an independent audit.",
+    "Coinbase interface activity is not equivalent to all permissionless Morpho market activity.",
+    "USDC issuance by Circle is not proof Circle supplied the loan market.",
+    "Market-wide collateral at risk is not expected liquidation, loss, net external capital or XRP spot sell volume.",
+    "Do not admit any new market feature before synchronized point-in-time data, provenance, independent corroboration, leakage controls, walk-forward baselines, calibration and shadow evaluation."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
