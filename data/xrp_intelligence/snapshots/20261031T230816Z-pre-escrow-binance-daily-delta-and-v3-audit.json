@@ -1,0 +1,284 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T230816Z-PRE-ESCROW-BINANCE-DAILY-DELTA-AND-V3-AUDIT",
+  "captured_at_utc": "2026-10-31T23:08:16Z",
+  "data_cutoff_utc": "2026-10-31T21:13:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T230816Z-pre-escrow-binance-daily-delta-and-v3-audit.json",
+  "supersedes_snapshot_id": "XRP-20261031T215123Z-DRIVEWEALTH-RLUSD-INSTITUTIONAL-SETTLEMENT-AND-ESCROW",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY",
+    "SRC-20261031T210244Z-TRADRADAR-XRP",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "source_revision_ids": [
+    "REV-20261031T230816Z-XRP-INSIGHTS-ESCROW-PREUNLOCK",
+    "REV-20261031T230816Z-XRP-INSIGHTS-EXCHANGE-DELTA-RECONCILIATION",
+    "REV-20261031T230816Z-TRADRADAR-STALE-SEARCH-RESULT-RECONCILIATION",
+    "REV-20261031T230816Z-GITHUB-MAIN-WORKFLOW-PR1431-AUDIT"
+  ],
+  "source_revision_addenda_count": 33,
+  "source_revision_addenda_pending_archive_append": 28,
+  "source_reference_count": 4,
+  "missing_source_references": 0,
+  "component_cutoffs": {
+    "escrow_ledger_utc": "2026-10-31T21:13:00Z",
+    "escrow_ledger_index": 108031214,
+    "exchange_wallet_snapshot_utc": "2026-10-31T08:00:00Z",
+    "derivatives_snapshot_utc": "2026-10-31T20:10:00Z",
+    "github_main_commit_utc": "2026-10-31T22:51:57Z",
+    "capture_utc": "2026-10-31T23:08:16Z"
+  },
+  "freshness": {
+    "escrow_snapshot_age_seconds": 6916,
+    "exchange_snapshot_age_seconds": 54496,
+    "derivatives_snapshot_age_seconds": 10696,
+    "market_search_index_regression": "17:45 UTC search result is older than the archived 20:10 UTC observation; rejected."
+  },
+  "escrow": {
+    "scheduled_release_xrp": 1000000000,
+    "scheduled_eligibility_utc": "2026-11-01T00:00:00Z",
+    "seconds_remaining_at_capture": 3104,
+    "minutes_remaining_at_capture": 51.733333,
+    "escrow_objects": 2,
+    "owner_accounts": [
+      "r9UUEX…HiYp",
+      "rB3WNZ…scPn"
+    ],
+    "total_ripple_escrow_xrp": 31400000000,
+    "object_count_total": 98,
+    "ripple_owner_account_count": 8,
+    "trailing_12_month_released_xrp": 12000000000,
+    "trailing_12_month_reescrowed_xrp": 8400000000,
+    "trailing_12_month_reescrow_pct": 70,
+    "scenario_net_outside_escrow_xrp": 300000000,
+    "status": "SCHEDULED_NOT_YET_ELIGIBLE_AT_CAPTURE",
+    "raw_account_state_verified": false,
+    "escrow_finish_verified": false,
+    "destination_receipt_verified": false,
+    "sale_or_exchange_deposit_verified": false,
+    "interpretation": "The 1B is scheduled to become eligible at 00:00 UTC. The 300M historical net-outside-escrow figure is a scenario prior, not a sale estimate or prediction."
+  },
+  "exchange_balances": {
+    "as_of_utc": "2026-10-31T08:00:00Z",
+    "tracked_wallets": 701,
+    "tracked_exchanges": 24,
+    "total_attributed_xrp": 22480000000,
+    "same_wallet_daily_change_xrp": 105900000,
+    "same_wallet_7d_change_xrp": -133000000,
+    "same_wallet_30d_change_xrp": -12300000,
+    "venues": {
+      "Binance": {
+        "xrp": 2780000000,
+        "change_7d_xrp": 17600000,
+        "change_30d_xrp": 30300000,
+        "overview_delta_xrp": 196200000,
+        "overview_delta_interval": "UNLABELED; LIKELY DAILY BY AGGREGATE RECONCILIATION"
+      },
+      "Coinbase": {
+        "xrp": 5850000000,
+        "change_7d_xrp": 17700000,
+        "change_30d_xrp": 18400000,
+        "overview_delta_xrp": 13300000,
+        "overview_delta_interval": "UNLABELED"
+      },
+      "Upbit": {
+        "xrp": 6430000000,
+        "change_7d_xrp": -747000,
+        "change_30d_xrp": 34600000
+      },
+      "SBI VC Trade": {
+        "xrp": 59500000,
+        "change_7d_xrp": -899000,
+        "change_30d_xrp": -10500000
+      }
+    },
+    "displayed_overview_per_venue_delta_sum_xrp": 106580496,
+    "delta_sum_minus_daily_aggregate_xrp": 680496,
+    "daily_delta_interpretation": "INFERENCE_ONLY; rounded overview venue deltas sum to approximately the detailed page's +105.9M daily aggregate.",
+    "non_customer_reserves_and_funds_xrp": 487200000,
+    "storage_labeled_pct": {
+      "cold": 48.4,
+      "hot": 14,
+      "unclassified": 37.8
+    },
+    "tradable_float_estimate": "NOT_AVAILABLE",
+    "limitations": [
+      "Omnibus and cold wallets contain customer custody; balances are not all immediately tradable.",
+      "Non-customer reserves include Binance-Peg, cbXRP backing, insurance and charity balances.",
+      "No per-wallet history is published; transfers cannot be attributed to the five Binance incident source wallets.",
+      "The overview +196.2M Binance interval is not explicitly labeled."
+    ]
+  },
+  "derivatives": {
+    "provider": "TradRadar",
+    "observed_at_utc": "2026-10-31T20:10:00Z",
+    "price_usd": 1.253,
+    "price_change_24h_pct": 0.38,
+    "open_interest_usd": 1870000000,
+    "open_interest_change_24h_pct": 0.48,
+    "funding_weighted_pct_per_8h": 0.0048,
+    "liquidations_24h_lower_bound_usd": 353250,
+    "long_liquidations_usd": 130620,
+    "short_liquidations_usd": 222630,
+    "long_account_share_pct": 75.2,
+    "exchange_funding_pct_per_8h": {
+      "Bybit": -0.0081,
+      "OKX": -0.0023,
+      "Binance": 0.01,
+      "MEXC": 0.01,
+      "Bitget": 0.01,
+      "Hyperliquid": 0.01
+    },
+    "provider_coverage": {
+      "open_interest_exchanges": 7,
+      "liquidations_exchanges": 5,
+      "long_short_exchanges": 4
+    },
+    "feature_status": "OBSERVATION_ONLY; NOT_ADMITTED",
+    "limitations": [
+      "Liquidations are a lower bound.",
+      "Long-account share is not notional exposure.",
+      "Provider universes are not fully reconciled."
+    ]
+  },
+  "repository": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "b51099e04b410f49e28d9c80201f68847aa8118a",
+    "latest_main_commit_utc": "2026-10-31T22:51:57Z",
+    "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
+    "latest_main_commit_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "main_cross_analysis": {
+      "contents_write": true,
+      "commits_and_pushes": true,
+      "read_only_fix_pr": 1431
+    },
+    "knowledge_signal_cycle": {
+      "trigger": "workflow_dispatch only",
+      "contents_write": true,
+      "direct_main_push": true
+    },
+    "scheduler_tick": {
+      "schedule": "*/15 * * * *",
+      "contents_write": true,
+      "actions_write": true,
+      "direct_queue_commit": true
+    },
+    "pr1431": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1431",
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": true,
+      "merged": false,
+      "base_sha": "f0bbed8c51974e4e0b4cb98b09a8ef0eb5fe0fbb",
+      "head_sha": "57531208184dc3ac2d49a6cce3265c3a1dd8e061",
+      "compare_current_main": {
+        "status": "diverged",
+        "ahead_by": 3,
+        "behind_by": 1,
+        "changed_files": 3
+      },
+      "ci_run_id": 41246255670,
+      "ci_conclusion": "success",
+      "gate_run_id": 41246255620,
+      "gate_conclusion": "success",
+      "gate_merge_enabled": false,
+      "note": "Main's latest timestamp-only sentiment_shift.json change does not overlap the PR's workflow, CI registration and test paths."
+    },
+    "full_repository_ci": "NOT_RUN",
+    "dependency_security_scan": "INCOMPLETE",
+    "branch_protection_details": "NOT_ACCESSIBLE_403",
+    "open_pr_inventory": "Previous 202-open count not fully re-counted in this capture."
+  },
+  "hypotheses": [
+    {
+      "id": "H-ESCROW-RELOCK-70",
+      "status": "HISTORICAL_PRIOR_NOT_FORECAST",
+      "statement": "The November release may repeat the trailing 12-month 70% re-escrow pattern.",
+      "support": [
+        "12 prior monthly cycles released 12B and re-escrowed 8.4B."
+      ],
+      "disconfirming": [
+        "Earlier 2024 cycles included 530M, 800M and 670M re-escrow amounts."
+      ],
+      "next_test": "Verify actual EscrowFinish and EscrowCreate transactions after eligibility."
+    },
+    {
+      "id": "H-BINANCE-DAILY-DELTA",
+      "status": "INFERENCE_PENDING_MACHINE_READABLE_CONFIRMATION",
+      "statement": "The overview's +196.2M Binance delta is likely a daily same-wallet change.",
+      "support": [
+        "Displayed per-exchange deltas sum to approximately +106.58M, close to the detailed page's +105.9M daily aggregate."
+      ],
+      "disconfirming": [
+        "Overview interval label is absent; displayed values are rounded."
+      ],
+      "next_test": "Retrieve the page's JSON download and reconcile exact per-exchange daily deltas."
+    },
+    {
+      "id": "H-BINANCE-INCIDENT-REPLENISHMENT",
+      "status": "SPECULATIVE_NOT_ESTABLISHED",
+      "statement": "The inferred Binance daily increase may be related to incident replenishment.",
+      "support": [
+        "Magnitude is material and occurs after the October 29 incident."
+      ],
+      "disconfirming": [
+        "No wallet-level crosswalk or transaction evidence; Binance broad attributed balances are +17.6M over 7d and +30.3M over 30d, not +233M."
+      ],
+      "next_test": "Crosswalk the five source wallets and Binance reserve addresses; inspect validated XRPL transfers and official replenishment disclosures."
+    },
+    {
+      "id": "H-BINANCE-NORMAL-FLOWS",
+      "status": "PLAUSIBLE_COMPETING_EXPLANATION",
+      "statement": "The daily increase may reflect ordinary customer deposits, custody operations or reserve movements.",
+      "support": [
+        "Exchange omnibus wallets aggregate customer and operational balances."
+      ],
+      "disconfirming": [
+        "No transaction-level attribution available."
+      ],
+      "next_test": "Compare account_tx and known wallet flows."
+    },
+    {
+      "id": "H-EXCHANGE-OUTFLOW",
+      "status": "PROVIDER_OBSERVATION_NOT_TRADABLE_FLOAT",
+      "statement": "The tracked exchange set declined 133M XRP over seven days despite Binance's positive seven-day change.",
+      "support": [
+        "Same-wallet 7d total -133M; Binance +17.6M."
+      ],
+      "disconfirming": [
+        "Broad attributed wallets include cold custody and non-customer reserves; new/unlabeled wallets are excluded."
+      ],
+      "next_test": "Reconcile venue-specific reserve series, wallet coverage and custody migration."
+    }
+  ],
+  "source_independence": {
+    "xrp_insights_escrow_and_exchange": "SAME_PROVIDER_NOT_INDEPENDENT",
+    "tradradar": "SEPARATE_MARKET_DATA_PROVIDER",
+    "github": "PRIMARY_REPOSITORY_OBSERVATION"
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "operational_safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "paper_state_mutation": false,
+    "real_money_trade": false
+  },
+  "next_actions": [
+    "At and after 00:00 UTC, obtain a fresh validated XRPL ledger and inspect both escrow objects.",
+    "Capture EscrowFinish hashes, sender, Destination, delivered XRP, ledger index and transaction metadata.",
+    "Track destination balances, follow-on Payments and new EscrowCreate objects; do not infer sale from release.",
+    "Reconcile Binance +196.2M overview delta using the downloadable machine-readable same-wallet daily series.",
+    "Crosswalk the five incident source wallets against the 153-wallet Binance attributed set and official reserve-address disclosures.",
+    "Compare synchronized XRP spot depth, ETF creations/redemptions, derivatives OI/funding and exchange flows.",
+    "Continue source-revision archival backlog and exact-head verification."
+  ],
+  "verification_status": "PENDING_EXACT_HEAD_VALIDATION"
+}

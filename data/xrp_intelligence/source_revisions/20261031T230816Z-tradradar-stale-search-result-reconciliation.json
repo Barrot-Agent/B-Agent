@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T230816Z-TRADRADAR-STALE-SEARCH-RESULT-RECONCILIATION",
+  "source_id": "SRC-20261031T210244Z-TRADRADAR-XRP",
+  "captured_at_utc": "2026-10-31T23:08:16Z",
+  "created_at_utc": "2026-10-31T23:08:16Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T210244Z-TRADRADAR-XRP"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T210244Z-TRADRADAR-XRP",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-10-31T23:08:16Z",
+      "publication_time_utc": "2026-10-31T17:45:00Z",
+      "evidence_class": "SECONDARY_MARKET_DATA_SEARCH_INDEX_OBSERVATION",
+      "claims": [
+        "The current search-index result displayed an October 31 17:45 UTC snapshot: XRP $1.2551, open interest $1.87B, OI +1.60%, funding +0.0062% per eight hours, liquidations at least $807.96K and 75.3% long accounts.",
+        "The archived 20:10 UTC TradRadar observation is later than the 17:45 UTC search-index result and remains the latest verified market snapshot used in this handoff."
+      ],
+      "limitations": [
+        "The 17:45 UTC result is older than the archived 20:10 UTC observation and is rejected as a market-data update.",
+        "The search result may be cached; no later provider timestamp was exposed.",
+        "TradRadar's 20:10 UTC observation covers seven exchanges for open interest, five for liquidations and four for account ratios; liquidation totals are lower bounds."
+      ]
+    }
+  ],
+  "findings": [
+    "No newer verified TradRadar observation was obtained in this run.",
+    "The latest admitted market observation remains 20:10 UTC: price $1.253 (+0.38%), OI $1.87B (+0.48%), funding +0.0048% per eight hours, liquidations at least $353.25K, long accounts 75.2%."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Provider page/search cache regressed to an older timestamp; do not overwrite the 20:10 UTC observation.",
+    "No market feature is admitted from the stale 17:45 result."
+  ],
+  "corrections": [],
+  "pending_archive_append": false,
+  "exact_head_validation": false,
+  "status": "PENDING_EXACT_HEAD_VALIDATION"
+}
