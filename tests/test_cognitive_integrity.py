@@ -54,3 +54,19 @@ def test_merge_queue_workflow_is_read_only_inventory():
     assert "gh api --paginate" in workflow
     assert "pulls?state=open" in workflow
     assert "no branch updates" in lowered
+
+
+def test_external_deployments_are_manual_only_and_github_read_only():
+    root = Path(__file__).resolve().parents[1]
+    paths = (
+        ".github/workflows/deploy-a2a-worker.yml",
+        ".github/workflows/sync-self-hosted-brain.yml",
+    )
+    for relative_path in paths:
+        workflow = (root / relative_path).read_text(encoding="utf-8")
+        trigger_block = workflow.split("\npermissions:", 1)[0]
+        assert "workflow_dispatch:" in trigger_block
+        assert "\n  push:" not in trigger_block
+        assert "\n  schedule:" not in trigger_block
+        assert "permissions:\n  contents: read" in workflow
+        assert "contents: write" not in workflow
