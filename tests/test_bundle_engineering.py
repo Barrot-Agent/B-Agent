@@ -60,6 +60,35 @@ def test_complete_bundle_passes_deterministic_review():
     assert result.findings == ()
     assert result.fingerprint.startswith("sha256:")
 
+@pytest.mark.parametrize("instruction", [
+    "If audit modifies any files, revert them using `git checkout -- <file>`. ",
+    "Run `git restore --worktree .` before retrying.",
+    "Run `git reset --hard HEAD` before retrying.",
+    "Run `git clean -fd` to remove untracked files.",
+    "Run `git stash` before switching branches.",
+    "Run `git push --force` to replace the branch.",
+    "Run `git push -f origin branch` to replace the branch.",
+    "Run `git branch -D user-work` to clear the branch.",
+    "Run `rm -rf .` to clean the workspace.",
+    "Run `Remove-Item -Recurse -Force .` to clean the workspace.",
+    "Run `del /s /q *` to clear the workspace.",
+])
+def test_rollback_plan_rejects_workspace_destructive_commands(instruction):
+    bundle = sample_bundle()
+    bundle["tasks"][0]["rollback_plan"] = [instruction]
+    result = review_work_bundle(bundle)
+    assert "ROLLBACK_WORKSPACE_DESTRUCTION" in {finding.code for finding in result.findings}
+    assert result.valid is False
+
+
+def test_rollback_plan_accepts_preservation_first_recovery():
+    bundle = sample_bundle()
+    bundle["tasks"][0]["rollback_plan"] = [
+        "Preserve the working tree and all existing files; stop and request review if validation fails."
+    ]
+    result = review_work_bundle(bundle)
+    assert result.valid is True
+
 
 def test_missing_test_and_evidence_gate_are_reported():
     bundle = sample_bundle()
@@ -182,6 +211,32 @@ def test_controller_authors_and_returns_ready_bundle():
     assert result.status == "READY_FOR_EXECUTION_REVIEW"
     assert result.review.valid is True
     assert result.attempts[0]["kind"] == "draft"
+
+
+def test_controller_uses_explicit_output_budget_for_draft_and_revision():
+    import json
+    from barrot_agent.orchestration.bundle_engineering import BundleEngineeringController
+
+    original = sample_bundle()
+    original["tasks"][0]["tests"] = []
+    revised = copy.deepcopy(original)
+    revised["revision"] = 2
+    revised["parent_fingerprint"] = bundle_fingerprint(original)
+    revised["tasks"][0]["tests"] = ["python -m pytest -q tests/test_bundle_engineering.py"]
+    budgets = []
+
+    class FakeBrain:
+        def think(self, prompt, system=None, max_output_tokens=None):
+            budgets.append(max_output_tokens)
+            return json.dumps(original if len(budgets) == 1 else revised)
+
+    result = BundleEngineeringController(FakeBrain(), max_revision_attempts=1).run(
+        objective=original["objective"],
+        constraints=original["constraints"],
+    )
+
+    assert result.status == "READY_FOR_EXECUTION_REVIEW"
+    assert budgets == [4096, 4096]
 
 
 def test_controller_revises_a_deficient_bundle_before_ready():
