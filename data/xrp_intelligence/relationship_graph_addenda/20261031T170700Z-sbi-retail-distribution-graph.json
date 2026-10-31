@@ -1,0 +1,348 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-SBI-RETAIL-DISTRIBUTION-20261031T170700Z",
+  "captured_at_utc": "2026-10-31T17:07:00Z",
+  "source_ids": [
+    "SRC-20261031T170700Z-SBI-VC-TRADE-DCA",
+    "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD",
+    "SRC-20261031T170700Z-SBI-HOLDINGS-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-ARUHI-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-SHINSEI-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH",
+    "SRC-20261031T170700Z-SBI-VC-TRADE-CORPORATE"
+  ],
+  "evidence_classes": [
+    "CONFIRMED_PRIMARY_SOURCE",
+    "INFERENCE",
+    "UNKNOWN",
+    "DISCONFIRMING_EVIDENCE"
+  ],
+  "nodes": [
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings",
+      "kind": "JAPANESE_FINANCIAL_GROUP"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "CRYPTO_EXCHANGE_AND_DEALER"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "CUSTOMER_JPY",
+      "label": "Customer-prefunded Japanese yen",
+      "kind": "CUSTOMER_CASH_BALANCE"
+    },
+    {
+      "id": "SBI_KANTAN_TSUMITATE",
+      "label": "SBI VC Trade Kantan Tsumitate",
+      "kind": "SCHEDULED_PURCHASE_PRODUCT"
+    },
+    {
+      "id": "SBI_VISA_CRYPTO_CARD",
+      "label": "SBI VISA Crypto Card",
+      "kind": "CRYPTO_REWARD_CARD"
+    },
+    {
+      "id": "APLUS",
+      "label": "Aplus",
+      "kind": "CARD_ISSUER"
+    },
+    {
+      "id": "VISA",
+      "label": "Visa",
+      "kind": "PAYMENT_NETWORK"
+    },
+    {
+      "id": "CARD_POINTS",
+      "label": "Eligible card points",
+      "kind": "REWARD_LIABILITY"
+    },
+    {
+      "id": "XRP_REWARD_CREDIT",
+      "label": "XRP reward credit",
+      "kind": "CUSTOMER_CRYPTO_CREDIT"
+    },
+    {
+      "id": "SBI_HOLDINGS_SHAREHOLDER_BENEFIT",
+      "label": "SBI Holdings shareholder XRP benefit",
+      "kind": "SHAREHOLDER_REWARD_PROGRAM"
+    },
+    {
+      "id": "SBI_ARUHI",
+      "label": "SBI ARUHI",
+      "kind": "SBI_GROUP_AFFILIATE"
+    },
+    {
+      "id": "SBI_INSURANCE",
+      "label": "SBI Insurance Group",
+      "kind": "SBI_GROUP_AFFILIATE"
+    },
+    {
+      "id": "SBI_SHINSEI",
+      "label": "SBI Shinsei Bank",
+      "kind": "SBI_GROUP_AFFILIATE"
+    },
+    {
+      "id": "SBI_GLOBAL_ASSET",
+      "label": "SBI Global Asset Management",
+      "kind": "SBI_GROUP_AFFILIATE"
+    },
+    {
+      "id": "RIPPLE_LABS",
+      "label": "Ripple Labs",
+      "kind": "DIGITAL_ASSET_INFRASTRUCTURE_COMPANY"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "label": "SBI Ripple Asia",
+      "kind": "JOINT_VENTURE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-SBI-HOLDINGS-VC-TRADE",
+      "source": "SBI_HOLDINGS",
+      "target": "SBI_VC_TRADE",
+      "relationship": "WHOLLY_OWNED_SUBSIDIARY",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade identifies itself as a wholly owned SBI Group subsidiary.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VC-TRADE-CORPORATE"
+      ]
+    },
+    {
+      "id": "EDGE-VC-TRADE-DCA",
+      "source": "SBI_VC_TRADE",
+      "target": "SBI_KANTAN_TSUMITATE",
+      "relationship": "OPERATES_SCHEDULED_PURCHASE_SERVICE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade operates the Kantan Tsumitate scheduled accumulation service.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VC-TRADE-DCA"
+      ]
+    },
+    {
+      "id": "EDGE-JPY-PREFUND-DCA",
+      "source": "CUSTOMER_JPY",
+      "target": "SBI_KANTAN_TSUMITATE",
+      "relationship": "CUSTOMER_MUST_PREFUND",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Customers must pre-fund sufficient JPY; automatic bank debit is not supported.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VC-TRADE-DCA"
+      ]
+    },
+    {
+      "id": "EDGE-DCA-XRP",
+      "source": "SBI_KANTAN_TSUMITATE",
+      "target": "XRP",
+      "relationship": "SCHEDULED_CUSTOMER_PURCHASE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "XRP is eligible for daily, weekly or monthly JPY 500–2,000,000 scheduled purchase orders.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VC-TRADE-DCA"
+      ]
+    },
+    {
+      "id": "EDGE-VC-TRADE-CARD",
+      "source": "SBI_VC_TRADE",
+      "target": "SBI_VISA_CRYPTO_CARD",
+      "relationship": "CRYPTO_REWARD_PRODUCT_PARTICIPANT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade participates in the SBI VISA Crypto Card product.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD",
+        "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH"
+      ]
+    },
+    {
+      "id": "EDGE-APLUS-CARD",
+      "source": "APLUS",
+      "target": "SBI_VISA_CRYPTO_CARD",
+      "relationship": "CARD_ISSUER",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Aplus participates as card issuer in the SBI VISA Crypto Card.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH"
+      ]
+    },
+    {
+      "id": "EDGE-VISA-CARD",
+      "source": "VISA",
+      "target": "SBI_VISA_CRYPTO_CARD",
+      "relationship": "PAYMENT_NETWORK",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Visa Worldwide Japan participates in the SBI VISA Crypto Card launch.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH"
+      ]
+    },
+    {
+      "id": "EDGE-CARD-POINTS-CREDIT",
+      "source": "CARD_POINTS",
+      "target": "XRP_REWARD_CREDIT",
+      "relationship": "MONTHLY_AUTOMATIC_CRYPTO_CONVERSION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Eligible card points are converted into the single selected crypto-asset.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD"
+      ]
+    },
+    {
+      "id": "EDGE-CARD-XRP-OPTION",
+      "source": "SBI_VISA_CRYPTO_CARD",
+      "target": "XRP",
+      "relationship": "OPTIONAL_REWARD_ASSET_SELECTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "XRP is one of three selectable reward assets; each card selects one asset.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-HOLDINGS-XRP-BENEFIT",
+      "source": "SBI_HOLDINGS_SHAREHOLDER_BENEFIT",
+      "target": "XRP",
+      "relationship": "SHAREHOLDER_COUPON_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Holdings offered eligible shareholders a JPY-denominated XRP coupon option.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-HOLDINGS-XRP-SHAREHOLDER"
+      ]
+    },
+    {
+      "id": "EDGE-ARUHI-XRP-BENEFIT",
+      "source": "SBI_ARUHI",
+      "target": "XRP",
+      "relationship": "SHAREHOLDER_XRP_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI ARUHI offered qualifying shareholders JPY 500 or JPY 1,000-equivalent XRP.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-ARUHI-XRP-SHAREHOLDER"
+      ]
+    },
+    {
+      "id": "EDGE-INSURANCE-XRP-BENEFIT",
+      "source": "SBI_INSURANCE",
+      "target": "XRP",
+      "relationship": "SHAREHOLDER_XRP_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Insurance Group offered qualifying shareholders JPY 2,500, JPY 10,000 or JPY 12,000-equivalent XRP.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER"
+      ]
+    },
+    {
+      "id": "EDGE-SHINSEI-XRP-BENEFIT",
+      "source": "SBI_SHINSEI",
+      "target": "XRP",
+      "relationship": "SHAREHOLDER_COUPON_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Shinsei Bank offered eligible shareholders an approximately JPY 2,000-equivalent XRP coupon option.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-SHINSEI-XRP-SHAREHOLDER"
+      ]
+    },
+    {
+      "id": "EDGE-GLOBAL-ASSET-XRP-BENEFIT",
+      "source": "SBI_GLOBAL_ASSET",
+      "target": "XRP",
+      "relationship": "SHAREHOLDER_XRP_DISTRIBUTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Global Asset Management offered base XRP benefits and a separate JPY 3,000-equivalent commemorative award for qualifying shareholders.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER"
+      ]
+    },
+    {
+      "id": "EDGE-SHAREHOLDER-ACCOUNT-REQUIREMENT",
+      "source": "XRP_REWARD_CREDIT",
+      "target": "SBI_VC_TRADE",
+      "relationship": "SAME_NAME_ACCOUNT_CREDIT_DESTINATION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The cited shareholder XRP benefits require a same-name SBI VC Trade account for receipt.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-HOLDINGS-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-ARUHI-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-SHINSEI-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-RIPPLE-STRATEGIC",
+      "source": "SBI_HOLDINGS",
+      "target": "RIPPLE_LABS",
+      "relationship": "STRATEGIC_INVESTOR_AND_PARTNER",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Insurance Group's official release describes its parent SBI Holdings as a Ripple investor and strategic partner.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-RIPPLE-ASIA-JV",
+      "source": "SBI_HOLDINGS",
+      "target": "SBI_RIPPLE_ASIA",
+      "relationship": "JOINT_VENTURE_ESTABLISHED_2016",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The SBI Insurance Group release states that SBI Holdings and Ripple established SBI Ripple Asia in 2016.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SBI-DCA-RECURRING-XRP-DEMAND",
+      "claim": "SBI VC Trade's scheduled accumulation product can create recurring customer-funded XRP purchase demand when customers select XRP and maintain sufficient JPY balances.",
+      "status": "PURCHASE_MECHANISM_CONFIRMED; ACTUAL_XRP_ORDERS_AND_MARKET_IMPACT_UNKNOWN",
+      "support": [
+        "Official product terms specify XRP eligibility, scheduled frequencies, JPY order limits and required prefunding."
+      ],
+      "disconfirming": [
+        "No active-plan counts, filled XRP units, execution venue or external sourcing is disclosed.",
+        "Insufficient balance can skip orders; the dealer may internalize or source inventory away from public spot books."
+      ],
+      "next_test": "Obtain XRP-specific plan counts, monthly JPY order/fill totals and execution/inventory reconciliation."
+    },
+    {
+      "id": "HYP-SBI-RETAIL-DISTRIBUTION-ONBOARDING",
+      "claim": "SBI Group's card and multi-affiliate shareholder-benefit programs may expand XRP ownership and onboard customers into SBI VC Trade.",
+      "status": "DISTRIBUTION_MECHANISMS_CONFIRMED; ADOPTION_AND_NET_CAPITAL_UNQUANTIFIED",
+      "support": [
+        "Five SBI entities documented XRP shareholder benefits; receipt requires an SBI VC Trade account.",
+        "The card converts points into selected crypto-assets, including XRP.",
+        "SBI Insurance Group explicitly describes improving awareness and understanding of the SBI Group as a program objective."
+      ],
+      "disconfirming": [
+        "No participant counts, XRP selection shares, coupon redemptions or XRP units credited are disclosed.",
+        "Some benefits are optional and can be exchanged for non-crypto products.",
+        "Rewards may be fulfilled from existing inventory rather than new market purchases."
+      ],
+      "next_test": "Obtain eligible-holder counts, redemption rates, XRP units credited and inventory source-of-funds records."
+    },
+    {
+      "id": "HYP-SBI-REWARD-INVENTORY-NOT-SPOT-BUY",
+      "claim": "Card points and shareholder XRP coupons may be fulfilled through existing dealer inventory or internal transfers without equivalent contemporaneous public-market buying.",
+      "status": "PLAUSIBLE_COUNTERHYPOTHESIS; INVENTORY_SOURCE_UNKNOWN",
+      "support": [
+        "Reward conversion uses an SBI VC Trade displayed sales-price reference, not a disclosed external execution record.",
+        "The programs specify fixed JPY benefit values and same-name account credits."
+      ],
+      "disconfirming": [
+        "If SBI VC Trade replenishes inventory externally, some reward fulfillment could induce spot or OTC demand; no procurement evidence is published."
+      ],
+      "next_test": "Reconcile reward liabilities, treasury inventory and exchange/OTC purchase records over the benefit settlement windows."
+    }
+  ]
+}
