@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "GRAPH-COINBASE-RLUSD-XRPL-SUPPLY-20261031T180340Z",
+  "captured_at_utc": "2026-10-31T18:03:40Z",
+  "source_ids": [
+    "SRC-COINBASE-RLUSD-LISTING-20261028",
+    "SRC-XRPLDASHBOARD-RLUSD-SUPPLY-20261031T180340Z",
+    "SRC-XRPLDASHBOARD-RLUSD-METHODOLOGY-20261031T180340Z",
+    "SRC-XRP-INSIGHTS-EXCHANGE-BALANCES-20261031T180340Z",
+    "SRC-XRP-INSIGHTS-EXCHANGE-METHODOLOGY-20261031T180340Z"
+  ],
+  "nodes": [
+    {
+      "id": "COINBASE",
+      "type": "company",
+      "name": "Coinbase",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "id": "RIPPLE",
+      "type": "company",
+      "name": "Ripple",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin",
+      "name": "Ripple USD (RLUSD)",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "id": "XRPL",
+      "type": "network",
+      "name": "XRP Ledger",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "id": "ETHEREUM",
+      "type": "network",
+      "name": "Ethereum",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "id": "BASE",
+      "type": "network",
+      "name": "Base",
+      "evidence_class": "CONFIRMED_COINBASE_SUPPORT; DASHBOARD_SUPPLY_SCOPE_TESTING"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset",
+      "name": "XRP",
+      "evidence_class": "CONFIRMED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "COINBASE",
+      "to": "RLUSD",
+      "relation": "DISTRIBUTES_AND_LISTS",
+      "detail": "Prime, Exchange and retail app; supported regions; announcement dated 2026-10-28",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ],
+      "evidence_class": "CONFIRMED_PRIMARY"
+    },
+    {
+      "from": "COINBASE",
+      "to": "XRPL",
+      "relation": "SUPPORTS_RLUSD_DEPOSITS_WITHDRAWALS",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ],
+      "evidence_class": "CONFIRMED_PRIMARY"
+    },
+    {
+      "from": "COINBASE",
+      "to": "ETHEREUM",
+      "relation": "SUPPORTS_RLUSD_DEPOSITS_WITHDRAWALS",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ],
+      "evidence_class": "CONFIRMED_PRIMARY"
+    },
+    {
+      "from": "COINBASE",
+      "to": "BASE",
+      "relation": "SUPPORTS_RLUSD_DEPOSITS_WITHDRAWALS",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ],
+      "evidence_class": "CONFIRMED_PRIMARY"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD",
+      "relation": "ISSUER",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ],
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "BASE",
+      "relation": "PROVIDES_LIQUIDITY_FOR_RLUSD",
+      "detail": "Coinbase states Ripple will provide liquidity on Base",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ],
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT"
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL",
+      "relation": "ISSUED_SUPPLY_OBSERVED",
+      "detail": "XRPL daily snapshot USD 707.36M at 2026-10-31 01:00 UTC; rolling 24h net change -USD 67.6M",
+      "source_ids": [
+        "SRC-XRPLDASHBOARD-RLUSD-SUPPLY-20261031T180340Z",
+        "SRC-XRPLDASHBOARD-RLUSD-METHODOLOGY-20261031T180340Z"
+      ],
+      "evidence_class": "PROVIDER_OBSERVATION"
+    },
+    {
+      "from": "RLUSD",
+      "to": "ETHEREUM",
+      "relation": "ISSUED_SUPPLY_OBSERVED",
+      "detail": "Ethereum supply approximately USD 1.71B; rolling 24h net mint +USD 19.6M",
+      "source_ids": [
+        "SRC-XRPLDASHBOARD-RLUSD-SUPPLY-20261031T180340Z",
+        "SRC-XRPLDASHBOARD-RLUSD-METHODOLOGY-20261031T180340Z"
+      ],
+      "evidence_class": "PROVIDER_OBSERVATION"
+    },
+    {
+      "from": "XRP",
+      "to": "XRPL",
+      "relation": "NATIVE_ASSET_OF",
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-EXCHANGE-BALANCES-20261031T180340Z",
+        "SRC-XRP-INSIGHTS-EXCHANGE-METHODOLOGY-20261031T180340Z"
+      ],
+      "evidence_class": "CONFIRMED"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-RLUSD-CHAIN-MIGRATION",
+      "claim": "Some of the XRPL RLUSD decrease reflects movement to Ethereum or Base following Coinbase's multichain support.",
+      "status": "PLAUSIBLE_NOT_PROVEN",
+      "supporting": [
+        "Coinbase announced XRPL, Base and Ethereum deposit/withdrawal support on 2026-10-28.",
+        "Ethereum supply increased USD 19.6M in the same rolling 24h panel."
+      ],
+      "disconfirming": [
+        "Ethereum's increase offsets only part of the XRPL decrease.",
+        "Base supply is excluded from the dashboard and labeled testing.",
+        "No transaction-level bridge path or matching mint/burn IDs were obtained."
+      ]
+    },
+    {
+      "id": "H-RLUSD-REDEMPTION",
+      "claim": "Some of the XRPL RLUSD decrease reflects issuer redemptions/burns rather than chain migration.",
+      "status": "PLAUSIBLE_NOT_PROVEN",
+      "supporting": [
+        "XRPL gateway_balances snapshot and rolling net supply both declined."
+      ],
+      "disconfirming": [
+        "No transaction-level burn/redemption IDs were obtained for this exact window.",
+        "The cross-chain supply scope excludes Base."
+      ]
+    },
+    {
+      "id": "H-RLUSD-PROVIDER-SCOPE",
+      "claim": "Part of the apparent magnitude or timing difference reflects snapshot-window, feed availability or provider-scope limitations.",
+      "status": "PLAUSIBLE_DATA_QUALITY_RISK",
+      "supporting": [
+        "Dashboard reported live feed unavailable and a snapshot refresh age; daily and rolling windows differ.",
+        "Base is outside the stated two-chain scope."
+      ],
+      "disconfirming": [
+        "The daily XRPL supply figure is displayed directly from gateway_balances methodology; a genuine supply decline is still indicated."
+      ]
+    },
+    {
+      "id": "H-XRP-PRICE-CAUSALITY",
+      "claim": "The RLUSD supply decline caused a directional XRP price move or proves net XRP capital inflow/outflow.",
+      "status": "UNSUPPORTED_NO_FEATURE_ADMISSION",
+      "supporting": [],
+      "disconfirming": [
+        "RLUSD is a separate issued stablecoin; no XRP trade, bridge, order-book or issuer purchase crosswalk links the RLUSD supply change to XRP price.",
+        "No directional feature is admitted."
+      ]
+    }
+  ],
+  "graph_limitations": [
+    "Coinbase's supported-network announcement is not evidence of actual deposits, withdrawals or cross-chain transfers.",
+    "The dashboard's two-chain RLUSD supply excludes Base and does not provide a transaction-level chain-migration reconciliation.",
+    "XRP exchange-wallet totals include customer omnibus balances, cold storage and 487.2M XRP in wrapped/operational reserves; they are not tradable float.",
+    "The current XRP Insights page differs materially from a prior same-day capture on 30-day aggregate and venue changes; both observations must be preserved."
+  ]
+}
