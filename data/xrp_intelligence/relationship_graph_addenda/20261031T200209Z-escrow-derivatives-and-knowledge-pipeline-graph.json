@@ -1,0 +1,210 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-ESCROW-DERIVATIVES-KB-FRESHNESS-20261031T200209Z",
+  "captured_at_utc": "2026-10-31T20:02:09Z",
+  "source_ids": [
+    "SRC-20261031T200209Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T200209Z-TRADRADAR-XRP",
+    "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT",
+    "SRC-20261031T200209Z-KB-FRESHNESS",
+    "SRC-20261031T200209Z-XRPL-ESCROW-DOCS"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "type": "company"
+    },
+    {
+      "id": "XRPL",
+      "type": "ledger"
+    },
+    {
+      "id": "ESCROW_NOV1",
+      "type": "escrow_set"
+    },
+    {
+      "id": "XRP",
+      "type": "asset"
+    },
+    {
+      "id": "TRADRADAR",
+      "type": "data_provider"
+    },
+    {
+      "id": "XRP_PERPS",
+      "type": "derivatives_market"
+    },
+    {
+      "id": "KNOWLEDGE_CYCLE",
+      "type": "workflow"
+    },
+    {
+      "id": "XRP_LOG",
+      "type": "dataset"
+    },
+    {
+      "id": "SENTIMENT_SHIFT",
+      "type": "feature"
+    },
+    {
+      "id": "CROSS_ANALYSIS",
+      "type": "workflow"
+    },
+    {
+      "id": "MAIN",
+      "type": "branch"
+    },
+    {
+      "id": "PR1423",
+      "type": "pull_request"
+    },
+    {
+      "id": "PR1424",
+      "type": "pull_request"
+    }
+  ],
+  "edges": [
+    {
+      "from": "RIPPLE",
+      "to": "ESCROW_NOV1",
+      "type": "OWNS_ESCROW_OBJECTS",
+      "source_ids": [
+        "SRC-20261031T200209Z-XRP-INSIGHTS-ESCROW"
+      ]
+    },
+    {
+      "from": "ESCROW_NOV1",
+      "to": "XRP",
+      "type": "HOLDS_UNTIL_FINISH_AFTER",
+      "source_ids": [
+        "SRC-20261031T200209Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261031T200209Z-XRPL-ESCROW-DOCS"
+      ]
+    },
+    {
+      "from": "XRPL",
+      "to": "ESCROW_NOV1",
+      "type": "VALIDATED_LEDGER_TIME_LOCK",
+      "source_ids": [
+        "SRC-20261031T200209Z-XRPL-ESCROW-DOCS"
+      ]
+    },
+    {
+      "from": "ANY_ACCOUNT",
+      "to": "ESCROW_NOV1",
+      "type": "MAY_SUBMIT_ESCROW_FINISH",
+      "source_ids": [
+        "SRC-20261031T200209Z-XRPL-ESCROW-DOCS"
+      ]
+    },
+    {
+      "from": "ESCROW_NOV1",
+      "to": "PREDEFINED_DESTINATION",
+      "type": "PAYS_DESTINATION_ON_FINISH",
+      "source_ids": [
+        "SRC-20261031T200209Z-XRPL-ESCROW-DOCS"
+      ]
+    },
+    {
+      "from": "TRADRADAR",
+      "to": "XRP_PERPS",
+      "type": "AGGREGATES_SEVEN_EXCHANGES",
+      "source_ids": [
+        "SRC-20261031T200209Z-TRADRADAR-XRP"
+      ]
+    },
+    {
+      "from": "KNOWLEDGE_CYCLE",
+      "to": "XRP_LOG",
+      "type": "MANUAL_ONLY_INGESTION",
+      "source_ids": [
+        "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT",
+        "SRC-20261031T200209Z-KB-FRESHNESS"
+      ]
+    },
+    {
+      "from": "XRP_LOG",
+      "to": "SENTIMENT_SHIFT",
+      "type": "ADJACENT_24H_WINDOWS",
+      "source_ids": [
+        "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT",
+        "SRC-20261031T200209Z-KB-FRESHNESS"
+      ]
+    },
+    {
+      "from": "CROSS_ANALYSIS",
+      "to": "MAIN",
+      "type": "SCHEDULED_CONTENTS_WRITE",
+      "source_ids": [
+        "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT"
+      ]
+    },
+    {
+      "from": "PR1423",
+      "to": "CROSS_ANALYSIS",
+      "type": "PROPOSES_WRITER_QUARANTINE_UNMERGED",
+      "source_ids": [
+        "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT"
+      ]
+    },
+    {
+      "from": "PR1424",
+      "to": "SENTIMENT_SHIFT",
+      "type": "PROPOSES_FIXED_HORIZON_LEDGER_UNMERGED",
+      "source_ids": [
+        "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "70% re-escrow pattern repeats, leaving ~300M XRP net outside escrow.",
+      "status": "HISTORICAL_BASELINE_NOT_FORECAST",
+      "support": [
+        "12/12 prior cycles re-escrowed 700M."
+      ],
+      "disconfirming": [
+        "12 observations do not guarantee next cycle."
+      ],
+      "next_test": "Read EscrowFinish and EscrowCreate after 00:00Z."
+    },
+    {
+      "id": "H2",
+      "statement": "Full 1B release causes immediate spot sell pressure.",
+      "status": "UNSUPPORTED_SPECULATION",
+      "support": [
+        "1B becomes eligible."
+      ],
+      "disconfirming": [
+        "Eligibility is not execution; destination is predetermined; no exchange deposit/sale evidence."
+      ],
+      "next_test": "Trace destinations and validated transfers."
+    },
+    {
+      "id": "H3",
+      "statement": "Derivatives positioning could amplify a move if funds reach exchange liquidity.",
+      "status": "LOW_CONFIDENCE_CONDITIONAL_INFERENCE",
+      "support": [
+        "Price +1.1%, OI +1.7%, funding +0.005%, 75.3% long accounts."
+      ],
+      "disconfirming": [
+        "Bybit/OKX funding negative; account ratio not notional; OI two-sided."
+      ],
+      "next_test": "Compare venue OI, funding, basis, liquidations and depth."
+    },
+    {
+      "id": "H4",
+      "statement": "Zero-sample sentiment output reflects stale ingestion, not neutral sentiment.",
+      "status": "CONFIRMED_PIPELINE_DIAGNOSIS",
+      "support": [
+        "No entries in last 48h; logs ~54h old; ingestion workflow manual-only."
+      ],
+      "disconfirming": [
+        "Other external sources may have current data, but not local windows."
+      ],
+      "next_test": "Implement isolated scheduled freshness/ingestion path."
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "BARROT-XRP-PRE-ESCROW-INGESTION-20261031T200209Z",
+  "captured_at_utc": "2026-10-31T20:02:09Z",
+  "data_cutoff_utc": "2026-10-31T20:02:09Z",
+  "sources": [
+    {
+      "id": "SRC-20261031T200209Z-XRP-INSIGHTS-ESCROW",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "retrieved_at_utc": "2026-10-31T20:02:09Z",
+      "claims": [
+        "Two Ripple-owned escrow objects totaling 1B XRP have FinishAfter 2026-11-01T00:00Z at ledger 108028336 closed 18:05Z.",
+        "31.4B XRP in 98 objects across 8 accounts; 32 future unlocks through June 2029.",
+        "Prior 12 cycles: 12B released, 8.4B re-escrowed (70%), 3.6B net outside escrow; 12/12 re-escrowed 700M.",
+        "Median finish delay 11s; maximum 2.3 days."
+      ],
+      "limitations": [
+        "Third-party on-chain-derived page, not Ripple statement; ledger is 1h57m stale at cutoff.",
+        "No November transaction hashes/destinations; eligibility is not execution or sale."
+      ]
+    },
+    {
+      "id": "SRC-20261031T200209Z-TRADRADAR-XRP",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-10-31T20:02:09Z",
+      "claims": [
+        "19:05Z, 15m delayed: price $1.2557 (+1.10%), OI $1.87B (+1.70%) across 7 exchanges.",
+        "OI-weighted funding +0.0050%/8h; Bybit -0.0073%, OKX -0.0021%, other five venues positive.",
+        "24h liquidations at least $418.86K; long accounts 75.3% across 4 exchanges."
+      ],
+      "limitations": [
+        "Provider-specific coverage; account ratio not notional; liquidation lower bound; no forecast."
+      ]
+    },
+    {
+      "id": "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT",
+      "publisher": "GitHub REST and Actions",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-10-31T20:02:09Z",
+      "claims": [
+        "Main 004d8b92 has unsigned timestamp-only Cross Analysis commit at 19:52Z; run 41236207642 and Pages run 41236219853 succeeded.",
+        "Cross Analysis hourly contents:write; Scheduler Tick 15m contents/actions write; daily accuracy and 6h telemetry writers active.",
+        "Knowledge Signal Cycle is manual-only; Databricks token input is shell-interpolated; subscriber sync uses unsalted SHA-256 but public file count 0; manual merge queue is write-capable.",
+        "200 open PRs: 190 drafts, 10 ready; 198 main-based, 0 current-base, 198 stale; branch protection has empty required-check contexts."
+      ],
+      "limitations": [
+        "Bounded audit, not full CI/security scan; no secret read; PR CI applies to exact old heads only."
+      ]
+    },
+    {
+      "id": "SRC-20261031T200209Z-KB-FRESHNESS",
+      "publisher": "GitHub B-Agent blobs and source code",
+      "url": "https://github.com/Barrot-Agent/B-Agent/tree/main/ping-pongings/knowledge-base",
+      "retrieved_at_utc": "2026-10-31T20:02:09Z",
+      "claims": [
+        "XRP log 1,208 rows, newest 2026-10-29T13:23:01Z; BTC log 1,245 rows, newest 13:38:11Z; no rows in prior 48h.",
+        "Sentiment shift uses adjacent 24h windows and positive relevance; Cross Analysis returned n=0.",
+        "Entity sentiment profile has no recency cutoff; its scores are lifetime aggregates, not current sentiment.",
+        "Knowledge Signal Cycle is workflow_dispatch-only; no schedule."
+      ],
+      "limitations": [
+        "ingested_at is not publication time; RSS coverage not tested; zero sample is missing data, not neutral."
+      ]
+    },
+    {
+      "id": "SRC-20261031T200209Z-XRPL-ESCROW-DOCS",
+      "publisher": "XRPL.org",
+      "url": "https://xrpl.org/docs/references/protocol/transactions/types/escrowfinish",
+      "retrieved_at_utc": "2026-10-31T20:02:09Z",
+      "claims": [
+        "Any account may submit EscrowFinish after conditions permit.",
+        "FinishAfter is checked against most recently closed validated ledger; escrow pays its predetermined Destination."
+      ],
+      "limitations": [
+        "Protocol docs do not identify the destinations or actual state of the November 1 objects."
+      ]
+    }
+  ],
+  "independence_policy": "XRP Insights and TradRadar are separate providers; XRPL.org is primary protocol documentation; GitHub REST/Actions and B-Agent blobs are repository observations. Do not treat multiple fields from one provider as independent."
+}
