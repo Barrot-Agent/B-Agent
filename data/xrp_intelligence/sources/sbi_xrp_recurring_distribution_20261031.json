@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "record_type": "source_bundle",
   "bundle_id": "SBI-XRP-RECURRING-DISTRIBUTION-20261031",
-  "captured_at_utc": "2026-10-31T13:30:48.865Z",
+  "captured_at_utc": "2026-10-31T13:34:28.296Z",
   "observed_main_sha": "52ce593d7f4075eb0cb6cac078bf8486d6fab2c1",
   "purpose": "Record primary-source evidence for SBI-linked recurring XRP acquisition and reward-distribution channels, market-making relationships, and the group's simultaneous Circle/USDC and Ripple/XRPL rails.",
   "sources": [
@@ -206,6 +206,25 @@
       "limitations": [
         "Wallet labels and balances are provider-derived, not an official SBI proof-of-reserves statement.",
         "Exchange wallets may contain pooled customer custody, operational reserves and internal transfers; balance changes are not equivalent to net customer selling, net buying, or tradable float."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT-20260204",
+      "publisher": "SBI Holdings",
+      "title": "2026 fiscal-year-end shareholder benefit program",
+      "url": "https://www.sbigroup.co.jp/news/2026/0204_16085.html",
+      "published_at_utc": "2026-02-04T00:00:00Z",
+      "source_type": "official_shareholder_benefit_announcement",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_HOLDINGS_CORPORATE",
+      "claims": [
+        "SBI Holdings announced an option for eligible shareholders recorded at March 31, 2026 to receive a coupon redeemable for a stated yen value of XRP in an SBI VC Trade account, or to select a product set.",
+        "The announcement states a JPY 2,000-equivalent XRP coupon for the first described eligibility tier and gives a July 31, 2026 application deadline."
+      ],
+      "limitations": [
+        "The stated application deadline has passed; this is historical evidence, not an active October 2026 offer.",
+        "The announcement does not disclose total eligible shareholders, XRP units distributed, aggregate redemption value, XRP procurement source, or whether SBI made open-market purchases to fulfill coupons.",
+        "Do not conflate this SBI Holdings shareholder program with similarly named shareholder benefits offered by SBI Global Asset Management, a separate group company."
       ]
     }
   ],
