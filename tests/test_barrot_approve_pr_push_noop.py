@@ -30,7 +30,7 @@ class TestBarrotApprovalWorkflowPushNoop(unittest.TestCase):
     def test_manual_approval_still_requires_head_sha_and_reason(self):
         self.assertIn("expected_head_sha:", WORKFLOW)
         self.assertIn("reason:", WORKFLOW)
-        self.assertIn('head_sha != "$EXPECTED_HEAD_SHA"', WORKFLOW)
+        self.assertIn('"$head_sha" != "$EXPECTED_HEAD_SHA"', WORKFLOW)
         self.assertIn('if [[ -z "$APPROVAL_REASON" ]]', WORKFLOW)
 
 
