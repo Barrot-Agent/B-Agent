@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INDEX = ROOT / "data" / "xrp_intelligence" / "research_ledger.json"
 SNAPSHOT_PREFIX = "data/xrp_intelligence/snapshots/"
 ARCHIVE_PREFIX = "data/xrp_intelligence/ledger_archive/v1/"
+SOURCE_REVISION_PREFIX = "data/xrp_intelligence/source_revisions/"
 SHA1_RE = re.compile(r"^[0-9a-f]{40}$")
 INDEX_ONLY_FIELDS = {
     "snapshot_blob_sha",
@@ -52,6 +53,17 @@ def _safe_archive_path(value: Any) -> tuple[Path | None, str | None]:
         return None, "archive path must stay inside data/xrp_intelligence/ledger_archive/v1/"
     if path.suffix != ".json":
         return None, "archive path must point to a JSON shard"
+    return path, None
+
+
+def _safe_source_revision_path(value: Any) -> tuple[Path | None, str | None]:
+    if not isinstance(value, str) or not value:
+        return None, "source revision path must be a non-empty string"
+    path = Path(value)
+    if path.is_absolute() or ".." in path.parts or not value.startswith(SOURCE_REVISION_PREFIX):
+        return None, "source revision path must stay inside data/xrp_intelligence/source_revisions/"
+    if path.suffix != ".json":
+        return None, "source revision path must point to a JSON addendum"
     return path, None
 
 
@@ -207,6 +219,90 @@ def validate_index_data(index: dict[str, Any], repo_root: Path) -> dict[str, Any
         errors.append("latest_snapshot must be an object")
         latest = {}
 
+    # Source-revision addenda are index-level provenance pointers outside the
+    # immutable source archive. Verify their paths, Git blob hashes and identity
+    # fields; an unarchived source ID is permitted only while the addendum
+    # explicitly declares pending_archive_append.
+    revision_addenda = latest.get("source_revision_addenda", [])
+    revision_errors: list[str] = []
+    revision_checked = 0
+    revision_pending_archive_append = 0
+    seen_revision_paths: set[str] = set()
+    seen_revision_ids: set[str] = set()
+    if revision_addenda is None:
+        revision_addenda = []
+    if not isinstance(revision_addenda, list):
+        revision_errors.append("latest_snapshot.source_revision_addenda must be a list")
+        revision_addenda = []
+    for position, pointer in enumerate(revision_addenda):
+        if not isinstance(pointer, dict):
+            revision_errors.append(f"source_revision_addenda[{position}] must be an object")
+            continue
+        relative_revision_path, revision_path_error = _safe_source_revision_path(pointer.get("path"))
+        if revision_path_error:
+            revision_errors.append(f"source_revision_addenda[{position}]: {revision_path_error}")
+            continue
+        path_key = str(relative_revision_path)
+        if path_key in seen_revision_paths:
+            revision_errors.append(f"duplicate source revision path: {path_key}")
+        seen_revision_paths.add(path_key)
+        expected_revision_sha = pointer.get("blob_sha")
+        if not isinstance(expected_revision_sha, str) or not SHA1_RE.fullmatch(expected_revision_sha):
+            revision_errors.append(f"source_revision_addenda[{position}] has invalid blob_sha")
+            continue
+        try:
+            revision_raw = (repo_root / relative_revision_path).read_bytes()
+        except OSError as exc:
+            revision_errors.append(f"source_revision_addenda[{position}] cannot be read: {exc}")
+            continue
+        revision_checked += 1
+        actual_revision_sha = git_blob_sha(revision_raw)
+        if actual_revision_sha != expected_revision_sha:
+            revision_errors.append(
+                f"source_revision_addenda[{position}] Git blob SHA mismatch: "
+                f"expected={expected_revision_sha}, actual={actual_revision_sha}"
+            )
+        try:
+            revision = json.loads(revision_raw)
+        except json.JSONDecodeError as exc:
+            revision_errors.append(f"source_revision_addenda[{position}] JSON invalid: {exc}")
+            continue
+        if not isinstance(revision, dict):
+            revision_errors.append(f"source_revision_addenda[{position}] must contain a JSON object")
+            continue
+        if revision.get("record_type") != "source_revision_addendum":
+            revision_errors.append(f"source_revision_addenda[{position}] has wrong record_type")
+        if revision.get("schema_version") != "1.0":
+            revision_errors.append(f"source_revision_addenda[{position}] schema_version must be 1.0")
+        revision_id = revision.get("revision_id")
+        if not isinstance(revision_id, str) or not revision_id:
+            revision_errors.append(f"source_revision_addenda[{position}] has no non-empty revision_id")
+        else:
+            if revision_id in seen_revision_ids:
+                revision_errors.append(f"duplicate source revision ID: {revision_id}")
+            seen_revision_ids.add(revision_id)
+        if pointer.get("revision_id") != revision_id:
+            revision_errors.append(f"source_revision_addenda[{position}] revision_id pointer mismatch")
+        if pointer.get("captured_at_utc") != revision.get("captured_at_utc"):
+            revision_errors.append(f"source_revision_addenda[{position}] captured_at_utc pointer mismatch")
+        pointer_source_id = pointer.get("source_id")
+        revision_source_id = revision.get("source_id")
+        if pointer_source_id is not None and pointer_source_id != revision_source_id:
+            revision_errors.append(f"source_revision_addenda[{position}] source_id pointer mismatch")
+        pending_archive_append = revision.get("pending_archive_append")
+        if type(pending_archive_append) is not bool:
+            revision_errors.append(f"source_revision_addenda[{position}] pending_archive_append must be boolean")
+        elif pending_archive_append:
+            revision_pending_archive_append += 1
+            pointer_status = str(pointer.get("status", ""))
+            if "PENDING_ARCHIVE_APPEND" not in pointer_status:
+                revision_errors.append(f"source_revision_addenda[{position}] pending archive status mismatch")
+        elif isinstance(revision_source_id, str) and revision_source_id not in source_ids:
+            revision_errors.append(
+                f"source_revision_addenda[{position}] source_id is absent from archive but not marked pending"
+            )
+    errors.extend(revision_errors)
+
     is_pointer = latest.get("record_type") == "snapshot_reference"
     path_value = latest.get("snapshot_path")
     relative_path, path_error = _safe_snapshot_path(path_value)
@@ -271,6 +367,8 @@ def validate_index_data(index: dict[str, Any], repo_root: Path) -> dict[str, Any
         "run_update_count": len(run_updates),
         "limitation_count": len(limitations),
         "archive_shards_checked": source_shards + run_shards + limitation_shards,
+        "source_revision_addenda_checked": revision_checked,
+        "source_revision_addenda_pending_archive_append": revision_pending_archive_append,
         "archive_policy_counts_reconciled": archive_policy_counts_reconciled,
         "snapshot_path": path_value,
         "snapshot_blob_sha_expected": expected_sha,
