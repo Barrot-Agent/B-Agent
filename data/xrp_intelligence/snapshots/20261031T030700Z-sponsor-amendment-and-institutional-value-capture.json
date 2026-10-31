@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T030700Z-SPONSOR-AMENDMENT-AND-INSTITUTIONAL-VALUE-CAPTURE",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T030700Z-sponsor-amendment-and-institutional-value-capture.json",
+  "created_at_utc": "2026-10-31T03:07:00Z",
+  "captured_at_utc": "2026-10-31T03:07:00Z",
+  "data_cutoff_utc": "2026-10-31T03:07:00Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T025600Z-main-repeat-write-and-telemetry-safety.json",
+  "source_ids": [
+    "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
+    "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z",
+    "SRC-OCC-RNTB-CHARTER-20261031T020816Z",
+    "SRC-RIPPLE-RNTB-20261031T020816Z",
+    "SRC-COINBASE-RLUSD-LISTING-20261031T020816Z",
+    "SRC-COINBASE-RIPPLE-PRIME-20261031T020816Z",
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+    "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+    "SRC-COINBASE-Q3-CUSTODY-COLLATERAL-20261031T022100Z",
+    "SRC-CIRCLE-USDC-DISTRIBUTION-20261031T022100Z",
+    "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+    "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+    "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z",
+    "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+  ],
+  "source_reference_count": 15,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "F-20261031T030700Z-01",
+      "classification": "CONFIRMED_FACT",
+      "statement": "At the 2026-10-31T02:52Z own-node roll call, Sponsor had 9 yes votes out of 34 validators heard; 28 were required, leaving it short by 19. Sponsor had no majority and was not active on Mainnet.",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z"
+      ],
+      "disconfirming_evidence": "Earlier 9/35 snapshots used a different roll-call denominator; the current 34-heard count is time-specific and should not be conflated with the 35-validator UNL size."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-02",
+      "classification": "CONFIRMED_FACT",
+      "statement": "fixCleanup3_4_0 had 33 of 34 yes votes at the same roll call, five above the 28-vote threshold, with a countdown projected to complete around 2026-11-04T14:46Z if support remains above threshold for the full 14 days.",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z"
+      ],
+      "disconfirming_evidence": "The projection can reset if support falls to 80% or below; it is not a guaranteed activation date."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-03",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Official XRPL documentation says sponsorship does not transfer XRP to the Sponsee. The Sponsor retains XRP and the ledger attributes the reserve obligation to the Sponsor; the Sponsee retains control of keys and accounts.",
+      "source_ids": [
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z"
+      ],
+      "disconfirming_evidence": "The feature requires the Sponsor amendment, which is not currently active on Mainnet."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-04",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The Sponsor reserve-exit vulnerability was disclosed from Devnet testing; no funds were at risk and Sponsor was not activated on Mainnet. The software fix shipped in xrpld v3.4.0 on 2026-09-17, while fixCleanup3_4_0 remains a separate amendment with its own activation countdown.",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z"
+      ],
+      "disconfirming_evidence": "The fix is available in software; the remaining issue is network amendment activation, not an unpatched code release."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-05",
+      "classification": "CONFIRMED_FACT",
+      "statement": "PR #8606 is open and blocked on develop. It introduces SponsorV1_1 and SponsoredAccountCreate; it is not merged or available on Mainnet. Its check-runs show 26 success, 5 skipped and no failures, but two Copilot review threads remain unresolved.",
+      "source_ids": [
+        "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+      ],
+      "disconfirming_evidence": "The diff includes targeted tests for the two review concerns and those tests are within successful build/test runs; the open review threads still require maintainer resolution."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-06",
+      "classification": "CONFIRMED_FACT",
+      "statement": "BNY announced XRP and RLUSD custody for eligible clients, is RLUSD's primary reserve custodian, and is exploring direct mint/redeem and tokenized trade finance on XRPL with C2FO. C2FO's Instant Pay initiative uses RLUSD on XRPL and is currently a waitlist/initiative; its reported $525B Early Pay history is not Instant Pay production volume.",
+      "source_ids": [
+        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
+        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No funded Instant Pay invoice amount, live transaction count or capital-provider-level deployment was disclosed; custody does not establish BNY XRP holdings or new spot purchases."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-07",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Coinbase reported $22B average USDC held in its products in Q3 2026, up 49% year over year and about 30% of average USDC market capitalization; it also reported 10.7% crypto trading-volume market share, 12.5% assets-on-platform share, more than $200M annualized prediction-market revenue and subscription/services at 49% of net revenue.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ],
+      "disconfirming_evidence": "These are Coinbase-reported company metrics, not independently audited market-share calculations in this snapshot."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-08",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Coinbase's Q3 SEC filing separately reports $590.2M transaction revenue, down 44% year over year, $570.2M subscription/services revenue, down 20%, and $306.9M stablecoin revenue, down 5%. These accounting lines are not interchangeable with average USDC balances or Coinbase's estimate of USDC economics.",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No disconfirmation; different metrics use different accounting definitions and periods."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-09",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Circle's Q2 filing reports $324.6M of distribution costs to Coinbase for Q2 and $655.3M for the first half of 2026. This confirms a substantial distribution-economic relationship but does not establish exclusivity or a USDC/RLUSD substitution.",
+      "source_ids": [
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+        "SRC-CIRCLE-USDC-DISTRIBUTION-20261031T022100Z"
+      ],
+      "disconfirming_evidence": "Coinbase also listed RLUSD and other stablecoins; the Circle distribution agreement is not evidence that Coinbase is USDC-only."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-10",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Coinbase's October 28 RLUSD listing supports XRPL, Base and Ethereum access across retail and institutional products; announced global-exchange collateral functionality was future availability, not a live collateral fact at the announcement cutoff.",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Listing and network support do not establish XRP spot purchases, collateral holdings or RLUSD settlement volumes."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-11",
+      "classification": "INFERENCE",
+      "statement": "If sponsorship becomes active and widely used, stablecoin users may transact without personally holding XRP while sponsors retain XRP to cover reserves and fees. This can shift XRP inventory and reserve lock-up toward institutions rather than eliminate network-level XRP requirements; net new spot demand remains unknown.",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Sponsor is not active on Mainnet and PR #8606 is blocked; no production sponsor balances or purchases have been measured."
+    },
+    {
+      "finding_id": "F-20261031T030700Z-12",
+      "classification": "UNKNOWN",
+      "statement": "Whether BNY, C2FO or any RLUSD participant uses XLS-68 sponsorship or the proposed SponsoredAccountCreate flow is unknown. No evidence links C2FO Instant Pay to Sponsor or SponsorV1_1.",
+      "source_ids": [
+        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
+        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z",
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+        "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+      ],
+      "disconfirming_evidence": "No public transaction IDs, sponsorship ledger objects or production onboarding records were identified."
+    }
+  ],
+  "event_timeline": [
+    {
+      "date": "2026-09-17",
+      "event": "xrpld v3.4.0 released with the Sponsor reserve-exit software fix.",
+      "source_ids": [
+        "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z"
+      ]
+    },
+    {
+      "date": "2026-09-21",
+      "event": "XRPL published the XLS-68 reserve-accounting vulnerability disclosure; Sponsor remained inactive on Mainnet.",
+      "source_ids": [
+        "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "event": "Last update to rippled PR #8606; it remains open and blocked on develop.",
+      "source_ids": [
+        "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "event": "BNY and C2FO institutional XRPL/RLUSD announcements described custody and an Instant Pay initiative; C2FO waitlist and no public production volume.",
+      "source_ids": [
+        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
+        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "event": "Coinbase RLUSD listing supports XRPL, Base and Ethereum; global exchange collateral functionality was described as future.",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "event": "Coinbase Q3 2026 results report record USDC held and diversified revenue, while SEC filing shows lower transaction revenue year over year.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-31T02:52:00Z",
+      "event": "Sponsor amendment had 9 of 34 validators heard voting yes, short by 19; fixCleanup3_4_0 had 33 of 34 and a projected Nov 4 activation if its countdown holds.",
+      "source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z"
+      ]
+    }
+  ],
+  "protocol_activation_state": {
+    "Sponsor": {
+      "yes_votes": 9,
+      "validators_heard": 34,
+      "threshold": 28,
+      "short_by": 19,
+      "majority": false,
+      "active_on_mainnet": false,
+      "as_of_utc": "2026-10-31T02:52:00Z"
+    },
+    "fixCleanup3_4_0": {
+      "yes_votes": 33,
+      "validators_heard": 34,
+      "threshold": 28,
+      "short_by": 0,
+      "majority": true,
+      "days_in_countdown": 9.5,
+      "projected_activation_utc": "2026-11-04T14:46:00Z",
+      "conditional": true,
+      "as_of_utc": "2026-10-31T02:52:00Z"
+    },
+    "SponsoredAccountCreate": {
+      "transaction_proposal_pr": 8606,
+      "required_amendment": "SponsorV1_1",
+      "pr_state": "OPEN_BLOCKED_UNMERGED",
+      "mainnet_available": false
+    }
+  },
+  "institutional_relationships": {
+    "BNY": {
+      "xrp_and_rlusd_custody": "ANNOUNCED_FOR_ELIGIBLE_CLIENTS",
+      "rlusd_primary_reserve_custodian": true,
+      "direct_mint_redeem": "EXPLORING",
+      "xrpl_trade_finance": "EXPLORING_WITH_C2FO"
+    },
+    "C2FO": {
+      "instant_pay_network": "XRPL",
+      "settlement_asset": "RLUSD",
+      "status": "WAITLIST_INITIATIVE",
+      "historical_early_pay_volume_usd": 525000000000,
+      "instant_pay_funded_volume": "NOT_DISCLOSED"
+    },
+    "RippleNationalTrustBank": {
+      "occ_final_approval_date": "2026-10-26",
+      "issuer_of_rlusd": false,
+      "rlusd_issuer": "Standard Custody & Trust Company",
+      "operational_status": "NOT_ESTABLISHED",
+      "reserve_and_collateral_trustee_role": "APPROVED_ACTIVITIES_UPON_OPERATION"
+    },
+    "Coinbase": {
+      "average_usdc_products_q3_2026_usd": 22000000000,
+      "usdc_economics_share_company_reported_pct": 50,
+      "trading_volume_share_q3_2026_pct": 10.7,
+      "assets_on_platform_share_pct": 12.5,
+      "subscription_services_share_net_revenue_pct": 49,
+      "rlusd_listing_networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "multi_issuer_strategy": "CONFIRMED"
+    }
+  },
+  "prediction_engine": {
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "sponsorship_feature_status": "SCENARIO_ONLY_NOT_LIVE",
+    "required_future_features": [
+      "sponsored_account_create_count",
+      "sponsored_account_count",
+      "sponsoring_account_count",
+      "sponsoring_owner_count",
+      "sponsored_owner_count",
+      "sponsor_reserve_xrp",
+      "sponsorship_prefund_xrp",
+      "sponsored_fee_xrp",
+      "xrp_fee_burn",
+      "sponsor_concentration",
+      "sponsor_identity_class",
+      "sponsor_xrp_exchange_inflows",
+      "sponsor_xrp_otc_acquisitions",
+      "rlusd_net_mint_burn",
+      "unique_active_rlusd_accounts",
+      "c2fo_instant_pay_funded_invoice_count",
+      "c2fo_instant_pay_settled_value",
+      "identified_external_capital_provider_flows"
+    ],
+    "feature_admission_gate": "Do not admit stablecoin transfer count or gross RLUSD volume as XRP demand without sponsor-reserve, fee-burn, actual XRP acquisition and net capital evidence."
+  },
+  "limitations": [
+    "Sponsor vote is a timestamped independent own-node dashboard observation; canonical on-ledger Amendments/Majorities should be cross-checked. Validator denominator and threshold are based on validators heard and can vary.",
+    "PR #8606 is blocked, open and unmerged; two Copilot review threads remain unresolved. Passing checks and targeted tests do not constitute maintainer approval or Mainnet activation.",
+    "C2FO Instant Pay funded volume, live invoice count, unique capital providers and settled value are undisclosed; the $525B figure describes historical Early Pay activity, not the XRPL initiative.",
+    "BNY custody balances, XRP holdings and collateral allocations are not disclosed. No evidence establishes BNY or C2FO as net XRP buyers or that either uses Sponsor sponsorship."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

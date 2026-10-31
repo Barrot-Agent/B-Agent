@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T030700Z-SPONSORSHIP-VALUE-CAPTURE-AND-INSTITUTIONAL-CAPITAL",
+  "created_at_utc": "2026-10-31T03:07:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_AND_FEATURE_DESIGN",
+  "source_ids": [
+    "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
+    "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z",
+    "SRC-OCC-RNTB-CHARTER-20261031T020816Z",
+    "SRC-RIPPLE-RNTB-20261031T020816Z",
+    "SRC-COINBASE-RLUSD-LISTING-20261031T020816Z",
+    "SRC-COINBASE-RIPPLE-PRIME-20261031T020816Z",
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+    "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+    "SRC-COINBASE-Q3-CUSTODY-COLLATERAL-20261031T022100Z",
+    "SRC-CIRCLE-USDC-DISTRIBUTION-20261031T022100Z",
+    "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+    "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+    "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z",
+    "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+  ],
+  "context": "Institutional XRPL/RLUSD announcements and the current Sponsor amendment state require a sharper separation between stablecoin utility, user XRP holdings, sponsor-held reserve capital and actual external working-capital deployment.",
+  "decisions": [
+    "Treat XLS-68 Sponsor as not active on Mainnet until canonical amendment state confirms activation; current independent roll call is 9 yes of 34 heard, 28 required, short by 19.",
+    "Track fixCleanup3_4_0 separately from Sponsor. Its current 33/34 majority and projected Nov 4 activation are conditional and may reset.",
+    "Treat SponsoredAccountCreate PR #8606 and SponsorV1_1 as a separate proposed path; no zero-balance account creation feature is live until code is accepted, released and the required amendments activate.",
+    "Model sponsorship as a shift of reserve and fee obligations from Sponsee to Sponsor. Sponsor-held XRP can be encumbered; fees remain XRP-denominated and burned. Do not assume this creates incremental spot buying without sponsor acquisition evidence.",
+    "Add future feature fields for sponsored account counts, sponsor reserve XRP, prefunded sponsorship balances, sponsored fees, XRP fee burn, sponsor concentration, sponsor identity class, sponsor exchange/OTC inflows and reserve-release events.",
+    "Keep RLUSD transfer counts, gross RLUSD volume, C2FO Early Pay historical volume and C2FO Instant Pay funded volume as separate metrics. The $525B historical Early Pay figure is not XRPL Instant Pay capital.",
+    "Record BNY custody, BNY RLUSD reserve custody, BNY Ripple Prime custody and C2FO XRPL trade-finance exploration as separate edges. None alone proves XRP buying or collateral holdings.",
+    "Record Ripple National Trust Bank final approval separately from operational status; keep Standard Custody & Trust Company as RLUSD issuer and BNY as primary reserve custodian unless new evidence changes the roles.",
+    "Treat Coinbase Q3 average USDC balances, USDC economics share, stablecoin revenue and Circle distribution costs as distinct metrics. RLUSD listing indicates multi-issuer distribution, not confirmed USDC displacement.",
+    "Do not admit sponsorship vote counts, stablecoin gross flows, company-reported market share or waitlist announcements as directional XRP price features until point-in-time data and out-of-sample tests establish predictive value."
+  ],
+  "prediction_feature_contract": {
+    "sponsored_account_create_count": "only after activation",
+    "sponsored_account_count": "on-ledger count",
+    "sponsoring_account_count": "on-ledger count",
+    "sponsoring_owner_count": "on-ledger reserve obligations",
+    "sponsored_owner_count": "on-ledger sponsored objects",
+    "sponsor_reserve_xrp": "balance encumbered by account/object reserve",
+    "sponsorship_prefund_xrp": "prefunded fee/reserve pool",
+    "sponsored_fee_xrp": "fees paid by sponsor",
+    "xrp_fee_burn": "validated XRP fee burn",
+    "sponsor_concentration": "share of sponsored accounts/reserve by sponsor",
+    "sponsor_xrp_exchange_inflows": "identified exchange-originated XRP to sponsor",
+    "sponsor_xrp_otc_acquisitions": "publicly disclosed or on-chain-identified OTC acquisition only",
+    "rlusd_net_mint_burn": "issuer-level supply change",
+    "c2fo_instant_pay_funded_invoice_count": "verified production invoices only",
+    "c2fo_instant_pay_settled_value": "verified funded/settled value only"
+  },
+  "invariants": [
+    "No current SponsoredAccountCreate or Sponsor Mainnet activation is assumed.",
+    "No C2FO Instant Pay capital is inferred from historical Early Pay volume.",
+    "No BNY XRP purchases or collateral holdings are inferred from custody announcements.",
+    "No Coinbase USDC displacement by RLUSD is assumed.",
+    "Forecast status remains NOT_ISSUED."
+  ]
+}

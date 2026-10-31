@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 107,
+  "chunk_count": 108,
+  "record_count": 4,
+  "records": [
+    {
+      "id": "LIM-20261031T030700Z-01",
+      "category": "sponsor_amendment_activation",
+      "statement": "The Sponsor vote is a timestamped independent own-node observation, not the canonical ledger itself. The current page heard 34 of 35 trusted validators and reports 9 yes / 28 required; denominator and threshold can vary with validators heard. Cross-check the canonical Amendments/Majorities ledger before treating any activation state as final.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T030700Z-02",
+      "category": "sponsored_account_create_proposal",
+      "statement": "PR #8606 is blocked, open and unmerged on develop; it adds SponsorV1_1 and SponsoredAccountCreate. Two Copilot review threads remain unresolved despite author replies, and successful checks do not equal maintainer approval or Mainnet availability.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T030700Z-03",
+      "category": "institutional_actual_capital",
+      "statement": "C2FO Instant Pay funded volume, invoice count, unique capital providers and settled value are not publicly disclosed; the $525B figure is historical Early Pay activity. BNY custody balances and XRP holdings are not disclosed, and no actual XRP purchases are established.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
+        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z",
+        "SRC-COINBASE-RIPPLE-PRIME-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T030700Z-04",
+      "category": "issuer_and_distribution_role_separation",
+      "statement": "RNTB final approval does not establish that the bank has opened or taken over RLUSD issuance/reserve custody. Standard Custody & Trust Company remains the issuer in the reviewed materials, while BNY is named primary reserve custodian. Operational transfer arrangements are unknown.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-OCC-RNTB-CHARTER-20261031T020816Z",
+        "SRC-RIPPLE-RNTB-20261031T020816Z",
+        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z"
+      ]
+    }
+  ]
+}
