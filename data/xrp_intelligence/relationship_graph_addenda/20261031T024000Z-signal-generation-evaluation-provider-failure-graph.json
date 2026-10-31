@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T024000Z-SIGNAL-GENERATION-EVALUATION-PROVIDER-FAILURE",
+  "created_at_utc": "2026-10-31T02:40:00Z",
+  "captured_at_utc": "2026-10-31T02:40:00Z",
+  "source_ids": [
+    "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+    "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z",
+    "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+    "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+    "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z",
+    "SRC-GH-SIGNAL-ACCURACY-COMMIT-03A867-20261031T024000Z"
+  ],
+  "source_reference_count": 6,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T024000Z-01",
+      "from_entity": "XRP signal generator",
+      "relation": "emits_prediction_records_to",
+      "to_entity": "web/signal_history.jsonl",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T024000Z-02",
+      "from_entity": "scripts/check_signal_accuracy.py",
+      "relation": "mutates_unchecked_records_in",
+      "to_entity": "web/signal_history.jsonl",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T024000Z-03",
+      "from_entity": "Check Signal Accuracy workflow",
+      "relation": "scheduled_commit_pushes_to",
+      "to_entity": "main",
+      "status": "CONFIRMED_CAPABILITY",
+      "source_ids": [
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-COMMIT-03A867-20261031T024000Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T024000Z-04",
+      "from_entity": "Groq API",
+      "relation": "rate_limits",
+      "to_entity": "XRP signal generator",
+      "status": "REPORTED_HTTP_429",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T024000Z-05",
+      "from_entity": "GitHub Models",
+      "relation": "unavailable_due_to_missing_credentials_for",
+      "to_entity": "XRP signal generator",
+      "status": "REPORTED_MISSING_TOKEN",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T024000Z-06",
+      "from_entity": "PR #1386",
+      "relation": "proposes_read_only_artifact_remediation_for",
+      "to_entity": "Check Signal Accuracy workflow",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-COMMIT-03A867-20261031T024000Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T024000Z-01",
+      "claim": "The legacy 45.5% hit counter is not a valid out-of-sample skill estimate.",
+      "status": "CONFIRMED_METHODOLOGY_DEFECT",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z"
+      ],
+      "minority_objection": "The raw arithmetic is reproducible; only the performance interpretation is invalid."
+    },
+    {
+      "hypothesis_id": "H-20261031T024000Z-02",
+      "claim": "High-confidence Groq signals underperform zero-confidence fallback signals under the legacy rule.",
+      "status": "DESCRIPTIVE_ONLY",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ],
+      "minority_objection": "Different score classes and invalid labels prevent causal or calibration conclusions."
+    },
+    {
+      "hypothesis_id": "H-20261031T024000Z-03",
+      "claim": "Provider failures materially degrade the signal pipeline.",
+      "status": "SUPPORTED",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ],
+      "minority_objection": "The source string records errors but does not prove the full upstream outage timeline."
+    },
+    {
+      "hypothesis_id": "H-20261031T024000Z-04",
+      "claim": "Overlapping hourly signals make the nominal sample size misleading.",
+      "status": "SUPPORTED_BY_CADENCE",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z"
+      ],
+      "minority_objection": "Effective sample size has not yet been estimated."
+    },
+    {
+      "hypothesis_id": "H-20261031T024000Z-05",
+      "claim": "No directional XRP forecast should be issued from the current engine state.",
+      "status": "SUPPORTED_CURRENT_STATE",
+      "source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ],
+      "minority_objection": "A future independently validated fixed-horizon model may qualify after shadow evaluation."
+    }
+  ]
+}
