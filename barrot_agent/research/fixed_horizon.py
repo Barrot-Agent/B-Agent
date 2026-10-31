@@ -2,16 +2,17 @@
 
 Forecasts and outcomes are stored separately. The module never fetches market
 data, changes an issued forecast, or claims descriptive metrics are skill.
-A single writer per ledger directory is recommended.
+Appends and consistent reads are serialized with an OS-level lock.
 """
 from __future__ import annotations
 
+from contextlib import contextmanager
 import json
 import math
 import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Iterable, Mapping
+from typing import Any, Iterable, Iterator, Mapping
 
 CLASSES = ("up", "flat", "down")
 TIE_BREAK_ORDER = ("flat", "up", "down")
@@ -90,23 +91,69 @@ def _read_jsonl(path: Path) -> list[dict[str, Any]]:
     return records
 
 
-def _append_jsonl(path: Path, record: dict[str, Any]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    payload = (
-        json.dumps(record, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n"
-    ).encode("utf-8")
-    descriptor = os.open(str(path), os.O_CREAT | os.O_APPEND | os.O_WRONLY, 0o600)
+@contextmanager
+def _ledger_lock(directory: Path) -> Iterator[None]:
+    """Serialize ledger readers and writers across processes on a local filesystem."""
+    directory.mkdir(parents=True, exist_ok=True)
+    lock_path = directory / ".forecast-ledger.lock"
+    descriptor = os.open(
+        str(lock_path),
+        os.O_CREAT | os.O_RDWR | getattr(os, "O_BINARY", 0),
+        0o600,
+    )
     try:
-        offset = 0
-        while offset < len(payload):
-            written = os.write(descriptor, payload[offset:])
-            if written <= 0:
-                raise OSError("Short append while writing the forecast ledger")
-            offset += written
-        os.fsync(descriptor)
+        try:
+            import fcntl
+        except ImportError:
+            try:
+                import msvcrt
+            except ImportError as exc:
+                raise RuntimeError("No supported operating-system file-lock API is available") from exc
+            if os.fstat(descriptor).st_size == 0:
+                os.write(descriptor, b"\\0")
+            os.lseek(descriptor, 0, os.SEEK_SET)
+            msvcrt.locking(descriptor, msvcrt.LK_LOCK, 1)
+            try:
+                yield
+            finally:
+                os.lseek(descriptor, 0, os.SEEK_SET)
+                msvcrt.locking(descriptor, msvcrt.LK_UNLCK, 1)
+        else:
+            fcntl.flock(descriptor, fcntl.LOCK_EX)
+            try:
+                yield
+            finally:
+                fcntl.flock(descriptor, fcntl.LOCK_UN)
     finally:
         os.close(descriptor)
 
+
+def _append_jsonl(path: Path, record: dict[str, Any], duplicate_message: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = (
+        json.dumps(record, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\\n"
+    ).encode("utf-8")
+    forecast_id = record.get("forecast_id")
+    if not isinstance(forecast_id, str) or not forecast_id:
+        raise ValueError("forecast_id is required for append-only ledger records")
+    with _ledger_lock(path.parent):
+        if any(item.get("forecast_id") == forecast_id for item in _read_jsonl(path)):
+            raise ValueError(duplicate_message)
+        descriptor = os.open(
+            str(path),
+            os.O_CREAT | os.O_APPEND | os.O_WRONLY | getattr(os, "O_BINARY", 0),
+            0o600,
+        )
+        try:
+            offset = 0
+            while offset < len(payload):
+                written = os.write(descriptor, payload[offset:])
+                if written <= 0:
+                    raise OSError("Short append while writing the forecast ledger")
+                offset += written
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
 
 class ForecastLedger:
     """Persist immutable forecasts and separate, timestamped outcomes."""
@@ -149,10 +196,12 @@ class ForecastLedger:
             self.source_registry = frozenset(item.strip() for item in registry_values)
 
     def forecasts(self) -> list[dict[str, Any]]:
-        return _read_jsonl(self.forecasts_path)
+        with _ledger_lock(self.root):
+            return _read_jsonl(self.forecasts_path)
 
     def outcomes(self) -> list[dict[str, Any]]:
-        return _read_jsonl(self.outcomes_path)
+        with _ledger_lock(self.root):
+            return _read_jsonl(self.outcomes_path)
 
     def append_forecast(self, payload: Mapping[str, Any]) -> dict[str, Any]:
         if not isinstance(payload, Mapping):
@@ -317,7 +366,11 @@ class ForecastLedger:
             "price_at_issue_max_observation_lag_seconds": self.max_issue_price_lag_seconds,
             "status": "OPEN",
         }
-        _append_jsonl(self.forecasts_path, record)
+        _append_jsonl(
+            self.forecasts_path,
+            record,
+            f"forecast_id already exists: {forecast_id}",
+        )
         return record
 
     def append_outcome(
@@ -379,12 +432,17 @@ class ForecastLedger:
             "realized_return_pct": realized_return,
             "realized_class": realized_class,
         }
-        _append_jsonl(self.outcomes_path, record)
+        _append_jsonl(
+            self.outcomes_path,
+            record,
+            f"an outcome already exists for forecast_id: {forecast_id}",
+        )
         return record
 
     def metrics(self) -> dict[str, Any]:
-        forecasts = self.forecasts()
-        outcomes = self.outcomes()
+        with _ledger_lock(self.root):
+            forecasts = _read_jsonl(self.forecasts_path)
+            outcomes = _read_jsonl(self.outcomes_path)
         by_id = {item["forecast_id"]: item for item in forecasts}
         if len(by_id) != len(forecasts):
             raise ValueError("duplicate forecast IDs found in the immutable forecast ledger")

@@ -1,8 +1,11 @@
+import json
 import math
+from concurrent.futures import ThreadPoolExecutor
+from threading import Barrier
 
 import pytest
 
-from barrot_agent.research.fixed_horizon import ForecastLedger
+from barrot_agent.research.fixed_horizon import ForecastLedger, _append_jsonl
 
 
 def forecast_payload(**overrides):
@@ -316,3 +319,25 @@ def test_source_registry_rejects_invalid_entries(tmp_path):
         ForecastLedger(tmp_path, source_registry={"SRC-OK", ""})
     with pytest.raises(ValueError, match="iterable of source IDs"):
         ForecastLedger(tmp_path, source_registry="SRC-STRING")
+
+
+
+def test_concurrent_jsonl_appends_serialize_duplicate_forecast_ids(tmp_path):
+    path = tmp_path / "forecasts.jsonl"
+    barrier = Barrier(8)
+    record = {"forecast_id": "xrp-concurrent-duplicate"}
+
+    def append(_):
+        barrier.wait(timeout=5)
+        try:
+            _append_jsonl(path, record, "duplicate forecast_id")
+            return "written"
+        except ValueError:
+            return "duplicate"
+
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        results = list(executor.map(append, range(8)))
+
+    assert results.count("written") == 1
+    assert results.count("duplicate") == 7
+    assert [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()] == [record]
