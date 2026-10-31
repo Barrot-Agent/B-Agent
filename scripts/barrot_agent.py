@@ -715,9 +715,23 @@ def configure_git() -> None:
     run(["git", "config", "user.name", "Barrot-Agent"])
 
 
+def is_safe_task_branch(branch: str) -> bool:
+    if not isinstance(branch, str) or branch in {"main", "master", "develop", "release", "production", "staging", "gh-pages"}:
+        return False
+    if re.fullmatch(r"barrot/task-[0-9]+", branch):
+        return True
+    if branch.startswith(("repair/", "research/")):
+        parts = branch.split("/")[1:]
+        return bool(parts) and all(
+            part not in {"", ".", ".."} and re.fullmatch(r"[A-Za-z0-9._-]+", part)
+            for part in parts
+        )
+    return False
+
+
 def checkout_branch(branch: str) -> None:
-    if not re.fullmatch(r"barrot/task-[0-9]+", branch):
-        raise ValueError("Barrot Agent may write only to unique barrot/task-<numeric-id> branches; protected and arbitrary branches are forbidden.")
+    if not is_safe_task_branch(branch):
+        raise ValueError("Invalid Barrot task branch: protected or unsafe branch names are forbidden.")
     remote = run(["git", "fetch", "origin", f"+refs/heads/{branch}:refs/remotes/origin/{branch}"], check=False, quiet=True)
     if remote.returncode == 0:
         result = run(["git", "checkout", "-B", branch, f"origin/{branch}"], check=False)
@@ -782,8 +796,8 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         or str(cycle_data.get("issue", {}).get("branch", "")).strip()
         or BRANCH
     )
-    if not re.fullmatch(r"barrot/task-[0-9]+", head_branch):
-        raise RuntimeError("Refusing to create a Barrot PR from a non-task branch.")
+    if not is_safe_task_branch(head_branch):
+        raise RuntimeError("Refusing to create a Barrot PR from a protected or unsafe branch.")
     body = [
         f"Autonomous execution of #{ISSUE} by Barrot." if ISSUE and ISSUE != "0" else "Autonomous execution by Barrot.",
         "",

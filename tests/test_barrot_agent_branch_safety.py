@@ -11,13 +11,15 @@ def test_barrot_agent_default_branch_is_non_protected_task_branch():
 
 
 def test_barrot_agent_checkout_rejects_main_and_arbitrary_branches():
+    assert "def is_safe_task_branch(branch: str) -> bool:" in SCRIPT
     assert 're.fullmatch(r"barrot/task-[0-9]+", branch)' in SCRIPT
-    assert "protected and arbitrary branches are forbidden" in SCRIPT
+    assert 'branch.startswith(("repair/", "research/"))' in SCRIPT
+    assert "Invalid Barrot task branch" in SCRIPT
 
 
 def test_barrot_agent_pr_head_must_be_numeric_task_branch():
-    assert 're.fullmatch(r"barrot/task-[0-9]+", head_branch)' in SCRIPT
-    assert "non-task branch" in SCRIPT
+    assert "if not is_safe_task_branch(head_branch):" in SCRIPT
+    assert "protected or unsafe branch" in SCRIPT
     assert 'BRANCH: barrot/task-${{' in WORKFLOW
 
 
