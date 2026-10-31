@@ -566,25 +566,95 @@ def test_script_routes_scientific_discovery_tasks(monkeypatch, tmp_path: Path) -
     assert "scientific discovery recorded" in str(calls["comment"]).lower()
 
 
-def test_checkout_branch_resumes_remote_branch_and_rejects_unsafe_names(monkeypatch) -> None:
+def test_checkout_branch_resumes_remote_branch_without_resetting_refs(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     module = load_script_module("barrot_agent_resume_branch_test")
     calls: list[list[str]] = []
+    remote_sha = "a" * 40
 
     def fake_run(args, *, check=True, quiet=False):
         calls.append(args)
-        return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        command = args[1:]
+        if command == ["status", "--porcelain=v1", "--untracked-files=all"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        if command == ["branch", "--show-current"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="main\\n", stderr="")
+        if command == ["ls-remote", "--heads", "origin", "refs/heads/barrot/task-42"]:
+            return module.subprocess.CompletedProcess(
+                args, 0, stdout=f"{remote_sha}\\trefs/heads/barrot/task-42\\n", stderr=""
+            )
+        if command == ["show-ref", "--verify", "--quiet", "refs/heads/barrot/task-42"]:
+            return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="")
+        if command == ["fetch", "origin", "refs/heads/barrot/task-42:refs/remotes/origin/barrot/task-42"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        if command == ["rev-parse", "--verify", "refs/remotes/origin/barrot/task-42"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout=remote_sha + "\\n", stderr="")
+        if command == ["checkout", "--track", "-b", "barrot/task-42", "origin/barrot/task-42"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        raise AssertionError(f"Unexpected git command: {command}")
 
     monkeypatch.setattr(module, "run", fake_run)
     module.checkout_branch("barrot/task-42")
-    assert calls[0][1] == "fetch"
-    assert "refs/remotes/origin/barrot/task-42" in calls[0][3]
-    assert calls[1] == ["git", "checkout", "-B", "barrot/task-42", "origin/barrot/task-42"]
+    assert calls[-1] == ["git", "checkout", "--track", "-b", "barrot/task-42", "origin/barrot/task-42"]
+    assert not any("-B" in command for command in calls)
+    assert not any(any(part.startswith("+refs/heads/") for part in command) for command in calls)
 
     import pytest
     with pytest.raises(ValueError, match="Invalid Barrot task branch"):
         module.checkout_branch("../main")
 
+
+def test_checkout_branch_refuses_dirty_worktree_without_mutation(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_agent_dirty_worktree_branch_test")
+    calls: list[list[str]] = []
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        return module.subprocess.CompletedProcess(
+            args, 0, stdout=" M README.md\\n?? notes.txt\\n", stderr=""
+        )
+
+    monkeypatch.setattr(module, "run", fake_run)
+    import pytest
+    with pytest.raises(RuntimeError, match="worktree has tracked or untracked changes"):
+        module.checkout_branch("research/preserve-work")
+    assert calls == [["git", "status", "--porcelain=v1", "--untracked-files=all"]]
+
+
+def test_checkout_branch_refuses_diverged_local_branch_without_reset(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_agent_diverged_local_branch_test")
+    calls: list[list[str]] = []
+    remote_sha = "b" * 40
+    local_sha = "c" * 40
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        command = args[1:]
+        if command == ["status", "--porcelain=v1", "--untracked-files=all"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        if command == ["branch", "--show-current"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="main\\n", stderr="")
+        if command == ["ls-remote", "--heads", "origin", "refs/heads/research/preserve-work"]:
+            return module.subprocess.CompletedProcess(
+                args, 0, stdout=f"{remote_sha}\\trefs/heads/research/preserve-work\\n", stderr=""
+            )
+        if command == ["show-ref", "--verify", "--quiet", "refs/heads/research/preserve-work"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        if command == ["fetch", "origin", "refs/heads/research/preserve-work:refs/remotes/origin/research/preserve-work"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        if command == ["rev-parse", "--verify", "refs/remotes/origin/research/preserve-work"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout=remote_sha + "\\n", stderr="")
+        if command == ["rev-parse", "--verify", "refs/heads/research/preserve-work"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout=local_sha + "\\n", stderr="")
+        raise AssertionError(f"Unexpected git command: {command}")
+
+    monkeypatch.setattr(module, "run", fake_run)
+    import pytest
+    with pytest.raises(RuntimeError, match="differs from origin"):
+        module.checkout_branch("research/preserve-work")
+    assert not any(command[1:3] == ["checkout", "-B"] for command in calls)
 
 def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")

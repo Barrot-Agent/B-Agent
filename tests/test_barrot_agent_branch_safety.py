@@ -27,3 +27,10 @@ def test_barrot_agent_script_never_merges_or_force_pushes():
     assert "gh pr merge" not in SCRIPT
     assert "git push --force" not in SCRIPT
     assert "git push -f" not in SCRIPT
+
+
+def test_checkout_branch_checks_dirty_state_and_never_resets_local_branch():
+    assert '"git", "status", "--porcelain=v1", "--untracked-files=all"' in SCRIPT
+    assert "worktree has tracked or untracked changes" in SCRIPT
+    assert '"git", "checkout", "-B"' not in SCRIPT
+    assert 'f"+refs/heads/{branch}:refs/remotes/origin/{branch}"' not in SCRIPT
