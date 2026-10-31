@@ -255,3 +255,64 @@ def test_metrics_tie_breaks_to_flat(tmp_path):
     metrics = ledger.metrics()
     assert metrics["accuracy"] == 1.0
     assert metrics["top_label_tie_break_order"] == ["flat", "up", "down"]
+
+
+def test_forecast_source_ids_are_checked_when_registry_is_supplied(tmp_path):
+    ledger = ForecastLedger(tmp_path, source_registry={"SRC-MARKET-001"})
+    record = ledger.append_forecast(forecast_payload())
+    assert record["source_registry_status"] == "REGISTERED"
+
+    unregistered = ForecastLedger(tmp_path / "unregistered", source_registry=set())
+    with pytest.raises(ValueError, match="source_ids are not registered"):
+        unregistered.append_forecast(forecast_payload())
+
+
+def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
+    ledger = ForecastLedger(
+        tmp_path,
+        source_registry={"SRC-MARKET-001", "SRC-PRICE-001"},
+    )
+    ledger.append_forecast(forecast_payload())
+    outcome = ledger.append_outcome(
+        "xrp-forecast-001",
+        1.27,
+        "2026-10-31T01:00:30Z",
+        "2026-10-31T01:01:00Z",
+        "SRC-PRICE-001",
+    )
+    assert outcome["price_source_registry_status"] == "REGISTERED"
+
+    unregistered = ForecastLedger(
+        tmp_path / "unregistered",
+        source_registry={"SRC-MARKET-001"},
+    )
+    unregistered.append_forecast(forecast_payload())
+    with pytest.raises(ValueError, match="price_source_id is not registered"):
+        unregistered.append_outcome(
+            "xrp-forecast-001",
+            1.27,
+            "2026-10-31T01:00:30Z",
+            "2026-10-31T01:01:00Z",
+            "SRC-PRICE-001",
+        )
+
+
+def test_forecast_and_outcome_mark_registry_unchecked_when_not_supplied(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    forecast = ledger.append_forecast(forecast_payload())
+    assert forecast["source_registry_status"] == "NOT_CHECKED"
+    outcome = ledger.append_outcome(
+        "xrp-forecast-001",
+        1.27,
+        "2026-10-31T01:00:30Z",
+        "2026-10-31T01:01:00Z",
+        "SRC-PRICE-001",
+    )
+    assert outcome["price_source_registry_status"] == "NOT_CHECKED"
+
+
+def test_source_registry_rejects_invalid_entries(tmp_path):
+    with pytest.raises(ValueError, match="source_registry entries"):
+        ForecastLedger(tmp_path, source_registry={"SRC-OK", ""})
+    with pytest.raises(ValueError, match="iterable of source IDs"):
+        ForecastLedger(tmp_path, source_registry="SRC-STRING")

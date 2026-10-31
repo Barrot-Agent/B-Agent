@@ -11,7 +11,7 @@ import math
 import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Iterable, Mapping
 
 CLASSES = ("up", "flat", "down")
 TIE_BREAK_ORDER = ("flat", "up", "down")
@@ -116,6 +116,7 @@ class ForecastLedger:
         root: str | Path | None = None,
         max_observation_lag_seconds: int = 900,
         max_issue_price_lag_seconds: int = 120,
+        source_registry: Iterable[str] | None = None,
     ) -> None:
         if (
             isinstance(max_observation_lag_seconds, bool)
@@ -134,6 +135,18 @@ class ForecastLedger:
         ):
             raise ValueError("max_issue_price_lag_seconds must be a positive integer")
         self.max_issue_price_lag_seconds = int(max_issue_price_lag_seconds)
+        if source_registry is None:
+            self.source_registry: frozenset[str] | None = None
+        else:
+            if isinstance(source_registry, (str, bytes)):
+                raise ValueError("source_registry must be an iterable of source IDs")
+            try:
+                registry_values = list(source_registry)
+            except TypeError as exc:
+                raise ValueError("source_registry must be an iterable of source IDs") from exc
+            if any(not isinstance(item, str) or not item.strip() for item in registry_values):
+                raise ValueError("source_registry entries must be non-empty strings")
+            self.source_registry = frozenset(item.strip() for item in registry_values)
 
     def forecasts(self) -> list[dict[str, Any]]:
         return _read_jsonl(self.forecasts_path)
@@ -244,6 +257,12 @@ class ForecastLedger:
         source_ids = _string_list(payload.get("source_ids"), "source_ids")
         if len(set(source_ids)) != len(source_ids):
             raise ValueError("source_ids must be unique")
+        source_registry_status = "NOT_CHECKED"
+        if self.source_registry is not None:
+            missing_source_ids = sorted(set(source_ids) - self.source_registry)
+            if missing_source_ids:
+                raise ValueError(f"source_ids are not registered: {missing_source_ids}")
+            source_registry_status = "REGISTERED"
         price_source_id = payload.get("price_at_issue_source_id")
         if not isinstance(price_source_id, str) or not price_source_id.strip():
             raise ValueError("price_at_issue_source_id is required")
@@ -291,6 +310,7 @@ class ForecastLedger:
                 "probabilities": baseline_probabilities,
             },
             "source_ids": source_ids,
+            "source_registry_status": source_registry_status,
             "price_at_issue_usd": price_at_issue,
             "price_at_issue_source_id": price_source_id,
             "price_at_issue_observed_at_utc": _format_utc(price_observed_at),
@@ -327,6 +347,12 @@ class ForecastLedger:
             raise ValueError("outcome_recorded_at_utc cannot precede the price observation")
         if not isinstance(price_source_id, str) or not price_source_id.strip():
             raise ValueError("price_source_id is required")
+        price_source_id = price_source_id.strip()
+        price_source_registry_status = "NOT_CHECKED"
+        if self.source_registry is not None:
+            if price_source_id not in self.source_registry:
+                raise ValueError(f"price_source_id is not registered: {price_source_id}")
+            price_source_registry_status = "REGISTERED"
 
         price_at_horizon = _positive_number(price_at_horizon_usd, "price_at_horizon_usd")
         price_at_issue = float(forecast["price_at_issue_usd"])
@@ -348,7 +374,8 @@ class ForecastLedger:
             "price_at_horizon_usd": price_at_horizon,
             "price_observed_at_utc": _format_utc(observed_at),
             "outcome_recorded_at_utc": _format_utc(recorded_at),
-            "price_source_id": price_source_id.strip(),
+            "price_source_id": price_source_id,
+            "price_source_registry_status": price_source_registry_status,
             "realized_return_pct": realized_return,
             "realized_class": realized_class,
         }
