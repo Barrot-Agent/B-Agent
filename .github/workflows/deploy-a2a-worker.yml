@@ -1,11 +1,10 @@
 name: Deploy A2A Worker
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'a2a/**'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
