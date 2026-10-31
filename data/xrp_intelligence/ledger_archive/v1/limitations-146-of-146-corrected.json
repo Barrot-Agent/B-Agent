@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 145,
+  "chunk_count": 146,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "LIM-XRP-EXCHANGE-WALLET-ETF-BINANCE-POR-ESCROW-AND-MAIN-WRITER-20261031T210244Z",
+      "recorded_at_utc": "2026-10-31T21:02:44Z",
+      "category": "EXCHANGE_FLOW_ATTRIBUTION_AND_REPOSITORY_DATA_INTEGRITY",
+      "severity": "HIGH",
+      "status": "OPEN_UNKNOWN",
+      "statement": "Exchange-labelled wallet balances, ETF holdings-derived flows, Binance's reserve coverage claim and escrow eligibility are distinct measurements. Current data does not establish customer net flows, XRP-specific Binance purchases, ETF-to-exchange transfer paths or immediate escrow sell pressure. Main Cross Analysis still writes timestamp-only zero-sample output.",
+      "impact": "Conflating custody balances with tradable float, issuer holdings changes with gross spot capital, company reserve claims with independently verified backing, or escrow eligibility with sales can contaminate XRP prediction features. Scheduled main writes can make stale data appear current.",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261031T210244Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ETF-FLOWS",
+        "SRC-20261031T210244Z-TRADRADAR-XRP",
+        "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T210244Z-RIPPLE-COINBASE-RLUSD",
+        "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+      ],
+      "unresolved": [
+        "Per-wallet transfer history and official exchange address attestations for Coinbase, Binance, Upbit and SBI VC Trade.",
+        "Official Binance XRP PoR address export, full zk proof and same-time customer net liabilities.",
+        "XRP-specific Binance replenishment units and market/OTC execution evidence.",
+        "ETF issuer-level creation/redemption records for all funds, including GXRP gap resolution.",
+        "EscrowFinish hashes, senders, destinations, ledger indexes and subsequent EscrowCreate/transfer disposition.",
+        "Aligned derivatives contract history, notional long/short exposure and order-book depth.",
+        "Scheduled Knowledge Signal Cycle freshness and safe isolated promotion architecture.",
+        "Approval and merge decision for PR #1429; other main writers remain outside its scope.",
+        "Full repository CI, lockfile-based dependency scan and complete branch protection configuration."
+      ],
+      "feature_admission": "NO_DIRECTIONAL_FEATURE; NO_FORECAST"
+    }
+  ]
+}
