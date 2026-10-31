@@ -175,6 +175,8 @@ class ForecastLedger:
         self.forecasts_path = self.root / "forecasts.jsonl"
         self.outcomes_path = self.root / "outcomes.jsonl"
         self.max_observation_lag_seconds = int(max_observation_lag_seconds)
+        # This limit governs delayed recording of the exact-horizon observation, not price-time drift.
+        self.max_recording_lag_seconds = self.max_observation_lag_seconds
         if (
             isinstance(max_issue_price_lag_seconds, bool)
             or not isinstance(max_issue_price_lag_seconds, int)
@@ -394,10 +396,14 @@ class ForecastLedger:
         target_end = _parse_utc(forecast["target_end_at_utc"], "target_end_at_utc")
         if observed_at < target_end:
             raise ValueError("outcome price timestamp cannot precede the fixed horizon")
-        if observed_at > target_end + timedelta(seconds=self.max_observation_lag_seconds):
-            raise ValueError("outcome price timestamp exceeds the configured observation lag")
+        if observed_at > target_end:
+            raise ValueError(
+                "outcome price timestamp must match the fixed horizon; post-horizon observations are not permitted"
+            )
         if recorded_at < observed_at:
             raise ValueError("outcome_recorded_at_utc cannot precede the price observation")
+        if recorded_at - observed_at > timedelta(seconds=self.max_recording_lag_seconds):
+            raise ValueError("outcome recording lag exceeds the configured limit")
         if not isinstance(price_source_id, str) or not price_source_id.strip():
             raise ValueError("price_source_id is required")
         price_source_id = price_source_id.strip()
@@ -427,6 +433,7 @@ class ForecastLedger:
             "price_at_horizon_usd": price_at_horizon,
             "price_observed_at_utc": _format_utc(observed_at),
             "outcome_recorded_at_utc": _format_utc(recorded_at),
+            "max_recording_lag_seconds": self.max_recording_lag_seconds,
             "price_source_id": price_source_id,
             "price_source_registry_status": price_source_registry_status,
             "realized_return_pct": realized_return,
@@ -451,6 +458,11 @@ class ForecastLedger:
             forecast_id = outcome.get("forecast_id")
             if forecast_id not in by_id:
                 raise ValueError("outcome references an unknown forecast")
+            forecast = by_id[forecast_id]
+            target_end = _parse_utc(forecast["target_end_at_utc"], "target_end_at_utc")
+            observed_at = _parse_utc(outcome["price_observed_at_utc"], "price_observed_at_utc")
+            if observed_at != target_end:
+                raise ValueError("outcome price observation does not match the fixed horizon")
             if forecast_id in outcome_by_id:
                 raise ValueError("duplicate outcomes found for a forecast")
             outcome_by_id[forecast_id] = outcome

@@ -135,13 +135,23 @@ def test_outcome_cannot_be_recorded_before_fixed_horizon(tmp_path):
         )
 
 
-def test_outcome_rejects_price_observation_outside_lag_window(tmp_path):
+def test_outcome_rejects_any_post_horizon_price_observation(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    with pytest.raises(ValueError, match="post-horizon observations"):
+        ledger.append_outcome(
+            "xrp-forecast-001", 1.27, "2026-10-31T01:00:01Z",
+            "2026-10-31T01:00:10Z", "SRC-PRICE-001"
+        )
+
+
+def test_outcome_rejects_recording_lag_over_limit(tmp_path):
     ledger = ForecastLedger(tmp_path, max_observation_lag_seconds=60)
     ledger.append_forecast(forecast_payload())
-    with pytest.raises(ValueError, match="observation lag"):
+    with pytest.raises(ValueError, match="recording lag"):
         ledger.append_outcome(
-            "xrp-forecast-001", 1.27, "2026-10-31T01:02:00Z",
-            "2026-10-31T01:03:00Z", "SRC-PRICE-001"
+            "xrp-forecast-001", 1.27, "2026-10-31T01:00:00Z",
+            "2026-10-31T01:01:01Z", "SRC-PRICE-001"
         )
 
 
@@ -150,8 +160,8 @@ def test_outcome_is_separate_and_does_not_mutate_forecast(tmp_path):
     ledger.append_forecast(forecast_payload())
     original_forecasts = ledger.forecasts_path.read_bytes()
     outcome = ledger.append_outcome(
-        "xrp-forecast-001", 1.27, "2026-10-31T01:00:30Z",
-        "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+        "xrp-forecast-001", 1.27, "2026-10-31T01:00:00Z",
+        "2026-10-31T01:00:30Z", "SRC-PRICE-001"
     )
     assert outcome["realized_class"] == "up"
     assert outcome["realized_return_pct"] == pytest.approx(1.6)
@@ -163,13 +173,13 @@ def test_duplicate_outcome_is_rejected(tmp_path):
     ledger = ForecastLedger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_outcome(
-        "xrp-forecast-001", 1.27, "2026-10-31T01:00:30Z",
-        "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+        "xrp-forecast-001", 1.27, "2026-10-31T01:00:00Z",
+        "2026-10-31T01:00:30Z", "SRC-PRICE-001"
     )
     with pytest.raises(ValueError, match="already exists"):
         ledger.append_outcome(
-            "xrp-forecast-001", 1.28, "2026-10-31T01:00:40Z",
-            "2026-10-31T01:02:00Z", "SRC-PRICE-002"
+            "xrp-forecast-001", 1.28, "2026-10-31T01:00:00Z",
+            "2026-10-31T01:00:40Z", "SRC-PRICE-002"
         )
 
 
@@ -177,8 +187,8 @@ def test_metrics_report_brier_log_loss_baseline_and_calibration(tmp_path):
     ledger = ForecastLedger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_outcome(
-        "xrp-forecast-001", 1.27, "2026-10-31T01:00:30Z",
-        "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+        "xrp-forecast-001", 1.27, "2026-10-31T01:00:00Z",
+        "2026-10-31T01:00:30Z", "SRC-PRICE-001"
     )
     metrics = ledger.metrics()
     assert metrics["resolved_count"] == 1
@@ -216,8 +226,8 @@ def test_outcome_requires_a_price_source_id(tmp_path):
     ledger.append_forecast(forecast_payload())
     with pytest.raises(ValueError, match="price_source_id"):
         ledger.append_outcome(
-            "xrp-forecast-001", 1.27, "2026-10-31T01:00:30Z",
-            "2026-10-31T01:01:00Z", ""
+            "xrp-forecast-001", 1.27, "2026-10-31T01:00:00Z",
+            "2026-10-31T01:00:30Z", ""
         )
 
 
@@ -252,8 +262,8 @@ def test_metrics_tie_breaks_to_flat(tmp_path):
     payload = forecast_payload(probabilities={"up": 1 / 3, "flat": 1 / 3, "down": 1 / 3})
     ledger.append_forecast(payload)
     ledger.append_outcome(
-        "xrp-forecast-001", 1.25, "2026-10-31T01:00:30Z",
-        "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+        "xrp-forecast-001", 1.25, "2026-10-31T01:00:00Z",
+        "2026-10-31T01:00:30Z", "SRC-PRICE-001"
     )
     metrics = ledger.metrics()
     assert metrics["accuracy"] == 1.0
@@ -279,8 +289,8 @@ def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
     outcome = ledger.append_outcome(
         "xrp-forecast-001",
         1.27,
+        "2026-10-31T01:00:00Z",
         "2026-10-31T01:00:30Z",
-        "2026-10-31T01:01:00Z",
         "SRC-PRICE-001",
     )
     assert outcome["price_source_registry_status"] == "REGISTERED"
@@ -294,8 +304,8 @@ def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
         unregistered.append_outcome(
             "xrp-forecast-001",
             1.27,
+            "2026-10-31T01:00:00Z",
             "2026-10-31T01:00:30Z",
-            "2026-10-31T01:01:00Z",
             "SRC-PRICE-001",
         )
 
@@ -307,8 +317,8 @@ def test_forecast_and_outcome_mark_registry_unchecked_when_not_supplied(tmp_path
     outcome = ledger.append_outcome(
         "xrp-forecast-001",
         1.27,
+        "2026-10-31T01:00:00Z",
         "2026-10-31T01:00:30Z",
-        "2026-10-31T01:01:00Z",
         "SRC-PRICE-001",
     )
     assert outcome["price_source_registry_status"] == "NOT_CHECKED"
