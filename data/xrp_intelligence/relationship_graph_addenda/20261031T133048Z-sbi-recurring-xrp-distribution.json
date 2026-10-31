@@ -327,26 +327,40 @@
         "SRC-SBI-VISA-CRYPTO-CARD-20260501",
         "SRC-SBI-ORICO-XRP-POINTS-20260731"
       ]
+    },
+    {
+      "id": "EDGE-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT",
+      "source": "SBI_HOLDINGS",
+      "target": "XRP",
+      "relationship": "HISTORICAL_OPTIONAL_SHAREHOLDER_BENEFIT_COUPON",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Holdings' 2026 fiscal-year-end shareholder program offered eligible holders an XRP coupon redeemable through SBI VC Trade; the stated July 31, 2026 application deadline has passed. Aggregate XRP distribution and sourcing are undisclosed.",
+      "source_ids": [
+        "SRC-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT-20260204"
+      ]
     }
   ],
   "hypotheses": [
     {
       "id": "HYP-SBI-RECURRING-XRP-DISTRIBUTION",
-      "statement": "SBI's recurring accumulation, monthly card-reward conversion and Orico-point redemption channels may create recurring XRP acquisition and distribution demand.",
+      "statement": "SBI's recurring accumulation service, monthly card-reward conversion, Orico-point redemption and periodic shareholder-benefit coupons may create recurring or periodic XRP acquisition and distribution demand.",
       "status": "PRODUCT_MECHANICS_CONFIRMED_VOLUME_AND_MARKET_IMPACT_UNKNOWN",
       "supporting_source_ids": [
         "SRC-SBI-VC-TRADE-ACCUMULATION-20261031",
         "SRC-SBI-VISA-CRYPTO-CARD-20260501",
-        "SRC-SBI-ORICO-XRP-POINTS-20260731"
+        "SRC-SBI-ORICO-XRP-POINTS-20260731",
+        "SRC-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT-20260204"
       ],
       "disconfirming_evidence": [
         "No public XRP-specific user count, reward selection share, redemption volume, purchase amount, or execution venue was found.",
-        "The provider-derived SBI VC Trade wallet snapshot reports a 30-day decrease, but pooled custody and internal transfers prevent treating it as a net-flow measure."
+        "The provider-derived SBI VC Trade wallet snapshot reports a 30-day decrease, but pooled custody and internal transfers prevent treating it as a net-flow measure.",
+        "The 2026 shareholder-benefit coupon was time-limited and its application deadline passed on July 31, 2026; it is not an active current offer."
       ],
       "tests_needed": [
         "Obtain XRP-specific accumulation purchases, card reward redemptions and Orico conversions by month.",
         "Identify whether reward inventory is sourced from open-market purchases, internal market-maker inventory, existing treasury inventory or customer flow.",
-        "Reconcile SBI wallet movements against validated XRPL transactions and exchange-level executed trade data."
+        "Reconcile SBI wallet movements against validated XRPL transactions and exchange-level executed trade data.",
+        "Verify future shareholder-benefit announcements separately and measure XRP coupon redemption totals rather than assuming the announced coupon value was redeemed."
       ]
     },
     {
