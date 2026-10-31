@@ -1,35 +1,40 @@
-name: Scheduler Tick
+name: Scheduler Queue Audit
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
   workflow_dispatch: {}
 
 permissions:
-  contents: write
-  actions: write
+  contents: read
+
+concurrency:
+  group: barrot-scheduler-queue-audit
+  cancel-in-progress: false
 
 jobs:
-  tick:
+  audit:
+    name: Read-only scheduler queue audit
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 30
+          fetch-depth: 1
+          persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Run scheduler tick
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/scheduler.py tick
-
-      - name: Commit queue updates
+      - name: List pending entries without dispatch or mutation
         run: |
-          git config user.name "Barrot-Agent"
-          git config user.email "barrot@barrot-agent.com"
-          git add ping-pongings/knowledge-base/schedule_queue.jsonl
-          git diff --cached --quiet || git commit -m "Scheduler tick [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          mkdir -p artifacts
+          python3 scripts/scheduler.py list | tee artifacts/schedule-queue-audit.txt
+
+      - name: Upload audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scheduler-queue-audit-${{ github.run_id }}
+          path: artifacts/schedule-queue-audit.txt
+          if-no-files-found: error
+          retention-days: 30
