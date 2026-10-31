@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGE-CONFLICT",
+  "source_id": "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES",
+  "captured_at_utc": "2026-10-31T23:16:45Z",
+  "created_at_utc": "2026-10-31T23:16:45Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES",
+      "publisher": "Bithomp — public XRP Ledger explorer",
+      "urls": [
+        "https://bithomp.com/account/r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+        "https://bithomp.com/account/rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn"
+      ],
+      "retrieved_at_utc": "2026-10-31T23:16:45Z",
+      "evidence_class": "SECONDARY_EXPLORER_ACCOUNT_PAGE",
+      "claims": [
+        "The public Bithomp page for r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp displays 500.0M XRP balance, 'No transactions found' and no escrow objects; its account activity label says active 6 months ago.",
+        "The public Bithomp page for rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn displays 500.0M XRP balance, 'No transactions found' and no escrow objects; the page was indexed as crawled 2 days earlier.",
+        "This conflicts with XRP Insights' pinned-ledger #108031214 observation, which attributes 4.5B XRP in 13 escrow objects to each account and identifies two current objects totaling 1B XRP with FinishAfter 2026-11-01T00:00:00Z.",
+        "XRP Insights lists four October 1 EscrowFinish hashes for these accounts: 5D4BFA6F6758638E37701C6C3C4728ED8F08451D55FDBD2E9E8949A3F7CA19D2; CE74096B4027F936FA1D157A76CF02D4D95E3FA1D39943CA706E0C880A745DE8; B5668A27B7C71C90FE434D25815CDC957544BE659899BD9833E1291F93BA0F5F; 65FCEB474F815A8B295C8029C337193156D857C33EB8FB970F0EDBB578D41D77."
+      ],
+      "limitations": [
+        "Bithomp pages are explorer-rendered observations, not raw account_objects responses at a pinned validated ledger.",
+        "The 'active 6 months ago' and 'No transactions found' displays suggest the pages may be stale or incomplete; they do not establish that no escrow objects exist.",
+        "The XRP Insights source claims direct rippled JSON-RPC account_objects/account_tx at ledger #108031214, but that raw response was not independently obtained in this run.",
+        "The Bithomp API transaction/account endpoints require an API token; no token was available or used.",
+        "The XRPL public explorer account pages require JavaScript and did not expose parsed account objects through the browser."
+      ]
+    }
+  ],
+  "findings": [
+    "A material explorer disagreement exists for both Ripple-labelled escrow owner accounts.",
+    "The conflict is unresolved; neither the public Bithomp page nor the XRP Insights aggregation is treated as independently decisive without raw validated-ledger object data.",
+    "The scheduled November 1 event remains a tracker-reported eligibility event, not an independently verified current account-object state."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "No raw XRPL account_objects/account_tx response was retrieved.",
+    "Bithomp page freshness is questionable and its transaction history contradicts known October 1 hashes.",
+    "No source-level basis exists to classify the discrepancy as an actual escrow deletion or tracker error."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND_AND_EXACT_HEAD_VALIDATION"
+}
