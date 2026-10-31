@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T091333Z-INSTITUTIONAL-RAILS-SOURCE-CROSSWALK-AND-ARCHIVE-POLICY-CORRECTION",
+  "captured_at_utc": "2026-10-31T09:13:33Z",
+  "status": "ACCEPTED_FOR_RESEARCH_ARCHITECTURE",
+  "source_ids": [
+    "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+    "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+    "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+    "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+    "SRC-20261031T090517Z-GH-MAIN-CROSS-ANALYSIS-COMMIT",
+    "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY",
+    "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+    "SRC-20261031T090517Z-GH-PR1400-EXACT-HEAD-CI",
+    "SRC-20261031T090517Z-GH-PR1400-FAIL-CLOSED-GATE",
+    "SRC-20261031T090517Z-GH-PR1401-READONLY-CROSS-ANALYSIS",
+    "SRC-20261031T090517Z-GH-PR1402-APPROVAL-PUSH-NOOP",
+    "SRC-20261031T090517Z-GH-PR1398-DATABRICKS-TOKEN-SAFETY",
+    "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+    "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+    "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+    "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+    "SRC-CIRCLE-ARC-MAINNET-20260916",
+    "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z"
+  ],
+  "decisions": [
+    {
+      "id": "DEC-BNY-XRP-CUSTODY-SERVICE-VS-BALANCE",
+      "rule": "Classify BNY's XRP support as an institutional custody capability, not proof of assets under custody or proprietary XRP holdings.",
+      "rationale": "BNY announced support for XRP on its Digital Asset Custody platform but disclosed no XRP balances.",
+      "feature_admission": "NO_XRP_CUSTODY_BALANCE_FEATURE_UNTIL_MEASURED"
+    },
+    {
+      "id": "DEC-BNY-FUTURE-PLANS",
+      "rule": "Keep BNY's XRPL tokenized-asset expansion, RLUSD mint/redeem and C2FO trade-finance work as future/conditional or exploratory until production activation and on-chain evidence.",
+      "rationale": "BNY states future initiatives are subject to final BNY and regulatory approvals.",
+      "feature_admission": "ANNOUNCEMENT_CONTEXT_ONLY"
+    },
+    {
+      "id": "DEC-ROBINHOOD-RLUSD-XRPL",
+      "rule": "Treat Robinhood's RLUSD-on-XRPL institutional settlement as a stablecoin rail adoption announcement. Do not infer XRP bridge use, XRP inventory or price demand.",
+      "rationale": "The announcement specifies RLUSD settlement but provides no XRP bridge, volume or inventory metrics.",
+      "feature_admission": "NO_XRP_PRICE_FEATURE"
+    },
+    {
+      "id": "DEC-RIPPLE-PRIME-ASSET-UNIVERSE",
+      "rule": "Do not assert XRP is included in the roughly 20 assets financed by Ripple Prime for Bitstamp until the asset list is disclosed.",
+      "rationale": "The announcement gives a count but no asset names.",
+      "feature_admission": "NO_XRP_COLLATERAL_FEATURE"
+    },
+    {
+      "id": "DEC-COINBASE-RLUSD-LAUNCH",
+      "rule": "Record RLUSD launch on Coinbase Prime, Exchange and retail app with XRPL/Base/Ethereum deposits and withdrawals. Mark Global Exchange collateral support as future, not live at launch.",
+      "rationale": "Coinbase's October 28 product announcement explicitly distinguishes launch capabilities from the later Global Exchange follow-on.",
+      "feature_admission": "DISTRIBUTION_CAPABILITY_ONLY"
+    },
+    {
+      "id": "DEC-COINBASE-USDC-COEXISTENCE",
+      "rule": "Do not infer Coinbase replaced Circle USDC with RLUSD. Preserve the material Circle distribution economics and Q3 average USDC holdings alongside the new RLUSD listing.",
+      "rationale": "Coinbase Q3 reports $22B average USDC held and the SEC filings describe the renewed Circle arrangement; Reuters describes Coinbase's broader stablecoin slate.",
+      "feature_admission": "MULTI_STABLECOIN_DISTRIBUTION_CONTEXT"
+    },
+    {
+      "id": "DEC-CIRCLE-ARC-SEPARATE-NETWORK",
+      "rule": "Keep Circle Arc, XRPL and Base as separate networks. Do not infer XRP is Arc's gas asset or that Arc validator/exchange-access roles imply a direct BNY or Robinhood contract.",
+      "rationale": "Circle's Arc launch roles and Coinbase's RLUSD launch networks are distinct product/network relationships.",
+      "feature_admission": "NETWORK_SPECIFIC_FEATURES_ONLY"
+    },
+    {
+      "id": "DEC-ACTUAL-CAPITAL",
+      "rule": "Do not convert custody capability, partnership announcements, stablecoin market capitalization or gross settlement volume into actual net XRP capital inflow. Require balances, transaction-level net flows, XRP bridge inventory or executed purchase evidence.",
+      "rationale": "None of the new announcements discloses net XRP purchases or XRP-specific liquidity deployment.",
+      "feature_admission": "NO_ACTUAL_XRP_CAPITAL_FEATURE"
+    },
+    {
+      "id": "DEC-PR1400-APPEND-LOCK",
+      "rule": "Use the OS-level advisory lock for forecast-ledger reads/writes and duplicate-ID checks on a shared local filesystem; retain single-writer deployment preference and do not claim distributed lock safety.",
+      "rationale": "Eight concurrent append attempts on exact PR head produced one write and seven duplicate rejections; CI passed. Network/distributed filesystem semantics are not tested.",
+      "feature_admission": "LEDGER_INTEGRITY_ONLY"
+    },
+    {
+      "id": "DEC-NO-FORECAST",
+      "rule": "Do not issue an XRP directional forecast until point-in-time features, fixed-horizon training, walk-forward validation, baseline comparisons, calibration and drift checks are implemented and passed.",
+      "rationale": "The fixed-horizon ledger is infrastructure, not a trained or validated predictive model.",
+      "feature_admission": "NO_FEATURE_ADMISSION"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "supersedes_decision_id": "ADR-20261031T090517Z-INSTITUTIONAL-CUSTODY-STABLECOIN-DISTRIBUTION-AND-XRP-DEMAND-SEPARATION",
+  "source_id_corrections": [
+    {
+      "invalid_id": "SRC-20261031-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION",
+      "canonical_id": "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805"
+    },
+    {
+      "invalid_id": "SRC-20261031-COINBASE-Q3-2026-10Q-CIRCLE-RENEWAL",
+      "canonical_id": "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+    },
+    {
+      "invalid_id": "SRC-20261031-CIRCLE-USDC-XRPL-0612-2025",
+      "canonical_id": "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612"
+    },
+    {
+      "invalid_id": "SRC-20261031-CIRCLE-ARC-MAINNET-0916",
+      "canonical_id": "SRC-CIRCLE-ARC-MAINNET-20260916"
+    },
+    {
+      "invalid_id": "SRC-20261031-SBIC-TOKYO-EAST-COMPANY-PROFILE",
+      "canonical_id": "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z"
+    }
+  ],
+  "retrieval_aliases": [
+    {
+      "retrieval_source_id": "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+      "canonical_document_source_id": "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+      "independent_evidence": false
+    },
+    {
+      "retrieval_source_id": "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+      "canonical_document_source_id": "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+      "independent_evidence": false
+    },
+    {
+      "retrieval_source_id": "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+      "canonical_document_source_id": "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+      "independent_evidence": false
+    },
+    {
+      "retrieval_source_id": "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+      "canonical_document_source_id": "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+      "independent_evidence": false
+    }
+  ],
+  "archive_policy_correction": {
+    "previous_archive_shards_total": 375,
+    "live_pointer_chunk_total_after_090517_append": 378,
+    "corrected_archive_shards_total_after_this_append": 380,
+    "reason": "Validator run 41187700141 found archive_policy.archive_shards_total lagging the pointer chunk total. Corrected to the live referenced chunk count."
+  },
+  "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "verified_head_sha": null,
+  "validator_run_id": null,
+  "fail_closed_gate_run_id": null
+}
