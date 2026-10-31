@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 125,
+  "chunk_count": 126,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T064600Z-SBI-VC-TRADE-EXCHANGE-BALANCE-AND-BINANCE-RESERVE-RECONCILIATION",
+      "created_at_utc": "2026-10-31T06:46:00Z",
+      "data_cutoff_utc": "2026-10-31T06:46:00Z",
+      "summary": "Refreshed the XRP Insights public XRPL exchange-wallet dataset and corrected the reserve-incident interpretation. The page reports 22.37B XRP across 701 wallets/24 exchanges as of 2026-10-30 08:00 UTC, with same-wallet net change -234.9M over seven days and -146.1M over 30 days. Binance-specific same-wallet change is -173.2M 7d and -164.5M 30d; Coinbase is +1.1M 7d/+12.5M 30d; SBI VC Trade is 59.5M across two publicly attributed wallets, cold-labeled >99%, with -893K 7d/-10.5M 30d. This is new direct evidence of XRP exchange/custody infrastructure attributed to SBI VC Trade, but it is not proof of SBI Group proprietary holdings or customer liabilities. The dataset explicitly includes 488.4M non-customer wrapped reserves/funds (325.8M Binance-Peg, 151.4M cbXRP, 11.2M insurance/charity) and cold storage; it is not tradable float. The all-exchange -234.9M seven-day decline is not the Binance theft amount; Binance-specific same-wallet decline is -173.2M. The prior CryptoQuant approximately 220M reserve decline is a different provider series and wallet universe. The 233.46M five-wallet incident transfer is not reconciled to either aggregate series; no source-wallet crosswalk or same-time PoR/liability comparison exists. No market feature admitted and no forecast issued.",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z",
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T064600Z-sbi-vc-trade-and-binance-exchange-balance-reconciliation.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T064600Z-sbi-vc-trade-xrp-custody-and-exchange-flow-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T064600Z-exchange-wallet-custody-vs-free-float-and-reserve-causality.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_mutated": false,
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false,
+        "real_money_trade_performed": false
+      }
+    }
+  ]
+}
