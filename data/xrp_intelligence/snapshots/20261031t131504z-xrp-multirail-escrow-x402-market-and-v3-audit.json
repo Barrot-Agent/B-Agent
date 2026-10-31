@@ -1,0 +1,418 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "snapshot_id": "XRP-20261031T131504Z-MULTIRAIL-ESCROW-X402-COINBASE-CIRCLE-SBI",
+  "captured_at_utc": "2026-10-31T13:15:04Z",
+  "data_cutoff_utc": "2026-10-31T13:15:04Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json",
+  "source_ids": [
+    "SRC-20261031T131504Z-XRPL-ESCROW-SCHEDULE",
+    "SRC-20261031T131504Z-XRPL-ESCROW-PROTOCOL",
+    "SRC-20261031T131504Z-XRP-EXCHANGE-BALANCES",
+    "SRC-20261031T131504Z-XRP-SUPPLY-JSON-CATEGORY-METADATA",
+    "SRC-20261031T131504Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261031T131504Z-CIRCLE-ACI-USDC-COLOMBIA",
+    "SRC-20261031T131504Z-RIPPLE-COINBASE-RLUSD-PARTNERSHIP",
+    "SRC-20261031T131504Z-COINBASE-RLUSD-LISTING",
+    "SRC-20261031T131504Z-X402-LINUX-FOUNDATION",
+    "SRC-20261031T131504Z-T54-XRPL-X402-DOCS",
+    "SRC-20261031T131504Z-XRPLFI-X402-ONCHAIN-COUNTER",
+    "SRC-20261031T131504Z-XRPL-AI-HUB-X402-DASHBOARD",
+    "SRC-20261031T131504Z-BINANCE-SECURITY-TIMELINE",
+    "SRC-20261031T131504Z-XRP-INSIGHTS-ETF-DATA",
+    "SRC-20261031T131504Z-MAKETO-XRP-ETF-FLOWS",
+    "SRC-20261031T131504Z-ALPHA-XRP-HEATMAP",
+    "SRC-20261031T131504Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261031T131504Z-GITHUB-PR1413-VERIFICATION",
+    "SRC-20261031T131504Z-GITHUB-PR1414-VERIFICATION",
+    "SRC-20261031T131504Z-GITHUB-PILLARS-CHECK",
+    "SRC-20261031T131504Z-GITHUB-MAIN-WORKFLOW-AUDIT",
+    "SRC-20261031T131504Z-GITHUB-PR-INVENTORY",
+    "SRC-20261031T131504Z-GITHUB-AUTONOMOUS-RESOLVER",
+    "SRC-20261031T131504Z-REUTERS-MACRO-CAPITAL-FLOWS",
+    "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
+    "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD-BIZ",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-SBI-VCTRADE-2M-ACCOUNTS",
+    "SRC-20261031T121200Z-SBI-START-BOND-XRP-REWARD",
+    "SRC-20261031T121200Z-SBI-SHAREHOLDER-XRP-COUPON",
+    "SRC-20261031T121200Z-SBI-NEWWBANK-XRP-DEPOSIT-VOUCHER",
+    "SRC-20261031T121200Z-SBI-CIRCLE-ARC-50M",
+    "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T121200Z-SBI-OPEN-STANDARD-JPYSC-OUSD",
+    "SRC-20261031T121200Z-SBI-BITBANK-ACQUISITION-CONDITIONAL",
+    "SRC-20261031T121200Z-SBI-SOLANA-STRATEGIC-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-CLEARING-TRUST-MERGER-CUSTODY",
+    "SRC-20261031T121200Z-SBIC-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE",
+    "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+    "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+    "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+    "SRC-20261031T121200Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261031T121200Z-ALPHA-FINANCE-XRP-ETF-FLOWS",
+    "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS"
+  ],
+  "new_source_ids": [
+    "SRC-20261031T131504Z-XRPL-ESCROW-SCHEDULE",
+    "SRC-20261031T131504Z-XRPL-ESCROW-PROTOCOL",
+    "SRC-20261031T131504Z-XRP-EXCHANGE-BALANCES",
+    "SRC-20261031T131504Z-XRP-SUPPLY-JSON-CATEGORY-METADATA",
+    "SRC-20261031T131504Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261031T131504Z-CIRCLE-ACI-USDC-COLOMBIA",
+    "SRC-20261031T131504Z-RIPPLE-COINBASE-RLUSD-PARTNERSHIP",
+    "SRC-20261031T131504Z-COINBASE-RLUSD-LISTING",
+    "SRC-20261031T131504Z-X402-LINUX-FOUNDATION",
+    "SRC-20261031T131504Z-T54-XRPL-X402-DOCS",
+    "SRC-20261031T131504Z-XRPLFI-X402-ONCHAIN-COUNTER",
+    "SRC-20261031T131504Z-XRPL-AI-HUB-X402-DASHBOARD",
+    "SRC-20261031T131504Z-BINANCE-SECURITY-TIMELINE",
+    "SRC-20261031T131504Z-XRP-INSIGHTS-ETF-DATA",
+    "SRC-20261031T131504Z-MAKETO-XRP-ETF-FLOWS",
+    "SRC-20261031T131504Z-ALPHA-XRP-HEATMAP",
+    "SRC-20261031T131504Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261031T131504Z-GITHUB-PR1413-VERIFICATION",
+    "SRC-20261031T131504Z-GITHUB-PR1414-VERIFICATION",
+    "SRC-20261031T131504Z-GITHUB-PILLARS-CHECK",
+    "SRC-20261031T131504Z-GITHUB-MAIN-WORKFLOW-AUDIT",
+    "SRC-20261031T131504Z-GITHUB-PR-INVENTORY",
+    "SRC-20261031T131504Z-GITHUB-AUTONOMOUS-RESOLVER",
+    "SRC-20261031T131504Z-REUTERS-MACRO-CAPITAL-FLOWS"
+  ],
+  "existing_source_ids": [
+    "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
+    "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD-BIZ",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-SBI-VCTRADE-2M-ACCOUNTS",
+    "SRC-20261031T121200Z-SBI-START-BOND-XRP-REWARD",
+    "SRC-20261031T121200Z-SBI-SHAREHOLDER-XRP-COUPON",
+    "SRC-20261031T121200Z-SBI-NEWWBANK-XRP-DEPOSIT-VOUCHER",
+    "SRC-20261031T121200Z-SBI-CIRCLE-ARC-50M",
+    "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T121200Z-SBI-OPEN-STANDARD-JPYSC-OUSD",
+    "SRC-20261031T121200Z-SBI-BITBANK-ACQUISITION-CONDITIONAL",
+    "SRC-20261031T121200Z-SBI-SOLANA-STRATEGIC-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-CLEARING-TRUST-MERGER-CUSTODY",
+    "SRC-20261031T121200Z-SBIC-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE",
+    "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+    "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+    "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+    "SRC-20261031T121200Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261031T121200Z-ALPHA-FINANCE-XRP-ETF-FLOWS",
+    "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS"
+  ],
+  "key_findings": [
+    {
+      "classification": "confirmed_fact",
+      "finding": "Two 500M XRP escrow objects become eligible for EscrowFinish at 2026-11-01 00:00 UTC; a successful EscrowFinish transaction is required to move the XRP."
+    },
+    {
+      "classification": "confirmed_fact",
+      "finding": "XRP Insights' October 31 08:00 same-wallet exchange dataset reports 22.48B XRP across 701 wallets and 24 exchanges; Binance 2.78B (+17.6M 7d), Coinbase 5.85B (+17.7M 7d), SBI VC Trade 59.5M (-899K 7d). These are attributed custody wallets, not proprietary reserves or tradable float."
+    },
+    {
+      "classification": "confirmed_fact",
+      "finding": "Ripple and Coinbase announced a direct RLUSD partnership on October 28: Prime, Exchange and Retail support across XRPL, Base and Ethereum; Global Exchange collateral support is future."
+    },
+    {
+      "classification": "confirmed_fact",
+      "finding": "Circle and ACI announced a USDC settlement pilot in Colombia using ACI Connetic and Bre-B; the release makes no XRP integration claim."
+    },
+    {
+      "classification": "confirmed_fact",
+      "finding": "SBI Ripple Asia published a conceptual XRPL proof of concept for tokenized deposits and deposit-backed digital money using MoneyTap and its token issuance platform."
+    },
+    {
+      "classification": "sourced_claim",
+      "finding": "SBI VC Trade's existing crypto reward-card and corporate-card programs let customers select XRP and convert points monthly; no XRP selection share, reward volume or market-buy sourcing is disclosed."
+    },
+    {
+      "classification": "sourced_claim",
+      "finding": "SBI VC Trade's RLUSD product is Ethereum-only with XRPL planned and a 1M JPY limit; this is separate from global RLUSD issuance on XRPL."
+    },
+    {
+      "classification": "sourced_claim",
+      "finding": "Coinbase-contributed x402 is governed by a vendor-neutral Linux Foundation foundation; T54 separately operates an XRPL facilitator for payer-signed XRP and issued-token payments."
+    },
+    {
+      "classification": "provider_claim_with_disagreement",
+      "finding": "XRPL AI Hub reports 14.77M x402 volume and about $45.2K all-time value, while xrpl.fi says its reproducible on-chain fingerprint cannot verify the facilitator's cumulative claim. Treat transaction count as unresolved and value as small."
+    },
+    {
+      "classification": "confirmed_fact",
+      "finding": "Binance's approximately 34-hour phased withdrawal target is November 1 05:33 UTC; the 12-hour snapshot target was October 31 07:33 UTC and results were targeted by November 2. No XRP-specific replenishment quantity is disclosed."
+    },
+    {
+      "classification": "verified_software_state",
+      "finding": "PR #1413 passed 357 tests plus 8 subtests and its fail-closed gate; PR #1414 passed 380 tests plus 8 subtests and its fail-closed gate. Both are open draft/unmerged; main remains unchanged."
+    }
+  ],
+  "event_timeline": [
+    {
+      "event": "SBI Ripple Asia XRPL tokenized-deposit PoC",
+      "time_utc": "2026-02-26",
+      "status": "CONCEPTUAL_POC"
+    },
+    {
+      "event": "Circle/ACI Colombia USDC settlement collaboration",
+      "time_utc": "2026-10-27",
+      "status": "ANNOUNCED_PILOT"
+    },
+    {
+      "event": "Ripple/Coinbase RLUSD distribution partnership",
+      "time_utc": "2026-10-28",
+      "status": "ANNOUNCED_AND_RETAIL_PRIME_EXCHANGE_AVAILABLE; GLOBAL_EXCHANGE_COLLATERAL_FUTURE"
+    },
+    {
+      "event": "Binance initial post-incident PoR snapshot target",
+      "time_utc": "2026-10-31T07:33:00Z",
+      "status": "TARGET_ELAPSED_RESULTS_DUE_NOVEMBER_2"
+    },
+    {
+      "event": "Two 500M XRP escrow objects become eligible",
+      "time_utc": "2026-11-01T00:00:00Z",
+      "status": "SCHEDULED_ELIGIBILITY_NOT_RELEASE"
+    },
+    {
+      "event": "Binance phased withdrawal restoration target",
+      "time_utc": "2026-11-01T05:33:00Z",
+      "status": "FUTURE_TARGET_SUBJECT_TO_SECURITY_CHECKS"
+    }
+  ],
+  "market_observations": [
+    {
+      "id": "MO-20261031T131504Z-EXCHANGE-WALLETS",
+      "observed_at_utc": "2026-10-31T08:00:57Z",
+      "metric": "tracked_exchange_wallet_balances",
+      "values": {
+        "total_xrp": 22480000000,
+        "wallets": 701,
+        "exchanges": 24,
+        "seven_day_same_wallet_change_xrp": -133000000,
+        "thirty_day_same_wallet_change_xrp": -12300000,
+        "binance_xrp": 2780000000,
+        "binance_seven_day_change_xrp": 17600000,
+        "binance_thirty_day_change_xrp": 30300000,
+        "coinbase_xrp": 5850000000,
+        "coinbase_seven_day_change_xrp": 17700000,
+        "coinbase_thirty_day_change_xrp": 18400000,
+        "sbi_vc_trade_xrp": 59500000,
+        "sbi_seven_day_change_xrp": -899000,
+        "sbi_thirty_day_change_xrp": -10500000,
+        "non_customer_reserves_xrp": 487200000
+      },
+      "source_ids": [
+        "SRC-20261031T131504Z-XRP-EXCHANGE-BALANCES"
+      ],
+      "feature_admission": "EXCLUDED_UNTIL_WALLET_CROSSWALK_AND_BENEFICIAL_OWNERSHIP_CLASSIFICATION"
+    },
+    {
+      "id": "MO-20261031T131504Z-ESCROW",
+      "observed_at_utc": "2026-10-31T11:52:00Z",
+      "metric": "scheduled_xrp_escrow_eligibility",
+      "values": {
+        "gross_xrp": 1000000000,
+        "objects": 2,
+        "each_object_xrp": 500000000,
+        "eligible_at_utc": "2026-11-01T00:00:00Z",
+        "validated_ledger": 108022629,
+        "historical_12m_released_xrp": 12000000000,
+        "historical_12m_reescrowed_xrp": 8400000000,
+        "historical_12m_net_outside_escrow_xrp": 3600000000
+      },
+      "source_ids": [
+        "SRC-20261031T131504Z-XRPL-ESCROW-SCHEDULE",
+        "SRC-20261031T131504Z-XRPL-ESCROW-PROTOCOL"
+      ],
+      "feature_admission": "EVENT_ONLY; WAIT_FOR_ESCROWFINISH_AND_DESTINATION"
+    },
+    {
+      "id": "MO-20261031T131504Z-TRADRADAR",
+      "observed_at_utc": "2026-10-31T12:40:00Z",
+      "metric": "xrp_perpetual_derivatives",
+      "values": {
+        "spot_usd": 1.251,
+        "open_interest_usd": 1860000000,
+        "oi_change_24h_pct": 1.49,
+        "funding_8h_pct": 0.0074,
+        "liquidations_24h_lower_bound_usd": 1700000,
+        "long_liquidations_usd": 1220000,
+        "short_liquidations_usd": 479120,
+        "long_account_share_pct": 78.5,
+        "exchange_count": 7
+      },
+      "source_ids": [
+        "SRC-20261031T131504Z-TRADRADAR-XRP-DERIVATIVES"
+      ],
+      "feature_admission": "PROVIDER_SPECIFIC_ONLY"
+    },
+    {
+      "id": "MO-20261031T131504Z-ALPHA-HEATMAP",
+      "observed_at_utc": "2026-10-31T12:22:00Z",
+      "metric": "xrp_perpetual_liquidation_heatmap",
+      "values": {
+        "spot_usd": 1.2496,
+        "open_interest_usd": 2810000000,
+        "volume_24h_usd": 1560000000,
+        "largest_short_cluster_usd": 2900000,
+        "largest_short_cluster_price": 1.2701,
+        "largest_long_cluster_usd": 4200000,
+        "largest_long_cluster_price": 1.2255,
+        "long_liquidations_24h_usd": 1200000,
+        "short_liquidations_24h_usd": 537900
+      },
+      "source_ids": [
+        "SRC-20261031T131504Z-ALPHA-XRP-HEATMAP"
+      ],
+      "feature_admission": "PROVIDER_SPECIFIC_MODELLED_NOTIONAL_ONLY"
+    },
+    {
+      "id": "MO-20261031T131504Z-ETF-INSIGHTS",
+      "observed_at_utc": "2026-10-31T12:08:48Z",
+      "metric": "xrp_etf_holdings_and_flow",
+      "values": {
+        "holdings_xrp": 1196600000,
+        "fund_count": 7,
+        "flow_window": "2026-10-26_to_2026-10-30",
+        "net_flow_xrp": 3390000,
+        "data_as_of": "2026-10-29",
+        "latest_row_date": "2026-10-30",
+        "latest_row_status": "PROVISIONAL"
+      },
+      "source_ids": [
+        "SRC-20261031T131504Z-XRP-INSIGHTS-ETF-DATA"
+      ],
+      "feature_admission": "PROVISIONAL_NOT_ADMITTED"
+    },
+    {
+      "id": "MO-20261031T131504Z-MAKETO-ETF",
+      "observed_at_utc": "2026-10-31T02:29:00Z",
+      "metric": "xrp_etf_daily_flows",
+      "values": {
+        "date": "2026-10-30",
+        "net_flow_usd": -496500,
+        "reported_funds": 5,
+        "inflow_funds": 1,
+        "outflow_funds": 2,
+        "unchanged_funds": 2,
+        "net_flow_30d_usd": 19000000,
+        "cumulative_net_flow_since_2025_usd": 1810000000
+      },
+      "source_ids": [
+        "SRC-20261031T131504Z-MAKETO-XRP-ETF-FLOWS"
+      ],
+      "feature_admission": "PROVIDER_SPECIFIC_NOT_ADMITTED"
+    },
+    {
+      "id": "MO-20261031T131504Z-X402",
+      "observed_at_utc": "2026-10-31T13:15:04Z",
+      "metric": "xrpl_x402_agent_payment_dashboard",
+      "values": {
+        "dashboard_volume_count": 14768877,
+        "dashboard_value_usd": 45169.01,
+        "conditional_average_usd_if_count_is_transactions": 0.003058,
+        "registered_merchants": 183,
+        "live_services": 5318,
+        "independent_cumulative_count": "UNRECONCILED"
+      },
+      "source_ids": [
+        "SRC-20261031T131504Z-XRPL-AI-HUB-X402-DASHBOARD",
+        "SRC-20261031T131504Z-XRPLFI-X402-ONCHAIN-COUNTER"
+      ],
+      "feature_admission": "EXCLUDED_PENDING_ONCHAIN_RECONCILIATION"
+    }
+  ],
+  "actual_capital_classification": [
+    {
+      "activity": "SBI card rewards and shareholder/deposit vouchers",
+      "classification": "REWARD_CREDIT_NOT_VERIFIED_MARKET_PURCHASE",
+      "missing": "XRP selection share, monthly redemption volume, inventory source, market execution"
+    },
+    {
+      "activity": "SBI START bond approximately JPY 10B with XRP reward",
+      "classification": "TOKENIZED_SECURITY_PRINCIPAL_NOT_XRP_PURCHASE",
+      "missing": "Aggregate XRP reward pool and market sourcing"
+    },
+    {
+      "activity": "Coinbase/Ripple RLUSD listing and 1:1 conversion",
+      "classification": "STABLECOIN_DISTRIBUTION_CHANNEL",
+      "missing": "Actual RLUSD balances, chain-specific transfers, conversion and collateral volumes"
+    },
+    {
+      "activity": "T54 XRPL x402",
+      "classification": "MICROPAYMENT_ACTIVITY_WITH_LOW_REPORTED_VALUE",
+      "missing": "Reconciled cumulative count and verified XRP/RLUSD/USDC split"
+    },
+    {
+      "activity": "XRP ETF flows",
+      "classification": "FUND_HOLDINGS_DERIVED_FLOW",
+      "missing": "Final settled October 30 row, fund universe reconciliation and creation/redemption source"
+    },
+    {
+      "activity": "Binance reserve replenishment",
+      "classification": "UNCONFIRMED_TOKEN_SPECIFIC_PURCHASE",
+      "missing": "XRP-specific purchase amount, wallet addresses, execution and same-time PoR liabilities"
+    }
+  ],
+  "data_quality": [
+    "XRP Insights exchange balance snapshot is category-dated 2026-10-31 08:00:57 UTC and the escrow page is pinned to ledger 108022629 at 11:52 UTC.",
+    "The XRP Radar overview's +196.2M Binance delta has no clear period label; the dedicated exchange-balance page gives +17.6M same-wallet 7d and is used instead.",
+    "Supply JSON top-level asOf 2026-01-16 reflects the oldest mixed category; exchange, escrow and RLUSD categories have newer independent timestamps.",
+    "TradRadar OI $1.86B and Alpha OI $2.81B differ by 1.51x; no aggregate feature is created.",
+    "ETF flows differ by date and provider: XRP Insights Oct30 provisional, Maketo Oct30 -$496.5K, Alpha Oct29 +$8.4M.",
+    "x402 cumulative count claims differ; only declared deterministic fingerprint is considered reproducible."
+  ],
+  "relationship_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031t131504z-xrp-multirail-escrow-x402-market-and-v3-graph.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031t131504z-xrp-multirail-escrow-x402-market-and-v3-decision.json",
+  "repository_audit_path": "data/repository_audits/20261031t131504z-main-writer-prediction-integrity-and-platform-health.json",
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "limitations": [
+    "November 1 00:00 UTC is the FinishAfter eligibility time for the two 500M XRP escrow objects; no funds move solely because the clock passes. A validated EscrowFinish transaction is required. Do not label 1B XRP as released, circulating or sold before transaction evidence.",
+    "The prior 12-month 70% re-escrow / 30% net-outside pattern is a small historical sample and is not a forecast of the November release. The released XRP may be retained, re-escrowed, allocated or sold; destination disposition is unknown until transactions are traced.",
+    "Exchange-wallet attribution includes customer pooled custody and identified non-customer reserves. It is not an official proof of reserves, proprietary treasury, beneficial ownership or immediately tradable float.",
+    "XRP Insights' October 31 08:00 same-wallet snapshot reports Binance 2.78B XRP and +17.6M over 7 days, while other providers report different levels and movements. Without the exact wallet crosswalk and per-wallet historical balances, the 233.46M incident transfer cannot be reconciled to aggregate reserve changes.",
+    "The XRP Radar overview displays an unlabeled Binance +196.2M delta, while the dedicated same-wallet exchange page reports +17.6M over 7 days. The unlabeled delta is not assigned a horizon and is excluded from analysis.",
+    "The XRP supply JSON top-level asOf date is the oldest input across heterogeneous categories; category-specific timestamps show exchanges at October 31 08:00:57 UTC, escrow at 06:00 UTC and RLUSD at 08:01 UTC. Do not classify the entire file as stale or treat all categories as synchronized.",
+    "SBI VC Trade crypto-card rewards convert points monthly into the selected asset, including XRP. No XRP selection share, reward redemption volume, funding source, inventory-versus-market-sourcing method or incremental spot-buy amount is disclosed. Reward credits are not automatically new external capital.",
+    "SBI Ripple Asia's tokenized-deposit/deposit-backed digital-money work is a conceptual proof of concept using XRPL, MoneyTap and a token issuance platform. No production deployment, customer balance or settlement volume is established.",
+    "SBI VC Trade's RLUSD product page indicates Ethereum support while XRPL support is planned, with a 1M JPY customer/order limit. Do not confuse SBI's Ethereum RLUSD listing with global RLUSD issuance on XRPL.",
+    "Circle/ACI's Colombia collaboration is a USDC settlement demonstration using ACI Connetic and Bre-B. It publishes no live volume and makes no XRP integration claim. Its multi-rail design could complement or compete with XRPL; neither outcome is proven.",
+    "Ripple/Coinbase announced RLUSD access on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum. Coinbase Global Exchange collateral support is future/announced, not a verified live collateral balance or current demand figure.",
+    "Coinbase's RLUSD partnership does not prove Circle/USDC replacement. Existing Circle distribution economics and Coinbase USDC balances remain material; actual post-listing substitution, issuer mix and conversion flows are unknown.",
+    "Coinbase contributed x402 to a vendor-neutral Linux Foundation foundation; T54 operates a separate XRPL facilitator. This is an indirect protocol relationship, not proof that Coinbase operates or directly integrated the T54 XRPL facilitator.",
+    "T54/XRPL AI Hub reports 14.77M volume and about $45.2K value settled, while xrpl.fi says its reproducible fingerprint cannot validate the facilitator's cumulative claim and reports a lower recent count. The cumulative count, asset split and external-versus-test activity are unresolved.",
+    "XRP ETF sources disagree by universe and date. XRP Insights' October 30 row is provisional with data_as_of October 29; Maketo reports October 30 -$496.5K across five funds and October 29 +$8.4M. Flows are not automatically net external capital, spot purchases or final holdings.",
+    "TradRadar reports $1.86B OI across seven exchanges while Alpha's all-venue heatmap reports $2.81B. Contract universes, conversion methods and aggregation scopes differ; do not average. Heatmap liquidation clusters are modelled, not observed account orders.",
+    "Binance's 12-hour PoR snapshot target converts to October 31 07:33 UTC and has elapsed; publication results were targeted by November 2. The approximately 34-hour phased withdrawal target converts to November 1 05:33 UTC, not October 31 05:33 UTC. No XRP-specific replenishment amount is disclosed.",
+    "PR #1413 and PR #1414 passed exact-head CI and fail-closed gates but remain draft/open/unmerged. Their proposed workflow and prediction changes are not active on main.",
+    "Main remains at 52ce593d and still contains active scheduled writers, broad scheduler dispatch, a manual merge queue capable of merging all eligible PRs, push-triggered external deployments and an unsafe Databricks token-input workflow until approved changes are merged.",
+    "The Pillars Consistency Check failed because GitHub App credentials were absent, Databricks returned HTTP 403 and the Hugging Face Space reported BUILD_ERROR. Secret values were not accessed; the provider permission/build root causes remain unresolved and must not be bypassed.",
+    "The hourly Autonomous Resolver creates issues for workflow failures and assigns unassigned issues/PRs. This is an existing scheduled mutation path; no external AI platform authentication or live collaboration is proven by assignments.",
+    "Full repository CI, complete dependency locking/vulnerability scanning and complete branch-protection details remain unverified. The available GitHub security-alert read path did not establish a clean vulnerability state.",
+    "Only ChatGPT and the GitHub connector are verified active. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unauthenticated and untested as live collaborators.",
+    "The exact context of 'actual capital' remains unresolved. ASK Coin's leading candidate remains Permission Coin ASK with Coinbase Embedded Wallet, but no direct XRP/XRPL integration is established. Camilla Stephenson's exact YouTube channel identity and exhaustive public-video inventory remain unresolved.",
+    "The Japanese SBIC candidate is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., separate from SBI Holdings. Its ChatGPT/Copilot seminar is educational, not evidence of an OpenAI partnership. The exact referent of 'ChatGPT SBIC' remains unresolved.",
+    "No directional XRP forecast is issued. The new escrow, exchange, ETF, derivatives, stablecoin, x402 and macro observations are not admitted as predictive features until point-in-time quality, independence, scope and out-of-sample tests pass."
+  ],
+  "next_actions": [
+    "At 2026-11-01 00:00 UTC, capture the two scheduled XRP escrow objects and validated EscrowFinish transactions; distinguish eligibility, finish, re-escrow, destination and exchange disposition.",
+    "At 2026-11-01 05:33 UTC, check Binance phased withdrawal restoration; obtain the announced Proof of Reserves results by November 2 and compare same-time token reserves with customer liabilities.",
+    "Crosswalk the five Binance incident source wallets against the current 153-wallet Binance set and retrieve per-wallet historical balances; do not infer replenishment from aggregate reserves.",
+    "Monitor Coinbase's RLUSD support by chain and verify when Global Exchange collateral support actually becomes available; measure RLUSD conversion and custody flows separately from XRP.",
+    "Reconcile T54 XRPL x402 dashboard counts with validated-ledger fingerprints and split XRP, RLUSD and USDC settlement value; do not use raw transaction counts as capital.",
+    "Track SBI crypto-card reward conversions, SBI VC Trade RLUSD chain expansion, SBI Ripple Asia PoC milestones and the conditional Bitbank acquisition; separate reward credits from actual market buys.",
+    "Continue provider-specific ETF and derivatives time series; reconcile contract universes and provisional fund rows before feature admission.",
+    "Extend PR #1414 with baseline cutoff validation, concurrency-safe storage and walk-forward orchestration; no model training or forecast until those gates pass.",
+    "Review PRs #1413 and #1414; both are draft and unmerged. Do not merge or dispatch workflows without approval.",
+    "Resolve GitHub App credential availability, Databricks HTTP 403 and Hugging Face Space BUILD_ERROR through specific authorized provider access; do not bypass failed checks.",
+    "Continue SBIC/ChatGPT, ASK Coin, actual-capital phrase and Camilla Stephenson channel-identity research without inventing identities or partnerships."
+  ],
+  "state_mutated": false
+}

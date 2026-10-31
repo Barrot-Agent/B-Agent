@@ -1,0 +1,709 @@
+{
+  "record_type": "xrp_relationship_graph_addendum",
+  "schema_version": "1.0",
+  "graph_id": "XRP-GRAPH-20261031T131504Z-MULTIRAIL-ESCROW-X402-COINBASE-CIRCLE-SBI",
+  "captured_at_utc": "2026-10-31T13:15:04Z",
+  "source_ids": [
+    "SRC-20261031T131504Z-XRPL-ESCROW-SCHEDULE",
+    "SRC-20261031T131504Z-XRPL-ESCROW-PROTOCOL",
+    "SRC-20261031T131504Z-XRP-EXCHANGE-BALANCES",
+    "SRC-20261031T131504Z-XRP-SUPPLY-JSON-CATEGORY-METADATA",
+    "SRC-20261031T131504Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261031T131504Z-CIRCLE-ACI-USDC-COLOMBIA",
+    "SRC-20261031T131504Z-RIPPLE-COINBASE-RLUSD-PARTNERSHIP",
+    "SRC-20261031T131504Z-COINBASE-RLUSD-LISTING",
+    "SRC-20261031T131504Z-X402-LINUX-FOUNDATION",
+    "SRC-20261031T131504Z-T54-XRPL-X402-DOCS",
+    "SRC-20261031T131504Z-XRPLFI-X402-ONCHAIN-COUNTER",
+    "SRC-20261031T131504Z-XRPL-AI-HUB-X402-DASHBOARD",
+    "SRC-20261031T131504Z-BINANCE-SECURITY-TIMELINE",
+    "SRC-20261031T131504Z-XRP-INSIGHTS-ETF-DATA",
+    "SRC-20261031T131504Z-MAKETO-XRP-ETF-FLOWS",
+    "SRC-20261031T131504Z-ALPHA-XRP-HEATMAP",
+    "SRC-20261031T131504Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261031T131504Z-GITHUB-PR1413-VERIFICATION",
+    "SRC-20261031T131504Z-GITHUB-PR1414-VERIFICATION",
+    "SRC-20261031T131504Z-GITHUB-PILLARS-CHECK",
+    "SRC-20261031T131504Z-GITHUB-MAIN-WORKFLOW-AUDIT",
+    "SRC-20261031T131504Z-GITHUB-PR-INVENTORY",
+    "SRC-20261031T131504Z-GITHUB-AUTONOMOUS-RESOLVER",
+    "SRC-20261031T131504Z-REUTERS-MACRO-CAPITAL-FLOWS",
+    "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
+    "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD-BIZ",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-SBI-VCTRADE-2M-ACCOUNTS",
+    "SRC-20261031T121200Z-SBI-START-BOND-XRP-REWARD",
+    "SRC-20261031T121200Z-SBI-SHAREHOLDER-XRP-COUPON",
+    "SRC-20261031T121200Z-SBI-NEWWBANK-XRP-DEPOSIT-VOUCHER",
+    "SRC-20261031T121200Z-SBI-CIRCLE-ARC-50M",
+    "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T121200Z-SBI-OPEN-STANDARD-JPYSC-OUSD",
+    "SRC-20261031T121200Z-SBI-BITBANK-ACQUISITION-CONDITIONAL",
+    "SRC-20261031T121200Z-SBI-SOLANA-STRATEGIC-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-CLEARING-TRUST-MERGER-CUSTODY",
+    "SRC-20261031T121200Z-SBIC-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE",
+    "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+    "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+    "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+    "SRC-20261031T121200Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261031T121200Z-ALPHA-FINANCE-XRP-ETF-FLOWS",
+    "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS"
+  ],
+  "nodes": [
+    {
+      "id": "sbi_holdings",
+      "label": "SBI Holdings",
+      "entity_type": "corporate_group",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "sbi_vc_trade",
+      "label": "SBI VC Trade",
+      "entity_type": "exchange_and_custody",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "sbi_ripple_asia",
+      "label": "SBI Ripple Asia",
+      "entity_type": "joint_venture",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "xrpl",
+      "label": "XRP Ledger",
+      "entity_type": "public_blockchain",
+      "classification": "verified_protocol"
+    },
+    {
+      "id": "xrp",
+      "label": "XRP",
+      "entity_type": "native_asset",
+      "classification": "verified_asset"
+    },
+    {
+      "id": "sbi_crypto_card",
+      "label": "SBI VISA Crypto Card",
+      "entity_type": "retail_reward_product",
+      "classification": "verified_product"
+    },
+    {
+      "id": "sbi_rlusd",
+      "label": "SBI VC Trade RLUSD product",
+      "entity_type": "stablecoin_listing",
+      "classification": "verified_product"
+    },
+    {
+      "id": "circle",
+      "label": "Circle",
+      "entity_type": "stablecoin_issuer",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "usdc",
+      "label": "USDC",
+      "entity_type": "stablecoin",
+      "classification": "verified_asset"
+    },
+    {
+      "id": "aci",
+      "label": "ACI Worldwide",
+      "entity_type": "payments_technology",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "breb",
+      "label": "Bre-B Colombia",
+      "entity_type": "instant_payment_rail",
+      "classification": "verified_system"
+    },
+    {
+      "id": "ripple",
+      "label": "Ripple",
+      "entity_type": "blockchain_company",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "rlusd",
+      "label": "RLUSD",
+      "entity_type": "stablecoin",
+      "classification": "verified_asset"
+    },
+    {
+      "id": "coinbase",
+      "label": "Coinbase",
+      "entity_type": "exchange_and_financial_platform",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "linux_foundation",
+      "label": "Linux Foundation x402 Foundation",
+      "entity_type": "open_standard_governance",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "t54",
+      "label": "T54",
+      "entity_type": "xrpl_payment_facilitator",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "x402",
+      "label": "x402",
+      "entity_type": "open_payment_protocol",
+      "classification": "verified_protocol"
+    },
+    {
+      "id": "morpho",
+      "label": "Morpho",
+      "entity_type": "lending_protocol",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "cbxrp",
+      "label": "cbXRP",
+      "entity_type": "wrapped_collateral_asset",
+      "classification": "verified_asset"
+    },
+    {
+      "id": "xrp_escrow",
+      "label": "November 1 XRP escrow eligibility",
+      "entity_type": "scheduled_ledger_event",
+      "classification": "verified_ledger_schedule"
+    },
+    {
+      "id": "binance",
+      "label": "Binance",
+      "entity_type": "exchange",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "github_main",
+      "label": "B-Agent main branch",
+      "entity_type": "software_repository",
+      "classification": "verified_state"
+    },
+    {
+      "id": "pr1413",
+      "label": "PR #1413 safety consolidation",
+      "entity_type": "pull_request",
+      "classification": "verified_open_draft"
+    },
+    {
+      "id": "pr1414",
+      "label": "PR #1414 prediction integrity",
+      "entity_type": "pull_request",
+      "classification": "verified_open_draft"
+    },
+    {
+      "id": "sbic_east",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "entity_type": "investment_company",
+      "classification": "verified_entity_separate_from_sbi_holdings"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E01",
+      "from": "sbi_holdings",
+      "to": "sbi_vc_trade",
+      "relation": "group_subsidiary_relationship",
+      "classification": "confirmed_fact",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
+        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD-BIZ",
+        "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+        "SRC-20261031T121200Z-SBI-VCTRADE-2M-ACCOUNTS"
+      ]
+    },
+    {
+      "id": "E02",
+      "from": "sbi_vc_trade",
+      "to": "sbi_crypto_card",
+      "relation": "issues_crypto_reward_card_with_aplus_and_visa",
+      "classification": "confirmed_fact",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
+        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD-BIZ"
+      ]
+    },
+    {
+      "id": "E03",
+      "from": "sbi_crypto_card",
+      "to": "xrp",
+      "relation": "user_can_select_xrp_for_monthly_point_conversion",
+      "classification": "confirmed_mechanism_unknown_volume",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
+        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD-BIZ"
+      ]
+    },
+    {
+      "id": "E04",
+      "from": "sbi_vc_trade",
+      "to": "xrp",
+      "relation": "monthly_reward_credit_channel_and_registered_account_distribution",
+      "classification": "confirmed_mechanism_unknown_market_sourcing",
+      "confidence": "medium",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-VCTRADE-2M-ACCOUNTS"
+      ]
+    },
+    {
+      "id": "E05",
+      "from": "sbi_ripple_asia",
+      "to": "xrpl",
+      "relation": "conceptual_tokenized_deposit_and_deposit_money_poc",
+      "classification": "confirmed_poc_not_production",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-SBI-RIPPLE-ASIA-XRPL-POC"
+      ]
+    },
+    {
+      "id": "E06",
+      "from": "sbi_vc_trade",
+      "to": "rlusd",
+      "relation": "rlusd_listing_on_ethereum_only_xrpl_planned",
+      "classification": "confirmed_product_scope",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY"
+      ]
+    },
+    {
+      "id": "E07",
+      "from": "sbi_holdings",
+      "to": "circle",
+      "relation": "circle_sbi_japan_jv_and_reported_investment",
+      "classification": "confirmed_corporate_relationship",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-CIRCLE-ARC-50M",
+        "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES"
+      ]
+    },
+    {
+      "id": "E08",
+      "from": "sbi_holdings",
+      "to": "circle",
+      "relation": "arc_validator_role",
+      "classification": "confirmed_network_role",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE"
+      ]
+    },
+    {
+      "id": "E09",
+      "from": "circle",
+      "to": "usdc",
+      "relation": "issues_and_operates_usdc",
+      "classification": "confirmed_fact",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV"
+      ]
+    },
+    {
+      "id": "E10",
+      "from": "circle",
+      "to": "aci",
+      "relation": "usdc_settlement_colombia_pilot_via_aci_connetic_and_bre_b",
+      "classification": "confirmed_pilot_no_volume",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-CIRCLE-ACI-USDC-COLOMBIA"
+      ]
+    },
+    {
+      "id": "E11",
+      "from": "aci",
+      "to": "breb",
+      "relation": "existing_payment_infrastructure_powered_by_aci",
+      "classification": "sourced_claim",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-CIRCLE-ACI-USDC-COLOMBIA"
+      ]
+    },
+    {
+      "id": "E12",
+      "from": "ripple",
+      "to": "coinbase",
+      "relation": "formal_rlusd_distribution_partnership",
+      "classification": "confirmed_fact",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-RIPPLE-COINBASE-RLUSD-PARTNERSHIP"
+      ]
+    },
+    {
+      "id": "E13",
+      "from": "coinbase",
+      "to": "rlusd",
+      "relation": "prime_exchange_retail_listing_on_xrpl_base_ethereum",
+      "classification": "confirmed_fact",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-RIPPLE-COINBASE-RLUSD-PARTNERSHIP",
+        "SRC-20261031T131504Z-COINBASE-RLUSD-LISTING"
+      ]
+    },
+    {
+      "id": "E14",
+      "from": "coinbase",
+      "to": "rlusd",
+      "relation": "global_exchange_collateral_support_announced_for_future",
+      "classification": "planned_not_live",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-RIPPLE-COINBASE-RLUSD-PARTNERSHIP"
+      ]
+    },
+    {
+      "id": "E15",
+      "from": "coinbase",
+      "to": "usdc",
+      "relation": "major_distribution_and_product_balance_relationship_with_circle",
+      "classification": "confirmed_economic_relationship",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS"
+      ]
+    },
+    {
+      "id": "E16",
+      "from": "coinbase",
+      "to": "x402",
+      "relation": "contributed_protocol_to_linux_foundation_governance",
+      "classification": "confirmed_fact",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-X402-LINUX-FOUNDATION"
+      ]
+    },
+    {
+      "id": "E17",
+      "from": "t54",
+      "to": "xrpl",
+      "relation": "operates_third_party_payer_signed_x402_facilitator",
+      "classification": "confirmed_published_implementation",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-T54-XRPL-X402-DOCS"
+      ]
+    },
+    {
+      "id": "E18",
+      "from": "x402",
+      "to": "xrpl",
+      "relation": "indirect_interoperability_via_t54_facilitator",
+      "classification": "verified_indirect_relationship",
+      "confidence": "medium",
+      "source_ids": [
+        "SRC-20261031T131504Z-X402-LINUX-FOUNDATION",
+        "SRC-20261031T131504Z-T54-XRPL-X402-DOCS"
+      ]
+    },
+    {
+      "id": "E19",
+      "from": "t54",
+      "to": "xrp",
+      "relation": "facilitator_supports_native_xrp_payments",
+      "classification": "confirmed_published_design",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-T54-XRPL-X402-DOCS"
+      ]
+    },
+    {
+      "id": "E20",
+      "from": "t54",
+      "to": "rlusd",
+      "relation": "facilitator_supports_issued_token_payments",
+      "classification": "confirmed_published_design",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-T54-XRPL-X402-DOCS"
+      ]
+    },
+    {
+      "id": "E21",
+      "from": "morpho",
+      "to": "cbxrp",
+      "relation": "cbxrp_collateral_in_base_lending_markets",
+      "classification": "confirmed_market_structure",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS"
+      ]
+    },
+    {
+      "id": "E22",
+      "from": "xrp_escrow",
+      "to": "xrp",
+      "relation": "one_billion_xrp_becomes_eligible_for_escrowfinish",
+      "classification": "confirmed_schedule_not_transfer",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-XRPL-ESCROW-SCHEDULE",
+        "SRC-20261031T131504Z-XRPL-ESCROW-PROTOCOL"
+      ]
+    },
+    {
+      "id": "E23",
+      "from": "binance",
+      "to": "xrp",
+      "relation": "tracked_exchange_wallet_balance_2_78b_with_17_6m_7d_net_change",
+      "classification": "provider_attributed_custody_not_poro",
+      "confidence": "medium",
+      "source_ids": [
+        "SRC-20261031T131504Z-XRP-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "E24",
+      "from": "github_main",
+      "to": "pr1413",
+      "relation": "fresh_main_safety_proposal",
+      "classification": "verified_open_draft_not_active",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-GITHUB-PR1413-VERIFICATION"
+      ]
+    },
+    {
+      "id": "E25",
+      "from": "github_main",
+      "to": "pr1414",
+      "relation": "fresh_main_prediction_integrity_proposal",
+      "classification": "verified_open_draft_not_active",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-GITHUB-PR1414-VERIFICATION"
+      ]
+    },
+    {
+      "id": "E26",
+      "from": "sbic_east",
+      "to": "github_main",
+      "relation": "no_direct_project_or_partnership_edge_established",
+      "classification": "unknown_not_inferred",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBIC-EAST-JAPAN-PROFILE",
+        "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H01",
+      "claim": "SBI's crypto reward cards and other XRP incentives create a recurring retail distribution channel for XRP.",
+      "classification": "inference_from_confirmed_mechanism",
+      "confidence": "medium_for_distribution_low_for_market_impact",
+      "supporting": [
+        "SBI VC Trade card allows XRP selection and monthly point conversion",
+        "Corporate/business-owner card adds employee cards",
+        "SBI VC Trade reports 2M registered accounts",
+        "START bond, shareholder and deposit reward programs add separate XRP-credit channels"
+      ],
+      "disconfirming_or_alternative": [
+        "No XRP selection share, monthly redemption volume or aggregate reward pool is disclosed",
+        "Point credits may be funded from existing inventory or issuer/partner inventory rather than new spot purchases",
+        "Registered accounts are not active XRP users"
+      ],
+      "decision": "Track reward XRP credited, source of inventory and any market purchase separately; do not count as net external capital."
+    },
+    {
+      "id": "H02",
+      "claim": "SBI is pursuing a multi-rail digital-asset strategy rather than an exclusive XRP strategy.",
+      "classification": "inference",
+      "confidence": "high",
+      "supporting": [
+        "SBI Ripple Asia XRPL tokenized-deposit PoC",
+        "SBI VC Trade RLUSD product is Ethereum-only with XRPL planned",
+        "SBI Circle Japan JV and Arc validator role",
+        "JPYSC/Startale/Open Standard, Solana and conditional Bitbank activity"
+      ],
+      "disconfirming_or_alternative": [
+        "SBI's long-standing Ripple relationship and XRPL-specific projects may remain strategically important in selected corridors"
+      ],
+      "decision": "Model SBI as a multi-rail institutional group; avoid exclusive-XRP assumptions."
+    },
+    {
+      "id": "H03",
+      "claim": "Circle/ACI USDC settlement in Colombia may compete with or complement XRPL cross-border settlement.",
+      "classification": "competing_causal_hypotheses",
+      "confidence": "low",
+      "supporting": [
+        "USDC settlement is being demonstrated inside existing ACI/Bre-B infrastructure",
+        "ACI describes multi-rail support and future settlement models"
+      ],
+      "disconfirming_or_alternative": [
+        "No XRP integration, live volume or displaced XRPL corridor is disclosed",
+        "Multi-rail orchestration can allow several assets/providers to coexist"
+      ],
+      "decision": "Treat as a competing/complementary payments-rail scenario, not evidence of XRP displacement."
+    },
+    {
+      "id": "H04",
+      "claim": "Coinbase's RLUSD partnership diversifies its stablecoin distribution beyond Circle USDC and may change stablecoin mix on Coinbase.",
+      "classification": "inference",
+      "confidence": "medium",
+      "supporting": [
+        "Direct Ripple-Coinbase RLUSD partnership",
+        "RLUSD availability on Prime, Exchange and Retail across XRPL/Base/Ethereum",
+        "1:1 conversion from USD and supported stablecoins"
+      ],
+      "disconfirming_or_alternative": [
+        "Coinbase-Circle distribution economics and USDC product balances remain material",
+        "No post-listing RLUSD/USDC balance, conversion or market-share data yet"
+      ],
+      "decision": "Monitor issuer-level balances, conversion flows, chain mix and collateral activation; do not claim USDC displacement."
+    },
+    {
+      "id": "H05",
+      "claim": "RLUSD support on XRPL can increase XRPL stablecoin activity without necessarily creating material XRP market demand.",
+      "classification": "inference",
+      "confidence": "high_for_distinction",
+      "supporting": [
+        "RLUSD is supported on XRPL",
+        "Stablecoin transfers use XRPL transaction fees in native XRP"
+      ],
+      "disconfirming_or_alternative": [
+        "Greater RLUSD liquidity could indirectly improve XRPL utility and XRP routing, but no volume or market impact is measured"
+      ],
+      "decision": "Track RLUSD XRPL supply, transfer volume, DEX liquidity and XRP fee burn separately."
+    },
+    {
+      "id": "H06",
+      "claim": "The November 1 escrow eligibility event may result in a gross 1B XRP transfer, but actual net supply depends on EscrowFinish and subsequent re-escrow/disposition.",
+      "classification": "scenario_not_forecast",
+      "confidence": "high_for_schedule_unknown_for_outcome",
+      "supporting": [
+        "Two 500M objects have FinishAfter 2026-11-01 00:00 UTC",
+        "Historical 12-month pattern shows 8.4B of 12B released re-escrowed"
+      ],
+      "disconfirming_or_alternative": [
+        "No EscrowFinish transaction is guaranteed at eligibility",
+        "Funds may be re-escrowed or allocated rather than sold"
+      ],
+      "decision": "Measure eligible, finished, re-escrowed, transferred to exchanges and sold as separate states."
+    },
+    {
+      "id": "H07",
+      "claim": "Binance's current tracked-wallet balance does not prove that the 233.46M XRP theft was replenished.",
+      "classification": "unknown_with_disconfirming_evidence",
+      "confidence": "high",
+      "supporting": [
+        "XRP Insights same-wallet data reports Binance 2.78B and +17.6M over 7d",
+        "Other providers report different levels and address universes"
+      ],
+      "disconfirming_or_alternative": [
+        "Net aggregate change can mask large individual drains offset by inflows; per-wallet histories are absent"
+      ],
+      "decision": "Require per-wallet transaction history and official PoR liabilities before reserve-replenishment claims."
+    },
+    {
+      "id": "H08",
+      "claim": "XRP ETF flows are mixed and near-term flows are not a clean one-way capital signal.",
+      "classification": "sourced_claim_plus_inference",
+      "confidence": "medium",
+      "supporting": [
+        "Maketo reports Oct30 -$496.5K and 30-day +$19M",
+        "XRP Insights Oct30 row is provisional and Oct26-30 net +3.39M XRP",
+        "Alpha Oct29 reports +$8.4M"
+      ],
+      "disconfirming_or_alternative": [
+        "Provider coverage, settlement and flow definitions differ; cumulative inflows since 2025 remain positive"
+      ],
+      "decision": "Use fund-level settled holdings and creations/redemptions, not one aggregate headline."
+    },
+    {
+      "id": "H09",
+      "claim": "Current XRP derivatives positioning is long-skewed with positive funding, but aggregate OI is not yet reliable across providers.",
+      "classification": "sourced_claim_with_data_quality_constraint",
+      "confidence": "medium",
+      "supporting": [
+        "TradRadar OI $1.86B and 78.5% long accounts",
+        "Alpha heatmap OI $2.81B and modelled leverage clusters"
+      ],
+      "disconfirming_or_alternative": [
+        "Different contract universes and notional conversions explain part of the discrepancy; account ratios are not notional exposure"
+      ],
+      "decision": "Keep provider-specific features and require contract-level normalization before aggregation."
+    },
+    {
+      "id": "H10",
+      "claim": "XRPL x402 activity demonstrates an agent-payment rail but currently has very small reported economic value relative to transaction counts.",
+      "classification": "sourced_claim_with_independent_count_disagreement",
+      "confidence": "medium_for_low_value_high_for_uncertainty",
+      "supporting": [
+        "XRPL AI Hub dashboard reports ~$45.2K value and 14.77M volume",
+        "T54 docs show payer-signed XRPL payments in XRP/RLUSD/USDC",
+        "xrpl.fi provides a reproducible fingerprint for recent transactions"
+      ],
+      "disconfirming_or_alternative": [
+        "Cumulative transaction count is not reconciled; independent scanner rejects the facilitator's cumulative claim as unaudited"
+      ],
+      "decision": "Track settled value by asset and validated transaction fingerprint; do not use raw count as capital demand."
+    },
+    {
+      "id": "H11",
+      "claim": "PR #1413 and PR #1414 improve V3 safety and prediction measurement if merged, but they do not currently change main.",
+      "classification": "verified_software_state",
+      "confidence": "high",
+      "supporting": [
+        "Both exact-head CI runs and fail-closed gates passed",
+        "Both branches are based on current main and remain open/draft/unmerged"
+      ],
+      "disconfirming_or_alternative": [
+        "Main still contains the original writers, merge queue, deployment triggers and variable-horizon accuracy workflow"
+      ],
+      "decision": "Treat changes as designed/executed/verified on PR heads, not deployed or active."
+    },
+    {
+      "id": "H12",
+      "claim": "The Pillars Consistency Check failure is primarily an external integration-readiness blocker, not an established code defect.",
+      "classification": "sourced_claim",
+      "confidence": "high_for_observed_errors_low_for_root_cause",
+      "supporting": [
+        "GitHub App credentials absent",
+        "Databricks returned HTTP 403",
+        "Hugging Face Space stage BUILD_ERROR"
+      ],
+      "disconfirming_or_alternative": [
+        "Databricks permission misconfiguration and HF build dependency defects remain possible code/config causes"
+      ],
+      "decision": "Keep fail-closed; obtain specific authorized provider diagnostics before changing gates."
+    }
+  ],
+  "red_team_objections": [
+    "Do not infer that SBI card rewards cause spot XRP purchases; point conversion may use existing inventory.",
+    "Do not infer that Circle's ACI pilot displaces XRPL; the announcement explicitly describes multi-rail coexistence.",
+    "Do not infer that RLUSD collateral is live on Coinbase Global Exchange; the partnership announcement says this follows later.",
+    "Do not infer that Coinbase's x402 standard means Coinbase operates T54's XRPL facilitator.",
+    "Do not infer that 1B escrow eligibility means 1B XRP becomes circulating at midnight.",
+    "Do not infer that Binance's aggregate reserve change equals the stolen amount or that a company-wide $1.34B acquisition is XRP buying.",
+    "Do not infer model skill from the retired 45.5% variable-horizon metric."
+  ],
+  "unknowns": [
+    "Actual SBI XRP reward redemptions, XRP selection share and inventory sourcing.",
+    "Production deployment status and volumes of SBI Ripple Asia's XRPL deposit PoC.",
+    "Date when SBI VC Trade adds RLUSD on XRPL and whether the 1M JPY limit changes.",
+    "Actual Coinbase RLUSD balances, chain-specific deposits/withdrawals, conversion flows and Global Exchange collateral activation.",
+    "Circle/ACI pilot live settlement volumes and asset-provider roadmap.",
+    "Reconciled x402 cumulative transactions and asset-level settlement value.",
+    "Actual EscrowFinish transactions and post-eligibility destinations for the two 500M objects.",
+    "Binance same-wallet source-wallet histories and same-time PoR liabilities."
+  ]
+}
