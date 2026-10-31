@@ -79,3 +79,15 @@ def test_launched_tokenized_fund_is_distinguished_from_future_collateral_and_pil
     assert products["sg_forge_eur_coinvertible"]["trading_collateral_use"] == "OPPORTUNITY_TO_EXPLORE_NOT_CONFIRMED_LIVE"
     assert snapshot["card_settlement"]["mastercard_webbank_gemini_rlusd"]["status"].startswith("EXPLORATORY")
     assert snapshot["prediction"]["directional_features_admitted"] == []
+
+
+
+def test_coinbase_national_trust_is_conditional_and_custody_migration_is_prospective():
+    snapshot = _load("snapshots/20261031T181303Z-xrp-institutional-custody-trade-finance.json")
+    coinbase = snapshot["regulatory_status"]["coinbase_national_trust"]
+    assert coinbase["approval_status"] == "PRELIMINARY_CONDITIONAL_APPROVAL_ONLY"
+    assert coinbase["final_approval_and_authorization_to_commence_business"].startswith("NOT_GRANTED")
+    assert coinbase["current_custody_provider"] == "Coinbase Custody Trust Company LLC (NYDFS limited-purpose trust company)"
+    assert coinbase["operational_opening"] == "NOT_VERIFIED"
+    assert "over a three-year" in coinbase["planned_migration"]
+    assert coinbase["insured_deposit_taking"] == "NOT_AUTHORIZED"
