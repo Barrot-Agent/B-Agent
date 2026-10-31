@@ -9,6 +9,10 @@ permissions:
   contents: write
   actions: write
 
+concurrency:
+  group: barrot-scheduler-tick
+  cancel-in-progress: false
+
 jobs:
   tick:
     runs-on: ubuntu-latest
