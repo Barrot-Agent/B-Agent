@@ -201,10 +201,10 @@ def collect_snapshot(
     flags: list[str] = []
 
     listed = _market_list_items(market_list) if market_list is not None else []
-    listed_ids = {
-        str(_field(item, "unique_key", "market_id", "marketId", "id") or "").lower()
-        for item in listed
-    }
+    listed_ids = set()
+    for item in listed:
+        raw_id = str(_field(item, "unique_key", "market_id", "marketId", "id") or "").lower()
+        listed_ids.add(raw_id.split(":", 1)[-1])
     if market_list is not None and MARKET_ID.lower() not in listed_ids:
         flags.append("MARKET_NOT_FOUND_IN_FILTERED_LIST")
     if market_list is not None and _market_list_cursor(market_list):
