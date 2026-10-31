@@ -249,8 +249,8 @@
     "source_revision_addenda_count": 22,
     "source_revision_addenda_pending_archive_append": 22,
     "created_at_utc": "2026-10-31T21:40:05Z",
-    "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
-    "exact_head_validation": false,
+    "verification_status": "PASS_EXACT_HEAD_VALIDATION",
+    "exact_head_validation": true,
     "pending_data_head_sha": "9892866b3cab0390f0dc3bfdf95598321cce0316",
     "expected_archive_shards": 439,
     "expected_archive_records_roundtrip": 3474,
@@ -265,7 +265,18 @@
     "preserved_unreferenced_originals": [
       "data/xrp_intelligence/snapshots/20261031T211452Z-coinbase-etf-custody-prime-execution-credit-and-ripple-seed-capital.json",
       "data/xrp_intelligence/ledger_archive/v1/run_updates-159-of-159-corrected.json"
-    ]
+    ],
+    "verified_head_sha": "7df50ae7621dca437e4e49e39cb1218eea58a404",
+    "verification_at_utc": "2026-10-31T21:41:27Z",
+    "push_validator_run_id": 41244742273,
+    "validator_run_id": 41244745154,
+    "gate_run_id": 41244745074,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "archive_shards_checked": 439,
+    "source_revision_addenda_checked": 22,
+    "tests_passed": 32,
+    "errors": [],
+    "state_mutated": false
   },
   "sources": {
     "record_type": "archive_pointer",
@@ -3905,7 +3916,7 @@
     "source_archive_append_status": "PENDING_ARCHIVE_APPEND",
     "source_revision_addenda_count": 22,
     "source_revision_addenda_pending_archive_append": 22,
-    "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+    "verification_status": "PASS_EXACT_HEAD_VALIDATION",
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED",
     "findings": [
@@ -3923,7 +3934,19 @@
       "The announcement does not disclose customer XRP balances, actual XRP purchases, on-chain settlement share, XRP-routed payment volume or inventory requirements.",
       "Cross-border/intercompany settlement and overnight repo expansion are described as future capabilities, not verified live production flows.",
       "Product and service availability varies by geography; this is a company statement, not independent customer-level adoption evidence."
-    ]
+    ],
+    "verified_head_sha": "7df50ae7621dca437e4e49e39cb1218eea58a404",
+    "verification_at_utc": "2026-10-31T21:41:27Z",
+    "push_validator_run_id": 41244742273,
+    "validator_run_id": 41244745154,
+    "gate_run_id": 41244745074,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "archive_shards_checked": 439,
+    "source_revision_addenda_checked": 22,
+    "tests_passed": 32,
+    "errors": [],
+    "state_mutated": false,
+    "correction_status": "Ripple Treasury $13T provenance corrected to primary company source; XRP/RLUSD digital account capability documented; no payment-volume or customer-balance inference."
   },
   "previous_snapshot_verification": {
     "status": "PASS",
@@ -7152,15 +7175,15 @@
     "causal_attribution": "NOT_ESTABLISHED; OCT30 ALL-EXCHANGE DECLINE PARTIALLY REVERSED OCT31; BINANCE SAME-WALLET 7D AND 30D ARE POSITIVE; CRYPTOQUANT SERIES SEPARATE; NO INCIDENT-SOURCE WALLET CROSSWALK",
     "market_feature_admission": "CUSTODY_TIMELINE_ONLY_NOT_DIRECTIONAL"
   },
-  "latest_snapshot_verification_status": "PENDING_EXACT_HEAD_VALIDATION",
-  "latest_snapshot_verification_head_sha": "9892866b3cab0390f0dc3bfdf95598321cce0316",
-  "latest_snapshot_verification_at_utc": "2026-10-31T21:38:40Z",
+  "latest_snapshot_verification_status": "PASS_EXACT_HEAD_VALIDATION",
+  "latest_snapshot_verification_head_sha": "7df50ae7621dca437e4e49e39cb1218eea58a404",
+  "latest_snapshot_verification_at_utc": "2026-10-31T21:41:27Z",
   "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261031T214005Z-ripple-treasury-13t-primary-evidence-correction.json",
-  "last_verified_head_sha": "1dd62701a323167084a1d4b2c5f16b53f6bd8308",
+  "last_verified_head_sha": "7df50ae7621dca437e4e49e39cb1218eea58a404",
   "last_verified_at_utc": "2026-10-31T21:20:49Z",
-  "last_validator_run_id": 41244532923,
+  "last_validator_run_id": 41244745154,
   "last_validator_tests_passed": 32,
-  "last_fail_closed_gate_run_id": 41244535757,
+  "last_fail_closed_gate_run_id": 41244745074,
   "last_fail_closed_gate_status": "PASS_MERGE_DISABLED",
   "snapshot_revision_history": [
     {
@@ -7245,10 +7268,10 @@
   "latest_verified_validator_tests_passed": 20,
   "latest_verified_gate_run_id": 41194367355,
   "latest_verified_gate_status": "PASS_MERGE_DISABLED",
-  "latest_validator_run_id": 41244532923,
+  "latest_validator_run_id": 41244745154,
   "latest_validator_head_sha": "75c62b02c4fa4ef0cde55c09f5650b0ba0d3cfb8",
   "latest_validator_tests_passed": 32,
-  "latest_gate_run_id": 41244535757,
+  "latest_gate_run_id": 41244745074,
   "latest_gate_status": "PASS_MERGE_DISABLED",
   "latest_gate_head_sha": "61bb69e02a3e99510820c60468406eb905480458",
   "latest_fail_closed_gate_run_id": 41243145642,
@@ -7256,7 +7279,7 @@
   "latest_fail_closed_gate_head_sha": "75c62b02c4fa4ef0cde55c09f5650b0ba0d3cfb8",
   "latest_snapshot_verification_method": "GITHUB_ACTIONS_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
   "latest_append_validation": "PASS_EXACT_HEAD_VALIDATION",
-  "current_append_validation": "PENDING_EXACT_HEAD_VALIDATION",
+  "current_append_validation": "PASS_EXACT_HEAD_VALIDATION",
   "current_exact_head_validator_status": "PASS_ON_06845A53",
   "archive_policy_counts_reconciled": true,
   "archive_shards_pending_validation": 3,
@@ -8846,7 +8869,7 @@
   "latest_append_validator_run_id": 41238341077,
   "latest_append_gate_run_id": 41238342364,
   "latest_append_gate_status": "PASS_MERGE_DISABLED",
-  "latest_append_validation_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "latest_append_validation_status": "PASS_EXACT_HEAD_VALIDATION",
   "current_research_head_before_current_append": "8c55be11c5b6f960ca17fa7d1487552d503d3cbf",
   "current_research_head_this_run_status": "DATA_HEAD_VERIFIED; THIS_COMMIT_RECORDS_VERIFICATION_RECEIPT",
   "latest_snapshot_commit_sha": "9892866b3cab0390f0dc3bfdf95598321cce0316",
@@ -13283,7 +13306,7 @@
   "latest_ripple_escrow_current_status": "SCHEDULED_NOT_YET_ELIGIBLE_AT_2026-10-31T21:02:44Z",
   "latest_ripple_escrow_prior_12m_relock_pct": 70,
   "latest_source_reference_count": 8,
-  "latest_push_validator_run_id": 41242243793,
+  "latest_push_validator_run_id": 41244742273,
   "latest_push_validator_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41242243793",
   "latest_coinbase_etf_custody": {
     "funds_with_coinbase_in_custodian_set": 5,
@@ -13336,5 +13359,6 @@
   "main_modified_by_scheduled_workflow": true,
   "latest_run_update_path": null,
   "latest_limitation_path": null,
-  "metadata_successor_validation_pending": true
+  "metadata_successor_validation_pending": true,
+  "last_push_validator_run_id": 41244742273
 }
