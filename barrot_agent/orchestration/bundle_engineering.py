@@ -260,7 +260,7 @@ def normalize_bundle_shapes(bundle: Any) -> tuple[Any, list[str]]:
     return normalized, repairs
 
 
-_AUTH_HEADING = re.compile(r"^\s*(?:#{1,6}\s*)?\**\s*authori[sz]ation boundaries\s*\**\s*:?\s*\**\s*$", re.IGNORECASE)
+_AUTH_HEADING = re.compile(r"^\s*(?:#{1,6}\s*)?\**\s*(?:authori[sz]ation boundaries|safety and execution constraints|safety boundaries)\s*\**\s*:?\s*\**\s*$", re.IGNORECASE)
 _BULLET = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+(.*\S)\s*$")
 
 
