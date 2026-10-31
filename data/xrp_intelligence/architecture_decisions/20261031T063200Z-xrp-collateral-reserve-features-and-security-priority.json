@@ -83,6 +83,12 @@
       "rule": "Preserve approval-workflow push-event failures with zero jobs as UNKNOWN until event/check-suite evidence establishes a root cause; do not label the YAML invalid or bypass the gate.",
       "evidence": "Run 41177228657 was event=push, conclusion=failure, jobs=0; inspected workflow declares workflow_dispatch only; no job logs available.",
       "admission_status": "OPEN_BLOCKER; NO_REPAIR_OR_MANUAL_DISPATCH_PERFORMED"
+    },
+    {
+      "id": "DEC-PR-BACKLOG-BASE-DRIFT",
+      "rule": "Do not bulk rebase, force-push, merge or close the open PR backlog. Reconcile each PR's merge base, changed paths, exact-head CI and current-main compatibility independently.",
+      "evidence": "GitHub REST inventory at 2026-10-31T06:42Z returned 173 open PRs; 169 of 171 main-based PRs have stale base SHAs and only two target current main.",
+      "admission_status": "AUDITED; NO_BULK_ACTION_PERFORMED"
     }
   ],
   "platform_coordination": {
@@ -120,7 +126,17 @@
       "jobs_count": 0,
       "root_cause": "UNKNOWN"
     },
-    "research_branch_validator": "PENDING; no exact-head validator run returned for latest branch head"
+    "research_branch_validator": "PENDING; no exact-head validator run returned for latest branch head",
+    "open_pr_inventory": {
+      "total_open": 173,
+      "drafts": 163,
+      "ready_for_review": 10,
+      "base_main": 171,
+      "current_main_base": 2,
+      "stale_main_base": 169,
+      "non_main_base": 2,
+      "captured_at_utc": "2026-10-31T06:42:00Z"
+    }
   },
   "market_features_admitted": false,
   "forecast_status": "NOT_ISSUED",
