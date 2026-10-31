@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T025600Z-MAIN-REPEAT-WRITE-AND-TELEMETRY-SAFETY",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T025600Z-main-repeat-write-and-telemetry-safety.json",
+  "created_at_utc": "2026-10-31T02:56:00Z",
+  "captured_at_utc": "2026-10-31T02:56:00Z",
+  "data_cutoff_utc": "2026-10-31T02:56:00Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T024000Z-legacy-signal-evaluator-integrity-audit.json",
+  "source_ids": [
+    "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+    "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z",
+    "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z",
+    "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z",
+    "SRC-GH-PR-INVENTORY-20261031T025600Z",
+    "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z"
+  ],
+  "source_reference_count": 6,
+  "missing_source_references": 0,
+  "event_timeline": [
+    {
+      "date": "2026-10-31T00:05:45Z",
+      "event": "Scheduled telemetry workflow completed its report and commit steps; main commit f97ac7a changed only the generated report timestamp, followed by successful Pages deployment 41148264821.",
+      "source_ids": [
+        "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z"
+      ]
+    },
+    {
+      "date": "2026-10-31T01:51:50Z",
+      "event": "Scheduled Cross Analysis run 41157339221 pushed main commit 7a780de and triggered successful Pages deployment 41157349809; this repeated the same pattern one hour later.",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+        "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z"
+      ]
+    },
+    {
+      "date": "2026-10-31T02:52:00Z",
+      "event": "Scheduled Cross Analysis again pushed main commit b375954 and triggered successful Pages deployment 41161885309. XRP and BTC sentiment-shift windows each had zero observations.",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+        "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z"
+      ]
+    },
+    {
+      "date": "2026-10-31T02:47:49Z",
+      "event": "Scheduler Tick fired zero of one queued entries and performed a no-op push, while retaining main-write and workflow-dispatch capability.",
+      "source_ids": [
+        "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z"
+      ]
+    },
+    {
+      "date": "2026-10-31T02:54:40Z",
+      "event": "Draft PR #1391 opened from current main b375954; exact-head CI passed 349 tests plus 8 subtests and fail-closed gate passed with merge disabled.",
+      "source_ids": [
+        "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "F-20261031T025600Z-01",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Cross Analysis run 41161874626 caused main commit b375954; the job log records git push from 7a780de to b375954. The only changed file was sentiment_shift.json.",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z"
+      ],
+      "disconfirming_evidence": "No material disconfirmation; the run log and commit parent/path diff agree."
+    },
+    {
+      "finding_id": "F-20261031T025600Z-02",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The XRP and BTC sentiment-shift detector had zero observations in both recent and prior windows. Its output is null and NOT_EVALUATED, not a zero or positive/negative market signal.",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z"
+      ],
+      "disconfirming_evidence": "The entity sentiment profiler separately printed mention counts and scores, but those are distinct derived knowledge-base outputs and do not supply the missing shift-window observations."
+    },
+    {
+      "finding_id": "F-20261031T025600Z-03",
+      "classification": "CONFIRMED_FACT",
+      "statement": "GitHub Pages build and deploy run 41161885309 succeeded on main head b375954 immediately after the scheduled Cross Analysis push.",
+      "source_ids": [
+        "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z"
+      ],
+      "disconfirming_evidence": "The Pages run is downstream of the push; it does not prove Cross Analysis directly invoked a deployment command."
+    },
+    {
+      "finding_id": "F-20261031T025600Z-04",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The scheduled telemetry workflow committed f97ac7a to main at 00:05:51Z, changing only the generated report timestamp, and its push was followed by successful Pages deployment 41148264821.",
+      "source_ids": [
+        "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z"
+      ],
+      "disconfirming_evidence": "The workflow itself contains no direct deployment step; the Pages deployment is an automatic downstream effect."
+    },
+    {
+      "finding_id": "F-20261031T025600Z-05",
+      "classification": "CONFIRMED_FACT",
+      "statement": "PR #1391 is open, draft, mergeable and unmerged on current main base b375954. Exact-head CI passed 349 tests plus 8 subtests and the fail-closed gate passed with merging disabled.",
+      "source_ids": [
+        "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z"
+      ],
+      "disconfirming_evidence": "No production workflow execution of the proposed read-only version has occurred because the PR is unmerged."
+    },
+    {
+      "finding_id": "F-20261031T025600Z-06",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The open PR inventory contains 166 PRs: 156 drafts, 10 ready, 164 main-based, 163 stale-main-base, one current-main-base and two non-main-base.",
+      "source_ids": [
+        "SRC-GH-PR-INVENTORY-20261031T025600Z"
+      ],
+      "disconfirming_evidence": "This is a point-in-time inventory; base refs can change."
+    },
+    {
+      "finding_id": "F-20261031T025600Z-07",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Scheduler Tick run 41161577082 fired zero entries and made no main change, but its commit/push step executed and its write/dispatch capability remains.",
+      "source_ids": [
+        "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z"
+      ],
+      "disconfirming_evidence": "The latest run was a no-op; this does not establish future queue changes will be harmless."
+    },
+    {
+      "finding_id": "F-20261031T025600Z-08",
+      "classification": "INFERENCE",
+      "statement": "Repeated scheduled main commits create avoidable Pages deployments even when the generated change is only a timestamp or the underlying sentiment sample is empty. Artifact-only outputs and PR-based publication are the safer architecture.",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+        "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z",
+        "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z",
+        "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z"
+      ],
+      "disconfirming_evidence": "A deployment may be operationally intended for some content changes; the concern is automatic deployment for zero-sample or telemetry-only changes without a review boundary."
+    },
+    {
+      "finding_id": "F-20261031T025600Z-09",
+      "classification": "UNKNOWN",
+      "statement": "The exact main branch protection rules and any bypass actor remain unknown. The branch API reports protected=true, while the detailed protection endpoint is inaccessible through the available integration.",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+        "SRC-GH-PR-INVENTORY-20261031T025600Z"
+      ],
+      "disconfirming_evidence": "Successful workflow pushes prove a write occurred, not which protection rule or bypass mechanism allowed it."
+    }
+  ],
+  "repository_state": {
+    "main_sha": "b3759544b72a1db392b7e437c85cf4970cdcac74",
+    "main_protected_flag": true,
+    "branch_protection_details_status": "NOT_ACCESSIBLE_403",
+    "latest_cross_analysis_commit_sha": "b3759544b72a1db392b7e437c85cf4970cdcac74",
+    "latest_cross_analysis_run_id": 41161874626,
+    "pages_deployment_run_id": 41161885309,
+    "latest_self_deployment_commit_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+    "self_deployment_run_id": 41148251682,
+    "self_deployment_pages_run_id": 41148264821,
+    "open_pr_inventory": {
+      "open": 166,
+      "draft": 156,
+      "ready": 10,
+      "main_based": 164,
+      "stale_main_base": 163,
+      "current_main_base": 1,
+      "non_main_base": 2
+    },
+    "safety_prs": [
+      {
+        "number": 1386,
+        "head_sha": "74c47f2a8a64aefc96ff64f3247bbf48789da052",
+        "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci_run_id": 41158736348,
+        "tests_passed": 354,
+        "subtests_passed": 8,
+        "gate_run_id": 41158736337,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "purpose": "Read-only cross-analysis and legacy accuracy quarantine"
+      },
+      {
+        "number": 1390,
+        "head_sha": "19f4f9181b439f5399a43ba5df6112a92e11b8d2",
+        "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci_run_id": 41158871301,
+        "tests_passed": 348,
+        "subtests_passed": 8,
+        "gate_run_id": 41158871353,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "purpose": "Restrict scheduler to an allowlisted validation workflow; queue still has a main-write path"
+      },
+      {
+        "number": 1388,
+        "head_sha": "854f52bd50a333a94c16cda7234942a69301e540",
+        "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci_run_id": 41158878672,
+        "tests_passed": 344,
+        "subtests_passed": 8,
+        "gate_run_id": 41158878561,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "purpose": "Read-only merge queue and deployment gate"
+      },
+      {
+        "number": 1391,
+        "head_sha": "fc97396245f3b90d79645a57643333104e67f339",
+        "base_sha": "b3759544b72a1db392b7e437c85cf4970cdcac74",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "ci_run_id": 41162060701,
+        "tests_passed": 349,
+        "subtests_passed": 8,
+        "gate_run_id": 41162060753,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "purpose": "Read-only telemetry artifact"
+      }
+    ]
+  },
+  "prediction_engine": {
+    "legacy_accuracy_status": "NOT_COMPARABLE",
+    "latest_main_signal_timestamp": "2026-10-29T13:23:33.142057Z",
+    "latest_main_signal_score": 44,
+    "latest_main_signal_confidence": 0,
+    "provider_status": "MISSING_GITHUB_MODEL_CREDENTIALS_AND_GROQ_HTTP_429",
+    "signal_status": "STALE_NOT_A_FORECAST",
+    "fixed_horizon_contract_status": "DESIGNED_NOT_EXECUTED_OR_VALIDATED",
+    "walk_forward_status": "NOT_EXECUTED",
+    "calibration_status": "NOT_EXECUTED",
+    "shadow_evaluation_status": "NOT_EXECUTED",
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "platform_coordination": {
+    "platforms_designed": 9,
+    "authenticated_external_platforms": 0,
+    "live_external_collaborators": 0,
+    "verified_handoffs": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "limitations": [
+    "Main still has scheduled Cross Analysis, daily signal-accuracy, Scheduler Tick and telemetry workflow write paths because their remediation PRs remain unmerged.",
+    "PRs #1386, #1388 and #1390 are based on 7a780de, one main commit behind b375954; no changed-path overlap with the b375954 timestamp-only sentiment file was found, but fresh merge-result validation is still required.",
+    "Scheduler Tick still has contents:write and actions:write capability; the latest run was a no-op.",
+    "The detailed branch-protection rules, bypass actor, GitHub security alerts and dependency vulnerability status are not accessible through the tested read actions.",
+    "Full repository CI and dependency vulnerability scanning remain NOT_RUN.",
+    "Only GitHub access and the current ChatGPT session are verified; the other eight platforms remain unauthenticated and untested."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T025600Z-MAIN-REPEAT-WRITE-AND-TELEMETRY-SAFETY",
+  "created_at_utc": "2026-10-31T02:56:00Z",
+  "captured_at_utc": "2026-10-31T02:56:00Z",
+  "source_ids": [
+    "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+    "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z",
+    "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z",
+    "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z",
+    "SRC-GH-PR-INVENTORY-20261031T025600Z",
+    "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z"
+  ],
+  "source_reference_count": 6,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T025600Z-01",
+      "from_entity": "Cross Analysis scheduled workflow",
+      "relation": "committed_and_pushed",
+      "to_entity": "main commit b375954",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T025600Z-02",
+      "from_entity": "main commit b375954",
+      "relation": "triggered",
+      "to_entity": "GitHub Pages deployment 41161885309",
+      "status": "CONFIRMED_DOWNSTREAM_DEPLOYMENT",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+        "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T025600Z-03",
+      "from_entity": "Barrot Autonomous Self-Deployment scheduled workflow",
+      "relation": "committed_and_pushed",
+      "to_entity": "main commit f97ac7a",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T025600Z-04",
+      "from_entity": "main commit f97ac7a",
+      "relation": "triggered",
+      "to_entity": "GitHub Pages deployment 41148264821",
+      "status": "CONFIRMED_DOWNSTREAM_DEPLOYMENT",
+      "source_ids": [
+        "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T025600Z-05",
+      "from_entity": "PR #1391",
+      "relation": "proposes_read_only_artifact_remediation_for",
+      "to_entity": "Barrot Autonomous Self-Deployment workflow",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "source_ids": [
+        "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T025600Z-06",
+      "from_entity": "Scheduler Tick workflow",
+      "relation": "retains_commit_push_and_dispatch_capability_for",
+      "to_entity": "main and allowlisted workflow",
+      "status": "CAPABILITY_CONFIRMED_NOOP_AT_0247Z",
+      "source_ids": [
+        "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T025600Z-07",
+      "from_entity": "PR #1386",
+      "relation": "proposes_read_only_remediation_for",
+      "to_entity": "Cross Analysis and signal-accuracy workflows",
+      "status": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+        "SRC-GH-PR-INVENTORY-20261031T025600Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T025600Z-08",
+      "from_entity": "PR #1390",
+      "relation": "proposes_allowlist_remediation_for",
+      "to_entity": "Scheduler Tick workflow",
+      "status": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "source_ids": [
+        "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z",
+        "SRC-GH-PR-INVENTORY-20261031T025600Z"
+      ]
+    },
+    {
+      "edge_id": "E-20261031T025600Z-09",
+      "from_entity": "PR #1388",
+      "relation": "proposes_read_only_remediation_for",
+      "to_entity": "Merge Queue workflow",
+      "status": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "source_ids": [
+        "SRC-GH-PR-INVENTORY-20261031T025600Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T025600Z-01",
+      "claim": "The scheduled Cross Analysis workflow is a recurring cause of timestamp-only main commits and downstream Pages deployments when sentiment-shift windows contain no observations.",
+      "status": "CONFIRMED_PATTERN",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+        "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z"
+      ],
+      "disconfirming_evidence": "The latest run is confirmed; future recurrence depends on schedule and workflow state."
+    },
+    {
+      "hypothesis_id": "H-20261031T025600Z-02",
+      "claim": "The telemetry workflow's scheduled main write is unnecessary because its report is telemetry-only and can be retained as an Actions artifact.",
+      "status": "SUPPORTED_DESIGN_DECISION",
+      "source_ids": [
+        "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z",
+        "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z"
+      ],
+      "disconfirming_evidence": "The existing workflow has run successfully, but success does not establish a need for main-branch persistence."
+    },
+    {
+      "hypothesis_id": "H-20261031T025600Z-03",
+      "claim": "PR #1391 will remove the telemetry main-write path if approved and merged.",
+      "status": "CONDITIONAL_NOT_ACTIVE",
+      "source_ids": [
+        "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z"
+      ],
+      "disconfirming_evidence": "PR remains draft and unmerged; main workflow is unchanged."
+    },
+    {
+      "hypothesis_id": "H-20261031T025600Z-04",
+      "claim": "Scheduler Tick could write to main when queue contents change or dispatch an allowlisted workflow.",
+      "status": "SUPPORTED_CAPABILITY_NOT_ACTUALIZED_IN_LATEST_RUN",
+      "source_ids": [
+        "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z"
+      ],
+      "disconfirming_evidence": "Run 41161577082 fired zero entries and its push was a no-op."
+    },
+    {
+      "hypothesis_id": "H-20261031T025600Z-05",
+      "claim": "The main branch's protected=true status coexists with successful workflow pushes, but the exact protection or bypass mechanism is unknown.",
+      "status": "OBSERVED_STATE_MECHANISM_UNKNOWN",
+      "source_ids": [
+        "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+        "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z"
+      ],
+      "disconfirming_evidence": "No branch-protection ruleset details or bypass actor were accessible."
+    }
+  ]
+}

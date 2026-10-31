@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T025600Z-MAIN-WRITE-CONTAINMENT-AND-FORECAST-INTEGRITY",
+  "created_at_utc": "2026-10-31T02:56:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_AND_REMEDIATION",
+  "context": "A fresh main audit confirms repeated scheduled writes and automatic Pages deployments from zero-sample analytical output and telemetry-only reports. A new read-only telemetry PR passes exact-head CI and the fail-closed gate. Main remains protected according to branch metadata, but detailed protection rules are unavailable.",
+  "decisions": [
+    "Scheduled analytics with zero samples must report NOT_EVALUATED and must not create a timestamp-only main commit or enter XRP prediction features.",
+    "Telemetry-only workflows must use contents:read, checkout persist-credentials:false, runner-local output and bounded Actions artifacts; no direct main commit or deployment.",
+    "PR #1391 is the tested telemetry remediation: open draft, 349 tests plus 8 subtests, fail-closed gate passed, not merged.",
+    "PR #1386 remains the tested cross-analysis and legacy accuracy remediation; it is one commit behind current main and requires fresh merge-result validation before approval.",
+    "PR #1390's scheduler allowlist does not by itself eliminate the schedule-queue main-write path; queue persistence requires a non-main durable state design or an explicit pause.",
+    "PR #1388 remains the read-only merge-queue remediation; do not dispatch the current mutation-capable manual merge queue.",
+    "Keep the approval workflow push-event/zero-job anomaly unresolved until event metadata or job-level evidence identifies the root cause; do not use manual dispatch as a diagnostic.",
+    "Keep all merges, force-pushes, main writes, deployments and paper-state mutations outside this run; green checks are not approval.",
+    "Preserve the nine-platform capability map as DESIGN ONLY until authentication and independent handoffs are tested.",
+    "Keep the legacy 45.5% accuracy metric NOT_COMPARABLE; fixed-horizon evaluation, walk-forward baselines, calibration and shadow evaluation remain unexecuted."
+  ],
+  "invariants": [
+    "Main remains unchanged by this run.",
+    "All remediation PRs remain draft and unmerged.",
+    "No automatic merge, manual dispatch or deployment is performed by this run.",
+    "Zero-sample sentiment is NOT_EVALUATED, not a directional feature.",
+    "DESIGNED, EXECUTED and VERIFIED remain separate.",
+    "Forecast status remains NOT_ISSUED."
+  ],
+  "main_writer_root_cause": "CONFIRMED_CROSS_ANALYSIS_SCHEDULE_AND_TELEMETRY_SCHEDULE",
+  "telemetry_remediation_pr": 1391,
+  "accuracy_remediation_pr": 1386,
+  "scheduler_remediation_pr": 1390,
+  "merge_queue_remediation_pr": 1388,
+  "full_repository_ci": "NOT_RUN",
+  "dependency_vulnerability_scan": "NOT_RUN",
+  "security_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
