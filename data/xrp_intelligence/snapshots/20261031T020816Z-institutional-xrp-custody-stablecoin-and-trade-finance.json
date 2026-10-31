@@ -1,0 +1,456 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T020816Z-INSTITUTIONAL-CUSTODY-STABLECOIN-TRADEFINANCE",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T020816Z-institutional-xrp-custody-stablecoin-and-trade-finance.json",
+  "created_at_utc": "2026-10-31T02:08:16Z",
+  "captured_at_utc": "2026-10-31T02:08:16Z",
+  "data_cutoff_utc": "2026-10-31T02:08:16Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T012136Z-cbxrp-morpho-liquidations-and-native-redemption-path.json",
+  "source_ids": [
+    "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+    "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+    "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+    "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z",
+    "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z",
+    "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+    "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+    "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+    "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z",
+    "SRC-SBI-OPEN-STANDARD-20261031T020816Z",
+    "SRC-RIPPLE-SBI-RLUSD-JAPAN-20261031T020816Z",
+    "SRC-TOKYO-SBIC-GENAI-SEMINAR-20261031T020816Z",
+    "SRC-ALPHA-XRP-ETF-FLOWS-20261029-20261031T020816Z",
+    "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T2245Z",
+    "SRC-XRP-INSIGHTS-ETF-HOLDINGS-20261029-20261031T020816Z",
+    "SRC-MAKETO-XRP-ETF-FLOWS-20261029-20261031T020816Z"
+  ],
+  "source_reference_count": 17,
+  "missing_source_references": 0,
+  "event_timeline": [
+    {
+      "date": "2026-09-16",
+      "event": "Circle Arc public mainnet launch; SBI Group founding validator; Coinbase exchange-access partner.",
+      "source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "event": "Tokyo SBIC hosted a generative-AI seminar discussing ChatGPT; Microsoft Japan speaker.",
+      "source_ids": [
+        "SRC-TOKYO-SBIC-GENAI-SEMINAR-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-16",
+      "event": "SBI Holdings and Startale joined Open Standard; JPYSC/OUSD interoperability exploration described.",
+      "source_ids": [
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "event": "OCC CAS records Ripple National Trust Bank consummated/effective; Ripple says final approval received.",
+      "source_ids": [
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "event": "BNY/Ripple custody and tokenized-trade-finance collaboration; C2FO Instant Pay XRPL/RLUSD initiative; Ripple/Robinhood partnership.",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "event": "Coinbase RLUSD platform partnership; Ripple reports $900M annualized product-revenue run-rate target.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z"
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "event": "Circle Q3 2026 results scheduled; not yet available at this cutoff.",
+      "source_ids": [
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "F-20261031T020816Z-01",
+      "classification": "CONFIRMED_FACT",
+      "statement": "BNY now supports XRP and RLUSD custody for eligible clients on its Digital Asset Custody platform; BNY is also the primary reserve custodian for RLUSD and has a custody relationship with Ripple Prime.",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No XRP custody balance, client allocation, purchase or collateral acceptance is disclosed."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-02",
+      "classification": "SOURCED_CLAIM",
+      "statement": "BNY and Ripple intend to broaden XRPL tokenized-asset support, direct RLUSD mint/redeem and tokenized trade finance, and are exploring supply-chain finance with C2FO; the future services remain subject to approvals and client requirements.",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No live tokenized-receivable volume, completed BNY mint/redeem or collateral deployment is disclosed."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-03",
+      "classification": "SOURCED_CLAIM",
+      "statement": "C2FO Instant Pay is announced as an initiative to place financing and settlement activity on XRPL using RLUSD, with participating capital providers funding supplier payments. Businesses can join a waitlist.",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "The release provides no actual Instant Pay funded amount, active supplier count or production transaction volume."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-04",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Coinbase announced RLUSD availability across Coinbase Prime, Exchange and retail, with deposits/withdrawals on XRPL, Base and Ethereum; Ripple says it will provide RLUSD liquidity on Base.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "The same announcement says Coinbase Global Exchange collateral availability will follow; no XRP purchase or XRP collateral balance is disclosed."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-05",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Coinbase's Q3 2026 SEC filing says its Circle arrangement was renewed on the same terms. Q3 stablecoin revenue was $306.905M versus $324.534M a year earlier; Coinbase USDC AOP was $8.616B at September 30.",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "The filing does not say Circle was displaced by RLUSD; it expressly says the Circle arrangement continued on the same terms."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-06",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Circle's Q2 2026 SEC filing reports $655.3M in Coinbase distribution costs for H1 and explains that Coinbase's allocation depends partly on USDC balances held on Coinbase's platform.",
+      "source_ids": [
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "This is Circle's H1 expense and not Coinbase's recognized revenue or profit; Q3 Circle data were not yet available."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-07",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Circle Arc mainnet launched with USDC as gas; SBI Group is a founding validator and Coinbase is an exchange-access partner. Aave and Morpho are named as Arc credit-market infrastructure.",
+      "source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Arc is a separate network from XRPL; the roles do not prove XRP integration or XRP collateral on Arc."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-08",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The official OCC CAS record lists Ripple National Trust Bank charter number 25364 as approved 2025-12-12 and consummated/effective 2026-10-26. Ripple says RLUSD continues to be issued by Standard Custody & Trust Company.",
+      "source_ids": [
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Operational opening, customer balances, reserve migration and XRP collateral use remain unverified."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-09",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The verified Japanese entity behind the relevant SBIC/ChatGPT seminar is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. Its 2026-10-06 event was a generative-AI seminar with a Microsoft Japan speaker.",
+      "source_ids": [
+        "SRC-TOKYO-SBIC-GENAI-SEMINAR-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No OpenAI partnership, investment or SBI Holdings affiliation is stated; the seminar is educational."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-10",
+      "classification": "INFERENCE",
+      "statement": "Coinbase's continued Circle economics plus new RLUSD distribution, and its Arc exchange-access role, indicate a multi-issuer/multi-network distribution strategy rather than an exclusive USDC or XRP alignment.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "USDC remains a substantial and economically important Coinbase product; no Circle contract termination or RLUSD share-of-platform disclosure exists."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-11",
+      "classification": "INFERENCE",
+      "statement": "SBI is building multi-rail optionality across Ripple/RLUSD, Circle/USDC/Arc, JPYSC/Startale and Open Standard rather than making an exclusive XRP infrastructure bet.",
+      "source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z",
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z",
+        "SRC-RIPPLE-SBI-RLUSD-JAPAN-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "SBI's long-running Ripple relationship and RLUSD distribution in Japan remain direct and material."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-12",
+      "classification": "SOURCED_CLAIM",
+      "statement": "Ripple reports a $900M annualized product-revenue run rate target, $16T transactions enabled across its products in 2025 and 1,700+ institutions; these are company-wide product claims.",
+      "source_ids": [
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No audited breakdown assigns those amounts to XRP, XRPL, RLUSD or specific payment corridors."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-13",
+      "classification": "MARKET_OBSERVATION",
+      "statement": "At 2026-10-30 22:45 UTC, Seandra reported Binance XRP USDT perpetual OI of $330.9M, down 11.2% in 24h while price was $1.25 and up 0.4%; funding was +0.0028% and 72% of accounts were long.",
+      "source_ids": [
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T2245Z"
+      ],
+      "disconfirming_evidence": "Single-venue scope; account ratios are not notional exposure and the observation is not a cross-exchange market measure."
+    },
+    {
+      "finding_id": "F-20261031T020816Z-14",
+      "classification": "MARKET_OBSERVATION",
+      "statement": "Alpha Finance reports +$8.4M XRP ETF flow on October 29 and $1.73B cumulative across five funds; XRP Insights reports +6.40M XRP across six spot funds plus BITW and 1.19665B XRP held. The universes differ.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-20261031T020816Z",
+        "SRC-XRP-INSIGHTS-ETF-HOLDINGS-20261029-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Coverage and methodology differ; flows do not reveal hedges or beneficial-owner capital, and no October 30 XRP ETF flow is confirmed in these records."
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "M-20261031T020816Z-01",
+      "observed_at_utc": "2026-10-30T22:45:00Z",
+      "retrieved_at_utc": "2026-10-31T02:08:16Z",
+      "asset": "XRP",
+      "venue_scope": "Binance USDT perpetual",
+      "price_usd": 1.25,
+      "open_interest_usd": 330900000,
+      "open_interest_change_24h_pct": -11.2,
+      "funding_rate_pct_per_period": 0.0028,
+      "accounts_long_pct": 72,
+      "price_change_24h_pct": 0.4,
+      "source_ids": [
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T2245Z"
+      ],
+      "feature_admission": "NOT_ADMITTED",
+      "reason": "Single-venue vendor snapshot; no cross-exchange reconciliation or walk-forward predictive-value test."
+    },
+    {
+      "observation_id": "M-20261031T020816Z-02",
+      "observed_at_utc": "2026-10-29T20:00:00Z",
+      "retrieved_at_utc": "2026-10-31T02:08:16Z",
+      "asset": "XRP spot ETF",
+      "venue_scope": "Alpha Finance five-fund series",
+      "daily_net_flow_usd": 8400000,
+      "thirty_session_flow_usd": 98900000,
+      "cumulative_net_flow_usd": 1730000000,
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-20261031T020816Z"
+      ],
+      "feature_admission": "NOT_ADMITTED",
+      "reason": "Flow series is provider-specific and lacks full holdings/hedge/beneficial-owner coverage."
+    },
+    {
+      "observation_id": "M-20261031T020816Z-03",
+      "observed_at_utc": "2026-10-29T20:00:00Z",
+      "retrieved_at_utc": "2026-10-31T02:08:16Z",
+      "asset": "XRP spot ETF",
+      "venue_scope": "XRP Insights six spot funds plus BITW",
+      "daily_net_flow_xrp": 6400000,
+      "total_xrp_held": 1196650118,
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-HOLDINGS-20261029-20261031T020816Z"
+      ],
+      "feature_admission": "NOT_ADMITTED",
+      "reason": "Different fund universe and issuer-holdings delta method from Alpha Finance."
+    },
+    {
+      "observation_id": "M-20261031T020816Z-04",
+      "observed_at_utc": "2026-10-29T20:00:00Z",
+      "retrieved_at_utc": "2026-10-31T02:08:16Z",
+      "asset": "XRP spot ETF",
+      "venue_scope": "Maketo five-fund series",
+      "daily_net_flow_usd": 8430000,
+      "weekly_net_flow_usd": 4800000,
+      "monthly_net_flow_usd": 19000000,
+      "funds_with_inflow": 2,
+      "funds_covered": 5,
+      "source_ids": [
+        "SRC-MAKETO-XRP-ETF-FLOWS-20261029-20261031T020816Z"
+      ],
+      "feature_admission": "NOT_ADMITTED",
+      "reason": "Aggregator methodology and fund coverage differ; not an independent beneficial-owner capital measure."
+    },
+    {
+      "observation_id": "M-20261031T020816Z-05",
+      "observed_at_utc": "2026-09-30T23:59:59Z",
+      "retrieved_at_utc": "2026-10-31T02:08:16Z",
+      "asset": "USDC",
+      "venue_scope": "Coinbase platform AOP",
+      "end_period_usd": 8616000000,
+      "period": "2026-Q3",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z"
+      ],
+      "feature_admission": "CONTEXT_ONLY",
+      "reason": "Point-in-time platform balance, not average balance or total USDC circulation."
+    },
+    {
+      "observation_id": "M-20261031T020816Z-06",
+      "observed_at_utc": "2026-06-30T23:59:59Z",
+      "retrieved_at_utc": "2026-10-31T02:08:16Z",
+      "asset": "USDC",
+      "venue_scope": "Circle platform metric",
+      "end_period_usd": 12442000000,
+      "average_circulation_usd": 76524000000,
+      "period": "2026-Q2",
+      "source_ids": [
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
+      ],
+      "feature_admission": "CONTEXT_ONLY",
+      "reason": "Circle platform metric, not Coinbase AOP; period differs from Coinbase Q3."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T020816Z-01",
+      "status": "OPEN",
+      "hypothesis": "Institutional XRP custody and distribution access is expanding, but the new announcements do not yet establish material XRP spot demand or collateral deployment.",
+      "supporting_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No disclosed XRP custody balances, collateral balances, purchases or net institutional flows.",
+      "test": "Track BNY XRP custody product activation, client asset balances, XRP-specific collateral terms and exchange/custody flow data.",
+      "confidence_class": "HIGH_ON_ACCESS_EXPANSION; LOW_ON_TOKEN_DEMAND"
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-02",
+      "status": "OPEN",
+      "hypothesis": "RLUSD settlement can expand XRPL institutional activity without proportionate XRP spot demand because the announced settlement asset is RLUSD and XRP's network-fee/reserve role is small.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "XRP remains the native XRPL asset and may be used in DEX auto-bridging or other liquidity paths; transaction-level bridge volumes were not measured here.",
+      "test": "Measure XRPL RLUSD settlement, XRP fee burn, account-reserve demand, DEX auto-bridge volume and XRP order-book impact separately."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-03",
+      "status": "OPEN",
+      "hypothesis": "Coinbase is pursuing multi-issuer stablecoin distribution and monetization, retaining Circle economics while adding RLUSD and Arc access.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "USDC remains economically important; no evidence Circle's agreement is being reduced or terminated.",
+      "test": "Compare Coinbase stablecoin balances, revenue, distribution economics, trading volumes and collateral use by issuer over time."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-04",
+      "status": "OPEN",
+      "hypothesis": "Circle Arc is a competing institutional settlement/credit network to XRPL, while overlapping participants and multichain stablecoin distribution make the relationship partly complementary.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Arc and XRPL can serve distinct applications; no evidence of direct displacement or head-to-head volume migration.",
+      "test": "Track Arc vs XRPL stablecoin settlement, collateral composition, institutional participants, liquidity and cross-chain transfer flows."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-05",
+      "status": "OPEN",
+      "hypothesis": "SBI is pursuing a multi-rail strategy spanning Ripple/RLUSD, Circle/USDC/Arc, JPYSC/Startale and Open Standard rather than an exclusive XRP bet.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z",
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z",
+        "SRC-RIPPLE-SBI-RLUSD-JAPAN-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "SBI's decade-long Ripple relationship and RLUSD Japan distribution are direct, durable commitments.",
+      "test": "Track live SBI VC Trade network routes, JPYSC issuance/settlement, Arc validator operations, OUSD interoperability and XRP-related balances."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-06",
+      "status": "OPEN",
+      "hypothesis": "C2FO Instant Pay could convert existing trade-finance demand into onchain RLUSD settlement, but the scale of actual capital on XRPL is still unknown.",
+      "supporting_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "The $520B historical working-capital figure is not Instant Pay volume; the new product has a waitlist and no deployed-volume disclosure.",
+      "test": "Find C2FO supplier onboarding, participating capital-provider disclosures, invoices financed, XRPL settlement transactions and RLUSD flow attribution."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-07",
+      "status": "OPEN",
+      "hypothesis": "Short-term XRP price dynamics remain more directly observable through derivatives positioning, ETF flows and macro liquidity than through partnership headlines alone.",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-20261031T020816Z",
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T2245Z",
+        "SRC-XRP-INSIGHTS-ETF-HOLDINGS-20261029-20261031T020816Z",
+        "SRC-MAKETO-XRP-ETF-FLOWS-20261029-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Institutional announcements can alter expectations and later flows, but the timing and magnitude are not established.",
+      "test": "Use point-in-time event studies with pre-registered windows, controls, venue-normalized features and out-of-sample walk-forward tests."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-08",
+      "status": "OPEN",
+      "hypothesis": "Ripple's growing corporate revenue and transaction throughput may support ecosystem durability without directly accruing value to XRP holders.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Some Ripple products may use XRP for liquidity/bridge functions, but product-level XRP usage and fee capture were not disclosed in the cited release.",
+      "test": "Reconcile product revenue, XRP inventory/flows, ODL/Payments bridge legs, XRP liquidity utilization, on-ledger fees and any direct token demand."
+    }
+  ],
+  "relationship_assessment": {
+    "coinbase": "Coinbase retains its Circle USDC arrangement on the same terms while adding RLUSD distribution and Arc exchange access. Evidence supports a multi-issuer platform strategy; no Circle displacement or XRP inventory purchase is established.",
+    "circle": "Circle remains an economically important Coinbase stablecoin partner and operates Arc with USDC gas. Circle's direct USDC-on-XRPL deployment is a separate multichain route; Arc is not XRPL.",
+    "sbi": "SBI Group participates in Ripple/RLUSD, Circle/USDC/Arc, JPYSC/Startale and Open Standard. These roles are parallel, not proof of an exclusive XRP commitment.",
+    "sbic": "The SBIC in the ChatGPT seminar evidence is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; it is distinct from SBI Holdings and the seminar is educational.",
+    "xrp_value_capture": "BNY XRP custody is a direct institutional custody development. C2FO Instant Pay and Coinbase RLUSD distribution use RLUSD as the announced stablecoin, so XRPL usage and XRP token demand must be measured separately."
+  },
+  "limitations": [
+    "LIM-20261031T020816Z-01",
+    "LIM-20261031T020816Z-02",
+    "LIM-20261031T020816Z-03",
+    "LIM-20261031T020816Z-04",
+    "LIM-20261031T020816Z-05",
+    "LIM-20261031T020816Z-06",
+    "LIM-20261031T020816Z-07",
+    "LIM-20261031T020816Z-08",
+    "LIM-20261031T020816Z-09",
+    "LIM-20261031T020816Z-10",
+    "LIM-20261031T020816Z-11",
+    "LIM-20261031T020816Z-12",
+    "LIM-20261031T020816Z-13",
+    "LIM-20261031T020816Z-14",
+    "LIM-20261031T020816Z-15",
+    "LIM-20261031T020816Z-16"
+  ],
+  "next_actions": [
+    "Trace BNY's live XRP custody product terms, client eligibility and any disclosed balances; do not infer assets from BNY AUC.",
+    "Obtain C2FO Instant Pay production metrics and trace participating capital-provider funding, invoices and XRPL/RLUSD settlement transactions.",
+    "Verify Coinbase RLUSD Global Exchange collateral launch date and actual collateral balances; keep the future announcement separate from live functionality.",
+    "Measure RLUSD flows on XRPL versus Base/Ethereum and separate XRP fees, reserves, DEX auto-bridging and actual XRP spot flows.",
+    "Compare Coinbase USDC and RLUSD platform balances, stablecoin revenue, Circle distribution economics and any collateral use after RLUSD listing.",
+    "Track Circle Arc validator activity, Coinbase exchange access, SBI validator operations and Morpho/Aave credit-market collateral composition.",
+    "Reconcile SBI/Startale Open Standard and JPYSC/OUSD interoperability into live transfer evidence; preserve consortium membership as a weaker edge than a bilateral contract.",
+    "Continue the exact SBIC phrase investigation without merging Tokyo SBIC with SBI Holdings or OpenAI.",
+    "Continue Camilla Stephenson YouTube channel identity resolution; no exhaustive inventory until a verified channel ID is found.",
+    "Keep Binance OI, ETF flows and macro features venue/coverage scoped; run synchronized historical ingestion and walk-forward tests before model admission."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

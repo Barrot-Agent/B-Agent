@@ -1,0 +1,488 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T020816Z-INSTITUTIONAL-RLUSD-CUSTODY-TRADEFINANCE-COINBASE-CIRCLE-SBI-SBIC",
+  "created_at_utc": "2026-10-31T02:08:16Z",
+  "captured_at_utc": "2026-10-31T02:08:16Z",
+  "source_ids": [
+    "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+    "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+    "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+    "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z",
+    "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z",
+    "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+    "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+    "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+    "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z",
+    "SRC-SBI-OPEN-STANDARD-20261031T020816Z",
+    "SRC-RIPPLE-SBI-RLUSD-JAPAN-20261031T020816Z",
+    "SRC-TOKYO-SBIC-GENAI-SEMINAR-20261031T020816Z",
+    "SRC-ALPHA-XRP-ETF-FLOWS-20261029-20261031T020816Z",
+    "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T2245Z",
+    "SRC-XRP-INSIGHTS-ETF-HOLDINGS-20261029-20261031T020816Z",
+    "SRC-MAKETO-XRP-ETF-FLOWS-20261029-20261031T020816Z"
+  ],
+  "source_reference_count": 17,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T020816Z-01",
+      "from_entity": "BNY",
+      "relation": "supports_eligible_client_custody_for",
+      "to_entity": "XRP",
+      "status": "OFFICIAL_LIVE_CUSTODY_SUPPORT",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-02",
+      "from_entity": "BNY",
+      "relation": "supports_eligible_client_custody_for",
+      "to_entity": "RLUSD",
+      "status": "OFFICIAL_LIVE_CUSTODY_SUPPORT",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-03",
+      "from_entity": "BNY",
+      "relation": "acts_as_primary_reserve_custodian_for",
+      "to_entity": "RLUSD",
+      "status": "OFFICIAL_CORPORATE_DISCLOSURE",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-04",
+      "from_entity": "BNY",
+      "relation": "has_custody_relationship_with",
+      "to_entity": "Ripple Prime",
+      "status": "OFFICIAL_CORPORATE_DISCLOSURE",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-05",
+      "from_entity": "BNY and Ripple",
+      "relation": "intend_to_expand",
+      "to_entity": "XRPL tokenized assets and RLUSD mint/redeem",
+      "status": "FUTURE_SUBJECT_TO_APPROVAL",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-06",
+      "from_entity": "BNY and Ripple",
+      "relation": "explore_tokenized_trade_finance_with",
+      "to_entity": "C2FO",
+      "status": "EXPLORATORY_INITIATIVE",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-07",
+      "from_entity": "C2FO Instant Pay",
+      "relation": "announced_financing_and_settlement_on",
+      "to_entity": "XRP Ledger",
+      "status": "ANNOUNCED_INITIATIVE_WAITLIST",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-08",
+      "from_entity": "C2FO Instant Pay",
+      "relation": "uses_for_settlement",
+      "to_entity": "RLUSD",
+      "status": "ANNOUNCED_INITIATIVE",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-09",
+      "from_entity": "Participating capital providers",
+      "relation": "fund",
+      "to_entity": "C2FO Instant Pay supplier payments",
+      "status": "ANNOUNCED_FUNDING_MODEL",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-10",
+      "from_entity": "Coinbase",
+      "relation": "lists_and_distributes",
+      "to_entity": "RLUSD",
+      "status": "LIVE_PRIME_EXCHANGE_RETAIL",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-11",
+      "from_entity": "Coinbase",
+      "relation": "supports_RLUSD_deposits_and_withdrawals_on",
+      "to_entity": "XRPL, Base and Ethereum",
+      "status": "LIVE_NETWORK_SUPPORT",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-12",
+      "from_entity": "Ripple",
+      "relation": "provides_Base_liquidity_for",
+      "to_entity": "RLUSD",
+      "status": "ANNOUNCED_LIVE_SUPPORT",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-13",
+      "from_entity": "Coinbase Global Exchange",
+      "relation": "may_accept_as_collateral",
+      "to_entity": "RLUSD",
+      "status": "FUTURE_NOT_LIVE_AT_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-14",
+      "from_entity": "Coinbase",
+      "relation": "renews_USDC_distribution_collaboration_with",
+      "to_entity": "Circle",
+      "status": "SAME_TERMS_CONFIRMED_IN_Q3_FILING",
+      "source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-15",
+      "from_entity": "Circle",
+      "relation": "pays_distribution_costs_to",
+      "to_entity": "Coinbase",
+      "status": "SEC_REPORTED_H1_2026_COSTS",
+      "source_ids": [
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-16",
+      "from_entity": "Circle Arc",
+      "relation": "uses_as_native_gas",
+      "to_entity": "USDC",
+      "status": "OFFICIAL_NETWORK_DESIGN",
+      "source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-17",
+      "from_entity": "SBI Group",
+      "relation": "operates_as_founding_validator_on",
+      "to_entity": "Circle Arc",
+      "status": "OFFICIAL_VALIDATOR_COHORT",
+      "source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-18",
+      "from_entity": "Coinbase",
+      "relation": "participates_as_exchange_access_partner_on",
+      "to_entity": "Circle Arc",
+      "status": "OFFICIAL_EXCHANGE_ACCESS_ROLE",
+      "source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-19",
+      "from_entity": "SBI VC Trade",
+      "relation": "distributes_in_Japan",
+      "to_entity": "RLUSD",
+      "status": "LIVE_SINCE_2026-06-24",
+      "source_ids": [
+        "SRC-RIPPLE-SBI-RLUSD-JAPAN-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-20",
+      "from_entity": "SBI VC Trade",
+      "relation": "distributes_in_Japan",
+      "to_entity": "USDC",
+      "status": "OFFICIAL_SBI_RIPPLE_RELEASE",
+      "source_ids": [
+        "SRC-RIPPLE-SBI-RLUSD-JAPAN-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-21",
+      "from_entity": "SBI Holdings and Startale",
+      "relation": "participate_in",
+      "to_entity": "Open Standard",
+      "status": "OFFICIAL_CONSORTIUM_MEMBERSHIP",
+      "source_ids": [
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-22",
+      "from_entity": "Coinbase",
+      "relation": "participates_in_same_consortium_as",
+      "to_entity": "SBI Holdings and Startale",
+      "status": "CO_PARTICIPATION_NOT_BILATERAL_CONTRACT",
+      "source_ids": [
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-23",
+      "from_entity": "SBI Shinsei Trust",
+      "relation": "issues",
+      "to_entity": "JPYSC",
+      "status": "EXISTING_SBI_MULTI_RAIL_CONTEXT",
+      "source_ids": [
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z",
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-24",
+      "from_entity": "SBI/Startale",
+      "relation": "explore_interoperability_between",
+      "to_entity": "JPYSC and OUSD",
+      "status": "EXPLORATORY_NOT_PRODUCTION",
+      "source_ids": [
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-25",
+      "from_entity": "OCC",
+      "relation": "records_charter_effective_for",
+      "to_entity": "Ripple National Trust Bank",
+      "status": "PRIMARY_REGULATORY_RECORD_2026-10-26",
+      "source_ids": [
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-26",
+      "from_entity": "Ripple National Trust Bank",
+      "relation": "is_authorized_for_reserve_management_collateral_trustee_and_fiduciary_custody_for",
+      "to_entity": "RLUSD",
+      "status": "RIPPLE_STATEMENT_OF_APPROVED_ACTIVITIES_OPERATIONAL_LAUNCH_UNVERIFIED",
+      "source_ids": [
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-27",
+      "from_entity": "Tokyo SBIC",
+      "relation": "hosted_educational_seminar_about",
+      "to_entity": "Generative AI and ChatGPT",
+      "status": "OFFICIAL_EVENT_NO_OPENAI_PARTNERSHIP",
+      "source_ids": [
+        "SRC-TOKYO-SBIC-GENAI-SEMINAR-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-28",
+      "from_entity": "Ripple",
+      "relation": "reports_company_wide_annualized_product_revenue_run_rate_target_of",
+      "to_entity": "$900M",
+      "status": "ISSUER_CLAIM_NOT_XRP_REVENUE",
+      "source_ids": [
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-29",
+      "from_entity": "Robinhood and Ripple",
+      "relation": "announce_RLUSD_institutional_settlement_on",
+      "to_entity": "XRPL",
+      "status": "ANNOUNCED_PARTNERSHIP",
+      "source_ids": [
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    },
+    {
+      "edge_id": "E-20261031T020816Z-30",
+      "from_entity": "Robinhood/Bitstamp",
+      "relation": "integrates_with",
+      "to_entity": "Ripple Prime financing and treasury",
+      "status": "MIXED_LIVE_AND_FUTURE_PRODUCT_ROLLOUT",
+      "source_ids": [
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z"
+      ],
+      "details": "Evidence and scope are limited to the status stated; do not infer XRP purchases, collateral balances or beneficial ownership unless separately measured."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T020816Z-01",
+      "status": "OPEN",
+      "hypothesis": "Institutional XRP custody and distribution access is expanding, but the new announcements do not yet establish material XRP spot demand or collateral deployment.",
+      "supporting_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "No disclosed XRP custody balances, collateral balances, purchases or net institutional flows.",
+      "test": "Track BNY XRP custody product activation, client asset balances, XRP-specific collateral terms and exchange/custody flow data.",
+      "confidence_class": "HIGH_ON_ACCESS_EXPANSION; LOW_ON_TOKEN_DEMAND"
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-02",
+      "status": "OPEN",
+      "hypothesis": "RLUSD settlement can expand XRPL institutional activity without proportionate XRP spot demand because the announced settlement asset is RLUSD and XRP's network-fee/reserve role is small.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "XRP remains the native XRPL asset and may be used in DEX auto-bridging or other liquidity paths; transaction-level bridge volumes were not measured here.",
+      "test": "Measure XRPL RLUSD settlement, XRP fee burn, account-reserve demand, DEX auto-bridge volume and XRP order-book impact separately."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-03",
+      "status": "OPEN",
+      "hypothesis": "Coinbase is pursuing multi-issuer stablecoin distribution and monetization, retaining Circle economics while adding RLUSD and Arc access.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "USDC remains economically important; no evidence Circle's agreement is being reduced or terminated.",
+      "test": "Compare Coinbase stablecoin balances, revenue, distribution economics, trading volumes and collateral use by issuer over time."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-04",
+      "status": "OPEN",
+      "hypothesis": "Circle Arc is a competing institutional settlement/credit network to XRPL, while overlapping participants and multichain stablecoin distribution make the relationship partly complementary.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Arc and XRPL can serve distinct applications; no evidence of direct displacement or head-to-head volume migration.",
+      "test": "Track Arc vs XRPL stablecoin settlement, collateral composition, institutional participants, liquidity and cross-chain transfer flows."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-05",
+      "status": "OPEN",
+      "hypothesis": "SBI is pursuing a multi-rail strategy spanning Ripple/RLUSD, Circle/USDC/Arc, JPYSC/Startale and Open Standard rather than an exclusive XRP bet.",
+      "supporting_source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z",
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z",
+        "SRC-RIPPLE-SBI-RLUSD-JAPAN-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "SBI's decade-long Ripple relationship and RLUSD Japan distribution are direct, durable commitments.",
+      "test": "Track live SBI VC Trade network routes, JPYSC issuance/settlement, Arc validator operations, OUSD interoperability and XRP-related balances."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-06",
+      "status": "OPEN",
+      "hypothesis": "C2FO Instant Pay could convert existing trade-finance demand into onchain RLUSD settlement, but the scale of actual capital on XRPL is still unknown.",
+      "supporting_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "The $520B historical working-capital figure is not Instant Pay volume; the new product has a waitlist and no deployed-volume disclosure.",
+      "test": "Find C2FO supplier onboarding, participating capital-provider disclosures, invoices financed, XRPL settlement transactions and RLUSD flow attribution."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-07",
+      "status": "OPEN",
+      "hypothesis": "Short-term XRP price dynamics remain more directly observable through derivatives positioning, ETF flows and macro liquidity than through partnership headlines alone.",
+      "supporting_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-20261031T020816Z",
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T2245Z",
+        "SRC-XRP-INSIGHTS-ETF-HOLDINGS-20261029-20261031T020816Z",
+        "SRC-MAKETO-XRP-ETF-FLOWS-20261029-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Institutional announcements can alter expectations and later flows, but the timing and magnitude are not established.",
+      "test": "Use point-in-time event studies with pre-registered windows, controls, venue-normalized features and out-of-sample walk-forward tests."
+    },
+    {
+      "hypothesis_id": "H-20261031T020816Z-08",
+      "status": "OPEN",
+      "hypothesis": "Ripple's growing corporate revenue and transaction throughput may support ecosystem durability without directly accruing value to XRP holders.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ],
+      "disconfirming_evidence": "Some Ripple products may use XRP for liquidity/bridge functions, but product-level XRP usage and fee capture were not disclosed in the cited release.",
+      "test": "Reconcile product revenue, XRP inventory/flows, ODL/Payments bridge legs, XRP liquidity utilization, on-ledger fees and any direct token demand."
+    }
+  ],
+  "source_independence": {
+    "coordinated_event_group": "BNY/Ripple, C2FO/Ripple, Coinbase/Ripple and Ripple/Robinhood announcements cluster around Ripple Swell 2026 and must not be counted as fully independent causal shocks.",
+    "independent_primary_groups": [
+      "US_OCC_PRIMARY",
+      "SEC_FILINGS",
+      "CIRCLE_OFFICIAL",
+      "SBI_OFFICIAL",
+      "TOKYO_SBIC_OFFICIAL"
+    ],
+    "market_data_groups": [
+      "BINANCE_PUBLIC_PERPETUAL_MARKET_DATA",
+      "ETF_ISSUER_HOLDINGS_DERIVED_DATA"
+    ]
+  },
+  "unknowns": [
+    "BNY XRP custody balances, client count and any XRP collateral terms.",
+    "C2FO Instant Pay funded amount, live supplier count, actual XRPL settlement volume and XRP bridge usage.",
+    "Coinbase Global Exchange RLUSD collateral go-live date and balances.",
+    "Coinbase's actual RLUSD inventory, order-book liquidity and XRP-related purchases.",
+    "Circle's Q3 2026 distribution costs and Coinbase platform share; Q3 results are pending.",
+    "SBI/Startale JPYSC/OUSD interoperability production status and capital flows.",
+    "Actual XRP demand or fee capture attributable to the announced institutional partnerships."
+  ]
+}

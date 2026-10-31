@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261031T020816Z-MAIN-SAFETY-PR-FRESH-MAIN",
+  "captured_at_utc": "2026-10-31T02:08:16Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "branch": "main",
+    "sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+    "latest_commit_message": "Cross-analysis refresh [skip ci]",
+    "latest_commit_at_utc": "2026-10-31T01:51:55Z",
+    "latest_commit_signed": false,
+    "latest_commit_changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "workflow_runs_returned_for_exact_commit": 0,
+    "workflow_trigger_root_cause": "UNKNOWN"
+  },
+  "open_pull_requests": {
+    "total": 165,
+    "draft": 155,
+    "ready_for_review": 10,
+    "main_based": 163,
+    "stale_main_base": 160,
+    "current_main_base": 3,
+    "non_main_base": 2,
+    "reviewed_safety_prs": [
+      {
+        "number": 1386,
+        "title": "Safety: remove scheduled main writes and quarantine legacy XRP accuracy",
+        "branch": "safety/fixed-horizon-accuracy-main-20261031T0005Z",
+        "head_sha": "74c47f2a8a64aefc96ff64f3247bbf48789da052",
+        "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "mergeable": true,
+        "ci_run_id": 41158736348,
+        "ci_tests": 354,
+        "ci_subtests": 8,
+        "gate_run_id": 41158736337,
+        "gate_status": "PASS_MERGE_DISABLED"
+      },
+      {
+        "number": 1390,
+        "title": "Safety: restrict scheduler to credential-isolated validation",
+        "branch": "safety/scheduler-allowlist-review-20261031T0113Z",
+        "head_sha": "19f4f9181b439f5399a43ba5df6112a92e11b8d2",
+        "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "mergeable": true,
+        "ci_run_id": 41158871301,
+        "ci_tests": 348,
+        "ci_subtests": 8,
+        "gate_run_id": 41158871353,
+        "gate_status": "PASS_MERGE_DISABLED"
+      },
+      {
+        "number": 1388,
+        "title": "Safety: make merge queue read-only and gate external deployments",
+        "branch": "safety/merge-queue-readonly-fresh-main-20261031T0033Z",
+        "head_sha": "854f52bd50a333a94c16cda7234942a69301e540",
+        "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "mergeable": true,
+        "ci_run_id": 41158878672,
+        "ci_tests": 344,
+        "ci_subtests": 8,
+        "gate_run_id": 41158878561,
+        "gate_status": "PASS_MERGE_DISABLED"
+      }
+    ]
+  },
+  "current_main_workflow_findings": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "finding": "workflow_run after Knowledge Signal Cycle plus hourly schedule and workflow_dispatch; contents:write; commits and pushes generated knowledge-base outputs to main.",
+      "severity": "critical"
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "finding": "daily schedule and workflow_dispatch; contents:write; commits signal_history.jsonl and signal_accuracy.json to main.",
+      "severity": "high"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "finding": "15-minute schedule; contents:write and actions:write; commits schedule_queue updates to main and can dispatch workflows.",
+      "severity": "critical"
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "finding": "manual workflow with contents:write and pull-requests:write; supports mode=all and max_prs=0 (unlimited) with dry_run=false by default; can merge open PRs when manually dispatched.",
+      "severity": "critical"
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "finding": "workflow_dispatch only; contents:read and pull-requests:write; validates exact PR head and applies approved label/comment without merging. Prior push-event zero-job anomaly remains unexplained.",
+      "severity": "medium"
+    }
+  ],
+  "dependencies": {
+    "dependency_lockfiles_found": 0,
+    "manifest_inventory_status": "PARTIAL_READ_ONLY_INVENTORY",
+    "vulnerability_scan": "NOT_RUN",
+    "security_alerts": "NOT_ACCESSIBLE_THROUGH_TESTED_READ_ACTIONS",
+    "full_repository_ci": "NOT_RUN"
+  },
+  "actions_taken": [
+    "Fast-forward-safe merge commits were added to PR #1386, #1390 and #1388 branches to incorporate current main SHA 7a780d; no force push.",
+    "Fresh exact-head CI and fail-closed gates passed on all three updated PR heads.",
+    "No PR was merged and main was not modified."
+  ],
+  "blockers": [
+    "Main retains scheduled write-capable workflows until reviewed safety PRs are approved and merged.",
+    "Approval workflow push-event zero-job anomaly has no job logs; root cause unknown.",
+    "160 of 163 main-based open PRs have stale base SHAs; broad PR backlog needs prioritization, not bulk merging.",
+    "Dependency lockfiles and full vulnerability scan remain outstanding."
+  ],
+  "verified_ci": [
+    {
+      "pr": 1386,
+      "head_sha": "74c47f2a8a64aefc96ff64f3247bbf48789da052",
+      "run_id": 41158736348,
+      "tests": 354,
+      "subtests": 8,
+      "gate_run_id": 41158736337,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "pr": 1390,
+      "head_sha": "19f4f9181b439f5399a43ba5df6112a92e11b8d2",
+      "run_id": 41158871301,
+      "tests": 348,
+      "subtests": 8,
+      "gate_run_id": 41158871353,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "pr": 1388,
+      "head_sha": "854f52bd50a333a94c16cda7234942a69301e540",
+      "run_id": 41158878672,
+      "tests": 344,
+      "subtests": 8,
+      "gate_run_id": 41158878561,
+      "gate": "PASS_MERGE_DISABLED"
+    }
+  ]
+}
