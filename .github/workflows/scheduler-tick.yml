@@ -23,6 +23,7 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
+          persist-credentials: false
 
       - uses: actions/setup-python@v7
         with:
