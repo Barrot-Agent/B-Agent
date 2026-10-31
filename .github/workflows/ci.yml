@@ -80,4 +80,5 @@ jobs:
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
             tests/test_xrpl_rlusd_supply_reconciliation.py \
+            tests/test_xrp_etf_institutional_flows_macro.py \
             -v --no-cov
