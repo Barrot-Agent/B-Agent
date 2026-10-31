@@ -87,11 +87,10 @@
       "state": "OPEN_DRAFT_UNMERGED",
       "base_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
       "head_sha": "4638e36181884dbc0a616e2fef0d3826d8268d77",
+      "mergeable": true,
       "ci_run_id": 41176091981,
-      "ci_status": "PASS",
       "gate_run_id": 41176091978,
-      "gate_status": "PASS_MERGE_DISABLED",
-      "scope_note": "Quarantines selected scheduled main writers and changes selected workflows to artifact/read-only paths; does not address the manual writer list above or all 77 workflows."
+      "scope_note": "Selected scheduled main writers only; not a full 77-workflow audit and does not remove the manual writer list."
     },
     "pr1398": {
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1398",
@@ -102,7 +101,8 @@
       "ci_tests_passed": 344,
       "ci_subtests_passed": 8,
       "gate_run_id": 41176897925,
-      "gate_status": "PASS_MERGE_DISABLED"
+      "gate_status": "PASS_MERGE_DISABLED",
+      "mergeable": true
     }
   },
   "full_repository_ci": "NOT_RUN",
@@ -123,7 +123,9 @@
     "Read full branch-protection settings when the integration permits; ensure required CI and fail-closed gate checks are actually required.",
     "Run a full repository CI and dependency/security scan when safe and authorized.",
     "Resolve the approval workflow push-event/zero-job anomaly using event payload and GitHub check-suite evidence; preserve UNKNOWN until proven.",
-    "Provide a read-only exact-head validation route for the long-lived research branch without adding an unreviewed main-branch writer."
+    "Provide a read-only exact-head validation route for the long-lived research branch without adding an unreviewed main-branch writer.",
+    "Reconcile the 173-open-PR backlog by exact base/head comparison; do not bulk rebase or merge.",
+    "Prioritize the two current-main PRs #1397 and #1398 for human review; leave all stale-base proposals untouched until individually refreshed."
   ],
   "approval_workflow_anomaly": {
     "run_id": 41177228657,
@@ -144,5 +146,18 @@
     "validator_run_returned": false,
     "exact_head_validation": "PENDING",
     "note": "The research-branch workflow did not produce a run for the latest push. No manual dispatch or main-branch workflow modification was performed."
+  },
+  "open_pr_inventory": {
+    "captured_at_utc": "2026-10-31T06:42:00Z",
+    "total_open": 173,
+    "drafts": 163,
+    "ready_for_review": 10,
+    "base_main": 171,
+    "non_main_base": 2,
+    "current_main_base": 2,
+    "stale_main_base": 169,
+    "current_main_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+    "source": "GitHub REST pulls endpoint, paginated 100 + 73 + 0",
+    "limitation": "Base SHA drift is not proof of file conflicts; each PR requires exact compare and CI review."
   }
 }
