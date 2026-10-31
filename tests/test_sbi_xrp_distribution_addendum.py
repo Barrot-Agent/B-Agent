@@ -48,3 +48,21 @@ def test_sbi_wallet_observation_is_not_misclassified_as_official_flow():
     )
     assert wallet_source["evidence_class"] == "SECONDARY_UNVERIFIED"
     assert any("pooled customer custody" in item for item in wallet_source["limitations"])
+
+
+def test_sbi_shareholder_xrp_coupon_is_historical_and_not_open_market_flow():
+    source = next(
+        item for item in SOURCES["sources"]
+        if item["source_id"] == "SRC-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT-20260204"
+    )
+    edge = next(
+        item for item in GRAPH["edges"]
+        if item["id"] == "EDGE-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT"
+    )
+    finding = next(item for item in SNAPSHOT["confirmed_findings"] if item["id"] == "F8")
+
+    assert source["evidence_class"] == "CONFIRMED_PRIMARY_SOURCE"
+    assert any("deadline has passed" in item for item in source["limitations"])
+    assert any("procurement source" in item for item in source["limitations"])
+    assert edge["source_ids"] == [source["source_id"]]
+    assert finding["source_ids"] == [source["source_id"]]
