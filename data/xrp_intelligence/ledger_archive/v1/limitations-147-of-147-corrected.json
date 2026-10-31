@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 146,
+  "chunk_count": 147,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "LIM-XRP-COINBASE-ETF-CUSTODY-CREDIT-ALLOCATION-AND-FLOW-ATTRIBUTION-20261031T211452Z",
+      "recorded_at_utc": "2026-10-31T21:14:52Z",
+      "category": "INSTITUTIONAL_CUSTODY_COLLATERAL_AND_CAPITAL_FLOW_ATTRIBUTION",
+      "severity": "HIGH",
+      "status": "OPEN_UNKNOWN",
+      "statement": "Coinbase's ETF custody, prime brokerage, execution and trade-credit roles are documented, but multi-custodian allocations and current trade-credit utilization are not. Ripple's 21Shares seed investment is ETF-share capital, not direct XRP spot purchase. Fund creation/redemption mixes cash and in-kind flows. Exchange-wallet totals include cold and non-customer balances and contain a Binance-Peg amount discrepancy.",
+      "impact": "Conflating fund holdings with Coinbase custody, contractual credit capacity with actual leverage, ETF shares with XRP supply, or custody balances with tradable float can distort XRP liquidity, collateral and capital-flow features.",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q",
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-S1A-TRADE-CREDIT",
+        "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q",
+        "SRC-20261031T211452Z-SEC-FRANKLIN-XRP-ETF-10Q",
+        "SRC-20261031T211452Z-SEC-CANARY-XRP-ETF-10Q",
+        "SRC-20261031T211452Z-SEC-GRAYSCALE-XRP-ETF-424B3",
+        "SRC-20261031T211452Z-XRP-INSIGHTS-ETF-CUSTODY-AND-HOLDINGS",
+        "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+      ],
+      "unresolved": [
+        "Same-date XRP allocation across Coinbase, BitGo and Anchorage for multi-custodian ETFs.",
+        "Current Bitwise/Franklin Coinbase Custody balances after June30 2026.",
+        "Coinbase Credit authorized amount, outstanding Trade Credits, interest/fees and actual Agent Execution Model usage.",
+        "Current Ripple Markets beneficial ownership of 21Shares Initial Seed Shares and any post-lock-up disposition plan.",
+        "Full cash/in-kind creation/redemption history for all six US spot XRP ETFs.",
+        "Exact Binance-Peg reserve: XRP Insights table 327.4M versus methodology 325.8M.",
+        "Per-wallet exchange transfers; provider stores only per-exchange daily totals.",
+        "Whether ETF custody vaults or custodian reallocations explain observed exchange-wallet movements."
+      ],
+      "feature_admission": "NO_DIRECTIONAL_FEATURE; FUND_FLOW_CANDIDATES_REQUIRE_NORMALIZATION; NO_FORECAST"
+    }
+  ]
+}
