@@ -81,4 +81,5 @@ jobs:
             tests/test_signal_summary.py \
             tests/test_sbi_xrp_distribution_addendum.py \
             tests/test_sbi_xrp_incentive_channels.py \
+            tests/test_sbi_xrp_group_wide_channels.py \
             -v --no-cov

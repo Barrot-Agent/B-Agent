@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_interpretation_correction",
+  "correction_id": "CORR-SBI-SHINSEI-XRP-VOUCHER-TIMING-20261031",
+  "captured_at_utc": "2026-10-31T14:03:28Z",
+  "supersedes_snapshot_interpretation": "20261031T140328Z-sbi-xrp-incentive-channels-and-actual-capital:F7",
+  "source_id": "SRC-SBI-SHINSEI-DEPOSIT-XRP-COUPON-20260202",
+  "previous_classification": "DISCONFIRMING_EVIDENCE_INTERNAL_DATE_INCONSISTENCY",
+  "corrected_classification": "UNRESOLVED_REDEMPTION_SEQUENCE",
+  "correction_reason": "The official release describes an XRP exchange voucher, says the voucher would be emailed by the end of May, and separately says the XRP quantity would be calculated using the July 2, 2026 06:59 SBI VC Trade sales-price reference. A voucher can be delivered before its later conversion or redemption; the two dates alone do not prove an internal contradiction.",
+  "what_is_confirmed": [
+    "The campaign's entry and deposit windows ended March 31, 2026.",
+    "The voucher was to be emailed by the end of May.",
+    "The XRP quantity reference was July 2, 2026 at 06:59."
+  ],
+  "what_remains_unknown": [
+    "The exact earliest and latest coupon-redemption dates.",
+    "Whether redemption and XRP credit occurred automatically or required a later customer action.",
+    "Aggregate vouchers issued, redeemed and XRP units credited."
+  ],
+  "required_evidence": [
+    "Full customer-facing voucher terms",
+    "SBI VC Trade fulfillment instructions or completion notice",
+    "Aggregate campaign redemption data"
+  ],
+  "feature_admission": "NOT_ADMITTED",
+  "forecast": "NOT_ISSUED"
+}

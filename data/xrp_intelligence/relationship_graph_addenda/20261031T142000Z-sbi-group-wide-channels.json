@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T142000-SBI-GROUP-WIDE-CHANNELS",
+  "captured_at_utc": "2026-10-31T14:03:28Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "source_bundle_path": "data/xrp_intelligence/sources/sbi_xrp_group_wide_channels_20261031.json",
+  "extends_graph_addenda": [
+    "20261031T133048Z-sbi-recurring-xrp-distribution",
+    "20261031T140328Z-sbi-xrp-incentive-channels"
+  ],
+  "nodes": [
+    {
+      "id": "SBI_INSURANCE_GROUP",
+      "label": "SBI Insurance Group",
+      "kind": "LISTED_INSURANCE_SUBSIDIARY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-SBI-SHINSEI-SHAREHOLDER-XRP",
+      "source": "SBI_SHINSEI_BANK",
+      "target": "XRP",
+      "relationship": "OPTIONAL_SHAREHOLDER_XRP_COUPON",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Eligible March 2026 shareholders may elect an approximately JPY 2,000 XRP coupon, with the XRP quantity to be calculated at an early-December 2026 SBI VC Trade price reference; actual claims are unknown.",
+      "source_ids": [
+        "SRC-SBI-SHINSEI-BANK-XRP-SHAREHOLDER-20260225"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-INSURANCE-XRP-SHAREHOLDER",
+      "source": "SBI_INSURANCE_GROUP",
+      "target": "XRP",
+      "relationship": "SHAREHOLDER_XRP_BENEFIT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Insurance Group published separate JPY 2,500–12,000 XRP shareholder benefits based on share count and more-than-two-year holding tier.",
+      "source_ids": [
+        "SRC-SBI-INSURANCE-GROUP-XRP-SHAREHOLDER-20251029"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-VC-TRADE-XRPJPY-LEVERAGE-SPREAD",
+      "source": "SBI_VC_TRADE",
+      "target": "XRP",
+      "relationship": "HISTORICAL_XRPJPY_LEVERAGE_SPREAD_PROMOTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade promoted XRP/JPY leveraged trading with a stated JPY 0.5 standard spread from June 22 through July 3, 2026; this is not evidence of realized spread or market depth.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-XRPJPY-SPREAD-PROMO-20260622"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SBI-GROUP-WIDE-SHAREHOLDER-DISTRIBUTION",
+      "statement": "At least five separate SBI-group legal entities published XRP shareholder-benefit programs for the 2026 cycle, creating a broad distribution channel but not a quantified market-buy program.",
+      "status": "SUPPORTED_AS_TO_PROGRAMS_OPEN_AS_TO_FLOW",
+      "supporting_edge_ids": [
+        "EDGE-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT",
+        "EDGE-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER",
+        "EDGE-SBI-ARUHI-XRP-SHAREHOLDER",
+        "EDGE-SBI-INSURANCE-XRP-SHAREHOLDER",
+        "EDGE-SBI-SHINSEI-SHAREHOLDER-XRP"
+      ],
+      "counterevidence": [
+        "Eligible populations overlap across group-company shareholders; no aggregate claim count, redemption total or procurement source is disclosed."
+      ],
+      "required_evidence": [
+        "Shareholder coupon claim counts by issuer",
+        "Total XRP units credited by issuer",
+        "SBI VC Trade treasury/OTC/spot sourcing reconciliation"
+      ]
+    },
+    {
+      "id": "HYP-SBI-XRPJPY-SPREAD-PROMO-LIQUIDITY",
+      "statement": "SBI VC Trade's historical XRP/JPY leverage-spread campaign may have supported retail activity and execution access, but the 0.5 yen standard spread does not establish realized liquidity or market depth.",
+      "status": "OPEN",
+      "supporting_edge_ids": [
+        "EDGE-SBI-VC-TRADE-XRPJPY-LEVERAGE-SPREAD"
+      ],
+      "counterevidence": [
+        "No trade count, turnover, order-book depth, slippage or time-weighted realized spread is disclosed."
+      ],
+      "required_evidence": [
+        "XRP/JPY order-book snapshots",
+        "Executed trades and realized spreads",
+        "Campaign versus matched-control-period activity"
+      ]
+    },
+    {
+      "id": "HYP-SBI-SHINSEI-DEPOSIT-VOUCHER-SEQUENCE",
+      "statement": "The SBI Shinsei deposit campaign's May voucher delivery and July 2 XRP price reference describe separate stages of a voucher process; the release does not establish a contradiction, but the redemption sequence is unresolved.",
+      "status": "UNRESOLVED",
+      "supporting_edge_ids": [
+        "EDGE-SBI-SHINSEI-DEPOSIT-XRP-COUPON"
+      ],
+      "counterevidence": [
+        "The public release does not fully specify when the coupon could be redeemed or when XRP was credited."
+      ],
+      "required_evidence": [
+        "Customer-facing coupon redemption terms",
+        "SBI VC Trade campaign fulfillment notice",
+        "Aggregate voucher redemption records"
+      ]
+    }
+  ],
+  "entity_separation": "SBI Shinsei Bank, SBI Holdings, SBI Global Asset Management, SBI ARUHI, SBI Insurance Group and SBI VC Trade are distinct entities or operating units. Their shareholder populations and customer accounts must not be added without deduplication."
+}
