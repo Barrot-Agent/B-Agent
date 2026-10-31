@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "COINBASE-CIRCLE-SBI-RIPPLE-INSTITUTIONAL-RAILS-20261031T1500Z",
+  "captured_at_utc": "2026-10-31T15:00:00Z",
+  "observed_main_sha": "88977235524c7b021211c6694df7f5527b9c36c8",
+  "branch_parent_sha": "b118eb2578764032f509a267e2da78a26f435e59",
+  "purpose": "Record current primary-source evidence for Coinbase's RLUSD distribution, Circle/USDC economics, Ripple's national trust-bank charter, Aviva's XRPL tokenized fund share class, Standard Chartered's RLUSD custody, and SBI's XRP distribution channels. Separate institutional adoption from actual XRP capital.",
+  "sources": [
+    {
+      "source_id": "SRC-COINBASE-RLUSD-LISTING-20261028",
+      "publisher": "Coinbase",
+      "title": "RLUSD is now available on Coinbase",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "published_date": "2026-10-28",
+      "source_type": "official_product_launch",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "COINBASE_OFFICIAL",
+      "claims": [
+        "Coinbase added Ripple USD (RLUSD) to Coinbase Prime, Coinbase Exchange and the Coinbase app in supported regions.",
+        "At launch, clients can deposit and withdraw RLUSD across the XRP Ledger, Base and Ethereum.",
+        "Coinbase says customers can convert US dollars into RLUSD at a 1:1 rate.",
+        "Coinbase says access for Coinbase Global Exchange customers, including use of RLUSD as collateral, will follow; this was not described as live at launch.",
+        "Coinbase says Ripple will provide liquidity on Base to support RLUSD use on that network."
+      ],
+      "limitations": [
+        "The announcement does not disclose RLUSD balances, deposits, withdrawals, trading volume, customer counts or collateral posted.",
+        "The announcement does not establish XRP purchases, XRP collateral use or XRP as the settlement asset for RLUSD transfers.",
+        "Coinbase Global Exchange collateral support is explicitly future/planned at the announcement date.",
+        "Availability is limited to supported regions."
+      ]
+    },
+    {
+      "source_id": "SRC-COINBASE-Q3-2026-RESULTS",
+      "publisher": "Coinbase Global, Inc.",
+      "title": "Coinbase Q3 2026 earnings release",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "published_date": "2026-10-29",
+      "source_type": "official_public_company_earnings_release",
+      "evidence_class": "PRIMARY_COMPANY_FILING_AND_STATEMENT",
+      "independence_group": "COINBASE_INVESTOR_RELATIONS",
+      "claims": [
+        "Coinbase reports 10.7% crypto trading-volume market share in Q3 2026 and a fourth consecutive quarter of market-share gains.",
+        "Coinbase reports assets on platform equal to 12.5% of total crypto market capitalization.",
+        "Average USDC held in Coinbase products reached USD 22 billion, up 49% year over year and approximately 30% of average USDC market capitalization.",
+        "Coinbase reports that it captured approximately 50% of USDC economics over the preceding year.",
+        "Subscription and services revenue represented 49% of Q3 net revenue; stablecoin revenue was approximately USD 307 million.",
+        "Coinbase reports 179% compound annual growth in crypto derivatives trading volume over the preceding two years.",
+        "Coinbase reports prediction markets exceeding USD 200 million in annualized revenue.",
+        "Coinbase reports Q3 net income of USD 719 million and adjusted net income of USD 78 million."
+      ],
+      "limitations": [
+        "These are company-reported metrics and definitions; market-share and revenue calculations require the earnings deck and 10-Q for full methodology.",
+        "The USDC metrics do not disclose XRP-specific balances, trading, custody or revenue.",
+        "The RLUSD listing announcement does not quantify whether RLUSD changes Coinbase's USDC economics.",
+        "Net income and adjusted net income differ materially; net income should not be treated as recurring operating earnings."
+      ]
+    },
+    {
+      "source_id": "SRC-OCC-RIPPLE-NATIONAL-TRUST-BANK-20261026",
+      "publisher": "Office of the Comptroller of the Currency",
+      "title": "Corporate Applications Search — Ripple National Trust Bank",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "published_date": "2026-10-26",
+      "source_type": "official_regulatory_application_record",
+      "evidence_class": "PRIMARY_REGULATORY_RECORD",
+      "independence_group": "US_OCC",
+      "claims": [
+        "The OCC record identifies Ripple National Trust Bank, proposed charter number 25364, as a national trust-bank charter application.",
+        "The record shows approval on 2025-12-12 and Consummated/Effective status on 2026-10-26.",
+        "The record states that trust powers were requested."
+      ],
+      "limitations": [
+        "The record does not establish that Ripple National Trust Bank is a general commercial deposit-taking bank.",
+        "The charter record alone does not establish XRP reserves, XRP collateral use, XRP market purchases or a live retail banking product.",
+        "Specific approved activities and operational launch status require the charter documents and subsequent regulatory disclosures."
+      ]
+    },
+    {
+      "source_id": "SRC-AVIVA-XRPL-GBP-LIQUIDITY-FUND-20261026",
+      "publisher": "Aviva Investors",
+      "title": "Aviva Investors launches tokenised share class for Sterling Liquidity Fund",
+      "url": "https://www.avivainvestors.com/en-gb/about/company-news/2026/10/aviva-investors-launches-tokenised-share-class-for-sterling-liquidity-fund/",
+      "published_date": "2026-10-26",
+      "source_type": "official_asset_manager_product_launch",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "AVIVA_INVESTORS_OFFICIAL",
+      "claims": [
+        "Aviva Investors launched a tokenized share class of its Sterling Liquidity Fund on the XRP Ledger.",
+        "Aviva says it invested GBP 50 million in the new tokenized share class.",
+        "The conventional Sterling Liquidity Fund has approximately GBP 22 billion in assets under management.",
+        "Aviva reports more than GBP 86 million invested across its two tokenized liquidity-fund share classes, including the earlier USD share class.",
+        "The product uses a digital-twin model: holdings are represented on-chain while the existing fund and its underlying assets remain off-chain.",
+        "Aviva identifies BNY Mellon as fund custodian, Komainu as regulated digital-asset custodian and Licuido as tokenization infrastructure provider."
+      ],
+      "limitations": [
+        "The GBP 22 billion figure is the conventional fund's AUM, not assets moved onto XRPL.",
+        "The GBP 50 million investment is in tokenized fund shares, not XRP.",
+        "No XRP amount purchased, XRP collateral balance, secondary-market turnover, holder count or network-fee total is disclosed.",
+        "Tokenized share representation does not imply that the fund's underlying gilts or cash are held on XRPL."
+      ]
+    },
+    {
+      "source_id": "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261012",
+      "publisher": "Standard Chartered",
+      "title": "Standard Chartered launches RLUSD custody and joins planned collateral integration with Ripple and LMAX Group",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "published_date": "2026-10-12",
+      "source_type": "official_institutional_custody_announcement",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "STANDARD_CHARTERED_OFFICIAL",
+      "claims": [
+        "Standard Chartered says institutional custody support for RLUSD issued on XRPL is live for eligible clients through its DIFC branch regulated by the Dubai Financial Services Authority.",
+        "Standard Chartered, Ripple and LMAX Group are working toward making RLUSD eligible collateral for agreed LMAX products.",
+        "The planned collateral arrangement uses Standard Chartered's collateral-mirroring model so underlying RLUSD need not be transferred directly to the trading venue."
+      ],
+      "limitations": [
+        "The LMAX collateral functionality remains subject to final documentation, successful testing, applicable laws and regulations, internal approvals and jurisdictional readiness.",
+        "The announcement discloses no client count, assets under custody, RLUSD balances, trading volume or XRP purchases.",
+        "Live RLUSD custody is not evidence that native XRP is held as collateral."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VISA-CRYPTO-CARD-CURRENT-TERMS-20261031",
+      "publisher": "SBI VC Trade",
+      "title": "SBI VISA Crypto Card current product and reward terms",
+      "url": "https://www.sbivc.co.jp/cryptocard",
+      "retrieved_at_utc": "2026-10-31T14:40:47.539Z",
+      "source_type": "official_current_product_page",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "independence_group": "SBI_VC_TRADE_PRODUCT_PAGE",
+      "claims": [
+        "A cardholder selects one crypto asset per card from BTC, ETH or XRP.",
+        "The current product page says Standard earns one point worth JPY 1 per JPY 200 spent and Gold earns two points worth JPY 2 per JPY 200 spent.",
+        "Points for the monthly period from the 6th through the 5th are credited around the 17th and automatically exchanged into the selected crypto by month-end without an exchange fee.",
+        "The conversion quantity uses SBI VC Trade's displayed sales price at 06:59:59 on the day before conversion; XRP quantities are truncated to seven decimal places.",
+        "The page displayed a campaign for applications from 2026-09-01 through 2026-10-31, with reward delivery targeted by 2027-02-28."
+      ],
+      "limitations": [
+        "The application window ended at the 2026-10-31 Japan-date boundary; the page was retrieved at 23:40 JST on October 31 while the window was still open.",
+        "No cardholder count, XRP selection share, monthly XRP reward units, realized aggregate credits or XRP inventory source is disclosed.",
+        "The displayed sales-price reference is not an execution record and does not prove an open-market purchase.",
+        "Reward conversion is a distribution mechanism; it must not be counted as net external XRP capital without sourcing and execution evidence."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VC-TRADE-ACCUMULATION-20261031",
+      "publisher": "SBI Holdings",
+      "title": "Crypto-asset Exchange — SBI VC Trade",
+      "url": "https://www.sbigroup.co.jp/english/business/cryptoasset/exchange.html",
+      "source_type": "official_product_description",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_HOLDINGS_CORPORATE",
+      "claims": [
+        "SBI states that its exchange handles XRP.",
+        "SBI describes an Accumulation Service that automatically purchases selected crypto-assets on a regular schedule using a predetermined amount and frequency."
+      ],
+      "limitations": [
+        "No XRP-specific subscriber count, purchase volume, order-flow amount, asset-selection share, execution venue or sourcing method is disclosed."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-ORICO-XRP-POINTS-20260731",
+      "publisher": "SBI VC Trade and Orient Corporation",
+      "title": "Orico Points can be exchanged for BTC, ETH or XRP",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0731_16511.php",
+      "published_date": "2026-07-31",
+      "source_type": "official_product_launch",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_VC_TRADE_ORICO_PRODUCT_RELEASE",
+      "claims": [
+        "Eligible Orico Point members can exchange 1,200 points for JPY 1,000 worth of BTC, ETH or XRP through an SBI VC Trade account.",
+        "The credited crypto quantity is calculated using SBI VC Trade's sales price at the specified following-month valuation time."
+      ],
+      "limitations": [
+        "No XRP-specific redemption count, aggregate value, selection share, execution venue or inventory sourcing is disclosed.",
+        "This is an opt-in points-redemption channel, not a published open-market purchase schedule."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-RLUSD-LISTING-20260624",
+      "publisher": "SBI VC Trade and Ripple",
+      "title": "SBI VC Trade begins handling RLUSD in Japan",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "published_date": "2026-06-24",
+      "source_type": "official_stablecoin_listing",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_VC_TRADE_RIPPLE_RELEASE",
+      "claims": [
+        "SBI VC Trade announced RLUSD handling beginning June 24, 2026.",
+        "SBI and Ripple describe the listing as a result of their longstanding partnership."
+      ],
+      "limitations": [
+        "The listing announcement does not disclose RLUSD balances, payment volume or XRP demand.",
+        "The announcement alone does not establish RLUSD deposit/withdrawal support on XRPL; network-specific support must be verified separately."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CIRCLE-JV-20250822",
+      "publisher": "SBI Holdings",
+      "title": "Joint venture with Circle Internet Holdings",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0822_c_en.pdf",
+      "published_date": "2025-08-22",
+      "source_type": "official_joint_venture_announcement",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_HOLDINGS_CORPORATE",
+      "claims": [
+        "SBI announced a joint venture with Circle Internet Holdings to promote USDC circulation and new Web3/digital-finance use cases in Japan.",
+        "SBI stated that it acquired USD 50 million of Circle shares as a strategic investor in connection with Circle's NYSE listing."
+      ],
+      "limitations": [
+        "The equity investment is in Circle, not XRP, and does not establish an XRP reserve.",
+        "The joint venture does not imply that SBI has chosen Circle's network exclusively."
+      ]
+    },
+    {
+      "source_id": "SRC-CIRCLE-ARC-SBI-VALIDATOR-20260916",
+      "publisher": "Circle Internet Group",
+      "title": "Circle launches Arc mainnet",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+      "published_date": "2026-09-16",
+      "source_type": "official_network_launch",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "CIRCLE_OFFICIAL",
+      "claims": [
+        "Circle announced Arc mainnet with USDC-denominated gas fees and a founding-validator cohort that includes SBI Group.",
+        "Circle lists Coinbase among the digital-asset exchanges providing access to Arc.",
+        "Circle describes USDC, EURC and tokenized assets as core Arc assets."
+      ],
+      "limitations": [
+        "SBI validator status does not establish capital deployed or transaction volume.",
+        "Coinbase's exchange-access role does not establish a bilateral Coinbase-SBI commercial contract.",
+        "Arc's USDC gas model does not require XRP as the network fee asset."
+      ]
+    }
+  ],
+  "independence_policy": {
+    "rule": "Group sources by issuer. Coinbase earnings and Coinbase RLUSD launch are one Coinbase source family; SBI product pages and SBI group releases are related corporate sources; Circle and Standard Chartered statements are separate issuer groups; OCC and Aviva are separate primary institutions.",
+    "corroboration": "Prefer regulator records, actual chain data, custodian disclosures and fund documents for independently verifiable implementation. A company launch announcement proves the announced product status, not usage or volume.",
+    "actual_capital": "Separate fund subscriptions, customer balances, rewards, exchange inventory, spot executions, OTC purchases, stablecoin issuance and XRP purchases. Never equate tokenized fund AUM or USDC balances with XRP demand."
+  }
+}

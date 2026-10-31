@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "SBI-VISA-CRYPTO-CARD-CURRENT-TERMS-202610311440Z",
+  "captured_at_utc": "2026-10-31T14:40:47.539Z",
+  "sources": [
+    {
+      "source_id": "SRC-SBI-VC-TRADE-CRYPTO-CARD-CURRENT-PAGE-20261031",
+      "publisher": "SBI VC Trade",
+      "title": "SBI VISA Crypto Card current product and reward terms",
+      "url": "https://www.sbivc.co.jp/cryptocard",
+      "retrieved_at_utc": "2026-10-31T14:40:47.539Z",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "independence_group": "SBI_VC_TRADE_PRODUCT_PAGE",
+      "claims": [
+        "The current product page says the card requires a VCTRADE crypto account and lets the cardholder choose one crypto asset per card from BTC, ETH or XRP.",
+        "The current page says standard card shopping earns one point worth JPY 1 per JPY 200 spent and Gold earns two points worth JPY 2 per JPY 200 spent.",
+        "The page says points for the monthly period from the 6th through the 5th are credited around the 17th and automatically exchanged into crypto by month-end without an exchange fee.",
+        "The conversion quantity is calculated using SBI VC Trade's displayed crypto sales price at 06:59:59 on the day before the exchange; XRP units are truncated to seven decimal places.",
+        "The page says the VCTRADE account holder name must match the cardholder and the account/card must remain active at conversion; otherwise the points are not exchanged and expire at month-end.",
+        "A new campaign is displayed for applications from 2026-09-01 through 2026-10-31, with card issuance by 2026-11-30, eligible spending through 2026-12-05 and reward delivery by the end of 2027-02.",
+        "The displayed campaign offers a JPY 500-equivalent crypto joining benefit per customer, standard-card spending rewards up to JPY 2,000 equivalent and Gold spending rewards up to JPY 4,000 equivalent.",
+        "The page specifies standard-card spending thresholds of JPY 100,000 for JPY 1,000 equivalent and JPY 200,000 for JPY 2,000 total; Gold thresholds are JPY 150,000 for JPY 2,000 and JPY 300,000 for JPY 4,000 total.",
+        "For campaign rewards when multiple cards are held, the page specifies priority Gold before Standard and BTC before ETH before XRP.",
+        "The page also describes a credit-card mutual-fund accumulation route through SBI Securities where a selected crypto asset can be earned."
+      ],
+      "limitations": [
+        "The page does not disclose cardholder count, XRP selection share, aggregate reward points, XRP reward units, XRP inventory or monthly crypto conversion totals.",
+        "The reference price is SBI VC Trade's displayed sales price; it is not an exchange execution record and does not prove a contemporaneous spot-market purchase.",
+        "The page does not disclose whether crypto rewards are sourced from spot purchases, OTC, existing exchange inventory or internal transfers.",
+        "The campaign reward delivery date is future at capture; realized reward credits cannot yet be observed.",
+        "The page contains multiple program sections; campaign and base monthly rewards must be kept separate."
+      ]
+    }
+  ]
+}

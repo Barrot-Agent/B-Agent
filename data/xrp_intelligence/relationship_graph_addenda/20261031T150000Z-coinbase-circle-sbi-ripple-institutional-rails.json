@@ -1,0 +1,449 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T150000Z-COINBASE-CIRCLE-SBI-RIPPLE-RAILS",
+  "captured_at_utc": "2026-10-31T15:00:00Z",
+  "observed_main_sha": "88977235524c7b021211c6694df7f5527b9c36c8",
+  "nodes": [
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_CUSTODY_AND_DISTRIBUTION"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "BLOCKCHAIN_AND_STABLECOIN_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "ISSUER_CONTROLLED_STABLECOIN"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    },
+    {
+      "id": "BASE",
+      "label": "Base",
+      "kind": "ETHEREUM_LAYER_2"
+    },
+    {
+      "id": "ETHEREUM",
+      "label": "Ethereum",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle",
+      "kind": "STABLECOIN_ISSUER_AND_NETWORK_OPERATOR"
+    },
+    {
+      "id": "USDC",
+      "label": "USD Coin",
+      "kind": "ISSUER_CONTROLLED_STABLECOIN"
+    },
+    {
+      "id": "SBI_GROUP",
+      "label": "SBI Holdings",
+      "kind": "JAPANESE_FINANCIAL_GROUP"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "CRYPTO_EXCHANGE_AND_DISTRIBUTOR"
+    },
+    {
+      "id": "ARC",
+      "label": "Arc",
+      "kind": "USDC_DENOMINATED_NETWORK"
+    },
+    {
+      "id": "AVIVA",
+      "label": "Aviva Investors",
+      "kind": "ASSET_MANAGER"
+    },
+    {
+      "id": "AVIVA_GBP_LIQUIDITY_FUND",
+      "label": "Aviva Sterling Liquidity Fund tokenized share class",
+      "kind": "TOKENIZED_FUND_SHARE_CLASS"
+    },
+    {
+      "id": "BNY_MELLON",
+      "label": "BNY Mellon",
+      "kind": "FUND_CUSTODIAN"
+    },
+    {
+      "id": "KOMAINU",
+      "label": "Komainu",
+      "kind": "DIGITAL_ASSET_CUSTODIAN"
+    },
+    {
+      "id": "LICUIDO",
+      "label": "Licuido",
+      "kind": "TOKENIZATION_INFRASTRUCTURE"
+    },
+    {
+      "id": "STANDARD_CHARTERED",
+      "label": "Standard Chartered",
+      "kind": "BANK_AND_DIGITAL_ASSET_CUSTODIAN"
+    },
+    {
+      "id": "LMAX",
+      "label": "LMAX Group",
+      "kind": "INSTITUTIONAL_TRADING_INFRASTRUCTURE"
+    },
+    {
+      "id": "RIPPLE_NATIONAL_TRUST_BANK",
+      "label": "Ripple National Trust Bank",
+      "kind": "NATIONAL_TRUST_BANK_CHARTER"
+    },
+    {
+      "id": "OCC",
+      "label": "Office of the Comptroller of the Currency",
+      "kind": "US_BANK_REGULATOR"
+    },
+    {
+      "id": "VISA",
+      "label": "Visa",
+      "kind": "PAYMENT_NETWORK"
+    },
+    {
+      "id": "APLUS",
+      "label": "APLUS",
+      "kind": "CARD_ISSUER_AND_SERVICER"
+    },
+    {
+      "id": "ORICO",
+      "label": "Orient Corporation",
+      "kind": "CARD_AND_POINTS_PROVIDER"
+    },
+    {
+      "id": "B2C2",
+      "label": "B2C2",
+      "kind": "CRYPTO_MARKET_MAKER"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-COINBASE-RLUSD-LISTING",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "LISTS_AND_DISTRIBUTES",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Coinbase announced RLUSD availability on Prime, Exchange and app in supported regions.",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ]
+    },
+    {
+      "id": "E-RLUSD-XRPL",
+      "source": "RLUSD",
+      "target": "XRPL",
+      "relationship": "DEPOSIT_WITHDRAWAL_NETWORK_SUPPORTED",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Coinbase says RLUSD deposits and withdrawals are supported across XRPL, Base and Ethereum.",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ]
+    },
+    {
+      "id": "E-RLUSD-BASE-LIQUIDITY",
+      "source": "RIPPLE",
+      "target": "BASE",
+      "relationship": "PROVIDES_RLUSD_LIQUIDITY_AS_ANNOUNCED",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Coinbase says Ripple will provide liquidity on Base to support RLUSD use.",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ]
+    },
+    {
+      "id": "E-COINBASE-USDC-ECONOMICS",
+      "source": "COINBASE",
+      "target": "USDC",
+      "relationship": "HOLDS_AND_DISTRIBUTES_CUSTOMER_USDC; ECONOMIC_PARTNERSHIP",
+      "evidence_class": "PRIMARY_COMPANY_EARNINGS",
+      "claim": "Coinbase reports USD 22B average USDC held in its products and approximately 50% of USDC economics over the preceding year.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-RESULTS"
+      ]
+    },
+    {
+      "id": "E-SBI-CIRCLE-JV",
+      "source": "SBI_GROUP",
+      "target": "CIRCLE",
+      "relationship": "JOINT_VENTURE_AND_STRATEGIC_EQUITY_INVESTMENT",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "SBI announced a JV to promote USDC in Japan and a USD 50M strategic investment in Circle shares.",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-20250822"
+      ]
+    },
+    {
+      "id": "E-SBI-ARC-VALIDATOR",
+      "source": "SBI_GROUP",
+      "target": "ARC",
+      "relationship": "FOUNDING_VALIDATOR",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Circle lists SBI Group among Arc's founding validators.",
+      "source_ids": [
+        "SRC-CIRCLE-ARC-SBI-VALIDATOR-20260916"
+      ]
+    },
+    {
+      "id": "E-COINBASE-ARC-ACCESS",
+      "source": "COINBASE",
+      "target": "ARC",
+      "relationship": "EXCHANGE_ACCESS_PARTNER",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Circle lists Coinbase among exchanges providing access to Arc; this does not prove a direct Coinbase-SBI contract.",
+      "source_ids": [
+        "SRC-CIRCLE-ARC-SBI-VALIDATOR-20260916"
+      ]
+    },
+    {
+      "id": "E-SBI-RLUSD-LISTING",
+      "source": "SBI_VC_TRADE",
+      "target": "RLUSD",
+      "relationship": "JAPAN_EXCHANGE_LISTING",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "SBI VC Trade announced RLUSD handling from June 24, 2026.",
+      "source_ids": [
+        "SRC-SBI-RLUSD-LISTING-20260624"
+      ]
+    },
+    {
+      "id": "E-SBI-XRP-ACCUMULATION",
+      "source": "SBI_VC_TRADE",
+      "target": "XRP",
+      "relationship": "RECURRING_PURCHASE_PRODUCT_SUPPORTS_XRP",
+      "evidence_class": "PRIMARY_PRODUCT_DESCRIPTION",
+      "claim": "SBI describes a scheduled accumulation service that automatically purchases selected crypto-assets, and its exchange handles XRP.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-ACCUMULATION-20261031"
+      ]
+    },
+    {
+      "id": "E-SBI-VISA-XRP-REWARD",
+      "source": "SBI_VC_TRADE",
+      "target": "XRP",
+      "relationship": "CARD_REWARD_ASSET_AND_MONTHLY_CONVERSION",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "claim": "Eligible cardholders may select XRP and receive monthly conversion of points; aggregate units and inventory source are unknown.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-CURRENT-TERMS-20261031"
+      ]
+    },
+    {
+      "id": "E-APLUS-VISA-SBI-CARD",
+      "source": "APLUS",
+      "target": "VISA",
+      "relationship": "CARD_PROGRAM_PAYMENT_NETWORK",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "SBI's card program is issued through APLUS with Visa network branding; this edge is contextual to the SBI product.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-CURRENT-TERMS-20261031"
+      ]
+    },
+    {
+      "id": "E-ORICO-XRP-POINTS",
+      "source": "ORICO",
+      "target": "XRP",
+      "relationship": "POINTS_REDEMPTION_TO_XRP",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Eligible Orico points can be exchanged for JPY 1,000 equivalent of selected crypto including XRP through SBI VC Trade.",
+      "source_ids": [
+        "SRC-SBI-ORICO-XRP-POINTS-20260731"
+      ]
+    },
+    {
+      "id": "E-AVIVA-XRPL-FUND",
+      "source": "AVIVA",
+      "target": "AVIVA_GBP_LIQUIDITY_FUND",
+      "relationship": "LAUNCHES_TOKENIZED_SHARE_CLASS_ON_XRPL",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Aviva launched a tokenized GBP liquidity-fund share class on XRPL and reports GBP 50M invested in the share class.",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-GBP-LIQUIDITY-FUND-20261026"
+      ]
+    },
+    {
+      "id": "E-AVIVA-BNY",
+      "source": "AVIVA_GBP_LIQUIDITY_FUND",
+      "target": "BNY_MELLON",
+      "relationship": "UNDERLYING_FUND_CUSTODY",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Aviva identifies BNY Mellon as the fund custodian.",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-GBP-LIQUIDITY-FUND-20261026"
+      ]
+    },
+    {
+      "id": "E-AVIVA-KOMAINU",
+      "source": "AVIVA_GBP_LIQUIDITY_FUND",
+      "target": "KOMAINU",
+      "relationship": "DIGITAL_ASSET_CUSTODY",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Aviva identifies Komainu as regulated digital-asset custodian.",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-GBP-LIQUIDITY-FUND-20261026"
+      ]
+    },
+    {
+      "id": "E-AVIVA-LICUIDO",
+      "source": "AVIVA_GBP_LIQUIDITY_FUND",
+      "target": "LICUIDO",
+      "relationship": "TOKENIZATION_INFRASTRUCTURE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Aviva identifies Licuido as digital infrastructure for tokenization.",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-GBP-LIQUIDITY-FUND-20261026"
+      ]
+    },
+    {
+      "id": "E-SC-RLUSD-CUSTODY",
+      "source": "STANDARD_CHARTERED",
+      "target": "RLUSD",
+      "relationship": "LIVE_INSTITUTIONAL_CUSTODY_ON_XRPL",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Standard Chartered says eligible clients can custody RLUSD issued on XRPL through its DFSA-regulated DIFC branch.",
+      "source_ids": [
+        "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261012"
+      ]
+    },
+    {
+      "id": "E-SC-LMAX-COLLATERAL",
+      "source": "STANDARD_CHARTERED",
+      "target": "LMAX",
+      "relationship": "PLANNED_COLLATERAL_MIRRORING",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "The RLUSD collateral-mirroring arrangement is planned and remains conditional; it is not recorded as live.",
+      "source_ids": [
+        "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261012"
+      ]
+    },
+    {
+      "id": "E-RIPPLE-OCC-CHARTER",
+      "source": "OCC",
+      "target": "RIPPLE_NATIONAL_TRUST_BANK",
+      "relationship": "CHARTER_APPROVED_AND_EFFECTIVE",
+      "evidence_class": "PRIMARY_REGULATORY_RECORD",
+      "claim": "OCC record shows charter 25364 approved December 12, 2025 and consummated/effective October 26, 2026, with trust powers requested.",
+      "source_ids": [
+        "SRC-OCC-RIPPLE-NATIONAL-TRUST-BANK-20261026"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-COINBASE-RLUSD-XRPL-DISTRIBUTION",
+      "statement": "Coinbase's RLUSD listing increases access and potential stablecoin liquidity on XRPL.",
+      "status": "SUPPORTED_AS_TO_ACCESS; USAGE_AND_CAPITAL_UNKNOWN",
+      "supporting_sources": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ],
+      "disconfirming_evidence": [
+        "No deposit/withdrawal volumes or RLUSD balances disclosed.",
+        "RLUSD can be used on Base and Ethereum as well as XRPL; the announcement does not allocate activity by network."
+      ],
+      "next_test": "Measure XRPL RLUSD issued supply, exchange hot/cold balances, trustline activity, transfer counterparties and Coinbase-tagged deposits/withdrawals."
+    },
+    {
+      "id": "HYP-RLUSD-COMPETES-WITH-USDC",
+      "statement": "Coinbase's RLUSD support may diversify stablecoin distribution and compete with USDC balances in some use cases.",
+      "status": "PLAUSIBLE_NOT_MEASURED",
+      "supporting_sources": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028",
+        "SRC-COINBASE-Q3-2026-RESULTS"
+      ],
+      "disconfirming_evidence": [
+        "Coinbase reports record USD 22 billion average USDC held and material USDC economics; no USDC replacement or share loss is disclosed."
+      ],
+      "next_test": "Compare RLUSD and USDC balances, flows, fees, network mix and product placement before and after listing."
+    },
+    {
+      "id": "HYP-AVIVA-XRPL-INSTITUTIONAL-RWA",
+      "statement": "Aviva's tokenized GBP liquidity-fund share class adds institutional RWA activity on XRPL.",
+      "status": "CONFIRMED_LAUNCH; PRICE_EFFECT_UNKNOWN",
+      "supporting_sources": [
+        "SRC-AVIVA-XRPL-GBP-LIQUIDITY-FUND-20261026"
+      ],
+      "disconfirming_evidence": [
+        "The structure is a digital twin with underlying fund assets off-chain.",
+        "The GBP 50 million investment is in fund shares, not XRP; no XRP units or material fee totals are disclosed."
+      ],
+      "next_test": "Track token issuance/redemptions, eligible-holder count, transfer volume, repeat subscriptions, XRPL fees and secondary liquidity."
+    },
+    {
+      "id": "HYP-STANDARD-CHARTERED-LMAX-RLUSD-COLLATERAL",
+      "statement": "Standard Chartered's live RLUSD custody plus planned LMAX collateral mirroring could support institutional RLUSD collateral workflows.",
+      "status": "CUSTODY_LIVE; COLLATERAL_PLANNED",
+      "supporting_sources": [
+        "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261012"
+      ],
+      "disconfirming_evidence": [
+        "Collateral use remains conditional and is not live at the capture cutoff.",
+        "No client balances, collateral amounts or trading volumes are disclosed."
+      ],
+      "next_test": "Require official launch notice, eligible-product schedule, custody balances and actual collateral usage."
+    },
+    {
+      "id": "HYP-SBI-MULTIRAIL-NOT-EXCLUSIVE",
+      "statement": "SBI is pursuing both Ripple/XRPL/RLUSD and Circle/USDC/Arc rails rather than an exclusive XRP strategy.",
+      "status": "SUPPORTED_BY_MULTIPLE_PRIMARY_RELATIONSHIPS",
+      "supporting_sources": [
+        "SRC-SBI-RLUSD-LISTING-20260624",
+        "SRC-SBI-CIRCLE-JV-20250822",
+        "SRC-CIRCLE-ARC-SBI-VALIDATOR-20260916"
+      ],
+      "disconfirming_evidence": [
+        "The relationships are in different subsidiaries and products; no disclosed group-wide capital allocation or exclusivity policy."
+      ],
+      "next_test": "Track actual settlement volumes, customers, balances, cross-network interoperability and group-level investment allocation."
+    },
+    {
+      "id": "HYP-SBI-RECURRING-XRP-DISTRIBUTION",
+      "statement": "SBI accumulation, card rewards and points redemption can create recurring XRP customer credits and potential demand.",
+      "status": "PRODUCTS_CONFIRMED; NET_MARKET_BUY_UNKNOWN",
+      "supporting_sources": [
+        "SRC-SBI-VC-TRADE-ACCUMULATION-20261031",
+        "SRC-SBI-VISA-CRYPTO-CARD-CURRENT-TERMS-20261031",
+        "SRC-SBI-ORICO-XRP-POINTS-20260731"
+      ],
+      "disconfirming_evidence": [
+        "No XRP-specific subscriber counts, selection share, credited units or inventory source are disclosed.",
+        "Rewards may be fulfilled from existing inventory or OTC rather than contemporaneous spot purchases."
+      ],
+      "next_test": "Obtain aggregate XRP conversions, customer selections, inventory reconciliations and executed market/OTC purchase records."
+    },
+    {
+      "id": "HYP-RIPPLE-NTB-INSTITUTIONAL-CREDIBILITY",
+      "statement": "The effective Ripple National Trust Bank charter may strengthen institutional confidence in Ripple's regulated operating infrastructure.",
+      "status": "CHARTER_EFFECTIVE; XRP_EFFECT_UNKNOWN",
+      "supporting_sources": [
+        "SRC-OCC-RIPPLE-NATIONAL-TRUST-BANK-20261026"
+      ],
+      "disconfirming_evidence": [
+        "The OCC record does not establish general deposit-taking, XRP reserves, XRP collateral or token demand."
+      ],
+      "next_test": "Review approved activities, operating launch, custody products, regulatory filings and any explicit XRP-related service."
+    }
+  ],
+  "entity_separation": [
+    "RLUSD and USDC are stablecoins; neither is native XRP.",
+    "Coinbase's support for RLUSD on XRPL is a stablecoin distribution relationship, not evidence of Coinbase buying XRP.",
+    "Coinbase's USDC balances and USDC economics are not XRP capital.",
+    "Aviva's GBP 50M is investment in a tokenized fund share class, not XRP.",
+    "Standard Chartered's RLUSD custody is live; the LMAX collateral mirroring remains planned.",
+    "Ripple National Trust Bank's effective trust-bank charter is not evidence of general commercial deposit-taking or XRP reserves.",
+    "SBI's product distribution channels do not establish net external XRP purchases without inventory and execution data."
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "202610311440Z-sbi-visa-card-current-campaign-graph",
+  "captured_at_utc": "2026-10-31T14:40:47.539Z",
+  "nodes": [
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "CRYPTO_EXCHANGE_AND_CUSTODY_PROVIDER"
+    },
+    {
+      "id": "APLUS",
+      "label": "Aplus",
+      "kind": "CARD_ISSUER_AND_REWARDS_OPERATOR"
+    },
+    {
+      "id": "VISA_JAPAN",
+      "label": "Visa Japan",
+      "kind": "PAYMENT_NETWORK"
+    },
+    {
+      "id": "SBI_VISA_CRYPTO_CARD",
+      "label": "SBI VISA Crypto Card",
+      "kind": "RETAIL_CRYPTO_REWARD_CARD"
+    },
+    {
+      "id": "CARDHOLDER",
+      "label": "Cardholder",
+      "kind": "RETAIL_CUSTOMER"
+    },
+    {
+      "id": "REWARD_POINTS",
+      "label": "Card reward points",
+      "kind": "LOYALTY_REWARD"
+    },
+    {
+      "id": "VCTRADE_ACCOUNT",
+      "label": "VCTRADE crypto account",
+      "kind": "CUSTOMER_CRYPTO_CUSTODY_ACCOUNT"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "BTC",
+      "label": "Bitcoin",
+      "kind": "CRYPTO_ASSET"
+    },
+    {
+      "id": "ETH",
+      "label": "Ether",
+      "kind": "CRYPTO_ASSET"
+    },
+    {
+      "id": "SBI_SECURITIES",
+      "label": "SBI Securities",
+      "kind": "BROKERAGE_AND_INVESTMENT_PLATFORM"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-CARD-POINTS-MONTHLY-EXCHANGE",
+      "source": "REWARD_POINTS",
+      "target": "VCTRADE_ACCOUNT",
+      "relationship": "MONTHLY_AUTOMATIC_CRYPTO_CREDIT",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "claim": "The current SBI VC Trade page says monthly points are converted by month-end into the selected crypto asset and credited to a same-name active VCTRADE account.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-CRYPTO-CARD-CURRENT-PAGE-20261031"
+      ]
+    },
+    {
+      "id": "EDGE-CARD-SELECTABLE-XRP",
+      "source": "SBI_VISA_CRYPTO_CARD",
+      "target": "XRP",
+      "relationship": "CUSTOMER_SELECTABLE_REWARD_ASSET",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "claim": "XRP is one of three selectable assets per card; one asset is selected for each card.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-CRYPTO-CARD-CURRENT-PAGE-20261031"
+      ]
+    },
+    {
+      "id": "EDGE-CARD-CAMPAIGN-2026Q4",
+      "source": "CARDHOLDER",
+      "target": "REWARD_POINTS",
+      "relationship": "CURRENT_CAMPAIGN_REWARD_WINDOW",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "claim": "The current product page displays an application window ending 2026-10-31, eligible spend through 2026-12-05 and crypto reward delivery by the end of 2027-02; campaign selection priority applies when multiple cards are held.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-CRYPTO-CARD-CURRENT-PAGE-20261031"
+      ]
+    },
+    {
+      "id": "EDGE-CARD-SECURITIES-ACCUMULATION",
+      "source": "SBI_SECURITIES",
+      "target": "REWARD_POINTS",
+      "relationship": "INVESTMENT_ACCUMULATION_CRYPTO_REWARD_CHANNEL",
+      "evidence_class": "PRIMARY_PRODUCT_PAGE",
+      "claim": "The product page describes crypto rewards linked to SBI Securities credit-card mutual-fund accumulation; actual XRP selection and amounts are unknown.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-CRYPTO-CARD-CURRENT-PAGE-20261031"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SBI-CARD-RECURRING-XRP-CREDITS",
+      "statement": "The card's monthly reward mechanism can create recurring XRP account credits when the cardholder selects XRP.",
+      "status": "MECHANISM_CONFIRMED; AGGREGATE_REALIZED_VOLUME_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-SBI-VC-TRADE-CRYPTO-CARD-CURRENT-PAGE-20261031"
+      ],
+      "disconfirming_evidence": [
+        "No XRP selection share or aggregate credit volume is disclosed.",
+        "Points expire if the required same-name active VCTRADE account is absent at conversion."
+      ],
+      "next_test": "Seek monthly aggregate XRP reward credits or disclosed customer counts and selection shares."
+    },
+    {
+      "id": "HYP-SBI-CARD-REWARD-OPEN-MARKET-BUYING",
+      "statement": "SBI purchases XRP on the public spot market to fund card rewards.",
+      "status": "UNPROVEN",
+      "supporting_source_ids": [],
+      "disconfirming_evidence": [
+        "The page specifies SBI VC Trade's sales-price reference, not a trade execution or inventory source.",
+        "Rewards could be funded from existing inventory, OTC or internal transfers."
+      ],
+      "next_test": "Require public inventory, market execution, OTC or treasury sourcing evidence."
+    }
+  ],
+  "notes": [
+    "The current September–December 2026 campaign is separate from the expired May–August launch campaign.",
+    "The displayed sales-price reference is not an execution record.",
+    "The campaign's multiple-card priority rule can direct campaign rewards to Gold before Standard and BTC before ETH before XRP.",
+    "No actual capital or directional price inference is admitted."
+  ]
+}

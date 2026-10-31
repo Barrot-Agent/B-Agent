@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "20261031T150000Z-coinbase-circle-sbi-ripple-institutional-rails",
+  "captured_at_utc": "2026-10-31T15:00:00Z",
+  "data_cutoff_utc": "2026-10-31T15:00:00Z",
+  "observed_main_sha": "88977235524c7b021211c6694df7f5527b9c36c8",
+  "observed_research_branch_parent": "b118eb2578764032f509a267e2da78a26f435e59",
+  "institutional_rails": {
+    "coinbase_rlusd": {
+      "launch_date": "2026-10-28",
+      "status": "LAUNCHED_IN_SUPPORTED_REGIONS",
+      "products": [
+        "Coinbase Prime",
+        "Coinbase Exchange",
+        "Coinbase app"
+      ],
+      "supported_networks": [
+        "XRP Ledger",
+        "Base",
+        "Ethereum"
+      ],
+      "usd_conversion": "1:1 as stated by Coinbase",
+      "ripple_liquidity_on_base": "COINBASE_COMPANY_STATEMENT",
+      "global_exchange_rlusd_collateral": "PLANNED_NOT_AVAILABLE_AT_LAUNCH",
+      "actual_rlusd_volume": "UNKNOWN",
+      "actual_xrp_purchase_or_collateral": "NOT_ESTABLISHED"
+    },
+    "coinbase_q3_2026": {
+      "crypto_trading_volume_market_share_percent": 10.7,
+      "assets_on_platform_share_of_total_crypto_market_cap_percent": 12.5,
+      "average_usdc_held_usd": 22000000000,
+      "average_usdc_held_yoy_change_percent": 49,
+      "company_reported_share_of_usdc_economics_percent": 50,
+      "subscription_and_services_share_of_net_revenue_percent": 49,
+      "stablecoin_revenue_usd": 307000000,
+      "derivatives_volume_two_year_cagr_percent": 179,
+      "prediction_markets_annualized_revenue_usd": 200000000,
+      "net_income_usd": 719000000,
+      "adjusted_net_income_usd": 78000000,
+      "evidence_class": "COINBASE_Q3_COMPANY_REPORTED",
+      "xrp_specific_revenue_or_volume": "NOT_DISCLOSED"
+    },
+    "ripple_national_trust_bank": {
+      "charter_number": "25364",
+      "approved_date": "2025-12-12",
+      "consummated_effective_date": "2026-10-26",
+      "trust_powers_requested": true,
+      "evidence_class": "OCC_REGULATORY_RECORD",
+      "general_commercial_deposit_taking": "NOT_ESTABLISHED",
+      "xrp_reserve_or_collateral": "NOT_ESTABLISHED"
+    },
+    "aviva_xrpl_tokenized_gbp_fund": {
+      "launch_date": "2026-10-26",
+      "underlying_fund_aum_gbp_approx": 22000000000,
+      "investment_in_new_tokenized_share_class_gbp": 50000000,
+      "total_across_two_tokenized_share_classes_gbp_over": 86000000,
+      "structure": "DIGITAL_TWIN; UNDERLYING_FUND_AND_ASSETS_REMAIN_OFFCHAIN",
+      "network": "XRPL",
+      "fund_custodian": "BNY Mellon",
+      "digital_asset_custodian": "Komainu",
+      "tokenization_infrastructure": "Licuido",
+      "xrp_purchased_gbp": "UNKNOWN",
+      "xrp_units_or_collateral": "UNKNOWN"
+    },
+    "standard_chartered_rlusd": {
+      "custody_status": "LIVE_FOR_ELIGIBLE_CLIENTS",
+      "custody_location": "DIFC branch regulated by DFSA",
+      "asset": "RLUSD issued on XRPL",
+      "lmax_collateral_mirroring": "PLANNED_NOT_LIVE",
+      "conditions": [
+        "final documentation",
+        "successful testing",
+        "applicable laws and regulations",
+        "internal approvals",
+        "jurisdictional readiness"
+      ],
+      "xrp_custody_or_collateral": "NOT_ESTABLISHED"
+    },
+    "sbi_distribution": {
+      "accumulation_service": "AUTOMATIC_RECURRING_PURCHASE_PRODUCT_SUPPORTS_XRP",
+      "accumulation_amount_and_xrp_units": "UNKNOWN",
+      "visa_card": {
+        "selectable_assets": [
+          "BTC",
+          "ETH",
+          "XRP"
+        ],
+        "standard_points_per_jpy_200": 1,
+        "gold_points_per_jpy_200": 2,
+        "conversion_cycle": "MONTHLY; POINTS PERIOD DAY 6 THROUGH DAY 5; CREDIT AROUND DAY 17; CONVERSION BY MONTH END",
+        "conversion_price_reference": "SBI VC Trade displayed sales price at 06:59:59 on the day before conversion",
+        "xrp_precision_decimal_places": 7,
+        "application_campaign_end_jst": "2026-10-31",
+        "application_campaign_status_at_1500_utc": "ENDED_AT_JAPAN_DATE_BOUNDARY",
+        "campaign_reward_delivery_target": "2027-02-28",
+        "cardholder_count": "UNKNOWN",
+        "xrp_selection_share": "UNKNOWN",
+        "realized_xrp_reward_units": "UNKNOWN",
+        "inventory_source": "UNKNOWN"
+      },
+      "orico_points": "1,200 points can be exchanged for JPY 1,000 equivalent of selected BTC/ETH/XRP using SBI VC Trade sales price",
+      "rlusd_listing_japan_date": "2026-06-24",
+      "circle_jv_and_equity_investment_usd": 50000000,
+      "arc_validator": "SBI Group is a founding validator per Circle",
+      "b2c2_market_maker_relationship": "SBI states B2C2 is connected to SBI VC Trade; no XRP-specific depth or turnover disclosed"
+    }
+  },
+  "actual_capital_classification": {
+    "confirmed_actual_capital": "Aviva reports GBP 50 million invested in a tokenized share class of its Sterling Liquidity Fund.",
+    "not_xrp_capital": "The GBP 50 million is fund-share investment, not XRP purchases or XRP collateral.",
+    "customer_asset_balance": "Coinbase's USD 22 billion average USDC held is a customer/product balance measure, not new XRP capital.",
+    "reward_distribution": "SBI card and Orico points can credit XRP to customers, but aggregate XRP units and inventory sourcing are unknown.",
+    "spot_or_otc_xrp_purchase": "No XRP-specific Coinbase, Ripple, SBI or Binance spot/OTC purchase amount established by this snapshot."
+  },
+  "hypotheses": [
+    {
+      "id": "HYP-COINBASE-RLUSD-XRPL-DISTRIBUTION",
+      "statement": "Coinbase's RLUSD listing increases access and potential stablecoin liquidity on XRPL.",
+      "status": "SUPPORTED_AS_TO_ACCESS; USAGE_AND_CAPITAL_UNKNOWN",
+      "supporting_sources": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028"
+      ],
+      "disconfirming_evidence": [
+        "No deposit/withdrawal volumes or RLUSD balances disclosed.",
+        "RLUSD can be used on Base and Ethereum as well as XRPL; the announcement does not allocate activity by network."
+      ],
+      "next_test": "Measure XRPL RLUSD issued supply, exchange hot/cold balances, trustline activity, transfer counterparties and Coinbase-tagged deposits/withdrawals."
+    },
+    {
+      "id": "HYP-RLUSD-COMPETES-WITH-USDC",
+      "statement": "Coinbase's RLUSD support may diversify stablecoin distribution and compete with USDC balances in some use cases.",
+      "status": "PLAUSIBLE_NOT_MEASURED",
+      "supporting_sources": [
+        "SRC-COINBASE-RLUSD-LISTING-20261028",
+        "SRC-COINBASE-Q3-2026-RESULTS"
+      ],
+      "disconfirming_evidence": [
+        "Coinbase reports record USD 22 billion average USDC held and material USDC economics; no USDC replacement or share loss is disclosed."
+      ],
+      "next_test": "Compare RLUSD and USDC balances, flows, fees, network mix and product placement before and after listing."
+    },
+    {
+      "id": "HYP-AVIVA-XRPL-INSTITUTIONAL-RWA",
+      "statement": "Aviva's tokenized GBP liquidity-fund share class adds institutional RWA activity on XRPL.",
+      "status": "CONFIRMED_LAUNCH; PRICE_EFFECT_UNKNOWN",
+      "supporting_sources": [
+        "SRC-AVIVA-XRPL-GBP-LIQUIDITY-FUND-20261026"
+      ],
+      "disconfirming_evidence": [
+        "The structure is a digital twin with underlying fund assets off-chain.",
+        "The GBP 50 million investment is in fund shares, not XRP; no XRP units or material fee totals are disclosed."
+      ],
+      "next_test": "Track token issuance/redemptions, eligible-holder count, transfer volume, repeat subscriptions, XRPL fees and secondary liquidity."
+    },
+    {
+      "id": "HYP-STANDARD-CHARTERED-LMAX-RLUSD-COLLATERAL",
+      "statement": "Standard Chartered's live RLUSD custody plus planned LMAX collateral mirroring could support institutional RLUSD collateral workflows.",
+      "status": "CUSTODY_LIVE; COLLATERAL_PLANNED",
+      "supporting_sources": [
+        "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261012"
+      ],
+      "disconfirming_evidence": [
+        "Collateral use remains conditional and is not live at the capture cutoff.",
+        "No client balances, collateral amounts or trading volumes are disclosed."
+      ],
+      "next_test": "Require official launch notice, eligible-product schedule, custody balances and actual collateral usage."
+    },
+    {
+      "id": "HYP-SBI-MULTIRAIL-NOT-EXCLUSIVE",
+      "statement": "SBI is pursuing both Ripple/XRPL/RLUSD and Circle/USDC/Arc rails rather than an exclusive XRP strategy.",
+      "status": "SUPPORTED_BY_MULTIPLE_PRIMARY_RELATIONSHIPS",
+      "supporting_sources": [
+        "SRC-SBI-RLUSD-LISTING-20260624",
+        "SRC-SBI-CIRCLE-JV-20250822",
+        "SRC-CIRCLE-ARC-SBI-VALIDATOR-20260916"
+      ],
+      "disconfirming_evidence": [
+        "The relationships are in different subsidiaries and products; no disclosed group-wide capital allocation or exclusivity policy."
+      ],
+      "next_test": "Track actual settlement volumes, customers, balances, cross-network interoperability and group-level investment allocation."
+    },
+    {
+      "id": "HYP-SBI-RECURRING-XRP-DISTRIBUTION",
+      "statement": "SBI accumulation, card rewards and points redemption can create recurring XRP customer credits and potential demand.",
+      "status": "PRODUCTS_CONFIRMED; NET_MARKET_BUY_UNKNOWN",
+      "supporting_sources": [
+        "SRC-SBI-VC-TRADE-ACCUMULATION-20261031",
+        "SRC-SBI-VISA-CRYPTO-CARD-CURRENT-TERMS-20261031",
+        "SRC-SBI-ORICO-XRP-POINTS-20260731"
+      ],
+      "disconfirming_evidence": [
+        "No XRP-specific subscriber counts, selection share, credited units or inventory source are disclosed.",
+        "Rewards may be fulfilled from existing inventory or OTC rather than contemporaneous spot purchases."
+      ],
+      "next_test": "Obtain aggregate XRP conversions, customer selections, inventory reconciliations and executed market/OTC purchase records."
+    },
+    {
+      "id": "HYP-RIPPLE-NTB-INSTITUTIONAL-CREDIBILITY",
+      "statement": "The effective Ripple National Trust Bank charter may strengthen institutional confidence in Ripple's regulated operating infrastructure.",
+      "status": "CHARTER_EFFECTIVE; XRP_EFFECT_UNKNOWN",
+      "supporting_sources": [
+        "SRC-OCC-RIPPLE-NATIONAL-TRUST-BANK-20261026"
+      ],
+      "disconfirming_evidence": [
+        "The OCC record does not establish general deposit-taking, XRP reserves, XRP collateral or token demand."
+      ],
+      "next_test": "Review approved activities, operating launch, custody products, regulatory filings and any explicit XRP-related service."
+    }
+  ],
+  "feature_admission": {
+    "institutional_event_timeline": "ADMITTED",
+    "relationship_graph": "ADMITTED_WITH_EVIDENCE_CLASSES",
+    "actual_capital_feature": "BLOCKED_EXCEPT_AVIVA_FUND_SHARE_INVESTMENT_CONTEXT",
+    "xrp_directional_feature": "NOT_ADMITTED",
+    "forecast_status": "NOT_ISSUED"
+  }
+}

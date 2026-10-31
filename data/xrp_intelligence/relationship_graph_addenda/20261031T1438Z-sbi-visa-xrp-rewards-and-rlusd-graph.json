@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "20261031T143857Z-sbi-visa-xrp-reward-and-ripple-rlusd-graph",
+  "captured_at_utc": "2026-10-31T14:38:57.150Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "nodes": [
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings",
+      "kind": "JAPANESE_FINANCIAL_SERVICES_GROUP"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "CRYPTO_ASSET_EXCHANGE_AND_CUSTODY_PROVIDER"
+    },
+    {
+      "id": "APLUS",
+      "label": "Aplus",
+      "kind": "CREDIT_CARD_ISSUER_AND_SERVICES"
+    },
+    {
+      "id": "VISA_JAPAN",
+      "label": "Visa Japan",
+      "kind": "PAYMENT_NETWORK"
+    },
+    {
+      "id": "SBI_SECURITIES",
+      "label": "SBI Securities",
+      "kind": "BROKERAGE_AND_INVESTMENT_PLATFORM"
+    },
+    {
+      "id": "SBI_SHINSEI_BANK",
+      "label": "SBI Shinsei Bank",
+      "kind": "JAPANESE_BANK"
+    },
+    {
+      "id": "CARDHOLDER",
+      "label": "SBI VISA Crypto Card holder",
+      "kind": "RETAIL_CUSTOMER"
+    },
+    {
+      "id": "REWARD_POINTS",
+      "label": "Card reward points",
+      "kind": "LOYALTY_REWARD"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "BTC",
+      "label": "Bitcoin",
+      "kind": "CRYPTO_ASSET"
+    },
+    {
+      "id": "ETH",
+      "label": "Ether",
+      "kind": "CRYPTO_ASSET"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple Labs",
+      "kind": "BLOCKCHAIN_AND_STABLECOIN_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "ISSUER_CONTROLLED_STABLECOIN"
+    },
+    {
+      "id": "VCTRADE",
+      "label": "VCTRADE service",
+      "kind": "RETAIL_CRYPTO_ACCOUNT_PLATFORM"
+    },
+    {
+      "id": "VISA_SBI_MOU",
+      "label": "SBI Holdings–Visa digital-finance MOU",
+      "kind": "EXPLORATORY_COMMERCIAL_AGREEMENT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-SBI-CARD-ISSUANCE",
+      "source": "SBI_VC_TRADE",
+      "target": "APLUS",
+      "relationship": "JOINT_CRYPTO_REWARD_CARD_ISSUANCE_WITH_VISA",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "SBI VC Trade, Aplus and Visa Japan jointly announced the SBI VISA Crypto Card on 2026-05-01.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-20260501"
+      ]
+    },
+    {
+      "id": "EDGE-CARD-POINTS-TO-XRP-OPTION",
+      "source": "REWARD_POINTS",
+      "target": "XRP",
+      "relationship": "OPTIONAL_AUTOMATIC_MONTHLY_CRYPTO_REWARD",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Cardholders can select XRP as one of BTC, ETH or XRP; points are automatically exchanged monthly into the selected asset, subject to a VCTRADE account.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-20260501",
+        "SRC-VISA-SBI-CRYPTO-CARD-CROSSPOST-20260501"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-SECURITIES-CARD-ACCUMULATION",
+      "source": "SBI_SECURITIES",
+      "target": "REWARD_POINTS",
+      "relationship": "INVESTMENT_TRUST_CARD_ACCUMULATION_EARNS_CRYPTO_REWARDS",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "SBI says its credit-card investment accumulation service can generate crypto rewards based on monthly investment contributions; actual XRP selection and amounts are undisclosed.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-20260501"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-VISA-DIGITAL-FINANCE-MOU",
+      "source": "SBI_HOLDINGS",
+      "target": "VISA_SBI_MOU",
+      "relationship": "EXPLORATORY_DIGITAL_FINANCE_AND_STABLECOIN_COOPERATION",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "SBI Holdings and Visa Japan signed an exploratory MOU covering digital finance, payments and potential digital-asset/stablecoin use; no XRP product is established by the MOU.",
+      "source_ids": [
+        "SRC-SBI-VISA-DIGITAL-FINANCE-MOU-20260501"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-SHINSEI-XRP-VOUCHER",
+      "source": "SBI_SHINSEI_BANK",
+      "target": "XRP",
+      "relationship": "TIME_DEPOSIT_CAMPAIGN_XRP_EXCHANGE_VOUCHER",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "SBI Shinsei Bank and SBI VC Trade announced XRP vouchers tied to eligible six-month yen deposits; issued voucher count, redemption and sourcing remain unknown.",
+      "source_ids": [
+        "SRC-SBI-SHINSEI-XRP-DEPOSIT-VOUCHER-20260202"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-RIPPLE-RLUSD-LISTING",
+      "source": "SBI_VC_TRADE",
+      "target": "RLUSD",
+      "relationship": "DIRECT_RLUSD_LISTING_AND_DISTRIBUTION",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "SBI VC Trade and Ripple announced RLUSD handling on VCTRADE beginning 2026-06-24; this is a stablecoin listing, not evidence of XRP spot purchases.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-RLUSD-LAUNCH-20260624"
+      ]
+    },
+    {
+      "id": "EDGE-RLUSD-ISSUER",
+      "source": "RIPPLE",
+      "target": "RLUSD",
+      "relationship": "ISSUER",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "RLUSD is Ripple's issued stablecoin and remains distinct from native XRP.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-RLUSD-LAUNCH-20260624"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SBI-XRP-RETAIL-REWARDS-FLOW",
+      "statement": "SBI's card and deposit programs may create recurring XRP retail distribution and inventory-replenishment needs.",
+      "status": "PROGRAMS_CONFIRMED; REALIZED_FLOW_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-20260501",
+        "SRC-SBI-SHINSEI-XRP-DEPOSIT-VOUCHER-20260202"
+      ],
+      "disconfirming_evidence": [
+        "Cardholder count, XRP selection share, redemption volumes and actual XRP sourcing are not disclosed.",
+        "Rewards may be funded from existing inventory or OTC rather than open-market purchases."
+      ],
+      "next_test": "Obtain aggregate monthly XRP reward units, voucher redemption totals and SBI VC Trade inventory/settlement disclosures."
+    },
+    {
+      "id": "HYP-SBI-VISA-XRP-STRATEGY",
+      "statement": "The SBI/Visa relationship is an XRP-specific strategic partnership.",
+      "status": "NOT_ESTABLISHED",
+      "supporting_source_ids": [
+        "SRC-SBI-VISA-DIGITAL-FINANCE-MOU-20260501"
+      ],
+      "disconfirming_evidence": [
+        "The MOU describes exploration of digital finance, payments and stablecoins; it does not name XRP or Ripple.",
+        "The crypto card is a product of SBI VC Trade, Aplus and Visa Japan, with BTC, ETH and XRP as customer-selectable alternatives."
+      ],
+      "next_test": "Require an official product, settlement or commercial agreement that explicitly names XRP before adding an XRP-specific Visa edge."
+    },
+    {
+      "id": "HYP-SBI-RLUSD-DRIVES-XRP-DEMAND",
+      "statement": "SBI VC Trade's RLUSD listing directly increases XRP demand.",
+      "status": "UNPROVEN",
+      "supporting_source_ids": [
+        "SRC-SBI-VC-TRADE-RLUSD-LAUNCH-20260624"
+      ],
+      "disconfirming_evidence": [
+        "RLUSD is a separate stablecoin; listing alone does not establish XRP collateral, trading-pair or bridge-asset use."
+      ],
+      "next_test": "Verify actual RLUSD/XRP pairs, payment/settlement routes, XRP inventory usage and executed flow."
+    }
+  ],
+  "notes": [
+    "SBI Holdings, SBI VC Trade, Aplus, SBI Securities and SBI Shinsei Bank are distinct legal/operating entities.",
+    "Visa is the payment-network partner; no direct Visa-to-Ripple or Visa-to-XRP product is established here.",
+    "The card's launch campaign ended; do not present its 2.5%/10% promotional rates as current.",
+    "A reward credit is distribution, not proof of open-market buying or net external capital."
+  ]
+}

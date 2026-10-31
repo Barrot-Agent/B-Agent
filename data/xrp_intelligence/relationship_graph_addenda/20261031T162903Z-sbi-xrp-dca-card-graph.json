@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T162903Z-SBI-DCA-CARD",
+  "captured_at_utc": "2026-10-31T16:29:03Z",
+  "source_ids": [
+    "SRC-SBI-VC-TRADE-DCA-TERMS-20261031T162903Z",
+    "SRC-SBI-VISA-CRYPTO-CARD-TERMS-20261031T162903Z"
+  ],
+  "evidence_classes": [
+    "CONFIRMED_PRIMARY_SOURCE",
+    "INFERENCE",
+    "UNKNOWN",
+    "DISCONFIRMING_EVIDENCE"
+  ],
+  "nodes": [
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "CRYPTO_EXCHANGE_AND_DEALER"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "JPY_CUSTOMER_BALANCE",
+      "label": "Customer-prefunded Japanese yen",
+      "kind": "CUSTOMER_CASH_BALANCE"
+    },
+    {
+      "id": "SBI_KANTAN_TSUMITATE",
+      "label": "SBI VC Trade Kantan Tsumitate",
+      "kind": "SCHEDULED_PURCHASE_PRODUCT"
+    },
+    {
+      "id": "SBI_VISA_CRYPTO_CARD",
+      "label": "SBI VISA Crypto Card",
+      "kind": "CRYPTO_REWARD_CARD"
+    },
+    {
+      "id": "CARD_POINTS",
+      "label": "Eligible card points",
+      "kind": "REWARD_LIABILITY"
+    },
+    {
+      "id": "XRP_REWARD_CREDIT",
+      "label": "Monthly XRP reward credit",
+      "kind": "CUSTOMER_CRYPTO_CREDIT"
+    },
+    {
+      "id": "SBI_CARD_CAMPAIGN_2026Q4",
+      "label": "September–October 2026 acquisition campaign",
+      "kind": "EXPIRED_TIME_LIMITED_PROMOTION"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-SBI-DCA-XRP",
+      "source": "SBI_KANTAN_TSUMITATE",
+      "target": "XRP",
+      "relationship": "AUTOMATIC_SCHEDULED_CUSTOMER_PURCHASE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "XRP is eligible for scheduled daily, weekly or monthly purchases of JPY 500–2,000,000 per order through SBI VC Trade.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-DCA-TERMS-20261031T162903Z"
+      ]
+    },
+    {
+      "id": "EDGE-JPY-PREFUND-DCA",
+      "source": "JPY_CUSTOMER_BALANCE",
+      "target": "SBI_KANTAN_TSUMITATE",
+      "relationship": "CUSTOMER_MUST_PREFUND_ORDER_BALANCE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Customers must deposit sufficient JPY into SBI VC Trade; automatic bank debit is not supported and insufficient balance can skip an order.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-DCA-TERMS-20261031T162903Z"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-VC-TRADE-DCA-PRODUCT",
+      "source": "SBI_VC_TRADE",
+      "target": "SBI_KANTAN_TSUMITATE",
+      "relationship": "OPERATES_SCHEDULED_PURCHASE_SERVICE",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade operates the Kantan Tsumitate service.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-DCA-TERMS-20261031T162903Z"
+      ]
+    },
+    {
+      "id": "EDGE-CARD-POINTS-XRP",
+      "source": "CARD_POINTS",
+      "target": "XRP_REWARD_CREDIT",
+      "relationship": "MONTHLY_AUTOMATIC_REWARD_CONVERSION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Eligible points are automatically converted monthly into the single crypto asset selected for the card, which may be XRP.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-TERMS-20261031T162903Z"
+      ]
+    },
+    {
+      "id": "EDGE-CARD-XRP-SELECTION",
+      "source": "SBI_VISA_CRYPTO_CARD",
+      "target": "XRP",
+      "relationship": "OPTIONAL_REWARD_ASSET_SELECTION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "XRP is one of three selectable reward assets; each card selects one asset.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-TERMS-20261031T162903Z"
+      ]
+    },
+    {
+      "id": "EDGE-CARD-CAMPAIGN-EXPIRED",
+      "source": "SBI_VISA_CRYPTO_CARD",
+      "target": "SBI_CARD_CAMPAIGN_2026Q4",
+      "relationship": "TIME_LIMITED_APPLICATION_CAMPAIGN_CLOSED",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The campaign application window ended October 31, 2026 Japan time; at capture it was November 1 JST and the page marked the campaign ended.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-TERMS-20261031T162903Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SBI-DCA-RECURRING-DEMAND",
+      "claim": "The scheduled accumulation service can generate recurring customer-funded XRP purchase demand when customers select XRP and maintain sufficient JPY balances.",
+      "status": "PRODUCT_MECHANISM_CONFIRMED; AGGREGATE_USE_AND_MARKET_IMPACT_UNKNOWN",
+      "support": [
+        "Official SBI VC Trade product page specifies automatic scheduled purchases, XRP eligibility and JPY order limits."
+      ],
+      "disconfirming": [
+        "No XRP-specific subscriber, order, fill, sourcing or venue data is disclosed.",
+        "SBI VC Trade may internalize orders or source inventory away from the public order book."
+      ],
+      "next_test": "Obtain XRP-specific monthly plan counts, executed order quantities, price/venue records and inventory reconciliation."
+    },
+    {
+      "id": "HYP-SBI-CARD-REWARD-DISTRIBUTION",
+      "claim": "Monthly card-point conversion may distribute XRP to cardholders but does not prove open-market XRP buying.",
+      "status": "CONVERSION_MECHANISM_CONFIRMED; XRP_SHARE_AND_SOURCING_UNKNOWN",
+      "support": [
+        "Official card page documents monthly conversion and one-asset selection including XRP."
+      ],
+      "disconfirming": [
+        "No XRP selection share, reward units or inventory procurement data is disclosed."
+      ],
+      "next_test": "Obtain monthly selected-asset mix, reward liability, XRP credited and source-of-inventory disclosures."
+    }
+  ]
+}

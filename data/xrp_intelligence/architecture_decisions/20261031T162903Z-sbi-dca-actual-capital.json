@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T162903Z-SBI-DCA-ACTUAL-CAPITAL",
+  "captured_at_utc": "2026-10-31T16:29:03Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NO_MARKET_FEATURE_ADMISSION",
+  "decisions": [
+    "Separate customer-funded scheduled XRP purchases from card-point rewards, shareholder coupons and other promotional distributions.",
+    "Record SBI VC Trade Kantan Tsumitate as a confirmed recurring purchase mechanism: JPY 500–2,000,000 per order, daily/weekly/monthly, requiring prefunded JPY.",
+    "Do not convert product limits into an estimate of aggregate XRP demand; active plan count, XRP selection, filled units, sourcing and external venue are unknown.",
+    "Record card reward conversion as a monthly crypto-credit mechanism, not proof of open-market XRP buying.",
+    "Mark the Sep–Oct 2026 card application campaign closed as of 2026-11-01 01:29 JST; keep later card issuance, spending and reward-delivery dates distinct.",
+    "Do not admit these product mechanics as directional price features until actual XRP execution and inventory sourcing are measured."
+  ],
+  "required_verification": [
+    "Obtain XRP-specific accumulation plan count and monthly JPY order/fill totals.",
+    "Reconcile SBI VC Trade execution records with external spot/OTC venue or market-maker inventory.",
+    "Obtain monthly card reward asset selection and XRP units credited.",
+    "Separate customer purchase demand from reward liability fulfillment and internal inventory transfers."
+  ],
+  "feature_admission": {
+    "product_mechanics": "ADMITTED",
+    "actual_capital_quantity": "BLOCKED",
+    "directional_price_feature": "NOT_ADMITTED"
+  },
+  "forecast_status": "NOT_ISSUED"
+}

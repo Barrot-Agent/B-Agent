@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T140328-SBI-INCENTIVE-CHANNELS",
+  "captured_at_utc": "2026-10-31T14:03:28Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "source_bundle_path": "data/xrp_intelligence/sources/sbi_xrp_incentive_channels_20261031.json",
+  "extends_graph_addendum": "20261031T133048Z-sbi-recurring-xrp-distribution",
+  "policy": {
+    "evidence_classes": [
+      "CONFIRMED_PRIMARY_SOURCE",
+      "SECONDARY_UNVERIFIED",
+      "INFERENCE",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "causal_rule": "A published incentive, bond principal, bank deposit, registered account or wallet balance is not a verified open-market XRP purchase. Require actual redemption units, sourcing and reconciled executions.",
+    "entity_rule": "Keep SBI Holdings, SBI VC Trade, SBI Shinsei Bank, SBI Global Asset Management, SBI ARUHI, SBI Ripple Asia and SBI Circle Holdings as distinct entities."
+  },
+  "nodes": [
+    {
+      "id": "SBI_START_BOND",
+      "label": "SBI START Bond",
+      "kind": "TOKENIZED_UNSECURED_CORPORATE_BOND"
+    },
+    {
+      "id": "IBET_FOR_FIN",
+      "label": "ibet for Fin",
+      "kind": "SECURITY_TOKEN_ISSUANCE_AND_RECORDKEEPING_PLATFORM"
+    },
+    {
+      "id": "SBI_SHINSEI_BANK",
+      "label": "SBI Shinsei Bank",
+      "kind": "BANK"
+    },
+    {
+      "id": "SBI_GLOBAL_ASSET_MANAGEMENT",
+      "label": "SBI Global Asset Management",
+      "kind": "LISTED_ASSET_MANAGEMENT_SUBSIDIARY"
+    },
+    {
+      "id": "SBI_ARUHI",
+      "label": "SBI ARUHI",
+      "kind": "MORTGAGE_AND_FINANCIAL_SERVICES_SUBSIDIARY"
+    },
+    {
+      "id": "SBI_VC_ACCOUNT_COUNT",
+      "label": "SBI VC Trade registered service-account count",
+      "kind": "COMPANY_REPORTED_DISTRIBUTION_METRIC"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-SBI-START-BOND-XRP-INCENTIVE",
+      "source": "SBI_START_BOND",
+      "target": "XRP",
+      "relationship": "INVESTOR_REWARD_200_JPY_PER_100K_JPY",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Eligible bond purchasers of at least JPY 100,000 were offered JPY 200 equivalent XRP per JPY 100,000 purchased, subject to account and claim conditions.",
+      "source_ids": [
+        "SRC-SBI-START-BOND-XRP-REWARD-20260220"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-START-BOND-IBET-FIN",
+      "source": "SBI_START_BOND",
+      "target": "IBET_FOR_FIN",
+      "relationship": "SECURITY_TOKEN_ISSUANCE_AND_RECORDKEEPING",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The bond is issued and administered on ibet for Fin; XRP is a separate reward, not the bond's settlement asset.",
+      "source_ids": [
+        "SRC-SBI-START-BOND-XRP-REWARD-20260220"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-SHINSEI-DEPOSIT-XRP-COUPON",
+      "source": "SBI_SHINSEI_BANK",
+      "target": "XRP",
+      "relationship": "TERM_DEPOSIT_CAMPAIGN_XRP_VOUCHER",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Shinsei Bank and SBI VC Trade offered tiered XRP vouchers to eligible six-month yen deposit customers; the campaign has ended and aggregate awards are unknown.",
+      "source_ids": [
+        "SRC-SBI-SHINSEI-DEPOSIT-XRP-COUPON-20260202"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER",
+      "source": "SBI_GLOBAL_ASSET_MANAGEMENT",
+      "target": "XRP",
+      "relationship": "SHAREHOLDER_XRP_BENEFIT_AND_SEPARATE_BONUS",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI Global Asset Management published JPY 2,500–12,000 XRP benefits plus a separate JPY 3,000 commemorative XRP benefit for a qualifying share tier; it is a separate shareholder population.",
+      "source_ids": [
+        "SRC-SBI-GLOBAL-ASSET-XRP-BENEFIT-20251027"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-ARUHI-XRP-SHAREHOLDER",
+      "source": "SBI_ARUHI",
+      "target": "XRP",
+      "relationship": "SHAREHOLDER_XRP_BENEFIT",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI ARUHI published JPY 500 or JPY 1,000 XRP shareholder benefits through SBI VC Trade; aggregate claims and sourcing are unknown.",
+      "source_ids": [
+        "SRC-SBI-ARUHI-XRP-BENEFIT-20260312"
+      ]
+    },
+    {
+      "id": "EDGE-SBI-VC-TRADE-REGISTERED-ACCOUNTS",
+      "source": "SBI_VC_TRADE",
+      "target": "SBI_VC_ACCOUNT_COUNT",
+      "relationship": "COMPANY_REPORTED_REGISTERED_ACCOUNTS",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBI VC Trade reported more than two million registered service accounts as of July 6, 2026; this is not an XRP-holder or active-trader count.",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-ACCOUNT-COUNT-20260707"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SBI-XRP-REWARD-FUNNEL-ACTUAL-FLOW",
+      "statement": "SBI's accumulation, card, points, bond and shareholder-benefit products create a recurring/periodic XRP distribution funnel, but do not yet establish the amount of incremental spot buying.",
+      "status": "OPEN",
+      "supporting_edge_ids": [
+        "EDGE-SBI-ACCUMULATION-XRP",
+        "EDGE-SBI-VISA-XRP-REWARD",
+        "EDGE-ORICO-XRP-POINTS",
+        "EDGE-SBI-START-BOND-XRP-INCENTIVE",
+        "EDGE-SBI-SHINSEI-DEPOSIT-XRP-COUPON"
+      ],
+      "counterevidence": [
+        "No program-level aggregate XRP units, redemption counts, source-of-funds or execution records are disclosed."
+      ],
+      "required_evidence": [
+        "Monthly accumulation executions",
+        "Card and Orico XRP redemption totals",
+        "Bond and campaign claim totals",
+        "SBI VC Trade treasury and OTC procurement records"
+      ]
+    },
+    {
+      "id": "HYP-SBI-REWARD-INVENTORY-VS-SPOT",
+      "statement": "SBI may fulfill rewards from existing inventory or OTC supply rather than open-market XRP purchases.",
+      "status": "OPEN",
+      "supporting_edge_ids": [
+        "EDGE-SBI-VISA-XRP-REWARD",
+        "EDGE-ORICO-XRP-POINTS",
+        "EDGE-SBI-START-BOND-XRP-INCENTIVE",
+        "EDGE-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT"
+      ],
+      "counterevidence": [
+        "The recurring accumulation service is described as automatically purchasing selected crypto-assets, but the execution venue is not disclosed."
+      ],
+      "required_evidence": [
+        "SBI VC Trade inventory changes",
+        "XRP/JPY executed trade records",
+        "OTC counterparty and settlement data"
+      ]
+    },
+    {
+      "id": "HYP-SBI-START-BOND-REWARD-UPPER-BOUND",
+      "statement": "The SBI START Bond's published terms imply a JPY 20 million maximum theoretical XRP reward face value if the entire JPY 10 billion issue qualified and all eligible investors claimed.",
+      "status": "INFERENCE",
+      "supporting_edge_ids": [
+        "EDGE-SBI-START-BOND-XRP-INCENTIVE"
+      ],
+      "counterevidence": [
+        "The bond issue sold out, but eligible purchase amount, completed claims and XRP units distributed are undisclosed."
+      ],
+      "required_evidence": [
+        "SBI's actual claim count and total XRP units credited"
+      ]
+    },
+    {
+      "id": "HYP-SBI-MULTIRAIL-NOT-EXCLUSIVE",
+      "statement": "SBI's XRP distribution channels coexist with its Ripple/XRPL, Circle/USDC/Arc and JPYSC activities; the evidence supports a multi-rail strategy, not exclusivity for XRP.",
+      "status": "OPEN",
+      "supporting_edge_ids": [
+        "EDGE-SBI-RIPPLE-ASIA-XRPL-POC",
+        "EDGE-SBI-CIRCLE-JV",
+        "EDGE-SBI-ARC-FOUNDING-VALIDATOR",
+        "EDGE-SBI-JPYSC-DISTRIBUTION"
+      ],
+      "counterevidence": [
+        "No public rail-by-rail revenue, settlement volume or treasury allocation has been disclosed."
+      ],
+      "required_evidence": [
+        "Production settlement volumes and customer usage by rail"
+      ]
+    },
+    {
+      "id": "HYP-SBI-ACCOUNT-COUNT-NOT-XRP-ADOPTION",
+      "statement": "The two-million SBI VC Trade registered-account figure measures platform reach, not XRP holders, active traders or net XRP capital.",
+      "status": "SUPPORTED",
+      "supporting_edge_ids": [
+        "EDGE-SBI-VC-TRADE-REGISTERED-ACCOUNTS"
+      ],
+      "counterevidence": [
+        "No XRP-specific account share or active-customer metric is disclosed."
+      ],
+      "required_evidence": [
+        "Active XRP account count and beneficial-owner cohort data"
+      ]
+    },
+    {
+      "id": "HYP-SBI-SHINSEI-REWARD-DATE-ANOMALY",
+      "statement": "The SBI Shinsei deposit-campaign release contains an internal fulfillment-date inconsistency that prevents precise reconstruction of the XRP voucher delivery and valuation sequence.",
+      "status": "SUPPORTED",
+      "supporting_edge_ids": [
+        "EDGE-SBI-SHINSEI-DEPOSIT-XRP-COUPON"
+      ],
+      "counterevidence": [
+        "The official release does not provide a later correction in the sources reviewed."
+      ],
+      "required_evidence": [
+        "Official clarification or customer-facing campaign terms with consistent dates"
+      ]
+    }
+  ]
+}

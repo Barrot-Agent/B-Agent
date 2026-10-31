@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "20261031T142000Z-sbi-group-wide-xrp-distribution-and-market-access",
+  "captured_at_utc": "2026-10-31T14:03:28Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "source_bundle_path": "data/xrp_intelligence/sources/sbi_xrp_group_wide_channels_20261031.json",
+  "relationship_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T142000Z-sbi-group-wide-channels.json",
+  "correction_path": "data/xrp_intelligence/corrections/20261031T142000Z-sbi-shinsei-voucher-timing-correction.json",
+  "findings": [
+    {
+      "id": "F1",
+      "statement": "At least five separate SBI-group legal entities published XRP shareholder-benefit programs for the 2026 cycle: SBI Holdings, SBI Shinsei Bank, SBI Global Asset Management, SBI ARUHI and SBI Insurance Group.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT-20260204",
+        "SRC-SBI-SHINSEI-BANK-XRP-SHAREHOLDER-20260225",
+        "SRC-SBI-GLOBAL-ASSET-XRP-BENEFIT-20251027",
+        "SRC-SBI-ARUHI-XRP-BENEFIT-20260312",
+        "SRC-SBI-INSURANCE-GROUP-XRP-SHAREHOLDER-20251029"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "The shareholder-benefit programs are separate legal-entity programs with different record dates, holding periods and coupon values; recipient populations may overlap and must not be summed.",
+      "evidence_class": "INFERENCE",
+      "source_ids": [
+        "SRC-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT-20260204",
+        "SRC-SBI-SHINSEI-BANK-XRP-SHAREHOLDER-20260225",
+        "SRC-SBI-GLOBAL-ASSET-XRP-BENEFIT-20251027",
+        "SRC-SBI-ARUHI-XRP-BENEFIT-20260312",
+        "SRC-SBI-INSURANCE-GROUP-XRP-SHAREHOLDER-20251029"
+      ]
+    },
+    {
+      "id": "F3",
+      "statement": "SBI VC Trade's historical XRP/JPY leveraged-trading campaign advertised a JPY 0.5 standard spread from June 22 to July 3, 2026, subject to widening during volatile conditions.",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-XRPJPY-SPREAD-PROMO-20260622"
+      ]
+    },
+    {
+      "id": "F4",
+      "statement": "The SBI Shinsei deposit campaign's May voucher email and July 2 XRP valuation reference do not by themselves prove an internal contradiction; redemption timing remains unresolved.",
+      "evidence_class": "CORRECTED_INTERPRETATION",
+      "source_ids": [
+        "SRC-SBI-SHINSEI-DEPOSIT-XRP-COUPON-20260202"
+      ]
+    },
+    {
+      "id": "F5",
+      "statement": "SBI VC Trade's two-million registered account count, card rewards, points redemptions and shareholder coupons establish distribution reach and product availability, not XRP-specific active users or net spot demand.",
+      "evidence_class": "INFERENCE",
+      "source_ids": [
+        "SRC-SBI-VC-TRADE-ACCOUNT-COUNT-20260707",
+        "SRC-SBI-VISA-CRYPTO-CARD-20260501",
+        "SRC-SBI-ORICO-XRP-POINTS-20260731",
+        "SRC-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT-20260204"
+      ]
+    }
+  ],
+  "program_status_as_of_cutoff": {
+    "ongoing_or_current_product_channels": [
+      "SBI VC Trade scheduled accumulation service",
+      "SBI VISA Crypto Card launched May 1, 2026; current live terms not independently rechecked",
+      "Orico Points crypto redemption launched July 31, 2026; current redemption availability not independently rechecked"
+    ],
+    "future_or_pending_channel": [
+      "SBI Shinsei Bank FY2026 shareholder coupon with early-December 2026 XRP price reference"
+    ],
+    "historical_or_expired_channels": [
+      "SBI START Bond XRP reward claim deadline May 15, 2026",
+      "SBI Shinsei six-month deposit campaign entry/deposit windows ended March 31, 2026",
+      "SBI Holdings shareholder coupon deadline July 31, 2026",
+      "SBI Global Asset Management FY2026 shareholder benefit",
+      "SBI ARUHI FY2026 shareholder benefit application period August 2026",
+      "SBI Insurance Group FY2026 shareholder benefit",
+      "SBI VC Trade XRP/JPY leverage spread campaign June 22–July 3, 2026"
+    ]
+  },
+  "actual_capital_separation": {
+    "bond_principal_jpy": 10000000000,
+    "bond_xrp_reward_rate": 0.002,
+    "bond_max_theoretical_reward_jpy": 20000000,
+    "bond_max_reward_status": "INFERRED_UPPER_BOUND_NOT_ACTUAL_REDEMPTION",
+    "shareholder_reward_programs_count": 5,
+    "shareholder_program_total_value_jpy": "UNKNOWN",
+    "recipient_deduplication": "NOT_AVAILABLE",
+    "deposit_campaign_max_voucher_per_customer_jpy": 20000,
+    "deposit_campaign_aggregate_reward_value": "UNKNOWN",
+    "sbi_vc_trade_registered_accounts": 2000000,
+    "account_count_cutoff": "2026-07-06",
+    "xrp_specific_active_account_count": "UNKNOWN",
+    "open_market_xrp_purchase_value": "UNKNOWN",
+    "net_external_xrp_capital": "UNKNOWN"
+  },
+  "feature_admission": {
+    "status": "NOT_ADMITTED",
+    "reason": "No issuer-level redemption totals, XRP procurement source, execution venue, active-XRP-account count or reconciled spot executions."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Distribution programs and promotional spreads do not establish incremental net spot demand or a calibrated price signal."
+  },
+  "next_actions": [
+    "Obtain program-level XRP units credited for all five shareholder-benefit issuers.",
+    "Obtain SBI Shinsei Bank coupon redemption instructions and actual fulfillment totals.",
+    "Measure SBI VC Trade XRP/JPY realized spread, order-book depth, slippage and executed turnover.",
+    "Deduplicate shareholder/customer populations before estimating aggregate distribution reach.",
+    "Determine whether XRP reward sourcing uses inventory, OTC or spot execution.",
+    "Keep SBI's Ripple/XRPL, Circle/USDC/Arc and JPYSC rails separate."
+  ]
+}

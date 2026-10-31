@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "SBI-XRP-GROUP-WIDE-CHANNELS-20261031",
+  "captured_at_utc": "2026-10-31T14:03:28Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "purpose": "Append additional SBI-group XRP shareholder programs and SBI VC Trade XRP/JPY tactical market-access evidence.",
+  "sources": [
+    {
+      "source_id": "SRC-SBI-SHINSEI-BANK-XRP-SHAREHOLDER-20260225",
+      "publisher": "SBI Shinsei Bank",
+      "title": "FY2026 SBI Shinsei Bank shareholder benefit includes an optional XRP coupon",
+      "url": "https://www.sbigroup.co.jp/news/2026/0225_16135.html",
+      "published_at_utc": "2026-02-25T00:00:00Z",
+      "source_type": "official_shareholder_benefit_terms",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_SHINSEI_BANK_SHAREHOLDER_RELEASE",
+      "claims": [
+        "Eligible shareholders holding at least 100 shares as of March 31, 2026 may choose an approximately JPY 2,000 XRP coupon or a separate SBI Alapromo product.",
+        "The XRP amount is to be calculated using SBI VC Trade's selling price in early December 2026, after the application deadline."
+      ],
+      "limitations": [
+        "This is a separate shareholder program from SBI Shinsei Bank's six-month yen-deposit campaign.",
+        "The coupon is optional and has not been shown to have been redeemed or converted into XRP by the October 31 cutoff.",
+        "No eligible-shareholder count, selection rate, total XRP units, procurement method or open-market execution is disclosed."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-INSURANCE-GROUP-XRP-SHAREHOLDER-20251029",
+      "publisher": "SBI Insurance Group",
+      "title": "FY2026 shareholder benefit includes JPY 2,500–12,000 equivalent XRP",
+      "url": "https://www.sbigroup.co.jp/news/2025/1029_15853.html",
+      "published_at_utc": "2025-10-29T00:00:00Z",
+      "source_type": "official_shareholder_benefit_terms",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_INSURANCE_GROUP_SHAREHOLDER_RELEASE",
+      "claims": [
+        "For the March 31, 2026 record date, the published XRP benefit was JPY 2,500 for 100–499 shares, JPY 10,000 for 500 or more shares with less than two years of continuous holding, and JPY 12,000 for 500 or more shares held for more than two years.",
+        "XRP was to be credited through an SBI VC Trade account after the shareholder completed the coupon procedure."
+      ],
+      "limitations": [
+        "SBI Insurance Group is a separate listed group company and has a shareholder population distinct from SBI Holdings, SBI Global Asset Management and SBI ARUHI.",
+        "No eligible-holder count, claim rate, aggregate XRP units, procurement source or market impact is disclosed.",
+        "The program terms are not evidence of net external XRP capital."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VC-TRADE-XRPJPY-SPREAD-PROMO-20260622",
+      "publisher": "SBI VC Trade",
+      "title": "XRP/JPY leverage trading campaign with 0.5 yen standard spread",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0622_16420.html",
+      "published_at_utc": "2026-06-22T00:00:00Z",
+      "source_type": "official_exchange_trading_campaign",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "independence_group": "SBI_VC_TRADE_XRPJPY_CAMPAIGN",
+      "claims": [
+        "SBI VC Trade promoted XRP/JPY leveraged trading from June 22, 2026 at 16:00 through July 3, 2026 at 11:59, with a stated standard spread of JPY 0.5 during the campaign.",
+        "The company said the spread could widen temporarily during sharp market moves and that it would update the standard spread to reflect market conditions.",
+        "The release states that XRP was one of the crypto-assets held by many SBI VC Trade customers and was used in shareholder-benefit programs by several companies."
+      ],
+      "limitations": [
+        "The campaign has ended; the stated standard spread is not a current quote.",
+        "A standard spread offer is not a time-weighted average realized spread, order-book depth, executed volume or proof of continuous market-making capacity.",
+        "No XRP-specific trade count, turnover, slippage or market-share result is disclosed."
+      ]
+    }
+  ],
+  "independence_policy": {
+    "rule": "Each issuer's own release is primary evidence for its program; related group companies are separate legal entities and shareholder populations.",
+    "no_market_flow_inference": "Coupon face value, account registrations and promotional spreads do not establish open-market XRP purchases or net external capital.",
+    "time_policy": "Historical campaigns are not represented as active; future coupon price references are not treated as completed distributions."
+  }
+}
