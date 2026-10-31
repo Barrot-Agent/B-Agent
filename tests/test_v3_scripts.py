@@ -704,3 +704,26 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+def test_merge_queue_workflow_is_read_only_inventory() -> None:
+    workflow_path = REPO_ROOT / ".github" / "workflows" / "merge-queue.yml"
+    workflow = workflow_path.read_text(encoding="utf-8")
+
+    assert "workflow_dispatch:" in workflow
+    assert "contents: read" in workflow
+    assert "pull-requests: read" in workflow
+    for forbidden in (
+        "contents: write",
+        "pull-requests: write",
+        "gh pr merge",
+        "gh pr comment",
+        "update-branch",
+        "--delete-branch",
+        "--method PUT",
+        "--method POST",
+        "--method DELETE",
+        "mode=all",
+        "dry_run",
+    ):
+        assert forbidden not in workflow
