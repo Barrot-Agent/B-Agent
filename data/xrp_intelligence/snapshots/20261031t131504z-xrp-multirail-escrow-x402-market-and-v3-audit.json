@@ -53,7 +53,11 @@
     "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
     "SRC-20261031T121200Z-TRADRADAR-XRP-DERIVATIVES",
     "SRC-20261031T121200Z-ALPHA-FINANCE-XRP-ETF-FLOWS",
-    "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS"
+    "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS",
+    "SRC-20261031T131504Z-SBI-VC-TRADE-OWNERSHIP",
+    "SRC-20261031T131504Z-SBI-VC-TRADE-ACCUMULATION-SERVICE",
+    "SRC-20261031T131504Z-SBI-B2C2-MARKET-MAKER-LIQUIDITY",
+    "SRC-20261031T131504Z-SBI-VC-TRADE-2026Q1-CUSTODY-SCALE"
   ],
   "new_source_ids": [
     "SRC-20261031T131504Z-XRPL-ESCROW-SCHEDULE",
@@ -79,7 +83,11 @@
     "SRC-20261031T131504Z-GITHUB-MAIN-WORKFLOW-AUDIT",
     "SRC-20261031T131504Z-GITHUB-PR-INVENTORY",
     "SRC-20261031T131504Z-GITHUB-AUTONOMOUS-RESOLVER",
-    "SRC-20261031T131504Z-REUTERS-MACRO-CAPITAL-FLOWS"
+    "SRC-20261031T131504Z-REUTERS-MACRO-CAPITAL-FLOWS",
+    "SRC-20261031T131504Z-SBI-VC-TRADE-OWNERSHIP",
+    "SRC-20261031T131504Z-SBI-VC-TRADE-ACCUMULATION-SERVICE",
+    "SRC-20261031T131504Z-SBI-B2C2-MARKET-MAKER-LIQUIDITY",
+    "SRC-20261031T131504Z-SBI-VC-TRADE-2026Q1-CUSTODY-SCALE"
   ],
   "existing_source_ids": [
     "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
@@ -151,6 +159,14 @@
     {
       "classification": "verified_software_state",
       "finding": "PR #1413 passed 357 tests plus 8 subtests and its fail-closed gate; PR #1414 passed 380 tests plus 8 subtests and its fail-closed gate. Both are open draft/unmerged; main remains unchanged."
+    },
+    {
+      "classification": "confirmed_product_mechanism_unknown_volume",
+      "finding": "SBI VC Trade officially offers a recurring Accumulation Service that automatically purchases selected crypto-assets, including XRP, at predetermined amounts/frequencies. This is a direct purchase channel when customers select XRP; aggregate XRP selection and execution volumes are not disclosed."
+    },
+    {
+      "classification": "company_reported_historical_liquidity_claim",
+      "finding": "SBI Holdings says B2C2 has been connected to SBI VC Trade since September 2020 and daily trading volume increased tenfold after the connection. This is historical all-asset volume context, not current XRP-specific depth."
     }
   ],
   "event_timeline": [
@@ -358,6 +374,16 @@
       "activity": "Binance reserve replenishment",
       "classification": "UNCONFIRMED_TOKEN_SPECIFIC_PURCHASE",
       "missing": "XRP-specific purchase amount, wallet addresses, execution and same-time PoR liabilities"
+    },
+    {
+      "activity": "SBI VC Trade Accumulation Service",
+      "classification": "DIRECT_RECURRING_CRYPTO_PURCHASE_MECHANISM_IF_XRP_SELECTED",
+      "missing": "XRP selection share, monthly XRP purchase amount, execution price, market-vs-inventory sourcing"
+    },
+    {
+      "activity": "SBI VCTRADE/BITPOINT JPY 610B deposit balance",
+      "classification": "ALL_ASSET_PLATFORM_CUSTODY_SCALE",
+      "missing": "XRP-specific custody share and active XRP customer count"
     }
   ],
   "data_quality": [
@@ -399,7 +425,10 @@
     "Only ChatGPT and the GitHub connector are verified active. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unauthenticated and untested as live collaborators.",
     "The exact context of 'actual capital' remains unresolved. ASK Coin's leading candidate remains Permission Coin ASK with Coinbase Embedded Wallet, but no direct XRP/XRPL integration is established. Camilla Stephenson's exact YouTube channel identity and exhaustive public-video inventory remain unresolved.",
     "The Japanese SBIC candidate is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., separate from SBI Holdings. Its ChatGPT/Copilot seminar is educational, not evidence of an OpenAI partnership. The exact referent of 'ChatGPT SBIC' remains unresolved.",
-    "No directional XRP forecast is issued. The new escrow, exchange, ETF, derivatives, stablecoin, x402 and macro observations are not admitted as predictive features until point-in-time quality, independence, scope and out-of-sample tests pass."
+    "No directional XRP forecast is issued. The new escrow, exchange, ETF, derivatives, stablecoin, x402 and macro observations are not admitted as predictive features until point-in-time quality, independence, scope and out-of-sample tests pass.",
+    "SBI VC Trade's Accumulation Service is a direct recurring purchase mechanism for selected crypto-assets including XRP, but the XRP selection share, aggregate purchase volume and execution/source-of-inventory data are not disclosed; do not quantify actual XRP capital from the product description alone.",
+    "SBI's approximately JPY 610B VCTRADE/BITPOINT deposit balance and 1.922M March 2026 accounts are all-asset group-platform figures, not XRP-specific holdings or active XRP customers; the figures are dated April 29/March 2026.",
+    "SBI's statement that B2C2 connection increased SBI VC Trade daily trading volume tenfold is a historical company-reported comparison since 2020, not current XRP-specific market depth or an independently measured causal effect."
   ],
   "next_actions": [
     "At 2026-11-01 00:00 UTC, capture the two scheduled XRP escrow objects and validated EscrowFinish transactions; distinguish eligibility, finish, re-escrow, destination and exchange disposition.",

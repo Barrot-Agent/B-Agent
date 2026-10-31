@@ -203,6 +203,24 @@
       "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
       "entity_type": "investment_company",
       "classification": "verified_entity_separate_from_sbi_holdings"
+    },
+    {
+      "id": "b2c2",
+      "label": "B2C2",
+      "entity_type": "digital_asset_market_maker",
+      "classification": "verified_entity"
+    },
+    {
+      "id": "sbi_accumulation",
+      "label": "SBI VC Trade Accumulation Service",
+      "entity_type": "recurring_purchase_product",
+      "classification": "verified_product"
+    },
+    {
+      "id": "sbi_vc_trade_accounts",
+      "label": "SBI VC Trade/BITPOINT combined platform accounts and deposits",
+      "entity_type": "custody_scale_metric",
+      "classification": "company_reported"
     }
   ],
   "edges": [
@@ -214,10 +232,7 @@
       "classification": "confirmed_fact",
       "confidence": "high",
       "source_ids": [
-        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
-        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD-BIZ",
-        "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
-        "SRC-20261031T121200Z-SBI-VCTRADE-2M-ACCOUNTS"
+        "SRC-20261031T131504Z-SBI-VC-TRADE-OWNERSHIP"
       ]
     },
     {
@@ -297,7 +312,7 @@
       "classification": "confirmed_network_role",
       "confidence": "high",
       "source_ids": [
-        "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE"
+        "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV"
       ]
     },
     {
@@ -371,11 +386,10 @@
       "id": "E15",
       "from": "coinbase",
       "to": "usdc",
-      "relation": "major_distribution_and_product_balance_relationship_with_circle",
+      "relation": "coinbase_q3_reports_large_usdc_product_balances_and_stablecoin_revenue",
       "classification": "confirmed_economic_relationship",
       "confidence": "high",
       "source_ids": [
-        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
         "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS"
       ]
     },
@@ -436,17 +450,6 @@
       ]
     },
     {
-      "id": "E21",
-      "from": "morpho",
-      "to": "cbxrp",
-      "relation": "cbxrp_collateral_in_base_lending_markets",
-      "classification": "confirmed_market_structure",
-      "confidence": "high",
-      "source_ids": [
-        "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS"
-      ]
-    },
-    {
       "id": "E22",
       "from": "xrp_escrow",
       "to": "xrp",
@@ -492,36 +495,62 @@
       ]
     },
     {
-      "id": "E26",
-      "from": "sbic_east",
-      "to": "github_main",
-      "relation": "no_direct_project_or_partnership_edge_established",
-      "classification": "unknown_not_inferred",
+      "id": "E27",
+      "from": "sbi_vc_trade",
+      "to": "sbi_accumulation",
+      "relation": "offers_recurring_automatic_crypto_asset_purchases_including_xrp",
+      "classification": "confirmed_product_mechanism_unknown_xrp_volume",
       "confidence": "high",
       "source_ids": [
-        "SRC-20261031T121200Z-SBIC-EAST-JAPAN-PROFILE",
-        "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE"
+        "SRC-20261031T131504Z-SBI-VC-TRADE-ACCUMULATION-SERVICE"
+      ]
+    },
+    {
+      "id": "E28",
+      "from": "sbi_vc_trade",
+      "to": "b2c2",
+      "relation": "connected_market_maker_and_liquidity_provider_since_2020",
+      "classification": "confirmed_historical_company_reported",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-SBI-B2C2-MARKET-MAKER-LIQUIDITY"
+      ]
+    },
+    {
+      "id": "E29",
+      "from": "sbi_vc_trade",
+      "to": "sbi_vc_trade_accounts",
+      "relation": "combined_vctrade_bitpoint_accounts_and_all_asset_deposit_scale",
+      "classification": "company_reported_platform_scale_not_xrp_specific",
+      "confidence": "high",
+      "source_ids": [
+        "SRC-20261031T131504Z-SBI-VC-TRADE-2026Q1-CUSTODY-SCALE"
       ]
     }
   ],
   "hypotheses": [
     {
       "id": "H01",
-      "claim": "SBI's crypto reward cards and other XRP incentives create a recurring retail distribution channel for XRP.",
+      "claim": "SBI has both direct recurring crypto-purchase rails and XRP reward-credit rails; together they create potential retail XRP acquisition/distribution, but actual XRP purchase volume remains unknown.",
       "classification": "inference_from_confirmed_mechanism",
       "confidence": "medium_for_distribution_low_for_market_impact",
       "supporting": [
         "SBI VC Trade card allows XRP selection and monthly point conversion",
         "Corporate/business-owner card adds employee cards",
         "SBI VC Trade reports 2M registered accounts",
-        "START bond, shareholder and deposit reward programs add separate XRP-credit channels"
+        "START bond, shareholder and deposit reward programs add separate XRP-credit channels",
+        "SBI VC Trade officially offers automatic recurring crypto purchases including XRP",
+        "SBI's combined VCTRADE/BITPOINT platform reports 1.922M accounts and JPY 610B all-asset deposits as of March/April 2026",
+        "B2C2 market-maker connection is documented historically"
       ],
       "disconfirming_or_alternative": [
         "No XRP selection share, monthly redemption volume or aggregate reward pool is disclosed",
         "Point credits may be funded from existing inventory or issuer/partner inventory rather than new spot purchases",
-        "Registered accounts are not active XRP users"
+        "Registered accounts are not active XRP users",
+        "The 1.922M account and JPY 610B figures are all-asset platform scale, not XRP-specific active customers or deposits",
+        "B2C2 tenfold daily-volume increase is a historical company-reported all-asset metric, not current XRP depth"
       ],
-      "decision": "Track reward XRP credited, source of inventory and any market purchase separately; do not count as net external capital."
+      "decision": "Separate direct accumulation purchases from reward credits and platform custody; request/monitor XRP-specific purchase volumes and wallet flows before capital attribution."
     },
     {
       "id": "H02",
@@ -694,7 +723,8 @@
     "Do not infer that Coinbase's x402 standard means Coinbase operates T54's XRPL facilitator.",
     "Do not infer that 1B escrow eligibility means 1B XRP becomes circulating at midnight.",
     "Do not infer that Binance's aggregate reserve change equals the stolen amount or that a company-wide $1.34B acquisition is XRP buying.",
-    "Do not infer model skill from the retired 45.5% variable-horizon metric."
+    "Do not infer model skill from the retired 45.5% variable-horizon metric.",
+    "Do not infer that SBI's 1.922M accounts or JPY 610B platform deposits are XRP holdings or active XRP demand."
   ],
   "unknowns": [
     "Actual SBI XRP reward redemptions, XRP selection share and inventory sourcing.",
@@ -704,6 +734,7 @@
     "Circle/ACI pilot live settlement volumes and asset-provider roadmap.",
     "Reconciled x402 cumulative transactions and asset-level settlement value.",
     "Actual EscrowFinish transactions and post-eligibility destinations for the two 500M objects.",
-    "Binance same-wallet source-wallet histories and same-time PoR liabilities."
+    "Binance same-wallet source-wallet histories and same-time PoR liabilities.",
+    "SBI VC Trade's XRP-specific monthly accumulation purchases, card reward credits and B2C2-supported XRP order-book depth."
   ]
 }

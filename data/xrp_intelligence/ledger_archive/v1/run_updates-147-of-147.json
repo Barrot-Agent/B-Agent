@@ -64,7 +64,11 @@
           "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
           "SRC-20261031T121200Z-TRADRADAR-XRP-DERIVATIVES",
           "SRC-20261031T121200Z-ALPHA-FINANCE-XRP-ETF-FLOWS",
-          "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS"
+          "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS",
+          "SRC-20261031T131504Z-SBI-VC-TRADE-OWNERSHIP",
+          "SRC-20261031T131504Z-SBI-VC-TRADE-ACCUMULATION-SERVICE",
+          "SRC-20261031T131504Z-SBI-B2C2-MARKET-MAKER-LIQUIDITY",
+          "SRC-20261031T131504Z-SBI-VC-TRADE-2026Q1-CUSTODY-SCALE"
         ],
         "new_source_ids": [
           "SRC-20261031T131504Z-XRPL-ESCROW-SCHEDULE",
@@ -90,7 +94,11 @@
           "SRC-20261031T131504Z-GITHUB-MAIN-WORKFLOW-AUDIT",
           "SRC-20261031T131504Z-GITHUB-PR-INVENTORY",
           "SRC-20261031T131504Z-GITHUB-AUTONOMOUS-RESOLVER",
-          "SRC-20261031T131504Z-REUTERS-MACRO-CAPITAL-FLOWS"
+          "SRC-20261031T131504Z-REUTERS-MACRO-CAPITAL-FLOWS",
+          "SRC-20261031T131504Z-SBI-VC-TRADE-OWNERSHIP",
+          "SRC-20261031T131504Z-SBI-VC-TRADE-ACCUMULATION-SERVICE",
+          "SRC-20261031T131504Z-SBI-B2C2-MARKET-MAKER-LIQUIDITY",
+          "SRC-20261031T131504Z-SBI-VC-TRADE-2026Q1-CUSTODY-SCALE"
         ],
         "existing_source_ids": [
           "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
@@ -118,9 +126,9 @@
           "SRC-20261031T121200Z-ALPHA-FINANCE-XRP-ETF-FLOWS",
           "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS"
         ],
-        "new_relationship_edges": 24,
+        "new_relationship_edges": 27,
         "new_hypotheses": 12,
-        "new_market_observations": 8,
+        "new_market_observations": 7,
         "market_features_admitted": false,
         "forecast_status": "NOT_ISSUED"
       },
@@ -133,7 +141,8 @@
         "Record Coinbase's x402 contribution to the Linux Foundation as vendor-neutral protocol governance. T54's XRPL facilitator is third-party; cumulative volume claims remain unreconciled.",
         "Record SBI's XRP reward card and wider XRP distribution rails separately from cash investment: monthly points, security-token-bond rewards and shareholder/deposit vouchers do not establish net market purchases.",
         "Record Circle/ACI USDC settlement in Colombia as a multi-rail pilot without XRP mention or disclosed settlement volume.",
-        "Keep ETF and derivatives series provider-specific. Maketo's October 30 outflow, XRP Insights' provisional October 30 row and Alpha's October 29 inflow are not a single synchronized flow series."
+        "Keep ETF and derivatives series provider-specific. Maketo's October 30 outflow, XRP Insights' provisional October 30 row and Alpha's October 29 inflow are not a single synchronized flow series.",
+        "Add SBI VC Trade's official recurring Accumulation Service as a direct purchase mechanism for XRP when customers select XRP; the mechanism is confirmed, but actual XRP purchase volumes and sourcing are unknown."
       ],
       "repository_audit": {
         "main_sha": "52ce593d7f4075eb0cb6cac078bf8486d6fab2c1",

@@ -53,11 +53,16 @@
     "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
     "SRC-20261031T121200Z-TRADRADAR-XRP-DERIVATIVES",
     "SRC-20261031T121200Z-ALPHA-FINANCE-XRP-ETF-FLOWS",
-    "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS"
+    "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS",
+    "SRC-20261031T131504Z-SBI-VC-TRADE-OWNERSHIP",
+    "SRC-20261031T131504Z-SBI-VC-TRADE-ACCUMULATION-SERVICE",
+    "SRC-20261031T131504Z-SBI-B2C2-MARKET-MAKER-LIQUIDITY",
+    "SRC-20261031T131504Z-SBI-VC-TRADE-2026Q1-CUSTODY-SCALE"
   ],
   "context": [
     "Recent research found a scheduled 1B XRP escrow eligibility event, new SBI retail/business reward channels, a direct Ripple-Coinbase RLUSD partnership, Circle/ACI USDC settlement, Coinbase-contributed x402 with a third-party XRPL facilitator, and conflicting market-data scopes.",
-    "Current repository main contains active write-capable workflows, while fresh-main safety and prediction-integrity PRs have passed exact-head CI but remain unmerged."
+    "Current repository main contains active write-capable workflows, while fresh-main safety and prediction-integrity PRs have passed exact-head CI but remain unmerged.",
+    "SBI VC Trade is 100% owned by the SBI Group, offers recurring automatic purchases of XRP, and has a historical B2C2 market-maker connection; these are separate from SBIC East Japan."
   ],
   "decisions": [
     "Represent escrow lifecycle as ELIGIBLE, FINISHED, RE-ESCROWED, TRANSFERRED_TO_EXCHANGE and SOLD; never equate FinishAfter with circulating supply or market sale.",
@@ -70,7 +75,8 @@
     "Keep ETF flow and derivatives observations provider-specific; provisional fund rows and different contract universes are not averaged.",
     "Do not admit new SBI, escrow, RLUSD, x402, ETF, exchange-wallet or derivatives metrics into the predictive feature store until provenance, timestamp, scope, independence and point-in-time availability are validated.",
     "Do not issue a directional forecast. PR #1414 is a forecast/outcome ledger foundation, not a trained model or calibrated walk-forward predictor.",
-    "Preserve main. PR #1413 and #1414 remain open draft proposals; no merge or external workflow dispatch without approval."
+    "Preserve main. PR #1413 and #1414 remain open draft proposals; no merge or external workflow dispatch without approval.",
+    "Distinguish SBI VC Trade's recurring Accumulation Service (a direct purchase mechanism when XRP is selected) from crypto-card points, shareholder coupons and bond rewards (distribution credits); platform-wide accounts/deposits and B2C2 liquidity claims are not XRP-specific."
   ],
   "rejected_inferences": [
     "1B XRP will automatically enter circulation or be sold on November 1.",
@@ -82,7 +88,8 @@
     "Binance has replenished exactly 233.46M XRP because aggregate exchange balances are similar in size.",
     "ETF cumulative net inflows equal current XRP holdings or net external capital.",
     "Different OI provider totals can be averaged into a market-wide value.",
-    "PR-head CI passing means the proposed fixes are active on main."
+    "PR-head CI passing means the proposed fixes are active on main.",
+    "SBI VC Trade's 1.922M accounts or JPY 610B all-asset deposit balance represent XRP customers or XRP holdings."
   ],
   "feature_admission": {
     "market_features_admitted": false,

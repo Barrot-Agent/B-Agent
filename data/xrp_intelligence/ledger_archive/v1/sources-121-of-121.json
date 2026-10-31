@@ -3,7 +3,7 @@
   "schema_version": "1.0",
   "chunk_index": 120,
   "chunk_count": 121,
-  "record_count": 24,
+  "record_count": 28,
   "created_at_utc": "2026-10-31T13:15:04Z",
   "records": [
     {
@@ -293,6 +293,54 @@
       "independence_group": "reuters_macro",
       "status": "SOURCED_SECONDARY",
       "notes": "Reports global equity-fund inflows alongside US equity-fund outflows, Asia and Europe equity inflows, money-market outflows and bond/technology inflows. These are broad capital-rotation observations, not XRP-specific flows or evidence of XRP purchases."
+    },
+    {
+      "id": "SRC-20261031T131504Z-SBI-VC-TRADE-OWNERSHIP",
+      "url": "https://www.sbigroup.co.jp/english/company/group/sbivc.html",
+      "title": "SBI VC Trade corporate profile and 100% SBI Group ownership",
+      "publisher": "SBI Holdings",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T13:15:04Z",
+      "evidence_type": "OFFICIAL_CORPORATE_PROFILE",
+      "independence_group": "sbi_holdings_official",
+      "status": "VERIFIED_PRIMARY",
+      "notes": "SBI Holdings' corporate profile lists SBI VC Trade Co., Ltd. as a principal group company and states SBI Group holds 100% of voting rights as of June 23, 2026."
+    },
+    {
+      "id": "SRC-20261031T131504Z-SBI-VC-TRADE-ACCUMULATION-SERVICE",
+      "url": "https://www.sbigroup.co.jp/english/business/cryptoasset/exchange.html",
+      "title": "SBI VC Trade spot, lending and recurring accumulation services",
+      "publisher": "SBI Holdings",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T13:15:04Z",
+      "evidence_type": "OFFICIAL_PRODUCT_DESCRIPTION",
+      "independence_group": "sbi_vc_trade_official",
+      "status": "VERIFIED_PRIMARY",
+      "notes": "SBI states its exchange handles XRP and offers an Accumulation Service that automatically purchases selected crypto-assets on a recurring schedule and predetermined amount/frequency. Actual XRP selection share, aggregate monthly purchases and market execution volumes are not disclosed."
+    },
+    {
+      "id": "SRC-20261031T131504Z-SBI-B2C2-MARKET-MAKER-LIQUIDITY",
+      "url": "https://www.sbigroup.co.jp/english/business/cryptoasset/marketmaker.html",
+      "title": "B2C2 market-making connection to SBI VC Trade",
+      "publisher": "SBI Holdings",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T13:15:04Z",
+      "evidence_type": "OFFICIAL_CORPORATE_DESCRIPTION",
+      "independence_group": "sbi_b2c2_official",
+      "status": "VERIFIED_HISTORICAL_CLAIM",
+      "notes": "SBI says B2C2 has been connected to SBI VC Trade since September 2020 and that daily trading volume increased tenfold after the connection. This is a historical company-reported comparison, not a current order-book depth or independently measured XRP-specific volume."
+    },
+    {
+      "id": "SRC-20261031T131504Z-SBI-VC-TRADE-2026Q1-CUSTODY-SCALE",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "title": "SBI VC Trade/BITPOINT combined accounts and deposit balance",
+      "publisher": "SBI Holdings",
+      "published_at_utc": "2026-05-01T00:00:00Z",
+      "retrieved_at_utc": "2026-10-31T13:15:04Z",
+      "evidence_type": "OFFICIAL_INVESTOR_PRESENTATION",
+      "independence_group": "sbi_holdings_investor_relations",
+      "status": "VERIFIED_COMPANY_REPORTED",
+      "notes": "SBI investor presentation reports 1.922M combined accounts at March 2026 after the April 1 VCTRADE/BITPOINT merger and approximately JPY 610B total deposit balance as of April 29, 2026. These are all-asset platform figures, not XRP-specific accounts or deposits."
     }
   ]
 }
