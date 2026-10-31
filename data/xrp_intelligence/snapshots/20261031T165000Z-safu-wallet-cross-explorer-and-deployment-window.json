@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0",
+  "index_format_version": "3.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "XRP-20261031T165000Z-SAFU-WALLET-CROSS-EXPLORER-AND-WINDOW-RECONCILIATION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T165000Z-safu-wallet-cross-explorer-and-deployment-window.json",
+  "captured_at_utc": "2026-10-31T16:50:00Z",
+  "data_cutoff_utc": "2026-10-31T16:50:00Z",
+  "observed_main_sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+  "observed_research_head_sha": "266264f312baacb7ab2464b9ce9973a0650d1190",
+  "extends_snapshot": "data/xrp_intelligence/snapshots/20261031T164500Z-binance-safu-futures-insurance-and-adgm-custody.json",
+  "source_bundle_path": "data/xrp_intelligence/sources/20261031T165000Z-safu-wallet-cross-explorer-sources.json",
+  "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T165000Z-safu-wallet-cross-explorer-graph.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T165000Z-safu-deployment-window-and-wallet-corroboration.json",
+  "repository_audit_path": "data/repository_audits/20261031T163200Z-main-pr-current-base-and-workflow-risk-audit.json",
+  "source_ids": [
+    "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+    "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS",
+    "SRC-20261031T165000Z-TOKENVIEW-SAFU-BTC-ADDRESS",
+    "SRC-20261031T165000Z-SOCHAIN-SAFU-BTC-ADDRESS",
+    "SRC-20261031T164500Z-SWOLECHARTS-BINANCE-FUTURES-INSURANCE",
+    "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER",
+    "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE"
+  ],
+  "confirmed_findings": [
+    {
+      "id": "F1",
+      "statement": "Binance's official October 31 update was published 14:24 UTC and updated 15:23 UTC. It states the top ten named assets, including XRP, were fully backed 100% in the 00:00 UTC snapshot; the remaining 10% consists of less-liquid tokens outside that top-ten list.",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "Binance says partial SAFU deployment is expected over the next 24 hours and identifies the public SAFU BTC wallet address. The latest accessible BitInfoCharts, Tokenview and SoChain observations all display approximately 15,000.00147092 BTC and list the latest transaction on 2026-08-09; BitInfoCharts lists the last outgoing transaction on 2024-04-18.",
+      "evidence_class": "COMPANY_STATEMENT_PLUS_MULTI_EXPLORER_PROVIDER_CORROBORATION",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+        "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS",
+        "SRC-20261031T165000Z-TOKENVIEW-SAFU-BTC-ADDRESS",
+        "SRC-20261031T165000Z-SOCHAIN-SAFU-BTC-ADDRESS"
+      ]
+    },
+    {
+      "id": "F3",
+      "statement": "The official update says SAFU is used to acquire the remaining 10% of affected assets, while XRP is already among the ten assets reported fully backed. No XRP-specific replenishment purchase is disclosed.",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT; IMPLICATION_FOR_XRP_IS_INFERENCE",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ"
+      ]
+    },
+    {
+      "id": "F4",
+      "statement": "The ADGM public register and Binance's ADGM launch update identify Nest Clearing and Custody Limited as the ADGM-recognised clearing/custody entity, with Nest Exchange and Nest Trading performing separate exchange and OTC/broker-dealer roles.",
+      "evidence_class": "CONFIRMED_REGULATORY_AND_COMPANY_RECORDS",
+      "source_ids": [
+        "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER",
+        "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE"
+      ]
+    }
+  ],
+  "safu_reconciliation": {
+    "official_wallet_address": "1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+    "displayed_balance_btc": 15000.00147092,
+    "corroborating_explorers": [
+      "BitInfoCharts",
+      "Tokenview",
+      "SoChain"
+    ],
+    "displayed_transaction_count": {
+      "bitinfocharts": 28,
+      "tokenview": 27,
+      "sochain": 27
+    },
+    "latest_transaction_date_shown": "2026-08-09",
+    "latest_outgoing_transaction_date_shown": "2024-04-18",
+    "block_height_or_refresh_timestamp": "NOT_EXPOSED_BY_CAPTURED_EXPLORER_RESULTS",
+    "official_announcement_published_at_utc": "2026-10-31T14:24:00Z",
+    "official_announcement_updated_at_utc": "2026-10-31T15:23:00Z",
+    "deployment_window_start": "NOT_EXPLICITLY_STATED; USE_LATEST_CONFIRMED_PAGE_UPDATE_15:23_UTC_AS_CONSERVATIVE_ANCHOR",
+    "conservative_24h_deadline_utc": "2026-11-01T15:23:00Z",
+    "status": "THREE_EXPLORERS_CORROBORATE_DISPLAYED_BALANCE_AND_AUGUST_9_LATEST_TX; NO_CURRENT_BLOCK_HEIGHT_VERIFICATION; OFFICIAL_24H_WINDOW_STILL_OPEN_AT_16:50Z",
+    "interpretation": "The 15:23 UTC page update is the conservative anchor for the 24-hour deployment window. The public wallet observations do not show a new transfer, but the window had not expired and SAFU could be deployed through another permitted address or off-chain route."
+  },
+  "xrp_replenishment_interpretation": {
+    "xrp_in_top_ten_fully_backed_set": true,
+    "remaining_10_percent": "TOKENS_OUTSIDE_TOP_TEN; DESCRIBED_AS_LESS_LIQUID",
+    "safu_use_target": "REMAINING_10_PERCENT_OF_AFFECTED_ASSETS",
+    "xrp_specific_purchase_quantity": "NOT_DISCLOSED",
+    "xrp_specific_purchase_evidence": "NONE_IDENTIFIED",
+    "inference": "The announced SAFU acquisition program is directed at the remaining less-liquid tokens outside the ten named assets; it is not evidence of XRP buying and does not imply incremental XRP demand."
+  },
+  "prior_futures_insurance_context": {
+    "binance_reallocation_claim": "A portion of the Futures Insurance Fund was rebalanced from excess above the required minimum; the fund is not user assets and is intended to reduce ADL/deficit risk.",
+    "third_party_total_usd": 2460000000,
+    "third_party_observed_at_utc": "2026-10-31T15:00:00Z",
+    "binance_xrpusdt_shared_pool_usdt": 65830000,
+    "bybit_xrpusd_isolated_pool_xrp": 55580000,
+    "status": "NO_OFFICIAL_POOL_LEVEL_PRE_POST_RECONCILIATION"
+  },
+  "hypotheses": [
+    {
+      "id": "HYP-SAFU-NAMED-WALLET-NO-MOVE-YET",
+      "statement": "The planned SAFU deployment was not yet visible in the named public BTC wallet at 16:50 UTC October 31; the conservative 24-hour deadline is November 1 15:23 UTC.",
+      "status": "MULTI_EXPLORER_OBSERVATION; DEADLINE_NOT_REACHED",
+      "support": [
+        "Three public explorers show the same displayed balance and latest transaction date.",
+        "Binance's FAQ says the deployment is expected within 24 hours of the updated announcement."
+      ],
+      "disconfirming": [
+        "No explorer exposed a current block-height timestamp.",
+        "The fund may use another address, other asset or off-chain OTC settlement.",
+        "The 24-hour window had not elapsed."
+      ],
+      "next_test": "Recheck the address after 2026-11-01T15:23:00Z and compare with Binance's updated balance link."
+    },
+    {
+      "id": "HYP-SAFU-REMAINING-ASSETS-NOT-XRP",
+      "statement": "The SAFU acquisition program is aimed at the remaining less-liquid assets outside the top ten, not XRP, because Binance says XRP is already fully backed in the top-ten snapshot.",
+      "status": "STRONG_TEXTUAL_INFERENCE; NOT_A_TOKEN_LEVEL_PURCHASE_AUDIT",
+      "support": [
+        "Official Binance statement names XRP among the ten 100%-backed assets and says the remaining 10% consists of tokens outside the top ten."
+      ],
+      "disconfirming": [
+        "No token-by-token acquisition schedule or completed trade list is disclosed."
+      ],
+      "next_test": "Compare the November 3 full PoR and subsequent token-level replenishment disclosures."
+    },
+    {
+      "id": "HYP-SAFU-EXPLORER-DATA-QUALITY",
+      "statement": "The public SAFU wallet balance is corroborated across three explorers, but transaction counts differ and none of the captured pages provides a current block-height timestamp.",
+      "status": "CORROBORATED_WITH_LIMITATIONS",
+      "support": [
+        "BitInfoCharts, Tokenview and SoChain show approximately 15,000.00147092 BTC and latest transaction August 9."
+      ],
+      "disconfirming": [
+        "BitInfoCharts reports 28 transactions while Tokenview and SoChain report 27."
+      ],
+      "next_test": "Reconcile raw transaction IDs and unspent outputs from a current full node or independent explorer API."
+    },
+    {
+      "id": "HYP-SAFU-REGULATORY-CAPITAL-CONSTRAINT",
+      "statement": "A portion of SAFU may be unavailable for discretionary deployment because Binance says it serves ADGM regulatory capital reserves.",
+      "status": "INFERENCE; AMOUNT_UNKNOWN",
+      "support": [
+        "Binance FAQ and ADGM register confirm the regulated custodian and capital-reserve statement."
+      ],
+      "disconfirming": [
+        "No capital requirement, segregated balance or available excess is publicly quantified."
+      ],
+      "next_test": "Review FSRA disclosures and audited financial statements for minimum capital and safeguarding requirements."
+    }
+  ],
+  "feature_admission": {
+    "wallet_balance": "EVENT_TIMELINE_ONLY",
+    "safu_deployment": "EVENT_TIMELINE_ONLY",
+    "xrp_specific_replenishment_feature": "NOT_ADMITTED",
+    "directional_price_features": "NOT_ADMITTED"
+  },
+  "forecast": {
+    "status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Recheck the SAFU BTC wallet after 2026-11-01T15:23:00Z and compare raw transaction IDs across explorers.",
+    "Retrieve the full ZK Proof of Reserves expected by November 3 and compare XRP reserves with customer liabilities.",
+    "Capture the official Futures Insurance Fund balance at the next 00:00 UTC refresh and reconcile with third-party pool-level data.",
+    "Review ADGM public disclosures for Nest Clearing and Custody's regulatory capital requirements and SAFU segregation."
+  ],
+  "safety": "Public-source research only. No account access, transaction, trade, workflow dispatch, merge, deployment or main-branch write."
+}

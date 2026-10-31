@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T165000Z-SAFU-WALLET-CROSS-EXPLORER",
+  "captured_at_utc": "2026-10-31T16:50:00Z",
+  "source_ids": [
+    "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+    "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS",
+    "SRC-20261031T165000Z-TOKENVIEW-SAFU-BTC-ADDRESS",
+    "SRC-20261031T165000Z-SOCHAIN-SAFU-BTC-ADDRESS",
+    "SRC-20261031T164500Z-SWOLECHARTS-BINANCE-FUTURES-INSURANCE",
+    "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER",
+    "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "EXCHANGE_GROUP"
+    },
+    {
+      "id": "SAFU",
+      "label": "Secure Asset Fund for Users",
+      "kind": "USER_PROTECTION_RESERVE"
+    },
+    {
+      "id": "SAFU_BTC_WALLET",
+      "label": "Public SAFU BTC wallet",
+      "kind": "BITCOIN_ADDRESS"
+    },
+    {
+      "id": "BITINFOCHARTS",
+      "label": "BitInfoCharts",
+      "kind": "BLOCKCHAIN_EXPLORER"
+    },
+    {
+      "id": "TOKENVIEW",
+      "label": "Tokenview",
+      "kind": "BLOCKCHAIN_EXPLORER"
+    },
+    {
+      "id": "SOCHAIN",
+      "label": "SoChain",
+      "kind": "BLOCKCHAIN_EXPLORER"
+    },
+    {
+      "id": "NEST_CLEARING",
+      "label": "Nest Clearing and Custody Limited",
+      "kind": "ADGM_RECOGNISED_CLEARING_HOUSE_AND_CUSTODIAN"
+    },
+    {
+      "id": "ADGM_FSRA",
+      "label": "ADGM FSRA",
+      "kind": "FINANCIAL_REGULATOR"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BINANCE-IDENTIFIES-SAFU-WALLET",
+      "source": "BINANCE",
+      "target": "SAFU_BTC_WALLET",
+      "relationship": "OFFICIAL_PUBLIC_WALLET_IDENTIFICATION",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Binance's FAQ identifies this BTC address as the public SAFU wallet.",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ"
+      ]
+    },
+    {
+      "id": "EDGE-BITINFOCHARTS-SAFU-BALANCE",
+      "source": "BITINFOCHARTS",
+      "target": "SAFU_BTC_WALLET",
+      "relationship": "BALANCE_AND_TX_HISTORY_OBSERVATION",
+      "evidence_class": "THIRD_PARTY_PROVIDER_OBSERVATION",
+      "claim": "Displays 15,000.00147092 BTC; last outgoing shown April 18, 2024; last incoming August 9, 2026.",
+      "source_ids": [
+        "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS"
+      ]
+    },
+    {
+      "id": "EDGE-TOKENVIEW-SAFU-BALANCE",
+      "source": "TOKENVIEW",
+      "target": "SAFU_BTC_WALLET",
+      "relationship": "INDEPENDENT_BALANCE_CORROBORATION",
+      "evidence_class": "THIRD_PARTY_PROVIDER_OBSERVATION",
+      "claim": "Displays the same 15,000.00147092 BTC balance and 27 transactions; latest transaction shown August 9, 2026.",
+      "source_ids": [
+        "SRC-20261031T165000Z-TOKENVIEW-SAFU-BTC-ADDRESS"
+      ]
+    },
+    {
+      "id": "EDGE-SOCHAIN-SAFU-BALANCE",
+      "source": "SOCHAIN",
+      "target": "SAFU_BTC_WALLET",
+      "relationship": "INDEPENDENT_TRANSACTION_DATE_CORROBORATION",
+      "evidence_class": "THIRD_PARTY_PROVIDER_OBSERVATION",
+      "claim": "Lists 27 transactions and latest transaction August 9, 2026; displayed balance is consistent with approximately 15,000.00147092 BTC.",
+      "source_ids": [
+        "SRC-20261031T165000Z-SOCHAIN-SAFU-BTC-ADDRESS"
+      ]
+    },
+    {
+      "id": "EDGE-NEST-CLEARING-SAFU",
+      "source": "NEST_CLEARING",
+      "target": "SAFU",
+      "relationship": "HOLDS_AND_MANAGES",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "claim": "Binance says Nest Clearing and Custody Limited holds and manages SAFU; a portion serves ADGM regulatory capital reserves.",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+        "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER"
+      ]
+    },
+    {
+      "id": "EDGE-ADGM-REGULATES-NEST-CLEARING",
+      "source": "ADGM_FSRA",
+      "target": "NEST_CLEARING",
+      "relationship": "ACTIVE_RECOGNISED_CLEARING_HOUSE_0070",
+      "evidence_class": "CONFIRMED_REGULATORY_RECORD",
+      "claim": "ADGM lists the entity as active Recognised Clearing House 0070 with custody and CSD activities.",
+      "source_ids": [
+        "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER"
+      ]
+    },
+    {
+      "id": "EDGE-SAFU-REMAINING-ASSETS-NOT-XRP",
+      "source": "SAFU",
+      "target": "XRP",
+      "relationship": "NO_XRP_PURCHASE_IMPLIED_BY_REMAINING_10_PERCENT_PROGRAM",
+      "evidence_class": "INFERENCE_FROM_COMPANY_STATEMENT",
+      "claim": "Binance says XRP is among ten fully backed assets while the remaining 10% consists of less-liquid tokens outside the top ten; the announced SAFU acquisition program therefore does not establish XRP demand.",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SAFU-NAMED-WALLET-NO-MOVE-YET",
+      "statement": "The planned SAFU deployment was not yet visible in the named public BTC wallet at 16:50 UTC October 31; the conservative 24-hour deadline is November 1 15:23 UTC.",
+      "status": "MULTI_EXPLORER_OBSERVATION; DEADLINE_NOT_REACHED",
+      "support": [
+        "Three public explorers show the same displayed balance and latest transaction date.",
+        "Binance's FAQ says the deployment is expected within 24 hours of the updated announcement."
+      ],
+      "disconfirming": [
+        "No explorer exposed a current block-height timestamp.",
+        "The fund may use another address, other asset or off-chain OTC settlement.",
+        "The 24-hour window had not elapsed."
+      ],
+      "next_test": "Recheck the address after 2026-11-01T15:23:00Z and compare with Binance's updated balance link."
+    },
+    {
+      "id": "HYP-SAFU-REMAINING-ASSETS-NOT-XRP",
+      "statement": "The SAFU acquisition program is aimed at the remaining less-liquid assets outside the top ten, not XRP, because Binance says XRP is already fully backed in the top-ten snapshot.",
+      "status": "STRONG_TEXTUAL_INFERENCE; NOT_A_TOKEN_LEVEL_PURCHASE_AUDIT",
+      "support": [
+        "Official Binance statement names XRP among the ten 100%-backed assets and says the remaining 10% consists of tokens outside the top ten."
+      ],
+      "disconfirming": [
+        "No token-by-token acquisition schedule or completed trade list is disclosed."
+      ],
+      "next_test": "Compare the November 3 full PoR and subsequent token-level replenishment disclosures."
+    },
+    {
+      "id": "HYP-SAFU-EXPLORER-DATA-QUALITY",
+      "statement": "The public SAFU wallet balance is corroborated across three explorers, but transaction counts differ and none of the captured pages provides a current block-height timestamp.",
+      "status": "CORROBORATED_WITH_LIMITATIONS",
+      "support": [
+        "BitInfoCharts, Tokenview and SoChain show approximately 15,000.00147092 BTC and latest transaction August 9."
+      ],
+      "disconfirming": [
+        "BitInfoCharts reports 28 transactions while Tokenview and SoChain report 27."
+      ],
+      "next_test": "Reconcile raw transaction IDs and unspent outputs from a current full node or independent explorer API."
+    },
+    {
+      "id": "HYP-SAFU-REGULATORY-CAPITAL-CONSTRAINT",
+      "statement": "A portion of SAFU may be unavailable for discretionary deployment because Binance says it serves ADGM regulatory capital reserves.",
+      "status": "INFERENCE; AMOUNT_UNKNOWN",
+      "support": [
+        "Binance FAQ and ADGM register confirm the regulated custodian and capital-reserve statement."
+      ],
+      "disconfirming": [
+        "No capital requirement, segregated balance or available excess is publicly quantified."
+      ],
+      "next_test": "Review FSRA disclosures and audited financial statements for minimum capital and safeguarding requirements."
+    }
+  ],
+  "policy": "Preserve official company claims, regulatory register evidence and explorer observations as separate evidence classes. Do not infer an XRP purchase from the SAFU program."
+}
