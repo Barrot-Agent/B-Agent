@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 104,
+  "chunk_count": 105,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z",
+      "source_id": "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z",
+      "publisher": "XRP Insights",
+      "title": "XRP exchange balances — same-wallet changes, SBI VC Trade and wrapped-reserve exclusions",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "published_at": "2026-10-30T08:00:00Z",
+      "retrieved_at_utc": "2026-10-31T06:46:00Z",
+      "evidence_class": "ONCHAIN_WALLET_LABEL_AGGREGATION_WITH_PUBLISHED_METHODOLOGY",
+      "independence_group": "xrp_insights_onchain",
+      "summary": "As of 2026-10-30 08:00 UTC, XRP Insights reports 22.37B XRP in 701 XRPL wallets publicly attributed to 24 exchanges. Same-wallet net change is -234.9M over Oct23-Oct30 and -146.1M over Sep30-Oct30. Binance is 2.58B across 153 wallets, with -173.2M 7d and -164.5M 30d; Coinbase is 5.84B across 358 wallets, with +1.1M 7d and +12.5M 30d. SBI VC Trade is 59.5M across two wallets, cold-labeled >99%, with -893K 7d and -10.5M 30d. Regional tracked balances: South Korea 8.60B (38.4%), United States 8.59B (38.4%), Japan 1.38B (6.2%). 488.4M XRP is identified as non-customer reserve/fund balances: 325.8M Binance-Peg backing, 151.4M cbXRP backing and 11.2M insurance/charity.",
+      "methodology": "Balances are read directly from XRPL via rippled account_info once daily around 08:00 UTC; exchange attribution uses XRPSCAN public labels; same-wallet changes compare only wallets present at both endpoints. Page refreshes hourly, balances update daily.",
+      "limitations": "Public wallet labels, not official exchange PoR or beneficial-owner identification. Includes cold custody and wrapped-token backing reserves; not tradable float. No per-wallet history is published, so same-wallet net changes cannot identify customer withdrawals, theft, internal migration or sales. Coverage gaps and label additions can distort naive totals. SBI VC Trade 59.5M is exchange-attributed custody, not proven SBI Group proprietary holdings."
+    }
+  ]
+}
