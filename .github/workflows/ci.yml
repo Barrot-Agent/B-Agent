@@ -79,4 +79,6 @@ jobs:
             tests/test_autonomous_real_bundle.py \
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
-            tests/test_scheduler_queue_workflow_safety.py \\\n            tests/test_databricks_token_rotation_safety.py \\\n            -v --no-cov
+            tests/test_scheduler_queue_workflow_safety.py \
+            tests/test_databricks_token_rotation_safety.py \
+            -v --no-cov
