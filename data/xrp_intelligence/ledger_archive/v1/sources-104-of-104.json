@@ -5,7 +5,7 @@
   "array_name": "sources",
   "chunk_index": 103,
   "chunk_count": 104,
-  "record_count": 8,
+  "record_count": 13,
   "records": [
     {
       "id": "SRC-20261031-COINBASE-GLOBAL-XRP-COLLATERAL-0632Z",
@@ -110,6 +110,71 @@
       "independence_group": "tokyo_sbic_official",
       "summary": "Official Tokyo SBIC event page confirms a generative-AI seminar on 2026-10-06 and references ChatGPT's introduction and business use; the listed speaker was a Microsoft Japan evangelist.",
       "limitations": "Educational event only. It does not establish an OpenAI partnership, SBI Holdings investment, XRP relationship or commercial data-sharing arrangement."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-PR1398-0632Z",
+      "source_id": "SRC-20261031-GITHUB-PR1398-0632Z",
+      "publisher": "GitHub",
+      "title": "B-Agent PR #1398 — disable unsafe Databricks token-input workflow",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1398",
+      "published_at": "2026-10-31T06:30:30Z",
+      "retrieved_at_utc": "2026-10-31T06:32:00Z",
+      "evidence_class": "PRIMARY_GITHUB_PULL_REQUEST_RECORD",
+      "independence_group": "github_repository",
+      "summary": "Draft PR #1398 targets main at 33a490e2793f2c4250c7b370d4cc7cf308dbf6fe and proposes replacing unsafe token-input/secret-write/deployment workflow with a no-input, permissions-empty diagnostic; head 2ea9a8dcad1c51f85d345fcdca02c50902ec5285; open, mergeable and unmerged.",
+      "limitations": "Proposal only. No secret changed, no workflow dispatched, no deployment, and no merge. Exact-head CI and fail-closed gate are separately recorded."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-PR1398-CI-0632Z",
+      "source_id": "SRC-20261031-GITHUB-PR1398-CI-0632Z",
+      "publisher": "GitHub Actions",
+      "title": "B-Agent PR #1398 exact-head CI run 41176897933",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41176897933",
+      "published_at": "2026-10-31T06:30:33Z",
+      "retrieved_at_utc": "2026-10-31T06:32:00Z",
+      "evidence_class": "PRIMARY_GITHUB_ACTIONS_EXECUTION_RECORD",
+      "independence_group": "github_repository",
+      "summary": "Exact PR head 2ea9a8d passed the configured CI suite: 344 tests and 8 subtests. Both new Databricks token-rotation safety tests passed.",
+      "limitations": "Configured core test suite only; not the full repository CI or a dependency vulnerability scan."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-PR1398-GATE-0632Z",
+      "source_id": "SRC-20261031-GITHUB-PR1398-GATE-0632Z",
+      "publisher": "GitHub Actions",
+      "title": "B-Agent PR #1398 fail-closed gate run 41176897925",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41176897925",
+      "published_at": "2026-10-31T06:30:33Z",
+      "retrieved_at_utc": "2026-10-31T06:32:00Z",
+      "evidence_class": "PRIMARY_GITHUB_ACTIONS_EXECUTION_RECORD",
+      "independence_group": "github_repository",
+      "summary": "Exact PR head passed the fail-closed job named 'Merge disabled pending gate verification'; automatic merging remained disabled.",
+      "limitations": "Gate success is not approval or merge permission. PR remains draft and unmerged."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-MAIN-BRANCH-PROTECTION-0632Z",
+      "source_id": "SRC-20261031-GITHUB-MAIN-BRANCH-PROTECTION-0632Z",
+      "publisher": "GitHub",
+      "title": "B-Agent main branch protection metadata",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
+      "published_at": "2026-10-31T06:03:33Z",
+      "retrieved_at_utc": "2026-10-31T06:32:00Z",
+      "evidence_class": "PRIMARY_GITHUB_REPOSITORY_API_RECORD",
+      "independence_group": "github_repository",
+      "summary": "GitHub branch endpoint reports main protected=true and required_status_checks contexts/checks arrays empty. Full branch-protection detail endpoint returned 403 Resource not accessible by integration.",
+      "limitations": "Empty required status-check contexts do not establish the full branch protection configuration. Review requirements and other settings remain unknown because the detailed endpoint was inaccessible."
+    },
+    {
+      "id": "SRC-20261031-GITHUB-WORKFLOW-SAFETY-AUDIT-0632Z",
+      "source_id": "SRC-20261031-GITHUB-WORKFLOW-SAFETY-AUDIT-0632Z",
+      "publisher": "GitHub",
+      "title": "B-Agent targeted main workflow and token-rotation security audit",
+      "url": "https://github.com/Barrot-Agent/B-Agent/tree/main/.github/workflows",
+      "published_at": "2026-10-31T06:32:00Z",
+      "retrieved_at_utc": "2026-10-31T06:32:00Z",
+      "evidence_class": "PRIMARY_REPOSITORY_FILE_READ_AUDIT",
+      "independence_group": "github_repository",
+      "summary": "The workflow directory contained 77 active YAML files. A targeted read-only review inspected 24 high-risk candidates. rotate-databricks-token.yml accepted new_token and interpolated it directly into a shell command invoking gh secret set, then attempted a workflow dispatch; PR #1398 disables this path. Several manual workflow_dispatch jobs still have contents:write and git-push behavior; no such workflow was dispatched.",
+      "limitations": "Targeted 24-file review is not an exhaustive audit of all 77 active workflows. Scheduled issue/PR mutation workflows and manual repository writers require separate scoped review. No workflow execution or secret access occurred."
     }
   ]
 }
