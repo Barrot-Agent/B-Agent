@@ -29,8 +29,6 @@ WORKFLOWS_DIR = ".github/workflows"
 ALLOWED_SCHEDULED_WORKFLOWS = frozenset({
     "barrot-bundle-operational-smoke.yml",
     "barrot-controlled-feature-validation.yml",
-    "formal-verification-benchmarks.yml",
-    "sindy-mcp-cicd.yml",
 })
 
 
