@@ -1,0 +1,396 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_reserve_reconciliation_snapshot",
+  "snapshot_id": "XRP-RESERVE-20261031T052000Z-BINANCE-INCIDENT-CROSSWALK",
+  "captured_at_utc": "2026-10-31T05:20:00Z",
+  "data_cutoff_utc": "2026-10-31T05:20:00Z",
+  "source_refs": [
+    {
+      "source_id": "SRC-CRYPTOQUANT-BINANCE-XRP-RESERVES-20261031",
+      "publisher": "CryptoQuant",
+      "title": "Binance XRP Reserves Hit Lowest Level Since December 2022",
+      "url": "https://cryptoquant.com/insights/quicktake/6ae560b2e56e41440bb9cdeb-Binance-XRP-Reserves-Hit-Lowest-Level-Since-December-2022",
+      "published_at": "2026-10-31",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "EXCHANGE_RESERVE_ANALYTICS",
+      "independence_group": "cryptoquant_exchange_reserve_data",
+      "claim_summary": "CryptoQuant reports Binance XRP exchange reserves fell from 2.69B XRP on Oct28 to 2.47B on Oct30, a 220M/8.18% decline and the lowest level since Dec2022; Bybit fell20M, Bithumb10M and Upbit rose20M.",
+      "limitations": "Reserve-address methodology and exact inclusion of the five incident source wallets are not reconciled; this is not a post-incident Proof of Reserves ratio."
+    },
+    {
+      "source_id": "SRC-TOKENPOST-BINANCE-XRP-RESERVES-20261030",
+      "publisher": "TokenPost",
+      "title": "Binance's Oct. 30 Snapshot Shows Bitcoin Reserves Down 3.1%",
+      "url": "https://www.tokenpost.com/news/investing/44847",
+      "published_at": "2026-10-30T15:45:00Z",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "SECONDARY_MARKET_REPORT",
+      "independence_group": "cryptoquant_exchange_reserve_data",
+      "claim_summary": "TokenPost reports Oct30 XRP reserves at 2.47B, down8%, and 185M XRP outflows in its tracked block range.",
+      "limitations": "The reserve figure likely derives from the same exchange-reserve data family as CryptoQuant, not independent corroboration. The 185M outflow is partial relative to TRM's 233.46M five-wallet total; no wallet-level reconciliation is supplied."
+    },
+    {
+      "source_id": "SRC-THEEDGE-BINANCE-POR-OCT1-20261030",
+      "publisher": "The Edge — Economic Consultancy Company W.L.L.",
+      "title": "Binance Estimates $6.3bn Impact From Security Incident, Pledges to Cover All Losses",
+      "url": "https://edgeconsultancykw.com/binance-security-incident-6-3bn-impact-october-2026/",
+      "published_at": "2026-10-30",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "SECONDARY_REVIEW_OF_OFFICIAL_BINANCE_POR",
+      "independence_group": "binance_official_por_snapshot",
+      "claim_summary": "Reports Binance's latest published Proof of Reserves snapshot was 2026-10-01 00:00 GMT; XRP customer net balances were 2.496B and on-chain reserve coverage was 100.77%.",
+      "limitations": "Secondary calculations from Binance's Oct1 snapshot. Does not provide an Oct30 customer-liability snapshot or post-incident reserve ratio."
+    },
+    {
+      "source_id": "SRC-TRM-BINANCE-HACK-20261030",
+      "publisher": "TRM Labs",
+      "title": "North Korea Steals USD 6.36 Billion From Binance in the Largest Hack in History",
+      "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+      "published_at": "2026-10-30",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "BLOCKCHAIN_INTELLIGENCE_INVESTIGATION",
+      "independence_group": "trm_onchain_analytics",
+      "claim_summary": "TRM reports five Binance-labelled XRPL wallets transferred 233.46M XRP between 20:05–20:09 UTC Oct29 to one attacker address; at its 00:30 UTC Oct30 snapshot about $2.7B was frozen, including 1.77B USDT, 825M USDC and 40.5M RLUSD.",
+      "limitations": "On-chain balance snapshot is stale by about 29 hours at this cutoff. North Korean TraderTraitor attribution is TRM's high-confidence assessment, not an official law-enforcement determination."
+    },
+    {
+      "source_id": "SRC-BITQUERY-BINANCE-HACK-20261030",
+      "publisher": "Bitquery",
+      "title": "Binance Hack: $6.3B Drained on 9 Chains, $2.7B Frozen",
+      "url": "https://bitquery.io/investigations/binance-hack",
+      "published_at": "2026-10-30",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "ONCHAIN_TRANSACTION_RECONSTRUCTION",
+      "independence_group": "bitquery_onchain_analytics",
+      "claim_summary": "Bitquery reports 17 Binance-labelled hot wallets across nine chains, 233.5M XRP from five XRPL accounts to receiver rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx, about $2.7B frozen and $3.2B still with the attacker at 06:43 UTC Oct30. It says the XRP receiver had not sent a transaction by that snapshot.",
+      "limitations": "Cutoff is Oct30 06:43 UTC; not a current receiver-state check. Dollar valuations and freeze totals differ from other providers' cutoffs."
+    },
+    {
+      "source_id": "SRC-BINANCE-UPDATE2-20261030",
+      "publisher": "Binance Support",
+      "title": "Security Incident Update #2",
+      "url": "https://www.binance.com/en/support/announcement/detail/d3306d9dca5243548c813b605e1d1751",
+      "published_at": "2026-10-30T19:33:00Z",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "PRIMARY_OFFICIAL_COMPANY_STATEMENT",
+      "independence_group": "binance_official",
+      "claim_summary": "Binance states more than $6.34B company funds set aside, $5B already held in exact affected token assets, remaining relevant token assets being acquired through market/OTC channels, approximately $3B frozen, initial PoR snapshot targeted in 12 hours, results by Nov2 and withdrawals targeted to resume within 34 hours subject to security checks.",
+      "limitations": "Aggregate company statements; no token-level XRP purchase allocation, fill or post-incident liability ratio disclosed."
+    },
+    {
+      "source_id": "SRC-BINANCE-NEWS-RESTORATION-20261030",
+      "publisher": "Binance News",
+      "title": "Binance News Update — restoration of affected assets has begun",
+      "url": "https://www.binance.com/en/square/post/10-30-2026-binance-news-update-binance-reserves-6-34-billion-to-cover-security-incident-with-5-billion-already-held-in-the-affected-tokens-and-3-billion-frozen-382841282807553",
+      "published_at": "2026-10-30",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "PRIMARY_OFFICIAL_VERIFIED_ACCOUNT_CLAIM",
+      "independence_group": "binance_official",
+      "claim_summary": "Verified Binance News account says restoration of affected assets to users has begun and reiterates $5B already held in exact affected tokens, approximately $1.34B still to acquire and approximately $3B frozen separately.",
+      "limitations": "No amount restored, token-level credit ledger or XRP-specific purchase/credit evidence; same issuer as Binance Support Update #2."
+    },
+    {
+      "source_id": "SRC-COINDESK-BINANCE-POR-20261029",
+      "publisher": "CoinDesk",
+      "title": "Binance hack drained wallets backing customer assets, reserve data shows",
+      "url": "https://www.coindesk.com/business/2026/10/30/binance-hack-drained-wallets-backing-customer-assets-reserve-data-shows",
+      "published_at": "2026-10-30T00:17:00Z",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "SECONDARY_REVIEW_OF_BINANCE_RESERVE_ADDRESSES",
+      "independence_group": "coindesk_reporting",
+      "claim_summary": "CoinDesk's review says the Ethereum hot wallet Binance14 appears in Binance's Oct1 PoR list and was drained; it notes Oct1 XRP coverage at 100.77% and says the next reserve snapshot should show whether stolen assets were replaced.",
+      "limitations": "The Binance14 address discussed is Ethereum, not proof that the five XRPL source wallets are in the official PoR address set. Ripple's approximately $200M statement is not token-specific; TRM confirms 40.5M RLUSD."
+    },
+    {
+      "source_id": "SRC-XRPL-NATIVE-XRP-FREEZE-DOCS",
+      "publisher": "XRPL.org",
+      "title": "Freeze issued currencies on the XRP Ledger",
+      "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes",
+      "published_at": null,
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "PRIMARY_PROTOCOL_DOCUMENTATION",
+      "independence_group": "xrpl_protocol_docs",
+      "claim_summary": "XRPL documentation distinguishes issued tokens, which their issuer may freeze, from native XRP, which is not subject to issuer freeze controls.",
+      "limitations": "Protocol documentation describes issuer-level freeze capabilities; it does not determine the current status of a particular exchange or attacker account."
+    },
+    {
+      "source_id": "SRC-OLDLEDGER-RDAE53-XRP-LEG-20261030",
+      "publisher": "B-Agent research ledger",
+      "title": "RLUSD and Binance wallet crosswalk — primary XRPL wallet leg",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/xrp-ledger-shard-migration-20261029T2210Z/data/xrp_intelligence/snapshots/20261030T233149Z-rlusd-binance-wallet-crosswalk-actual-capital.json",
+      "published_at": "2026-10-30T23:31:49Z",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "PRIOR_RESEARCH_ARTIFACT",
+      "independence_group": "barrot_prior_onchain_crosswalk",
+      "claim_summary": "Prior B-Agent snapshot records 185,017,485.5 XRP transferred from the rDAE53 Binance-labelled XRPL source wallet to the incident receiver, one leg of the five-wallet event.",
+      "limitations": "The full five-wallet transaction set must be re-read and crosswalked to official PoR addresses; this artifact is on the long-lived research branch and is not merged to main."
+    },
+    {
+      "source_id": "SRC-GITHUB-PR1353-COMPARE-20261031T0512Z",
+      "publisher": "GitHub",
+      "title": "B-Agent PR #1353 branch comparison against current main",
+      "url": "https://github.com/Barrot-Agent/B-Agent/compare/main...research/xrp-ledger-shard-migration-20261029T2210Z",
+      "published_at": "2026-10-31T05:12:00Z",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "PRIMARY_GITHUB_COMPARE_API",
+      "independence_group": "github_repository",
+      "claim_summary": "Compare reports diverged, 1,185 commits ahead and 351 behind main, while PR metadata reports mergeable=true.",
+      "limitations": "Conflicting mergeability signals; do not merge/rebase/force-push the old branch. A fresh-main bridge is used instead."
+    },
+    {
+      "source_id": "SRC-GITHUB-PR1353-VALIDATOR-20261031T0514Z",
+      "publisher": "GitHub Actions",
+      "title": "PR #1353 exact-head ledger validator run 41171765853",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41171765853",
+      "published_at": "2026-10-31T05:14:00Z",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "PRIMARY_GITHUB_ACTIONS_EXECUTION_RECORD",
+      "independence_group": "github_repository",
+      "claim_summary": "Exact head 5f22bbf passed the actual ledger validator: 340 archive shards, 1,887 sources, 327 run updates, 812 limitations, 20 tests and zero missing source references; fail-closed gate passed.",
+      "limitations": "Validates that exact old-branch head only; does not resolve the 1,185-ahead/351-behind merge-safety issue or full repository CI."
+    },
+    {
+      "source_id": "SRC-GITHUB-PR1353-GATE-20261031T0514Z",
+      "publisher": "GitHub Actions",
+      "title": "PR #1353 fail-closed gate run 41171765729",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41171765729",
+      "published_at": "2026-10-31T05:14:00Z",
+      "retrieved_at_utc": "2026-10-31T05:20:00Z",
+      "evidence_class": "PRIMARY_GITHUB_ACTIONS_EXECUTION_RECORD",
+      "independence_group": "github_repository",
+      "claim_summary": "Exact head 5f22bbf passed the fail-closed gate with automatic merge disabled.",
+      "limitations": "Gate pass is not approval or merge authorization."
+    }
+  ],
+  "source_reference_count": 13,
+  "reserve_reconciliation": {
+    "cryptoquant_binance_xrp_reserves_oct28": 2690000000,
+    "cryptoquant_binance_xrp_reserves_oct30": 2470000000,
+    "decline_xrp": 220000000,
+    "decline_percent": 8.18,
+    "incident_xrp_transfer_trm": 233461943.1,
+    "incident_xrp_transfer_bitquery_rounded": 233500000,
+    "reserve_decline_as_share_of_trm_transfer_percent": 94.23,
+    "arithmetic_difference_xrp": 13461943.1,
+    "tokenpost_tracked_xrp_outflow": 185000000,
+    "tokenpost_vs_trm_difference_xrp": 48461943.1,
+    "prior_research_main_wallet_leg_xrp": 185017485.5,
+    "tokenpost_185m_vs_prior_main_leg_difference_xrp": 17485.5,
+    "status": "STRONG_MAGNITUDE_AND_TIMING_ALIGNMENT_NOT_WALLET_LEVEL_PROOF",
+    "interpretation": "The 220M Binance exchange-reserve decline over Oct28–30 is close to the 233.46M XRP transferred from five Binance-labelled XRPL wallets on Oct29. The difference is about 13.46M XRP. The 185M figure in TokenPost is close to the previously recorded 185.017M primary wallet leg, but TokenPost does not reconcile the other four wallets.",
+    "limitations": [
+      "CryptoQuant reserve address universe has not been crosswalked to all five incident source wallets.",
+      "Reserve metrics can change through theft, internal wallet reclassification, deposits, customer withdrawals or custody transfers.",
+      "The 2.47B Oct30 exchange-reserve metric is not a new official PoR balance and cannot be divided by Oct1 customer liabilities to infer current coverage.",
+      "No token-specific Binance replenishment fills or reserve-address replacements have been disclosed."
+    ]
+  },
+  "official_por_comparison": {
+    "official_snapshot_date": "2026-10-01T00:00:00Z",
+    "xrp_customer_net_balances": 2496000000,
+    "xrp_reserve_coverage_percent": 100.77,
+    "implied_oct1_reserve_balance": 2515219200,
+    "cryptoquant_oct30_exchange_reserves": 2470000000,
+    "difference_vs_oct1_customer_liabilities": -26000000,
+    "difference_vs_implied_oct1_reserves": -45219200,
+    "comparable": false,
+    "reason": "The Oct1 official PoR snapshot reports customer liabilities and reserve coverage; CryptoQuant's Oct30 exchange-reserve metric has a different observation date and potentially different address universe. No Oct30 customer-liability snapshot was published at cutoff.",
+    "conclusion": "Do not infer post-incident undercollateralization or restored 1:1 backing from these mixed snapshots. Binance's promised updated PoR is the required evidence."
+  },
+  "stablecoin_freezes": [
+    {
+      "issuer": "Tether",
+      "asset": "USDT",
+      "amount": 1770000000,
+      "unit": "USD_equivalent",
+      "reported_at_utc": "2026-10-30T00:30:00Z",
+      "mechanism": "issuer_address_freeze",
+      "classification": "TRM_ONCHAIN_CONFIRMED_AGGREGATE",
+      "source_ids": [
+        "SRC-TRM-BINANCE-HACK-20261030"
+      ]
+    },
+    {
+      "issuer": "Circle",
+      "asset": "USDC",
+      "amount": 825000000,
+      "unit": "USD_equivalent",
+      "reported_at_utc": "2026-10-30T00:30:00Z",
+      "mechanism": "issuer_address_freeze",
+      "detail": "823M USDC frozen in main receiver at 21:04 UTC, plus 1.56M USDC later",
+      "classification": "TRM_ONCHAIN_CONFIRMED_AGGREGATE",
+      "source_ids": [
+        "SRC-TRM-BINANCE-HACK-20261030"
+      ]
+    },
+    {
+      "issuer": "Ripple",
+      "asset": "RLUSD",
+      "amount": 40500000,
+      "unit": "USD_equivalent",
+      "reported_at_utc": "2026-10-30T00:30:00Z",
+      "mechanism": "issuer_address_freeze",
+      "detail": "88.5M RLUSD reached attacker path; 48M sold before freeze; 40.5M remained frozen at 22:01 UTC",
+      "classification": "TRM_ONCHAIN_CONFIRMED",
+      "source_ids": [
+        "SRC-TRM-BINANCE-HACK-20261030"
+      ]
+    },
+    {
+      "issuer": "World Liberty Financial",
+      "asset": "USD1",
+      "amount": 27800000,
+      "unit": "USD_equivalent",
+      "reported_at_utc": "2026-10-30T00:30:00Z",
+      "mechanism": "issuer_address_freeze",
+      "classification": "TRM_ONCHAIN_CONFIRMED",
+      "source_ids": [
+        "SRC-TRM-BINANCE-HACK-20261030"
+      ]
+    },
+    {
+      "issuer": "Arbitrum Security Council",
+      "asset": "ETH+ARB",
+      "amount": 30000000,
+      "unit": "USD_equivalent",
+      "reported_at_utc": "2026-10-30T00:30:00Z",
+      "mechanism": "network_security_council_rescue",
+      "classification": "TRM_ONCHAIN_CONFIRMED",
+      "source_ids": [
+        "SRC-TRM-BINANCE-HACK-20261030"
+      ]
+    }
+  ],
+  "issuer_control_vs_native_xrp": {
+    "native_xrp_issuer_freezable": false,
+    "explanation": "Circle can freeze USDC and Ripple can freeze RLUSD because these are issued tokens with issuer controls. Native XRP has no issuer and cannot be frozen by an issuer. The attacker-held XRP therefore cannot be immobilized through the same issuer blacklist mechanism.",
+    "source_ids": [
+      "SRC-XRPL-NATIVE-XRP-FREEZE-DOCS",
+      "SRC-TRM-BINANCE-HACK-20261030"
+    ]
+  },
+  "attacker_xrp_receiver": {
+    "address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "reported_balance_xrp": 233500000,
+    "last_public_onchain_observation_utc": "2026-10-30T06:43:00Z",
+    "last_observation": "Bitquery reported no outgoing transaction from the receiver through its 06:43 UTC Oct30 read.",
+    "current_state_at_cutoff": "UNKNOWN_NOT_REFRESHED",
+    "source_ids": [
+      "SRC-BITQUERY-BINANCE-HACK-20261030",
+      "SRC-TRM-BINANCE-HACK-20261030"
+    ]
+  },
+  "binance_capital_plan": {
+    "company_funds_set_aside_usd": 6340000000,
+    "affected_token_assets_already_held_usd": 5000000000,
+    "remaining_relevant_token_assets_to_acquire_usd": 1340000000,
+    "frozen_assets_company_reported_usd": 3000000000,
+    "restoration_status": "BINANCE_NEWS_SAYS_RESTORATION_BEGUN",
+    "xrp_specific_purchase_or_credit_amount": null,
+    "status": "AGGREGATE_OFFICIAL_STATEMENT; XRP_ALLOCATION_UNKNOWN",
+    "note": "The restoration-begun statement is distinct from withdrawal-service resumption. The $1.34B remaining purchase plan may involve affected tokens but no XRP allocation, fills, counterparties or settlement have been disclosed."
+  },
+  "technical_attack_assessment": {
+    "trm_attribution": "TRM assesses TraderTraitor/North Korea with high confidence; not an official law-enforcement determination.",
+    "leading_mechanism": "TRM and Bitquery assess broad access to Binance's signing/withdrawal infrastructure across chains; Ethereum used EIP-7702 authorizations, while most other chains used standard signed transfers.",
+    "competing_company_statement": "Binance's initial inquiry cited a potentially compromised DevOps engineer laptop/service container and said it found no evidence of wallet private-key leakage.",
+    "official_root_cause": "NOT_PUBLISHED_AT_CUTOFF",
+    "confidence": "LEADING_HYPOTHESIS_NOT_CONFIRMED"
+  },
+  "freeze_reconciliation": {
+    "trm_frozen_usd": 2700000000,
+    "bitquery_frozen_usd": 2700000000,
+    "binance_company_reported_frozen_usd": 3000000000,
+    "bitquery_attacker_remaining_usd_at_2026_10_30T0643Z": 3200000000,
+    "trm_assets_beyond_issuer_reach_usd_at_2026_10_30T0030Z": 2400000000,
+    "comparability": "NOT_COMPARABLE_WITHOUT_TIME_AND_VALUATION_RECONCILIATION"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "RH1",
+      "hypothesis": "Most of Binance's 220M XRP reserve decline between Oct28 and Oct30 reflects the 233.46M XRP incident transfer.",
+      "status": "STRONGLY_SUPPORTED_BY_MAGNITUDE_AND_TIMING_NOT_PROVEN",
+      "support": [
+        "The reserve decline is 94.23% of the five-wallet incident transfer.",
+        "Both occurred in the same two-day window.",
+        "TokenPost's 185M partial outflow is close to the prior 185.017M main-wallet leg."
+      ],
+      "disconfirming_or_alternative": [
+        "CryptoQuant's reserve address universe has not been matched to the five source wallets.",
+        "Other deposits, customer withdrawals, wallet reclassifications or reserve methodology changes could explain the residual."
+      ],
+      "test": "Crosswalk all five source wallets to CryptoQuant and Binance PoR address sets; obtain timestamped account balances and reserve-address changes."
+    },
+    {
+      "id": "RH2",
+      "hypothesis": "The 2.47B XRP exchange-reserve metric proves Binance became undercollateralized after the theft.",
+      "status": "NOT_ESTABLISHED",
+      "support": [
+        "2.47B is below Oct1 customer net balances of 2.496B and below the Oct1 implied reserve of 2.515B."
+      ],
+      "disconfirming_or_alternative": [
+        "The Oct1 liability snapshot is stale; CryptoQuant's Oct30 metric is not the same official PoR address universe; customer liabilities can change."
+      ],
+      "test": "Wait for Binance's post-incident PoR with same-time token-level customer liabilities and on-chain reserve addresses."
+    },
+    {
+      "id": "RH3",
+      "hypothesis": "Circle and Ripple issuer freezes demonstrate that USDC/RLUSD are directly controllable while native XRP is not issuer-freezable.",
+      "status": "CONFIRMED_PROTOCOL_AND_ONCHAIN_MECHANISM",
+      "support": [
+        "Circle froze 823M USDC at 21:04 UTC and 1.56M later.",
+        "Ripple froze 40.5M RLUSD at 22:01 UTC.",
+        "XRPL docs state native XRP is not subject to issuer freeze controls."
+      ],
+      "disconfirming_or_alternative": [
+        "Exchange custody restrictions and law-enforcement actions can affect access to XRP held by custodians, but are not issuer freezes."
+      ],
+      "test": "Continue tracking stablecoin issuer blacklist events separately from native XRP receiver movements."
+    },
+    {
+      "id": "RH4",
+      "hypothesis": "Binance's remaining $1.34B acquisition plan creates XRP demand.",
+      "status": "POSSIBLE_NOT_QUANTIFIED",
+      "support": [
+        "Binance says it will acquire remaining affected token assets through market and OTC channels; XRP was stolen from Binance-labelled wallets."
+      ],
+      "disconfirming_or_alternative": [
+        "No token-level purchase list, XRP quantity, fill, OTC counterparty or reserve-address replenishment is disclosed."
+      ],
+      "test": "Compare post-incident PoR token balances, XRP reserve wallets and official purchase/restoration disclosures."
+    },
+    {
+      "id": "RH5",
+      "hypothesis": "The incident originated in a cross-chain signing-infrastructure compromise rather than an isolated XRP Ledger exploit.",
+      "status": "LEADING_TECHNICAL_HYPOTHESIS",
+      "support": [
+        "17 Binance-labelled wallets across nine chains sent valid signed transfers in a short window.",
+        "TRM/Bitquery describe standard signed transfers on non-Ethereum chains and EIP-7702 on Ethereum.",
+        "Binance initial inquiry cites a compromised DevOps laptop/service container."
+      ],
+      "disconfirming_or_alternative": [
+        "Binance has not published a full root-cause postmortem; no private-key leak was reported but not all access paths are public."
+      ],
+      "test": "Await official postmortem and correlate signing-service, approval-path and chain-specific transaction evidence."
+    }
+  ],
+  "prediction_engine": {
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "reserve_decline_feature_status": "REJECTED_PENDING_CAUSAL_CLASSIFICATION",
+    "reason": "The observed reserve decline is closely aligned with a theft, not demonstrated voluntary withdrawal or net accumulation. It must not be interpreted as bullish exchange outflow or used as a price feature until wallet-level causality is reconciled.",
+    "required_next_tests": [
+      "wallet-level crosswalk",
+      "post-incident same-time PoR liabilities/reserves",
+      "BTC/ETH-controlled event study",
+      "fixed-horizon walk-forward evaluation",
+      "calibration and shadow evaluation"
+    ]
+  },
+  "research_scope_notes": [
+    "Japan SBIC remains distinct from SBI Holdings; the Social Bias Inference Corpus is a separate documented acronym expansion.",
+    "Permission Coin ASK remains the leading ASK Coin candidate; Coinbase Embedded Wallet relationship is confirmed, no XRPL integration established.",
+    "Coinbase/Circle/SBI relationships and the cbXRP/Morpho collateral path remain in prior ledger snapshots; no new direct Coinbase-XRP incident relationship was established.",
+    "Camilla Stephenson's exact YouTube channel identity and exhaustive public-video inventory remain unresolved."
+  ]
+}
