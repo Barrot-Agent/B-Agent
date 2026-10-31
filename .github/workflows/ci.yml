@@ -80,5 +80,6 @@ jobs:
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
             tests/test_signal_accuracy_fail_closed.py \
+            tests/test_fixed_horizon_ledger.py \
             tests/test_cross_analysis_workflow_safety.py \
             -v --no-cov
