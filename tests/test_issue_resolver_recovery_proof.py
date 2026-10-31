@@ -214,4 +214,4 @@ def test_resolver_leaves_issue_open_after_later_same_branch_failure():
 
     assert gh.call_count == 1
     assert gh.call_args.args[:3] == ("issue", "comment", "42")
-    assert "still failed" in gh.call_args.kwargs["--body"]
+    assert "still failed" in gh.call_args.args[-1]
