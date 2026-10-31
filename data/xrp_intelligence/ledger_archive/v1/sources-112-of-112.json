@@ -1,0 +1,39 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 111,
+  "chunk_count": 112,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403",
+      "source_id": "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403",
+      "publisher": "GitHub Actions — Barrot-Agent/B-Agent",
+      "title": "XRP Ledger Archive Validation run 41185679403",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41185679403",
+      "published_at": "2026-10-31T08:42:14Z",
+      "retrieved_at_utc": "2026-10-31T08:42:54Z",
+      "evidence_class": "GITHUB_ACTIONS_EXACT_HEAD_VALIDATION",
+      "independence_group": "github_repository",
+      "summary": "Exact head e8d4427e0e2bfc5a1fc3604f41e8cbd6486a98e1 passed the actual repository validator: 364 archive shards checked, 1,954 sources, 335 run updates, 851 limitations, index format 3.0, snapshot blob SHA matched, zero errors, 20 regression tests passed, state_mutated=false.",
+      "methodology": "Inspected run metadata, job steps and validator log at the exact checkout SHA.",
+      "limitations": "No fail-closed gate run was found for this exact head; validator success is not a gate-success claim."
+    },
+    {
+      "id": "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470",
+      "source_id": "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470",
+      "publisher": "GitHub Actions — Barrot-Agent/B-Agent",
+      "title": "Approval workflow push event produced zero jobs on XRP research branch",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41185678470",
+      "published_at": "2026-10-31T08:42:14Z",
+      "retrieved_at_utc": "2026-10-31T08:42:54Z",
+      "evidence_class": "GITHUB_ACTIONS_ZERO_JOB_FAILURE",
+      "independence_group": "github_repository",
+      "summary": "Run 41185678470 used event push, workflow path .github/workflows/barrot-approve-pr.yml, head e8d4427 and branch research/xrp-ledger-shard-migration-20261029T2210Z; conclusion failure and zero jobs. The default-branch workflow is still unmodified because PR #1402 is open and unmerged.",
+      "methodology": "Inspected exact run metadata and jobs endpoint; jobs array was empty.",
+      "limitations": "This run uses the default-branch workflow state, not PR #1402's modified branch. It proves the fix is not active across the repository until merged."
+    }
+  ]
+}

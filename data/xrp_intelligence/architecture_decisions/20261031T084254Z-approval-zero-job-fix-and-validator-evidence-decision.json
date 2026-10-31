@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T084254Z-APPROVAL-ZERO-JOB-AND-ARCHIVE-VALIDATION",
+  "captured_at_utc": "2026-10-31T08:42:54Z",
+  "status": "ACCEPTED_FOR_RESEARCH_ARCHITECTURE",
+  "source_ids": [
+    "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403",
+    "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470",
+    "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+  ],
+  "decisions": [
+    {
+      "id": "DEC-APPROVAL-FIX-NOT-ACTIVE-ON-MAIN",
+      "rule": "Do not mark the approval workflow fixed repository-wide until PR #1402 is merged with approval. Preserve the push-noop branch success and the main/default-workflow zero-job counterexample as separate evidence.",
+      "rationale": "Run 41184448544 passed on the PR branch; run 41185678470 failed with zero jobs on another branch using the unmodified default workflow.",
+      "feature_admission": "WORKFLOW_SAFETY_ONLY"
+    },
+    {
+      "id": "DEC-ARCHIVE-VALIDATOR-PASS-NO-GATE",
+      "rule": "Mark e8d442 as exact-head validator PASS for 364 shards and 20 tests, but keep fail-closed gate status NOT_OBSERVED. Do not conflate validator success with merge-gate success.",
+      "rationale": "Run 41185679403 completed successfully with errors=[] and state_mutated=false; no gate run was returned for the same head.",
+      "feature_admission": "ARCHIVE_INTEGRITY_ONLY"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
