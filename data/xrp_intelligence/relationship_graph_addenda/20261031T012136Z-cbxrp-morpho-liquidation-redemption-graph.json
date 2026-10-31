@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T012136Z-CBXRP-MORPHO-LIQUIDATION-REDEMPTION",
+  "created_at_utc": "2026-10-31T01:21:36Z",
+  "captured_at_utc": "2026-10-31T01:21:36Z",
+  "source_ids": [
+    "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+    "SRC-LIQUIDIFY-MORPHO-CBXRP-LIQUIDATOR-0X4C0F-20261031T012136Z",
+    "SRC-LIQUIDIFY-MORPHO-CBXRP-BATCH-0X24BE-20261031T012136Z",
+    "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z",
+    "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z",
+    "SRC-MORPHO-PUBLIC-API-DOCS-20261031T012136Z"
+  ],
+  "source_reference_count": 6,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T012136Z-01",
+      "from_entity": "Morpho cbXRP/USDC 62.5% LLTV market",
+      "relation": "seized_cbXRP_from_borrower_and_transferred_to",
+      "to_entity": "Morpho liquidator",
+      "status": "THIRD_PARTY_TRANSACTION_LEVEL_INDEXED_EVENT",
+      "source_ids": [
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-LIQUIDATOR-0X4C0F-20261031T012136Z",
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-BATCH-0X24BE-20261031T012136Z"
+      ],
+      "details": "One event seized 701.6 cbXRP for 829.4 USDC debt repaid; the wider index attributes 132 cbXRP/USDC events to 0x4c0f…19f4."
+    },
+    {
+      "edge_id": "E-20261031T012136Z-02",
+      "from_entity": "Coinbase Exchange",
+      "relation": "accepts_cbXRP_deposit_and_automatically_unwraps_to",
+      "to_entity": "Native XRP account balance",
+      "status": "OFFICIAL_COINBASE_HELP_MECHANISM",
+      "source_ids": [
+        "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z"
+      ],
+      "details": "Eligible users depositing cbXRP receive the underlying native XRP credit."
+    },
+    {
+      "edge_id": "E-20261031T012136Z-03",
+      "from_entity": "Morpho liquidator holding cbXRP",
+      "relation": "could_redeem_through_Coinbase_for",
+      "to_entity": "Native XRP",
+      "status": "CONDITIONAL_ROUTE_NOT_OBSERVED",
+      "source_ids": [
+        "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-LIQUIDATOR-0X4C0F-20261031T012136Z",
+        "SRC-LIQUIDIFY-MORPHO-CBXRP-BATCH-0X24BE-20261031T012136Z"
+      ],
+      "details": "Mechanism exists; no liquidator-to-Coinbase transfer, unwrap or native XRP sale was traced."
+    },
+    {
+      "edge_id": "E-20261031T012136Z-04",
+      "from_entity": "Clearstar USDC vault",
+      "relation": "allocates_USDC_to",
+      "to_entity": "Morpho cbXRP/USDC 62.5% LLTV market",
+      "status": "MORPHO_VAULT_INTERFACE_SNAPSHOT",
+      "source_ids": [
+        "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z"
+      ],
+      "details": "$410.85K allocation and $6.47M underlying market liquidity; one vault, not total market or Coinbase volume."
+    },
+    {
+      "edge_id": "E-20261031T012136Z-05",
+      "from_entity": "Steakhouse market interface",
+      "relation": "lists_separate",
+      "to_entity": "Morpho cbXRP/USDC 77% LLTV market",
+      "status": "SEPARATE_MARKET_PARAMETERS_OBSERVED",
+      "source_ids": [
+        "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z"
+      ],
+      "details": "Distinct market with its own supply, borrow, oracle, utilization and liquidation penalty."
+    },
+    {
+      "edge_id": "E-20261031T012136Z-06",
+      "from_entity": "Coinbase XRP-backed USDC loan interface",
+      "relation": "uses_Morpho_but_market_ID_routing_is",
+      "to_entity": "UNKNOWN",
+      "status": "OFFICIAL_PRODUCT_PLUS_MARKET_DISCOVERY",
+      "source_ids": [
+        "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+        "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z",
+        "SRC-MORPHO-PUBLIC-API-DOCS-20261031T012136Z"
+      ],
+      "details": "Coinbase confirms Morpho integration; multiple cbXRP markets exist and no exclusive market should be assumed."
+    },
+    {
+      "edge_id": "E-20261031T012136Z-07",
+      "from_entity": "Morpho public REST API",
+      "relation": "documents_read_access_to",
+      "to_entity": "Blue market state and historical series",
+      "status": "OFFICIAL_API_DOCUMENTATION_DESIGNED_NOT_EXECUTED",
+      "source_ids": [
+        "SRC-MORPHO-PUBLIC-API-DOCS-20261031T012136Z"
+      ],
+      "details": "Public GET endpoints can support market-state ingestion; API calls have not yet been executed."
+    }
+  ],
+  "disconfirming_evidence": [
+    {
+      "claim": "Morpho liquidations automatically become native XRP sales.",
+      "evidence": "Coinbase unwrap is only a possible route; no liquidator deposit/unwrap or sale was traced."
+    },
+    {
+      "claim": "The 701.6 cbXRP seizure is the total batch collateral.",
+      "evidence": "It is one event within a 30-liquidation transaction; retained proceeds are not measured."
+    },
+    {
+      "claim": "Coinbase uses only the 62.5% LLTV market.",
+      "evidence": "A separate 77% LLTV cbXRP/USDC market exists and Coinbase does not publish its market routing."
+    },
+    {
+      "claim": "Circle or Coinbase is the direct lender in the observed vault allocations.",
+      "evidence": "Morpho vaults aggregate supplier capital; no Circle/Coinbase direct supplier position was identified."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}
