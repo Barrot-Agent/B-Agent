@@ -49,8 +49,8 @@ on:
           - rebase
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  pull-requests: read
   checks: read
   statuses: read
 
@@ -66,7 +66,8 @@ jobs:
 
       - name: Process PRs
         env:
-          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ inputs.dry_run == 'false' && inputs.confirm_merge == 'true' && secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          HAS_GH_PAT: ${{ secrets.GH_PAT != '' }}
           REPO: ${{ github.repository }}
           MODE: ${{ inputs.mode }}
           LABEL: ${{ inputs.label }}
@@ -89,6 +90,10 @@ jobs:
           # Fail closed before any branch update, PR comment or merge operation.
           if [ "$DRY_RUN" != "true" ] && [ "$CONFIRM_MERGE" != "true" ]; then
             echo "ERROR: live branch updates/merges require confirm_merge=true."
+            exit 1
+          fi
+          if [ "$DRY_RUN" != "true" ] && [ "$CONFIRM_MERGE" = "true" ] && [ "$HAS_GH_PAT" != "true" ]; then
+            echo "ERROR: a write-scoped GH_PAT is required for an explicitly confirmed live run."
             exit 1
           fi
 
