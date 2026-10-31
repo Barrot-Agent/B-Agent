@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 128,
+  "chunk_count": 129,
+  "record_count": 6,
+  "created_at_utc": "2026-10-31T17:14:56Z",
+  "records": [
+    {
+      "source_id": "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+      "publisher": "Binance",
+      "title": "Security Incident Recovery Update #3 — 90% replenished and ten top assets fully backed",
+      "url": "https://www.binance.com/de/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "published_at_utc": "2026-10-31T14:24:00Z",
+      "retrieved_at_utc": "2026-10-31T17:14:56Z",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "independence_group": "BINANCE_OFFICIAL",
+      "claims": [
+        "Binance states total stolen-asset replenishment reached 90%.",
+        "Binance states BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC are each 100% backed.",
+        "Binance states the remaining 10% consists of tokens outside the top ten and is less liquid.",
+        "Binance says it is using partial SAFU deployment, excess Futures Insurance Fund balance and corporate treasury; the Futures Insurance Fund remains above its required regulatory level.",
+        "Binance says a 2026-10-31 00:00 UTC PoR snapshot was taken and the full zero-knowledge proof is estimated by 2026-11-03 UTC.",
+        "Binance says withdrawals are targeted to resume Sunday 2026-11-01.",
+        "Binance says SAFU will be replenished to approximately USD 1B and is held/managed by Nest Clearing and Custody Limited, an ADGM FSRA-regulated recognized clearing house."
+      ],
+      "limitations": [
+        "The 90% and 100%-backing figures are company claims pending independent verification through the full zero-knowledge proof.",
+        "The statement does not disclose an XRP-specific replenishment purchase quantity or transaction list.",
+        "The SAFU transfer destination and purpose are not specified in this announcement.",
+        "The 00:00 UTC PoR snapshot is not the same as a completed independently verifiable zero-knowledge proof."
+      ],
+      "id": "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3"
+    },
+    {
+      "source_id": "SRC-20261031T171300Z-REUTERS-BINANCE-90PCT",
+      "publisher": "Reuters",
+      "title": "Binance says 90% of stolen assets replenished",
+      "url": "https://www.reuters.com/legal/government/binance-says-90-stolen-assets-replenished-2026-10-31/",
+      "published_at_utc": "2026-10-31",
+      "retrieved_at_utc": "2026-10-31T17:14:56Z",
+      "evidence_class": "INDEPENDENT_REPORTING_OF_COMPANY_STATEMENT",
+      "independence_group": "REUTERS_REPORTING",
+      "claims": [
+        "Reuters reports Binance's 90% replenishment claim and the remaining 10% less-liquid token explanation.",
+        "Reuters reports the use of company funds and partial SAFU deployment and the planned Sunday November 1 withdrawal reopening."
+      ],
+      "limitations": [
+        "Reuters' 90% figure is sourced to Binance's announcement, not a separate audit of the underlying purchases or liabilities.",
+        "It does not provide XRP-specific replacement quantities."
+      ],
+      "id": "SRC-20261031T171300Z-REUTERS-BINANCE-90PCT"
+    },
+    {
+      "source_id": "SRC-20261031T171300Z-LOOKONCHAIN-SAFU-7500",
+      "publisher": "Lookonchain",
+      "title": "Binance SAFU Fund Moves 7,500 BTC to a New Wallet",
+      "url": "https://www.lookonchain.com/feeds/79763",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:14:56Z",
+      "evidence_class": "ONCHAIN_ANALYTICS_TRACKER_REPORT",
+      "independence_group": "LOOKONCHAIN_ONCHAIN_TRACKING",
+      "claims": [
+        "Lookonchain reports that the Binance SAFU fund transferred 7,500 BTC, approximately USD 580.88M at the time, to a new wallet about an hour before its post."
+      ],
+      "limitations": [
+        "The readable post does not expose a transaction hash or destination address.",
+        "The post does not establish whether the movement was sold, swapped, sent to an OTC desk, or merely reallocated to another custody wallet.",
+        "The tracker post's relative timing is not an exact transaction timestamp."
+      ],
+      "id": "SRC-20261031T171300Z-LOOKONCHAIN-SAFU-7500"
+    },
+    {
+      "source_id": "SRC-20261031T171300Z-ARKHAM-SAFU-BALANCE-7500",
+      "publisher": "Arkham Intelligence",
+      "title": "Binance SAFU Fund source-wallet balance after 7,500 BTC movement",
+      "url": "https://arkm.com/explorer/address/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:14:56Z",
+      "evidence_class": "ONCHAIN_LABELLED_ADDRESS_OBSERVATION",
+      "independence_group": "ARKHAM_ONCHAIN_EXPLORER",
+      "claims": [
+        "Arkham labels address 1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD as Binance SAFU Fund.",
+        "Arkham displayed 7.5K BTC remaining, valued at approximately USD 581.33M, at capture time."
+      ],
+      "limitations": [
+        "Arkham's readable page shows the source-wallet balance but not the new destination or transaction hash.",
+        "Entity attribution is Arkham's label, not a cryptographic proof of beneficial ownership.",
+        "A wallet balance change does not establish a sale or acquisition of another token."
+      ],
+      "id": "SRC-20261031T171300Z-ARKHAM-SAFU-BALANCE-7500"
+    },
+    {
+      "source_id": "SRC-20261031T171300Z-BITINFOCHARTS-SAFU-STALE-15000",
+      "publisher": "BitInfoCharts",
+      "title": "Conflicting stale SAFU wallet balance observation",
+      "url": "https://bitinfocharts.com/bitcoin/address/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:14:56Z",
+      "evidence_class": "CONFLICTING_STALE_EXPLORER_OBSERVATION",
+      "independence_group": "BITINFOCHARTS_EXPLORER",
+      "claims": [
+        "BitInfoCharts search-indexed content still displayed approximately 15,000 BTC and last outgoing activity on 2024-04-18 / last incoming dust on 2026-08-09."
+      ],
+      "limitations": [
+        "This conflicts with the fresher Arkham 7.5K balance and Lookonchain 7,500 BTC transfer report.",
+        "The page appears stale or cached relative to the newer on-chain observation and must not override fresh explorer data.",
+        "No independent live transaction-level verification was available through this page because its direct fetch returned 403."
+      ],
+      "id": "SRC-20261031T171300Z-BITINFOCHARTS-SAFU-STALE-15000"
+    },
+    {
+      "source_id": "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+      "publisher": "XRP Insights",
+      "title": "XRP exchange balances — October 31, 2026 08:00 UTC snapshot",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T17:14:56Z",
+      "evidence_class": "ONCHAIN_BALANCE_AGGREGATION",
+      "independence_group": "XRP_INSIGHTS_RIPPLED_XRPSCAN",
+      "claims": [
+        "The October 31 08:00 UTC snapshot reports 22.48B XRP in 701 publicly attributed wallets across 24 exchanges, about 32.8% of circulating supply and 22.5% of total supply.",
+        "The same-wallet daily change was +105.9M XRP on October 31 after -207.3M on October 30.",
+        "Binance-attributed wallets held 2.78B XRP, with +17.6M over seven days and +30.3M over 30 days.",
+        "Coinbase-attributed wallets held 5.85B XRP, with +17.7M over seven days and +18.4M over 30 days; Upbit held 6.43B XRP.",
+        "The aggregate includes 327.4M XRP backing Binance-Peg XRP on BNB Chain, 150.2M XRP backing cbXRP on Base and 11.2M XRP in an insurance fund and charity wallet; approximately 487.2M XRP are identified as reserve/operational rather than customer deposits.",
+        "The provider says balances are read from XRPL via rippled account_info daily and attributed using XRPSCAN labels; same-wallet change excludes newly tracked wallets."
+      ],
+      "limitations": [
+        "This is a broad attributed-wallet total including cold storage, customer omnibus balances, wrapped-asset backing reserves and operational funds; it is not tradable float.",
+        "The same-wallet daily rebound does not identify customer deposits versus internal wallet migration.",
+        "The provider's 2.78B Binance wallet set is not the same universe as CryptoQuant's narrower exchange-reserve series.",
+        "XRP Insights' attribution depends on public XRPSCAN labels and its own tracked wallet set; missing exchange wallets remain possible."
+      ],
+      "id": "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+    }
+  ]
+}
