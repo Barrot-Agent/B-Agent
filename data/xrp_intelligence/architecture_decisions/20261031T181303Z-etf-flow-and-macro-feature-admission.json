@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T181303Z-ETF-FLOWS-13F-AND-MACRO-ADMISSION",
+  "captured_at_utc": "2026-10-31T18:24:02.075Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NOT_A_DIRECTIONAL_MODEL_FEATURE",
+  "decisions": [
+    "Store daily ETF flows at fund level and preserve missing funds as PENDING, never as zero.",
+    "Treat 2026-10-30 XRP ETF +USD 0.2M as partial (3/5 funds) and do not call it a final daily total.",
+    "Store the 127-institution Q2 2026 13F set as lagged quarter-end long-position data; do not equate reported ETF shares with direct XRP beneficial ownership.",
+    "Keep reported XRP ETF underlying holdings (1.1428B XRP) separate from cumulative net flow, AUM, 13F share positions and spot exchange order flow.",
+    "Record the October 28 FOMC hold and two hike dissents as a macro regime context variable; do not infer a directional XRP effect without historical tests.",
+    "Do not issue a forecast from this snapshot; require fixed-horizon outcomes, walk-forward validation, baseline comparisons and calibration."
+  ],
+  "feature_admission": {
+    "xrp_etf_daily_flow": "PARTIAL_T1_CONTEXT_ONLY",
+    "xrp_etf_13f_holdings": "LAGGED_INSTITUTIONAL_ADOPTION_CONTEXT",
+    "fomc_policy": "MACRO_REGIME_CONTEXT",
+    "directional_xrp_features": [],
+    "forecast_status": "NOT_ISSUED"
+  }
+}
