@@ -1,37 +1,64 @@
 name: Cross Analysis
 
 on:
-  # Fire immediately after the Knowledge Signal Cycle produces fresh log.jsonl data
+  # Analyze only after a successful Knowledge Signal Cycle on main.
   workflow_run:
     workflows: ["Knowledge Signal Cycle"]
     types: [completed]
     branches: [main]
-  # Fallback cron kept as safety net
+  # Scheduled read-only refresh.
   schedule:
     - cron: '50 * * * *'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   analyze:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: false
+
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
+
       - name: Entity co-occurrence
         run: python3 scripts/entity_cooccurrence.py
+
       - name: Sentiment shift detector
         run: python3 scripts/sentiment_shift.py
+
       - name: Entity sentiment profiler
         run: python3 scripts/entity_sentiment_profile.py
-      - name: Commit outputs
+
+      - name: Upload read-only analysis outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-analysis-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ping-pongings/knowledge-base/entity_cooccurrence.json
+            ping-pongings/knowledge-base/sentiment_shift.json
+            ping-pongings/knowledge-base/entity_sentiment_profile.json
+            web/entity_cooccurrence.json
+            web/sentiment_shift.json
+            web/entity_sentiment_profile.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Write run summary
         run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/entity_cooccurrence.json ping-pongings/knowledge-base/sentiment_shift.json ping-pongings/knowledge-base/entity_sentiment_profile.json
-          git diff --cached --quiet || git commit -m "Cross-analysis refresh [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          {
+            echo "## Cross Analysis"
+            echo ""
+            echo "Read-only analysis completed. Outputs are attached as a workflow artifact."
+            echo "No repository files were committed or pushed."
+          } >> "$GITHUB_STEP_SUMMARY"
