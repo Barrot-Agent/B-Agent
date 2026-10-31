@@ -26,11 +26,6 @@
       "type": "SBI Group buy-out / enterprise-revitalization investment company"
     },
     {
-      "id": "SBI_CAPITAL_KOREA",
-      "name": "SBI Capital Co., Ltd. (Seoul)",
-      "type": "Separate Korean SBI Group investment company"
-    },
-    {
       "id": "SBI_HOLDINGS",
       "name": "SBI Holdings",
       "type": "Japanese financial group"
@@ -110,14 +105,6 @@
         "SRC-SBI-CAPITAL-OWNERSHIP-2007-0710",
         "SRC-SBI-CAPITAL-MANAGEMENT-RESTRUCTURE-2012-0523"
       ]
-    },
-    {
-      "from": "SBI_CAPITAL_KOREA",
-      "to": "SBI_HOLDINGS",
-      "type": "subsidiary",
-      "status": "CONFIRMED_BY_2021_SBI_ANNOUNCEMENT",
-      "evidence": [],
-      "caveat": "Separate Korean entity; not the Japanese SBIC candidates."
     },
     {
       "from": "DERIVATIVES_AGGREGATORS",
