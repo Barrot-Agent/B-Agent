@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 122,
+  "chunk_count": 123,
+  "record_count": 3,
+  "created_at_utc": "2026-10-31T16:01:37Z",
+  "records": [
+    {
+      "id": "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "title": "XRP Exchange Balances — October 31, 2026 08:00 UTC",
+      "publisher": "XRP Insights",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:01:37Z",
+      "evidence_type": "SECONDARY_ONCHAIN_AGGREGATION_WITH_DIRECT_LEDGER_BALANCE_READS",
+      "independence_group": "XRP_INSIGHTS_XRPSCAN_PUBLIC_LABELS",
+      "status": "PUBLISHED_DATA_VERIFIED_ATTRIBUTION_NOT_INDEPENDENTLY_REPRODUCED",
+      "notes": "Daily balances are read from XRPL via rippled account_info; exchange attribution uses XRPSCAN public labels. 22.48B XRP across 701 wallets and 24 exchanges. Includes cold storage, 37.8% unclassified, and 487.2M known non-customer reserves/funds. Same-wallet changes: all exchanges -133.0M 7d/-12.3M 30d; Binance +17.6M/+30.3M; Coinbase +17.7M/+18.4M. No per-wallet history; transfers to unlabelled wallets can appear as outflows."
+    },
+    {
+      "id": "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3",
+      "url": "https://www.reuters.com/legal/government/binance-says-90-stolen-assets-replenished-2026-10-31/",
+      "title": "Binance replenishes 90% of assets stolen in security incident",
+      "publisher": "Reuters",
+      "published_date": "2026-10-31",
+      "retrieved_at_utc": "2026-10-31T16:01:37Z",
+      "evidence_type": "SECONDARY_REPORT_OF_COMPANY_STATEMENT",
+      "independence_group": "REUTERS_BINANCE_INCIDENT_REPORTING",
+      "status": "PUBLISHED_REPORT_VERIFIED_COMPANY_CLAIMS_NOT_INDEPENDENT_RESERVE_AUDIT",
+      "notes": "Reuters reports Binance said 90% of stolen assets were replenished, remaining 10% are less-liquid tokens, partial SAFU deployment, and a 00:00 GMT Oct31 PoR snapshot for ten assets including XRP with minimum 1:1 backing once full proof is available; withdrawals targeted for Sunday Nov1. This reports Binance's claims, not independent reserve verification."
+    },
+    {
+      "id": "SRC-20261031T160137Z-GITHUB-MAIN-PR-WORKFLOW-AUDIT",
+      "url": "https://api.github.com/repos/Barrot-Agent/B-Agent",
+      "title": "B-Agent current-main, open-PR and workflow audit",
+      "publisher": "GitHub REST API",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:01:37Z",
+      "evidence_type": "DIRECT_REPOSITORY_OBSERVATION",
+      "independence_group": "GITHUB_REPOSITORY_STATE",
+      "status": "VERIFIED",
+      "notes": "Main 21ff522fe6457fb472e8140c180f0643b7948b29. 191 open PRs: 181 drafts, 10 ready; 189 target main and 2 another base. No main-based PR base.sha equals current main. Cross-analysis and scheduler-tick retain write permissions; Databricks token workflow accepts new_token and calls gh secret set; merge queue and paper trader are manual-only mutation workflows; automatic PR merge disabled. Full repository CI, dependency scan and branch-protection details incomplete/403."
+    }
+  ]
+}
