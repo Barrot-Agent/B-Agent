@@ -578,17 +578,17 @@ def test_checkout_branch_resumes_remote_branch_without_resetting_refs(monkeypatc
         if command == ["status", "--porcelain=v1", "--untracked-files=all"]:
             return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
         if command == ["branch", "--show-current"]:
-            return module.subprocess.CompletedProcess(args, 0, stdout="main\\n", stderr="")
+            return module.subprocess.CompletedProcess(args, 0, stdout="main\n", stderr="")
         if command == ["ls-remote", "--heads", "origin", "refs/heads/barrot/task-42"]:
             return module.subprocess.CompletedProcess(
-                args, 0, stdout=f"{remote_sha}\\trefs/heads/barrot/task-42\\n", stderr=""
+                args, 0, stdout=f"{remote_sha}\trefs/heads/barrot/task-42\n", stderr=""
             )
         if command == ["show-ref", "--verify", "--quiet", "refs/heads/barrot/task-42"]:
             return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="")
         if command == ["fetch", "origin", "refs/heads/barrot/task-42:refs/remotes/origin/barrot/task-42"]:
             return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
         if command == ["rev-parse", "--verify", "refs/remotes/origin/barrot/task-42"]:
-            return module.subprocess.CompletedProcess(args, 0, stdout=remote_sha + "\\n", stderr="")
+            return module.subprocess.CompletedProcess(args, 0, stdout=remote_sha + "\n", stderr="")
         if command == ["checkout", "--track", "-b", "barrot/task-42", "origin/barrot/task-42"]:
             return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
         raise AssertionError(f"Unexpected git command: {command}")
@@ -612,7 +612,7 @@ def test_checkout_branch_refuses_dirty_worktree_without_mutation(monkeypatch) ->
     def fake_run(args, *, check=True, quiet=False):
         calls.append(args)
         return module.subprocess.CompletedProcess(
-            args, 0, stdout=" M README.md\\n?? notes.txt\\n", stderr=""
+            args, 0, stdout=" M README.md\n?? notes.txt\n", stderr=""
         )
 
     monkeypatch.setattr(module, "run", fake_run)
@@ -635,19 +635,19 @@ def test_checkout_branch_refuses_diverged_local_branch_without_reset(monkeypatch
         if command == ["status", "--porcelain=v1", "--untracked-files=all"]:
             return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
         if command == ["branch", "--show-current"]:
-            return module.subprocess.CompletedProcess(args, 0, stdout="main\\n", stderr="")
+            return module.subprocess.CompletedProcess(args, 0, stdout="main\n", stderr="")
         if command == ["ls-remote", "--heads", "origin", "refs/heads/research/preserve-work"]:
             return module.subprocess.CompletedProcess(
-                args, 0, stdout=f"{remote_sha}\\trefs/heads/research/preserve-work\\n", stderr=""
+                args, 0, stdout=f"{remote_sha}\trefs/heads/research/preserve-work\n", stderr=""
             )
         if command == ["show-ref", "--verify", "--quiet", "refs/heads/research/preserve-work"]:
             return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
         if command == ["fetch", "origin", "refs/heads/research/preserve-work:refs/remotes/origin/research/preserve-work"]:
             return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
         if command == ["rev-parse", "--verify", "refs/remotes/origin/research/preserve-work"]:
-            return module.subprocess.CompletedProcess(args, 0, stdout=remote_sha + "\\n", stderr="")
+            return module.subprocess.CompletedProcess(args, 0, stdout=remote_sha + "\n", stderr="")
         if command == ["rev-parse", "--verify", "refs/heads/research/preserve-work"]:
-            return module.subprocess.CompletedProcess(args, 0, stdout=local_sha + "\\n", stderr="")
+            return module.subprocess.CompletedProcess(args, 0, stdout=local_sha + "\n", stderr="")
         raise AssertionError(f"Unexpected git command: {command}")
 
     monkeypatch.setattr(module, "run", fake_run)
@@ -679,7 +679,7 @@ def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_
         if args[1:4] == ["diff", "--cached", "--quiet"]:
             return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="")
         if args[1:3] == ["rev-parse", "HEAD"]:
-            return module.subprocess.CompletedProcess(args, 0, stdout="abc123\\n", stderr="")
+            return module.subprocess.CompletedProcess(args, 0, stdout="abc123\n", stderr="")
         return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
 
     def fake_run_gh(args):
@@ -725,7 +725,7 @@ def test_scientific_evidence_survives_real_git_push_and_fresh_clone(tmp_path: Pa
     subprocess.run(["git", "init"], cwd=workspace, check=True, capture_output=True, text=True)
     subprocess.run(["git", "config", "user.email", "tests@barrot.invalid"], cwd=workspace, check=True)
     subprocess.run(["git", "config", "user.name", "Barrot Test"], cwd=workspace, check=True)
-    (workspace / "README.md").write_text("test repository\\n", encoding="utf-8")
+    (workspace / "README.md").write_text("test repository\n", encoding="utf-8")
     subprocess.run(["git", "add", "README.md"], cwd=workspace, check=True)
     subprocess.run(["git", "commit", "-m", "initial"], cwd=workspace, check=True, capture_output=True, text=True)
     subprocess.run(["git", "branch", "-M", "main"], cwd=workspace, check=True)
