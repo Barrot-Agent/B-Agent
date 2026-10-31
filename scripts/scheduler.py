@@ -23,6 +23,16 @@ from datetime import datetime, timezone
 QUEUE_PATH = "ping-pongings/knowledge-base/schedule_queue.jsonl"
 WORKFLOWS_DIR = ".github/workflows"
 
+# The queue can dispatch only reviewed, unattended-safe validation workflows.
+# Privileged workflows (merge, deployment, secret rotation, issue mutation,
+# repository writes, or external service changes) require direct human dispatch.
+ALLOWED_SCHEDULED_WORKFLOWS = frozenset({
+    "barrot-bundle-operational-smoke.yml",
+    "barrot-controlled-feature-validation.yml",
+    "formal-verification-benchmarks.yml",
+    "sindy-mcp-cicd.yml",
+})
+
 
 def _now():
     return datetime.now(timezone.utc)
@@ -48,12 +58,19 @@ def _save(entries):
 
 
 def _valid_workflow(name):
+    if not isinstance(name, str) or name not in ALLOWED_SCHEDULED_WORKFLOWS:
+        return False
+    if os.path.basename(name) != name or not name.endswith((".yml", ".yaml")):
+        return False
     return os.path.isfile(os.path.join(WORKFLOWS_DIR, name))
 
 
 def schedule(workflow, run_after_iso, note="", inputs=None):
     if not _valid_workflow(workflow):
-        sys.exit(f"Refusing to schedule: '{workflow}' is not a real file in {WORKFLOWS_DIR}/")
+        sys.exit(
+            f"Refusing to schedule: '{workflow}' is not an existing workflow in the "
+            "reviewed unattended allowlist. Privileged workflows must be dispatched manually."
+        )
     try:
         datetime.fromisoformat(run_after_iso.replace("Z", "+00:00"))
     except ValueError:
@@ -95,7 +112,10 @@ def tick():
             continue
         if not _valid_workflow(e["workflow"]):
             e["status"] = "failed"
-            e["error"] = f"workflow '{e['workflow']}' no longer exists"
+            e["error"] = (
+                f"workflow '{e['workflow']}' is not in the reviewed unattended allowlist "
+                "or no longer exists"
+            )
             changed = True
             continue
 
