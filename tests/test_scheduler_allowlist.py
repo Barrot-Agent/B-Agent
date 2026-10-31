@@ -27,6 +27,8 @@ def test_scheduler_allows_only_reviewed_unattended_validation_workflows(tmp_path
         "sync-self-hosted-brain.yml",
         "rotate-databricks-token.yml",
         "release.yml",
+        "formal-verification-benchmarks.yml",
+        "sindy-mcp-cicd.yml",
     }
     _prepare_workflows(tmp_path, monkeypatch, names)
 
@@ -74,13 +76,13 @@ def test_tick_marks_disallowed_pending_entry_failed_without_dispatch(tmp_path, m
 
 
 def test_tick_still_dispatches_an_allowlisted_validation_workflow(tmp_path, monkeypatch):
-    _prepare_workflows(tmp_path, monkeypatch, {"formal-verification-benchmarks.yml"})
+    _prepare_workflows(tmp_path, monkeypatch, {"barrot-bundle-operational-smoke.yml"})
     queue = tmp_path / "schedule_queue.jsonl"
     queue.write_text(
         json.dumps({
             "id": "safe0001",
-            "workflow": "formal-verification-benchmarks.yml",
-            "inputs": {"benchmark": "anthropic-flt"},
+            "workflow": "barrot-bundle-operational-smoke.yml",
+            "inputs": {},
             "run_after": "2026-10-30T00:00:00Z",
             "status": "pending",
         }) + "\n",
@@ -95,7 +97,7 @@ def test_tick_still_dispatches_an_allowlisted_validation_workflow(tmp_path, monk
     updated = json.loads(queue.read_text(encoding="utf-8").splitlines()[0])
     assert updated["status"] == "done"
     dispatch.assert_called_once_with(
-        ["gh", "workflow", "run", "formal-verification-benchmarks.yml", "-f", "benchmark=anthropic-flt"],
+        ["gh", "workflow", "run", "barrot-bundle-operational-smoke.yml"],
         capture_output=True,
         text=True,
     )
