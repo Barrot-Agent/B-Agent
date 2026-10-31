@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "202610311440Z-sbi-visa-crypto-card-current-campaign",
+  "captured_at_utc": "2026-10-31T14:40:47.539Z",
+  "data_cutoff_utc": "2026-10-31T14:40:47.539Z",
+  "product_page_url": "https://www.sbivc.co.jp/cryptocard",
+  "current_base_rewards": {
+    "standard": {
+      "yen_spend_per_point": 200,
+      "point_value_jpy": 1
+    },
+    "gold": {
+      "yen_spend_per_point": 200,
+      "point_value_jpy": 2
+    },
+    "points_period": "MONTHLY_CYCLE_FROM_DAY_6_THROUGH_DAY_5",
+    "points_credit_target": "AROUND_DAY_17",
+    "crypto_conversion": "AUTOMATIC_BY_MONTH_END",
+    "conversion_fee": "NO_FEE_AS_STATED_ON_PRODUCT_PAGE",
+    "conversion_price_reference": "SBI VC Trade displayed sales price at 06:59:59 on the day before conversion",
+    "xrp_precision": "TRUNCATE_TO_7_DECIMAL_PLACES",
+    "account_match": "VCTRADE account holder name must match cardholder",
+    "invalid_account_or_card": "NO_CRYPTO_EXCHANGE; points expire at month-end"
+  },
+  "current_campaign": {
+    "status_at_capture": "APPLICATION_WINDOW_OPEN_AT_CAPTURE",
+    "application_start": "2026-09-01",
+    "application_end": "2026-10-31",
+    "card_issue_deadline": "2026-11-30",
+    "eligible_spend_start": "2026-09-01",
+    "eligible_spend_end": "2026-12-05",
+    "reward_delivery_target": "2027-02-28",
+    "joining_reward_jpy_equivalent": 500,
+    "joining_reward_limit": "ONCE_PER_CUSTOMER_EVEN_IF_MULTIPLE_CARDS",
+    "standard": {
+      "spend_jpy_100000_reward_jpy_equivalent": 1000,
+      "spend_jpy_200000_total_reward_jpy_equivalent": 2000,
+      "maximum_jpy_equivalent": 2000
+    },
+    "gold": {
+      "spend_jpy_150000_reward_jpy_equivalent": 2000,
+      "spend_jpy_300000_total_reward_jpy_equivalent": 4000,
+      "maximum_jpy_equivalent": 4000
+    },
+    "combined_usage_reward_max_if_both_card_types_jpy_equivalent": 6000,
+    "campaign_asset_priority_when_multiple_cards": [
+      "GOLD_BEFORE_STANDARD",
+      "BTC_BEFORE_ETH_BEFORE_XRP"
+    ],
+    "campaign_spending_exclusions": [
+      "SBI_SECURITIES_CREDIT_CARD_INVESTMENT_ACCUMULATION",
+      "CASH_ADVANCE",
+      "ANNUAL_FEE",
+      "OTHER_EXCLUDED_TRANSACTIONS"
+    ],
+    "status_note": "This is the September–December 2026 campaign displayed on the current official product page; it is separate from the May–August launch campaign."
+  },
+  "distribution_channels": {
+    "card_shopping_rewards": "XRP_IS_ONE_SELECTABLE_ASSET_PER_CARD",
+    "securities_investment_accumulation": "CURRENT_PRODUCT_PAGE_DESCRIBES_CRYPTO_REWARDS_FOR_SBI_SECURITIES_CARD_ACCUMULATION",
+    "actual_xrp_cardholder_count": "UNKNOWN",
+    "xrp_selection_share": "UNKNOWN",
+    "monthly_xrp_reward_units": "UNKNOWN",
+    "realized_current_campaign_xrp_units": "NOT_YET_DUE",
+    "aggregate_xrp_credits": "UNKNOWN"
+  },
+  "actual_capital": {
+    "xrp_spot_purchase_units": "UNKNOWN",
+    "xrp_spot_purchase_jpy": "UNKNOWN",
+    "xrp_otc_purchase_units": "UNKNOWN",
+    "xrp_reward_inventory_source": "UNKNOWN",
+    "net_external_xrp_capital": "UNKNOWN",
+    "reason": "The product page specifies a retail sales-price reference and account crediting, not the source or execution venue of XRP inventory."
+  },
+  "feature_admission": {
+    "xrp_distribution_event_timeline": "ADMITTED",
+    "xrp_actual_capital_feature": "BLOCKED_PENDING_REWARD_CREDIT_AND_INVENTORY_SOURCE_DATA",
+    "xrp_directional_price_feature": "NOT_ADMITTED",
+    "forecast_status": "NOT_ISSUED"
+  }
+}
