@@ -14,7 +14,12 @@
     "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729",
     "SRC-SGFORGE-EURCV-XRPL-20260218",
     "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105",
-    "SRC-OCC-COINBASE-CD1370-20260402"
+    "SRC-OCC-COINBASE-CD1370-20260402",
+    "SRC-COINBASE-CBXRP-POR-RENDER-20261031",
+    "SRC-COINBASE-BORROW-XRP-20261031",
+    "SRC-COINBASE-GLOBAL-EXCHANGE-CROSS-COLLATERAL-20261031",
+    "SRC-COINBASE-XRP-PERP-SPEC-20261031",
+    "SRC-DEFILLAMA-CBXRP-USDC-MORPHO-20261031"
   ],
   "regulatory_status": {
     "ripple_national_trust_bank": {
@@ -129,15 +134,77 @@
   },
   "coinbase_tactical_position": {
     "existing_stack": [
-      "exchange and spot trading",
-      "XRP derivatives and perpetual-futures margin",
-      "cbXRP reserve and wrapped-asset infrastructure",
-      "Morpho-based USDC borrowing against cbXRP",
+      "XRP spot exchange access",
+      "cbXRP 1:1 wrapped-asset reserve and proof-of-reserves infrastructure on Base",
+      "Coinbase Borrow interface for USDC loans against XRP through Morpho on Base",
+      "XRP accepted as collateral in Coinbase Global Exchange perpetual-futures cross-margin system",
+      "XRP-PERP USDC-settled perpetual futures",
+      "CFTC-certified cash-settled XRP futures contract (separate dated product)",
       "USDC distribution relationship with Circle",
-      "RLUSD listing/distribution across supported networks",
+      "RLUSD listing and deposits/withdrawals across supported networks",
       "existing NYDFS-chartered Coinbase Custody Trust Company"
     ],
-    "federal_trust_bank_status": "CONDITIONAL_ONLY_NOT_OPERATIONAL",
-    "distinction": "Coinbase's proposed federal trust bank is custody/finder infrastructure, not a commercial deposit-taking or lending bank; existing Coinbase products and affiliate services remain separate."
+    "cbxrp_reserve": {
+      "backing_claim": "1:1 XRP held by Coinbase",
+      "indexed_2026_10_31_0615_utc": {
+        "reserve_xrp": 150237152.13,
+        "supply_cbxrp": 150234904.6,
+        "surplus_xrp": 2247.53,
+        "coverage_pct": 100.001496
+      },
+      "direct_page_2026_10_29_0519_utc": {
+        "reserve_xrp": 151405263.6,
+        "supply_cbxrp": 151403016.07,
+        "surplus_xrp": 2247.53,
+        "coverage_pct": 100.001485
+      },
+      "status": "MATERIAL_RENDER_DATE_CONFLICT; NEWER_INDEXED_VALUE_NOT_REPRODUCED_BY_DIRECT_OPEN",
+      "feature_admission": "CUSTODY_AND_WRAPPED_SUPPLY_CONTEXT_ONLY"
+    },
+    "borrow": {
+      "collateral_asset": "XRP",
+      "loan_asset": "USDC",
+      "maximum_borrow_usdc": 100000,
+      "eligible_regions": "US; New York excluded; availability varies by region",
+      "protocol": "Morpho Blue on Base",
+      "interface": "Coinbase",
+      "xrp_specific_initial_ltv": "NOT_PUBLISHED_ON_CURRENT_COINBASE_PRODUCT_PAGE",
+      "generic_page_liquidation_ltv_pct": 86,
+      "generic_ltv_warning": "Do not apply the generic 86% threshold to XRP without an asset-specific term."
+    },
+    "morpho_cbXRP_usdc_market": {
+      "pool_id": "7ad0dc44-ab47-4690-bd31-e9df6c9f6e50",
+      "network": "Base",
+      "max_ltv_pct": 62.5,
+      "total_supplied_usd": 150840000,
+      "total_borrowed_usd": 57180000,
+      "available_usd": 7020000,
+      "supply_apy_30d_avg_pct": 0,
+      "borrow_apy_30d_avg_pct": 6.3,
+      "observation_time": "NOT_EXPLICITLY_PUBLISHED_IN_CAPTURE",
+      "attribution": "COINBASE_PRODUCT_USES_MORPHO_BUT_THIS_EXACT_MARKET_IS_NOT_PROVEN_TO_BE_EXCLUSIVELY_COINBASE_CUSTOMER_ACTIVITY"
+    },
+    "global_exchange_cross_collateral": {
+      "xrp_accepted": true,
+      "collateral_valuation": "notional value × collateral weight after haircuts",
+      "haircuts": [
+        "base haircut",
+        "closeout-horizon haircut; greater applies"
+      ],
+      "concentration_limit": "percentage of average daily quantity; excess does not count toward portfolio value",
+      "automatic_liquidation": "yes, when margin falls below maintenance",
+      "xrp_specific_haircut": "NOT_DISCLOSED"
+    },
+    "xrp_perpetual_futures": {
+      "contract": "XRP-PERP",
+      "settlement_asset": "USDC",
+      "settlement_interval_minutes": 5,
+      "maximum_leverage": 50,
+      "default_initial_margin_pct": 25,
+      "acceptable_collateral": "all INTX-offered collateral",
+      "index_update_interval_seconds": 1,
+      "physical_xrp_delivery": false
+    },
+    "federal_trust_bank_status": "PRELIMINARY_CONDITIONAL_APPROVAL_ONLY_NOT_OPERATIONAL"
   }
 }
