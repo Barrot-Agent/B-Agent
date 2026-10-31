@@ -1,0 +1,242 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 128,
+  "chunk_count": 129,
+  "record_count": 22,
+  "records": [
+    {
+      "id": "LIM-20261031T103212Z-COINBASE-CIRCLE-EQUITY-AMOUNT",
+      "category": "institutional_equity_exposure",
+      "statement": "Coinbase's Q3 SEC filing references an investment in Circle and fair-value remeasurement, but share count, ownership percentage and current fair value are not separately disclosed.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-COINBASE-XRP-COLLATERAL-BALANCE",
+      "category": "collateral",
+      "statement": "Coinbase product eligibility does not establish XRP collateral balances. The Q3 recognized derivatives-collateral table lists BTC and ETH only; recognized lending 'other crypto' is $9.903M aggregate; $3.285B unrecognized customer collateral has no token composition.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-COINBASE-Q3-EARNINGS-QUALITY",
+      "category": "earnings_quality",
+      "statement": "The $715.022M Q3 gain on investment crypto assets primarily reflects BTC/ETH fair-value remeasurement; it is not recurring trading revenue, XRP buying or new external capital.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-COINBASE-MARKET-SHARE-METHODOLOGY",
+      "category": "market_share",
+      "statement": "Coinbase's 10.7% trading-volume market-share metric includes stablecoin conversions and a proprietary competitor set; it is not pure spot-exchange share.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-RIPPLE-INSTITUTIONAL-VOLUMES",
+      "category": "institutional_adoption",
+      "statement": "Custody, listing and trust-bank announcements establish infrastructure but not token-specific AUC, settlement volumes or incremental XRP demand. LMAX collateral integration remains planned.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031T103212Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+        "SRC-20261031T103212Z-OCC-RIPPLE-NATIONAL-TRUST-BANK-CAS"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-SBI-RETAIL-XRP-ACTUAL-CAPITAL",
+      "category": "capital_flows",
+      "statement": "SBI shareholder, Visa and Orico programs distribute XRP, but eligible counts, redemption rates, inventory source, hedging and aggregate XRP credited are not public. Rewards are not automatically spot purchases.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+        "SRC-20261031T085233Z-ORICO-XRP-POINTS",
+        "SRC-20261031T103212Z-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT-PDF"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-JPYSC-LENDING-EXECUTION",
+      "category": "collateral_and_stablecoins",
+      "statement": "SBI reports JPYSC outstanding and JPY10B short-term JGB backing, but JPY6.9B is lending applications, not executed loans. Initial distribution is account-restricted; public-chain migration is conditional.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-SBI-JPYSC-ISSUANCE-TBILLS"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-SBI-MULTIRAIL-PROJECTS",
+      "category": "institutional_strategy",
+      "statement": "BlackRock/JPYSC, Open Standard JPYSC/OUSD interoperability and SMFG's 5% participation in SBI Startale Marketing are exploratory or early-stage; no production settlement or XRP integration is established.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-SBI-BLACKROCK-JPYSC-MOU",
+        "SRC-20261031T103212Z-SBI-OPEN-STANDARD-COINBASE",
+        "SRC-20261031T103212Z-SBI-SMFG-5PCT-JPYSC"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-JAPAN-FIEA-XRP-CLASSIFICATION",
+      "category": "regulation",
+      "statement": "Japan's 2026 FIEA reform has passed and been promulgated, but general commencement is within one year by Cabinet Order. XRP's asset subcategory is not formally determined in reviewed evidence.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-SBIC-SBI-DISTINCTION",
+      "category": "entity_resolution",
+      "statement": "Tokyo SBIC East Japan is distinct from SBI Holdings. Its ChatGPT course is educational; no OpenAI partnership or XRP relationship is established.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z",
+        "SRC-20261031T103212Z-SBIC-CHATGPT-TRAINING-20250612"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-ASK-COIN-IDENTITY-LIQUIDITY",
+      "category": "entity_resolution_and_market_quality",
+      "statement": "Permission Coin ASK remains only a candidate. Coinbase Embedded Wallet is not an exchange listing; aggregator market caps/supply differ and reported volume is extremely low. No XRP relationship is verified.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-PERMISSION-COINBASE-EMBEDDED-WALLET",
+        "SRC-20261031T103212Z-COINGECKO-ASK-MARKET",
+        "SRC-20261031T103212Z-CMC-ASK-MARKET"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-ACTUAL-CAPITAL-PHRASE",
+      "category": "phrase_disambiguation",
+      "statement": "The exact origin of 'actual capital' remains unresolved. The 1960 U.S. Congressional Record uses the phrase for the separate U.S. SBA SBIC program; this does not identify the user's original context or connect to XRP.",
+      "severity": "LOW",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-US-CONGRESSIONAL-RECORD-ACTUAL-CAPITAL-SBIC"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-CAMILLA-STEPHENSON-IDENTITY",
+      "category": "identity_resolution",
+      "statement": "No exact Camilla Stephenson YouTube channel identity or exhaustive public-video inventory is verified. Dr Kamilah Stevenson and similarly named people are not assumed to be the same person.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": []
+    },
+    {
+      "id": "LIM-20261031T103212Z-XRP-OI-PROVIDER-MISMATCH",
+      "category": "market_data_quality",
+      "statement": "CoinGecko and Liqwall XRP open-interest totals differ by about 2.75x. Keep provider-specific series; do not average until contract-level venue/multiplier reconciliation.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-COINGECKO-XRP-MARKET",
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261031T0052Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-XRP-ETF-FLOW-INTERPRETATION",
+      "category": "capital_flows",
+      "statement": "The October 30 reported ETF net outflow is secondary-reported and does not prove immediate spot sales or unhedged demand.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-TOKENPOST-XRP-ETF-FLOW-OCT30"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-PR1404-PAGES-TRADEOFF",
+      "category": "repository_safety",
+      "statement": "PR #1404 replaces main commits with 30-day artifacts and therefore pauses current Pages refresh. A separate approved publication design is needed.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-GH-PR1404-CROSS-ANALYSIS-SAFETY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-PR1405-MAIN-UNSAFE-WORKFLOW",
+      "category": "repository_security",
+      "statement": "PR #1405 is draft/unmerged; the unsafe Databricks token-input workflow remains on main until authorized review and merge. No token was accessed or modified.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-GH-PR1405-DATABRICKS-TOKEN-SAFETY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-SCHEDULER-RESOLVER-WRITE-PERMISSIONS",
+      "category": "repository_security",
+      "statement": "Scheduler Tick retains contents:write/actions:write and Autonomous Resolver retains issues:write/pull-requests:write. Last tick fired zero entries; resolver created stale issue #1403.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-GH-SCHEDULER-RESOLVER-SIDE-EFFECTS"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-DEPENDENCY-LOCKS-SECURITY-ALERTS",
+      "category": "repository_dependencies",
+      "statement": "No lockfiles were found in the checked root/code search; dependencies are broad lower bounds. Security-alert access returned 403/unavailable and full repository CI/vulnerability scan were not run.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-GH-OPEN-PR-AND-DEPENDENCY-INVENTORY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-PREDICTION-LEDGER-NOT-MODEL",
+      "category": "prediction_engine",
+      "statement": "PR #1400 is a fixed-horizon forecast/outcome ledger, not a trained prediction model. Walk-forward evaluation, baseline comparison, source-registry enforcement, calibration, drift detection and shadow evaluation remain incomplete.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+        "SRC-20261031T090517Z-GH-PR1400-EXACT-HEAD-CI"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-OCC-OPERATIONAL-SCALE",
+      "category": "regulatory_custody",
+      "statement": "OCC CAS status is Consummated/Effective on October 26, but operational start, service volumes, AUC and XRP-specific activities of Ripple National Trust Bank remain unknown.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-OCC-RIPPLE-NATIONAL-TRUST-BANK-CAS"
+      ]
+    },
+    {
+      "id": "LIM-20261031T103212Z-LOCAL-WORKTREE-UNINSPECTED",
+      "category": "repository_preservation",
+      "statement": "The GitHub connector was used without accessing a local worktree. Local dirty/clean status is unknown; no claim of a clean worktree is made.",
+      "severity": "LOW",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T103212Z-GH-OPEN-PR-AND-DEPENDENCY-INVENTORY"
+      ]
+    }
+  ]
+}

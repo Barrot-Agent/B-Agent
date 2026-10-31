@@ -1,0 +1,324 @@
+{
+  "record_type": "xrp_ecosystem_research_snapshot",
+  "schema_version": "1.0",
+  "snapshot_id": "XRP-20261031T103212Z-COINBASE-CIRCLE-SBI-JAPAN-MULTIRAIL",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T103212Z-coinbase-circle-sbi-japan-multirail-xrp-market-and-ask-disambiguation.json",
+  "captured_at_utc": "2026-10-31T10:32:12.982Z",
+  "data_cutoff_utc": "2026-10-31T10:32:12.982Z",
+  "source_ids": [
+    "SRC-20261031T085233Z-SBI-BITBANK-CLOSE",
+    "SRC-20261031T085233Z-SBI-BITBANK-COMBINATION",
+    "SRC-20261031T085233Z-BITBANK-XRPJPY",
+    "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+    "SRC-20261031T085233Z-ORICO-XRP-POINTS",
+    "SRC-20261031T085233Z-SBI-SHINSEI-XRP-DEPOSIT-REWARD",
+    "SRC-20261031T085233Z-RIPPLE-RLUSD-JAPAN-SBI",
+    "SRC-20261031T085233Z-SBIVC-RLUSD-CUSTODY-GROWTH",
+    "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM",
+    "SRC-20261031T085233Z-XRPL-NO-NEW-XRP-ISSUANCE",
+    "SRC-20261031T085233Z-SBI-VC-TRADE-XRPJPY-LEVERAGE",
+    "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+    "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+    "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+    "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+    "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK",
+    "SRC-20261031T090517Z-GH-MAIN-CROSS-ANALYSIS-COMMIT",
+    "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY",
+    "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+    "SRC-20261031T090517Z-GH-PR1400-EXACT-HEAD-CI",
+    "SRC-20261031T090517Z-GH-PR1400-FAIL-CLOSED-GATE",
+    "SRC-20261031T090517Z-GH-PR1401-READONLY-CROSS-ANALYSIS",
+    "SRC-20261031T090517Z-GH-PR1402-APPROVAL-PUSH-NOOP",
+    "SRC-20261031T090517Z-GH-PR1398-DATABRICKS-TOKEN-SAFETY",
+    "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+    "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+    "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+    "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+    "SRC-CIRCLE-ARC-MAINNET-20260916",
+    "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z",
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261031T0052Z",
+    "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z",
+    "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z",
+    "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z",
+    "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+    "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z",
+    "SRC-REUTERS-US-FUND-FLOWS-20261030T1317Z",
+    "SRC-REUTERS-BINANCE-RESERVE-20261030T1403Z",
+    "SRC-GITHUB-BARROT-MAIN-SCHEDULER-PR-AUDIT-20261031T0113Z",
+    "SRC-ACL-SBIC-SOCIAL-BIAS-INFERENCE-2020",
+    "SRC-ZIEMS-LLM-CSS-BENCHMARK-SBIC-2023V3",
+    "SRC-CHENG-CSS-REVIEW-SBIC-MISEXPANSION-2023",
+    "SRC-PERMISSION-OFFICIAL-FAMILY-AI-20261030",
+    "SRC-PERMISSION-OFFICIAL-ASK-TOKEN-DOCS-20261030",
+    "SRC-CMC-PERMISSION-ASK-20261030T1817Z",
+    "SRC-COINGECKO-PERMISSION-ASK-20261030T1817Z",
+    "SRC-COINBASE-BASE-OFFICIAL-2023",
+    "SRC-LIQWALL-XRP-PERPETUAL-SNAPSHOT-20261030T1402Z",
+    "SRC-ALPHA-XRP-ETF-FLOWS-20261029-R11-182947Z",
+    "SRC-CRYPTOETF-XRP-ETF-PARTIAL-20261029",
+    "SRC-XRPINSIGHTS-XRP-ETF-FLOWS-20261029",
+    "SRC-BINANCE-GLOBAL-SECURITY-UPDATE-20261030T0223Z",
+    "SRC-BINANCE-JAPAN-SECURITY-UPDATE-20261030T0906",
+    "SRC-SAP-ACL2020-SBIC-FOUNDATION",
+    "SRC-ZIEMS-CL2024-SBIC-GENERATION-EVAL",
+    "SRC-PERMISSION-ASK-CONTRACTS-BASE-POLYGON",
+    "SRC-PERMISSION-COINBASE-ASK-WALLET-20260922",
+    "SRC-PERMISSION-ASK-TOKENOMICS-2026",
+    "SRC-COINGECKO-ASK-CIRCULATING-20261030",
+    "SRC-CMC-ASK-CIRCULATING-20261030",
+    "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030",
+    "SRC-GITHUB-BAGENT-REPO-AUDIT-20261030T182947Z",
+    "SRC-20261031T103212Z-OCC-RIPPLE-NATIONAL-TRUST-BANK-CAS",
+    "SRC-20261031T103212Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+    "SRC-20261031T103212Z-COINGECKO-XRP-MARKET",
+    "SRC-20261031T103212Z-TOKENPOST-XRP-ETF-FLOW-OCT30",
+    "SRC-20261031T103212Z-SBIC-CHATGPT-TRAINING-20250612",
+    "SRC-20261031T103212Z-SBI-CIRCLE-50M-STRATEGIC-INVESTMENT",
+    "SRC-20261031T103212Z-SBI-STARTALE-50M-INVESTMENT",
+    "SRC-20261031T103212Z-SBI-OPEN-STANDARD-COINBASE",
+    "SRC-20261031T103212Z-SBI-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T103212Z-SBI-SMFG-5PCT-JPYSC",
+    "SRC-20261031T103212Z-SBI-JPYSC-ISSUANCE-TBILLS",
+    "SRC-20261031T103212Z-SBI-HOLDINGS-XRP-SHAREHOLDER-BENEFIT-PDF",
+    "SRC-20261031T103212Z-SBI-VC-TRADE-ASSETS-AND-BENEFIT-FAQ",
+    "SRC-20261031T103212Z-PERMISSION-COINBASE-EMBEDDED-WALLET",
+    "SRC-20261031T103212Z-COINGECKO-ASK-MARKET",
+    "SRC-20261031T103212Z-CMC-ASK-MARKET",
+    "SRC-20261031T103212Z-US-CONGRESSIONAL-RECORD-ACTUAL-CAPITAL-SBIC",
+    "SRC-20261031T103212Z-GH-MAIN-COMMIT-F0849",
+    "SRC-20261031T103212Z-GH-PR1404-CROSS-ANALYSIS-SAFETY",
+    "SRC-20261031T103212Z-GH-PR1405-DATABRICKS-TOKEN-SAFETY",
+    "SRC-20261031T103212Z-GH-SCHEDULER-RESOLVER-SIDE-EFFECTS",
+    "SRC-20261031T103212Z-GH-OPEN-PR-AND-DEPENDENCY-INVENTORY"
+  ],
+  "source_reference_count": 88,
+  "missing_source_references": 0,
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T092042Z-coinbase-q3-investment-gains-collateral-and-market-share-quality.json",
+  "mission_priority": "XRP_INTELLIGENCE_AND_PREDICTION_ENGINE_MASTERY",
+  "market_observation": {
+    "provider": "CoinGecko",
+    "captured_at_utc": "2026-10-31T10:32:12.982Z",
+    "xrp_price_usd": 1.24,
+    "market_cap_usd": 78819000000,
+    "volume_24h_usd": 2024000000,
+    "circulating_supply_xrp": 63351000000,
+    "total_supply_xrp": 99986000000,
+    "perpetual_open_interest_usd": 3633000000,
+    "funding_rate_8h_pct": 0.0075,
+    "perpetual_volume_to_spot_volume_ratio": 4.4,
+    "derivative_markets_count": 132,
+    "spot_depth_2pct_usd": [
+      {
+        "venue": "Coinbase",
+        "pair": "XRP/USD",
+        "bid_depth": 4872000,
+        "ask_depth": 7923000
+      },
+      {
+        "venue": "Kraken",
+        "pair": "XRP/USD",
+        "bid_depth": 4389000,
+        "ask_depth": 5685000
+      },
+      {
+        "venue": "Binance",
+        "pair": "XRP/USDC",
+        "bid_depth": 626000,
+        "ask_depth": 704000
+      },
+      {
+        "venue": "Binance",
+        "pair": "XRP/USDT",
+        "bid_depth": 2355000,
+        "ask_depth": 2303000
+      },
+      {
+        "venue": "OKX",
+        "pair": "XRP/USDT",
+        "bid_depth": 1893000,
+        "ask_depth": 1488000
+      }
+    ],
+    "classification": "PROVIDER_SPECIFIC_MARKET_SNAPSHOT_NOT_SYNCHRONIZED_MULTIEXCHANGE_TAPE"
+  },
+  "derivatives_cross_provider": {
+    "observations": [
+      {
+        "provider": "CoinGecko",
+        "open_interest_usd": 3633000000,
+        "captured_at_utc": "2026-10-31T10:32:12.982Z"
+      },
+      {
+        "provider": "Liqwall",
+        "open_interest_usd": 1320000000,
+        "captured_at_utc": "2026-10-31T00:52:00Z"
+      }
+    ],
+    "ratio_coingecko_to_liqwall": 2.75,
+    "admission_status": "NOT_ADMITTED",
+    "reason": "Contract universe, venue coverage, conversion and aggregation methodology are not reconciled."
+  },
+  "etf_flow_october_30": {
+    "net_flow_usd": -496496,
+    "fund_count": 5,
+    "fund_flows_usd": {
+      "Canary_XRPC": 922005,
+      "Bitwise_XRP": -693551,
+      "Grayscale_GXRP": -724950
+    },
+    "net_assets_usd": 1420000000,
+    "cumulative_net_inflows_usd": 1810000000,
+    "trading_volume_usd": 30920000,
+    "classification": "SECONDARY_REPORTED_FUND_FLOW",
+    "interpretation": "Small net outflow relative to assets; not proof of immediate spot sales or unhedged demand."
+  },
+  "coinbase_q3_2026": {
+    "total_revenue_usd": 1215582000,
+    "net_income_usd": 718697000,
+    "adjusted_ebitda_usd": 332900000,
+    "gains_on_crypto_assets_held_for_investment_usd": 715022000,
+    "investment_crypto_gains_primary_assets": [
+      "BTC",
+      "ETH"
+    ],
+    "revenue_yoy_change_pct": -35,
+    "transaction_revenue_yoy_change_pct": -44,
+    "subscription_and_services_yoy_change_pct": -20,
+    "adjusted_ebitda_yoy_change_pct": -58,
+    "average_usdc_held_usd": 22000000000,
+    "average_usdc_market_cap_share_pct": 30,
+    "crypto_assets_held_for_investment_fair_value_usd": 2224811000,
+    "recognized_crypto_lending_collateral_fair_value_usd": 997557000,
+    "other_recognized_crypto_lending_collateral_fair_value_usd": 9903000,
+    "unrecognized_customer_pledged_lending_collateral_usd": 3284562000,
+    "recognized_derivatives_collateral_usd": 325766000,
+    "recognized_derivatives_collateral_assets": [
+      "BTC",
+      "ETH"
+    ],
+    "circle_equity_exposure": "SEC filing references a Coinbase investment in Circle and fair-value remeasurement; amount/share count not separately disclosed.",
+    "market_share_pct": 10.7,
+    "market_share_methodology": "Includes stablecoin conversion activity and uses a proprietary competitor set; not comparable to pure spot exchange share.",
+    "xrp_specific_collateral": "No XRP-specific amount disclosed. Product eligibility is not a balance-sheet position."
+  },
+  "coinbase_xrp_products": {
+    "global_exchange_perpetual_margin": "XRP is eligible collateral subject to haircuts, concentration limits and liquidation rules.",
+    "morpho_borrowing": "Eligible users can borrow USDC against cbXRP through Morpho using Coinbase's interface.",
+    "q3_sec_crosscheck": "Recognized derivatives collateral table lists BTC and ETH only. The aggregate 'other crypto' recognized lending-collateral bucket is $9.903M; no XRP amount is identified. Unrecognized customer collateral has no token composition.",
+    "rlusd_listing": "Coinbase listed RLUSD across Prime, Exchange and app products on October 28; deposits/withdrawals across XRPL, Base and Ethereum. Ripple provides Base liquidity. Global Exchange collateral support was forthcoming, not live.",
+    "status": "PRODUCTS_CONFIRMED_BALANCES_UNKNOWN"
+  },
+  "institutional_relationships": {
+    "coinbase_circle": [
+      "Coinbase's SEC Q3 filing references an investment in Circle and fair-value remeasurement; position size is not separately disclosed.",
+      "Coinbase renewed its USDC arrangement with Circle on the same terms; average USDC held in Coinbase products was about $22B, approximately 30% of average USDC market capitalization."
+    ],
+    "coinbase_ripple": [
+      "Direct RLUSD distribution/listing relationship across Coinbase Prime, Exchange and app.",
+      "Ripple supplies liquidity for RLUSD on Base.",
+      "Coinbase Global Exchange collateral support for RLUSD was announced as forthcoming, not live."
+    ],
+    "circle_ripple": [
+      "Direct technical collaboration: Circle and Ripple jointly launched native USDC on XRPL in 2025.",
+      "USDC and RLUSD are separate issuer liabilities that coexist on XRPL and compete for USD stablecoin distribution/liquidity.",
+      "No broader exclusive corporate alliance is established."
+    ],
+    "ripple_custody_and_regulation": [
+      "BNY's Digital Asset Custody platform supports XRP and RLUSD; BNY is primary custodian of RLUSD reserves. Token-specific AUC is undisclosed.",
+      "Standard Chartered RLUSD custody on XRPL is live; LMAX collateral integration is planned and subject to documentation, testing and approvals.",
+      "OCC CAS reports Ripple National Trust Bank Consummated/Effective on 2026-10-26; operational scale remains unverified.",
+      "Ripple/Robinhood announced RLUSD channels on Robinhood Chain and Bitstamp and institutional settlement use on XRPL; no XRP bridge use is inferred."
+    ],
+    "sbi_multi_rail": [
+      "SBI has a direct Circle relationship: Circle SBI Japan JV, approximately $50M strategic investment in Circle, and SBI as an Arc validator.",
+      "SBI has a separate direct Ripple relationship through SBI Ripple Asia, XRP distribution and RLUSD Japan channels.",
+      "SBI invested approximately $50M in Startale; Startale/SBI develop JPYSC and Strium.",
+      "SMFG agreed to a 5% stake in SBI Startale Marketing, the SBI/Startale JV promoting JPYSC.",
+      "SBI/Startale joined Open Standard, which includes Coinbase; JPYSC/OUSD interoperability is exploratory, not a bilateral Coinbase-SBI contract.",
+      "SBI/Startale/BlackRock signed an MOU to explore tokenized MMFs with JPYSC."
+    ]
+  },
+  "sbi_japan": {
+    "exchange_consolidation": [
+      "SBI Group completed acquisition of 100% of bitbank on October 1, 2026.",
+      "SBI VC Trade absorbed BITPOINT operations on April 1, 2026, while VCTRADE and BITPOINT service environments remain distinct.",
+      "SBI VC Trade offers XRP/JPY spot and leverage and lists USDC, RLUSD and JPYSC."
+    ],
+    "retail_xrp_distribution": [
+      "SBI Holdings' 2026 shareholder benefit offers JPY2,000 or JPY8,000 equivalent XRP coupons; applications closed October 30 at 17:00 and credits are scheduled mid-to-late November.",
+      "SBI Visa Crypto Card rewards can be converted into XRP.",
+      "Orico points can be exchanged for XRP credited to SBI VC Trade.",
+      "SBI Shinsei and other SBI-group entities have separate XRP reward programs."
+    ],
+    "jpysc_collateral_and_actual_capital": {
+      "outstanding_jpy_as_of_2026_09_07": 20100000000,
+      "short_term_jgb_backing_jpy": 10000000000,
+      "lending_applications_jpy": 6900000000,
+      "status": "ISSUED_ACCOUNT_RESTRICTED",
+      "caveat": "JPY6.9B is applications, not confirmed executed loans. Public-chain migration remains conditional."
+    },
+    "regulatory": {
+      "payment_services_act": "SBI reports JPY10B of JPYSC trust assets allocated to short-term Japanese government bills within the amended trust-based stablecoin framework.",
+      "fiea_amendment": "Passed July 15 and promulgated July 23, 2026; general commencement is within one year by Cabinet Order.",
+      "xrp_classification": "No official asset-specific classification located. Treating XRP as a non-specified cryptoasset is an inference, not a formal determination."
+    },
+    "sbi_strategy_conclusion": "SBI is building multi-issuer, multi-chain infrastructure. XRP is important, but JPYSC, RLUSD, USDC, Strium, tokenized MMFs and OUSD show that the strategy is not XRP-exclusive."
+  },
+  "sbic_resolution": {
+    "primary_entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+    "legal_entity_number": "9011001030621",
+    "distinct_from": "SBI Holdings and the SBI Group",
+    "related_regional_entities": [
+      "SBIC Central Japan (Nagoya)",
+      "SBIC West Japan (Osaka)"
+    ],
+    "chatgpt_context": "SBIC East Japan's June 12–13, 2025 training curriculum explicitly includes ChatGPT usage and Copilot training for investee companies; educational event, not OpenAI partnership.",
+    "xrp_relationship": "No verified direct relationship with XRP, Ripple, Coinbase or Circle."
+  },
+  "ask_coin": {
+    "identity_status": "UNRESOLVED",
+    "leading_candidate": "Permission Coin ASK",
+    "coinbase_relationship": "Coinbase Embedded Wallet infrastructure is used by ASK Wallet; this is not a Coinbase Exchange listing or investment.",
+    "liquidity_snapshot": {
+      "coingecko_market_cap_usd": 2026000,
+      "coingecko_24h_volume_usd": 138.58,
+      "coingecko_circulating_supply": 23107000000,
+      "coinmarketcap_market_cap_usd": 1410000,
+      "coinmarketcap_24h_volume_usd": 242.92,
+      "coinmarketcap_circulating_supply": 16160000000
+    },
+    "interpretation": "Extremely thin reported liquidity and material aggregator supply discrepancy; bridge migration requires issuer-level reconciliation.",
+    "xrp_relationship": "None verified."
+  },
+  "actual_capital": {
+    "operational_definition": "Net external capital requires executed, de-duplicated flows with issuer mint/redemption, exchange/custody movements, roundtrips and beneficial-owner changes separated.",
+    "phrase_origin": "Unresolved. A 1960 U.S. Congressional Record uses 'Total actual capital' for the separate U.S. SBA Small Business Investment Company program; this does not identify the user's original context or connect to XRP."
+  },
+  "camilla_stephenson": {
+    "youtube_channel_identity": "UNRESOLVED",
+    "public_video_inventory": "No exhaustive inventory verified.",
+    "disambiguation": "Dr Kamilah Stevenson and similarly named individuals are not assumed to be Camilla Stephenson."
+  },
+  "prediction_engine": {
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "next_stage": "Immutable point-in-time features, fixed-horizon outcomes, source-registry validation, leakage-safe walk-forward backtests, benchmark comparisons, calibration, drift detection and paper/shadow evaluation."
+  },
+  "repository_status": {
+    "current_main_sha": "f0849ead73a4f8c6349e081766e660a5a61cf945",
+    "current_main_changed_by_this_run": false,
+    "open_pr_count": 178,
+    "draft_pr_count": 168,
+    "ready_pr_count": 10,
+    "main_based_pr_count": 176,
+    "stale_main_base_pr_count": 174,
+    "current_main_base_pr_count": 2,
+    "non_main_based_pr_count": 2
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
