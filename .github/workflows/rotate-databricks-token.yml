@@ -18,7 +18,7 @@ jobs:
           {
             echo "# Databricks token rotation"
             echo
-            echo "**Status:** ROTATION_NOT_PERFORMED
+            echo "**Status:** ROTATION_NOT_PERFORMED"
             echo
             echo "This workflow intentionally accepts no token value and has no repository, Actions, or secret-write permissions."
             echo "Rotate DATABRICKS_TOKEN only through the repository's authorized secret-management interface or an approved external secret manager."
