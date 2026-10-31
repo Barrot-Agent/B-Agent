@@ -401,7 +401,7 @@ def _rewrite_single_outcome(ledger, **changes):
     rows = [json.loads(line) for line in ledger.outcomes_path.read_text(encoding="utf-8").splitlines()]
     rows[0].update(changes)
     ledger.outcomes_path.write_text(
-        "".join(json.dumps(row) + "\\n" for row in rows),
+        "".join(json.dumps(row) + "\n" for row in rows),
         encoding="utf-8",
     )
 
