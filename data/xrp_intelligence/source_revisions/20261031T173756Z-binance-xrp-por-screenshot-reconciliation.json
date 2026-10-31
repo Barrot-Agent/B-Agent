@@ -46,5 +46,17 @@
   ],
   "feature_admission": "CUSTODY_AND_RESERVE_CONTEXT_ONLY; NO_DIRECTIONAL_FEATURE; ACTUAL_XRP_PURCHASE_CAPITAL_UNKNOWN",
   "pending_archive_append": true,
-  "exact_head_validation": "NOT_RUN"
+  "exact_head_validation": {
+    "status": "PASS",
+    "validated_head_sha": "06afecc01c4d268d7be7ea7054383cfda547a2eb",
+    "validator_run_id": 41226227001,
+    "fail_closed_gate_run_id": 41226227002,
+    "archive_shards_checked": 427,
+    "source_revision_addenda_checked": 5,
+    "source_revision_addenda_pending_archive_append": 5,
+    "regression_tests_passed": 32,
+    "state_mutated": false,
+    "verified_at_utc": "2026-10-31T17:47:41Z",
+    "limitation": "The addendum's file hash and index pointer were verified. The source record remains pending append to the immutable sources archive."
+  }
 }
