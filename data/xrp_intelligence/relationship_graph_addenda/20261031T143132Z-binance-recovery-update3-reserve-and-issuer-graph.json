@@ -1,0 +1,261 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-20261031T143132Z-BINANCE-RECOVERY-UPDATE3",
+  "captured_at_utc": "2026-10-31T14:31:32Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "evidence_classes": [
+    "PRIMARY_COMPANY_STATEMENT",
+    "PRIMARY_DOCUMENTATION",
+    "SECONDARY_REPORTING",
+    "SECONDARY_MARKET_DATA",
+    "INFERENCE",
+    "UNKNOWN",
+    "DISCONFIRMING_EVIDENCE"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "CENTRALIZED_CRYPTO_EXCHANGE"
+    },
+    {
+      "id": "BINANCE_XRP_CUSTODY",
+      "label": "Binance XRP customer custody",
+      "kind": "EXCHANGE_CUSTODY_BALANCE"
+    },
+    {
+      "id": "BINANCE_POR_20261031",
+      "label": "Binance Proof of Reserves snapshot, 2026-10-31 00:00 UTC",
+      "kind": "RESERVE_SNAPSHOT"
+    },
+    {
+      "id": "BINANCE_SAFU",
+      "label": "Binance SAFU",
+      "kind": "EMERGENCY_USER_PROTECTION_FUND"
+    },
+    {
+      "id": "BINANCE_FUTURES_INSURANCE",
+      "label": "Binance Futures Insurance Fund",
+      "kind": "DERIVATIVES_LOSS_ABSORPTION_FUND"
+    },
+    {
+      "id": "BINANCE_TREASURY",
+      "label": "Binance corporate treasury",
+      "kind": "CORPORATE_BALANCE_SHEET"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "RLUSD",
+      "label": "Ripple USD",
+      "kind": "ISSUER_CONTROLLED_STABLECOIN"
+    },
+    {
+      "id": "USDC",
+      "label": "USD Coin",
+      "kind": "ISSUER_CONTROLLED_STABLECOIN"
+    },
+    {
+      "id": "USDT",
+      "label": "Tether USD",
+      "kind": "ISSUER_CONTROLLED_STABLECOIN"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_AND_CUSTODY_PROVIDER"
+    },
+    {
+      "id": "COINBASE_OFFLINE_KEY_SYSTEMS",
+      "label": "Coinbase offline key-storage systems",
+      "kind": "CUSTODY_SECURITY_CONTROL"
+    },
+    {
+      "id": "XRP_SPOT_ETF_COMPLEX",
+      "label": "U.S. spot XRP ETF complex",
+      "kind": "INVESTMENT_FUND_WRAPPERS"
+    },
+    {
+      "id": "FUTURES_MARKET_RISK",
+      "label": "Exchange futures liquidation and ADL risk",
+      "kind": "DERIVATIVES_MARKET_RISK"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BINANCE-POR-XRP-20261031",
+      "source": "BINANCE",
+      "target": "BINANCE_POR_20261031",
+      "relationship": "PUBLISHED_NEW_RESERVE_SNAPSHOT",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Binance says the snapshot was taken at 2026-10-31 00:00 UTC and updated on its PoR website; full zk-SNARK generation is pending.",
+      "source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031",
+        "SRC-BINANCE-POR-METHODOLOGY-20261031"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRP-100PCT-COVERAGE-20261031",
+      "source": "BINANCE_POR_20261031",
+      "target": "XRP",
+      "relationship": "COMPANY_CLAIM_AT_LEAST_1_TO_1_CUSTOMER_COVERAGE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Binance lists XRP among ten assets it says are fully backed at 100%; exact XRP units and independent proof remain pending.",
+      "source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-REMAINING-10PCT-OUTSIDE-TOP10",
+      "source": "BINANCE",
+      "target": "BINANCE_TREASURY",
+      "relationship": "REMAINING_INCIDENT_ASSETS_TO_SOURCE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Binance says the remaining 10% consists of less-liquid tokens outside the ten named assets, not XRP among the named fully backed assets.",
+      "source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031"
+      ]
+    },
+    {
+      "id": "EDGE-SAFU-REPLENISHMENT",
+      "source": "BINANCE_SAFU",
+      "target": "BINANCE",
+      "relationship": "PARTIAL_EMERGENCY_FUND_DEPLOYMENT_FOR_REPLENISHMENT",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Binance says partial SAFU deployment is expected within 24 hours and that SAFU will be replenished to approximately USD 1 billion.",
+      "source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031"
+      ]
+    },
+    {
+      "id": "EDGE-FUTURES-INSURANCE-REPLENISHMENT",
+      "source": "BINANCE_FUTURES_INSURANCE",
+      "target": "BINANCE",
+      "relationship": "PORTION_REALLOCATED_TO_INCIDENT_REPLENISHMENT",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Binance says a portion of its Futures Insurance Fund was used and the remaining balance is above its internal required risk level; exact balance is unknown.",
+      "source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031"
+      ]
+    },
+    {
+      "id": "EDGE-TREASURY-REPLENISHMENT",
+      "source": "BINANCE_TREASURY",
+      "target": "BINANCE",
+      "relationship": "CORPORATE_TREASURY_REPLENISHMENT",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Binance says corporate treasury contributed to replenishment; token-specific allocation is undisclosed.",
+      "source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031",
+        "SRC-BINANCE-RECOVERY-UPDATE2-20261030"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-OFFLINE-KEY-HARDENING",
+      "source": "COINBASE",
+      "target": "COINBASE_OFFLINE_KEY_SYSTEMS",
+      "relationship": "PRECAUTIONARY_SECURITY_ADJUSTMENT_AFTER_BINANCE_INCIDENT",
+      "evidence_class": "SECONDARY_REPORTING_OF_COMPANY_STATEMENT",
+      "claim": "Reuters reports Coinbase said it adjusted systems that store cryptocurrency keys offline as a precaution; exact changes and XRP-specific effects are unknown.",
+      "source_ids": [
+        "SRC-REUTERS-COINBASE-OFFLINE-KEY-CHANGES-20261031"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-ETF-FLOW-OBSERVATION",
+      "source": "XRP_SPOT_ETF_COMPLEX",
+      "target": "XRP",
+      "relationship": "LATEST_PUBLISHED_NET_CREATION_FLOW_CONTEXT",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "claim": "Alpha Finance reports USD 8.4 million net inflow for the October 29 session and USD 1.73 billion cumulative net inflow since November 14, 2025; holdings/AUM are not published in this series.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-SPOT-ETF-FLOWS-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-INSURANCE-FUND-DERIVATIVES-RISK",
+      "source": "BINANCE_FUTURES_INSURANCE",
+      "target": "FUTURES_MARKET_RISK",
+      "relationship": "LOSS_ABSORPTION_AND_ADL_BUFFER",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claim": "Binance describes the fund as a liquidation-deficit/ADL safety net and says the remaining balance remains above required levels; the independent buffer size is unknown.",
+      "source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-BINANCE-XRP-COVERAGE-RESTORED",
+      "statement": "Binance's October 31 00:00 UTC snapshot restored XRP customer-custody coverage to at least 1:1.",
+      "status": "SUPPORTED_BY_PRIMARY_COMPANY_STATEMENT; FULL_ZK_PROOF_PENDING",
+      "supporting_source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031",
+        "SRC-BINANCE-POR-METHODOLOGY-20261031"
+      ],
+      "disconfirming_evidence": [
+        "The full zero-knowledge proof was not available at capture.",
+        "No independent address-to-customer-liability recomputation was completed.",
+        "The statement does not disclose exact XRP reserve and liability units."
+      ],
+      "next_tests": [
+        "Download the October 31 reserve address list and user-liability proof; reconcile all XRP reserve addresses and customer net balances at the same cutoff."
+      ]
+    },
+    {
+      "id": "HYP-BINANCE-XRP-SPOT-REPLENISHMENT",
+      "statement": "Binance's recovery created material new XRP spot or OTC demand.",
+      "status": "UNPROVEN",
+      "supporting_source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE2-20261030",
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031"
+      ],
+      "disconfirming_evidence": [
+        "No XRP-specific quantity, USD amount, trade, OTC confirmation or funding-source split is disclosed.",
+        "The company may have used existing company inventory or internal transfers."
+      ],
+      "next_tests": [
+        "Crosswalk source and reserve addresses, then reconcile timestamped exchange/OTC disclosures and post-snapshot reserve changes."
+      ]
+    },
+    {
+      "id": "HYP-FUTURES-INSURANCE-BUFFER",
+      "statement": "Reallocation of a portion of the Futures Insurance Fund could reduce derivatives loss-absorption capacity.",
+      "status": "PLAUSIBLE_RISK; MAGNITUDE_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-BINANCE-RECOVERY-UPDATE3-20261031"
+      ],
+      "disconfirming_evidence": [
+        "Binance says the remaining fund exceeds its required risk level and that the released amount was excess.",
+        "No public fund balance or independent stress test was obtained."
+      ],
+      "next_tests": [
+        "Capture the public daily insurance-fund balance and compare against historical liquidation/ADL stress periods."
+      ]
+    },
+    {
+      "id": "HYP-INDUSTRY-CUSTODY-HARDENING",
+      "statement": "The Binance incident is accelerating exchange custody-control changes and information-sharing proposals.",
+      "status": "SUPPORTED_AS_TO_REPORTED_COINBASE_CHANGE_AND_INDUSTRY_DISCUSSION",
+      "supporting_source_ids": [
+        "SRC-REUTERS-COINBASE-OFFLINE-KEY-CHANGES-20261031"
+      ],
+      "disconfirming_evidence": [
+        "Reuters does not disclose the exact Coinbase control changes or demonstrate a measurable reduction in custody risk."
+      ],
+      "next_tests": [
+        "Track official Coinbase security disclosures and independently documented control changes."
+      ]
+    }
+  ],
+  "entity_separation": [
+    "Native XRP is not an issuer-controlled stablecoin and cannot be frozen by an XRP issuer.",
+    "RLUSD, USDC and USDT are issuer-controlled stablecoins with distinct freeze authorities and chain-specific contract behavior.",
+    "Binance customer-custody reserves, SAFU, Futures Insurance Fund and corporate treasury are separate pools; do not aggregate them as one reserve balance.",
+    "Coinbase's offline-key adjustments are custody-security controls, not evidence of a new XRP market position."
+  ]
+}
