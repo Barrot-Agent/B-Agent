@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 103,
+  "chunk_count": 104,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T001232Z-BINANCE-RESERVE-XRP-MARKET-COINBASE-RLUSD",
+      "created_at_utc": "2026-10-31T00:12:32Z",
+      "data_cutoff_utc": "2026-10-31T00:12:32Z",
+      "summary": "Appended Binance's official incident update #2, Reuters corroboration of the company statement, CoinDesk's Ethereum-only PoR analysis, provider-scoped XRP spot/depth/derivatives snapshots, settled and provisional ETF-flow methodology, and Ripple's direct Coinbase RLUSD integration announcement. The Binance company backstop is $6.34B with $5B in exact impacted token assets and approximately $3B reported frozen; token-level XRP replenishment is unknown. CoinDesk's Binance 14 PoR finding is Ethereum-only and does not establish that any of the five XRPL source wallets is in Binance's official XRP PoR set. CoinGecko and TradRadar OI totals are non-comparable universes. XRP ETF 30 October row remains provisional. Coinbase RLUSD collateral on Global Exchange is announced as future availability, not live. No market feature admitted and no forecast issued.",
+      "source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+        "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z",
+        "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z",
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0400Z",
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T0530Z",
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z",
+        "SRC-COINMARKETCAP-XRP-MARKETS-20261031T001232Z",
+        "SRC-ALPHAFINANCE-XRP-ETF-20261029",
+        "SRC-XRPINSIGHTS-ETF-TOTALS-20261030T233337Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T001232Z-binance-reserve-derivatives-etf-and-coinbase-rlusd-update.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T001232Z-binance-market-and-coinbase-rlusd-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T001232Z-market-data-universe-and-reserve-crosswalk-gates.json",
+      "repository_audit_path": "data/repository_audits/20261031T001232Z-main-workflow-and-accuracy-pr-audit.json",
+      "actions": [
+        "Retrieved Binance Security Incident Update #2 and Reuters' same-day report; recorded the distinction between company funding, exact token assets, remaining market/OTC acquisition and frozen assets.",
+        "Cross-checked CoinDesk's October 1 PoR wallet analysis and explicitly confined it to the Ethereum Binance 14 wallet; the five XRPL source-wallet official-PoR crosswalk remains unresolved.",
+        "Captured CoinGecko and CoinMarketCap spot aggregates and CoinGecko venue-level order-book depth without treating depth as executable liquidity.",
+        "Preserved CoinGecko's broad derivatives universe, TradRadar's seven-exchange aggregate and Seandra's Binance-only panel as separate time- and coverage-scoped series.",
+        "Cross-checked Alpha Finance's five-fund ETF flow panel against XRP Insights' issuer-holdings-derived six-spot-plus-BITW dataset; the 30 October row is provisional and excluded.",
+        "Recorded Ripple's direct Coinbase RLUSD integration and separated live Prime/Exchange/Retail trading from future Coinbase Global Exchange collateral functionality.",
+        "Audited current main and open PRs; verified PR #1386 exact-head core CI at 348 tests plus 8 subtests and its fail-closed gate, while leaving it draft and unmerged."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_LEDGER_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "Binance's $5B reserve allocation and approximately $3B freeze are company-reported and not token-level XRP proof-of-reserves reconciliation.",
+        "The official Binance October 1 XRP PoR address export has not been retrieved and matched against all five XRPL source wallets and the rs8Z destination.",
+        "CoinDesk's Binance 14 PoR evidence is Ethereum-only and cannot be generalized to the XRPL source wallets.",
+        "CoinGecko and TradRadar derivatives aggregates cover different contract universes and timestamps; no combined OI estimate is valid.",
+        "The 30 October XRP ETF row is provisional at the cutoff and must be re-settled before use.",
+        "Coinbase RLUSD collateral on Global Exchange is announced as future availability; actual go-live and any XRP collateral exposure are unknown.",
+        "The attacker receiver's latest validated-ledger balance and post-06:43 UTC history remain unrefreshed."
+      ],
+      "next_actions": [
+        "Download the official Binance October 1 PoR XRP address export and exact-crosswalk the five XRPL sources; keep Binance 14 Ethereum evidence separate.",
+        "Retrieve raw validated XRPL account_info for all five source wallets, rs8Z and the attacker receiver; preserve ledger index and exact cutoff.",
+        "Reconcile Binance's November 1 PoR snapshot against October 1 by asset and address; calculate XRP-specific coverage only if source wallet membership is proven.",
+        "Capture the first settled XRP Insights 30 October ETF row after its scheduled re-settlement; compare issuer holdings with Alpha and other fund-level sources.",
+        "Build a venue-by-venue derivatives panel with contract IDs, OI units, funding intervals, timestamps and provider coverage; never average mismatched universes.",
+        "Verify Coinbase Global Exchange RLUSD collateral activation from product documentation or live supported functionality; do not infer XRP collateral.",
+        "Continue immutable fixed-horizon forecast/outcome design and baseline evaluation; do not issue a forecast before walk-forward and calibration tests."
+      ],
+      "validation_events": [
+        {
+          "data_head_sha": "PENDING",
+          "validator_result": "PENDING_EXACT_HEAD_VALIDATION",
+          "fail_closed_gate": "PENDING"
+        }
+      ]
+    }
+  ]
+}
