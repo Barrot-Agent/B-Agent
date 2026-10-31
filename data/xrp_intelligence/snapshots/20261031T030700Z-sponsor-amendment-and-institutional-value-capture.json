@@ -8,17 +8,17 @@
   "data_cutoff_utc": "2026-10-31T03:07:00Z",
   "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T025600Z-main-repeat-write-and-telemetry-safety.json",
   "source_ids": [
-    "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
-    "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z",
-    "SRC-OCC-RNTB-CHARTER-20261031T020816Z",
-    "SRC-RIPPLE-RNTB-20261031T020816Z",
-    "SRC-COINBASE-RLUSD-LISTING-20261031T020816Z",
-    "SRC-COINBASE-RIPPLE-PRIME-20261031T020816Z",
-    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+    "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+    "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+    "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
     "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
     "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
-    "SRC-COINBASE-Q3-CUSTODY-COLLATERAL-20261031T022100Z",
-    "SRC-CIRCLE-USDC-DISTRIBUTION-20261031T022100Z",
+    "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+    "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+    "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z",
+    "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z",
     "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
     "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
     "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z",
@@ -78,8 +78,8 @@
       "classification": "CONFIRMED_FACT",
       "statement": "BNY announced XRP and RLUSD custody for eligible clients, is RLUSD's primary reserve custodian, and is exploring direct mint/redeem and tokenized trade finance on XRPL with C2FO. C2FO's Instant Pay initiative uses RLUSD on XRPL and is currently a waitlist/initiative; its reported $525B Early Pay history is not Instant Pay production volume.",
       "source_ids": [
-        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
-        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z"
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
       ],
       "disconfirming_evidence": "No funded Instant Pay invoice amount, live transaction count or capital-provider-level deployment was disclosed; custody does not establish BNY XRP holdings or new spot purchases."
     },
@@ -106,8 +106,7 @@
       "classification": "CONFIRMED_FACT",
       "statement": "Circle's Q2 filing reports $324.6M of distribution costs to Coinbase for Q2 and $655.3M for the first half of 2026. This confirms a substantial distribution-economic relationship but does not establish exclusivity or a USDC/RLUSD substitution.",
       "source_ids": [
-        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
-        "SRC-CIRCLE-USDC-DISTRIBUTION-20261031T022100Z"
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
       ],
       "disconfirming_evidence": "Coinbase also listed RLUSD and other stablecoins; the Circle distribution agreement is not evidence that Coinbase is USDC-only."
     },
@@ -116,7 +115,7 @@
       "classification": "CONFIRMED_FACT",
       "statement": "Coinbase's October 28 RLUSD listing supports XRPL, Base and Ethereum access across retail and institutional products; announced global-exchange collateral functionality was future availability, not a live collateral fact at the announcement cutoff.",
       "source_ids": [
-        "SRC-COINBASE-RLUSD-LISTING-20261031T020816Z"
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
       ],
       "disconfirming_evidence": "Listing and network support do not establish XRP spot purchases, collateral holdings or RLUSD settlement volumes."
     },
@@ -127,7 +126,7 @@
       "source_ids": [
         "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
         "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
-        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z"
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
       ],
       "disconfirming_evidence": "Sponsor is not active on Mainnet and PR #8606 is blocked; no production sponsor balances or purchases have been measured."
     },
@@ -136,8 +135,8 @@
       "classification": "UNKNOWN",
       "statement": "Whether BNY, C2FO or any RLUSD participant uses XLS-68 sponsorship or the proposed SponsoredAccountCreate flow is unknown. No evidence links C2FO Instant Pay to Sponsor or SponsorV1_1.",
       "source_ids": [
-        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
-        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
         "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
         "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
       ],
@@ -170,15 +169,15 @@
       "date": "2026-10-27",
       "event": "BNY and C2FO institutional XRPL/RLUSD announcements described custody and an Instant Pay initiative; C2FO waitlist and no public production volume.",
       "source_ids": [
-        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
-        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z"
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
       ]
     },
     {
       "date": "2026-10-28",
       "event": "Coinbase RLUSD listing supports XRPL, Base and Ethereum; global exchange collateral functionality was described as future.",
       "source_ids": [
-        "SRC-COINBASE-RLUSD-LISTING-20261031T020816Z"
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
       ]
     },
     {

@@ -5,7 +5,7 @@
   "array_name": "limitations",
   "chunk_index": 107,
   "chunk_count": 108,
-  "record_count": 4,
+  "record_count": 5,
   "records": [
     {
       "id": "LIM-20261031T030700Z-01",
@@ -35,9 +35,8 @@
       "severity": "high",
       "status": "open",
       "affected_source_ids": [
-        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
-        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z",
-        "SRC-COINBASE-RIPPLE-PRIME-20261031T020816Z"
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
       ]
     },
     {
@@ -47,9 +46,33 @@
       "severity": "medium",
       "status": "open",
       "affected_source_ids": [
-        "SRC-OCC-RNTB-CHARTER-20261031T020816Z",
-        "SRC-RIPPLE-RNTB-20261031T020816Z",
-        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z"
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T031200Z-05",
+      "category": "source_reference_mapping",
+      "statement": "The initial sponsorship snapshot referenced eight noncanonical source IDs. Exact-head validator run 41163229467 caught the missing IDs before regression tests; fail-closed gate 41163229460 passed with merging disabled. The references have been mapped to canonical source IDs already present in the archive; no new source records were fabricated. Exact-head revalidation remains pending.",
+      "severity": "low",
+      "status": "RESOLVED_BY_CORRECTION_PENDING_REVALIDATION",
+      "affected_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+        "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z",
+        "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z",
+        "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
+        "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
+        "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z",
+        "SRC-GH-XRPLF-RIPPLED-PR8606-20261031T030600Z"
       ]
     }
   ]

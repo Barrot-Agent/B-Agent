@@ -13,17 +13,17 @@
       "data_cutoff_utc": "2026-10-31T03:07:00Z",
       "summary": "Updated the Sponsor amendment and institutional XRP value-capture map. The latest own-node XRPL roll call shows Sponsor 9/28, short by19 and inactive; fixCleanup3_4_0 is 33/34 in a conditional countdown projected Nov4. PR #8606 proposes SponsorV1_1 and SponsoredAccountCreate but is open/blocked/unmerged. Official docs confirm sponsorship shifts XRP fees/reserves to the sponsor without transferring XRP to the sponsee. BNY/C2FO/RLUSD and Coinbase/Circle relationships are separated from actual XRP demand and funded capital. No forecast issued.",
       "source_ids": [
-        "SRC-BNY-XRP-RLUSD-CUSTODY-20261031T020816Z",
-        "SRC-C2FO-RLUSD-XRPL-INSTANT-PAY-20261031T020816Z",
-        "SRC-OCC-RNTB-CHARTER-20261031T020816Z",
-        "SRC-RIPPLE-RNTB-20261031T020816Z",
-        "SRC-COINBASE-RLUSD-LISTING-20261031T020816Z",
-        "SRC-COINBASE-RIPPLE-PRIME-20261031T020816Z",
-        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
         "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
         "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z",
-        "SRC-COINBASE-Q3-CUSTODY-COLLATERAL-20261031T022100Z",
-        "SRC-CIRCLE-USDC-DISTRIBUTION-20261031T022100Z",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+        "SRC-COINBASE-WRAPPED-ASSETS-CBXRP-UNWRAP-20261031T012136Z",
+        "SRC-MORPHO-CLEARSTAR-CBXRP-VAULT-20261031T012136Z",
+        "SRC-STEAKHOUSE-CBXRP-USDC-77LLTV-20261031T012136Z",
         "SRC-XRPLDASH-SPONSOR-VOTE-20261031T025200Z",
         "SRC-XRPL-DOCS-SPONSORSHIP-20261031T030600Z",
         "SRC-XRPL-SECURITY-DISCLOSURE-SPONSOR-20261031T030600Z",
@@ -38,7 +38,9 @@
         "Audited rippled PR #8606: SponsorV1_1 and SponsoredAccountCreate proposal, 14 files, one commit, blocked, 26 checks passed, 5 skipped, 0 failed, two unresolved Copilot review threads.",
         "Cross-referenced BNY/C2FO, Ripple National Trust Bank, Coinbase Q3, Coinbase RLUSD listing and Circle Q2 distribution economics against existing source records.",
         "Added sponsorship-reserve, sponsor fee, actual C2FO funded invoice and institutional flow feature contracts; admitted no new market features.",
-        "Did not modify external XRPLF/rippled repository, merge PRs, dispatch workflows, modify main or issue a forecast."
+        "Did not modify external XRPLF/rippled repository, merge PRs, dispatch workflows, modify main or issue a forecast.",
+        "Exact-head validator run 41163229467 detected eight noncanonical source IDs in the snapshot; each was mapped to the exact canonical source ID already archived in earlier snapshots, with no source evidence invented or dropped.",
+        "Fail-closed gate 41163229460 passed with merging disabled; corrected source references are committed and exact-head revalidation is pending."
       ],
       "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
       "market_features_admitted": false,
@@ -49,7 +51,8 @@
         "SponsoredAccountCreate PR #8606 remains blocked and unmerged; SponsorV1_1 has no Mainnet activation.",
         "C2FO Instant Pay funded volume and capital-provider data are undisclosed.",
         "BNY XRP custody balances and XRP acquisitions are undisclosed.",
-        "No sponsor reserve balances or actual sponsor XRP purchases are measured."
+        "No sponsor reserve balances or actual sponsor XRP purchases are measured.",
+        "A first exact-head validation failed on eight source-ID references; the references were corrected to canonical archived IDs and require revalidation."
       ],
       "next_actions": [
         "Monitor Sponsor and fixCleanup3_4_0 roll calls and canonical on-ledger amendment state.",
