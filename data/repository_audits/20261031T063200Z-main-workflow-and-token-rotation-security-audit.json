@@ -121,6 +121,28 @@
     "Review scheduled issue/PR mutation workflows for bounded scope, idempotency and approval policy.",
     "Audit all remaining active workflows, not only the 24 targeted high-risk files.",
     "Read full branch-protection settings when the integration permits; ensure required CI and fail-closed gate checks are actually required.",
-    "Run a full repository CI and dependency/security scan when safe and authorized."
-  ]
+    "Run a full repository CI and dependency/security scan when safe and authorized.",
+    "Resolve the approval workflow push-event/zero-job anomaly using event payload and GitHub check-suite evidence; preserve UNKNOWN until proven.",
+    "Provide a read-only exact-head validation route for the long-lived research branch without adding an unreviewed main-branch writer."
+  ],
+  "approval_workflow_anomaly": {
+    "run_id": 41177228657,
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41177228657",
+    "event": "push",
+    "conclusion": "failure",
+    "jobs_count": 0,
+    "inspected_workflow_trigger": "workflow_dispatch only",
+    "job_logs": "NOT_AVAILABLE_ZERO_JOBS",
+    "root_cause": "UNKNOWN",
+    "mutation_evidence": false
+  },
+  "research_branch_validator": {
+    "workflow_file": ".github/workflows/xrp-ledger-validation.yml",
+    "exists_on_research_branch": true,
+    "exists_on_main": false,
+    "latest_head_sha": "d3b65db1ec22382ef04b754a4454d11e215d30d0",
+    "validator_run_returned": false,
+    "exact_head_validation": "PENDING",
+    "note": "The research-branch workflow did not produce a run for the latest push. No manual dispatch or main-branch workflow modification was performed."
+  }
 }
