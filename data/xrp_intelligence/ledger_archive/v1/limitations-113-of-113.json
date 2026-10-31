@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 112,
+  "chunk_count": 113,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "LIM-20261031T051200Z-BINANCE-RESTORATION-UNQUANTIFIED",
+      "category": "customer_asset_restoration_not_transaction_verified",
+      "statement": "A verified Binance News account post says affected-asset restoration has begun, but no amount restored, affected-user credit ledger, token-level allocation, XRP-specific purchase, transfer or settlement was disclosed. Do not equate this claim with withdrawal-service resumption or a completed Proof of Reserves update.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T051200Z-XRP-OI-OVERLAP-DIVERGENCE",
+      "category": "derivatives_provider_contract_coverage_mismatch",
+      "statement": "At near-synchronous cutoffs, Kodexius reports $734.17M OI across seven contracts and TradRadar $1.84B across seven exchanges. On overlapping venues, reported OI also differs: Binance $360.05M vs $414.15M, Bybit $150.78M vs $339.41M, OKX $97.54M vs $108.89M, Hyperliquid $97.44M vs $195.05M. Provider methodology, contract membership, position conversion and timestamp alignment remain unresolved; keep separate series.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+        "SRC-20261031-TRADRADAR-XRP-OI-0435Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T051200Z-PR1353-BRANCH-DIVERGENCE",
+      "category": "research_branch_merge_safety",
+      "statement": "GitHub compare reports PR #1353 research branch diverged from main, 1,177 commits ahead and 351 behind, while PR metadata reports mergeable=true. Exact-head validator success does not establish merge safety. Do not merge, rebase or force-push the existing research branch; plan a separate reviewed migration/split onto a fresh main-based branch.",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z",
+        "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+        "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+      ]
+    }
+  ]
+}
