@@ -31,7 +31,18 @@ def test_live_mutations_fail_closed_without_explicit_confirmation():
     merge_index = WORKFLOW.index("MERGE_OUTPUT=$(gh pr merge")
     assert guard_index < update_index
     assert guard_index < merge_index
-    assert "CONFIRM_MERGE: ${{ inputs.confirm_merge }}" in WORKFLOW
+    assert "CONFIRM_MERGE: " + "$" + "{{ inputs.confirm_merge }}" in WORKFLOW
+    assert "HAS_GH_PAT:" in WORKFLOW and "secrets.GH_PAT != ''" in WORKFLOW
+
+
+def test_default_github_token_is_read_only_and_pat_is_live_only():
+    permissions = WORKFLOW.split("permissions:", 1)[1].split("jobs:", 1)[0]
+    assert "contents: read" in permissions
+    assert "pull-requests: read" in permissions
+    assert "contents: write" not in permissions
+    assert "pull-requests: write" not in permissions
+    assert "inputs.dry_run == 'false' && inputs.confirm_merge == 'true' && secrets.GH_PAT || secrets.GITHUB_TOKEN" in WORKFLOW
+    assert 'if [ "$DRY_RUN" != "true" ] && [ "$CONFIRM_MERGE" = "true" ] && [ "$HAS_GH_PAT" != "true" ]; then' in WORKFLOW
 
 
 def test_merge_queue_safety_test_is_registered_in_ci():
