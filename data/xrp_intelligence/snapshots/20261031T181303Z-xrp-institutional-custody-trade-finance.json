@@ -55,10 +55,11 @@
     "settlement_asset": "RLUSD",
     "funding_source": "PARTICIPATING_CAPITAL_PROVIDERS",
     "product_status": "WAITLIST_ANNOUNCED",
-    "historical_c2fo_early_pay_working_capital_access_usd": 520000000000,
     "historical_520b_scope": "EXISTING_C2FO_EARLY_PAY_PROGRAMS_PLATFORM_WIDE; NOT XRPL OR INSTANT PAY VOLUME",
     "actual_xrpl_funded_invoice_volume": "NOT_DISCLOSED",
-    "actual_rlusd_settlement_volume": "NOT_DISCLOSED"
+    "actual_rlusd_settlement_volume": "NOT_DISCLOSED",
+    "historical_c2fo_early_pay_working_capital_access_usd_lower_bound": 520000000000,
+    "historical_c2fo_early_pay_working_capital_access_comparison": "GREATER_THAN"
   },
   "tokenized_fund_and_euro_stablecoin": {
     "aviva_usd_liquidity_fund_share_class": {
