@@ -5,7 +5,7 @@
   "array_name": "limitations",
   "chunk_index": 114,
   "chunk_count": 115,
-  "record_count": 3,
+  "record_count": 4,
   "records": [
     {
       "id": "LIM-20261031T064600Z-ALL-EXCHANGE-CHANGE-NOT-BINANCE-THEFT",
@@ -36,6 +36,17 @@
       "status": "OPEN",
       "affected_source_ids": [
         "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T064600Z-APPROVAL-WORKFLOW-REPEATED-ZERO-JOBS",
+      "category": "repeated_approval_workflow_push_event_zero_jobs",
+      "statement": "Approval workflow runs 41177228657 and 41177519094 were both triggered by push events and failed with zero jobs, while the inspected workflow on main and the research branch declares workflow_dispatch only. No job logs exist. Root cause remains UNKNOWN; do not attribute to invalid YAML or bypass the approval gate.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z",
+        "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0645Z"
       ]
     }
   ]
