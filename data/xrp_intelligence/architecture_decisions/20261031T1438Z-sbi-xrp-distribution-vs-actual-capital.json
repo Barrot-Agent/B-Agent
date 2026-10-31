@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T143857Z-SBI-XRP-RETAIL-DISTRIBUTION-VS-ACTUAL-CAPITAL",
+  "captured_at_utc": "2026-10-31T14:38:57.150Z",
+  "status": "ACCEPTED_FOR_RESEARCH; ACTUAL_CAPITAL_BLOCKED",
+  "decisions": [
+    "Add the SBI VISA Crypto Card as a confirmed XRP-selectable retail distribution channel.",
+    "Keep Aplus, Visa Japan, SBI VC Trade, SBI Securities, SBI Shinsei Bank and SBI Holdings as distinct entities.",
+    "Record automatic monthly reward conversion and the VCTRADE account requirement.",
+    "Record the SBI/Visa digital-finance MOU as exploratory and not XRP-specific.",
+    "Record SBI VC Trade's RLUSD listing with Ripple as a separate stablecoin distribution relationship.",
+    "Do not infer XRP spot demand, net external capital or proprietary SBI accumulation from card rewards or voucher face value.",
+    "Keep the May 2026 launch campaign separate from ongoing base card terms; verify current terms before describing them as active."
+  ],
+  "required_verification": [
+    "Find current card terms and any revised reward schedule.",
+    "Obtain aggregate card issuance, XRP selection share and monthly XRP reward-credit quantities if publicly disclosed.",
+    "Verify SBI Shinsei voucher redemption and XRP units actually credited.",
+    "Determine whether reward XRP is sourced from spot execution, OTC, exchange inventory or internal transfers.",
+    "Verify whether RLUSD is paired with XRP on VCTRADE or used in an actual XRP settlement route."
+  ],
+  "feature_admission": {
+    "distribution_event_timeline": "ADMITTED",
+    "actual_capital_feature": "BLOCKED",
+    "directional_xrp_price_feature": "NOT_ADMITTED"
+  },
+  "forecast_status": "NOT_ISSUED"
+}

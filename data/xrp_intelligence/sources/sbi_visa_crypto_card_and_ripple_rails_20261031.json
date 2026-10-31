@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "BARROT-SBI-XRP-VISA-CARD-SOURCES-20261031T143857Z",
+  "captured_at_utc": "2026-10-31T14:38:57.150Z",
+  "observed_main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "sources": [
+    {
+      "source_id": "SRC-SBI-VISA-CRYPTO-CARD-20260501",
+      "publisher": "SBI Holdings / SBI VC Trade / Aplus / Visa Japan",
+      "title": "SBI VISA Crypto Card: BTC, ETH or XRP rewards with automatic monthly conversion",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16304.html",
+      "published_at_utc": "2026-05-01T00:00:00Z",
+      "source_type": "official_joint_product_announcement",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_VC_TRADE_APLUS_VISA_JOINT_RELEASE",
+      "claims": [
+        "SBI VC Trade, Aplus and Visa Japan announced the SBI VISA Crypto Card and SBI VISA Crypto Card Gold on 2026-05-01.",
+        "Each card selects one crypto asset at application from BTC, ETH or XRP.",
+        "Points earned from card spending are automatically exchanged into the selected crypto asset once per month without an exchange fee.",
+        "An SBI VC Trade VCTRADE service account is required to receive the crypto asset.",
+        "Launch terms list standard-card base reward of 0.5% and gold-card base reward of 1.0%; revolving-payment bonuses can raise the stated rates to 0.8% and 1.3%.",
+        "The gold card offers an annual benefit equal to JPY 6,600 in the selected crypto when annual card spending reaches JPY 2 million.",
+        "Using the card for SBI Securities credit-card investment accumulation can also generate crypto rewards based on monthly investment contributions.",
+        "The launch campaign offered up to 2.5% standard and 10% gold rewards for eligible May 2026 applications and spending through 2026-08-05, subject to 1,500-point and 5,000-point caps."
+      ],
+      "limitations": [
+        "No cardholder count, XRP selection share, XRP reward quantity, monthly conversion amount or current active-card volume is disclosed.",
+        "The source does not identify whether reward XRP is sourced from open-market purchases, OTC, existing SBI inventory, issuer treasury or another settlement arrangement.",
+        "The launch campaign period has expired; launch promotional rates must not be presented as currently available.",
+        "The base reward terms are those published at launch; current terms require a fresh product-terms check."
+      ]
+    },
+    {
+      "source_id": "SRC-VISA-SBI-CRYPTO-CARD-CROSSPOST-20260501",
+      "publisher": "Visa Japan",
+      "title": "SBI Group and Visa announce the SBI VISA Crypto Card",
+      "url": "https://www.visa.co.jp/about-visa/newsroom/press-releases/nr-jp-260501.html",
+      "published_at_utc": "2026-05-01T00:00:00Z",
+      "source_type": "official_cross_post_of_joint_product_announcement",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT_CROSS_POST",
+      "independence_group": "SBI_VC_TRADE_APLUS_VISA_JOINT_RELEASE",
+      "claims": [
+        "Visa's cross-post confirms the parties, selectable BTC/ETH/XRP rewards, automatic fee-free monthly conversion and SBI VC Trade account requirement."
+      ],
+      "limitations": [
+        "This is a cross-post of the same joint announcement and is not independent corroboration of reward volumes or settlement execution."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VISA-DIGITAL-FINANCE-MOU-20260501",
+      "publisher": "SBI Holdings / Visa Japan",
+      "title": "Basic agreement to explore cooperation in digital finance and payments",
+      "url": "https://www.sbigroup.co.jp/news/2026/0501_16303.html",
+      "published_at_utc": "2026-05-01T00:00:00Z",
+      "source_type": "official_memorandum_of_understanding",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_HOLDINGS_VISA_MOU",
+      "claims": [
+        "SBI Holdings and Visa Japan signed a basic agreement to explore possible cooperation in digital finance and payments.",
+        "The announcement expressly includes potential use of digital assets, including stablecoins."
+      ],
+      "limitations": [
+        "The announcement describes exploration of possible future cooperation, not a completed product launch, binding issuance mandate, XRP integration or confirmed stablecoin settlement flow.",
+        "No direct Ripple, XRP, Coinbase or Circle contractual relationship is established by this MOU."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-SHINSEI-XRP-DEPOSIT-VOUCHER-20260202",
+      "publisher": "SBI Shinsei Bank / SBI VC Trade",
+      "title": "Yen time-deposit campaign with XRP crypto-asset exchange vouchers",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0202_16075.html",
+      "published_at_utc": "2026-02-02T00:00:00Z",
+      "source_type": "official_joint_deposit_campaign",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_SHINSEI_SBI_VC_TRADE_CAMPAIGN",
+      "claims": [
+        "The campaign offered an XRP exchange voucher based on eligible six-month yen time deposits of at least JPY 300,000.",
+        "Published reward tiers ranged from JPY 500 equivalent to JPY 20,000 equivalent depending on deposit amount.",
+        "The announcement says XRP units would be calculated using the SBI VC Trade sales price at 2026-07-02 06:59 JST and vouchers would be emailed by the end of May."
+      ],
+      "limitations": [
+        "The campaign announcement does not disclose total eligible deposits, vouchers issued, voucher redemptions, XRP units credited or XRP sourcing.",
+        "The July 2 reference time has passed, but actual voucher redemption and distribution remain unverified."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-VC-TRADE-RLUSD-LAUNCH-20260624",
+      "publisher": "SBI VC Trade / Ripple",
+      "title": "SBI VC Trade begins handling Ripple USD (RLUSD)",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "published_at_utc": "2026-06-24T00:00:00Z",
+      "source_type": "official_joint_stablecoin_listing_announcement",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "SBI_VC_TRADE_RIPPLE_RLUSD_JOINT_RELEASE",
+      "claims": [
+        "SBI VC Trade and Ripple announced that RLUSD handling on VCTRADE began after maintenance on 2026-06-24.",
+        "The announcement describes the listing as a result of the SBI Group and Ripple partnership."
+      ],
+      "limitations": [
+        "RLUSD is a Ripple-issued stablecoin and is distinct from native XRP.",
+        "The listing does not disclose XRP spot purchases, XRP collateral positions, Coinbase participation or Circle USDC supply."
+      ]
+    }
+  ],
+  "independence_policy": {
+    "rule": "SBI/Visa card cross-posts share one independence group. SBI/Visa MOU and SBI VC Trade/Ripple RLUSD listing are separate official announcements but remain company statements.",
+    "actual_capital": "A reward program, voucher face value or card-spend percentage is not a measure of XRP spot demand. Require actual XRP credited, settlement source and executed market/OTC evidence.",
+    "entity_separation": "SBI Holdings, SBI VC Trade, Aplus, SBI Securities, SBI Shinsei Bank and Visa are distinct legal/operating entities. Do not attribute every group product to SBI Holdings treasury or to Ripple."
+  }
+}
