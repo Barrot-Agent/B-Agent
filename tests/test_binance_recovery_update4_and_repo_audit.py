@@ -62,3 +62,45 @@ def test_handoff_keeps_forecast_unissued():
     handoff = load("data/xrp_intelligence/hand_offs/20261101T151200Z-binance-update4-and-current-main-safety-handoff.json")
     assert handoff["forecast_status"] == "NOT_ISSUED"
     assert handoff["feature_admission"] == "NONE"
+
+def test_november_escrow_same_account_release_is_not_market_float():
+    snapshot = load("data/xrp_intelligence/snapshots/20261101T154204Z-xrp-escrow-destination-binance-phase1-and-prediction-audit.json")
+    escrow = snapshot["escrow"]
+    assert escrow["gross_released_xrp"] == 1_000_000_000
+    assert escrow["tracker_reported_net_out_of_escrow_xrp"] == 1_000_000_000
+    assert escrow["market_float_increase_xrp"] is None
+    same_account = next(tx for tx in escrow["transactions"] if tx["hash"].startswith("33F693"))
+    assert same_account["sender_account"] == same_account["receiver_account"]
+    assert same_account["classification"] == "ESCROW_RELEASE_TO_SAME_RIPPLE_ACCOUNT"
+    unknown = next(tx for tx in escrow["transactions"] if tx["hash"].startswith("3CB037"))
+    assert unknown["destination_account"] is None
+    assert snapshot["forecast_status"] == "NOT_ISSUED"
+
+
+def test_binance_xrp_phase1_status_is_media_reported_not_directly_verified():
+    snapshot = load("data/xrp_intelligence/snapshots/20261101T154204Z-xrp-escrow-destination-binance-phase1-and-prediction-audit.json")
+    binance = snapshot["binance"]
+    assert binance["aggregate_replenishment_pct"] == 95
+    assert "XRP" in binance["top_ten_assets"]
+    assert binance["xrp_network_listed_in_phase1"] is True
+    assert binance["withdrawal_status"] == "MEDIA_REPORTED_AVAILABLE; DIRECT_NETWORK_STATUS_NOT_VERIFIED"
+    assert binance["successful_xrp_withdrawal_independently_observed"] is None
+    assert binance["xrp_specific_replenishment_quantity"] is None
+
+
+def test_future_dated_snapshot_is_quarantined_from_point_in_time_use():
+    snapshot = load("data/xrp_intelligence/snapshots/20261101T154204Z-xrp-escrow-destination-binance-phase1-and-prediction-audit.json")
+    future = snapshot["point_in_time_integrity"]["future_dated_existing_artifact"]
+    assert future["recorded_captured_at_utc"] > snapshot["captured_at_utc"]
+    assert future["status"] == "FUTURE_DATED_AT_THIS_CUTOFF"
+    assert "QUARANTINE" in future["treatment"]
+
+
+def test_prediction_cohort_guard_and_dependency_audit_are_recorded_without_overclaim():
+    audit = load("data/repository_audits/20261101T154204Z-prediction-cohort-guard-and-python-dependency-audit.json")
+    assert audit["main_sha"] == "46e9f9d276a862157906dce63a0910e20eb8f7b5"
+    assert audit["dependency_audit"]["conclusion"] == "SUCCESS"
+    assert all(item["result"] == "NO_KNOWN_VULNERABILITIES_FOUND" for item in audit["dependency_audit"]["scanned_requirement_sets"])
+    assert audit["prediction_integrity_review"]["exact_head_tests_passed"] == 389
+    assert audit["prediction_integrity_review"]["exact_head_subtests_passed"] == 8
+    assert audit["prediction_integrity_review"]["status"] == "OPEN_DRAFT_UNMERGED"

@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-XRP-ESCROW-DESTINATION-BINANCE-PHASE1-20261101T154204Z",
+  "captured_at_utc": "2026-11-01T15:42:04Z",
+  "sources": [
+    {
+      "id": "xrp-insights-escrow-ledger-108047474-20261101",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "publisher": "XRP Insights",
+      "accessed_at_utc": "2026-11-01T15:42:04Z",
+      "displayed_ledger_index": 108047474,
+      "displayed_ledger_time_utc": "2026-11-01T14:58:00Z",
+      "classification": "SECONDARY_LEDGER_DERIVED_TRACKER",
+      "claims": [
+        "The rendered page now reports validated ledger 108047474 at 2026-11-01 14:58 UTC, superseding the earlier 00:27 UTC page snapshot.",
+        "It reports two November 1 EscrowFinish releases totaling 1 billion XRP at 00:00:02 UTC.",
+        "It reports zero re-escrow at the pinned ledger and 64.2% re-escrow across the preceding 12 monthly releases.",
+        "It identifies both owner accounts and links to each transaction."
+      ],
+      "publisher_methodology_claim": "The page says it reads rippled JSON-RPC from s1.ripple.com with xrplcluster.com fallback, uses account_objects and account_tx at a single pinned validated ledger, and counts Ripple-owned escrow objects once by ledger index.",
+      "limitations": [
+        "The publisher's RPC methodology was not independently reproduced in this execution.",
+        "The linked livenet.xrpl.org transaction pages returned JavaScript-only content.",
+        "The earlier 00:27 and 02:31 ledger observations are historical snapshots, not current state; the new 14:58 page resolves the page-freshness conflict without validating the earlier raw RPC response.",
+        "A tracker 'net out of escrow' value does not establish circulating supply, tradable float, external transfer or sale."
+      ]
+    },
+    {
+      "id": "whale-alert-xrpl-escrowfinish-33f693-20261101",
+      "url": "https://whale-alert.io/transaction/ripple/33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564",
+      "publisher": "Whale Alert",
+      "accessed_at_utc": "2026-11-01T15:42:04Z",
+      "transaction_time_utc": "2026-11-01T00:00:02Z",
+      "classification": "INDEPENDENT_ONCHAIN_TRANSACTION_AGGREGATOR",
+      "claims": [
+        "Reports 500,000,000 XRP unlocked at Ripple.",
+        "Reports sender rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn and receiver rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn.",
+        "Reports transaction hash 33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564 and fee 0.000012 XRP."
+      ],
+      "limitations": [
+        "This is an aggregator rendering, not raw XRPL transaction JSON.",
+        "It independently supports a same-account sender/receiver relationship for this 500M transaction, but does not establish the destination of the other 500M transaction.",
+        "It does not establish any sale, exchange deposit or market distribution."
+      ]
+    },
+    {
+      "id": "xrpl-explorer-33f693-20261101",
+      "url": "https://livenet.xrpl.org/transactions/33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564",
+      "publisher": "XRP Ledger Explorer",
+      "accessed_at_utc": "2026-11-01T15:42:04Z",
+      "classification": "PRIMARY_LEDGER_EXPLORER",
+      "observation": "Static extraction returned 'You need to enable JavaScript to run this app.'",
+      "limitations": [
+        "Raw transaction metadata and Destination were not exposed."
+      ]
+    },
+    {
+      "id": "xrpl-explorer-3cb037-20261101",
+      "url": "https://livenet.xrpl.org/transactions/3CB037A5F9BC193427592EDB87C49C1ABE499F80F5C049090141B4EDE539F948",
+      "publisher": "XRP Ledger Explorer",
+      "accessed_at_utc": "2026-11-01T15:42:04Z",
+      "classification": "PRIMARY_LEDGER_EXPLORER",
+      "observation": "Static extraction returned 'You need to enable JavaScript to run this app.'",
+      "limitations": [
+        "Raw transaction metadata and Destination were not exposed."
+      ]
+    },
+    {
+      "id": "binance-recovery-update4-20261101",
+      "url": "https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda",
+      "publisher": "Binance",
+      "published_at_utc": "2026-11-01T04:08:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "XRP on the XRP network is listed in phase one of withdrawals.",
+        "Phase one was scheduled for 06:00-09:00 UTC and assets would become available progressively.",
+        "Binance reports approximately 95% aggregate replenishment, up from 90%.",
+        "Binance reports BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC balances fully backed 100%.",
+        "The remaining 5% is described as less-liquid assets outside the top ten, with market and OTC acquisition continuing."
+      ],
+      "limitations": [
+        "The announcement does not disclose XRP-specific purchases or quantities.",
+        "The 95% figure is aggregate coverage, not a disclosed cash-spend total.",
+        "The announcement says to check the withdrawal page/network status; it does not itself prove a successful XRP withdrawal."
+      ]
+    },
+    {
+      "id": "cbs-afp-binance-xrp-withdrawal-report-20261101",
+      "url": "https://www.cbsnews.com/news/binance-crypto-heist-withdrawals/",
+      "publisher": "CBS News / AFP",
+      "published_at_utc": "2026-11-01T10:35:00Z",
+      "classification": "SECONDARY_MEDIA_REPORT_OF_COMPANY_STATUS",
+      "claims": [
+        "Reports that, as of 05:00 Eastern on November 1 (10:00 UTC), Binance said withdrawals had been restored for BTC, ETH, BNB, XRP, Base, DOGE and Optimism.",
+        "Reports phased restoration and the FBI's attribution of the overall incident to TraderTraitor."
+      ],
+      "limitations": [
+        "The report quotes Binance's X status; it is not a direct test withdrawal or a live XRP network-status API response.",
+        "It does not prove all users or all XRP withdrawals were processing without delays."
+      ]
+    },
+    {
+      "id": "reuters-binance-phase1-scheduled-20261101",
+      "url": "https://www.reuters.com/legal/government/binance-resumes-bitcoin-withdrawals-after-covering-bulk-stolen-63-billion-2026-11-01/",
+      "publisher": "Reuters",
+      "published_at_utc": "2026-11-01T00:57:00Z",
+      "classification": "SECONDARY_MEDIA_REPORT",
+      "claims": [
+        "Before the phase-one window, Reuters reported Binance's planned phased reopening and approximately 95% aggregate replenishment."
+      ],
+      "limitations": [
+        "This is a pre-window report and is not evidence of XRP service status after the window."
+      ]
+    }
+  ],
+  "source_independence_notes": [
+    "XRP Insights and Whale Alert are separate data publishers; the former claims direct rippled JSON-RPC ingestion, while Whale Alert independently renders one transaction's sender and receiver.",
+    "Whale Alert is not a substitute for raw validated XRPL transaction metadata.",
+    "Binance Update #4 is a primary company claim; CBS/AFP reports Binance's later X status but does not test the service.",
+    "No market feature is admitted from these sources in this revision."
+  ]
+}

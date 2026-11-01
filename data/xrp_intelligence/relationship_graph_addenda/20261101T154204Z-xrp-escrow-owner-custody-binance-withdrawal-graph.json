@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "graph_id": "xrp-escrow-owner-custody-binance-withdrawal-20261101T154204Z",
+  "captured_at_utc": "2026-11-01T15:42:04Z",
+  "nodes": [
+    {
+      "id": "Ripple",
+      "type": "digital_asset_company"
+    },
+    {
+      "id": "XRP",
+      "type": "native_digital_asset"
+    },
+    {
+      "id": "XRPL",
+      "type": "public_ledger"
+    },
+    {
+      "id": "Ripple_owner_rB3WN",
+      "type": "Ripple_labelled_owner_account"
+    },
+    {
+      "id": "Ripple_owner_r9UUE",
+      "type": "Ripple_labelled_owner_account"
+    },
+    {
+      "id": "EscrowFinish_33F693",
+      "type": "validated_transaction_hash_reported_by_aggregator"
+    },
+    {
+      "id": "EscrowFinish_3CB037",
+      "type": "validated_transaction_hash_reported_by_tracker"
+    },
+    {
+      "id": "Binance",
+      "type": "centralized_exchange"
+    },
+    {
+      "id": "XRP_withdrawal_network",
+      "type": "exchange_withdrawal_rail"
+    },
+    {
+      "id": "WhaleAlert",
+      "type": "onchain_transaction_aggregator"
+    },
+    {
+      "id": "XRP_Insights",
+      "type": "ledger_derived_tracker"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Ripple_owner_rB3WN",
+      "to": "EscrowFinish_33F693",
+      "relation": "500M_XRP_EscrowFinish_reported",
+      "status": "TRACKER_REPORTED_AND_WHALE_ALERT_CORROBORATED"
+    },
+    {
+      "from": "EscrowFinish_33F693",
+      "to": "Ripple_owner_rB3WN",
+      "relation": "sender_and_receiver_same_account",
+      "status": "WHALE_ALERT_RENDERED_FIELDS; RAW_XRPL_JSON_NOT_RETRIEVED"
+    },
+    {
+      "from": "Ripple_owner_r9UUE",
+      "to": "EscrowFinish_3CB037",
+      "relation": "500M_XRP_EscrowFinish_reported",
+      "status": "TRACKER_REPORTED; DESTINATION_UNKNOWN"
+    },
+    {
+      "from": "XRP_Insights",
+      "to": "XRPL",
+      "relation": "claims_rippled_RPC_pinned_validated_ledger_method",
+      "status": "PUBLISHER_METHODOLOGY_CLAIM"
+    },
+    {
+      "from": "WhaleAlert",
+      "to": "EscrowFinish_33F693",
+      "relation": "independent_transaction_rendering",
+      "status": "SOURCE_PAGE_VERIFIED"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP_withdrawal_network",
+      "relation": "phase1_withdrawal_listed",
+      "status": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP_withdrawal_network",
+      "relation": "withdrawals_reported_restored_by_10_00_UTC",
+      "status": "CBS_AFP_REPORT_OF_BINANCE_X_STATUS; DIRECT_SERVICE_TEST_ABSENT"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP",
+      "relation": "customer_asset_backing_reported_100_percent",
+      "status": "COMPANY_REPORTED; NOT_INDEPENDENT_LIABILITY_AUDIT"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H_ESCROW_RELEASE_EQUALS_SELL_PRESSURE",
+      "claim": "The gross 1B XRP escrow release immediately adds 1B XRP to market float and sell pressure.",
+      "supporting_evidence": [
+        "Two 500M EscrowFinish transactions are reported by XRP Insights."
+      ],
+      "disconfirming_evidence": [
+        "For hash 33F693..., Whale Alert reports sender and receiver as the same Ripple-labelled owner account.",
+        "No exchange deposit or sale is verified.",
+        "The other 500M destination remains unknown.",
+        "Net out of escrow is not a circulating-supply metric."
+      ],
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "H_RIPPLE_RETAINS_RELEASED_XRP",
+      "claim": "Released XRP remains in Ripple-controlled owner accounts or custody rather than entering external markets.",
+      "supporting_evidence": [
+        "One 500M transaction is rendered with the same Ripple-labelled sender and receiver.",
+        "XRP Insights describes EscrowFinish as returning XRP to Ripple's account."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "The other 500M destination has not been independently decoded.",
+        "No current post-release account balances were retrieved."
+      ],
+      "status": "PARTIALLY_SUPPORTED; NOT_FULLY_RECONCILED"
+    },
+    {
+      "id": "H_BINANCE_XRP_REPLENISHMENT_BUYING",
+      "claim": "Binance's incident recovery creates additional XRP spot/OTC buying demand.",
+      "supporting_evidence": [
+        "Binance says it continues market and OTC purchases for the remaining affected assets."
+      ],
+      "disconfirming_evidence": [
+        "Update #4 says XRP is among the top ten assets reported 100% backed.",
+        "The remaining 5% is described as outside the top ten.",
+        "No XRP-specific purchase quantity or venue is disclosed."
+      ],
+      "status": "UNSUPPORTED_FOR_XRP_SPECIFIC_BUYING"
+    },
+    {
+      "id": "H_BINANCE_WITHDRAWAL_NORMALIZATION",
+      "claim": "Restored XRP withdrawals may reduce exchange-access friction and venue-specific withdrawal risk.",
+      "supporting_evidence": [
+        "Binance lists XRP in phase one.",
+        "CBS/AFP reports Binance said XRP withdrawals were restored by 10:00 UTC."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No successful withdrawal was independently verified.",
+        "Binance describes a progressive rollout and possible delays."
+      ],
+      "status": "MEDIA_REPORTED_OPERATIONAL_CHANGE; PRICE_EFFECT_UNKNOWN"
+    }
+  ],
+  "red_team_objections": [
+    "Do not equate gross escrow release or tracker net-out with circulating supply, tradable float, external transfer or sale.",
+    "Do not infer the destination of the 3CB037... 500M transaction from the other transaction's same-account pattern.",
+    "Do not promote Binance XRP withdrawal status from media-reported available to independently verified without a direct status row or transaction evidence.",
+    "Do not convert Binance's 95% aggregate coverage into 95% cash deployed or XRP-specific purchases.",
+    "Quarantine the existing 15:45Z Evernorth snapshot at the 15:42:04Z cutoff as future-dated."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

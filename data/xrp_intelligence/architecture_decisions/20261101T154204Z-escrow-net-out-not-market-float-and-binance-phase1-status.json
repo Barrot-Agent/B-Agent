@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "decision_id": "escrow-net-out-not-market-float-and-binance-phase1-status-20261101T154204Z",
+  "captured_at_utc": "2026-11-01T15:42:04Z",
+  "decisions": [
+    {
+      "id": "escrow_net_out_semantics",
+      "decision": "Treat net_out_of_escrow as XRP no longer held in escrow objects at the pinned ledger. It is not circulating supply, tradable float, external transfer, exchange deposit or sale."
+    },
+    {
+      "id": "same_account_release",
+      "decision": "For transaction 33F693..., record Whale Alert's sender and receiver as the same Ripple-labelled owner account. Classify as escrow release to the same account, not an external outflow. Keep the 3CB037... destination unknown."
+    },
+    {
+      "id": "escrow_feature_admission",
+      "decision": "Do not admit the gross 1B release or net-out figure as a market-supply feature until both transactions' raw metadata, owner balances, subsequent transfers and EscrowCreate activity are reconciled."
+    },
+    {
+      "id": "binance_update4",
+      "decision": "Use Update #4's 95% aggregate coverage, superseding Update #3's 90%; XRP and RLUSD are among the top-ten assets reported 100% backed. The remaining 5% is described as outside the top ten."
+    },
+    {
+      "id": "binance_xrp_withdrawal",
+      "decision": "Upgrade from scheduled-only to MEDIA_REPORTED_AVAILABLE based on CBS/AFP reporting Binance's X status as of 10:00 UTC, while keeping DIRECT_SERVICE_STATUS_UNVERIFIED and no independently observed successful withdrawal."
+    },
+    {
+      "id": "actual_capital",
+      "decision": "Do not treat aggregate 95% replenishment as cash spent or new XRP demand. XRP-specific acquisition quantity and venue remain undisclosed."
+    },
+    {
+      "id": "future_timestamp_quarantine",
+      "decision": "The existing Evernorth snapshot/source revision captured_at_utc=15:45Z is future-dated relative to this 15:42:04Z run cutoff. Preserve the files but exclude them from point-in-time features and current claims until re-captured or verified after 15:45Z."
+    },
+    {
+      "id": "forecast",
+      "decision": "No directional XRP forecast; no feature admission from this event. Status NOT_ISSUED."
+    }
+  ],
+  "limitations": [
+    "Raw XRPL RPC could not be retrieved in this execution because the container environment failed DNS resolution for s1.ripple.com.",
+    "XRPL Explorer static extraction exposed only a JavaScript shell.",
+    "The other 500M transaction's Destination and current owner balances remain unknown."
+  ]
+}

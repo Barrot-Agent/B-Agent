@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "handoff_id": "escrow-destination-binance-phase1-and-prediction-integrity-20261101T154204Z",
+  "captured_at_utc": "2026-11-01T15:42:04Z",
+  "research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+  "prediction_integrity_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1468",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T154204Z-xrp-escrow-destination-and-binance-phase1-status.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T154204Z-xrp-escrow-destination-binance-phase1-and-prediction-audit.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T154204Z-xrp-escrow-owner-custody-binance-withdrawal-graph.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T154204Z-escrow-net-out-not-market-float-and-binance-phase1-status.json",
+  "repository_audit": "data/repository_audits/20261101T154204Z-prediction-cohort-guard-and-python-dependency-audit.json",
+  "key_findings": [
+    "XRP Insights refreshed to validated ledger 108047474 at 14:58 UTC; the previous 00:27 UTC page snapshot is stale, and the earlier 02:31 UTC handoff is historical rather than a current-page contradiction.",
+    "The tracker reports 1B XRP released and 0 re-escrow at ledger 108047474; this is not a measure of circulating supply or market float.",
+    "Whale Alert independently renders the 500M 33F693... release with sender and receiver both rB3WN...; this is a same-account escrow release, not an external sale or exchange deposit.",
+    "The other 500M 3CB037... destination remains unknown because raw XRPL metadata was not retrieved.",
+    "Binance Update #4 reports 95% aggregate replenishment, XRP among the ten assets reported 100% backed, and XRP listed in phase-one withdrawals.",
+    "CBS/AFP reports Binance said XRP withdrawals were restored by 10:00 UTC; direct network-status row and independently successful withdrawal remain unverified.",
+    "A 15:45Z Evernorth snapshot/source revision is present on the research branch but is future-dated relative to this 15:42:04Z cutoff; preserve and quarantine from point-in-time use.",
+    "PR #1468 exact-head CI passed 389 tests plus 8 subtests; its fail-closed gate passed with merging disabled. PR remains draft and unmerged.",
+    "PR #1467's read-only Python dependency audit found no known vulnerabilities in the three scanned requirement sets; other manifests and non-Python dependencies remain outside that scan."
+  ],
+  "next_actions": [
+    "Retrieve raw validated XRPL tx JSON for both EscrowFinish hashes using an accessible public endpoint; record Destination, meta and affected ledger nodes.",
+    "Read account_info/account_objects/account_tx for both Ripple owner accounts at one newer validated ledger; identify all subsequent payments and EscrowCreate transactions.",
+    "Refresh the Binance attacker account and classify any outflows without assuming sale from a movement alone.",
+    "Check an authoritative Binance XRP network-status row; do not initiate a test withdrawal.",
+    "Reconcile the future-dated Evernorth snapshot after 15:45 UTC by re-fetching its SEC and company sources with a valid capture timestamp; do not use its future capture time in backtests.",
+    "Review PR #1468's cohort guard and exact-head tests; keep it draft/unmerged pending approval.",
+    "Keep PR #1466 and #1468 stacked; do not merge the parent separately if #1468 is selected.",
+    "Expand the historical feature store only after provider timestamps, venue coverage, source identity and target protocols are normalized.",
+    "Continue Coinbase/Circle/SBI/SBIC/ASK Coin/actual-capital/Camilla Stephenson investigations."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}

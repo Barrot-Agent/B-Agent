@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "audit_id": "prediction-cohort-guard-and-python-dependency-audit-20261101T154204Z",
+  "captured_at_utc": "2026-11-01T15:42:04Z",
+  "main_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+  "main_state": "UNCHANGED_AT_AUDIT",
+  "main_prediction_workflow": {
+    "path": ".github/workflows/check-signal-accuracy.yml",
+    "status": "ACTIVE_ON_MAIN",
+    "risk": "Scheduled workflow still uses the legacy variable-horizon mutable signal evaluator and contents:write commit/push path.",
+    "proposed_remediation_pr": 1466,
+    "successor_pr": 1468
+  },
+  "dependency_audit": {
+    "pr": 1467,
+    "head_sha": "0d438fae4e8d6c67e5f66e23d3a85ecf1a8bd1b5",
+    "workflow_run_id": 41321643924,
+    "conclusion": "SUCCESS",
+    "tool": "pip-audit 2.10.1",
+    "scanned_requirement_sets": [
+      {
+        "path": "requirements-dev.txt",
+        "coverage": "includes root requirements.txt",
+        "result": "NO_KNOWN_VULNERABILITIES_FOUND"
+      },
+      {
+        "path": "legacy/requirements_legacy.txt",
+        "result": "NO_KNOWN_VULNERABILITIES_FOUND"
+      },
+      {
+        "path": "hf_space/requirements.txt",
+        "result": "NO_KNOWN_VULNERABILITIES_FOUND"
+      }
+    ],
+    "artifacts_uploaded": true,
+    "limitations": [
+      "Does not constitute a full scan of pyproject.toml, a2a/package.json, Dockerfile, self_hosted_brain/Dockerfile or GitHub Action dependencies.",
+      "The repository has no lockfiles in the inspected manifest inventory; resolved dependency versions are not fully reproducible.",
+      "No known vulnerabilities in the scanned sets is not a guarantee of absence of vulnerabilities."
+    ]
+  },
+  "prediction_integrity_review": {
+    "parent_pr": 1466,
+    "parent_head_sha": "3fbb77ecd9df5b3372220faa329ed8145f258cdc",
+    "finding": "Independent review found metrics() pooled resolved forecasts across different horizons, target thresholds, model versions and baseline IDs even though the ledger records those protocol dimensions per forecast.",
+    "successor_pr": 1468,
+    "successor_head_sha": "7c6c46f0a847d152bac848a6faa1227646d14b94",
+    "exact_head_ci_run_id": 41322328249,
+    "exact_head_tests_passed": 389,
+    "exact_head_subtests_passed": 8,
+    "fail_closed_gate_run_id": 41322328217,
+    "fail_closed_gate": "PASSED_MERGING_DISABLED",
+    "status": "OPEN_DRAFT_UNMERGED"
+  },
+  "other_active_main_risks": [
+    "Scheduler Tick has workflow-dispatch and write capability.",
+    "Merge Queue can merge without an explicit per-PR authorized approval check.",
+    "Cross Analysis can update tracked outputs and generated_at without qualifying fresh observations.",
+    "Legacy signal accuracy workflow can commit results to main."
+  ],
+  "limitations": [
+    "Full repository CI and complete security-alert review remain incomplete.",
+    "GitHub branch-protection endpoint remains unavailable to the current connection.",
+    "No main-branch change, merge, force-push, manual workflow dispatch, secret access or deployment occurred."
+  ]
+}

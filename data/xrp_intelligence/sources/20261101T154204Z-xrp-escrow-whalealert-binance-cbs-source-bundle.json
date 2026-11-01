@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "bundle_id": "xrp-escrow-whalealert-binance-cbs-source-bundle-20261101T154204Z",
+  "captured_at_utc": "2026-11-01T15:42:04Z",
+  "sources": [
+    {
+      "id": "xrp-insights-escrow",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "publisher": "XRP Insights",
+      "classification": "SECONDARY_LEDGER_DERIVED_TRACKER",
+      "accessed_at_utc": "2026-11-01T15:42:04Z"
+    },
+    {
+      "id": "whale-alert-33f693",
+      "url": "https://whale-alert.io/transaction/ripple/33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564",
+      "publisher": "Whale Alert",
+      "classification": "INDEPENDENT_ONCHAIN_TRANSACTION_AGGREGATOR",
+      "accessed_at_utc": "2026-11-01T15:42:04Z"
+    },
+    {
+      "id": "binance-update4",
+      "url": "https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda",
+      "publisher": "Binance",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "published_at_utc": "2026-11-01T04:08:00Z"
+    },
+    {
+      "id": "cbs-afp-binance",
+      "url": "https://www.cbsnews.com/news/binance-crypto-heist-withdrawals/",
+      "publisher": "CBS News / AFP",
+      "classification": "SECONDARY_MEDIA_REPORT_OF_COMPANY_STATUS",
+      "published_at_utc": "2026-11-01T10:35:00Z"
+    },
+    {
+      "id": "xrpl-explorer-33f693",
+      "url": "https://livenet.xrpl.org/transactions/33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564",
+      "publisher": "XRP Ledger Explorer",
+      "classification": "PRIMARY_LEDGER_EXPLORER",
+      "accessed_at_utc": "2026-11-01T15:42:04Z"
+    },
+    {
+      "id": "xrpl-explorer-3cb037",
+      "url": "https://livenet.xrpl.org/transactions/3CB037A5F9BC193427592EDB87C49C1ABE499F80F5C049090141B4EDE539F948",
+      "publisher": "XRP Ledger Explorer",
+      "classification": "PRIMARY_LEDGER_EXPLORER",
+      "accessed_at_utc": "2026-11-01T15:42:04Z"
+    }
+  ],
+  "independence_and_limitations": [
+    "XRP Insights reports direct rippled RPC methodology but is a tracker, not a raw RPC response.",
+    "Whale Alert independently renders one transaction's sender/receiver; it is not raw transaction metadata.",
+    "CBS/AFP reports Binance's X status and is not a successful withdrawal test.",
+    "The two XRPL Explorer pages require JavaScript in static extraction.",
+    "No provider observation from this bundle is admitted as a predictive feature."
+  ]
+}
