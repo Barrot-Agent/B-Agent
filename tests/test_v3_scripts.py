@@ -717,8 +717,9 @@ def test_scheduled_telemetry_and_accuracy_workflows_are_readonly_artifact_only()
         assert "actions/upload-artifact@v4" in workflow
         assert "git commit" not in workflow
         assert "git push" not in workflow
-    assert "TELEMETRY_ONLY" in telemetry
+    assert "TELEMETRY_ONLY_NOT_OPERATIONAL_VERIFICATION" in telemetry
     assert "NOT_PERFORMED" in telemetry
+    assert "**Status:** OPERATIONAL" not in telemetry
 
 
 def test_subscriber_sync_requires_manual_private_data_confirmation_and_does_not_publish() -> None:
