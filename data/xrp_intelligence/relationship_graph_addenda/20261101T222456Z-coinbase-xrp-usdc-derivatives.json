@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "artifact_type": "coinbase_xrp_usdc_derivatives_graph_addendum",
+  "captured_at_utc": "2026-11-01T22:24:56Z",
+  "nodes": [
+    {
+      "id": "COINBASE",
+      "name": "Coinbase",
+      "type": "exchange_FCM_and_prime_broker"
+    },
+    {
+      "id": "CFM",
+      "name": "Coinbase Financial Markets",
+      "type": "CFTC_registered_FCM"
+    },
+    {
+      "id": "CBBM",
+      "name": "Coinbase Bermuda Limited",
+      "type": "foreign_broker"
+    },
+    {
+      "id": "DERIBIT",
+      "name": "Deribit",
+      "type": "derivatives_venue"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "digital_asset_and_cross_collateral"
+    },
+    {
+      "id": "USDC",
+      "name": "USDC",
+      "type": "stablecoin_and_settlement_asset"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle",
+      "type": "USDC_issuer"
+    },
+    {
+      "id": "COINBASE_CUSTODY",
+      "name": "Coinbase Custody Trust Company",
+      "type": "custodian"
+    }
+  ],
+  "edges": [
+    {
+      "from": "XRP",
+      "to": "DERIBIT",
+      "type": "cross_collateral_for_any_cross_margined_derivative",
+      "status": "CONFIRMED_NON_US_GLOBAL_DERIVATIVES_PRODUCT",
+      "terms": {
+        "standard_margin_haircut_pct": 15,
+        "portfolio_margin_haircut": "dash/no haircut listed"
+      },
+      "sources": [
+        "SRC_COINBASE_GLOBAL_XCOLLATERAL"
+      ]
+    },
+    {
+      "from": "XRP",
+      "to": "DERIBIT",
+      "type": "underlying_of_linear_USDC_settled_options",
+      "status": "CONFIRMED_NON_US_PRODUCT",
+      "terms": {
+        "index": "XRP_USDC",
+        "contract_multiplier_xrp": 1000,
+        "settlement": "USDC"
+      },
+      "sources": [
+        "SRC_COINBASE_GLOBAL_XRP_OPTIONS"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "DERIBIT",
+      "type": "integrated_global_derivatives_execution",
+      "status": "CONFIRMED",
+      "sources": [
+        "SRC_COINBASE_DERIBIT_MIGRATION",
+        "SRC_COINBASE_PRIME_GLOBAL_DERIVATIVES"
+      ]
+    },
+    {
+      "from": "CFM",
+      "to": "CBBM",
+      "type": "customer_asset_margin_transfer_and_right_of_reuse",
+      "status": "CONDITIONAL_CFTC_NO_ACTION_PATHWAY",
+      "sources": [
+        "SRC_CFTC_26_17"
+      ]
+    },
+    {
+      "from": "CBBM",
+      "to": "DERIBIT",
+      "type": "foreign_broker_customer_margin",
+      "status": "CONDITIONAL_CFTC_NO_ACTION_PATHWAY",
+      "sources": [
+        "SRC_CFTC_26_17"
+      ]
+    },
+    {
+      "from": "DERIBIT",
+      "to": "COINBASE_CUSTODY",
+      "type": "custody_of_100_percent_net_liquidating_equity_for_relevant_30_7_accounts",
+      "status": "CFTC_LETTER_CONDITION",
+      "sources": [
+        "SRC_CFTC_26_17"
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "USDC",
+      "type": "issuer",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "USDC",
+      "to": "DERIBIT",
+      "type": "settlement_currency_for_XRP_options_and_collateralized_positions",
+      "status": "CONFIRMED_NON_US_PRODUCT",
+      "sources": [
+        "SRC_COINBASE_GLOBAL_XRP_OPTIONS",
+        "SRC_COINBASE_GLOBAL_XCOLLATERAL"
+      ]
+    }
+  ],
+  "non_edges": [
+    {
+      "from": "XRP",
+      "to": "CFM",
+      "status": "NO_CURRENT_US_XRP_COLLATERAL_PRODUCT_VERIFIED",
+      "note": "CFTC 26-17 provides a conditional pathway, but Coinbase Prime public collateral list currently shows only USDC, BTC and ETH."
+    }
+  ]
+}

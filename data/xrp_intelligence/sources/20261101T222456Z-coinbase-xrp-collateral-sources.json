@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "artifact_type": "coinbase_derivatives_xrp_collateral_source_registry",
+  "captured_at_utc": "2026-11-01T22:24:56Z",
+  "sources": [
+    {
+      "id": "SRC_COINBASE_GLOBAL_XCOLLATERAL",
+      "publisher": "Coinbase",
+      "date": "effective for most customers 2026-10-01",
+      "url": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral",
+      "type": "official_product_specification",
+      "supports": [
+        "Global Derivatives available to eligible customers outside US",
+        "XRP listed as cross-collateral currency",
+        "XRP standard-margin haircut 15%; X:PM dash/no haircut listed",
+        "Any cross-collateral currency may support any cross-margined derivative position",
+        "Rebalancing may use positive-equity currency to buy negative-equity currency"
+      ],
+      "limits": [
+        "No XRP collateral balances or customer counts disclosed"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_PRIME_GLOBAL_DERIVATIVES",
+      "publisher": "Coinbase",
+      "date": "2026-11-01",
+      "url": "https://help.coinbase.com/en/prime/derivatives/what-is-global-derivatives",
+      "type": "official_product_specification",
+      "supports": [
+        "Eligible US institutional Coinbase Prime clients can trade Deribit options, dated futures and perpetual futures through CFM",
+        "CFM is broker of record; collateral held in CFM secured Rule 30.7 account and delegated to Deribit",
+        "Current public US eligible-collateral list is USDC, BTC and ETH"
+      ],
+      "limits": [
+        "No XRP in current US collateral list"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_GLOBAL_XRP_OPTIONS",
+      "publisher": "Coinbase",
+      "date": "2026-11-01",
+      "url": "https://help.coinbase.com/en/coinbase/derivatives/global-derivatives-linear-usdc-options",
+      "type": "official_product_specification",
+      "supports": [
+        "XRP_USDC linear options on Deribit infrastructure",
+        "USDC quote/margin/settlement",
+        "XRP multiplier 1,000 per contract",
+        "24/7 trading"
+      ],
+      "limits": [
+        "Global Derivatives product limited to eligible supported regions outside US"
+      ]
+    },
+    {
+      "id": "SRC_CFTC_26_17",
+      "publisher": "CFTC Market Participants Division",
+      "date": "2026-05-29",
+      "url": "https://www.cftc.gov/csl/26-17/download",
+      "type": "official_staff_no_action_letter",
+      "supports": [
+        "CFM conditional no-action relief for customer-owned digital commodities/payment stablecoins posted with Coinbase Bermuda for specified Deribit 30.7 customer positions",
+        "Letter references March 2026 digital-commodity interpretation explicitly listing XRP",
+        "Deribit custody and 120% margin-cap conditions"
+      ],
+      "limits": [
+        "Staff no-action, not a rule; relief limited to stated facts/conditions; does not prove XRP actually accepted or used"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_DERIBIT_MIGRATION",
+      "publisher": "Coinbase",
+      "date": "effective 2026-10-01",
+      "url": "https://help.coinbase.com/en/international-exchange/deribit/coinbase-faqs",
+      "type": "official_product_migration_FAQ",
+      "supports": [
+        "Coinbase International Exchange perpetuals migrated to Deribit on Oct 1, 2026"
+      ],
+      "limits": [
+        "Does not establish XRP collateral usage by itself"
+      ]
+    }
+  ]
+}

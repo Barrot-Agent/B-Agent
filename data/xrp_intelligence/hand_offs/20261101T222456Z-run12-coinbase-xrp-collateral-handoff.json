@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "artifact_type": "barrot_coinbase_xrp_collateral_handoff",
+  "captured_at_utc": "2026-11-01T22:24:56Z",
+  "pr": 1477,
+  "branch": "research/xrp-coinbase-circle-arc-rlusd-20261101T220304Z",
+  "previous_head": "4deefd3851b1084b2d1211ea78fab8105e2836d1",
+  "previous_head_ci": {
+    "run": 41356874778,
+    "result": "342 tests and 8 subtests passed"
+  },
+  "previous_head_gate": {
+    "run": 41356874754,
+    "result": "passed; merge disabled"
+  },
+  "completed": [
+    "Verified Coinbase non-US Global Derivatives XRP cross-collateral eligibility and 15% standard-margin haircut.",
+    "Verified XRP_USDC linear options on Deribit, settled in USDC.",
+    "Separated non-US collateral availability from US Prime collateral list, which currently omits XRP.",
+    "Recorded CFTC Letter 26-17 as a conditional legal pathway, not product usage."
+  ],
+  "next_action": "Verify exact-head CI/gate for this addendum; investigate public Deribit XRP collateral balances/positions only if a lawful public source exposes them.",
+  "forecast_status": "NOT_ISSUED",
+  "safety": {
+    "main_unchanged": true,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployment": false,
+    "real_money": false
+  }
+}
