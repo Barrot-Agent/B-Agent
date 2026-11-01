@@ -81,4 +81,5 @@ jobs:
             tests/test_signal_summary.py \
             tests/test_xrp_cbxrp_morpho_reconciliation.py \
             tests/test_cbxrp_institutional_relationship_graph.py \
+            tests/test_ask_coin_identity_candidate.py \
             -v --no-cov

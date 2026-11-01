@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "ask-coin-permission-candidate-20261101T1350Z",
+  "data_cutoff_utc": "2026-11-01T13:50:00Z",
+  "candidate": "Permission Coin (ASK)",
+  "identity_status": "PLAUSIBLE_NOT_CONFIRMED",
+  "coinbase_relationship": "embedded_wallet_infrastructure_partnership_announced_2026-09-22",
+  "xrp_relationship": "NO_DIRECT_INTEGRATION_IDENTIFIED",
+  "contracts": [
+    {
+      "network": "Base",
+      "address": "0xBB146326778227A8498b105a18f84E0987A684b4"
+    },
+    {
+      "network": "Polygon",
+      "address": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+    }
+  ],
+  "token_standard": "LayerZero OFT-20",
+  "stargate_integration": true,
+  "coinbase_key_management": "Coinbase secures key material; user authorizes through Permission login; export is supported per Permission",
+  "capital_classification": "wallet infrastructure, not investment or token purchase",
+  "market_data_status": "QUARANTINED",
+  "market_data_discrepancy": "CoinMarketCap localized pages show $0.00008822/$1.42M versus $0.002879/$46.54M, both with zero 24h volume",
+  "forecasts": [],
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "artifact_id": "ask-coin-permission-coinbase-candidate-20261101T1350Z",
+  "captured_at_utc": "2026-11-01T13:50:00Z",
+  "question": "Does the exact phrase ASK Coin refer to Permission Coin (ticker ASK), and does it have a direct XRP connection?",
+  "candidate_identity": {
+    "name": "Permission Coin",
+    "ticker": "ASK",
+    "classification": "plausible_candidate_not_confirmed_as_original_reference",
+    "official_contracts": [
+      {
+        "network": "Base",
+        "standard": "OFT-20",
+        "address": "0xBB146326778227A8498b105a18f84E0987A684b4"
+      },
+      {
+        "network": "Polygon",
+        "standard": "OFT-20",
+        "address": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+      }
+    ],
+    "protocol": "LayerZero OFT",
+    "bridge_integration": "Stargate",
+    "xrpl_contract_identified": false
+  },
+  "relationships": [
+    {
+      "from": "Permission",
+      "to": "ASK",
+      "type": "issuer_and_ecosystem_token",
+      "evidence": "official Permission token documentation"
+    },
+    {
+      "from": "Permission",
+      "to": "Coinbase",
+      "type": "embedded_wallet_infrastructure_partnership",
+      "date": "2026-09-22",
+      "evidence": "Permission official announcement"
+    },
+    {
+      "from": "ASK",
+      "to": "Coinbase",
+      "type": "wallet_key_management_and_transaction_authorization",
+      "evidence": "Permission says Coinbase secures key material and user login authorizes transactions",
+      "classification": "wallet_infrastructure_not_exchange_listing"
+    },
+    {
+      "from": "ASK",
+      "to": "Base",
+      "type": "official_token_contract",
+      "evidence": "Permission official contract registry"
+    },
+    {
+      "from": "ASK",
+      "to": "Polygon",
+      "type": "official_token_contract",
+      "evidence": "Permission official contract registry"
+    },
+    {
+      "from": "ASK",
+      "to": "XRP",
+      "type": "no_direct_integration_identified",
+      "evidence": "no XRPL contract or Ripple integration identified in reviewed official docs"
+    }
+  ],
+  "coinbase_wallet_terms": {
+    "date": "2026-09-22",
+    "permission_statement": "Permission moved ASK Wallet to Coinbase embedded wallet infrastructure.",
+    "key_control": "Coinbase secures private-key material; Permission says only the user's Permission login authorizes transactions and key export is supported.",
+    "data_shared": [
+      "email address",
+      "account identifier",
+      "wallet information"
+    ],
+    "classification": "embedded wallet/key-management service; not evidence Coinbase owns ASK, lists ASK on an exchange, market-makes ASK, or invested capital in Permission"
+  },
+  "market_data_quality": {
+    "source": "CoinMarketCap",
+    "observations": [
+      {
+        "url": "https://coinmarketcap.com/currencies/permission-coin/",
+        "price_usd": 0.00008822,
+        "market_cap_usd": 1420000,
+        "volume_24h_usd": 0,
+        "circulating_supply": 16160000000
+      },
+      {
+        "url": "https://coinmarketcap.com/zh-tw/currencies/permission-coin/",
+        "price_usd": 0.002879,
+        "market_cap_usd": 46540000,
+        "volume_24h_usd": 0,
+        "circulating_supply": 16160000000
+      }
+    ],
+    "discrepancy": "Localized CMC pages display materially inconsistent USD price and market-cap values for the same ticker/supply; 24h volume is shown as zero.",
+    "admission": "quarantined; do not use either quote as a reliable price, valuation or capital-flow observation"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "ASK-1",
+      "hypothesis": "The user's ASK Coin reference is Permission Coin (ASK).",
+      "support": [
+        "official Permission token ticker ASK",
+        "Coinbase embedded-wallet partnership announced 2026-09-22"
+      ],
+      "disconfirming": [
+        "original Camilla/Kamilah video context not located",
+        "ASK is a non-unique ticker used by multiple projects"
+      ],
+      "status": "plausible_candidate"
+    },
+    {
+      "id": "ASK-2",
+      "hypothesis": "Coinbase's wallet partnership represents capital deployment into ASK.",
+      "support": [
+        "Coinbase supplies embedded wallet/key infrastructure"
+      ],
+      "disconfirming": [
+        "no investment, token purchase, exchange listing, market-making or treasury allocation announced"
+      ],
+      "status": "not_supported"
+    },
+    {
+      "id": "ASK-3",
+      "hypothesis": "ASK has a direct XRP/XRPL integration.",
+      "support": [],
+      "disconfirming": [
+        "official Permission contract registry lists Base and Polygon only",
+        "no XRPL contract, Ripple partnership or XRP liquidity pool identified"
+      ],
+      "status": "not_supported_by_reviewed_evidence"
+    }
+  ],
+  "actual_capital_interpretation": {
+    "wallet_infrastructure": "not capital",
+    "token_market_cap": "valuation, not net inflow",
+    "token_transfer_volume": "turnover, not necessarily new capital",
+    "exchange_listing_or_market_making": "not established",
+    "xrp_relationship": "none established"
+  },
+  "limitations": [
+    "no original video containing the exact phrase has been verified",
+    "no direct XRP integration identified",
+    "CoinMarketCap quote conflict prevents reliable current valuation"
+  ]
+}
