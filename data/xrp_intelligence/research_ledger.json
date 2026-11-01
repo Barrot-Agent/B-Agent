@@ -27,8 +27,8 @@
     "captured_at_utc": "2026-11-01T01:04:00Z",
     "data_cutoff_utc": "2026-11-01T01:03:55Z",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261101T010400Z-escrow-status-and-pr1435.json",
-    "snapshot_blob_sha": "155b4dd30c4bf104ef5476eafe645f3ef71c8619",
-    "snapshot_commit_sha": "fea24b2e0ecd4ff51094fbeca1e9644214761c80",
+    "snapshot_blob_sha": "1970d3992cd90db1a2c52d48bbfe4af6d751a00a",
+    "snapshot_commit_sha": "7d43cd4346f20b6dda657595deac4378661b620f",
     "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T010400Z-escrow-main-writer-pr1435.json",
     "graph_addendum_blob_sha": "6c62bc817158aa92609ec6a6597766713ab0404f",
     "graph_addendum_commit_sha": "c4c8730413097d9cef0c93dd375f776f94757a92",
@@ -357,33 +357,33 @@
       },
       {
         "path": "data/xrp_intelligence/source_revisions/20261101T001238Z-xrp-escrow-post-eligibility-status.json",
-        "blob_sha": "88214d132502cf29fb3ab386c33d3036fea00f5c",
-        "commit_sha": "959cefa6984c1b35d05c4acbc97aeb2d98ddeadd",
+        "blob_sha": "86813b259d7318890a3d6b286352cbc873d2ac6a",
+        "commit_sha": "63a3cfcc059ff01c1e147180af19b621a1a6e0ae",
         "revision_id": "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS",
         "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
         "captured_at_utc": "2026-11-01T00:12:38Z",
-        "status": "PENDING_ARCHIVE_APPEND_AND_EXACT_HEAD_VALIDATION",
+        "status": "PENDING_ARCHIVE_APPEND; RECORD_TYPE_CORRECTED; PENDING_EXACT_HEAD_VALIDATION",
         "pending_archive_append": true,
         "source_candidates_pending": 3
       },
       {
         "path": "data/xrp_intelligence/source_revisions/20261101T010400Z-xrp-escrow-stale-ledger-and-owner-cache.json",
-        "blob_sha": "8d3599ad0e75f5403cc8d786a1de03c5f0bdc035",
-        "commit_sha": "b68575d034a31795d86eb91e6c548591484fc8b3",
+        "blob_sha": "37a0a7056ed5175bc31ab88a696a08934fd9dfbc",
+        "commit_sha": "2cbcc6563f69151c94ba24c0f653c061568932a8",
         "revision_id": "REV-20261101T010400Z-XRP-ESCROW-STALE-LEDGER-AND-OWNER-CACHE",
         "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
         "captured_at_utc": "2026-11-01T01:04:00Z",
-        "status": "PENDING_ARCHIVE_APPEND; NEW_REVISION_THIS_RUN",
+        "status": "PENDING_ARCHIVE_APPEND; RECORD_TYPE_CORRECTED; PENDING_EXACT_HEAD_VALIDATION",
         "pending_archive_append": true
       },
       {
         "path": "data/xrp_intelligence/source_revisions/20261101T010400Z-github-cross-analysis-writer-pr1435.json",
-        "blob_sha": "6a8c5095db4f4fcaaddcdc69c3119b6825225e74",
-        "commit_sha": "c2a41c841d2e0f427d02b3dcd3cd6e508dfc9b00",
+        "blob_sha": "d052b4bf4bf2ac65fde2f04f1f26b1cda8717585",
+        "commit_sha": "b08d813184e2bee2045495d5c758bea8a259440e",
         "revision_id": "REV-20261101T010400Z-GITHUB-CROSS-ANALYSIS-MAIN-WRITER-AND-PR1435",
         "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
         "captured_at_utc": "2026-11-01T01:04:00Z",
-        "status": "PENDING_ARCHIVE_APPEND; NEW_REVISION_THIS_RUN",
+        "status": "PENDING_ARCHIVE_APPEND; RECORD_TYPE_CORRECTED; PENDING_EXACT_HEAD_VALIDATION",
         "pending_archive_append": true
       }
     ],
@@ -399,9 +399,9 @@
     "inherited_pending_source_revision_addenda_count": 30,
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED",
-    "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+    "verification_status": "PENDING_EXACT_HEAD_VALIDATION_AFTER_MINIMAL_REPAIR",
     "exact_head_validation": false,
-    "pending_data_head_sha": "a6cee4f13eb6766911b0e4c6dd3f0dd8aefa49bf",
+    "pending_data_head_sha": "7d43cd4346f20b6dda657595deac4378661b620f",
     "created_at_utc": "2026-11-01T01:04:00Z",
     "previous_graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T001238Z-post-eligibility-escrow-evidence-graph.json",
     "previous_architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T001238Z-escrow-eligibility-execution-evidence-gate.json",
@@ -429,7 +429,23 @@
     "xrp_specific_replenishment_quantity": "NOT_DISCLOSED",
     "binance_source_reference_status": "EXISTING_SOURCE_REVISION; PENDING_ARCHIVE_APPEND; PRIMARY_BINANCE_ANNOUNCEMENT",
     "binance_source_revision_id": "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
-    "binance_proof_deadline_utc": "2026-11-03"
+    "binance_proof_deadline_utc": "2026-11-03",
+    "latest_repair_reason": "Previous validator failed on three source_revision record_type values and missing snapshot_path inside immutable snapshot JSON.",
+    "latest_repair_expected_fixes": [
+      "Three addenda record_type values changed to source_revision_addendum.",
+      "Immutable snapshot now includes snapshot_path matching the index pointer.",
+      "Ledger blob pointers updated to exact corrected file blobs."
+    ],
+    "latest_repair_archive_validator_run_id": 41259706174,
+    "latest_repair_archive_validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41259706174",
+    "latest_repair_archive_validator_errors": [
+      "source_revision_addenda[35] has wrong record_type",
+      "source_revision_addenda[36] has wrong record_type",
+      "source_revision_addenda[37] has wrong record_type",
+      "snapshot reference snapshot_path does not match snapshot file"
+    ],
+    "latest_repair_branch": "repair/xrp-ledger-validator-20261101T0115Z",
+    "latest_repair_status": "PREPARED_IN_BRANCH; EXACT_HEAD_VALIDATION_NOT_RUN"
   },
   "sources": {
     "record_type": "archive_pointer",
@@ -3328,11 +3344,11 @@
     "latest_shard": "data/xrp_intelligence/ledger_archive/v1/run_updates-160-of-160.json"
   },
   "mission_priority": {
-    "as_of_utc": "2026-11-01T01:04:00Z",
+    "as_of_utc": "2026-11-01T01:15:00Z",
     "primary": "XRP intelligence and prediction-engine mastery",
     "foundation": "Barrot V3 execution and verification foundation",
     "forecast_status": "NOT_ISSUED",
-    "next_action": "Obtain raw post-eligibility validated XRPL account_objects/account_tx for both escrow accounts; keep PR #1435 open and unmerged pending approval; resolve pending archive validation.",
+    "next_action": "Review the four exact validator failures and the minimal repair PR; after approval, validate the repaired research branch. Obtain raw post-eligibility XRPL account state and monitor the Binance attacker XRP address.",
     "platform_status": "Nine-platform architecture designed; ChatGPT authenticated; GitHub repository access verified; eight other target platforms not authenticated or verified live."
   },
   "platform_coordination_architecture": {
@@ -3597,8 +3613,8 @@
       }
     ]
   },
-  "current_research_head_before_ledger_update": "a6cee4f13eb6766911b0e4c6dd3f0dd8aefa49bf",
-  "current_research_head_this_run": "a6cee4f13eb6766911b0e4c6dd3f0dd8aefa49bf",
+  "current_research_head_before_ledger_update": "7d43cd4346f20b6dda657595deac4378661b620f",
+  "current_research_head_this_run": "7d43cd4346f20b6dda657595deac4378661b620f",
   "current_research_checks": {
     "status": "PASS_EXACT_HEAD_VALIDATION",
     "data_head_sha": "fe59a6a5c83becc89fd607ce2fc606d41b7eaf8f",
@@ -7299,9 +7315,9 @@
     "causal_attribution": "NOT_ESTABLISHED; OCT30 ALL-EXCHANGE DECLINE PARTIALLY REVERSED OCT31; BINANCE SAME-WALLET 7D AND 30D ARE POSITIVE; CRYPTOQUANT SERIES SEPARATE; NO INCIDENT-SOURCE WALLET CROSSWALK",
     "market_feature_admission": "CUSTODY_TIMELINE_ONLY_NOT_DIRECTIONAL"
   },
-  "latest_snapshot_verification_status": "PENDING_EXACT_HEAD_VALIDATION",
-  "latest_snapshot_verification_head_sha": "a6cee4f13eb6766911b0e4c6dd3f0dd8aefa49bf",
-  "latest_snapshot_verification_at_utc": "2026-11-01T01:04:00Z",
+  "latest_snapshot_verification_status": "PENDING_EXACT_HEAD_VALIDATION_AFTER_MINIMAL_REPAIR",
+  "latest_snapshot_verification_head_sha": "7d43cd4346f20b6dda657595deac4378661b620f",
+  "latest_snapshot_verification_at_utc": "2026-11-01T01:15:00Z",
   "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261031T215123Z-drivewealth-integration-status-and-xrp-demand.json",
   "last_verified_head_sha": "fe59a6a5c83becc89fd607ce2fc606d41b7eaf8f",
   "last_verified_at_utc": "2026-10-31T22:10:20Z",
@@ -7402,13 +7418,13 @@
   "latest_fail_closed_gate_status": "PASS_MERGE_DISABLED",
   "latest_fail_closed_gate_head_sha": "fe59a6a5c83becc89fd607ce2fc606d41b7eaf8f",
   "latest_snapshot_verification_method": "GITHUB_ACTIONS_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
-  "latest_append_validation": "PENDING_EXACT_HEAD_VALIDATION",
-  "current_append_validation": "PENDING_EXACT_HEAD_VALIDATION",
+  "latest_append_validation": "PENDING_EXACT_HEAD_VALIDATION_AFTER_MINIMAL_REPAIR",
+  "current_append_validation": "PENDING_EXACT_HEAD_VALIDATION_AFTER_MINIMAL_REPAIR",
   "current_exact_head_validator_status": "PASS_ON_06845A53",
   "archive_policy_counts_reconciled": true,
   "archive_shards_pending_validation": 0,
   "archive_shards_last_full_validator": 398,
-  "archive_shards_readback": "PENDING_NEW_HEAD_VALIDATION",
+  "archive_shards_readback": "PENDING_REPAIR_PR_REVIEW_AND_VALIDATION",
   "market_features_admitted": false,
   "forecast_status": "NOT_ISSUED",
   "dependency_vulnerability_scan": "NOT_RUN",
@@ -7428,7 +7444,7 @@
   "latest_validator_tests_failed": 0,
   "latest_validator_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255857106",
   "latest_gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41246938305",
-  "last_reconciliation_at_utc": "2026-11-01T01:04:00Z",
+  "last_reconciliation_at_utc": "2026-11-01T01:15:00Z",
   "last_validation_recording": {
     "at_utc": "2026-10-31T10:50:30Z",
     "verified_head_sha": "2b694b33ab7f1af739bc354da1ccb8d6e47e8839",
@@ -8363,9 +8379,14 @@
   "last_validation_recording_at_utc": "2026-10-31T03:35:38Z",
   "archive_shards_total_in_repository": 439,
   "archive_shards_total_in_repository_status": "EXPECTED_439; NEW_3_SHARD_APPEND_PENDING_EXACT_HEAD_VALIDATION",
-  "last_reconciled_at_utc": "2026-11-01T01:04:00Z",
+  "last_reconciled_at_utc": "2026-11-01T01:15:00Z",
   "counts_reconciled": true,
-  "latest_snapshot_verification_errors": [],
+  "latest_snapshot_verification_errors": [
+    "source_revision_addenda[35] has wrong record_type",
+    "source_revision_addenda[36] has wrong record_type",
+    "source_revision_addenda[37] has wrong record_type",
+    "snapshot reference snapshot_path does not match snapshot file"
+  ],
   "latest_snapshot_verification_state_mutated": false,
   "real_money_trade_performed": false,
   "latest_repository_audit_count_status": "PREVIOUS_202_OPEN_PR_COUNT; NOT_RECOUNTED_THIS_CAPTURE; SEARCH_RETURNED_TOP_100",
@@ -13741,5 +13762,16 @@
     "BINANCE_CORPORATE_TREASURY",
     "MARKET_AND_OTC_PURCHASES_FOR_REMAINING_AFFECTED_ASSETS"
   ],
-  "latest_binance_escrow_overlap_warning": "BINANCE_WITHDRAWAL_REOPENING_TARGET_AND_RIPPLE_ESCROW_ELIGIBILITY BOTH OCCUR 2026-11-01; EXCHANGE RESERVE CHANGES REQUIRE WALLET-LEVEL ATTRIBUTION"
+  "latest_binance_escrow_overlap_warning": "BINANCE_WITHDRAWAL_REOPENING_TARGET_AND_RIPPLE_ESCROW_ELIGIBILITY BOTH OCCUR 2026-11-01; EXCHANGE RESERVE CHANGES REQUIRE WALLET-LEVEL ATTRIBUTION",
+  "latest_archive_validator_failure_run_id": 41259706174,
+  "latest_archive_validator_failure_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41259706174",
+  "latest_archive_validator_failure_head_sha": "4472b6274da4476c2049d0c26fb742f86bbbb093",
+  "latest_archive_validator_failure_errors": [
+    "source_revision_addenda[35] has wrong record_type",
+    "source_revision_addenda[36] has wrong record_type",
+    "source_revision_addenda[37] has wrong record_type",
+    "snapshot reference snapshot_path does not match snapshot file"
+  ],
+  "latest_archive_validator_repair_branch": "repair/xrp-ledger-validator-20261101T0115Z",
+  "latest_archive_validator_repair_status": "PREPARED_IN_DRAFT_PR; VALIDATION_PENDING"
 }
