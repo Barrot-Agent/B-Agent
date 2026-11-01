@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261101T040000Z-MAIN-WRITERS-PR1441-OPEN-PR-INVENTORY",
+  "captured_at_utc": "2026-11-01T04:00:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "current_main": {
+    "sha": "9226a7c40d06b0c59cf914190cc35ca99bd377ba",
+    "commit_utc": "2026-11-01T03:51:46Z",
+    "message": "Cross-analysis refresh [skip ci]",
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "diff_interpretation": "generated_at timestamp only; current XRP and BTC recent/prior windows all have zero entries and null scores.",
+    "signed": false,
+    "protected": true,
+    "required_status_check_contexts": [],
+    "branch_protection_endpoint_status": "403_FORBIDDEN_TO_AVAILABLE_INTEGRATION; additional protection settings not inspected"
+  },
+  "main_workflows": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "contents:write and scheduled/workflow_run execution; generated outputs are committed/pushed; zero-sample timestamp refresh has occurred.",
+      "proposed_remediation_pr": 1441
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "contents:write and actions:write; scheduler tick can dispatch workflow files without explicit allowlist.",
+      "proposed_remediation_pr": 1441
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "workflow_dispatch with write permissions, default dry_run=false and max_prs=0; can update branches and merge pull requests without the requested explicit approval boundary.",
+      "proposed_remediation_pr": 1441
+    }
+  ],
+  "pull_request_inventory": {
+    "captured_at_utc": "2026-11-01T04:00:00Z",
+    "total_open": 212,
+    "drafts": 202,
+    "ready_for_review": 10,
+    "main_based": 207,
+    "current_main_base": 1,
+    "stale_main_based": 206,
+    "non_main_based": 5,
+    "source": "GitHub REST pulls API, all three pages, per_page=100"
+  },
+  "reviewed_prs": [
+    {
+      "number": 1439,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "f6fb103c61aa7f0da0205d8a0d776f88d6e58164",
+      "head_sha": "5322ae1d27244973f85f56ada7ce5ad27a3f2edb",
+      "compare_status": "DIVERGED",
+      "ahead_by": 1,
+      "behind_by": 1,
+      "ci_run_id": 41267879084,
+      "ci_status": "SUCCESS",
+      "tests_reported": 349,
+      "subtests_reported": 8,
+      "gate_run_id": 41267879049,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "mergeable": true,
+      "merged": false
+    },
+    {
+      "number": 1441,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "9226a7c40d06b0c59cf914190cc35ca99bd377ba",
+      "head_sha": "c7751f83437456b10a68587f4f7fc8ae3dfa29c3",
+      "changed_files": 7,
+      "ci_run_id": 41271720986,
+      "ci_status": "SUCCESS",
+      "gate_run_id": 41271720993,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "mergeable": true,
+      "merged": false,
+      "changes": [
+        "Cross Analysis read-only artifact output",
+        "Scheduler Tick read-only queue audit; dispatch removed",
+        "Merge Queue read-only fail-closed notice",
+        "CI includes three focused safety test modules"
+      ]
+    }
+  ],
+  "other_research_prs": [
+    {
+      "number": 1436,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "purpose": "Binance XRP theft, issuer freezes and attacker-wallet graph",
+      "head_sha": "c37299a15118cffe1785ac5f8b5d9b6e767bf39e"
+    },
+    {
+      "number": 1440,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "purpose": "Stacked archive validator trigger/pointer repair",
+      "head_sha": "9b68f7c4ff0623b4f7f035a266620945232c6c17",
+      "archive_validator_prior_exact_head": "PASS_442_SHARDS_35_TESTS"
+    },
+    {
+      "number": 1437,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "purpose": "Earlier archive repair proposal; corrections carried forward in #1440"
+    }
+  ],
+  "status": {
+    "main_modified_by_this_run": false,
+    "pr1441_exact_head_ci_and_gate_verified": true,
+    "pr1441_merged": false,
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "dependency_lockfile_inventory": "NOT_COMPLETE",
+    "security_alerts": "NOT_ACCESSIBLE",
+    "local_worktree": "NOT_INSPECTED; no local mutation"
+  },
+  "source_ids": [
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "source_reference_count": 1,
+  "missing_source_references": 0
+}

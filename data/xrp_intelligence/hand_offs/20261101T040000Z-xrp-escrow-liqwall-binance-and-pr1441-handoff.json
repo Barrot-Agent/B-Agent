@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T040000Z-XRP-POSTRELEASE-LIQWALL-PR1441",
+  "captured_at_utc": "2026-11-01T04:00:00Z",
+  "branch": "verify/xrp-ledger-archive-20261101T031615Z",
+  "prior_head_sha": "9b68f7c4ff0623b4f7f035a266620945232c6c17",
+  "objective": "Preserve a new point-in-time post-release XRP and repository audit; re-run the exact-head archive validator; maintain fresh-main workflow safety without merging.",
+  "verified_this_run": [
+    "XRP Insights page reports ledger 108036051 at 2026-11-01 02:31 UTC, 1B XRP released at 00:00:02 UTC, zero re-escrow by that pinned ledger, 30.4B remaining, 64.2% trailing-12-release re-escrow.",
+    "Liqwall observation at 03:52 UTC: XRP $1.25, OI $1.33B, OI +1.4%/24h, average funding +0.0025%/8h, Binance accounts 71.9% long, liquidations $369K.",
+    "OKX observation at 03:09:31 UTC: XRP $1.248, -0.43%/24h, $735.81M 24h volume.",
+    "Binance Recovery Update #3 remains the latest official update found: 90% aggregate replenishment, XRP/RLUSD company-reported 100% backing, withdrawal reopening target Nov1, full ZK PoR estimate Nov3; no post-target reopening confirmation found by cutoff.",
+    "Current main SHA 9226a7c; Cross Analysis committed only a generated_at timestamp while XRP/BTC recent and prior windows each had zero entries.",
+    "Open PR inventory: 212 total, 202 drafts, 10 ready; 207 main-based, 206 stale, one current-base (#1441), five non-main.",
+    "PR #1441 fresh-main exact head passed CI run 41271720986 and fail-closed gate 41271720993; remains draft/open/unmerged."
+  ],
+  "unresolved": [
+    "Raw XRPL transaction metadata and Destination fields for both November 1 EscrowFinish hashes.",
+    "Post-02:31 UTC EscrowCreate or follow-on transfer activity.",
+    "Current attacker-wallet balance and any outflows after Bitquery's 16:51 UTC Oct31 cutoff.",
+    "Binance withdrawal reopening confirmation and November 3 full ZK PoR.",
+    "XRP-specific Binance replenishment purchases and their venues.",
+    "Liqwall and OKX source registry ingestion; current observations are candidates.",
+    "Full main branch-protection settings; API returned 403.",
+    "Full repository CI, complete dependency vulnerability scan and security-alert review."
+  ],
+  "next_actions": [
+    "Obtain raw public XRPL account_tx/account_objects or transaction lookup for both escrow hashes at one validated ledger; decode Destination, metadata and affected ledger nodes.",
+    "Trace both destinations forward through subsequent transfers, EscrowCreate, exchange-tagged accounts and any known OTC route; do not infer sale from a transfer alone.",
+    "Refresh the Binance attacker account with an independently accessible public endpoint and preserve the exact ledger/cutoff.",
+    "Check Binance's official withdrawal restoration update and November 3 ZK PoR when published.",
+    "Register Liqwall and OKX source records, preserving provider observation timestamps and methodology; do not admit OI as a model feature until universes reconcile.",
+    "Run exact-head archive validator on the updated branch and record shard/test/error/state_mutated values.",
+    "Keep PR #1441 open/draft/unmerged pending explicit approval. Do not merge #1439 or #1441.",
+    "Complete full repository CI, dependency manifest/lockfile inventory and security review when access permits.",
+    "Continue Coinbase, Circle, Ripple, SBI/SBIC, ASK Coin, actual-capital and Camilla/Kamilah research with independent corroboration."
+  ],
+  "safety": {
+    "main_modified": false,
+    "force_push": false,
+    "merge": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "local_worktree_mutation": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}
