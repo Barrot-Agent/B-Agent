@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-BINANCE-RECOVERY-UPDATE4-XRP-WITHDRAWAL-20261101T1512Z",
+  "captured_at_utc": "2026-11-01T15:12:00Z",
+  "sources": [
+    {
+      "id": "binance-recovery-update4-20261101",
+      "url": "https://www.binance.com/en-PH/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
+      "publisher": "Binance",
+      "published_at_utc": "2026-11-01T04:08:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "Phase 1 withdrawal restoration was scheduled for 2026-11-01 06:00-09:00 UTC.",
+        "The XRP network and XRP asset are explicitly listed in Phase 1.",
+        "Binance reports approximately 95% aggregate replenishment, up from approximately 90% in Update #3.",
+        "Binance says BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC balances are 100% backed.",
+        "The remaining approximately 5% consists of lower-liquidity assets outside the top ten, which Binance says it continues to acquire through market and OTC channels."
+      ],
+      "limitations": [
+        "The announcement describes a phased resumption and instructs users to check network status; it does not independently prove that an XRP withdrawal succeeded.",
+        "The 95% replenishment and 100% backing figures are company-reported, not an independently verified liability-level audit in this source.",
+        "No XRP-specific purchase quantity, venue, counterparty or inventory movement is disclosed.",
+        "The remaining 5% is described as outside the top ten, so this update is not evidence of continuing XRP-specific replenishment purchases."
+      ]
+    },
+    {
+      "id": "binance-network-status-page-20261101",
+      "url": "https://www.binance.com/en-PH/network",
+      "publisher": "Binance",
+      "accessed_at_utc": "2026-11-01T15:12:00Z",
+      "displayed_last_updated": "11/01/2026 2:34:44 PM",
+      "classification": "PRIMARY_SERVICE_STATUS_PAGE",
+      "observation": "Static extraction returned 'No records'; the rendered page did not expose coin/network rows.",
+      "limitations": [
+        "The page is dynamic and the static extraction does not expose XRP status.",
+        "The displayed last-updated timezone is not specified.",
+        "No inference is made that XRP withdrawals are either open or suspended."
+      ]
+    },
+    {
+      "id": "bitquery-binance-hack-20261031",
+      "url": "https://www.bitquery.io/investigations/binance-hack",
+      "publisher": "Bitquery",
+      "verified_at_utc": "2026-10-31T16:51:00Z",
+      "classification": "INDEPENDENT_ONCHAIN_ANALYTICS",
+      "claims": [
+        "Five Binance-labelled XRP Ledger hot wallets sent approximately 233.5 million XRP to a newly created account during the first outflows on October 29.",
+        "Bitquery reports that the XRPL account shares no address with the other chains' attacker addresses.",
+        "Bitquery describes unusual XRPL transfer construction relative to Binance's ordinary transfers that night."
+      ],
+      "limitations": [
+        "The extracted investigation does not provide a fresh account-specific XRP balance after 2026-10-31T16:51:00Z.",
+        "The lack of a shared address does not disprove a common operator, but it means the XRPL account linkage to other chains is inferential rather than a direct address match.",
+        "No sale, exchange deposit or current balance is established by this observation."
+      ]
+    },
+    {
+      "id": "fbi-tradertraitor-binance-alert-20261031",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+      "publisher": "Federal Bureau of Investigation",
+      "published_date": "2026-10-31",
+      "classification": "PRIMARY_LAW_ENFORCEMENT_ATTRIBUTION",
+      "claims": [
+        "The FBI attributes the overall theft of more than $6 billion from Binance to North Korea-linked TraderTraitor activity.",
+        "The FBI says it observed the actors converting stolen assets primarily into ETH and expects further laundering through DeFi and instant-swap services."
+      ],
+      "limitations": [
+        "The attribution is to the overall Binance theft; the reviewed FBI alert does not specifically identify the XRPL attacker account as a published TraderTraitor address.",
+        "Do not convert overall incident attribution into an independently verified identity claim for the XRPL account."
+      ]
+    },
+    {
+      "id": "coingecko-xrp-market-page-20261101",
+      "url": "https://www.coingecko.com/en/coins/xrp",
+      "publisher": "CoinGecko",
+      "accessed_at_utc": "2026-11-01T15:07:00Z",
+      "classification": "AGGREGATED_MARKET_OBSERVATION",
+      "claims": [
+        "Displayed XRP price approximately $1.25 and 24-hour change +0.4%.",
+        "Displayed market capitalization approximately $79.314 billion and 24-hour spot volume approximately $702.21 million.",
+        "Displayed perpetual open interest approximately $3.529 billion, eight-hour funding +0.0084%, and perpetual-to-spot volume ratio 13.2x.",
+        "Displayed circulating supply approximately 63.351 billion XRP and total supply approximately 99.986 billion XRP."
+      ],
+      "limitations": [
+        "The page did not expose a precise market-data timestamp; access time is recorded separately.",
+        "Exchange coverage and methodology for aggregated open interest and funding are not sufficiently exposed in this snapshot.",
+        "Do not compare this open-interest value directly with Liqwall or TradRadar without reconciling venue coverage and contract definitions.",
+        "Not admitted as a model feature."
+      ]
+    },
+    {
+      "id": "xrp-insights-escrow-page-20261101",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "publisher": "XRP Insights",
+      "accessed_at_utc": "2026-11-01T15:07:00Z",
+      "classification": "SECONDARY_LEDGER_DERIVED_TRACKER",
+      "claims": [
+        "The currently rendered page reports data as of XRPL ledger 108034152 at 2026-11-01 00:27 UTC.",
+        "It reports two November 1 EscrowFinish releases totaling 1 billion XRP and zero re-escrow at that pinned ledger.",
+        "It reports a 64.2% re-escrow ratio over the preceding 12 monthly releases."
+      ],
+      "limitations": [
+        "The current page's pinned ledger is older than a prior handoff's stated ledger 108036051 at 02:31 UTC; that later observation was not reproducible from the currently rendered page.",
+        "This is a source-freshness/provenance conflict, not proof that either ledger identifier is invalid.",
+        "No current re-escrow status or destination disposition is inferred from the stale pinned snapshot.",
+        "Raw XRPL account_objects and transaction metadata are still required for independent reconciliation."
+      ]
+    }
+  ],
+  "source_independence_notes": [
+    "Binance Update #4 is a primary company statement; it is not independent corroboration of Binance's own reserve claim.",
+    "Bitquery is an independent analytics provider, but its address attribution remains analytics rather than law-enforcement identification.",
+    "The FBI independently attributes the overall incident, not the XRPL account specifically.",
+    "CoinGecko market aggregates are kept separate from Liqwall/OKX/TradRadar observations."
+  ]
+}

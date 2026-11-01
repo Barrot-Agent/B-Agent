@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "binance-update4-xrp-phase1-and-market-observation-20261101T1512Z",
+  "captured_at_utc": "2026-11-01T15:12:00Z",
+  "binance_recovery": {
+    "update3_aggregate_replenishment_pct": 90,
+    "update4_aggregate_replenishment_pct": 95,
+    "reported_change_percentage_points": 5,
+    "top_ten_customer_asset_backing_pct": 100,
+    "top_ten_assets": [
+      "BTC",
+      "ETH",
+      "USDT",
+      "BNB",
+      "SOL",
+      "USDC",
+      "XRP",
+      "USD1",
+      "RLUSD",
+      "ZEC"
+    ],
+    "remaining_aggregate_shortfall_pct": 5,
+    "remaining_assets_description": "outside the top ten; lower liquidity; market and OTC acquisition continues",
+    "phase1_window_utc": [
+      "2026-11-01T06:00:00Z",
+      "2026-11-01T09:00:00Z"
+    ],
+    "xrp_network_listed_in_phase1": true,
+    "xrp_withdrawal_status": "ANNOUNCED_IN_PHASE1_EXECUTION_NOT_INDEPENDENTLY_VERIFIED",
+    "source_class": "company_reported",
+    "xrp_specific_acquisition_quantity": null,
+    "xrp_specific_acquisition_venue": null,
+    "interpretation": "The update supports that Binance reports XRP fully backed and listed for phased withdrawal restoration. It does not establish a specific XRP purchase or a successful post-reopening withdrawal."
+  },
+  "xrp_market_observation": {
+    "provider": "CoinGecko",
+    "accessed_at_utc": "2026-11-01T15:07:00Z",
+    "provider_data_timestamp": null,
+    "price_usd": 1.25,
+    "change_24h_pct": 0.4,
+    "market_cap_usd": 79314000000,
+    "volume_24h_usd": 702210000,
+    "perpetual_open_interest_usd": 3529000000,
+    "funding_rate_8h_pct": 0.0084,
+    "perpetual_to_spot_volume_ratio": 13.2,
+    "circulating_supply_xrp": 63351000000,
+    "total_supply_xrp": 99986000000,
+    "feature_admission": "NONE",
+    "reason": "provider timestamp and exchange coverage are not sufficiently exposed for synchronized historical feature admission"
+  },
+  "open_interest_provider_disagreement": [
+    {
+      "provider": "Liqwall",
+      "value_usd": 1330000000,
+      "observation_time_utc": "2026-11-01T03:52:00Z",
+      "status": "earlier observation; venue coverage differs"
+    },
+    {
+      "provider": "CoinGecko",
+      "value_usd": 3529000000,
+      "observation_time_utc": null,
+      "accessed_at_utc": "2026-11-01T15:07:00Z",
+      "status": "aggregated page observation; provider timestamp unavailable"
+    },
+    {
+      "provider": "TradRadar",
+      "value_usd": 1870000000,
+      "observation_time_utc": "prior snapshot; exact time not revalidated in this run",
+      "status": "not directly comparable"
+    }
+  ],
+  "binance_xrp_attacker_wallet": {
+    "xrp_transferred_from_binance_hot_wallets": 233461943.1,
+    "first_outflow_window_utc": [
+      "2026-10-29T20:05:00Z",
+      "2026-10-29T20:09:20Z"
+    ],
+    "destination": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "latest_account_specific_balance": "UNKNOWN",
+    "latest_reviewed_bitquery_observation_utc": "2026-10-31T16:51:00Z",
+    "cross_chain_identity": "INFERENTIAL_NOT_DIRECT_ADDRESS_MATCH",
+    "fbi_specific_xrpl_address_designation": false,
+    "sale_or_exchange_deposit_verified": false
+  },
+  "escrow_source_freshness": {
+    "current_page_pinned_ledger": 108034152,
+    "current_page_ledger_time_utc": "2026-11-01T00:27:00Z",
+    "gross_release_reported_xrp": 1000000000,
+    "reescrow_at_pinned_ledger_xrp": 0,
+    "rolling_12_release_reescrow_pct": 64.2,
+    "earlier_handoff_ledger_claim": 108036051,
+    "earlier_handoff_time_utc": "2026-11-01T02:31:00Z",
+    "reconciliation_status": "CONFLICT_UNRESOLVED",
+    "current_disposition_status": "UNKNOWN"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "audit_id": "current-main-workflow-prediction-and-dependency-audit-20261101T1512Z",
+  "captured_at_utc": "2026-11-01T15:12:00Z",
+  "main_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+  "latest_main_commit": {
+    "sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+    "changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "generated_at": "2026-11-01T14:51:59.113029+00:00",
+    "xrp": {
+      "recent_24h_entries": 0,
+      "prior_24h_entries": 0,
+      "recent_24h_score": null,
+      "prior_24h_score": null,
+      "shift": null,
+      "significant_shift": false
+    },
+    "btc": {
+      "recent_24h_entries": 0,
+      "prior_24h_entries": 0,
+      "recent_24h_score": null,
+      "prior_24h_score": null,
+      "shift": null,
+      "significant_shift": false
+    },
+    "finding": "The timestamp advanced while both assets had zero qualifying observations; generated_at is not evidence of fresh sentiment."
+  },
+  "workflow_inventory": {
+    "active_workflow_files": 77,
+    "dependency_manifest_files": 8,
+    "main_branch_workflows_of_interest": [
+      {
+        "path": ".github/workflows/scheduler-tick.yml",
+        "risk": "contents:write and actions:write; runs scripts/scheduler.py tick; scheduler code can dispatch existing workflow filenames without a strict allowlist",
+        "latest_run_id": 41319376682,
+        "observed_result": "0 entries fired; 1 total queue entry; queue file shows that entry status done; no dispatch observed in this run"
+      },
+      {
+        "path": ".github/workflows/merge-queue.yml",
+        "risk": "manual dispatch; mode=all; max_prs=0 means unlimited; dry_run=false default; contents/pull-requests write; no explicit per-PR owner approval gate in workflow"
+      },
+      {
+        "path": ".github/workflows/barrot-autonomous-resolver.yml",
+        "risk": "issues:write and pull-requests:write; hourly resolver can create issues for failing workflows and assign issues",
+        "latest_run_id": 41319070382,
+        "observed_result": "existing failure issues found; no new issue created; assignment skipped because COPILOT_ASSIGNEE was empty"
+      },
+      {
+        "path": ".github/workflows/check-signal-accuracy.yml",
+        "risk": "daily schedule with contents:write and git commit/push; invokes legacy variable-horizon evaluator; PR #1466 proposes read-only artifact status"
+      },
+      {
+        "path": ".github/workflows/coinbase-paper-trader.yml",
+        "risk": "manual-only; uses public Coinbase ticker/trade endpoints and Groq for simulated buy/sell/hold; no Coinbase trading API key or real order endpoint in inspected script; default PRODUCT_ID is BTC-USD; workflow commits simulated state/log to main"
+      },
+      {
+        "path": ".github/workflows/rotate-databricks-token.yml",
+        "risk": "manual input accepts new_token and interpolates it into shell command; GITHUB_TOKEN is only contents:read so secret-write is not established; PR #1465 proposes inert no-input workflow"
+      }
+    ]
+  },
+  "prediction_integrity": {
+    "legacy_script": "scripts/check_signal_accuracy.py",
+    "legacy_behavior": [
+      "waits a minimum 24 hours but evaluates at variable elapsed horizons",
+      "fetches a later live CoinGecko price rather than a predeclared target-end observation",
+      "rewrites historical signal_history.jsonl rows with checked/correct/price_at_check",
+      "does not preserve a forecast probability distribution, fixed target, declared horizon, assumptions, alternatives or point-in-time feature hash"
+    ],
+    "legacy_metric": {
+      "checked_count": 1697,
+      "correct_count": 772,
+      "accuracy_pct": 45.5,
+      "status": "NOT_COMPARABLE"
+    },
+    "fix_pr": 1466,
+    "fix_pr_head": "3fbb77ecd9df5b3372220faa329ed8145f258cdc",
+    "fix_pr_base": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+    "fix_pr_status": "OPEN_DRAFT_CI_PENDING_AT_AUDIT"
+  },
+  "security_and_dependencies": {
+    "dependabot": {
+      "status": "configured",
+      "ecosystems": [
+        "pip",
+        "github-actions"
+      ],
+      "frequency": "weekly"
+    },
+    "manifests": [
+      "requirements.txt",
+      "requirements-dev.txt",
+      "pyproject.toml",
+      "a2a/package.json",
+      "hf_space/requirements.txt",
+      "legacy/requirements_legacy.txt",
+      "Dockerfile",
+      "self_hosted_brain/Dockerfile"
+    ],
+    "lockfiles_found_in_manifest_inventory": [],
+    "version_policy": "requirements and pyproject dependencies use lower bounds (>=), not exact reproducible pins",
+    "security_md_claims": "weekly Dependabot, pip-audit in CI, and pre-commit secret prevention",
+    "active_ci_observation": "current .github/workflows/ci.yml contains a selected pytest suite but no pip-audit or pre-commit secret-scan step",
+    "code_search": "pip-audit search found SECURITY.md, an audit report, and .barrot-backup/workflows/ci.yml; no active workflow result was located",
+    "status": "DEPENDENCY_AUDIT_GAP_OR_DOCUMENTATION_DRIFT; no current full dependency scan result verified"
+  },
+  "pr_inventory": {
+    "open_pull_requests": 233,
+    "security_pr_1465": {
+      "base_sha": "02d9f11404ba80823392ad215c733b49e4536128",
+      "head_sha": "5ca02dbfefc42222a893e8a6e0f8d9f709b59d38",
+      "status": "OPEN_DRAFT_MERGEABLE_UNMERGED",
+      "ci_tests_passed": 376,
+      "ci_subtests_passed": 8,
+      "fail_closed_gate": "PASSED_MERGING_DISABLED",
+      "current_main_ahead_commits": 2
+    },
+    "prediction_pr_1466": {
+      "base_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+      "head_sha": "3fbb77ecd9df5b3372220faa329ed8145f258cdc",
+      "status": "OPEN_DRAFT_NEW_FRESH_MAIN_SUCCESSOR_CI_PENDING"
+    }
+  },
+  "limitations": [
+    "GitHub branch-protection endpoint returned 403; complete protection rules could not be inspected.",
+    "No main-branch changes, workflow dispatches, merges, force-pushes, secret access or external deployments were performed.",
+    "Dependency scan status is not verified; documentation says pip-audit but active CI inspected here does not run it.",
+    "The Coinbase paper-trader script is paper-only in the inspected code, but its state/log workflow commits to main when manually dispatched."
+  ]
+}
