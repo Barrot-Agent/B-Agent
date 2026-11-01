@@ -38,9 +38,9 @@
     "repository_audit_path": "data/repository_audits/20261101T001510Z-pr1433-exact-head-ci-and-archive-validator-status.json",
     "repository_audit_blob_sha": "e90db53bf26700818c816a0f048f85aa4da4ea2b",
     "repository_audit_commit_sha": "c22a831cbca504b7e0f927c4cf077269aeee08a8",
-    "handoff_path": "data/xrp_intelligence/hand_offs/20261101T001510Z-pr1433-ci-pass-and-escrow-verification-handoff.json",
-    "handoff_blob_sha": "b67700d1ed49ff22a2035f218ae85247c86bea19",
-    "handoff_commit_sha": "aa26e541d53754807ebcc722d67ac0a2a7a0c652",
+    "handoff_path": "data/xrp_intelligence/hand_offs/20261101T001510Z-binance-recovery-update3-and-escrow-unverified-handoff.json",
+    "handoff_blob_sha": "49ab75dd85ac9190450476c6dcea160ca38232ee",
+    "handoff_commit_sha": "2f4d72cd382d9cef9779bbdf38d923de3dd23c3d",
     "source_ids": [
       "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
     ],
@@ -401,7 +401,10 @@
     "previous_verified_head_sha": "68816271c26643712784b0261ae40b38c7e27e5a",
     "previous_verified_at_utc": "2026-10-31T23:24:10Z",
     "gate_run_id": null,
-    "metadata_successor_parent_sha": "5c49a29694f89dc030ff85c197523392b94d72fe"
+    "metadata_successor_parent_sha": "5c49a29694f89dc030ff85c197523392b94d72fe",
+    "binance_update3_source_revision_id": "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+    "binance_top_ten_backing_claim": "OFFICIAL_COMPANY_STATEMENT; INDEPENDENT_ZK_MERKLE_PROOF_PENDING_2026-11-03",
+    "xrp_specific_replenishment_quantity": "NOT_DISCLOSED"
   },
   "sources": {
     "record_type": "archive_pointer",
@@ -4062,12 +4065,12 @@
     "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T001238Z-post-eligibility-escrow-evidence-graph.json",
     "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T001238Z-escrow-eligibility-execution-evidence-gate.json",
     "repository_audit_path": "data/repository_audits/20261101T001510Z-pr1433-exact-head-ci-and-archive-validator-status.json",
-    "handoff_path": "data/xrp_intelligence/hand_offs/20261101T001510Z-pr1433-ci-pass-and-escrow-verification-handoff.json",
+    "handoff_path": "data/xrp_intelligence/hand_offs/20261101T001510Z-binance-recovery-update3-and-escrow-unverified-handoff.json",
     "correction_of_snapshot_id": "XRP-20261031T230816Z-PRE-ESCROW-BINANCE-DAILY-DELTA-AND-V3-AUDIT",
     "new_source_records": 0,
     "new_relationship_edges": 8,
     "new_competing_hypotheses": 3,
-    "source_archive_append_status": "PENDING_ARCHIVE_APPEND",
+    "source_archive_append_status": "PENDING_ARCHIVE_APPEND_FOR_EXISTING_BINANCE_UPDATE3_SOURCE_REVISION",
     "source_revision_addenda_count": 36,
     "source_revision_addenda_pending_archive_append": 30,
     "verification_status": "ARCHIVE_VALIDATOR_CANCELLED; GATE_PASS_MERGE_DISABLED; EXACT_HEAD_NOT_VERIFIED",
@@ -4078,7 +4081,10 @@
     "validator_run_id": 41255857106,
     "fail_closed_gate_run_id": 41255857050,
     "verified_at_utc": null,
-    "fail_closed_gate_status": "PASS_MERGE_DISABLED"
+    "fail_closed_gate_status": "PASS_MERGE_DISABLED",
+    "source_revision_ids": [
+      "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z"
+    ]
   },
   "previous_snapshot_verification": {
     "status": "PASS",
@@ -8444,9 +8450,9 @@
   },
   "latest_research_branch_merge_safety_status": "DO_NOT_MERGE_AS_IS; FRESH_MAIN_MIGRATION_REQUIRED",
   "latest_binance_restoration_status": "OFFICIAL_UPDATE2_REPORTS_OVER_6.34B_USD_ALLOCATED; ABOUT_5B_CORRESPONDING_AFFECTED_TOKEN_ASSETS_ALREADY_HELD; ABOUT_1.34B_REMAINING_MARKET_OR_OTC_ACQUISITION; NO_XRP_SPECIFIC_ALLOCATION; NOT_INDEPENDENTLY_RECONCILED",
-  "latest_binance_withdrawal_status": "BINANCE_TARGETED_SUNDAY_2026-11-01; RESTORATION_NOT_VERIFIED_AT_2026-10-31T16:32Z",
+  "latest_binance_withdrawal_status": "PHASED_REOPENING_TARGETED_FOR_2026-11-01; COMPLETION_NOT_VERIFIED_AT_2026-11-01T00:15:10Z",
   "latest_binance_initial_por_target": "2026-10-31T07:33:00Z",
-  "latest_binance_withdrawal_target": "2026-11-01T05:33:00Z",
+  "latest_binance_withdrawal_target": "2026-11-01",
   "latest_oi_provider_comparison_status": "TRADRADAR_1.85B_7_EXCHANGES_AT_2026-10-31T05:40Z; PROVIDER_SPECIFIC; LONG_ACCOUNT_RATIO_NOT_NOTIONAL",
   "latest_run_update_id": "RUN-20261101T001238Z-POST-ELIGIBILITY-ESCROW-AND-PR1433",
   "latest_token_rotation_safety_pr": 1411,
@@ -8927,9 +8933,9 @@
   "latest_elliptic_attribution_status": "LIKELY_TRADERTRAITOR_DPRK_PER_ELLIPTIC_PRIVATE_SECTOR_ASSESSMENT_NOT_OFFICIAL; SMALL_BITGET_OVERLAP_AND_SLOW_STABLECOIN_CONVERSION_ARE_COUNTEREVIDENCE",
   "latest_circle_cctp_attacker_route_status": "ELLIPTIC_REPORTS_PUBLIC_CCTP_SERVICE_USE_AVAX_TO_USDC_TO_ETH; NO_CIRCLE_KNOWLEDGE_OR_ASSISTANCE_EVIDENCE",
   "latest_ripple_freeze_confirmed_asset": "40.5M_RLUSD_PER_TRM; ELLIPTIC_REPORTS_48M_SOLD_BEFORE_FREEZE; NOT_NATIVE_XRP",
-  "latest_binance_por_results_deadline": "2026-11-02",
-  "latest_binance_incident_replenishment_xrp_allocation": "NOT_DISCLOSED",
-  "latest_binance_reserve_restoration_status": "BINANCE_CLAIM_90_PERCENT_AGGREGATE_REPLENISHED; XRP_IN_10_ASSET_MINIMUM_1_TO_1_COVERAGE_SET; FULL_PROOF_PENDING; XRP_SPECIFIC_PURCHASE_QUANTITY_NOT_DISCLOSED",
+  "latest_binance_por_results_deadline": "2026-11-03",
+  "latest_binance_incident_replenishment_xrp_allocation": "NOT_DISCLOSED; XRP INCLUDED IN TOP_TEN 100_PERCENT COMPANY BACKING CLAIM; DO NOT INFER SPOT PURCHASE FLOW",
+  "latest_binance_reserve_restoration_status": "OFFICIAL_UPDATE3: 90_PERCENT_AGGREGATE_REPLENISHED; TOP_TEN INCLUDING XRP AND RLUSD STATED 100_PERCENT_BACKED; REMAINING 10_PERCENT OUTSIDE TOP_TEN; ZK_MERKLE PROOF EXPECTED 2026-11-03",
   "latest_binance_japan_segregation_status": "COMPANY_CLAIM_SEPARATE_COLD_WALLETS; NOT_INDEPENDENT_AUDIT; DISTINCT_FROM_SBI_ENTITIES",
   "latest_xrp_derivatives_snapshot_tokenpost": {
     "source": "TokenPost",
@@ -8973,7 +8979,7 @@
   "latest_prediction_ledger_pr_gate_run_id": 41230399874,
   "latest_prediction_ledger_pr_gate_status": "PASS_MERGE_DISABLED",
   "latest_prediction_ledger_pr_status": "FORECAST_OUTCOME_LEDGER_ONLY; NOT_A_TRAINED_MODEL",
-  "latest_binance_initial_por_status": "BINANCE_COMPANY_CLAIMS_100PCT_XRP_BACKING; FULL_ZK_PROOF_ESTIMATED_2026-11-03; XRP_SPECIFIC_PURCHASE_QUANTITY_UNKNOWN",
+  "latest_binance_initial_por_status": "SNAPSHOT_2026-10-31T00:00Z_POSTED; FULL_ZK_MERKLE_PROOF_EXPECTED_2026-11-03; NOT_YET_INDEPENDENTLY_VERIFIED",
   "latest_coinbase_ripple_rlusd_partnership_status": "LIVE_ON_PRIME_EXCHANGE_RETAIL; XRPL_BASE_ETHEREUM_DEPOSITS_WITHDRAWALS; RIPPLE_BASE_LIQUIDITY; GLOBAL_EXCHANGE_COLLATERAL_DEFERRED",
   "latest_circle_arc_status": "OFFICIAL_CIRCLE_2026-09-16_ARC_MAINNET; USDC_NATIVE_GAS; SBI_GROUP_FOUNDING_VALIDATOR; COINBASE_EXCHANGE_ACCESS; MORPHO_CREDIT_LAYER",
   "latest_ripple_circle_usdc_xrpl_status": "OFFICIAL_2025-06-12_NATIVE_USDC_ON_XRPL; RIPPLE_SAYS_RIPPLE_PAYMENTS_USES_USDC_ALONGSIDE_RLUSD",
@@ -13695,5 +13701,30 @@
   "latest_knowledge_signal_safety_pr_ci_subtests_passed": 8,
   "latest_knowledge_signal_safety_pr_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255694751",
   "latest_knowledge_signal_safety_pr_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255694694",
-  "latest_knowledge_signal_safety_pr_exact_head_verified": true
+  "latest_knowledge_signal_safety_pr_exact_head_verified": true,
+  "latest_binance_top_ten_fully_backed_assets": [
+    "BTC",
+    "ETH",
+    "USDT",
+    "BNB",
+    "SOL",
+    "USDC",
+    "XRP",
+    "USD1",
+    "RLUSD",
+    "ZEC"
+  ],
+  "latest_binance_top_ten_coverage_evidence_class": "OFFICIAL_COMPANY_STATEMENT; ZK_MERKLE_PROOF_PENDING",
+  "latest_binance_remaining_10pct_scope": "TOKENS_OUTSIDE_TOP_TEN; LESS_LIQUID; NOT_XRP_OR_RLUSD_PER_BINANCE_OFFICIAL_UPDATE3",
+  "latest_binance_xrp_por_ratio_secondary": 100.99,
+  "latest_binance_xrp_por_ratio_status": "SECONDARY_SCREENSHOT_TRANSCRIPTION; MERKLE_ROOT_IN_PROGRESS; NOT_INDEPENDENTLY_VERIFIED",
+  "latest_binance_xrp_por_surplus_secondary": 25020430.26,
+  "latest_binance_xrp_por_snapshot_time": "2026-10-31T00:00:00Z",
+  "latest_binance_replenishment_sources": [
+    "PARTIAL_SAFU_DEPLOYMENT",
+    "PORTION_OF_FUTURES_INSURANCE_FUND",
+    "BINANCE_CORPORATE_TREASURY",
+    "MARKET_AND_OTC_PURCHASES_FOR_REMAINING_AFFECTED_ASSETS"
+  ],
+  "latest_binance_escrow_overlap_warning": "BINANCE_WITHDRAWAL_REOPENING_TARGET_AND_RIPPLE_ESCROW_ELIGIBILITY BOTH OCCUR 2026-11-01; EXCHANGE RESERVE CHANGES REQUIRE WALLET-LEVEL ATTRIBUTION"
 }
