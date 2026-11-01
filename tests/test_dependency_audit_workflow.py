@@ -1,6 +1,5 @@
 from pathlib import Path
 import ast
-import re
 
 WORKFLOW = Path(".github/workflows/dependency-audit.yml").read_text(encoding="utf-8")
 CI = Path(".github/workflows/ci.yml").read_text(encoding="utf-8")
@@ -61,9 +60,10 @@ def test_ci_registers_dependency_audit_workflow_regression_tests():
 
 
 def test_pyproject_dependencies_match_the_audited_root_requirements():
-    match = re.search(r"(?ms)^dependencies\\s*=\\s*(\\[[^\\]]*\\])", PYPROJECT)
-    assert match is not None
-    project_dependencies = sorted(ast.literal_eval(match.group(1)))
+    start = PYPROJECT.index("dependencies = [")
+    list_start = PYPROJECT.index("[", start)
+    list_end = PYPROJECT.index("]", list_start) + 1
+    project_dependencies = sorted(ast.literal_eval(PYPROJECT[list_start:list_end]))
     root_dependencies = sorted(
         line.strip()
         for line in ROOT_REQUIREMENTS.splitlines()
