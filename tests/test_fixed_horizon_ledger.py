@@ -593,6 +593,71 @@ def _rewrite_single_outcome(ledger, **changes):
     )
 
 
+def test_forecast_rejects_issue_price_not_present_in_registered_snapshot(tmp_path):
+    ledger = make_ledger(tmp_path)
+    with pytest.raises(ValueError, match="must match exactly one observation"):
+        ledger.append_forecast(forecast_payload(price_at_issue_usd=1.26))
+
+
+def test_forecast_rejects_issue_timestamp_not_present_in_registered_snapshot(tmp_path):
+    ledger = make_ledger(tmp_path)
+    with pytest.raises(ValueError, match="must match exactly one observation"):
+        ledger.append_forecast(
+            forecast_payload(price_at_issue_observed_at_utc="2026-10-30T23:57:00Z")
+        )
+
+
+def test_outcome_rejects_horizon_price_not_present_in_registered_snapshot(tmp_path):
+    ledger = make_ledger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    with pytest.raises(ValueError, match="must match exactly one observation"):
+        ledger.append_outcome(
+            "xrp-forecast-001", 1.28, "2026-10-31T00:59:59Z",
+            "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+        )
+
+
+def test_outcome_rejects_horizon_timestamp_not_present_in_registered_snapshot(tmp_path):
+    ledger = make_ledger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    with pytest.raises(ValueError, match="must match exactly one observation"):
+        ledger.append_outcome(
+            "xrp-forecast-001", 1.27, "2026-10-31T00:59:45Z",
+            "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+        )
+
+
+def test_metrics_refuse_persisted_outcome_price_tampering_against_snapshot(tmp_path):
+    ledger = _ledger_with_valid_outcome(tmp_path)
+    _rewrite_single_outcome(
+        ledger,
+        price_at_horizon_usd=1.28,
+        realized_return_pct=(1.28 / 1.25 - 1.0) * 100.0,
+        realized_class="up",
+    )
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
+
+
+def test_metrics_refuse_persisted_issue_price_tampering_against_snapshot(tmp_path):
+    ledger = _ledger_with_valid_outcome(tmp_path)
+    forecasts = [json.loads(line) for line in ledger.forecasts_path.read_text(encoding="utf-8").splitlines()]
+    forecasts[0]["price_at_issue_usd"] = 1.26
+    ledger.forecasts_path.write_text(
+        "".join(json.dumps(row) + "\n" for row in forecasts), encoding="utf-8"
+    )
+    _rewrite_single_outcome(
+        ledger,
+        price_at_issue_usd=1.26,
+        realized_return_pct=(1.27 / 1.26 - 1.0) * 100.0,
+        realized_class="up",
+    )
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
+
+
 def test_metrics_reject_persisted_post_horizon_observation(tmp_path):
     ledger = _ledger_with_valid_outcome(tmp_path)
     _rewrite_single_outcome(ledger, price_observed_at_utc="2026-10-31T01:00:01Z")
