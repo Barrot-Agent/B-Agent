@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "evernorth-financing-and-custody-correction-20261101T1545Z",
+  "captured_at_utc": "2026-11-01T15:45:00Z",
+  "corrections": {
+    "prior_eloc_gross_usd": 76800000,
+    "corrected_eloc_gross_usd_if_all_registered_shares_sold_at_cover_price": 80700000,
+    "corrected_eloc_net_usd": null,
+    "reason": "SEC 424B3 cover table reports approximately $80.7M gross; no net estimate is asserted.",
+    "deployment_partner_source_url": "https://www.stocktitan.net/news/XRPN/evernorth-to-begin-deploying-from-473-million-xrp-treasury-with-6wfxiuqfckmg.html"
+  },
+  "capital_stack": {
+    "reported_xrp_at_closing": 473276430,
+    "spot_purchase": {
+      "xrp": 84365876.3625,
+      "cash_usd": 214100000,
+      "average_price_usd": 2.53657058,
+      "status": "COMPLETED_BEFORE_OCTOBER_9_CLOSING"
+    },
+    "in_kind_xrp_contributions": 388910554,
+    "closing_gross_cash_proceeds_usd": 272600000,
+    "ripple_related_company_facility": {
+      "facility_limit_usd": 10000000,
+      "drawn_as_of_2026_10_07_usd": 9700000,
+      "interest_rate_pct": 3.81,
+      "borrower": "Pathfinder / operating Company subsidiary",
+      "repayment_terms": "within five business days after 2026-10-09 closing or earlier on five business days' notice by Ripple",
+      "current_repayment_status": "UNKNOWN"
+    },
+    "separate_evernorth_facility": {
+      "facility_limit_usd": 1000000,
+      "borrowed_as_of_2026_06_30_usd": 0,
+      "current_draw_status": "UNKNOWN"
+    },
+    "convertible_notes": {
+      "principal_usd": 30000000,
+      "issue_date": "2026-10-12",
+      "pik_interest_pct": 4,
+      "final_maturity_year": 2031,
+      "possible_cash_settlement_risk": "DISCLOSED"
+    },
+    "cantors_committed_equity_facility": {
+      "shares_available": 5218935,
+      "max_gross_proceeds_usd_if_all_sold_at_cover_price": 80700000,
+      "net_proceeds_estimate_usd": null,
+      "term_months": 14,
+      "company_controls_timing_and_amount": true,
+      "draw_verified": false
+    },
+    "share_structure_as_of_2026_10_22": {
+      "class_a_outstanding": 26094680,
+      "additional_warrants": 9283847,
+      "additional_note_conversion_shares": 3585278,
+      "additional_company_unit_exchange_shares": 22953128,
+      "additional_class_c_conversion_shares": 31392746,
+      "incentive_plan_reserved": 8930929,
+      "espp_reserved": 1786185,
+      "fully_diluted_nav_per_share": "NOT_COMPUTED"
+    },
+    "pre_close_financial_context_as_of_2026_06_30": {
+      "evernorth_unrestricted_cash_usd": 100000,
+      "evernorth_working_capital_deficit_usd": 696100000,
+      "operating_revenue": "NONE_REPORTED",
+      "classification": "PRE_CLOSE_CONTEXT_NOT_CURRENT_POST_CLOSE_BALANCE"
+    }
+  },
+  "custody_migration_reconciliation": {
+    "tracker_attributed_balance_xrp": 103129904.54985,
+    "tracker_outside_attribution_xrp": 370346663.22975,
+    "tracker_sum_xrp": 473476567.7796,
+    "sec_reported_closing_xrp": 473276430,
+    "difference_xrp": 200137.7796,
+    "destination_accounts_listed": 10,
+    "bitgo_activation_confirmed_in_explorer": 9,
+    "destination_control": "multisig",
+    "classification": "STRONGLY_SUPPORTED_BITGO_CUSTODY_REALLOCATION_NOT_CONFIRMED_BENEFICIAL_OWNERSHIP",
+    "reconciliation_status": "UNRESOLVED_200137_78_XRP_DIFFERENCE_AND_DESTINATION_OWNERSHIP"
+  },
+  "interpretation": [
+    "The 370.346M movement is not evidence of sale or exchange deposit; the large destination accounts inspected were activated by a BitGo-labelled account with 1.2225 XRP and show multisig control.",
+    "The custody migration hypothesis is stronger than a market-sale hypothesis, but Evernorth/BitGo have not publicly labelled every destination address in the reviewed sources.",
+    "Evernorth's announced Q4 deployment strategy remains planned; no executed loan, pledge, lending pool deposit or yield receipt is verified.",
+    "The $9.7M related-party facility draw is subsidiary debt with post-close repayment status unknown; do not count it as new XRP buying capital.",
+    "The $80.7M ELOC is maximum potential gross equity proceeds, not cash raised; no draw is verified.",
+    "The company reported no revenue in the prospectus; financing and custody risk remain material."
+  ]
+}

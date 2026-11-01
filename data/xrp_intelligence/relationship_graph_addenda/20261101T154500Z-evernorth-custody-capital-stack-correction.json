@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "graph_id": "evernorth-custody-capital-stack-correction-20261101T1545Z",
+  "captured_at_utc": "2026-11-01T15:45:00Z",
+  "edges": [
+    {
+      "from": "Ripple",
+      "to": "Pathfinder/Company",
+      "relation": "revolving_related_party_credit_facility",
+      "limit_usd": 10000000,
+      "drawn_as_of_2026_10_07_usd": 9700000,
+      "status": "SEC_REPORTED; POST_CLOSE_REPAYMENT_UNKNOWN"
+    },
+    {
+      "from": "Ripple",
+      "to": "Evernorth",
+      "relation": "separate_revolving_facility",
+      "limit_usd": 1000000,
+      "borrowed_as_of_2026_06_30_usd": 0,
+      "status": "SEC_REPORTED; CURRENT_DRAW_UNKNOWN"
+    },
+    {
+      "from": "Cantor",
+      "to": "Evernorth",
+      "relation": "committed_equity_facility",
+      "shares_up_to": 5218935,
+      "gross_proceeds_up_to_usd": 80700000,
+      "status": "SEC_REPORTED; OPTIONAL_CONDITIONAL; NO_DRAW_VERIFIED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "XRP",
+      "relation": "cash_purchase",
+      "amount_xrp": 84365876.3625,
+      "cash_usd": 214100000,
+      "status": "COMPLETED_AND_SEC_REPORTED"
+    },
+    {
+      "from": "investors_and_Ripple",
+      "to": "Evernorth",
+      "relation": "in_kind_XRP_contributions",
+      "amount_xrp": 388910554,
+      "status": "SEC_REPORTED"
+    },
+    {
+      "from": "Evernorth_old_BitGo_wallets",
+      "to": "BitGo_activated_multisig_destinations",
+      "relation": "custody_wallet_reallocation",
+      "amount_xrp": 370346663,
+      "status": "ONCHAIN_TRACKER_AND_EXPLORER_EVIDENCE; BENEFICIAL_OWNERSHIP_UNCONFIRMED"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H_CUSTODY_ROTATION",
+      "status": "STRONGLY_SUPPORTED_INFERENCE",
+      "support": [
+        "Nine of ten destinations were activated by the same BitGo-labelled account with 1.2225 XRP.",
+        "Inspected destination accounts show multisig control.",
+        "SEC filing says all XRP initially held at BitGo."
+      ],
+      "counter": [
+        "No signed Evernorth/BitGo address ownership attestation.",
+        "Tracker page and JSON use different ledgers.",
+        "Tracker total exceeds SEC closing holdings by 200,137.78 XRP."
+      ]
+    },
+    {
+      "id": "H_FORCED_SELLING",
+      "status": "CONTINGENT_RISK_NOT_OBSERVED",
+      "support": [
+        "$30M convertible notes, $9.7M subsidiary facility draw, potential cash-settlement and ELOC financing create capital-structure risk."
+      ],
+      "counter": [
+        "No forced sale or exchange deposit observed.",
+        "370M movements point to BitGo-activated multisig destinations.",
+        "Facility repayment status and ELOC draw are unknown."
+      ]
+    }
+  ]
+}

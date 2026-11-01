@@ -84,4 +84,5 @@ jobs:
             tests/test_ask_coin_identity_candidate.py \
             tests/test_binance_recovery_update4_and_repo_audit.py \
             tests/test_sbi_ousd_ask_camilla_evernorth_addendum.py \
+            tests/test_evernorth_financing_correction.py \
             -v --no-cov

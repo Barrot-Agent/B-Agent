@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "addendum_id": "evernorth-financing-source-and-custody-correction-ledger-20261101T1545Z",
+  "captured_at_utc": "2026-11-01T15:45:00Z",
+  "correction": "data/xrp_intelligence/source_revisions/20261101T154500Z-evernorth-deployment-source-and-financing-correction.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T154500Z-evernorth-financing-and-custody-correction.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T154500Z-evernorth-custody-capital-stack-correction.json",
+  "corrections": [
+    "Correct ELOC maximum gross estimate from $76.8M to approximately $80.7M if all 5,218,935 shares are sold at the assumed cover price; net proceeds are not estimated.",
+    "Add the $9.7M draw under the subsidiary's Ripple Company Facility as of October 7; repayment status after the October 9 closing is unknown.",
+    "Distinguish the separate $1M Evernorth Facility, which had no borrowings as of June 30.",
+    "Correct the deployment-partner press-release URL to the StockTitan mirror of the October 14 GlobeNewswire release.",
+    "Record the 200,137.78 XRP difference between the tracker balance-plus-outflow total and SEC-reported closing holdings."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}
