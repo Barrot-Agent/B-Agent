@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 import json
+import math
 import os
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 
 import requests
 
@@ -31,12 +33,31 @@ def _extract_text(resp_json: dict) -> str:
 def _score_from_text(text: str):
     try:
         data = json.loads(text)
-        score = int(max(0, min(100, int(data.get("score", 50)))))
-        confidence = float(max(0.0, min(1.0, float(data.get("confidence", 0.5)))))
-        label = str(data.get("label", "neutral"))
-        return score, confidence, label
-    except Exception:
-        return 50, 0.5, "neutral"
+    except Exception as exc:
+        raise ValueError("invalid sentiment response JSON") from exc
+
+    if not isinstance(data, dict):
+        raise ValueError("sentiment response must be a JSON object")
+    if not {"score", "confidence", "label"}.issubset(data):
+        raise ValueError("sentiment response is missing required fields")
+
+    raw_score = data["score"]
+    raw_confidence = data["confidence"]
+    if isinstance(raw_score, bool) or isinstance(raw_confidence, bool):
+        raise ValueError("boolean score/confidence is invalid")
+    try:
+        score = int(raw_score)
+        confidence = float(raw_confidence)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("score/confidence must be numeric") from exc
+    if float(raw_score) != score or not 0 <= score <= 100:
+        raise ValueError("score must be an integer from 0 to 100")
+    if not 0.0 <= confidence <= 1.0:
+        raise ValueError("confidence must be between 0 and 1")
+    label = str(data["label"]).strip().lower()
+    if label not in {"bullish", "neutral", "bearish"}:
+        raise ValueError("label must be bullish, neutral or bearish")
+    return score, confidence, label
 
 
 def _build_messages(signal_text: str):
@@ -124,87 +145,177 @@ def analyze_signal(signal_text: str):
     except Exception as e:
         last_err = f"{last_err}; groq_failed:{e}"
 
-    return 0, 0.0, f"sentiment unavailable ({last_err})"
+    return None, None, f"sentiment unavailable ({last_err})"
+
+
+def _parse_aware_timestamp(value):
+    if value is None:
+        return None
+    raw = str(value).strip()
+    if not raw:
+        return None
+    try:
+        parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    except (TypeError, ValueError, OverflowError):
+        try:
+            parsed = parsedate_to_datetime(raw)
+        except (TypeError, ValueError, OverflowError):
+            return None
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        return None
+    return parsed.astimezone(timezone.utc)
 
 
 def _news_score(hours=72, path="ping-pongings/knowledge-base/log.jsonl"):
-    """Relevance-weighted sentiment from distilled news. Returns (score_0_100, n, headlines) or (None,0,[])."""
-    from datetime import timedelta
-
-    if not os.path.exists(path):
-        return None, 0, []
-    cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
+    """Return a publication-time-bounded, relevance-weighted sentiment observation."""
+    cutoff_now = datetime.now(timezone.utc)
+    cutoff = cutoff_now - timedelta(hours=hours)
+    allowed_clock_skew = timedelta(minutes=5)
     num = den = 0.0
     used = 0
     heads = []
-    with open(path) as f:
+    seen_urls = set()
+    if not os.path.exists(path):
+        return None, 0, []
+
+    with open(path, encoding="utf-8") as f:
         for line in f:
             try:
-                e = json.loads(line)
+                entry = json.loads(line)
             except Exception:
                 continue
-            if not e.get("distilled"):
+            if not isinstance(entry, dict) or not entry.get("distilled"):
                 continue
-            d = e.get("distill", {})
-            w = float(d.get("xrp_relevance", 0) or 0)
-            if w <= 0:
+            distill = entry.get("distill")
+            if not isinstance(distill, dict):
                 continue
+
+            ingested_at = _parse_aware_timestamp(entry.get("ingested_at"))
+            published_at = _parse_aware_timestamp(entry.get("published_at"))
+            if published_at is None:
+                published_at = _parse_aware_timestamp(entry.get("published"))
+            if ingested_at is None or published_at is None:
+                continue
+            if ingested_at > cutoff_now + allowed_clock_skew:
+                continue
+            if published_at > cutoff_now + allowed_clock_skew:
+                continue
+            if published_at > ingested_at + allowed_clock_skew:
+                continue
+            if published_at < cutoff:
+                continue
+
+            url = str(entry.get("url", "")).strip()
+            if url and url in seen_urls:
+                continue
+
             try:
-                ts = datetime.fromisoformat(e.get("ingested_at", "").replace("Z", "+00:00"))
-                if ts < cutoff:
-                    continue
-            except Exception:
-                pass
-            s = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(d.get("sentiment"), 0.0)
-            num += s * w
-            den += w
+                weight = float(distill.get("xrp_relevance", 0) or 0)
+            except (TypeError, ValueError, OverflowError):
+                continue
+            if not math.isfinite(weight) or not 0.0 < weight <= 1.0:
+                continue
+
+            sentiment = str(distill.get("sentiment", "")).strip().lower()
+            sentiment_value = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}.get(sentiment)
+            if sentiment_value is None:
+                continue
+
+            num += sentiment_value * weight
+            den += weight
             used += 1
-            if w >= 0.5 and len(heads) < 6:
-                heads.append(f"[{d.get('sentiment')}] {e.get('title','')[:80]}")
-    if den == 0:
+            if url:
+                seen_urls.add(url)
+            title = str(entry.get("title", ""))
+            if weight >= 0.5 and len(heads) < 6:
+                heads.append(f"[{sentiment}] {title[:80]}")
+
+    if not math.isfinite(den) or den <= 0.0:
         return None, 0, []
-    return int(round((num / den + 1) * 50)), used, heads
+    score = int(round((num / den + 1.0) * 50.0))
+    return score, used, heads
 
 
 def main():
     news_score, n_news, headlines = _news_score()
+    explicit_text = os.getenv("BARROT_SIGNAL_TEXT", "").strip()
     if headlines:
         signal_text = "Recent XRP-relevant headlines: " + " | ".join(headlines)
+    elif explicit_text:
+        signal_text = explicit_text
     else:
-        signal_text = os.getenv("BARROT_SIGNAL_TEXT", "market sideways; low conviction")
-    score, confidence, source = analyze_signal(signal_text)
-    if news_score is not None:
-        # blend: LLM read of headlines + weighted news score, equal weight
+        signal_text = None
+
+    if signal_text is None:
+        score, confidence, source = None, None, "unavailable:no_qualifying_headlines_or_explicit_signal_text"
+    else:
+        score, confidence, source = analyze_signal(signal_text)
+
+    valid_output = False
+    if score is not None and confidence is not None and not isinstance(score, bool) and not isinstance(confidence, bool):
+        try:
+            score_value = int(score)
+            confidence_value = float(confidence)
+            valid_output = (
+                float(score) == score_value
+                and 0 <= score_value <= 100
+                and math.isfinite(confidence_value)
+                and 0.0 < confidence_value <= 1.0
+            )
+        except (TypeError, ValueError, OverflowError):
+            valid_output = False
+    if valid_output:
+        score = score_value
+        confidence = confidence_value
+    if valid_output and news_score is not None:
+        # Blend only after a valid provider response; a failed provider must
+        # never turn a missing score into a numeric signal.
         score = int(round((score + news_score) / 2))
         source = f"{source}+news({n_news})"
 
     out = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
+        "status": "SENTIMENT_OBSERVATION" if valid_output else "UNAVAILABLE",
+        "forecast_status": "NOT_ISSUED",
         "signal_text": signal_text,
-        "score": score,
-        "confidence": confidence,
+        "score": int(score) if valid_output else None,
+        "confidence": float(confidence) if valid_output else None,
+        "confidence_kind": "MODEL_REPORTED_NOT_CALIBRATED" if valid_output else None,
         "source": source,
         "news_score": news_score,
         "news_entries": n_news,
         "generated_at_unix": int(time.time()),
+        "history_appended": False,
     }
+
+    if valid_output:
+        price_now = None
+        try:
+            response = requests.get(
+                "https://api.coingecko.com/api/v3/simple/price",
+                params={"ids": "ripple", "vs_currencies": "usd"},
+                timeout=6,
+            )
+            response.raise_for_status()
+            candidate = float(response.json().get("ripple", {}).get("usd"))
+            if candidate > 0:
+                price_now = candidate
+        except Exception:
+            price_now = None
+
+        hist_entry = dict(out)
+        hist_entry["price_at_emission"] = price_now
+        hist_entry["history_appended"] = True
+        os.makedirs("web", exist_ok=True)
+        with open("web/signal_history.jsonl", "a", encoding="utf-8") as hf:
+            print(json.dumps(hist_entry), file=hf)
+        out["history_appended"] = True
+    else:
+        out["reason"] = "No qualifying input or no valid provider response; no numeric sentiment score emitted."
 
     os.makedirs("web", exist_ok=True)
     with open("web/latest_signal.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
-    try:
-        _pr = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price",
-            params={"ids": "ripple", "vs_currencies": "usd"},
-            timeout=6,
-        )
-        price_now = float(_pr.json().get("ripple", {}).get("usd", 0))
-    except Exception:
-        price_now = 0.0
-    hist_entry = dict(out)
-    hist_entry["price_at_emission"] = price_now
-    with open("web/signal_history.jsonl", "a", encoding="utf-8") as hf:
-        print(json.dumps(hist_entry), file=hf)
 
     print(json.dumps(out))
 
