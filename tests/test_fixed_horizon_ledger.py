@@ -1,3 +1,4 @@
+import hashlib
 import json
 import math
 from concurrent.futures import ThreadPoolExecutor
@@ -14,19 +15,71 @@ from barrot_agent.sources.source_registry import (
 )
 
 
+def _snapshot_bytes(value):
+    return json.dumps(value, sort_keys=True, separators=(",", ":")).encode("utf-8")
+
+
+def _source_content(source_id):
+    if source_id == "SRC-MARKET-001":
+        return _snapshot_bytes({
+            "record_type": "xrp_price_observation_set",
+            "source_id": source_id,
+            "asset_pair": "XRP/USD",
+            "observations": [
+                {"price_usd": 1.25, "observed_at_utc": "2026-10-30T23:59:00Z"},
+                {"price_usd": 1.25, "observed_at_utc": "2026-10-30T23:58:00Z"},
+            ],
+        })
+    if source_id == "SRC-PRICE-001":
+        return _snapshot_bytes({
+            "record_type": "xrp_price_observation_set",
+            "source_id": source_id,
+            "asset_pair": "XRP/USD",
+            "observations": [
+                {"price_usd": 1.27, "observed_at_utc": "2026-10-31T00:59:59Z"},
+                {"price_usd": 1.27, "observed_at_utc": "2026-10-31T00:59:30Z"},
+                {"price_usd": 1.27, "observed_at_utc": "2026-10-31T00:58:59Z"},
+                {"price_usd": 1.28, "observed_at_utc": "2026-10-31T01:59:59Z"},
+            ],
+        })
+    if source_id == "SRC-PRICE-TIE-001":
+        return _snapshot_bytes({
+            "record_type": "xrp_price_observation_set",
+            "source_id": source_id,
+            "asset_pair": "XRP/USD",
+            "observations": [
+                {"price_usd": 1.25, "observed_at_utc": "2026-10-31T00:59:30Z"},
+            ],
+        })
+    if source_id == "SRC-FEATURE-001":
+        return _snapshot_bytes({"record_type": "xrp_feature_snapshot", "snapshot_id": "features-001"})
+    if source_id == "SRC-REPLAY-MANIFEST-001":
+        return _snapshot_bytes({"record_type": "xrp_replay_manifest", "manifest_id": source_id})
+    raise KeyError(source_id)
+
+
+TEST_SOURCE_CONTENTS = {
+    source_id: _source_content(source_id)
+    for source_id in (
+        "SRC-MARKET-001",
+        "SRC-PRICE-001",
+        "SRC-PRICE-TIE-001",
+        "SRC-FEATURE-001",
+        "SRC-REPLAY-MANIFEST-001",
+    )
+}
 TEST_SOURCE_REGISTRY = {
-    "SRC-MARKET-001": "b" * 64,
-    "SRC-PRICE-001": "c" * 64,
-    "SRC-FEATURE-001": "a" * 64,
-    "SRC-REPLAY-MANIFEST-001": "e" * 64,
+    source_id: hashlib.sha256(content).hexdigest()
+    for source_id, content in TEST_SOURCE_CONTENTS.items()
 }
 
 
 class HashVerifiedRegistryFixture:
-    """Test double for the byte-verifying registry interface."""
+    """Test double that verifies and returns the exact registered snapshot bytes."""
 
-    def __init__(self, entries):
+    def __init__(self, entries, contents=None):
         self.entries = dict(entries)
+        self.contents = dict(TEST_SOURCE_CONTENTS if contents is None else contents)
 
     def require(self, source_id):
         if source_id not in self.entries:
@@ -38,22 +91,30 @@ class HashVerifiedRegistryFixture:
 
     def verify_content_hash(self, source_id, content=None):
         value = self.entries.get(source_id)
+        candidate = self.contents.get(source_id) if content is None else content
         return (
             source_id in self.entries
             and isinstance(value, str)
             and len(value) == 64
-            and all(char in "0123456789abcdef" for char in value.lower())
+            and isinstance(candidate, bytes)
+            and hashlib.sha256(candidate).hexdigest() == value.lower()
         )
+
+    def read_verified_content(self, source_id):
+        content = self.contents.get(source_id)
+        if content is None or not self.verify_content_hash(source_id, content):
+            raise ValueError(f"source snapshot bytes are unavailable or do not match registered hash: {source_id}")
+        return content
 
 
 def make_file_backed_registry(root):
     registry = SourceRegistry(root / "registry.json")
     paths = {}
     hashes = {}
-    for source_id in TEST_SOURCE_REGISTRY:
+    for source_id, content in TEST_SOURCE_CONTENTS.items():
         path = root / "snapshots" / f"{source_id}.json"
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(f"snapshot:{source_id}", encoding="utf-8")
+        path.write_bytes(content)
         record = register_file_source(
             registry,
             source_id=source_id,
@@ -93,7 +154,7 @@ def forecast_payload(**overrides):
         "feature_snapshot": {
             "snapshot_id": "features-001",
             "source_id": "SRC-FEATURE-001",
-            "sha256": "a" * 64,
+            "sha256": TEST_SOURCE_REGISTRY["SRC-FEATURE-001"],
             "captured_at_utc": "2026-10-30T23:58:00Z",
         },
         "baseline": {
@@ -363,7 +424,7 @@ def test_metrics_tie_breaks_to_flat(tmp_path):
     ledger.append_forecast(payload)
     ledger.append_outcome(
         "xrp-forecast-001", 1.25, "2026-10-31T00:59:30Z",
-        "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+        "2026-10-31T01:01:00Z", "SRC-PRICE-TIE-001"
     )
     metrics = ledger.metrics()
     assert metrics["accuracy"] == 1.0
@@ -374,9 +435,8 @@ def test_forecast_source_ids_are_checked_when_registry_is_supplied(tmp_path):
     ledger = ForecastLedger(
         tmp_path,
         source_registry=HashVerifiedRegistryFixture({
-            "SRC-MARKET-001": "b" * 64,
-            "SRC-FEATURE-001": "a" * 64,
-            "SRC-REPLAY-MANIFEST-001": "e" * 64,
+            source_id: TEST_SOURCE_REGISTRY[source_id]
+            for source_id in ("SRC-MARKET-001", "SRC-FEATURE-001", "SRC-REPLAY-MANIFEST-001")
         }),
     )
     record = ledger.append_forecast(forecast_payload())
@@ -393,12 +453,7 @@ def test_forecast_source_ids_are_checked_when_registry_is_supplied(tmp_path):
 def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
     ledger = ForecastLedger(
         tmp_path,
-        source_registry=HashVerifiedRegistryFixture({
-            "SRC-MARKET-001": "b" * 64,
-            "SRC-PRICE-001": "c" * 64,
-            "SRC-FEATURE-001": "a" * 64,
-            "SRC-REPLAY-MANIFEST-001": "e" * 64,
-        }),
+        source_registry=HashVerifiedRegistryFixture(TEST_SOURCE_REGISTRY),
     )
     ledger.append_forecast(forecast_payload())
     outcome = ledger.append_outcome(
@@ -413,9 +468,8 @@ def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
     unregistered = ForecastLedger(
         tmp_path / "unregistered",
         source_registry=HashVerifiedRegistryFixture({
-            "SRC-MARKET-001": "b" * 64,
-            "SRC-FEATURE-001": "a" * 64,
-            "SRC-REPLAY-MANIFEST-001": "e" * 64,
+            source_id: TEST_SOURCE_REGISTRY[source_id]
+            for source_id in ("SRC-MARKET-001", "SRC-FEATURE-001", "SRC-REPLAY-MANIFEST-001")
         }),
     )
     unregistered.append_forecast(forecast_payload())
@@ -452,11 +506,12 @@ def test_verified_forecast_requires_a_hash_bearing_source_registry(tmp_path):
 
 
 def test_feature_snapshot_hash_must_match_registered_source_content(tmp_path):
-    registry = HashVerifiedRegistryFixture({
-        "SRC-MARKET-001": "b" * 64,
-        "SRC-FEATURE-001": "d" * 64,
-        "SRC-REPLAY-MANIFEST-001": "e" * 64,
-    })
+    altered_feature = _snapshot_bytes({"record_type": "xrp_feature_snapshot", "snapshot_id": "altered"})
+    contents = dict(TEST_SOURCE_CONTENTS)
+    contents["SRC-FEATURE-001"] = altered_feature
+    entries = dict(TEST_SOURCE_REGISTRY)
+    entries["SRC-FEATURE-001"] = hashlib.sha256(altered_feature).hexdigest()
+    registry = HashVerifiedRegistryFixture(entries, contents)
     ledger = ForecastLedger(tmp_path, source_registry=registry)
     with pytest.raises(ValueError, match="does not match registered source content hash"):
         ledger.append_forecast(forecast_payload())
