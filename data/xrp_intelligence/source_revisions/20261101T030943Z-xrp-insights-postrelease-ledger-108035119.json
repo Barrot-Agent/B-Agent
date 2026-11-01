@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T030943Z-XRP-INSIGHTS-POSTRELEASE-LEDGER-108035119",
+  "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+  "captured_at_utc": "2026-11-01T03:09:43Z",
+  "data_cutoff_utc": "2026-11-01T01:30:00Z",
+  "title": "November 1 Ripple escrow post-release state at XRP Ledger 108,035,119",
+  "source_type": "public_XRPL_ledger_derived_tracker",
+  "url": "https://xrp-insights.com/xrp-radar/escrow",
+  "classification": "TRACKER_REPORTS_ESCROWFINISH_EXECUTED; 1B_XRP_GROSS_RELEASED; ZERO_REESCROW_BY_LEDGER_108035119; DESTINATION_AND_LATER_DISPOSITION_UNKNOWN",
+  "methodology_claim": {
+    "provider_statement": "XRP Insights says it reads rippled JSON-RPC from s1.ripple.com with xrplcluster.com fallback; uses account_objects(type=escrow) and account_tx metadata at one pinned validated ledger; no explorer caches or aggregators.",
+    "pinned_ledger": 108035119,
+    "pinned_ledger_time_utc": "2026-11-01T01:30:00Z",
+    "refresh_frequency": "At most hourly"
+  },
+  "observations": {
+    "event_time_utc": "2026-11-01T00:00:02Z",
+    "eligibility_time_utc": "2026-11-01T00:00:00Z",
+    "owner_accounts": [
+      "r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+      "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn"
+    ],
+    "escrow_objects_released": 2,
+    "releases": [
+      {
+        "owner_account": "r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+        "amount_xrp": 500000000,
+        "transaction_hash": "3CB037A5F9BC193427592EDB87C49C1ABE499F80F5C049090141B4EDE539F948",
+        "reported_time_utc": "2026-11-01T00:00:02Z",
+        "tracker_status": "RELEASED"
+      },
+      {
+        "owner_account": "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn",
+        "amount_xrp": 500000000,
+        "transaction_hash": "33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564",
+        "reported_time_utc": "2026-11-01T00:00:02Z",
+        "tracker_status": "RELEASED"
+      }
+    ],
+    "gross_released_xrp": 1000000000,
+    "reescrow_created_xrp_by_cutoff": 0,
+    "net_outside_escrow_xrp_by_cutoff": 1000000000,
+    "total_ripple_owned_escrow_after_xrp": 30400000000,
+    "ripple_owned_escrow_objects_after": 96,
+    "ripple_owner_accounts_after": 8,
+    "trailing_12_month_releases_xrp": 12000000000,
+    "trailing_12_month_reescrow_xrp": 7700000000,
+    "trailing_12_month_reescrow_pct": 64.2,
+    "trailing_12_month_net_outside_escrow_xrp": 4300000000,
+    "trailing_12_month_average_net_outside_escrow_xrp_per_month": 358333333.33,
+    "trailing_12_month_window": "December 2025 through November 2026; November is included with zero re-escrow at ledger 108035119, 01:30 UTC.",
+    "next_unlock_utc": "2026-12-01T00:00:00Z",
+    "next_unlock_xrp": 1000000000,
+    "next_unlock_objects": 4,
+    "total_future_scheduled_unlocks": 31,
+    "projected_last_scheduled_unlock": "2029-06-01T00:00:00Z"
+  },
+  "verification_boundary": {
+    "raw_rpc_response_retrieved_by_this_run": false,
+    "explorer_transaction_pages_machine_readable": false,
+    "destination_accounts": "UNKNOWN_NOT_IN_PARSED_TRACKER_TABLE",
+    "subsequent_transfers": "UNKNOWN_AFTER_2026-11-01T01:30:00Z",
+    "later_escrow_create_activity": "UNKNOWN_AFTER_2026-11-01T01:30:00Z",
+    "exchange_deposit_or_sale": "NOT_ESTABLISHED",
+    "interpretation": "The tracker reports two EscrowFinish releases and a pinned ledger state. This run did not retrieve raw transaction JSON or independently decode Destination fields. The 1B net-outside-escrow figure is valid only at ledger 108035119, 01:30 UTC."
+  },
+  "source_independence": {
+    "classification": "ONE_LEDGER_DERIVED_PROVIDER",
+    "note": "The source says it queries public rippled JSON-RPC directly, but independent raw transaction metadata was not retrieved in this run."
+  },
+  "market_feature_admission": false,
+  "forecast_status": "NOT_ISSUED",
+  "pending_archive_append": true,
+  "source_registry_status": "SOURCE_ID_EXISTS_IN_ARCHIVED_SOURCE_SHARD_132; NEW_REVISION_PENDING_ARCHIVE_APPEND"
+}

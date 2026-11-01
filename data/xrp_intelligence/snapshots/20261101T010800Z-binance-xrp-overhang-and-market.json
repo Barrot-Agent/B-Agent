@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "XRP-20261101T010800Z-BINANCE-HACK-XRP-OVERHANG-AND-MARKET",
+  "captured_at_utc": "2026-11-01T01:08:00Z",
+  "data_cutoff_utc": "2026-11-01T01:04:00Z",
+  "incident": {
+    "name": "Binance October 29, 2026 cross-chain hot-wallet theft",
+    "fbi_attribution": "North Korea / TraderTraitor, overall incident, October 31",
+    "xrpl_first_chain_hit": true,
+    "xrpl_stolen_xrp": 233461943.1,
+    "attacker_address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "latest_independent_xrp_balance": 233461943.10005,
+    "latest_independent_balance_cutoff_utc": "2026-10-31T16:51:00Z",
+    "outgoing_since_theft_as_of_cutoff": 0,
+    "current_balance_after_cutoff": "UNKNOWN",
+    "current_outgoing_activity_after_cutoff": "UNKNOWN",
+    "value_at_theft_usd": 296000000,
+    "estimated_value_at_capture_price_usd": 291827428.875,
+    "share_of_circulating_supply_pct": 0.3685,
+    "potential_share_of_reported_24h_volume_pct": 39.1,
+    "status": "STOLEN_XRP_NOT_OBSERVED_MOVING_IN_LATEST_REVIEWED_SNAPSHOT; CURRENT_STATE_UNVERIFIED"
+  },
+  "issuer_freezes": {
+    "circle_usdc_frozen": 823000000,
+    "ripple_rlusd_frozen": 40500000,
+    "ripple_rlusd_sold_before_freeze_approx": 48000000,
+    "tether_usdt_frozen_approx": 1770000000,
+    "cctp_used_for_avalanche_to_ethereum_usdc_transfer": true,
+    "no_evidence_of_intentional_circle_facilitation": true,
+    "native_xrp_freeze_possible": false,
+    "issuer_controlled_rlusd_freeze_possible": true
+  },
+  "binance_recovery": {
+    "company_reported_total_loss_usd": 6340000000,
+    "company_reported_replenishment_pct": 90,
+    "xrp_customer_assets_reported_100pct_backed": true,
+    "rlusd_customer_assets_reported_100pct_backed": true,
+    "xrp_specific_purchase_quantity": "UNDISCLOSED",
+    "recovery_of_stolen_xrp_confirmed": false,
+    "withdrawal_reopening": "TARGETED_FOR_2026-11-01; NO_CONFIRMED_REOPENING_TIME_IN_LATEST_OFFICIAL_UPDATE",
+    "proof_of_reserves_full_zk_proof_estimated_utc": "2026-11-03"
+  },
+  "market": {
+    "provider": "CoinGecko",
+    "retrieval_time_utc": "2026-11-01T01:08:00Z",
+    "exact_quote_timestamp": "NOT_EXPOSED",
+    "xrp_usd": 1.25,
+    "market_cap_usd": 79376677561,
+    "circulating_supply_xrp": 63351000000,
+    "volume_24h_usd": 746633504.83,
+    "open_interest_usd": 3460000000,
+    "funding_8h_pct": 0.006,
+    "perp_to_spot_volume_ratio": 11.1,
+    "spot_depth_samples": [
+      {
+        "venue": "Coinbase",
+        "pair": "XRP/USD",
+        "volume_24h_usd": 25778164,
+        "plus_2pct_depth_usd": 4961858,
+        "minus_2pct_depth_usd": 8261085
+      },
+      {
+        "venue": "Binance",
+        "pair": "XRP/USDC",
+        "volume_24h_usd": 42843780,
+        "plus_2pct_depth_usd": 387078,
+        "minus_2pct_depth_usd": 797682
+      },
+      {
+        "venue": "Binance",
+        "pair": "XRP/USDT",
+        "volume_24h_usd": 27665134,
+        "plus_2pct_depth_usd": 1664306,
+        "minus_2pct_depth_usd": 2588531
+      }
+    ],
+    "comparison": "TradRadar's prior OI snapshot was 1.87B; not directly comparable. Preserve both provider observations, do not average."
+  },
+  "escrow": {
+    "november_1_eligibility_utc": "2026-11-01T00:00:00Z",
+    "current_status": "ELIGIBILITY_TIME_PASSED_EXECUTION_UNVERIFIED",
+    "latest_tracker_ledger": 108033174,
+    "latest_tracker_ledger_time_utc": "2026-10-31T23:22:00Z",
+    "post_event_raw_ledger_obtained": false
+  },
+  "source_ids": [
+    "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "source_reference_count": 2,
+  "missing_source_references": 0,
+  "source_revision_ids": [
+    "REV-20261101T010800Z-BINANCE-XRP-ATTACKER-ADDRESS-ISSUER-FREEZES"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "limitations": [
+    "No direct raw XRPL RPC response was retrieved in this run.",
+    "The latest independent attacker-account balance observation is Bitquery at 2026-10-31 16:51 UTC, 8.28 hours before this capture; current balance after that is unknown.",
+    "The FBI alert attributes the overall incident but does not list the XRPL attacker address.",
+    "Binance's 100% XRP customer-coverage statement is not proof that the stolen XRP was recovered or that an equal amount was bought in spot markets.",
+    "CoinGecko quote timestamp is not exposed; current market metrics are indicative and not admitted to the historical feature store.",
+    "The $28M Crypto Times headline conflicts with its own body and with independent sources; exclude that headline value.",
+    "The incident's total-loss and freeze totals differ across providers; preserve each provider's scope and cutoff."
+  ],
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261101T010800Z-binance-xrp-overhang-and-market.json"
+}

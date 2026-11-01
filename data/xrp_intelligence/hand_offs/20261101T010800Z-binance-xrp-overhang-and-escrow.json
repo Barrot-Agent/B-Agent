@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T010800Z-BINANCE-XRP-OVERHANG-AND-ESCROW",
+  "captured_at_utc": "2026-11-01T01:08:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains the execution, verification and safety foundation.",
+  "major_new_finding": "The October 29 Binance theft began on XRPL. Five Binance hot wallets sent 233,461,943.1 XRP to attacker account rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx between 20:05 and 20:09 UTC. Bitquery's latest reviewed balance is 233,461,943.10005 XRP with no outgoing transaction through 2026-10-31 16:51 UTC. The current state after that is unknown.",
+  "institutional_relationships": [
+    "FBI officially attributed the overall >$6B Binance theft to North Korea's TraderTraitor on October 31.",
+    "Circle froze 823M USDC and later 1.56M USDC in attacker-linked addresses; Elliptic reports an attacker AVAX-to-USDC-to-Ethereum path using Circle CCTP. This is not evidence of Circle intentionally assisting.",
+    "Ripple froze 40.5M RLUSD on Ethereum after approximately 48M had already been sold; Ripple cannot freeze native XRP.",
+    "Binance reports 90% of stolen assets replenished and top-ten assets including XRP and RLUSD 100% backed. This is company-reported customer coverage, not recovery of the stolen XRP or proof of an XRP-specific market purchase.",
+    "Binance's latest official notice still only targets withdrawal reopening for Sunday November 1; no confirmed reopening time is recorded."
+  ],
+  "market_context": {
+    "retrieval_time_utc": "2026-11-01T01:08:00Z",
+    "provider": "CoinGecko",
+    "exact_quote_timestamp": "NOT_EXPOSED",
+    "xrp_usd": 1.25,
+    "market_cap_usd": 79376677561,
+    "volume_24h_usd": 746633504.83,
+    "open_interest_usd": 3460000000,
+    "funding_8h_pct": 0.006,
+    "perp_to_spot_volume_ratio": 11.1,
+    "caveat": "Earlier TradRadar OI was 1.87B; provider scope/timestamps differ. These figures are indicative, not feature-store quality."
+  },
+  "escrow_status": "November 1 eligibility time passed, but latest XRP Insights pinned ledger 108033174 at 2026-10-31 23:22 UTC predates eligibility by 38 minutes. No raw post-event validated XRPL response or EscrowFinish hash has been obtained. Status remains ELIGIBILITY_TIME_PASSED_EXECUTION_UNVERIFIED.",
+  "repository_status": {
+    "main_sha": "93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+    "main_cross_analysis_writer_active": true,
+    "latest_commit_changes_only_generated_at": true,
+    "xrp_and_btc_recent_prior_sample_counts": 0,
+    "pr1435": "https://github.com/Barrot-Agent/B-Agent/pull/1435",
+    "pr1435_head_sha": "c3d239dde20a80c4b8a452c5225c93ea49c59883",
+    "pr1435_ci": "345 tests + 8 subtests passed",
+    "pr1435_gate": "Passed; merging disabled",
+    "pr1435_state": "OPEN_DRAFT_UNMERGED"
+  },
+  "prediction_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "next_actions": [
+    "Read the latest validated XRPL ledger and query account_objects/account_tx for the attacker address; compare against the 16:51 UTC Bitquery cutoff.",
+    "Monitor the first outgoing transaction from the attacker XRP address; classify destination, sequence, amount, follow-on transfers and any exchange/bridge route.",
+    "Verify Binance's November 3 full zero-knowledge Proof of Reserves when available and reconcile customer liabilities with XRP/RLUSD assets.",
+    "Record Binance withdrawal reopening only when an official notice and actual service availability confirm it.",
+    "Track whether Binance acquired XRP externally, used existing inventory or used OTC; do not infer from 100% coverage.",
+    "Build a point-in-time event study around the theft and recovery: XRP vs BTC/ETH, exchange-specific spot volume/depth, OI/funding, ETF creations/redemptions, and risk-off controls.",
+    "Keep PR #1435 draft and unmerged pending approval; the main Cross Analysis writer remains active.",
+    "Resolve the current research branch's pending archive validator before integrating additional source revisions.",
+    "Continue SBIC identity, ASK Coin, actual-capital and Camilla/Kamilah source verification."
+  ],
+  "platform_coordination": {
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "verified_live_platforms": [
+      "ChatGPT"
+    ],
+    "github_repository_access": "VERIFIED_CONNECTED",
+    "other_eight": "NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "safety": {
+    "main_changed_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "workflow_dispatch_performed": false,
+    "secret_accessed": false,
+    "real_money_trade_performed": false
+  }
+}

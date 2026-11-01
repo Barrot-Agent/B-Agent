@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T031418Z-BITQUERY-XRPLWIN-PROVENANCE-CORRECTION",
+  "captured_at_utc": "2026-11-01T03:14:18Z",
+  "correction_summary": "The prior snapshot conflated the source attribution for the Binance attacker-wallet balance. The October 31 16:51 UTC observation is from Bitquery's October 31 investigation. XRPLWin's separate article is dated October 30 and reports an earlier state with no exact capture time. Both observations are stale; current attacker-wallet balance is unknown.",
+  "authoritative_distinctions": [
+    "Bitquery: 233.5M XRP at 2026-10-31 16:51 UTC; no outgoing transaction as of that cutoff.",
+    "XRPLWin: exact 233,461,943.10005 XRP in its October 30 article; last listed transaction was a Check at 22:35 UTC October 29; article cutoff time not stated.",
+    "Bitquery live explorer address link returned 403; no bypass attempted.",
+    "Neither source establishes current November 1 balance or post-cutoff disposition."
+  ],
+  "other_research_state": {
+    "escrow": "XRP Insights ledger 108035119 at 01:30 UTC reports 1B XRP released, zero re-escrow by cutoff, 30.4B XRP remaining; Destination fields and later disposition unknown.",
+    "market": "Liqwall 02:52 UTC and OKX 02:41:50 UTC snapshots around $1.25; provider-specific, context only, no feature admission.",
+    "prediction": "NOT_ISSUED",
+    "main_sha": "f6fb103c61aa7f0da0205d8a0d776f88d6e58164",
+    "pr1439": "Open draft unmerged; exact-head CI 349 + 8 passed; fail-closed gate passed with merging disabled.",
+    "research_branch_prior_head": "b904832e58039792290e4ae70c6d065de6dec47c"
+  },
+  "next_actions": [
+    "Obtain a fresh validated XRPL ledger and account_tx history for the attacker address through an authorized public endpoint.",
+    "Verify both escrow transactions' Destination fields and follow-on transfers.",
+    "Keep the 16:51 Bitquery and Oct30 XRPLWin observations separately timestamped; never label either current.",
+    "Continue Binance Proof of Reserves and withdrawal reopening verification.",
+    "Keep PR #1439 unmerged pending explicit approval."
+  ],
+  "safety": {
+    "main_modified": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "real_money_trade": false
+  }
+}
