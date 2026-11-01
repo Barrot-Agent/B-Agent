@@ -745,13 +745,14 @@ def test_databricks_token_rotation_is_disabled_and_accepts_no_token_input() -> N
     assert "ROTATION_NOT_PERFORMED" in workflow
 
 
-def test_push_triggered_external_deployments_are_manual_only() -> None:
+def test_external_deployment_workflows_are_disabled_pending_approval() -> None:
     for name in ("deploy-a2a-worker.yml", "sync-self-hosted-brain.yml"):
         workflow = (REPO_ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
         assert "workflow_dispatch:" in workflow
         assert "push:" not in workflow
-        assert "contents: read" in workflow
-        assert "contents: write" not in workflow
+        assert "permissions: {}" in workflow
+        assert "secrets." not in workflow
+        assert "DEPLOYMENT_NOT_PERFORMED" in workflow
 
 
 def test_destructive_hugging_face_admin_workflow_is_disabled() -> None:
