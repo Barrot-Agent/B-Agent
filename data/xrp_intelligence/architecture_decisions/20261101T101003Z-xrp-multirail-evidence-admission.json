@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T101003Z-XRP-MULTIRAIL",
+  "captured_at_utc": "2026-11-01T10:10:03Z",
+  "title": "Institutional XRP relationship evidence and feature-admission controls",
+  "status": "RECORDED_PENDING_VALIDATION",
+  "decisions": [
+    "Treat 06:42 XRPL escrow observation as tracker-reported, not raw Destination-verified.",
+    "Treat XRP phase-one inclusion as announced, BTC reopening as Reuters-reported, XRP-specific success as unverified.",
+    "Keep TradRadar seven-venue OI and Seandra Binance-only OI separate; prohibit averaging.",
+    "Keep new source IDs pending archive append and excluded from model features.",
+    "Forecast NOT_ISSUED; market_features_admitted false.",
+    "Do not merge PR #1449 or any PR; main remains unremediated until explicit approval.",
+    "Coinbase XRP/cbXRP-Morpho path is eligibility evidence only; utilization unknown.",
+    "Coinbase is multi-issuer; no exclusive Circle/Ripple alignment.",
+    "Circle Arc competes/complements XRPL; Circle also issues native USDC on XRPL.",
+    "SBI Group is multi-rail; Tokyo SBIC is separate.",
+    "Tokyo SBIC ChatGPT seminar was educational, not OpenAI partnership.",
+    "Do not admit Binance XRP status, CoinGecko OI/depth, escrow disposition or creator claims as predictive features without timestamps/corroboration."
+  ],
+  "rationale": "The latest observations improve event coverage but retain transaction-disposition and source-scope gaps. Treating announcements as successful XRP withdrawals or mixing OI universes would create measurement error.",
+  "rejected_alternatives": [
+    "Assume all phase-one assets available at 06:00 UTC.",
+    "Use BTC reopening as proof of XRP withdrawal success.",
+    "Average multi-venue OI with Binance-only OI.",
+    "Treat escrow release as immediate sell pressure."
+  ],
+  "source_ids": [
+    "SRC-20261101T101003Z-COINBASE-Q3",
+    "SRC-20261101T101003Z-COINBASE-XRP-MORPHO",
+    "SRC-20261101T101003Z-CBXRP-RISK",
+    "SRC-20261101T101003Z-CIRCLE-ARC",
+    "SRC-20261101T101003Z-CIRCLE-USDC-XRPL",
+    "SRC-20261101T101003Z-CIRCLE-SBI-MOU",
+    "SRC-20261101T101003Z-SBI-CIRCLE-JV",
+    "SRC-20261101T101003Z-SBIC-PROFILE",
+    "SRC-20261101T101003Z-SBIC-CHATGPT",
+    "SRC-20261101T101003Z-SBI-REMIT-ODL",
+    "SRC-20261101T101003Z-SBI-ODL-EXPANSION",
+    "SRC-20261101T101003Z-SBI-RIPPLE-ASIA-POC",
+    "SRC-20261101T101003Z-RIPPLE-COINBASE-RLUSD",
+    "SRC-20261101T101003Z-RIPPLE-SWELL",
+    "SRC-20261101T101003Z-BINANCE-UPDATE4",
+    "SRC-20261101T101003Z-REUTERS-PHASE1",
+    "SRC-20261101T101003Z-BINANCE-STATUS",
+    "SRC-20261101T101003Z-XRP-ESCROW-108041786",
+    "SRC-20261101T101003Z-COINGECKO-XRP",
+    "SRC-20261101T101003Z-PR1459-CI",
+    "SRC-20261101T101003Z-PR1450-VALIDATOR",
+    "SRC-20261101T101003Z-PR1169-KAMILAH",
+    "SRC-20261101T101003Z-YT-KAMILAH-1",
+    "SRC-20261101T101003Z-YT-KAMILAH-2"
+  ],
+  "feature_admission": {
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}
