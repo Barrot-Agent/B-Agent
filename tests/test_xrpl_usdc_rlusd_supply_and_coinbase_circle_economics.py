@@ -168,3 +168,43 @@ def test_xrpl_rwa_headline_separates_distributed_float_from_registry_notional():
     assert rwa["represented_usd"] == 4_060_000_000
     assert rwa["distributed_share_pct"] < 7
     assert rwa["represented_share_pct"] > 93
+
+
+def test_coinbase_etf_custody_relationships_are_not_misreported_as_coinbase_balances():
+    ledger = json.loads(
+        (ROOT / "data" / "xrp_intelligence" / "research_ledger_addenda" /
+         "20261101T213000Z-coinbase-etf-custody-and-in-kind-structure.json").read_text(encoding="utf-8")
+    )
+    footprint = ledger["findings"][4]["text"]
+    assert "not Coinbase's custody balance" in footprint
+    assert "75.1%" in footprint
+    assert ledger["forecast_status"] == "NOT_ISSUED"
+
+
+def test_grayscale_anchorage_addition_and_in_kind_change_preserve_unknown_amounts():
+    ledger = json.loads(
+        (ROOT / "data" / "xrp_intelligence" / "research_ledger_addenda" /
+         "20261101T213000Z-coinbase-etf-custody-and-in-kind-structure.json").read_text(encoding="utf-8")
+    )
+    assert any("not determined" in item["text"] for item in ledger["findings"])
+    assert any("no actual in-kind volume" in item["disconfirming"][0] for item in ledger["competing_hypotheses"])
+
+
+def test_21shares_three_custodians_are_not_collapsed_to_two():
+    snapshot = json.loads(
+        (ROOT / "data" / "xrp_intelligence" / "snapshots" /
+         "20261101T213000Z-xrp-etf-custody-and-flow-snapshot.json").read_text(encoding="utf-8")
+    )
+    row = next(x for x in snapshot["custody_matrix"] if x["fund"] == "21Shares XRP ETF")
+    assert len(row["custodians"]) == 3
+    assert row["split_disclosed"] is False
+
+
+def test_etf_flows_keep_daily_and_weekly_windows_separate():
+    snapshot = json.loads(
+        (ROOT / "data" / "xrp_intelligence" / "snapshots" /
+         "20261101T213000Z-xrp-etf-custody-and-flow-snapshot.json").read_text(encoding="utf-8")
+    )
+    assert snapshot["latest_flows"]["daily_xrp"] == -49932
+    assert snapshot["latest_flows"]["week_xrp"] == 3390000
+    assert snapshot["latest_flows"]["latest_day"] == "2026-10-30"

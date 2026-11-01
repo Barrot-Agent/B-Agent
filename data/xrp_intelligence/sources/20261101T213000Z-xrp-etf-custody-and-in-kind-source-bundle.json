@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "source_bundle_id": "xrp-etf-custody-and-in-kind-20261101T213000Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "sources": [
+    {
+      "source_id": "bitwise-xrp-etf-10q-20260630",
+      "publisher": "Bitwise XRP ETF / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2039525/000119312526346245/xrp-20260630.htm",
+      "source_type": "sec_10q",
+      "period_end": "2026-06-30",
+      "claims": {
+        "xrp_custodian": "Coinbase Custody Trust Company, LLC"
+      },
+      "limitations": [
+        "June 30 filing; later amendments must be checked before assuming custody exclusivity remains unchanged."
+      ]
+    },
+    {
+      "source_id": "franklin-xrp-etf-10q-20260630",
+      "publisher": "Franklin XRP Trust / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2059438/000114036126033198/R8.htm",
+      "source_type": "sec_10q",
+      "period_end": "2026-06-30",
+      "claims": {
+        "xrp_custodian": "Coinbase Custody Trust Company, LLC",
+        "prime_broker": "Coinbase Inc.",
+        "cash_custodian": "BNY Mellon"
+      },
+      "limitations": [
+        "No current custody balance split disclosed in the excerpt."
+      ]
+    },
+    {
+      "source_id": "grayscale-xrp-etf-10q-20260630",
+      "publisher": "Grayscale XRP Trust ETF / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2037427/000203742726000007/ck0002037427-20260630.htm",
+      "source_type": "sec_10q",
+      "period_end": "2026-06-30",
+      "claims": {
+        "prime_broker": "Coinbase Inc.",
+        "primary_custodian": "Coinbase Custody Trust Company, LLC"
+      },
+      "limitations": [
+        "Subsequent September 29, 2026 8-K adds Anchorage as an additional custodian."
+      ]
+    },
+    {
+      "source_id": "grayscale-xrp-etf-8k-20260929",
+      "publisher": "Grayscale XRP Trust ETF / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2037427/000119312526414265/ck0002037427-20260929.htm",
+      "source_type": "sec_8k",
+      "published_at": "2026-09-29",
+      "claims": {
+        "coinbase_remains_primary_custodian": true,
+        "additional_custodian": "Anchorage Digital Bank N.A.",
+        "anchorage_amount_to_be_moved": "not yet determined",
+        "in_kind_creation_redemption_effective": "2026-09-29",
+        "authorized_participants": [
+          "Macquarie Capital (USA) Inc.",
+          "Virtu Americas LLC"
+        ]
+      },
+      "limitations": [
+        "No actual XRP amount moved to Anchorage or actual in-kind creation/redemption volume disclosed."
+      ]
+    },
+    {
+      "source_id": "grayscale-xrp-etf-prospectus-supplement-20261005",
+      "publisher": "Grayscale XRP Trust ETF / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2037427/000119312526414361/gxrp_424b3_s.custodian_i.htm",
+      "source_type": "prospectus_supplement",
+      "published_at": "2026-10-05",
+      "claims": {
+        "coinbase_primary_custodian": true,
+        "anchorage_additional_custodian": true,
+        "ap_in_kind_orders_exchange_xrp_directly": true
+      },
+      "limitations": [
+        "The supplement says the sponsor had not determined the total XRP to move to Anchorage."
+      ]
+    },
+    {
+      "source_id": "21shares-xrp-etf-10q-20260630",
+      "publisher": "21Shares XRP ETF / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2028835/000121390026087823/R7.htm",
+      "source_type": "sec_10q",
+      "period_end": "2026-06-30",
+      "claims": {
+        "custodians": [
+          "Coinbase Custody Trust Company, LLC",
+          "BitGo Bank & Trust, N.A.",
+          "Anchorage Digital Bank N.A."
+        ]
+      },
+      "limitations": [
+        "No per-custodian XRP balance allocation disclosed."
+      ]
+    },
+    {
+      "source_id": "21shares-xrp-etf-prospectus-2026",
+      "publisher": "21Shares XRP ETF / SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/2028835/000121390026094061/ea0303111-424b3_21shares.htm",
+      "source_type": "prospectus",
+      "published_at": "2026",
+      "claims": {
+        "custodians": [
+          "Coinbase Custody Trust Company, LLC",
+          "BitGo Bank & Trust, N.A.",
+          "Anchorage Digital Bank N.A."
+        ]
+      },
+      "limitations": [
+        "Custody split by provider not disclosed."
+      ]
+    },
+    {
+      "source_id": "xrp-insights-etf-holdings-20261101",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "source_type": "issuer_report_aggregator",
+      "observed_at": "2026-11-01",
+      "claims": {
+        "total_xrp": 1196600000,
+        "total_aum_usd": 1503000000,
+        "products": 7,
+        "holdings_by_product_xrp": {
+          "bitwise": 415370000,
+          "franklin": 310430000,
+          "canary": 243730000,
+          "twenty_one_shares": 107300000,
+          "grayscale": 65440000,
+          "rex_osprey": 33390000,
+          "bitw_index": 20950000
+        }
+      },
+      "limitations": [
+        "Holdings are from issuer reports and have different last-updated dates; exact custodian balance split is not shown."
+      ]
+    },
+    {
+      "source_id": "xrp-insights-etf-flows-20261030",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar/etf-flows",
+      "source_type": "issuer_flow_aggregator",
+      "observed_at": "2026-10-30",
+      "claims": {
+        "daily_flow_xrp": -49932,
+        "daily_flow_usd": -62400,
+        "week_2026_10_26_to_30_xrp": 3390000,
+        "week_2026_10_26_to_30_usd": 4230000,
+        "prior_week_xrp": 1530000,
+        "prior_week_usd": 2030000
+      },
+      "limitations": [
+        "Latest flow day is October 30; no November 1 trading session. Aggregator methodology and source revisions should be retained."
+      ]
+    }
+  ],
+  "derived_metrics": {
+    "coinbase_relationship_fund_holdings_xrp": 898540000,
+    "tracked_etf_holdings_xrp": 1196600000,
+    "share_pct": 75.1,
+    "definition": "Sum of holdings in Bitwise, Franklin, Grayscale and 21Shares, where SEC filings name Coinbase as XRP custodian and/or prime broker. This is not Coinbase's custody balance; Grayscale and 21Shares use multiple custodians and the actual split is undisclosed."
+  },
+  "source_independence": "SEC filings are primary legal disclosures. XRP Insights is a secondary aggregator for holdings and flows. Custody relationships are confirmed from SEC filings; per-provider custody balances remain unknown."
+}

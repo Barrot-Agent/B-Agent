@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "coinbase-etf-custody-and-institutional-liquidity-handoff-20261101T213000Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "prior_head": "8f4ffac3fa8094bfdaf6bb64177462a7f130939a",
+  "key_findings": [
+    "Coinbase is a named XRP custodian for Bitwise, Franklin, Grayscale and 21Shares; Coinbase Inc. is also prime broker for Franklin and Grayscale.",
+    "Grayscale added Anchorage as an additional custodian on September 29, while retaining Coinbase as primary. The amount to be moved to Anchorage was not determined.",
+    "Grayscale enabled in-kind XRP creations/redemptions with Macquarie and Virtu from September 29. Actual in-kind usage and AP sourcing venues remain unknown.",
+    "The four funds with SEC-confirmed Coinbase custody/prime-broker relationships represent about 898.54M XRP (75.1% of tracker ETF holdings), but this is not Coinbase's custody balance; multi-custodian splits are undisclosed.",
+    "The XRP ETF tracker reports 1.1966B XRP and $1.503B AUM across seven products; October 26–30 net flow was +3.39M XRP, but October 30 alone was -49,932 XRP.",
+    "Coinbase is a central institutional XRP infrastructure node, but BitGo and Anchorage diversify custody. No exclusive control or exact custody market share is established."
+  ],
+  "current_repository_state": {
+    "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+    "research_pr1464_head": "8f4ffac3fa8094bfdaf6bb64177462a7f130939a",
+    "research_pr1464_ci": "439 tests + 8 subtests passed on run 41351973621",
+    "research_pr1464_gate": "run 41351973670 passed; merge disabled",
+    "pr1464": "open draft unmerged",
+    "pr1474": "open draft unmerged; security quarantine not active on main",
+    "pr1475": "open draft unmerged; prediction integrity fix not active on main"
+  },
+  "next_actions": [
+    "Verify Canary XRP ETF custody from its latest SEC filing; do not rely on the tracker alone.",
+    "Determine whether Bitwise, Franklin and other funds have amended custodian arrangements after June 30, 2026.",
+    "Trace actual in-kind creation/redemption events and AP XRP sourcing where public filings or onchain transfers permit.",
+    "Update Coinbase's institutional graph with exact custody effective dates and unknown balance allocations.",
+    "Continue x402 CheckCash cohort trace, escrow supply correction, RLUSD chain supply reconciliation and fixed-horizon outcome source-byte binding.",
+    "Keep all PRs unmerged and main unchanged."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "safety": "No merge, force-push, manual workflow dispatch, external deployment, paper-position mutation or real-money trade."
+}

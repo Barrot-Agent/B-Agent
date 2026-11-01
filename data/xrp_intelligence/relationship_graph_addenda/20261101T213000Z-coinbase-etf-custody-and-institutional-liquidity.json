@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "id": "coinbase-etf-custody-and-institutional-liquidity-20261101T213000Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "nodes": [
+    {
+      "id": "Coinbase",
+      "type": "exchange_prime_broker_custodian"
+    },
+    {
+      "id": "Coinbase Custody Trust Company",
+      "type": "regulated_custodian"
+    },
+    {
+      "id": "Coinbase Inc.",
+      "type": "prime_broker"
+    },
+    {
+      "id": "Bitwise XRP ETF",
+      "type": "etp"
+    },
+    {
+      "id": "Franklin XRP ETF",
+      "type": "etp"
+    },
+    {
+      "id": "Grayscale XRP Trust ETF",
+      "type": "etp"
+    },
+    {
+      "id": "21Shares XRP ETF",
+      "type": "etp"
+    },
+    {
+      "id": "Anchorage Digital Bank",
+      "type": "custodian"
+    },
+    {
+      "id": "BitGo Bank & Trust",
+      "type": "custodian"
+    },
+    {
+      "id": "Macquarie Capital",
+      "type": "authorized_participant"
+    },
+    {
+      "id": "Virtu Americas",
+      "type": "authorized_participant"
+    },
+    {
+      "id": "Evernorth",
+      "type": "institutional_treasury"
+    },
+    {
+      "id": "XRP",
+      "type": "asset"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Coinbase Custody Trust Company",
+      "to": "Bitwise XRP ETF",
+      "relationship": "SEC_named_XRP_custodian",
+      "evidence_class": "SEC_10Q"
+    },
+    {
+      "from": "Coinbase Custody Trust Company",
+      "to": "Franklin XRP ETF",
+      "relationship": "SEC_named_XRP_custodian",
+      "evidence_class": "SEC_10Q"
+    },
+    {
+      "from": "Coinbase Inc.",
+      "to": "Franklin XRP ETF",
+      "relationship": "SEC_named_prime_broker",
+      "evidence_class": "SEC_10Q"
+    },
+    {
+      "from": "Coinbase Custody Trust Company",
+      "to": "Grayscale XRP Trust ETF",
+      "relationship": "primary_custodian",
+      "evidence_class": "SEC_10Q_AND_2026_09_29_8K"
+    },
+    {
+      "from": "Coinbase Inc.",
+      "to": "Grayscale XRP Trust ETF",
+      "relationship": "prime_broker",
+      "evidence_class": "SEC_10Q"
+    },
+    {
+      "from": "Anchorage Digital Bank",
+      "to": "Grayscale XRP Trust ETF",
+      "relationship": "additional_custodian_for_portion_of_XRP; amount not determined",
+      "evidence_class": "SEC_8K_2026_09_29"
+    },
+    {
+      "from": "Coinbase Custody Trust Company",
+      "to": "21Shares XRP ETF",
+      "relationship": "one_of_three_custodians",
+      "evidence_class": "SEC_10Q"
+    },
+    {
+      "from": "BitGo Bank & Trust",
+      "to": "21Shares XRP ETF",
+      "relationship": "one_of_three_custodians",
+      "evidence_class": "SEC_10Q"
+    },
+    {
+      "from": "Anchorage Digital Bank",
+      "to": "21Shares XRP ETF",
+      "relationship": "one_of_three_custodians",
+      "evidence_class": "SEC_10Q"
+    },
+    {
+      "from": "Macquarie Capital",
+      "to": "Grayscale XRP Trust ETF",
+      "relationship": "authorized_participant_for_in_kind_XRP_creations_and_redemptions",
+      "evidence_class": "SEC_8K_2026_09_29"
+    },
+    {
+      "from": "Virtu Americas",
+      "to": "Grayscale XRP Trust ETF",
+      "relationship": "authorized_participant_for_in_kind_XRP_creations_and_redemptions",
+      "evidence_class": "SEC_8K_2026_09_29"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Evernorth",
+      "relationship": "selected_principal_XRP_market_for_financial_reporting_and_execution_relationship",
+      "evidence_class": "SEC_PROSPECTUS"
+    },
+    {
+      "from": "Coinbase Custody Trust Company",
+      "to": "XRP",
+      "relationship": "institutional_ETP_custody",
+      "evidence_class": "MULTIPLE_SEC_FILINGS"
+    }
+  ],
+  "limits": [
+    "Fund holdings with Coinbase service relationships are not Coinbase custody balances.",
+    "Grayscale and 21Shares use multiple custodians; per-custodian allocation is undisclosed.",
+    "In-kind eligibility does not prove actual in-kind flow or a specific XRP purchase."
+  ]
+}
