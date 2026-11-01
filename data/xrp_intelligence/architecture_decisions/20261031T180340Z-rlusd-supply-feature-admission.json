@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T180340Z-RLUSD-CHAIN-SUPPLY-AND-EXCHANGE-WALLET-REVISION",
+  "captured_at_utc": "2026-10-31T18:03:40Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NOT_A_MODEL_FEATURE",
+  "context": "Coinbase announced RLUSD distribution across XRPL, Base and Ethereum on 2026-10-28. The XRPL dashboard displayed a large XRPL RLUSD supply decline, while XRP Insights refreshed exchange-wallet change figures.",
+  "decisions": [
+    "Maintain RLUSD supply as a chain-specific stablecoin feature family; do not combine XRPL, Ethereum and Base unless all chain supplies and bridge/mint/burn paths are covered at aligned cutoffs.",
+    "Do not interpret the XRPL RLUSD decrease as XRP buying, XRP selling, or a native XRP capital flow.",
+    "Do not interpret the 22.48B XRP attributed exchange-wallet total as tradable float; it includes cold custody, customer omnibus balances and 487.2M XRP in wrapped/operational reserves.",
+    "Preserve the 2026-10-31 17:57 source capture and the current page capture separately. The current page display supersedes the prior values for the latest observation, but the reason for the revision is unknown.",
+    "Keep the current XRP Insights same-wallet values provider-specific: total -133.0M over 7 days and -12.3M over 30 days; Binance +17.6M/+30.3M; Coinbase +17.7M/+18.4M; Upbit -0.747M/+34.6M; SBI VC Trade -0.899M/-10.5M.",
+    "Keep the prior CryptoQuant Binance reserve series separate from the broad XRP Insights attributed-wallet series; no cross-provider averaging or causal stitching."
+  ],
+  "required_followup": [
+    "Obtain Base RLUSD supply and align Ethereum, XRPL and Base snapshots at the same cutoff.",
+    "Acquire transaction-level XRPL RLUSD issuer and bridge transfer IDs for the 2026-10-30/31 decrease.",
+    "Verify whether the XRPL dashboard's signed daily snapshot signature can be independently recomputed.",
+    "Archive both XRP Insights captures and obtain the provider's raw daily per-exchange series to explain the same-day 30-day revision.",
+    "Crosswalk the five Binance incident source wallets against the 153-wallet XRP Insights Binance set and the narrower CryptoQuant series."
+  ],
+  "feature_admission": {
+    "rlusd_supply": "CHAIN_SPECIFIC_CONTEXT_ONLY",
+    "exchange_wallet_balances": "CUSTODY_CONTEXT_ONLY",
+    "xrp_directional_price_features": [],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "safety": {
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_workflow_dispatch": true,
+    "no_trade": true
+  }
+}

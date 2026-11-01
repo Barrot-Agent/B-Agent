@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T181303Z-INSTITUTIONAL-CUSTODY-ACTUAL-CAPITAL-AND-FEATURE-ADMISSION",
+  "captured_at_utc": "2026-10-31T18:13:42.938Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NOT_A_DIRECTIONAL_MODEL_FEATURE",
+  "decisions": [
+    "Treat OCC CAS Consummated/Effective dates as regulator-record evidence of charter effectiveness, but do not infer that the trust bank has opened or begun live operations.",
+    "Preserve Ripple National Trust Bank and Circle National Trust as separate entities with distinct issuer relationships and stated initial/future scopes.",
+    "Keep RLUSD issuance with Standard Custody & Trust Company; BNY is the primary reserve custodian; Ripple National Trust Bank is described as reserve manager/collateral trustee and fiduciary custodian upon opening.",
+    "Classify BNY's XRP custody platform support as institutional custody access, not evidence of BNY proprietary XRP holdings or customer custody balances.",
+    "Classify C2FO's USD 520B historical working-capital figure as platform-wide legacy Early Pay activity, not XRPL or Instant Pay volume.",
+    "Classify C2FO Instant Pay as announced and waitlist-based; actual capital-provider funding, invoice volume and RLUSD settlement volume remain unknown.",
+    "Classify Aviva's tokenized USD Liquidity Fund share class as launched on XRPL, but its tokenized AUM, on-chain holdings and investor turnover remain unknown.",
+    "Classify SG-FORGE EURCV as launched on XRPL with Ripple custody support; collateral use is only an opportunity to explore.",
+    "Classify the Mastercard/WebBank/Gemini RLUSD settlement program as exploratory until production transactions or operational disclosures are verified.",
+    "Do not admit custody, charter, tokenization or partnership announcements as directional XRP features without measured XRP-specific capital flows or out-of-sample predictive value.",
+    "Classify Coinbase National Trust as preliminary conditional approval only as of the OCC Corporate Decision #1370 dated 2026-04-02; do not treat it as an effective or operational federal charter.",
+    "Keep Coinbase's existing NYDFS-chartered Coinbase Custody Trust Company separate from the proposed national trust bank; the OCC decision describes a planned three-year migration, not a completed migration.",
+    "Classify the proposed Coinbase National Trust's staking, Prime Trading and Prime Financing access as finder access to affiliate services for custody clients; the proposed bank itself does not provide those underlying services.",
+    "Keep Coinbase Borrow/Morpho, Coinbase Global Exchange cross-collateral and Coinbase XRP-PERP as separate product datasets; do not transfer one product's LTV or liquidation threshold to another.",
+    "Treat cbXRP as a 1:1 wrapped representation backed by Coinbase-held XRP; distinguish reserve backing from open-market purchases and customer beneficial ownership.",
+    "Preserve the Coinbase cbXRP proof-of-reserves search-indexed 2026-10-31 snapshot and direct-open 2026-10-29 snapshot as separate observations because the direct page did not reproduce the newer indexed figures.",
+    "Record the Morpho cbXRP/USDC 62.5% LLTV market as a public Base lending market; do not attribute all of its borrowers or supplied liquidity to Coinbase customers without a market-level crosswalk.",
+    "Use the Coinbase Borrow product's $100,000 XRP borrowing cap as a product limit; do not apply the page's generic 86% liquidation LTV to XRP absent an asset-specific Coinbase term.",
+    "Record Coinbase Global Exchange XRP collateral haircuts and ADQ concentration limits as risk controls; XRP-specific haircut and posted balances remain undisclosed.",
+    "Treat XRP-PERP as USDC-settled derivatives exposure, not physical XRP delivery or direct spot demand."
+  ],
+  "actual_capital_taxonomy": [
+    "platform_cumulative_working_capital",
+    "product_waitlist",
+    "funded_invoice_volume",
+    "settled_rlusd_volume",
+    "tokenized_fund_aum",
+    "custody_assets",
+    "reserve_assets",
+    "native_xrp_net_flow"
+  ],
+  "required_followup": [
+    "Monitor OCC CAS and Ripple National Trust Bank opening/operational disclosures.",
+    "Verify BNY XRP custody product availability and seek published client asset balances or service activation evidence.",
+    "Track C2FO Instant Pay from waitlist to production; require invoice funding and RLUSD settlement records before counting capital.",
+    "Obtain Aviva tokenized share-class AUM, XRP Ledger issued-token balances and transfer history.",
+    "Verify EURCV collateral integration and any actual collateral balances.",
+    "Verify whether Mastercard/WebBank/Gemini has progressed from integration planning to production settlement.",
+    "Monitor the OCC CAS record for a Coinbase National Trust Consummated/Effective action and verify the bank's actual opening date.",
+    "Verify whether the planned migration from Coinbase Custody Trust Company LLC to Coinbase National Trust has begun and how XRP custody balances are allocated between entities.",
+    "Re-fetch the Coinbase cbXRP proof-of-reserves page and reconcile the 2026-10-31 indexed snapshot with the 2026-10-29 direct-page render.",
+    "Obtain Morpho market-level raw API data and identify whether the cbXRP/USDC 62.5% market is the market used by Coinbase Borrow.",
+    "Track cbXRP total supply, Coinbase reserve addresses, Morpho collateral balances, loan originations, liquidations and unwrapping separately.",
+    "Seek Coinbase Global Exchange XRP collateral quantities and XRP-specific haircuts; do not infer them from published general methodology."
+  ],
+  "feature_admission": {
+    "institutional_events": "EVENT_CONTEXT_ONLY",
+    "native_xrp_directional_features": [],
+    "forecast_status": "NOT_ISSUED",
+    "coinbase_charter": "REGULATORY_EVENT_CONTEXT_ONLY; CONDITIONAL_NOT_OPERATIONAL",
+    "coinbase_collateral": "CUSTODY_AND_CREDIT_CONTEXT_ONLY; NO_DIRECTIONAL_XRP_FEATURE"
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-SBIC-SBI-RLUSD-ETF-FLOW-CONFLICT-20261031T183000Z",
+  "captured_at_utc": "2026-10-31T18:30:00Z",
+  "data_cutoff_utc": "2026-10-31T18:03:00Z",
+  "mission_priority": "XRP_INTELLIGENCE_AND_PREDICTION_ENGINE_MASTERY",
+  "scope": "Japanese SBIC identity resolution; distinction from SBI Holdings; SBI VC Trade RLUSD distribution and XRP rewards; Coinbase RLUSD network access; conflicting October 30 XRP ETF flow observations",
+  "source_ids": [
+    "SRC-SBIC-EAST-JAPAN-PROFILE-20261031",
+    "SRC-SBIC-CHATGPT-GENERATIVE-AI-SEMINAR-20260305",
+    "SRC-SBIC-GENAI-CHATGPT-COPILOT-TRAINING-20250612",
+    "SRC-SBI-VC-TRADE-RLUSD-JAPAN-LISTING-20260624",
+    "SRC-SBI-VISA-XRP-REWARDS-CARD-20260501",
+    "SRC-COINBASE-RLUSD-LISTING-20261028",
+    "SRC-CRYPTOETF-XRP-FLOWS-20261031T0548Z",
+    "SRC-MAKETO-XRP-ETF-FLOWS-20261031T0229Z",
+    "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261031T1803Z"
+  ],
+  "sbic_identity": {
+    "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+    "public_name": "SBIC East Japan",
+    "corporate_number": "9011001030621",
+    "established_date": "1963-11-15",
+    "shareholder_description": "Local governments across 18 prefectures, chambers of commerce, financial institutions and business companies",
+    "official_independence_statement": "The company states it is now a privatized independent corporation conducting investment activity under the relevant Japanese law.",
+    "distinction": {
+      "sbic_east_japan": "Japanese SME investment-development policy implementation company",
+      "sbi_holdings": "Separate Japanese financial group; not the same legal entity",
+      "relationship_to_sbi_holdings": "NO_AFFILIATION_ESTABLISHED_FROM_REVIEWED_PRIMARY_RECORDS",
+      "relationship_to_xrp": "NO_DIRECT_XRP_OR_RIPPLE_RELATIONSHIP_ESTABLISHED"
+    },
+    "chatgpt_context": {
+      "event": "SBIC seminar on 2026-03-05 titled Generative AI (ChatGPT): present and future",
+      "speaker_affiliation": "Microsoft Japan executive evangelist",
+      "cohost": "Hamamatsu Iwata Shinkin Bank",
+      "separate_training": "2025-06-12 to 2025-06-13 training included ChatGPT and Microsoft Copilot",
+      "interpretation": "Educational use and training; not an OpenAI partnership, SBI Holdings affiliation or XRP project"
+    }
+  },
+  "sbi_group_xrp_and_rlusd": {
+    "sbi_vc_trade_relationship": "SBI Holdings consolidated subsidiary",
+    "rlusd_japan_distribution": {
+      "start_date": "2026-06-24",
+      "platform": "VCTRADE",
+      "legal_classification": "SBI VC Trade states it handles RLUSD as a Type 4 Electronic Payment Instrument under its Japanese-law analysis",
+      "deposits_withdrawals": "Company announcement says fee-free",
+      "relationship_to_ripple": "Direct joint-company announcement and distribution relationship",
+      "actual_rlusd_volume": "NOT_DISCLOSED",
+      "xrp_purchase_or_collateral_flow": "NOT_ESTABLISHED"
+    },
+    "visa_rewards_card": {
+      "announcement_date": "2026-05-01",
+      "partners": [
+        "SBI Holdings",
+        "SBI VC Trade",
+        "Aplus",
+        "Visa"
+      ],
+      "reward_assets": [
+        "BTC",
+        "ETH",
+        "XRP"
+      ],
+      "xrp_reward_inventory_source": "UNKNOWN",
+      "customer_adoption_and_xrp_amounts": "NOT_DISCLOSED",
+      "interpretation": "Retail reward distribution channel, not proof of net spot-market buying"
+    }
+  },
+  "coinbase_ripple_circle_relationship": {
+    "coinbase_rlusd": {
+      "products": [
+        "Coinbase Prime",
+        "Coinbase Exchange",
+        "Coinbase retail app"
+      ],
+      "supported_networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "ripple_base_liquidity_support": "Coinbase says Ripple will provide liquidity on Base",
+      "global_exchange_collateral": "DEFERRED_AT_LAUNCH; future capability stated",
+      "interpretation": "Confirmed RLUSD distribution and network access; no XRP net-flow causality established"
+    },
+    "circle_context": "Circle remains a separate USDC issuer and Coinbase distribution partner; Coinbase's RLUSD listing shows multi-issuer stablecoin distribution rather than Circle exclusivity.",
+    "direct_circle_ripple_agreement": "NO_NEW_DIRECT_BILATERAL_AGREEMENT_ESTABLISHED_BY_THIS_ADDENDUM"
+  },
+  "xrp_etf_flow_observations": {
+    "session": "2026-10-30",
+    "unit": "USD",
+    "observations": [
+      {
+        "provider": "CryptoETF.today",
+        "published_at_utc": "2026-10-31T05:48:00Z",
+        "reported_total_usd": 200000,
+        "completeness": "PARTIAL_3_OF_5",
+        "fund_flows_usd": {
+          "XRP_Bitwise": -700000,
+          "XRPC_Canary": 900000,
+          "TOXR_21Shares": 0
+        },
+        "pending_funds": [
+          "XRPZ_Franklin",
+          "GXRP_Grayscale"
+        ]
+      },
+      {
+        "provider": "Maketo",
+        "page_updated_at_utc": "2026-10-31T02:29:00Z",
+        "reported_total_usd": -496500,
+        "completeness": "PROVIDER_SAYS_5_OF_5",
+        "fund_flows_usd": {
+          "XRP_Bitwise": -694000,
+          "XRPZ_Franklin": 0,
+          "XRPC_Canary": 922000,
+          "GXRP_Grayscale": -725000,
+          "TOXR_21Shares": 0
+        },
+        "note": "Rounded components sum to approximately -USD 497K."
+      },
+      {
+        "provider": "CryptoKeyhole",
+        "page_updated_at_utc": "2026-10-31T18:03:00Z",
+        "reported_total_usd": -1412000,
+        "completeness": "PARTIAL_3_OF_4_DAILY_COLLECTED_FUNDS",
+        "fund_flows_usd": {
+          "XRP_Bitwise": -866000,
+          "XRPC_Canary": -545000,
+          "TOXR_21Shares": 0
+        },
+        "pending_funds": [
+          "XRPZ_Franklin"
+        ],
+        "daily_universe_exclusions": [
+          "GXRP_Grayscale"
+        ],
+        "method": "Change in issuer-published XRP holdings; USD conversion uses provider's own XRP/USD close."
+      }
+    ],
+    "material_conflicts": [
+      "Aggregate sign differs: CryptoETF.today positive; Maketo negative; CryptoKeyhole negative.",
+      "XRPC sign differs: CryptoETF.today and Maketo positive; CryptoKeyhole negative.",
+      "Bitwise outflow magnitude differs across providers.",
+      "Fund universes differ: 3/5, provider-reported 5/5, and 3/4 daily-collected with GXRP excluded.",
+      "Publication timestamps, issuer file dates, prior-session comparisons and USD valuation prices are not harmonized."
+    ],
+    "source_independence": "All three are secondary aggregators likely relying on overlapping issuer holdings data. They are not three independent primary confirmations.",
+    "admission": "NOT_ADMITTED_TO_DIRECTIONAL_MODEL",
+    "resolution_required": [
+      "Obtain and hash each issuer's raw holdings file for the 2026-10-30 US session.",
+      "Normalize issuer file timestamp, effective holdings date and prior-session comparison date.",
+      "Calculate XRP-unit changes before USD conversion.",
+      "Convert using a common documented benchmark and preserve issuer NAV-based values separately.",
+      "Keep GXRP and XRPR in explicit separate coverage categories rather than treating missing or excluded funds as zero."
+    ]
+  },
+  "actual_capital_classification": {
+    "sbic_chatgpt_event": "EDUCATION_ONLY_NO_CAPITAL_FLOW",
+    "sbi_vc_trade_rlusd_listing": "DISTRIBUTION_ACCESS_NO_VOLUME_DISCLOSED",
+    "sbi_visa_xrp_rewards": "REWARD_DISTRIBUTION_NO_XRP_QUANTITY_OR_INVENTORY_SOURCE_DISCLOSED",
+    "coinbase_rlusd_listing": "DISTRIBUTION_ACCESS_NO_NET_XRP_PURCHASE_ESTABLISHED",
+    "etf_flows": "CONFLICTED_SECONDARY_ESTIMATES_NOT_ADMITTED"
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_features_admitted": [],
+    "reason": "The ETF flow sources conflict in sign, fund universe, file date alignment and USD valuation. SBI/RLUSD distribution announcements do not disclose net XRP purchases or collateral balances."
+  },
+  "safety": {
+    "main_modified_by_this_research": false,
+    "merge": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  }
+}

@@ -1,0 +1,572 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-BNY-C2FO-AVIVA-SGFORGE-RNTB-CIRCLE-20261031T181303Z",
+  "captured_at_utc": "2026-10-31T18:13:42.938Z",
+  "source_ids": [
+    "SRC-OCC-RIPPLE-CAS-20261026",
+    "SRC-RIPPLE-RNTB-APPROVAL-20261026",
+    "SRC-OCC-CIRCLE-CAS-20260724",
+    "SRC-CIRCLE-TRUST-BANK-APPROVAL-20260710",
+    "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027",
+    "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027",
+    "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729",
+    "SRC-SGFORGE-EURCV-XRPL-20260218",
+    "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105",
+    "SRC-OCC-COINBASE-CD1370-20260402",
+    "SRC-COINBASE-CBXRP-POR-RENDER-20261031",
+    "SRC-COINBASE-BORROW-XRP-20261031",
+    "SRC-COINBASE-GLOBAL-EXCHANGE-CROSS-COLLATERAL-20261031",
+    "SRC-COINBASE-XRP-PERP-SPEC-20261031",
+    "SRC-DEFILLAMA-CBXRP-USDC-MORPHO-20261031"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "type": "company",
+      "name": "Ripple"
+    },
+    {
+      "id": "RNTB",
+      "type": "national_trust_bank",
+      "name": "Ripple National Trust Bank"
+    },
+    {
+      "id": "SCTC",
+      "type": "trust_company",
+      "name": "Standard Custody & Trust Company"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin",
+      "name": "Ripple USD"
+    },
+    {
+      "id": "CIRCLE",
+      "type": "company",
+      "name": "Circle"
+    },
+    {
+      "id": "CIRCLE_NT",
+      "type": "national_trust_bank",
+      "name": "First National Digital Currency Bank / Circle National Trust"
+    },
+    {
+      "id": "BNY",
+      "type": "custodian",
+      "name": "BNY"
+    },
+    {
+      "id": "XRPL",
+      "type": "network",
+      "name": "XRP Ledger"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset",
+      "name": "XRP"
+    },
+    {
+      "id": "C2FO",
+      "type": "working_capital_platform",
+      "name": "C2FO"
+    },
+    {
+      "id": "CAPITAL_PROVIDERS",
+      "type": "capital_provider_group",
+      "name": "Participating capital providers"
+    },
+    {
+      "id": "AVIVA",
+      "type": "asset_manager",
+      "name": "Aviva Investors"
+    },
+    {
+      "id": "AVIVA_FUND",
+      "type": "tokenized_fund_share_class",
+      "name": "Aviva Investors USD Liquidity Fund tokenised share class"
+    },
+    {
+      "id": "KOMAINU",
+      "type": "custodian",
+      "name": "Komainu"
+    },
+    {
+      "id": "LICUIDO",
+      "type": "tokenization_provider",
+      "name": "Licuido"
+    },
+    {
+      "id": "SGFORGE",
+      "type": "issuer",
+      "name": "SG-FORGE"
+    },
+    {
+      "id": "EURCV",
+      "type": "stablecoin",
+      "name": "EUR CoinVertible"
+    },
+    {
+      "id": "MASTERCARD",
+      "type": "payments_network",
+      "name": "Mastercard"
+    },
+    {
+      "id": "WEBBANK",
+      "type": "bank",
+      "name": "WebBank"
+    },
+    {
+      "id": "GEMINI",
+      "type": "exchange",
+      "name": "Gemini"
+    },
+    {
+      "id": "COINBASE",
+      "type": "company",
+      "name": "Coinbase"
+    },
+    {
+      "id": "COINBASE_NT",
+      "type": "proposed_national_trust_bank",
+      "name": "Coinbase National Trust Company"
+    },
+    {
+      "id": "CCTC",
+      "type": "trust_company",
+      "name": "Coinbase Custody Trust Company LLC"
+    },
+    {
+      "id": "CBXRP",
+      "type": "wrapped_asset",
+      "name": "Coinbase Wrapped XRP (cbXRP)"
+    },
+    {
+      "id": "MORPHO",
+      "type": "lending_protocol",
+      "name": "Morpho Blue"
+    },
+    {
+      "id": "COINBASE_GLOBAL_EXCHANGE",
+      "type": "exchange",
+      "name": "Coinbase Global Exchange"
+    },
+    {
+      "id": "COINBASE_INTX",
+      "type": "derivatives_exchange",
+      "name": "Coinbase International Exchange"
+    }
+  ],
+  "edges": [
+    {
+      "from": "RIPPLE",
+      "to": "RNTB",
+      "relation": "SPONSORS_TRUST_BANK",
+      "detail": "OCC CAS lists consummated/effective 2026-10-26; Ripple describes reserve management, collateral trustee and fiduciary custody scope",
+      "source_ids": [
+        "SRC-OCC-RIPPLE-CAS-20261026",
+        "SRC-RIPPLE-RNTB-APPROVAL-20261026"
+      ],
+      "evidence_class": "REGULATOR_RECORD_PLUS_COMPANY_SCOPE"
+    },
+    {
+      "from": "SCTC",
+      "to": "RLUSD",
+      "relation": "ISSUER",
+      "detail": "RLUSD issuance remains with NYDFS-regulated Standard Custody & Trust Company",
+      "source_ids": [
+        "SRC-RIPPLE-RNTB-APPROVAL-20261026"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "RNTB",
+      "to": "RLUSD",
+      "relation": "PLANNED_RESERVE_MANAGEMENT_AND_COLLATERAL_TRUSTEE",
+      "detail": "Authorized plan as described by Ripple; operations upon opening not verified",
+      "source_ids": [
+        "SRC-RIPPLE-RNTB-APPROVAL-20261026"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "RLUSD",
+      "relation": "PRIMARY_RESERVE_CUSTODIAN",
+      "source_ids": [
+        "SRC-RIPPLE-RNTB-APPROVAL-20261026",
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "XRP",
+      "relation": "DIGITAL_ASSET_CUSTODY_PLATFORM_SUPPORT",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "RLUSD",
+      "relation": "DIGITAL_ASSET_CUSTODY_PLATFORM_SUPPORT",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "RIPPLE",
+      "relation": "CUSTODY_RELATIONSHIP_WITH_RIPPLE_PRIME",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "C2FO",
+      "relation": "EXPLORATORY_TOKENIZED_TRADE_FINANCE_WITH_RIPPLE",
+      "detail": "BNY and Ripple say they are exploring a supply-chain finance initiative with C2FO",
+      "source_ids": [
+        "SRC-BNY-RIPPLE-XRP-RLUSD-CUSTODY-TRADE-FINANCE-20261027"
+      ],
+      "evidence_class": "JOINT_COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "C2FO",
+      "to": "XRPL",
+      "relation": "INSTANT_PAY_SETTLEMENT_NETWORK",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027"
+      ],
+      "evidence_class": "ANNOUNCED_PRODUCT_WAITLIST"
+    },
+    {
+      "from": "C2FO",
+      "to": "RLUSD",
+      "relation": "INSTANT_PAY_SETTLEMENT_ASSET",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027"
+      ],
+      "evidence_class": "ANNOUNCED_PRODUCT_WAITLIST"
+    },
+    {
+      "from": "CAPITAL_PROVIDERS",
+      "to": "C2FO",
+      "relation": "PROPOSED_INSTANT_PAY_FUNDING",
+      "detail": "Participating capital providers fund accelerated supplier payments against approved invoices; actual XRPL funding volume not disclosed",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANT-PAY-20261027"
+      ],
+      "evidence_class": "ANNOUNCED_PRODUCT_DESIGN"
+    },
+    {
+      "from": "AVIVA",
+      "to": "AVIVA_FUND",
+      "relation": "ISSUES_TOKENIZED_SHARE_CLASS",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "LAUNCHED_PRODUCT_COMPANY_STATEMENT"
+    },
+    {
+      "from": "AVIVA_FUND",
+      "to": "XRPL",
+      "relation": "TOKENIZED_SHARE_CLASS_ISSUED_ON",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "LAUNCHED_PRODUCT_COMPANY_STATEMENT"
+    },
+    {
+      "from": "KOMAINU",
+      "to": "AVIVA_FUND",
+      "relation": "DIGITAL_ASSET_CUSTODY_SUPPORT",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "LICUIDO",
+      "to": "AVIVA_FUND",
+      "relation": "TOKENIZATION_INFRASTRUCTURE",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "BNY",
+      "to": "AVIVA_FUND",
+      "relation": "UNDERLYING_FUND_ASSET_CUSTODY",
+      "source_ids": [
+        "SRC-AVIVA-XRPL-TOKENIZED-USD-LIQUIDITY-FUND-20260729"
+      ],
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "SGFORGE",
+      "to": "EURCV",
+      "relation": "ISSUER",
+      "source_ids": [
+        "SRC-SGFORGE-EURCV-XRPL-20260218"
+      ],
+      "evidence_class": "ISSUER_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "EURCV",
+      "to": "XRPL",
+      "relation": "LAUNCHED_ON",
+      "source_ids": [
+        "SRC-SGFORGE-EURCV-XRPL-20260218"
+      ],
+      "evidence_class": "ISSUER_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "EURCV",
+      "relation": "CUSTODY_SUPPORT",
+      "source_ids": [
+        "SRC-SGFORGE-EURCV-XRPL-20260218"
+      ],
+      "evidence_class": "ISSUER_PRIMARY_STATEMENT"
+    },
+    {
+      "from": "MASTERCARD",
+      "to": "RLUSD",
+      "relation": "EXPLORATORY_CARD_SETTLEMENT_INITIATIVE",
+      "source_ids": [
+        "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+      ],
+      "evidence_class": "ANNOUNCED_NOT_PRODUCTION_VERIFIED"
+    },
+    {
+      "from": "WEBBANK",
+      "to": "RLUSD",
+      "relation": "EXPLORATORY_CARD_SETTLEMENT_INITIATIVE",
+      "source_ids": [
+        "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+      ],
+      "evidence_class": "ANNOUNCED_NOT_PRODUCTION_VERIFIED"
+    },
+    {
+      "from": "GEMINI",
+      "to": "RLUSD",
+      "relation": "EXPLORATORY_CARD_SETTLEMENT_INITIATIVE",
+      "source_ids": [
+        "SRC-RIPPLE-MASTERCARD-WEBBANK-GEMINI-RLUSD-20251105"
+      ],
+      "evidence_class": "ANNOUNCED_NOT_PRODUCTION_VERIFIED"
+    },
+    {
+      "from": "COINBASE",
+      "to": "COINBASE_NT",
+      "relation": "WHOLLY_OWNED_PROPOSED_SUBSIDIARY",
+      "detail": "OCC Corporate Decision #1370 describes the proposed bank as a wholly owned Coinbase subsidiary",
+      "source_ids": [
+        "SRC-OCC-COINBASE-CD1370-20260402"
+      ],
+      "evidence_class": "REGULATOR_PRIMARY_DECISION"
+    },
+    {
+      "from": "CCTC",
+      "to": "COINBASE_NT",
+      "relation": "PLANNED_CUSTODY_BUSINESS_MIGRATION",
+      "detail": "OCC decision says the entirety of the current NYDFS-chartered custody business is planned to migrate over a three-year de novo period after the bank is authorized to operate",
+      "source_ids": [
+        "SRC-OCC-COINBASE-CD1370-20260402"
+      ],
+      "evidence_class": "REGULATOR_PRIMARY_DECISION"
+    },
+    {
+      "from": "COINBASE_NT",
+      "to": "COINBASE",
+      "relation": "PROPOSED_FINDER_ACCESS_TO_AFFILIATE_SERVICES",
+      "detail": "Custody clients may access affiliate staking, Prime Trading and Prime Financing; the proposed bank does not itself provide those underlying services",
+      "source_ids": [
+        "SRC-OCC-COINBASE-CD1370-20260402"
+      ],
+      "evidence_class": "REGULATOR_PRIMARY_DECISION"
+    },
+    {
+      "from": "COINBASE",
+      "to": "CBXRP",
+      "relation": "ISSUES_AND_BACKS_1_TO_1",
+      "detail": "Coinbase states cbXRP is backed 1:1 by XRP held by Coinbase; current reserve page has conflicting indexed/direct render timestamps",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-POR-RENDER-20261031"
+      ],
+      "evidence_class": "ISSUER_PRIMARY_WITH_RENDER_CONFLICT"
+    },
+    {
+      "from": "CBXRP",
+      "to": "XRP",
+      "relation": "REDEEMABLE_BACKING_ASSET",
+      "detail": "cbXRP reserve disclosure lists XRP backing held by Coinbase",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-POR-RENDER-20261031"
+      ],
+      "evidence_class": "ISSUER_PRIMARY"
+    },
+    {
+      "from": "COINBASE",
+      "to": "MORPHO",
+      "relation": "PROVIDES_BORROW_INTERFACE",
+      "detail": "Coinbase says its USDC crypto-backed loans are powered by Morpho on Base",
+      "source_ids": [
+        "SRC-COINBASE-BORROW-XRP-20261031"
+      ],
+      "evidence_class": "PRODUCT_PRIMARY"
+    },
+    {
+      "from": "CBXRP",
+      "to": "MORPHO",
+      "relation": "COLLATERAL_IN_CBXRP_USDC_MARKET",
+      "detail": "DeFiLlama displays a cbXRP/USDC Morpho Blue Base market; exact Coinbase customer attribution is not established",
+      "source_ids": [
+        "SRC-DEFILLAMA-CBXRP-USDC-MORPHO-20261031"
+      ],
+      "evidence_class": "SECONDARY_MARKET_AGGREGATION"
+    },
+    {
+      "from": "COINBASE_GLOBAL_EXCHANGE",
+      "to": "XRP",
+      "relation": "ACCEPTS_AS_CROSS_COLLATERAL",
+      "detail": "Haircuts and average-daily-quantity concentration limits apply; XRP-specific haircut not disclosed",
+      "source_ids": [
+        "SRC-COINBASE-GLOBAL-EXCHANGE-CROSS-COLLATERAL-20261031"
+      ],
+      "evidence_class": "PRODUCT_PRIMARY"
+    },
+    {
+      "from": "COINBASE_INTX",
+      "to": "XRP",
+      "relation": "LISTS_USDC_SETTLED_XRP_PERPETUAL",
+      "detail": "XRP-PERP settles in USDC every five minutes; 50x maximum leverage and 25% default initial margin",
+      "source_ids": [
+        "SRC-COINBASE-XRP-PERP-SPEC-20261031"
+      ],
+      "evidence_class": "PRODUCT_PRIMARY"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-INSTITUTIONAL-CUSTODY-ACCESS",
+      "claim": "BNY custody support and effective trust-bank charters reduce operational barriers to institutional holding and servicing of XRP/RLUSD.",
+      "status": "SUPPORTED_AS_INFRASTRUCTURE_ACCESS_NOT_DEMAND",
+      "supporting": [
+        "BNY says it supports XRP and RLUSD custody.",
+        "OCC CAS records show Ripple and Circle trust-bank charters effective on 2026-10-26 and 2026-07-24."
+      ],
+      "disconfirming": [
+        "No client XRP balances, custody AUM, operating launch metrics or new net XRP purchases are disclosed."
+      ]
+    },
+    {
+      "id": "H-C2FO-ACTUAL-CAPITAL",
+      "claim": "C2FO Instant Pay may route actual supplier-financing capital through XRPL with RLUSD settlement.",
+      "status": "ANNOUNCED_DESIGN_WAITLIST_NOT_LIVE_VOLUME",
+      "supporting": [
+        "Ripple/C2FO say participating capital providers fund instant supplier payments and XRPL/RLUSD settle them.",
+        "C2FO has an existing platform-wide early-payment history."
+      ],
+      "disconfirming": [
+        "Instant Pay waitlist is the stated availability path; no XRPL funded invoice or settlement volume is disclosed.",
+        "The USD 520B figure belongs to existing C2FO Early Pay programs, not XRPL Instant Pay."
+      ]
+    },
+    {
+      "id": "H-AVIVA-TOKENIZED-FUND",
+      "claim": "A launched Aviva tokenized liquidity-fund share class establishes a live institutional fund asset on XRPL.",
+      "status": "CONFIRMED_LAUNCH; CAPITAL_SCALE_UNKNOWN",
+      "supporting": [
+        "Aviva confirms launch on XRPL and CBI approval.",
+        "Komainu, Licuido and BNY roles are identified."
+      ],
+      "disconfirming": [
+        "Tokenized share-class AUM, holdings, investor count and secondary turnover are not disclosed.",
+        "This is not evidence of XRP collateral or material XRP spot demand."
+      ]
+    },
+    {
+      "id": "H-EURCV-COLLATERAL",
+      "claim": "EUR CoinVertible could become trading collateral in Ripple products.",
+      "status": "FUTURE_OPPORTUNITY_ONLY",
+      "supporting": [
+        "SG-FORGE confirms EURCV launched on XRPL with Ripple custody support."
+      ],
+      "disconfirming": [
+        "SG-FORGE describes collateral use as an opportunity to explore; no live collateral integration or balances are disclosed."
+      ]
+    },
+    {
+      "id": "H-XRP-DIRECT-DEMAND",
+      "claim": "These custody, trust-bank and tokenized-finance relationships prove net XRP buying or a directional price catalyst.",
+      "status": "UNSUPPORTED_NO_FEATURE_ADMISSION",
+      "supporting": [],
+      "disconfirming": [
+        "RLUSD and EURCV are issued stablecoins; Aviva fund shares are tokenized fund interests; custody support is not a proprietary purchase.",
+        "No XRP net-flow, collateral balance, funded trade-finance volume or XRP purchase quantity is disclosed."
+      ]
+    },
+    {
+      "id": "H-COINBASE-FEDERAL-CUSTODY",
+      "claim": "Coinbase's proposed national trust bank could consolidate federal oversight of institutional custody and facilitate custody-adjacent affiliate services.",
+      "status": "CONDITIONAL_APPROVAL_ONLY_NOT_OPERATIONAL",
+      "supporting": [
+        "OCC Corporate Decision #1370 grants preliminary conditional approval and describes fiduciary custody, related transactions and finder access.",
+        "The decision describes a planned migration of the existing NYDFS-chartered custody business over a three-year de novo period."
+      ],
+      "disconfirming": [
+        "The OCC decision explicitly says final approval and authorization to commence business require preopening conditions.",
+        "No later Consummated/Effective action or operational launch was identified in the OCC CAS record retrieved on 2026-10-31.",
+        "The proposed bank does not itself provide the underlying staking, Prime Trading or Prime Financing services."
+      ]
+    },
+    {
+      "id": "H-COINBASE-CBXRP-COLLATERAL-RECYCLING",
+      "claim": "Coinbase's cbXRP reserve and Morpho market create a pathway for existing XRP holdings to be wrapped, posted as collateral and reused for USDC credit without selling native XRP.",
+      "status": "MECHANISM_CONFIRMED; CUSTOMER_FLOW_AND_MARKET_IMPACT_UNKNOWN",
+      "supporting": [
+        "Coinbase publishes 1:1 cbXRP reserve backing.",
+        "Coinbase says USDC loans against XRP use Morpho on Base.",
+        "A cbXRP/USDC Morpho market is publicly displayed with a 62.5% maximum LTV."
+      ],
+      "disconfirming": [
+        "Coinbase's current reserve page has conflicting search-indexed and direct-page snapshot dates.",
+        "The exact Morpho market is not proven to be exclusively Coinbase customer activity.",
+        "No customer-level collateral, mint/redeem, loan-originations or liquidator-sale data is disclosed."
+      ]
+    },
+    {
+      "id": "H-COINBASE-DERIVATIVES-SPOT-DEMAND",
+      "claim": "Coinbase XRP derivatives and cross-margin acceptance create additional XRP exposure and potential collateral demand.",
+      "status": "PRODUCT_ACCESS_CONFIRMED; NET_SPOT_DEMAND_UNKNOWN",
+      "supporting": [
+        "Coinbase documents XRP as accepted Global Exchange collateral and lists XRP-PERP.",
+        "Coinbase also offers a separate cash-settled XRP futures product."
+      ],
+      "disconfirming": [
+        "Perpetual and dated futures settle in USDC/cash and do not require physical XRP delivery.",
+        "XRP-specific posted collateral, position size and hedge flows are not disclosed."
+      ]
+    }
+  ],
+  "limitations": [
+    "Effective OCC charter status is not proof of a bank's operational opening or live customer services.",
+    "RLUSD remains issued by Standard Custody & Trust Company; Ripple National Trust Bank is not the issuer.",
+    "BNY custody platform support does not disclose client balances or imply BNY is buying XRP.",
+    "C2FO's historical USD 520B Early Pay figure is not XRPL activity and must not be attributed to Instant Pay.",
+    "Aviva's tokenized fund share class is live, but AUM, investor count and on-chain turnover are not disclosed.",
+    "SG-FORGE collateral use and Mastercard/WebBank/Gemini settlement remain exploratory in the cited announcements.",
+    "Coinbase National Trust's conditional charter must not be compared as an effective operating charter with Ripple National Trust Bank and Circle National Trust; the OCC decision is preliminary and the CAS record retrieved on 2026-10-31 shows Approved but no Consummated/Effective action.",
+    "cbXRP reserve search snippet and direct page open displayed different snapshot dates; preserve both and do not claim a verified current reserve change.",
+    "Coinbase Borrow, Global Exchange cross-collateral and XRP-PERP are separate products with different collateral and liquidation rules.",
+    "The 62.5% Morpho market parameter is not automatically the Coinbase retail loan's initial LTV or proof of Coinbase-only borrower activity."
+  ]
+}

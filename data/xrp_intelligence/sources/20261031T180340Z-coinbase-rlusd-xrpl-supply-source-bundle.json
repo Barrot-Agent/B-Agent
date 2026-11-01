@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_source_bundle",
+  "bundle_id": "SRCBUNDLE-XRPL-RLUSD-COINBASE-EXCHANGE-REVISION-20261031T180340Z",
+  "captured_at_utc": "2026-10-31T18:03:40Z",
+  "sources": [
+    {
+      "source_id": "SRC-COINBASE-RLUSD-LISTING-20261028",
+      "publisher": "Coinbase",
+      "title": "RLUSD is now available on Coinbase",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "published_at": "2026-10-28",
+      "retrieved_at_utc": "2026-10-31T18:03:40Z",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "COINBASE_OFFICIAL",
+      "claims": [
+        "RLUSD is available through Coinbase Prime, Coinbase Exchange and the Coinbase retail app in supported regions.",
+        "At launch, RLUSD deposits and withdrawals are supported across XRPL, Base and Ethereum.",
+        "Customers in supported regions can convert USD to RLUSD at 1:1.",
+        "Coinbase says RLUSD collateral use for Coinbase Global Exchange customers will follow later.",
+        "Coinbase says Ripple will provide liquidity on Base."
+      ],
+      "limitations": [
+        "The announcement does not publish chain-specific customer balances, deposit/withdrawal volume or actual bridge transactions.",
+        "The announcement does not establish that the XRPL RLUSD supply decline was caused by Coinbase listing activity.",
+        "The stated Global Exchange collateral use was deferred at launch."
+      ]
+    },
+    {
+      "source_id": "SRC-XRPLDASHBOARD-RLUSD-SUPPLY-20261031T180340Z",
+      "publisher": "xrpldashboard",
+      "title": "RLUSD supply history — cross-chain treasury watch",
+      "url": "https://xrpldashboard.com/rlusd",
+      "retrieved_at_utc": "2026-10-31T18:03:40Z",
+      "evidence_class": "PUBLIC_CHAIN_BALANCE_AGGREGATION",
+      "independence_group": "XRPLDASHBOARD",
+      "claims": [
+        "XRPL daily snapshot at 2026-10-30T01:00:00Z displayed approximately USD 981,760,000 RLUSD.",
+        "XRPL daily snapshot at 2026-10-31T01:00:00Z displayed USD 707,358,109.94 RLUSD, a derived daily change of -USD 274,401,890.06 or approximately -27.95%.",
+        "At page capture, the dashboard displayed approximately USD 1.71B on Ethereum and USD 707.36M on XRPL, approximately USD 2.42B combined across those two chains.",
+        "The rolling 24-hour panel displayed XRPL net supply change of -USD 67.60M, Ethereum mints of +USD 19.60M and combined Ethereum-plus-XRPL net change of -USD 48.00M.",
+        "The dashboard labels Base as testing and its stated supply scope is Ethereum plus XRPL, not Base."
+      ],
+      "limitations": [
+        "The page reported its live feed unavailable during capture and warned that totals could be a few minutes stale.",
+        "The rolling 24-hour cross-check against independent RPC was dated 2026-10-30 finalized data, not a recomputation performed in this run.",
+        "The page publishes an Ed25519-signed daily snapshot, but this run did not independently recompute its signature.",
+        "The XRPL net supply-change method uses gateway_balances day-boundary snapshot differences; the page does not provide a transaction-level bridge/redemption crosswalk for this observation.",
+        "The daily snapshot difference and rolling 24-hour change are different windows and must not be substituted for one another."
+      ]
+    },
+    {
+      "source_id": "SRC-XRPLDASHBOARD-RLUSD-METHODOLOGY-20261031T180340Z",
+      "publisher": "xrpldashboard",
+      "title": "RLUSD supply methodology and scope",
+      "url": "https://xrpldashboard.com/rlusd",
+      "retrieved_at_utc": "2026-10-31T18:03:40Z",
+      "evidence_class": "PROVIDER_METHODOLOGY_DISCLOSURE",
+      "independence_group": "XRPLDASHBOARD",
+      "claims": [
+        "Ethereum supply is read from totalSupply; XRPL supply is read from gateway_balances at UTC-day-boundary ledgers.",
+        "The dashboard describes XRPL supply change as net mints minus redemptions and does not separately enumerate all underlying transactions in this view.",
+        "The displayed two-chain total excludes Base, which the page labels testing."
+      ],
+      "limitations": [
+        "This methodology disclosure is from the same provider and is not an independent corroborating source.",
+        "A supply change alone does not distinguish cross-chain migration, issuer redemption, holder transfers or provider-scope changes."
+      ]
+    },
+    {
+      "source_id": "SRC-XRP-INSIGHTS-EXCHANGE-BALANCES-20261031T180340Z",
+      "publisher": "XRP Insights",
+      "title": "XRP exchange balances — October 31, 2026 08:00 UTC",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "retrieved_at_utc": "2026-10-31T18:03:40Z",
+      "evidence_class": "XRPL_BALANCE_READS_WITH_PUBLIC_WALLET_LABEL_ATTRIBUTION",
+      "independence_group": "XRP_INSIGHTS",
+      "claims": [
+        "The page reports 22.48B XRP in 701 XRPL wallets attributed to 24 exchanges as of 2026-10-31 08:00 UTC.",
+        "Same-wallet aggregate changes are -133.0M XRP over seven days and -12.3M XRP over 30 days.",
+        "Attributed balances are Upbit 6.43B XRP, Coinbase 5.85B XRP, Binance 2.78B XRP and SBI VC Trade 59.5M XRP.",
+        "The current page reports Coinbase +17.7M XRP over seven days and +18.4M over 30 days; Binance +17.6M and +30.3M; Upbit -747K and +34.6M; SBI VC Trade -899K and -10.5M, respectively.",
+        "The page reports 487.2M XRP in non-customer reserve/operational wallets: 325.8M Binance-Peg backing, 150.2M cbXRP backing and 11.2M in an insurance fund/charity wallet.",
+        "The naive total change is +2.15B XRP because 22 newly tracked wallets holding 2.17B XRP were added; the same-wallet method excludes new wallets."
+      ],
+      "limitations": [
+        "Wallet balances are not tradable float: exchange wallets include customer omnibus custody, cold storage, wrapped-asset backing and operational funds.",
+        "The provider uses XRPL rippled account_info balances and XRPSCAN public labels; it does not identify beneficial owners or whether balances are offered for sale.",
+        "The page notes incomplete exchange coverage and that same-wallet changes cannot distinguish customer withdrawals from internal migration to untracked wallets.",
+        "A prior 2026-10-31 17:57 UTC source capture recorded different 30-day and venue-specific changes. Preserve both captures; the current page display supersedes the prior displayed values for the current observation, but the cause of the revision is unknown."
+      ]
+    },
+    {
+      "source_id": "SRC-XRP-INSIGHTS-EXCHANGE-METHODOLOGY-20261031T180340Z",
+      "publisher": "XRP Insights",
+      "title": "Exchange-balance methodology and coverage limitations",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "retrieved_at_utc": "2026-10-31T18:03:40Z",
+      "evidence_class": "PROVIDER_METHODOLOGY_DISCLOSURE",
+      "independence_group": "XRP_INSIGHTS",
+      "claims": [
+        "The provider says it reads each tracked wallet's balance directly from rippled account_info once daily at approximately 08:00 UTC.",
+        "Wallet attribution uses XRPSCAN public account labels; the provider stores daily exchange totals and wallet counts.",
+        "The page says 48.4% of its tracked exchange XRP is in wallets labeled cold and 37.8% is unlabeled as hot or cold.",
+        "The provider explicitly states that its attributed-wallet total is not an estimate of tradable float."
+      ],
+      "limitations": [
+        "The methodology is disclosed by the same provider and is not an independent wallet-label audit.",
+        "Cold/hot labels are incomplete and do not establish beneficial ownership or sale availability."
+      ]
+    }
+  ]
+}

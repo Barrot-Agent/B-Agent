@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_source_bundle",
+  "bundle_id": "XRP-SBIC-CANDIDATE-AND-OI-CONFLICT-20261031T183925Z",
+  "captured_at_utc": "2026-10-31T18:39:25Z",
+  "sources": [
+    {
+      "source_id": "SRC-SBI-CAPITAL-SBIC-2007-0216",
+      "publisher": "SBI Holdings",
+      "title": "SBI Holdings release identifying SBI Capital Co., Ltd. as SBIC",
+      "url": "https://www.sbigroup.co.jp/news/2007/0216_349.html",
+      "published_at": "2007-02-16",
+      "retrieved_at_utc": "2026-10-31T18:39:25Z",
+      "evidence_class": "COMPANY_PRIMARY_DISCLOSURE",
+      "independence_group": "SBI_HOLDINGS_OFFICIAL",
+      "claims": [
+        "SBI Holdings identifies its consolidated subsidiary SBI Capital Co., Ltd. as 'SBIC' in the release.",
+        "The context is an investment fund and portfolio-company share transaction."
+      ],
+      "limitations": [
+        "This is a historical entity and abbreviation usage; it does not identify Tokyo SBIC East Japan.",
+        "It does not establish a current XRP, Ripple, Coinbase or Circle relationship."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CAPITAL-GOLDMAN-JV-2007-0521",
+      "publisher": "SBI Holdings",
+      "title": "SBI Holdings forms buy-out investment alliance with Goldman Sachs",
+      "url": "https://www.sbigroup.co.jp/news/2007/0521_852.html",
+      "published_at": "2007-05-21",
+      "retrieved_at_utc": "2026-10-31T18:39:25Z",
+      "evidence_class": "COMPANY_PRIMARY_DISCLOSURE",
+      "independence_group": "SBI_HOLDINGS_OFFICIAL",
+      "claims": [
+        "SBI Holdings announced a joint venture for buy-out investment in Japanese middle-sized companies.",
+        "The release says SBI would transfer 40% of SBI Capital Co., Ltd. to a Goldman Sachs group company."
+      ],
+      "limitations": [
+        "The announcement describes the 2007 ownership transaction; it does not establish the exact later transfer date or current entity status."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CAPITAL-OWNERSHIP-2007-0710",
+      "publisher": "SBI Holdings",
+      "title": "SBI Capital ownership and buy-out fund activity",
+      "url": "https://www.sbigroup.co.jp/news/2007/0710_867.html",
+      "published_at": "2007-07-10",
+      "retrieved_at_utc": "2026-10-31T18:39:25Z",
+      "evidence_class": "COMPANY_PRIMARY_DISCLOSURE",
+      "independence_group": "SBI_HOLDINGS_OFFICIAL",
+      "claims": [
+        "The release describes SBI Capital as a joint venture with 60% held by SBI Holdings and 40% by a Goldman Sachs group company.",
+        "SBI Capital's purpose was investment in middle-market public and private companies and enterprise-value improvement."
+      ],
+      "limitations": [
+        "The source is a historical 2007 snapshot, not a current ownership record."
+      ]
+    },
+    {
+      "source_id": "SRC-SBI-CAPITAL-MANAGEMENT-RESTRUCTURE-2012-0523",
+      "publisher": "SBI Holdings",
+      "title": "Establishment of intermediate holding companies through joint share transfer",
+      "url": "https://www.sbigroup.co.jp/news/2012/0523_5420.html",
+      "published_at": "2012-05-23",
+      "retrieved_at_utc": "2026-10-31T18:39:25Z",
+      "evidence_class": "COMPANY_PRIMARY_DISCLOSURE",
+      "independence_group": "SBI_HOLDINGS_OFFICIAL",
+      "claims": [
+        "SBI Holdings announced SBI Capital Management Co., Ltd. as an intermediate holding company for asset-management subsidiaries.",
+        "The 2012-03-31 table lists SBI Capital Co., Ltd. as 100% owned by SBI Holdings and describes its business as managing buy-out and corporate-revitalization funds."
+      ],
+      "limitations": [
+        "The release does not explain the exact transaction or date by which the 2007 Goldman 40% interest ceased to appear in the 2012 ownership table.",
+        "Do not infer uninterrupted ownership or the transfer date from these two snapshots."
+      ]
+    },
+    {
+      "source_id": "SRC-KODEXIUS-XRP-OI-20261031T1234Z",
+      "publisher": "Kodexius",
+      "title": "XRP perpetual futures open interest and funding",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "published_at": "2026-10-31T12:34:00Z",
+      "retrieved_at_utc": "2026-10-31T18:39:25Z",
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "PUBLIC_EXCHANGE_PERPETUAL_DATA_COMMON_UPSTREAM",
+      "claims": [
+        "Reported USD 738.99M open interest across 7 contracts.",
+        "Reported open-interest-weighted funding +0.0073% per 8h and 24h volume USD 876.43M.",
+        "Displayed Binance USD 363.11M, Bybit USD 149.85M, OKX USD 100.39M, Hyperliquid USD 97.17M and HTX USD 28.46M."
+      ],
+      "limitations": [
+        "Provider's contract universe and position conversion must be reconciled against other aggregators.",
+        "Secondary aggregation of public exchange data, not independent primary confirmation."
+      ]
+    },
+    {
+      "source_id": "SRC-TRADRADAR-XRP-OI-20261031T1500Z",
+      "publisher": "TradRadar",
+      "title": "XRP futures market data",
+      "url": "https://tradradar.io/markets/xrp",
+      "published_at": "2026-10-31T15:00:00Z",
+      "retrieved_at_utc": "2026-10-31T18:39:25Z",
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "PUBLIC_EXCHANGE_PERPETUAL_DATA_COMMON_UPSTREAM",
+      "claims": [
+        "Reported XRP mark price USD 1.2497, +0.42% over 24h.",
+        "Reported USD 1.86B open interest across 7 exchanges, +1.78% over 24h.",
+        "Reported OI-weighted funding +0.0066% per 8h, 24h liquidations at least USD 1.04M, and 75.3% long account share across four exchanges.",
+        "Displayed Binance USD 417.52M, Bybit USD 339.07M, MEXC USD 276.01M, Gate USD 275.36M, Bitget USD 247.28M, Hyperliquid USD 194.62M and OKX USD 111.34M."
+      ],
+      "limitations": [
+        "Account ratios are not notional exposure; liquidation data are incomplete lower bounds.",
+        "Provider aggregation and contract coverage differ from other sources."
+      ]
+    },
+    {
+      "source_id": "SRC-SHARPE-XRP-OI-20261031T1400Z",
+      "publisher": "Sharpe.ai",
+      "title": "Crypto futures analytics — XRP open interest",
+      "url": "https://www.sharpe.ai/futures",
+      "published_at": "2026-10-31T14:00:00Z",
+      "retrieved_at_utc": "2026-10-31T18:39:25Z",
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "PUBLIC_EXCHANGE_PERPETUAL_DATA_COMMON_UPSTREAM",
+      "claims": [
+        "Reported USD 1.44B XRP open interest across 22 venues at 2026-10-31 14:00 UTC."
+      ],
+      "limitations": [
+        "Venue count and contract universe differ from seven-contract and seven-exchange views.",
+        "No independent raw contract-by-contract reconciliation was performed in this run."
+      ]
+    },
+    {
+      "source_id": "SRC-JUSTSCREENER-XRP-OI-20261031T1154Z",
+      "publisher": "JustScreener",
+      "title": "XRP open interest",
+      "url": "https://justscreener.com/en/market/XRP/open-interest",
+      "published_at": "2026-10-31T11:54:00Z",
+      "retrieved_at_utc": "2026-10-31T18:39:25Z",
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "PUBLIC_EXCHANGE_PERPETUAL_DATA_COMMON_UPSTREAM",
+      "claims": [
+        "Reported USD 1.6B open interest across 9 exchanges, +0.94% over 24 hours, updated 2026-10-31 11:54 UTC."
+      ],
+      "limitations": [
+        "Venue and contract universe differ; methodology was not independently reproduced."
+      ]
+    },
+    {
+      "source_id": "SRC-SWOLECHARTS-XRP-OI-20261031T1100Z",
+      "publisher": "SwoleCharts",
+      "title": "XRP funding rate and open interest on Binance",
+      "url": "https://swolecharts.com/exchanges/binance/XRP",
+      "published_at": "2026-10-31T11:00:00Z",
+      "retrieved_at_utc": "2026-10-31T18:39:25Z",
+      "evidence_class": "SECONDARY_DERIVATIVES_AGGREGATOR",
+      "independence_group": "PUBLIC_EXCHANGE_PERPETUAL_DATA_COMMON_UPSTREAM",
+      "claims": [
+        "Reported USD 1.11B total XRP open interest across 9 exchanges, with Binance at USD 414.63M.",
+        "Reported Binance XRPUSDT funding +0.0100% per 8h."
+      ],
+      "limitations": [
+        "The total and Binance share differ from other providers; exact contract universe requires reconciliation."
+      ]
+    }
+  ]
+}

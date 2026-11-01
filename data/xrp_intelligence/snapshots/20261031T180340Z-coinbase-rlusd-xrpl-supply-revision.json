@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRPL-RLUSD-COINBASE-EXCHANGE-BALANCE-REVISION-20261031T180340Z",
+  "captured_at_utc": "2026-10-31T18:03:40Z",
+  "data_cutoff_utc": "2026-10-31T18:03:40Z",
+  "mission_priority": "XRP_INTELLIGENCE_AND_PREDICTION_ENGINE_MASTERY",
+  "scope": "Coinbase RLUSD multichain distribution; XRPL RLUSD supply change; XRP exchange-wallet attribution revision",
+  "source_ids": [
+    "SRC-COINBASE-RLUSD-LISTING-20261028",
+    "SRC-XRPLDASHBOARD-RLUSD-SUPPLY-20261031T180340Z",
+    "SRC-XRPLDASHBOARD-RLUSD-METHODOLOGY-20261031T180340Z",
+    "SRC-XRP-INSIGHTS-EXCHANGE-BALANCES-20261031T180340Z",
+    "SRC-XRP-INSIGHTS-EXCHANGE-METHODOLOGY-20261031T180340Z"
+  ],
+  "rlusd_supply": {
+    "prior_xrpl_daily_snapshot_utc": "2026-10-30T01:00:00Z",
+    "prior_xrpl_supply_usd": 981760000,
+    "current_xrpl_daily_snapshot_utc": "2026-10-31T01:00:00Z",
+    "current_xrpl_supply_usd": 707358109.94,
+    "derived_daily_change_usd": -274401890.06,
+    "derived_daily_change_pct": -27.95,
+    "rolling_24h_observation": {
+      "observed_during_page_capture_utc": "2026-10-31T18:03:40Z",
+      "xrpl_net_supply_change_usd": -67600000,
+      "ethereum_net_supply_change_usd": 19600000,
+      "combined_ethereum_xrpl_net_change_usd": -48000000,
+      "ethereum_supply_usd": 1710000000,
+      "xrpl_supply_usd": 707360000,
+      "combined_two_chain_supply_usd": 2417350000
+    },
+    "chain_scope": {
+      "ethereum": true,
+      "xrpl": true,
+      "base": "EXCLUDED_FROM_DASHBOARD_SCOPE; PAGE_LABELS_BASE_TESTING"
+    },
+    "methodology": {
+      "xrpl": "gateway_balances daily snapshot differences at UTC day boundaries",
+      "ethereum": "totalSupply() via public RPC/Etherscan path",
+      "independent_rpc_crosscheck_last_reported_finalized_utc": "2026-10-30",
+      "live_feed_status": "UNAVAILABLE_DURING_PAGE_CAPTURE",
+      "signed_snapshot_signature": "PUBLISHED_BUT_NOT_RECOMPUTED_IN_THIS_RUN",
+      "dashboard_snapshot_age_seconds_at_page_render": 293
+    }
+  },
+  "coinbase_ripple_distribution": {
+    "listing_date": "2026-10-28",
+    "products": [
+      "Coinbase Prime",
+      "Coinbase Exchange",
+      "Coinbase retail app"
+    ],
+    "supported_deposit_withdrawal_networks": [
+      "XRPL",
+      "Base",
+      "Ethereum"
+    ],
+    "usd_conversion": "1:1 in supported regions",
+    "ripple_base_liquidity_support": "Coinbase says Ripple will provide liquidity on Base",
+    "global_exchange_rlusd_collateral_use": "DEFERRED_AT_LAUNCH; Coinbase says it will follow later",
+    "relationship_class": "CONFIRMED_DISTRIBUTION_AND_NETWORK_ACCESS; NO_CAUSAL_SUPPLY_FLOW_ESTABLISHED"
+  },
+  "xrp_exchange_balances": {
+    "underlying_balance_snapshot_utc": "2026-10-31T08:00:00Z",
+    "captured_page_utc": "2026-10-31T18:03:40Z",
+    "tracked_wallets": 701,
+    "tracked_exchanges": 24,
+    "total_xrp": 22480000000,
+    "circulating_supply_share_pct": 32.8,
+    "total_supply_share_pct": 22.5,
+    "same_wallet_change_7d_xrp": -133000000,
+    "same_wallet_change_30d_xrp": -12300000,
+    "naive_total_change_xrp": 2150000000,
+    "newly_tracked_wallets": 22,
+    "newly_tracked_wallet_balance_xrp": 2170000000,
+    "exchange_rows": {
+      "Upbit": {
+        "balance_xrp": 6430000000,
+        "change_7d_xrp": -747000,
+        "change_30d_xrp": 34600000
+      },
+      "Coinbase": {
+        "balance_xrp": 5850000000,
+        "change_7d_xrp": 17700000,
+        "change_30d_xrp": 18400000
+      },
+      "Binance": {
+        "balance_xrp": 2780000000,
+        "change_7d_xrp": 17600000,
+        "change_30d_xrp": 30300000
+      },
+      "SBI_VC_Trade": {
+        "balance_xrp": 59500000,
+        "change_7d_xrp": -899000,
+        "change_30d_xrp": -10500000
+      }
+    },
+    "non_customer_reserve_operational_xrp": 487200000,
+    "non_customer_reserve_breakdown_xrp": {
+      "Binance_Peg_XRP_BF2": 325800000,
+      "Coinbase_cbXRP": 150200000,
+      "insurance_and_charity": 11200000
+    },
+    "previous_capture_conflict": {
+      "previous_capture_utc": "2026-10-31T17:57:03Z",
+      "previous_displayed_total_change_30d_xrp": -140400000,
+      "current_displayed_total_change_30d_xrp": -12300000,
+      "previous_coinbase_change_7d_xrp": 1100000,
+      "current_coinbase_change_7d_xrp": 17700000,
+      "previous_coinbase_change_30d_xrp": 12500000,
+      "current_coinbase_change_30d_xrp": 18400000,
+      "previous_upbit_change_7d_xrp": 115000000,
+      "current_upbit_change_7d_xrp": -747000,
+      "previous_upbit_change_30d_xrp": 66700000,
+      "current_upbit_change_30d_xrp": 34600000,
+      "status": "MATERIAL_PROVIDER_DISPLAY_REVISION; PRESERVE_BOTH_CAPTURES; CAUSE_UNKNOWN"
+    },
+    "semantics": "ATTRIBUTED_CUSTODY_WALLETS_NOT_TRADABLE_FLOAT"
+  },
+  "market_context": {
+    "xrp_usd": 1.2531,
+    "observed_at_utc": "2026-10-31T17:55:00Z",
+    "source": "xrpldashboard page display",
+    "feature_admission": "CONTEXT_ONLY"
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "directional_features_admitted": [],
+    "reason": "RLUSD chain supply and attributed exchange-wallet balances do not establish native XRP net buying or selling; provider revision and chain-scope gaps remain."
+  },
+  "safety": {
+    "main_modified_by_this_research": false,
+    "merge": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "real_money_trade": false
+  }
+}

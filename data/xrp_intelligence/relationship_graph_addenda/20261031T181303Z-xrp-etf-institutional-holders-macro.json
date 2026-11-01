@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-ETF-INSTITUTIONAL-HOLDERS-MACRO-20261031T181303Z",
+  "captured_at_utc": "2026-10-31T18:24:02.075Z",
+  "source_ids": [
+    "SRC-CRYPTOETF-XRP-FLOWS-AND-HOLDINGS-20261031",
+    "SRC-FED-FOMC-20261028"
+  ],
+  "nodes": [
+    {
+      "id": "XRP",
+      "type": "native_asset",
+      "name": "XRP"
+    },
+    {
+      "id": "XRP_ETF_COMPLEX",
+      "type": "fund_complex",
+      "name": "Five US spot XRP ETFs"
+    },
+    {
+      "id": "GOLDMAN_SACHS",
+      "type": "institution",
+      "name": "Goldman Sachs"
+    },
+    {
+      "id": "JANE_STREET",
+      "type": "institution",
+      "name": "Jane Street"
+    },
+    {
+      "id": "MILLENNIUM",
+      "type": "institution",
+      "name": "Millennium Management"
+    },
+    {
+      "id": "INTESA",
+      "type": "institution",
+      "name": "Intesa Sanpaolo"
+    },
+    {
+      "id": "FOMC",
+      "type": "policy_body",
+      "name": "Federal Open Market Committee"
+    }
+  ],
+  "edges": [
+    {
+      "from": "XRP_ETF_COMPLEX",
+      "to": "XRP",
+      "relation": "HOLDS_UNDERLYING_ASSET",
+      "detail": "1,142,785,690 XRP reported at 2026-10-30, approximately 1.80% of circulating supply",
+      "source_ids": [
+        "SRC-CRYPTOETF-XRP-FLOWS-AND-HOLDINGS-20261031"
+      ],
+      "evidence_class": "SECONDARY_ETF_HOLDINGS_AGGREGATION"
+    },
+    {
+      "from": "GOLDMAN_SACHS",
+      "to": "XRP_ETF_COMPLEX",
+      "relation": "REPORTED_13F_LONG_HOLDING",
+      "detail": "USD 86.5M at 2026-06-30 across five tracked funds",
+      "source_ids": [
+        "SRC-CRYPTOETF-XRP-FLOWS-AND-HOLDINGS-20261031"
+      ],
+      "evidence_class": "LAGGED_13F_AGGREGATION"
+    },
+    {
+      "from": "JANE_STREET",
+      "to": "XRP_ETF_COMPLEX",
+      "relation": "REPORTED_13F_LONG_HOLDING",
+      "detail": "USD 16.4M at 2026-06-30",
+      "source_ids": [
+        "SRC-CRYPTOETF-XRP-FLOWS-AND-HOLDINGS-20261031"
+      ],
+      "evidence_class": "LAGGED_13F_AGGREGATION"
+    },
+    {
+      "from": "MILLENNIUM",
+      "to": "XRP_ETF_COMPLEX",
+      "relation": "REPORTED_13F_LONG_HOLDING",
+      "detail": "USD 16.2M at 2026-06-30",
+      "source_ids": [
+        "SRC-CRYPTOETF-XRP-FLOWS-AND-HOLDINGS-20261031"
+      ],
+      "evidence_class": "LAGGED_13F_AGGREGATION"
+    },
+    {
+      "from": "INTESA",
+      "to": "XRP_ETF_COMPLEX",
+      "relation": "REPORTED_13F_LONG_HOLDING",
+      "detail": "USD 14.4M at 2026-06-30",
+      "source_ids": [
+        "SRC-CRYPTOETF-XRP-FLOWS-AND-HOLDINGS-20261031"
+      ],
+      "evidence_class": "LAGGED_13F_AGGREGATION"
+    },
+    {
+      "from": "FOMC",
+      "to": "XRP",
+      "relation": "MACRO_CONTEXT_ONLY",
+      "detail": "2026-10-28 target range held at 3.75%-4.00%; two dissenters preferred a 25bp hike; no XRP-specific causal link",
+      "source_ids": [
+        "SRC-FED-FOMC-20261028"
+      ],
+      "evidence_class": "POLICY_CONTEXT_NOT_CAUSAL_EDGE"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-XRP-ETF-RELATIVE-RESILIENCE",
+      "claim": "XRP ETF flows showed relative resilience on 2026-10-30 while BTC and ETH ETFs experienced large outflows.",
+      "status": "PROVISIONAL_PARTIAL_DATA",
+      "supporting": [
+        "XRP displayed +USD 0.2M net flow versus BTC -USD 643.3M and ETH -USD 155.7M."
+      ],
+      "disconfirming": [
+        "Only 3 of 5 XRP funds reported; the XRP inflow was approximately 0.01% of reported net assets.",
+        "ETF creations/redemptions are T+1 and may reflect arbitrage/hedging rather than same-day directional demand."
+      ]
+    },
+    {
+      "id": "H-XRP-INSTITUTIONAL-OWNERSHIP",
+      "claim": "XRP ETFs have measurable institutional ownership through reportable 13F positions.",
+      "status": "SUPPORTED_LAGGED_13F",
+      "supporting": [
+        "127 institutions reported USD 179M across five XRP ETFs at 2026-06-30.",
+        "Goldman Sachs represented approximately 48% of reported 13F value."
+      ],
+      "disconfirming": [
+        "13F is lagged and excludes shorts, futures and retail; reported ETF shares are not direct XRP beneficial ownership.",
+        "Concentration in Goldman Sachs and a small number of market makers limits the breadth inference."
+      ]
+    },
+    {
+      "id": "H-FED-HAWKISH-RISK-REGIME",
+      "claim": "The October 28 FOMC hold with two hike dissents is a restrictive macro backdrop for risk assets.",
+      "status": "MACRO_CONTEXT_INFERENCE",
+      "supporting": [
+        "Target range remained 3.75%-4.00%; both dissenters preferred a 25bp hike; inflation remained elevated."
+      ],
+      "disconfirming": [
+        "Economic activity was described as strong and the Committee maintained ample reserves; this is not evidence of an imminent hike.",
+        "No XRP-specific causal or predictive effect is established."
+      ]
+    },
+    {
+      "id": "H-ETF-FLOWS-PRICE-PREDICTION",
+      "claim": "ETF flows and 13F holdings alone provide a directional XRP price signal.",
+      "status": "UNSUPPORTED_NO_FEATURE_ADMISSION",
+      "supporting": [],
+      "disconfirming": [
+        "Daily flow is partial and T+1; 13F is lagged; no leakage-safe out-of-sample model validation has been completed."
+      ]
+    }
+  ],
+  "limitations": [
+    "ETF flow data are provider-aggregated and latest XRP session is partial.",
+    "13F holdings are quarter-end long reportable securities, not total institutional exposure.",
+    "Macro context is not a direct XRP causal feature."
+  ]
+}

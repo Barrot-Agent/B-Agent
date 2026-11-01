@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_source_bundle",
+  "bundle_id": "XRP-CAMILA-KAMILAH-CHANNEL-AND-CLAIM-AUDIT-20261031T184158Z",
+  "captured_at_utc": "2026-10-31T18:41:58Z",
+  "sources": [
+    {
+      "source_id": "SRC-YOUTUBE-DRKAMILAH-CHANNEL",
+      "publisher": "YouTube",
+      "title": "Kamilah Stevenson — @drkamilahstevenson",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "published_at": "channel; ongoing",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "PRIMARY_PLATFORM_CHANNEL_PAGE",
+      "independence_group": "YOUTUBE_CHANNEL",
+      "claims": [
+        "A public YouTube channel is accessible at the handle @drkamilahstevenson and is titled Kamilah Stevenson."
+      ],
+      "limitations": [
+        "The page fetch exposes only a minimal shell; it does not provide an exhaustive uploads list or a first-party identity crosslink in the captured response."
+      ]
+    },
+    {
+      "source_id": "SRC-VLING-KAMILAH-CHANNEL-ID",
+      "publisher": "Vling",
+      "title": "Kamilah Stevenson channel analytics profile",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "published_at": "channel profile; crawled 2026-10-28",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "SECONDARY_CHANNEL_DIRECTORY",
+      "independence_group": "THIRD_PARTY_CHANNEL_DIRECTORY",
+      "claims": [
+        "The directory maps the Kamilah Stevenson channel to YouTube channel ID UCqUPJMQdkCN6lsLVDnichPA.",
+        "The profile reports approximately 1.2K videos and describes a focus on stocks, crypto, macro awareness and long-term investing."
+      ],
+      "limitations": [
+        "Third-party analytics, not YouTube's authoritative channel inventory; counts can be delayed or rounded."
+      ]
+    },
+    {
+      "source_id": "SRC-IHEART-PAUL-BARRON-CAMILA-IDENTITY",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "title": "Crypto Panics! with Dr. Kamilah Stevenson",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "published_at": "2026",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "PUBLIC_INTERVIEW_TRANSCRIPT_SECONDARY_RENDERING",
+      "independence_group": "PAUL_BARRON_PODCAST",
+      "claims": [
+        "The host introduces the guest as Camilla; the guest speaks as Camila and says she is on X as 'cam i am cam Stevenson', Instagram as Kamilla Stevenson, and YouTube as 'doctor Camilla Stevenson'.",
+        "The guest warns that fake pages exist and asks viewers to use her named handles."
+      ],
+      "limitations": [
+        "The transcript is automatically generated and has spelling variations. It does not explicitly state that @drkamilahstevenson is the exact YouTube handle, so the channel mapping remains probable rather than fully first-party verified."
+      ]
+    },
+    {
+      "source_id": "SRC-LILYS-RIPPLE-BANK-VIDEO-TRANSCRIPT",
+      "publisher": "Lilys.ai transcript viewer for YouTube",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "url": "https://lilys.ai/en/notes/ripple-xrp-20251214/ripple-bank-xrp-holders",
+      "published_at": "2025-12-14",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "SECONDARY_VIDEO_TRANSCRIPT",
+      "independence_group": "VIDEO_TRANSCRIPT_RENDITION",
+      "claims": [
+        "The page attributes the video to Kamilah Stevenson, dates it 2025-12-14, and links original YouTube video ID QslbjGQD0MU.",
+        "The transcript speaker introduces herself as 'Camila Stevenson'.",
+        "The transcript says Ripple was 'becoming a bank', says a banking license changes its relationship with banks, and claims direct access to banking rails/no intermediaries.",
+        "The speaker frames XRP as a liquidity instrument involving collateral, yield and lending; predicts that stress in Japan's reverse carry trade could make XRP a logical pick; and asserts dark pools, OTC and ETFs could create a supply shock."
+      ],
+      "limitations": [
+        "Transcript is an automated/third-party rendering and may contain transcription errors.",
+        "Claims in the transcript are creator opinion unless independently supported; title and framing must be checked against the legal status at publication."
+      ]
+    },
+    {
+      "source_id": "SRC-GLASP-XRP-ETF-VIDEO-TRANSCRIPT",
+      "publisher": "Glasp YouTube transcript page",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "url": "https://glasp.co/youtube/ci0FH73lbCs",
+      "published_at": "2026-01-13",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "SECONDARY_VIDEO_TRANSCRIPT_EXCERPT",
+      "independence_group": "GLASP_VIDEO_TRANSCRIPTS",
+      "claims": [
+        "Glasp attributes the video to Kamilah Stevenson, dates it 2026-01-13, and displays the opening transcript self-introduction 'Hey, it's Camila Stevenson.'",
+        "The page identifies original video ID ci0FH73lbCs."
+      ],
+      "limitations": [
+        "Only an excerpt is visible without the full transcript; no full claim audit is claimed."
+      ]
+    },
+    {
+      "source_id": "SRC-GLASP-WEALTH-VIDEO-TRANSCRIPT",
+      "publisher": "Glasp YouTube transcript page",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "url": "https://glasp.co/youtube/cxeX_eu_2H0",
+      "published_at": "2026-01-15",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "SECONDARY_VIDEO_TRANSCRIPT_EXCERPT",
+      "independence_group": "GLASP_VIDEO_TRANSCRIPTS",
+      "claims": [
+        "Glasp attributes the video to Kamilah Stevenson, dates it 2026-01-15, and displays the opening transcript self-introduction 'Hey, it's Camila Stevenson.'",
+        "The page identifies original video ID cxeX_eu_2H0."
+      ],
+      "limitations": [
+        "Only an excerpt is visible; full claim audit not performed."
+      ]
+    },
+    {
+      "source_id": "SRC-GLASP-XRP-NEED-VIDEO",
+      "publisher": "Glasp YouTube transcript page",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "url": "https://glasp.co/youtube/rv0BAV0vLgo",
+      "published_at": "2026-03-19",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "SECONDARY_VIDEO_CATALOG_ENTRY",
+      "independence_group": "GLASP_VIDEO_TRANSCRIPTS",
+      "claims": [
+        "Glasp attributes the video to Kamilah Stevenson, dates it 2026-03-19, and reports the title 'How Much XRP Do You ACTUALLY Need?' with original video ID rv0BAV0vLgo."
+      ],
+      "limitations": [
+        "The retrieved listing did not expose the full transcript; no content claim audit is made."
+      ]
+    },
+    {
+      "source_id": "SRC-OCC-RIPPLE-PRELIMINARY-CONDITIONAL-APPROVAL-20251212",
+      "publisher": "Office of the Comptroller of the Currency",
+      "title": "OCC decision letter — Application to Charter Ripple National Trust Bank",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-125b.pdf",
+      "published_at": "2025-12-12",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "REGULATORY_PRIMARY_DECISION",
+      "independence_group": "OCC_OFFICIAL",
+      "claims": [
+        "OCC granted preliminary conditional approval only on 2025-12-12.",
+        "The proposed bank would conduct operations of a trust company and related activities, including fiduciary activities.",
+        "The letter states final approval and authorization to commence business would not be granted until all pre-opening requirements were met."
+      ],
+      "limitations": [
+        "The letter describes the approval state on 2025-12-12; the later effective date is recorded separately in OCC CAS."
+      ]
+    },
+    {
+      "source_id": "SRC-OCC-RIPPLE-CHARTER-CAS-20261026",
+      "publisher": "Office of the Comptroller of the Currency",
+      "title": "Corporate Applications Search — Ripple National Trust Bank",
+      "url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "published_at": "status as of 2026-10-26",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "REGULATORY_PRIMARY_RECORD",
+      "independence_group": "OCC_OFFICIAL",
+      "claims": [
+        "OCC CAS records receipt 2025-07-02, approval 2025-12-12 and consummated/effective 2026-10-26 for Ripple National Trust Bank.",
+        "The filing type is a national trust bank under a holding company and trust powers were requested."
+      ],
+      "limitations": [
+        "Consummated/effective charter status is not by itself proof of a specific payment-rail connection, Fed master account, deposit-taking authority or volume of XRP activity."
+      ]
+    },
+    {
+      "source_id": "SRC-RIPPLE-DEC12-2025-CHARTER-ANNOUNCEMENT",
+      "publisher": "Ripple",
+      "title": "Ripple Secures Federal Approval to Establish National Trust Bank",
+      "url": "https://ripple.com/ripple-press/ripple-secures-federal-approval-to-establish-national-trust-bank/",
+      "published_at": "2025-12-12",
+      "retrieved_at_utc": "2026-10-31T18:41:58Z",
+      "evidence_class": "COMPANY_PRIMARY_STATEMENT",
+      "independence_group": "RIPPLE_OFFICIAL",
+      "claims": [
+        "Ripple's own release called the OCC approval conditional and said final approvals were still required.",
+        "The release describes the planned bank as a trust bank, with RLUSD reserve-management oversight as a core purpose."
+      ],
+      "limitations": [
+        "Company statement; it does not establish that the trust bank was already operating on the publication date."
+      ]
+    }
+  ]
+}
