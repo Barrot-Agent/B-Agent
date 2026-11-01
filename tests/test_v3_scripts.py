@@ -759,4 +759,4 @@ def test_destructive_hugging_face_admin_workflow_is_disabled() -> None:
     assert "permissions: {}" in workflow
     assert "HF_TOKEN" not in workflow
     assert "api/repos/delete" not in workflow
-    assert "No external repository was changed" in workflow
+    assert "no external repository was changed" in workflow.lower()
