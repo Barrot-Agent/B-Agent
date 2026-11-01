@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrp-agentic-payments-market-and-v3-audit-2026-11-01T19:14:00Z",
+  "captured_at_utc": "2026-11-01T19:14:00Z",
+  "data_cutoff_utc": "2026-11-01T19:14:00Z",
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "market": {
+    "spot": {
+      "source_id": "altcoinlog-xrp-20261101T1914Z",
+      "price_usd": 1.2488,
+      "change_24h_pct": -0.27,
+      "change_7d_pct": -4.23,
+      "change_30d_pct": -16.64,
+      "volume_24h_usd": 690200000,
+      "market_cap_usd": 79100000000,
+      "circulating_supply_xrp": 63351000000,
+      "observation_time_utc": "2026-11-01T19:14:00Z",
+      "classification": "SECONDARY_AGGREGATOR"
+    },
+    "derivatives": {
+      "source_id": "tradradar-xrp-perpetuals-20261101T1840Z",
+      "price_usd": 1.2503,
+      "open_interest_usd": 1900000000,
+      "venue_count": 7,
+      "instrument_scope": "perpetual futures",
+      "change_24h_pct": 1.28,
+      "funding_8h_pct": 0.0096,
+      "long_account_share_pct": 77.9,
+      "long_short_account_ratio": 3.53,
+      "liquidations_24h_min_usd": 579270,
+      "long_liquidations_usd": 474920,
+      "short_liquidations_usd": 104350,
+      "observation_time_utc": "2026-11-01T18:40:00Z",
+      "classification": "SECONDARY_AGGREGATOR_LOWER_BOUND_LIQUIDATIONS"
+    },
+    "interpretation": {
+      "competing_hypotheses": [
+        "Rising OI and positive funding could reflect new leveraged positioning while spot is weak.",
+        "The 77.9% long-account share and positive funding could indicate crowded long exposure vulnerable to a downside squeeze.",
+        "Account share may be hedged or small-notional; the provider's venue coverage and timestamp are insufficient to establish net directional positioning."
+      ],
+      "admission": "No derivatives feature admitted until venue, contract, multiplier, timestamp and notional units are normalized."
+    }
+  },
+  "etf_flows": {
+    "broad_tracker": {
+      "source_id": "xrp-insights-etf-tracker-20261030",
+      "holdings_xrp": 1196600000,
+      "aum_usd": 1510000000,
+      "weekly_net_holdings_change_xrp": 3390000,
+      "october_30_daily_change_xrp": -49932,
+      "fund_universe": "six US spot XRP ETFs plus BITW",
+      "status": "SECONDARY_TRACKER_WITH_GAPS",
+      "interpretation": "Positive weekly holdings delta is small relative to existing holdings and is not automatically net external cash."
+    },
+    "partial_tracker": {
+      "source_id": "cryptokeyhole-xrp-etf-20261101T1857Z",
+      "october_30_partial_flow_xrp": -1123743,
+      "funds_reported": 3,
+      "funds_expected": 4,
+      "missing": [
+        "Franklin XRPZ"
+      ],
+      "complete_through": "2026-10-29",
+      "status": "PARTIAL_NOT_FINAL",
+      "data_quality": "Future-dated 2 Nov issuer-file label observed in a 31 Oct publication window is quarantined."
+    },
+    "reconciliation": "The two trackers use different fund universes, issuer publication cutoffs and inclusion rules. Their daily totals are not directly comparable and must not be averaged."
+  },
+  "agentic_payments": {
+    "protocol": "x402 on XRPL",
+    "operator": "t54 Labs",
+    "operator_dashboard": {
+      "all_time_transactions": 14835534,
+      "all_time_value_settled_usd": 48402.25,
+      "registered_merchants": 183,
+      "live_services": 5318,
+      "mean_value_per_transaction_usd": 0.00326259,
+      "status": "OPERATOR_REPORTED_NOT_INDEPENDENTLY_AUDITED"
+    },
+    "secondary_tracker": {
+      "source_id": "xrp-insights-agentic-payments-20261101",
+      "all_time_transactions": 14803915,
+      "xrp_settled": 7021,
+      "rlusd_settled": 38031,
+      "active_agents": 189,
+      "merchants": 183,
+      "paid_services": 5790,
+      "top_merchant_transactions": 10416103,
+      "top_five_merchant_transactions": 12665549,
+      "top_merchant_share_pct": 70.3605,
+      "top_five_share_pct": 85.5554,
+      "status": "SECONDARY_AND_LIKELY_DEPENDENT_ON_T54_INDEX"
+    },
+    "example_transaction": {
+      "hash": "61F11991E6365FA58CC9FF0222F96826D37E0DA2C6CFD3DB034A50402C39F13D",
+      "ledger_index": 108050022,
+      "timestamp_utc": "2026-11-01T17:49:20Z",
+      "amount": 0.006,
+      "asset": "RLUSD",
+      "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+      "buyer": "raoX3LvaqmUaYNK1EHNu4rtu9aZ512mumu",
+      "merchant": "AskSurf",
+      "source_tag": 804681468,
+      "facilitator": "t54 XRPL Facilitator",
+      "intent_status": "UNVERIFIED",
+      "intent_interpretation": "t54 docs say Verifiable Intent is optional; without an L1–L3 chain, an ordinary x402 payment can proceed without a Verifiable Intent risk call. This label is not proof the ledger payment failed.",
+      "raw_transaction_verification": "NOT_INDEPENDENTLY_COMPLETED"
+    },
+    "token_demand_interpretation": {
+      "observed_sample": "Recent live settlement examples are denominated in small RLUSD amounts.",
+      "tracker_split": "Secondary tracker reports 7,021 XRP and 38,031 RLUSD all-time; not independently reconciled.",
+      "implication": "XRPL activity and RLUSD usage do not automatically imply material XRP spot demand. XRP principal, RLUSD principal, network fees and account-reserve requirements must be measured separately.",
+      "fee_example": "t54 reports 0.36 drops per paid request during an Oct 14–17 closed-beta Check-session measurement. This is a vendor-reported sample, not an all-time fee total."
+    }
+  },
+  "institutional_graph": {
+    "confirmed_or_sourced_edges": [
+      "Coinbase introduced and expanded x402 ERC-20 support on EVM chains; protocol is not XRP-exclusive.",
+      "Ripple says t54's contribution made XRPL a supported x402 chain, with XRP and RLUSD as payment assets.",
+      "Mastercard lists Coinbase, Ripple and t54 among Agent Pay for Machines initial participants/supporters.",
+      "Mastercard describes multi-rail settlement across cards, accounts and stablecoins.",
+      "t54's XRPL facilitator documents XRP and RLUSD payment flows and optional Mastercard-aligned Verifiable Intent."
+    ],
+    "circle_relationship": "No direct Circle-to-t54 or Circle-to-x402 partnership was established. The t54 directory lists a third-party 'Circle USDC Intelligence' service priced in an IOU USDC issued by rGm7WCVp…uWhE; that issuer was not verified as Circle. Do not attribute this service or IOU to Circle.",
+    "competitive_interpretation": "The ecosystem is multi-rail and cross-chain. Coinbase, Ripple, Mastercard and t54 overlap in agentic-payment infrastructure without evidence of an exclusive XRP settlement alliance."
+  },
+  "evernorth": {
+    "source_id": "xrp-insights-evernorth-20261101T1808Z",
+    "ledger_index": 108050312,
+    "ledger_close_time_utc": "2026-11-01T18:08:00Z",
+    "attributed_wallet_count": 13,
+    "current_attributed_balance_xrp": 103129904.54985,
+    "external_to_attribution_set_xrp": 370346663.22975,
+    "latest_listed_external_movement_utc": "2026-10-22T18:08:22Z",
+    "change_since_prior_1529_utc_snapshot": "NO_CHANGE",
+    "classification": "STRONGLY_SUPPORTED_INTERNAL_BITGO_CUSTODY_REALLOCATION; BENEFICIAL_OWNERSHIP_NOT_DIRECTLY_PROVEN",
+    "market_feature_admission": "NONE"
+  },
+  "sentiment_pipeline": {
+    "main_artifact_timestamp_utc": "2026-11-01T18:51:35.503723Z",
+    "xrp_recent_24h_entries": 0,
+    "xrp_prior_24h_entries": 0,
+    "xrp_recent_score": null,
+    "xrp_shift": null,
+    "entity_profile_xrp_mentions": 286,
+    "entity_profile_xrp_score": 0.455,
+    "entity_profile_time_window": "NOT_EXPOSED",
+    "admission": "No current sentiment feature. Entity-profile all-history/undated score cannot replace a zero-observation rolling sentiment series."
+  },
+  "identity_threads": {
+    "sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; educational AI training only; no XRP relationship established.",
+    "ask_coin": "Permission Coin ASK remains a candidate only; direct XRPL integration unverified.",
+    "camilla_stephenson": "Exact channel identity unresolved; public video inventory incomplete."
+  },
+  "data_quality": {
+    "unresolved": [
+      "Raw XRPL transaction JSON and source-tag scan for t54 x402 activity.",
+      "t54 and XRP Insights agentic transaction-count/value reconciliation.",
+      "Independent source independence for agentic-payment aggregate metrics.",
+      "ETF issuer-file future-date anomaly and fund-universe reconciliation.",
+      "Contract-level OI venue/instrument normalization.",
+      "XRP sentiment rolling-window source timestamps and independent-source deduplication."
+    ],
+    "excluded_from_features": [
+      "x402 transaction counts and aggregate value",
+      "ETF partial daily flow",
+      "provider OI aggregates",
+      "modelled liquidation clusters",
+      "all-history entity sentiment profile",
+      "Evernorth out-of-set custody movements"
+    ]
+  }
+}

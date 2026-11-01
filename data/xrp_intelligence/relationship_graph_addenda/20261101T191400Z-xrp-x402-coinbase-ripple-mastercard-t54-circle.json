@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "graph_id": "xrp-x402-coinbase-ripple-mastercard-t54-circle-20261101T1914Z",
+  "captured_at_utc": "2026-11-01T19:14:00Z",
+  "nodes": [
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "type": "exchange_protocol_provider",
+      "status": "confirmed"
+    },
+    {
+      "id": "x402",
+      "name": "x402 open payment protocol",
+      "type": "open_protocol",
+      "status": "confirmed"
+    },
+    {
+      "id": "t54",
+      "name": "t54 Labs",
+      "type": "facilitator_and_trust_layer",
+      "status": "confirmed_by_company_and_mastercard"
+    },
+    {
+      "id": "xrpl_facilitator",
+      "name": "t54 XRPL Facilitator",
+      "type": "payment_facilitator",
+      "status": "operator_reported_live"
+    },
+    {
+      "id": "xrpl",
+      "name": "XRP Ledger",
+      "type": "ledger",
+      "status": "confirmed"
+    },
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "native_asset",
+      "status": "confirmed"
+    },
+    {
+      "id": "rlusd",
+      "name": "RLUSD",
+      "type": "issued_stablecoin",
+      "status": "confirmed"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple",
+      "type": "payments_and_ledger_company",
+      "status": "confirmed"
+    },
+    {
+      "id": "mastercard",
+      "name": "Mastercard Agent Pay for Machines",
+      "type": "multi_rail_agent_payment_framework",
+      "status": "confirmed"
+    },
+    {
+      "id": "trustline",
+      "name": "Trustline",
+      "type": "verifiable_intent_issuer_and_risk_service",
+      "status": "vendor_documented"
+    },
+    {
+      "id": "circle",
+      "name": "Circle",
+      "type": "stablecoin_issuer",
+      "status": "confirmed"
+    },
+    {
+      "id": "usdc_iou",
+      "name": "Third-party IOU USDC issuer rGm7WCVp…uWhE",
+      "type": "xrpl_issued_asset",
+      "status": "issuer_not_verified_as_circle"
+    },
+    {
+      "id": "asksurf",
+      "name": "AskSurf",
+      "type": "x402_merchant",
+      "status": "facilitator_indexed"
+    },
+    {
+      "id": "heurist_router",
+      "name": "Heurist Inference Router",
+      "type": "x402_merchant",
+      "status": "secondary_tracker_attribution"
+    }
+  ],
+  "edges": [
+    {
+      "from": "coinbase",
+      "to": "x402",
+      "relation": "introduced_and_expanded_protocol_support",
+      "evidence": "Coinbase Developer Platform announcement 2026-03-18",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "coinbase-x402-erc20-20260318"
+      ]
+    },
+    {
+      "from": "t54",
+      "to": "xrpl_facilitator",
+      "relation": "operates",
+      "evidence": "t54 XRPL AI Hub and facilitator docs",
+      "classification": "SOURCED_CLAIM",
+      "source_ids": [
+        "t54-xrpl-ai-hub-20261101T1914Z",
+        "t54-xrpl-x402-docs-overview-20261101"
+      ]
+    },
+    {
+      "from": "t54",
+      "to": "xrpl",
+      "relation": "contributed_XRPL_support_to_x402",
+      "evidence": "Ripple AI Starter Kit announcement",
+      "classification": "SOURCED_CLAIM",
+      "source_ids": [
+        "ripple-xrpl-ai-starter-kit-20260610"
+      ]
+    },
+    {
+      "from": "xrpl_facilitator",
+      "to": "xrp",
+      "relation": "supports_payment_asset",
+      "evidence": "t54 docs",
+      "classification": "SOURCED_CLAIM",
+      "source_ids": [
+        "t54-xrpl-x402-docs-overview-20261101"
+      ]
+    },
+    {
+      "from": "xrpl_facilitator",
+      "to": "rlusd",
+      "relation": "supports_payment_asset",
+      "evidence": "t54 docs and hub",
+      "classification": "SOURCED_CLAIM",
+      "source_ids": [
+        "t54-xrpl-x402-docs-overview-20261101",
+        "t54-xrpl-ai-hub-20261101T1914Z"
+      ]
+    },
+    {
+      "from": "ripple",
+      "to": "xrpl",
+      "relation": "publishes_agentic_developer_kit",
+      "evidence": "Ripple XRPL AI Starter Kit",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "ripple-xrpl-ai-starter-kit-20260610"
+      ]
+    },
+    {
+      "from": "mastercard",
+      "to": "t54",
+      "relation": "initial_launch_partner",
+      "evidence": "Mastercard Agent Pay for Machines partner list",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "mastercard-agent-pay-machines-20260610"
+      ]
+    },
+    {
+      "from": "mastercard",
+      "to": "coinbase",
+      "relation": "initial_participant",
+      "evidence": "Mastercard Agent Pay for Machines partner list",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "mastercard-agent-pay-machines-20260610"
+      ]
+    },
+    {
+      "from": "mastercard",
+      "to": "ripple",
+      "relation": "initial_participant",
+      "evidence": "Mastercard Agent Pay for Machines partner list",
+      "classification": "CONFIRMED",
+      "source_ids": [
+        "mastercard-agent-pay-machines-20260610"
+      ]
+    },
+    {
+      "from": "xrpl_facilitator",
+      "to": "trustline",
+      "relation": "optional_Verifiable_Intent_risk_verification",
+      "evidence": "t54 Verifiable Intent docs",
+      "classification": "SOURCED_CLAIM",
+      "source_ids": [
+        "t54-verifiable-intent-docs-20261101"
+      ]
+    },
+    {
+      "from": "xrpl_facilitator",
+      "to": "asksurf",
+      "relation": "facilitates_indexed_payment",
+      "evidence": "transaction 61F119… at ledger 108050022",
+      "classification": "FACILITATOR_INDEXED_NOT_RAW_VERIFIED",
+      "source_ids": [
+        "t54-transaction-61f119-20261101T174920Z"
+      ]
+    },
+    {
+      "from": "xrpl_facilitator",
+      "to": "heurist_router",
+      "relation": "directory_and_transaction_activity",
+      "evidence": "XRP Insights merchant attribution",
+      "classification": "SECONDARY_TRACKER_ATTRIBUTION",
+      "source_ids": [
+        "xrp-insights-agentic-payments-20261101"
+      ]
+    },
+    {
+      "from": "circle",
+      "to": "usdc_iou",
+      "relation": "NO_VERIFIED_ISSUER_LINK",
+      "evidence": "Directory listing uses an IOU issuer not matched to Circle",
+      "classification": "UNKNOWN_DO_NOT_CONFLATE",
+      "source_ids": [
+        "t54-xrpl-ai-hub-20261101T1914Z"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Agentic x402 usage can become a meaningful incremental XRPL payment-utility channel.",
+      "classification": "PLAUSIBLE_LONG_TERM_HYPOTHESIS",
+      "support": [
+        "XRPL is supported in x402 through t54.",
+        "Ripple publishes an XRPL AI Starter Kit.",
+        "Mastercard lists Coinbase, Ripple and t54 in an open multi-rail agent-payment initiative."
+      ],
+      "disconfirming": [
+        "Current operator-reported settled value is only about $48.4K all time.",
+        "Top merchant accounts for about 70.4% of the secondary tracker's transaction count; top five about 85.6%.",
+        "Most recent examples are small RLUSD payments; XRP principal split is not disclosed.",
+        "No independent raw transaction reconciliation completed."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "Current agentic-payment activity is too small and concentrated to create material XRP market demand.",
+      "classification": "BEST_SUPPORTED_NEAR_TERM_INTERPRETATION",
+      "support": [
+        "$48,402.25 operator-reported value across 14,835,534 transactions, mean about $0.00326.",
+        "Secondary tracker reports 7,021 XRP and 38,031 RLUSD all time.",
+        "Recent sample rows are denominated in RLUSD.",
+        "Top-merchant concentration is high."
+      ],
+      "disconfirming": [
+        "Transaction counts and merchant/service listings show functioning developer activity.",
+        "Activity could scale materially if usage and merchant diversity expand."
+      ]
+    },
+    {
+      "id": "H3",
+      "statement": "Coinbase, Ripple, Mastercard and t54 are building an interoperable multi-rail agent-payment ecosystem rather than an exclusive XRP alliance.",
+      "classification": "STRONGLY_SUPPORTED_INFERENCE",
+      "support": [
+        "Coinbase x402 ERC-20 support on EVM chains.",
+        "Mastercard partner list includes Coinbase, Ripple and t54 and describes cards/accounts/stablecoins.",
+        "XRPL is one supported x402 chain via t54."
+      ],
+      "disconfirming": [
+        "No evidence in reviewed sources of exclusive routing, shared control or a binding settlement-volume commitment."
+      ]
+    },
+    {
+      "id": "H4",
+      "statement": "Circle is directly participating in the t54 XRPL x402 service layer through a Circle USDC listing.",
+      "classification": "NOT_SUPPORTED; COUNTER_HYPOTHESIS_REJECTED",
+      "support": [
+        "A directory entry is titled 'Circle USDC Intelligence on XRPL'."
+      ],
+      "disconfirming": [
+        "The service is a third-party API listing and its payment token is an IOU issued by rGm7WCVp…uWhE, not verified as Circle's issuer.",
+        "No Circle statement or direct Circle/t54 agreement was found."
+      ]
+    }
+  ],
+  "minority_objections": [
+    "Operator dashboard transaction counts and value are not independently audited; high counts may reflect repeated automated calls or test-like traffic.",
+    "The transaction detail page labels intent Unverified; the docs explain that VI is optional, but raw ledger metadata was not decoded independently.",
+    "The x402 protocol is multi-chain and the Mastercard framework is multi-rail; XRPL support does not imply exclusive settlement or XRP price capture.",
+    "Circle must not be linked to the directory's IOU USDC service without issuer verification."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

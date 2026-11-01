@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "audit_id": "barrot-v3-main-and-pr-1472-1473-20261101T1914Z",
+  "captured_at_utc": "2026-11-01T19:14:00Z",
+  "main_sha": "bf39f397069eb58526a50ef055289997182db6b0",
+  "main_status": "UNCHANGED_DURING_RUN",
+  "open_pull_requests": {
+    "total": 240,
+    "drafts": 230,
+    "ready_for_review": 10,
+    "main_based": 233,
+    "stale_main_based": 231,
+    "based_on_current_main": 2,
+    "current_main_prs": [
+      1472,
+      1473
+    ],
+    "note": "REST pagination returned 100 + 100 + 40 + 0 open PRs. No PR was closed or merged."
+  },
+  "security": {
+    "current_main_exposures": [
+      "Merge Queue has write permissions and can merge/update PRs without a verified explicit user-approval gate.",
+      "Scheduler Tick has write/dispatch capability; latest run fired zero queue entries but executed git push (everything up to date).",
+      "Cross Analysis has write permissions; latest scheduled run committed a generated sentiment_shift timestamp despite zero recent/prior XRP/BTC observations.",
+      "Autonomous Resolver has issues:write and pull-requests:write and can create issues/assign issues and PRs; latest run found no new failing workflows and skipped assignment because COPILOT_ASSIGNEE was unset."
+    ],
+    "rulesets": [
+      {
+        "name": "Fall Back",
+        "enforcement": "disabled"
+      }
+    ],
+    "branch_protection": "GitHub API returned 403; required review/status rules could not be independently inspected.",
+    "security_alerts": "Dependabot and code-scanning alert endpoints were inaccessible through the connected GitHub API; absence of alerts is not established.",
+    "no_job_workflow_failures": [
+      {
+        "run_id": 41339970106,
+        "workflow": "task-allocator",
+        "event": "push",
+        "conclusion": "failure",
+        "jobs": 0,
+        "root_cause": "UNKNOWN"
+      },
+      {
+        "run_id": 41339969109,
+        "workflow": "force-deploy-space",
+        "event": "push",
+        "conclusion": "failure",
+        "jobs": 0,
+        "root_cause": "UNKNOWN"
+      }
+    ]
+  },
+  "proposals": [
+    {
+      "pr": 1472,
+      "head": "f224c86f67d29454d2eb65b3cffcb17472d77372",
+      "base": "bf39f397069eb58526a50ef055289997182db6b0",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41339975864,
+      "ci_result": "390 passed + 8 subtests",
+      "gate_run": 41339975878,
+      "gate_result": "PASSED_MERGING_DISABLED",
+      "scope": "Fresh-main workflow quarantine and read-only resolver/queue controls."
+    },
+    {
+      "pr": 1473,
+      "head": "dd43690ce3121a1e2a5e21db8bd286ac3ac8661e",
+      "base": "bf39f397069eb58526a50ef055289997182db6b0",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41340485046,
+      "ci_result": "403 passed + 8 subtests",
+      "gate_run": 41340485062,
+      "gate_result": "PASSED_MERGING_DISABLED",
+      "scope": "System append timestamps, LIVE versus HISTORICAL_REPLAY separation, replay manifest and source-hash verification."
+    },
+    {
+      "pr": 1467,
+      "state": "OPEN_DRAFT_STALE_BASE",
+      "scope": "Read-only Python dependency scan of three manifests found no known vulnerabilities; not a full repository dependency/security scan."
+    }
+  ],
+  "prediction_engine": {
+    "ledger": "IMPLEMENTED_NOT_POPULATED",
+    "latest_pr": 1473,
+    "live_replay_backfill_control": "TESTED_ON_OPEN_PR_NOT_ACTIVE_ON_MAIN",
+    "forecast_status": "NOT_ISSUED",
+    "outcomes": 0,
+    "skill_estimate": "UNAVAILABLE",
+    "remaining": "Model-artifact hash, baseline-artifact hash, historical feature store and walk-forward calibration."
+  },
+  "platforms": {
+    "verified_live": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "state": "DESIGNED_NOT_CONNECTED"
+  },
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}
