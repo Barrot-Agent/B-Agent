@@ -852,9 +852,27 @@ class ForecastLedger:
             or not source_hashes_match_registry(item)
             for item in forecasts
         )
+        def outcome_source_hash_matches_registry(item: Mapping[str, Any]) -> bool:
+            if self.source_registry_mode != "HASH_VERIFIED":
+                return False
+            source_id = item.get("price_source_id")
+            stored_hash = item.get("price_source_content_hash")
+            if (
+                not isinstance(source_id, str)
+                or not source_id.strip()
+                or not _is_sha256_digest(stored_hash)
+            ):
+                return False
+            try:
+                return stored_hash.lower() == self._registered_source_hash(
+                    source_id, field="price_source_id"
+                )
+            except ValueError:
+                return False
+
         unverified_outcomes = any(
             item.get("price_source_registry_status") != "REGISTERED"
-            or not _is_sha256_digest(item.get("price_source_content_hash"))
+            or not outcome_source_hash_matches_registry(item)
             for item in outcomes
         )
         if unverified_forecasts or unverified_outcomes:
