@@ -1,0 +1,64 @@
+name: Read-only Python Dependency Audit
+
+on:
+  schedule:
+    - cron: '23 4 * * 1'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'requirements*.txt'
+      - 'requirements.tx'
+      - 'pyproject.toml'
+      - 'hf_space/requirements.txt'
+      - 'legacy/requirements_legacy.txt'
+      - '.github/workflows/dependency-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: root-production-and-development
+            requirements_file: requirements-dev.txt
+          - name: huggingface-space
+            requirements_file: hf_space/requirements.txt
+          - name: legacy-python
+            requirements_file: legacy/requirements_legacy.txt
+          - name: auxiliary-python
+            requirements_file: requirements.tx
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned audit tool
+        run: python -m pip install pip-audit==2.10.1
+
+      - name: Audit declared dependency resolution
+        env:
+          REQUIREMENTS_FILE: ${{ matrix.requirements_file }}
+          REPORT_NAME: dependency-audit-${{ matrix.name }}.json
+        run: pip-audit --requirement "$REQUIREMENTS_FILE" --format json --output "$REPORT_NAME"
+
+      - name: Upload dependency audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-audit-${{ matrix.name }}-${{ github.run_id }}
+          path: dependency-audit-${{ matrix.name }}.json
+          if-no-files-found: warn
+          retention-days: 30
