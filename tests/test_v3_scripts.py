@@ -704,3 +704,59 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+
+def test_scheduled_telemetry_and_accuracy_workflows_are_readonly_artifact_only() -> None:
+    telemetry = (REPO_ROOT / ".github" / "workflows" / "autonomous_self_deployment.yml").read_text(encoding="utf-8")
+    accuracy = (REPO_ROOT / ".github" / "workflows" / "check-signal-accuracy.yml").read_text(encoding="utf-8")
+    for workflow in (telemetry, accuracy):
+        assert "contents: read" in workflow
+        assert "contents: write" not in workflow
+        assert "persist-credentials: false" in workflow
+        assert "actions/upload-artifact@v4" in workflow
+        assert "git commit" not in workflow
+        assert "git push" not in workflow
+    assert "TELEMETRY_ONLY" in telemetry
+    assert "NOT_PERFORMED" in telemetry
+    assert "**Status:** OPERATIONAL" not in telemetry
+
+
+def test_subscriber_sync_requires_manual_private_data_confirmation_and_does_not_publish() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "subscriber_sync.yml").read_text(encoding="utf-8")
+    assert "workflow_dispatch:" in workflow
+    assert "schedule:" not in workflow
+    assert "confirm_private_data_processing" in workflow
+    assert 'default: "NO"' in workflow
+    assert "inputs.confirm_private_data_processing == 'YES'" in workflow
+    assert "contents: read" in workflow
+    assert "git commit" not in workflow
+    assert "git push" not in workflow
+    assert "rm -f web/subscribers.json" in workflow
+
+
+def test_databricks_token_rotation_is_disabled_and_accepts_no_token_input() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "rotate-databricks-token.yml").read_text(encoding="utf-8")
+    assert "permissions: {}" in workflow
+    assert "new_token" not in workflow
+    assert "secrets." not in workflow
+    assert "gh secret set" not in workflow
+    assert "gh workflow run" not in workflow
+    assert "ROTATION_NOT_PERFORMED" in workflow
+
+
+def test_push_triggered_external_deployments_are_manual_only() -> None:
+    for name in ("deploy-a2a-worker.yml", "sync-self-hosted-brain.yml"):
+        workflow = (REPO_ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
+        assert "workflow_dispatch:" in workflow
+        assert "push:" not in workflow
+        assert "contents: read" in workflow
+        assert "contents: write" not in workflow
+
+
+def test_destructive_hugging_face_admin_workflow_is_disabled() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "barrot-hf-admin.yml").read_text(encoding="utf-8")
+    assert "permissions: {}" in workflow
+    assert "HF_TOKEN" not in workflow
+    assert "api/repos/delete" not in workflow
+    assert "no external repository was changed" in workflow.lower()
