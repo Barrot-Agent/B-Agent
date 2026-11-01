@@ -19,6 +19,9 @@ def test_snapshot_sources_resolve_and_market_identity_is_consistent():
     assert snapshot["market"]["market_id"] == "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109"
     assert snapshot["market"]["chain_id"] == 8453
     assert snapshot["market"]["lltv_pct"] == 62.5
+    assert snapshot["market"]["collateral_token_address"] == "0xcb585250f852c6c6bf90434ab21a00f02833a4af"
+    assert "SRC-20261101T131100Z-COINBASE-LOAN-BACKUP-CBXRP-CONTRACT" in known
+    assert "SRC-20261101T131100Z-COINBASE-WRAPPED-ASSET-CUSTODY-POLICY" in known
 
 def test_supply_borrow_collateral_and_utilization_are_not_conflated():
     snapshot = load(SNAPSHOT)

@@ -60,9 +60,11 @@
       "relationship": "ISSUES_AND_REPORTS_1_TO_1_BACKING",
       "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
       "source_ids": [
-        "SRC-20261101T131100Z-COINBASE-CBXRP-POR"
+        "SRC-20261101T131100Z-COINBASE-CBXRP-POR",
+        "SRC-20261101T131100Z-COINBASE-LOAN-BACKUP-CBXRP-CONTRACT",
+        "SRC-20261101T131100Z-COINBASE-WRAPPED-ASSET-CUSTODY-POLICY"
       ],
-      "claim": "Coinbase's public dashboard reports cbXRP supply and XRP reserves and describes 1:1 backing."
+      "claim": "Coinbase's public dashboard reports cbXRP supply and XRP reserves and describes 1:1 backing. Coinbase's official loan-backup documentation lists cbXRP on Base at the exact contract address as XRP-loan collateral; its wrapped-asset policy states underlying XRP remains in custody and is not sold or otherwise deployed by Coinbase."
     },
     {
       "id": "EDGE-CBXRP-MORPHO-COLLATERAL-20261101",
@@ -192,7 +194,9 @@
       "supporting_source_ids": [
         "SRC-20261101T131100Z-COINBASE-CBXRP-POR",
         "SRC-20261101T131100Z-THEBLOCK-COINBASE-XRP-LOANS",
-        "SRC-20261101T131100Z-MORPHOWATCH-CBXRP-USDC"
+        "SRC-20261101T131100Z-MORPHOWATCH-CBXRP-USDC",
+        "SRC-20261101T131100Z-COINBASE-WRAPPED-ASSET-CUSTODY-POLICY",
+        "SRC-20261101T131100Z-COINBASE-LOAN-BACKUP-CBXRP-CONTRACT"
       ],
       "disconfirming_evidence": [
         "Some users may have purchased XRP before wrapping; aggregate data cannot identify acquisition source."

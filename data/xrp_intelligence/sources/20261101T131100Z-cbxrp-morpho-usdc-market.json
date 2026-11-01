@@ -210,6 +210,37 @@
         "current_quantity_times_oracle_value_usd": 148045240
       },
       "limitation": "Prior $240.85M field conflicts with 118.55M cbXRP times $1.2488 (~$148.0M). No explanation is established; exclude the prior field."
+    },
+    {
+      "id": "SRC-20261101T131100Z-COINBASE-LOAN-BACKUP-CBXRP-CONTRACT",
+      "publisher": "Coinbase Help",
+      "title": "USDC loan backup site — XRP collateral contract",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "retrieved_at_utc": "2026-11-01T13:28:00Z",
+      "observed": {
+        "asset_used_for_loan": "XRP",
+        "collateral_asset": "cbXRP",
+        "network": "Base",
+        "contract_address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+        "workflow": "Coinbase instructs customers to use their unique backup link and a supported self-custody wallet to add cbXRP collateral to an XRP loan."
+      },
+      "limitation": "This confirms the official collateral token and contract address, but does not publish the Morpho market ID or prove that all positions in the matching market originate through Coinbase."
+    },
+    {
+      "id": "SRC-20261101T131100Z-COINBASE-WRAPPED-ASSET-CUSTODY-POLICY",
+      "publisher": "Coinbase",
+      "title": "Coinbase Wrapped Assets — custody and wrapping policy",
+      "url": "https://www.coinbase.com/en-nl/campaigns/wrapped-assets",
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE",
+      "retrieved_at_utc": "2026-11-01T13:28:00Z",
+      "observed": {
+        "wrapping_definition": "Underlying asset is locked in custody and a wrapped token is issued on the destination network.",
+        "backing": "1:1 by underlying asset held in Coinbase custody.",
+        "custody_policy": "Coinbase states the underlying asset backing wrapped assets will never be sold, transferred or utilized for another purpose.",
+        "purchase_channels": "Coinbase customers may also purchase wrapped assets through Coinbase Wallet or supported third-party exchanges."
+      },
+      "limitation": "General wrapped-asset policy, not a transaction-level proof of the acquisition source of any particular cbXRP holder or mint."
     }
   ]
 }

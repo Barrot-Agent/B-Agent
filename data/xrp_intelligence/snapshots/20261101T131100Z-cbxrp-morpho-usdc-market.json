@@ -14,7 +14,9 @@
     "SRC-20261101T131100Z-THEBLOCK-COINBASE-XRP-LOANS",
     "SRC-20261101T131100Z-COINBASE-LOAN-HEALTH",
     "SRC-20261101T131100Z-DEFILLAMA-CBXRP-POOL",
-    "SRC-20261101T131100Z-PRIOR-MORPHO-VALUE-SECURED-CONFLICT"
+    "SRC-20261101T131100Z-PRIOR-MORPHO-VALUE-SECURED-CONFLICT",
+    "SRC-20261101T131100Z-COINBASE-LOAN-BACKUP-CBXRP-CONTRACT",
+    "SRC-20261101T131100Z-COINBASE-WRAPPED-ASSET-CUSTODY-POLICY"
   ],
   "market": {
     "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
@@ -50,7 +52,9 @@
       "total_from_vaults": 58130000,
       "top_three_vaults_usdc": 51850000,
       "top_three_share_pct": 79.21
-    }
+    },
+    "collateral_token_address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+    "collateral_token_address_source_id": "SRC-20261101T131100Z-COINBASE-LOAN-BACKUP-CBXRP-CONTRACT"
   },
   "issuer_reserves": {
     "issuer": "Coinbase",
@@ -61,7 +65,9 @@
     "reserve_coverage_pct": 100.00149,
     "displayed_refresh": "2026-11-01 07:12 AM",
     "displayed_refresh_timezone": "NOT_STATED",
-    "backing_claim": "1:1"
+    "backing_claim": "1:1",
+    "backing_policy_source_id": "SRC-20261101T131100Z-COINBASE-WRAPPED-ASSET-CUSTODY-POLICY",
+    "backing_policy": "Coinbase states underlying XRP backing wrapped assets is held in custody and will not be sold, transferred or utilized for another purpose."
   },
   "derived_metrics": {
     "reserve_surplus_xrp": 2247.53,
@@ -112,7 +118,9 @@
     "confirmed": [
       "Coinbase reports a 1:1 cbXRP backing model and displays reserve/supply balances.",
       "A Base Morpho cbXRP/USDC market is reported with 62.5% LLTV and current borrowing/collateral observations.",
-      "Coinbase's XRP-family loan terms are reported as max 49% LTV and 62.5% liquidation threshold."
+      "Coinbase's XRP-family loan terms are reported as max 49% LTV and 62.5% liquidation threshold.",
+      "Coinbase's official loan backup documentation identifies cbXRP on Base and contract 0xcb585250f852c6c6bf90434ab21a00f02833a4af as the collateral token for XRP loans.",
+      "Coinbase's wrapped-asset policy says the underlying asset is held in custody 1:1 and is not sold, transferred or otherwise utilized by Coinbase."
     ],
     "inference": [
       "The January 15 62.5% market is likely the market behind Coinbase's XRP loan product because terms and chronology match; exact market ID attribution is not published by Coinbase."
@@ -121,7 +129,8 @@
       "Whether all borrowers entered through Coinbase.",
       "Whether cbXRP issuance reflects new spot purchases or transfers of pre-existing XRP holdings.",
       "Raw-block collateral balances, borrower LTV distribution and complete liquidation history.",
-      "Reason for prior $240.85M value-secured discrepancy."
+      "Reason for prior $240.85M value-secured discrepancy.",
+      "The acquisition source of cbXRP held by borrowers is unknown; it may be minted from existing XRP holdings or acquired as cbXRP on secondary venues."
     ],
     "disconfirming": [
       "Morpho is permissionless; another actor can deploy a matching market.",

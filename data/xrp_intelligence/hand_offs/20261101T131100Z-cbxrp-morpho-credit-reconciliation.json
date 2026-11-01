@@ -38,7 +38,9 @@
     "90.4% utilization is USDC borrowed divided by USDC supplied.",
     "40.0% debt/collateral is aggregate, not borrower-weighted LTV.",
     "Exclude prior $240.85M value-secured field until reconciled.",
-    "Coinbase market attribution remains inference, not confirmed market-ID mapping."
+    "Coinbase market attribution remains inference, not confirmed market-ID mapping.",
+    "Coinbase Help identifies the official cbXRP Base contract used for XRP loan collateral: 0xcb585250f852c6c6bf90434ab21a00f02833a4af; this confirms the collateral asset but not the exact Morpho market ID.",
+    "Coinbase's wrapped-asset policy says the underlying XRP reserve is held in custody and is not sold or deployed by Coinbase; wrapper issuance therefore must not be treated as proof of a Coinbase spot-market purchase."
   ],
   "forecast": {
     "status": "NOT_ISSUED",
