@@ -91,4 +91,5 @@ jobs:
             tests/test_xrp_collateral_multirail_morpho_addendum.py \
             tests/test_xrp_market_depth_followup.py \
             tests/test_xrpl_usdc_rlusd_supply_and_coinbase_circle_economics.py \
+            tests/test_sbi_multirail_graph_corrections.py \
             -v --no-cov

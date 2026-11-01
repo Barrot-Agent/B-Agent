@@ -181,7 +181,14 @@
       "to": "XRP",
       "relation": "XRP_bridge_asset_in_selected_remittance_corridors",
       "evidence_class": "CONFIRMED_OFFICIAL_SBI_REMIT_ANNOUNCEMENT",
-      "source_id": "sbi-remit-cumulative-remittances-2026-05-29"
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06",
+      "corroborating_source_ids": [
+        "ripple-sbi-ripple-asia-odl-current"
+      ],
+      "limitations": [
+        "Current corridor volume and net XRP inventory are not disclosed.",
+        "Do not attribute SBI Remit's company-wide JPY 2.5T cumulative remittance total to XRP."
+      ]
     },
     {
       "from": "SBIC_Tokyo_SME_Investment_Consultation",
@@ -195,7 +202,7 @@
       "to": "SBI_Group",
       "relation": "no_verified_affiliation_or_control_edge",
       "evidence_class": "UNKNOWN_NO_EDGE_ADMITTED",
-      "source_id": "sbic-ai-training-2025-06-12"
+      "source_id": "sbic-tokyo-profile"
     },
     {
       "from": "Circle",

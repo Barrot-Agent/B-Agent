@@ -92,7 +92,7 @@
       ]
     },
     {
-      "id": "circle-arc-mainnet-20260916",
+      "id": "circle-arc-mainnet-2026-09-16",
       "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
       "publisher": "Circle Internet Group",
       "published_at": "2026-09-16",
@@ -113,7 +113,7 @@
       ]
     },
     {
-      "id": "circle-usdc-xrpl-20250612",
+      "id": "circle-native-usdc-xrpl",
       "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
       "publisher": "Circle",
       "published_at": "2025-06-12",
@@ -194,21 +194,6 @@
       ]
     },
     {
-      "id": "sbic-official-identity-and-training",
-      "url": "https://www.sbic.co.jp/investment/faq/",
-      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
-      "accessed_at_utc": "2026-11-01T18:17:34Z",
-      "classification": "PRIMARY_ENTITY_INFORMATION",
-      "claims": [
-        "The Japanese SBIC identity is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
-        "The ChatGPT/Copilot training material concerns investee-company education."
-      ],
-      "methodology": [],
-      "limitations": [
-        "The educational event does not establish an OpenAI commercial partnership, an SBI Holdings affiliation or an XRP relationship."
-      ]
-    },
-    {
       "id": "xrp-insights-etf-data-json",
       "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
       "publisher": "XRP Insights",
@@ -268,6 +253,157 @@
       ],
       "limitations": [
         "Do not infer XRP use by SBI Ripple Asia solely from the SBI/Ripple joint-venture name or from separate SBI Remit XRP corridors."
+      ]
+    },
+    {
+      "id": "sbic-tokyo-profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "PRIMARY_ENTITY_PROFILE",
+      "claims": [
+        "The entity is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社)."
+      ],
+      "limitations": [
+        "The profile does not establish affiliation with SBI Holdings or an XRP relationship."
+      ]
+    },
+    {
+      "id": "sbic-ai-training-2025-06-12",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "published_at": "2025-06-12",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "PRIMARY_EDUCATIONAL_ANNOUNCEMENT",
+      "claims": [
+        "The ChatGPT/Copilot training event was organized for investee-company education."
+      ],
+      "limitations": [
+        "Educational use does not establish an OpenAI or Microsoft commercial partnership, SBI Holdings affiliation or XRP relationship."
+      ]
+    },
+    {
+      "id": "sbi-remit-xrp-corridor-2023-09-06",
+      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+      "publisher": "SBI Remit",
+      "published_at": "2023-09-06",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI Remit announced expansion of Ripple's XRP-using remittance solution to the Philippines, Vietnam and Indonesia."
+      ],
+      "limitations": [
+        "The announcement establishes corridor availability at that time, not current throughput or net XRP accumulation."
+      ]
+    },
+    {
+      "id": "sbi-remit-cumulative-remittances-2026-05-29",
+      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20260529/",
+      "publisher": "SBI Remit",
+      "published_at": "2026-05-29",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI Remit reports cumulative company-wide international remittances exceeded JPY 2.5T as of 2026-05-27."
+      ],
+      "limitations": [
+        "This is total company remittance business volume and is not attributed to XRP or ODL."
+      ]
+    },
+    {
+      "id": "ripple-sbi-rlusd-japan-2026-06-24",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "publisher": "Ripple and SBI Group",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "RLUSD launched in Japan through SBI VC Trade following JFSA approval under Japan's Payment Services Act."
+      ],
+      "limitations": [
+        "The announcement does not establish that RLUSD is XRP collateral or that every proposed use case is live."
+      ]
+    },
+    {
+      "id": "evernorth-424b3-20261030",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "filed_date": "2026-10-30",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "PRIMARY_SEC_FILING",
+      "claims": [
+        "The filing identifies Coinbase as Evernorth's principal XRP market for financial-reporting valuation and BitGo as its primary XRP custodian."
+      ],
+      "limitations": [
+        "The principal-market designation is Evernorth's accounting/valuation determination, not proof that Coinbase is the sole or global principal XRP market."
+      ]
+    },
+    {
+      "id": "coinbase-2026q3-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "SEC / Coinbase Global",
+      "filed_date": "2026-10-29",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "PRIMARY_SEC_FILING",
+      "claims": [
+        "Coinbase discloses its USDC distribution and revenue-sharing arrangement with Circle and its stablecoin revenue exposure."
+      ],
+      "limitations": [
+        "Revenue sharing does not establish exclusive alignment with Circle or XRP-specific demand."
+      ]
+    },
+    {
+      "id": "circle-q2-2026-sec-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "publisher": "SEC / Circle Internet Group",
+      "filed_date": "2026-08-2026",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "PRIMARY_SEC_FILING",
+      "claims": [
+        "Circle discloses USDC distribution economics and Coinbase-related distribution costs."
+      ],
+      "limitations": [
+        "The filing does not imply an exclusive Coinbase relationship or XRP demand."
+      ]
+    },
+    {
+      "id": "circle-binance-2026-09-17-8k",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm",
+      "publisher": "SEC / Circle Internet Group",
+      "filed_date": "2026-09-17",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "PRIMARY_SEC_FILING",
+      "claims": [
+        "Circle disclosed a $100M strategic investment by Binance and a five-year USDC commercial agreement."
+      ],
+      "limitations": [
+        "This is a Circle-Binance relationship, not evidence of Binance buying XRP or Circle directing XRP flows."
+      ]
+    },
+    {
+      "id": "xrplwin-usdc-xrpl-token-2026-11-01",
+      "url": "https://xrplwin.com/token/rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE/5553444300000000000000000000000000000000",
+      "publisher": "XRPLWin / WinDB",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "SECONDARY_ONCHAIN_TOKEN_SNAPSHOT",
+      "claims": [
+        "Provider snapshot reported approximately $6.02M USDC supply on XRPL at 16:00 UTC."
+      ],
+      "limitations": [
+        "Provider snapshot; not a direct raw RPC retrieval in this run."
+      ]
+    },
+    {
+      "id": "xrplwin-rlusd-xrpl-token-2026-11-01",
+      "url": "https://xrplwin.com/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000",
+      "publisher": "XRPLWin / WinDB",
+      "accessed_at_utc": "2026-11-01T18:27:00Z",
+      "classification": "SECONDARY_ONCHAIN_TOKEN_SNAPSHOT",
+      "claims": [
+        "Provider token page is a separate observation for RLUSD on XRPL."
+      ],
+      "limitations": [
+        "Do not average with other providers or treat as independent raw RPC without checking the underlying ledger/time."
       ]
     }
   ]

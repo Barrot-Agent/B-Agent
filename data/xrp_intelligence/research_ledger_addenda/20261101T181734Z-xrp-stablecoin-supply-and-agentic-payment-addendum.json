@@ -65,12 +65,6 @@
       "limitation": "Denominator, time window, chain coverage and value-versus-count definition are not specified in the announcement."
     },
     {
-      "claim": "The Japanese SBIC identity is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; its ChatGPT/Copilot training is educational activity for investee companies.",
-      "class": "CONFIRMED_PRIMARY_ENTITY_INFORMATION",
-      "source_id": "sbic-ai-training-2025-06-12",
-      "limitation": "No OpenAI commercial partnership, SBI Holdings affiliation or XRP relationship established."
-    },
-    {
       "claim": "SBI Group reports 60% voting-right ownership in SBI Ripple Asia; the Ripple profile does not establish direct XRP custody or use by SBI Ripple Asia.",
       "class": "CONFIRMED_PRIMARY_PROFILE_WITH_LIMITED_SCOPE",
       "source_id": "sbiholdings-sbi-ripple-asia-ownership-60pct",
@@ -87,6 +81,30 @@
       "class": "INFERENCE_FROM_MULTIPLE_CONFIRMED_RELATIONSHIPS",
       "source_id": "sbi-project-trinity-2026-10-06",
       "limitation": "This supports a multi-rail hypothesis but does not establish a unified corporate treasury or exclusive strategy."
+    },
+    {
+      "claim": "The Japanese SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "class": "CONFIRMED_PRIMARY_ENTITY_INFORMATION",
+      "source_id": "sbic-tokyo-profile",
+      "limitation": "No verified affiliation with SBI Holdings or direct XRP relationship."
+    },
+    {
+      "claim": "SBIC's ChatGPT/Copilot training was investee-company education, not an OpenAI or XRP partnership.",
+      "class": "CONFIRMED_PRIMARY_EDUCATIONAL_INFORMATION",
+      "source_id": "sbic-ai-training-2025-06-12",
+      "limitation": "Educational activity does not establish commercial integration."
+    },
+    {
+      "claim": "SBI Remit's company-wide cumulative remittance total exceeded JPY 2.5T as of May 27, 2026; the source does not attribute that total to XRP or ODL.",
+      "class": "SOURCED_COMPANY_WIDE_REMITTANCE_TOTAL_NOT_XRP_SPECIFIC",
+      "source_id": "sbi-remit-cumulative-remittances-2026-05-29",
+      "limitation": "Exclude from XRP payment-volume features; use the separate 2023 corridor announcement for XRP service availability."
+    },
+    {
+      "claim": "SBI Ripple Asia is 60% voting-right owned by SBI Group and provides blockchain/DLT fintech solutions; Ripple's profile says SBI Ripple Asia does not handle XRP.",
+      "class": "CONFIRMED_PRIMARY_PROFILE_WITH_NEGATIVE_SCOPE",
+      "source_id": "ripple-sbi-ripple-asia-odl-current",
+      "limitation": "Do not attribute SBI Remit's XRP usage to SBI Ripple Asia."
     }
   ],
   "competing_hypotheses": [
