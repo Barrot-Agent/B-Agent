@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "audit_id": "final-current-main-and-pr-verification-20261101T172900Z",
+  "captured_at_utc": "2026-11-01T17:29:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "32682bc3797009421682ab51da59bf058b7d63d5",
+  "main_risks": [
+    "Cross Analysis remains a scheduled/workflow_run contents writer that commits and pushes generated outputs.",
+    "Scheduler Tick retains contents:write and actions:write and can dispatch workflows without a verified allowlist.",
+    "Merge Queue remains manually dispatchable with dry_run=false and max_prs=0 defaults; no distinct authorized-human approval check is verified.",
+    "Manual Hugging Face model-upload workflows remain active on main and consume HF_TOKEN.",
+    "latest_signal.json is stale descriptive state with confidence 0.0, not a calibrated prediction."
+  ],
+  "prs": [
+    {
+      "number": 1469,
+      "head": "490d8c2eb08961dc85f788f87a8052bdc3bc2895",
+      "base": "32682bc3797009421682ab51da59bf058b7d63d5",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41329718980,
+      "tests": "387 passed + 8 subtests",
+      "gate_run": 41329718987,
+      "gate": "PASSED_MERGING_DISABLED"
+    },
+    {
+      "number": 1470,
+      "head": "efbc1f2a11eb6489c04c5360648de41f2c1cec28",
+      "base": "32682bc3797009421682ab51da59bf058b7d63d5",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41330671867,
+      "tests": "389 passed + 8 subtests",
+      "gate_run": 41330671836,
+      "gate": "PASSED_MERGING_DISABLED"
+    },
+    {
+      "number": 1464,
+      "head": "4204022dec7ae2f495679380a43150118f5cbe4b",
+      "base": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "status": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "ci_run": 41331308119,
+      "tests": "426 passed + 8 subtests",
+      "gate_run": 41331308006,
+      "gate": "PASSED_MERGING_DISABLED"
+    },
+    {
+      "number": 1467,
+      "head": "827e96dce829a2f6093abd7faaefe7807f80e1e7",
+      "base": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+      "status": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "ci": "348 passed + 8 subtests",
+      "dependency_audit": "Four Python requirement sets: no known vulnerabilities found; Node20 action deprecation warnings remain."
+    }
+  ],
+  "open_pr_inventory": {
+    "total": 237,
+    "draft": 227,
+    "ready": 10,
+    "main_based": 230,
+    "current_main_based": 2
+  },
+  "prediction_engine": {
+    "ledger": "IMPLEMENTED_NOT_POPULATED",
+    "protocol_guard": "EXACT_HEAD_TESTED",
+    "source_registry": "OPTIONAL_IN_GENERIC_API; PRODUCTION_PATH_MUST_REQUIRE_VERIFIED_REGISTRY",
+    "walk_forward": "NOT_IMPLEMENTED",
+    "drift_detection": "NOT_IMPLEMENTED",
+    "shadow_evaluation": "NOT_IMPLEMENTED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "limitations": [
+    "Repository-wide CI, full dependency inventory, container/secret scanning and branch-protection settings verification remain incomplete.",
+    "PR #1464 research branch is stale-base and requires careful fresh-main reconciliation; no rebase performed.",
+    "No external AI platform other than ChatGPT is verified as connected; GitHub access is verified."
+  ],
+  "safety": "Main unchanged. No merge, force-push, manual workflow dispatch, secret access, deployment or trading action."
+}
