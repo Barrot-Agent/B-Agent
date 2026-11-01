@@ -32,14 +32,16 @@ concurrency:
 jobs:
   agent:
     if: >-
-      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_dispatch' && github.actor == github.repository_owner) ||
       github.event_name == 'schedule' ||
-      ((github.event.label.name == 'barrot-task' || github.event.label.name == 'barrot-scientific-discovery') &&
+      (github.event_name == 'issues' &&
+       (github.event.label.name == 'barrot-task' || github.event.label.name == 'barrot-scientific-discovery') &&
        (github.event.sender.login == 'Barrot-Agent' || github.event.sender.login == github.repository_owner))
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       REPO: ${{ github.repository }}
+      REPO_OWNER: ${{ github.repository_owner }}
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       BRAIN_MODEL: ${{ vars.BRAIN_MODEL != '' && vars.BRAIN_MODEL || 'openai/gpt-oss-120b' }}
     steps:
@@ -52,7 +54,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          candidate="$(gh issue list --repo "$REPO" --state open --label barrot-scientific-discovery --json number,title,body,labels --limit 100 | jq -c '[.[] | select(all(.labels[]?.name; . != "barrot-dispatch-attempted"))] | sort_by(.number) | .[0] // empty')"
+          candidate="$(gh issue list --repo "$REPO" --state open --label barrot-scientific-discovery --json number,title,body,labels,author --limit 100 | jq -c --arg owner "$REPO_OWNER" '[.[] | select(.author.login == $owner) | select(all(.labels[]?.name; . != "barrot-dispatch-attempted"))] | sort_by(.number) | .[0] // empty')"
           if [[ -z "$candidate" || "$candidate" == "null" ]]; then
             echo "No unclaimed scientific-discovery issue is queued."
             echo "issue_number=" >> "$GITHUB_OUTPUT"
