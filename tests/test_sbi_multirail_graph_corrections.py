@@ -47,3 +47,24 @@ def test_graph_and_ledger_source_references_resolve():
     ledger_ids = {item["source_id"] for item in ledger["findings"] if item.get("source_id")}
     assert graph_ids <= ids
     assert ledger_ids <= ids
+
+
+
+def test_sbi_ripple_asia_xrpl_study_is_not_direct_xrp_handling():
+    graph = load(f"relationship_graph_addenda/{STAMP}-sbi-circle-arc-coinbase-xrpl-agentic-graph.json")
+    edges = graph["edges"]
+    assert any(e["from"] == "SBI_Ripple_Asia" and e["to"] == "XRPL" and "feasibility_study_only" in e["relation"] for e in edges)
+    assert not any(e["from"] == "SBI_Ripple_Asia" and e["to"] == "XRP" for e in edges)
+    assert any(e["from"] == "SBI_Ripple_Asia" and "does_not_handle_XRP" in e["relation"] for e in edges)
+
+
+def test_sbi_multirail_projects_keep_assets_and_statuses_separate():
+    graph = load(f"relationship_graph_addenda/{STAMP}-sbi-circle-arc-coinbase-xrpl-agentic-graph.json")
+    edges = graph["edges"]
+    assert any(e["from"] == "Project_Trinity" and e["to"] == "SMBC" for e in edges)
+    assert any(e["from"] == "SBI_Shinsei_Trust" and e["to"] == "JPYSC" for e in edges)
+    assert any(e["from"] == "SBI_Group" and e["to"] == "Strium" for e in edges)
+    assert any(e["from"] == "SBI_Group" and e["to"] == "Open_Standard" for e in edges)
+    assert any(e["from"] == "Coinbase" and e["to"] == "Open_Standard" for e in edges)
+    assert not any(e["from"] == "Circle" and e["to"] == "Open_Standard" for e in edges)
+    assert any(e["from"] == "SBI_DigiTrust" and e["to"] == "Korea_Japan_Stablecoin_Pilot" for e in edges)

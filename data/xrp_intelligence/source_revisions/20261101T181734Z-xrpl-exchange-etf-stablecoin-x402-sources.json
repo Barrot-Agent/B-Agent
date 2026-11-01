@@ -264,10 +264,14 @@
       "accessed_at_utc": "2026-11-01T18:27:00Z",
       "classification": "PRIMARY_ENTITY_PROFILE",
       "claims": [
-        "The entity is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社)."
+        "Official legal name: Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社; SBIC East Japan).",
+        "Corporate number: 9011001030621; established November 15, 1963; stated capital JPY 6.6734B; operating area includes 18 prefectures.",
+        "The official profile describes shareholders by category: 18 local governments, chambers of commerce, financial institutions and business companies."
       ],
       "limitations": [
-        "The profile does not establish affiliation with SBI Holdings or an XRP relationship."
+        "The profile does not identify SBI Holdings as a shareholder or parent, but its shareholder list is categorical rather than exhaustive; do not claim that no SBI Group entity could hold shares.",
+        "The company name/acronym is distinct from SBI Holdings and SBI Group branding.",
+        "No direct XRP or Ripple relationship is established."
       ]
     },
     {
@@ -411,6 +415,151 @@
       ],
       "limitations": [
         "Do not average with other providers or treat as independent raw RPC without checking the underlying ledger/time."
+      ]
+    },
+    {
+      "id": "sbi-ripple-asia-dsrv-xrpl-study-2026-02-24",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+      "publisher": "SBI Ripple Asia / SBI Holdings",
+      "published_at": "2026-02-24",
+      "accessed_at_utc": "2026-11-01T18:31:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI Ripple Asia and DSRV began joint research into blockchain-based remittance/payment services for Japan-Korea use cases.",
+        "The announcement identifies XRPL as the contemplated ledger platform for the study."
+      ],
+      "limitations": [
+        "Research/feasibility work, not proof of production deployment or settlement volume.",
+        "Ripple's separate company profile explicitly says SBI Ripple Asia does not handle XRP; XRPL platform study must not be converted into XRP-token use."
+      ]
+    },
+    {
+      "id": "sbi-open-standard-2026-10-16",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "publisher": "SBI Holdings / Startale Group",
+      "published_at": "2026-10-16",
+      "accessed_at_utc": "2026-11-01T18:31:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI Holdings and Startale joined Open Standard.",
+        "The announcement says Open Standard has more than 140 participating companies, including Coinbase, Visa, Stripe, Mastercard and BlackRock.",
+        "SBI and Startale are considering an interoperability experiment between JPYSC and Open USD (OUSD)."
+      ],
+      "limitations": [
+        "This is shared participation in an open initiative, not evidence of a bilateral Coinbase-SBI commercial agreement.",
+        "The JPYSC/OUSD interoperability experiment is under consideration, not verified as live.",
+        "The announcement does not identify Circle as an Open Standard participant."
+      ]
+    },
+    {
+      "id": "sbi-smbc-alliance-2026-10-30",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "publisher": "SBI Holdings / Sumitomo Mitsui Financial Group",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-11-01T18:31:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI Holdings and SMBC Group signed a capital and business alliance to study new financial services using stablecoins and related technology.",
+        "SMBC Group agreed to acquire a 5% capital participation in SBI Startale Marketing.",
+        "The parties plan research, use-case development and proof-of-concept work around stablecoins including JPYSC."
+      ],
+      "limitations": [
+        "The 5% investment is in SBI Startale Marketing, not in SBI Holdings, Circle or an XRP issuer.",
+        "The announcement concerns study and future services, not verified commercial settlement volume."
+      ]
+    },
+    {
+      "id": "sbi-startale-investment-2026-03-26",
+      "url": "https://www.sbigroup.co.jp/news/2026/0326_16202.html",
+      "publisher": "SBI Holdings",
+      "published_at": "2026-03-26",
+      "accessed_at_utc": "2026-11-01T18:31:00Z",
+      "classification": "PRIMARY_INVESTMENT_AGREEMENT_ANNOUNCEMENT",
+      "claims": [
+        "SBI Group announced an investment agreement for approximately $50M in Startale Group through a subsidiary and stated an intention for Startale to become an equity-method affiliate."
+      ],
+      "limitations": [
+        "The announcement establishes an investment agreement/plan; closing and final ownership status were not independently verified in this run.",
+        "This is a Startale relationship, not an XRP investment."
+      ]
+    },
+    {
+      "id": "sbi-jpysc-launch-2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "publisher": "SBI Holdings / SBI Shinsei Trust Bank / SBI VC Trade / Startale",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-11-01T18:31:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI Shinsei Trust Bank is the issuer of JPYSC and SBI VC Trade is its distributor.",
+        "Initial JPYSC provision was limited to SBI VC Trade accounts.",
+        "The announcement says public-chain circulation would follow after legal and tax practice issues were organized."
+      ],
+      "limitations": [
+        "Do not treat JPYSC as publicly circulating on Arc or another public chain at launch.",
+        "Circle Arc usage is stated intent, not verified JPYSC settlement volume."
+      ]
+    },
+    {
+      "id": "sbi-solana-strium-2026-07-13",
+      "url": "https://www.sbigroup.co.jp/news/2026/0713_16478.html",
+      "publisher": "SBI Holdings / Solana Foundation",
+      "published_at": "2026-07-13",
+      "accessed_at_utc": "2026-11-01T18:31:00Z",
+      "classification": "PRIMARY_STRATEGIC_PARTNERSHIP_ANNOUNCEMENT",
+      "claims": [
+        "SBI Group and Solana Foundation announced a strategic partnership around Japanese onchain financial markets.",
+        "The Strium L1 initiative targets tokenized securities, RWA, stablecoins and 24/7 spot/derivatives markets.",
+        "Solana Foundation was to join SBI R3 Japan, with a planned renaming to SBI Solana Global; SBI Holdings and SMFG are identified as shareholders."
+      ],
+      "limitations": [
+        "This is an announced strategic build, not proof of production market volume.",
+        "No XRP or XRPL integration is stated in this announcement."
+      ]
+    },
+    {
+      "id": "sbi-digitrust-korea-pilot-2026-10-01",
+      "url": "https://www.sbigroup.co.jp/news/2026/1001_16634.html",
+      "publisher": "SBI DigiTrust / SBI Holdings",
+      "published_at": "2026-10-01",
+      "accessed_at_utc": "2026-11-01T18:31:00Z",
+      "classification": "PRIMARY_PILOT_ANNOUNCEMENT",
+      "claims": [
+        "SBI DigiTrust, Korea's NICE Information & Telecommunication and DSRV agreed to jointly verify a Japan-Korea stablecoin remittance/payment use case.",
+        "The described use case includes QR payments by Japanese travelers at Korean merchants, with completion targeted around December 2026."
+      ],
+      "limitations": [
+        "The stablecoin asset and ledger are not specified in the announcement summary.",
+        "This is a pilot, not production throughput or XRP demand."
+      ]
+    },
+    {
+      "id": "sbi-tokenized-deposit-dcJPY-2026-04-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0424_16270.html",
+      "publisher": "SBI Holdings / SBI Shinsei Bank and project participants",
+      "published_at": "2026-04-24",
+      "accessed_at_utc": "2026-11-01T18:31:00Z",
+      "classification": "PRIMARY_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "claims": [
+        "SBI Securities, Daiwa Securities, SBI Shinsei Bank, BOOSTRY, Osaka Digital Exchange and DeCurret DCP announced completion of an issuance verification for a securities-settlement scheme using tokenized deposit DCJPY."
+      ],
+      "limitations": [
+        "Proof-of-concept only; not XRP, RLUSD or USDC settlement.",
+        "Do not infer the tokenized-deposit issuer or current production volume beyond what the source explicitly states."
+      ]
+    },
+    {
+      "id": "sbi-public-chain-dvp-2026-07-08",
+      "url": "https://www.sbigroup.co.jp/news/2026/0708_16469.html",
+      "publisher": "SBI Securities / SBI Digital Markets and project participants",
+      "published_at": "2026-07-08",
+      "accessed_at_utc": "2026-11-01T18:31:00Z",
+      "classification": "PRIMARY_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "claims": [
+        "SBI Securities, Daiwa Securities, SBI Digital Markets, Penguin Securities and BOOSTRY reported a public-chain securities-token distribution experiment using Ethereum and stablecoins."
+      ],
+      "limitations": [
+        "This is a proof-of-concept, not XRP/XRPL settlement or evidence of production throughput."
       ]
     }
   ]

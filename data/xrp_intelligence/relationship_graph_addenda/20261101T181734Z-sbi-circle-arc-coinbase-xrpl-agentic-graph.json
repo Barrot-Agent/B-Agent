@@ -150,6 +150,78 @@
     {
       "id": "Ripple_Payments_ODL",
       "type": "cross_border_payment_solution"
+    },
+    {
+      "id": "DSRV",
+      "type": "blockchain_infrastructure_provider"
+    },
+    {
+      "id": "NICE",
+      "type": "Korean_payment_provider"
+    },
+    {
+      "id": "SBI_DigiTrust",
+      "type": "SBI_group_payment_entity"
+    },
+    {
+      "id": "SBI_Shinsei_Trust",
+      "type": "trust_bank_and_JPYSC_issuer"
+    },
+    {
+      "id": "SBI_Startale_Marketing",
+      "type": "SBI_Startale_joint_venture"
+    },
+    {
+      "id": "Startale_Group",
+      "type": "blockchain_infrastructure_company"
+    },
+    {
+      "id": "SMFG",
+      "type": "banking_group"
+    },
+    {
+      "id": "Open_Standard",
+      "type": "open_stablecoin_interoperability_initiative"
+    },
+    {
+      "id": "OUSD",
+      "type": "USD_stablecoin"
+    },
+    {
+      "id": "Solana_Foundation",
+      "type": "blockchain_ecosystem_foundation"
+    },
+    {
+      "id": "Strium",
+      "type": "SBI_Startale_L1_initiative"
+    },
+    {
+      "id": "SBI_Solana_Global",
+      "type": "planned_SBI_R3_Japan_renaming"
+    },
+    {
+      "id": "DCJPY",
+      "type": "tokenized_deposit"
+    },
+    {
+      "id": "DeCurret_DCP",
+      "type": "digital_asset_infrastructure_provider"
+    },
+    {
+      "id": "SBI_Digital_Markets",
+      "type": "institutional_digital_asset_provider"
+    },
+    {
+      "id": "Penguin_Securities",
+      "type": "securities_firm"
+    },
+    {
+      "id": "Ethereum",
+      "type": "public_blockchain"
+    },
+    {
+      "id": "Korea_Japan_Stablecoin_Pilot",
+      "type": "cross_border_payment_pilot"
     }
   ],
   "edges": [
@@ -488,6 +560,202 @@
       "relation": "uses_XRP_as_bridge_currency_between_fiat_currencies",
       "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
       "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "XRPL",
+      "relation": "joint_research_with_DSRV_for_Japan_Korea_payment_feasibility_study_only_not_production_or_XRP_use",
+      "evidence_class": "CONFIRMED_PRIMARY_STUDY_ANNOUNCEMENT",
+      "source_id": "sbi-ripple-asia-dsrv-xrpl-study-2026-02-24"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "DSRV",
+      "relation": "joint_research_partner_for_Japan_Korea_payment_feasibility",
+      "evidence_class": "CONFIRMED_PRIMARY_STUDY_ANNOUNCEMENT",
+      "source_id": "sbi-ripple-asia-dsrv-xrpl-study-2026-02-24"
+    },
+    {
+      "from": "SBI_Shinsei_Trust",
+      "to": "JPYSC",
+      "relation": "issuer",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-jpysc-launch-2026-06-24"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "JPYSC",
+      "relation": "initial_distributor_inside_SBI_VC_Trade_accounts",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-jpysc-launch-2026-06-24"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "SBI_Startale_Marketing",
+      "relation": "joint_venture_with_Startale_for_JPYSC_adoption_and_use_case_development",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "Startale_Group",
+      "to": "SBI_Startale_Marketing",
+      "relation": "joint_venture_partner",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "SMFG",
+      "to": "SBI_Startale_Marketing",
+      "relation": "agreed_5_percent_capital_participation",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "SMFG",
+      "relation": "capital_and_business_alliance_for_stablecoin_financial_services_research",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Startale_Group",
+      "relation": "announced_approx_50M_investment_agreement_through_subsidiary",
+      "evidence_class": "ANNOUNCED_INVESTMENT_AGREEMENT_NOT_CLOSING_VERIFIED",
+      "source_id": "sbi-startale-investment-2026-03-26"
+    },
+    {
+      "from": "SBI_Startale_Marketing",
+      "to": "JPYSC",
+      "relation": "plans_JPYSC_use_case_development_and_adoption",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Open_Standard",
+      "relation": "participant_with_Startale_in_open_interoperability_initiative",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "Startale_Group",
+      "to": "Open_Standard",
+      "relation": "participant",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open_Standard",
+      "relation": "listed_among_140_plus_participating_companies_not_a_bilateral_SBI_deal",
+      "evidence_class": "SOURCED_PARTICIPANT_LISTING",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "Open_Standard",
+      "to": "OUSD",
+      "relation": "stablecoin_interoperability_initiative",
+      "evidence_class": "SOURCED_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "Open_Standard",
+      "to": "JPYSC",
+      "relation": "JPYSC_OUSD_interoperability_experiment_under_consideration_not_live",
+      "evidence_class": "SOURCED_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Solana_Foundation",
+      "relation": "strategic_partnership_for_Japan_onchain_financial_market",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Strium",
+      "relation": "co_development_of_L1_for_tokenized_securities_RWA_stablecoins_and_24_7_markets",
+      "evidence_class": "ANNOUNCED_STRATEGIC_BUILD",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "Startale_Group",
+      "to": "Strium",
+      "relation": "co_development_partner",
+      "evidence_class": "ANNOUNCED_STRATEGIC_BUILD",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "Solana_Foundation",
+      "to": "SBI_R3_Japan",
+      "relation": "announced_participation_in_company_with_planned_renaming_to_SBI_Solana_Global",
+      "evidence_class": "ANNOUNCED_STRATEGIC_PARTNERSHIP",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "SBI_R3_Japan",
+      "to": "SBI_Solana_Global",
+      "relation": "planned_renaming_not_yet_verified_as_completed",
+      "evidence_class": "ANNOUNCED_FUTURE_CHANGE",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "SBI_DigiTrust",
+      "to": "NICE",
+      "relation": "Japan_Korea_stablecoin_payment_pilot_partner",
+      "evidence_class": "CONFIRMED_PILOT_ANNOUNCEMENT",
+      "source_id": "sbi-digitrust-korea-pilot-2026-10-01"
+    },
+    {
+      "from": "SBI_DigiTrust",
+      "to": "DSRV",
+      "relation": "Japan_Korea_stablecoin_payment_pilot_partner",
+      "evidence_class": "CONFIRMED_PILOT_ANNOUNCEMENT",
+      "source_id": "sbi-digitrust-korea-pilot-2026-10-01"
+    },
+    {
+      "from": "SBI_DigiTrust",
+      "to": "Korea_Japan_Stablecoin_Pilot",
+      "relation": "joint_verification_target_completion_December_2026_asset_unspecified",
+      "evidence_class": "PILOT_NOT_PRODUCTION",
+      "source_id": "sbi-digitrust-korea-pilot-2026-10-01"
+    },
+    {
+      "from": "SBI_Shinsei_Trust",
+      "to": "DCJPY",
+      "relation": "participant_in_tokenized_deposit_DvP_proof_of_concept",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-tokenized-deposit-dcJPY-2026-04-24"
+    },
+    {
+      "from": "DeCurret_DCP",
+      "to": "DCJPY",
+      "relation": "participant_in_tokenized_deposit_DvP_proof_of_concept",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-tokenized-deposit-dcJPY-2026-04-24"
+    },
+    {
+      "from": "SBI_Securities",
+      "to": "DCJPY",
+      "relation": "participant_in_security_token_DvP_proof_of_concept",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-tokenized-deposit-dcJPY-2026-04-24"
+    },
+    {
+      "from": "SBI_Digital_Markets",
+      "to": "Ethereum",
+      "relation": "public_chain_used_in_stablecoin_security_token_distribution_poc",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-public-chain-dvp-2026-07-08"
+    },
+    {
+      "from": "Penguin_Securities",
+      "to": "Ethereum",
+      "relation": "participant_in_public_chain_security_token_distribution_poc",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-public-chain-dvp-2026-07-08"
     }
   ],
   "competing_hypotheses": [
@@ -579,6 +847,23 @@
         "No current transaction volume, asset allocation or balance-sheet commitment by rail is disclosed.",
         "No evidence establishes that these initiatives share one treasury or settlement strategy."
       ]
+    },
+    {
+      "id": "H8_SBI_institutional_multi_rail_portfolio",
+      "hypothesis": "SBI Group is assembling a diversified institutional onchain-finance portfolio across XRP/ODL, RLUSD, USDC/Arc, JPYSC/OUSD, SMBC stablecoin DvP, DCJPY, Solana/Strium, Ethereum tokenized securities and XRPL research.",
+      "supporting_evidence": [
+        "SBI VC Trade is the XRP execution leg in the SBI Remit corridor and also distributes RLUSD, USDC and JPYSC.",
+        "SBI Group is a Circle Arc founding validator and says it intends to leverage USDC/JPYSC.",
+        "SBI-affiliated participants completed Project Trinity using an SMBC-issued stablecoin for security-token DvP testing.",
+        "SBI announced JPYSC/OUSD interoperability research with Open Standard, which lists Coinbase among participants.",
+        "SBI and Solana Foundation announced Strium and SBI Solana Global plans.",
+        "SBI Ripple Asia and DSRV announced an XRPL feasibility study, while Ripple states SBI Ripple Asia does not handle XRP."
+      ],
+      "disconfirming_or_missing": [
+        "Most of the non-XRP initiatives are pilots, feasibility studies, planned infrastructure or account-limited distribution rather than demonstrated production volume.",
+        "No unified SBI treasury, asset allocation or exclusive settlement strategy is disclosed.",
+        "No current XRP corridor throughput or net XRP inventory is disclosed."
+      ]
     }
   ],
   "unresolved_no_edge_assertions": [
@@ -589,6 +874,12 @@
     "No evidence shows Circle Arc uses XRP as its native gas or collateral asset.",
     "No evidence shows x402 payment-event counts translate into net XRP purchases.",
     "SBI Remit is the remittance service provider and request originator; the 2023 release identifies SBI VC Trade as the entity sending XRP in real time.",
-    "SBI Ripple Asia explicitly says it does not handle XRP; do not attribute SBI VC Trade's XRP execution to SBI Ripple Asia."
+    "SBI Ripple Asia explicitly says it does not handle XRP; do not attribute SBI VC Trade's XRP execution to SBI Ripple Asia.",
+    "JPYSC was initially provided only inside SBI VC Trade accounts; public-chain circulation was conditional on legal/tax implementation, so Arc usage is intent rather than verified onchain settlement.",
+    "SBI and Startale's JPYSC/OUSD interoperability experiment under Open Standard is under consideration, not live.",
+    "Coinbase is listed among Open Standard participants; no bilateral Coinbase-SBI commercial agreement is established by that announcement.",
+    "Circle is not identified as an Open Standard participant in the cited SBI announcement; no Circle edge is admitted.",
+    "SBI's Solana/Strium, Project Trinity, DCJPY and Japan-Korea stablecoin pilots are separate rails; none is evidence of XRP usage.",
+    "SBI Ripple Asia's XRPL study with DSRV is a feasibility/research activity; its own Ripple profile says it does not handle XRP."
   ]
 }
