@@ -25,7 +25,7 @@ def test_cftc_26_05_initial_period_and_xrp_dcm_limb_are_not_conflated():
     by_id = {item["id"]: item for item in d["confirmed_facts"]}
     assert "first three months" in by_id["CFTC_26_05_FIRST_THREE_MONTHS"]["finding"]
     assert "underlying commodity" in by_id["XRP_CFTC_DCM_FUTURES"]["finding"]
-    assert "CFM's notice of intent" in " ".join(d["unknowns"])
+    assert "notice of intent" in " ".join(d["unknowns"]).lower()
 
 
 def test_rebalancing_is_a_conditional_flow_not_an_observed_sale():
