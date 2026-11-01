@@ -33,7 +33,7 @@ def test_cognitive_relay_artifact_reports_unverified_adapters_truthfully():
     lines = workflow.splitlines()
     start = next(i for i, line in enumerate(lines) if "<<'JSON'" in line) + 1
     end = next(i for i in range(start, len(lines)) if lines[i].strip() == "JSON")
-    status = json.loads(textwrap.dedent("\\n".join(lines[start:end])))
+    status = json.loads(textwrap.dedent(chr(10).join(lines[start:end])))
 
     assert status["status"] == "NOT_IMPLEMENTED"
     assert status["live_collaboration_verified"] is False
