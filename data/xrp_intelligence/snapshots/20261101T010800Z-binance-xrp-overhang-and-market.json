@@ -103,5 +103,6 @@
     "CoinGecko quote timestamp is not exposed; current market metrics are indicative and not admitted to the historical feature store.",
     "The $28M Crypto Times headline conflicts with its own body and with independent sources; exclude that headline value.",
     "The incident's total-loss and freeze totals differ across providers; preserve each provider's scope and cutoff."
-  ]
+  ],
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261101T010800Z-binance-xrp-overhang-and-market.json"
 }
