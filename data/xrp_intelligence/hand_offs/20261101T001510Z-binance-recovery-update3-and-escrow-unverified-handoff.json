@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T001510Z-BINANCE-UPDATE3-ESCROW-UNVERIFIED",
+  "captured_at_utc": "2026-11-01T00:15:10Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution and verification foundation.",
+  "new_primary_finding": {
+    "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+    "official_source_url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+    "publication_time_utc": "2026-10-31T14:24:00Z",
+    "update_time_utc": "2026-10-31T15:23:00Z",
+    "evidence_class": "CONFIRMED_PRIMARY_COMPANY_STATEMENT",
+    "claims": {
+      "total_incident_replenishment_pct": 90,
+      "top_ten_assets_100pct_backed": [
+        "BTC",
+        "ETH",
+        "USDT",
+        "BNB",
+        "SOL",
+        "USDC",
+        "XRP",
+        "USD1",
+        "RLUSD",
+        "ZEC"
+      ],
+      "remaining_10pct_scope": "Tokens outside the named top ten; described as less liquid.",
+      "funding_sources": [
+        "Partial SAFU deployment",
+        "Portion of Futures insurance fund",
+        "Binance corporate treasury"
+      ],
+      "remaining_asset_acquisition": "Continued market and OTC purchases",
+      "por_snapshot_utc": "2026-10-31T00:00:00Z",
+      "full_zk_merkle_proof_expected_utc_date": "2026-11-03",
+      "withdrawal_reopening_target": "2026-11-01"
+    },
+    "interpretation": {
+      "xrp_customer_liability_coverage": "Binance states 100% backed; independent cryptographic proof not yet available.",
+      "rlusd_customer_liability_coverage": "Binance states 100% backed; independent cryptographic proof not yet available.",
+      "xrp_specific_purchase_flow": "NOT_DISCLOSED",
+      "xrp_specific_replenishment_quantity": "NOT_DISCLOSED",
+      "stolen_xrp_recovery": "NOT_ESTABLISHED",
+      "market_demand_inference": "DO_NOT_INFER_XRP_SPOT_BUY_FLOW FROM 100% COVERAGE CLAIM"
+    }
+  },
+  "proof_quality": {
+    "official_por_page_url": "https://www.binance.com/en/proof-of-reserves",
+    "observed_page_state": "Audit time, verification mechanism and Merkle root fields were blank in the browser-rendered page at capture.",
+    "secondary_screenshot_transcription": {
+      "xrp_reserve_ratio_pct": 100.99,
+      "net_account_balances_xrp": 2516373182.286,
+      "onchain_wallet_balance_xrp": 2541393612.546,
+      "exchange_balance_xrp": 2458677298.071,
+      "third_party_custody_xrp": 82716314.475,
+      "derived_surplus_xrp": 25020430.26,
+      "merkle_root_status": "IN_PROGRESS",
+      "evidence_class": "SECONDARY_SCREENSHOT_TRANSCRIPTION_NOT_INDEPENDENTLY_VERIFIED"
+    },
+    "time_scope_warning": "The PoR snapshot at 2026-10-31 00:00 UTC predates the 2026-11-01 escrow eligibility time by 24 hours and cannot verify post-escrow balances."
+  },
+  "escrow_status": {
+    "eligibility_utc": "2026-11-01T00:00:00Z",
+    "capture_utc": "2026-11-01T00:15:10Z",
+    "elapsed_seconds": 910,
+    "latest_xrp_insights_tracker_ledger": 108032198,
+    "tracker_data_cutoff_utc": "2026-10-31T22:18:00Z",
+    "event_status": "ELIGIBILITY_TIME_PASSED_EXECUTION_UNVERIFIED",
+    "raw_escrow_finish_hashes": [],
+    "destination_receipts": [],
+    "follow_on_transfers": [],
+    "reescrow_creates": [],
+    "no_transaction_lookup_is_not_evidence_of_nonexecution": true
+  },
+  "timeline_interaction": {
+    "events": [
+      "Binance phased withdrawal reopening target: 2026-11-01",
+      "Ripple escrow eligibility: 2026-11-01T00:00:00Z"
+    ],
+    "confounding_warning": "If Binance withdrawals reopen, exchange reserve changes may reflect customer withdrawals and custody migration as well as escrow-related transfers. Timestamped wallet-level evidence is required to distinguish them."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "next_actions": [
+    "Verify both escrow objects at one validated XRPL ledger using account_objects and account_tx.",
+    "Obtain EscrowFinish hashes, tesSUCCESS metadata, affected nodes and destination receipts.",
+    "Trace destination transfers and EscrowCreate re-locks.",
+    "Monitor Binance's phased withdrawal reopening separately from the escrow event.",
+    "Reconcile Binance's 100% XRP/RLUSD backing claim with the November 3 cryptographic proof and the underlying customer-liability/reserve snapshot.",
+    "Do not treat Binance's 90% aggregate replenishment or 100% top-ten coverage as evidence of XRP spot purchases.",
+    "Keep PR #1433 open draft and unmerged; its exact-head CI passed 354 tests plus 8 subtests and its gate passed with merging disabled.",
+    "Resolve the cancelled research archive validator before claiming the new handoff is fully archive-verified."
+  ],
+  "platform_coordination": {
+    "designed": 9,
+    "authenticated_external": 0,
+    "verified_live_external_collaborators": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "safety": {
+    "main_changed_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "workflow_dispatch_performed": false,
+    "real_money_trade_performed": false
+  }
+}
