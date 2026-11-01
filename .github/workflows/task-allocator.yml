@@ -4,16 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       goal:
-        description: "Retained for reference; this workflow is disabled until verified least-privilege adapters and branch/PR-only publication are implemented."
+        description: "Retained for reference; allocation is disabled until verified least-privilege adapters and branch/PR-only publication are implemented."
         required: true
         type: string
 
 permissions: {}
 
 jobs:
-  disabled:
-    if: ${{ false }}
+  report-disabled-state:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     steps:
-      - name: Explain disabled state
-        run: echo "Disabled: the former allocator wrote allocation records to main and only exercised a subset of providers. No external platform calls or repository writes are performed."
+      - name: Report disabled state
+        run: echo "TASK_ALLOCATION_NOT_PERFORMED: no providers were called and no repository state was changed."
