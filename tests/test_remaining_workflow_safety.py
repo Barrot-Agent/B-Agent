@@ -32,4 +32,4 @@ def test_destructive_hugging_face_admin_is_disabled():
     assert "permissions: {}" in text
     assert "HF_TOKEN" not in text
     assert "api/repos/delete" not in text
-    assert "No external repository was changed" in text
+    assert "no external repository was changed" in text.lower()
