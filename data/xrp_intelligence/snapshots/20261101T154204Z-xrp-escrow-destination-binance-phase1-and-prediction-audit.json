@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrp-escrow-destination-binance-phase1-and-prediction-audit-20261101T154204Z",
+  "captured_at_utc": "2026-11-01T15:42:04Z",
+  "escrow": {
+    "publisher": "XRP Insights",
+    "source_url": "https://xrp-insights.com/xrp-radar/escrow",
+    "validated_ledger_index": 108047474,
+    "ledger_time_utc": "2026-11-01T14:58:00Z",
+    "gross_released_xrp": 1000000000,
+    "tracker_reported_reescrow_at_pinned_ledger_xrp": 0,
+    "tracker_reported_net_out_of_escrow_xrp": 1000000000,
+    "market_float_increase_xrp": null,
+    "rolling_12_releases": {
+      "released_xrp": 12000000000,
+      "reescrowed_xrp": 7700000000,
+      "reescrowed_pct": 64.2,
+      "net_out_of_escrow_xrp": 4300000000
+    },
+    "transactions": [
+      {
+        "hash": "3CB037A5F9BC193427592EDB87C49C1ABE499F80F5C049090141B4EDE539F948",
+        "amount_xrp": 500000000,
+        "owner_account": "r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+        "evidence_class": "XRP_INSIGHTS_TRACKER_REPORTED",
+        "destination_account": null,
+        "raw_transaction_metadata": "NOT_RETRIEVED",
+        "classification": "ESCROW_RELEASE_REPORTED_DESTINATION_UNKNOWN"
+      },
+      {
+        "hash": "33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564",
+        "amount_xrp": 500000000,
+        "owner_account": "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn",
+        "evidence_class": "XRP_INSIGHTS_TRACKER_AND_WHALE_ALERT_CORROBORATED",
+        "sender_account": "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn",
+        "receiver_account": "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn",
+        "destination_relationship": "SAME_ACCOUNT_AS_OWNER",
+        "raw_transaction_metadata": "WHaleAlert_SENDER_RECEIVER_FIELDS_ONLY; RAW_XRPL_JSON_NOT_RETRIEVED",
+        "classification": "ESCROW_RELEASE_TO_SAME_RIPPLE_ACCOUNT"
+      }
+    ],
+    "interpretation": "The tracker reports 1B XRP released from escrow and 0 re-escrow at ledger 108047474. Whale Alert independently shows the 500M transaction for rB3WN... with sender and receiver both equal to that same Ripple-labelled account. This is not an external sale or exchange deposit. The other 500M transaction's destination remains unknown. 'Net out of escrow' is a contract-state measure, not circulating supply, tradable float or sold XRP.",
+    "feature_admission": "NONE",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "binance": {
+    "update_number": 4,
+    "official_update_url": "https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda",
+    "published_at_utc": "2026-11-01T04:08:00Z",
+    "aggregate_replenishment_pct": 95,
+    "prior_update_pct": 90,
+    "top_ten_backing_claim_pct": 100,
+    "top_ten_assets": [
+      "BTC",
+      "ETH",
+      "USDT",
+      "BNB",
+      "SOL",
+      "USDC",
+      "XRP",
+      "USD1",
+      "RLUSD",
+      "ZEC"
+    ],
+    "remaining_aggregate_shortfall_pct": 5,
+    "remaining_assets_description": "Outside the top ten and less liquid; Binance says it continues market and OTC acquisition for those assets.",
+    "xrp_network_listed_in_phase1": true,
+    "phase1_window_utc": [
+      "2026-11-01T06:00:00Z",
+      "2026-11-01T09:00:00Z"
+    ],
+    "withdrawal_status": "MEDIA_REPORTED_AVAILABLE; DIRECT_NETWORK_STATUS_NOT_VERIFIED",
+    "media_report": {
+      "publisher": "CBS News / AFP",
+      "url": "https://www.cbsnews.com/news/binance-crypto-heist-withdrawals/",
+      "published_at_utc": "2026-11-01T10:35:00Z",
+      "statement_time_utc": "2026-11-01T10:00:00Z",
+      "claim": "CBS/AFP reported that, as of 5:00 a.m. Eastern, Binance said withdrawals had been restored for BTC, ETH, BNB, XRP, Base, DOGE and Optimism."
+    },
+    "successful_xrp_withdrawal_independently_observed": null,
+    "xrp_specific_replenishment_quantity": null,
+    "xrp_specific_purchase_venue": null,
+    "interpretation": "Update #4 supersedes Update #3's 90% aggregate figure with 95%. XRP is among the top ten assets Binance reports 100% backed and is listed in phase one. CBS/AFP reports Binance said XRP withdrawals were restored by 10:00 UTC, but no direct status-page XRP row or independently verifiable successful withdrawal was obtained. The remaining 5% is described as outside the top ten; no XRP-specific replenishment purchase is established."
+  },
+  "binance_attacker_wallet": {
+    "account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "reported_inflow_xrp": 233461943.1,
+    "last_reviewed_bitquery_observation_utc": "2026-10-31T16:51:00Z",
+    "current_balance": "UNKNOWN",
+    "outgoing_sale_or_exchange_deposit": "NOT_VERIFIED"
+  },
+  "point_in_time_integrity": {
+    "current_cutoff_utc": "2026-11-01T15:42:04Z",
+    "future_dated_existing_artifact": {
+      "path": "data/xrp_intelligence/snapshots/20261101T154500Z-evernorth-financing-and-custody-correction.json",
+      "recorded_captured_at_utc": "2026-11-01T15:45:00Z",
+      "status": "FUTURE_DATED_AT_THIS_CUTOFF",
+      "treatment": "PRESERVE_BUT_QUARANTINE_FROM_POINT_IN_TIME_FEATURES_AND_CURRENT_CLAIMS_UNTIL_RECUT_OR_VERIFIED_AFTER_15:45Z"
+    }
+  },
+  "raw_rpc_verification": {
+    "attempted_endpoint": "https://s1.ripple.com:51234/",
+    "result": "EXECUTION_ENVIRONMENT_DNS_RESOLUTION_FAILED",
+    "explorer_pages": "JavaScript-only; raw transaction JSON not exposed by static extraction",
+    "raw_destination_fields": "NOT_VERIFIED"
+  },
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

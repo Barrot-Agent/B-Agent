@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_handoff",
+  "handoff_id": "HANDOFF-20261101T131100Z-CBXRP-MORPHO-RECONCILIATION",
+  "captured_at_utc": "2026-11-01T13:19:32Z",
+  "data_cutoff_utc": "2026-11-01T13:11:00Z",
+  "repository": {
+    "full_name": "Barrot-Agent/B-Agent",
+    "main_sha_observed": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+    "branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z"
+  },
+  "latest_snapshot_path": "data/xrp_intelligence/snapshots/20261101T131100Z-cbxrp-morpho-usdc-market.json",
+  "source_bundle_path": "data/xrp_intelligence/sources/20261101T131100Z-cbxrp-morpho-usdc-market.json",
+  "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T131100Z-cbxrp-morpho-credit.json",
+  "finding": {
+    "summary": "Provider-derived 13:11 UTC data reports 118.55M cbXRP collateral and $59.20M USDC debt in the 62.5% Morpho market. Coinbase separately reports 150.94M cbXRP supply and 150.94M XRP reserves; its displayed refresh timezone is unstated.",
+    "key_metrics": {
+      "reserve_surplus_xrp": 2247.53,
+      "reserve_coverage_pct": 100.00149,
+      "collateral_share_pct": 78.54,
+      "utilization_pct": 90.44,
+      "available_usdc": 6260000,
+      "aggregate_debt_to_collateral_pct": 39.99,
+      "top_three_vault_share_pct": 79.21,
+      "wrapper_supply_growth_since_aug24_pct": 28.69,
+      "collateral_units_growth_since_aug24_pct": 30.59,
+      "debt_growth_since_aug24_pct": 44.39,
+      "aug24_market_collateral_share_pct": 77.4,
+      "collateral_share_change_pp": 1.14,
+      "aug24_aggregate_debt_to_collateral_pct": 30.94,
+      "aggregate_debt_to_collateral_change_pp": 9.04
+    },
+    "interpretation": "Approximate market collateral share is 78.5% of cbXRP supply. Since Aug24, collateral units rose about 30.6%, supply 28.7%, and outstanding debt 44.4%. Credit use appears to have grown faster than collateral units, but this is not evidence of new XRP spot purchases."
+  },
+  "critical_corrections": [
+    "Call 12.68% a liquidation bonus, not a borrower penalty.",
+    "Separate USDC supplied from cbXRP collateral units.",
+    "90.4% utilization is USDC borrowed divided by USDC supplied.",
+    "40.0% debt/collateral is aggregate, not borrower-weighted LTV.",
+    "Exclude prior $240.85M value-secured field until reconciled.",
+    "Coinbase market attribution remains inference, not confirmed market-ID mapping.",
+    "Coinbase Help identifies the official cbXRP Base contract used for XRP loan collateral: 0xcb585250f852c6c6bf90434ab21a00f02833a4af; this confirms the collateral asset but not the exact Morpho market ID.",
+    "Coinbase's wrapped-asset policy says the underlying XRP reserve is held in custody and is not sold or deployed by Coinbase; wrapper issuance therefore must not be treated as proof of a Coinbase spot-market purchase."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "reason": "Raw-block replication, synchronized reserve timestamp and borrower-level distribution are missing."
+  },
+  "platform_coordination": {
+    "targets": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "status": "DESIGNED_NOT_LIVE",
+    "verified_external_authentications": 0,
+    "verified_external_handoffs": 0
+  },
+  "next_actions": [
+    "Reproduce cbXRP ERC-20 totalSupply and Morpho market collateral at an exact Base block.",
+    "Enumerate borrower positions and calculate borrower-level LTV/health-factor distribution.",
+    "Reconstruct the full Chainlink oracle/feed addresses and latest round at the same block.",
+    "Obtain Coinbase reserve refresh time with timezone or reconcile reserve addresses to a pinned XRPL ledger.",
+    "Enumerate all cbXRP holders and non-Morpho collateral venues.",
+    "Track the top three USDC vault suppliers and liquidity withdrawals.",
+    "Keep the snapshot exploratory-only until raw-block reconciliation; no directional forecast."
+  ],
+  "safety": {
+    "real_money_trade": false,
+    "paper_trading_mutation": false,
+    "position_product_write": false,
+    "main_modified": false,
+    "merge_performed": false
+  }
+}

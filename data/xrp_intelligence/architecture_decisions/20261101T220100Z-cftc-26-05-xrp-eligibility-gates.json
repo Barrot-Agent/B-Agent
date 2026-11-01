@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "decision_id": "cftc-26-05-xrp-eligibility-gates-20261101T220100Z",
+  "captured_at_utc": "2026-11-01T22:01:00Z",
+  "decision": "Do not treat Deribit's XRP cross-collateral table as sufficient proof of CFM eligibility or usage.",
+  "rules": [
+    "First three months from CFM's own notice commencement date: payment stablecoins, BTC and ETH only.",
+    "After that period, XRP must meet the qualifying DCO/foreign-clearing-organization route or the 26-05 fallback.",
+    "Fallback for non-security assets other than payment stablecoins requires at least 20% haircut and revised risk policies filed with MPD before acceptance.",
+    "The same-asset exception does not apply to XRP collateral for XRP-USDC linear contracts.",
+    "Keep Deribit venue haircuts (X:PM no haircut stated; X:SM 15%) separate from FCM capital charges, 26-05 fallback haircuts and account margin requirements.",
+    "Treat Deribit's qualifying foreign-clearing-organization status under the exact 26-05 jurisdiction test as unresolved until direct evidence is found.",
+    "Do not infer actual XRP collateral use from the legal route, venue listing, Coinbase integration or custody-provider inclusion."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

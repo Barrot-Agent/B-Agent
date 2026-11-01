@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "audit_id": "main-knowledge-signal-and-approval-workflow-gaps-20261101T161513Z",
+  "captured_at_utc": "2026-11-01T16:15:13Z",
+  "main": {
+    "sha": "5f7669d4c01fdc53de16a3f0db366926e690f1dc",
+    "commit_message": "Cross-analysis refresh [skip ci]",
+    "comparison_from_pr1464_base": {
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "ahead_by": 3,
+      "changed_paths": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "change": "generated_at timestamp-only refresh; no source observations changed"
+    }
+  },
+  "uncovered_workflows": [
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "blob_sha": "21aae946ec92fbe2bd176fa79e57406b32da9517",
+      "trigger": "workflow_dispatch only",
+      "permissions": "contents: write",
+      "secrets": [
+        "GROQ_API_KEY"
+      ],
+      "operations": [
+        "knowledge_ingest.py",
+        "knowledge_distill.py",
+        "emit_signal.py",
+        "git commit",
+        "git push main"
+      ],
+      "protected_environment": "NONE",
+      "finding": "ACTIVE_MANUAL_MAIN_WRITER_WITH_PROVIDER_SECRET; no protected reviewer gate observed",
+      "observed_execution_this_run": false
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "blob_sha": "374adb4bce512cd3640532af02c807bd549bdef0",
+      "trigger": "workflow_dispatch with PR number, expected head SHA and reason inputs",
+      "permissions": "contents: read; pull-requests: write",
+      "actor_allowlist": "NONE_IN_CURRENT_MAIN_FILE",
+      "protected_environment": "NONE",
+      "operations": [
+        "validate PR is open and targets main",
+        "check expected head SHA",
+        "apply approved label",
+        "post approval comment"
+      ],
+      "merge_operation": "NONE_IN_THIS_WORKFLOW",
+      "finding": "UNPROTECTED_APPROVAL_LABEL_AND_COMMENT_PATH; the workflow does not establish an independently reviewed human approval",
+      "observed_execution_this_run": false
+    }
+  ],
+  "other_main_risks": [
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "finding": "manual dispatch with write permissions; default dry_run=false; max_prs=0; no explicit approval check; mode=all is available"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "finding": "actions:write and contents:write; queue-driven arbitrary workflow dispatch and queue mutation"
+    },
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "finding": "scheduled main commit/push path; observed timestamp-only refresh despite zero qualifying source observations"
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "finding": "scheduled main writer in current main; proposed branch converts to read-only artifact output"
+    },
+    {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "finding": "secret-consuming token-rotation workflow; proposed branch disables pending protected secret-management boundary"
+    }
+  ],
+  "label_consumer_search": {
+    "query": "approved label / labels[]=approved",
+    "default_branch_matches": [
+      ".github/workflows/barrot-approve-pr.yml",
+      "tests/test_barrot_approve_pr_workflow.py",
+      ".barrot-backup/workflows/barrot-gated-merge.yml"
+    ],
+    "active_merge_consumer_found": false,
+    "limitation": "The only gated-merge reference found is under .barrot-backup; no active default-branch workflow consuming the approved label was found in this search. The label workflow remains unsafe because it can write an approval-like label/comment without protected human review."
+  },
+  "proposals": {
+    "pr1465": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "latest_head": "57805749b156477e1c0b6d8bdf3040e5f5c5998a",
+      "base_sha": "02d9f11404ba80823392ad215c733b49e4536128",
+      "changes": "Disables knowledge-signal-cycle and barrot-approve-pr in addition to broader merge-queue, scheduler, Cross Analysis, token rotation and external-mutation quarantine.",
+      "latest_head_ci": "PENDING_AT_CAPTURE",
+      "prior_verified_head": "43341203fbe5c864c896f975a7ad765a9be2c5bf",
+      "prior_verified_ci": {
+        "run_id": 41325295730,
+        "tests_passed": 378,
+        "subtests_passed": 8
+      },
+      "prior_verified_gate": {
+        "run_id": 41325295758,
+        "conclusion": "SUCCESS_MERGING_DISABLED"
+      }
+    },
+    "pr1464": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "latest_head": "217f83a738fea9931722b4edc8868ed2bee520b1",
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "exact_head_ci": {
+        "run_id": 41325246152,
+        "tests_passed": 401,
+        "subtests_passed": 8
+      },
+      "exact_head_gate": {
+        "run_id": 41325246159,
+        "conclusion": "SUCCESS_MERGING_DISABLED"
+      }
+    },
+    "pr1468": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "latest_head": "cea621064bb11815482ac23b04be18245cd6609d",
+      "base_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+      "status": "STALE_BASE; prediction cohort guard remains proposal-only"
+    }
+  },
+  "controls": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_read": false,
+    "external_deployment": false,
+    "paper_trade_or_real_trade": false
+  },
+  "remaining_blockers": [
+    "PR #1465 latest head 57805749 has not yet completed exact-head CI at capture time.",
+    "PR #1465 is based on an older main SHA and remains unmerged.",
+    "No verified protected GitHub Environment with required human reviewers has been established.",
+    "Current main still exposes privileged workflow paths until an authorized security change is merged."
+  ]
+}

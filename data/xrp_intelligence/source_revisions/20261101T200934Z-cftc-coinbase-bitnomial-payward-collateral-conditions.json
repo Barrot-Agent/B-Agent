@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "revision_id": "cftc-coinbase-bitnomial-payward-collateral-conditions-20261101T200934Z",
+  "captured_at_utc": "2026-11-01T20:09:34Z",
+  "sources": [
+    {
+      "id": "cftc-letter-26-05-20260206",
+      "publisher": "CFTC Market Participants Division",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "published_at": "2026-02-06",
+      "accessed_at_utc": "2026-11-01T20:09:34Z",
+      "classification": "PRIMARY_REGULATORY_NO_ACTION_LETTER",
+      "claims": [
+        "The letter reissues Letter 25-40 with a limited definition change for payment stablecoins and identifies Coinbase Financial Markets, Inc. as the December 8, 2025 requestor.",
+        "The no-action position is conditional, applies to FCM treatment of customer payment stablecoins and other non-security digital assets, and is not a generally applicable rule or blanket asset approval.",
+        "For futures and cleared-swaps customer accounts, the asset must be accepted as collateral or for settlement by a registered DCO; the FCM uses the DCO's valuation and haircut.",
+        "When multiple DCOs accept the same asset, the FCM applies the highest applicable DCO haircut.",
+        "Before reliance, an FCM must file a notice of intent and commencement date with MPD via WinJammer.",
+        "For the first three months of each FCM's reliance, customer collateral is limited to payment stablecoins, BTC and ETH.",
+        "For three months beginning with the calendar month after notice, the FCM files weekly reports of digital assets held in customer funds accounts; significant operational or cyber incidents must be reported during the first three months.",
+        "For non-BTC, non-ETH and non-payment-stablecoin assets, the FCM must submit revised risk-management policies before accepting the asset; if no DCO/qualifying foreign clearing organization accepts it, at least a 20% haircut applies under the stated conditions."
+      ],
+      "limitations": [
+        "No Coinbase Financial Markets notice of reliance or actual XRP collateral balance was located.",
+        "The letter does not identify Coinbase as using Bitnomial or establish a Coinbase/Bitnomial clearing relationship.",
+        "No-action relief is staff enforcement discretion subject to stated conditions, not a rule or universal approval."
+      ]
+    },
+    {
+      "id": "bitnomial-current-collateral-schedule-20261002",
+      "publisher": "Bitnomial Clearinghouse",
+      "url": "https://bitnomial.com/clearinghouse/",
+      "observed_at": "2026-10-02",
+      "accessed_at_utc": "2026-11-01T20:09:34Z",
+      "classification": "PRIMARY_DCO_COLLATERAL_SCHEDULE",
+      "claims": [
+        "XRP is listed as accepted collateral with a 40% haircut and $15M notional limit; BTC is 15%/$100M and ETH is 20%/$45M."
+      ],
+      "limitations": [
+        "The schedule does not define the scope of the $15M limit or disclose actual posted XRP balances.",
+        "RLUSD is absent from the current schedule despite the historical November 2025 announcement."
+      ]
+    },
+    {
+      "id": "bitnomial-xrp-rlusd-collateral-announcement-20251103",
+      "publisher": "Bitnomial",
+      "url": "https://bitnomial.com/news/2025-11-03/rlusd-xrp-margin-collateral/",
+      "published_at": "2025-11-03",
+      "accessed_at_utc": "2026-11-01T20:09:34Z",
+      "classification": "PRIMARY_HISTORICAL_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "Bitnomial announced XRP and RLUSD margin deposits for institutional clients trading leveraged perpetuals, futures and options, subject to applicable regulatory approvals."
+      ],
+      "limitations": [
+        "This announcement predates Coinbase Financial Markets' December 8, 2025 request and does not establish current RLUSD acceptance or actual collateral balances."
+      ]
+    },
+    {
+      "id": "payward-bitnomial-acquisition-completed-20260501",
+      "publisher": "Payward",
+      "url": "https://www.payward.com/press-release/payward-completes-acquisition-of-bitnomial-the-first-fully-cftc-licensed-crypto-native-derivatives-stack-in-the-us",
+      "published_at": "2026-05-01",
+      "accessed_at_utc": "2026-11-01T20:09:34Z",
+      "classification": "PRIMARY_ACQUISITION_ANNOUNCEMENT",
+      "claims": [
+        "Payward completed its acquisition of Bitnomial and now owns its FCM, DCM and DCO stack; Bitnomial continues operating within the group and third-party clearing operations remain intact."
+      ],
+      "limitations": [
+        "Ownership does not prove XRP collateral utilization, customer volumes or market share."
+      ]
+    },
+    {
+      "id": "sec-cftc-xrp-digital-commodity-interpretation-20260323",
+      "publisher": "SEC and CFTC",
+      "url": "https://www.cftc.gov/LawRegulation/FederalRegister/finalrules/2026-05635.html",
+      "published_at": "2026-03-23",
+      "accessed_at_utc": "2026-11-01T20:09:34Z",
+      "classification": "PRIMARY_JOINT_REGULATORY_INTERPRETATION",
+      "claims": [
+        "XRP is explicitly listed as a digital commodity in the joint interpretation."
+      ],
+      "limitations": [
+        "Asset-level classification does not establish universal collateral acceptance and does not eliminate transaction-level investment-contract analysis."
+      ]
+    },
+    {
+      "id": "cftc-bitnomial-xrp-spot-certification-20260421",
+      "publisher": "CFTC",
+      "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60549",
+      "published_at": "2026-04-21",
+      "accessed_at_utc": "2026-11-01T20:09:34Z",
+      "classification": "PRIMARY_PRODUCT_CERTIFICATION",
+      "claims": [
+        "Bitnomial XRP US Dollar Spot Contract is listed as certified."
+      ],
+      "limitations": [
+        "Certification is not proof of trading volume or collateral use."
+      ]
+    },
+    {
+      "id": "cftc-bitnomial-xrp-hecto-perpetual-certification-20260514",
+      "publisher": "CFTC",
+      "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60786",
+      "published_at": "2026-05-14",
+      "accessed_at_utc": "2026-11-01T20:09:34Z",
+      "classification": "PRIMARY_PRODUCT_CERTIFICATION",
+      "claims": [
+        "Bitnomial XRP US Dollar Hecto Perpetual Futures is listed as certified."
+      ],
+      "limitations": [
+        "Certification is not proof of open interest, volume or collateral use."
+      ]
+    }
+  ],
+  "temporal_order": [
+    {
+      "date": "2025-11-03",
+      "event": "Bitnomial announces XRP and RLUSD margin collateral."
+    },
+    {
+      "date": "2025-12-08",
+      "event": "Coinbase Financial Markets submits the no-action request; CFTC issues Letter 25-40."
+    },
+    {
+      "date": "2026-02-06",
+      "event": "CFTC reissues the letter as 26-05, adding national trust banks to the payment-stablecoin issuer definition."
+    },
+    {
+      "date": "2026-05-01",
+      "event": "Payward completes Bitnomial acquisition."
+    },
+    {
+      "date": "2026-10-02",
+      "event": "Current Bitnomial DCO schedule lists XRP at 40% haircut/$15M limit and omits RLUSD."
+    }
+  ],
+  "source_independence": "CFTC is the independent regulator; Bitnomial and Payward are first-party corporate sources and are affiliated after the May 1 acquisition. The historical Bitnomial announcement and current DCO schedule are separate dated company records, not independent confirmations of actual posted balances."
+}

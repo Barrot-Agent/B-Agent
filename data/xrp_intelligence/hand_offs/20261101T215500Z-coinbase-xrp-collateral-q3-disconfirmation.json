@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "handoff_id": "coinbase-xrp-collateral-q3-disconfirmation-20261101T215500Z",
+  "captured_at_utc": "2026-11-01T21:55:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery remains first; Barrot V3 remains the execution and verification foundation.",
+  "major_finding": "The legal/venue path for XRP collateral is credible, but Coinbase's Q3 2026 recognized derivatives-collateral table lists only BTC and ETH ($325.766M total) at September 30. The quarter ended before the October 1 Deribit integration. Deribit's October 14 custody policy lists Coinbase Custody Trust Company in cold storage but still describes CBBM warm-wallet addition as planned after September. Actual post-integration XRP collateral use remains unknown.",
+  "correction": "Deribit's September 28 current cross-collateral table supersedes its January 13 offset-only notice: XRP is now listed as a cross-collateral currency, with no X:PM haircut stated and 15% X:SM haircut.",
+  "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+  "research_pr_1464": {
+    "head": "d3e11463d1d7df3c23e298a5adb60338c3ce1aba",
+    "ci": "451 tests and 8 subtests passed",
+    "gate": "passed",
+    "state": "OPEN_DRAFT_UNMERGED"
+  },
+  "subscriber_security_pr_1476": {
+    "head": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+    "ci": "345 tests and 8 subtests passed",
+    "gate": "passed",
+    "state": "OPEN_DRAFT_UNMERGED"
+  },
+  "prediction_status": "NOT_ISSUED",
+  "next_actions": [
+    "Verify the CFM notice/commencement date and first-three-month collateral restrictions.",
+    "Verify whether Coinbase Bermuda was added to Deribit's warm-wallet stack after October 14.",
+    "Inspect Coinbase Q4 2026 reporting for post-integration XRP collateral and customer-pledged derivatives collateral.",
+    "Separate recognized derivatives collateral, unrecognized lending collateral, corporate pledged assets and XRP holdings.",
+    "Verify any XRP deposits, custody balances, reuse and account-level margin mode before attributing new collateral demand.",
+    "Continue source-byte semantic binding and LIVE/HISTORICAL_REPLAY enforcement in the prediction ledger."
+  ],
+  "safety": "Main unchanged; all PRs remain unmerged. No real-money trades or paper-position mutation."
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-cftc-classification-bitnomial-collateral-kamilah-20261101T200000Z",
+  "captured_at_utc": "2026-11-01T20:00:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "main_sha": "bf39f397069eb58526a50ef055289997182db6b0",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "research_branch_head_before_append": "2dca45e1bf68c2d2dd695698cead2274ff97b30a",
+  "research_pr": 1464,
+  "new_regulatory_finding": "SEC/CFTC joint interpretation effective 2026-03-23 lists XRP as a digital commodity; transaction-level investment-contract analysis and the 2025 Ripple final judgment remain separate.",
+  "new_derivatives_finding": "CFTC product records certify Bitnomial XRP USD Spot Contract (2026-04-21) and XRP USD Hecto Perpetual Futures (2026-05-14).",
+  "collateral_finding": "Bitnomial DCO accepts XRP at 40% haircut and $15M notional limit; actual posted collateral unknown.",
+  "cftc_framework": "Letter 26-05 requested by Coinbase Financial Markets; conditional no-action, FCM notice and DCO acceptance/haircuts required; first three months restricted to payment stablecoins, BTC and ETH.",
+  "ownership_finding": "Payward completed Bitnomial acquisition 2026-05-01.",
+  "rlusd_status": "Historical announcement included RLUSD; current schedule omits it; unresolved.",
+  "video": {
+    "creator": "Kamilah Stevenson",
+    "video_id": "M8TmDXO7B-0",
+    "published_at": "2025-12-06",
+    "transcript_status": "NOT_RETRIEVED",
+    "verdict": "LIMITED_VENUE_CONFIRMED; XRP_DIGITAL_COMMODITY_CLASSIFICATION_CONFIRMED; UNIVERSAL_CFTC_APPROVAL_AND_EQUAL_RISK_CLASS_NOT_ESTABLISHED"
+  },
+  "unresolved": [
+    "Actual XRP collateral balances and usage at Bitnomial.",
+    "Scope of the $15M XRP notional limit.",
+    "Current RLUSD acceptance.",
+    "Coinbase FCM notice of reliance and actual XRP collateral use.",
+    "Any direct Coinbase/Bitnomial clearing membership.",
+    "Full Kamilah video transcript and all-public-upload inventory."
+  ],
+  "next_actions": [
+    "Retrieve Bitnomial rulebook and current clearing-member schedule to determine the XRP limit's scope and RLUSD status.",
+    "Search CFTC/FCM public notices for Coinbase Financial Markets' date of reliance under Letter 26-05.",
+    "Reconcile actual XRP collateral balances, clearing-member positions and market data; do not infer from eligibility.",
+    "Continue all public Kamilah channel uploads, Shorts, streams and transcript cataloging.",
+    "Continue ASK Coin, actual-capital and SBIC source provenance."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "safety": "Research-only; no main changes, merges, force-pushes, deployments, secrets or trades."
+}

@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "evernorth-sec-capital-custody-coinbase-and-yield-reconciliation-20261101T154852Z",
+  "captured_at_utc": "2026-11-01T15:48:52Z",
+  "source": {
+    "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+    "form": "424B3",
+    "prospectus_date": "2026-10-30",
+    "accessed_at_utc": "2026-11-01T15:48:52Z",
+    "primary_source": true
+  },
+  "actual_capital": {
+    "historical_cash_xrp_purchase": {
+      "cash_usd": 214049995,
+      "xrp_purchased": 84365876.3625,
+      "average_purchase_price_usd": 2.53657058,
+      "purchase_announcement_date": "2025-11-04",
+      "classification": "ACTUAL_HISTORICAL_CASH_PURCHASE"
+    },
+    "in_kind_xrp_contributions": {
+      "total_reported_xrp_approx": 388910554,
+      "components": [
+        {
+          "source": "Advance Funding Subscription Agreements",
+          "xrp": 600000
+        },
+        {
+          "source": "Delayed Funding Subscription Agreements",
+          "xrp": 200000
+        },
+        {
+          "source": "Series C subscription",
+          "xrp": 211319096.061435
+        },
+        {
+          "source": "Larsen Lam Children’s Remainder Trust",
+          "xrp": 50000000
+        },
+        {
+          "source": "Ripple contribution to Pathfinder",
+          "xrp": 126791458
+        }
+      ],
+      "classification": "NON_CASH_XRP_CONTRIBUTIONS",
+      "reconciliation_note": "The SEC liquidity section separately reports 261,919,096 XRP as Pubco XRP, 200,000 XRP from delayed funding and 126,791,458 XRP contributed by Ripple. These sum to approximately 388,910,554 XRP. The 126.79M Ripple contribution is not a cash purchase."
+    },
+    "reported_holdings_as_of_2026_10_09_xrp_approx": 473000000,
+    "implied_component_sum_xrp_approx": 473276430,
+    "closing_cash_proceeds_usd_gross": 272600000,
+    "closing_cash_proceeds_components_usd": {
+      "private_placements": 224600000,
+      "trust_account_after_redemptions": 48000000
+    },
+    "cash_proceeds_caveat": "The $214.05M used for the historical XRP purchase is part of the financing/cash-proceeds history and must not be double-counted as an additional independent capital raise.",
+    "convertible_notes": {
+      "principal_usd": 30000000,
+      "net_proceeds_before_transaction_expenses_usd": 30000000,
+      "issuance_date": "2026-10-12",
+      "maturity_year": 2031,
+      "pik_rate_pct": 4,
+      "conditional_yield_to_put_pct": 8,
+      "potential_cash_settlement_cap_usd": 120000000,
+      "intended_uses": "General corporate purposes, including acquisition of XRP and other XRP ecosystem activities.",
+      "xrp_purchase_from_note_proceeds": "NOT_VERIFIED"
+    },
+    "cantors_committed_equity_facility": {
+      "max_shares": 5218935,
+      "cover_page_gross_proceeds_usd_if_all_sold_at_cover_price": 76800000,
+      "detailed_section_gross_proceeds_usd": 76800000,
+      "detailed_section_net_proceeds_estimate_usd": 74400000,
+      "conflicting_offering_summary_gross_proceeds_usd": 80700000,
+      "gross_proceeds_reconciliation": "INTERNAL_PROSPECTUS_DISCREPANCY; cover page and detailed committed-equity section state approximately $76.8M gross, while the summary Use of Proceeds row states approximately $80.7M using the same cover-price assumption.",
+      "upfront_commitment_fee_usd": 521893.5,
+      "fee_payment_status": "PAYABLE_UNDER_PROSPECTUS; ACTUAL_PAYMENT_NOT_VERIFIED",
+      "fee_refundable": "NO; fully earned/non-refundable under the stated terms even if no VWAP purchases occur",
+      "draw_status": "NO_DRAW_VERIFIED",
+      "issuer_election": "Evernorth may elect, in its sole discretion, to sell some, all or none of the registered shares, subject to conditions.",
+      "classification": "OPTIONAL_EQUITY_FINANCING_CAPACITY_NOT_CASH_ON_HAND"
+    },
+    "ripple_related_facilities": {
+      "evernorth_facility": {
+        "limit_usd": 1000000,
+        "borrowed_as_of_2026_06_30_usd": 0,
+        "classification": "UNDRAWN_AS_OF_2026_06_30"
+      },
+      "parent_company_facility": {
+        "limit_after_2026_10_07_usd": 10000000,
+        "borrowed_as_of_2026_10_07_usd": 9700000,
+        "borrower": "Pathfinder / operating Company subsidiary",
+        "classification": "DISTINCT_FROM_EVERNORTH_1M_FACILITY"
+      },
+      "xrp_purchase_use": "NOT_ESTABLISHED"
+    },
+    "operating_status": {
+      "revenue_generated": "NONE_REPORTED_IN_PROSPECTUS",
+      "losses_and_liquidity": "Prospectus reports continuing operating losses and very limited unrestricted cash at June 30, 2026.",
+      "note": "Do not equate treasury size with operating cash or recurring revenue."
+    }
+  },
+  "coinbase_relationship": {
+    "principal_market_for_xrp_financial_reporting": true,
+    "selection_basis": [
+      "market-based trading volume and activity",
+      "price consistency and stability",
+      "access and regulatory/AML/KYC compliance"
+    ],
+    "accounting_use": "Principal-market price is used for ASC 820 contribution-date fair value/impairment assessment; XRP is carried at cost less impairment under the company's stated accounting treatment.",
+    "reassessment_frequency": "At least annually",
+    "execution_partner_relationship": "Separately announced by Evernorth as an execution partner; this SEC filing's principal-market statement does not prove a specific completed trade.",
+    "custody_relationship": "NOT_THE_PRIMARY_CUSTODIAN_IN_THIS_FILING; BitGo is identified as primary custodian.",
+    "interpretation": "This is a direct, material Coinbase price-reference relationship for a large XRP treasury, not proof of exclusive trading, custody or control."
+  },
+  "custody_and_yield": {
+    "primary_custodian": "BitGo Bank & Trust, National Association",
+    "all_xrp_cold_storage_as_of_prospectus_date": true,
+    "custody_controls": [
+      "multi-signature key management",
+      "hardware security modules",
+      "multi-person approval",
+      "role-based access",
+      "out-of-band confirmations",
+      "independent on-chain reconciliations"
+    ],
+    "bitgo_aggregate_shared_insurance_usd": 250000000,
+    "shared_insurance_pct_of_evernorth_xrp_value_as_of_2026_10_09": 36.9,
+    "insurance_not_dedicated_to_evernorth": true,
+    "exact_multisig_threshold": "NOT_SPECIFIED_IN_THIS_SEC_FILING",
+    "custodian_pledge_lend_use_restriction": "BitGo and affiliates may not pledge, lend or otherwise use XRP unless expressly directed as part of Evernorth's yield-generation strategies.",
+    "company_reported_yield_status": "The filing states yield strategies and DeFi protocol participation commenced following Closing.",
+    "deployment_amount_protocol_counterparty_and_wallets": "NOT_DISCLOSED_IN_THE_REVIEWED_PASSAGES",
+    "timing_statement": "The filing also says Evernorth did not anticipate material XRP ecosystem deployment before Q4 2026.",
+    "cold_storage_vs_defi_tension": "UNRESOLVED_SCOPE_AND_CUSTODY_TENSION: the same prospectus says 100% of XRP was in cold storage as of the prospectus date and that yield strategies/DeFi participation commenced after Closing. The filing does not specify whether the initial activity used XRP, other assets, off-chain structures or a small non-material allocation.",
+    "strategies_described": [
+      "XRP lending to qualified institutional counterparties",
+      "covered calls",
+      "basis trades",
+      "cash-secured puts funded by cash/stablecoins",
+      "premium collars",
+      "structured products",
+      "DeFi lending",
+      "AMM liquidity",
+      "RLUSD/XRP pools"
+    ],
+    "xrp_as_collateral": "Evernorth says it may consider secured financing with XRP as collateral; no executed XRP-secured financing transaction is disclosed in the reviewed passages.",
+    "direct_cash_capital_into_ecosystem_projects": "The filing says it does not currently plan to invest cash capital directly into XRP ecosystem projects; it intends to deploy existing XRP holdings within DeFi protocols.",
+    "actual_onchain_deployment": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "institutional_relationships": {
+    "ripple": {
+      "status": "STRATEGIC_INVESTOR_AND_XRP_CONTRIBUTOR",
+      "contribution_xrp": 126791458,
+      "ceo_prior_role": "Asheesh Birla previously served on Ripple's board and was part of Ripple's founding team.",
+      "cbo_prior_role": "Sagar Shah previously held Ripple roles including Head of Custody and Senior Director of Stablecoins."
+    },
+    "sbi_holdings": {
+      "status": "STRATEGIC_INVESTOR",
+      "japan_focus": "Evernorth identifies Japan as an initial focus jurisdiction and SBI Holdings as its strategic investor.",
+      "distinction": "SBI Holdings is not Japan's regional SBIC investment/consultation companies."
+    },
+    "bitgo": {
+      "status": "PRIMARY_CUSTODIAN"
+    },
+    "circle": {
+      "direct_evernorth_relationship": "NOT_IDENTIFIED_IN_THIS_FILING",
+      "rlusd_link": "Evernorth plans to use Ripple's RLUSD as a stable-value asset in XRP-based DeFi; this filing does not identify USDC or a direct Circle relationship."
+    }
+  },
+  "key_classifications": {
+    "confirmed_sec_filing_facts": [
+      "approx. 473M XRP held as of 2026-10-09",
+      "$214.05M historical cash funding used to purchase approx. 84.366M XRP",
+      "approx. 388.911M XRP contributed in kind",
+      "Coinbase selected as principal market for XRP financial reporting",
+      "BitGo primary custodian; 100% cold storage as of prospectus date",
+      "$30M convertible notes issued 2026-10-12",
+      "ELOC is discretionary and not cash until shares are sold"
+    ],
+    "company_reported_but_not_onchain_verified": [
+      "yield strategies commenced after Closing",
+      "DeFi protocol participation commenced after Closing"
+    ],
+    "planned_not_executed_or_not_disclosed": [
+      "XRP-secured financing",
+      "specific XRP lending amount",
+      "named DeFi protocols and deployed wallets",
+      "actual ELOC draws",
+      "use of note proceeds to buy XRP"
+    ],
+    "unresolved": [
+      "cold-storage versus DeFi participation scope",
+      "exact ELOC gross-proceeds inconsistency",
+      "actual ELOC fee payment",
+      "current yield deployment and counterparties"
+    ]
+  },
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED",
+  "point_in_time_note": "This SEC filing was re-opened and re-reviewed at 2026-11-01T15:48:52Z. The earlier branch artifact captured_at_utc=15:45Z had been committed at 15:29:40Z and was therefore future-dated at commit time; this new recapture is the admissible timestamped source observation. The original artifact remains preserved."
+}

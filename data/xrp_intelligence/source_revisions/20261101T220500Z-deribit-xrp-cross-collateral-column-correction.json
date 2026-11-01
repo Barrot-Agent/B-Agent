@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "revision_id": "deribit-xrp-cross-collateral-column-correction-20261101T220500Z",
+  "captured_at_utc": "2026-11-01T22:05:00Z",
+  "sources": [
+    {
+      "id": "SRC-DERIBIT-CROSS-COLLATERAL-CORRECTED-20261101T220500Z",
+      "url": "https://support.deribit.com/hc/en-us/articles/25944777203869-Cross-collateral-specifications",
+      "publisher": "Deribit",
+      "type": "OFFICIAL_VENUE_COLLATERAL_SPECIFICATION",
+      "published_at": "2026-09-28T14:59:00Z",
+      "accessed_at_utc": "2026-11-01T22:03:00Z",
+      "table_headers": [
+        "Cross Collateral Currency",
+        "Offset Currency",
+        "Haircut (X:PM)",
+        "Haircut (X:SM)"
+      ],
+      "xrp_row": {
+        "cross_collateral_currency": true,
+        "offset_currency": false,
+        "x_pm_haircut": "-",
+        "x_sm_haircut": "15%"
+      },
+      "claims": [
+        "The XRP row has a check mark only in the Cross Collateral Currency column; the Offset Currency column contains a dash.",
+        "Deribit states any cross-collateral currency can be used as margin for any derivative position.",
+        "The X:PM haircut cell for XRP is a dash (no haircut stated); the X:SM haircut is 15%.",
+        "Deribit distinguishes full cross-collateral currencies from offset currencies; an offset currency is not part of the margin balance for other products."
+      ],
+      "correction": "This corrects the 2026-11-01T21:50:00Z research revision, which mistakenly interpreted XRP as both a cross-collateral and offset currency. XRP is a full cross-collateral currency only, not an offset currency."
+    }
+  ]
+}

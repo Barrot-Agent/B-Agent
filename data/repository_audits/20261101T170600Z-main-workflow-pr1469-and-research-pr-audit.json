@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "audit_id": "main-workflow-pr1469-and-research-pr-audit-20261101T170600Z",
+  "captured_at_utc": "2026-11-01T17:06:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "default_branch": "main",
+  "main_sha": "32682bc3797009421682ab51da59bf058b7d63d5",
+  "main_commit_time_utc": "2026-11-01T16:51:30Z",
+  "current_main_findings": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "contents:write; scheduled/workflow_run execution commits and pushes generated outputs; timestamp can refresh with zero observations."
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "contents:write and actions:write; scheduled tick invokes scheduler and commits queue updates; no verified workflow allowlist."
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "manual dispatch; contents:write and pull-requests:write; default dry_run=false and max_prs=0 unlimited; no distinct authorized-human approval check before gh pr merge."
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "risk": "approved label can be applied after repository-owner actor and PR/base/head checks; actor check is not independent protected-environment reviewer approval."
+    },
+    {
+      "path": ".github/workflows/barrot-merge.yml and barrot-merge-manual.yml",
+      "risk": "manual Hugging Face model-upload paths consume HF_TOKEN; active on main until quarantine proposal is merged."
+    },
+    {
+      "path": "web/latest_signal.json",
+      "risk": "stale 2026-10-29 descriptive artifact; confidence 0.0; source reports missing GitHub token and Groq 429; not a calibrated forecast."
+    }
+  ],
+  "main_delta_since_pr1465_base": {
+    "base_sha": "02d9f11404ba80823392ad215c733b49e4536128",
+    "current_main_sha": "32682bc3797009421682ab51da59bf058b7d63d5",
+    "commits_ahead": 3,
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "change_type": "generated_at-only sentiment artifact refresh",
+    "safety_transplant_policy": "Preserve current main sentiment artifact; do not copy source PR artifact."
+  },
+  "prs": [
+    {
+      "number": 1469,
+      "title": "Security: quarantine privileged mutation workflows on current main (fresh successor)",
+      "base_sha": "32682bc3797009421682ab51da59bf058b7d63d5",
+      "head_sha": "490d8c2eb08961dc85f788f87a8052bdc3bc2895",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "changed_files": 51,
+      "additions": 1148,
+      "deletions": 1225,
+      "ci_run": 41329718980,
+      "ci_status": "IN_PROGRESS_AT_CAPTURE",
+      "gate_run": 41329718987,
+      "gate_status": "PASSED_MERGING_DISABLED"
+    },
+    {
+      "number": 1465,
+      "base_sha": "02d9f11404ba80823392ad215c733b49e4536128",
+      "head_sha": "d88727652ecbbd74c17ac04f6962920c91befb68",
+      "state": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "ci_run": 41329046547,
+      "ci_status": "PASSED",
+      "gate_run": 41329046541,
+      "gate_status": "PASSED_MERGING_DISABLED"
+    },
+    {
+      "number": 1464,
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "head_sha": "dfae6e87d646dde07e8f832a9fef8e49f37099be",
+      "state": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "changed_files": 147,
+      "ci_run": 41328476806,
+      "ci_status": "PASSED_426_TESTS_8_SUBTESTS",
+      "gate_run": 41328476761,
+      "gate_status": "PASSED_MERGING_DISABLED"
+    },
+    {
+      "number": 1468,
+      "base_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+      "head_sha": "cea621064bb11815482ac23b04be18245cd6609d",
+      "state": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "ci_run": 41322849365,
+      "ci_status": "PASSED_389_TESTS_8_SUBTESTS",
+      "gate_run": 41322849205,
+      "gate_status": "PASSED_MERGING_DISABLED"
+    },
+    {
+      "number": 1467,
+      "base_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+      "head_sha": "827e96dce829a2f6093abd7faaefe7807f80e1e7",
+      "state": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "ci_run": 41328689809,
+      "ci_status": "PASSED_348_TESTS_8_SUBTESTS",
+      "audit_run": 41328689802,
+      "audit_status": "PASSED_FOUR_PYTHON_DEPENDENCY_SETS_NO_KNOWN_VULNERABILITIES",
+      "gate_run": 41328689800,
+      "gate_status": "PASSED_MERGING_DISABLED"
+    }
+  ],
+  "limitations": [
+    "Repository-wide CI and complete code/dependency/secret/container security review are incomplete.",
+    "Branch-protection API access was not available in the prior audit; required reviewer and status-check rules remain unverified.",
+    "PR #1469 CI was running at capture; its gate passed but exact-head CI was not yet verified."
+  ],
+  "safety": "Main unchanged. No merge, force-push, manual workflow dispatch, secret access, external deployment or trading action."
+}

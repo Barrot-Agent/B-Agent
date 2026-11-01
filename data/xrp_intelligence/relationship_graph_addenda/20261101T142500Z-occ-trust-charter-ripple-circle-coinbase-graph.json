@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "graph_id": "occ-trust-charter-ripple-circle-coinbase-regulatory-graph-20261101T1425Z",
+  "captured_at_utc": "2026-11-01T14:25:00Z",
+  "nodes": [
+    {
+      "id": "OCC",
+      "type": "federal_regulator"
+    },
+    {
+      "id": "Ripple_National_Trust_Bank",
+      "type": "national_trust_bank"
+    },
+    {
+      "id": "Circle_National_Trust",
+      "type": "national_trust_bank"
+    },
+    {
+      "id": "Coinbase_National_Trust",
+      "type": "proposed_national_trust_bank"
+    },
+    {
+      "id": "Standard_Custody_and_Trust_Company",
+      "type": "NYDFS_limited_purpose_trust_company"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "Coinbase",
+      "type": "exchange_custodian"
+    },
+    {
+      "id": "Circle",
+      "type": "stablecoin_issuer"
+    }
+  ],
+  "edges": [
+    {
+      "from": "OCC",
+      "to": "Ripple_National_Trust_Bank",
+      "relation": "final_charter_approval",
+      "status": "Ripple_company_reported_2026_10_26; OCC_final_order_not_located_in_this_run"
+    },
+    {
+      "from": "Ripple_National_Trust_Bank",
+      "to": "RLUSD",
+      "relation": "approved_plan_claims_reserve_management_and_collateral_trustee",
+      "status": "company_reported; bank_opening_not_confirmed"
+    },
+    {
+      "from": "Standard_Custody_and_Trust_Company",
+      "to": "RLUSD",
+      "relation": "continues_issuance",
+      "status": "confirmed_Ripple_company_disclosure"
+    },
+    {
+      "from": "OCC",
+      "to": "Circle_National_Trust",
+      "relation": "final_charter_approval_to_establish",
+      "status": "Circle_company_reported_2026_07_10"
+    },
+    {
+      "from": "Circle_National_Trust",
+      "to": "USDC",
+      "relation": "future_USDC_reserve_management_capability",
+      "status": "Circle_says_future_capability; initial_scope_is_fiduciary_custody"
+    },
+    {
+      "from": "OCC",
+      "to": "Coinbase_National_Trust",
+      "relation": "preliminary_conditional_approval_1370",
+      "status": "OCC_primary_record_2026_04_02"
+    },
+    {
+      "from": "Coinbase_National_Trust",
+      "to": "Coinbase",
+      "relation": "planned_federal_custody_and_market_infrastructure",
+      "status": "conditional_not_operational"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "distribution_and_future_Global_Exchange_collateral_support",
+      "status": "distribution_live; collateral_future_at_announcement"
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC",
+      "relation": "distribution_and_revenue_share",
+      "status": "confirmed_SEC_filings"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H_REGULATORY_ASYMMETRY",
+      "claim": "Ripple and Circle have announced final OCC trust-bank approvals while Coinbase has only a conditional approval, potentially giving Ripple/Circle an earlier federal custody path.",
+      "status": "partly_supported; Ripple final order and all bank opening dates remain unresolved"
+    },
+    {
+      "id": "H_RESERVE_CUSTODY_COMPETITION",
+      "claim": "Ripple's claimed reserve-management/collateral-trustee scope could differ materially from Circle's initial custody-only scope.",
+      "status": "company_reported_scope_difference; final orders required for legal comparison"
+    },
+    {
+      "id": "H_GENIUS_ACT_STANDARDIZATION",
+      "claim": "The OCC's January 18 2027 GENIUS Act rule will increase reserve, redemption, reporting, custody and capital requirements for issuers within its jurisdiction.",
+      "status": "confirmed_final_rule; effective_in_future"
+    }
+  ],
+  "red_team_objections": [
+    "A charter approval does not prove a bank is open or operational.",
+    "Circle's final approval does not mean its national trust bank manages USDC reserves at launch.",
+    "Ripple's final approval is a company statement until the OCC final order is independently located.",
+    "Coinbase's conditional approval is not final.",
+    "The GENIUS Act final rule is not effective until January 18 2027."
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-CAMILLA-KAMILAH-YOUTUBE-CANDIDATES-20261101T155209Z",
+  "captured_at_utc": "2026-11-01T15:52:09Z",
+  "identity_resolution": {
+    "user_requested_name": "Camilla Stephenson",
+    "channel_candidate": "Kamilah Stevenson / @drkamilahstevenson",
+    "spoken_name_evidence": "Two transcript summaries for QslbjGQD0MU and ci0FH73lbCs render the speaker introducing herself as 'Camila Stevenson'.",
+    "cross_link_status": "STRONGLY_SUPPORTED_PERSON_MATCH; CHANNEL_ID_CROSS_LINK_PENDING",
+    "caution": "Do not silently normalize Camilla/Camila/Kamilah or Stephenson/Stevenson. Preserve exact source spellings."
+  },
+  "video_candidates": [
+    {
+      "id": "iwhpNT73zpk",
+      "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+      "published": "2026-03-06",
+      "source_class": "YOUTUBE_PRIMARY_PAGE",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "theme": [
+        "oil shock",
+        "yen carry trade",
+        "global liquidity",
+        "XRP settlement narrative"
+      ],
+      "evidence": "YouTube result identifies Kamilah Stevenson; description contains affiliate and financial-disclaimer disclosures."
+    },
+    {
+      "id": "IUkOKRkbkNo",
+      "title": "Why I Moved My XRP Off Exchanges",
+      "published": "2026-02-01",
+      "source_class": "YOUTUBE_PRIMARY_PAGE",
+      "url": "https://www.youtube.com/watch?v=IUkOKRkbkNo",
+      "theme": [
+        "self custody",
+        "brokerage execution",
+        "slippage",
+        "OTC"
+      ],
+      "evidence": "YouTube result identifies Kamilah Stevenson; description promotes Caleb & Brown, iTrust Capital and Tangem and includes affiliate links."
+    },
+    {
+      "id": "rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "published": "2026-03-19",
+      "source_class": "GLASP_VIDEO_SUMMARY_ONLY",
+      "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "theme": [
+        "portfolio sizing",
+        "XRP holdings"
+      ],
+      "evidence": "Glasp summary identifies Kamilah Stevenson; direct YouTube page/creator link not independently fetched."
+    },
+    {
+      "id": "QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "published": "2025-12-13",
+      "alternate_aggregator_date": "2025-12-14",
+      "source_class": "YOUTUBE_PRIMARY_PAGE_PLUS_TRANSCRIPT_AGGREGATORS",
+      "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "theme": [
+        "Ripple banking charter narrative",
+        "institutional rails",
+        "XRP as liquidity/collateral"
+      ],
+      "evidence": "YouTube result identifies Kamilah Stevenson; Glasp transcript begins with self-introduction 'It's Camila Stevenson'. Description says Ripple is pursuing a banking license; title's 'became a bank' wording is stronger than the description."
+    },
+    {
+      "id": "ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "published": "2026-01-13",
+      "source_class": "GLASP_VIDEO_SUMMARY_ONLY",
+      "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "theme": [
+        "ETF flows",
+        "price impact",
+        "market structure"
+      ],
+      "evidence": "Glasp summary identifies Kamilah Stevenson; transcript begins 'Hey, it's Camila Stevenson'; direct YouTube page not independently fetched."
+    },
+    {
+      "id": "cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "published": "2026-01-14",
+      "alternate_aggregator_date": "2026-01-15",
+      "source_class": "YOUTUBE_PRIMARY_PAGE_PLUS_TRANSCRIPT_AGGREGATORS",
+      "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "theme": [
+        "portfolio risk",
+        "position sizing",
+        "overtrading",
+        "XRP wealth strategy"
+      ],
+      "evidence": "YouTube result identifies Kamilah Stevenson; Glasp transcript begins 'Hey, it's Camila Stevenson'; YouTube and Glasp publication dates differ by one day."
+    },
+    {
+      "id": "8xiy8w2YlfY",
+      "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+      "published": "2026-07-30",
+      "source_class": "YOUTUBE_PRIMARY_PAGE",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "theme": [
+        "XRPL amendments",
+        "banking use cases",
+        "protocol upgrades"
+      ],
+      "evidence": "YouTube result identifies Kamilah Stevenson; description includes affiliate disclosure. Technical amendment claims require comparison with official XRPL amendment status."
+    }
+  ],
+  "source_limitations": [
+    "YouTube channel videos tab and RSS feed could not be retrieved in this execution.",
+    "Some candidate entries are Glasp summaries rather than direct YouTube page captures.",
+    "Publication dates differ by one day between YouTube and Glasp for QslbjGQD0MU and cxeX_eu_2H0.",
+    "No exhaustive upload inventory is claimed.",
+    "View/subscriber counts are omitted from the model because aggregators disagree and counts change."
+  ],
+  "claim_quality_notes": [
+    "The 'Ripple Just Became a BANK' title should be checked against actual OCC legal status; the video description itself says Ripple is pursuing a banking license.",
+    "The yen-carry/oil-shock/XRP connection is a creator causal hypothesis, not demonstrated market causality.",
+    "The custody video includes affiliate promotion; treat recommendations as potentially incentivized.",
+    "ETF-flow commentary can generate testable hypotheses, but the video itself is not ETF-flow data."
+  ]
+}

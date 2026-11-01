@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "revision_id": "coinbase-xrp-collateral-q3-disconfirmation-20261101T215500Z",
+  "captured_at_utc": "2026-11-01T21:55:00Z",
+  "sources": [
+    {
+      "id": "SRC-COINBASE-10Q-Q3-2026-20261101T215500Z",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase Global, Inc. / U.S. Securities and Exchange Commission",
+      "type": "OFFICIAL_FORM_10Q",
+      "filed_at": "2026-10-29",
+      "period_end": "2026-09-30",
+      "accessed_at_utc": "2026-11-01T21:52:00Z",
+      "claims": [
+        "At September 30, 2026 Coinbase reported $1.2995 billion of crypto assets held as collateral, compared with $822.827 million at December 31, 2025. This is a broad balance-sheet category, not an XRP-specific balance.",
+        "The recognized derivatives-collateral table lists 3,569 BTC with $322.341 million fair value and 1,390 ETH with $3.425 million fair value, for $325.766 million total. It has no XRP line.",
+        "The derivatives arrangements are described as crypto-asset derivative contracts with customers, primarily to provide liquidity for global derivatives trading.",
+        "Coinbase says outstanding derivative collateral requirements were at least 100 percent of derivative notional value at September 30, 2026.",
+        "The same filing reports $3.284562 billion of customer collateral in lending arrangements not recognized as collateral or an obligation to return it, comprising $480.450 million fiat/payment stablecoins and $2.804112 billion crypto assets; no asset-level XRP breakdown is provided.",
+        "Assets pledged against Coinbase short-term borrowings at September 30, 2026 included $58.678 million payment stablecoins and $375.485 million crypto assets, $434.163 million total; this is a corporate pledge category, not evidence of XRP customer derivatives collateral.",
+        "Coinbase states it does not use customer assets as collateral for loans, margin, rehypothecation or similar activities without customer consent."
+      ],
+      "limitations": [
+        "The reporting period ends September 30, one day before Coinbase says the International Exchange/Deribit integration completed on October 1; the absence of XRP from the Q3 derivatives-collateral table does not disprove post-integration Q4 use.",
+        "The broad $1.2995 billion crypto-assets-held-as-collateral balance includes multiple arrangements and must not be attributed to XRP or to Deribit.",
+        "The unrecognized $2.804112 billion crypto lending collateral has no public asset-by-asset breakdown in this table.",
+        "The filing does not identify whether any XRP is included in the separate lending-collateral 'other crypto assets' category."
+      ]
+    },
+    {
+      "id": "SRC-DERIBIT-CUSTODY-POLICY-2026-10-14-20261101T215500Z",
+      "url": "https://support.deribit.com/hc/en-us/articles/25944547383453-Custody-Policy",
+      "publisher": "Deribit FZE",
+      "type": "OFFICIAL_CUSTODY_POLICY",
+      "published_at": "2026-10-14",
+      "accessed_at_utc": "2026-11-01T21:52:00Z",
+      "claims": [
+        "Deribit identifies Coinbase Prime Custody / Coinbase Custody Trust Company as one of its cold-wallet custody providers.",
+        "Deribit lists Coinbase self-custody through Coinbase Institutional UK Limited as a warm-wallet provider.",
+        "The same warm-wallet list describes Coinbase Bermuda Limited (CBBM) as 'to be added after September 2026' as part of Deribit's integration into the broader Coinbase Group.",
+        "Deribit says the majority of client assets are stored in cold wallets with offline signing; hot-wallet balances are kept small for withdrawals.",
+        "Deribit states client virtual assets are not proprietary assets, are not used for Deribit's own trading, and remain beneficially owned by clients, subject to limited agreed security interests under applicable law.",
+        "Deribit states it has no clearing house or clearing members connected to it and instead provides quasi-clearing through an insurance fund and settlement-agent role."
+      ],
+      "limitations": [
+        "The CBBM 'to be added after September' wording is a plan/status statement in the October 14 policy, not proof that CBBM was or was not added later.",
+        "The policy is general and product-specific margin rules may differ; the separate XRP-USDC linear-perpetual and cross-collateral specifications govern those products.",
+        "Custody-provider inclusion does not establish actual XRP balances held at Coinbase Custody or CBBM."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "audit_id": "main-pr1474-pr1475-pr1464-exact-head-verification-20261101T201336Z",
+  "captured_at_utc": "2026-11-01T20:13:36Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+    "unchanged": true,
+    "protected": true,
+    "branch_protection_details": "403; required reviews and status contexts unknown"
+  },
+  "prs": [
+    {
+      "number": 1474,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1474",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "head_sha": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "state": "open_draft_unmerged",
+      "ci_run": 41345160046,
+      "tests": "390 passed + 8 subtests",
+      "gate_run": 41345160075,
+      "gate": "passed; automatic merge disabled",
+      "additional_failures": [
+        {
+          "run": 41345140525,
+          "workflow": "task-allocator",
+          "event": "push",
+          "conclusion": "failure",
+          "jobs": 0
+        },
+        {
+          "run": 41345139779,
+          "workflow": "force-deploy-space",
+          "event": "push",
+          "conclusion": "failure",
+          "jobs": 0
+        }
+      ],
+      "failure_root_cause": "NOT_ESTABLISHED; zero jobs and no job-level logs."
+    },
+    {
+      "number": 1475,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1475",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "head_sha": "8268d158449f3e96b585661ee670e515752146f6",
+      "state": "open_draft_unmerged",
+      "ci_run": 41345671223,
+      "tests": "405 passed + 8 subtests",
+      "gate_run": 41345671296,
+      "gate": "passed; automatic merge disabled",
+      "latest_fix": "Revalidate outcome price-source hash against current registered hash; tests reject persisted hash tampering and registry drift."
+    },
+    {
+      "number": 1464,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "head_sha": "1f5d1cbd23e22a735449ab5ed4be344f4c5e1131",
+      "state": "open_draft_unmerged",
+      "ci_run": 41345564428,
+      "tests": "431 passed + 8 subtests",
+      "gate_run": 41345564457,
+      "gate": "passed; automatic merge disabled"
+    }
+  ],
+  "active_main_risks": [
+    "Scheduler Tick still has contents:write/actions:write and dispatches workflow filenames from a queue without a strict allowlist.",
+    "Merge Queue remains manually dispatchable with default dry_run=false and max_prs=0 (unlimited), without explicit designated-human approval.",
+    "Cross Analysis remains a scheduled writer and latest output changed only generated_at while XRP/BTC observations were zero and scores null.",
+    "Autonomous Resolver retains issues/PR write permissions even though the latest run skipped duplicates and did not assign."
+  ],
+  "unresolved": [
+    "Two zero-job push-event failures on PR #1474 remain unexplained; do not guess the root cause.",
+    "Full dependency/security inventory remains incomplete beyond three Python manifests.",
+    "The main branch-protection detail endpoint returned 403.",
+    "Outcome source hash is now revalidated, but the ledger still does not semantically verify price_at_horizon_usd against bytes of the immutable source snapshot."
+  ],
+  "safety": "No main modifications, merges, force-pushes, manual workflow dispatches, secrets, external deployments, paper-position changes or real-money trades."
+}

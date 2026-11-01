@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrp-market-oi-coverage-etf-exchange-wallets-and-outcome-provenance-20261101T201336Z",
+  "captured_at_utc": "2026-11-01T20:13:36Z",
+  "findings": [
+    {
+      "id": "M1",
+      "classification": "PROVIDER_SPECIFIC_DERIVATIVES_OBSERVATION",
+      "statement": "TradRadar reported $1.90B seven-exchange XRP OI at 15:25 UTC; Kodexius reported $757.33M across seven contracts at 17:32 UTC; Seandra reported $340.6M for Binance USDT perpetual only at 16:05 UTC. These universes are not commensurate."
+    },
+    {
+      "id": "M2",
+      "classification": "DATA_QUALITY_LIMITATION",
+      "statement": "The 2.5x difference between the multi-contract providers and further difference against Binance-only OI cannot be interpreted as a market-wide OI move. Venue, contract and instrument coverage are not reconciled."
+    },
+    {
+      "id": "M3",
+      "classification": "PARTIAL_ETF_FLOW_OBSERVATION",
+      "statement": "XRP Insights reports +3.39M XRP net flow for Oct 23–30, holdings of 1.20B XRP and $1.51B AUM; GXRP is excluded from flow calculation during a historical scrape-gap correction."
+    },
+    {
+      "id": "M4",
+      "classification": "PUBLIC_WALLET_BALANCE_OBSERVATION",
+      "statement": "XRP Insights reports 22.45B XRP in 701 publicly attributed exchange wallets at 08:00 UTC Nov 1; same-wallet changes were -161.1M over 7 days and -12.7M over 30 days. The measure includes cold storage and is not tradable float."
+    },
+    {
+      "id": "P1",
+      "classification": "PREDICTION_LEDGER_INTEGRITY_FINDING",
+      "statement": "Code review of PR #1475 found that metrics revalidated forecast source hashes against the current registry but only checked that an outcome price_source_content_hash was a valid SHA-256 digest, not that it matched the registered hash for price_source_id."
+    },
+    {
+      "id": "P2",
+      "classification": "EXECUTED_AND_VERIFIED_CODE_FIX",
+      "statement": "PR #1475 now revalidates every outcome price_source_id and price_source_content_hash against the current HASH_VERIFIED source registry before authorizing metrics; tests cover a tampered persisted hash and registry-hash drift."
+    }
+  ],
+  "model_policy": {
+    "multi_provider_open_interest": "DESCRIPTIVE_ONLY; QUARANTINED_UNTIL_COVERAGE_NORMALIZATION",
+    "etf_flows": "DESCRIPTIVE_ONLY; PARTIAL_GXRP_FLOW_COVERAGE",
+    "exchange_wallet_balances": "DESCRIPTIVE_ONLY; NOT_TRADABLE_FLOAT",
+    "outcome_source_hash": "REQUIRE_MATCH_TO_CURRENT_REGISTERED_HASH_BEFORE_METRICS",
+    "price_value_semantic_binding": "NOT_YET_VERIFIED_BY_LEDGER; NEXT_INTEGRITY_GAP",
+    "forecast_status": "NOT_ISSUED"
+  }
+}

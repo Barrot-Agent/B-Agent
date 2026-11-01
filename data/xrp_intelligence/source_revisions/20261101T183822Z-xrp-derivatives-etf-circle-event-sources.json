@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "revision_id": "xrp-derivatives-etf-circle-event-20261101T183822Z",
+  "captured_at_utc": "2026-11-01T18:38:22Z",
+  "sources": [
+    {
+      "id": "tradradar-xrp-perpetuals-20261101T1740Z",
+      "url": "https://tradradar.io/markets/xrp",
+      "publisher": "TradRadar",
+      "published_or_observed_at_utc": "2026-11-01T17:40:00Z",
+      "accessed_at_utc": "2026-11-01T18:38:22Z",
+      "classification": "SECONDARY_EXCHANGE_AGGREGATOR",
+      "claims": [
+        "XRP mark price displayed at $1.2523.",
+        "Open interest displayed at $1.90B across seven exchanges: Binance, Bybit, MEXC, Gate, Bitget, Hyperliquid and OKX.",
+        "24-hour open-interest change displayed at +1.56%.",
+        "OI-weighted funding displayed at +0.0096% per eight hours.",
+        "Long/short account ratio displayed at 3.53, or 77.9% long, across five exchanges.",
+        "At-least liquidation total displayed at $554.95K across five exchanges."
+      ],
+      "methodology": [
+        "The page describes its data as self-collected from the seven named exchanges' XRP perpetual futures.",
+        "Liquidation figures are a lower bound because exchanges publish only part of real-time liquidations."
+      ],
+      "limitations": [
+        "Perpetual-futures universe is not equivalent to an all-instrument futures universe.",
+        "The displayed long/short ratio is account share, not notional exposure.",
+        "The provider does not expose raw contract-level payloads in the captured page.",
+        "Not a primary exchange statement and not independently reconciled in this run."
+      ]
+    },
+    {
+      "id": "trdesk-xrp-open-interest-20261101",
+      "url": "https://trdesk.com/open-interest/xrp",
+      "publisher": "TRdesk",
+      "source_timestamp_status": "not_displayed_in_static_capture",
+      "accessed_at_utc": "2026-11-01T18:38:22Z",
+      "classification": "SECONDARY_MULTI_EXCHANGE_AGGREGATOR",
+      "claims": [
+        "XRP open interest displayed at $2.67B, equivalent to approximately 2.1395B XRP.",
+        "The page reports aggregation across 26 exchanges and identifies CME as the largest venue at approximately 20.4%.",
+        "The methodology page describes the instrument universe as perpetual swaps and quarterly futures.",
+        "The page lists CME, Binance USD-M, MEXC, Bitget, Hyperliquid, Bybit, Gate, OKX and other venues."
+      ],
+      "methodology": [
+        "The provider describes open interest as outstanding perpetual and quarterly futures contracts.",
+        "The page counts each contract's long/short pair once in aggregate open interest."
+      ],
+      "limitations": [
+        "The exact provider observation timestamp was not displayed in the static capture.",
+        "The venue and instrument universe differs from TradRadar's seven-exchange perpetual-only summary.",
+        "Common-venue values differ materially between aggregators; instrument mapping, contract multipliers, quote currency and timing remain unreconciled.",
+        "No raw exchange API reconciliation was completed."
+      ]
+    },
+    {
+      "id": "alpha-finance-xrp-liquidation-20261101T1822Z",
+      "url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "publisher": "Alpha Finance",
+      "observed_at_utc": "2026-11-01T18:22:00Z",
+      "accessed_at_utc": "2026-11-01T18:38:22Z",
+      "classification": "SECONDARY_DERIVATIVES_ANALYTICS_AND_MODELLED_HEATMAP",
+      "claims": [
+        "XRP spot displayed at $1.2485 and open interest at $2.82B.",
+        "The page displayed 24-hour volume of $826.8M.",
+        "The heatmap displayed approximately $38.3M of modelled short-liquidation levels above spot and $38.4M of modelled long-liquidation levels below spot.",
+        "The largest displayed modelled clusters were approximately $3.2M at $1.2700 above spot and $3.3M at $1.2415 below spot."
+      ],
+      "methodology": [
+        "The page explicitly says liquidation clusters are modelled from open interest and standard leverage tiers.",
+        "The page says real liquidation prices depend on position size, margin mode and maintenance margin."
+      ],
+      "limitations": [
+        "The all-exchange instrument universe and contract mapping were not exposed in the captured page.",
+        "Modelled liquidation clusters are not verified resting orders or guaranteed liquidation triggers.",
+        "Open interest cannot be compared directly with another provider without matched venue, instrument, unit and timestamp coverage."
+      ]
+    },
+    {
+      "id": "xrp-insights-etf-tracker-20261030",
+      "url": "https://xrp-insights.com/",
+      "publisher": "XRP Insights",
+      "source_observation_date": "2026-10-30 close; page retrieved 2026-11-01",
+      "accessed_at_utc": "2026-11-01T18:38:22Z",
+      "classification": "SECONDARY_TRACKER_USING_ISSUER_REPORTED_HOLDINGS",
+      "claims": [
+        "The tracker covers six US spot XRP ETFs plus the Bitwise 10 Crypto Index ETF (BITW).",
+        "Combined ETF/index holdings were approximately 1.1966B XRP with approximately $1.51B net assets.",
+        "Reported net flow for October 26-30 was +3.39M XRP, approximately +$4.03M.",
+        "October 30 daily flow was approximately -49,932 XRP.",
+        "The tracker calculates daily flow from changes in issuer-reported XRP holdings."
+      ],
+      "methodology": [
+        "The tracker states that daily flow is the change in each fund's issuer-reported XRP holdings versus the previous trading day.",
+        "The tracker includes BITW in the combined total."
+      ],
+      "limitations": [
+        "GXRP flow rows are excluded where the tracker reports a scrape gap, while GXRP holdings remain included.",
+        "Some historical rows are reconstructed and retain status flags.",
+        "BITW index rebalancing is not equivalent to spot ETF creations/redemptions.",
+        "Holdings deltas are not automatically equal to net external cash invested.",
+        "The tracker reports XRP's week-over-week price change at approximately -3.8% for the week ending October 30."
+      ]
+    },
+    {
+      "id": "cryptoetf-today-xrp-etf-partial-20261030",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "publisher": "CryptoETF.today",
+      "source_observation_date": "2026-10-30; page published 2026-10-31",
+      "accessed_at_utc": "2026-11-01T18:38:22Z",
+      "classification": "SECONDARY_PARTIAL_ETF_FLOW_TRACKER",
+      "claims": [
+        "The October 30 update was explicitly marked partial, with three of five tracked funds reported.",
+        "The partial day total was approximately +$0.2M.",
+        "The page identified XRPZ and GXRP as not yet reported at the time of its partial calculation."
+      ],
+      "methodology": [
+        "The page states that the daily total is recomputed as issuer reports arrive."
+      ],
+      "limitations": [
+        "Three-of-five coverage is not comparable to XRP Insights' six-spot-plus-BITW universe.",
+        "A partial observation must not be interpreted as a final daily flow.",
+        "The page's dollar result is not a substitute for XRP-unit holdings changes."
+      ]
+    },
+    {
+      "id": "circle-q3-2026-results-event",
+      "url": "https://investor.circle.com/events-and-presentations/event-details/2026/Circle-Reports-Third-Quarter-2026-Results/default.aspx",
+      "publisher": "Circle Internet Group Investor Relations",
+      "published_at": "2026-10-07",
+      "accessed_at_utc": "2026-11-01T18:38:22Z",
+      "classification": "PRIMARY_COMPANY_EVENT_NOTICE",
+      "claims": [
+        "Circle scheduled its Q3 2026 results webcast for November 4, 2026 at 8:00 AM Eastern Time.",
+        "Circle's investor Q&A submission window opened October 28, 2026 at 9:00 AM ET and closes November 3, 2026 at 9:00 AM ET."
+      ],
+      "methodology": [],
+      "limitations": [
+        "The event notice is not the results release; no Q3 financial figures are inferred before publication.",
+        "Future event outcomes are not known at this snapshot cutoff."
+      ]
+    },
+    {
+      "id": "sbic-ai-training-2025-06-12",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "published_at": "2025-06-12",
+      "accessed_at_utc": "2026-11-01T18:38:22Z",
+      "classification": "PRIMARY_ENTITY_AND_EDUCATIONAL_ACTIVITY",
+      "claims": [
+        "The Japanese SBIC page identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "The June 12-13, 2025 generative-AI and machine-learning training included ChatGPT and Copilot topics.",
+        "The training was restricted to investee companies; general companies were not eligible."
+      ],
+      "methodology": [],
+      "limitations": [
+        "Educational training is not evidence of an OpenAI commercial partnership, model integration, XRP relationship or SBI Holdings ownership/control relationship."
+      ]
+    },
+    {
+      "id": "permission-coin-ask-cmc-20261101",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "publisher": "CoinMarketCap",
+      "accessed_at_utc": "2026-11-01T18:38:22Z",
+      "classification": "SECONDARY_TOKEN_LISTING",
+      "claims": [
+        "CoinMarketCap lists ticker ASK as Permission Coin.",
+        "The listing identifies Permission's website and whitepaper and tags Base and Polygon ecosystems.",
+        "The listing displays a Polygon explorer contract; the reviewed listing does not identify an XRPL contract."
+      ],
+      "methodology": [],
+      "limitations": [
+        "Ticker collision remains possible; ASK Coin in the user's original phrase is not conclusively identified solely by a ticker match.",
+        "A listing or absence of an XRPL contract on one page is not a complete proof of all integrations.",
+        "No direct XRP or XRPL integration was established in the reviewed official Permission documentation."
+      ]
+    },
+    {
+      "id": "permission-ai-whitepaper",
+      "url": "https://docs.permission.ai/resources/whitepaper",
+      "publisher": "Permission",
+      "accessed_at_utc": "2026-11-01T18:38:22Z",
+      "classification": "PRIMARY_PROJECT_DOCUMENTATION",
+      "claims": [
+        "Permission describes ASK as a coordination mechanism for permissioned participation and agent-to-agent value exchange."
+      ],
+      "methodology": [],
+      "limitations": [
+        "The reviewed whitepaper page does not establish an XRP or XRPL integration."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "source_bundle_id": "rlusd-xrpl-supply-and-payment-quality-20261101T210615Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "research_scope": "RLUSD supply by chain, XRPL payment quality, XRP derivatives provider coverage",
+  "sources": [
+    {
+      "source_id": "xrp-insights-radar-rlusd-chain-supply-20261101",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "source_type": "on_chain_aggregator",
+      "published_at_utc": null,
+      "observed_at_utc": "2026-11-01T20:37:00Z",
+      "claims": {
+        "xrpl_rlusd_usd": 707400000,
+        "ethereum_rlusd_usd": 1710000000,
+        "two_chain_total_usd": 2420000000,
+        "xrpl_share_pct": 29,
+        "ethereum_share_pct": 71
+      },
+      "method": "XRPL issuer gateway_balances plus Ethereum contract totalSupply; page says small L2 and XRPL EVM supplies excluded; cross-checks rl-tracker.com to under $1M.",
+      "limitations": [
+        "Third-party dashboard, not issuer attestation.",
+        "The page gives a 20:37 UTC price timestamp; RLUSD supply is dated November 1 without a separate exact ledger timestamp."
+      ]
+    },
+    {
+      "source_id": "stables-cool-rlusd-supply-20261101",
+      "publisher": "stables.cool",
+      "url": "https://stables.cool/RLUSD/chains/xrp-ledger",
+      "source_type": "on_chain_aggregator",
+      "published_at_utc": null,
+      "observed_at_utc": "2026-11-01",
+      "claims": {
+        "xrpl_rlusd_usd": 707400000,
+        "change_30d_pct": -30.21,
+        "peak_supply_usd": 1250000000,
+        "peak_date": "2026-10-07",
+        "change_from_peak_pct": -43.26
+      },
+      "method": "Third-party dashboard says figures use publicly accessible on-chain data.",
+      "limitations": [
+        "Exact intraday timestamp and raw ledger index not shown.",
+        "Provider is an independent view of the same underlying ledger, not an economically independent source."
+      ]
+    },
+    {
+      "source_id": "xrplto-rlusd-supply-20261101",
+      "publisher": "XRPL.to",
+      "url": "https://xrpl.to/insights/rlusd-supply-tracker",
+      "source_type": "on_chain_api_provider",
+      "published_at_utc": null,
+      "observed_at_utc": null,
+      "claims": {
+        "xrpl_rlusd_units": 711828559,
+        "holders": 67904,
+        "trust_lines": 101680,
+        "top_10_holder_share_pct": 83,
+        "reported_24h_volume_usd": 851034,
+        "ledger_exchange_price_usd": 1.0011
+      },
+      "method": "Provider says supply is refreshed hourly; page directs automated clients to its documented API rather than UI scraping.",
+      "limitations": [
+        "Page did not expose a precise UTC observation timestamp.",
+        "Value differs from XRP Insights/stables.cool by about 4.4M units; do not average."
+      ]
+    },
+    {
+      "source_id": "stables-cool-xrpl-usd-stablecoins-20261101",
+      "publisher": "stables.cool",
+      "url": "https://stables.cool/USD/chains/xrp-ledger",
+      "source_type": "on_chain_aggregator",
+      "published_at_utc": null,
+      "observed_at_label": "2026-11-01 21:05; timezone not stated",
+      "claims": {
+        "usd_stablecoins_total_usd": 716800000,
+        "rlusd_usd": 711800000,
+        "usdc_usd": 5000000
+      },
+      "limitations": [
+        "USD stablecoins only; not a complete all-currency stablecoin total.",
+        "Timezone not stated."
+      ]
+    },
+    {
+      "source_id": "bitquery-rlusd-xrpl-dust-bots-20261019",
+      "publisher": "Bitquery Research",
+      "url": "https://www.bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "source_type": "on_chain_transaction_analysis",
+      "published_at": "2026-10-19",
+      "observed_at_utc": "2026-10-19T13:00:00Z",
+      "claims": {
+        "window_start": "2026-09-19",
+        "window_end": "2026-10-18",
+        "rlusd_payments": 7821066,
+        "payments_under_1_rlusd": 7806466,
+        "payments_to_three_collectors": 7789341,
+        "dust_rlusd_total": 7722,
+        "cluster_wallets": 110,
+        "payments_at_least_1_rlusd": 14600,
+        "distinct_senders": 1826,
+        "distinct_receivers": 1536,
+        "real_payment_value_usd": 7330000000,
+        "top_10_sender_share_pct": 82,
+        "issuer_mint_usd": 728000000,
+        "issuer_redemption_usd": 744000000,
+        "round_trip_pair_gross_double_count_usd": 848000000
+      },
+      "method": "Bitquery says it queried XRPL Payment records, checked genuine issuer currency, and used its exchange address labels; cluster attribution is behavioral inference from shared funding and collectors.",
+      "limitations": [
+        "Wallet labels and cluster attribution may be incomplete or revised.",
+        "The authors explicitly do not identify the cluster operator or attribute it to Binance corporate.",
+        "Gross transfer volume includes issuer operations and a round-trip pair; it is not net capital or unique economic settlement."
+      ]
+    },
+    {
+      "source_id": "blockworks-xrp-q3-2026",
+      "publisher": "Blockworks",
+      "url": "https://blockworks.com/quarterly-reports",
+      "pdf_url": "https://blockworks.com/api/investor-report/state-of-xrp-q3-2026/pdf",
+      "source_type": "quarterly_research_report",
+      "published_at": "2026-10-30",
+      "claims": {
+        "xrpl_stablecoin_supply_usd": 1030000000,
+        "rlusd_xrpl_usd": 1010000000,
+        "rlusd_share_pct": 98.1,
+        "rlusd_qoq_growth_pct": 49.7,
+        "stablecoin_transfer_volume_usd": 14090000000,
+        "stablecoin_transfer_growth_pct": 39.5,
+        "global_xrp_etp_net_inflows_usd": 355300000,
+        "global_xrp_etp_aum_usd": 3320000000,
+        "xrpl_payment_volume_xrp": 42820000000,
+        "payment_transaction_change_pct": -33.6,
+        "total_transaction_change_pct": -8.6,
+        "native_dex_volume_usd": 614800000,
+        "native_dex_volume_change_pct": 20.2,
+        "distributed_rwa_usd": 498700000,
+        "represented_rwa_usd": 4750000000
+      },
+      "limitations": [
+        "Blockworks quarterly-report index confirms publication and summary; PDF retrieval exceeded the web reader's 10 MB limit and was not fully parsed in this run.",
+        "Figures are quarter-end or quarterly aggregates and are not directly comparable to every live provider snapshot."
+      ]
+    },
+    {
+      "source_id": "tradradar-xrp-derivatives-20261101",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "source_type": "derivatives_market_aggregator",
+      "observed_at_utc": "2026-11-01T18:30:00Z",
+      "claims": {
+        "open_interest_usd": 1900000000,
+        "exchange_count": 7,
+        "oi_change_24h_pct": 1.22,
+        "oi_weighted_funding_8h_pct": 0.0096,
+        "liquidations_24h_min_usd": 579270,
+        "long_share_pct": 78
+      },
+      "limitations": [
+        "Provider-specific exchange and contract coverage; not a canonical market-wide total."
+      ]
+    },
+    {
+      "source_id": "liqwall-xrp-derivatives-20261101",
+      "publisher": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "source_type": "derivatives_market_aggregator",
+      "observed_at_utc": "2026-11-01T18:12:00Z",
+      "claims": {
+        "open_interest_usd": 1340000000,
+        "coverage": "all exchanges per provider label",
+        "oi_change_24h_pct": 1.4,
+        "average_funding_8h_pct": 0.0094,
+        "liquidations_24h_usd": 559000,
+        "binance_long_accounts_pct": 71.4
+      },
+      "limitations": [
+        "Different timestamp and exchange/contract coverage from TradRadar; do not average."
+      ]
+    },
+    {
+      "source_id": "webeconomia-xrp-derivatives-20261101",
+      "publisher": "Webeconomia",
+      "url": "https://www.webeconomia.it/mercati/crypto/derivati/xrp/",
+      "source_type": "derivatives_market_aggregator",
+      "observed_at_label": "2026-11-01 20:28; timezone not stated",
+      "claims": {
+        "open_interest_usd": 1600000000,
+        "exchange_count": 7,
+        "average_funding_8h_pct": 0.0091,
+        "binance_long_accounts_pct": 71,
+        "binance_short_accounts_pct": 29
+      },
+      "limitations": [
+        "Timezone and exact exchange contract universe not stated."
+      ]
+    },
+    {
+      "source_id": "cross-river-rlusd-core-banking-20261015",
+      "publisher": "Cross River Bank",
+      "url": "https://www.crossriver.com/news",
+      "source_type": "official_company_announcement",
+      "published_at": "2026-10-15",
+      "claims": {
+        "rlusd_core_banking_integration": "announced; XRPL settlement"
+      },
+      "limitations": [
+        "The announcement's timing is not evidence that it caused the bot cluster's shutdown."
+      ]
+    }
+  ],
+  "source_independence": "XRP Insights, stables.cool and XRPL.to independently read or index the same underlying XRPL/Ethereum state; they are implementation cross-checks, not independent economic observations. Bitquery supplies separate transaction-level indexing and analysis. Blockworks is quarterly research. TradRadar, Liqwall and Webeconomia are separate market aggregators with different coverage and timestamps."
+}

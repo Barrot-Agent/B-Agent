@@ -1,0 +1,368 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-EVERNORTH-BITGO-SBI-JPYSC-OUSD-ASK-CAMILLA-COINGLASS-20261101T1530Z",
+  "captured_at_utc": "2026-11-01T15:30:00Z",
+  "sources": [
+    {
+      "id": "evernorth-424b3-20261030",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "publisher": "Evernorth Holdings Inc. / SEC EDGAR",
+      "filed_date": "2026-10-30",
+      "classification": "PRIMARY_SEC_FILING",
+      "claims": [
+        "At least 473,276,430 XRP reported at closing.",
+        "84,365,876.3625 XRP purchased using $214.1M cash at an average $2.53657058 per XRP.",
+        "The filing describes in-kind XRP contributions including Ripple's 126,791,458 XRP contribution to Pathfinder and other investor/sponsor tranches.",
+        "All XRP was initially held in BitGo Trust custody; as of the prospectus date 100% was in cold storage, using 2-of-3 multisig and disabled master keys.",
+        "BitGo's approximately $250M aggregate cold-storage insurance is shared across clients, not dedicated to Evernorth; the filing estimates it represented approximately 36.9% of the value of Evernorth's XRP at October 9.",
+        "Evernorth states BitGo may not pledge, lend or otherwise use its XRP unless expressly directed as part of yield-generation strategies.",
+        "The company reports no operating revenue yet and discloses $30M of 4% PIK convertible notes, with potential cash-settlement and 8% yield-to-put exposure.",
+        "A Cantor committed-equity facility permits, but does not require, sales of up to 5,218,935 shares; the prospectus estimates up to $76.8M gross / $74.4M net only if all registered shares are sold at the assumed price; proceeds may be used to acquire XRP."
+      ],
+      "limitations": [
+        "Company-reported closing holdings are not a live current balance.",
+        "The prospectus does not establish that planned Q4 yield deployments have occurred.",
+        "The ELOC is optional and conditional; the maximum proceeds are not committed cash or a completed XRP purchase.",
+        "Custody risk and shared insurance limits remain material."
+      ]
+    },
+    {
+      "id": "evernorth-xrp-insights-live-page",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth",
+      "publisher": "XRP Insights",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "SECONDARY_LEDGER_DERIVED_TRACKER",
+      "claims": [
+        "The rendered page reports 103,129,905 XRP in 13 attributed Evernorth custody wallets at ledger 108047615, closed 2026-11-01 15:08 UTC.",
+        "The page reports 370,346,663 XRP moved from the attributed wallet set to destinations outside the set, with the latest such movements on October 22.",
+        "The page explicitly says those destinations are not yet attributed and excludes them from its attributed on-chain balance."
+      ],
+      "limitations": [
+        "The page's rendered ledger 108047615 at 15:08 UTC differs from its linked data.json ledger 108046960 at 14:24:31 UTC; totals are similar but snapshot identifiers must not be conflated.",
+        "The 370.346M figure is a movement outside the tracker's attributed set, not proof of sale or external-market supply."
+      ]
+    },
+    {
+      "id": "evernorth-xrp-insights-data-json",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth/data.json",
+      "publisher": "XRP Insights",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "SECONDARY_MACHINE_READABLE_ONCHAIN_SNAPSHOT",
+      "claims": [
+        "The JSON records 18 external movements totaling 370,346,663.22975 XRP from attributed wallets, with destination addresses and transaction hashes.",
+        "The JSON records a validated ledger 108046960 closed at 2026-11-01T14:24:31Z and 103,129,904.54985002 XRP in the 13-wallet attributed set."
+      ],
+      "limitations": [
+        "Destination beneficial ownership is not established by the tracker.",
+        "A destination outside the attribution set is not equivalent to an exchange deposit or sale."
+      ]
+    },
+    {
+      "id": "bitgo-activation-source-wallet",
+      "url": "https://bithomp.com/account/rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+      "publisher": "Bithomp",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "INDEPENDENT_PUBLIC_LEDGER_EXPLORER",
+      "claims": [
+        "The account is labelled BitGo and shows 1.2225 XRP activation payments to the new destination accounts used in the Evernorth movement cluster on October 12 and October 20."
+      ],
+      "limitations": [
+        "Explorer labels are third-party attribution, not a signed BitGo attestation."
+      ]
+    },
+    {
+      "id": "bitgo-destination-accounts-bithomp",
+      "url": "https://bithomp.com/account/rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+      "publisher": "Bithomp",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "INDEPENDENT_PUBLIC_LEDGER_EXPLORER",
+      "claims": [
+        "rBKr... was activated by the BitGo-labelled rD4G6... account with 1.2225 XRP on October 20 and is marked multisig; displayed balance approximately 96.2M XRP."
+      ],
+      "limitations": [
+        "No username or Evernorth label is displayed; account beneficial ownership is not proven."
+      ]
+    },
+    {
+      "id": "bitgo-destination-accounts-additional",
+      "url": "https://bithomp.com/account/rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w",
+      "publisher": "Bithomp",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "INDEPENDENT_PUBLIC_LEDGER_EXPLORER",
+      "claims": [
+        "rLyTy..., rK1BU..., rJQ4..., rwtoky..., rDFr..., rMNW..., rHuR... and rLMYD... destination accounts were each shown as activated by the same BitGo-labelled account with 1.2225 XRP; the inspected pages show multisig control and balances consistent with the large transfers."
+      ],
+      "limitations": [
+        "One destination page (rPjKk...) was inaccessible in this run; no direct BitGo/Evernorth beneficial-ownership confirmation was found."
+      ]
+    },
+    {
+      "id": "nasdaq-evernorth-closing-20261009",
+      "url": "https://www.nasdaq.com/press-release/evernorth-completes-business-combination-armada-acquisition-corp-ii-2026-10-09",
+      "publisher": "Nasdaq / Evernorth press release",
+      "published_date": "2026-10-09",
+      "classification": "COMPANY_ANNOUNCEMENT_HOSTED_BY_NASDAQ",
+      "claims": [
+        "Evernorth completed its business combination and began Nasdaq trading under XRPN on October 12.",
+        "The company announced approximately 473M XRP and approximately $300M gross cash proceeds at closing.",
+        "Investors named include Arrington Capital, SBI Group, Ripple, Pantera Capital, Kraken and GSR."
+      ],
+      "limitations": [
+        "The later SEC filing provides more precise closing cash and XRP tranche detail; use the SEC filing for exact amounts."
+      ]
+    },
+    {
+      "id": "evernorth-deployment-partners-20261014",
+      "url": "https://www.nasdaq.com/events/evernorth-rings-closing-bell",
+      "publisher": "Nasdaq",
+      "published_date": "2026-10-14",
+      "classification": "PRIMARY_EVENT_ANNOUNCEMENT",
+      "claims": [
+        "Evernorth became publicly listed under XRPN after the October 9 business combination; the company describes its institutional XRP treasury strategy."
+      ],
+      "limitations": [
+        "The reviewed event page does not prove actual Q4 yield or lending deployments."
+      ]
+    },
+    {
+      "id": "xrpn-stock-price-20261030",
+      "url": "https://stockanalysis.com/stocks/xrpn/history/",
+      "publisher": "Stock Analysis",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "SECONDARY_MARKET_DATA",
+      "claims": [
+        "XRPN closed at $14.20 on October 30, 2026, with reported volume 254,674 shares."
+      ],
+      "limitations": [
+        "Secondary quote source; not a primary Nasdaq consolidated tape record; not a proxy for XRP NAV without full share/unit/liability reconciliation."
+      ]
+    },
+    {
+      "id": "coinglass-xrp-market-20261101",
+      "url": "https://www.coinglass.com/currencies/XRP",
+      "publisher": "CoinGlass",
+      "accessed_at_utc": "2026-11-01T15:18:00Z",
+      "classification": "AGGREGATED_DERIVATIVES_AND_SPOT_MARKET_OBSERVATION",
+      "claims": [
+        "Displayed XRP approximately $1.2535, 24-hour futures volume approximately $1.009B, spot volume approximately $174.8M, open interest approximately $2.834B and 24-hour liquidations approximately $602.8K."
+      ],
+      "limitations": [
+        "No precise market-data timestamp or full venue coverage was exposed in the static page.",
+        "Do not merge with CoinGecko or Liqwall aggregates without exchange/contract normalization."
+      ]
+    },
+    {
+      "id": "sbi-jpysc-launch",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "publisher": "SBI Holdings / SBI Shinsei Trust Bank / Startale",
+      "published_date": "2026-06-24",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "JPYSC is issued by SBI Shinsei Trust Bank and distributed through SBI VC Trade.",
+        "At launch JPYSC was usable only within SBI VC Trade accounts; external wallet transfers/public-chain distribution were not yet available pending legal, tax and regulatory readiness."
+      ],
+      "limitations": [
+        "Launch scope is not proof of current public-chain deployment; no XRPL or XRP collateral is stated."
+      ]
+    },
+    {
+      "id": "sbi-jpysc-reserves-and-lending",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "publisher": "SBI Holdings",
+      "published_date": "2026-09-07",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI reported approximately JPY 20.1B JPYSC outstanding, approximately JPY 6.9B in lending applications and approximately JPY 27B combined issuance-plus-applications.",
+        "SBI reported JPY 1B of the JPYSC backing assets invested in short-term Japanese government bonds."
+      ],
+      "limitations": [
+        "Lending applications are not necessarily funded loans or outstanding principal.",
+        "JPYSC backing assets and bank deposits are not XRP collateral or XRP demand."
+      ]
+    },
+    {
+      "id": "sbi-hyper-deposit-20260929",
+      "url": "https://www.sbigroup.co.jp/news/2026/0929_16622.html",
+      "publisher": "SBI Shinsei Bank",
+      "published_date": "2026-09-29",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "Hyper Deposit balance reached approximately JPY 1.6T across approximately 700,000 accounts."
+      ],
+      "limitations": [
+        "This is a yen bank-deposit/sweep product linked to SBI Securities, not crypto holdings, XRP purchases or XRP collateral."
+      ]
+    },
+    {
+      "id": "sbi-crypto-card-20261001",
+      "url": "https://corp.sbishinseibank.co.jp/ja/news/news/20261001a/main/01/link/261001_AP_SBI_VISA_CC_j.pdf",
+      "publisher": "SBI Shinsei Bank / Aplus",
+      "published_date": "2026-10-01",
+      "classification": "PRIMARY_PRODUCT_ANNOUNCEMENT",
+      "claims": [
+        "The SBI Visa Business Card reward program allows a cardholder to select BTC, ETH or XRP for monthly automatic conversion of points through SBI VC Trade."
+      ],
+      "limitations": [
+        "No aggregate XRP reward redemption or market-purchase volume is disclosed."
+      ]
+    },
+    {
+      "id": "sbi-open-standard-jpysc-ousd-20261016",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "publisher": "SBI Holdings / Startale",
+      "published_date": "2026-10-16",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI and Startale joined the Open Standard network and announced exploration of JPYSC/OUSD interoperability."
+      ],
+      "limitations": [
+        "The announcement is exploratory; it does not prove a completed bridge, live settlement volume or XRPL integration."
+      ]
+    },
+    {
+      "id": "sbi-blackrock-jpysc-mou-20261027",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "publisher": "SBI Holdings / Startale / BlackRock",
+      "published_date": "2026-10-27",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI and Startale signed an MoU with BlackRock to explore tokenized money-market fund and JPYSC-related infrastructure."
+      ],
+      "limitations": [
+        "MoU and exploration are not a launched product or proof of deployed capital."
+      ]
+    },
+    {
+      "id": "sbi-smfg-alliance-20261030",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "publisher": "SBI Holdings / SMFG",
+      "published_date": "2026-10-30",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "SBI and SMFG announced a strategic capital/business alliance; SMBC Group is to take a 5% stake in SBI Startale Marketing, subject to transaction terms."
+      ],
+      "limitations": [
+        "The announcement is an agreement/plan, not evidence that the investment has closed or that XRP is involved."
+      ]
+    },
+    {
+      "id": "sbi-shinsei-crypto-interest-pilot-secondary",
+      "url": "https://www.theblock.co/post/2026/06/09/sbi-shinsei-bank-plans-crypto-rewards-program",
+      "publisher": "The Block reporting Nikkei",
+      "published_date": "2026-06-09",
+      "classification": "SECONDARY_REPORTING",
+      "claims": [
+        "Nikkei-reported pilot: 20% of deposit interest could be converted to BTC, ETH or XRP vouchers for eligible customers beginning June 10, with a possible broader rollout later."
+      ],
+      "limitations": [
+        "No matching primary SBI press release or public aggregate XRP redemption data was located; treat the pilot details and later rollout as sourced claims, not confirmed operational scale."
+      ]
+    },
+    {
+      "id": "open-standard-ousd-stripe-coindesk",
+      "url": "https://www.coindesk.com/business/2026/09/24/open-usd-takes-on-tether-circle-with-a-different-stablecoin-model-that-s-building-money/",
+      "publisher": "CoinDesk",
+      "published_date": "2026-09-24",
+      "classification": "SECONDARY_INDUSTRY_REPORTING",
+      "claims": [
+        "Open USD/OUSD is issued by Bridge, a Stripe company; Coinbase is among the founding partners; the model distributes reserve income to network partners.",
+        "Open Standard is a partner network and should not be confused with the token issuer."
+      ],
+      "limitations": [
+        "Founding-partner status is not proof of a completed SBI/OUSD interoperability deployment or of XRP use."
+      ]
+    },
+    {
+      "id": "openusd-official",
+      "url": "https://openusd.org/",
+      "publisher": "Open USD / Open Standard",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "PRIMARY_NETWORK_INFORMATION",
+      "claims": [
+        "OUSD is a dollar stablecoin issued by Bridge, a Stripe company; reviewed deployment materials list Ethereum, Solana, Base and Tempo, not XRPL."
+      ],
+      "limitations": [
+        "The page contains a future-dated November 12, 2026 launch section relative to this November 1 cutoff; future-dated content is excluded from this snapshot."
+      ]
+    },
+    {
+      "id": "permission-coin-ask-cmc",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "publisher": "CoinMarketCap",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "AGGREGATED_TOKEN_MARKET_DATA",
+      "claims": [
+        "Permission Coin uses ticker ASK; the page lists Base and Polygon contracts, approximately 16.16B circulating supply, 100B maximum supply, approximately $1.42M market capitalization and no reported 24-hour volume at access."
+      ],
+      "limitations": [
+        "Aggregator data may be stale or incomplete; $0 reported volume is not independently proven zero trading across all venues."
+      ]
+    },
+    {
+      "id": "permission-coin-official",
+      "url": "https://permission.ai/",
+      "publisher": "Permission",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "PRIMARY_PROJECT_INFORMATION",
+      "claims": [
+        "Permission describes ASK as its ecosystem utility/rewards token; reviewed documentation is EVM-focused and does not document an XRPL or native XRP integration."
+      ],
+      "limitations": [
+        "No exhaustive source-code or contract audit was performed; absence of a documented XRPL integration is not proof no private or future integration exists."
+      ]
+    },
+    {
+      "id": "iheart-kamilah-camilla-interview",
+      "url": "https://www.iheart.com/podcast/263-the-blockchain-report-86780993/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "publisher": "iHeart / The Blockchain Report",
+      "published_date": "2026-06-11",
+      "classification": "PUBLIC_INTERVIEW_TRANSCRIPT",
+      "claims": [
+        "Episode title identifies guest as Dr. Kamilah Stevenson; transcript uses Camila/Camilla variants and the guest says her YouTube channel is 'doctor Camilla Stevenson', X handle 'cam_i_am_cam' and Instagram 'Kamilla Stevenson'.",
+        "The guest warns about fake pages and describes using two other AIs to debate ideas; no specific AI platforms are named.",
+        "The guest repeats the secondary report about an SBI Shinsei crypto-reward pilot and offers opinions about XRP, RLUSD and adoption."
+      ],
+      "limitations": [
+        "Auto-generated transcript; social/channel identity must be cross-linked to avoid impersonators.",
+        "The guest's market claims are opinions unless independently verified.",
+        "The exact phrase 'actual capital' was not found in this transcript."
+      ]
+    },
+    {
+      "id": "kamilah-youtube-channel-candidate",
+      "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
+      "publisher": "YouTube / third-party channel index",
+      "accessed_at_utc": "2026-11-01T15:30:00Z",
+      "classification": "PUBLIC_CHANNEL_IDENTITY_CANDIDATE",
+      "claims": [
+        "Channel ID UCqUPJMQdkCN6lsLVDnichPA is indexed under display name Kamilah Stevenson and its public XRP content matches the interview subject's stated 'doctor Camilla Stevenson' YouTube identity.",
+        "The existing repository inventory contains 10 seed videos; an additional public video 'XRP Holders, Your Stablecoins Are Funding America's Debt' (video ID OmLOAtfZ-Hs, July 9, 2026) was found."
+      ],
+      "limitations": [
+        "The channel's official link was not independently cross-linked from the guest's verified social profile in this run; she explicitly warns about fake pages.",
+        "YouTube channel pages/RSS were throttled; the 11-video inventory is partial, not exhaustive."
+      ]
+    },
+    {
+      "id": "japan-fiea-amendment-law64",
+      "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/honbun/houan/g21809064.htm",
+      "publisher": "House of Representatives of Japan",
+      "published_date": "2026-07-23",
+      "classification": "PRIMARY_LEGISLATIVE_RECORD",
+      "claims": [
+        "The 2026 amendment to the Financial Instruments and Exchange Act and related laws was enacted/promulgated as Law No. 64 on July 23, 2026; the framework contemplates specified crypto-assets under FIEA."
+      ],
+      "limitations": [
+        "The reviewed law does not itself name XRP in a definitive asset list; commencement and specific designation require implementing rules/orders. The interview's statement that XRP is already specifically reclassified is too strong."
+      ]
+    }
+  ],
+  "source_independence_notes": [
+    "Evernorth SEC filing is primary for company-reported holdings, custody contracts, debt and financing; XRP Insights is a secondary ledger-derived tracker; Bithomp provides independent explorer observations of BitGo activation and multisig controls.",
+    "The 370.346M XRP movement is not classified as a sale. The BitGo activation evidence supports an internal custody-reallocation hypothesis, but beneficial ownership of each destination is not directly attested by Evernorth or BitGo.",
+    "SBI JPYSC issuance and backing claims are primary company disclosures; lending applications are not funded loans.",
+    "The SBI Shinsei 20% interest pilot is secondary reporting only; it is not elevated to confirmed official program scale.",
+    "CoinGlass, CoinGecko and Liqwall market aggregates remain separate provider series.",
+    "The Camilla/Kamilah identity is strongly supported by the interview transcript, but the channel ID remains a candidate pending direct cross-link verification."
+  ]
+}

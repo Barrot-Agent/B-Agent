@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "graph_id": "coinbase-cftc-deribit-xrp-collateral-20261101T215000Z",
+  "captured_at_utc": "2026-11-01T21:50:00Z",
+  "nodes": [
+    {
+      "id": "COINBASE_GLOBAL",
+      "name": "Coinbase Global, Inc.",
+      "type": "public_parent_company"
+    },
+    {
+      "id": "COINBASE_FINANCIAL_MARKETS",
+      "name": "Coinbase Financial Markets, Inc. (CFM)",
+      "type": "registered_futures_commission_merchant"
+    },
+    {
+      "id": "COINBASE_BERMUDA",
+      "name": "Coinbase Bermuda Limited (CBBM)",
+      "type": "foreign_broker_affiliate"
+    },
+    {
+      "id": "DERIBIT",
+      "name": "Deribit FZE",
+      "type": "foreign_board_of_trade_and_derivatives_venue"
+    },
+    {
+      "id": "COINBASE_CUSTODY_TRUST",
+      "name": "Coinbase Custody Trust Company, LLC",
+      "type": "new_york_limited_purpose_trust_company"
+    },
+    {
+      "id": "CFTC",
+      "name": "U.S. Commodity Futures Trading Commission",
+      "type": "regulator"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "digital_commodity_example_in_cftc_26_17"
+    },
+    {
+      "id": "XRP_USDC_PERPETUAL",
+      "name": "Deribit XRP-USDC linear perpetual",
+      "type": "listed_derivative_contract"
+    },
+    {
+      "id": "USDC",
+      "name": "USDC",
+      "type": "payment_stablecoin_candidate_subject_to_issuer_and_reserve_criteria"
+    },
+    {
+      "id": "CFM_30_7_CUSTOMERS",
+      "name": "CFM 30.7 customers",
+      "type": "foreign_futures_and_options_customer_class"
+    }
+  ],
+  "edges": [
+    {
+      "from": "COINBASE_GLOBAL",
+      "to": "COINBASE_FINANCIAL_MARKETS",
+      "relation": "subsidiary",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "COINBASE_GLOBAL",
+      "to": "COINBASE_BERMUDA",
+      "relation": "wholly_owned_affiliate_condition_in_no_action_letter",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "COINBASE_GLOBAL",
+      "to": "DERIBIT",
+      "relation": "wholly_owned_affiliate_condition_in_no_action_letter",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "COINBASE_FINANCIAL_MARKETS",
+      "to": "COINBASE_BERMUDA",
+      "relation": "customer_order_and_margin_asset_routing",
+      "status": "CONFIRMED_REPRESENTED_STRUCTURE",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "COINBASE_BERMUDA",
+      "to": "DERIBIT",
+      "relation": "foreign_broker_routes_orders_and_may_reuse_customer_digital_assets_for_margin",
+      "status": "CONFIRMED_CONDITIONAL_NO_ACTION_STRUCTURE",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "CFTC",
+      "to": "COINBASE_FINANCIAL_MARKETS",
+      "relation": "conditional_staff_no_action_and_interpretation_letter_26_17",
+      "status": "CONFIRMED_PRIMARY_SOURCE_NONBINDING",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "CFTC",
+      "to": "XRP",
+      "relation": "named_example_of_digital_commodity_in_letter_26_17_footnote_5",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "XRP",
+      "to": "DERIBIT",
+      "relation": "full_cross_collateral_currency_and_offset_currency; X_PM_no_stated_haircut; X_SM_15_percent_haircut",
+      "status": "CONFIRMED_CURRENT_VENUE_SPECIFICATION",
+      "source_ids": [
+        "SRC-DERIBIT-CROSS-COLLATERAL-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "XRP",
+      "to": "XRP_USDC_PERPETUAL",
+      "relation": "listed_underlying_asset; USDC_settled; cross_collateral_can_support_when_enabled",
+      "status": "CONFIRMED_CURRENT_VENUE_SPECIFICATION",
+      "source_ids": [
+        "SRC-DERIBIT-XRP-USDC-PERP-20261101T215000Z",
+        "SRC-DERIBIT-CROSS-COLLATERAL-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "COINBASE_FINANCIAL_MARKETS",
+      "to": "CFM_30_7_CUSTOMERS",
+      "relation": "FCM_carries_foreign_futures_and_options_customer_positions",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z"
+      ]
+    },
+    {
+      "from": "DERIBIT",
+      "to": "COINBASE_CUSTODY_TRUST",
+      "relation": "CFM_representation_that_assets_equal_to_100_percent_of_net_liquidating_equity_for_relevant_30_7_customers_are_maintained_in_accounts_at_this_custodian",
+      "status": "SOURCED_CFM_REPRESENTATION_NOT_INDEPENDENTLY_VERIFIED",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z"
+      ]
+    }
+  ],
+  "conditional_path": {
+    "sequence": [
+      "CFM 30.7 customer-owned XRP",
+      "Coinbase Financial Markets FCM",
+      "Coinbase Bermuda Limited foreign broker",
+      "Deribit FZE foreign board of trade/clearing organization",
+      "Derivatives margin account subject to Deribit cross-collateral mode and CFTC conditions"
+    ],
+    "conditions": [
+      "CFM notice of intent and commencement date",
+      "first three months restricted to payment stablecoins, BTC and ETH",
+      "post-initial-period asset acceptance and applicable venue/FCM haircuts",
+      "right of re-use authorized or required by local law/rules",
+      "use limited to margining/securing 30.7 customer foreign futures/options obligations",
+      "customer disclosures and information-security/operational controls"
+    ],
+    "actual_usage_status": "UNKNOWN_NOT_VERIFIED"
+  }
+}

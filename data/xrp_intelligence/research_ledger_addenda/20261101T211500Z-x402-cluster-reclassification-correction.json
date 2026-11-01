@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "id": "x402-cluster-reclassification-correction-20261101T211500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "correction_type": "APPEND_ONLY_INTERPRETIVE_CORRECTION",
+  "supersedes_interpretation_in": [
+    "20261101T210615Z-rlusd-supply-drawdown-and-payment-quality.json#R5",
+    "20261101T210615Z-rlusd-supply-drawdown-and-payment-quality.json#R7",
+    "20261101T210615Z-rlusd-supply-drawdown-and-payment-quality.json#R8"
+  ],
+  "correction": {
+    "prior_wording": "The 110-wallet activity was described as a dust-bot cluster and raw payment-count inflation.",
+    "revised_classification": "X402_COMPATIBLE_AGENT_MICROPAYMENT_COHORT; AUTOMATED_ACTIVITY_CONFIRMED_BY_PATTERN; OPERATOR_UNKNOWN; PRODUCTION_VS_TEST_STATUS_UNKNOWN; NO_MALICIOUS_INTENT_INFERRED.",
+    "explanation": "The three Bitquery collector addresses exactly match the named Heurist Inference Router, AskSurf and Heurist Mesh merchant addresses in the XRPL x402 index. Their observed payment scale is consistent with published x402 per-call prices. This is strong evidence that the transactions may be agentic service micropayments, not generic spam. 'Dust' describes payment size; 'bot' describes automation. Neither term establishes fake activity or wrongdoing."
+  },
+  "exact_address_crosswalk": [
+    {
+      "address": "rBi1QrVjwaNofisZAQnovoXdHkS73FG1tJ",
+      "bitquery_role": "collector_1",
+      "bitquery_payments": 7050565,
+      "x402_merchant": "Heurist Inference Router",
+      "x402_indexed_transactions": 10416103
+    },
+    {
+      "address": "ra9b6JX5aPVbdJhogDDddsRAcasWg7gzC3",
+      "bitquery_role": "collector_2",
+      "bitquery_payments": 470120,
+      "x402_merchant": "AskSurf",
+      "x402_indexed_transactions": 1126310
+    },
+    {
+      "address": "rMPwy3Ntx56Nyc2fKGNm7VRWdmpHSB92Z7",
+      "bitquery_role": "collector_3",
+      "bitquery_payments": 16083,
+      "x402_merchant": "Heurist Mesh",
+      "x402_indexed_transactions": 584628
+    }
+  ],
+  "payment_price_alignment": {
+    "bitquery_cluster_mean_rlusd": 0.00099,
+    "published_x402_examples": [
+      {
+        "merchant": "Heurist Inference Router",
+        "price_rlusd": 0.0005
+      },
+      {
+        "merchant": "Heurist Mesh",
+        "price_rlusd": 0.001
+      },
+      {
+        "merchant": "AskSurf",
+        "price_rlusd": 0.006
+      }
+    ],
+    "status": "CONSISTENT_WITH_MICROPAYMENT_PRICING_NOT_PROOF_OF_INVOICE_MATCH"
+  },
+  "batch_settlement": {
+    "feature": "XRPL Checks batch settlement",
+    "mainnet_beta_start": "2026-10-14",
+    "bitquery_cluster_shutdown_window": "2026-10-14T17:00:00Z to 2026-10-16T03:00:00Z",
+    "t54_measured_window": "2026-10-14 to 2026-10-17",
+    "paid_requests": 213008,
+    "sessions": 3162,
+    "ledger_transactions": 6324,
+    "calculated_requests_per_session": 67.3649588868,
+    "calculated_requests_per_ledger_transaction": 33.6824794434,
+    "network_fee_drops_per_request": 0.36,
+    "relevance": "Batch sessions create two ledger transactions per session regardless of request count. A Payment-only query can therefore show a sharp count decline while paid requests continue.",
+    "causal_status": "PLAUSIBLE_MEASUREMENT_BREAK_NOT_PROVEN_FOR_THE_110_WALLETS"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "X1",
+      "claim": "The 110-wallet cohort generated x402 agentic micro-payments to three registered XRPL services.",
+      "support": [
+        "Exact three-address match between Bitquery collectors and XRP Insights x402 merchants.",
+        "Average 0.00099 RLUSD is consistent with published 0.0005–0.006 RLUSD per-call service prices.",
+        "t54's official hub reports millions of x402 settlements, 183 merchants and 5,318 live services."
+      ],
+      "disconfirming": [
+        "No invoice/session ID ties the 110 payer wallets to t54's facilitator records.",
+        "Bitquery's common funding source suggests one operator or coordinated cohort, but does not identify it.",
+        "The t54 hub and XRP Insights counts differ and use different index definitions."
+      ],
+      "status": "STRONGLY_SUPPORTED_COMPATIBILITY; EXACT_COHORT_MEMBERSHIP_UNVERIFIED"
+    },
+    {
+      "id": "X2",
+      "claim": "The October 14–16 drop in individual Payment transactions reflects migration to XRPL Checks batch sessions.",
+      "support": [
+        "t54 announced closed-beta mainnet batch settlement on October 14, the same day the first collector's inflow fell.",
+        "The feature is RLUSD-only at launch and uses one CheckCreate plus one Check cash for many paid requests.",
+        "t54 reports 213,008 paid requests in 3,162 sessions and 6,324 ledger transactions from October 14–17."
+      ],
+      "disconfirming": [
+        "t54 does not identify the 110-wallet cohort as an internal beta participant.",
+        "No CheckCreate/CheckCash trace has yet been linked to those payer wallets."
+      ],
+      "status": "PLAUSIBLE_AND_MECHANISTICALLY_SPECIFIC_NOT_VERIFIED"
+    },
+    {
+      "id": "X3",
+      "claim": "Cross River Bank's October 15 RLUSD announcement caused the cluster to stop.",
+      "support": [
+        "The announcement falls inside the observed shutdown window."
+      ],
+      "disconfirming": [
+        "No causal evidence; batch-settlement launch is a closer mechanism and began October 14.",
+        "Bitquery found no fee spike or ledger amendment explaining the shutdown."
+      ],
+      "status": "WEAK_TEMPORAL_HYPOTHESIS_ONLY"
+    },
+    {
+      "id": "X4",
+      "claim": "The cluster was generic spam or malicious manipulation.",
+      "support": [
+        "The wallets were automated and payments were sub-1 RLUSD."
+      ],
+      "disconfirming": [
+        "The exact recipient addresses map to active x402 service merchants and prices.",
+        "The t54 protocol is designed for automated micropayments by AI agents.",
+        "No evidence of malicious intent, market manipulation or unlawful conduct."
+      ],
+      "status": "NOT_ESTABLISHED; DO_NOT_LABEL_AS_MALICIOUS"
+    }
+  ],
+  "retained_facts": {
+    "99.6_percent_of_count": true,
+    "dust_value_rlusd": 7722,
+    "top_10_share_of_non_dust_gross_value_pct": 82,
+    "issuer_mint_redemption_share_approx_pct": 20,
+    "round_trip_gross_double_count_usd": 848000000,
+    "binance_label_scope": "Funding wallets are labelled from Binance proof-of-reserves; this is not proof Binance corporate operated the cohort."
+  },
+  "revised_interpretation": "The cluster is best treated as an x402-aligned automated micropayment cohort with unknown operator and unknown production/test status. The earlier conclusion that raw payment count is not broad retail adoption remains valid, but 'spam' or 'fake activity' is unsupported. Payment-count discontinuity after October 14 may be caused by a shift from per-request Payment transactions to batched XRPL Checks.",
+  "forecast_status": "NOT_ISSUED"
+}

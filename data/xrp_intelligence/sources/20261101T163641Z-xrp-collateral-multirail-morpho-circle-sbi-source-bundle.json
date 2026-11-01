@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "revision_id": "xrp-collateral-multirail-morpho-circle-sbi-source-revision-20261101T163641Z",
+  "captured_at_utc": "2026-11-01T16:36:41Z",
+  "sources": [
+    {
+      "id": "morpho-fxrp-rlusd-market-2026-11-01",
+      "url": "https://app.morpho.org/ethereum/variable/0x4fa31e3f8ba345227d44e1cf48559eea53a90dd5311dc006984c060f2f311d96/rlusd-fxrp",
+      "publisher": "Morpho",
+      "type": "LIVE_PROTOCOL_UI_OBSERVATION",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "Ethereum Morpho Blue isolated RLUSD/FXRP market created 2026-07-28",
+        "Outstanding loans $8.44M; total market size $9.35M; available liquidity $914.37K",
+        "Current utilization 90.22%; liquidation LTV 77%; liquidation penalty 7.41%",
+        "Sentora RLUSD Main supplied 99.04% of displayed RLUSD supply",
+        "Top three borrowers accounted for 91.00% of displayed borrow share",
+        "Oracle display uses RedStone FXRP market price with 6h heartbeat and 0.25% deviation; Chainlink RLUSD/USD with 1d heartbeat and 0.3% deviation",
+        "Small historical liquidations displayed with zero realized bad debt"
+      ],
+      "limitations": [
+        "UI values are point-in-time and can change",
+        "Underlying transaction logs and contract storage were not independently queried through raw Ethereum RPC in this run",
+        "Borrower addresses are pseudonymous; no identity attribution"
+      ]
+    },
+    {
+      "id": "flare-sentora-fxrp-rlusd-2026-08-03",
+      "url": "https://flare.network/es/news/fxrp-collateral-expands-sentoras-rlusd-vault-on-morpho",
+      "publisher": "Flare",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "FXRP accepted as collateral in Sentora's RLUSD Main vault on Morpho",
+        "An isolated FXRP/RLUSD market launched on Ethereum mainnet",
+        "Flare reported the broader Sentora RLUSD Main vault held $280M deposited RLUSD on 2026-08-03",
+        "Users mint FXRP, bridge to Ethereum and post it as collateral"
+      ],
+      "limitations": [
+        "The $280M figure is the broader vault statement at launch, not the isolated FXRP/RLUSD market size observed on 2026-11-01"
+      ]
+    },
+    {
+      "id": "coinbase-borrow-product-current",
+      "url": "https://www.coinbase.com/borrow",
+      "publisher": "Coinbase",
+      "type": "PRIMARY_PRODUCT_PAGE",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "Coinbase offers USDC crypto-backed borrowing through Morpho",
+        "Coinbase product FAQ lists XRP among collateral assets and a $100,000 USDC limit for XRP, LTC, ADA, DOGE and Solana",
+        "Collateral is moved onchain to Morpho smart contracts"
+      ],
+      "limitations": [
+        "Geographic and customer eligibility varies; current page has region-specific wording",
+        "The generic page's BTC example does not specify the XRP wrapper contract"
+      ]
+    },
+    {
+      "id": "coinbase-xrp-morpho-loans-2026-02-18",
+      "url": "https://www.theblock.co/news/business/2026-02-18/coinbase-xrp-dogecoin-cardano-litecoin-loans-morpho-390403",
+      "publisher": "The Block",
+      "type": "INDEPENDENT_REPORTING",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "Coinbase added XRP, DOGE, ADA and LTC as collateral for Morpho-backed USDC loans",
+        "The report states a 49% maximum initial LTV and 62.5% liquidation LTV for XRP and the other newly added collateral assets",
+        "The product was reported for eligible US customers excluding New York at publication"
+      ],
+      "limitations": [
+        "Publication is 2026-02-18; current jurisdictional availability should be checked against Coinbase's live eligibility controls"
+      ]
+    },
+    {
+      "id": "circle-native-usdc-xrpl",
+      "url": "https://www.circle.com/multi-chain-usdc/xrpl",
+      "publisher": "Circle",
+      "type": "PRIMARY_PRODUCT_PAGE",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "USDC is native to XRPL as an XRPL fungible token",
+        "Qualified Circle Mint businesses can convert fiat directly to USDC on XRPL and redeem 1:1 for USD",
+        "Circle Mint and Circle APIs can swap USDC between supported blockchains without a third-party bridge",
+        "Circle identifies payments, DeFi liquidity and tokenized assets as XRPL use cases"
+      ],
+      "limitations": [
+        "Native USDC on XRPL is not native XRP and does not by itself establish XRP demand"
+      ]
+    },
+    {
+      "id": "circle-arc-mainnet-2026-09-16",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+      "publisher": "Circle",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "Arc public mainnet launched 2026-09-16",
+        "Arc uses USDC for network gas and integrates Circle StableFX and Circle Payments Network",
+        "Founding validator cohort includes SBI Group and DTCC among other institutions",
+        "Coinbase and Binance are named among exchange participants",
+        "BitGo is named among custody providers",
+        "Aave and Morpho are named among credit-market protocols",
+        "SBI says SBI VC Trade began distributing USDC in Japan in March 2025"
+      ],
+      "limitations": [
+        "Circle's announcement is company-reported; phased validator rollout and participant roles may differ over time",
+        "The launch announcement does not name native XRP or XRPL as an Arc launch asset/network"
+      ]
+    },
+    {
+      "id": "circle-aci-colombia-usdc-2026-10-27",
+      "url": "https://www.circle.com/pressroom/aci-worldwide-and-circle-collaborate-to-bring-usdc-settlement-to-existing-payments-infrastructure-in-latin-america",
+      "publisher": "Circle and ACI Worldwide",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "ACI and Circle announced a Colombia-focused pilot to integrate USDC settlement with existing payment operations",
+        "ACI Connetic is the orchestration layer; Colombia's Bre-B instant-payment ecosystem is the initial focus",
+        "The companies describe USDC as complementing existing payment infrastructure and a multi-rail ecosystem"
+      ],
+      "limitations": [
+        "No XRP or Ripple use is identified in this announcement",
+        "Pilot is not evidence of production-scale settlement volume"
+      ]
+    },
+    {
+      "id": "circle-sbi-usdc-mou-2023-11-27",
+      "url": "https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services",
+      "publisher": "Circle and SBI Holdings",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "SBI Holdings and Circle signed an MOU to circulate USDC in Japan, establish banking relationships and promote Circle Web3 services",
+        "SBI VC Trade was designated to pursue registration to distribute USDC",
+        "SBI Shinsei Bank was to provide banking services to Circle"
+      ],
+      "limitations": [
+        "The 2023 MOU is historical; current distribution status is separately supported by Circle's 2026 Arc announcement"
+      ]
+    },
+    {
+      "id": "ripple-sbi-rlusd-japan-2026-06-24",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "publisher": "Ripple and SBI Group",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "RLUSD launched in Japan through SBI VC Trade following JFSA approval under Japan's Payment Services Act",
+        "Ripple describes RLUSD as a bridge for payments, tokenization and collateral management"
+      ],
+      "limitations": [
+        "This is issuer/company reporting; it does not establish that RLUSD is collateralized by XRP or that every use case is live"
+      ]
+    },
+    {
+      "id": "ripple-sbi-ripple-asia-odl-current",
+      "url": "https://ripple.com/company/sbi-ripple-asia/",
+      "publisher": "Ripple",
+      "type": "PRIMARY_COMPANY_PAGE",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "Ripple states XRP-using On-Demand Liquidity is commercialized in Japan",
+        "Ripple identifies SBI Remit, Coins.ph and SBI VC Trade in the Philippines remittance corridor",
+        "SBI Ripple Asia sells RippleNet software/services and explicitly says it does not handle XRP"
+      ],
+      "limitations": [
+        "No current corridor volume, XRP inventory or average holding-time data is disclosed on the page"
+      ]
+    },
+    {
+      "id": "sbi-remit-cumulative-remittances-2026-05-29",
+      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20260529/",
+      "publisher": "SBI Remit",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "SBI Remit reports cumulative company-wide international remittances exceeded JPY 2.5T as of 2026-05-27",
+        "The release describes the total remittance business and does not attribute the JPY 2.5T to XRP or ODL"
+      ],
+      "limitations": [
+        "Do not use total company remittance throughput as an XRP-specific volume feature"
+      ]
+    },
+    {
+      "id": "sbi-remit-nium-expanded-2026-06-02",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0602_16371.html",
+      "publisher": "SBI Holdings/SBI Remit",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "SBI Remit expanded its Nium partnership and reduced bank-account remittance fees for USD, EUR and GBP corridors"
+      ],
+      "limitations": [
+        "This establishes a separate payment rail; it does not establish XRP usage in those corridors"
+      ]
+    },
+    {
+      "id": "sbi-remit-fasset-mou-2026-06-18",
+      "url": "https://www.sbigroup.co.jp/news/2026/0618_16415.html",
+      "publisher": "SBI Holdings/SBI Remit",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "SBI Holdings made a strategic investment in Fasset in May 2026",
+        "SBI Remit and Fasset signed an MoU for next-generation international remittance infrastructure"
+      ],
+      "limitations": [
+        "MoU and strategic investment are not proof of a live production payment route"
+      ]
+    },
+    {
+      "id": "coingecko-xrp-market-page-2026-11-01",
+      "url": "https://www.coingecko.com/no/coins/xrp",
+      "publisher": "CoinGecko",
+      "type": "AGGREGATED_MARKET_DATA_PAGE",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "XRP displayed price $1.25",
+        "Market capitalization $79.205B and 24-hour volume $702.975M",
+        "Perpetual open interest $3.517B; OI/market-cap 4.44%; 8-hour funding 0.0086%; perps/spot 24-hour volume 13.1x",
+        "Circulating supply 63.351B and total supply 99.986B"
+      ],
+      "limitations": [
+        "The page did not expose a synchronized underlying exchange observation timestamp; provider methodology and exchange coverage are aggregated",
+        "Descriptive only; not admitted as a predictive feature"
+      ]
+    },
+    {
+      "id": "circle-q3-2026-results-date",
+      "url": "https://www.circle.com/pressroom",
+      "publisher": "Circle",
+      "type": "PRIMARY_COMPANY_CALENDAR",
+      "accessed_at_utc": "2026-11-01T16:36:41Z",
+      "claims": [
+        "Circle scheduled Q3 2026 results for 2026-11-04"
+      ],
+      "limitations": [
+        "Upcoming event at snapshot cutoff; no results are available yet"
+      ]
+    }
+  ],
+  "source_independence": "Circle, Ripple, Coinbase, Flare and SBI pages are primary for their own products and announcements. The Block is independent reporting for Coinbase XRP loan parameters. Morpho is the live protocol UI, but raw chain state was not independently queried. CoinGecko is an aggregated market-data provider with unsynchronized venue timestamps.",
+  "unknowns": [
+    "Exact Coinbase XRP collateral token contract and current live market parameters.",
+    "Raw Morpho market storage and event-log reproduction at a pinned Ethereum block.",
+    "Current native USDC supply and transaction velocity on XRPL at a matched validated ledger.",
+    "Current XRP ODL corridor volumes for SBI Remit.",
+    "Actual production volume for the ACI/USDC Colombia pilot.",
+    "Whether Circle Arc and XRPL will integrate or compete for specific named payment corridors."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

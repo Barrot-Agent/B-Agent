@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "live-checkcash-x402-batch-handoff-20261101T211900Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "prior_head": "e48437122a0a22f0460d5ab1e247ff094cac608d",
+  "finding": "A live t54-indexed 0.67376 RLUSD CheckCash batch to Heurist Inference Router is visible on the XRPL AI Hub at ledger 108,051,936. The hub marks intent Unverified. This independently strengthens the existence of the batch-settlement measurement break, but does not connect the buyer to the 110-wallet cohort.",
+  "next_actions": [
+    "Decode transaction 384D9F00D96D61A2F19025D80793BD5D74E61E6CA95D2A2132B6BDE1A1E558AE using an authorized public XRPL API and confirm TransactionType=CheckCash, delivered amount, account and ledger timestamp.",
+    "Inspect the 110 payer wallets and three merchant accounts for CheckCreate and CheckCash transactions from October 14 onward; no cohort migration claim until wallet-level matches exist.",
+    "Compare t54 session records and invoice IDs with ledger CheckCreate/CheckCash hashes where public data permits; preserve Unverified intent status.",
+    "Continue treating Coinbase, Circle, Ripple and Mastercard x402 Foundation participation as open-standard membership, not exclusive partnership.",
+    "Keep RLUSD supply contraction separate from x402 payment-count changes; the 7,722 RLUSD dust cohort value is only about 0.0026% of the approximate 302.6M XRPL supply decline."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "safety": "No payments made, no credentials accessed, no external deployment, no main-branch change."
+}

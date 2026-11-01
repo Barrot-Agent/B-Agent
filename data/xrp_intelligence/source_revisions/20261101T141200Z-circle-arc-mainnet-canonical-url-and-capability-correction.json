@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-CIRCLE-ARC-MAINNET-CANONICAL-URL-AND-CAPABILITY-CORRECTION-20261101T1412Z",
+  "source_id": "circle-arc-mainnet-20260916",
+  "captured_at_utc": "2026-11-01T14:12:00Z",
+  "correction_type": "canonical_source_url_and_claim_scope",
+  "previous_bundle_url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet",
+  "previous_url_status": "not confirmed as canonical; do not use as primary citation",
+  "canonical_urls": [
+    "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+    "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx"
+  ],
+  "publisher": "Circle",
+  "published_date": "2026-09-16",
+  "verified_claims": [
+    "Arc public mainnet launched September 16, 2026 as an open Layer 1 for financial markets and real-time money movement",
+    "network fees are paid in USDC; Circle states no volatile native token is required for gas",
+    "Circle StableFX provides 24/7 cross-currency settlement on Arc",
+    "Circle Payments Network is integrated natively into Arc",
+    "SBI Group is named in the founding validator cohort; Circle describes a phased validator rollout",
+    "Coinbase and Binance are named among digital-asset exchange participants",
+    "Morpho and Aave are named among onchain credit integrations",
+    "more than 100 institutional and ecosystem builders were announced on day one"
+  ],
+  "limitations": [
+    "company announcement; partner-list membership does not establish transaction volume, validator activation time or commercial revenue",
+    "the announcement does not identify Ripple as a founding validator or named day-one participant; absence is not proof of no relationship",
+    "Arc participation does not establish XRP purchases or XRP collateral demand"
+  ],
+  "source_independence": "primary company announcement; claims are issuer-reported and require independent usage data for adoption conclusions"
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "etp-custody-and-in-kind-feature-policy-20261101T213000Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "decisions": [
+    {
+      "topic": "ETP custody",
+      "decision": "Store each fund's named custodian, prime broker, transfer agent and authorized participant roles with effective dates. Never allocate fund holdings to a custodian unless the filing discloses an amount.",
+      "reason": "Grayscale and 21Shares have multiple custodians; the actual balance split is unknown."
+    },
+    {
+      "topic": "In-kind creation/redemption",
+      "decision": "Track cash and in-kind creation/redemption as separate flows. Record AP, asset delivered, creation/redemption date and actual onchain transfer only when disclosed or verified.",
+      "reason": "Grayscale enabled in-kind XRP exchange on September 29, but actual volume and AP sourcing venue are unknown."
+    },
+    {
+      "topic": "Institutional XRP demand",
+      "decision": "Do not equate ETF AUM or custody assets with new spot purchases. Require net share creation, XRP units created/redeemed and AP sourcing/transfer evidence.",
+      "reason": "ETF holdings are a stock; AUM also changes with price, and in-kind flows may not produce a contemporaneous cash-market buy."
+    },
+    {
+      "topic": "Coinbase market position",
+      "decision": "Represent Coinbase as a multi-role institutional node (exchange, prime broker, custodian, principal-market reference, x402 protocol originator) while preserving multi-custodian and competing-venue objections.",
+      "reason": "SEC filings show broad institutional service relationships but also custody diversification."
+    }
+  ],
+  "status": "DESIGNED_NOT_EXECUTED",
+  "forecast_status": "NOT_ISSUED"
+}

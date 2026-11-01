@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "addendum_id": "circle-arc-mainnet-source-correction-ledger-addendum-20261101T1412Z",
+  "captured_at_utc": "2026-11-01T14:12:00Z",
+  "supersedes_addendum": "coinbase-circle-sbi-arc-cbxrp-ledger-addendum-20261101T1400Z",
+  "prior_ledger_url": "https://github.com/Barrot-Agent/B-Agent/blob/research/binance-xrp-hack-graph-20261101T0108Z/data/xrp_intelligence/research_ledger.json",
+  "source_revision_path": "data/xrp_intelligence/source_revisions/20261101T141200Z-circle-arc-mainnet-canonical-url-and-capability-correction.json",
+  "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T141200Z-circle-arc-cpn-stablefx-and-xrpl-competitive-graph.json",
+  "status": "append_only_source_and_graph_correction",
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none; Arc partner lists are not usage metrics",
+  "next_actions": [
+    "measure Arc and XRPL transaction/settlement/credit volumes independently",
+    "capture Circle Q3 results on 2026-11-04 at 08:00 ET",
+    "compare Circle Payments Network and StableFX flows with Ripple Payments and SBI XRP remittance flows"
+  ]
+}

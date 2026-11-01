@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "audit_id": "run11-pr-and-security-verification-20261101T221200Z",
+  "captured_at_utc": "2026-11-01T22:12:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+  "research_pr": {
+    "number": 1464,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+    "head_sha": "dfd8dd42bd62557954b07886b3baa4bdb3dfef87",
+    "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41354286147,
+    "ci_result": "455 tests and 8 subtests passed",
+    "gate_run": 41354286145,
+    "gate_result": "passed; automatic merging disabled"
+  },
+  "subscriber_security_pr": {
+    "number": 1476,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1476",
+    "head_sha": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41353058271,
+    "ci_result": "345 tests and 8 subtests passed",
+    "gate_run": 41353058127,
+    "gate_result": "passed; automatic merging disabled"
+  },
+  "security_quarantine_pr": {
+    "number": 1474,
+    "head_sha": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41345160046,
+    "ci_result": "390 tests and 8 subtests passed",
+    "gate_run": 41345160075,
+    "gate_result": "passed"
+  },
+  "prediction_integrity_pr": {
+    "number": 1475,
+    "head_sha": "8268d158449f3e96b585661ee670e515752146f6",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41345671223,
+    "ci_result": "405 tests and 8 subtests passed",
+    "gate_run": 41345671296,
+    "gate_result": "passed"
+  },
+  "main_security_state": "Unchanged; scheduled subscriber workflow still active and public client-side subscriber gate still bypassable until PR #1476 is approved and merged. Main subscriber hash file is empty; latest observed run processed zero active subscribers.",
+  "no_merge": true,
+  "no_force_push": true,
+  "no_main_update": true
+}

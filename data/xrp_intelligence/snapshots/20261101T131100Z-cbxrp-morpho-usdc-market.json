@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "SNAP-20261101T131100Z-CBXRP-MORPHO-CREDIT",
+  "captured_at_utc": "2026-11-01T13:19:32Z",
+  "data_cutoff_utc": "2026-11-01T13:11:00Z",
+  "repository_main_sha_observed": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+  "source_bundle_path": "data/xrp_intelligence/sources/20261101T131100Z-cbxrp-morpho-usdc-market.json",
+  "source_ids": [
+    "SRC-20261101T131100Z-COINBASE-CBXRP-POR",
+    "SRC-20261101T131100Z-MORPHOWATCH-CBXRP-USDC",
+    "SRC-20261101T131100Z-MORPHO-BLUE-REST-DOCS",
+    "SRC-20261101T131100Z-CLEANSKY-AUG24-CBXRP-BASELINE",
+    "SRC-20261101T131100Z-THEBLOCK-COINBASE-XRP-LOANS",
+    "SRC-20261101T131100Z-COINBASE-LOAN-HEALTH",
+    "SRC-20261101T131100Z-DEFILLAMA-CBXRP-POOL",
+    "SRC-20261101T131100Z-PRIOR-MORPHO-VALUE-SECURED-CONFLICT",
+    "SRC-20261101T131100Z-COINBASE-LOAN-BACKUP-CBXRP-CONTRACT",
+    "SRC-20261101T131100Z-COINBASE-WRAPPED-ASSET-CUSTODY-POLICY"
+  ],
+  "market": {
+    "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+    "chain": "Base",
+    "chain_id": 8453,
+    "created": "2026-01-15",
+    "collateral_asset": "cbXRP",
+    "collateral_units": 118550000,
+    "collateral_oracle_price_usdc": 1.2488,
+    "collateral_value_usd_derived": 148045240,
+    "debt_asset": "USDC",
+    "supplied_usdc": 65460000,
+    "outstanding_borrowed_usdc": 59200000,
+    "available_usdc": 6260000,
+    "utilization_pct": 90.44,
+    "borrow_apy_pct": 7.87,
+    "borrow_apy_30d_avg_pct": 6.87,
+    "supply_apy_pct": 7.09,
+    "supply_apy_30d_avg_pct": 6.19,
+    "lltv_pct": 62.5,
+    "liquidation_bonus_pct": 12.68,
+    "oracle": {
+      "provider": "Chainlink",
+      "type": "ChainlinkOracleV2",
+      "pair": "XRP/USD",
+      "price_usdc": 1.2488,
+      "heartbeat": "1 day",
+      "deviation_threshold_pct": 0.5,
+      "addresses": "TRUNCATED_IN_PROVIDER_DISPLAY"
+    },
+    "borrower_count_displayed": 12006,
+    "usdc_vault_supply": {
+      "total_from_vaults": 58130000,
+      "top_three_vaults_usdc": 51850000,
+      "top_three_share_pct": 79.21
+    },
+    "collateral_token_address": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+    "collateral_token_address_source_id": "SRC-20261101T131100Z-COINBASE-LOAN-BACKUP-CBXRP-CONTRACT"
+  },
+  "issuer_reserves": {
+    "issuer": "Coinbase",
+    "total_reserve_xrp": 150942337.33,
+    "total_supply_cbxrp": 150940089.8,
+    "base_supply_cbxrp": 150940089.796,
+    "reserve_surplus_xrp": 2247.53,
+    "reserve_coverage_pct": 100.00149,
+    "displayed_refresh": "2026-11-01 07:12 AM",
+    "displayed_refresh_timezone": "NOT_STATED",
+    "backing_claim": "1:1",
+    "backing_policy_source_id": "SRC-20261101T131100Z-COINBASE-WRAPPED-ASSET-CUSTODY-POLICY",
+    "backing_policy": "Coinbase states underlying XRP backing wrapped assets is held in custody and will not be sold, transferred or utilized for another purpose."
+  },
+  "derived_metrics": {
+    "reserve_surplus_xrp": 2247.53,
+    "reserve_coverage_pct": 100.00149,
+    "collateral_share_pct": 78.54,
+    "utilization_pct": 90.44,
+    "available_usdc": 6260000,
+    "aggregate_debt_to_collateral_pct": 39.99,
+    "top_three_vault_share_pct": 79.21,
+    "wrapper_supply_growth_since_aug24_pct": 28.69,
+    "collateral_units_growth_since_aug24_pct": 30.59,
+    "debt_growth_since_aug24_pct": 44.39,
+    "aug24_market_collateral_share_pct": 77.4,
+    "collateral_share_change_pp": 1.14,
+    "aug24_aggregate_debt_to_collateral_pct": 30.94,
+    "aggregate_debt_to_collateral_change_pp": 9.04,
+    "debt_collateral_ratio_is_aggregate_not_borrower_weighted_ltv": true,
+    "collateral_share_is_approximate_due_to_unsynchronized_refresh_times": true
+  },
+  "historical_comparison": {
+    "baseline_date": "2026-08-24",
+    "source_id": "SRC-20261101T131100Z-CLEANSKY-AUG24-CBXRP-BASELINE",
+    "baseline": {
+      "total_cbxrp_supply": 117288396,
+      "market_collateral_units": 90780000,
+      "outstanding_usdc_debt": 41000000,
+      "collateral_value_usd": 132500000
+    },
+    "note": "Same identified 62.5% market; different provider snapshots and no exact block synchronization. Growth ratios remain approximate until raw chain endpoints are reconstructed."
+  },
+  "unresolved_conflicts": [
+    {
+      "field": "Morpho UI value_secured",
+      "prior_value_usd": 240850000,
+      "later_derived_value_usd": 148045240,
+      "status": "EXCLUDED_UNRECONCILED"
+    },
+    {
+      "field": "DefiLlama versus MorphoWatch supplied/available definitions",
+      "status": "NOT_COMPARABLE"
+    },
+    {
+      "field": "Coinbase reserve refresh timezone",
+      "status": "UNKNOWN"
+    }
+  ],
+  "interpretation": {
+    "confirmed": [
+      "Coinbase reports a 1:1 cbXRP backing model and displays reserve/supply balances.",
+      "A Base Morpho cbXRP/USDC market is reported with 62.5% LLTV and current borrowing/collateral observations.",
+      "Coinbase's XRP-family loan terms are reported as max 49% LTV and 62.5% liquidation threshold.",
+      "Coinbase's official loan backup documentation identifies cbXRP on Base and contract 0xcb585250f852c6c6bf90434ab21a00f02833a4af as the collateral token for XRP loans.",
+      "Coinbase's wrapped-asset policy says the underlying asset is held in custody 1:1 and is not sold, transferred or otherwise utilized by Coinbase."
+    ],
+    "inference": [
+      "The January 15 62.5% market is likely the market behind Coinbase's XRP loan product because terms and chronology match; exact market ID attribution is not published by Coinbase."
+    ],
+    "unknown": [
+      "Whether all borrowers entered through Coinbase.",
+      "Whether cbXRP issuance reflects new spot purchases or transfers of pre-existing XRP holdings.",
+      "Raw-block collateral balances, borrower LTV distribution and complete liquidation history.",
+      "Reason for prior $240.85M value-secured discrepancy.",
+      "The acquisition source of cbXRP held by borrowers is unknown; it may be minted from existing XRP holdings or acquired as cbXRP on secondary venues."
+    ],
+    "disconfirming": [
+      "Morpho is permissionless; another actor can deploy a matching market.",
+      "Current collateral values are provider-derived, not independently reproduced at an exact block.",
+      "Wrapper issuance and USDC borrowing do not prove XRP spot purchases or net capital inflow."
+    ]
+  },
+  "feature_admission": {
+    "status": "EXPLORATORY_ONLY_NOT_ADMITTED_TO_DIRECTIONAL_MODEL",
+    "reasons": [
+      "Raw-block replication pending.",
+      "Coinbase refresh timezone unknown.",
+      "Prior collateral-value conflict unresolved.",
+      "Borrower-level distribution unavailable.",
+      "Credit collateral is not spot-market net flow."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "data_cutoff_utc": "2026-11-01T13:11:00Z",
+    "horizon": null,
+    "target": null,
+    "probability": null,
+    "confidence": null,
+    "alternatives": [
+      "Borrowing can expand without spot XRP purchases.",
+      "Wrapper supply can reflect custody migration.",
+      "Stablecoin lender supply and XRP collateral demand can be driven by different actors."
+    ],
+    "reason": "No calibrated walk-forward model or synchronized market/chain event features."
+  },
+  "safety": {
+    "real_money_trade": false,
+    "paper_trading_state_mutated": false,
+    "position_product_written": false
+  }
+}

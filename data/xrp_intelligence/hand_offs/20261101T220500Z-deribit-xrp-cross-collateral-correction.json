@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "handoff_id": "deribit-xrp-cross-collateral-correction-20261101T220500Z",
+  "captured_at_utc": "2026-11-01T22:05:00Z",
+  "correction": "I re-read the official Deribit table by column. XRP is marked as a Cross Collateral Currency (✓) and not an Offset Currency (–). X:PM has no haircut stated; X:SM is 15%. The earlier 21:50 artifact incorrectly marked offset_currency=true; this correction supersedes that field.",
+  "prediction_status": "NOT_ISSUED",
+  "next_action": "Use XRP as a full cross-collateral venue capability in the graph, but keep CFM legal eligibility, account enablement, custody integration and actual collateral balances unresolved."
+}

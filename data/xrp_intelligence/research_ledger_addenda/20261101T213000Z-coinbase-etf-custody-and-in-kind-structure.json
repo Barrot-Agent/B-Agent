@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "coinbase-etf-custody-and-in-kind-structure-20261101T213000Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "findings": [
+    {
+      "class": "SEC_CONFIRMED",
+      "text": "Coinbase Custody is named XRP custodian for Bitwise XRP ETF; Coinbase Custody is XRP custodian and Coinbase Inc. is prime broker for Franklin XRP ETF; Coinbase Custody is custodian and Coinbase Inc. is prime broker for Grayscale XRP Trust ETF; 21Shares XRP ETF names Coinbase, BitGo and Anchorage as its three XRP custodians."
+    },
+    {
+      "class": "SEC_CONFIRMED_CHANGE",
+      "text": "Grayscale's September 29, 2026 8-K and October 5 supplement added Anchorage Digital as an additional custodian while explicitly retaining Coinbase as primary custodian. The sponsor had not determined the amount of XRP to move to Anchorage."
+    },
+    {
+      "class": "SEC_CONFIRMED_MARKET_STRUCTURE_CHANGE",
+      "text": "Grayscale enabled in-kind creations and redemptions effective September 29, 2026 with Macquarie Capital and Virtu Americas as authorized participants. APs/designees may exchange XRP directly with the trust, in addition to cash orders."
+    },
+    {
+      "class": "SOURCED_HOLDINGS_AND_FLOWS",
+      "text": "XRP Insights reports approximately 1.1966B XRP and $1.503B AUM across seven XRP ETF/index products. October 26–30 net flow was about +3.39M XRP, while October 30 alone was about -49,932 XRP."
+    },
+    {
+      "class": "DERIVED_SERVICE_FOOTPRINT_NOT_CUSTODY_BALANCE",
+      "text": "Bitwise, Franklin, Grayscale and 21Shares together represent about 898.54M XRP, or 75.1% of the tracker’s total ETF holdings, in funds where SEC filings name Coinbase as custodian and/or prime broker. This is not Coinbase's custody balance: Grayscale and 21Shares have multiple custodians and the allocation is undisclosed."
+    },
+    {
+      "class": "DATA_QUALITY_CORRECTION",
+      "text": "The XRP Insights custody summary is incomplete for current structure: it does not fully reflect Grayscale's September 29 Anchorage addition and the 21Shares SEC filings name three custodians (Coinbase, BitGo and Anchorage), not only Coinbase and BitGo."
+    },
+    {
+      "class": "INFERENCE",
+      "text": "Coinbase is a central institutional XRP infrastructure node across exchange market reference, prime brokerage and custody, but custody concentration is being diversified. Grayscale's in-kind mechanism may reduce cash conversion needs, but does not remove AP sourcing demand and actual use volumes are unknown."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "C1",
+      "claim": "Coinbase is a dominant institutional XRP service provider.",
+      "support": [
+        "SEC-confirmed custody/prime-broker roles across four major funds.",
+        "Coinbase remains Grayscale's primary custodian after Anchorage was added.",
+        "Coinbase is Evernorth's selected principal XRP market and a public x402 protocol contributor."
+      ],
+      "disconfirming": [
+        "Multi-custodian arrangements with BitGo and Anchorage.",
+        "Exact custody balances and execution shares are not disclosed.",
+        "Other venues and liquidity providers remain active."
+      ],
+      "status": "STRONG_INFRASTRUCTURE_POSITION_NOT_EXCLUSIVE"
+    },
+    {
+      "id": "C2",
+      "claim": "Grayscale in-kind creations/redemptions reduce immediate cash-market purchase pressure.",
+      "support": [
+        "APs can deliver XRP directly to the trust and receive XRP directly on redemption."
+      ],
+      "disconfirming": [
+        "APs still need to source or dispose of XRP; no actual in-kind volume or sourcing venue disclosed."
+      ],
+      "status": "MECHANISM_CONFIRMED_USAGE_UNKNOWN"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

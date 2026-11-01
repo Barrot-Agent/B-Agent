@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "revision_id": "coinbase-xrp-collateral-products-20261101T172700Z",
+  "captured_at_utc": "2026-11-01T17:27:00Z",
+  "sources": [
+    {
+      "id": "coinbase-borrow-xrp-collateral-2026-11-01",
+      "url": "https://www.coinbase.com/borrow",
+      "publisher": "Coinbase",
+      "type": "PRIMARY_PRODUCT_DOCUMENTATION",
+      "accessed_at_utc": "2026-11-01T17:27:00Z",
+      "claims": [
+        "Coinbase offers USDC loans powered by Morpho on Base.",
+        "XRP is an eligible collateral asset; Coinbase states a maximum of $100,000 USDC against XRP, subject to holdings and eligibility.",
+        "Collateral is moved onchain to Morpho; Coinbase is the interface, while the loan is permissionlessly sourced/managed on Morpho."
+      ],
+      "limitations": [
+        "Public page describes product limits, not actual XRP loan balances or utilization. Geographic and account eligibility apply."
+      ]
+    },
+    {
+      "id": "coinbase-help-loan-intro-2026-11-01",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+      "publisher": "Coinbase Help",
+      "type": "PRIMARY_PRODUCT_HELP",
+      "accessed_at_utc": "2026-11-01T17:27:00Z",
+      "claims": [
+        "Eligible customers can borrow USDC against XRP and other supported crypto collateral using Morpho on Base.",
+        "Eligible collateral includes XRP; availability can vary by region and loan type."
+      ],
+      "limitations": [
+        "Does not disclose outstanding XRP-backed loan balances."
+      ]
+    },
+    {
+      "id": "coinbase-global-exchange-cross-collateral-2026-11-01",
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "publisher": "Coinbase Global Exchange",
+      "type": "PRIMARY_MARGIN_RULES",
+      "accessed_at_utc": "2026-11-01T17:27:00Z",
+      "claims": [
+        "XRP is among accepted cross-collateral assets for perpetual futures, alongside BTC, ETH, SOL, EURC, USDC and other listed assets.",
+        "Collateral contribution is subject to portfolio limits calculated from average daily quantity."
+      ],
+      "limitations": [
+        "Institutional/Global Exchange cross-collateral is a separate product from Coinbase retail Morpho borrowing; accepted asset does not establish current posted quantity."
+      ]
+    },
+    {
+      "id": "coinbase-loan-backup-cbxrp-2026-11-01",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+      "publisher": "Coinbase Help",
+      "type": "PRIMARY_COLLATERAL_RECOVERY_DOCUMENTATION",
+      "accessed_at_utc": "2026-11-01T17:27:00Z",
+      "claims": [
+        "Coinbase's backup collateral documentation identifies cbXRP on Base as the asset used to add XRP loan collateral.",
+        "The listed cbXRP Base contract is 0xcb585250f852c6c6bf90434ab21a00f02833a4af."
+      ],
+      "limitations": [
+        "Backup collateral path does not establish total cbXRP supply or amount currently locked in loans."
+      ]
+    },
+    {
+      "id": "coinbase-cross-collateral-assets-2026-11-01",
+      "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/what-is-collateral",
+      "publisher": "Coinbase Global Exchange",
+      "type": "PRIMARY_MARGIN_ASSET_LIST",
+      "accessed_at_utc": "2026-11-01T17:27:00Z",
+      "claims": [
+        "Coinbase Global Exchange currently lists XRP as an accepted collateral asset for perpetual futures."
+      ],
+      "limitations": [
+        "Collateral haircuts, caps and regional eligibility remain product-specific."
+      ]
+    }
+  ]
+}

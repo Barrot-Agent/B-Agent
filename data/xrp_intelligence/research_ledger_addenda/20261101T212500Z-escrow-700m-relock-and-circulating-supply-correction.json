@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "escrow-700m-relock-and-circulating-supply-correction-20261101T212500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "correction_type": "APPEND_ONLY_SOURCE_CUTOFF_CORRECTION",
+  "supersedes_prior_snapshot_fields": [
+    "20261101T210615Z-rlusd-xrpl-supply-and-payment-quality.json#Ripple escrow 30.4B at earlier cutoff",
+    "20261101T210615Z-rlusd-supply-drawdown-and-payment-quality.json#rolling 12-release re-escrow 64.2 percent / 4.3B net out",
+    "20261101T212100Z-main-workflows-and-x402-ci-verification.json#any inherited 30.4B escrow statement"
+  ],
+  "findings": [
+    {
+      "class": "PINNED_LEDGER_ONCHAIN_SOURCE_REPORT",
+      "text": "XRP Insights' detailed escrow page pins to validated ledger 108,052,148 at 2026-11-01 20:11 UTC and reports 31.1B XRP in 99 Ripple-owned Escrow objects across 8 owner accounts. It describes reading account_objects at one ledger and each object once by owner."
+    },
+    {
+      "class": "SOURCED_TRANSACTION_SEQUENCE",
+      "text": "After the November 1 1B release, Ripple re-escrowed 700M XRP in three EscrowCreate transactions: 100M at 17:38:21 UTC (D1B6A4B7), 500M at 17:39:51 UTC (71BB0841), and 100M at 17:42:21 UTC (7EB64A81). Net, 300M left escrow this cycle."
+    },
+    {
+      "class": "ROLLING_WINDOW_CORRECTION",
+      "text": "Including November's 700M re-escrow updates the last 12 releases to 12B released, 8.4B re-escrowed (70%), and 3.6B net out. The earlier 64.2% / 7.7B re-escrow / 4.3B net figure was a pre-re-escrow snapshot and is superseded."
+    },
+    {
+      "class": "INTERNAL_DASHBOARD_INCONSISTENCY",
+      "text": "The main XRP Radar page still displays 30.4B escrow and 69.59B circulating, while the detailed escrow page reports 31.1B at pinned ledger 108,052,148. The 700M difference exactly matches the three later EscrowCreate transactions. Treat the main summary as stale or inconsistent until its data cutoff is reconciled."
+    },
+    {
+      "class": "DERIVED_SUPPLY_NOT_FREE_FLOAT",
+      "text": "Using the detailed 31.1B escrow balance and the page's 14.4M burned figure, 100B - 31.1B - 14.4M = 68.8856B XRP not in escrow or permanently burned. This is a derived broad supply measure, not free float; it does not subtract Ripple operational holdings, exchange custody, lost/inaccessible XRP or other encumbrances."
+    },
+    {
+      "class": "SCHEDULE_UPDATE",
+      "text": "The detailed page now lists 32 scheduled unlocks remaining through July 1, 2029, with the next 1B unlock on December 1, 2026 in four objects. The 700M re-escrow created three new objects and pushed the terminal schedule to July 2029."
+    },
+    {
+      "class": "ACTUAL_CAPITAL_DISTINCTION",
+      "text": "The 300M net out of escrow is not proof of 300M XRP sold or entering exchange float. Destinations and economic disposition must be traced separately."
+    },
+    {
+      "class": "RWA_FLOAT_QUALITY",
+      "text": "The current Radar reports $4.33B combined XRP Ledger RWA, but only $276M is classified as distributed transferable float and $4.06B as represented registry notional. About 6.37% is distributed; the headline must not be interpreted as $4.33B of freely transferable investor capital."
+    },
+    {
+      "class": "EXCHANGE_CUSTODY_QUALITY",
+      "text": "Known exchange wallets total 22.45B XRP across 701 wallets and 24 venues. Coinbase is 5.85B across 358 wallets; Upbit 6.43B; Binance 2.78B; SBI VC Trade 60M across 2 wallets. These are attributed wallet balances including cold storage and some backing reserves, not tradable float or net exchange inflows."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "E1",
+      "claim": "The main Radar 30.4B summary is stale relative to the detailed escrow page.",
+      "support": [
+        "Detailed page pins ledger 108,052,148 at 20:11 UTC and shows 31.1B/99 objects.",
+        "Three 17:38–17:42 UTC EscrowCreate transactions total 700M and create three objects.",
+        "Difference between summary and detail is exactly 700M."
+      ],
+      "disconfirming": [
+        "Both pages share the same publisher; no independent raw rippled call was executed in this run."
+      ],
+      "status": "STRONGLY_SUPPORTED_SOURCE_INTERNAL_INCONSISTENCY"
+    },
+    {
+      "id": "E2",
+      "claim": "The November 1 escrow cycle leaves 300M XRP net outside escrow.",
+      "support": [
+        "1B released and 700M re-escrowed in three on-chain objects per pinned detailed page."
+      ],
+      "disconfirming": [
+        "Net outside escrow does not establish market sale, payment, or exchange deposit."
+      ],
+      "status": "SUPPORTED_AS_ESCROW_ACCOUNTING_NOT_MARKET_FLOW"
+    },
+    {
+      "id": "E3",
+      "claim": "The 700M monthly net release translates to recurring spot sell pressure.",
+      "support": [
+        "300M net leaves escrow each month in the reported 12-month series."
+      ],
+      "disconfirming": [
+        "No transaction-level destination or disposition mapping; distribution can include partners, ODL, operational uses, custody and sales."
+      ],
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "E4",
+      "claim": "The $4.33B XRPL RWA headline equals freely transferable investor float.",
+      "support": [
+        "None beyond the combined headline."
+      ],
+      "disconfirming": [
+        "Only $276M is categorized as distributed, while $4.06B is represented registry notional; per-asset dates and issuer-report inputs vary."
+      ],
+      "status": "DISCONFIRMED_BY_DASHBOARD_COMPONENT_BREAKDOWN"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

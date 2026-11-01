@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "decision_id": "xrpl-stablecoin-supply-and-coinbase-circle-economics-20261101T164842Z",
+  "captured_at_utc": "2026-11-01T16:48:42Z",
+  "decisions": [
+    {
+      "topic": "USDC and RLUSD XRPL supply",
+      "decision": "Use XRPLWin same-indexer values for a comparative observation only; require raw validated-ledger reproduction before canonical feature admission.",
+      "reason": "USDC 6.02M and RLUSD 712.52M are same-provider values, but raw XRPL RPC/account_lines were not queried."
+    },
+    {
+      "topic": "USDC/RLUSD AMM pool",
+      "decision": "Classify as a permissionless liquidity route, not a Circle-Ripple partnership.",
+      "reason": "The pool is on XRPL and has visible reserves/trades; no corporate agreement is implied."
+    },
+    {
+      "topic": "Circle global supply",
+      "decision": "Record 30-day net redemptions as issuer-level supply contraction; do not label as capital rotation into XRP.",
+      "reason": "No destination asset or corridor-level flow attribution is provided by Circle's transparency data."
+    },
+    {
+      "topic": "Circle revenue model",
+      "decision": "Treat reserve balances and interest rates as primary Circle earnings drivers while tracking Arc/USYC/CPN/StableFX diversification.",
+      "reason": "Circle reports 95.2% of Q2 revenue from reserve income and explicitly links it to circulation and reserve return rate."
+    },
+    {
+      "topic": "Coinbase strategy",
+      "decision": "Model Coinbase as a diversified distribution/custody/market/credit/derivatives platform, not simply a spot exchange.",
+      "reason": "Q3 filing reports falling spot volume and MTUs but all-time-high average USDC balances, resilient derivatives, and growth in DEX and borrowing/lending."
+    },
+    {
+      "topic": "Coinbase reported net income",
+      "decision": "Do not use Q3 net income as a direct measure of underlying trading strength.",
+      "reason": "$715.0M of $718.7M net income was offset by investment-asset fair-value gains; operating income was $61.7M."
+    }
+  ],
+  "model_policy": {
+    "xrplwin_token_supply": "DESCRIPTIVE_CANDIDATE_PENDING_RAW_RPC_REPRODUCTION",
+    "xrplwin_amm_reserves": "DESCRIPTIVE_CANDIDATE_PENDING_LEDGER_NODE_AND_HISTORICAL_SERIES",
+    "circle_global_usdc_net_issuance": "ISSUER_LEVEL_MACRO_FEATURE_CANDIDATE; NOT_XRP_FLOW",
+    "circle_reserve_income_and_coinbase_distribution": "CORPORATE_FUNDAMENTAL_FEATURE_CANDIDATE; NOT_DIRECTIONAL_XRP_SIGNAL",
+    "coinbase_spot_volume_and_product_mix": "CORPORATE_FUNDAMENTAL_FEATURE_CANDIDATE; NOT_DIRECTIONAL_XRP_SIGNAL",
+    "forecast_status": "NOT_ISSUED"
+  }
+}

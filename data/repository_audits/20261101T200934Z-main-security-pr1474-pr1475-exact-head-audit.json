@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "audit_id": "main-security-pr1474-pr1475-exact-head-audit-20261101T200934Z",
+  "captured_at_utc": "2026-11-01T20:09:34Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+    "protected": true,
+    "branch_protection_details": "403; required reviews and status contexts unknown"
+  },
+  "main_observations": [
+    {
+      "run_id": 41343861391,
+      "workflow": "Cross Analysis",
+      "event": "schedule",
+      "conclusion": "success",
+      "resulting_commit": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "commit_message": "Cross-analysis refresh [skip ci]",
+      "effect": "Only generated_at in sentiment_shift.json changed; XRP and BTC recent/prior entries remained zero and scores/shifts null."
+    },
+    {
+      "run_id": 41345047661,
+      "workflow": "Scheduler Tick",
+      "event": "schedule",
+      "conclusion": "success",
+      "result": "0 entries fired; 1 total queue entry; no queue commit; Everything up-to-date."
+    },
+    {
+      "run_id": 41344696382,
+      "workflow": "Barrot Autonomous Resolver",
+      "event": "schedule",
+      "conclusion": "success",
+      "result": "Five failing workflow names already had open issues; duplicates skipped. COPILOT_ASSIGNEE was unset, so issue and PR assignment steps skipped."
+    }
+  ],
+  "active_main_risks": [
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "contents:write and actions:write; scheduled queue processor commits queue changes to main."
+    },
+    {
+      "path": "scripts/scheduler.py",
+      "risk": "Any existing workflow filename is accepted and dispatched with gh workflow run; no explicit workflow allowlist or per-workflow permission map."
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "Manual dispatch defaults dry_run=false and max_prs=0 (unlimited); mode=all can enumerate all open PRs; code checks mergeability/clean state but no designated-human approval requirement before gh pr merge."
+    },
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "Scheduled contents-writing workflow; latest artifact timestamp advanced despite zero XRP/BTC observations."
+    },
+    {
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "risk": "Issues:write and pull-requests:write; latest run skipped duplicates and did not assign because assignee variable unset, but write capability remains."
+    }
+  ],
+  "prs": [
+    {
+      "number": 1474,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1474",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "head_sha": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "changed_files": 53,
+      "state": "open_draft_unmerged",
+      "ci_run": 41345160046,
+      "tests_passed": 390,
+      "subtests_passed": 8,
+      "gate_run": 41345160075,
+      "gate": "passed; automatic merge disabled",
+      "additional_failures": [
+        {
+          "run_id": 41345140525,
+          "workflow": "task-allocator",
+          "event": "push",
+          "conclusion": "failure",
+          "jobs": 0
+        },
+        {
+          "run_id": 41345139779,
+          "workflow": "force-deploy-space",
+          "event": "push",
+          "conclusion": "failure",
+          "jobs": 0
+        }
+      ],
+      "additional_failure_root_cause": "NOT_ESTABLISHED; Actions returned no jobs and no job-level logs. Keep as unresolved."
+    },
+    {
+      "number": 1475,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1475",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "head_sha": "01dd430afaf61adc93e473055a6647b957f112c2",
+      "changed_files": 8,
+      "state": "open_draft_unmerged",
+      "ci_run": 41345259705,
+      "tests_passed": 403,
+      "subtests_passed": 8,
+      "gate_run": 41345259665,
+      "gate": "passed; automatic merge disabled",
+      "purpose": "fixed-horizon ledger, source registry/hash checks, system append time, LIVE/HISTORICAL_REPLAY separation, no-pooling guards"
+    },
+    {
+      "number": 1464,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+      "head_sha": "037cb2e4941734ea672e454942125c444d4cdcf8",
+      "state": "open_draft_unmerged",
+      "ci_run": 41341935167,
+      "gate_run": 41341935171,
+      "ci_and_gate": "passed"
+    }
+  ],
+  "test_classification": "CI and fail-closed gates are verified at the exact PR heads above. They do not mean the proposals are active on main.",
+  "next_actions": [
+    "Resolve the two zero-job push failures on PR #1474 from run-level check annotations or a controlled non-privileged reproduction; do not guess the root cause.",
+    "Keep PR #1474 and #1475 draft/unmerged until review and explicit approval.",
+    "Reconcile the eight external mutation workflows' protected-environment replacement design before restoring provider/deployment capability.",
+    "Inspect the main scheduler queue and replace arbitrary workflow-name dispatch with an explicit allowlist and per-workflow authorization.",
+    "Complete non-Python dependency and GitHub Action security inventory; prior three Python manifests had no known vulnerabilities but coverage was partial."
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "decision_id": "xrp-feature-admission-actual-capital-platform-coordination-20261101T181734Z",
+  "captured_at_utc": "2026-11-01T18:17:34Z",
+  "decisions": [
+    {
+      "id": "exchange_wallets_not_float",
+      "rule": "Store attributed exchange wallet balances as wallet holdings, not exchange reserves, customer balances or tradable float.",
+      "required_fields": [
+        "wallet_set_version",
+        "wallet_count",
+        "venue_count",
+        "as_of_ledger_or_time",
+        "custody_class",
+        "omnibus_flag",
+        "reserve_flag",
+        "coverage_changes",
+        "same_wallet_delta"
+      ],
+      "double_count_controls": [
+        "Exclude cbXRP reserve from customer-float estimates when already represented in Coinbase wallet totals.",
+        "Exclude Binance-Peg reserve from customer-float estimates when already represented in Binance wallet totals."
+      ]
+    },
+    {
+      "id": "etf_flow_actual_capital",
+      "rule": "Separate fund holdings, cash creations/redemptions, in-kind transfers, index rebalancing and reconstructed observations.",
+      "required_fields": [
+        "fund_id",
+        "issuer_source_url",
+        "as_of_date",
+        "flow_status",
+        "cash_or_in_kind_if_disclosed",
+        "reconstruction_flag",
+        "index_rebalance_flag"
+      ],
+      "exclusions": [
+        "Do not infer net cash inflow from holdings delta alone.",
+        "Do not fill missing GXRP flows with zero.",
+        "Do not treat BITW index rebalancing as pure spot ETF flow."
+      ]
+    },
+    {
+      "id": "stablecoin_supply_by_chain",
+      "rule": "Do not average third-party stablecoin supply dashboards. Use canonical issuer/contract identifiers and pinned chain state.",
+      "required_fields": [
+        "chain_id",
+        "issuer_or_contract",
+        "validated_ledger_or_block",
+        "gateway_balances_or_totalSupply",
+        "mint_events",
+        "burn_events",
+        "captured_at_utc",
+        "source_hash"
+      ],
+      "admission_gate": "Require raw public RPC or documented API retrieval plus independent reconciliation before model feature admission."
+    },
+    {
+      "id": "collateral_layers",
+      "rule": "Separate native XRP, wrapped/custodied XRP, posted collateral, borrow debt, liquidation thresholds, market utilization and actual spot purchases.",
+      "prohibition": "A collateral eligibility flag or wrapped token mint is not a new XRP purchase or net external capital."
+    },
+    {
+      "id": "amm_vs_orderbook",
+      "rule": "AMM TVL, AMM reserves, order-book depth, executable slippage and centralized exchange depth are separate feature families.",
+      "prohibition": "Do not use AMM TVL as total market liquidity."
+    },
+    {
+      "id": "native_lending_status",
+      "rule": "Do not label XRPL native lending active until amendments pass validator voting and actual protocol positions are observed.",
+      "status_at_last_review": "NOT_ACTIVE_AT_2026-11-01T17:06:00Z"
+    },
+    {
+      "id": "x402_metrics",
+      "rule": "Separate logical payment events, raw ledger transactions, unique payers, agents, merchants, facilitators, chains, asset denomination and settled USD value.",
+      "required_fields": [
+        "facilitator_id",
+        "chain_id",
+        "invoice_id_hash",
+        "ledger_tx_hash",
+        "asset_issuer",
+        "asset_code",
+        "amount",
+        "usd_conversion_time",
+        "merchant_id",
+        "agent_id",
+        "verification_status",
+        "batch_id"
+      ],
+      "prohibition": "Do not compare Circle's 98.8% claim with global x402 or XRPL totals without matched denominator, time window, chain coverage and event de-duplication."
+    },
+    {
+      "id": "actual_capital_taxonomy",
+      "rule": "Only verified external cash or asset acquisition flows are counted as new capital; borrowing, wrapping, in-kind transfer, custody migration and valuation changes remain separate.",
+      "categories": [
+        "cash spot purchase",
+        "cash ETF creation/redemption",
+        "in-kind asset contribution",
+        "borrowed stablecoin",
+        "wrapped representation of existing collateral",
+        "custody transfer",
+        "internal wallet migration",
+        "stablecoin cross-chain representation",
+        "valuation change",
+        "AMM liquidity deposit",
+        "protocol fee payment"
+      ]
+    },
+    {
+      "id": "forecast_admission",
+      "rule": "No directional XRP forecast until point-in-time feature snapshots are raw-source verified, protocol dimensions are fixed, walk-forward evaluation is available and source provenance is checked.",
+      "status": "NOT_ISSUED"
+    }
+  ],
+  "prediction_ledger_gap": {
+    "current_status": "IMPLEMENTED_NOT_POPULATED",
+    "known_limitations": [
+      "Feature snapshot SHA is recorded as metadata but the ledger does not itself read and verify the snapshot bytes against that hash.",
+      "Source registry checks can be NOT_CHECKED when no registry is supplied.",
+      "Walk-forward backtesting, calibration and drift evaluation remain separate unfinished components."
+    ],
+    "next_fix": "Make production forecast issuance fail closed unless the source registry and feature snapshot bytes/hash are verified."
+  },
+  "platform_coordination_design": {
+    "status": "DESIGNED_NOT_CONNECTED",
+    "evidence_exchange_schema": [
+      "evidence_id",
+      "task_id",
+      "agent_id",
+      "model_id",
+      "source_url",
+      "publisher",
+      "source_timestamp_utc",
+      "captured_at_utc",
+      "claim",
+      "claim_class",
+      "confidence",
+      "independence_group",
+      "counterevidence",
+      "raw_sha256",
+      "reviewer_id",
+      "disposition"
+    ],
+    "deliberation_rule": "Independent agents submit separate evidence packages; disagreements and minority objections are retained; a red-team reviewer tests counter-hypotheses; no forced unanimity.",
+    "handoff_rule": "A handoff is verified only when identity/authentication, permission scope, input/output hashes, timestamps, and destination receipt are recorded."
+  }
+}

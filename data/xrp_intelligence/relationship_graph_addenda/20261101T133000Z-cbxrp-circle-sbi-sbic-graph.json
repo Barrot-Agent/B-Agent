@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "graph_id": "coinbase-circle-ripple-sbi-sbic-relationship-graph-20261101T1330Z",
+  "nodes": [
+    {
+      "id": "Coinbase",
+      "type": "company"
+    },
+    {
+      "id": "Circle",
+      "type": "company"
+    },
+    {
+      "id": "Ripple",
+      "type": "company"
+    },
+    {
+      "id": "SBI_Holdings",
+      "type": "company"
+    },
+    {
+      "id": "SBI_VC_Trade",
+      "type": "exchange"
+    },
+    {
+      "id": "SBI_Ripple_Asia",
+      "type": "joint_venture"
+    },
+    {
+      "id": "Circle_SBI_Japan_KK",
+      "type": "joint_venture"
+    },
+    {
+      "id": "Arc",
+      "type": "blockchain"
+    },
+    {
+      "id": "Morpho",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "cbXRP",
+      "type": "wrapped_asset"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "JPYSC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "Tokyo_SBIC",
+      "type": "investment_consultation_company"
+    },
+    {
+      "id": "Nagoya_SBIC",
+      "type": "sister_company"
+    },
+    {
+      "id": "Osaka_SBIC",
+      "type": "sister_company"
+    },
+    {
+      "id": "ChatGPT",
+      "type": "AI_service"
+    },
+    {
+      "id": "Kamilah_Stevenson_candidate",
+      "type": "public_creator_identity_candidate"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Coinbase",
+      "to": "cbXRP",
+      "relation": "issues_and_custodies_1_to_1_wrapper",
+      "status": "confirmed_company_disclosure"
+    },
+    {
+      "from": "cbXRP",
+      "to": "XRP",
+      "relation": "represents_ownership_of_custodied_underlying",
+      "status": "confirmed_company_disclosure"
+    },
+    {
+      "from": "cbXRP",
+      "to": "Morpho",
+      "relation": "pledged_as_candidate_market_collateral",
+      "status": "third_party_onchain_analytics; market-to-Coinbase-product mapping unconfirmed"
+    },
+    {
+      "from": "Morpho",
+      "to": "USDC",
+      "relation": "permissionless_credit_market_borrowing_and_supply",
+      "status": "confirmed_protocol_design; market totals secondary"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Morpho",
+      "relation": "loan_interface_and_product_integration_on_Base",
+      "status": "confirmed_company_disclosure"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC_distribution_revenue_share_and_equity_investment",
+      "status": "confirmed_SEC_filings"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relation": "RLUSD_listing_on_Prime_Exchange_and_retail",
+      "status": "confirmed_company_announcements"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer",
+      "status": "confirmed"
+    },
+    {
+      "from": "Circle",
+      "to": "XRP",
+      "relation": "native_USDC_issued_on_XRPL",
+      "status": "confirmed_company_announcement; does not prove XRP purchase demand"
+    },
+    {
+      "from": "Ripple",
+      "to": "Circle",
+      "relation": "USDC_on_XRPL_partnership; Ripple Payments intends USDC alongside RLUSD",
+      "status": "confirmed_company_announcements"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issuer",
+      "status": "confirmed"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "distribution_on_XRPL_Base_Ethereum",
+      "status": "confirmed; Global Exchange collateral use future/not yet live"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "Ripple",
+      "relation": "reported_approximately_9_percent_shareholding_and_SBI_Ripple_Asia_JV",
+      "status": "SBI_company_reported"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "Circle",
+      "relation": "50M_USD_strategic_investment_and_Circle_SBI_Japan_KK",
+      "status": "confirmed_official_corporate_announcement"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "USDC",
+      "relation": "first_and_sole_Japan_distribution_provider_at_launch",
+      "status": "SBI_and_Circle_company_reported"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "RLUSD",
+      "relation": "Japan_distribution_after_JFSA_approval",
+      "status": "confirmed_Ripple_announcement"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "Ripple",
+      "relation": "joint_venture",
+      "status": "confirmed"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "XRP",
+      "relation": "ledger_and_remittance_ecosystem_link; entity says it does not itself handle XRP",
+      "status": "confirmed_with_scope_limit"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "Arc",
+      "relation": "founding_validator",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Arc",
+      "relation": "exchange_participant",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "Morpho",
+      "to": "Arc",
+      "relation": "credit_market_integration",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "Arc",
+      "to": "USDC",
+      "relation": "USDC_gas_asset",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "JPYSC",
+      "relation": "SBI_Shinsei_Trust_issued_stablecoin",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "Nagoya_SBIC",
+      "relation": "sister_company_relationship",
+      "status": "confirmed_SBIC_FAQ"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "Osaka_SBIC",
+      "relation": "sister_company_relationship",
+      "status": "confirmed_SBIC_FAQ"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "ChatGPT",
+      "relation": "portfolio_company_training_course_included_ChatGPT",
+      "status": "confirmed_education_only; no partnership"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "SBI_Holdings",
+      "relation": "no_relationship_established",
+      "status": "unknown; entities must not be conflated"
+    },
+    {
+      "from": "Kamilah_Stevenson_candidate",
+      "to": "XRP",
+      "relation": "public_XRP_content_candidate",
+      "status": "identity/channel match unverified"
+    }
+  ],
+  "disconfirming_or_unknown_edges": [
+    {
+      "from": "Ripple",
+      "to": "Arc",
+      "status": "no public participation identified in reviewed founding-validator/integration announcement; not proof of no relationship"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "XRP",
+      "status": "no public direct relationship identified"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "Circle",
+      "status": "no public direct relationship identified"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "Coinbase",
+      "status": "no public direct relationship identified"
+    }
+  ]
+}

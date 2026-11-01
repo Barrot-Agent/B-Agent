@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "addendum_id": "coinbase-xrp-collateral-products-20261101T172700Z",
+  "captured_at_utc": "2026-11-01T17:27:00Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T172700Z-coinbase-xrp-collateral-products.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T172700Z-coinbase-xrp-collateral-rails.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T172700Z-xrp-collateral-layer-separation.json",
+  "findings": [
+    "Coinbase publicly offers USDC borrowing against XRP through Morpho on Base, with a stated maximum of $100K against XRP for eligible customers.",
+    "Coinbase Global Exchange separately accepts XRP as cross-collateral for perpetual futures, subject to average-daily-quantity portfolio limits.",
+    "Coinbase's collateral recovery documentation identifies cbXRP on Base as the XRP representation used for collateral operations.",
+    "These are verified product capabilities, not evidence of actual XRP loan utilization, posted collateral balances or net XRP purchases.",
+    "Native XRPL LendingProtocol/SingleAssetVault remains inactive; Coinbase/Morpho and Coinbase Global Exchange are external collateral channels."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

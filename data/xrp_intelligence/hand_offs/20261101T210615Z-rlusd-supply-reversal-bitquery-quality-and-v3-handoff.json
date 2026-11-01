@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "rlusd-supply-reversal-bitquery-quality-and-v3-handoff-20261101T210615Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "previous_head": "240e3b3b9618c143d7c2e13a0265cfcf4c4bc601",
+  "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+  "major_findings": [
+    "RLUSD on XRPL is reported around $707.4M on November 1, down 30.21% over 30 days and 43.26% from its October 7 peak; Ethereum holds about $1.71B, or 71% of the two-chain total.",
+    "The Q3 Blockworks summary reported $1.01B XRPL RLUSD and $1.03B XRPL stablecoins; the current chain-specific balance implies about a 30% drawdown, but source and timestamp methods must be reconciled.",
+    "Bitquery found 99.6% of 30-day RLUSD payment count was dust from a 110-wallet cluster carrying only 7,722 RLUSD; this invalidates raw payment count as a broad-adoption feature.",
+    "The remaining 14,600 payments moved $7.33B gross, but the top ten senders represented 82%, issuer operations about 20%, and a $424M each-way loop added $848M gross; this is not net capital.",
+    "The cluster was funded through Binance-labelled PoR wallets, but evidence fits a customer using Binance rails and does not attribute conduct to Binance corporate.",
+    "The bot shutdown occurred near Cross River Bank's October 15 RLUSD announcement; causality is unknown.",
+    "XRP derivatives open-interest providers differ materially; keep provider series separate until contract and venue universes are normalized."
+  ],
+  "research_state": {
+    "forecast_status": "NOT_ISSUED",
+    "new_observations": "CAPTURED_NOT_ADMITTED",
+    "source_provenance": "APPENDED",
+    "relationship_graph": "APPENDED",
+    "feature_policy": "DESIGNED_NOT_EXECUTED"
+  },
+  "repository_state": {
+    "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+    "main_unchanged_by_this_run": true,
+    "pr1464": "open draft unmerged; new append-only evidence commit follows",
+    "pr1474": "open draft unmerged; exact-head CI 390 tests + 8 subtests and fail-closed gate passed",
+    "pr1475": "open draft unmerged; exact-head CI 405 tests + 8 subtests and fail-closed gate passed",
+    "branch_protection": "main reports protected with empty required-status contexts; full protection endpoint 403"
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "next_actions": [
+    "Build same-source daily RLUSD supply history for XRPL and Ethereum and reconcile the October 7 peak to November 1 balance.",
+    "Trace issuer account rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De mint/redemption transactions and cross-chain issuance/burn events around the decline.",
+    "Reproduce Bitquery's 110-wallet cluster from authorized public on-chain datasets and retain behavior-only attribution.",
+    "Build de-dusted RLUSD payment features: unique senders/receivers, transfer-size distribution, top-10 share, issuer-loop share, round-trip adjustment and exchange/custody concentration.",
+    "Normalize TradRadar, Liqwall and Webeconomia OI by venue, contract, quote currency, unit and timestamp before feature admission.",
+    "Continue fixed-horizon outcome semantic binding to immutable source snapshot bytes.",
+    "Keep PRs unmerged; reconcile security quarantine and prediction-integrity changes against current main without force-push.",
+    "Continue SBIC identity, ASK Coin, exact actual-capital phrase, and Camilla Stephenson public-video identity/catalog research."
+  ],
+  "safety": "No main-branch write, merge, force-push, manual workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "addendum_id": "circle-usdc-xrp-shared-deribit-collateral-20261101T221000Z",
+  "captured_at_utc": "2026-11-01T22:10:00Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T221000Z-circle-usdc-xrp-shared-deribit-collateral.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T221000Z-circle-usdc-xrp-shared-deribit-collateral.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T221000Z-circle-usdc-xrp-shared-collateral-model.json",
+  "findings": [
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Deribit lists both USDC and XRP as full cross-collateral currencies. USDC has no stated X:PM or X:SM haircut; XRP has no stated X:PM haircut and a 15% X:SM haircut. Neither is listed as an offset currency."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Deribit states any cross-collateral currency can be used as margin for any derivative position when cross collateral is enabled; therefore USDC and XRP can share the venue's cross-collateral framework."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Circle reports USDC circulation of $70.0B and reserves of $71.4B on October 29, 2026; net circulation change was -$0.8B over seven days, -$3.1B over 30 days and -$5.0B over 365 days."
+    },
+    {
+      "classification": "LIKELY_REGULATORY_MATCH_NOT_CFTC_CONFIRMED",
+      "claim": "Circle Internet Financial, LLC appears to fit the pre-GENIUS payment-stablecoin issuer/reserve/attestation criteria in CFTC 26-17 based on its state money-transmitter licensing, USD reserves in regulated institutions and monthly reserve attestations. This is not a CFTC asset-specific approval."
+    },
+    {
+      "classification": "CANDIDATE_REGULATORY_MATCH",
+      "claim": "RLUSD's issuer is a NYDFS limited-purpose trust company and its reserves include Treasury bills, government money-market funds and cash, but fund look-through is required; RLUSD is not listed in Deribit's current cross-collateral table."
+    },
+    {
+      "classification": "INFERENCE",
+      "claim": "Coinbase's Circle USDC relationship and its CFM/Deribit platform create a shared institutional route where Circle-issued USDC and XRP can both support derivative margin. This is a common-venue relationship, not a direct Circle-Ripple partnership."
+    },
+    {
+      "classification": "UNKNOWN",
+      "claim": "Actual USDC and XRP collateral balances at Deribit/CFM, the amount of USDC on Coinbase versus Deribit, and whether CFM U.S. accounts use the shared pool remain undisclosed."
+    },
+    {
+      "classification": "DISCONFIRMING_EVIDENCE",
+      "claim": "Coinbase's Q3 2026 recognized derivatives-collateral table at September 30 lists BTC and ETH only, no XRP; the period predates the October 1 Deribit integration. No Q4 usage is yet verified."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-USDC-XRP-SHARED-POOL",
+      "statement": "USDC and XRP can both support cross-margin at Deribit, creating a shared collateral utility channel within Coinbase's derivatives ecosystem.",
+      "status": "VENUE_CAPABILITY_CONFIRMED_ACTUAL_USAGE_UNKNOWN",
+      "support": [
+        "Deribit cross-collateral table lists both assets.",
+        "Coinbase owns the CFM/CBBM/Deribit structure under CFTC 26-17."
+      ],
+      "disconfirming": [
+        "CFM actual customer enablement and posted balances are unknown."
+      ],
+      "test": "Find CFM notice, account configuration, Q4 collateral reporting and Deribit asset balances."
+    },
+    {
+      "id": "HYP-USDC-REGULATORY_ADVANTAGE",
+      "statement": "USDC is more operationally ready than RLUSD for this Deribit collateral path because it is explicitly listed as venue cross collateral and appears to meet the CFTC pre-GENIUS payment-stablecoin criteria.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "USDC is listed with no stated venue haircut; Circle issuer/reserve disclosures match the public criteria."
+      ],
+      "disconfirming": [
+        "No CFTC asset-specific approval; RLUSD reserve eligibility may also qualify after look-through, but RLUSD is not on the current venue table."
+      ],
+      "test": "Verify CFM/Deribit asset whitelist and issuer-specific collateral acceptance."
+    },
+    {
+      "id": "HYP-USDC-SUPPLY-CONTRACTION",
+      "statement": "The recent net USDC supply contraction reduces available stablecoin collateral liquidity.",
+      "status": "SPECULATIVE",
+      "support": [
+        "Circle reports -$3.1B 30-day net circulation change."
+      ],
+      "disconfirming": [
+        "No venue balance or allocation data; net supply contraction may be driven by redemptions unrelated to derivatives collateral."
+      ],
+      "test": "Compare exchange, Deribit and Coinbase USDC balances with issuer mint/burn and reserve data."
+    }
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

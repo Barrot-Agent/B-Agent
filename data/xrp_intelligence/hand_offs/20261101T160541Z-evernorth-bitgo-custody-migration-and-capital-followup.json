@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "handoff_id": "evernorth-bitgo-custody-migration-and-capital-followup-20261101T160541Z",
+  "captured_at_utc": "2026-11-01T16:05:41Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T160541Z-evernorth-bitgo-custody-reorganization-and-unattributed-inflows.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T160541Z-evernorth-bitgo-wallet-migration-and-424b3-reconciliation.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T160541Z-evernorth-bitgo-custody-reorganization-and-candidate-inflows.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T160541Z-evernorth-custody-reorganization-not-market-outflow.json",
+  "ledger_addendum": "data/xrp_intelligence/research_ledger_addenda/20261101T160541Z-evernorth-bitgo-custody-reorganization.json",
+  "source_bundle": "data/xrp_intelligence/sources/20261101T160541Z-evernorth-bitgo-custody-trace-source-bundle.json",
+  "highest_impact_findings": [
+    "The apparent 370.35M XRP Evernorth outflow is strongly supported as a BitGo custody reorganization, not a verified sale or exchange deposit.",
+    "Nine Bithomp destination pages opened in this run show the BitGo Initialization Wallet as activator and multisig control; Q-Eternal reports the full 19-account source/destination set is 2-of-3 multisig.",
+    "The ten-destination balance table maps five disclosed categories but omits the separate 600,000 XRP advance-funding subscriber tranche.",
+    "Two later tagged deposits of 5.223608M and 3.846154M XRP to the cash-purchased-tranche wallet total 9.069762M XRP; sender and beneficial owner are not identified, so no purchase is confirmed.",
+    "The SEC filing's $80.7M ELOC summary number is arithmetically consistent with $15.46, while cover and detailed sections use $14.71/$76.8M and $74.4M net; likely stale summary price, no draw verified.",
+    "The SEC prospectus says yield/DeFi participation commenced following Closing, but material deployment was not anticipated before Q4 2026 and all XRP was in cold storage as of the prospectus date; actual deployed XRP and collateral remain unknown."
+  ],
+  "next_actions": [
+    "Fetch raw XRPL transaction JSON and metadata for all source-to-destination custody transfers, reconcile the 16-transfer Q-Eternal batch with the 19 XRP Insights out-of-set movements, and preserve each ledger index/hash.",
+    "Map the 600,000 XRP Advance Funding Subscribers tranche to an address or leave it explicitly unresolved.",
+    "Trace rBKr and the unlabelled sender rUWUJ2F3... across subsequent ledgers; determine whether 5.223608M and 3.846154M are custody/client transfers or new Evernorth purchases.",
+    "Reconcile the 200,137.78 XRP difference without forcing attribution.",
+    "Check Evernorth's next SEC filings and any protocol disclosures for actual XRP lending, collateral, covered calls, basis trades, RLUSD pools or other yield activity.",
+    "Track ELOC draw notices and issuer share issuance; do not count the facility as cash until actual shares are issued and proceeds received.",
+    "Keep custody reorganization out of market-flow features; keep candidate deposits quarantined until ownership and purchase status are verified."
+  ],
+  "repository_state": {
+    "main_sha": "5f7669d4c01fdc53de16a3f0db366926e690f1dc",
+    "research_pr": 1464,
+    "research_pr_head_before_this_append": "c2ae7c70c79d60919dfe2779f51e1be9783c35e2",
+    "research_pr_base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+    "research_pr_divergence_before_append": {
+      "ahead_by": 25,
+      "behind_by": 3,
+      "main_only_changed_path": "ping-pongings/knowledge-base/sentiment_shift.json"
+    },
+    "security_pr_1465": "OPEN_DRAFT_UNMERGED; base 02d9f11404ba80823392ad215c733b49e4536128; not active on main",
+    "prediction_pr_1468": "OPEN_DRAFT_UNMERGED; base 46e9f9d276a862157906dce63a0910e20eb8f7b5; not active on main",
+    "main_privileged_workflows": "Still present; no security proposal merged."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "safety": "Append-only commit to existing research PR branch; no main modification, merge, force-push, secret access, workflow dispatch or trade."
+}

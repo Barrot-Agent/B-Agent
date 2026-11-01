@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "addendum_id": "final-xrp-research-and-v3-handoff-20261101T172900Z",
+  "captured_at_utc": "2026-11-01T17:29:00Z",
+  "latest_market_snapshot": "data/xrp_intelligence/snapshots/20261101T172000Z-xrpl-stablecoin-liquidity-collateral.json",
+  "latest_coinbase_collateral_sources": "data/xrp_intelligence/source_revisions/20261101T172700Z-coinbase-xrp-collateral-products.json",
+  "latest_stablecoin_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T172000Z-xrpl-usdc-rlusd-flutterwave-graph.json",
+  "latest_coinbase_collateral_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T172700Z-coinbase-xrp-collateral-rails.json",
+  "repository_audit": "data/repository_audits/20261101T172900Z-final-current-main-and-pr-verification.json",
+  "findings": [
+    "Coinbase has two distinct XRP collateral channels: USDC loans through Morpho on Base (stated up to $100K against XRP) and Global Exchange cross-collateral for perpetual futures; neither product page discloses actual XRP collateral utilization.",
+    "Circle USDC is native on XRPL but its reported on-ledger supply is only about 6.02M, while Ripple RLUSD is about 711.83M on XRPL; provider timestamps differ.",
+    "XRP/RLUSD AMM TVL is reported around $5.38M versus about $0.26M for USDC/XRP; AMM metrics exclude order-book liquidity and must not be treated as total XRPL liquidity.",
+    "Native XRPL lending remains inactive; vault/loan-broker metadata is not proof of live collateralized lending.",
+    "Circle and Ripple both invested in Flutterwave; current public API docs list RLUSD only on Ethereum and do not list XRPL, despite the earlier XRPL/RLUSD announcement.",
+    "Coinbase Q3 stablecoin revenue and Circle distribution costs are material business economics but not XRP-specific capital flows.",
+    "ASK remains a strong Permission Coin candidate with Coinbase embedded-wallet infrastructure and Base/Polygon token contracts; no direct XRPL link is verified.",
+    "Tokyo SBIC is a distinct SME investment corporation; ChatGPT/Copilot training was for investee companies, not an OpenAI commercial partnership."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

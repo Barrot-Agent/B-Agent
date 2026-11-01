@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "decision_id": "xrp-collateral-usage-and-multirail-admission-20261101T163641Z",
+  "captured_at_utc": "2026-11-01T16:36:41Z",
+  "decisions": [
+    {
+      "topic": "FXRP/RLUSD Morpho market",
+      "decision": "Treat current market data as evidence of live collateralized borrowing but not broad institutional depth.",
+      "reason": "90.22% utilization, $914K available liquidity, 99.04% supplier concentration and 91% top-three borrower concentration."
+    },
+    {
+      "topic": "$280M Sentora vault statement",
+      "decision": "Do not use the August 3 broader vault deposit figure as the current FXRP/RLUSD market size.",
+      "reason": "Current isolated market UI shows $9.35M total size and $9.26M Sentora vault allocation; scopes and dates differ."
+    },
+    {
+      "topic": "Coinbase XRP-backed loans",
+      "decision": "Classify as a product-level USDC/XRP collateral path through Morpho; do not infer Circle is the lender or risk manager.",
+      "reason": "Coinbase provides the interface, Morpho the lending protocol, USDC the debt asset and XRP the collateral; Circle is issuer only."
+    },
+    {
+      "topic": "Circle and XRPL",
+      "decision": "Record Circle as a direct XRPL ecosystem participant through native USDC issuance, Circle Mint and cross-chain swaps.",
+      "reason": "Circle's official XRPL product page explicitly describes native USDC and 1:1 redemption; this does not create native XRP demand by itself."
+    },
+    {
+      "topic": "Circle Arc",
+      "decision": "Treat Arc as a significant competing/complementary institutional payment and credit network; SBI Group is a founding validator.",
+      "reason": "Circle's September 16 release names SBI Group, Coinbase, Binance, BitGo, Morpho and Aave; native XRP/XRPL is not named in the launch release."
+    },
+    {
+      "topic": "SBI Remit capital flow",
+      "decision": "Do not attribute the JPY 2.5T cumulative remittance total to XRP ODL.",
+      "reason": "SBI Remit's May 29 release describes company-wide remittance handling; Ripple confirms an XRP ODL corridor but no corridor volume."
+    },
+    {
+      "topic": "SBI strategic alignment",
+      "decision": "Classify SBI as multi-rail, not exclusively Ripple-aligned.",
+      "reason": "SBI Group has Circle USDC and Arc relationships, Ripple RLUSD/XRP relationships, plus Nium and Fasset remittance partnerships."
+    }
+  ],
+  "model_policy": {
+    "morpho_current_market": "DESCRIPTIVE_CANDIDATE_QUARANTINED_PENDING_RAW_RPC_AND_HISTORICAL_SERIES",
+    "coingecko_market_page": "DESCRIPTIVE_ONLY_PROVIDER_TIMESTAMP_NOT_SYNCHRONIZED",
+    "coinbase_xrp_collateral": "PRODUCT_FEATURE_ONLY; LIVE_MARKET_CONTRACT_PARAMETERS_PENDING",
+    "circle_native_usdc_xrpl": "ECOSYSTEM_RELATIONSHIP_FEATURE_ONLY; NOT_NATIVE_XRP_DEMAND",
+    "sbi_remit_jpy_2_5t": "COMPANY_WIDE_REMITTANCE_METRIC; EXCLUDE_FROM_XRP_ODL_VOLUME",
+    "circle_arc": "INSTITUTIONAL_NETWORK_EVENT_FEATURE; NOT_XRP_DIRECTIONAL_FEATURE",
+    "forecast_status": "NOT_ISSUED"
+  }
+}

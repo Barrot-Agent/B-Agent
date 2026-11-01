@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "graph_id": "xrp-market-exchange-etf-custody-derivatives-graph-20261101T1420Z",
+  "captured_at_utc": "2026-11-01T14:20:00Z",
+  "nodes": [
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "Coinbase",
+      "type": "exchange_custodian"
+    },
+    {
+      "id": "Binance",
+      "type": "exchange_custodian"
+    },
+    {
+      "id": "Upbit",
+      "type": "exchange"
+    },
+    {
+      "id": "cbXRP",
+      "type": "wrapped_asset"
+    },
+    {
+      "id": "Binance_Peg_XRP",
+      "type": "wrapped_asset"
+    },
+    {
+      "id": "US_XRP_ETFs",
+      "type": "funds"
+    },
+    {
+      "id": "Morpho",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "XRPL",
+      "type": "ledger"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "Derivatives_Venues",
+      "type": "markets"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relation": "holds_attributed_exchange_and_custody_wallets_5.85B_XRP_including_cbxrp_reserve",
+      "status": "secondary_wallet_label_aggregation"
+    },
+    {
+      "from": "Coinbase",
+      "to": "cbXRP",
+      "relation": "150.9M_XRP_reserve_backing",
+      "status": "company_PoR_plus_secondary_wallet_attribution"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP",
+      "relation": "2.78B_attributed_wallets_including_wrapped_reserves",
+      "status": "secondary_wallet_label_aggregation"
+    },
+    {
+      "from": "Binance",
+      "to": "Binance_Peg_XRP",
+      "relation": "325.8M_XRP_reserve_backing",
+      "status": "secondary_wallet_attribution"
+    },
+    {
+      "from": "US_XRP_ETFs",
+      "to": "XRP",
+      "relation": "1.20B_reported_holdings_including_BITW",
+      "status": "issuer_holdings_aggregation_with_GXRP_flow_gap"
+    },
+    {
+      "from": "Morpho",
+      "to": "cbXRP",
+      "relation": "candidate_permissionless_collateral_market",
+      "status": "secondary_market_analytics; exact Coinbase retail mapping unknown"
+    },
+    {
+      "from": "XRPL",
+      "to": "XRP",
+      "relation": "transaction_fee_burn",
+      "status": "confirmed_protocol_mechanic"
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL",
+      "relation": "approximately_707M_USD_supply",
+      "status": "secondary_onchain_aggregation"
+    },
+    {
+      "from": "USDC",
+      "to": "XRPL",
+      "relation": "native_issuance",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Derivatives_Venues",
+      "to": "XRP",
+      "relation": "perpetual_open_interest_and_funding",
+      "status": "provider_aggregates_not_reconciled"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H_EXCHANGE_OUTFLOW",
+      "claim": "Recent 7-day same-wallet exchange outflow may indicate lower exchange-held inventory.",
+      "support": [
+        "-161.1M XRP over 7 days"
+      ],
+      "counterevidence": [
+        "30-day same-wallet net change only -12.7M",
+        "wallet migration, cold-storage changes and unlabeled wallets can mimic customer withdrawals"
+      ],
+      "status": "descriptive_only"
+    },
+    {
+      "id": "H_ETF_DEMAND",
+      "claim": "Spot ETF holdings show persistent institutional unit accumulation over the latest two weeks.",
+      "support": [
+        "+3.39M XRP week Oct26-30 and +1.53M prior week"
+      ],
+      "counterevidence": [
+        "Oct30 daily flow -49.9K",
+        "GXRP daily flow gap remains",
+        "holdings and flows are aggregated by one provider"
+      ],
+      "status": "weak_positive_flow_evidence_not_price_signal"
+    },
+    {
+      "id": "H_DERIVATIVES_POSITIONING",
+      "claim": "Perpetual positioning is modestly net-long by funding, but leverage concentration and total OI are uncertain.",
+      "support": [
+        "Kodexius funding +0.0055% and Binance 49.3% of its covered OI"
+      ],
+      "counterevidence": [
+        "Liqwall OI $1.33B versus Kodexius $759.93M",
+        "different contract coverage and timestamps"
+      ],
+      "status": "unresolved"
+    },
+    {
+      "id": "H_WRAPPER_COLLATERAL",
+      "claim": "Wrapped XRP reserves and DeFi collateral increase XRP utility while reducing immediately redeemable or unencumbered supply.",
+      "support": [
+        "150.9M cbXRP reserve and 325.8M Binance-Peg reserve"
+      ],
+      "counterevidence": [
+        "wrapped reserves are redeemable backing, not permanently locked supply",
+        "wallet labels and DeFi totals overlap"
+      ],
+      "status": "plausible_but_not_a_free_float_measure"
+    }
+  ],
+  "red_team_objections": [
+    "Never call the 22.45B exchange-wallet total tradable float.",
+    "Do not add Coinbase cbXRP reserves twice when reconciling exchange and DeFi categories.",
+    "Do not treat ETF AUM change as flow; use issuer holdings unit changes.",
+    "Do not average derivatives OI across providers with different contract coverage.",
+    "Do not use stale RWA registry notionals as current transferable collateral."
+  ]
+}

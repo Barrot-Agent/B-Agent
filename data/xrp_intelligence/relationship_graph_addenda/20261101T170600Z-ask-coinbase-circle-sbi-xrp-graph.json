@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "graph_id": "ask-coinbase-circle-sbi-xrp-graph-20261101T170600Z",
+  "captured_at_utc": "2026-11-01T17:06:00Z",
+  "nodes": [
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "native_crypto_asset",
+      "status": "confirmed"
+    },
+    {
+      "id": "xrpl",
+      "name": "XRP Ledger",
+      "type": "public_blockchain",
+      "status": "confirmed"
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "type": "exchange_custody_wallet_and_financial_platform",
+      "status": "confirmed"
+    },
+    {
+      "id": "circle",
+      "name": "Circle Internet Group",
+      "type": "stablecoin_issuer_and_payment_network",
+      "status": "confirmed"
+    },
+    {
+      "id": "usdc",
+      "name": "USDC",
+      "type": "stablecoin",
+      "status": "confirmed"
+    },
+    {
+      "id": "binance",
+      "name": "Binance",
+      "type": "crypto_exchange_and_custody_platform",
+      "status": "confirmed"
+    },
+    {
+      "id": "permission",
+      "name": "Permission",
+      "type": "AI_and_user-permission_platform",
+      "status": "confirmed"
+    },
+    {
+      "id": "ask",
+      "name": "Permission Coin (ASK)",
+      "type": "omnichain_utility_token",
+      "status": "strong_candidate_identity"
+    },
+    {
+      "id": "base",
+      "name": "Base",
+      "type": "EVM_blockchain",
+      "status": "confirmed"
+    },
+    {
+      "id": "polygon",
+      "name": "Polygon",
+      "type": "EVM_blockchain",
+      "status": "confirmed"
+    },
+    {
+      "id": "layerzero",
+      "name": "LayerZero",
+      "type": "crosschain_messaging_and_OFT_protocol",
+      "status": "confirmed"
+    },
+    {
+      "id": "stargate",
+      "name": "Stargate",
+      "type": "crosschain_bridge",
+      "status": "confirmed"
+    },
+    {
+      "id": "sbic_tokyo",
+      "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "type": "SME_investment_and_consultation_corporation",
+      "status": "confirmed_distinct_entity"
+    },
+    {
+      "id": "vost",
+      "name": "VOST",
+      "type": "training_provider",
+      "status": "confirmed_by_SBIC_notice"
+    },
+    {
+      "id": "sbi_group",
+      "name": "SBI Holdings / SBI Group",
+      "type": "financial_conglomerate",
+      "status": "confirmed_distinct_from_sbic_tokyo"
+    },
+    {
+      "id": "sbi_remit",
+      "name": "SBI Remit",
+      "type": "international_remittance_provider",
+      "status": "confirmed"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple",
+      "type": "payments_and_stablecoin_company",
+      "status": "confirmed"
+    },
+    {
+      "id": "arc",
+      "name": "Circle Arc",
+      "type": "institutional_payment_and_credit_network",
+      "status": "confirmed"
+    }
+  ],
+  "edges": [
+    {
+      "from": "circle",
+      "to": "usdc",
+      "relation": "issues_through_regulated_affiliates",
+      "evidence": [
+        "circle-usdc-economics-2026-10-16",
+        "circle-2026q2-10q"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "usdc",
+      "to": "xrpl",
+      "relation": "native_issued_stablecoin_on",
+      "evidence": [
+        "circle-native-usdc-xrpl"
+      ],
+      "confidence": "confirmed_from_prior_research"
+    },
+    {
+      "from": "circle",
+      "to": "coinbase",
+      "relation": "USDC_distribution_and_revenue_sharing_relationship_renewed_on_same_terms",
+      "evidence": [
+        "coinbase-2026q3-10q",
+        "circle-2026q2-10q"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "coinbase",
+      "to": "usdc",
+      "relation": "distribution_and_platform_balances_average_22B_in_Q3_2026",
+      "evidence": [
+        "coinbase-q3-2026-ir-2026-10-29"
+      ],
+      "confidence": "company_reported"
+    },
+    {
+      "from": "coinbase",
+      "to": "xrp",
+      "relation": "principal_market_for_Evernorth_financial_reporting_and_execution_relationship",
+      "evidence": [
+        "evernorth-424b3-2026-10-30"
+      ],
+      "confidence": "confirmed_from_prior_SEC_capture"
+    },
+    {
+      "from": "coinbase",
+      "to": "xrp",
+      "relation": "XRP_eligible_collateral_for_Coinbase_USDC_borrow_product_via_Morpho",
+      "evidence": [
+        "coinbase-borrow-product-current",
+        "coinbase-xrp-morpho-loans-2026-02-18"
+      ],
+      "confidence": "confirmed_product_live_utilization_pending"
+    },
+    {
+      "from": "circle",
+      "to": "binance",
+      "relation": "100M_equity_investment_and_five_year_USDC_promotion_agreement",
+      "evidence": [
+        "circle-binance-2026-09-17-8k"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "binance",
+      "to": "xrp",
+      "relation": "major_XRP_trading_and_custody_venue",
+      "evidence": [
+        "public_exchange_market_data"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "permission",
+      "to": "ask",
+      "relation": "issues_and_operates_Permission_Coin",
+      "evidence": [
+        "permission-ask-contracts"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "coinbase",
+      "to": "permission",
+      "relation": "embedded_wallet_infrastructure_provider_for_Permission_ASK_wallet",
+      "evidence": [
+        "permission-ask-wallet-coinbase-2026-09-22"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "ask",
+      "to": "base",
+      "relation": "official_OFT20_contract_deployed_on",
+      "evidence": [
+        "permission-ask-contracts"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "ask",
+      "to": "polygon",
+      "relation": "official_OFT20_contract_deployed_on",
+      "evidence": [
+        "permission-ask-contracts"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "ask",
+      "to": "layerzero",
+      "relation": "uses_OFT_standard_and_messaging",
+      "evidence": [
+        "permission-ask-contracts"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "ask",
+      "to": "stargate",
+      "relation": "officially_integrated_for_supported_chain_bridging",
+      "evidence": [
+        "permission-ask-contracts"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "ask",
+      "to": "xrpl",
+      "relation": "no_official_contract_or_direct_integration_identified",
+      "evidence": [
+        "permission-ask-contracts"
+      ],
+      "confidence": "no_verified_edge"
+    },
+    {
+      "from": "sbic_tokyo",
+      "to": "vost",
+      "relation": "engaged_training_provider_for_investee_company_AI_course",
+      "evidence": [
+        "sbic-ai-training-2025-06-12"
+      ],
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbic_tokyo",
+      "to": "sbi_group",
+      "relation": "separate_legal_entities_no_affiliation_established_by_name_similarity",
+      "evidence": [
+        "sbic-tokyo-profile"
+      ],
+      "confidence": "disambiguation"
+    },
+    {
+      "from": "sbi_group",
+      "to": "arc",
+      "relation": "named_founding_validator_cohort_member_phased_rollout",
+      "evidence": [
+        "circle-arc-mainnet-2026-09-16"
+      ],
+      "confidence": "company_reported_cohort"
+    },
+    {
+      "from": "sbi_remit",
+      "to": "xrp",
+      "relation": "operational_XRP_bridge_remittance_corridor_with_SBI_VC_Trade_and_partners",
+      "evidence": [
+        "sbi-remit-xrp-corridor-2023-09-06"
+      ],
+      "confidence": "confirmed_historical_operational_corridor_current_volume_unknown"
+    },
+    {
+      "from": "ripple",
+      "to": "sbi_remit",
+      "relation": "Ripple_Payments_ODL_infrastructure_relationship",
+      "evidence": [
+        "sbi-remit-xrp-corridor-2023-09-06"
+      ],
+      "confidence": "confirmed"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Coinbase's expanding stablecoin, custody, lending and institutional market stack increases channels through which XRP can be accessed and used as collateral.",
+      "support": [
+        "Q3 average USDC on Coinbase $22B",
+        "10.7% company-reported trading-volume market share",
+        "Evernorth names Coinbase principal XRP market",
+        "Coinbase offers XRP-backed USDC borrowing through Morpho"
+      ],
+      "counter_evidence": [
+        "No XRP-specific net-purchase or loan-utilization series established",
+        "Stablecoin revenue and platform balances are not XRP flows",
+        "Principal-market designation is not proof of exclusive liquidity"
+      ],
+      "status": "PLAUSIBLE_CHANNEL_NOT_CAUSALLY_ESTABLISHED"
+    },
+    {
+      "id": "H2",
+      "claim": "Circle's USDC distribution and native XRPL issuance may improve dollar liquidity available on XRPL, with possible indirect effects on XRP utility.",
+      "support": [
+        "Circle supports native USDC on XRPL",
+        "Circle reports large USDC mint/redeem and transaction activity"
+      ],
+      "counter_evidence": [
+        "H1 $36T volume is chain-aggregated, not XRPL-specific",
+        "USDC is distinct from XRP",
+        "No matched ledger evidence shows USDC activity causing net XRP demand"
+      ],
+      "status": "PLAUSIBLE_ECOSYSTEM_LIQUIDITY_CHANNEL"
+    },
+    {
+      "id": "H3",
+      "claim": "Circle's Binance equity and USDC distribution deal could improve USDC availability on an exchange with major XRP markets.",
+      "support": [
+        "SEC 8-K confirms $100M Circle share placement and five-year USDC promotion agreement",
+        "Binance is a major XRP venue"
+      ],
+      "counter_evidence": [
+        "No XRP market-making, reserve purchase or XRP-specific incentive is disclosed",
+        "Agreement is tied to USDC held through Circle wallet infrastructure"
+      ],
+      "status": "INDIRECT_RELATIONSHIP_ONLY"
+    },
+    {
+      "id": "H4",
+      "claim": "Permission Coin ASK's Coinbase embedded-wallet integration creates a Coinbase infrastructure path for ASK.",
+      "support": [
+        "Permission confirms Coinbase embedded wallet and key management",
+        "Official ASK contracts exist on Base and Polygon"
+      ],
+      "counter_evidence": [
+        "Not a Coinbase exchange listing",
+        "No XRPL/XRP contract listed",
+        "Cross-chain-ready wallet language does not establish XRPL support"
+      ],
+      "status": "CONFIRMED_WALLET_INFRASTRUCTURE_RELATIONSHIP_NO_XRP_LINK"
+    },
+    {
+      "id": "H5",
+      "claim": "SBI's institutional strategy is multi-rail rather than exclusively aligned with XRP.",
+      "support": [
+        "SBI Remit XRP corridor",
+        "SBI Group Circle Arc validator cohort and USDC relationships"
+      ],
+      "counter_evidence": [
+        "Current corridor-level XRP volume and Circle Arc production settlement volumes are undisclosed"
+      ],
+      "status": "SUPPORTED_MULTI_RAIL_INFERENCE"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

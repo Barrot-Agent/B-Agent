@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrpl-usdc-rlusd-circle-coinbase-economics-20261101T164842Z",
+  "captured_at_utc": "2026-11-01T16:48:42Z",
+  "subject": "Circle USDC and Ripple RLUSD supply/liquidity on XRPL, Circle global issuance and Coinbase distribution economics",
+  "xrpl_tokens": {
+    "indexer": "XRPLWin / WinDB",
+    "indexer_note": "XRPLWin states WinDB follows the ledger by a few minutes. The page says current supply/holder values are exact according to its indexer, while historical supply/holder series are reconstructed from daily balances. Raw XRPL account_lines/gateway_balances were not independently queried in this run.",
+    "last_token_activity_utc": "2026-11-01T16:00:00Z",
+    "retrieval_time_utc": "2026-11-01T16:48:42Z",
+    "usdc": {
+      "issuer": "rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE",
+      "currency_hex": "5553444300000000000000000000000000000000",
+      "supply": 6020000,
+      "holders": 10806,
+      "trustlines": 17631,
+      "trustlines_with_positive_balance_pct": 61.3,
+      "trades_24h": 1756,
+      "amm_trades_24h": 654,
+      "volume_24h_usdc": 107537.19,
+      "payments_24h": 175,
+      "sent_24h_usdc": 6152.37,
+      "top10_account_supply_share_pct": 80.93,
+      "largest_amm_pools": [
+        {
+          "pair": "USDC/XRP",
+          "usdc_reserve": 130290,
+          "xrp_reserve": 104300,
+          "tvl_xrp": 208590,
+          "lp_holders": 161,
+          "trades_30d": 33522
+        },
+        {
+          "pair": "USDC/RLUSD",
+          "usdc_reserve": 26170,
+          "rlusd_reserve": 25080,
+          "tvl_xrp": 37231,
+          "lp_holders": 24,
+          "trades_30d": 144
+        }
+      ]
+    },
+    "rlusd": {
+      "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+      "currency_hex": "524C555344000000000000000000000000000000",
+      "supply": 712520000,
+      "holders": 68751,
+      "trustlines": 122422,
+      "trustlines_with_positive_balance_pct": 56.2,
+      "trades_24h": 11638,
+      "amm_trades_24h": 2219,
+      "volume_24h_rlusd": 930479.5830563817,
+      "payments_24h": 49248,
+      "sent_24h_rlusd": 24307044.37385634,
+      "top10_account_supply_share_pct": 83.3057,
+      "largest_amm_pools": [
+        {
+          "pair": "RLUSD/XRP",
+          "rlusd_reserve": 2340000,
+          "xrp_reserve": 1870000,
+          "tvl_xrp": 3739018.3,
+          "lp_holders": 2838,
+          "trades_30d": 35388
+        },
+        {
+          "pair": "RLUSD/USDC",
+          "rlusd_reserve": 25080,
+          "usdc_reserve": 26170,
+          "tvl_xrp": 37231.02,
+          "lp_holders": 24,
+          "trades_30d": 144
+        }
+      ]
+    },
+    "comparisons": {
+      "rlusd_to_usdc_xrpl_supply_multiple": 118.36,
+      "usdc_xrpl_share_of_circle_global_circulation_pct": 0.0086,
+      "largest_rlusd_xrp_pool_to_usdc_xrp_pool_tvl_multiple": 17.92,
+      "caveat": "Same-indexer comparison. Account-level top-holder concentration does not establish beneficial-owner concentration; 24h sent/payment values are not verified external commerce or net capital flows."
+    }
+  },
+  "circle_global_usdc": {
+    "source_id": "circle-transparency-2026-10-29",
+    "as_of_date": "2026-10-29",
+    "circulation_usd": 70000000000,
+    "reserve_assets_usd": 71400000000,
+    "issuance_redemption": {
+      "days_7": {
+        "minted_usd": 10900000000,
+        "redeemed_usd": 11700000000,
+        "net_usd": -800000000
+      },
+      "days_30": {
+        "minted_usd": 47900000000,
+        "redeemed_usd": 51000000000,
+        "net_usd": -3100000000
+      },
+      "days_365": {
+        "minted_usd": 362100000000,
+        "redeemed_usd": 367100000000,
+        "net_usd": -5000000000
+      }
+    },
+    "coverage_ratio_pct": 102,
+    "interpretation": "Circle-reported global circulation contracted over the preceding 30 days. This is issuer-level net redemption, not evidence of rotation into XRP or any other cryptoasset."
+  },
+  "circle_q2_2026_sec": {
+    "period_end": "2026-06-30",
+    "usdc_circulation_end_usd": 73269000000,
+    "usdc_circulation_average_usd": 76524000000,
+    "usdc_on_coinbase_platform_end_usd": 12442000000,
+    "usdc_on_coinbase_daily_weighted_average_pct": 19.5,
+    "onchain_transaction_volume_q2_usd": 14800000000000,
+    "onchain_transaction_volume_yoy_pct": 151,
+    "total_revenue_and_reserve_income_q2_usd": 701000000,
+    "reserve_income_share_of_total_revenue_q2_pct": 95.2,
+    "reserve_return_rate_q2_pct": 3.5,
+    "reserve_return_rate_q2_2025_pct": 4.1,
+    "distribution_costs_to_coinbase_q2_usd": 324600000,
+    "distribution_costs_to_coinbase_h1_usd": 655300000,
+    "reserve_income_yield_sensitivity": "Circle attributed approximately $113.9M of Q2 reserve-income growth offset to a 66bp decline in average yields, while higher average daily USDC circulation contributed approximately $147.4M of increase.",
+    "caveat": "Company filing data; USDC on Coinbase platform includes corporate-held and non-custodial balances under Circle's definition, not only customer custodial assets."
+  },
+  "coinbase_q3_2026_sec": {
+    "period_end": "2026-09-30",
+    "stablecoin_revenue_q3_usd": 306905000,
+    "stablecoin_revenue_q3_2025_usd": 324534000,
+    "stablecoin_revenue_q3_yoy_change_pct": -5,
+    "stablecoin_revenue_9m_usd": 904487000,
+    "stablecoin_revenue_9m_2025_usd": 907485000,
+    "consumer_spot_volume_q3_yoy_change_pct": -59,
+    "institutional_spot_volume_q3_yoy_change_pct": -53,
+    "total_transaction_revenue_q3_usd": 590224000,
+    "total_transaction_revenue_q3_2025_usd": 1046260000,
+    "net_income_q3_usd": 718697000,
+    "operating_income_q3_usd": 61669000,
+    "gains_on_crypto_assets_held_for_investment_q3_usd": 715022000,
+    "gains_primarily_from": "Bitcoin and Ethereum fair-value remeasurement",
+    "assets_on_platform_usd": 376600000000,
+    "assets_on_platform_2025_usd": 515900000000,
+    "monthly_transacting_users_q3_m": 7.4,
+    "monthly_transacting_users_q3_2025_m": 9.3,
+    "management_commentary": [
+      "Average USDC held on Coinbase products reached an all-time high",
+      "Coinbase renewed its Circle arrangement on the same terms",
+      "Derivatives trading volume was resilient",
+      "DEX trading and balances borrowed/lent through Coinbase grew"
+    ],
+    "interpretation": "Coinbase's strategic mix is shifting toward stablecoins, derivatives, onchain trading and credit while spot volumes and transacting users declined. Q3 net income is not equivalent to underlying trading strength because $715.0M of investment-asset gains largely explains the result."
+  },
+  "data_quality": {
+    "secondary_usdc_provider_comparator": {
+      "provider": "usdc.cool",
+      "reported_supply_usd_approx": 4470000,
+      "crawl_age_days_approx": 4,
+      "status": "STALE_NOT_SYNCHRONIZED_NOT_USED_FOR_CURRENT_SUPPLY"
+    },
+    "raw_xrpl_rpc_retrieved": false,
+    "circle_global_supply_timestamp": "2026-10-29",
+    "xrplwin_token_activity_timestamp": "2026-11-01T16:00:00Z",
+    "coinbase_and_circle_filings_periods_differ": true,
+    "feature_admission": "NONE",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "hypotheses": [
+    {
+      "id": "S1",
+      "statement": "Circle has a direct XRPL presence through native USDC, but its current XRPL supply is small relative to global USDC and to RLUSD on XRPL.",
+      "classification": "SUPPORTED_BY_PROVIDER_SNAPSHOT",
+      "counter_evidence": "XRPLWin indexer data is not raw RPC reproduction; current supply and pools can change."
+    },
+    {
+      "id": "S2",
+      "statement": "Ripple RLUSD has substantially greater XRPL token supply and deeper RLUSD/XRP AMM liquidity than Circle USDC/XRP.",
+      "classification": "SUPPORTED_BY_SAME_INDEXER_SNAPSHOT",
+      "counter_evidence": "Pool reserves are point-in-time and not executable depth; beneficial-owner attribution and full market coverage are unknown."
+    },
+    {
+      "id": "S3",
+      "statement": "The XRPL RLUSD/USDC AMM pool creates a permissionless conversion route between Ripple and Circle stablecoins.",
+      "classification": "CONFIRMED_POOL_EXISTS",
+      "counter_evidence": "Pool size and 30-day trade count are small; no formal Circle-Ripple partnership is implied."
+    },
+    {
+      "id": "S4",
+      "statement": "Circle's 30-day net USDC redemption could reflect weakening stablecoin demand.",
+      "classification": "PLAUSIBLE_BUT_UNPROVEN",
+      "counter_evidence": "Redemptions may reflect treasury reallocation, seasonal settlement, rate expectations or market-maker inventory; no link to XRP rotation is evidenced."
+    },
+    {
+      "id": "S5",
+      "statement": "Circle's earnings are highly exposed to reserve balances and interest rates, while Coinbase is a financially material distribution partner.",
+      "classification": "CONFIRMED_BY_SEC_FILINGS",
+      "counter_evidence": "Circle is expanding Arc, USYC, CPN and StableFX; product diversification may reduce long-run dependence."
+    },
+    {
+      "id": "S6",
+      "statement": "Coinbase is diversifying away from dependence on spot trading toward stablecoin distribution, derivatives, DEX and credit products.",
+      "classification": "SUPPORTED_BY_Q3_2026_SEC_FILING",
+      "counter_evidence": "Spot volume weakness may be cyclical; it does not prove permanent structural decline or XRP-specific weakness."
+    },
+    {
+      "id": "S7",
+      "statement": "Stablecoins on XRPL may complement XRP liquidity while also substituting for XRP as a bridge in some settlement routes.",
+      "classification": "COMPETING_CAUSAL_HYPOTHESES",
+      "counter_evidence": "No corridor-level or AMM flow decomposition establishes substitution or complementarity at scale."
+    }
+  ],
+  "model_controls": {
+    "feature_admission": "NONE",
+    "forecast_status": "NOT_ISSUED",
+    "reason": "Indexer observations lack raw RPC reproduction and historical point-in-time series; issuer and SEC metrics are not XRP directional features without causal validation."
+  }
+}

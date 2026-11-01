@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "addendum_id": "coinbase-circle-sbi-arc-cbxrp-ledger-addendum-20261101T1400Z",
+  "captured_at_utc": "2026-11-01T14:00:00Z",
+  "ledger_policy": "append_only; historical snapshots and source records are not rewritten",
+  "prior_master_ledger": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/blob/research/binance-xrp-hack-graph-20261101T0108Z/data/xrp_intelligence/research_ledger.json",
+    "ref": "research/binance-xrp-hack-graph-20261101T0108Z",
+    "latest_prior_snapshot_id": "XRP-20261101T031418Z-ATTACKER-WALLET-SOURCE-PROVENANCE-CORRECTION"
+  },
+  "current_research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+  "current_research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "research_branch_base_main_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+  "latest_main_sha_observed": "02d9f11404ba80823392ad215c733b49e4536128",
+  "artifacts": {
+    "source_bundle": "data/xrp_intelligence/sources/20261101T140000Z-coinbase-circle-sbi-arc-cbxrp-source-bundle.json",
+    "snapshot": "data/xrp_intelligence/snapshots/20261101T140000Z-coinbase-circle-sbi-arc-cbxrp-financial-snapshot.json",
+    "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T140000Z-coinbase-circle-sbi-arc-cbxrp-graph.json",
+    "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T140000Z-coinbase-circle-cbxrp-and-actual-capital-decisions.json",
+    "handoff": "data/xrp_intelligence/hand_offs/20261101T140000Z-coinbase-circle-sbi-arc-cbxrp-handoff.json"
+  },
+  "source_ids": [
+    "coinbase-q3-2026-10q",
+    "circle-q2-2026-10q",
+    "coinbase-cbxrp-proof-of-reserves-20261101",
+    "coinbase-wrapped-assets-policy",
+    "coinbase-xrp-loans",
+    "coinbase-loan-health-help",
+    "morphowatch-cbxrp-usdc-20261101T1311Z",
+    "ripple-coinbase-rlusd-20261028",
+    "circle-usdc-xrpl-20250612",
+    "ripple-circle-usdc-xrpl-20250612",
+    "circle-binance-strategic-partnership-20260922",
+    "circle-arc-mainnet-20260916",
+    "sbi-circle-investment-20250609",
+    "sbi-remit-xrp-corridors-20230906",
+    "sbi-ripple-asia-tokenized-deposits-poc-20260226",
+    "sbi-ripple-rlusd-japan-20260624",
+    "sbic-official-faq",
+    "sbic-chatgpt-training-20250612",
+    "circle-q3-2026-results-date"
+  ],
+  "evidence_classification": {
+    "confirmed_primary_source": [
+      "Coinbase and Circle SEC filings",
+      "Coinbase wrapped-asset and loan product disclosures",
+      "SBI Remit XRP corridor announcement",
+      "Circle native USDC on XRPL announcement",
+      "Ripple Coinbase RLUSD announcement",
+      "SBIC official identity and training pages"
+    ],
+    "company_reported": [
+      "Coinbase cbXRP reserve page",
+      "SBI reported Ripple shareholding",
+      "Circle/Binance strategic investment and commercial agreement"
+    ],
+    "secondary_unverified": [
+      "Morpho Watch candidate market aggregates"
+    ],
+    "inference": [
+      "Coinbase multi-issuer platform strategy",
+      "Circle distribution diversification",
+      "cbXRP collateral credit utility and encumbrance"
+    ],
+    "unknown": [
+      "exact Coinbase Morpho market ID",
+      "current Morpho position-level risk distribution",
+      "actual XRP bridge-routing share for USDC on XRPL",
+      "current SBI remittance throughput and net XRP inventory"
+    ],
+    "disconfirming_evidence": [
+      "Morpho market is permissionless and includes positions above Coinbase retail loan cap",
+      "XRPL tokenized-deposit POC does not establish XRP token use",
+      "RLUSD Global Exchange collateral feature was future/not live at announcement"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none; no new source is admitted into prediction features until point-in-time history, source independence and raw onchain reconstruction are complete",
+  "archive_status": "append-only research addendum; not yet appended to immutable source/run/limitation archive shards",
+  "next_event": {
+    "name": "Circle Q3 2026 financial results",
+    "scheduled_at": "2026-11-04T08:00:00-05:00",
+    "status": "scheduled_not_yet_held",
+    "monitoring_targets": [
+      "USDC circulation",
+      "reserve return rate",
+      "Coinbase platform USDC",
+      "Coinbase distribution costs",
+      "stablecoin revenue",
+      "reserve concentration"
+    ]
+  }
+}

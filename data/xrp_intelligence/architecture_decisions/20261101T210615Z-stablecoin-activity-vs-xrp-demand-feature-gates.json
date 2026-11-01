@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "stablecoin-activity-vs-xrp-demand-feature-gates-20261101T210615Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "decisions": [
+    {
+      "topic": "RLUSD supply by chain",
+      "decision": "Store XRPL, Ethereum, L2 and total outstanding supply as separate point-in-time stock features; store issuer mint/burn and bridge transfers as separate flow features.",
+      "reason": "A falling XRPL balance can coexist with stable or rising all-chain supply; chain allocation is not net redemption."
+    },
+    {
+      "topic": "Payment count",
+      "decision": "Do not admit raw RLUSD Payment count as an adoption or prediction feature without dust filtering, issuer identification, look-alike token exclusion, unique-counterparty counts and concentration statistics.",
+      "reason": "Bitquery found 99.6% of payment count in a 110-wallet dust cluster carrying only 7,722 RLUSD."
+    },
+    {
+      "topic": "Transfer volume",
+      "decision": "Treat transfer volume as gross flow. Separately report issuer mint/redeem, exchange/custodian omnibus flows, self/round-trip transfers, and top-counterparty concentration.",
+      "reason": "The observed $7.33B gross value included issuer operations and an $848M round-trip double count; it is not net external capital."
+    },
+    {
+      "topic": "XRP demand attribution",
+      "decision": "Do not infer proportional XRP spot demand from RLUSD supply, XRPL stablecoin transfers, stablecoin collateral, or tokenized RWA headlines.",
+      "reason": "RLUSD can transfer directly as an issued currency; XRP fee/reserve use is distinct from bridge purchases and observed fee expenditure is small."
+    },
+    {
+      "topic": "Derivatives open interest",
+      "decision": "Keep provider-specific OI series quarantined until venue, contract type, quote currency, units, timestamp and aggregation method are normalized.",
+      "reason": "Current providers differ by hundreds of millions of dollars and publish different coverage universes."
+    },
+    {
+      "topic": "Prediction admission",
+      "decision": "Keep all observations out of model training until source provenance, point-in-time availability, historical continuity, source independence and leakage checks pass.",
+      "reason": "Current observations are descriptive and do not establish predictive relationship or out-of-sample skill."
+    }
+  ],
+  "feature_requirements": [
+    "RLUSD outstanding by chain and total supply, with exact issuer contract/account and ledger/block cutoff",
+    "Issuer mint and redemption amounts, net of same-window flows",
+    "Bridge and cross-chain issuance events with source/destination chain and transaction IDs",
+    "RLUSD transfer counts and value split by dust threshold, issuer, exchange/custodian, and other counterparties",
+    "Unique senders/receivers, median and percentile transfer sizes, top-10 share, HHI, and round-trip/self-transfer adjustment",
+    "XRPL XRP fees and reserve lock changes separately from XRP market purchases",
+    "Stablecoin stock, gross transfer flow, net capital flow and XRP spot volume as separate feature families",
+    "Derivatives OI by normalized venue and contract with timestamp and coverage metadata"
+  ],
+  "status": "DESIGNED_NOT_EXECUTED",
+  "forecast_status": "NOT_ISSUED"
+}

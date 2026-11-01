@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "decision_id": "x402-agentic-payments-and-market-data-admission-20261101T1914Z",
+  "captured_at_utc": "2026-11-01T19:14:00Z",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Do not admit x402 aggregate transaction count or value as an XRP price feature until raw validated-ledger transactions and source-tag coverage are independently reconciled.",
+      "reason": [
+        "Operator dashboard is self-reported.",
+        "XRP Insights appears dependent on the same facilitator index.",
+        "Token split is incomplete and merchant concentration is high."
+      ]
+    },
+    {
+      "id": "D2",
+      "decision": "Separate XRP principal, RLUSD principal, other issued-asset principal, XRP network fees and XRP account-reserve requirements.",
+      "reason": [
+        "Recent examples are small RLUSD payments.",
+        "XRPL activity is not equivalent to native XRP demand.",
+        "A payment-asset-specific feature is required."
+      ]
+    },
+    {
+      "id": "D3",
+      "decision": "Store transaction_status and verifiable_intent_status as separate fields.",
+      "reason": [
+        "t54 docs say Verifiable Intent is optional; no VI chain means an ordinary x402 payment proceeds without a risk call.",
+        "A page-level Unverified label must not be interpreted as a failed or unvalidated ledger payment without raw transaction evidence."
+      ]
+    },
+    {
+      "id": "D4",
+      "decision": "Store merchant-level concentration and service/agent counts with source-dependency metadata.",
+      "reason": [
+        "One merchant accounts for about 70.4% and top five about 85.6% of the secondary tracker count.",
+        "t54 and XRP Insights totals differ and are not independent sources."
+      ]
+    },
+    {
+      "id": "D5",
+      "decision": "Do not aggregate ETF daily flows across different fund universes or incomplete issuer-file coverage.",
+      "reason": [
+        "XRP Insights includes six spot funds plus BITW and has GXRP scrape gaps.",
+        "CryptoKeyhole tracks four daily-reporting spot funds, with 30 Oct partial 3/4 coverage and a future-dated issuer-file label anomaly."
+      ]
+    },
+    {
+      "id": "D6",
+      "decision": "Do not normalize derivatives OI until venue, contract, instrument, quote currency, multiplier and timestamp are matched.",
+      "reason": [
+        "TradRadar $1.90B perps-only, TRdesk $2.67B perps plus quarterly, and Alpha Finance $2.82B unspecified are non-comparable."
+      ]
+    },
+    {
+      "id": "D7",
+      "decision": "Do not use Barrot's entity_sentiment_profile as a current sentiment signal without a point-in-time window and source provenance.",
+      "reason": [
+        "Current sentiment_shift has zero recent/prior XRP entries and null scores; entity profile has 286 XRP mentions but no time-window field."
+      ]
+    },
+    {
+      "id": "D8",
+      "decision": "Treat Evernorth's 370.346M XRP outside the 13-wallet attribution set as custody reallocation, not market supply, unless beneficial ownership or exchange access is established.",
+      "reason": [
+        "Prior BitGo multisig and tranche reconciliation strongly supports internal custody movement; latest 18:08 ledger shows no new movement since 22 Oct."
+      ]
+    }
+  ],
+  "forecast_policy": "NOT_ISSUED; no features admitted; no paper position changed."
+}

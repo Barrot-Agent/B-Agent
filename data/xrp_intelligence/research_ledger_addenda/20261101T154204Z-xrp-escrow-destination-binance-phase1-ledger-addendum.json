@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrp-escrow-destination-binance-phase1-ledger-addendum-20261101T154204Z",
+  "captured_at_utc": "2026-11-01T15:42:04Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T154204Z-xrp-escrow-destination-and-binance-phase1-status.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T154204Z-xrp-escrow-destination-binance-phase1-and-prediction-audit.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T154204Z-xrp-escrow-owner-custody-binance-withdrawal-graph.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T154204Z-escrow-net-out-not-market-float-and-binance-phase1-status.json",
+  "repository_audit": "data/repository_audits/20261101T154204Z-prediction-cohort-guard-and-python-dependency-audit.json",
+  "handoff": "data/xrp_intelligence/hand_offs/20261101T154204Z-escrow-destination-binance-phase1-and-prediction-integrity.json",
+  "evidence_classes": {
+    "primary_company": [
+      "Binance Recovery Update #4: 95% aggregate recovery/coverage; XRP included in phase one; top-ten XRP/RLUSD balances reported 100% backed."
+    ],
+    "secondary_media": [
+      "CBS/AFP reports Binance said XRP withdrawals were restored by 10:00 UTC; direct network status and successful withdrawal not independently tested."
+    ],
+    "ledger_derived_tracker": [
+      "XRP Insights pinned ledger 108047474 at 14:58 UTC; 1B released, 0 re-escrow at that ledger; 64.2% trailing 12-release re-escrow."
+    ],
+    "independent_onchain_aggregator": [
+      "Whale Alert reports the 33F693... 500M transaction sender and receiver are the same rB3WN... Ripple-labelled account."
+    ],
+    "inference": [
+      "One 500M release is not an external market outflow; Binance phase-one restoration may reduce access friction but price effect is unknown."
+    ],
+    "unknown": [
+      "Destination of 3CB037... 500M; raw transaction metadata for both; current Ripple owner balances; subsequent re-escrow; direct XRP withdrawal success; current attacker-wallet balance."
+    ]
+  },
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

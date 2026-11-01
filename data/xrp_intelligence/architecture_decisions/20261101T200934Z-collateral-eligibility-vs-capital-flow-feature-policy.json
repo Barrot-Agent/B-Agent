@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "decision_id": "collateral-eligibility-versus-capital-flow-feature-policy-20261101T200934Z",
+  "captured_at_utc": "2026-11-01T20:09:34Z",
+  "decisions": [
+    {
+      "topic": "CFTC Letter 26-05",
+      "decision": "Represent as a conditional regulatory-policy event, not a blanket XRP approval.",
+      "reason": "FCM notice, initial three-month asset restrictions, DCO acceptance/haircuts, reporting and risk-policy conditions apply."
+    },
+    {
+      "topic": "Coinbase CFM relationship",
+      "decision": "Record Coinbase Financial Markets as requestor; do not infer Coinbase FCM XRP use or direct Bitnomial clearing.",
+      "reason": "No public notice of reliance, actual XRP collateral balance or direct clearing relationship was established."
+    },
+    {
+      "topic": "Bitnomial XRP collateral",
+      "decision": "Represent as venue-specific eligibility with 40% haircut and $15M notional limit; do not treat as actual deployed balance.",
+      "reason": "The DCO schedule discloses terms but not posted customer collateral or utilization."
+    },
+    {
+      "topic": "Temporal causality",
+      "decision": "Reject the hypothesis that Coinbase's CFTC request caused Bitnomial's initial XRP collateral support.",
+      "reason": "Bitnomial announced XRP/RLUSD collateral on 2025-11-03, before Coinbase's 2025-12-08 request."
+    },
+    {
+      "topic": "RLUSD",
+      "decision": "Keep current Bitnomial acceptance unresolved.",
+      "reason": "Historical announcement includes RLUSD; October 2026 schedule omits it."
+    },
+    {
+      "topic": "Prediction feature admission",
+      "decision": "Eligibility and policy events may enter a structural/event feature store only after timestamped source registration; actual balances and flows require independent evidence.",
+      "reason": "Eligibility is not usage, posted collateral is not necessarily new spot demand, and borrowed stablecoins are not net external capital."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

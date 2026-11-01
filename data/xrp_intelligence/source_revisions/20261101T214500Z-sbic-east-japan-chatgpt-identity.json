@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "revision_id": "sbic-east-japan-chatgpt-identity-20261101T214500Z",
+  "captured_at_utc": "2026-11-01T21:45:00Z",
+  "sources": [
+    {
+      "id": "SRC-SBIC-EAST-PROFILE-20261101T214500Z",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "OFFICIAL_COMPANY_PROFILE",
+      "accessed_at_utc": "2026-11-01T21:40:00Z",
+      "claims": [
+        "The official English name is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan).",
+        "Corporate number is 9011001030621; headquarters are in Shibuya, Tokyo.",
+        "The company was established on 1963-11-15 and reports capital of JPY 6,673,400,000.",
+        "Its shareholders are described by category as local governments (18 prefectures), chambers of commerce, financial institutions and operating companies; individual shareholder names are not enumerated on this profile page.",
+        "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. and Osaka Small and Medium Business Investment & Consultation Co., Ltd. are identified as sister companies."
+      ],
+      "limitations": [
+        "The profile does not identify SBI Holdings as a parent or subsidiary; the shareholder categories are not a named shareholder register.",
+        "This profile does not establish any XRP, Ripple, Coinbase or Circle investment, custody, payment or partnership relationship."
+      ]
+    },
+    {
+      "id": "SRC-SBIC-EAST-MISSION-FAQ-20261101T214500Z",
+      "url": "https://www.sbic.co.jp/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "OFFICIAL_COMPANY_MISSION_AND_FAQ",
+      "accessed_at_utc": "2026-11-01T21:40:00Z",
+      "claims": [
+        "The company describes the SME investment-development system as a national SME policy and itself as a policy implementation institution.",
+        "It states that it was initially established with some government capital but is now a private corporation conducting independent investment activity.",
+        "It states that it is not a government financial institution and operates under the Small and Medium Business Investment & Consultation Company Act, Act No. 101 of 1963.",
+        "It describes its role as a long-term stable shareholder supporting SME equity capital and growth, without management interference or dispatching directors."
+      ],
+      "limitations": [
+        "The policy-implementation role must not be simplified into current government ownership or government-bank status.",
+        "No cryptoasset or XRP mandate is established by this material."
+      ]
+    },
+    {
+      "id": "SRC-SBIC-CHATGPT-TRAINING-20261101T214500Z",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "OFFICIAL_TRAINING_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T21:40:00Z",
+      "claims": [
+        "A two-day introductory generative-AI and machine-learning course ran June 12-13, 2025.",
+        "The curriculum explicitly included how to use ChatGPT and Microsoft Copilot, prompt application, code generation and information-leakage risk.",
+        "The course was restricted to SBIC investee companies; the listed investee-company fee was JPY 35,000 and general companies were not eligible.",
+        "The named instructor was from VOST, not OpenAI."
+      ],
+      "limitations": [
+        "A training topic or course does not establish an OpenAI partnership, API agreement, model deployment or XRP relationship."
+      ]
+    },
+    {
+      "id": "SRC-SBIC-CHATGPT-SEMINAR-20261101T214500Z",
+      "url": "https://www.sbic.co.jp/seminar/20250226ym/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "OFFICIAL_SEMINAR_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T21:40:00Z",
+      "claims": [
+        "SBIC published a February 26, 2025 seminar titled 'The Present and Future of Generative AI (ChatGPT)'.",
+        "The announcement says the event was co-hosted with the Tokyo Chamber of Commerce and Industry's Taito branch.",
+        "The named speaker was a Microsoft representative; the event was free with a stated capacity of 130."
+      ],
+      "limitations": [
+        "The announcement establishes an educational event, not an OpenAI commercial partnership or an XRP connection."
+      ]
+    },
+    {
+      "id": "SRC-SBI-CAPITAL-2007-20261101T214500Z",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2007/0521_a_en.pdf",
+      "publisher": "SBI Holdings, Inc.",
+      "type": "OFFICIAL_HISTORICAL_CORPORATE_RELEASE",
+      "accessed_at_utc": "2026-11-01T21:40:00Z",
+      "claims": [
+        "SBI Holdings' May 21, 2007 release identifies SBI CAPITAL Co., Ltd. as its buy-out and enterprise-revitalization funds-management unit.",
+        "The release says SBI transferred 40% of SBI CAPITAL to Jupiter Investment Y.K., described as a Goldman Sachs group company, effective May 23, 2007.",
+        "The post-transfer ownership ratio was 60% SBI Holdings and 40% Jupiter Investment Y.K.",
+        "The historical SBI CAPITAL entity and its SBIC funds are distinct from Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)."
+      ],
+      "limitations": [
+        "This is a historical 2007 ownership snapshot, not evidence of the current legal status or current ownership of SBI Capital.",
+        "A shared acronym is not evidence that the historical SBI CAPITAL and SBIC East Japan are the same legal entity."
+      ]
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-INDEX-20261101T214500Z",
+      "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+      "publisher": "YouTube indexed video metadata",
+      "type": "PLATFORM_INDEXED_VIDEO_METADATA",
+      "accessed_at_utc": "2026-11-01T21:40:00Z",
+      "claims": [
+        "The indexed video 'Something Just Broke in Global Finance — And It's Connected to XRP' is attributed to Kamilah Stevenson and dated March 6, 2026.",
+        "The indexed video 'XRP Is Not Bitcoin. And That's Exactly Why It Matters' is attributed to Kamilah Stevenson and dated December 24, 2025; video ID pmJTrXJQ8Vw is already in the channel seed inventory."
+      ],
+      "limitations": [
+        "Search-index metadata does not establish that Kamilah Stevenson is the same person as the exact-name Camilla Stephenson.",
+        "These two existing seed records do not constitute an exhaustive channel inventory or transcript ingestion."
+      ]
+    }
+  ]
+}

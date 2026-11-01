@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "graph_id": "xrpl-usdc-xrp-fee-and-conditional-bridge-relationship-20261101T1415Z",
+  "captured_at_utc": "2026-11-01T14:15:00Z",
+  "nodes": [
+    {
+      "id": "Circle",
+      "type": "issuer"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "XRPL",
+      "type": "ledger"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "XRPL_DEX_AutoBridging",
+      "type": "routing_feature"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issues_native_USDC_on_XRPL",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "USDC",
+      "to": "XRPL",
+      "relation": "native_issuance_and_transfer",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "XRPL",
+      "to": "XRP",
+      "relation": "each_validated_transaction_burns_XRP_fee",
+      "status": "confirmed_protocol_documentation"
+    },
+    {
+      "from": "XRPL_DEX_AutoBridging",
+      "to": "XRP",
+      "relation": "may_use_XRP_as_bridge_asset_when_route_selected",
+      "status": "confirmed_protocol_capability; actual_USDC_route_share_unknown"
+    },
+    {
+      "from": "USDC",
+      "to": "XRP",
+      "relation": "marginal_fee_burn_and_conditional_bridge_routing",
+      "status": "protocol_mechanic_plus_conditional_inference"
+    }
+  ],
+  "limitations": [
+    "fee burn is not proportional to USD transfer value",
+    "actual USDC transaction counts and bridge route shares are not measured here"
+  ]
+}

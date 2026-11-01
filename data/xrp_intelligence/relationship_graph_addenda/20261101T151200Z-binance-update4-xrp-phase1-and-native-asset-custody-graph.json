@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "graph_id": "binance-update4-xrp-phase1-and-native-asset-custody-graph-20261101T1512Z",
+  "captured_at_utc": "2026-11-01T15:12:00Z",
+  "nodes": [
+    {
+      "id": "Binance",
+      "type": "centralized_exchange"
+    },
+    {
+      "id": "XRP",
+      "type": "native_digital_asset"
+    },
+    {
+      "id": "XRPL",
+      "type": "public_ledger"
+    },
+    {
+      "id": "XRPL_attacker_account",
+      "type": "unattributed_destination_account"
+    },
+    {
+      "id": "TraderTraitor",
+      "type": "law_enforcement_attributed_actor"
+    },
+    {
+      "id": "FBI",
+      "type": "law_enforcement"
+    },
+    {
+      "id": "Circle",
+      "type": "stablecoin_issuer"
+    },
+    {
+      "id": "USDC",
+      "type": "issuer_controlled_stablecoin"
+    },
+    {
+      "id": "Ripple",
+      "type": "digital_asset_company"
+    },
+    {
+      "id": "RLUSD",
+      "type": "issuer_controlled_stablecoin"
+    },
+    {
+      "id": "Tether",
+      "type": "stablecoin_issuer"
+    },
+    {
+      "id": "USDT",
+      "type": "issuer_controlled_stablecoin"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Binance",
+      "to": "XRP",
+      "relation": "phase_1_withdrawal_network_listed",
+      "status": "PRIMARY_COMPANY_ANNOUNCEMENT; actual service execution unverified"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP",
+      "relation": "customer_asset_backing_reported_100_percent",
+      "status": "COMPANY_REPORTED; independent liability-level proof pending"
+    },
+    {
+      "from": "Binance",
+      "to": "remaining_5_percent_assets",
+      "relation": "market_and_OTC_replenishment",
+      "status": "COMPANY_REPORTED; remaining assets outside top ten; no XRP-specific quantity"
+    },
+    {
+      "from": "Binance_hot_wallets",
+      "to": "XRPL_attacker_account",
+      "relation": "233.46M_XRP_outflow",
+      "status": "BITQUERY_ONCHAIN_ANALYTICS; transaction path traced"
+    },
+    {
+      "from": "FBI",
+      "to": "TraderTraitor",
+      "relation": "attributes_overall_Binance_theft",
+      "status": "OFFICIAL_LAW_ENFORCEMENT_ATTRIBUTION"
+    },
+    {
+      "from": "TraderTraitor",
+      "to": "XRPL_attacker_account",
+      "relation": "possible_same_incident_operator",
+      "status": "INFERENCE_ONLY; no direct FBI address designation or shared cross-chain address"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issues_and_can_freeze_issuer_controlled_units",
+      "status": "ISSUER_CONTROL_CAPABILITY"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issues_and_can_freeze_issuer_controlled_units",
+      "status": "ISSUER_CONTROL_CAPABILITY"
+    },
+    {
+      "from": "Tether",
+      "to": "USDT",
+      "relation": "issues_and_can_freeze_issuer_controlled_units",
+      "status": "ISSUER_CONTROL_CAPABILITY"
+    },
+    {
+      "from": "XRP",
+      "to": "XRPL",
+      "relation": "native_asset",
+      "status": "PROTOCOL_FACT"
+    },
+    {
+      "from": "XRP",
+      "to": "issuer_freeze_control",
+      "relation": "no_native_issuer_freeze_function",
+      "status": "PROTOCOL_DISTINCTION"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H_WITHDRAWAL_NORMALIZATION",
+      "claim": "Phased restoration of XRP withdrawals can reduce access friction and exchange-specific withdrawal risk premia.",
+      "supporting_evidence": [
+        "Binance Update #4 explicitly lists XRP on the XRP network in Phase 1."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "No successful XRP withdrawal was independently observed.",
+        "The static network-status page did not expose XRP rows.",
+        "Broader risk sentiment and liquidity can dominate venue access."
+      ],
+      "status": "PLAUSIBLE_OPERATIONAL_CHANNEL_NOT_PRICE_DIRECTION"
+    },
+    {
+      "id": "H_REPLENISHMENT_DEMAND",
+      "claim": "Binance replenishment purchases could create demand for affected tokens.",
+      "supporting_evidence": [
+        "Binance says it continues market and OTC purchases for the remaining 5%."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "The remaining 5% is described as assets outside the top ten.",
+        "XRP is in the top ten and Binance reports it 100% backed.",
+        "No XRP-specific acquisition quantity or venue is disclosed."
+      ],
+      "status": "NOT_SUPPORTED_FOR_ONGOING_XRP_BUYING_BY_UPDATE4"
+    },
+    {
+      "id": "H_ATTACKER_SUPPLY_OVERHANG",
+      "claim": "A future movement of the 233.46M XRP destination balance could create a supply or liquidity event.",
+      "supporting_evidence": [
+        "Bitquery traces the five Binance hot-wallet transfers to a newly created XRPL account."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "The current balance is unknown.",
+        "No sale or exchange deposit is verified.",
+        "The XRPL account does not share an address with the other chains' attacker accounts.",
+        "The FBI does not specifically designate this XRPL account in the reviewed alert."
+      ],
+      "status": "CONDITIONAL_RISK_NOT_CURRENT_SELLING_EVIDENCE"
+    },
+    {
+      "id": "H_NATIVE_VS_ISSUER_CONTROL",
+      "claim": "Institutions face a tradeoff between native XRP's lack of issuer-level freeze controls and stablecoins' issuer-level intervention/recoverability.",
+      "supporting_evidence": [
+        "USDC, USDT and RLUSD have issuer controls; XRP is native to XRPL and has no equivalent issuer freeze function."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "This structural distinction alone does not establish institutional preference or future adoption."
+      ],
+      "status": "STRUCTURAL_FACT_PLUS_UNPROVEN_ADOPTION_EFFECT"
+    },
+    {
+      "id": "H_DERIVATIVES_COVERAGE",
+      "claim": "The apparent open-interest disagreement reflects provider coverage/methodology rather than a confirmed sudden market-positioning change.",
+      "supporting_evidence": [
+        "CoinGecko displays $3.529B while Liqwall earlier displayed $1.33B; timestamps and venue coverage differ."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "Exchange-level component data and contract normalization have not been reconciled."
+      ],
+      "status": "DATA_QUALITY_HYPOTHESIS; NO_FEATURE_ADMISSION"
+    }
+  ],
+  "red_team_objections": [
+    "Do not call Binance XRP withdrawals verified merely because XRP appears in the Phase 1 list.",
+    "Do not treat 95% aggregate replenishment as a 95% XRP purchase or as new XRP demand.",
+    "Do not infer a current attacker-wallet balance from an October 31 observation.",
+    "Do not treat the FBI's overall TraderTraitor attribution as a direct identification of the XRPL account.",
+    "Do not combine CoinGecko, Liqwall and TradRadar open interest without venue/contract reconciliation.",
+    "Do not use the current escrow tracker page as a live ledger observation; its pinned ledger conflicts with an earlier handoff."
+  ]
+}

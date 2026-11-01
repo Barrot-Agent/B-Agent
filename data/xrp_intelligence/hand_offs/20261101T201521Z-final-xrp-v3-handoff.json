@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "handoff_id": "final-xrp-v3-handoff-20261101T201521Z",
+  "captured_at_utc": "2026-11-01T20:15:21Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "main_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+  "main_unchanged": true,
+  "research_pr": 1464,
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "research_branch_head_before_handoff": "025adf78c623dbbe74ba70d027b38cbcfab6cbff",
+  "research_pr_latest_ci": {
+    "run": 41345842638,
+    "result": "success",
+    "tests": "431 passed + 8 subtests",
+    "gate_run": 41345842692,
+    "gate": "success; automatic merge disabled"
+  },
+  "latest_findings": [
+    "CFTC Letter 26-05 was requested by Coinbase Financial Markets and is a conditional staff no-action position, not a rule.",
+    "The letter distinguishes futures/cleared-swaps accounts from 30.7 accounts; the latter has an additional underlying-commodity-of-a-CFTC-DCM-futures path.",
+    "Bitnomial DCO lists XRP at a 40% haircut and $15M notional limit. Bitnomial announced XRP/RLUSD collateral before Coinbase's CFTC request, so the request did not cause the original support.",
+    "Payward completed the Bitnomial acquisition on May 1, 2026. Direct Coinbase/Bitnomial clearing, Coinbase FCM notice/reliance and actual XRP collateral balances remain unknown.",
+    "OI providers report materially different contract universes; TradRadar, Kodexius and Seandra values are not aggregated. ETF flows +3.39M XRP for Oct 23-30 exclude GXRP flow catch-up. Exchange wallet total 22.45B includes cold storage and is not tradable float.",
+    "PR #1475 now revalidates outcome source hashes against the registered source hash. Latest head 8268d158 passed 405 tests + 8 subtests and fail-closed gate. Semantic verification of submitted price values against immutable source bytes remains future work."
+  ],
+  "prs": [
+    {
+      "number": 1474,
+      "head": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "ci": "390 passed + 8 subtests",
+      "gate": "passed; merge disabled",
+      "status": "open draft unmerged",
+      "blocker": "two zero-job push-event failures for task-allocator and force-deploy-space; root cause not established"
+    },
+    {
+      "number": 1475,
+      "head": "8268d158449f3e96b585661ee670e515752146f6",
+      "ci": "405 passed + 8 subtests",
+      "gate": "passed; merge disabled",
+      "status": "open draft unmerged"
+    },
+    {
+      "number": 1464,
+      "head": "025adf78c623dbbe74ba70d027b38cbcfab6cbff",
+      "ci": "431 passed + 8 subtests",
+      "gate": "passed; merge disabled",
+      "status": "open draft unmerged"
+    }
+  ],
+  "main_risks": [
+    "Scheduler Tick retains contents/actions write and arbitrary workflow dispatch.",
+    "Merge Queue remains manually dispatchable with default real/unlimited processing and no explicit human approval.",
+    "Cross Analysis remains a scheduled writer and updates timestamp-only output despite zero sentiment observations.",
+    "Autonomous Resolver retains issues/PR write permissions."
+  ],
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Resolve PR #1474 zero-job failures with run-level diagnostics or controlled reproduction.",
+    "Keep PRs #1464/#1474/#1475 draft and unmerged pending approval.",
+    "Bind outcome price and observation timestamp to immutable snapshot bytes and verify semantic value.",
+    "Normalize OI by venue, contract, quote currency and timestamp.",
+    "Find Coinbase Financial Markets notice/reliance date and actual XRP use; verify Bitnomial $15M limit scope, balances and RLUSD status.",
+    "Continue SBIC, ASK Coin, exact actual-capital and Camilla/Kamilah public-upload investigations."
+  ],
+  "safety": "No merge, main modification, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}

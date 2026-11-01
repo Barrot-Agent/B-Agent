@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "audit_id": "main-pingpong-pr1469-pr1470-20261101T181734Z",
+  "captured_at_utc": "2026-11-01T18:17:34Z",
+  "main_sha": "4695fe966e7f383924d6022323d6c7c6b1efe221",
+  "findings": [
+    {
+      "workflow": ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
+      "main_run": 41334580479,
+      "run_time_utc": "2026-11-01T18:03:00Z",
+      "observed_jobs": 3,
+      "job_conclusion": "SUCCESS",
+      "evidence": [
+        "The workflow makes no external model/API calls; its steps write static status and feedback strings.",
+        "Jobs execute on isolated runners.",
+        "The commit job checks out main independently and does not download artifacts from prior jobs.",
+        "The commit job's git add Barrot-Agent/logs/ step reports a pathspec error because that generated path is absent in its fresh checkout.",
+        "The final git push reports no changes; no durable cognitive output is demonstrated."
+      ],
+      "security": "The main workflow has contents/issues/pull-requests write permissions and scheduled/push triggers despite no verified model collaboration.",
+      "classification": "SYNTHETIC_TELEMETRY_NOT_VERIFIED_COLLABORATION"
+    },
+    {
+      "pr": 1469,
+      "head_sha": "ef92891ca71b8cc97a067d7eb4023949f0bd7c95",
+      "base_sha": "32682bc3797009421682ab51da59bf058b7d63d5",
+      "status": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "changes": [
+        "Quarantines Cross Analysis, Scheduler Tick and Merge Queue.",
+        "Makes eight external mutation workflows inert pending authorization and verified environment controls.",
+        "Replaces synthetic PingPong with a manual, read-only NOT_IMPLEMENTED status artifact.",
+        "Adds tests for the no-live-collaboration claim and safe manual-only workflow states."
+      ],
+      "verification": {
+        "ci_run": 41335466951,
+        "tests": "390 passed + 8 subtests passed",
+        "gate_run": 41335466988,
+        "gate": "PASSED_MERGING_DISABLED"
+      },
+      "unresolved": [
+        "Two earlier push-event runs for task-allocator and force-deploy had zero jobs and no logs; the cause was not established.",
+        "The PR base is two commits behind current main; compare showed no current conflict, but no rebase was performed."
+      ]
+    },
+    {
+      "pr": 1470,
+      "head_sha": "efbc1f2a11eb6489c04c5360648de41f2c1cec28",
+      "base_sha": "32682bc3797009421682ab51da59bf058b7d63d5",
+      "status": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "changes": [
+        "Adds immutable fixed-horizon forecast/outcome records.",
+        "Prevents mixed evaluation protocols from being pooled into misleading metrics.",
+        "Separates forecast and outcome resolution."
+      ],
+      "verification": {
+        "ci_run": 41330671867,
+        "tests": "389 passed + 8 subtests passed",
+        "gate_run": 41330671836,
+        "gate": "PASSED_MERGING_DISABLED"
+      },
+      "limitations": [
+        "No verified XRP forecasts or resolved outcomes have populated the ledger.",
+        "Feature snapshot bytes are not read and hash-verified by the ledger itself.",
+        "Source registry verification can be NOT_CHECKED when a registry is omitted.",
+        "Walk-forward, calibration and drift evaluation remain unimplemented or separate."
+      ]
+    },
+    {
+      "pr": 1464,
+      "head_sha": "3bf37c7a842ebf9bcb2835c2b24bc6f779a4bda6",
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "status": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "changed_files": 173,
+      "commits": 44,
+      "compare_to_main": {
+        "ahead": 44,
+        "behind": 6,
+        "status": "diverged"
+      },
+      "last_code_bearing_verified_head": "4204022dec7ae2f495679380a43150118f5cbe4b",
+      "last_exact_ci": "426 tests + 8 subtests passed",
+      "gate": "PASSED_MERGING_DISABLED",
+      "limitation": "Later metadata-only commits were JSON-syntax checked but not exact-head CI verified; new append-only files in this run require their own exact-head CI."
+    }
+  ],
+  "main_safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "manual_workflow_dispatch_performed": false,
+    "secrets_accessed": false,
+    "external_deployment_performed": false,
+    "trading_action_performed": false
+  }
+}

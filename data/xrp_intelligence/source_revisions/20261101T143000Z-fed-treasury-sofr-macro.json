@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-FED-TREASURY-SOFR-MACRO-20261101T1430Z",
+  "captured_at_utc": "2026-11-01T14:30:00Z",
+  "sources": [
+    {
+      "id": "fomc-statement-20261028",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "publisher": "Federal Reserve Board",
+      "published_date": "2026-10-28",
+      "classification": "PRIMARY_MONETARY_POLICY",
+      "claims": [
+        "FOMC voted 10-2 to maintain federal funds target range at 3.75%-4.00%",
+        "both dissenters preferred a 25bp rate increase",
+        "economic activity expanding at strong pace; inflation remains elevated; uncertainty elevated in part owing to geopolitical developments"
+      ],
+      "limitations": [
+        "policy statement does not forecast XRP or crypto prices"
+      ]
+    },
+    {
+      "id": "treasury-yield-curve-20261030",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&field_tdr_date_value_month=202610&type=daily_treasury_yield_curve",
+      "publisher": "U.S. Department of the Treasury",
+      "observed_date": "2026-10-30",
+      "classification": "PRIMARY_MARKET_RATE_DATA",
+      "claims": [
+        "October 30 par yields: 3-month 4.16%, 2-year 4.56%, 10-year 4.94%, 30-year 5.31%"
+      ],
+      "limitations": [
+        "daily par yields are interpolated from indicative bid-side Treasury prices, not executed transactions"
+      ]
+    },
+    {
+      "id": "nyfed-sofr-20261028",
+      "url": "https://www.newyorkfed.org/markets/reference-rates/sofr",
+      "publisher": "Federal Reserve Bank of New York",
+      "observed_date": "2026-10-28",
+      "classification": "PRIMARY_MONEY_MARKET_RATE_DATA",
+      "claims": [
+        "SOFR on October 28 was 3.94%"
+      ],
+      "limitations": [
+        "overnight repo rate is not identical to Circle's realized reserve portfolio yield"
+      ]
+    }
+  ],
+  "analytical_implications": [
+    "Circle says reserve income is linked to reserve returns near SOFR; high short-term rates support reserve income but create a macro-sensitive revenue channel.",
+    "Coinbase's Q3 filing says lower average interest rates reduced stablecoin revenue despite all-time-high average USDC balances.",
+    "A high-rate/higher-real-yield regime can raise the opportunity cost of holding non-yielding XRP; this is a competing causal hypothesis, not a directional forecast.",
+    "A lower-rate regime may reduce Circle/Coinbase stablecoin reserve income while easing financial conditions; the net effect on XRP is ambiguous and depends on liquidity, risk appetite, dollar strength and flows."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "graph_id": "camilla-kamilah-video-creator-claim-graph-20261101T155209Z",
+  "captured_at_utc": "2026-11-01T15:52:09Z",
+  "nodes": [
+    {
+      "id": "Requested_Camilla_Stephenson",
+      "type": "unresolved_person_identity_string"
+    },
+    {
+      "id": "Kamilah_Stevenson_Channel_Candidate",
+      "type": "public_video_creator_candidate"
+    },
+    {
+      "id": "Camila_Stevenson_Spoken_Name",
+      "type": "transcript_self_identification_variant"
+    },
+    {
+      "id": "XRP",
+      "type": "digital_asset"
+    },
+    {
+      "id": "Coinbase_Custody_and_Execution",
+      "type": "market_topic"
+    },
+    {
+      "id": "XRP_ETFs",
+      "type": "investment_product_topic"
+    },
+    {
+      "id": "XRPL_Amendments",
+      "type": "protocol_topic"
+    },
+    {
+      "id": "Yen_Carry_Trade",
+      "type": "macro_topic"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Kamilah_Stevenson_Channel_Candidate",
+      "to": "Camila_Stevenson_Spoken_Name",
+      "relation": "transcript_self_identification",
+      "status": "GLASP_TRANSCRIPT_SUMMARY; CHANNEL_ID_CROSS_LINK_PENDING"
+    },
+    {
+      "from": "Kamilah_Stevenson_Channel_Candidate",
+      "to": "Requested_Camilla_Stephenson",
+      "relation": "possible_same_person",
+      "status": "STRONGLY_SUPPORTED_CANDIDATE_NOT_CONFIRMED"
+    },
+    {
+      "from": "Kamilah_Stevenson_Channel_Candidate",
+      "to": "XRP",
+      "relation": "public_commentary",
+      "status": "YOUTUBE_VIDEO_METADATA"
+    },
+    {
+      "from": "Kamilah_Stevenson_Channel_Candidate",
+      "to": "Coinbase_Custody_and_Execution",
+      "relation": "custody_and_brokerage_commentary",
+      "status": "YOUTUBE_VIDEO_METADATA_WITH_AFFILIATE_DISCLOSURE"
+    },
+    {
+      "from": "Kamilah_Stevenson_Channel_Candidate",
+      "to": "XRP_ETFs",
+      "relation": "ETF_price_impact_commentary",
+      "status": "GLASP_VIDEO_SUMMARY"
+    },
+    {
+      "from": "Kamilah_Stevenson_Channel_Candidate",
+      "to": "XRPL_Amendments",
+      "relation": "protocol_upgrade_commentary",
+      "status": "YOUTUBE_VIDEO_METADATA"
+    },
+    {
+      "from": "Kamilah_Stevenson_Channel_Candidate",
+      "to": "Yen_Carry_Trade",
+      "relation": "macro_liquidity_causal_narrative",
+      "status": "CREATOR_HYPOTHESIS_NOT_VERIFIED"
+    }
+  ],
+  "red_team_objections": [
+    "A similar spoken name is not a verified channel-ID identity link.",
+    "A video's title is not evidence that its legal or market claim is correct.",
+    "Affiliate disclosures may affect the incentives behind custody/brokerage recommendations.",
+    "Do not treat video price targets or causal narratives as model features without independent source validation and timestamped event data."
+  ],
+  "inventory_completeness": "INCOMPLETE",
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

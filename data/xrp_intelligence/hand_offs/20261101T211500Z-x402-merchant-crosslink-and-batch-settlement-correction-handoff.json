@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "x402-merchant-crosslink-and-batch-settlement-correction-handoff-20261101T211500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "parent_head": "52c284b4bc7b3b178ce6af1d6d25dfe85c826d74",
+  "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+  "key_correction": "The 110-wallet RLUSD 'dust bot' cohort is now classified as x402-compatible agent micropayments, not presumed spam. All three collector addresses exactly match named x402 merchants. The operator and production/test status remain unknown.",
+  "key_discovery": "Coinbase contributed x402 to Linux Foundation governance; Coinbase, Circle, Ripple, Mastercard and t54 Labs are founding/general members. Circle publicly supports x402 plus USDC; Ripple publicly supports XRP and RLUSD on XRPL. This is a direct shared-standard relationship, not an exclusive partnership.",
+  "batch_settlement": "t54 announced XRPL Checks batch settlement in closed beta on October 14. From October 14–17 it reports 213,008 paid requests in 3,162 sessions and 6,324 ledger transactions. This is a plausible explanation for the Bitquery Payment-count collapse on October 14–16, but no direct cohort-to-session mapping has been established.",
+  "status": {
+    "address_crosswalk": "VERIFIED_MATCH",
+    "x402_merchant_activity": "OFFICIAL_HUB_AND_DOCS_CONFIRMED",
+    "batch_migration_for_110_wallets": "PLAUSIBLE_NOT_VERIFIED",
+    "cross_river_causality": "NOT_ESTABLISHED",
+    "binance_corporate_attribution": "NOT_ESTABLISHED",
+    "feature_policy": "DESIGNED_NOT_EXECUTED",
+    "forecast": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Trace the 110 payer wallets after October 14 for CheckCreate and CheckCash transactions; compare with the three merchant addresses.",
+    "If authorized API access is available, compare t54 facilitator settlement records with XRPL transaction IDs; do not assume the public dashboard provides complete payer-level data.",
+    "Reconcile t54's 14,838,056 settled-volume index with XRP Insights' 14,803,915 agent-transaction count and document definitions rather than averaging.",
+    "Build x402 paid-request/session features separately from ledger transaction counts and stablecoin transfer value.",
+    "Keep RLUSD supply drawdown and x402 transaction-count discontinuity as separate phenomena until issuer mint/burn and batch-session histories are reconciled.",
+    "Continue Coinbase/Circle/Ripple/SBI/SBIC relationship work and prediction-engine source-byte binding.",
+    "Keep PR #1464, #1474 and #1475 open and unmerged; preserve main."
+  ],
+  "safety": "No main write, merge, force-push, manual workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
+}

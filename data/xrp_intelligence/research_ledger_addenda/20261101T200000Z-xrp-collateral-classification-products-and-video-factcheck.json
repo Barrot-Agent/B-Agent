@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrp-collateral-classification-products-and-video-factcheck-20261101T200000Z",
+  "captured_at_utc": "2026-11-01T20:00:00Z",
+  "findings": [
+    {
+      "id": "F1",
+      "classification": "CONFIRMED_REGULATORY_CLASSIFICATION",
+      "statement": "The March 23, 2026 SEC/CFTC joint interpretation explicitly lists XRP as a digital commodity; digital commodities are not themselves securities under the interpretation."
+    },
+    {
+      "id": "F2",
+      "classification": "TRANSACTION_LEVEL_CAVEAT",
+      "statement": "The same interpretation says a non-security crypto asset may still be offered or sold subject to an investment contract; the August 2025 SEC final judgment, $125,035,150 penalty and injunction against Ripple remained in effect after appeals were dismissed."
+    },
+    {
+      "id": "F3",
+      "classification": "CONFIRMED_CFTC_PRODUCT_CERTIFICATION",
+      "statement": "CFTC records show Bitnomial XRP US Dollar Spot Contract certified April 21, 2026 and XRP US Dollar Hecto Perpetual Futures certified May 14, 2026."
+    },
+    {
+      "id": "F4",
+      "classification": "CONFIRMED_VENUE_SPECIFIC_COLLATERAL",
+      "statement": "Bitnomial's current schedule lists XRP at a 40% haircut and $15M notional limit; BTC and ETH receive lower haircuts and higher limits."
+    },
+    {
+      "id": "F5",
+      "classification": "CONDITIONAL_REGULATORY_PATHWAY",
+      "statement": "CFTC Letter 26-05, requested by Coinbase Financial Markets, provides conditional no-action relief for FCMs to consider DCO-accepted non-security digital assets after the initial three-month period and notice requirements."
+    },
+    {
+      "id": "F6",
+      "classification": "CONFIRMED_OWNERSHIP",
+      "statement": "Payward completed acquisition of Bitnomial on May 1, 2026 and controls the FCM/DCM/DCO stack."
+    },
+    {
+      "id": "F7",
+      "classification": "UNRESOLVED",
+      "statement": "RLUSD was included in the November 2025 Bitnomial announcement but is omitted from the October 2026 accepted-collateral schedule."
+    },
+    {
+      "id": "F8",
+      "classification": "VIDEO_FACT_CHECK",
+      "statement": "Kamilah Stevenson's Dec 6, 2025 title is substantiated in the limited Bitnomial sense and later supported by XRP's digital-commodity classification and certified Bitnomial products; it is not a universal CFTC collateral approval and does not establish equal risk treatment to gold, Treasuries or major FX."
+    }
+  ],
+  "source_revision": "20261101T200000Z-xrp-cftc-digital-commodity-and-bitnomial-products",
+  "snapshot": "20261101T200000Z-xrp-collateral-cftc-classification-and-products",
+  "relationship_graph": "20261101T200000Z-xrp-cftc-digital-commodity-bitnomial-payward-coinbase-kamilah",
+  "forecast_status": "NOT_ISSUED"
+}

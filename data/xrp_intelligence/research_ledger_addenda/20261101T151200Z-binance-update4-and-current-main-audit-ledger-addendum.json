@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "addendum_id": "binance-recovery-update4-and-current-main-audit-ledger-addendum-20261101T1512Z",
+  "captured_at_utc": "2026-11-01T15:12:00Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T151200Z-binance-recovery-update4-and-xrp-withdrawal-phase1.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T151200Z-binance-update4-xrp-phase1-and-market-observation.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T151200Z-binance-update4-xrp-phase1-and-native-asset-custody-graph.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T151200Z-binance-update4-xrp-withdrawal-and-market-feature-quarantine.json",
+  "repository_audit": "data/repository_audits/20261101T151200Z-current-main-workflow-prediction-and-dependency-audit.json",
+  "handoff": "data/xrp_intelligence/hand_offs/20261101T151200Z-binance-update4-and-current-main-safety-handoff.json",
+  "evidence_classes": {
+    "primary_company_claims": [
+      "Binance Recovery Update #4: 95% aggregate replenishment; XRP included in Phase 1; top-ten assets including XRP/RLUSD reported 100% backed."
+    ],
+    "primary_law_enforcement": [
+      "FBI attributes overall Binance theft to TraderTraitor; no direct XRPL-account designation established."
+    ],
+    "independent_onchain_analytics": [
+      "Bitquery traces approximately 233.5M XRP from five Binance hot wallets to a newly created XRPL account."
+    ],
+    "aggregated_market_observation": [
+      "CoinGecko page observation at access time; exact provider timestamp and open-interest coverage unresolved."
+    ],
+    "secondary_tracker": [
+      "XRP Insights currently exposes ledger 108034152 at 00:27 UTC; conflict with earlier handoff ledger/time."
+    ],
+    "inference": [
+      "Withdrawal restoration may reduce access friction; attacker wallet may create future overhang if moved; issuer-controlled stablecoins and native XRP have different intervention properties."
+    ],
+    "unknown": [
+      "actual XRP withdrawal availability; current attacker-wallet balance; current escrow disposition; XRP-specific Binance acquisition quantity; exchange-normalized open interest."
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "decision_id": "coinbase-circle-cbxrp-sbi-actual-capital-feature-gating-20261101T1400Z",
+  "decisions": [
+    {
+      "id": "morpho_market_mapping",
+      "decision": "Retain the cbXRP/USDC Morpho market as a candidate market, not a verified Coinbase retail loan book.",
+      "reason": [
+        "Coinbase confirms XRP eligibility and Morpho/Base integration but does not publish the exact market ID",
+        "Coinbase loan-health documentation says LLTV varies by market and includes 62.5%, 77% and 86% examples, so 62.5% is not inherently contradictory",
+        "permissionless market positions above Coinbase's $100,000 retail cap show the displayed market is broader than the retail product"
+      ],
+      "required_verification": [
+        "query exact market config and state at one Base block",
+        "read oracle round and last update at same block",
+        "enumerate all positions and liquidation events from Base logs",
+        "reconcile cbXRP totalSupply, collateral transfers and reserve addresses"
+      ]
+    },
+    {
+      "id": "coinbase_circle_revenue_graph",
+      "decision": "Represent Coinbase-Circle as a direct distribution, revenue-sharing and equity-investment relationship; do not treat it as exclusive.",
+      "reason": [
+        "Coinbase renewed its Circle arrangement on same terms and reports all-time-high USDC balances",
+        "Circle discloses formula-based Coinbase allocations and $324.6M Q2/$655.3M H1 distribution costs",
+        "Coinbase listed RLUSD and Circle also signed a five-year USDC distribution agreement with Binance"
+      ],
+      "required_verification": [
+        "capture Circle Q3 2026 results on November 4",
+        "separate USDC balances, reserve income, distribution cost and Coinbase stablecoin revenue",
+        "track Binance and Coinbase USDC platform balances separately"
+      ]
+    },
+    {
+      "id": "cbxrp_actual_capital",
+      "decision": "Classify cbXRP minting and Morpho USDC borrowing as wrapper/collateral/credit activity, not fresh XRP spot demand.",
+      "reason": [
+        "Coinbase says cbXRP is backed 1:1 and underlying XRP is not sold or utilized by Coinbase",
+        "Morpho market is permissionless and exact product mapping is not public",
+        "USDC debt is borrowed credit, not net external cash flow into XRP"
+      ],
+      "required_verification": [
+        "reconcile mints/burns and reserve addresses",
+        "measure native XRP deposit/redemption flows",
+        "trace borrowed USDC destinations without inferring purchase intent"
+      ]
+    },
+    {
+      "id": "sbi_operational_xrp",
+      "decision": "Classify SBI Remit's Philippines/Vietnam/Indonesia corridor as confirmed XRP bridge use, with economic scale unknown.",
+      "reason": [
+        "SBI's official 2023 release states SBI VC Trade sends XRP in real time and Tranglo pays beneficiaries in local currency"
+      ],
+      "required_verification": [
+        "obtain public volume/transaction metrics if published",
+        "measure XRP transfer size, holding duration and counterparties where public",
+        "distinguish transient bridge turnover from net XRP inventory"
+      ]
+    },
+    {
+      "id": "sbic_identity",
+      "decision": "Keep Tokyo SBIC separate from SBI Holdings and SBI Group.",
+      "reason": [
+        "Tokyo SBIC's official FAQ identifies a distinct policy-implementation corporation",
+        "ChatGPT course was training for investee companies only"
+      ],
+      "required_verification": [
+        "continue exact-phrase search without inferring corporate affiliation"
+      ]
+    },
+    {
+      "id": "circle_arc_relationship",
+      "decision": "Model Circle Arc as a parallel stablecoin infrastructure rail with both competitive and complementary hypotheses versus XRPL.",
+      "reason": [
+        "Arc uses USDC as gas and includes SBI, Coinbase and Morpho participation",
+        "Circle USDC and Ripple RLUSD are also available on XRPL"
+      ],
+      "required_verification": [
+        "compare actual settlement, credit, liquidity and institutional usage across Arc and XRPL"
+      ]
+    },
+    {
+      "id": "prediction_feature_admission",
+      "decision": "Admit none of these new observations as prediction features yet.",
+      "reason": [
+        "several observations are quarterly snapshots, secondary market aggregates or company-reported disclosures; point-in-time synchronized series and raw onchain reconciliation are incomplete"
+      ],
+      "required_verification": [
+        "build timestamped history, source independence tags, leakage-safe features and walk-forward tests"
+      ]
+    }
+  ],
+  "feature_admission": "none",
+  "forecast_status": "NOT_ISSUED"
+}

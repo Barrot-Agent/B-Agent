@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "addendum_id": "evernorth-bitgo-sbi-multirail-ask-camilla-ledger-addendum-20261101T1530Z",
+  "captured_at_utc": "2026-11-01T15:30:00Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T153000Z-evernorth-bitgo-sbi-jpysc-ousd-ask-camilla-coinglass.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T153000Z-evernorth-bitgo-sbi-ousd-ask-camilla-and-market.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T153000Z-evernorth-bitgo-sbi-coinbase-circle-ripple-ousd-jpysc-ask-camilla-graph.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T153000Z-evernorth-bitgo-sbi-multirail-and-identity-decisions.json",
+  "repository_audit": "data/repository_audits/20261101T153000Z-repository-and-exact-head-verification.json",
+  "handoff": "data/xrp_intelligence/hand_offs/20261101T153000Z-evernorth-bitgo-sbi-multirail-ask-camilla-handoff.json",
+  "evidence_classes": {
+    "primary_sec": [
+      "Evernorth 424B3: 473.276M XRP at closing, 84.365M XRP purchased with $214.1M cash, BitGo custody, 100% cold storage, shared insurance, $30M convertible notes and optional ELOC."
+    ],
+    "onchain_tracker": [
+      "XRP Insights: 103.13M XRP in 13 attributed wallets and 370.346M moved outside the tracker set; current page and JSON ledger identifiers differ."
+    ],
+    "independent_explorer": [
+      "Bithomp: nine inspected destination accounts were activated by the same BitGo-labelled account with 1.2225 XRP and show multisig control."
+    ],
+    "inference": [
+      "The 370.346M movements are strongly consistent with BitGo custody-wallet reallocation, not proven sale; destination beneficial ownership remains unconfirmed."
+    ],
+    "primary_sbi": [
+      "JPYSC issuance 20.1B JPY, lending applications 6.9B JPY, 1B JPY short-term JGB investment; Hyper Deposit 1.6T JPY; XRP selectable on SBI Visa Business Card."
+    ],
+    "secondary_claims": [
+      "20% deposit-interest crypto voucher pilot reported by Nikkei; not independently confirmed by SBI primary release."
+    ],
+    "identity": [
+      "iHeart interview supports Kamilah/Camilla/Kamilla name variants and self-described YouTube name; channel ID match remains unverified by direct social cross-link."
+    ],
+    "unknown": [
+      "Current destination beneficial ownership; executed Evernorth yield deployments; ELOC draw; aggregate XRP card redemptions; full Camilla channel inventory; exact origin of 'actual capital' phrase."
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

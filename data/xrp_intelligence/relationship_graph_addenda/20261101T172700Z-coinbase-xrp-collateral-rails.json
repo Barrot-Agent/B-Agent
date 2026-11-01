@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "graph_id": "coinbase-xrp-collateral-rails-20261101T172700Z",
+  "captured_at_utc": "2026-11-01T17:27:00Z",
+  "nodes": [
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "type": "exchange_wallet_and_financial_platform"
+    },
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "native_crypto_asset"
+    },
+    {
+      "id": "cbxrp",
+      "name": "Coinbase Wrapped XRP (cbXRP)",
+      "type": "Base_wrapped_asset"
+    },
+    {
+      "id": "base",
+      "name": "Base",
+      "type": "EVM_blockchain"
+    },
+    {
+      "id": "morpho",
+      "name": "Morpho",
+      "type": "onchain_lending_protocol"
+    },
+    {
+      "id": "usdc",
+      "name": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "coinbase_global_exchange",
+      "name": "Coinbase Global Exchange",
+      "type": "institutional_derivatives_and_margin_venue"
+    }
+  ],
+  "edges": [
+    {
+      "from": "coinbase",
+      "to": "morpho",
+      "relation": "provides_interface_for_USDC_crypto_backed_loans_on_Base",
+      "evidence": [
+        "coinbase-borrow-xrp-collateral-2026-11-01",
+        "coinbase-help-loan-intro-2026-11-01"
+      ],
+      "status": "CONFIRMED_PRODUCT"
+    },
+    {
+      "from": "xrp",
+      "to": "cbxrp",
+      "relation": "wrapped_as_Base_cbXRP_for_collateral_path",
+      "evidence": [
+        "coinbase-loan-backup-cbxrp-2026-11-01"
+      ],
+      "status": "DOCUMENTED_PRODUCT_PATH"
+    },
+    {
+      "from": "cbxrp",
+      "to": "base",
+      "relation": "Base_contract_0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+      "evidence": [
+        "coinbase-loan-backup-cbxrp-2026-11-01"
+      ],
+      "status": "CONFIRMED_CONTRACT_REFERENCE"
+    },
+    {
+      "from": "morpho",
+      "to": "usdc",
+      "relation": "USDC_borrow_asset_for_crypto_collateral_loans",
+      "evidence": [
+        "coinbase-borrow-xrp-collateral-2026-11-01"
+      ],
+      "status": "CONFIRMED_PRODUCT"
+    },
+    {
+      "from": "xrp",
+      "to": "coinbase_global_exchange",
+      "relation": "accepted_cross_collateral_asset_for_perpetual_futures",
+      "evidence": [
+        "coinbase-global-exchange-cross-collateral-2026-11-01",
+        "coinbase-cross-collateral-assets-2026-11-01"
+      ],
+      "status": "CONFIRMED_ELIGIBILITY"
+    },
+    {
+      "from": "coinbase",
+      "to": "xrp",
+      "relation": "retail_USDC_borrow_limit_up_to_100k_against_XRP",
+      "evidence": [
+        "coinbase-borrow-xrp-collateral-2026-11-01"
+      ],
+      "status": "CONFIRMED_PRODUCT_LIMIT_NOT_UTILIZATION"
+    }
+  ],
+  "separation_rules": [
+    "Retail Morpho borrowing and Coinbase Global Exchange perpetual cross-collateral are distinct products and customer populations.",
+    "XRP is the native asset; cbXRP is the Base representation used in the collateral path. Do not merge their supply or balances.",
+    "Product eligibility and maximum borrow limits do not establish actual loan balances, utilization, net XRP purchases or price impact.",
+    "Coinbase's generic 86% LTV liquidation statement must not be applied to every Morpho market; market-specific LLTV and collateral factors govern individual pools."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "x402-payment-count-and-session-feature-policy-20261101T211500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "decisions": [
+    {
+      "topic": "Automated micro-payments",
+      "decision": "Do not classify sub-1 RLUSD payments as spam solely by amount or automation. Keep a micro-payment class and promote to x402-compatible only when recipient address and protocol evidence match.",
+      "reason": "The three Bitquery collector addresses exactly match known x402 merchant addresses; payment sizes align with published service pricing."
+    },
+    {
+      "topic": "x402 paid requests versus ledger transactions",
+      "decision": "Store paid-request count, session count, XRPL Payment count, CheckCreate count and CheckCash count as separate measures.",
+      "reason": "t54's batch settlement uses two ledger transactions per session regardless of request count; 213,008 paid requests were settled in 3,162 sessions and 6,324 ledger transactions."
+    },
+    {
+      "topic": "Adoption measurement",
+      "decision": "Use service merchant identity, payer/receiver uniqueness, price schedule, paid-request count, settled value and session conversion. Keep raw on-ledger transaction count as an infrastructure metric, not an adoption proxy.",
+      "reason": "Batch settlement changes the relationship between paid requests and ledger transactions; a Payment-only index misses Checks."
+    },
+    {
+      "topic": "Cluster attribution",
+      "decision": "Use behavior-only labels such as x402-compatible cohort, operator unknown, production/test unknown. Do not infer malicious intent or Binance corporate involvement.",
+      "reason": "Funding wallet labels and exact merchant matches do not identify the customer or operator."
+    },
+    {
+      "topic": "XRP price-demand mapping",
+      "decision": "Separate XRP fees and reserves from RLUSD-denominated paid requests; do not infer proportional XRP spot purchases from RLUSD x402 volume.",
+      "reason": "The observed cohort paid in RLUSD and paid network fees in XRP; the two flows have different economic meanings."
+    },
+    {
+      "topic": "Cross-ecosystem graph",
+      "decision": "Represent Coinbase, Circle, Ripple and Mastercard as members of the vendor-neutral x402 standard, with distinct asset/network implementations.",
+      "reason": "Linux Foundation identifies Coinbase as protocol contributor and lists Coinbase, Circle, Ripple, Mastercard and t54 Labs among founding members; public statements distinguish USDC from XRP/RLUSD implementations."
+    }
+  ],
+  "required_features": [
+    "x402 paid requests by merchant, payer and asset",
+    "x402 session count and average requests per session",
+    "XRPL Payment, CheckCreate and CheckCash counts by asset and source cohort",
+    "settled value by asset, with issuer mint/redeem separated",
+    "merchant address identity and published per-call price version",
+    "unique payer/merchant counts and cohort funding source with attribution confidence",
+    "protocol version and facilitator deployment/beta dates",
+    "network fee in XRP separately from payment principal in RLUSD or XRP"
+  ],
+  "admission_status": "DESIGNED_NOT_EXECUTED",
+  "prediction_status": "NOT_ISSUED"
+}

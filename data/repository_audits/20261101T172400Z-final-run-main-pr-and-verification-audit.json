@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "audit_id": "final-run-main-pr-and-verification-audit-20261101T172400Z",
+  "captured_at_utc": "2026-11-01T17:24:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "32682bc3797009421682ab51da59bf058b7d63d5",
+  "main_risks": [
+    "Cross Analysis still has contents:write and a scheduled/workflow_run commit/push path.",
+    "Scheduler Tick still has contents:write and actions:write and can dispatch workflows without a verified allowlist.",
+    "Merge Queue remains manually dispatchable with dry_run=false by default and max_prs=0 unlimited; no distinct authorized-human approval check is verified.",
+    "Manual model-upload workflows still consume HF_TOKEN on main.",
+    "latest_signal.json remains stale descriptive state with confidence 0.0; it is not a calibrated prediction."
+  ],
+  "current_main_prs": [
+    {
+      "number": 1469,
+      "head": "490d8c2eb08961dc85f788f87a8052bdc3bc2895",
+      "base": "32682bc3797009421682ab51da59bf058b7d63d5",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41329718980,
+      "tests": "387 passed + 8 subtests",
+      "gate_run": 41329718987,
+      "gate": "PASSED_MERGING_DISABLED"
+    },
+    {
+      "number": 1470,
+      "head": "efbc1f2a11eb6489c04c5360648de41f2c1cec28",
+      "base": "32682bc3797009421682ab51da59bf058b7d63d5",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41330671867,
+      "tests": "389 passed + 8 subtests",
+      "gate_run": 41330671836,
+      "gate": "PASSED_MERGING_DISABLED"
+    }
+  ],
+  "research_pr": {
+    "number": 1464,
+    "head": "a2cc082f928e573584243e8102931521eea78094",
+    "base": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+    "status": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+    "ci_run": 41330995164,
+    "tests": "426 passed + 8 subtests",
+    "gate_run": 41330995140,
+    "gate": "PASSED_MERGING_DISABLED"
+  },
+  "related_prs": [
+    {
+      "number": 1465,
+      "head": "d88727652ecbbd74c17ac04f6962920c91befb68",
+      "status": "OPEN_DRAFT_STALE_BASE",
+      "ci": "376 passed + 8 subtests",
+      "gate": "PASSED_MERGING_DISABLED",
+      "successor": 1469
+    },
+    {
+      "number": 1468,
+      "head": "cea621064bb11815482ac23b04be18245cd6609d",
+      "status": "OPEN_DRAFT_STALE_BASE",
+      "ci": "389 passed + 8 subtests",
+      "gate": "PASSED_MERGING_DISABLED",
+      "successor": 1470
+    },
+    {
+      "number": 1467,
+      "head": "827e96dce829a2f6093abd7faaefe7807f80e1e7",
+      "status": "OPEN_DRAFT_STALE_BASE",
+      "ci": "348 passed + 8 subtests",
+      "dependency_audit": "Four Python requirement sets reported no known vulnerabilities; Node20 deprecation warnings remain in older action versions.",
+      "gate": "PASSED_MERGING_DISABLED"
+    }
+  ],
+  "open_pr_inventory": {
+    "total": 237,
+    "draft": 227,
+    "ready": 10,
+    "main_based": 230,
+    "current_main_based": 2
+  },
+  "prediction_engine_gaps": [
+    "Fixed-horizon ledger and protocol-homogeneous scoring are implemented and exact-head tested, but no forecast/outcome cohort is populated.",
+    "Source registry is optional in the generic ledger API; records are marked registry_unchecked when omitted. Production forecast issuance must enforce a verified registry.",
+    "Walk-forward orchestration, confidence intervals, drift detection and paper/shadow evaluation remain unimplemented.",
+    "Legacy 45.5% accuracy is retained only as NOT_COMPARABLE and is not predictive skill."
+  ],
+  "limitations": [
+    "Complete repository CI, full dependency inventory, container and secret scanning, and branch-protection verification remain incomplete.",
+    "PR #1464 is based on stale main and needs a fresh-main reconciliation before merge; no rebase was performed.",
+    "PR #1470's first CI failure was a branch-scope mismatch referencing tests present only in PR #1469. The failed run is preserved; corrected head passed."
+  ],
+  "safety": "Main unchanged. No PR merged, no force-push, no manual workflow dispatch, no secret access, no external deployment or trading action."
+}

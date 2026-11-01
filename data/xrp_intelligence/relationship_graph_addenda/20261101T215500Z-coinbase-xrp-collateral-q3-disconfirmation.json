@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "graph_id": "coinbase-xrp-collateral-q3-disconfirmation-20261101T215500Z",
+  "captured_at_utc": "2026-11-01T21:55:00Z",
+  "edges": [
+    {
+      "from": "COINBASE_GLOBAL",
+      "to": "COINBASE_CUSTODY_TRUST",
+      "relation": "subsidiary_custody_provider",
+      "status": "CONFIRMED_DERIBIT_CUSTODY_POLICY",
+      "source_ids": [
+        "SRC-DERIBIT-CUSTODY-POLICY-2026-10-14-20261101T215500Z"
+      ]
+    },
+    {
+      "from": "DERIBIT",
+      "to": "COINBASE_CUSTODY_TRUST",
+      "relation": "cold_wallet_custody_provider",
+      "status": "CONFIRMED_DERIBIT_CUSTODY_POLICY",
+      "source_ids": [
+        "SRC-DERIBIT-CUSTODY-POLICY-2026-10-14-20261101T215500Z"
+      ]
+    },
+    {
+      "from": "DERIBIT",
+      "to": "COINBASE_BERMUDA",
+      "relation": "warm_wallet_provider_planned_after_2026_09",
+      "status": "SOURCED_PLAN_NOT_VERIFIED_LIVE",
+      "source_ids": [
+        "SRC-DERIBIT-CUSTODY-POLICY-2026-10-14-20261101T215500Z"
+      ]
+    },
+    {
+      "from": "COINBASE_FINANCIAL_MARKETS",
+      "to": "DERIBIT",
+      "relation": "customer_derivatives_collateral_relationship",
+      "status": "LEGAL_PATH_CONDITIONAL_ACTUAL_XRP_USE_UNKNOWN",
+      "source_ids": [
+        "SRC-CFTC-26-17-20261101T215000Z",
+        "SRC-COINBASE-10Q-Q3-2026-20261101T215500Z"
+      ]
+    },
+    {
+      "from": "COINBASE_FINANCIAL_MARKETS",
+      "to": "XRP",
+      "relation": "recognized_customer_derivatives_collateral_as_of_2026_09_30",
+      "status": "NO_XRP_LINE_IN_SEC_TABLE",
+      "source_ids": [
+        "SRC-COINBASE-10Q-Q3-2026-20261101T215500Z"
+      ]
+    }
+  ],
+  "balance_observations": [
+    {
+      "as_of": "2026-09-30",
+      "metric": "Coinbase recognized customer derivatives collateral",
+      "total_usd": 325766000,
+      "assets": [
+        {
+          "asset": "BTC",
+          "units": 3569,
+          "fair_value_usd": 322341000
+        },
+        {
+          "asset": "ETH",
+          "units": 1390,
+          "fair_value_usd": 3425000
+        }
+      ],
+      "xrp_line_present": false,
+      "source_id": "SRC-COINBASE-10Q-Q3-2026-20261101T215500Z"
+    },
+    {
+      "as_of": "2026-09-30",
+      "metric": "Coinbase broad crypto assets held as collateral",
+      "total_usd": 1299500000,
+      "asset_breakdown": "not attributable to XRP from the cited table",
+      "source_id": "SRC-COINBASE-10Q-Q3-2026-20261101T215500Z"
+    },
+    {
+      "as_of": "2026-09-30",
+      "metric": "Unrecognized customer crypto lending collateral",
+      "total_usd": 2804112000,
+      "asset_breakdown": "not disclosed by token",
+      "source_id": "SRC-COINBASE-10Q-Q3-2026-20261101T215500Z"
+    }
+  ],
+  "actual_xrp_collateral_use_status": "UNKNOWN_AFTER_2026_09_30; NOT_PRESENT_AS_A_SEPARATE_LINE_IN_Q3_RECOGNIZED_DERIVATIVES_COLLATERAL"
+}

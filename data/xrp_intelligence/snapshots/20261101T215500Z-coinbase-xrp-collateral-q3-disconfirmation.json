@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "coinbase-xrp-collateral-q3-disconfirmation-20261101T215500Z",
+  "captured_at_utc": "2026-11-01T21:55:00Z",
+  "reporting_cutoff": "2026-09-30",
+  "coinbase_q3_2026": {
+    "total_crypto_assets_held_as_collateral_usd": 1299500000,
+    "recognized_derivatives_collateral_usd": 325766000,
+    "recognized_derivatives_collateral": [
+      {
+        "asset": "BTC",
+        "units": 3569,
+        "fair_value_usd": 322341000
+      },
+      {
+        "asset": "ETH",
+        "units": 1390,
+        "fair_value_usd": 3425000
+      }
+    ],
+    "xrp_in_recognized_derivatives_collateral_table": false,
+    "unrecognized_customer_lending_collateral_usd": 3284562000,
+    "unrecognized_customer_lending_crypto_usd": 2804112000,
+    "unrecognized_customer_lending_fiat_and_payment_stablecoins_usd": 480450000,
+    "customer_assets_reuse_requires_consent": true
+  },
+  "deribit_custody_policy": {
+    "updated": "2026-10-14",
+    "cold_wallet_providers_include_coinbase_custody_trust_company": true,
+    "warm_wallet_providers_include_coinbase_bermuda": "planned_to_be_added_after_2026_09_not_verified_live",
+    "client_assets_used_for_deribit_proprietary_trading": false
+  },
+  "event_order": [
+    {
+      "date": "2026-05-29",
+      "event": "CFTC Letter 26-17 issued"
+    },
+    {
+      "date": "2026-09-28",
+      "event": "Deribit cross-collateral table lists XRP as cross collateral"
+    },
+    {
+      "date": "2026-09-30",
+      "event": "Coinbase Q3 reporting cutoff; recognized derivatives collateral lists BTC and ETH only"
+    },
+    {
+      "date": "2026-10-01",
+      "event": "Coinbase states International Exchange/Deribit integration completed"
+    },
+    {
+      "date": "2026-10-14",
+      "event": "Deribit custody policy still describes CBBM warm-wallet addition as planned after September"
+    }
+  ],
+  "interpretation": "Conditional XRP collateral eligibility is confirmed at the CFTC definition and Deribit venue-specification levels; Coinbase actual XRP use after the integration is unknown. The September 30 filing is a pre-integration disconfirming observation, not a post-integration negative result.",
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

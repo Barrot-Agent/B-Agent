@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "id": "xrp-etf-custody-and-flow-snapshot-20261101T213000Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "holdings_as_of": "2026-11-01",
+  "total_xrp": 1196600000,
+  "total_aum_usd": 1503000000,
+  "products": 7,
+  "holdings_by_product_xrp": {
+    "bitwise": 415370000,
+    "franklin": 310430000,
+    "canary": 243730000,
+    "twenty_one_shares": 107300000,
+    "grayscale": 65440000,
+    "rex_osprey": 33390000,
+    "bitw_index": 20950000
+  },
+  "latest_flows": {
+    "latest_day": "2026-10-30",
+    "daily_xrp": -49932,
+    "daily_usd": -62400,
+    "week_start": "2026-10-26",
+    "week_end": "2026-10-30",
+    "week_xrp": 3390000,
+    "week_usd": 4230000,
+    "prior_week_xrp": 1530000,
+    "prior_week_usd": 2030000
+  },
+  "custody_matrix": [
+    {
+      "fund": "Bitwise XRP ETF",
+      "custodians": [
+        "Coinbase Custody Trust Company, LLC"
+      ],
+      "role": "XRP custodian",
+      "filing_period": "2026-06-30",
+      "split_disclosed": false
+    },
+    {
+      "fund": "Franklin XRP ETF",
+      "custodians": [
+        "Coinbase Custody Trust Company, LLC"
+      ],
+      "roles": [
+        "XRP custodian"
+      ],
+      "prime_broker": "Coinbase Inc.",
+      "cash_custodian": "BNY Mellon",
+      "filing_period": "2026-06-30",
+      "split_disclosed": false
+    },
+    {
+      "fund": "Grayscale XRP Trust ETF",
+      "custodians": [
+        "Coinbase Custody Trust Company, LLC",
+        "Anchorage Digital Bank N.A."
+      ],
+      "roles": [
+        "Coinbase primary custodian",
+        "Anchorage additional custodian"
+      ],
+      "prime_broker": "Coinbase Inc.",
+      "effective_date": "2026-09-29",
+      "anchorage_amount": "not determined",
+      "split_disclosed": false
+    },
+    {
+      "fund": "21Shares XRP ETF",
+      "custodians": [
+        "Coinbase Custody Trust Company, LLC",
+        "BitGo Bank & Trust, N.A.",
+        "Anchorage Digital Bank N.A."
+      ],
+      "filing_period": "2026-06-30",
+      "split_disclosed": false
+    },
+    {
+      "fund": "Canary XRP ETF",
+      "custody_status": "secondary tracker indicates Coinbase and BitGo; primary filing not independently retrieved in this run",
+      "split_disclosed": false
+    },
+    {
+      "fund": "REX-Osprey XRP ETF",
+      "custody_status": "not verified in this run"
+    },
+    {
+      "fund": "BITW Index",
+      "custody_status": "not verified in this run"
+    }
+  ],
+  "coinbase_relationship_aggregate": {
+    "funds_with_sec_confirmed_coinbase_role": [
+      "Bitwise XRP ETF",
+      "Franklin XRP ETF",
+      "Grayscale XRP Trust ETF",
+      "21Shares XRP ETF"
+    ],
+    "underlying_holdings_xrp": 898540000,
+    "share_of_total_etf_holdings_pct": 75.1,
+    "warning": "This is the total XRP held by funds with a Coinbase service relationship, not the XRP held at Coinbase. Grayscale and 21Shares have multiple custodians; allocation by custodian is undisclosed."
+  },
+  "grayscale_in_kind_change": {
+    "effective_date": "2026-09-29",
+    "authorized_participants": [
+      "Macquarie Capital (USA) Inc.",
+      "Virtu Americas LLC"
+    ],
+    "mechanism": "in-kind creation/redemption in XRP in addition to cash orders",
+    "interpretation": "May reduce the fund's cash-conversion leg; actual in-kind volume and AP XRP sourcing venue are unknown."
+  },
+  "forecast_status": "NOT_ISSUED"
+}

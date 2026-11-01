@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "revision_id": "cftc-26-05-xrp-eligibility-20261101T220100Z",
+  "captured_at_utc": "2026-11-01T22:01:00Z",
+  "sources": [
+    {
+      "id": "SRC-CFTC-26-05-20261101T220100Z",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "publisher": "CFTC Market Participants Division",
+      "type": "OFFICIAL_STAFF_NO_ACTION_LETTER",
+      "published_at": "2026-02-06",
+      "accessed_at_utc": "2026-11-01T21:58:00Z",
+      "claims": [
+        "For 30.7 customer accounts, a non-security digital asset must be accepted by a registered DCO or a qualifying foreign clearing organization established in a jurisdiction implementing the CPMI-IOSCO Recommendations for Central Counterparties; the applicable venue haircut then governs.",
+        "If the asset is not accepted by a registered DCO or qualifying foreign clearing organization, the FCM must apply a risk-based haircut; the minimum is 20% for non-security digital assets other than payment stablecoins.",
+        "Before accepting non-BTC, non-ETH, non-payment-stablecoin assets under the fallback route, the FCM must submit revised risk-management policies and procedures to MPD through WinJammer.",
+        "The same-asset exception applies only when the contract is both based on and denominated in the digital asset, and only to the extent the asset offsets a deficit in that same contract.",
+        "The FCM must file its notice and commencement date before reliance. For the first three months from its own commencement date, it may accept only payment stablecoins, BTC and ETH as customer collateral.",
+        "For three months starting with the calendar month after the notice month, weekly asset-by-account-class reports are required through WinJammer."
+      ],
+      "limitations": [
+        "CFM's actual notice/commencement date was not found.",
+        "Deribit's qualification under the specific CPMI-IOSCO foreign-clearing-organization condition was not independently resolved."
+      ]
+    },
+    {
+      "id": "SRC-CFTC-26-17-20261101T220100Z",
+      "url": "https://www.cftc.gov/csl/26-17/download",
+      "publisher": "CFTC Market Participants Division",
+      "type": "OFFICIAL_STAFF_INTERPRETATION_AND_NO_ACTION_LETTER",
+      "published_at": "2026-05-29",
+      "accessed_at_utc": "2026-11-01T21:58:00Z",
+      "claims": [
+        "Footnote 5 explicitly lists XRP as an example of a digital commodity.",
+        "The letter provides a conditional CFM -> CBBM -> Deribit customer digital-asset transfer and right-of-reuse path for specified 30.7 foreign futures and foreign option obligations.",
+        "Condition 9 requires CFM to comply with Letter 26-05, including asset qualifications and applicable haircuts.",
+        "The no-action position is not binding on the Commission or other Commission staff."
+      ],
+      "limitations": [
+        "No CFM notice date, account-level enablement or actual XRP collateral balance is disclosed."
+      ]
+    },
+    {
+      "id": "SRC-DERIBIT-CUSTODY-20261101T220100Z",
+      "url": "https://support.deribit.com/hc/en-us/articles/25944547383453-Custody-Policy",
+      "publisher": "Deribit FZE",
+      "type": "OFFICIAL_CUSTODY_POLICY",
+      "published_at": "2026-10-14",
+      "accessed_at_utc": "2026-11-01T21:58:00Z",
+      "claims": [
+        "Deribit says it has no clearing house or clearing members connected to it and describes quasi-clearing through an insurance fund and settlement-agent function.",
+        "Deribit lists Coinbase Custody Trust Company among cold-wallet providers and says Coinbase Bermuda Limited was to be added to warm-wallet providers after September 2026.",
+        "Deribit says client assets are segregated from proprietary assets and are not used for Deribit's own trading."
+      ],
+      "limitations": [
+        "This operational description does not by itself resolve Deribit's legal qualification under the specific CFTC 26-05 foreign-clearing-organization condition.",
+        "The October 14 future-tense CBBM wording does not establish whether it was added later."
+      ]
+    }
+  ]
+}

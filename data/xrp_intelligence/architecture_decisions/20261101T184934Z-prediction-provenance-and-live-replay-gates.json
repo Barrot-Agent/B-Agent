@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "decision_id": "prediction-provenance-gates-2026-11-01T18:49:34Z",
+  "captured_at_utc": "2026-11-01T18:49:34Z",
+  "status": "IMPLEMENTED_ON_OPEN_PR_NOT_MERGED",
+  "title": "Require hash-verified source and feature-snapshot provenance before scoring forecasts",
+  "accepted_controls": [
+    "ForecastLedger requires a hash-bearing source registry by default.",
+    "The explicit allow_unverified_sources=True option is limited to isolated tests/development and marks the forecast as unverified.",
+    "Each feature snapshot has a source_id that must appear in the forecast source_ids.",
+    "The feature snapshot SHA-256 must match the content hash recorded in the source registry.",
+    "Every forecast source ID must resolve to a registered content hash.",
+    "The outcome price source ID must resolve to a registered content hash.",
+    "Metrics return no accuracy, Brier score, log loss, calibration or skill claim when any forecast/outcome provenance is unchecked, ID-only or hash-mismatched.",
+    "SourceRegistry objects are accepted; inactive, inaccessible or revalidation-required records are rejected."
+  ],
+  "verification": {
+    "pr": 1470,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1470",
+    "code_head": "604076164f8695c2f09c59568204883b87f6932a",
+    "ci_run": 41338490845,
+    "ci_result": "395 tests passed + 8 subtests passed",
+    "fail_closed_gate": 41338490862,
+    "gate_result": "PASSED_MERGING_DISABLED",
+    "state": "OPEN_DRAFT_UNMERGED"
+  },
+  "unresolved_design_gaps": [
+    {
+      "id": "LIVE_REPLAY_SEPARATION",
+      "severity": "HIGH",
+      "finding": "The ledger records issued_at_utc but does not generate a trusted append-time recorded_at_utc or distinguish LIVE forecasts from HISTORICAL_REPLAY records.",
+      "risk": "A caller could backfill a forecast with an earlier issued_at/data_cutoff after its horizon has elapsed; the ledger could then score it alongside genuine live paper forecasts.",
+      "required_design": "Add system-generated ledger_recorded_at_utc, explicit forecast_mode LIVE or HISTORICAL_REPLAY, replay_run_id and point-in-time dataset identity. Live mode must enforce bounded issuance clock skew; replay metrics must be separated from live/shadow metrics."
+    },
+    {
+      "id": "MODEL_ARTIFACT_PROVENANCE",
+      "severity": "MEDIUM",
+      "finding": "The ledger records model_id and model_version but does not require a registered model-artifact hash.",
+      "required_design": "Register model artifact and configuration hashes; persist them in each forecast and evaluation protocol."
+    },
+    {
+      "id": "BASELINE_ARTIFACT_PROVENANCE",
+      "severity": "MEDIUM",
+      "finding": "The baseline record stores ID, version, probabilities and trained-through cutoff but not a baseline artifact/source hash.",
+      "required_design": "Register baseline model/configuration hash and include it in protocol identity."
+    }
+  ],
+  "policy": "No forecast may be admitted to live or shadow performance metrics until source, feature snapshot, model artifact and append-time issuance provenance are verified."
+}

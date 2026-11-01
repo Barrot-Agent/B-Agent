@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "addendum_id": "cftc-26-05-account-specific-collateral-paths-20261101T201521Z",
+  "captured_at_utc": "2026-11-01T20:15:21Z",
+  "findings": [
+    {
+      "id": "C1",
+      "classification": "CONFIRMED",
+      "statement": "CFTC Letter 26-05 distinguishes futures/cleared-swaps customer accounts from 30.7 customer accounts. For futures and cleared swaps, the asset must be accepted by a registered DCO as collateral or settlement and the FCM uses that DCO's value and haircut; if multiple DCOs accept it, the highest haircut applies."
+    },
+    {
+      "id": "C2",
+      "classification": "CONFIRMED",
+      "statement": "For 30.7 customer accounts, an asset may qualify through a registered DCO, a qualifying foreign clearing organization, payment-stablecoin status, or being the underlying commodity of a futures contract listed on a CFTC-registered DCM."
+    },
+    {
+      "id": "C3",
+      "classification": "CONFIRMED_CONDITIONAL",
+      "statement": "For a non-security digital asset other than a payment stablecoin that is not accepted by a DCO/qualifying foreign clearing organization in the 30.7 path, the letter describes a minimum 20% haircut and requires revised risk-management policies before acceptance for assets other than BTC, ETH or payment stablecoins."
+    },
+    {
+      "id": "C4",
+      "classification": "CONFIRMED_CONDITIONAL",
+      "statement": "The initial three-month restriction is measured from the commencement date in each FCM's notice of intent, not three months from February 6, 2026. During that initial period, the FCM accepts only payment stablecoins, BTC and ETH as customer margin collateral."
+    },
+    {
+      "id": "C5",
+      "classification": "CONFIRMED_LIMITATION",
+      "statement": "The letter is a staff no-action position, not a formal rule; it represents the Division's view only, is fact-dependent and expires upon effective Commission action addressing digital-asset collateral."
+    },
+    {
+      "id": "C6",
+      "classification": "UNKNOWN",
+      "statement": "Coinbase Financial Markets' actual notice date, reliance start date, 30.7 customer-account treatment, XRP collateral use and posted balances remain unverified."
+    }
+  ],
+  "interpretation": "For XRP, Bitnomial DCO acceptance provides a venue-specific route for futures/cleared-swaps accounts using the DCO haircut. XRP may also be an underlying commodity of a Bitnomial DCM-listed futures contract for the distinct 30.7 account pathway. These regulatory pathways do not prove any FCM accepted XRP, any customer posted it, or any spot-market purchase occurred.",
+  "forecast_status": "NOT_ISSUED"
+}

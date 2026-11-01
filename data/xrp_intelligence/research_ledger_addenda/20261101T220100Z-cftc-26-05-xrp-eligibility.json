@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "addendum_id": "cftc-26-05-xrp-eligibility-20261101T220100Z",
+  "captured_at_utc": "2026-11-01T22:01:00Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T220100Z-cftc-26-05-xrp-eligibility.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T220100Z-cftc-26-05-xrp-eligibility.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T220100Z-cftc-26-05-xrp-eligibility-gates.json",
+  "findings": [
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "CFTC 26-17 names XRP as a digital commodity and provides a conditional CFM/CBBM/Deribit customer-asset transfer and right-of-reuse path for specified 30.7 positions."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "CFTC 26-17 condition 9 imports CFTC 26-05 asset qualification, notice, initial-period, haircut and risk-policy conditions."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "CFTC 26-05 restricts the first three months from an FCM's own commencement date to payment stablecoins, BTC and ETH. After that, XRP is not automatically eligible: it must meet the qualifying clearing-organization route or the fallback route, which requires at least a 20% haircut and revised risk policies filed before accepting non-BTC/ETH/non-stablecoin assets."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The same-asset exception does not apply to XRP collateral for an XRP-USDC linear contract because that contract is not both based on and denominated in XRP."
+    },
+    {
+      "classification": "CONFIRMED_DERIBIT_POLICY",
+      "claim": "Deribit says it has no connected clearing house or clearing members and describes a quasi-clearing/insurance-fund model."
+    },
+    {
+      "classification": "UNKNOWN_LEGAL_QUALIFICATION",
+      "claim": "Whether Deribit satisfies the precise CPMI-IOSCO foreign-clearing-organization qualification in 26-05 is unresolved. The CFTC 26-17 letter calls Deribit a foreign clearing organization in the CFM structure, while Deribit's own policy describes quasi-clearing rather than a connected clearing house."
+    },
+    {
+      "classification": "UNKNOWN_OPERATIONAL",
+      "claim": "CFM's notice date, expiry of the initial three-month restriction, revised risk-policy filing, post-October CBBM warm-wallet activation, CFM U.S. customer XRP enablement and actual XRP collateral balances remain unknown."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-XRP-QUALIFYING-FO",
+      "statement": "Deribit satisfies the 26-05 qualifying foreign-clearing-organization condition for XRP and CFM may apply Deribit's venue haircut after the initial period.",
+      "status": "POSSIBLE_NOT_VERIFIED",
+      "disconfirming": [
+        "Deribit's policy describes no connected clearing house/members; the exact CPMI-IOSCO jurisdiction test is unresolved."
+      ],
+      "test": "Find direct regulatory/legal evidence of Deribit's qualification and CFM's filed risk policy."
+    },
+    {
+      "id": "HYP-XRP-FALLBACK",
+      "statement": "If the qualifying clearing route is not met, CFM could accept XRP only through the 26-05 fallback after the initial period, with at least 20% haircut and revised risk policies.",
+      "status": "CONDITIONAL_NOT_VERIFIED",
+      "test": "Find CFM WinJammer notice and revised policy."
+    },
+    {
+      "id": "HYP-XRP-NOT-ENABLED",
+      "statement": "XRP is listed as a Deribit cross-collateral asset but not enabled for CFM U.S. customer accounts.",
+      "status": "PLAUSIBLE",
+      "test": "Verify customer account settings and post-integration Q4 collateral disclosures."
+    }
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

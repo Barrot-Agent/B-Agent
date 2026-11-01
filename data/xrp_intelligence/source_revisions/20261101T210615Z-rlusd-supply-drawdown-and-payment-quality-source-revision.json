@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "id": "rlusd-supply-drawdown-and-payment-quality-source-revision-20261101T210615Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "revisions": [
+    {
+      "source_id": "xrp-insights-radar-rlusd-chain-supply-20261101",
+      "revision_type": "new_snapshot",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "data_date": "2026-11-01",
+      "observation_time_utc": "2026-11-01T20:37:00Z",
+      "claims": {
+        "xrpl_rlusd_usd": 707400000,
+        "ethereum_rlusd_usd": 1710000000,
+        "two_chain_total_usd": 2420000000,
+        "xrpl_share_pct": 29,
+        "ethereum_share_pct": 71
+      },
+      "verification": "Methodology states XRPL issuer gateway_balances and Ethereum totalSupply; current read cross-checked against other public trackers."
+    },
+    {
+      "source_id": "stables-cool-rlusd-supply-20261101",
+      "revision_type": "new_snapshot_and_30d_change",
+      "url": "https://stables.cool/RLUSD/chains/xrp-ledger",
+      "data_date": "2026-11-01",
+      "claims": {
+        "xrpl_rlusd_usd": 707400000,
+        "change_30d_pct": -30.21,
+        "peak_usd": 1250000000,
+        "peak_date": "2026-10-07",
+        "change_from_peak_pct": -43.26
+      },
+      "verification": "Independent provider view of public on-chain data; exact intraday cutoff not displayed."
+    },
+    {
+      "source_id": "xrplto-rlusd-supply-20261101",
+      "revision_type": "cross_check",
+      "url": "https://xrpl.to/insights/rlusd-supply-tracker",
+      "data_date": "2026-11-01",
+      "claims": {
+        "xrpl_rlusd_units": 711828559,
+        "holders": 67904,
+        "trust_lines": 101680,
+        "top_10_holder_share_pct": 83
+      },
+      "verification": "Hourly refresh stated; no precise UTC observation timestamp. API documentation directs automated integrations to documented API."
+    },
+    {
+      "source_id": "bitquery-rlusd-xrpl-dust-bots-20261019",
+      "revision_type": "new_onchain_activity_quality_evidence",
+      "url": "https://www.bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "published_at": "2026-10-19",
+      "measurement_cutoff_utc": "2026-10-19T13:00:00Z",
+      "claims": {
+        "rlusd_payments_30d": 7821066,
+        "dust_cluster_payment_share_pct": 99.6,
+        "dust_cluster_wallets": 110,
+        "dust_value_rlusd": 7722,
+        "real_payments_ge_1_rlusd": 14600,
+        "real_payment_gross_value_usd": 7330000000,
+        "top_10_sender_share_pct": 82,
+        "issuer_loop_share_pct": 20
+      },
+      "verification": "Transaction-level analysis; attribution is behavior-based and author explicitly does not identify the cluster operator."
+    },
+    {
+      "source_id": "blockworks-xrp-q3-2026",
+      "revision_type": "quarterly_benchmark",
+      "url": "https://blockworks.com/quarterly-reports",
+      "pdf_url": "https://blockworks.com/api/investor-report/state-of-xrp-q3-2026/pdf",
+      "published_at": "2026-10-30",
+      "claims": {
+        "xrpl_stablecoins_usd": 1030000000,
+        "rlusd_xrpl_usd": 1010000000,
+        "rlusd_share_pct": 98.1,
+        "global_xrp_etp_inflows_usd": 355300000
+      },
+      "verification": "Publisher index confirms Q3 report and summary; full PDF could not be parsed in this run due retrieval size. Keep as publisher-reported figures pending direct PDF extraction."
+    }
+  ],
+  "correction_policy": "Do not merge current on-chain stock, Q3 report stock, gross transfer volume, issuer mint/redemption, and XRP spot purchases into one capital-flow metric. Preserve each source's own cutoff and scope.",
+  "status": "APPENDED_SOURCE_REVISION; NO_FORECAST"
+}

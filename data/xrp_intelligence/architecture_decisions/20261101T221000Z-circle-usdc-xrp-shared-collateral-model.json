@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "decision_id": "circle-usdc-xrp-shared-collateral-model-20261101T221000Z",
+  "captured_at_utc": "2026-11-01T22:10:00Z",
+  "decision": "Model Circle USDC and XRP as distinct assets in a shared Deribit collateral framework; do not infer actual CFM use or new XRP spot demand.",
+  "rules": [
+    "USDC and XRP are both listed as full Deribit cross-collateral currencies; neither is an offset currency in the September 28 table.",
+    "USDC has no stated X:PM/X:SM haircut; XRP has no stated X:PM haircut and 15% X:SM haircut.",
+    "Track Deribit account margin mode because X:PM and X:SM haircuts differ.",
+    "USDC's pre-GENIUS payment-stablecoin match is a sourced regulatory inference from issuer licensing, reserve composition and monthly attestations, not an asset-specific CFTC determination.",
+    "RLUSD is a candidate for the pre-GENIUS payment-stablecoin definition, but reserve-fund look-through is required and it is not listed in the current Deribit cross-collateral table.",
+    "Treat net stablecoin supply change as an issuer-level circulation feature, not direct capital flow into or out of XRP or Deribit.",
+    "Do not admit collateral-utility features until CFM account enablement and actual balances are verified."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "stablecoin-account-class-collateral-and-xrp-capital-flow-separation-20261101T202126Z",
+  "captured_at_utc": "2026-11-01T20:21:26Z",
+  "decisions": [
+    {
+      "topic": "USDC issuer",
+      "decision": "Use Circle Internet Financial, LLC as current USDC issuer for non-EEA holders; model Circle New York Trust and Circle National Trust as separate regulated affiliates.",
+      "reason": "Circle's October 15 USDC Terms name Circle Internet Financial, LLC as issuer; the other two entities are separately chartered."
+    },
+    {
+      "topic": "CFTC account class",
+      "decision": "Represent 30.7 and futures/cleared-swaps collateral eligibility separately.",
+      "reason": "Payment stablecoins can be used in 30.7 accounts without DCO acceptance under FCM valuation/haircut policies; futures/cleared-swaps accounts require DCO acceptance and DCO haircut."
+    },
+    {
+      "topic": "FCM residual interest",
+      "decision": "Record proprietary payment-stablecoin residual interest as FCM capital, not customer funds.",
+      "reason": "CFTC Letter 26-05 permits it subject to an applicable capital charge."
+    },
+    {
+      "topic": "USDC and RLUSD qualification",
+      "decision": "USDC is a strong public-criteria candidate; RLUSD issuer type is confirmed but reserve look-through remains unresolved.",
+      "reason": "USDC issuer/reserve/attestation evidence aligns more completely; RLUSD government-MMF holdings need look-through."
+    },
+    {
+      "topic": "XRP demand",
+      "decision": "Do not infer XRP spot demand from USDC/RLUSD collateral, native XRPL issuance, custody support or derivatives collateral eligibility.",
+      "reason": "Collateral, stablecoin transfers and XRP purchases are distinct capital-flow events."
+    },
+    {
+      "topic": "BNY",
+      "decision": "Model BNY as a common institutional custody node for USDXX, RLUSD and XRP; keep future mint/redeem and tokenized finance separate from live custody.",
+      "reason": "Current custody roles are disclosed; future services are planned."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

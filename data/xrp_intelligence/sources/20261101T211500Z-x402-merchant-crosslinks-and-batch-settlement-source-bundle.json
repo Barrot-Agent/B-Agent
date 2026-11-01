@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "source_bundle_id": "x402-merchant-crosslinks-and-batch-settlement-20261101T211500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "sources": [
+    {
+      "source_id": "bitquery-rlusd-xrpl-dust-bots-20261019",
+      "publisher": "Bitquery Research",
+      "url": "https://www.bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "published_at": "2026-10-19",
+      "measurement_cutoff_utc": "2026-10-19T13:00:00Z",
+      "claims": {
+        "collector_1": "rBi1QrVjwaNofisZAQnovoXdHkS73FG1tJ",
+        "collector_1_payments": 7050565,
+        "collector_2": "ra9b6JX5aPVbdJhogDDddsRAcasWg7gzC3",
+        "collector_2_payments": 470120,
+        "collector_3": "rMPwy3Ntx56Nyc2fKGNm7VRWdmpHSB92Z7",
+        "collector_3_payments": 16083,
+        "cluster_wallets": 110,
+        "mean_payment_rlusd": 0.00099,
+        "cluster_payment_value_rlusd": 7722
+      },
+      "limitations": [
+        "Bitquery describes automated wallets as bots and infers a cluster from shared funding and receivers; it does not identify the operator or intent."
+      ]
+    },
+    {
+      "source_id": "xrpl-insights-x402-merchant-address-index-20261101",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "source_type": "third_party_onchain_index",
+      "observed_at": "2026-11-01",
+      "claims": {
+        "merchant_1": {
+          "name": "Heurist Inference Router",
+          "address": "rBi1QrVjwaNofisZAQnovoXdHkS73FG1tJ",
+          "indexed_transactions": 10416103
+        },
+        "merchant_2": {
+          "name": "AskSurf",
+          "address": "ra9b6JX5aPVbdJhogDDddsRAcasWg7gzC3",
+          "indexed_transactions": 1126310
+        },
+        "merchant_3": {
+          "name": "Heurist Mesh",
+          "address": "rMPwy3Ntx56Nyc2fKGNm7VRWdmpHSB92Z7",
+          "indexed_transactions": 584628
+        }
+      },
+      "method": "The three merchant addresses exactly match the three collector addresses in the Bitquery analysis; the page attributes the index to the t54 XRPL x402 facilitator.",
+      "limitations": [
+        "Third-party index snapshot and transaction-count definitions may differ from Bitquery and t54's own index."
+      ]
+    },
+    {
+      "source_id": "t54-xrpl-ai-hub-live-index-20261101",
+      "publisher": "t54 Labs",
+      "url": "https://xrpl-ai.org/",
+      "source_type": "official_facilitator_operator_dashboard",
+      "observed_at": "2026-11-01",
+      "claims": {
+        "all_time_settled_value_usd": 48556.49,
+        "volume_settled_index": 14838056,
+        "registered_merchants": 183,
+        "live_services": 5318,
+        "facilitator": "XRPL x402 Facilitator",
+        "assets": [
+          "XRP",
+          "RLUSD",
+          "other XRPL issued assets"
+        ],
+        "mastercard_agent_pay_for_machines_launch_partner": true
+      },
+      "limitations": [
+        "Operator's own index; its counts and service definitions are not independently audited in the page. Some live settlement cards are explicitly marked unverified."
+      ]
+    },
+    {
+      "source_id": "t54-xrpl-batch-settlement-update-20261014",
+      "publisher": "t54 Labs / XRPL AI Hub",
+      "url": "https://xrpl-ai.org/updates",
+      "source_type": "official_product_update",
+      "published_at": "2026-10-14",
+      "claims": {
+        "feature": "x402 batch settlement using XRPL Checks",
+        "status": "closed beta on mainnet",
+        "eligibility": "onboarded merchants and registered payers; internal testing",
+        "asset_scope": "RLUSD only at launch",
+        "window_start": "2026-10-14",
+        "window_end": "2026-10-17",
+        "paid_requests": 213008,
+        "sessions": 3162,
+        "ledger_transactions": 6324,
+        "network_fee_drops_per_request": 0.36,
+        "session_design": "one CheckCreate establishes a spending ceiling; session-key authorizes each paid request off-ledger; merchant cashes one Check at close; two ledger transactions per session"
+      },
+      "limitations": [
+        "The update does not identify the 110-wallet cohort as a beta participant."
+      ]
+    },
+    {
+      "source_id": "t54-xrpl-x402-facilitator-docs",
+      "publisher": "t54 Labs",
+      "url": "https://xrpl-x402.t54.ai/docs/overview",
+      "source_type": "official_technical_documentation",
+      "claims": {
+        "protocol": "HTTP 402 pay-per-request",
+        "supported_assets": [
+          "XRP",
+          "RLUSD",
+          "other issued assets"
+        ],
+        "use_case": "machine-to-machine and AI-agent payments"
+      },
+      "limitations": [
+        "Documentation describes supported capability, not transaction volume or adoption by any specific payer."
+      ]
+    },
+    {
+      "source_id": "linux-foundation-x402-foundation-launch-20260714",
+      "publisher": "Linux Foundation",
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-operational-launch-of-x402-foundation-to-standardize-internet-native-payments-for-ai-agents-and-applications",
+      "source_type": "official_governance_announcement",
+      "published_at": "2026-07-14",
+      "claims": {
+        "x402_protocol_contributor": "Coinbase",
+        "governance": "vendor-neutral open governance under Linux Foundation",
+        "founding_members": [
+          "Coinbase",
+          "Circle",
+          "Ripple",
+          "Mastercard",
+          "t54 Labs",
+          "AWS",
+          "Visa",
+          "Adyen",
+          "American Express",
+          "Cloudflare",
+          "Fiserv",
+          "MoonPay",
+          "Stripe"
+        ],
+        "membership_count": 40,
+        "circle_statement": "x402 with USDC supports agent payments",
+        "ripple_statement": "x402 on XRPL supports XRP and RLUSD",
+        "mastercard_statement": "Mastercard Agent Pay for Machines participates in the open ecosystem"
+      },
+      "limitations": [
+        "Foundation membership and public statements establish shared standards participation, not exclusive commercial alignment or a single settlement rail."
+      ]
+    },
+    {
+      "source_id": "xrpl-x402-batch-settlement-index-crosscheck-20261101",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "source_type": "third_party_onchain_index",
+      "observed_at": "2026-11-01",
+      "claims": {
+        "indexed_agent_transactions": 14803915,
+        "active_agents": 189,
+        "merchants": 183,
+        "paid_services": 5790,
+        "settled_value_xrp": 7021,
+        "settled_value_rlusd": 38031
+      },
+      "limitations": [
+        "Counts differ from t54's official hub snapshot and may use different index definitions; do not average or treat as independent transaction-level proof."
+      ]
+    }
+  ],
+  "address_crosswalk": {
+    "rBi1QrVjwaNofisZAQnovoXdHkS73FG1tJ": {
+      "bitquery_role": "collector_1",
+      "x402_merchant": "Heurist Inference Router"
+    },
+    "ra9b6JX5aPVbdJhogDDddsRAcasWg7gzC3": {
+      "bitquery_role": "collector_2",
+      "x402_merchant": "AskSurf"
+    },
+    "rMPwy3Ntx56Nyc2fKGNm7VRWdmpHSB92Z7": {
+      "bitquery_role": "collector_3",
+      "x402_merchant": "Heurist Mesh"
+    }
+  },
+  "source_independence": "Bitquery and XRP Insights separately analyze XRPL data; the x402 hub is operated by t54 Labs and is not independent of the facilitator. Linux Foundation is an independent primary source for x402 governance membership and protocol contribution."
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "addendum_id": "ripple-institutional-and-macro-ledger-addendum-20261101T1430Z",
+  "captured_at_utc": "2026-11-01T14:30:00Z",
+  "supersedes_addendum": "occ-trust-charter-genius-act-ledger-addendum-20261101T1425Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T143000Z-ripple-institutional-treasury-prime-and-xrpl-adoption.json",
+  "macro_revision": "data/xrp_intelligence/source_revisions/20261101T143000Z-fed-treasury-sofr-macro.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T143000Z-ripple-institutional-adoption-and-macro-snapshot.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T143000Z-ripple-prime-treasury-bny-privy-and-collateral-graph.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T143000Z-ripple-prime-collateral-vs-cbxrp-and-macro.json",
+  "handoff": "data/xrp_intelligence/hand_offs/20261101T143000Z-ripple-institutional-and-macro-handoff.json",
+  "evidence_classes": {
+    "confirmed_company_announcements": [
+      "Ripple Treasury 24/7 Returns",
+      "BNY/C2FO tokenized trade-finance initiative",
+      "Privy programmable-wallet support",
+      "Ripple Prime institutional financing/clearing"
+    ],
+    "company_reported_metrics": [
+      "$900M annualized revenue run rate",
+      "$16T transactions enabled in 2025",
+      "85 licenses",
+      "1,700+ institutions",
+      "60+ payout markets"
+    ],
+    "primary_macro_data": [
+      "Federal Reserve October 28 FOMC statement",
+      "U.S. Treasury October 30 par yields",
+      "New York Fed October 28 SOFR"
+    ],
+    "inference": [
+      "high-rate opportunity-cost channel",
+      "RLUSD versus cbXRP collateral competition",
+      "XRPL tokenized assets could increase ledger activity"
+    ],
+    "unknown": [
+      "asset-specific Ripple Prime collateral composition",
+      "XRP-specific share of Ripple transaction volume",
+      "actual Treasury 24/7 Returns AUM and tokenized MMF flows"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none"
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "revision_id": "dtcc-circle-bitgo-rlusd-chain-mix-source-revision-20261101T162626Z",
+  "captured_at_utc": "2026-11-01T16:26:26Z",
+  "sources": [
+    {
+      "id": "dtcc-dts-launch-2026-10-28",
+      "url": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+      "publisher": "DTCC",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "DTS launched Oct28 2026",
+        "20 DTC participants signed agreements",
+        "more than 150 firms in industry working group",
+        "$114T DTC assets under custody",
+        "launch networks Canton and DTCC private Besu",
+        "additional networks to be added in 2027",
+        "BitGo named collaborator",
+        "no XRP or Ripple mention in release"
+      ],
+      "accessed_at_utc": "2026-11-01T16:26:26Z"
+    },
+    {
+      "id": "dtcc-production-pilot-2026-07-15",
+      "url": "https://www.dtcc.com/press-releases/2026/dtcc-turns-tokenization-into-reality",
+      "publisher": "DTCC",
+      "type": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "more than 30 firms in production event",
+        "Circle and BitGo named participants",
+        "production trades on Besu and Canton",
+        "collateral pledge, securities lending, Treasury/repo DVP, equity DVP/DVD, token transfers and CCP margin workflows",
+        "no XRP or Ripple mention in release"
+      ],
+      "accessed_at_utc": "2026-11-01T16:26:26Z"
+    },
+    {
+      "id": "q-eternal-rlusd-chain-supply-2026-10-29",
+      "url": "https://q-eternal.com/blog/2026-10-29/",
+      "publisher": "Q-Eternal",
+      "type": "INDEPENDENT_PUBLIC_LEDGER_RESEARCH",
+      "claims": [
+        "XRPL RLUSD obligations fell 3,854,626.13 between ledgers 107956087 and 107977763",
+        "Ethereum RLUSD supply rose 27,446,000",
+        "XRPL share of observed two-chain supply fell from 38.07% to 37.57%",
+        "no proof of cross-chain migration"
+      ],
+      "accessed_at_utc": "2026-11-01T16:26:26Z"
+    },
+    {
+      "id": "dtcc-tokenization-faq",
+      "url": "https://www.dtcc.com/products-and-services/digital-assets/tokenization/hub",
+      "publisher": "DTCC",
+      "type": "PRIMARY_PRODUCT_FAQ",
+      "claims": [
+        "FAQ page still described launch as expected in Q4 2026 and named Canton/Besu"
+      ],
+      "freshness_note": "Stale relative to the Oct28 launch press release; do not use for current launch status.",
+      "accessed_at_utc": "2026-11-01T16:26:26Z"
+    }
+  ],
+  "source_independence": "DTCC press releases are primary for DTCC product and participant statements. Q-Eternal is an independent public researcher using XRPL and Ethereum supply data; the specific supply deltas were not independently reproduced in this run.",
+  "unknowns": [
+    "Circle's exact role in DTCC's July production event.",
+    "Whether Circle provided USDC or any specific settlement/collateral function.",
+    "Whether DTCC will add XRPL, Ripple or other public networks in 2027.",
+    "Whether RLUSD's XRPL decline and Ethereum increase are connected by any bridge or represent separate issuer mint/burn activity.",
+    "Whether any Evernorth XRP was used in DTCC workflows."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

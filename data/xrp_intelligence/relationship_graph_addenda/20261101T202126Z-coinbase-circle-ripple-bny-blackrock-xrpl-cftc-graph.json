@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "id": "coinbase-circle-ripple-bny-blackrock-xrpl-cftc-graph-20261101T202126Z",
+  "captured_at_utc": "2026-11-01T20:21:26Z",
+  "nodes": [
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "type": "exchange_custody_distribution_platform"
+    },
+    {
+      "id": "coinbase_fcm",
+      "name": "Coinbase Financial Markets",
+      "type": "registered_FCM"
+    },
+    {
+      "id": "cftc",
+      "name": "CFTC Market Participants Division",
+      "type": "regulator"
+    },
+    {
+      "id": "circle_internet_financial",
+      "name": "Circle Internet Financial, LLC",
+      "type": "current_USDC_issuer_non_EEA"
+    },
+    {
+      "id": "circle_new_york_trust",
+      "name": "Circle Internet Trust Company, LLC",
+      "type": "NY_limited_purpose_trust_company"
+    },
+    {
+      "id": "circle_national_trust",
+      "name": "First National Digital Currency Bank, N.A. d/b/a Circle National Trust",
+      "type": "OCC_national_trust_bank"
+    },
+    {
+      "id": "usdc",
+      "name": "USDC",
+      "type": "payment_stablecoin"
+    },
+    {
+      "id": "usdxx",
+      "name": "Circle Reserve Fund USDXX",
+      "type": "2a7_government_money_market_fund"
+    },
+    {
+      "id": "blackrock",
+      "name": "BlackRock",
+      "type": "asset_manager"
+    },
+    {
+      "id": "standard_custody",
+      "name": "Standard Custody & Trust Company, LLC",
+      "type": "NY_limited_purpose_trust_company_and_RLUSD_issuer"
+    },
+    {
+      "id": "rlusd",
+      "name": "RLUSD",
+      "type": "payment_stablecoin_candidate"
+    },
+    {
+      "id": "ripple_national_trust",
+      "name": "Ripple National Trust Bank",
+      "type": "OCC_approved_national_trust_bank"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple",
+      "type": "digital_asset_company"
+    },
+    {
+      "id": "bny",
+      "name": "BNY",
+      "type": "institutional_custodian"
+    },
+    {
+      "id": "standard_chartered",
+      "name": "Standard Chartered",
+      "type": "institutional_custodian"
+    },
+    {
+      "id": "lmax",
+      "name": "LMAX Group",
+      "type": "institutional_trading_infrastructure"
+    },
+    {
+      "id": "xrpl",
+      "name": "XRP Ledger",
+      "type": "public_blockchain"
+    },
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "bitnomial",
+      "name": "Bitnomial Clearinghouse",
+      "type": "registered_DCO"
+    }
+  ],
+  "edges": [
+    {
+      "from": "coinbase_fcm",
+      "to": "cftc",
+      "relation": "originated_no_action_request_for_customer_digital_asset_collateral_and_own_stablecoin_residual_interest",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "coinbase",
+      "to": "circle_internet_financial",
+      "relation": "USDC_distribution_and_commercial_economics",
+      "status": "CONFIRMED_IN_SEC_FILING_RESEARCH"
+    },
+    {
+      "from": "circle_internet_financial",
+      "to": "usdc",
+      "relation": "current_issuer_for_non_EEA_holders",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "circle_internet_financial",
+      "to": "usdxx",
+      "relation": "holds_majority_USDC_reserves_in_fund",
+      "status": "CONFIRMED_BY_CIRCLE"
+    },
+    {
+      "from": "usdxx",
+      "to": "blackrock",
+      "relation": "managed_by",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "usdxx",
+      "to": "bny",
+      "relation": "custodied_at",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "circle_national_trust",
+      "to": "usdc",
+      "relation": "possible_future_issuer_category_not_current_issuer",
+      "status": "POTENTIAL_NOT_CURRENT"
+    },
+    {
+      "from": "circle_new_york_trust",
+      "to": "usdc",
+      "relation": "separate_regulated_affiliate_not_current_issuer",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "usdc",
+      "to": "xrpl",
+      "relation": "natively_issued_on_XRPL",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "standard_custody",
+      "to": "rlusd",
+      "relation": "current_issuer",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "ripple_national_trust",
+      "to": "rlusd",
+      "relation": "approved_reserve_management_collateral_trustee_and_custody_roles",
+      "status": "CONFIRMED_NOT_ISSUER"
+    },
+    {
+      "from": "bny",
+      "to": "rlusd",
+      "relation": "primary_reserve_custodian_and_live_custody_support",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "bny",
+      "to": "xrp",
+      "relation": "live_institutional_custody_support",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "standard_chartered",
+      "to": "rlusd",
+      "relation": "live_custody_on_XRPL",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "standard_chartered",
+      "to": "lmax",
+      "relation": "planned_RLUSD_collateral_mirroring",
+      "status": "PLANNED_NOT_LIVE"
+    },
+    {
+      "from": "cftc",
+      "to": "usdc",
+      "relation": "30_7_payment_stablecoin_customer_collateral_path",
+      "status": "CONDITIONAL_NO_ACTION_NOT_TOKEN_APPROVAL"
+    },
+    {
+      "from": "cftc",
+      "to": "rlusd",
+      "relation": "30_7_payment_stablecoin_customer_collateral_candidate",
+      "status": "CONDITIONAL_ISSUER_MATCH_RESERVE_LOOKTHROUGH"
+    },
+    {
+      "from": "bitnomial",
+      "to": "xrp",
+      "relation": "DCO_collateral_acceptance_40pct_haircut_15m_limit",
+      "status": "CONFIRMED_VENUE_SPECIFIC"
+    },
+    {
+      "from": "rlusd",
+      "to": "xrpl",
+      "relation": "native_RLUSD_network_support",
+      "status": "CONFIRMED"
+    }
+  ],
+  "account_class_rules": {
+    "futures_and_cleared_swaps": "DCO acceptance required; DCO valuation and haircut apply.",
+    "account_30_7": "Payment stablecoin may be accepted without DCO acceptance, subject to FCM valuation/haircut policies; DCO/foreign clearing acceptance or underlying commodity of DCM futures are separate eligibility routes.",
+    "residual_interest": "FCM proprietary payment stablecoins may be deposited as residual interest subject to capital charge."
+  },
+  "unknown_edges": [
+    {
+      "from": "coinbase_fcm",
+      "to": "usdc",
+      "relation": "actual_customer_collateral_or_residual_interest_usage",
+      "status": "UNKNOWN"
+    },
+    {
+      "from": "coinbase_fcm",
+      "to": "rlusd",
+      "relation": "actual_collateral_usage",
+      "status": "UNKNOWN"
+    },
+    {
+      "from": "coinbase_fcm",
+      "to": "xrp",
+      "relation": "actual_XRP_collateral_usage",
+      "status": "UNKNOWN"
+    },
+    {
+      "from": "circle_internet_financial",
+      "to": "xrp",
+      "relation": "direct_XRP_purchase_or_collateral_program",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "bitnomial",
+      "to": "usdc",
+      "relation": "current_DCO_collateral_acceptance",
+      "status": "NOT_LISTED"
+    },
+    {
+      "from": "bitnomial",
+      "to": "rlusd",
+      "relation": "current_DCO_collateral_acceptance",
+      "status": "NOT_LISTED"
+    }
+  ]
+}

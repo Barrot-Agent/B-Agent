@@ -1,0 +1,885 @@
+{
+  "schema_version": 1,
+  "graph_id": "sbi-circle-arc-coinbase-xrpl-agentic-20261101T181734Z",
+  "captured_at_utc": "2026-11-01T18:17:34Z",
+  "nodes": [
+    {
+      "id": "SBI_Group",
+      "type": "holding_company"
+    },
+    {
+      "id": "SBI_VC_Trade",
+      "type": "exchange_and_distribution_entity"
+    },
+    {
+      "id": "SBI_Remit",
+      "type": "remittance_provider"
+    },
+    {
+      "id": "SBI_Ripple_Asia",
+      "type": "joint_venture"
+    },
+    {
+      "id": "SBIC_Tokyo_SME_Investment_Consultation",
+      "type": "separate_sme_investment_consultation_company"
+    },
+    {
+      "id": "Circle",
+      "type": "stablecoin_and_payment_infrastructure_company"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "JPYSC",
+      "type": "yen_stablecoin"
+    },
+    {
+      "id": "Arc",
+      "type": "stablecoin_native_l1"
+    },
+    {
+      "id": "Ripple",
+      "type": "blockchain_and_payments_company"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "XRP",
+      "type": "digital_asset"
+    },
+    {
+      "id": "XRPL",
+      "type": "ledger"
+    },
+    {
+      "id": "Coinbase",
+      "type": "exchange_custody_and_infrastructure"
+    },
+    {
+      "id": "Binance",
+      "type": "exchange"
+    },
+    {
+      "id": "Aave",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "Morpho",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "x402",
+      "type": "open_http_payment_standard"
+    },
+    {
+      "id": "Linux_Foundation_x402_Foundation",
+      "type": "open_governance_body"
+    },
+    {
+      "id": "t54_Labs",
+      "type": "XRPL_x402_facilitator_operator"
+    },
+    {
+      "id": "XRPL_x402_Facilitator",
+      "type": "payment_facilitator"
+    },
+    {
+      "id": "AgentEconomy_to",
+      "type": "multi_protocol_analytics_provider"
+    },
+    {
+      "id": "Evernorth",
+      "type": "xrp_treasury_company"
+    },
+    {
+      "id": "BitGo",
+      "type": "institutional_custodian"
+    },
+    {
+      "id": "Project_Trinity",
+      "type": "security_token_DvP_proof_of_concept"
+    },
+    {
+      "id": "SMBC",
+      "type": "bank_and_stablecoin_issuer"
+    },
+    {
+      "id": "Progmat",
+      "type": "tokenization_and_cross_chain_provider"
+    },
+    {
+      "id": "Datachain",
+      "type": "cross_chain_provider"
+    },
+    {
+      "id": "SBI_Securities",
+      "type": "securities_firm"
+    },
+    {
+      "id": "SBI_R3_Japan",
+      "type": "DLT_services_company"
+    },
+    {
+      "id": "Osaka_Digital_Exchange",
+      "type": "digital_asset_exchange"
+    },
+    {
+      "id": "Daiwa_Securities",
+      "type": "securities_firm"
+    },
+    {
+      "id": "TISI",
+      "type": "stablecoin_infrastructure_provider"
+    },
+    {
+      "id": "Fireblocks",
+      "type": "digital_asset_infrastructure_provider"
+    },
+    {
+      "id": "Tranglo",
+      "type": "cross_border_payout_provider"
+    },
+    {
+      "id": "Beneficiary_Bank",
+      "type": "receiving_bank_account"
+    },
+    {
+      "id": "Ripple_Payments_ODL",
+      "type": "cross_border_payment_solution"
+    },
+    {
+      "id": "DSRV",
+      "type": "blockchain_infrastructure_provider"
+    },
+    {
+      "id": "NICE",
+      "type": "Korean_payment_provider"
+    },
+    {
+      "id": "SBI_DigiTrust",
+      "type": "SBI_group_payment_entity"
+    },
+    {
+      "id": "SBI_Shinsei_Trust",
+      "type": "trust_bank_and_JPYSC_issuer"
+    },
+    {
+      "id": "SBI_Startale_Marketing",
+      "type": "SBI_Startale_joint_venture"
+    },
+    {
+      "id": "Startale_Group",
+      "type": "blockchain_infrastructure_company"
+    },
+    {
+      "id": "SMFG",
+      "type": "banking_group"
+    },
+    {
+      "id": "Open_Standard",
+      "type": "open_stablecoin_interoperability_initiative"
+    },
+    {
+      "id": "OUSD",
+      "type": "USD_stablecoin"
+    },
+    {
+      "id": "Solana_Foundation",
+      "type": "blockchain_ecosystem_foundation"
+    },
+    {
+      "id": "Strium",
+      "type": "SBI_Startale_L1_initiative"
+    },
+    {
+      "id": "SBI_Solana_Global",
+      "type": "planned_SBI_R3_Japan_renaming"
+    },
+    {
+      "id": "DCJPY",
+      "type": "tokenized_deposit"
+    },
+    {
+      "id": "DeCurret_DCP",
+      "type": "digital_asset_infrastructure_provider"
+    },
+    {
+      "id": "SBI_Digital_Markets",
+      "type": "institutional_digital_asset_provider"
+    },
+    {
+      "id": "Penguin_Securities",
+      "type": "securities_firm"
+    },
+    {
+      "id": "Ethereum",
+      "type": "public_blockchain"
+    },
+    {
+      "id": "Korea_Japan_Stablecoin_Pilot",
+      "type": "cross_border_payment_pilot"
+    }
+  ],
+  "edges": [
+    {
+      "from": "SBI_Group",
+      "to": "Arc",
+      "relation": "founding_validator_and_governance_participant",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "USDC",
+      "relation": "stated_intent_to_leverage_on_Arc",
+      "evidence_class": "SOURCED_COMPANY_CLAIM",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "JPYSC",
+      "relation": "stated_intent_to_leverage_on_Arc",
+      "evidence_class": "SOURCED_COMPANY_CLAIM",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "USDC",
+      "relation": "Japan_distribution_partner_since_March_2025",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "RLUSD",
+      "relation": "Japan_distribution_and_listing_relationship",
+      "evidence_class": "SOURCED_OFFICIAL_SBI_ANNOUNCEMENT",
+      "source_id": "ripple-sbi-rlusd-japan-2026-06-24"
+    },
+    {
+      "from": "SBIC_Tokyo_SME_Investment_Consultation",
+      "to": "ChatGPT_and_Copilot",
+      "relation": "educational_training_for_investee_companies",
+      "evidence_class": "CONFIRMED_EDUCATIONAL_ACTIVITY_ONLY",
+      "source_id": "sbic-ai-training-2025-06-12"
+    },
+    {
+      "from": "SBIC_Tokyo_SME_Investment_Consultation",
+      "to": "SBI_Group",
+      "relation": "no_verified_affiliation_or_control_edge",
+      "evidence_class": "UNKNOWN_NO_EDGE_ADMITTED",
+      "source_id": "sbic-tokyo-profile"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer",
+      "evidence_class": "CONFIRMED",
+      "source_id": "circle-native-usdc-xrpl"
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native_USDC_issuance_available",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "circle-native-usdc-xrpl"
+    },
+    {
+      "from": "Circle",
+      "to": "Arc",
+      "relation": "network_operator_and_USDC_gas_asset",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issuer",
+      "evidence_class": "CONFIRMED_TECHNICAL_DOCUMENTATION",
+      "source_id": "ripple-rlusd-xrpl-documentation"
+    },
+    {
+      "from": "Ripple",
+      "to": "XRPL",
+      "relation": "native_RLUSD_issued_token",
+      "evidence_class": "CONFIRMED_TECHNICAL_DOCUMENTATION",
+      "source_id": "ripple-rlusd-xrpl-documentation"
+    },
+    {
+      "from": "Coinbase",
+      "to": "x402",
+      "relation": "protocol_contributor",
+      "evidence_class": "CONFIRMED_FOUNDATION_ANNOUNCEMENT",
+      "source_id": "linux-foundation-x402-foundation-20260714"
+    },
+    {
+      "from": "Linux_Foundation_x402_Foundation",
+      "to": "x402",
+      "relation": "open_vendor_neutral_governance",
+      "evidence_class": "CONFIRMED_FOUNDATION_ANNOUNCEMENT",
+      "source_id": "linux-foundation-x402-foundation-20260714"
+    },
+    {
+      "from": "Circle",
+      "to": "Linux_Foundation_x402_Foundation",
+      "relation": "member",
+      "evidence_class": "CONFIRMED_FOUNDATION_ANNOUNCEMENT",
+      "source_id": "linux-foundation-x402-foundation-20260714"
+    },
+    {
+      "from": "Ripple",
+      "to": "Linux_Foundation_x402_Foundation",
+      "relation": "member",
+      "evidence_class": "CONFIRMED_FOUNDATION_ANNOUNCEMENT",
+      "source_id": "linux-foundation-x402-foundation-20260714"
+    },
+    {
+      "from": "t54_Labs",
+      "to": "Linux_Foundation_x402_Foundation",
+      "relation": "general_member",
+      "evidence_class": "CONFIRMED_FOUNDATION_ANNOUNCEMENT",
+      "source_id": "linux-foundation-x402-foundation-20260714"
+    },
+    {
+      "from": "t54_Labs",
+      "to": "XRPL_x402_Facilitator",
+      "relation": "operator",
+      "evidence_class": "CONFIRMED_OPERATOR_DOCUMENTATION",
+      "source_id": "t54-xrpl-x402-technical-specification"
+    },
+    {
+      "from": "XRPL_x402_Facilitator",
+      "to": "XRPL",
+      "relation": "submits_payer_presigned_Payment_transactions",
+      "evidence_class": "CONFIRMED_TECHNICAL_SPECIFICATION",
+      "source_id": "t54-xrpl-x402-technical-specification"
+    },
+    {
+      "from": "XRPL_x402_Facilitator",
+      "to": "XRP",
+      "relation": "supports_native_XRP_payments",
+      "evidence_class": "CONFIRMED_TECHNICAL_SPECIFICATION",
+      "source_id": "t54-xrpl-x402-technical-specification"
+    },
+    {
+      "from": "XRPL_x402_Facilitator",
+      "to": "RLUSD",
+      "relation": "supports_issued_RLUSD_payments",
+      "evidence_class": "CONFIRMED_TECHNICAL_SPECIFICATION",
+      "source_id": "t54-xrpl-x402-technical-specification"
+    },
+    {
+      "from": "XRPL_x402_Facilitator",
+      "to": "USDC",
+      "relation": "supports_issued_USDC_payments",
+      "evidence_class": "CONFIRMED_OPERATOR_DASHBOARD",
+      "source_id": "t54-xrpl-ai-hub-20261101"
+    },
+    {
+      "from": "Circle",
+      "to": "x402",
+      "relation": "USDC_agent_payment_support_and_98_8_percent_share_claim",
+      "evidence_class": "COMPANY_REPORTED_CLAIM",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Arc",
+      "relation": "listed_exchange_participant",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "Binance",
+      "to": "Arc",
+      "relation": "listed_exchange_participant",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "Aave",
+      "to": "Arc",
+      "relation": "lending_integration",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "Morpho",
+      "to": "Arc",
+      "relation": "lending_integration",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "circle-arc-mainnet-2026-09-16"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Evernorth",
+      "relation": "principal_XRP_market_for_financial_reporting_and_execution_relationship",
+      "evidence_class": "CONFIRMED_SEC_FILING_AND_COMPANY_DISCLOSURE",
+      "source_id": "evernorth-424b3-20261030"
+    },
+    {
+      "from": "BitGo",
+      "to": "Evernorth",
+      "relation": "primary_XRP_custodian",
+      "evidence_class": "SOURCED_SEC_FILING",
+      "source_id": "evernorth-424b3-20261030"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC_distribution_and_revenue_sharing_relationship",
+      "evidence_class": "CONFIRMED_SEC_FILINGS",
+      "source_id": "coinbase-2026q3-10q"
+    },
+    {
+      "from": "Circle",
+      "to": "Binance",
+      "relation": "100M_equity_investment_and_five_year_USDC_commercial_agreement",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT_AND_SEC_FILING",
+      "source_id": "circle-binance-2026-09-17-8k"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "SBI_Ripple_Asia",
+      "relation": "60_percent_voting_right_ownership",
+      "evidence_class": "CONFIRMED_PRIMARY_GROUP_PROFILE",
+      "source_id": "sbiholdings-sbi-ripple-asia-ownership-60pct"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "RippleNet_and_FinTech_Solutions",
+      "relation": "provides_blockchain_DLT_fintech_solutions; Ripple_profile_explicitly_says_it_does_not_handle_XRP",
+      "evidence_class": "PRIMARY_COMPANY_PROFILE_WITH_EXPLICIT_LIMITATION",
+      "source_id": "ripple-sbi-ripple-asia-odl-current"
+    },
+    {
+      "from": "SBI_Securities",
+      "to": "Project_Trinity",
+      "relation": "participant_in_security_token_DvP_poc",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "Project_Trinity",
+      "relation": "participant_in_security_token_DvP_poc",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "SBI_R3_Japan",
+      "to": "Project_Trinity",
+      "relation": "participant_in_security_token_DvP_poc",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Osaka_Digital_Exchange",
+      "to": "Project_Trinity",
+      "relation": "market_venue_participant",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Daiwa_Securities",
+      "to": "Project_Trinity",
+      "relation": "participant_in_DvP_operational_verification",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "SMBC",
+      "relation": "uses_SMBC_issued_trust_beneficiary_stablecoin_for_DvP_test",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "Progmat",
+      "relation": "cross_chain_and_tokenization_technology_provider",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "Datachain",
+      "relation": "cross_chain_technology_provider",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "TISI",
+      "relation": "stablecoin_infrastructure_provider",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "Fireblocks",
+      "relation": "stablecoin_infrastructure_provider",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "SBI_Remit",
+      "to": "SBI_VC_Trade",
+      "relation": "sends_customer_payment_request_for_XRP_enabled_corridor",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "XRP",
+      "relation": "sends_XRP_in_real_time_in_response_to_SBI_Remit_request",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "Tranglo",
+      "to": "Beneficiary_Bank",
+      "relation": "processes_payout_and_pays_beneficiary_bank_account",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "Ripple",
+      "to": "Ripple_Payments_ODL",
+      "relation": "provides_payment_solution",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "Ripple_Payments_ODL",
+      "to": "XRP",
+      "relation": "uses_XRP_as_bridge_currency_between_fiat_currencies",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "XRPL",
+      "relation": "joint_research_with_DSRV_for_Japan_Korea_payment_feasibility_study_only_not_production_or_XRP_use",
+      "evidence_class": "CONFIRMED_PRIMARY_STUDY_ANNOUNCEMENT",
+      "source_id": "sbi-ripple-asia-dsrv-xrpl-study-2026-02-24"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "DSRV",
+      "relation": "joint_research_partner_for_Japan_Korea_payment_feasibility",
+      "evidence_class": "CONFIRMED_PRIMARY_STUDY_ANNOUNCEMENT",
+      "source_id": "sbi-ripple-asia-dsrv-xrpl-study-2026-02-24"
+    },
+    {
+      "from": "SBI_Shinsei_Trust",
+      "to": "JPYSC",
+      "relation": "issuer",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-jpysc-launch-2026-06-24"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "JPYSC",
+      "relation": "initial_distributor_inside_SBI_VC_Trade_accounts",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-jpysc-launch-2026-06-24"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "SBI_Startale_Marketing",
+      "relation": "joint_venture_with_Startale_for_JPYSC_adoption_and_use_case_development",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "Startale_Group",
+      "to": "SBI_Startale_Marketing",
+      "relation": "joint_venture_partner",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "SMFG",
+      "to": "SBI_Startale_Marketing",
+      "relation": "agreed_5_percent_capital_participation",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "SMFG",
+      "relation": "capital_and_business_alliance_for_stablecoin_financial_services_research",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Startale_Group",
+      "relation": "announced_approx_50M_investment_agreement_through_subsidiary",
+      "evidence_class": "ANNOUNCED_INVESTMENT_AGREEMENT_NOT_CLOSING_VERIFIED",
+      "source_id": "sbi-startale-investment-2026-03-26"
+    },
+    {
+      "from": "SBI_Startale_Marketing",
+      "to": "JPYSC",
+      "relation": "plans_JPYSC_use_case_development_and_adoption",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Open_Standard",
+      "relation": "participant_with_Startale_in_open_interoperability_initiative",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "Startale_Group",
+      "to": "Open_Standard",
+      "relation": "participant",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open_Standard",
+      "relation": "listed_among_140_plus_participating_companies_not_a_bilateral_SBI_deal",
+      "evidence_class": "SOURCED_PARTICIPANT_LISTING",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "Open_Standard",
+      "to": "OUSD",
+      "relation": "stablecoin_interoperability_initiative",
+      "evidence_class": "SOURCED_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "Open_Standard",
+      "to": "JPYSC",
+      "relation": "JPYSC_OUSD_interoperability_experiment_under_consideration_not_live",
+      "evidence_class": "SOURCED_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-open-standard-2026-10-16"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Solana_Foundation",
+      "relation": "strategic_partnership_for_Japan_onchain_financial_market",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Strium",
+      "relation": "co_development_of_L1_for_tokenized_securities_RWA_stablecoins_and_24_7_markets",
+      "evidence_class": "ANNOUNCED_STRATEGIC_BUILD",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "Startale_Group",
+      "to": "Strium",
+      "relation": "co_development_partner",
+      "evidence_class": "ANNOUNCED_STRATEGIC_BUILD",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "Solana_Foundation",
+      "to": "SBI_R3_Japan",
+      "relation": "announced_participation_in_company_with_planned_renaming_to_SBI_Solana_Global",
+      "evidence_class": "ANNOUNCED_STRATEGIC_PARTNERSHIP",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "SBI_R3_Japan",
+      "to": "SBI_Solana_Global",
+      "relation": "planned_renaming_not_yet_verified_as_completed",
+      "evidence_class": "ANNOUNCED_FUTURE_CHANGE",
+      "source_id": "sbi-solana-strium-2026-07-13"
+    },
+    {
+      "from": "SBI_DigiTrust",
+      "to": "NICE",
+      "relation": "Japan_Korea_stablecoin_payment_pilot_partner",
+      "evidence_class": "CONFIRMED_PILOT_ANNOUNCEMENT",
+      "source_id": "sbi-digitrust-korea-pilot-2026-10-01"
+    },
+    {
+      "from": "SBI_DigiTrust",
+      "to": "DSRV",
+      "relation": "Japan_Korea_stablecoin_payment_pilot_partner",
+      "evidence_class": "CONFIRMED_PILOT_ANNOUNCEMENT",
+      "source_id": "sbi-digitrust-korea-pilot-2026-10-01"
+    },
+    {
+      "from": "SBI_DigiTrust",
+      "to": "Korea_Japan_Stablecoin_Pilot",
+      "relation": "joint_verification_target_completion_December_2026_asset_unspecified",
+      "evidence_class": "PILOT_NOT_PRODUCTION",
+      "source_id": "sbi-digitrust-korea-pilot-2026-10-01"
+    },
+    {
+      "from": "SBI_Shinsei_Trust",
+      "to": "DCJPY",
+      "relation": "participant_in_tokenized_deposit_DvP_proof_of_concept",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-tokenized-deposit-dcJPY-2026-04-24"
+    },
+    {
+      "from": "DeCurret_DCP",
+      "to": "DCJPY",
+      "relation": "participant_in_tokenized_deposit_DvP_proof_of_concept",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-tokenized-deposit-dcJPY-2026-04-24"
+    },
+    {
+      "from": "SBI_Securities",
+      "to": "DCJPY",
+      "relation": "participant_in_security_token_DvP_proof_of_concept",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-tokenized-deposit-dcJPY-2026-04-24"
+    },
+    {
+      "from": "SBI_Digital_Markets",
+      "to": "Ethereum",
+      "relation": "public_chain_used_in_stablecoin_security_token_distribution_poc",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-public-chain-dvp-2026-07-08"
+    },
+    {
+      "from": "Penguin_Securities",
+      "to": "Ethereum",
+      "relation": "participant_in_public_chain_security_token_distribution_poc",
+      "evidence_class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENT",
+      "source_id": "sbi-public-chain-dvp-2026-07-08"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_SBI_multirail",
+      "hypothesis": "SBI Group is building a multi-rail institutional strategy rather than choosing a single XRP or USDC network.",
+      "supporting_evidence": [
+        "SBI Group is a Circle Arc founding validator and says it will leverage USDC and JPYSC.",
+        "SBI VC Trade distributes USDC and RLUSD in Japan.",
+        "SBI Remit sends customer payment requests in the XRP-enabled remittance corridor; SBI VC Trade is the entity that sends XRP in real time.",
+        "Project Trinity uses a separate SMBC-issued trust-beneficiary stablecoin for its DvP proof-of-concept."
+      ],
+      "disconfirming_or_missing": [
+        "SBI Ripple Asia explicitly says it does not handle XRP.",
+        "No current throughput by rail is disclosed.",
+        "No evidence of exclusive commitment or net XRP accumulation from these initiatives."
+      ]
+    },
+    {
+      "id": "H2_Arc_competes_for_stablecoin_and_agentic_flows",
+      "hypothesis": "Circle Arc may capture stablecoin-native payments, FX, lending and agentic settlement that might otherwise use XRPL.",
+      "supporting_evidence": [
+        "Arc uses USDC as gas and has a large institutional/exchange/credit cohort.",
+        "Circle reports USDC at 98.8% of agent-driven transaction volume."
+      ],
+      "disconfirming_or_missing": [
+        "Circle USDC is natively available on XRPL.",
+        "Coinbase, Circle, Ripple and t54 share x402 Foundation participation.",
+        "No chain-level flow evidence demonstrates displacement from XRPL."
+      ]
+    },
+    {
+      "id": "H3_XRPL_x402_is_utility_but_not_material_XRP_demand",
+      "hypothesis": "XRPL x402 is technically operational but current monetary settlement value is too small to establish material XRP market demand.",
+      "supporting_evidence": [
+        "T54 reports about 14.83M payment/settlement events but only $48.3K cumulative value.",
+        "The facilitator supports both XRP and RLUSD, so event counts are not necessarily XRP-denominated."
+      ],
+      "disconfirming_or_missing": [
+        "Raw ledger-level event-to-invoice reconciliation has not been independently completed.",
+        "The dashboard and third-party tracker disagree on counts and merchant/service totals."
+      ]
+    },
+    {
+      "id": "H4_RLUSD_distribution_center_shift",
+      "hypothesis": "RLUSD's distribution is currently more Ethereum-centered than XRPL-centered.",
+      "supporting_evidence": [
+        "XRP Insights reports $707.4M on XRPL versus $1.71B on Ethereum, approximately 29% versus 71%."
+      ],
+      "disconfirming_or_missing": [
+        "Raw issuer gateway_balances and Ethereum totalSupply were not independently retrieved in this run.",
+        "The chain split has changed historically; a single snapshot does not establish durable migration or redemption causality."
+      ]
+    },
+    {
+      "id": "H5_exchange_outflows_signal_supply_migration",
+      "hypothesis": "The seven-day decline in attributed exchange wallets may reflect XRP moving to self-custody or other venues.",
+      "supporting_evidence": [
+        "Same-wallet attributed balances declined approximately 161.1M XRP over seven days."
+      ],
+      "disconfirming_or_missing": [
+        "Thirty-day same-wallet change is only about -12.7M XRP.",
+        "Unattributed wallet transfers, internal cold-wallet movements and coverage changes prevent a customer-withdrawal conclusion."
+      ]
+    },
+    {
+      "id": "H6_ETF_inflows_signal_sticky_institutional_interest",
+      "hypothesis": "Positive weekly ETF/index flows despite a tracker-estimated cost basis above spot may indicate persistent allocation interest.",
+      "supporting_evidence": [
+        "Tracker reports +3.39M XRP net weekly flow and approximately 1.1966B XRP holdings."
+      ],
+      "disconfirming_or_missing": [
+        "Weekly flow is small relative to holdings.",
+        "GXRP flows are excluded and some historical rows are reconstructed.",
+        "The estimated average cost is not issuer-reported investor cost basis."
+      ]
+    },
+    {
+      "id": "H7_SBI_diversified_multi_rail",
+      "hypothesis": "SBI-affiliated entities are testing several distinct settlement rails—XRP remittance, RLUSD/USDC distribution and SMBC-stablecoin DvP—rather than making a single-network commitment.",
+      "supporting_evidence": [
+        "SBI Remit has an XRP bridge-asset remittance service in selected corridors.",
+        "SBI VC Trade distributes RLUSD and USDC in Japan.",
+        "SBI Group is a Circle Arc founding validator and says it intends to leverage USDC and JPYSC.",
+        "Project Trinity used an SMBC-issued trust-beneficiary stablecoin with Progmat/Datachain cross-chain technology."
+      ],
+      "disconfirming_or_missing": [
+        "Project Trinity is a proof-of-concept/operational verification, not evidence of commercial throughput.",
+        "No current transaction volume, asset allocation or balance-sheet commitment by rail is disclosed.",
+        "No evidence establishes that these initiatives share one treasury or settlement strategy."
+      ]
+    },
+    {
+      "id": "H8_SBI_institutional_multi_rail_portfolio",
+      "hypothesis": "SBI Group is assembling a diversified institutional onchain-finance portfolio across XRP/ODL, RLUSD, USDC/Arc, JPYSC/OUSD, SMBC stablecoin DvP, DCJPY, Solana/Strium, Ethereum tokenized securities and XRPL research.",
+      "supporting_evidence": [
+        "SBI VC Trade is the XRP execution leg in the SBI Remit corridor and also distributes RLUSD, USDC and JPYSC.",
+        "SBI Group is a Circle Arc founding validator and says it intends to leverage USDC/JPYSC.",
+        "SBI-affiliated participants completed Project Trinity using an SMBC-issued stablecoin for security-token DvP testing.",
+        "SBI announced JPYSC/OUSD interoperability research with Open Standard, which lists Coinbase among participants.",
+        "SBI and Solana Foundation announced Strium and SBI Solana Global plans.",
+        "SBI Ripple Asia and DSRV announced an XRPL feasibility study, while Ripple states SBI Ripple Asia does not handle XRP."
+      ],
+      "disconfirming_or_missing": [
+        "Most of the non-XRP initiatives are pilots, feasibility studies, planned infrastructure or account-limited distribution rather than demonstrated production volume.",
+        "No unified SBI treasury, asset allocation or exclusive settlement strategy is disclosed.",
+        "No current XRP corridor throughput or net XRP inventory is disclosed."
+      ]
+    }
+  ],
+  "unresolved_no_edge_assertions": [
+    "No direct commercial or ownership relationship between Tokyo SBIC and SBI Holdings has been established.",
+    "No direct XRP custody or use by SBI Ripple Asia is established by its Ripple profile; separate SBI Remit XRP corridors must not be attributed to SBI Ripple Asia.",
+    "Project Trinity's announced DvP proof-of-concept used an SMBC-issued trust-beneficiary stablecoin; no XRP, RLUSD or USDC use is stated.",
+    "No evidence shows Circle's 98.8% agent-payment claim represents all x402 activity across all chains.",
+    "No evidence shows Circle Arc uses XRP as its native gas or collateral asset.",
+    "No evidence shows x402 payment-event counts translate into net XRP purchases.",
+    "SBI Remit is the remittance service provider and request originator; the 2023 release identifies SBI VC Trade as the entity sending XRP in real time.",
+    "SBI Ripple Asia explicitly says it does not handle XRP; do not attribute SBI VC Trade's XRP execution to SBI Ripple Asia.",
+    "JPYSC was initially provided only inside SBI VC Trade accounts; public-chain circulation was conditional on legal/tax implementation, so Arc usage is intent rather than verified onchain settlement.",
+    "SBI and Startale's JPYSC/OUSD interoperability experiment under Open Standard is under consideration, not live.",
+    "Coinbase is listed among Open Standard participants; no bilateral Coinbase-SBI commercial agreement is established by that announcement.",
+    "Circle is not identified as an Open Standard participant in the cited SBI announcement; no Circle edge is admitted.",
+    "SBI's Solana/Strium, Project Trinity, DCJPY and Japan-Korea stablecoin pilots are separate rails; none is evidence of XRP usage.",
+    "SBI Ripple Asia's XRPL study with DSRV is a feasibility/research activity; its own Ripple profile says it does not handle XRP."
+  ]
+}

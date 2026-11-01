@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "handoff_id": "ask-coin-actual-capital-followup-20261101T1350Z",
+  "captured_at_utc": "2026-11-01T13:50:00Z",
+  "candidate": "Permission Coin (ASK)",
+  "identity_status": "plausible candidate only; exact source-video reference not verified",
+  "findings": [
+    "Permission's official docs identify ASK as a LayerZero OFT-20 token on Base and Polygon with Stargate support.",
+    "Permission announced on 2026-09-22 that its ASK Wallet moved to Coinbase embedded-wallet infrastructure; Coinbase manages key material and user login authorizes transactions, with key export supported.",
+    "This is a wallet infrastructure relationship, not evidence of Coinbase investing in ASK, listing ASK on its exchange, market-making, or purchasing ASK.",
+    "No direct XRP/XRPL contract, Ripple partnership or ASK/XRP liquidity pool was identified in reviewed official sources.",
+    "CoinMarketCap localized pages display materially inconsistent ASK price and market cap with zero 24-hour volume; quote data is quarantined."
+  ],
+  "actual_capital_rule": "Separate wallet infrastructure, token valuation, secondary turnover, net fiat inflows, treasury investment, collateralized credit and issuer mint/burn. The Coinbase ASK Wallet integration is not capital deployed into XRP or ASK.",
+  "next_actions": [
+    "Find the original video/context containing the exact phrase ASK Coin before treating Permission Coin as the intended entity.",
+    "Search the candidate creator's verified channel transcripts for ASK and actual capital; identity remains unresolved.",
+    "Check Base and Polygon official ASK contracts for pool/router activity only after block-level source verification.",
+    "Do not convert market-cap or wallet integration figures into actual capital-flow claims."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

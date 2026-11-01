@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-prediction-provenance-v3-security-2026-11-01T18:49:34Z",
+  "captured_at_utc": "2026-11-01T18:49:34Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "current_main_sha": "4695fe966e7f383924d6022323d6c7c6b1efe221",
+  "market_data_status": {
+    "derivatives_oi": "Provider totals from TradRadar, TRdesk and Alpha Finance are not comparable until venue/instrument/contract/time normalization.",
+    "etf_flows": "Positive weekly XRP holdings change is small relative to holdings/AUM and includes fund-universe and issuer-reporting gaps; not treated as clean external cash.",
+    "next_event": "Circle Q3 2026 results scheduled 2026-11-04 08:00 ET; investor Q&A closes 2026-11-03 09:00 ET.",
+    "forecast_status": "NOT_ISSUED",
+    "feature_admission": "NONE"
+  },
+  "prediction_engine": {
+    "pr": 1470,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1470",
+    "current_head": "604076164f8695c2f09c59568204883b87f6932a",
+    "base": "32682bc3797009421682ab51da59bf058b7d63d5",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41338490845,
+    "ci_result": "395 passed + 8 subtests",
+    "gate_run": 41338490862,
+    "gate_result": "PASSED_MERGING_DISABLED",
+    "implemented": "Hash-verified source registry, feature snapshot source ID/hash equality, registered outcome-price source and fail-closed performance metrics.",
+    "not_implemented": "Trusted append-time recording timestamp, live-versus-historical-replay separation, model-artifact hash and baseline-artifact hash."
+  },
+  "research_pr": {
+    "pr": 1464,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+    "current_head": "489c78a075e5937b805a885d3aa87246a0fe054f",
+    "last_code_bearing_tested_head": "56cdd8a1ad75c1a7a1e8a49e41f1b370cb52ee9e",
+    "ci_run": 41337691085,
+    "ci_result": "431 passed + 8 subtests",
+    "gate_run": 41337691095,
+    "gate_result": "PASSED_MERGING_DISABLED",
+    "current_head_delta": "Metadata-only handoff JSON; no CI run returned for this final handoff-only commit.",
+    "state": "OPEN_DRAFT_UNMERGED"
+  },
+  "security_pr": {
+    "pr": 1471,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1471",
+    "head": "e2d8f9a3342e6e9a548261e2045eec784fde6e59",
+    "base": "4695fe966e7f383924d6022323d6c7c6b1efe221",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41337409401,
+    "ci_result": "390 passed + 8 subtests",
+    "gate_run": 41337409369,
+    "gate_result": "PASSED_MERGING_DISABLED",
+    "unresolved_ancillary_runs": [
+      {
+        "id": 41337404643,
+        "workflow": "task-allocator",
+        "event": "push",
+        "conclusion": "failure",
+        "jobs": 0,
+        "root_cause": "UNKNOWN"
+      },
+      {
+        "id": 41337403784,
+        "workflow": "force-deploy-space",
+        "event": "push",
+        "conclusion": "failure",
+        "jobs": 0,
+        "root_cause": "UNKNOWN"
+      }
+    ],
+    "main_scheduler_run": {
+      "id": 41338427058,
+      "conclusion": "success",
+      "entries_fired": 0,
+      "queue_entries": 1,
+      "commit_created": false
+    }
+  },
+  "next_actions": [
+    "Add trusted append-time recording and explicit LIVE versus HISTORICAL_REPLAY separation before any forecast population.",
+    "Require model and baseline artifact/configuration hashes.",
+    "Keep the prediction ledger unpopulated until these controls are verified.",
+    "Continue raw exchange contract-level OI normalization and issuer-level ETF cash/in-kind reconciliation.",
+    "Capture Circle Q3 results on November 4 and compare USDC reserve/distribution economics with Coinbase and XRPL/Arc activity.",
+    "Continue XRPL escrow destination/disposition, Evernorth custody/yield and Binance recovery investigations.",
+    "Resolve the two no-job push workflow failures without assuming a root cause.",
+    "Keep PRs draft and unmerged pending user authorization."
+  ],
+  "platform_status": {
+    "verified_live": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "coordination_state": "DESIGNED_NOT_CONNECTED"
+  },
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}

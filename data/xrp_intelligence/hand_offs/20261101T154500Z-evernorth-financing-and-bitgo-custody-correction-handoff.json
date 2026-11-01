@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "handoff_id": "evernorth-financing-and-bitgo-custody-correction-handoff-20261101T1545Z",
+  "captured_at_utc": "2026-11-01T15:45:00Z",
+  "correction": "data/xrp_intelligence/source_revisions/20261101T154500Z-evernorth-deployment-source-and-financing-correction.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T154500Z-evernorth-financing-and-custody-correction.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T154500Z-evernorth-custody-capital-stack-correction.json",
+  "key_points": [
+    "Evernorth's SEC filing is the primary source for 473.276M XRP at closing, $214.1M cash used to buy 84.3659M XRP, 388.9106M XRP in-kind, and $272.6M gross closing cash proceeds before expenses.",
+    "The SEC filing reports $9.7M borrowed under the subsidiary Company's Ripple facility as of October 7, after the limit was raised to $10M. The facility required repayment within five business days after the October 9 close or earlier on five business days' notice; actual repayment is unknown.",
+    "The separate Evernorth-level Ripple facility was $1M and had no borrowings as of June 30, 2026.",
+    "The $30M 4% PIK convertible notes were issued October 12. The Cantor ELOC is up to 5,218,935 shares and approximately $80.7M gross only if all are sold at the assumed cover price; no draw is verified and net proceeds are not estimated.",
+    "The prior $76.8M gross/$74.4M net ELOC estimate is superseded; use the SEC prospectus $80.7M gross conditional figure.",
+    "Nine inspected BitGo-activated destinations show multisig control, strongly supporting custody reallocation of the 370.346M XRP outside the tracker's attributed set. Beneficial ownership remains unconfirmed.",
+    "The tracker sum of 103.1299M attributed plus 370.3467M outside attribution is 473.4766M, 200,137.78 XRP above the SEC-reported 473.2764M closing amount. This remains unresolved."
+  ],
+  "next_actions": [
+    "Reconcile the 200,137.78 XRP difference using raw XRPL validated-ledger account balances and transaction metadata.",
+    "Obtain direct BitGo/Evernorth disclosure or stronger onchain signer/ownership evidence for all ten destination accounts.",
+    "Verify whether the $9.7M subsidiary facility was repaid after the October 9 close.",
+    "Monitor ELOC notices/draws and convertible-note settlement conditions; do not treat capacity as funded capital.",
+    "Verify actual Q4 deployment through public loan, pledge, pool or counterparty transactions; partner announcements alone are not execution.",
+    "Keep main unchanged and all PRs draft/unmerged pending explicit approval."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

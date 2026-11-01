@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "circle-usdc-rlusd-cftc-collateral-handoff-20261101T201852Z",
+  "captured_at_utc": "2026-11-01T20:18:52Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "previous_head": "922db12f5b52e2bd93c989d106d2647b5f9bcdd5",
+  "new_findings": [
+    "USDC public issuer/reserve disclosures appear to align with the pre-GENIUS payment-stablecoin criteria in CFTC Letter 26-05, but no CFTC-specific determination or FCM use is verified.",
+    "RLUSD issuer type is confirmed through Standard Custody & Trust Company, but the government money-market fund requires look-through; latest accessible signed report is August while the current page shows October 29 balances.",
+    "Ripple National Trust Bank is approved for reserve management, collateral trustee and custody roles; it is not the current RLUSD issuer.",
+    "BNY XRP/RLUSD custody is live; direct mint/redeem and tokenized trade finance remain planned. Standard Chartered RLUSD custody on XRPL is live; LMAX collateral integration remains planned.",
+    "Bitnomial's current schedule omits USDC and RLUSD, despite the historical RLUSD collateral announcement."
+  ],
+  "repository_state": {
+    "main_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+    "main_unchanged": true,
+    "pr1474": "390 tests + 8 subtests; fail-closed gate passed; two zero-job push failures remain unexplained; draft/unmerged.",
+    "pr1475": "405 tests + 8 subtests; fail-closed gate passed; outcome source hashes revalidated against registry; draft/unmerged.",
+    "pr1464_last_verified_head": "922db12f5b52e2bd93c989d106d2647b5f9bcdd5",
+    "pr1464_last_verified": "431 tests + 8 subtests; fail-closed gate passed; new stablecoin research commit now being prepared."
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Verify issuer-specific USDC and RLUSD qualification under the exact CFTC definition; do not infer from parent-company names.",
+    "Look through RLUSD government-MMF holdings and obtain the September/October attestation when available.",
+    "Find FCM notices of reliance and actual customer stablecoin or XRP collateral balances.",
+    "Verify whether BNY direct mint/redeem and Standard Chartered/LMAX collateral mirroring become operational.",
+    "Continue outcome price-value semantic binding and OI provider normalization.",
+    "Continue SBIC, ASK Coin, exact actual-capital and Camilla/Kamilah public-upload investigations."
+  ],
+  "safety": "No merge, main modification, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-EVERNORTH-SEC-CAPITAL-COINBASE-CUSTODY-YIELD-20261101T154852Z",
+  "captured_at_utc": "2026-11-01T15:48:52Z",
+  "source": {
+    "id": "sec-evernorth-424b3-2026-10-30",
+    "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+    "publisher": "U.S. Securities and Exchange Commission / Evernorth Holdings Inc.",
+    "filing_form": "424B3",
+    "prospectus_date": "2026-10-30",
+    "accessed_at_utc": "2026-11-01T15:48:52Z",
+    "source_class": "PRIMARY_REGULATORY_FILING",
+    "relevant_sections": {
+      "capital_raise_and_xrp_contributions": "Lines 596-600; 3096-3107; 3102-3106",
+      "cash_purchase_and_average_price": "Lines 4832-4835; 5947-5948",
+      "coinbase_principal_market": "Lines 3175-3185",
+      "yield_and_defi_strategy": "Lines 2676-2721",
+      "custody_and_bitgo": "Lines 2731-2764",
+      "ripple_and_sbi_people_relationships": "Lines 2723-2730; 3243-3275",
+      "eloc_terms_and_conflicting_gross": "Lines 11-20; 695-701; 1918-1938",
+      "note_terms": "Lines 3104-3116"
+    }
+  },
+  "confirmed_filing_claims": [
+    "The prospectus reports approximately 473 million XRP held as of October 9, 2026.",
+    "It reports $214.1 million cash raised and used to purchase 84,365,876 XRP at an average price of $2.53657058 in November 2025.",
+    "It reports approximately 388,910,554 XRP contributed in kind.",
+    "It reports $272.6 million gross cash proceeds at Closing before transaction expenses, including $224.6 million private placement proceeds and $48.0 million trust-account proceeds.",
+    "It reports $30 million of convertible senior PIK notes issued on October 12, 2026, with 4% PIK interest and a conditional 8% yield-to-put feature.",
+    "It selects Coinbase as the principal market for XRP for financial-reporting purposes and says the selection is based on trading volume/activity, price consistency and regulatory/compliance considerations.",
+    "It identifies BitGo as primary custodian and says 100% of XRP was in cold storage as of the prospectus date.",
+    "It states yield strategies and DeFi protocol participation commenced following Closing, but gives no specific protocol, deployed amount, wallet or transaction in the reviewed passages.",
+    "It states the company may consider XRP-secured financing and may deploy existing XRP holdings in DeFi; these are not proof of a completed XRP-collateral loan."
+  ],
+  "correction_and_reconciliation": [
+    "The 388.910554M in-kind total can be bridged from 261.919096M Pubco XRP, 0.2M delayed-funding XRP and 126.791458M Ripple contribution; do not double-count Ripple's contribution.",
+    "The $214.05M cash purchase of XRP is part of the broader cash-financing history and must not be counted again on top of the $272.6M gross closing cash proceeds.",
+    "The ELOC cover page and detailed financing section state about $76.8M gross and $74.4M estimated net under the cover-price assumption; the summary Use of Proceeds row states $80.7M under the same assumption. Preserve this internal prospectus discrepancy rather than silently choosing one figure.",
+    "The ELOC is discretionary: Evernorth may sell some, all or none of the shares. No draw was verified.",
+    "The $521,893.50 upfront commitment fee is described as payable and non-refundable; actual payment was not independently verified.",
+    "The filing describes BitGo multisignature/HSM controls but does not specify a 2-of-3 threshold in the reviewed custody section."
+  ],
+  "unresolved_disclosure_tension": [
+    "The prospectus says 100% of XRP was in cold storage as of the prospectus date, while also saying yield strategies and DeFi protocol participation commenced after Closing.",
+    "The reviewed passages do not identify whether the initial yield/DeFi activity involved XRP or other assets, nor its amount, counterparties, protocols, wallets or transaction hashes."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

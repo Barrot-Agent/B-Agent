@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "source_bundle_id": "escrow-post-release-relock-and-supply-breakdown-20261101T212500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "sources": [
+    {
+      "source_id": "xrp-insights-escrow-detail-ledger-108052148",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "source_type": "on_chain_escrow_aggregator_with_pinned_ledger",
+      "observed_at_utc": "2026-11-01T20:11:00Z",
+      "ledger_index": 108052148,
+      "claims": {
+        "ripple_escrow_xrp": 31100000000,
+        "escrow_objects": 99,
+        "owner_accounts": 8,
+        "november_release_xrp": 1000000000,
+        "november_reescrow_xrp": 700000000,
+        "november_net_out_xrp": 300000000,
+        "reescrow_12m_pct": 70,
+        "released_12m_xrp": 12000000000,
+        "reescrow_12m_xrp": 8400000000,
+        "net_out_12m_xrp": 3600000000,
+        "next_unlock": "2026-12-01T00:00:00Z",
+        "next_unlock_xrp": 1000000000,
+        "next_unlock_objects": 4,
+        "scheduled_unlocks_left": 32,
+        "last_scheduled_unlock": "2029-07-01",
+        "last_scheduled_unlock_xrp": 100000000
+      },
+      "method": "Page says it reads Ripple-owned Escrow objects via rippled account_objects at one pinned validated ledger, counts each object once by owner, and reads EscrowFinish/EscrowCreate metadata via account_tx.",
+      "limitations": [
+        "XRP Insights is a third-party dashboard; raw RPC was not independently queried in this run.",
+        "The page's main Radar summary disagrees with this detailed page by 700M XRP; the detailed page has the pinned ledger and per-object method."
+      ]
+    },
+    {
+      "source_id": "xrp-insights-radar-main-escrow-conflict-20261101",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "source_type": "on_chain_supply_dashboard",
+      "observed_at_utc": "2026-11-01T21:18:00Z",
+      "claims": {
+        "summary_escrow_xrp": 30400000000,
+        "summary_circulating_xrp": 69590000000,
+        "source_date": "2026-11-01",
+        "price_usd": 1.25,
+        "exchange_wallets_xrp": 22450000000,
+        "etf_and_index_holdings_xrp": 1200000000,
+        "etf_aum_usd": 1500000000,
+        "defi_amm_xrp": 418700000,
+        "rwa_total_usd": 4330000000,
+        "rwa_distributed_usd": 276000000,
+        "rwa_represented_usd": 4060000000,
+        "evernorth_reported_xrp": 473280000,
+        "burned_xrp": 14400000
+      },
+      "limitations": [
+        "Main page has no pinned escrow ledger in the displayed breakdown.",
+        "It conflicts with the detailed escrow page at ledger 108,052,148 by exactly 700M XRP.",
+        "RWA values are mixed: $276M distributed float and $4.06B represented registry notionals, with per-asset dates July 3–October 23."
+      ]
+    },
+    {
+      "source_id": "xrp-insights-exchange-wallets-20261101",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "source_type": "on_chain_attributed_wallet_aggregation",
+      "observed_at_utc": "2026-11-01T08:00:00Z",
+      "claims": {
+        "total_known_exchange_wallets_xrp": 22450000000,
+        "exchange_count": 24,
+        "wallet_count": 701,
+        "upbit_xrp": 6430000000,
+        "coinbase_xrp": 5850000000,
+        "binance_xrp": 2780000000,
+        "sbi_vc_trade_xrp": 60000000,
+        "sbi_vc_trade_wallets": 2,
+        "south_korea_xrp": 8580000000,
+        "united_states_xrp": 8510000000,
+        "japan_xrp": 1380000000
+      },
+      "method": "Page says public wallet balances are read daily via rippled and attributed using XRPSCAN labels; this is a floor, not a ceiling.",
+      "limitations": [
+        "Omnibus customer deposits and cold storage are included; some exchange-controlled reserves such as cbXRP backing are included.",
+        "Unattributed wallets are excluded; these balances are not tradable float or exchange inventory."
+      ]
+    },
+    {
+      "source_id": "xrp-insights-rwa-distributed-vs-represented-20261101",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "source_type": "mixed_onchain_and_issuer_reported_rwa_dashboard",
+      "observed_at": "2026-11-01",
+      "claims": {
+        "tracked_assets": 18,
+        "total_combined_usd": 4330000000,
+        "distributed_transferable_usd": 276000000,
+        "represented_registry_notional_usd": 4060000000,
+        "distributed_share_pct": 6.37,
+        "represented_share_pct": 93.63
+      },
+      "limitations": [
+        "Distributed and represented are different legal/technical categories; represented value is issuer-reported registry notional and is not necessarily transferable investor float.",
+        "Per-asset last-verified dates vary from July 3 to October 23, 2026."
+      ]
+    }
+  ],
+  "transactions": [
+    {
+      "tx_prefix": "D1B6A4B7",
+      "timestamp_utc": "2026-11-01T17:38:21Z",
+      "type": "EscrowCreate",
+      "amount_xrp": 100000000,
+      "owner": "rU9qmG…YL1T",
+      "unlock": "2029-06-01"
+    },
+    {
+      "tx_prefix": "71BB0841",
+      "timestamp_utc": "2026-11-01T17:39:51Z",
+      "type": "EscrowCreate",
+      "amount_xrp": 500000000,
+      "owner": "rNASJd…btD1",
+      "unlock": "2029-06-01"
+    },
+    {
+      "tx_prefix": "7EB64A81",
+      "timestamp_utc": "2026-11-01T17:42:21Z",
+      "type": "EscrowCreate",
+      "amount_xrp": 100000000,
+      "owner": "rU9qmG…YL1T",
+      "unlock": "2029-07-01"
+    }
+  ],
+  "source_independence": "The detailed escrow and main Radar pages are the same publisher, not independent corroboration. The detailed page's pinned ledger and object-by-object method are more auditable than the summary card. Exchange and RWA rows are also from the same dashboard and must retain their per-field source dates."
+}

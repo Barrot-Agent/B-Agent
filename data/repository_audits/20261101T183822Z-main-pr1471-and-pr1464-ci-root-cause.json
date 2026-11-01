@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "audit_id": "v3-pr1471-and-pr1464-ci-2026-11-01T18:38:22Z",
+  "captured_at_utc": "2026-11-01T18:38:22Z",
+  "main_sha": "4695fe966e7f383924d6022323d6c7c6b1efe221",
+  "main_findings": [
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "HIGH",
+      "evidence": "Manual dispatch; contents:write and pull-requests:write; default dry_run=false; max_prs=0 unlimited; no explicit approval check before gh pr merge."
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "HIGH",
+      "evidence": "Schedule and manual dispatch; contents:write and actions:write; script execution followed by queue commit/push."
+    },
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "HIGH",
+      "evidence": "Scheduled/workflow_run/manual execution; contents:write; generated output commit and push."
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "risk": "HIGH",
+      "evidence": "Applies an approved label using GITHUB_TOKEN after caller-supplied inputs; no independent protected-environment reviewer approval is enforced by this workflow."
+    }
+  ],
+  "pr1471": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1471",
+    "head": "e2d8f9a3342e6e9a548261e2045eec784fde6e59",
+    "base": "4695fe966e7f383924d6022323d6c7c6b1efe221",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "changed_files": 53,
+    "transplanted_paths": 53,
+    "main_advanced_paths_preserved": [
+      "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "exact_head_ci_run": 41337409401,
+    "ci_status_at_capture": "IN_PROGRESS",
+    "fail_closed_gate_run": 41337409369,
+    "gate_status": "PASSED_MERGING_DISABLED",
+    "merge_performed": false
+  },
+  "pr1464": {
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+    "pre_fix_head": "fdf856da07857873c8fefb21919e560bd623cb4f",
+    "failed_ci_run": 41336973329,
+    "failure": "test_graph_does_not_attribute_direct_xrp_use_to_sbi_ripple_asia",
+    "root_cause": "Test assertion prohibited a feasibility-study-only SBI_Ripple_Asia->XRPL edge even though a separate test required that explicitly labelled study edge.",
+    "fix": "Narrow the prohibited edge to direct SBI_Ripple_Asia->XRP use; require any SBI_Ripple_Asia->XRPL edge to be labelled feasibility_study_only and not_production_or_XRP_use.",
+    "exact_head_rerun": "PENDING"
+  },
+  "safety": "No main ref modification, merge, force-push, manual workflow dispatch, secret access, external deployment or trading action."
+}

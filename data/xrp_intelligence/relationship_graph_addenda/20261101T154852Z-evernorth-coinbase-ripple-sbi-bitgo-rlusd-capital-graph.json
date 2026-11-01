@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "graph_id": "evernorth-coinbase-ripple-sbi-bitgo-rlusd-capital-20261101T154852Z",
+  "captured_at_utc": "2026-11-01T15:48:52Z",
+  "nodes": [
+    {
+      "id": "Evernorth",
+      "type": "public_XRP_treasury_company"
+    },
+    {
+      "id": "Coinbase",
+      "type": "digital_asset_exchange_and_market"
+    },
+    {
+      "id": "Ripple",
+      "type": "digital_asset_company"
+    },
+    {
+      "id": "SBI_Holdings",
+      "type": "Japanese_financial_group"
+    },
+    {
+      "id": "BitGo",
+      "type": "institutional_custodian"
+    },
+    {
+      "id": "RLUSD",
+      "type": "Ripple_stablecoin"
+    },
+    {
+      "id": "XRPL",
+      "type": "public_ledger"
+    },
+    {
+      "id": "Asheesh_Birla",
+      "type": "executive"
+    },
+    {
+      "id": "Sagar_Shah",
+      "type": "executive"
+    },
+    {
+      "id": "Hugo_Jeandesboz",
+      "type": "executive_personnel_candidate"
+    },
+    {
+      "id": "Cantor",
+      "type": "committed_equity_facility_counterparty"
+    },
+    {
+      "id": "NH_Investment_and_Kyobo_AIM",
+      "type": "convertible_note_purchaser_trustee"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Evernorth",
+      "to": "Coinbase",
+      "relation": "selected_as_principal_market_for_XRP_financial_reporting",
+      "status": "SEC_FILING_CONFIRMED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Coinbase",
+      "relation": "execution_partner",
+      "status": "COMPANY_ANNOUNCED; COMPLETED_TRADE_NOT_ESTABLISHED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "BitGo",
+      "relation": "primary_XRP_custodian",
+      "status": "SEC_FILING_CONFIRMED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Ripple",
+      "relation": "strategic_investor_and_XRP_contributor",
+      "status": "SEC_FILING_CONFIRMED"
+    },
+    {
+      "from": "Ripple",
+      "to": "Evernorth",
+      "relation": "contributed_126791458_XRP_to_Pathfinder",
+      "status": "SEC_FILING_CONFIRMED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "SBI_Holdings",
+      "relation": "strategic_investor_relationship",
+      "status": "COMPANY_SEC_FILING_STATEMENT"
+    },
+    {
+      "from": "Evernorth",
+      "to": "RLUSD",
+      "relation": "plans_RLUSD_as_stable_value_asset_in_XRP_DeFi",
+      "status": "COMPANY_STATED_STRATEGY; ACTUAL_POOL_POSITION_NOT_VERIFIED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "XRPL",
+      "relation": "plans_DeFi_lending_AMM_and_RLUSD_XRP_liquidity",
+      "status": "COMPANY_STATED_STRATEGY; SPECIFIC_PROTOCOLS_UNDISCLOSED"
+    },
+    {
+      "from": "Asheesh_Birla",
+      "to": "Ripple",
+      "relation": "former_board_member_and_founding_team",
+      "status": "SEC_BIOGRAPHY"
+    },
+    {
+      "from": "Sagar_Shah",
+      "to": "Ripple",
+      "relation": "former_Head_of_Custody_and_Senior_Director_of_Stablecoins",
+      "status": "SEC_BIOGRAPHY"
+    },
+    {
+      "from": "Hugo_Jeandesboz",
+      "to": "Coinbase",
+      "relation": "reported_former_Coinbase_Asset_Management_Co_CIO",
+      "status": "COMPANY_ANNOUNCEMENT_BIO; NOT_CURRENT_COINBASE_AFFILIATION"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Cantor",
+      "relation": "optional_committed_equity_facility",
+      "status": "SEC_FILING; NO_DRAW_VERIFIED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "NH_Investment_and_Kyobo_AIM",
+      "relation": "30M_USD_convertible_senior_PIK_notes",
+      "status": "SEC_FILING_CONFIRMED_ISSUED_2026_10_12"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H_COINBASE_PRICE_REFERENCE_REINFORCES_INSTITUTIONAL_ROLE",
+      "claim": "Coinbase's XRP market is an important institutional price reference because Evernorth selected it as principal market for financial reporting.",
+      "supporting_evidence": [
+        "SEC filing explicitly selects Coinbase as principal market under the company's volume, consistency and compliance criteria."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "This is an accounting principal-market determination, not proof of exclusive trading, custody, market control or daily execution volume.",
+        "The determination is subject to annual reassessment."
+      ],
+      "status": "CONFIRMED_REFERENCE_RELATIONSHIP; BROADER_MARKET_POWER_INFERENCE_LIMITED"
+    },
+    {
+      "id": "H_EVERNORTH_NEW_CAPITAL_BUYS_XRP",
+      "claim": "New Evernorth financing will create additional XRP purchases.",
+      "supporting_evidence": [
+        "$30M notes issued with stated intended use including XRP acquisition.",
+        "ELOC proceeds, if shares are sold, may be used for XRP and ecosystem activity."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No note-proceeds XRP purchase was verified.",
+        "ELOC draws are discretionary and no draw was verified.",
+        "ELOC proceeds are not cash until shares are sold.",
+        "The historical $214.05M XRP purchase occurred in 2025."
+      ],
+      "status": "CAPITAL_AVAILABLE_OR_OPTIONAL; FUTURE_XRP_BUYING_UNVERIFIED"
+    },
+    {
+      "id": "H_EVERNORTH_XRP_COLLATERAL_SUPPLY",
+      "claim": "Evernorth's XRP treasury will become collateral supply for institutional or DeFi credit markets.",
+      "supporting_evidence": [
+        "The prospectus says it may consider XRP-secured financing, lending to institutional counterparties and DeFi lending."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No executed XRP-secured financing transaction, counterparty, amount or onchain position is disclosed in the reviewed passages.",
+        "The filing says 100% XRP was in cold storage as of prospectus date."
+      ],
+      "status": "STRATEGIC_OPTION_NOT_VERIFIED_EXECUTION"
+    },
+    {
+      "id": "H_EVERNORTH_YIELD_DEPLOYMENT_ALREADY_STARTED",
+      "claim": "Evernorth has already begun yield/DeFi activity after Closing.",
+      "supporting_evidence": [
+        "The prospectus says yield strategies and DeFi protocol participation commenced following Closing."
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The same prospectus says 100% of XRP was in cold storage as of prospectus date.",
+        "No specific protocol, wallet, amount, counterparty or transaction is identified in the reviewed passages.",
+        "The company says no material deployment was expected before Q4 2026."
+      ],
+      "status": "COMPANY_REPORTED_COMMENCEMENT; ASSET_SCOPE_AND_ONCHAIN_EXECUTION_UNRESOLVED"
+    }
+  ],
+  "red_team_objections": [
+    "Coinbase being the accounting principal market does not make Coinbase the custodian; BitGo is named as primary custodian.",
+    "The $214.05M cash purchase and $388.91M in-kind contributions are different capital forms; do not call all 473M XRP cash purchases.",
+    "The $30M notes are actual financing proceeds but their use for XRP is not verified.",
+    "The ELOC is optional, not cash on hand; no draw is verified and the filing has a $76.8M versus $80.7M gross-proceeds inconsistency.",
+    "Do not claim XRP collateralization has occurred merely because the prospectus describes possible secured financing and DeFi lending.",
+    "Do not ignore the cold-storage versus yield/DeFi commencement disclosure tension.",
+    "Do not claim a 2-of-3 BitGo threshold from this SEC filing; it states multisignature and HSM controls without the exact threshold."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

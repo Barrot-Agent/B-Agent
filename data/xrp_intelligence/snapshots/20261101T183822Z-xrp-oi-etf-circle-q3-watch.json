@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrp-oi-etf-circle-watch-2026-11-01T18:38:22Z",
+  "captured_at_utc": "2026-11-01T18:38:22Z",
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE_PENDING_SOURCE_REGISTRY_AND_POINT_IN_TIME_RECONCILIATION",
+  "market": {
+    "spot_observations": [
+      {
+        "source_id": "tradradar-xrp-perpetuals-20261101T1740Z",
+        "price_usd": 1.2523,
+        "source_timestamp_utc": "2026-11-01T17:40:00Z",
+        "type": "provider_mark_price"
+      },
+      {
+        "source_id": "alpha-finance-xrp-liquidation-20261101T1822Z",
+        "price_usd": 1.2485,
+        "source_timestamp_utc": "2026-11-01T18:22:00Z",
+        "type": "provider_spot_display"
+      }
+    ],
+    "derivatives_open_interest": [
+      {
+        "source_id": "tradradar-xrp-perpetuals-20261101T1740Z",
+        "open_interest_usd": 1900000000,
+        "venue_count": 7,
+        "instrument_scope": "perpetual futures",
+        "change_24h_pct": 1.56,
+        "funding_8h_pct": 0.0096,
+        "long_account_share_pct": 77.9,
+        "observation_time_utc": "2026-11-01T17:40:00Z"
+      },
+      {
+        "source_id": "trdesk-xrp-open-interest-20261101",
+        "open_interest_usd": 2670000000,
+        "open_interest_xrp": 2139482801.57,
+        "venue_count": 26,
+        "instrument_scope": "perpetual swaps and quarterly futures",
+        "cme_share_pct": 20.4,
+        "provider_timestamp": "not displayed in static capture"
+      },
+      {
+        "source_id": "alpha-finance-xrp-liquidation-20261101T1822Z",
+        "open_interest_usd": 2820000000,
+        "venue_scope": "all exchanges aggregated",
+        "observation_time_utc": "2026-11-01T18:22:00Z",
+        "instrument_scope": "not fully specified in captured page"
+      }
+    ],
+    "derived_cross_provider_spread": {
+      "min_usd": 1900000000,
+      "max_usd": 2820000000,
+      "absolute_difference_usd": 920000000,
+      "percent_of_min": 48.4211,
+      "classification": "NON_COMPARABLE_PROVIDER_DISPLAY_SPREAD",
+      "interpretation": "This is not an observed market OI change. Venue coverage, perps versus quarterly contracts, quote/contract multipliers, timestamps and data mapping are not normalized."
+    },
+    "liquidation_heatmap": {
+      "source_id": "alpha-finance-xrp-liquidation-20261101T1822Z",
+      "modelled_short_liquidation_levels_above_usd": 38300000,
+      "modelled_long_liquidation_levels_below_usd": 38400000,
+      "largest_modelled_short_cluster": {
+        "price_usd": 1.27,
+        "notional_usd": 3200000
+      },
+      "largest_modelled_long_cluster": {
+        "price_usd": 1.2415,
+        "notional_usd": 3300000
+      },
+      "classification": "MODELLED_ESTIMATE_NOT_VERIFIED_RESTING_ORDERS",
+      "observation_time_utc": "2026-11-01T18:22:00Z"
+    }
+  },
+  "etf_flows": {
+    "primary_tracker_observation": {
+      "source_id": "xrp-insights-etf-tracker-20261030",
+      "holdings_xrp": 1196600000,
+      "aum_usd": 1510000000,
+      "weekly_net_flow_xrp": 3390000,
+      "weekly_net_flow_usd_approx": 4030000,
+      "october_30_daily_flow_xrp": -49932,
+      "holdings_delta_as_pct_of_holdings": 0.2833,
+      "dollar_flow_as_pct_of_aum": 0.2669,
+      "fund_universe": "six US spot XRP ETFs plus BITW index fund",
+      "flow_method": "change in issuer-reported holdings",
+      "caveats": [
+        "GXRP flow rows excluded where scrape gap exists",
+        "some historical rows reconstructed",
+        "BITW index rebalancing is not equivalent to spot ETF creations/redemptions",
+        "holdings delta is not automatically net external cash"
+      ]
+    },
+    "partial_second_tracker_observation": {
+      "source_id": "cryptoetf-today-xrp-etf-partial-20261030",
+      "october_30_partial_flow_usd": 200000,
+      "funds_reported": 3,
+      "funds_expected": 5,
+      "missing_funds": [
+        "XRPZ",
+        "GXRP"
+      ],
+      "status": "PARTIAL_NOT_FINAL",
+      "comparability": "NOT_COMPARABLE_TO_SIX_SPOT_PLUS_BITW_AGGREGATE"
+    },
+    "interpretation": "Positive weekly holdings delta was small relative to existing holdings/AUM and coexisted with a reported approximately 3.8% weekly XRP price decline. It does not establish a strong price signal or cash inflow."
+  },
+  "event_watch": [
+    {
+      "event_id": "circle-q3-2026-results",
+      "entity": "Circle",
+      "event": "Q3 2026 financial results webcast",
+      "scheduled_at_local": "2026-11-04T08:00:00-05:00",
+      "scheduled_at_utc": "2026-11-04T13:00:00Z",
+      "shareholder_qa_closes_local": "2026-11-03T09:00:00-05:00",
+      "source_id": "circle-q3-2026-results-event",
+      "pre_event_capture_targets": [
+        "USDC circulation",
+        "reserve income and composition",
+        "reserve yield sensitivity",
+        "Coinbase distribution costs and average Coinbase USDC balance",
+        "Circle Payments Network activity",
+        "Arc validator and transaction activity",
+        "USDC supply and transfer activity on XRPL",
+        "RLUSD comparative distribution",
+        "cash versus in-kind and other capital-flow disclosures"
+      ]
+    }
+  ],
+  "identity_threads": {
+    "sbic": {
+      "resolved_entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "chatgpt_copilot_relationship": "investee-company education only",
+      "xrp_or_sbi_holdings_relationship": "not established",
+      "source_id": "sbic-ai-training-2025-06-12"
+    },
+    "ask_coin": {
+      "candidate": "Permission Coin (ASK)",
+      "identity_status": "CANDIDATE_NOT_FINAL",
+      "documented_xrpl_integration": "not found in reviewed official documentation",
+      "source_ids": [
+        "permission-coin-ask-cmc-20261101",
+        "permission-ai-whitepaper"
+      ]
+    },
+    "camilla_stephenson": {
+      "identity_status": "UNRESOLVED",
+      "new_video_inventory": "no new verified channel-ID evidence in this run"
+    }
+  },
+  "data_quality": {
+    "unresolved": [
+      "OI venue/instrument normalization",
+      "ETF fund-universe and issuer-file reconciliation",
+      "raw exchange contract-level OI",
+      "raw issuer ETF creation/redemption and cash components"
+    ],
+    "admission_decision": "No OI, ETF-flow, liquidation-heatmap or identity feature admitted to the predictive model."
+  }
+}

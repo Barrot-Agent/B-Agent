@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrp-market-agentic-rails-20261101T181734Z",
+  "captured_at_utc": "2026-11-01T18:17:34Z",
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE_PENDING_SYNCHRONIZED_RAW_SOURCE_RECONCILIATION",
+  "market": {
+    "displayed_xrp_usd": {
+      "value": 1.25,
+      "source_id": "xrp-insights-xrp-radar-20261101",
+      "observation": "Rounded dashboard display at page capture; not a synchronized exchange tick."
+    },
+    "supply": {
+      "total_xrp": 100000000000,
+      "escrow_xrp": 30400000000,
+      "tracker_defined_non_escrow_circulating_xrp": 69590000000,
+      "burned_xrp_displayed": 14400000,
+      "interpretation": "Tracker-defined non-escrow supply is not tradable float."
+    },
+    "attributed_exchange_wallets": {
+      "total_xrp": 22450000000,
+      "wallet_count": 701,
+      "venue_count": 24,
+      "observation_time_utc": "2026-11-01T08:00:00Z",
+      "same_wallet_change_7d_xrp": -161100000,
+      "same_wallet_change_30d_xrp": -12700000,
+      "top_venues_xrp": {
+        "Upbit": 6430000000,
+        "Coinbase": 5850000000,
+        "Binance": 2780000000
+      },
+      "regional_attribution_xrp": {
+        "South_Korea": 8580000000,
+        "United_States": 8510000000,
+        "Japan": 1380000000
+      },
+      "non_customer_reserves_included_xrp": 487900000,
+      "interpretation": "Attributed wallet balances include omnibus/cold storage and non-customer reserves. They are not customer balances, order-book depth or tradable float.",
+      "source_id": "xrp-insights-xrp-radar-20261101"
+    },
+    "etf_and_index_holdings": {
+      "xrp": 1196600000,
+      "aum_usd": 1510000000,
+      "2026_10_26_to_2026_10_30_net_flow_xrp": 3390000,
+      "2026_10_30_daily_flow_xrp": -49900,
+      "estimated_average_cost_usd": 1.7092,
+      "estimated_unrealized_loss_usd": 550000000,
+      "data_status": "PROVIDER_REPORTED_WITH_GAPS",
+      "limitations": [
+        "GXRP flow rows excluded where the tracker reports a scrape gap.",
+        "Some rows are reconstructed and retain status flags.",
+        "BITW index rebalancing is not equivalent to spot ETF creations/redemptions.",
+        "Average cost and unrealized loss are tracker estimates, not investor-level cost basis."
+      ],
+      "source_id": "xrp-insights-xrp-radar-20261101"
+    },
+    "stablecoins": {
+      "RLUSD": {
+        "total_xrpl_plus_ethereum_usd": 2420000000,
+        "xrpl_usd": 707400000,
+        "ethereum_usd": 1710000000,
+        "xrpl_share_pct": 29,
+        "ethereum_share_pct": 71,
+        "xrpl_issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+        "method_reported": "rippled gateway_balances on XRPL issuer; Ethereum totalSupply()",
+        "independent_raw_rpc_retrieved_this_run": false,
+        "admission_status": "PROVISIONAL_PROVIDER_REPORTED_ONCHAIN_READ",
+        "prior_same_day_observation": {
+          "source_ref": "data/xrp_intelligence/snapshots/20261101T172000Z-xrpl-stablecoin-liquidity-collateral.json",
+          "captured_at_utc": "2026-11-01T17:07:00Z",
+          "xrpl_usd": 711830000,
+          "note": "Different provider and observation; retained separately and not averaged."
+        },
+        "outlier_observation": {
+          "source_id": "xrpl-utilities-lineage-outlier-20261101",
+          "value_usd": 910300000,
+          "status": "EXCLUDED_UNREPRODUCIBLE"
+        },
+        "source_id": "xrp-insights-xrp-radar-20261101"
+      },
+      "USDC": {
+        "xrpl_issuer": "rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE",
+        "issuer_address_confirmation": "Circle official documentation",
+        "supply_usd": 6020000,
+        "holders": 10806,
+        "trustlines": 17631,
+        "observation_time_utc": "2026-11-01T16:00:00Z",
+        "source_type": "XRPLWin third-party snapshot",
+        "admission_status": "PROVISIONAL_SECONDARY_ONCHAIN_SNAPSHOT",
+        "source_id": "xrplwin-usdc-xrpl-token-2026-11-01"
+      }
+    },
+    "xrpl_amm_and_lending": {
+      "xrp_rlusd_amm_tvl_usd": 5380000,
+      "xrp_usdc_amm_tvl_usd": 260700,
+      "approximate_tvl_ratio": 20.6,
+      "observation_time_utc": "2026-11-01T17:20:00Z",
+      "limitations": [
+        "AMM pool TVL only; order-book DEX depth and executable slippage are excluded.",
+        "Provider snapshots are asynchronous.",
+        "Native XRPL lending amendments were still in validator voting at the last reviewed ledger; no native lending market is admitted as active."
+      ],
+      "last_reviewed_lending_ledger": 108049382,
+      "last_reviewed_lending_observation_utc": "2026-11-01T17:06:00Z",
+      "lending_status": "NOT_ACTIVE_AT_OBSERVATION",
+      "source_ref": "data/xrp_intelligence/snapshots/20261101T172000Z-xrpl-stablecoin-liquidity-collateral.json"
+    },
+    "tokenized_real_world_assets": {
+      "tracked_asset_count": 18,
+      "combined_reported_value_usd": 4330000000,
+      "distributed_transferable_float_usd": 276000000,
+      "registry_style_issuer_notional_usd": 4060000000,
+      "interpretation": "Registry notionals are not equivalent to transferable investor float, realized capital inflow or collateral capacity.",
+      "source_id": "xrp-insights-xrp-radar-20261101"
+    },
+    "agentic_payments": {
+      "xrpl_t54_primary_dashboard": {
+        "reported_payment_or_settlement_events": 14830761,
+        "reported_usd_value_settled": 48329.34,
+        "registered_merchants_displayed": 183,
+        "live_services_displayed": 5318,
+        "four_week_average_weekly_usd_value": 3875,
+        "derived_approximate_usd_per_reported_event": 0.00325872,
+        "interpretation": "High event count with very small aggregate monetary value; not material XRP market demand.",
+        "source_id": "t54-xrpl-ai-hub-20261101",
+        "technical_source_id": "t54-xrpl-x402-technical-specification"
+      },
+      "xrp_insights_secondary_tracker": {
+        "reported_events": 14803915,
+        "reported_active_agents": 189,
+        "reported_merchants": 183,
+        "reported_services": 5790,
+        "reported_daily_settlements": 22012,
+        "reported_xrp_settled": 7021,
+        "reported_rlusd_settled": 38031,
+        "reported_top_merchant_events": 10416103,
+        "derived_top_merchant_event_share_pct": 70.36,
+        "admission_status": "NOT_CORROBORATED_BY_T54_PRIMARY_DASHBOARD",
+        "source_id": "xrp-insights-xrp-radar-20261101"
+      },
+      "t54_directory": {
+        "merchants_displayed": 178,
+        "live_services_displayed": 5318,
+        "admission_status": "PRIMARY_OPERATOR_DIRECTORY_SNAPSHOT",
+        "note": "Directory count differs from the home dashboard's 183 registered merchants."
+      },
+      "global_agent_economy": {
+        "updated_at_utc": "2026-11-01T03:06:26Z",
+        "x402_events": 195970380,
+        "x402_value_usd": 42278255,
+        "facilitators": 18,
+        "chains_reported_for_x402": 12,
+        "page_headline_chains": 11,
+        "xrpl_coverage_explicitly_listed": false,
+        "comparability": "NOT_COMPARABLE_WITH_T54_XRPL_TOTAL_UNTIL_CHAIN_COVERAGE_AND_EVENT_DEDUPLICATION_ARE_RESOLVED",
+        "source_id": "agenteconomy-x402-data-20261101"
+      },
+      "circle_agent_stack_claim": {
+        "reported_usdc_share_pct": 98.8,
+        "claim_class": "COMPANY_REPORTED",
+        "denominator_period_chain_coverage_and_value_vs_count_definition": "NOT_SPECIFIED_IN_ARC_ANNOUNCEMENT"
+      }
+    }
+  },
+  "key_interpretations": [
+    "SBI Group is pursuing multiple rails: XRP/RLUSD via Ripple-linked businesses and USDC/JPYSC via Circle Arc.",
+    "Circle Arc is a serious stablecoin-native and agentic-payment competitor, but Circle USDC is also natively available on XRPL; competition and complementarity coexist.",
+    "The x402 protocol is open and vendor-neutral under Linux Foundation governance; Coinbase contributed it, while Circle, Ripple and t54 Labs are members.",
+    "XRPL x402 payment events demonstrate technical utility, but current reported USD settlement value is small and does not prove incremental XRP purchases.",
+    "Exchange wallet movements and ETF holdings must not be converted directly into customer withdrawals, executable float or actual cash inflows.",
+    "SBI-affiliated Project Trinity is a separate DvP proof-of-concept using an SMBC-issued trust-beneficiary stablecoin and Progmat/Datachain cross-chain technology; it is not evidence of XRP, RLUSD or USDC use.",
+    "SBI Group reports 60% voting-right ownership in SBI Ripple Asia, but the Ripple company profile does not establish direct XRP custody or use by SBI Ripple Asia."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "handoff_id": "evernorth-sec-capital-custody-and-coinbase-handoff-20261101T154852Z",
+  "captured_at_utc": "2026-11-01T15:48:52Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T154852Z-evernorth-sec-capital-coinbase-custody-yield-recapture.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T154852Z-evernorth-sec-capital-custody-coinbase-and-yield-reconciliation.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T154852Z-evernorth-coinbase-ripple-sbi-bitgo-rlusd-capital-graph.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T154852Z-evernorth-actual-capital-custody-and-coinbase-principal-market.json",
+  "highest_impact_findings": [
+    "Evernorth's SEC prospectus directly selects Coinbase as principal market for XRP financial reporting, based on trading volume/activity, price consistency and regulatory/compliance considerations.",
+    "The SEC filing reports approximately 473M XRP as of October 9: about 84.366M purchased with $214.05M cash at $2.53657 average, plus about 388.911M XRP contributed in kind.",
+    "The filing reports $30M of convertible notes issued October 12; proceeds were intended for general purposes including XRP but actual XRP purchases from those proceeds are not verified.",
+    "The Cantor ELOC is optional, not cash on hand; no draw is verified. The filing has an internal $76.8M versus $80.7M gross-proceeds discrepancy.",
+    "BitGo is primary custodian; the prospectus says 100% cold storage as of its date, with multisignature/HSM controls and $250M shared insurance equal to 36.9% of the value of holdings as of October 9.",
+    "The prospectus says yield strategies and DeFi participation commenced following Closing, but does not disclose protocol, amount, wallet or counterparty. This needs reconciliation with the 100% cold-storage statement.",
+    "SBI Holdings is identified as a strategic investor; Ripple contributed 126.79M XRP to Pathfinder. Keep both distinct from the regional SBIC entities."
+  ],
+  "next_actions": [
+    "Search public XRPL activity and disclosed custody addresses for verifiable Evernorth/Pathfinder DeFi deployment, without assuming that labelled wallets are controlled by the company.",
+    "Identify whether initial yield strategies were off-chain, options/basis trades, stablecoin positions or actual XRP DeFi deployment.",
+    "Verify any XRP-secured lending or pledge from filings, protocol events or named counterparties.",
+    "Track ELOC draw notices and subsequent SEC prospectus supplements; do not count the facility as cash until shares are sold.",
+    "Track note proceeds and any disclosed XRP acquisitions.",
+    "Monitor Coinbase's annual principal-market reassessment and any execution-partner activity.",
+    "Preserve the original future-dated 15:45Z artifact; use this 15:48:52Z SEC recapture for point-in-time work."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

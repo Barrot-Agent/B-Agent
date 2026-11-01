@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "handoff_id": "coinbase-xrp-collateral-and-v3-next-steps-20261101T172700Z",
+  "captured_at_utc": "2026-11-01T17:27:00Z",
+  "latest_source_revision": "data/xrp_intelligence/source_revisions/20261101T172700Z-coinbase-xrp-collateral-products.json",
+  "latest_relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T172700Z-coinbase-xrp-collateral-rails.json",
+  "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T172700Z-xrp-collateral-layer-separation.json",
+  "research_ledger_addendum": "data/xrp_intelligence/research_ledger_addenda/20261101T172700Z-coinbase-xrp-collateral-products.json",
+  "next_actions": [
+    "Obtain current cbXRP contract total supply, Coinbase reserve attestation and Base holder distribution at a timestamped block.",
+    "Identify the exact Morpho market(s) used by Coinbase's retail XRP loan flow and retrieve market-specific LLTV, collateral supply and USDC debt.",
+    "Separate retail loan positions from permissionless cbXRP markets and Coinbase Global Exchange cross-collateral exposures.",
+    "Obtain Coinbase Global Exchange XRP collateral haircuts, concentration caps and average-daily-quantity limits from current rules/API.",
+    "Track posted collateral and borrow balances separately from spot purchases, wrapper issuance and exchange reserves."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "safety": "Research-only append. No account or market action, no main change, no merge or trading."
+}

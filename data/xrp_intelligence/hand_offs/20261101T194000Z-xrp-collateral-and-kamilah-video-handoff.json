@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-collateral-and-kamilah-video-handoff-20261101T194000Z",
+  "captured_at_utc": "2026-11-01T19:40:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "main_sha": "bf39f397069eb58526a50ef055289997182db6b0",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "research_branch_head_before_append": "0d0fee8eb0daa5593fc81b7f530a99659b3f2b43",
+  "research_pr": 1464,
+  "video_creator": "Kamilah Stevenson (user-confirmed intended creator)",
+  "new_video_id": "M8TmDXO7B-0",
+  "new_video_status": "Indexed; transcript unavailable; primary-source fact-check completed.",
+  "collateral_finding": "Bitnomial DCO accepts XRP at 40% haircut and $15M notional limit as of 2026-10-02; not a CFTC-wide approval.",
+  "regulatory_finding": "CFTC Letter 26-05 was requested by Coinbase Financial Markets; conditional no-action framework requires FCM notice and DCO acceptance/haircuts. Initial three months are limited to payment stablecoins, BTC and ETH; later assets are conditional.",
+  "ownership_finding": "Payward completed acquisition of Bitnomial on 2026-05-01 and controls the FCM/DCM/DCO stack.",
+  "unresolved": [
+    "RLUSD was included in Bitnomial's November 2025 announcement but is absent from the October 2026 accepted-collateral schedule.",
+    "Actual XRP collateral posted by customers is undisclosed.",
+    "Coinbase Financial Markets' notice of reliance and actual XRP collateral use were not verified.",
+    "The scope of Bitnomial's $15M XRP notional limit is unspecified.",
+    "The video transcript and screenshot title canonical ID remain unavailable.",
+    "Full Kamilah channel public-video inventory remains incomplete."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "next_actions": [
+    "Confirm Bitnomial's current RLUSD status and the scope of the XRP notional limit from the current rulebook or official support documentation.",
+    "Check CFTC/FCM notice of reliance and public financial data for actual XRP collateral balances; do not infer usage from eligibility.",
+    "Map Payward/Bitnomial versus Coinbase FCM/DCO relationships and clearing memberships.",
+    "Add M8TmDXO7B-0 to the full Kamilah channel inventory; retrieve transcript only through permitted public sources.",
+    "Resolve screenshot title 'XRP Got Everything We Waited For. So Why Isn't It Soaring?' to a canonical video ID.",
+    "Continue ASK Coin, actual-capital and SBIC source provenance; keep Permission Coin ASK as a candidate only."
+  ],
+  "safety": "Research-only; no main changes, merges, force-pushes, deployments, secrets or trades."
+}

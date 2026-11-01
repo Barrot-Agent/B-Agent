@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-XRPL-USDC-FEE-BURN-AND-CONDITIONAL-XRP-BRIDGING-20261101T1415Z",
+  "source_id": "xrpl-transaction-cost",
+  "captured_at_utc": "2026-11-01T14:15:00Z",
+  "canonical_url": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
+  "publisher": "XRP Ledger documentation",
+  "type": "protocol_documentation",
+  "claims": [
+    "Every validated XRPL transaction destroys a small amount of XRP as its transaction cost; the fee is not paid to a validator or other party.",
+    "The documented minimum standard transaction cost is 10 drops, or 0.00001 XRP, before load scaling.",
+    "The fee can rise with network load and the base fee can change through validator fee voting.",
+    "USDC transfers on XRPL therefore require an XRP-denominated network fee, even when the transferred asset is USDC."
+  ],
+  "analytical_implications": [
+    "Stablecoin activity on XRPL creates a mechanical XRP fee sink, but the base fee is tiny and is not proportional to transferred dollar value.",
+    "XRPL DEX auto-bridging may use XRP as a bridge asset when routing chooses that path; this is conditional and not true of every USDC transfer.",
+    "One million standard transactions at the unscaled 10-drop minimum would destroy 10 XRP; this is an illustrative calculation, not an observed USDC transaction count."
+  ],
+  "limitations": [
+    "No current USDC-specific XRPL transaction count or DEX auto-bridge routing share was retrieved in this run.",
+    "Do not convert network fee mechanics into a material price-demand claim without volume and fee history."
+  ]
+}

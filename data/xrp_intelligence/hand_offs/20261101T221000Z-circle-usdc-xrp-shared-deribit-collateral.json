@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "handoff_id": "circle-usdc-xrp-shared-deribit-collateral-20261101T221000Z",
+  "captured_at_utc": "2026-11-01T22:10:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery first; Barrot V3 remains the execution and verification foundation.",
+  "new_relationship": "Circle's USDC and XRP are both full cross-collateral currencies on Deribit. USDC has no stated haircut in X:PM/X:SM; XRP has no stated X:PM haircut and 15% X:SM. This creates a common venue collateral framework inside Coinbase's broader CFM/CBBM/Deribit ecosystem, but actual customer balances are unknown and it does not establish a direct Circle-Ripple partnership.",
+  "circle_flow": "USDC circulation $70.0B and reserves $71.4B on Oct 29; net circulation change -$0.8B over 7 days, -$3.1B over 30 days, -$5.0B over 365 days. This is supply contraction, not a direct measure of XRP capital flows.",
+  "rlusd_comparison": "RLUSD is not listed in Deribit's current cross-collateral table. Its issuer/reserve structure may fit the pre-GENIUS payment-stablecoin criteria after reserve-fund look-through, but venue acceptance is not established.",
+  "legal_caveat": "CFTC 26-17's pre-GENIUS payment-stablecoin criteria appear to fit USDC based on public issuer/reserve disclosures, but no CFTC asset-specific determination or CFM actual-use balance was found.",
+  "prediction_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "next_actions": [
+    "Verify CFM notice and collateral policy; determine actual USDC/XRP balances at Deribit and Coinbase.",
+    "Check Circle Q3 2026 results scheduled November 4 for updated distribution costs, USDC balances and reserve income.",
+    "Look through USDXX and RLUSD reserve funds for CFTC criteria.",
+    "Measure whether USDC supply contraction is concentrated at Coinbase/Deribit or elsewhere before attributing it to derivatives demand.",
+    "Keep RLUSD absence from the Deribit table as venue-specific, not a universal eligibility conclusion."
+  ]
+}

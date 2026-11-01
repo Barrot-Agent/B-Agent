@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "decision_id": "coinbase-xrp-collateral-period-and-custody-gates-20261101T215500Z",
+  "captured_at_utc": "2026-11-01T21:55:00Z",
+  "decision": "Keep the CFTC/Deribit XRP collateral route as a conditional capability, not a confirmed Coinbase usage event. Apply period-aware evidence and custody-status checks.",
+  "rules": [
+    "Use Coinbase Q3 2026 Form 10-Q as a September 30 cutoff: recognized derivatives collateral is BTC and ETH only, total $325.766M; no XRP line.",
+    "Do not attribute the $1.2995B broad crypto-assets-held-as-collateral balance to XRP or Deribit.",
+    "Do not attribute the $2.804112B unrecognized customer crypto lending collateral to derivatives margin or XRP.",
+    "Keep corporate assets pledged against short-term borrowings separate from customer collateral.",
+    "The Q3 period ends before the October 1 Coinbase/Deribit integration completion; absence of XRP at September 30 does not disprove post-integration use.",
+    "Deribit's October 14 custody policy lists Coinbase Custody Trust Company in cold custody but still describes CBBM as a future warm-wallet addition; require a later policy revision or direct operational evidence before marking CBBM custody live.",
+    "Require CFM notice date, first-three-month restriction expiry, customer agreement/consent, account-level collateral mode and post-integration balances before admitting actual XRP collateral as a feature.",
+    "Keep venue eligibility, custody capability, legal no-action scope and actual collateral balances as separate graph edges and model features."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

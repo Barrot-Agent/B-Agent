@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "addendum_id": "evernorth-bitgo-custody-reorganization-20261101T160541Z",
+  "captured_at_utc": "2026-11-01T16:05:41Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T160541Z-evernorth-bitgo-custody-reorganization-and-unattributed-inflows.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T160541Z-evernorth-bitgo-wallet-migration-and-424b3-reconciliation.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T160541Z-evernorth-bitgo-custody-reorganization-and-candidate-inflows.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T160541Z-evernorth-custody-reorganization-not-market-outflow.json",
+  "source_bundle": "data/xrp_intelligence/sources/20261101T160541Z-evernorth-bitgo-custody-trace-source-bundle.json",
+  "key_updates": [
+    "The 370.346M XRP described as external outflow by XRP Insights is outflow from its 13-wallet attribution set, not evidence of sale or departure from BitGo custody.",
+    "Q-Eternal's ledger research and nine Bithomp destination pages strongly support internal BitGo custody reorganization across multisig accounts.",
+    "The ten-destination tranche table leaves the 600,000 XRP advance-funding subscriber tranche unmapped; the 200,137.78 XRP tracker arithmetic difference remains unresolved.",
+    "Two later tagged inflows totaling 9.069762M XRP to the cash-purchased-tranche wallet remain unattributed and are not verified Evernorth purchases.",
+    "The October 30 ELOC summary gross figure of $80.7M likely uses the earlier $15.46 reference price while the cover uses $14.71 and $76.8M; no draw is verified.",
+    "The filing states yield/DeFi activity commenced following closing, but also says no material ecosystem deployment was expected before Q4 2026 and 100% cold storage as of the prospectus date; actual XRP deployment remains unverified."
+  ],
+  "source_independence": "SEC primary filing; separate public XRPL research providers; Bithomp account explorer corroboration. Underlying ledger data is shared public data, so source independence is methodological rather than independent of the ledger.",
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

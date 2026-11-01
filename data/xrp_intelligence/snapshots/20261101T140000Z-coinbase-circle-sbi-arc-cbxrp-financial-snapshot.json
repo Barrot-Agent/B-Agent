@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "coinbase-circle-sbi-arc-cbxrp-financial-snapshot-20261101T1400Z",
+  "data_cutoff_utc": "2026-11-01T14:00:00Z",
+  "research_branch_base_main_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+  "latest_main_sha_observed": "02d9f11404ba80823392ad215c733b49e4536128",
+  "observations": {
+    "cbxrp": {
+      "reserve_xrp": 150942337.33,
+      "total_supply_cbxrp": 150940089.8,
+      "surplus_xrp": 2247.53,
+      "reserve_coverage_ratio": 1.0000149,
+      "displayed_refresh": "2026-11-01 07:12 AM; timezone not stated",
+      "contract_base": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+      "policy": "Coinbase says underlying XRP is held in custody and is not sold, transferred or utilized by Coinbase; cbXRP is transferable and can be used in DeFi"
+    },
+    "morpho_candidate_market": {
+      "chain_id": 8453,
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "collateral_token": "cbXRP",
+      "loan_token": "USDC",
+      "observed_at_utc": "2026-11-01T13:11:00Z",
+      "collateral_cbxrp": 118550000,
+      "collateral_value_usd": 148000000,
+      "borrowed_usdc": 59200000,
+      "supplied_usdc": 65460000,
+      "utilization_pct": 90.4,
+      "lltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "borrow_apy_pct": 7.87,
+      "supply_apy_pct": 7.09,
+      "top_three_vault_supply_usdc": 51850000,
+      "top_three_vault_share_pct": 79.2,
+      "liquidations_30d_reported": 1122,
+      "debt_repaid_by_liquidations_30d_usdc": 3940000,
+      "modeled_collateral_at_risk_under_20pct_price_shock_usd": 22050000,
+      "classification": "permissionless candidate market; Coinbase retail product mapping not confirmed"
+    },
+    "coinbase_q3_2026": {
+      "filing_date": "2026-10-29",
+      "net_revenue_usd": 1200000000,
+      "transaction_revenue_usd": 590200000,
+      "subscription_and_services_revenue_usd": 570200000,
+      "stablecoin_revenue_q3_usd": 306905000,
+      "stablecoin_revenue_9m_usd": 904487000,
+      "net_income_usd": 718700000,
+      "operating_income_usd": 61669000,
+      "gains_on_crypto_assets_held_for_investment_usd": 715022000,
+      "gains_primarily_from": "fair-value remeasurement, mainly Bitcoin and Ethereum",
+      "assets_on_platform_usd": 376600000000,
+      "assets_on_platform_prior_year_usd": 515900000000,
+      "monthly_transacting_users_m": 7.4,
+      "monthly_transacting_users_prior_year_m": 9.3,
+      "consumer_spot_volume_yoy_change_pct": -59,
+      "institutional_spot_volume_yoy_change_pct": -53,
+      "average_usdc_held_on_coinbase": "all-time high",
+      "circle_arrangement": "renewed on same terms",
+      "crypto_assets_held_as_collateral_usd": 1299500000,
+      "crypto_assets_borrowed_usd": 389657000,
+      "crypto_assets_held_for_investment_usd": 2224811000,
+      "customer_asset_collateral_policy": "Coinbase states it does not use customer assets as collateral without customer consent"
+    },
+    "circle_q2_2026": {
+      "usdc_circulation_end_usd": 73269000000,
+      "usdc_circulation_average_usd": 76524000000,
+      "usdc_onchain_volume_q2_usd": 14800000000000,
+      "usdc_onchain_volume_yoy_change_pct": 151,
+      "reserve_return_rate_pct": 3.5,
+      "reserve_income_share_q2_revenue_pct": 95.2,
+      "reserve_income_share_h1_revenue_pct": 94.6,
+      "usdc_on_coinbase_end_usd": 12442000000,
+      "usdc_on_coinbase_daily_weighted_average_share_pct": 19.5,
+      "coinbase_distribution_costs_q2_usd": 324600000,
+      "coinbase_distribution_costs_h1_usd": 655300000,
+      "distribution_formula": "allocation based on USDC held on Coinbase after issuer retention plus half of remaining ecosystem-growth amount after approved third-party participants"
+    },
+    "circle_binance": {
+      "strategic_equity_investment_usd": 100000000,
+      "commercial_agreement_years": 5,
+      "focus": "USDC distribution and access in emerging markets",
+      "published_date": "2026-09-22"
+    },
+    "circle_arc": {
+      "mainnet_launch_date": "2026-09-16",
+      "gas_asset": "USDC",
+      "sbi_group_role": "founding validator",
+      "coinbase_role": "exchange participant",
+      "morpho_role": "credit-market integration",
+      "ripple_in_reviewed_cohort": "not named; absence is not proof of no relationship"
+    },
+    "ripple_coinbase_rlusd": {
+      "launch_date": "2026-10-28",
+      "platforms": [
+        "Coinbase Prime",
+        "Coinbase Exchange",
+        "Coinbase Retail"
+      ],
+      "networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "ripple_base_liquidity_role": "Ripple says it will provide liquidity on Base",
+      "global_exchange_collateral_status": "future_not_live_at_announcement"
+    },
+    "sbi_xrp_payments": {
+      "corridors": [
+        "Philippines",
+        "Vietnam",
+        "Indonesia"
+      ],
+      "roles": {
+        "SBI_Remit": "customer remittance request",
+        "SBI_VC_Trade": "sends XRP in real time",
+        "Tranglo": "local-currency bank-account payout",
+        "SBI_Ripple_Asia": "Ripple/SBI joint venture supporting the solution"
+      },
+      "confirmed_xrp_bridge_use": true,
+      "throughput_and_net_inventory": "not disclosed"
+    },
+    "sbi_xrpl_poc": {
+      "date": "2026-02-26",
+      "use_case": "tokenized deposits and deposit-type digital money",
+      "network": "XRPL",
+      "xrp_token_use": "not established"
+    },
+    "sbic": {
+      "resolved_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "distinct_from": "SBI Holdings / SBI Group",
+      "chatgpt_training": "June 12-13 2025 for investee companies",
+      "xrp_or_ripple_relationship": "none publicly established"
+    },
+    "circle_q3_event": {
+      "date": "2026-11-04",
+      "time": "08:00",
+      "timezone": "America/New_York",
+      "status": "scheduled_not_yet_held"
+    }
+  },
+  "derived_metrics": {
+    "cbxrp_reserve_coverage_pct": 100.00149,
+    "cbxrp_reserve_surplus_xrp": 2247.53,
+    "coinbase_q3_stablecoin_revenue_yoy_change_pct": -5.43,
+    "coinbase_9m_stablecoin_revenue_yoy_change_pct": -0.33,
+    "circle_q2_coinbase_distribution_cost_as_share_of_total_revenue_pct": 46.3,
+    "circle_q2_coinbase_distribution_cost_as_share_of_reserve_income_pct": 48.6,
+    "morpho_candidate_market_debt_to_collateral_pct": 40,
+    "morpho_candidate_market_top_three_vault_supply_share_pct": 79.2
+  },
+  "actual_capital_classification": {
+    "cbxrp_minting": "wrapper issuance against existing custodied XRP; not proof of new spot purchases",
+    "morpho_usdc_borrowing": "collateralized credit, not net external capital entering XRP",
+    "circle_coinbase_distribution_cost": "stablecoin distribution economics, not XRP capital flow",
+    "sbi_circle_investment": "corporate equity investment, not XRP purchase",
+    "sbi_xrp_remittance": "confirmed transactional XRP bridge use; throughput and net inventory unknown",
+    "rlusd_on_coinbase": "stablecoin distribution and network access; no automatic XRP purchase implication",
+    "usdc_on_xrpl": "stablecoin liquidity on XRPL; actual XRP bridge routing share unknown"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none; financial and market observations are research-only until timestamped point-in-time series and onchain reconciliation are completed"
+}

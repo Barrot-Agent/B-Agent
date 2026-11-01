@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "coinbase-circle-ripple-cftc-xrp-collateral-handoff-20261101T202126Z",
+  "captured_at_utc": "2026-11-01T20:21:26Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "previous_head": "7d542625212a93743a28b5e75e8efe68ac77bea9",
+  "latest_findings": [
+    "Coinbase Financial Markets originated CFTC Letter 26-05. The request covers customer digital-asset collateral and FCM proprietary payment-stablecoin residual interest.",
+    "USDC is issued by Circle Internet Financial, LLC for non-EEA holders. Its public issuer, reserve and attestation disclosures strongly match the pre-GENIUS payment-stablecoin criteria; Circle National Trust and Circle New York Trust are separate regulated affiliates, not current issuers.",
+    "CFTC Letter 26-05 allows payment stablecoins in 30.7 accounts without DCO acceptance under FCM valuation/haircut policies; futures and cleared-swaps accounts require DCO acceptance. FCM-owned payment stablecoins may be deposited as residual interest subject to capital charge.",
+    "RLUSD is issued by Standard Custody, a NY limited-purpose trust company; its government-MMF reserve holdings need look-through. Ripple National Trust Bank is not the current issuer.",
+    "Circle USDC is natively issued on XRPL. BNY is a shared custody node: Circle Reserve Fund USDXX is custodied there, BNY is primary RLUSD reserve custodian, and BNY supports XRP/RLUSD custody.",
+    "Standard Chartered RLUSD custody on XRPL is live; LMAX collateral integration is planned. Bitnomial currently lists XRP collateral but not USDC/RLUSD."
+  ],
+  "key_unknowns": [
+    "No CFTC-specific determination naming USDC or RLUSD.",
+    "No FCM notice of reliance or actual stablecoin/XRP collateral/residual-interest balances.",
+    "RLUSD government-MMF look-through and October signed attestation unavailable.",
+    "No actual XRP purchase or inventory change caused by stablecoin collateral established."
+  ],
+  "repository_state": {
+    "main_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+    "main_unchanged": true,
+    "pr1474": "390 tests + 8 subtests and fail-closed gate passed; two zero-job push failures unresolved; draft/unmerged.",
+    "pr1475": "405 tests + 8 subtests and fail-closed gate passed; outcome source hash registry revalidation added; draft/unmerged.",
+    "pr1464_last_verified_head": "7d542625212a93743a28b5e75e8efe68ac77bea9",
+    "pr1464_last_verified": "431 tests + 8 subtests and fail-closed gate passed; new Circle/CFTC graph append follows this head."
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Search FCM notices of intent and actual stablecoin collateral/residual-interest balances.",
+    "Look through USDXX and RLUSD reserve funds against CFTC's direct/indirect permitted-asset definition.",
+    "Verify whether BNY mint/redeem and Standard Chartered/LMAX collateral mirroring become operational.",
+    "Continue semantic binding of forecast outcome prices to immutable source bytes and normalize OI provider coverage.",
+    "Continue SBIC, ASK Coin, exact actual-capital and Camilla/Kamilah public-video identity/catalog research."
+  ],
+  "safety": "No merge, main modification, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}

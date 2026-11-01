@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrp-stablecoin-supply-agentic-payments-20261101T181734Z",
+  "captured_at_utc": "2026-11-01T18:17:34Z",
+  "mission_priority": "XRP_INTELLIGENCE_AND_PREDICTION_ENGINE_MASTERY",
+  "findings": [
+    {
+      "claim": "XRP attributed exchange wallets total approximately 22.45B across 701 wallets and 24 venues.",
+      "class": "SOURCED_PROVIDER_OBSERVATION",
+      "source_id": "xrp-insights-xrp-radar-20261101",
+      "limitation": "Not tradable float; includes omnibus/cold storage and non-customer reserves."
+    },
+    {
+      "claim": "Same-wallet attributed balances are down approximately 161.1M XRP over seven days but only 12.7M over 30 days.",
+      "class": "SOURCED_PROVIDER_OBSERVATION",
+      "source_id": "xrp-insights-xrp-radar-20261101",
+      "limitation": "Does not distinguish customer withdrawals from exchange wallet migration."
+    },
+    {
+      "claim": "ETF/index holdings are approximately 1.1966B XRP with a reported weekly net flow of +3.39M XRP.",
+      "class": "SOURCED_PROVIDER_OBSERVATION",
+      "source_id": "xrp-insights-xrp-radar-20261101",
+      "limitation": "GXRP flow gap, reconstructed rows and BITW rebalancing prevent treating the aggregate as clean cash inflow."
+    },
+    {
+      "claim": "RLUSD is reported at $707.4M on XRPL and $1.71B on Ethereum.",
+      "class": "SOURCED_ONCHAIN_ANALYTICS_CLAIM",
+      "source_id": "xrp-insights-xrp-radar-20261101",
+      "limitation": "Canonical issuer and method are documented, but direct raw RPC was not retrieved in this run."
+    },
+    {
+      "claim": "Circle USDC is natively available on XRPL under issuer rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE.",
+      "class": "CONFIRMED_PRIMARY_SOURCE",
+      "source_id": "circle-native-usdc-xrpl",
+      "limitation": "Native availability does not establish material supply or XRP demand."
+    },
+    {
+      "claim": "Circle Arc's founding validator cohort includes SBI Group; Arc uses USDC gas; Coinbase and Binance are listed exchange participants.",
+      "class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_id": "circle-arc-mainnet-2026-09-16",
+      "limitation": "Participation does not establish exclusive alignment or XRP flow."
+    },
+    {
+      "claim": "Coinbase contributed x402 to Linux Foundation open governance; Circle, Ripple and t54 Labs are members; Ripple states XRPL x402 supports XRP and RLUSD.",
+      "class": "CONFIRMED_FOUNDATION_ANNOUNCEMENT",
+      "source_id": "linux-foundation-x402-foundation-20260714",
+      "limitation": "Shared standards governance is not a commercial partnership or guaranteed settlement volume."
+    },
+    {
+      "claim": "T54 reports 14.83M XRPL x402 payment/settlement events and $48.3K cumulative USD value.",
+      "class": "SOURCED_OPERATOR_DASHBOARD_CLAIM",
+      "source_id": "t54-xrpl-ai-hub-20261101",
+      "limitation": "Operator dashboard, event count is not proven to equal raw ledger transactions, and monetary value is small."
+    },
+    {
+      "claim": "XRP Insights' x402 count, active-agent and top-merchant figures differ from the t54 primary dashboard and directory.",
+      "class": "SOURCE_CONFLICT",
+      "source_id": "xrp-insights-xrp-radar-20261101",
+      "limitation": "Do not average provider values; raw invoice-to-ledger reconciliation is pending."
+    },
+    {
+      "claim": "Circle says USDC represents 98.8% of agent-driven transaction volume.",
+      "class": "COMPANY_REPORTED_CLAIM",
+      "source_id": "circle-arc-mainnet-2026-09-16",
+      "limitation": "Denominator, time window, chain coverage and value-versus-count definition are not specified in the announcement."
+    },
+    {
+      "claim": "SBI Group reports 60% voting-right ownership in SBI Ripple Asia; the Ripple profile does not establish direct XRP custody or use by SBI Ripple Asia.",
+      "class": "CONFIRMED_PRIMARY_PROFILE_WITH_LIMITED_SCOPE",
+      "source_id": "sbiholdings-sbi-ripple-asia-ownership-60pct",
+      "limitation": "Do not attribute SBI Remit's XRP remittance activity to SBI Ripple Asia."
+    },
+    {
+      "claim": "Project Trinity completed phase-two DvP operational verification using an SMBC-issued trust-beneficiary stablecoin with Progmat/Datachain cross-chain technology.",
+      "class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06",
+      "limitation": "Proof-of-concept only; the announcement does not identify XRP, RLUSD or USDC as the settlement asset."
+    },
+    {
+      "claim": "SBI-affiliated entities have disclosed activity across XRP remittance, RLUSD/USDC distribution, Circle Arc and a separate SMBC stablecoin DvP proof-of-concept.",
+      "class": "INFERENCE_FROM_MULTIPLE_CONFIRMED_RELATIONSHIPS",
+      "source_id": "sbi-project-trinity-2026-10-06",
+      "limitation": "This supports a multi-rail hypothesis but does not establish a unified corporate treasury or exclusive strategy."
+    },
+    {
+      "claim": "The Japanese SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "class": "CONFIRMED_PRIMARY_ENTITY_INFORMATION",
+      "source_id": "sbic-tokyo-profile",
+      "limitation": "No verified affiliation with SBI Holdings or direct XRP relationship."
+    },
+    {
+      "claim": "SBIC's ChatGPT/Copilot training was investee-company education, not an OpenAI or XRP partnership.",
+      "class": "CONFIRMED_PRIMARY_EDUCATIONAL_INFORMATION",
+      "source_id": "sbic-ai-training-2025-06-12",
+      "limitation": "Educational activity does not establish commercial integration."
+    },
+    {
+      "claim": "SBI Ripple Asia is 60% voting-right owned by SBI Group and provides blockchain/DLT fintech solutions; Ripple's profile says SBI Ripple Asia does not handle XRP.",
+      "class": "CONFIRMED_PRIMARY_PROFILE_WITH_NEGATIVE_SCOPE",
+      "source_id": "ripple-sbi-ripple-asia-odl-current",
+      "limitation": "Do not attribute SBI Remit's XRP usage to SBI Ripple Asia."
+    },
+    {
+      "claim": "In SBI Remit's 2023 XRP-based corridor, SBI Remit sends the customer payment request, SBI VC Trade sends XRP in real time, and Tranglo processes the local payout to the beneficiary bank account.",
+      "class": "CONFIRMED_PRIMARY_OPERATIONAL_FLOW_DESCRIPTION",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06",
+      "limitation": "This confirms the announced operating roles at launch, not current throughput, XRP inventory or net accumulation."
+    },
+    {
+      "claim": "SBI Ripple Asia sells RippleNet software services and explicitly states that it does not handle XRP.",
+      "class": "CONFIRMED_PRIMARY_NEGATIVE_SCOPE",
+      "source_id": "ripple-sbi-ripple-asia-odl-current",
+      "limitation": "The XRP execution leg in the SBI Remit corridor is attributed to SBI VC Trade, not SBI Ripple Asia."
+    },
+    {
+      "claim": "SBI Remit's company-wide cumulative remittances exceeded JPY 2.5T as of May 27, 2026; the total is not attributed to XRP or ODL.",
+      "class": "SOURCED_COMPANY_WIDE_REMITTANCE_TOTAL_NOT_XRP_SPECIFIC",
+      "source_id": "sbi-remit-cumulative-remittances-2026-05-29",
+      "limitation": "Exclude from XRP payment-volume features."
+    },
+    {
+      "claim": "SBI Ripple Asia and DSRV announced a Japan-Korea payment/remittance feasibility study that contemplates XRPL as the ledger; this is not production throughput or direct XRP handling.",
+      "class": "CONFIRMED_PRIMARY_RESEARCH_ANNOUNCEMENT",
+      "source_id": "sbi-ripple-asia-dsrv-xrpl-study-2026-02-24",
+      "limitation": "Ripple's profile explicitly says SBI Ripple Asia does not handle XRP."
+    },
+    {
+      "claim": "SBI Group and Startale joined Open Standard; the announcement lists Coinbase among 140+ participants and says JPYSC/OUSD interoperability is under consideration.",
+      "class": "CONFIRMED_PRIMARY_ANNOUNCEMENT_WITH_LIMITED_SCOPE",
+      "source_id": "sbi-open-standard-2026-10-16",
+      "limitation": "Shared participation is not a bilateral Coinbase-SBI commercial agreement; experiment is not live; Circle is not identified in the cited announcement."
+    },
+    {
+      "claim": "SBI Holdings and SMBC Group signed a capital/business alliance; SMBC agreed to a 5% capital participation in SBI Startale Marketing.",
+      "class": "CONFIRMED_PRIMARY_ANNOUNCEMENT",
+      "source_id": "sbi-smbc-alliance-2026-10-30",
+      "limitation": "Investment is in the JV, not SBI Holdings or an XRP issuer; future stablecoin use cases are not production volume."
+    },
+    {
+      "claim": "SBI Group announced an approximately $50M investment agreement in Startale through a subsidiary.",
+      "class": "ANNOUNCED_INVESTMENT_AGREEMENT",
+      "source_id": "sbi-startale-investment-2026-03-26",
+      "limitation": "Closing and final ownership status were not independently verified."
+    },
+    {
+      "claim": "JPYSC is issued by SBI Shinsei Trust and distributed by SBI VC Trade; initial access was account-limited and public-chain circulation was conditional.",
+      "class": "CONFIRMED_PRIMARY_ANNOUNCEMENT",
+      "source_id": "sbi-jpysc-launch-2026-06-24",
+      "limitation": "Do not count public-chain JPYSC supply or Arc settlement before onchain evidence."
+    },
+    {
+      "claim": "SBI and Solana Foundation announced Strium and an SBI Solana Global plan for tokenized securities, RWA, stablecoins and 24/7 markets.",
+      "class": "ANNOUNCED_STRATEGIC_BUILD",
+      "source_id": "sbi-solana-strium-2026-07-13",
+      "limitation": "No production throughput or XRP integration established."
+    },
+    {
+      "claim": "SBI DigiTrust, NICE and DSRV announced a Japan-Korea stablecoin payment pilot; the asset is unspecified and completion was targeted for December 2026.",
+      "class": "CONFIRMED_PILOT_ANNOUNCEMENT",
+      "source_id": "sbi-digitrust-korea-pilot-2026-10-01",
+      "limitation": "Pilot only; no XRP asset or live settlement volume established."
+    },
+    {
+      "claim": "SBI-affiliated entities participated in a DCJPY tokenized-deposit securities DvP proof-of-concept and a separate Ethereum/stablecoin public-chain securities distribution experiment.",
+      "class": "CONFIRMED_PROOF_OF_CONCEPT_ANNOUNCEMENTS",
+      "source_id": "sbi-tokenized-deposit-dcJPY-2026-04-24",
+      "limitation": "Separate projects; neither establishes XRP/RLUSD/USDC usage."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_SBI_multirail",
+      "hypothesis": "SBI Group is building a multi-rail institutional strategy rather than choosing a single XRP or USDC network.",
+      "supporting_evidence": [
+        "SBI Group is a Circle Arc founding validator and says it will leverage USDC and JPYSC.",
+        "SBI VC Trade distributes USDC and RLUSD in Japan.",
+        "SBI Remit sends customer payment requests in the XRP-enabled remittance corridor; SBI VC Trade is the entity that sends XRP in real time.",
+        "Project Trinity uses a separate SMBC-issued trust-beneficiary stablecoin for its DvP proof-of-concept."
+      ],
+      "disconfirming_or_missing": [
+        "SBI Ripple Asia explicitly says it does not handle XRP.",
+        "No current throughput by rail is disclosed.",
+        "No evidence of exclusive commitment or net XRP accumulation from these initiatives."
+      ]
+    },
+    {
+      "id": "H2_Arc_competes_for_stablecoin_and_agentic_flows",
+      "hypothesis": "Circle Arc may capture stablecoin-native payments, FX, lending and agentic settlement that might otherwise use XRPL.",
+      "supporting_evidence": [
+        "Arc uses USDC as gas and has a large institutional/exchange/credit cohort.",
+        "Circle reports USDC at 98.8% of agent-driven transaction volume."
+      ],
+      "disconfirming_or_missing": [
+        "Circle USDC is natively available on XRPL.",
+        "Coinbase, Circle, Ripple and t54 share x402 Foundation participation.",
+        "No chain-level flow evidence demonstrates displacement from XRPL."
+      ]
+    },
+    {
+      "id": "H3_XRPL_x402_is_utility_but_not_material_XRP_demand",
+      "hypothesis": "XRPL x402 is technically operational but current monetary settlement value is too small to establish material XRP market demand.",
+      "supporting_evidence": [
+        "T54 reports about 14.83M payment/settlement events but only $48.3K cumulative value.",
+        "The facilitator supports both XRP and RLUSD, so event counts are not necessarily XRP-denominated."
+      ],
+      "disconfirming_or_missing": [
+        "Raw ledger-level event-to-invoice reconciliation has not been independently completed.",
+        "The dashboard and third-party tracker disagree on counts and merchant/service totals."
+      ]
+    },
+    {
+      "id": "H4_RLUSD_distribution_center_shift",
+      "hypothesis": "RLUSD's distribution is currently more Ethereum-centered than XRPL-centered.",
+      "supporting_evidence": [
+        "XRP Insights reports $707.4M on XRPL versus $1.71B on Ethereum, approximately 29% versus 71%."
+      ],
+      "disconfirming_or_missing": [
+        "Raw issuer gateway_balances and Ethereum totalSupply were not independently retrieved in this run.",
+        "The chain split has changed historically; a single snapshot does not establish durable migration or redemption causality."
+      ]
+    },
+    {
+      "id": "H5_exchange_outflows_signal_supply_migration",
+      "hypothesis": "The seven-day decline in attributed exchange wallets may reflect XRP moving to self-custody or other venues.",
+      "supporting_evidence": [
+        "Same-wallet attributed balances declined approximately 161.1M XRP over seven days."
+      ],
+      "disconfirming_or_missing": [
+        "Thirty-day same-wallet change is only about -12.7M XRP.",
+        "Unattributed wallet transfers, internal cold-wallet movements and coverage changes prevent a customer-withdrawal conclusion."
+      ]
+    },
+    {
+      "id": "H6_ETF_inflows_signal_sticky_institutional_interest",
+      "hypothesis": "Positive weekly ETF/index flows despite a tracker-estimated cost basis above spot may indicate persistent allocation interest.",
+      "supporting_evidence": [
+        "Tracker reports +3.39M XRP net weekly flow and approximately 1.1966B XRP holdings."
+      ],
+      "disconfirming_or_missing": [
+        "Weekly flow is small relative to holdings.",
+        "GXRP flows are excluded and some historical rows are reconstructed.",
+        "The estimated average cost is not issuer-reported investor cost basis."
+      ]
+    },
+    {
+      "id": "H7_SBI_diversified_multi_rail",
+      "hypothesis": "SBI-affiliated entities are testing several distinct settlement rails—XRP remittance, RLUSD/USDC distribution and SMBC-stablecoin DvP—rather than making a single-network commitment.",
+      "supporting_evidence": [
+        "SBI Remit has an XRP bridge-asset remittance service in selected corridors.",
+        "SBI VC Trade distributes RLUSD and USDC in Japan.",
+        "SBI Group is a Circle Arc founding validator and says it intends to leverage USDC and JPYSC.",
+        "Project Trinity used an SMBC-issued trust-beneficiary stablecoin with Progmat/Datachain cross-chain technology."
+      ],
+      "disconfirming_or_missing": [
+        "Project Trinity is a proof-of-concept/operational verification, not evidence of commercial throughput.",
+        "No current transaction volume, asset allocation or balance-sheet commitment by rail is disclosed.",
+        "No evidence establishes that these initiatives share one treasury or settlement strategy."
+      ]
+    },
+    {
+      "id": "H8_SBI_institutional_multi_rail_portfolio",
+      "hypothesis": "SBI Group is assembling a diversified institutional onchain-finance portfolio across XRP/ODL, RLUSD, USDC/Arc, JPYSC/OUSD, SMBC stablecoin DvP, DCJPY, Solana/Strium, Ethereum tokenized securities and XRPL research.",
+      "supporting_evidence": [
+        "SBI VC Trade is the XRP execution leg in the SBI Remit corridor and also distributes RLUSD, USDC and JPYSC.",
+        "SBI Group is a Circle Arc founding validator and says it intends to leverage USDC/JPYSC.",
+        "SBI-affiliated participants completed Project Trinity using an SMBC-issued stablecoin for security-token DvP testing.",
+        "SBI announced JPYSC/OUSD interoperability research with Open Standard, which lists Coinbase among participants.",
+        "SBI and Solana Foundation announced Strium and SBI Solana Global plans.",
+        "SBI Ripple Asia and DSRV announced an XRPL feasibility study, while Ripple states SBI Ripple Asia does not handle XRP."
+      ],
+      "disconfirming_or_missing": [
+        "Most of the non-XRP initiatives are pilots, feasibility studies, planned infrastructure or account-limited distribution rather than demonstrated production volume.",
+        "No unified SBI treasury, asset allocation or exclusive settlement strategy is disclosed.",
+        "No current XRP corridor throughput or net XRP inventory is disclosed."
+      ]
+    }
+  ],
+  "source_independence": {
+    "primary_groups": [
+      "Circle corporate announcements",
+      "Linux Foundation x402 Foundation",
+      "Ripple technical docs",
+      "T54 operator docs/dashboard",
+      "SBI/SBIC official material"
+    ],
+    "secondary_groups": [
+      "XRP Insights",
+      "XRPL-Utilities",
+      "Agent Economy",
+      "XRPL.to"
+    ],
+    "rule": "Same-publisher dashboard and company press release are not independent corroboration; provider values remain separate until raw on-chain reconciliation. SBI Project Trinity and SBI Ripple Asia claims are sourced to separate official SBI/Ripple company pages; no XRP edge is inferred from corporate names alone."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "outcome_ledger_status": "IMPLEMENTED_NOT_POPULATED",
+  "feature_admission": "NONE",
+  "corrections": [
+    {
+      "correction": "Removed unsupported SBI_Ripple_Asia -> XRPL tokenized-deposit POC edge.",
+      "reason": "No matching source ID or primary evidence was found for that exact edge; the official SBI/Ripple profiles establish ownership and fintech services, not direct XRP custody/use.",
+      "replacement": "SBI Group -> SBI Ripple Asia 60% voting rights; SBI Ripple Asia -> RippleNet/FinTech services with no direct XRP use admitted."
+    },
+    {
+      "correction": "Added Project Trinity as a separate SBI-affiliated DvP proof-of-concept using an SMBC-issued trust-beneficiary stablecoin.",
+      "reason": "Official SBI Holdings announcement identifies the settlement asset and technology providers; it does not identify XRP, RLUSD or USDC."
+    }
+  ]
+}

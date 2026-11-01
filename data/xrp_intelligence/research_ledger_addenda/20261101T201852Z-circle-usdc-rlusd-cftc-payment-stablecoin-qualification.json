@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "id": "circle-usdc-rlusd-cftc-criteria-20261101T201852Z",
+  "captured_at_utc": "2026-11-01T20:18:52Z",
+  "sources": [
+    {
+      "id": "cftc-26-05",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "publisher": "CFTC",
+      "date": "2026-02-06"
+    },
+    {
+      "id": "circle-reserves",
+      "url": "https://www.circle.com/transparency",
+      "publisher": "Circle",
+      "date": "2026-10-29"
+    },
+    {
+      "id": "nydfs-entities",
+      "url": "https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses",
+      "publisher": "NYDFS"
+    },
+    {
+      "id": "rlusd-transparency",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "publisher": "Ripple",
+      "date": "2026-10-29"
+    },
+    {
+      "id": "rlusd-august-attestation",
+      "url": "https://cdn.sanity.io/files/ior4a5y3/production/4981331c98a2bb203c0c9ab2584e8b2a0da80938.pdf/RLUSD%20Attestation%20Report%20(Aug)_Final_Signed.pdf",
+      "publisher": "Standard Custody & Trust Company",
+      "date": "2026-09-29"
+    },
+    {
+      "id": "ripple-national-trust-bank",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "publisher": "Ripple",
+      "date": "2026-10-26"
+    },
+    {
+      "id": "bny-ripple",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "publisher": "Ripple",
+      "date": "2026-10-27"
+    },
+    {
+      "id": "standard-chartered-lmax",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "publisher": "Ripple",
+      "date": "2026-10-12"
+    },
+    {
+      "id": "bitnomial-schedule",
+      "url": "https://bitnomial.com/clearinghouse/",
+      "publisher": "Bitnomial",
+      "date": "2026-10-02"
+    }
+  ],
+  "confirmed": [
+    "CFTC Letter 26-05 defines a pre-GENIUS payment stablecoin using issuer status, permitted reserve assets and monthly attestation criteria. It is conditional staff no-action relief, not a rule or token-specific approval.",
+    "Circle Internet Financial LLC is listed by NYDFS as holding virtual-currency and money-transmitter licenses; Circle separately has a NY limited-purpose trust company.",
+    "Circle reports USDC circulation of $70.0B and reserves of $71.4B on 2026-10-29. Its public reserve categories include bank deposits, overnight reverse Treasury repo and short-dated U.S. Treasuries; it reports weekly reserve disclosures and monthly Big Four assurance.",
+    "Standard Custody & Trust Company LLC is the current RLUSD issuer and a NYDFS limited-purpose trust company. The accessible August 2026 attestation reports 2.326B outstanding units and $2.446B reserves at August 31.",
+    "The August RLUSD reserve report lists Treasury bills ($1.557B), government money-market funds ($467.6M) and cash deposits ($421.6M).",
+    "Ripple reports RLUSD circulation of $2.627B and reserve funds of $2.7586B on October 29, but the accessible signed report found in this run covers August, not October.",
+    "Ripple National Trust Bank received final OCC approval on October 26 for reserve-management, collateral-trustee and fiduciary-custody activities. Standard Custody remains the RLUSD issuer.",
+    "BNY supports XRP and RLUSD custody and is RLUSD's primary reserve custodian. Direct mint/redeem through BNY and tokenized trade-finance initiatives are future plans.",
+    "Standard Chartered custody of RLUSD on XRPL is live; the Ripple/Standard Chartered/LMAX collateral-mirroring and eligibility work remains planned and subject to documentation, testing and approvals.",
+    "Bitnomial's current accepted-collateral page lists USD, BTC, ETH and XRP, not USDC or RLUSD."
+  ],
+  "classifications": {
+    "USDC": "LIKELY_PUBLIC_MATCH_TO_PRE_GENIUS_CRITERIA; NO_CFTC_SPECIFIC_DETERMINATION_OR_FCM_USE_VERIFIED",
+    "RLUSD": "ISSUER_TYPE_CONFIRMED; GOVERNMENT_MMF_LOOK_THROUGH_AND_CURRENT_FCM_ELIGIBILITY_UNRESOLVED",
+    "Ripple_National_Trust_Bank": "APPROVED_RESERVE_MANAGER_AND_CUSTODY_ROLES; NOT_CURRENT_RLUSD_ISSUER",
+    "BNY_mint_redeem": "PLANNED_NOT_VERIFIED_LIVE",
+    "Standard_Chartered_LMAX_collateral": "PLANNED_NOT_VERIFIED_LIVE"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "USDC is the nearer-term payment-stablecoin collateral candidate because public issuer, reserve and assurance disclosures appear to align with the CFTC definition.",
+      "counter": "CFTC does not name USDC; no FCM notice or actual use found; DCO acceptance still matters for futures and cleared swaps."
+    },
+    {
+      "id": "H2",
+      "claim": "RLUSD may qualify through Standard Custody's trust-company status.",
+      "counter": "Government-MMF look-through is not yet verified against the CFTC permitted-reserve list; current October balances lack an accessible October signed attestation."
+    },
+    {
+      "id": "H3",
+      "claim": "Ripple's RNTB, BNY and Standard Chartered relationships could strengthen RLUSD institutional collateral utility.",
+      "counter": "RNTB is not the issuer; BNY mint/redeem and LMAX collateral integration remain planned."
+    },
+    {
+      "id": "H4",
+      "claim": "Stablecoin collateral may support XRP derivatives indirectly without creating XRP spot demand.",
+      "counter": "Actual FCM usage, collateral balances, conversion flows and resulting XRP inventory changes are unknown."
+    }
+  ],
+  "unknowns": [
+    "No public FCM notice of reliance or actual USDC/RLUSD customer-collateral balance found.",
+    "No actual proprietary stablecoin residual-interest balance found.",
+    "RLUSD government-MMF underlying holdings need look-through.",
+    "October RLUSD signed attestation was not accessible in this run.",
+    "No current Bitnomial USDC or RLUSD collateral listing found."
+  ],
+  "capital_flow_rules": [
+    "Customer stablecoin collateral is not automatically new capital; it can be existing inventory moved between accounts.",
+    "An FCM's own stablecoins deposited as residual interest are proprietary firm capital, not customer capital, and carry applicable capital charges.",
+    "Stablecoin circulation, reserve value, mint/burn, transfers and XRP spot purchases are separate series.",
+    "Stablecoin collateral does not imply XRP purchase unless a conversion or inventory change is independently evidenced."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

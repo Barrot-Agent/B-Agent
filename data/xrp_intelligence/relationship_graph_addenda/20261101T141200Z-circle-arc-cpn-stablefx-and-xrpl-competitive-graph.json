@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "graph_id": "circle-arc-cpn-stablefx-and-xrpl-competitive-relationship-addendum-20261101T1412Z",
+  "captured_at_utc": "2026-11-01T14:12:00Z",
+  "nodes": [
+    {
+      "id": "Circle",
+      "type": "company"
+    },
+    {
+      "id": "Arc",
+      "type": "layer_1_blockchain"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "Circle_Payments_Network",
+      "type": "payments_network"
+    },
+    {
+      "id": "Circle_StableFX",
+      "type": "cross_currency_settlement_service"
+    },
+    {
+      "id": "SBI_Group",
+      "type": "company"
+    },
+    {
+      "id": "Coinbase",
+      "type": "exchange"
+    },
+    {
+      "id": "Binance",
+      "type": "exchange"
+    },
+    {
+      "id": "Morpho",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "XRPL",
+      "type": "blockchain"
+    },
+    {
+      "id": "Ripple",
+      "type": "company"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Circle",
+      "to": "Arc",
+      "relation": "launches_and_operates_public_mainnet",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Arc",
+      "to": "USDC",
+      "relation": "native_gas_and_fee_asset",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Circle_Payments_Network",
+      "to": "Arc",
+      "relation": "native_integration",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Circle_StableFX",
+      "to": "Arc",
+      "relation": "24_7_cross_currency_settlement",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "Arc",
+      "relation": "founding_validator_cohort_member; phased_rollout",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Arc",
+      "relation": "digital_asset_exchange_participant",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Binance",
+      "to": "Arc",
+      "relation": "digital_asset_exchange_participant",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Morpho",
+      "to": "Arc",
+      "relation": "onchain_credit_market_integration",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Arc",
+      "to": "XRPL",
+      "relation": "potential_competing_institutional_stablecoin_settlement_rail",
+      "status": "inference; usage comparison unavailable"
+    },
+    {
+      "from": "Arc",
+      "to": "XRP",
+      "relation": "no direct token integration identified in reviewed launch announcement",
+      "status": "unknown; not proof of no relationship"
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native_USDC_issuance_on_XRPL",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Ripple",
+      "to": "Circle",
+      "relation": "Ripple_Payments_intends_USDC_alongside_RLUSD",
+      "status": "confirmed_company_statement"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "ARC_AS_XRPL_COMPETITOR",
+      "claim": "Arc's USDC-native gas, StableFX and CPN may compete with XRPL/Ripple Payments for some institutional payment and FX settlement flows.",
+      "status": "plausible_inference",
+      "required_evidence": [
+        "Arc transaction and settlement volumes",
+        "XRPL stablecoin payment and DEX volumes",
+        "institutional customer routing and corridor data"
+      ]
+    },
+    {
+      "id": "ARC_AS_MULTICHAIN_COMPLEMENT",
+      "claim": "Arc may complement XRPL because Circle issues USDC natively on XRPL and Ripple has stated it intends to use USDC alongside RLUSD.",
+      "status": "plausible_inference",
+      "required_evidence": [
+        "cross-chain USDC flows",
+        "institutional routing data",
+        "actual settlement destination shares"
+      ]
+    },
+    {
+      "id": "USDC_GAS_SUBSTITUTES_XRP_GAS",
+      "claim": "USDC gas on Arc removes the need to hold a volatile native token for Arc transaction fees, but does not prove substitution for XRP outside Arc.",
+      "status": "confirmed_design_fact_with_limited_market_implication"
+    }
+  ],
+  "red_team_objections": [
+    "Do not equate announced validator or exchange participation with production usage.",
+    "Do not infer XRP demand from USDC on XRPL or Arc integrations without measured routing and volume.",
+    "Do not classify Arc as an exclusive competitor; Circle's USDC is also available on XRPL."
+  ]
+}

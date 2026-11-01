@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "revision_id": "evernorth-bitgo-wallet-migration-and-424b3-reconciliation-20261101T160541Z",
+  "captured_at_utc": "2026-11-01T16:05:41Z",
+  "sources": [
+    {
+      "id": "sec-evernorth-424b3-2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "publisher": "SEC / Evernorth Holdings Inc.",
+      "type": "PRIMARY_REGULATORY_FILING",
+      "claims": [
+        "BitGo primary custodian",
+        "100% cold storage as of prospectus date",
+        "custody accounts and controls",
+        "yield/DeFi strategy commencement statements",
+        "Cantor equity facility terms and inconsistent summary/cover proceeds values"
+      ],
+      "accessed_at_utc": "2026-11-01T16:05:41Z"
+    },
+    {
+      "id": "xrp-insights-evernorth-json",
+      "url": "https://xrp-insights.com/xrp-radar/evernorth/data.json",
+      "publisher": "XRP Insights",
+      "type": "THIRD_PARTY_ONCHAIN_AGGREGATION",
+      "method_claim": "rippled JSON-RPC account_info and account_tx",
+      "claims": [
+        "13 attributed wallets",
+        "validated ledger 108047946",
+        "103129904.54985 XRP in attributed wallets",
+        "370346663.22975 XRP moved outside tracked attribution set",
+        "19 listed movements; historyComplete true"
+      ],
+      "accessed_at_utc": "2026-11-01T16:05:41Z"
+    },
+    {
+      "id": "q-eternal-evernorth-custody-reorg-2026-10-23",
+      "url": "https://q-eternal.com/blog/2026-10-23/",
+      "publisher": "Q-Eternal",
+      "type": "INDEPENDENT_PUBLIC_ONCHAIN_RESEARCH",
+      "method_claim": "XRPL account_tx, account_info and related ledger queries",
+      "claims": [
+        "16-payment custody reorganization batch",
+        "9 source accounts and 10 destination accounts",
+        "same BitGo initialization wallet created 19 accounts",
+        "2-of-3 multisignature configuration",
+        "post-transfer balances align with five disclosed tranches"
+      ],
+      "accessed_at_utc": "2026-11-01T16:05:41Z"
+    },
+    {
+      "id": "q-eternal-evernorth-additional-inflows-2026-10-29",
+      "url": "https://q-eternal.com/blog/2026-10-29/",
+      "publisher": "Q-Eternal",
+      "type": "INDEPENDENT_PUBLIC_ONCHAIN_RESEARCH",
+      "claims": [
+        "3,846,153.846152 XRP tagged transfer to cash-purchased-tranche wallet",
+        "same unlabelled sender as 5,223,608.29 XRP transfer",
+        "sender exhibits high-throughput tagged settlement pattern",
+        "no issuer filing confirms Evernorth ownership or acquisition"
+      ],
+      "accessed_at_utc": "2026-11-01T16:05:41Z"
+    },
+    {
+      "id": "bithomp-destination-account-pages",
+      "url": "https://bithomp.com/account/",
+      "publisher": "Bithomp",
+      "type": "PUBLIC_LEDGER_EXPLORER",
+      "claims": [
+        "Nine destination accounts opened in this run show activation by BitGo initialization wallet and multisig account control"
+      ],
+      "accessed_at_utc": "2026-11-01T16:05:41Z"
+    },
+    {
+      "id": "tradradar-xrp-derivatives-2026-11-01-1545z",
+      "url": "https://tradradar.io/markets/xrp",
+      "publisher": "TradRadar",
+      "type": "MARKET_DATA_PROVIDER",
+      "claims": [
+        "XRP price and derivatives snapshot at 15:45 UTC"
+      ],
+      "accessed_at_utc": "2026-11-01T16:05:41Z"
+    }
+  ],
+  "independence_assessment": "SEC is primary for company disclosures. XRP Insights and Q-Eternal are separate public research sources using XRPL ledger data; Bithomp independently corroborates account activation and multisig display for nine addresses. Shared reliance on the same public ledger means source independence is methodological, not independence of underlying facts.",
+  "unresolved": [
+    "Raw transaction metadata for every 16-payment batch member not independently decoded in this run.",
+    "Destination beneficial ownership not legally established.",
+    "The 600,000 XRP advance-funding tranche is not mapped in the ten-destination reconciliation.",
+    "The 200,137.78 XRP tracker arithmetic difference remains unresolved.",
+    "The two tagged inflows to rBKr are not proven Evernorth purchases."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

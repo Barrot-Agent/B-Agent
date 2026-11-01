@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "graph_id": "cftc-26-05-xrp-eligibility-20261101T220100Z",
+  "captured_at_utc": "2026-11-01T22:01:00Z",
+  "conditional_gates": [
+    {
+      "gate": "CFM_NOTICE_AND_COMMENCEMENT",
+      "status": "UNKNOWN"
+    },
+    {
+      "gate": "INITIAL_THREE_MONTH_RESTRICTION",
+      "status": "RULE_CONFIRMED_DATE_UNKNOWN",
+      "allowed": [
+        "payment stablecoins",
+        "BTC",
+        "ETH"
+      ]
+    },
+    {
+      "gate": "QUALIFYING_FOREIGN_CLEARING_ORGANIZATION",
+      "status": "NOT_INDEPENDENTLY_RESOLVED"
+    },
+    {
+      "gate": "FALLBACK_HAIRCUT_AND_RISK_POLICY",
+      "status": "RULE_CONFIRMED_ACTUAL_CFM_POLICY_UNKNOWN",
+      "minimum_haircut_pct": 20,
+      "requires_revised_risk_policy_before_acceptance": true
+    },
+    {
+      "gate": "DERIBIT_VENUE_HAIRCUT",
+      "status": "GENERAL_VENUE_SPECIFICATION_NOT_CFM_SPECIFIC",
+      "xrp_x_pm": "no haircut stated",
+      "xrp_x_sm_pct": 15
+    },
+    {
+      "gate": "ACTUAL_CFM_XRP_POSTING",
+      "status": "UNKNOWN"
+    }
+  ],
+  "legal_and_operational_distinction": "CFTC 26-17 provides a specific no-action path; CFM must still comply with 26-05. Deribit venue collateral support, foreign-clearing qualification, CFM account enablement and actual balances are separate facts.",
+  "actual_usage_status": "UNKNOWN_NOT_VERIFIED"
+}

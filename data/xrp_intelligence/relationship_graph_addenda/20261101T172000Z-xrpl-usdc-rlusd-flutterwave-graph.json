@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "graph_id": "xrpl-usdc-rlusd-flutterwave-collateral-graph-20261101T172000Z",
+  "captured_at_utc": "2026-11-01T17:20:00Z",
+  "nodes": [
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "xrpl",
+      "name": "XRP Ledger",
+      "type": "public_ledger"
+    },
+    {
+      "id": "circle",
+      "name": "Circle",
+      "type": "stablecoin_issuer_and_payments_company"
+    },
+    {
+      "id": "usdc",
+      "name": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple",
+      "type": "payments_and_stablecoin_company"
+    },
+    {
+      "id": "rlusd",
+      "name": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "type": "exchange_custody_and_wallet_platform"
+    },
+    {
+      "id": "binance",
+      "name": "Binance",
+      "type": "exchange_and_custody_platform"
+    },
+    {
+      "id": "mastercard",
+      "name": "Mastercard",
+      "type": "payments_network"
+    },
+    {
+      "id": "okx",
+      "name": "OKX",
+      "type": "exchange_and_margin_platform"
+    },
+    {
+      "id": "sgforge",
+      "name": "SG-FORGE",
+      "type": "regulated_euro_stablecoin_issuer"
+    },
+    {
+      "id": "eurcv",
+      "name": "EUR CoinVertible",
+      "type": "euro_stablecoin"
+    },
+    {
+      "id": "ondo",
+      "name": "Ondo Finance",
+      "type": "tokenized_treasury_issuer"
+    },
+    {
+      "id": "ousg",
+      "name": "OUSG",
+      "type": "tokenized_treasury_asset"
+    },
+    {
+      "id": "kinexys",
+      "name": "Kinexys by J.P. Morgan",
+      "type": "bank_blockchain_and_settlement_rail"
+    },
+    {
+      "id": "flutterwave",
+      "name": "Flutterwave",
+      "type": "African_payments_platform"
+    },
+    {
+      "id": "circle_ventures",
+      "name": "Circle Ventures",
+      "type": "strategic_investor"
+    },
+    {
+      "id": "aviva",
+      "name": "Aviva Investors",
+      "type": "asset_manager"
+    },
+    {
+      "id": "sbi_group",
+      "name": "SBI Group",
+      "type": "financial_conglomerate"
+    }
+  ],
+  "edges": [
+    {
+      "from": "circle",
+      "to": "usdc",
+      "relation": "issues_native_USDC_on_XRPL_without_bridging",
+      "evidence": [
+        "circle-usdc-xrpl-2025-06-12"
+      ],
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "usdc",
+      "to": "xrpl",
+      "relation": "native_supply_about_6.02M_USDC_10.8k_holders_17.6k_trustlines",
+      "evidence": [
+        "xrplwin-circle-usdc-token-2026-11-01-1600z"
+      ],
+      "status": "INDEXER_REPORTED"
+    },
+    {
+      "from": "usdc",
+      "to": "xrp",
+      "relation": "USDC_XRP_AMM_pool_about_260k_USD_TVL",
+      "evidence": [
+        "xrplwin-circle-usdc-token-2026-11-01-1600z"
+      ],
+      "status": "INDEXER_REPORTED"
+    },
+    {
+      "from": "usdc",
+      "to": "rlusd",
+      "relation": "USDC_RLUSD_AMM_pool_about_46.5k_USD_TVL",
+      "evidence": [
+        "xrplwin-circle-usdc-token-2026-11-01-1600z"
+      ],
+      "status": "INDEXER_REPORTED"
+    },
+    {
+      "from": "ripple",
+      "to": "rlusd",
+      "relation": "issues_RLUSD_on_XRPL_and_Ethereum",
+      "evidence": [
+        "xrpldashboard-rlusd-live-2026-11-01-1707z"
+      ],
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "rlusd",
+      "to": "xrpl",
+      "relation": "XRPL_supply_about_711.83M_USD_29.4_percent_of_global_RLUSD",
+      "evidence": [
+        "xrpldashboard-rlusd-live-2026-11-01-1707z",
+        "xrpldashboard-signed-snapshot-2026-11-01"
+      ],
+      "status": "DASHBOARD_REPORTED_RPC_CROSSCHECK"
+    },
+    {
+      "from": "rlusd",
+      "to": "xrp",
+      "relation": "XRP_RLUSD_AMM_pool_about_5.38M_USD_TVL",
+      "evidence": [
+        "xrpldashboard-pools-2026-11-01-1648z"
+      ],
+      "status": "OWN_NODE_INDEXER_REPORTED"
+    },
+    {
+      "from": "mastercard",
+      "to": "usdc",
+      "relation": "names_Circle_USDC_for_expanded_onchain_settlement",
+      "evidence": [
+        "mastercard-stablecoin-settlement-2026-06-03"
+      ],
+      "status": "ANNOUNCED_CAPABILITY"
+    },
+    {
+      "from": "mastercard",
+      "to": "rlusd",
+      "relation": "names_Ripple_RLUSD_for_expanded_onchain_settlement",
+      "evidence": [
+        "mastercard-stablecoin-settlement-2026-06-03"
+      ],
+      "status": "ANNOUNCED_CAPABILITY"
+    },
+    {
+      "from": "mastercard",
+      "to": "xrpl",
+      "relation": "lists_XRPL_among_supported_networks",
+      "evidence": [
+        "mastercard-stablecoin-settlement-2026-06-03"
+      ],
+      "status": "ANNOUNCED_CAPABILITY_NO_ASSET_CHAIN_MATRIX"
+    },
+    {
+      "from": "okx",
+      "to": "rlusd",
+      "relation": "spot_listing_280_plus_pairs_and_institutional_margin_collateral_in_select_markets",
+      "evidence": [
+        "okx-rlusd-2026-04-29"
+      ],
+      "status": "CONFIRMED_PRODUCT_ANNOUNCEMENT"
+    },
+    {
+      "from": "sgforge",
+      "to": "eurcv",
+      "relation": "issues_EURCV",
+      "evidence": [
+        "sgforge-eurcv-xrpl-2026-02-18"
+      ],
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "eurcv",
+      "to": "xrpl",
+      "relation": "launched_on_XRPL_with_Ripple_custody_support",
+      "evidence": [
+        "sgforge-eurcv-xrpl-2026-02-18"
+      ],
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "eurcv",
+      "to": "ripple",
+      "relation": "potential_future_Ripple_product_or_trading_collateral_use",
+      "evidence": [
+        "sgforge-eurcv-xrpl-2026-02-18"
+      ],
+      "status": "EXPLORATORY_NOT_DEPLOYED"
+    },
+    {
+      "from": "ondo",
+      "to": "ousg",
+      "relation": "issues_tokenized_Treasury_asset",
+      "evidence": [
+        "ondo-kinexys-mastercard-ripple-2026-05-06"
+      ],
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "ousg",
+      "to": "xrpl",
+      "relation": "tokenized_asset_leg_redeemed_on_XRPL_in_reported_pilot",
+      "evidence": [
+        "ondo-kinexys-mastercard-ripple-2026-05-06"
+      ],
+      "status": "PILOT_EXECUTED"
+    },
+    {
+      "from": "mastercard",
+      "to": "kinexys",
+      "relation": "MTN_triggered_fiat_instruction_routed_to_bank_settlement",
+      "evidence": [
+        "ondo-kinexys-mastercard-ripple-2026-05-06"
+      ],
+      "status": "PILOT_EXECUTED"
+    },
+    {
+      "from": "ripple",
+      "to": "flutterwave",
+      "relation": "strategic_investment_and_announced_RLUSD_XRPL_payment_rail_integration",
+      "evidence": [
+        "flutterwave-ripple-series-e-2026-06-16"
+      ],
+      "status": "ANNOUNCED"
+    },
+    {
+      "from": "circle_ventures",
+      "to": "flutterwave",
+      "relation": "strategic_investment_and_USDC_settlement_announcement",
+      "evidence": [
+        "flutterwave-circle-usdc-2026-07-07"
+      ],
+      "status": "ANNOUNCED"
+    },
+    {
+      "from": "flutterwave",
+      "to": "usdc",
+      "relation": "current_public_API_supports_USDC_on_Solana_Ethereum_Base_Polygon",
+      "evidence": [
+        "flutterwave-stablecoin-api-docs-v4"
+      ],
+      "status": "DOCUMENTED"
+    },
+    {
+      "from": "flutterwave",
+      "to": "rlusd",
+      "relation": "current_public_API_supports_RLUSD_on_Ethereum_only",
+      "evidence": [
+        "flutterwave-stablecoin-api-docs-v4"
+      ],
+      "status": "DOCUMENTED"
+    },
+    {
+      "from": "flutterwave",
+      "to": "xrpl",
+      "relation": "XRPL_absent_from_current_public_stablecoin_API_network_matrix",
+      "evidence": [
+        "flutterwave-stablecoin-api-docs-v4"
+      ],
+      "status": "DISCONFIRMING_EVIDENCE_TO_PUBLIC_PRODUCTION_SUPPORT"
+    },
+    {
+      "from": "aviva",
+      "to": "ripple",
+      "relation": "exploratory_fund_tokenization_partnership_on_XRPL",
+      "evidence": [
+        "aviva-ripple-xrpl-2026-02-11"
+      ],
+      "status": "ANNOUNCED_NOT_ISSUED"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "RLUSD is currently the dominant issuer-backed stablecoin liquidity base on XRPL, while Circle USDC is natively present but materially smaller.",
+      "support": [
+        "RLUSD XRPL supply about 711.83M versus Circle USDC 6.02M",
+        "XRP/RLUSD AMM TVL about $5.38M versus USDC/XRP about $0.26M"
+      ],
+      "counter_evidence": [
+        "Provider timestamps and TVL methods differ",
+        "AMM TVL excludes order-book liquidity",
+        "USDC global distribution and cross-chain volumes are much larger than its XRPL footprint"
+      ],
+      "status": "SUPPORTED_ONCHAIN_SCALE_COMPARISON_WITH_PROVIDER_CAVEATS"
+    },
+    {
+      "id": "H2",
+      "claim": "Circle's USDC on XRPL may expand dollar settlement without materially increasing native XRP demand.",
+      "support": [
+        "Native USDC and USDC/XRP pool are confirmed",
+        "Circle Mint and APIs support XRPL"
+      ],
+      "counter_evidence": [
+        "Current supply and pool depth are small relative to RLUSD",
+        "No matched USDC payment-to-XRP conversion series"
+      ],
+      "status": "PLAUSIBLE_BUT_XRP_DEMAND_UNPROVEN"
+    },
+    {
+      "id": "H3",
+      "claim": "Ripple's RLUSD and Circle's USDC compete and complement each other across Mastercard and Flutterwave payment rails.",
+      "support": [
+        "Mastercard names both stablecoins",
+        "Both Circle Ventures and Ripple invested in Flutterwave",
+        "Flutterwave documents USDC and RLUSD on different chains"
+      ],
+      "counter_evidence": [
+        "Mastercard has not published the asset-by-chain or partner-by-chain matrix",
+        "Flutterwave's public API does not list XRPL, despite Ripple's XRPL announcement"
+      ],
+      "status": "MULTI_RAIL_RELATIONSHIP_CONFIRMED_OPERATIONAL_CHAIN_MAPPING_PARTLY_UNKNOWN"
+    },
+    {
+      "id": "H4",
+      "claim": "Native XRPL lending could create a future collateral/yield market, but it is not active yet.",
+      "support": [
+        "LendingProtocol and SingleAssetVault are in validator voting",
+        "Dashboard shows no active broker board"
+      ],
+      "counter_evidence": [
+        "Coinbase/Morpho on Base and OKX RLUSD margin products already provide collateral channels outside native XRPL lending"
+      ],
+      "status": "FUTURE_PROTOCOL_CAPABILITY_NOT_LIVE"
+    },
+    {
+      "id": "H5",
+      "claim": "Institutional tokenized-asset use of XRPL can grow without requiring XRP to be the settlement asset in every transaction.",
+      "support": [
+        "Ondo OUSG redemption asset leg on XRPL; fiat leg settled through Mastercard MTN/Kinexys",
+        "EURCV and Aviva fund tokenization initiatives"
+      ],
+      "counter_evidence": [
+        "Aviva and EURCV collateral use remain exploratory; pilot volumes are small/undisclosed"
+      ],
+      "status": "SUPPORTED_DISTINCTION_BETWEEN_LEDGER_UTILITY_AND_XRP_DEMAND"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

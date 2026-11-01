@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "id": "final-main-pr-security-and-ci-audit-20261101T214500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "main": {
+    "sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+    "protected": true,
+    "required_status_contexts": [],
+    "protection_details": "403 from branch-protection endpoint; required reviews and enforcement details remain unknown",
+    "latest_commit": {
+      "message": "Cross-analysis refresh [skip ci]",
+      "changed_files": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "date_utc": "2026-11-01T20:51:33Z"
+    },
+    "signal_artifact": {
+      "recent_24h_observations": 0,
+      "prior_24h_observations": 0,
+      "net_scores": null,
+      "entity_profile_scope": "all retained log entries; 1,208 XRP and 1,245 BTC records",
+      "warning": "generated_at is not evidence of fresh observations"
+    },
+    "active_privileged_workflows": [
+      {
+        "path": ".github/workflows/scheduler-tick.yml",
+        "permissions": [
+          "contents:write",
+          "actions:write"
+        ],
+        "risk": "queue writes and workflow dispatch; strict allowlist not verified"
+      },
+      {
+        "path": ".github/workflows/merge-queue.yml",
+        "permissions": [
+          "contents:write",
+          "pull-requests:write"
+        ],
+        "risk": "manual dispatch, dry_run false by default, max_prs zero means unlimited; no explicit designated-human approval check found in current workflow"
+      },
+      {
+        "path": ".github/workflows/cross-analysis.yml",
+        "permissions": [
+          "contents:write"
+        ],
+        "risk": "commits generated analysis artifacts to main"
+      },
+      {
+        "path": ".github/workflows/barrot-autonomous-resolver.yml",
+        "permissions": [
+          "issues:write",
+          "pull-requests:write"
+        ],
+        "risk": "can mutate issues and pull requests; latest run made no mutation"
+      }
+    ],
+    "latest_run_evidence": [
+      {
+        "run_id": 41350166981,
+        "workflow": "Scheduler Queue Audit",
+        "conclusion": "success",
+        "result": "0 entries fired; no mutation observed in this run"
+      },
+      {
+        "run_id": 41349839236,
+        "workflow": "Barrot Autonomous Resolver",
+        "conclusion": "success",
+        "result": "no mutation observed; write permissions remain"
+      },
+      {
+        "run_id": 41348985150,
+        "workflow": "Cross Analysis",
+        "conclusion": "success",
+        "result": "zero 24h and prior-24h sentiment observations"
+      }
+    ],
+    "dependency_controls": {
+      "dependabot": "weekly pip and GitHub Actions updates; five open update PR limit per ecosystem",
+      "codeowners": "* @Barrot-Agent",
+      "action_pinning": "workflow actions are tag-pinned (e.g. actions/checkout@v7, actions/setup-python@v7), not immutable commit-SHA pinned",
+      "security_alerts": "Dependabot, code-scanning and secret-scanning alert endpoints unavailable through current integration; status UNKNOWN, not zero",
+      "prior_python_audit": "three Python requirement sets scanned in earlier run; no known vulnerabilities in those sets only; Node, Docker and other manifests remain unaudited"
+    }
+  },
+  "pull_requests": [
+    {
+      "number": 1464,
+      "head_sha": "ef716eb396ea3a5f3450dbaaa2dbde43308dd7c5",
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run": 41352272665,
+      "ci_conclusion": "success",
+      "tests": "443 passed + 8 subtests",
+      "gate_run": 41352272652,
+      "gate_conclusion": "success"
+    },
+    {
+      "number": 1474,
+      "head_sha": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run": 41345160046,
+      "ci_conclusion": "success",
+      "tests": "390 passed + 8 subtests",
+      "gate_run": 41345160075,
+      "gate_conclusion": "success"
+    },
+    {
+      "number": 1475,
+      "head_sha": "8268d158449f3e96b585661ee670e515752146f6",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run": 41345671223,
+      "ci_conclusion": "success",
+      "tests": "405 passed + 8 subtests",
+      "gate_run": 41345671296,
+      "gate_conclusion": "success"
+    }
+  ],
+  "test_coverage": {
+    "ci_uses_explicit_test_file_list": true,
+    "initial_standalone_x402_test_was_not_executed": true,
+    "correction": "Moved x402 tests into the existing CI-listed tests/test_xrpl_usdc_rlusd_supply_and_coinbase_circle_economics.py and removed the unlisted standalone test file.",
+    "final_exact_head_result": "443 passed + 8 subtests",
+    "intermediate_failure": "Run 41351836497 failed because two new assertions used mismatched JSON fixture keys; corrected in successor commits and final exact-head CI passed."
+  },
+  "merge_policy": "No PR merged. No force-push, rebase, reset, clean, stash or worktree mutation performed."
+}

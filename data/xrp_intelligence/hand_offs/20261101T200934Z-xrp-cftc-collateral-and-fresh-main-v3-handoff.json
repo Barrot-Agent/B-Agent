@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-cftc-collateral-and-fresh-main-v3-handoff-20261101T200934Z",
+  "captured_at_utc": "2026-11-01T20:09:34Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "main_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "research_pr": 1464,
+  "research_branch_head_at_capture": "037cb2e4941734ea672e454942125c444d4cdcf8",
+  "new_research": {
+    "topic": "Coinbase-originated CFTC collateral framework, Bitnomial XRP collateral and Payward ownership",
+    "confirmed": [
+      "CFTC Letter 26-05 was requested by Coinbase Financial Markets, a registered FCM.",
+      "The no-action framework is conditional and includes DCO acceptance/valuation/haircuts, FCM notice, first-three-month stablecoin/BTC/ETH-only restriction, weekly reporting and risk-management requirements for other assets.",
+      "Bitnomial DCO schedule dated October 2 lists XRP at 40% haircut and $15M notional limit.",
+      "Payward completed its Bitnomial acquisition on May 1, 2026."
+    ],
+    "causal_correction": "Bitnomial announced XRP/RLUSD collateral on November 3, 2025, before Coinbase's December 8, 2025 request. Coinbase's request did not cause the original Bitnomial XRP support.",
+    "unknowns": [
+      "Coinbase FCM notice of reliance and actual XRP use.",
+      "Direct Coinbase/Bitnomial clearing relationship.",
+      "Actual XRP posted collateral and utilization.",
+      "Scope of the $15M cap.",
+      "Current RLUSD acceptance."
+    ],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "repository": {
+    "security_pr1474": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1474",
+      "head_sha": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "ci": "390 tests + 8 subtests passed",
+      "gate": "passed; merging disabled",
+      "status": "open draft unmerged",
+      "blocker": "two zero-job push-event failures for task-allocator and force-deploy-space; root cause not established"
+    },
+    "prediction_pr1475": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1475",
+      "head_sha": "01dd430afaf61adc93e473055a6647b957f112c2",
+      "ci": "403 tests + 8 subtests passed",
+      "gate": "passed; merging disabled",
+      "status": "open draft unmerged"
+    },
+    "main_risks": [
+      "Scheduler retains arbitrary existing-workflow dispatch and contents/actions write permissions.",
+      "Merge Queue remains manually dispatchable with default real merge and unlimited max_prs=0, without explicit human approval.",
+      "Cross Analysis remains a scheduled writer and updated only a timestamp with zero sentiment observations.",
+      "Autonomous Resolver retains issues/PR write permissions."
+    ],
+    "main_unchanged": true,
+    "branch_protection": "Main reports protected; details endpoint 403, required reviews/status contexts unknown."
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "next_actions": [
+    "Investigate the two zero-job workflow failures without speculative fixes.",
+    "Keep both fresh-main PRs open, draft and unmerged pending explicit approval.",
+    "Find Coinbase Financial Markets' notice of reliance and determine whether XRP was actually accepted after the three-month restriction.",
+    "Verify Bitnomial's $15M cap scope, actual collateral balances and RLUSD status.",
+    "Continue SBIC, ASK Coin, actual-capital and full Camilla/Kamilah public-upload investigations.",
+    "Populate the point-in-time feature store and resolved forecast/outcome ledger before issuing predictions."
+  ],
+  "safety": "No main changes, merges, force-pushes, manual workflow dispatches, secrets, deployments, paper-position mutations or real-money trades."
+}

@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "graph_id": "coinbase-circle-sbi-xrp-collateral-multirail-graph-20261101T163641Z",
+  "captured_at_utc": "2026-11-01T16:36:41Z",
+  "nodes": [
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "native_crypto_asset",
+      "status": "confirmed"
+    },
+    {
+      "id": "xrpl",
+      "name": "XRP Ledger",
+      "type": "public_blockchain",
+      "status": "confirmed"
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "type": "exchange_custody_and_financial_platform",
+      "status": "confirmed"
+    },
+    {
+      "id": "circle",
+      "name": "Circle Internet Group",
+      "type": "stablecoin_issuer_and_payment_network",
+      "status": "confirmed"
+    },
+    {
+      "id": "usdc",
+      "name": "USDC",
+      "type": "stablecoin",
+      "status": "confirmed"
+    },
+    {
+      "id": "morpho",
+      "name": "Morpho",
+      "type": "onchain_lending_protocol",
+      "status": "confirmed"
+    },
+    {
+      "id": "base",
+      "name": "Base",
+      "type": "blockchain_network",
+      "status": "confirmed"
+    },
+    {
+      "id": "cbxrp",
+      "name": "Coinbase Wrapped XRP / XRP collateral representation",
+      "type": "wrapped_collateral_asset",
+      "status": "product_reference_contract_mapping_pending"
+    },
+    {
+      "id": "flare",
+      "name": "Flare",
+      "type": "blockchain_and_fassets_provider",
+      "status": "confirmed"
+    },
+    {
+      "id": "fxrp",
+      "name": "FXRP",
+      "type": "wrapped_xrp_representation",
+      "status": "confirmed"
+    },
+    {
+      "id": "ethereum",
+      "name": "Ethereum",
+      "type": "blockchain_network",
+      "status": "confirmed"
+    },
+    {
+      "id": "rlusd",
+      "name": "Ripple USD",
+      "type": "stablecoin",
+      "status": "confirmed"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple",
+      "type": "payments_and_stablecoin_company",
+      "status": "confirmed"
+    },
+    {
+      "id": "sentora",
+      "name": "Sentora",
+      "type": "vault_curator",
+      "status": "confirmed"
+    },
+    {
+      "id": "sbi_group",
+      "name": "SBI Holdings / SBI Group",
+      "type": "financial_conglomerate",
+      "status": "confirmed"
+    },
+    {
+      "id": "sbi_vc_trade",
+      "name": "SBI VC Trade",
+      "type": "regulated_crypto_and_stablecoin_distributor",
+      "status": "confirmed"
+    },
+    {
+      "id": "sbi_remit",
+      "name": "SBI Remit",
+      "type": "international_remittance_provider",
+      "status": "confirmed"
+    },
+    {
+      "id": "coins_ph",
+      "name": "Coins.ph",
+      "type": "payment_and_exchange_partner",
+      "status": "confirmed"
+    },
+    {
+      "id": "nium",
+      "name": "Nium",
+      "type": "cross_border_payments_provider",
+      "status": "confirmed"
+    },
+    {
+      "id": "fasset",
+      "name": "Fasset",
+      "type": "digital_asset_and_payment_platform",
+      "status": "confirmed"
+    },
+    {
+      "id": "aci",
+      "name": "ACI Worldwide",
+      "type": "payments_orchestration_provider",
+      "status": "confirmed"
+    },
+    {
+      "id": "breb",
+      "name": "Colombia Bre-B",
+      "type": "instant_payment_rail",
+      "status": "confirmed"
+    },
+    {
+      "id": "arc",
+      "name": "Circle Arc",
+      "type": "institutional_payment_and_credit_blockchain",
+      "status": "confirmed"
+    },
+    {
+      "id": "bitgo",
+      "name": "BitGo",
+      "type": "institutional_custody_provider",
+      "status": "confirmed"
+    },
+    {
+      "id": "dtcc",
+      "name": "DTCC",
+      "type": "market_infrastructure",
+      "status": "confirmed"
+    }
+  ],
+  "edges": [
+    {
+      "from": "circle",
+      "to": "usdc",
+      "relation": "issues_through_regulated_affiliates",
+      "evidence": "Circle USDC product page and filings",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "usdc",
+      "to": "xrpl",
+      "relation": "native_issued_token_on",
+      "evidence": "Circle USDC on XRPL page; native XRPL fungible token",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "circle",
+      "to": "xrpl",
+      "relation": "supports_direct_mint_redeem_and_crosschain_swap_via_circle_mint",
+      "evidence": "Circle USDC on XRPL page",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "coinbase",
+      "to": "morpho",
+      "relation": "provides_customer_interface_for_usdc_borrowing",
+      "evidence": "Coinbase borrow page and The Block report",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "xrp",
+      "to": "morpho",
+      "relation": "eligible_collateral_in_coinbase_usdc_loan_product",
+      "evidence": "Coinbase product page and The Block report",
+      "confidence": "confirmed_product; live contract mapping pending"
+    },
+    {
+      "from": "circle",
+      "to": "coinbase",
+      "relation": "indirect_usdc_distribution_and_economics_relationship",
+      "evidence": "Existing Circle/Coinbase USDC agreement and SEC filings in prior ledger",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "coinbase",
+      "to": "arc",
+      "relation": "named_exchange_participant",
+      "evidence": "Circle Arc mainnet launch announcement",
+      "confidence": "confirmed_participant"
+    },
+    {
+      "from": "binance",
+      "to": "arc",
+      "relation": "named_exchange_participant",
+      "evidence": "Circle Arc mainnet launch announcement",
+      "confidence": "confirmed_participant"
+    },
+    {
+      "from": "circle",
+      "to": "arc",
+      "relation": "launched_and_operates_network_platform",
+      "evidence": "Circle Arc mainnet launch announcement",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "usdc",
+      "to": "arc",
+      "relation": "native_gas_and_settlement_asset",
+      "evidence": "Circle Arc mainnet launch announcement",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbi_group",
+      "to": "arc",
+      "relation": "founding_validator_cohort",
+      "evidence": "Circle Arc mainnet launch announcement",
+      "confidence": "confirmed_cohort; phased rollout"
+    },
+    {
+      "from": "bitgo",
+      "to": "arc",
+      "relation": "named_custody_provider",
+      "evidence": "Circle Arc mainnet launch announcement",
+      "confidence": "confirmed_participant"
+    },
+    {
+      "from": "morpho",
+      "to": "arc",
+      "relation": "named_credit_protocol",
+      "evidence": "Circle Arc mainnet launch announcement",
+      "confidence": "confirmed_participant"
+    },
+    {
+      "from": "flare",
+      "to": "fxrp",
+      "relation": "issues_wrapped_xrp_representation_via_fassets",
+      "evidence": "Flare FXRP collateral announcement",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "fxrp",
+      "to": "morpho",
+      "relation": "collateral_in_ethereum_rlusd_market",
+      "evidence": "Morpho market page and Flare announcement",
+      "confidence": "confirmed_market"
+    },
+    {
+      "from": "rlusd",
+      "to": "morpho",
+      "relation": "debt_asset_in_fxrp_collateral_market",
+      "evidence": "Morpho market page",
+      "confidence": "confirmed_market"
+    },
+    {
+      "from": "sentora",
+      "to": "morpho",
+      "relation": "curates_rlusd_vault_allocation",
+      "evidence": "Morpho market page and Flare announcement",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "ripple",
+      "to": "rlusd",
+      "relation": "issuer",
+      "evidence": "Ripple/SBI RLUSD announcement",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbi_group",
+      "to": "circle",
+      "relation": "strategic_usdc_mou_and_arc_validator_relationship",
+      "evidence": "Circle/SBI 2023 MOU and Circle Arc 2026 announcement",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbi_group",
+      "to": "ripple",
+      "relation": "strategic_shareholder_and_longstanding_partner",
+      "evidence": "SBI/Ripple official disclosures in prior ledger",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbi_vc_trade",
+      "to": "usdc",
+      "relation": "japan_distribution",
+      "evidence": "Circle Arc announcement says SBI VC Trade began distribution March 2025",
+      "confidence": "confirmed_company_report"
+    },
+    {
+      "from": "sbi_vc_trade",
+      "to": "rlusd",
+      "relation": "japan_distribution",
+      "evidence": "Ripple/SBI RLUSD Japan launch announcement",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbi_remit",
+      "to": "xrp",
+      "relation": "uses_xrp_as_odl_bridge_in_japan_philippines_corridor",
+      "evidence": "Ripple SBI Ripple Asia official page",
+      "confidence": "confirmed_commercialization; volume_unknown"
+    },
+    {
+      "from": "sbi_remit",
+      "to": "coins_ph",
+      "relation": "odl_remittance_corridor_partner",
+      "evidence": "Ripple SBI Ripple Asia official page",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbi_remit",
+      "to": "sbi_vc_trade",
+      "relation": "odl_corridor_partner",
+      "evidence": "Ripple SBI Ripple Asia official page",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbi_remit",
+      "to": "nium",
+      "relation": "expanded_remittance_partnership",
+      "evidence": "SBI Group June 2 2026 release",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbi_remit",
+      "to": "fasset",
+      "relation": "next_generation_remittance_mou",
+      "evidence": "SBI Group June 18 2026 release",
+      "confidence": "confirmed_mou_not_production"
+    },
+    {
+      "from": "aci",
+      "to": "circle",
+      "relation": "usdc_settlement_pilot",
+      "evidence": "Circle/ACI October 27 2026 release",
+      "confidence": "confirmed_pilot"
+    },
+    {
+      "from": "aci",
+      "to": "breb",
+      "relation": "payment_orchestration_integration_focus",
+      "evidence": "Circle/ACI October 27 2026 release",
+      "confidence": "confirmed_pilot"
+    },
+    {
+      "from": "circle",
+      "to": "xrp",
+      "relation": "native_xrp_issuer_or_custody_relationship",
+      "evidence": "No evidence in reviewed sources; Circle's direct XRPL relationship is USDC issuance, not XRP",
+      "confidence": "not_established"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "G1",
+      "statement": "SBI Group is a strategic bridge between Ripple/XRP and Circle/USDC/Arc, but operates a multi-rail strategy rather than an exclusive alliance.",
+      "classification": "SUPPORTED",
+      "disconfirming": "No evidence of exclusivity; documented Nium and Fasset relationships further diversify SBI Remit's rails."
+    },
+    {
+      "id": "G2",
+      "statement": "Circle's native USDC on XRPL can increase XRPL settlement activity without directly increasing native XRP demand.",
+      "classification": "SUPPORTED_MECHANISTICALLY",
+      "disconfirming": "Actual USDC XRPL transfer volumes and XRP-mediated order/AMM usage were not measured in this run."
+    },
+    {
+      "id": "G3",
+      "statement": "Coinbase provides an indirect Circle-to-XRP credit path by using USDC as loan asset and XRP as collateral through Morpho.",
+      "classification": "SUPPORTED_AT_PRODUCT_LEVEL",
+      "disconfirming": "Circle is not shown as lender, curator or collateral manager; Morpho contract-level parameters need verification."
+    },
+    {
+      "id": "G4",
+      "statement": "Circle Arc may compete with XRPL for institutional payment, FX and credit activity.",
+      "classification": "PLAUSIBLE",
+      "disconfirming": "Arc supports USDC on XRPL and no direct substitution evidence was found."
+    }
+  ],
+  "minority_objection": "Company announcements establish product availability and partner roles, not transaction volumes or economic impact. The Morpho market UI is not a substitute for raw contract-state reproduction. The JPY 2.5T SBI Remit metric is not XRP-specific.",
+  "forecast_status": "NOT_ISSUED"
+}

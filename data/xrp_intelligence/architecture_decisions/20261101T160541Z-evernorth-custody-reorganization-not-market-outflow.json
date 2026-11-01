@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "decision_id": "evernorth-custody-reorganization-not-market-outflow-20261101T160541Z",
+  "captured_at_utc": "2026-11-01T16:05:41Z",
+  "decision": "Classify the 370.346M XRP reported outside the 13-wallet attribution set as strongly supported BitGo custody reallocation, not verified market supply, sale or exchange deposit.",
+  "rationale": [
+    "SEC prospectus identifies BitGo as primary custodian and states all XRP initially held in BitGo custody accounts.",
+    "SEC prospectus says 100% of XRP was in cold storage as of 2026-10-30.",
+    "Q-Eternal reports the 2026-10-22 reorganization moved XRP between BitGo-initialized 2-of-3 multisig accounts.",
+    "Q-Eternal reports post-transfer balances align closely with SEC disclosed tranches.",
+    "Bithomp pages opened for nine destination accounts show BitGo initialization wallet as activator and multisig control."
+  ],
+  "limitations": [
+    "Destination beneficial ownership is not directly disclosed.",
+    "The 600,000 XRP advance-funding subscriber tranche remains unmapped in the ten-destination table.",
+    "The tracker balance plus outflow total exceeds the SEC closing figure by 200,137.78 XRP.",
+    "The tracker JSON and rendered page use different validated ledger cutoffs.",
+    "Two later tagged inflows totaling 9.07M XRP to the cash-purchased-tranche destination remain unattributed."
+  ],
+  "model_policy": {
+    "custody_reorganization_is_market_flow": false,
+    "exchange_supply_feature_admission": "PROHIBITED_UNTIL_DESTINATION_AND_MARKET_ACCESS_VERIFIED",
+    "additional_inflows_feature_admission": "PROHIBITED_UNTIL_BENEFICIAL_OWNER_AND_PURCHASE_STATUS_VERIFIED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "eloc_correction": {
+    "shares": 5218935,
+    "cover_price_usd": 14.71,
+    "cover_gross_usd": 76800000,
+    "detailed_net_usd": 74400000,
+    "summary_gross_usd": 80700000,
+    "likely_stale_reference_price_usd": 15.46,
+    "classification": "LIKELY_STALE_REFERENCE_PRICE_IN_SUMMARY; ISSUER_EXPLANATION_NOT_FOUND",
+    "draw_verified": false
+  },
+  "yield_correction": {
+    "company_reported_yield_and_defi_commencement": "FOLLOWING_CLOSING",
+    "material_deployment_expected": "NOT_BEFORE_Q4_2026",
+    "cold_storage_as_of_prospectus": "100_PERCENT",
+    "actual_xrp_deployment_or_collateral": "NOT_INDEPENDENTLY_VERIFIED"
+  }
+}

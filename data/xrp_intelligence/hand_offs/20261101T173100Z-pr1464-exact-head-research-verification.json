@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "handoff_id": "pr1464-exact-head-research-verification-20261101T173100Z",
+  "captured_at_utc": "2026-11-01T17:31:00Z",
+  "branch_head_before_this_receipt": "4204022dec7ae2f495679380a43150118f5cbe4b",
+  "metadata_handoff_commit": "38ee4672c7f9c05ecfc3df8830df3c69be47368d",
+  "exact_head_tested_before_metadata_receipt": {
+    "ci_run": 41331308119,
+    "tests": "426 passed + 8 subtests",
+    "gate_run": 41331308006,
+    "gate": "PASSED_MERGING_DISABLED"
+  },
+  "research_additions": [
+    "Coinbase Q3/Circle USDC economics/ASK/SBIC",
+    "XRPL USDC versus RLUSD supply and AMM depth",
+    "Flutterwave dual Ripple/Circle investment and current network matrix",
+    "Coinbase retail Morpho XRP collateral and Global Exchange XRP cross-collateral"
+  ],
+  "safety": "Append-only handoff. Main unchanged; PR remains draft/unmerged. No merge, force-push, manual workflow dispatch, secret access or trading."
+}

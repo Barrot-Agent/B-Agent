@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrp-market-oi-provider-coverage-etf-exchange-balances-20261101T201336Z",
+  "captured_at_utc": "2026-11-01T20:13:36Z",
+  "price_observations": [
+    {
+      "source_id": "tradradar-xrp-derivatives-20261101T1525Z",
+      "observed_at_utc": "2026-11-01T15:25:00Z",
+      "xrp_usd": 1.2511,
+      "change_24h_pct": 0.07,
+      "oi_usd": 1900000000,
+      "oi_coverage": "7 exchanges",
+      "oi_change_24h_pct": 1.63,
+      "funding_8h_pct": 0.0072,
+      "liquidations_24h_usd_min": 595040,
+      "long_liquidations_usd_min": 431040,
+      "short_liquidations_usd_min": 164000,
+      "long_short_ratio": 3.56,
+      "long_share_pct": 78.1
+    },
+    {
+      "source_id": "seandra-binance-xrp-perp-20261101T1605Z",
+      "observed_at_utc": "2026-11-01T16:05:00Z",
+      "xrp_usd": 1.25,
+      "oi_usd": 340600000,
+      "oi_scope": "Binance USDT perpetual only",
+      "oi_change_24h_pct": 2.4,
+      "funding_period_pct": 0.01,
+      "accounts_long_pct": 71,
+      "top_traders_long_by_size_pct": 71,
+      "liquidations_24h_usd_min": 329000,
+      "liquidation_bias": "mostly longs"
+    },
+    {
+      "source_id": "kodexius-xrp-perpetual-20261101T1732Z",
+      "observed_at_utc": "2026-11-01T17:32:00Z",
+      "oi_usd": 757330000,
+      "oi_scope": "7 contracts; page displays five exchange rows",
+      "funding_8h_pct": 0.009,
+      "volume_24h_usd": 475510000,
+      "oi_to_volume_ratio": 1.59,
+      "by_exchange_usd": {
+        "Binance": 372070000,
+        "Bybit": 155720000,
+        "OKX": 103290000,
+        "Hyperliquid": 97910000,
+        "HTX": 28350000
+      }
+    }
+  ],
+  "cross_provider_quality": {
+    "observed_oi_range_usd": {
+      "low": 340600000,
+      "high": 1900000000
+    },
+    "interpretation": "These values are not a synchronized common universe. TradRadar reports seven exchanges; Kodexius reports seven contracts; Seandra reports Binance USDT perpetual only. Provider and contract coverage differ. Do not average, sum, or infer a market-wide OI change.",
+    "prior_context": "Earlier same-day snapshots from Liqwall and CoinGecko were materially different again; retain each provider series independently until contract coverage and definitions are reconciled.",
+    "funding": "Reported funding is positive across these observations, but contract coverage and funding-period conventions must remain attached to each value.",
+    "positioning": "Long-account ratios are provider-specific account or trader metrics, not notional exposure or proof of a crowded aggregate position."
+  },
+  "etf": {
+    "source_id": "xrp-insights-etf-week-44-2026",
+    "period_start": "2026-10-23 close",
+    "period_end": "2026-10-30 close",
+    "net_flow_xrp": 3390000,
+    "approximate_net_flow_usd": 4030000,
+    "holdings_xrp": 1200000000,
+    "net_assets_usd": 1510000000,
+    "daily_flows_xrp": {
+      "2026-10-26": -2700000,
+      "2026-10-27": -434000,
+      "2026-10-28": 174100,
+      "2026-10-29": 6400000,
+      "2026-10-30": -49900
+    },
+    "coverage": "Six US spot funds plus BITW in holdings total; GXRP excluded from flow calculation while a historical scrape gap is being reconciled.",
+    "feature_admission": "DESCRIPTIVE_ONLY; PARTIAL_FUND_FLOW_COVERAGE"
+  },
+  "exchange_wallets": {
+    "source_id": "xrp-insights-exchange-balances-20261101",
+    "observed_at_utc": "2026-11-01T08:00:00Z",
+    "xrp": 22450000000,
+    "wallets": 701,
+    "exchanges": 24,
+    "same_wallet_change_7d_xrp": -161100000,
+    "same_wallet_change_30d_xrp": -12700000,
+    "labeled_storage": {
+      "cold_pct": 48,
+      "hot_pct": 14
+    },
+    "caveat": "Includes cold storage and unclassified attributed wallets; not tradable float. Same-wallet deltas do not prove customer withdrawals or sales."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "ALL_MARKET_OBSERVATIONS_DESCRIPTIVE_ONLY_PENDING_SYNCHRONIZED_PROVIDER_COVERAGE_AND_HISTORICAL_RECONCILIATION"
+}

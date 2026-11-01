@@ -1,0 +1,395 @@
+{
+  "schema_version": 1,
+  "graph_id": "evernorth-sbi-coinbase-circle-ripple-ousd-jpysc-ask-camilla-graph-20261101T1530Z",
+  "captured_at_utc": "2026-11-01T15:30:00Z",
+  "nodes": [
+    {
+      "id": "Evernorth",
+      "type": "public_XRP_treasury_company"
+    },
+    {
+      "id": "XRPN",
+      "type": "Nasdaq_equity"
+    },
+    {
+      "id": "BitGo",
+      "type": "qualified_digital_asset_custodian"
+    },
+    {
+      "id": "Coinbase",
+      "type": "exchange_custody_execution_and_stablecoin_distribution"
+    },
+    {
+      "id": "Kraken",
+      "type": "exchange_and_institutional_partner"
+    },
+    {
+      "id": "Ripple",
+      "type": "XRP_ecosystem_company"
+    },
+    {
+      "id": "SBI_Holdings",
+      "type": "Japanese_financial_group"
+    },
+    {
+      "id": "SBI_Shinsei_Bank",
+      "type": "Japanese_bank"
+    },
+    {
+      "id": "SBI_VC_Trade",
+      "type": "crypto_exchange_and_distributor"
+    },
+    {
+      "id": "SBI_Shinsei_Trust_Bank",
+      "type": "stablecoin_issuer"
+    },
+    {
+      "id": "JPYSC",
+      "type": "JPY_stablecoin"
+    },
+    {
+      "id": "DCJPY",
+      "type": "tokenized_deposit"
+    },
+    {
+      "id": "Circle",
+      "type": "USDC_issuer"
+    },
+    {
+      "id": "USDC",
+      "type": "USD_stablecoin"
+    },
+    {
+      "id": "RLUSD",
+      "type": "Ripple_USD_stablecoin"
+    },
+    {
+      "id": "Open_Standard",
+      "type": "stablecoin_partner_network"
+    },
+    {
+      "id": "OUSD",
+      "type": "USD_stablecoin"
+    },
+    {
+      "id": "Bridge",
+      "type": "stablecoin_issuer"
+    },
+    {
+      "id": "Stripe",
+      "type": "payments_company"
+    },
+    {
+      "id": "BlackRock",
+      "type": "asset_manager"
+    },
+    {
+      "id": "SMFG",
+      "type": "Japanese_financial_group"
+    },
+    {
+      "id": "Startale",
+      "type": "blockchain_infrastructure_company"
+    },
+    {
+      "id": "SBIC_Tokyo_Osaka_Nagoya",
+      "type": "SME_investment_consultation_companies"
+    },
+    {
+      "id": "Permission_Coin_ASK",
+      "type": "EVM_utility_token"
+    },
+    {
+      "id": "Dr_Kamilah_Camilla_Stevenson",
+      "type": "public_crypto_commentator"
+    },
+    {
+      "id": "XRPL",
+      "type": "public_ledger"
+    },
+    {
+      "id": "XRP",
+      "type": "native_digital_asset"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Evernorth",
+      "to": "XRP",
+      "relation": "company_reported_treasury_at_closing",
+      "quantity_xrp": 473276430,
+      "status": "SEC_REPORTED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "BitGo",
+      "relation": "initial_custody_of_all_XRP",
+      "status": "SEC_REPORTED; 100_PERCENT_COLD_STORAGE; 2_OF_3_MULTISIG"
+    },
+    {
+      "from": "Evernorth_old_BitGo_wallets",
+      "to": "BitGo_activated_multisig_destinations",
+      "relation": "370346663_XRP_moved_outside_tracker_attributed_set",
+      "status": "ONCHAIN_TRACKER_AND_BITHOMP_ACTIVATION_EVIDENCE; CUSTODY_REALLOCATION_STRONGLY_SUPPORTED; BENEFICIAL_OWNERSHIP_NOT_CONFIRMED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Coinbase",
+      "relation": "institutional_deployment_partner",
+      "status": "ANNOUNCED_Q4_2026; EXECUTION_NOT_VERIFIED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Kraken",
+      "relation": "institutional_deployment_partner",
+      "status": "ANNOUNCED_Q4_2026; EXECUTION_NOT_VERIFIED"
+    },
+    {
+      "from": "Evernorth",
+      "to": "Ripple",
+      "relation": "investor_and_XRP_ecosystem_partner",
+      "status": "SEC_REPORTED_AND_COMPANY_ANNOUNCED"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "Ripple",
+      "relation": "approx_9_percent_equity_stake_and_joint_ventures",
+      "status": "SBI_COMPANY_REPORTED"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "Circle",
+      "relation": "50M_USD_investment_across_SBI_Holdings_and_SBI_Shinsei",
+      "status": "COMPANY_REPORTED"
+    },
+    {
+      "from": "SBI_Shinsei_Bank",
+      "to": "SBI_VC_Trade",
+      "relation": "crypto_reward_and_distribution_channel",
+      "status": "PRIMARY_PRODUCT_ANNOUNCEMENTS"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "XRP",
+      "relation": "XRP_remittance_rewards_and_business_card_choice",
+      "status": "SOME_USE_CONFIRMED; AGGREGATE_REWARD_VOLUME_UNKNOWN"
+    },
+    {
+      "from": "SBI_Shinsei_Trust_Bank",
+      "to": "JPYSC",
+      "relation": "issues",
+      "status": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "JPYSC",
+      "relation": "initial_distribution_within_platform_accounts",
+      "status": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "DCJPY",
+      "relation": "tokenized_deposit_DVP_pilot",
+      "status": "PRIMARY_COMPANY_ANNOUNCEMENT; NOT_XRPL"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "Open_Standard",
+      "relation": "network_participation_with_Startale",
+      "status": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "OUSD",
+      "relation": "explores_JPYSC_OUSD_interoperability",
+      "status": "EXPLORATORY_POC_NOT_LIVE"
+    },
+    {
+      "from": "Open_Standard",
+      "to": "OUSD",
+      "relation": "network_for_stablecoin_distribution",
+      "status": "SECONDARY_AND_PRIMARY_NETWORK_MATERIAL"
+    },
+    {
+      "from": "Bridge",
+      "to": "OUSD",
+      "relation": "issues",
+      "status": "STRIPE_COMPANY_PRODUCT_INFORMATION"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open_Standard",
+      "relation": "founding_partner",
+      "status": "COMPANY_AND_INDUSTRY_REPORTING"
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC",
+      "relation": "distribution_and_revenue_sharing",
+      "status": "COINBASE_AND_CIRCLE_SEC_FILINGS"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "exchange_distribution",
+      "status": "COMPANY_REPORTED"
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relation": "cbXRP_reserves_and_Morpho_collateral_access",
+      "status": "COMPANY_REPORTED; PRODUCT_SCOPE_DISTINCT_FROM_SPOT_PURCHASES"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issues_and_operates",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "USDC_issued_on_XRPL",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issues_and_operates",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "BlackRock",
+      "to": "SBI_Holdings",
+      "relation": "tokenized_MMF_and_JPYSC_MOU",
+      "status": "EXPLORATORY"
+    },
+    {
+      "from": "SMFG",
+      "to": "Startale",
+      "relation": "planned_5_percent_equity_stake_in_SBI_Startale_Marketing",
+      "status": "ANNOUNCED_SUBJECT_TO_TERMS"
+    },
+    {
+      "from": "SBIC_Tokyo_Osaka_Nagoya",
+      "to": "ChatGPT",
+      "relation": "educational_seminars_for_investee_companies",
+      "status": "EVENTS_CONFIRMED; NO_OPENAI_PARTNERSHIP"
+    },
+    {
+      "from": "Permission_Coin_ASK",
+      "to": "XRP",
+      "relation": "direct_integration",
+      "status": "NOT_FOUND; NO_XRPL_CONTRACT_IN_REVIEWED_DOCUMENTATION"
+    },
+    {
+      "from": "Dr_Kamilah_Camilla_Stevenson",
+      "to": "XRP",
+      "relation": "public_commentary_and_video_content",
+      "status": "PUBLIC_CONTENT; OPINIONS_NOT_PRIMARY_MARKET_EVIDENCE"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H_EVERNORTH_CUSTODY_MIGRATION",
+      "claim": "The 370.346M XRP movement is primarily a BitGo custody-wallet migration, not a sale.",
+      "support": [
+        "SEC filing says all XRP initially held at BitGo.",
+        "Nine inspected destination accounts were activated by the same BitGo-labelled wallet with 1.2225 XRP.",
+        "The inspected destination accounts show multisig control and large XRP balances.",
+        "Transfers occurred in a coordinated window on October 22."
+      ],
+      "counter": [
+        "No Evernorth/BitGo signed statement labels each destination as Evernorth beneficial ownership.",
+        "One destination page was inaccessible.",
+        "No complete destination account_objects/transaction reconciliation was independently run in this turn."
+      ],
+      "status": "STRONGLY_SUPPORTED_INFERENCE_NOT_CONFIRMED"
+    },
+    {
+      "id": "H_EVERNORTH_YIELD_DEPLOYMENT",
+      "claim": "Evernorth may deploy XRP into yield, lending, liquidity or ecosystem strategies in Q4, affecting free float and collateral supply.",
+      "support": [
+        "SEC prospectus states active yield-generation and ecosystem strategy; BitGo may lend/pledge only when expressly directed.",
+        "Coinbase, Kraken, Ripple and BitGo are named as deployment partners."
+      ],
+      "counter": [
+        "No completed deployment or loan transaction was verified.",
+        "The company reports no operating revenue yet.",
+        "The 370M movements are more consistent with BitGo custody setup than proven lending."
+      ],
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "id": "H_EVERNORTH_FORCED_SELLING_RISK",
+      "claim": "Debt, ELOC, cash settlement or liquidity stress could eventually force XRP sales.",
+      "support": [
+        "$30M convertible notes with 4% PIK, possible 8% yield-to-put and cash settlement exposure up to approximately $120M.",
+        "The company states it may need to sell XRP if financing is unavailable or obligations cannot be met.",
+        "ELOC can create dilution and future cash financing; proceeds are not guaranteed."
+      ],
+      "counter": [
+        "No current default, forced sale or debt put was verified.",
+        "The ELOC is optional and has not been shown drawn.",
+        "BitGo custody transfers do not evidence liquidation."
+      ],
+      "status": "CONTINGENT_BALANCE_SHEET_RISK_NOT_CURRENT_SELLING"
+    },
+    {
+      "id": "H_SBI_MULTI_RAIL",
+      "claim": "SBI is building a portfolio of XRP, JPYSC, DCJPY, USDC, RLUSD and OUSD-related rails rather than choosing one settlement asset.",
+      "support": [
+        "SBI Remit XRP usage and SBI VC Trade XRP rewards/card.",
+        "JPYSC issuance and lending, DCJPY tokenized-deposit DVP, USDC/RLUSD support and OUSD interoperability exploration."
+      ],
+      "counter": [
+        "Volumes and capital flows are not disclosed for most channels.",
+        "JPYSC public-chain deployment and OUSD interoperability remain limited/exploratory."
+      ],
+      "status": "SUPPORTED_STRATEGIC_PORTFOLIO_INFERENCE"
+    },
+    {
+      "id": "H_COINBASE_DIVERSIFICATION",
+      "claim": "Coinbase is diversifying stablecoin and XRP infrastructure relationships while retaining Circle USDC economics.",
+      "support": [
+        "Circle agreement renewed; RLUSD distribution; cbXRP/Morpho; Open Standard/OUSD founding partner; Evernorth deployment partner."
+      ],
+      "counter": [
+        "USDC remains a large revenue and balance-sheet contributor; no evidence of Circle relationship termination."
+      ],
+      "status": "SUPPORTED_MULTI_ISSUER_PLATFORM_STRATEGY"
+    },
+    {
+      "id": "H_JPYSC_XRP_BRIDGE_COMPETITION",
+      "claim": "A public-chain JPYSC with OUSD interoperability could reduce some future demand for XRP as a JPY/USD bridge in selected corridors.",
+      "support": [
+        "JPYSC is backed and has issued supply; SBI explores OUSD interoperability and tokenized MMF."
+      ],
+      "counter": [
+        "JPYSC is initially platform-internal; public-chain availability and live cross-border volumes are unverified; no XRPL integration is stated."
+      ],
+      "status": "SCENARIO_ONLY"
+    },
+    {
+      "id": "H_ASK_COIN_XRP_LINK",
+      "claim": "Permission Coin ASK is the token meant by 'ASK Coin' and is linked to XRP.",
+      "support": [
+        "Permission Coin uses ticker ASK."
+      ],
+      "counter": [
+        "Reviewed contracts are on Base and Polygon; no XRPL contract or direct XRP integration found."
+      ],
+      "status": "CANDIDATE_TOKEN_IDENTIFIED_XRP_LINK_UNSUPPORTED"
+    }
+  ],
+  "red_team_objections": [
+    "Do not classify the 370.346M XRP movement as a sale or exchange deposit; BitGo activation evidence supports custody migration.",
+    "Do not treat BitGo activation alone as proof of Evernorth beneficial ownership of every destination account.",
+    "Do not call planned Q4 deployment partners' strategies executed without loan, pledge, pool or settlement transactions.",
+    "Do not treat the $76.8M ELOC maximum as cash raised or XRP purchased.",
+    "Do not equate SBI's JPY 1.6T Hyper Deposit with crypto capital or XRP demand.",
+    "Do not equate JPYSC or DCJPY with XRP or XRPL.",
+    "Do not equate Permission Coin ASK with XRP integration.",
+    "Do not claim the full Camilla/Kamilah YouTube inventory is complete."
+  ]
+}

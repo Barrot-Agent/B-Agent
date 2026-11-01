@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "decision_id": "evernorth-bitgo-custody-sbi-multirail-and-identity-decisions-20261101T1530Z",
+  "decisions": [
+    {
+      "id": "evernorth_370m",
+      "decision": "Reclassify the 370,346,663 XRP movement as OUTSIDE_TRACKER_ATTRIBUTION_WITH_BITGO_CUSTODY_MIGRATION_STRONGLY_SUPPORTED. Do not call it sold, distributed to exchanges or free float. Nine inspected destination accounts were activated by the same BitGo-labelled wallet and show multisig control; beneficial ownership remains unconfirmed."
+    },
+    {
+      "id": "evernorth_custody",
+      "decision": "Use the Oct30 SEC 424B3 as primary evidence: all XRP initially at BitGo, 100% cold storage, 2-of-3 multisig, master key disabled, shared $250M insurance estimated at 36.9% of XRP value on Oct9; pledge/lend only when expressly directed."
+    },
+    {
+      "id": "evernorth_capital",
+      "decision": "Separate $214.1M cash used for an 84.366M XRP purchase from 388.911M in-kind XRP contributions, $30M convertible notes and the optional $76.8M gross/$74.4M net ELOC. Do not treat ELOC capacity as completed funding or new XRP demand."
+    },
+    {
+      "id": "sbi_actual_capital",
+      "decision": "Treat JPYSC issuance and JGB backing as actual stablecoin capital/collateral, Hyper Deposit as bank deposits, and XRP card/reward redemptions as unknown until aggregate conversion data is disclosed."
+    },
+    {
+      "id": "sbi_multirail",
+      "decision": "Model SBI as a multi-rail ecosystem: XRP remittance/rewards, JPYSC, DCJPY, USDC/RLUSD and exploratory JPYSC/OUSD interoperability. Do not infer that all SBI activity uses XRP."
+    },
+    {
+      "id": "sbic_identity",
+      "decision": "Keep Japanese SBIC SME investment/consultation companies separate from SBI Holdings, SBI Shinsei Bank and SBI VC Trade. ChatGPT seminars are education, not an OpenAI or XRP partnership."
+    },
+    {
+      "id": "ask_coin",
+      "decision": "Permission Coin ASK is a candidate for the phrase 'ASK Coin'; no XRPL contract or direct XRP integration found. Keep exact phrase origin unresolved."
+    },
+    {
+      "id": "camilla_identity",
+      "decision": "The interview supports Dr Kamilah Stevenson using Camilla/Kamilla variants and the self-described YouTube name 'doctor Camilla Stevenson'. The channel ID is a strong candidate but not officially cross-linked; video inventory remains incomplete."
+    },
+    {
+      "id": "japan_fiea",
+      "decision": "The Japanese 2026 FIEA amendment was enacted as Law No.64 on July 23; the reviewed primary law does not name XRP in a definitive asset list. Do not claim XRP is already specifically designated."
+    },
+    {
+      "id": "derivatives",
+      "decision": "CoinGlass, CoinGecko and Liqwall open-interest observations remain separate and are quarantined from model features until venue, contract and timestamp coverage is normalized."
+    },
+    {
+      "id": "forecast",
+      "decision": "No directional XRP forecast is issued from Evernorth custody movements, SBI announcements or provider-disagreeing market data.",
+      "status": "NOT_ISSUED"
+    }
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

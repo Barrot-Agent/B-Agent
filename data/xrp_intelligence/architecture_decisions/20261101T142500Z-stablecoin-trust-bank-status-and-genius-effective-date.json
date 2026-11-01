@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "decision_id": "stablecoin-trust-bank-status-and-genius-effective-date-20261101T1425Z",
+  "decisions": [
+    {
+      "id": "charter_status",
+      "decision": "Track conditional approval, final approval, opening and operational authorization as separate states.",
+      "required_evidence": [
+        "OCC final order or corporate decision",
+        "OCC active institution list",
+        "bank opening notice",
+        "first regulated activity/product evidence"
+      ]
+    },
+    {
+      "id": "ripple_final_approval",
+      "decision": "Classify Ripple RNTB final approval as company-reported pending OCC final-order verification.",
+      "reason": [
+        "Ripple announced final approval October 26 and described reserve-management/collateral-trustee authority",
+        "OCC decisions index still displays Conditional Approval 1359 and no later final order was located",
+        "OCC index says it updates as letters are ready, so absence is not disconfirmation"
+      ]
+    },
+    {
+      "id": "circle_final_approval",
+      "decision": "Classify Circle National Trust as company-reported final approval to establish, with initial fiduciary custody and reserve management deferred to a future capability.",
+      "reason": [
+        "Circle's July 10 announcement states custody upon opening and reserve management as future capability"
+      ]
+    },
+    {
+      "id": "coinbase_conditional_approval",
+      "decision": "Classify Coinbase National Trust as OCC preliminary conditional approval only.",
+      "reason": [
+        "OCC Corporate Decision 1370 dated April 2 2026"
+      ]
+    },
+    {
+      "id": "genius_act_effective_date",
+      "decision": "Do not treat OCC GENIUS Act final rule as effective on November 1 2026; effective date is January 18 2027.",
+      "reason": [
+        "OCC Bulletin 2026-50 and News Release 2026-92"
+      ]
+    },
+    {
+      "id": "stablecoin_regulatory_applications",
+      "decision": "Track OCC permitted-payment-stablecoin issuer application opening separately; as of November 1 OCC says it is not yet accepting applications pending OMB approval.",
+      "required_evidence": [
+        "OCC application-status page change detection",
+        "OMB approval and OCC opening announcement"
+      ]
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none; regulatory statuses are event features only after point-in-time publication and operational-state verification"
+}

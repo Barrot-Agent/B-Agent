@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "addendum_id": "coinbase-cftc-bitnomial-temporal-causality-20261101T200934Z",
+  "captured_at_utc": "2026-11-01T20:09:34Z",
+  "findings": [
+    {
+      "id": "F1",
+      "classification": "CONFIRMED",
+      "statement": "CFTC Letter 26-05 expressly identifies Coinbase Financial Markets, Inc., a CFTC-registered FCM, as the requestor of the December 8, 2025 no-action request."
+    },
+    {
+      "id": "F2",
+      "classification": "CONFIRMED_CONDITIONAL_NO_ACTION",
+      "statement": "The letter allows qualifying FCMs to take account of DCO-accepted non-security digital assets under specified conditions and DCO valuation/haircuts; it is not a generally applicable rule or blanket approval."
+    },
+    {
+      "id": "F3",
+      "classification": "CONFIRMED_CONDITION",
+      "statement": "Each relying FCM must file a notice of intent and start date; for its first three months of reliance, customer collateral is limited to payment stablecoins, BTC and ETH. Weekly customer-funds asset reports run for three months beginning the following calendar month, with significant incident reporting during the initial three months."
+    },
+    {
+      "id": "F4",
+      "classification": "CONFIRMED_CONDITION",
+      "statement": "For non-BTC, non-ETH and non-payment-stablecoin assets, the FCM must submit revised risk-management policies before acceptance; DCO valuation/haircuts govern when the DCO accepts the asset, and the highest haircut applies when multiple DCOs accept it."
+    },
+    {
+      "id": "F5",
+      "classification": "CONFIRMED_VENUE_SPECIFIC",
+      "statement": "Bitnomial's October 2, 2026 DCO schedule lists XRP at a 40% haircut and $15M notional limit; BTC and ETH have lower haircuts and higher limits."
+    },
+    {
+      "id": "F6",
+      "classification": "CONFIRMED_TEMPORAL_DISCONFIRMATION",
+      "statement": "Bitnomial's XRP/RLUSD collateral announcement on November 3, 2025 predates Coinbase Financial Markets' December 8, 2025 request. The Coinbase request therefore cannot be the cause of Bitnomial's initial XRP collateral support."
+    },
+    {
+      "id": "F7",
+      "classification": "STRATEGIC_INFERENCE",
+      "statement": "Coinbase's request may broaden the operational/regulatory pathway for other FCMs to recognize DCO-approved non-security digital assets after their own initial three-month period and required filings; any XRP use remains conditional."
+    },
+    {
+      "id": "F8",
+      "classification": "UNKNOWN",
+      "statement": "No public Coinbase Financial Markets notice of reliance, actual Coinbase FCM XRP collateral balance, Coinbase/Bitnomial clearing membership or direct bilateral arrangement was established."
+    },
+    {
+      "id": "F9",
+      "classification": "UNRESOLVED",
+      "statement": "RLUSD was named in Bitnomial's November 2025 collateral announcement but is absent from the October 2026 accepted-collateral table; current acceptance is unknown."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Venue-specific XRP collateral eligibility creates a real but bounded institutional utility channel.",
+      "support": [
+        "Bitnomial DCO schedule accepts XRP.",
+        "CFTC-certified Bitnomial XRP products exist."
+      ],
+      "disconfirming": [
+        "40% haircut and $15M notional limit constrain the listed facility.",
+        "Actual posted collateral, customers and utilization are undisclosed."
+      ],
+      "status": "SUPPORTED_WITH_SCOPE_LIMITS"
+    },
+    {
+      "id": "H2",
+      "statement": "Coinbase-originated CFTC guidance may enable wider FCM acceptance of DCO-approved XRP.",
+      "support": [
+        "Coinbase Financial Markets originated the request.",
+        "Letter 26-05 references DCO-accepted assets and DCO haircuts."
+      ],
+      "disconfirming": [
+        "No Coinbase notice or actual XRP collateral use found.",
+        "Initial three-month restriction and revised-risk-policy conditions apply."
+      ],
+      "status": "CONDITIONAL_NOT_EXECUTED"
+    },
+    {
+      "id": "H3",
+      "statement": "The CFTC request primarily addresses collateral accounting and stablecoin residual interest; XRP is a conditional secondary beneficiary rather than the request's demonstrated focus.",
+      "support": [
+        "Letter covers payment stablecoins and other non-security digital assets.",
+        "First three months limited to stablecoins, BTC and ETH."
+      ],
+      "disconfirming": [
+        "The letter's scope is broader than those initial assets after conditions are met."
+      ],
+      "status": "PLAUSIBLE"
+    },
+    {
+      "id": "H4",
+      "statement": "Coinbase directly enabled Bitnomial's original XRP collateral listing.",
+      "support": [],
+      "disconfirming": [
+        "Bitnomial announced XRP collateral on 2025-11-03, before Coinbase's 2025-12-08 request."
+      ],
+      "status": "DISCONFIRMED_BY_TEMPORAL_ORDER"
+    }
+  ],
+  "model_policy": {
+    "cftc_26_05": "POLICY_EVENT_FEATURE_ONLY; NOT_A_UNIVERSAL_APPROVAL",
+    "bitnomial_xrp_schedule": "VENUE_SPECIFIC_ELIGIBILITY_FEATURE; NOT_ACTUAL_USAGE",
+    "coinbase_fcm_xrp_use": "UNKNOWN; DO_NOT_IMPUTE",
+    "actual_collateral_balances": "MISSING; REQUIRE_VERIFIABLE_CUSTOMER_OR_AGGREGATE_DISCLOSURE",
+    "rlusd_bitnomial_current_status": "UNRESOLVED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_actions": [
+    "Search for Coinbase Financial Markets' notice of reliance and date under Letter 26-05.",
+    "Determine the scope of Bitnomial's $15M XRP notional limit and whether it is a per-customer, aggregate or product-level cap.",
+    "Verify current RLUSD collateral eligibility from the latest rulebook/schedule or written clearinghouse confirmation.",
+    "Seek actual aggregate XRP collateral balances or usage disclosures; do not infer from eligibility.",
+    "Measure any later adoption with point-in-time observations before treating the event as predictive."
+  ]
+}

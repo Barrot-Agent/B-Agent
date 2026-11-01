@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "graph_id": "deribit-xrp-cross-collateral-column-correction-20261101T220500Z",
+  "captured_at_utc": "2026-11-01T22:05:00Z",
+  "corrected_edge": {
+    "from": "XRP",
+    "to": "DERIBIT",
+    "relation": "full_cross_collateral_currency",
+    "status": "CONFIRMED_CURRENT_VENUE_SPECIFICATION",
+    "cross_collateral_currency": true,
+    "offset_currency": false,
+    "x_pm_haircut": "no haircut stated",
+    "x_sm_haircut_pct": 15,
+    "source_id": "SRC-DERIBIT-CROSS-COLLATERAL-CORRECTED-20261101T220500Z"
+  },
+  "invalidated_edge_interpretation": {
+    "relation": "full_cross_collateral_currency_and_offset_currency",
+    "status": "WITHDRAWN_MISREAD_TABLE_COLUMN"
+  },
+  "interpretation": "XRP can support margin for any Deribit derivative position when cross collateral is enabled; it is not listed as an offset currency."
+}

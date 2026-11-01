@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "x402-live-checkcash-edge-20261101T211900Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "edges": [
+    {
+      "from": "t54 XRPL Facilitator",
+      "to": "XRPL CheckCash transaction 384D9F00...E558AE",
+      "relationship": "indexed_batch_settlement",
+      "evidence_class": "OPERATOR_INDEXED_TRANSACTION_DETAIL"
+    },
+    {
+      "from": "XRPL CheckCash transaction 384D9F00...E558AE",
+      "to": "Heurist Inference Router",
+      "relationship": "merchant_paid_0.67376_RLUSD",
+      "evidence_class": "T54_INDEX_RECORD_INTENT_UNVERIFIED"
+    },
+    {
+      "from": "Claw Credit buyer r3f6bMRipu5zneH4k7ieERt4PGhXCJkVDH",
+      "to": "XRPL CheckCash transaction 384D9F00...E558AE",
+      "relationship": "buyer_field",
+      "evidence_class": "T54_INDEX_RECORD"
+    }
+  ],
+  "limits": [
+    "No direct link to the 110-wallet cohort.",
+    "The transaction's service intent is marked unverified by the hub.",
+    "Raw XRPL transaction metadata has not been independently decoded."
+  ]
+}

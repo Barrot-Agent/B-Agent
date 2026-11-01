@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "decision_id": "ripple-institutional-stack-and-macro-feature-gating-20261101T1430Z",
+  "decisions": [
+    {
+      "id": "ripple_volume_attribution",
+      "decision": "Keep Ripple's $16T 2025 transaction figure and $900M annualized revenue run rate as company-reported ecosystem metrics, not XRP-specific activity.",
+      "required_verification": [
+        "product-level XRP payment volumes",
+        "RLUSD settlement and redemption volumes",
+        "Ripple Payments corridor-level asset mix"
+      ]
+    },
+    {
+      "id": "prime_collateral",
+      "decision": "Classify RLUSD as a company-reported stablecoin facilitating onchain repo markets; do not label XRP as Ripple Prime collateral without a source.",
+      "required_verification": [
+        "Ripple Prime collateral schedules",
+        "haircuts, financing balances, repo market volumes",
+        "asset-level collateral composition"
+      ]
+    },
+    {
+      "id": "xrpl_tokenized_assets",
+      "decision": "Treat BNY/C2FO supplier finance and Ripple Treasury tokenized money-market funds as XRPL institutional adoption signals, not proof of XRP demand.",
+      "required_verification": [
+        "token contract and issuer",
+        "asset denomination",
+        "actual balances and transfer history",
+        "XRP bridge/fee use"
+      ]
+    },
+    {
+      "id": "macro_rate_channel",
+      "decision": "Include policy rate, SOFR and Treasury curve as candidate exogenous features, but do not infer a directional XRP signal from one observation.",
+      "required_verification": [
+        "daily point-in-time series",
+        "real yields, DXY, credit spreads, global liquidity",
+        "walk-forward feature importance and stability"
+      ]
+    },
+    {
+      "id": "forecast",
+      "decision": "Do not issue an XRP probability from the new corporate and macro announcements.",
+      "reason": "no calibrated model or synchronized point-in-time feature history"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none"
+}

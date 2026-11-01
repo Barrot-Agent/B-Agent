@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "map_id": "nine-platform-capability-auth-permission-map-20261101T181734Z",
+  "captured_at_utc": "2026-11-01T18:17:34Z",
+  "status": "DESIGNED_NOT_CONNECTED",
+  "verified_live_external_platforms": [],
+  "verified_in_this_runtime": [
+    "ChatGPT session",
+    "GitHub repository connector"
+  ],
+  "note": "GitHub is an execution connector, not one of the nine target AI platforms. No external model API handoff was tested in this run.",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "status": "ACTIVE_CURRENT_SESSION_NOT_EXTERNAL_API_ADAPTER",
+      "capabilities": [
+        "evidence synthesis",
+        "research orchestration",
+        "model specification",
+        "GitHub connector use"
+      ],
+      "authentication": "current ChatGPT session and permitted tools",
+      "permissions": "public web reads and repository operations permitted by connected GitHub tool; no secret access",
+      "data_flow": "public sources and repository evidence into structured ledger",
+      "task_assignment": "lead evidence synthesis and maintain forecast/handoff schema",
+      "fallback": "local deterministic analysis"
+    },
+    {
+      "name": "Claude",
+      "status": "NOT_CONNECTED",
+      "capabilities": [
+        "independent red-team",
+        "causal-hypothesis challenge",
+        "long-document review"
+      ],
+      "authentication": "scoped API credential in protected secret store when authorized",
+      "permissions": "read-only evidence bundle; no repository write or trading authority",
+      "data_flow": "hashed source bundle in, structured objections out",
+      "task_assignment": "independent counter-hypothesis and reasoning audit",
+      "fallback": "local adversarial checklist"
+    },
+    {
+      "name": "Grok",
+      "status": "NOT_CONNECTED",
+      "capabilities": [
+        "public discussion monitoring",
+        "sentiment and narrative change detection"
+      ],
+      "authentication": "scoped API credential when authorized",
+      "permissions": "public content only; no private-account or deceptive access",
+      "data_flow": "public discussion URLs and timestamps in, claim-labelled observations out",
+      "task_assignment": "public narrative and event-discovery stream",
+      "fallback": "public web search and source registry"
+    },
+    {
+      "name": "Gemini",
+      "status": "NOT_CONNECTED",
+      "capabilities": [
+        "filing extraction",
+        "multimodal document review",
+        "large-context cross-check"
+      ],
+      "authentication": "scoped API/OAuth when authorized",
+      "permissions": "read-only document package; no personal-account access",
+      "data_flow": "public filings and PDFs in, extracted facts with page/line provenance out",
+      "task_assignment": "independent SEC filing and document extraction",
+      "fallback": "local PDF/text extraction"
+    },
+    {
+      "name": "Copilot",
+      "status": "NOT_CONNECTED",
+      "capabilities": [
+        "repository-native code review",
+        "workflow and dependency review"
+      ],
+      "authentication": "GitHub app or organization grant, if explicitly authorized",
+      "permissions": "read-only repository by default; PR comment/write only after approval; no main write",
+      "data_flow": "selected diff and tests in, review findings out",
+      "task_assignment": "independent CI/workflow/security review",
+      "fallback": "GitHub Actions and local static analysis"
+    },
+    {
+      "name": "Codex",
+      "status": "NOT_CONNECTED",
+      "capabilities": [
+        "isolated code implementation",
+        "test generation",
+        "branch-only repair"
+      ],
+      "authentication": "scoped GitHub app/session when authorized",
+      "permissions": "branch and PR scope only; no force-push, merge, deployment or secret access",
+      "data_flow": "issue and source context in, patch/test evidence out",
+      "task_assignment": "minimal deterministic fixes and regression tests",
+      "fallback": "local scripts and existing CI"
+    },
+    {
+      "name": "Hugging Face",
+      "status": "NOT_CONNECTED",
+      "capabilities": [
+        "model and dataset registry",
+        "inference endpoints",
+        "model evaluation"
+      ],
+      "authentication": "least-privilege scoped token when authorized",
+      "permissions": "read model/dataset by default; no model upload or deployment",
+      "data_flow": "public feature datasets in, model metadata and evaluation output out",
+      "task_assignment": "candidate model comparison and reproducibility",
+      "fallback": "local baseline models"
+    },
+    {
+      "name": "Kaggle",
+      "status": "NOT_CONNECTED",
+      "capabilities": [
+        "reproducible notebooks",
+        "public dataset discovery",
+        "benchmarking"
+      ],
+      "authentication": "scoped Kaggle API token when authorized",
+      "permissions": "read public datasets; notebook publication only with approval",
+      "data_flow": "versioned feature dataset in, reproducible notebook results out",
+      "task_assignment": "independent benchmark replication",
+      "fallback": "local Python/DuckDB"
+    },
+    {
+      "name": "Databricks",
+      "status": "NOT_CONNECTED",
+      "capabilities": [
+        "feature store",
+        "scheduled ingestion",
+        "MLflow tracking",
+        "distributed backtesting"
+      ],
+      "authentication": "workspace OAuth/service principal when authorized",
+      "permissions": "read-only data access and explicitly scoped job-run; no secret reads or production deployment",
+      "data_flow": "timestamped source snapshots in, versioned feature/model metrics out",
+      "task_assignment": "historical feature store and walk-forward evaluation",
+      "fallback": "local SQLite/DuckDB"
+    }
+  ],
+  "least_privilege_defaults": [
+    "No provider secret in repository or prompt artifacts.",
+    "No agent can merge, force-push, deploy, trade or mutate production data.",
+    "Read-only access first; scoped branch/PR or job permission only after explicit approval.",
+    "Public and authorized data only; no private account scraping or deceptive access."
+  ],
+  "independent_deliberation_protocol": [
+    "Assign separate research questions and source sets.",
+    "Require source URL, publication time, capture time and raw hash.",
+    "Separate confirmed fact, sourced claim, inference, speculation and unknown.",
+    "Record each model's objections and counterevidence.",
+    "Resolve by source quality, independent corroboration and reproducibility, not vote count.",
+    "Keep minority objections in the ledger.",
+    "Require independent red-team review before forecast admission."
+  ],
+  "verified_handoffs_this_run": 0
+}

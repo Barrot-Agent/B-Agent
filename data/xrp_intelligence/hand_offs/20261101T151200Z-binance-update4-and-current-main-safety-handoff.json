@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "handoff_id": "binance-update4-and-current-main-safety-handoff-20261101T1512Z",
+  "captured_at_utc": "2026-11-01T15:12:00Z",
+  "research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T151200Z-binance-recovery-update4-and-xrp-withdrawal-phase1.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T151200Z-binance-update4-xrp-phase1-and-market-observation.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T151200Z-binance-update4-xrp-phase1-and-native-asset-custody-graph.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T151200Z-binance-update4-xrp-withdrawal-and-market-feature-quarantine.json",
+  "repository_audit": "data/repository_audits/20261101T151200Z-current-main-workflow-prediction-and-dependency-audit.json",
+  "key_findings": [
+    "Binance Recovery Update #4 supersedes Update #3's aggregate replenishment figure: company reports approximately 95% covered, up from 90%.",
+    "XRP is explicitly included in Phase 1 withdrawals on the XRP network, scheduled for 06:00-09:00 UTC on November 1; actual successful XRP withdrawal remains unverified.",
+    "Binance says XRP and RLUSD are among ten assets 100% backed; remaining 5% is outside the top ten and lower liquidity, so this does not evidence continuing XRP-specific purchases.",
+    "Bitquery traces 233.46M XRP from five Binance hot wallets to a newly created XRPL account. The account has no shared address with the other chain accounts; FBI attribution is to the overall theft, not this XRPL account directly.",
+    "CoinGecko's 15:07 UTC page observation shows $1.25 XRP, $79.314B market cap, $702.21M 24h volume, $3.529B open interest, +0.0084% 8h funding and 13.2x perpetual-to-spot volume; provider timestamp and coverage are not sufficiently exposed.",
+    "The currently rendered XRP Insights page is pinned to ledger 108034152 at 00:27 UTC, conflicting with an earlier handoff's 108036051 at 02:31 UTC. Raw XRPL reconciliation is required.",
+    "Current main still contains active scheduled/manual writers and an unapproved merge-queue capability; PR #1465 proposes quarantine but is based two commits behind current main.",
+    "Main's legacy signal evaluator reports 45.5% accuracy from 1,697 variable-horizon mutable checks; this is not valid predictive skill. Fresh-main successor PR #1466 now proposes a fixed-horizon append-only forecast/outcome ledger and retires that metric."
+  ],
+  "next_actions": [
+    "Verify XRP network withdrawal availability using a public status record that exposes the XRP row or an independently verifiable successful withdrawal; do not initiate a test withdrawal.",
+    "Retrieve the attacker XRPL account's current validated account_objects and account_tx through an independent public XRPL endpoint; preserve current balance as unknown until then.",
+    "Reconcile the escrow page's ledger/time conflict against raw validated XRPL ledgers, both owner accounts, EscrowFinish metadata, Destination fields and subsequent EscrowCreate transactions.",
+    "Normalize CoinGecko, Liqwall, OKX and TradRadar derivatives by exchange, contract type, timestamp, quote currency and open-interest definition before feature admission.",
+    "Verify Binance's latest Proof of Reserves snapshot and its underlying XRP/RLUSD assets and liabilities.",
+    "Review PR #1465 against current main and retain the no-merge boundary; no workflow quarantine is active on main yet.",
+    "Run exact-head CI and fail-closed gate for PR #1466; inspect the fixed-horizon module and tests before considering any approval.",
+    "Resolve the SECURITY.md versus active-CI pip-audit mismatch; add a read-only dependency scan with explicit exclusions and artifact retention only after testing.",
+    "Keep the Coinbase paper-trader isolated as paper-only; it currently defaults to BTC-USD and commits simulated state to main on manual dispatch. Do not treat it as the XRP prediction engine.",
+    "Continue Coinbase/Circle/SBI/SBIC/ASK Coin/actual-capital/Camilla Stephenson identity and relationship research."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}

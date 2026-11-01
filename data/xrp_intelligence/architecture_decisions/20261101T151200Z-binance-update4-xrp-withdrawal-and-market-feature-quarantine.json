@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "decision_id": "binance-update4-xrp-withdrawal-and-market-feature-quarantine-20261101T1512Z",
+  "decisions": [
+    {
+      "id": "recovery_update4_supersedes_update3",
+      "decision": "Use Binance Recovery Update #4 as the latest company-reported aggregate recovery snapshot: approximately 95% covered versus 90% in Update #3. Preserve Update #3 as a historical revision."
+    },
+    {
+      "id": "xrp_withdrawal_phase1",
+      "decision": "Classify XRP as ANNOUNCED_IN_PHASE1_EXECUTION_NOT_INDEPENDENTLY_VERIFIED. Do not promote to VERIFIED until a reliable network-status observation or independently verifiable successful withdrawal is available."
+    },
+    {
+      "id": "xrp_replenishment",
+      "decision": "Do not infer ongoing XRP purchases from the remaining 5% procurement statement because Binance describes the remaining assets as outside the top ten and separately reports XRP 100% backed."
+    },
+    {
+      "id": "attacker_wallet",
+      "decision": "Retain the 233.46M XRP outflow as on-chain evidence; keep current balance and disposition UNKNOWN. Treat cross-chain TraderTraitor linkage as inference, not direct address attribution."
+    },
+    {
+      "id": "market_features",
+      "decision": "Keep CoinGecko open interest/funding and Liqwall/TradRadar observations in separate provider series. No open-interest feature admission until venue coverage, contract set and provider timestamps are reconciled."
+    },
+    {
+      "id": "escrow_freshness",
+      "decision": "Record the current XRP Insights page's pinned ledger 108034152 at 00:27 UTC and the earlier handoff's 108036051 at 02:31 UTC as an unresolved source-freshness conflict. Require raw XRPL RPC reconciliation."
+    },
+    {
+      "id": "forecast",
+      "decision": "Do not issue an XRP directional probability from the Binance withdrawal or recovery announcement. The event lacks verified XRP withdrawal execution, account disposition and synchronized market features.",
+      "status": "NOT_ISSUED"
+    }
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

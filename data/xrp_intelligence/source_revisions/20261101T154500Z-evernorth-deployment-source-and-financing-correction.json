@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "correction_id": "CORR-EVERNORTH-DEPLOYMENT-SOURCE-AND-FINANCING-20261101T1545Z",
+  "captured_at_utc": "2026-11-01T15:45:00Z",
+  "supersedes_or_clarifies": [
+    {
+      "prior_record": "data/xrp_intelligence/source_revisions/20261101T153000Z-evernorth-bitgo-sbi-jpysc-ousd-ask-camilla-coinglass.json#evernorth-deployment-partners-20261014",
+      "issue": "The earlier source URL pointed to a Nasdaq event page, not the deployment-partner press release.",
+      "correction": "Use the StockTitan-hosted GlobeNewswire press-release mirror: https://www.stocktitan.net/news/XRPN/evernorth-to-begin-deploying-from-473-million-xrp-treasury-with-6wfxiuqfckmg.html"
+    },
+    {
+      "prior_record": "data/xrp_intelligence/snapshots/20261101T153000Z-evernorth-bitgo-sbi-ousd-ask-camilla-and-market.json#evernorth.financing.eloc_potential_gross_usd",
+      "issue": "The prior $76.8M gross / $74.4M net ELOC estimate is not supported by the SEC prospectus cover table.",
+      "correction": "SEC 424B3 says up to approximately $80.7M aggregate gross if all 5,218,935 registered shares are sold at the assumed cover-page closing price. Net proceeds are not estimated here; actual proceeds may be zero or lower."
+    }
+  ],
+  "corrected_sources": [
+    {
+      "id": "evernorth-deployment-partners-20261014-corrected",
+      "url": "https://www.stocktitan.net/news/XRPN/evernorth-to-begin-deploying-from-473-million-xrp-treasury-with-6wfxiuqfckmg.html",
+      "publisher": "Evernorth / GlobeNewswire press release mirrored by StockTitan",
+      "published_at_utc": "2026-10-14T12:00:00Z",
+      "classification": "COMPANY_PRESS_RELEASE_MIRROR",
+      "claims": [
+        "Evernorth selected Ripple, Kraken, Coinbase and BitGo as inaugural institutional execution partners.",
+        "The company said institutional strategies would begin in Q4 2026, subject to customary closing conditions and required regulatory/corporate approvals.",
+        "The stated strategy is phased: institutional counterparties first, then XRP Ledger lending/on-chain credit only after validator activation and production proof.",
+        "CIO Hugo Jeandesboz joined from Coinbase Asset Management, where he served as co-CIO."
+      ],
+      "limitations": [
+        "This is a mirrored press release, not evidence that any Q4 deployment has executed.",
+        "Partner agreements remain subject to closing conditions and approvals."
+      ]
+    },
+    {
+      "id": "evernorth-sec-424b3-financing-correction",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "publisher": "SEC EDGAR",
+      "filed_date": "2026-10-30",
+      "classification": "PRIMARY_SEC_FILING",
+      "claims": [
+        "Pathfinder/Company had a $7.0M Ripple revolving facility, amended October 7 to a $10.0M limit; $9.7M was borrowed as of October 7.",
+        "The $9.7M draw is at the subsidiary Company/Pathfinder level, not evidence of a $9.7M new XRP purchase; the facility required repayment within five business days after closing or earlier on five business days' demand by Ripple.",
+        "The separate Evernorth Facility was $1.0M and had no borrowings as of June 30, 2026.",
+        "Evernorth reported $30.0M of 4.00% convertible senior PIK notes issued October 12, 2026.",
+        "The Cantor committed equity facility covers up to 5,218,935 shares; the prospectus estimates up to approximately $80.7M gross only if all shares are sold at the assumed cover-page price.",
+        "As of October 22, 2026, 26,094,680 Class A shares were outstanding; the prospectus lists substantial additional potential shares from warrants, notes, units, Class C conversion, incentive plan and ESPP.",
+        "As of June 30, 2026, Evernorth reported $0.1M unrestricted cash and a $696.1M working-capital deficit before the October business combination; this is pre-close context, not the current post-close balance sheet."
+      ],
+      "limitations": [
+        "The SEC filing does not establish that the $9.7M facility was still outstanding after the October 9 closing or whether it was repaid by the contractual due date.",
+        "The ELOC is discretionary and conditional; no draw or new XRP purchase from it is verified.",
+        "The Class A share count alone is not fully diluted shares or NAV per share."
+      ]
+    }
+  ]
+}

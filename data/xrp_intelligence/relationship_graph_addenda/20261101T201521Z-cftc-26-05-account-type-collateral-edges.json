@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "graph_id": "cftc-26-05-account-type-collateral-edges-20261101T201521Z",
+  "captured_at_utc": "2026-11-01T20:15:21Z",
+  "nodes": [
+    {
+      "id": "cftc_letter_26_05",
+      "name": "CFTC Staff Letter 26-05",
+      "type": "conditional_no_action_position"
+    },
+    {
+      "id": "futures_customer_accounts",
+      "name": "Futures customer accounts",
+      "type": "customer_funds_class"
+    },
+    {
+      "id": "cleared_swaps_accounts",
+      "name": "Cleared swaps customer accounts",
+      "type": "customer_funds_class"
+    },
+    {
+      "id": "account_30_7",
+      "name": "30.7 customer accounts",
+      "type": "customer_funds_class"
+    },
+    {
+      "id": "bitnomial_dco",
+      "name": "Bitnomial Clearinghouse DCO",
+      "type": "registered_DCO"
+    },
+    {
+      "id": "bitnomial_dcm",
+      "name": "Bitnomial Exchange DCM",
+      "type": "registered_DCM"
+    },
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "digital_asset"
+    }
+  ],
+  "edges": [
+    {
+      "from": "cftc_letter_26_05",
+      "to": "futures_customer_accounts",
+      "relation": "conditional_collateral_valuation_and_segregation_no_action",
+      "conditions": [
+        "DCO_acceptance_for_collateral_or_settlement",
+        "DCO_value_and_haircut",
+        "highest_haircut_if_multiple_DCOs",
+        "FCM_notice_and_initial_3_month_restriction"
+      ],
+      "classification": "CONFIRMED_CONDITIONAL"
+    },
+    {
+      "from": "cftc_letter_26_05",
+      "to": "cleared_swaps_accounts",
+      "relation": "conditional_collateral_valuation_and_segregation_no_action",
+      "conditions": [
+        "DCO_acceptance_for_collateral_or_settlement",
+        "DCO_value_and_haircut",
+        "highest_haircut_if_multiple_DCOs",
+        "FCM_notice_and_initial_3_month_restriction"
+      ],
+      "classification": "CONFIRMED_CONDITIONAL"
+    },
+    {
+      "from": "cftc_letter_26_05",
+      "to": "account_30_7",
+      "relation": "separate_eligibility_path",
+      "conditions": [
+        "DCO_or_qualifying_foreign_clearing_organization_acceptance_OR_payment_stablecoin_OR_underlying_commodity_of_CFTC_DCM_futures",
+        "FCM_notice_and_initial_3_month_restriction",
+        "risk_policy_and_haircut_conditions"
+      ],
+      "classification": "CONFIRMED_CONDITIONAL"
+    },
+    {
+      "from": "bitnomial_dco",
+      "to": "xrp",
+      "relation": "accepted_collateral_40_percent_haircut_15m_notional_limit",
+      "classification": "CONFIRMED_VENUE_SPECIFIC"
+    },
+    {
+      "from": "bitnomial_dcm",
+      "to": "xrp",
+      "relation": "underlying_commodity_of_certified_XRP_futures",
+      "classification": "CONFIRMED_PRODUCT_CERTIFICATION_NOT_CUSTOMER_COLLATERAL_USAGE"
+    }
+  ],
+  "warning": "Account-class eligibility is not proof of actual FCM acceptance, customer collateral posting, utilization or spot demand."
+}

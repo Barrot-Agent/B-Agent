@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "decision_id": "actual-capital-and-cbxrp-morpho-evidence-quarantine-20261101T1330Z",
+  "decisions": [
+    {
+      "id": "market_mapping",
+      "decision": "Treat Morpho Watch market 0xd4a... as a candidate cbXRP/USDC Base market, not a verified Coinbase retail loan book.",
+      "reason": [
+        "Coinbase confirms Morpho/Base and XRP eligibility but does not publish the exact market ID",
+        "candidate market LLTV 62.5% conflicts with Coinbase generic 86% LTV language",
+        "candidate market positions exceed Coinbase retail XRP loan cap"
+      ],
+      "required_verification": [
+        "query Morpho market config and state at one block",
+        "read oracle price and last_updated_at at the same block",
+        "enumerate all positions and liquidation events from Base logs",
+        "reconcile user positions to Coinbase interface only where public evidence permits"
+      ]
+    },
+    {
+      "id": "raw_morpho_reconstruction",
+      "decision": "Do not admit Morpho Watch aggregate collateral, borrower counts or liquidation-risk map as model features until independently reconstructed.",
+      "reason": [
+        "Morpho REST does not provide aggregate collateral totals, USD market metrics or a complete list of positions"
+      ],
+      "required_verification": [
+        "record chain ID, block number, transaction hash and log index",
+        "reconstruct total collateral and borrower position distribution",
+        "decode liquidation events and debt repaid separately from collateral seized",
+        "store oracle quote, provider, timestamp and last indexed block",
+        "cross-check totals against Morpho Watch and Coinbase cbXRP PoR"
+      ]
+    },
+    {
+      "id": "actual_capital_taxonomy",
+      "decision": "Separate net external cash, stablecoin mint/burn, spot turnover, collateral encumbrance, borrowing, custody movements, internal exchange transfers, derivatives notional and mark-to-market valuation.",
+      "reason": [
+        "USDC borrowed against cbXRP is credit, not proof of fresh XRP buying",
+        "Coinbase reserves back the wrapper but are not themselves a purchase flow",
+        "stablecoin reserve income and exchange revenue are operating economics, not XRP inflows"
+      ]
+    },
+    {
+      "id": "entity_disambiguation",
+      "decision": "Keep Tokyo SBIC distinct from SBI Holdings/SBI Group.",
+      "reason": [
+        "SBIC's official name, act, independent status and sister-company structure differ from SBI Holdings",
+        "ChatGPT course was educational training for SBIC investee companies only"
+      ]
+    },
+    {
+      "id": "prediction_policy",
+      "decision": "No directional XRP forecast; no Morpho feature admitted.",
+      "reason": [
+        "market mapping, liquidation metrics and raw onchain position distribution remain unverified"
+      ]
+    }
+  ],
+  "next_model_features": [
+    "cbXRP supply and reserve ratio",
+    "cbXRP collateral share by market",
+    "USDC borrowed and repaid",
+    "market utilization and vault concentration",
+    "position-level distance-to-liquidation",
+    "oracle staleness and price deviation",
+    "liquidation collateral seized versus debt repaid",
+    "redemption of cbXRP into native XRP",
+    "Coinbase/Circle USDC balances and reserve-income sensitivity to policy rates",
+    "RLUSD issuance, exchange distribution and collateral availability"
+  ]
+}

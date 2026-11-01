@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "main-security-signal-and-pr-state-20261101T210615Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "main": {
+    "sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+    "protected": true,
+    "required_status_contexts": [],
+    "latest_commit_message": "Cross-analysis refresh [skip ci]",
+    "latest_commit_date_utc": "2026-11-01T20:51:33Z",
+    "latest_commit_changed_files": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "branch_protection_endpoint_status": "403 Resource not accessible by integration; full review requirements remain unknown"
+  },
+  "latest_runs": [
+    {
+      "run_id": 41350166981,
+      "workflow": "Scheduler Queue Audit",
+      "conclusion": "success",
+      "finding": "0 queue entries fired; read-only audit output; this does not remove main's existing write/dispatch capabilities."
+    },
+    {
+      "run_id": 41349839236,
+      "workflow": "Barrot Autonomous Resolver",
+      "conclusion": "success",
+      "finding": "No mutation observed in this run; main workflow still has issue/PR write permissions."
+    },
+    {
+      "run_id": 41348985150,
+      "workflow": "Cross Analysis",
+      "conclusion": "success",
+      "finding": "Current main workflow still has write capability; the published sentiment profile aggregates retained XRP/BTC log entries without a rolling time window."
+    }
+  ],
+  "signal_quality": {
+    "sentiment_shift": {
+      "recent_24h_observations": 0,
+      "prior_24h_observations": 0,
+      "net_scores": null,
+      "latest_main_commit_only_advanced_generated_at": true
+    },
+    "entity_sentiment_profile": {
+      "xrp_entries": 1208,
+      "btc_entries": 1245,
+      "interpretation": "all-retained-entry aggregate, not a current 24-hour sentiment signal"
+    },
+    "risk": "A fresh generated_at timestamp must not be mistaken for fresh market observations; all-time entity sentiment must not be used as current sentiment."
+  },
+  "open_prs": [
+    {
+      "number": 1464,
+      "head_sha": "240e3b3b9618c143d7c2e13a0265cfcf4c4bc601",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41346517739,
+      "ci_conclusion": "success",
+      "tests": "431 tests + 8 subtests",
+      "gate_run": 41346517867,
+      "gate_conclusion": "success",
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9"
+    },
+    {
+      "number": 1474,
+      "head_sha": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41345160046,
+      "ci_conclusion": "success",
+      "tests": "390 tests + 8 subtests",
+      "gate_run": 41345160075,
+      "gate_conclusion": "success",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569"
+    },
+    {
+      "number": 1475,
+      "head_sha": "8268d158449f3e96b585661ee670e515752146f6",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41345671223,
+      "ci_conclusion": "success",
+      "tests": "405 tests + 8 subtests",
+      "gate_run": 41345671296,
+      "gate_conclusion": "success",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569"
+    }
+  ],
+  "security_findings": [
+    "Main scheduler-tick still has contents/actions write and workflow-dispatch capability without a strict workflow allowlist.",
+    "Main merge-queue remains manually dispatchable with write/merge capability and no explicit designated-human approval check.",
+    "Main cross-analysis still has contents write and commits generated artifacts.",
+    "Main autonomous resolver retains issue and pull-request write permissions.",
+    "PR #1474 proposes read-only quarantine and artifact-only analysis, but is not merged; its exact-head CI and fail-closed gate passed."
+  ],
+  "next_audit_actions": [
+    "Keep PRs unmerged; main branch protection review requirements remain inaccessible.",
+    "Reconcile PR #1474 and #1475 against current main without force-push or rewriting branch history.",
+    "Correct entity sentiment semantics to distinguish all-time aggregate from rolling current windows; do not treat generated_at as data freshness.",
+    "Continue prediction source-byte semantic binding and normalized OI ingestion."
+  ]
+}

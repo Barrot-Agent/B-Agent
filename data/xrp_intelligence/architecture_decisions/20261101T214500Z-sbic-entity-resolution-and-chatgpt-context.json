@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "decision_id": "sbic-entity-resolution-and-chatgpt-context-20261101T214500Z",
+  "captured_at_utc": "2026-11-01T21:45:00Z",
+  "decision": "Resolve Japan's SBIC references by legal identity, jurisdiction, corporate number, official domain, ownership and date; never infer identity from acronym similarity.",
+  "rules": [
+    "Use Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan; corporate number 9011001030621) for the current Tokyo SBIC entity.",
+    "Keep historical SBI CAPITAL Co., Ltd. from the 2007 SBI Holdings release as a separate entity with its own dated ownership record.",
+    "Treat ChatGPT/Copilot references on SBIC pages as education and training unless a separate commercial agreement or partnership source is found.",
+    "Do not create XRP, Ripple, Coinbase or Circle graph edges from acronym coincidence or a general AI training event.",
+    "Do not assume that a negative scoped search proves no indirect relationship; preserve the bounded-search limitation.",
+    "Keep video creator identity, channel identity and video authorship as separate fields; do not equate Camilla Stephenson with Kamilah Stevenson without direct evidence."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

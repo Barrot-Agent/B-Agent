@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "handoff_id": "occ-trust-bank-and-genius-act-regulatory-handoff-20261101T1425Z",
+  "captured_at_utc": "2026-11-01T14:25:00Z",
+  "research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T142500Z-occ-trust-charter-status-comparison.json",
+  "graph_addendum": "data/xrp_intelligence/relationship_graph_addenda/20261101T142500Z-occ-trust-charter-ripple-circle-coinbase-graph.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T142500Z-stablecoin-trust-bank-status-and-genius-effective-date.json",
+  "key_findings": [
+    "Ripple announced final OCC approval for Ripple National Trust Bank on October 26. Ripple says the approved plan includes managing segregated RLUSD reserves, acting as collateral trustee and providing fiduciary custody. RLUSD issuance remains with NYDFS-regulated Standard Custody & Trust Company. The trust bank is not confirmed operational.",
+    "The OCC's public decisions index still lists Ripple Conditional Approval 1359 from December 2025; no later final order was located in this pass. The index says it updates as letters are ready, so this is unresolved, not disconfirming.",
+    "Circle announced final OCC approval on July 10 to establish Circle National Trust. Initial services upon opening are fiduciary custody for Circle and affiliates; USDC reserve management is a future capability, not an initial service.",
+    "Coinbase has OCC preliminary conditional approval 1370 from April 2, 2026; not final.",
+    "The OCC final rule implementing the GENIUS Act was issued October 21 but takes effect January 18, 2027. The OCC says it is not yet accepting permitted-payment-stablecoin issuer applications pending OMB approval of application forms.",
+    "Regulatory status should be tracked as conditional, final-approved/pre-opening, operational, and permitted-payment-stablecoin issuer separately."
+  ],
+  "next_actions": [
+    "Locate and monitor any OCC final order for Ripple RNTB and Circle National Trust opening notices.",
+    "Track Coinbase National Trust conditions and any final approval.",
+    "Monitor OCC application intake for permitted payment stablecoin issuers and the January 18 2027 GENIUS Act effective date.",
+    "Compare actual custody, reserve management, collateral trustee and redemption activities only after each trust bank opens.",
+    "Keep RLUSD issuer SCTC separate from RNTB reserve/custody functions; keep Circle USDC issuer affiliates separate from Circle National Trust."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

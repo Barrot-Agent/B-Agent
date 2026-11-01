@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "graph_id": "permission-ask-coinbase-xrp-20261101T1350Z",
+  "nodes": [
+    {
+      "id": "Permission",
+      "type": "company"
+    },
+    {
+      "id": "ASK",
+      "type": "token"
+    },
+    {
+      "id": "Coinbase",
+      "type": "company"
+    },
+    {
+      "id": "Base",
+      "type": "blockchain"
+    },
+    {
+      "id": "Polygon",
+      "type": "blockchain"
+    },
+    {
+      "id": "Stargate",
+      "type": "bridge_protocol"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "XRPL",
+      "type": "blockchain"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Permission",
+      "to": "ASK",
+      "relation": "issues_and_uses",
+      "status": "confirmed_official_docs"
+    },
+    {
+      "from": "Permission",
+      "to": "Coinbase",
+      "relation": "embedded_wallet_infrastructure_partnership",
+      "status": "confirmed_by_Permission_announcement"
+    },
+    {
+      "from": "Coinbase",
+      "to": "ASK",
+      "relation": "key_management_and_transaction_authorization_for_ASK_wallet",
+      "status": "company_reported; not exchange listing or investment"
+    },
+    {
+      "from": "ASK",
+      "to": "Base",
+      "relation": "official_OFT20_contract",
+      "status": "confirmed"
+    },
+    {
+      "from": "ASK",
+      "to": "Polygon",
+      "relation": "official_OFT20_contract",
+      "status": "confirmed"
+    },
+    {
+      "from": "ASK",
+      "to": "Stargate",
+      "relation": "LayerZero_OFT_bridge_integration",
+      "status": "confirmed_by_Permission_docs"
+    }
+  ],
+  "disconfirming_or_unknown_edges": [
+    {
+      "from": "ASK",
+      "to": "XRP",
+      "status": "no direct integration identified"
+    },
+    {
+      "from": "ASK",
+      "to": "XRPL",
+      "status": "no official XRPL contract identified"
+    },
+    {
+      "from": "Coinbase",
+      "to": "ASK",
+      "relation": "capital investment or market-making",
+      "status": "not established"
+    }
+  ]
+}

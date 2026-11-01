@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "graph_id": "dtcc-circle-bitgo-xrpl-rlusd-rail-graph-20261101T162626Z",
+  "captured_at_utc": "2026-11-01T16:26:26Z",
+  "nodes": [
+    {
+      "id": "dtcc",
+      "name": "DTCC",
+      "type": "market_infrastructure",
+      "status": "confirmed"
+    },
+    {
+      "id": "dtc",
+      "name": "The Depository Trust Company",
+      "type": "central_securities_depository",
+      "status": "confirmed"
+    },
+    {
+      "id": "dts",
+      "name": "DTCC Tokenization Service",
+      "type": "tokenized_security_service",
+      "status": "launched_2026_10_28"
+    },
+    {
+      "id": "canton",
+      "name": "Canton Network",
+      "type": "blockchain_network",
+      "status": "initial_launch_network"
+    },
+    {
+      "id": "besu",
+      "name": "DTCC private Besu network",
+      "type": "blockchain_network",
+      "status": "initial_launch_network"
+    },
+    {
+      "id": "circle",
+      "name": "Circle Internet Group",
+      "type": "stablecoin_issuer_and_infrastructure",
+      "status": "confirmed"
+    },
+    {
+      "id": "bitgo",
+      "name": "BitGo Bank & Trust",
+      "type": "custody_and_digital_asset_infrastructure",
+      "status": "confirmed"
+    },
+    {
+      "id": "evernorth",
+      "name": "Evernorth Holdings Inc.",
+      "type": "public_company",
+      "status": "confirmed"
+    },
+    {
+      "id": "xrpl",
+      "name": "XRP Ledger",
+      "type": "public_blockchain",
+      "status": "not_named_in_dtcc_initial_launch"
+    },
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "native_asset",
+      "status": "not_named_in_dtcc_initial_launch"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple Labs Inc.",
+      "type": "payments_and_stablecoin_company",
+      "status": "not_named_in_dtcc_initial_launch"
+    },
+    {
+      "id": "rlusd",
+      "name": "Ripple USD",
+      "type": "stablecoin",
+      "status": "observed_on_xrpl_and_ethereum"
+    }
+  ],
+  "edges": [
+    {
+      "from": "dtcc",
+      "to": "dts",
+      "relation": "operates",
+      "evidence": "2026-10-28 DTCC launch release",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "dts",
+      "to": "canton",
+      "relation": "initial_network_integration",
+      "evidence": "2026-10-28 DTCC launch release",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "dts",
+      "to": "besu",
+      "relation": "initial_network_integration",
+      "evidence": "2026-10-28 DTCC launch release",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "dtcc",
+      "to": "circle",
+      "relation": "production_event_participant",
+      "evidence": "2026-07-15 DTCC production-event release",
+      "confidence": "confirmed_participation_exact_role_unknown"
+    },
+    {
+      "from": "dtcc",
+      "to": "bitgo",
+      "relation": "production_event_participant_and_launch_collaborator",
+      "evidence": "2026-07-15 and 2026-10-28 DTCC releases",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "evernorth",
+      "to": "bitgo",
+      "relation": "primary_XRP_custodian",
+      "evidence": "Evernorth SEC prospectus",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "xrpl",
+      "to": "rlusd",
+      "relation": "stablecoin_issued_on_chain",
+      "evidence": "Q-Eternal issuer obligation observations",
+      "confidence": "sourced_claim"
+    },
+    {
+      "from": "ripple",
+      "to": "rlusd",
+      "relation": "issuer",
+      "evidence": "Ripple issuer documentation",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "dts",
+      "to": "xrpl",
+      "relation": "initial_launch_integration",
+      "evidence": "No such integration named; launch list is Canton and Besu",
+      "confidence": "DISCONFIRMED_FOR_INITIAL_LAUNCH"
+    },
+    {
+      "from": "dtcc",
+      "to": "xrp",
+      "relation": "direct_native_asset_use",
+      "evidence": "No XRP mention in July or October official DTCC press releases",
+      "confidence": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "circle",
+      "to": "xrp",
+      "relation": "direct_native_asset_relationship_via_DTCC",
+      "evidence": "No such link established by DTCC releases",
+      "confidence": "NOT_ESTABLISHED"
+    }
+  ],
+  "counter_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "DTCC may add XRPL in 2027.",
+      "classification": "POSSIBLE_BUT_UNNAMED",
+      "disconfirming": "No XRPL/Ripple mention in Oct28 launch release; no named future network commitments."
+    },
+    {
+      "id": "H2",
+      "statement": "Circle's DTCC participation implies USDC is used in DTS.",
+      "classification": "UNVERIFIED",
+      "disconfirming": "DTCC release names Circle as July pilot participant but does not identify its instrument or role; Circle absent from Oct28 collaborator list."
+    },
+    {
+      "id": "H3",
+      "statement": "RLUSD supply moved from XRPL to Ethereum.",
+      "classification": "NOT_PROVEN",
+      "disconfirming": "Independent mint/burn and issuance can create the observed supply mix; no matching bridge transaction established."
+    }
+  ],
+  "minority_objection": "DTCC's public releases are not exhaustive technical specifications. Absence of XRP/Ripple from the releases does not prove no private discussion or future integration; it only means public evidence does not support current inclusion.",
+  "forecast_status": "NOT_ISSUED"
+}

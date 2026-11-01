@@ -79,4 +79,19 @@ jobs:
             tests/test_autonomous_real_bundle.py \
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
+            tests/test_xrp_cbxrp_morpho_reconciliation.py \
+            tests/test_cbxrp_institutional_relationship_graph.py \
+            tests/test_ask_coin_identity_candidate.py \
+            tests/test_binance_recovery_update4_and_repo_audit.py \
+            tests/test_sbi_ousd_ask_camilla_evernorth_addendum.py \
+            tests/test_evernorth_financing_correction.py \
+            tests/test_evernorth_bitgo_custody_reorganization.py \
+            tests/test_main_privileged_workflow_gap_audit.py \
+            tests/test_dtcc_circle_bitgo_rlusd_rail_addendum.py \
+            tests/test_xrp_collateral_multirail_morpho_addendum.py \
+            tests/test_xrp_market_depth_followup.py \
+            tests/test_xrpl_usdc_rlusd_supply_and_coinbase_circle_economics.py \
+            tests/test_sbi_multirail_graph_corrections.py \
+            tests/test_sbic_east_japan_identity_and_v3_subscriber_audit.py \
+            tests/test_coinbase_cftc_deribit_xrp_collateral_pathway.py \
             -v --no-cov

@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "id": "rlusd-chain-shift-and-payment-concentration-20261101T210615Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "nodes": [
+    {
+      "id": "Ripple",
+      "type": "company"
+    },
+    {
+      "id": "Standard Custody & Trust Company",
+      "type": "regulated_issuer"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "XRPL",
+      "type": "ledger"
+    },
+    {
+      "id": "Ethereum",
+      "type": "ledger"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "Bitquery",
+      "type": "analytics_provider"
+    },
+    {
+      "id": "Binance-labelled PoR wallet",
+      "type": "attributed_wallet"
+    },
+    {
+      "id": "110-wallet dust cluster",
+      "type": "behavioral_cluster"
+    },
+    {
+      "id": "three collector wallets",
+      "type": "wallet_group"
+    },
+    {
+      "id": "Cross River Bank",
+      "type": "bank"
+    },
+    {
+      "id": "Circle",
+      "type": "company"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Standard Custody & Trust Company",
+      "to": "RLUSD",
+      "relationship": "issues",
+      "evidence_class": "CONFIRMED_FROM_ISSUER_AND_PUBLIC_CHAIN_SOURCES"
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL",
+      "relationship": "native_issued_currency",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "RLUSD",
+      "to": "Ethereum",
+      "relationship": "native_issued_token",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "XRPL",
+      "to": "XRP",
+      "relationship": "transaction_fee_and_account_reserve_asset",
+      "evidence_class": "PROTOCOL_FACT"
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRP",
+      "relationship": "no_required_per_payment_bridge_conversion_established",
+      "evidence_class": "STRUCTURAL_INFERENCE"
+    },
+    {
+      "from": "Bitquery",
+      "to": "110-wallet dust cluster",
+      "relationship": "behavioral_cluster_analysis",
+      "evidence_class": "SOURCED_ANALYSIS"
+    },
+    {
+      "from": "Binance-labelled PoR wallet",
+      "to": "110-wallet dust cluster",
+      "relationship": "funded_with_RLUSD_and_XRP",
+      "evidence_class": "ONCHAIN_LABELLED_WALLET_FLOW_NOT_CORPORATE_ATTRIBUTION"
+    },
+    {
+      "from": "110-wallet dust cluster",
+      "to": "three collector wallets",
+      "relationship": "sent_99_6_percent_of_RLUSD_payment_count",
+      "evidence_class": "SOURCED_ONCHAIN_ANALYSIS"
+    },
+    {
+      "from": "three collector wallets",
+      "to": "Binance-labelled PoR wallet",
+      "relationship": "collector_sweeps_forwarded_via_tagged_deposit_account",
+      "evidence_class": "SOURCED_ONCHAIN_ANALYSIS_NOT_ACTOR_IDENTITY"
+    },
+    {
+      "from": "Cross River Bank",
+      "to": "RLUSD",
+      "relationship": "announced_core_banking_integration_on_2026_10_15",
+      "evidence_class": "OFFICIAL_ANNOUNCEMENT"
+    },
+    {
+      "from": "110-wallet dust cluster",
+      "to": "Cross River Bank announcement",
+      "relationship": "shutdown_temporally_near_announcement",
+      "evidence_class": "TEMPORAL_COINCIDENCE_ONLY"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relationship": "issuer",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "USDC",
+      "to": "XRPL",
+      "relationship": "native_issuance_and_current_small_USD_supply",
+      "evidence_class": "CONFIRMED_SOURCE_REPORTED"
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL",
+      "relationship": "current_supply_about_707_4M_USD; 30_day_decline_about_30_2_percent",
+      "evidence_class": "ONCHAIN_AGGREGATOR_CROSS_CHECKED"
+    },
+    {
+      "from": "RLUSD",
+      "to": "Ethereum",
+      "relationship": "current_supply_about_1_71B_USD; 71_percent_of_two_chain_total",
+      "evidence_class": "ONCHAIN_AGGREGATOR"
+    }
+  ],
+  "unresolved_edges": [
+    "No transaction-level reconciliation yet proves how much XRPL RLUSD was burned, redeemed, or reissued on Ethereum during the supply decline.",
+    "No Binance corporate involvement is established; only PoR-labelled wallet flows are observed.",
+    "No evidence links the Cross River announcement causally to the dust-cluster shutdown.",
+    "No proportional XRP spot-purchase relationship is established from RLUSD supply or transfer volume."
+  ]
+}

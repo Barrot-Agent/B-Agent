@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "id": "escrow-post-release-relock-and-supply-breakdown-20261101T212500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "escrow": {
+    "preferred_observation": {
+      "ledger_index": 108052148,
+      "ledger_time_utc": "2026-11-01T20:11:00Z",
+      "ripple_owned_escrow_xrp": 31100000000,
+      "objects": 99,
+      "owner_accounts": 8
+    },
+    "same_day_events": {
+      "released_xrp": 1000000000,
+      "re_escrowed_xrp": 700000000,
+      "net_out_of_escrow_xrp": 300000000,
+      "reescrow_transactions": [
+        {
+          "tx_prefix": "D1B6A4B7",
+          "time_utc": "17:38:21",
+          "xrp": 100000000
+        },
+        {
+          "tx_prefix": "71BB0841",
+          "time_utc": "17:39:51",
+          "xrp": 500000000
+        },
+        {
+          "tx_prefix": "7EB64A81",
+          "time_utc": "17:42:21",
+          "xrp": 100000000
+        }
+      ]
+    },
+    "rolling_12_releases": {
+      "released_xrp": 12000000000,
+      "re_escrowed_xrp": 8400000000,
+      "reescrow_pct": 70,
+      "net_out_xrp": 3600000000
+    },
+    "next_unlock": {
+      "time_utc": "2026-12-01T00:00:00Z",
+      "xrp": 1000000000,
+      "objects": 4
+    },
+    "schedule": {
+      "unlock_objects_left": 32,
+      "last_unlock": "2029-07-01",
+      "last_unlock_xrp": 100000000
+    },
+    "conflicting_summary": {
+      "main_radar_escrow_xrp": 30400000000,
+      "detail_page_escrow_xrp": 31100000000,
+      "difference_xrp": 700000000,
+      "status": "INTERNAL_SOURCE_INCONSISTENCY; detailed page is pinned to ledger 108052148 and includes the three 17:38–17:42 UTC EscrowCreate transactions."
+    },
+    "derived_supply": {
+      "total_xrp": 100000000000,
+      "burned_xrp": 14400000,
+      "escrow_xrp": 31100000000,
+      "circulating_not_escrowed_or_burned_xrp": 68885600000,
+      "qualification": "Derived using the dashboard's own definition; this is not free float and does not subtract Ripple operational holdings or exchange/custody concentration."
+    }
+  },
+  "market_structure": {
+    "price_usd": 1.25,
+    "price_as_of_utc": "2026-11-01T21:18:00Z",
+    "known_exchange_wallets": {
+      "total_xrp": 22450000000,
+      "exchanges": 24,
+      "wallets": 701,
+      "upbit_xrp": 6430000000,
+      "coinbase_xrp": 5850000000,
+      "binance_xrp": 2780000000,
+      "sbi_vc_trade_xrp": 60000000,
+      "regions": {
+        "south_korea_xrp": 8580000000,
+        "united_states_xrp": 8510000000,
+        "japan_xrp": 1380000000
+      },
+      "qualification": "publicly attributed wallet floor; includes cold storage and some exchange-controlled backing reserves; not tradable float"
+    },
+    "etfs": {
+      "xrp_locked": 1200000000,
+      "aum_usd": 1500000000,
+      "funds": 7,
+      "oldest_holdings_date": "2026-09-28",
+      "source": "issuer websites"
+    },
+    "defi": {
+      "xrp_locked": 418700000,
+      "tvl_usd": 524000000
+    },
+    "corporate_treasury": {
+      "evernorth_reported_xrp": 473280000,
+      "basis": "company-reported SEC filing figure"
+    },
+    "rwa": {
+      "combined_usd": 4330000000,
+      "distributed_usd": 276000000,
+      "represented_usd": 4060000000,
+      "distributed_share_pct": 6.37,
+      "represented_share_pct": 93.63,
+      "qualification": "represented amount is issuer-reported registry notional, not necessarily freely transferable investor float"
+    }
+  },
+  "forecast_status": "NOT_ISSUED",
+  "model_admission_status": "DESCRIPTIVE_SNAPSHOT_ONLY"
+}
