@@ -30,8 +30,8 @@
         "title": "cbXRP collateral contract and liquidation terms",
         "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
         "class": "PRIMARY_PRODUCT_RISK_DOCS",
-        "claim": "cbXRP contract 0xcb585250f852c6c6bf90434ab21a00f02833a4af; cited loan path describes 86% LTV and 4.38% penalty.",
-        "limitation": "Current cbXRP supply, collateral balances and utilization unknown."
+        "claim": "Coinbase documents cbXRP contract 0xcb585250f852c6c6bf90434ab21a00f02833a4af; its generic help material shows an 86% LTV/4.38% penalty path, but the specific cbXRP/USDC Morpho market interface shows 62.5% LLTV and 12.67% liquidation penalty.",
+        "limitation": "Do not apply generic 86%/4.38% help-page figures to the XRP market. Use market-specific Morpho terms; current cbXRP supply/backing and actual loan utilization require separate onchain verification."
       },
       {
         "id": "SRC-20261101T101003Z-CIRCLE-ARC",
@@ -750,7 +750,11 @@
     "aug24_morpho_borrowed_usdc": 41000000,
     "nov1_morpho_outstanding_usdc": 59190000,
     "outstanding_debt_growth_since_aug24_pct": 44.36585365853658,
-    "interpretation": "cbXRP supply and Morpho credit use expanded materially; minting/wrapping means XRP entered Coinbase custody, not necessarily that Coinbase or borrowers bought XRP in spot markets."
+    "interpretation": "cbXRP supply and Morpho credit use expanded materially; minting/wrapping means XRP entered Coinbase custody, not necessarily that Coinbase or borrowers bought XRP in spot markets.",
+    "may12_cumulative_xrp_originations_usd": 31600000,
+    "aug24_outstanding_morpho_usdc_usd": 41000000,
+    "nov1_outstanding_morpho_usdc_usd": 59190000,
+    "comparability_note": "May 12 cumulative originations ($31.6M) include repaid loans and are not comparable to Aug24/Nov1 outstanding balances. Aug24 $41M and Nov1 $59.19M are point-in-time outstanding market debt estimates."
   },
   "collateralization": {
     "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
@@ -781,6 +785,10 @@
       "top_three": 79.25,
       "top_five": 86.25
     },
-    "collateral_value_conflict": "Morpho UI value-secured $240.85M conflicts with Coinbase PoR total supply/value; DefiLlama total-supplied definition also differs. Do not infer total collateral quantity until reconciled."
+    "collateral_value_conflict": "Morpho UI value-secured $240.85M conflicts with Coinbase PoR total supply/value; DefiLlama total-supplied definition also differs. Do not infer total collateral quantity until reconciled.",
+    "snapshot_retrieved_at_utc": "2026-11-01T10:26:35Z",
+    "last_activity_displayed_utc": "2026-11-01T06:59:45Z",
+    "exact_page_refresh_time_exposed": false,
+    "caveat": "Morpho market interface metrics are asynchronous; total liquidity, market size, supplier share denominators and value-secured field do not fully reconcile. Use only LLTV, displayed utilization, outstanding debt and explicitly timestamped transaction rows until raw API/contract reconciliation."
   }
 }
