@@ -52,13 +52,14 @@ def build_summary(previous: dict[str, Any]) -> dict[str, Any]:
         "correct_count": 0,
         "accuracy_pct": None,
         "reason": (
-            "A fixed-horizon, timestamped forecast/outcome ledger with leakage "
-            "controls and immutable outcomes is required before forecast skill "
-            "can be measured. No live market data was queried."
+            "The fixed-horizon forecast/outcome ledger is implemented, but no "
+            "verified XRP forecasts and resolved outcomes are yet present. No "
+            "predictive-skill estimate is available. No live market data was queried."
         ),
         "legacy_metric": _preserve_legacy_metric(previous),
         "evaluation_protocol": {
-            "status": "NOT_IMPLEMENTED",
+            "status": "IMPLEMENTED_NOT_POPULATED",
+            "implementation": "barrot_agent.research.fixed_horizon.ForecastLedger",
             "target": "XRP/USD return and direction",
             "horizon_seconds": None,
             "data_cutoff_utc": None,

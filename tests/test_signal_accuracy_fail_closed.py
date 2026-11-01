@@ -25,7 +25,9 @@ def test_legacy_accuracy_is_not_presented_as_predictive_skill():
     assert summary["accuracy_pct"] is None
     assert summary["legacy_metric"]["status"] == "NOT_COMPARABLE"
     assert summary["legacy_metric"]["accuracy_pct"] == 45.5
-    assert summary["evaluation_protocol"]["status"] == "NOT_IMPLEMENTED"
+    assert summary["evaluation_protocol"]["status"] == "IMPLEMENTED_NOT_POPULATED"
+    assert summary["evaluation_protocol"]["implementation"] == "barrot_agent.research.fixed_horizon.ForecastLedger"
+    assert "no verified XRP forecasts and resolved outcomes" in summary["reason"]
 
 
 def test_accuracy_status_update_preserves_immutable_signal_history(tmp_path, monkeypatch):

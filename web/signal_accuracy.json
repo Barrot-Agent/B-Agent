@@ -5,7 +5,7 @@
   "checked_count": 0,
   "correct_count": 0,
   "accuracy_pct": null,
-  "reason": "The legacy score used variable elapsed horizons and later live prices while historical rows were mutable. It is not a fixed-horizon out-of-sample skill estimate.",
+  "reason": "The fixed-horizon forecast/outcome ledger is implemented, but no verified XRP forecasts and resolved outcomes are yet present. No predictive-skill estimate is available. No live market data was queried.",
   "legacy_metric": {
     "status": "NOT_COMPARABLE",
     "checked_count": 1697,
@@ -14,7 +14,7 @@
     "reason": "Preserved from the current main-branch snapshot for audit only; variable-horizon scoring and mutable historical rows prevent interpretation as predictive skill."
   },
   "evaluation_protocol": {
-    "status": "NOT_IMPLEMENTED",
+    "status": "IMPLEMENTED_NOT_POPULATED",
     "target": "XRP/USD return and direction",
     "horizon_seconds": null,
     "data_cutoff_utc": null,
@@ -25,6 +25,7 @@
       "baseline comparison and walk-forward evaluation",
       "probability calibration and uncertainty reporting",
       "recorded outcome after the horizon closes"
-    ]
+    ],
+    "implementation": "barrot_agent.research.fixed_horizon.ForecastLedger"
   }
 }
