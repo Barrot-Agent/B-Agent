@@ -83,4 +83,5 @@ jobs:
             tests/test_cbxrp_institutional_relationship_graph.py \
             tests/test_ask_coin_identity_candidate.py \
             tests/test_binance_recovery_update4_and_repo_audit.py \
+            tests/test_sbi_ousd_ask_camilla_evernorth_addendum.py \
             -v --no-cov

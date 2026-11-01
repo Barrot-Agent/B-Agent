@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "evernorth-bitgo-sbi-ousd-ask-camilla-and-xrp-market-20261101T1530Z",
+  "captured_at_utc": "2026-11-01T15:30:00Z",
+  "evernorth": {
+    "ticker": "XRPN",
+    "company_reported_xrp_at_closing": 473276430,
+    "cash_purchase_xrp": 84365876.3625,
+    "cash_used_for_purchase_usd": 214100000,
+    "cash_purchase_average_price_usd": 2.53657058,
+    "in_kind_xrp_contributions": 388910554,
+    "in_kind_components": {
+      "advance_subscribers_xrp": 600000,
+      "delayed_funding_xrp": 200000,
+      "sponsor_series_c_xrp": 211319096,
+      "larssen_trust_xrp": 50000000,
+      "ripple_pathfinder_contribution_xrp": 126791458
+    },
+    "company_reported_cash_proceeds_at_closing_usd": 272600000,
+    "current_gross_treasury_notional_at_xrp_1_25_usd": 591595537.5,
+    "share_of_circulating_supply_pct_at_63_351b": 0.747,
+    "onchain_tracker_page": {
+      "ledger": 108047615,
+      "ledger_close_utc": "2026-11-01T15:08:00Z",
+      "attributed_wallet_count": 13,
+      "attributed_balance_xrp": 103129905,
+      "external_outflow_xrp": 370346663,
+      "latest_external_movement_date": "2026-10-22"
+    },
+    "onchain_tracker_json": {
+      "ledger": 108046960,
+      "ledger_close_utc": "2026-11-01T14:24:31Z",
+      "attributed_balance_xrp": 103129904.54985,
+      "external_outflow_xrp": 370346663.22975
+    },
+    "tracker_page_json_ledger_conflict": "PAGE_AND_JSON_USE_DIFFERENT_VALIDATED_LEDGERS_51_MINUTES_APART",
+    "destination_wallet_evidence": {
+      "destinations_listed": 10,
+      "bitgo_activation_verified_by_bithomp": 9,
+      "activation_amount_xrp": 1.2225,
+      "control_type": "multisig",
+      "same_activating_account": "rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+      "largest_displayed_destination_balance_xrp": 96200000,
+      "classification": "STRONGLY_SUPPORTS_BITGO_CUSTODY_REALLOCATION; BENEFICIAL_OWNERSHIP_NOT_CONFIRMED"
+    },
+    "custody": {
+      "custodian": "BitGo Trust",
+      "cold_storage_share_pct": 100,
+      "multisig": "2-of-3",
+      "master_key_disabled": true,
+      "aggregate_insurance_usd": 250000000,
+      "insurance_share_of_evernorth_value_pct_at_2026_10_09": 36.9,
+      "insurance_dedicated_to_evernorth": false,
+      "pledge_or_lend_only_if_expressly_directed": true
+    },
+    "financing": {
+      "convertible_notes_usd": 30000000,
+      "pik_interest_pct": 4,
+      "yield_to_put_pct": 8,
+      "potential_cash_settlement_usd": 120000000,
+      "eloc_max_shares": 5218935,
+      "eloc_potential_gross_usd": 76800000,
+      "eloc_potential_net_usd": 74400000,
+      "eloc_optional_and_conditional": true,
+      "eloc_draw_verified": false
+    },
+    "deployment_partners": [
+      "Ripple",
+      "Kraken",
+      "Coinbase",
+      "BitGo"
+    ],
+    "planned_q4_yield_and_ecosystem_deployments": "ANNOUNCED_NOT_VERIFIED_EXECUTED",
+    "revenue_status": "NO_OPERATING_REVENUE_REPORTED_IN_PROSPECTUS",
+    "sale_status": "NO_SALE_INFERRED_FROM_370M_MOVEMENT"
+  },
+  "sbi_multirail": {
+    "sbic_identity": "Tokyo/Osaka/Nagoya Small and Medium Business Investment & Consultation companies; distinct from SBI Holdings, SBI Shinsei Bank and SBI VC Trade",
+    "jpysc": {
+      "issuer": "SBI Shinsei Trust Bank",
+      "distributor": "SBI VC Trade",
+      "issued_balance_jpy_as_of_2026_09_07": 20100000000,
+      "lending_applications_jpy": 6900000000,
+      "short_term_jgb_backing_investment_jpy": 1000000000,
+      "initially_internal_to_sbi_vc_trade": true,
+      "public_chain_rollout": "PENDING_LEGAL_TAX_AND_REGULATORY_READINESS"
+    },
+    "hyper_deposit": {
+      "balance_jpy": 1600000000000,
+      "accounts": 700000,
+      "asset_class": "YEN_BANK_DEPOSITS_LINKED_TO_SBI_SECURITIES",
+      "xrp_capital": false
+    },
+    "business_card": {
+      "crypto_choices": [
+        "BTC",
+        "ETH",
+        "XRP"
+      ],
+      "monthly_automatic_points_conversion": true,
+      "aggregate_xrp_redemptions": "UNKNOWN"
+    },
+    "interest_reward_pilot": {
+      "reported_crypto_share_of_interest_pct": 20,
+      "assets": [
+        "BTC",
+        "ETH",
+        "XRP"
+      ],
+      "source_class": "SECONDARY_NIKKEI_REPORTING",
+      "official_primary_confirmation": "NOT_LOCATED",
+      "redemption_volume": "UNKNOWN"
+    },
+    "dcJPY": {
+      "role": "tokenized_deposit DVP rail",
+      "xrpl_integration": "NONE_FOUND"
+    },
+    "ousd_interop": {
+      "status": "EXPLORATORY_POC",
+      "participants": [
+        "SBI",
+        "Startale",
+        "Open Standard"
+      ],
+      "coinbase_in_network": true,
+      "issuer": "Bridge (Stripe)",
+      "xrpl_deployment": "NOT_LISTED"
+    },
+    "blackrock_mou": "EXPLORATORY_TOKENIZED_MMF_AND_JPYSC_MOU_NOT_A_LAUNCHED_PRODUCT",
+    "smbc_alliance": "ANNOUNCED_5_PERCENT_STAKE_IN_SBI_STARTALE_MARKETING_SUBJECT_TO_TERMS"
+  },
+  "coinbase_circle_ripple": {
+    "coinbase_position": [
+      "Circle USDC distribution agreement renewed",
+      "RLUSD listed/distributed",
+      "cbXRP reserve and Morpho collateral access",
+      "Open Standard/OUSD founding partner",
+      "Evernorth institutional deployment partner"
+    ],
+    "circle_position": [
+      "USDC reserve and distribution economics remain substantial",
+      "USDC on XRPL and Circle cross-chain infrastructure remain relevant",
+      "Not named among Open Standard founding partners in reviewed materials"
+    ],
+    "ripple_position": [
+      "RLUSD issuer",
+      "SBI relationship and XRP remittance ecosystem",
+      "Evernorth investor/strategic contributor and deployment partner"
+    ],
+    "interpretation": "MULTI_ISSUER_AND_MULTI_RAIL_PLATFORM_STRATEGY; NOT_EXCLUSIVE_ALIGNMENT"
+  },
+  "ask_coin": {
+    "candidate": "Permission Coin (ASK)",
+    "chains": [
+      "Base",
+      "Polygon"
+    ],
+    "xrpl_contract_found": false,
+    "direct_xrp_integration": "NOT_FOUND",
+    "coinmarketcap_access_snapshot": {
+      "market_cap_usd": 1420000,
+      "reported_24h_volume_usd": 0,
+      "circulating_supply": 16160000000,
+      "max_supply": 100000000000
+    },
+    "confidence": "CANDIDATE_IDENTIFICATION_NOT_UNIQUE"
+  },
+  "camilla_stephenson_identity": {
+    "interview_guest": "Dr. Kamilah Stevenson",
+    "name_variants_in_interview": [
+      "Camila Stevenson",
+      "Camilla Stevenson",
+      "Kamilla Stevenson"
+    ],
+    "self_reported_youtube_name": "doctor Camilla Stevenson",
+    "self_reported_x_handle": "cam_i_am_cam",
+    "self_reported_instagram_name": "Kamilla Stevenson",
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "identity_status": "STRONGLY_SUPPORTED_PERSON_MATCH_CHANNEL_ID_CROSS_LINK_PENDING",
+    "known_public_videos": 11,
+    "inventory_complete": false,
+    "new_video_id": "OmLOAtfZ-Hs",
+    "actual_capital_exact_phrase_found_in_interview": false
+  },
+  "derivatives_provider_observations": {
+    "coinglass": {
+      "open_interest_usd": 2834000000,
+      "futures_volume_24h_usd": 1009000000,
+      "spot_volume_24h_usd": 174800000,
+      "accessed_at_utc": "2026-11-01T15:18:00Z",
+      "provider_timestamp": null
+    },
+    "coingecko": {
+      "open_interest_usd": 3529000000,
+      "spot_volume_24h_usd": 702210000,
+      "accessed_at_utc": "2026-11-01T15:07:00Z",
+      "provider_timestamp": null
+    },
+    "liqwall": {
+      "open_interest_usd": 1330000000,
+      "accessed_at_utc": "2026-11-01T03:52:00Z"
+    },
+    "feature_admission": "NONE"
+  },
+  "japan_fiea": {
+    "law_number": 64,
+    "promulgated_date": "2026-07-23",
+    "specific_xrp_designation": "NOT_CONFIRMED",
+    "framework_commencement": "IMPLEMENTING_RULES_AND_EFFECTIVE_DATE_REQUIRE_VERIFICATION"
+  },
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "audit_id": "repository-and-exact-head-verification-20261101T1530Z",
+  "captured_at_utc": "2026-11-01T15:30:00Z",
+  "main_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+  "main_unchanged": true,
+  "open_pull_requests": 233,
+  "prs": {
+    "1464": {
+      "purpose": "XRP institutional/collateral research",
+      "base_sha": "7fdef0b1c9cce8d2d39d1a7e8a0b8f5a2c8f5a11",
+      "head_sha": "f91ecdadf4ab526baed66804ccc3df1451bca2f5",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_tests": 366,
+      "ci_subtests": 8,
+      "gate": "PASSED_MERGING_DISABLED",
+      "new_research_commit": "PENDING_CI"
+    },
+    "1465": {
+      "purpose": "main workflow safety quarantine",
+      "base_sha": "02d9f11404ba80823392ad215c733b49e4536128",
+      "head_sha": "5ca02dbfefc42222a893e8a6e0f8d9f709b59d38",
+      "status": "OPEN_DRAFT_MERGEABLE_UNMERGED",
+      "ci_tests": 376,
+      "ci_subtests": 8,
+      "gate": "PASSED_MERGING_DISABLED",
+      "main_ahead_commits": 2
+    },
+    "1466": {
+      "purpose": "fixed-horizon XRP prediction ledger and legacy evaluator retirement",
+      "base_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+      "head_sha": "3fbb77ecd9df5b3372220faa329ed8145f258cdc",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_tests": 385,
+      "ci_subtests": 8,
+      "gate": "PASSED_MERGING_DISABLED"
+    }
+  },
+  "prediction_integrity": {
+    "current_main_legacy_accuracy": "45.5% from 1,697 variable-horizon mutable checks; NOT_COMPARABLE",
+    "fresh_main_fix_pr": 1466,
+    "exact_head_tests": 385,
+    "fixed_horizon_ledger": "records cutoff, target, horizon, probabilities/confidence, assumptions, alternatives, model/features/source IDs and baseline; outcomes stored separately",
+    "limitation": "not a trained model, historical feature store, rolling walk-forward evaluation or proven calibrated skill"
+  },
+  "security_findings": {
+    "current_main_still_has_privileged_workflows": true,
+    "scheduler_tick_write_capability": true,
+    "merge_queue_manual_mode_all_dry_run_false_max_prs_zero": true,
+    "databricks_token_input_shell_interpolation": true,
+    "coinbase_paper_trader": "manual-only, simulated, defaults BTC-USD, commits paper state to main; no live order endpoint found in inspected script",
+    "active_ci_pip_audit_gap": "SECURITY.md says pip-audit in CI; active ci.yml inspected has no pip-audit or pre-commit secret scan",
+    "dependabot": "weekly pip and GitHub Actions",
+    "lockfiles_found": []
+  },
+  "limitations": [
+    "Branch protection settings endpoint returned 403.",
+    "No PR merged, no main change, no workflow dispatch, no force-push, no secret access, no deployment and no trade occurred.",
+    "The new research commit's CI has not yet run at the time of this artifact."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "handoff_id": "evernorth-bitgo-sbi-multirail-ask-camilla-handoff-20261101T1530Z",
+  "captured_at_utc": "2026-11-01T15:30:00Z",
+  "research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T153000Z-evernorth-bitgo-sbi-jpysc-ousd-ask-camilla-coinglass.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T153000Z-evernorth-bitgo-sbi-ousd-ask-camilla-and-market.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T153000Z-evernorth-bitgo-sbi-coinbase-circle-ripple-ousd-jpysc-ask-camilla-graph.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T153000Z-evernorth-bitgo-sbi-multirail-and-identity-decisions.json",
+  "repository_audit": "data/repository_audits/20261101T153000Z-repository-and-exact-head-verification.json",
+  "highest_impact_findings": [
+    "Evernorth reported at least 473,276,430 XRP at closing. The SEC filing shows 84,365,876.3625 XRP bought with $214.1M cash at an average $2.53657; the remaining treasury includes substantial in-kind XRP contributions.",
+    "XRP Insights reports 370,346,663 XRP moved out of its 13-wallet Evernorth-attributed set, latest October 22. Nine inspected destination accounts were activated by the same BitGo-labelled account with 1.2225 XRP and show multisig control. This strongly supports a BitGo custody migration, not a sale; beneficial ownership of every destination is not confirmed.",
+    "Evernorth's SEC prospectus says all XRP initially sat in BitGo cold storage, 2-of-3 multisig, disabled master keys; shared $250M insurance was only about 36.9% of XRP value on October 9. It states BitGo may not pledge/lend unless expressly directed.",
+    "Evernorth has $30M 4% PIK notes with potential cash-settlement/yield-to-put exposure and an optional Cantor ELOC that could provide up to $76.8M gross/$74.4M net if fully used. Neither a current forced sale nor an ELOC draw is verified.",
+    "SBI's actual multi-rail strategy now includes XRP remittance/rewards, JPYSC, DCJPY, USDC/RLUSD and exploratory JPYSC/OUSD interoperability. JPYSC had 20.1B JPY outstanding and 1B JPY invested in short-term JGBs as of September 7; Hyper Deposit's 1.6T JPY is bank deposits, not XRP capital.",
+    "Coinbase is simultaneously a Circle USDC distributor, RLUSD venue, cbXRP/Morpho platform, Open Standard/OUSD founding partner and Evernorth deployment partner. This supports a multi-issuer strategy, not exclusive Circle alignment.",
+    "Permission Coin ASK is a candidate for 'ASK Coin'; reviewed contracts are on Base/Polygon and no XRPL/XRP integration was found.",
+    "The iHeart interview identifies Dr Kamilah Stevenson and her own Camilla/Kamilla name variants, including the self-described YouTube name 'doctor Camilla Stevenson'. The candidate channel ID is strongly supported but not directly cross-linked; the inventory is partial.",
+    "Japan's Law No.64 was promulgated July 23, 2026, but the reviewed primary law does not specifically name XRP in an asset list. The interview's claim that XRP is already specifically reclassified is too strong."
+  ],
+  "next_actions": [
+    "Trace all 10 BitGo-activated destination accounts at one validated ledger; inspect account_info, account_tx and account_objects; identify any subsequent movements and determine whether the destinations remain BitGo custody accounts.",
+    "Reconcile the Evernorth tracker page and data.json ledger mismatch; request raw ledger/account data and compare exact balances.",
+    "Verify any Q4 Evernorth lending, collateral, yield or ecosystem deployment through public filings, wallet flows, partner statements and pool contracts; do not infer execution from the October 14 partner announcement.",
+    "Monitor Evernorth's ELOC drawdowns, share issuance, convertible-note terms, XRP per share and any forced-sale disclosures.",
+    "Map SBI's JPYSC issuance/redemption, lending outstanding (not just applications), JGB backing and OUSD interoperability when executed; separate these from XRP demand.",
+    "Verify XRP reward redemptions from SBI's business card and any interest-voucher pilot through primary SBI data.",
+    "Continue Coinbase/Circle/Ripple multi-issuer analysis and check OUSD distribution/actual circulation against USDC and RLUSD.",
+    "Expand Camilla/Kamilah channel inventory using a directly cross-linked official channel; do not claim completeness while YouTube access is throttled.",
+    "Keep PR #1465 security quarantine and PR #1466 fixed-horizon evaluator draft/unmerged pending approval; PR #1464 new research commit awaits exact-head CI.",
+    "Resolve active CI pip-audit gap and keep Coinbase paper trader paper-only, XRP-specific only after fixed-horizon evaluation and artifact-only persistence."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}
