@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 154,
+  "chunk_count": 155,
+  "record_count": 1,
+  "records": [
+    {
+      "limitation_id": "LIM-13-UNREGISTERED-SOURCE-REFERENCES-METADATA-UNKNOWN-20261101T072500Z",
+      "category": "SOURCE_PROVENANCE",
+      "description": "The 06:40 snapshot referenced 13 source IDs absent from the source registry. They are now represented by explicit unresolved stubs so the archive can preserve referential integrity; titles, publishers, URLs, publication times and substantive claims remain unrecovered. Stubs are not admissible evidence or prediction features.",
+      "evidence": "XRP Ledger Archive Validation run 41284561140 reported 13 unknown source IDs; the IDs were found in the snapshot source_ids and source bundle existing_source_references. Twenty-one source bundle files were inspected; only one of the 13 had a source record in the 045910 bundle, while the others remained absent.",
+      "first_observed_utc": "2026-11-01T07:25:00Z",
+      "impact": "HIGH",
+      "related_run_id": "RUN-20261101T072500Z-PR1450-ARCHIVE-REPAIR-SOURCE-STUBS",
+      "source_ids": [
+        "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+        "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+        "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+        "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+        "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION",
+        "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+        "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+        "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+        "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+        "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T07:25:00Z"
+    }
+  ]
+}
