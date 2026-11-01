@@ -6,9 +6,9 @@ on:
 permissions: {}
 
 jobs:
-  disabled:
-    if: ${{ false }}
+  report-disabled-state:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     steps:
-      - name: Explain disabled state
-        run: echo "Disabled: this workflow used force-push to an external Space. Force-push is prohibited; use a reviewed non-destructive deployment process after explicit approval."
+      - name: Report disabled state
+        run: echo "DEPLOYMENT_NOT_PERFORMED: force-push to an external Space is prohibited; no external repository was changed."
