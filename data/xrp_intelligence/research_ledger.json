@@ -35,12 +35,12 @@
     "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T001238Z-escrow-eligibility-execution-evidence-gate.json",
     "architecture_decision_blob_sha": "c62980c2c19468b970e6a86294f6b770bab483b2",
     "architecture_decision_commit_sha": "5c1e5d0504242cfcfbea692c6a9f3a629694c574",
-    "repository_audit_path": "data/repository_audits/20261101T001238Z-main-knowledge-signal-freshness-pr1433-audit.json",
-    "repository_audit_blob_sha": "c80ad39baf0f2fb0d6952ae3a116df752fb6bd70",
-    "repository_audit_commit_sha": "7685e95f88eb1be5e3d2e85bff7c4d8e6bd430c3",
-    "handoff_path": "data/xrp_intelligence/hand_offs/20261101T001238Z-post-eligibility-escrow-and-pr1433-handoff.json",
-    "handoff_blob_sha": "f20d1422c156701c81b042281dd901a28f2c8a5e",
-    "handoff_commit_sha": "11e8c2db63e340bd6b28709b930170a6b99d6b5b",
+    "repository_audit_path": "data/repository_audits/20261101T001510Z-pr1433-exact-head-ci-and-archive-validator-status.json",
+    "repository_audit_blob_sha": "e90db53bf26700818c816a0f048f85aa4da4ea2b",
+    "repository_audit_commit_sha": "c22a831cbca504b7e0f927c4cf077269aeee08a8",
+    "handoff_path": "data/xrp_intelligence/hand_offs/20261101T001510Z-pr1433-ci-pass-and-escrow-verification-handoff.json",
+    "handoff_blob_sha": "b67700d1ed49ff22a2035f218ae85247c86bea19",
+    "handoff_commit_sha": "aa26e541d53754807ebcc722d67ac0a2a7a0c652",
     "source_ids": [
       "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
     ],
@@ -385,10 +385,10 @@
     "latest_conflict_source_id": "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES",
     "latest_conflict_status": "UNRESOLVED_BITHOMP_VS_XRP_INSIGHTS_ESCROW_OWNER_PAGE_CONFLICT",
     "verified_head_sha": null,
-    "validator_run_id": null,
+    "validator_run_id": 41255857106,
     "pr_validator_run_id": null,
-    "fail_closed_gate_run_id": null,
-    "fail_closed_gate_status": "NOT_RUN",
+    "fail_closed_gate_run_id": 41255857050,
+    "fail_closed_gate_status": "PASS_MERGE_DISABLED",
     "archive_shards_checked": null,
     "archive_records_roundtrip": null,
     "source_revision_addenda_checked": null,
@@ -401,7 +401,7 @@
     "previous_verified_head_sha": "68816271c26643712784b0261ae40b38c7e27e5a",
     "previous_verified_at_utc": "2026-10-31T23:24:10Z",
     "gate_run_id": null,
-    "metadata_successor_parent_sha": "11e8c2db63e340bd6b28709b930170a6b99d6b5b"
+    "metadata_successor_parent_sha": "5c49a29694f89dc030ff85c197523392b94d72fe"
   },
   "sources": {
     "record_type": "archive_pointer",
@@ -3569,8 +3569,8 @@
       }
     ]
   },
-  "current_research_head_before_ledger_update": "11e8c2db63e340bd6b28709b930170a6b99d6b5b",
-  "current_research_head_this_run": "11e8c2db63e340bd6b28709b930170a6b99d6b5b",
+  "current_research_head_before_ledger_update": "aa26e541d53754807ebcc722d67ac0a2a7a0c652",
+  "current_research_head_this_run": "aa26e541d53754807ebcc722d67ac0a2a7a0c652",
   "current_research_checks": {
     "status": "PASS_EXACT_HEAD_VALIDATION",
     "data_head_sha": "fe59a6a5c83becc89fd607ce2fc606d41b7eaf8f",
@@ -4061,8 +4061,8 @@
     "snapshot_path": "data/xrp_intelligence/snapshots/20261101T001238Z-post-eligibility-escrow-verification-status.json",
     "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T001238Z-post-eligibility-escrow-evidence-graph.json",
     "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T001238Z-escrow-eligibility-execution-evidence-gate.json",
-    "repository_audit_path": "data/repository_audits/20261101T001238Z-main-knowledge-signal-freshness-pr1433-audit.json",
-    "handoff_path": "data/xrp_intelligence/hand_offs/20261101T001238Z-post-eligibility-escrow-and-pr1433-handoff.json",
+    "repository_audit_path": "data/repository_audits/20261101T001510Z-pr1433-exact-head-ci-and-archive-validator-status.json",
+    "handoff_path": "data/xrp_intelligence/hand_offs/20261101T001510Z-pr1433-ci-pass-and-escrow-verification-handoff.json",
     "correction_of_snapshot_id": "XRP-20261031T230816Z-PRE-ESCROW-BINANCE-DAILY-DELTA-AND-V3-AUDIT",
     "new_source_records": 0,
     "new_relationship_edges": 8,
@@ -4070,14 +4070,15 @@
     "source_archive_append_status": "PENDING_ARCHIVE_APPEND",
     "source_revision_addenda_count": 36,
     "source_revision_addenda_pending_archive_append": 30,
-    "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+    "verification_status": "ARCHIVE_VALIDATOR_CANCELLED; GATE_PASS_MERGE_DISABLED; EXACT_HEAD_NOT_VERIFIED",
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED",
     "correction_reason": "Post-eligibility observation supersedes the prior pre-eligibility countdown; it does not claim execution.",
     "verified_head_sha": null,
-    "validator_run_id": null,
-    "fail_closed_gate_run_id": null,
-    "verified_at_utc": null
+    "validator_run_id": 41255857106,
+    "fail_closed_gate_run_id": 41255857050,
+    "verified_at_utc": null,
+    "fail_closed_gate_status": "PASS_MERGE_DISABLED"
   },
   "previous_snapshot_verification": {
     "status": "PASS",
@@ -7215,18 +7216,26 @@
     "verification_status": "PENDING_EXACT_HEAD_VALIDATION"
   },
   "latest_repository_audit": {
-    "path": "data/repository_audits/20261101T001238Z-main-knowledge-signal-freshness-pr1433-audit.json",
-    "blob_sha": "c80ad39baf0f2fb0d6952ae3a116df752fb6bd70",
-    "commit_sha": "7685e95f88eb1be5e3d2e85bff7c4d8e6bd430c3",
-    "captured_at_utc": "2026-11-01T00:12:38Z",
+    "path": "data/repository_audits/20261101T001510Z-pr1433-exact-head-ci-and-archive-validator-status.json",
+    "blob_sha": "e90db53bf26700818c816a0f048f85aa4da4ea2b",
+    "commit_sha": "c22a831cbca504b7e0f927c4cf077269aeee08a8",
+    "captured_at_utc": "2026-11-01T00:15:10Z",
     "main_sha": "a989ae6ee81106e5a3521d89883c59e263d6d305",
     "open_pr_count": null,
-    "status": "STORED_PENDING_EXACT_HEAD_VALIDATION",
+    "status": "PR1433_EXACT_HEAD_CI_PASS; ARCHIVE_VALIDATOR_CANCELLED",
     "source_reference_count": 0,
     "missing_source_references": 0,
     "current_main_based_prs_verified": [
       1433
-    ]
+    ],
+    "pr1433": {
+      "head_sha": "a246a55743b50e9c089dec9a3c1ca0763ca2ff99",
+      "ci_run_id": 41255694751,
+      "ci_tests_passed": 354,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41255694694,
+      "gate_status": "PASS_MERGE_DISABLED"
+    }
   },
   "latest_exchange_balance_reconciliation": {
     "recorded_at_utc": "2026-10-31T16:01:37Z",
@@ -7259,7 +7268,7 @@
     "causal_attribution": "NOT_ESTABLISHED; OCT30 ALL-EXCHANGE DECLINE PARTIALLY REVERSED OCT31; BINANCE SAME-WALLET 7D AND 30D ARE POSITIVE; CRYPTOQUANT SERIES SEPARATE; NO INCIDENT-SOURCE WALLET CROSSWALK",
     "market_feature_admission": "CUSTODY_TIMELINE_ONLY_NOT_DIRECTIONAL"
   },
-  "latest_snapshot_verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "latest_snapshot_verification_status": "ARCHIVE_VALIDATOR_CANCELLED; GATE_PASS; EXACT_HEAD_NOT_VERIFIED",
   "latest_snapshot_verification_head_sha": "11e8c2db63e340bd6b28709b930170a6b99d6b5b",
   "latest_snapshot_verification_at_utc": null,
   "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261031T215123Z-drivewealth-integration-status-and-xrp-demand.json",
@@ -7352,13 +7361,13 @@
   "latest_verified_validator_tests_passed": 20,
   "latest_verified_gate_run_id": 41194367355,
   "latest_verified_gate_status": "PASS_MERGE_DISABLED",
-  "latest_validator_run_id": 41252364026,
+  "latest_validator_run_id": 41255857106,
   "latest_validator_head_sha": "68816271c26643712784b0261ae40b38c7e27e5a",
   "latest_validator_tests_passed": 32,
   "latest_gate_run_id": 41252367179,
   "latest_gate_status": "PASS_MERGE_DISABLED",
   "latest_gate_head_sha": "68816271c26643712784b0261ae40b38c7e27e5a",
-  "latest_fail_closed_gate_run_id": 41246938305,
+  "latest_fail_closed_gate_run_id": 41255857050,
   "latest_fail_closed_gate_status": "PASS_MERGE_DISABLED",
   "latest_fail_closed_gate_head_sha": "fe59a6a5c83becc89fd607ce2fc606d41b7eaf8f",
   "latest_snapshot_verification_method": "GITHUB_ACTIONS_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
@@ -7384,9 +7393,9 @@
     "gate_status": "PASS_MERGE_DISABLED",
     "note": "Latest exact-head workflow ran the actual repository validator and isolated regression suite; both passed."
   },
-  "latest_validator_status": "PASS",
+  "latest_validator_status": "CANCELLED",
   "latest_validator_tests_failed": 0,
-  "latest_validator_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41252364026",
+  "latest_validator_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255857106",
   "latest_gate_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41246938305",
   "last_reconciliation_at_utc": "2026-10-31T22:10:20Z",
   "last_validation_recording": {
@@ -7611,11 +7620,11 @@
   "latest_repository_audit_open_pr_count": 202,
   "latest_repository_audit_stale_main_base_count": 198,
   "latest_repository_audit_current_main_base_count": 1,
-  "latest_repository_audit_captured_at_utc": "2026-11-01T00:12:38Z",
+  "latest_repository_audit_captured_at_utc": "2026-11-01T00:15:10Z",
   "latest_repository_audit_data_commit_sha": "52f56412a52b5ca8e29c0b8889c06c9455004103",
   "latest_repository_audit_non_main_base_count": 2,
-  "latest_repository_audit_path": "data/repository_audits/20261101T001238Z-main-knowledge-signal-freshness-pr1433-audit.json",
-  "latest_repository_audit_blob_sha": "c80ad39baf0f2fb0d6952ae3a116df752fb6bd70",
+  "latest_repository_audit_path": "data/repository_audits/20261101T001510Z-pr1433-exact-head-ci-and-archive-validator-status.json",
+  "latest_repository_audit_blob_sha": "e90db53bf26700818c816a0f048f85aa4da4ea2b",
   "reconciled_at_utc": "2026-10-31T22:10:20Z",
   "archive_shards_incremental_readback_after_last_validator": 3,
   "latest_snapshot_source_reference_count": 1,
@@ -7632,7 +7641,7 @@
   "legacy_accuracy_pct": 45.5,
   "legacy_accuracy_status": "NOT_COMPARABLE",
   "latest_data_commit_sha": "b112d9735f1bed3302af1eb54c02180480db8bc5",
-  "latest_repository_audit_commit_sha": "7685e95f88eb1be5e3d2e85bff7c4d8e6bd430c3",
+  "latest_repository_audit_commit_sha": "c22a831cbca504b7e0f927c4cf077269aeee08a8",
   "last_successful_exact_head_validation": {
     "head_sha": "fe59a6a5c83becc89fd607ce2fc606d41b7eaf8f",
     "validated_at_utc": "2026-10-31T22:10:20Z",
@@ -7651,7 +7660,7 @@
     "source_revision_addenda_pending_archive_append": 28,
     "state_mutated": false
   },
-  "latest_fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41243145642",
+  "latest_fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255857050",
   "latest_validation_at_utc": "2026-10-31T03:35:38Z",
   "latest_entity_snapshot": {
     "snapshot_id": "ENTITY-20261031T001930Z-JAPAN-SBIC-AND-CAMILLA-IDENTITY-AUDIT",
@@ -7690,7 +7699,7 @@
   },
   "latest_validator_error": "source_revision_addenda[9] pending_archive_append must be boolean",
   "current_research_head_before_metadata_successor": "fe59a6a5c83becc89fd607ce2fc606d41b7eaf8f",
-  "metadata_successor_validation_status": "PENDING_AFTER_LEDGER_UPDATE",
+  "metadata_successor_validation_status": "PENDING_NO_RUN_RETURNED",
   "current_research_head_before_receipt_update": "eff0d9cdbb52b2bea637987e3298ce1620848454",
   "latest_accuracy_safety_pr": 1386,
   "latest_accuracy_safety_pr_head_sha": "74c47f2a8a64aefc96ff64f3247bbf48789da052",
@@ -7747,8 +7756,8 @@
   "latest_merge_queue_safety_pr_ci_subtests_passed": 8,
   "latest_merge_queue_safety_pr_gate_run_id": 41243411930,
   "latest_merge_queue_safety_pr_gate_status": "PASS_MERGE_DISABLED",
-  "latest_snapshot_verification_run_id": 41246938314,
-  "latest_snapshot_verification_gate_run_id": 41246938305,
+  "latest_snapshot_verification_run_id": 41255857106,
+  "latest_snapshot_verification_gate_run_id": 41255857050,
   "latest_snapshot_verification_archive_shards_checked": 442,
   "latest_snapshot_verification_source_references": 4,
   "latest_snapshot_verification_missing_source_references": 0,
@@ -13643,10 +13652,10 @@
   "latest_knowledge_signal_safety_pr_additions": 449,
   "latest_knowledge_signal_safety_pr_deletions": 60,
   "latest_knowledge_signal_safety_pr_new_tests": 3,
-  "latest_knowledge_signal_safety_pr_ci_run_id": null,
-  "latest_knowledge_signal_safety_pr_ci_status": "NO_RUNS_RETURNED; COMBINED_STATUS_EMPTY",
-  "latest_knowledge_signal_safety_pr_gate_run_id": null,
-  "latest_knowledge_signal_safety_pr_gate_status": "NOT_RUN",
+  "latest_knowledge_signal_safety_pr_ci_run_id": 41255694751,
+  "latest_knowledge_signal_safety_pr_ci_status": "PASS_EXACT_HEAD",
+  "latest_knowledge_signal_safety_pr_gate_run_id": 41255694694,
+  "latest_knowledge_signal_safety_pr_gate_status": "PASS_MERGE_DISABLED",
   "latest_knowledge_signal_safety_pr_schedule_added": false,
   "latest_knowledge_signal_safety_pr_artifact_retention_days": 30,
   "latest_knowledge_signal_safety_pr_limitations": [
@@ -13681,5 +13690,10 @@
     "metadata_successor_validation_pending": true,
     "note": "The data-bearing head passed exact-head push validation, PR validation and the fail-closed gate. The following ledger metadata commit is a successor and remains pending its own validation."
   },
-  "latest_knowledge_signal_safety_pr_verification_status": "EXECUTED_BRANCH_AND_PR_CREATED; NOT_VERIFIED_NO_CI_RUN"
+  "latest_knowledge_signal_safety_pr_verification_status": "CI_PASS_EXACT_HEAD; GATE_PASS_MERGE_DISABLED; OPEN_DRAFT_UNMERGED",
+  "latest_knowledge_signal_safety_pr_ci_tests_passed": 354,
+  "latest_knowledge_signal_safety_pr_ci_subtests_passed": 8,
+  "latest_knowledge_signal_safety_pr_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255694751",
+  "latest_knowledge_signal_safety_pr_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41255694694",
+  "latest_knowledge_signal_safety_pr_exact_head_verified": true
 }
