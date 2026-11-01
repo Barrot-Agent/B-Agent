@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "handoff_id": "camilla-stephenson-video-inventory-handoff-20261101T155209Z",
+  "captured_at_utc": "2026-11-01T15:52:09Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T155209Z-kamilah-camila-youtube-candidate-video-inventory.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T155209Z-camilla-stephenson-kamilah-camila-youtube-candidates.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T155209Z-camilla-kamilah-video-creator-claim-graph.json",
+  "key_findings": [
+    "Seven additional candidate video IDs surfaced under Kamilah Stevenson; several are direct YouTube result pages and several are Glasp summaries.",
+    "Transcript summaries for two videos contain the spoken self-introduction 'Camila Stevenson'.",
+    "The candidate channel remains strongly supported but not fully cross-linked to the exact requested 'Camilla Stephenson' spelling.",
+    "The prior 11-video inventory must be deduplicated by video ID before any new total is claimed.",
+    "The content provides public hypotheses about macro liquidity, custody, ETF flows and XRPL upgrades, not verified market facts."
+  ],
+  "next_actions": [
+    "Obtain a direct YouTube channel-ID-to-video-author cross-link using a public channel page or authorized YouTube API.",
+    "Enumerate the full public uploads list, including Shorts and livestream archives, and deduplicate by video ID.",
+    "Capture title, publication timestamp, channel ID, description, transcript availability and affiliate disclosures for each upload.",
+    "Extract creator claims into a separate hypothesis table and test them against SEC filings, XRPL data, ETF records and macro time series."
+  ],
+  "inventory_status": "INCOMPLETE",
+  "forecast_status": "NOT_ISSUED"
+}

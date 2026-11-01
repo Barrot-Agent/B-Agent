@@ -113,3 +113,13 @@ def test_current_forecast_status_remains_not_issued():
     handoff = load("data/xrp_intelligence/hand_offs/20261101T153000Z-evernorth-bitgo-sbi-multirail-ask-camilla-handoff.json")
     assert handoff["forecast_status"] == "NOT_ISSUED"
     assert handoff["feature_admission"] == "NONE"
+
+def test_camilla_stephenson_candidate_video_inventory_preserves_identity_uncertainty():
+    snapshot = load("data/xrp_intelligence/snapshots/20261101T155209Z-kamilah-camila-youtube-candidate-video-inventory.json")
+    assert snapshot["requested_identity"] == "Camilla Stephenson"
+    assert snapshot["candidate_channel"]["display_name"] == "Kamilah Stevenson"
+    assert snapshot["candidate_channel"]["channel_id_cross_link_status"] == "PENDING_DIRECT_YOUTUBE_VERIFICATION"
+    assert len(snapshot["newly_surfaced_video_candidates"]) == 7
+    assert snapshot["inventory_completeness"] == "INCOMPLETE; YOUTUBE_CHANNEL_VIDEOS_TAB_AND_FULL_UPLOAD_ARCHIVE_NOT_ACCESSIBLE_IN_THIS_RUN"
+    assert snapshot["deduplication_status"].startswith("NOT_COMPLETED")
+    assert snapshot["interpretation"]["exact_phrase_status"]["actual capital"].startswith("No exact phrase match")
