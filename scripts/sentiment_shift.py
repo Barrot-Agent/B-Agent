@@ -11,6 +11,8 @@ import json
 import os
 from datetime import datetime, timezone, timedelta
 
+from knowledge_freshness import latest_ingested_at, freshness_status, as_utc_iso
+
 KB_DIR = "ping-pongings/knowledge-base"
 OUT_PATH = os.path.join(KB_DIR, "sentiment_shift.json")
 SHIFT_THRESHOLD = 15  # points on the 0-100 scale emit_signal.py uses
@@ -70,8 +72,10 @@ def main():
     prior_start = now - timedelta(hours=48)
 
     results = {}
+    all_entries = []
     for asset, cfg in ASSETS.items():
         entries = load_jsonl(cfg["log"])
+        all_entries.extend(entries)
         recent_score, recent_n = window_score(entries, cfg["relevance_field"], recent_start, now)
         prior_score, prior_n = window_score(entries, cfg["relevance_field"], prior_start, recent_start)
 
@@ -88,10 +92,16 @@ def main():
             "prior_24h_entries": prior_n,
             "shift": shift,
             "significant_shift": flagged,
+            "source_data_as_of": as_utc_iso(latest_ingested_at(entries)),
+            "input_freshness_status": freshness_status(latest_ingested_at(entries), now),
         }
 
+    data_as_of = latest_ingested_at(all_entries)
     out = {
-        "generated_at": now.isoformat(),
+        "generated_at": as_utc_iso(data_as_of),
+        "data_as_of": as_utc_iso(data_as_of),
+        "generated_at_semantics": "source_data_cutoff_not_computation_time",
+        "input_freshness_status": freshness_status(data_as_of, now),
         "shift_threshold": SHIFT_THRESHOLD,
         "assets": results,
     }
