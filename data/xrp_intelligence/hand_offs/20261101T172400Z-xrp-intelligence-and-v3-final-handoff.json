@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-intelligence-and-v3-final-handoff-20261101T172400Z",
+  "captured_at_utc": "2026-11-01T17:24:00Z",
+  "priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution, verification and safety foundation.",
+  "latest_market_snapshot": "data/xrp_intelligence/snapshots/20261101T172000Z-xrpl-stablecoin-liquidity-collateral.json",
+  "latest_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T172000Z-xrpl-usdc-rlusd-flutterwave-graph.json",
+  "latest_research_ledger_addendum": "data/xrp_intelligence/research_ledger_addenda/20261101T172000Z-xrpl-usdc-rlusd-flutterwave-collateral.json",
+  "repository_audit": "data/repository_audits/20261101T172400Z-final-run-main-pr-and-verification-audit.json",
+  "prs": {
+    "security": {
+      "number": 1469,
+      "head": "490d8c2eb08961dc85f788f87a8052bdc3bc2895",
+      "ci": "387 tests + 8 subtests passed",
+      "gate": "PASSED_MERGING_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "prediction": {
+      "number": 1470,
+      "head": "efbc1f2a11eb6489c04c5360648de41f2c1cec28",
+      "ci": "389 tests + 8 subtests passed",
+      "gate": "PASSED_MERGING_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "research": {
+      "number": 1464,
+      "head": "a2cc082f928e573584243e8102931521eea78094",
+      "ci": "426 tests + 8 subtests passed",
+      "gate": "PASSED_MERGING_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED_STALE_BASE"
+    }
+  },
+  "prediction_engine": {
+    "status": "IMPLEMENTED_NOT_POPULATED",
+    "forecast_status": "NOT_ISSUED",
+    "feature_admission": "NONE",
+    "source_registry": "OPTIONAL_IN_GENERIC_API; MUST BE REQUIRED IN PRODUCTION_FORECAST_PATH"
+  },
+  "next_actions": [
+    "Preserve PR #1469 and #1470; both have exact-head CI and fail-closed gates, but remain drafts and unmerged. Do not merge without explicit approval.",
+    "Fresh-main reconcile PR #1464 after inspecting all main deltas; preserve generated market artifacts and append-only research records.",
+    "Make verified source-registry presence mandatory in the production forecast path before issuing any prediction.",
+    "Build point-in-time XRP spot, order-book, derivatives, ETF, stablecoin supply, AMM and collateral feature history with provider/venue-specific timestamps.",
+    "Verify Circle USDC and Ripple RLUSD supplies and AMM reserves from raw validated XRPL ledger objects at a common ledger.",
+    "Verify signed XRPLDashboard snapshot cryptographically before promoting it above third-party indexer evidence.",
+    "Monitor Flutterwave's production API matrix and Mastercard's asset-by-chain rollout; distinguish announcements from production settlement.",
+    "Continue SBIC, ASK Coin and Camilla Stephenson identity/video investigations."
+  ],
+  "safety": "Main remains 32682bc3797009421682ab51da59bf058b7d63d5. No merge, force-push, manual workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
+}
