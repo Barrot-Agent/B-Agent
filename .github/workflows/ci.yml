@@ -85,4 +85,5 @@ jobs:
             tests/test_binance_recovery_update4_and_repo_audit.py \
             tests/test_sbi_ousd_ask_camilla_evernorth_addendum.py \
             tests/test_evernorth_financing_correction.py \
+            tests/test_evernorth_bitgo_custody_reorganization.py \
             -v --no-cov

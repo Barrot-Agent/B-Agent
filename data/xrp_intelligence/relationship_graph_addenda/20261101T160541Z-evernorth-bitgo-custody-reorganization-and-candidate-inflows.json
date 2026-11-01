@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "graph_id": "evernorth-bitgo-custody-reorganization-and-candidate-inflows-20261101T160541Z",
+  "captured_at_utc": "2026-11-01T16:05:41Z",
+  "nodes": [
+    {
+      "id": "evernorth",
+      "name": "Evernorth Holdings Inc.",
+      "type": "public_company",
+      "status": "confirmed"
+    },
+    {
+      "id": "pathfinder",
+      "name": "Pathfinder Digital Assets LLC",
+      "type": "subsidiary",
+      "status": "confirmed"
+    },
+    {
+      "id": "bitgo",
+      "name": "BitGo Bank & Trust, National Association",
+      "type": "qualified_custodian",
+      "status": "confirmed_by_filing"
+    },
+    {
+      "id": "bitgo_init",
+      "name": "BitGo Initialization Wallet rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix",
+      "type": "onchain_account",
+      "status": "explorer_labeled"
+    },
+    {
+      "id": "old_wallet_set",
+      "name": "13 previously attributed Evernorth/Pathfinder custody wallets",
+      "type": "onchain_wallet_set",
+      "status": "third_party_attribution"
+    },
+    {
+      "id": "new_wallet_set",
+      "name": "Ten destination accounts in Q-Eternal reorganization table",
+      "type": "onchain_wallet_set",
+      "status": "strongly_supported_custody_reallocation"
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase Global, Inc.",
+      "type": "exchange",
+      "status": "confirmed"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple Labs Inc.",
+      "type": "strategic_contributor",
+      "status": "confirmed"
+    },
+    {
+      "id": "sbi",
+      "name": "SBI Group",
+      "type": "strategic_investor",
+      "status": "confirmed"
+    },
+    {
+      "id": "rlusd",
+      "name": "Ripple USD (RLUSD)",
+      "type": "stablecoin",
+      "status": "confirmed"
+    }
+  ],
+  "edges": [
+    {
+      "from": "evernorth",
+      "to": "bitgo",
+      "relation": "custodies_XRP_with",
+      "evidence": "2026-10-30 SEC prospectus",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "pathfinder",
+      "to": "bitgo",
+      "relation": "custodies_XRP_with",
+      "evidence": "2026-10-30 SEC prospectus",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "bitgo_init",
+      "to": "new_wallet_set",
+      "relation": "activated_accounts",
+      "evidence": "Bithomp pages and Q-Eternal ledger research",
+      "confidence": "strongly_sourced"
+    },
+    {
+      "from": "old_wallet_set",
+      "to": "new_wallet_set",
+      "relation": "XRP_payment_reallocation",
+      "evidence": "XRP Insights data.json and Q-Eternal 2026-10-23 analysis",
+      "confidence": "strongly_sourced"
+    },
+    {
+      "from": "evernorth",
+      "to": "coinbase",
+      "relation": "principal_market_for_XRP_financial_reporting",
+      "evidence": "2026-10-30 SEC prospectus",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "evernorth",
+      "to": "ripple",
+      "relation": "strategic_and_contribution_relationship",
+      "evidence": "SEC prospectus",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "evernorth",
+      "to": "sbi",
+      "relation": "strategic_investor_relationship",
+      "evidence": "SEC prospectus",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "evernorth",
+      "to": "rlusd",
+      "relation": "planned_stable_value_asset_for_XRP_DeFi",
+      "evidence": "SEC prospectus",
+      "confidence": "company_reported_plan"
+    },
+    {
+      "from": "bitgo_init",
+      "to": "candidate_inflows",
+      "relation": "sender_for_tagged_XRP_transfers",
+      "evidence": "Q-Eternal 2026-10-23 and 2026-10-29 research",
+      "confidence": "onchain_sourced_sender_identity_only"
+    }
+  ],
+  "candidate_inflows": {
+    "id": "candidate_inflows",
+    "description": "Two tagged XRP transfers from an unlabelled high-throughput BitGo-activated account to the cash-purchased-tranche destination wallet.",
+    "total_xrp": 9069762.136152,
+    "beneficial_owner": "UNKNOWN",
+    "Evernorth_purchase": "UNVERIFIED"
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "The 370.346M XRP out-of-set movement primarily reflects internal BitGo custody account reorganization.",
+      "classification": "STRONGLY_SUPPORTED_INFERENCE",
+      "support": [
+        "BitGo activated the destination accounts",
+        "multisig configuration",
+        "destination balances align with disclosed contribution tranches",
+        "SEC confirms all XRP initially at BitGo"
+      ],
+      "disconfirming": [
+        "beneficial ownership not directly disclosed",
+        "600k tranche mapping and 200137.78 difference unresolved"
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "The 370.346M XRP was sold or deposited to exchanges.",
+      "classification": "NOT_SUPPORTED_BY_REVIEWED_EVIDENCE",
+      "support": [],
+      "disconfirming": [
+        "BitGo activation and multisig destinations",
+        "tranche balance matching",
+        "no exchange deposit evidence in reviewed sources"
+      ],
+      "unknowns": [
+        "complete destination transaction histories not independently decoded"
+      ]
+    },
+    {
+      "id": "H3",
+      "statement": "The two tagged inflows totaling 9.07M XRP represent additional Evernorth purchases.",
+      "classification": "SPECULATIVE_UNVERIFIED",
+      "support": [
+        "same receiving wallet matches cash-purchased tranche",
+        "same unlabelled BitGo-activated sender"
+      ],
+      "disconfirming": [
+        "sender has many tagged settlement-like transfers",
+        "no company filing or official statement confirms purchases"
+      ]
+    },
+    {
+      "id": "H4",
+      "statement": "The two tagged inflows are custody/client transfers unrelated to new Evernorth acquisitions.",
+      "classification": "PLAUSIBLE_COUNTER_HYPOTHESIS",
+      "support": [
+        "sender pattern resembles high-throughput custody settlement",
+        "sender and destination beneficial owners are not publicly confirmed"
+      ],
+      "disconfirming": [
+        "destination is the cash-purchased-tranche wallet"
+      ]
+    },
+    {
+      "id": "H5",
+      "statement": "Evernorth's DeFi participation has already deployed material XRP collateral.",
+      "classification": "UNVERIFIED",
+      "support": [
+        "company says DeFi participation commenced following Closing"
+      ],
+      "disconfirming": [
+        "company says no material XRP ecosystem deployment expected before Q4 2026",
+        "100% cold storage as of prospectus date",
+        "no disclosed protocol, amount, wallet or collateral transaction"
+      ]
+    }
+  ],
+  "minority_objection": "The public evidence supports a BitGo custody reorganization but does not legally prove that every destination account remains beneficially owned by Evernorth or Pathfinder. Preserve this objection.",
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

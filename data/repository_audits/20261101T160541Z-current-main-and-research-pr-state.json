@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "audit_id": "current-main-and-research-pr-state-20261101T160541Z",
+  "captured_at_utc": "2026-11-01T16:05:41Z",
+  "main": {
+    "sha": "5f7669d4c01fdc53de16a3f0db366926e690f1dc",
+    "comparison_from_pr1464_base": "ahead_by_3",
+    "files_changed": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "change_type": "generated_at timestamp-only refresh; no source observations changed"
+  },
+  "prs": [
+    {
+      "number": 1464,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "c2ae7c70c79d60919dfe2779f51e1be9783c35e2",
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "ahead_by": 25,
+      "behind_by": 3,
+      "mergeable": true
+    },
+    {
+      "number": 1465,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "5ca02dbfefc42222a893e8a6e0f8d9f709b59d38",
+      "base_sha": "02d9f11404ba80823392ad215c733b49e4536128",
+      "mergeable": true
+    },
+    {
+      "number": 1467,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "0d438fa451fdfb1794393b1984e58ddb6e005527",
+      "base_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+      "mergeable": true
+    },
+    {
+      "number": 1468,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "cea621064bb11815482ac23b04be18245cd6609d",
+      "base_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+      "mergeable": true
+    }
+  ],
+  "current_main_risks": [
+    {
+      "workflow": ".github/workflows/merge-queue.yml",
+      "risk": "manual dispatch can execute real merges with write permissions; no explicit user-approval check"
+    },
+    {
+      "workflow": ".github/workflows/scheduler-tick.yml",
+      "risk": "actions:write and contents:write; queue-driven workflow dispatch remains enabled"
+    },
+    {
+      "workflow": ".github/workflows/cross-analysis.yml",
+      "risk": "scheduled repository commit/push path remains active"
+    },
+    {
+      "workflow": ".github/workflows/rotate-databricks-token.yml",
+      "risk": "secret-consuming token rotation workflow remains active; input-to-shell handling requires protected approval and injection review"
+    },
+    {
+      "workflow": ".github/workflows/check-signal-accuracy.yml",
+      "risk": "scheduled/main writer and timestamp freshness semantics require review"
+    },
+    {
+      "workflow": ".github/workflows/knowledge-signal-cycle.yml",
+      "risk": "scheduled/main writer remains active"
+    }
+  ],
+  "safety_proposals": {
+    "pr1465": "Contains broad workflow quarantine but is based on stale main; no changes active until authorized merge.",
+    "pr1468": "Prediction cohort guard is open/draft and based on stale main; no changes active until authorized merge.",
+    "action_this_run": "No main workflow was dispatched, no PR merged, no force-push, no secret read, no external deployment."
+  },
+  "ci_scope": "Research branch CI is updated to include this new Evernorth custody-reorganization regression test. Main CI remains unchanged.",
+  "limitations": [
+    "Full dependency/security scan incomplete",
+    "approval workflow zero-job anomaly unresolved",
+    "branch protection required-status settings not fully readable",
+    "no merge approval supplied"
+  ]
+}

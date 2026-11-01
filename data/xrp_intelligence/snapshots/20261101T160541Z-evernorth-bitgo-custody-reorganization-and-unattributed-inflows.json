@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "evernorth-bitgo-custody-reorganization-and-unattributed-inflows-20261101T160541Z",
+  "captured_at_utc": "2026-11-01T16:05:41Z",
+  "data_cutoff_utc": "2026-11-01T15:45:00Z",
+  "subject": "Evernorth / Pathfinder XRP custody attribution, BitGo wallet reorganization, candidate additional inflows and capital disclosures",
+  "sources": {
+    "sec_prospectus": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+    "xrp_insights_page": "https://xrp-insights.com/xrp-radar/evernorth",
+    "xrp_insights_machine_data": "https://xrp-insights.com/xrp-radar/evernorth/data.json",
+    "q_eternal_oct23": "https://q-eternal.com/blog/2026-10-23/",
+    "q_eternal_oct29": "https://q-eternal.com/blog/2026-10-29/",
+    "tradradar": "https://tradradar.io/markets/xrp"
+  },
+  "company_reported": {
+    "closing_xrp": 473276430,
+    "source": "Evernorth Form 424B3 filed 2026-08-27 and incorporated/updated in the 2026-10-30 prospectus",
+    "capital_tranches": [
+      {
+        "name": "Advance Funding Subscribers XRP portion",
+        "xrp": 600000,
+        "status": "DISCLOSED; NOT MAPPED IN Q-ETERNAL'S TEN-DESTINATION RECONCILIATION"
+      },
+      {
+        "name": "Delayed Funding Subscribers",
+        "xrp": 200000,
+        "status": "DISCLOSED; probable matching 199,999.999 XRP inbound from Uphold reported by tracker"
+      },
+      {
+        "name": "Sponsor Series C / Arrington",
+        "xrp": 211319096.061435,
+        "status": "DISCLOSED"
+      },
+      {
+        "name": "Contributor Related Party Entity",
+        "xrp": 50000000,
+        "status": "DISCLOSED"
+      },
+      {
+        "name": "Ripple contribution to Pathfinder",
+        "xrp": 126791458,
+        "status": "DISCLOSED"
+      },
+      {
+        "name": "Cash purchased with advance-funding cash",
+        "xrp": 84365876.3625,
+        "status": "DISCLOSED; purchase tranche matched on-chain by amount"
+      }
+    ],
+    "primary_custodian": "BitGo Bank & Trust, National Association",
+    "custody_disclosure": {
+      "all_xrp_initially_held_at_bitgo": true,
+      "all_xrp_cold_storage_as_of_prospectus_date_2026_10_30": true,
+      "controls": [
+        "multisignature key management",
+        "hardware security modules",
+        "segregated custody accounts",
+        "multi-person approval workflows"
+      ],
+      "custody_accounts": "BitGo may establish and maintain one or more custody accounts; deposits and withdrawals are submitted through its interface.",
+      "insurance": "Approximately $250M aggregate shared cold-storage insurance across BitGo clients; not dedicated to Evernorth."
+    },
+    "strategy_disclosure": {
+      "yield_strategies": "The prospectus states yield strategies commenced following Closing.",
+      "defi_participation": "The prospectus states DeFi protocol participation commenced following Closing.",
+      "material_deployment_timing": "The company does not anticipate material XRP ecosystem deployment activities before Q4 2026.",
+      "planned_strategies": [
+        "institutional XRP lending",
+        "covered calls",
+        "basis trades",
+        "cash-secured puts",
+        "premium collars",
+        "XRP lending protocols",
+        "XRP/RLUSD AMM liquidity"
+      ],
+      "actual_protocols_wallets_amounts_counterparties": "NOT_DISCLOSED",
+      "actual_xrp_collateral_loan": "NOT_VERIFIED"
+    }
+  },
+  "onchain_tracker_observation": {
+    "provider": "XRP Insights",
+    "method_claim": "rippled JSON-RPC account_info at one validated ledger; scans account_tx for signed transactions",
+    "machine_data_ledger_index": 108047946,
+    "machine_data_ledger_hash": "7354065D0AF72D25CBAB5948FCE4F8E24D49EBC077288A41547F9EBA695EA268",
+    "machine_data_ledger_close_time_utc": "2026-11-01T15:29:31Z",
+    "machine_data_accessed_utc": "2026-11-01T16:05:41Z",
+    "attributed_wallet_count": 13,
+    "current_balance_in_attributed_wallets_xrp": 103129904.54985002,
+    "external_outflow_to_addresses_outside_attributed_set_xrp": 370346663.22975004,
+    "latest_listed_external_movement_utc": "2026-10-22T18:08:22Z",
+    "provider_history_complete_flag": true,
+    "rendered_page_vs_json_freshness": {
+      "rendered_page_ledger_index": 108047615,
+      "rendered_page_close_time_utc": "2026-11-01T15:08:00Z",
+      "machine_json_is_newer": true,
+      "quality_note": "The static rendered summary is behind its machine-readable data.json. Ingestion should prefer the JSON ledger/hash/time and retain both observations."
+    },
+    "arithmetic_reconciliation": {
+      "current_attributed_balance_plus_external_outflow_xrp": 473476567.7796001,
+      "sec_reported_closing_xrp": 473276430,
+      "difference_xrp": 200137.7796001,
+      "status": "UNRESOLVED; do not force-match or classify as sale"
+    }
+  },
+  "custody_reorganization": {
+    "classification": "STRONGLY_SUPPORTED_INTERNAL_BITGO_CUSTODY_REALLOCATION",
+    "tracker_external_outflow_meaning": "Outflow from the 13-wallet attribution set to other addresses; not proof of outflow from BitGo custody or from Evernorth beneficial ownership.",
+    "independent_research_claim": {
+      "source": "https://q-eternal.com/blog/2026-10-23/",
+      "claim": "Q-Eternal reports a 16-payment reorganization between 9 source accounts and 10 destination accounts over 2026-10-22 18:08:12–18:08:22 UTC.",
+      "all_19_accounts": "Q-Eternal reports all 19 source/destination accounts were created by the same BitGo Initialization Wallet and configured as 2-of-3 multisignature.",
+      "destination_balances": "Q-Eternal reports destination balances reconcile closely to five disclosed Evernorth/Pathfinder contribution categories."
+    },
+    "destination_reconciliation": [
+      {
+        "category": "Sponsor Series C / Arrington",
+        "disclosed_xrp": 211319096.061435,
+        "post_transfer_balance_xrp": 211319104,
+        "addresses": [
+          "rK1BUXU1LD3JEkRLCqY9pKq4BEVKmDrzbf",
+          "rJQ4sQVyoYT2SfRNJRXXfqU4rHS915UAjW",
+          "rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w",
+          "rGy4zJtGfGtF7dtjZmBraQTcfZSQgwqpaa"
+        ],
+        "difference_xrp": 7.938565
+      },
+      {
+        "category": "Ripple contribution to Pathfinder",
+        "disclosed_xrp": 126791458,
+        "post_transfer_balance_xrp": 126791464,
+        "addresses": [
+          "rPjKkBTutrvvoboPUuaxSaeXNki5XvjDei",
+          "rwtokyDZhkRwcC6h7b58Bv11tPFEdtJ9EW",
+          "rDFrBJGy2QMNphpknEWLjmrDsavmUewVrh"
+        ],
+        "difference_xrp": 6
+      },
+      {
+        "category": "Contributor Related Party Entity",
+        "disclosed_xrp": 50000000,
+        "post_transfer_balance_xrp": 50000001,
+        "addresses": [
+          "rPhQdyEaz4kcSoYKTAQhvkvdYxWKKw2vSC"
+        ],
+        "difference_xrp": 1
+      },
+      {
+        "category": "Cash-purchased tranche",
+        "disclosed_xrp": 84365876.3625,
+        "post_transfer_balance_xrp": 84365878,
+        "addresses": [
+          "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj"
+        ],
+        "difference_xrp": 1.6375
+      },
+      {
+        "category": "Delayed Funding Subscribers",
+        "disclosed_xrp": 200000,
+        "post_transfer_balance_xrp": 200001,
+        "addresses": [
+          "rMNWpkSN7iJaxmsf61uGWn1qWCeZ6STmyw"
+        ],
+        "difference_xrp": 1
+      }
+    ],
+    "known_bucket_total_xrp": 472676448,
+    "unmapped_advance_funding_subscriber_tranche_xrp": 600000,
+    "reconciliation_gap_after_known_buckets_vs_sec_total_xrp": 599982,
+    "reconciliation_note": "The ten-destination table does not map the separate 600,000 XRP Advance Funding Subscribers tranche. The small residuals in the mapped buckets are not a substitute for a full six-tranche wallet reconciliation.",
+    "explorer_corroboration": {
+      "bithomp_pages_opened": 9,
+      "addresses": [
+        "rK1BUXU1LD3JEkRLCqY9pKq4BEVKmDrzbf",
+        "rLyTyA4nQJMy7T2wgKrd33KeZdjcEMPc2w",
+        "rJQ4sQVyoYT2SfRNJRXXfqU4rHS915UAjW",
+        "rwtokyDZhkRwcC6h7b58Bv11tPFEdtJ9EW",
+        "rDFrBJGy2QMNphpknEWLjmrDsavmUewVrh",
+        "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+        "rMNWpkSN7iJaxmsf61uGWn1qWCeZ6STmyw",
+        "rHuRnnWDUB4UBy8Sf2XvJDMEC4rFgts1xi",
+        "rLMYD4r2WMsReN42naTzDLc8MAmHAbjyw5"
+      ],
+      "observation": "Each accessible page identifies the BitGo Initialization Wallet rD4G6gtD2KwHqsRf7pcyA8r1neUzXT61ix as activator and labels the account multisig; displayed balances align with the relevant large tranche buckets or small operational transfers.",
+      "limitation": "One destination page was inaccessible; the explorer's static extraction did not expose the full transaction history. Bithomp activation evidence corroborates BitGo account creation, not legal beneficial ownership."
+    },
+    "tracker_movement_count": 19,
+    "tracker_movement_sum_xrp": 370346663.22975,
+    "transaction_count_reconciliation": "NOT_RECONCILED: XRP Insights JSON lists 19 out-of-set movements over multiple dates; Q-Eternal describes a 16-payment batch in a narrower ten-second window. The scopes differ and must not be forced to match."
+  },
+  "candidate_additional_inflows": {
+    "status": "UNATTRIBUTED_NOT_CONFIRMED_EVERNORTH_PURCHASE",
+    "sender": "rUWUJ2F3aZknSd8PVutoMnxowMK792maTD",
+    "sender_label": "No public account-name attribution located",
+    "sender_pattern": "Q-Eternal reports many destination-tagged inflows/outflows and 10-drop activation receipts, consistent with a high-throughput BitGo customer/settlement wallet; omnibus interpretation is inference, not confirmed label.",
+    "transfers": [
+      {
+        "date_utc": "2026-10-23T02:47:00Z",
+        "destination": "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+        "destination_tag": 2,
+        "xrp": 5223608.29,
+        "hash": "NOT_INCLUDED_IN_CURRENT_ARTIFACT; retrieve raw transaction hash before promotion"
+      },
+      {
+        "date_utc": "2026-10-28T18:02:02Z",
+        "destination": "rBKrEjXChk7iWTx1cdr2EpBVoXRZ2Bunhj",
+        "destination_tag": 2,
+        "xrp": 3846153.846152,
+        "hash": "NOT_INCLUDED_IN_CURRENT_ARTIFACT; retrieve raw transaction hash before promotion"
+      }
+    ],
+    "combined_reported_inflow_xrp": 9069762.136152,
+    "interpretation": "Potential additional custody inflow. Sender is unlabeled and has multi-customer settlement-like activity; receiving wallet is BitGo-created multisig. No filing or issuer statement confirms these as Evernorth purchases or contributions.",
+    "market_feature_admission": "NONE"
+  },
+  "cantors_equity_facility_reconciliation": {
+    "filing_date": "2026-10-30",
+    "shares_available": 5218935,
+    "cover_stock_price_usd": 14.71,
+    "cover_gross_proceeds_usd": 76800000,
+    "detailed_net_proceeds_estimate_usd": 74400000,
+    "conflicting_summary_gross_proceeds_usd": 80700000,
+    "inferred_stale_reference_price_usd": 15.46,
+    "arithmetic": {
+      "shares_times_cover_price_usd": 76770533.85,
+      "shares_times_inferred_stale_price_usd": 80684735.1
+    },
+    "likely_explanation": "The $80.7M summary figure is arithmetically consistent with the $15.46 October 22 XRPN close, while the cover/detailed gross figure uses the October 29 $14.71 close. This is a likely stale reference-price carryover, not a confirmed issuer explanation.",
+    "facility_terms": "Optional company-directed equity line; Cantor purchases at 97% of applicable VWAP subject to conditions; potential maximum equals 16.7% of then-outstanding Class A shares if all registered shares issue; 4.99% beneficial ownership cap.",
+    "draw_verified": false,
+    "cash_on_hand_from_facility": 0,
+    "intended_use": "General corporate purposes including XRP and ecosystem acquisitions; company expects a substantial portion of any proceeds to acquire XRP, but retains broad discretion."
+  },
+  "market_observation": {
+    "provider": "TradRadar",
+    "observation_time_utc": "2026-11-01T15:45:00Z",
+    "price_usd": 1.2515,
+    "open_interest_usd": 1900000000,
+    "open_interest_24h_change_pct": 1.56,
+    "oi_weighted_funding_per_8h_pct": 0.0074,
+    "long_short_ratio": 3.54,
+    "long_account_share_pct": 78,
+    "liquidations_24h_min_usd": 551610,
+    "long_liquidations_usd": 431090,
+    "short_liquidations_usd": 120520,
+    "coverage": "Seven exchanges for open interest; five for liquidation and long/short aggregates; 15-minute delay.",
+    "provider_conflict": "Other providers have reported materially different open-interest totals. Do not blend without reconciling exchange/contract coverage."
+  },
+  "evidence_classification": {
+    "confirmed_by_primary_filing": [
+      "BitGo is Evernorth's primary XRP custodian.",
+      "The prospectus states 100% cold storage as of 2026-10-30.",
+      "The prospectus describes multisignature/HSM custody controls and one or more custody accounts.",
+      "The prospectus reports yield strategies and DeFi participation commenced following Closing, while saying material XRP ecosystem deployment was not anticipated before Q4 2026."
+    ],
+    "sourced_onchain_claims": [
+      "XRP Insights reports 103,129,904.55 XRP in 13 attributed wallets and 370,346,663.23 XRP transferred outside that attribution set at ledger 108047946.",
+      "Q-Eternal reports a BitGo-created 2-of-3 multisig reorganization and tranche-aligned destination balances.",
+      "Bithomp confirms BitGo activation and multisig status for nine accessible destination accounts."
+    ],
+    "inference": [
+      "The large out-of-set movement is strongly consistent with internal BitGo custody reallocation rather than sale or exchange deposit.",
+      "The $80.7M ELOC summary value likely retains the earlier $15.46 reference price."
+    ],
+    "unknowns": [
+      "Beneficial owner/control of each destination account is not directly disclosed on-ledger.",
+      "Mapping of the separate 600,000 XRP advance-funding subscriber tranche.",
+      "Reason for the 200,137.78 XRP tracker arithmetic difference.",
+      "Whether the 5.2236M and 3.8462M tagged deposits are Evernorth acquisitions, contributions or another custody client's transfers.",
+      "Actual XRP amounts, protocols, counterparties and collateral status for yield strategies."
+    ],
+    "disconfirming_or_limiting_evidence": [
+      "No destination account is publicly labeled Evernorth in the explorer pages reviewed.",
+      "No verified exchange deposit or sale was found in the reviewed custody-reorganization evidence.",
+      "The machine-readable tracker and rendered page expose different ledger cutoffs.",
+      "Q-Eternal's 16-transaction count and XRP Insights' 19 out-of-set movement records have different query scopes."
+    ]
+  },
+  "model_controls": {
+    "feature_admission": "NONE",
+    "forecast_status": "NOT_ISSUED",
+    "paper_position_changed": false,
+    "real_money_action": false,
+    "reason": "Custody migration is not market flow; candidate inbound transfers are unattributed; the remaining tranche and balance differences are unresolved; market providers disagree on derivatives coverage."
+  }
+}
