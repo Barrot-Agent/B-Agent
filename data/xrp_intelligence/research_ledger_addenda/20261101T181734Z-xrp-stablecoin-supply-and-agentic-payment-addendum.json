@@ -95,16 +95,28 @@
       "limitation": "Educational activity does not establish commercial integration."
     },
     {
-      "claim": "SBI Remit's company-wide cumulative remittance total exceeded JPY 2.5T as of May 27, 2026; the source does not attribute that total to XRP or ODL.",
-      "class": "SOURCED_COMPANY_WIDE_REMITTANCE_TOTAL_NOT_XRP_SPECIFIC",
-      "source_id": "sbi-remit-cumulative-remittances-2026-05-29",
-      "limitation": "Exclude from XRP payment-volume features; use the separate 2023 corridor announcement for XRP service availability."
-    },
-    {
       "claim": "SBI Ripple Asia is 60% voting-right owned by SBI Group and provides blockchain/DLT fintech solutions; Ripple's profile says SBI Ripple Asia does not handle XRP.",
       "class": "CONFIRMED_PRIMARY_PROFILE_WITH_NEGATIVE_SCOPE",
       "source_id": "ripple-sbi-ripple-asia-odl-current",
       "limitation": "Do not attribute SBI Remit's XRP usage to SBI Ripple Asia."
+    },
+    {
+      "claim": "In SBI Remit's 2023 XRP-based corridor, SBI Remit sends the customer payment request, SBI VC Trade sends XRP in real time, and Tranglo processes the local payout to the beneficiary bank account.",
+      "class": "CONFIRMED_PRIMARY_OPERATIONAL_FLOW_DESCRIPTION",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06",
+      "limitation": "This confirms the announced operating roles at launch, not current throughput, XRP inventory or net accumulation."
+    },
+    {
+      "claim": "SBI Ripple Asia sells RippleNet software services and explicitly states that it does not handle XRP.",
+      "class": "CONFIRMED_PRIMARY_NEGATIVE_SCOPE",
+      "source_id": "ripple-sbi-ripple-asia-odl-current",
+      "limitation": "The XRP execution leg in the SBI Remit corridor is attributed to SBI VC Trade, not SBI Ripple Asia."
+    },
+    {
+      "claim": "SBI Remit's company-wide cumulative remittances exceeded JPY 2.5T as of May 27, 2026; the total is not attributed to XRP or ODL.",
+      "class": "SOURCED_COMPANY_WIDE_REMITTANCE_TOTAL_NOT_XRP_SPECIFIC",
+      "source_id": "sbi-remit-cumulative-remittances-2026-05-29",
+      "limitation": "Exclude from XRP payment-volume features."
     }
   ],
   "competing_hypotheses": [

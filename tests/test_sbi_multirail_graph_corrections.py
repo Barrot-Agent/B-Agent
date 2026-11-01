@@ -28,8 +28,12 @@ def test_graph_does_not_attribute_direct_xrp_use_to_sbi_ripple_asia():
     edges = graph["edges"]
     assert not any(e["from"] == "SBI_Ripple_Asia" and e["to"] in {"XRP", "XRPL"} for e in edges)
     assert any(e["from"] == "SBI_Group" and e["to"] == "SBI_Ripple_Asia" and "60_percent" in e["relation"] for e in edges)
-    assert any(e["from"] == "SBI_Remit" and e["to"] == "XRP" and e["source_id"] == "sbi-remit-xrp-corridor-2023-09-06" for e in edges)
+    assert not any(e["from"] == "SBI_Remit" and e["to"] == "XRP" for e in edges)
+    assert any(e["from"] == "SBI_Remit" and e["to"] == "SBI_VC_Trade" for e in edges)
+    assert any(e["from"] == "SBI_VC_Trade" and e["to"] == "XRP" for e in edges)
+    assert any(e["from"] == "Tranglo" and e["to"] == "Beneficiary_Bank" for e in edges)
     assert any(e["from"] == "Project_Trinity" and e["to"] == "SMBC" for e in edges)
+    assert any(e["from"] == "SBI_Ripple_Asia" and "does_not_handle_XRP" in e["relation"] for e in edges)
     assert any(e["from"] == "SBI_VC_Trade" and e["to"] == "RLUSD" for e in edges)
     assert any(e["from"] == "SBI_VC_Trade" and e["to"] == "USDC" for e in edges)
 

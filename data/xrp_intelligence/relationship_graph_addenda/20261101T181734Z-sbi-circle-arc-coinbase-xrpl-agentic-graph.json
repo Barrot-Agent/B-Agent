@@ -138,6 +138,18 @@
     {
       "id": "Fireblocks",
       "type": "digital_asset_infrastructure_provider"
+    },
+    {
+      "id": "Tranglo",
+      "type": "cross_border_payout_provider"
+    },
+    {
+      "id": "Beneficiary_Bank",
+      "type": "receiving_bank_account"
+    },
+    {
+      "id": "Ripple_Payments_ODL",
+      "type": "cross_border_payment_solution"
     }
   ],
   "edges": [
@@ -175,20 +187,6 @@
       "relation": "Japan_distribution_and_listing_relationship",
       "evidence_class": "SOURCED_OFFICIAL_SBI_ANNOUNCEMENT",
       "source_id": "ripple-sbi-rlusd-japan-2026-06-24"
-    },
-    {
-      "from": "SBI_Remit",
-      "to": "XRP",
-      "relation": "XRP_bridge_asset_in_selected_remittance_corridors",
-      "evidence_class": "CONFIRMED_OFFICIAL_SBI_REMIT_ANNOUNCEMENT",
-      "source_id": "sbi-remit-xrp-corridor-2023-09-06",
-      "corroborating_source_ids": [
-        "ripple-sbi-ripple-asia-odl-current"
-      ],
-      "limitations": [
-        "Current corridor volume and net XRP inventory are not disclosed.",
-        "Do not attribute SBI Remit's company-wide JPY 2.5T cumulative remittance total to XRP."
-      ]
     },
     {
       "from": "SBIC_Tokyo_SME_Investment_Consultation",
@@ -382,7 +380,7 @@
     {
       "from": "SBI_Ripple_Asia",
       "to": "RippleNet_and_FinTech_Solutions",
-      "relation": "provides_blockchain_DLT_fintech_solution_services; direct_XRP_custody_or_use_not_established",
+      "relation": "provides_blockchain_DLT_fintech_solutions; Ripple_profile_explicitly_says_it_does_not_handle_XRP",
       "evidence_class": "PRIMARY_COMPANY_PROFILE_WITH_EXPLICIT_LIMITATION",
       "source_id": "ripple-sbi-ripple-asia-odl-current"
     },
@@ -455,6 +453,41 @@
       "relation": "stablecoin_infrastructure_provider",
       "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
       "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "SBI_Remit",
+      "to": "SBI_VC_Trade",
+      "relation": "sends_customer_payment_request_for_XRP_enabled_corridor",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "XRP",
+      "relation": "sends_XRP_in_real_time_in_response_to_SBI_Remit_request",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "Tranglo",
+      "to": "Beneficiary_Bank",
+      "relation": "processes_payout_and_pays_beneficiary_bank_account",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "Ripple",
+      "to": "Ripple_Payments_ODL",
+      "relation": "provides_payment_solution",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
+    },
+    {
+      "from": "Ripple_Payments_ODL",
+      "to": "XRP",
+      "relation": "uses_XRP_as_bridge_currency_between_fiat_currencies",
+      "evidence_class": "CONFIRMED_PRIMARY_SBI_REMIT_ANNOUNCEMENT",
+      "source_id": "sbi-remit-xrp-corridor-2023-09-06"
     }
   ],
   "competing_hypotheses": [
@@ -464,9 +497,11 @@
       "supporting_evidence": [
         "SBI Group is a Circle Arc founding validator and says it will leverage USDC and JPYSC.",
         "SBI VC Trade distributes USDC and RLUSD in Japan.",
-        "SBI Remit uses XRP in selected remittance corridors."
+        "SBI Remit sends customer payment requests in the XRP-enabled remittance corridor; SBI VC Trade is the entity that sends XRP in real time.",
+        "Project Trinity uses a separate SMBC-issued trust-beneficiary stablecoin for its DvP proof-of-concept."
       ],
       "disconfirming_or_missing": [
+        "SBI Ripple Asia explicitly says it does not handle XRP.",
         "No current throughput by rail is disclosed.",
         "No evidence of exclusive commitment or net XRP accumulation from these initiatives."
       ]
@@ -552,6 +587,8 @@
     "Project Trinity's announced DvP proof-of-concept used an SMBC-issued trust-beneficiary stablecoin; no XRP, RLUSD or USDC use is stated.",
     "No evidence shows Circle's 98.8% agent-payment claim represents all x402 activity across all chains.",
     "No evidence shows Circle Arc uses XRP as its native gas or collateral asset.",
-    "No evidence shows x402 payment-event counts translate into net XRP purchases."
+    "No evidence shows x402 payment-event counts translate into net XRP purchases.",
+    "SBI Remit is the remittance service provider and request originator; the 2023 release identifies SBI VC Trade as the entity sending XRP in real time.",
+    "SBI Ripple Asia explicitly says it does not handle XRP; do not attribute SBI VC Trade's XRP execution to SBI Ripple Asia."
   ]
 }

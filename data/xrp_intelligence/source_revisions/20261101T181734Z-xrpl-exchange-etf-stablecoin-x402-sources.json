@@ -248,11 +248,13 @@
       "accessed_at_utc": "2026-11-01T18:25:00Z",
       "classification": "PRIMARY_COMPANY_PROFILE",
       "claims": [
-        "Ripple describes SBI Ripple Asia as a fintech solutions and payments-related joint venture.",
-        "The profile does not establish direct XRP custody or trading by SBI Ripple Asia."
+        "SBI Ripple Asia sells RippleNet software services to financial institutions and remittance providers.",
+        "Ripple explicitly states SBI Ripple Asia does not handle the crypto-asset XRP.",
+        "Ripple separately states XRP-based ODL is commercialized in Japan and identifies SBI Remit and SBI VC Trade in the remittance service."
       ],
       "limitations": [
-        "Do not infer XRP use by SBI Ripple Asia solely from the SBI/Ripple joint-venture name or from separate SBI Remit XRP corridors."
+        "Do not attribute SBI VC Trade's XRP transfer to SBI Ripple Asia.",
+        "No current corridor throughput or XRP inventory is disclosed."
       ]
     },
     {
@@ -290,10 +292,15 @@
       "accessed_at_utc": "2026-11-01T18:27:00Z",
       "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
       "claims": [
-        "SBI Remit announced expansion of Ripple's XRP-using remittance solution to the Philippines, Vietnam and Indonesia."
+        "SBI Remit sends the customer's payment request.",
+        "SBI VC Trade sends XRP in real time in response to the request.",
+        "Tranglo processes the payout request from SBI Remit and pays the beneficiary's bank account in the receiving country.",
+        "XRP is described as the bridge currency used to reduce destination-account prefunding."
       ],
       "limitations": [
-        "The announcement establishes corridor availability at that time, not current throughput or net XRP accumulation."
+        "The announcement establishes the operating roles and launch in 2023, not current throughput.",
+        "The announcement does not disclose XRP inventory, average holding time or net XRP accumulation.",
+        "The XRP transfer destination and exact counterparty wallet are not identified in the release."
       ]
     },
     {
