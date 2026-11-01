@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "ripple-institutional-adoption-and-macro-snapshot-20261101T1430Z",
+  "captured_at_utc": "2026-11-01T14:30:00Z",
+  "ripple_corporate_metrics": {
+    "annualized_product_revenue_run_rate_usd": 900000000,
+    "transactions_enabled_2025_usd": 16000000000000,
+    "licenses": 85,
+    "institutions_corporates_enterprises": 1700,
+    "payout_markets": 60,
+    "lifetime_network_volume_target_usd": 150000000000,
+    "rlusd_market_cap_usd": 2600000000,
+    "source_class": "company_reported",
+    "interpretation": "broad Ripple product ecosystem metrics; not XRP-specific transaction volume or XRP token demand"
+  },
+  "ripple_institutional_products": {
+    "treasury_247_returns": "eligible corporate customers may earn returns on qualifying digital assets held in Ripple wallets including RLUSD",
+    "treasury_xrpl_assets": "tokenized money-market funds on XRPL included in 24/7 Returns platform announcement",
+    "ripple_prime": "provides cross-margining, financing and clearing; RLUSD described as facilitating onchain repo markets",
+    "bny_c2fo": "tokenized trade-finance collaboration on XRPL, starting with supplier finance initiative",
+    "privy": "programmable-wallet payments with XRP, RLUSD and other XRPL assets, including AI-agent use cases",
+    "rlusd_exchange_distribution": [
+      "Coinbase",
+      "Robinhood",
+      "Binance",
+      "Kraken",
+      "OKX"
+    ],
+    "usage_metrics": "not disclosed by product or asset"
+  },
+  "macro": {
+    "fomc_date": "2026-10-28",
+    "target_range_pct": [
+      3.75,
+      4
+    ],
+    "vote": "10-2; both dissenters preferred a 25bp increase",
+    "fed_statement": "strong activity, elevated inflation, elevated uncertainty partly from geopolitical developments",
+    "treasury_yields_2026_10_30_pct": {
+      "three_month": 4.16,
+      "two_year": 4.56,
+      "ten_year": 4.94,
+      "thirty_year": 5.31
+    },
+    "sofr_2026_10_28_pct": 3.94,
+    "circle_q2_reserve_income_share_pct": 95.2,
+    "circle_q2_reserve_return_pct": 3.5,
+    "coinbase_q3_stablecoin_revenue_usd": 306905000,
+    "coinbase_q3_stablecoin_revenue_yoy_change_pct": -5.43,
+    "macro_interpretation": "rate-sensitive stablecoin issuer/distributor earnings; non-yielding XRP opportunity-cost channel is plausible but directionally ambiguous"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none; quarterly issuer disclosures and macro observations are research context until point-in-time synchronized history and out-of-sample tests exist"
+}

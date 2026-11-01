@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-RIPPLE-INSTITUTIONAL-TREASURY-PRIME-AND-XRPL-ADOPTION-20261101T1430Z",
+  "captured_at_utc": "2026-11-01T14:30:00Z",
+  "sources": [
+    {
+      "id": "ripple-treasury-247-returns-20261026",
+      "url": "https://ripple.com/ripple-press/ripple-treasury-introduces-always-on-corporate-treasury-platform-to-modernize-corporate-cash-management/",
+      "publisher": "Ripple",
+      "published_date": "2026-10-26",
+      "classification": "COMPANY_REPORTED_PRODUCT_ANNOUNCEMENT",
+      "claims": [
+        "Ripple Treasury introduced 24/7 Returns for eligible corporate customers",
+        "eligible customers may earn returns on qualifying digital assets held in Ripple wallets, including RLUSD, subject to program requirements",
+        "the broader Treasury platform combines treasury management, AI-powered orchestration, payments and digital rails"
+      ],
+      "limitations": [
+        "no program AUM, RLUSD balance, yield or customer-level adoption data disclosed",
+        "eligibility and program requirements limit generalization"
+      ]
+    },
+    {
+      "id": "ripple-institutional-infrastructure-20261028",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "publisher": "Ripple",
+      "published_date": "2026-10-28",
+      "classification": "COMPANY_REPORTED_CORPORATE_STRATEGY",
+      "claims": [
+        "Ripple said it was on track to exit 2026 with $900M annualized product revenue",
+        "Ripple said its products enabled over $16T in transactions during 2025",
+        "Ripple reported more than 85 licenses, 1,700+ institutions/corporates/enterprises, 60+ payout markets and network lifetime volume approaching $150B by year end",
+        "Ripple reported 3x growth in customers and partners using multiple solutions",
+        "Ripple reported RLUSD market capitalization around $2.6B and availability on Coinbase, Robinhood, Binance, Kraken and OKX",
+        "Ripple said RLUSD facilitates onchain repo markets",
+        "Ripple described Ripple Prime as providing cross-margining, financing and clearing across traditional and digital venues",
+        "Ripple announced BNY collaboration to advance tokenized trade finance on XRPL, beginning with a supplier-finance initiative with C2FO",
+        "Ripple said Privy supports programmable-wallet payments with XRP, RLUSD and other digital assets on XRPL, including AI-agent use cases",
+        "Ripple Treasury's 24/7 Returns combines RLUSD, tokenized money-market funds on XRPL and institutional liquidity infrastructure"
+      ],
+      "limitations": [
+        "all scale metrics are company-reported and span multiple Ripple products",
+        "$16T transactions enabled in 2025 is not XRP-specific volume",
+        "RLUSD repo use does not prove XRP is collateral in Ripple Prime",
+        "tokenized money-market funds on XRPL do not necessarily use XRP as the asset or collateral",
+        "BNY/C2FO supplier-finance initiative is not quantified",
+        "Privy support does not establish production payment volume"
+      ]
+    },
+    {
+      "id": "ripple-coinbase-rlusd-20261028",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple",
+      "published_date": "2026-10-28",
+      "classification": "COMPANY_REPORTED_DISTRIBUTION_PARTNERSHIP",
+      "claims": [
+        "RLUSD launched on Coinbase Prime, Exchange and Retail across XRPL, Base and Ethereum",
+        "Ripple says it will provide liquidity on Base",
+        "Coinbase Global Exchange collateral support was a future rollout"
+      ],
+      "limitations": [
+        "no independent volume or collateral utilization disclosed",
+        "Global Exchange collateral feature was not live at announcement"
+      ]
+    }
+  ]
+}

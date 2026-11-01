@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "graph_id": "ripple-prime-treasury-bny-privy-and-collateral-graph-20261101T1430Z",
+  "captured_at_utc": "2026-11-01T14:30:00Z",
+  "nodes": [
+    {
+      "id": "Ripple",
+      "type": "financial_infrastructure_company"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "XRPL",
+      "type": "ledger"
+    },
+    {
+      "id": "Ripple_Treasury",
+      "type": "corporate_treasury_platform"
+    },
+    {
+      "id": "Ripple_Prime",
+      "type": "prime_brokerage"
+    },
+    {
+      "id": "BNY",
+      "type": "custodian_bank"
+    },
+    {
+      "id": "C2FO",
+      "type": "trade_finance_platform"
+    },
+    {
+      "id": "Privy",
+      "type": "wallet_infrastructure"
+    },
+    {
+      "id": "Coinbase",
+      "type": "exchange_custodian"
+    },
+    {
+      "id": "Circle",
+      "type": "stablecoin_issuer"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "Morpho",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "cbXRP",
+      "type": "wrapped_asset"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Ripple",
+      "to": "Ripple_Treasury",
+      "relation": "operates_always_on_corporate_treasury_platform",
+      "status": "company_announced"
+    },
+    {
+      "from": "Ripple_Treasury",
+      "to": "RLUSD",
+      "relation": "24_7_Returns_eligible_digital_asset",
+      "status": "company_announced; usage_not_quantified"
+    },
+    {
+      "from": "Ripple_Treasury",
+      "to": "XRPL",
+      "relation": "tokenized_money_market_funds_available_on_XRPL",
+      "status": "company_announced; asset_and_volume_not_quantified"
+    },
+    {
+      "from": "Ripple",
+      "to": "Ripple_Prime",
+      "relation": "institutional_prime_brokerage_and_financing",
+      "status": "company_announced"
+    },
+    {
+      "from": "RLUSD",
+      "to": "Ripple_Prime",
+      "relation": "facilitates_onchain_repo_markets",
+      "status": "company_reported; do_not_infer_XRP_collateral"
+    },
+    {
+      "from": "BNY",
+      "to": "Ripple",
+      "relation": "tokenized_trade_finance_collaboration_on_XRPL",
+      "status": "company_announced"
+    },
+    {
+      "from": "C2FO",
+      "to": "XRPL",
+      "relation": "supplier_finance_tokenization_initiative_with_BNY_and_Ripple",
+      "status": "company_announced"
+    },
+    {
+      "from": "Privy",
+      "to": "XRPL",
+      "relation": "programmable_wallet_payments_with_XRP_RLUSD_and_other_assets",
+      "status": "company_announced"
+    },
+    {
+      "from": "XRP",
+      "to": "XRPL",
+      "relation": "native_asset_and_bridge/fee_asset",
+      "status": "protocol_fact"
+    },
+    {
+      "from": "Coinbase",
+      "to": "cbXRP",
+      "relation": "custodial_wrapper_and_candidate_Morpho_collateral",
+      "status": "company_disclosure_plus_secondary_market_candidate"
+    },
+    {
+      "from": "cbXRP",
+      "to": "Morpho",
+      "relation": "USDC_borrowing_collateral",
+      "status": "permissionless_market_observation; exact Coinbase retail mapping unknown"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer",
+      "status": "confirmed"
+    },
+    {
+      "from": "USDC",
+      "to": "XRPL",
+      "relation": "native_issuance",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Circle",
+      "to": "Ripple",
+      "relation": "USDC_on_XRPL_and_Ripple_Payments_intended_USDC_use_alongside_RLUSD",
+      "status": "confirmed_company_announcements"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "distribution_on_XRPL_Base_Ethereum",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC_distribution_revenue_share_and_equity_investment",
+      "status": "SEC_disclosed"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H_RIPPLE_STACK",
+      "claim": "Ripple is assembling a broad institutional stack in which RLUSD, XRP, XRPL, custody, prime brokerage, treasury and tokenized assets serve different roles.",
+      "support": [
+        "Ripple Treasury 24/7 Returns",
+        "Ripple Prime and repo-market role for RLUSD",
+        "BNY/C2FO XRPL trade-finance initiative",
+        "Privy programmable-wallet support for XRP/RLUSD",
+        "85 licenses and 1,700+ institutions claimed"
+      ],
+      "counterevidence": [
+        "company-reported scale metrics are not asset-specific",
+        "no product-level XRP volume or collateral balance disclosed"
+      ],
+      "status": "supported_company_strategy_inference"
+    },
+    {
+      "id": "H_RLUSD_VS_XRP_COLLATERAL",
+      "claim": "RLUSD may be preferred for stable-value repo collateral while XRP/cbXRP may serve different DeFi and bridge-liquidity roles.",
+      "support": [
+        "Ripple says RLUSD facilitates onchain repo markets",
+        "Coinbase offers XRP-backed USDC loans via cbXRP/Morpho"
+      ],
+      "counterevidence": [
+        "no comparable haircuts, borrower balances or liquidation histories across the products",
+        "Ripple Prime's exact collateral composition is not disclosed"
+      ],
+      "status": "open_hypothesis"
+    },
+    {
+      "id": "H_HIGH_RATES",
+      "claim": "High short rates support Circle reserve income but can increase the opportunity cost of holding non-yielding XRP.",
+      "support": [
+        "Fed held 3.75%-4.00% with two hike dissents",
+        "SOFR 3.94%, 3m Treasury 4.16%",
+        "Circle Q2 reserve income 95.2% of revenue",
+        "Coinbase says lower rates reduced stablecoin revenue despite USDC balance growth"
+      ],
+      "counterevidence": [
+        "risk appetite, dollar strength, liquidity and adoption may dominate",
+        "Circle Q3 realized reserve yield not yet reported"
+      ],
+      "status": "plausible_macro_channel_not_directional"
+    },
+    {
+      "id": "H_XRPL_INSTITUTIONAL_USE",
+      "claim": "BNY/C2FO and Ripple Treasury tokenized funds may increase XRPL institutional activity.",
+      "support": [
+        "company-announced BNY/C2FO supplier-finance initiative",
+        "24/7 Returns includes tokenized money-market funds on XRPL"
+      ],
+      "counterevidence": [
+        "no assets under management, transfer volume or XRP bridge share disclosed"
+      ],
+      "status": "early_company_announcements_only"
+    }
+  ],
+  "red_team_objections": [
+    "Do not treat Ripple's $16T product transaction figure as XRP volume.",
+    "Do not assume RLUSD repo collateral means XRP is collateral in Ripple Prime.",
+    "Do not assume tokenized MMFs on XRPL require XRP as the investment asset.",
+    "Do not infer customer adoption from a product announcement or partner logo.",
+    "Do not turn high rates into a one-direction XRP forecast."
+  ]
+}

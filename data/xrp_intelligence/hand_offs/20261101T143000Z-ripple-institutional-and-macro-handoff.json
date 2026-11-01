@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "handoff_id": "ripple-institutional-and-macro-handoff-20261101T1430Z",
+  "captured_at_utc": "2026-11-01T14:30:00Z",
+  "research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T143000Z-ripple-institutional-treasury-prime-and-xrpl-adoption.json",
+  "macro_revision": "data/xrp_intelligence/source_revisions/20261101T143000Z-fed-treasury-sofr-macro.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T143000Z-ripple-institutional-adoption-and-macro-snapshot.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T143000Z-ripple-prime-treasury-bny-privy-and-collateral-graph.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T143000Z-ripple-prime-collateral-vs-cbxrp-and-macro.json",
+  "key_findings": [
+    "Ripple announced a broad institutional stack: Ripple Treasury, 24/7 Returns, Ripple Prime, payments, custody, RLUSD, XRPL tokenized money-market funds, BNY/C2FO trade finance and Privy programmable-wallet payments.",
+    "Ripple's $900M annualized product revenue run rate, $16T transactions enabled in 2025, 85 licenses, 1,700+ institutions, 60+ payout markets and $150B lifetime volume target are company-reported ecosystem metrics, not XRP-specific volume.",
+    "RLUSD is described by Ripple as facilitating onchain repo markets; Ripple Prime provides financing/clearing. No source in this run establishes XRP as Ripple Prime collateral.",
+    "BNY/C2FO tokenized supplier finance on XRPL and Privy wallet payments with XRP/RLUSD are institutional adoption signals, but product-level volumes are undisclosed.",
+    "FOMC held 3.75%-4.00% on October 28 by 10-2; both dissenters preferred a 25bp increase. Treasury October 30 yields were 4.16% 3m, 4.56% 2y, 4.94% 10y and 5.31% 30y; SOFR was 3.94% on October 28.",
+    "High short rates can support stablecoin reserve income while increasing opportunity cost for non-yielding XRP; this is a plausible but ambiguous macro channel, not a forecast."
+  ],
+  "next_actions": [
+    "Measure Ripple Prime repo collateral composition and financing volumes by asset.",
+    "Track Ripple Treasury 24/7 Returns eligible asset balances, including RLUSD and tokenized MMFs on XRPL.",
+    "Track BNY/C2FO supplier-finance issuance, token contract, asset denomination and transfer volumes.",
+    "Track Privy programmable-wallet XRP/RLUSD payments and actual onchain volume.",
+    "Build daily FOMC, SOFR, Treasury curve, real-yield, DXY and credit-spread features with point-in-time provenance.",
+    "Compare RLUSD repo collateral with cbXRP/Morpho collateral using actual haircuts, liquidation and borrower data.",
+    "Do not infer XRP demand from Ripple's aggregate product metrics."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}
