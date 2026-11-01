@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261101T001238Z-POST-ELIGIBILITY-ESCROW",
+  "captured_at_utc": "2026-11-01T00:12:38Z",
+  "data_cutoff_utc": "2026-10-31T22:18:00Z",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+  ],
+  "source_revision_ids": [
+    "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS"
+  ],
+  "nodes": [
+    {
+      "id": "XRPL_ESCROW_R9UUEX",
+      "type": "account",
+      "label": "r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp"
+    },
+    {
+      "id": "XRPL_ESCROW_RB3WNZ",
+      "type": "account",
+      "label": "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn"
+    },
+    {
+      "id": "NOV1_ESCROW_A",
+      "type": "escrow_object_group",
+      "label": "500M XRP scheduled eligibility"
+    },
+    {
+      "id": "NOV1_ESCROW_B",
+      "type": "escrow_object_group",
+      "label": "500M XRP scheduled eligibility"
+    },
+    {
+      "id": "ESCROW_FINISH",
+      "type": "transaction_type",
+      "label": "EscrowFinish"
+    },
+    {
+      "id": "DESTINATION",
+      "type": "account_role",
+      "label": "Escrow Destination"
+    },
+    {
+      "id": "FOLLOW_ON_TRANSFER",
+      "type": "transaction_type",
+      "label": "Subsequent XRP Payment"
+    },
+    {
+      "id": "REESCROW",
+      "type": "transaction_type",
+      "label": "EscrowCreate"
+    },
+    {
+      "id": "EXCHANGE_DEPOSIT",
+      "type": "market_event",
+      "label": "Exchange deposit"
+    }
+  ],
+  "edges": [
+    {
+      "from": "XRPL_ESCROW_R9UUEX",
+      "to": "NOV1_ESCROW_A",
+      "relation": "reported_owner_of",
+      "evidence_class": "SOURCED_CLAIM",
+      "confidence": "MEDIUM",
+      "as_of_utc": "2026-10-31T22:18:00Z"
+    },
+    {
+      "from": "XRPL_ESCROW_RB3WNZ",
+      "to": "NOV1_ESCROW_B",
+      "relation": "reported_owner_of",
+      "evidence_class": "SOURCED_CLAIM",
+      "confidence": "MEDIUM",
+      "as_of_utc": "2026-10-31T22:18:00Z"
+    },
+    {
+      "from": "NOV1_ESCROW_A",
+      "to": "ESCROW_FINISH",
+      "relation": "requires_for_release",
+      "evidence_class": "CONFIRMED_PROTOCOL_RULE",
+      "confidence": "HIGH"
+    },
+    {
+      "from": "NOV1_ESCROW_B",
+      "to": "ESCROW_FINISH",
+      "relation": "requires_for_release",
+      "evidence_class": "CONFIRMED_PROTOCOL_RULE",
+      "confidence": "HIGH"
+    },
+    {
+      "from": "ESCROW_FINISH",
+      "to": "DESTINATION",
+      "relation": "delivers_escrowed_xrp_if_successful",
+      "evidence_class": "CONFIRMED_PROTOCOL_RULE",
+      "confidence": "HIGH"
+    },
+    {
+      "from": "DESTINATION",
+      "to": "FOLLOW_ON_TRANSFER",
+      "relation": "possible_subsequent_movement",
+      "evidence_class": "CONDITIONAL"
+    },
+    {
+      "from": "FOLLOW_ON_TRANSFER",
+      "to": "REESCROW",
+      "relation": "possible_relocking_path",
+      "evidence_class": "CONDITIONAL"
+    },
+    {
+      "from": "FOLLOW_ON_TRANSFER",
+      "to": "EXCHANGE_DEPOSIT",
+      "relation": "possible_exchange_route",
+      "evidence_class": "CONDITIONAL"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-ESCROW-EXECUTED-DATA-LAG",
+      "claim": "EscrowFinish executed near eligibility but available trackers have not refreshed.",
+      "status": "PLAUSIBLE_UNVERIFIED",
+      "support": [
+        "Historical median EscrowFinish delay was 11 seconds."
+      ],
+      "disconfirming_or_missing": [
+        "No transaction hash or validated post-event account state obtained."
+      ],
+      "test": "Query account_tx and transaction metadata at a validated ledger after 00:00 UTC."
+    },
+    {
+      "id": "H-ESCROW-DELAYED",
+      "claim": "EscrowFinish has not yet executed; eligibility time passed but the escrow remains locked until a successful transaction.",
+      "status": "PLAUSIBLE_UNVERIFIED",
+      "support": [
+        "XRPL requires EscrowFinish; prior observed maximum delay was 2.3 days."
+      ],
+      "disconfirming_or_missing": [
+        "No raw account_objects response after eligibility."
+      ],
+      "test": "Query both accounts' escrow objects and account transaction history."
+    },
+    {
+      "id": "H-EXPLORER-CACHE-CONFLICT",
+      "claim": "The Bithomp owner pages are stale/incomplete and do not reflect the current validated ledger.",
+      "status": "PLAUSIBLE_UNVERIFIED",
+      "support": [
+        "Prior Bithomp page observation conflicted with XRP Insights' pinned-ledger schedule."
+      ],
+      "disconfirming_or_missing": [
+        "No same-ledger independent raw account_objects response."
+      ],
+      "test": "Compare raw account_objects from two independent public nodes at the same ledger index."
+    }
+  ],
+  "excluded_inferences": [
+    "No inference that 1B XRP was sold.",
+    "No inference that 1B XRP entered circulating market supply.",
+    "No inference that an exchange deposit occurred.",
+    "No directional price signal from eligibility alone."
+  ]
+}
