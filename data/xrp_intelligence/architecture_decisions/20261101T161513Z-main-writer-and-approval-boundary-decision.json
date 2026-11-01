@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "decision_id": "main-writer-and-approval-boundary-20261101T161513Z",
+  "captured_at_utc": "2026-11-01T16:15:13Z",
+  "decisions": [
+    {
+      "area": "knowledge-signal-cycle",
+      "decision": "Disable current main writer until provider access is least-privilege, approval is protected, and publication is PR-only.",
+      "reason": "Manual workflow currently reads GROQ_API_KEY, has contents:write and commits/pushes directly to main.",
+      "proposed_state": "permissions:{} and fail-closed disabled job"
+    },
+    {
+      "area": "barrot-approve-pr",
+      "decision": "Disable current approval-label workflow until a protected human-review mechanism is verified.",
+      "reason": "Current main workflow has pull-requests:write, no actor allowlist and no protected environment; it applies an approved label and posts a comment but does not merge.",
+      "proposed_state": "permissions:{} and fail-closed disabled job; no label, comment or merge"
+    },
+    {
+      "area": "merge-queue-and-scheduler",
+      "decision": "Keep merge queue and scheduler dispatch quarantined pending explicit user approval and verified protected reviewer controls.",
+      "reason": "Current main has write-capable manual merge and queue-driven workflow dispatch paths."
+    }
+  ],
+  "preserved_capabilities": "Read-only analysis, artifact generation and local deterministic research can continue. Re-enable external mutation only through a separately reviewed least-privilege adapter and protected approval design.",
+  "main_change": "NONE"
+}

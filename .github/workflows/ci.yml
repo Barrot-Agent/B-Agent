@@ -86,4 +86,5 @@ jobs:
             tests/test_sbi_ousd_ask_camilla_evernorth_addendum.py \
             tests/test_evernorth_financing_correction.py \
             tests/test_evernorth_bitgo_custody_reorganization.py \
+            tests/test_main_privileged_workflow_gap_audit.py \
             -v --no-cov

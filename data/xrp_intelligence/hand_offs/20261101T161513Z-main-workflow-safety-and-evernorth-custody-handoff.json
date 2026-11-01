@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "handoff_id": "main-workflow-safety-and-evernorth-custody-handoff-20261101T161513Z",
+  "captured_at_utc": "2026-11-01T16:15:13Z",
+  "repository_audit": "data/repository_audits/20261101T161513Z-main-knowledge-signal-and-approval-workflow-gaps.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T161513Z-main-writer-and-approval-boundary-decision.json",
+  "research_snapshot": "data/xrp_intelligence/snapshots/20261101T160541Z-evernorth-bitgo-custody-reorganization-and-unattributed-inflows.json",
+  "highest_priority": [
+    "Keep XRP intelligence first and Barrot V3 as execution/verification foundation.",
+    "Do not count the 370.346M XRP out-of-set movement as market supply; evidence strongly supports BitGo custody reallocation.",
+    "Resolve the unmapped 600,000 XRP tranche and 200,137.78 XRP balance difference.",
+    "Trace the two 9.07M XRP tagged inflows into the cash-purchased-tranche account; beneficial owner and purchase status remain unknown.",
+    "Keep knowledge-signal-cycle and approval-label workflows disabled in the security proposal until protected human review and PR-only publishing are verified."
+  ],
+  "next_actions": [
+    "Wait for and inspect exact-head CI for PR #1465 head 57805749, which adds the approval workflow regression suite to CI.",
+    "If CI passes, preserve PR #1465 as open/draft/unmerged pending user authorization; main remains exposed until an approved merge.",
+    "Reconcile PR #1465 with current main without force-push or overwriting other branches.",
+    "Trace Evernorth destination wallets and candidate BitGo tagged inflows using raw validated XRPL transaction metadata.",
+    "Continue Coinbase/Circle/SBI/ASK/actual-capital research and point-in-time prediction feature capture."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "safety": "No main changes, merges, force-pushes, manual workflow dispatches, secret access or trading actions."
+}

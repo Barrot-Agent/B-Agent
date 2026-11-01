@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "addendum_id": "main-knowledge-signal-and-approval-gap-20261101T161513Z",
+  "captured_at_utc": "2026-11-01T16:15:13Z",
+  "repository_audit": "data/repository_audits/20261101T161513Z-main-knowledge-signal-and-approval-workflow-gaps.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T161513Z-main-writer-and-approval-boundary-decision.json",
+  "handoff": "data/xrp_intelligence/hand_offs/20261101T161513Z-main-workflow-safety-and-evernorth-custody-handoff.json",
+  "findings": [
+    "Current main's Knowledge Signal Cycle is a manual contents:write workflow that reads GROQ_API_KEY and commits/pushes to main.",
+    "Current main's Barrot Controlled PR Approval workflow has pull-requests:write but no actor allowlist or protected environment; it applies an approved label and comment but does not merge.",
+    "The existing PR #1465 proposal now disables both workflows; latest head CI was pending at the time of this addendum.",
+    "The current main remains unchanged; all proposed workflow restrictions are draft PR changes only."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}
