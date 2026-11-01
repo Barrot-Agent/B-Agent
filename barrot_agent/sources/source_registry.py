@@ -215,6 +215,26 @@ class SourceRegistry:
             return False
         return actual == expected.lower()
 
+    def read_verified_content(self, source_id: str) -> bytes:
+        """Read the retained local snapshot only when its bytes match the registered SHA-256."""
+        record = self.require(source_id)
+        snapshot_path = record.version.snapshot_path or record.identity.uri
+        if not isinstance(snapshot_path, str) or not snapshot_path.strip():
+            raise ValueError(f"source snapshot path is unavailable: {source_id}")
+        if snapshot_path.startswith(("http://", "https://")):
+            raise ValueError(f"remote source has no retained local snapshot: {source_id}")
+
+        path = Path(snapshot_path)
+        if not path.is_absolute():
+            path = (self.path.parent / path).resolve()
+        try:
+            content = path.read_bytes()
+        except OSError as exc:
+            raise ValueError(f"source snapshot bytes are unavailable: {source_id}") from exc
+        if not self.verify_content_hash(source_id, content):
+            raise ValueError(f"source snapshot bytes do not match registered content hash: {source_id}")
+        return content
+
     def remove(self, source_id: str) -> None:
         """
         Deliberately unsupported.
