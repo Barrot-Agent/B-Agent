@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrpl-usdc-rlusd-flutterwave-collateral-20261101T172000Z",
+  "captured_at_utc": "2026-11-01T17:20:00Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T172000Z-xrpl-stablecoin-liquidity-collateral.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T172000Z-xrpl-stablecoin-liquidity-source-revision.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T172000Z-xrpl-usdc-rlusd-flutterwave-graph.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T172000Z-xrpl-stablecoin-depth-and-native-lending-status.json",
+  "findings": [
+    "Circle USDC is natively issued on XRPL, but its current XRPL supply and USDC/XRP AMM depth are small relative to Ripple RLUSD.",
+    "RLUSD XRPL supply is approximately 711.83M, about 29.4% of its $2.42B two-chain supply; Circle USDC supply on XRPL is reported at 6.02M by XRPLWin.",
+    "XRP/RLUSD AMM TVL is reported around $5.38M, versus about $0.26M for USDC/XRP; providers and timestamps differ, so this is an approximate scale comparison.",
+    "Native XRPL LendingProtocol and SingleAssetVault amendments are not activated; vault/loan-broker labels are not evidence of active lending.",
+    "Circle Ventures and Ripple both invested in Flutterwave. Flutterwave's current public API docs list RLUSD only on Ethereum and do not list XRPL, a material counterpoint to assuming the announced XRPL/RLUSD rail is generally available.",
+    "Mastercard names Circle USDC and Ripple RLUSD among stablecoins for expanded settlement, with XRPL among networks, but does not publish a stablecoin-by-chain deployment matrix.",
+    "Ondo's tokenized Treasury redemption pilot used XRPL for the asset leg and Kinexys/correspondent banking for fiat proceeds; XRP was not established as the settlement asset."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

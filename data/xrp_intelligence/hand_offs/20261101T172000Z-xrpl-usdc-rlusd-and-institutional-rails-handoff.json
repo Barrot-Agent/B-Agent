@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrpl-usdc-rlusd-and-institutional-rails-handoff-20261101T172000Z",
+  "captured_at_utc": "2026-11-01T17:20:00Z",
+  "latest_snapshot": "data/xrp_intelligence/snapshots/20261101T172000Z-xrpl-stablecoin-liquidity-collateral.json",
+  "latest_source_revision": "data/xrp_intelligence/source_revisions/20261101T172000Z-xrpl-stablecoin-liquidity-source-revision.json",
+  "latest_relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T172000Z-xrpl-usdc-rlusd-flutterwave-graph.json",
+  "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T172000Z-xrpl-stablecoin-depth-and-native-lending-status.json",
+  "research_ledger_addendum": "data/xrp_intelligence/research_ledger_addenda/20261101T172000Z-xrpl-usdc-rlusd-flutterwave-collateral.json",
+  "prediction": {
+    "status": "IMPLEMENTED_NOT_POPULATED",
+    "forecast_status": "NOT_ISSUED",
+    "feature_admission": "NONE"
+  },
+  "repository": {
+    "main_sha": "32682bc3797009421682ab51da59bf058b7d63d5",
+    "security_pr": 1469,
+    "security_pr_head": "490d8c2eb08961dc85f788f87a8052bdc3bc2895",
+    "security_ci": "387 tests + 8 subtests passed",
+    "security_gate": "PASSED_MERGING_DISABLED",
+    "research_pr": 1464,
+    "research_pr_head": "8792a5d0ffb0e145558626321c0b21e5e1db6979",
+    "research_ci": "426 tests + 8 subtests passed",
+    "research_gate": "PASSED_MERGING_DISABLED",
+    "prediction_fresh_main_pr": 1470,
+    "prediction_fresh_main_head": "efbc1f2a11eb6489c04c5360648de41f2c1cec28",
+    "prediction_fresh_main_ci": "FAILED_FIRST_HEAD_CI_SCOPE_MISMATCH_CORRECTED_PENDING_RERUN"
+  },
+  "next_actions": [
+    "Poll PR #1470 after its CI workflow correction; verify new exact-head CI and fail-closed gate before calling the prediction engine fix tested.",
+    "Verify the Ed25519 signature and Merkle path for XRPLDashboard's 2026-11-01 signed snapshot; until then classify it source-signed but not independently verified.",
+    "Retrieve raw validated XRPL gateway_balances and AMM ledger objects for Circle USDC and Ripple RLUSD at a common ledger; reconcile 6.02M versus independent supply estimates.",
+    "Reconcile XRP/RLUSD and USDC/XRP reserves at the same validated ledger; separate AMM from order-book liquidity.",
+    "Verify current LendingProtocol, SingleAssetVault and LendingProtocolV1_1 vote counts from xrpl.org or XRPL Foundation; do not treat pre-activation vault metadata as active collateral.",
+    "Cross-check Flutterwave Circle/Ripple investment announcements against actual production transfer docs and chain/network transaction examples; current docs omit XRPL.",
+    "Track Mastercard stablecoin-by-chain rollout and obtain actual partner settlement volumes; announcement alone is not deployment.",
+    "Continue ASK token and Camilla Stephenson identity work; no direct ASK/XRP link is verified."
+  ],
+  "safety": "Main unchanged. No PR merged, no force-push, no manual workflow dispatch, no secret access, no deployment and no trading action."
+}

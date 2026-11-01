@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "revision_id": "xrpl-stablecoin-liquidity-source-revision-20261101T172000Z",
+  "captured_at_utc": "2026-11-01T17:20:00Z",
+  "sources": [
+    {
+      "id": "circle-usdc-xrpl-2025-06-12",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "publisher": "Circle",
+      "type": "PRIMARY_ISSUER_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Circle says USDC is natively available on XRPL mainnet with no bridging required.",
+        "Circle Mint and Circle APIs support USDC on XRPL; qualified businesses can apply for fiat on/off ramps.",
+        "Issuer address and currency code are published."
+      ],
+      "limitations": [
+        "Launch announcement proves availability, not current adoption or transaction volume."
+      ]
+    },
+    {
+      "id": "xrplwin-circle-usdc-token-2026-11-01-1600z",
+      "url": "https://xrplwin.com/token/rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE/5553444300000000000000000000000000000000",
+      "publisher": "XRPLWin / WinDB",
+      "type": "THIRD_PARTY_ONCHAIN_INDEXER",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Circle USDC supply 6.02M, 10,806 holders, 17,631 trustlines; last activity 16:00 UTC.",
+        "24h volume 107,537.19 USDC, 1,756 trades and 175 payments.",
+        "Largest USDC/XRP pool: 130.29k USDC and 104.3k XRP; 161 LP holders; 33,522 trades in 30 days.",
+        "USDC/RLUSD pool: 26.17k USDC and 25.08k RLUSD; 24 LP holders; 144 trades in 30 days."
+      ],
+      "limitations": [
+        "WinDB follows the ledger by a few minutes; history is reconstructed from daily balances and retained for two years."
+      ]
+    },
+    {
+      "id": "xrpldashboard-rlusd-live-2026-11-01-1707z",
+      "url": "https://xrpldashboard.com/rlusd",
+      "publisher": "XRPLDashboard",
+      "type": "PUBLIC_ONCHAIN_DASHBOARD_WITH_RPC_CROSSCHECK",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "RLUSD supply approximately $711.83M on XRPL and $1.71B on Ethereum, $2.42B total.",
+        "XRPL share 29.4%; Ethereum share 70.6%.",
+        "24h XRPL net supply change +$4.47M; dashboard says this agrees with independent RPC for 2026-10-31 finalized data."
+      ],
+      "limitations": [
+        "Page reported live feed unavailable while snapshot totals were refreshed minutes earlier; supply values may be a few minutes stale."
+      ]
+    },
+    {
+      "id": "xrpldashboard-pools-2026-11-01-1648z",
+      "url": "https://xrpldashboard.com/pools",
+      "publisher": "XRPLDashboard",
+      "type": "OWN_NODE_AMM_INDEXER",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "XRP-paired AMM TVL about $35.93M; 30,271 pools ranked; 7,953 token-token pairs excluded from headline dollar TVL.",
+        "XRP/RLUSD pool listed around $5.38M; top ten pools represented 52.8% of XRP-paired TVL.",
+        "Order-book DEX is not included in the AMM headline."
+      ],
+      "limitations": [
+        "AMM-only measure; order-book liquidity excluded; many pools have negligible TVL."
+      ]
+    },
+    {
+      "id": "xrpldashboard-wallet-xrp-rlusd-2026-11-01",
+      "url": "https://xrpldashboard.com/wallet/rhWTXC2m2gGGA9WozUaoMm6kLAVPb1tcS3",
+      "publisher": "XRPLDashboard",
+      "type": "PUBLIC_LEDGER_ACCOUNT_VIEW",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Pool wallet snapshot reports 1,869,218 XRP and 2,337,494 RLUSD, 199 trustlines and 200 transactions over 30 days across one active day.",
+        "Dashboard reports 198 recent swaps and net +1,441 XRP over its most recent 200-swap window."
+      ],
+      "limitations": [
+        "Wallet page ledger index 108047846 differs from dashboard's newer live ledger; retain as a separate older pool snapshot, not synchronized with the pool ranking."
+      ]
+    },
+    {
+      "id": "xrpldashboard-lending-2026-11-01-1706z",
+      "url": "https://xrpldashboard.com/lending",
+      "publisher": "XRPLDashboard",
+      "type": "OWN_NODE_AMENDMENT_AND_FEATURE_STATUS",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "LendingProtocol, SingleAssetVault and LendingProtocolV1_1 remain in validator voting; native lending is not live.",
+        "Both LendingProtocol and SingleAssetVault must activate before the loan-broker board populates."
+      ],
+      "limitations": [
+        "Dashboard interpretation; signed snapshot separately records 19/35 and 21/35 votes at 01:00 UTC."
+      ]
+    },
+    {
+      "id": "xrpldashboard-signed-snapshot-2026-11-01",
+      "url": "https://xrpldashboard.com/.well-known/snapshots/2026-11-01.json",
+      "publisher": "XRPLDashboard",
+      "type": "SOURCE_PUBLISHED_ED25519_MERKLE_SNAPSHOT",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Snapshot envelope provides Ed25519 signature, Merkle audit path, chain root and a public-key fingerprint.",
+        "Snapshot records 707.358M RLUSD supply, 30,279 AMM pools and $35.965M AMM TVL; metrics have their own as-of timestamps.",
+        "At 01:00 UTC LendingProtocol had 19/35 votes and SingleAssetVault 21/35 against a 28/35 threshold."
+      ],
+      "limitations": [
+        "Signature and Merkle path were not independently verified in this run; some metrics are older than the snapshot date."
+      ]
+    },
+    {
+      "id": "mastercard-stablecoin-settlement-2026-06-03",
+      "url": "https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-expands-settlement-capabilities-to-include-stablecoin.html",
+      "publisher": "Mastercard",
+      "type": "PRIMARY_NETWORK_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Mastercard named Circle USDC and Ripple RLUSD among regulated stablecoins for expanded onchain settlement capabilities and named XRPL among supported networks.",
+        "Initial named partners include ARQ, CBW Bank, Cross River, Lead Bank and Nuvei."
+      ],
+      "limitations": [
+        "No public stablecoin-by-chain matrix or XRPL-specific settlement volumes; named initial partners are not identified as XRPL deployments."
+      ]
+    },
+    {
+      "id": "okx-rlusd-2026-04-29",
+      "url": "https://www.okx.com/en-eu/learn/xrp-rlusd",
+      "publisher": "OKX",
+      "type": "PRIMARY_EXCHANGE_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "OKX says RLUSD can be traded across 280+ spot pairs and accepted as institutional-grade margin collateral in select markets.",
+        "XRP/RLUSD is a named pair; RLUSD is natively issued on XRPL and Ethereum."
+      ],
+      "limitations": [
+        "Margin-collateral eligibility is region/product dependent; this does not establish XRP itself as collateral."
+      ]
+    },
+    {
+      "id": "sgforge-eurcv-xrpl-2026-02-18",
+      "url": "https://www.sgforge.com/sgf-coinvertible-on-the-xrp-ledger/",
+      "publisher": "SG-FORGE",
+      "type": "PRIMARY_ISSUER_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "EUR CoinVertible launched on XRPL with Ripple custody support.",
+        "SG-FORGE said it would explore use in Ripple products and as trading collateral."
+      ],
+      "limitations": [
+        "Potential collateral use is not evidence of deployed collateral balances or borrowing."
+      ]
+    },
+    {
+      "id": "aviva-ripple-xrpl-2026-02-11",
+      "url": "https://ripple.com/ripple-press/aviva-investors-seeks-to-tokenise-products-on-the-xrp-ledger-in-collaboration-with-ripple/",
+      "publisher": "Ripple / Aviva Investors",
+      "type": "PRIMARY_PARTNERSHIP_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Aviva Investors and Ripple announced an initiative to explore tokenizing traditional fund structures on XRPL."
+      ],
+      "limitations": [
+        "Announcement is exploratory; no token issuance or production volume established."
+      ]
+    },
+    {
+      "id": "ondo-kinexys-mastercard-ripple-2026-05-06",
+      "url": "https://ondo.finance/blog/ondo-jpmorgan-mastercard-ripple-tokenization",
+      "publisher": "Ondo Finance",
+      "type": "PRIMARY_PILOT_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Ondo, Kinexys by J.P. Morgan, Mastercard and Ripple completed a cross-border tokenized Treasury redemption pilot.",
+        "Ripple redeemed OUSG on XRPL in under five seconds; Mastercard MTN triggered fiat instructions and Kinexys/correspondent banking delivered USD to Ripple's Singapore bank account."
+      ],
+      "limitations": [
+        "Asset leg used XRPL; USD leg used bank rails. This does not prove XRP was the settlement asset or collateral."
+      ]
+    },
+    {
+      "id": "flutterwave-ripple-series-e-2026-06-16",
+      "url": "https://flutterwave.com/tz/blog/ripple-participates-in-flutterwaves-series-e-with-strategic-investment-to-accelerate-african-stablecoin-payments",
+      "publisher": "Flutterwave",
+      "type": "PRIMARY_STRATEGIC_INVESTMENT_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Ripple made a strategic investment in Flutterwave's Series E.",
+        "Flutterwave announced RLUSD integration into payment rails and XRPL use for faster transaction clearing."
+      ],
+      "limitations": [
+        "Announcement does not independently establish production volume or public XRPL support in the current stablecoin API matrix."
+      ]
+    },
+    {
+      "id": "flutterwave-circle-usdc-2026-07-07",
+      "url": "https://flutterwave.com/cm/blog/building-the-stablecoin-infrastructure-for-africa",
+      "publisher": "Flutterwave",
+      "type": "PRIMARY_STRATEGIC_INVESTMENT_AND_PRODUCT_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Circle Ventures made a strategic investment in Flutterwave.",
+        "Flutterwave announced USDC settlement across its platform."
+      ],
+      "limitations": [
+        "Investment and product announcement do not disclose chain-specific settlement volumes."
+      ]
+    },
+    {
+      "id": "flutterwave-stablecoin-api-docs-v4",
+      "url": "https://developer.flutterwave.com/v4.0/docs/stablecoins",
+      "publisher": "Flutterwave Developer Documentation",
+      "type": "CURRENT_PUBLIC_API_DOCUMENTATION",
+      "accessed_at_utc": "2026-11-01T17:20:00Z",
+      "claims": [
+        "Current documented networks are Solana (USDT/USDC), Ethereum (USDT/USDC/RLUSD), Base (USDC), Polygon (USDT/USDC).",
+        "XRPL is not listed in the current public stablecoin API network matrix."
+      ],
+      "limitations": [
+        "Public documentation can lag private pilots or separate integrations; absence from the matrix is disconfirming evidence, not proof no private XRPL route exists."
+      ]
+    }
+  ]
+}

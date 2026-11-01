@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrpl-stablecoin-liquidity-collateral-20261101T172000Z",
+  "captured_at_utc": "2026-11-01T17:20:00Z",
+  "subject": "Native USDC versus RLUSD on XRPL, AMM depth, native lending amendment status, and institutional payment-rail cross-check",
+  "xrpl_market": {
+    "xrp_usd_dashboard": 1.2505,
+    "live_ledger_dashboard": 108049382,
+    "live_ledger_as_of_utc": "2026-11-01T17:06:00Z",
+    "xrp_paired_amm_tvl_usd": 35930000,
+    "ranked_pools": 30271,
+    "indexed_pools": 31496,
+    "estimated_xrp_paired_pools": 22318,
+    "token_token_pairs": 7953,
+    "largest_xrp_paired_pools": [
+      {
+        "pair": "XRP/CRYPTO",
+        "tvl_usd": 7770000
+      },
+      {
+        "pair": "XRP/RLUSD",
+        "tvl_usd": 5380000
+      }
+    ],
+    "scope_limitations": [
+      "AMM pools only; XRPL order-book DEX is excluded.",
+      "Headline TVL includes XRP-paired pools only; token-token pairs are counted but not dollar-valued in headline TVL.",
+      "Most pools have negligible TVL; top ten represented $18.96M or 52.8% of XRP-paired TVL at page snapshot."
+    ]
+  },
+  "circle_usdc_xrpl": {
+    "source_id": "xrplwin-circle-usdc-token-2026-11-01-1600z",
+    "issuer": "rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE",
+    "currency_hex": "5553444300000000000000000000000000000000",
+    "supply_usdc": 6020000,
+    "holders": 10806,
+    "trust_lines": 17631,
+    "trust_lines_with_positive_balance_pct": 61.3,
+    "last_activity_utc": "2026-11-01T16:00:00Z",
+    "trades_24h": 1756,
+    "volume_24h_usdc": 107537.19107073176,
+    "payments_24h": 175,
+    "sent_24h_usdc": 6152.371938339498,
+    "top10_holder_share_pct": 80.93,
+    "top10_account_classification": "XRPLWin account pages label the ten largest balances as AMM pool accounts; account pages also display vault/loan-broker metadata, but native lending amendments are not active.",
+    "amm_pools": [
+      {
+        "pair": "USDC/XRP",
+        "reserves": {
+          "USDC": 130290,
+          "XRP": 104300
+        },
+        "tvl_xrp": 208590.18059,
+        "lp_holders": 161,
+        "trades_30d": 33522,
+        "approx_tvl_usd_at_xrp_1_25": 260737.7
+      },
+      {
+        "pair": "USDC/RLUSD",
+        "reserves": {
+          "USDC": 26170,
+          "RLUSD": 25080
+        },
+        "tvl_xrp": 37231.02178434911,
+        "lp_holders": 24,
+        "trades_30d": 144,
+        "approx_tvl_usd_at_xrp_1_25": 46538.8
+      }
+    ],
+    "provider_limitations": [
+      "WinDB follows ledger by a few minutes; supply/holder histories are rebuilt from daily balances and retained for two years.",
+      "Top-holder account classifications are indexer labels and should be independently checked against raw AMM ledger objects before using concentration as an ownership measure."
+    ]
+  },
+  "ripple_rlusd_xrpl": {
+    "source_id": "xrpldashboard-rlusd-live-2026-11-01-1707z",
+    "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+    "xrpl_supply_usd": 711830000,
+    "global_two_chain_supply_usd": 2420000000,
+    "share_on_xrpl_pct": 29.4,
+    "share_on_ethereum_pct": 70.6,
+    "ethereum_supply_usd": 1710000000,
+    "net_supply_change_xrpl_24h_usd": 4470000,
+    "prior_signed_snapshot_xrpl_supply_usd": 707358109.94,
+    "prior_signed_snapshot_taken_utc": "2026-11-01T01:00:05Z",
+    "approx_supply_ratio_rlusd_to_usdc_on_xrpl": 118.2,
+    "xrp_rlusd_amm_pool": {
+      "source_id": "xrpldashboard-pools-2026-11-01-1648z",
+      "tvl_usd": 5380000
+    },
+    "pool_wallet_snapshot": {
+      "source_id": "xrpldashboard-wallet-xrp-rlusd-2026-11-01",
+      "ledger_index": 108047846,
+      "xrp_reserve": 1869218,
+      "rlusd_reserve": 2337494,
+      "approx_two_sided_tvl_usd_at_xrp_1_2505": 4674000,
+      "trustlines": 199,
+      "transactions_30d": 200,
+      "active_days_30d": 1
+    },
+    "data_quality": [
+      "RLUSD page said live feed unavailable while supply totals were refreshed minutes earlier; 24h net change was stated to agree with independent RPC using 2026-10-31 finalized data.",
+      "Pool summary TVL and wallet-reserve snapshot differ in time/ledger; preserve separately and do not average.",
+      "Signed daily snapshot is source-published with Ed25519 signature and Merkle path; cryptographic verification was not executed in this run."
+    ]
+  },
+  "native_xrpl_lending": {
+    "source_id": "xrpldashboard-lending-2026-11-01-1706z",
+    "status": "NOT_ACTIVE_AMENDMENTS_IN_VALIDATOR_VOTING",
+    "required_amendments": [
+      "LendingProtocol",
+      "SingleAssetVault",
+      "LendingProtocolV1_1"
+    ],
+    "prior_signed_snapshot_votes_at_utc": "2026-11-01T01:00:08Z",
+    "votes": {
+      "LendingProtocol": 19,
+      "SingleAssetVault": 21,
+      "threshold": 28,
+      "validations": 35
+    },
+    "live_page_as_of_utc": "2026-11-01T17:06:00Z",
+    "interpretation": "Native XRPL vault/loan-broker lending is not live. Account explorer metadata mentioning vaults or loan brokers is not evidence of active lending or collateralized loans."
+  },
+  "institutional_rails": {
+    "mastercard": {
+      "source_id": "mastercard-stablecoin-settlement-2026-06-03",
+      "stablecoins_named": [
+        "USDC (Circle)",
+        "RLUSD (Ripple)",
+        "PYUSD",
+        "USDG",
+        "USDP",
+        "SoFiUSD"
+      ],
+      "networks_named": [
+        "Arbitrum",
+        "Base",
+        "Canton",
+        "Ethereum",
+        "Polygon",
+        "Solana",
+        "Tempo",
+        "XRPL"
+      ],
+      "initial_partners": [
+        "ARQ",
+        "CBW Bank",
+        "Cross River",
+        "Lead Bank",
+        "Nuvei"
+      ],
+      "limitation": "Mastercard does not publish a stablecoin-by-network matrix or XRPL-specific settlement volumes; initial named partners are not identified as XRPL-anchored."
+    },
+    "okx": {
+      "source_id": "okx-rlusd-2026-04-29",
+      "rlusd_spot_pairs": "280+",
+      "margin_collateral": "Institutional-grade margin collateral in select markets",
+      "xrp_rlusd_pair": "Listed",
+      "limitation": "RLUSD collateral is not the same as XRP collateral; product availability varies by region."
+    },
+    "sg_forge": {
+      "source_id": "sgforge-eurcv-xrpl-2026-02-18",
+      "eurcv_on_xrpl": true,
+      "ripple_custody_support": true,
+      "collateral_use": "Opportunity to explore use in Ripple products and trading collateral; not confirmed deployed."
+    },
+    "ondo": {
+      "source_id": "ondo-kinexys-mastercard-ripple-2026-05-06",
+      "asset": "OUSG tokenized U.S. Treasuries",
+      "xrpl_asset_leg": "Executed in under five seconds in reported pilot",
+      "fiat_leg": "Mastercard MTN triggered instruction; Kinexys by J.P. Morgan and correspondent banking delivered USD to Ripple Singapore bank account",
+      "xrp_token_required": false
+    },
+    "aviva": {
+      "source_id": "aviva-ripple-xrpl-2026-02-11",
+      "status": "Partnership to explore fund tokenization on XRPL; no tokens issued per dashboard event record."
+    },
+    "flutterwave": {
+      "ripple_partnership_source": "flutterwave-ripple-series-e-2026-06-16",
+      "circle_partnership_source": "flutterwave-circle-usdc-2026-07-07",
+      "api_docs_source": "flutterwave-stablecoin-api-docs-v4",
+      "ripple_relationship": "Ripple strategic investment; announcement says RLUSD embedded in payment rails and XRPL used for faster transaction clearing.",
+      "circle_relationship": "Circle Ventures strategic investment; USDC settlement added across Flutterwave platform.",
+      "current_documented_network_matrix": {
+        "SOLANA": [
+          "USDT",
+          "USDC"
+        ],
+        "ETHEREUM": [
+          "USDT",
+          "USDC",
+          "RLUSD"
+        ],
+        "BASE": [
+          "USDC"
+        ],
+        "POLYGON": [
+          "USDT",
+          "USDC"
+        ]
+      },
+      "xrpl_in_current_api_matrix": false,
+      "interpretation": "Multi-issuer, multi-chain relationship is confirmed. Current public stablecoin API documentation does not list XRPL and lists RLUSD only on Ethereum; this is disconfirming evidence against assuming the announced XRPL/RLUSD corridor is generally available in production. Private or separate integration is not ruled out."
+    }
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

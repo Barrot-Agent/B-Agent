@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "decision_id": "xrpl-stablecoin-depth-and-native-lending-status-20261101T172000Z",
+  "captured_at_utc": "2026-11-01T17:20:00Z",
+  "decisions": [
+    {
+      "topic": "Circle USDC on XRPL",
+      "decision": "Treat USDC as a direct native Circle asset on XRPL but classify its current on-ledger supply and AMM depth as small relative to RLUSD.",
+      "reason": "XRPLWin reports 6.02M USDC; its largest XRP pool has about $260k TVL. Circle's global volume cannot be projected onto XRPL."
+    },
+    {
+      "topic": "RLUSD versus USDC",
+      "decision": "Keep provider- and time-specific supplies separate; use approximate 118x RLUSD/USDC supply ratio only as a cross-provider, asynchronous scale comparison.",
+      "reason": "RLUSD page reports 711.83M at 17:07 UTC; USDC page reports 6.02M at 16:00 UTC. A signed RLUSD snapshot reports 707.358M at 01:00 UTC."
+    },
+    {
+      "topic": "AMM liquidity",
+      "decision": "Separate AMM TVL, pool reserves, order-book liquidity, trade count and unique trader count.",
+      "reason": "XRPLDashboard's $35.93M headline excludes order-book DEX and token-token pools; USDC/XRP trade count is high relative to modest TVL and may reflect small or automated trades."
+    },
+    {
+      "topic": "Holder concentration",
+      "decision": "Do not interpret USDC top-ten balances as ten whale investors.",
+      "reason": "XRPLWin labels the top ten accounts as AMM pool accounts; lending amendments remain inactive, so vault/loan-broker metadata does not prove active credit."
+    },
+    {
+      "topic": "Native XRPL lending",
+      "decision": "Classify native vault/loan-broker lending as NOT_ACTIVE while LendingProtocol and SingleAssetVault remain in voting.",
+      "reason": "Live dashboard says both must activate before loan-broker data goes live; signed snapshot at 01:00 UTC records 19/35 and 21/35 votes against 28/35 threshold."
+    },
+    {
+      "topic": "Flutterwave",
+      "decision": "Model Ripple and Circle as separate strategic investors and stablecoin providers on the same payment platform; do not claim the announced XRPL/RLUSD corridor is generally available.",
+      "reason": "Current public Flutterwave API docs list RLUSD only on Ethereum and omit XRPL, while USDC is supported on Solana/Ethereum/Base/Polygon."
+    },
+    {
+      "topic": "Institutional tokenized assets",
+      "decision": "Distinguish XRPL asset movement from XRP as the economic settlement or collateral asset.",
+      "reason": "Ondo pilot used XRPL for OUSG asset redemption and Mastercard/Kinexys/bank rails for fiat proceeds; EURCV collateral use remains exploratory."
+    }
+  ],
+  "model_policy": {
+    "feature_admission": "NONE",
+    "forecast_status": "NOT_ISSUED",
+    "stablecoin_supply": "STORE_PER_ISSUER_CHAIN_AND_LEDGER_CUTOFF",
+    "amm_liquidity": "STORE_RESERVES_TVL_LP_COUNT_AND_TRADE_COUNT_SEPARATELY",
+    "collateral": "REQUIRE_ACTIVATED_PROTOCOL_OR_VERIFIED_EXTERNAL_PRODUCT_AND_POSITION",
+    "institutional_adoption": "SEPARATE_ANNOUNCEMENT_PILOT_PRODUCTION_AND_MEASURED_VOLUME"
+  }
+}
