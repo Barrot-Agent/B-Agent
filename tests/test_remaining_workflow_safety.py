@@ -33,3 +33,23 @@ def test_destructive_hugging_face_admin_is_disabled():
     assert "HF_TOKEN" not in text
     assert "api/repos/delete" not in text
     assert "no external repository was changed" in text.lower()
+
+
+def test_knowledge_signal_cycle_is_disabled_without_secrets_or_main_writes():
+    text = read("knowledge-signal-cycle.yml")
+    assert "permissions: {}" in text
+    assert "if: ${{ false }}" in text
+    assert "GROQ_API_KEY" not in text
+    assert "contents: write" not in text
+    assert "git push" not in text.lower()
+    assert "KNOWLEDGE_CYCLE_NOT_PERFORMED" in text
+
+
+def test_barrot_approval_workflow_cannot_self_attest_or_write_approval_labels():
+    text = read("barrot-approve-pr.yml")
+    assert "permissions: {}" in text
+    assert "pull-requests: write" not in text
+    assert "github.actor == github.repository_owner" not in text
+    assert "gh api" not in text.lower()
+    assert "gh pr" not in text.lower()
+    assert "APPROVAL_NOT_PERFORMED" in text
