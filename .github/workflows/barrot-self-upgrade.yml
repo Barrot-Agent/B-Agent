@@ -2,13 +2,24 @@ name: Barrot Self-Upgrade
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm_repository_write:
+        description: "Set to YES only after explicit approval to write to the selected non-main branch."
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
 
 permissions:
   contents: write
-  pull-requests: write
+  issues: read
+  pull-requests: read
 
 jobs:
   audit_and_upgrade:
+    if: ${{ inputs.confirm_repository_write == 'YES' && github.ref_type == 'branch' && github.ref != 'refs/heads/main' }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,6 +53,7 @@ jobs:
 
       - name: Persist generated audit
         run: |
+          set -euo pipefail
           git status --short
           if git diff --quiet -- barrot_capability_audit.json; then
             echo "No audit artifact changes."
