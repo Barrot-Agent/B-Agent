@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T070712Z-BINANCE-WITHDRAWAL-STATUS-AND-PR1449-SAFETY",
+  "captured_at_utc": "2026-11-01T07:07:12Z",
+  "title": "Keep Binance XRP phase-one availability unconfirmed; preserve escrow destination uncertainty; prioritize fresh-main workflow quarantine",
+  "status": "DECIDED_NOT_EXECUTED",
+  "context": [
+    "Binance Recovery Update #4 lists XRP for progressive withdrawals during 06:00-09:00 UTC and reports 95% aggregate incident coverage, but the status page rendered no per-asset records.",
+    "XRP Insights reports the November 1 1B release at ledger 108038942 with zero re-escrow by that ledger; raw transaction destinations remain undecoded.",
+    "Main advanced to 760b61e; PR #1449 is the only current-main-based open PR and passed exact-head CI/gate, but remains draft and unmerged."
+  ],
+  "decisions": [
+    "Classify Binance phase one as announced and XRP listed; do not classify XRP withdrawals as available until asset-specific status or successful transaction evidence is obtained.",
+    "Treat Binance's 95% aggregate recovery and 100% top-ten backing as company-reported, not independent proof or an XRP-specific acquisition figure.",
+    "Treat the escrow release as tracker-reported; do not infer sale, exchange deposit or market supply without raw Destination and follow-on transaction evidence.",
+    "Keep PR #1449 draft/unmerged; its 367 tests plus eight subtests and fail-closed gate validate the proposal only.",
+    "Do not admit the current event, derivatives or custody observations as directional features; no forecast is issued."
+  ],
+  "ingestion_contract": [
+    "Capture the Binance network status page with displayed timestamp and timezone ambiguity preserved; require asset-specific XRP row or successful public withdrawal evidence.",
+    "Query XRPL account_objects/account_tx and validated transaction metadata for both escrow owners; record ledger index, transaction hash, Destination and affected nodes.",
+    "Keep company reserve claims, official PoR snapshots, market/OTC acquisitions and address-level liabilities as separate evidence classes.",
+    "Record source publication time, retrieval time, data cutoff, provider scope and missingness independently."
+  ],
+  "platform_coordination": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "platforms_designed": 9,
+    "verified_chatgpt_active": true,
+    "verified_github_repository_access": true,
+    "external_platform_authentications": 0,
+    "external_live_collaborators": 0,
+    "verified_handoffs": 0,
+    "least_privilege_required": true
+  },
+  "repository_safety": {
+    "main_sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+    "pr1449": 1449,
+    "pr1449_head_sha": "dce8be8e8df59390c7a986c7ff7a2b699cb18593",
+    "ci_run_id": 41283447287,
+    "tests_passed": 367,
+    "subtests_passed": 8,
+    "gate_run_id": 41283447301,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "main_remediation_applied": false,
+    "explicit_user_approval_required": true
+  },
+  "unresolved": [
+    "Live Binance XRP withdrawal availability.",
+    "Raw escrow Destination fields and subsequent XRP disposition.",
+    "Current attacker wallet balance.",
+    "XRP-specific Binance replenishment quantity.",
+    "Approval workflow push-event/zero-job root cause.",
+    "Full repository CI, complete dependency scanning and security-alert review."
+  ],
+  "source_ids": [
+    "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL"
+  ],
+  "feature_admission": {
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "reason": "Event status and source freshness are insufficient for a calibrated directional prediction."
+  }
+}

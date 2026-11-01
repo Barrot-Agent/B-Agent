@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "record_type": "limitation_archive_shard",
+  "archive_name": "limitations",
+  "chunk_index": 152,
+  "chunk_count": 153,
+  "record_count": 3,
+  "records": [
+    {
+      "limitation_id": "LIM-BINANCE-XRP-WITHDRAWAL-AVAILABILITY-UNCONFIRMED-20261101T070712Z",
+      "category": "EXCHANGE_AVAILABILITY",
+      "description": "Binance announced XRP in progressive phase-one withdrawals between 06:00 and 09:00 UTC, but the network status page rechecked at 07:07 UTC displayed no records and did not expose an XRP-specific availability row.",
+      "evidence": "Official Binance Recovery Update #4 plus the public network status page capture. No successful customer XRP withdrawal was independently observed.",
+      "first_observed_utc": "2026-11-01T07:07:12Z",
+      "impact": "HIGH",
+      "related_run_id": "RUN-20261101T070712Z-BINANCE-PHASE1-ESCROW-PR1449",
+      "source_ids": [
+        "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T07:07:12Z"
+    },
+    {
+      "limitation_id": "LIM-XRP-ESCROW-DESTINATION-AND-DISPOSITION-UNKNOWN-20261101T070712Z",
+      "category": "ONCHAIN_TRANSACTION_METADATA",
+      "description": "XRP Insights reports the 1B November 1 escrow release at ledger 108038942, but raw transaction metadata and Destination fields were not independently decoded; later transfers, sales and re-escrow remain unknown.",
+      "evidence": "XRP Insights tracker observation at validated ledger 108038942, 2026-11-01 05:39 UTC.",
+      "first_observed_utc": "2026-11-01T07:07:12Z",
+      "impact": "HIGH",
+      "related_run_id": "RUN-20261101T070712Z-BINANCE-PHASE1-ESCROW-PR1449",
+      "source_ids": [
+        "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T07:07:12Z"
+    },
+    {
+      "limitation_id": "LIM-BAGENT-MAIN-WRITERS-ACTIVE-PR1449-UNMERGED-20261101T070712Z",
+      "category": "REPOSITORY_SECURITY",
+      "description": "PR #1449 passes exact-head CI and the fail-closed gate but remains draft and unmerged; the current main branch still contains privileged scheduled writers and a manually dispatchable merge queue.",
+      "evidence": "Current main workflow files, live PR inventory, PR #1449 exact-head CI and gate.",
+      "first_observed_utc": "2026-11-01T07:07:12Z",
+      "impact": "HIGH",
+      "related_run_id": "RUN-20261101T070712Z-BINANCE-PHASE1-ESCROW-PR1449",
+      "source_ids": [
+        "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T07:07:12Z"
+    }
+  ]
+}

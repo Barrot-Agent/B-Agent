@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_archive_shard",
+  "archive_name": "sources",
+  "chunk_index": 138,
+  "chunk_count": 139,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+      "publisher": "Binance",
+      "title": "Deposit and withdrawal network status recheck during phase-one window",
+      "url": "https://www.binance.com/en/network",
+      "retrieved_at_utc": "2026-11-01T07:07:12Z",
+      "publication_time_utc": null,
+      "evidence_class": "PRIMARY_EXCHANGE_STATUS_PAGE",
+      "independence_group": "BINANCE_OFFICIAL",
+      "claims": [
+        "At capture the page displayed last-updated text 2026-11-01 06:53:22 AM; timezone was not disclosed.",
+        "The rendered status table displayed 'No records' and exposed no XRP-specific withdrawal status."
+      ],
+      "limitations": [
+        "An empty dynamically rendered table does not prove XRP withdrawals are unavailable.",
+        "No successful customer XRP withdrawal was independently observed."
+      ]
+    },
+    {
+      "id": "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+      "publisher": "XRP Insights",
+      "title": "XRP escrow schedule and post-release state at XRPL ledger 108038942",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "retrieved_at_utc": "2026-11-01T07:07:12Z",
+      "publication_time_utc": "2026-11-01T05:39:00Z",
+      "evidence_class": "SECONDARY_LEDGER_DERIVED_TRACKER",
+      "independence_group": "XRPL_INSIGHTS",
+      "claims": [
+        "Tracker data as of validated ledger 108038942 at 2026-11-01 05:39 UTC.",
+        "Tracker reports 1,000,000,000 XRP released on November 1; first EscrowFinish at 00:00:02 UTC.",
+        "Tracker reports no re-escrow by ledger 108038942, 30.4B XRP remaining in 96 escrow objects across eight owner accounts, and a 64.2% rolling 12-release re-escrow ratio."
+      ],
+      "limitations": [
+        "Raw transaction metadata and Destination fields were not independently decoded in this run.",
+        "The ledger observation is a point-in-time snapshot; later EscrowCreate and transfer activity may change disposition."
+      ]
+    },
+    {
+      "id": "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT",
+      "publisher": "GitHub / Barrot-Agent",
+      "title": "Current-main audit and exact-head verification for PR #1449",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1449",
+      "retrieved_at_utc": "2026-11-01T07:07:12Z",
+      "publication_time_utc": "2026-11-01T07:06:31Z",
+      "evidence_class": "PRIMARY_REPOSITORY_AND_CI_EVIDENCE",
+      "independence_group": "BARROT_GITHUB",
+      "claims": [
+        "Main SHA 760b61e216f1044d4faaa359962939757d9d6adf is protected; the exposed required-status-check context list is empty.",
+        "PR #1449 is based on the exact current main SHA, is open/draft/unmerged, and changes 28 paths.",
+        "PR #1449 exact-head CI run 41283447287 passed 367 tests and eight subtests; fail-closed gate 41283447301 passed with merging disabled.",
+        "The live open-PR inventory contains 218 PRs: 208 drafts, 10 ready, 213 main-based, 212 stale main-based, one current-main-based (#1449), and five non-main-based."
+      ],
+      "limitations": [
+        "CI verifies the proposal, not main or production; PR #1449 remains unmerged.",
+        "Full repository CI, complete dependency scanning and security-alert review remain incomplete.",
+        "The approval workflow's push-event/zero-job anomaly remains unresolved."
+      ]
+    }
+  ]
+}
