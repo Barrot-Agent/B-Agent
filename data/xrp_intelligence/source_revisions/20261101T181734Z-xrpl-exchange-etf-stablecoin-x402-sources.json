@@ -4,12 +4,12 @@
   "captured_at_utc": "2026-11-01T18:17:34Z",
   "sources": [
     {
-      "source_id": "xrp-insights-xrp-radar-20261101",
+      "id": "xrp-insights-xrp-radar-20261101",
       "url": "https://xrp-insights.com/xrp-radar",
       "publisher": "XRP Insights",
-      "source_type": "third_party_onchain_and_market_analytics",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "PROVISIONAL_SECONDARY_SOURCE",
+      "claims": [
         "22.45B XRP across 701 attributed wallets and 24 exchanges; daily wallet reads are described as rippled account_info reads around 08:00 UTC.",
         "Same-wallet change: -161.1M XRP over seven days and -12.7M over 30 days.",
         "Tracked exchange holdings include cold storage, omnibus/customer balances and approximately 487.9M XRP of non-customer reserves such as cbXRP and Binance-Peg.",
@@ -17,7 +17,7 @@
         "RLUSD supply split: $707.4M on XRPL and $1.71B on Ethereum, approximately $2.42B combined, as of November 1.",
         "18 XRPL tokenized-asset entries represent approximately $4.33B, of which the tracker classifies $276M as distributed transferable float and $4.06B as registry-style issuer notionals."
       ],
-      "methodology_claims": [
+      "methodology": [
         "Exchange balances are attributed wallet balances read from XRPL; the tracker describes them as a floor because unattributed wallets are omitted.",
         "RLUSD XRPL supply is described as rippled gateway_balances on the canonical issuer account; Ethereum supply is described as contract totalSupply().",
         "ETF data is sourced from issuer pages, with per-fund as-of dates and source-status distinctions."
@@ -29,200 +29,246 @@
         "The ETF average-cost and unrealized-loss figures are tracker estimates, not issuer-reported investor cost bases.",
         "RWA registry notionals are not equivalent to transferable securities or capital locked in liquid markets.",
         "The tracker is not the issuer and its live on-chain reads were not independently retrieved in this run."
-      ],
-      "admission_status": "PROVISIONAL_SECONDARY_SOURCE"
+      ]
     },
     {
-      "source_id": "t54-xrpl-ai-hub-20261101",
+      "id": "t54-xrpl-ai-hub-20261101",
       "url": "https://xrpl-ai.org/",
       "publisher": "T54 Labs",
-      "source_type": "facilitator_operated_public_dashboard",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "PROVISIONAL_PRIMARY_OPERATOR_SOURCE",
+      "claims": [
         "The hub displays 14,830,761 all-time x402 payments/volume-settled events and $48,329.34 USD value settled.",
         "The hub displays 183 registered merchants and 5,318 live services.",
         "The displayed four-week average weekly USD settlement value is approximately $3,875.",
         "The facilitator supports XRP and issued assets including RLUSD and USDC.",
         "The facilitator describes itself as non-custodial and says the payer signs the XRPL Payment transaction."
       ],
+      "methodology": [],
       "limitations": [
         "The dashboard is operated by the facilitator whose activity it measures; it is not an independent audit.",
         "The merchant directory page displayed 178 merchants while the home dashboard displayed 183 registered merchants.",
         "Recent settlement cards displayed an Unverified label despite the page's general verified-before-settlement description.",
         "The displayed event count is not established as an equal count of unique XRPL ledger transactions; batch settlement can aggregate multiple logical payments.",
         "The USD value is small relative to the event count and does not establish material XRP spot demand."
-      ],
-      "admission_status": "PROVISIONAL_PRIMARY_OPERATOR_SOURCE"
+      ]
     },
     {
-      "source_id": "t54-xrpl-x402-technical-specification",
+      "id": "t54-xrpl-x402-technical-specification",
       "url": "https://xrpl-x402.t54.ai/docs/xrpl-scheme",
       "publisher": "T54 Labs",
-      "source_type": "public_technical_documentation",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "PRIMARY_TECHNICAL_DOCUMENTATION",
+      "claims": [
         "The XRPL Exact scheme uses payer-presigned Payment transactions; the facilitator submits the signed transaction.",
         "The payer pays the XRPL transaction fee.",
         "XRP and issued assets such as RLUSD are supported.",
         "The documented verification checks include network binding, destination, amount, expiry, invoice binding and policy checks.",
         "The documentation describes invoice binding as a replay-prevention requirement."
       ],
+      "methodology": [],
       "limitations": [
         "Documentation establishes intended protocol behavior, not that every observed dashboard payment passed independent verification.",
         "SourceTag 804681468 is shown as a default in the documentation and should not be treated as a unique identity proof by itself."
-      ],
-      "admission_status": "PRIMARY_TECHNICAL_DOCUMENTATION"
+      ]
     },
     {
-      "source_id": "linux-foundation-x402-foundation-20260714",
+      "id": "linux-foundation-x402-foundation-20260714",
       "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-operational-launch-of-x402-foundation-to-standardize-internet-native-payments-for-ai-agents-and-applications",
       "publisher": "Linux Foundation",
-      "source_type": "primary_foundation_announcement",
       "published_at": "2026-07-14",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "PRIMARY_FOUNDATION_ANNOUNCEMENT",
+      "claims": [
         "Coinbase contributed the x402 protocol to the Linux Foundation for open, vendor-neutral governance.",
         "Circle, Coinbase, Ripple and t54 Labs are listed among the x402 Foundation members.",
         "Ripple states that it is building XRPL support for x402 using XRP and RLUSD.",
         "Circle states that x402 and USDC support agent payments."
       ],
+      "methodology": [],
       "limitations": [
         "Membership and protocol contribution do not establish commercial exclusivity, joint market-making, XRP purchases or shared treasury activity.",
         "The Foundation announcement does not publish participant-level payment volumes."
-      ],
-      "admission_status": "PRIMARY_FOUNDATION_ANNOUNCEMENT"
+      ]
     },
     {
-      "source_id": "circle-arc-mainnet-20260916",
+      "id": "circle-arc-mainnet-20260916",
       "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
       "publisher": "Circle Internet Group",
-      "source_type": "primary_company_announcement",
       "published_at": "2026-09-16",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "PRIMARY_COMPANY_CLAIM",
+      "claims": [
         "Arc launched with USDC as its gas asset and a founding validator cohort including SBI Group.",
         "Coinbase and Binance are listed among exchange participants; Aave and Morpho are listed among lending integrations.",
         "Circle states USDC accounted for 98.8% of agent-driven transaction volume.",
         "SBI Group's chairman says SBI intends to contribute to Arc operation/governance and leverage USDC and JPYSC.",
         "Circle says SBI VC Trade became Japan's first and only USDC distributor in March 2025."
       ],
+      "methodology": [],
       "limitations": [
         "The 98.8% claim does not specify the denominator, period, chain coverage or whether volume means count or monetary value in the announcement.",
         "Arc participation is not proof that all listed participants are validators or that they route XRP through Arc.",
         "Company launch claims are not independent measurements of realized settlement volume."
-      ],
-      "admission_status": "PRIMARY_COMPANY_CLAIM"
+      ]
     },
     {
-      "source_id": "circle-usdc-xrpl-20250612",
+      "id": "circle-usdc-xrpl-20250612",
       "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
       "publisher": "Circle",
-      "source_type": "primary_company_announcement",
       "published_at": "2025-06-12",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
         "Circle states USDC is natively available on XRPL mainnet and supported by Circle Mint and Circle APIs.",
         "Circle identifies the XRPL mainnet USDC issuer as rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE."
       ],
+      "methodology": [],
       "limitations": [
         "Native issuance establishes availability, not material supply, liquidity, trading volume or XRP demand."
-      ],
-      "admission_status": "PRIMARY_COMPANY_ANNOUNCEMENT"
+      ]
     },
     {
-      "source_id": "ripple-rlusd-xrpl-documentation",
+      "id": "ripple-rlusd-xrpl-documentation",
       "url": "https://docs.ripple.com/products/stablecoin/developer-resources/rlusd-on-the-xrpl",
       "publisher": "Ripple",
-      "source_type": "primary_technical_documentation",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "PRIMARY_TECHNICAL_DOCUMENTATION",
+      "claims": [
         "Ripple identifies RLUSD as an issued token on XRPL mainnet and names the canonical issuer account rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De.",
         "The documentation describes trust-line requirements for holding and transferring RLUSD."
       ],
+      "methodology": [],
       "limitations": [
         "Issuer documentation does not establish current circulating supply, holder concentration or market depth."
-      ],
-      "admission_status": "PRIMARY_TECHNICAL_DOCUMENTATION"
+      ]
     },
     {
-      "source_id": "agenteconomy-x402-data-20261101",
+      "id": "agenteconomy-x402-data-20261101",
       "url": "https://agenteconomy.to/",
       "publisher": "Agent Economy",
-      "source_type": "public_multi_protocol_analytics",
       "data_timestamp_utc": "2026-11-01T03:06:26Z",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "PROVISIONAL_AGGREGATOR_NOT_COMPARABLE",
+      "claims": [
         "The public data block reports 195,970,380 x402 events, $42,278,255 total volume, 18 facilitators and 12 chains.",
         "The page headline reports 232,694,438 events across five protocols and 11 chains, while the x402 card reports 12 chains.",
         "The listed on-chain source set includes Dune, Base, Arbitrum, MetaMask and Tempo; XRPL is not explicitly named in that source list."
       ],
+      "methodology": [],
       "limitations": [
         "The page has an internal 11-versus-12 chain-count inconsistency.",
         "XRPL inclusion and overlap with the t54 dataset are not established.",
         "The aggregate cannot be compared directly with XRPL-specific facilitator totals without chain coverage, time-window and event-deduplication details."
-      ],
-      "admission_status": "PROVISIONAL_AGGREGATOR_NOT_COMPARABLE"
+      ]
     },
     {
-      "source_id": "xrpl-utilities-lineage-outlier-20261101",
+      "id": "xrpl-utilities-lineage-outlier-20261101",
       "url": "https://xrpl-utilities.com/lineage/",
       "publisher": "XRPL-Utilities",
-      "source_type": "unaffiliated_heuristic_analytics",
-      "observed_at_utc": "2026-11-01T13:52:00Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T13:52:00Z",
+      "classification": "EXCLUDED_UNREPRODUCIBLE_OUTLIER",
+      "claims": [
         "A search-index observation returned an RLUSD XRPL supply figure near $910.3M."
       ],
+      "methodology": [],
       "limitations": [
         "A subsequent direct page open displayed loading placeholders rather than the quoted figure.",
         "The page itself warns that wallet roles are heuristic and not confirmed identities.",
         "The $910.3M observation is not reproducible from the opened page and is excluded from current feature admission."
-      ],
-      "admission_status": "EXCLUDED_UNREPRODUCIBLE_OUTLIER"
+      ]
     },
     {
-      "source_id": "rlusd-tracker-public-api-docs",
+      "id": "rlusd-tracker-public-api-docs",
       "url": "https://api.rl-tracker.com/",
       "publisher": "RLUSD Tracker community project",
-      "source_type": "documented_public_read_only_api",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "API_DESIGNED_NOT_DATA_RETRIEVED",
+      "claims": [
         "The project documents public read-only endpoints for RLUSD mint/burn events, network supply and aggregate statistics across XRPL and Ethereum."
       ],
+      "methodology": [],
       "limitations": [
         "The API documentation was accessible, but the data endpoints could not be retrieved through the current web retrieval path in this run.",
         "The project states it is not affiliated with Ripple."
-      ],
-      "admission_status": "API_DESIGNED_NOT_DATA_RETRIEVED"
+      ]
     },
     {
-      "source_id": "sbic-official-identity-and-training",
+      "id": "sbic-official-identity-and-training",
       "url": "https://www.sbic.co.jp/investment/faq/",
       "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
-      "source_type": "primary_entity_information",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "related_url": "https://www.sbic.co.jp/training/20250612co/",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "PRIMARY_ENTITY_INFORMATION",
+      "claims": [
         "The Japanese SBIC identity is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
         "The ChatGPT/Copilot training material concerns investee-company education."
       ],
+      "methodology": [],
       "limitations": [
         "The educational event does not establish an OpenAI commercial partnership, an SBI Holdings affiliation or an XRP relationship."
-      ],
-      "admission_status": "PRIMARY_ENTITY_INFORMATION"
+      ]
     },
     {
-      "source_id": "xrp-insights-etf-data-json",
+      "id": "xrp-insights-etf-data-json",
       "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
       "publisher": "XRP Insights",
-      "source_type": "public_dataset_metadata",
-      "observed_at_utc": "2026-11-01T18:17:34Z",
-      "source_claims": [
+      "accessed_at_utc": "2026-11-01T18:17:34Z",
+      "classification": "DATASET_ENDPOINT_IDENTIFIED_NOT_FULLY_INGESTED",
+      "claims": [
         "A public JSON dataset is advertised for ETF flow and holdings history."
       ],
+      "methodology": [],
       "limitations": [
         "The dataset metadata was retrieved, but the complete row-level history was not independently materialized in this run."
+      ]
+    },
+    {
+      "id": "sbi-project-trinity-2026-10-06",
+      "url": "https://www.sbigroup.co.jp/news/2026/1006_16649.html",
+      "publisher": "SBI Holdings and Project Trinity participants",
+      "published_at": "2026-10-06",
+      "accessed_at_utc": "2026-11-01T18:25:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "Project Trinity phase 1 and phase 2 operational verification were completed.",
+        "Phase 2 ran from April through September 2026 and tested DvP settlement for security-token secondary-market transfers.",
+        "The settlement asset was a third-type electronic payment instrument issued by Sumitomo Mitsui Banking Corporation in the form of specified trust beneficiary rights.",
+        "Progmat and Datachain supplied cross-chain technology; TISI and Fireblocks supplied the stablecoin infrastructure.",
+        "Participants included SBI Securities, Daiwa Securities, SBI R3 Japan, Osaka Digital Exchange, BOOSTRY, Progmat, Datachain and SBI VC Trade."
       ],
-      "admission_status": "DATASET_ENDPOINT_IDENTIFIED_NOT_FULLY_INGESTED"
+      "limitations": [
+        "This was a proof-of-concept/operational verification, not proof of production settlement volume.",
+        "The announced settlement asset was not identified as XRP, RLUSD or USDC.",
+        "Participation by SBI affiliates does not establish a direct SBI Holdings treasury position in XRP."
+      ]
+    },
+    {
+      "id": "sbiholdings-sbi-ripple-asia-ownership-60pct",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "publisher": "SBI Holdings",
+      "accessed_at_utc": "2026-11-01T18:25:00Z",
+      "classification": "PRIMARY_GROUP_COMPANY_PROFILE",
+      "claims": [
+        "SBI Group reports 60% voting-right ownership in SBI Ripple Asia as of March 31, 2026.",
+        "SBI Ripple Asia's stated business is planning, development, sale, maintenance and consulting for blockchain/DLT fintech solutions."
+      ],
+      "limitations": [
+        "Group ownership and fintech business description do not establish that SBI Ripple Asia itself holds, trades or uses XRP."
+      ]
+    },
+    {
+      "id": "ripple-sbi-ripple-asia-odl-current",
+      "url": "https://ripple.com/company/sbi-ripple-asia/",
+      "publisher": "Ripple",
+      "accessed_at_utc": "2026-11-01T18:25:00Z",
+      "classification": "PRIMARY_COMPANY_PROFILE",
+      "claims": [
+        "Ripple describes SBI Ripple Asia as a fintech solutions and payments-related joint venture.",
+        "The profile does not establish direct XRP custody or trading by SBI Ripple Asia."
+      ],
+      "limitations": [
+        "Do not infer XRP use by SBI Ripple Asia solely from the SBI/Ripple joint-venture name or from separate SBI Remit XRP corridors."
+      ]
     }
   ]
 }

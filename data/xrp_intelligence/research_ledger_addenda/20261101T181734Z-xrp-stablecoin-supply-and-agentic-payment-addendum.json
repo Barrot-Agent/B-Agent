@@ -31,13 +31,13 @@
     {
       "claim": "Circle USDC is natively available on XRPL under issuer rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE.",
       "class": "CONFIRMED_PRIMARY_SOURCE",
-      "source_id": "circle-usdc-xrpl-20250612",
+      "source_id": "circle-native-usdc-xrpl",
       "limitation": "Native availability does not establish material supply or XRP demand."
     },
     {
       "claim": "Circle Arc's founding validator cohort includes SBI Group; Arc uses USDC gas; Coinbase and Binance are listed exchange participants.",
       "class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
-      "source_id": "circle-arc-mainnet-20260916",
+      "source_id": "circle-arc-mainnet-2026-09-16",
       "limitation": "Participation does not establish exclusive alignment or XRP flow."
     },
     {
@@ -61,14 +61,32 @@
     {
       "claim": "Circle says USDC represents 98.8% of agent-driven transaction volume.",
       "class": "COMPANY_REPORTED_CLAIM",
-      "source_id": "circle-arc-mainnet-20260916",
+      "source_id": "circle-arc-mainnet-2026-09-16",
       "limitation": "Denominator, time window, chain coverage and value-versus-count definition are not specified in the announcement."
     },
     {
       "claim": "The Japanese SBIC identity is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; its ChatGPT/Copilot training is educational activity for investee companies.",
       "class": "CONFIRMED_PRIMARY_ENTITY_INFORMATION",
-      "source_id": "sbic-official-identity-and-training",
+      "source_id": "sbic-ai-training-2025-06-12",
       "limitation": "No OpenAI commercial partnership, SBI Holdings affiliation or XRP relationship established."
+    },
+    {
+      "claim": "SBI Group reports 60% voting-right ownership in SBI Ripple Asia; the Ripple profile does not establish direct XRP custody or use by SBI Ripple Asia.",
+      "class": "CONFIRMED_PRIMARY_PROFILE_WITH_LIMITED_SCOPE",
+      "source_id": "sbiholdings-sbi-ripple-asia-ownership-60pct",
+      "limitation": "Do not attribute SBI Remit's XRP remittance activity to SBI Ripple Asia."
+    },
+    {
+      "claim": "Project Trinity completed phase-two DvP operational verification using an SMBC-issued trust-beneficiary stablecoin with Progmat/Datachain cross-chain technology.",
+      "class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06",
+      "limitation": "Proof-of-concept only; the announcement does not identify XRP, RLUSD or USDC as the settlement asset."
+    },
+    {
+      "claim": "SBI-affiliated entities have disclosed activity across XRP remittance, RLUSD/USDC distribution, Circle Arc and a separate SMBC stablecoin DvP proof-of-concept.",
+      "class": "INFERENCE_FROM_MULTIPLE_CONFIRMED_RELATIONSHIPS",
+      "source_id": "sbi-project-trinity-2026-10-06",
+      "limitation": "This supports a multi-rail hypothesis but does not establish a unified corporate treasury or exclusive strategy."
     }
   ],
   "competing_hypotheses": [
@@ -143,6 +161,21 @@
         "GXRP flows are excluded and some historical rows are reconstructed.",
         "The estimated average cost is not issuer-reported investor cost basis."
       ]
+    },
+    {
+      "id": "H7_SBI_diversified_multi_rail",
+      "hypothesis": "SBI-affiliated entities are testing several distinct settlement rails—XRP remittance, RLUSD/USDC distribution and SMBC-stablecoin DvP—rather than making a single-network commitment.",
+      "supporting_evidence": [
+        "SBI Remit has an XRP bridge-asset remittance service in selected corridors.",
+        "SBI VC Trade distributes RLUSD and USDC in Japan.",
+        "SBI Group is a Circle Arc founding validator and says it intends to leverage USDC and JPYSC.",
+        "Project Trinity used an SMBC-issued trust-beneficiary stablecoin with Progmat/Datachain cross-chain technology."
+      ],
+      "disconfirming_or_missing": [
+        "Project Trinity is a proof-of-concept/operational verification, not evidence of commercial throughput.",
+        "No current transaction volume, asset allocation or balance-sheet commitment by rail is disclosed.",
+        "No evidence establishes that these initiatives share one treasury or settlement strategy."
+      ]
     }
   ],
   "source_independence": {
@@ -159,9 +192,20 @@
       "Agent Economy",
       "XRPL.to"
     ],
-    "rule": "Same-publisher dashboard and company press release are not independent corroboration; provider values remain separate until raw on-chain reconciliation."
+    "rule": "Same-publisher dashboard and company press release are not independent corroboration; provider values remain separate until raw on-chain reconciliation. SBI Project Trinity and SBI Ripple Asia claims are sourced to separate official SBI/Ripple company pages; no XRP edge is inferred from corporate names alone."
   },
   "forecast_status": "NOT_ISSUED",
   "outcome_ledger_status": "IMPLEMENTED_NOT_POPULATED",
-  "feature_admission": "NONE"
+  "feature_admission": "NONE",
+  "corrections": [
+    {
+      "correction": "Removed unsupported SBI_Ripple_Asia -> XRPL tokenized-deposit POC edge.",
+      "reason": "No matching source ID or primary evidence was found for that exact edge; the official SBI/Ripple profiles establish ownership and fintech services, not direct XRP custody/use.",
+      "replacement": "SBI Group -> SBI Ripple Asia 60% voting rights; SBI Ripple Asia -> RippleNet/FinTech services with no direct XRP use admitted."
+    },
+    {
+      "correction": "Added Project Trinity as a separate SBI-affiliated DvP proof-of-concept using an SMBC-issued trust-beneficiary stablecoin.",
+      "reason": "Official SBI Holdings announcement identifies the settlement asset and technology providers; it does not identify XRP, RLUSD or USDC."
+    }
+  ]
 }

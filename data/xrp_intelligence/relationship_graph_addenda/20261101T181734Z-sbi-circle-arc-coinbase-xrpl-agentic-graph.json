@@ -98,6 +98,46 @@
     {
       "id": "BitGo",
       "type": "institutional_custodian"
+    },
+    {
+      "id": "Project_Trinity",
+      "type": "security_token_DvP_proof_of_concept"
+    },
+    {
+      "id": "SMBC",
+      "type": "bank_and_stablecoin_issuer"
+    },
+    {
+      "id": "Progmat",
+      "type": "tokenization_and_cross_chain_provider"
+    },
+    {
+      "id": "Datachain",
+      "type": "cross_chain_provider"
+    },
+    {
+      "id": "SBI_Securities",
+      "type": "securities_firm"
+    },
+    {
+      "id": "SBI_R3_Japan",
+      "type": "DLT_services_company"
+    },
+    {
+      "id": "Osaka_Digital_Exchange",
+      "type": "digital_asset_exchange"
+    },
+    {
+      "id": "Daiwa_Securities",
+      "type": "securities_firm"
+    },
+    {
+      "id": "TISI",
+      "type": "stablecoin_infrastructure_provider"
+    },
+    {
+      "id": "Fireblocks",
+      "type": "digital_asset_infrastructure_provider"
     }
   ],
   "edges": [
@@ -106,84 +146,77 @@
       "to": "Arc",
       "relation": "founding_validator_and_governance_participant",
       "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "SBI_Group",
       "to": "USDC",
       "relation": "stated_intent_to_leverage_on_Arc",
       "evidence_class": "SOURCED_COMPANY_CLAIM",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "SBI_Group",
       "to": "JPYSC",
       "relation": "stated_intent_to_leverage_on_Arc",
       "evidence_class": "SOURCED_COMPANY_CLAIM",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "SBI_VC_Trade",
       "to": "USDC",
       "relation": "Japan_distribution_partner_since_March_2025",
       "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "SBI_VC_Trade",
       "to": "RLUSD",
       "relation": "Japan_distribution_and_listing_relationship",
       "evidence_class": "SOURCED_OFFICIAL_SBI_ANNOUNCEMENT",
-      "source_id": "prior_sbi_rlusd_japan_record"
+      "source_id": "ripple-sbi-rlusd-japan-2026-06-24"
     },
     {
       "from": "SBI_Remit",
       "to": "XRP",
       "relation": "XRP_bridge_asset_in_selected_remittance_corridors",
       "evidence_class": "CONFIRMED_OFFICIAL_SBI_REMIT_ANNOUNCEMENT",
-      "source_id": "prior_sbi_remit_xrp_20230906_record"
-    },
-    {
-      "from": "SBI_Ripple_Asia",
-      "to": "XRPL",
-      "relation": "tokenized_deposit_and_ledger_poc",
-      "evidence_class": "SOURCED_COMPANY_ANNOUNCEMENT",
-      "source_id": "prior_sbi_ripple_asia_xrpl_poc_record"
+      "source_id": "sbi-remit-cumulative-remittances-2026-05-29"
     },
     {
       "from": "SBIC_Tokyo_SME_Investment_Consultation",
       "to": "ChatGPT_and_Copilot",
       "relation": "educational_training_for_investee_companies",
       "evidence_class": "CONFIRMED_EDUCATIONAL_ACTIVITY_ONLY",
-      "source_id": "sbic-official-identity-and-training"
+      "source_id": "sbic-ai-training-2025-06-12"
     },
     {
       "from": "SBIC_Tokyo_SME_Investment_Consultation",
       "to": "SBI_Group",
       "relation": "no_verified_affiliation_or_control_edge",
       "evidence_class": "UNKNOWN_NO_EDGE_ADMITTED",
-      "source_id": "sbic-official-identity-and-training"
+      "source_id": "sbic-ai-training-2025-06-12"
     },
     {
       "from": "Circle",
       "to": "USDC",
       "relation": "issuer",
       "evidence_class": "CONFIRMED",
-      "source_id": "circle-usdc-xrpl-20250612"
+      "source_id": "circle-native-usdc-xrpl"
     },
     {
       "from": "Circle",
       "to": "XRPL",
       "relation": "native_USDC_issuance_available",
       "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
-      "source_id": "circle-usdc-xrpl-20250612"
+      "source_id": "circle-native-usdc-xrpl"
     },
     {
       "from": "Circle",
       "to": "Arc",
       "relation": "network_operator_and_USDC_gas_asset",
       "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "Ripple",
@@ -274,63 +307,147 @@
       "to": "x402",
       "relation": "USDC_agent_payment_support_and_98_8_percent_share_claim",
       "evidence_class": "COMPANY_REPORTED_CLAIM",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "Coinbase",
       "to": "Arc",
       "relation": "listed_exchange_participant",
       "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "Binance",
       "to": "Arc",
       "relation": "listed_exchange_participant",
       "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "Aave",
       "to": "Arc",
       "relation": "lending_integration",
       "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "Morpho",
       "to": "Arc",
       "relation": "lending_integration",
       "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
-      "source_id": "circle-arc-mainnet-20260916"
+      "source_id": "circle-arc-mainnet-2026-09-16"
     },
     {
       "from": "Coinbase",
       "to": "Evernorth",
       "relation": "principal_XRP_market_for_financial_reporting_and_execution_relationship",
       "evidence_class": "CONFIRMED_SEC_FILING_AND_COMPANY_DISCLOSURE",
-      "source_id": "prior_evernorth_sec_424b3_record"
+      "source_id": "evernorth-424b3-20261030"
     },
     {
       "from": "BitGo",
       "to": "Evernorth",
       "relation": "primary_XRP_custodian",
       "evidence_class": "SOURCED_SEC_FILING",
-      "source_id": "prior_evernorth_sec_424b3_record"
+      "source_id": "evernorth-424b3-20261030"
     },
     {
       "from": "Coinbase",
       "to": "Circle",
       "relation": "USDC_distribution_and_revenue_sharing_relationship",
       "evidence_class": "CONFIRMED_SEC_FILINGS",
-      "source_id": "prior_coinbase_circle_2026q2q3_filings"
+      "source_id": "coinbase-2026q3-10q"
     },
     {
       "from": "Circle",
       "to": "Binance",
       "relation": "100M_equity_investment_and_five_year_USDC_commercial_agreement",
       "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT_AND_SEC_FILING",
-      "source_id": "prior_circle_binance_20260922_record"
+      "source_id": "circle-binance-2026-09-17-8k"
+    },
+    {
+      "from": "SBI_Group",
+      "to": "SBI_Ripple_Asia",
+      "relation": "60_percent_voting_right_ownership",
+      "evidence_class": "CONFIRMED_PRIMARY_GROUP_PROFILE",
+      "source_id": "sbiholdings-sbi-ripple-asia-ownership-60pct"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "RippleNet_and_FinTech_Solutions",
+      "relation": "provides_blockchain_DLT_fintech_solution_services; direct_XRP_custody_or_use_not_established",
+      "evidence_class": "PRIMARY_COMPANY_PROFILE_WITH_EXPLICIT_LIMITATION",
+      "source_id": "ripple-sbi-ripple-asia-odl-current"
+    },
+    {
+      "from": "SBI_Securities",
+      "to": "Project_Trinity",
+      "relation": "participant_in_security_token_DvP_poc",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "Project_Trinity",
+      "relation": "participant_in_security_token_DvP_poc",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "SBI_R3_Japan",
+      "to": "Project_Trinity",
+      "relation": "participant_in_security_token_DvP_poc",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Osaka_Digital_Exchange",
+      "to": "Project_Trinity",
+      "relation": "market_venue_participant",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Daiwa_Securities",
+      "to": "Project_Trinity",
+      "relation": "participant_in_DvP_operational_verification",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "SMBC",
+      "relation": "uses_SMBC_issued_trust_beneficiary_stablecoin_for_DvP_test",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "Progmat",
+      "relation": "cross_chain_and_tokenization_technology_provider",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "Datachain",
+      "relation": "cross_chain_technology_provider",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "TISI",
+      "relation": "stablecoin_infrastructure_provider",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
+    },
+    {
+      "from": "Project_Trinity",
+      "to": "Fireblocks",
+      "relation": "stablecoin_infrastructure_provider",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "source_id": "sbi-project-trinity-2026-10-06"
     }
   ],
   "competing_hypotheses": [
@@ -405,10 +522,27 @@
         "GXRP flows are excluded and some historical rows are reconstructed.",
         "The estimated average cost is not issuer-reported investor cost basis."
       ]
+    },
+    {
+      "id": "H7_SBI_diversified_multi_rail",
+      "hypothesis": "SBI-affiliated entities are testing several distinct settlement rails—XRP remittance, RLUSD/USDC distribution and SMBC-stablecoin DvP—rather than making a single-network commitment.",
+      "supporting_evidence": [
+        "SBI Remit has an XRP bridge-asset remittance service in selected corridors.",
+        "SBI VC Trade distributes RLUSD and USDC in Japan.",
+        "SBI Group is a Circle Arc founding validator and says it intends to leverage USDC and JPYSC.",
+        "Project Trinity used an SMBC-issued trust-beneficiary stablecoin with Progmat/Datachain cross-chain technology."
+      ],
+      "disconfirming_or_missing": [
+        "Project Trinity is a proof-of-concept/operational verification, not evidence of commercial throughput.",
+        "No current transaction volume, asset allocation or balance-sheet commitment by rail is disclosed.",
+        "No evidence establishes that these initiatives share one treasury or settlement strategy."
+      ]
     }
   ],
   "unresolved_no_edge_assertions": [
     "No direct commercial or ownership relationship between Tokyo SBIC and SBI Holdings has been established.",
+    "No direct XRP custody or use by SBI Ripple Asia is established by its Ripple profile; separate SBI Remit XRP corridors must not be attributed to SBI Ripple Asia.",
+    "Project Trinity's announced DvP proof-of-concept used an SMBC-issued trust-beneficiary stablecoin; no XRP, RLUSD or USDC use is stated.",
     "No evidence shows Circle's 98.8% agent-payment claim represents all x402 activity across all chains.",
     "No evidence shows Circle Arc uses XRP as its native gas or collateral asset.",
     "No evidence shows x402 payment-event counts translate into net XRP purchases."
