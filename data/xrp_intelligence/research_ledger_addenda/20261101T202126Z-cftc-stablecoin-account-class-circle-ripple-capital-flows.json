@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "id": "coinbase-circle-ripple-cftc-stablecoin-account-class-and-capital-flow-20261101T202126Z",
+  "captured_at_utc": "2026-11-01T20:21:26Z",
+  "findings": [
+    {
+      "id": "A1",
+      "class": "CONFIRMED",
+      "text": "USDC is issued by Circle Internet Financial, LLC for non-EEA holders. Circle Internet Financial Europe SAS is a separate dual issuer for EEA holders."
+    },
+    {
+      "id": "A2",
+      "class": "CONFIRMED",
+      "text": "Circle Internet Financial, LLC has NYDFS money-transmitter and virtual-currency licensing. Circle New York Trust and Circle National Trust are separate regulated affiliates, not the current USDC issuer."
+    },
+    {
+      "id": "A3",
+      "class": "STRONG_PUBLIC_CRITERIA_MATCH",
+      "text": "USDC appears to match the pre-GENIUS payment-stablecoin definition: U.S. issuer category, reserves composed of cash/short-dated Treasuries/overnight Treasury repos directly or through USDXX, and monthly assurance. This is not a CFTC determination or proof of FCM use."
+    },
+    {
+      "id": "A4",
+      "class": "CONFIRMED_ACCOUNT_CLASS_DISTINCTION",
+      "text": "CFTC Letter 26-05 allows payment stablecoins in 30.7 customer accounts without DCO/foreign-clearing acceptance, using fair market value after a haircut determined by the FCM's risk policies. Futures and cleared-swaps customer accounts require DCO acceptance and DCO valuation/haircut."
+    },
+    {
+      "id": "A5",
+      "class": "CONFIRMED_RESIDUAL_INTEREST_RULE",
+      "text": "An FCM may deposit its own payment stablecoins into segregated customer accounts as residual interest, but must apply an appropriate capital charge based on liquidity, volatility and other risks. These are proprietary FCM funds, not customer assets."
+    },
+    {
+      "id": "A6",
+      "class": "CONFIRMED_INITIAL_PHASE",
+      "text": "For each FCM's first three months of reliance, customer collateral is limited to payment stablecoins, BTC and ETH; proprietary payment stablecoins may be deposited as residual interest. The three-month period starts from that FCM's own notice-of-intent commencement date."
+    },
+    {
+      "id": "A7",
+      "class": "CONFIRMED_RLUSD_ISSUER_TYPE",
+      "text": "Standard Custody & Trust Company, LLC is a NY limited-purpose trust company and current RLUSD issuer. August attestation reserve classes include Treasury bills, government MMFs and cash; the MMF look-through is unresolved."
+    },
+    {
+      "id": "A8",
+      "class": "CONFIRMED_CIRCLE_XRPL",
+      "text": "Circle states USDC is natively issued on XRPL among 38 supported blockchains. This is a direct Circle/XRPL infrastructure relationship, not proof of native XRP purchases or price demand."
+    },
+    {
+      "id": "A9",
+      "class": "CONFIRMED_COMMON_CUSTODY_HUB",
+      "text": "BNY is the custodian of Circle Reserve Fund USDXX, the primary reserve custodian for RLUSD, and supports XRP and RLUSD custody. This makes BNY a shared institutional custody node for both stablecoin ecosystems and XRP."
+    },
+    {
+      "id": "A10",
+      "class": "PLANNED_NOT_LIVE",
+      "text": "BNY direct RLUSD mint/redeem and tokenized trade-finance initiatives, and Standard Chartered/LMAX RLUSD collateral mirroring, remain future/conditional work."
+    },
+    {
+      "id": "A11",
+      "class": "UNKNOWN",
+      "text": "No FCM notice, actual USDC/RLUSD customer-collateral balance, proprietary residual-interest balance or actual XRP conversion caused by stablecoin collateral was verified."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Coinbase's CFTC request primarily addresses payment-stablecoin collateral and proprietary residual-interest efficiency; it may directly benefit Coinbase's USDC distribution relationship with Circle.",
+      "support": [
+        "Coinbase Financial Markets originated the request.",
+        "USDC appears to match the public payment-stablecoin criteria.",
+        "Coinbase and Circle have a documented USDC commercial relationship."
+      ],
+      "counter": [
+        "No CFM notice or actual USDC residual-interest/collateral balance found.",
+        "The no-action letter is conditional and does not name USDC."
+      ],
+      "status": "PLAUSIBLE_NOT_EXECUTED"
+    },
+    {
+      "id": "H2",
+      "claim": "USDC may be a nearer-term FCM collateral candidate than RLUSD because issuer, reserve and attestation evidence is clearer and circulation is larger.",
+      "support": [
+        "Exact issuer identified as Circle Internet Financial, LLC.",
+        "NYDFS money-transmitter status.",
+        "USDXX holdings and cash reserve categories align with CFTC criteria.",
+        "$70.0B circulation vs RLUSD $2.627B."
+      ],
+      "counter": [
+        "No FCM usage or DCO acceptance at Bitnomial; 30.7 and futures/cleared-swaps account rules differ."
+      ],
+      "status": "STRONGER_PUBLIC_MATCH_NOT_USAGE"
+    },
+    {
+      "id": "H3",
+      "claim": "RLUSD may qualify as a payment stablecoin through Standard Custody's trust-company status and eligible indirect reserves.",
+      "support": [
+        "Issuer is NYDFS limited-purpose trust company.",
+        "Monthly signed attestation exists."
+      ],
+      "counter": [
+        "Government-MMF underlying holdings not looked through; October signed attestation unavailable; no FCM use found."
+      ],
+      "status": "CONDITIONAL_UNRESOLVED"
+    },
+    {
+      "id": "H4",
+      "claim": "Stablecoin collateral can support XRP derivatives liquidity without creating native XRP spot demand.",
+      "support": [
+        "FCMs may use payment stablecoins under specified account rules.",
+        "USDC and RLUSD operate on XRPL."
+      ],
+      "counter": [
+        "No actual FCM balances, XRP conversion, or resulting inventory change verified."
+      ],
+      "status": "STRUCTURAL_HYPOTHESIS_NOT_PRICE_FORECAST"
+    },
+    {
+      "id": "H5",
+      "claim": "BNY may become a common institutional bridge across Circle USDC, Ripple RLUSD and XRP custody.",
+      "support": [
+        "BNY custodies USDXX, is primary RLUSD reserve custodian and supports XRP/RLUSD custody."
+      ],
+      "counter": [
+        "Future mint/redeem and trade-finance plans are not yet live."
+      ],
+      "status": "SUPPORTED_CUSTODY_NODE_NOT_FULLY_EXECUTED"
+    }
+  ],
+  "capital_flow_distinctions": [
+    "Customer payment-stablecoin collateral is not automatically net new cash or XRP demand.",
+    "FCM proprietary stablecoins posted as residual interest are firm capital, not customer collateral.",
+    "USDC minting is backed by USD or equivalent reserve assets; circulation growth is not automatically net capital entering XRP.",
+    "Stablecoin transfers, mint/burn, reserve growth, collateral posting, borrowing and XRP purchases must be recorded as separate flows.",
+    "XRP collateral posted at a DCO is not proof of a new spot purchase."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

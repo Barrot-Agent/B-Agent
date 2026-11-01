@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "circle-usdc-rlusd-cftc-issuer-reserve-custody-20261101T202126Z",
+  "captured_at_utc": "2026-11-01T20:21:26Z",
+  "sources": [
+    {
+      "id": "cftc-26-05",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "publisher": "CFTC",
+      "date": "2026-02-06"
+    },
+    {
+      "id": "usdc-terms",
+      "url": "https://www.circle.com/legal/usdc-terms",
+      "publisher": "Circle",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "circle-licenses",
+      "url": "https://www.circle.com/legal/licenses",
+      "publisher": "Circle",
+      "date": "2026-09-08"
+    },
+    {
+      "id": "circle-transparency",
+      "url": "https://www.circle.com/transparency",
+      "publisher": "Circle",
+      "date": "2026-10-29"
+    },
+    {
+      "id": "circle-usdc-supported-chains",
+      "url": "https://www.circle.com/usdc",
+      "publisher": "Circle",
+      "date": "2026-09-16"
+    },
+    {
+      "id": "nydfs-entities",
+      "url": "https://www.dfs.ny.gov/apps_and_licensing/virtual_currency_businesses",
+      "publisher": "NYDFS"
+    },
+    {
+      "id": "rlusd-transparency",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "publisher": "Ripple",
+      "date": "2026-10-29"
+    },
+    {
+      "id": "rlusd-august-attestation",
+      "url": "https://cdn.sanity.io/files/ior4a5y3/production/4981331c98a2bb203c0c9ab2584e8b2a0da80938.pdf/RLUSD%20Attestation%20Report%20(Aug)_Final_Signed.pdf",
+      "publisher": "Standard Custody & Trust Company",
+      "date": "2026-09-29"
+    },
+    {
+      "id": "ripple-national-trust-bank",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "publisher": "Ripple",
+      "date": "2026-10-26"
+    },
+    {
+      "id": "bny-ripple",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/",
+      "publisher": "Ripple",
+      "date": "2026-10-27"
+    },
+    {
+      "id": "standard-chartered-lmax",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "publisher": "Ripple",
+      "date": "2026-10-12"
+    },
+    {
+      "id": "bitnomial-schedule",
+      "url": "https://bitnomial.com/clearinghouse/",
+      "publisher": "Bitnomial",
+      "date": "2026-10-02"
+    }
+  ],
+  "verified_claims": [
+    "Circle USDC Terms last updated October 15, 2026 identify Circle Internet Financial, LLC as the USDC issuer for non-EEA holders; Circle Internet Financial Europe SAS is a dual issuer for EEA holders.",
+    "Circle's licenses page lists Circle Internet Financial, LLC as a New York money transmitter and virtual-currency licensee; Circle Internet Trust Company LLC d/b/a Circle New York Trust is a separate NY limited-purpose trust company; First National Digital Currency Bank, N.A. d/b/a Circle National Trust is a separate federally chartered national trust bank.",
+    "Circle's October 29 reserve page reports $70.0B USDC circulation and $71.4B reserves. The majority is held in USDXX, a 2a-7 government money-market fund managed by BlackRock, which Circle says can hold cash, short-dated U.S. Treasuries and overnight U.S. Treasury repos; the remainder is cash at large banks.",
+    "Circle says USDXX is custodied at BNY and managed by BlackRock. Circle reports weekly reserve/mint/burn disclosure and monthly Big Four assurance.",
+    "Circle states USDC is natively issued on 38 supported blockchains, including XRPL.",
+    "CFTC Letter 26-05 permits payment stablecoins in 30.7 customer accounts without DCO acceptance, subject to FCM valuation and haircut policies; futures and cleared-swaps accounts require DCO acceptance and the DCO haircut.",
+    "CFTC Letter 26-05 permits an FCM to deposit its own payment stablecoins as residual interest in segregated customer accounts, subject to an applicable capital charge. This is proprietary FCM capital, not customer collateral.",
+    "RLUSD issuer Standard Custody & Trust Company, LLC is a NY limited-purpose trust company. Its accessible August report lists Treasury bills, government money-market funds and cash deposits; the MMF's underlying holdings need look-through.",
+    "Ripple National Trust Bank is approved for RLUSD reserve management, collateral trustee and fiduciary custody roles; Standard Custody remains RLUSD issuer.",
+    "BNY supports XRP and RLUSD custody and is primary RLUSD reserve custodian. Standard Chartered RLUSD custody on XRPL is live; LMAX collateral integration remains planned.",
+    "Bitnomial's current schedule lists XRP but not USDC or RLUSD."
+  ],
+  "limitations": [
+    "CFTC Letter 26-05 does not name USDC or RLUSD and is not a token-specific approval.",
+    "No FCM notice of reliance or actual USDC/RLUSD/XRP collateral balance was found.",
+    "The CFTC's 30.7 payment-stablecoin path is distinct from futures/cleared-swaps DCO acceptance.",
+    "RLUSD government-MMF look-through and an October signed reserve attestation remain unavailable.",
+    "Circle National Trust and Ripple National Trust Bank are not the current issuers of USDC and RLUSD respectively."
+  ]
+}
