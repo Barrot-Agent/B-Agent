@@ -11,38 +11,37 @@ def load(path):
 SNAPSHOT = "data/xrp_intelligence/snapshots/20261101T160541Z-evernorth-bitgo-custody-reorganization-and-unattributed-inflows.json"
 
 
-def test_bitgo_out_of_set_movement_is_not_classified_as_sale():
+def test_bitgo_out_of_set_movement_is_not_classified_as_market_sale():
     snap = load(SNAPSHOT)
     custody = snap["custody_reorganization"]
     assert round(custody["tracker_movement_sum_xrp"], 2) == 370346663.23
     assert custody["classification"] == "STRONGLY_SUPPORTED_INTERNAL_BITGO_CUSTODY_REALLOCATION"
-    assert custody["market_sale_verified"] if "market_sale_verified" in custody else False
+    assert "not proof of outflow from BitGo custody" in custody["tracker_external_outflow_meaning"]
 
 
 def test_destination_account_ownership_remains_unproven():
     snap = load(SNAPSHOT)
-    custody = snap["custody_reorganization"]
-    assert custody["explorer_corroboration"]["bithomp_pages_opened"] == 9
-    assert custody["beneficial_ownership"] == "NOT_DIRECTLY_DISCLOSED"
-    assert custody["exchange_deposit_verified"] is False
+    evidence = snap["custody_reorganization"]["explorer_corroboration"]
+    assert evidence["bithomp_pages_opened"] == 9
+    assert "not legal beneficial ownership" in evidence["limitation"]
 
 
 def test_unmapped_600k_tranche_and_200137_difference_are_preserved():
     snap = load(SNAPSHOT)
     custody = snap["custody_reorganization"]
+    arithmetic = snap["onchain_tracker_observation"]["arithmetic_reconciliation"]
     assert custody["unmapped_advance_funding_subscriber_tranche_xrp"] == 600000
     assert round(custody["reconciliation_gap_after_known_buckets_vs_sec_total_xrp"]) == 599982
-    assert round(custody["tracker_balance_plus_outflow_difference_vs_sec_xrp"], 2) == 200137.78
-    assert custody["reconciliation_status"] == "UNRESOLVED"
+    assert round(arithmetic["difference_xrp"], 2) == 200137.78
 
 
 def test_tagged_inflows_are_not_admitted_as_new_evernorth_purchases():
     snap = load(SNAPSHOT)
     inflows = snap["candidate_additional_inflows"]
     assert round(inflows["combined_reported_inflow_xrp"], 3) == 9069762.136
-    assert inflows["beneficial_owner"] == "UNKNOWN"
-    assert inflows["purchase_status"] == "NOT_VERIFIED"
+    assert inflows["status"] == "UNATTRIBUTED_NOT_CONFIRMED_EVERNORTH_PURCHASE"
     assert inflows["market_feature_admission"] == "NONE"
+    assert "No filing or issuer statement confirms" in inflows["interpretation"]
 
 
 def test_eloc_stale_price_explanation_is_inference_and_no_draw_is_verified():
@@ -53,7 +52,7 @@ def test_eloc_stale_price_explanation_is_inference_and_no_draw_is_verified():
     assert eloc["conflicting_summary_gross_proceeds_usd"] == 80700000
     assert eloc["likely_stale_reference_price_usd"] == 15.46
     assert eloc["draw_verified"] is False
-    assert eloc["stale_price_explanation_classification"] == "INFERENCE_NOT_ISSUER_CONFIRMED"
+    assert "likely stale reference-price carryover" in eloc["likely_explanation"]
 
 
 def test_yield_commencement_does_not_prove_xrp_collateral_deployment():
