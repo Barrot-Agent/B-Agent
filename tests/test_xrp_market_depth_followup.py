@@ -38,7 +38,7 @@ def test_treasury_field_is_not_attributed_to_evernorth():
     market = snap["market"]
     assert market["coin_gecko_total_treasury_holding_field_xrp"] == 473_276_430
     assert "Unassigned" in market["treasury_field_attribution"]
-    assert "not admitted" in market["feature_admission"].lower()
+    assert "not_admitted" in market["feature_admission"].lower()
 
 
 def test_derivatives_metrics_are_not_promoted_to_directional_signal():
