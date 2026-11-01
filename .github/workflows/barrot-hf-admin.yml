@@ -1,29 +1,14 @@
-name: Barrot HF Admin
+name: Barrot HF Admin (disabled pending explicit deployment design)
 
 on:
   workflow_dispatch:
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
-  hf-admin:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - name: Delete dead v2 Space, then create the brain Space
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          echo "=== Deleting Barrot-Omega-v2 ==="
-          curl -s -X DELETE "https://huggingface.co/api/repos/delete" \
-            -H "Authorization: Bearer $HF_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{"name":"Scribedpengenius/Barrot-Omega-v2","type":"space"}' \
-            -w "\nDELETE HTTP:%{http_code}\n"
-
-          echo "=== Creating Barrot-Brain-SelfHosted (docker) ==="
-          curl -s -X POST "https://huggingface.co/api/repos/create" \
-            -H "Authorization: Bearer $HF_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{"name":"Barrot-Brain-SelfHosted","organization":"Scribedpengenius","type":"space","sdk":"docker"}' \
-            -w "\nCREATE HTTP:%{http_code}\n"
+      - run: |
+          echo "Disabled: this workflow previously deleted an existing Hugging Face Space and created another."
+          echo "No token was accessed and no external repository was changed."

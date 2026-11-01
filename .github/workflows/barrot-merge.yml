@@ -4,20 +4,34 @@ name: Barrot Superior Merge
   workflow_dispatch:
     inputs:
       model_name:
-        description: "Merged model name"
+        description: "Merged model name (letters, numbers, dot, underscore and hyphen only)"
         required: true
         default: "barrot-superior-v1"
+      confirm_external_change:
+        description: "Set YES only when explicitly approving an external Hugging Face model upload"
+        required: true
+        default: "NO"
 
 permissions:
   contents: read
 
 jobs:
   merge:
+    if: inputs.confirm_external_change == 'YES'
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      MODEL_NAME: ${{ inputs.model_name }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+
+      - name: Validate model name
+        run: |
+          if [[ ! "$MODEL_NAME" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ ]]; then
+            echo "Invalid model_name; only letters, digits, dot, underscore and hyphen are allowed."
+            exit 1
+          fi
 
       - name: Install deps
         run: |
@@ -41,16 +55,22 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
+          mergekit-yaml merges/barrot-superior/config.yaml "output/$MODEL_NAME" \
             --copy-tokenizer --out-shard-size 2B --trust-remote-code
 
       - name: Verify
         run: |
-          ls -lah output/${{ github.event.inputs.model_name }}
+          ls -lah "output/$MODEL_NAME"
 
       - name: Upload
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} . --repo-type model
+          hf upload "Barrot-Agent/$MODEL_NAME" "output/$MODEL_NAME" . --repo-type model
+
+  blocked:
+    if: inputs.confirm_external_change != 'YES'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "No external Hugging Face model upload performed. Explicit confirm_external_change=YES is required."

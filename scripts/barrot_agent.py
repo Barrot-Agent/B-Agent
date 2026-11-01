@@ -54,7 +54,7 @@ TASK = os.environ.get("TASK_BODY", "")
 TITLE = os.environ.get("TASK_TITLE", "Barrot task")
 TASK_MODE = os.environ.get("TASK_MODE", "engineering").strip().lower()
 ISSUE = os.environ.get("ISSUE_NUMBER", "")
-BRANCH = os.environ.get("BRANCH", "barrot/task")
+BRANCH = os.environ.get("BRANCH", "barrot/task-0")
 MODEL = os.environ.get("BRAIN_MODEL", "").strip() or "openai/gpt-oss-120b"
 GROQ_KEY = os.environ.get("GROQ_API_KEY", "")
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
@@ -715,14 +715,104 @@ def configure_git() -> None:
     run(["git", "config", "user.name", "Barrot-Agent"])
 
 
+def is_safe_task_branch(branch: str) -> bool:
+    if not isinstance(branch, str) or branch in {"main", "master", "develop", "release", "production", "staging", "gh-pages"}:
+        return False
+    if re.fullmatch(r"barrot/task-[0-9]+", branch):
+        return True
+    if branch.startswith(("repair/", "research/")):
+        parts = branch.split("/")[1:]
+        return bool(parts) and all(
+            part not in {"", ".", ".."} and re.fullmatch(r"[A-Za-z0-9._-]+", part)
+            for part in parts
+        )
+    return False
+
+
 def checkout_branch(branch: str) -> None:
-    if not re.fullmatch(r"[A-Za-z0-9._/-]+", branch) or ".." in branch or branch.startswith("-"):
-        raise ValueError("Invalid Barrot task branch name")
-    remote = run(["git", "fetch", "origin", f"+refs/heads/{branch}:refs/remotes/origin/{branch}"], check=False, quiet=True)
-    if remote.returncode == 0:
-        result = run(["git", "checkout", "-B", branch, f"origin/{branch}"], check=False)
+    """Switch to a task branch without resetting refs or overwriting local work."""
+    if not is_safe_task_branch(branch):
+        raise ValueError("Invalid Barrot task branch: protected or unsafe branch names are forbidden.")
+
+    status = run(
+        ["git", "status", "--porcelain=v1", "--untracked-files=all"],
+        check=False,
+        quiet=True,
+    )
+    if status.returncode != 0:
+        raise RuntimeError(status.stderr.strip() or "Unable to inspect worktree status")
+    if status.stdout.strip():
+        raise RuntimeError(
+            "Refusing to switch branches while the worktree has tracked or untracked changes; "
+            "preserve the existing work and resolve it explicitly."
+        )
+
+    current = run(["git", "branch", "--show-current"], check=False, quiet=True)
+    if current.returncode != 0:
+        raise RuntimeError(current.stderr.strip() or "Unable to inspect the current branch")
+    if current.stdout.strip() == branch:
+        return
+
+    remote_listing = run(
+        ["git", "ls-remote", "--heads", "origin", f"refs/heads/{branch}"],
+        check=False,
+        quiet=True,
+    )
+    if remote_listing.returncode != 0:
+        raise RuntimeError(remote_listing.stderr.strip() or "Unable to inspect the remote task branch")
+    remote_lines = [line.split() for line in remote_listing.stdout.splitlines() if line.strip()]
+    if len(remote_lines) > 1 or (remote_lines and len(remote_lines[0]) < 2):
+        raise RuntimeError("Remote task branch lookup returned an ambiguous result")
+
+    local_ref = run(
+        ["git", "show-ref", "--verify", "--quiet", f"refs/heads/{branch}"],
+        check=False,
+        quiet=True,
+    )
+    if local_ref.returncode not in (0, 1):
+        raise RuntimeError(local_ref.stderr.strip() or "Unable to inspect the local task branch")
+
+    if remote_lines:
+        remote_sha = remote_lines[0][0]
+        fetched = run(
+            ["git", "fetch", "origin", f"refs/heads/{branch}:refs/remotes/origin/{branch}"],
+            check=False,
+            quiet=True,
+        )
+        if fetched.returncode != 0:
+            raise RuntimeError(
+                fetched.stderr.strip()
+                or "Remote branch fetch was not a safe fast-forward; local refs were preserved."
+            )
+        tracking = run(
+            ["git", "rev-parse", "--verify", f"refs/remotes/origin/{branch}"],
+            check=False,
+            quiet=True,
+        )
+        if tracking.returncode != 0 or tracking.stdout.strip() != remote_sha:
+            raise RuntimeError("Remote task branch changed during fetch; refusing checkout")
+
+        if local_ref.returncode == 0:
+            local = run(
+                ["git", "rev-parse", "--verify", f"refs/heads/{branch}"],
+                check=False,
+                quiet=True,
+            )
+            if local.returncode != 0 or local.stdout.strip() != remote_sha:
+                raise RuntimeError(
+                    "Local task branch differs from origin; refusing to reset or overwrite it."
+                )
+            result = run(["git", "checkout", branch], check=False)
+        else:
+            result = run(
+                ["git", "checkout", "--track", "-b", branch, f"origin/{branch}"],
+                check=False,
+            )
+    elif local_ref.returncode == 0:
+        result = run(["git", "checkout", branch], check=False)
     else:
-        result = run(["git", "checkout", "-B", branch], check=False)
+        result = run(["git", "checkout", "-b", branch], check=False)
+
     if result.returncode != 0:
         raise RuntimeError(result.stderr.strip() or f"Unable to checkout branch {branch}")
 
@@ -782,6 +872,8 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
         or str(cycle_data.get("issue", {}).get("branch", "")).strip()
         or BRANCH
     )
+    if not is_safe_task_branch(head_branch):
+        raise RuntimeError("Refusing to create a Barrot PR from a protected or unsafe branch.")
     body = [
         f"Autonomous execution of #{ISSUE} by Barrot." if ISSUE and ISSUE != "0" else "Autonomous execution by Barrot.",
         "",

@@ -8,7 +8,7 @@ on:
         required: false
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   chain:
@@ -22,10 +22,11 @@ jobs:
         with:
           python-version: "3.11"
       - run: python3 scripts/pingpong.py
-      - name: Commit cycle to knowledge base
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/log.jsonl
-          git diff --cached --quiet || git commit -m "Ping-pong cycle logged [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Upload pingpong artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pingpong-${{ github.run_number }}
+          path: |
+            ping-pongings/knowledge-base/log.jsonl
+          if-no-files-found: warn
+          retention-days: 7

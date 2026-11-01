@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   enrich:
@@ -26,10 +26,12 @@ jobs:
           python-version: "3.11"
       - name: Enrich candidates with monetization signals
         run: python3 scripts/webmcp_monetization_enrich.py
-      - name: Commit
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/webmcp_monetization_signals.json web/webmcp_monetization_signals.json
-          git diff --cached --quiet || git commit -m "WebMCP monetization enrichment cycle [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Upload webmcp-monetization-enrich artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: webmcp-monetization-enrich-${{ github.run_number }}
+          path: |
+            ping-pongings/knowledge-base/webmcp_monetization_signals.json
+            web/webmcp_monetization_signals.json
+          if-no-files-found: warn
+          retention-days: 7

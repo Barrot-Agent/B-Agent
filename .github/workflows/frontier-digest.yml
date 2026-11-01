@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   digest:
@@ -23,10 +23,12 @@ jobs:
         run: python3 scripts/frontier_distill.py
       - name: Run gap analysis (frontier findings vs current stack)
         run: python3 scripts/frontier_gap_analysis.py
-      - name: Commit frontier log + upgrade recommendations
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/frontier_log.jsonl ping-pongings/knowledge-base/upgrade_recommendations.jsonl
-          git diff --cached --quiet || git commit -m "Frontier digest: ingest + distill + gap analysis [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Upload frontier-digest artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontier-digest-${{ github.run_number }}
+          path: |
+            ping-pongings/knowledge-base/frontier_log.jsonl
+            ping-pongings/knowledge-base/upgrade_recommendations.jsonl
+          if-no-files-found: warn
+          retention-days: 7

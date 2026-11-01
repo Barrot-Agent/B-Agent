@@ -12,6 +12,9 @@ on:
         required: false
         default: "XRP signals,capability gaps"
 
+permissions:
+  contents: read
+
 jobs:
   triage:
     runs-on: ubuntu-latest
@@ -25,26 +28,12 @@ jobs:
         with:
           python-version: "3.11"
       - run: python3 scripts/data_value_triage.py
-      - name: Commit
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add triage_results_*.json ping-pongings/knowledge-base/seen_content_hashes.json
-          git diff --cached --quiet || git commit -m "Data value triage run [skip ci]"
-          push_with_retry() {
-            local max_attempts=5
-            local attempt=1
-            while [ $attempt -le $max_attempts ]; do
-              if git push; then
-                echo "Pushed on attempt $attempt"
-                return 0
-              fi
-              echo "Push attempt $attempt failed, pulling and retrying..."
-              sleep $(( (RANDOM % 5) + attempt ))
-              git pull --no-rebase --no-edit origin main
-              attempt=$(( attempt + 1 ))
-            done
-            echo "FAILED to push after $max_attempts attempts -- data committed locally but not on main"
-            return 1
-          }
-          push_with_retry
+      - name: Upload data-value-triage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-value-triage-${{ github.run_number }}
+          path: |
+            triage_results_*.json
+            ping-pongings/knowledge-base/seen_content_hashes.json
+          if-no-files-found: warn
+          retention-days: 7

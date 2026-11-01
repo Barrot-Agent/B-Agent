@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   cycle:
@@ -24,10 +24,14 @@ jobs:
         run: python3 scripts/knowledge_distill_btc.py
       - name: Emit blended BTC signal
         run: python3 scripts/emit_signal_btc.py
-      - name: Commit knowledge + signal
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/log_btc.jsonl ping-pongings/knowledge-base/config_btc.json web/latest_signal_btc.json web/signal_history_btc.jsonl
-          git diff --cached --quiet || git commit -m "Auto cycle (BTC): ingest + distill + blended signal [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Upload knowledge-signal-cycle-btc artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: knowledge-signal-cycle-btc-${{ github.run_number }}
+          path: |
+            ping-pongings/knowledge-base/log_btc.jsonl
+            ping-pongings/knowledge-base/config_btc.json
+            web/latest_signal_btc.json
+            web/signal_history_btc.jsonl
+          if-no-files-found: warn
+          retention-days: 7
