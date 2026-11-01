@@ -1,6 +1,8 @@
 name: Barrot Task Allocator (Disabled Pending Verified Adapters)
 
 on:
+  push:
+    branches: ["safety/**"]
   workflow_dispatch:
     inputs:
       goal:

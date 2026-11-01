@@ -30,3 +30,16 @@ def test_self_hosted_brain_deployment_is_disabled_pending_approval():
     for forbidden in ("HF_TOKEN", "secrets.", "api.upload_folder", "api.create_repo", "add_space_secret"):
         assert forbidden not in workflow
     assert "DEPLOYMENT_NOT_PERFORMED" in workflow
+
+
+def test_disabled_legacy_workflows_handle_safety_branch_pushes_with_read_only_notice_jobs():
+    task_allocator = (ROOT / ".github" / "workflows" / "task-allocator.yml").read_text(encoding="utf-8")
+    force_deploy = (ROOT / ".github" / "workflows" / "force-deploy-space.yml").read_text(encoding="utf-8")
+    for workflow in (task_allocator, force_deploy):
+        assert 'push:\n    branches: ["safety/**"]' in workflow
+        assert "permissions: {}" in workflow
+        assert "secrets." not in workflow
+        assert "actions/checkout" not in workflow
+        assert "git push" not in workflow.lower()
+    assert "TASK_ALLOCATION_NOT_PERFORMED" in task_allocator
+    assert "DEPLOYMENT_NOT_PERFORMED" in force_deploy
