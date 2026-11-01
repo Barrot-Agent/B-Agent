@@ -38,25 +38,33 @@ def test_auto_pr_validation_has_no_write_permissions():
     assert "pull-requests: write" not in workflow
 
 
-def test_huggingface_publish_workflows_require_owner_and_explicit_yes():
+def test_huggingface_publish_workflows_are_inert_pending_protected_environment():
     for name in ("barrot-merge.yml", "barrot-merge-manual.yml"):
         workflow = read_workflow(name)
-        assert "inputs.confirm_external_change == 'YES'" in workflow
-        assert "github.actor == github.repository_owner" in workflow
+        assert "workflow_dispatch:" in workflow
+        assert "permissions: {}" in workflow
+        assert "if: ${{ false }}" in workflow
+        assert "secrets." not in workflow
+        assert "HF_TOKEN" not in workflow
+        assert "api.upload_folder" not in workflow
 
-
-def test_huggingface_space_restart_requires_owner_and_explicit_yes():
+def test_huggingface_space_restart_is_inert_pending_protected_environment():
     workflow = read_workflow("barrot-restart-space.yml")
-    assert "inputs.confirm_external_change == 'YES'" in workflow
-    assert "github.actor == github.repository_owner" in workflow
+    assert "workflow_dispatch:" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "secrets." not in workflow
+    assert "HF_TOKEN" not in workflow
+    assert "api.restart_space" not in workflow
 
-
-def test_self_upgrade_requires_owner_yes_and_non_main_branch():
+def test_self_upgrade_is_inert_pending_protected_environment():
     workflow = read_workflow("barrot-self-upgrade.yml")
-    assert "inputs.confirm_repository_write == 'YES'" in workflow
-    assert "github.actor == github.repository_owner" in workflow
-    assert "github.ref != 'refs/heads/main'" in workflow
-
+    assert "workflow_dispatch:" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "secrets." not in workflow
+    assert "git push" not in workflow
+    assert "scripts/barrot_self_upgrade.py" not in workflow
 
 def test_engineering_pull_requests_are_created_as_drafts():
     script = (ROOT / "scripts" / "barrot_agent.py").read_text(encoding="utf-8")
