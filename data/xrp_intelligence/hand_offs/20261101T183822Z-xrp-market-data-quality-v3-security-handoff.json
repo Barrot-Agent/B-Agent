@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-market-data-quality-v3-security-2026-11-01T18:38:22Z",
+  "captured_at_utc": "2026-11-01T18:38:22Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification and safety",
+  "current_main_sha": "4695fe966e7f383924d6022323d6c7c6b1efe221",
+  "research_summary": [
+    "XRP derivatives open-interest providers disagree materially because their venue/instrument universes and timestamps are not normalized; no aggregate OI feature is admitted.",
+    "ETF trackers report positive weekly XRP holdings change, but the magnitude is small relative to existing holdings and AUM; fund coverage gaps, BITW index rebalancing and issuer-report timing prevent interpreting it as clean external cash flow.",
+    "Circle Q3 2026 results are scheduled for Nov 4 at 8 AM ET; the shareholder Q&A window closes Nov 3 at 9 AM ET.",
+    "Tokyo SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; its ChatGPT/Copilot activity is investee-company education only.",
+    "Permission Coin ASK remains a candidate for the exact ASK Coin phrase; direct XRPL integration is not established."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "platform_status": "DESIGNED_NOT_CONNECTED",
+  "verified_live_external_platforms": [
+    "ChatGPT",
+    "GitHub"
+  ],
+  "repository": {
+    "pr1464": {
+      "head_before_fix": "fdf856da07857873c8fefb21919e560bd623cb4f",
+      "ci_failure_run": 41336973329,
+      "failure_summary": "430 passed, 1 failed, 8 subtests passed; contradictory SBI Ripple Asia graph/test semantics.",
+      "correction_commit": "PENDING_EXACT_HEAD_CI"
+    },
+    "pr1471": {
+      "head": "e2d8f9a3342e6e9a548261e2045eec784fde6e59",
+      "base": "4695fe966e7f383924d6022323d6c7c6b1efe221",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41337409401,
+      "ci_status": "IN_PROGRESS_AT_CAPTURE",
+      "fail_closed_gate_run": 41337409369,
+      "gate_status": "PASSED_MERGING_DISABLED"
+    },
+    "pr1470": {
+      "head": "efbc1f2a11eb6489c04c5360648de41f2c1cec28",
+      "base": "32682bc3797009421682ab51da59bf058b7d63d5",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41330671867,
+      "tests": "389 passed + 8 subtests",
+      "gate_run": 41330671836,
+      "gate_status": "PASSED_MERGING_DISABLED",
+      "note": "Prediction ledger is implemented but not populated; no predictive skill estimate exists."
+    }
+  },
+  "next_actions": [
+    "Verify the corrected PR #1464 exact head with CI; retain the original failed run and do not suppress the contradictory test history.",
+    "Check PR #1471 exact-head CI run 41337409401; fail-closed gate 41337409369 already passed. Do not merge without explicit approval.",
+    "Reconcile OI venue-contract data from raw exchange APIs using a common instrument universe and timestamps.",
+    "Reconcile each XRP ETF issuer's holdings, shares, creations/redemptions and cash/in-kind components; preserve missing-report flags.",
+    "Prepare a pre-event Circle Q3 capture and compare post-release USDC circulation, reserve income, Coinbase distribution economics, CPN/Arc activity and XRPL USDC supply.",
+    "Continue the Evernorth custody/yield deployment trace, XRP escrow destination decoding and Binance attacker-wallet refresh.",
+    "Continue ASK Coin exact identity, SBIC legal-entity boundaries and Camilla Stephenson channel-ID verification."
+  ],
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "decision_id": "xrp-market-data-normalization-2026-11-01T18:38:22Z",
+  "captured_at_utc": "2026-11-01T18:38:22Z",
+  "title": "Quarantine cross-provider derivatives OI and ETF-flow aggregates until scope-normalized",
+  "status": "ADOPTED_FOR_RESEARCH_PIPELINE",
+  "decisions": [
+    "Never average or pool aggregate open-interest totals from providers with different venue, instrument, settlement, quote-currency, contract-multiplier or timestamp coverage.",
+    "Store OI at the venue-contract-instrument level with source ID, raw observation time, retrieval time, contract type, quote asset, settlement asset, unit, multiplier and conversion methodology.",
+    "Compare providers only after a common venue/instrument intersection is constructed; preserve unmatched venues and instruments separately.",
+    "Treat liquidation heatmap clusters as provider-modelled estimates, not actual resting orders or guaranteed liquidation triggers.",
+    "Separate ETF spot holdings, index-fund holdings, shares outstanding, creations/redemptions, issuer-reported XRP units, AUM and estimated USD flow.",
+    "Do not treat BITW index rebalancing or holdings deltas as cash inflows without primary creation/redemption and cash-component evidence.",
+    "Do not admit these snapshots as model features until the source registry is verified and point-in-time raw inputs are retained."
+  ],
+  "unresolved": [
+    "Raw exchange API contract-level open-interest reconciliation.",
+    "Common timestamp alignment across all venues and providers.",
+    "Issuer-file reconciliation for all six spot XRP ETFs and BITW.",
+    "Cash versus in-kind ETF creation/redemption decomposition."
+  ],
+  "forecast_policy": "No directional XRP forecast from these observations."
+}

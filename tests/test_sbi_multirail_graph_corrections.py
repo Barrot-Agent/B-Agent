@@ -26,7 +26,10 @@ def test_new_source_revision_uses_canonical_ids_and_contains_project_trinity():
 def test_graph_does_not_attribute_direct_xrp_use_to_sbi_ripple_asia():
     graph = load(f"relationship_graph_addenda/{STAMP}-sbi-circle-arc-coinbase-xrpl-agentic-graph.json")
     edges = graph["edges"]
-    assert not any(e["from"] == "SBI_Ripple_Asia" and e["to"] in {"XRP", "XRPL"} for e in edges)
+    assert not any(e["from"] == "SBI_Ripple_Asia" and e["to"] == "XRP" for e in edges)
+    study_edges = [e for e in edges if e["from"] == "SBI_Ripple_Asia" and e["to"] == "XRPL"]
+    assert study_edges
+    assert all("feasibility_study_only" in e["relation"] and "not_production_or_XRP_use" in e["relation"] for e in study_edges)
     assert any(e["from"] == "SBI_Group" and e["to"] == "SBI_Ripple_Asia" and "60_percent" in e["relation"] for e in edges)
     assert not any(e["from"] == "SBI_Remit" and e["to"] == "XRP" for e in edges)
     assert any(e["from"] == "SBI_Remit" and e["to"] == "SBI_VC_Trade" for e in edges)

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrp-oi-etf-circle-and-v3-test-root-cause-2026-11-01T18:38:22Z",
+  "captured_at_utc": "2026-11-01T18:38:22Z",
+  "mission_priority": "XRP_INTELLIGENCE_AND_PREDICTION_ENGINE_MASTERY",
+  "findings": [
+    {
+      "claim": "Three current XRP derivatives aggregators display materially different aggregate open interest: TradRadar approximately $1.90B across seven perpetual venues, TRdesk approximately $2.67B across 26 venues including quarterly futures and CME, and Alpha Finance approximately $2.82B in an all-exchange display.",
+      "class": "SOURCE_CONFLICT",
+      "source_ids": [
+        "tradradar-xrp-perpetuals-20261101T1740Z",
+        "trdesk-xrp-open-interest-20261101",
+        "alpha-finance-xrp-liquidation-20261101T1822Z"
+      ],
+      "limitation": "Different venue/instrument universes, observation times and contract mappings are not normalized; the spread is not a market move or capital-flow estimate."
+    },
+    {
+      "claim": "TradRadar's page explicitly describes seven-exchange perpetual futures, while TRdesk describes 26 exchanges and both perpetual swaps and quarterly futures.",
+      "class": "SOURCED_METHODOLOGY_DIFFERENCE",
+      "source_ids": [
+        "tradradar-xrp-perpetuals-20261101T1740Z",
+        "trdesk-xrp-open-interest-20261101"
+      ],
+      "limitation": "Coverage difference likely explains part, but not all, of common-venue discrepancies."
+    },
+    {
+      "claim": "Alpha Finance's displayed liquidation clusters are modelled from open interest and standard leverage tiers; the provider warns that real liquidation prices depend on position size, margin mode and maintenance margin.",
+      "class": "SOURCED_PROVIDER_METHODOLOGY",
+      "source_ids": [
+        "alpha-finance-xrp-liquidation-20261101T1822Z"
+      ],
+      "limitation": "Do not treat clusters as actual resting orders or guaranteed triggers."
+    },
+    {
+      "claim": "XRP Insights reports approximately 1.1966B XRP of ETF/index holdings, +3.39M XRP weekly holdings change for Oct 26-30 and -49,932 XRP on Oct 30.",
+      "class": "SOURCED_SECONDARY_TRACKER_OBSERVATION",
+      "source_ids": [
+        "xrp-insights-etf-tracker-20261030"
+      ],
+      "limitation": "Six spot funds plus BITW; GXRP flow gap; some reconstructed rows; holdings delta is not automatically cash inflow."
+    },
+    {
+      "claim": "The reported weekly ETF/index holdings change is approximately 0.283% of existing holdings and its estimated $4.03M is approximately 0.267% of $1.51B AUM.",
+      "class": "DERIVED_CALCULATION",
+      "source_ids": [
+        "xrp-insights-etf-tracker-20261030"
+      ],
+      "limitation": "Descriptive scale only; does not establish direction or predictive value."
+    },
+    {
+      "claim": "CryptoETF.today reported an explicitly partial Oct 30 flow of approximately +$0.2M with only three of five tracked funds reported.",
+      "class": "SOURCED_PARTIAL_OBSERVATION",
+      "source_ids": [
+        "cryptoetf-today-xrp-etf-partial-20261030"
+      ],
+      "limitation": "Not comparable with the six-spot-plus-BITW XRP-unit tracker total."
+    },
+    {
+      "claim": "Circle scheduled its Q3 2026 results webcast for Nov 4, 2026 at 8:00 AM ET; the shareholder Q&A window closes Nov 3 at 9:00 AM ET.",
+      "class": "CONFIRMED_PRIMARY_COMPANY_EVENT",
+      "source_ids": [
+        "circle-q3-2026-results-event"
+      ],
+      "limitation": "No Q3 results or XRP-specific conclusions are available at this cutoff."
+    },
+    {
+      "claim": "The official Tokyo SBIC training page identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. and documents ChatGPT/Copilot training restricted to investee companies.",
+      "class": "CONFIRMED_PRIMARY_ENTITY_AND_EDUCATIONAL_ACTIVITY",
+      "source_ids": [
+        "sbic-ai-training-2025-06-12"
+      ],
+      "limitation": "No OpenAI commercial partnership, XRP relationship or SBI Holdings control relationship is established."
+    },
+    {
+      "claim": "Permission Coin is a candidate for the user's ASK Coin phrase: CoinMarketCap lists ASK as Permission Coin and Permission's whitepaper describes ASK as a coordination mechanism; no direct XRPL integration was found in reviewed official documentation.",
+      "class": "CANDIDATE_IDENTITY_WITH_NEGATIVE_SEARCH_SCOPE",
+      "source_ids": [
+        "permission-coin-ask-cmc-20261101",
+        "permission-ai-whitepaper"
+      ],
+      "limitation": "Ticker collision remains possible; absence in reviewed docs is not proof that no integration exists."
+    },
+    {
+      "claim": "PR #1464 CI run 41336973329 failed with 430 tests passed, one failed and eight subtests passed. The failure was a contradictory test assertion: one test banned both SBI_Ripple_Asia->XRP and SBI_Ripple_Asia->XRPL, while another correctly required the explicitly labelled XRPL feasibility-study edge.",
+      "class": "VERIFIED_REPOSITORY_ROOT_CAUSE",
+      "source_ids": [
+        "github-pr-1464-run-41336973329"
+      ],
+      "limitation": "The fix narrows the prohibition to direct XRP use and allows only the explicitly labelled XRPL feasibility study; exact-head rerun is pending."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

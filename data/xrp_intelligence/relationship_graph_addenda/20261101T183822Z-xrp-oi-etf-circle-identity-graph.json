@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "graph_id": "xrp-oi-etf-circle-identity-2026-11-01T18:38:22Z",
+  "captured_at_utc": "2026-11-01T18:38:22Z",
+  "nodes": [
+    {
+      "id": "XRP",
+      "type": "digital_asset"
+    },
+    {
+      "id": "TradRadar",
+      "type": "secondary_derivatives_aggregator"
+    },
+    {
+      "id": "TRdesk",
+      "type": "secondary_multi_exchange_aggregator"
+    },
+    {
+      "id": "Alpha_Finance",
+      "type": "secondary_derivatives_analytics_provider"
+    },
+    {
+      "id": "XRP_Insights",
+      "type": "secondary_XRP_and_ETF_tracker"
+    },
+    {
+      "id": "CryptoETF_today",
+      "type": "secondary_partial_ETF_tracker"
+    },
+    {
+      "id": "XRP_Spot_ETFs",
+      "type": "funds_holding_spot_XRP"
+    },
+    {
+      "id": "BITW",
+      "type": "diversified_crypto_index_fund"
+    },
+    {
+      "id": "Circle",
+      "type": "stablecoin_and_payment_infrastructure_company"
+    },
+    {
+      "id": "Circle_Q3_2026_Results",
+      "type": "scheduled_public_reporting_event"
+    },
+    {
+      "id": "Tokyo_SME_Investment_Consultation_SBIC",
+      "type": "Japanese_SME_investment_and_consultation_company"
+    },
+    {
+      "id": "ChatGPT",
+      "type": "AI_product"
+    },
+    {
+      "id": "Copilot",
+      "type": "AI_product"
+    },
+    {
+      "id": "Permission",
+      "type": "consent_based_AI_data_platform"
+    },
+    {
+      "id": "ASK",
+      "type": "Permission_utility_token"
+    },
+    {
+      "id": "Base",
+      "type": "blockchain"
+    },
+    {
+      "id": "Polygon",
+      "type": "blockchain"
+    },
+    {
+      "id": "XRPL",
+      "type": "ledger"
+    }
+  ],
+  "edges": [
+    {
+      "from": "TradRadar",
+      "to": "XRP",
+      "relation": "publishes_seven_exchange_perpetual_futures_metrics",
+      "evidence_class": "PROVIDER_OBSERVATION",
+      "source_id": "tradradar-xrp-perpetuals-20261101T1740Z"
+    },
+    {
+      "from": "TRdesk",
+      "to": "XRP",
+      "relation": "aggregates_26_exchange_perpetual_and_quarterly_futures_open_interest",
+      "evidence_class": "PROVIDER_METHODOLOGY_AND_OBSERVATION",
+      "source_id": "trdesk-xrp-open-interest-20261101"
+    },
+    {
+      "from": "Alpha_Finance",
+      "to": "XRP",
+      "relation": "publishes_all_exchange_open_interest_and_modelled_liquidation_heatmap",
+      "evidence_class": "SECONDARY_PROVIDER_OBSERVATION_AND_MODEL",
+      "source_id": "alpha-finance-xrp-liquidation-20261101T1822Z"
+    },
+    {
+      "from": "XRP_Insights",
+      "to": "XRP_Spot_ETFs",
+      "relation": "aggregates_issuer_reported_holdings_changes_for_six_spot_funds_and_BITW",
+      "evidence_class": "SECONDARY_TRACKER_METHODOLOGY",
+      "source_id": "xrp-insights-etf-tracker-20261030"
+    },
+    {
+      "from": "CryptoETF_today",
+      "to": "XRP_Spot_ETFs",
+      "relation": "publishes_partial_three_of_five_fund_flow_observation",
+      "evidence_class": "SECONDARY_PARTIAL_OBSERVATION",
+      "source_id": "cryptoetf-today-xrp-etf-partial-20261030"
+    },
+    {
+      "from": "Circle",
+      "to": "Circle_Q3_2026_Results",
+      "relation": "scheduled_public_results_webcast_2026_11_04_0800_ET",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_EVENT_NOTICE",
+      "source_id": "circle-q3-2026-results-event"
+    },
+    {
+      "from": "Tokyo_SME_Investment_Consultation_SBIC",
+      "to": "ChatGPT",
+      "relation": "investee_company_education_training_topic",
+      "evidence_class": "CONFIRMED_PRIMARY_EDUCATIONAL_ACTIVITY",
+      "source_id": "sbic-ai-training-2025-06-12"
+    },
+    {
+      "from": "Tokyo_SME_Investment_Consultation_SBIC",
+      "to": "Copilot",
+      "relation": "investee_company_education_training_topic",
+      "evidence_class": "CONFIRMED_PRIMARY_EDUCATIONAL_ACTIVITY",
+      "source_id": "sbic-ai-training-2025-06-12"
+    },
+    {
+      "from": "Permission",
+      "to": "ASK",
+      "relation": "whitepaper_describes_ASK_as_coordination_mechanism",
+      "evidence_class": "PRIMARY_PROJECT_DOCUMENTATION",
+      "source_id": "permission-ai-whitepaper"
+    },
+    {
+      "from": "ASK",
+      "to": "Base",
+      "relation": "listed_as_supported_token_ecosystem",
+      "evidence_class": "SECONDARY_LISTING_TAG",
+      "source_id": "permission-coin-ask-cmc-20261101"
+    },
+    {
+      "from": "ASK",
+      "to": "Polygon",
+      "relation": "listed_contract_and_ecosystem_tag",
+      "evidence_class": "SECONDARY_LISTING",
+      "source_id": "permission-coin-ask-cmc-20261101"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H_OI_SCOPE",
+      "hypothesis": "Most of the headline XRP open-interest spread reflects different venue and instrument universes rather than a true market change.",
+      "supporting_evidence": [
+        "TradRadar explicitly covers seven exchanges' perpetual futures.",
+        "TRdesk explicitly covers 26 exchanges and includes perpetual swaps plus quarterly futures.",
+        "TRdesk identifies CME as approximately 20.4% of its aggregate."
+      ],
+      "disconfirming_or_missing": [
+        "Common-venue values differ materially across providers, including Bybit and Gate.",
+        "TRdesk's exact observation timestamp was not displayed.",
+        "No raw exchange contract-level API reconciliation was completed."
+      ]
+    },
+    {
+      "id": "H_OI_MAPPING",
+      "hypothesis": "Contract multiplier, quote-currency, inverse/linear contract or venue mapping differences explain part of the residual spread.",
+      "supporting_evidence": [
+        "Common-venue aggregate values differ materially even where venues overlap.",
+        "Provider pages expose different contract scopes and not all raw payloads."
+      ],
+      "disconfirming_or_missing": [
+        "The exact mapping error has not been identified.",
+        "A contract-by-contract comparison is still required."
+      ]
+    },
+    {
+      "id": "H_ETF_STICKY_ALLOCATIONS",
+      "hypothesis": "Positive weekly ETF/index holdings changes despite a falling XRP price may indicate some persistent allocation interest.",
+      "supporting_evidence": [
+        "XRP Insights reports +3.39M XRP weekly holdings change for Oct 26-30.",
+        "Reported price fell approximately 3.8% over the same week."
+      ],
+      "disconfirming_or_missing": [
+        "The weekly change is approximately 0.28% of existing holdings and 0.27% of AUM.",
+        "BITW is an index product, GXRP flow rows are excluded where data is missing, and some rows are reconstructed.",
+        "A holdings delta is not automatically cash inflow."
+      ]
+    },
+    {
+      "id": "H_ETF_COVERAGE",
+      "hypothesis": "Differences among ETF flow dashboards are caused primarily by different fund universes, partial issuer reporting and flow definitions.",
+      "supporting_evidence": [
+        "XRP Insights uses six spot funds plus BITW and excludes GXRP flow rows where its scrape gap exists.",
+        "CryptoETF.today explicitly reports only three of five funds for Oct 30."
+      ],
+      "disconfirming_or_missing": [
+        "A full issuer-file reconciliation across all funds has not been completed.",
+        "No common fund-universe daily XRP-unit table has been produced."
+      ]
+    },
+    {
+      "id": "H_CIRCLE_EVENT",
+      "hypothesis": "Circle Q3 results may materially clarify USDC reserve economics, Coinbase distribution dependence and the scale of Arc/payment-network activity.",
+      "supporting_evidence": [
+        "Circle has scheduled a public Q3 results webcast for Nov 4 at 8 AM ET.",
+        "The official investor page identifies a shareholder Q&A window closing Nov 3 at 9 AM ET."
+      ],
+      "disconfirming_or_missing": [
+        "No Q3 results are available at this snapshot cutoff.",
+        "The event may not disclose chain-level XRP or XRPL activity."
+      ]
+    }
+  ],
+  "unresolved_no_edge_assertions": [
+    "No direct relationship between Tokyo SBIC and XRP, XRPL, Ripple, Circle or SBI Holdings is established by the reviewed training page.",
+    "No direct XRP or XRPL integration was established for Permission Coin ASK in the reviewed official documentation.",
+    "No XRP price forecast is inferred from provider open-interest totals or modelled liquidation heatmaps."
+  ]
+}
