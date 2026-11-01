@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 161,
+  "chunk_count": 162,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "RUN-XRP-BINANCE-WITHDRAWAL-PHASE1-PR1444-ESCROW-UPDATE-20261101T060500Z",
+      "recorded_at_utc": "2026-11-01T06:05:00Z",
+      "update_type": "BINANCE_XRP_WITHDRAWAL_PHASE1_ESCROW_UPDATE_AND_BAGENT_PR1444_WORKFLOW_SAFETY",
+      "data_cutoff_utc": "2026-11-01T06:05:00Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261101T060500Z-xrp-escrow-binance-withdrawal-phase-and-pr1444-audit.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T060500Z-binance-withdrawal-xrp-and-bagent-safety-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T060500Z-binance-withdrawal-phase-event-and-workflow-safety.json",
+      "repository_audit_path": "data/repository_audits/20261101T060500Z-main-215-prs-workflow-inventory-and-pr1444-audit.json",
+      "source_revision_path": "data/xrp_intelligence/source_revisions/20261101T060500Z-binance-withdrawal-phase1-pr1444-and-escrow-update.json",
+      "handoff_path": "data/xrp_intelligence/hand_offs/20261101T060500Z-xrp-withdrawal-phase-and-pr1444-handoff.json",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T060400Z-BINANCE-NETWORK-STATUS-PAGE",
+        "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT"
+      ],
+      "findings": [
+        "Latest XRP Insights pinned ledger 108037957 at 04:35 UTC reports 1B XRP released and zero re-escrow by that ledger; destination and later disposition unknown.",
+        "Binance Update #4 reports 95% aggregate recovery and lists XRP for progressive phase-one withdrawals during 06:00–09:00 UTC; live XRP availability remains unconfirmed at 06:05.",
+        "Binance network-status page rendered no asset records; this is not evidence of open or suspended XRP withdrawals.",
+        "Main advanced to 694fc424 at 06:03:40 UTC through a timestamp-only telemetry report commit with Status: OPERATIONAL but no deployment verification.",
+        "PR #1443 passed 349 tests plus 8 subtests and fail-closed gate; PR #1444 prior head failed four tests, root causes fixed on current head, rerun pending.",
+        "Open PR inventory returned 215 total; 210 main-based, zero based on latest main, 210 stale main-based and five non-main."
+      ],
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 5,
+        "missing_source_references": 0
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+        "main_modified": false,
+        "merge": false,
+        "force_push": false,
+        "manual_workflow_dispatch": false,
+        "secret_access": false,
+        "paper_state_mutation": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

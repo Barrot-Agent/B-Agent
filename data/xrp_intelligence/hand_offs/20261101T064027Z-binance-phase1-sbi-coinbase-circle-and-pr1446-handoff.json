@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T064027Z-BINANCE-PHASE1-SBI-COINBASE-CIRCLE-PR1446",
+  "captured_at_utc": "2026-11-01T06:40:27Z",
+  "branch": "verify/xrp-ledger-archive-20261101T031615Z",
+  "prior_head_sha": "eab1fa44cf1d3ee6fbc65506dd7b8e7a1741199a",
+  "verified_this_run": [
+    "Binance's official phase-one announcement includes XRP in the 06:00-09:00 UTC progressive withdrawal window and reports 95% aggregate replenishment; actual XRP availability remains unconfirmed because the status page shows stale No Data.",
+    "XRP Insights reports +3.39M XRP ETF holdings change for October 26-30; daily differences with Maketo/SoSoValue are attributable to non-matching fund universes and measures, pending issuer-level reconciliation.",
+    "Derivatives open-interest snapshots differ materially by provider scope: Kairo 13 venues, JustScreener 9 venues, TRdesk 26 exchanges including CME, Kodexius seven contracts and CoinGlass broad dashboard; no unified aggregate admitted.",
+    "DefiLlama and stables.cool both show XRPL RLUSD near $707M, while their total stablecoin coverage differs; DefiLlama reports a seven-day contraction whose cause is unknown.",
+    "Circle's Q2 filing reports $655.3M H1 distribution costs to Coinbase; Coinbase's Q3 filing shows stablecoin revenue and USDC reward economics but no separate XRP collateral disclosure.",
+    "SBI's SMFG, BlackRock/Startale, Open Standard/OUSD and JPYSC announcements extend the multi-rail map; none establishes direct XRP routing.",
+    "SBI START bond and shareholder benefit programs provide XRP rewards but do not establish XRP-denominated financing or quantified open-market purchases.",
+    "PR #1446 exact-head CI passed 346 tests plus eight subtests; fail-closed gate passed with merging disabled."
+  ],
+  "unresolved": [
+    "Actual Binance XRP withdrawal activation and first successful customer withdrawal transaction.",
+    "Raw November 1 EscrowFinish Destination fields and subsequent XRP disposition after the last pinned 04:35 UTC tracker ledger.",
+    "Current Binance attacker-wallet balance after the last independently reviewed October 31 16:51 UTC observation.",
+    "Coinbase asset-specific XRP collateral balances, if any; the Q3 filing does not separately disclose them.",
+    "Cause of the RLUSD XRPL supply contraction and chain-specific mint/burn/bridge flows.",
+    "Actual cash creations/redemptions for XRP ETFs after matching each fund universe.",
+    "Current SBI ownership percentages in Ripple and Circle; previously reported values are dated.",
+    "Whether JPYSC/OUSD interoperability ever routes through XRP; no such route is currently established.",
+    "Protected-environment reviewer configuration and authorized actor mapping for PR #1445 external mutations.",
+    "Full repository CI, dependency scan and security-alert review."
+  ],
+  "next_actions": [
+    "Verify Binance XRP withdrawal availability using a fresh status observation and a successful public transaction if one is observable.",
+    "Decode both November 1 EscrowFinish transactions and trace destination, follow-on transfers and EscrowCreate.",
+    "Reconcile XRP ETF flows at issuer level, separating cash, in-kind inventory, fund universe and AUM valuation.",
+    "Build a contract/venue coverage map for XRP OI providers before any aggregation.",
+    "Monitor RLUSD and USDC XRPL supply by mint, burn, bridge and issuer events.",
+    "Continue SBI/Ripple/Circle/Coinbase/SMFG/BlackRock/Startale relationship research and keep SBIC regional entities distinct.",
+    "Preserve PR #1444, #1445 and #1446 as draft/unmerged until explicit authorization.",
+    "Complete exact-head archive validation after appending the new source/run/limitation shards."
+  ],
+  "safety": {
+    "main_sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_position_mutated": false,
+    "real_money_trade": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "artifact_paths": {
+    "snapshot": "data/xrp_intelligence/snapshots/20261101T061500Z-xrp-escrow-binance-phase1-pr1444-pr1445-workflow-audit-v2.json",
+    "source_revision": "data/xrp_intelligence/source_revisions/20261101T061500Z-binance-withdrawal-recheck-pr1444-pr1445-workflow-audit-v2.json",
+    "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T061500Z-binance-withdrawal-and-bagent-safety-graph.json",
+    "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T061500Z-withdrawal-evidence-and-scheduled-workflow-safety.json",
+    "repository_audit": "data/repository_audits/20261101T061500Z-main-216-prs-workflow-risk-and-pr1445-audit.json"
+  },
+  "verification_update": {
+    "failed_head_sha": "611d316b688f3cf3b5c61666b1d5f436c097187d",
+    "validator_run_id": 41280346576,
+    "validator_status": "BLOCKED",
+    "errors": [
+      "source_revision_addenda[45] source_id pointer mismatch"
+    ],
+    "archive_shards_checked": 451,
+    "source_revision_addenda_checked": 46,
+    "source_references": 7,
+    "missing_source_references": 0,
+    "state_mutated": false,
+    "gate_run_id": 41280346584,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "tests_not_run": true,
+    "correction": {
+      "source_revision_v2": "data/xrp_intelligence/source_revisions/20261101T061500Z-binance-withdrawal-recheck-pr1444-pr1445-workflow-audit-v2.json",
+      "snapshot_v2": "data/xrp_intelligence/snapshots/20261101T061500Z-xrp-escrow-binance-phase1-pr1444-pr1445-workflow-audit-v2.json",
+      "reason": "Added explicit singular source_id matching the ledger pointer; originals preserved."
+    },
+    "revalidation_status": "PENDING"
+  },
+  "artifacts": {
+    "source_bundle": "data/xrp_intelligence/sources/20261101T064027Z-binance-phase1-etf-sbi-coinbase-source-bundle.json",
+    "source_revision": "data/xrp_intelligence/source_revisions/20261101T064027Z-binance-phase1-etf-sbi-coinbase-source-revision.json",
+    "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T064027Z-sbi-ripple-circle-coinbase-jpysc-and-xrp-market-graph.json",
+    "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T064027Z-sbi-multirail-coinbase-collateral-and-xrp-feature-admission.json",
+    "repository_audit": "data/repository_audits/20261101T064027Z-main-scheduled-writers-pr1444-1445-1446-audit.json",
+    "snapshot": "data/xrp_intelligence/snapshots/20261101T064027Z-binance-phase1-sbi-jpysc-coinbase-circle-etf-and-v3-pr1446.json"
+  }
+}

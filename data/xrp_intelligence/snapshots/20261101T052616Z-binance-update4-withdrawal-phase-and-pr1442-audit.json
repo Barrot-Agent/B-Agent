@@ -1,0 +1,263 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "XRP-20261101T052616Z-BINANCE-UPDATE4-WITHDRAWAL-PHASE-AND-PR1442",
+  "captured_at_utc": "2026-11-01T05:26:16Z",
+  "data_cutoff_utc": "2026-11-01T05:26:16Z",
+  "supersedes_snapshot_id": "XRP-20261101T040000Z-POSTRELEASE-LIQWALL-BINANCE-PR1441",
+  "supersedes_snapshot_path": "data/xrp_intelligence/snapshots/20261101T040000Z-xrp-escrow-liqwall-binance-and-v3-audit.json",
+  "escrow": {
+    "source": "XRP Insights",
+    "source_url": "https://xrp-insights.com/xrp-radar/escrow",
+    "pinned_validated_ledger": 108036051,
+    "pinned_ledger_time_utc": "2026-11-01T02:31:00Z",
+    "observation_age_minutes_at_capture": 175,
+    "november_1_release": {
+      "scheduled_eligibility_utc": "2026-11-01T00:00:00Z",
+      "first_reported_escrow_finish_utc": "2026-11-01T00:00:02Z",
+      "gross_released_xrp": 1000000000,
+      "escrow_objects": 2,
+      "transaction_hashes": [
+        "3CB037A5F9BC193427592EDB87C49C1ABE499F80F5C049090141B4EDE539F948",
+        "33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564"
+      ],
+      "tracker_reported_reescrow_by_ledger_xrp": 0,
+      "tracker_reported_net_outside_escrow_xrp": 1000000000,
+      "destination_fields_independently_decoded": false,
+      "raw_transaction_metadata_independently_retrieved": false,
+      "follow_on_transfers_verified": false,
+      "exchange_deposits_verified": false,
+      "sales_verified": false,
+      "status": "TRACKER_REPORTED_EXECUTION; DESTINATION_AND_LATER_DISPOSITION_UNKNOWN"
+    },
+    "remaining_ripple_escrow_xrp": 30400000000,
+    "remaining_escrow_objects": 96,
+    "owner_accounts_total": 8,
+    "trailing_12_release_cycles": {
+      "released_xrp": 12000000000,
+      "reescrowed_xrp": 7700000000,
+      "reescrow_ratio_pct": 64.2,
+      "net_outside_escrow_xrp": 4300000000,
+      "average_net_outside_escrow_xrp_per_month": 358333333.33,
+      "november_included_at_cutoff": true,
+      "classification": "ROLLING_TRACKER_OBSERVATION; NOT_PROTOCOL_RULE_OR_FORECAST"
+    },
+    "next_scheduled_unlock_utc": "2026-12-01T00:00:00Z",
+    "next_scheduled_unlock_xrp": 1000000000,
+    "next_scheduled_unlock_objects": 4
+  },
+  "binance_incident": {
+    "update4_url": "https://www.binance.com/en/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
+    "update4_published_at_utc": "2026-11-01T04:08:00Z",
+    "aggregate_replenishment_pct_company_claim": 95,
+    "previous_update_aggregate_pct": 90,
+    "remaining_replenishment_pct": 5,
+    "remaining_asset_scope": "LESS_LIQUID_ASSETS_OUTSIDE_TOP_TEN",
+    "top_ten_assets": [
+      "BTC",
+      "ETH",
+      "USDT",
+      "BNB",
+      "SOL",
+      "USDC",
+      "XRP",
+      "USD1",
+      "RLUSD",
+      "ZEC"
+    ],
+    "top_ten_customer_asset_coverage_pct_company_claim": 100,
+    "xrp_customer_asset_coverage_pct_company_claim": 100,
+    "rlusd_customer_asset_coverage_pct_company_claim": 100,
+    "phase_one_withdrawals": {
+      "start_utc": "2026-11-01T06:00:00Z",
+      "end_utc": "2026-11-01T09:00:00Z",
+      "xrp_network_included": true,
+      "activation_mode": "PROGRESSIVE",
+      "status_at_capture": "ANNOUNCED_NOT_YET_STARTED",
+      "current_xrp_availability": "UNCONFIRMED"
+    },
+    "deposit_services": "BINANCE_SAYS_DEPOSITS_REMAIN_OPEN",
+    "replenishment_sources_from_prior_update3": [
+      "PARTIAL_SAFU_DEPLOYMENT",
+      "PORTION_OF_FUTURES_INSURANCE_FUND",
+      "CORPORATE_TREASURY"
+    ],
+    "remaining_asset_acquisition": "BINANCE_SAYS_MARKET_AND_OTC_PURCHASES_CONTINUE",
+    "xrp_specific_purchase_quantity": "UNDISCLOSED",
+    "full_zk_merkle_proof": {
+      "prior_update3_estimated_date_utc": "2026-11-03",
+      "status": "PENDING; NOT_INDEPENDENTLY_VERIFIED"
+    },
+    "official_network_status_page": {
+      "url": "https://www.binance.com/en/network",
+      "last_updated_displayed": "2026-11-01 05:11:02 AM",
+      "server_rendered_result": "NO_RECORDS",
+      "interpretation": "ASSET_LEVEL_STATUS_NOT_OBTAINED"
+    },
+    "reuters_corroboration": {
+      "url": "https://www.reuters.com/legal/government/binance-resume-withdrawals-after-recovering-bulk-6-billion-stolen-funds-2026-11-01/",
+      "publication_time_utc": "2026-11-01T04:57:00Z",
+      "independence": "SECONDARY_REPORT_OF_SAME_COMPANY_ANNOUNCEMENT"
+    },
+    "interpretation": "Update #4 supersedes the prior 90% aggregate company claim with 95%; it does not disclose XRP-specific acquisitions, actual withdrawals, or recovered stolen XRP."
+  },
+  "binance_attacker_wallet": {
+    "address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "last_reviewed_bitquery_cutoff_utc": "2026-10-31T16:51:00Z",
+    "last_reviewed_rounded_balance_xrp": 233500000,
+    "exact_secondary_article_balance_xrp": 233461943.10005,
+    "current_balance": "UNKNOWN_AFTER_2026-10-31T16:51:00Z",
+    "later_outflows": "UNKNOWN",
+    "sale_or_exchange_deposit_after_cutoff": "NOT_ESTABLISHED"
+  },
+  "market": {
+    "inherited_from_snapshot": "20261101T040000Z-POSTRELEASE-LIQWALL-BINANCE-PR1441",
+    "latest_observation_cutoff_utc": "2026-11-01T03:52:00Z",
+    "provider": "Liqwall",
+    "xrp_price_usd": 1.25,
+    "open_interest_usd": 1330000000,
+    "open_interest_change_24h_pct": 1.4,
+    "average_funding_8h_pct": 0.0025,
+    "binance_funding_8h_pct": 0.01,
+    "binance_accounts_long_pct": 71.9,
+    "liquidations_24h_usd": 369000,
+    "okx_observation_utc": "2026-11-01T03:09:31Z",
+    "okx_price_usd": 1.248,
+    "okx_change_24h_pct": -0.43,
+    "freshness": "INHERITED_PROVIDER_OBSERVATIONS; NO_NEW_MARKET_QUOTE_IN_THIS_RUN",
+    "provider_universes_averaged": false,
+    "market_features_admitted": false
+  },
+  "repository": {
+    "repository": "Barrot-Agent/B-Agent",
+    "current_main_sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+    "latest_main_commit_utc": "2026-11-01T04:51:51Z",
+    "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
+    "latest_main_commit_changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "latest_main_commit_change": "generated_at timestamp only",
+    "sentiment_shift": {
+      "generated_at_utc": "2026-11-01T04:51:50.732771Z",
+      "xrp_recent_24h_entries": 0,
+      "xrp_prior_24h_entries": 0,
+      "xrp_recent_24h_score": null,
+      "xrp_prior_24h_score": null,
+      "btc_recent_24h_entries": 0,
+      "btc_prior_24h_entries": 0,
+      "btc_recent_24h_score": null,
+      "btc_prior_24h_score": null
+    },
+    "knowledge_log_jsonl_entries": 0,
+    "main_write_capabilities_still_active": [
+      {
+        "workflow": ".github/workflows/cross-analysis.yml",
+        "risk": "contents:write; scheduled/workflow_run triggers; commits and pushes generated outputs"
+      },
+      {
+        "workflow": ".github/workflows/scheduler-tick.yml",
+        "risk": "contents:write and actions:write; scheduled tick can dispatch workflow files without explicit allowlist"
+      },
+      {
+        "workflow": ".github/workflows/merge-queue.yml",
+        "risk": "manual dispatch; contents/pull-requests write; dry_run=false default; max_prs=0 unlimited; can update branches and merge"
+      }
+    ],
+    "cross_analysis_run": {
+      "id": 41274697648,
+      "status": "SUCCESS",
+      "xrp_recent_entries": 0,
+      "xrp_prior_entries": 0,
+      "btc_recent_entries": 0,
+      "btc_prior_entries": 0,
+      "pages_deployment_run_id": 41274706437
+    },
+    "scheduler_tick_run": {
+      "id": 41276373377,
+      "status": "SUCCESS",
+      "entries_fired": 0,
+      "queue_size": 1,
+      "queue_entry_status": "DONE",
+      "git_push_result": "EVERYTHING_UP_TO_DATE",
+      "new_main_commit": false
+    },
+    "pr1442": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1442",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+      "head_sha": "bc84abfeefee3ca60f43fa729d5631ad84719c55",
+      "changed_files": 7,
+      "ci_run_id": 41275266085,
+      "ci_tests_passed": 349,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41275266092,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "merge_performed": false
+    },
+    "open_pr_inventory": {
+      "captured_at_utc": "2026-11-01T05:26:16Z",
+      "total": 200,
+      "draft": 191,
+      "ready": 9,
+      "main_based": 195,
+      "current_main_base": 1,
+      "stale_main_base": 194,
+      "non_main_base": 5,
+      "current_main_based_prs": [
+        1442
+      ]
+    },
+    "branch_protected_flag": true,
+    "full_branch_protection_details": "FORBIDDEN_TO_AVAILABLE_GITHUB_INTEGRATION; REQUIRED_CHECKS_AND_OTHER_RULES_UNKNOWN",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alert_access": "NOT_ACCESSIBLE",
+    "latest_approval_workflow_zero_job_anomaly": "UNRESOLVED",
+    "main_modified_by_this_run": false
+  },
+  "source_ids": [
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T052616Z-GITHUB-BAGENT-MAIN-PR1442-VERIFICATION"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "source_revision_ids": [
+    "REV-20261031T230816Z-XRP-INSIGHTS-ESCROW-PREUNLOCK",
+    "REV-20261031T230816Z-XRP-INSIGHTS-EXCHANGE-DELTA-RECONCILIATION",
+    "REV-20261031T230816Z-TRADRADAR-STALE-SEARCH-RESULT-RECONCILIATION",
+    "REV-20261031T230816Z-GITHUB-MAIN-WORKFLOW-PR1431-AUDIT",
+    "REV-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGE-CONFLICT",
+    "REV-20261031T232127Z-GITHUB-PR1432-SIGNAL-SAFETY-AND-ARCHIVE-VERIFICATION",
+    "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS",
+    "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+    "REV-20261101T010400Z-XRP-ESCROW-STALE-LEDGER-AND-OWNER-CACHE",
+    "REV-20261101T010400Z-GITHUB-CROSS-ANALYSIS-MAIN-WRITER-AND-PR1435",
+    "REV-20261101T010800Z-BINANCE-XRP-ATTACKER-ADDRESS-ISSUER-FREEZES",
+    "REV-20261101T020400Z-XRP-ESCROW-FINISH-LEDGER-108034152",
+    "REV-20261101T020400Z-GITHUB-MAIN-CROSS-ANALYSIS-PR1438-AND-VALIDATOR-TRIGGER",
+    "REV-20261101T030943Z-XRP-INSIGHTS-POSTRELEASE-LEDGER-108035119",
+    "REV-20261101T040000Z-XRP-ESCROW-LIQWALL-BINANCE-PR1441",
+    "REV-20261101T052616Z-BINANCE-UPDATE4-PHASE1-AND-PR1442-CI"
+  ],
+  "source_revision_addenda_count": 44,
+  "source_revision_addenda_pending_archive_append": 38,
+  "source_records": 3,
+  "run_updates": 1,
+  "limitations": 3,
+  "expected_archive_shards": 445,
+  "expected_archive_records_roundtrip": 3484,
+  "archive_records_appended": 7,
+  "new_source_revision_addenda": 1,
+  "inherited_pending_source_revision_addenda_count": 37,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "exact_head_validation": "PENDING",
+  "archive_validation_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261101T052616Z-binance-update4-withdrawal-phase-and-pr1442-audit.json",
+  "source_revision_path": "data/xrp_intelligence/source_revisions/20261101T052616Z-binance-update4-withdrawal-phase1-and-pr1442-ci.json",
+  "repository_audit_path": "data/repository_audits/20261101T052616Z-main-pr1442-and-binance-update4-audit.json",
+  "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T052616Z-binance-update4-withdrawal-phase-xrp-graph.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T052616Z-binance-phase1-withdrawal-event-study-and-pr1442-safety.json",
+  "handoff_path": "data/xrp_intelligence/hand_offs/20261101T052616Z-binance-update4-xrp-withdrawal-phase-and-pr1442-handoff.json",
+  "created_at_utc": "2026-11-01T05:26:16Z"
+}

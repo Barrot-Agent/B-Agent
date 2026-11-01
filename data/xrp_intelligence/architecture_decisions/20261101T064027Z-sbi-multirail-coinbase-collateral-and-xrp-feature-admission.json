@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T064027Z-SBI-MULTIRAIL-COINBASE-COLLATERAL-AND-XRP-FEATURE-ADMISSION",
+  "captured_at_utc": "2026-11-01T06:40:27Z",
+  "title": "Keep Binance XRP withdrawal status unconfirmed; quarantine remaining scheduled issue and metrics writers as next safety priority",
+  "status": "DECIDED_NOT_EXECUTED",
+  "context": [
+    "XRP Insights' latest accessible pinned ledger remains 108037957 at 04:35 UTC and reports 1B XRP released, zero re-escrow by that ledger, destination and later disposition unknown.",
+    "Binance Update #4 reports 95% aggregate replenishment and includes XRP among ten assets claimed 100% backed; full cryptographic proof and liability reconciliation remain pending.",
+    "The 06:00–09:00 UTC phase-one window includes XRP and is progressive. The 06:10 UTC network-status recheck still displayed No records; actual XRP availability remains unknown.",
+    "PR #1443 passed 349 tests + 8 subtests and gate; PR #1444 passed 363 + 8 and gate; PR #1445 passed 346 + 8 and gate. All remain open/draft/unmerged.",
+    "Main remains at 694fc424. Scheduled issue-mutating workflows and the Gumroad metrics main writer remain active outside the current safety proposals."
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Retain XRP escrow event as tracker-reported 1B gross release at ledger 108037957/04:35 UTC; destination and later disposition remain unknown.",
+      "reason": "No raw transaction metadata or later destination flows were independently decoded."
+    },
+    {
+      "id": "D2",
+      "decision": "Classify Binance XRP withdrawal availability as UNCONFIRMED at 06:15 UTC.",
+      "reason": "The official announcement describes progressive phase-one inclusion; the live status page exposes no asset-level rows."
+    },
+    {
+      "id": "D3",
+      "decision": "Do not admit escrow or Binance withdrawal schedule as a directional feature; require actual service activation and successful withdrawal transaction evidence.",
+      "reason": "Scheduled windows and page-render gaps are not completed flows."
+    },
+    {
+      "id": "D4",
+      "decision": "Keep PRs #1443, #1444 and #1445 draft/unmerged pending explicit user approval.",
+      "reason": "Exact-head CI and fail-closed gates are necessary evidence but do not authorize merge."
+    },
+    {
+      "id": "D5",
+      "decision": "Prioritize scheduled issue-mutating and metrics workflows as the next repository safety batch.",
+      "reason": "These workflows create/close/assign issues or write metrics to main on schedules without a per-run user confirmation."
+    },
+    {
+      "id": "D6",
+      "decision": "Do not claim live Copilot collaboration from the AUTO_ASSIGNEE variable reference.",
+      "reason": "The configured value and actual authenticated handoff are unverified."
+    },
+    {
+      "id": "D7",
+      "decision": "Retain the current zero-job approval-workflow classification as an expected unmatched push event because the workflow is workflow_dispatch-only.",
+      "reason": "No approval job is expected on push; this is not a failed manual approval execution."
+    },
+    {
+      "id": "D8",
+      "decision": "Treat SBI Holdings, Circle SBI Japan K.K. and the regional Japanese SBIC investment corporations as separate legal/entity nodes.",
+      "reason": "Name similarity is insufficient to infer ownership or partnership; official corporate profiles and filings distinguish them."
+    },
+    {
+      "id": "D9",
+      "decision": "Classify SBI's current network as multi-rail and multi-partner, not as an exclusive XRP strategy.",
+      "reason": "SBI has documented links to Ripple/XRP and to Circle, JPYSC, SMFG, BlackRock, Startale and Open Standard/OUSD; no integrated XRP routing mandate is disclosed."
+    },
+    {
+      "id": "D10",
+      "decision": "Do not infer native XRP demand from JPYSC, OUSD, Circle USDC or RLUSD issuance/settlement without a demonstrated XRP bridge, collateral or inventory transaction.",
+      "reason": "Stablecoin supply and XRPL activity are not equivalent to native XRP purchases."
+    },
+    {
+      "id": "D11",
+      "decision": "Do not claim material Coinbase XRP collateral from the Q3 2026 10-Q; classify XRP-specific collateral as undisclosed.",
+      "reason": "The filing does not separately name XRP; BTC, ETH and aggregate other-crypto lines are reported."
+    },
+    {
+      "id": "D12",
+      "decision": "Keep ETF holdings deltas, USD cash-flow trackers and fund AUM separate; reconcile fund universes before computing actual capital.",
+      "reason": "XRP Insights, Maketo and SoSoValue have different fund coverage and methods."
+    },
+    {
+      "id": "D13",
+      "decision": "Do not create a unified XRP open-interest value from current provider snapshots.",
+      "reason": "Provider universes range from seven contracts to 26 exchanges including CME and produce materially different totals."
+    },
+    {
+      "id": "D14",
+      "decision": "Keep Binance XRP withdrawal availability UNCONFIRMED until a live status row or successful customer withdrawal transaction is observed.",
+      "reason": "The official phase-one window is announced, but the status page is stale and contains no asset-level data."
+    },
+    {
+      "id": "D15",
+      "decision": "Keep the prediction engine in research-only mode; no market features or directional forecast admitted from this snapshot.",
+      "reason": "Data-source coverage, timestamp and causal uncertainties remain material."
+    },
+    {
+      "id": "D16",
+      "decision": "PR #1446 is a tested safety proposal, not an active main-branch remediation; do not merge without explicit approval.",
+      "reason": "Exact-head CI and fail-closed gate establish proposal quality, not deployment authorization."
+    }
+  ],
+  "ingestion_contract": {
+    "withdrawal_event_study": {
+      "pre_windows_hours": [
+        1,
+        4,
+        24
+      ],
+      "post_windows_hours": [
+        1,
+        4,
+        24
+      ],
+      "required_features": [
+        "actual XRP network status",
+        "successful withdrawal timestamps and ledger hashes",
+        "Binance-controlled wallet outflows",
+        "destination classification",
+        "spot volume",
+        "order-book depth/spread",
+        "spot/perpetual basis",
+        "open interest",
+        "funding",
+        "liquidations",
+        "BTC/ETH controls"
+      ],
+      "sale_inference_rule": "Withdrawal is not sale; require exchange deposit attribution and trade/flow evidence."
+    },
+    "feature_admission": "No directional feature until source coverage, timestamp alignment, transaction-level evidence and missingness checks pass.",
+    "prediction_contract": "Every forecast records target, horizon, data cutoff, assumptions, probability/confidence, alternatives, baseline, model version, calibration and later outcome.",
+    "live_trading": "Shadow/paper only until leakage-safe walk-forward skill and calibration are independently reviewed."
+  },
+  "platform_coordination": {
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "status": "DESIGNED_NOT_EXECUTED",
+    "authenticated_external_platforms": 0,
+    "live_external_collaborators": 0,
+    "verified_handoffs": 0,
+    "github_access": "VERIFIED",
+    "rule": "No live collaboration claim without successful least-privilege authentication and a tested structured handoff."
+  },
+  "repository_safety": {
+    "main_sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+    "prs": {
+      "1443": {
+        "head": "23ba72611eeb02b6eee5d87df1d7bad79816958e",
+        "tests": 349,
+        "subtests": 8,
+        "gate": "PASS_MERGE_DISABLED",
+        "state": "OPEN_DRAFT_UNMERGED"
+      },
+      "1444": {
+        "head": "8d8965eaa72b9402ad1dedec9d752387256a51dd",
+        "tests": 363,
+        "subtests": 8,
+        "gate": "PASS_MERGE_DISABLED",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "behind_main_by": 1
+      },
+      "1445": {
+        "head": "ac04af6f19db8a1d39eaf1346943628db1acc2cb",
+        "tests": 346,
+        "subtests": 8,
+        "gate": "PASS_MERGE_DISABLED",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "current_main_base": true
+      }
+    },
+    "main_workflow_remediation_applied": false,
+    "remaining_scheduled_mutators": [
+      "auto-resolve-issues.yml",
+      "barrot-autonomous-resolver.yml",
+      "daily-digest.yml",
+      "self-schedule.yml",
+      "gumroad-metrics.yml"
+    ],
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alert_access": "NOT_ACCESSIBLE"
+  },
+  "unresolved": [
+    "Actual XRP withdrawal activation and customer withdrawal flows.",
+    "Raw EscrowFinish destinations and subsequent transfers/re-escrow.",
+    "Current attacker wallet balance after 2026-10-31 16:51 UTC.",
+    "XRP-specific Binance replenishment purchases and funding sources.",
+    "Full cryptographic PoR and asset/liability reconciliation.",
+    "Scheduled issue-mutator quarantine and Gumroad metrics artifact-only migration.",
+    "Barrot Autonomous Resolver Copilot assignee value and actual handoff.",
+    "Full repository CI, dependency/security scan and branch-protection details."
+  ],
+  "source_ids": [
+    "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+    "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+    "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF",
+    "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+    "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+    "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+    "SRC-20261101T064027Z-TRDESK-XRP-OI",
+    "SRC-20261101T064027Z-COINGLASS-XRP-OI",
+    "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY",
+    "SRC-20261101T064027Z-REUTERS-COINBASE-Q3-2026",
+    "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+    "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+    "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+    "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+    "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+    "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT",
+    "SRC-20261101T064027Z-GITHUB-PR1446-SCHEDULED-WRITERS",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+    "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+    "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+    "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+    "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+    "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+    "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+    "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+    "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+    "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION"
+  ],
+  "feature_admission": {
+    "status": "RESEARCH_ONLY",
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}

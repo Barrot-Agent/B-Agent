@@ -1,0 +1,278 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "XRP-20261101T040000Z-POSTRELEASE-LIQWALL-BINANCE-PR1441",
+  "captured_at_utc": "2026-11-01T04:00:00Z",
+  "data_cutoff_utc": "2026-11-01T03:52:00Z",
+  "supersedes_snapshot_id": "XRP-20261101T031615Z-LEDGER-VALIDATOR-TRIGGER-AND-POINTER-REPAIR",
+  "supersedes_snapshot_path": "data/xrp_intelligence/snapshots/20261101T031615Z-xrp-ledger-validator-repair-snapshot.json",
+  "escrow": {
+    "source": "XRP Insights",
+    "source_url": "https://xrp-insights.com/xrp-radar/escrow",
+    "pinned_validated_ledger": 108036051,
+    "pinned_ledger_time_utc": "2026-11-01T02:31:00Z",
+    "observation_age_minutes_at_capture": 89,
+    "november_1_release": {
+      "scheduled_eligibility_utc": "2026-11-01T00:00:00Z",
+      "first_reported_escrow_finish_utc": "2026-11-01T00:00:02Z",
+      "gross_released_xrp": 1000000000,
+      "escrow_objects": 2,
+      "owner_accounts": [
+        "r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+        "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn"
+      ],
+      "transaction_hashes": [
+        "3CB037A5F9BC193427592EDB87C49C1ABE499F80F5C049090141B4EDE539F948",
+        "33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564"
+      ],
+      "tracker_reported_reescrow_by_ledger_xrp": 0,
+      "tracker_reported_net_outside_escrow_xrp": 1000000000,
+      "destination_fields_independently_decoded": false,
+      "raw_transaction_metadata_independently_retrieved": false,
+      "follow_on_transfers_verified": false,
+      "exchange_deposits_verified": false,
+      "sales_verified": false
+    },
+    "remaining_ripple_escrow_xrp": 30400000000,
+    "remaining_escrow_objects": 96,
+    "owner_accounts_total": 8,
+    "trailing_12_release_cycles": {
+      "released_xrp": 12000000000,
+      "reescrowed_xrp": 7700000000,
+      "reescrow_ratio_pct": 64.2,
+      "net_outside_escrow_xrp": 4300000000,
+      "average_net_outside_escrow_xrp_per_month": 358333333.33,
+      "november_included_at_cutoff": true,
+      "classification": "ROLLING_HISTORICAL_OBSERVATION_NOT_PROTOCOL_RULE_OR_FORECAST"
+    },
+    "next_scheduled_unlock_utc": "2026-12-01T00:00:00Z",
+    "next_scheduled_unlock_xrp": 1000000000,
+    "next_scheduled_unlock_objects": 4,
+    "scheduled_unlocks_remaining": 31,
+    "projected_last_scheduled_unlock": "2029-06"
+  },
+  "market": {
+    "liqwall": {
+      "url": "https://liqwall.com/coins/xrp",
+      "observation_time_utc": "2026-11-01T03:52:00Z",
+      "xrp_price_usd": 1.25,
+      "open_interest_usd": 1330000000,
+      "open_interest_change_24h_pct": 1.4,
+      "average_funding_8h_pct": 0.0025,
+      "binance_funding_8h_pct": 0.01,
+      "binance_accounts_long_pct": 71.9,
+      "binance_top_traders_long_pct": 71.1,
+      "liquidations_24h_usd": 369000,
+      "long_liquidations_usd": 228000,
+      "short_liquidations_usd": 141000,
+      "provider_scope": "Liqwall aggregate; provider methodology and exchange coverage retained as reported"
+    },
+    "okx": {
+      "url": "https://www.okx.com/price/xrp-xrp",
+      "observation_time_utc": "2026-11-01T03:09:31Z",
+      "xrp_price_usd": 1.248,
+      "change_24h_pct": -0.43,
+      "volume_24h_usd": 735810000,
+      "change_7d_pct": -3.61,
+      "change_30d_pct": -16.2,
+      "change_3m_pct": 15.97,
+      "provider_scope": "OKX exchange quote and platform volume"
+    },
+    "comparison": {
+      "price_difference_usd": 0.002,
+      "price_difference_pct_of_okx": 0.1603,
+      "open_interest_not_averaged_with_other_providers": true,
+      "account_long_share_notional_equivalent": false,
+      "event_causality_established": false,
+      "market_features_admitted": false
+    },
+    "source_candidates_pending_registry": [
+      {
+        "candidate_id": "CAND-20261101T040000Z-LIQWALL-XRP-0352Z",
+        "publisher": "Liqwall",
+        "url": "https://liqwall.com/coins/xrp",
+        "data_cutoff_utc": "2026-11-01T03:52:00Z",
+        "status": "CANDIDATE_NOT_YET_IN_IMMUTABLE_SOURCE_REGISTRY"
+      },
+      {
+        "candidate_id": "CAND-20261101T040000Z-OKX-XRP-030931Z",
+        "publisher": "OKX",
+        "url": "https://www.okx.com/price/xrp-xrp",
+        "data_cutoff_utc": "2026-11-01T03:09:31Z",
+        "status": "CANDIDATE_NOT_YET_IN_IMMUTABLE_SOURCE_REGISTRY"
+      }
+    ]
+  },
+  "binance_incident": {
+    "official_update_url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+    "published_utc": "2026-10-31T14:24:00Z",
+    "updated_utc": "2026-10-31T15:23:00Z",
+    "company_reported_aggregate_replenishment_pct": 90,
+    "company_reported_customer_asset_coverage": {
+      "XRP": 100,
+      "RLUSD": 100,
+      "evidence_class": "COMPANY_REPORTED; FULL_ZK_PROOF_PENDING"
+    },
+    "remaining_10pct_scope": "Less-liquid assets outside the named top ten",
+    "replenishment_sources": [
+      "partial SAFU deployment",
+      "portion of Futures Insurance Fund",
+      "corporate treasury"
+    ],
+    "proof_of_reserves_snapshot_utc": "2026-10-31T00:00:00Z",
+    "full_zero_knowledge_proof_estimated_utc_date": "2026-11-03",
+    "withdrawal_reopening_target": "2026-11-01",
+    "withdrawal_reopening_confirmed_as_of_cutoff": false,
+    "interpretation": "No post-target official confirmation found by this capture; current service state is UNCONFIRMED, not asserted paused or reopened.",
+    "xrp_specific_purchase_quantity": "NOT_DISCLOSED",
+    "stolen_xrp_recovery_confirmed": false
+  },
+  "binance_attacker_wallet": {
+    "address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "last_reviewed_bitquery_cutoff_utc": "2026-10-31T16:51:00Z",
+    "last_reviewed_bitquery_rounded_balance_xrp": 233500000,
+    "xrplwin_article_date": "2026-10-30",
+    "xrplwin_reported_exact_balance_xrp": 233461943.10005,
+    "current_balance": "UNKNOWN_AFTER_2026-10-31T16:51:00Z",
+    "later_outflows": "UNKNOWN",
+    "sale_or_exchange_deposit_after_cutoff": "NOT_ESTABLISHED"
+  },
+  "repository": {
+    "repository": "Barrot-Agent/B-Agent",
+    "current_main_sha": "9226a7c40d06b0c59cf914190cc35ca99bd377ba",
+    "latest_main_commit_utc": "2026-11-01T03:51:46Z",
+    "latest_main_commit_message": "Cross-analysis refresh [skip ci]",
+    "latest_main_commit_changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "latest_main_commit_change": "generated_at timestamp only",
+    "current_sentiment_shift": {
+      "generated_at_utc": "2026-11-01T03:51:46.081261Z",
+      "XRP": {
+        "recent_24h_entries": 0,
+        "prior_24h_entries": 0,
+        "recent_24h_score": null,
+        "prior_24h_score": null,
+        "shift": null
+      },
+      "BTC": {
+        "recent_24h_entries": 0,
+        "prior_24h_entries": 0,
+        "recent_24h_score": null,
+        "prior_24h_score": null,
+        "shift": null
+      }
+    },
+    "branch_protected": true,
+    "required_status_check_contexts": [],
+    "branch_protection_detail_endpoint": "FORBIDDEN_TO_AVAILABLE_GITHUB_INTEGRATION; OTHER_PROTECTION_SETTINGS_UNKNOWN",
+    "main_write_capabilities_still_active": [
+      {
+        "workflow": ".github/workflows/cross-analysis.yml",
+        "risk": "contents:write; scheduled and workflow_run triggers; commits/pushes generated files"
+      },
+      {
+        "workflow": ".github/workflows/scheduler-tick.yml",
+        "risk": "contents:write and actions:write; scheduled tick dispatches existing workflow files without an explicit allowlist"
+      },
+      {
+        "workflow": ".github/workflows/merge-queue.yml",
+        "risk": "manual dispatch; write permissions; default dry_run=false; max_prs=0; can update branches and merge"
+      }
+    ],
+    "pr1439": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1439",
+      "head_sha": "5322ae1d27244973f85f56ada7ce5ad27a3f2edb",
+      "base_sha": "f6fb103c61aa7f0da0205d8a0d776f88d6e58164",
+      "current_main_sha": "9226a7c40d06b0c59cf914190cc35ca99bd377ba",
+      "compare_status": "DIVERGED",
+      "ahead_by": 1,
+      "behind_by": 1,
+      "ci_run_id": 41267879084,
+      "ci_status": "SUCCESS",
+      "tests_reported": 349,
+      "subtests_reported": 8,
+      "gate_run_id": 41267879049,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "pr1441": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1441",
+      "head_sha": "c7751f83437456b10a68587f4f7fc8ae3dfa29c3",
+      "base_sha": "9226a7c40d06b0c59cf914190cc35ca99bd377ba",
+      "changed_files": 7,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run_id": 41271720986,
+      "ci_status": "SUCCESS",
+      "gate_run_id": 41271720993,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "merge_performed": false,
+      "changes": [
+        "Cross Analysis read-only artifact output",
+        "Scheduler Tick read-only queue audit; dispatch removed",
+        "Merge Queue read-only fail-closed notice",
+        "current main CI registers three focused safety test modules"
+      ]
+    },
+    "open_pr_inventory": {
+      "captured_at_utc": "2026-11-01T04:00:00Z",
+      "total": 212,
+      "draft": 202,
+      "ready_for_review": 10,
+      "main_based": 207,
+      "current_main_base": 1,
+      "stale_main_base": 206,
+      "non_main_base": 5,
+      "only_current_main_base_pr": 1441
+    },
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alerts": "NOT_ACCESSIBLE",
+    "local_worktree_state": "NOT_INSPECTED; no local worktree mutation performed"
+  },
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "source_revision_ids": [
+    "REV-20261031T230816Z-XRP-INSIGHTS-ESCROW-PREUNLOCK",
+    "REV-20261031T230816Z-XRP-INSIGHTS-EXCHANGE-DELTA-RECONCILIATION",
+    "REV-20261031T230816Z-TRADRADAR-STALE-SEARCH-RESULT-RECONCILIATION",
+    "REV-20261031T230816Z-GITHUB-MAIN-WORKFLOW-PR1431-AUDIT",
+    "REV-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGE-CONFLICT",
+    "REV-20261031T232127Z-GITHUB-PR1432-SIGNAL-SAFETY-AND-ARCHIVE-VERIFICATION",
+    "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS",
+    "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+    "REV-20261101T010400Z-XRP-ESCROW-STALE-LEDGER-AND-OWNER-CACHE",
+    "REV-20261101T010400Z-GITHUB-CROSS-ANALYSIS-MAIN-WRITER-AND-PR1435",
+    "REV-20261101T010800Z-BINANCE-XRP-ATTACKER-ADDRESS-ISSUER-FREEZES",
+    "REV-20261101T020400Z-XRP-ESCROW-FINISH-LEDGER-108034152",
+    "REV-20261101T020400Z-GITHUB-MAIN-CROSS-ANALYSIS-PR1438-AND-VALIDATOR-TRIGGER",
+    "REV-20261101T030943Z-XRP-INSIGHTS-POSTRELEASE-LEDGER-108035119",
+    "REV-20261101T040000Z-XRP-ESCROW-LIQWALL-BINANCE-PR1441"
+  ],
+  "source_revision_addenda_count": 43,
+  "source_revision_addenda_pending_archive_append": 37,
+  "source_records": 0,
+  "run_updates": 0,
+  "limitations": 0,
+  "expected_archive_shards": 442,
+  "expected_archive_records_roundtrip": 3477,
+  "archive_records_appended": 0,
+  "new_source_revision_addenda": 1,
+  "inherited_pending_source_revision_addenda_count": 36,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "exact_head_validation": "PENDING",
+  "archive_validation_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261101T040000Z-xrp-escrow-liqwall-binance-and-v3-audit.json",
+  "source_revision_path": "data/xrp_intelligence/source_revisions/20261101T040000Z-xrp-escrow-liqwall-binance-and-pr1441.json",
+  "repository_audit_path": "data/repository_audits/20261101T040000Z-main-writer-pr1441-and-open-pr-inventory.json",
+  "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T040000Z-xrp-escrow-market-binance-and-pr1441-graph.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T040000Z-xrp-escrow-event-interpretation-and-main-writer-safety.json",
+  "handoff_path": "data/xrp_intelligence/hand_offs/20261101T040000Z-xrp-escrow-liqwall-binance-and-pr1441-handoff.json",
+  "created_at_utc": "2026-11-01T04:00:00Z"
+}
