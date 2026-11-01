@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "handoff_id": "pr1464-current-head-verification-20261101T173200Z",
+  "captured_at_utc": "2026-11-01T17:32:00Z",
+  "pr_number": 1464,
+  "pr_state": "OPEN_DRAFT_UNMERGED",
+  "pr_base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+  "code_bearing_head_last_exact_ci_verified": "4204022dec7ae2f495679380a43150118f5cbe4b",
+  "ci_run": 41331308119,
+  "ci_result": "426 tests passed + 8 subtests passed",
+  "gate_run": 41331308006,
+  "gate_result": "PASSED_MERGING_DISABLED",
+  "metadata_only_commits_after_tested_head": [
+    "38ee4672c7f9c05ecfc3df8830df3c69be47368d",
+    "0e19027d2542d65a51e547afc64a0dd3a1e0b248"
+  ],
+  "metadata_diff": {
+    "commits_ahead": 2,
+    "files_changed": [
+      "data/repository_audits/20261101T172900Z-final-current-main-and-pr-verification.json",
+      "data/xrp_intelligence/hand_offs/20261101T172900Z-final-xrp-intelligence-and-barrot-v3-handoff.json",
+      "data/xrp_intelligence/hand_offs/20261101T173100Z-pr1464-exact-head-research-verification.json",
+      "data/xrp_intelligence/research_ledger_addenda/20261101T172900Z-final-xrp-research-and-v3-handoff.json"
+    ],
+    "json_syntax": "All four files parsed successfully from the current branch head.",
+    "code_changes": "None after the tested code-bearing head."
+  },
+  "latest_ci_for_current_metadata_head": "No workflow run was returned for the metadata-only API commits; no manual workflow dispatch was used.",
+  "next_action": "Fresh-main reconcile the research PR only after reviewing all path deltas; preserve main and all append-only artifacts.",
+  "safety": "Main unchanged. No merge, force-push, manual dispatch, secret access, deployment or trading action."
+}
