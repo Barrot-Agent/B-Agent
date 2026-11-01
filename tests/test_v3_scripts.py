@@ -704,3 +704,47 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+def test_force_deploy_space_is_disabled_and_cannot_force_push() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "force-deploy-space.yml").read_text(encoding="utf-8")
+    assert "permissions: {}" in workflow
+    assert "secrets.HF_TOKEN" not in workflow
+    assert "HF_TOKEN:" not in workflow
+    executable_lines = [line.strip() for line in workflow.splitlines()]
+    assert not any(line.startswith(("git push -f", "git push --force")) for line in executable_lines)
+    assert "DEPLOYMENT_NOT_PERFORMED" in workflow
+
+
+def test_hugging_face_model_merge_requires_explicit_external_upload_confirmation() -> None:
+    for name in ("barrot-merge-manual.yml", "barrot-merge.yml"):
+        workflow = (REPO_ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
+        assert "workflow_dispatch:" in workflow
+        assert "confirm_external_model_upload:" in workflow
+        assert 'default: "NO"' in workflow
+        assert "inputs.confirm_external_model_upload == 'YES'" in workflow
+        assert "permissions:" in workflow
+        assert "contents: read" in workflow
+        assert "persist-credentials: false" in workflow
+        assert "git-credentials" not in workflow
+        assert "MODEL_NAME" in workflow
+        assert "--trust-remote-code" in workflow
+
+
+def test_self_upgrade_requires_confirmation_and_cannot_dispatch_on_main() -> None:
+    workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
+    assert "confirm_self_upgrade:" in workflow
+    assert 'default: "NO"' in workflow
+    assert "inputs.confirm_self_upgrade == 'YES'" in workflow
+    assert "github.ref_name != 'main'" in workflow
+    assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' in workflow
+
+
+def test_space_factory_restart_requires_explicit_confirmation() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "barrot-restart-space.yml").read_text(encoding="utf-8")
+    assert "workflow_dispatch:" in workflow
+    assert "confirm_external_change:" in workflow
+    assert 'default: "NO"' in workflow
+    assert "inputs.confirm_external_change == 'YES'" in workflow
+    assert "permissions: {}" in workflow
+    assert "curl --fail-with-body" in workflow

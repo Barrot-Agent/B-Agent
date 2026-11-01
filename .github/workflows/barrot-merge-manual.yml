@@ -1,56 +1,95 @@
-name: Barrot Superior Merge
+name: Barrot Superior Merge (explicit external upload approval)
 
 "on":
   workflow_dispatch:
     inputs:
+      confirm_external_model_upload:
+        description: "Set YES to authorize model merging with remote-code execution and upload to Hugging Face"
+        required: true
+        default: "NO"
+        type: choice
+        options:
+          - "NO"
+          - "YES"
       model_name:
-        description: "Merged model name"
+        description: "Merged model name (letters, numbers, dot, underscore and hyphen only)"
         required: true
         default: "barrot-superior-v1"
 
 permissions:
   contents: read
 
+concurrency:
+  group: barrot-superior-model-upload
+  cancel-in-progress: false
+
 jobs:
   merge:
+    if: inputs.confirm_external_model_upload == 'YES'
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      MODEL_NAME: ${{ inputs.model_name }}
     steps:
-      - name: Checkout
+      - name: Checkout without persisted GitHub credentials
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
 
-      - name: Install deps
+      - name: Validate model name and explicit authorization
+        shell: bash
         run: |
+          set -euo pipefail
+          test "${{ inputs.confirm_external_model_upload }}" = "YES"
+          case "$MODEL_NAME" in
+            ""|*[!A-Za-z0-9._-]*)
+              echo "Invalid model name; no merge or upload performed." >&2
+              exit 1
+              ;;
+          esac
+          echo "External model merge/upload explicitly authorized for: $MODEL_NAME"
+          echo "This job uses --trust-remote-code; review merge configuration and upstream model code before dispatch." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
           sudo apt-get update
           sudo apt-get install -y git-lfs
           git lfs install
           python3 -m pip install --upgrade pip
           pip install -U "huggingface_hub[cli]" "mergekit>=0.0.4.6" safetensors sentencepiece protobuf
 
-      - name: Configure git auth for HF
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          test -n "$HF_TOKEN" || (echo "HF_TOKEN secret missing" && exit 1)
-          git config --global credential.helper store
-          printf "https://__token__:%s@huggingface.co\n" "$HF_TOKEN" > ~/.git-credentials
-          chmod 600 ~/.git-credentials
-
-      - name: Merge
+      - name: Merge model
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
+        shell: bash
         run: |
-          mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
+          set -euo pipefail
+          test -n "$HF_TOKEN"
+          mergekit-yaml merges/barrot-superior/config.yaml "output/$MODEL_NAME" \
             --copy-tokenizer --out-shard-size 2B --trust-remote-code
 
-      - name: Verify
+      - name: Verify output
+        shell: bash
         run: |
-          ls -lah output/${{ github.event.inputs.model_name }}
+          set -euo pipefail
+          test -d "output/$MODEL_NAME"
+          ls -lah "output/$MODEL_NAME"
 
-      - name: Upload
+      - name: Upload to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
+        shell: bash
         run: |
-          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} . --repo-type model
+          set -euo pipefail
+          test -n "$HF_TOKEN"
+          hf upload "Barrot-Agent/$MODEL_NAME" "output/$MODEL_NAME" . --repo-type model
+
+      - name: Report external mutation
+        shell: bash
+        run: |
+          echo "A Hugging Face model upload was performed after explicit confirmation." >> "$GITHUB_STEP_SUMMARY"

@@ -1,17 +1,43 @@
-name: Restart Barrot Space
+name: Restart Barrot Space (explicit external-change approval)
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm_external_change:
+        description: "Set YES to authorize a factory restart of the Hugging Face Space"
+        required: true
+        default: "NO"
+        type: choice
+        options:
+          - "NO"
+          - "YES"
+
+permissions: {}
+
+concurrency:
+  group: restart-barrot-space
+  cancel-in-progress: false
 
 jobs:
   restart:
+    if: inputs.confirm_external_change == 'YES'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - name: Factory-restart the Space via stored HF_TOKEN
+      - name: Confirm explicit restart authorization
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ inputs.confirm_external_change }}" = "YES"
+      - name: Factory-restart the Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        shell: bash
         run: |
-          echo "=== restarting Barrot-Omega ==="
-          curl -s -X POST "https://huggingface.co/api/spaces/Scribedpengenius/Barrot-Omega/restart?factory=true" \
+          set -euo pipefail
+          test -n "$HF_TOKEN"
+          curl --fail-with-body --silent --show-error \
+            -X POST "https://huggingface.co/api/spaces/Scribedpengenius/Barrot-Omega/restart?factory=true" \
             -H "Authorization: Bearer $HF_TOKEN" \
-            -w "\nHTTP:%{http_code}\n"
+            -o /tmp/space-restart-response.json
+          echo "Factory restart request accepted by Hugging Face." >> "$GITHUB_STEP_SUMMARY"
