@@ -1,20 +1,47 @@
-name: Barrot Self-Upgrade
+name: Barrot Self-Upgrade (explicit authorization required)
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm_self_upgrade:
+        description: "Set YES to authorize the self-upgrade process, including its capability-audit persistence step"
+        required: true
+        default: "NO"
+        type: choice
+        options:
+          - "NO"
+          - "YES"
 
 permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: barrot-self-upgrade-${{ github.ref_name }}
+  cancel-in-progress: false
+
 jobs:
   audit_and_upgrade:
+    if: inputs.confirm_self_upgrade == 'YES' && github.ref_name != 'main'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - name: Checkout requested ref
+      - name: Confirm authorization and protect main ref
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ inputs.confirm_self_upgrade }}" = "YES"
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            echo "Self-upgrade is blocked on main; dispatch from a dedicated feature branch." >&2
+            exit 1
+          fi
+          echo "Explicit self-upgrade authorization supplied on non-main ref: $GITHUB_REF_NAME"
+          echo "The script's capability-audit persistence step can update main; this input explicitly authorizes that behavior." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Checkout requested non-main ref
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
@@ -40,8 +67,9 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python3 scripts/barrot_self_upgrade.py
 
-      - name: Persist generated audit
+      - name: Persist generated audit to the requested feature ref
         run: |
+          set -euo pipefail
           git status --short
           if git diff --quiet -- barrot_capability_audit.json; then
             echo "No audit artifact changes."
@@ -53,6 +81,7 @@ jobs:
 
       - name: Verify remote ref
         run: |
+          set -euo pipefail
           local_sha="$(git rev-parse HEAD)"
           remote_ref="$(git ls-remote --heads origin "${GITHUB_REF_NAME}")"
           remote_sha="$(printf '%s\n' "${remote_ref}" | awk 'NR==1 {print $1}')"
