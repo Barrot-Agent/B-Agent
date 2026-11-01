@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "live-checkcash-confirmation-20261101T211900Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "finding": {
+    "class": "OPERATOR_INDEXED_LIVE_BATCH_SETTLEMENT_OBSERVATION",
+    "text": "t54's live XRPL AI Hub lists transaction 384D9F00...E558AE as a 0.67376 RLUSD batch settlement. The detail page identifies the ledger index as 108,051,936, merchant Heurist Inference Router, facilitator t54 XRPL Facilitator, and settlement type as a single XRPL CheckCash covering all requests in the batch.",
+    "status": "T54_INDEX_RECORD_CONFIRMED; RAW_XRPL_METADATA_NOT_INDEPENDENTLY_DECODED",
+    "intent_status": "UNVERIFIED",
+    "implication": "A Payment-only counter will miss this CheckCash settlement. Paid requests, session settlements, CheckCreate and CheckCash must be separate series.",
+    "limitation": "The buyer address is not matched to the earlier 110-wallet cohort; this is evidence of live batch use, not proof of cohort migration."
+  },
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "id": "t54-live-checkcash-observation-20261101T211900Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "observation": {
+    "transaction_hash": "384D9F00D96D61A2F19025D80793BD5D74E61E6CA95D2A2132B6BDE1A1E558AE",
+    "ledger_index": 108051936,
+    "amount_rlusd": 0.67376,
+    "buyer": "r3f6bMRipu5zneH4k7ieERt4PGhXCJkVDH",
+    "buyer_label": "Claw Credit",
+    "merchant": "Heurist Inference Router",
+    "facilitator": "t54 XRPL Facilitator",
+    "transaction_type": "CheckCash",
+    "settlement": "Batch",
+    "intent_status": "Unverified"
+  },
+  "interpretation": "Concrete current example of a t54-indexed XRPL CheckCash batch settlement. It verifies that the batch mechanism is being indexed on mainnet, but not that the earlier 110-wallet cohort migrated to it or that the off-ledger service intent was verified.",
+  "raw_ledger_verification": "NOT_COMPLETED; XRPL Explorer page requires JavaScript in the current reader."
+}

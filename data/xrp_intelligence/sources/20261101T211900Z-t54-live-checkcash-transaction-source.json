@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "source_id": "t54-live-checkcash-transaction-384d9f00-20261101",
+  "publisher": "t54 Labs / XRPL AI Hub",
+  "url": "https://xrpl-ai.org/tx/384D9F00D96D61A2F19025D80793BD5D74E61E6CA95D2A2132B6BDE1A1E558AE",
+  "source_type": "facilitator_operator_transaction_record",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "transaction": {
+    "hash": "384D9F00D96D61A2F19025D80793BD5D74E61E6CA95D2A2132B6BDE1A1E558AE",
+    "ledger_index": 108051936,
+    "displayed_timestamp": "2026-11-01 19:57:12; timezone not stated",
+    "amount": "0.67376 RLUSD",
+    "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+    "buyer": "r3f6bMRipu5zneH4k7ieERt4PGhXCJkVDH",
+    "buyer_label": "Claw Credit",
+    "merchant": "Heurist Inference Router",
+    "source_tag": "804681468",
+    "invoice_id": "99D0D27D3F7F4D61DB921921975843F541A8493EB4CBB66B79802C4ADDE7603F",
+    "facilitator": "t54 XRPL Facilitator",
+    "settlement_label": "Batch settlement",
+    "transaction_type_claim": "XRPL CheckCash",
+    "intent_status": "Unverified"
+  },
+  "evidence": "The t54 transaction page says one row is one batch and a single XRPL CheckCash paid the merchant for every request in it; requests are metered off-ledger.",
+  "limitations": [
+    "The t54 hub is the facilitator operator's own index.",
+    "The linked XRPL Explorer page is JavaScript-only in the current reader; raw transaction metadata and the invoice-to-service delivery were not independently decoded.",
+    "The buyer is not linked to the 110-wallet cohort in this observation."
+  ]
+}

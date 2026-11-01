@@ -114,3 +114,15 @@ def test_x402_feature_policy_does_not_treat_rlusd_volume_as_proportional_xrp_dem
     assert policy["admission_status"] == "DESIGNED_NOT_EXECUTED"
     assert any("CheckCreate and CheckCash counts" in item for item in policy["required_features"])
     assert policy["prediction_status"] == "NOT_ISSUED"
+
+
+def test_live_x402_checkcash_is_recorded_without_claiming_cohort_migration():
+    observation = json.loads(
+        (ROOT / "data" / "xrp_intelligence" / "snapshots" /
+         "20261101T211900Z-t54-live-checkcash-observation.json").read_text(encoding="utf-8")
+    )
+    assert observation["observation"]["transaction_hash"] == "384D9F00D96D61A2F19025D80793BD5D74E61E6CA95D2A2132B6BDE1A1E558AE"
+    assert observation["observation"]["transaction_type"] == "CheckCash"
+    assert observation["observation"]["amount_rlusd"] == 0.67376
+    assert observation["observation"]["intent_status"] == "Unverified"
+    assert "not proof" in observation["interpretation"].lower() or "not that the earlier 110-wallet cohort migrated" in observation["interpretation"].lower()
