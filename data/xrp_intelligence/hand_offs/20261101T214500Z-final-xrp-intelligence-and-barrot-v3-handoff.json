@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "final-xrp-intelligence-and-barrot-v3-handoff-20261101T214500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3 remains the execution, verification, security and preservation foundation",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "verified_head": "ef716eb396ea3a5f3450dbaaa2dbde43308dd7c5",
+  "verified_ci": {
+    "run_id": 41352272665,
+    "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41352272665",
+    "result": "443 tests passed; 8 subtests passed",
+    "gate_run_id": 41352272652,
+    "gate_result": "passed; merge disabled"
+  },
+  "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+  "high_value_findings": [
+    "Escrow correction: the detailed XRP Insights escrow page pins validated ledger 108,052,148 at 2026-11-01 20:11 UTC and reports 31.1B XRP in 99 objects across 8 owners. The main Radar summary still says 30.4B, a 700M internal inconsistency equal to three later EscrowCreate transactions.",
+    "November 1 released 1B XRP, then re-escrowed 700M in three objects at 17:38:21, 17:39:51 and 17:42:21 UTC. Net outside escrow is 300M, not 1B. The rolling 12-release re-escrow ratio is now 70% (8.4B of 12B), with 3.6B net out; the earlier 64.2%/4.3B figure is superseded.",
+    "The next unlock is December 1, 2026: 1B XRP in four objects. The schedule now shows 32 unlocks remaining through July 1, 2029. Net out of escrow is not proof of sale or exchange inflow.",
+    "Broad not-escrowed/not-burned supply derived from 100B total, 31.1B escrow and 14.4M burned is 68.8856B XRP. It is not free float and does not subtract operational Ripple holdings, exchange custody or inaccessible balances.",
+    "RWA headline is $4.33B, but only $276M is classified as distributed transferable float; $4.06B is represented registry notional. About 6.37% is distributed. The headline is not $4.33B of freely transferable investor capital.",
+    "Known exchange-attributed wallets total 22.45B XRP across 24 venues and 701 wallets: Upbit 6.43B, Coinbase 5.85B, Binance 2.78B, SBI VC Trade 60M. These include cold storage and some backing reserves and are not tradable float. Japan's 1.38B total is concentrated mainly outside SBI VC Trade.",
+    "Coinbase is SEC-named custodian and/or prime broker for Bitwise, Franklin, Grayscale and 21Shares. Those funds represent about 898.54M XRP (75.1% of tracked ETF holdings), but this is not Coinbase's custody balance; Grayscale and 21Shares use multiple custodians with undisclosed splits.",
+    "Grayscale added Anchorage as an additional custodian on September 29 while retaining Coinbase as primary, and enabled in-kind XRP creations/redemptions with Macquarie and Virtu. Actual in-kind volume and AP sourcing venues remain unknown.",
+    "XRP ETF tracker reports 1.1966B XRP and $1.503B AUM across seven products. October 26–30 net flow was +3.39M XRP; October 30 alone was -49,932 XRP.",
+    "Coinbase, Circle, Ripple, Mastercard and t54 Labs share x402 Foundation participation. Coinbase contributed x402 to Linux Foundation governance; Circle supports x402 with USDC; Ripple supports XRP and RLUSD on XRPL. This is a shared open standard, not an exclusive commercial partnership.",
+    "The 110-wallet RLUSD micro-payment cohort's three collector addresses exactly match Heurist Inference Router, AskSurf and Heurist Mesh x402 merchant addresses. Reclassify as x402-compatible agent micropayments; operator and production/test status unknown. No malicious intent or Binance corporate attribution is established.",
+    "t54's October 14 batch settlement update reports 213,008 paid requests in 3,162 sessions and 6,324 ledger transactions. A live t54 index entry shows a 0.67376 RLUSD CheckCash batch to Heurist Inference Router, but intent is marked Unverified and raw XRPL metadata has not been independently decoded.",
+    "RLUSD on XRPL is reported around $707.4M, down about 30.2% over 30 days and 43.3% from the October 7 peak; Ethereum holds about $1.71B. Chain supply movement and issuer mint/burn remain unreconciled.",
+    "Bitquery's 7,722 RLUSD micro-payment cohort value is only about 0.0026% of the approximate 302.6M XRPL RLUSD supply decline; it does not explain the supply contraction."
+  ],
+  "identity_threads": {
+    "sbic": "Resolved as Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; distinct from SBI Holdings. No XRP partnership inferred from its ChatGPT/Copilot training.",
+    "ask_coin": "Permission Coin ASK remains a candidate identification; direct XRP integration unverified.",
+    "actual_capital": "Exact originating phrase remains unresolved. Current ledger distinguishes cash purchases, in-kind contributions, debt, stablecoin collateral, net escrow release, distributed RWA float and represented registry notional.",
+    "camilla_stephenson": "Possible candidate channel is @drkamilahstevenson, channel ID UCqUPJMQdkCN6lsLVDnichPA. Channel identity is Kamilah Stevenson; some introductions say Camila. Exact match to Camilla Stephenson is not confirmed; exhaustive public-upload inventory remains incomplete."
+  },
+  "prediction_status": "NOT_ISSUED; no verified XRP out-of-sample forecast skill or calibration estimate exists",
+  "repository_status": {
+    "main_unchanged": true,
+    "pr1464": "open draft unmerged; current exact-head CI 443 tests + 8 subtests and fail-closed gate passed",
+    "pr1474": "open draft unmerged; security quarantine is tested but not active on main",
+    "pr1475": "open draft unmerged; prediction source-hash guard is tested but not active on main",
+    "main_protection": "main reports protected with empty required status contexts; full review/protection details inaccessible",
+    "dependency_alerts": "unknown; alert endpoints unavailable",
+    "main_privileged_workflows": "Scheduler Tick, Merge Queue, Cross Analysis and Autonomous Resolver retain write/dispatch capabilities until approved remediation"
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "next_actions": [
+    "Independently query public rippled account_objects at ledger 108052148 and verify the 31.1B escrow total, 99 objects and three new EscrowCreate transactions.",
+    "Decode the two original EscrowFinish transactions and trace the 300M net-out destinations without equating them to sales.",
+    "Trace the 110 x402-compatible payer wallets for CheckCreate/CheckCash after October 14; do not claim migration without wallet-level linkage.",
+    "Reconcile t54 paid-request/session counts with XRPL Payment, CheckCreate and CheckCash records.",
+    "Reconcile RLUSD issuer mint/burn and cross-chain flows across XRPL and Ethereum.",
+    "Verify Canary XRP ETF custody from its latest SEC filing and monitor actual in-kind creation/redemption volumes.",
+    "Continue prediction source-byte semantic binding, normalized derivatives ingestion and leakage-safe walk-forward evaluation.",
+    "Reconcile PR #1474 and #1475 with current main; do not merge or force-push without approval.",
+    "Continue SBIC, ASK Coin, exact actual-capital phrase and Camilla/Kamilah public-video identity/catalog research."
+  ],
+  "safety": "No main-branch changes, merges, force-pushes, manual workflow dispatches, secret access, external deployments, x402 payments, paper-position mutations or real-money trades."
+}
