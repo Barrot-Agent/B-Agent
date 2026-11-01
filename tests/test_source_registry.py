@@ -183,6 +183,29 @@ def test_registered_file_snapshot_verification_detects_post_registration_mutatio
     assert registry.verify_content_hash("snapshot-source") is False
 
 
+def test_read_verified_content_returns_only_registered_snapshot_bytes(tmp_path):
+    source = tmp_path / "price-snapshot.json"
+    original = (
+        '{"record_type":"xrp_price_observation_set","source_id":"price-source",'
+        '"asset_pair":"XRP/USD","observations":[{"price_usd":1.25,'
+        '"observed_at_utc":"2026-10-30T23:59:00Z"}]}'
+    ).encode("utf-8")
+    source.write_bytes(original)
+    registry = SourceRegistry(tmp_path / "registry.json")
+    register_file_source(
+        registry,
+        source_id="price-source",
+        source_type="market_snapshot",
+        name="Pinned XRP/USD observation set",
+        origin="unit-test",
+        path=source,
+    )
+    assert registry.read_verified_content("price-source") == original
+    source.write_bytes(original + b" ")
+    with pytest.raises(ValueError, match="do not match registered content hash"):
+        registry.read_verified_content("price-source")
+
+
 def test_remote_source_without_retained_snapshot_bytes_is_not_hash_verified(tmp_path):
     registry = SourceRegistry(tmp_path / "registry.json")
     registry.register(
