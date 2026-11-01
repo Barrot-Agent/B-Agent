@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261101T101003Z-MAIN-79E038-PR1459-PR1450-PR1169",
+  "captured_at_utc": "2026-11-01T10:10:03Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "79e038866fe1cb46afcbed70ea7da92c1c1b97f4",
+    "status": "UNCHANGED_DURING_THIS_RUN",
+    "note": "Accidental research handoff receipt on main; PR #1458 cleanup unmerged."
+  },
+  "pr1459": {
+    "head_sha": "4175bd560e7a9efe21b5bdd1e20917e10774c6a2",
+    "base_sha": "79e038866fe1cb46afcbed70ea7da92c1c1b97f4",
+    "status": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41296116525,
+    "tests": 369,
+    "subtests": 8,
+    "gate_run": 41296116559,
+    "gate": "PASS_MERGING_DISABLED"
+  },
+  "pr1450": {
+    "head_sha": "4c3e33d8d5980f42cf56aca581fefeaba1f9a0ae",
+    "validator_run": 41295838139,
+    "shards": 462,
+    "records": 3545,
+    "tests": 35,
+    "errors": 0,
+    "pending_addenda": 45,
+    "gate_run": 41295838276
+  },
+  "pr1169": {
+    "status": "MERGED",
+    "merged_at": "2026-10-26T22:23:43Z",
+    "seed_videos": 10,
+    "full_inventory": false
+  },
+  "findings": [
+    "Main still has privileged workflow paths until PR #1459 approved/merged.",
+    "Approval workflow push-event zero-job runs are expected because trigger is workflow_dispatch-only.",
+    "Open-PR search limited to 100 results; total not re-established.",
+    "Full repository CI, dependency scan and security-alert review incomplete."
+  ],
+  "preservation": [
+    "No reset/clean/stash/force-push/overwrite.",
+    "No main write, merge or workflow dispatch.",
+    "13 unresolved source stubs preserved."
+  ]
+}
