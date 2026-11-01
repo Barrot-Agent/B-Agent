@@ -25,11 +25,14 @@ def test_issue_label_agent_route_requires_trusted_sender():
     assert "github.event.sender.login == 'Barrot-Agent' || github.event.sender.login == github.repository_owner" in workflow
 
 
-def test_controlled_approval_marker_is_repository_owner_only_and_never_merges():
+def test_controlled_approval_marker_is_disabled_without_protected_human_review():
     workflow = read_workflow("barrot-approve-pr.yml")
-    assert "if: ${{ github.actor == github.repository_owner }}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "APPROVAL_NOT_PERFORMED" in workflow
+    assert "pull-requests: write" not in workflow
+    assert "github.actor == github.repository_owner" not in workflow
     assert "gh pr merge" not in workflow
-    assert "MERGE_PERFORMED=FALSE" in workflow
 
 
 def test_auto_pr_validation_has_no_write_permissions():
