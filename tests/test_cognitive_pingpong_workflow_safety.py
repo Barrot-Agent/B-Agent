@@ -4,11 +4,12 @@ import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
-WORKFLOW = ROOT / ".github" / "workflows" / "Barrot.Cognitive.PingPong.Engine.yml"
+WORKFLOWS = ROOT / ".github" / "workflows"
+PINGPONG = WORKFLOWS / "Barrot.Cognitive.PingPong.Engine.yml"
 
 
 def test_cognitive_relay_is_manual_read_only_and_does_not_claim_live_collaboration():
-    workflow = WORKFLOW.read_text(encoding="utf-8")
+    workflow = PINGPONG.read_text(encoding="utf-8")
     trigger_block = workflow.split("permissions:", 1)[0]
 
     assert "workflow_dispatch:" in trigger_block
@@ -28,7 +29,7 @@ def test_cognitive_relay_is_manual_read_only_and_does_not_claim_live_collaborati
 
 
 def test_cognitive_relay_artifact_reports_unverified_adapters_truthfully():
-    workflow = WORKFLOW.read_text(encoding="utf-8")
+    workflow = PINGPONG.read_text(encoding="utf-8")
     match = re.search(r"<<'JSON'\\n(.*?)\\n\\s*JSON", workflow, re.DOTALL)
     assert match is not None
     status = json.loads(match.group(1))
@@ -42,3 +43,21 @@ def test_cognitive_relay_artifact_reports_unverified_adapters_truthfully():
         "ChatGPT", "Claude", "Grok", "Gemini", "Copilot",
         "Codex", "Hugging Face", "Kaggle", "Databricks"
     ]
+
+
+def test_disabled_privileged_workflows_keep_safe_status_jobs_for_push_check_events():
+    expectations = {
+        "task-allocator.yml": "TASK_ALLOCATION_NOT_PERFORMED",
+        "force-deploy-space.yml": "DEPLOYMENT_NOT_PERFORMED",
+    }
+    for filename, marker in expectations.items():
+        workflow = (WORKFLOWS / filename).read_text(encoding="utf-8")
+        assert "workflow_dispatch:" in workflow
+        assert "permissions: {}" in workflow
+        assert "jobs:" in workflow
+        assert "runs-on: ubuntu-latest" in workflow
+        assert "if: ${{ false }}" not in workflow
+        assert "secrets." not in workflow
+        assert "actions/checkout" not in workflow
+        assert "git push" not in workflow
+        assert marker in workflow
