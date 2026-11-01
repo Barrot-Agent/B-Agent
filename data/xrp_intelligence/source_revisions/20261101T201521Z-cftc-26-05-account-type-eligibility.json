@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "revision_id": "cftc-letter-26-05-account-type-eligibility-20261101T201521Z",
+  "captured_at_utc": "2026-11-01T20:15:21Z",
+  "source_id": "cftc-letter-26-05-20260206",
+  "url": "https://www.cftc.gov/csl/26-05/download",
+  "publisher": "CFTC Market Participants Division",
+  "published_at": "2026-02-06",
+  "additional_claims": [
+    {
+      "classification": "CONFIRMED",
+      "text": "For futures customer and cleared-swaps customer accounts, non-security digital assets must be accepted by a registered DCO as collateral or for settlement; the FCM uses the DCO's valuation and haircut. If multiple DCOs accept the asset, the highest DCO haircut applies."
+    },
+    {
+      "classification": "CONFIRMED",
+      "text": "For 30.7 customer accounts, the letter permits a separate path: the asset must be accepted by a registered DCO or qualifying foreign clearing organization, or be a payment stablecoin or the underlying commodity of a futures contract listed on a CFTC-registered DCM."
+    },
+    {
+      "classification": "CONFIRMED",
+      "text": "Where a non-security digital asset other than a payment stablecoin is not accepted by a DCO or qualifying foreign clearing organization for 30.7 accounts, the FCM may use fair market value after a haircut of at least 20 percent, subject to the letter's conditions; non-BTC, non-ETH and non-payment-stablecoin assets require revised risk policies filed before acceptance."
+    },
+    {
+      "classification": "CONFIRMED",
+      "text": "The initial three-month restriction is measured from each FCM's own notice-of-intent commencement date, not from the letter's publication date. During that period the FCM accepts only payment stablecoins, BTC and ETH as customer margin collateral."
+    },
+    {
+      "classification": "CONFIRMED",
+      "text": "The CFTC states the no-action position is the Division's view only, is based on represented facts, may be modified or terminated, and expires upon effective Commission action addressing digital-asset collateral."
+    }
+  ],
+  "limitations": [
+    "The letter does not prove any FCM, including Coinbase Financial Markets, has actually accepted XRP.",
+    "The 30.7 underlying-commodity path is distinct from the futures/cleared-swaps DCO-acceptance path; do not collapse account classes."
+  ]
+}
