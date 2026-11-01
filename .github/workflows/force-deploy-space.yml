@@ -2,9 +2,6 @@ name: Force Deploy Space (Disabled)
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - ".github/workflows/force-deploy-space.yml"
 
 permissions: {}
 
