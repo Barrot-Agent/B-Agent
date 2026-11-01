@@ -1,21 +1,29 @@
-name: Barrot Self-Scheduling
+name: Barrot Self-Scheduling (Read-Only Gap Audit)
 
 on:
   schedule:
     - cron: '17 */6 * * *'
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 permissions:
   contents: read
-  issues: write
+  issues: read
 
 jobs:
   detect-gaps:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v7
-
-      - name: Run gap detection
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/self_schedule.py
+      - name: Detect stale sources without opening issues
+        run: |
+          mkdir -p artifacts
+          set -o pipefail
+          python3 scripts/self_schedule.py 2>&1 | tee artifacts/self-schedule-gap-audit.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: barrot-self-schedule-read-only-audit
+          path: artifacts/self-schedule-gap-audit.txt
+          if-no-files-found: error
+          retention-days: 7

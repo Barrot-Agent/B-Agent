@@ -1,33 +1,26 @@
-name: Knowledge Signal Cycle
+name: Knowledge Signal Cycle (disabled pending protected approval and PR-only publication)
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
-  cycle:
+  disabled:
+    if: ${{ false }}
+    name: Fail-closed knowledge-cycle notice
     runs-on: ubuntu-latest
-    env:
-      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-      BRAIN_MODEL: ${{ vars.BRAIN_MODEL }}
+    timeout-minutes: 2
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
-        with:
-          python-version: "3.11"
-      - run: pip install requests vaderSentiment
-      - name: Ingest fresh news
-        run: python3 scripts/knowledge_ingest.py
-      - name: Distill new entries
-        run: python3 scripts/knowledge_distill.py
-      - name: Emit blended signal
-        run: python3 scripts/emit_signal.py
-      - name: Commit knowledge + signal
+      - name: Explain disabled state
+        shell: bash
         run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/log.jsonl ping-pongings/knowledge-base/config.json web/latest_signal.json web/signal_history.jsonl
-          git diff --cached --quiet || git commit -m "Auto cycle: ingest + distill + blended signal [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+          set -euo pipefail
+          {
+            echo "## Knowledge signal cycle not performed"
+            echo
+            echo "This workflow no longer reads provider secrets, runs external ingestion, or writes to main."
+            echo "Knowledge ingestion and signal publication remain paused until a least-privilege provider adapter, point-in-time evidence gate, protected human approval, and PR-only publisher are independently verified."
+            echo "No repository ref or external provider was modified."
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "KNOWLEDGE_CYCLE_NOT_PERFORMED"
