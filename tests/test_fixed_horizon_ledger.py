@@ -840,7 +840,7 @@ def test_historical_replay_records_system_append_time_and_manifest(tmp_path, mon
     assert record["mode"] == "HISTORICAL_REPLAY"
     assert record["recorded_at_utc"] == "2026-11-01T00:00:00Z"
     assert record["replay_manifest_source_id"] == "SRC-REPLAY-MANIFEST-001"
-    assert record["source_content_hashes"]["SRC-REPLAY-MANIFEST-001"] == "e" * 64
+    assert record["source_content_hashes"]["SRC-REPLAY-MANIFEST-001"] == TEST_SOURCE_REGISTRY["SRC-REPLAY-MANIFEST-001"]
 
 
 def test_historical_replay_requires_manifest_source(tmp_path):
@@ -922,7 +922,7 @@ def test_metrics_never_pool_live_and_historical_replay(tmp_path, monkeypatch):
         feature_snapshot={
             "snapshot_id": "features-live-001",
             "source_id": "SRC-FEATURE-001",
-            "sha256": "a" * 64,
+            "sha256": TEST_SOURCE_REGISTRY["SRC-FEATURE-001"],
             "captured_at_utc": "2026-10-31T23:58:00Z",
         },
         baseline={
