@@ -79,4 +79,5 @@ jobs:
             tests/test_autonomous_real_bundle.py \
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
+            tests/test_cross_analysis_workflow_safety.py \
             -v --no-cov
