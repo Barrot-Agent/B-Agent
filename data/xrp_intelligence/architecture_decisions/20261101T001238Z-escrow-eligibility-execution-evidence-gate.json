@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T001238Z-ESCROW-ELIGIBILITY-EXECUTION-EVIDENCE-GATE",
+  "created_at_utc": "2026-11-01T00:12:38Z",
+  "status": "ACCEPTED_FOR_RESEARCH_PROCESS; NOT_CODE_MERGED",
+  "context": "The scheduled November 1 eligibility time passed, but the newest retrieved tracker snapshot predates it and no raw post-event XRPL response was obtained.",
+  "decision": [
+    "Separate FinishAfter eligibility from EscrowFinish execution.",
+    "Require a validated ledger index and raw account_objects plus account_tx evidence for both owner accounts.",
+    "Verify transaction metadata and affected nodes before recording destination receipt.",
+    "Follow destination transfers and EscrowCreate transactions before estimating net outside-escrow XRP.",
+    "Do not treat destination balance changes, exchange deposits, ETF holdings or gross release amounts as actual sales or net external capital without additional evidence.",
+    "Do not admit this event as a predictive feature until source timestamps and same-ledger corroboration pass quality checks."
+  ],
+  "source_freshness_rule": {
+    "required": "Two independent public data paths or one raw validated XRPL node response plus an independent explorer cross-check.",
+    "pinned_ledger_required": true,
+    "reject_stale_tracker_for_post_event_claims": true,
+    "search_engine_negative_results_are_not_evidence": true
+  },
+  "prediction_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "next_action": "Obtain post-eligibility account_objects/account_tx from public XRPL JSON-RPC and record validated ledger sequence, hashes, metadata, destinations and follow-on disposition."
+}
