@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T101003Z-XRP-MULTIRAIL",
+  "captured_at_utc": "2026-11-01T10:10:03Z",
+  "source_id": "SRC-20261101T101003Z-COINBASE-Q3",
+  "source_ids": [
+    "SRC-20261101T101003Z-COINBASE-Q3",
+    "SRC-20261101T101003Z-COINBASE-XRP-MORPHO",
+    "SRC-20261101T101003Z-CBXRP-RISK",
+    "SRC-20261101T101003Z-CIRCLE-ARC",
+    "SRC-20261101T101003Z-CIRCLE-USDC-XRPL",
+    "SRC-20261101T101003Z-CIRCLE-SBI-MOU",
+    "SRC-20261101T101003Z-SBI-CIRCLE-JV",
+    "SRC-20261101T101003Z-SBIC-PROFILE",
+    "SRC-20261101T101003Z-SBIC-CHATGPT",
+    "SRC-20261101T101003Z-SBI-REMIT-ODL",
+    "SRC-20261101T101003Z-SBI-ODL-EXPANSION",
+    "SRC-20261101T101003Z-SBI-RIPPLE-ASIA-POC",
+    "SRC-20261101T101003Z-RIPPLE-COINBASE-RLUSD",
+    "SRC-20261101T101003Z-RIPPLE-SWELL",
+    "SRC-20261101T101003Z-BINANCE-UPDATE4",
+    "SRC-20261101T101003Z-REUTERS-PHASE1",
+    "SRC-20261101T101003Z-BINANCE-STATUS",
+    "SRC-20261101T101003Z-XRP-ESCROW-108041786",
+    "SRC-20261101T101003Z-COINGECKO-XRP",
+    "SRC-20261101T101003Z-PR1459-CI",
+    "SRC-20261101T101003Z-PR1450-VALIDATOR",
+    "SRC-20261101T101003Z-PR1169-KAMILAH",
+    "SRC-20261101T101003Z-YT-KAMILAH-1",
+    "SRC-20261101T101003Z-YT-KAMILAH-2"
+  ],
+  "source_bundle_path": "data/xrp_intelligence/sources/20261101T101003Z-xrp-multirail-source-bundle.json",
+  "summary": "Coinbase Q3/USDC distribution and XRP collateral lending; Circle Arc/native USDC XRPL; SBI multi-rail Ripple/Circle links; Tokyo SBIC identity and ChatGPT seminar; Binance phase one; CoinGecko; Kamilah catalog; Barrot verification.",
+  "status": "PENDING_ARCHIVE_APPEND",
+  "pending_archive_append": true,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "limitations": [
+    "Actual collateral utilization, Binance XRP withdrawal success, escrow destination/disposition, exact market timestamps, full Kamilah inventory/transcripts unknown.",
+    "VidIQ credits unavailable until 2026-11-27; no retry."
+  ]
+}
