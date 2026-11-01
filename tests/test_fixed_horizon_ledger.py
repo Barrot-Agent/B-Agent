@@ -604,7 +604,7 @@ def test_forecast_rejects_issue_timestamp_not_present_in_registered_snapshot(tmp
     ledger = make_ledger(tmp_path)
     with pytest.raises(ValueError, match="must match exactly one observation"):
         ledger.append_forecast(
-            forecast_payload(price_at_issue_observed_at_utc="2026-10-30T23:57:00Z")
+            forecast_payload(price_at_issue_observed_at_utc="2026-10-30T23:58:30Z")
         )
 
 
