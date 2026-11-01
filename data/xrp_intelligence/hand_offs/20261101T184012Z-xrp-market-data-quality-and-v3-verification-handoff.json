@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-market-data-quality-and-v3-verification-2026-11-01T18:40:12Z",
+  "captured_at_utc": "2026-11-01T18:40:12Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, safety and preservation",
+  "current_main_sha": "4695fe966e7f383924d6022323d6c7c6b1efe221",
+  "latest_research_head": "56cdd8a1ad75c1a7a1e8a49e41f1b370cb52ee9e",
+  "latest_research_pr": {
+    "number": 1464,
+    "state": "OPEN_DRAFT_UNMERGED",
+    "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+    "exact_head_ci_run": 41337691085,
+    "exact_head_test_result": "431 passed + 8 subtests passed",
+    "fail_closed_gate_run": 41337691095,
+    "gate_result": "PASSED_MERGING_DISABLED",
+    "root_cause_repaired": "Contradictory SBI Ripple Asia test assertion; direct XRP edge is prohibited while an explicitly labelled XRPL feasibility-study edge is allowed.",
+    "stale_base_action": "No rebase or merge performed; preserve current branch and review base reconciliation separately."
+  },
+  "security_pr": {
+    "current_candidate": 1471,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1471",
+    "head": "e2d8f9a3342e6e9a548261e2045eec784fde6e59",
+    "base": "4695fe966e7f383924d6022323d6c7c6b1efe221",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "changed_files": 53,
+    "ci_run": 41337409401,
+    "ci_result": "390 passed + 8 subtests passed",
+    "gate_run": 41337409369,
+    "gate_result": "PASSED_MERGING_DISABLED",
+    "main_advanced_paths_preserved": [
+      "AUTONOMOUS_DEPLOYMENT_REPORT.md",
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "source_pr": 1469,
+    "source_pr_disposition": "Kept open for provenance; do not merge both #1469 and #1471."
+  },
+  "prediction_engine": {
+    "pr": 1470,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1470",
+    "head": "efbc1f2a11eb6489c04c5360648de41f2c1cec28",
+    "base": "32682bc3797009421682ab51da59bf058b7d63d5",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41330671867,
+    "ci_result": "389 passed + 8 subtests passed",
+    "gate_run": 41330671836,
+    "gate_result": "PASSED_MERGING_DISABLED",
+    "ledger_status": "IMPLEMENTED_NOT_POPULATED",
+    "forecast_status": "NOT_ISSUED",
+    "note": "No verified XRP forecasts and resolved outcomes exist; no predictive-skill estimate is available."
+  },
+  "research_findings": [
+    "TradRadar reports about $1.90B XRP OI across seven perpetual-futures venues; TRdesk reports about $2.67B across 26 exchanges including quarterly futures and CME; Alpha Finance displays about $2.82B all-exchange OI. These are non-comparable provider totals, not a market move.",
+    "XRP Insights reports +3.39M XRP weekly ETF/index holdings change against approximately 1.1966B XRP holdings and $1.51B AUM. The change is small relative to the stock and has GXRP gaps, reconstructed rows and BITW index-product effects.",
+    "Circle Q3 2026 results are scheduled for November 4 at 8:00 AM ET; its investor Q&A window closes November 3 at 9:00 AM ET.",
+    "Tokyo SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; its ChatGPT/Copilot training was investee-company education only.",
+    "Permission Coin ASK remains a candidate for the phrase ASK Coin; no direct XRPL integration was found in the reviewed official documentation."
+  ],
+  "data_quality_decisions": [
+    "Do not average open-interest provider totals without matched venue, contract, instrument, quote currency, multiplier, timestamp and OI-unit coverage.",
+    "Separate spot ETF holdings, BITW index holdings, issuer holdings deltas, creations/redemptions, AUM and actual cash/in-kind flows.",
+    "Do not use modelled liquidation heatmaps as actual resting orders.",
+    "No market feature admitted and no directional XRP forecast issued."
+  ],
+  "next_actions": [
+    "Reconcile XRP OI from raw exchange contract-level APIs across a common instrument universe.",
+    "Reconcile all six spot ETF issuer holdings, BITW holdings, shares outstanding, creations/redemptions and cash/in-kind components.",
+    "Capture Circle's Q3 results and compare USDC circulation, reserve income, Coinbase distribution economics, Circle Payments Network and Arc activity, and USDC on XRPL.",
+    "Decode both November 1 EscrowFinish transactions and trace subsequent XRP transfers, escrow creations and exchange-tagged destinations.",
+    "Continue Evernorth custody/yield deployment and BitGo wallet mapping; distinguish custody migration from sales.",
+    "Refresh Binance attacker-wallet balance and independently verify XRP withdrawal service status.",
+    "Continue Coinbase, Circle, Ripple, SBI, ASK Coin and Camilla Stephenson identity/video investigations."
+  ],
+  "platform_status": {
+    "verified_live_platforms": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified_platforms": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "nine_platform_coordination": "DESIGNED_NOT_CONNECTED",
+    "verified_external_handoffs": 0
+  },
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}
