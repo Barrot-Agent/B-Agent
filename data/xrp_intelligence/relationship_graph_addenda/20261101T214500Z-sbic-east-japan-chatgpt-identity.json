@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "graph_id": "sbic-east-japan-chatgpt-identity-20261101T214500Z",
+  "captured_at_utc": "2026-11-01T21:45:00Z",
+  "nodes": [
+    {
+      "id": "SBIC_EAST_JAPAN",
+      "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "type": "japanese_sme_investment_policy_organization",
+      "corporate_number": "9011001030621"
+    },
+    {
+      "id": "SBIC_CENTRAL_JAPAN",
+      "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "sister_regional_sme_investment_organization"
+    },
+    {
+      "id": "SBIC_WEST_JAPAN",
+      "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "sister_regional_sme_investment_organization"
+    },
+    {
+      "id": "SBI_CAPITAL_2007",
+      "name": "SBI CAPITAL Co., Ltd. (2007 historical ownership snapshot)",
+      "type": "historical_buyout_and_enterprise_restructuring_fund_manager"
+    },
+    {
+      "id": "SBI_HOLDINGS",
+      "name": "SBI Holdings, Inc.",
+      "type": "financial_services_group"
+    },
+    {
+      "id": "JUPITER_INVESTMENT",
+      "name": "Jupiter Investment Y.K. (Goldman Sachs group company in 2007 release)",
+      "type": "historical_investment_entity"
+    },
+    {
+      "id": "CHATGPT",
+      "name": "ChatGPT",
+      "type": "ai_product"
+    },
+    {
+      "id": "MICROSOFT_COPILOT",
+      "name": "Microsoft Copilot",
+      "type": "ai_product"
+    },
+    {
+      "id": "JAPANESE_SMES",
+      "name": "SBIC investee small and medium-sized enterprises",
+      "type": "portfolio_company_cohort"
+    },
+    {
+      "id": "XRP_MARKET",
+      "name": "XRP market",
+      "type": "crypto_asset_market"
+    },
+    {
+      "id": "RIPPLE",
+      "name": "Ripple",
+      "type": "digital_asset_company"
+    },
+    {
+      "id": "COINBASE",
+      "name": "Coinbase",
+      "type": "crypto_financial_platform"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle",
+      "type": "stablecoin_issuer"
+    }
+  ],
+  "edges": [
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "JAPANESE_SMES",
+      "relation": "long_term_equity_investment_and_business_support",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBIC-EAST-PROFILE-20261101T214500Z",
+        "SRC-SBIC-EAST-MISSION-FAQ-20261101T214500Z"
+      ]
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "CHATGPT",
+      "relation": "educational_training_topic_not_partnership",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBIC-CHATGPT-TRAINING-20261101T214500Z",
+        "SRC-SBIC-CHATGPT-SEMINAR-20261101T214500Z"
+      ]
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "MICROSOFT_COPILOT",
+      "relation": "educational_training_topic_not_partnership",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBIC-CHATGPT-TRAINING-20261101T214500Z"
+      ]
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "SBIC_CENTRAL_JAPAN",
+      "relation": "sister_regional_organization",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBIC-EAST-PROFILE-20261101T214500Z"
+      ]
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "SBIC_WEST_JAPAN",
+      "relation": "sister_regional_organization",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBIC-EAST-PROFILE-20261101T214500Z"
+      ]
+    },
+    {
+      "from": "SBI_CAPITAL_2007",
+      "to": "SBI_HOLDINGS",
+      "relation": "historical_60_percent_ownership_after_2007_stock_transfer",
+      "status": "CONFIRMED_HISTORICAL_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-CAPITAL-2007-20261101T214500Z"
+      ]
+    },
+    {
+      "from": "SBI_CAPITAL_2007",
+      "to": "JUPITER_INVESTMENT",
+      "relation": "historical_40_percent_ownership_after_2007_stock_transfer",
+      "status": "CONFIRMED_HISTORICAL_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-SBI-CAPITAL-2007-20261101T214500Z"
+      ]
+    }
+  ],
+  "excluded_relationships": [
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "XRP_MARKET",
+      "status": "NOT_ESTABLISHED_IN_SCOPED_PUBLIC_SOURCES",
+      "reason": "No direct SBIC East Japan XRP investment, custody, payment, trading or partnership evidence was found in the reviewed official materials; this is a bounded search result, not proof of absence."
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "RIPPLE",
+      "status": "NOT_ESTABLISHED_IN_SCOPED_PUBLIC_SOURCES"
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "COINBASE",
+      "status": "NOT_ESTABLISHED_IN_SCOPED_PUBLIC_SOURCES"
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "CIRCLE",
+      "status": "NOT_ESTABLISHED_IN_SCOPED_PUBLIC_SOURCES"
+    },
+    {
+      "from": "SBIC_EAST_JAPAN",
+      "to": "SBI_HOLDINGS",
+      "status": "LEGAL_ENTITY_RELATIONSHIP_NOT_ESTABLISHED",
+      "reason": "The official profile identifies SBIC East Japan and its shareholder categories but does not identify SBI Holdings as parent or subsidiary; individual shareholders are not enumerated."
+    }
+  ],
+  "entity_separation_rules": [
+    "SBIC East Japan is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., corporate number 9011001030621.",
+    "SBI CAPITAL Co., Ltd. in the 2007 SBI Holdings release is a separate historical fund-management company with 60% SBI Holdings and 40% Jupiter Investment Y.K. after the May 2007 transfer.",
+    "Do not merge entities based on the string SBIC, SBI, SBI Capital or similar names.",
+    "ChatGPT and Copilot course mentions are educational relationships, not product partnerships, commercial integrations or XRP relationships."
+  ]
+}

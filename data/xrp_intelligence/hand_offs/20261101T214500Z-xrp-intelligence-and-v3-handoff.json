@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-intelligence-and-v3-handoff-20261101T214500Z",
+  "captured_at_utc": "2026-11-01T21:45:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery is first; Barrot V3 remains the execution, verification and safety foundation.",
+  "observed_main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+  "research_state": {
+    "escrow": "Latest XRP Insights detailed page is pinned to ledger 108052148 at 2026-11-01 20:11 UTC: 31.1B Ripple escrow, 99 objects, 8 owner accounts; 1B released and 700M re-escrowed in three EscrowCreate transactions at 17:38-17:42 UTC, net 300M outside escrow for November. The earlier 30.4B/69.59B supply snapshot is the 08:00 UTC observation before the re-escrow, not a contradictory same-time reading.",
+    "market": "Exchange-wallet snapshot is 22.45B XRP across 701 wallets/24 exchanges at 08:00 UTC, including 487.9M XRP in identified wrapped/fund reserves; not tradable float. Derivatives providers report different universes: TradRadar 1.90B OI across seven exchanges at 15:25 UTC and Bentley Markets 1.61B across 17 exchanges at 15:16 UTC; do not average.",
+    "coinbase_circle": "Existing research records Coinbase's XRP principal-market role for Evernorth financial reporting, BitGo as primary custodian, Coinbase's cbXRP/Morpho collateral channel, Coinbase-Circle USDC distribution economics, and Circle native USDC on XRPL. Product eligibility, reserve scale and custody are not direct XRP spot demand.",
+    "sbic": "Resolved current SBIC entity: Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate number 9011001030621. It is a private corporation and policy implementation institution under the 1963 Act, not a government financial institution. Its ChatGPT/Copilot events are education, not an OpenAI partnership. Historical SBI CAPITAL Co., Ltd. in SBI Holdings' 2007 release is a distinct entity.",
+    "creator": "Channel candidate profile is Kamilah Stevenson, channel ID UCqUPJMQdkCN6lsLVDnichPA, with 11 indexed seed videos on the research branch and incomplete coverage. Exact-name Camilla Stephenson equivalence remains unverified. vidIQ enumeration was blocked by exhausted credits; no retry was made."
+  },
+  "prediction_status": {
+    "status": "NOT_ISSUED",
+    "reason": "No verified XRP forecasts and resolved outcomes are populated. The fixed-horizon ledger has protocol/provenance controls but still needs source-byte semantic binding and append-time LIVE versus HISTORICAL_REPLAY enforcement.",
+    "feature_admission": "NONE"
+  },
+  "repository_state": {
+    "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+    "security_pr1476": "OPEN_DRAFT_UNMERGED; exact-head CI 345 tests + 8 subtests passed and fail-closed gate passed.",
+    "security_pr1474": "OPEN_DRAFT_UNMERGED; exact-head CI 390 tests + 8 subtests passed; base is one generated-timestamp commit behind.",
+    "prediction_pr1475": "OPEN_DRAFT_UNMERGED; exact-head CI 405 tests + 8 subtests passed; base is one generated-timestamp commit behind.",
+    "research_pr1464": "OPEN_DRAFT_UNMERGED; exact-head CI 443 tests + 8 subtests passed; fail-closed gate passed.",
+    "critical_finding": "Main's static subscriber gate is bypassable and scheduled Gumroad sync can publish unsalted email hashes. Current subscribers.json is empty and the latest run processed zero active subscribers. PR #1476 disables the page/workflow but does not create a secure replacement."
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "vidIQ": "Not available for this run because the connected account returned an insufficient-credit error; no retry."
+  },
+  "next_actions": [
+    "Keep PR #1476, #1474, #1475 and #1464 unmerged pending explicit authorization.",
+    "Reconcile PR #1474 with latest main if further security remediation is selected; do not force-update existing branches.",
+    "Design a real server-side subscriber entitlement and private signal delivery path before restoring paid access; keep paid-only content out of public latest_signal.json.",
+    "Continue raw XRPL transaction metadata verification for the three November 1 EscrowCreate transactions and recipient-account attribution.",
+    "Resolve Coinbase FCM notice-of-reliance and actual USDC/RLUSD/XRP collateral use; product eligibility alone is not usage.",
+    "Look through USDXX and RLUSD reserve funds against the exact CFTC permitted-reserve definition.",
+    "Bind forecast outcome prices and timestamps to immutable source snapshot bytes; add append-time recorded_at_utc and LIVE versus HISTORICAL_REPLAY mode.",
+    "Continue exact phrase ASK Coin and actual capital; preserve inactive Ask Coin exchange versus Permission Coin ASK token as separate candidates.",
+    "Complete Kamilah channel inventory through public Videos, Shorts, Live and archived streams when an authorized enumeration source is available; do not claim exhaustive coverage.",
+    "Complete remaining dependency and branch-protection audits."
+  ],
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, Gumroad API request by the agent, external deployment, paper-position mutation or real-money trade occurred. The scheduled Subscriber Sync workflow itself accessed its configured secret and Gumroad API and returned zero active subscribers."
+}

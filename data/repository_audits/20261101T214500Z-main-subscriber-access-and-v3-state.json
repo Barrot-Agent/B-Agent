@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "audit_id": "main-subscriber-access-and-v3-state-20261101T214500Z",
+  "captured_at_utc": "2026-11-01T21:45:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "observed_main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+  "main_delta": {
+    "commit_message": "Cross-analysis refresh [skip ci]",
+    "created_at_utc": "2026-11-01T20:51:33Z",
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "change": "generated_at advanced from 2026-11-01T19:51:40.453719+00:00 to 2026-11-01T20:51:32.925555+00:00; no code or source observations changed."
+  },
+  "workflow_observations": [
+    {
+      "workflow": "Scheduler Tick",
+      "run_id": 41352571165,
+      "head_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+      "created_at_utc": "2026-11-01T21:32:59Z",
+      "conclusion": "success",
+      "log_observation": "Tick complete: 0 entries fired, 1 total in queue. The queue commit step found no staged change; push reported Everything up-to-date."
+    },
+    {
+      "workflow": "Barrot Subscriber Sync",
+      "run_id": 41352711998,
+      "head_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+      "created_at_utc": "2026-11-01T21:34:34Z",
+      "conclusion": "success",
+      "log_observation": "The scheduled job installed requests, accessed the masked GUMROAD_ACCESS_TOKEN, queried the Gumroad sales API, reported 0 active subscribers and made no commit because the public file had no staged change.",
+      "privacy_boundary": "The workflow did process a private provider API request. The agent did not access the secret or issue a Gumroad request."
+    }
+  ],
+  "confirmed_security_findings": [
+    {
+      "id": "FIND-SUBSCRIBER-HASH-PUBLICATION",
+      "severity": "HIGH",
+      "status": "ACTIVE_ON_MAIN",
+      "evidence": "main .github/workflows/subscriber_sync.yml schedules hourly processing, reads Gumroad sales, hashes purchaser email addresses with unsalted SHA-256 and can commit the hashes to web/subscribers.json.",
+      "current_exposure": "web/subscribers.json was read at the observed main SHA and contained exactly {emails:[],count:0}; the latest scheduled run found 0 active subscribers, so no current email hashes were observed.",
+      "risk": "If populated, unsalted hashes of predictable email addresses are vulnerable to dictionary matching and expose pseudonymous subscriber membership in a public repository."
+    },
+    {
+      "id": "FIND-CLIENT-SIDE-PAYWALL-BYPASS",
+      "severity": "HIGH",
+      "status": "ACTIVE_ON_MAIN",
+      "evidence": "web/signals.html computes SHA-256 in the browser, compares against public subscribers.json and then fetches public latest_signal.json. The static file is directly accessible without executing the page.",
+      "current_public_signal": "web/latest_signal.json is tracked publicly; its observed payload timestamp is 2026-10-29T13:23:33.142057+00:00, score 44, confidence 0.0, with missing GitHub model credentials and a Groq HTTP 429 provider failure.",
+      "risk": "Client-side hash comparison is not authorization. The static page cannot protect paid-only content while the signal JSON remains public."
+    },
+    {
+      "id": "FIND-PRIVILEGED-MAIN-WORKFLOWS",
+      "severity": "HIGH",
+      "status": "ACTIVE_ON_MAIN",
+      "evidence": "Main still contains Scheduler Tick with contents/actions write and queued workflow dispatch, Merge Queue with manual dispatch, dry_run=false by default and max_prs=0 meaning unlimited, Cross Analysis scheduled writing, and Autonomous Resolver issue/PR write capabilities.",
+      "limitation": "The branch-protection endpoint returned 403 in the prior audit; required reviews and status contexts remain unverified."
+    }
+  ],
+  "proposed_remediation": {
+    "pr_number": 1476,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1476",
+    "title": "Security: disable public client-side subscriber gate until server auth exists",
+    "base_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+    "head_sha": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+    "changed_paths": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/subscriber_sync.yml",
+      "tests/test_subscriber_access_fail_closed.py",
+      "web/signals.html"
+    ],
+    "ci_run": 41353058271,
+    "ci_result": "success: 345 tests and 8 subtests passed",
+    "fail_closed_gate_run": 41353058127,
+    "fail_closed_gate_result": "success; automatic merging disabled",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "scope": "The proposed page no longer collects email or fetches public signal/subscriber JSON; the scheduled subscriber workflow is inert with no secret, network or write permissions.",
+    "limitation": "This is a fail-closed disablement, not a secure subscriber replacement. latest_signal.json remains a public repository file for other consumers and must not contain paid-only or confidential content."
+  },
+  "other_pr_status": [
+    {
+      "number": 1474,
+      "head_sha": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "ci_run": 41345160046,
+      "ci_result": "390 tests and 8 subtests passed",
+      "gate_run": 41345160075,
+      "gate_result": "passed; merging disabled",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_status": "one main commit behind; intervening main change is generated_at-only sentiment_shift.json"
+    },
+    {
+      "number": 1475,
+      "head_sha": "8268d158449f3e96b585661ee670e515752146f6",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "ci_run": 41345671223,
+      "ci_result": "405 tests and 8 subtests passed",
+      "gate_run": 41345671296,
+      "gate_result": "passed; merging disabled",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_status": "one main commit behind; intervening main change is generated_at-only sentiment_shift.json"
+    },
+    {
+      "number": 1464,
+      "head_sha": "5dafcc8ad4a526e28d9c5e7f7148240af3d7a83c",
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "ci_run": 41352416129,
+      "ci_result": "443 tests and 8 subtests passed",
+      "gate_run": 41352416158,
+      "gate_result": "passed; merging disabled",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_status": "older research base; branch contains append-only research artifacts"
+    }
+  ],
+  "coverage_limitations": [
+    "The previous read-only Python dependency audit covered three Python requirements sets only; other manifests, Docker images and GitHub Action dependencies remain to be audited.",
+    "No branch-protection configuration was changed or verified in this run.",
+    "No platform other than ChatGPT/GitHub was verified as a live collaborator.",
+    "No live forecast was issued and no predictive performance claim was authorized."
+  ],
+  "actions_taken": [
+    "Created draft PR #1476 from the observed main SHA; no main branch update or merge.",
+    "Verified exact-head CI and fail-closed gate for PR #1476.",
+    "Read current main workflow files and current public subscriber/signal artifacts.",
+    "Did not access secrets, query Gumroad, dispatch workflows, deploy Pages, or modify a live customer record."
+  ]
+}

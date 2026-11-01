@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "addendum_id": "sbic-east-japan-chatgpt-identity-20261101T214500Z",
+  "captured_at_utc": "2026-11-01T21:45:00Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T214500Z-sbic-east-japan-chatgpt-identity.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T214500Z-sbic-east-japan-chatgpt-identity.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T214500Z-sbic-entity-resolution-and-chatgpt-context.json",
+  "findings": [
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The current Japanese entity explicitly styled SBIC East Japan is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., corporate number 9011001030621, established 1963-11-15."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBIC East Japan is a private corporation and independent investor operating as a policy implementation institution under Japan's Small and Medium Business Investment & Consultation Company Act, Act No. 101 of 1963; it is not a government financial institution."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "SBIC East Japan's official 2025 training curriculum included ChatGPT and Microsoft Copilot; the June course was restricted to its investee companies. A separate February 2025 ChatGPT seminar was co-hosted with the Tokyo Chamber of Commerce and featured a Microsoft speaker."
+    },
+    {
+      "classification": "INFERENCE",
+      "claim": "The phrase 'ChatGPT SBIC' may be shorthand for SBIC East Japan's public AI/ChatGPT education events. The exact originating context has not been recovered, so this is not a confirmed interpretation."
+    },
+    {
+      "classification": "CONFIRMED_HISTORICAL_PRIMARY_SOURCE",
+      "claim": "SBI CAPITAL Co., Ltd. was a separate SBI Holdings fund-management entity. SBI Holdings' May 21, 2007 release records a 60% SBI Holdings / 40% Goldman Sachs-group affiliate ownership structure after the May 23 stock transfer."
+    },
+    {
+      "classification": "UNKNOWN_BOUNDED_SEARCH",
+      "claim": "No direct SBIC East Japan relationship with XRP, Ripple, Coinbase or Circle was established in the scoped official sources. This does not prove that no indirect portfolio-company relationship exists."
+    },
+    {
+      "classification": "CONFIRMED_PLATFORM_METADATA_WITH_IDENTITY_LIMIT",
+      "claim": "Two indexed YouTube videos are attributed to Kamilah Stevenson; the existing channel profile uses channel ID UCqUPJMQdkCN6lsLVDnichPA and remains a partial inventory."
+    },
+    {
+      "classification": "UNKNOWN",
+      "claim": "The exact-name identity match between Camilla Stephenson and Kamilah Stevenson is not established. The requested all-public-video inventory remains incomplete."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-SBIC-CHATGPT-EAST-JAPAN",
+      "statement": "'ChatGPT SBIC' refers to ChatGPT training/seminars published by SBIC East Japan.",
+      "status": "PLAUSIBLE_NOT_CONFIRMED",
+      "support": [
+        "SRC-SBIC-CHATGPT-TRAINING-20261101T214500Z",
+        "SRC-SBIC-CHATGPT-SEMINAR-20261101T214500Z"
+      ],
+      "disconfirming": [
+        "The original phrase context is unavailable; 'SBIC' has also been used for a separate historical SBI Capital entity."
+      ],
+      "test": "Recover the original surrounding phrase or source before treating this as the intended referent."
+    },
+    {
+      "id": "HYP-SBIC-SBI-CAPITAL",
+      "statement": "'SBIC' refers to historical SBI CAPITAL Co., Ltd. within SBI Holdings.",
+      "status": "PLAUSIBLE_ALTERNATE_ENTITY",
+      "support": [
+        "SRC-SBI-CAPITAL-2007-20261101T214500Z"
+      ],
+      "disconfirming": [
+        "This historical entity is not the Tokyo SBIC East Japan legal entity and the 2007 release does not mention ChatGPT or XRP."
+      ],
+      "test": "Require a contemporaneous SBI Capital source or original phrase context."
+    }
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}
