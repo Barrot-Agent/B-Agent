@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrpl-fee-and-sbi-type4-ledger-addendum-20261101T1415Z",
+  "captured_at_utc": "2026-11-01T14:15:00Z",
+  "supersedes_addendum": "circle-arc-mainnet-source-correction-ledger-addendum-20261101T1412Z",
+  "source_revision_paths": [
+    "data/xrp_intelligence/source_revisions/20261101T141500Z-xrpl-usdc-fee-burn-and-xrp-bridge-correction.json",
+    "data/xrp_intelligence/source_revisions/20261101T141500Z-sbi-vctrade-rlusd-type4-and-chain-scope-correction.json"
+  ],
+  "graph_addendum_paths": [
+    "data/xrp_intelligence/relationship_graph_addenda/20261101T141500Z-usdc-xrpl-xrp-fee-and-bridge-graph.json",
+    "data/xrp_intelligence/relationship_graph_addenda/20261101T141500Z-sbi-vctrade-rlusd-type4-chain-scope-graph.json"
+  ],
+  "evidence_classes": {
+    "confirmed": [
+      "XRPL standard transaction fee is denominated in XRP and destroyed",
+      "SBI VC Trade announced RLUSD handling under Japan Type 4 classification on June 24 2026"
+    ],
+    "secondary_unverified": [
+      "Ethereum-only network support and JPY 1M transfer cap at initial SBI RLUSD listing"
+    ],
+    "inference": [
+      "USDC activity on XRPL causes small XRP fee burn; conditional DEX bridging may use XRP"
+    ],
+    "unknown": [
+      "actual USDC/XRPL transaction counts and XRP bridge-route share",
+      "SBI VC Trade Japanese RLUSD network support per primary release"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none until point-in-time onchain fee, USDC flow and chain-specific SBI product observations are collected"
+}

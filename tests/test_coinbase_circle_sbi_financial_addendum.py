@@ -55,3 +55,10 @@ def test_coinbase_circle_sbi_financial_addendum_is_consistent():
     arc_revision = load("data/xrp_intelligence/source_revisions/20261101T141200Z-circle-arc-mainnet-canonical-url-and-capability-correction.json")
     assert arc_revision["canonical_urls"][0].endswith("circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet")
     assert "Circle_Payments_Network" in {node["id"] for node in load("data/xrp_intelligence/relationship_graph_addenda/20261101T141200Z-circle-arc-cpn-stablefx-and-xrpl-competitive-graph.json")["nodes"]}
+
+    fee_revision = load("data/xrp_intelligence/source_revisions/20261101T141500Z-xrpl-usdc-fee-burn-and-xrp-bridge-correction.json")
+    assert "Every validated XRPL transaction destroys a small amount of XRP" in fee_revision["claims"][0]
+    sbi_revision = load("data/xrp_intelligence/source_revisions/20261101T141500Z-sbi-vctrade-rlusd-type4-and-chain-scope-correction.json")
+    assert "SBI's primary June 24 announcement does not specify" in sbi_revision["corrections_and_limitations"][0]
+    sbi_graph = load("data/xrp_intelligence/relationship_graph_addenda/20261101T141500Z-sbi-vctrade-rlusd-type4-chain-scope-graph.json")
+    assert any(edge["status"] == "unknown_not_established_by_primary_release" for edge in sbi_graph["edges"])

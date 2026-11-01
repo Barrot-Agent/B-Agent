@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-SBI-VCTRADE-RLUSD-TYPE4-AND-CHAIN-SCOPE-20261101T1415Z",
+  "source_id": "sbi-vctrade-rlusd-type4-japan-20260624",
+  "captured_at_utc": "2026-11-01T14:15:00Z",
+  "primary_sources": [
+    {
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "published_date": "2026-06-24",
+      "claims": [
+        "SBI VC Trade began handling RLUSD on June 24, 2026",
+        "SBI VC Trade describes RLUSD as Japan's first Type 4 Electronic Payment Instrument at the time",
+        "SBI states the Type 4 classification is its treatment under Japanese law; RLUSD is not a US-law trust beneficial interest",
+        "SBI VC Trade is a registered Electronic Payment Instruments Exchange Service Provider"
+      ]
+    },
+    {
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0304_a_en.pdf",
+      "publisher": "SBI VC Trade",
+      "published_date": "2025-03-04",
+      "claims": [
+        "SBI VC Trade completed registration as an Electronic Payment Instruments Exchange Service Provider on March 4, 2025, enabling USDC handling in Japan"
+      ]
+    }
+  ],
+  "secondary_source": {
+    "url": "https://finance.yahoo.com/markets/crypto/articles/ripple-sbi-launch-rlusd-japan-032053384.html",
+    "publisher": "Yahoo Finance syndication",
+    "published_date": "2026-06-24",
+    "claim": "reports the initial SBI VC Trade RLUSD listing supported Ethereum only and had a per-transfer limit around JPY 1 million",
+    "classification": "SECONDARY_CLAIM_NOT_INDEPENDENTLY_CONFIRMED_BY_SBI_PRIMARY_RELEASE"
+  },
+  "corrections_and_limitations": [
+    "SBI's primary June 24 announcement does not specify which blockchain network was enabled for the Japanese VCTRADE listing.",
+    "Do not infer that SBI VC Trade's Japanese RLUSD distribution provided XRPL access merely because RLUSD exists on XRPL globally.",
+    "The Type 4 classification applies to the Japanese electronic-payment-instrument treatment of RLUSD, not to XRP or every RLUSD network."
+  ]
+}

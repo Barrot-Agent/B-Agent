@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "graph_id": "sbi-vctrade-rlusd-type4-chain-scope-graph-20261101T1415Z",
+  "captured_at_utc": "2026-11-01T14:15:00Z",
+  "nodes": [
+    {
+      "id": "SBI_Holdings",
+      "type": "company"
+    },
+    {
+      "id": "SBI_VC_Trade",
+      "type": "regulated_exchange"
+    },
+    {
+      "id": "Ripple",
+      "type": "company"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "XRPL",
+      "type": "ledger"
+    },
+    {
+      "id": "Ethereum",
+      "type": "blockchain"
+    }
+  ],
+  "edges": [
+    {
+      "from": "SBI_Holdings",
+      "to": "SBI_VC_Trade",
+      "relation": "subsidiary",
+      "status": "confirmed_company_disclosure"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "RLUSD",
+      "relation": "Japanese_Type_4_electronic_payment_instrument_distribution_from_2026_06_24",
+      "status": "confirmed_SBI_company_announcement"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issuer_through_Standard_Custody_and_Trust_Company",
+      "status": "confirmed_company_disclosure"
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL",
+      "relation": "global_network_deployment",
+      "status": "confirmed_globally; SBI_Japan_product_support_not_established"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "Ethereum",
+      "relation": "reported_initial_Japan_listing_network",
+      "status": "secondary_claim_only"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "XRPL",
+      "relation": "Japanese_RLUSD_support",
+      "status": "unknown_not_established_by_primary_release"
+    }
+  ],
+  "limitations": [
+    "do not infer Japanese RLUSD network support from global RLUSD deployments",
+    "Type 4 classification is not a classification of XRP"
+  ]
+}
