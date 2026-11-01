@@ -397,6 +397,7 @@ def test_feature_snapshot_hash_must_match_registered_source_content(tmp_path):
     registry = {
         "SRC-MARKET-001": "b" * 64,
         "SRC-FEATURE-001": "d" * 64,
+        "SRC-REPLAY-MANIFEST-001": "e" * 64,
     }
     ledger = ForecastLedger(tmp_path, source_registry=registry)
     with pytest.raises(ValueError, match="does not match registered source content hash"):
@@ -769,4 +770,28 @@ def test_outcome_recorded_at_uses_system_time_not_caller_claim(tmp_path, monkeyp
     )
     assert outcome["outcome_recorded_at_utc"] == "2026-11-01T00:00:00Z"
     assert outcome["caller_claimed_recorded_at_utc"] == "2026-10-31T01:01:00Z"
+
+
+def test_metrics_refuse_tampered_registered_replay_manifest_hash(tmp_path):
+    ledger = make_ledger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    ledger.append_outcome(
+        "xrp-forecast-001",
+        1.27,
+        "2026-10-31T00:59:30Z",
+        "2026-10-31T01:01:00Z",
+        "SRC-PRICE-001",
+    )
+    rows = [
+        json.loads(line)
+        for line in ledger.forecasts_path.read_text(encoding="utf-8").splitlines()
+    ]
+    rows[0]["source_content_hashes"]["SRC-REPLAY-MANIFEST-001"] = "f" * 64
+    ledger.forecasts_path.write_text(
+        "".join(json.dumps(row) + "\n" for row in rows),
+        encoding="utf-8",
+    )
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
 

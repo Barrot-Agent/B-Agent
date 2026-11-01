@@ -197,9 +197,13 @@ def _validate_outcome_record(forecast: Mapping[str, Any], outcome: Mapping[str, 
         replay_manifest_id = forecast.get("replay_manifest_source_id")
         if not isinstance(replay_manifest_id, str) or replay_manifest_id not in forecast.get("source_ids", []):
             raise ValueError("stored historical replay manifest is missing or unregistered")
-        hashes = forecast.get("source_content_hashes")
-        if not isinstance(hashes, Mapping) or not _is_sha256_digest(hashes.get(replay_manifest_id)):
-            raise ValueError("stored historical replay manifest hash is not verified")
+        registry_status = forecast.get("source_registry_status")
+        if registry_status == "REGISTERED":
+            hashes = forecast.get("source_content_hashes")
+            if not isinstance(hashes, Mapping) or not _is_sha256_digest(hashes.get(replay_manifest_id)):
+                raise ValueError("stored historical replay manifest hash is not verified")
+        elif registry_status not in {"ID_ONLY_NOT_HASH_VERIFIED", "NOT_CHECKED"}:
+            raise ValueError("stored historical replay source registry status is invalid")
         if forecast_recorded_at < target_end:
             raise ValueError("historical replay cannot be appended before its target horizon closes")
     else:
@@ -324,6 +328,11 @@ def _evaluation_protocol(forecast: Mapping[str, Any]) -> dict[str, Any]:
         raise ValueError("live forecast cannot carry a replay manifest")
     if mode == "HISTORICAL_REPLAY" and (not isinstance(replay_manifest_id, str) or not replay_manifest_id.strip()):
         raise ValueError("historical replay requires a replay manifest source")
+    max_live_age = forecast.get("max_live_issue_age_seconds") if mode == "LIVE" else None
+    if mode == "LIVE" and (
+        isinstance(max_live_age, bool) or not isinstance(max_live_age, int) or max_live_age <= 0
+    ):
+        raise ValueError("stored live issue-age limit is invalid")
 
     resolution_policy = forecast.get("target_resolution_policy")
     if resolution_policy != "LATEST_OBSERVATION_AT_OR_BEFORE_HORIZON":
@@ -344,7 +353,7 @@ def _evaluation_protocol(forecast: Mapping[str, Any]) -> dict[str, Any]:
         "baseline_id": baseline_id.strip(),
         "mode": mode,
         "replay_manifest_source_id": replay_manifest_id,
-        "max_live_issue_age_seconds": forecast.get("max_live_issue_age_seconds") if mode == "LIVE" else None,
+        "max_live_issue_age_seconds": max_live_age,
         "target_resolution_policy": resolution_policy,
         "max_pre_horizon_observation_lag_seconds": max_lag,
     }
@@ -815,6 +824,23 @@ class ForecastLedger:
         resolved = [(by_id[key], value) for key, value in outcome_by_id.items()]
         pending_count = len(forecasts) - len(resolved)
 
+        def source_hashes_match_registry(item: Mapping[str, Any]) -> bool:
+            if self.source_registry_mode != "HASH_VERIFIED":
+                return False
+            source_ids = item.get("source_ids")
+            hashes = item.get("source_content_hashes")
+            if not isinstance(source_ids, list) or not isinstance(hashes, Mapping):
+                return False
+            if set(hashes) != set(source_ids):
+                return False
+            try:
+                return all(
+                    hashes.get(source_id) == self._registered_source_hash(source_id)
+                    for source_id in source_ids
+                )
+            except ValueError:
+                return False
+
         unverified_forecasts = any(
             item.get("source_registry_status") != "REGISTERED"
             or item.get("feature_snapshot_hash_verified") is not True
@@ -823,6 +849,7 @@ class ForecastLedger:
             or not all(_is_sha256_digest(value) for value in item.get("source_content_hashes", {}).values())
             or item.get("source_content_hashes", {}).get(item.get("feature_snapshot", {}).get("source_id"))
                 != item.get("feature_snapshot", {}).get("sha256")
+            or not source_hashes_match_registry(item)
             for item in forecasts
         )
         unverified_outcomes = any(
