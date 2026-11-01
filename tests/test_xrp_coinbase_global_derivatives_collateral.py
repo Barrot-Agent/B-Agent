@@ -17,7 +17,7 @@ def test_xrp_is_non_us_cross_collateral_with_separate_haircuts():
 
 def test_xrp_collateral_can_support_usdc_settled_derivatives():
     d = load()["non_us_global_derivatives"]
-    assert "any cross-margined derivative position" in d["scope"]
+    assert "any cross-margined derivative position" in d["scope"].lower()
     assert d["xrp_options"]["settlement_currency"] == "USDC"
     assert d["xrp_options"]["contract_multiplier_xrp"] == 1000
 
