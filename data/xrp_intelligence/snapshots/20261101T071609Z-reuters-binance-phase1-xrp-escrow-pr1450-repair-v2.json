@@ -1,0 +1,1002 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "SNAP-20261101T071609Z-REUTERS-BINANCE-PHASE1-PR1450-REPAIR-V2",
+  "captured_at_utc": "2026-11-01T07:16:09Z",
+  "data_cutoff_utc": "2026-11-01T07:16:09Z",
+  "supersedes_snapshot_id": "SNAP-20261101T070712Z-BINANCE-PHASE1-ESCROW-PR1449",
+  "supersedes_snapshot_path": "data/xrp_intelligence/snapshots/20261101T070712Z-binance-phase1-escrow-and-pr1449-audit.json",
+  "escrow": {
+    "gross_release_xrp": 1000000000,
+    "reported_finish_utc": "2026-11-01T00:00:02Z",
+    "last_pinned_ledger": 108037957,
+    "last_pinned_ledger_timestamp_utc": "2026-11-01T04:35:00Z",
+    "reescrow_observed_by_last_pinned_ledger_xrp": 0,
+    "net_outside_escrow_by_last_pinned_ledger_xrp": 1000000000,
+    "destination_fields_independently_decoded": false,
+    "follow_on_transfers_verified": false,
+    "current_search_index_regression": {
+      "ledger": 108034152,
+      "timestamp_utc": "2026-11-01T00:27:00Z",
+      "supersedes_last_pinned_observation": false
+    },
+    "trailing_12_release_reescrow_pct": 64.2,
+    "source_status": "TRACKER_REPORTED_RAW_TRANSACTION_METADATA_NOT_INDEPENDENTLY_DECODED"
+  },
+  "binance": {
+    "recovery_update4": {
+      "reported_aggregate_replenishment_pct": 95,
+      "xrp_and_rlusd_customer_asset_coverage_claim_pct": 100,
+      "source": "BINANCE_OFFICIAL_UPDATE4"
+    },
+    "withdrawal_phase1": {
+      "window_start_utc": "2026-11-01T06:00:00Z",
+      "window_end_utc": "2026-11-01T09:00:00Z",
+      "xrp_included": true,
+      "progressive": true
+    },
+    "status_page_recheck": {
+      "retrieved_at_utc": "2026-11-01T06:40:27Z",
+      "last_updated_displayed": "2026-10-30 01:00",
+      "timezone": "UNDISCLOSED",
+      "table": "NO DATA",
+      "xrp_availability": "UNCONFIRMED"
+    },
+    "attacker_wallet": {
+      "address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "last_independent_observation_utc": "2026-10-31T16:51:00Z",
+      "last_observed_balance_xrp": 233461943.10005,
+      "current_balance": "UNKNOWN",
+      "post_observation_outflows": "UNKNOWN"
+    }
+  },
+  "market": {
+    "spot": {
+      "kairo_price_usd": 1.2508,
+      "kairo_observed_utc": "2026-11-01T04:43:00Z",
+      "okx_price_usd": 1.248,
+      "okx_observed_utc": "2026-11-01T03:09:31Z"
+    },
+    "derivatives": [
+      {
+        "provider": "Kairo Trade",
+        "oi_usd": 1900000000,
+        "venues": 13,
+        "observed_utc": "2026-11-01T04:43:00Z"
+      },
+      {
+        "provider": "Kodexius",
+        "oi_usd": 749190000,
+        "contracts": 7,
+        "observed_utc": "2026-11-01T05:34:00Z"
+      },
+      {
+        "provider": "JustScreener",
+        "oi_usd": 1600000000,
+        "venues": 9,
+        "observed_utc": "2026-11-01T05:58:00Z"
+      },
+      {
+        "provider": "TRdesk",
+        "oi_usd": 2660000000,
+        "venues": 26,
+        "cme_included": true,
+        "observed_utc": null
+      },
+      {
+        "provider": "CoinGlass",
+        "oi_usd": 2810000000,
+        "observed_utc": null
+      }
+    ],
+    "oi_aggregate_status": "NONCOMPARABLE_PROVIDER_UNIVERSES_NO_AVERAGE",
+    "data_freshness": "LATEST_OBSERVATIONS_42_TO_211_MINUTES_OLD_AT_CUTOFF"
+  },
+  "attacker_wallet": {
+    "address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "last_reviewed_cutoff_utc": "2026-10-31T16:51:00Z",
+    "last_reviewed_balance_rounded_xrp": 233500000,
+    "current_balance": "UNKNOWN_AFTER_LAST_CUTOFF",
+    "later_outflows": "UNKNOWN"
+  },
+  "repository": {
+    "main_sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+    "pr1444": {
+      "head": "8d8965eaa72b9402ad1dedec9d752387256a51dd",
+      "base": "0ae640073f01321555d7f69dfc28d5b62a348fc6",
+      "behind": 1,
+      "ci_tests": 363,
+      "ci_subtests": 8,
+      "gate": "PASS_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "pr1445": {
+      "head": "ac04af6f19db8a1d39eaf1346943628db1acc2cb",
+      "base": "694fc4241f543917fc6eb787c025bf1eb6726595",
+      "ci_tests": 346,
+      "ci_subtests": 8,
+      "gate": "PASS_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "residual_risk": "Input-only YES does not prove protected reviewer approval; self-upgrade and --trust-remote-code model upload remain privileged."
+    },
+    "pr1446": {
+      "head": "a5f98fa2fc53a8875e45017f5ec4bdcedcead080",
+      "base": "694fc4241f543917fc6eb787c025bf1eb6726595",
+      "ci_run": 41281605535,
+      "ci_tests": 346,
+      "ci_subtests": 8,
+      "gate_run": 41281605590,
+      "gate": "PASS_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "scope": "Five scheduled issue/digest/self-schedule/Gumroad writers made read-only and artifact-first."
+    },
+    "main_workflow_risks_until_approval": [
+      "Cross Analysis scheduled main writer",
+      "Scheduler Tick workflow-dispatch and queue mutation",
+      "Merge Queue privileged manual merge",
+      "Auto Resolve Issues",
+      "Autonomous Resolver",
+      "Daily Digest issue creation",
+      "Self Schedule issue creation",
+      "Gumroad Metrics main commit/push"
+    ],
+    "approval_workflow_zero_job": "EXPECTED_UNMATCHED_PUSH_EVENT because workflow_dispatch-only; not a manual approval failure.",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_scan": "INCOMPLETE",
+    "security_alert_review": "UNAVAILABLE",
+    "open_prs": 218,
+    "draft_prs": 208,
+    "ready_prs": 10,
+    "main_based_prs": 213,
+    "stale_main_based_prs": 212,
+    "current_main_base_prs": [
+      1449
+    ],
+    "non_main_based_prs": 5,
+    "latest_safety_pr": 1449,
+    "latest_safety_pr_state": "OPEN_DRAFT_UNMERGED",
+    "latest_safety_pr_ci": "PASS_367_PLUS_8",
+    "latest_safety_pr_gate": "PASS_MERGE_DISABLED",
+    "main_remediation_applied": false
+  },
+  "source_ids": [
+    "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+    "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+    "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF",
+    "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+    "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+    "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+    "SRC-20261101T064027Z-TRDESK-XRP-OI",
+    "SRC-20261101T064027Z-COINGLASS-XRP-OI",
+    "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY",
+    "SRC-20261101T064027Z-REUTERS-COINBASE-Q3-2026",
+    "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+    "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+    "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+    "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+    "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+    "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT",
+    "SRC-20261101T064027Z-GITHUB-PR1446-SCHEDULED-WRITERS",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+    "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+    "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+    "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+    "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+    "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+    "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+    "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+    "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+    "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION",
+    "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ],
+  "source_reference_count": 38,
+  "missing_source_references": 0,
+  "source_revision_ids": [
+    "REV-20261031T230816Z-XRP-INSIGHTS-ESCROW-PREUNLOCK",
+    "REV-20261031T230816Z-XRP-INSIGHTS-EXCHANGE-DELTA-RECONCILIATION",
+    "REV-20261031T230816Z-TRADRADAR-STALE-SEARCH-RESULT-RECONCILIATION",
+    "REV-20261031T230816Z-GITHUB-MAIN-WORKFLOW-PR1431-AUDIT",
+    "REV-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGE-CONFLICT",
+    "REV-20261031T232127Z-GITHUB-PR1432-SIGNAL-SAFETY-AND-ARCHIVE-VERIFICATION",
+    "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS",
+    "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+    "REV-20261101T010400Z-XRP-ESCROW-STALE-LEDGER-AND-OWNER-CACHE",
+    "REV-20261101T010400Z-GITHUB-CROSS-ANALYSIS-MAIN-WRITER-AND-PR1435",
+    "REV-20261101T010800Z-BINANCE-XRP-ATTACKER-ADDRESS-ISSUER-FREEZES",
+    "REV-20261101T020400Z-XRP-ESCROW-FINISH-LEDGER-108034152",
+    "REV-20261101T020400Z-GITHUB-MAIN-CROSS-ANALYSIS-PR1438-AND-VALIDATOR-TRIGGER",
+    "REV-20261101T030943Z-XRP-INSIGHTS-POSTRELEASE-LEDGER-108035119",
+    "REV-20261101T040000Z-XRP-ESCROW-LIQWALL-BINANCE-PR1441",
+    "REV-20261101T052616Z-BINANCE-UPDATE4-PHASE1-AND-PR1442-CI",
+    "REV-20261101T060500Z-BINANCE-WITHDRAWAL-PHASE1-PR1444-ESCROW-UPDATE",
+    "REV-20261101T061500Z-BINANCE-WITHDRAWAL-PR1444-PR1445-WORKFLOW-AUDIT",
+    "REV-20261101T064027Z-BINANCE-PHASE1-ETF-SBI-COINBASE-PR1446",
+    "REV-20261101T070712Z-BINANCE-PHASE1-ESCROW-PR1449",
+    "REV-20261101T071609Z-REUTERS-BINANCE-PHASE1-XRP-RESUMPTION"
+  ],
+  "source_revision_addenda": [
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T-current-xrp-insights-binance-peg-reserve-correction.json",
+      "blob_sha": "3d0c7bf3acbd8b355b1b2b02ca335a96765a352a",
+      "commit_sha": null,
+      "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-20261031",
+      "captured_at_utc": "2026-10-31T17:19:41Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T-current-xrp-insights-binance-peg-reserve-internal-conflict.json",
+      "blob_sha": "fe793b30d208cbe29af559dcf91ca205dc903c9d",
+      "commit_sha": null,
+      "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-INTERNAL-CONFLICT-20261031",
+      "captured_at_utc": "2026-10-31T17:20:43Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T-current-sbi-dca-version-and-biz-card-campaign.json",
+      "blob_sha": "e5e8d129976565fd1afeeb6cf3a6931f59205df7",
+      "commit_sha": null,
+      "revision_id": "REV-SBI-DCA-ASSET-COUNT-AND-BIZ-CARD-CAMPAIGN-20261031",
+      "captured_at_utc": "2026-10-31T17:22:22Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T173756Z-binance-xrp-por-screenshot-reconciliation.json",
+      "blob_sha": "a0f61304d15a0f15c01bc502a82a1c5b496d8f5e",
+      "commit_sha": "8021ca699fb0a6174955bafb37da3dd605274a1c",
+      "revision_id": "REV-BINANCE-XRP-POR-20261031T173756Z",
+      "source_id": "SRC-20261031T173756Z-CRYPTOTIMES-BINANCE-POR-SCREENSHOT",
+      "captured_at_utc": "2026-10-31T17:37:56Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T173944Z-sbi-vctrade-dca-canonical-page.json",
+      "blob_sha": "a24228fc73abd77a34a7d4357647b668401ad7d0",
+      "commit_sha": "1ef821ecd008e2fa24547a25f2923c746bc829f0",
+      "revision_id": "REV-SBI-VCTRADE-DCA-CANONICAL-20261031T173944Z",
+      "source_id": "SRC-20261031T173944Z-SBI-VC-TRADE-DCA-CANONICAL",
+      "captured_at_utc": "2026-10-31T17:39:44Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T175112Z-ask-coinbase-dex-wallet-relationship.json",
+      "blob_sha": "54771504bc587eb72f61eb7ae05a86d9bd9ea989",
+      "commit_sha": "e05dc9369f4eb4a20f31c82ada3978ce184c303d",
+      "revision_id": "REV-ASK-COINBASE-DEX-EMBEDDED-WALLET-20261031T175112Z",
+      "source_id": "SRC-20261031T175112Z-ASK-COINBASE-WALLET-DEX-RELATIONSHIP",
+      "captured_at_utc": "2026-10-31T17:51:12Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T175218Z-binance-recovery-update3-xrp-por-safu-reconciliation.json",
+      "blob_sha": "3517170103527a98d4d4c4f613d0d15215295686",
+      "commit_sha": "e189dfb69a0cd61a620b990068816509ae4842c7",
+      "revision_id": "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+      "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+      "captured_at_utc": "2026-10-31T17:52:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T175703Z-xrpl-rlusd-supply-coinbase-listing-exchange-reserve-reconciliation.json",
+      "blob_sha": "f73584782ff8865019fc43d352cd0577165338e0",
+      "commit_sha": "1f817b7d591792af36848762cb5cdf815d0bdd79",
+      "revision_id": "REV-XRPL-RLUSD-SUPPLY-EXCHANGE-RESERVES-COINBASE-LISTING-20261031T175703Z",
+      "source_id": "SRC-20261031T175703Z-XRPL-SUPPLY-RESERVES-COINBASE-RLUSD-LISTING",
+      "captured_at_utc": "2026-10-31T17:57:03Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "revision_id": "REV-SBIC-JAPAN-KAMILAH-YOUTUBE-OCC-TRUST-CHARTER-20261031T190021Z",
+      "source_id": "SRC-20261031T190021Z-SBIC-REGIONAL-ENTITIES-KAMILAH-YOUTUBE-OCC-CHARTERS",
+      "path": "data/xrp_intelligence/source_revisions/20261031T190021Z-sbic-regional-entities-kamilah-youtube-and-occ-trust-charters.json",
+      "blob_sha": "a0cb61670ca00786586c4282762a8026c490c77c",
+      "commit_sha": "d4f0814382a4bf5f3766b13c1ab02e94212de12e",
+      "captured_at_utc": "2026-10-31T19:00:21Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+    },
+    {
+      "revision_id": "REV-TRADRADAR-XRP-1945Z-UPDATE-20261031T201433Z",
+      "source_id": "SRC-20261031T200209Z-TRADRADAR-XRP",
+      "path": "data/xrp_intelligence/source_revisions/20261031T201433Z-tradradar-xrp-derivatives-1945z-update-v4.json",
+      "blob_sha": "a279d044723ff0c387a4ee7100340694e3ce1197",
+      "commit_sha": "5ed367cfa9bf584a7b31632d7355bacc5f90e370",
+      "captured_at_utc": "2026-10-31T20:14:33Z",
+      "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATION_RETRY",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-xrp-insights-escrow.json",
+      "blob_sha": "f13b10beb015d93ca0a05febc75a4b6bd7afbcea",
+      "revision_id": "REV-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+      "source_id": "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-tokenpost-ripple-accounts.json",
+      "blob_sha": "e68c0ad863b22365f1a6926392d1eae55d863fb6",
+      "revision_id": "REV-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+      "source_id": "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-ripple-16t-product-volume.json",
+      "blob_sha": "3a06b210005b324f2f55b86cc46f3fc0920143db",
+      "revision_id": "REV-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+      "source_id": "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-bny-xrp-rlusd-custody.json",
+      "blob_sha": "20ff9ac91895364a946936722fa923d5e63950ec",
+      "revision_id": "REV-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+      "source_id": "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-sbi-remit-xrp-bridge.json",
+      "blob_sha": "f7abe4b6b4e21a1e8877f155f4c04db114fd5ba0",
+      "revision_id": "REV-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+      "source_id": "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-ripple-rlusd-xrp-corridor-strategy.json",
+      "blob_sha": "fe8631536f29877bf71ce96735f785761116c057",
+      "revision_id": "REV-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+      "source_id": "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-ripple-coinbase-rlusd.json",
+      "blob_sha": "ced2bed45eb80c8bedf89b04dceee36682eaaaec",
+      "revision_id": "REV-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+      "source_id": "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-tokenpost-sosovalue-xrp-etf.json",
+      "blob_sha": "7bcdd510c9add3df410b0b5dbea5006cc2fc66db",
+      "revision_id": "REV-20261031T213618Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+      "source_id": "SRC-20261031T213618Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-alphafinance-xrp-etf.json",
+      "blob_sha": "b31fb358a558cda9ac251ddfe1ddb925f22e599c",
+      "revision_id": "REV-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+      "source_id": "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-cryptoslate-actual-xrp-volume.json",
+      "blob_sha": "4c07fe0cd107e2d2bfc371adf60ed2483110f2b5",
+      "revision_id": "REV-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+      "source_id": "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-github-bagent-audit.json",
+      "blob_sha": "3932b1b42f75777d88574b216ede485cd741101f",
+      "revision_id": "REV-20261031T213618Z-GITHUB-BAGENT-AUDIT",
+      "source_id": "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT",
+      "captured_at_utc": "2026-10-31T21:36:18Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T214005Z-ripple-treasury-13t-primary-and-xrp-account-capability.json",
+      "blob_sha": "393d6e4eff8bc3c4b697a3a4b97487fa278fe890",
+      "revision_id": "REV-RIPPLE-TREASURY-13T-PRIMARY-AND-XRP-ACCOUNT-CAPABILITY-20261031T214005Z",
+      "source_id": "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS",
+      "captured_at_utc": "2026-10-31T21:40:05Z",
+      "status": "PENDING_ARCHIVE_APPEND; PRIMARY_SOURCE_CORRECTION"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-garlinghouse-coindesk-transcript.json",
+      "blob_sha": "f0525e29f532ea79bc2437a12944f8967fa4ec6e",
+      "revision_id": "REV-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+      "source_id": "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+      "captured_at_utc": "2026-10-31T21:45:45Z",
+      "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-xrp-insights-rlusd-supply.json",
+      "blob_sha": "9ee2ebfb3904263fd451c9052ccc7c56837cb7a2",
+      "revision_id": "REV-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+      "source_id": "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+      "captured_at_utc": "2026-10-31T21:45:45Z",
+      "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-defillama-xrpl-stablecoin.json",
+      "blob_sha": "0b2d6f6dd4695e953927073a4bc9154e62fce04d",
+      "revision_id": "REV-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+      "source_id": "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+      "captured_at_utc": "2026-10-31T21:45:45Z",
+      "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-stablecoininsider-rlusd.json",
+      "blob_sha": "6f86297886e007c06c83f5bd756e306de4e5b61b",
+      "revision_id": "REV-20261031T214545Z-STABLECOININSIDER-RLUSD",
+      "source_id": "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD",
+      "captured_at_utc": "2026-10-31T21:45:45Z",
+      "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-standard-chartered-rlusd-custody.json",
+      "blob_sha": "0405a8713c030b6a5a45c50d4458ca08ab36123c",
+      "revision_id": "REV-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+      "source_id": "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+      "captured_at_utc": "2026-10-31T21:45:45Z",
+      "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-lmax-ripple-rlusd-partnership.json",
+      "blob_sha": "7204be5785ba4d38623a71ed7c33b4c1f1c67437",
+      "revision_id": "REV-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP",
+      "source_id": "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP",
+      "captured_at_utc": "2026-10-31T21:45:45Z",
+      "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T215123Z-ripple-drivewealth-rlusd-xrpl-settlement.json",
+      "blob_sha": "72084d2594db41e62caea371e8c9c7069c223e2b",
+      "commit_sha": "d77350e78ae526ccc1c0d37febadd72a6605ed8c",
+      "revision_id": "REV-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT-20261031T215123Z",
+      "source_id": "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT",
+      "captured_at_utc": "2026-10-31T21:51:23Z",
+      "status": "VERIFIED_ARCHIVED",
+      "pending_archive_append": false,
+      "exact_head_validation": true,
+      "verified_head_sha": "f89557964ddc53024214210ed55e90fd6b0d2be2",
+      "validator_run_id": 41246834315,
+      "fail_closed_gate_run_id": 41246834314,
+      "verified_at_utc": "2026-10-31T22:08:55Z"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T230816Z-xrp-insights-escrow-preunlock.json",
+      "blob_sha": "3fd09750071f1206b5b1b037e4f7d8610b5510e2",
+      "revision_id": "REV-20261031T230816Z-XRP-INSIGHTS-ESCROW-PREUNLOCK",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "captured_at_utc": "2026-10-31T23:08:16Z",
+      "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T230816Z-xrp-insights-exchange-delta-reconciliation.json",
+      "blob_sha": "f43005bdf9e3dbcfb6d1439b5288a4aba1bf760f",
+      "revision_id": "REV-20261031T230816Z-XRP-INSIGHTS-EXCHANGE-DELTA-RECONCILIATION",
+      "source_id": "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY",
+      "captured_at_utc": "2026-10-31T23:08:16Z",
+      "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T230816Z-tradradar-stale-search-result-reconciliation.json",
+      "blob_sha": "c8a24ecd51ebfa142360798311d2da8c81ea6fed",
+      "revision_id": "REV-20261031T230816Z-TRADRADAR-STALE-SEARCH-RESULT-RECONCILIATION",
+      "source_id": "SRC-20261031T210244Z-TRADRADAR-XRP",
+      "captured_at_utc": "2026-10-31T23:08:16Z",
+      "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T230816Z-github-main-workflow-pr1431-audit.json",
+      "blob_sha": "c2f3d611e24d4ffc3f397a68734a6304ab4d5106",
+      "revision_id": "REV-20261031T230816Z-GITHUB-MAIN-WORKFLOW-PR1431-AUDIT",
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "captured_at_utc": "2026-10-31T23:08:16Z",
+      "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T231645Z-bithomp-ripple-escrow-owner-page-conflict.json",
+      "blob_sha": "55d4762496f541d80bcaa782949d5c7a627b3742",
+      "revision_id": "REV-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGE-CONFLICT",
+      "source_id": "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES",
+      "captured_at_utc": "2026-10-31T23:16:45Z",
+      "status": "PENDING_ARCHIVE_APPEND_AND_EXACT_HEAD_VALIDATION"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261031T232127Z-github-pr1432-signal-safety-and-archive-verification.json",
+      "blob_sha": "47d14b29578e005c471c7a8f09a8ecb55d7661ec",
+      "revision_id": "REV-20261031T232127Z-GITHUB-PR1432-SIGNAL-SAFETY-AND-ARCHIVE-VERIFICATION",
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "captured_at_utc": "2026-10-31T23:21:27Z",
+      "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T031615Z-corrected-001238-xrp-escrow-post-eligibility-status.json",
+      "blob_sha": "d4d05cbdda71edeb9e82a8caad93683862d39427",
+      "commit_sha": "de24e9212bf410e9fc75041e8e440d2e3a966629",
+      "revision_id": "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "captured_at_utc": "2026-11-01T00:12:38Z",
+      "status": "PENDING_ARCHIVE_APPEND; RECORD_TYPE_CORRECTED_COPY; ORIGINAL_PRESERVED",
+      "pending_archive_append": true,
+      "source_candidates_pending": 3
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T031615Z-corrected-010400-xrp-escrow-stale-ledger-and-owner-cache.json",
+      "blob_sha": "f3385edb163e82bbfab856c081ddb70af7eb8772",
+      "commit_sha": "de24e9212bf410e9fc75041e8e440d2e3a966629",
+      "revision_id": "REV-20261101T010400Z-XRP-ESCROW-STALE-LEDGER-AND-OWNER-CACHE",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "captured_at_utc": "2026-11-01T01:04:00Z",
+      "status": "PENDING_ARCHIVE_APPEND; RECORD_TYPE_CORRECTED_COPY; ORIGINAL_PRESERVED",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T031615Z-corrected-010400-github-cross-analysis-writer-pr1435.json",
+      "blob_sha": "6094371744ed684f9dfddbab50ab2345d92c399f",
+      "commit_sha": "de24e9212bf410e9fc75041e8e440d2e3a966629",
+      "revision_id": "REV-20261101T010400Z-GITHUB-CROSS-ANALYSIS-MAIN-WRITER-AND-PR1435",
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "captured_at_utc": "2026-11-01T01:04:00Z",
+      "status": "PENDING_ARCHIVE_APPEND; RECORD_TYPE_CORRECTED_COPY; ORIGINAL_PRESERVED",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T010800Z-binance-xrp-attacker-address-issuer-freezes.json",
+      "blob_sha": "b5b1589c6a803ac54bfc6a8ef7970d5506cf4251",
+      "commit_sha": "b646ec15cad47dfb7d8ff9f2a816ccd95659d0d3",
+      "revision_id": "REV-20261101T010800Z-BINANCE-XRP-ATTACKER-ADDRESS-ISSUER-FREEZES",
+      "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+      "captured_at_utc": "2026-11-01T01:08:00Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_RECORD_TYPE_CORRECTED; SIX_SOURCE_CANDIDATES_PENDING_REGISTRY",
+      "pending_archive_append": true,
+      "new_source_candidates": 6
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T020400Z-xrp-insights-november-escrow-finish-ledger-108034152.json",
+      "blob_sha": "2a6befe23c43d0d06dcb84815ccc0381cfd6f7f7",
+      "commit_sha": "2cab6852b301ca2337ef917ad57fc21ec5abac61",
+      "revision_id": "REV-20261101T020400Z-XRP-ESCROW-FINISH-LEDGER-108034152",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "captured_at_utc": "2026-11-01T02:04:00Z",
+      "status": "PENDING_ARCHIVE_APPEND; SOURCE_CANDIDATE_REGISTRY_MEMBERSHIP_NOT_RECONFIRMED",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T020400Z-github-main-cross-analysis-pr1438-and-validator-trigger.json",
+      "blob_sha": "099dcfe23ec10aa38bd0ea617da9260edf6c96c7",
+      "commit_sha": "2cab6852b301ca2337ef917ad57fc21ec5abac61",
+      "revision_id": "REV-20261101T020400Z-GITHUB-MAIN-CROSS-ANALYSIS-PR1438-AND-VALIDATOR-TRIGGER",
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "captured_at_utc": "2026-11-01T02:04:00Z",
+      "status": "PENDING_ARCHIVE_APPEND; AUTHORIZED_GITHUB_READBACK",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T030943Z-xrp-insights-postrelease-ledger-108035119.json",
+      "blob_sha": "0d3ff31b66e845a07ca96875fef45e6df5d08407",
+      "commit_sha": "4ed4b7f9603cf5275fe1273d696122be8a9ce4ac",
+      "revision_id": "REV-20261101T030943Z-XRP-INSIGHTS-POSTRELEASE-LEDGER-108035119",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "captured_at_utc": "2026-11-01T03:09:43Z",
+      "status": "PENDING_ARCHIVE_APPEND; NEW_PINNED_LEDGER_REVISION",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T040000Z-xrp-escrow-liqwall-binance-and-pr1441.json",
+      "blob_sha": "8a367862ee246cbf3766768645bb2594ea72ff25",
+      "commit_sha": "5f474b8d60584a83e89c8dace13d2b72d36be711",
+      "revision_id": "REV-20261101T040000Z-XRP-ESCROW-LIQWALL-BINANCE-PR1441",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "captured_at_utc": "2026-11-01T04:00:00Z",
+      "status": "PENDING_ARCHIVE_APPEND",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T052616Z-binance-update4-withdrawal-phase1-and-pr1442-ci-corrected-v2.json",
+      "blob_sha": "33e9efbd0c9ad2ed0d32e0419e96420a9f3a6ca3",
+      "commit_sha": "d8a61f77c535e6360b6f147fce9ae1f7f3edb84a",
+      "revision_id": "REV-20261101T052616Z-BINANCE-UPDATE4-PHASE1-AND-PR1442-CI",
+      "source_id": "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T052616Z-GITHUB-BAGENT-MAIN-PR1442-VERIFICATION"
+      ],
+      "captured_at_utc": "2026-11-01T05:26:16Z",
+      "status": "PENDING_ARCHIVE_APPEND; CORRECTED_V2_SOURCE_ID_POINTER; ORIGINAL_PRESERVED",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T060500Z-binance-withdrawal-phase1-pr1444-and-escrow-update.json",
+      "blob_sha": "90905e619b4dfbfd85be3baacfcbf6ae92ebaebb",
+      "commit_sha": "5f93f44ef0274287e8d06afcf665967bf0d215ac",
+      "revision_id": "REV-20261101T060500Z-BINANCE-WITHDRAWAL-PHASE1-PR1444-ESCROW-UPDATE",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T060400Z-BINANCE-NETWORK-STATUS-PAGE",
+        "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT"
+      ],
+      "captured_at_utc": "2026-11-01T06:05:00Z",
+      "status": "PENDING_ARCHIVE_APPEND",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T061500Z-binance-withdrawal-recheck-pr1444-pr1445-workflow-audit-v2.json",
+      "blob_sha": "3a35b16f7954dbeca8241b002ad1b7b8b2c23b64",
+      "commit_sha": "50fca27ed92c5f458d80e7562b3faa7f89530a48",
+      "revision_id": "REV-20261101T061500Z-BINANCE-WITHDRAWAL-PR1444-PR1445-WORKFLOW-AUDIT",
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T060400Z-BINANCE-NETWORK-STATUS-PAGE",
+        "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT",
+        "SRC-20261101T061000Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT"
+      ],
+      "captured_at_utc": "2026-11-01T06:15:00Z",
+      "status": "PENDING_ARCHIVE_APPEND",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T064027Z-binance-phase1-etf-sbi-coinbase-source-revision.json",
+      "blob_sha": "7b1f506057748c23a08382ab82ebc9ca3b06131f",
+      "commit_sha": "7371b9abc867ca046f6818870d68a8f207630ef1",
+      "revision_id": "REV-20261101T064027Z-BINANCE-PHASE1-ETF-SBI-COINBASE-PR1446",
+      "source_id": "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+      "source_ids": [
+        "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+        "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+        "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF",
+        "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+        "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+        "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+        "SRC-20261101T064027Z-TRDESK-XRP-OI",
+        "SRC-20261101T064027Z-COINGLASS-XRP-OI",
+        "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+        "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS",
+        "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY",
+        "SRC-20261101T064027Z-REUTERS-COINBASE-Q3-2026",
+        "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+        "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+        "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+        "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+        "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+        "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT",
+        "SRC-20261101T064027Z-GITHUB-PR1446-SCHEDULED-WRITERS",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+        "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+        "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+        "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+        "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+        "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+        "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+        "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+        "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+        "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION"
+      ],
+      "captured_at_utc": "2026-11-01T06:40:27Z",
+      "status": "PENDING_ARCHIVE_APPEND",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T070712Z-binance-phase1-escrow-pr1449-source-revision.json",
+      "blob_sha": "8ada09d9cd84ec6b56d1c8c56ace9149438a7acf",
+      "commit_sha": "c5ef39fc0c5f515bbff055a3fb2154b0946543bc",
+      "revision_id": "REV-20261101T070712Z-BINANCE-PHASE1-ESCROW-PR1449",
+      "source_id": "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+      "source_ids": [
+        "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+        "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+      ],
+      "captured_at_utc": "2026-11-01T07:07:12Z",
+      "status": "PENDING_ARCHIVE_APPEND",
+      "pending_archive_append": true
+    },
+    {
+      "path": "data/xrp_intelligence/source_revisions/20261101T071609Z-reuters-binance-phase1-xrp-resumption-source-revision.json",
+      "blob_sha": "7f9ee19e1d30d38c1ab8293145014c4d4f60b02b",
+      "commit_sha": "2ee85d4c722b298ba173d2c1b021674cbf6ef5aa",
+      "revision_id": "REV-20261101T071609Z-REUTERS-BINANCE-PHASE1-XRP-RESUMPTION",
+      "source_id": "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+      "source_ids": [
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER"
+      ],
+      "captured_at_utc": "2026-11-01T07:16:09Z",
+      "status": "PENDING_ARCHIVE_APPEND",
+      "pending_archive_append": true
+    }
+  ],
+  "source_revision_addenda_count": 49,
+  "source_revision_addenda_pending_archive_append": 43,
+  "source_records": 0,
+  "run_updates": 1,
+  "limitations": [
+    "Binance network status page is stale and has no asset-level XRP row; phase-one availability remains unconfirmed.",
+    "ETF providers cover different funds and report holdings deltas versus USD flows; no unified actual-capital number is justified.",
+    "Derivatives OI providers have materially different venue/contract coverage; no aggregate is admitted.",
+    "Coinbase Q3 10-Q does not separately disclose XRP collateral; asset-specific exposure remains unknown.",
+    "RLUSD and USDC XRPL supply sources differ in total stablecoin coverage; the cause of RLUSD contraction is unknown.",
+    "SBI JPYSC/SMFG/BlackRock/Open Standard initiatives are exploratory and do not establish XRP routing.",
+    "Binance phase-one start is reported by Reuters and XRP is included among 15 assets, but no XRP-specific successful withdrawal or asset-level status row was independently observed.",
+    "XRP escrow Destination fields and post-release transfers/re-escrow remain unknown; XRP Insights is a tracker-derived pinned observation, not raw transaction decoding.",
+    "Main-branch workflow writers and merge queue remain active until PR #1449 is approved and merged; PR CI does not remediate main.",
+    "The current PR #1450 archive validator failed because six recent shard wrappers/pointers and archive_policy/index metadata were malformed; repair remains pending exact-head revalidation."
+  ],
+  "expected_archive_shards": 459,
+  "expected_archive_records_roundtrip": 3530,
+  "archive_records_appended": 2,
+  "new_source_revision_addenda": 1,
+  "inherited_pending_source_revision_addenda_count": 42,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "exact_head_validation": "PENDING",
+  "pending_data_head_sha": "2ee85d4c722b298ba173d2c1b021674cbf6ef5aa",
+  "archive_validation_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261101T071609Z-reuters-binance-phase1-xrp-escrow-pr1450-repair-v2.json",
+  "source_revision_path": "data/xrp_intelligence/source_revisions/20261101T071609Z-reuters-binance-phase1-xrp-resumption-source-revision.json",
+  "repository_audit_path": "data/repository_audits/20261101T071609Z-main-pr1449-pr1450-archive-repair-audit.json",
+  "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T071609Z-reuters-binance-phase1-xrp-escrow-pr1450-graph.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T071609Z-binance-phase1-status-actual-capital-pr1450-repair.json",
+  "handoff_path": "data/xrp_intelligence/hand_offs/20261101T071609Z-reuters-binance-phase1-pr1450-validator-repair-handoff.json",
+  "created_at_utc": "2026-11-01T07:07:12Z",
+  "latest_xrp_escrow_event_status": "TRACKER_REPORTS_1B_RELEASE; LEDGER_108038942_AT_05:39Z; 0_REESCROW_BY_PINNED_LEDGER; DESTINATION_AND_LATER_DISPOSITION_UNKNOWN",
+  "latest_binance_withdrawal_status": "PHASE1_START_REPORTED_BY_REUTERS; BTC_WITHDRAWALS_RESUMED; XRP_INCLUDED_IN_15_ASSET_PHASE; XRP_SPECIFIC_SUCCESS_UNVERIFIED; NETWORK_STATUS_PAGE_06:53_NO_RECORDS",
+  "latest_repository_safety_pr": {
+    "number": 1449,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1449",
+    "head_sha": "dce8be8e8df59390c7a986c7ff7a2b699cb18593",
+    "base_sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run_id": 41283447287,
+    "tests_passed": 367,
+    "subtests_passed": 8,
+    "gate_run_id": 41283447301,
+    "gate_status": "PASS_MERGE_DISABLED"
+  },
+  "remaining_scheduled_mutation_workflows": [
+    "cross-analysis.yml",
+    "scheduler-tick.yml",
+    "merge-queue.yml",
+    "check-signal-accuracy.yml",
+    "autonomous_self_deployment.yml",
+    "auto-resolve-issues.yml",
+    "barrot-autonomous-resolver.yml",
+    "daily-digest.yml",
+    "self-schedule.yml",
+    "gumroad-metrics.yml",
+    "rotate-databricks-token.yml"
+  ],
+  "corrected_at_utc": "2026-11-01T06:20:00Z",
+  "corrects_snapshot_path": "data/xrp_intelligence/snapshots/20261101T061500Z-xrp-escrow-binance-phase1-pr1444-pr1445-workflow-audit.json",
+  "correction_reason": "The source-revision pointer now references a v2 addendum with an explicit primary source_id; original snapshot and source revision are preserved.",
+  "source_bundle_path": "data/xrp_intelligence/sources/20261101T071609Z-reuters-binance-phase1-xrp-resumption-source-bundle.json",
+  "source_bundle_blob_sha": "0641ba6729484f49ce15be948764b821d2223829",
+  "source_revision_blob_sha": "7f9ee19e1d30d38c1ab8293145014c4d4f60b02b",
+  "source_revision_commit_sha": "2ee85d4c722b298ba173d2c1b021674cbf6ef5aa",
+  "graph_addendum_blob_sha": "5f2b81b757d07ab44d46609a9592f849f241b7ea",
+  "graph_addendum_commit_sha": "2ee85d4c722b298ba173d2c1b021674cbf6ef5aa",
+  "architecture_decision_blob_sha": "14768bff4bf8143af56f3b9e400390acc1513e04",
+  "architecture_decision_commit_sha": "2ee85d4c722b298ba173d2c1b021674cbf6ef5aa",
+  "repository_audit_blob_sha": "ab5d348e90043e79c12cf67052bfe9c4b32dd88c",
+  "repository_audit_commit_sha": "2ee85d4c722b298ba173d2c1b021674cbf6ef5aa",
+  "handoff_blob_sha": "68f5e1822a4d39de7bc1d117fd83068fcd1aa80c",
+  "handoff_commit_sha": "2ee85d4c722b298ba173d2c1b021674cbf6ef5aa",
+  "archive_shards_total": 459,
+  "archive_records_roundtrip": 3530,
+  "new_source_count": 0,
+  "new_run_update_count": 1,
+  "new_limitation_count": 1,
+  "archive_shards_added": 2,
+  "previous_verified_head": {
+    "head_sha": "a2ee24694f262084866fbfd2a94ecf495375ace5",
+    "validator_run_id": 41280481408,
+    "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41280481408",
+    "gate_run_id": 41280481410,
+    "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41280481410",
+    "archive_shards": 451,
+    "archive_records": 3494,
+    "regression_tests": 35,
+    "errors": 0,
+    "state_mutated": false
+  },
+  "etf": {
+    "xrp_insights": {
+      "weekly_holdings_delta_xrp": 3390000,
+      "holdings_xrp": 1196600000,
+      "aum_usd": 1503000000,
+      "oct29_delta_xrp": 6400000,
+      "oct30_delta_xrp": -49932,
+      "gxrp_flow_excluded": true,
+      "bitw_included": true
+    },
+    "maketo": {
+      "funds": [
+        "XRP",
+        "XRPZ",
+        "XRPC",
+        "GXRP",
+        "TOXR"
+      ],
+      "oct30_net_flow_usd": -496500,
+      "weekly_net_flow_usd": 4300000,
+      "monthly_net_flow_usd": 19000000
+    },
+    "chaincatcher_sosovalue": {
+      "oct29_net_flow_usd": 8431600
+    },
+    "comparison": "Different fund universes and methods; holdings deltas are not direct cash subscriptions; do not average."
+  },
+  "stablecoins": {
+    "xrpl": {
+      "defillama": {
+        "total_usd": 799090000,
+        "rlusd_dominance_pct": 88.55,
+        "seven_day_change_pct": -24.55
+      },
+      "stables_cool": {
+        "total_usd": 712200000,
+        "rlusd_usd": 707400000,
+        "usdc_usd": 4800000,
+        "observed_utc": "2026-10-31T06:10:00Z"
+      },
+      "rlusd_cause_of_contraction": "UNKNOWN",
+      "total_supply_provider_scope": "DIFFERENT"
+    },
+    "circle_usdc_global": {
+      "circulation_usd": 70000000000,
+      "reserves_usd": 71400000000,
+      "as_of": "2026-10-29",
+      "seven_day_net_supply_change_usd": -800000000,
+      "thirty_day_net_supply_change_usd": -3100000000,
+      "365_day_net_supply_change_usd": -5000000000
+    }
+  },
+  "institutional": {
+    "coinbase_circle": {
+      "circle_h1_distribution_costs_to_coinbase_usd": 655300000,
+      "coinbase_q3_ytd_stablecoin_revenue_usd": 904500000,
+      "coinbase_q3_ytd_usdc_rewards_expense_increase_usd": 175700000,
+      "interpretation": "Material distribution economics; not Coinbase net profit and not XRP demand."
+    },
+    "coinbase_xrp_collateral": {
+      "q3_2026_10q_xrp_text_hit": false,
+      "separately_disclosed_xrp_collateral": false,
+      "recognized_other_crypto_collateral_usd": 9903000,
+      "customer_crypto_collateral_not_recognized_usd": 2804000000,
+      "derivatives_collateral_named_assets": [
+        "BTC",
+        "ETH"
+      ],
+      "xrp_specific_amount": "UNKNOWN"
+    },
+    "coinbase_market_position": {
+      "q3_2026_revenue_down_pct": 37,
+      "transaction_revenue_usd": 590200000,
+      "transaction_revenue_down_pct": 43,
+      "market_share_pct": 10.7,
+      "market_share_prior_year_pct": 5.6,
+      "prediction_market_revenue_annualized_usd": 200000000,
+      "derivatives_and_prediction_markets_share_of_transaction_revenue_pct": 25,
+      "gaap_net_income_usd": 718700000,
+      "adjusted_net_income_usd": 77700000,
+      "interpretation": "Diversifying beyond spot; GAAP profit materially influenced by unrealized investment gains."
+    }
+  },
+  "sbi": {
+    "regional_sbic_distinct_from_sbi_holdings": true,
+    "multi_rail_relationships": [
+      "Ripple/XRP",
+      "Circle/USDC",
+      "Circle SBI Japan K.K.",
+      "Evernorth XRP treasury exposure",
+      "SBI Remit XRP bridge corridors",
+      "SBI Ripple Asia XRPL PoC",
+      "SBI VC Trade XRP rewards",
+      "JPYSC",
+      "SMFG alliance",
+      "BlackRock/Startale tokenized MMF MOU",
+      "Open Standard/OUSD"
+    ],
+    "jpysc_initial_distribution": "SBI VC TRADE ACCOUNTS; PUBLIC-CHAIN CIRCULATION NOT ESTABLISHED",
+    "open_standard_coinbase_link": "COINBASE IS A CONSORTIUM PARTICIPANT; PLANNED JPYSC/OUSD INTEROPERABILITY; NO XRP ROUTE ESTABLISHED",
+    "xrp_rewards": [
+      "SBI START bond on ibet for Fin",
+      "SBI shareholder coupon benefit",
+      "SBI VC Trade card"
+    ],
+    "strategic_classification": "MULTI_RAIL_MULTI_PARTNER; NO EXCLUSIVE_OR_COORDINATED_XRP_STRATEGY_ESTABLISHED"
+  },
+  "platform_coordination": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "verified_external_platform_authentications": 0,
+    "verified_external_handoffs": 0,
+    "github_repository_access": "VERIFIED",
+    "least_privilege_adapters": "DESIGNED"
+  },
+  "identity_research": {
+    "sbic": "Tokyo/Nagoya/Osaka regional SME investment corporations; distinct from SBI Holdings and Circle SBI Japan K.K.",
+    "chatgpt_sbiс": "Educational seminar activity; no OpenAI commercial partnership established",
+    "ask_coin": "Permission Coin ASK remains a candidate; XRP integration unverified",
+    "actual_capital": "Continue separating cash, in-kind XRP, equity PIPE, reserve replenishment, ETF holdings deltas and AUM valuation",
+    "camilla_stephenson": "Kamilah/Camila Stevenson candidate remains unconfirmed; exhaustive public-video inventory incomplete"
+  },
+  "next_actions": [
+    "Verify Binance XRP withdrawal availability and capture a successful public withdrawal transaction if observable.",
+    "Decode both November 1 EscrowFinish transactions and trace Destination, subsequent transfers and EscrowCreate.",
+    "Reconcile ETF fund-level holdings and cash creations/redemptions; preserve fund universes separately.",
+    "Build a venue/contract OI coverage map before aggregating derivatives.",
+    "Trace RLUSD mint, burn and bridge events to explain XRPL supply contraction.",
+    "Continue SBI/Ripple/Circle/Coinbase/SMFG/BlackRock/Startale relationship research.",
+    "Keep PRs #1444, #1445 and #1446 draft/unmerged pending explicit approval.",
+    "Run exact-head archive validation after the source/run/limitation append."
+  ],
+  "archive_counts": {
+    "sources": 2180,
+    "run_updates": 369,
+    "limitations": 981,
+    "archive_shards": 459,
+    "archive_records_roundtrip": 3530,
+    "source_revision_addenda_checked": 49,
+    "source_revision_addenda_pending_archive_append": 43
+  },
+  "source_bundle_commit_sha": "2ee85d4c722b298ba173d2c1b021674cbf6ef5aa",
+  "latest_binance_phase1_start_reported_at_utc": "2026-11-01T06:49:00Z",
+  "latest_binance_actual_capital_report": {
+    "aggregate_replacement_token_purchases_usd_approx": 6000000000,
+    "aggregate_recovery_pct": 95,
+    "remaining_less_liquid_assets_pct": 5,
+    "funding_sources": [
+      "SAFU including bitcoin reserve",
+      "Futures Insurance Fund",
+      "Corporate treasury"
+    ],
+    "safu_use_pct_reported_by_co_ceo": 50,
+    "safu_replenishment_target_usd": 1000000000,
+    "xrp_specific_purchase_amount_usd": null,
+    "xrp_specific_purchase_quantity": null,
+    "evidence_class": "AGGREGATE_COMPANY_REPORTED_VIA_REUTERS",
+    "source_id": "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL"
+  },
+  "latest_archive_validation_status": "PENDING_REPAIR",
+  "latest_archive_validation_failure_run_id": 41284073355,
+  "latest_archive_validation_gate_run_id": 41284073354,
+  "latest_archive_validation_gate_status": "PASS_MERGE_DISABLED"
+}
