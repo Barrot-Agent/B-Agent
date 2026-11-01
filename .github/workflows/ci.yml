@@ -80,4 +80,6 @@ jobs:
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
             tests/test_cross_analysis_workflow_safety.py \
+            tests/test_scheduler_queue_workflow_safety.py \
+            tests/test_merge_queue_fail_closed.py \
             -v --no-cov
