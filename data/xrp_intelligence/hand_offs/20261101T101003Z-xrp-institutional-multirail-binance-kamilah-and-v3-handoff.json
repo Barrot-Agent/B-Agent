@@ -4,7 +4,7 @@
   "data_cutoff_utc": "2026-11-01T10:10:03Z",
   "mission_priority": "XRP intelligence and prediction-engine mastery is Barrot's highest-priority mission; Barrot V3 remains the execution and verification foundation.",
   "source_status": {
-    "count": 23,
+    "count": 30,
     "records": [
       {
         "id": "SRC-20261101T101003Z-COINBASE-Q3",
@@ -212,11 +212,82 @@
         "class": "CREATOR_VIDEO",
         "claim": "Indexed as Kamilah Stevenson, 2026-07-30; Confidential Transfers/Sponsored Fees/Reserves claims; affiliate disclosures.",
         "limitation": "Feature design vs activation/adoption not reconciled; transcript incomplete."
+      },
+      {
+        "id": "SRC-20261101T102635Z-COINBASE-CBXRP-POR",
+        "publisher": "Coinbase",
+        "title": "Official cbXRP proof of reserves, refreshed November 1",
+        "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+        "retrieved_at_utc": "2026-11-01T10:26:35Z",
+        "evidence_class": "PRIMARY_RESERVE_ATTESTATION_DASHBOARD",
+        "claim": "Coinbase page reports 150,942,337.33 XRP reserve and 150,940,089.8 cbXRP total supply, refreshed 2026-11-01 02:03 AM (timezone not stated); Base supply is 150,940,089.796 cbXRP. Reserve surplus is 2,247.53 XRP (~100.0015% coverage).",
+        "limitation": "Company dashboard, not independent attestation; displayed refresh timezone not stated. Current reserve addresses/ledger state should be independently reconciled."
+      },
+      {
+        "id": "SRC-20261101T102635Z-MORPHO-CBXRP-USDC-MARKET",
+        "publisher": "Morpho",
+        "title": "Base cbXRP/USDC 62.5% LLTV market",
+        "url": "https://app.morpho.org/base/market/0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+        "retrieved_at_utc": "2026-11-01T10:26:35Z",
+        "evidence_class": "PRIMARY_PROTOCOL_MARKET_INTERFACE",
+        "claim": "Market created 2026-01-15; cbXRP collateral/USDC debt; 62.5% LLTV; 12.67% liquidation penalty; 90.46% utilization vs 90% target; $59.19M outstanding loans; $82.51M market size; $23.32M displayed total liquidity; instantaneous borrow rate 7.89%, 24h average 8.17%, 7d average 8.22%, lend rate 7.16%; Chainlink XRP/USD oracle heartbeat 1d/deviation 0.5%, price 1.25012; 1,201 borrower rows and 171 supplier rows displayed; 10 small liquidations on Oct30 repaid 829.288 USDC and seized 777.04 cbXRP, zero realized bad debt.",
+        "limitation": "Live interface metrics can refresh asynchronously. Its displayed $240.85M 'value secured' conflicts with Coinbase's total cbXRP reserve value (~$188.90M at the same page's $1.25 oracle); do not use that collateral-value figure until reconciled. Supplier share table and displayed total liquidity/market size use differing aggregates."
+      },
+      {
+        "id": "SRC-20261101T102635Z-DEFILLAMA-CBXRP-MARKET",
+        "publisher": "DefiLlama",
+        "title": "cbXRP/USDC Morpho Blue Base pool snapshot",
+        "url": "https://defillama.com/yields/pool/7ad0dc44-ab47-4690-bd31-e9df6c9f6e50",
+        "retrieved_at_utc": "2026-11-01T10:26:35Z",
+        "evidence_class": "INDEPENDENT_DEFI_AGGREGATOR",
+        "claim": "DefiLlama displays cbXRP/USDC on Base with 62.5% max LTV, $152.4M total supplied, $57.41M borrowed and $7.13M available in the retrieved view.",
+        "limitation": "No exact observation timestamp; definitions of total supplied/available differ from Morpho interface; do not average with Morpho figures. Total supplied may reflect collateral value rather than USDC debt-asset supply."
+      },
+      {
+        "id": "SRC-20261101T102635Z-CLEANSKY-CBXRP-AUG24",
+        "publisher": "CleanSky",
+        "title": "cbXRP grew 5.5x; 78% lives in a lending contract (August 24 snapshot)",
+        "url": "https://cleansky.io/blog/coinbase-wrappers-manufactured-demand-2026/",
+        "retrieved_at_utc": "2026-11-01T10:26:35Z",
+        "evidence_class": "INDEPENDENT_ONCHAIN_ANALYSIS",
+        "claim": "Analysis using Morpho API, Base explorer, Coinbase PoR and market data reports 117,288,396 cbXRP total supply on Aug24; 90.78M cbXRP in the 62.5% cbXRP/USDC Morpho market; $41M USDC borrowed; 78.1% of cbXRP supply in Morpho; market created Jan15 2026. It estimates Coinbase's market attribution from matching terms/date, explicitly as inference.",
+        "limitation": "Single-date third-party analysis, not a continuous audit; market attribution to Coinbase product is inference because Morpho is permissionless and does not label originator."
+      },
+      {
+        "id": "SRC-20261101T102635Z-THEBLOCK-COINBASE-LOAN-ORIGINATIONS-MAY12",
+        "publisher": "The Block",
+        "title": "Coinbase crypto-backed loans exceed $2.3B originations; XRP $31.6M cumulative",
+        "url": "https://www.theblock.co/news/markets/2026-05-12-coinbase-solana-loans-morpho-borrow-100000-400980",
+        "retrieved_at_utc": "2026-11-01T10:26:35Z",
+        "evidence_class": "INDEPENDENT_NEWS_WITH_COMPANY_DATA",
+        "claim": "Coinbase-reported cumulative loan originations through May12 totaled >$2.3B; BTC $2.17B, ETH ~$110M and XRP $31.6M, with smaller DOGE/ADA/LTC originations.",
+        "limitation": "Cumulative originations include repaid loans and are not outstanding debt; not directly comparable to Nov1 live market debt."
+      },
+      {
+        "id": "SRC-20261101T102635Z-THEBLOCK-XRP-LOAN-LLTV-FEB18",
+        "publisher": "The Block",
+        "title": "Coinbase adds XRP/DOGE/ADA/LTC as Morpho USDC collateral",
+        "url": "https://www.theblock.co/news/business/2026-02-18-coinbase-xrp-dogecoin-cardano-litecoin-loans-morpho-390403",
+        "retrieved_at_utc": "2026-11-01T10:26:35Z",
+        "evidence_class": "INDEPENDENT_NEWS_PRODUCT_LAUNCH",
+        "claim": "Feb18 launch allowed eligible U.S. customers outside New York to borrow up to $100,000 USDC against XRP/DOGE/ADA/LTC through Morpho; contemporary reporting states the four-asset group liquidates at 62.5% LTV, versus 86% for BTC/ETH.",
+        "limitation": "Launch terms do not prove current utilization; current Morpho market page is the more specific source for LLTV/penalty."
+      },
+      {
+        "id": "SRC-20261101T102635Z-COINBASE-BORROW-PRODUCT",
+        "publisher": "Coinbase",
+        "title": "Current crypto-backed USDC loans product page",
+        "url": "https://www.coinbase.com/borrow",
+        "retrieved_at_utc": "2026-11-01T10:26:35Z",
+        "evidence_class": "PRIMARY_PRODUCT_PAGE",
+        "claim": "Current Coinbase page lists up to $100,000 USDC borrowing against XRP, DOGE, ADA and LTC; product is powered by Morpho on Base and Coinbase provides the interface.",
+        "limitation": "The page's generic 86% LTV example must not be applied to the XRP market, whose specific Morpho LLTV is 62.5%."
       }
     ],
     "archive_status": "PENDING_SOURCE_SHARD_APPEND",
     "legacy_unresolved_stubs_preserved": 13,
-    "source_revision_file_materialized": false
+    "source_revision_file_materialized": false,
+    "new_records_added_at_utc": "2026-11-01T10:26:35Z"
   },
   "institutional_findings": {
     "coinbase": {
@@ -233,13 +304,50 @@
       "xrp_collateral": {
         "eligible": true,
         "loan_asset": "USDC",
-        "protocol": "Morpho",
+        "protocol": "Morpho Blue",
         "network": "Base",
         "token": "cbXRP",
         "contract": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
         "liquidation_ltv_pct": 86,
         "penalty_pct": 4.38,
-        "actual_utilization": null
+        "actual_utilization": null,
+        "collateral_token": "cbXRP",
+        "borrow_limit_usdc_per_user": 100000,
+        "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+        "lltv_pct": 62.5,
+        "liquidation_penalty_pct": 12.67,
+        "actual_utilization_pct": 90.46,
+        "outstanding_loans_usd": 59190000,
+        "market_size_usd": 82510000,
+        "displayed_total_liquidity_usd": 23320000,
+        "borrow_rate_instant_pct": 7.89,
+        "borrow_rate_24h_avg_pct": 8.17,
+        "borrow_rate_7d_avg_pct": 8.22,
+        "lend_rate_pct": 7.16,
+        "oracle": "Chainlink XRP/USD",
+        "oracle_price": 1.25012,
+        "oracle_heartbeat": "1d",
+        "oracle_deviation_pct": 0.5,
+        "borrower_rows_displayed": 1201,
+        "supplier_rows_displayed": 171,
+        "liquidations_oct30": {
+          "count": 10,
+          "usdc_repaid": 829.288,
+          "cbxrp_seized": 777.04,
+          "realized_bad_debt_usdc": 0
+        },
+        "actual_utilization_verified_from_protocol_interface": true,
+        "coinbase_product_attribution": "STRONG_INFERENCE_FROM_MATCHING_TERMS_AND_DEPLOYMENT_DATE; Morpho is permissionless and does not label originator.",
+        "utilization_source": "Morpho direct market interface; retrieved 2026-11-01",
+        "generic_coinbase_help_conflict": "Coinbase generic help page displays 86%/4.38%; do not apply to this XRP market. Market-specific Morpho interface shows 62.5% LLTV/12.67% liquidation penalty.",
+        "collateral_value_conflict": {
+          "morpho_value_secured_usd": 240850000,
+          "coinbase_por_total_cbXRP": 150940089.8,
+          "coinbase_por_reserve_xrp": 150942337.33,
+          "oracle_price_usd": 1.25012,
+          "coinbase_por_value_usd": 188904335.16,
+          "status": "UNRESOLVED; Morpho displayed collateral-value field exceeds total cbXRP reserve value at stated price; do not use for collateral amount."
+        }
       }
     },
     "circle": {
@@ -422,6 +530,24 @@
         "SBI Group",
         "No affiliation established; name similarity only",
         "disambiguation"
+      ],
+      [
+        "Coinbase",
+        "cbXRP",
+        "Official 1:1 XRP reserve-backed wrapper; 150.94M supply at Nov1 PoR snapshot",
+        "primary-confirmed"
+      ],
+      [
+        "cbXRP",
+        "Morpho Base cbXRP/USDC market",
+        "62.5% LLTV; 12.67% penalty; $59.19M outstanding debt; 90.46% utilization",
+        "protocol-observed"
+      ],
+      [
+        "Morpho suppliers",
+        "USDC lending market",
+        "Top three named vault suppliers 79.25% of displayed supplied share",
+        "protocol-observed"
       ]
     ],
     "hypotheses": [
@@ -459,6 +585,30 @@
         "id": "H7",
         "claim": "Reported 1B escrow release is not 1B sold or exchange-available.",
         "counter": "Subsequent transfers may create market supply; disposition open."
+      },
+      {
+        "id": "CBXRP-1",
+        "claim": "Coinbase's XRP-collateral loan path is materially used, not merely advertised; cbXRP and outstanding USDC borrowing have expanded.",
+        "support": "Coinbase PoR 150.94M cbXRP; Morpho market $59.19M outstanding/90.46% utilization; CleanSky Aug24 $41M borrowed; The Block May12 $31.6M cumulative originations.",
+        "counter": "Morpho is permissionless; Coinbase attribution is inference from matching 62.5% LLTV/deployment date. cbXRP minting may be custody migration, not spot purchases."
+      },
+      {
+        "id": "CBXRP-2",
+        "claim": "High utilization and concentrated suppliers create liquidity/rollover risk even if aggregate collateralization is currently below LLTV.",
+        "support": "Morpho reports 90.46% utilization; top three supplier shares 79.25%; 10 small liquidations Oct30.",
+        "counter": "No bad debt in listed liquidations; market has other suppliers and protocol exits; no stress event quantified."
+      },
+      {
+        "id": "CBXRP-3",
+        "claim": "cbXRP growth does not prove new XRP market buying.",
+        "support": "cbXRP is a 1:1 custodial wrapper; minting can follow deposits/transfers of already-held XRP.",
+        "counter": "Some deposits may have been acquired in market; source-of-XRP acquisition not visible in PoR totals."
+      },
+      {
+        "id": "CBXRP-DQ",
+        "claim": "Morpho's $240.85M value-secured field is not currently reconcilable with Coinbase's $188.90M total cbXRP reserve value at the stated $1.25 oracle.",
+        "support": "Morpho page reports $240.85M; Coinbase PoR reports 150.94M cbXRP and 150.94M XRP reserve; stated oracle 1.25012 implies ~$188.9M total wrapper value.",
+        "counter": "The Morpho field may use a different scope/metric or update timing; raw market collateral balances need direct reconciliation."
       }
     ]
   },
@@ -523,7 +673,7 @@
     "existing_archive_shards": 462,
     "existing_archive_records": 3545,
     "prior_validation": "PASS",
-    "new_source_records_pending": 23,
+    "new_source_records_pending": 30,
     "new_run_update_pending": 1,
     "new_limitation_pending": 1,
     "source_revision_addendum_pending": false,
@@ -574,6 +724,8 @@
     "real_money_traded": false
   },
   "next_actions": [
+    "Capture Morpho market ID 0xd4a903...4109 time series: LLTV, outstanding debt, utilization, available liquidity, supplier concentration, liquidations and Chainlink oracle updates.",
+    "Reconcile Morpho cbXRP collateral amount/value-secured field against Coinbase's official 1:1 PoR supply and Base ERC-20 totalSupply; do not infer from UI aggregate.",
     "Decode raw XRPL EscrowFinish Destination and trace subsequent transfers/EscrowCreate.",
     "Verify XRP-specific Binance withdrawal availability through asset-specific status or public transaction evidence.",
     "Measure cbXRP supply and Morpho XRP collateral utilization; separate eligibility from actual borrowing.",
@@ -583,5 +735,52 @@
     "Append 24 sources, one run update and one limitation to immutable archive shards after this handoff is validated.",
     "Keep PR #1459 draft/unmerged pending explicit approval; add protected-environment reviewer gate before external mutations."
   ],
-  "status": "RESEARCH_HANDOFF_PENDING_ARCHIVE_APPEND"
+  "status": "RESEARCH_HANDOFF_PENDING_ARCHIVE_APPEND",
+  "cbxrp_supply_and_reserves": {
+    "coinbase_por_refresh_text": "2026-11-01 02:03 AM; timezone not stated",
+    "total_reserve_xrp": 150942337.33,
+    "total_supply_cbxrp": 150940089.8,
+    "surplus_xrp": 2247.53,
+    "coverage_pct": 100.00149,
+    "base_supply_cbxrp": 150940089.796,
+    "official_one_to_one_backing_claim": true,
+    "aug24_cleansky_supply_cbxrp": 117288396,
+    "supply_growth_since_aug24_pct": 28.691409336009688,
+    "aug24_morpho_collateral_cbxrp": 90780000,
+    "aug24_morpho_borrowed_usdc": 41000000,
+    "nov1_morpho_outstanding_usdc": 59190000,
+    "outstanding_debt_growth_since_aug24_pct": 44.36585365853658,
+    "interpretation": "cbXRP supply and Morpho credit use expanded materially; minting/wrapping means XRP entered Coinbase custody, not necessarily that Coinbase or borrowers bought XRP in spot markets."
+  },
+  "collateralization": {
+    "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+    "defillama_pool_id": "7ad0dc44-ab47-4690-bd31-e9df6c9f6e50",
+    "chain": "Base",
+    "collateral": "cbXRP",
+    "debt": "USDC",
+    "lltv_pct": 62.5,
+    "liquidation_penalty_pct": 12.67,
+    "utilization_pct": 90.46,
+    "outstanding_usdc_usd": 59190000,
+    "available_liquidity_definition_conflict": true,
+    "borrow_rate_24h_avg_pct": 8.17,
+    "oracle": "Chainlink XRP/USD",
+    "oracle_price": 1.25012,
+    "oracle_heartbeat": "1d",
+    "oracle_deviation_pct": 0.5,
+    "small_liquidations_oct30": {
+      "count": 10,
+      "total_usdc_repaid": 829.288,
+      "total_cbxrp_seized": 777.04,
+      "realized_bad_debt": 0
+    },
+    "supplier_concentration_pct": {
+      "steakhouse_high_yield_edition": 29.66,
+      "steakhouse_high_yield": 29.43,
+      "clearstar_cbassets": 20.16,
+      "top_three": 79.25,
+      "top_five": 86.25
+    },
+    "collateral_value_conflict": "Morpho UI value-secured $240.85M conflicts with Coinbase PoR total supply/value; DefiLlama total-supplied definition also differs. Do not infer total collateral quantity until reconciled."
+  }
 }
