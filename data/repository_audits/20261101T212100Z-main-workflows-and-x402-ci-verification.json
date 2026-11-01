@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "id": "main-workflows-and-x402-ci-verification-20261101T212100Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "main": {
+    "sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+    "protected": true,
+    "required_status_contexts": [],
+    "protection_endpoint": "403 Resource not accessible by integration; required reviews and other details unknown",
+    "latest_commit": {
+      "message": "Cross-analysis refresh [skip ci]",
+      "date_utc": "2026-11-01T20:51:33Z",
+      "changed_files": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ]
+    },
+    "active_privileged_workflows": [
+      {
+        "path": ".github/workflows/scheduler-tick.yml",
+        "permissions": [
+          "contents:write",
+          "actions:write"
+        ],
+        "risk": "can commit queue changes and dispatch workflows; no strict allowlist in current main file"
+      },
+      {
+        "path": ".github/workflows/merge-queue.yml",
+        "permissions": [
+          "contents:write",
+          "pull-requests:write",
+          "checks:read",
+          "statuses:read"
+        ],
+        "risk": "manual dispatch; dry_run defaults false; max_prs defaults 0/unlimited; no explicit designated-human approval gate in workflow"
+      },
+      {
+        "path": ".github/workflows/cross-analysis.yml",
+        "permissions": [
+          "contents:write"
+        ],
+        "risk": "scheduled/workflow_run analysis commits generated sentiment and entity outputs to main"
+      },
+      {
+        "path": ".github/workflows/barrot-autonomous-resolver.yml",
+        "permissions": [
+          "contents:read",
+          "issues:write",
+          "pull-requests:write"
+        ],
+        "risk": "can open and assign issues/PRs; no mutation observed in latest run"
+      }
+    ],
+    "latest_runs": [
+      {
+        "id": 41350166981,
+        "name": "Scheduler Queue Audit",
+        "conclusion": "success",
+        "finding": "zero queue entries fired; no mutation observed in that run"
+      },
+      {
+        "id": 41349839236,
+        "name": "Barrot Autonomous Resolver",
+        "conclusion": "success",
+        "finding": "no mutation observed in that run; write permissions remain active"
+      },
+      {
+        "id": 41348985150,
+        "name": "Cross Analysis",
+        "conclusion": "success",
+        "finding": "all-time entity sentiment profile and zero 24h/previous-24h shift observations"
+      }
+    ],
+    "signal_quality": {
+      "recent_24h_observations": 0,
+      "prior_24h_observations": 0,
+      "net_scores": null,
+      "entity_profile_scope": "all retained log entries; 1,208 XRP and 1,245 BTC records",
+      "warning": "generated_at is not evidence of new market observations"
+    },
+    "dependency_controls": {
+      "dependabot_config": "weekly pip and GitHub Actions updates; five open update PR limit per ecosystem",
+      "codeowners": "* @Barrot-Agent",
+      "action_pinning": "workflow references use version tags such as actions/checkout@v7 and actions/setup-python@v7 rather than immutable commit SHAs",
+      "security_alert_visibility": "Dependabot, code-scanning and secret-scanning alert endpoints were not accessible through the current GitHub integration; alert state is UNKNOWN, not zero",
+      "previous_python_dependency_audit": "three manifests scanned in earlier run; no known vulnerabilities reported in those sets only"
+    }
+  },
+  "pull_requests": [
+    {
+      "number": 1464,
+      "head_sha": "876b0dd9aa20c8e924464722d632ecd38c739ddc",
+      "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run": 41351480037,
+      "ci_conclusion": "success",
+      "tests": "436 passed + 8 subtests",
+      "gate_run": 41351480030,
+      "gate_conclusion": "success"
+    },
+    {
+      "number": 1474,
+      "head_sha": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run": 41345160046,
+      "ci_conclusion": "success",
+      "tests": "390 passed + 8 subtests",
+      "gate_run": 41345160075,
+      "gate_conclusion": "success"
+    },
+    {
+      "number": 1475,
+      "head_sha": "8268d158449f3e96b585661ee670e515752146f6",
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run": 41345671223,
+      "ci_conclusion": "success",
+      "tests": "405 passed + 8 subtests",
+      "gate_run": 41345671296,
+      "gate_conclusion": "success"
+    }
+  ],
+  "ci_coverage_finding": "CI explicitly enumerates test paths. The first standalone x402 test file was not in that list and was not executed. The x402 tests were moved into the already-listed tests/test_xrpl_usdc_rlusd_supply_and_coinbase_circle_economics.py; the current PR #1464 exact-head run then executed 436 tests and 8 subtests successfully.",
+  "merge_policy": "No PR merged. No branch update/force-push/reset/clean/stash performed."
+}
