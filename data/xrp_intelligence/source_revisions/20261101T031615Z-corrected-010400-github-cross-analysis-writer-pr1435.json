@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T010400Z-GITHUB-CROSS-ANALYSIS-MAIN-WRITER-AND-PR1435",
+  "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+  "captured_at_utc": "2026-11-01T01:04:00Z",
+  "data_cutoff_utc": "2026-11-01T01:03:55Z",
+  "title": "Current-main Cross Analysis writer confirmed active; fresh-main read-only successor PR #1435 passes exact-head CI",
+  "classification": "REPOSITORY_OBSERVATION; EXACT_HEAD_CI_VERIFIED; MAIN_WRITE_REMAINS_ACTIVE",
+  "observations": {
+    "main": {
+      "sha": "93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+      "latest_commit_url": "https://github.com/Barrot-Agent/B-Agent/commit/93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+      "latest_commit_created_at_utc": "2026-11-01T00:57:03Z",
+      "latest_commit_message": "Cross-analysis refresh [skip ci]",
+      "changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+      "changed_content_only_generated_at": true,
+      "previous_generated_at_utc": "2026-10-31T23:51:39.713838Z",
+      "current_generated_at_utc": "2026-11-01T00:57:02.819207Z",
+      "xrp": {
+        "recent_24h_entries": 0,
+        "prior_24h_entries": 0,
+        "recent_24h_score": null,
+        "prior_24h_score": null,
+        "shift": null,
+        "significant_shift": false
+      },
+      "btc": {
+        "recent_24h_entries": 0,
+        "prior_24h_entries": 0,
+        "recent_24h_score": null,
+        "prior_24h_score": null,
+        "shift": null,
+        "significant_shift": false
+      }
+    },
+    "main_workflow": {
+      "path": ".github/workflows/cross-analysis.yml",
+      "permissions": {
+        "contents": "write"
+      },
+      "triggers": [
+        "workflow_run: Knowledge Signal Cycle completed",
+        "hourly schedule at minute 50",
+        "workflow_dispatch"
+      ],
+      "performs": [
+        "git add",
+        "git commit",
+        "git push",
+        "git pull --rebase-false fallback"
+      ],
+      "status": "SCHEDULED_MAIN_WRITE_PATH_STILL_ACTIVE"
+    },
+    "pr1435": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1435",
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "mergeable": true,
+      "base_sha": "93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+      "head_sha": "c3d239dde20a80c4b8a452c5225c93ea49c59883",
+      "changed_files": 3,
+      "commits": 4,
+      "ci_run_id": 41259443317,
+      "ci_conclusion": "SUCCESS",
+      "tests_passed": 345,
+      "subtests_passed": 8,
+      "gate_run_id": 41259443418,
+      "gate_conclusion": "SUCCESS",
+      "gate_semantics": "MERGING_DISABLED",
+      "proposed_permissions": {
+        "contents": "read"
+      },
+      "checkout_persist_credentials": false,
+      "repository_commits_or_pushes": false,
+      "generated_outputs": "Six bounded 30-day workflow artifacts",
+      "functional_tradeoff": "Automatic tracked-file updates and the current Pages refresh path are paused; no replacement publisher is included."
+    },
+    "prior_pr_comparisons": {
+      "pr1431": {
+        "base_sha": "f0bbed8c51974e4e0b4cb98b09a8ef0eb5fe0fbb",
+        "ahead_by": 3,
+        "behind_by": 4,
+        "status": "DIVERGED_STALE_SUCCESSOR_PR1435"
+      },
+      "pr1433": {
+        "base_sha": "a989ae6ee81106e5a3521d89883c59e263d6d305",
+        "ahead_by": 6,
+        "behind_by": 1,
+        "status": "DIVERGED_STALE_BY_ONE_COMMIT; EXACT_HEAD_CI_PASSED_ON_OLD_BASE"
+      },
+      "pr1424": {
+        "base_sha": "a7b253051f17100b1e44889d17c0177cff389ea5",
+        "ahead_by": 8,
+        "behind_by": 9,
+        "status": "DIVERGED_REQUIRES_FRESH_BASE_REVIEW"
+      },
+      "pr1422": {
+        "base_sha": "a7b253051f17100b1e44889d17c0177cff389ea5",
+        "ahead_by": 43,
+        "behind_by": 9,
+        "status": "DIVERGED_REQUIRES_PATH_AND_EVIDENCE_REVIEW"
+      }
+    }
+  },
+  "source_evidence": [
+    {
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/cross-analysis.yml",
+      "source_type": "repository_primary_source",
+      "supports": "Current main workflow grants contents:write and commits/pushes generated analysis outputs."
+    },
+    {
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "url": "https://github.com/Barrot-Agent/B-Agent/commit/93d99064389fbe09bd6ca01d9d283fdc52a13c5b",
+      "source_type": "repository_commit",
+      "supports": "Latest main commit changes only generated_at in sentiment_shift.json while both XRP/BTC windows contain zero entries."
+    },
+    {
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1435",
+      "source_type": "pull_request",
+      "supports": "Fresh-main read-only successor and its exact base/head."
+    },
+    {
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41259443317",
+      "source_type": "ci_run",
+      "supports": "345 tests and 8 subtests passed on PR #1435 exact head."
+    },
+    {
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41259443418",
+      "source_type": "fail_closed_gate",
+      "supports": "Gate passed while keeping merging disabled."
+    }
+  ],
+  "access_and_method_limitations": [
+    "The CI result verifies the focused repository suite on PR #1435, not full repository CI.",
+    "No complete dependency vulnerability scan or GitHub security-alert review was performed in this run.",
+    "PR #1435 does not modify main; the main writer remains active until an approved merge.",
+    "The artifact-only design pauses tracked output and Pages refresh; a separate least-privilege publisher remains unimplemented."
+  ],
+  "required_classification": "MAIN_WRITER_CONFIRMED; PR1435_EXACT_HEAD_VERIFIED; NOT_MERGED",
+  "prediction_admission": "NOT_APPLICABLE",
+  "forecast_status": "NOT_ISSUED",
+  "pending_archive_append": true,
+  "supersedes_path": "data/xrp_intelligence/source_revisions/20261101T010400Z-github-cross-analysis-writer-pr1435.json",
+  "correction_note": "Append-only validator repair copy. Original preserved; ledger pointer redirected to this corrected copy. Source claim and observation unchanged."
+}

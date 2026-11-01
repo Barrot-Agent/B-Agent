@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T031615Z-XRP-LEDGER-VALIDATOR-TRIGGER-AND-POINTER-REPAIR",
+  "created_at_utc": "2026-11-01T03:16:15Z",
+  "status": "BRANCH_PREPARED; AUTOMATIC_PUSH_VALIDATION_PENDING",
+  "root_cause": {
+    "trigger": "Existing validator workflow listens for pushes only on the base research shard branch; its pull_request filter targets the index-pointer branch and requires the head ref to equal the shard branch.",
+    "affected_prs": [
+      "#1437 repair branch",
+      "#1436 research staging branch"
+    ],
+    "data_errors": [
+      "Three referenced source-revision files had the wrong record_type in the shard base.",
+      "The latest snapshot JSON lacked snapshot_path matching the ledger pointer."
+    ]
+  },
+  "minimal_fix": [
+    "Preserve the three original source-revision files and add corrected copies with record_type source_revision_addendum.",
+    "Redirect only the three latest_snapshot.source_revision_addenda pointers to corrected copies, preserving revision IDs, source IDs, captured times and pending status.",
+    "Create a new immutable snapshot JSON with snapshot_path matching its index pointer and source_ids limited to registered source IDs.",
+    "Add exact one-off push trigger for the verification branch and PR triggers for research shard and staging bases.",
+    "Keep workflow permissions contents:read, checkout persist-credentials:false, pinned pytest, read-only validator, no manual dispatch and no secrets.",
+    "Add deterministic regression tests for read-only permissions, no manual dispatch and branch filters."
+  ],
+  "tradeoffs": [
+    "Verification branch is stacked on PR #1436 head; no research base or main branch is modified.",
+    "One-off push trigger is branch-specific; future PR validation is enabled when the workflow change is integrated."
+  ],
+  "safety": {
+    "main_modified": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "merge": false,
+    "market_feature_admission": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}
