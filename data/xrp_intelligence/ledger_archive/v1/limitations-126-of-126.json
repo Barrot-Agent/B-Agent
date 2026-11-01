@@ -1,0 +1,167 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 125,
+  "chunk_count": 126,
+  "record_count": 15,
+  "records": [
+    {
+      "id": "LIM-20261031T090517Z-BNY-XRP-AUC-UNKNOWN",
+      "category": "institutional_custody",
+      "statement": "BNY announced XRP and RLUSD custody support but disclosed no XRP or RLUSD assets under custody, customer balances or proprietary holdings.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-BNY-FUTURE-APPROVALS",
+      "category": "regulatory_and_product_activation",
+      "statement": "BNY's XRPL-issued token support and direct RLUSD mint/redeem plans are future intentions subject to final BNY and regulatory approvals; they are not verified live capabilities.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-BNY-C2FO-EXPLORATORY",
+      "category": "tokenized_trade_finance",
+      "statement": "The C2FO supply-chain-finance initiative is described as exploratory; no production issuance, investor allocation, receivables volume or settlement activity was disclosed.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-ROBINHOOD-XRPL-VOLUME",
+      "category": "stablecoin_settlement",
+      "statement": "Robinhood announced RLUSD use on XRPL for institutional settlement but disclosed no transaction counts, settlement value, unique counterparties, XRP bridge use or XRP inventory.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-RIPPLE-PRIME-ASSET-LIST",
+      "category": "collateral_and_lending",
+      "statement": "Ripple Prime financing and margin support across roughly 20 digital assets for Bitstamp is not accompanied by an asset list; XRP inclusion must not be inferred.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-COINBASE-RLUSD-COLLATERAL-FUTURE",
+      "category": "exchange_collateral",
+      "statement": "Coinbase Global Exchange availability and RLUSD collateral use were described as a later follow-on, not live launch functionality on October 28.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-COINBASE-USDC-QUARTERLY",
+      "category": "capital_flows_and_stablecoins",
+      "statement": "Coinbase's $22B average USDC held is a Q3 quarterly average, not a current balance. Company-reported USDC economics do not establish current Circle revenue or prove RLUSD displaced USDC.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+        "SRC-20261031-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION",
+        "SRC-20261031-COINBASE-Q3-2026-10Q-CIRCLE-RENEWAL"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-COINBASE-RLUSD-NO-NET-CAPITAL",
+      "category": "actual_capital",
+      "statement": "Coinbase's RLUSD listing establishes distribution access but no RLUSD net inflow, XRP purchase, XRP bridge inventory or actual capital deployment.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031T090517Z-REUTERS-COINBASE-RLUSD-CROSSCHECK"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-PR1400-NO-MODEL",
+      "category": "prediction_engine",
+      "statement": "PR #1400 is an append-only forecast/outcome ledger with concurrency protection, not a trained prediction model; walk-forward testing, calibration, drift detection, distributed locking and shadow evaluation remain unimplemented.",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+        "SRC-20261031T090517Z-GH-PR1400-EXACT-HEAD-CI",
+        "SRC-20261031T090517Z-GH-PR1400-FAIL-CLOSED-GATE"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-PR1400-BRANCH-BASE-DRIFT",
+      "category": "repository_integrity",
+      "statement": "PR #1400 is four commits ahead and two behind current main, although the two main-side commits are timestamp-only changes to sentiment_shift.json and do not overlap its three changed paths. Fresh-main validation remains required before approval or merge.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-GH-PR1400-FIXED-HORIZON-LOCKED-HEAD",
+        "SRC-20261031T090517Z-GH-MAIN-CROSS-ANALYSIS-COMMIT"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-PR1401-ARTIFACT-PAGES",
+      "category": "repository_workflow_safety",
+      "statement": "PR #1401's artifact-only replacement does not preserve the current tracked-file/Pages refresh behavior; publication needs a separately reviewed read-only design.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-GH-PR1401-READONLY-CROSS-ANALYSIS"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-PR1402-MANUAL-DISPATCH",
+      "category": "repository_workflow_safety",
+      "statement": "PR #1402's push no-op path is tested, but manual workflow_dispatch approval, authorization and external side effects remain untested; zero-job root cause remains unknown.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-GH-PR1402-APPROVAL-PUSH-NOOP"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-PR1398-MAIN-UNSAFE",
+      "category": "repository_security",
+      "statement": "The unsafe Databricks token-input workflow remains on main because PR #1398 is unmerged. Its proposed safe disablement passed branch CI/gate but is three commits behind current main.",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-GH-PR1398-DATABRICKS-TOKEN-SAFETY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-PR-INVENTORY-BASE-DRIFT",
+      "category": "repository_convergence",
+      "statement": "At the 09:05Z inventory, 174 of 174 main-based open PRs had a base SHA older than current main; this creates a review and convergence burden but does not mean every PR conflicts.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T090517Z-REPO-FULL-CI-SECURITY",
+      "category": "repository_security_and_ci",
+      "statement": "Full repository CI was not run, dependency lockfiles were not found in the partial manifest inventory, and GitHub security-alert data were not accessible through the available read action. Vulnerability status remains unknown.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY"
+      ]
+    }
+  ]
+}

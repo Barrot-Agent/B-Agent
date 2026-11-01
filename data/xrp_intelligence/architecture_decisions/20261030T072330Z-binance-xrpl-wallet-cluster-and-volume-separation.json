@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "XRP-BINANCE-FIVE-WALLET-CLUSTER-AND-TRANSFER-VOLUME-SEPARATION-20261030T072330Z",
+  "recorded_at_utc": "2026-10-30T07:23:30Z",
+  "status": "EXECUTED_PUBLIC_CHAIN_RECONCILIATION; OFFICIAL_POR_CROSSWALK_PENDING",
+  "decision": "Treat the five Binance-labelled XRPL source accounts and their five validated transfers as a fully reconciled transaction cluster totaling 233,461,943.1 XRP. Preserve the receiver balance as a point-in-time custody observation. Keep Bithomp account labels separate from official proof-of-reserves membership. Separate XRPL transfer volume from DEX trading volume and net capital.",
+  "rationale": "Bithomp exposes exact validated transaction hashes, ledger indices, source accounts, receiver, amounts and success status. The five amounts sum exactly to the 233.46M XRP reported by TRM and approximately 233.5M by Bitquery. Four source accounts show activation by the central Binance-labelled account. The receiver page shows the full balance and no outgoing XRP payment in its captured transaction list. Bithomp separately shows 24h transfer volume roughly 69x XRPL DEX volume.",
+  "required_fields": [
+    "source_account",
+    "destination_account",
+    "amount_xrp",
+    "transaction_hash",
+    "validated_ledger_index",
+    "transaction_index",
+    "success_status",
+    "account_label_provider",
+    "account_activation_parent",
+    "receiver_balance_at_capture",
+    "receiver_transaction_list_cutoff",
+    "official_por_membership",
+    "wrapped_reserve_crosswalk",
+    "transfer_volume",
+    "dex_trading_volume",
+    "venue_scope",
+    "timestamp_precision"
+  ],
+  "feature_policy": "The five transfers may be used as an event/incident label after raw-ledger validation and point-in-time cutoff handling. Do not use the event as a price-direction feature until causal and walk-forward tests. Do not treat Bithomp labels as proof-of-reserves membership. Do not treat transfer volume as executed trade volume or net capital.",
+  "unresolved": [
+    "Download Binance's October 1 official PoR address list and test membership for all five XRPL source addresses.",
+    "Cross-reference all five source addresses with Binance XRP-BF2 backing address and wrapped-token supply.",
+    "Continue monitoring receiver address after the 07:23 UTC capture for outgoing transfers, DEX swaps or exchange deposits.",
+    "Determine whether Binance has replenished XRP-specific customer backing and obtain the next official PoR snapshot.",
+    "Reconcile Bithomp DEX volume with centralized exchange spot/perpetual volume, OTC and settlement activity."
+  ]
+}

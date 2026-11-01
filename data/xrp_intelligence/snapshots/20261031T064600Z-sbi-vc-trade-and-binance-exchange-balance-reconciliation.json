@@ -1,0 +1,99 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "index_format_version": "3.0",
+  "snapshot_id": "XRP-20261031T064600Z-SBI-VC-TRADE-AND-BINANCE-EXCHANGE-BALANCE-RECONCILIATION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T064600Z-sbi-vc-trade-and-binance-exchange-balance-reconciliation.json",
+  "captured_at_utc": "2026-10-31T06:46:00Z",
+  "data_cutoff_utc": "2026-10-31T06:46:00Z",
+  "source_reference_count": 2,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0646Z",
+    "SRC-20261031-BINANCE-UPDATE2-0505Z"
+  ],
+  "exchange_wallet_snapshot": {
+    "provider": "XRP Insights",
+    "latest_balance_read_utc": "2026-10-30T08:00:00Z",
+    "method": "Direct rippled account_info reads for tracked wallets; XRPSCAN public labels for exchange attribution; daily same-wallet comparisons.",
+    "total_xrp": 22370000000,
+    "tracked_wallets": 701,
+    "tracked_exchanges": 24,
+    "circulating_supply_reference_xrp": 68590000000,
+    "total_same_wallet_change_7d_xrp": -234900000,
+    "total_same_wallet_change_30d_xrp": -146100000,
+    "binance": {
+      "xrp": 2580000000,
+      "wallets": 153,
+      "same_wallet_change_7d_xrp": -173200000,
+      "same_wallet_change_30d_xrp": -164500000,
+      "included_non_customer_components": {
+        "binance_peg_xrp_bnb_chain": 325800000,
+        "binance_us_xrp": 14600000,
+        "charity_and_insurance_funds_included": true
+      }
+    },
+    "coinbase": {
+      "xrp": 5840000000,
+      "wallets": 358,
+      "same_wallet_change_7d_xrp": 1100000,
+      "same_wallet_change_30d_xrp": 12500000,
+      "cbxrp_backing_reserve_xrp": 151400000
+    },
+    "sbi_vc_trade": {
+      "xrp": 59500000,
+      "wallets": 2,
+      "cold_labeled_share_pct": ">99",
+      "same_wallet_change_7d_xrp": -893000,
+      "same_wallet_change_30d_xrp": -10500000,
+      "classification": "PUBLIC_XRPSCAN_WALLET_ATTRIBUTION_TO_SBI_VC_TRADE",
+      "proprietary_sbi_group_holdings": "NOT_ESTABLISHED",
+      "official_customer_liability_or_por": "NOT_DISCLOSED_IN_THIS_SOURCE"
+    },
+    "wrapped_and_non_customer_reserves": {
+      "total_xrp": 488400000,
+      "binance_peg_xrp": 325800000,
+      "coinbase_cbxrp_xrp": 151400000,
+      "insurance_and_charity_xrp": 11200000
+    },
+    "regional_distribution": {
+      "south_korea_xrp": 8600000000,
+      "south_korea_share_pct": 38.4,
+      "united_states_xrp": 8590000000,
+      "united_states_share_pct": 38.4,
+      "japan_xrp": 1380000000,
+      "japan_share_pct": 6.2
+    },
+    "interpretation": "Publicly attributed exchange-controlled XRPL wallets including cold storage, omnibus customer custody and wrapped backing reserves; not tradable float, beneficial-owner holdings or official PoR."
+  },
+  "binance_incident_reconciliation": {
+    "five_wallet_incident_transfer_xrp": 233461943.1,
+    "binance_same_wallet_7d_change_xrp": -173200000,
+    "all_exchange_same_wallet_7d_change_xrp": -234900000,
+    "cryptoquant_prior_reserve_decline_xrp": 220000000,
+    "cryptoquant_binance_reserve_level_prior": 2470000000,
+    "xrp_insights_binance_wallet_total_xrp": 2580000000,
+    "classification": "NOT_RECONCILED",
+    "confirmed_conclusion": "The Binance-specific same-wallet decline is -173.2M over seven days in XRP Insights' tracked wallet set. The all-exchange -234.9M decline is not a Binance-only measure. CryptoQuant's approximately 220M decline is a different provider series and wallet universe.",
+    "hypothesis": "The October 29 theft may explain a substantial portion of Binance's -173.2M same-wallet change, but no five-wallet crosswalk, per-wallet history or same-time PoR/customer-liability reconciliation is available.",
+    "disconfirming_or_missing_evidence": [
+      "No mapping of the five incident source wallets into XRP Insights' 153-wallet Binance set.",
+      "No per-wallet daily history from XRP Insights.",
+      "No same-time Binance customer liabilities and reserve-address balance comparison.",
+      "No reconciliation of deposits, withdrawals, wallet reclassification and newly labeled wallets."
+    ]
+  },
+  "sbi_relationship": {
+    "confirmed": "Two XRPL wallets are publicly attributed by XRPSCAN labels to SBI VC Trade and total 59.5M XRP in the Oct30 08:00 UTC snapshot.",
+    "inference": "SBI VC Trade operates material XRP exchange/custody infrastructure in Japan.",
+    "unknown": "Beneficial ownership, customer-vs-proprietary allocation, exact custody arrangements and SBI Group treasury exposure.",
+    "disconfirming_evidence": "The source is an exchange wallet-label aggregation, not SBI's official Proof of Reserves or a corporate treasury disclosure."
+  },
+  "prediction_status": {
+    "forecast": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "reserve_flow_feature": "NOT_ADMITTED_UNTIL_WALLET_UNIVERSE_AND_CAUSE_RECONCILED",
+    "sbi_custody_feature": "STRUCTURAL_RELATIONSHIP_ONLY; NO_QUANTITATIVE_PRICE_FEATURE"
+  },
+  "supersedes_prior_interpretation": "Clarifies that the 233.46M theft must not be matched to the all-exchange -234.9M same-wallet change; the Binance-specific series is -173.2M. The prior approximately 220M CryptoQuant observation remains provider-specific and unreconciled."
+}

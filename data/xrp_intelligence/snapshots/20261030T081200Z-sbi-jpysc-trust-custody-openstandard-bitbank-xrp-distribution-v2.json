@@ -1,0 +1,255 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T081200Z-SBI-JPYSC-TRUST-CUSTODY-OPENSTANDARD-BITBANK-XRP-DISTRIBUTION",
+  "captured_at_utc": "2026-10-30T08:12:00Z",
+  "data_cutoff_utc": "2026-10-30T08:05:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution and verification foundation.",
+  "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261030T080512Z-binance-por-market-deleveraging-xrpl-compliance-pr1366.json",
+  "confirmed_facts": [
+    {
+      "claim": "SBI Holdings completed the full acquisition of Bitbank on October 1, 2026; Bitbank became a wholly owned SBI Holdings subsidiary through SBICAH GK.",
+      "source_ids": [
+        "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001"
+      ]
+    },
+    {
+      "claim": "CoinGecko's Bitbank market page displayed an XRP/JPY pair with approximately $7.54M 24-hour volume, 0.01% spread and asymmetric ±2% depth of about $354k bid-side and $915k ask-side at the capture.",
+      "source_ids": [
+        "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z"
+      ],
+      "qualification": "Third-party single snapshot; no exact exchange timestamp."
+    },
+    {
+      "claim": "SBI VC Trade announced a Visa crypto card whose points can be automatically exchanged into BTC, ETH or XRP and credited through an SBI VC Trade account.",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501"
+      ],
+      "qualification": "Aggregate XRP credited and current promotional campaign eligibility are unknown."
+    },
+    {
+      "claim": "SBI START bond sold out; official SBI Securities page shows JPY 10B issue, 2.150% annual coupon and A- rating. Eligible JPY 100,000+ buyers were offered JPY 200-equivalent XRP per JPY 100,000, subject to account/eligibility conditions.",
+      "source_ids": [
+        "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030"
+      ],
+      "qualification": "Actual XRP distribution total not published; later coupon-date rewards undecided and not promised."
+    },
+    {
+      "claim": "SBI Shinsei Trust Bank issues JPYSC and manages its trust backing; SBI VC Trade distributes it; Startale co-developed it. Initial service was limited to SBI VC Trade account balances pending legal/tax readiness for public-chain circulation.",
+      "source_ids": [
+        "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624"
+      ]
+    },
+    {
+      "claim": "JPYSC outstanding issuance was approximately JPY 20.1B on September 7, with JPY 1.0B of trust backing allocated to short-term JGBs and JPY 6.9B of lending applications.",
+      "source_ids": [
+        "SRC-SBI-JPYSC-JGB-RESERVES-20260907"
+      ],
+      "qualification": "Lending applications are not additional issued supply."
+    },
+    {
+      "claim": "SBI and Startale joined Open Standard on October 16 and are considering a JPYSC/OUSD interoperability proof of concept.",
+      "source_ids": [
+        "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016"
+      ],
+      "qualification": "No live bridge, chain route or production settlement is established."
+    },
+    {
+      "claim": "SBI, Startale and BlackRock signed an October 27 basic agreement to explore tokenized MMF and JPYSC use.",
+      "source_ids": [
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027"
+      ],
+      "qualification": "MOU/exploration only; no named fund or production deployment."
+    },
+    {
+      "claim": "SBI announced a planned merger of SBI Clearing Trust into SBI Shinsei Trust Bank effective December 31, subject to regulatory approvals; SBI Clearing Trust began crypto-asset trust services in July 2023.",
+      "source_ids": [
+        "SRC-SBI-TRUST-MERGER-20261029"
+      ],
+      "qualification": "Merger not yet effective and not an XRP-specific custody announcement."
+    },
+    {
+      "claim": "SBI VC Trade distributes RLUSD since June 24, 2026 and had offered USDC since March 2025.",
+      "source_ids": [
+        "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+        "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624"
+      ],
+      "qualification": "Availability does not establish volumes or stablecoin market-share changes."
+    },
+    {
+      "claim": "SBI Ripple Asia announced technical support for startups implementing XRPL-based financial services.",
+      "source_ids": [
+        "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220"
+      ],
+      "qualification": "Support agreement does not prove each startup launched or generated XRP demand."
+    },
+    {
+      "claim": "SBICAH GK and SBI Crypto Asset Holdings Co., Ltd. are part of the SBI crypto-asset holding/acquisition structure and are distinct from SBIC East Japan.",
+      "source_ids": [
+        "SRC-SBICAH-SBI-CRYPTO-ASSET-HOLDINGS-20230214"
+      ],
+      "qualification": "The intended meaning of the user's bare acronym SBIC remains unresolved."
+    },
+    {
+      "claim": "OUSD launched through Stripe products on September 30 and is available on Base, Ethereum, Solana and Tempo; Open Standard's founding partners include Coinbase, Mastercard, Shopify, Stripe and Visa.",
+      "source_ids": [
+        "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930"
+      ],
+      "qualification": "No XRPL deployment established."
+    },
+    {
+      "claim": "The Block reported Ripple among Open Standard's broader network participants.",
+      "source_ids": [
+        "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630"
+      ],
+      "qualification": "Network participation does not make Ripple the OUSD issuer or establish a direct bilateral agreement with Coinbase."
+    },
+    {
+      "claim": "CoinLaw's Binance PoR summary displays BTC, ETH, USDT and USDC ratios but no XRP ratio.",
+      "source_ids": [
+        "SRC-COINLAW-BINANCE-POR-ASSET-SUMMARY-20261012"
+      ],
+      "qualification": "Does not prove XRP is absent from Binance's complete official PoR report."
+    }
+  ],
+  "sourced_claims": [
+    {
+      "claim": "Bitquery says all 17 drained hot wallets carried Binance PoR labels in its address data.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z"
+      ],
+      "qualification": "Provider address labels, not official Binance-signed crosswalk."
+    },
+    {
+      "claim": "CoinDesk's October 1 PoR review identifies Ethereum Binance 14 but does not identify the five XRPL source addresses.",
+      "source_ids": [
+        "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z"
+      ]
+    },
+    {
+      "claim": "CoinDesk reports institutional withdrawals from centralized exchanges after the Binance incident.",
+      "source_ids": [
+        "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z"
+      ],
+      "qualification": "Anonymous-source claim with no amounts, destinations or XRP-specific attribution."
+    }
+  ],
+  "inferences": [
+    {
+      "claim": "SBI is building a multi-rail digital-asset stack: XRP distribution and XRPL support coexist with JPYSC, USDC, RLUSD, OUSD interoperability, tokenized MMF exploration and consolidated trust/custody plans.",
+      "basis": "Multiple official SBI releases. This is a group-level strategic inference; no single integrated production architecture is disclosed."
+    },
+    {
+      "claim": "Bitbank's acquisition gives SBI control of an additional Japanese XRP/JPY spot venue and customer base.",
+      "basis": "Acquisition completion and XRP/JPY market listing. Incremental volume, customer migration and post-acquisition liquidity effects remain unmeasured."
+    },
+    {
+      "claim": "SBI's card and bond incentives create retail XRP distribution paths that do not require users to initiate a standalone XRP purchase.",
+      "basis": "Official product terms. Total XRP credited, net exchange acquisition and ongoing activity remain unknown."
+    },
+    {
+      "claim": "JPYSC/OUSD and the BlackRock tokenized-MMF MOU may establish alternative JPY/USD and tokenized-collateral routes alongside RLUSD/USDC.",
+      "basis": "Official PoC/MOU announcements. No live interoperability or XRP settlement is established."
+    },
+    {
+      "claim": "Open Standard's shared partner-economics model could challenge issuer-centric stablecoin economics used by Circle, while Coinbase and Ripple participate in the broader network.",
+      "basis": "Official Stripe OUSD launch and secondary reporting of Ripple's participation. No evidence yet of USDC displacement or Circle revenue loss."
+    }
+  ],
+  "unknowns": [
+    "Actual XRP spot volume, customer balances and net acquisitions at Bitbank after SBI's October 1 acquisition.",
+    "Aggregate XRP credited through the SBI VISA Crypto Card and the SBI START bond reward.",
+    "Whether the SBI Clearing Trust merger receives all required approvals and whether the surviving trust bank will custody XRP specifically.",
+    "Whether JPYSC/OUSD interoperability will use a public chain, which chain/bridge is selected, and whether the PoC will enter production.",
+    "The specific BlackRock tokenized MMF, collateral eligibility, settlement chain, launch date and transaction volumes.",
+    "Actual RLUSD and USDC balances and flows through SBI VC Trade.",
+    "Whether Ripple's Open Standard participation involves any XRPL integration; no OUSD XRPL deployment is established.",
+    "Whether the five Binance XRPL source wallets appear in Binance's official October 1 PoR address set or the XRP-BF2 backing address.",
+    "Whether CoinLaw's omission of XRP reflects tracker scope or a different PoR asset set; official full address/asset payload still required."
+  ],
+  "binance_incident": {
+    "exact_five_wallet_transfer_total_xrp": 233461943.1,
+    "receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "last_captured_bithomp_balance_xrp": 233461943.10004,
+    "last_captured_bithomp_at_utc": "2026-10-30T07:23:30Z",
+    "bitquery_balance_approx_xrp_at_0643_utc": 233500000,
+    "no_outgoing_payment_in_captured_history": true,
+    "official_binance_xrp_por_membership": "UNKNOWN",
+    "xrp_bf2_crosswalk": "UNKNOWN",
+    "coinlaw_tracker_xrp_ratio": "NOT_DISPLAYED"
+  },
+  "institutional_and_stablecoin_observations": {
+    "jpy_sc_issued_jpy_as_of_2026_09_07": 20100000000,
+    "jpy_sc_lending_applications_jpy": 6900000000,
+    "jpy_sc_short_term_jgb_allocation_jpy": 1000000000,
+    "bitbank_xrp_jpy_volume_24h_usd_approx": 7539674,
+    "bitbank_xrp_jpy_spread_percent": 0.01,
+    "bitbank_xrp_jpy_plus_2pct_depth_usd_approx": 354397,
+    "bitbank_xrp_jpy_minus_2pct_depth_usd_approx": 915209,
+    "sbi_start_bond_total_issue_jpy": 10000000000,
+    "sbi_start_bond_coupon_percent": 2.15,
+    "sbi_start_bond_reward_jpy_per_100k_purchase": 200,
+    "sbi_start_bond_sold_out": true,
+    "sbi_start_bond_actual_xrp_distribution": "UNKNOWN"
+  },
+  "xrpl_and_stablecoin_relationships": {
+    "sbi_vc_trade_rlusd_available_since": "2026-06-24",
+    "sbi_vc_trade_usdc_available_since": "2025-03",
+    "sbi_ripple_asia_xrpl_startup_support": "ANNOUNCED",
+    "jpy_sc_ousd_interoperability": "POC_UNDER_CONSIDERATION",
+    "ousd_chains": [
+      "Ethereum",
+      "Base",
+      "Solana",
+      "Tempo"
+    ],
+    "ousd_xrpl_deployment": "NOT_ESTABLISHED",
+    "circle_openstandard_founder_or_partner": "NOT_LISTED_AMONG_FIVE_FOUNDING_PARTNERS"
+  },
+  "source_ids": [
+    "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-14693052-20261029T200700Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-13140680-20261029T200820Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-11955157-20261029T200850Z",
+    "SRC-BITHOMP-BINANCE-XRPL-TX-8655567-20261029T200920Z",
+    "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z",
+    "SRC-COINDESK-XRP-LIQUIDATIONS-20261030T0622Z",
+    "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0700Z",
+    "SRC-TRACKWHALE-XRP-FLOWS-20261030T0745Z",
+    "SRC-COINDESK-XRPL-RESTRICTED-TOKEN-FIXES-20261030T0545Z",
+    "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z",
+    "SRC-COINBASE-CBXRP-POR-REFRESH-20261030T0805Z",
+    "SRC-BINANCE-OFFICIAL-POR-METHODOLOGY-20261030T0805Z",
+    "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z",
+    "SRC-SBI-TRUST-MERGER-20261029",
+    "SRC-SBI-JPYSC-JGB-RESERVES-20260907",
+    "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+    "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+    "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624",
+    "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001",
+    "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+    "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030",
+    "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+    "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+    "SRC-SBICAH-SBI-CRYPTO-ASSET-HOLDINGS-20230214",
+    "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z",
+    "SRC-COINLAW-BINANCE-POR-ASSET-SUMMARY-20261012",
+    "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930",
+    "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630",
+    "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "repository_state": {
+    "latest_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+    "pr1366": "OPEN_DRAFT_UNMERGED",
+    "pr1366_core_ci": "347 tests + 8 subtests passed",
+    "pr1366_gate": "PASS_MERGE_DISABLED",
+    "ledger_validator_latest_head": "877342ad7ff3ee14ca7f13145e411242a4053125",
+    "ledger_validator_run_id": 41024602495,
+    "ledger_validator_result": "FAIL; 17 passed, 1 failed; archive shard record_type envelope mismatch",
+    "corrected_shard_copies": "CREATED; ORIGINAL MALFORMED SHARDS PRESERVED UNREFERENCED",
+    "exact_head_revalidation": "PENDING"
+  },
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution-v2.json"
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 157,
+  "chunk_count": 158,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "RUN-XRP-ESCROW-EXCHANGE-ETF-BINANCE-POR-AND-MAIN-SAFETY-20261031T210244Z",
+      "recorded_at_utc": "2026-10-31T21:02:44Z",
+      "update_type": "XRP_ESCROW_EXCHANGE_WALLET_ETF_BINANCE_POR_AND_FRESH_MAIN_CROSS_ANALYSIS_SAFETY",
+      "data_cutoff_utc": "2026-10-31T21:02:44Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T210244Z-escrow-exchange-etf-binance-recovery-and-main-safety-corrected.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T210244Z-exchange-wallet-etf-binance-coinbase-escrow-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T210244Z-exchange-wallet-flow-etf-binance-por-feature-admission.json",
+      "repository_audit_path": "data/repository_audits/20261031T210244Z-main-cross-analysis-write-and-pr1429-audit.json",
+      "source_bundle_path": "data/xrp_intelligence/sources/20261031T210244Z-escrow-exchange-etf-binance-coinbase-source-bundle.json",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261031T210244Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ETF-FLOWS",
+        "SRC-20261031T210244Z-TRADRADAR-XRP",
+        "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T210244Z-RIPPLE-COINBASE-RLUSD",
+        "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+      ],
+      "findings": [
+        "At cutoff, 1B XRP remains scheduled for FinishAfter eligibility at 2026-11-01 00:00 UTC; no EscrowFinish verified in this run.",
+        "XRP Insights' Oct 31 08:00 snapshot attributes 22.48B XRP to 701 wallets across 24 exchanges, including cold and operational balances; not tradable float.",
+        "Same-wallet all-exchange series is -133M over 7d, but Binance is +17.6M and Coinbase +17.7M over the same window; earlier Binance theft/reserve-decline causal hypothesis is weakened and provider universes remain unreconciled.",
+        "US XRP ETFs plus BITW held approximately 1.1966B XRP and had +3.39M XRP holdings-derived weekly flow; Oct 30 daily flow was -49,932 XRP; GXRP excluded from flow due to a data gap.",
+        "TradRadar at 20:10 UTC: $1.87B OI (+0.48%), +0.0048% weighted funding, 75.2% long accounts, and at least $353.25K liquidations; Bybit and OKX funding remained negative.",
+        "Binance's Recovery Update #3 claims 90% aggregate incident coverage and 100% backing for XRP among ten named assets; full zk proof estimated Nov 3; no XRP-specific purchase quantity disclosed.",
+        "Ripple's Oct 28 Coinbase RLUSD partnership supports XRPL, Base and Ethereum; Coinbase Global Exchange collateral support was planned for later, not live at announcement.",
+        "Main Cross Analysis still has contents:write and pushes generated outputs. Run 41240863905 created a timestamp-only zero-sample sentiment_shift update; fresh-main PR #1429 passed 345 tests + 8 subtests and its fail-closed gate."
+      ],
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 7,
+        "missing_source_references": 0,
+        "expected_archive_shards": 436,
+        "expected_source_records": 2141,
+        "expected_run_updates": 361,
+        "expected_limitations": 962,
+        "expected_archive_records_roundtrip": 3464,
+        "main_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+        "pr1429_head_sha": "d83f82438621308d7173770bb2539a179f25db7",
+        "ci_run_id": 41241608596,
+        "ci_tests_passed": 345,
+        "ci_subtests_passed": 8,
+        "gate_run_id": 41241608616,
+        "gate_status": "PASS_MERGE_DISABLED"
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_modified_by_this_run": false,
+        "main_modified_by_scheduled_workflow": true,
+        "merge": false,
+        "force_push": false,
+        "manual_workflow_dispatch": false,
+        "secret_access": false,
+        "paper_state_mutation": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

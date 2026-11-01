@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-20261031T230816Z-ESCROW-BINANCE-DAILY-DELTA-AND-V3",
+  "captured_at_utc": "2026-10-31T23:08:16Z",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY",
+    "SRC-20261031T210244Z-TRADRADAR-XRP",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "DIGITAL_ASSET_COMPANY"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_LEDGER"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_ASSET"
+    },
+    {
+      "id": "RIPPLE_ESCROW",
+      "label": "Ripple-associated escrow objects",
+      "kind": "ON_LEDGER_ESCROW"
+    },
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_AND_CUSTODIAN"
+    },
+    {
+      "id": "UPBIT",
+      "label": "Upbit",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "EXCHANGE"
+    },
+    {
+      "id": "TRADRADAR",
+      "label": "TradRadar",
+      "kind": "MARKET_DATA_PROVIDER"
+    },
+    {
+      "id": "BAGENT_MAIN",
+      "label": "B-Agent main branch",
+      "kind": "SOFTWARE_REPOSITORY"
+    },
+    {
+      "id": "PR1431",
+      "label": "PR #1431 Cross Analysis read-only proposal",
+      "kind": "UNMERGED_PULL_REQUEST"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-ESCROW-1",
+      "source": "RIPPLE",
+      "target": "RIPPLE_ESCROW",
+      "relationship": "TWO_OBJECTS_TOTALING_1B_XRP_ELIGIBLE_2026-11-01T00:00Z",
+      "evidence_class": "SECONDARY_ONCHAIN_DATA_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+      ]
+    },
+    {
+      "id": "E-ESCROW-2",
+      "source": "RIPPLE_ESCROW",
+      "target": "XRPL",
+      "relationship": "FINISH_AFTER_LOCK_ENFORCED_BY_LEDGER; EXECUTION_NOT_YET_VERIFIED",
+      "evidence_class": "SOURCE_OBSERVATION_WITH_PROTOCOL_LIMITATION",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+      ]
+    },
+    {
+      "id": "E-BINANCE-1",
+      "source": "BINANCE",
+      "target": "XRP",
+      "relationship": "2.78B_XRP_IN_153_ATTRIBUTED_WALLETS; +17.6M_7D; +30.3M_30D",
+      "evidence_class": "SECONDARY_ONCHAIN_WALLET_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+      ]
+    },
+    {
+      "id": "E-BINANCE-2",
+      "source": "BINANCE",
+      "target": "XRP",
+      "relationship": "OVERVIEW_DELTA_+196.2M; LIKELY_DAILY_BUT_INTERVAL_UNLABELED",
+      "evidence_class": "INFERENCE_FROM_ROUNDED_CROSS_VENUE_RECONCILIATION",
+      "source_ids": [
+        "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+      ]
+    },
+    {
+      "id": "E-COINBASE-1",
+      "source": "COINBASE",
+      "target": "XRP",
+      "relationship": "5.85B_XRP_IN_358_ATTRIBUTED_WALLETS; +17.7M_7D; +18.4M_30D",
+      "evidence_class": "SECONDARY_ONCHAIN_WALLET_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+      ]
+    },
+    {
+      "id": "E-UPBIT-1",
+      "source": "UPBIT",
+      "target": "XRP",
+      "relationship": "6.43B_XRP_IN_13_ATTRIBUTED_WALLETS; -747K_7D; +34.6M_30D",
+      "evidence_class": "SECONDARY_ONCHAIN_WALLET_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+      ]
+    },
+    {
+      "id": "E-SBI-1",
+      "source": "SBI_VC_TRADE",
+      "target": "XRP",
+      "relationship": "59.5M_XRP_IN_2_ATTRIBUTED_WALLETS; -899K_7D; -10.5M_30D",
+      "evidence_class": "SECONDARY_ONCHAIN_WALLET_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+      ]
+    },
+    {
+      "id": "E-MARKET-1",
+      "source": "TRADRADAR",
+      "target": "XRP",
+      "relationship": "20:10Z_PRICE_OI_FUNDING_AND_LIQUIDATION_OBSERVATION",
+      "evidence_class": "SECONDARY_MARKET_DATA",
+      "source_ids": [
+        "SRC-20261031T210244Z-TRADRADAR-XRP"
+      ]
+    },
+    {
+      "id": "E-REPO-1",
+      "source": "BAGENT_MAIN",
+      "target": "PR1431",
+      "relationship": "MAIN_WRITER_REMAINS_ACTIVE; READ_ONLY_SUCCESSOR_PROPOSED_NOT_MERGED",
+      "evidence_class": "PRIMARY_REPOSITORY_OBSERVATION",
+      "source_ids": [
+        "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H-BINANCE-DAILY-DELTA",
+      "status": "INFERENCE_PENDING_MACHINE_READABLE_CONFIRMATION",
+      "statement": "The overview's +196.2M Binance delta is likely daily.",
+      "support": [
+        "Rounded per-exchange delta sum approximately reconciles to +105.9M all-exchange daily change."
+      ],
+      "disconfirming": [
+        "No interval label; rounded values."
+      ],
+      "next_test": "Retrieve machine-readable dataset."
+    },
+    {
+      "id": "H-BINANCE-INCIDENT-REPLENISHMENT",
+      "status": "SPECULATIVE_NOT_ESTABLISHED",
+      "statement": "The daily increase may reflect incident replenishment.",
+      "support": [
+        "Timing after incident."
+      ],
+      "disconfirming": [
+        "No source-wallet crosswalk; 7d/30d broad Binance changes are only +17.6M/+30.3M."
+      ],
+      "next_test": "Transaction-level crosswalk and reserve proof."
+    },
+    {
+      "id": "H-BINANCE-NORMAL-FLOWS",
+      "status": "PLAUSIBLE_COMPETING_EXPLANATION",
+      "statement": "Ordinary customer/custody flows explain the increase.",
+      "support": [
+        "Omnibus wallets aggregate multiple ownership and operational purposes."
+      ],
+      "disconfirming": [
+        "No transaction-level attribution."
+      ],
+      "next_test": "Validated account transaction analysis."
+    },
+    {
+      "id": "H-ESCROW-RELOCK-70",
+      "status": "HISTORICAL_PRIOR_NOT_FORECAST",
+      "statement": "70% re-escrow may recur.",
+      "support": [
+        "Trailing 12 months."
+      ],
+      "disconfirming": [
+        "Earlier 2024 re-escrow varied materially."
+      ],
+      "next_test": "Observe actual EscrowCreate."
+    }
+  ],
+  "limitations": [
+    "No fresh raw XRPL account_objects/account_tx response was obtained.",
+    "XRP Insights escrow and exchange observations share one provider.",
+    "Broad exchange wallet totals include cold custody and non-customer reserves.",
+    "No exact per-wallet history or five-wallet incident crosswalk.",
+    "No directional forecast or feature admission."
+  ]
+}

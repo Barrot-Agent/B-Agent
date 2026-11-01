@@ -1,0 +1,22 @@
+{
+  "record_type": "xrp_intelligence_architecture_decision",
+  "schema_version": "1.0",
+  "decision_id": "ADR-20261030T214500Z-RARVLN-AMM-ONLY-UNTIL-NATIVE-LENDING-ACTIVATION",
+  "captured_at_utc": "2026-10-30T21:45:00Z",
+  "status": "ADOPTED_FOR_RESEARCH_BRANCH",
+  "context": "A prior account-page interpretation treated raRVLN as an AMM pool associated with a vault and loan broker. Current ledger-backed amendment trackers show XLS-66 LendingProtocol at 19/35 and XLS-65 SingleAssetVault at 21/35; both need 29/35 for 14 days. XRPL Dashboard says both must activate before native lending goes live. XRPLWin's account page did not return vault/loan-broker object IDs.",
+  "decision": [
+    "Keep raRVLN classified as AMM_POOL_CONFIRMED based on XRPLWin's account classification.",
+    "Downgrade the earlier vault/loan-broker association to UNVERIFIED; the account page's unloaded tables are not ledger-object evidence.",
+    "Do not describe the 20M XRP transfer as collateral, loan settlement or vault activity.",
+    "Treat native LendingProtocol and SingleAssetVault as NOT_ACTIVATED until live amendment trackers show threshold sustained for 14 days and ledger objects can be read.",
+    "Preserve the prior claim and graph edge as historical evidence, but add this correction rather than deleting or overwriting it."
+  ],
+  "invariants": [
+    "No main-branch modification.",
+    "No merge, force-push, workflow dispatch, paper-state mutation or real-money trade.",
+    "No collateralization inference without an active object and verified ledger posting.",
+    "No market-feature admission from this account route.",
+    "Forecast remains NOT_ISSUED."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+  "source_id": "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+  "captured_at_utc": "2026-10-31T21:45:45Z",
+  "created_at_utc": "2026-10-31T21:45:45Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+      "publisher": "CoinDesk Live at Ripple Swell 2026; transcript capture",
+      "url": "https://ceointerviews.ai/interview/3153871/",
+      "primary_video_url": "https://www.youtube.com/watch?v=ZN9bz0FQKoY",
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-10-28",
+      "evidence_class": "CEO_INTERVIEW_TRANSCRIPT_CAPTURE",
+      "claims": [
+        "Brad Garlinghouse said Ripple Treasury handled $13T of 2025 payments and about 99.9 percent did not touch crypto rails or stablecoins.",
+        "He said Ripple Prime handled about $3T to $4T, with more than 99 percent off-chain.",
+        "He said one percent of $16T equals $160B and that Ripple would measure its on-chain conversion share in 2027.",
+        "He said about half of RLUSD was on XRPL and about half on Ethereum.",
+        "He said Ripple wants to drive XRP liquidity, utility and trust; he characterized Coinbase as exchange-led, Circle as stablecoin-led and Ripple as bridging traditional finance and blockchain."
+      ],
+      "limitations": [
+        "This is a secondary transcript capture of a CoinDesk interview video.",
+        "Figures are executive estimates, not audited asset-level data.",
+        "The $160B is scenario arithmetic, not an XRP forecast or committed amount.",
+        "The RLUSD chain-split statement conflicts with provider snapshots and remains unverified."
+      ]
+    }
+  ],
+  "findings": [
+    "Brad Garlinghouse said Ripple Treasury handled $13T of 2025 payments and about 99.9 percent did not touch crypto rails or stablecoins.",
+    "He said Ripple Prime handled about $3T to $4T, with more than 99 percent off-chain.",
+    "He said one percent of $16T equals $160B and that Ripple would measure its on-chain conversion share in 2027.",
+    "He said about half of RLUSD was on XRPL and about half on Ethereum.",
+    "He said Ripple wants to drive XRP liquidity, utility and trust; he characterized Coinbase as exchange-led, Circle as stablecoin-led and Ripple as bridging traditional finance and blockchain."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "This is a secondary transcript capture of a CoinDesk interview video.",
+    "Figures are executive estimates, not audited asset-level data.",
+    "The $160B is scenario arithmetic, not an XRP forecast or committed amount.",
+    "The RLUSD chain-split statement conflicts with provider snapshots and remains unverified."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

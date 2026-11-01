@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T082000Z-BINANCE-CHAIN-COUNT-DERIVATIVES-ETF-FLOW-RECONCILIATION",
+  "captured_at_utc": "2026-10-30T08:20:00Z",
+  "prior_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T081200Z-sbi-jpysc-trust-custody-openstandard-bitbank-xrp-distribution.json",
+  "nodes": [
+    {
+      "id": "BITQUERY",
+      "label": "Bitquery",
+      "kind": "BLOCKCHAIN_ANALYTICS_PROVIDER"
+    },
+    {
+      "id": "TRM_LABS",
+      "label": "TRM Labs",
+      "kind": "BLOCKCHAIN_INTELLIGENCE_PROVIDER"
+    },
+    {
+      "id": "REUTERS",
+      "label": "Reuters",
+      "kind": "NEWS_PROVIDER"
+    },
+    {
+      "id": "TRADRADAR",
+      "label": "TradRadar",
+      "kind": "DERIVATIVES_AGGREGATOR"
+    },
+    {
+      "id": "LIQWALL",
+      "label": "Liqwall",
+      "kind": "DERIVATIVES_AGGREGATOR"
+    },
+    {
+      "id": "ALPHA_FINANCE",
+      "label": "Alpha Finance",
+      "kind": "ETF_FLOW_TRACKER"
+    },
+    {
+      "id": "CRYPTOETF_TODAY",
+      "label": "CryptoETF.today",
+      "kind": "ETF_FLOW_TRACKER"
+    },
+    {
+      "id": "XRP_DERIVATIVES",
+      "label": "XRP derivatives market",
+      "kind": "PERPETUAL_FUTURES_MARKET"
+    },
+    {
+      "id": "XRP_SPOT_ETFS",
+      "label": "US spot XRP ETFs",
+      "kind": "INSTITUTIONAL_FUND_FLOW"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BITQUERY-9-CHAINS",
+      "source": "BITQUERY",
+      "target": "BINANCE_XRPL_INCIDENT_RECEIVER",
+      "relationship": "REFRESHED_REPORT_9_CHAINS_17_HOT_WALLETS_2_7B_FROZEN_3_2B_REMAINING_AT_0643Z",
+      "evidence_class": "SECONDARY_BLOCKCHAIN_ANALYTICS",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-REVISION-9-CHAINS-20261030T0818Z"
+      ]
+    },
+    {
+      "id": "EDGE-TRM-10-CHAINS",
+      "source": "TRM_LABS",
+      "target": "BINANCE_XRPL_INCIDENT_RECEIVER",
+      "relationship": "REUTERS_REPORTS_10_CHAIN_TRADERTRAITOR_ATTRIBUTION",
+      "evidence_class": "SECONDARY_INTELLIGENCE_ATTRIBUTION",
+      "source_ids": [
+        "SRC-REUTERS-TRM-BINANCE-10-CHAIN-ATTRIBUTION-20261030T0800Z"
+      ]
+    },
+    {
+      "id": "EDGE-TRADRADAR-0750",
+      "source": "TRADRADAR",
+      "target": "XRP_DERIVATIVES",
+      "relationship": "OBSERVED_1_84B_OI_NEGATIVE_FUNDING_32_45M_LIQUIDATIONS",
+      "evidence_class": "AGGREGATED_MARKET_DATA",
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0750Z"
+      ]
+    },
+    {
+      "id": "EDGE-LIQWALL-0132",
+      "source": "LIQWALL",
+      "target": "XRP_DERIVATIVES",
+      "relationship": "EARLIER_1_30B_OI_39_3M_LIQUIDATIONS",
+      "evidence_class": "AGGREGATED_MARKET_DATA_DIFFERENT_SCOPE",
+      "source_ids": [
+        "SRC-LIQWALL-XRP-PERPETUALS-20261030T0132Z"
+      ]
+    },
+    {
+      "id": "EDGE-ALPHA-ETF-29OCT",
+      "source": "ALPHA_FINANCE",
+      "target": "XRP_SPOT_ETFS",
+      "relationship": "REPORTS_PLUS_8_4M_FIVE_OF_FIVE_FUNDS",
+      "evidence_class": "SECONDARY_ETF_FLOW_TRACKER",
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-20261029T1600Z"
+      ]
+    },
+    {
+      "id": "EDGE-CRYPTOETF-PARTIAL-29OCT",
+      "source": "CRYPTOETF_TODAY",
+      "target": "XRP_SPOT_ETFS",
+      "relationship": "REPORTS_PLUS_7_1M_TWO_OF_FIVE_FUNDS_PARTIAL",
+      "evidence_class": "PARTIAL_SECONDARY_ETF_FLOW_TRACKER",
+      "source_ids": [
+        "SRC-CRYPTOETF-XRP-ETF-FLOWS-PARTIAL-20261029T1600Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-BINANCE-CHAIN-COUNT-SCOPE-20261030",
+      "claim": "The 9-chain Bitquery and 10-chain TRM/Reuters descriptions reflect provider attribution/scope differences rather than a different XRP transfer set.",
+      "support": [
+        "Bitquery's report explicitly describes XRP and Solana as address-disconnected from the other chains but tied by timing, unusual construction and Binance's total.",
+        "Reuters reports TRM's 10-chain high-confidence attribution."
+      ],
+      "counter": [
+        "The complete TRM and Bitquery underlying wallet/chain datasets have not been independently reconciled."
+      ],
+      "status": "DISCREPANCY_RECORDED_UNRESOLVED"
+    },
+    {
+      "id": "HYP-XRP-DERIVATIVES-LONG-DELEVERAGING-20261030T0820Z",
+      "claim": "XRP derivatives remain in a long-led deleveraging regime after the Binance incident.",
+      "support": [
+        "TradRadar at 07:50 shows OI down 6%, negative funding and 30.32M long liquidations.",
+        "Liqwall at 01:32 also reports long-dominated liquidations."
+      ],
+      "counter": [
+        "The providers show materially different OI and liquidation totals due scope/time coverage.",
+        "XRP price rebounded from the earlier $1.22 snapshot to $1.2497; short liquidations also occurred."
+      ],
+      "status": "OBSERVED_REGIME_CANDIDATE_NOT_FORECAST"
+    },
+    {
+      "id": "HYP-XRP-ETF-29OCT-POSITIVE-FLOW-20261030",
+      "claim": "US spot XRP ETFs recorded a positive October 29 net flow.",
+      "support": [
+        "Alpha Finance reports +$8.4M across five funds."
+      ],
+      "counter": [
+        "CryptoETF.today reports +$7.1M with only two of five funds reported; cumulative totals differ.",
+        "Issuer-level creation/redemption files have not been reconciled."
+      ],
+      "status": "PROVISIONAL_SECONDARY_FLOW_NOT_MODEL_ADMITTED"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

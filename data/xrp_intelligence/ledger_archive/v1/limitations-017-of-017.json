@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 16,
+  "chunk_count": 17,
+  "record_count": 2,
+  "created_at_utc": "2026-10-30T07:19:33Z",
+  "records": [
+    "The prior source record SRC-INVESTING-OKX-XRP-20261030T034135Z was over-labelled as OKX; direct page inspection shows generic Investing.com XRP with no venue specified. Keep the original immutable shard and use SRC-INVESTING-XRP-AGGREGATE-CORRECTION-20261030T063327Z to supersede the classification. Exclude venue-specific interpretation.",
+    "The later Investing.com quote is a same-provider snapshot at 06:33:27 UTC and was about 36 minutes old at the 07:09 UTC capture. No synchronized multi-venue market panel is available; do not call it a live consolidated spot price."
+  ]
+}

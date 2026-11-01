@@ -1,0 +1,86 @@
+{
+  "record_type": "repository_audit_snapshot",
+  "schema_version": "1.0",
+  "audit_id": "AUDIT-20261031T084614Z-ETF-CAPITAL-SBIC-IDENTITY-AND-REPO-STATE",
+  "captured_at_utc": "2026-10-31T08:46:14Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+  "source_reference_count": 9,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30",
+    "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+    "SRC-20261031-CRYPTOKEYHOLE-XRP-ISSUER-FLOWS-OCT30-PARTIAL",
+    "SRC-20261031-TOKYO-SBIC-OFFICIAL-PROFILE",
+    "SRC-20261031-NAGOYA-SBIC-SISTER-COMPANY-RELATIONSHIP",
+    "SRC-20261031-OSAKA-SBIC-CHATGPT-WORKSHOP",
+    "SRC-20261031-US-SBA-SBIC-OFFICIAL-PROGRAM",
+    "SRC-20261031-OPENAI-SBIC-LOW-AUTHORITY-SPECULATION",
+    "SRC-20261031-SOCIAL-BIAS-INFERENCE-CORPUS-ACL"
+  ],
+  "research_branch": {
+    "head_sha": "4a6ebf8ec8f3bee8e5a69e9f080d84de400ceb39",
+    "validator_run_id": 41185805200,
+    "validator_status": "PASS",
+    "shards_checked": 367,
+    "tests_passed": 20,
+    "errors": [],
+    "state_mutated": false,
+    "gate_status": "NOT_OBSERVED"
+  },
+  "main": {
+    "sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "main_changed_by_this_run": false,
+    "scheduled_cross_analysis_writer_remains_active": true
+  },
+  "prs": {
+    "1400": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head": "005b03e73a22778fe384af14f477969b2eaba503",
+      "ci": 41185194437,
+      "tests": 370,
+      "subtests": 8,
+      "gate": 41185194439
+    },
+    "1401": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head": "275ca3b3856db4324e89f9adb46225f1a2772956",
+      "ci": 41183168254,
+      "tests": 345,
+      "subtests": 8,
+      "gate": 41183168176
+    },
+    "1402": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head": "da31a8392fa4f9acd09a55dff77ba7892f143751",
+      "push_test": 41184448544,
+      "push_test_status": "PASS_ON_PR_BRANCH",
+      "main_counterexamples": [
+        41185678470,
+        41185804211
+      ],
+      "main_counterexample_status": "ZERO_JOBS",
+      "manual_dispatch_tested": false
+    }
+  },
+  "prediction": {
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "model_training": "NOT_IMPLEMENTED",
+    "walk_forward": "NOT_IMPLEMENTED",
+    "concurrency_lock": "NOT_IMPLEMENTED"
+  },
+  "platforms": {
+    "designed": 9,
+    "external_authenticated": 0,
+    "live_external_collaborators": 0,
+    "verified_handoffs": 0
+  },
+  "safety": {
+    "merge_performed": false,
+    "force_push_performed": false,
+    "manual_workflow_dispatch_performed": false,
+    "paper_position_mutated": false,
+    "real_money_trade_performed": false
+  }
+}

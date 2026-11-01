@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-30T030130Z-BITNOMIAL-COLLATERAL-CIRCLE-COINBASE-MARKET",
+  "captured_at_utc": "2026-10-30T03:01:30Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T030130Z-bitnomial-collateral-circle-coinbase-market.json",
+  "observed_main_sha": "84f991932d3137ae8df49cead40f611a83a97c2c",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "research_head_before_append": "1c1259e561abee0c267d66e735092333a4ef6094",
+  "focus": "Reconcile Bitnomial's actual XRP collateral capability with DCO/FCM regulatory layers; map Ripple Prime/Hidden Road clearing membership; update Coinbase and Circle payment-rail strategy; compare current XRP derivatives and ETF data with explicit universe/timestamp limitations; reconfirm Japanese SBIC identity.",
+  "source_ids": [
+    "SRC-BITNOMIAL-RLUSD-XRP-COLLATERAL-LAUNCH-20251103",
+    "SRC-CFTC-FAQ-26-05-Q7-Q11-202603",
+    "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20250717",
+    "SRC-COINBASE-Q3-2026-OFFICIAL-20261029",
+    "SRC-CIRCLE-ACI-USDC-COLOMBIA-PILOT-20261027",
+    "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0215Z",
+    "SRC-CRYPTOKEYHOLE-XRP-ETF-20261030T0230Z",
+    "SRC-XRP-INSIGHTS-ETF-20261030T0301Z",
+    "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20260305",
+    "SRC-COINMARKETCAP-XRP-UNSTAMPED-SPOT-20261030T0301Z",
+    "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+    "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+  ],
+  "findings": [
+    {
+      "evidence_class": "COMPANY_REPORTED_PRIMARY_OPERATIONAL_ANNOUNCEMENT",
+      "claim": "Bitnomial announced on November 3, 2025 that XRP and RLUSD margin deposits were available to institutional clients trading leveraged perpetuals, futures and options, subject to applicable approvals.",
+      "source_ids": [
+        "SRC-BITNOMIAL-RLUSD-XRP-COLLATERAL-LAUNCH-20251103"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "claim": "Bitnomial's current clearinghouse page lists XRP collateral at a 40% haircut and $15M notional limit; XRP product maintenance margin is separately 17%.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_STAFF_FAQ",
+      "claim": "CFTC staff FAQ distinguishes DCO crypto initial-margin acceptance and monthly haircut review from FCM Letter 26-05 notice, initial three-month stablecoin/BTC/ETH restriction, incident reporting and weekly reports. After the initial period, other qualifying crypto assets may be accepted subject to continuing conditions. The FAQ is nonbinding staff guidance.",
+      "source_ids": [
+        "SRC-CFTC-FAQ-26-05-Q7-Q11-202603",
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_FCM_DISCLOSURE",
+      "claim": "Ripple identifies Hidden Road Partners CIV US LLC as a registered FCM and broker-dealer; Bitnomial lists that exact entity as a clearing member; Ripple says Hidden Road is now Ripple Prime. This is a direct legal-entity clearing-network relationship, but not evidence of XRP deposits by that FCM.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "evidence_class": "UNKNOWN",
+      "claim": "No public evidence in this run establishes Hidden Road Partners CIV US LLC's Letter 26-05 WinJammer notice, reliance commencement date, XRP customer balances or utilization.",
+      "source_ids": [
+        "SRC-CFTC-FAQ-26-05-Q7-Q11-202603",
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_RESULTS",
+      "claim": "Coinbase Q3 reported 10.7% trading-volume share, $22B average USDC held in Coinbase products, prediction markets above $200M annualized run-rate, subscription/services at 49% of net revenue, and adjusted net income $78M versus $719M GAAP net income.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-OFFICIAL-20261029"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claim": "Circle and ACI announced a Colombia USDC settlement pilot through ACI Connetic and Bre-B; the announcement does not identify XRPL/XRP or disclose production volumes.",
+      "source_ids": [
+        "SRC-CIRCLE-ACI-USDC-COLOMBIA-PILOT-20261027"
+      ]
+    },
+    {
+      "evidence_class": "SECONDARY_UNVERIFIED_MARKET_DATA",
+      "claim": "TradRadar's 02:15 UTC snapshot shows XRP $1.216, -6.15% in 24 hours, OI $1.80B (-7.74%), aggregate funding -0.0028%/8h, at least $31.86M liquidations with $30.65M long, and 79.6% long-account share. This is consistent with deleveraging but not a directional forecast.",
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0215Z"
+      ]
+    },
+    {
+      "evidence_class": "SECONDARY_ISSUER_FILE_AGGREGATION",
+      "claim": "CryptoKeyhole reports +4.338M XRP on October 28 across four funds and 1.075B XRP held; XRP Insights reports +174.1K provisional across six spot funds plus BITW, with 1.19B held and -2.96M over October 26-28. Different universes and settlement rules prevent combining these series.",
+      "source_ids": [
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-20261030T0230Z",
+        "SRC-XRP-INSIGHTS-ETF-20261030T0301Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_EVENT",
+      "claim": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC) hosted a March 5, 2026 ChatGPT/generative-AI seminar with a Microsoft speaker. This is an educational event, not an OpenAI partnership or XRP relationship.",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20260305"
+      ]
+    }
+  ],
+  "market_observations": [
+    {
+      "id": "MKT-XRP-TRADRADAR-20261030T0215Z",
+      "asset": "XRP",
+      "as_of_utc": "2026-10-30T02:15:00Z",
+      "price_usd": 1.216,
+      "return_24h_pct": -6.15,
+      "open_interest_usd": 1800000000,
+      "open_interest_change_24h_pct": -7.74,
+      "funding_8h_pct": -0.0028,
+      "liquidations_24h_usd_min": 31860000,
+      "long_liquidations_usd": 30650000,
+      "short_liquidations_usd": 1210000,
+      "long_account_share_pct": 79.6,
+      "source_id": "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0215Z",
+      "admitted_as_feature": false
+    },
+    {
+      "id": "ETF-XRP-CRYPTOKEYHOLE-20261028-4FUNDS",
+      "asset": "XRP",
+      "as_of_utc": "2026-10-29T23:02:00Z",
+      "flow_date": "2026-10-28",
+      "net_flow_xrp": 4337696,
+      "holdings_xrp": 1074971554,
+      "fund_universe": "four daily-reporting US funds",
+      "source_id": "SRC-CRYPTOKEYHOLE-XRP-ETF-20261030T0230Z",
+      "admitted_as_feature": false
+    },
+    {
+      "id": "ETF-XRP-INSIGHTS-20261028-PROVISIONAL",
+      "asset": "XRP",
+      "as_of_utc": "2026-10-30T03:01:30Z",
+      "flow_date": "2026-10-28",
+      "net_flow_xrp": 174140,
+      "holdings_xrp_approx": 1190000000,
+      "flow_status": "PROVISIONAL",
+      "fund_universe": "six US spot funds plus BITW; GXRP excluded from flow totals during data-gap correction",
+      "source_id": "SRC-XRP-INSIGHTS-ETF-20261030T0301Z",
+      "admitted_as_feature": false
+    }
+  ],
+  "data_quality": {
+    "derivative_panels_not_synchronized": true,
+    "exchange_venue_scope_reconciled": false,
+    "funding_interval_and_sign_convention_reconciled": false,
+    "account_ratio_is_not_notional": true,
+    "liquidation_coverage_incomplete": true,
+    "etf_fund_universes_reconciled": false,
+    "provisional_issuer_files_present": true,
+    "actual_capital_measured": false,
+    "collateral_utilization_measured": false,
+    "spot_orderbook_depth_panel_admitted": false,
+    "market_features_admitted": false
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Market panels are secondary, not synchronized, and not reconciled by venue, contract, ETF universe or settlement cutoff; no calibrated fixed-horizon model has passed walk-forward validation.",
+    "data_cutoff_utc": "2026-10-30T03:01:30Z",
+    "target": null,
+    "horizon": null,
+    "probability": null,
+    "confidence": null,
+    "assumptions": [],
+    "alternatives": [],
+    "outcome_protocol": "No forecast issued; do not retrospectively label descriptive sentiment or market observations as predictions."
+  },
+  "repository_state": {
+    "main_sha": "84f991932d3137ae8df49cead40f611a83a97c2c",
+    "main_cross_analysis_workflow_still_has_contents_write_and_git_push": true,
+    "main_cross_analysis_latest_observed_auto_commit": "84f991932d3137ae8df49cead40f611a83a97c2c",
+    "pr_1362": "OPEN_DRAFT_UNMERGED; exact-head CI and fail-closed gate passed; based on ec52a66 with one non-overlapping generated sentiment_shift.json commit on main",
+    "pr_1353_head_before_append": "1c1259e561abee0c267d66e735092333a4ef6094",
+    "pr_1353_exact_head_python_validator": "NOT_VERIFIED_IN_THIS_RUN",
+    "pr_1353_latest_gate_run_id": 40992685237,
+    "pr_1353_latest_gate_status": "PASS"
+  }
+}

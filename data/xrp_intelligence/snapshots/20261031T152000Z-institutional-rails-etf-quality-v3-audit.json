@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "20261031T152000Z-institutional-rails-etf-quality-v3-audit",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T152000Z-institutional-rails-etf-quality-v3-audit.json",
+  "captured_at_utc": "2026-10-31T15:20:00Z",
+  "data_cutoff_utc": "2026-10-31T15:20:00Z",
+  "observed_main_sha": "88977235524c7b021211c6694df7f5527b9c36c8",
+  "observed_research_parent_sha": "4b6526f9899313bd9e51849a2854ce32aaa04fea",
+  "source_ids": [
+    "SRC-20261031T152000Z-COINBASE-RLUSD",
+    "SRC-20261031T152000Z-COINBASE-Q3-IR",
+    "SRC-20261031T152000Z-COINBASE-Q3-10Q",
+    "SRC-20261031T152000Z-OCC-RIPPLE-NTB",
+    "SRC-20261031T152000Z-AVIVA-XRPL",
+    "SRC-20261031T152000Z-SC-RLUSD",
+    "SRC-20261031T152000Z-RIPPLE-STRATEGY",
+    "SRC-20261031T152000Z-BNY-RIPPLE",
+    "SRC-20261031T152000Z-C2FO",
+    "SRC-20261031T152000Z-ROBINHOOD",
+    "SRC-20261031T152000Z-RIPPLE-PRIME",
+    "SRC-20261031T152000Z-XRPL-AI-KIT",
+    "SRC-20261031T152000Z-RIPPLE-TREASURY",
+    "SRC-20261031T152000Z-SBI-ACCUMULATION",
+    "SRC-20261031T152000Z-ORICO",
+    "SRC-20261031T152000Z-XRPL-UTILS-METHOD",
+    "SRC-20261031T152000Z-XRPL-UTILS-HEALTH",
+    "SRC-20261031T152000Z-XRP-INSIGHTS",
+    "SRC-20261031T152000Z-CRYPTOETF",
+    "SRC-20261031T152000Z-CRYPTOKEYHOLE",
+    "SRC-20261031T152000Z-BINANCE-PRICE",
+    "SRC-20261031T152000Z-TRADRADAR",
+    "SRC-20261031T152000Z-KODEXIUS",
+    "SRC-20261031T152000Z-SBIC-INDEX",
+    "SRC-20261031T152000Z-SBIC-20250226",
+    "SRC-20261031T152000Z-GITHUB-AUDIT",
+    "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+    "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+    "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU",
+    "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER",
+    "SRC-202610311448Z-SBI-RLUSD-LISTING",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T121200Z-SBI-SMFG-STABLECOIN-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T121200Z-SBI-OPEN-STANDARD-JPYSC-OUSD",
+    "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE"
+  ],
+  "source_reference_count": 41,
+  "missing_source_references": 0,
+  "binance_update3": {
+    "company_claim_replenished_stolen_assets_percent": 90,
+    "top_ten_assets_including_xrp_claimed_coverage": "AT_LEAST_1_TO_1",
+    "snapshot_at_utc": "2026-10-31T00:00:00Z",
+    "full_zk_proof_target": "2026-11-03",
+    "status": "COMPANY_CLAIM_NOT_INDEPENDENTLY_VERIFIED",
+    "note": "90% refers to stolen-asset replenishment, not 90% of all customer liabilities; no XRP-specific units, venue or OTC purchase amount disclosed."
+  },
+  "coinbase": {
+    "rlusd": {
+      "listed_products": [
+        "Prime",
+        "Exchange",
+        "app"
+      ],
+      "networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "global_exchange_collateral": "PLANNED_NOT_LIVE_AT_LAUNCH",
+      "ripple_base_liquidity": "ANNOUNCED"
+    },
+    "q3": {
+      "trading_share_percent": 10.7,
+      "assets_on_platform_share_percent": 12.5,
+      "average_usdc_held_usd": 22000000000,
+      "usdc_yoy_growth_percent": 49,
+      "company_claimed_usdc_economics_share_percent": 50,
+      "subscription_services_share_percent": 49,
+      "stablecoin_revenue_usd": 306900000,
+      "stablecoin_revenue_yoy_percent": -5,
+      "spot_transaction_revenue_yoy_percent": -44,
+      "net_income_usd": 718700000,
+      "adjusted_net_income_usd": 77700000,
+      "crypto_investment_gains_usd": 715200000,
+      "circle_arrangement": "RENEWED_ON_SAME_TERMS",
+      "derivatives_volume_two_year_cagr_percent": 179,
+      "prediction_market_annualized_revenue_over_usd": 200000000,
+      "xrp_specific_revenue_or_balances": "NOT_DISCLOSED"
+    },
+    "xrp_products": [
+      "cash-settled XRP futures",
+      "XRP eligible for Global Exchange perpetual margin subject to haircuts",
+      "cbXRP Morpho USDC borrowing"
+    ]
+  },
+  "circle": {
+    "usdc_on_xrpl": "SUPPORTED",
+    "coinbase_distribution": "MATERIAL; Q3 AGREEMENT RENEWED SAME TERMS",
+    "arc": "USDC_GAS; SBI FOUNDING VALIDATOR; COINBASE EXCHANGE ACCESS",
+    "direct_xrp_collateral": "NOT_ESTABLISHED",
+    "direct_ripple_partnership": "NOT_ESTABLISHED"
+  },
+  "ripple": {
+    "product_revenue_run_rate_usd_approx": 900000000,
+    "product_volume_enabled_2025_usd": 16000000000000,
+    "licenses_over": 85,
+    "institutions_over": 1700,
+    "multi_product_growth_multiple": 3,
+    "lifetime_payment_network_volume_expected_usd": 150000000000,
+    "classification": "COMPANY_REPORTED_MULTI_PRODUCT_NOT_XRP_SPECIFIC",
+    "rntb": {
+      "status": "OCC_EFFECTIVE_2026-10-26",
+      "powers_as_described": [
+        "RLUSD segregated reserve management",
+        "RLUSD collateral trustee",
+        "fiduciary digital-asset custody"
+      ],
+      "rlusd_issuer": "STANDARD_CUSTODY_AND_TRUST_COMPANY",
+      "general_commercial_deposit_taking": "NOT_ESTABLISHED"
+    },
+    "bny": {
+      "xrp_rlusd_custody": "LIVE_FOR_ELIGIBLE_CLIENTS_AS_ANNOUNCED",
+      "rlusd_primary_reserve_custodian": "AS_DESCRIBED",
+      "mint_redeem": "PLANNED_CONDITIONAL",
+      "trade_finance": "EXPLORATORY"
+    },
+    "prime": {
+      "rwa_perps": "LIVE_SUBJECT_TO_JURISDICTION",
+      "collateral": "RLUSD_NOT_XRP",
+      "venue": "TRADE.XYZ_ON_HYPERLIQUID"
+    },
+    "c2fo": {
+      "instant_pay": "ANNOUNCED_WAITLIST",
+      "capital_provider_funding": true,
+      "settlement": "RLUSD_ON_XRPL",
+      "principal": "RECEIVABLES_NOT_XRP"
+    },
+    "robinhood": {
+      "rlusd_on_robinhood_chain_bitstamp": "LIVE_AS_ANNOUNCED",
+      "xrpl_institutional_settlement": "PLANNED"
+    },
+    "treasury": {
+      "returns": "RLUSD_AND_ELIGIBLE_DIGITAL_ASSETS",
+      "tokenized_mmf_on_xrpl": "REFERENCED_IN_STRATEGY_UPDATE",
+      "xrp_yield": "NOT_ESTABLISHED"
+    }
+  },
+  "aviva": {
+    "xrpl_gbp_tokenized_fund": "LAUNCHED",
+    "investment_gbp": 50000000,
+    "underlying_assets": "OFFCHAIN_DIGITAL_TWIN",
+    "bny_fund_custodian": true,
+    "komainu_digital_asset_custodian": true,
+    "licuido_tokenization": true,
+    "xrp_purchase": "NOT_ESTABLISHED"
+  },
+  "standard_chartered": {
+    "rlusd_xrpl_custody": "LIVE_ELIGIBLE_CLIENTS",
+    "lmax_collateral_mirroring": "PLANNED_CONDITIONAL",
+    "xrp_collateral": "NOT_ESTABLISHED"
+  },
+  "sbi": {
+    "strategy": "MULTIRAIL",
+    "ripple_channels": [
+      "XRP accumulation",
+      "XRP rewards",
+      "Orico points",
+      "RLUSD listing; SBI source says Ethereum network"
+    ],
+    "circle_channels": [
+      "Circle SBI Japan JV",
+      "USD 50M Circle equity",
+      "Arc validator"
+    ],
+    "xrp_units_and_inventory_source": "UNKNOWN",
+    "exclusive_xrp_strategy": "NOT_ESTABLISHED"
+  },
+  "sbic": {
+    "identity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+    "distinct_from_sbi_holdings": true,
+    "chatgpt_events": [
+      "2024-03-05",
+      "2024-09-11",
+      "2025-02-26",
+      "2026-03-05"
+    ],
+    "other_genai_event": "2026-10-06",
+    "microsoft_japan_participation": "DOCUMENTED",
+    "openai_partnership": "NOT_ESTABLISHED"
+  },
+  "actual_capital": {
+    "aviva": "GBP 50M fund-share capital, not XRP",
+    "c2fo": "Receivables advance by participating capital providers; RLUSD settlement; waitlist",
+    "coinbase": "USD 22B average USDC product balance, not XRP capital",
+    "sbi": "Rewards/points/accumulation exist; XRP units/source unknown",
+    "ripple": "USD 16T enabled volume and USD 150B lifetime network volume are gross throughput, not net XRP capital",
+    "binance": "90% replenishment is aggregate claim; XRP-specific purchase unknown"
+  },
+  "market_context": {
+    "spot": "Around USD 1.25; Binance timestamped USD 1.24737 at 11:44 UTC is stale at cutoff",
+    "derivatives": "TradRadar USD 1.86B OI vs Kodexius USD 738.99M, 2.51x; keep separate",
+    "etf": "XRP Insights Oct30 holdings change -49,932 XRP, five-day +3.39M; CryptoETF +USD 0.2M at 3/5; CryptoKeyhole latest complete Oct29 +2.97M XRP at 4/6 with future-dated Nov2 metadata",
+    "xrpl_utilities": "Health endpoint active 15:19:50 UTC; 12/15 ETF scrapers live; 3 stubbed; no units violation"
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Coinbase RLUSD listing expands stablecoin distribution but does not establish XRP buying.",
+      "counter": "No transfer volume, XRP purchases or fee totals."
+    },
+    {
+      "id": "H2",
+      "claim": "Coinbase diversifies stablecoin distribution while retaining material Circle/USDC economics.",
+      "counter": "No USDC displacement or RLUSD market share disclosed."
+    },
+    {
+      "id": "H3",
+      "claim": "Ripple multi-product growth strengthens the company but XRP value capture remains unproven.",
+      "counter": "Metrics are company-reported and multi-product."
+    },
+    {
+      "id": "H4",
+      "claim": "RLUSD institutional custody/collateral stack is expanding across BNY, RNTB, Ripple Prime and Standard Chartered/LMAX.",
+      "counter": "Some channels planned; no aggregate balances/utilization."
+    },
+    {
+      "id": "H5",
+      "claim": "BNY custody support is a direct institutional custody development for native XRP.",
+      "counter": "No AUC, client counts or XRP balances."
+    },
+    {
+      "id": "H6",
+      "claim": "C2FO Instant Pay could create RLUSD settlement on XRPL backed by receivables financing.",
+      "counter": "Waitlist; no production volume; principal is not XRP."
+    },
+    {
+      "id": "H7",
+      "claim": "Aviva tokenized GBP share class adds RWA representation on XRPL.",
+      "counter": "Underlying assets off-chain; GBP 50M is not XRP."
+    },
+    {
+      "id": "H8",
+      "claim": "SBI is pursuing simultaneous Ripple/XRP/RLUSD and Circle/USDC/Arc rails.",
+      "counter": "Different subsidiaries/products; no exclusivity."
+    },
+    {
+      "id": "H9",
+      "claim": "SBI accumulation, rewards and points may distribute XRP to customers.",
+      "counter": "No subscribers, units, selection share or inventory source."
+    },
+    {
+      "id": "H10",
+      "claim": "XRPL MCP/x402 tools create possible agentic payments using XRP/RLUSD.",
+      "counter": "No Barrot connection or production volume."
+    },
+    {
+      "id": "H11",
+      "claim": "ETF-flow disagreement is a universe/method/freshness problem, not a directional signal.",
+      "counter": "Issuer share-count reconciliation may resolve it."
+    },
+    {
+      "id": "H12",
+      "claim": "Binance Update #3 includes XRP in its top-ten coverage claim but does not establish XRP purchases.",
+      "counter": "No XRP units, venues or reserve-address crosswalk."
+    }
+  ],
+  "feature_admission": {
+    "institutional_timeline": "ADMITTED",
+    "relationship_graph": "ADMITTED",
+    "market_observations": "PROVIDER_SPECIFIC_ONLY",
+    "daily_etf_flow": "NOT_ADMITTED",
+    "composite_open_interest": "NOT_ADMITTED",
+    "directional_xrp_feature": "NOT_ADMITTED",
+    "forecast_status": "NOT_ISSUED"
+  }
+}

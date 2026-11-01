@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 23,
+  "chunk_count": 24,
+  "record_count": 10,
+  "created_at_utc": "2026-10-30T08:31:00Z",
+  "records": [
+    "Circle SBI Japan K.K. (Japanese name SBI Circle Holdings) is a direct 50/50 Circle-SBI joint venture formed in 2025 for USDC distribution in Japan. Circle's Q2 2026 SEC filing says no significant operating results through June 30, 2026; JV existence is not scaled adoption or XRP use.",
+    "Circle consolidates Circle SBI Japan K.K. as a variable-interest entity because it controls the activities that most affect the entity, despite holding 50% equity; SBI's 50% is noncontrolling interest. Accounting consolidation is not evidence Circle owns more than 50%.",
+    "SBI Holdings and SBI Shinsei Bank's combined USD50M strategic investment in Circle at its 2025 IPO is direct equity exposure, not XRP purchases, not a direct Circle-Ripple partnership and not proof of price causality.",
+    "Coinbase Q3 2026 10-Q says average USDC held in Coinbase products reached an all-time high but does not quantify the Q3 amount in the cited section. Circle Q2 10-Q reports a 19.5% daily weighted-average USDC-on-platform share and USD12.442B end balance; these are not definitionally identical to Coinbase's separate product-balance metric.",
+    "Coinbase Q3 stablecoin revenue fell approximately 5.4% YoY despite higher average USDC balances because lower interest rates offset part of the balance-driven increase. This demonstrates reserve-yield sensitivity, not an XRP price signal.",
+    "Circle's issuer-reported H1 USD36T onchain transaction volume is gross blockchain transaction volume, not verified final payment settlement, unique economic transfers or new external capital.",
+    "Circle Q2 2026 reserve structure had approximately 84% in a BlackRock-managed Rule 2a-7 fund and the remainder in bank cash. The fund is not FDIC-insured/government-guaranteed and BlackRock is not obliged to support it; bank reserve deposits exceeded FDIC limits and aggregate insurance was USD1.8M across seven banks. These are concentration/counterparty disclosures, not evidence of reserve shortfall.",
+    "Native USDC and RLUSD on XRPL do not establish native XRP purchases, collateral, bridge use or incremental XRP price demand. Circle Mint/APIs can move USDC across supported chains without a third-party bridge.",
+    "The prior 2026-10-30T083100Z snapshot's statement that no direct Circle-SBI relationship was established is superseded and incorrect. Official SBI releases and Circle's SEC filing establish a direct 50/50 Circle SBI Japan K.K. JV and USD50M combined SBI/SBI Shinsei investment in Circle. This does not establish a direct Circle-Ripple partnership.",
+    "Circle's Q2 2026 SEC filing is the latest Circle quarterly financial disclosure captured; Q3 results had not been released at this cutoff. Do not extrapolate Q2 reserve yield, circulation, JV activity or distribution costs into Q3."
+  ]
+}

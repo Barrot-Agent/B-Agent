@@ -1,0 +1,262 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T072330Z-BINANCE-XRPL-FIVE-WALLET-EXACT-RECONCILIATION",
+  "captured_at_utc": "2026-10-30T07:23:30Z",
+  "nodes": [
+    {
+      "id": "BINANCE_XRPL_CLUSTER_CENTRAL",
+      "label": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "kind": "BINANCE_LABELLED_XRPL_ACCOUNT"
+    },
+    {
+      "id": "BINANCE_XRPL_SOURCE_2",
+      "label": "rBtttd61FExHC68vsZ8dqmS3DfjFEceA1A",
+      "kind": "BINANCE_LABELLED_XRPL_ACCOUNT"
+    },
+    {
+      "id": "BINANCE_XRPL_SOURCE_3",
+      "label": "rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+      "kind": "BINANCE_LABELLED_XRPL_ACCOUNT"
+    },
+    {
+      "id": "BINANCE_XRPL_SOURCE_4",
+      "label": "rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk",
+      "kind": "BINANCE_LABELLED_XRPL_ACCOUNT"
+    },
+    {
+      "id": "BINANCE_XRPL_SOURCE_5",
+      "label": "rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK",
+      "kind": "BINANCE_LABELLED_XRPL_ACCOUNT"
+    },
+    {
+      "id": "XRP_ATTACKER_RECEIVER",
+      "label": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "kind": "XRPL_RECEIVER_ACCOUNT"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "XRPL_NATIVE_ASSET"
+    },
+    {
+      "id": "BITHOMP_XRPL_DASHBOARD",
+      "label": "Bithomp public XRPL explorer and activity dashboard",
+      "kind": "BLOCKCHAIN_EXPLORER"
+    },
+    {
+      "id": "BINANCE_OFFICIAL_POR",
+      "label": "Binance October 1 2026 proof-of-reserves address snapshot",
+      "kind": "EXCHANGE_PROOF_OF_RESERVES"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BINANCE-XRPL-STOLEN-PAYMENT-1-20261029",
+      "source": "BINANCE_XRPL_CLUSTER_CENTRAL",
+      "target": "XRP_ATTACKER_RECEIVER",
+      "relationship": "VALIDATED_PAYMENT_185017485.5_XRP",
+      "evidence_class": "BITHOMP_VALIDATED_XRPL_TRANSACTION",
+      "claim": "Successful validated XRPL Payment of 185017485.5 XRP at 2026-10-29T20:05:00Z; hash 78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A; ledger 107986693; sender labelled Binance by Bithomp.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPL-STOLEN-PAYMENT-2-20261029",
+      "source": "BINANCE_XRPL_SOURCE_2",
+      "target": "XRP_ATTACKER_RECEIVER",
+      "relationship": "VALIDATED_PAYMENT_14693052.5_XRP",
+      "evidence_class": "BITHOMP_VALIDATED_XRPL_TRANSACTION",
+      "claim": "Successful validated XRPL Payment of 14693052.5 XRP at 2026-10-29T20:07:00Z; hash 6DDF398B6950B34057A7B817E761A1E2A1C59ECAFD594536C54AA6963C5B7E67; ledger 107986721; sender labelled Binance by Bithomp.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-14693052-20261029T200700Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPL-STOLEN-PAYMENT-3-20261029",
+      "source": "BINANCE_XRPL_SOURCE_3",
+      "target": "XRP_ATTACKER_RECEIVER",
+      "relationship": "VALIDATED_PAYMENT_13140680.4_XRP",
+      "evidence_class": "BITHOMP_VALIDATED_XRPL_TRANSACTION",
+      "claim": "Successful validated XRPL Payment of 13140680.4 XRP at 2026-10-29T20:08:20Z; hash 9FE8F79876B30E24843031CBE89EA75496FE75BD2F0B9779D91D55BEE52C6AAA; ledger 107986740; sender labelled Binance by Bithomp.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-13140680-20261029T200820Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPL-STOLEN-PAYMENT-4-20261029",
+      "source": "BINANCE_XRPL_SOURCE_4",
+      "target": "XRP_ATTACKER_RECEIVER",
+      "relationship": "VALIDATED_PAYMENT_11955157.6_XRP",
+      "evidence_class": "BITHOMP_VALIDATED_XRPL_TRANSACTION",
+      "claim": "Successful validated XRPL Payment of 11955157.6 XRP at 2026-10-29T20:08:50Z; hash 27C7D0D5EDAD05B5F8C7616DF6CB64C872DD22DED8697B380824A8C5B8D385F5; ledger 107986748; sender labelled Binance by Bithomp.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-11955157-20261029T200850Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPL-STOLEN-PAYMENT-5-20261029",
+      "source": "BINANCE_XRPL_SOURCE_5",
+      "target": "XRP_ATTACKER_RECEIVER",
+      "relationship": "VALIDATED_PAYMENT_8655567.1_XRP",
+      "evidence_class": "BITHOMP_VALIDATED_XRPL_TRANSACTION",
+      "claim": "Successful validated XRPL Payment of 8655567.1 XRP at 2026-10-29T20:09:20Z; hash 0571C4D9703DECA7D03B8D63E9EEB2AB0E8E6D949150A7355519AEEE9A595DB0; ledger 107986754; sender labelled Binance by Bithomp.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-8655567-20261029T200920Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPL-CLUSTER-ACTIVATION-2-20261030",
+      "source": "BINANCE_XRPL_CLUSTER_CENTRAL",
+      "target": "BINANCE_XRPL_SOURCE_2",
+      "relationship": "ACTIVATED_BY_BINANCE_LABELLED_CENTRAL_ACCOUNT",
+      "evidence_class": "BITHOMP_ACCOUNT_ACTIVATION_METADATA",
+      "claim": "The four other source accounts show activation by the rDAE53 Binance-labelled account; all five accounts are labelled Binance by Bithomp.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-SOURCE-CLUSTER-20261030T072330Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPL-CLUSTER-ACTIVATION-3-20261030",
+      "source": "BINANCE_XRPL_CLUSTER_CENTRAL",
+      "target": "BINANCE_XRPL_SOURCE_3",
+      "relationship": "ACTIVATED_BY_BINANCE_LABELLED_CENTRAL_ACCOUNT",
+      "evidence_class": "BITHOMP_ACCOUNT_ACTIVATION_METADATA",
+      "claim": "The four other source accounts show activation by the rDAE53 Binance-labelled account; all five accounts are labelled Binance by Bithomp.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-SOURCE-CLUSTER-20261030T072330Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPL-CLUSTER-ACTIVATION-4-20261030",
+      "source": "BINANCE_XRPL_CLUSTER_CENTRAL",
+      "target": "BINANCE_XRPL_SOURCE_4",
+      "relationship": "ACTIVATED_BY_BINANCE_LABELLED_CENTRAL_ACCOUNT",
+      "evidence_class": "BITHOMP_ACCOUNT_ACTIVATION_METADATA",
+      "claim": "The four other source accounts show activation by the rDAE53 Binance-labelled account; all five accounts are labelled Binance by Bithomp.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-SOURCE-CLUSTER-20261030T072330Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPL-CLUSTER-ACTIVATION-5-20261030",
+      "source": "BINANCE_XRPL_CLUSTER_CENTRAL",
+      "target": "BINANCE_XRPL_SOURCE_5",
+      "relationship": "ACTIVATED_BY_BINANCE_LABELLED_CENTRAL_ACCOUNT",
+      "evidence_class": "BITHOMP_ACCOUNT_ACTIVATION_METADATA",
+      "claim": "The four other source accounts show activation by the rDAE53 Binance-labelled account; all five accounts are labelled Binance by Bithomp.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-SOURCE-CLUSTER-20261030T072330Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPL-RECEIVER-CURRENT-BALANCE-20261030",
+      "source": "XRP_ATTACKER_RECEIVER",
+      "target": "XRP",
+      "relationship": "233461943_10004_XRP_DISPLAYED_BALANCE_AT_CAPTURE",
+      "evidence_class": "BITHOMP_ACCOUNT_AND_TRANSACTION_PAGE",
+      "claim": "Bithomp displayed 233,461,943.10004 XRP at the receiver and five incoming payments totaling 233,461,943.1 XRP; no outgoing XRP payment appeared in the captured transaction list.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-RECEIVER-TRANSACTIONS-20261030T072330Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRPL-TRANSFER-VOLUME-NOT-TRADING-VOLUME-20261030",
+      "source": "BITHOMP_XRPL_DASHBOARD",
+      "target": "XRP",
+      "relationship": "TRANSFER_VOLUME_SEPARATE_FROM_DEX_TRADING_VOLUME",
+      "evidence_class": "XRPL_ACTIVITY_DASHBOARD_METRICS",
+      "claim": "Bithomp displays approximately $902.3M 24h transfer volume versus $13.07M XRPL DEX volume. Transfer volume is not executed trading volume or net new capital.",
+      "source_ids": [
+        "SRC-BITHOMP-XRP-DEX-AND-TRANSFER-STATS-20261030T072330Z"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-SOURCE-WALLETS-POR-MEMBERSHIP-UNKNOWN-20261030",
+      "source": "BINANCE_XRPL_CLUSTER_CENTRAL",
+      "target": "BINANCE_OFFICIAL_POR",
+      "relationship": "OCTOBER_1_POR_MEMBERSHIP_UNVERIFIED",
+      "evidence_class": "EXPLICIT_UNKNOWN",
+      "claim": "The five source accounts are Binance-labelled and form a common activation cluster, but their inclusion in the October 1 Binance PoR address download and their relationship to XRP-BF2 backing remain unverified.",
+      "source_ids": [
+        "SRC-BINANCE-POR-XRP-RATIO-SECONDARY-20261030T0508Z",
+        "SRC-BINANCE-XRP-BF2-BACKING-20191010"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-BINANCE-XRP-FIVE-WALLETS-EXACT-DRAIN-20261030",
+      "claim": "The five Binance-labelled XRPL accounts transferred exactly 233,461,943.1 native XRP to one newly activated receiver within 4 minutes 20 seconds.",
+      "support": [
+        "Five Bithomp transaction pages show successful validated payments and exact source, destination, amount, hash and ledger index.",
+        "The exact sum matches TRM's 233.46M and Bitquery's approximately 233.5M."
+      ],
+      "counter": [
+        "Bithomp is one explorer provider; raw validated-ledger transactions are the underlying evidence.",
+        "The exact October 1 PoR membership of these wallets remains unknown."
+      ],
+      "status": "STRONGLY_CORROBORATED_PUBLIC_CHAIN_FACT"
+    },
+    {
+      "id": "HYP-BINANCE-XRP-ATTACKER-HOLDING-NOT-YET-SOLD-20261030",
+      "claim": "The attacker receiver still holds the full 233.4619431M XRP at the Bithomp page capture; no sale is evidenced in the captured transaction list.",
+      "support": [
+        "Receiver balance displayed 233,461,943.10004 XRP.",
+        "Five incoming payments and one unrelated XGO Check appear; no outgoing XRP payment is listed."
+      ],
+      "counter": [
+        "Page capture is a point-in-time explorer view; later transactions may occur or indexing may lag.",
+        "No sale is established only through the captured state, not for all future time."
+      ],
+      "status": "HELD_AT_CAPTURE_NO_SALE_OBSERVED"
+    },
+    {
+      "id": "HYP-BINANCE-XRPL-FIVE-WALLETS-COMMON-CUSTODY-20261030",
+      "claim": "The five source wallets form a common Binance-labelled operational cluster.",
+      "support": [
+        "All five are labelled Binance by Bithomp.",
+        "Four other accounts show activation by central account rDAE53, itself Binance-labelled."
+      ],
+      "counter": [
+        "Bithomp labels and activation history are third-party attribution, not Binance's signed PoR statement."
+      ],
+      "status": "STRONG_EXPLORER_ATTRIBUTION_NOT_OFFICIAL_POR_PROOF"
+    },
+    {
+      "id": "HYP-BINANCE-XRP-POR-SHORTFALL-20261030",
+      "claim": "The stolen 233.46M XRP may impair Binance's XRP reserve coverage if these wallets were in the October 1 PoR set.",
+      "support": [
+        "Five Binance-labelled source wallets lost exactly 233.46M XRP.",
+        "Secondary October 1 reporting shows XRP reserve ratio 100.77%."
+      ],
+      "counter": [
+        "No official PoR address crosswalk has been completed.",
+        "No XRP-BF2 backing-wallet relationship is established.",
+        "Binance says it will cover losses; post-incident replenishment not measured."
+      ],
+      "status": "UNRESOLVED_CONDITIONAL_SCENARIO"
+    },
+    {
+      "id": "HYP-XRPL-TRANSFER-VOLUME-OVERSTATES-ACTUAL-CAPITAL-20261030",
+      "claim": "The $902.3M XRPL transfer-volume metric substantially overstates executed trading/capital activity if misread as turnover.",
+      "support": [
+        "Bithomp reports $902.3M transfer volume versus $13.07M DEX volume, a ratio of approximately 69x.",
+        "DEX buy/sell volumes are nearly balanced at $6.50M/$6.57M."
+      ],
+      "counter": [
+        "DEX volume excludes centralized exchange, OTC and other settlement activity; it is not total market trading."
+      ],
+      "status": "MEASUREMENT_DISTINCTION_CONFIRMED_XRPL_ONLY"
+    }
+  ],
+  "source_independence": {
+    "bithomp_transaction_pages": "Same explorer provider renders all five validated XRPL transactions; independent of TRM/Bitquery methods but same public XRPL ledger.",
+    "trm_bitquery": "Separate blockchain analytics providers; same underlying transactions.",
+    "wallet_labels": "Bithomp third-party account labels and activation metadata; not official Binance PoR inclusion.",
+    "transfer_volume": "XRPL-only activity dashboard; not global exchange volume or cash-flow measurement."
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

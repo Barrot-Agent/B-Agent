@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 105,
+  "chunk_count": 106,
+  "record_count": 5,
+  "records": [
+    {
+      "id": "LIM-20261031T024000Z-01",
+      "category": "legacy_variable_horizon",
+      "statement": "The evaluator only waits until a signal is at least 24 hours old, then uses the single current CoinGecko price at the next daily run. With a 23:55 UTC daily schedule, effective horizons vary; no checked_at timestamp is stored, so exact horizons cannot be reconstructed.",
+      "severity": "critical",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-WORKFLOW-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-COMMIT-03A867-20261031T024000Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T024000Z-02",
+      "category": "legacy_nonstandard_neutral_rule",
+      "statement": "Scores above 60 are judged on any positive price move, below 40 on non-positive move, and 40–60 on absolute return below 2%. The resulting 45.5% combines different targets and is not directional accuracy, probability calibration or out-of-sample skill.",
+      "severity": "critical",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SUMMARY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T024000Z-03",
+      "category": "provider_failure_and_zero_confidence",
+      "statement": "Among 1,697 checked records, 1,119 (65.9%) are fallback/no-sentiment records with confidence 0 and source strings reporting missing GitHub model credentials and Groq HTTP 429. Their 49.69% legacy hit rate is descriptive only. The 578 Groq-labelled records average 0.947 confidence but have a 37.37% legacy hit rate; this is not a formal calibration test.",
+      "severity": "critical",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z",
+        "SRC-GH-LATEST-XRP-SIGNAL-20261031T024000Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T024000Z-04",
+      "category": "missing_emission_price",
+      "statement": "Nineteen history records from 2026-09-29 through 2026-09-30 remain unchecked because price_at_emission is zero. The evaluator skips them; the cause of the zero emission price is not recorded.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T024000Z-05",
+      "category": "overlapping_non_independent_signals",
+      "statement": "Signals were emitted at a median interval of about 0.982 hours, creating heavily overlapping forecast windows. The 1,697 checked records are not independent observations; no purge/embargo or effective sample-size adjustment is applied.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GH-SIGNAL-HISTORY-20261031T024000Z",
+        "SRC-GH-SIGNAL-ACCURACY-SCRIPT-20261031T024000Z"
+      ]
+    }
+  ]
+}

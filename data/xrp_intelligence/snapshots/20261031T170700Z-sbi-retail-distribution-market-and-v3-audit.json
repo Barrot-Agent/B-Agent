@@ -1,0 +1,254 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "SBI-XRP-RETAIL-DISTRIBUTION-MARKET-AND-V3-AUDIT-20261031T170700Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T170700Z-sbi-retail-distribution-market-and-v3-audit.json",
+  "captured_at_utc": "2026-10-31T17:07:00Z",
+  "data_cutoff_utc": "2026-10-31T17:07:00Z",
+  "japan_local_capture_time": "2026-11-01T02:07:00+09:00",
+  "extends_snapshot": "data/xrp_intelligence/snapshots/20261031T165000Z-safu-wallet-cross-explorer-and-deployment-window.json",
+  "source_bundle_path": "data/xrp_intelligence/sources/20261031T170700Z-sbi-retail-distribution-sources.json",
+  "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T170700Z-sbi-retail-distribution-graph.json",
+  "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T170700Z-sbi-retail-distribution-actual-capital-and-v3-safety.json",
+  "repository_audit_path": "data/repository_audits/20261031T170700Z-current-main-193-pr-and-workflow-safety-audit.json",
+  "source_ids": [
+    "SRC-20261031T170700Z-SBI-VC-TRADE-DCA",
+    "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD",
+    "SRC-20261031T170700Z-SBI-HOLDINGS-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-ARUHI-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-SHINSEI-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER",
+    "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH",
+    "SRC-20261031T170700Z-SBI-VC-TRADE-CORPORATE",
+    "SRC-20261031T170700Z-BINANCE-XRP-PRICE",
+    "SRC-20261031T170700Z-LIQWALL-XRP-PANEL",
+    "SRC-20261031T170700Z-GITHUB-MAIN-REF-PR-INVENTORY",
+    "SRC-20261031T170700Z-GITHUB-PR-1419",
+    "SRC-20261031T170700Z-GITHUB-PR-1420",
+    "SRC-20261031T170700Z-GITHUB-CI-GATES-1419-1420"
+  ],
+  "source_reference_count": 15,
+  "missing_source_references": 0,
+  "confirmed_findings": [
+    {
+      "id": "SBI-DCA",
+      "statement": "SBI VC Trade offers XRP in its scheduled accumulation service: JPY 500–2,000,000 per order, daily/weekly/monthly, with customer JPY prefunding.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VC-TRADE-DCA"
+      ],
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE"
+    },
+    {
+      "id": "SBI-CARD",
+      "statement": "SBI VISA Crypto Card points automatically convert monthly into one selected asset among BTC, ETH and XRP; base rewards are 0.5% Standard and 1.0% Gold.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD",
+        "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH"
+      ],
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE"
+    },
+    {
+      "id": "SBI-SHAREHOLDER",
+      "statement": "Five SBI Group entities documented 2026 shareholder-benefit programs that can deliver XRP through SBI VC Trade accounts.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-HOLDINGS-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-ARUHI-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-SHINSEI-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER"
+      ],
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE"
+    },
+    {
+      "id": "SBI-RIPPLE",
+      "statement": "An official SBI Group affiliate release describes SBI Holdings as a Ripple investor and strategic partner and states that SBI Ripple Asia was established in 2016.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER"
+      ],
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE"
+    },
+    {
+      "id": "SBI-CARD-CAMPAIGN",
+      "statement": "The September–October 2026 card acquisition campaign was closed in Japan by the 2026-11-01 02:07 JST capture; ordinary card reward mechanics remain separate.",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD"
+      ],
+      "evidence_class": "CONFIRMED_PRIMARY_SOURCE"
+    }
+  ],
+  "inferences": [
+    "The combined DCA, card and multi-affiliate shareholder programs form a plausible SBI Group retail distribution and customer-onboarding funnel into SBI VC Trade.",
+    "The customer-funded DCA product is a potential recurring purchase channel; the card and shareholder programs are reward/distribution channels with different capital semantics."
+  ],
+  "actual_capital_separation": {
+    "customer_funded_dca": "PURCHASE_MECHANISM_CONFIRMED; ACTIVE_XRP_PLANS_AND_EXECUTED_UNITS_UNKNOWN",
+    "card_points": "REWARD_CONVERSION; NOT PROOF OF CUSTOMER-FUNDED OPEN-MARKET BUY",
+    "shareholder_coupons": "BENEFIT_DISTRIBUTION; NOT PROOF OF OPEN-MARKET BUY",
+    "reward_inventory_source": "UNKNOWN; EXISTING INVENTORY, INTERNAL TRANSFER, OTC OR EXTERNAL SPOT SOURCING NOT DISCLOSED",
+    "xrp_dca_plan_count": "UNKNOWN",
+    "xrp_dca_monthly_jpy_fills": "UNKNOWN",
+    "card_xrp_selection_share": "UNKNOWN",
+    "shareholder_xrp_redemption_rate": "UNKNOWN",
+    "aggregate_xrp_units_credited": "UNKNOWN",
+    "net_external_xrp_capital": "UNKNOWN",
+    "price_impact": "UNKNOWN"
+  },
+  "market_observations": [
+    {
+      "observation_id": "XRP-MARKET-20261031T164200Z-LIQWALL",
+      "provider": "Liqwall",
+      "observed_at_utc": "2026-10-31T16:42:00Z",
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "asset": "XRP",
+      "price_usd": 1.25,
+      "open_interest_usd": 1330000000,
+      "open_interest_change_24h_pct": 0.8,
+      "average_funding_8h_pct": 0.004,
+      "binance_funding_8h_pct": 0.01,
+      "liquidations_rolling_24h_usd": 808000,
+      "long_liquidations_usd": 542000,
+      "short_liquidations_usd": 266000,
+      "binance_long_account_share_pct": 72.9,
+      "binance_top_trader_long_account_share_pct": 71,
+      "window_semantics": "Rolling 24-hour liquidations; not comparable to UTC-day bins.",
+      "feature_admission": "PROVIDER_SPECIFIC_OBSERVATION_ONLY; NO_DIRECTIONAL_FEATURE_ADMITTED"
+    },
+    {
+      "observation_id": "XRP-MARKET-20261031T115300Z-BINANCE-DIRECTORY",
+      "provider": "Binance Price Directory",
+      "observed_at_utc": "2026-10-31T11:53:00Z",
+      "retrieved_at_utc": "2026-10-31T17:07:00Z",
+      "asset": "XRP",
+      "price_usd": 1.25,
+      "change_24h_pct": 0.18,
+      "market_cap_usd": 79100000000,
+      "volume_24h_usd": 2000000000,
+      "circulating_supply_xrp": 63400000000,
+      "high_24h_usd": 1.26,
+      "low_24h_usd": 1.23,
+      "window_semantics": "Provider page's explicit last-updated marker is 11:53 UTC.",
+      "feature_admission": "PRICE_CROSSCHECK_ONLY; OLDER_THAN_LIQWALL_PANEL"
+    }
+  ],
+  "market_data_quality": {
+    "price_crosscheck": "Both providers displayed approximately USD 1.25, but their timestamps differ by 4h49m.",
+    "open_interest": "Liqwall reports USD 1.33B; other providers previously observed by Barrot materially differ. Keep provider-specific series separate.",
+    "positioning": "72.9% Binance long-account share is an account count ratio, not notional exposure.",
+    "liquidations": "USD 808K is a rolling 24-hour window; do not compare directly with UTC-day liquidation totals.",
+    "feature_admission": "NO_DIRECTIONAL_MARKET_FEATURE_ADMITTED"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "HYP-SBI-DCA-RECURRING-XRP-DEMAND",
+      "claim": "SBI VC Trade's scheduled accumulation product can create recurring customer-funded XRP purchase demand when customers select XRP and maintain sufficient JPY balances.",
+      "status": "PURCHASE_MECHANISM_CONFIRMED; ACTUAL_XRP_ORDERS_AND_MARKET_IMPACT_UNKNOWN",
+      "support": [
+        "Official product terms specify XRP eligibility, scheduled frequencies, JPY order limits and required prefunding."
+      ],
+      "disconfirming": [
+        "No active-plan counts, filled XRP units, execution venue or external sourcing is disclosed.",
+        "Insufficient balance can skip orders; the dealer may internalize or source inventory away from public spot books."
+      ],
+      "next_test": "Obtain XRP-specific plan counts, monthly JPY order/fill totals and execution/inventory reconciliation."
+    },
+    {
+      "id": "HYP-SBI-RETAIL-DISTRIBUTION-ONBOARDING",
+      "claim": "SBI Group's card and multi-affiliate shareholder-benefit programs may expand XRP ownership and onboard customers into SBI VC Trade.",
+      "status": "DISTRIBUTION_MECHANISMS_CONFIRMED; ADOPTION_AND_NET_CAPITAL_UNQUANTIFIED",
+      "support": [
+        "Five SBI entities documented XRP shareholder benefits; receipt requires an SBI VC Trade account.",
+        "The card converts points into selected crypto-assets, including XRP.",
+        "SBI Insurance Group explicitly describes improving awareness and understanding of the SBI Group as a program objective."
+      ],
+      "disconfirming": [
+        "No participant counts, XRP selection shares, coupon redemptions or XRP units credited are disclosed.",
+        "Some benefits are optional and can be exchanged for non-crypto products.",
+        "Rewards may be fulfilled from existing inventory rather than new market purchases."
+      ],
+      "next_test": "Obtain eligible-holder counts, redemption rates, XRP units credited and inventory source-of-funds records."
+    },
+    {
+      "id": "HYP-SBI-REWARD-INVENTORY-NOT-SPOT-BUY",
+      "claim": "Card points and shareholder XRP coupons may be fulfilled through existing dealer inventory or internal transfers without equivalent contemporaneous public-market buying.",
+      "status": "PLAUSIBLE_COUNTERHYPOTHESIS; INVENTORY_SOURCE_UNKNOWN",
+      "support": [
+        "Reward conversion uses an SBI VC Trade displayed sales-price reference, not a disclosed external execution record.",
+        "The programs specify fixed JPY benefit values and same-name account credits."
+      ],
+      "disconfirming": [
+        "If SBI VC Trade replenishes inventory externally, some reward fulfillment could induce spot or OTC demand; no procurement evidence is published."
+      ],
+      "next_test": "Reconcile reward liabilities, treasury inventory and exchange/OTC purchase records over the benefit settlement windows."
+    }
+  ],
+  "sbic_identity_separation": {
+    "status": "PRIOR_LEDGER_IDENTITY_RETAINED",
+    "japanese_candidate": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (Tokyo SBIC)",
+    "distinction": "Tokyo SBIC is not SBI Holdings or SBI VC Trade. No direct XRP relationship is established by the SBIC/ChatGPT educational-event evidence."
+  },
+  "repository_state": {
+    "main_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+    "open_pr_count": 193,
+    "draft_pr_count": 183,
+    "ready_pr_count": 10,
+    "main_based_pr_count": 191,
+    "stale_main_based_pr_count": 189,
+    "current_main_based_prs": [
+      1419,
+      1420
+    ],
+    "remediation_prs": [
+      {
+        "number": 1419,
+        "head_sha": "4fd68e3b0a00868e52ae10aa9369372b9df12df4",
+        "ci_run_id": 41222623134,
+        "tests_passed": 345,
+        "subtests_passed": 8,
+        "gate_run_id": 41222623112,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "state": "OPEN_DRAFT_UNMERGED"
+      },
+      {
+        "number": 1420,
+        "head_sha": "9950a00fae54afed0c84db2e1946f6c6f1f9fa15",
+        "ci_run_id": 41222627119,
+        "tests_passed": 346,
+        "subtests_passed": 8,
+        "gate_run_id": 41222627169,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "state": "OPEN_DRAFT_UNMERGED"
+      }
+    ],
+    "main_write_paths_rechecked": [
+      ".github/workflows/cross-analysis.yml",
+      ".github/workflows/scheduler-tick.yml",
+      ".github/workflows/rotate-databricks-token.yml"
+    ],
+    "main_write_paths_still_active": true,
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alert_access": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "branch_protection_details": "403_FROM_AVAILABLE_READ_ACTION; REQUIRED_CONTEXTS_NOT_ESTABLISHED",
+    "main_modified_by_this_run": false
+  },
+  "feature_admission": {
+    "sbi_product_mechanics": "ADMITTED_AS_PRODUCT_MECHANICS_ONLY",
+    "customer_funded_dca_quantity": "BLOCKED_PENDING_EXECUTION_DATA",
+    "reward_distribution_quantity": "BLOCKED_PENDING_REDEMPTION_DATA",
+    "market_structure_series": "PROVIDER_SPECIFIC_ONLY",
+    "directional_xrp_price_feature": "NOT_ADMITTED"
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No calibrated walk-forward model or verified executed-flow feature is available."
+  },
+  "platform_coordination": {
+    "platforms_designed": 9,
+    "external_platforms_authenticated": 0,
+    "live_external_collaborators": 0,
+    "verified_handoffs": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "safety": "Public and authorized evidence only. No account access, purchase orders, paper-position changes, secret access, workflow dispatch, merge, force-push, deployment or real-money trade."
+}

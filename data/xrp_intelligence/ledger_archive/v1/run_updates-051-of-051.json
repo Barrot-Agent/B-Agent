@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 50,
+  "chunk_count": 51,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T12:59:50Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T12:59:50Z",
+      "update_type": "DUPLICATE_SOURCE_CORRECTION_AND_MAIN_BRANCH_COMPENSATING_REVERT",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "duplicate_source_id_incident": {
+        "validator_failure_run_id": 41059362112,
+        "tests_passed": 17,
+        "tests_failed": 1,
+        "duplicate_source_id": "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+        "canonical_existing_record": "data/xrp_intelligence/ledger_archive/v1/sources-024-of-024.json",
+        "corrected_referenced_shard": "data/xrp_intelligence/ledger_archive/v1/sources-040-corrected-of-040.json",
+        "original_duplicate_shard": "data/xrp_intelligence/ledger_archive/v1/sources-040-of-040.json",
+        "original_preserved_unreferenced": true,
+        "fail_closed_gate_run_id": 41059362130,
+        "gate_status": "PASS_MERGE_DISABLED"
+      },
+      "main_branch_incident": {
+        "accidental_commit": "6f71dd684ae49d48e9dfb5f62dde4bf7cb715818",
+        "accidental_path": "data/xrp_intelligence/ledger_archive/v1/limitations-044-of-044.json",
+        "cause": "One GitHub create-file call omitted the explicit branch parameter and defaulted to main.",
+        "compensating_delete_commit": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+        "accidental_path_absent_after_revert": true,
+        "main_pre_run_sha": "653b66de9a9545bc756a34385972f06038229783",
+        "main_current_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+        "compare_pre_run_to_current_main": {
+          "ahead": 3,
+          "behind": 0,
+          "only_changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+          "reason": "Scheduled cross-analysis workflow generated output; the accidental limitations file was removed."
+        },
+        "main_history_contains_add_delete_pair": true,
+        "user_work_overwritten": false,
+        "force_push": false,
+        "corrective_policy": "All subsequent GitHub writes explicitly specify the research branch; verify branch target before every mutation."
+      },
+      "repository_safety": {
+        "main_cross_analysis_write_enabled": true,
+        "pr1371_state": "OPEN_DRAFT_UNMERGED; exact base 653b66de9a9545bc756a34385972f06038229783; now behind current main; refresh and rerun exact-head checks before approval.",
+        "no_merge_performed": true,
+        "no_deployment": true,
+        "no_workflow_dispatch": true,
+        "no_paper_state_mutation": true,
+        "no_real_money_trade": true
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false
+    }
+  ]
+}

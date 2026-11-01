@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 72,
+  "chunk_count": 73,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T17:03:30Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T17:03:30Z",
+      "update_type": "SBI_SMBC_PRIMARY_EQUITY_CORRECTION_AND_OPEN_STANDARD_MULTIRAIL",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T170330Z-sbi-smbc-open-standard-correction.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T170330Z-sbi-smbc-open-standard-correction.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T170330Z-sbi-open-standard-evidence-status.json",
+      "source_ids": [
+        "SRC-SBI-SMBC-5PCT-PRIMARY-20261030",
+        "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-20261016",
+        "SRC-BINANCE-NEWS-JPYSC-OUTSTANDING-20261030"
+      ],
+      "findings": "Corrected SMBC 5% SBI Startale Marketing participation from secondary-only to primary-confirmed using SBI's official release. Added SBI/Startale Open Standard participation and exploratory JPYSC/OUSD interoperability; Coinbase is a consortium participant, not a proven direct JPYSC counterparty. Preserved the JPY20.8B Oct30 outstanding estimate as secondary, separate from official Sep7 JPY20.1B.",
+      "new_sources": 3,
+      "new_relationship_edges": 4,
+      "new_hypotheses": 1,
+      "new_market_observations": 0,
+      "prior_research_head": "c1109f66e580a2a5ff0af59cbe726de4217b5cc9",
+      "new_append_validation": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "no_main_write": true,
+      "no_merge": true,
+      "no_force_push": true,
+      "no_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true
+    }
+  ]
+}

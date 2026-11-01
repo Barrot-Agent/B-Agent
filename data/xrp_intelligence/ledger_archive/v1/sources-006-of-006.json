@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 5,
+  "chunk_count": 6,
+  "record_count": 15,
+  "records": [
+    {
+      "id": "SRC-REUTERS-BINANCE-SECURITY-20261029",
+      "evidence_class": "SECONDARY_WIRE_REPORT",
+      "url": "https://www.reuters.com/legal/transactional/tether-circle-freeze-238-billion-after-binance-reports-security-incident-2026-10-29/",
+      "title": "Reuters: Tether and Circle freeze $2.38B after Binance reports potential security issue",
+      "published_at": "2026-10-29T22:26:00Z",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Reuters reports Binance was investigating a potential security issue and said user funds were safe; Tether said it froze nearly $1.57B, Circle over $800M, and Binance co-founder Yi He said Ripple had frozen roughly $200M. Reuters does not identify the asset, chain or addresses for Ripple's reported freeze. Binance had not confirmed theft."
+    },
+    {
+      "id": "SRC-AP-BINANCE-SECURITY-20261029",
+      "evidence_class": "SECONDARY_WIRE_REPORT_INDEPENDENT_CORROBORATION",
+      "url": "https://apnews.com/article/binance-cryptocurrency-security-39cda8ceb8095e036334a18549d3d20d",
+      "title": "AP: Binance investigates potential security issue as stablecoin issuers freeze funds",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "AP independently reports the extent of damage was unclear and Binance had not explicitly confirmed funds were pilfered; Binance said user funds were safe. AP quotes Circle CEO as saying more than $800M USDC-equivalent was frozen in coordination with law enforcement and Tether CEO as saying more than $1.5B was frozen."
+    },
+    {
+      "id": "SRC-XRPL-FREEZE-CONTROLS-20261030",
+      "evidence_class": "CONFIRMED_PRIMARY_PROTOCOL_DOCUMENTATION",
+      "url": "https://xrpl.org/docs/concepts/tokens/fungible-tokens/freezes",
+      "title": "XRPL documentation: freezing issued tokens",
+      "published_at": "2026-09-29",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "XRPL docs explicitly state no one can freeze native XRP on the XRP Ledger; issuers can freeze issued trust-line tokens, while custodial exchanges can freeze assets they custody. This is the protocol-level disconfirming evidence against interpreting an unspecified Ripple freeze as native XRP frozen at ledger level."
+    },
+    {
+      "id": "SRC-PRIVY-RIPPLE-XRPL-20261013",
+      "evidence_class": "CONFIRMED_PRIMARY_PARTNERSHIP_ANNOUNCEMENT",
+      "url": "https://blog.privy.io/blog/building-payments-and-agentic-commerce-with-the-xrp-ledger",
+      "title": "Privy: Building payments and agentic commerce with the XRP Ledger",
+      "published_at": "2026-10-13",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Privy's official announcement describes a Stripe-owned wallet-infrastructure partnership with Ripple/XRPL to support programmable wallets and agentic commerce. Announcement establishes integration intent/capability, not production volume, XRP inventory demand or material settlement flow."
+    },
+    {
+      "id": "SRC-TRADRADAR-XRP-PERP-20261029T1905Z",
+      "evidence_class": "SECONDARY_DERIVATIVES_DASHBOARD_PRE_INCIDENT",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "TradRadar XRP derivatives snapshot, October 29 19:05 UTC",
+      "published_at": "2026-10-29T19:05:00Z",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Pre-Binance-incident snapshot: XRP $1.2831, aggregate OI about $2.00B across seven venues, OI down 0.11%, funding +0.0071% per eight hours, at least $5.72M liquidations mostly longs, 79.2% long-account share across five venues. Secondary dashboard; account ratio is not notional exposure; venue scope and aggregation not independently reconciled."
+    },
+    {
+      "id": "SRC-CMC-XRP-QUOTE-20261030T0012Z",
+      "evidence_class": "SECONDARY_DYNAMIC_MARKET_DATA_UNSYNCHRONIZED",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "title": "CoinMarketCap XRP live market page",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Dynamic page at capture displayed approximately $1.29, +2.01% over 24 hours, $82.22B market cap, $2.13B 24h volume and 63.35B circulating supply. No synchronized exchange quote timestamp was exposed; not comparable with other aggregator pages or admitted as a feature."
+    },
+    {
+      "id": "SRC-COINDESK-XRP-QUOTE-20261030T0012Z",
+      "evidence_class": "SECONDARY_DYNAMIC_MARKET_DATA_UNSYNCHRONIZED",
+      "url": "https://www.coindesk.com/price/xrp",
+      "title": "CoinDesk XRP live market page",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Dynamic page at capture displayed $81.72B market cap, $1.10B 24h volume and a 2.77% decline. Quote timestamp and venue universe were not aligned with CoinMarketCap or Coinbase; retained as a conflicting aggregator observation, not averaged or admitted."
+    },
+    {
+      "id": "SRC-COINBASE-XRP-QUOTE-20261030T0012Z",
+      "evidence_class": "SECONDARY_PLATFORM_SPECIFIC_RETAIL_ACTIVITY_METRIC",
+      "url": "https://www.coinbase.com/price/xrp",
+      "title": "Coinbase XRP market page",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Dynamic page displayed approximately $81.762B market cap and $2.141B 24h volume, and stated 98% of Coinbase customers increased their net XRP position through trading over the prior 24 hours. This is a platform-specific user-count share, not dollar-weighted flow, not all Coinbase volume, and not representative of the whole market."
+    },
+    {
+      "id": "SRC-PERMISSION-ASK-DOCS-20261030",
+      "evidence_class": "CONFIRMED_PRIMARY_TOKEN_DOCUMENTATION",
+      "url": "https://docs.permission.ai/ask-token",
+      "title": "Permission official ASK token documentation",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Permission describes ASK as its native token for consent/rewards and agent-to-agent coordination, fixed 100B supply, LayerZero OFT, and active Base and Polygon contracts. No XRPL deployment or direct XRP integration is listed in this documentation."
+    },
+    {
+      "id": "SRC-CMC-PERMISSION-ASK-20261030",
+      "evidence_class": "SECONDARY_TOKEN_CATALOG_AND_DYNAMIC_MARKET_DATA",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "title": "CoinMarketCap Permission Coin (ASK)",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Dynamic page displayed roughly $0.00008727, $1.41M market cap, $235.51 24h volume, 16.16B circulating and 100B maximum supply. Extremely thin reported turnover; figures are dynamic and should be independently checked on Base/Polygon explorers and venue order books."
+    },
+    {
+      "id": "SRC-CMC-GOASK-20261030",
+      "evidence_class": "SECONDARY_TOKEN_CATALOG_TICKER_COLLISION",
+      "url": "https://coinmarketcap.com/currencies/goask/",
+      "title": "CoinMarketCap GoAsk (ASK) separate ticker candidate",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "A separate GoAsk asset also uses ticker ASK, with a 1B supply and a different Ethereum contract. This establishes ticker ambiguity; it is not the Permission Coin ASK token."
+    },
+    {
+      "id": "SRC-TIMESTABLOID-ACTUAL-CAPITAL-20251015",
+      "evidence_class": "SECONDARY_COMMENTARY_MARKET_FLOW_METHODOLOGY",
+      "url": "https://timestabloid.com/analyst-explains-effect-of-small-capital-movements-on-xrp-price/",
+      "title": "Times Tabloid: Zach Rector's XRP market-cap multiplier analysis",
+      "published_at": "2025-10-15",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Reports a roughly 1,200x ratio of market-cap change to reported exchange netflows during a volatile interval and explicitly notes exchange transfers do not measure actual capital entering or leaving the market. Its suggestion that CVD better measures buy/sell pressure is a useful but incomplete proxy: CVD is executed order-flow imbalance, not total new capital or OTC/ETF funding."
+    },
+    {
+      "id": "SRC-COINTURK-XRP-MULTIPLIER-202610",
+      "evidence_class": "SECONDARY_COMMENTARY_MARKET_FLOW_METHODOLOGY",
+      "url": "https://en.coin-turk.com/xrp-market-cap-rose-43-74-billion-as-net-inflows-hit-44-3-million-in-two-days/",
+      "title": "CoinTurk: XRP market-cap change versus reported exchange netflows",
+      "published_at": "2026-10",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Reports a 986x ratio derived from a $43.74B market-cap increase divided by about $44.3M in exchange netflows. This arithmetic does not demonstrate a capital multiplier: exchange netflows are transfers, not executed purchases or fiat/stablecoin inflows; market cap is marginal price multiplied by supply."
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-CHANNEL-20261030",
+      "evidence_class": "PUBLIC_CHANNEL_IDENTITY_CANDIDATE",
+      "url": "https://www.youtube.com/channel/UCXm6KAr1WHF6UN7g5b2W7wg",
+      "title": "YouTube channel listing: Kamilah Stevenson | XRP & Stocks",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "YouTube search index identifies channel ID UCXm6KAr1WHF6UN7g5b2W7wg and handle @KamilahStevensonXrpStocks. Channel description covers stocks, crypto, market insights and long-term investing. It does not identify the creator as the exact requested spelling Camilla Stephenson."
+    },
+    {
+      "id": "SRC-IHEART-KAMILAH-CAMILLA-INTERVIEW-20261030",
+      "evidence_class": "PUBLIC_INTERVIEW_TRANSCRIPT_IDENTITY_VARIANT",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "title": "The XRP Podcast: Crypto Panics with Dr. Kamilah Stevenson",
+      "accessed_at_utc": "2026-10-30T00:13:00Z",
+      "note": "Transcript includes the guest identifying herself as Camilla Stevenson on X and Dr Camilla Stevenson on YouTube, while the episode title and other indexed channel materials use Kamilah. She warns that fake pages exist. This supports spelling/branding variants and impersonation risk, but does not prove equivalence to the exact requested name Camilla Stephenson."
+    }
+  ]
+}

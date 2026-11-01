@@ -1,0 +1,254 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "index_format_version": "3.0",
+  "snapshot_id": "XRP-20261031T123652Z-BINANCE-POR-AND-SCHEDULER-SECURITY-AUDIT",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031t123652z-binance-por-and-scheduler-security-audit.json",
+  "captured_at_utc": "2026-10-31T12:36:52Z",
+  "data_cutoff_utc": "2026-10-31T12:36:52Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json",
+  "source_ids": [
+    "SRC-20261031T123652Z-BINANCE-POR-PAGE-STATUS",
+    "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2",
+    "SRC-20261031T123652Z-GITHUB-PR1412-SCHEDULER-QUARANTINE",
+    "SRC-20261031T123652Z-GITHUB-MAIN-PR-INVENTORY",
+    "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE",
+    "SRC-20261031T121200Z-GITHUB-PR1411-TOKEN-SAFETY",
+    "SRC-20261031T121200Z-XRP-INSIGHTS-NOV1-ESCROW"
+  ],
+  "source_reference_count": 7,
+  "missing_source_references": 0,
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "Binance's official Security Incident Update #2, published 2026-10-30 19:33 UTC, announced an initial Proof of Reserves snapshot within 12 hours and results by 2026-11-02. The 12-hour target elapsed at approximately 2026-10-31 07:33 UTC.",
+      "source_ids": [
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2"
+      ],
+      "classification": "CONFIRMED_COMPANY_STATEMENT_PLUS_TIME_CALCULATION"
+    },
+    {
+      "id": "F2",
+      "statement": "At 2026-10-31 12:31:30 UTC, the rendered Binance public Proof of Reserves page showed blank Audit Time, Verification Mechanism, Merkle Root Hash and address-download metadata.",
+      "source_ids": [
+        "SRC-20261031T123652Z-BINANCE-POR-PAGE-STATUS"
+      ],
+      "classification": "OFFICIAL_PAGE_RENDER_OBSERVATION"
+    },
+    {
+      "id": "F3",
+      "statement": "Main remained at c779b26c68e7e3f0fa50dd99cc2f03c58e198148. The open-PR inventory contained 185 PRs: 175 drafts, 10 ready, 183 main-based, 181 stale main bases, two current-main bases (#1411 and #1412), and two non-main bases.",
+      "source_ids": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-PR-INVENTORY"
+      ],
+      "classification": "LIVE_REPOSITORY_OBSERVATION"
+    },
+    {
+      "id": "F4",
+      "statement": "Main scheduler-tick.yml grants contents:write and actions:write, invokes scheduler.py tick with GH_TOKEN, and commits/pushes queue state to main. scheduler.py accepts any existing workflow file as a target; no strict workflow allowlist is implemented.",
+      "source_ids": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE"
+      ],
+      "classification": "CONFIRMED_REPOSITORY_CODE_OBSERVATION"
+    },
+    {
+      "id": "F5",
+      "statement": "The main schedule queue contained one historical completed entry and zero pending entries at the time of inspection.",
+      "source_ids": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE"
+      ],
+      "classification": "CONFIRMED_REPOSITORY_DATA_OBSERVATION"
+    },
+    {
+      "id": "F6",
+      "statement": "PR #1412 proposes a read-only scheduler queue audit. Its exact-head CI passed 344 tests and 8 subtests; the fail-closed gate passed with merging disabled. It remains open, draft and unmerged.",
+      "source_ids": [
+        "SRC-20261031T123652Z-GITHUB-PR1412-SCHEDULER-QUARANTINE"
+      ],
+      "classification": "VERIFIED_PR_BRANCH_CI_EVIDENCE"
+    },
+    {
+      "id": "F7",
+      "statement": "PR #1411 proposes disabling the unsafe Databricks token-input workflow, but it remains open, draft and unmerged; the unsafe workflow is still present on main.",
+      "source_ids": [
+        "SRC-20261031T121200Z-GITHUB-PR1411-TOKEN-SAFETY"
+      ],
+      "classification": "VERIFIED_PR_STATUS_AND_MAIN_FILE_OBSERVATION"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Binance allocated more than $6.34B in company funds, held approximately $5B in affected token assets and was acquiring the remaining approximately $1.34B; it reported approximately $3B frozen on-chain.",
+      "source_ids": [
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2"
+      ],
+      "claimant": "Binance",
+      "independent_corroboration": "NOT_ESTABLISHED_FOR_TOKEN_SPECIFIC_REPLENISHMENT",
+      "classification": "SOURCED_COMPANY_CLAIM"
+    },
+    {
+      "claim": "Binance expected results of its initial PoR snapshot by 2026-11-02.",
+      "source_ids": [
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2"
+      ],
+      "claimant": "Binance",
+      "independent_corroboration": "PUBLIC_RESULT_NOT_VERIFIED_AT_CUTOFF",
+      "classification": "SOURCED_COMPANY_TIMELINE"
+    }
+  ],
+  "inferences": [
+    {
+      "statement": "The blank rendered PoR fields do not establish that no snapshot was taken; the page may be dynamically populated or publication may lag. The public result remains unverified.",
+      "supporting_source_ids": [
+        "SRC-20261031T123652Z-BINANCE-POR-PAGE-STATUS",
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "statement": "No XRP-specific replenishment quantity can be inferred from the aggregate approximately $1.34B acquisition plan.",
+      "supporting_source_ids": [
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "statement": "The scheduler's broad dispatch permission creates a high-impact execution path because a due queue entry can name any existing workflow file. The currently empty pending queue reduces immediate queued-work exposure but does not remove the structural permission risk.",
+      "supporting_source_ids": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE"
+      ],
+      "confidence": "HIGH"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Binance completed the initial snapshot but public report fields are not yet rendered or published.",
+      "supporting_evidence": [
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2",
+        "SRC-20261031T123652Z-BINANCE-POR-PAGE-STATUS"
+      ],
+      "counter_hypotheses": [
+        "The snapshot was delayed or not completed by the target."
+      ],
+      "disconfirming_evidence": [
+        "The public page fields were blank at the observation time."
+      ],
+      "status": "UNRESOLVED",
+      "confidence": "LOW"
+    },
+    {
+      "id": "H2",
+      "statement": "A modified or malicious scheduler queue entry could dispatch a sensitive existing workflow through the main scheduler's actions:write capability.",
+      "supporting_evidence": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE"
+      ],
+      "counter_hypotheses": [
+        "Workflow-specific triggers, inputs or permissions may prevent a particular target from completing."
+      ],
+      "disconfirming_evidence": [
+        "The inspected queue had zero pending entries and no dispatch was performed."
+      ],
+      "status": "STRUCTURAL_RISK_CONFIRMED; EXPLOITATION_NOT_OBSERVED",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "H3",
+      "statement": "A temporary read-only scheduler audit is a low-risk containment step while durable non-main queue state and a strict allowlist are designed.",
+      "supporting_evidence": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE",
+        "SRC-20261031T123652Z-GITHUB-PR1412-SCHEDULER-QUARANTINE"
+      ],
+      "counter_hypotheses": [
+        "Pausing dispatch delays future scheduled work if new tasks are queued."
+      ],
+      "disconfirming_evidence": [
+        "No pending queue entries existed at the time of the change."
+      ],
+      "status": "PROPOSED_ON_PR_BRANCH_ONLY",
+      "confidence": "HIGH"
+    }
+  ],
+  "unknowns": [
+    "Whether Binance actually took the initial PoR snapshot by 2026-10-31 07:33 UTC; the public report result remains unverified.",
+    "Token-specific reserve balances, customer liabilities, XRP purchases, acquisition venues and completed reserve-address crosswalk.",
+    "Whether the blank rendered PoR metadata reflects dynamic page rendering or a publication delay.",
+    "Whether any future scheduler queue entry would target a workflow that can complete under its own event, input and permission constraints.",
+    "A durable non-main queue-state mechanism and strict workflow/input allowlist have not yet been implemented.",
+    "The approval workflow's zero-job push failure root cause remains unknown.",
+    "Full repository CI, dependency vulnerability scanning and branch-protection details remain incomplete."
+  ],
+  "disconfirming": [
+    {
+      "finding": "The current queue contained one completed historical entry and zero pending entries; no scheduled work was discarded by the proposed quarantine.",
+      "source_ids": [
+        "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE"
+      ]
+    },
+    {
+      "finding": "The blank Proof of Reserves page is not conclusive evidence that no snapshot was taken because dynamic rendering and publication lag remain possible.",
+      "source_ids": [
+        "SRC-20261031T123652Z-BINANCE-POR-PAGE-STATUS"
+      ]
+    },
+    {
+      "finding": "The approximately $1.34B aggregate remaining token-acquisition plan does not identify XRP as an allocated purchase asset.",
+      "source_ids": [
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2"
+      ]
+    }
+  ],
+  "limitations": [
+    "Binance's public Proof of Reserves page rendered blank audit-time, verification-mechanism, Merkle-root and address-download fields at 2026-10-31 12:31:30 UTC. Dynamic rendering or publication lag remain possible; this does not prove that the announced snapshot was not taken.",
+    "Binance's approximately $1.34B remaining affected-token acquisition plan is aggregate. No XRP-specific purchase quantity, execution venue, timing or completed reserve-address crosswalk has been disclosed.",
+    "PR #1412 is a draft proposal. Main's scheduler retains contents:write/actions:write and broad workflow dispatch authority until an authorized merge; this run did not change main.",
+    "The read-only scheduler proposal intentionally pauses future automatic queue dispatch if merged. The inspected queue had one historical completed entry and zero pending entries; a durable non-main queue-state and strict workflow/input allowlist design is still required.",
+    "Full repository CI, dependency vulnerability scanning and complete branch-protection details remain incomplete. Eight external AI platforms remain unauthenticated and have no verified live handoffs."
+  ],
+  "repository_state": {
+    "main_sha": "c779b26c68e7e3f0fa50dd99cc2f03c58e198148",
+    "open_prs": 185,
+    "drafts": 175,
+    "ready": 10,
+    "current_main_base_prs": [
+      1411,
+      1412
+    ],
+    "stale_main_based_prs": 181,
+    "main_scheduler_write_active": true,
+    "pr1412_state": "OPEN_DRAFT_UNMERGED",
+    "pr1412_ci": "344_TESTS_PLUS_8_SUBTESTS_PASS",
+    "pr1412_gate": "PASS_MERGE_DISABLED"
+  },
+  "event_watch": [
+    {
+      "event": "XRP 1B escrow release",
+      "scheduled_at_utc": "2026-11-01T00:00:00Z",
+      "source_ids": [
+        "SRC-20261031T121200Z-XRP-INSIGHTS-NOV1-ESCROW"
+      ],
+      "status": "SCHEDULED_PROVIDER_OBSERVATION; ESCROWFINISH/RE-ESCROW/DESTINATION/SALE_UNKNOWN"
+    },
+    {
+      "event": "Binance post-incident Proof of Reserves results",
+      "deadline_date": "2026-11-02",
+      "source_ids": [
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2"
+      ],
+      "status": "COMPANY_STATED_DEADLINE; PUBLIC_RESULT_NOT_VERIFIED"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "operational_boundary": {
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "deployment": false,
+    "paper_position_mutated": false,
+    "real_money_trade": false,
+    "local_worktree_operations": false
+  }
+}

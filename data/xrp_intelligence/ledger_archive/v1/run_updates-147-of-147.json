@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 146,
+  "chunk_count": 147,
+  "record_count": 1,
+  "created_at_utc": "2026-10-31T14:48:24.128Z",
+  "records": [
+    {
+      "id": "RUN-202610311448Z-BINANCE-UPDATE3-SBI-CARD-V3-AUDIT",
+      "recorded_at_utc": "2026-10-31T14:48:24.128Z",
+      "update_type": "BINANCE_RECOVERY_UPDATE3_SBI_CURRENT_CARD_AND_V3_AUDIT",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "b945d0054a1acabb95ae3be4a20b4d309c6bc0e3",
+      "data_commit_sha": "3b337730f9a876e304cc297f8fd0b05a75a65743",
+      "research_addendum": {
+        "snapshot_path": "data/xrp_intelligence/snapshots/202610311448Z-binance-recovery3-sbi-card-and-v3-state.json",
+        "graph_path": "data/xrp_intelligence/relationship_graph_addenda/202610311448Z-binance-sbi-coinbase-circle-graph.json",
+        "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/202610311448Z-actual-capital-and-feature-admission.json",
+        "repository_audit_path": "data/repository_audits/202610311448Z-main-190-pr-and-workflow-audit.json",
+        "source_bundle_path": "data/xrp_intelligence/sources/202610311448Z-binance-sbi-coinbase-source-bundle.json",
+        "source_ids": [
+          "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+          "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+          "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+          "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU",
+          "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER",
+          "SRC-202610311448Z-SBI-RLUSD-LISTING",
+          "SRC-202610311448Z-REUTERS-COINBASE-KEY-HARDENING",
+          "SRC-202610311448Z-GITHUB-PR-WORKFLOW-AUDIT"
+        ],
+        "new_relationship_edges": 13,
+        "new_competing_hypotheses": 6,
+        "new_market_observations": 0,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      },
+      "findings": [
+        "Binance Recovery Update #3, published 2026-10-31 14:24 UTC, says aggregate coverage is 90% and the ten named assets including XRP are at least 1:1 backed in the 2026-10-31 00:00 UTC snapshot; full zk-SNARK proof is pending and estimated by 2026-11-03.",
+        "No XRP-specific replenishment units, USD purchases, spot/OTC venue split or same-time reserve/liability crosswalk are disclosed.",
+        "The SBI VISA Crypto Card's current September–October campaign application window ends 2026-10-31 JST; XRP is selectable, but reward units, selection share and inventory sourcing are unknown.",
+        "SBI/Visa MOU is exploratory and not XRP-specific; SBI VC Trade/Ripple RLUSD listing is a separate stablecoin relationship.",
+        "Reuters reports Coinbase adjusted offline key-storage systems as a precaution; no XRP-specific market action is established."
+      ],
+      "corrections": [
+        "Do not infer XRP demand from Binance's aggregate 90% recovery figure or SAFU/Futures Insurance Fund/corporate treasury funding.",
+        "Do not treat SBI VC Trade's displayed reward sales-price reference as a spot execution.",
+        "Keep current September–October card campaign distinct from the expired May–August launch campaign.",
+        "Keep Coinbase offline-key hardening separate from Coinbase's XRP futures/collateral products."
+      ],
+      "repository_audit": {
+        "main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+        "open_pr_inventory": {
+          "open": 190,
+          "draft": 180,
+          "ready": 10,
+          "main_based": 188,
+          "current_main_base": 5,
+          "stale_main_based": 183,
+          "non_main_base": 2
+        },
+        "verified_current_main_prs": [
+          {
+            "number": 1413,
+            "head_sha": "8b8edd9442fc00cb735241bace1e991a63da2825",
+            "ci_run_id": 41210994654,
+            "tests_passed": 369,
+            "subtests_passed": 8,
+            "gate_run_id": 41210994741,
+            "gate_status": "PASS_MERGE_DISABLED"
+          },
+          {
+            "number": 1414,
+            "head_sha": "ba4ef0804ca25e2cbf9bd7d8ccbfde6bf54ec4c9",
+            "ci_run_id": 41211327544,
+            "tests_passed": 385,
+            "subtests_passed": 8,
+            "gate_run_id": 41211327534,
+            "gate_status": "PASS_MERGE_DISABLED"
+          },
+          {
+            "number": 1415,
+            "head_sha": "a0349c53da48b8c6d09fdc75cfca6573cfa97589",
+            "ci_run_id": 41211473170,
+            "tests_passed": 354,
+            "subtests_passed": 8,
+            "gate_run_id": 41211473171,
+            "gate_status": "PASS_MERGE_DISABLED"
+          },
+          {
+            "number": 1416,
+            "head_sha": "b118eb2578764032f509a267e2da78a26f435e59",
+            "ci_run_id": 41211272080,
+            "tests_passed": 373,
+            "subtests_passed": 8,
+            "gate_run_id": 41211272079,
+            "gate_status": "PASS_MERGE_DISABLED"
+          },
+          {
+            "number": 1417,
+            "head_sha": "1e0ec0029814db36f8984b8018dbc0ebcb546e2c",
+            "ci_run_id": 41211016595,
+            "tests_passed": 349,
+            "subtests_passed": 8,
+            "gate_run_id": 41211016596,
+            "gate_status": "PASS_MERGE_DISABLED"
+          }
+        ],
+        "main_write_paths_remain_active": true,
+        "critical_databricks_token_input_workflow_remains_on_main": true,
+        "scheduler_queue": {
+          "entries": 1,
+          "pending": 0,
+          "completed": 1
+        },
+        "approval_workflow_zero_job_failure": "ROOT_CAUSE_UNKNOWN",
+        "branch_protection_details": "403_NOT_VERIFIED",
+        "dependency_lockfiles_found_last_inventory": 0,
+        "vulnerability_scan": "NOT_COMPLETED",
+        "full_repository_ci": "NOT_RUN",
+        "local_worktree": "NOT_INSPECTED"
+      },
+      "limitations": [
+        "Binance's new 1:1 XRP coverage is a company assertion; full zk-SNARK proof and independent address/liability reconciliation are pending.",
+        "XRP-specific replenishment purchases, units, spot/OTC execution and source-wallet-to-reserve crosswalk are unknown.",
+        "SBI card XRP selection share, monthly reward units, campaign reward realization and inventory source are unknown.",
+        "The SBI/Visa MOU is exploratory; RLUSD listing does not establish XRP settlement or demand.",
+        "Derivatives OI provider universes remain non-comparable; no synchronized market price was captured.",
+        "Full repository CI, dependency CVE scan and branch-protection details remain incomplete; eight external AI platforms remain unauthenticated.",
+        "Exact 'actual capital' originating context and Camilla Stephenson's YouTube channel identity remain unresolved; no exhaustive video inventory is claimed."
+      ],
+      "next_actions": [
+        "Obtain Binance's full zk-SNARK proof and October 31 address/liability export by the November 3 estimate.",
+        "Crosswalk five XRPL incident source wallets and attacker receiver against Binance reserve addresses and current raw XRPL state.",
+        "Require token-specific XRP replenishment execution evidence before admitting any actual-capital feature.",
+        "Track the SBI card campaign close and future February 2027 crypto reward realization; do not infer purchases from card reward face value.",
+        "Reconcile XRP derivatives contracts and build fixed-horizon leakage-safe walk-forward benchmarks.",
+        "Review PRs #1413–#1417 individually; keep draft/unmerged until user approval and current-main verification.",
+        "Resolve remaining scheduled/manual main writers, critical Databricks token workflow and zero-job approval workflow failure without weakening gates."
+      ],
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "state_mutated": false,
+        "main_modified": false,
+        "merge": false,
+        "force_push": false,
+        "manual_dispatch": false,
+        "deployment": false,
+        "paper_position_mutation": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

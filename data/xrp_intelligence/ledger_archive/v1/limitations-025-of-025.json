@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 24,
+  "chunk_count": 25,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:49:00Z",
+  "records": [
+    "The sharded-ledger validator requires latest_snapshot.captured_at_utc, snapshot_id and snapshot_path to exactly match the referenced immutable snapshot JSON. A correction must create a new versioned snapshot with all three fields matching the pointer; do not rewrite the prior snapshot."
+  ]
+}

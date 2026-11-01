@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T213618Z-ESCROW-2B-ACTUAL-CAPITAL",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "status": "ACCEPTED_FOR_RESEARCH; NO_DIRECTIONAL_FEATURES",
+  "decisions": [
+    "1B XRP is eligible for escrow finish at Nov1 00:00 UTC; it is not an executed release or sale.",
+    "The 2B context is 1B reported in two Ripple-labelled account balances Oct29 plus 1B still escrowed; do not label 2B unlocked, circulating or sold.",
+    "70% trailing-12-month re-escrow is a historical baseline, not a rule.",
+    "$16T product volume, $150B Ripple Payments lifetime volume and secondary $13T Treasury volume are distinct and none discloses XRP-routed volume.",
+    "SBI Remit's XRP bridge is documented in a 2023 company announcement; current volume and inventory unknown.",
+    "BNY XRP custody support is institutional access, not proof of balances or purchases.",
+    "Coinbase RLUSD distribution is separate from native XRP demand; Global Exchange collateral support was planned, not live at launch.",
+    "ETF flow series remain provider/date specific; no averaging or spot-execution inference.",
+    "No directional feature admitted; no forecast issued."
+  ],
+  "required_verification": [
+    "Capture both escrow objects and both Ripple-labelled accounts at pinned validated ledgers before/after Nov1 00:00 UTC.",
+    "Record EscrowFinish hashes, submitters, amounts, Destination and subsequent transfers/EscrowCreate.",
+    "Obtain corridor-level XRP settlement and inventory data for Ripple Payments and SBI Remit.",
+    "Reconcile ETF issuer creations/redemptions and cash/in-kind routes.",
+    "Verify BNY customer XRP custody balances and Coinbase Global Exchange RLUSD collateral activation."
+  ],
+  "feature_admission": {
+    "escrow": "EVENT_CONTEXT_ONLY",
+    "ripple_product_volume": "CORPORATE_CONTEXT_NOT_XRP_DEMAND",
+    "sbi_remit": "DOCUMENTED_USE_CASE_CURRENT_SCALE_UNKNOWN",
+    "bny_custody": "ACCESS_CONTEXT_ONLY",
+    "coinbase_rlusd": "STABLECOIN_DISTRIBUTION_CONTEXT_ONLY",
+    "etf_flows": "PROVIDER_SPECIFIC_CONTEXT_ONLY",
+    "directional_features": [],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secret_access": false,
+    "paper_state_mutation": false,
+    "real_money_trade": false
+  }
+}

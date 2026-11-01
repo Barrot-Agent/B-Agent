@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-20261030T151245Z-EXCHANGE-BALANCE-TIME-SERIES-AND-REGIONAL-CUSTODY",
+  "captured_at_utc": "2026-10-30T15:12:45Z",
+  "status": "ADOPTED_FOR_RESEARCH_AND_FEATURE_DESIGN",
+  "decisions": [
+    {
+      "area": "daily_exchange_balance_series",
+      "rule": "Store daily same-wallet changes with the per-day included-exchange set and exclusion flags. Do not sum daily bars into a 7d/30d feature when daily cohort coverage differs; preserve the provider's fixed-window same-wallet totals separately."
+    },
+    {
+      "area": "per_wallet_resolution",
+      "rule": "Do not attribute an aggregate exchange balance change to a specific incident wallet without per-wallet daily history or direct transaction-level reconciliation."
+    },
+    {
+      "area": "custody_vs_float",
+      "rule": "Keep cold, hot, unclassified, wrapped backing, insurance and charity funds separate. Aggregate XRPSCAN-labelled balances are custody observations, not tradable float or customer withdrawals."
+    },
+    {
+      "area": "regional_concentration",
+      "rule": "Use exchange HQ/registration region only as exchange-entity concentration. Never label it customer geography or capital origin."
+    },
+    {
+      "area": "japan_sbic_distinction",
+      "rule": "SBI VC Trade is an exchange entity and is not Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan). No relationship is inferred from the shared SBI-like acronym."
+    },
+    {
+      "area": "forecast_admission",
+      "rule": "The 2026-10-30 daily aggregate decline remains context-only until fixed-cohort and per-wallet event attribution are available and walk-forward validated."
+    }
+  ],
+  "data_cutoff_utc": "2026-10-30T08:00:00Z",
+  "prior_evidence_preserved": true
+}

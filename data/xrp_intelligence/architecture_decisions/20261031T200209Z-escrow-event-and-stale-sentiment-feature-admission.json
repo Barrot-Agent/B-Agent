@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T200209Z-ESCROW-AND-STALE-SENTIMENT",
+  "captured_at_utc": "2026-10-31T20:02:09Z",
+  "status": "ACCEPTED_WITH_OPEN_VERIFICATION",
+  "decisions": [
+    "Separate FinishAfter eligibility, EscrowFinish, destination receipt, transfers, re-escrow and market disposition.",
+    "Any account may submit EscrowFinish after validated-ledger close passes FinishAfter; do not attribute sender to Ripple without hash.",
+    "Destination is predetermined; identify it before classifying transfers.",
+    "70% prior re-escrow is historical baseline only.",
+    "Keep TradRadar venue series separate; account ratio is not notional and liquidations are lower bound.",
+    "Null sentiment means missing/stale data, not neutral; full-history entity scores are not current.",
+    "Knowledge Signal Cycle is manual-only; do not schedule direct main writes.",
+    "Main writers remain active; PRs stale/open/unmerged; required status checks empty.",
+    "No directional feature admitted; no forecast."
+  ],
+  "required_verification": [
+    "After 00:00Z query both escrow objects at a pinned validated ledger; record EscrowFinish hashes, senders, amounts, ledger indexes and Destination accounts.",
+    "Capture destination balances before/after; trace transfers and EscrowCreate re-escrow.",
+    "Identify exchange/OTC movements before inferring sell pressure.",
+    "Capture synchronized XRP spot, venue OI/funding/basis/liquidations/depth and BTC/ETH controls.",
+    "Restore fresh ingestion through read-only/isolated branch or artifact; enforce freshness and minimum-sample gates.",
+    "Reconcile stale PRs individually; no merge or bulk rebase."
+  ],
+  "feature_admission": "EVENT_CONTEXT_ONLY_NO_DIRECTIONAL_FEATURE",
+  "forecast_status": "NOT_ISSUED"
+}

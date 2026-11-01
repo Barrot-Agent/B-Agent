@@ -1,0 +1,40 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 133,
+  "chunk_count": 134,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T084614Z-ETF-ACTUAL-CAPITAL-AND-SBIC-ENTITY-RESOLUTION",
+      "created_at_utc": "2026-10-31T08:46:14Z",
+      "data_cutoff_utc": "2026-10-31T08:46:14Z",
+      "source_ids": [
+        "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30",
+        "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+        "SRC-20261031-CRYPTOKEYHOLE-XRP-ISSUER-FLOWS-OCT30-PARTIAL",
+        "SRC-20261031-TOKYO-SBIC-OFFICIAL-PROFILE",
+        "SRC-20261031-NAGOYA-SBIC-SISTER-COMPANY-RELATIONSHIP",
+        "SRC-20261031-OSAKA-SBIC-CHATGPT-WORKSHOP",
+        "SRC-20261031-US-SBA-SBIC-OFFICIAL-PROGRAM",
+        "SRC-20261031-OPENAI-SBIC-LOW-AUTHORITY-SPECULATION",
+        "SRC-20261031-SOCIAL-BIAS-INFERENCE-CORPUS-ACL"
+      ],
+      "summary": "Appended nine new primary/secondary sources on XRP ETF marked holdings versus net capital flows and SBIC acronym disambiguation. Maketo estimates $1.43B/1.14B XRP held on Oct 30, down $254.3M in marked value from Sep 30 while estimating approximately $19M net inflow; this is not a $254.3M capital outflow. CryptoETF.today and CryptoKeyhole report different partial Oct 30 outflows (-$700K at 2/5 and -$866K at 2/4); no aggregation admitted. Official sources confirm Japan's Tokyo, Osaka and Nagoya SBIC sister companies; the U.S. SBA SBIC program and Social Bias Inference Corpus are distinct acronym uses. Located ChatGPT seminars are educational, not evidence of OpenAI partnership. Exact 'actual capital' phrase origin and specific SBIC referent remain unresolved. No market feature admitted and no forecast issued.",
+      "repository_audit_path": "data/repository_audits/20261031T084614Z-etf-capital-sbic-identity-and-current-repo-audit.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_changed_by_this_run": false,
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false,
+        "paper_position_mutated": false,
+        "real_money_trade_performed": false
+      }
+    }
+  ]
+}

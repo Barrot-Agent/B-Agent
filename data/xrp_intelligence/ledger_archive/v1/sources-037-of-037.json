@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 36,
+  "chunk_count": 37,
+  "record_count": 4,
+  "created_at_utc": "2026-10-30T12:40:17Z",
+  "records": [
+    {
+      "id": "SRC-TRM-BINANCE-XRP-INCIDENT-20261030T1235Z",
+      "evidence_class": "PRIMARY_BLOCKCHAIN_INTELLIGENCE_REPORT",
+      "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+      "title": "TRM Labs — October 29 Binance multi-chain security incident and XRP outflow analysis",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T12:40:17Z",
+      "note": "TRM reports approximately USD6.36B transferred from Binance-attributed wallets across ten blockchains. It identifies 233.46M XRP transferred from five Binance wallets on XRPL to one attacker-controlled address between 20:05 and 20:09 UTC on October 29. TRM says the XRP remained in place at its October 30 00:30 UTC observation cutoff. TRM attributes the incident to TraderTraitor/North Korea with high confidence based on on- and off-chain intelligence; this is TRM's attribution, not a Binance-published root cause or a separate law-enforcement finding. Binance had not published its root cause in the report."
+    },
+    {
+      "id": "SRC-GITHUB-MAIN-CROSS-ANALYSIS-WORKFLOW-20261030T1235Z",
+      "evidence_class": "PRIMARY_REPOSITORY_FILE_READBACK",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/653b66de9a9545bc756a34385972f06038229783/.github/workflows/cross-analysis.yml",
+      "title": "B-Agent main — current cross-analysis workflow readback",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T12:40:17Z",
+      "note": "Exact main commit 653b66de9a9545bc756a34385972f06038229783 grants contents:write to the cross-analysis workflow, runs on an hourly schedule and after Knowledge Signal Cycle completion, stages generated JSON, commits it and pushes to main. Recent main commit history contains repeated Cross-analysis refresh [skip ci] commits. This is a confirmed active repository mutation path."
+    },
+    {
+      "id": "SRC-GITHUB-PR1371-CROSS-ANALYSIS-SAFETY-20261030T1239Z",
+      "evidence_class": "PRIMARY_REPOSITORY_CHANGE_PROPOSAL",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1371",
+      "title": "B-Agent PR #1371 — make scheduled cross-analysis read-only on current main",
+      "published_at": "2026-10-30T12:38:59Z",
+      "accessed_at_utc": "2026-10-30T12:40:17Z",
+      "note": "Draft pull request based exactly on main 653b66de9a9545bc756a34385972f06038229783. It restricts cross-analysis to contents:read, disables persisted checkout credentials, preserves six generated outputs as a 30-day artifact, removes git staging/commit/pull/push, and adds five regression tests registered in core CI. PR is open, draft, unmerged and reported mergeable after CI. The change is not active on main until approved and merged."
+    },
+    {
+      "id": "SRC-GITHUB-PR1371-CI-GATE-20261030T1239Z",
+      "evidence_class": "PRIMARY_GITHUB_ACTIONS_VERIFICATION",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41056935897",
+      "title": "B-Agent PR #1371 exact-head core CI and fail-closed gate",
+      "published_at": "2026-10-30T12:39:23Z",
+      "accessed_at_utc": "2026-10-30T12:40:17Z",
+      "note": "Exact PR head 660345e8453bbf9d7225c51e73b2cadde06e6804: core CI passed 347 tests and 8 subtests in 6.12 seconds; all five cross-analysis safety tests passed. Fail-closed gate run 41056936005 passed; its job log states automatic merging is disabled and no repository content was changed. Full repository CI was not run."
+    }
+  ]
+}

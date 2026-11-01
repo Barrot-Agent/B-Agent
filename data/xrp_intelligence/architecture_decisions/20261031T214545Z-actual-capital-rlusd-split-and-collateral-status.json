@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T214545Z-ACTUAL-CAPITAL-RLUSD-SPLIT-COLLATERAL",
+  "captured_at_utc": "2026-10-31T21:45:45Z",
+  "status": "ACCEPTED_FOR_RESEARCH_NO_DIRECTIONAL_FEATURES",
+  "decisions": [
+    "Treat $13T Treasury and $3T to $4T Prime as CEO-stated 2025 product volumes, with approximate 99.9 percent and 99 percent plus off-chain shares; do not call them XRP transaction volume.",
+    "Treat $160B as one percent scenario arithmetic and a 2027 on-chain-conversion measure discussed by the CEO, not a formal commitment, forecast or XRP-specific amount.",
+    "Preserve the CEO about-half RLUSD-on-XRPL claim and provider snapshots of about 29 to 39 percent as conflicting evidence until raw supply is reconciled.",
+    "Record Standard Chartered RLUSD custody on XRPL as live for eligible DIFC clients; it is not native XRP custody.",
+    "Record LMAX RLUSD collateral mirroring as planned, not live; it concerns RLUSD, not native XRP.",
+    "Record Ripple $150M financing to LMAX as corporate financing, not an XRP purchase or reserve allocation.",
+    "No new market feature is admitted and no directional forecast is issued."
+  ],
+  "required_verification": [
+    "Read XRPL RLUSD issuer account and major-holder balances at pinned validated ledgers.",
+    "Read Ethereum RLUSD ERC20 totalSupply at the same UTC cutoff; reconcile treasury, frozen and escrow balances.",
+    "Verify LMAX/Standard Chartered collateral-mirroring production launch, eligible products, haircuts, balances and utilization.",
+    "Measure Ripple Treasury and Prime post-launch on-chain volumes by asset, chain, corridor and customer.",
+    "Separate XRP bridge demand from RLUSD settlement and tokenized-asset transfers."
+  ],
+  "feature_admission": {
+    "ripple_product_volume": "OFFCHAIN_CORPORATE_THROUGHPUT_CONTEXT",
+    "onchain_160b": "SCENARIO_ONLY",
+    "rlusd_chain_share": "CONFLICTING_PROVIDER_DATA_EXCLUDED",
+    "standard_chartered_custody": "INSTITUTIONAL_ACCESS_CONTEXT_ONLY",
+    "lmax_collateral": "PLANNED_NOT_LIVE",
+    "xrp_demand_features": [],
+    "forecast_status": "NOT_ISSUED"
+  }
+}

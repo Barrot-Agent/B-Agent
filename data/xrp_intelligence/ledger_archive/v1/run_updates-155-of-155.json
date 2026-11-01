@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 154,
+  "chunk_count": 155,
+  "record_count": 1,
+  "created_at_utc": "2026-10-31T17:14:56Z",
+  "records": [
+    {
+      "id": "RUN-BINANCE-SAFU-7500-XRP-RESERVE-CORRECTION-20261031T171456Z",
+      "recorded_at_utc": "2026-10-31T17:14:56Z",
+      "update_type": "BINANCE_RECOVERY_UPDATE3_SAFU_TRANSFER_AND_XRP_RESERVE_CAUSALITY",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "data_cutoff_utc": "2026-10-31T17:14:56Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T171300Z-binance-safu-transfer-and-xrp-reserve-correction.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T171300Z-binance-safu-xrp-reserve-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T171300Z-binance-recovery-xrp-reserve-and-safu-transfer.json",
+      "source_bundle_path": "data/xrp_intelligence/sources/20261031T171300Z-binance-safu-xrp-reserve-source-bundle.json",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T171300Z-REUTERS-BINANCE-90PCT",
+        "SRC-20261031T171300Z-LOOKONCHAIN-SAFU-7500",
+        "SRC-20261031T171300Z-ARKHAM-SAFU-BALANCE-7500",
+        "SRC-20261031T171300Z-BITINFOCHARTS-SAFU-STALE-15000",
+        "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ],
+      "findings": [
+        "Binance's October 31 Update #3 claims 90% total replenishment and 100% backing for ten named assets including XRP; the full ZK proof is estimated by November 3.",
+        "Binance says the remaining 10% consists of less-liquid assets outside the top ten; no XRP-specific replenishment purchase is disclosed.",
+        "Lookonchain reports a 7,500 BTC transfer from the SAFU fund to a new wallet; Arkham shows 7.5K BTC remaining at the labeled source address. Destination and transaction hash are unknown.",
+        "XRP Insights' October 31 08:00 UTC snapshot shows 22.48B XRP across 701 wallets/24 exchanges, Binance 2.78B, Coinbase 5.85B and Upbit 6.43B.",
+        "XRP Insights shows a +105.9M same-wallet daily rebound on October 31 after -207.3M October 30; Binance-attributed wallets are +17.6M over seven days and +30.3M over 30 days.",
+        "The earlier persistent 220M Binance XRP reserve-depletion interpretation is weakened; broad exchange balances include 487.2M in wrapped/operational reserve balances and are not tradable float."
+      ],
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 6,
+        "missing_source_references": 0,
+        "expected_archive_shards": 427
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_modified": false,
+        "merge": false,
+        "force_push": false,
+        "workflow_dispatch": false,
+        "transaction": false,
+        "real_money": false
+      },
+      "next_actions": [
+        "Trace the 7,500 BTC transfer to its destination and inspect subsequent activity.",
+        "Verify Binance's November 3 full PoR proof and same-time XRP liabilities.",
+        "Crosswalk Binance XRP wallet sets across providers and exclude wrapped reserves from tradable-float calculations.",
+        "Verify withdrawal reopening on November 1."
+      ]
+    }
+  ]
+}

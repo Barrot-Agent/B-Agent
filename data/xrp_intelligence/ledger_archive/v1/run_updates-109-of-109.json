@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 108,
+  "chunk_count": 109,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T011325Z-XRP-MARKET-ETF-USDC-MACRO-COINBASE-LOANS",
+      "created_at_utc": "2026-10-31T01:13:25Z",
+      "data_cutoff_utc": "2026-10-31T01:13:25Z",
+      "summary": "Refreshed XRP derivatives positioning, issuer-reported ETF holdings/flows, Circle global USDC supply, Coinbase XRP-backed USDC loan terms, U.S. macro fund flows and Binance's aggregate incident response. Re-audited current main and open PRs. Added a scheduler allowlist hardening successor PR after finding that two workflows in PR #1389 were not yet safe for unattended dispatch. No market feature admitted and no forecast issued.",
+      "source_ids": [
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261031T0052Z",
+        "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z",
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z",
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z",
+        "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z",
+        "SRC-REUTERS-US-FUND-FLOWS-20261030T1317Z",
+        "SRC-REUTERS-BINANCE-RESERVE-20261030T1403Z",
+        "SRC-GITHUB-BARROT-MAIN-SCHEDULER-PR-AUDIT-20261031T0113Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T011325Z-xrp-derivatives-etf-usdc-macro-and-coinbase-loans.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T011325Z-xrp-derivatives-etf-usdc-macro-and-coinbase-loans-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T011325Z-market-feature-admission-and-coinbase-loan-rail.json",
+      "repository_audit_path": "data/repository_audits/20261031T011325Z-main-scheduler-and-pr-audit.json",
+      "actions": [
+        "Captured Liqwall's 00:52 UTC XRP derivatives panel with price, open interest, liquidations, funding and Binance account positioning.",
+        "Reconciled settled October 26–29 ETF holdings changes with fund-coverage caveats and preserved the provisional October 30 row as excluded.",
+        "Cross-checked Alpha Finance's five-fund October 29 flow and recorded its material price-basis discrepancy against XRP Insights.",
+        "Verified Circle's $70B global USDC circulation display as of October 29 and 38 native networks including Base and XRPL.",
+        "Rechecked Coinbase's official XRP collateral loan page and Help terms: Morpho on Base, up to $100,000 USDC against XRP, XRP eligibility and prohibition on Coinbase-trading use of loan proceeds.",
+        "Captured Reuters' October 30 U.S. fund-flow context and Binance aggregate reserve/freeze response without assigning either to XRP-specific capital flows.",
+        "Audited current main SHA, 165 open PRs, stale base distribution, scheduler allowlist proposals, exact-head CI and fail-closed gates.",
+        "Created PR #1390 as a fresh-main successor to PR #1389, removing formal-verification and SINDy workflows from the unattended allowlist pending separate hardening/review."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "Derivatives open-interest and funding coverage is not synchronized across providers.",
+        "ETF holdings/flow aggregators have different fund universes, provisional rows and price bases.",
+        "Circle's global USDC supply is not a chain-level Base/XRPL supply or Morpho supplier measure.",
+        "Coinbase's XRP loan origination and Morpho channel share are undisclosed; loan proceeds cannot be used on Coinbase and off-platform flows are untraced.",
+        "Binance's aggregate reserve statement does not resolve XRP-specific reserve replenishment or XRPL PoR wallet membership.",
+        "Full repository CI and dependency vulnerability scanning remain unrun."
+      ],
+      "next_actions": [
+        "Obtain issuer-native ETF holdings files and reconcile each fund by ticker, shares, XRP per share, net assets and settled timestamp; do not include provisional rows.",
+        "Build synchronized exchange-native XRP futures OI/funding/liquidation series with contract identifiers and common UTC cutoffs.",
+        "Reconcile Coinbase/Morpho cbXRP market data from block-consistent onchain reads; distinguish Coinbase interface traffic from permissionless market activity.",
+        "Trace representative Morpho liquidation paths through cbXRP transfer, unwrap/redemption and any eventual native XRP sale; do not assume transmission.",
+        "Resolve Binance's official October 1 XRPL address membership and November 1 PoR asset-level balances.",
+        "Run fixed-horizon walk-forward baselines and calibration only after point-in-time feature history and leakage controls are implemented.",
+        "Run fresh-main merge-result validation for PR #1388 and keep PR #1390 draft/unmerged pending independent review."
+      ],
+      "source_reference_count": 9,
+      "missing_source_references": 0
+    }
+  ]
+}

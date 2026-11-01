@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T161501Z-DERIVATIVES-ETF-AND-REPOSITORY-SECURITY",
+  "captured_at_utc": "2026-10-30T16:15:01Z",
+  "data_cutoff_utc": "2026-10-30T16:15:01Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T161501Z-xrp-derivatives-etf-and-repository-security.json",
+  "source_ids": [
+    "SRC-BINANCE-OFFICIAL-IN-KIND-REPLENISHMENT-20261030T150337Z",
+    "SRC-BITQUERY-BINANCE-XRP-POR-LABELS-20261030",
+    "SRC-COINDESK-BINANCE-OCT1-POR-WALLET-CROSSWALK-20261030",
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261030T161501Z",
+    "SRC-XRPINSIGHTS-ETF-FLOWS-20261030T161501Z",
+    "SRC-REPO-MAIN-WORKFLOW-AUDIT-20261030T161501Z",
+    "SRC-REPO-PR1374-HF-ISOLATION-REDTEAM-20261030T161501Z"
+  ],
+  "findings": {
+    "binance_incident_and_replenishment": {
+      "official_company_commitment": {
+        "company_reserve_usd": 6340000000,
+        "affected_token_assets_already_held_usd": 5000000000,
+        "additional_affected_token_assets_to_acquire_usd": 1340000000,
+        "acquisition_channels": [
+          "market",
+          "OTC"
+        ],
+        "frozen_assets_usd": 3000000000,
+        "frozen_assets_included_in_company_reserve": false,
+        "xrp_specific_allocation_disclosed": false,
+        "execution_venue_time_price_and_token_quantities_disclosed": false
+      },
+      "proof_of_reserves_crosswalk": {
+        "bitquery_says_all_17_drained_hot_wallets_carry_binance_por_labels_in_its_address_data": true,
+        "raw_official_october_1_address_file_retrieved": false,
+        "coindesk_confirmed_wallet": "Binance 14 (Ethereum)",
+        "coindesk_xrp_wallet_membership_confirmed": false,
+        "xrp_reserve_ratio_calculable": false
+      },
+      "interpretation": "The aggregate $1.34B in-kind acquisition may include XRP, but no XRP-specific quantity or execution is disclosed. Do not convert the aggregate company reserve into XRP demand."
+    },
+    "derivatives": {
+      "liqwall": {
+        "data_cutoff_utc": "2026-10-30T04:32:00Z",
+        "price_usd": 1.25,
+        "open_interest_usd": 1310000000,
+        "open_interest_change_24h_pct": -3.9,
+        "liquidations_24h_usd": 39600000,
+        "long_liquidations_usd": 37900000,
+        "short_liquidations_usd": 1700000,
+        "aggregate_funding_8h_pct": -0.0101,
+        "binance_funding_8h_pct": 0.0032,
+        "binance_long_account_share_pct": 74.3
+      },
+      "tradradar_crosscheck": {
+        "data_cutoff_utc": "2026-10-30T04:00:00Z",
+        "price_usd": 1.2436,
+        "open_interest_7_exchanges_usd": 1850000000,
+        "open_interest_change_24h_pct": -5.36,
+        "liquidations_24h_min_usd": 31720000,
+        "long_liquidations_usd": 30250000,
+        "short_liquidations_usd": 1470000,
+        "oi_weighted_funding_8h_pct": -0.0077,
+        "long_account_share_5_exchanges_pct": 79.3
+      },
+      "reconciliation": {
+        "oi_difference_pct_relative_to_tradradar": 29.2,
+        "liquidation_difference_pct_relative_to_tradradar": 24.8,
+        "interpretation": "Both providers show long-dominated liquidations and negative aggregate funding, but their exchange coverage and aggregation methods differ. Preserve provider-specific panels; do not average open interest or liquidation totals."
+      }
+    },
+    "etf_flows": {
+      "xrp_insights": {
+        "session_date": "2026-10-29",
+        "net_flow_xrp": 6400000,
+        "total_holdings_xrp": 1196650118,
+        "fund_population": "6 US spot funds plus BITW",
+        "four_session_net_flow_xrp": 3440288,
+        "methodology": "Day-over-day changes in issuer-reported XRP holdings."
+      },
+      "alpha_finance": {
+        "session_date": "2026-10-29",
+        "net_flow_usd": 8400000,
+        "thirty_session_net_flow_usd": 98900000,
+        "fund_population": "5 funds",
+        "xrp_session_close_usd": 1.3255
+      },
+      "chronology": {
+        "first_binance_xrpl_incident_transfer_utc": "2026-10-29T20:04:00Z",
+        "us_equity_session_close_utc": "2026-10-29T20:00:00Z",
+        "interpretation": "The October 29 ETF session flow is pre-incident by approximately four minutes; it cannot be interpreted as a response to the Binance XRP drain."
+      },
+      "reconciliation": "The providers use different fund populations and units. The approximately $8.0M implied by 6.40M XRP at $1.25 is directionally close to Alpha Finance's $8.4M, but this is not an exact fund-by-fund reconciliation."
+    },
+    "repository_security": {
+      "main_sha": "dd907496d7989c4f421fb137cca6794314e9812a",
+      "latest_main_commit": "Cross-analysis refresh [skip ci] at 2026-10-30T15:51:49Z",
+      "cross_analysis": "Main still has workflow_run, hourly schedule and manual triggers, contents:write, and automatic commit/push to main.",
+      "merge_queue": "Main still has contents:write and pull-requests:write; mode defaults to label, dry_run=false, max_prs=0 (unlimited), and code can update branches, comment, merge and delete branches.",
+      "paper_trader": "Manual-only workflow; persisted position size 0.0124451585, average entry 80436.84, cash 9009.9366, trade_count 126, position_product null. No product was inferred and no dispatch occurred.",
+      "kaggle": "Daily 00:00 UTC schedule remains. Workflow invokes missing root-level kaggle_competitions_automation.py while implementation is under scripts/. The implementation automatically submits to up to five competitions and has no main-branch opt-in guard. Current path mismatch blocks the scheduled run before the script executes; PR #1359 proposes explicit opt-in.",
+      "free_image_generation": "Manual workflow still grants contents:write, exposes HF_TOKEN at job scope, and calls missing root-level free_image_gen.py while implementation is under scripts/. PR #1370 proposes read-only artifact output; no dispatch occurred.",
+      "hf_model_merge": "Two duplicate main workflows still persist HF_TOKEN globally and run mergekit with --trust-remote-code. merges/barrot-superior/config.yaml is absent from main, so the current workflow cannot complete a merge. PR #1374 now separates merge and upload jobs on different runners.",
+      "signal": {
+        "timestamp": "2026-10-29T13:23:33.142057Z",
+        "score": 44,
+        "confidence": 0,
+        "source_errors": [
+          "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+          "Groq HTTP 429"
+        ],
+        "status": "STALE_INVALID_NOT_A_FORECAST"
+      },
+      "pr1374": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1374",
+        "head_sha": "5f70b26eac93b4835130db2541e085dd2e107ce2",
+        "base_merge_base_sha": "3a1b1e7a2cf2a22e262d73592ceec9196356fbae",
+        "current_main_ahead_by": 3,
+        "main_only_paths": [
+          ".github/workflows/barrot-controlled-feature-validation.yml",
+          "ping-pongings/knowledge-base/sentiment_shift.json"
+        ],
+        "ci_run": 41087890290,
+        "tests_passed": 347,
+        "subtests_passed": 8,
+        "gate_run": 41087890315,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "status": "OPEN_DRAFT_UNMERGED",
+        "changes": [
+          "separate merge and upload jobs",
+          "fresh upload runner",
+          "no Hugging Face token in remote-code merge job",
+          "upload job permissions empty",
+          "safe model-name allowlist and quoted paths",
+          "symlink rejection before and after artifact transfer",
+          "HF_TOKEN only in final upload step"
+        ]
+      },
+      "other_open_safety_prs": {
+        "pr1373": {
+          "head": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+          "behind_main": 4,
+          "prior_ci": "347 tests + 8 subtests passed",
+          "prior_gate": "PASS",
+          "status": "OPEN_DRAFT_UNMERGED"
+        },
+        "pr1370": {
+          "head": "4eb9768ccbefc3735a651d14220e1273392ee471",
+          "behind_main": 7,
+          "prior_ci": "343 tests + 8 subtests passed",
+          "prior_gate": "PASS",
+          "status": "OPEN_DRAFT_UNMERGED"
+        },
+        "pr1367": {
+          "head": "9ee42d8a6d2e90a43e15f80558b7ec599aad84a0",
+          "behind_main": 10,
+          "prior_ci": "352 tests + 8 subtests passed",
+          "prior_gate": "PASS",
+          "status": "OPEN_DRAFT_UNMERGED"
+        },
+        "pr1369": {
+          "head": "9da6c9e03bb43c2c23c5e3408e8730d602879b90",
+          "behind_main": 26,
+          "prior_ci": "343 tests + 8 subtests passed",
+          "prior_gate": "PASS",
+          "status": "OPEN_DRAFT_UNMERGED"
+        },
+        "pr1359": {
+          "head": "b17e5515ea21c8e2fba16f8dd1880e4872f01398",
+          "behind_main": 21,
+          "prior_ci": "343 tests + 8 subtests passed",
+          "prior_gate": "PASS",
+          "status": "OPEN_DRAFT_UNMERGED"
+        },
+        "pr1353": {
+          "head": "1f650ba661bdd03566874d0ebb63c082690517b3",
+          "validator_run": 41079190008,
+          "validator_tests_passed": 18,
+          "gate_run": 41079190076,
+          "gate_status": "PASS_MERGE_DISABLED",
+          "status": "OPEN_DRAFT_UNMERGED"
+        }
+      },
+      "full_repository_ci": "NOT_RUN",
+      "platform_authentication": "GitHub connector verified; other eight platforms not authenticated/live-tested",
+      "external_actions": {
+        "merge": false,
+        "force_push": false,
+        "deployment": false,
+        "workflow_dispatch": false,
+        "paper_state_mutation": false,
+        "real_money_trade": false,
+        "huggingface_upload": false,
+        "kaggle_submission": false
+      }
+    }
+  },
+  "market_feature_admission": {
+    "admitted": false,
+    "reason": "Provider coverage differs; ETF session is pre-incident; no point-in-time synchronized walk-forward validation."
+  },
+  "forecast_status": "NOT_ISSUED"
+}

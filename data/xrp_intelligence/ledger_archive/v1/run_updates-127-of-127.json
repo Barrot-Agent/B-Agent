@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 126,
+  "chunk_count": 127,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T064800Z-BINANCE-INCIDENT-DAILY-EXCHANGE-FLOW-EVENT-WINDOW",
+      "created_at_utc": "2026-10-31T06:48:00Z",
+      "data_cutoff_utc": "2026-10-31T06:48:00Z",
+      "summary": "Refreshed XRP Insights' daily same-wallet exchange-balance table and aligned it to the Binance incident timeline. Oct29 08:00 UTC balance snapshot predates the incident (20:05–20:09 UTC) and shows -41.2M XRP daily change. Oct30 08:00 UTC snapshot follows the incident and shows -207.3M XRP same-wallet daily change across the tracked exchange universe. The post-event aggregate is 88.8% of the 233.4619431M XRP incident transfer, a strong event-window lead but not a Binance-specific reconciliation. Binance-specific same-wallet change is -173.2M over 7d and -164.5M over 30d; the all-exchange 7d change is -234.9M and 30d is -146.1M. No per-exchange daily change, per-wallet history or five-source-wallet crosswalk is available. The same page attributes 59.5M XRP in two >99%-cold-labeled wallets to SBI VC Trade; this is exchange custody attribution, not SBI Group proprietary holdings. No market feature admitted and no directional forecast issued.",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z",
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T064800Z-binance-incident-daily-exchange-flow-event-window.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T064800Z-binance-incident-exchange-event-window-and-sbi-custody-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T064800Z-binance-incident-exchange-flow-event-window-contract.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_mutated": false,
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false,
+        "real_money_trade_performed": false
+      }
+    }
+  ]
+}

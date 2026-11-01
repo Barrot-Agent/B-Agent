@@ -1,0 +1,26 @@
+{
+  "record_type": "xrp_intelligence_architecture_decision",
+  "schema_version": "1.0",
+  "decision_id": "ADR-20261030T210054Z-IMMUTABLE-ARCHIVE-SHARD-SCHEMA-NORMALIZATION",
+  "captured_at_utc": "2026-10-30T21:00:54Z",
+  "status": "ADOPTED_FOR_RESEARCH_BRANCH",
+  "context": "Exact-head validator run 41126607566 failed on head 802ef30: latest source shard omitted archive_schema_version and used source_id rather than canonical id; latest run-update and limitation shards also omitted archive_schema_version. Fail-closed gate passed and kept merging disabled.",
+  "decision": [
+    "Every referenced archive shard must include archive_schema_version 1.0 and the required chunk metadata.",
+    "Every source record must include non-empty canonical id; preserve source_id as an alias and copy it into id.",
+    "Correct malformed shards using immutable replacement files and pointer changes only; preserve original malformed files unreferenced.",
+    "Keep archive_policy and live pointer counts synchronized.",
+    "Do not admit account-label or AMM/vault/loan-broker observations into prediction features without independent owner resolution, synchronized point-in-time data and defensible economic meaning.",
+    "Treat exchange deposits as deposits, not sales or replenishment."
+  ],
+  "invariants": [
+    "No main-branch modification.",
+    "No force-push, merge, workflow dispatch or destructive archive operation.",
+    "Exact-head validator and fail-closed gate required before marking snapshot verified.",
+    "Forecast remains NOT_ISSUED until calibrated out-of-sample evaluation."
+  ],
+  "failed_head": "802ef30e540ca2c096ca9f53f5f4799d008770cc",
+  "failed_validator_run": 41126607566,
+  "prior_gate_run": 41126607573,
+  "next_action": "Run exact-head archive validator and fail-closed gate on corrected branch head."
+}

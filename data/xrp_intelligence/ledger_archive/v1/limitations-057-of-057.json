@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 56,
+  "chunk_count": 57,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T15:12:45Z",
+  "records": [
+    "XRP Insights' October 30 daily -207.3M same-wallet change is an all-exchange aggregate, not a Binance-only or per-wallet balance change. Its daily bars exclude exchanges with wallet-set changes; its 7d/30d same-wallet windows use different start/end cohorts. No per-wallet daily history is published. The incident transfer's 88.8% magnitude comparison is not causal attribution. Regional balances use exchange HQ/registration, not customer geography. Cold/unclassified and non-customer reserves prevent tradable-float inference."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT-20261031T215123Z",
+  "source_id": "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT",
+  "captured_at_utc": "2026-10-31T21:51:23Z",
+  "created_at_utc": "2026-10-31T21:51:23Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT",
+      "publisher": "Ripple — DriveWealth partnership for institutional digital-asset infrastructure",
+      "url": "https://ripple.com/ripple-press/drivewealth-and-ripple-partner-to-bring-institutional-digital-asset-infrastructure-to-global-investing/",
+      "retrieved_at_utc": "2026-10-31T21:51:23Z",
+      "publication_time_utc": "2026-10-14",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "DriveWealth is integrating Ripple stablecoin infrastructure to support settlement in Europe using RLUSD on XRPL and Ripple Mint burn/mint capabilities, with plans to expand to the United States.",
+        "DriveWealth is integrating Ripple Payments for cross-border acceptance from global partners.",
+        "DriveWealth is working with Ripple on digital-asset custody in Europe, with plans to expand to additional markets.",
+        "DriveWealth and Ripple Prime are exploring equity financing opportunities through Ripple Prime Delta One.",
+        "DriveWealth states clients can fund and manage collateral accounts with stablecoins that convert to cash near real time.",
+        "DriveWealth says it powers investing experiences for more than 100 partners globally."
+      ],
+      "limitations": [
+        "The release says the companies are integrating and working on these capabilities; production launch and live transaction volume were not verified.",
+        "No RLUSD settlement volume, collateral balances, XRP holdings, XRP purchases or XRP bridge volume are disclosed.",
+        "Stablecoin funding of brokerage collateral accounts does not establish that native XRP is accepted as collateral.",
+        "DriveWealth's 100-plus partner network is distribution reach, not proof that all partners adopt Ripple or RLUSD."
+      ]
+    }
+  ],
+  "findings": [
+    "DriveWealth is integrating Ripple stablecoin infrastructure to support settlement in Europe using RLUSD on XRPL and Ripple Mint burn/mint capabilities, with plans to expand to the United States.",
+    "DriveWealth is integrating Ripple Payments for cross-border acceptance from global partners.",
+    "DriveWealth is working with Ripple on digital-asset custody in Europe, with plans to expand to additional markets.",
+    "DriveWealth and Ripple Prime are exploring equity financing opportunities through Ripple Prime Delta One.",
+    "DriveWealth states clients can fund and manage collateral accounts with stablecoins that convert to cash near real time.",
+    "DriveWealth says it powers investing experiences for more than 100 partners globally."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "The release says the companies are integrating and working on these capabilities; production launch and live transaction volume were not verified.",
+    "No RLUSD settlement volume, collateral balances, XRP holdings, XRP purchases or XRP bridge volume are disclosed.",
+    "Stablecoin funding of brokerage collateral accounts does not establish that native XRP is accepted as collateral.",
+    "DriveWealth's 100-plus partner network is distribution reach, not proof that all partners adopt Ripple or RLUSD."
+  ],
+  "corrections": [],
+  "pending_archive_append": false,
+  "exact_head_validation": true,
+  "status": "VERIFIED_ARCHIVED",
+  "verified_head_sha": "f89557964ddc53024214210ed55e90fd6b0d2be2",
+  "validator_run_id": 41246834315,
+  "fail_closed_gate_run_id": 41246834314,
+  "verified_at_utc": "2026-10-31T22:08:55Z"
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T002653Z-COINBASE-CBXRP-COLLATERAL-DATA-GATES",
+  "created_at_utc": "2026-10-31T00:26:53Z",
+  "status": "ADOPTED_FOR_CUSTODY_AND_COLLATERAL_FEATURE_GATING",
+  "context": "Coinbase now publishes a live cbXRP reserve/supply page with 20 XRPL reserve addresses and a Base supply figure, while separate disclosures mark XRP and cbXRP held/commercially engaged.",
+  "decisions": [
+    "Store Coinbase's cbXRP reserve and Base supply as a distinct wrapped-asset collateral series, separate from Coinbase corporate XRP holdings, institutional customer custody and exchange customer balances.",
+    "Use the 151,405,263.6 XRP reserve and 151,403,016.069 cbXRP supply as first-party published totals; compute 100.001484% coverage and 2,247.531 XRP surplus, but label as Coinbase-reported and not independently audited.",
+    "Retain the 20 published reserve addresses and exact displayed balances; the sum reconciles within 0.002 XRP. Track address-level balances and aggregate supply over time, preserving provider display timestamp and timezone ambiguity.",
+    "Do not treat cbXRP supply as net new XRP demand or a price signal. It represents XRP held to back wrapped supply; measure mint/burn and DeFi collateral utilization before inferring net lockup or demand.",
+    "Use Coinbase's 31 March 2026 disclosure only as a dated categorical statement that XRP/cbXRP are held and commercially engaged; do not infer current amount or specific trading activity.",
+    "Keep regional cbXRP restrictions separate from native XRP support; Coinbase help lists Japan and New York State among cbXRP send/receive restrictions.",
+    "Exact address comparison shows no overlap between Coinbase's 20 cbXRP reserve addresses and the five Binance incident source addresses; this does not establish broader ownership or infrastructure separation."
+  ],
+  "invariants": [
+    "cbXRP is a Base wrapped asset backed by XRP held by Coinbase; it is not native XRP.",
+    "First-party proof-of-reserves display is not an independent audit; Base contract supply was not independently read because BaseScan returned 403.",
+    "Coinbase commercial engagement is broadly defined and holdings disclosure is dated 31 March 2026.",
+    "No cbXRP reserve metric is admitted as a price-prediction feature without validated temporal and causal analysis.",
+    "No forecast is issued."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

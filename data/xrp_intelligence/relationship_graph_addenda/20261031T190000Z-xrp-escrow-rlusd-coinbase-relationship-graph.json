@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-ESCROW-RLUSD-COINBASE-20261031T190021Z",
+  "captured_at_utc": "2026-10-31T19:00:21Z",
+  "source_ids": [
+    "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE",
+    "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP",
+    "SRC-20261031T190021Z-RIPPLE-TRANSPARENCY-LIVE",
+    "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION",
+    "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY",
+    "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+    "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY",
+    "SRC-20261031T190021Z-XRLINEAGE-RLUSD-SUPPLY-CONFLICT",
+    "SRC-20261031T190021Z-GITHUB-MAIN-200-PR-WORKFLOW-AUDIT"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "label": "Ripple Labs",
+      "kind": "COMPANY"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_LEDGER"
+    },
+    {
+      "id": "RIPPLE_ESCROW",
+      "label": "Ripple-owned escrow objects",
+      "kind": "ONCHAIN_LOCKED_SUPPLY"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_ASSET"
+    },
+    {
+      "id": "STANDARD_CUSTODY",
+      "label": "Standard Custody & Trust Company",
+      "kind": "NYDFS_TRUST_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "RLUSD",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_CUSTODY"
+    },
+    {
+      "id": "ETHEREUM",
+      "label": "Ethereum",
+      "kind": "PUBLIC_LEDGER"
+    },
+    {
+      "id": "BASE",
+      "label": "Base",
+      "kind": "L2"
+    },
+    {
+      "id": "DELOITTE",
+      "label": "Deloitte & Touche LLP",
+      "kind": "INDEPENDENT_ACCOUNTANT"
+    },
+    {
+      "id": "XRP_INSIGHTS",
+      "label": "XRP Insights",
+      "kind": "DATA_PROVIDER"
+    },
+    {
+      "id": "STABLES_COOL",
+      "label": "stables.cool",
+      "kind": "DATA_PROVIDER"
+    },
+    {
+      "id": "XRPL_TO",
+      "label": "XRPL.to",
+      "kind": "DATA_PROVIDER"
+    },
+    {
+      "id": "XR_LINEAGE",
+      "label": "XR-Lineage",
+      "kind": "DATA_PROVIDER"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E1",
+      "source": "RIPPLE",
+      "target": "RIPPLE_ESCROW",
+      "relationship": "OWNS_ESCROW_OBJECTS",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE"
+      ],
+      "evidence_class": "ONCHAIN_DERIVED"
+    },
+    {
+      "id": "E2",
+      "source": "RIPPLE_ESCROW",
+      "target": "XRP",
+      "relationship": "1B_FINISHABLE_2026_11_01_0000Z",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-ESCROW-SCHEDULE"
+      ],
+      "evidence_class": "ONCHAIN_DERIVED"
+    },
+    {
+      "id": "E3",
+      "source": "RIPPLE",
+      "target": "STANDARD_CUSTODY",
+      "relationship": "ULTIMATE_PARENT",
+      "source_ids": [
+        "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION"
+      ],
+      "evidence_class": "ATTESTATION_REPORT"
+    },
+    {
+      "id": "E4",
+      "source": "STANDARD_CUSTODY",
+      "target": "RLUSD",
+      "relationship": "ISSUER",
+      "source_ids": [
+        "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION"
+      ],
+      "evidence_class": "ATTESTATION_REPORT"
+    },
+    {
+      "id": "E5",
+      "source": "RIPPLE",
+      "target": "COINBASE",
+      "relationship": "JOINT_RLUSD_DISTRIBUTION",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ],
+      "evidence_class": "JOINT_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "id": "E6",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "PRIME_EXCHANGE_RETAIL_DISTRIBUTION",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ],
+      "evidence_class": "JOINT_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "id": "E7",
+      "source": "COINBASE",
+      "target": "XRPL",
+      "relationship": "RLUSD_DEPOSITS_WITHDRAWALS",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ],
+      "evidence_class": "JOINT_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "id": "E8",
+      "source": "COINBASE",
+      "target": "BASE",
+      "relationship": "RLUSD_DEPOSITS_WITHDRAWALS",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ],
+      "evidence_class": "JOINT_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "id": "E9",
+      "source": "COINBASE",
+      "target": "ETHEREUM",
+      "relationship": "RLUSD_DEPOSITS_WITHDRAWALS",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ],
+      "evidence_class": "JOINT_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "id": "E10",
+      "source": "RIPPLE",
+      "target": "BASE",
+      "relationship": "ANNOUNCED_RLUSD_LIQUIDITY_SUPPORT",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ],
+      "evidence_class": "JOINT_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "id": "E11",
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "GLOBAL_EXCHANGE_COLLATERAL_DEFERRED",
+      "source_ids": [
+        "SRC-20261031T190021Z-COINBASE-RIPPLE-RLUSD-PARTNERSHIP"
+      ],
+      "evidence_class": "JOINT_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "id": "E12",
+      "source": "DELOITTE",
+      "target": "RLUSD",
+      "relationship": "INDEPENDENT_SEP_2026_EXAMINATION",
+      "source_ids": [
+        "SRC-20261031T190021Z-DELOITTE-RLUSD-SEP-ATTESTATION"
+      ],
+      "evidence_class": "INDEPENDENT_ACCOUNTANT_ATTESTATION"
+    },
+    {
+      "id": "E13",
+      "source": "XRP_INSIGHTS",
+      "target": "RLUSD",
+      "relationship": "REPORTS_707M_XRPL_SUPPLY",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRP-INSIGHTS-RLUSD-SUPPLY"
+      ],
+      "evidence_class": "SECONDARY_ONCHAIN"
+    },
+    {
+      "id": "E14",
+      "source": "STABLES_COOL",
+      "target": "RLUSD",
+      "relationship": "REPORTS_707_4M_XRPL_1_71B_ETHEREUM",
+      "source_ids": [
+        "SRC-20261031T190021Z-STABLESCOOL-RLUSD-CHAIN-SUPPLY"
+      ],
+      "evidence_class": "SECONDARY_ONCHAIN"
+    },
+    {
+      "id": "E15",
+      "source": "XRPL_TO",
+      "target": "RLUSD",
+      "relationship": "REPORTS_707_358M_ISSUER_OBLIGATIONS",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRPLTO-RLUSD-SUPPLY"
+      ],
+      "evidence_class": "SECONDARY_ONCHAIN"
+    },
+    {
+      "id": "E16",
+      "source": "XR_LINEAGE",
+      "target": "RLUSD",
+      "relationship": "CONFLICTING_910_3M_VALUE",
+      "source_ids": [
+        "SRC-20261031T190021Z-XRLINEAGE-RLUSD-SUPPLY-CONFLICT"
+      ],
+      "evidence_class": "UNRESOLVED_PROVIDER_CONFLICT"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-ESCROW-REPEAT-RELOCK",
+      "claim": "Nov1 1B unlock repeats recent 70% re-escrow pattern, leaving about 300M net outside escrow.",
+      "status": "BASE_RATE_SCENARIO_NOT_FORECAST",
+      "support": [
+        "Prior 12 releases each re-escrowed 700M of 1B."
+      ],
+      "disconfirming": [
+        "Historical pattern is not contractual; amount/timing may change."
+      ],
+      "next_test": "Observe EscrowFinish/EscrowCreate at pinned ledgers after 00:00Z."
+    },
+    {
+      "id": "HYP-RLUSD-COINBASE-CHAIN-REALLOCATION",
+      "claim": "Some XRPL RLUSD decline after Oct28 reflects allocation to Coinbase-supported Ethereum/Base rather than global redemption.",
+      "status": "PLAUSIBLE_NOT_CONFIRMED",
+      "support": [
+        "Coinbase added XRPL/Base/Ethereum access; Ripple announced Base liquidity; Ethereum supply rose in the captured window."
+      ],
+      "disconfirming": [
+        "Ethereum increase smaller than XRPL decrease; Base and bridge/mint paths not reconciled; dates/scopes differ."
+      ],
+      "next_test": "Reconcile per-chain balances, NTT transfers, burns/mints and Coinbase deposit/withdrawal labels at aligned timestamps."
+    },
+    {
+      "id": "HYP-RLUSD-ISSUER-REDEMPTION",
+      "claim": "Some XRPL RLUSD decline reflects redemptions/burns rather than chain migration.",
+      "status": "PLAUSIBLE_COUNTERHYPOTHESIS",
+      "support": [
+        "RLUSD supply follows deposits/redemptions; XRPL supply is reported lower."
+      ],
+      "disconfirming": [
+        "Ripple Oct29 global issuer display exceeds Sep30 attested circulation, though dates differ; no burn IDs matched."
+      ],
+      "next_test": "Trace issuer redemption flows and all chain balances over same 24h."
+    },
+    {
+      "id": "HYP-RLUSD-PROVIDER-SCOPE",
+      "claim": "XR-Lineage 910.3M is a tracked-wallet/sample metric, stale display or scope error.",
+      "status": "DATA_QUALITY_HYPOTHESIS",
+      "support": [
+        "XR-Lineage shows 2,000 trustlines vs XRPL.to 101,560; three other providers cluster near 707.4M."
+      ],
+      "disconfirming": [
+        "XR-Lineage labels figure live supply; raw scope unknown."
+      ],
+      "next_test": "Obtain raw API response and compare canonical issuer gateway_balances at same ledger."
+    }
+  ]
+}

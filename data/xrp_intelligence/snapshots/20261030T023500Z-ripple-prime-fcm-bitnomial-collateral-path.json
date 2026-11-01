@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-30T023500Z-RIPPLE-PRIME-FCM-BITNOMIAL-COLLATERAL-PATH",
+  "captured_at_utc": "2026-10-30T02:35:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T023500Z-ripple-prime-fcm-bitnomial-collateral-path.json",
+  "observed_main_sha": "ec52a66b1c1067920e29cf16d8c3044dd3ec3451",
+  "focus": "Resolve the legal-entity relationship between Ripple Prime, Hidden Road Partners CIV US LLC and Bitnomial; refine the CFTC Letter 26-05 collateral pathway; update Coinbase Q3 strategy; preserve prior XRP market/ETF caveats.",
+  "source_ids": [
+    "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+    "SRC-REUTERS-COINBASE-Q3-PREDICTION-MARKETS-20261030T0235Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+    "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+    "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024",
+    "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z",
+    "SRC-REUTERS-COINBASE-Q3-20261029T211600Z",
+    "SRC-CFTC-DIGITAL-ASSET-COLLATERAL-PILOT-SCOPE-20261030T020327Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-RULES-20261002",
+    "SRC-BITNOMIAL-RLUSD-XRP-MARGIN-20251103",
+    "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20260717",
+    "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261029T2222Z",
+    "SRC-BITCOINLEVERAGE-XRP-DERIVATIVES-20261030T0001Z",
+    "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261030T0217Z",
+    "SRC-XRP-INSIGHTS-ETF-DATA-20261030T0137Z",
+    "SRC-GITHUB-PR1353-DUPLICATE-SOURCE-ID-20261030T0223Z",
+    "SRC-GITHUB-PR1353-STRUCTURAL-READBACK-20261030T0223Z",
+    "SRC-REUTERS-COINBASE-Q3-PREDICTION-MARKETS-20261030T0235Z"
+  ],
+  "findings": [
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_FCM_DISCLOSURE",
+      "claim": "Ripple's official FCM disclosure identifies Hidden Road Partners CIV US LLC as a registered FCM and SEC/FINRA-registered broker-dealer.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_PRIMARY_DCO_RULES_PAGE",
+      "claim": "Bitnomial's current clearing-member list includes the exact legal entity Hidden Road Partners CIV US LLC. Bitnomial separately lists XRP accepted collateral at a 40% haircut and $15M notional limit; XRP product maintenance margin is separately 17%.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_CORPORATE_RELATIONSHIP",
+      "claim": "Ripple announced the Hidden Road acquisition closed and Hidden Road is now Ripple Prime. Combining the Ripple FCM disclosure with Bitnomial's member list establishes a direct legal-entity/clearing-network link for Hidden Road Partners CIV US LLC, rather than merely an association between two brands.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "evidence_class": "CONDITIONAL_REGULATORY_PATH_INFERENCE",
+      "claim": "As a registered FCM and Bitnomial clearing member, Hidden Road Partners CIV US LLC is structurally positioned to participate in the DCO collateral path. If it filed the required Letter 26-05 notice and satisfies the FCM conditions, it may potentially accept eligible non-security digital assets including XRP after its own initial three-month restriction, subject to DCO acceptance and haircuts. No public evidence of its notice, start date or XRP customer collateral use was found.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "evidence_class": "CONFIRMED_SECONDARY_COMPANY_RESULTS_REPORT",
+      "claim": "Reuters reports Coinbase Q3 2026 prediction-market revenue exceeded $200M annualized run rate; prediction markets plus derivatives were about 25% of transaction revenue; subscription/services were about 49% of net revenue. Transaction revenue still declined 43% year over year to $590.2M. Annualized prediction-market revenue is not the same as revenue recognized during Q3 and is not XRP-specific.",
+      "source_ids": [
+        "SRC-REUTERS-COINBASE-Q3-PREDICTION-MARKETS-20261030T0235Z",
+        "SRC-SEC-COINBASE-Q3-DECK-20261029T211600Z"
+      ]
+    },
+    {
+      "evidence_class": "UNKNOWN",
+      "claim": "Coinbase Financial Markets requested Letter 26-05, but this does not establish Coinbase's own XRP collateral usage, a Coinbase–Bitnomial clearing-member relationship, or any relationship with Ripple Prime through this specific collateral channel.",
+      "source_ids": [
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "evidence_class": "RESEARCH_STATUS",
+      "claim": "The previous archive correction structurally read back with 1,237 unique source IDs across 27 referenced shards; exact-head Python validator CI remains unverified. This run appends two source records, one run update and two limitations; the new index pointers and exact-head validation are pending.",
+      "source_ids": [
+        "SRC-GITHUB-PR1353-DUPLICATE-SOURCE-ID-20261030T0223Z",
+        "SRC-GITHUB-PR1353-STRUCTURAL-READBACK-20261030T0223Z"
+      ]
+    }
+  ],
+  "institutional_path": {
+    "cftc_letter_26_05": "FCM-specific staff no-action path; prior WinJammer notice required; first three months only payment stablecoins, BTC and ETH; other crypto may be accepted afterward if conditions remain satisfied",
+    "bitnomial_dco_xrp": "40% collateral haircut; $15M notional limit; XRP product maintenance margin 17% is separate",
+    "ripple_prime_legal_entity": "Hidden Road Partners CIV US LLC is a registered FCM and broker-dealer and is listed as a Bitnomial clearing member",
+    "actual_xrp_use": "UNKNOWN; no public notice, customer balances, collateral inventory, utilization or XRP deposit volume identified",
+    "coinbase_role": "Coinbase Financial Markets is the Letter 26-05 requestor; no Coinbase-Bitnomial clearing-member or XRP collateral use established"
+  },
+  "coinbase_q3": {
+    "total_revenue_usd": 1216000000,
+    "transaction_revenue_usd": 590200000,
+    "transaction_revenue_yoy_pct": -43,
+    "subscription_services_usd": 570000000,
+    "stablecoin_revenue_usd": 307000000,
+    "average_usdc_held_on_coinbase_usd": 22000000000,
+    "global_trading_volume_share_pct": 10.7,
+    "assets_on_platform_usd": 377000000000,
+    "prediction_market_annualized_run_rate_usd": 200000000,
+    "prediction_markets_plus_derivatives_share_transaction_revenue_pct": 25,
+    "subscription_services_share_net_revenue_pct": 49,
+    "interpretation": "Diversification into derivatives, prediction markets, stablecoin distribution and subscriptions is strategically material; crypto spot trading remains cyclical. The $200M figure is an annualized run-rate, not Q3 recognized revenue and not XRP-specific."
+  },
+  "repository_state": {
+    "main_sha": "ec52a66b1c1067920e29cf16d8c3044dd3ec3451",
+    "pr1353": {
+      "head_sha_before_this_append": "871ab14ed63e348041a400e1d80bb681b5900d55",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "latest_gate_run_id": 40992208098,
+      "latest_gate_status": "PASS",
+      "structural_readback": "PASS",
+      "source_ids_unique": 1237,
+      "exact_head_python_validator": "PENDING"
+    },
+    "pr1362": {
+      "head_sha": "7040531da46160e185cf4e3f47a9177f0f073ef7",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "core_ci_run_id": 40992355582,
+      "core_ci_status": "IN_PROGRESS_AT_CAPTURE",
+      "gate_run_id": 40992355611,
+      "gate_status": "PASS"
+    },
+    "pr1361": {
+      "state": "CLOSED_UNMERGED",
+      "reason": "superseded stale-base draft by fresh-main PR #1362"
+    },
+    "main_cross_analysis": "SCHEDULED_CONTENTS_WRITE_TO_MAIN; PR #1362 proposes read-only artifact outputs but is unmerged",
+    "main_signal": "STALE_SCORE_44_CONFIDENCE_0_NEWS_88_11_ENTRIES_GITHUB_CREDENTIALS_MISSING_GROQ_429",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false
+  },
+  "unresolved": [
+    "Hidden Road Partners CIV US LLC's Letter 26-05 WinJammer notice, reliance commencement date and post-three-month eligibility status are not publicly verified.",
+    "Actual XRP collateral deposits, customer balances, collateral turnover, concentration, liquidation and margin utilization at Bitnomial remain unknown.",
+    "The CFTC staff letter/FAQ does not itself classify XRP as a non-security digital asset for every purpose.",
+    "Bitnomial's $15M limit aggregation basis is not explained on the public page.",
+    "Coinbase Financial Markets' requestor role does not prove Coinbase XRP collateral use or direct Bitnomial clearing membership.",
+    "Coinbase Q3 prediction-market annualized run-rate is not recognized quarterly revenue and not XRP-specific.",
+    "ETF flow populations/date conventions remain unreconciled; derivatives panels remain unsynchronized and are not admitted.",
+    "SBIC/ChatGPT SBIC, ASK Coin original context, actual-capital reconstruction and Camilla/Kamilah/Camila identity remain unresolved or partial.",
+    "Exact-head Python validator CI for PR #1353 remains pending; full repository CI was not run."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_executed": false,
+  "workflow_dispatch_performed": false,
+  "real_money_trade": false
+}

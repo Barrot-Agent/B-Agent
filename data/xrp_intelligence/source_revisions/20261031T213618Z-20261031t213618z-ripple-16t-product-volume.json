@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+  "source_id": "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+      "publisher": "Ripple — October 28 corporate update",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-28",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "Ripple says its products enabled more than $16T in transactions during 2025.",
+        "Ripple says it is on track to exit 2026 with $900M annualized product revenue run rate; this is a forward run-rate statement.",
+        "Ripple Payments is approaching $150B lifetime volume by year-end and serves 60+ payout markets.",
+        "Ripple reports 85+ licenses, 1,700+ institutional/corporate/enterprise customers and RLUSD around $2.6B market cap."
+      ],
+      "limitations": [
+        "$16T covers the broader product portfolio, not XRP-routed payment volume.",
+        "$150B Ripple Payments lifetime volume does not mean all flows use XRP.",
+        "$900M is a projected annualized run rate, not audited 2026 revenue."
+      ]
+    }
+  ],
+  "findings": [
+    "Ripple says its products enabled more than $16T in transactions during 2025.",
+    "Ripple says it is on track to exit 2026 with $900M annualized product revenue run rate; this is a forward run-rate statement.",
+    "Ripple Payments is approaching $150B lifetime volume by year-end and serves 60+ payout markets.",
+    "Ripple reports 85+ licenses, 1,700+ institutional/corporate/enterprise customers and RLUSD around $2.6B market cap."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "$16T covers the broader product portfolio, not XRP-routed payment volume.",
+    "$150B Ripple Payments lifetime volume does not mean all flows use XRP.",
+    "$900M is a projected annualized run rate, not audited 2026 revenue."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

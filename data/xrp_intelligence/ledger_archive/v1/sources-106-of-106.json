@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 105,
+  "chunk_count": 106,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z",
+      "source_id": "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z",
+      "publisher": "XRP Insights",
+      "title": "XRP exchange balances — daily same-wallet event window and SBI VC Trade attribution",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "published_at": "2026-10-30T08:00:00Z",
+      "retrieved_at_utc": "2026-10-31T06:48:00Z",
+      "evidence_class": "ONCHAIN_WALLET_LABEL_AGGREGATION_WITH_DAILY_SAME_WALLET_SERIES",
+      "independence_group": "xrp_insights_onchain",
+      "summary": "The page's daily table shows Oct29 08:00 UTC tracked XRP 22.58B with same-wallet daily change -41.2M (pre-incident), then Oct30 08:00 UTC 22.37B with same-wallet daily change -207.3M (post-incident). The Binance incident's five-wallet 233,461,943.1 XRP transfer occurred Oct29 20:05–20:09 UTC, between those snapshots. The post-event daily all-exchange change is 88.8% of the incident amount, a temporal/magnitude match but not a Binance-specific attribution. The same page reports 7d all-exchange -234.9M, 30d -146.1M; Binance 2.58B across 153 wallets with -173.2M 7d/-164.5M 30d; Coinbase 5.84B across 358 wallets with +1.1M 7d/+12.5M 30d; SBI VC Trade 59.5M across two wallets, cold-labeled >99%, with -893K 7d/-10.5M 30d. Wrapped/insurance/charity balances total 488.4M XRP.",
+      "methodology": "Direct rippled account_info balance reads once daily around 08:00 UTC; XRPSCAN public labels; same-wallet net change compares the tracked wallet set at both endpoints and excludes exchanges with wallet-set coverage changes on the relevant day.",
+      "limitations": "The -207.3M daily observation is across the tracked exchange universe, not Binance alone. No per-exchange daily change for Binance, per-wallet history or crosswalk of the five incident source wallets into the tracked set is published. The 26.16M arithmetic gap versus the 233.46M theft cannot be attributed to any particular inflow/outflow. Same-wallet change cannot distinguish customer withdrawal, theft, internal migration or movement to an untracked wallet. Exchange balances include cold storage and wrapped backing reserves, not tradable float."
+    }
+  ]
+}

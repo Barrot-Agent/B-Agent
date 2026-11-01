@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T071933Z-INVESTING-QUOTE-CORRECTION-AND-INCIDENT-STATUS",
+  "captured_at_utc": "2026-10-30T07:19:33Z",
+  "nodes": [
+    {
+      "id": "INVESTING_XRP_GENERIC",
+      "label": "Investing.com generic XRP quote page",
+      "kind": "SECONDARY_MARKET_DATA_PAGE"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "XRPL_NATIVE_ASSET"
+    },
+    {
+      "id": "BINANCE",
+      "label": "Binance exchange",
+      "kind": "CENTRALIZED_EXCHANGE"
+    },
+    {
+      "id": "BINANCE_XRPL_ATTACKER_RECEIVER",
+      "label": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "kind": "XRPL_RECEIVER_ADDRESS"
+    },
+    {
+      "id": "XRP_ETF_AGGREGATORS",
+      "label": "XRP ETF aggregators",
+      "kind": "SECONDARY_FUND_DATA"
+    },
+    {
+      "id": "BARROT_PR1365",
+      "label": "Fresh-main read-only cross-analysis PR #1365",
+      "kind": "OPEN_DRAFT_PULL_REQUEST"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-INVESTING-QUOTE-SOURCE-CORRECTION-20261030",
+      "source": "INVESTING_XRP_GENERIC",
+      "target": "XRP",
+      "relationship": "GENERIC_XRP_INSTRUMENT_NOT_OKX_VENUE",
+      "evidence_class": "DIRECT_PAGE_HEADER_AND_MARKET_SNAPSHOT",
+      "claim": "The prior source record's title labelled the page OKX, but direct inspection shows the page header is simply XRP and provider Investing.com; no venue is identified. Preserve the prior immutable record and supersede its venue classification with this correction.",
+      "source_ids": [
+        "SRC-INVESTING-OKX-XRP-20261030T034135Z",
+        "SRC-INVESTING-XRP-AGGREGATE-CORRECTION-20261030T063327Z"
+      ]
+    },
+    {
+      "id": "EDGE-INVESTING-XRP-INTRADAY-REBOUND-20261030",
+      "source": "INVESTING_XRP_GENERIC",
+      "target": "XRP",
+      "relationship": "1_2256_TO_1_2610_BETWEEN_034135Z_AND_063327Z_SAME_PROVIDER",
+      "evidence_class": "SAME_PROVIDER_TIMESTAMPED_OBSERVATIONS",
+      "claim": "Investing.com generic XRP quote rose approximately 2.89% between 03:41:35 and 06:33:27 UTC; the displayed 24h loss narrowed by 2.49 percentage points. This is a single-provider rebound, not cross-venue confirmation.",
+      "source_ids": [
+        "SRC-INVESTING-OKX-XRP-20261030T034135Z",
+        "SRC-INVESTING-XRP-AGGREGATE-CORRECTION-20261030T063327Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRP-RECEIVER-CUTOFF-REMAINS-STALE-20261030",
+      "source": "BINANCE",
+      "target": "BINANCE_XRPL_ATTACKER_RECEIVER",
+      "relationship": "233_46M_XRP_LAST_OBSERVED_AT_0354Z_LATER_STATE_UNKNOWN",
+      "evidence_class": "PUBLIC_ONCHAIN_ANALYTICS_WITH_CUTOFF",
+      "claim": "TRM and Bitquery reported the 233.46M native XRP transfer; Bitquery's no-outgoing observation ends at 03:54 UTC. No later disposition is established by this capture.",
+      "source_ids": [
+        "SRC-TRM-BINANCE-THEFT-XRPL-RLUSD-20261030T0508Z",
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z"
+      ]
+    },
+    {
+      "id": "EDGE-ETF-PRODUCT-COUNT-MISMATCH-20261030",
+      "source": "XRP_ETF_AGGREGATORS",
+      "target": "XRP",
+      "relationship": "THEXRPINVESTOR_HEADLINE_12_VS_CATEGORIES_11",
+      "evidence_class": "SECONDARY_DASHBOARD_INTERNAL_CONSISTENCY_CHECK",
+      "claim": "TheXRPInvestor headline says 12 products but listed categories sum to 11; its product universe mixes spot, derivatives and index products and is not comparable to spot-only flow panels.",
+      "source_ids": [
+        "SRC-THEXRPINVESTOR-ETF-DASHBOARD-20261030T0709Z",
+        "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-OCT29-20261030T0608Z"
+      ]
+    },
+    {
+      "id": "EDGE-BARROT-PR1365-EXACT-CI-GATE-20261030",
+      "source": "BARROT_PR1365",
+      "target": "BARROT_PR1365",
+      "relationship": "FRESH_MAIN_READ_ONLY_FIX_TESTED_BUT_UNMERGED",
+      "evidence_class": "EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE",
+      "claim": "PR #1365 is open, draft, unmerged and now mergeable. Exact-head CI passed 342 tests plus 8 subtests; fail-closed gate passed and automatic merging remained disabled.",
+      "source_ids": []
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-XRP-RELIEF-BOUNCE-VS-REVERSAL-20261030T071933Z",
+      "claim": "The 2.89% rise between same-provider snapshots may be a relief bounce or short-covering after the incident-driven liquidation, not a durable trend reversal.",
+      "support": [
+        "Investing.com generic XRP quote rose from 1.2256 at 03:41:35 UTC to 1.2610 at 06:33:27 UTC.",
+        "The displayed 24h loss narrowed from -5.41% to -2.92%."
+      ],
+      "counter": [
+        "The later quote remains down 2.92% over 24h.",
+        "No synchronized venue depth, executed trade imbalance, open-interest/funding panel or follow-through window is available."
+      ],
+      "status": "INTRADAY_REBOUND_OBSERVED; TREND_REVERSAL_UNCONFIRMED"
+    },
+    {
+      "id": "HYP-XRP-ETF-MARGINAL-SUPPORT-20261030T071933Z",
+      "claim": "Positive reported October 29 spot ETF flows may provide marginal demand while incident-related deleveraging and broader market flows dominate short-term price formation.",
+      "support": [
+        "Alpha Finance reports +$8.4M across five spot funds for October 29.",
+        "XRP showed a same-provider intraday rebound."
+      ],
+      "counter": [
+        "ETF trackers use different universes and cutoffs.",
+        "No creation/redemption or synchronized order-book causal analysis is available."
+      ],
+      "status": "PLAUSIBLE_NOT_CAUSALLY_IDENTIFIED"
+    }
+  ],
+  "source_independence": {
+    "investing_snapshots": "Two timestamps from the same Investing.com generic XRP page; useful for within-provider change only, not independent corroboration.",
+    "binance_status": "Support and verified News posts are same-issuer updates with differing status scope/timestamp precision.",
+    "incident_trace": "TRM and Bitquery are separate analytics of the same public XRPL transactions.",
+    "etf": "Alpha Finance and TheXRPInvestor have different product universes; TheXRPInvestor product count is internally inconsistent."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

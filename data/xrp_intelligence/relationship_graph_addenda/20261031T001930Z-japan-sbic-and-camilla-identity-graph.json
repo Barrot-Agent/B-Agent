@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "record_type": "entity_relationship_graph_addendum",
+  "graph_id": "ENTITY-GRAPH-20261031T001930Z-JAPAN-SBIC-CAMILLA",
+  "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T001930Z-japan-sbic-and-camilla-identity-graph.json",
+  "created_at_utc": "2026-10-31T00:19:30Z",
+  "captured_at_utc": "2026-10-31T00:19:30Z",
+  "source_ids": [
+    "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z",
+    "SRC-SBIC-NAGOYA-CENTRAL-PROFILE-20261031T001930Z",
+    "SRC-SBIC-OSAKA-WEST-PROFILE-20261031T001930Z",
+    "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z",
+    "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226",
+    "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+  ],
+  "source_reference_count": 6,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "edge_id": "E-20261031T001930Z-01",
+      "from_entity": "Act on Small and Medium Business Investment & Consultation Companies (1963)",
+      "relation": "statutorily_defines_three_companies",
+      "to_entity": "Tokyo, Nagoya and Osaka Small and Medium Business Investment & Consultation companies",
+      "status": "OFFICIAL_STATUTE",
+      "source_ids": [
+        "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z"
+      ],
+      "details": "Article 2 specifies the three companies and their respective head-office cities."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-02",
+      "from_entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "relation": "official_English_brand",
+      "to_entity": "SBIC East Japan",
+      "status": "OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z"
+      ],
+      "details": "Distinct legal entity; established 15 November 1963."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-03",
+      "from_entity": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "relation": "official_English_brand",
+      "to_entity": "SBIC Central Japan",
+      "status": "OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-SBIC-NAGOYA-CENTRAL-PROFILE-20261031T001930Z"
+      ],
+      "details": "Distinct legal entity; established 18 November 1963."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-04",
+      "from_entity": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "relation": "official_English_brand",
+      "to_entity": "SBIC West Japan",
+      "status": "OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-SBIC-OSAKA-WEST-PROFILE-20261031T001930Z"
+      ],
+      "details": "Distinct legal entity; established 20 November 1963."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-05",
+      "from_entity": "Tokyo SBIC",
+      "relation": "co_hosted_educational_seminar_on",
+      "to_entity": "Generative AI (ChatGPT), 26 February 2025",
+      "status": "OFFICIAL_EVENT_PROGRAM",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226"
+      ],
+      "details": "Tokyo Chamber of Commerce and Industry Taito branch was co-host; Microsoft Japan speaker; Japan Finance Corporation branches supported."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-06",
+      "from_entity": "Tokyo SBIC ChatGPT seminar",
+      "relation": "evidence_of",
+      "to_entity": "Educational use/discussion of ChatGPT, not OpenAI partnership",
+      "status": "EVENT_PROGRAM_SCOPE",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226"
+      ],
+      "details": "No partnership, investment or product integration is described."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-07",
+      "from_entity": "Three Japanese SBIC regional companies",
+      "relation": "relationship_to_SBI_Holdings_or_XRP",
+      "to_entity": "NOT_ESTABLISHED_IN_REVIEWED_SOURCES",
+      "status": "UNKNOWN_NO_RELATIONSHIP_EVIDENCE",
+      "source_ids": [
+        "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-NAGOYA-CENTRAL-PROFILE-20261031T001930Z",
+        "SRC-SBIC-OSAKA-WEST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z"
+      ],
+      "details": "Do not infer affiliation from the shared letters SBI/SBIC."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-08",
+      "from_entity": "Camilla Stephenson",
+      "relation": "credited_as",
+      "to_entity": "Location manager for Burke and Hare (2010)",
+      "status": "FILM_EDINBURGH_OFFICIAL_PAGE",
+      "source_ids": [
+        "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+      ],
+      "details": "Public film-industry identity candidate; identity match to user's intended YouTube creator not established."
+    },
+    {
+      "edge_id": "E-20261031T001930Z-09",
+      "from_entity": "Camilla Stephenson film-industry candidate",
+      "relation": "YouTube_channel_identity",
+      "to_entity": "UNRESOLVED",
+      "status": "NO_VERIFIED_CHANNEL_FOUND",
+      "source_ids": [
+        "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+      ],
+      "details": "No exhaustive video inventory can be attributed without an exact channel identity."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

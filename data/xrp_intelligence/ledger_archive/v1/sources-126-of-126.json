@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 125,
+  "chunk_count": 126,
+  "record_count": 5,
+  "created_at_utc": "2026-10-31T16:45:00Z",
+  "records": [
+    {
+      "id": "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "title": "Security Incident Recovery Update #3 — SAFU and Futures Insurance Fund FAQ",
+      "publisher": "Binance",
+      "published_date": "2026-10-31T14:24:00Z",
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "evidence_type": "OFFICIAL_INCIDENT_ANNOUNCEMENT_AND_FAQ",
+      "independence_group": "BINANCE_OFFICIAL",
+      "status": "VERIFIED",
+      "notes": "Updated 15:23 UTC. Company states 90% aggregate covered, ten named tokens including XRP 100% backed on 00:00 UTC snapshot, partial SAFU deployment expected within next 24h, partial Futures Insurance Fund reallocation from excess above minimum, SAFU held/managed by Nest Clearing and Custody Limited, portion of SAFU serves ADGM regulatory capital, public SAFU BTC wallet 1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD, full ZK PoR expected by Nov3, withdrawals targeted Sunday Nov1. Company claims; no XRP-specific purchase quantity."
+    },
+    {
+      "id": "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS",
+      "url": "https://bitinfocharts.com/bitcoin/address/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "title": "Public Bitcoin address balance and transaction summary for Binance-designated SAFU wallet",
+      "publisher": "BitInfoCharts",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "evidence_type": "THIRD_PARTY_ONCHAIN_EXPLORER_OBSERVATION",
+      "independence_group": "BITINFOCHARTS_ONCHAIN",
+      "status": "VERIFIED_PROVIDER_OBSERVATION",
+      "notes": "Displays 15,000.00147092 BTC balance; 31,277.00006 BTC received in 28 ins, last Aug9 2026 01:20:03 UTC; 16,276.9991 BTC sent in five outs, last Apr18 2024. One provider; not proof of all SAFU assets or other funding paths."
+    },
+    {
+      "id": "SRC-20261031T164500Z-SWOLECHARTS-BINANCE-FUTURES-INSURANCE",
+      "url": "https://swolecharts.com/insurance-fund",
+      "title": "Hourly exchange futures insurance fund balances",
+      "publisher": "SwoleCharts",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "evidence_type": "THIRD_PARTY_DERIVATIVES_INSURANCE_FUND_AGGREGATION",
+      "independence_group": "SWOLECHARTS_INSURANCE_DATA",
+      "status": "VERIFIED_PROVIDER_OBSERVATION",
+      "notes": "As of 15:00 UTC Oct31: Binance aggregate $2.46B, +0.14% 24h, +0.62% 7d; Oct2 reference $2.41B. Binance XRPUSDT shared pool $65.83M USDT across ten symbols incl XRP; Bybit XRPUSD isolated pool 55.58M XRP (~$69.33M). Third-party hourly aggregation; not official daily snapshot."
+    },
+    {
+      "id": "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER",
+      "url": "https://www.adgm.com/public-registers/fsra/firms/recognized-bodies/nest-clearing-and-custody-limited",
+      "title": "FSRA Public Register: Nest Clearing and Custody Limited",
+      "publisher": "Abu Dhabi Global Market — FSRA",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "evidence_type": "OFFICIAL_REGULATORY_PUBLIC_REGISTER",
+      "independence_group": "ADGM_FSRA_PUBLIC_REGISTER",
+      "status": "VERIFIED",
+      "notes": "Active Recognised Clearing House 0070; recognition date 2025-12-08; previous name Binance (AD) Limited; trading name Binance; activities Providing Custody and Operating a Central Securities Depository."
+    },
+    {
+      "id": "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE",
+      "url": "https://www.binance.com/en/support/announcement/detail/a4a7d00e88224224b55293be07724334",
+      "title": "Binance's ADGM Launch Update — three regulated legal entities",
+      "publisher": "Binance",
+      "published_date": "2026-01-05T08:00:00Z",
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "evidence_type": "OFFICIAL_LEGAL_ENTITY_STRUCTURE_ANNOUNCEMENT",
+      "independence_group": "BINANCE_OFFICIAL",
+      "status": "VERIFIED",
+      "notes": "Nest Exchange: on-exchange spot/derivatives. Nest Clearing and Custody: clearing, settlement, central-counterparty functions and custody. Nest Trading: off-exchange principal/agency, OTC and Convert."
+    }
+  ]
+}

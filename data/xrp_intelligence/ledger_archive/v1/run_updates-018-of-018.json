@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 17,
+  "chunk_count": 18,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T06:13:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T06:13:00Z",
+      "update_type": "COINBASE_CBXRP_PRIMARY_RESERVE_AND_BINANCE_XRPBF2_EXCHANGE_FLOAT_DECOMPOSITION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "cd7c3a12bf4738bec27369bbd1edc45cc1c7bdfb",
+      "main_sha": "a644a2254a2c38e20a3b368090ced43d4767e561",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-POR-20261029T0914Z",
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261030T0613Z",
+        "SRC-BINANCE-XRP-BF2-BACKING-20191010",
+        "SRC-XRPINSIGHTS-WRAPPED-EXCHANGE-RESERVES-20261029",
+        "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261029-20261030T0508Z",
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z"
+      ],
+      "findings": {
+        "coinbase_cbxrp_reserve_xrp": 151405263.6,
+        "coinbase_cbxrp_supply": 151403016.07,
+        "excess_reserve_xrp": 2247.53,
+        "reserve_coverage_percent": 100.001484,
+        "data_snapshot_utc": "2026-10-29T09:14:00Z",
+        "binance_xrp_bf2_reserve_xrp_secondary_estimate": 325800000,
+        "total_known_wrapped_and_other_reserves_xrp": 488400000,
+        "exchange_labeled_wallet_total_xrp": 22580000000,
+        "adjusted_total_excluding_known_reserves_xrp": 22091600000,
+        "adjusted_total_is_tradable_float": false,
+        "binance_hack_source_wallet_overlap": "UNKNOWN"
+      },
+      "validator": {
+        "latest_index_commit_head": "cd7c3a12bf4738bec27369bbd1edc45cc1c7bdfb",
+        "exact_head_validator_run": 41012734861,
+        "exact_head_validator_tests": 18,
+        "exact_head_validator_conclusion": "PASS",
+        "exact_head_gate_run": 41012734910,
+        "exact_head_gate_conclusion": "PASS_MERGE_DISABLED"
+      },
+      "pr1353": "OPEN_DRAFT_UNMERGED",
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false
+    }
+  ]
+}

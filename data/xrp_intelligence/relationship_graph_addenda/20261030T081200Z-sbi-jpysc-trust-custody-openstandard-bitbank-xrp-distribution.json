@@ -1,0 +1,524 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T081200Z-SBI-JPYSC-TRUST-CUSTODY-OPENSTANDARD-BITBANK-XRP-DISTRIBUTION",
+  "captured_at_utc": "2026-10-30T08:12:00Z",
+  "nodes": [
+    {
+      "id": "SBI_HOLDINGS",
+      "label": "SBI Holdings",
+      "kind": "JAPANESE_FINANCIAL_GROUP"
+    },
+    {
+      "id": "SBIC_EAST_JAPAN",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co. Ltd.",
+      "kind": "SME_INVESTMENT_COMPANY"
+    },
+    {
+      "id": "SBICAH_GK",
+      "label": "SBICAH Godo Kaisha",
+      "kind": "SBI_ACQUISITION_VEHICLE"
+    },
+    {
+      "id": "SBI_CRYPTO_ASSET_HOLDINGS",
+      "label": "SBI Crypto Asset Holdings Co. Ltd.",
+      "kind": "SBI_CRYPTO_HOLDING_COMPANY"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "label": "SBI VC Trade",
+      "kind": "JAPANESE_CRYPTO_EXCHANGE_AND_EPAYMENT_OPERATOR"
+    },
+    {
+      "id": "BITBANK",
+      "label": "Bitbank",
+      "kind": "JAPANESE_CRYPTO_EXCHANGE"
+    },
+    {
+      "id": "SBI_SHINSEI_TRUST",
+      "label": "SBI Shinsei Trust Bank",
+      "kind": "TRUST_BANK_AND_JPYSC_ISSUER"
+    },
+    {
+      "id": "SBI_CLEARING_TRUST",
+      "label": "SBI Clearing Trust",
+      "kind": "TRUST_AND_CRYPTO_CUSTODY_BUSINESS"
+    },
+    {
+      "id": "JPYSC",
+      "label": "JPYSC",
+      "kind": "TRUST_BACKED_JPY_STABLECOIN"
+    },
+    {
+      "id": "SBI_START_BOND",
+      "label": "SBI START Bond",
+      "kind": "TOKENIZED_CORPORATE_BOND"
+    },
+    {
+      "id": "SBI_VISA_CRYPTO_CARD",
+      "label": "SBI VISA Crypto Card",
+      "kind": "RETAIL_CRYPTO_REWARD_PRODUCT"
+    },
+    {
+      "id": "STARTALE",
+      "label": "Startale Group",
+      "kind": "BLOCKCHAIN_INFRASTRUCTURE_PARTNER"
+    },
+    {
+      "id": "OPEN_STANDARD",
+      "label": "Open Standard",
+      "kind": "PARTNER_GOVERNED_STABLECOIN_NETWORK"
+    },
+    {
+      "id": "OUSD",
+      "label": "Open USD",
+      "kind": "USD_STABLECOIN"
+    },
+    {
+      "id": "COINBASE",
+      "label": "Coinbase",
+      "kind": "EXCHANGE_CUSTODY_AND_STABLECOIN_DISTRIBUTOR"
+    },
+    {
+      "id": "CIRCLE",
+      "label": "Circle",
+      "kind": "USDC_ISSUER"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "BLOCKCHAIN_AND_STABLECOIN_COMPANY"
+    },
+    {
+      "id": "RLUSD",
+      "label": "RLUSD",
+      "kind": "RIPPLE_USD_STABLECOIN"
+    },
+    {
+      "id": "USDC",
+      "label": "USDC",
+      "kind": "CIRCLE_USD_STABLECOIN"
+    },
+    {
+      "id": "BLACKROCK",
+      "label": "BlackRock",
+      "kind": "ASSET_MANAGER"
+    },
+    {
+      "id": "TOKENIZED_MMF",
+      "label": "Tokenized money-market fund (specific fund unknown)",
+      "kind": "TOKENIZED_RWA"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "label": "SBI Ripple Asia",
+      "kind": "XRPL_ECOSYSTEM_COMPANY"
+    },
+    {
+      "id": "AWAJ",
+      "label": "Asia Web3 Alliance Japan",
+      "kind": "STARTUP_ECOSYSTEM_ASSOCIATION"
+    },
+    {
+      "id": "XRPL",
+      "label": "XRP Ledger",
+      "kind": "PUBLIC_BLOCKCHAIN"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_DIGITAL_ASSET"
+    },
+    {
+      "id": "COINLAW_POR_TRACKER",
+      "label": "CoinLaw PoR tracker",
+      "kind": "SECONDARY_POR_TRACKER"
+    }
+  ],
+  "edges": [
+    {
+      "id": "SBI-EDGE-BITBANK-OWNERSHIP",
+      "source": "SBI_HOLDINGS",
+      "target": "BITBANK",
+      "relationship": "100_PERCENT_OWNERSHIP_EFFECTIVE_2026_10_01",
+      "evidence_class": "OFFICIAL_CORPORATE_DISCLOSURE",
+      "source_ids": [
+        "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-SBICAH-VEHICLE",
+      "source": "SBICAH_GK",
+      "target": "SBI_CRYPTO_ASSET_HOLDINGS",
+      "relationship": "REPRESENTATIVE_MEMBER",
+      "evidence_class": "OFFICIAL_SBI_FILING",
+      "source_ids": [
+        "SRC-SBICAH-SBI-CRYPTO-ASSET-HOLDINGS-20230214"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-SBIC-DISTINCTION",
+      "source": "SBIC_EAST_JAPAN",
+      "target": "SBICAH_GK",
+      "relationship": "DISTINCT_LEGAL_ENTITIES_DO_NOT_CONFLATE",
+      "evidence_class": "ENTITY_RESOLUTION",
+      "source_ids": [
+        "SRC-SBICAH-SBI-CRYPTO-ASSET-HOLDINGS-20230214"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-BITBANK-XRPJPY",
+      "source": "BITBANK",
+      "target": "XRP",
+      "relationship": "XRP_JPY_SPOT_MARKET",
+      "evidence_class": "EXCHANGE_MARKET_SNAPSHOT",
+      "source_ids": [
+        "SRC-BITBANK-XRPJPY-LIQUIDITY-COINGECKO-20261030T0805Z"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-VISA-CRYPTO-CARD-XRP",
+      "source": "SBI_VISA_CRYPTO_CARD",
+      "target": "XRP",
+      "relationship": "CARD_POINTS_AUTO_CONVERT_TO_XRP_OPTION",
+      "evidence_class": "OFFICIAL_PRODUCT_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-START-BOND-XRP-REWARD",
+      "source": "SBI_START_BOND",
+      "target": "XRP",
+      "relationship": "ONE_TIME_REWARD_JPY200_PER_JPY100K_ELIGIBLE_SUBSCRIPTION",
+      "evidence_class": "OFFICIAL_PRODUCT_TERMS",
+      "source_ids": [
+        "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-START-BOND-IBET",
+      "source": "SBI_START_BOND",
+      "target": "SBI_HOLDINGS",
+      "relationship": "TOKENIZED_BOND_ISSUED_ON_IBET_FOR_FIN_NOT_XRPL",
+      "evidence_class": "OFFICIAL_PRODUCT_TERMS",
+      "source_ids": [
+        "SRC-SBI-START-BOND-XRP-REWARD-SOLD-OUT-20261030"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-JPYSC-ISSUER",
+      "source": "SBI_SHINSEI_TRUST",
+      "target": "JPYSC",
+      "relationship": "ISSUER_AND_TRUST_BACKING_MANAGER",
+      "evidence_class": "OFFICIAL_SBI_RELEASE",
+      "source_ids": [
+        "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624",
+        "SRC-SBI-JPYSC-JGB-RESERVES-20260907"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-JPYSC-DISTRIBUTOR",
+      "source": "SBI_VC_TRADE",
+      "target": "JPYSC",
+      "relationship": "DISTRIBUTION_AND_ISSUANCE委託",
+      "evidence_class": "OFFICIAL_SBI_RELEASE",
+      "source_ids": [
+        "SRC-SBI-JPYSC-ACCOUNT-BOUND-LAUNCH-20260624"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-JPYSC-JGB-RESERVE",
+      "source": "JPYSC",
+      "target": "SBI_SHINSEI_TRUST",
+      "relationship": "JPY20_1B_ISSUED_JPY1B_SHORT_JGB_BACKING_AS_OF_2026_09_07",
+      "evidence_class": "OFFICIAL_RESERVE_DISCLOSURE",
+      "source_ids": [
+        "SRC-SBI-JPYSC-JGB-RESERVES-20260907"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-CLEARING-TRUST-MERGER",
+      "source": "SBI_CLEARING_TRUST",
+      "target": "SBI_SHINSEI_TRUST",
+      "relationship": "PLANNED_MERGER_2026_12_31_SUBJECT_TO_APPROVAL",
+      "evidence_class": "OFFICIAL_CORPORATE_DISCLOSURE",
+      "source_ids": [
+        "SRC-SBI-TRUST-MERGER-20261029"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-OPENSTANDARD-MEMBERSHIP",
+      "source": "SBI_HOLDINGS",
+      "target": "OPEN_STANDARD",
+      "relationship": "MEMBER_SINCE_2026_10_16",
+      "evidence_class": "OFFICIAL_SBI_RELEASE",
+      "source_ids": [
+        "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-JPYSC-OUSD-POC",
+      "source": "JPYSC",
+      "target": "OUSD",
+      "relationship": "INTEROPERABILITY_POC_UNDER_CONSIDERATION",
+      "evidence_class": "OFFICIAL_SBI_RELEASE",
+      "source_ids": [
+        "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-BLACKROCK-JPYSC-MMF",
+      "source": "BLACKROCK",
+      "target": "TOKENIZED_MMF",
+      "relationship": "MOU_TO_EXPLORE_TOKENIZED_MMF_JPYSC_ECOSYSTEM",
+      "evidence_class": "OFFICIAL_SBI_RELEASE",
+      "source_ids": [
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-MMF-JPYSC-SETTLEMENT",
+      "source": "TOKENIZED_MMF",
+      "target": "JPYSC",
+      "relationship": "POTENTIAL_SETTLEMENT_OR_INTEROPERABILITY_USE_CASE",
+      "evidence_class": "MOU_ONLY",
+      "source_ids": [
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-COINBASE-OPENSTANDARD",
+      "source": "COINBASE",
+      "target": "OPEN_STANDARD",
+      "relationship": "FOUNDING_PARTNER",
+      "evidence_class": "OFFICIAL_STRIPE_AND_SBI_RELEASES",
+      "source_ids": [
+        "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+        "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-RIPPLE-OPENSTANDARD",
+      "source": "RIPPLE",
+      "target": "OPEN_STANDARD",
+      "relationship": "REPORTED_BROADER_NETWORK_PARTICIPANT",
+      "evidence_class": "SECONDARY_PARTNER_LISTING",
+      "source_ids": [
+        "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-OPENSTANDARD-OUSD",
+      "source": "OPEN_STANDARD",
+      "target": "OUSD",
+      "relationship": "NETWORK_AND_PRODUCT",
+      "evidence_class": "OFFICIAL_STRIPE_RELEASE",
+      "source_ids": [
+        "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-OUSD-NO-XRPL",
+      "source": "OUSD",
+      "target": "XRPL",
+      "relationship": "NO_XRPL_DEPLOYMENT_ESTABLISHED_LAUNCH_CHAINS_BASE_ETHEREUM_SOLANA_TEMPO",
+      "evidence_class": "OFFICIAL_STRIPE_CHAIN_AVAILABILITY",
+      "source_ids": [
+        "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-SBI-RLUSD",
+      "source": "SBI_VC_TRADE",
+      "target": "RLUSD",
+      "relationship": "DISTRIBUTES_RLUSD_SINCE_2026_06_24",
+      "evidence_class": "OFFICIAL_SBI_RIPPLE_RELEASE",
+      "source_ids": [
+        "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+        "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-SBI-USDC",
+      "source": "SBI_VC_TRADE",
+      "target": "USDC",
+      "relationship": "DISTRIBUTES_USDC_SINCE_2025_03",
+      "evidence_class": "OFFICIAL_SBI_RIPPLE_RELEASE",
+      "source_ids": [
+        "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+        "SRC-SBI-VCTRADE-RLUSD-AND-USDC-20260624"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-RLUSD-ISSUER",
+      "source": "RIPPLE",
+      "target": "RLUSD",
+      "relationship": "ISSUER",
+      "evidence_class": "OFFICIAL_SBI_RIPPLE_RELEASE",
+      "source_ids": [
+        "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-USDC-ISSUER",
+      "source": "CIRCLE",
+      "target": "USDC",
+      "relationship": "ISSUER",
+      "evidence_class": "OFFICIAL_SBI_RIPPLE_RELEASE",
+      "source_ids": [
+        "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-SBI-RIPPLE-ASIA",
+      "source": "SBI_RIPPLE_ASIA",
+      "target": "XRPL",
+      "relationship": "TECHNICAL_SUPPORT_FOR_STARTUPS_BUILDING_XRPL_FINANCIAL_SERVICES",
+      "evidence_class": "OFFICIAL_SBI_RIPPLE_ASIA_RELEASE",
+      "source_ids": [
+        "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-SBI-RIPPLE-ASIA-AWAJ",
+      "source": "SBI_RIPPLE_ASIA",
+      "target": "AWAJ",
+      "relationship": "TECHNICAL_SUPPORT_PARTNERSHIP",
+      "evidence_class": "OFFICIAL_SBI_RIPPLE_ASIA_RELEASE",
+      "source_ids": [
+        "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220"
+      ]
+    },
+    {
+      "id": "SBI-EDGE-COINLAW-POR-OMISSION",
+      "source": "COINLAW_POR_TRACKER",
+      "target": "BINANCE_OFFICIAL_POR",
+      "relationship": "DISPLAYED_SUMMARY_HAS_NO_XRP_RATIO",
+      "evidence_class": "SECONDARY_TRACKER_OMISSION",
+      "source_ids": [
+        "SRC-COINLAW-BINANCE-POR-ASSET-SUMMARY-20261012"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-SBI-MULTIRAIL-DIGITAL-ASSET-STACK-20261030",
+      "claim": "SBI is assembling a multi-rail digital-asset financial stack in which XRP is one distribution and ecosystem component, not the exclusive settlement asset.",
+      "support": [
+        "Bitbank acquisition and XRP/JPY market.",
+        "SBI Visa Crypto Card and START bond XRP incentives.",
+        "SBI VC Trade distribution of both RLUSD and USDC.",
+        "SBI Ripple Asia XRPL startup support.",
+        "JPYSC, Open Standard interoperability consideration, tokenized-MMF MOU and trust consolidation."
+      ],
+      "counter": [
+        "JPYSC/OUSD and tokenized-MMF routes are not XRP-specific.",
+        "No XRP custody balances, actual card reward distribution or post-acquisition XRP trading growth are disclosed."
+      ],
+      "status": "STRONGLY_SUPPORTED_GROUP_STRATEGY; XRP_VALUE_CAPTURE_UNMEASURED"
+    },
+    {
+      "id": "HYP-SBI-BITBANK-XRP-LIQUIDITY-EXPANSION-20261030",
+      "claim": "SBI's full acquisition of Bitbank could increase Japanese XRP/JPY distribution and liquidity through a larger group customer base.",
+      "support": [
+        "Bitbank acquisition completed October 1.",
+        "Bitbank lists XRP/JPY with observable spot volume and order-book depth."
+      ],
+      "counter": [
+        "No post-acquisition before/after volume series, customer migration or group-wide XRP holdings are available."
+      ],
+      "status": "CHANNEL_CONFIRMED; INCREMENTAL_LIQUIDITY_EFFECT_UNMEASURED"
+    },
+    {
+      "id": "HYP-SBI-XRP-RETAIL-INCENTIVE-DISTRIBUTION-20261030",
+      "claim": "SBI has used XRP incentives to route traditional retail finance customers into SBI VC Trade.",
+      "support": [
+        "Visa Crypto Card allows point conversion to XRP.",
+        "SBI START bond offered XRP reward and sold out."
+      ],
+      "counter": [
+        "Total XRP credited is not disclosed.",
+        "START bond reward was a limited one-time incentive; later coupon rewards were undecided and not promised.",
+        "No evidence of net new exchange purchases or persistent retail demand."
+      ],
+      "status": "PRODUCTS_CONFIRMED; AGGREGATE_XRP_FLOW_UNKNOWN"
+    },
+    {
+      "id": "HYP-JPYSC-OUSD-ALTERNATIVE-SETTLEMENT-RAIL-20261030",
+      "claim": "JPYSC/OUSD interoperability could create an alternative JPY/USD settlement route alongside USDC and RLUSD.",
+      "support": [
+        "SBI and Startale joined Open Standard and are considering a PoC.",
+        "SBI VC Trade already distributes USDC and RLUSD.",
+        "OUSD is live on Base, Ethereum, Solana and Tempo."
+      ],
+      "counter": [
+        "No live PoC, selected chain, bridge, production volume or XRPL route is disclosed.",
+        "JPYSC initially remained account-bound."
+      ],
+      "status": "POTENTIAL_ROUTE_NOT_OPERATIONAL"
+    },
+    {
+      "id": "HYP-OUSD-PARTNER-ECONOMICS-CHALLENGE-CIRCLE-20261030",
+      "claim": "Open Standard's partner-shared reserve economics could challenge Circle's issuer-centric USDC economics, while Coinbase and Ripple participate in the wider network.",
+      "support": [
+        "Coinbase is an Open Standard founding partner.",
+        "The Block reports Ripple among broader participants.",
+        "Stripe/Open Standard describes partner rewards and no mint/burn fees."
+      ],
+      "counter": [
+        "No evidence Coinbase or Ripple has shifted USDC/RLUSD volume to OUSD at scale.",
+        "Circle is not listed among the five founders, but this does not prove direct commercial displacement.",
+        "OUSD and USDC may serve different distribution/use cases."
+      ],
+      "status": "COMPETITIVE_HYPOTHESIS; DISPLACEMENT_NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-SBI-TRUST-CONSOLIDATION-CUSTODY-EXPANSION-20261030",
+      "claim": "The planned SBI Clearing Trust merger could consolidate crypto-asset custody and stablecoin trust capabilities within SBI Shinsei Trust Bank.",
+      "support": [
+        "SBI Clearing Trust began crypto-asset trust business in July 2023.",
+        "October 29 merger agreement names SBI Shinsei Trust as survivor and includes JPYSC issuance."
+      ],
+      "counter": [
+        "Merger is subject to regulatory approvals and not effective until planned December 31.",
+        "No XRP-specific trust asset, customer balance or custody mandate is disclosed."
+      ],
+      "status": "PLANNED_CAPABILITY_CONSOLIDATION; XRP_SCOPE_UNKNOWN"
+    },
+    {
+      "id": "HYP-BINANCE-XRP-POR-IMPAIRMENT-20261030",
+      "claim": "The five compromised Binance XRPL source wallets were part of the October 1 XRP PoR reserve set.",
+      "support": [
+        "Bitquery labels drained wallets with Binance PoR tags."
+      ],
+      "counter": [
+        "CoinDesk's crosswalk identifies Ethereum Binance 14, not the five XRP accounts.",
+        "CoinLaw summary does not display an XRP ratio.",
+        "Official Binance October 1 address payload remains unparsed."
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "HYP-XRP-POSTHACK-VOLUNTARY-EXCHANGE-OUTFLOW-20261030",
+      "claim": "Negative tracked XRP exchange flow indicates voluntary post-incident holder withdrawals.",
+      "support": [
+        "TrackWhale reports -210.09M XRP tracked seven-day netflow."
+      ],
+      "counter": [
+        "The period includes the Binance theft; metric is limited to large transfers and may be dominated by incident outflow.",
+        "CoinDesk institutional withdrawal report has no quantities or XRP-specific destinations."
+      ],
+      "status": "NOT_ESTABLISHED; FLOW_FEATURE_BLOCKED"
+    }
+  ],
+  "source_independence": {
+    "official_sbi": "SBI Holdings/VC Trade/Trust releases are primary for their own ownership, products and announced plans; they are not independent proof of actual transaction volumes.",
+    "bitbank_market": "CoinGecko is a secondary single-market snapshot; no official post-acquisition volume series.",
+    "ousd": "Stripe is primary for Stripe product availability; The Block is secondary for Ripple's broader network participation.",
+    "coinlaw": "CoinLaw is a secondary PoR tracker and its asset summary is incomplete for XRP; absence of a displayed ratio is not proof of absence from Binance's complete report.",
+    "binance_incident": "Bitquery, TRM and Bithomp examine the same public XRPL transactions; independent analytics do not create independent underlying events."
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 95,
+  "chunk_count": 96,
+  "record_count": 6,
+  "records": [
+    {
+      "id": "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+      "source_id": "SRC-GH-CROSS-ANALYSIS-41161874626-20261031T025200Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent main",
+      "title": "Scheduled Cross Analysis run 41161874626 and main commit b375954",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41161874626",
+      "retrieved_at_utc": "2026-10-31T02:56:00Z",
+      "evidence_class": "REPOSITORY_EXECUTION_EVIDENCE",
+      "independence_group": "BARROT_GITHUB_ACTIONS",
+      "git_blob_sha": "098a342ddc43a3c70c76feacaf5e55231840cf62",
+      "summary": "Scheduled Cross Analysis run 41161874626 completed successfully and pushed commit b3759544b72a1db392b7e437c85cf4970cdcac74 to main from parent 7a780de. The only changed path was ping-pongings/knowledge-base/sentiment_shift.json; generated_at changed to 2026-10-31T02:52:06Z. The job log reports XRP recent/prior windows n=0 and BTC recent/prior windows n=0. The script therefore had no valid sentiment-shift sample.",
+      "limitations": "This is repository workflow output, not independent market evidence. Zero-sample output is NOT_EVALUATED and must not be admitted as an XRP feature or directional signal."
+    },
+    {
+      "id": "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z",
+      "source_id": "SRC-GH-PAGES-DEPLOY-41161885309-20261031T025208Z",
+      "publisher": "GitHub Actions — GitHub Pages",
+      "title": "Automatic Pages build and deployment for main commit b375954",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41161885309",
+      "retrieved_at_utc": "2026-10-31T02:56:00Z",
+      "evidence_class": "DEPLOYMENT_EXECUTION_EVIDENCE",
+      "independence_group": "GITHUB_PAGES_DEPLOYMENT",
+      "summary": "The Pages build, deploy and report-build-status jobs all completed successfully for main head b3759544b72a1db392b7e437c85cf4970cdcac74, immediately after the scheduled Cross Analysis commit.",
+      "limitations": "This was an automatic Pages deployment triggered by a main-branch push. It does not establish that Cross Analysis directly invoked a deployment command or changed product source files."
+    },
+    {
+      "id": "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z",
+      "source_id": "SRC-GH-SELF-DEPLOY-41148251682-20261031T000545Z",
+      "publisher": "GitHub Actions — Barrot-Agent/B-Agent",
+      "title": "Scheduled telemetry workflow run 41148251682 and report commit f97ac7a",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41148251682",
+      "retrieved_at_utc": "2026-10-31T02:56:00Z",
+      "evidence_class": "REPOSITORY_EXECUTION_EVIDENCE",
+      "independence_group": "BARROT_GITHUB_ACTIONS",
+      "git_blob_sha": "b59e0f2bd7e636d2fd7db3a484b459b2f45d54ad",
+      "summary": "The scheduled Barrot Autonomous Self-Deployment workflow ran at 2026-10-31T00:05:45Z. Checkout, telemetry-report generation and Commit steps succeeded. Commit f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9 changed only the timestamp in AUTONOMOUS_DEPLOYMENT_REPORT.md. GitHub Pages deployment run 41148264821 then completed successfully.",
+      "limitations": "The workflow describes itself as telemetry-only and has no direct deploy step, but it checks out with persisted credentials and commits/pushes the generated report to main. The Pages deployment is a downstream consequence of that push."
+    },
+    {
+      "id": "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z",
+      "source_id": "SRC-GH-PR1391-TELEMETRY-READONLY-20261031T025440Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent pull request #1391",
+      "title": "Read-only telemetry snapshot remediation PR #1391",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1391",
+      "retrieved_at_utc": "2026-10-31T02:56:00Z",
+      "evidence_class": "REPOSITORY_CHANGE_AND_CI_EVIDENCE",
+      "independence_group": "BARROT_GITHUB_PULL_REQUESTS",
+      "git_blob_sha": "fc97396245f3b90d79645a57643333104e67f339",
+      "summary": "Draft PR #1391 targets main b375954 and proposes contents:read, checkout persist-credentials:false, runner-workspace-only report generation, a 30-day Actions artifact, and removal of git add/commit/push. Seven regression checks are registered in core CI. Exact-head CI run 41162060701 passed 349 tests plus 8 subtests; fail-closed gate run 41162060753 passed with merge disabled. PR remains open, draft, mergeable and unmerged.",
+      "limitations": "The remediation is not active on main until approved and merged. Exact-head CI verifies the PR branch, not production execution of the revised scheduled workflow."
+    },
+    {
+      "id": "SRC-GH-PR-INVENTORY-20261031T025600Z",
+      "source_id": "SRC-GH-PR-INVENTORY-20261031T025600Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent pull request inventory",
+      "title": "Open PR inventory at main head b375954",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pulls",
+      "retrieved_at_utc": "2026-10-31T02:56:00Z",
+      "evidence_class": "REPOSITORY_STATE_SNAPSHOT",
+      "independence_group": "GITHUB_PULL_REQUEST_API",
+      "summary": "The point-in-time API inventory contains 166 open PRs: 156 draft and 10 ready for review. 164 target main; 163 are based on stale main SHAs, one (#1391) targets the current main SHA b375954, and two target non-main branches. PRs #1386, #1388 and #1390 remain based on 7a780de and require fresh merge-result validation.",
+      "limitations": "Inventory is point-in-time. A stale base SHA does not by itself establish a conflict; not every PR's changed paths were re-audited in this inventory."
+    },
+    {
+      "id": "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z",
+      "source_id": "SRC-GH-SCHEDULER-TICK-41161577082-20261031T024755Z",
+      "publisher": "GitHub Actions — Barrot-Agent/B-Agent",
+      "title": "Scheduler Tick run 41161577082",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41161577082",
+      "retrieved_at_utc": "2026-10-31T02:56:00Z",
+      "evidence_class": "REPOSITORY_EXECUTION_EVIDENCE",
+      "independence_group": "BARROT_GITHUB_ACTIONS",
+      "summary": "Scheduled Scheduler Tick run 41161577082 completed successfully at 2026-10-31T02:47:49Z. It fired zero queue entries with one total entry. The Commit queue updates step executed git add/commit/push logic, but the push returned Everything up-to-date; no main mutation occurred in this run.",
+      "limitations": "The workflow still has contents:write and actions:write capabilities. A no-op run does not establish that future queue updates or workflow dispatches are harmless."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 121,
+  "chunk_count": 122,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "LIM-20261031T084254Z-APPROVAL-WORKFLOW-MAIN-ZERO-JOBS",
+      "category": "workflow_verification",
+      "statement": "PR #1402's push no-op passed on its own branch, but a subsequent push to the XRP research branch still invoked the default-branch approval workflow and failed with zero jobs. The fix is not active repository-wide until PR #1402 is approved and merged.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403",
+        "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470",
+        "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+      ]
+    },
+    {
+      "id": "LIM-20261031T084254Z-NO-FAIL-CLOSED-GATE-ON-E8D442",
+      "category": "evidence_gate",
+      "statement": "The exact-head XRP archive validator passed on e8d442 with 364 shards and 20 tests, but no fail-closed gate run was returned for that exact head. Do not label the gate verified.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 50,
+  "chunk_count": 51,
+  "record_count": 4,
+  "created_at_utc": "2026-10-30T16:15:01Z",
+  "records": [
+    {
+      "id": "SRC-LIQWALL-XRP-DERIVATIVES-20261030T161501Z",
+      "evidence_class": "PUBLIC_AGGREGATED_DERIVATIVES_MARKET_DATA",
+      "urls": [
+        "https://liqwall.com/coins/xrp"
+      ],
+      "title": "Liqwall — XRP derivatives snapshot, 30 October 2026 04:32 UTC",
+      "published_at": "2026-10-30T04:32:00Z",
+      "accessed_at_utc": "2026-10-30T16:15:01Z",
+      "note": "Reports XRP $1.25, 24h liquidations $39.6M ($37.9M longs, $1.7M shorts), aggregate OI $1.31B (-3.9% 24h), average funding -0.0101% per 8h, Binance funding +0.0032%, and 74.3% of Binance accounts long. This is a provider-specific aggregate; its exchange coverage/aggregation differs materially from TradRadar's 7-exchange $1.85B OI panel. Do not average."
+    },
+    {
+      "id": "SRC-XRPINSIGHTS-ETF-FLOWS-20261030T161501Z",
+      "evidence_class": "ISSUER_HOLDINGS_CHANGE_ETF_AGGREGATOR",
+      "urls": [
+        "https://xrp-insights.com/data",
+        "https://xrp-insights.com/"
+      ],
+      "title": "XRP Insights — 29 October 2026 US XRP ETF holdings and flows",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T16:15:01Z",
+      "note": "Reports +6.40M XRP net flow on 29 Oct across six spot funds plus BITW, 1,196,650,118 XRP held, and +3.44M XRP over 26–29 Oct. Flows are day-over-day changes in issuer-reported holdings. The 29 Oct US session close was approximately 20:00 UTC, four minutes before the first Binance XRPL drain at 20:04 UTC; it is pre-incident, not a response to the hack."
+    },
+    {
+      "id": "SRC-REPO-MAIN-WORKFLOW-AUDIT-20261030T161501Z",
+      "evidence_class": "LIVE_GITHUB_MAIN_BRANCH_AND_WORKFLOW_CONFIGURATION",
+      "urls": [
+        "https://github.com/Barrot-Agent/B-Agent/commit/dd907496d7989c4f421fb137cca6794314e9812a",
+        "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/cross-analysis.yml",
+        "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/merge-queue.yml",
+        "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/kaggle-competitions.yml"
+      ],
+      "title": "B-Agent main — cross-analysis, merge-queue, paper-trader, Kaggle and model-merge safety audit",
+      "published_at": "2026-10-30T15:51:49Z",
+      "accessed_at_utc": "2026-10-30T16:15:01Z",
+      "note": "Main dd907... retains scheduled cross-analysis writes to main; a manual merge queue with contents/pull-requests write, dry_run=false and max_prs=0; a nonzero paper-trading position with null product identity; a daily Kaggle workflow invoking a missing root-level script while the implementation auto-submits to up to five competitions; and duplicate Hugging Face merge workflows that expose a global token to --trust-remote-code. The model merge config path is absent on main. The free-image workflow also has a missing root-level script, contents:write and job-level HF_TOKEN. The path mismatches currently block those workflows before the risky scripts execute. No workflow was dispatched."
+    },
+    {
+      "id": "SRC-REPO-PR1374-HF-ISOLATION-REDTEAM-20261030T161501Z",
+      "evidence_class": "GITHUB_PULL_REQUEST_EXACT_HEAD_CI_AND_RED_TEAM_REVIEW",
+      "urls": [
+        "https://github.com/Barrot-Agent/B-Agent/pull/1374",
+        "https://github.com/Barrot-Agent/B-Agent/commit/5f70b26eac93b4835130db2541e085dd2e107ce2",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/41087890290",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/41087890315"
+      ],
+      "title": "PR #1374 — separate-runner Hugging Face upload isolation and workflow-input validation",
+      "published_at": "2026-10-30T16:13:20Z",
+      "accessed_at_utc": "2026-10-30T16:15:01Z",
+      "note": "Exact head 5f70b26... separates untrusted --trust-remote-code merge from token-bearing upload onto a fresh runner, exports model output through a one-day artifact, sets upload-job permissions to empty, rejects symlinks, passes model_name via environment with strict allowlist and quoting, and scopes HF_TOKEN to the final upload step. Exact-head CI 41087890290 passed 347 tests plus 8 subtests, including five workflow-safety tests; fail-closed gate 41087890315 passed. PR remains open/draft/unmerged. No artifact transfer, real Hugging Face upload or workflow dispatch was executed. Main is three commits ahead of the merge base, with no observed changed-path overlap. Merge config is absent on main; action refs and transitive dependencies remain unpinned."
+    }
+  ]
+}

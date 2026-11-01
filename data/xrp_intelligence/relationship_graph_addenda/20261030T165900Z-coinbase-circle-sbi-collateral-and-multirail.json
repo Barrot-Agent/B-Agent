@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-20261030T165900Z-COINBASE-CIRCLE-SBI-COLLATERAL-AND-MULTIRAIL",
+  "captured_at_utc": "2026-10-30T16:59:00Z",
+  "source_ids": [
+    "SRC-COINBASE-Q3-2026-10Q-COLLATERAL-20261030",
+    "SRC-CIRCLE-Q2-2026-10Q-COINBASE-DISTRIBUTION-20261030",
+    "SRC-COINBASE-Q3-2026-EARNINGS-USDC-20261030",
+    "SRC-SBI-CIRCLE-JV-50-50-AND-CIRCLE-CONTROL-20261030",
+    "SRC-SBI-CIRCLE-ARC-INVESTMENT-20260512",
+    "SRC-SBI-JPYSC-LAUNCH-ACCOUNT-ONLY-20260624",
+    "SRC-SBI-JPYSC-JGB-RESERVE-AND-LENDING-20260907",
+    "SRC-SBI-SMBC-JPYSC-CAPITAL-ALLIANCE-20261030",
+    "SRC-SBI-STARTALE-BLACKROCK-JPYSC-MMF-MOU-20261027",
+    "SRC-CIRCLE-USDC-XRPL-NATIVE-AND-XRP-AUTO-BRIDGE-20250612",
+    "SRC-COINBASE-RLUSD-THREE-NETWORK-LISTING-20261028",
+    "SRC-CIRCLE-ARC-MAINNET-INSTITUTIONAL-RAILS-20260916"
+  ],
+  "edges": [
+    {
+      "from": "COINBASE_GLOBAL",
+      "to": "INSTITUTIONAL_COLLATERAL",
+      "relationship": "Q3 2026 10-Q discloses USD1.009B recognized lending collateral, USD3.285B unrecognized customer collateral and USD325.766M recognized derivatives collateral; no XRP is named in the recognized derivatives table.",
+      "status": "PRIMARY_SEC_FACT"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "COINBASE",
+      "relationship": "Circle incurred USD324.6M Q2 and USD655.3M H1 2026 Coinbase distribution costs; allocations depend on USDC platform balances and ecosystem-growth economics.",
+      "status": "PRIMARY_SEC_FACT"
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "CIRCLE_SBI_JAPAN_KK",
+      "relationship": "50% legal equity in Japan USDC distribution JV; Circle also owns 50% and consolidates the VIE due to control.",
+      "status": "PRIMARY_SBI_AND_SEC_FACT"
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "CIRCLE_EQUITY",
+      "relationship": "SBI acquired USD50M of Circle shares after Circle's NYSE listing.",
+      "status": "PRIMARY_SBI_NOTICE"
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "CIRCLE_ARC",
+      "relationship": "SBI Group is a founding validator on Arc; Arc uses USDC for gas and has a permissioned validator set.",
+      "status": "PRIMARY_CIRCLE_ANNOUNCEMENT"
+    },
+    {
+      "from": "COINBASE_BINANCE_UPBIT",
+      "to": "CIRCLE_ARC",
+      "relationship": "Named as exchange access partners, not founding validators.",
+      "status": "PRIMARY_CIRCLE_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_STARTALE_SMBC",
+      "to": "JPYSC",
+      "relationship": "SMBC alliance explores stablecoin services and JPYSC use cases; approx 5% investment in SBI Startale Marketing reported by secondary press.",
+      "status": "OFFICIAL_ALLIANCE_SECONDARY_EQUITY_DETAIL"
+    },
+    {
+      "from": "SBI_STARTALE_BLACKROCK",
+      "to": "JPYSC_TOKENIZED_MMF",
+      "relationship": "October 27 MOU to explore linkage between tokenized MMF and JPYSC; not an operational integration.",
+      "status": "PRIMARY_MOU"
+    },
+    {
+      "from": "CIRCLE_USDC",
+      "to": "XRPL",
+      "relationship": "Native USDC has been live on XRPL since June 12, 2025; Ripple and Circle describe XRP as essential auto-bridge currency on XRPL DEX.",
+      "status": "PRIMARY_CIRCLE_AND_RIPPLE"
+    },
+    {
+      "from": "COINBASE",
+      "to": "RIPPLE_RLUSD",
+      "relationship": "Coinbase launched RLUSD across XRPL, Base and Ethereum on Oct 28; global exchange collateral functionality planned for later.",
+      "status": "PRIMARY_COINBASE_RELEASE"
+    },
+    {
+      "from": "COINBASE_Q3_2026",
+      "to": "USDC_DISTRIBUTION_ECONOMICS",
+      "relationship": "Reports USD22B average USDC in Coinbase products and USD306.905M Q3 stablecoin revenue; definitions differ from Circle's Q2 platform metric.",
+      "status": "PRIMARY_COMPANY_RESULTS"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-20261030T165900Z-SBI-MULTIRAIL-STRATEGY",
+      "claim": "SBI is pursuing a multi-rail digital-finance strategy rather than exclusive reliance on XRP/Ripple.",
+      "status": "STRONGLY_SUPPORTED",
+      "support": [
+        "50:50 Circle JV and USD50M Circle equity investment",
+        "SBI Group founding validator on Circle Arc",
+        "JPYSC with Startale and SBI Shinsei Trust",
+        "SBI's longstanding Ripple/SBI Ripple Asia relationship"
+      ],
+      "counter_hypothesis": [
+        "Different rails may serve distinct customer segments and regulatory use cases; this does not prove a shift away from XRP."
+      ]
+    },
+    {
+      "id": "HYP-20261030T165900Z-COINBASE-XRP-COLLATERAL",
+      "claim": "Coinbase has material institutional crypto collateral operations but public filings do not establish meaningful XRP collateral usage.",
+      "status": "SUPPORTED_WITH_UNKNOWN_CUSTOMER_COLLATERAL",
+      "support": [
+        "Recognized derivative collateral table lists BTC and ETH only",
+        "Other recognized lending crypto totals USD9.903M"
+      ],
+      "counter_hypothesis": [
+        "USD2.804B of unrecognized customer crypto collateral is not token-level disclosed; XRP may be included there or in other affiliates/products."
+      ]
+    },
+    {
+      "id": "HYP-20261030T165900Z-CIRCLE-COINBASE-ECONOMIC-DEPENDENCE",
+      "claim": "Circle and Coinbase have a materially interdependent USDC distribution/economic relationship.",
+      "status": "CONFIRMED_ECONOMIC_RELATIONSHIP",
+      "support": [
+        "Circle Q2 distribution costs to Coinbase USD324.6M",
+        "Circle says payouts depend on USDC held on Coinbase platform and ecosystem-growth allocation",
+        "Coinbase Q3 reports USD22B average USDC in products and USD306.905M stablecoin revenue"
+      ],
+      "counter_hypothesis": [
+        "These figures use different periods and definitions; they do not establish a direct causal link to XRP price or XRP demand."
+      ]
+    },
+    {
+      "id": "HYP-20261030T165900Z-ARC-VS-XRPL-COMPETITION",
+      "claim": "Circle Arc could compete with XRPL for institutional stablecoin settlement and collateral use, while the networks may coexist.",
+      "status": "PLAUSIBLE_STRATEGIC_HYPOTHESIS",
+      "support": [
+        "Arc USDC gas, sub-second finality, permissioned institutional validators, USYC/BUIDL/private-credit collateral",
+        "Coinbase/Binance/Upbit exchange access",
+        "SBI Group is a founding validator"
+      ],
+      "counter_hypothesis": [
+        "No evidence that Arc replaces XRPL or that XRP is excluded from all future integrations; no operational volume comparison is available."
+      ]
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

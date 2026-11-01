@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "record_type": "queued_market_flow_and_agentic_rail_candidates",
+  "queued_at_utc": "2026-10-30T00:27:00Z",
+  "status": "NOT_CANONICAL_NOT_ADMITTED",
+  "candidates": [
+    {
+      "candidate_id": "Q-XRP-EXCHANGE-INFLOWS-30D-20261023",
+      "url": "https://www.hokanews.com/2026/10/xrp-price-falls-to-131-as-exchange.html",
+      "title": "XRP exchange inflows reach 6.05B over 30 days",
+      "published_at": "2026-10-23",
+      "source_class": "SECONDARY_REPORT_CITING_CRYPTOQUANT_ANALYST",
+      "claims": {
+        "xrp_exchange_inflows_30d": 6050000000,
+        "binance_inflows_30d": 2460000000
+      },
+      "caveats": [
+        "Exchange inflows are token transfers, not executed sales or fiat/stablecoin capital.",
+        "Deposits can reflect custody changes, market making, arbitrage or exchange wallet reshuffling.",
+        "Need original CryptoQuant QuickTake, venue wallet labels and net-flow series before admission."
+      ]
+    },
+    {
+      "candidate_id": "Q-TOKENPOST-USDC-RLUSD-XRP-FLOWS-20261026",
+      "url": "https://www.tokenpost.com/news/investing/40972",
+      "title": "24-hour flows: USDC and RLUSD inflows, XRP outflows",
+      "published_at": "2026-10-26T11:25:00Z",
+      "source_class": "SECONDARY_AGGREGATOR_REPORT_CRYPTOMETER",
+      "claims": {
+        "usdc_net_inflow_usd": 113940000,
+        "rlusd_net_inflow_usd": 80480000,
+        "xrp_net_outflow_usd": 19940000
+      },
+      "caveats": [
+        "Cryptometer methodology and wallet/venue coverage are not fully disclosed in the article.",
+        "Same vendor family appears in other TokenPost flow reports; not independent corroboration.",
+        "Exchange flows are not actual capital; no price causality inferred."
+      ]
+    },
+    {
+      "candidate_id": "Q-XRP-ETF-WEEK43-SETTLED-20261023",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-10-24",
+      "title": "XRP ETF weekly flows: +1.5M XRP, holdings 1.19B",
+      "published_at": "2026-10-24",
+      "source_class": "SECONDARY_TRACKER_RECONCILING_PRIMARY_ISSUER_HOLDINGS",
+      "claims": {
+        "weekly_net_inflow_xrp": 1500000,
+        "holdings_xrp": 1190000000,
+        "aum_usd": 1570000000,
+        "period_end": "2026-10-23"
+      },
+      "caveats": [
+        "Tracker excludes GXRP from flows due a historical scrape gap but includes holdings after catch-up adjustment.",
+        "Daily holdings changes may reflect in-kind transfers, creations/redemptions, settlement timing or data correction.",
+        "Reconcile fund-by-fund with issuer holdings and shares outstanding."
+      ]
+    },
+    {
+      "candidate_id": "Q-PRMISSION-BASE-USDC-AGENTIC-COMMERCE-20261030",
+      "url": "https://prmission.com/",
+      "title": "Prmission: consent layer for agentic commerce on Base",
+      "published_at": "2026-10",
+      "source_class": "PROJECT_PRIMARY_WEBSITE_UNVERIFIED_BY_INDEPENDENT_AUDIT",
+      "claims": {
+        "network": "Base",
+        "settlement_asset": "USDC",
+        "use_case": "agent-to-human data access with escrow and settlement",
+        "protocol_fee_pct": 3
+      },
+      "caveats": [
+        "Prmission is distinct from Permission/Permission Coin ASK despite similar naming.",
+        "No XRPL/XRP integration is listed on the public site.",
+        "No independent on-chain volume or merchant activity verification performed."
+      ]
+    }
+  ],
+  "measurement_guidance": {
+    "actual_capital": "Do not equate exchange inflows/outflows with new capital. Reconcile fiat/stablecoin mint-redemption, ETF creations/redemptions, OTC settlement, venue quote-asset balances, executed aggressive order flow (CVD), order-book depth and market-maker inventory.",
+    "stablecoin_xrp_relationship": "Stablecoin inflows alongside XRP outflows may indicate de-risking or settlement preference, but only if timestamp, venue universe, wallet labels and transfer classes are synchronized.",
+    "etf_relationship": "ETF holdings and exchange balances represent different populations and transfer mechanisms; do not net them without fund-level and wallet-level reconciliation."
+  }
+}

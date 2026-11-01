@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261030T234800Z-FULL-OPEN-PR-DEPENDENCY-AND-PREDICTION",
+  "created_at_utc": "2026-10-30T23:48:00Z",
+  "captured_at_utc": "2026-10-30T23:48:00Z",
+  "retrieval_time_note": "GitHub API response timestamps are used where available; exact client-side retrieval timestamps for the full PR list and dependency manifests are not exposed.",
+  "repository": "Barrot-Agent/B-Agent",
+  "default_branch": "main",
+  "main": {
+    "sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+    "modified_by_this_run": false,
+    "branch_protection_details": "Not fully inspected in this run."
+  },
+  "open_pull_request_inventory": {
+    "total_open_prs": 161,
+    "draft": 151,
+    "ready_for_review": 10,
+    "base_main_current_sha": 3,
+    "base_main_stale_sha": 156,
+    "non_main_base": 2,
+    "current_main_base_prs": [
+      1383,
+      1384,
+      1385
+    ],
+    "repeated_overlapping_categories": {
+      "merge_queue": 23,
+      "xrp_accuracy_or_fixed_horizon": 23,
+      "paper_trading": 18,
+      "cross_analysis": 7,
+      "dependency_or_manifest": 4
+    },
+    "oldest_observed_open_prs": [
+      {
+        "number": 634,
+        "updated_at": "2026-08-28T16:14:45Z"
+      },
+      {
+        "number": 758,
+        "updated_at": "2026-09-15T03:16:02Z"
+      },
+      {
+        "number": 1119,
+        "updated_at": "2026-10-24T02:09:16Z"
+      }
+    ],
+    "interpretation": "At least 161 open PRs were enumerated across two API pages. Only three target the current main SHA; 156 main-based PRs have stale base SHAs. Categories overlap. This is PR sprawl and review debt, not a reason to auto-close or merge anything."
+  },
+  "current_main_based_prs": [
+    {
+      "number": 1383,
+      "title": "Safety: make scheduled cross-analysis read-only on latest main",
+      "head_sha": "e84b42b398bf16fe12bacdfafba2ef14f51b395f",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41142381247,
+      "ci_result": "PASS_348_TESTS_PLUS_8_SUBTESTS",
+      "gate_run_id": 41142381916,
+      "gate_result": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1384,
+      "title": "Prediction integrity: quarantine legacy variable-horizon accuracy",
+      "head_sha": "c2127c5e8eff1d089f059a7d6a51add3d6aa289a",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41142979230,
+      "ci_result": "PASS_348_TESTS_PLUS_8_SUBTESTS",
+      "gate_run_id": 41142979206,
+      "gate_result": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1385,
+      "title": "Barrot task bundles: combine safety-heading extraction and bounded output",
+      "head_sha": "62c3cfb09602aac359867e67e808201f378b05b0",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41145585636,
+      "ci_result": "PASS_356_TESTS_PLUS_8_SUBTESTS",
+      "gate_run_id": 41145585658,
+      "gate_result": "PASS_MERGE_DISABLED",
+      "verified_changes": [
+        "4,096-token bounded output budget for draft/revision",
+        "Recognition of safety/execution-constraints headings",
+        "Critical deterministic rejection of destructive rollback commands including git checkout --, git restore, git reset --hard, git clean, git stash, force-push, branch deletion, rm -rf, Remove-Item -Recurse -Force and del /s",
+        "11 destructive-command regression cases plus one preservation-first acceptance case"
+      ]
+    }
+  ],
+  "research_pr": {
+    "number": 1353,
+    "head_sha": "aeea829d728642fef899c83daa792adf01bd93bc",
+    "base_ref": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "validator_run_id": 41146575827,
+    "validator_result": "PASS",
+    "tests_passed": 20,
+    "actual_repository_validator": {
+      "status": "PASS",
+      "archive_shards_checked": 282,
+      "source_count": 1719,
+      "run_update_count": 306,
+      "limitation_count": 724,
+      "snapshot_blob_sha_expected": "bc5ffed686563b9ccce48192fc1e9a3c4f003429",
+      "snapshot_blob_sha_actual": "bc5ffed686563b9ccce48192fc1e9a3c4f003429",
+      "state_mutated": false
+    },
+    "gate_run_id": 41146575951,
+    "gate_result": "PASS_MERGE_DISABLED",
+    "workflow_fix": "The research branch now runs python scripts/validate_xrp_ledger_index.py --root . against the checked-out repository before its isolated regression tests. Both push and pull_request runs passed on the latest head."
+  },
+  "stale_pr_inventory": {
+    "stale_base_count": 156,
+    "notable_dependency_prs": [
+      {
+        "number": 1255,
+        "title": "Update databricks-sdk requirement from >=0.153.0 to >=0.157.0",
+        "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "draft": false
+      },
+      {
+        "number": 1254,
+        "title": "Update huggingface-hub requirement from >=2.2.0 to >=2.3.0",
+        "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "draft": false
+      },
+      {
+        "number": 1258,
+        "title": "Safety: declare imported runtime dependencies on fresh main",
+        "base_sha": "b390c3aa469401b07a470e3718a4e6fff9f2e547",
+        "draft": true
+      },
+      {
+        "number": 1256,
+        "title": "Fix: declare imported runtime dependencies in primary manifests",
+        "base_sha": "be4a9f485d15ea74ee82d2aae16ca6879423c7d9",
+        "draft": true
+      }
+    ],
+    "policy": "Do not automatically close, rebase, merge or discard stale PR branches. Consolidation requires an explicit review plan and preservation of each branch's unique work."
+  },
+  "dependency_inventory": {
+    "manifests": [
+      "requirements.txt",
+      "requirements-dev.txt",
+      "pyproject.toml",
+      "hf_space/requirements.txt",
+      "a2a/package.json"
+    ],
+    "lockfiles_found": [],
+    "lockfile_patterns_checked": [
+      "uv.lock",
+      "poetry.lock",
+      "Pipfile.lock",
+      "package-lock.json",
+      "pnpm-lock.yaml",
+      "yarn.lock",
+      "Cargo.lock",
+      "go.sum",
+      "Gemfile.lock"
+    ],
+    "requirements_txt_examples": [
+      "torch>=2.0.0",
+      "transformers>=4.40.0",
+      "accelerate>=0.30.0",
+      "bitsandbytes>=0.43.0",
+      "requests>=2.32.0",
+      "pydantic>=2.7.1"
+    ],
+    "pyproject": "Duplicates the primary dependency list with lower bounds; no exact lock or upper bounds.",
+    "requirements_dev": "Uses lower-bound-only versions for pytest, pytest-cov, pytest-mock, black, flake8, pylint, mypy, isort and documentation tools.",
+    "hf_space_requirements": [
+      "numpy>=2.2.6,<3",
+      "requests>=2.31.0",
+      "PyJWT>=2.15.1",
+      "cryptography>=50.0.2"
+    ],
+    "a2a_package_json": "No runtime dependencies declared.",
+    "risk": "Non-reproducible resolution and dependency drift across CI, local and Hugging Face environments; overlapping primary manifests can diverge.",
+    "dependency_lockfile_audit": "MANIFEST_INVENTORY_EXECUTED; LOCKFILE_GENERATION_AND_RESOLUTION_NOT_EXECUTED",
+    "vulnerability_scan": "NOT_RUN"
+  },
+  "security_alert_visibility": {
+    "dependabot_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "code_scanning_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "secret_scanning_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "sbom": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "interpretation": "No conclusion about presence or absence of alerts. Endpoint access failure is not evidence of zero vulnerabilities."
+  },
+  "workflow_findings": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "status": "MAIN_WRITE_CAPABLE",
+      "risk": "Scheduled workflow can commit/push generated files to main until PR #1383 is approved and merged."
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "status": "MAIN_WRITE_CAPABLE_LEGACY_EVALUATOR",
+      "risk": "Variable-horizon accuracy history remains mutable until PR #1384 is approved and merged."
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "status": "MANUAL_WRITE_CAPABLE",
+      "risk": "Fresh-main review-gating proposal #1379 is stale-base; no current-main replacement verified."
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "status": "MANUAL_MUTATION_CAPABLE",
+      "risk": "Merge/write/delete authority remains; #1381 and older read-only proposals are stale-base."
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "status": "UNRESOLVED_PUSH_ZERO_JOB_FAILURE",
+      "risk": "Repeated push-event runs 41146570336 and 41146455101 fail with zero jobs although inspected workflow declares workflow_dispatch only. Root cause unknown; no YAML syntax diagnosis is claimed."
+    },
+    {
+      "path": ".github/workflows/xrp-ledger-validation.yml",
+      "status": "RESEARCH_BRANCH_FIXED_AND_VERIFIED",
+      "risk": "Actual repository validator step is now present and passed on PR #1353 head aeea829."
+    }
+  ],
+  "prediction_engine": {
+    "latest_main_signal": {
+      "timestamp": "2026-10-29T13:23:33.142057Z",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "source": "missing GITHUB_TOKEN/GH_MODELS_TOKEN; Groq HTTP 429",
+      "status": "STALE_NOT_A_FORECAST"
+    },
+    "main_signal_age_at_run_cutoff_hours": 34.1,
+    "legacy_accuracy": {
+      "checked_count": 1683,
+      "correct_count": 772,
+      "accuracy_pct": 45.9,
+      "status": "NOT_VALID_OUT_OF_SAMPLE_SKILL"
+    },
+    "fixed_horizon_model": "NOT_IMPLEMENTED",
+    "fixed_horizon_contract": "DESIGNED_NOT_EXECUTED_OR_VALIDATED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "autonomous_agent_execution": {
+    "resolver_run_id": 41141876076,
+    "result": "SUCCESS",
+    "observed_scope": "Issue/PR discovery and assignment only.",
+    "code_repair_execution": "NOT_PERFORMED_BY_THIS_RESOLVER_RUN",
+    "issue_1377": "OPEN_FAIL_CLOSED_AFTER_BUNDLE_QUALITY_GATE",
+    "issue_1377_failure": [
+      "completion_gate and recovery_plan arrays absent",
+      "authorization-boundary heading not extracted",
+      "rollback plan included git checkout -- <file>"
+    ],
+    "candidate_fix_pr": 1385,
+    "candidate_fix_status": "CI_AND_FAIL_CLOSED_GATE_PASS; ISSUE_NOT_RERUN"
+  },
+  "platform_authentication": {
+    "ChatGPT": "ACTIVE_CURRENT_SESSION",
+    "GitHub": "CONNECTED_AND_TESTED",
+    "Claude": "NOT_AUTHENTICATED_OR_TESTED",
+    "Grok": "NOT_AUTHENTICATED_OR_TESTED",
+    "Gemini": "NOT_AUTHENTICATED_OR_TESTED",
+    "Copilot": "NOT_AUTHENTICATED_OR_TESTED",
+    "Codex": "NOT_AUTHENTICATED_OR_TESTED",
+    "HuggingFace": "NOT_AUTHENTICATED_OR_TESTED",
+    "Kaggle": "NOT_AUTHENTICATED_OR_TESTED",
+    "Databricks": "NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merges": 0,
+    "force_pushes": 0,
+    "deployments": 0,
+    "manual_workflow_dispatches": 0,
+    "paper_state_mutations": 0,
+    "real_money_trades": 0,
+    "repository_full_ci": "NOT_RUN",
+    "targeted_ci": "PASSED_ON_PR_1383_1384_1385_AND_PR_1353",
+    "dependency_vulnerability_scan": "NOT_RUN"
+  },
+  "next_actions": [
+    "Keep PR #1383, #1384 and #1385 open and unmerged pending user approval; do not enable automatic merge.",
+    "Prepare fresh-main, minimal read-only/review-gated replacements for knowledge-signal-cycle and merge-queue workflows; preserve stale branches until approved consolidation.",
+    "Plan a reproducible dependency strategy with environment-specific lock/constraints for core, development and Hugging Face deployments; do not blindly pin GPU packages.",
+    "Inspect Dependabot, CodeQL and secret-scanning status through an authorized GitHub security view or connector; current alert status is unknown.",
+    "Do not rerun issue #1377 until the exact-head task-bundle fix is approved and the original destructive rollback plan is replaced with preservation-first recovery.",
+    "Continue XRP fixed-horizon model implementation only after synchronized historical features, immutable outcomes, baselines, calibration and walk-forward validation."
+  ]
+}

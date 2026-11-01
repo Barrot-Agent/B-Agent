@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T064800Z-BINANCE-INCIDENT-EXCHANGE-EVENT-WINDOW-AND-SBI-CUSTODY",
+  "captured_at_utc": "2026-10-31T06:48:00Z",
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "id": "EDGE-BINANCE-INCIDENT-TRANSFER",
+      "from": "Five Binance-labeled XRPL source wallets",
+      "relation": "transferred_between_20_05_and_20_09_utc_on_oct29",
+      "to": "233,461,943.1 XRP to one attacker-attributed receiver",
+      "evidence_class": "TRM_BLOCKCHAIN_INVESTIGATION_AND_PUBLIC_XRPL_TRANSACTIONS",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ],
+      "caveat": "Attribution to wallet labels and attacker cluster is not beneficial-owner identity proof."
+    },
+    {
+      "id": "EDGE-POSTEVENT-DAILY-EXCHANGE-CHANGE",
+      "from": "XRP Insights tracked 24-exchange same-wallet set",
+      "relation": "reported_daily_net_change_between_oct29_08_00_and_oct30_08_00_utc",
+      "to": "-207.3M XRP",
+      "evidence_class": "PUBLIC_ONCHAIN_BALANCE_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z"
+      ],
+      "caveat": "The interval contains the incident but is all-exchange, not Binance-only; no per-exchange daily breakdown or per-wallet history."
+    },
+    {
+      "id": "EDGE-SBI-VC-TRADE-XRP-CUSTODY",
+      "from": "SBI VC Trade",
+      "relation": "publicly_attributed_to_two_XRPL_wallets_holding",
+      "to": "59.5M XRP as of Oct30 08:00 UTC",
+      "evidence_class": "PUBLIC_XRPSCAN_LABEL_ATTRIBUTION_VIA_XRP_INSIGHTS",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z"
+      ],
+      "caveat": "Exchange custody attribution; not SBI Group proprietary treasury or official PoR."
+    },
+    {
+      "id": "EDGE-BINANCE-SAME-WALLET-7D-CHANGE",
+      "from": "XRP Insights tracked Binance wallet set",
+      "relation": "same_wallet_net_change_7d",
+      "to": "-173.2M XRP",
+      "evidence_class": "PUBLIC_ONCHAIN_BALANCE_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z"
+      ],
+      "caveat": "153 publicly attributed wallets; no per-wallet history or incident-source-wallet crosswalk."
+    },
+    {
+      "id": "EDGE-BINANCE-OFFICIAL-REPLENISHMENT-CLAIM",
+      "from": "Binance",
+      "relation": "announced_company_reserve_and_token_acquisition_plan",
+      "to": "Approximately $6.34B set aside; $1.34B remaining to acquire in affected token assets",
+      "evidence_class": "OFFICIAL_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ],
+      "caveat": "No XRP-specific acquisition quantity or completed purchase disclosed."
+    }
+  ],
+  "hypothesis_ids": [
+    "H-BINANCE-INCIDENT-POSTEVENT-AGGREGATE",
+    "H-SBI-VC-TRADE-XRP-CUSTODY"
+  ],
+  "competing_explanations_retained": true,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

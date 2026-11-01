@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 1,
+  "chunk_count": 2,
+  "record_count": 9,
+  "records": [
+    "Binance's October 29 event remains a potential security issue, not a confirmed theft in the cited Binance/AP/Reuters statements. Freeze estimates are issuer/reporter claims; frozen assets are not necessarily recovered or returned, and on-chain attribution may change.",
+    "Ripple's reported roughly $200M freeze is asset-, chain- and address-unspecified. Native XRP cannot be frozen by an issuer at XRPL protocol level; a Ripple-controlled issued token, custodial asset or off-chain restriction are possible but unverified explanations.",
+    "CoinMarketCap, CoinDesk and Coinbase XRP pages exposed unsynchronized dynamic quotes and differing market-cap/volume/return values. Coinbase's 98% customer-buying statistic is a user-count measure, not dollar-weighted flow. None is admitted as a synchronized market feature.",
+    "Permission Coin ASK and GoAsk both use ticker ASK but are distinct assets. Permission's official documentation lists Base and Polygon via LayerZero, not XRPL. No direct XRP/XRPL integration was verified.",
+    "Market-cap-change divided by exchange netflows is not an actual-capital multiplier. Exchange transfers do not prove executed demand; CVD measures aggressive order-flow imbalance but still does not capture all OTC, ETF creation/redemption, fiat/stablecoin issuance, or inventory financing.",
+    "SBIC is ambiguous across Japan: regional Small and Medium Business Investment & Consultation companies (East, West, Central) are distinct from SBI Holdings and from the historical SBI Capital Co., Ltd. use of SBIC. The original phrase context remains unresolved.",
+    "Kamilah/Camila/Camilla Stevenson channel and interview spellings vary, and public listings include multiple similar channels. The exact requested identity Camilla Stephenson is not established; the video inventory remains partial and impersonation risk is documented.",
+    "Fresh-main safety PRs #1355 and #1358 both modify .github/workflows/ci.yml; PRs #1356, #1357 and #1359 all modify tests/test_v3_scripts.py. They are individually tested but share files, so sequential merging requires a deliberate rebase/consolidation plan and fresh exact-head CI; do not assume all can be merged independently without conflict.",
+    "Public video inventory for the Kamilah/Camila/Camilla Stevenson channel remains partial. Channel identity is not proven to equal the exact requested Camilla Stephenson; two indexed video candidates lack direct YouTube watch URLs, and automated channel enumeration was unavailable during this run."
+  ]
+}

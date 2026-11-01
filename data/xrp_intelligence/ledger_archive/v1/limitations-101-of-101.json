@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 100,
+  "chunk_count": 101,
+  "record_count": 7,
+  "records": [
+    {
+      "id": "LIM-20261031T011325Z-01",
+      "category": "derivatives_provider_scope_and_notional",
+      "statement": "Liqwall's 00:52 UTC XRP derivatives values are one provider's aggregate. Contract/venue coverage and methodology are not reconciled against Alpha Finance, TradRadar, exchange-native APIs or venue-level contracts. The 72.1% Binance long-account share is not a notional position ratio. Keep the observation provider-scoped and out of model features pending a synchronized multi-provider series.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261031T0052Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T011325Z-02",
+      "category": "etf_flow_coverage_and_price_basis",
+      "statement": "XRP Insights' six-spot-plus-BITW series counts funds excluded from computed flows as zero and marks the October 30 row provisional. Alpha Finance covers five funds. Their October 29 displayed XRP prices ($1.25 versus $1.3255) materially disagree. Preserve fund coverage, raw issuer holdings and price basis separately; do not average or treat ETF flows as net external capital.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z",
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T011325Z-03",
+      "category": "circle_global_usdc_supply_vs_chain_supply",
+      "statement": "Circle's $70B USDC circulation figure is global and the 38-network count is dated September 16. Neither establishes Base/XRPL balances, Morpho vault supply or Circle's role as a lender. Chain-level supply and address-attributed market participation remain unknown.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T011325Z-04",
+      "category": "coinbase_xrp_loan_channel_and_actual_capital",
+      "statement": "Coinbase confirms XRP collateral eligibility and USDC loans through Morpho, but the Morpho market is permissionless and Coinbase does not disclose its customer share or aggregate XRP collateral. Official Help says loan proceeds cannot be used to trade on Coinbase; no off-platform USDC-to-XRP purchases have been traced. Collateral utility is not new XRP demand.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T011325Z-05",
+      "category": "macro_flow_attribution",
+      "statement": "Reuters' U.S. equity, money-market, sector and bond fund flows cover one week ending October 28 and do not measure crypto allocations or XRP flows. Technology and bond inflows alongside equity and money-market outflows show mixed rotation rather than a uniform risk-off signal.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-REUTERS-US-FUND-FLOWS-20261030T1317Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T011325Z-06",
+      "category": "binance_aggregate_reserve_not_xrp_specific",
+      "statement": "Binance's $6.34B reserve, $5B in impacted token assets and $3B frozen are aggregate USD/company statements. They do not prove XRP-specific reserve restoration or that the five Binance-labelled XRPL source wallets were included in the October 1 XRP PoR set.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-REUTERS-BINANCE-RESERVE-20261030T1403Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T011325Z-07",
+      "category": "repository_ci_and_security_coverage",
+      "statement": "The repository audit verified selected PR heads and the XRP ledger validator, not the complete repository CI suite. Security-alert and SBOM endpoints were not accessible through the available GitHub read actions. No claim of zero vulnerabilities or full-suite health is made.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-GITHUB-BARROT-MAIN-SCHEDULER-PR-AUDIT-20261031T0113Z"
+      ]
+    }
+  ]
+}

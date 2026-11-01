@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T215123Z-DRIVEWEALTH-INTEGRATION-STATUS-AND-XRP-DEMAND",
+  "captured_at_utc": "2026-10-31T21:51:23Z",
+  "status": "ACCEPTED_FOR_RESEARCH",
+  "decisions": [
+    "Record DriveWealth/Ripple as an announced integration in progress, not verified live production.",
+    "Record RLUSD on XRPL as the announced stablecoin settlement asset for Europe; US expansion is planned.",
+    "Record Ripple Payments cross-border acceptance, Europe digital-asset custody and Ripple Prime Delta One equity-financing exploration as separate workstreams.",
+    "Stablecoin-funded collateral accounts do not establish native XRP collateral or XRP bridge demand.",
+    "Admit no market feature and issue no directional forecast until production transaction, collateral and asset-level data are verified."
+  ],
+  "required_verification": [
+    "Verify DriveWealth production cutover and RLUSD daily settlement volume.",
+    "Obtain XRPL transaction hashes, Ripple Mint issuance/redemption and fee-burn observations attributable to DriveWealth integration.",
+    "Verify eligible collateral assets, haircuts, balances and cash-conversion volumes.",
+    "Determine whether any workflow requires XRP as bridge asset versus only XRPL network fees."
+  ],
+  "feature_admission": {
+    "drivewealth_rlusd": "ANNOUNCED_INTEGRATION_NOT_LIVE_VERIFIED",
+    "drivewealth_collateral": "CAPABILITY_CLAIM_USAGE_UNKNOWN",
+    "native_xrp_demand": "NOT_ESTABLISHED",
+    "directional_features": [],
+    "forecast_status": "NOT_ISSUED"
+  }
+}

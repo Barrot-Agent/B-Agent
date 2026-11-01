@@ -1,0 +1,22 @@
+{
+  "record_type": "xrp_intelligence_architecture_decision",
+  "schema_version": "1.0",
+  "decision_id": "ADR-20261030T213000Z-ISSUER-VS-SENDER-AND-OMNIBUS-WALLET-CLASSIFICATION",
+  "captured_at_utc": "2026-10-30T21:30:00Z",
+  "status": "ADOPTED_FOR_RESEARCH_BRANCH",
+  "context": "Transaction-level XRPL metadata confirms a 20M XRP receipt followed by two near-20M deposits to a Binance-labelled account. The same destination account receives numerous tagged deposits from other exchanges. A separate 10M RLUSD transfer to r39TA came from an unlabelled account; Ripple appears as the token issuer, not the sender identity.",
+  "decision": [
+    "Use raw transaction Account, Destination, Amount, DestinationTag, issuer, ledger_index and AffectedNodes balance deltas to distinguish sender from token issuer.",
+    "Never infer Ripple company ownership from a Bithomp token label such as RLUSD (Ripple); verify the sending account independently.",
+    "Classify rNxp4h as a shared exchange deposit/omnibus-pattern candidate, not a proven reserve wallet, until Binance PoR or official wallet documentation confirms its role.",
+    "Record exact account-level balance sequences separately from same-unit provenance and economic-purpose hypotheses.",
+    "Treat deposits to Binance-labelled accounts as deposits only; do not infer sale, reserve acquisition or replenishment."
+  ],
+  "invariants": [
+    "No main-branch modification.",
+    "No merge, force-push, workflow dispatch, paper-state mutation or real-money trade.",
+    "No Ripple-company sender attribution without account-level evidence.",
+    "No reserve classification without official PoR or exchange disclosure.",
+    "Forecast remains NOT_ISSUED; no feature admission from these transfers."
+  ]
+}

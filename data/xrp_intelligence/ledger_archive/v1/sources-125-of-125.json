@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 124,
+  "chunk_count": 125,
+  "record_count": 2,
+  "created_at_utc": "2026-10-31T16:32:00Z",
+  "records": [
+    {
+      "id": "SRC-20261031T163200Z-LIQWALL-XRP-MARKET",
+      "url": "https://liqwall.com/coins/xrp",
+      "title": "XRP live liquidations, funding, open interest and long/short ratios",
+      "publisher": "Liqwall",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:32:00Z",
+      "evidence_type": "THIRD_PARTY_LIVE_DERIVATIVES_MARKET_DATA",
+      "independence_group": "LIQWALL_MARKET_DATA",
+      "status": "VERIFIED_PROVIDER_OBSERVATION",
+      "notes": "At 2026-10-31 16:32 UTC the page reports XRP at $1.25; rolling 24-hour liquidations $808K ($542K longs, $266K shorts); average funding +0.0036% per 8h and Binance +0.0100%; all-exchange open interest $1.33B, +0.9% over 24h; 73.0% of Binance XRP-position accounts long, 71.0% of Binance top-trader accounts long, and 61.5% of Hyperliquid accounts long. The provider says the page updates every few minutes. Provider methodology and contract universe are not independently audited. Account ratios are not notional exposure. Rolling 24-hour liquidations differ from UTC calendar-day totals; October 31 daily row is partial at capture. Do not average with other providers' OI without contract-level reconciliation."
+    },
+    {
+      "id": "SRC-20261031T163200Z-BINANCE-XRP-PRICE",
+      "url": "https://www.binance.com/en/price/xrp",
+      "title": "Binance XRP price and market statistics page",
+      "publisher": "Binance",
+      "published_date": null,
+      "retrieved_at_utc": "2026-10-31T16:32:00Z",
+      "evidence_type": "EXCHANGE_MARKET_DATA_PAGE",
+      "independence_group": "BINANCE_MARKET_DATA",
+      "status": "VERIFIED_PAGE_OBSERVATION",
+      "notes": "Page last updated 2026-10-31 16:19 UTC; displays XRP at approximately $1.25, +0.09% over 24h, 24h volume $1.3B, market capitalization $79.3B, circulating supply 63.4B, 24h high $1.26 and low $1.23. The displayed Fear & Greed Index is 36 and is a broad crypto-market indicator, not an XRP-specific sentiment measure. A venue page is not an independent market-wide composite. Displayed market cap and circulating supply are provider-reported. The page's AI-generated narrative is excluded from evidence admission."
+    }
+  ]
+}

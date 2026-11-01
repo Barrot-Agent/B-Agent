@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 19,
+  "chunk_count": 20,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T07:19:33Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T07:19:33Z",
+      "update_type": "INVESTING_XRP_SOURCE_CLASSIFICATION_CORRECTION_AND_INTRADAY_REBOUND",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "Last exact-head validator pass f46e5b1145691feda9cc20567e673221dfb9a37b; metadata-only ledger successor bd9b6439c20582bb5623da313f2d82405a5e0c08 not yet revalidated.",
+      "observed_main_sha": "6739e05dc427f0db167a10f23730ced1acf0b9b8",
+      "source_ids": [
+        "SRC-INVESTING-XRP-AGGREGATE-CORRECTION-20261030T063327Z",
+        "SRC-INVESTING-OKX-XRP-20261030T034135Z",
+        "SRC-BINANCE-SECURITY-UPDATE-20261030T0508Z",
+        "SRC-BINANCE-VERIFIED-STATUS-20261030T0709Z",
+        "SRC-TRM-BINANCE-THEFT-XRPL-RLUSD-20261030T0508Z",
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+        "SRC-COINDESK-BINANCE-POR-WALLET-IMPACT-20261030T0608Z",
+        "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-OCT29-20261030T0608Z",
+        "SRC-THEXRPINVESTOR-ETF-DASHBOARD-20261030T0709Z"
+      ],
+      "findings": {
+        "previous_market_source_venue_misattribution": "Investing.com page is generic XRP; no OKX venue identified.",
+        "xrp_quote_034135z": 1.2256,
+        "xrp_quote_063327z": 1.261,
+        "same_provider_change_percent": 2.888,
+        "change_24h_narrowing_pp": 2.49,
+        "price_trend": "INTRADAY_REBOUND_OBSERVED_TREND_REVERSAL_UNCONFIRMED",
+        "binance_receiver_status_after_0354z": "UNKNOWN",
+        "etf_product_count": "TheXRPInvestor headline 12 vs categories 11"
+      },
+      "repository": {
+        "pr": 1365,
+        "head_sha": "23e125e5666136c878e1afcdb1600fcf4cd0008f",
+        "base_sha": "6739e05dc427f0db167a10f23730ced1acf0b9b8",
+        "core_ci_run": 41018562401,
+        "core_ci": "342 tests + 8 subtests passed",
+        "gate_run": 41018562435,
+        "gate": "PASS_MERGE_DISABLED",
+        "state": "OPEN_DRAFT_UNMERGED_MERGEABLE"
+      },
+      "ledger_validation": {
+        "exact_head_pass_on": "f46e5b1145691feda9cc20567e673221dfb9a37b",
+        "validator_run": 41019225297,
+        "tests_passed": 18,
+        "gate_run": 41019225263,
+        "gate": "PASS_MERGE_DISABLED",
+        "metadata_successor": "bd9b6439c20582bb5623da313f2d82405a5e0c08",
+        "metadata_successor_validation": "NOT_RETRIEVED"
+      },
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}

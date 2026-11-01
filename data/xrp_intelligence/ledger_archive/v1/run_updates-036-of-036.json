@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 35,
+  "chunk_count": 36,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T10:22:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T10:22:00Z",
+      "update_type": "ADD_CIRCLE_MINT_FIAT_FLOW_AND_COINBASE_DISTRIBUTION_ECONOMICS",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "182f0dce183d9c147d13f0475805bf0fb663bd31",
+      "data_snapshot_commit_sha": "eaa3688f4fb8786a8493db7b1087e07b967ab9fd",
+      "research_addendum": {
+        "snapshot_path": "data/xrp_intelligence/snapshots/20261030T102200Z-circle-mint-fiat-flows-and-coinbase-distribution-economics.json",
+        "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T102200Z-circle-mint-fiat-flows-and-coinbase-distribution-economics.json",
+        "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T102200Z-circle-mint-actual-capital-feature-contract.json",
+        "source_ids": [
+          "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030",
+          "SRC-COINBASE-Q3-2026-10Q-SEC-20261030",
+          "SRC-COINBASE-Q3-2026-IR-RELEASE-USDC-20261030",
+          "SRC-CIRCLE-Q2-2026-PLATFORM-METRIC-ATTRIBUTION-CORRECTION-20261030",
+          "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030"
+        ],
+        "observations": 2,
+        "new_hypotheses": 2,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      },
+      "verified_prior_head": {
+        "head_sha": "182f0dce183d9c147d13f0475805bf0fb663bd31",
+        "push_validator_run": 41039819942,
+        "pull_request_validator_run": 41039828154,
+        "validator_tests_passed": 18,
+        "gate_run": 41039828230,
+        "gate": "PASS_MERGE_DISABLED"
+      },
+      "repository_audit": {
+        "current_main_sha": "7bc248654412643af1baf071db707771cb1ce2e5",
+        "main_branch_protected": true,
+        "main_required_status_checks": [],
+        "cross_analysis_workflow_still_write_enabled": true,
+        "pr1366": {
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1366",
+          "head_sha": "4a826f1130418bcd1eb475b8af48e50c2a267a26",
+          "base_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+          "state": "OPEN_DRAFT_UNMERGED",
+          "main_ahead_by": 6,
+          "changed_path_overlap": false,
+          "core_ci_run": 41024099995,
+          "core_ci": "347 tests and 8 subtests passed",
+          "gate_run": 41024100209,
+          "gate": "PASS_MERGE_DISABLED"
+        },
+        "pr1367": {
+          "url": "https://github.com/Barrot-Agent/B-Agent/pull/1367",
+          "head_sha": "9ee42d8a6d2e90a43e15f80558b7ec599aad84a0",
+          "base_sha": "7bc248654412643af1baf071db707771cb1ce2e5",
+          "state": "OPEN_DRAFT_UNMERGED",
+          "core_ci_run": 41038585878,
+          "core_ci": "352 tests and 8 subtests passed",
+          "gate_run": 41038585782,
+          "gate": "PASS_MERGE_DISABLED"
+        },
+        "active_paper_trader_workflow": "workflow_dispatch only; not scheduled",
+        "persisted_paper_state": {
+          "position_size": 0.012445158497236623,
+          "position_product": null,
+          "avg_entry_price": 80436.84,
+          "cash_usd": 9009.936613782476,
+          "trade_count": 126
+        },
+        "paper_state_mutated": false,
+        "workflow_dispatch_performed": false,
+        "main_modified": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "real_money_trade": false,
+        "approval_workflow_anomaly": {
+          "run_id": 41039818614,
+          "status": "FAILURE_ZERO_JOBS",
+          "job_logs": "NONE",
+          "root_cause": "UNRESOLVED"
+        }
+      },
+      "platform_coordination": {
+        "github_connector": "VERIFIED_IN_SESSION",
+        "claude": "NOT_TESTED",
+        "grok": "NOT_TESTED",
+        "gemini": "NOT_TESTED",
+        "copilot": "NOT_TESTED",
+        "codex": "NOT_TESTED",
+        "hugging_face": "NOT_TESTED",
+        "kaggle": "NOT_TESTED",
+        "databricks": "NOT_TESTED"
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "next_action": "Reconcile Circle Q3 2026 mint/redemption and Coinbase distribution-cost metrics when filed; compare Circle Mint primary-market flows with synchronized USDC supply, CEX/DEX flows and XRPL activity; continue Binance XRP reserve-wallet crosswalk."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 116,
+  "chunk_count": 117,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T033000Z-C2FO-EARLY-PAY-VOLUME-RECONCILIATION",
+      "created_at_utc": "2026-10-31T03:30:00Z",
+      "data_cutoff_utc": "2026-10-31T03:30:00Z",
+      "summary": "Added C2FO's own primary release and reconciled its >$525B historical Early Pay figure against Ripple's parallel >$520B statement. Both are publisher-specific historical working-capital figures, not C2FO Instant Pay production volume or XRP demand. The Instant Pay initiative uses RLUSD on XRPL and participating capital providers, but funded invoice count, settled value and provider identities remain undisclosed. No market feature admitted; no forecast issued.",
+      "source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-C2FO-OFFICIAL-INSTANTPAY-20261031T033000Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T033000Z-c2fo-early-pay-metric-reconciliation.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T033000Z-c2fo-early-pay-metric-reconciliation.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T033000Z-c2fo-early-pay-metric-reconciliation.json",
+      "actions": [
+        "Read C2FO's official Oct. 27 release and Ripple's parallel Oct. 27 release.",
+        "Reconciled C2FO's >$525B and Ripple's >$520B statements as a publisher-specific discrepancy about existing Early Pay programs.",
+        "Kept both historical Early Pay figures separate from C2FO Instant Pay production volume and XRPL settlement value.",
+        "Added the C2FO primary source, append-only archive shard, correction snapshot, relationship edge and architecture decision.",
+        "Preserved the waitlist/initiative status and unknown capital-provider, funded-invoice and settled-value fields.",
+        "Did not admit any market feature, issue a forecast, modify main, merge, dispatch a workflow or change paper-trading state."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "C2FO Instant Pay production start, funded invoice count, participating capital providers and settled value remain undisclosed.",
+        "The $525B C2FO and $520B Ripple historical Early Pay figures are not reconciled to a common reporting basis."
+      ],
+      "next_actions": [
+        "Monitor C2FO Instant Pay for named capital providers, funded invoices, settlement transaction IDs and actual settled value.",
+        "Keep historical Early Pay figures separate from Instant Pay and XRP market-demand features."
+      ]
+    }
+  ]
+}

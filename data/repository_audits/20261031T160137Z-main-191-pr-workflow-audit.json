@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "B-AGENT-20261031T160137Z-MAIN-191-PR-WORKFLOW-AUDIT",
+  "captured_at_utc": "2026-10-31T16:01:37Z",
+  "main": {
+    "sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+    "message": "Cross-analysis refresh [skip ci]",
+    "timestamp_utc": "2026-10-31T15:51:53.738Z",
+    "signed": false,
+    "changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "xrp_recent_entries": 0,
+    "xrp_prior_entries": 0,
+    "btc_recent_entries": 0,
+    "btc_prior_entries": 0,
+    "workflow_run_id": 41216859095,
+    "workflow_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41216859095",
+    "pages_deployment_run_id": 41216871854,
+    "pages_deployment_status": "success",
+    "main_modified_by_this_run": false
+  },
+  "prs": {
+    "open": 191,
+    "drafts": 181,
+    "ready": 10,
+    "main_based": 189,
+    "non_main_based": 2,
+    "base_sha_equal_current_main": 0,
+    "stale_base_sha_count": 189,
+    "inventory_pages": 2
+  },
+  "key_prs": [
+    {
+      "number": 1418,
+      "title": "Cross-analysis read-only safety",
+      "head": "dd9fe584489772f579561d20099a042d29095115",
+      "base": "88977235524c7b021211c6694df7f5527b9c36c8",
+      "compare": "DIVERGED_AHEAD_1_BEHIND_1",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run": 41213268997,
+      "tests": 345,
+      "subtests": 8,
+      "gate_run": 41213269078,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1417,
+      "title": "Binance recovery update 3 evidence",
+      "head": "1e0ec0029814db36f8984b8018dbc0ebcb546e2c",
+      "base": "e560236d494e5f24548abfc53c23829865a565f9",
+      "compare": "DIVERGED_AHEAD_2_BEHIND_2",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run": 41211016595,
+      "tests": 349,
+      "subtests": 8,
+      "gate_run": 41211016596,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1400,
+      "title": "Fixed-horizon XRP forecast ledger",
+      "head": "baa8f4a878604c5174bc39fcf2f2589c8a0f2bc0",
+      "base": "b28f43c907517e939e299e8766e2ebe655a0df13",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41199641663,
+      "tests": 366,
+      "subtests": 8,
+      "gate_run": 41199641700,
+      "gate": "PASS_MERGE_DISABLED",
+      "limitation": "Forecast ledger only; no trained model or walk-forward skill."
+    }
+  ],
+  "main_write_paths": [
+    {
+      "workflow": "cross-analysis.yml",
+      "status": "ACTIVE",
+      "risk": "contents:write and scheduled/workflow-run commit to main",
+      "last_run": 41216859095,
+      "fix_pr": 1418,
+      "fix_pr_state": "OPEN_DRAFT_UNMERGED_ONE_MAIN_COMMIT_BEHIND"
+    },
+    {
+      "workflow": "scheduler-tick.yml",
+      "status": "ACTIVE",
+      "risk": "contents:write and actions:write; scheduler queue mutation",
+      "last_run": 41216529658,
+      "queue_execution_detail": "NOT_RETRIEVED"
+    },
+    {
+      "workflow": "rotate-databricks-token.yml",
+      "status": "ACTIVE",
+      "risk": "workflow_dispatch accepts new_token and interpolates into gh secret set; then dispatches Databricks deployment",
+      "safety_pr": 1398,
+      "safety_pr_state": "OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "workflow": "merge-queue.yml",
+      "status": "MANUAL_ONLY_NOT_DISPATCHED",
+      "risk": "contents:write and pull-requests:write; can merge labelled or all PRs"
+    },
+    {
+      "workflow": "coinbase-paper-trader.yml",
+      "status": "MANUAL_ONLY_NOT_DISPATCHED",
+      "risk": "writes paper trading state; configured product BTC-USD"
+    },
+    {
+      "workflow": "barrot-pr-automerge.yml",
+      "status": "DISABLED_FAIL_CLOSED"
+    },
+    {
+      "workflow": "barrot-gated-merge.yml",
+      "status": "READ_ONLY_FAIL_CLOSED"
+    },
+    {
+      "workflow": "barrot-autonomous-resolver.yml",
+      "status": "SCHEDULED_RUN_SUCCESS",
+      "last_run": 41217628499,
+      "permissions": "issues:write and pull-requests:write; no contents:write"
+    }
+  ],
+  "blockers": {
+    "approval_workflow_zero_job_root_cause": "UNKNOWN",
+    "latest_approval_zero_job_run": 41214787867,
+    "branch_protection_details": "403_NOT_VERIFIED",
+    "required_status_checks": "NOT_VERIFIED",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "lockfile_inventory": "PARTIAL_NO_LOCKFILES_FOUND_IN_LAST_PARTIAL_INVENTORY",
+    "security_alert_access": "403_UNAVAILABLE",
+    "external_platforms": "CHATGPT_AND_GITHUB_VERIFIED_OTHER_EIGHT_NOT_AUTHENTICATED"
+  },
+  "preservation": {
+    "main_writes_by_this_run": 0,
+    "scheduled_main_write_observed_before_this_run": true,
+    "merges": 0,
+    "force_pushes": 0,
+    "manual_dispatches": 0,
+    "deployments_by_this_run": 0,
+    "paper_positions_mutated": 0,
+    "real_money_trades": 0
+  }
+}

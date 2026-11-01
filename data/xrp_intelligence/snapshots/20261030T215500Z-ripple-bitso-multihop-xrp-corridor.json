@@ -1,0 +1,308 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "index_format_version": "3.0",
+  "snapshot_id": "XRP-20261030T215500Z-RIPPLE-BITSO-MULTIHOP-XRP-CORRIDOR",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T215500Z-ripple-bitso-multihop-xrp-corridor.json",
+  "captured_at_utc": "2026-10-30T21:55:00Z",
+  "data_cutoff_utc": "2026-10-30T21:55:00Z",
+  "source_ids": [
+    "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2155Z",
+    "SRC-BITHOMP-RP4X2H-TRANSACTIONS-20261030T2155Z",
+    "SRC-BITHOMP-RHWT2BH-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RHWT2BH-TRANSACTIONS-20261030T2155Z",
+    "SRC-BITHOMP-R4WF7EN-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-R4WF7EN-TRANSACTIONS-20261030T2155Z",
+    "SRC-BITHOMP-RLBHK-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RHUM-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RE5EKD-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RJG9-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RQF2IS-ACCOUNT-20261030T2155Z",
+    "SRC-RIPPLE-BITSO-2026-PARTNERSHIP-20261030T2155Z",
+    "SRC-RIPPLE-BITSO-ODL-2019-ANNOUNCEMENT-20261030T2155Z",
+    "SRC-RIPPLE-BITSO-INVESTMENT-2019-ANNOUNCEMENT-20261030T2155Z",
+    "SRC-BITSO-BUSINESS-ABOUT-20261030T2155Z",
+    "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RP4X2H-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z",
+    "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+    "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z",
+    "SRC-BINANCE-REPLENISHMENT-20261030T2040Z"
+  ],
+  "sources": [
+    "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2155Z",
+    "SRC-BITHOMP-RP4X2H-TRANSACTIONS-20261030T2155Z",
+    "SRC-BITHOMP-RHWT2BH-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RHWT2BH-TRANSACTIONS-20261030T2155Z",
+    "SRC-BITHOMP-R4WF7EN-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-R4WF7EN-TRANSACTIONS-20261030T2155Z",
+    "SRC-BITHOMP-RLBHK-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RHUM-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RE5EKD-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RJG9-ACCOUNT-20261030T2155Z",
+    "SRC-BITHOMP-RQF2IS-ACCOUNT-20261030T2155Z",
+    "SRC-RIPPLE-BITSO-2026-PARTNERSHIP-20261030T2155Z",
+    "SRC-RIPPLE-BITSO-ODL-2019-ANNOUNCEMENT-20261030T2155Z",
+    "SRC-RIPPLE-BITSO-INVESTMENT-2019-ANNOUNCEMENT-20261030T2155Z",
+    "SRC-BITSO-BUSINESS-ABOUT-20261030T2155Z",
+    "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RP4X2H-ACCOUNT-20261030T2128Z",
+    "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2128Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z",
+    "SRC-XRPLWIN-LENDINGPROTOCOL-VOTE-20261030T2145Z",
+    "SRC-XRPLWIN-SINGLEASSETVAULT-VOTE-20261030T2145Z",
+    "SRC-BINANCE-REPLENISHMENT-20261030T2040Z"
+  ],
+  "source_reference_count": 22,
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261030T215500Z-01",
+      "asset": "XRP",
+      "metric": "rJqi_gross_inbound_and_outbound_08_19_to_08_30",
+      "value": {
+        "inbound": [
+          {
+            "from": "rHUmXWK8qFi9YXHvDsHAqCTGBrAZZy4AcQ",
+            "amount_xrp": 90000001,
+            "time_utc": "2026-10-30T08:27:00Z",
+            "tx_hash": "66C73DC9AED231F54BCA3E99BF5E572B06149EFBCB2708AF28DDAE79FC4935BF"
+          },
+          {
+            "from": "rJG9bM9BDUUJUUb7oiB57JzNPs6KpiqYBz",
+            "amount_xrp": 99999999.000005,
+            "time_utc": "2026-10-30T08:19:00Z",
+            "tx_hash": "F437D323ADDCBC1FC4433CE312A6E47E02423D8006AD59713F7831F8424B556B"
+          }
+        ],
+        "outbound": [
+          {
+            "to": "raRVLN1i5QFF6w8cwV3RovtTkjFj3qyNRf",
+            "amount_xrp": 120000000,
+            "time_utc": "2026-10-30T08:30:00Z",
+            "tx_hash": "DACE3D6AA5074E9E1E277F99A3915AC6751FB502879F15C5F85326ACC5D0635A"
+          }
+        ],
+        "gross_xrp": 310000000.000005,
+        "net_change_at_rJqi_xrp": 70000000.000005
+      },
+      "classification": "CONFIRMED_LEDGER_TRANSFERS_GROSS_VS_NET_RECONCILIATION",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2155Z",
+        "SRC-BITHOMP-RHUM-ACCOUNT-20261030T2155Z",
+        "SRC-BITHOMP-RJG9-ACCOUNT-20261030T2155Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T215500Z-02",
+      "asset": "XRP",
+      "metric": "Ripple_rooted_activation_chain_to_rJqi",
+      "value": {
+        "ripple_account": "rE5Ekd2hTy62WNbCfpsN9DEC4bd8utr5Cx",
+        "ripple_domain": "ripple.com",
+        "ripple_to_rLBHK_activation_xrp": 200000005,
+        "rLBHK_to_rHUm_activation_xrp": 100000000,
+        "rHUm_to_rJqi_transfer_xrp": 90000001
+      },
+      "classification": "CONFIRMED_EXPLORER_ACTIVATION_AND_TRANSFER_LINEAGE_WITH_OWNERSHIP_LIMITATION",
+      "source_ids": [
+        "SRC-BITHOMP-RLBHK-ACCOUNT-20261030T2155Z",
+        "SRC-BITHOMP-RHUM-ACCOUNT-20261030T2155Z",
+        "SRC-BITHOMP-RE5EKD-ACCOUNT-20261030T2155Z",
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2155Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T215500Z-03",
+      "asset": "XRP",
+      "metric": "unlabelled_activation_chain_to_rJqi",
+      "value": {
+        "rPh2Bt_to_rQf2is_activation_xrp": 210669117.572397,
+        "rQf2is_to_rJG9_activation_xrp": 100000000,
+        "rJG9_to_rJqi_transfer_xrp": 99999999.000005
+      },
+      "classification": "CONFIRMED_EXPLORER_ACTIVATION_AND_TRANSFER_LINEAGE_BENEFICIAL_OWNER_UNKNOWN",
+      "source_ids": [
+        "SRC-BITHOMP-RJG9-ACCOUNT-20261030T2155Z",
+        "SRC-BITHOMP-RQF2IS-ACCOUNT-20261030T2155Z",
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2155Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T215500Z-04",
+      "asset": "XRP",
+      "metric": "repeated_rJqi_to_rP4X2h_to_rhWt2bh_to_r4wf7en_to_Bitso_route",
+      "value": {
+        "example_oct29": {
+          "rJqi_to_rP4X2h_xrp": 10000000,
+          "time_utc": "2026-10-29T19:25:00Z",
+          "rP4X2h_to_rhWt2bh_xrp": 10000000,
+          "time_utc_next": "2026-10-29T19:28:00Z",
+          "rhWt2bh_to_r4wf7en_xrp": 12446100,
+          "time_utc_next2": "2026-10-29T19:29:00Z",
+          "r4wf7en_to_bitso_xrp": 12446100,
+          "time_utc_next3": "2026-10-29T19:32:00Z"
+        },
+        "other_examples": [
+          "7,881,000 XRP reached Bitso on Oct 28 within minutes of matching rhWt2bh receipt.",
+          "5,811,300 XRP reached Bitso on Oct 27 within minutes of matching rhWt2bh receipt.",
+          "Repeated 5M–10M funding from rJqi to rP4X2h and onward transfers are visible across Oct 22–30."
+        ],
+        "destination_tags": {
+          "rJqi_to_rP4X2h": 3381143038,
+          "rP4X2h_to_rhWt2bh": 862900070,
+          "rhWt2bh_to_r4wf7en": 3490861758,
+          "r4wf7en_to_bitso": 88409288
+        }
+      },
+      "classification": "REPEATED_MULTI_HOP_EXCHANGE_DEPOSIT_PATTERN",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2155Z",
+        "SRC-BITHOMP-RP4X2H-TRANSACTIONS-20261030T2155Z",
+        "SRC-BITHOMP-RHWT2BH-ACCOUNT-20261030T2155Z",
+        "SRC-BITHOMP-RHWT2BH-TRANSACTIONS-20261030T2155Z",
+        "SRC-BITHOMP-R4WF7EN-ACCOUNT-20261030T2155Z",
+        "SRC-BITHOMP-R4WF7EN-TRANSACTIONS-20261030T2155Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T215500Z-05",
+      "asset": "XRP",
+      "metric": "Ripple_Bitso_institutional_payment_relationship",
+      "value": {
+        "2019": "Ripple announced Bitso as key MXN exchange partner for ODL; XRP was described as bridge currency.",
+        "2026": "Ripple announced MXNB issuance on XRPL Permissioned DEX and integration with Ripple Payments; RLUSD and XRP support institutional settlement strategy.",
+        "Ripple_investment_2019": "Ripple led an investment round in Bitso and said Asheesh Birla would join its board."
+      },
+      "classification": "OFFICIAL_COMPANY_STATEMENTS_STRATEGIC_CONTEXT_NOT_TRANSACTION_ATTRIBUTION",
+      "source_ids": [
+        "SRC-RIPPLE-BITSO-2026-PARTNERSHIP-20261030T2155Z",
+        "SRC-RIPPLE-BITSO-ODL-2019-ANNOUNCEMENT-20261030T2155Z",
+        "SRC-RIPPLE-BITSO-INVESTMENT-2019-ANNOUNCEMENT-20261030T2155Z",
+        "SRC-BITSO-BUSINESS-ABOUT-20261030T2155Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    },
+    {
+      "observation_id": "OBS-20261030T215500Z-06",
+      "asset": "XRP",
+      "metric": "repeated_rJqi_to_raRVLN_flows",
+      "value": {
+        "transfers": [
+          {
+            "amount_xrp": 25000000,
+            "date": "2026-10-26"
+          },
+          {
+            "amount_xrp": 17000000,
+            "date": "2026-10-27"
+          },
+          {
+            "amount_xrp": 28000000,
+            "time_utc": "2026-10-30T06:42:00Z"
+          },
+          {
+            "amount_xrp": 120000000,
+            "time_utc": "2026-10-30T08:30:00Z"
+          },
+          {
+            "amount_xrp": 35000000,
+            "time_utc": "2026-10-30T20:07:00Z"
+          }
+        ]
+      },
+      "classification": "CONFIRMED_REPEATED_ACCOUNT_TRANSFERS_NOT_AMM_EXECUTION_OR_SALE",
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2155Z"
+      ],
+      "admission_status": "NOT_ADMITTED"
+    }
+  ],
+  "findings": [
+    {
+      "classification": "CONFIRMED_RIPPLE_ROOTED_ACTIVATION_LINEAGE",
+      "statement": "Bithomp labels rE5Ekd as Ripple with ripple.com and shows it activated rLBHK with about 200M XRP; rLBHK activated rHUm with100M; rHUm sent90,000,001 XRP to rJqi. This supports a Ripple-rooted wallet lineage but does not establish ownership of all downstream intermediaries."
+    },
+    {
+      "classification": "CONFIRMED_MULTI_HOP_BITSO_DEPOSIT_PATTERN",
+      "statement": "Bithomp shows repeated transfers from rJqi to rP4X2h, from rP4X2h to rhWt2bh, from rhWt2bh to r4wf7en, and from r4wf7en to a Bitso-labelled account using successive destination tags."
+    },
+    {
+      "classification": "OFFICIAL_STRATEGIC_CONTEXT",
+      "statement": "Ripple publicly documents a 2019 ODL partnership and investment relationship with Bitso and a June 2026 expansion involving MXNB, RLUSD and Ripple Payments. This makes the observed corridor strategically relevant but does not prove it is an ODL/Ripple Payments customer transaction."
+    },
+    {
+      "classification": "GROSS_VS_NET_CORRECTION",
+      "statement": "The 90,000,001 and99,999,999.000005 XRP inflows to rJqi plus120M outflow equal about310M gross movement, but the net change across those three transfers is about+70M XRP at rJqi; the 310M headline is not 310M of net Ripple outflow."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261030T215500Z-01",
+      "claim": "The repeated rJqi→rP4X2h→rhWt2bh→r4wf7en→Bitso path is an institutional Ripple Payments/ODL liquidity corridor.",
+      "assessment": "PLAUSIBLE_BUT_UNPROVEN",
+      "supporting_evidence": [
+        "rJqi is Ripple/Xaman-labelled and has a Ripple-rooted activation chain.",
+        "Repeated tagged transfers traverse three intermediaries and terminate at a Bitso-labelled account.",
+        "Ripple publicly documents Bitso as a long-standing ODL partner and a 2026 XRP/RLUSD/MXNB payments partner."
+      ],
+      "disconfirming_evidence": [
+        "No payment ID, fiat leg, customer instruction, ODL message or completed MXN payout is visible.",
+        "Intermediaries are unlabelled and may be third-party liquidity providers or market makers."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T215500Z-02",
+      "claim": "The route is a market-maker or liquidity-provider inventory corridor feeding Bitso, not a specific Ripple customer payment.",
+      "assessment": "PLAUSIBLE_ALTERNATIVE",
+      "supporting_evidence": [
+        "Intermediaries aggregate and redistribute XRP in varying amounts.",
+        "The r4wf7en-to-Bitso transfers use a consistent exchange destination tag and are often closely matched to incoming transfers."
+      ],
+      "disconfirming_evidence": [
+        "Ripple-rooted funding lineage and repeated operational pattern make the corporate-payment connection worth testing."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T215500Z-03",
+      "claim": "All downstream wallets are owned or controlled by Ripple.",
+      "assessment": "NOT_ESTABLISHED",
+      "supporting_evidence": [
+        "rJqi and its activation ancestry have Ripple labels and ripple.com domain."
+      ],
+      "disconfirming_evidence": [
+        "rP4X2h, rhWt2bh and r4wf7en have no username; their activators are not Ripple-labelled; no legal ownership disclosure exists."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T215500Z-04",
+      "claim": "The 310M XRP movement represents a 310M XRP Ripple sale or net outflow.",
+      "assessment": "DISCONFIRMED_BY_ACCOUNT_FLOW_ARITHMETIC",
+      "supporting_evidence": [
+        "Gross movement across two inbound and one outbound transaction is about310M."
+      ],
+      "disconfirming_evidence": [
+        "The two inbound transfers total about190M and the outbound transfer is120M; net change at rJqi is about+70M XRP, not -310M."
+      ]
+    }
+  ],
+  "limitations": [
+    "LIM-20261030T215500Z-01",
+    "LIM-20261030T215500Z-02",
+    "LIM-20261030T215500Z-03",
+    "LIM-20261030T215500Z-04",
+    "LIM-20261030T215500Z-05"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Monitor the five-hop route and preserve exact timestamps, amounts, destination tags and transaction hashes.",
+    "Seek public evidence connecting the route to Ripple Payments/ODL message IDs, customer flows or fiat settlement; do not infer from corporate partnership alone.",
+    "Compare the Bitso route with the separate raRVLN→r39TA→Binance path and identify any common control only from public evidence.",
+    "Continue separating gross transfer volume, net account flow, exchange deposit, executed trade and completed fiat payout."
+  ]
+}

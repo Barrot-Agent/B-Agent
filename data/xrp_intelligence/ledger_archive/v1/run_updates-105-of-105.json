@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 104,
+  "chunk_count": 105,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T001607Z-BINANCE-XRP-POR-CUSHION-CONDITIONAL-SENSITIVITY",
+      "created_at_utc": "2026-10-31T00:16:07Z",
+      "data_cutoff_utc": "2026-10-31T00:16:07Z",
+      "summary": "Added a new, high-impact conditional XRP reserve-cushion calculation. The Edge's analysis of Binance's official 1 October 2026 PoR page reports XRP reserve coverage of 100.77% and customer net balances of 2.496B XRP (rounded to the nearest million); Gate News independently republishes the same ratio, and Binance's own PoR page describes the 1:1 method and exposes a Download All Address control. Using the reported rounded figures, implied pre-incident XRP reserve surplus is about 19.219M XRP. If all 233.4619431M XRP transferred from the five Binance-labelled XRPL source wallets came from PoR-listed reserves and no offsets were applied, the mechanical post-loss ratio would be about 91.42%, with a conditional shortfall of about 214.243M XRP. Only 8.23% of the transfer would exhaust the implied pre-incident surplus. This is a sensitivity scenario, not an observed reserve ratio: official membership of the five XRPL wallets in the PoR set remains unverified, and the company has since reported a $6.34B backstop, freezes and token replenishment work. No forecast or market feature admitted.",
+      "source_ids": [
+        "SRC-BINANCE-POR-METHODOLOGY-20261031T001607Z",
+        "SRC-THEEDGE-XRP-POR-OCT1-20261030",
+        "SRC-GATE-XRP-POR-OCT1-20261030T0231Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T001607Z-binance-xrp-por-cushion-conditional-sensitivity.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T001607Z-binance-xrp-por-cushion-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T001607Z-conditional-xrp-reserve-stress-sensitivity.json",
+      "actions": [
+        "Retrieved Binance's official PoR methodology page and confirmed it displays an all-address download control and describes reserve-wallet ownership verification.",
+        "Cross-checked The Edge's 1 October 2026 XRP reserve ratio and customer net-balance figures against Gate News reporting of the same 100.77% ratio.",
+        "Calculated a conditional stress sensitivity using the five-wallet 233,461,943.1 XRP incident transfer: 100% of the transfer from PoR-listed reserves would reduce modeled coverage to approximately 91.42%; the implied pre-incident surplus is exhausted at about 8.23% of the transfer.",
+        "Explicitly retained unknown official PoR membership for the five XRPL source wallets; no downloaded address export or raw account_info crosswalk was available.",
+        "Preserved the prior exact-head ledger validation (285 shards, 20 tests) and recorded the new addendum as pending its own validation."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "The official Binance Download All Address file was not retrieved; the five XRPL source-wallet addresses cannot yet be crosswalked to the October 1 PoR set.",
+        "The Edge's 2.496B XRP customer net balance is rounded to the nearest million and its 100.77% ratio is rounded to two decimals; derived reserve amounts and stress ratios are approximate.",
+        "The conditional scenario excludes post-incident corporate treasury replenishment, frozen/recovered assets, SAFU support, any other reserve-wallet balances and any customer-liability changes."
+      ],
+      "next_actions": [
+        "Obtain the official Binance October 1 PoR address export and compare every five XRPL source address plus the rs8Z destination against it.",
+        "Recompute the conditional stress using exact reserve-address balances and exact customer net balances if the official report exposes them.",
+        "Compare the next Binance PoR snapshot against October 1 by XRP asset and address; keep ETH Binance 14/16 separate.",
+        "Refresh raw validated XRPL account_info for all five source wallets, rs8Z and the attacker receiver at a common ledger cutoff."
+      ],
+      "source_reference_count": 3,
+      "missing_source_references": 0
+    }
+  ]
+}

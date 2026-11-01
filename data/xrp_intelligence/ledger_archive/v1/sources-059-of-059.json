@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 58,
+  "chunk_count": 59,
+  "record_count": 8,
+  "created_at_utc": "2026-10-30T18:02:31Z",
+  "records": [
+    {
+      "id": "SRC-FED-FOMC-OCT28-OFFICIAL-RUN11",
+      "evidence_class": "PRIMARY_US_FEDERAL_RESERVE_RELEASE",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+      "title": "Federal Reserve October 28, 2026 FOMC statement",
+      "published_at": "2026-10-28",
+      "accessed_at_utc": "2026-10-30T18:02:31Z",
+      "target_federal_funds_rate_pct": [
+        3.75,
+        4
+      ],
+      "vote": "10-2",
+      "dissenters": [
+        {
+          "name": "Lisa D. Cook",
+          "preferred_action": "raise target range by 25 basis points"
+        },
+        {
+          "name": "Beth M. Hammack",
+          "preferred_action": "raise target range by 25 basis points"
+        }
+      ],
+      "official_assessment": "Economic activity expanding at a strong pace; inflation remains elevated; uncertainty elevated partly owing to geopolitical developments.",
+      "classification": "PRIMARY_CONFIRMED"
+    },
+    {
+      "id": "SRC-ALPHA-XRP-ETF-OCT29-RUN11",
+      "evidence_class": "SECONDARY_MARKET_DATA_PROVIDER",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance US spot XRP ETF flow dashboard through October 29, 2026",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:02:31Z",
+      "data_cutoff": "2026-10-29 US ETF session",
+      "fund_coverage": 5,
+      "daily_net_flow_usd": 8400000,
+      "thirty_session_net_flow_usd": 98900000,
+      "cumulative_net_flow_usd": 1730000000,
+      "top_daily_inflow_fund": "Franklin XRP ETF (XRPZ)",
+      "top_daily_inflow_usd": 5600000,
+      "classification": "SECONDARY_PROVIDER_REPORTED"
+    },
+    {
+      "id": "SRC-SOSOVALUE-XRP-ETF-OCT29-RUN11",
+      "evidence_class": "SECONDARY_REPRODUCTION_OF_SOSOVALUE_DATA",
+      "url": "https://www.chaincatcher.com/en/article/2300227",
+      "title": "SoSoValue-derived XRP spot ETF daily flow report for October 29, 2026",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:02:31Z",
+      "data_cutoff": "2026-10-29 US ETF session",
+      "daily_net_flow_usd": 8431600,
+      "total_net_asset_value_usd": 1465000000,
+      "cumulative_historical_net_inflow_usd": 1809000000,
+      "top_fund": "Franklin XRP ETF (XRPZ)",
+      "top_fund_daily_net_flow_usd": 5567900,
+      "classification": "SECONDARY_REPRODUCTION_NOT_DIRECT_PRIMARY_API"
+    },
+    {
+      "id": "SRC-CMC-XRP-MARKET-180231Z-RUN11",
+      "evidence_class": "SECONDARY_MARKET_DATA_AGGREGATOR_SNAPSHOT",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "title": "CoinMarketCap XRP market snapshot retrieved October 30, 2026",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:02:31Z",
+      "provider_observation_time": "not exposed by indexed page",
+      "price_usd": 1.25,
+      "market_cap_usd": 79390000000,
+      "volume_24h_usd": 4630000000,
+      "price_change_24h_pct": -2.89,
+      "volume_change_24h_pct": 116.5,
+      "low_24h_usd": 1.2,
+      "high_24h_usd": 1.31,
+      "circulating_supply_xrp": 63351197653,
+      "classification": "POINT_IN_TIME_SINGLE_PROVIDER_OBSERVATION_NOT_SYNCHRONIZED"
+    },
+    {
+      "id": "SRC-REUTERS-US-FUND-FLOWS-OCT30-RUN11",
+      "evidence_class": "REUTERS_REPORTED_INSTITUTIONAL_FUND_FLOW_DATA",
+      "url": "https://www.reuters.com/business/investors-pull-money-us-equity-funds-ahead-earnings-reports-ai-hyperscalers-2026-10-30/",
+      "title": "Investors pull money from US equity funds ahead of AI hyperscaler earnings",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:02:31Z",
+      "measurement_week_ended": "2026-10-28",
+      "us_equity_fund_net_flow_usd": -6650000000,
+      "large_cap_fund_net_flow_usd": -3800000000,
+      "us_bond_fund_net_flow_usd": 2040000000,
+      "money_market_fund_net_flow_usd": -47660000000,
+      "sector_fund_net_flow_usd": 3520000000,
+      "technology_fund_net_flow_usd": 4540000000,
+      "classification": "SECONDARY_REPORTED_BROAD_CAPITAL_ALLOCATION_CONTEXT"
+    },
+    {
+      "id": "SRC-AP-BINANCE-INCIDENT-OCT30-RUN11",
+      "evidence_class": "ASSOCIATED_PRESS_REPORTING_WITH_BLOCKCHAIN_ANALYTICS_ATTRIBUTION",
+      "url": "https://apnews.com/article/550e9b876550f71f07098494fe735beb",
+      "title": "Blockchain intelligence firms link North Korea to $6.3B Binance hack",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:02:31Z",
+      "reported_incident_impact_usd": 6360000000,
+      "reported_assets_frozen_usd": 3000000000,
+      "attribution": "TRM Labs and Chainalysis assess TraderTraitor as likely responsible; this is analytics-firm attribution, not Binance-confirmed identity.",
+      "binance_statement_summary": "Binance says it found no evidence wallet private keys were leaked, is working with law enforcement and will cover customer losses.",
+      "classification": "SECONDARY_NEWS_WITH_ATTRIBUTION_CAVEAT"
+    },
+    {
+      "id": "SRC-BINANCE-SECURITY-UPDATE-OCT30-RUN11",
+      "evidence_class": "PRIMARY_BINANCE_SUPPORT_ANNOUNCEMENT",
+      "url": "https://www.binance.com/en-TR/support/announcement/detail/c5a8729a97ac486d963784d96c5642d7",
+      "title": "Binance Security Incident Update",
+      "published_at": "2026-10-30T02:23:00Z",
+      "accessed_at_utc": "2026-10-30T18:02:31Z",
+      "estimated_total_impact_usd": 6300000000,
+      "assets_frozen_on_chain_usd": 3000000000,
+      "private_key_leak_evidence": "none found in initial investigation",
+      "withdrawal_status": "temporarily suspended while security checks are completed",
+      "customer_loss_commitment": "SAFU and company funds",
+      "proof_of_reserves": "updated snapshot promised after remediation",
+      "classification": "PRIMARY_COMPANY_STATEMENT_NOT_INDEPENDENT_AUDIT"
+    },
+    {
+      "id": "SRC-BITQUERY-BINANCE-INCIDENT-OCT30-RUN11",
+      "evidence_class": "BLOCKCHAIN_ANALYTICS_PROVIDER_ON_CHAIN_INVESTIGATION",
+      "url": "https://bitquery.io/investigations/binance-hack",
+      "title": "Bitquery investigation of Binance October 29–30, 2026 security incident",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:02:31Z",
+      "reported_chains": 9,
+      "incident_window_utc": "2026-10-29T20:04:00Z to 2026-10-29T23:56:00Z",
+      "reported_total_assets_moved_usd": 6300000000,
+      "reported_assets_frozen_usd": 2700000000,
+      "reported_stablecoins_swapped_before_freeze_usd": 729000000,
+      "attacker_balance_observation": {
+        "cutoff_utc": "2026-10-30T03:54:00Z",
+        "reported_value_usd": 3100000000,
+        "exchange_or_mixer_transfer_observed": false
+      },
+      "xrp_component": "Five Binance-labelled XRPL wallets transferred 233,461,943.1 XRP to one receiving address between 20:05 and 20:09 UTC; later receiver refresh is not established by this source.",
+      "coverage_note": "Bitquery reports nine chains; TRM reports ten. Cross-provider totals and chain coverage are not identical.",
+      "classification": "SECONDARY_ON_CHAIN_ANALYTICS_WITH_PROVIDER_SCOPE"
+    }
+  ]
+}

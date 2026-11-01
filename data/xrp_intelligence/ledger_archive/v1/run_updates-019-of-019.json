@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 18,
+  "chunk_count": 19,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T07:11:28Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T07:11:28Z",
+      "update_type": "BINANCE_INCIDENT_STATUS_RECONCILIATION_XRP_MARKET_DATA_AND_FRESH_MAIN_CROSS_ANALYSIS_SAFETY",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "Exact current branch tip SHA not exposed by available branch-read action; last verified data-bearing checkpoint b4d0273f8798470013150edeb8b88a4dfa811c44 with two metadata-only successors observed.",
+      "observed_main_sha": "6739e05dc427f0db167a10f23730ced1acf0b9b8",
+      "source_ids": [
+        "SRC-BINANCE-VERIFIED-STATUS-20261030T0709Z",
+        "SRC-INVESTING-OKX-XRP-20261030T034135Z",
+        "SRC-THEXRPINVESTOR-ETF-DASHBOARD-20261030T0709Z",
+        "SRC-BINANCE-SECURITY-UPDATE-20261030T0508Z",
+        "SRC-TRM-BINANCE-THEFT-XRPL-20261030T0508Z",
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+        "SRC-COINDESK-BINANCE-POR-WALLET-IMPACT-20261030T0608Z",
+        "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-OCT29-20261030T0608Z"
+      ],
+      "findings": {
+        "native_xrp_stolen": 233460000,
+        "attacker_receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "last_bitquery_receiver_observation_utc": "2026-10-30T03:54:00Z",
+        "receiver_outgoing_observed_by_cutoff": false,
+        "subsequent_disposition": "UNKNOWN",
+        "binance_status": "official support and verified News status snapshots conflict; deposits normal/withdrawals paused is the later indexed statement but exact time and per-network scope are unknown",
+        "binance_eth_por": "CoinDesk reports Binance 14 Ethereum wallet in Oct1 PoR and ETH backing near 94% after approximately 204.5k ETH drain; no XRP inference",
+        "okx_xrp_usd_at_034135z": 1.2256,
+        "okx_change_24h_percent": -5.41,
+        "thexrpinvestor_product_count_mismatch": "12 headline vs 11 category sum",
+        "etf_alpha_oct29_net_flow_usd": 8400000
+      },
+      "repository": {
+        "pr": 1365,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1365",
+        "head_sha": "23e125e5666136c878e1afcdb1600fcf4cd0008f",
+        "base_sha": "6739e05dc427f0db167a10f23730ced1acf0b9b8",
+        "core_ci_run": 41018562401,
+        "core_ci": "342 tests and 8 subtests passed in 8.18 seconds",
+        "fail_closed_gate_run": 41018562435,
+        "fail_closed_gate": "PASS; automatic merge disabled",
+        "state": "OPEN_DRAFT_UNMERGED"
+      },
+      "ledger_validation": {
+        "prior_data_commit": "b4d0273f8798470013150edeb8b88a4dfa811c44",
+        "prior_validator_run": 41013006245,
+        "prior_validator_tests": 18,
+        "prior_gate_run": 41013006185,
+        "prior_gate": "PASS_MERGE_DISABLED",
+        "new_append_exact_head_validation": "PENDING"
+      },
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false,
+      "full_repository_ci": "NOT_RUN"
+    }
+  ]
+}

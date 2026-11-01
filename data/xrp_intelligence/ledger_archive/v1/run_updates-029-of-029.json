@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 28,
+  "chunk_count": 29,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:31:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:31:00Z",
+      "update_type": "CORRECT_CIRCLE_SBI_JV_AND_RECONCILE_COINBASE_CIRCLE_Q3_Q2_ECONOMICS",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_head_sha": "e7c8dcc3488ee2b82c72115755a841e50c7bc927",
+      "current_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+      "previous_head_validation": {
+        "head_sha": "e7c8dcc3488ee2b82c72115755a841e50c7bc927",
+        "validator_run_id": 41027891602,
+        "validator_tests_passed": 18,
+        "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41027891602",
+        "gate_run_id": 41027891556,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41027891556",
+        "job_log": "18 passed in 0.06s; compileall passed"
+      },
+      "correction": {
+        "prior_snapshot_id": "BARROT-XRP-2026-10-30T083100Z-SBI-SMFG-JPYSC-TRUST-CUSTODY-BITBANK-MCP",
+        "prior_incorrect_claim": "No direct Circle-SBI relationship established.",
+        "corrected_claim": "Circle and SBI have a direct 50/50 Circle SBI Japan K.K. JV for USDC distribution; SBI Holdings and SBI Shinsei Bank invested USD25M each in Circle at IPO.",
+        "scope": "No direct Circle-Ripple partnership or XRP use in the JV established."
+      },
+      "coinbase_circle_metrics": {
+        "coinbase_q3_stablecoin_revenue_usd": 306905000,
+        "coinbase_q3_2025_stablecoin_revenue_usd": 324534000,
+        "coinbase_q3_yoy_percent": -5.43,
+        "coinbase_9m_stablecoin_revenue_usd": 904487000,
+        "coinbase_9m_2025_usd": 907485000,
+        "higher_balance_revenue_contribution_q3_usd": 84600000,
+        "lower_rate_impact_q3_usd": -52800000,
+        "higher_balance_contribution_9m_usd": 201600000,
+        "lower_rate_impact_9m_usd": -166200000,
+        "circle_coinbase_distribution_cost_q2_usd": 324600000,
+        "circle_coinbase_distribution_cost_h1_usd": 655300000,
+        "circle_q2_avg_usdc_usd": 76524000000,
+        "circle_q2_end_usdc_usd": 73269000000,
+        "circle_q2_reserve_yield_percent": 3.5,
+        "circle_q2_coinbase_platform_share_percent": 19.5,
+        "circle_q2_coinbase_end_balance_usd": 12442000000,
+        "metric_reconciliation": "Coinbase's product-balance and Circle's platform-share measures are not definitionally identical."
+      },
+      "circle_sbi_jv": {
+        "english_name": "Circle SBI Japan K.K.",
+        "japanese_name": "SBI Circle Holdings",
+        "equity_split": {
+          "circle_percent": 50,
+          "sbi_percent": 50
+        },
+        "initial_contribution_each_usd_equivalent": 1500000,
+        "circle_vie_control": true,
+        "no_significant_operating_results_through": "2026-06-30",
+        "purpose": "USDC distribution support in Japan",
+        "xrp_role": "NOT_ESTABLISHED"
+      },
+      "bitbank_mcp_adapter": "DESIGNED_NOT_CONNECTED; PUBLIC_ONLY_RECOMMENDATION; NO_API_KEYS_OR_TRADE_PERMISSIONS",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment": false,
+      "workflow_dispatch": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false,
+      "nine_platform_live_collaboration": "NOT_VERIFIED"
+    }
+  ]
+}

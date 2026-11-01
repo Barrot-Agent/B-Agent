@@ -1,0 +1,52 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 126,
+  "chunk_count": 127,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "LIM-20261031T091333Z-INSTITUTIONAL-SOURCE-ID-CORRECTION",
+      "category": "source_provenance",
+      "statement": "The 09:05:17 institutional-rails snapshot/graph/ADR used two guessed Circle source IDs that did not resolve in the source archive. The corrected 09:13:33 copies reference the canonical archived Circle Arc and native USDC-on-XRPL IDs. The earlier artifacts and failed validator remain preserved.",
+      "severity": "HIGH",
+      "status": "OPEN_UNTIL_CORRECTED_HEAD_VALIDATES",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+        "SRC-CIRCLE-ARC-MAINNET-20260916",
+        "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612"
+      ]
+    },
+    {
+      "id": "LIM-20261031T091333Z-DUPLICATE-DOCUMENT-RETRIEVALS",
+      "category": "source_independence",
+      "statement": "Four newly appended BNY, Robinhood, Coinbase RLUSD and Coinbase Q3 records are independent retrieval copies of documents already archived under canonical source IDs. They are not independent corroboration and must not be double-counted in source-independence scoring; corrected snapshot records explicit retrieval-to-canonical aliases.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-BNY-RIPPLE-XRP-RLUSD-CUSTODY",
+        "SRC-20261031T090517Z-RIPPLE-ROBINHOOD-RLUSD-XRPL",
+        "SRC-20261031T090517Z-COINBASE-RLUSD-PLATFORM-LISTING",
+        "SRC-20261031T090517Z-COINBASE-Q3-2026-STRATEGIC-METRICS",
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-COINBASE-Q3-2026-IR-20261031T022100Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T091333Z-ARCHIVE-POLICY-SHARD-TOTAL",
+      "category": "ledger_integrity",
+      "statement": "The previous metadata update left archive_policy.archive_shards_total at 375 while live pointers referenced 378 chunks. The corrected index will set the count to the 380 chunks after the current two-shard correction append; exact-head validator must confirm all array and total counts.",
+      "severity": "HIGH",
+      "status": "OPEN_UNTIL_CORRECTED_HEAD_VALIDATES",
+      "affected_source_ids": [
+        "SRC-20261031T090517Z-GH-MAIN-CROSS-ANALYSIS-COMMIT",
+        "SRC-20261031T090517Z-GH-OPEN-PR-INVENTORY"
+      ]
+    }
+  ]
+}

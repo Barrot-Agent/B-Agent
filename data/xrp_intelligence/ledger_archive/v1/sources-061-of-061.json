@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 60,
+  "chunk_count": 61,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T18:22:06Z",
+  "records": [
+    {
+      "id": "SRC-COINDESK-BINANCE14-POR-20261030",
+      "evidence_class": "SECONDARY_REVIEW_OF_BINANCE_PRIMARY_RESERVE_DATA",
+      "url": "https://www.coindesk.com/business/2026/10/30/binance-hack-drained-wallets-backing-customer-assets-reserve-data-shows",
+      "title": "Binance hack drained wallets backing customer assets, reserve data shows",
+      "author": "Oliver Knight",
+      "published_at": "2026-10-29T20:17:00Z",
+      "updated_at": "2026-10-30T04:16:00Z",
+      "accessed_at_utc": "2026-10-30T18:22:06Z",
+      "ethereum_wallet": {
+        "label": "Binance 14",
+        "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+        "included_in_october_1_2026_proof_of_reserves": true,
+        "asset_count": 37,
+        "usdt_balance_oct1": 1260000000,
+        "eth_balance_oct1": 89475
+      },
+      "reported_eth_theft": 204500,
+      "reported_share_of_binance_eth_reserves_pct": 5.6,
+      "oct1_eth_reserve_ratio_pct": 100,
+      "estimated_post_theft_eth_coverage_pct": 94,
+      "oct1_usdc_reserve_ratio_pct": 108.26,
+      "qualification": "CoinDesk's analysis of Binance's Oct1 reserve data; ~94% is an outside estimate assuming no replenishment, not a Binance-confirmed current ratio. The EVM Binance14 wallet is not any of the five XRPL source addresses.",
+      "next_snapshot_expected": "2026-11-01",
+      "classification": "SECONDARY_ANALYSIS_OF_PRIMARY_POR_DATA"
+    },
+    {
+      "id": "SRC-BINANCE-POR-OFFICIAL-PAGE-20261030",
+      "evidence_class": "PRIMARY_BINANCE_PROOF_OF_RESERVES_PORTAL",
+      "url": "https://www.binance.com/en/proof-of-reserves",
+      "title": "Binance Proof of Reserves portal",
+      "published_at": "monthly snapshot portal",
+      "accessed_at_utc": "2026-10-30T18:22:06Z",
+      "october_snapshot_date": "2026-10-01",
+      "visible_features": [
+        "monthly reserve snapshot",
+        "wallet list",
+        "Download All Address control",
+        "View Report control"
+      ],
+      "retrieval_limitation": "Static page extraction exposes the controls but not the downloadable address-file URL or the XRP address set. No wallet inclusion conclusion is drawn from the inaccessible file.",
+      "classification": "PRIMARY_PORTAL_WITH_FILE_RETRIEVAL_BLOCKER"
+    },
+    {
+      "id": "SRC-WHALEALERT-XRPL-BINANCE-ROTATIONS-2023-2026",
+      "evidence_class": "SECONDARY_ON_CHAIN_TRANSACTION_ALERTS",
+      "url": "https://whale-alert.io/transaction/ripple/D47D572B0C444AB74AB8D2A3E71601DB4CBD640A244BDEDC875606907062AAF7",
+      "title": "Historical Binance-labelled XRPL wallet rotations",
+      "published_at": "2023-09 through 2026-01",
+      "accessed_at_utc": "2026-10-30T18:22:06Z",
+      "examples": [
+        {
+          "date_utc": "2023-09-02T03:20:21Z",
+          "from": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+          "to": "rBtttd61FExHC68vsZ8dqmS3DfjFEceA1A",
+          "xrp": 66666659
+        },
+        {
+          "date_utc": "2024-06-22T03:20:22Z",
+          "from": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+          "to": "rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+          "xrp": 26247981
+        },
+        {
+          "date_utc": "2024-07-14T16:20:22Z",
+          "from": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+          "to": "rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+          "xrp": 35937321
+        },
+        {
+          "date_utc": "2024-10-04T07:40:21Z",
+          "from": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+          "to": "rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk",
+          "xrp": 28900823
+        },
+        {
+          "date_utc": "2026-01-28T21:20:00Z",
+          "from": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+          "to": "rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK",
+          "xrp": 20800000
+        }
+      ],
+      "classification": "SECONDARY_HISTORICAL_FLOW_EVIDENCE_NOT_POR_MEMBERSHIP"
+    },
+    {
+      "id": "SRC-BITHOMP-BINANCE-XRPL-ACCOUNTS-20261030",
+      "evidence_class": "XRPL_EXPLORER_ACCOUNT_LABELS_AND_ACTIVATION_HISTORY",
+      "url": "https://bithomp.com/account/rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK",
+      "title": "Bithomp Binance-labelled XRPL accounts",
+      "published_at": "live explorer page",
+      "accessed_at_utc": "2026-10-30T18:22:06Z",
+      "accounts": [
+        {
+          "address": "rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK",
+          "label": "Binance",
+          "activated_by": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr"
+        },
+        {
+          "address": "rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk",
+          "label": "Binance",
+          "activated_by": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr"
+        }
+      ],
+      "classification": "EXPLORER_ATTRIBUTION_NOT_EXCHANGE_ATTESTATION"
+    },
+    {
+      "id": "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030",
+      "evidence_class": "BLOCKCHAIN_ANALYTICS_PROVIDER_TIMELINE",
+      "url": "https://range.org/blog/binance-hot-wallet-hack",
+      "title": "The October 29 Binance hot-wallet hack: chain-by-chain timeline",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:22:06Z",
+      "timeline_utc": [
+        {
+          "event": "first identified XRP Ledger outflow",
+          "time": "2026-10-29T20:05:00Z"
+        },
+        {
+          "event": "Solana outflows begin",
+          "time": "2026-10-29T20:10:00Z"
+        },
+        {
+          "event": "Bitcoin outflow",
+          "time": "2026-10-29T20:20:00Z"
+        },
+        {
+          "event": "Binance14 EVM sweep",
+          "time": "2026-10-29T20:24:00Z"
+        },
+        {
+          "event": "attacker control reportedly revoked",
+          "time": "2026-10-30T00:10:00Z"
+        }
+      ],
+      "coverage": "Range reports a ten-chain incident and cites on-chain reads; timings and aggregate values remain provider-specific.",
+      "classification": "SECONDARY_ON_CHAIN_TIMELINE"
+    }
+  ]
+}

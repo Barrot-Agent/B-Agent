@@ -1,0 +1,519 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_snapshot",
+  "snapshot_id": "XRP-20261031T160137Z-EXCHANGE-WALLETS-BINANCE-RECOVERY-V3",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T160137Z-xrp-exchange-wallets-binance-recovery-and-v3-audit.json",
+  "captured_at_utc": "2026-10-31T16:01:37Z",
+  "data_cutoff_utc": "2026-10-31T16:01:37Z",
+  "observed_research_parent_sha": "b948dd8a85fe5084e066cedd1c6eb2c067084515",
+  "observed_main_sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T152000Z-institutional-rails-etf-quality-v3-audit.json",
+  "extends_snapshot_blob_sha": "fe70b5c88e68bbfa745b124f2a9d11df7b9ed938",
+  "extends_snapshot_commit_sha": "b948dd8a85fe5084e066cedd1c6eb2c067084515",
+  "source_ids": [
+    "SRC-20261031T152000Z-COINBASE-RLUSD",
+    "SRC-20261031T152000Z-COINBASE-Q3-IR",
+    "SRC-20261031T152000Z-COINBASE-Q3-10Q",
+    "SRC-20261031T152000Z-OCC-RIPPLE-NTB",
+    "SRC-20261031T152000Z-AVIVA-XRPL",
+    "SRC-20261031T152000Z-SC-RLUSD",
+    "SRC-20261031T152000Z-RIPPLE-STRATEGY",
+    "SRC-20261031T152000Z-BNY-RIPPLE",
+    "SRC-20261031T152000Z-C2FO",
+    "SRC-20261031T152000Z-ROBINHOOD",
+    "SRC-20261031T152000Z-RIPPLE-PRIME",
+    "SRC-20261031T152000Z-XRPL-AI-KIT",
+    "SRC-20261031T152000Z-RIPPLE-TREASURY",
+    "SRC-20261031T152000Z-SBI-ACCUMULATION",
+    "SRC-20261031T152000Z-ORICO",
+    "SRC-20261031T152000Z-XRPL-UTILS-METHOD",
+    "SRC-20261031T152000Z-XRPL-UTILS-HEALTH",
+    "SRC-20261031T152000Z-XRP-INSIGHTS",
+    "SRC-20261031T152000Z-CRYPTOETF",
+    "SRC-20261031T152000Z-CRYPTOKEYHOLE",
+    "SRC-20261031T152000Z-BINANCE-PRICE",
+    "SRC-20261031T152000Z-TRADRADAR",
+    "SRC-20261031T152000Z-KODEXIUS",
+    "SRC-20261031T152000Z-SBIC-INDEX",
+    "SRC-20261031T152000Z-SBIC-20250226",
+    "SRC-20261031T152000Z-GITHUB-AUDIT",
+    "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+    "SRC-202610311448Z-SBI-CRYPTO-CARD-CURRENT-TERMS",
+    "SRC-202610311448Z-SBI-VISA-DIGITAL-MOU",
+    "SRC-202610311448Z-SBI-SHINSEI-XRP-VOUCHER",
+    "SRC-202610311448Z-SBI-RLUSD-LISTING",
+    "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261031T121200Z-CIRCLE-SBI-JAPAN-JV",
+    "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES",
+    "SRC-20261031T121200Z-CIRCLE-USDC-XRPL-SUPPORT",
+    "SRC-20261031T121200Z-SBI-SMFG-STABLECOIN-PARTNERSHIP",
+    "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU",
+    "SRC-20261031T121200Z-SBI-OPEN-STANDARD-JPYSC-OUSD",
+    "SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE",
+    "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE",
+    "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+    "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T160137Z-GITHUB-MAIN-PR-WORKFLOW-AUDIT"
+  ],
+  "source_reference_count": 44,
+  "missing_source_references": 0,
+  "binance_recovery_update3": {
+    "source_ids": [
+      "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+      "SRC-202610311448Z-BINANCE-POR-METHODOLOGY",
+      "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3"
+    ],
+    "update_published_at_utc": "2026-10-31T14:24:00Z",
+    "aggregate_stolen_asset_replenishment_pct_claimed": 90,
+    "previous_aggregate_pct_claimed": 80,
+    "top_ten_assets_minimum_1_to_1_claim": [
+      "BTC",
+      "ETH",
+      "USDT",
+      "BNB",
+      "SOL",
+      "USDC",
+      "XRP",
+      "USD1",
+      "RLUSD",
+      "ZEC"
+    ],
+    "snapshot_at_utc": "2026-10-31T00:00:00Z",
+    "xrp_minimum_coverage_claim": "AT_LEAST_1_TO_1_BY_BINANCE_STATEMENT",
+    "full_zk_proof_status": "PENDING; BINANCE_ESTIMATE_2026-11-03",
+    "independent_reserve_liability_reconciliation": false,
+    "xrp_units_replenished": "UNKNOWN",
+    "xrp_spot_purchase_usd": "UNKNOWN",
+    "xrp_otc_purchase_usd": "UNKNOWN",
+    "funding_sources_claimed": [
+      "PARTIAL_SAFU",
+      "PORTION_OF_FUTURES_INSURANCE_FUND",
+      "CORPORATE_TREASURY"
+    ],
+    "withdrawal_resumption_target": "2026-11-01",
+    "withdrawal_completion": "NOT_VERIFIED",
+    "interpretation": "Coverage claim reduces the immediate company-asserted XRP custody shortfall concern, but does not establish XRP-specific market buying."
+  },
+  "exchange_balances": {
+    "source_id": "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+    "observed_at_utc": "2026-10-31T08:00:00Z",
+    "retrieved_at_utc": "2026-10-31T16:01:37Z",
+    "total_xrp": 22480000000,
+    "tracked_wallets": 701,
+    "tracked_exchanges": 24,
+    "circulating_supply_xrp": 68590000000,
+    "total_supply_xrp": 100000000000,
+    "share_of_circulating_supply_pct": 32.8,
+    "share_of_total_supply_pct": 22.5,
+    "daily_same_wallet_change_xrp": {
+      "2026-10-29": -41200000,
+      "2026-10-30": -207300000,
+      "2026-10-31": 105900000
+    },
+    "same_wallet_change_7d_xrp": -133000000,
+    "same_wallet_change_30d_xrp": -12300000,
+    "regional_balances_xrp": {
+      "south_korea": 8590000000,
+      "united_states": 8520000000,
+      "japan": 1380000000,
+      "global_offshore": 2850000000,
+      "rest_of_world": 1140000000
+    },
+    "storage_split_pct": {
+      "cold": 48.4,
+      "hot": 14,
+      "unclassified": 37.8
+    },
+    "known_non_customer_reserves_xrp": {
+      "total": 487200000,
+      "binance_peg": 325800000,
+      "coinbase_cbxrp": 150200000,
+      "insurance_and_charity": 11200000
+    },
+    "exchanges": {
+      "binance": {
+        "balance_xrp": 2780000000,
+        "wallets": 153,
+        "share_pct": 12.4,
+        "cold_labeled_pct": 20,
+        "hot_labeled_pct": 58,
+        "unclassified_pct": 22,
+        "same_wallet_change_7d_xrp": 17600000,
+        "same_wallet_change_30d_xrp": 30300000,
+        "known_non_customer_binance_peg_and_funds_xrp": 327400000,
+        "includes_binance_us_xrp": 7800000
+      },
+      "coinbase": {
+        "balance_xrp": 5850000000,
+        "wallets": 358,
+        "share_pct": 26,
+        "cold_labeled_pct": ">99",
+        "same_wallet_change_7d_xrp": 17700000,
+        "same_wallet_change_30d_xrp": 18400000,
+        "known_non_customer_cbxrp_reserve_xrp": 150200000
+      },
+      "upbit": {
+        "balance_xrp": 6430000000,
+        "wallets": 13,
+        "share_pct": 28.6,
+        "cold_labeled_pct": 62,
+        "hot_labeled_pct": 22,
+        "same_wallet_change_7d_xrp": -747000,
+        "same_wallet_change_30d_xrp": 34600000
+      },
+      "bithumb": {
+        "balance_xrp": 1840000000,
+        "wallets": 4,
+        "same_wallet_change_7d_xrp": -11400000,
+        "same_wallet_change_30d_xrp": 12100000
+      },
+      "coinone": {
+        "balance_xrp": 318300000,
+        "wallets": 3,
+        "cold_labeled_pct": 99,
+        "hot_labeled_pct": 1,
+        "same_wallet_change_7d_xrp": -390000,
+        "same_wallet_change_30d_xrp": 3300000
+      },
+      "sbi_vc_trade": {
+        "balance_xrp": 59500000,
+        "wallets": 2,
+        "cold_labeled_pct": ">99",
+        "same_wallet_change_7d_xrp": -899000,
+        "same_wallet_change_30d_xrp": -10500000
+      },
+      "kraken": {
+        "balance_xrp": 960800000,
+        "wallets": 14,
+        "same_wallet_change_7d_xrp": -81500000,
+        "same_wallet_change_30d_xrp": -24100000
+      },
+      "uphold": {
+        "balance_xrp": 1700000000,
+        "wallets": 24,
+        "same_wallet_change_7d_xrp": -48000000,
+        "same_wallet_change_30d_xrp": -35700000
+      }
+    },
+    "coverage_gaps": {
+      "untracked_exchange_labeled_wallets_estimate_xrp": 323000000,
+      "known_exchange_gaps": [
+        "Coins.ph main wallets",
+        "OKX main wallets",
+        "Korbit main wallets"
+      ],
+      "attribution": "XRPSCAN public labels; HQ region is exchange jurisdiction, not beneficial-owner geography"
+    },
+    "methodology": {
+      "balance_reads": "rippled account_info on latest validated ledger at approximately 08:00 UTC daily",
+      "attribution": "XRPSCAN public account labels only",
+      "same_wallet_change": "Exchange totals at both dates, adjusted for wallets added after the start of the window",
+      "per_wallet_history_available": false,
+      "label_changes_can_create_apparent_outflows": true,
+      "cold_storage_included": true,
+      "tradable_float": false,
+      "official_proof_of_reserves": false,
+      "coverage_floor": true
+    },
+    "interpretation": {
+      "binance_incident_causality": "NOT_RECONCILED; same-wallet Binance series is positive over 7d and 30d; all-exchange Oct30 decline partially reversed Oct31; source-wallet membership is unknown",
+      "prior_binance_2_58b_observation": "UNRECONCILED_TO_CURRENT_2_78B; do not infer a 200M inflow or merge provider series",
+      "actual_capital": "NOT_MEASURED",
+      "price_feature_admission": "NOT_ADMITTED"
+    }
+  },
+  "incident_causality_reassessment": {
+    "prior_near_match": "233.46M stolen XRP versus XRP Insights Oct30 all-exchange -207.3M daily same-wallet change",
+    "new_counterevidence": "Oct31 all-exchange same-wallet change +105.9M; Binance same-wallet +17.6M 7d and +30.3M 30d",
+    "status": "PRIOR_CAUSAL_HYPOTHESIS_WEAKENED_NOT_ESTABLISHED",
+    "cryptoquant_series": "KEEP_SEPARATE_DIFFERENT_WALLET_UNIVERSE",
+    "source_wallet_membership_in_701_wallet_set": "UNKNOWN",
+    "source_wallet_membership_in_153_binance_wallet_set": "UNKNOWN",
+    "conclusion": "The numerical near-match is not causal proof. No per-wallet history or source-wallet crosswalk is available in the XRP Insights dataset."
+  },
+  "institutional_rails": {
+    "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261031T152000Z-institutional-rails-etf-quality-v3-audit.json",
+    "prior_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T152000Z-institutional-multirail.json",
+    "coinbase": {
+      "rlusd_listing": "LIVE_ON_PRIME_EXCHANGE_RETAIL_APP; XRPL_BASE_ETHEREUM",
+      "rlusd_global_exchange_collateral": "PLANNED_NOT_LIVE_AT_CAPTURE",
+      "xrp_futures": "CASH_SETTLED_DERIVATIVE_NOT_PHYSICAL_DELIVERY",
+      "xrp_global_perpetual_collateral": "ELIGIBLE_SUBJECT_TO_HAIRCUTS_AND_LIMITS",
+      "cbxrp_morpho_borrow": "SEPARATE_BASE_COLLATERAL_CHANNEL",
+      "q3_average_usdc_held_usd": 22000000000,
+      "q3_stablecoin_revenue_usd": 306900000,
+      "q3_stablecoin_revenue_yoy_pct": -5,
+      "circle_distribution_agreement": "RENEWED_ON_SAME_TERMS",
+      "xrp_specific_revenue_or_balance": "NOT_DISCLOSED"
+    },
+    "circle": {
+      "usdc_on_xrpl": "SUPPORTED",
+      "coinbase_distribution": "MATERIAL_EXISTING_ECONOMIC_RELATIONSHIP",
+      "arc": "SEPARATE_USDC_NATIVE_GAS_INSTITUTIONAL_NETWORK",
+      "direct_cbxrp_lending_supply": "NOT_ESTABLISHED"
+    },
+    "ripple": {
+      "national_trust_bank_final_occ_approval": "2026-10-26",
+      "rntb_approved_scope": [
+        "MANAGE_SEGREGATED_RLUSD_RESERVES",
+        "ACT_AS_COLLATERAL_TRUSTEE",
+        "FIDUCIARY_DIGITAL_ASSET_CUSTODY_UPON_OPENING"
+      ],
+      "rlusd_issuer": "STANDARD_CUSTODY_AND_TRUST_COMPANY",
+      "bny": "PRIMARY_RLUSD_RESERVE_CUSTODIAN; XRP_AND_RLUSD_CUSTODY_SUPPORT; DIRECT_MINT_REDEEM_PLANNED_SUBJECT_TO_APPROVAL"
+    },
+    "aviva": {
+      "tokenized_gbp_fund_share_class_on_xrpl": true,
+      "aviva_investment_gbp": 50000000,
+      "underlying_fund_aum_gbp_approx": 22000000000,
+      "two_tokenized_share_classes_total_gbp_over": 86000000,
+      "underlying_assets_offchain": true,
+      "asset_custodian": "BNY",
+      "digital_asset_custodian": "Komainu",
+      "tokenization_platform": "Licuido",
+      "xrp_purchase": "NOT_ESTABLISHED"
+    },
+    "c2fo": {
+      "instant_pay": "ANNOUNCED_WAITLIST",
+      "settlement_asset": "RLUSD",
+      "ledger": "XRPL",
+      "funding": "PARTICIPATING_CAPITAL_PROVIDERS",
+      "historic_c2fo_working_capital_usd_over": 520000000000,
+      "historic_volume_is_not_xrpl_instant_pay_volume": true,
+      "xrp_purchase": "NOT_ESTABLISHED"
+    },
+    "sbi": {
+      "status": "MULTI_RAIL_NOT_EXCLUSIVE_XRP_STRATEGY",
+      "sbi_vc_trade_attributed_xrp": 59500000,
+      "official_proprietary_holding_or_customer_liability": "NOT_DISCLOSED",
+      "circle_sbi_japan_arc_and_usdc_relationships": "DOCUMENTED_SEPARATELY_FROM_RIPPLE_XRP_RELATIONSHIPS"
+    },
+    "sbic": {
+      "resolved_candidate": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "distinct_from_sbi_holdings": true,
+      "chatgpt_context": "EDUCATIONAL_SEMINARS_NOT_OPENAI_PARTNERSHIP",
+      "social_bias_inference_corpus": "SEPARATE_RESEARCH_ACRONYM"
+    }
+  },
+  "market_context": {
+    "spot_price": {
+      "provider": "TradRadar",
+      "price_usd": 1.2497,
+      "observed_at_utc": "2026-10-31T11:45:00Z",
+      "age_hours_at_capture": 4.28,
+      "status": "STALE_AT_CAPTURE"
+    },
+    "derivatives": {
+      "tradradar": {
+        "open_interest_usd": 1860000000,
+        "exchanges": 7,
+        "funding_8h_pct": 0.0081,
+        "observed_at_utc": "2026-10-31T11:45:00Z"
+      },
+      "kodexius": {
+        "open_interest_usd": 738990000,
+        "contracts": 7,
+        "funding_8h_pct": 0.0073,
+        "observed_at_utc": "2026-10-31T12:34:00Z"
+      },
+      "ratio": 2.51,
+      "feature_admission": "PROVIDER_SPECIFIC_SERIES_ONLY; NO_COMPOSITE_OI"
+    },
+    "etf_flows": {
+      "alpha_through_2026_10_29": {
+        "daily_usd": 8400000,
+        "thirty_session_usd": 98900000,
+        "funds": 5
+      },
+      "cryptoetf_2026_10_30": {
+        "daily_usd": 200000,
+        "funds_reported": 3,
+        "funds_total": 5,
+        "status": "PARTIAL"
+      },
+      "cryptokeyhole_2026_10_30": {
+        "daily_usd": -1412000,
+        "funds_reported": 3,
+        "funds_total": 4,
+        "status": "PARTIAL; ISSUER_FILE_DATE_ANOMALY"
+      },
+      "feature_admission": "NOT_ADMITTED; DIFFERENT_FUND_UNIVERSES_AND_CUTOFFS"
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "HYP-XRP-EXCHANGE-BALANCE-IS-NOT-FLOAT",
+      "claim": "22.48B XRP in publicly attributed exchange wallets is not tradable float.",
+      "status": "SUPPORTED_BY_SOURCE_METHODOLOGY",
+      "support": [
+        "48.4% cold-labelled; 14% hot-labelled; 37.8% unclassified",
+        "487.2M known non-customer reserves/funds",
+        "Omnibus custody can include balances not for sale"
+      ],
+      "counter": [
+        "Hot/cold labels are incomplete and not equivalent to order-book availability"
+      ],
+      "next_test": "Obtain venue-level order-book depth and official custody/liability disclosures."
+    },
+    {
+      "id": "HYP-BINANCE-THEFT-CAUSED-RESERVE-DECLINE",
+      "claim": "The 2026-10-29 theft explains the approximately 220M CryptoQuant Binance reserve decline and XRP Insights Oct30 all-exchange decline.",
+      "status": "WEAKENED_NOT_ESTABLISHED",
+      "support": [
+        "Five XRPL source wallets lost 233.46M XRP",
+        "XRP Insights all-exchange same-wallet Oct30 change was -207.3M"
+      ],
+      "disconfirming": [
+        "XRP Insights same-wallet Binance change is +17.6M over 7d and +30.3M over 30d",
+        "All-exchange same-wallet daily change reversed to +105.9M on Oct31",
+        "XRP Insights has no per-wallet history; source-wallet membership in its 153 Binance wallets is unknown",
+        "CryptoQuant and XRP Insights use different wallet universes"
+      ],
+      "next_test": "Crosswalk all five incident source wallets against the exact XRPSCAN label snapshot and CryptoQuant tracked set."
+    },
+    {
+      "id": "HYP-BINANCE-RESTORATION-CREATED-XRP-BUYING",
+      "claim": "Binance recovery produced material new XRP spot/OTC demand.",
+      "status": "UNPROVEN",
+      "support": [
+        "Binance says 90% of stolen assets replenished and XRP at least 1:1 covered"
+      ],
+      "disconfirming": [
+        "No XRP-specific units or USD execution disclosed",
+        "Funding includes SAFU, futures insurance fund and corporate treasury",
+        "Existing inventory or internal transfers could satisfy coverage"
+      ],
+      "next_test": "Obtain XRP-specific executed trade/OTC and reserve-address deltas."
+    },
+    {
+      "id": "HYP-REGIONAL-LIQUIDITY-CONCENTRATION",
+      "claim": "South Korean venues' 8.59B tracked XRP wallet concentration can influence venue-specific liquidity and price discovery.",
+      "status": "PLAUSIBLE_CONTEXT_NOT_CAUSAL",
+      "support": [
+        "South Korea is 38.2% of tracked exchange wallet total; Upbit alone 6.43B"
+      ],
+      "disconfirming": [
+        "Wallet balances include cold storage and non-tradable custody",
+        "Headquarters geography does not identify beneficial-owner residence or order-book liquidity"
+      ],
+      "next_test": "Compare Korean venue spot volume, depth, spreads, deposits/withdrawals and premium/discounts."
+    },
+    {
+      "id": "HYP-COINBASE-CUSTODY-LEADERSHIP",
+      "claim": "Coinbase's 5.85B attributed XRP wallet footprint indicates a large custody/distribution position.",
+      "status": "SUPPORTED_AS_ATTRIBUTED_WALLET_FOOTPRINT_ONLY",
+      "support": [
+        "358 tracked wallets; >99% cold-labelled; 150.2M cbXRP reserve included"
+      ],
+      "disconfirming": [
+        "Omnibus and cold custody are not proprietary holdings or trading share",
+        "No customer-liability or beneficial-owner breakdown"
+      ],
+      "next_test": "Reconcile official Coinbase reserve addresses, cbXRP reserves and customer liability disclosures."
+    },
+    {
+      "id": "HYP-INSTITUTIONAL-XRPL-ANNOUNCEMENTS-ARE-XRP-DEMAND",
+      "claim": "Aviva tokenized fund shares, BNY custody and C2FO Instant Pay announcements create material XRP demand.",
+      "status": "NOT_ESTABLISHED",
+      "support": [
+        "Live tokenized fund share classes and institutional custody support are documented",
+        "C2FO plans RLUSD settlement on XRPL"
+      ],
+      "disconfirming": [
+        "Aviva underlying fund assets remain off-chain and its GBP50M investment is in fund shares, not XRP",
+        "C2FO settlement asset is RLUSD and rollout remains waitlist/initiative",
+        "No XRP principal, order-book purchases or network fee volumes disclosed"
+      ],
+      "next_test": "Measure actual XRPL transaction flows, XRP fee burn, RLUSD settlement volume and any bridge-asset use."
+    }
+  ],
+  "repository_audit": {
+    "audit_path": "data/repository_audits/20261031T160137Z-main-191-pr-workflow-audit.json",
+    "main_sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+    "open_prs": 191,
+    "drafts": 181,
+    "ready": 10,
+    "main_based": 189,
+    "non_main_based": 2,
+    "current_main_base_sha_count": 0,
+    "main_write_paths": [
+      "cross-analysis.yml",
+      "scheduler-tick.yml",
+      "rotate-databricks-token.yml"
+    ],
+    "manual_mutation_paths": [
+      "merge-queue.yml",
+      "coinbase-paper-trader.yml"
+    ],
+    "auto_merge": "DISABLED_FAIL_CLOSED",
+    "gated_merge": "READ_ONLY_FAIL_CLOSED",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_scan": "NOT_RUN",
+    "branch_protection_details": "403_NOT_VERIFIED",
+    "approval_workflow_zero_job_root_cause": "UNKNOWN",
+    "cross_analysis_pr1418": "OPEN_DRAFT_UNMERGED_DIVERGED_AHEAD_1_BEHIND_1_CI_AND_GATE_PASS"
+  },
+  "open_research_threads": {
+    "sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; separate from SBI Holdings; ChatGPT seminars are educational, not an OpenAI partnership; Social Bias Inference Corpus is a separate acronym.",
+    "ask_coin": "Permission Coin ASK remains leading candidate; Coinbase Embedded Wallet relationship documented; no direct XRP/XRPL integration established.",
+    "actual_capital": "Exact phrase context unresolved; distinguish gross transfers, fund shares, stablecoin settlement, exchange balances and net external XRP acquisitions.",
+    "camilla_stephenson": "Exact YouTube channel identity unresolved; no exhaustive video inventory claimed."
+  },
+  "actual_capital": {
+    "xrp_spot_or_otc_purchase_amount": "UNKNOWN",
+    "exchange_wallet_balances_are_not_net_external_capital": true,
+    "fund_share_subscriptions_are_not_xrp_purchases": true,
+    "rlusd_settlement_is_not_xrp_principal": true,
+    "reward_points_or_card_rewards_are_not_xrp_market_buys": true,
+    "only_reconciled_xrp_spot_otc_execution_or_net_xrp_acquisition_qualifies": true
+  },
+  "prediction_engine": {
+    "status": "MEASUREMENT_FOUNDATION_ONLY",
+    "fixed_horizon_ledger_pr": 1400,
+    "trained_model": "NOT_IMPLEMENTED",
+    "point_in_time_feature_store": "NOT_COMPLETE",
+    "walk_forward_backtest": "NOT_EXECUTED",
+    "baseline_comparison": "NOT_EXECUTED",
+    "calibration": "NOT_EXECUTED",
+    "drift_detection": "NOT_EXECUTED",
+    "shadow_evaluation": "NOT_EXECUTED",
+    "market_features_admitted": [],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "platform_coordination": {
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "designed": 9,
+    "verified_active": [
+      "ChatGPT",
+      "GitHub connector"
+    ],
+    "authenticated_external_platforms": 0,
+    "live_external_collaborators": 0,
+    "verified_handoffs": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "feature_admission": {
+    "exchange_wallet_balances": "CUSTODY_TIMELINE_ONLY",
+    "exchange_balance_directional_feature": "NOT_ADMITTED",
+    "binance_theft_reserve_causality": "WEAKENED_NOT_ESTABLISHED",
+    "binance_recovery_xrp_purchase_feature": "NOT_ADMITTED",
+    "derivatives_composite_oi": "NOT_ADMITTED",
+    "daily_etf_flows": "NOT_ADMITTED",
+    "institutional_rails": "EVENT_TIMELINE_ONLY",
+    "actual_capital": "BLOCKED_PENDING_EXECUTION_EVIDENCE",
+    "forecast": "NOT_ISSUED"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "status": "PENDING_EXACT_HEAD_VALIDATION"
+}

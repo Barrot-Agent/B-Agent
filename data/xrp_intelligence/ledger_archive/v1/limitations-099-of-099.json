@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 98,
+  "chunk_count": 99,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "LIM-20261031T002653Z-01",
+      "category": "coinbase_cbxrp_pofr_first_party_dynamic",
+      "statement": "Coinbase's cbXRP proof-of-reserves page is first-party and dynamic, not an independent audit. Its displayed refresh time is 10/30/2026 1:29 PM without a timezone; the BaseScan contract link returned 403, so supply was not independently read from Base. The 20 displayed address balances reconcile to within 0.002 XRP due to rounding.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINBASE-CBXRP-PROOF-OF-RESERVES-20261030T1329DISPLAY"
+      ]
+    },
+    {
+      "id": "LIM-20261031T002653Z-02",
+      "category": "coinbase_holdings_disclosure_dated_and_categorical",
+      "statement": "Coinbase's digital asset disclosures state holdings as of 31 March 2026 and use a broad 'Commercial Engagement' definition. XRP and cbXRP are marked held/engaged, but no XRP holding amount or specific commercial activity is disclosed; this cannot be treated as a current balance.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINBASE-DIGITAL-ASSET-DISCLOSURES-20260331"
+      ]
+    },
+    {
+      "id": "LIM-20261031T002653Z-03",
+      "category": "cbxrp_market_impact_and_regional_access",
+      "statement": "The cbXRP reserve/supply totals do not reveal mint/burn history, DeFi collateral utilization, secondary-market depth or net new XRP demand. Coinbase's help page lists regional send/receive restrictions including Japan and New York State, which can change and must be distinguished from native XRP support.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261031T002653Z"
+      ]
+    }
+  ]
+}

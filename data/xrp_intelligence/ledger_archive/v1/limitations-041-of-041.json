@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 40,
+  "chunk_count": 41,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T12:49:00Z",
+  "records": [
+    "Exact-head validator run 41058015161 on commit 8caf532646529caedd8b3e3dacc274ca6b3d136b failed 1 of 18 tests because the latest SBI/Circle snapshot and graph referenced the non-existent source ID SRC-SBIC-EAST-JAPAN-CHATGPT-EVENT-20260305. The canonical source exists as SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z. Validator code compiled and 17 tests passed; the fail-closed gate passed. A successor snapshot/graph corrects the reference while preserving the originals; exact-head revalidation is pending."
+  ]
+}

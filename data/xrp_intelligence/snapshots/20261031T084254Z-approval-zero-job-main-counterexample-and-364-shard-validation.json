@@ -1,0 +1,57 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "snapshot_id": "XRP-20261031T084254Z-APPROVAL-ZERO-JOB-COUNTEREXAMPLE-AND-ARCHIVE-VALIDATION",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T084254Z-approval-zero-job-main-counterexample-and-364-shard-validation.json",
+  "captured_at_utc": "2026-10-31T08:42:54Z",
+  "data_cutoff_utc": "2026-10-31T08:42:54Z",
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-GH-XRP-LEDGER-VALIDATOR-41185679403",
+    "SRC-20261031-GH-APPROVAL-ZERO-JOBS-41185678470",
+    "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP"
+  ],
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T083758Z-binance-por-market-and-prediction-ledger-update.json",
+  "archive_validation": {
+    "head_sha": "e8d4427e0e2bfc5a1fc3604f41e8cbd6486a98e1",
+    "run_id": 41185679403,
+    "status": "PASS",
+    "archive_shards_checked": 364,
+    "source_count": 1954,
+    "run_update_count": 335,
+    "limitation_count": 851,
+    "index_format_version": "3.0",
+    "snapshot_blob_sha_match": true,
+    "regression_tests_passed": 20,
+    "errors": [],
+    "state_mutated": false,
+    "fail_closed_gate_status": "NOT_OBSERVED_FOR_THIS_HEAD"
+  },
+  "approval_workflow": {
+    "default_branch_main_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+    "main_workflow_state": "WORKFLOW_DISPATCH_ONLY; NO_PUSH_NOOP",
+    "pr1402": {
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "da31a8392fa4f9acd09a55dff77ba7892f143751",
+      "push_test_run_id": 41184448544,
+      "push_test_status": "SUCCESS_NOOP_JOB; APPROVAL_JOB_SKIPPED"
+    },
+    "counterexample": {
+      "run_id": 41185678470,
+      "event": "push",
+      "branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "head_sha": "e8d4427e0e2bfc5a1fc3604f41e8cbd6486a98e1",
+      "conclusion": "FAILURE",
+      "jobs": 0
+    },
+    "repository_wide_fix_status": "NOT_ACTIVE_UNTIL_PR1402_MERGED",
+    "manual_workflow_dispatch_tested": false
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "main_changed_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false
+}

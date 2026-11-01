@@ -1,0 +1,397 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T050500Z-BINANCE-MARKET-MAIN-WRITE-AUDIT",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T050500Z-binance-market-and-main-writer-audit.json",
+  "captured_at_utc": "2026-10-31T05:05:00Z",
+  "data_cutoff_utc": "2026-10-31T05:05:00Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T043333Z-binance-xrp-replenishment-market-risk-update.json",
+  "source_references": [
+    "SRC-20261031-BINANCE-UPDATE2-0505Z",
+    "SRC-20261031-REUTERS-BINANCE-RESERVE-0505Z",
+    "SRC-20261031-COINDESK-BINANCE-BREACH-0505Z",
+    "SRC-20261031-INVESTING-XRP-HISTORY-0505Z",
+    "SRC-20261031-KODEXIUS-XRP-OI-0014Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-2320Z",
+    "SRC-20261031-GITHUB-MAIN-COMMIT-0505Z",
+    "SRC-20261031-GITHUB-CROSS-ANALYSIS-0505Z",
+    "SRC-20261031-GITHUB-ACCURACY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SCHEDULER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SELFDEPLOY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SUBSCRIBER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-PINGPONG-ENGINE-0505Z",
+    "SRC-20261031-GITHUB-RIEMANN-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-GUMROAD-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-WEBMCP-SANDBOX-0505Z",
+    "SRC-20261031-GITHUB-WEBMCP-MONETIZATION-0505Z",
+    "SRC-20261031-GITHUB-TRANSPARENCY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-HOVER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-PR1392-0505Z",
+    "SRC-20261031-GITHUB-PR1393-0505Z",
+    "SRC-20261031-GITHUB-PR1395-0505Z",
+    "SRC-20261031-GITHUB-PR1395-CI-0505Z",
+    "SRC-20261031-GITHUB-PR1395-GATE-0505Z"
+  ],
+  "source_ids": [
+    "SRC-20261031-BINANCE-UPDATE2-0505Z",
+    "SRC-20261031-REUTERS-BINANCE-RESERVE-0505Z",
+    "SRC-20261031-COINDESK-BINANCE-BREACH-0505Z",
+    "SRC-20261031-INVESTING-XRP-HISTORY-0505Z",
+    "SRC-20261031-KODEXIUS-XRP-OI-0014Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-2320Z",
+    "SRC-20261031-GITHUB-MAIN-COMMIT-0505Z",
+    "SRC-20261031-GITHUB-CROSS-ANALYSIS-0505Z",
+    "SRC-20261031-GITHUB-ACCURACY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SCHEDULER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SELFDEPLOY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-SUBSCRIBER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-PINGPONG-ENGINE-0505Z",
+    "SRC-20261031-GITHUB-RIEMANN-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-GUMROAD-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-WEBMCP-SANDBOX-0505Z",
+    "SRC-20261031-GITHUB-WEBMCP-MONETIZATION-0505Z",
+    "SRC-20261031-GITHUB-TRANSPARENCY-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-HOVER-WORKFLOW-0505Z",
+    "SRC-20261031-GITHUB-PR1392-0505Z",
+    "SRC-20261031-GITHUB-PR1393-0505Z",
+    "SRC-20261031-GITHUB-PR1395-0505Z",
+    "SRC-20261031-GITHUB-PR1395-CI-0505Z",
+    "SRC-20261031-GITHUB-PR1395-GATE-0505Z"
+  ],
+  "source_reference_count": 24,
+  "findings": [
+    {
+      "id": "F-050500-01",
+      "classification": "CONFIRMED_OFFICIAL_STATEMENT",
+      "claim": "Binance's October 30 19:33 UTC Security Incident Update #2 states approximately $6.3B impact, more than $6.34B company funds set aside, $5B held in exact affected token assets and remaining relevant token assets being acquired through market and OTC channels; approximately $3B was reported frozen on-chain.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z",
+        "SRC-20261031-REUTERS-BINANCE-RESERVE-0505Z"
+      ],
+      "counterevidence_or_limit": "These are company/partner aggregate statements, not independently audited balances. No XRP-specific allocation, purchase fill, execution venue or settlement quantity is disclosed."
+    },
+    {
+      "id": "F-050500-02",
+      "classification": "CONFIRMED_OFFICIAL_PLAN",
+      "claim": "Binance's update targeted an initial Proof of Reserves snapshot approximately 12 hours after the 19:33 UTC update, results by November 2 and withdrawal-service restoration within approximately 34 hours subject to security checks.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z",
+        "SRC-20261031-COINDESK-BINANCE-BREACH-0505Z"
+      ],
+      "counterevidence_or_limit": "At the 05:05 UTC cutoff the initial 07:33 UTC snapshot target had not yet arrived and no verified withdrawal resumption was found. These are targets, not completed events."
+    },
+    {
+      "id": "F-050500-03",
+      "classification": "SOURCED_MARKET_DATA",
+      "claim": "Investing.com daily XRP data show October 29 close $1.2348 (-6.84%) and October 30 close $1.2499 (+1.22%).",
+      "source_ids": [
+        "SRC-20261031-INVESTING-XRP-HISTORY-0505Z"
+      ],
+      "counterevidence_or_limit": "Daily candles cannot identify the causal contribution of the Binance incident; the Oct29 candle includes multiple market and macro drivers."
+    },
+    {
+      "id": "F-050500-04",
+      "classification": "SOURCED_MARKET_DATA",
+      "claim": "Kodexius at 00:14 UTC reports $739.41M XRP perpetual open interest across seven contracts, +0.0068% weighted funding per eight hours and $1.94B 24-hour volume; TradRadar at 23:20 UTC Oct30 reports $1.85B across seven exchanges, +0.0027% funding and at least $14.14M 24-hour liquidations.",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0014Z",
+        "SRC-20261031-TRADRADAR-XRP-OI-2320Z"
+      ],
+      "counterevidence_or_limit": "Contract/venue universes and timestamps differ. The values must remain provider-specific and must not be averaged."
+    },
+    {
+      "id": "F-050500-05",
+      "classification": "CONFIRMED_REPOSITORY_STATE",
+      "claim": "Main head ab053b0 is an unsigned Cross-analysis refresh commit at 04:52:02 UTC, parent df35e4e, changing only ping-pongings/knowledge-base/sentiment_shift.json. The generated file has zero XRP and BTC entries and null recent/prior scores.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-MAIN-COMMIT-0505Z",
+        "SRC-20261031-GITHUB-CROSS-ANALYSIS-0505Z"
+      ],
+      "counterevidence_or_limit": "No associated Actions run was returned. The workflow code and commit message/path strongly support Cross-analysis attribution, but the exact triggering event and run are not linked."
+    },
+    {
+      "id": "F-050500-06",
+      "classification": "CONFIRMED_WORKFLOW_CONFIGURATION",
+      "claim": "Main contains scheduled write-capable workflow configurations for Cross-analysis, signal-accuracy, scheduler-tick, autonomous self-deployment, subscriber sync, cognitive PingPong, Riemann harvest, Gumroad metrics, WebMCP live sandbox, WebMCP monetization enrichment and transparency audit. Hover-bike updates also has a schedule and contents:write permission, but its mutation target was not established.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-CROSS-ANALYSIS-0505Z",
+        "SRC-20261031-GITHUB-ACCURACY-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-SCHEDULER-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-SELFDEPLOY-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-SUBSCRIBER-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-PINGPONG-ENGINE-0505Z",
+        "SRC-20261031-GITHUB-RIEMANN-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-GUMROAD-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-WEBMCP-SANDBOX-0505Z",
+        "SRC-20261031-GITHUB-WEBMCP-MONETIZATION-0505Z",
+        "SRC-20261031-GITHUB-TRANSPARENCY-WORKFLOW-0505Z",
+        "SRC-20261031-GITHUB-HOVER-WORKFLOW-0505Z"
+      ],
+      "counterevidence_or_limit": "This is a targeted code-search/file-read inventory, not a complete audit of all workflows, repository defaults, rulesets, token permissions or actual run histories. Some workflow triggers may not produce a commit every time."
+    },
+    {
+      "id": "F-050500-07",
+      "classification": "VERIFIED_PR_EXECUTION",
+      "claim": "PR #1395 was opened from current main ab053b0 as a draft read-only scheduler queue audit. Its exact head cf85491 passed 344 tests plus 8 subtests and the fail-closed gate; merge remained disabled.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1395-0505Z",
+        "SRC-20261031-GITHUB-PR1395-CI-0505Z",
+        "SRC-20261031-GITHUB-PR1395-GATE-0505Z"
+      ],
+      "counterevidence_or_limit": "PR remains open, draft and unmerged. The proposed change intentionally suspends automatic queue dispatch; it does not disable other scheduled main writers."
+    },
+    {
+      "id": "F-050500-08",
+      "classification": "VERIFIED_PR_EXECUTION",
+      "claim": "PR #1392's exact head passed 388 tests plus 8 subtests and its fail-closed gate; PR #1393's exact head passed 349 tests plus 8 subtests and its fail-closed gate.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1392-0505Z",
+        "SRC-20261031-GITHUB-PR1393-0505Z"
+      ],
+      "counterevidence_or_limit": "Both remain open, draft and unmerged. PR #1393's live Morpho API was not executed; PR #1392 leaves the scheduler queue write path in its current proposal and does not address all other scheduled writers."
+    }
+  ],
+  "market_observations": [
+    {
+      "id": "M-050500-01",
+      "metric": "XRP_USD_DAILY_CLOSE",
+      "value": 1.2348,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-29",
+      "source_id": "SRC-20261031-INVESTING-XRP-HISTORY-0505Z",
+      "admitted_to_model": false,
+      "notes": "Daily close; not a live mark."
+    },
+    {
+      "id": "M-050500-02",
+      "metric": "XRP_DAILY_RETURN",
+      "value": -6.84,
+      "unit": "percent",
+      "observed_at_utc": "2026-10-29",
+      "source_id": "SRC-20261031-INVESTING-XRP-HISTORY-0505Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-050500-03",
+      "metric": "XRP_USD_DAILY_CLOSE",
+      "value": 1.2499,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-30",
+      "source_id": "SRC-20261031-INVESTING-XRP-HISTORY-0505Z",
+      "admitted_to_model": false,
+      "notes": "Daily close; not a live mark."
+    },
+    {
+      "id": "M-050500-04",
+      "metric": "XRP_DAILY_RETURN",
+      "value": 1.22,
+      "unit": "percent",
+      "observed_at_utc": "2026-10-30",
+      "source_id": "SRC-20261031-INVESTING-XRP-HISTORY-0505Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-050500-05",
+      "metric": "XRP_OI_KODEXIUS",
+      "value": 739410000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-31T00:14:00Z",
+      "source_id": "SRC-20261031-KODEXIUS-XRP-OI-0014Z",
+      "admitted_to_model": false,
+      "coverage": "7 contracts"
+    },
+    {
+      "id": "M-050500-06",
+      "metric": "XRP_FUNDING_KODEXIUS",
+      "value": 0.0068,
+      "unit": "percent_per_8h",
+      "observed_at_utc": "2026-10-31T00:14:00Z",
+      "source_id": "SRC-20261031-KODEXIUS-XRP-OI-0014Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-050500-07",
+      "metric": "XRP_OI_TRADRADAR",
+      "value": 1850000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-30T23:20:00Z",
+      "source_id": "SRC-20261031-TRADRADAR-XRP-OI-2320Z",
+      "admitted_to_model": false,
+      "coverage": "7 exchanges"
+    },
+    {
+      "id": "M-050500-08",
+      "metric": "XRP_FUNDING_TRADRADAR",
+      "value": 0.0027,
+      "unit": "percent_per_8h",
+      "observed_at_utc": "2026-10-30T23:20:00Z",
+      "source_id": "SRC-20261031-TRADRADAR-XRP-OI-2320Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-050500-09",
+      "metric": "BINANCE_COMPANY_FUNDS_SET_ASIDE",
+      "value": 6340000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-30T19:33:00Z",
+      "source_id": "SRC-20261031-BINANCE-UPDATE2-0505Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-050500-10",
+      "metric": "BINANCE_AFFECTED_TOKEN_ASSETS_ALREADY_HELD",
+      "value": 5000000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-30T19:33:00Z",
+      "source_id": "SRC-20261031-BINANCE-UPDATE2-0505Z",
+      "admitted_to_model": false
+    },
+    {
+      "id": "M-050500-11",
+      "metric": "BINANCE_ASSETS_REPORTED_FROZEN_ONCHAIN",
+      "value": 3000000000,
+      "unit": "USD",
+      "observed_at_utc": "2026-10-30T19:33:00Z",
+      "source_id": "SRC-20261031-BINANCE-UPDATE2-0505Z",
+      "admitted_to_model": false
+    }
+  ],
+  "source_discrepancies": [
+    {
+      "issue": "XRP-specific Binance replacement demand",
+      "detail": "The company reserve plan is aggregate. No XRP token allocation, actual purchase fill, OTC counterparty, transfer or settlement was disclosed.",
+      "status": "OPEN_UNKNOWN"
+    },
+    {
+      "issue": "XRP derivatives open interest",
+      "detail": "Kodexius $739.41M across seven contracts versus TradRadar $1.85B across seven exchanges; timestamps and contract universes differ.",
+      "status": "OPEN_NON_COMPARABLE"
+    },
+    {
+      "issue": "Binance withdrawal/PoR update",
+      "detail": "Official target windows are 07:33Z Oct31 for an initial snapshot and 05:33Z Nov1 for withdrawal restoration; no completed update was verified at 05:05Z.",
+      "status": "PLANNED_NOT_OBSERVED"
+    },
+    {
+      "issue": "Main write workflow attribution",
+      "detail": "Main commit ab053b0 message/path match Cross-analysis workflow code, but no Actions run was returned for the commit; exact trigger remains unknown.",
+      "status": "STRONGLY_SUPPORTED_NOT_EXACT_RUN_LINKED"
+    },
+    {
+      "issue": "Scheduled writer inventory",
+      "detail": "Targeted GitHub code search found multiple active scheduled write-capable workflows; full workflow/token/ruleset audit and full open-PR recount remain incomplete.",
+      "status": "PARTIAL_INVENTORY"
+    }
+  ],
+  "event_timeline": [
+    {
+      "event_date": "2026-10-29T20:05:00Z/2026-10-29T20:09:00Z",
+      "event": "TRM-reported five Binance-labelled XRPL source wallets transferred 233.46M XRP to one attacker receiver.",
+      "source_ids": [
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-30T19:33:00Z",
+      "event": "Binance published Security Incident Update #2 with $6.34B reserve plan, $5B already held in affected tokens, approximately $3B frozen, market/OTC replacement and PoR/withdrawal targets.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-30T23:20:00Z",
+      "event": "TradRadar XRP derivatives snapshot reported $1.85B OI across seven exchanges.",
+      "source_ids": [
+        "SRC-20261031-TRADRADAR-XRP-OI-2320Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-31T00:14:00Z",
+      "event": "Kodexius XRP derivatives snapshot reported $739.41M OI across seven contracts.",
+      "source_ids": [
+        "SRC-20261031-KODEXIUS-XRP-OI-0014Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-31T04:52:02Z",
+      "event": "Main received unsigned Cross-analysis refresh commit ab053b0 changing sentiment_shift.json timestamp only; no associated Actions run was returned.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-MAIN-COMMIT-0505Z",
+        "SRC-20261031-GITHUB-CROSS-ANALYSIS-0505Z"
+      ]
+    },
+    {
+      "event_date": "2026-10-31T05:04:19Z",
+      "event": "PR #1395 opened from main ab053b0 to replace scheduler tick with manual-only read-only queue audit; exact-head CI and gate completed successfully.",
+      "source_ids": [
+        "SRC-20261031-GITHUB-PR1395-0505Z",
+        "SRC-20261031-GITHUB-PR1395-CI-0505Z",
+        "SRC-20261031-GITHUB-PR1395-GATE-0505Z"
+      ]
+    }
+  ],
+  "upcoming_milestones": [
+    {
+      "target": "2026-10-31T07:33:00Z",
+      "event": "Approximate 12-hour target for Binance initial post-incident PoR snapshot.",
+      "status": "PLANNED_NOT_OBSERVED"
+    },
+    {
+      "target": "2026-11-01T05:33:00Z",
+      "event": "Approximate 34-hour target for Binance withdrawal-service restoration.",
+      "status": "PLANNED_SUBJECT_TO_SECURITY_CHECKS"
+    },
+    {
+      "target": "2026-11-02",
+      "event": "Binance stated target for post-incident PoR results.",
+      "status": "OFFICIAL_TARGET_NOT_COMPLETED"
+    }
+  ],
+  "workflow_inventory": {
+    "known_core_main_write_paths": [
+      ".github/workflows/cross-analysis.yml",
+      ".github/workflows/check-signal-accuracy.yml",
+      ".github/workflows/scheduler-tick.yml",
+      ".github/workflows/autonomous_self_deployment.yml"
+    ],
+    "additional_scheduled_write_or_permission_paths": [
+      ".github/workflows/subscriber_sync.yml",
+      ".github/workflows/Barrot.Cognitive.PingPong.Engine.yml",
+      ".github/workflows/riemann-harvest.yml",
+      ".github/workflows/gumroad-metrics.yml",
+      ".github/workflows/webmcp-live-sandbox.yml",
+      ".github/workflows/webmcp-monetization-enrich.yml",
+      ".github/workflows/barrot-transparency-audit.yml",
+      ".github/workflows/hover_bike_updates.yml"
+    ],
+    "manual_write_paths_reviewed": [
+      ".github/workflows/knowledge-signal-cycle.yml",
+      ".github/workflows/task-allocator.yml",
+      ".github/workflows/coinbase-paper-trader.yml"
+    ],
+    "disabled_workflows_excluded": [
+      ".github/workflows/barrot_singularity.yml.disabled",
+      ".github/workflows/barrot-pr-automerge.yml.disabled",
+      ".github/workflows/deploy.yml.disabled"
+    ],
+    "note": "Workflow file presence/permissions and push commands were inspected; effective repository token defaults, rulesets, branch protection and all actual run histories were not fully audited."
+  },
+  "prediction_engine": {
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "fixed_horizon_contract_status": "DESIGNED_NOT_EXECUTED_OR_VALIDATED",
+    "walk_forward_status": "NOT_EXECUTED",
+    "calibration_status": "NOT_EXECUTED",
+    "shadow_evaluation_status": "NOT_EXECUTED",
+    "reason": "Daily XRP candles and two non-comparable derivatives aggregators do not form a synchronized leakage-safe feature set. Binance XRP replacement quantity and current attacker-receiver state remain unknown."
+  },
+  "actual_capital_controls": [
+    "The $6.34B reserve and $5B already-held affected tokens are aggregate company claims, not XRP purchase quantities.",
+    "The approximately $3B frozen amount is separate from Binance's reserve plan and is not equivalent to recovered funds.",
+    "Do not infer XRP market demand from a purchase plan without token-level fills, reserve-address changes or disclosed execution evidence.",
+    "Do not average provider-specific OI values until contract and venue coverage are reconciled.",
+    "Do not use daily candle changes to attribute the Binance incident without an event study and BTC/ETH controls.",
+    "No market observation in this snapshot is admitted to the prediction model."
+  ],
+  "notes": "The 24-source append is immutable and append-only. PR #1395 is a tested safety proposal, not an active main-branch fix until approved and merged. Main still has multiple scheduled write-capable workflows. No forecast issued."
+}

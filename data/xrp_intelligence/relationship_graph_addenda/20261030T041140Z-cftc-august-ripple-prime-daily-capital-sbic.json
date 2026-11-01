@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T041140Z-CFTC-AUGUST-RIPPLE-DAILY-CAPITAL-SBIC",
+  "captured_at_utc": "2026-10-30T04:11:40Z",
+  "nodes": [
+    {
+      "id": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "label": "Hidden Road Partners CIV US LLC / Ripple Prime US FCM",
+      "kind": "REGISTERED_FCM_AND_BROKER_DEALER"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "PARENT_COMPANY"
+    },
+    {
+      "id": "COINBASE_FINANCIAL_MARKETS",
+      "label": "Coinbase Financial Markets Inc.",
+      "kind": "COINBASE_GROUP_FCM"
+    },
+    {
+      "id": "CFTC_FCM_DATA",
+      "label": "CFTC Selected FCM Financial Data",
+      "kind": "PRIMARY_REGULATORY_DATASET"
+    },
+    {
+      "id": "RIPPLE_DAILY_SEGREGATION",
+      "label": "Hidden Road October 20, 2026 Daily Segregation Statement",
+      "kind": "PRIMARY_FCM_DISCLOSURE"
+    },
+    {
+      "id": "BITNOMIAL_CLEARINGHOUSE",
+      "label": "Bitnomial Clearinghouse LLC",
+      "kind": "CFTC_REGISTERED_DCO"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_DIGITAL_ASSET"
+    },
+    {
+      "id": "SBIC_EAST_JAPAN",
+      "label": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "kind": "JAPANESE_SME_INVESTMENT_DEVELOPMENT_COMPANY"
+    },
+    {
+      "id": "MICROSOFT_JAPAN",
+      "label": "Microsoft Japan",
+      "kind": "CHATGPT_SEMINAR_SPEAKER_ORGANIZATION"
+    },
+    {
+      "id": "OPENAI_CHATGPT",
+      "label": "OpenAI / ChatGPT",
+      "kind": "AI_PRODUCT_REFERENCED_IN_EDUCATIONAL_EVENT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-CFTC-AUG-2026-HIDDEN-ROAD-FCM-CAPITAL",
+      "source": "CFTC_FCM_DATA",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "AUGUST_2026_ADJUSTED_NET_CAPITAL_AND_CUSTOMER_SEGREGATION",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_FINANCIAL_DATA",
+      "claim": "CFTC as-of-August 31 2026 reports Hidden Road adjusted net capital $968.424304M and 4d(a)(2) customer assets in segregation $720.132M; no asset-level XRP composition is disclosed.",
+      "source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-AUG2026-HIDDENROAD-COINBASE-20261030T0411Z"
+      ]
+    },
+    {
+      "id": "EDGE-CFTC-AUG-2026-COINBASE-FCM-CAPITAL",
+      "source": "CFTC_FCM_DATA",
+      "target": "COINBASE_FINANCIAL_MARKETS",
+      "relationship": "AUGUST_2026_FCM_CAPITAL_AND_CUSTOMER_ACCOUNT_CATEGORIES",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_FINANCIAL_DATA",
+      "claim": "CFTC as-of-August 31 2026 reports Coinbase Financial Markets adjusted net capital $321.159M, 4d(a)(2) customer assets $346.894M, Part 30 assets $6.006M and cleared-swap assets $166.135M; these are FCM-level accounts, not Coinbase Global or XRP balances.",
+      "source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-AUG2026-HIDDENROAD-COINBASE-20261030T0411Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-OCT20-DAILY-SEGREGATION",
+      "source": "RIPPLE_DAILY_SEGREGATION",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "DAILY_CUSTOMER_FUNDS_AND_DCO_MARGIN_DISCLOSURE",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "October 20 daily filing reports $667.976M total customer funds in segregation, $602.617M required, $65.359M excess and $633.790M cash margins at DCOs; no XRP/token composition is shown.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z"
+      ]
+    },
+    {
+      "id": "EDGE-RIPPLE-AUGUST-NET-CAPITAL-HISTORY",
+      "source": "RIPPLE",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "PUBLISHED_MONTH_END_ADJUSTED_NET_CAPITAL_HISTORY",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_REGULATORY_DISCLOSURE",
+      "claim": "Ripple's August net-capital history reports adjusted net capital $968.424305M, within $1 of the CFTC's $968.424304M. The company's minimum requirement field differs from the CFTC report's greater-of net-capital requirement.",
+      "source_ids": [
+        "SRC-RIPPLE-HRP-CIV-NET-CAPITAL-HISTORY-202608-20261030T0411Z",
+        "SRC-CFTC-FCM-FINANCIAL-DATA-AUG2026-HIDDENROAD-COINBASE-20261030T0411Z"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDEN-ROAD-BITNOMIAL-CLEARING-MEMBER",
+      "source": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "target": "BITNOMIAL_CLEARINGHOUSE",
+      "relationship": "NAMED_CLEARING_MEMBER",
+      "evidence_class": "CONFIRMED_PRIMARY_ENTITY_DISCLOSURE",
+      "claim": "Ripple's FCM disclosure identifies Hidden Road Partners CIV US LLC as a registered FCM; Bitnomial's clearing-member list names the same legal entity. This establishes a clearing relationship, not actual XRP collateral use.",
+      "source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-BITNOMIAL-ACCEPTS-XRP-COLLATERAL",
+      "source": "BITNOMIAL_CLEARINGHOUSE",
+      "target": "XRP",
+      "relationship": "ACCEPTED_COLLATERAL_WITH_40_PERCENT_HAIRCUT_AND_15M_NOTIONAL_LIMIT",
+      "evidence_class": "CONFIRMED_PRIMARY_CLEARINGHOUSE_DISCLOSURE",
+      "claim": "Bitnomial's published collateral table lists XRP with a 40% haircut and $15M notional limit. This is venue-specific acceptance and does not prove Hidden Road customer XRP deposits.",
+      "source_ids": [
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+      ]
+    },
+    {
+      "id": "EDGE-SBIC-EAST-JAPAN-IDENTITY-AND-OWNERSHIP",
+      "source": "SBIC_EAST_JAPAN",
+      "target": "SBIC_EAST_JAPAN",
+      "relationship": "OFFICIAL_LEGAL_IDENTITY_AND_SHAREHOLDER_CLASSES",
+      "evidence_class": "CONFIRMED_PRIMARY_CORPORATE_PROFILE",
+      "claim": "Official profile identifies Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate number 9011001030621, established 1963, with local governments, chambers of commerce, financial institutions and operating companies among shareholders. It is distinct from SBI Holdings and SBI Ripple Asia.",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-COMPANY-PROFILE-20261030T0411Z"
+      ]
+    },
+    {
+      "id": "EDGE-SBIC-CHATGPT-EDUCATIONAL-SEMINAR",
+      "source": "SBIC_EAST_JAPAN",
+      "target": "OPENAI_CHATGPT",
+      "relationship": "EDUCATIONAL_SEMINAR_REFERENCING_CHATGPT",
+      "evidence_class": "CONFIRMED_PRIMARY_EVENT_LISTING",
+      "claim": "SBIC East Japan organized a March 5 2026 seminar on generative AI/ChatGPT with Hamamatsu Iwata Shinkin as co-host and a Microsoft Japan speaker demonstrating ChatGPT. No OpenAI partnership is stated or established.",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z"
+      ]
+    },
+    {
+      "id": "EDGE-SBIC-SEPTEMBER-2026-SME-INVESTMENTS",
+      "source": "SBIC_EAST_JAPAN",
+      "target": "SBIC_EAST_JAPAN",
+      "relationship": "SEPTEMBER_2026_NEW_AND_REINVESTMENTS",
+      "evidence_class": "CONFIRMED_PRIMARY_CORPORATE_INVESTMENT_DISCLOSURE",
+      "claim": "SBIC East Japan reported five new investments and five reinvestments totaling ¥213.87M in September 2026 in Japanese SME businesses; the announcement does not identify XRP/Ripple/SBI Holdings or OpenAI investments.",
+      "source_ids": [
+        "SRC-SBIC-EAST-JAPAN-SEPTEMBER-2026-INVESTMENT-RESULTS-20261015-20261030T0411Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-HR-FCM-GROWTH-NOT-XRP-DEMAND-20261030",
+      "claim": "Hidden Road's rise in adjusted net capital and customer funds from July to August indicates a larger reported FCM footprint, but not XRP collateral demand or spot buying.",
+      "supporting_source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-AUG2026-HIDDENROAD-COINBASE-20261030T0411Z",
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731"
+      ],
+      "counter_evidence": [
+        "No asset-level token composition, Bitnomial posting or customer XRP balance is disclosed.",
+        "October 20 daily segregation is below August month-end, so a monotonic-growth claim is not supported."
+      ],
+      "status": "FCM_GROWTH_CONFIRMED; XRP_EFFECT_UNKNOWN"
+    },
+    {
+      "id": "HYP-HR-DAILY-SEGREGATION-FLUCTUATION-20261030",
+      "claim": "The October 20 daily segregation report shows customer-fund totals fluctuate and should not be extrapolated monotonically from one month-end snapshot.",
+      "supporting_source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-AUG2026-HIDDENROAD-COINBASE-20261030T0411Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z"
+      ],
+      "counter_evidence": [
+        "Only one daily October statement was inspected; a continuous daily time series has not been constructed."
+      ],
+      "status": "SINGLE_DATE_FLUCTUATION_OBSERVED; TIME_SERIES_INCOMPLETE"
+    },
+    {
+      "id": "HYP-COINBASE-FCM-FUNDS-NOT-XRP-20261030",
+      "claim": "Coinbase Financial Markets' July-to-August growth in FCM customer account funds reflects derivatives/customer account activity but does not establish Coinbase Global capital or XRP collateral.",
+      "supporting_source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-AUG2026-HIDDENROAD-COINBASE-20261030T0411Z",
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731"
+      ],
+      "counter_evidence": [
+        "Product mix could include crypto-linked derivatives, but asset-level collateral composition is not disclosed."
+      ],
+      "status": "FCM_ACCOUNT_GROWTH_CONFIRMED; XRP_EFFECT_UNKNOWN"
+    },
+    {
+      "id": "HYP-RIPPLE-PRIME-BITNOMIAL-PATH-UNPROVEN-UTILIZATION-20261030",
+      "claim": "The named Ripple Prime FCM clearing-member relationship and Bitnomial's XRP collateral acceptance create a possible institutional route, but actual XRP use by Ripple Prime customers remains unknown.",
+      "supporting_source_ids": [
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z"
+      ],
+      "counter_evidence": [
+        "No public FCM notice/reliance date or XRP-specific customer/clearing balance has been verified.",
+        "October 20 FCM segregation report does not break down collateral by token."
+      ],
+      "status": "ROUTE_RELATIONSHIPS_CONFIRMED; XRP_UTILIZATION_UNKNOWN"
+    },
+    {
+      "id": "HYP-SBIC-CHATGPT-EDUCATION-NOT-PARTNERSHIP-20261030",
+      "claim": "SBIC East Japan's ChatGPT event is educational programming and does not imply an OpenAI partnership, SBI Holdings relationship or XRP investment.",
+      "supporting_source_ids": [
+        "SRC-SBIC-EAST-JAPAN-OFFICIAL-COMPANY-PROFILE-20261030T0411Z",
+        "SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z",
+        "SRC-SBIC-EAST-JAPAN-SEPTEMBER-2026-INVESTMENT-RESULTS-20261015-20261030T0411Z"
+      ],
+      "counter_evidence": [
+        "The reviewed official event page names Microsoft as the speaker organization; no commercial partnership or XRP activity is stated."
+      ],
+      "status": "ENTITY_AND_EVENT_CONFIRMED; PARTNERSHIP_NOT_ESTABLISHED"
+    },
+    {
+      "id": "HYP-ACTUAL-CAPITAL-METRICS-NONINTERCHANGEABLE-20261030",
+      "claim": "FCM adjusted net capital, segregated customer funds, DCO margin, repo financing, parent capital, token-level collateral and spot-market flows must be separate model variables.",
+      "supporting_source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-AUG2026-HIDDENROAD-COINBASE-20261030T0411Z",
+        "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z",
+        "SRC-RIPPLE-HRP-CIV-NET-CAPITAL-HISTORY-202608-20261030T0411Z",
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731"
+      ],
+      "counter_evidence": [
+        "These measures may interact economically, but the available filings do not establish a direct conversion or causal identity between them."
+      ],
+      "status": "MEASUREMENT_SEPARATION_REQUIRED"
+    }
+  ],
+  "source_ids": [
+    "SRC-CFTC-FCM-FINANCIAL-DATA-AUG2026-HIDDENROAD-COINBASE-20261030T0411Z",
+    "SRC-RIPPLE-HRP-CIV-DAILY-SEGREGATION-20261020-20261030T0411Z",
+    "SRC-RIPPLE-HRP-CIV-NET-CAPITAL-HISTORY-202608-20261030T0411Z",
+    "SRC-SBIC-EAST-JAPAN-OFFICIAL-COMPANY-PROFILE-20261030T0411Z",
+    "SRC-SBIC-EAST-JAPAN-CHATGPT-SEMINAR-20260305-20261030T0411Z",
+    "SRC-SBIC-EAST-JAPAN-SEPTEMBER-2026-INVESTMENT-RESULTS-20261015-20261030T0411Z",
+    "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+    "SRC-CFTC-FCM-FINANCIAL-DATA-METHODOLOGY-20261030",
+    "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z"
+  ]
+}

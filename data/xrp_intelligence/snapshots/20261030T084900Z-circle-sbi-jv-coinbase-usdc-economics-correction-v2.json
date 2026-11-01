@@ -1,0 +1,497 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T084900Z-CIRCLE-SBI-JV-COINBASE-USDC-ECONOMICS-CORRECTION-V2",
+  "captured_at_utc": "2026-10-30T08:49:00Z",
+  "data_cutoff_utc": "2026-10-30T08:30:00Z",
+  "prior_snapshot_path": "data/xrp_intelligence/snapshots/20261030T083100Z-circle-sbi-jv-coinbase-usdc-economics-correction.json",
+  "correction": {
+    "correction_id": "CORR-CIRCLE-SBI-DIRECT-JV-20261030",
+    "supersedes_snapshot_id": "BARROT-XRP-2026-10-30T083100Z-SBI-SMFG-JPYSC-TRUST-CUSTODY-BITBANK-MCP",
+    "prior_incorrect_claim": "No direct Circle-SBI/SMFG relationship was established in the captured sources.",
+    "corrected_claim": "A direct Circle-SBI 50/50 JV for USDC distribution in Japan was established in 2025; SBI Holdings and SBI Shinsei Bank also invested USD25M each in Circle at its IPO. Circle's Q2 2026 SEC filing confirms Circle's 50% equity/VIE control, SBI's 50% noncontrolling interest, and no significant operating results through June 30, 2026.",
+    "reason": "Primary SBI releases, SBI investor presentation and Circle Q2 SEC filing re-examined after prior snapshot.",
+    "scope": "This corrects the Circle-SBI relationship; it does not establish a direct Circle-Ripple partnership or XRP use in the JV."
+  },
+  "confirmed_facts": [
+    {
+      "claim": "SBI Holdings and SBI Shinsei Bank each invested USD25M in Circle at its June 2025 IPO, USD50M combined.",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030"
+      ],
+      "qualification": "Equity exposure, not XRP purchase."
+    },
+    {
+      "claim": "SBI and Circle established Circle SBI Japan K.K. / SBI Circle Holdings as a 50/50 JV to support USDC distribution in Japan.",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030",
+        "SRC-SBI-CIRCLE-JV-50-50-PRESENTATION-RECHECK-20261030"
+      ]
+    },
+    {
+      "claim": "Circle's Q2 SEC filing confirms approximately USD1.5M-equivalent JPY contributed by each party in Nov2025; Circle controls/consolidates the VIE despite 50% equity; SBI is noncontrolling; no significant operating results through 2026-06-30.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Coinbase Q3 SEC filing says Circle arrangement renewed on same terms and average USDC held in Coinbase products reached an all-time high.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Circle Q2 SEC filing reports USD655.3M H1 and USD324.6M Q2 distribution costs under Coinbase agreements.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Coinbase Q3 stablecoin revenue USD306.905M vs USD324.534M YoY; higher balances +USD84.6M, lower rates -USD52.8M in Q3.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Circle Q2 average USDC circulation USD76.524B, end USD73.269B, reserve yield 3.5%, Coinbase daily weighted-average platform share 19.5%, end platform balance USD12.442B.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Approximately 84% of USDC reserves were in a BlackRock-managed Circle Reserve Fund at 2026-06-30; remaining reserves were bank cash.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Circle native USDC is on XRPL; Ripple native RLUSD is on XRPL; Coinbase distributes RLUSD on XRPL, Base and Ethereum.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-XRPL-NATIVE-RECHECK-20261030",
+        "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030"
+      ]
+    }
+  ],
+  "sourced_claims": [
+    {
+      "claim": "Circle says H1 2026 USDC onchain volume exceeded USD36T, mint/redeem exceeded USD315B and USD819M paid for distribution partners/transaction costs.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-ECONOMICS-BLOG-20261016"
+      ],
+      "qualification": "Gross onchain activity, not final payment settlement or new external capital."
+    },
+    {
+      "claim": "Circle lists 38 native networks including XRPL and says BlackRock manages and BNY Mellon custodies the Circle Reserve Fund.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-RESERVE-PAGE-RECHECK-20261030"
+      ],
+      "qualification": "Issuer disclosure; SEC filing independently confirms BlackRock management."
+    }
+  ],
+  "inferences": [
+    {
+      "claim": "SBI has direct financial exposure to both Circle and Ripple and a direct USDC-distribution JV with Circle, while its wider group also distributes RLUSD and XRP products.",
+      "basis": "USD50M Circle investment, historical approx9% Ripple stake, Circle JV, SBI VC Trade distribution and XRP products. This is a multi-issuer strategy inference, not a unified settlement network."
+    },
+    {
+      "claim": "Coinbase is a common distribution node for USDC and RLUSD and an Open Standard/OUSD founder; multi-issuer expansion has not displaced USDC's strategic importance.",
+      "basis": "Coinbase Q3 10-Q, Circle Q2 10-Q and RLUSD launch. Token-specific balances/revenue shares unknown."
+    },
+    {
+      "claim": "Circle's reserves link USDC economics to BlackRock-managed short Treasury/repo exposure and bank cash; SBI's separate BlackRock/JPYSC MOU is a shared manager link, not a common reserve pool.",
+      "basis": "Circle Q2 SEC filing and SBI/Startale/BlackRock MOU."
+    },
+    {
+      "claim": "Native USDC on XRPL may increase ledger utility while reducing need for XRP as bridge in some USD/USDC transfers.",
+      "basis": "Circle Mint/API native issuance and crosschain USDC functions; actual routing volumes unknown."
+    }
+  ],
+  "unknowns": [
+    "Current Circle SBI Japan JV operating results and Japanese USDC balances after 2026-06-30.",
+    "Exact Q3 average USDC balance in Coinbase products; filing says all-time high but cited section does not quantify.",
+    "Why Coinbase Q2 average product balance metric does not directly reconcile to Circle's 19.5% daily weighted-average share/end platform balance.",
+    "Current Coinbase equity stake in Circle; Q3 filing confirms an investment but cited section does not give share count.",
+    "Circle Q3 reserve income, yield, USDC supply, distribution costs and Circle SBI Japan JV results; Q3 results not yet released at cutoff.",
+    "Token-level share of Coinbase stablecoin revenue and RLUSD/OUSD balances.",
+    "Share of USDC on XRPL used for payments, DEX, exchange transfers, DeFi or repeated transfers.",
+    "Whether any Circle/SBI stablecoin route uses native XRP as bridge or collateral.",
+    "Whether Circle's BlackRock reserve fund and SBI/Startale tokenized-MMF project ever share infrastructure beyond BlackRock."
+  ],
+  "disconfirming_evidence": [
+    {
+      "claim": "Circle SBI Japan K.K. had no significant operating results through June 30, 2026.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Coinbase Q3 stablecoin revenue declined about 5.4% YoY despite higher average USDC balances because lower interest rates offset part of the increase.",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "Circle says the relation between interest rates and USDC circulation is complex, highly uncertain and unproven.",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "claim": "No direct Circle-Ripple partnership or shared issuer arrangement is established by these sources.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-XRPL-NATIVE-RECHECK-20261030",
+        "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "source": "SBI_HOLDINGS",
+      "target": "CIRCLE",
+      "relationship": "USD25M_STRATEGIC_EQUITY_INVESTMENT_AT_2025_IPO",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "SBI_SHINSEI_BANK",
+      "target": "CIRCLE",
+      "relationship": "USD25M_STRATEGIC_EQUITY_INVESTMENT_AT_2025_IPO",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "SBI_HOLDINGS",
+      "target": "CIRCLE_SBI_JAPAN_KK",
+      "relationship": "50_PERCENT_EQUITY",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030",
+        "SRC-SBI-CIRCLE-JV-50-50-PRESENTATION-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "CIRCLE",
+      "target": "CIRCLE_SBI_JAPAN_KK",
+      "relationship": "50_PERCENT_EQUITY_AND_VIE_CONTROL",
+      "evidence_class": "SEC_FILING",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "source": "CIRCLE_SBI_JAPAN_KK",
+      "target": "USDC_JAPAN_DISTRIBUTION",
+      "relationship": "JOINT_VENTURE_PURPOSE",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030",
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "source": "SBI_SHINSEI_BANK",
+      "target": "CIRCLE",
+      "relationship": "BANKING_SERVICES_UNDER_2023_MOU",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "SBI_VC_TRADE",
+      "target": "USDC",
+      "relationship": "PUBLIC_DISTRIBUTION_IN_JAPAN",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "SBI_HOLDINGS",
+      "target": "RIPPLE",
+      "relationship": "HISTORICAL_APPROX_9_PERCENT_EQUITY_AS_OF_2025_06_09",
+      "evidence_class": "HISTORICAL_PRIMARY",
+      "source_ids": [
+        "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "CIRCLE",
+      "target": "XRPL",
+      "relationship": "NATIVE_USDC_ISSUANCE_CIRCLE_MINT_API",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-XRPL-NATIVE-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "RIPPLE",
+      "target": "XRPL",
+      "relationship": "RLUSD_NATIVE_ISSUANCE",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "COINBASE",
+      "target": "CIRCLE",
+      "relationship": "USDC_DISTRIBUTION_AGREEMENT_RENEWED_ON_SAME_TERMS_Q3_2026",
+      "evidence_class": "SEC_FILING",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "source": "CIRCLE",
+      "target": "COINBASE",
+      "relationship": "USD655_3M_H1_AND_USD324_6M_Q2_DISTRIBUTION_COSTS",
+      "evidence_class": "SEC_FILING",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "source": "COINBASE",
+      "target": "CIRCLE",
+      "relationship": "EQUITY_INVESTMENT_FAIR_VALUE_REMEASUREMENT_AMOUNT_UNDISCLOSED",
+      "evidence_class": "SEC_FILING",
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "source": "CIRCLE",
+      "target": "BLACKROCK",
+      "relationship": "BLACKROCK_MANAGES_CIRCLE_RESERVE_FUND_APPROX_84_PERCENT_OF_USDC_RESERVES",
+      "evidence_class": "SEC_FILING",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "source": "CIRCLE_RESERVE_FUND",
+      "target": "BNY_MELLON",
+      "relationship": "CUSTODIAN_AS_DESCRIBED_BY_CIRCLE",
+      "evidence_class": "ISSUER_DISCLOSURE",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-RESERVE-PAGE-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "CIRCLE",
+      "target": "CIRCLE_RESERVE_FUND",
+      "relationship": "SOLE_SHAREHOLDER",
+      "evidence_class": "SEC_FILING",
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ]
+    },
+    {
+      "source": "COINBASE",
+      "target": "RLUSD",
+      "relationship": "PRIME_EXCHANGE_RETAIL_DISTRIBUTION_XRPL_BASE_ETHEREUM",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030"
+      ]
+    },
+    {
+      "source": "COINBASE",
+      "target": "OPEN_STANDARD_OUSD",
+      "relationship": "FOUNDING_PARTNER_MULTI_STABLECOIN_STRATEGY",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030",
+        "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930"
+      ]
+    },
+    {
+      "source": "SBI_STARTALE_BLACKROCK",
+      "target": "TOKENIZED_MMF_JPYSC",
+      "relationship": "EXPLORATORY_MOU_SEPARATE_FROM_CIRCLE_RESERVE_FUND",
+      "evidence_class": "PRIMARY",
+      "source_ids": [
+        "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027"
+      ]
+    },
+    {
+      "source": "SBI_RIPPLE_ASIA",
+      "target": "XRPL",
+      "relationship": "TOKENIZED_DEPOSIT_POC",
+      "evidence_class": "PRIMARY_POC",
+      "source_ids": [
+        "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220"
+      ]
+    },
+    {
+      "source": "CIRCLE",
+      "target": "RIPPLE",
+      "relationship": "NO_DIRECT_PARTNERSHIP_ESTABLISHED_BOTH_ISSUE_STABLECOINS_ON_XRPL",
+      "evidence_class": "COEXISTENCE_INFERENCE",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-XRPL-NATIVE-RECHECK-20261030",
+        "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-SBI-CIRCLE-DIRECT-JV-20261030",
+      "claim": "SBI has a direct USDC distribution partnership and capital relationship with Circle, independent of its Ripple/XRP investments.",
+      "support": [
+        "SBI and SBI Shinsei invested USD25M each in Circle at IPO.",
+        "SBI and Circle established a 50/50 Circle SBI Japan K.K. JV; Circle's Q2 SEC filing confirms each contributed approximately USD1.5M equivalent and Circle controls/consolidates the VIE."
+      ],
+      "counter": [
+        "Circle's Q2 filing says no significant operating results through June 30, 2026.",
+        "The JV's purpose is USDC distribution; no XRP-specific settlement or custody is disclosed."
+      ]
+    },
+    {
+      "id": "HYP-SBI-MULTIISSUER-STRATEGY-CIRCLE-RIPPLE-20261030",
+      "claim": "SBI is pursuing multi-issuer exposure, backing both Circle and Ripple while distributing USDC/RLUSD and XRP products rather than selecting one ecosystem.",
+      "support": [
+        "SBI/SBI Shinsei invested USD50M in Circle and SBI historically disclosed approximately 9% Ripple ownership as of June 2025.",
+        "SBI operates the Circle JV, SBI VC Trade stablecoin distribution, XRP products, SBI Ripple Asia and owns bitbank."
+      ],
+      "counter": [
+        "No integrated Circle-Ripple production route is disclosed.",
+        "The Circle JV had no significant operating results through June 2026; current Ripple ownership is not verified."
+      ]
+    },
+    {
+      "id": "HYP-COINBASE-CIRCLE-ECONOMIC-INTERDEPENDENCE-20261030",
+      "claim": "Coinbase and Circle remain economically interdependent even as Coinbase diversifies into RLUSD and OUSD.",
+      "support": [
+        "Coinbase Q3 10-Q says Circle arrangement renewed on same terms and average USDC in products reached an all-time high.",
+        "Circle Q2 10-Q reports USD655.3M H1 and USD324.6M Q2 distribution costs under Coinbase agreements.",
+        "Coinbase discloses an equity investment in Circle."
+      ],
+      "counter": [
+        "Coinbase distributes multiple stablecoins and Q3 stablecoin revenue fell 5% YoY.",
+        "Exact Q3 USDC balance and token-level revenue shares are not disclosed."
+      ]
+    },
+    {
+      "id": "HYP-STABLECOIN-RESERVE-YIELD-MACRO-SENSITIVITY-20261030",
+      "claim": "USDC and Coinbase stablecoin economics are materially sensitive to reserve yields, while circulation growth can offset some rate compression.",
+      "support": [
+        "Circle Q2 average USDC circulation grew 25% YoY while reserve return fell 66 bps to 3.5%.",
+        "Coinbase Q3 stablecoin revenue fell 5% YoY despite higher average balances; lower rates reduced Q3 revenue USD52.8M."
+      ],
+      "counter": [
+        "Circle says the relationship between interest rates and USDC circulation is complex, highly uncertain and unproven.",
+        "Utility and distribution may support circulation independently of yield."
+      ]
+    },
+    {
+      "id": "HYP-CIRCLE-BLACKROCK-SBI-SHARED-ASSET-MANAGER-20261030",
+      "claim": "Circle and SBI have an indirect institutional overlap through BlackRock, but not a common reserve pool or direct Circle-SBI BlackRock transaction.",
+      "support": [
+        "BlackRock manages Circle's reserve fund, which held approximately 84% of USDC reserves at June 30.",
+        "SBI/Startale/BlackRock signed a separate exploratory tokenized-MMF/JPYSC MOU."
+      ],
+      "counter": [
+        "Circle is sole shareholder of its reserve fund; SBI's MOU concerns a separate project.",
+        "No common collateral pool or direct tri-party transaction is disclosed."
+      ]
+    },
+    {
+      "id": "HYP-USDC-XRPL-COMPLEMENT-BRIDGE-SUBSTITUTION-20261030",
+      "claim": "Native USDC on XRPL increases stablecoin utility but can substitute for XRP as bridge in some USD-denominated transfers.",
+      "support": [
+        "Circle issues native USDC on XRPL and Circle Mint/APIs support direct mint/redemption and crosschain USDC movement.",
+        "RLUSD is also native on XRPL and Coinbase distributes both."
+      ],
+      "counter": [
+        "No transaction-level routing data shows USDC replacing XRP in corridors.",
+        "XRP may remain useful for other asset pairs and settlement paths."
+      ]
+    },
+    {
+      "id": "HYP-COINBASE-MULTIISSUER-DISTRIBUTION-20261030",
+      "claim": "Coinbase is positioning as a multi-stablecoin distribution, custody and trading platform rather than depending on USDC alone.",
+      "support": [
+        "Circle agreement renewed on same terms; Coinbase launched RLUSD; Coinbase is an Open Standard/OUSD founding partner."
+      ],
+      "counter": [
+        "USDC remains economically material and average Coinbase USDC balance reached an all-time high.",
+        "No token-level balance/revenue split or RLUSD/OUSD displacement is available."
+      ]
+    }
+  ],
+  "market_observations": [
+    {
+      "id": "MOBS-COINBASE-Q3-STABLECOIN-RATE-BALANCE-20261030",
+      "period": "2026-Q3",
+      "observed_at_utc": "2026-10-30T08:31:00Z",
+      "metrics": {
+        "stablecoin_revenue_usd": 306905000,
+        "stablecoin_revenue_q3_2025_usd": 324534000,
+        "stablecoin_revenue_yoy_percent": -5.43,
+        "usdc_balance_growth_revenue_contribution_usd": 84600000,
+        "lower_interest_rate_revenue_impact_usd": -52800000
+      },
+      "source_ids": [
+        "SRC-COINBASE-Q3-2026-10Q-SEC-20261030"
+      ],
+      "admission": "CONTEXT_ONLY_NOT_XRP_FEATURE"
+    },
+    {
+      "id": "MOBS-CIRCLE-Q2-USDC-RESERVE-PLATFORM-20261030",
+      "period": "2026-Q2",
+      "observed_at_utc": "2026-10-30T08:31:00Z",
+      "metrics": {
+        "usdc_end_circulation_usd": 73269000000,
+        "usdc_average_circulation_usd": 76524000000,
+        "reserve_return_rate_percent": 3.5,
+        "coinbase_daily_weighted_average_platform_share_percent": 19.5,
+        "usdc_on_coinbase_end_period_usd": 12442000000,
+        "coinbase_distribution_cost_q2_usd": 324600000,
+        "circle_reserve_fund_share_percent": 84
+      },
+      "source_ids": [
+        "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030"
+      ],
+      "admission": "CONTEXT_ONLY_NOT_XRP_FEATURE"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "source_ids": [
+    "SRC-COINBASE-Q3-2026-10Q-SEC-20261030",
+    "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030",
+    "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030",
+    "SRC-SBI-CIRCLE-JV-50-50-PRESENTATION-RECHECK-20261030",
+    "SRC-CIRCLE-USDC-XRPL-NATIVE-RECHECK-20261030",
+    "SRC-CIRCLE-USDC-RESERVE-PAGE-RECHECK-20261030",
+    "SRC-CIRCLE-USDC-ECONOMICS-BLOG-20261016",
+    "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030",
+    "SRC-SBI-SMFG-JPYSC-CAPITAL-ALLIANCE-20261030",
+    "SRC-SBI-TRUST-MERGER-20261029",
+    "SRC-SBI-JPYSC-JGB-RESERVES-20260907",
+    "SRC-SBI-OPENSTANDARD-JPYSC-OUSD-20261016",
+    "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+    "SRC-SBI-BITBANK-ACQUISITION-COMPLETE-20261001",
+    "SRC-SBI-VISA-CRYPTO-CARD-XRP-20260501",
+    "SRC-SBI-RLUSD-USDC-DISTRIBUTION-20260624",
+    "SRC-SBI-RIPPLE-ASIA-AWAJ-XRPL-20260220",
+    "SRC-STRIPE-OPENSTANDARD-OUSD-LAUNCH-20260930",
+    "SRC-COINDESK-OPENSTANDARD-RIPPLE-PARTNER-20260630"
+  ],
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T084900Z-circle-sbi-jv-coinbase-usdc-economics-correction-v2.json",
+  "validation_correction": {
+    "prior_failed_head": "d7e6bc4379ac6efee2a0d501be72182b6e4a3c72",
+    "failed_run_id": 41028884793,
+    "failed_tests": 1,
+    "passed_tests": 17,
+    "root_cause": "snapshot JSON omitted snapshot_path, while the validator requires latest index pointer captured_at_utc, snapshot_id and snapshot_path to exactly match the immutable snapshot file.",
+    "fix": "Create a new immutable v2 snapshot with matching snapshot_path and update the latest pointer; preserve the failed v1 snapshot unchanged."
+  }
+}

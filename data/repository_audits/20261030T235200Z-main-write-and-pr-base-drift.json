@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261030T235200Z-MAIN-WRITE-AND-PR-BASE-DRIFT",
+  "created_at_utc": "2026-10-30T23:52:00Z",
+  "captured_at_utc": "2026-10-30T23:52:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "default_branch": "main",
+  "main": {
+    "previous_head": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+    "current_head": "86c136be4ea17c2174ebc61482f2656a745d3694",
+    "commit_message": "Cross-analysis refresh [skip ci]",
+    "commit_author": "Barrot-Agent <barrot@barrot-agent.com>",
+    "commit_timestamp_utc": "2026-10-30T23:51:28Z",
+    "signature_verified": false,
+    "changed_files": [
+      {
+        "path": "ping-pongings/knowledge-base/sentiment_shift.json",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ],
+    "associated_github_actions_runs": [],
+    "interpretation": "Main advanced after the earlier audit. The commit message labels it a cross-analysis refresh and the author identity is Barrot-Agent, but no linked Actions run was returned because the commit includes [skip ci]. The exact workflow or actor that created this commit is not established.",
+    "modified_by_this_run": false
+  },
+  "open_pull_request_inventory": {
+    "total_open_prs": 161,
+    "draft": 151,
+    "ready_for_review": 10,
+    "current_main_base": 0,
+    "stale_main_base": 159,
+    "non_main_base": 2,
+    "previously_current_main_base_prs_now_one_commit_behind": [
+      1383,
+      1384,
+      1385
+    ],
+    "repeated_overlapping_categories": {
+      "merge_queue": 23,
+      "xrp_accuracy_or_fixed_horizon": 23,
+      "paper_trading": 18,
+      "cross_analysis": 7,
+      "dependency_or_manifest": 4
+    },
+    "interpretation": "The inventory was re-read after main advanced. All 159 main-based open PRs now have a base SHA older than current main; two target non-main branches. No PR was automatically rebased, closed or merged."
+  },
+  "main_target_prs": [
+    {
+      "number": 1383,
+      "title": "Safety: make scheduled cross-analysis read-only on latest main",
+      "head_sha": "e84b42b398bf16fe12bacdfafba2ef14f51b395f",
+      "base_sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+      "current_main_sha": "86c136be4ea17c2174ebc61482f2656a745d3694",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run_id": 41142381247,
+      "ci_result": "PASS_348_TESTS_PLUS_8_SUBTESTS",
+      "gate_run_id": 41142381916,
+      "gate_result": "PASS_MERGE_DISABLED",
+      "changed_paths": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/cross-analysis.yml",
+        "tests/test_cross_analysis_workflow_safety.py"
+      ],
+      "overlap_with_new_main_write": false
+    },
+    {
+      "number": 1384,
+      "title": "Prediction integrity: quarantine legacy variable-horizon accuracy",
+      "head_sha": "c2127c5e8eff1d089f059a7d6a51add3d6aa289a",
+      "base_sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+      "current_main_sha": "86c136be4ea17c2174ebc61482f2656a745d3694",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run_id": 41142979230,
+      "ci_result": "PASS_348_TESTS_PLUS_8_SUBTESTS",
+      "gate_run_id": 41142979206,
+      "gate_result": "PASS_MERGE_DISABLED",
+      "changed_paths": [
+        ".github/workflows/check-signal-accuracy.yml",
+        ".github/workflows/ci.yml",
+        "scripts/ask_barrot.py",
+        "scripts/check_signal_accuracy.py",
+        "scripts/daily_digest.py",
+        "tests/test_signal_accuracy_fail_closed.py",
+        "web/landing.html",
+        "web/signal_accuracy.json"
+      ],
+      "overlap_with_new_main_write": false
+    },
+    {
+      "number": 1385,
+      "title": "Barrot task bundles: combine safety-heading extraction and bounded output",
+      "head_sha": "62c3cfb09602aac359867e67e808201f378b05b0",
+      "base_sha": "e8dc20564af2c633dc09f7f71d354cd2e1e001e6",
+      "current_main_sha": "86c136be4ea17c2174ebc61482f2656a745d3694",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run_id": 41145585636,
+      "ci_result": "PASS_356_TESTS_PLUS_8_SUBTESTS",
+      "gate_run_id": 41145585658,
+      "gate_result": "PASS_MERGE_DISABLED",
+      "changed_paths": [
+        "barrot_agent/orchestration/bundle_engineering.py",
+        "tests/test_bundle_engineering.py",
+        "tests/test_bundle_schema_normalization.py"
+      ],
+      "overlap_with_new_main_write": false
+    }
+  ],
+  "research_pr": {
+    "number": 1353,
+    "head_sha": "69f26c425bc21b75d25deef2293672dfd2675216",
+    "base_ref": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "mergeable": true,
+    "validator_run_id": 41146889880,
+    "validator_result": "PASS",
+    "validator_completed_at_utc": "2026-10-30T23:51:31Z",
+    "tests_passed": 20,
+    "actual_repository_validator": {
+      "status": "PASS",
+      "archive_shards_checked": 282,
+      "source_count": 1719,
+      "run_update_count": 306,
+      "limitation_count": 724,
+      "snapshot_blob_sha_expected": "bc5ffed686563b9ccce48192fc1e9a3c4f003429",
+      "snapshot_blob_sha_actual": "bc5ffed686563b9ccce48192fc1e9a3c4f003429",
+      "state_mutated": false
+    },
+    "gate_run_id": 41146889813,
+    "gate_result": "PASS_MERGE_DISABLED",
+    "gate_completed_at_utc": "2026-10-30T23:51:19Z"
+  },
+  "dependency_inventory": {
+    "manifests": [
+      "requirements.txt",
+      "requirements-dev.txt",
+      "pyproject.toml",
+      "hf_space/requirements.txt",
+      "a2a/package.json"
+    ],
+    "lockfiles_found": [],
+    "requirements_examples": [
+      "torch>=2.0.0",
+      "transformers>=4.40.0",
+      "accelerate>=0.30.0",
+      "bitsandbytes>=0.43.0",
+      "requests>=2.32.0",
+      "pydantic>=2.7.1"
+    ],
+    "finding": "Primary manifests overlap and use lower-bound-only dependencies; no lockfile found. This creates non-reproducible resolution and dependency drift risk.",
+    "lockfile_generation": "NOT_EXECUTED; GPU/CUDA-specific dependencies require environment-aware resolution and tests."
+  },
+  "security_alert_visibility": {
+    "dependabot": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "code_scanning": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "secret_scanning": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "sbom": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "interpretation": "Alert presence or absence is unknown; no zero-alert conclusion."
+  },
+  "workflow_findings": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "status": "MAIN_WRITE_CAPABLE",
+      "risk": "PR #1383 remains unmerged; generated-file write path remains active."
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "status": "MAIN_WRITE_CAPABLE_LEGACY_EVALUATOR",
+      "risk": "PR #1384 remains unmerged; legacy variable-horizon accuracy history remains mutable."
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "status": "MANUAL_WRITE_CAPABLE",
+      "risk": "Fresh-main review-gating proposal required."
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "status": "MANUAL_MUTATION_CAPABLE",
+      "risk": "Write/merge/delete capability remains; fresh-main read-only replacement required."
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "status": "UNRESOLVED_PUSH_ZERO_JOB_FAILURE",
+      "risk": "Repeated push-event runs fail with zero jobs although inspected workflow declares workflow_dispatch only; root cause unknown."
+    },
+    {
+      "path": ".github/workflows/xrp-ledger-validation.yml",
+      "status": "ACTUAL_REPOSITORY_VALIDATOR_VERIFIED",
+      "risk": "Research PR now executes actual repository validator before regression tests; current head passed."
+    }
+  ],
+  "prediction_engine": {
+    "latest_main_signal": {
+      "timestamp": "2026-10-29T13:23:33.142057Z",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "status": "STALE_NOT_A_FORECAST",
+      "provider_issue": "Missing credential / Groq HTTP 429"
+    },
+    "age_hours_at_run_cutoff": 34.1,
+    "legacy_accuracy": {
+      "checked_count": 1683,
+      "correct_count": 772,
+      "accuracy_pct": 45.9,
+      "status": "NOT_VALID_OUT_OF_SAMPLE_SKILL"
+    },
+    "fixed_horizon_model": "NOT_IMPLEMENTED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "autonomous_agent_execution": {
+    "resolver_run_id": 41141876076,
+    "result": "SUCCESS",
+    "scope": "Issue/PR routing and assignment only; no code repair execution.",
+    "issue_1377": "OPEN_FAIL_CLOSED_AFTER_BUNDLE_QUALITY_GATE",
+    "candidate_fix_pr": 1385,
+    "candidate_fix_status": "CI_AND_FAIL_CLOSED_GATE_PASS; ISSUE_NOT_RERUN"
+  },
+  "platform_authentication": {
+    "ChatGPT": "ACTIVE_CURRENT_SESSION",
+    "GitHub": "CONNECTED_AND_TESTED",
+    "Claude": "NOT_AUTHENTICATED_OR_TESTED",
+    "Grok": "NOT_AUTHENTICATED_OR_TESTED",
+    "Gemini": "NOT_AUTHENTICATED_OR_TESTED",
+    "Copilot": "NOT_AUTHENTICATED_OR_TESTED",
+    "Codex": "NOT_AUTHENTICATED_OR_TESTED",
+    "HuggingFace": "NOT_AUTHENTICATED_OR_TESTED",
+    "Kaggle": "NOT_AUTHENTICATED_OR_TESTED",
+    "Databricks": "NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merges": 0,
+    "force_pushes": 0,
+    "deployments": 0,
+    "manual_workflow_dispatches": 0,
+    "paper_state_mutations": 0,
+    "real_money_trades": 0,
+    "full_repository_ci": "NOT_RUN",
+    "targeted_ci": "PASS_ON_PR_1383_1384_1385_AND_PR_1353"
+  },
+  "next_actions": [
+    "Do not merge or rebase #1383, #1384 or #1385 automatically. They are one main commit behind and require fresh-main validation before any approval.",
+    "Identify the exact workflow or process that authored unsigned main commit 86c136be; the commit has no linked Actions run.",
+    "Keep the read-only cross-analysis and accuracy PRs open; main continues to accept generated-file writes.",
+    "Prepare fresh-main minimal fixes for knowledge-signal-cycle and merge-queue write permissions.",
+    "Design environment-specific dependency constraints/lockfiles; do not blindly pin CUDA/GPU packages.",
+    "Inspect Dependabot, CodeQL and secret-scanning status through an authorized security view; current status is unknown.",
+    "Continue XRP actual-capital work and raw account_info/official Binance PoR crosswalk; no forecast until fixed-horizon out-of-sample validation."
+  ]
+}

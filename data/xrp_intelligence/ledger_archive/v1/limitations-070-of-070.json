@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 69,
+  "chunk_count": 70,
+  "record_count": 9,
+  "created_at_utc": "2026-10-30T18:29:47Z",
+  "records": [
+    "Liqwall's 14:02 UTC XRP derivatives panel is a single-provider snapshot. Open-interest contract coverage and aggregation are not fully reconciled against other providers; account ratios are not notional exposure.",
+    "October 29 ETF flow trackers use different universes: Alpha Finance reports 5-of-5 funds, CryptoETF.today only 2-of-5, and XRP Insights six spot funds plus BITW with GXRP excluded from flow due to a data gap. These totals must not be combined.",
+    "Binance's $6.3B estimated incident impact and approximately $3B frozen-asset figure are preliminary company statements. Frozen is not recovered; no XRP-specific replenishment amount or official membership of the five XRPL source wallets in the October 1 PoR set is established.",
+    "Binance Japan's cold-wallet separation statement is a company assertion, not an independent audit, and applies to the Japan entity rather than proving the status of Binance Global reserves.",
+    "Permission ASK circulating-supply estimates differ materially between CoinMarketCap (about 16.16B) and CoinGecko (about 23.107B). The issuer's documented supply API was not independently retrieved in this run; do not use either figure for market-cap or float inference until reconciled.",
+    "Permission's subscription-funded ASK buyback is an issuer-described mechanism; no transaction-level execution was verified. The Coinbase ASK wallet relationship does not imply Coinbase proprietary ASK holdings, an exchange listing, or XRP/XRPL integration.",
+    "The 65.9% GPT-3.5 and 60.6% GPT-4 SBIC values are two-author unanimous pairwise preference rates over gold explanations, not accuracy scores or general ChatGPT performance. They are unrelated to financial prediction quality.",
+    "The exact Camilla Stephenson YouTube identity remains unresolved; no exhaustive public-video inventory can be attributed safely to that exact identity.",
+    "Only GitHub access is verified in this environment. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks have not been authenticated or tested as live collaborators."
+  ]
+}

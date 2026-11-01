@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-202610311448Z-MAIN-190-PR-AND-WORKFLOW",
+  "captured_at_utc": "2026-10-31T14:48:24.128Z",
+  "main_sha": "e560236d494e5f24548abfc53c23829865a565f9",
+  "open_pr_inventory": {
+    "open": 190,
+    "draft": 180,
+    "ready": 10,
+    "main_based": 188,
+    "current_main_base": 5,
+    "stale_main_based": 183,
+    "non_main_base": 2
+  },
+  "current_main_based_prs": [
+    {
+      "number": 1413,
+      "head": "8b8edd9442fc00cb735241bace1e991a63da2825",
+      "draft": true,
+      "mergeable": true,
+      "ci_run": 41210994654,
+      "tests": 369,
+      "subtests": 8,
+      "gate_run": 41210994741,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1414,
+      "head": "ba4ef0804ca25e2cbf9bd7d8ccbfde6bf54ec4c9",
+      "draft": true,
+      "mergeable": true,
+      "ci_run": 41211327544,
+      "tests": 385,
+      "subtests": 8,
+      "gate_run": 41211327534,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1415,
+      "head": "a0349c53da48b8c6d09fdc75cfca6573cfa97589",
+      "draft": true,
+      "mergeable": true,
+      "ci_run": 41211473170,
+      "tests": 354,
+      "subtests": 8,
+      "gate_run": 41211473171,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1416,
+      "head": "b118eb2578764032f509a267e2da78a26f435e59",
+      "draft": true,
+      "mergeable": true,
+      "ci_run": 41211272080,
+      "tests": 373,
+      "subtests": 8,
+      "gate_run": 41211272079,
+      "gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1417,
+      "head": "1e0ec0029814db36f8984b8018dbc0ebcb546e2c",
+      "draft": true,
+      "mergeable": true,
+      "ci_run": 41211016595,
+      "tests": 349,
+      "subtests": 8,
+      "gate_run": 41211016596,
+      "gate": "PASS_MERGE_DISABLED"
+    }
+  ],
+  "main_commit": {
+    "sha": "e560236d494e5f24548abfc53c23829865a565f9",
+    "message": "Cross-analysis refresh [skip ci]",
+    "signed": false,
+    "associated_actions_runs_returned": 0
+  },
+  "main_write_capable_workflows": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "permissions": [
+        "contents:write"
+      ],
+      "triggers": [
+        "workflow_run",
+        "schedule",
+        "workflow_dispatch"
+      ],
+      "behavior": "commits entity co-occurrence, sentiment shift and entity sentiment outputs to main"
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "permissions": [
+        "contents:write"
+      ],
+      "triggers": [
+        "schedule",
+        "workflow_dispatch"
+      ],
+      "behavior": "commits signal history and accuracy to main"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "permissions": [
+        "contents:write",
+        "actions:write"
+      ],
+      "triggers": [
+        "schedule",
+        "workflow_dispatch"
+      ],
+      "behavior": "dispatches queued workflows and commits queue state to main; no strict workflow allowlist in scheduler.py"
+    },
+    {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "permissions": [
+        "contents:read"
+      ],
+      "triggers": [
+        "workflow_dispatch"
+      ],
+      "risk": "CRITICAL_INPUT_SECRET_INTERPOLATED_IN_SHELL_AND_DEPLOY_DISPATCH"
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "permissions": [
+        "contents:write",
+        "pull-requests:write"
+      ],
+      "behavior": "contains gh pr merge path"
+    },
+    {
+      "path": ".github/workflows/autonomous_self_deployment.yml",
+      "risk": "SCHEDULED_TELEMETRY_MAIN_WRITER"
+    },
+    {
+      "path": "financial-data-refresh.yml",
+      "risk": "MANUAL_MAIN_WRITER"
+    },
+    {
+      "path": "knowledge-signal-cycle.yml",
+      "risk": "MANUAL_MAIN_WRITER"
+    },
+    {
+      "path": "knowledge-signal-cycle-btc.yml",
+      "risk": "MANUAL_MAIN_WRITER"
+    },
+    {
+      "path": "data-value-triage.yml",
+      "risk": "MANUAL_MAIN_WRITER"
+    },
+    {
+      "path": "entity-relations.yml",
+      "risk": "MANUAL_MAIN_WRITER"
+    },
+    {
+      "path": "research-topics.yml",
+      "risk": "MANUAL_MAIN_WRITER"
+    },
+    {
+      "path": "coinbase-paper-trader.yml",
+      "risk": "MANUAL_PAPER_STATE_WRITER"
+    }
+  ],
+  "scheduler_queue": {
+    "path": "ping-pongings/knowledge-base/schedule_queue.jsonl",
+    "entries": 1,
+    "pending": 0,
+    "completed": 1
+  },
+  "security": {
+    "branch_protection_details": "403_NOT_VERIFIED",
+    "github_security_alert_access": "NOT_ACCESSIBLE_THROUGH_TESTED_READ_ACTIONS",
+    "dependency_lockfiles_found_last_complete_inventory": 0,
+    "vulnerability_scan": "NOT_COMPLETED",
+    "full_repository_ci": "NOT_RUN",
+    "approval_workflow_zero_job_push_failures": "ROOT_CAUSE_UNKNOWN"
+  },
+  "platform_coordination": {
+    "targets": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "verified_active": [
+      "ChatGPT",
+      "GitHub connector"
+    ],
+    "external_authenticated": 0,
+    "live_external_collaborators": 0,
+    "verified_external_handoffs": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "preservation": {
+    "local_worktree_state": "NOT_INSPECTED",
+    "local_operations_performed": false,
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_dispatch": false,
+    "deployment": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  },
+  "assessment": "PR #1413 proposes a fresh-main safety consolidation and now includes dirty-worktree refusal/non-forced branch switching; PR #1414 provides a fixed-horizon measurement ledger but is not a trained model; PR #1415 hardens issue recovery proof; PR #1416 records SBI distribution rails; PR #1417 records Binance recovery update 3. All are draft/unmerged. Main retains write-capable workflows until approved remediation."
+}

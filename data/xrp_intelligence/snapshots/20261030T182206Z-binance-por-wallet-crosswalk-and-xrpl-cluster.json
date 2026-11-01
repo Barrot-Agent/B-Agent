@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T182206Z-BINANCE-POR-WALLET-CROSSWALK",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T182206Z-binance-por-wallet-crosswalk-and-xrpl-cluster.json",
+  "captured_at_utc": "2026-10-30T18:22:06Z",
+  "data_cutoff_utc": "2026-10-30T18:22:06Z",
+  "source_ids": [
+    "SRC-COINDESK-BINANCE14-POR-20261030",
+    "SRC-BINANCE-POR-OFFICIAL-PAGE-20261030",
+    "SRC-WHALEALERT-XRPL-BINANCE-ROTATIONS-2023-2026",
+    "SRC-BITHOMP-BINANCE-XRPL-ACCOUNTS-20261030",
+    "SRC-RANGE-BINANCE-HACK-TIMELINE-20261030"
+  ],
+  "findings": {
+    "binance_ethereum_por_wallet": {
+      "label": "Binance 14",
+      "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+      "oct1_por_inclusion": "CoinDesk reports this EVM wallet appears in Binance's October 1 PoR address set.",
+      "assets_on_oct1": {
+        "usdt": 1260000000,
+        "eth": 89475,
+        "asset_count": 37
+      },
+      "reported_theft_eth": 204500,
+      "reported_share_of_binance_eth_reserves_pct": 5.6,
+      "estimated_eth_coverage_after_theft_pct": 94,
+      "qualification": "The 94% figure is CoinDesk's estimate if no replenishment occurred. It applies to ETH reserve coverage, not XRP. Binance's November 1 snapshot is the next expected reconciliation point."
+    },
+    "xrp_wallet_cluster": {
+      "root": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "related_source_accounts": [
+        "rBtttd61FExHC68vsZ8dqmS3DfjFEceA1A",
+        "rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+        "rarG6FaeYhnzSKSS5EEPofo4gFsPn2bZKk",
+        "rNU4eAowPuixS5ZCWaRL72UUeKgxcKExpK"
+      ],
+      "evidence": "Bithomp labels the accounts Binance and shows rDAE53 as the activation source for the inspected child accounts. Whale Alert records repeated historical large XRP rotations from rDAE53 to these Binance-labelled accounts across 2023–2026.",
+      "interpretation": "This supports a connected Binance-attributed XRPL operational-wallet cluster. It does not establish whether each account was included in the October 1 proof-of-reserves wallet set or how customer liabilities were allocated to them."
+    },
+    "xrp_por_crosswalk": {
+      "status": "UNRESOLVED",
+      "required_evidence": "October 1 Binance PoR downloadable all-address file or an authoritative XRP-specific reserve-address list.",
+      "retrieval_attempt": "The official PoR portal exposes a Download All Address control, but static page extraction did not expose the file URL or its contents.",
+      "conclusion": "The CoinDesk Binance14 finding applies to an Ethereum wallet. It cannot be transferred to the five XRPL wallets. No XRP-specific reserve shortfall can be calculated until the five source addresses are cross-referenced against the official PoR set."
+    },
+    "incident_timeline": {
+      "first_xrp_outflow_utc": "2026-10-29T20:05:00Z",
+      "first_solana_outflow_utc": "2026-10-29T20:10:00Z",
+      "bitcoin_outflow_utc": "2026-10-29T20:20:00Z",
+      "binance14_evm_sweep_utc": "2026-10-29T20:24:00Z",
+      "interpretation": "The XRP drain was the earliest identified chain outflow in Range's timeline; this establishes event ordering, not a causal price impact."
+    },
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

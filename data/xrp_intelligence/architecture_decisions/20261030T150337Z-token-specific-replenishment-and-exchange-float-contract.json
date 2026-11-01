@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "BARROT-XRP-ADR-20261030T150337Z-TOKEN-SPECIFIC-REPLENISHMENT-AND-EXCHANGE-FLOAT",
+  "captured_at_utc": "2026-10-30T15:03:37Z",
+  "status": "ADOPTED_FOR_RESEARCH_AND_FEATURE_DESIGN",
+  "decisions": [
+    {
+      "area": "in_kind_replenishment",
+      "rule": "Represent affected assets, stolen quantity, frozen/recovered quantity, existing token inventory, remaining shortfall, market purchases and OTC purchases as separate fields. Never convert aggregate USD reserve funding into an XRP quantity."
+    },
+    {
+      "area": "xrp_replenishment_feature_admission",
+      "rule": "Do not admit Binance's $1.34B aggregate acquisition budget as XRP demand. Admit only when a token-specific XRP obligation, existing holdings, recovery offsets and executed market/OTC quantities are independently evidenced with timestamps."
+    },
+    {
+      "area": "exchange_balance_interpretation",
+      "rule": "Use identical wallet sets and explicit hot/cold/wrapped/non-customer classifications. Same-wallet balance changes are custody observations, not customer flows, net spot buying or tradable float."
+    },
+    {
+      "area": "incident_por_crosswalk",
+      "rule": "Keep Bitquery PoR labels separate from official Binance downloadable-address-file membership. Keep Binance 14's Ethereum PoR evidence separate from the five XRPL source accounts."
+    },
+    {
+      "area": "forecast_safety",
+      "rule": "The Binance event, exchange balance deltas and replenishment announcement remain context-only until synchronized, independently corroborated and walk-forward tested. Forecast status remains NOT_ISSUED."
+    }
+  ],
+  "source_cutoffs": {
+    "binance_announcement_date": "2026-10-30",
+    "xrp_insights_data_cutoff_utc": "2026-10-30T08:00:00Z",
+    "bithomp_erratum_cutoff_utc": "2026-10-30T14:56:00Z"
+  },
+  "prior_evidence_preserved": true
+}

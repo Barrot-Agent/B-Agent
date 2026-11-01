@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 120,
+  "chunk_count": 121,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T043333Z-BINANCE-XRP-INCIDENT-AND-DERIVATIVES-UPDATE",
+      "created_at_utc": "2026-10-31T04:33:33Z",
+      "data_cutoff_utc": "2026-10-31T04:24:00Z",
+      "summary": "Added Binance's official Security Incident Update #2, TRM's cross-chain attribution and XRPL transfer chronology, XRPL native-asset freeze documentation, synchronized Alpha/Liqwall derivatives observations, partial Oct30 XRP ETF flows and Binance's PoR disclosure method. Binance reports $6.3B incident impact, $6.34B company funds set aside, $5B in exact affected token assets and remaining token purchases via market/OTC; no XRP-specific replenishment quantity is disclosed. TRM confirms 233.46M XRP left five Binance-labelled XRPL wallets and confirms Ripple froze 40.5M RLUSD, not native XRP. Native XRP cannot be issuer-frozen. Alpha and Liqwall show a 2.13x OI discrepancy within 12 minutes while 24h liquidation totals broadly align. Oct30 ETF flow remains partial at -$0.7M from 2/5 funds. PR #1393's market-list pagination cursor bug was corrected with two regression tests on its PR branch; new-head CI is pending. Main unchanged; no merge, force-push, manual dispatch, paper-state mutation or trade. The current research branch exact-head validator and fail-closed gate passed before this append; this append is pending its own validation.",
+      "source_ids": [
+        "SRC-20261031-BINANCE-INCIDENT-UPDATE2-043333Z",
+        "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+        "SRC-20261031-XRPL-FREEZE-DOCS-043333Z",
+        "SRC-20261031-ALPHA-XRP-DERIVATIVES-0424Z",
+        "SRC-20261031-LIQWALL-XRP-DERIVATIVES-0412Z",
+        "SRC-20261031-CRYPTOETF-XRP-PARTIAL-043333Z",
+        "SRC-20261031-BINANCE-POR-PAGE-043333Z"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T043333Z-binance-xrp-replenishment-market-risk-update.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T043333Z-binance-xrp-replenishment-market-risk.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T043333Z-binance-replenishment-and-xrp-event-study.json",
+      "repository_audit_path": "data/repository_audits/20261031T025600Z-main-repeat-write-and-telemetry-pr1391.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "previous_research_head_sha": "3d1d8d60f29c9397c386dcaa64cfd8505738a0a3",
+        "previous_validator_run_id": 41168868285,
+        "previous_gate_run_id": 41168868273,
+        "previous_archive_shards_checked": 329,
+        "new_source_records": 7,
+        "new_run_updates": 1,
+        "new_limitations": 3,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      },
+      "engineering": {
+        "pr1393": 1393,
+        "pr1393_new_head": "573f91614e3b7542ff485575bd2d55f598b9c20d",
+        "pr1393_cursor_bug": "FIXED_IN_BRANCH_CI_PENDING",
+        "new_regression_tests": 2,
+        "live_morpho_api": "NOT_EXECUTED"
+      },
+      "main_changed_by_this_run": false,
+      "merge_performed": false,
+      "force_push_performed": false,
+      "manual_workflow_dispatch_performed": false,
+      "real_money_trade_performed": false
+    }
+  ]
+}

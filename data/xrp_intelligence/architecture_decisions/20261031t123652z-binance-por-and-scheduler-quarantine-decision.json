@@ -1,0 +1,91 @@
+{
+  "record_type": "xrp_architecture_decision",
+  "schema_version": "1.0",
+  "decision_id": "ADR-20261031T123652Z-BINANCE-POR-AND-SCHEDULER-QUARANTINE",
+  "title": "Separate Binance PoR Publication Status from XRP Replenishment and Quarantine Broad Scheduler Dispatch",
+  "created_at_utc": "2026-10-31T12:36:52Z",
+  "data_cutoff_utc": "2026-10-31T12:36:52Z",
+  "source_ids": [
+    "SRC-20261031T123652Z-BINANCE-POR-PAGE-STATUS",
+    "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2",
+    "SRC-20261031T123652Z-GITHUB-PR1412-SCHEDULER-QUARANTINE",
+    "SRC-20261031T123652Z-GITHUB-MAIN-PR-INVENTORY",
+    "SRC-20261031T123652Z-GITHUB-MAIN-SCHEDULER-QUEUE",
+    "SRC-20261031T121200Z-GITHUB-PR1411-TOKEN-SAFETY",
+    "SRC-20261031T121200Z-XRP-INSIGHTS-NOV1-ESCROW"
+  ],
+  "source_reference_count": 7,
+  "missing_source_references": 0,
+  "status": "EXECUTED_PENDING_EXACT_HEAD_VALIDATION",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Classify Binance's 12-hour initial PoR snapshot target as elapsed, while keeping public completion unverified.",
+      "rationale": "The official page rendered blank metadata at 12:31:30 UTC; dynamic rendering/publication lag remain alternatives, and results were stated due Nov2."
+    },
+    {
+      "id": "D2",
+      "decision": "Do not infer XRP-specific replenishment from Binance's aggregate $1.34B remaining affected-token acquisition plan.",
+      "rationale": "No XRP allocation, execution quantity or transaction-level purchase evidence is disclosed."
+    },
+    {
+      "id": "D3",
+      "decision": "Treat the main scheduler as a high-risk broad dispatch/main-write path until a strict allowlist and durable non-main queue state exist.",
+      "rationale": "The workflow has contents:write/actions:write; scheduler.py accepts any existing workflow file and commits queue state to main."
+    },
+    {
+      "id": "D4",
+      "decision": "Retain PR #1412 as a temporary read-only scheduler quarantine proposal; do not merge without approval.",
+      "rationale": "The queue has zero pending entries, and exact-head CI/gate passed. If merged, future queue dispatch remains paused until the durable scheduler design is implemented."
+    },
+    {
+      "id": "D5",
+      "decision": "Keep PR #1411 as a separate security proposal; the unsafe token-input workflow remains active on main until approved merge.",
+      "rationale": "PR #1411 is open/draft/unmerged; its proposed code is not active on main."
+    },
+    {
+      "id": "D6",
+      "decision": "Do not admit Binance reserve changes or the PoR page status as XRP price features; do not issue a directional forecast.",
+      "rationale": "Token-specific reserve data and a leakage-safe calibrated model are absent."
+    },
+    {
+      "id": "D7",
+      "decision": "Keep the Nov1 1B XRP escrow event as a scheduled event watch, not a sell-supply assumption.",
+      "rationale": "Actual EscrowFinish, re-escrow, destination and exchange disposition remain unknown."
+    }
+  ],
+  "alternatives_considered": [
+    "Treat blank PoR metadata as proof that the snapshot was not taken — rejected because dynamic rendering/publication lag are possible.",
+    "Treat the aggregate $1.34B token acquisition plan as XRP spot demand — rejected because no token-specific allocation is disclosed.",
+    "Restore scheduler dispatch with the existing any-workflow-file check — rejected pending strict allowlist and input schemas.",
+    "Merge PR #1412 or #1411 automatically after CI — rejected; user approval remains required."
+  ],
+  "consequences": [
+    "PR #1412, if approved and merged, pauses automatic scheduler queue dispatch while retaining a read-only queue audit.",
+    "No pending queue work was removed; the inspected queue had one completed entry and zero pending entries.",
+    "The main scheduler remains write-capable until PR #1412 is approved and merged.",
+    "The Databricks token-input workflow remains active on main until PR #1411 is approved and merged.",
+    "No XRP market feature is admitted and no forecast is issued."
+  ],
+  "next_actions": [
+    "Recheck Binance's public PoR result by 2026-11-02 and compare same-time token reserves against customer liabilities and official reserve addresses.",
+    "Crosswalk the five Binance incident XRP source wallets and obtain raw XRPL receiver state.",
+    "Observe the Nov1 00:00 UTC XRP escrow objects and capture finish/re-escrow/destination/market disposition.",
+    "Review PR #1412 and #1411; do not merge without approval.",
+    "Design non-main scheduler state, workflow allowlist, per-workflow input schema, idempotency, concurrency and audit receipts.",
+    "Continue fixed-horizon leakage-safe XRP model evaluation; forecast remains NOT_ISSUED."
+  ],
+  "verification": {
+    "status": "PENDING_EXACT_HEAD_VALIDATION",
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "paper_position_mutated": false,
+    "real_money_trade": false,
+    "state_mutated": false
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T210244Z-ESCROW-EXCHANGE-ETF-AND-MAIN-SAFETY",
+  "captured_at_utc": "2026-10-31T21:02:44Z",
+  "data_cutoff_utc": "2026-10-31T21:02:44Z",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "main_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+  "escrow": {
+    "status": "SCHEDULED_NOT_YET_ELIGIBLE",
+    "finish_after_utc": "2026-11-01T00:00:00Z",
+    "seconds_until_at_cutoff": 10636,
+    "amount_xrp": 1000000000,
+    "objects": 2,
+    "ledger_index": 108029266,
+    "ledger_closed_at_utc": "2026-10-31T19:06:00Z",
+    "ripple_escrow_total_xrp": 31400000000,
+    "objects_total": 98,
+    "owner_accounts": 8,
+    "remaining_unlocks": 32,
+    "prior_12_months": {
+      "released_xrp": 12000000000,
+      "re_escrowed_xrp": 8400000000,
+      "re_escrowed_pct": 70,
+      "net_outside_escrow_xrp": 3600000000,
+      "pattern": "12/12 prior monthly releases re-escrowed 700M"
+    },
+    "finish_timing": {
+      "median_seconds": 11,
+      "max_delay_days": 2.3
+    },
+    "unknowns": [
+      "EscrowFinish hashes and validated ledger indexes",
+      "transaction senders and Destination accounts",
+      "destination balances and subsequent transfers",
+      "new EscrowCreate/re-escrow amount",
+      "exchange/OTC disposition and market-depth impact"
+    ]
+  },
+  "exchange_wallets": {
+    "provider": "XRP Insights",
+    "observed_at_utc": "2026-10-31T08:00:00Z",
+    "wallets": 701,
+    "exchanges": 24,
+    "total_xrp": 22480000000,
+    "circulating_supply_provider_estimate_xrp": 68590000000,
+    "same_wallet_change_7d_xrp": -133000000,
+    "same_wallet_change_30d_xrp": -12300000,
+    "daily_same_wallet_change_oct30_xrp": -207300000,
+    "daily_same_wallet_change_oct31_xrp": 105900000,
+    "venues": {
+      "Upbit": {
+        "balance_xrp": 6430000000,
+        "change_7d_xrp": -747000,
+        "change_30d_xrp": 34600000
+      },
+      "Coinbase": {
+        "balance_xrp": 5850000000,
+        "wallets": 358,
+        "change_7d_xrp": 17700000,
+        "change_30d_xrp": 18400000,
+        "includes_cbxrp_reserve_xrp": 150200000
+      },
+      "Binance": {
+        "balance_xrp": 2780000000,
+        "wallets": 153,
+        "change_7d_xrp": 17600000,
+        "change_30d_xrp": 30300000,
+        "includes_binance_peg_reserve_xrp": 327400000,
+        "includes_binance_us_xrp": 7800000
+      },
+      "SBI_VC_Trade": {
+        "balance_xrp": 59500000,
+        "wallets": 2,
+        "cold_labeled_pct": 99,
+        "change_7d_xrp": -899000,
+        "change_30d_xrp": -10500000
+      }
+    },
+    "regional_exchange_hq_groupings": {
+      "South_Korea_xrp": 8590000000,
+      "United_States_xrp": 8520000000,
+      "Japan_xrp": 1380000000
+    },
+    "interpretation": "Broad labelled-wallet custody snapshot, not tradable float, customer beneficial ownership or proof of net customer withdrawals.",
+    "limitations": [
+      "cold storage included",
+      "wrapped/operational and affiliate reserves included",
+      "37.8% of tracked XRP lacks hot/cold label",
+      "untracked/newly labelled wallets and transfers can distort same-wallet changes"
+    ]
+  },
+  "etf": {
+    "provider": "XRP Insights",
+    "session_end": "2026-10-30",
+    "funds": "6 US spot XRP ETFs plus BITW",
+    "holdings_xrp": 1196600000,
+    "combined_net_assets_usd": 1510000000,
+    "week_2026_10_26_to_30_net_holdings_derived_flow_xrp": 3390000,
+    "week_usd_estimate": 4030000,
+    "oct30_daily_flow_xrp": -49932,
+    "oct30_daily_flow_usd_estimate": -62400,
+    "gxrp_flow_status": "EXCLUDED_FROM_FLOW_TOTAL_DUE_TO_DATA_GAP; HOLDINGS_INCLUDED",
+    "method": "Day-over-day changes in issuer-reported holdings",
+    "interpretation": "Holdings-derived creations/redemptions proxy; not gross spot executions, total net capital or direct link to exchange-wallet changes."
+  },
+  "market": {
+    "provider": "TradRadar",
+    "observed_at_utc": "2026-10-31T20:10:00Z",
+    "price_usd": 1.253,
+    "price_change_24h_pct": 0.38,
+    "oi_7_exchanges_usd": 1870000000,
+    "oi_change_24h_pct": 0.48,
+    "funding_oi_weighted_8h_pct": 0.0048,
+    "liquidations_24h_lower_bound_usd": 353250,
+    "long_liquidations_usd": 130620,
+    "short_liquidations_usd": 222630,
+    "long_accounts_pct": 75.2,
+    "long_short_ratio": 3.04,
+    "funding_8h_pct": {
+      "Binance": 0.01,
+      "Bybit": -0.0081,
+      "Gate": 0.0023,
+      "MEXC": 0.01,
+      "Bitget": 0.01,
+      "Hyperliquid": 0.01,
+      "OKX": -0.0023
+    },
+    "coverage": {
+      "oi": 7,
+      "liquidations": 5,
+      "long_short": 4
+    },
+    "interpretation": "Positive aggregate funding/OI with Bybit and OKX negative; account ratio is not notional; liquidations are lower bounds."
+  },
+  "binance_incident": {
+    "source_claimed_aggregate_replenishment_pct": 90,
+    "top_ten_assets_claimed_100pct_backed": [
+      "BTC",
+      "ETH",
+      "USDT",
+      "BNB",
+      "SOL",
+      "USDC",
+      "XRP",
+      "USD1",
+      "RLUSD",
+      "ZEC"
+    ],
+    "por_snapshot_utc": "2026-10-31T00:00:00Z",
+    "full_zk_proof_estimated_utc_date": "2026-11-03",
+    "funding_sources": [
+      "partial SAFU deployment",
+      "portion of Futures Insurance Fund",
+      "corporate treasury"
+    ],
+    "withdrawal_resume_target_date": "2026-11-01",
+    "xrp_specific_purchase_quantity": "UNKNOWN",
+    "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+    "status": "COMPANY_CLAIM_PENDING_FULL_PROOF_AND_ADDRESS_LIABILITY_RECONCILIATION"
+  },
+  "institutional": {
+    "ripple_coinbase_rlusd_listing_announcement_date": "2026-10-28",
+    "coinbase_products": [
+      "Coinbase Prime",
+      "Coinbase Exchange",
+      "Coinbase Retail"
+    ],
+    "supported_networks": [
+      "XRPL",
+      "Base",
+      "Ethereum"
+    ],
+    "ripple_base_liquidity_statement": true,
+    "coinbase_global_exchange_rlusd_collateral": "PLANNED_NOT_LIVE_AT_ANNOUNCEMENT",
+    "xrp_purchase_or_collateral_implication": "NOT_ESTABLISHED"
+  },
+  "repository": {
+    "main_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+    "main_protected_flag": true,
+    "full_branch_protection_details": "403_NOT_ACCESSIBLE",
+    "cross_analysis_workflow_permissions": "contents:write",
+    "cross_analysis_triggers": [
+      "workflow_run after Knowledge Signal Cycle",
+      "hourly cron at minute 50",
+      "workflow_dispatch"
+    ],
+    "cross_analysis_commit_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+    "cross_analysis_run_id": 41240863905,
+    "cross_analysis_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41240863905",
+    "cross_analysis_run_conclusion": "success",
+    "cross_analysis_commit_time_utc": "2026-10-31T20:51:46Z",
+    "cross_analysis_changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "cross_analysis_diff": "one line added/one line deleted; generated_at timestamp only",
+    "xrp_recent_entries": 0,
+    "xrp_prior_entries": 0,
+    "xrp_score": null,
+    "btc_recent_entries": 0,
+    "btc_prior_entries": 0,
+    "btc_score": null,
+    "pages_deployment_run_id": 41240873472,
+    "pages_deployment_conclusion": "success",
+    "open_prs": 201,
+    "draft_prs": 191,
+    "ready_prs": 10,
+    "main_target_prs": 199,
+    "stale_main_target_prs": 198,
+    "current_main_base_prs": 1,
+    "current_base_pr": "1429",
+    "pr1429": {
+      "state": "open",
+      "draft": true,
+      "base_sha": "c4d24176169ea1307b0eada82a6cbc62ca96e029",
+      "head_sha": "d83f82438621308d7173770bb2539a179f25db7",
+      "ci_run_id": 41241608596,
+      "ci_tests_passed": 345,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41241608616,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "merge_status": "UNMERGED"
+    },
+    "knowledge_signal_cycle": "workflow_dispatch only; contents:write; direct main commit/push",
+    "scheduler_tick": "15-minute schedule; contents:write and actions:write; queue commit/push",
+    "databricks_token_workflow": "workflow_dispatch new_token input interpolated into gh secret set shell command and deployment dispatch; unsafe input design remains on main",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alerts": "NOT_ACCESSIBLE_THROUGH_CONNECTED_INTEGRATION",
+    "branch_protection_details": "UNKNOWN_DUE_403"
+  },
+  "platform_coordination": {
+    "target_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "authenticated_external": [
+      "ChatGPT"
+    ],
+    "live_external_collaborators": [
+      "ChatGPT"
+    ],
+    "verified_handoffs": 0,
+    "other_platforms_status": "DESIGNED_NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "real_money_trade": false,
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261031T210244Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ETF-FLOWS",
+    "SRC-20261031T210244Z-TRADRADAR-XRP",
+    "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T210244Z-RIPPLE-COINBASE-RLUSD",
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "source_reference_count": 7,
+  "missing_source_references": 0,
+  "main_modified_by_this_run": false,
+  "main_modified_by_scheduled_workflow": true,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false,
+  "secret_access_performed": false,
+  "paper_state_mutated": false
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 8,
+  "chunk_count": 9,
+  "record_count": 1,
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T02:23:00Z",
+      "update_type": "CFTC_26_05_BITNOMIAL_XRP_COLLATERAL_ETF_FLOW_RECONCILIATION_AND_LEDGER_ID_DEDUP",
+      "main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_new_snapshot": "ff6f9e6dd403ad47c3a45e4356a73c661baf21bd",
+      "source_ids": [
+        "SRC-CFTC-FAQ-CRYPTO-ASSET-COLLATERAL-DETAIL-20261030T0223Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20260717",
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0100Z",
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261029T2222Z",
+        "SRC-BITCOINLEVERAGE-XRP-DERIVATIVES-20261030T0001Z",
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-FLOWS-20261030T0217Z",
+        "SRC-XRP-INSIGHTS-ETF-DATA-20261030T0137Z",
+        "SRC-GITHUB-PR1353-DUPLICATE-SOURCE-ID-20261030T0223Z",
+        "SRC-GITHUB-PR1353-STRUCTURAL-READBACK-20261030T0223Z"
+      ],
+      "research_snapshot_path": "data/xrp_intelligence/snapshots/20261030T022300Z-cftc-bitnomial-market-and-validator-audit.json",
+      "research_graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T022300Z-cftc-bitnomial-market-and-validator-audit.json",
+      "verification_at_recording": {
+        "cftc_letter_26_05": "CONFIRMED_PRIMARY_STAFF_NO_ACTION_PATHWAY; requestor Coinbase Financial Markets; FCM-specific reliance notice required; initial three-month asset restriction to payment stablecoins/BTC/ETH; after three months other crypto assets may be accepted subject to continuing conditions",
+        "cftc_march_20_faq": "DIRECTLY_REVIEWED; DCO may accept crypto if minimum credit/market/liquidity risk; DCO sets stress-aware haircuts and reviews at least monthly; no crypto collateral for uncleared swaps",
+        "bitnomial_dco": "CONFIRMED_PRIMARY; XRP accepted collateral 40% haircut/$15M limit; XRP product maintenance margin 17%; actual utilization UNKNOWN",
+        "ripple_prime_link": "CONFIRMED_STRUCTURAL; Hidden Road Partners CIV US LLC is listed as a Bitnomial clearing member; Ripple acquired Hidden Road and rebranded it Ripple Prime; actual XRP collateral use UNKNOWN",
+        "coinbase_xrp_use": "UNKNOWN; Coinbase Financial Markets requested Letter 26-05, but no Coinbase–Bitnomial clearing-member relationship or actual XRP collateral acceptance was established",
+        "market_panel": "SECONDARY_SCOPE_CONFLICT; TradRadar, Liqwall and BitcoinLeverage differ in venue scope/timestamp; long liquidations dominate observed 24h window, but no directional forecast",
+        "etf_panel": "SECONDARY_METHOD_CONFLICT; CryptoKeyhole Oct28 +4.338M XRP across four daily reporters; XRP Insights Oct26-28 -2.959M XRP across six spot funds plus BITW; populations/date conventions differ; not reconciled",
+        "validator": "STRUCTURAL_READBACK_PARTIAL; 8 run-update and 6 limitation shards pass metadata/hash/count checks; 10 source shards pass metadata/hash/count but have one duplicate ID; replacement shard created; pointer update and exact-head Python tests pending",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "real_money_trade": false,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      }
+    }
+  ]
+}

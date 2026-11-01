@@ -1,0 +1,299 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T085233Z-SBI-BITBANK-RETAIL-RLUSD-FIEA",
+  "captured_at_utc": "2026-10-31T08:52:33Z",
+  "source_reference_count": 12,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031T085233Z-SBI-BITBANK-CLOSE",
+    "SRC-20261031T085233Z-SBI-BITBANK-COMBINATION",
+    "SRC-20261031T085233Z-BITBANK-XRPJPY",
+    "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+    "SRC-20261031T085233Z-ORICO-XRP-POINTS",
+    "SRC-20261031T085233Z-SBI-SHINSEI-XRP-DEPOSIT-REWARD",
+    "SRC-20261031T085233Z-RIPPLE-RLUSD-JAPAN-SBI",
+    "SRC-20261031T085233Z-SBIVC-RLUSD-CUSTODY-GROWTH",
+    "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM",
+    "SRC-20261031T085233Z-XRPL-NO-NEW-XRP-ISSUANCE",
+    "SRC-20261031T085233Z-SBI-VC-TRADE-XRPJPY-LEVERAGE"
+  ],
+  "nodes": [
+    {
+      "id": "SBI_HOLDINGS",
+      "type": "financial_group",
+      "label": "SBI Holdings"
+    },
+    {
+      "id": "BITBANK",
+      "type": "crypto_exchange",
+      "label": "Bitbank"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "type": "crypto_exchange",
+      "label": "SBI VC Trade"
+    },
+    {
+      "id": "XRP",
+      "type": "cryptoasset",
+      "label": "XRP"
+    },
+    {
+      "id": "SBI_VISA",
+      "type": "retail_payment_product",
+      "label": "SBI VISA Crypto Card"
+    },
+    {
+      "id": "ORICO",
+      "type": "consumer_finance_partner",
+      "label": "Orient Corporation / Orico"
+    },
+    {
+      "id": "SBI_SHINSEI",
+      "type": "bank",
+      "label": "SBI Shinsei Bank"
+    },
+    {
+      "id": "VISA",
+      "type": "payment_network",
+      "label": "Visa"
+    },
+    {
+      "id": "APLUS",
+      "type": "card_issuer",
+      "label": "Aplus"
+    },
+    {
+      "id": "RIPPLE",
+      "type": "company",
+      "label": "Ripple"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin",
+      "label": "RLUSD"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin",
+      "label": "USDC"
+    },
+    {
+      "id": "JPYSC",
+      "type": "stablecoin",
+      "label": "JPYSC"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "type": "joint_venture",
+      "label": "SBI Ripple Asia"
+    },
+    {
+      "id": "XRPL",
+      "type": "blockchain",
+      "label": "XRP Ledger"
+    },
+    {
+      "id": "JAPAN_FIEA_2026",
+      "type": "regulatory_framework",
+      "label": "Japan FIEA/PSA 2026 amendment"
+    },
+    {
+      "id": "XRPL_GENESIS_SUPPLY",
+      "type": "protocol_fact",
+      "label": "100B XRP created at genesis; no new issuance"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-SBI-OWNS-BITBANK",
+      "from": "SBI_HOLDINGS",
+      "relation": "completed_100_percent_acquisition_of",
+      "to": "BITBANK",
+      "evidence_class": "OFFICIAL_ACQUISITION_COMPLETION",
+      "source_ids": [
+        "SRC-20261031T085233Z-SBI-BITBANK-CLOSE",
+        "SRC-20261031T085233Z-SBI-BITBANK-COMBINATION"
+      ]
+    },
+    {
+      "id": "E-BITBANK-XRPJPY",
+      "from": "BITBANK",
+      "relation": "offers_spot_order_book_market",
+      "to": "XRP",
+      "evidence_class": "OFFICIAL_MARKET_DOCUMENTATION",
+      "source_ids": [
+        "SRC-20261031T085233Z-BITBANK-XRPJPY"
+      ]
+    },
+    {
+      "id": "E-SBI-VISA-XRP-REWARD",
+      "from": "SBI_VISA",
+      "relation": "automatically_converts_selected_card_points_into",
+      "to": "XRP",
+      "evidence_class": "OFFICIAL_PRODUCT_TERMS",
+      "source_ids": [
+        "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS"
+      ]
+    },
+    {
+      "id": "E-ORICO-XRP-POINTS",
+      "from": "ORICO",
+      "relation": "offers_points_redemption_into",
+      "to": "XRP",
+      "evidence_class": "OFFICIAL_PARTNER_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T085233Z-ORICO-XRP-POINTS"
+      ]
+    },
+    {
+      "id": "E-SBI-SHINSEI-XRP-REWARD",
+      "from": "SBI_SHINSEI",
+      "relation": "ran_historical_deposit_campaign_with",
+      "to": "XRP",
+      "evidence_class": "OFFICIAL_CAMPAIGN",
+      "source_ids": [
+        "SRC-20261031T085233Z-SBI-SHINSEI-XRP-DEPOSIT-REWARD"
+      ]
+    },
+    {
+      "id": "E-RIPPLE-RLUSD-SBI",
+      "from": "RIPPLE",
+      "relation": "launched_JFSA_approved_RLUSD_distribution_through",
+      "to": "SBI_VC_TRADE",
+      "evidence_class": "OFFICIAL_ISSUER_AND_DISTRIBUTOR_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031T085233Z-RIPPLE-RLUSD-JAPAN-SBI",
+        "SRC-20261031T085233Z-SBIVC-RLUSD-CUSTODY-GROWTH"
+      ]
+    },
+    {
+      "id": "E-SBI-RLUSD-GROWTH",
+      "from": "SBI_VC_TRADE",
+      "relation": "ranked_RLUSD_first_in_Sep2026_custody_balance_growth",
+      "to": "RLUSD",
+      "evidence_class": "OFFICIAL_RELATIVE_GROWTH_RANKING",
+      "source_ids": [
+        "SRC-20261031T085233Z-SBIVC-RLUSD-CUSTODY-GROWTH"
+      ]
+    },
+    {
+      "id": "E-SBI-RIPPLE-ASIA-XRPL-POC",
+      "from": "SBI_RIPPLE_ASIA",
+      "relation": "evaluated_tokenized_deposit_POC_using",
+      "to": "XRPL",
+      "evidence_class": "OFFICIAL_CONCEPTUAL_POC",
+      "source_ids": [
+        "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC"
+      ]
+    },
+    {
+      "id": "E-FIEA-INSIDER-XRP",
+      "from": "JAPAN_FIEA_2026",
+      "relation": "likely_applies_insider_trading_rules_to_exchange_handled",
+      "to": "XRP",
+      "evidence_class": "LEGAL_SCOPE_INFERENCE_FROM_REGISTERED_EXCHANGE_LISTINGS",
+      "source_ids": [
+        "SRC-20261031T085233Z-BITBANK-XRPJPY",
+        "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM"
+      ]
+    },
+    {
+      "id": "E-XRP-NO-NEW-ISSUANCE",
+      "from": "XRPL_GENESIS_SUPPLY",
+      "relation": "supports_likely_non_specified_cryptoasset_classification_of",
+      "to": "XRP",
+      "evidence_class": "PROTOCOL_FACT_PLUS_LEGAL_INFERENCE",
+      "source_ids": [
+        "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM",
+        "SRC-20261031T085233Z-XRPL-NO-NEW-XRP-ISSUANCE"
+      ]
+    },
+    {
+      "id": "E-FIEA-CUSTODY-SYSTEM-PROVIDERS",
+      "from": "JAPAN_FIEA_2026",
+      "relation": "introduces_regulation_of_custody_system_providers_affecting",
+      "to": "SBI_VC_TRADE_AND_BITBANK",
+      "evidence_class": "LEGAL_ANALYSIS_OF_ENACTED_AMENDMENT",
+      "source_ids": [
+        "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-SBI-GROUP-XRP-FOOTPRINT-EXPANSION",
+      "statement": "The Bitbank acquisition, existing SBI VC Trade XRP markets and retail reward rails materially expand SBI Group's potential XRP distribution and custody footprint in Japan.",
+      "classification": "CORPORATE_AND_PRODUCT_FACTS; GROUP_LEVEL_EFFECT_INFERENCE",
+      "supporting_source_ids": [
+        "SRC-20261031T085233Z-SBI-BITBANK-CLOSE",
+        "SRC-20261031T085233Z-SBI-BITBANK-COMBINATION",
+        "SRC-20261031T085233Z-BITBANK-XRPJPY",
+        "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+        "SRC-20261031T085233Z-ORICO-XRP-POINTS",
+        "SRC-20261031T085233Z-SBI-SHINSEI-XRP-DEPOSIT-REWARD",
+        "SRC-20261031T085233Z-SBI-VC-TRADE-XRPJPY-LEVERAGE"
+      ],
+      "disconfirming_or_alternative": [
+        "No post-close group-wide XRP custody balance, market share, customer overlap or net acquisition flow is disclosed.",
+        "Reward tokens may be sourced from existing inventory or hedged rather than purchased in the spot market."
+      ],
+      "status": "STRONG_INFRASTRUCTURE_EVIDENCE; CAPITAL_IMPACT_UNKNOWN"
+    },
+    {
+      "id": "H-SBI-RETAIL-REWARDS-NET-DEMAND",
+      "statement": "SBI's Visa, Orico and deposit products create recurring routes for retail users to receive XRP, but do not prove equivalent net spot-market buying.",
+      "classification": "PRODUCT_MECHANISM_CONFIRMED; MARKET_IMPACT_UNKNOWN",
+      "supporting_source_ids": [
+        "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+        "SRC-20261031T085233Z-ORICO-XRP-POINTS",
+        "SRC-20261031T085233Z-SBI-SHINSEI-XRP-DEPOSIT-REWARD"
+      ],
+      "disconfirming_or_alternative": [
+        "Treasury inventory, internal transfers, OTC sourcing or hedging could satisfy rewards without contemporaneous spot purchases."
+      ],
+      "status": "DISTRIBUTION_CONFIRMED_VOLUME_UNKNOWN"
+    },
+    {
+      "id": "H-RLUSD-SBI-CUSTODY-GROWTH",
+      "statement": "RLUSD gained the highest relative custody-balance growth at SBI VC Trade in September 2026, suggesting increasing distribution traction alongside JPYSC.",
+      "classification": "OFFICIAL_RELATIVE_RANKING",
+      "supporting_source_ids": [
+        "SRC-20261031T085233Z-RIPPLE-RLUSD-JAPAN-SBI",
+        "SRC-20261031T085233Z-SBIVC-RLUSD-CUSTODY-GROWTH"
+      ],
+      "disconfirming_or_alternative": [
+        "No absolute balance or market share disclosed; USDC not ranking in the top three does not prove decline."
+      ],
+      "status": "GROWTH_RANK_CONFIRMED_ABSOLUTE_SCALE_UNKNOWN"
+    },
+    {
+      "id": "H-SBI-RIPPLE-ASIA-XRPL-ADOPTION",
+      "statement": "SBI Ripple Asia's tokenized-deposit proof of concept may create institutional XRPL activity, but does not establish production deployment or material XRP token demand.",
+      "classification": "OFFICIAL_POC; PRODUCTION_IMPACT_SPECULATIVE",
+      "supporting_source_ids": [
+        "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC"
+      ],
+      "disconfirming_or_alternative": [
+        "The concept may use XRPL only as a technical ledger; tokenized deposits may not require meaningful XRP inventory beyond network fees."
+      ],
+      "status": "POC_ONLY"
+    },
+    {
+      "id": "H-XRP-JAPAN-FIEA-SUBCATEGORY",
+      "statement": "XRP likely falls outside Japan's new 'specified cryptoasset' category because no single person has exclusive authority to issue new XRP, while insider-trading rules likely still cover XRP because it is handled by registered exchanges.",
+      "classification": "LEGAL_INFERENCE_NOT_OFFICIAL_CLASSIFICATION",
+      "supporting_source_ids": [
+        "SRC-20261031T085233Z-BITBANK-XRPJPY",
+        "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM",
+        "SRC-20261031T085233Z-XRPL-NO-NEW-XRP-ISSUANCE"
+      ],
+      "disconfirming_or_alternative": [
+        "Cabinet Office Ordinance may include additional categories; final commencement and official asset classification are pending."
+      ],
+      "status": "LIKELY_NON_SPECIFIED; INSIDER_SCOPE_LIKELY"
+    }
+  ]
+}

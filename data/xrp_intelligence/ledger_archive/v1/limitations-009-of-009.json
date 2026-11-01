@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 8,
+  "chunk_count": 9,
+  "record_count": 7,
+  "records": [
+    "Bitnomial's November 3, 2025 company announcement says XRP and RLUSD margin deposits were available to institutional clients, subject to applicable regulatory approvals. The public collateral page supplies a 40% XRP haircut and $15M notional limit, but no customer-level deposits, utilization, turnover or collateral composition.",
+    "Bitnomial DCO acceptance of XRP and Ripple Prime/Hidden Road FCM customer acceptance are distinct regulatory and operational layers. The exact Hidden Road Partners CIV US LLC clearing-member listing and FCM disclosure do not prove it filed a CFTC Letter 26-05 WinJammer notice, its reliance date or its use of XRP. The FCM initial three-month restriction applies separately.",
+    "The CFTC March 2026 FAQ is staff guidance and expressly creates no enforceable rights or binding rules. Its conditional pathway does not itself classify XRP as a non-security asset for every purpose; the FCM's legal analysis and all applicable CFTC/DCO conditions remain relevant.",
+    "CryptoKeyhole's October 28 +4.338M XRP change covers four funds with daily issuer files and excludes daily GXRP collection; XRP Insights' +174.1K provisional figure covers six spot funds plus BITW and excludes GXRP from flow totals while counting its holdings. Different universes, provisional/settlement timing and data-gap handling prevent averaging or treating the figures as a clean same-universe contradiction.",
+    "TradRadar's XRP derivatives panel is secondary, delayed and incomplete for liquidations; funding differs by exchange, the aggregate funding rate is negative while Binance is positive, and long-account share is not notional exposure. It is not a synchronized raw exchange panel and is not admitted as a model feature.",
+    "CoinMarketCap's search-rendered XRP price snapshot lacked an explicit capture timestamp and differed materially from TradRadar's time-stamped quote. It is retained as a timestamp-quality warning, not as a reconciled spot observation.",
+    "Circle/ACI's Colombia USDC initiative is an announced pilot/evaluation through existing payment infrastructure. No production settlement volume, XRPL route, XRP inventory or direct Ripple relationship was established for this implementation."
+  ]
+}

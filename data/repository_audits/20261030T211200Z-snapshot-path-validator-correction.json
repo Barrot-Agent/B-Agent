@@ -1,0 +1,53 @@
+{
+  "record_type": "barrot_repository_audit",
+  "schema_version": "1.0",
+  "audit_id": "AUDIT-20261030T211200Z-SNAPSHOT-PATH-VALIDATOR-CORRECTION",
+  "captured_at_utc": "2026-10-30T21:12:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "526cafcdd7e0423793bca336d5d8486741b95181",
+    "protected": true,
+    "required_status_checks": [],
+    "modified_by_this_run": false
+  },
+  "research_pr": {
+    "number": 1353,
+    "previous_head": "9d5a70b27e579b990729ac7e556de023cc5f363e",
+    "validator_run": 41129088373,
+    "validator_result": "FAILED_ONE_SNAPSHOT_PATH_INVARIANT; ARCHIVE_COUNTS_AND_SHARDS_CHECKED",
+    "gate_run": 41129088348,
+    "gate_result": "PASS_MERGE_DISABLED",
+    "root_cause": "Snapshot JSON omitted snapshot_path self-reference.",
+    "correction": "Immutable corrected snapshot copy and pointer update; original preserved."
+  },
+  "main_risks": [
+    "cross-analysis workflow still writes generated output to main",
+    "knowledge-signal-cycle workflow still has write capability",
+    "daily accuracy workflow mutates signal_history and accuracy summary; current signal_history.jsonl is empty and 45.9% summary is not reproducible",
+    "merge queue retains write and merge/delete capabilities"
+  ],
+  "prediction_engine": {
+    "latest_signal_timestamp": "2026-10-29T13:23:33.142057+00:00",
+    "score": 44,
+    "confidence": 0,
+    "legacy_accuracy_pct": 45.9,
+    "legacy_checked_count": 1683,
+    "legacy_correct_count": 772,
+    "signal_history_jsonl_bytes": 0,
+    "status": "NOT_COMPARABLE_NOT_EVALUATED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "limits": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_scan": "NOT_RUN",
+    "other_eight_platforms": "NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "safety": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}

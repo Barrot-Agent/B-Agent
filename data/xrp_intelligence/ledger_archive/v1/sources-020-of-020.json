@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 19,
+  "chunk_count": 20,
+  "record_count": 3,
+  "created_at_utc": "2026-10-30T07:11:28Z",
+  "records": [
+    {
+      "id": "SRC-BINANCE-VERIFIED-STATUS-20261030T0709Z",
+      "evidence_class": "PRIMARY_COMPANY_CHANNEL_VERIFIED_SOCIAL",
+      "url": "https://www.binance.com/en/square/post/10-30-2026-binance-says-deposits-normal-withdrawals-paused-for-security-revamp-eyes-48-hour-restoration-382748430882486",
+      "title": "Binance verified News update: deposits normal, withdrawals paused",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T07:09:00Z",
+      "note": "The verified Binance News account says deposits are operating normally while withdrawals remain paused during a security overhaul, with restoration expected within 48 hours. The indexed result does not expose an exact publication time or per-network status. This differs from Binance Support's 2026-10-30 02:23 UTC security update, which said deposits and withdrawals were temporarily suspended. Treat as a status-snapshot discrepancy; do not infer all networks or products are restored."
+    },
+    {
+      "id": "SRC-INVESTING-OKX-XRP-20261030T034135Z",
+      "evidence_class": "SECONDARY_VENUE_MARKET_DATA_AGGREGATOR",
+      "url": "https://es.investing.com/crypto/xrp/xrp-usd-historical-data",
+      "title": "Investing.com OKX XRP/USD market snapshot",
+      "published_at": "2026-10-30T03:41:35Z",
+      "accessed_at_utc": "2026-10-30T07:09:00Z",
+      "note": "The indexed OKX XRP/USD page displayed 1.2256 USD and -5.41% at 03:41:35 UTC. Its 30-Oct daily row separately displayed last 1.2132, open 1.2348, high 1.2393, low 1.2029 and volume 514.49M; the row's exact as-of time and volume denomination are not established by the snippet. These fields must not be conflated. This venue-specific observation is more than three hours old at capture and is not a current consolidated spot quote."
+    },
+    {
+      "id": "SRC-THEXRPINVESTOR-ETF-DASHBOARD-20261030T0709Z",
+      "evidence_class": "SECONDARY_ETF_AGGREGATOR",
+      "url": "https://thexrpinvestor.com/xrp-etf-flows",
+      "title": "TheXRPInvestor XRP ETF dashboard",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T07:09:00Z",
+      "note": "The dashboard reports 12 products, total AUM approximately $1.52B, 1.22B XRP in trust, total daily volume $23.22M, spot daily volume $11.78M and derivative daily volume $11.44M. Its category summary says 6 spot, 4 derivative and 1 index product, which sums to 11 rather than the stated 12. The universe mixes spot, derivative and index products and is not comparable to spot-only issuer-flow panels without a product-level crosswalk. No feature admission."
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "index_format_version": "3.0",
+  "snapshot_id": "XRP-20261031T064800Z-BINANCE-INCIDENT-DAILY-EXCHANGE-FLOW-EVENT-WINDOW",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T064800Z-binance-incident-daily-exchange-flow-event-window.json",
+  "captured_at_utc": "2026-10-31T06:48:00Z",
+  "data_cutoff_utc": "2026-10-31T06:48:00Z",
+  "source_reference_count": 3,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z",
+    "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+    "SRC-20261031-BINANCE-UPDATE2-0505Z"
+  ],
+  "incident": {
+    "event_window_start_utc": "2026-10-29T20:05:00Z",
+    "event_window_end_utc": "2026-10-29T20:09:00Z",
+    "stolen_xrp": 233461943.1,
+    "source_wallets": 5,
+    "receiving_wallets": 1,
+    "attribution": "TRM private-sector intelligence attribution; source wallet labels are public attribution, not beneficial-owner proof."
+  },
+  "daily_exchange_balance_event_window": {
+    "provider": "XRP Insights",
+    "method": "Same-wallet net change across tracked exchange-labeled XRPL wallet set, direct rippled account_info daily reads around 08:00 UTC.",
+    "pre_incident_snapshot": {
+      "observed_at_utc": "2026-10-29T08:00:00Z",
+      "tracked_xrp": 22580000000,
+      "same_wallet_daily_change_xrp": -41200000,
+      "relation_to_incident": "PRE_EVENT_BY_APPROX_12_HOURS"
+    },
+    "post_incident_snapshot": {
+      "observed_at_utc": "2026-10-30T08:00:00Z",
+      "tracked_xrp": 22370000000,
+      "same_wallet_daily_change_xrp": -207300000,
+      "relation_to_incident": "POST_EVENT_BY_APPROX_12_HOURS"
+    },
+    "post_event_daily_change_as_share_of_incident_pct": 88.8,
+    "arithmetic_difference_from_incident_xrp": 26161943.1,
+    "difference_interpretation": "UNASSIGNED; NOT ATTRIBUTED TO DEPOSITS, WITHDRAWALS OR OTHER FLOWS",
+    "scope": "ALL_TRACKED_EXCHANGES; NOT BINANCE_ONLY",
+    "per_exchange_daily_change": "NOT_DISCLOSED_IN_THIS_TABLE",
+    "per_wallet_history": "NOT_PUBLISHED"
+  },
+  "same_wallet_change_context": {
+    "all_exchanges_7d_xrp": -234900000,
+    "all_exchanges_30d_xrp": -146100000,
+    "binance_7d_xrp": -173200000,
+    "binance_30d_xrp": -164500000,
+    "coinbase_7d_xrp": 1100000,
+    "coinbase_30d_xrp": 12500000,
+    "sbi_vc_trade_xrp": 59500000,
+    "sbi_vc_trade_wallets": 2,
+    "sbi_vc_trade_cold_labeled_share": ">99",
+    "sbi_vc_trade_7d_xrp": -893000,
+    "sbi_vc_trade_30d_xrp": -10500000
+  },
+  "reserve_scope": {
+    "total_tracked_exchange_wallet_xrp": 22370000000,
+    "tracked_wallets": 701,
+    "exchanges": 24,
+    "non_customer_wrapped_insurance_charity_xrp": 488400000,
+    "components": {
+      "binance_peg_xrp": 325800000,
+      "coinbase_cbxrp_xrp": 151400000,
+      "insurance_and_charity_xrp": 11200000
+    },
+    "interpretation": "Includes cold storage, omnibus custody and wrapped backing reserves; not customer free float or official PoR."
+  },
+  "hypotheses": [
+    {
+      "id": "H-BINANCE-INCIDENT-POSTEVENT-AGGREGATE",
+      "statement": "The Oct30 08:00 UTC -207.3M all-exchange daily same-wallet decline may include a substantial portion of the Oct29 233.46M Binance theft.",
+      "classification": "EVENT_WINDOW_HYPOTHESIS",
+      "supporting_evidence": [
+        "The Oct29 08:00 snapshot precedes the incident",
+        "The Oct30 08:00 snapshot follows the incident by about 12 hours",
+        "The -207.3M aggregate is 88.8% of the transfer amount"
+      ],
+      "disconfirming_or_missing_evidence": [
+        "All-exchange rather than Binance-only scope",
+        "No per-exchange daily change",
+        "No per-wallet history",
+        "No crosswalk of the five source wallets into the tracked set",
+        "No same-time PoR/customer-liability reconciliation"
+      ],
+      "confidence": "UNQUANTIFIED",
+      "market_feature_admitted": false
+    },
+    {
+      "id": "H-SBI-VC-TRADE-XRP-CUSTODY",
+      "statement": "SBI VC Trade has an identifiable XRP exchange/custody footprint of 59.5M XRP across two public-labeled XRPL wallets.",
+      "classification": "PUBLIC_WALLET_ATTRIBUTION_CONFIRMED; BENEFICIAL_OWNERSHIP_UNKNOWN",
+      "supporting_evidence": [
+        "59.5M XRP balance",
+        "Two public-labeled wallets",
+        "Cold-labeled share >99%"
+      ],
+      "alternative_explanation": "Omnibus customer custody rather than SBI proprietary treasury.",
+      "confidence": "ATTRIBUTION_CONFIRMED; OWNERSHIP_UNRESOLVED",
+      "market_feature_admitted": false
+    }
+  ],
+  "correction": {
+    "supersedes_prior_interpretation": "The all-exchange -234.9M seven-day change is not the Binance theft amount. The more temporally relevant observation is the -207.3M all-exchange daily change between Oct29 08:00 and Oct30 08:00 UTC; this window contains the incident but is not a Binance-specific reconciliation.",
+    "cryptoquant_prior_series": "Approximately -220M Binance reserve decline remains a separate provider-specific series and is not reconciled to XRP Insights' 153-wallet Binance set."
+  },
+  "prediction_status": {
+    "forecast": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "exchange_reserve_feature": "NOT_ADMITTED",
+    "event_study": "CANDIDATE_FOR_WALK_FORWARD_EVENT_STUDY_AFTER_WALLET_CROSSWALK"
+  }
+}

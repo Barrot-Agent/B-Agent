@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 95,
+  "chunk_count": 96,
+  "record_count": 9,
+  "records": [
+    {
+      "id": "LIM-20261031T001232Z-01",
+      "category": "binance_company_reserve_self_report",
+      "statement": "Binance's $6.34B company-fund commitment, $5B exact impacted-token holdings, remaining market/OTC acquisition and approximately $3B frozen are company-reported. No token-level XRP replenishment amount, independent audit or current XRP reserve ratio is disclosed.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+        "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001232Z-02",
+      "category": "ethereum_por_not_xrpl_por",
+      "statement": "CoinDesk's Binance 14 PoR finding concerns an Ethereum hot wallet and an October 1 snapshot. It does not establish official PoR membership for any of the five XRPL source wallets or rs8Z; the raw official XRP address export remains required.",
+      "severity": "critical",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001232Z-03",
+      "category": "freeze_amounts_scope_and_overlap",
+      "statement": "The reported USDT, USDC, Ripple-frozen assets and USD1 amounts are secondary-reported issuer/executive statements across different chains and token types. Their scopes may overlap the approximately $3B aggregate freeze; Ripple's approximately $200M token identity is unspecified. Do not sum them or infer XRP freeze/recovery.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z",
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001232Z-04",
+      "category": "derivatives_open_interest_universe_mismatch",
+      "statement": "CoinGecko's approximately $4.067B perpetual OI and TradRadar's approximately $1.85B seven-exchange OI differ in contract universe, venue coverage and capture time. They are not competing measurements of a proven identical universe and must not be averaged.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0400Z",
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001232Z-05",
+      "category": "funding_rate_aggregation_conflict",
+      "statement": "CoinGecko's aggregate funding is positive while TradRadar's weighted aggregate is negative and venue-specific rates differ. Funding intervals, weighting and contract coverage require normalization before cross-provider comparisons or model use.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0400Z",
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T0530Z",
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001232Z-06",
+      "category": "etf_flow_provisional_and_coverage",
+      "statement": "Alpha Finance covers five funds through 29 October; XRP Insights covers six spot funds plus BITW, with GXRP flow exclusions and a provisional 30 October row. Holdings-derived changes may include BITW rebalancing and are not identical to issuer creation/redemption reports. Only settled, fund-complete observations should enter the feature store.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-ALPHAFINANCE-XRP-ETF-20261029",
+        "SRC-XRPINSIGHTS-ETF-TOTALS-20261030T233337Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001232Z-07",
+      "category": "orderbook_depth_is_snapshot_not_executable",
+      "statement": "CoinGecko's displayed +2%/-2% depth and 24-hour venue volumes are dynamic third-party snapshots. They can change rapidly, may differ by pair and aggregation methodology, and do not guarantee executable liquidity at the captured values.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z",
+        "SRC-COINMARKETCAP-XRP-MARKETS-20261031T001232Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001232Z-08",
+      "category": "coinbase_rlusd_collateral_not_live",
+      "statement": "Ripple says RLUSD collateral availability for Coinbase Global Exchange customers will follow. The announcement confirms current trading/management and chain deposits/withdrawals, not live collateral functionality or any XRP collateral balance.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001232Z-09",
+      "category": "dynamic_spot_quote_timestamp",
+      "statement": "CoinGecko and CoinMarketCap expose dynamic aggregate price pages without an exact quote timestamp in the captured content. Their similar $1.25 area is useful contextual corroboration, not a synchronized tick or admissible point-in-time training observation.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z",
+        "SRC-COINMARKETCAP-XRP-MARKETS-20261031T001232Z"
+      ]
+    }
+  ]
+}

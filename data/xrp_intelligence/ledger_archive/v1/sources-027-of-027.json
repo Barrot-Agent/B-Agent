@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 26,
+  "chunk_count": 27,
+  "record_count": 9,
+  "created_at_utc": "2026-10-30T08:31:00Z",
+  "records": [
+    {
+      "id": "SRC-COINBASE-Q3-2026-10Q-SEC-20261030",
+      "evidence_class": "PRIMARY_SEC_FILING",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "title": "Coinbase Global Q3 2026 Form 10-Q",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Coinbase says average USDC held in products reached an all-time high and its Circle arrangement was renewed on the same terms. Q3 stablecoin revenue USD306.905M vs USD324.534M YoY; 9M USD904.487M vs USD907.485M. Higher USDC balances contributed +USD84.6M Q3/+USD201.6M 9M; lower average interest rates reduced revenue USD52.8M/USD166.2M. Q3 net revenue USD1.160B, total revenue USD1.216B, MTUs 7.4M vs 9.3M, AOP USD376.6B vs USD515.9B; net income USD718.7M and Adjusted EBITDA USD332.9M; 9M net loss USD34.9M. Filing confirms an investment in Circle whose fair-value remeasurement affected investment gains/losses, but cited section does not give stake size. Q3 average USDC amount is not quantified in cited section."
+    },
+    {
+      "id": "SRC-CIRCLE-Q2-2026-10Q-SEC-20261030",
+      "evidence_class": "PRIMARY_SEC_FILING",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "title": "Circle Internet Group Q2 2026 Form 10-Q",
+      "published_at": "2026-08-05",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "USDC end circulation USD73.269B, average USD76.524B, Q2 onchain transaction volume USD14.8T (+151% YoY), reserve return 3.5% vs 4.1%, Coinbase daily weighted-average share of USDC on platform 19.5%, end platform balance USD12.442B. Circle distribution costs under Coinbase agreements USD324.6M Q2 and USD655.3M H1, based on platform balances and ecosystem-growth formula. Circle and SBI each contributed approximately USD1.5M-equivalent JPY to Circle SBI Japan K.K. in Nov2025; each owns 50%, Circle controls/consolidates the VIE, SBI interest is noncontrolling, and there were no significant operating results through 2026-06-30. Approximately 84% of reserves were in the Circle Reserve Fund managed by BlackRock; remaining reserves were cash across banks. The fund holds short U.S. Treasuries, overnight Treasury repo and cash; it is not FDIC-insured/government-guaranteed and BlackRock has no support obligation. Bank deposits exceeded FDIC limits; aggregate FDIC coverage USD1.8M across seven banks."
+    },
+    {
+      "id": "SRC-SBI-CIRCLE-IPO-INVESTMENT-RECHECK-20261030",
+      "evidence_class": "PRIMARY_COMPANY_RELEASE",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "title": "SBI Holdings and SBI Shinsei Bank strategic investment in Circle",
+      "published_at": "2025-06-09",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Official SBI release says SBI Holdings and SBI Shinsei Bank each acquired USD25M of Circle shares at its June 2025 IPO, USD50M combined. It also records SBI's historical approximately 9% Ripple shareholding as of the release date and SBI Ripple Asia. SBI Shinsei Bank was identified as providing banking services to Circle under the broader USDC collaboration. The 9% is historical, not a current cap table."
+    },
+    {
+      "id": "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-RECHECK-20261030",
+      "evidence_class": "PRIMARY_COMPANY_RELEASE",
+      "url": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+      "title": "SBI Holdings establishes joint venture with Circle group",
+      "published_at": "2025-08-22",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Official SBI release confirms establishment of a JV with Circle Internet Holdings to promote USDC use in Japan and create digital-finance/Web3 use cases, following the November 2023 MOU. SBI VC Trade launched public USDC service in March 2025. This JV is separate from SBI Startale Marketing and the October 2026 SMFG alliance."
+    },
+    {
+      "id": "SRC-SBI-CIRCLE-JV-50-50-PRESENTATION-RECHECK-20261030",
+      "evidence_class": "PRIMARY_INVESTOR_PRESENTATION",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
+      "title": "SBI 2025 investor presentation — Circle SBI Japan JV",
+      "published_at": "2025-06-02",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "SBI presentation identifies Circle SBI Japan K.K. as English name and SBI Circle Holdings as Japanese name, with 50%/50% investment ratios. Purpose: support exchanges handling USDC and create use cases with payment service providers. Circle's Q2 2026 SEC filing later confirms contributions and VIE control."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-XRPL-NATIVE-RECHECK-20261030",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "title": "Circle launches native USDC on XRPL",
+      "published_at": "2025-06-12",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Circle says native USDC is live on XRPL mainnet, supported by Circle Mint and APIs, without a third-party bridge. Qualified Circle Mint businesses can mint/redeem 1:1; Circle APIs support crosschain USDC swaps. This establishes USDC utility on XRPL, not a requirement to buy or use native XRP as bridge."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-RESERVE-PAGE-RECHECK-20261030",
+      "evidence_class": "ISSUER_TRANSPARENCY_PAGE",
+      "url": "https://www.circle.com/usdc",
+      "title": "Circle USDC reserve and network transparency page",
+      "published_at": "2026-10-27",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Circle lists native USDC on 38 blockchains including XRPL and says the Circle Reserve Fund is managed by BlackRock and custodied by BNY Mellon. Issuer disclosure; Circle's Q2 SEC filing supplies detailed reserve composition and risk qualifications."
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-ECONOMICS-BLOG-20261016",
+      "evidence_class": "ISSUER_PUBLISHED_ECONOMIC_CLAIM",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "title": "Circle H1 2026 USDC economics",
+      "published_at": "2026-10-16",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Circle says H1 USDC onchain transaction volume exceeded USD36T, minting/redemption exceeded USD315B and USD819M was paid for distribution partners and transaction costs. Gross onchain transaction volume is not equivalent to final real-world payment settlement or new external capital."
+    },
+    {
+      "id": "SRC-COINBASE-RLUSD-PLATFORM-RECHECK-20261030",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "title": "Coinbase launches RLUSD across Prime, Exchange and retail",
+      "published_at": "2026-10-28",
+      "accessed_at_utc": "2026-10-30T08:31:00Z",
+      "note": "Coinbase says RLUSD is available through Prime, Exchange and retail, with deposits/withdrawals on XRPL, Base and Ethereum and 1:1 USD conversion. Global Exchange collateral availability was described as future rollout. This confirms multi-issuer distribution alongside the continuing Circle arrangement, not measured RLUSD balances or XRP collateral."
+    }
+  ]
+}

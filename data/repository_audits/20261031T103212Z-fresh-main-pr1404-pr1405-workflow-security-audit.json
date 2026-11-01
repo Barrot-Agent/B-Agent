@@ -1,0 +1,180 @@
+{
+  "record_type": "repository_audit",
+  "schema_version": "1.0",
+  "audit_id": "REPO-AUDIT-20261031T103212Z-FRESH-MAIN-PR1404-PR1405-WORKFLOW-SECURITY",
+  "captured_at_utc": "2026-10-31T10:32:12.982Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "f0849ead73a4f8c6349e081766e660a5a61cf945",
+  "main_branch_modified_by_this_run": false,
+  "open_pr_inventory": {
+    "open": 178,
+    "drafts": 168,
+    "ready_for_review": 10,
+    "main_based": 176,
+    "current_main_base": 2,
+    "stale_main_base": 174,
+    "non_main_based": 2
+  },
+  "fresh_main_prs": [
+    {
+      "number": 1404,
+      "title": "Safety: quarantine main cross-analysis writer and inert approval pushes",
+      "base_sha": "f0849ead73a4f8c6349e081766e660a5a61cf945",
+      "head_sha": "d6ec4cb15115d6839aeb129300ba0226f4e95c73",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41191904453,
+      "tests_passed": 349,
+      "subtests_passed": 8,
+      "gate_run": 41191904350,
+      "gate_status": "PASS_MERGING_DISABLED",
+      "push_noop_run": 41191901147,
+      "push_noop_status": "PASS",
+      "manual_approval_dispatch": "NOT_EXECUTED",
+      "tradeoff": "Artifacts retained for 30 days; automatic Pages refresh is paused."
+    },
+    {
+      "number": 1405,
+      "title": "Security: disable unsafe Databricks token input workflow on current main",
+      "base_sha": "f0849ead73a4f8c6349e0817666e660a5a61cf945",
+      "head_sha": "f758ed53eddc7abcffdc7f99d8c897e4d21cac04",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41192102065,
+      "tests_passed": 344,
+      "subtests_passed": 8,
+      "gate_run": 41192102051,
+      "gate_status": "PASS_MERGING_DISABLED",
+      "tradeoff": "Unsafe token workflow remains on main until authorized review/merge; no secret operation performed."
+    }
+  ],
+  "stale_prs": [
+    {
+      "number": 1400,
+      "base_sha": "b28f43c907517e939e299e8766e2ebe655a0df13",
+      "head_sha": "5f3ac52478d5e97bebda377dfc89a06b634c31f4",
+      "state": "OPEN_DRAFT_STALE",
+      "ci_tests_passed": 371,
+      "subtests_passed": 8,
+      "gate_status": "PASS_MERGING_DISABLED",
+      "limitation": "Forecast/outcome ledger only; no trained model or full walk-forward evaluation."
+    },
+    {
+      "number": 1401,
+      "base_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+      "state": "OPEN_DRAFT_STALE"
+    },
+    {
+      "number": 1402,
+      "base_sha": "b90e60052697ea52948e8e675a4fcd75053b8799",
+      "state": "OPEN_DRAFT_STALE"
+    },
+    {
+      "number": 1398,
+      "base_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+      "state": "OPEN_DRAFT_STALE"
+    },
+    {
+      "number": 1397,
+      "base_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+      "state": "OPEN_DRAFT_STALE"
+    }
+  ],
+  "main_workflow_findings": [
+    {
+      "workflow": "cross-analysis.yml",
+      "risk": "ACTIVE_SCHEDULED_MAIN_WRITER",
+      "permissions": [
+        "contents:write"
+      ],
+      "behavior": "Runs hourly/after Knowledge Signal Cycle, commits generated analysis to main and triggers Pages deployment. Current main commit f0849 is an unsigned timestamp-only sentiment_shift.json change with zero observations; exact triggering workflow run ID not returned.",
+      "proposal_pr": 1404
+    },
+    {
+      "workflow": "scheduler-tick.yml",
+      "risk": "ACTIVE_QUEUE_AND_DISPATCH_WRITER",
+      "permissions": [
+        "contents:write",
+        "actions:write"
+      ],
+      "last_run": 41191329829,
+      "result": "0 of 1 queue entries fired; no main commit; queued entry already done."
+    },
+    {
+      "workflow": "barrot-autonomous-resolver.yml",
+      "risk": "AUTOMATIC_ISSUE_AND_PR_MUTATION",
+      "permissions": [
+        "issues:write",
+        "pull-requests:write"
+      ],
+      "last_run": 41191041200,
+      "side_effect": "Created issue #1403 from earlier failed CI run 41187110332; later PR #1400 exact-head CI passed. AUTO_ASSIGNEE was unset; no assignment."
+    },
+    {
+      "workflow": "rotate-databricks-token.yml",
+      "risk": "UNSAFE_CREDENTIAL_INPUT_AND_SHELL_INTERPOLATION",
+      "permissions": [
+        "workflow_dispatch"
+      ],
+      "behavior": "Main accepts new_token, interpolates it into shell, attempts gh secret set and dispatches Databricks deployment. PR #1405 removes token input, sets permissions empty and returns ROTATION_NOT_PERFORMED."
+    },
+    {
+      "workflow": "merge-queue.yml",
+      "risk": "MANUAL_MERGE_AND_BRANCH_MUTATION",
+      "permissions": [
+        "contents:write",
+        "pull-requests:write"
+      ],
+      "behavior": "Manual-only mode can update branches, comment, merge PRs and delete branches; not dispatched."
+    },
+    {
+      "workflow": "barrot-pr-automerge.yml",
+      "risk": "DISABLED",
+      "behavior": "Auto-merge workflow remains disabled."
+    },
+    {
+      "workflow": "deploy-a2a-worker.yml",
+      "risk": "PUSH_TRIGGERED_EXTERNAL_DEPLOYMENT",
+      "behavior": "Can deploy Cloudflare worker on main changes under a2a/**; not triggered by this run."
+    },
+    {
+      "workflow": "barrot-approve-pr.yml",
+      "risk": "ZERO_JOB_PUSH_ANOMALY_ON_MAIN_UNRESOLVED",
+      "behavior": "Main workflow is manual-dispatch only. PR #1404 adds a no-permission push no-op; its push no-op passed, manual dispatch untested."
+    }
+  ],
+  "dependencies": {
+    "root_manifests": [
+      "requirements.txt",
+      "requirements-dev.txt",
+      "pyproject.toml",
+      "requirements.tx"
+    ],
+    "lockfiles_found": [],
+    "pattern": "Broad lower-bound dependency requirements; CI installs requirements-dev.txt without a committed lockfile.",
+    "security_alert_access": "UNAVAILABLE_403",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN"
+  },
+  "branch_protection": {
+    "status": "PARTIALLY_UNKNOWN",
+    "details_endpoint": "403",
+    "returned_required_status_contexts": [],
+    "conclusion": "Do not infer absence of branch protection; full configuration was not accessible."
+  },
+  "local_worktree": {
+    "inspected": false,
+    "files_changed_locally": 0,
+    "conclusion": "No local worktree was accessed; cleanliness/dirty status is unknown."
+  },
+  "actions_by_this_run": [
+    "Created PR #1404 from current main and corrected one test assertion after its first CI run; final exact-head CI and gate passed.",
+    "Created PR #1405 from current main to disable unsafe Databricks token input; exact-head CI and gate passed.",
+    "No main write, merge, force-push, manual workflow dispatch, deployment, secret operation, paper-position mutation or real-money trade."
+  ],
+  "limitations": [
+    "PR #1404 artifact-only path pauses Pages refresh until a separate publication design is approved.",
+    "PR #1405 remains unmerged; unsafe token workflow remains on main.",
+    "Scheduler and autonomous resolver retain write permissions.",
+    "Most main-based PRs have stale base SHAs; no bulk rebase/merge attempted.",
+    "Full repository CI, dependency lock generation, security-alert review and local worktree inspection remain incomplete."
+  ]
+}

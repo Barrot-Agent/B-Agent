@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T060800Z-BINANCE-XRPL-INDEPENDENT-TRACE-AND-VALIDATOR-V3",
+  "captured_at_utc": "2026-10-30T06:08:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T060800Z-binance-xrpl-independent-trace-and-validator-v3.json",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "research_head_before_append": "bcbdcdacbf0c7d65ece89d681107d4195703b77c",
+  "observed_main_sha": "a644a2254a2c38e20a3b368090ced43d4767e561",
+  "focus": "Independently corroborate the Binance XRPL native-XRP outflow with Bitquery; extend the observed attacker-address cutoff to 03:54 UTC; reconcile the later Binance deposit/withdrawal status, PoR-wallet labeling and conflicting XRP ETF daily flows; correct the sharded-ledger validator's v3 index-format assumption and verify exact-head PR checks.",
+  "source_ids": [
+    "SRC-BINANCE-SECURITY-UPDATE-20261030T0508Z",
+    "SRC-TRM-BINANCE-THEFT-XRPL-RLUSD-20261030T0508Z",
+    "SRC-REUTERS-TRM-ATTRIBUTION-20261030T0508Z",
+    "SRC-AP-BINANCE-INCIDENT-20261030T0508Z",
+    "SRC-BINANCE-POR-METHODOLOGY-20261030T0508Z",
+    "SRC-XRPINSIGHTS-EXCHANGE-BALANCES-20261029-20261030T0508Z",
+    "SRC-TRADRADAR-XRP-PERP-20261030T0435Z",
+    "SRC-TRADRADAR-XRP-PERP-20261030T0100Z",
+    "SRC-ALPHAFINANCE-XRP-ETF-20261029-20261030T0508Z",
+    "SRC-XRPINSIGHTS-ETF-FLOWS-20261028-20261030T0508Z",
+    "SRC-CRYPTOETF-TODAY-XRP-ETF-20261029-20261030T0508Z",
+    "SRC-COINDESK-BINANCE-POR-RESERVE-RISK-20261030T0508Z",
+    "SRC-COINBASE-Q3-SEC-DECK-20261030T0508Z",
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261026-20261030T0508Z",
+    "SRC-REUTERS-COINBASE-MARKET-REACTION-20261030T0508Z",
+    "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+    "SRC-BINANCE-VERIFIED-DEPOSITS-WITHDRAWALS-20261030T0608Z",
+    "SRC-REUTERS-BINANCE-INCIDENT-STATUS-AND-MARKET-REACTION-20261030T0608Z",
+    "SRC-COINDESK-BINANCE-POR-WALLET-IMPACT-20261030T0608Z",
+    "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-OCT29-20261030T0608Z",
+    "SRC-CRYPTOETF-TODAY-XRP-PARTIAL-FLOW-OCT29-20261030T0608Z",
+    "SRC-XRPINSIGHTS-XRP-ETF-HOLDINGS-OCT28-20261030T0608Z"
+  ],
+  "incident": {
+    "binance_official": {
+      "initial_estimated_impact_usd": 6300000000,
+      "initial_onchain_freeze_estimate_usd": 3000000000,
+      "later_status": {
+        "deposits": "OPERATING_NORMALLY",
+        "withdrawals": "PAUSED",
+        "expected_withdrawal_resumption": "WITHIN_48_HOURS",
+        "source_id": "SRC-BINANCE-VERIFIED-DEPOSITS-WITHDRAWALS-20261030T0608Z"
+      },
+      "loss_coverage": "Binance says SAFU and company funds will cover all losses; no audited postmortem or updated PoR in this capture.",
+      "attack_vector": "Initial company account: compromised DevOps engineer laptop/service container; no evidence of wallet private-key leak."
+    },
+    "attribution": {
+      "trm": "TRM attributes TraderTraitor / North Korea with high confidence based on on-chain and off-chain intelligence.",
+      "chainalysis": "Reuters reports Chainalysis also attributed the incident to North Korea.",
+      "independent_confirmation_limit": "Bitquery independently traces public-chain transfers but does not independently establish the North Korea attribution."
+    },
+    "xrp": {
+      "trm_native_xrp_moved": 233460000,
+      "bitquery_native_xrp_moved_rounded": 233500000,
+      "source_wallets": 5,
+      "transfer_window_utc": "2026-10-29T20:05:00Z/2026-10-29T20:09:00Z",
+      "receiver_address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "trm_last_observation_utc": "2026-10-30T00:30:00Z",
+      "bitquery_balance_observation_utc": "2026-10-30T03:54:00Z",
+      "bitquery_receiver_state": "233.5M XRP remained; receiver had not sent a transaction since the drain.",
+      "status_after_0354_utc": "UNKNOWN_NOT_OBSERVED",
+      "sold_or_deposited_to_exchange": "NOT_OBSERVED_BY_BITQUERY_THROUGH_03:54_UTC",
+      "freezeability": "Native XRP has no issuer-level freeze/blacklist control; custodial venues may separately restrict their own accounts.",
+      "cross_chain_linkage": "Bitquery says XRP and Solana drains share no address with other incident chains; they are linked by timing, unusual transaction construction and Binance's own aggregate incident total."
+    },
+    "scope_reconciliation": {
+      "trm_chains": 10,
+      "bitquery_chains": 9,
+      "reason_for_difference": "Public reports use different chain coverage; Bitquery's nine-chain summary omits at least one chain listed by TRM. Do not combine their incident totals without a chain-by-chain crosswalk."
+    },
+    "rlusd": {
+      "trm_moved_on_ethereum": 88500000,
+      "trm_sold_via_dex": 48000000,
+      "trm_confirmed_ripple_freeze": 40500000,
+      "yi_he_reported_ripple_assistance_usd_approx": 200000000,
+      "reconciliation": "40.5M RLUSD freeze is on-chain confirmed by TRM; the broader ~$200M Ripple assistance statement is not fully reconciled to token-level composition."
+    },
+    "issuer_freezes": {
+      "trm_usdt_usd_approx": 1770000000,
+      "trm_usdc_usd_approx": 825000000,
+      "trm_usd1_usd_approx": 27800000,
+      "arbitrum_rescue_eth": 8426,
+      "arbitrum_rescue_arb": 74600000,
+      "status": "FROZEN_OR_RESCUED_IS_NOT_EQUIVALENT_TO_RECOVERED_OR_REIMBURSED"
+    },
+    "proof_of_reserves": {
+      "bitquery_method": "Bitquery says each drained wallet carries a Binance proof-of-reserves label in its address data.",
+      "coindesk_crosscheck": "CoinDesk identifies Binance 14 (Ethereum) in the Oct 1 PoR set and estimates ETH coverage could fall near 94% until replenishment.",
+      "xrp_specific_ratio": "NOT_RECALCULATED",
+      "xrp_wallet_oct1_snapshot_crosswalk": "NOT_INDEPENDENTLY_RECOMPUTED",
+      "prior_secondary_100_77_percent_claim": "NOT_VERIFIED_FROM_OFFICIAL_OCT1_XRP_LIABILITY_AND_WALLET_FILES"
+    }
+  },
+  "exchange_balances": {
+    "as_of_utc": "2026-10-29T08:00:00Z",
+    "total_labeled_xrp": 22580000000,
+    "exchanges": 24,
+    "wallets": 701,
+    "upbit": 6420000000,
+    "coinbase": 5840000000,
+    "binance": 2800000000,
+    "incident_scale_ratios": {
+      "xrp_transfer_as_percent_of_binance_labeled_balance_if_wallet_universe_overlaps": 8.3379,
+      "xrp_transfer_as_percent_of_all_24_exchange_labeled_balances": 1.0335,
+      "qualification": "Illustrative ratios only; five stolen wallets have not been crosswalked to the XRP Insights labeled-wallet universe, and labeled balances include cold storage/reserves rather than available order-book supply."
+    }
+  },
+  "market_panel": {
+    "last_synchronized_cross_venue_observation_utc": "2026-10-30T04:35:00Z",
+    "tradradar": {
+      "xrp_price": 1.2534,
+      "price_change_24h_percent": -3.05,
+      "open_interest_usd": 1860000000,
+      "open_interest_change_24h_percent": -5.57,
+      "funding_8h_percent": -0.0071,
+      "liquidations_24h_usd_min": 31720000,
+      "long_liquidations_usd": 30110000,
+      "short_liquidations_usd": 1610000,
+      "long_account_share_percent": 79.4,
+      "scope": "7 exchanges for OI; 5 for liquidation and account ratio."
+    },
+    "limitation": "No later synchronized XRP spot/perpetual panel was verified in this capture. Account ratios are not notional exposure; liquidation totals are provider/venue-scope dependent."
+  },
+  "etf_flow_reconciliation": {
+    "alpha_finance_oct29": {
+      "net_flow_usd": 8400000,
+      "funds": 5,
+      "thirty_session_flow_usd": 98900000,
+      "source_id": "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-OCT29-20261030T0608Z"
+    },
+    "cryptoetf_today_oct29": {
+      "net_flow_usd": 7100000,
+      "funds_reported": 2,
+      "funds_total": 5,
+      "settlement_status": "PARTIAL",
+      "source_id": "SRC-CRYPTOETF-TODAY-XRP-PARTIAL-FLOW-OCT29-20261030T0608Z"
+    },
+    "xrp_insights_oct28": {
+      "net_flow_xrp": 174140,
+      "holdings_xrp": 1190251285,
+      "oct26_28_net_flow_xrp": -2958545,
+      "universe": "6 spot funds plus BITW; GXRP excluded from flow sum while holdings count",
+      "source_id": "SRC-XRPINSIGHTS-XRP-ETF-HOLDINGS-OCT28-20261030T0608Z"
+    },
+    "reconciliation": "Not comparable as same-day totals: different fund universes, issuer-file settlement cutoffs and GXRP treatment. No ETF-flow feature admitted."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "HYP-BINANCE-XRP-ATTACKER-OVERHANG-20261030",
+      "claim": "The 233.46M native XRP at an attacker-controlled XRPL receiver is a latent future supply/liquidity overhang if later sold, bridged or deposited to a venue.",
+      "support": [
+        "TRM 233.46M XRP transfer",
+        "Bitquery independently observes about 233.5M XRP still at the receiver at 03:54 UTC"
+      ],
+      "counter": [
+        "No receiver transaction after the drain through Bitquery's 03:54 cutoff",
+        "No sale, exchange deposit, mixer or bridge observed through that cutoff",
+        "Native XRP is not issuer-freezable, but no liquidation is observed"
+      ],
+      "status": "TRANSFER_AND_STATIC_BALANCE_CORROBORATED; FUTURE_DISPOSITION_UNKNOWN"
+    },
+    {
+      "id": "HYP-BINANCE-POR-CUSTOMER-COVERAGE-RISK-20261030",
+      "claim": "The attack created asset-specific PoR coverage risk because drained wallets were PoR-labelled; the risk may persist until replenishment is demonstrated.",
+      "support": [
+        "Bitquery says all drained wallets carry Binance PoR labels",
+        "CoinDesk identifies Binance 14 in Oct 1 PoR and estimates ETH coverage could be near 94% before replenishment"
+      ],
+      "counter": [
+        "Binance says SAFU and company funds cover all losses and user funds are safe",
+        "No current XRP-specific reserve ratio or liability denominator has been recomputed",
+        "PoR snapshots and customer liabilities can change; freezes/recoveries/replenishment remain evolving"
+      ],
+      "status": "ASSET-BACKING-RISK_SCENARIO; XRP_RATIO_UNVERIFIED"
+    },
+    {
+      "id": "HYP-POST-INCIDENT-EXCHANGE-MIGRATION-TO-COINBASE-20261030",
+      "claim": "Some users may shift custody/trading from Binance to Coinbase after withdrawals reopen, potentially changing XRP venue balances and basis.",
+      "support": [
+        "Coinbase was publicly reported unaffected",
+        "Coinbase has substantial labeled XRP custody wallets and broad distribution"
+      ],
+      "counter": [
+        "No measured Binance-to-Coinbase XRP transfers or customer migration",
+        "Coinbase's 5.84B labeled XRP is not proprietary inventory",
+        "Coinbase shares fell in the initial market reaction; status-page silence does not prove zero indirect impact"
+      ],
+      "status": "SPECULATIVE; FLOW_CONFIRMATION_REQUIRED"
+    },
+    {
+      "id": "HYP-XRP-ETF-FLOW-VENDOR-DISAGREEMENT-20261030",
+      "claim": "Current Oct 29 XRP ETF flow headlines are dominated by asynchronous reporting and different fund universes rather than a reconciled daily capital-flow measure.",
+      "support": [
+        "Alpha Finance +$8.4M across 5 funds",
+        "CryptoETF.today +$7.1M but only 2/5 funds reported",
+        "XRP Insights reports Oct 28 +174.14K XRP and Oct26-28 -2.96M XRP on a different universe"
+      ],
+      "counter": [
+        "Issuer-level holdings files can resolve differences once all are published and aligned",
+        "Some apparent differences may be timing rather than methodology"
+      ],
+      "status": "CONFIRMED_MEASUREMENT_INCOMPATIBILITY; TRUE_DAILY_FLOW_REQUIRES_RECONCILIATION"
+    }
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "nine_platform_status": "DESIGN_ONLY; GitHub connector tested; no live authentication/handoff verified for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks."
+}

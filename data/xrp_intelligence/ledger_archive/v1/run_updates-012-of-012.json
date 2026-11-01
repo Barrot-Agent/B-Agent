@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 11,
+  "chunk_count": 12,
+  "record_count": 1,
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T03:06:30Z",
+      "update_type": "EXACT_HEAD_LEDGER_VALIDATOR_AND_FAIL_CLOSED_GATE_VERIFICATION",
+      "main_sha": "84f991932d3137ae8df49cead40f611a83a97c2c",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "verified_head_sha": "ab1678cfecebd4e8d43c0d65a2230878a1372591",
+      "source_ids": [
+        "SRC-BITNOMIAL-RLUSD-XRP-COLLATERAL-LAUNCH-20251103",
+        "SRC-CFTC-FAQ-26-05-Q7-Q11-202603",
+        "SRC-BITNOMIAL-MARGIN-METHODOLOGY-20250717",
+        "SRC-COINBASE-Q3-2026-OFFICIAL-20261029",
+        "SRC-CIRCLE-ACI-USDC-COLOMBIA-PILOT-20261027",
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0215Z",
+        "SRC-CRYPTOKEYHOLE-XRP-ETF-20261030T0230Z",
+        "SRC-XRP-INSIGHTS-ETF-20261030T0301Z",
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20260305",
+        "SRC-COINMARKETCAP-XRP-UNSTAMPED-SPOT-20261030T0301Z",
+        "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+        "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+        "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+        "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+      ],
+      "validation": {
+        "workflow": "XRP Ledger Archive Validation",
+        "run_id": 40995403842,
+        "status": "SUCCESS",
+        "job": "Validate sharded XRP ledger and regression tests",
+        "steps": {
+          "checkout_exact_commit": "SUCCESS",
+          "python_setup": "SUCCESS",
+          "pinned_pytest_install": "SUCCESS",
+          "compile_validator_and_tests": "SUCCESS",
+          "isolated_pytest_suite": "SUCCESS"
+        },
+        "test_file": "tests/test_xrp_ledger_index.py",
+        "test_function_count": 15,
+        "test_suite_result": "PASS"
+      },
+      "gate": {
+        "run_id": 40995407304,
+        "status": "SUCCESS",
+        "job": "Merge disabled pending gate verification",
+        "result": "PASS",
+        "automatic_merge": "DISABLED",
+        "repository_mutation": "NONE"
+      },
+      "repository_findings": {
+        "pr_1353": "OPEN_DRAFT_UNMERGED; mergeable_state CLEAN after exact-head validator and gate",
+        "pr_1362": "OPEN_DRAFT_UNMERGED; exact-head CI and fail-closed gate passed on its head; current main is one non-overlapping sentiment_shift.json commit ahead of its merge base",
+        "unexpected_approval_workflow_push_run_id": 40995402452,
+        "unexpected_approval_workflow_push_run": "FAILURE_WITH_ZERO_JOBS",
+        "approval_workflow_declared_triggers": "workflow_dispatch only on both main and research branch at inspection",
+        "approval_workflow_root_cause": "UNRESOLVED; no jobs/logs exposed to explain push-event run"
+      },
+      "verification": {
+        "structural_archive_readback": "PASS",
+        "latest_index_character_count": "98526 before verification-receipt append",
+        "archive_record_counts": {
+          "sources": 1249,
+          "run_updates": 212,
+          "limitations": 310
+        },
+        "source_ids_unique": true,
+        "snapshot_and_graph_references_resolve": true,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_modified_by_this_run": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "paper_state_mutated": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

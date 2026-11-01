@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T022100Z-COINBASE-Q3-MULTI-ISSUER-AND-ACTUAL-CAPITAL-SEPARATION",
+  "created_at_utc": "2026-10-31T02:21:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_NOT_MODEL_ADMISSION",
+  "context": "Coinbase's Q3 2026 results provide new evidence about its stablecoin distribution economics, market share and diversification. These metrics must be time-aligned with the October 28 RLUSD listing and separated from XRP-specific value capture.",
+  "decisions": [
+    "Store Coinbase Q3 investor-relations metrics as company-reported and not independent of Coinbase's SEC filing.",
+    "Keep average USDC held in Coinbase products ($22B in Q3) separate from net new external capital, customer net flows, stablecoin market cap and XRP purchases.",
+    "Respect the event-time boundary: Coinbase Q3 ended September 30, before RLUSD became available on October 28; do not use Q3 USDC metrics as post-RLUSD evidence.",
+    "Represent Coinbase's Circle/USDC collaboration as renewed on the same terms per its Q3 SEC filing, while separately representing the new Coinbase/RLUSD distribution relationship.",
+    "Do not infer Circle displacement from RLUSD listing or infer RLUSD dominance from Ripple's market-cap claims; require post-listing balance, volume, revenue and redemption data.",
+    "Separate Coinbase's aggregate 10.7% crypto trading-volume market share from XRP-specific market share, venue liquidity and XRP custody/collateral.",
+    "Treat prediction-market annualized revenue and two-year derivatives CAGR as company-reported run-rate/growth metrics, not Q3 realized revenue or XRP derivatives activity.",
+    "Treat Coinbase GAAP net income and adjusted net income/EBITDA as distinct measures; retain the non-GAAP definitions and investment-gain reconciliation.",
+    "Do not infer XRP demand from RLUSD settlement on XRPL. Measure XRP bridge conversions, AMM execution, fees, account-reserve changes and net external acquisition separately.",
+    "Do not admit company-level Q3 metrics as short-horizon XRP model features without point-in-time walk-forward evidence of incremental predictive value."
+  ],
+  "invariants": [
+    "Average USDC held is not net capital.",
+    "Q3 ended before Coinbase's RLUSD listing.",
+    "Coinbase listing RLUSD does not prove Circle displacement.",
+    "Coinbase aggregate market share is not XRP market share.",
+    "RLUSD settlement on XRPL does not prove XRP bridge demand.",
+    "Annualized prediction-market revenue is not Q3 recognized revenue.",
+    "Company-reported operating metrics are not independent corroboration.",
+    "Forecasts require fixed horizon, cutoff, target, assumptions, alternatives, calibrated probability and later outcome."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "fixed_horizon_contract_status": "DESIGNED_NOT_EXECUTED_OR_VALIDATED"
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T230816Z-XRP-INSIGHTS-ESCROW-PREUNLOCK",
+  "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+  "captured_at_utc": "2026-10-31T23:08:16Z",
+  "created_at_utc": "2026-10-31T23:08:16Z",
+  "data_as_of_utc": "2026-10-31T21:13:00Z",
+  "observed_ledger_index": 108031214,
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "publisher": "XRP Insights — XRPL escrow tracker",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "retrieved_at_utc": "2026-10-31T23:08:16Z",
+      "publication_time_utc": "2026-10-31T21:13:00Z",
+      "evidence_class": "SECONDARY_ONCHAIN_DATA_AGGREGATION",
+      "claims": [
+        "At XRP Ledger #108031214, closed 2026-10-31 21:13 UTC, two Ripple-associated escrow objects totaling 1,000,000,000 XRP have FinishAfter eligibility at 2026-11-01T00:00:00Z.",
+        "The tracker reports 31.4B XRP in 98 Ripple-owned escrow objects across eight accounts.",
+        "The prior 12 monthly cycles report 12B XRP released, 8.4B re-escrowed (70%), and 3.6B net outside escrow."
+      ],
+      "limitations": [
+        "This capture occurred at 23:08:16 UTC but the underlying pinned ledger was 21:13 UTC, 1h55m16s old.",
+        "Raw XRPL account_objects/account_tx state was not retrieved independently in this run.",
+        "FinishAfter eligibility is not EscrowFinish execution, destination receipt, exchange deposit or sale."
+      ]
+    }
+  ],
+  "findings": [
+    "At capture, 51m44s remained until the scheduled FinishAfter time.",
+    "No post-eligibility EscrowFinish could have occurred before 00:00 UTC."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Secondary tracker; raw XRPL JSON-RPC state was not obtained in this run.",
+    "Underlying ledger snapshot was stale by 1h55m16s at capture.",
+    "Historical 70% re-escrow is a scenario prior, not a protocol rule or forecast."
+  ],
+  "corrections": [],
+  "pending_archive_append": false,
+  "exact_head_validation": false,
+  "status": "PENDING_EXACT_HEAD_VALIDATION"
+}

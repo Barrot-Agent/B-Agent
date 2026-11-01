@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 39,
+  "chunk_count": 40,
+  "record_count": 7,
+  "created_at_utc": "2026-10-30T12:59:00Z",
+  "records": [
+    {
+      "id": "SRC-SBI-SMBC-STARTALE-MARKETING-5PCT-20261030",
+      "evidence_class": "PRIMARY_SBI_CAPITAL_AND_BUSINESS_ALLIANCE",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "title": "SBI Holdings and SMBC Group capital/business alliance; SMBC takes 5% of SBI Startale Marketing",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T12:55:00Z",
+      "note": "SBI Holdings and Sumitomo Mitsui Financial Group signed a capital/business alliance to study stablecoin-based financial services. SMBC Group agreed to take a 5% equity stake in SBI Startale Marketing, the SBI-Startale JV promoting JPYSC and developing use cases. The release does not disclose the investment amount, a production launch, XRP use or a public-chain route."
+    },
+    {
+      "id": "SRC-SBI-PHOTONPAY-INVESTMENT-20261030",
+      "evidence_class": "PRIMARY_SBI_INVESTMENT_ANNOUNCEMENT",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16693.html",
+      "title": "SBI investment in PhotonPay stablecoin-enabled cross-border B2B payments infrastructure",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T12:55:00Z",
+      "note": "SBI's SBI-Sygnum-Azimut Digital Asset Opportunity Fund decided to invest in Hong Kong-based PhotonPay; amount undisclosed. PhotonPay combines fiat and stablecoin payments, cards, collections and remittances; SBI reports 60+ currencies, 100+ remittance routes, 33 payment/financial licences across 16 offices and 200+ countries served. Its annualized total payment volume was USD65B as of August 2026 and it issued 4.4M cards in the prior 12 months. These are all-rail platform figures, not stablecoin-only volume. PhotonPay conducted a Mastercard AI-agent payment PoC in May 2026; no XRP/XRPL route is disclosed."
+    },
+    {
+      "id": "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016",
+      "evidence_class": "PRIMARY_SBI_AND_STARTALE_ANNOUNCEMENT",
+      "url": "https://www.startale.com/en/blog/openstandard-startale-sbi",
+      "title": "SBI Holdings and Startale join Open Standard; explore JPYSC-OUSD interoperability",
+      "published_at": "2026-10-16",
+      "accessed_at_utc": "2026-10-30T12:55:00Z",
+      "note": "SBI and Startale joined Open Standard, an alliance promoting USD stablecoin OUSD. The announcement names Visa, Stripe, Mastercard, BlackRock and Coinbase among 140+ participating companies and says over 200 institutions/fintechs/businesses have signed up. SBI/Startale will explore a pilot connecting JPYSC and OUSD. The release explicitly says this is pilot exploration, not a launched commercial service or production settlement. Coinbase/Mastercard are shared consortium relationships, not evidence of a direct SBI contract."
+    },
+    {
+      "id": "SRC-JPYSC-ISSUANCE-JGB-RESERVE-AND-LENDING-20260907",
+      "evidence_class": "PRIMARY_SBI_TRUST_BANK_AND_VCTRADE_RESERVE_DISCLOSURE",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "title": "JPYSC reserve composition and short-term Japanese government bond investment",
+      "published_at": "2026-09-07",
+      "accessed_at_utc": "2026-10-30T12:55:00Z",
+      "note": "As of September 7, 2026, JPYSC outstanding issuance was approximately JPY20.1B. SBI Shinsei Trust Bank began investing JPY10B of trust backing assets in short-term Japanese government bonds under the amended Payment Services Act, which permits up to 50% of trust backing to be invested in qualifying short-term JGBs/deposits subject to conditions. SBI VC Trade reported approximately JPY6.9B in JPYSC lending applications; this is application volume, not confirmed accepted/outstanding loans. The JGB investment supports backing-asset yield while retaining redemption liquidity."
+    },
+    {
+      "id": "SRC-JPYSC-ACCOUNT-ONLY-PUBLIC-CHAIN-PLANNED-20260624",
+      "evidence_class": "PRIMARY_SBI_JPYSC_LAUNCH_AND_PRODUCT_PAGE",
+      "url": "https://www.sbivc.co.jp/newsview/fx4zmjwbl",
+      "title": "JPYSC launch — VCTRADE account-only, public-chain circulation planned",
+      "published_at": "2026-06-24",
+      "accessed_at_utc": "2026-10-30T12:55:00Z",
+      "note": "SBI's launch release says JPYSC was initially available only within SBI VC Trade accounts and external-wallet withdrawals were not enabled. Public-chain circulation was planned after legal/tax treatment was clarified and subject to supervisory confirmation. SBI's current JPYSC product page repeats that deposits/withdrawals are not supported at launch and that public-chain migration is future conditional work. No XRPL or other live public-chain route is established."
+    },
+    {
+      "id": "SRC-JPYSC-LENDING-INITIAL-3PCT-20260713",
+      "evidence_class": "PRIMARY_SBI_VCTRADE_LENDING_ANNOUNCEMENT",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0713_16477.html",
+      "title": "SBI VC Trade JPYSC lending service initial offer",
+      "published_at": "2026-07-13",
+      "accessed_at_utc": "2026-10-30T12:55:00Z",
+      "note": "SBI VC Trade announced JPYSC lending from July 16, 2026 with an initial recruitment rate of 3% annualized. This is a product offer; it does not establish current realized yield, accepted loan volume, borrower identity, collateral composition or XRP demand."
+    },
+    {
+      "id": "SRC-SBI-STARTALE-50M-EQUITY-INVESTMENT-20260326",
+      "evidence_class": "PRIMARY_SBI_STRATEGIC_EQUITY_INVESTMENT",
+      "url": "https://www.sbigroup.co.jp/news/2026/0326_16202.html",
+      "title": "SBI Group invests approximately USD50M in Startale Group",
+      "published_at": "2026-03-26",
+      "accessed_at_utc": "2026-10-30T12:55:00Z",
+      "note": "SBI announced an approximately USD50M investment in Startale Group through subsidiaries and planned to make Startale an equity-method affiliate. SBI and Startale were developing Strium and JPYSC. This is strategic equity capital, not JPYSC reserve capital or XRP purchases."
+    }
+  ],
+  "correction": {
+    "reason": "Removed duplicate source ID already present in sources-024-of-024.json; original shard preserved unreferenced.",
+    "duplicate_source_id": "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+    "original_shard_path": "data/xrp_intelligence/ledger_archive/v1/sources-040-of-040.json",
+    "canonical_existing_source_path": "data/xrp_intelligence/ledger_archive/v1/sources-024-of-024.json"
+  }
+}

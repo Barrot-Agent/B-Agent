@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T170330Z-SBI-SMBC-OPEN-STANDARD-CORRECTION",
+  "captured_at_utc": "2026-10-30T17:03:30Z",
+  "data_cutoff_utc": "2026-10-30T17:03:30Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T170330Z-sbi-smbc-open-standard-correction.json",
+  "source_ids": [
+    "SRC-SBI-SMBC-5PCT-PRIMARY-20261030",
+    "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-20261016",
+    "SRC-BINANCE-NEWS-JPYSC-OUTSTANDING-20261030"
+  ],
+  "findings": {
+    "correction": {
+      "prior_classification": "SMBC 5% stake was marked secondary-reported",
+      "corrected_classification": "PRIMARY CONFIRMED",
+      "basis": "SBI's official October 30 release explicitly says SMBC Group agreed to a 5% capital participation in SBI Startale Marketing."
+    },
+    "open_standard": {
+      "sbi_startale_participation": true,
+      "participants_over_140": [
+        "Visa",
+        "Stripe",
+        "Mastercard",
+        "BlackRock",
+        "Coinbase"
+      ],
+      "initiative": "Open Standard / Open USD (OUSD)",
+      "stablecoins": [
+        "JPYSC",
+        "OUSD"
+      ],
+      "mou": "Explore JPYSC/OUSD interoperability proof-of-concept",
+      "status": "EXPLORATORY_NOT_LIVE"
+    },
+    "jpysc_outstanding": {
+      "official_sep7_2026_jpy": 20100000000,
+      "secondary_oct30_2026_reported_jpy": 20800000000,
+      "latest_issuer_confirmed_value": "not obtained",
+      "treatment": "retain both with provenance; do not silently overwrite official series with secondary estimate"
+    },
+    "coinbase_relationship": "Coinbase is named among Open Standard participants; no direct Coinbase-JPYSC issuance, distribution or settlement agreement is established.",
+    "forecast_status": "NOT_ISSUED",
+    "market_features_admitted": false
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

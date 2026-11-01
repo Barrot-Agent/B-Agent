@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 158,
+  "chunk_count": 159,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "RUN-XRP-COINBASE-ETF-CUSTODY-TRADE-CREDIT-RIPPLE-SEED-20261031T211452Z",
+      "recorded_at_utc": "2026-10-31T21:14:52Z",
+      "update_type": "INSTITUTIONAL_XRP_CUSTODY_COLLATERAL_AND_ACTUAL_ETF_CAPITAL_FLOWS",
+      "data_cutoff_utc": "2026-10-31T21:14:52Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T211452Z-coinbase-etf-custody-prime-execution-credit-and-ripple-seed-capital-final.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T211452Z-coinbase-etf-custody-financing-and-ripple-21shares-seed-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T211452Z-institutional-etf-custody-credit-and-capital-flow-feature-admission.json",
+      "source_bundle_path": "data/xrp_intelligence/sources/20261031T211452Z-sec-etf-custody-credit-ripple-seed-and-exchange-methodology.json",
+      "source_ids": [
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-10Q",
+        "SRC-20261031T211452Z-SEC-BITWISE-XRP-ETF-S1A-TRADE-CREDIT",
+        "SRC-20261031T211452Z-SEC-21SHARES-XRP-ETF-10Q",
+        "SRC-20261031T211452Z-SEC-FRANKLIN-XRP-ETF-10Q",
+        "SRC-20261031T211452Z-SEC-CANARY-XRP-ETF-10Q",
+        "SRC-20261031T211452Z-SEC-GRAYSCALE-XRP-ETF-424B3",
+        "SRC-20261031T211452Z-XRP-INSIGHTS-ETF-CUSTODY-AND-HOLDINGS",
+        "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+      ],
+      "findings": [
+        "SEC filings establish Coinbase Custody, Coinbase Inc and Coinbase Credit roles in Bitwise XRP ETF: custodian, Prime Execution Agent and secured trade-credit lender.",
+        "Bitwise trade credits may be cash or XRP, secured by first-priority liens over the Trust Trading Balance and XRP Account; Agent Execution Model is rare and actual usage/amount unknown.",
+        "Coinbase was Bitwise's principal market for GAAP NAV at June30 2026; this is fund-specific.",
+        "Coinbase appears in the custodian set of five of six US spot XRP ETFs; those funds held 1.1422B XRP at Oct30, but actual Coinbase allocation is unknown.",
+        "Ripple Markets purchased 10M 21Shares initial ETF shares for $220.676M on Dec20 2024; this is ETF-share capital, not proof of equivalent spot XRP purchase. The two-year share restriction date is Dec20 2026, plus six months after listing.",
+        "Bitwise H1 2026 net XRP inventory increase was approximately +155.615M; 21Shares H1 net XRP inventory change was approximately -27.303M and net cash capital transactions -$49.501M, while Q2 alone was +$3.702M net cash and +2.455M XRP inventory.",
+        "XRP Insights methodology shows 48.4% cold, 14% hot, 37.8% unclassified, 487.2M non-customer reserves, no per-wallet history and a 1.6M Binance-Peg discrepancy."
+      ],
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 8,
+        "missing_source_references": 0,
+        "expected_archive_shards": 439,
+        "expected_source_records": 2149,
+        "expected_run_updates": 362,
+        "expected_limitations": 963,
+        "expected_archive_records_roundtrip": 3474,
+        "source_revision_addenda_pending_archive_append": 10
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_modified_by_this_run": false,
+        "merge": false,
+        "force_push": false,
+        "manual_workflow_dispatch": false,
+        "secret_access": false,
+        "paper_state_mutation": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

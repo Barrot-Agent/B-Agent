@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261101T001238Z-MAIN-KNOWLEDGE-SIGNAL-FRESHNESS-PR1433",
+  "captured_at_utc": "2026-11-01T00:12:38Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "a989ae6ee81106e5a3521d89883c59e263d6d305",
+  "main_commit": {
+    "title": "chore: Barrot telemetry report",
+    "changed_paths": [
+      "AUTONOMOUS_DEPLOYMENT_REPORT.md"
+    ],
+    "previous_commit_sha": "68f2afb33ebbd224bfbc0a80ed66963edd373882",
+    "previous_commit_title": "Cross-analysis refresh [skip ci]",
+    "previous_commit_changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ]
+  },
+  "main_workflow_observation": {
+    "path": ".github/workflows/knowledge-signal-cycle.yml",
+    "blob_sha": "21aae946ec92fbe2bd176fa79e57406b32da9517",
+    "trigger": "workflow_dispatch only",
+    "permissions": {
+      "contents": "write"
+    },
+    "checkout_persist_credentials": "not disabled",
+    "direct_git_commit_and_push": true,
+    "status": "WRITE_CAPABILITY_REMAINS_ON_MAIN"
+  },
+  "pull_requests": [
+    {
+      "number": 1431,
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "base_sha": "f0bbed8c51974e4e0b4cb98b09a8ef0eb5fe0fbb",
+      "head_sha": "57531208184dc3ac2d49a6cce3265c3a1dd8e061",
+      "status": "STALE_BASE"
+    },
+    {
+      "number": 1432,
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "base_sha": "b51099e04b410f49e28d9c80201f68847aa8118a",
+      "head_sha": "91eae69c3994f9aebfb7ce3a866bb09bb569af33",
+      "status": "STALE_BASE",
+      "prior_ci": "PASS_ON_OLD_HEAD",
+      "prior_gate": "PASS_MERGE_DISABLED"
+    },
+    {
+      "number": 1433,
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "base_sha": "a989ae6ee81106e5a3521d89883c59e263d6d305",
+      "head_sha": "a246a55743b50e9c089dec9a3c1ca0763ca2ff99",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1433",
+      "changed_files": 5,
+      "additions": 449,
+      "deletions": 60,
+      "mergeable": true,
+      "ci_runs_returned": 0,
+      "combined_statuses": 0,
+      "gate": "NOT_RUN",
+      "status": "CURRENT_MAIN_BASED_NOT_VERIFIED"
+    }
+  ],
+  "pr1433_changes": [
+    "Read-only, artifact-only Knowledge Signal Cycle; direct commit/push removed in proposed workflow.",
+    "Fail-closed provider response validation and NOT_ISSUED output when evidence is unavailable.",
+    "Normalize RSS publication timestamps and preserve raw pubDate.",
+    "Require valid timezone-aware publication and ingestion timestamps; reject missing, malformed, stale and future rows.",
+    "Reject non-finite/out-of-range relevance weights and unknown sentiment labels; deduplicate URLs.",
+    "Three additional timestamp and deduplication regression tests."
+  ],
+  "main_branch_mutations_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "workflow_dispatch_performed": false,
+  "full_repository_ci": "NOT_RUN",
+  "dependency_vulnerability_scan": "NOT_RUN",
+  "security_alert_access": "NOT_AVAILABLE",
+  "limitations": [
+    "PR #1433 has no workflow runs or commit status checks returned for its current head; its code is not yet verified by CI.",
+    "The Knowledge Signal Cycle proposal remains manual-only; a scheduled pipeline requires durable deduplication and immutable storage first.",
+    "Main retains a write-capable Knowledge Signal Cycle until an approved change is merged.",
+    "The full repository CI and complete dependency/security scan remain incomplete."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T215008Z-ESCROW-COUNTDOWN-ARITHMETIC-CORRECTION",
+  "captured_at_utc": "2026-10-31T21:50:08Z",
+  "status": "CORRECTION_RECORDED",
+  "decision": "The previous 21:45:45Z snapshot recorded 4,455 seconds remaining, but the correct interval to 00:00:00Z Nov1 was 8,055 seconds. At 21:50:08Z, the correct remaining interval is 7,792 seconds. The previous snapshot is preserved; this new snapshot supersedes it.",
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "source_revision_addenda_unchanged": 28
+}

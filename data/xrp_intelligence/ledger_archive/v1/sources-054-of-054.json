@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 53,
+  "chunk_count": 54,
+  "record_count": 7,
+  "created_at_utc": "2026-10-30T16:50:00Z",
+  "records": [
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-PAYCHECK-20260417",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_METADATA",
+      "url": "https://www.youtube.com/watch?v=Us_FIT4RByY",
+      "title": "Why XRP Matters More Than Your Paycheck",
+      "published_at": "2026-04-17",
+      "accessed_at_utc": "2026-10-30T16:50:00Z",
+      "observed_views": 30004,
+      "observed_likes": 2100,
+      "channel_display_name": "Kamilah Stevenson",
+      "metadata_source": "YouTube search result",
+      "classification": "CREATOR_OPINION_AND_PROMOTIONAL_CONTENT",
+      "note": "Description presents wealth-building and asset-positioning commentary and includes affiliate/promotional links. It is not evidence of verified XRP holdings, purchases or investment performance."
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-NEED-20260319",
+      "evidence_class": "SECONDARY_PUBLIC_VIDEO_METADATA",
+      "url": "https://www.youtube.com/watch?v=rv0BAV0vLgo",
+      "title": "How Much XRP Do You ACTUALLY Need?",
+      "published_at": "2026-03-19",
+      "accessed_at_utc": "2026-10-30T16:50:00Z",
+      "observed_views": 74900,
+      "observed_likes": null,
+      "channel_display_name": "Kamilah Stevenson",
+      "metadata_source": "Glasp YouTube summary",
+      "classification": "CREATOR_INVESTMENT_OPINION",
+      "note": "Glasp indexes this video under Kamilah Stevenson. Views are rounded third-party metadata. No personal holdings or price target outcome is independently verified."
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-STEVENSON-RIPPLE-BANK-20251214",
+      "evidence_class": "SECONDARY_PUBLIC_VIDEO_METADATA",
+      "url": "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+      "published_at": "2025-12-14",
+      "accessed_at_utc": "2026-10-30T16:50:00Z",
+      "observed_views": 76000,
+      "observed_likes": null,
+      "channel_display_name": "Kamilah Stevenson",
+      "metadata_source": "Glasp and Lily AI transcript index",
+      "classification": "CREATOR_COMMENTARY",
+      "note": "Indexed transcript opens with the speaker saying 'Camila Stevenson' (one l). This does not establish identity equivalence with Camilla Stephenson or Kamilah Stevenson beyond the video listing."
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-ETF-PRICE-20260113",
+      "evidence_class": "SECONDARY_PUBLIC_VIDEO_METADATA",
+      "url": "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "title": "XRP ETFs Are Here. Price Isn’t Moving. Here’s What Everyone’s Missing.",
+      "published_at": "2026-01-13",
+      "accessed_at_utc": "2026-10-30T16:50:00Z",
+      "observed_views": 20400,
+      "observed_likes": null,
+      "channel_display_name": "Kamilah Stevenson",
+      "metadata_source": "Glasp YouTube summary",
+      "classification": "CREATOR_MARKET_COMMENTARY",
+      "note": "Glasp indexes this video under Kamilah Stevenson and provides a partial transcript. No independently verified forecast outcome is attached."
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-STEVENSON-CRYPTO-WEALTH-20260115",
+      "evidence_class": "SECONDARY_PUBLIC_VIDEO_METADATA",
+      "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0",
+      "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+      "published_at": "2026-01-15",
+      "accessed_at_utc": "2026-10-30T16:50:00Z",
+      "observed_views": 23100,
+      "observed_likes": null,
+      "channel_display_name": "Kamilah Stevenson",
+      "metadata_source": "Glasp YouTube summary",
+      "classification": "CREATOR_MACRO_AND_WEALTH_COMMENTARY",
+      "note": "The indexed transcript discusses bull/bear expectations and portfolio behavior. It is not a scored forecast record."
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-BTC-DISTINCTION-20251224",
+      "evidence_class": "PUBLIC_YOUTUBE_VIDEO_METADATA",
+      "url": "https://www.youtube.com/watch?v=pmJTrXJQ8Vw",
+      "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+      "published_at": "2025-12-24",
+      "accessed_at_utc": "2026-10-30T16:50:00Z",
+      "observed_views": 44991,
+      "observed_likes": 3100,
+      "channel_display_name": "Kamilah Stevenson",
+      "metadata_source": "YouTube search result",
+      "classification": "CREATOR_XRP_MARKET_COMMENTARY",
+      "note": "Description contrasts XRP utility and Bitcoin treasury narratives and includes promotional links. Claims are commentary, not verified institutional capital flows."
+    },
+    {
+      "id": "SRC-YOUTUBE-KAMILAH-CHANNEL-CANDIDATE-20261030",
+      "evidence_class": "SECONDARY_CHANNEL_PROFILE_CANDIDATE",
+      "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+      "title": "Kamilah Stevenson — candidate YouTube channel profile",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T16:50:00Z",
+      "channel_id_candidate": "UCqUPJMQdkCN6lsLVDnichPA",
+      "handle_candidate": "@drkamilahstevenson",
+      "observed_subscribers": 143000,
+      "observed_video_count": 1200,
+      "metadata_source": "Vling third-party channel profile",
+      "conflicting_metadata": [
+        {
+          "provider": "CryptoKrios",
+          "subscribers": 103000,
+          "videos_analyzed": 633,
+          "accessed": "2026-10-30"
+        },
+        {
+          "provider": "OracleCheck",
+          "subscribers": 142000,
+          "accessed": "2026-10-30"
+        },
+        {
+          "provider": "YouTube search snapshots",
+          "subscribers_range": -2000
+        }
+      ],
+      "identity_status": "UNVERIFIED_CANDIDATE_NOT_CAMILLA_STEPHENSON",
+      "note": "Third-party channel ID/handle and counts are not verified against a directly fetched YouTube channel page. Conflicting counts may reflect stale snapshots, duplicate channels or provider coverage; do not use as authoritative channel identity or exhaustive upload count."
+    }
+  ]
+}

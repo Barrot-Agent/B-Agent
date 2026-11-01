@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-TRADRADAR-XRP-1945Z-UPDATE-20261031T201433Z",
+  "source_id": "SRC-20261031T200209Z-TRADRADAR-XRP",
+  "captured_at_utc": "2026-10-31T20:17:50Z",
+  "created_at_utc": "2026-10-31T20:17:50Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T200209Z-TRADRADAR-XRP"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T200209Z-TRADRADAR-XRP",
+      "source_id": "SRC-20261031T200209Z-TRADRADAR-XRP",
+      "publisher": "TradRadar",
+      "title": "XRP futures market data — 19:45 UTC refresh",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-10-31T20:17:50Z",
+      "evidence_class": "SAME_PROVIDER_FRESHER_MARKET_SNAPSHOT",
+      "independence_group": "TRADRADAR_EXCHANGE_AGGREGATION",
+      "claims": [
+        "19:45Z, 15-minute delayed: XRP mark price $1.2536, +0.34% over 24h.",
+        "Open interest $1.87B across seven exchanges, +0.37% over 24h.",
+        "OI-weighted funding +0.0046% per eight hours.",
+        "At least $358.24K liquidations across five exchanges: $129.60K long and $228.64K short.",
+        "Long/short account ratio 3.05 (75.3% long) across four exchanges.",
+        "Per-exchange funding: Binance +0.0100%, Bybit -0.0090%, Gate +0.0018%, MEXC +0.0100%, Bitget +0.0100%, Hyperliquid +0.0100%, OKX -0.0025% per eight hours."
+      ],
+      "limitations": [
+        "Same provider, not independent corroboration.",
+        "15-minute display delay.",
+        "Long/short ratio is account-count based, not notional exposure.",
+        "Liquidation amount is a lower bound.",
+        "Rolling 24h values are successive snapshots; do not interpret differences as a discrete 40-minute flow. No directional forecast or causal link to escrow is established."
+      ]
+    }
+  ],
+  "findings": [
+    "The 19:45Z observation supersedes the 19:05Z TradRadar snapshot for latest market state.",
+    "OI 24h change is +0.37% rather than +1.70%; price 24h change is +0.34% rather than +1.10%; aggregate funding is +0.0046% rather than +0.0050%. These are rolling-window snapshots, not a discrete 40-minute flow."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "video_inventory": [],
+  "video_inventory_exhaustive": false,
+  "channel_total_video_estimate": null,
+  "exact_phrase_status": {
+    "ASK_Coin": "UNRESOLVED",
+    "actual_capital": "UNRESOLVED",
+    "SBIC_ChatGPT": "SEPARATE_JAPANESE_EDUCATIONAL_CONTEXT"
+  },
+  "limitations": [
+    "Same provider, not independent corroboration; 15-minute display delay.",
+    "Account ratio is not notional exposure; liquidations are a lower bound.",
+    "No directional forecast or causal link to the escrow event."
+  ],
+  "corrections": [
+    "Supersedes the 19:05Z TradRadar market observation; preserve 19:05Z as historical data."
+  ],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

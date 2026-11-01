@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 150,
+  "chunk_count": 151,
+  "record_count": 1,
+  "created_at_utc": "2026-10-31T16:32:00Z",
+  "records": [
+    {
+      "id": "RUN-20261031T163200Z-BINANCE-RESTORATION-AND-XRP-MARKET",
+      "recorded_at_utc": "2026-10-31T16:32:00Z",
+      "update_type": "BINANCE_90PCT_RESTORATION_AND_XRP_MARKET_SNAPSHOT",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "f85683276eca6f646a06a8f79e3abe6c84c27862",
+      "data_cutoff_utc": "2026-10-31T16:32:00Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T163200Z-binance-restoration-xrp-market-and-v3-pr-state.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T163200Z-binance-restoration-xrp-market-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T163200Z-xrp-reserve-and-market-feature-admission.json",
+      "repository_audit_path": "data/repository_audits/20261031T163200Z-main-pr-current-base-and-workflow-risk-audit.json",
+      "source_ids": [
+        "SRC-20261031T160137Z-REUTERS-BINANCE-RECOVERY-UPDATE3",
+        "SRC-202610311448Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T160137Z-XRP-INSIGHTS-EXCHANGE-BALANCES",
+        "SRC-20261031T163200Z-LIQWALL-XRP-MARKET",
+        "SRC-20261031T163200Z-BINANCE-XRP-PRICE"
+      ],
+      "findings": [
+        "Reuters reported Binance's 90% aggregate replenishment claim and XRP inclusion in the ten-token minimum 1:1 coverage set.",
+        "No XRP-specific replenishment amount or purchase quantity was disclosed.",
+        "Liqwall at 16:32 UTC reported $1.33B OI, +0.9% 24h, +0.0036% average funding, 73% Binance long accounts and $808K rolling 24h liquidations.",
+        "Four selected safety/research PRs were advanced to current main and their exact-head CI and fail-closed gates passed; all remain draft and unmerged."
+      ],
+      "verification": {
+        "market_source_records": 2,
+        "source_references": 5,
+        "missing_source_references": 0,
+        "main_sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+        "main_modified": false
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "merge": false,
+      "force_push": false,
+      "manual_dispatch": false,
+      "real_money_trade": false
+    }
+  ]
+}

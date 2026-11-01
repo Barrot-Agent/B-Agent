@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 23,
+  "chunk_count": 24,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:17:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:16:39Z",
+      "update_type": "LEDGER_VALIDATOR_SNAPSHOT_PATH_REFERENCE_FAILURE_AND_IMMUTABLE_SNAPSHOT_CORRECTION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "research_head_before_append": "fb5066112ab0ccd654db772379141e00c817a857",
+      "validator_runs": [
+        {
+          "run_id": 41025356402,
+          "event": "push",
+          "head_sha": "fb5066112ab0ccd654db772379141e00c817a857",
+          "status": "FAIL",
+          "tests_passed": 17,
+          "tests_failed": 1,
+          "error": "snapshot reference snapshot_path does not match snapshot file"
+        },
+        {
+          "run_id": 41025360253,
+          "event": "pull_request",
+          "head_sha": "fb5066112ab0ccd654db772379141e00c817a857",
+          "status": "FAIL",
+          "tests_passed": 17,
+          "tests_failed": 1,
+          "error": "snapshot reference snapshot_path does not match snapshot file"
+        }
+      ],
+      "gate_run_id": 41025360394,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "diagnosis": "All 67 referenced archive shards now pass envelope, pointer, hash and record-count checks; the sole remaining test failure is that pointer-mode snapshot files must carry a snapshot_path field exactly matching latest_snapshot.snapshot_path.",
+      "repair": "Created a new immutable snapshot copy with snapshot_path set to the new path. The previous snapshot file remains preserved unreferenced. Ledger pointer will be updated to the corrected snapshot copy; exact-head validator re-run is pending.",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "workflow_dispatch_performed": false
+    }
+  ]
+}

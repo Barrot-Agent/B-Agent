@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-202610311448Z-BINANCE-RECOVERY-SBI-DISTRIBUTION-ACTUAL-CAPITAL",
+  "captured_at_utc": "2026-10-31T14:48:24.128Z",
+  "status": "ACCEPTED_FOR_EVENT_TIMELINE; PRICE_FEATURES_BLOCKED",
+  "decisions": [
+    "Record Binance's top-ten XRP coverage as a company assertion at the 2026-10-31 00:00 UTC snapshot; full zk-SNARK proof remains pending.",
+    "Do not convert aggregate 90% recovery coverage, the remaining 10%, or the prior USD 6.34B reserve plan into XRP-specific market demand.",
+    "Keep SAFU, Futures Insurance Fund, corporate treasury, customer custody, spot/OTC purchases and issuer-frozen stablecoins as separate balance categories.",
+    "Record the SBI VISA Crypto Card as a confirmed XRP-selectable retail distribution mechanism, but not as evidence of open-market purchases.",
+    "Separate the current September–October campaign from the expired May–August launch campaign; current application cutoff is 2026-10-31 JST.",
+    "Treat SBI VC Trade's displayed sales-price reference as a reward calculation input, not an execution record.",
+    "Treat SBI/Visa MOU as exploratory; SBI VC Trade/Ripple RLUSD listing as a distinct stablecoin relationship.",
+    "Treat Coinbase offline-key changes as a custody response, not XRP demand.",
+    "Keep the fixed-horizon ledger as a measurement foundation; no trained model, walk-forward skill or calibrated forecast is claimed."
+  ],
+  "required_verification": [
+    "Obtain Binance's full zk-SNARK proof and October 31 address/liability export by the announced November 3 estimate.",
+    "Crosswalk the five XRPL incident source wallets and receiver against the new Binance XRP reserve set.",
+    "Reconcile XRP-specific purchases, reward credits and OTC sourcing only from executed or independently corroborated evidence.",
+    "Trace SBI card reward credits and deposit-voucher redemptions if aggregate public data becomes available.",
+    "Resolve derivatives contract universes and implement leakage-safe walk-forward evaluation before any prediction."
+  ],
+  "feature_admission": {
+    "incident_timeline": "ADMITTED",
+    "SBI_distribution_timeline": "ADMITTED",
+    "XRP_directional_feature": "NOT_ADMITTED",
+    "actual_capital": "BLOCKED",
+    "forecast": "NOT_ISSUED"
+  }
+}

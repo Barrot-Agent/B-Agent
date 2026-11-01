@@ -1,0 +1,125 @@
+{
+  "record_type": "barrot_repository_audit",
+  "schema_version": "1.0",
+  "audit_id": "AUDIT-20261030T210054Z-MAIN-WORKFLOW-AND-LEDGER-VALIDATOR",
+  "captured_at_utc": "2026-10-30T21:00:54Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "526cafcdd7e0423793bca336d5d8486741b95181",
+    "commit_message": "Cross-analysis refresh [skip ci]",
+    "commit_date": "2026-10-30T20:51:56Z",
+    "protected": true,
+    "required_status_checks": [],
+    "effective_admin_bypass_and_ruleset_configuration": "NOT_VERIFIED_BY_AVAILABLE_GITHUB_INTEGRATION",
+    "modified_by_this_run": false
+  },
+  "workflows": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "HIGH",
+      "finding": "Main workflow retains contents:write and automatic generated-file commit/push behavior; latest main commit is titled Cross-analysis refresh [skip ci].",
+      "proposed_remediation": "Review-gated artifact-only workflow; PR #1373/#1379 remain unmerged."
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "risk": "HIGH",
+      "finding": "Main workflow retains repository write capability and automated generated-output writes.",
+      "proposed_remediation": "Review-gated artifact-only workflow in PR #1379; not merged."
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "risk": "HIGH",
+      "finding": "Daily scheduled workflow has contents:write and mutates signal_history.jsonl and signal_accuracy.json; installs requests without a complete lockfile.",
+      "proposed_remediation": "Fixed-horizon immutable outcome evaluator and review-gated output; PR #1355 remains draft on older base."
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "HIGH",
+      "finding": "Mutation-capable queue retains contents:write and pull-requests:write; dry_run defaults false, max_prs=0 and merge/branch deletion capability remain.",
+      "proposed_remediation": "Read-only inventory proposal PR #1381; exact-head checks and fresh-main reconciliation pending."
+    }
+  ],
+  "prediction_engine": {
+    "latest_signal_timestamp": "2026-10-29T13:23:33.142057+00:00",
+    "score": 44,
+    "confidence": 0,
+    "source": "sentiment unavailable: missing GITHUB_TOKEN/GH_MODELS_TOKEN and Groq HTTP 429; news(11)",
+    "accuracy_summary": {
+      "checked_count": 1683,
+      "correct_count": 772,
+      "accuracy_pct": 45.9
+    },
+    "signal_history_jsonl_bytes": 0,
+    "evaluator_findings": [
+      "Current signal_history.jsonl is empty; 45.9% cannot be reproduced from current history.",
+      "Legacy evaluator compares all signals to one current price after a minimum 24h age, so horizons vary.",
+      "Evaluator mutates records with checked/correct/price_at_check; outcomes are not immutable fixed-horizon labels.",
+      "Neutral calls count as correct when movement is under 2%; this is not directional skill.",
+      "No baseline, calibration, walk-forward or leakage audit is established."
+    ],
+    "status": "LEGACY_ACCURACY_NOT_COMPARABLE_NOT_EVALUATED",
+    "fixed_horizon_contract": "DESIGNED_NOT_EXECUTED_OR_VALIDATED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "pull_requests": [
+    {
+      "number": 1353,
+      "head_sha": "802ef30e540ca2c096ca9f53f5f4799d008770cc",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "validator_run": 41126607566,
+      "validator_result": "FAILED_18_PASSED_1_FAILED",
+      "gate_run": 41126607573,
+      "gate_result": "PASS_MERGE_DISABLED",
+      "root_cause": "Malformed latest archive shard metadata and source record ID field."
+    },
+    {
+      "number": 1380,
+      "head_sha": "049bec8a7494f7bfdca2bba2a1aa24b807e82c01",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "reported_checks": "343 core tests plus 8 subtests passed; fail-closed gate passed",
+      "limitation": "Issue #1377 has not been rerun; main base is newer."
+    },
+    {
+      "number": 1379,
+      "head_sha": "9abfef6f9a7b969f908440c427f40c9248eb14a5",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "reported_checks": "363 core tests plus 8 subtests passed; fail-closed gate passed",
+      "limitation": "Does not implement fixed-horizon evaluation; main base is newer."
+    },
+    {
+      "number": 1381,
+      "head_sha": "b22472f10ba8e8c169892780572784f64c6ed4a2",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "limitation": "Base 78e5cf1 is one main commit behind 526cafc; exact-head checks not confirmed."
+    },
+    {
+      "number": 1355,
+      "head_sha": "33776a0f838e875a8c1dfedc046105520b75659f",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "reported_checks": "347 core tests plus 8 subtests passed; fail-closed gate passed",
+      "limitation": "Base ab11f5 is 24 main commits behind; fresh-main validation required."
+    },
+    {
+      "number": 1373,
+      "head_sha": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "reported_checks": "347 core tests plus 8 subtests passed; fail-closed gate passed",
+      "limitation": "Older main base; fresh-main validation required."
+    }
+  ],
+  "audit_limits": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "effective_branch_protection_and_admin_bypass": "NOT_VERIFIED",
+    "nine_platform_live_authentication": "NOT_TESTED",
+    "local_worktree_state": "NOT_INSPECTED_BY_GITHUB_API"
+  },
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "paper_trading_state_mutated": false,
+    "real_money_trade": false
+  }
+}

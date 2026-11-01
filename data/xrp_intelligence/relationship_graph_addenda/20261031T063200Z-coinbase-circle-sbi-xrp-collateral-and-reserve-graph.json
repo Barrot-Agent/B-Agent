@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "GRAPH-20261031T063200Z-COINBASE-CIRCLE-SBI-XRP-COLLATERAL",
+  "captured_at_utc": "2026-10-31T06:32:00Z",
+  "source_reference_count": 9,
+  "missing_source_references": 0,
+  "edges": [
+    {
+      "id": "EDGE-COINBASE-GLOBAL-XRP-COLLATERAL",
+      "from": "Coinbase Global Exchange",
+      "relation": "accepts_as_collateral_for_perpetual_futures_margin",
+      "to": "XRP",
+      "evidence_class": "CONFIRMED_OFFICIAL_PRODUCT_DOCUMENTATION",
+      "source_ids": [
+        "SRC-20261031-COINBASE-GLOBAL-XRP-COLLATERAL-0632Z",
+        "SRC-20261031-COINBASE-CROSS-COLLATERAL-METHOD-0632Z"
+      ],
+      "caveat": "Actual XRP posted amount, haircut and ADQ cap not disclosed."
+    },
+    {
+      "id": "EDGE-COINBASE-CBXRP-LOAN",
+      "from": "Coinbase Borrow interface",
+      "relation": "routes_XRP_backed_USDC_borrowing_through",
+      "to": "Morpho on Base",
+      "evidence_class": "CONFIRMED_OFFICIAL_PRODUCT_DOCUMENTATION",
+      "source_ids": [
+        "SRC-20261031-COINBASE-MORPHO-XRP-LOAN-0632Z"
+      ],
+      "caveat": "Coinbase is interface; Morpho protocol controls on-chain lending mechanics."
+    },
+    {
+      "id": "EDGE-XRP-CBXRP",
+      "from": "XRP",
+      "relation": "represented_as_wrapped_collateral",
+      "to": "cbXRP on Base",
+      "evidence_class": "CONFIRMED_OFFICIAL_PRODUCT_DOCUMENTATION",
+      "source_ids": [
+        "SRC-20261031-COINBASE-CBXRP-CONTRACT-0632Z"
+      ],
+      "caveat": "Product mapping does not establish market-wide cbXRP demand or liquidator redemptions."
+    },
+    {
+      "id": "EDGE-MORPHO-USDC-LOANS",
+      "from": "Morpho",
+      "relation": "supplies_onchain_credit_asset",
+      "to": "USDC",
+      "evidence_class": "CONFIRMED_PRODUCT_STRUCTURE",
+      "source_ids": [
+        "SRC-20261031-COINBASE-MORPHO-XRP-LOAN-0632Z"
+      ],
+      "caveat": "Specific USDC supplier identities and Circle's direct lending participation are unknown."
+    },
+    {
+      "id": "EDGE-COINBASE-LOAN-USE-RESTRICTION",
+      "from": "Coinbase crypto-backed loan terms",
+      "relation": "prohibit_loan_proceeds_for_trading_on",
+      "to": "Coinbase",
+      "evidence_class": "CONFIRMED_OFFICIAL_TERMS",
+      "source_ids": [
+        "SRC-20261031-COINBASE-MORPHO-XRP-LOAN-0632Z"
+      ],
+      "caveat": "Does not prohibit all external use of loan proceeds; do not infer zero downstream market effect."
+    },
+    {
+      "id": "EDGE-CIRCLE-ARC",
+      "from": "Circle",
+      "relation": "launched_and_operates",
+      "to": "Arc",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0632Z"
+      ],
+      "caveat": "Arc is distinct from XRPL and uses USDC for gas."
+    },
+    {
+      "id": "EDGE-SBI-ARC-VALIDATOR",
+      "from": "SBI Group",
+      "relation": "founding_validator_of",
+      "to": "Arc",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0632Z"
+      ],
+      "caveat": "Validator role does not imply exclusivity or XRP abandonment."
+    },
+    {
+      "id": "EDGE-COINBASE-ARC-ACCESS",
+      "from": "Coinbase",
+      "relation": "listed_as_exchange_access_partner_for",
+      "to": "Arc",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0632Z"
+      ],
+      "caveat": "Exchange-access partner, not listed as founding validator."
+    },
+    {
+      "id": "EDGE-MORPHO-ARC-CREDIT",
+      "from": "Morpho",
+      "relation": "listed_as_credit_layer_for",
+      "to": "Arc",
+      "evidence_class": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0632Z"
+      ],
+      "caveat": "Arc deployment does not establish any particular XRP market."
+    },
+    {
+      "id": "EDGE-CIRCLE-USDC-ON-XRPL",
+      "from": "Circle USDC",
+      "relation": "native_issuance_supported_on",
+      "to": "XRPL",
+      "evidence_class": "PREVIOUSLY_VERIFIED_OFFICIAL_ANNOUNCEMENT",
+      "source_ids": [
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0632Z"
+      ],
+      "caveat": "The Arc launch source does not itself establish the XRPL deployment; this edge is carried forward from the earlier verified USDC-on-XRPL source. Keep it distinct from Arc."
+    },
+    {
+      "id": "EDGE-TOKYO-SBIC-CHATGPT-EDUCATION",
+      "from": "Tokyo SBIC East Japan",
+      "relation": "hosted_educational_seminar_discussing",
+      "to": "ChatGPT / generative AI",
+      "evidence_class": "CONFIRMED_OFFICIAL_EVENT_PAGE",
+      "source_ids": [
+        "SRC-20261031-TOKYO-SBIC-GENAI-SEMINAR-0632Z"
+      ],
+      "caveat": "No OpenAI partnership or SBI Holdings/XRP commercial relationship is established by the seminar."
+    },
+    {
+      "id": "EDGE-XRP-INSIGHTS-BINANCE-LABELS",
+      "from": "XRP Insights tracked wallet set",
+      "relation": "attributes_153_publicly_labeled_wallets_to",
+      "to": "Binance",
+      "evidence_class": "ONCHAIN_LABEL_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0632Z"
+      ],
+      "caveat": "Not official Binance PoR, not all wallets, and not customer-tradable float; includes wrapped-token reserve."
+    },
+    {
+      "id": "EDGE-XRP-INSIGHTS-COINBASE-LABELS",
+      "from": "XRP Insights tracked wallet set",
+      "relation": "attributes_358_publicly_labeled_wallets_to",
+      "to": "Coinbase",
+      "evidence_class": "ONCHAIN_LABEL_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0632Z"
+      ],
+      "caveat": "Includes cbXRP backing reserve and cold storage; not customer-tradable float."
+    },
+    {
+      "id": "EDGE-BINANCE-INCIDENT-RESERVE-DECLINE",
+      "from": "October 29 Binance XRP incident",
+      "relation": "may_explain_part_of",
+      "to": "Observed Binance XRP reserve decline",
+      "evidence_class": "HYPOTHESIS_NOT_RECONCILED",
+      "source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0632Z",
+        "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ],
+      "caveat": "Provider-specific reserve sets differ; no five-wallet crosswalk or same-time liabilities snapshot. Magnitude similarity is not proof."
+    }
+  ],
+  "hypothesis_ids": [
+    "H-BINANCE-XRP-RESERVE-INCIDENT",
+    "H-COINBASE-XRP-COLLATERAL-UTILITY",
+    "H-CIRCLE-ARC-INSTITUTIONAL-RAIL",
+    "H-XRP-DERIVATIVES-LONG-CROWDING"
+  ],
+  "competing_explanations_retained": true,
+  "minority_objections_retained": true,
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

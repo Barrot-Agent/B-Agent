@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 92,
+  "chunk_count": 93,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+      "source_id": "SRC-COINBASE-Q3-2026-IR-20261031T022100Z",
+      "publisher": "Coinbase Global, Inc. Investor Relations",
+      "title": "Coinbase Q3 2026 earnings results and operating metrics",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "retrieved_at_utc": "2026-10-31T02:21:00Z",
+      "evidence_class": "COMPANY_REPORTED",
+      "independence_group": "COINBASE_COMPANY_DISCLOSURE_Q3_2026",
+      "summary": "Coinbase's October 29 Q3 release reports 10.7% crypto trading volume market share and a fourth consecutive quarter of share gains; average USDC held in Coinbase products of $22B, approximately 30% of average USDC market capitalization and 49% year-over-year growth; prediction markets above $200M annualized revenue; 179% two-year compound annual growth in crypto derivatives volume; 12.5% share of total crypto market capitalization in Assets on Platform; Q3 GAAP net income $718.7M, adjusted net income $77.7M and adjusted EBITDA $332.9M. These are company-reported metrics.",
+      "limitations": "Management-reported metrics are not independent third-party measurements; annualized prediction-market revenue is a run rate, not recognized Q3 revenue. The quarter ended 2026-09-30, before Coinbase's RLUSD launch on 2026-10-28. Average USDC held is a platform balance measure, not net new external capital or XRP purchases. Q3 metrics cannot measure post-listing RLUSD substitution or incremental XRP demand."
+    }
+  ]
+}

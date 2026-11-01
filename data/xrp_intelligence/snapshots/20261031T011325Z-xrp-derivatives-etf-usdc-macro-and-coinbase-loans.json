@@ -1,0 +1,536 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T011325Z-MARKET-ETF-USDC-MACRO-COINBASE-LOANS",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T011325Z-xrp-derivatives-etf-usdc-macro-and-coinbase-loans.json",
+  "created_at_utc": "2026-10-31T01:13:25Z",
+  "captured_at_utc": "2026-10-31T01:13:25Z",
+  "data_cutoff_utc": "2026-10-31T01:13:25Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261031T003700Z-coinbase-morpho-cbxrp-usdc-collateral-rail.json",
+  "source_ids": [
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261031T0052Z",
+    "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z",
+    "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z",
+    "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z",
+    "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+    "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z",
+    "SRC-REUTERS-US-FUND-FLOWS-20261030T1317Z",
+    "SRC-REUTERS-BINANCE-RESERVE-20261030T1403Z",
+    "SRC-GITHUB-BARROT-MAIN-SCHEDULER-PR-AUDIT-20261031T0113Z"
+  ],
+  "source_reference_count": 9,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "F-20261031T011325Z-01",
+      "classification": "SOURCED_CLAIM",
+      "statement": "Liqwall's 00:52 UTC snapshot displays XRP at $1.26, aggregated open interest $1.32B (-1.9%/24h), $6.1M 24-hour liquidations ($4.4M longs/$1.7M shorts), average funding +0.0059%/8h, Binance funding +0.0087%, and 72.1% of Binance XRP-position accounts long.",
+      "source_ids": [
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261031T0052Z"
+      ],
+      "disconfirming_evidence": "Single provider; exchange/contract coverage and notional long/short exposure are not independently reconciled."
+    },
+    {
+      "finding_id": "F-20261031T011325Z-02",
+      "classification": "SOURCED_CLAIM",
+      "statement": "XRP Insights reports +3,440,288 XRP holdings change over October 26–29 and 1,196,650,118 XRP held on October 29 across its six-spot-plus-BITW dataset; October 30 is provisional and flow-excluded funds count as zero.",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z"
+      ],
+      "disconfirming_evidence": "Flow universe is incomplete/provisional and not a measure of unhedged new external capital."
+    },
+    {
+      "finding_id": "F-20261031T011325Z-03",
+      "classification": "SOURCED_CLAIM",
+      "statement": "Alpha Finance reports +$8.4M XRP ETF net flow on October 29, +$98.9M over 30 sessions and $1.73B cumulative across five funds; its displayed October 29 price differs materially from XRP Insights.",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z"
+      ],
+      "disconfirming_evidence": "Different fund universe and unresolved price basis; do not combine raw price or flow totals with the XRP Insights series."
+    },
+    {
+      "finding_id": "F-20261031T011325Z-04",
+      "classification": "COMPANY_REPORTED",
+      "statement": "Circle displays $70.0B USDC in circulation as of October 29 and native support on 38 blockchains as of September 16, including Base and XRPL.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z"
+      ],
+      "disconfirming_evidence": "Global supply does not show chain-level Base/XRPL balances or Circle's role as a Morpho lender."
+    },
+    {
+      "finding_id": "F-20261031T011325Z-05",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Coinbase's current product page lists up to $100,000 USDC borrowing against XRP through its Morpho-on-Base product; Coinbase Help lists XRP as eligible collateral and says proceeds cannot be used to trade on Coinbase.",
+      "source_ids": [
+        "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z"
+      ],
+      "disconfirming_evidence": "No XRP loan balances, Coinbase market share or off-platform use of proceeds are disclosed."
+    },
+    {
+      "finding_id": "F-20261031T011325Z-06",
+      "classification": "SOURCED_CLAIM",
+      "statement": "Reuters reports U.S. equity funds had $6.65B weekly outflows, money-market funds $47.66B outflows, sector funds $3.52B inflows including $4.54B into technology, and bond funds $2.04B inflows for the week ended October 28.",
+      "source_ids": [
+        "SRC-REUTERS-US-FUND-FLOWS-20261030T1317Z"
+      ],
+      "disconfirming_evidence": "Mixed flows and non-crypto scope; no XRP-specific causal link."
+    },
+    {
+      "finding_id": "F-20261031T011325Z-07",
+      "classification": "COMPANY_REPORTED",
+      "statement": "Reuters reports Binance said it reserved more than $6.34B, including $5B already held in impacted token assets, and that $3B had been frozen with industry partners.",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-RESERVE-20261030T1403Z"
+      ],
+      "disconfirming_evidence": "Aggregate USD figures do not identify XRP replenishment or prove the five XRPL source wallets were in the October 1 PoR set."
+    },
+    {
+      "finding_id": "F-20261031T011325Z-08",
+      "classification": "REPOSITORY_OBSERVATION",
+      "statement": "Current main is cd085b6; 165 PRs are open (155 draft, 10 ready), with 161 of 163 main-based PRs on stale base SHAs. PR #1390 passed exact-head CI and the fail-closed gate.",
+      "source_ids": [
+        "SRC-GITHUB-BARROT-MAIN-SCHEDULER-PR-AUDIT-20261031T0113Z"
+      ],
+      "disconfirming_evidence": "Full repository CI and dependency vulnerability scanning were not run."
+    },
+    {
+      "finding_id": "F-20261031T011325Z-09",
+      "classification": "DISCONFIRMING_EVIDENCE",
+      "statement": "ETF aggregators display different October 29 XRP prices ($1.25 on XRP Insights and $1.3255 on Alpha Finance) and different fund universes; derivatives open-interest aggregates are also provider-scoped.",
+      "source_ids": [
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261031T0052Z",
+        "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z",
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z"
+      ],
+      "disconfirming_evidence": "Differences may reflect different quote bases, timestamps or coverage; no synchronized cross-provider price series was constructed."
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261031T011325Z-01",
+      "asset": "XRP",
+      "metric": "liqwall_derivatives_aggregate",
+      "value": {
+        "price_usd": 1.26,
+        "open_interest_usd": 1320000000,
+        "open_interest_change_24h_pct": -1.9,
+        "liquidations_24h_usd": 6100000,
+        "long_liquidations_usd": 4400000,
+        "short_liquidations_usd": 1700000,
+        "funding_all_8h_pct": 0.0059,
+        "funding_binance_8h_pct": 0.0087,
+        "binance_long_account_share_pct": 72.1
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-31T00:52:00Z",
+      "retrieved_at_utc": "2026-10-31T01:13:25Z",
+      "source_ids": [
+        "SRC-LIQWALL-XRP-DERIVATIVES-20261031T0052Z"
+      ],
+      "classification": "THIRD_PARTY_DERIVATIVES_PROVIDER_SNAPSHOT",
+      "admission_status": "CONTEXT_ONLY_NOT_ADMITTED",
+      "notes": "Single provider; account ratio is not notional exposure and aggregate OI universe is not reconciled."
+    },
+    {
+      "observation_id": "OBS-20261031T011325Z-02",
+      "asset": "XRP",
+      "metric": "us_spot_etf_net_holdings_change_oct26_29",
+      "value": {
+        "net_flow_xrp": 3440288,
+        "total_xrp_held_oct29": 1196650118,
+        "funds": "six spot funds plus BITW",
+        "settled_sessions": 4,
+        "flow_excluded_funds_counted_as_zero": true,
+        "oct30_row": "PROVISIONAL"
+      },
+      "unit": "XRP",
+      "as_of_utc": "2026-10-29T20:00:00Z",
+      "retrieved_at_utc": "2026-10-31T01:13:25Z",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z"
+      ],
+      "classification": "ISSUER_HOLDINGS_AGGREGATION",
+      "admission_status": "CONTEXT_ONLY_NOT_ADMITTED",
+      "notes": "Issuer-reported holdings changes; no inference of unhedged net external capital."
+    },
+    {
+      "observation_id": "OBS-20261031T011325Z-03",
+      "asset": "XRP",
+      "metric": "alpha_finance_etf_flows_oct29",
+      "value": {
+        "net_flow_usd": 8400000,
+        "thirty_session_flow_usd": 98900000,
+        "cumulative_flow_usd": 1730000000,
+        "fund_count": 5,
+        "top_inflow_fund": "XRPZ",
+        "top_inflow_usd": 5600000,
+        "displayed_xrp_close_usd": 1.3255
+      },
+      "unit": "USD",
+      "as_of_utc": "2026-10-29T20:00:00Z",
+      "retrieved_at_utc": "2026-10-31T01:13:25Z",
+      "source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z"
+      ],
+      "classification": "THIRD_PARTY_ETF_FLOW_AGGREGATION",
+      "admission_status": "CROSSCHECK_ONLY_NOT_ADMITTED",
+      "notes": "Different fund universe and unresolved price basis versus XRP Insights."
+    },
+    {
+      "observation_id": "OBS-20261031T011325Z-04",
+      "asset": "USDC",
+      "metric": "circle_global_circulation_and_native_network_count",
+      "value": {
+        "circulation_usd": 70000000000,
+        "circulation_as_of": "2026-10-29",
+        "native_network_count": 38,
+        "network_count_as_of": "2026-09-16",
+        "base_native": true,
+        "xrpl_native": true
+      },
+      "unit": "USD_networks",
+      "as_of_utc": "2026-10-29T20:00:00Z",
+      "retrieved_at_utc": "2026-10-31T01:13:25Z",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z"
+      ],
+      "classification": "OFFICIAL_CIRCLE_COMPANY_DISPLAY",
+      "admission_status": "GLOBAL_STABLECOIN_CONTEXT_ONLY",
+      "notes": "No Base/XRPL chain-specific supply or Morpho vault attribution."
+    },
+    {
+      "observation_id": "OBS-20261031T011325Z-05",
+      "asset": "XRP",
+      "metric": "coinbase_xrp_backed_usdc_loan_product",
+      "value": {
+        "max_usdc_loan_against_xrp": 100000,
+        "loan_asset": "USDC",
+        "collateral_asset": "XRP represented as cbXRP on Base",
+        "protocol": "Morpho on Base",
+        "coinbase_interface": true,
+        "proceeds_allowed_for_coinbase_trading": false,
+        "availability": "U.S. excluding New York at launch; limited UK/Canada access"
+      },
+      "unit": "USD_product_terms",
+      "as_of_utc": "2026-10-31T01:13:25Z",
+      "retrieved_at_utc": "2026-10-31T01:13:25Z",
+      "source_ids": [
+        "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z"
+      ],
+      "classification": "OFFICIAL_COINBASE_PRODUCT_AND_HELP_TERMS",
+      "admission_status": "COLLATERAL_UTILITY_CONTEXT_NOT_SPOT_DEMAND",
+      "notes": "No loan origination balance, customer share or off-platform use is disclosed."
+    },
+    {
+      "observation_id": "OBS-20261031T011325Z-06",
+      "asset": "US_MARKETS",
+      "metric": "weekly_fund_flows_week_ended_oct28",
+      "value": {
+        "us_equity_fund_net_flows_usd": -6650000000,
+        "money_market_fund_net_flows_usd": -47660000000,
+        "sector_fund_net_flows_usd": 3520000000,
+        "technology_fund_net_flows_usd": 4540000000,
+        "us_bond_fund_net_flows_usd": 2040000000
+      },
+      "unit": "USD",
+      "as_of_utc": "2026-10-28T23:59:59Z",
+      "retrieved_at_utc": "2026-10-31T01:13:25Z",
+      "source_ids": [
+        "SRC-REUTERS-US-FUND-FLOWS-20261030T1317Z"
+      ],
+      "classification": "REUTERS_LSEG_LIPPER_WEEKLY_FLOW_REPORT",
+      "admission_status": "MACRO_CONTEXT_ONLY_NOT_XRP_FEATURE",
+      "notes": "Mixed rotation; not crypto-specific and not causal XRP flow evidence."
+    },
+    {
+      "observation_id": "OBS-20261031T011325Z-07",
+      "asset": "BINANCE_INCIDENT",
+      "metric": "aggregate_company_reserve_and_freeze_statement",
+      "value": {
+        "company_reserve_usd": 6340000000,
+        "already_held_impacted_tokens_usd": 5000000000,
+        "assets_frozen_usd": 3000000000,
+        "xrp_specific_replenishment_disclosed": false
+      },
+      "unit": "USD",
+      "as_of_utc": "2026-10-30T14:03:00Z",
+      "retrieved_at_utc": "2026-10-31T01:13:25Z",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-RESERVE-20261030T1403Z"
+      ],
+      "classification": "REUTERS_REPORT_OF_BINANCE_STATEMENT",
+      "admission_status": "INCIDENT_CONTEXT_ONLY_NOT_XRP_POR_RATIO",
+      "notes": "No asset-level XRP proof-of-reserves reconciliation."
+    },
+    {
+      "observation_id": "OBS-20261031T011325Z-08",
+      "asset": "B-Agent",
+      "metric": "main_and_open_pr_inventory",
+      "value": {
+        "main_sha": "cd085b63060f470badb2a87c03d0b558e9953fa7",
+        "open_prs": 165,
+        "draft_prs": 155,
+        "ready_prs": 10,
+        "main_based_prs": 163,
+        "stale_main_base_prs": 161,
+        "current_main_base_prs": 2,
+        "non_main_base_prs": 2
+      },
+      "unit": "repository_counts",
+      "as_of_utc": "2026-10-31T01:13:25Z",
+      "retrieved_at_utc": "2026-10-31T01:13:25Z",
+      "source_ids": [
+        "SRC-GITHUB-BARROT-MAIN-SCHEDULER-PR-AUDIT-20261031T0113Z"
+      ],
+      "classification": "GITHUB_API_REPOSITORY_AUDIT",
+      "admission_status": "ENGINEERING_CONTEXT_ONLY"
+    },
+    {
+      "observation_id": "OBS-20261031T011325Z-09",
+      "asset": "XRP",
+      "metric": "provider_price_basis_discrepancy_oct29",
+      "value": {
+        "xrp_insights_price_usd": 1.25,
+        "alpha_finance_price_usd": 1.3255,
+        "difference_pct": 6.04
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-29T20:00:00Z",
+      "retrieved_at_utc": "2026-10-31T01:13:25Z",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z",
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z"
+      ],
+      "classification": "CROSS_PROVIDER_DATA_QUALITY_CHECK",
+      "admission_status": "REJECTED_FROM_PRICE_FEATURES",
+      "notes": "Price basis and timestamps unresolved; do not average."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T011325Z-01",
+      "claim": "Coinbase's XRP-backed USDC loan rail expands XRP's collateral utility and may let some holders obtain liquidity without selling spot XRP, but it does not establish incremental XRP buying.",
+      "assessment": "PRODUCT_MECHANISM_CONFIRMED_PRICE_IMPACT_UNKNOWN",
+      "supporting_evidence": [
+        "Coinbase officially lists XRP as eligible collateral and advertises up to $100,000 USDC against XRP.",
+        "Coinbase routes the product through Morpho on Base and moves collateral onchain."
+      ],
+      "disconfirming_evidence": [
+        "Coinbase Help prohibits using proceeds to trade on Coinbase.",
+        "No off-platform borrowed-USDC-to-XRP purchase path is traced.",
+        "Market-wide Morpho activity is permissionless and not Coinbase-customer-only."
+      ],
+      "unknowns": [
+        "Coinbase channel share and outstanding XRP-backed loan balance.",
+        "Borrowed USDC use outside Coinbase.",
+        "Counterfactual spot XRP sales avoided."
+      ],
+      "confidence": "HIGH_FOR_PRODUCT_EXISTENCE; LOW_FOR_NET_XRP_PRICE_EFFECT"
+    },
+    {
+      "hypothesis_id": "H-20261031T011325Z-02",
+      "claim": "cbXRP collateral liquidation can create a conditional route to native XRP supply pressure.",
+      "assessment": "CONDITIONAL_TRANSMISSION_HYPOTHESIS",
+      "supporting_evidence": [
+        "The cbXRP/USDC Morpho market has a market-specific 62.5% LLTV and records liquidations."
+      ],
+      "disconfirming_evidence": [
+        "Liquidators receive cbXRP; no complete unwrap/redemption/underlying XRP sale path has been traced.",
+        "Collateral at risk is not expected liquidation or native XRP sell volume."
+      ],
+      "unknowns": [
+        "Liquidator disposition of seized cbXRP.",
+        "Unwrap/redemption timing and any CEX sale."
+      ],
+      "confidence": "MEDIUM_FOR_COLLATERAL_LIQUIDATION_MECHANISM; LOW_FOR_NATIVE_XRP_SELL_THROUGH"
+    },
+    {
+      "hypothesis_id": "H-20261031T011325Z-03",
+      "claim": "Recent U.S. XRP ETF holdings changes indicate modest near-term accumulation.",
+      "assessment": "SHORT_WINDOW_SOURCED_OBSERVATION_NOT_PERSISTENCE",
+      "supporting_evidence": [
+        "XRP Insights reports +3.44M XRP across four settled sessions Oct 26–29.",
+        "Alpha Finance reports +$8.4M on Oct 29 across five funds."
+      ],
+      "disconfirming_evidence": [
+        "The fund universes and flow calculations differ.",
+        "Some fund flows are excluded or provisional.",
+        "Holdings changes do not establish unhedged new external capital or causal price support."
+      ],
+      "unknowns": [
+        "Complete issuer-native October 30 holdings and all-fund reconciled creations/redemptions.",
+        "Hedging and authorized-participant inventory activity."
+      ],
+      "confidence": "MEDIUM_FOR_REPORTED_SHORT_WINDOW_DIRECTION; LOW_FOR_PERSISTENT_NET_CAPITAL"
+    },
+    {
+      "hypothesis_id": "H-20261031T011325Z-04",
+      "claim": "XRP derivatives positioning remains long-skewed on Binance while aggregate open interest has contracted.",
+      "assessment": "PROVIDER_SCOPED_POSITIONING_OBSERVATION",
+      "supporting_evidence": [
+        "Liqwall reports 72.1% of Binance XRP-position accounts long, +0.0087% Binance funding and $1.32B aggregated OI down 1.9% over 24 hours."
+      ],
+      "disconfirming_evidence": [
+        "Account counts are not notional exposure.",
+        "Only one provider snapshot is used and exchange contract coverage is not reconciled."
+      ],
+      "unknowns": [
+        "Venue-native notional long/short exposure, contract coverage and synchronized funding/OI."
+      ],
+      "confidence": "MEDIUM_FOR_PROVIDER_DISPLAY; LOW_FOR_MARKET_WIDE_POSITIONING"
+    },
+    {
+      "hypothesis_id": "H-20261031T011325Z-05",
+      "claim": "U.S. fund outflows on the week ending October 28 represent a broad risk-off impulse that could pressure XRP.",
+      "assessment": "NOT_ESTABLISHED_MIXED_ROTATION",
+      "supporting_evidence": [
+        "Reuters reports $6.65B U.S. equity-fund outflows and $47.66B money-market-fund outflows."
+      ],
+      "disconfirming_evidence": [
+        "Technology sector funds had $4.54B inflows, total sector funds $3.52B inflows and bond funds $2.04B inflows.",
+        "The flow series is not crypto-specific and money-market outflows may reflect redeployment."
+      ],
+      "unknowns": [
+        "Crypto fund flows, USD liquidity, real yields and XRP's conditional beta to these flows."
+      ],
+      "confidence": "LOW_FOR_XRP_IMPLICATION"
+    },
+    {
+      "hypothesis_id": "H-20261031T011325Z-06",
+      "claim": "Binance's announced aggregate reserve response restores XRP-specific customer backing.",
+      "assessment": "UNVERIFIED_ASSET_LEVEL_CLAIM",
+      "supporting_evidence": [
+        "Reuters reports Binance reserved $6.34B, including $5B already held in impacted token assets, and $3B frozen."
+      ],
+      "disconfirming_evidence": [
+        "No XRP-specific replenishment amount is disclosed.",
+        "Official October 1 membership of the five XRPL source wallets remains unknown."
+      ],
+      "unknowns": [
+        "XRP-specific reserve quantities, source-wallet PoR membership and November 1 asset-level reconciliation."
+      ],
+      "confidence": "LOW_FOR_XRP_SPECIFIC_RESTORATION"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "edge_id": "E-20261031T011325Z-01",
+      "from_entity": "Coinbase",
+      "relation": "offers_XRP_collateralized_USDC_loans_through",
+      "to_entity": "Morpho on Base",
+      "status": "OFFICIAL_COINBASE_PRODUCT_DISCLOSURE",
+      "source_ids": [
+        "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z"
+      ],
+      "details": "Coinbase provides the interface; the loan asset is USDC and collateral is moved onchain to Morpho. Coinbase's current product page lists a $100,000 USDC limit for XRP collateral."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-02",
+      "from_entity": "XRP",
+      "relation": "is_eligible_underlying_collateral_for",
+      "to_entity": "Coinbase USDC loan product via cbXRP",
+      "status": "OFFICIAL_COINBASE_COLLATERAL_ELIGIBILITY",
+      "source_ids": [
+        "SRC-COINBASE-XRP-LOAN-PRODUCT-20261031T0113Z",
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z"
+      ],
+      "details": "Coinbase Help lists XRP as eligible collateral; the previously verified backup collateral table maps XRP to cbXRP on Base."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-03",
+      "from_entity": "Coinbase USDC loan borrowers",
+      "relation": "are_prohibited_from_using_proceeds_to_trade_on",
+      "to_entity": "Coinbase exchange",
+      "status": "OFFICIAL_COINBASE_HELP_TERMS",
+      "source_ids": [
+        "SRC-COINBASE-XRP-LOAN-HELP-20261031T0113Z"
+      ],
+      "details": "Coinbase Help states loan proceeds cannot be used for trading on Coinbase; no off-platform use is inferred."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-04",
+      "from_entity": "Circle",
+      "relation": "issues_native",
+      "to_entity": "USDC on Base",
+      "status": "OFFICIAL_CIRCLE_NETWORK_SUPPORT",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z"
+      ],
+      "details": "Circle lists Base among the networks where USDC is natively issued."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-05",
+      "from_entity": "Circle",
+      "relation": "issues_native",
+      "to_entity": "USDC on XRPL",
+      "status": "OFFICIAL_CIRCLE_NETWORK_SUPPORT",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z"
+      ],
+      "details": "Circle lists XRPL among the networks where USDC is natively issued; this does not establish Base↔XRPL flow."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-06",
+      "from_entity": "USDC on Base",
+      "relation": "is_the_debt_asset_in",
+      "to_entity": "Morpho cbXRP/USDC market",
+      "status": "MORPHO_PROTOCOL_MARKET_DATA",
+      "source_ids": [
+        "SRC-MORPHOWATCH-CBXRP-USDC-MARKET-20261031T0031Z",
+        "SRC-MORPHO-APP-CBXRP-USDC-MARKET-20261031T0036Z",
+        "SRC-CIRCLE-USDC-SUPPLY-20261029T2000Z"
+      ],
+      "details": "Circle is the issuer of USDC; no direct Circle lending/supply position in the market is established."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-07",
+      "from_entity": "U.S. spot XRP ETF trusts",
+      "relation": "report_issuer_holdings_of",
+      "to_entity": "XRP",
+      "status": "ISSUER_HOLDINGS_AGGREGATION",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-FLOWS-20261031T0113Z",
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261031T0113Z"
+      ],
+      "details": "Aggregators report approximately 1.197B XRP held on October 29 across six spot funds plus BITW in one dataset; exact universe and flow eligibility vary by provider."
+    },
+    {
+      "edge_id": "E-20261031T011325Z-08",
+      "from_entity": "Binance",
+      "relation": "announced_aggregate_incident_reserve_and_freezes",
+      "to_entity": "Affected customer assets",
+      "status": "COMPANY_STATEMENT_REPORTED_BY_REUTERS",
+      "source_ids": [
+        "SRC-REUTERS-BINANCE-RESERVE-20261030T1403Z"
+      ],
+      "details": "The $6.34B reserve, $5B in impacted tokens and $3B frozen are aggregate USD values, not XRP-specific reserve evidence."
+    }
+  ],
+  "limitation_ids": [
+    "LIM-20261031T011325Z-01",
+    "LIM-20261031T011325Z-02",
+    "LIM-20261031T011325Z-03",
+    "LIM-20261031T011325Z-04",
+    "LIM-20261031T011325Z-05",
+    "LIM-20261031T011325Z-06",
+    "LIM-20261031T011325Z-07"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Reconcile issuer-native ETF holdings and fund-specific creations/redemptions by settled timestamp; exclude provisional rows.",
+    "Build synchronized venue-native XRP futures open interest, funding and liquidation series with contract identifiers.",
+    "Reconcile Coinbase/Morpho cbXRP market balances from block-consistent data and distinguish Coinbase UI activity from permissionless users.",
+    "Trace sampled Morpho liquidation paths through cbXRP seizure, unwrap/redemption and any subsequent native XRP sale.",
+    "Obtain Binance's official October 1 XRPL wallet membership and November 1 token-level PoR update.",
+    "Keep macro and collateral context out of predictive features until walk-forward and calibration tests pass."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatches": 0,
+  "paper_state_mutations": 0,
+  "real_money_trades": 0
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T230816Z-PRE-ESCROW-EVENT-AND-EXCHANGE-DELTA-FEATURE-ADMISSION",
+  "captured_at_utc": "2026-10-31T23:08:16Z",
+  "status": "ACCEPTED_FOR_RESEARCH",
+  "decisions": [
+    "Treat November 1 1B XRP as scheduled FinishAfter eligibility, not a completed release, sale or market supply.",
+    "Treat the trailing 12-month 70% re-escrow rate as a scenario prior only; preserve earlier varying monthly history as counterevidence.",
+    "Treat the 22.48B XRP exchange-wallet total as attributed custody inventory, not tradable float.",
+    "Record Binance's +196.2M overview delta as an inference likely representing a daily change, because rounded per-exchange deltas approximately reconcile to the +105.9M aggregate daily movement; do not admit it as a feature until the downloadable dataset confirms the interval.",
+    "Do not infer incident restitution, new XRP purchases or stolen-fund recovery from aggregate exchange-wallet changes.",
+    "Keep the latest verified TradRadar 20:10 UTC observation; reject the 17:45 UTC search-index result as stale.",
+    "Keep PR #1431 as a tested proposal only. Main's Cross Analysis writer remains active until an approved merge.",
+    "Admit no market feature and issue no directional XRP forecast from this pre-event snapshot."
+  ],
+  "required_verification": [
+    "Retrieve a fresh validated XRPL ledger after 00:00 UTC and verify both escrow objects.",
+    "Capture EscrowFinish and follow-on transaction hashes, destinations, amounts, metadata and ledger indexes.",
+    "Identify subsequent EscrowCreate objects and quantify net escrow disposition.",
+    "Reconcile exact per-exchange daily delta from the machine-readable XRP Insights dataset.",
+    "Crosswalk incident source wallets against Binance reserve and attributed-wallet sets.",
+    "Synchronize post-event spot, depth, ETF, derivatives and exchange observations.",
+    "Run exact-head archive validation after metadata update."
+  ],
+  "feature_admission": {
+    "escrow_release": "SCHEDULED_NOT_EXECUTED_AT_CAPTURE",
+    "escrow_relock_ratio": "HISTORICAL_PRIOR_ONLY",
+    "binance_daily_delta": "INFERENCE_NOT_ADMITTED",
+    "exchange_wallet_total": "CUSTODY_INVENTORY_NOT_TRADABLE_FLOAT",
+    "tradradar": "OBSERVATION_ONLY",
+    "directional_features": [],
+    "forecast_status": "NOT_ISSUED"
+  },
+  "safety": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}

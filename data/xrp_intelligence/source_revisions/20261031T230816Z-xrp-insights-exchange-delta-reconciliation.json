@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T230816Z-XRP-INSIGHTS-EXCHANGE-DELTA-RECONCILIATION",
+  "source_id": "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY",
+  "captured_at_utc": "2026-10-31T23:08:16Z",
+  "created_at_utc": "2026-10-31T23:08:16Z",
+  "data_as_of_utc": "2026-10-31T08:00:00Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY",
+      "publisher": "XRP Insights — exchange-balance methodology and XRP Radar",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "retrieved_at_utc": "2026-10-31T23:08:16Z",
+      "publication_time_utc": "2026-10-31",
+      "evidence_class": "SECONDARY_ONCHAIN_METHODOLOGY",
+      "claims": [
+        "The detailed page reports 22.48B XRP in 701 wallets across 24 exchanges at 08:00 UTC October 31; same-wallet change is -133.0M over seven days and -12.3M over 30 days.",
+        "Binance attributed wallets total 2.78B XRP with +17.6M over seven days and +30.3M over 30 days; Coinbase 5.85B with +17.7M and +18.4M; SBI VC Trade 59.5M with -899K and -10.5M.",
+        "The daily table reports +105.9M aggregate same-wallet movement on October 31.",
+        "The overview page displays Binance +196.2M and Coinbase +13.3M among per-exchange deltas without an explicit interval label.",
+        "Summing the rounded per-exchange overview deltas gives approximately +106.58M, within 0.68M of the detailed page's +105.9M daily aggregate."
+      ],
+      "limitations": [
+        "The +196.2M Binance interval is not explicitly labeled on the overview page; interpreting it as a daily same-wallet delta is an inference supported by the aggregate reconciliation.",
+        "The overview deltas are rounded; the 0.68M difference is not an exact reconciliation.",
+        "No per-wallet history is published, so the daily change cannot be attributed to particular source wallets or transactions.",
+        "The 22.48B broad attributed-wallet total includes cold/omnibus custody and approximately 487.2M XRP of non-customer reserves/funds; it is not tradable float."
+      ]
+    }
+  ],
+  "findings": [
+    "The broad Binance attributed-wallet series is positive over both seven and 30 days, disconfirming a simplistic persistent-decline narrative.",
+    "The overview's +196.2M Binance delta is likely daily but remains unconfirmed pending the downloadable machine-readable dataset."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Exchange balances are broad custody inventory, not customer-owned tradable float.",
+    "The same provider supplies both the escrow and exchange-balance views; they are not independent sources.",
+    "Daily per-exchange overview intervals are not explicitly labeled."
+  ],
+  "corrections": [],
+  "pending_archive_append": false,
+  "exact_head_validation": false,
+  "status": "PENDING_EXACT_HEAD_VALIDATION"
+}

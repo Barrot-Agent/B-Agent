@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 27,
+  "chunk_count": 28,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:31:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:31:00Z",
+      "update_type": "SBI_SMFG_STABLECOIN_ALLIANCE_TRUST_CUSTODY_CONSOLIDATION_AND_BITBANK_MCP_ADAPTER_AUDIT",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_head_sha": "1909a9d769851959c5cfa7cf0fc7b5eafbc64326",
+      "current_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+      "current_main_protection": {
+        "protected": true,
+        "protection_enabled": true,
+        "required_status_check_enforcement": "non_admins",
+        "required_status_check_contexts": [],
+        "required_status_checks": [],
+        "interpretation": "Branch protection is enabled, but the inspected API response lists no mandatory status-check contexts/checks."
+      },
+      "pr1353": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1353",
+        "head_sha": "1909a9d769851959c5cfa7cf0fc7b5eafbc64326",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "validator_run_id": 41026637235,
+        "validator_tests_passed": 18,
+        "validator_tests_failed": 0,
+        "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41026637235",
+        "gate_run_id": 41026637245,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41026637245",
+        "full_repository_ci": "NOT_RUN"
+      },
+      "pr1366": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1366",
+        "head_sha": "4a826f1130418bcd1eb475b8af48e50c2a267a26",
+        "base_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+        "state": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+        "core_ci_run_id": 41024099995,
+        "core_ci_tests_passed": 347,
+        "core_ci_subtests_passed": 8,
+        "core_ci_duration_seconds": 8.58,
+        "core_ci_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41024099995",
+        "gate_run_id": 41024100209,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41024100209",
+        "pr_body_updated_with_exact_head_evidence": true,
+        "merge_performed": false
+      },
+      "pr1363": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1363",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "base_sha": "bbff39f358239613acb6a8781e217c9f10515167",
+        "current_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+        "ahead_by": 3,
+        "behind_by": 4,
+        "previous_core_ci": "352 tests plus 8 subtests passed on older head",
+        "previous_gate": "PASS_MERGE_DISABLED",
+        "current_base_checks": "NOT_RUN"
+      },
+      "sbi_findings": {
+        "official_sbi_smfg_alliance": true,
+        "smfg_equity_participation_percent_in_sbi_startale_marketing": 5,
+        "alliance_scope": "Research, use-case design and PoCs for JPYSC and other stablecoins",
+        "production_settlement": "NOT_ESTABLISHED",
+        "secondary_reported_smbc_individual_customers": 24000000,
+        "secondary_reported_jpysc_issuance_jpy": 20800000000,
+        "trust_merger_effective_date_planned": "2026-12-31",
+        "trust_merger_effective_now": false,
+        "xrp_specific_custody_or_settlement": "NOT_ESTABLISHED",
+        "bitbank_full_acquisition_completed": "2026-10-01"
+      },
+      "bitbank_mcp_adapter_audit": {
+        "repository": "https://github.com/bitbankinc/bitbank-lab-mcp",
+        "tree_sha": "8013621b1163e49bf4ed14edac2c7309cf80b13c",
+        "status": "DESIGNED_NOT_CONNECTED",
+        "runtime": "LOCAL_STDIO_EXPERIMENTAL_BETA",
+        "public_tool_registry_count": 33,
+        "private_tool_count": 16,
+        "documentation_public_tool_count_conflict": [
+          32,
+          33
+        ],
+        "package_json_version": "0.0.0-dev",
+        "gemini_extension_version": "0.1.1",
+        "public_data_authentication": "NONE",
+        "private_api_authentication": "API_KEY_AND_SECRET",
+        "private_permissions": "READ_ONLY_FOR_ASSET_INSPECTION; READ_PLUS_TRADE_FOR_ORDERS",
+        "withdrawals": "NO_WITHDRAWAL_TOOL; DO_NOT_GRANT_WITHDRAWAL_PERMISSION",
+        "order_safety": "PREVIEW_EXPLICIT_USER_CONFIRMATION_EXECUTE",
+        "app_ui_execute": "DEFAULT_OFF; HOST_META_BEHAVIOR_NOT_PROTOCOL_GUARANTEED",
+        "intended_clients": [
+          "Claude Desktop",
+          "Claude Code",
+          "Codex",
+          "Gemini CLI"
+        ],
+        "barrot_connection_tested": false,
+        "live_api_call_performed": false,
+        "adapter_recommendation": "PUBLIC_ONLY; NO_API_KEYS; INGEST_RAW_TIMESTAMPED_XRP_JPY_TICKER_ORDERBOOK_CANDLES_TRADES_FLOW_AND_VOLATILITY; KEEP PRIVATE TOOLS DISABLED"
+      },
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "force_push": false,
+      "deployment_executed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false,
+      "nine_platform_live_collaboration": "NOT_VERIFIED"
+    }
+  ]
+}

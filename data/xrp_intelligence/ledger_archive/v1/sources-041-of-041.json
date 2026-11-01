@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 40,
+  "chunk_count": 41,
+  "record_count": 3,
+  "created_at_utc": "2026-10-30T13:25:00Z",
+  "records": [
+    {
+      "id": "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+      "evidence_class": "PRIMARY_SEC_10Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "title": "Coinbase Global Q3 2026 Form 10-Q",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T13:25:00Z",
+      "note": "Q3 2026 10-Q states Coinbase renewed its Circle arrangement on the same terms, average USDC held in Coinbase products reached an all-time high, Q3 stablecoin revenue was $306.905M (-5% YoY), and nine-month stablecoin revenue was $904.487M. Higher average USDC balances contributed +$84.6M to subscription/services revenue while lower average interest rates contributed -$52.8M. The filing reports USDC AOP of $8.616B at Sep 30, 2026, which is not directly reconciled to the separate $22B average USDC-held-in-products metric. Q3 net income was $718.7M versus adjusted EBITDA $332.9M; $715.0M of crypto-asset investment gains were primarily BTC/ETH. The investments line was -$39.2M in Q3 2026 versus +$400.25M in Q3 2025, with the filing attributing the change largely to fair-value remeasurement of Circle investment after its IPO. Do not attribute Q3 net income to Circle."
+    },
+    {
+      "id": "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+      "evidence_class": "PRIMARY_SEC_10Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "title": "Circle Internet Group Q2 2026 Form 10-Q",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T13:25:00Z",
+      "note": "Q2 2026 total revenue and reserve income $701.315M, including $667.733M reserve income; reserve income was 95.2% of total revenue in Q2 and 94.6% for H1. Circle reported $324.6M of distribution costs paid under its Coinbase agreements in Q2 and $655.3M in H1. H1 distribution costs paid to Coinbase increased $19.8M as reserve income rose, partly offset by a lower Coinbase share of average on-platform USDC balances. Average daily USDC in circulation grew 25.2% in Q2 and 31.7% in H1 year over year. Circle's hypothetical 100bp reserve-yield reduction sensitivity, holding June 30 balances and reserve allocation constant, estimates a $737M reduction in annual reserve income and $360M lower distribution costs. These are scenario sensitivities, not forecasts."
+    },
+    {
+      "id": "SRC-SEC-CIRCLE-S1-2025-COINBASE-COLLABORATION-OWNERSHIP",
+      "evidence_class": "PRIMARY_SEC_S1",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000119312525178989/d839239ds1.htm",
+      "title": "Circle Internet Group 2025 Form S-1 — Coinbase equity, Centre history and USDC collaboration economics",
+      "published_at": null,
+      "accessed_at_utc": "2026-10-30T13:25:00Z",
+      "note": "Circle's S-1 states Centre was 50/50 owned by Circle and Coinbase, Circle acquired Coinbase's remaining 50% for $209.9M in Circle shares in August 2023 and dissolved Centre in December 2023. The new collaboration gave Circle sole governance over the Circle stablecoin network and Coinbase a minority equity stake. The post-IPO ownership table shows Coinbase with 7,901,791 shares, approximately 3.7% after the offering (8,367,442 shares/4.0% before the offering). The agreement's payment base includes reserve income net of specified fees/expenses; Circle retains an issuer portion, each party receives product economics tied to stablecoins held in its custodial/managed products, and after approved participants Coinbase receives 50% of the remaining payment base. This is historical post-IPO ownership, not a verified current 2026 percentage."
+    }
+  ]
+}

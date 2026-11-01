@@ -1,0 +1,250 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 133,
+  "chunk_count": 134,
+  "record_count": 18,
+  "records": [
+    {
+      "id": "LIM-20261031T121200Z-L1",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "SBI XRP reward sourcing",
+      "limitation": "Card, shareholder, deposit and START bond XRP reward volumes and inventory-versus-market sourcing are not disclosed.",
+      "impact": "Prevents treating rewards as net spot demand.",
+      "next_action": "Obtain issuer reward totals and trace public inventory/market settlement if disclosed.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD",
+        "SRC-20261031T121200Z-SBI-START-BOND-XRP-REWARD",
+        "SRC-20261031T121200Z-SBI-SHAREHOLDER-XRP-COUPON"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L2",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "SBI BIZ card",
+      "limitation": "BIZ extension is confirmed but aggregate XRP reward mix and actual conversion volumes are unknown.",
+      "impact": "Business spend cannot be translated into XRP buy pressure.",
+      "next_action": "Seek monthly aggregate rewards and product terms.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-VISA-CRYPTO-CARD-BIZ"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L3",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "RLUSD chain scope",
+      "limitation": "VCTRADE RLUSD service supports Ethereum only; it is not an XRPL RLUSD route.",
+      "impact": "Avoid false SBI-to-XRPL RLUSD edge.",
+      "next_action": "Monitor official chain expansion notices.",
+      "status": "RESOLVED_SCOPE",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L4",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Bitbank acquisition",
+      "limitation": "Official agreement is conditional; no completion confirmation found by cutoff.",
+      "impact": "Do not treat Bitbank as a current SBI subsidiary or combine balances as actual.",
+      "next_action": "Find official closing/JFTC clearance disclosure.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-BITBANK-ACQUISITION-CONDITIONAL"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L5",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "JPYSC deployment",
+      "limitation": "Initial JPYSC use is VCTRADE-account-bound; public-chain circulation awaits legal/tax/supervisory conditions.",
+      "impact": "No production public-chain JPYSC flow or collateral assumption.",
+      "next_action": "Monitor official public-chain launch and chain/contract disclosure.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-JPYSC-LAUNCH-ACCOUNT-BOUND"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L6",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "SBI/BlackRock MOU",
+      "limitation": "Tokenized MMF/JPYSC relationship is an MOU, not a launched fund or collateral facility.",
+      "impact": "No actual MMF collateral mobility can be assumed.",
+      "next_action": "Track contract, fund launch, custody and settlement evidence.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-STARTALE-BLACKROCK-JPYSC-MOU"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L7",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "SBI/SMFG partnership",
+      "limitation": "Capital/business partnership is exploratory; no production stablecoin service or volume disclosed.",
+      "impact": "No actual stablecoin payment flow can be inferred.",
+      "next_action": "Track product and regulatory launch announcements.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBI-SMFG-STABLECOIN-PARTNERSHIP"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L8",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Arc actual usage",
+      "limitation": "SBI validator, Coinbase exchange access and Morpho credit roles are documented, but actual TVL, USDC flows, collateral and XRP activity are unknown.",
+      "impact": "Cannot estimate Arc's actual liquidity or XRP substitution effect.",
+      "next_action": "Ingest public Arc chain/market data and Morpho market state.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-CIRCLE-ARC-MAINNET-ROLES"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L9",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Escrow outcome",
+      "limitation": "1B XRP is scheduled to become finishable; actual EscrowFinish, re-escrow, destination and sale remain unknown.",
+      "impact": "Gross unlock cannot be converted into circulating supply or selling pressure.",
+      "next_action": "Capture XRPL ledgers and transaction hashes after Nov1 00:00 UTC.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-XRP-INSIGHTS-NOV1-ESCROW",
+        "SRC-20261031T121200Z-XRPL-ESCROW-DOCS"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L10",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Binance PoR/replenishment",
+      "limitation": "12-hour snapshot target elapsed; no completed snapshot found in current search; XRP-specific allocation unknown.",
+      "impact": "Cannot infer XRP demand or reserve sufficiency.",
+      "next_action": "Recheck official PoR publication by Nov2 and crosswalk token addresses/liabilities.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-BINANCE-SECURITY-UPDATE-2"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L11",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "ETF flow completeness",
+      "limitation": "CryptoKeyhole Oct30 flow is partial 2/4; Alpha's displayed data ends Oct29.",
+      "impact": "No final Oct30 ETF net flow or actual spot-buy conclusion.",
+      "next_action": "Reconcile all issuer files and cash/in-kind creations.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-CRYPTOKEYHOLE-XRP-ETF-FLOWS",
+        "SRC-20261031T121200Z-ALPHA-FINANCE-XRP-ETF-FLOWS"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L12",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Derivatives OI methodology",
+      "limitation": "TradRadar OI is provider-scoped; cross-provider totals are not reconciled contract-by-contract.",
+      "impact": "No composite OI or notional long/short inference.",
+      "next_action": "Build contract/venue-level mapping and unit conversion.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-TRADRADAR-XRP-DERIVATIVES"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L13",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "SBIC/ChatGPT phrase",
+      "limitation": "Japanese SBIC East Japan is identified, but exact 'ChatGPT SBIC' source context is unresolved; no OpenAI partnership is established.",
+      "impact": "Avoid acronym collision or false affiliation.",
+      "next_action": "Locate original public video/post/source context.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-SBIC-EAST-JAPAN-PROFILE",
+        "SRC-20261031T121200Z-SBIC-STATUTORY-STRUCTURE"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L14",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Camilla Stephenson YouTube",
+      "limitation": "Exact channel identity and exhaustive public video inventory remain unverified.",
+      "impact": "Do not attribute similarly named creators' videos.",
+      "next_action": "Find an exact channel handle or direct video URL in public sources.",
+      "status": "OPEN",
+      "source_ids": [],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L15",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Nine-platform authentication",
+      "limitation": "Only ChatGPT and GitHub access are verified; eight other target platforms are not authenticated/tested.",
+      "impact": "No live multi-agent collaboration or handoff can be claimed.",
+      "next_action": "Design least-privilege adapters and verify each connection separately.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-GITHUB-MAIN-PR-WORKFLOW-INVENTORY"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L16",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Prediction-engine readiness",
+      "limitation": "No trained fixed-horizon model, point-in-time feature store, walk-forward skill or calibration is verified; no forecast issued.",
+      "impact": "No directional probability or trading recommendation is justified.",
+      "next_action": "Build immutable features, baseline, leakage tests, walk-forward and calibration gates.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-GITHUB-PR1400-EXACT-HORIZON",
+        "SRC-20261031T121200Z-GITHUB-PR1410-TARGET-SAMPLING"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L17",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Main workflow security",
+      "limitation": "Scheduler, cross-analysis, merge-queue and token-rotation workflows retain write/dispatch capability on main; PR #1411 is unmerged.",
+      "impact": "Main safety changes are proposals, not production fixes.",
+      "next_action": "Review/approve exact-head PRs and migrate writers to artifact/branch workflow.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-GITHUB-PR1411-TOKEN-SAFETY",
+        "SRC-20261031T121200Z-GITHUB-MAIN-PR-WORKFLOW-INVENTORY"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    },
+    {
+      "id": "LIM-20261031T121200Z-L18",
+      "created_at_utc": "2026-10-31T12:12:00Z",
+      "topic": "Repository security/CI completeness",
+      "limitation": "Security-alert endpoint unavailable; full repository CI and current dependency/CVE scan not run; branch-protection detail returned 403.",
+      "impact": "No zero-vulnerability or full-suite-pass claim is justified.",
+      "next_action": "Obtain authorized security-alert access and complete non-mutating scan.",
+      "status": "OPEN",
+      "source_ids": [
+        "SRC-20261031T121200Z-GITHUB-MAIN-PR-WORKFLOW-INVENTORY"
+      ],
+      "related_snapshot": "data/xrp_intelligence/snapshots/20261031t121200z-sbi-multirail-xrp-distribution-and-nov1-escrow.json"
+    }
+  ]
+}

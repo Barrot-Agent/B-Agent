@@ -1,0 +1,161 @@
+{
+  "record_type": "xrp_intelligence_architecture_decision",
+  "schema_version": "1.0",
+  "decision_id": "ADR-20261030T204000Z-INSTITUTIONAL-COLLATERAL-AND-ACCOUNT-FLOW-SEPARATION",
+  "created_at_utc": "2026-10-30T20:40:00Z",
+  "decision_status": "ADOPTED_FOR_RESEARCH_AND_FEATURE_GOVERNANCE",
+  "source_ids": [
+    "SRC-BNY-RIPPLE-CUSTODY-20261030T2040Z",
+    "SRC-RIPPLE-C2FO-INSTANT-PAY-20261030T2040Z",
+    "SRC-C2FO-INSTANT-PAY-20261030T2040Z",
+    "SRC-BITNOMIAL-COLLATERAL-SCHEDULE-20261030T2040Z",
+    "SRC-RIPPLE-PRIME-XRP-COLLATERAL-20261030T2040Z",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20261030T2040Z",
+    "SRC-STANDARD-CHARTERED-RLUSD-CUSTODY-20261030T2040Z",
+    "SRC-RIPPLE-PRIME-RWA-SWAPS-20261030T2040Z",
+    "SRC-COINBASE-RIPPLE-RLUSD-20261030T2040Z",
+    "SRC-COINBASE-Q3-2026-20261030T2040Z",
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T2040Z",
+    "SRC-DEFILLAMA-XRPL-STABLECOINS-20261030T2040Z",
+    "SRC-DEFILLAMA-XRPL-CHAIN-20261030T2040Z",
+    "SRC-XRP-INSIGHTS-ETF-20261030T2040Z",
+    "SRC-COINPAPRIKA-XRP-20261030T2040Z",
+    "SRC-OCC-RIPPLE-TRUST-BANK-20261030T2040Z",
+    "SRC-OCC-CIRCLE-TRUST-BANK-20261030T2040Z",
+    "SRC-OCC-COINBASE-STATUS-20261030T2040Z",
+    "SRC-COINBASE-OCC-CONDITIONAL-20261030T2040Z",
+    "SRC-CIRCLE-OCC-FINAL-20261030T2040Z",
+    "SRC-RIPPLE-OCC-FINAL-20261030T2040Z",
+    "SRC-SEC-CIRCLE-RESERVE-FUND-BNY-20261030T2040Z",
+    "SRC-RIPPLE-900M-RUNRATE-20261030T2040Z",
+    "SRC-RIPPLE-TREASURY-24-7-20261030T2040Z",
+    "SRC-FED-FOMC-20261030T2040Z",
+    "SRC-BEA-GDP-Q3-20261030T2040Z",
+    "SRC-BEA-PCE-SEP-20261030T2040Z",
+    "SRC-REUTERS-CRYPTO-RISKOFF-20261030T2040Z",
+    "SRC-BNY-CIRCLE-USDC-CUSTODY-20261030T2040Z",
+    "SRC-BINANCE-REPLENISHMENT-20261030T2040Z",
+    "SRC-BITHOMP-RJQI-ACCOUNT-20261030T2040Z",
+    "SRC-BITHOMP-RARVLN-ACCOUNT-20261030T2040Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2040Z",
+    "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2040Z",
+    "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2040Z",
+    "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2040Z",
+    "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2040Z",
+    "SRC-BITHOMP-BINANCE-RDAE53-ACCOUNT-20261030T2040Z",
+    "SRC-BINANCE-ATTACKER-XRP-STATUS-20261030T2040Z"
+  ],
+  "context": "New public evidence reveals XRP custody support, venue collateral eligibility, RLUSD institutional settlement and a multi-hop XRPL route from Ripple-labelled and unknown accounts to a Binance-labelled wallet. Custody, eligibility, utilization, settlement and actual spot flows must remain separate.",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Represent custody support, collateral eligibility, collateral actually posted, collateral utilization, stablecoin settlement and XRP spot-market purchases as distinct variables.",
+      "reason": "Product availability and reserve custody do not establish actual capital deployment or XRP buying."
+    },
+    {
+      "id": "D2",
+      "decision": "Use explicit collateral states: ANNOUNCED, ELIGIBLE, LIVE_PRODUCT, ACTUAL_POSTING_OBSERVED, UTILIZATION_QUANTIFIED. Do not advance a record beyond its evidence state.",
+      "reason": "Bitnomial publishes eligibility and haircuts; Ripple Prime advertises XRP collateral; neither discloses posted balances."
+    },
+    {
+      "id": "D3",
+      "decision": "Record venue-specific XRP collateral haircut and notional limit separately from collateral amount.",
+      "reason": "Notional limits and collateral balances are different units."
+    },
+    {
+      "id": "D4",
+      "decision": "Represent Ripple Prime/Hidden Road and Bitnomial clearing-member relationship as strong entity-continuity inference until legal entity mapping is directly verified.",
+      "reason": "Bitnomial lists Hidden Road Partners CIV US LLC; Ripple acquired Hidden Road and rebranded it Ripple Prime."
+    },
+    {
+      "id": "D5",
+      "decision": "Treat BNY as a common service-provider node for Circle and Ripple, not as evidence of a direct Circle-Ripple partnership.",
+      "reason": "BNY custody is documented for Circle Reserve Fund and RLUSD; reserve structures and issuers remain separate."
+    },
+    {
+      "id": "D6",
+      "decision": "Use a regulatory status state machine: filed, conditional approval, approved, consummated/effective, operational, product-live.",
+      "reason": "A trust charter approval is not identical to a commenced service or live collateral product."
+    },
+    {
+      "id": "D7",
+      "decision": "For actual-capital claims, require asset, amount, legal entity, counterparty, timestamp, transaction/settlement identifier and evidence of economic settlement.",
+      "reason": "Historical program totals and company revenue run rates are not XRPL settlement amounts or XRP purchases."
+    },
+    {
+      "id": "D8",
+      "decision": "Classify account-level XRPL routes separately from coin-level provenance. Never state that the same XRP units moved through multiple accounts or that an exchange transfer was sold.",
+      "reason": "XRP is fungible; accounts can commingle balances and have incomplete histories."
+    },
+    {
+      "id": "D9",
+      "decision": "Keep raRVLN as AMM/vault/loan-broker candidate node with unknown pool pair and vault identity; no collateral-posted feature until ledger objects are decoded.",
+      "reason": "Explorer classification is available, but asset composition and object-level purpose are not."
+    },
+    {
+      "id": "D10",
+      "decision": "Keep XRP price, ETF holdings deltas, stablecoin capitalization, TVL, DEX volume, active addresses, transaction counts, derivatives OI/funding and macro data in separate timestamped series.",
+      "reason": "Provider time windows and definitions differ; stablecoin supply can rise while DEX activity falls."
+    },
+    {
+      "id": "D11",
+      "decision": "Do not admit any new market or on-chain observation from this run into a predictive feature set until synchronized historical backfill, source-quality checks and walk-forward tests are completed.",
+      "reason": "The current market snapshot is stale/non-synchronous and the wallet route's intent is unknown."
+    },
+    {
+      "id": "D12",
+      "decision": "Preserve competing hypotheses and disconfirming evidence for the possible Ripple-to-Binance route: incident replenishment, routine market-making/treasury rebalancing, and DeFi collateral/liquidity movement.",
+      "reason": "The route is temporally significant but no direct attribution or sale is established."
+    },
+    {
+      "id": "D13",
+      "decision": "Flag the subscriber-sync workflow's public unsalted SHA-256 email hashes as a privacy risk; do not disable the workflow or break access until a tested license-key/server-side replacement is available.",
+      "reason": "The current public subscriber file is empty, but future nonzero syncs could publish dictionary-attackable pseudonymous identifiers."
+    }
+  ],
+  "source_independence": {
+    "rule": "Joint BNY/Ripple and Ripple/C2FO releases are single announcement lineages even when both partners host copies; they are not independent datasets. OCC CAS, SEC filings, Bithomp, XRPLWin and market aggregators are separate source classes but may still rely on the same underlying ledger or issuer data.",
+    "groups": [
+      "BNY_RIPPLE_JOINT_RELEASE_20261027",
+      "RIPPLE_C2FO_JOINT_RELEASE_20261027",
+      "OCC_CAS",
+      "SEC_CIRCLE_RESERVE_FUND",
+      "BITHOMP_XRPL",
+      "XRPLWIN_XRPL",
+      "DEFILLAMA_XRPL",
+      "XRP_INSIGHTS_ETF",
+      "COINPAPRIKA"
+    ]
+  },
+  "feature_admission": {
+    "admitted": [],
+    "rejected_for_now": [
+      "rJqi/raRVLN/r39TA/rNxp4h account flows",
+      "Bitnomial collateral eligibility",
+      "Ripple Prime collateral product statement",
+      "C2FO Instant Pay announcement",
+      "XRPL stablecoin capitalization",
+      "ETF estimated cost basis",
+      "Coinbase Q3 strategic metrics",
+      "Ripple annualized revenue run rate"
+    ],
+    "required_before_admission": [
+      "timestamp harmonization",
+      "historical point-in-time snapshots",
+      "entity and asset mapping",
+      "missingness and provider lineage checks",
+      "baseline comparison",
+      "walk-forward evaluation",
+      "leakage audit",
+      "calibration and drift monitoring"
+    ]
+  },
+  "next_actions": [
+    "Resolve raRVLN AMM/vault/loan-broker ledger objects and complete history.",
+    "Crosswalk rNxp4h against Binance PoR and XRP-BF2 reserve addresses.",
+    "Trace r39TA complete XRP/RLUSD history without inferring beneficial ownership.",
+    "Collect actual XRP collateral utilization and custody AUC when public.",
+    "Reconcile Coinbase/Ripple/Circle OCC status and operating commencement.",
+    "Continue fixed-horizon model design; no forecast until data gate passes."
+  ]
+}

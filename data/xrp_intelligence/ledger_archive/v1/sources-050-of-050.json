@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 49,
+  "chunk_count": 50,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T15:12:45Z",
+  "records": [
+    {
+      "id": "SRC-XRPINSIGHTS-EXCHANGE-DAILY-REGIONAL-20261030T151245Z",
+      "evidence_class": "PUBLIC_XRPL_EXCHANGE_WALLET_BALANCE_DATA",
+      "urls": [
+        "https://xrp-insights.com/exchange-balances"
+      ],
+      "title": "XRP Insights — October 30 daily same-wallet movement, exchange-region concentration and custody labels",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T15:12:45Z",
+      "note": "Latest balances read 08:00 UTC. 22.37B XRP in 701 wallets/24 exchanges. Daily same-wallet changes: -207.3M Oct30 and -41.2M Oct29; 7d -234.9M and 30d -146.1M. Regional attribution: South Korea 8.60B, US 8.59B, Japan 1.38B. Storage labels: 49% cold, 14% hot, 37.5% unclassified. Method uses rippled account_info and XRPSCAN labels; daily bars exclude exchanges with wallet-set changes; no per-wallet daily history. 488.4M identified non-customer wrapped/insurance/charity reserves."
+    }
+  ]
+}

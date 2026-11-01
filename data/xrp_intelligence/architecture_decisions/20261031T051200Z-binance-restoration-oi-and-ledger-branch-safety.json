@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261031T051200Z-BINANCE-RESTORATION-OI-AND-LEDGER-BRANCH-SAFETY",
+  "created_at_utc": "2026-10-31T05:12:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_AND_PROPOSED_MIGRATION",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Record Binance News's restoration-begun statement as an official company claim distinct from withdrawal restoration and transaction-level customer credits. Do not infer XRP-specific purchases or credits.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D2",
+      "decision": "Maintain Kodexius and TradRadar OI as separate provider series. Current totals and overlapping exchange-level values materially differ; no composite until raw contract definitions are reconciled.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D3",
+      "decision": "Do not admit the Investing.com 00:47 UTC spot snapshot as a current 05:12 UTC price feature.",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "D4",
+      "decision": "PR #1353 exact-head validator success is verified for its data head, but compare history is diverged 1,177 ahead/351 behind main. Do not merge, rebase or force-push this branch. Plan a separate reviewed migration/split from current main.",
+      "status": "CRITICAL"
+    },
+    {
+      "id": "D5",
+      "decision": "No XRP directional forecast is issued; OI coverage is unresolved and Binance token-specific restoration/purchase amounts remain unknown.",
+      "status": "ACTIVE"
+    }
+  ],
+  "evidence_ids": [
+    "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+    "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+    "SRC-20261031-INVESTING-XRP-LIVE-0047Z",
+    "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z",
+    "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+    "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+  ],
+  "exact_head_validation": {
+    "head_sha": "a3db8ba21b0c11da98ad303a7e962eb3d21a4d2d",
+    "validator_run_id": 41171491785,
+    "validator_status": "PASS",
+    "archive_shards": 337,
+    "sources": 1880,
+    "run_updates": 326,
+    "limitations": 809,
+    "tests_passed": 20,
+    "gate_run_id": 41171491778,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "state_mutated": false
+  },
+  "branch_merge_safety": {
+    "compare_status": "diverged",
+    "ahead_by": 1177,
+    "behind_by": 351,
+    "pr_metadata_mergeable": true,
+    "decision": "DO_NOT_MERGE_AS_IS",
+    "next_step": "Fresh-main artifact migration/split; preserve original branch and history."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "next_actions": [
+    "Check Binance initial PoR target at 2026-10-31 07:33 UTC and results by Nov2.",
+    "Verify any customer restoration and XRP-specific purchases through token-level public evidence.",
+    "Obtain raw contract-level OI for overlapping exchanges and reconcile provider definitions.",
+    "Plan a fresh-main research-ledger migration branch; do not alter the existing diverged PR branch.",
+    "Build fixed-horizon prediction evaluation without market feature admission."
+  ]
+}

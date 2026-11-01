@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 54,
+  "chunk_count": 55,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T13:25:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T13:25:00Z",
+      "update_type": "COINBASE_CIRCLE_EQUITY_DISTRIBUTION_AND_RATE_SENSITIVITY_RECONCILIATION",
+      "research_parent_head_sha": "ce21b7fbf192509216e96a07c3ba921deeee3ef9",
+      "previous_ledger_validation": {
+        "run_id": 41062579980,
+        "head_sha": "ce21b7fbf192509216e96a07c3ba921deeee3ef9",
+        "tests_passed": 18,
+        "tests_failed": 0,
+        "gate_run_id": 41062579988,
+        "gate_status": "PASS_MERGE_DISABLED"
+      },
+      "primary_filings": [
+        "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+        "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+        "SRC-SEC-CIRCLE-S1-2025-COINBASE-COLLABORATION-OWNERSHIP"
+      ],
+      "findings": {
+        "coinbase_circle_equity": "3.7% post-IPO in 2025 S-1; current 2026 percentage unknown",
+        "coinbase_circle_contract": "Q3 2026 Coinbase 10-Q says renewed on same terms",
+        "circle_coinbase_distribution_cost_q2_usd_m": 324.6,
+        "circle_coinbase_distribution_cost_h1_usd_m": 655.3,
+        "circle_q2_reserve_income_share_pct": 95.2,
+        "coinbase_q3_stablecoin_revenue_usd_m": 306.905,
+        "coinbase_q3_stablecoin_revenue_yoy_pct": -5,
+        "coinbase_q3_average_usdc_products": "all-time high",
+        "xrp_causal_demand": "NOT_ESTABLISHED"
+      },
+      "corrections": [
+        "Coinbase's Q3 2026 net income is not evidence of Circle investment gains; Q3 net income includes $715.0M gains on crypto assets held for investment, primarily BTC/ETH. The separate investments line was -$39.2M in Q3 2026 versus +$400.25M in Q3 2025 and is described as largely driven by Circle investment fair-value remeasurement.",
+        "Coinbase's $22B average USDC-held-in-products metric and $8.616B USDC AOP at September 30, 2026 have different definitions/periods and remain unreconciled."
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T132500Z-coinbase-circle-equity-revenue-rate-sensitivity.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T132500Z-coinbase-circle-equity-revenue-rate-sensitivity.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T132500Z-coinbase-circle-financial-flow-decomposition.json",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+      "fresh_main_safety_pr": 1373,
+      "pr1373_status": "OPEN_DRAFT_UNMERGED_CI_347_PLUS_8_AND_GATE_PASS",
+      "full_repository_ci": "NOT_RUN",
+      "other_eight_platforms": "NOT_AUTHENTICATED_OR_LIVE_TESTED",
+      "no_merge": true,
+      "no_force_push": true,
+      "no_deployment": true,
+      "no_workflow_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true
+    }
+  ]
+}

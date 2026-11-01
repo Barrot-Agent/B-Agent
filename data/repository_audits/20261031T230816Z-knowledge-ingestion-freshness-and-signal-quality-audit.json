@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_snapshot",
+  "audit_id": "REPO-AUDIT-20261031T230816Z-KNOWLEDGE-INGESTION-FRESHNESS-AND-SIGNAL-QUALITY",
+  "captured_at_utc": "2026-10-31T23:08:16Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "source_ids": [
+    "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429"
+  ],
+  "main_sha": "b51099e04b410f49e28d9c80201f68847aa8118a",
+  "main_commit": {
+    "committed_at_utc": "2026-10-31T22:51:57Z",
+    "message": "Cross-analysis refresh [skip ci]",
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "change": "generated_at timestamp only"
+  },
+  "knowledge_pipeline": {
+    "files": {
+      "ping-pongings/knowledge-base/log.jsonl": {
+        "blob_sha": "de9787cdf7911b19ad7be02a74c6b4fabde2b482",
+        "bytes": 0,
+        "entries": 0
+      },
+      "ping-pongings/knowledge-base/config.json": {
+        "blob_sha": "56b49226e664a1f7dadf0c59b219b37d5e49e118",
+        "last_updated_utc": "2026-10-29T13:23:01.047536Z",
+        "online_articles_entries_ingested": 998
+      },
+      "web/latest_signal.json": {
+        "blob_sha": "1e1d5d9867fd0fe87a140c04c3361e19884eb1cf",
+        "timestamp_utc": "2026-10-29T13:23:33.142057Z",
+        "age_hours": 57.74523833333333,
+        "score": 44,
+        "confidence": 0,
+        "news_score": 88,
+        "news_entries": 11,
+        "source": "sentiment unavailable (github_failed:missing GITHUB_TOKEN/GH_MODELS_TOKEN; groq_failed:429 Too Many Requests)+news(11)"
+      },
+      "web/signal_history.jsonl": {
+        "blob_sha": "0176d7879b046fecb55f4b225cf22aae7761d26a",
+        "bytes": 0,
+        "entries": 0
+      }
+    },
+    "ingestion_script": {
+      "path": "scripts/knowledge_ingest.py",
+      "feeds": [
+        "Cointelegraph XRP RSS",
+        "Google News XRP search (when:7d)",
+        "NewsBTC RSS"
+      ],
+      "per_feed_limit": 8,
+      "deduplication": "URL against local log.jsonl only",
+      "provenance_fields": [
+        "ingested_at",
+        "source",
+        "feed",
+        "title",
+        "url",
+        "published",
+        "summary"
+      ],
+      "persistent_state": "Only repository log.jsonl/config.json; current log is empty and workflow is not scheduled."
+    },
+    "distillation_script": {
+      "path": "scripts/knowledge_distill.py",
+      "provider": "Groq API",
+      "requires_secret": "GROQ_API_KEY",
+      "provider_fallback": "None for semantic distillation; failed entries remain undistilled.",
+      "secondary_check": "VADER lexicon cross-check when installed; not a replacement model."
+    },
+    "signal_script": {
+      "path": "scripts/emit_signal.py",
+      "provider_order": [
+        "GitHub Models",
+        "Groq"
+      ],
+      "failure_behavior": "If both providers fail, analyze_signal returns score=0 and confidence=0; main() still writes latest_signal.json and appends signal_history.jsonl.",
+      "empty_news_behavior": "Falls back to generic 'market sideways; low conviction' text.",
+      "price_failure_behavior": "CoinGecko price failure is stored as 0.0 in history.",
+      "status": "FAIL_OPEN_OUTPUT_ON_PROVIDER_FAILURE"
+    },
+    "workflow": {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "trigger": "workflow_dispatch only",
+      "contents_write": true,
+      "direct_main_commit": true,
+      "direct_main_push": true,
+      "dependency_install": "pip install requests vaderSentiment (unpinned)"
+    },
+    "cross_analysis": {
+      "path": ".github/workflows/cross-analysis.yml",
+      "trigger": "hourly schedule plus workflow_run/manual",
+      "contents_write": true,
+      "direct_main_commit": true,
+      "direct_main_push": true,
+      "latest_zero_sample_issue": "Can generate timestamp-only sentiment outputs with zero qualifying observations."
+    },
+    "scheduler_tick": {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "schedule": "*/15 * * * *",
+      "contents_write": true,
+      "actions_write": true,
+      "direct_queue_commit": true
+    },
+    "interpretation": "The visible 44 score is stale and has confidence 0; its source records provider failure. It is not a current sentiment reading or a price forecast. The main knowledge log and signal history are empty."
+  },
+  "cross_analysis_pr": {
+    "number": 1431,
+    "url": "https://github.com/Barrot-Agent/B-Agent/pull/1431",
+    "state": "OPEN",
+    "draft": true,
+    "merged": false,
+    "head_sha": "57531208184dc3ac2d49a6cce3265c3a1dd8e061",
+    "base_sha": "f0bbed8c51974e4e0b4cb98b09a8ef0eb5fe0fbb",
+    "compare_current_main": {
+      "status": "diverged",
+      "ahead_by": 3,
+      "behind_by": 1,
+      "changed_files": 3
+    },
+    "ci_run_id": 41246255670,
+    "ci_conclusion": "success",
+    "gate_run_id": 41246255620,
+    "gate_conclusion": "success",
+    "gate_merge_enabled": false,
+    "limitation": "Artifact-only outputs; tracked-file/Pages refresh paused; no freshness guard or replacement publisher."
+  },
+  "findings": [
+    "The main knowledge log is empty, config was last updated October 29 at 13:23 UTC, and signal_history is empty.",
+    "The persisted signal timestamp is 57.74 hours old at this capture, score 44, confidence 0, and explicitly records GitHub Models credential absence plus Groq 429.",
+    "emit_signal.py still writes a numeric score and appends history even when both providers fail; this is a fail-open data-quality defect.",
+    "Knowledge Signal Cycle is manual-only, while Cross Analysis and Scheduler Tick retain direct main-write permissions.",
+    "Enabling a schedule without durable deduplication, fail-closed provider status and isolated persistence would repeat the current integrity problem."
+  ],
+  "recommended_minimal_fix": {
+    "priority": 1,
+    "changes": [
+      "Represent provider failure as status=UNAVAILABLE with score/confidence null; do not append a scored history row.",
+      "Do not use generic 'market sideways' text as substitute evidence.",
+      "Record data cutoff, source freshness, sample count and provider status.",
+      "Do not convert a failed price fetch into price=0; mark it missing.",
+      "Run ingestion as bounded artifact capture until a durable research-branch append/promotion path exists.",
+      "Add regression tests for empty log, stale data, both providers failing and price endpoint failure."
+    ],
+    "status": "DESIGNED_NOT_IMPLEMENTED"
+  },
+  "verification": {
+    "direct_main_files_read": true,
+    "source_blobs_read_back": true,
+    "full_repository_ci": "NOT_RUN",
+    "dependency_scan": "INCOMPLETE",
+    "branch_protection_details": "403_NOT_ACCESSIBLE",
+    "secrets_read": false,
+    "workflow_dispatched": false
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false
+  }
+}

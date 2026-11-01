@@ -1,0 +1,181 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_snapshot",
+  "audit_id": "AUDIT-20261031T023200Z-MAIN-WRITER-ROOT-CAUSE-CROSS-ANALYSIS-SCHEDULER",
+  "audit_path": "data/repository_audits/20261031T023200Z-main-scheduled-writer-root-cause-audit.json",
+  "snapshot_path": "data/repository_audits/20261031T023200Z-main-scheduled-writer-root-cause-audit.json",
+  "created_at_utc": "2026-10-31T02:32:00Z",
+  "captured_at_utc": "2026-10-31T02:32:00Z",
+  "data_cutoff_utc": "2026-10-31T02:32:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+  "main_protected_flag": true,
+  "branch_protection_details_status": "FORBIDDEN_403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
+  "source_ids": [
+    "SRC-GH-CROSS-ANALYSIS-RUN-41157339221-20261031T015150Z",
+    "SRC-GH-SCHEDULER-TICK-RUN-41159578270-20261031T022048Z",
+    "SRC-GH-APPROVAL-ZERO-JOB-RUN-41160207764-20261031T022906Z",
+    "SRC-GH-APPROVAL-WORKFLOW-YAML-MAIN-20261031T023200Z",
+    "SRC-GH-PR1386-CROSS-ANALYSIS-SAFETY-20261031T023200Z",
+    "SRC-GH-PR1390-SCHEDULER-SAFETY-20261031T023200Z",
+    "SRC-GH-PR1388-MERGE-QUEUE-SAFETY-20261031T023200Z"
+  ],
+  "source_reference_count": 7,
+  "missing_source_references": 0,
+  "main_write_evidence": {
+    "workflow": "Cross Analysis",
+    "run_id": 41157339221,
+    "event": "schedule",
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41157339221",
+    "run_head_sha": "cd085b63060f470badb2a87c03d0b558e9953fa7",
+    "started_at_utc": "2026-10-31T01:51:50Z",
+    "commit_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+    "commit_message": "Cross-analysis refresh [skip ci]",
+    "push_log": "cd085b6..7a780de main -> main",
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "commit_signed": false,
+    "sentiment_shift": {
+      "generated_at": "2026-10-31T01:51:55.475718+00:00",
+      "xrp": {
+        "recent_24h_score": null,
+        "recent_24h_entries": 0,
+        "prior_24h_score": null,
+        "prior_24h_entries": 0,
+        "shift": null
+      },
+      "btc": {
+        "recent_24h_score": null,
+        "recent_24h_entries": 0,
+        "prior_24h_score": null,
+        "prior_24h_entries": 0,
+        "shift": null
+      }
+    },
+    "script_output": "XRP: insufficient data in one or both windows (recent n=0, prior n=0); BTC: insufficient data in one or both windows (recent n=0, prior n=0).",
+    "other_outputs": {
+      "unique_entity_pairs": 3217,
+      "entities_profiled": 990,
+      "xrp_net_sentiment": 0.46,
+      "ripple_net_sentiment": 0.48
+    },
+    "causal_attribution": "CONFIRMED_BY_RUN_LOG_AND_SUCCESSFUL_GIT_PUSH"
+  },
+  "scheduler_tick": {
+    "run_id": 41159578270,
+    "event": "schedule",
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41159578270",
+    "run_head_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+    "entries_fired": 0,
+    "queue_entries": 1,
+    "commit_push_step": "executed",
+    "push_result": "Everything up-to-date",
+    "main_mutation": "NONE_IN_THIS_RUN",
+    "write_capability": "PRESENT"
+  },
+  "approval_workflow_anomaly": {
+    "run_id": 41160207764,
+    "event": "push",
+    "conclusion": "failure",
+    "jobs_count": 0,
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41160207764",
+    "workflow_file": ".github/workflows/barrot-approve-pr.yml",
+    "declared_trigger": "workflow_dispatch only",
+    "root_cause": "UNKNOWN_NO_JOBS_NO_JOB_LOGS"
+  },
+  "safety_prs": [
+    {
+      "number": 1386,
+      "head_sha": "74c47f2a8a64aefc96ff64f3247bbf48789da052",
+      "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": true,
+      "ci_run_id": 41158736348,
+      "ci_tests_passed": 354,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41158736337,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "purpose": "Remove scheduled main writes and quarantine legacy XRP accuracy"
+    },
+    {
+      "number": 1390,
+      "head_sha": "19f4f9181b439f5399a43ba5df6112a92e11b8d2",
+      "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": true,
+      "ci_run_id": 41158871301,
+      "ci_tests_passed": 348,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41158871353,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "purpose": "Restrict scheduler to credential-isolated validation"
+    },
+    {
+      "number": 1388,
+      "head_sha": "854f52bd50a333a94c16cda7234942a69301e540",
+      "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": true,
+      "ci_run_id": 41158878672,
+      "ci_tests_passed": 344,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41158878561,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "purpose": "Make merge queue read-only and gate external deployments"
+    }
+  ],
+  "open_pr_inventory": {
+    "open_pr_count": 165,
+    "draft_count": 155,
+    "ready_for_review_count": 10,
+    "main_based_count": 163,
+    "current_main_base_count": 3,
+    "stale_main_base_count": 160,
+    "non_main_base_count": 2,
+    "as_of_utc": "2026-10-31T02:32:00Z"
+  },
+  "repository_checks": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "branch_protection_details": "FORBIDDEN_403"
+  },
+  "findings": [
+    {
+      "finding_id": "RA-20261031T023200Z-01",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The scheduled Cross Analysis run 41157339221 caused main commit 7a780de. The job log records git commit and git push, and the push log confirms the main ref advanced from cd085b6 to 7a780de."
+    },
+    {
+      "finding_id": "RA-20261031T023200Z-02",
+      "classification": "CONFIRMED_FACT",
+      "statement": "The only changed path was sentiment_shift.json; the generated output contains null XRP/BTC scores and zero entries because both recent/prior windows had n=0."
+    },
+    {
+      "finding_id": "RA-20261031T023200Z-03",
+      "classification": "CONFIRMED_FACT",
+      "statement": "Scheduler Tick 41159578270 fired zero entries and its push was a no-op, but its workflow retains a commit/push path."
+    },
+    {
+      "finding_id": "RA-20261031T023200Z-04",
+      "classification": "CONFIRMED_FACT",
+      "statement": "PRs #1386, #1390 and #1388 each pass exact-head CI and fail-closed gate checks and target current main, but remain draft, open and unmerged."
+    },
+    {
+      "finding_id": "RA-20261031T023200Z-05",
+      "classification": "UNKNOWN",
+      "statement": "The approval workflow's push-event/zero-job failure is not explained by the workflow_dispatch-only YAML or available logs."
+    }
+  ],
+  "main_changed_by_this_run": false,
+  "main_changed_by_scheduled_workflow": true,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false,
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

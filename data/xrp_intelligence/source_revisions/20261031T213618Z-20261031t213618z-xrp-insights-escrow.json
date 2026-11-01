@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+  "source_id": "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+  "captured_at_utc": "2026-10-31T21:36:18Z",
+  "created_at_utc": "2026-10-31T21:36:18Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+      "publisher": "XRP Insights — XRPL escrow tracker",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "retrieved_at_utc": "2026-10-31T21:36:18Z",
+      "publication_time_utc": "2026-10-31",
+      "evidence_class": "SECONDARY_ONCHAIN_DATA_AGGREGATION",
+      "claims": [
+        "Two Ripple-associated escrow objects totaling 1B XRP have FinishAfter eligibility at 2026-11-01T00:00:00Z.",
+        "Tracker lists 31.4B XRP in 98 escrow objects across eight Ripple-associated accounts.",
+        "Trailing 12 monthly cycles: 12B released, 8.4B re-escrowed (70%), 3.6B net outside escrow."
+      ],
+      "limitations": [
+        "Secondary tracker; raw XRPL JSON-RPC state was not obtained in this run.",
+        "FinishAfter is eligibility, not EscrowFinish, transfer, exchange deposit or sale.",
+        "Historical re-escrow is not a rule or guaranteed November outcome."
+      ]
+    }
+  ],
+  "findings": [
+    "Two Ripple-associated escrow objects totaling 1B XRP have FinishAfter eligibility at 2026-11-01T00:00:00Z.",
+    "Tracker lists 31.4B XRP in 98 escrow objects across eight Ripple-associated accounts.",
+    "Trailing 12 monthly cycles: 12B released, 8.4B re-escrowed (70%), 3.6B net outside escrow."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "Secondary tracker; raw XRPL JSON-RPC state was not obtained in this run.",
+    "FinishAfter is eligibility, not EscrowFinish, transfer, exchange deposit or sale.",
+    "Historical re-escrow is not a rule or guaranteed November outcome."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

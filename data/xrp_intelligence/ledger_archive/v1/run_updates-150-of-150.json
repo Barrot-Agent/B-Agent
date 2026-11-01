@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 149,
+  "chunk_count": 150,
+  "record_count": 1,
+  "created_at_utc": "2026-10-31T16:24:34Z",
+  "records": [
+    {
+      "id": "RUN-20261031T162434Z-XRP-ARCHIVE-VERIFICATION-RECEIPT",
+      "recorded_at_utc": "2026-10-31T16:24:34Z",
+      "update_type": "XRP_ARCHIVE_VALIDATION_AND_FAIL_CLOSED_GATE_VERIFIED",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "06845a53bff7e5c66e8d7263a8e1fb05983d456d",
+      "verification": {
+        "validated_head_sha": "06845a53bff7e5c66e8d7263a8e1fb05983d456d",
+        "validator_run_id": 41219525338,
+        "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41219525338",
+        "validator_job_id": 124590977036,
+        "validator_conclusion": "SUCCESS",
+        "archive_shards_checked": 411,
+        "source_records": 2090,
+        "run_updates": 352,
+        "limitations": 954,
+        "snapshot_path": "data/xrp_intelligence/snapshots/20261031T162002Z-sbic-east-japan-identity-and-archive-repair.json",
+        "snapshot_blob_sha": "b9fb9e0bfe8aad03bf93d7d26604a35beb1c58e0",
+        "snapshot_blob_sha_matched": true,
+        "validator_status": "PASS",
+        "errors": [],
+        "state_mutated": false,
+        "regression_tests": 26,
+        "regression_test_conclusion": "PASS",
+        "fail_closed_gate_run_id": 41219529096,
+        "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41219529096",
+        "fail_closed_gate_job_id": 124590988067,
+        "fail_closed_gate_conclusion": "SUCCESS",
+        "merge_disabled": true,
+        "approval_or_merge_performed": false
+      },
+      "root_cause_and_fixes": [
+        {
+          "failure_run": 41219004757,
+          "root_cause": "Snapshot referenced source ID SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE that was absent from the indexed source shards.",
+          "fix": "Restored the exact source ID with the official SBIC East Japan profile in source shard 124.",
+          "verification": "The exact-head validator now passes all 411 shards with zero missing source references."
+        },
+        {
+          "failure_run": 41219440574,
+          "root_cause": "The existing workflow-order regression test required an exact pytest command string and failed after the workflow added the XRP exchange-balance and SBIC identity tests.",
+          "fix": "Changed the assertion to compare the stable pytest command prefix.",
+          "verification": "All 26 isolated regression tests passed on exact head 06845a53."
+        }
+      ],
+      "unresolved": [
+        "Approval workflow continues to produce push-event runs with zero jobs despite workflow_dispatch-only declaration; latest run 41219524230; root cause UNKNOWN.",
+        "Main remains write-capable through scheduled Cross Analysis and Scheduler Tick; Databricks token-input secret workflow remains active; proposed safety changes are unmerged.",
+        "Full repository CI and dependency vulnerability scan remain incomplete."
+      ],
+      "next_actions": [
+        "Revalidate the next metadata successor after this receipt append; do not call it verified until the exact-head run completes.",
+        "Continue Binance XRP reserve-address versus customer-liability reconciliation and incident source-wallet crosswalk.",
+        "Continue contract-level OI and complete ETF issuer-flow reconciliation before model feature admission.",
+        "Continue main workflow write-path containment and approval zero-job diagnosis."
+      ],
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "main_modified": false,
+      "merge": false,
+      "force_push": false,
+      "manual_dispatch": false,
+      "real_money_trade": false
+    }
+  ]
+}

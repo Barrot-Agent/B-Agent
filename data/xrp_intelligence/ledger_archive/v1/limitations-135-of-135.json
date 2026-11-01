@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 134,
+  "chunk_count": 135,
+  "record_count": 5,
+  "created_at_utc": "2026-10-31T12:36:52Z",
+  "records": [
+    "Binance's public Proof of Reserves page rendered blank audit-time, verification-mechanism, Merkle-root and address-download fields at 2026-10-31 12:31:30 UTC. Dynamic rendering or publication lag remain possible; this does not prove that the announced snapshot was not taken.",
+    "Binance's approximately $1.34B remaining affected-token acquisition plan is aggregate. No XRP-specific purchase quantity, execution venue, timing or completed reserve-address crosswalk has been disclosed.",
+    "PR #1412 is a draft proposal. Main's scheduler retains contents:write/actions:write and broad workflow dispatch authority until an authorized merge; this run did not change main.",
+    "The read-only scheduler proposal intentionally pauses future automatic queue dispatch if merged. The inspected queue had one historical completed entry and zero pending entries; a durable non-main queue-state and strict workflow/input allowlist design is still required.",
+    "Full repository CI, dependency vulnerability scanning and complete branch-protection details remain incomplete. Eight external AI platforms remain unauthenticated and have no verified live handoffs."
+  ]
+}

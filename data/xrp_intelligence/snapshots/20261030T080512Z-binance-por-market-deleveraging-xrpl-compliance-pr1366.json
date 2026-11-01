@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T080512Z-BINANCE-POR-MARKET-DELEVERAGING-XRPL-COMPLIANCE-PR1366",
+  "captured_at_utc": "2026-10-30T08:05:12Z",
+  "data_cutoff_utc": "2026-10-30T07:45:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 remains execution and verification foundation.",
+  "confirmed_facts": [
+    {
+      "claim": "Five Binance-labelled XRPL accounts sent exactly 233,461,943.1 native XRP to one receiver in five successful validated payments.",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-14693052-20261029T200700Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-13140680-20261029T200820Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-11955157-20261029T200850Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-8655567-20261029T200920Z"
+      ]
+    },
+    {
+      "claim": "Bitquery's 06:43 UTC snapshot showed approximately 233.5M XRP at the attacker receiver and no outgoing transaction from that receiver at its observation cutoff.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z"
+      ]
+    },
+    {
+      "claim": "Coinbase's cbXRP dashboard showed 151,405,263.6 XRP backing 151,403,016.07 cbXRP on Base, with 2,247.53 XRP excess reserve.",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-POR-REFRESH-20261030T0805Z"
+      ]
+    },
+    {
+      "claim": "TradRadar's 07:00 UTC XRP perpetual panel showed $1.87B open interest, negative aggregate funding and long-dominated reported liquidations.",
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0700Z"
+      ]
+    },
+    {
+      "claim": "CoinDesk reported $1.53B market-wide liquidations, 83.8% longs and $38.1M XRP liquidations in its CoinGlass-based 24-hour snapshot.",
+      "source_ids": [
+        "SRC-COINDESK-XRP-LIQUIDATIONS-20261030T0622Z"
+      ]
+    },
+    {
+      "claim": "XRPL fixCleanup3_5_0 is a proposed restricted-token compliance fix and was not merged or activated at publication.",
+      "source_ids": [
+        "SRC-COINDESK-XRPL-RESTRICTED-TOKEN-FIXES-20261030T0545Z"
+      ]
+    }
+  ],
+  "sourced_claims": [
+    {
+      "claim": "Bitquery says all 17 drained wallets carried Binance proof-of-reserves labels in its address data.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z"
+      ],
+      "qualification": "Secondary provider labels; not a direct official address-set crosswalk."
+    },
+    {
+      "claim": "CoinDesk reports institutional investors are withdrawing from centralized exchanges after the Binance incident.",
+      "source_ids": [
+        "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z"
+      ],
+      "qualification": "Anonymous-source report; no amounts, destinations or XRP-specific attribution."
+    },
+    {
+      "claim": "CoinDesk's review found Ethereum Binance 14 in Binance's October 1 PoR set.",
+      "source_ids": [
+        "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z"
+      ],
+      "qualification": "This does not identify the five XRPL wallets."
+    }
+  ],
+  "inferences": [
+    {
+      "claim": "The 233.46M XRP transfer is a potential future supply overhang, not confirmed selling pressure.",
+      "basis": "The receiver was still reported holding the balance at 06:43 UTC; Bithomp's later 07:23 capture also showed no outgoing XRP in its displayed history."
+    },
+    {
+      "claim": "TrackWhale's negative seven-day tracked exchange flow is incident-contaminated and cannot be treated as voluntary holder withdrawal or bullish capital flight.",
+      "basis": "Its window includes the large Binance theft transfer and only tracks a limited set of large transfers."
+    },
+    {
+      "claim": "Coinbase's cbXRP reserves represent measurable institutional native-XRP custody and a Base cross-chain wrapper, but a single reserve snapshot does not establish new spot buying.",
+      "basis": "Official issuer reserve and supply figures; no matched historical change series in this capture."
+    },
+    {
+      "claim": "The XRPL restricted-token proposal could improve issuer compliance controls if activated, but it is not an operational change yet.",
+      "basis": "Proposed code and validator activation threshold."
+    }
+  ],
+  "unknowns": [
+    "Whether each of the five Binance XRPL source wallets appears in Binance's official October 1 downloadable PoR address set.",
+    "Whether any compromised source wallet is the XRP-BF2 backing address.",
+    "Whether Binance has replenished the XRP reserves and what its November 1 XRP-specific PoR ratio will be.",
+    "Whether the attacker receiver moved any XRP after the 07:23 Bithomp capture.",
+    "The amount and destination of institutional withdrawals reported by CoinDesk.",
+    "Whether the 35.6M USD-equivalent Ripple-labelled transfer at 06:42 UTC was a treasury, custody, payment or other transfer.",
+    "Whether Coinbase cbXRP reserve/supply changes represent net new XRP acquisition, internal custody migration or mint/redemption activity."
+  ],
+  "market_observations": [
+    {
+      "provider": "TradRadar",
+      "cutoff_utc": "2026-10-30T07:00:00Z",
+      "xrp_price_usd": 1.2661,
+      "open_interest_usd": 1870000000,
+      "oi_change_24h_percent": -4.49,
+      "funding_percent_per_8h": -0.0054,
+      "liquidations_24h_minimum_usd": 32180000,
+      "long_liquidations_usd": 30050000,
+      "short_liquidations_usd": 2130000,
+      "long_account_share_percent": 78.8,
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0700Z"
+      ],
+      "admission": "RESEARCH_ONLY"
+    },
+    {
+      "provider": "CoinDesk/CoinGlass",
+      "cutoff_utc": "2026-10-30T06:22:00Z",
+      "marketwide_liquidations_usd": 1530000000,
+      "long_share_percent": 83.8,
+      "xrp_liquidations_usd": 38100000,
+      "binance_liquidations_usd": 754600000,
+      "source_ids": [
+        "SRC-COINDESK-XRP-LIQUIDATIONS-20261030T0622Z"
+      ],
+      "admission": "RESEARCH_ONLY; DIFFERENT_WINDOW_FROM_TRADRADAR"
+    },
+    {
+      "provider": "TrackWhale",
+      "cutoff_utc": "2026-10-30T07:45:00Z",
+      "tracked_7d_exchange_inflows_xrp": 14720000,
+      "tracked_7d_exchange_outflows_xrp": 224810000,
+      "tracked_7d_netflow_xrp": -210090000,
+      "source_ids": [
+        "SRC-TRACKWHALE-XRP-FLOWS-20261030T0745Z"
+      ],
+      "admission": "RESEARCH_ONLY; INCIDENT_CONTAMINATED"
+    }
+  ],
+  "reserve_observations": {
+    "binance_xrp_incident_transfer_total_xrp": 233461943.1,
+    "bitquery_receiver_balance_approx_xrp_at_0643": 233500000,
+    "official_binance_por_address_crosswalk": "NOT_COMPLETED",
+    "coinbase_cbxrp_reserve_xrp": 151405263.6,
+    "coinbase_cbxrp_supply": 151403016.07,
+    "coinbase_excess_reserve_xrp": 2247.53,
+    "coinbase_calculated_coverage_percent": 100.00148,
+    "coinbase_visible_reserve_addresses_overlap_with_five_binance_sources": false
+  },
+  "xrpl_protocol": {
+    "proposal": "fixCleanup3_5_0",
+    "state": "PROPOSED_NOT_MERGED_NOT_ACTIVATED",
+    "required_activation": "More than 80% of trusted validators for two consecutive weeks",
+    "reported_user_impact": "XRPL Foundation says no affected users known and no outsider exploitation known"
+  },
+  "source_ids": [
+    "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z",
+    "SRC-COINDESK-XRP-LIQUIDATIONS-20261030T0622Z",
+    "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0700Z",
+    "SRC-TRACKWHALE-XRP-FLOWS-20261030T0745Z",
+    "SRC-COINDESK-XRPL-RESTRICTED-TOKEN-FIXES-20261030T0545Z",
+    "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z",
+    "SRC-COINBASE-CBXRP-POR-REFRESH-20261030T0805Z",
+    "SRC-BINANCE-OFFICIAL-POR-METHODOLOGY-20261030T0805Z",
+    "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z"
+  ],
+  "source_independence": {
+    "bitquery_trm_bithomp": "Independent analytics/explorer providers examining the same public XRPL transactions; corroboration is analytical, not independent underlying events.",
+    "coindesk_coinglass": "CoinDesk's liquidation report relies on CoinGlass; count as one market-data lineage.",
+    "tradradar": "Separate multi-exchange aggregator with different venue coverage and a different rolling-window cutoff.",
+    "trackwhale": "Separate large-transfer tracker over the same public XRPL ledger; its sample is incomplete and incident-contaminated.",
+    "coinbase": "Issuer-published reserve dashboard; not independent audit evidence.",
+    "institutional_withdrawals": "Single anonymous-source media report; no corroborating quantified flow data."
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "prediction_reason": "Asynchronous provider windows, incident-contaminated flow data, unverified official XRP PoR address membership and no calibrated fixed-horizon model."
+}

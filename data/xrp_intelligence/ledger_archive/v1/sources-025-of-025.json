@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 24,
+  "chunk_count": 25,
+  "record_count": 6,
+  "created_at_utc": "2026-10-30T08:20:00Z",
+  "records": [
+    {
+      "id": "SRC-BITQUERY-BINANCE-HACK-REVISION-9-CHAINS-20261030T0818Z",
+      "evidence_class": "INDEPENDENT_BLOCKCHAIN_ANALYTICS_SECONDARY_UPDATED",
+      "url": "https://www.bitquery.io/investigations/binance-hack",
+      "title": "Bitquery updated Binance incident investigation — nine chains and current XRP receiver",
+      "published_at": "2026-10-30T08:18:00Z",
+      "accessed_at_utc": "2026-10-30T08:20:00Z",
+      "note": "The refreshed investigation says 17 Binance hot wallets drained across nine chains, approximately $2.7B frozen/rescued, and approximately $3.2B still with the attacker at its 06:43 UTC chain cutoff. It explicitly lists the XRPL receiver at approximately 233.5M XRP and says it has never sent a transaction. Bitquery says each drained wallet carries a Binance PoR label in its address data. It also clarifies that XRP and Solana drains share no address with the other incident chains; the XRP link is timing, unusual transaction construction and Binance's own incident total. This is a provider attribution and same-chain trace, not a direct official Binance PoR address-set crosswalk."
+    },
+    {
+      "id": "SRC-REUTERS-TRM-BINANCE-10-CHAIN-ATTRIBUTION-20261030T0800Z",
+      "evidence_class": "REUTERS_REPORT_OF_TRM_LABS_ATTRIBUTION",
+      "url": "https://www.reuters.com/legal/government/blockchain-analysis-firm-trm-says-north-korea-behind-binance-crypto-theft-2026-10-30/",
+      "title": "Reuters — TRM attributes Binance incident to TraderTraitor across ten blockchains",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T08:20:00Z",
+      "note": "Reuters reports TRM Labs attributes the approximately $6.3B incident to North Korea's TraderTraitor with high confidence, based on on-chain and off-chain intelligence, and describes activity across ten blockchains. Bitquery's refreshed investigation describes nine chains. The chain-count discrepancy is preserved as provider-scope/methodology uncertainty; do not collapse to one count. Attribution is an analytics assessment, not a finding from the XRP transaction alone."
+    },
+    {
+      "id": "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0750Z",
+      "evidence_class": "AGGREGATED_MULTI_EXCHANGE_DERIVATIVES_DASHBOARD",
+      "url": "https://tradradar.io/markets/xrp",
+      "title": "TradRadar XRP perpetual futures dashboard — 07:50 UTC update",
+      "published_at": "2026-10-30T07:50:00Z",
+      "accessed_at_utc": "2026-10-30T08:20:00Z",
+      "note": "Updated 07:50 UTC, 15-minute delayed: XRP mark price $1.2497 (-3.04% 24h); open interest $1.84B across seven exchanges (-6.00% 24h); OI-weighted funding -0.0049% per eight hours; at least $32.45M 24h liquidations across five exchanges ($30.32M longs, $2.13M shorts); long/short account ratio 3.72 (78.8% long). Venue OI: Binance $426.95M, Bybit $324.95M, MEXC $277.75M, Gate $276.06M, Bitget $240.87M, Hyperliquid $197.43M, OKX $95.81M. This is one provider's rolling snapshot, not a forecast."
+    },
+    {
+      "id": "SRC-LIQWALL-XRP-PERPETUALS-20261030T0132Z",
+      "evidence_class": "AGGREGATED_DERIVATIVES_DASHBOARD_DIFFERENT_SCOPE",
+      "url": "https://liqwall.com/coins/xrp",
+      "title": "Liqwall XRP derivatives snapshot — 01:32 UTC",
+      "published_at": "2026-10-30T01:32:00Z",
+      "accessed_at_utc": "2026-10-30T08:20:00Z",
+      "note": "At 01:32 UTC Liqwall displayed XRP $1.22, $39.3M 24h liquidations ($38.1M longs, $1.1M shorts), average funding -0.0008% per eight hours, Binance funding +0.0100%, aggregate open interest $1.30B (-0.9% 24h), and 74.1% of Binance XRP accounts long. Its venue coverage and cutoff differ materially from TradRadar's 07:50 UTC $1.84B OI panel. Do not average or treat the difference as an unexplained market move; reconcile coverage and timestamp first."
+    },
+    {
+      "id": "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-20261029T1600Z",
+      "evidence_class": "SECONDARY_XRP_SPOT_ETF_FLOW_TRACKER_FIVE_FUNDS",
+      "url": "https://alphafinance.io/etf/xrp/",
+      "title": "Alpha Finance XRP ETF flow dashboard — October 29 complete five-fund session",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T08:20:00Z",
+      "note": "Alpha Finance reports all five US spot XRP funds for October 29: +$8.4M net flow, led by Franklin XRPZ at +$5.6M; 30-session flow +$98.9M and cumulative net flow approximately $1.73B. Its reported XRP close for October 29 is $1.3255. Secondary tracker; fund-level issuer holdings/creation files still require reconciliation."
+    },
+    {
+      "id": "SRC-CRYPTOETF-XRP-ETF-FLOWS-PARTIAL-20261029T1600Z",
+      "evidence_class": "SECONDARY_XRP_ETF_FLOW_TRACKER_PARTIAL_FUND_COVERAGE",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "title": "CryptoETF.today XRP ETF flow dashboard — October 29 partial",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T08:20:00Z",
+      "note": "The page reports +$7.1M for October 29 but explicitly says only two of five funds had reported; XRPZ, XRPC and GXRP were missing. Its $1.81B cumulative flow and $1.46B net assets use a different fund/measurement scope from Alpha Finance. This is not a contradictory completed daily total; it is a partial snapshot. Do not use as the final October 29 flow."
+    }
+  ]
+}

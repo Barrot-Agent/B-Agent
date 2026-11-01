@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 52,
+  "chunk_count": 53,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T13:16:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T13:16:00Z",
+      "update_type": "SBI_VCTRADE_NATIVE_XRP_AND_STABLECOIN_NETWORK_ROUTE_RECONCILIATION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "parent_data_head_sha": "20b5bc4bcd9cd1b68c4a8d358506d2f450e0fa1d",
+      "prior_verification": {
+        "validator_run_id": 41061346638,
+        "head_sha": "20b5bc4bcd9cd1b68c4a8d358506d2f450e0fa1d",
+        "tests_passed": 18,
+        "tests_failed": 0,
+        "gate_run_id": 41061346581,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "push_validator_run_id": 41061343243
+      },
+      "new_primary_evidence": {
+        "source_id": "SRC-SBI-VCTRADE-USDC-RLUSD-ETHEREUM-CHAIN-FAQ-20261030",
+        "url": "https://www.sbivc.co.jp/faqs/content/a-xap5i2387",
+        "accessed_at_utc": "2026-10-30T13:16:00Z",
+        "observed_lines": "123-160",
+        "matrix": {
+          "XRP": "XRP Ledger",
+          "USDC": "Ethereum",
+          "RLUSD": "Ethereum",
+          "JPYSC": "deposits/withdrawals unsupported"
+        }
+      },
+      "corroboration": {
+        "usdc_deposit_limit_source": "SRC-SBI-VCTRADE-USDC-ETHEREUM-ONLY-DEPOSIT-2026",
+        "rlusd_product_source": "SRC-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY-XRPL-PLANNED-20261030",
+        "circle_native_xrpl_source": "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612"
+      },
+      "finding": "SBI VCTRADE supports native XRP on XRPL, but its current USDC and RLUSD deposit/withdrawal network is Ethereum; JPYSC deposits/withdrawals are unsupported. This is a venue-specific route separation, not a global absence of stablecoins on XRPL.",
+      "unknowns": [
+        "VCTRADE customer balances by stablecoin",
+        "internal USDC/RLUSD-to-XRP trading pairs and conversion flows",
+        "executed settlement volume",
+        "future RLUSD XRPL enablement date",
+        "other SBI affiliate routes"
+      ],
+      "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261030T131600Z-sbi-vctrade-network-route-matrix.json",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T131600Z-sbi-vctrade-network-route-matrix.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T131600Z-sbi-vctrade-network-route-matrix.json",
+      "current_main_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+      "fresh_main_safety_pr": 1373,
+      "fresh_main_safety_pr_head": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+      "fresh_main_safety_pr_status": "OPEN_DRAFT_UNMERGED_CI_PENDING",
+      "pr1353_head_verified": "20b5bc4bcd9cd1b68c4a8d358506d2f450e0fa1d",
+      "pr1353_status": "OPEN_DRAFT_UNMERGED",
+      "main_cross_analysis_write_enabled": true,
+      "no_merge": true,
+      "no_force_push": true,
+      "no_deployment": true,
+      "no_workflow_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true,
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED"
+    }
+  ]
+}

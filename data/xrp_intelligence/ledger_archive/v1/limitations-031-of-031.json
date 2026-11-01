@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 30,
+  "chunk_count": 31,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T10:22:00Z",
+  "records": [
+    "Circle Mint minted/redeemed values are primary-market fiat conversions initiated by Circle Mint customers, not all USDC issuance, secondary-market transfers, on-chain volume, or total stablecoin market capital flows. Q2/H1 net mint-minus-redemption is derived from gross values. Coinbase-agreement distribution costs divided by Circle's total distribution, transaction and other costs (78.7% Q2; 80.0% H1) are derived expense ratios, not Coinbase's share of USDC balances or all distributor payouts. Neither series establishes XRP purchases or collateral demand."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 151,
+  "chunk_count": 152,
+  "record_count": 1,
+  "created_at_utc": "2026-10-31T16:45:00Z",
+  "records": [
+    {
+      "id": "RUN-20261031T164500Z-BINANCE-SAFU-FUTURES-ADGM-RECONCILIATION",
+      "recorded_at_utc": "2026-10-31T16:45:00Z",
+      "update_type": "BINANCE_SAFU_WALLET_FUTURES_FUND_AND_ADGM_CUSTODY_RECONCILIATION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "26752c951cd7b802e32319f60959228009d01ffa",
+      "data_cutoff_utc": "2026-10-31T16:45:00Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T164500Z-binance-safu-futures-insurance-and-adgm-custody.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T164500Z-binance-safu-futures-adgm-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T164500Z-safu-futures-fund-and-adgm-custody-decision.json",
+      "source_ids": [
+        "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+        "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS",
+        "SRC-20261031T164500Z-SWOLECHARTS-BINANCE-FUTURES-INSURANCE",
+        "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER",
+        "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE"
+      ],
+      "findings": [
+        "Official Binance FAQ names the SAFU BTC wallet and says partial deployment is expected within 24h; BitInfoCharts shows no outgoing transaction from the named address after Apr18 2024 at capture.",
+        "Binance says Futures Insurance Fund was rebalanced from excess above required minimum; SwoleCharts aggregate remained $2.46B at 15:00 UTC, with no official pool-level reconciliation.",
+        "ADGM FSRA register independently confirms Nest Clearing and Custody Limited is active Recognised Clearing House 0070 with custody and CSD activities.",
+        "Binance XRPUSDT insurance pool is shared across ten symbols; Bybit XRPUSD isolated pool is a separate XRP-denominated backstop."
+      ],
+      "verification": {
+        "source_references": 5,
+        "missing_source_references": 0,
+        "main_sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+        "main_modified": false
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "merge": false,
+      "force_push": false,
+      "manual_dispatch": false,
+      "real_money_trade": false
+    }
+  ]
+}

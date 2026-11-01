@@ -1,0 +1,192 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T162330Z-SBI-CIRCLE-RIPPLE-COINBASE-MULTI-RAIL",
+  "captured_at_utc": "2026-10-30T16:23:30Z",
+  "data_cutoff_utc": "2026-10-30T16:23:30Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T162330Z-sbi-circle-ripple-coinbase-multi-rail-network.json",
+  "source_ids": [
+    "SRC-CIRCLE-ARC-MAINNET-20260916",
+    "SRC-SBI-XRP-TERM-DEPOSIT-COUPON-20260202",
+    "SRC-SBI-XRP-SHAREHOLDER-COUPON-20260204",
+    "SRC-SBI-VISA-CRYPTO-CARD-20260501",
+    "SRC-SBI-VCTRADE-2M-ACCOUNTS-20260707",
+    "SRC-SBI-ARC-PRESALE-20260512",
+    "SRC-SBI-USDC-MERCHANT-PILOT-20260430",
+    "SRC-COINBASE-RLUSD-3-CHAIN-LISTING-20261028",
+    "SRC-BINANCE-CIRCLE-100M-AND-USDC-AGREEMENT-20260922",
+    "SRC-CIRCLE-USYC-BINANCE-OFFEXCHANGE-COLLATERAL-20250724",
+    "SRC-SBIC-EAST-JAPAN-PROFILE-20261030T162330Z",
+    "SRC-SBIC-CHATGPT-SEMINAR-20260305-20261030T162330Z",
+    "SRC-JPYSC-JGB-ALLOCATION-AMOUNT-CORRECTION-20261030T162330Z",
+    "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+    "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+    "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609",
+    "SRC-SBI-STARTALE-50M-EQUITY-INVESTMENT-20260326",
+    "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+    "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612",
+    "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+    "SRC-SBI-VCTRADE-USDC-ETHEREUM-ONLY-DEPOSIT-2026",
+    "SRC-SBI-VCTRADE-RLUSD-ETHEREUM-ONLY-XRPL-PLANNED-20261030",
+    "SRC-SBI-SMBC-STARTALE-MARKETING-5PCT-20261030",
+    "SRC-SBI-OPEN-STANDARD-JPYSC-OUSD-PILOT-20261016",
+    "SRC-JPYSC-ISSUANCE-JGB-RESERVE-AND-LENDING-20260907",
+    "SRC-JPYSC-ACCOUNT-ONLY-PUBLIC-CHAIN-PLANNED-20260624",
+    "SRC-SEC-COINBASE-Q3-2026-10Q-20261029",
+    "SRC-SEC-CIRCLE-Q2-2026-10Q-20260805",
+    "SRC-SEC-CIRCLE-S1-2025-COINBASE-COLLABORATION-OWNERSHIP"
+  ],
+  "findings": {
+    "entity_disambiguation": {
+      "sbic_east_japan": {
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "english_brand": "SBIC East Japan",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "shareholder_categories": [
+          "local governments",
+          "chambers of commerce",
+          "financial institutions",
+          "operating companies"
+        ],
+        "chatgpt_event": "2026-03-05 generative-AI/ChatGPT seminar, co-hosted with Hamamatsu Iwata Shinkin and featuring a Microsoft Japan speaker",
+        "relationship_to_sbi_holdings": "No SBI Holdings affiliation or XRP/Circle partnership established in the official records reviewed."
+      },
+      "sbi_group": "Separate financial conglomerate and legal-entity network including SBI Holdings, SBI VC Trade, SBI Shinsei Trust Bank, SBI Circle Holdings and SBI Startale Marketing. Do not use SBIC and SBI interchangeably.",
+      "joint_venture_separation": {
+        "sbi_circle_holdings": "50% SBI / 50% Circle JV for USDC distribution and Japan Web3 use cases.",
+        "sbi_startale_marketing": "Separate SBI-Startale JV focused on JPYSC promotion and use cases; SMBC Group agreed to a 5% stake on 2026-10-30. This is not the Circle JV."
+      }
+    },
+    "circle_arc": {
+      "mainnet_launch": "2026-09-16",
+      "gas_asset": "USDC; no volatile native token required for transaction fees",
+      "finality": "Circle claims sub-second deterministic finality",
+      "services": [
+        "Circle StableFX 24/7 cross-currency settlement",
+        "Circle Payments Network native integration",
+        "USDC/EURC and tokenized-asset ecosystem"
+      ],
+      "validator_model": "Permissioned validator set",
+      "founding_validator": "SBI Group",
+      "exchange_access_partners": [
+        "Coinbase",
+        "Binance",
+        "Upbit"
+      ],
+      "exchange_partner_role": "Named as digital-asset exchange access partners, not as founding validators.",
+      "stablefx_local_yen_asset_listed": "JPYC",
+      "jpy_sc_status": "Circle/SBI statements discuss leveraging JPYSC, but JPYSC public-chain circulation remains future/conditional and JPYSC was not in the launch StableFX local-currency list.",
+      "arc_token": {
+        "genesis_supply": 10000000000,
+        "public_launch_committed": false,
+        "proof_of_stake_transition_roadmap": "2027"
+      },
+      "regulatory_status": "Circle says Arc is operated by a permissioned validator set and has not been reviewed or approved by NYDFS or another regulator."
+    },
+    "sbi_actual_capital_and_distribution": {
+      "circle_equity_investment_usd": 50000000,
+      "circle_jv_ownership": "50% SBI / 50% Circle",
+      "startale_equity_investment_usd": 50000000,
+      "arc_token_presale": {
+        "participated_through_consolidated_subsidiary": true,
+        "consortium_total_usd": 222000000,
+        "sbi_allocation_disclosed": false
+      },
+      "xrp_distribution": {
+        "term_deposit_campaign": {
+          "minimum_deposit_jpy": 300000,
+          "maximum_xrp_coupon_jpy": 20000,
+          "period": "2026-02-02 to 2026-03-31",
+          "status": "ENDED"
+        },
+        "shareholder_benefit": {
+          "xrp_coupon_jpy": 2000,
+          "eligibility": "specified shareholder bands; optional alternative to product bundle",
+          "status": "OFFER_ANNOUNCED"
+        },
+        "visa_crypto_card": {
+          "eligible_reward_assets": [
+            "BTC",
+            "ETH",
+            "XRP"
+          ],
+          "selection": "one asset per card",
+          "conversion": "card points automatically converted monthly",
+          "actual_xrp_reward_volume_disclosed": false
+        }
+      },
+      "distribution_base": {
+        "vctrade_registered_accounts": 2000000,
+        "as_of": "2026-07-06",
+        "includes_bitpoint_merger_effective": "2026-04-01",
+        "active_unique_users_disclosed": false
+      },
+      "usdc_merchant_pilot": {
+        "dates": "2026-05-25 to 2026-05-29",
+        "merchants": [
+          "Unatoto Honmachi",
+          "Bic Camera Namba"
+        ],
+        "payment_method": "USDC QR-code retail payment",
+        "transaction_volume_or_production_rollout_disclosed": false
+      }
+    },
+    "stablecoin_and_network_access": {
+      "sbi_vctrade_usdc": "Current documented inbound route is Ethereum only; no SBI VCTRADE native XRPL USDC route established.",
+      "sbi_vctrade_rlusd": "Current documented deposits/withdrawals are Ethereum only; XRP Ledger support is planned, not live at the captured product page.",
+      "coinbase_rlusd": {
+        "added": "2026-10-28",
+        "platforms": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase app"
+        ],
+        "supported_networks": [
+          "XRP Ledger",
+          "Base",
+          "Ethereum"
+        ],
+        "global_exchange_collateral": "Planned/follow-up, not available at launch",
+        "base_liquidity": "Ripple said it would provide liquidity on Base."
+      },
+      "usdc_xrpl": "Circle launched native USDC on XRPL in June 2025; Ripple/Circle described XRPL DEX auto-bridging as using XRP as an essential bridge asset. Actual executed bridge volume remains unmeasured.",
+      "jpy_sc": {
+        "issuer": "SBI Shinsei Trust Bank",
+        "distributor": "SBI VC Trade",
+        "public_chain_status": "Account-only at launch; external-wallet/public-chain transfer is future and conditional."
+      }
+    },
+    "collateral_and_capital": {
+      "circle_usyc_binance": "Circle USYC, a tokenized money-market fund, is supported as yield-bearing off-exchange collateral for Binance institutional derivatives; held through supporting banks via Binance Banking Triparty or Ceffu, with near-instant USDC fungibility. Actual outstanding collateral balances/utilization are undisclosed.",
+      "binance_circle_equity_usd": 100000000,
+      "binance_circle_commercial_agreement_years": 5,
+      "coinbase_circle_economics": {
+        "coinbase_q3_2026_stablecoin_revenue_usd": 306905000,
+        "average_usdc_held_in_coinbase_products_usd": 22000000000,
+        "circle_q2_2026_distribution_costs_paid_to_coinbase_usd": 324600000,
+        "coinbase_post_ipo_circle_shareholding_2025_s1_pct": 3.7,
+        "current_coinbase_circle_ownership_pct": "not verified"
+      },
+      "jpy_sc_reserve_correction": {
+        "issued_balance_jpy_as_of_2026_09_07": 20100000000,
+        "jgb_allocation_jpy": 1000000000,
+        "lending_applications_jpy": 6900000000,
+        "corrected_jgb_share_of_issued_balance_pct": 4.98,
+        "legal_maximum_short_term_jgb_or_deposit_allocation_pct": 50,
+        "interpretation": "The Japanese source says 10億円, which is JPY1.0B, not JPY10B. The earlier source-040 note was wrong by a factor of ten; its original record is preserved and this correction supersedes that value. Lending applications are not confirmed accepted loans."
+      }
+    },
+    "causal_interpretation": {
+      "sbi_strategy": "The evidence is most consistent with a multi-rail strategy spanning XRP incentives, Ripple/RLUSD, Circle/USDC/Arc, Startale/JPYSC/OUSD, Visa card rewards, and SMBC distribution research. It is not evidence of an exclusive choice among issuers.",
+      "substitution_risk": "Arc's USDC gas and StableFX can substitute for XRP as an intermediary in some stablecoin-only corridors, but this remains a hypothesis; JPYSC public-chain use is not live and no route-level volumes are disclosed.",
+      "complementarity": "Native USDC on XRPL can coexist with XRP as an XRPL DEX bridge asset, but actual bridge turnover and depth are not measured.",
+      "coinbase_position": "Coinbase retains substantial USDC economics while adding RLUSD and participating in Arc/Open Standard ecosystems. The RLUSD network support is live across XRPL/Base/Ethereum; collateral availability on Coinbase Global Exchange is still future."
+    },
+    "feature_admission": {
+      "new_market_features_admitted": false,
+      "reason": "These are institutional strategy, distribution and network-access observations, not synchronized XRP spot/collateral flows."
+    },
+    "forecast_status": "NOT_ISSUED"
+  }
+}

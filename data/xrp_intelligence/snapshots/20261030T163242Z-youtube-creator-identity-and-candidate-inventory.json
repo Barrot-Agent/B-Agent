@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T163242Z-YOUTUBE-CREATOR-IDENTITY-AND-CANDIDATE-INVENTORY",
+  "captured_at_utc": "2026-10-30T16:32:42Z",
+  "data_cutoff_utc": "2026-10-30T16:32:42Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T163242Z-youtube-creator-identity-and-candidate-inventory.json",
+  "source_ids": [
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-OFFEXCHANGE-20260201",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-GLOBAL-FINANCE-XRP-20260306",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-INFLATION-XRP-BTC-20251209",
+    "SRC-YOUTUBE-KAMILAH-STEVENSON-CRYPTO-SHIFT-20251129"
+  ],
+  "findings": {
+    "identity_resolution": {
+      "requested_creator_name": "Camilla Stephenson",
+      "exact_public_youtube_channel_match_found": false,
+      "similar_name_candidate": "Kamilah Stevenson",
+      "identity_equivalence": "UNVERIFIED; DO NOT CONFLATE",
+      "exact_search_variants_checked": [
+        "Camilla Stephenson",
+        "Camilla Stevenson",
+        "Camila Stephenson"
+      ],
+      "candidate_channel_follower_counts_observed": "137,000–139,000 across dated search-result snapshots",
+      "inventory_status": "PARTIAL_CANDIDATE_INVENTORY_NOT_EXHAUSTIVE",
+      "limitation": "YouTube video/channel page fetch was throttled; a verified channel ID and complete uploads feed were not obtained."
+    },
+    "candidate_videos": [
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-XRP-OFFEXCHANGE-20260201",
+        "title": "Why I Moved My XRP Off Exchanges",
+        "published": "2026-02-01",
+        "url": "https://www.youtube.com/watch?v=IUkOKRkbkNo",
+        "views": 19385,
+        "likes": 1000,
+        "channel": "Kamilah Stevenson",
+        "themes": [
+          "XRP custody",
+          "off-exchange custody",
+          "brokerage execution",
+          "slippage"
+        ],
+        "classification": "CREATOR_PERSONAL_CLAIM_AND_OPINION",
+        "caveat": "The claimed personal move and Caleb & Brown relationship are not independently verified; this is not evidence of aggregate exchange outflows."
+      },
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-GLOBAL-FINANCE-XRP-20260306",
+        "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+        "published": "2026-03-06",
+        "url": "https://www.youtube.com/watch?v=iwhpNT73zpk",
+        "views": 32040,
+        "likes": 2300,
+        "channel": "Kamilah Stevenson",
+        "themes": [
+          "oil shock",
+          "yen carry trade",
+          "global liquidity",
+          "XRP"
+        ],
+        "classification": "CREATOR_MACRO_NARRATIVE",
+        "caveat": "The claim that XRP was built for a liquidity shock is commentary, not evidence of payment volume, capital inflow or a causal price mechanism."
+      },
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-INFLATION-XRP-BTC-20251209",
+        "title": "You Can't Outwork Inflation—Why I Own XRP & Bitcoin Instead",
+        "published": "2025-12-09",
+        "url": "https://www.youtube.com/watch?v=tYEC-RYAS7Y",
+        "views": 18672,
+        "likes": 1400,
+        "channel": "Kamilah Stevenson",
+        "themes": [
+          "inflation",
+          "wages",
+          "XRP",
+          "Bitcoin"
+        ],
+        "classification": "CREATOR_PERSONAL_INVESTMENT_OPINION",
+        "caveat": "Personal positioning and promotional content; not independently verified holdings or investment performance."
+      },
+      {
+        "source_id": "SRC-YOUTUBE-KAMILAH-STEVENSON-CRYPTO-SHIFT-20251129",
+        "title": "The Shift Just Began… Crypto Is Next",
+        "published": "2025-11-29",
+        "url": "https://www.youtube.com/watch?v=gAXXsmNrG44",
+        "views": 11215,
+        "likes": null,
+        "channel": "Kamilah Stevenson",
+        "themes": [
+          "quantitative tightening",
+          "PMI",
+          "macro liquidity",
+          "crypto"
+        ],
+        "classification": "CREATOR_MACRO_NARRATIVE",
+        "caveat": "Macro commentary; no measured XRP flow or independently verified prediction outcome captured."
+      }
+    ],
+    "market_research_use": "Use creator videos only as public-discourse/sentiment material with creator identity, publication time, view/like snapshot and claim-level provenance. Do not treat statements as primary evidence or market features without independent corroboration.",
+    "excluded_candidate": "A previously surfaced 'Japan just ended 30 years of free money' title could not be re-verified as a Kamilah Stevenson upload in the current search; it is excluded pending a direct URL."
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

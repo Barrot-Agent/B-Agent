@@ -1,0 +1,196 @@
+{
+  "record_type": "barrot_repository_audit",
+  "schema_version": "1.0",
+  "audit_id": "AUDIT-20261030T212826Z-MAIN-STACKED-LEDGER-AND-PREDICTION-ENGINE",
+  "captured_at_utc": "2026-10-30T21:28:26Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "526cafcdd7e0423793bca336d5d8486741b95181",
+    "protected": true,
+    "modified_by_this_run": false,
+    "latest_commit_message": "Cross-analysis refresh [skip ci]",
+    "full_protection_rules": "NOT_VERIFIED"
+  },
+  "research_ledger_stack": {
+    "pr_1353": {
+      "number": 1353,
+      "state": "open",
+      "draft": true,
+      "mergeable_relative_to_current_base": true,
+      "head_sha": "5a4941684c1f13ce72869772ff4fedc333a144c2",
+      "base_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "base_sha": "99a1880fa6fb2f0ef681ce816c2421f6de24a676",
+      "changed_files": 507,
+      "additions": 52071,
+      "deletions": 17,
+      "validator_run_id": 41130104905,
+      "validator_tests_passed": 19,
+      "gate_run_id": 41130104942,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    "pr_1265": {
+      "number": 1265,
+      "state": "open",
+      "draft": true,
+      "mergeable_relative_to_current_base": true,
+      "head_branch": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "head_sha": "99a1880fa6fb2f0ef681ce816c2421f6de24a676",
+      "base_branch": "research/xrp-ledger-fresh-main-20261028-1217z",
+      "base_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1"
+    },
+    "pr_1251": {
+      "number": 1251,
+      "state": "open",
+      "draft": true,
+      "mergeable_relative_to_current_base": true,
+      "head_branch": "research/xrp-ledger-fresh-main-20261028-1217z",
+      "head_sha": "5dc82c5d3665ac379f75bd4e75da2301f305b6f1",
+      "base_branch": "main",
+      "base_sha": "7a558c0859393e9e29ea326aa90877ee2ef49220",
+      "changed_files": 77,
+      "additions": 372149,
+      "main_ahead_commits": 341,
+      "changed_files_in_base_to_current_main": 70
+    },
+    "assessment": "PR #1353 is not a direct-to-current-main change. It is stacked on #1265, which is stacked on #1251. PR #1251's main base is 341 commits behind current main and the base-to-current-main comparison shows 70 changed paths, including workflows, orchestration, signal and paper-trading files. GitHub's mergeable flag is relative to each PR's immediate base and is not evidence that the stack is safe to merge into current main."
+  },
+  "safety_prs": [
+    {
+      "number": 1379,
+      "state": "open",
+      "draft": true,
+      "head_sha": "9abfef6f9a7b969f908440c427f40c9248eb14a5",
+      "base_sha": "34722b7053c33ea0424d18005da7a8eeebab2147",
+      "tests": "363 passed, 8 subtests",
+      "ci_run_id": 41116180955,
+      "gate_run_id": 41116180606,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "main_ahead_commits": 2,
+      "base_to_main_changed_paths": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "path_overlap_with_pr": "none"
+    },
+    {
+      "number": 1381,
+      "state": "open",
+      "draft": true,
+      "head_sha": "b22472f10ba8e8c169892780572784f64c6ed4a2",
+      "base_sha": "78e5cf1fd3ca64768f4c83107210532c6f0c41ec",
+      "tests": "343 passed, 8 subtests",
+      "ci_run_id": 41120930158,
+      "gate_run_id": 41120930223,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "main_ahead_commits": 1,
+      "base_to_main_changed_paths": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "path_overlap_with_pr": "none"
+    },
+    {
+      "number": 1380,
+      "state": "open",
+      "draft": true,
+      "head_sha": "049bec8a7494f7bfdca2bba2a1aa24b807e82c01",
+      "base_sha": "34722b7053c33ea0424d18005da7a8eeebab2147",
+      "tests": "343 passed, 8 subtests",
+      "ci_run_id": 41117977571,
+      "gate_run_id": 41117977578,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "main_ahead_commits": 2,
+      "base_to_main_changed_paths": [
+        "ping-pongings/knowledge-base/sentiment_shift.json"
+      ],
+      "path_overlap_with_pr": "none"
+    }
+  ],
+  "workflow_risks": [
+    {
+      "workflow": ".github/workflows/cross-analysis.yml",
+      "current_main_risk": "Scheduled/workflow_run writer retains contents:write and commits/pushes generated output to main; latest main commit message is Cross-analysis refresh [skip ci].",
+      "replacement_pr": 1379
+    },
+    {
+      "workflow": ".github/workflows/check-signal-accuracy.yml",
+      "current_main_risk": "Daily schedule retains contents:write and legacy evaluator requests a later live CoinGecko price, scores variable elapsed horizons, treats a <2% neutral move as correct and rewrites signal_history.jsonl and signal_accuracy.json.",
+      "replacement_pr": 1379
+    },
+    {
+      "workflow": ".github/workflows/merge-queue.yml",
+      "current_main_risk": "Manual workflow retains repository and pull-request write permissions; current main defaults dry_run=false and can update branches, merge PRs and delete branches.",
+      "replacement_pr": 1381
+    },
+    {
+      "workflow": ".github/workflows/knowledge-signal-cycle.yml",
+      "current_main_risk": "Manual workflow retains contents:write and can commit generated knowledge/signal output to main.",
+      "replacement_pr": 1379
+    },
+    {
+      "workflow": ".github/workflows/barrot-approve-pr.yml",
+      "current_main_risk": "A push-event workflow run 41130095978 recorded failure with zero jobs; the inspected file declares workflow_dispatch only. No job logs exist, so root cause remains unresolved."
+    }
+  ],
+  "prediction_engine": {
+    "main_signal_timestamp": "2026-10-29T13:23:33.142057+00:00",
+    "score": 44,
+    "confidence": 0,
+    "news_score": 88,
+    "news_entries": 11,
+    "provider_status": "missing GitHub/GH Models token; Groq returned HTTP 429",
+    "signal_history_jsonl_bytes": 0,
+    "legacy_accuracy": {
+      "checked_count": 1683,
+      "correct_count": 772,
+      "accuracy_pct": 45.9,
+      "status": "NOT_COMPARABLE_NOT_EVALUATED"
+    },
+    "reason": "Legacy evaluator used variable elapsed horizons and later live prices, rewrote historical rows and counted neutral-band outcomes as correct; 45.9% is not out-of-sample forecast skill.",
+    "fixed_horizon_contract": {
+      "status": "DESIGNED_NOT_EXECUTED_OR_VALIDATED",
+      "location": "research branch only",
+      "requirements": [
+        "fixed horizon",
+        "point-in-time features",
+        "purged walk-forward",
+        "leakage audit",
+        "at least two baselines",
+        "probability calibration",
+        "shadow-only",
+        "real_money_execution=false"
+      ]
+    },
+    "forecast_status": "NOT_ISSUED"
+  },
+  "platform_coordination": {
+    "github": "Connected and tested through repository/PR/Actions reads.",
+    "other_platforms": [
+      "ChatGPT external API adapter",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "other_platforms_status": "NOT_AUTHENTICATED_OR_TESTED_AS_LIVE_COLLABORATORS"
+  },
+  "verification": {
+    "research_pr_1353_exact_head_validator": 41130104905,
+    "research_pr_1353_tests_passed": 19,
+    "fail_closed_gate": 41130104942,
+    "gate_status": "PASS_MERGE_DISABLED",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN"
+  },
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "paper_state_mutated": false,
+    "real_money_trade": false,
+    "local_worktree_inspected": false
+  }
+}

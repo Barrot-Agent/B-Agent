@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP",
+  "source_id": "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP",
+  "captured_at_utc": "2026-10-31T21:45:45Z",
+  "created_at_utc": "2026-10-31T21:45:45Z",
+  "source_count": 1,
+  "source_ids": [
+    "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP"
+  ],
+  "sources": [
+    {
+      "id": "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP",
+      "publisher": "LMAX Group — Ripple partnership and RLUSD collateral integration",
+      "url": "https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/",
+      "supporting_urls": [
+        "https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/"
+      ],
+      "retrieved_at_utc": "2026-10-31T21:45:45Z",
+      "publication_time_utc": "2026-01-15",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "claims": [
+        "LMAX and Ripple announced a multi-year partnership to integrate RLUSD as a core collateral asset across institutional trading infrastructure.",
+        "Ripple committed $150M in financing to LMAX.",
+        "The Jan15 announcement described RLUSD collateral and settlement integration and Ripple Prime connectivity with LMAX Digital.",
+        "The Oct12 LMAX update with Standard Chartered describes collateral mirroring as planned and subject to documentation, testing and approvals."
+      ],
+      "limitations": [
+        "The later Oct12 update confirms the collateral-mirroring feature was still planned, not live.",
+        "The $150M is corporate financing to LMAX, not an XRP purchase or XRP reserve allocation.",
+        "No RLUSD collateral balances, XRP trading volumes or venue-level asset inventory are disclosed."
+      ]
+    }
+  ],
+  "findings": [
+    "LMAX and Ripple announced a multi-year partnership to integrate RLUSD as a core collateral asset across institutional trading infrastructure.",
+    "Ripple committed $150M in financing to LMAX.",
+    "The Jan15 announcement described RLUSD collateral and settlement integration and Ripple Prime connectivity with LMAX Digital.",
+    "The Oct12 LMAX update with Standard Chartered describes collateral mirroring as planned and subject to documentation, testing and approvals."
+  ],
+  "relationship_edges": [],
+  "competing_hypotheses": [],
+  "limitations": [
+    "The later Oct12 update confirms the collateral-mirroring feature was still planned, not live.",
+    "The $150M is corporate financing to LMAX, not an XRP purchase or XRP reserve allocation.",
+    "No RLUSD collateral balances, XRP trading volumes or venue-level asset inventory are disclosed."
+  ],
+  "corrections": [],
+  "pending_archive_append": true,
+  "exact_head_validation": false,
+  "status": "PENDING_ARCHIVE_APPEND"
+}

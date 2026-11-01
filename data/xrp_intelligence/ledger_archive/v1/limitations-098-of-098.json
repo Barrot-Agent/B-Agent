@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 97,
+  "chunk_count": 98,
+  "record_count": 4,
+  "records": [
+    {
+      "id": "LIM-20261031T001930Z-01",
+      "category": "rdae53_por_list_label_snapshot_and_asset_scope",
+      "statement": "Bitquery explicitly labels rDAE53 as an address in Binance's published proof-of-reserves list, but the article does not identify the list's exact snapshot date/version or prove that rDAE53's XRP balance was included in the 1 October 2026 XRP reserve numerator. The official address export and asset-level balance remain unverified; four other incident source wallets have no equivalent PoR-list attribution in the reviewed evidence.",
+      "severity": "critical",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-BITQUERY-RLUSD-BOTS-POR-LABEL-REVIEW-20261031T001930Z",
+        "SRC-WHALEALERT-RDAE53-185M-XRP-20261029T2005Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001930Z-02",
+      "category": "rdae53_conditional_reserve_stress_not_observed",
+      "statement": "The 93.36% coverage and 165.798M XRP shortfall sensitivity assumes rDAE53 was part of the 1 October 2026 XRP reserve set and that the 185.0174855M XRP transfer depleted assets included in that reserve numerator, with no offsets. The address label, date and XRP asset mapping are not sufficiently resolved; the calculation is not an observed post-incident ratio. Corporate funds, freezes, recovery and replenishment are excluded.",
+      "severity": "critical",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-BITQUERY-RLUSD-BOTS-POR-LABEL-REVIEW-20261031T001930Z",
+        "SRC-WHALEALERT-RDAE53-185M-XRP-20261029T2005Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001930Z-03",
+      "category": "sbic_chatgpt_event_not_partnership",
+      "statement": "The exact 'ChatGPT SBIC' phrase is consistent with a Tokyo SBIC educational seminar about ChatGPT on 26 February 2025, co-hosted with the Tokyo Chamber of Commerce and Industry Taito branch and featuring a Microsoft speaker. This does not prove the user's original phrase referred to that event, and it does not establish an OpenAI partnership or XRP relationship.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-SBIC-TOKYO-EAST-PROFILE-20261031T001930Z",
+        "SRC-SBIC-LAW-1963-ARTICLE2-20261031T001930Z",
+        "SRC-SBIC-TOKYO-CHATGPT-SEMINAR-20250226"
+      ]
+    },
+    {
+      "id": "LIM-20261031T001930Z-04",
+      "category": "camilla_stephenson_youtube_identity_unresolved",
+      "statement": "Film Edinburgh verifies a Camilla Stephenson credited as a location manager for Burke and Hare (2010), but no exact-name YouTube channel has been verified. This candidate must not be equated with Kamilah Stevenson or another channel owner. An exhaustive list of videos posted by the intended Camilla Stephenson cannot be claimed until the channel identity is established.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-FILMEDINBURGH-CAMILLA-STEPHENSON-BURKE-HARE"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "XRP-LEDGER-VALIDATOR-FORMAT-V3-COMPAT-AND-PR-TRIGGER-20261030T0608Z",
+  "recorded_at_utc": "2026-10-30T06:08:00Z",
+  "status": "EXECUTED_ON_RESEARCH_BRANCH; EXACT_HEAD_TESTS_AND_FAIL_CLOSED_GATE_PASS; NOT_MERGED",
+  "problem": "The current ledger and snapshot pointer use index_format_version 3.0, but validate_xrp_ledger_index.py required 2.0. Exact-head run 41007513573 failed 1 of 15 tests with 'snapshot reference must declare index_format_version 2.0'.",
+  "root_cause": "Validator schema guard lagged behind the index-format migration; archive hashes/counts were not the failing component.",
+  "change": "Validator now accepts supported pointer formats 2.0 and 3.0 and requires the snapshot pointer's format to equal the ledger's format. Unsupported 4.0 and mismatched pointer formats fail closed.",
+  "regression_tests": [
+    "v3 snapshot pointer matches v3 ledger",
+    "snapshot pointer format mismatch fails closed",
+    "unsupported v4 index format fails closed"
+  ],
+  "workflow_change": "Added pull_request validation for PRs targeting the research base branch and explicit checkout of github.event.pull_request.head.sha; retains contents:read and persist-credentials:false. This makes exact-head validator evidence available on PR synchronization even when GitHub suppresses push-triggered workflows created by an app token.",
+  "commits": [
+    "5d2ee1956f5b009149cc7120a3be4af48931573d",
+    "895e16e32501fe3b15d1993da22a3838dfef8db9",
+    "3c310a30eb73e828af839d16e939724d60425c0b",
+    "bcbdcdacbf0c7d65ece89d681107d4195703b77c"
+  ],
+  "verification": {
+    "head_sha": "bcbdcdacbf0c7d65ece89d681107d4195703b77c",
+    "validator_run_id": 41012274744,
+    "validator_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41012274744",
+    "tests_passed": 18,
+    "tests_failed": 0,
+    "duration_seconds": 0.08,
+    "compileall": "PASS",
+    "fail_closed_gate_run_id": 41012274881,
+    "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41012274881",
+    "gate": "PASS; merge disabled",
+    "full_repository_ci": "NOT_RUN"
+  },
+  "outstanding": {
+    "push_validator_run_id": 41012268970,
+    "push_validator_status": "PENDING_AT_CAPTURE; PR-triggered exact-head validation passed",
+    "approval_workflow_push_run_id": 41012267755,
+    "approval_workflow_status": "FAILED_WITH_ZERO_JOBS; recurring trigger anomaly remains unresolved",
+    "pr1353": "OPEN_DRAFT_UNMERGED",
+    "main_modified": false,
+    "merge_performed": false
+  },
+  "rationale": "Preserve v2 compatibility for historical indexes while validating current v3; do not rewrite old snapshots or archive shards merely to satisfy a stale validator assumption."
+}

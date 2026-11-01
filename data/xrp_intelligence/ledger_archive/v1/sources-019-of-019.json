@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 18,
+  "chunk_count": 19,
+  "record_count": 4,
+  "created_at_utc": "2026-10-30T06:13:00Z",
+  "records": [
+    {
+      "id": "SRC-COINBASE-CBXRP-POR-20261029T0914Z",
+      "evidence_class": "PRIMARY_COMPANY_RESERVE_DASHBOARD",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "title": "Coinbase cbXRP proof of reserves",
+      "published_at": "2026-10-29T09:14:00Z",
+      "accessed_at_utc": "2026-10-30T06:13:00Z",
+      "note": "Coinbase's indexed official dashboard snapshot says data refreshed Oct 29 2026 09:14 UTC: 151,405,263.6 XRP reserve backing 151,403,016.07 cbXRP on Base, a 2,247.53 XRP excess (about 100.00148% coverage). Multiple regional Coinbase page results show the same reserve/supply values later on Oct 29. Direct page open in this capture returned an older Oct 6 cached figure, so the live dashboard cache discrepancy is retained; the Oct29 indexed snapshot predates the Binance incident."
+    },
+    {
+      "id": "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261030T0613Z",
+      "evidence_class": "PRIMARY_COMPANY_PRODUCT_DOCUMENTATION",
+      "url": "https://help.coinbase.com/en/exchange/crypto-transfers/wrapped-assets",
+      "title": "Coinbase Wrapped Assets product documentation",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T06:13:00Z",
+      "note": "Coinbase says its wrapped assets are backed 1:1 by underlying assets held in Coinbase custody; cbXRP is supported on Base. Coinbase describes minting by withdrawing the underlying asset to a supported network and automatic unwrapping when the wrapped token is deposited back to Coinbase."
+    },
+    {
+      "id": "SRC-BINANCE-XRP-BF2-BACKING-20191010",
+      "evidence_class": "PRIMARY_HISTORICAL_COMPANY_ANNOUNCEMENT",
+      "url": "https://www.binance.com/en/blog/all/389004685470625792",
+      "title": "Binance DEX lists XRP-pegged token XRP-BF2",
+      "published_at": "2019-10-10",
+      "accessed_at_utc": "2026-10-30T06:13:00Z",
+      "note": "Binance's 2019 official announcement says XRP-BF2 is issued on Binance Chain/BNB Chain and backed 1:1 by native XRP in a publicly disclosed address. It establishes the mechanism and historical issuer claim, not the current 325.8M reserve amount reported by XRP Insights."
+    },
+    {
+      "id": "SRC-XRPINSIGHTS-WRAPPED-EXCHANGE-RESERVES-20261029",
+      "evidence_class": "SECONDARY_ONCHAIN_WALLET_LABEL_AND_RESERVE_AGGREGATION",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "title": "XRP Insights exchange balances and wrapped-asset reserve decomposition",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-10-30T06:13:00Z",
+      "note": "XRP Insights reports 22.58B XRP in 701 publicly attributed wallets across 24 exchanges as of Oct 29 08:00 UTC. It identifies 488.4M XRP in those tracked wallets as wrapped-asset reserves/funds rather than customer deposits: 325.8M Binance XRP-BF2 backing Binance-Peg XRP on BNB Chain, 151.4M Coinbase wallets backing cbXRP on Base, and 11.2M insurance/charity funds. Same-wallet tracked balances were down 17.4M over 7 days and up 35.8M over 30 days. This is a public-label aggregation, not exchange proprietary inventory or tradable float."
+    }
+  ]
+}

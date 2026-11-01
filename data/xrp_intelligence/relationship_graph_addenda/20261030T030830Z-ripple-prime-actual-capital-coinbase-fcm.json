@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T030830Z-RIPPLE-PRIME-ACTUAL-CAPITAL-REPO-COINBASE-FCM",
+  "captured_at_utc": "2026-10-30T03:08:30Z",
+  "nodes": [
+    {
+      "id": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "label": "Hidden Road Partners CIV US LLC",
+      "kind": "RIPPLE_PRIME_US_FCM_AND_BROKER_DEALER"
+    },
+    {
+      "id": "RIPPLE",
+      "label": "Ripple Labs Inc.",
+      "kind": "PARENT_COMPANY"
+    },
+    {
+      "id": "COINBASE_FINANCIAL_MARKETS",
+      "label": "Coinbase Financial Markets Inc.",
+      "kind": "COINBASE_GROUP_FCM"
+    },
+    {
+      "id": "CFTC_FCM_FINANCIAL_REPORTS",
+      "label": "CFTC Selected FCM Financial Data",
+      "kind": "MONTHLY_REGULATORY_DATASET"
+    },
+    {
+      "id": "US_TREASURY_REPO_MARKET",
+      "label": "U.S. Treasury / agency / MBS repo and reverse-repo markets",
+      "kind": "COLLATERALIZED_FINANCING_MARKET"
+    },
+    {
+      "id": "BITNOMIAL_CLEARINGHOUSE",
+      "label": "Bitnomial Clearinghouse LLC",
+      "kind": "CFTC_REGISTERED_DCO"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_DIGITAL_ASSET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-RIPPLE-100M-TREASURY-REPO-HIDDENROAD-20251231",
+      "source": "RIPPLE",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "PARENT_COUNTERPARTY_TO_100M_US_TREASURY_REPO",
+      "evidence_class": "CONFIRMED_PRIMARY_AUDITED_FINANCIAL_STATEMENT",
+      "claim": "Hidden Road's audited Dec 31 2025 statement says it had $100M of U.S. Treasury repurchase-agreement transactions outstanding with ultimate parent Ripple, included in repo liabilities. This is Treasury-secured parent financing, not XRP collateral.",
+      "source_ids": [
+        "SRC-SEC-HIDDENROAD-SOFC-20251231"
+      ]
+    },
+    {
+      "id": "EDGE-RIPPLE-70M-PARENT-CAPITAL-CONTRIBUTION-20260226",
+      "source": "RIPPLE",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "PARENT_CAPITAL_CONTRIBUTIONS_AFTER_YEAR_END",
+      "evidence_class": "CONFIRMED_PRIMARY_AUDITED_FINANCIAL_STATEMENT",
+      "claim": "The SEC-public audited statement says Hidden Road received $70M of parent capital contributions through February 26, 2026. This is firm capitalization, not XRP buying or customer collateral.",
+      "source_ids": [
+        "SRC-SEC-HIDDENROAD-SOFC-20251231"
+      ]
+    },
+    {
+      "id": "EDGE-HIDDENROAD-MATCHED-BOOK-REPO-20251231",
+      "source": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "target": "US_TREASURY_REPO_MARKET",
+      "relationship": "MATCHED_BOOK_REPO_REVERSE_REPO_AND_HIGH_QUALITY_COLLATERAL",
+      "evidence_class": "CONFIRMED_PRIMARY_AUDITED_FINANCIAL_STATEMENT",
+      "claim": "At Dec 31 2025 Hidden Road reported $38.183B reverse-repo assets and $37.770B repo liabilities; it describes matched-book financing secured mainly by U.S. Treasuries, MBS and government agencies, with daily collateral valuation/margining, and says it does not use these transactions to finance proprietary inventory or customer positions. These balances are not free cash or XRP inventory.",
+      "source_ids": [
+        "SRC-SEC-HIDDENROAD-SOFC-20251231"
+      ]
+    },
+    {
+      "id": "EDGE-CFTC-JULY-2026-HIDDENROAD-FCM-CAPITAL",
+      "source": "CFTC_FCM_FINANCIAL_REPORTS",
+      "target": "HIDDEN_ROAD_PARTNERS_CIV_US",
+      "relationship": "MONTHLY_ADJUSTED_NET_CAPITAL_AND_CUSTOMER_SEGREGATION",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_FINANCIAL_DATA",
+      "claim": "As of July 31 2026 CFTC reports $731.397M adjusted net capital, $709.984M excess net capital, $642.769M customer assets in segregation and $61.309M excess segregated funds for Hidden Road Partners CIV US LLC.",
+      "source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+        "SRC-CFTC-FCM-FINANCIAL-DATA-METHODOLOGY-20261030"
+      ]
+    },
+    {
+      "id": "EDGE-CFTC-JULY-2026-COINBASE-FCM-CAPITAL",
+      "source": "CFTC_FCM_FINANCIAL_REPORTS",
+      "target": "COINBASE_FINANCIAL_MARKETS",
+      "relationship": "MONTHLY_ADJUSTED_NET_CAPITAL_AND_CUSTOMER_SEGREGATION",
+      "evidence_class": "CONFIRMED_PRIMARY_REGULATORY_FINANCIAL_DATA",
+      "claim": "As of July 31 2026 CFTC reports $310.422M adjusted net capital, $302.070M excess net capital and $283.373M customer assets in segregation for Coinbase Financial Markets Inc.; it also reports separate Part 30 and cleared-swap customer assets. This is an FCM legal-entity measure, not Coinbase Global consolidated capital or XRP exposure.",
+      "source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+        "SRC-CFTC-FCM-FINANCIAL-DATA-METHODOLOGY-20261030"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-RIPPLE-PRIME-TRADFI-REPO-IS-LARGE-BUT-NOT-XRP-20261030",
+      "claim": "Ripple Prime's U.S. operating entity has a substantial traditional fixed-income matched-book financing business, so its reported balance sheet and institutional scale should not be interpreted as XRP exposure.",
+      "supporting_source_ids": [
+        "SRC-SEC-HIDDENROAD-SOFC-20251231",
+        "SRC-KBRA-RIPPLE-PRIME-BBB-RATING-20260402"
+      ],
+      "counter_evidence": [
+        "The firm also operates exchange-traded derivatives, OTC and digital-asset prime services; the audited statement does not disclose every business line's current activity."
+      ],
+      "status": "SUPPORTED_FOR_2025_BALANCE_SHEET; CURRENT_MIX_UNKNOWN"
+    },
+    {
+      "id": "HYP-RIPPLE-PARENT-SUPPORT-EXPANDS-PRIME-CAPACITY-20261030",
+      "claim": "Ripple's $100M Treasury repo transaction and $70M post-year-end capital contribution demonstrate parent financial support that could support Ripple Prime's institutional intermediation capacity.",
+      "supporting_source_ids": [
+        "SRC-SEC-HIDDENROAD-SOFC-20251231",
+        "SRC-KBRA-RIPPLE-PRIME-BBB-RATING-20260402"
+      ],
+      "counter_evidence": [
+        "The repo is a secured Treasury financing transaction, not equity or XRP collateral.",
+        "Parent support alone does not establish new XRP inventory, collateral deposits or revenue growth."
+      ],
+      "status": "PARENT_SUPPORT_CONFIRMED; XRP_EFFECT_UNKNOWN"
+    },
+    {
+      "id": "HYP-RIPPLE-PRIME-FCM-CUSTOMER-FUNDS-SHOW-SCALE-NOT-XRP-DEMAND-20261030",
+      "claim": "The CFTC's $642.8M Hidden Road customer segregation figure shows a meaningful FCM customer-funds footprint but cannot quantify XRP collateral demand.",
+      "supporting_source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+        "SRC-CFTC-FCM-FINANCIAL-DATA-METHODOLOGY-20261030"
+      ],
+      "counter_evidence": [
+        "The report does not disclose asset composition, Bitnomial posting or XRP balances; the snapshot is dated July 31."
+      ],
+      "status": "CUSTOMER_FUND_SCALE_CONFIRMED; XRP_COMPOSITION_UNKNOWN"
+    },
+    {
+      "id": "HYP-COINBASE-FCM-AND-RIPPLE-PRIME-FCM-CAPITAL-COMPARISON-20261030",
+      "claim": "Coinbase Financial Markets and Hidden Road Partners CIV US LLC are both regulated FCMs with materially different July customer-fund and product-account profiles; their filings can support a like-for-like regulatory data panel but not a direct XRP-demand comparison.",
+      "supporting_source_ids": [
+        "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731"
+      ],
+      "counter_evidence": [
+        "Different customer mix, account categories, DSROs and business models make simple size ratios misleading."
+      ],
+      "status": "TWO_ENTITY_PRIMARY_DATA_CONFIRMED; COMPARABILITY_LIMITED"
+    },
+    {
+      "id": "HYP-RIPPLE-PRIME-REPO-BOOK-NOT-CUSTOMER-XRP-COLLATERAL-20261030",
+      "claim": "The reported $38.2B reverse-repo assets and $37.8B repo liabilities are traditional matched-book financing and should not be treated as collateralized XRP positions or customer margin assets.",
+      "supporting_source_ids": [
+        "SRC-SEC-HIDDENROAD-SOFC-20251231"
+      ],
+      "counter_evidence": [
+        "The firm separately runs futures/OTC services with customer margin, but the statement does not provide token-level customer collateral composition."
+      ],
+      "status": "CONFIRMED_BUSINESS_DESCRIPTION; TOKEN_LEVEL_UNKNOWN"
+    }
+  ],
+  "source_ids": [
+    "SRC-CFTC-FCM-FINANCIAL-DATA-HIDDENROAD-COINBASE-20260731",
+    "SRC-SEC-HIDDENROAD-SOFC-20251231",
+    "SRC-KBRA-RIPPLE-PRIME-BBB-RATING-20260402",
+    "SRC-CFTC-FCM-FINANCIAL-DATA-METHODOLOGY-20261030",
+    "SRC-RIPPLE-PRIME-HRP-CIV-US-FCM-DISCLOSURE-20261030T0235Z",
+    "SRC-BITNOMIAL-CLEARINGHOUSE-COLLATERAL-20261030T0223Z",
+    "SRC-CFTC-LETTER-26-05-COINBASE-FCM-20260206",
+    "SRC-RIPPLE-HIDDEN-ROAD-CLOSE-20251024"
+  ]
+}

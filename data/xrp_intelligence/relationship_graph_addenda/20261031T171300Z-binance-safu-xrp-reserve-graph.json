@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "addendum_id": "BARROT-XRP-GRAPH-BINANCE-SAFU-XRP-RESERVE-RECONCILIATION",
+  "captured_at_utc": "2026-10-31T17:14:56Z",
+  "source_ids": [
+    "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+    "SRC-20261031T171300Z-REUTERS-BINANCE-90PCT",
+    "SRC-20261031T171300Z-LOOKONCHAIN-SAFU-7500",
+    "SRC-20261031T171300Z-ARKHAM-SAFU-BALANCE-7500",
+    "SRC-20261031T171300Z-BITINFOCHARTS-SAFU-STALE-15000",
+    "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "label": "Binance",
+      "kind": "CENTRALIZED_EXCHANGE"
+    },
+    {
+      "id": "SAFU",
+      "label": "Secure Asset Fund for Users",
+      "kind": "USER_PROTECTION_RESERVE"
+    },
+    {
+      "id": "SAFU_BTC_SOURCE",
+      "label": "1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "kind": "BITCOIN_ADDRESS"
+    },
+    {
+      "id": "SAFU_NEW_WALLET",
+      "label": "New 7,500 BTC wallet",
+      "kind": "UNKNOWN_DESTINATION"
+    },
+    {
+      "id": "NEST_CUSTODY",
+      "label": "Nest Clearing and Custody Limited",
+      "kind": "REGULATED_CUSTODIAN"
+    },
+    {
+      "id": "XRP",
+      "label": "XRP",
+      "kind": "NATIVE_CRYPTO_ASSET"
+    },
+    {
+      "id": "TOP_TEN_ASSETS",
+      "label": "Binance top-ten affected assets",
+      "kind": "ASSET_COVERAGE_SET"
+    },
+    {
+      "id": "LESS_LIQUID_ASSETS",
+      "label": "Remaining affected tokens outside top ten",
+      "kind": "ASSET_COVERAGE_SET"
+    },
+    {
+      "id": "BINANCE_POR",
+      "label": "October 31 00:00 UTC Proof of Reserves snapshot",
+      "kind": "RESERVE_ATTESTATION_SNAPSHOT"
+    },
+    {
+      "id": "BINANCE_XRP_WALLETS",
+      "label": "XRP Insights Binance-attributed XRPL wallets",
+      "kind": "ATTRIBUTED_WALLET_SET"
+    },
+    {
+      "id": "COINBASE_XRP_WALLETS",
+      "label": "XRP Insights Coinbase-attributed XRPL wallets",
+      "kind": "ATTRIBUTED_WALLET_SET"
+    },
+    {
+      "id": "UPBIT_XRP_WALLETS",
+      "label": "XRP Insights Upbit-attributed XRPL wallets",
+      "kind": "ATTRIBUTED_WALLET_SET"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-BINANCE-SAFU",
+      "source": "BINANCE",
+      "target": "SAFU",
+      "relationship": "OPERATES_USER_PROTECTION_RESERVE",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3"
+      ]
+    },
+    {
+      "id": "EDGE-SAFU-CUSTODIAN",
+      "source": "NEST_CUSTODY",
+      "target": "SAFU",
+      "relationship": "HOLDS_AND_MANAGES_FUND",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3"
+      ]
+    },
+    {
+      "id": "EDGE-SAFU-TRANSFER",
+      "source": "SAFU_BTC_SOURCE",
+      "target": "SAFU_NEW_WALLET",
+      "relationship": "REPORTED_7500_BTC_TRANSFER",
+      "evidence_class": "SOURCED_ONCHAIN_TRACKER_CLAIM",
+      "source_ids": [
+        "SRC-20261031T171300Z-LOOKONCHAIN-SAFU-7500",
+        "SRC-20261031T171300Z-ARKHAM-SAFU-BALANCE-7500",
+        "SRC-20261031T171300Z-BITINFOCHARTS-SAFU-STALE-15000"
+      ],
+      "claim": "Lookonchain reports 7,500 BTC moved; Arkham shows 7.5K BTC remaining at the source. Destination and transaction hash are not surfaced in readable evidence."
+    },
+    {
+      "id": "EDGE-BINANCE-SAFU-DEPLOYMENT",
+      "source": "BINANCE",
+      "target": "SAFU",
+      "relationship": "PARTIAL_DEPLOYMENT_FOR_RECOVERY",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3"
+      ],
+      "claim": "Binance says partial SAFU deployment is being used as part of the recovery program; the specific 7,500 BTC transfer's purpose is not independently confirmed."
+    },
+    {
+      "id": "EDGE-BINANCE-TOP10-COVERAGE",
+      "source": "BINANCE",
+      "target": "TOP_TEN_ASSETS",
+      "relationship": "CLAIMS_100_PERCENT_BACKING",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT_PENDING_ZK_PROOF",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T171300Z-REUTERS-BINANCE-90PCT"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRP-COVERAGE",
+      "source": "BINANCE",
+      "target": "XRP",
+      "relationship": "CLAIMS_100_PERCENT_BACKING_IN_PO_R_SNAPSHOT",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT_PENDING_ZK_PROOF",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T171300Z-REUTERS-BINANCE-90PCT"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-REMAINING-TOKENS",
+      "source": "BINANCE",
+      "target": "LESS_LIQUID_ASSETS",
+      "relationship": "REMAINING_10_PERCENT_OUTSIDE_TOP_TEN",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3",
+        "SRC-20261031T171300Z-REUTERS-BINANCE-90PCT"
+      ]
+    },
+    {
+      "id": "EDGE-POR-SNAPSHOT",
+      "source": "BINANCE",
+      "target": "BINANCE_POR",
+      "relationship": "PUBLISHED_SNAPSHOT_BEFORE_FULL_ZK_PROOF",
+      "evidence_class": "CONFIRMED_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T171300Z-BINANCE-RECOVERY-UPDATE3"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-INSIGHTS-BINANCE",
+      "source": "XRP_INSIGHTS",
+      "target": "BINANCE_XRP_WALLETS",
+      "relationship": "ATTRIBUTES_2_78B_XRP",
+      "evidence_class": "ONCHAIN_BALANCE_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-INSIGHTS-COINBASE",
+      "source": "XRP_INSIGHTS",
+      "target": "COINBASE_XRP_WALLETS",
+      "relationship": "ATTRIBUTES_5_85B_XRP_INCLUDING_150_2M_CBXRP_RESERVE",
+      "evidence_class": "ONCHAIN_BALANCE_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "EDGE-XRP-INSIGHTS-UPBIT",
+      "source": "XRP_INSIGHTS",
+      "target": "UPBIT_XRP_WALLETS",
+      "relationship": "ATTRIBUTES_6_43B_XRP",
+      "evidence_class": "ONCHAIN_BALANCE_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-PGBP-RESERVE",
+      "source": "BINANCE_XRP_WALLETS",
+      "target": "BINANCE_POR",
+      "relationship": "INCLUDES_327_4M_BINANCE_PEG_XRP_RESERVE",
+      "evidence_class": "ONCHAIN_BALANCE_AGGREGATION",
+      "source_ids": [
+        "SRC-20261031T171300Z-XRP-INSIGHTS-EXCHANGE-BALANCES"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-SAFU-TRANSFER-RECOVERY-DEPLOYMENT",
+      "claim": "The 7,500 BTC transfer is part of Binance's partial SAFU deployment associated with the incident recovery.",
+      "status": "PLAUSIBLE_NOT_CONFIRMED",
+      "support": [
+        "Binance announced partial SAFU deployment within the recovery program.",
+        "Lookonchain reported 7,500 BTC moved from the SAFU fund; Arkham showed 7.5K BTC remaining at the labeled source wallet."
+      ],
+      "disconfirming": [
+        "The readable tracker post does not expose the destination or transaction hash.",
+        "The transfer could be a custody migration or internal treasury reallocation rather than a sale or token purchase."
+      ],
+      "next_test": "Obtain the transaction hash and destination wallet; inspect subsequent transfers, exchange deposits, OTC labels and token swaps."
+    },
+    {
+      "id": "HYP-SAFU-TRANSFER-INTERNAL-REALLOCATION",
+      "claim": "The 7,500 BTC transfer is an internal custody/treasury reallocation and not evidence of a BTC sale or purchase of recovery assets.",
+      "status": "PLAUSIBLE_COUNTERHYPOTHESIS",
+      "support": [
+        "Arkham shows 7.5K BTC remaining at the source and Lookonchain says the amount went to a new wallet.",
+        "No public transaction-level evidence in the captured sources shows BTC sold or converted."
+      ],
+      "disconfirming": [
+        "Binance explicitly says partial SAFU deployment is part of recovery, and the timing is consistent with that announcement."
+      ],
+      "next_test": "Trace destination wallet and any subsequent market/OTC settlement."
+    },
+    {
+      "id": "HYP-XRP-RESERVE-DRAWDOWN-NOT-PERSISTENT",
+      "claim": "The previously inferred approximately 220M XRP Binance reserve drawdown is not a persistent same-wallet depletion and should not be treated as bullish exchange outflow or proof of theft-driven reserve replacement.",
+      "status": "HYPOTHESIS_STRENGTHENED_BY_DISCONFIRMING_DATA",
+      "support": [
+        "XRP Insights reports +105.9M all-exchange same-wallet change on Oct 31 after -207.3M on Oct 30.",
+        "Its Binance-attributed wallets show +17.6M over seven days and +30.3M over 30 days, with 2.78B XRP on Oct 31."
+      ],
+      "disconfirming": [
+        "XRP Insights and CryptoQuant use different wallet universes and time windows.",
+        "The broad XRP Insights totals include cold storage, customer balances and 487.2M in wrapped/operational reserves; they are not tradable float."
+      ],
+      "next_test": "Crosswalk CryptoQuant and XRP Insights wallet sets against official Binance PoR addresses and repeat the comparison after the full Nov 3 proof."
+    }
+  ]
+}

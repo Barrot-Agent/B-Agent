@@ -1,0 +1,26 @@
+{
+  "record_type": "xrp_intelligence_architecture_decision",
+  "schema_version": "1.0",
+  "decision_id": "ADR-20261030T212826Z-RIPPLE-AMM-VAULT-PROVENANCE-AND-FLOW-ADMISSION",
+  "captured_at_utc": "2026-10-30T21:28:26Z",
+  "status": "ADOPTED_FOR_RESEARCH_BRANCH",
+  "context": "A Ripple-labelled XRPL account with a Ripple activation lineage transferred XRP through an account classified as an AMM pool associated with a vault and loan broker; an unlabelled intermediary then deposited XRP into a Binance-labelled account historically activated by one of the compromised Binance source wallets. The 20M incoming and approximately 20M outgoing sequence is measurable but does not establish same-unit provenance, beneficial ownership, sale or reserve replenishment.",
+  "decision": [
+    "Represent every XRPL account as a separate node; store activation/funding edges separately from ownership/control claims.",
+    "Classify AMM, vault and loan-broker roles as protocol/account-object classifications until the actual pool pair, vault ID, broker ID and ledger objects are read and verified.",
+    "Separate native XRP transfer, AMM pool movement, vault/loan collateral posting, exchange deposit, executed sale, OTC settlement and reserve replenishment into distinct event types.",
+    "Never infer that a deposit to a Binance-labelled account is a sale, Binance-owned inventory or proof-of-reserves replenishment.",
+    "Treat balance comparisons from dynamic explorer pages as rounded point-in-time observations; do not infer missing transactions from differences.",
+    "Require transaction hashes, ledger time, asset, amount, destination tag, account role, explorer capture time and source provenance for every account-flow edge.",
+    "Do not admit this route, TrackWhale selected flows, ETF holdings deltas or provider-specific derivatives figures into predictive features until a synchronized historical panel and independent coverage checks exist.",
+    "Preserve competing hypotheses and disconfirming evidence; do not collapse the route into a single Ripple-directed causal story."
+  ],
+  "invariants": [
+    "No main-branch modification.",
+    "No merge, force-push, workflow dispatch, paper-state mutation or real-money trade.",
+    "No same-unit provenance claim through AMM/vault/loan-broker intermediaries without ledger-object and transaction-level proof.",
+    "Forecast remains NOT_ISSUED until fixed-horizon, point-in-time, calibrated out-of-sample gates pass.",
+    "New artifacts and archive shards are append-only; prior evidence remains unchanged."
+  ],
+  "next_action": "Crosswalk the five incident source accounts and rNxp4h against the official October 1 Binance PoR export and XRP-BF2 reserve address; resolve raRVLN protocol objects using a rate-limit-safe XRPL data source."
+}

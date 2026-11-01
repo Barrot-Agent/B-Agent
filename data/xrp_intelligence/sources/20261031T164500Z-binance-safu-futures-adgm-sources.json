@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "XRP-BINANCE-SAFU-FUTURES-ADGM-20261031T164500Z",
+  "captured_at_utc": "2026-10-31T16:45:00Z",
+  "data_cutoff_utc": "2026-10-31T16:45:00Z",
+  "observed_main_sha": "21ff522fe6457fb472e8140c180f0643b7948b29",
+  "observed_research_head_sha": "26752c951cd7b802e32319f60959228009d01ffa",
+  "purpose": "Reconcile Binance's public SAFU BTC wallet, its stated deployment timetable, Futures Insurance Fund reallocation, and the ADGM legal custodian.",
+  "sources": [
+    {
+      "id": "SRC-20261031T164500Z-BINANCE-UPDATE3-SAFU-FAQ",
+      "publisher": "Binance",
+      "title": "Security Incident Recovery Update #3 — SAFU and Futures Insurance Fund FAQ",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "published_at_utc": "2026-10-31T14:24:00Z",
+      "updated_at_utc": "2026-10-31T15:23:00Z",
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "evidence_type": "OFFICIAL_INCIDENT_ANNOUNCEMENT_AND_FAQ",
+      "independence_group": "BINANCE_OFFICIAL",
+      "status": "VERIFIED_PRIMARY_SOURCE",
+      "claims": [
+        "Binance states the aggregate covered amount reached 90%; BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC were fully backed 100% on a 2026-10-31 00:00 UTC PoR snapshot.",
+        "Binance says partial SAFU deployment is expected within the 24 hours after the update; the FAQ says part of SAFU is being used to acquire the remaining 10% of affected assets.",
+        "Binance says a portion of the Futures Insurance Fund was rebalanced to cover affected assets; the fund is not user assets, supports bankrupt-position deficits and reduces ADL, and the remaining balance is above the required minimum.",
+        "Binance says SAFU is held and managed by Nest Clearing and Custody Limited; a portion serves as regulatory capital reserves under ADGM obligations.",
+        "Binance identifies its public SAFU BTC wallet as 1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD and commits to replenishing SAFU toward approximately USD 1 billion.",
+        "Binance says full zero-knowledge PoR proof is estimated by November 3 and withdrawals are targeted to resume Sunday, November 1."
+      ],
+      "limitations": [
+        "All recovery, coverage and fund deployment statements are company claims; the full ZK proof was not available at capture.",
+        "The 24-hour SAFU deployment window had not elapsed at the 16:45 UTC capture.",
+        "No XRP-specific replacement purchase quantity, SAFU draw amount, or futures-fund transfer amount is disclosed."
+      ]
+    },
+    {
+      "id": "SRC-20261031T164500Z-BITINFOCHARTS-SAFU-BTC-ADDRESS",
+      "publisher": "BitInfoCharts",
+      "title": "Public Bitcoin address balance and transaction summary for Binance-designated SAFU wallet",
+      "url": "https://bitinfocharts.com/bitcoin/address/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "data_as_of_utc": "2026-10-31T16:45:00Z",
+      "evidence_type": "THIRD_PARTY_ONCHAIN_EXPLORER_OBSERVATION",
+      "independence_group": "BITINFOCHARTS_ONCHAIN",
+      "status": "VERIFIED_PROVIDER_OBSERVATION",
+      "claims": [
+        "The address identified by Binance as its SAFU BTC wallet is displayed with a balance of 15,000.00147092 BTC.",
+        "BitInfoCharts lists 31,277.00006 BTC received across 28 incoming transactions, last received 2026-08-09 01:20:03 UTC; 16,276.9991 BTC sent across five outgoing transactions, last sent 2024-04-18.",
+        "At capture the displayed balance remained approximately 15,000 BTC; no post-April-18-2024 outgoing transaction appears in the provider's summary."
+      ],
+      "limitations": [
+        "Single third-party explorer observation; the linked Blockchain.com page is dynamic and did not expose readable transaction rows in this capture.",
+        "The public address may not represent every asset or every legal/operational account of SAFU; no independent custody attestation was obtained.",
+        "The official 24-hour deployment window had not expired; absence of a visible transfer at capture does not prove no deployment elsewhere or off-chain."
+      ]
+    },
+    {
+      "id": "SRC-20261031T164500Z-SWOLECHARTS-BINANCE-FUTURES-INSURANCE",
+      "publisher": "SwoleCharts",
+      "title": "Hourly exchange futures insurance fund balances",
+      "url": "https://swolecharts.com/insurance-fund",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "data_as_of_utc": "2026-10-31T15:00:00Z",
+      "evidence_type": "THIRD_PARTY_DERIVATIVES_INSURANCE_FUND_AGGREGATION",
+      "independence_group": "SWOLECHARTS_INSURANCE_DATA",
+      "status": "VERIFIED_PROVIDER_OBSERVATION",
+      "claims": [
+        "SwoleCharts reports Binance futures insurance funds totaling approximately USD 2.46B at 15:00 UTC on October 31, +0.14% over 24 hours and +0.62% over seven days; its October 2 reference was approximately USD 2.41B.",
+        "The page lists a Binance XRPUSDT isolated/shared pool with approximately USD 65.83M USDT covering ten symbols including XRP, ADA, BCH, DOT, ETC, LINK, LTC, TRX, XLM and XMR.",
+        "The page lists a Bybit XRPUSD isolated pool holding approximately 55.58M XRP, displayed near USD 69.33M."
+      ],
+      "limitations": [
+        "Third-party aggregator, not Binance's official daily fund snapshot; methodology and completeness require validation.",
+        "Binance's XRPUSDT pool is shared across ten symbols and is not XRP-specific collateral.",
+        "Bybit's XRPUSD isolated pool is a separate venue and contract; do not combine it with Binance's pool.",
+        "A flat or rising aggregate total does not disprove a transfer from one pool; fees, asset prices, rebalancing and other pool flows can offset movements."
+      ]
+    },
+    {
+      "id": "SRC-20261031T164500Z-ADGM-NEST-CLEARING-REGISTER",
+      "publisher": "Abu Dhabi Global Market — FSRA",
+      "title": "FSRA Public Register: Nest Clearing and Custody Limited",
+      "url": "https://www.adgm.com/public-registers/fsra/firms/recognized-bodies/nest-clearing-and-custody-limited",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "evidence_type": "OFFICIAL_REGULATORY_PUBLIC_REGISTER",
+      "independence_group": "ADGM_FSRA_PUBLIC_REGISTER",
+      "status": "VERIFIED_PRIMARY_REGULATORY_RECORD",
+      "claims": [
+        "Nest Clearing and Custody Limited is listed as Active, Recognition Order Number 0070, date 8 December 2025, Type of Recognition Order Recognised Clearing House.",
+        "The register lists previous name Binance (AD) Limited and trading name Binance.",
+        "The register lists activities of Providing Custody and Operating a Central Securities Depository."
+      ],
+      "limitations": [
+        "The register establishes this legal entity's ADGM recognition and activities; it does not independently attest the amount, segregation or availability of SAFU assets."
+      ]
+    },
+    {
+      "id": "SRC-20261031T164500Z-BINANCE-ADGM-LEGAL-ENTITY-STRUCTURE",
+      "publisher": "Binance",
+      "title": "Binance's ADGM Launch Update — three regulated legal entities",
+      "url": "https://www.binance.com/en/support/announcement/detail/a4a7d00e88224224b55293be07724334",
+      "published_at_utc": "2026-01-05T08:00:00Z",
+      "retrieved_at_utc": "2026-10-31T16:45:00Z",
+      "evidence_type": "OFFICIAL_LEGAL_ENTITY_STRUCTURE_ANNOUNCEMENT",
+      "independence_group": "BINANCE_OFFICIAL",
+      "status": "VERIFIED_PRIMARY_SOURCE",
+      "claims": [
+        "Nest Exchange Limited is the Recognised Investment Exchange responsible for on-exchange spot and derivatives trading.",
+        "Nest Clearing and Custody Limited is the Recognised Clearing House responsible for clearing, settlement, central-counterparty functions and custody.",
+        "Nest Trading Limited is the Broker-Dealer responsible for off-exchange principal and agency services, including OTC and Convert."
+      ],
+      "limitations": [
+        "This describes the ADGM legal structure; it does not establish that every Binance service or customer in every jurisdiction contracts with the same entity."
+      ]
+    }
+  ],
+  "independence_policy": "Binance's announcement is a company claim. ADGM's register independently confirms the legal entity's regulatory status, not SAFU balances. BitInfoCharts and SwoleCharts are separate third-party data providers; neither replaces the official daily fund snapshot or a custody attestation."
+}

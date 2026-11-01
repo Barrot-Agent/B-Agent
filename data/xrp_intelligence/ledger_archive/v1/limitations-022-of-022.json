@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 21,
+  "chunk_count": 22,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T08:20:00Z",
+  "records": [
+    "Bitquery's refreshed incident investigation reports nine affected chains while Reuters' TRM-based report says ten. The XRP and Solana drains share no address with the other incident chains; chain count/attribution scope remains provider-dependent and must not be forced into one number.",
+    "Bitquery's refreshed XRP receiver balance is still cut off at 06:43 UTC; Bithomp's prior 07:23 UTC capture showed no outgoing XRP. No current post-07:23 receiver balance or disposition is verified in this run.",
+    "TradRadar's 07:50 UTC XRP derivatives panel and Liqwall's 01:32 UTC panel differ substantially in open interest and liquidations. Venue coverage, cutoff and publication methodology are not harmonized; do not average or treat the gap as a price event.",
+    "Alpha Finance reports a complete five-fund October 29 ETF flow of +$8.4M; CryptoETF.today reports +$7.1M with only two of five funds reported. The latter is explicitly partial. Neither is yet reconciled to all issuer creation/redemption files.",
+    "Current XRP price, ETF and derivatives observations remain research-only; no synchronized point-in-time feature panel, leakage-safe walk-forward evaluation or calibrated fixed-horizon probability model has passed."
+  ]
+}

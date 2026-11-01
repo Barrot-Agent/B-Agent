@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 44,
+  "chunk_count": 45,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T12:43:54Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T12:43:54Z",
+      "update_type": "SBI_CIRCLE_JV_RIPPLE_RLUSD_AND_USDC_XRPL_COOPETITION_RECONCILIATION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "777d9b470a15dba03578f830c01b5f0a1f8b6d9c",
+      "research_addendum": {
+        "snapshot_path": "data/xrp_intelligence/snapshots/20261030T124354Z-sbi-circle-ripple-coopetition-and-route-reconciliation.json",
+        "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T124354Z-sbi-circle-ripple-coopetition-and-route-reconciliation.json",
+        "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T124354Z-sbi-multiissuer-circle-ripple-route-semantics.json",
+        "source_ids": [
+          "SRC-SBI-CIRCLE-JV-ESTABLISHMENT-20250822",
+          "SRC-SBI-CIRCLE-JV-LEGAL-NAME-AND-50-50-OWNERSHIP-20250602",
+          "SRC-SBI-CIRCLE-EQUITY-INVESTMENT-20250609",
+          "SRC-CIRCLE-USDC-NATIVE-XRPL-LAUNCH-20250612",
+          "SRC-RIPPLE-CIRCLE-USDC-XRPL-PARTNERSHIP-20250612",
+          "SRC-SBI-RLUSD-JAPAN-LAUNCH-20260624",
+          "SRC-SBI-VCTRADE-USDC-ETHEREUM-ONLY-DEPOSIT-2026",
+          "SRC-SBI-VCTRADE-USDC-LENDING-20260318",
+          "SRC-SBIC-EAST-JAPAN-CHATGPT-EVENT-20260305",
+          "SRC-RUN25-20261029T014151-SBI-RIPPLE-EQUITY"
+        ],
+        "new_relationship_edges": 12,
+        "new_hypotheses": 5,
+        "new_market_observations": 7,
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED"
+      },
+      "findings": [
+        "Primary SBI evidence identifies a 50/50 Circle SBI Japan KK / SBI Circle Holdings Co., Ltd. joint venture to promote USDC adoption in Japan and support exchange/payment-provider use cases.",
+        "SBI Holdings and SBI Shinsei Bank invested USD25M each in Circle at its June 5, 2025 IPO. The USD50M is historical equity investment, not current market value, current ownership percentage or token capital.",
+        "SBI VC Trade began public USDC trading in Japan in March 2025 and launched RLUSD distribution on June 24, 2026. This confirms a multi-issuer stablecoin distribution strategy rather than exclusive Circle alignment.",
+        "Circle launched native USDC on XRPL June 12, 2025. Ripple and Circle announced a direct product partnership for USDC on XRPL; Ripple says XRPL DEX/auto-bridging uses XRP as an essential bridge currency. Actual executed XRP bridge volumes remain unmeasured.",
+        "SBI VC Trade's current USDC deposit FAQ accepts Ethereum-network USDC only. The source does not establish withdrawal network policy or RLUSD network support. Therefore Japanese VCTRADE USDC distribution cannot be assumed to settle on XRPL.",
+        "SBI's February 2025 investor presentation reported approximately 9% Ripple equity; this is historical and current cap-table ownership is unknown.",
+        "SBI VC Trade's USDC lending product advertised an initial 12-week 10% annualized offer and planned usual rate around 5%; actual current yield, loan balances, borrower identities and collateral composition remain unknown.",
+        "SBIC East Japan is distinct from SBI Holdings and Circle SBI Japan; the ChatGPT seminar does not imply an OpenAI partnership or XRP-related investment."
+      ],
+      "repository_audit": {
+        "latest_main_sha": "653b66de9a9545bc756a34385972f06038229783",
+        "pr1371_state": "OPEN_DRAFT_UNMERGED_MERGEABLE; exact head 660345e8453bbf9d7225c51e73b2cadde06e6804; core CI 347+8 passed in run 41056935897; fail-closed gate 41056936005 PASS_MERGE_DISABLED.",
+        "cross_analysis_main_workflow_write_enabled": true,
+        "merge_queue_main_write_enabled": true,
+        "main_modified": false,
+        "merge_performed": false,
+        "force_push": false,
+        "deployment_executed": false,
+        "workflow_dispatch_performed": false,
+        "paper_state_mutated": false,
+        "real_money_trade": false,
+        "full_repository_ci": "NOT_RUN"
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "next_action": "Verify current SBI Circle JV operations and balances if publicly disclosed; establish SBI VC Trade RLUSD network support; seek XRPL DEX/auto-bridge execution volume for USDC; retain multi-issuer strategy as inference rather than proof of XRP demand."
+    }
+  ]
+}

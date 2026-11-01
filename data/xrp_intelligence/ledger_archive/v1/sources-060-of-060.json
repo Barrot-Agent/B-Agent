@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 59,
+  "chunk_count": 60,
+  "record_count": 8,
+  "created_at_utc": "2026-10-30T18:17:10Z",
+  "records": [
+    {
+      "id": "SRC-ACL-SBIC-SOCIAL-BIAS-INFERENCE-2020",
+      "evidence_class": "PRIMARY_ACL_CONFERENCE_PAPER",
+      "url": "https://aclanthology.org/2020.acl-main.486/",
+      "title": "Social Bias Frames: Reasoning about Social and Power Implications of Language",
+      "authors": [
+        "Maarten Sap",
+        "Saadia Gabriel",
+        "Lianhui Qin",
+        "Dan Jurafsky",
+        "Noah A. Smith",
+        "Yejin Choi"
+      ],
+      "published_at": "2020-07",
+      "doi": "10.18653/v1/2020.acl-main.486",
+      "accessed_at_utc": "2026-10-30T18:17:10Z",
+      "confirmed_expansion": "Social Bias Inference Corpus",
+      "dataset_size": {
+        "structured_annotations": 150000,
+        "implications_over": 34000,
+        "demographic_groups_approx": 1000
+      },
+      "paper_result": "baseline neural models reached 80% F1 for high-level categorization but were less effective at detailed Social Bias Frame explanations.",
+      "classification": "PRIMARY_CONFIRMED"
+    },
+    {
+      "id": "SRC-ZIEMS-LLM-CSS-BENCHMARK-SBIC-2023V3",
+      "evidence_class": "PRIMARY_RESEARCH_PAPER_ARXIV",
+      "url": "https://arxiv.org/html/2305.03514v3",
+      "title": "Can Large Language Models Transform Computational Social Science?",
+      "authors": [
+        "Ziems",
+        "Held",
+        "Shaikh",
+        "and coauthors"
+      ],
+      "published_at": "2023",
+      "version": "v3, revised 2024-02-26",
+      "accessed_at_utc": "2026-10-30T18:17:10Z",
+      "section": "3.4.4 Social Bias Inference; §4.4 human ranking evaluation; Table 7",
+      "dataset": "Social Bias Inference Corpus (SBIC)",
+      "models": {
+        "gpt_3_5_turbo": {
+          "sbic_pairwise_preference_over_gold_pct": 65.9
+        },
+        "gpt_4": {
+          "sbic_pairwise_preference_over_gold_pct": 60.6
+        },
+        "text_davinci_003": {
+          "sbic_pairwise_preference_over_gold_pct": 50
+        }
+      },
+      "metric_definition": "proportion of all pairwise rankings where authors unanimously ranked the model generation as more accurate or preferable to a gold-standard explanation drawn from the dataset",
+      "evaluation": "two authors served as blind annotators; ties were not allowed; unanimous votes determined reported metrics; zero-shot prompting; temperature 0; five prompt perturbations averaged for the benchmark",
+      "classification": "PRIMARY_CONFIRMED_NARROW_TASK_METRIC_NOT_ACCURACY"
+    },
+    {
+      "id": "SRC-CHENG-CSS-REVIEW-SBIC-MISEXPANSION-2023",
+      "evidence_class": "SECONDARY_REVIEW_WITH_CONFLICTING_DATASET_EXPANSION",
+      "url": "https://www.sciengine.com/cfs/files/pdfs/view/2096-9732/F828194D488B4F0AB7E9E09F97E262FF.pdf",
+      "title": "Chinese-language review of generative AI and computational social science research",
+      "author": "Cheng Bing",
+      "published_at": "2023",
+      "accessed_at_utc": "2026-10-30T18:17:10Z",
+      "conflicting_claim": "Expands SBIC as COVID-19 Social and Behavioral Implications Corpus and describes its gold standard as true political ideology.",
+      "primary_source_resolution": "The ACL 2020 paper and Ziems et al. 2023 paper explicitly identify SBIC as Social Bias Inference Corpus. The Ziems paper separately lists CovidET and SBIC as distinct generation tasks; the review appears to conflate them and also conflates the Social Bias task with a separate ideology task.",
+      "classification": "SECONDARY_CONFLICT_DISCONFIRMED_BY_PRIMARY_SOURCES"
+    },
+    {
+      "id": "SRC-PERMISSION-OFFICIAL-FAMILY-AI-20261030",
+      "evidence_class": "PRIMARY_PERMISSION_COMPANY_WEBSITE",
+      "url": "https://permission.io/",
+      "title": "Permission official website (permission.io redirects to permission.ai)",
+      "published_at": "2026-10-30 page capture",
+      "accessed_at_utc": "2026-10-30T18:17:10Z",
+      "product_positioning": "Family Friendly AI for parents and children; family AI agent detects patterns across a child's browsing and digital life; official site says it does not expose private messages or raw conversations.",
+      "ask_utility": "$ASK rewards for positive digital and offline habits; parents control reward definitions and usage; tokens are redeemable for gift cards through Tremendous; site explicitly says ASK is a utility token and not an investment product.",
+      "company_claims": [
+        "COPPA-compliant",
+        "collects only what is necessary"
+      ],
+      "classification": "PRIMARY_COMPANY_STATEMENT_CLAIMS_NOT_INDEPENDENTLY_AUDITED"
+    },
+    {
+      "id": "SRC-PERMISSION-OFFICIAL-ASK-TOKEN-DOCS-20261030",
+      "evidence_class": "PRIMARY_PERMISSION_TOKEN_DOCUMENTATION",
+      "url": "https://docs.permission.ai/ask-token",
+      "title": "Permission ASK Token documentation",
+      "published_at": "current documentation accessed 2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:17:10Z",
+      "token_supply": 100000000000,
+      "token_role": "native token of Permission ecosystem",
+      "utility": [
+        "incentives and rewards",
+        "agent-to-agent coordination",
+        "ecosystem alignment"
+      ],
+      "future_utility": [
+        "governance",
+        "staking"
+      ],
+      "standard": "LayerZero OFT",
+      "active_networks": {
+        "Base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "Polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+      },
+      "classification": "PRIMARY_PROJECT_DOCUMENTATION"
+    },
+    {
+      "id": "SRC-CMC-PERMISSION-ASK-20261030T1817Z",
+      "evidence_class": "SECONDARY_MARKET_DATA_AGGREGATOR_SNAPSHOT",
+      "url": "https://coinmarketcap.com/currencies/permission-coin/",
+      "title": "CoinMarketCap Permission Coin (ASK) snapshot",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:17:10Z",
+      "price_usd": 0.00008766,
+      "market_cap_usd": 1417258,
+      "volume_24h_usd": 242.92,
+      "circulating_supply": 16166619298,
+      "total_supply": 100000000000,
+      "range_24h_usd": [
+        0.00008761,
+        0.00009974
+      ],
+      "classification": "SINGLE_PROVIDER_SNAPSHOT_NOT_RECONCILED"
+    },
+    {
+      "id": "SRC-COINGECKO-PERMISSION-ASK-20261030T1817Z",
+      "evidence_class": "SECONDARY_MARKET_DATA_AGGREGATOR_SNAPSHOT",
+      "url": "https://www.coingecko.com/es/monedas/permission-coin",
+      "title": "CoinGecko Permission Coin (ASK) snapshot",
+      "published_at": "2026-10-30",
+      "accessed_at_utc": "2026-10-30T18:17:10Z",
+      "price_usd": 0.0001267,
+      "market_cap_usd": 2927307,
+      "volume_24h_usd": 92.9,
+      "circulating_supply": 23107027514,
+      "total_supply": 100000000000,
+      "range_24h_usd": [
+        0.0001258,
+        0.0001278
+      ],
+      "tracked_markets": 3,
+      "tracked_exchanges": 3,
+      "orderbook_depth_2pct_usd": {
+        "gate": {
+          "bid": 460,
+          "ask": 532
+        },
+        "uniswap_polygon": {
+          "bid": 498,
+          "ask": 497
+        },
+        "aerodrome_base": {
+          "bid": 1743,
+          "ask": 1738
+        }
+      },
+      "markets_volume_24h_usd": {
+        "gate": 58,
+        "uniswap_polygon": 33,
+        "aerodrome_base": 59
+      },
+      "migration_note": "CoinGecko says the old Wormhole-bridged Base ASK must be repatriated to Polygon and bridged again through the new LayerZero contract.",
+      "classification": "SINGLE_PROVIDER_SNAPSHOT_NOT_RECONCILED"
+    },
+    {
+      "id": "SRC-COINBASE-BASE-OFFICIAL-2023",
+      "evidence_class": "PRIMARY_COINBASE_COMPANY_ANNOUNCEMENT",
+      "url": "https://www.coinbase.com/en-sg/blog/introducing-base",
+      "title": "Introducing Base",
+      "author": "Will Robinson",
+      "published_at": "2023-02-23",
+      "accessed_at_utc": "2026-10-30T18:17:10Z",
+      "base_relationship": "Coinbase says Base is incubated inside Coinbase, built with Optimism on OP Stack, and intended as an open ecosystem that will progressively decentralize.",
+      "native_gas": "ETH",
+      "classification": "PRIMARY_COMPANY_STATEMENT"
+    }
+  ]
+}

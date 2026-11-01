@@ -1,0 +1,156 @@
+{
+  "record_type": "xrp_relationship_graph_addendum",
+  "schema_version": "1.0",
+  "graph_id": "GRAPH-20261030T210054Z-RIPPLE-RVLLN-BINANCE-FLOW",
+  "captured_at_utc": "2026-10-30T21:00:54Z",
+  "source_ids": [
+    "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2100Z",
+    "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2100Z",
+    "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2100Z",
+    "SRC-BITHOMP-R39TA-ACCOUNT-20261030T2100Z",
+    "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2100Z",
+    "SRC-XRPLWIN-RARVLN-CLASSIFICATION-20261030T2100Z"
+  ],
+  "edges": [
+    {
+      "edge_id": "E-20261030T210054Z-01",
+      "from": "rJqi (Bithomp-labelled Ripple)",
+      "relation": "transfers_XRP_to",
+      "to": "raRVLN",
+      "status": "CONFIRMED_EXPLORER_TRANSACTIONS_WITH_LABEL_LIMITATION",
+      "amount_xrp": 183000000,
+      "payments": [
+        28000000,
+        120000000,
+        35000000
+      ],
+      "source_ids": [
+        "SRC-BITHOMP-RJQI-TRANSACTIONS-20261030T2100Z"
+      ],
+      "notes": "Three displayed payments at 06:42, 08:30 and 20:07 UTC. Bithomp label is not beneficial-ownership proof."
+    },
+    {
+      "edge_id": "E-20261030T210054Z-02",
+      "from": "r3mSX",
+      "relation": "transfers_XRP_to",
+      "to": "raRVLN",
+      "status": "CONFIRMED_EXPLORER_TRANSACTION_SOURCE_IDENTITY_UNKNOWN",
+      "amount_xrp": 19500000,
+      "source_ids": [
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2100Z"
+      ],
+      "notes": "One displayed payment at 06:47 UTC; sender identity and purpose unknown."
+    },
+    {
+      "edge_id": "E-20261030T210054Z-03",
+      "from": "raRVLN",
+      "relation": "transfers_XRP_to",
+      "to": "r39TA (unlabelled)",
+      "status": "CONFIRMED_EXPLORER_TRANSACTIONS_WITH_POOL_PROVENANCE_LIMITATION",
+      "amount_xrp": 206000000,
+      "payments_13_44_to_14_09_xrp": 186000000,
+      "separate_20_16_payment_xrp": 20000000,
+      "source_ids": [
+        "SRC-BITHOMP-RARVLN-TRANSACTIONS-20261030T2100Z",
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2100Z"
+      ],
+      "notes": "Six payments totaling 186M between 13:44 and 14:09, plus 20M at 20:16. Same-unit provenance not established."
+    },
+    {
+      "edge_id": "E-20261030T210054Z-04",
+      "from": "r39TA (unlabelled)",
+      "relation": "deposits_XRP_to",
+      "to": "rNxp4h (Bithomp-labelled Binance)",
+      "status": "CONFIRMED_EXPLORER_EXCHANGE_DEPOSITS_NOT_SALES",
+      "amount_xrp": 68924571.602513,
+      "payment_count": 6,
+      "destination_tag": 499932645,
+      "source_ids": [
+        "SRC-BITHOMP-R39TA-TRANSACTIONS-20261030T2100Z",
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2100Z"
+      ],
+      "notes": "Six payments 17:56–19:54 UTC, all before separate 20M incoming at 20:16. No execution or sale inferred."
+    },
+    {
+      "edge_id": "E-20261030T210054Z-05",
+      "from": "rDAE53 (Binance-labelled; incident source wallet)",
+      "relation": "activated_historically",
+      "to": "rNxp4h (Binance-labelled)",
+      "status": "CONFIRMED_EXPLORER_FAMILY_TREE_PRE_INCIDENT",
+      "activation_date": "2023-01-19",
+      "source_ids": [
+        "SRC-BITHOMP-BINANCE-RNXP4H-ACCOUNT-20261030T2100Z"
+      ],
+      "notes": "Historical activation predates incident by over three years; does not establish compromise or attacker control."
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-20261030T210054Z-01",
+      "claim": "Ripple treasury or institutional settlement routing through the AMM/vault/loan-broker account and intermediary before exchange deposit.",
+      "assessment": "POSSIBLE_BUT_UNPROVEN",
+      "supporting": [
+        "Bithomp labels rJqi as Ripple and displays 183M transfers to raRVLN.",
+        "raRVLN forwards XRP to unlabelled r39TA; r39TA deposits 68.9246M to Binance-labelled rNxp4h."
+      ],
+      "disconfirming": [
+        "No beneficial-ownership proof.",
+        "AMM/pool breaks same-unit provenance.",
+        "r39TA owner unknown.",
+        "Six Binance deposits predate the separate 20M receipt at 20:16."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T210054Z-02",
+      "claim": "Market-maker inventory rebalancing through an AMM pool followed by exchange deposit.",
+      "assessment": "PLAUSIBLE_ALTERNATIVE",
+      "supporting": [
+        "AMM classification and exchange-tagged deposits are consistent with rebalancing."
+      ],
+      "disconfirming": [
+        "No market maker, customer or execution identified."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T210054Z-03",
+      "claim": "Collateral, vault or loan-broker operations.",
+      "assessment": "PLAUSIBLE_BUT_UNVERIFIED",
+      "supporting": [
+        "XRPLWin classification and concurrent XRP/RLUSD movements."
+      ],
+      "disconfirming": [
+        "No vault ID, loan record or collateral posting resolved."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T210054Z-04",
+      "claim": "Unrelated user, pool and exchange movements with no common institutional controller.",
+      "assessment": "STRONG_COUNTER_HYPOTHESIS",
+      "supporting": [
+        "No owner mapping; AMM is shared liquidity; 20M receipt is later than deposits."
+      ],
+      "disconfirming": [
+        "Repeated large transfers form a coherent account-level sequence."
+      ]
+    },
+    {
+      "hypothesis_id": "H-20261030T210054Z-05",
+      "claim": "68.9246M deposits represent Binance's post-incident replenishment purchases.",
+      "assessment": "WEAK_SPECULATION_NOT_ADMITTED",
+      "supporting": [
+        "Binance announced aggregate replenishment; Binance-labelled account received XRP."
+      ],
+      "disconfirming": [
+        "No XRP-specific allocation, source ownership, execution or reserve accounting."
+      ]
+    }
+  ],
+  "disconfirming_evidence": [
+    "The 20M payment at 20:16 occurred after all six Binance deposits.",
+    "rNxp4h was activated by rDAE53 in January 2023, more than three years before the incident.",
+    "r39TA overview and transaction-history pages disagree; no unobserved transaction inferred.",
+    "No source proves sale, Ripple control of r39TA, Binance-owned reserve acquisition or attacker movement."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

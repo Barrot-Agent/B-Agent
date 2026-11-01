@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T085233Z-SBI-XRP-DISTRIBUTION-AND-JAPAN-FIEA",
+  "captured_at_utc": "2026-10-31T08:52:33Z",
+  "status": "ACCEPTED_FOR_RESEARCH_ARCHITECTURE",
+  "source_ids": [
+    "SRC-20261031T085233Z-SBI-BITBANK-CLOSE",
+    "SRC-20261031T085233Z-SBI-BITBANK-COMBINATION",
+    "SRC-20261031T085233Z-BITBANK-XRPJPY",
+    "SRC-20261031T085233Z-SBI-VISA-XRP-REWARDS",
+    "SRC-20261031T085233Z-ORICO-XRP-POINTS",
+    "SRC-20261031T085233Z-SBI-SHINSEI-XRP-DEPOSIT-REWARD",
+    "SRC-20261031T085233Z-RIPPLE-RLUSD-JAPAN-SBI",
+    "SRC-20261031T085233Z-SBIVC-RLUSD-CUSTODY-GROWTH",
+    "SRC-20261031T085233Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261031T085233Z-JAPAN-FIEA-2026-CRYPTO-REFORM",
+    "SRC-20261031T085233Z-XRPL-NO-NEW-XRP-ISSUANCE",
+    "SRC-20261031T085233Z-SBI-VC-TRADE-XRPJPY-LEVERAGE"
+  ],
+  "decisions": [
+    {
+      "id": "DEC-SBI-BITBANK-CUSTODY-SEPARATION",
+      "rule": "Treat Bitbank and SBI VC Trade as separate exchanges and custody universes even after the 100% acquisition; do not sum XRP balances without official group-level reconciliation.",
+      "rationale": "Acquisition is complete, but combined AUC/account figures are pre-close April 30 data and no consolidated XRP reserve disclosure was found.",
+      "feature_admission": "NO_GROUP_XRP_CUSTODY_FEATURE_YET"
+    },
+    {
+      "id": "DEC-SBI-RETAIL-REWARD-FLOW-SEPARATION",
+      "rule": "Record card rewards, Orico point redemptions and deposit-campaign XRP vouchers as distribution events, not as verified spot-market purchases. Require conversion volumes and treasury/hedging mechanics before measuring net demand.",
+      "rationale": "Product terms confirm XRP delivery routes but disclose no aggregate volumes or sourcing.",
+      "feature_admission": "NO_NET_SPOT_DEMAND_FEATURE"
+    },
+    {
+      "id": "DEC-RLUSD-GROWTH-RANKING",
+      "rule": "Use SBI VC Trade's RLUSD first-place September custody-growth rank only as a relative adoption signal; do not infer absolute balance or USDC decline.",
+      "rationale": "The official page reports ranking, not amounts.",
+      "feature_admission": "RELATIVE_RANK_ONLY"
+    },
+    {
+      "id": "DEC-SBI-RIPPLE-ASIA-POC",
+      "rule": "Classify the tokenized-deposit XRPL project as a proof of concept, not production payment volume or XRP demand.",
+      "rationale": "Official announcement describes a conceptual PoC and provides no deployed-volume data.",
+      "feature_admission": "NO_XRP_DEMAND_FEATURE"
+    },
+    {
+      "id": "DEC-JAPAN-FIEA-XRP-COMPLIANCE",
+      "rule": "Add a Japan compliance gate for future XRP research and any later trading system: public/authorized information only, no material nonpublic information, no tipping or trade recommendations based on MNPI, no market manipulation or undisclosed paid promotion. Treat XRP as likely non-specified cryptoasset only as an inference; assume insider-trading rules likely apply once the new regime commences because XRP is exchange-listed.",
+      "rationale": "The 2026 FIEA/PSA amendment creates insider-trading, tipping, market-manipulation, stealth-marketing, exchange-disclosure and custody-system-provider rules; XRP's issuance structure supports but does not finalize its subcategory.",
+      "feature_admission": "COMPLIANCE_CONTROL_DESIGNED_NOT_LEGAL_CLASSIFICATION"
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

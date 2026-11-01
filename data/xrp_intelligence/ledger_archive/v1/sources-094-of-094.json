@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 93,
+  "chunk_count": 94,
+  "record_count": 7,
+  "records": [
+    {
+      "id": "SRC-GH-CROSS-ANALYSIS-RUN-41157339221-20261031T015150Z",
+      "source_id": "SRC-GH-CROSS-ANALYSIS-RUN-41157339221-20261031T015150Z",
+      "publisher": "GitHub Actions — Barrot-Agent/B-Agent",
+      "title": "Cross Analysis scheduled workflow run 41157339221",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41157339221",
+      "retrieved_at_utc": "2026-10-31T02:32:00Z",
+      "evidence_class": "REPOSITORY_EXECUTION_EVIDENCE",
+      "independence_group": "GITHUB_ACTIONS_EXECUTION",
+      "summary": "The scheduled Cross Analysis run at 2026-10-31T01:51:50Z checked out main at cd085b63060f470badb2a87c03d0b558e9953fa7. Its analyze job ran entity co-occurrence (3,217 unique pairs), sentiment shift and entity sentiment profiling (990 entities). sentiment_shift.py explicitly reported insufficient data for XRP and BTC (recent n=0, prior n=0) but still wrote sentiment_shift.json. The Commit outputs step ran git add, git commit and git push; it created commit 7a780dec1aaeea1d02df7d430cbd27768a0024b5 on main. The push log states cd085b6..7a780de main -> main. The commit changed only ping-pongings/knowledge-base/sentiment_shift.json; the JSON changed only generated_at while XRP/BTC scores remained null and entry counts zero.",
+      "limitations": "This is direct evidence of a scheduled main-branch write, but it does not establish that the generated sentiment scores are valid or predictive. The sentiment shift input had zero entries for both tracked assets."
+    },
+    {
+      "id": "SRC-GH-SCHEDULER-TICK-RUN-41159578270-20261031T022048Z",
+      "source_id": "SRC-GH-SCHEDULER-TICK-RUN-41159578270-20261031T022048Z",
+      "publisher": "GitHub Actions — Barrot-Agent/B-Agent",
+      "title": "Scheduler Tick scheduled workflow run 41159578270",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41159578270",
+      "retrieved_at_utc": "2026-10-31T02:32:00Z",
+      "evidence_class": "REPOSITORY_EXECUTION_EVIDENCE",
+      "independence_group": "GITHUB_ACTIONS_EXECUTION",
+      "summary": "The Scheduler Tick run at 2026-10-31T02:20:48Z checked out main at 7a780dec1aaeea1d02df7d430cbd27768a0024b5. scripts/scheduler.py tick reported 0 entries fired and 1 total in queue. The workflow staged schedule_queue.jsonl and attempted a commit/push; Git reported Everything up-to-date. No main-branch mutation occurred in this run, but the workflow has a credentialed commit/push path and scheduler dispatch capability.",
+      "limitations": "A no-op tick does not prove future ticks cannot write or dispatch. This is evidence of capability, not an actual main mutation by this run."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-ZERO-JOB-RUN-41160207764-20261031T022906Z",
+      "source_id": "SRC-GH-APPROVAL-ZERO-JOB-RUN-41160207764-20261031T022906Z",
+      "publisher": "GitHub Actions — Barrot-Agent/B-Agent",
+      "title": "Barrot Controlled PR Approval push-event run 41160207764",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41160207764",
+      "retrieved_at_utc": "2026-10-31T02:32:00Z",
+      "evidence_class": "REPOSITORY_EXECUTION_EVIDENCE",
+      "independence_group": "GITHUB_ACTIONS_EXECUTION",
+      "summary": "A run named .github/workflows/barrot-approve-pr.yml was recorded with event=push, conclusion=failure and zero jobs. The corresponding main workflow file declares workflow_dispatch only. No job logs exist because no jobs were created. A second occurrence was observed on run 41160173880. Root cause remains unknown.",
+      "limitations": "The run record does not identify why a workflow_dispatch-only workflow was recorded for a push event. No manual dispatch or approval action was performed."
+    },
+    {
+      "id": "SRC-GH-APPROVAL-WORKFLOW-YAML-MAIN-20261031T023200Z",
+      "source_id": "SRC-GH-APPROVAL-WORKFLOW-YAML-MAIN-20261031T023200Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent main branch",
+      "title": "Barrot Controlled PR Approval workflow definition on main",
+      "url": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/barrot-approve-pr.yml",
+      "retrieved_at_utc": "2026-10-31T02:32:00Z",
+      "evidence_class": "REPOSITORY_SOURCE_CODE",
+      "independence_group": "GITHUB_REPOSITORY_SOURCE",
+      "summary": "The main-branch YAML declares only workflow_dispatch inputs (PR number, expected head SHA and reason). It requests contents:read and pull-requests:write. If manually dispatched, it validates an open same-repository PR targeting main and exact head SHA, applies an approved label and posts an audit comment; it explicitly does not merge the PR.",
+      "limitations": "The workflow definition alone does not explain the observed push-event run with zero jobs. Repository branch-protection bypass details were not accessible."
+    },
+    {
+      "id": "SRC-GH-PR1386-CROSS-ANALYSIS-SAFETY-20261031T023200Z",
+      "source_id": "SRC-GH-PR1386-CROSS-ANALYSIS-SAFETY-20261031T023200Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent",
+      "title": "PR #1386: remove scheduled main writes and quarantine legacy XRP accuracy",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1386",
+      "retrieved_at_utc": "2026-10-31T02:32:00Z",
+      "evidence_class": "REPOSITORY_STATE_AND_TEST_EVIDENCE",
+      "independence_group": "GITHUB_REPOSITORY_AND_ACTIONS",
+      "summary": "PR #1386 is open, draft, mergeable and unmerged. Exact head 74c47f2a8a64aefc96ff64f3247bbf48789da052 targets current main 7a780dec1aaeea1d02df7d430cbd27768a0024b5. CI run 41158736348 passed 354 tests plus 8 subtests, including explicit tests that Cross Analysis is read-only, never commits/pushes to main and emits a bounded artifact. Fail-closed gate 41158736337 passed with automatic merging disabled.",
+      "limitations": "The remediation is not active on main until an authorized merge. The PR remains draft; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-PR1390-SCHEDULER-SAFETY-20261031T023200Z",
+      "source_id": "SRC-GH-PR1390-SCHEDULER-SAFETY-20261031T023200Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent",
+      "title": "PR #1390: restrict scheduler to credential-isolated validation",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1390",
+      "retrieved_at_utc": "2026-10-31T02:32:00Z",
+      "evidence_class": "REPOSITORY_STATE_AND_TEST_EVIDENCE",
+      "independence_group": "GITHUB_REPOSITORY_AND_ACTIONS",
+      "summary": "PR #1390 is open, draft, mergeable and unmerged. Exact head 19f4f9181b439f5399a43ba5df6112a92e11b8d2 targets current main 7a780dec1aaeea1d02df7d430cbd27768a0024b5. CI run 41158871301 passed 348 tests plus 8 subtests, including scheduler allowlist, rejection of privileged workflows and serialization tests. Fail-closed gate 41158871353 passed with automatic merging disabled.",
+      "limitations": "The scheduler remediation is not active on main until an authorized merge. The PR remains draft; no merge was performed."
+    },
+    {
+      "id": "SRC-GH-PR1388-MERGE-QUEUE-SAFETY-20261031T023200Z",
+      "source_id": "SRC-GH-PR1388-MERGE-QUEUE-SAFETY-20261031T023200Z",
+      "publisher": "GitHub — Barrot-Agent/B-Agent",
+      "title": "PR #1388: make merge queue read-only and gate external deployments",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1388",
+      "retrieved_at_utc": "2026-10-31T02:32:00Z",
+      "evidence_class": "REPOSITORY_STATE_AND_TEST_EVIDENCE",
+      "independence_group": "GITHUB_REPOSITORY_AND_ACTIONS",
+      "summary": "PR #1388 is open, draft, mergeable and unmerged. Exact head 854f52bd50a333a94c16cda7234942a69301e540 targets current main 7a780dec1aaeea1d02df7d430cbd27768a0024b5. CI run 41158878672 passed 344 tests plus 8 subtests. Fail-closed gate 41158878561 passed with automatic merging disabled.",
+      "limitations": "The read-only merge-queue remediation is not active on main until an authorized merge. The PR remains draft; no merge was performed."
+    }
+  ]
+}

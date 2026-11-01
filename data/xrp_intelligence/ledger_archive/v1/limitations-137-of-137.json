@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 136,
+  "chunk_count": 137,
+  "record_count": 16,
+  "created_at_utc": "2026-10-31T16:01:37Z",
+  "records": [
+    "XRP Insights exchange balances are a secondary wallet-attribution series: raw balances are read from XRPL via rippled account_info, but exchange attribution depends on XRPSCAN public labels and has not been independently reproduced.",
+    "The 22.48B XRP exchange-wallet total includes cold storage, hot wallets, unclassified wallets and known non-customer reserves/funds; it is not tradable float, order-book depth, customer liabilities or proprietary exchange treasury.",
+    "The 487.2M XRP identified as non-customer reserves/funds comprises 325.8M Binance-Peg reserve, 150.2M Coinbase cbXRP reserve and 11.2M insurance/charity; other custody classifications may remain incomplete.",
+    "The all-exchange 7-day same-wallet decline of 133.0M XRP cannot distinguish customer withdrawals from exchange transfers to wallets not yet labelled; XRP Insights stores daily exchange totals, not per-wallet history.",
+    "The October 30 all-exchange daily same-wallet decline of 207.3M XRP was followed by a +105.9M same-wallet increase on October 31; this weakens any simple attribution of the October 30 decline to the Binance theft.",
+    "XRP Insights reports Binance same-wallet changes of +17.6M XRP over 7 days and +30.3M over 30 days. CryptoQuant and XRP Insights use different wallet universes and must remain separate series.",
+    "The prior 2.58B Binance balance observation is not reconciled to the current 2.78B XRP Insights wallet total. It may reflect a narrower reserve series or historical label/snapshot differences; no 200M inflow is inferred.",
+    "Binance Recovery Update #3's minimum 1:1 XRP coverage statement remains a company claim pending the full public zero-knowledge proof and independent same-time reserve-address/customer-liability reconciliation, estimated by Binance for November 3.",
+    "Binance's 90% aggregate recovery statement does not disclose XRP-specific purchase units, USD amounts, spot/OTC split or funding source; it is not evidence of XRP market demand.",
+    "The latest derivatives OI providers remain non-comparable (TradRadar about 1.86B across seven exchanges versus Kodexius about 738.99M across seven contracts); no composite OI feature is admitted.",
+    "ETF flow reports for October 30 are partial and conflict by provider/fund universe: CryptoETF reports +0.2M USD from 3/5 funds while CryptoKeyhole reports -1.412M USD from 3/4; no complete daily net-flow feature is admitted.",
+    "BNY, Aviva, C2FO, Coinbase/RLUSD and Ripple National Trust Bank announcements establish institutional infrastructure or product access, not XRP spot purchases or proven XRP collateral balances; some capabilities remain planned, subject to approval or waitlist.",
+    "191 open PRs include 181 drafts and 10 ready; 189 target main and 2 target another base. No bulk rebase, merge or closure was performed.",
+    "Cross-analysis and scheduler workflows remain write-capable on main; the Databricks token workflow still accepts a token input and attempts secret mutation. Proposed safety changes remain unmerged.",
+    "Full repository CI, dependency vulnerability scanning and branch-protection details remain incomplete; security-alert and branch-protection reads returned 403.",
+    "Only ChatGPT and the GitHub connection are verified active. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks are not authenticated as live collaborators."
+  ]
+}

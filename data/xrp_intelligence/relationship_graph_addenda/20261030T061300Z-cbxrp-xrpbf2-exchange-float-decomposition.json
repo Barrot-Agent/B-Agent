@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "addendum_id": "XRP-GRAPH-20261030T061300Z-CBXRP-XRPBF2-EXCHANGE-FLOAT-DECOMPOSITION",
+  "captured_at_utc": "2026-10-30T06:13:00Z",
+  "nodes": [
+    {
+      "id": "COINBASE_CBXRP",
+      "label": "Coinbase Wrapped XRP (cbXRP)",
+      "kind": "BASE_ERC20_WRAPPED_ASSET"
+    },
+    {
+      "id": "COINBASE_CBXRP_RESERVE",
+      "label": "Coinbase native XRP reserve backing cbXRP",
+      "kind": "XRPL_CUSTODY_RESERVE"
+    },
+    {
+      "id": "BINANCE_XRP_BF2",
+      "label": "Binance-Peg XRP / XRP-BF2",
+      "kind": "BNB_CHAIN_WRAPPED_ASSET"
+    },
+    {
+      "id": "BINANCE_XRP_BF2_RESERVE",
+      "label": "Binance native XRP reserve backing XRP-BF2",
+      "kind": "XRPL_CUSTODY_RESERVE"
+    },
+    {
+      "id": "XRPINSIGHTS_EXCHANGE_WALLET_PANEL",
+      "label": "XRP Insights public exchange-wallet labels",
+      "kind": "SECONDARY_ONCHAIN_AGGREGATION"
+    },
+    {
+      "id": "XRPL_EXCHANGE_LABELLED_BALANCES",
+      "label": "22.58B XRP in 701 wallets across 24 exchanges",
+      "kind": "PUBLICLY_ATTRIBUTED_WALLET_BALANCES"
+    },
+    {
+      "id": "KNOWN_WRAPPED_XRP_RESERVES",
+      "label": "488.4M XRP in known wrapped/insurance/charity reserves",
+      "kind": "NON_CUSTOMER_RESERVE_COMPONENT"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-COINBASE-RESERVES-CBXRP-20261030",
+      "source": "COINBASE_CBXRP_RESERVE",
+      "target": "COINBASE_CBXRP",
+      "relationship": "151_405_263_6_XRP_BACKS_151_403_016_07_CBXRP_ON_BASE",
+      "evidence_class": "PRIMARY_COMPANY_PROOF_OF_RESERVES",
+      "claim": "Coinbase's official dashboard indexed an Oct29 09:14 UTC snapshot with 151.405M native XRP reserve and 151.403M cbXRP supply; its Help documentation confirms 1:1 backing.",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-POR-20261029T0914Z",
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261030T0613Z"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-XRPBF2-NATIVE-BACKING-20261030",
+      "source": "BINANCE_XRP_BF2_RESERVE",
+      "target": "BINANCE_XRP_BF2",
+      "relationship": "NATIVE_XRP_BACKS_XRPBF2_ON_BNB_CHAIN",
+      "evidence_class": "PRIMARY_HISTORICAL_COMPANY_ANNOUNCEMENT_PLUS_SECONDARY_CURRENT_BALANCE",
+      "claim": "Binance's 2019 announcement describes 1:1 native XRP backing for XRP-BF2; XRP Insights estimates 325.8M XRP in the current reserve, but that current amount is not an official live Binance disclosure in this capture.",
+      "source_ids": [
+        "SRC-BINANCE-XRP-BF2-BACKING-20191010",
+        "SRC-XRPINSIGHTS-WRAPPED-EXCHANGE-RESERVES-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-EXCHANGE-WALLETS-INCLUDE-WRAPPED-RESERVES-20261030",
+      "source": "XRPL_EXCHANGE_LABELLED_BALANCES",
+      "target": "KNOWN_WRAPPED_XRP_RESERVES",
+      "relationship": "488_4M_OF_22_58B_ARE_NON_CUSTOMER_WRAPPED_OR_FUND_RESERVES",
+      "evidence_class": "SECONDARY_ONCHAIN_WALLET_LABEL_AGGREGATION",
+      "claim": "XRP Insights identifies 488.4M XRP in tracked exchange wallets as reserves/funds backing wrapped tokens or insurance/charity rather than customer deposits; removing this known component leaves 22.0916B attributed wallets, still not tradable float.",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-WRAPPED-EXCHANGE-RESERVES-20261029"
+      ]
+    },
+    {
+      "id": "EDGE-BINANCE-HACK-XRPBF2-CROSSWALK-UNKNOWN-20261030",
+      "source": "BINANCE_XRPL_DRAINED_WALLETS",
+      "target": "BINANCE_XRP_BF2_RESERVE",
+      "relationship": "POSSIBLE_RESERVE_WALLET_OVERLAP_NOT_ESTABLISHED",
+      "evidence_class": "UNKNOWN_REQUIRES_ADDRESS_CROSSWALK",
+      "claim": "The five compromised Binance XRPL source addresses are not published in the public trace inspected; no evidence currently establishes that the XRP-BF2 reserve address was among them.",
+      "source_ids": [
+        "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+        "SRC-XRPINSIGHTS-WRAPPED-EXCHANGE-RESERVES-20261029",
+        "SRC-BINANCE-XRP-BF2-BACKING-20191010"
+      ]
+    },
+    {
+      "id": "EDGE-COINBASE-BASE-CROSSCHAIN-XRP-20261030",
+      "source": "COINBASE",
+      "target": "COINBASE_CBXRP",
+      "relationship": "CUSTODY_AND_WRAPPED_XRP_DISTRIBUTION_ON_BASE",
+      "evidence_class": "PRIMARY_COMPANY_PRODUCT_DOCUMENTATION",
+      "claim": "Coinbase supports cbXRP on Base, backed 1:1 by native XRP held in Coinbase custody; the reserve dashboard provides a public reserve/supply view.",
+      "source_ids": [
+        "SRC-COINBASE-CBXRP-POR-20261029T0914Z",
+        "SRC-COINBASE-WRAPPED-ASSETS-HELP-20261030T0613Z"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-EXCHANGE-LABELED-XRP-OVERSTATES-TRADABLE-FLOAT-20261030",
+      "status": "KNOWN_COMPONENT_CONFIRMED; TOTAL_TRADABLE_FLOAT_UNKNOWN"
+    },
+    {
+      "id": "HYP-BINANCE-XRPBF2-RESERVE-EXPOSURE-TO-HACK-20261030",
+      "status": "SCENARIO_ONLY; NO_EVIDENCE_OF_RESERVE_WALLET_COMPROMISE"
+    },
+    {
+      "id": "HYP-COINBASE-CBXRP-CUSTODY-DEMAND-20261030",
+      "status": "PRODUCT_AND_BACKING_CONFIRMED; MARKET_IMPACT_UNMEASURED"
+    }
+  ],
+  "source_independence": {
+    "coinbase_dashboard_and_help": "Both are Coinbase primary company sources; they confirm product and reserve mechanics, not independent assurance.",
+    "xrp_insights_vs_coinbase": "XRP Insights' 151.4M Coinbase wrapped reserve is corroborated by Coinbase's official dashboard; its 325.8M Binance XRP-BF2 figure remains secondary.",
+    "exchange_wallet_total": "XRP Insights reads XRPL balances and attributes wallets using public XRPSCAN labels; coverage is incomplete and includes cold storage/reserves."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

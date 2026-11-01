@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 102,
+  "chunk_count": 103,
+  "record_count": 16,
+  "records": [
+    {
+      "id": "LIM-20261031T020816Z-01",
+      "category": "institutional_custody_not_xrp_capital",
+      "statement": "BNY's support for XRP custody proves institutional safekeeping access for eligible clients, not XRP purchases, net inflows, collateral acceptance, customer balances or use of XRP as a reserve asset.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-02",
+      "category": "bny_future_products_not_live",
+      "statement": "BNY's intended XRPL tokenized-asset support and direct RLUSD mint/redeem are future plans subject to final BNY and regulatory approvals.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-03",
+      "category": "c2fo_historical_working_capital_not_new_xrpl_capital",
+      "statement": "C2FO's more-than-$520B figure relates to existing Early Pay programs. It is not Instant Pay financing volume, XRPL transaction volume or capital newly committed to XRP.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-04",
+      "category": "c2fo_rlusd_settlement_not_xrp_bridge",
+      "statement": "The announced Instant Pay settlement asset is RLUSD. No evidence in the announcement shows XRP being used as the bridge asset or a material XRP purchase requirement; native XRP network fees/reserves are a separate, much smaller mechanism.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-05",
+      "category": "coinbase_rlusd_collateral_future",
+      "statement": "Coinbase stated that RLUSD collateral functionality for Coinbase Global Exchange customers would follow. The October 28 announcement establishes retail/Prime/Exchange access and network deposits/withdrawals, not live global-exchange collateral acceptance.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-06",
+      "category": "coinbase_listing_not_xrp_purchase",
+      "statement": "Coinbase's RLUSD listing and support for XRPL transfers do not establish that Coinbase purchased XRP, increased XRP inventory or uses XRP as collateral for RLUSD.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-07",
+      "category": "ripple_revenue_and_transaction_claims_not_xrp_metrics",
+      "statement": "Ripple's $900M annualized product-revenue target, $16T enabled product transactions and $150B lifetime payments-volume claim are company-wide product metrics; they are not audited XRPL transaction volume, XRP trading volume or XRP-holder value capture.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-08",
+      "category": "occ_effective_not_operational_launch",
+      "statement": "OCC CAS confirms Ripple National Trust Bank became consummated/effective on 2026-10-26. It does not establish opening to customers, balances, reserve migration or operational service volumes. RLUSD remains issued by Standard Custody & Trust Company per Ripple's release.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-OCC-CAS-RIPPLE-CHARTER-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-09",
+      "category": "circle_coinbase_metrics_period_and_definition_mismatch",
+      "statement": "Circle's $12.442B USDC-on-platform figure is Circle's own platform measure for Q2; Coinbase's $8.616B USDC AOP is Coinbase's point-in-time measure at Q3-end. They are not additive or directly comparable. Circle's $655.3M H1 distribution cost is not Coinbase revenue/profit.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-SEC-COINBASE-Q3-2026-20261031T020816Z",
+        "SRC-SEC-CIRCLE-Q2-2026-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-10",
+      "category": "circle_arc_is_not_xrpl",
+      "statement": "Arc is Circle's separate Layer-1 network with USDC gas. SBI's validator role and Coinbase's exchange-access role must not be confused with XRPL participation, and do not establish XRP collateral on Arc.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-CIRCLE-ARC-MAINNET-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-11",
+      "category": "open_standard_not_direct_sbi_coinbase_contract",
+      "statement": "SBI/Startale and Coinbase participation in Open Standard, and exploration of JPYSC/OUSD interoperability, do not establish a bilateral SBI-Coinbase contract or live production interoperability.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-SBI-OPEN-STANDARD-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-12",
+      "category": "sbic_not_sbi_holdings_or_openai",
+      "statement": "The ChatGPT/generative-AI event is hosted by Tokyo Small and Medium Business Investment & Consultation Co., Ltd. It is not SBI Holdings, SoftBank or OpenAI, and the seminar does not establish an OpenAI partnership.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-TOKYO-SBIC-GENAI-SEMINAR-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-13",
+      "category": "robinhood_rlusd_partnership_not_xrp_flow",
+      "statement": "The Ripple-Robinhood announcement adds RLUSD, XRPL institutional settlement and Ripple Prime services, but discloses no XRP purchase, collateral amount or realized transaction volume.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-14",
+      "category": "swell_announcements_not_independent_catalysts",
+      "statement": "BNY, C2FO, Coinbase, Robinhood and Ripple announcements were clustered around Ripple Swell on October 26–28. Their timing and shared issuer narrative create dependence; do not count each announcement as an independent causal shock or independent corroboration.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-BNY-RIPPLE-CUSTODY-TRADEFINANCE-20261031T020816Z",
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261031T020816Z",
+        "SRC-RIPPLE-OCC-TRUSTBANK-20261031T020816Z",
+        "SRC-RIPPLE-REVENUE-RUNRATE-20261031T020816Z",
+        "SRC-RIPPLE-ROBINHOOD-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-15",
+      "category": "etf_provider_coverage_and_flow_methodology",
+      "statement": "Alpha Finance covers five funds; XRP Insights covers six spot funds plus BITW; Maketo's five-fund series has its own method. Their totals must not be averaged or summed. The captured data end at the October 29 U.S. session.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-ALPHA-XRP-ETF-FLOWS-20261029-20261031T020816Z",
+        "SRC-XRP-INSIGHTS-ETF-HOLDINGS-20261029-20261031T020816Z",
+        "SRC-MAKETO-XRP-ETF-FLOWS-20261029-20261031T020816Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T020816Z-16",
+      "category": "binance_perpetual_snapshot_not_total_market",
+      "statement": "Seandra's 22:45 UTC observation is Binance USDT perpetual only. It does not represent cross-exchange open interest; long-account share is not notional exposure, and funding is venue/period-specific.",
+      "severity": "high",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T2245Z"
+      ]
+    }
+  ]
+}

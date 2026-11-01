@@ -1,0 +1,46 @@
+{
+  "record_type": "xrp_research_ledger_archive_shard",
+  "schema_version": "1.0",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 131,
+  "chunk_count": 132,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261031T083758Z-BINANCE-POR-MARKET-PR1400-REGISTRY-AND-REPO-SAFETY",
+      "created_at_utc": "2026-10-31T08:37:58Z",
+      "data_cutoff_utc": "2026-10-31T08:37:58Z",
+      "source_ids": [
+        "SRC-20261031-GH-MAIN-CROSS-ANALYSIS-075151Z",
+        "SRC-20261031-GH-PR1401-CROSS-ANALYSIS-READONLY",
+        "SRC-20261031-GH-PR1402-APPROVAL-PUSH-NOOP",
+        "SRC-20261031-GH-PR1400-FORECAST-LEDGER-SOURCE-REGISTRY",
+        "SRC-20261031-GH-PR1353-LEDGER-VALIDATOR-RECOVERY",
+        "SRC-20261031-BINANCE-SECURITY-UPDATE2-POR",
+        "SRC-20261031-COINDESK-POR-SNAPSHOT-NOV1",
+        "SRC-20261031-COINDESK-POR-FULL-REPORT-NOV2",
+        "SRC-20261031-BITQUERY-BINANCE-HACK-XRP-RECEIVER-0643Z",
+        "SRC-20261031-TRADRADAR-XRP-DERIVATIVES-0750Z",
+        "SRC-20261031-KODEXIUS-XRP-DERIVATIVES-0644Z",
+        "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+        "SRC-20261031-COINCODEX-XRP-HISTORICAL-OCT31",
+        "SRC-20261031-COINGECKO-XRP-HISTORICAL-OCT30"
+      ],
+      "summary": "Appended 14 sources, one run update and six limitations in three new immutable shards. Added a Binance post-incident PoR timing/attacker-state snapshot, provider-scoped XRP derivatives and partial ETF-flow observations, and current repository audit. PR #1402 push no-op is directly verified on a push event: no-op job succeeded and approval job was skipped. PR #1400 now includes optional source-registry membership validation and passed 370 tests plus 8 subtests; fail-closed gate passed. PR #1353's missing index_format_version pointer error was corrected and the 361-shard data head passed, but current metadata successor ce75aba remains pending exact-head validation. Main remains at b90e600; scheduled Cross Analysis writer remains active; PR #1401 is open and artifact-only without Pages refresh. No forecast issued and no market feature admitted.",
+      "repository_audit_path": "data/repository_audits/20261031T083758Z-pr1400-registry-pr1401-pr1402-and-xrp-market-audit.json",
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "market_features_admitted": false,
+        "forecast_status": "NOT_ISSUED",
+        "main_changed_by_this_run": false,
+        "main_changed_by_scheduled_workflow": true,
+        "merge_performed": false,
+        "force_push_performed": false,
+        "manual_workflow_dispatch_performed": false,
+        "paper_position_mutated": false,
+        "real_money_trade_performed": false
+      }
+    }
+  ]
+}

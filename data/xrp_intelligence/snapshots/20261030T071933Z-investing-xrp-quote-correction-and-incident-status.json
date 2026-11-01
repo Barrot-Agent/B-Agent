@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-2026-10-30T071933Z-INVESTING-QUOTE-CORRECTION-AND-INCIDENT-STATUS",
+  "captured_at_utc": "2026-10-30T07:19:33Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T071933Z-investing-xrp-quote-correction-and-incident-status.json",
+  "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+  "research_head_before_append": "Last exact-head validator pass was on data-bearing commit f46e5b1145691feda9cc20567e673221dfb9a37b; subsequent ledger verification metadata commit bd9b6439c20582bb5623da313f2d82405a5e0c08 has not yet had a newly retrieved validator run.",
+  "observed_main_sha": "6739e05dc427f0db167a10f23730ced1acf0b9b8",
+  "web_capture_cutoff_utc": "2026-10-30T07:09:00Z",
+  "focus": "Correct an over-specific venue attribution in the prior Investing.com XRP quote, capture a later same-provider XRP quote showing an intraday rebound, preserve Binance incident status and XRP reserve uncertainty, and record fresh-main PR #1365 verification.",
+  "source_ids": [
+    "SRC-INVESTING-OKX-XRP-20261030T034135Z",
+    "SRC-INVESTING-XRP-AGGREGATE-CORRECTION-20261030T063327Z",
+    "SRC-BINANCE-SECURITY-UPDATE-20261030T0508Z",
+    "SRC-BINANCE-VERIFIED-STATUS-20261030T0709Z",
+    "SRC-TRM-BINANCE-THEFT-XRPL-RLUSD-20261030T0508Z",
+    "SRC-BITQUERY-BINANCE-XRPL-RECEIVER-TRACE-20261030T0608Z",
+    "SRC-COINDESK-BINANCE-POR-WALLET-IMPACT-20261030T0608Z",
+    "SRC-ALPHAFINANCE-XRP-ETF-FLOWS-OCT29-20261030T0608Z",
+    "SRC-THEXRPINVESTOR-ETF-DASHBOARD-20261030T0709Z"
+  ],
+  "market_observation": {
+    "instrument": "XRP/USD; generic Investing.com XRP page, venue and aggregation methodology unspecified",
+    "earlier_observation": {
+      "observed_at_utc": "2026-10-30T03:41:35Z",
+      "price_usd": 1.2256,
+      "change_24h_percent": -5.41,
+      "source_id": "SRC-INVESTING-OKX-XRP-20261030T034135Z",
+      "classification": "GENERIC_XRP_PAGE_NOT_OKX"
+    },
+    "later_observation": {
+      "observed_at_utc": "2026-10-30T06:33:27Z",
+      "price_usd": 1.261,
+      "change_24h_percent": -2.92,
+      "source_id": "SRC-INVESTING-XRP-AGGREGATE-CORRECTION-20261030T063327Z",
+      "age_at_capture_minutes": 36
+    },
+    "derived_same_provider_change_percent": 2.888,
+    "twenty_four_hour_drawdown_narrowing_percentage_points": 2.49,
+    "daily_row_2026_10_30": {
+      "last": 1.2599,
+      "open": 1.2348,
+      "high": 1.2612,
+      "low": 1.2029,
+      "displayed_volume": 533710000,
+      "volume_denomination": "UNKNOWN",
+      "daily_change_percent": 2.03
+    },
+    "interpretation": "A rebound from the observed intraday low and a narrower 24h loss are visible in this single provider's snapshots. This does not establish a sustained reversal; no synchronized multi-venue spot, depth, trade or derivatives panel is available."
+  },
+  "binance_incident": {
+    "support_status_at_0223_utc": "Deposits and withdrawals temporarily suspended; Binance reported approximately $6.3B estimated impact and approximately $3B frozen on-chain, and said it would cover losses through SAFU/company funds.",
+    "later_verified_news_status": "Deposits reported normal; withdrawals remained paused; 48-hour restoration expectation. Exact publication time and per-network scope unavailable.",
+    "status_reconciliation": "Conflicting timestamp precision and deposit-status scope remain unresolved. No evidence in this capture establishes withdrawals restored.",
+    "native_xrp_stolen": 233460000,
+    "source_wallet_count": 5,
+    "receiver": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "last_independent_receiver_observation_utc": "2026-10-30T03:54:00Z",
+    "outgoing_after_transfer_observed_by_cutoff": false,
+    "later_disposition": "UNKNOWN",
+    "xrp_reserve_shortfall": "NOT_ESTABLISHED",
+    "coinbase_binance_wrapped_reserve_crosswalk": "UNKNOWN",
+    "ethereum_binance14_por_finding": "CoinDesk's Binance 14 reserve-wallet analysis is Ethereum-specific and must not be transferred to XRP."
+  },
+  "etf_context": {
+    "alpha_finance_oct29_spot_flow_usd": 8400000,
+    "alpha_finance_30_session_flow_usd": 98900000,
+    "thexrpinvestor_products_headline": 12,
+    "thexrpinvestor_categories": {
+      "spot": 6,
+      "derivative": 4,
+      "index": 1
+    },
+    "category_sum": 11,
+    "aum_usd": 1520000000,
+    "xrp_in_trust": 1220000000,
+    "daily_volume_usd": 23220000,
+    "status": "INCONSISTENT_PRODUCT_COUNT_AND_MIXED_UNIVERSE; NOT_ADMITTED"
+  },
+  "repository_safety": {
+    "main_sha": "6739e05dc427f0db167a10f23730ced1acf0b9b8",
+    "pr1365": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1365",
+      "head_sha": "23e125e5666136c878e1afcdb1600fcf4cd0008f",
+      "base_sha": "6739e05dc427f0db167a10f23730ced1acf0b9b8",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "core_ci_run": 41018562401,
+      "core_ci": "342 tests and 8 subtests passed in 8.18 seconds",
+      "fail_closed_gate_run": 41018562435,
+      "fail_closed_gate": "PASS; automatic merge disabled",
+      "changed_paths": [
+        ".github/workflows/cross-analysis.yml",
+        "tests/test_cross_analysis_workflow_safety.py"
+      ]
+    },
+    "main_cross_analysis_write_enabled": true,
+    "main_modified_by_this_run": false
+  },
+  "competing_hypotheses": [
+    {
+      "id": "HYP-XRP-RELIEF-BOUNCE-VS-REVERSAL-20261030T071933Z",
+      "claim": "The 2.89% rise between same-provider snapshots may be a relief bounce or short-covering after the incident-driven liquidation, not a durable trend reversal.",
+      "support": [
+        "Investing.com generic XRP quote rose from 1.2256 at 03:41:35 UTC to 1.2610 at 06:33:27 UTC.",
+        "The displayed 24h loss narrowed from -5.41% to -2.92%."
+      ],
+      "counter": [
+        "The later quote remains down 2.92% over 24h.",
+        "No synchronized venue depth, executed trade imbalance, open-interest/funding panel or follow-through window is available."
+      ],
+      "status": "INTRADAY_REBOUND_OBSERVED; TREND_REVERSAL_UNCONFIRMED"
+    },
+    {
+      "id": "HYP-XRP-ETF-MARGINAL-SUPPORT-20261030T071933Z",
+      "claim": "Positive reported October 29 spot ETF flows may provide marginal demand while incident-related deleveraging and broader market flows dominate short-term price formation.",
+      "support": [
+        "Alpha Finance reports +$8.4M across five spot funds for October 29.",
+        "XRP showed a same-provider intraday rebound."
+      ],
+      "counter": [
+        "ETF trackers use different universes and cutoffs.",
+        "No creation/redemption or synchronized order-book causal analysis is available."
+      ],
+      "status": "PLAUSIBLE_NOT_CAUSALLY_IDENTIFIED"
+    }
+  ],
+  "source_independence": {
+    "investing_snapshots": "Two timestamps from the same Investing.com generic XRP page; useful for within-provider change only, not independent corroboration.",
+    "binance_status": "Support and verified News posts are same-issuer updates with differing status scope/timestamp precision.",
+    "incident_trace": "TRM and Bitquery are separate analytics of the same public XRPL transactions.",
+    "etf": "Alpha Finance and TheXRPInvestor have different product universes; TheXRPInvestor product count is internally inconsistent."
+  },
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

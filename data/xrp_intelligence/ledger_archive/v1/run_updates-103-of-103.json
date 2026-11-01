@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 102,
+  "chunk_count": 103,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261030T233149Z-RLUSD-BINANCE-WALLET-CROSSWALK",
+      "created_at_utc": "2026-10-30T23:31:49Z",
+      "data_cutoff_utc": "2026-10-30T23:31:49Z",
+      "summary": "Bitquery's 19 October XRPL RLUSD investigation reports that 99.6% of the sampled RLUSD payment count came from a 110-wallet dust cluster carrying only 7,722 RLUSD. The cluster's Binance-labelled funding wallet rDAE53 is the exact same address as one of the five Binance-labelled XRP incident sources. Bithomp confirms that rDAE53 later sent 11.141M XRP and 51.173M RLUSD to another Binance-labelled account after the 185.017M XRP transfer. Bithomp body balances for the five source accounts imply 45.99 XRP combined, but page title/body fields disagree by 7 XRP in aggregate. The $7.33B high-value RLUSD gross flow includes issuer plumbing and a matched roundtrip; no net-capital or XRP-demand conclusion is admitted.",
+      "source_ids": [
+        "SRC-BITQUERY-RLUSD-XRPL-DUST-BOTS-20261019T1300Z",
+        "SRC-BITHOMP-RDAE53-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RBTTTD-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RFQ9-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RARG6-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RNU4-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-RDAE53-TO-RS8Z-XRP-20261029T231220Z",
+        "SRC-BITHOMP-RDAE53-TO-RS8Z-RLUSD-20261030T012710Z",
+        "SRC-BITHOMP-RS8Z-ACCOUNT-BALANCE-20261030T233149Z",
+        "SRC-BITHOMP-BINANCE-XRPL-TX-185017485-20261029T200500Z",
+        "SRC-BITQUERY-BINANCE-POR-LABELS-CIRCLE-FREEZE-AAVE-20261030T232113Z",
+        "SRC-BITQUERY-BINANCE-HACK-XRP-TRACE-20261030"
+      ],
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T233149Z-rlusd-binance-wallet-crosswalk-actual-capital.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T233149Z-rlusd-binance-wallet-crosswalk-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T233149Z-actual-capital-and-wallet-identity-separation.json",
+      "repository_audit_path": "data/repository_audits/20261030T233149Z-main-prediction-and-ledger-validator-audit.json",
+      "actions": [
+        "Opened Bitquery's complete RLUSD XRPL investigation and preserved its exact sample window, payment definitions, bot-cluster methodology, high-value transfer decomposition, and explicit attribution limitations.",
+        "Matched rDAE53 exactly across the RLUSD bot-funding investigation and the 185,017,485.5 XRP incident transfer; retained the distinction between common address and common operator.",
+        "Inspected current Bithomp pages for all five source accounts and the rs8Z destination; recorded body/title balance discrepancies rather than claiming raw account_info verification.",
+        "Verified two post-incident successful payments from rDAE53 to rs8Z: 11,141,435.843 XRP at 23:12:20 UTC on 29 October and 51,172,508 RLUSD at 01:27:10 UTC on 30 October.",
+        "Decomposed RLUSD gross volume into issuer mint/redemption and a matched roundtrip; recorded the residual net-capital unknown.",
+        "Audited current main, open PRs, CI runs and the task-bundle quality-gate issue.",
+        "Updated PR #1385 with a deterministic guard against destructive workspace rollback commands and 12 local regex cases.",
+        "Identified that the XRP ledger validation workflow ran isolated fixture tests but did not invoke the repository validator; added the actual validator step and a regression test on the research PR branch."
+      ],
+      "verification_status": "PENDING_EXACT_HEAD_VALIDATOR_AND_FAIL_CLOSED_GATE",
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "blockers": [
+        "Bitquery's RLUSD bot analysis is a single-provider attribution; beneficial owners remain unknown.",
+        "The exact rDAE53 address match does not connect the bot operator to the XRP theft actor.",
+        "Bithomp account title/body balances conflict; raw validated account_info is not yet available.",
+        "Official Binance October 1 XRP PoR address export has not been downloaded and cross-matched.",
+        "The attacker receiver has not been refreshed after the previously captured 06:43 UTC cutoff.",
+        "The new actual-repository validation workflow step is pending exact-head CI.",
+        "PR #1385's new destructive-rollback guard is pending exact-head CI.",
+        "Full repository CI, dependency audit and vulnerability scan remain unrun."
+      ],
+      "next_actions": [
+        "Run the new exact-head research workflow and verify the actual repository validator returns PASS with 282 archive shards and 11 source references.",
+        "Obtain raw account_info for all five source accounts and rs8Z, then reconcile Bithomp page balances.",
+        "Crosswalk all five source accounts and rs8Z against Binance's official PoR export.",
+        "Refresh the attacker receiver and track subsequent transactions.",
+        "Construct actual-capital features from distinct beneficial owners, net external flows, issuer flows, matched roundtrips and exchange/custody omnibus classifications.",
+        "Keep the XRP prediction engine in shadow mode; no forecast until fixed-horizon, leakage-safe out-of-sample validation and calibration are executed."
+      ],
+      "validation_events": [
+        {
+          "data_head_sha": "PENDING_DATA_COMMIT",
+          "validator_result": "PENDING_EXACT_HEAD_VALIDATION",
+          "fail_closed_gate": "PENDING"
+        }
+      ]
+    }
+  ]
+}

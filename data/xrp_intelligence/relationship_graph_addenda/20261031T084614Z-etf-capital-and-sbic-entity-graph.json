@@ -1,0 +1,230 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261031T084614Z-ETF-CAPITAL-AND-SBIC-ENTITY-RESOLUTION",
+  "captured_at_utc": "2026-10-31T08:46:14Z",
+  "source_reference_count": 9,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30",
+    "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+    "SRC-20261031-CRYPTOKEYHOLE-XRP-ISSUER-FLOWS-OCT30-PARTIAL",
+    "SRC-20261031-TOKYO-SBIC-OFFICIAL-PROFILE",
+    "SRC-20261031-NAGOYA-SBIC-SISTER-COMPANY-RELATIONSHIP",
+    "SRC-20261031-OSAKA-SBIC-CHATGPT-WORKSHOP",
+    "SRC-20261031-US-SBA-SBIC-OFFICIAL-PROGRAM",
+    "SRC-20261031-OPENAI-SBIC-LOW-AUTHORITY-SPECULATION",
+    "SRC-20261031-SOCIAL-BIAS-INFERENCE-CORPUS-ACL"
+  ],
+  "nodes": [
+    {
+      "id": "MAKETO",
+      "type": "market_data_provider",
+      "label": "Maketo"
+    },
+    {
+      "id": "CRYPTOETF",
+      "type": "etf_flow_provider",
+      "label": "CryptoETF.today"
+    },
+    {
+      "id": "CRYPTOKEYHOLE",
+      "type": "etf_flow_provider",
+      "label": "CryptoKeyhole"
+    },
+    {
+      "id": "XRP_ETFS",
+      "type": "financial_product_group",
+      "label": "U.S. spot XRP funds"
+    },
+    {
+      "id": "TOKYO_SBIC",
+      "type": "investment_company",
+      "label": "Tokyo SBIC / SBIC East Japan"
+    },
+    {
+      "id": "OSAKA_SBIC",
+      "type": "investment_company",
+      "label": "Osaka SBIC / SBIC West Japan"
+    },
+    {
+      "id": "NAGOYA_SBIC",
+      "type": "investment_company",
+      "label": "Nagoya SBIC"
+    },
+    {
+      "id": "US_SBA_SBIC",
+      "type": "government_program",
+      "label": "U.S. SBA Small Business Investment Company program"
+    },
+    {
+      "id": "SBIC_CORPUS",
+      "type": "research_dataset",
+      "label": "Social Bias Inference Corpus"
+    },
+    {
+      "id": "CHATGPT",
+      "type": "ai_product",
+      "label": "ChatGPT"
+    },
+    {
+      "id": "OPENAI",
+      "type": "company",
+      "label": "OpenAI"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-MAKETO-XRP-ETF-AUM",
+      "from": "MAKETO",
+      "relation": "estimates_marked_value_and_units_for",
+      "to": "XRP_ETFS",
+      "evidence_class": "THIRD_PARTY_HOLDINGS_ESTIMATE",
+      "source_ids": [
+        "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30"
+      ]
+    },
+    {
+      "id": "E-MAKETO-AUM-VS-FLOW",
+      "from": "MAKETO",
+      "relation": "reports_positive_estimated_net_flow_despite_lower_marked_value",
+      "to": "XRP_ETFS",
+      "evidence_class": "PROVIDER_ESTIMATE_WITH_PRICE_EFFECT",
+      "source_ids": [
+        "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30"
+      ]
+    },
+    {
+      "id": "E-CRYPTOETF-PARTIAL-FLOW",
+      "from": "CRYPTOETF",
+      "relation": "reports_partial_minus_700k_flow",
+      "to": "XRP_ETFS",
+      "evidence_class": "T_PLUS_1_TWO_OF_FIVE",
+      "source_ids": [
+        "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL"
+      ]
+    },
+    {
+      "id": "E-CRYPTOKEYHOLE-PARTIAL-FLOW",
+      "from": "CRYPTOKEYHOLE",
+      "relation": "reports_partial_minus_866k_issuer_file_flow",
+      "to": "XRP_ETFS",
+      "evidence_class": "ISSUER_FILE_TWO_OF_FOUR",
+      "source_ids": [
+        "SRC-20261031-CRYPTOKEYHOLE-XRP-ISSUER-FLOWS-OCT30-PARTIAL"
+      ]
+    },
+    {
+      "id": "E-TOKYO-SBIC-SISTER-COMPANIES",
+      "from": "TOKYO_SBIC",
+      "relation": "lists_as_sister_companies",
+      "to": "OSAKA_SBIC_AND_NAGOYA_SBIC",
+      "evidence_class": "OFFICIAL_COMPANY_PROFILE",
+      "source_ids": [
+        "SRC-20261031-TOKYO-SBIC-OFFICIAL-PROFILE"
+      ]
+    },
+    {
+      "id": "E-NAGOYA-SBIC-SISTER-COMPANIES",
+      "from": "NAGOYA_SBIC",
+      "relation": "lists_as_sister_companies",
+      "to": "TOKYO_SBIC_AND_OSAKA_SBIC",
+      "evidence_class": "OFFICIAL_COMPANY_RELATIONSHIP_PAGE",
+      "source_ids": [
+        "SRC-20261031-NAGOYA-SBIC-SISTER-COMPANY-RELATIONSHIP"
+      ]
+    },
+    {
+      "id": "E-OSAKA-SBIC-CHATGPT-EDUCATION",
+      "from": "OSAKA_SBIC",
+      "relation": "hosted_educational_workshop_about",
+      "to": "CHATGPT",
+      "evidence_class": "OFFICIAL_EVENT_MATERIAL",
+      "source_ids": [
+        "SRC-20261031-OSAKA-SBIC-CHATGPT-WORKSHOP"
+      ]
+    },
+    {
+      "id": "E-US-SBA-SBIC-DISTINCT",
+      "from": "US_SBA_SBIC",
+      "relation": "is_distinct_acronym_use_from",
+      "to": "TOKYO_SBIC",
+      "evidence_class": "OFFICIAL_SBA_PROGRAM_DESCRIPTION",
+      "source_ids": [
+        "SRC-20261031-US-SBA-SBIC-OFFICIAL-PROGRAM"
+      ]
+    },
+    {
+      "id": "E-SBIC-CORPUS-DISTINCT",
+      "from": "SBIC_CORPUS",
+      "relation": "is_distinct_acronym_use_from",
+      "to": "TOKYO_SBIC",
+      "evidence_class": "PEER_REVIEWED_RESEARCH",
+      "source_ids": [
+        "SRC-20261031-SOCIAL-BIAS-INFERENCE-CORPUS-ACL"
+      ]
+    },
+    {
+      "id": "E-LOW-AUTHORITY-OPENAI-SBIC-SPECULATION",
+      "from": "US_SBA_SBIC",
+      "relation": "mentioned_as_hypothetical_funding_route_for",
+      "to": "OPENAI",
+      "evidence_class": "LOW_AUTHORITY_SPECULATION_ONLY",
+      "source_ids": [
+        "SRC-20261031-OPENAI-SBIC-LOW-AUTHORITY-SPECULATION"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-XRP-ETF-AUM-VS-FLOW",
+      "statement": "The approximately $254.3M decrease in marked XRP ETF holdings value from Sep 30 to Oct 30 is not equivalent to a $254.3M net capital outflow; Maketo estimates about $19M net inflow while XRP price fell.",
+      "classification": "PROVIDER_ESTIMATE_SUPPORTED_INFERENCE",
+      "supporting_source_ids": [
+        "SRC-20261031-MAKETO-XRP-ETF-HOLDINGS-OCT30"
+      ],
+      "disconfirming_or_alternative": [
+        "Maketo estimates coin counts when issuer data are missing; independent issuer-file reconciliation is required."
+      ],
+      "status": "PROVISIONAL"
+    },
+    {
+      "id": "H-XRP-ETF-OCT30-PARTIAL-OUTFLOW",
+      "statement": "Oct 30 XRP ETF net flow was negative but incomplete; CryptoETF.today reports -$700K at 2/5 funds and CryptoKeyhole reports -$866K at 2/4 funds.",
+      "classification": "PARTIAL_PROVIDER_OBSERVATIONS",
+      "supporting_source_ids": [
+        "SRC-20261031-CRYPTOETF-XRP-FLOW-OCT30-PARTIAL",
+        "SRC-20261031-CRYPTOKEYHOLE-XRP-ISSUER-FLOWS-OCT30-PARTIAL"
+      ],
+      "disconfirming_or_alternative": [
+        "Missing fund reports may change the final aggregate; coverage and valuation methods differ."
+      ],
+      "status": "DO_NOT_AGGREGATE"
+    },
+    {
+      "id": "H-JAPAN-SBIC-THREE-ENTITY-SYSTEM",
+      "statement": "Japanese SBIC refers to a regional sister-company system including Tokyo, Osaka and Nagoya entities; the user's specific referent is not yet known.",
+      "classification": "OFFICIAL_COMPANY_RELATIONSHIP_CONFIRMED",
+      "supporting_source_ids": [
+        "SRC-20261031-TOKYO-SBIC-OFFICIAL-PROFILE",
+        "SRC-20261031-NAGOYA-SBIC-SISTER-COMPANY-RELATIONSHIP"
+      ],
+      "disconfirming_or_alternative": [
+        "A separate U.S. SBA SBIC program and Social Bias Inference Corpus also use the acronym."
+      ],
+      "status": "ENTITY_SYSTEM_CONFIRMED_SPECIFIC_REFERENT_OPEN"
+    },
+    {
+      "id": "H-CHATGPT-SBIC-EDUCATIONAL-NOT-PARTNERSHIP",
+      "statement": "The located Japanese SBIC/ChatGPT references are educational seminars, not evidence of an OpenAI partnership or investment.",
+      "classification": "OFFICIAL_EVENT_SCOPE_CONFIRMED",
+      "supporting_source_ids": [
+        "SRC-20261031-OSAKA-SBIC-CHATGPT-WORKSHOP"
+      ],
+      "disconfirming_or_alternative": [
+        "The exact original phrase context may refer to another SBIC meaning."
+      ],
+      "status": "NO_PARTNERSHIP_EVIDENCE"
+    }
+  ]
+}

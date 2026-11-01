@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 26,
+  "chunk_count": 27,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T08:24:30Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T08:24:30Z",
+      "update_type": "EXACT_HEAD_VALIDATION_PASS_AND_OPEN_PULL_REQUEST_BACKLOG_AUDIT",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "verified_head_sha": "0939e4485b2397fa1f641e40b062d0bab24a97c6",
+      "validator_pr_run_id": 41026137066,
+      "validator_pr_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41026137066",
+      "validator_tests_passed": 18,
+      "validator_tests_failed": 0,
+      "fail_closed_gate_run_id": 41026136921,
+      "fail_closed_gate_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41026136921",
+      "fail_closed_gate_status": "PASS_MERGE_DISABLED",
+      "open_pull_request_audit": {
+        "observed_open_prs": 146,
+        "draft_prs": 136,
+        "ready_prs": 10,
+        "main_base_prs": 144,
+        "research_base_prs": 2,
+        "safety_or_approval_keyword_candidates": 105,
+        "bulk_close_or_merge_performed": false,
+        "findings": [
+          "PR #1366 is the freshest cross-analysis read-only proposal on current main, includes the previously omitted core-CI test registration, and passed 347 tests plus 8 subtests and the fail-closed gate.",
+          "PR #1365 and #1362 are superseded by #1366 for the cross-analysis write defect; #1365's test file was not registered in explicit core CI, and #1362 is based on an older main commit.",
+          "PR #1363 paper-trader identity guard is four main commits behind; main drift paths do not overlap its three changed paths, but fresh checks are still required.",
+          "PRs #1355, #1357 and #1359 are nine main commits behind; current main drift paths do not overlap their changed paths, but their previous CI/gate results are on old heads.",
+          "PRs #1349 and #1352 are 14 and 13 main commits behind respectively; inspected main drift paths do not overlap their changed paths, but fresh checks are required.",
+          "The repository has at least 146 open PRs, mostly drafts; the backlog contains numerous duplicate safety proposals. No bulk closure or merge was performed."
+        ]
+      },
+      "current_main_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+      "cross_analysis_main_workflow_still_mutation_capable": true,
+      "pr1366": {
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1366",
+        "head_sha": "4a826f1130418bcd1eb475b8af48e50c2a267a26",
+        "base_sha": "41cfa5b373b3cb5e1255242792195ddefecb0cba",
+        "changed_paths": [
+          ".github/workflows/ci.yml",
+          ".github/workflows/cross-analysis.yml",
+          "tests/test_cross_analysis_workflow_safety.py"
+        ],
+        "core_ci_run_id": 41024099995,
+        "core_ci_tests_passed": 347,
+        "core_ci_subtests_passed": 8,
+        "gate_run_id": 41024100209,
+        "gate_status": "PASS_MERGE_DISABLED",
+        "state": "OPEN_DRAFT_UNMERGED",
+        "mergeable": true
+      },
+      "approval_workflow_anomaly": {
+        "workflow_path": ".github/workflows/barrot-approve-pr.yml",
+        "trigger_in_main_and_research_branch": [
+          "workflow_dispatch"
+        ],
+        "push_event_run_id": 41026129413,
+        "push_event_result": "FAILURE_ZERO_JOBS",
+        "job_logs": "NONE",
+        "root_cause": "UNRESOLVED"
+      },
+      "market_features_admitted": false,
+      "forecast_status": "NOT_ISSUED",
+      "main_modified_by_this_run": false,
+      "merge_performed": false,
+      "workflow_dispatch_performed": false,
+      "paper_state_mutated": false,
+      "real_money_trade": false
+    }
+  ]
+}

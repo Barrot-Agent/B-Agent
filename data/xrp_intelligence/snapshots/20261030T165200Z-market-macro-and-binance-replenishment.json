@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-20261030T165200Z-MARKET-MACRO-AND-BINANCE-REPLENISHMENT",
+  "captured_at_utc": "2026-10-30T16:52:00Z",
+  "data_cutoff_utc": "2026-10-30T13:30:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T165200Z-market-macro-and-binance-replenishment.json",
+  "source_ids": [
+    "SRC-ALPHAFINANCE-XRP-DERIVATIVES-20261030T1330Z",
+    "SRC-LIQWALL-XRP-DERIVATIVES-20261030T1102Z",
+    "SRC-XRPINSIGHTS-ETF-FLOWS-20261029-20261030T1652Z",
+    "SRC-ALPHAFINANCE-ETF-FLOWS-20261029-20261030T1652Z",
+    "SRC-CRYPTOETF-PARTIAL-XRP-FLOWS-20261029-20261030T1652Z",
+    "SRC-BINANCE-VERIFIED-RESERVE-REPLENISHMENT-20261030T1055Z",
+    "SRC-REUTERS-BOJ-YEN-MACRO-20261030",
+    "SRC-BITQUERY-BINANCE-HACK-20261030-UPDATE",
+    "SRC-BINANCE-SUPPORT-INCIDENT-UPDATED-20261030T1136Z"
+  ],
+  "findings": {
+    "derivatives": {
+      "alpha_finance": {
+        "cutoff": "13:30Z",
+        "price": 1.2466,
+        "open_interest_usd": 2830000000,
+        "volume_24h_usd": 4710000000,
+        "long_liquidations_usd": 36800000,
+        "short_liquidations_usd": 2500000
+      },
+      "liqwall": {
+        "cutoff": "11:02Z",
+        "price": 1.26,
+        "open_interest_usd": 1310000000,
+        "open_interest_change_24h_pct": -4.9,
+        "long_liquidations_usd": 38400000,
+        "short_liquidations_usd": 2400000,
+        "aggregate_funding_8h_pct": -0.0004,
+        "binance_funding_8h_pct": 0.01,
+        "binance_long_account_share_pct": 72.3
+      },
+      "tradradar_prior_panel": {
+        "cutoff": "04:00Z",
+        "price": 1.2436,
+        "open_interest_usd": 1850000000,
+        "open_interest_change_24h_pct": -5.36,
+        "long_liquidations_usd": 30250000,
+        "short_liquidations_usd": 1470000,
+        "oi_weighted_funding_8h_pct": -0.0077,
+        "long_account_share_5_venues_pct": 79.3
+      },
+      "reconciliation": {
+        "alpha_vs_liqwall_open_interest_difference_pct": 116,
+        "tradRadar_vs_liqwall_difference_pct": 41.2,
+        "interpretation": "Provider coverage, contract universe, aggregation and timestamps differ. All panels show long-dominated liquidations, but open interest is not comparable. Do not average or construct one aggregate."
+      }
+    },
+    "etf_flows": {
+      "xrp_insights": {
+        "session_date": "2026-10-29",
+        "net_flow_xrp": 6400000,
+        "holdings_xrp": 1196650118,
+        "four_session_flow_xrp": 3440288,
+        "funds": "6 spot plus BITW"
+      },
+      "alpha_finance": {
+        "session_date": "2026-10-29",
+        "net_flow_usd": 8400000,
+        "funds": 5
+      },
+      "cryptoetf_today": {
+        "session_date": "2026-10-29",
+        "net_flow_usd": 7100000,
+        "funds_reported": 2,
+        "funds_total": 5,
+        "status": "PARTIAL"
+      },
+      "chronology": {
+        "first_binance_xrpl_incident_transfer_utc": "2026-10-29T20:04:00Z",
+        "us_equity_session_close_utc": "2026-10-29T20:00:00Z",
+        "conclusion": "October 29 ETF holdings/flows are pre-incident; they cannot be interpreted as a response to the Binance XRP drain."
+      }
+    },
+    "binance_incident": {
+      "company_reserve_usd": 6340000000,
+      "affected_token_assets_already_held_usd": 5000000000,
+      "additional_assets_to_acquire_usd": 1340000000,
+      "acquisition_channels": [
+        "market",
+        "OTC"
+      ],
+      "frozen_assets_usd": 3000000000,
+      "frozen_assets_excluded_from_company_reserve": true,
+      "xrp_specific_allocation_or_purchase_quantity": "NOT_DISCLOSED",
+      "updated_por": "promised_after_remediation",
+      "bitquery_frozen_estimate_usd": 2700000000,
+      "bitquery_attacker_assets_at_0354_utc_usd": 3100000000,
+      "interpretation": "The in-kind reserve could include XRP, but no token-level allocation or execution is disclosed. The aggregate reserve cannot be converted into XRP demand."
+    },
+    "macro": {
+      "boj_policy_rate_pct": 1.25,
+      "yen_per_usd": 157,
+      "usd_change_pct": -0.2,
+      "interpretation": "Hawkish BOJ/yen normalization may pressure leveraged carry liquidity; weaker USD and lower Treasury yields can offset some risk pressure. Mixed regime; no XRP beta estimated."
+    },
+    "prediction_engine": {
+      "market_features_admitted": false,
+      "reason": "Asynchronous provider panels, incompatible open-interest coverage, ETF session precedes the incident, no XRP-specific replenishment quantity and no point-in-time walk-forward validation.",
+      "forecast_status": "NOT_ISSUED"
+    }
+  },
+  "market_observations": [
+    {
+      "type": "XRP_DERIVATIVES_PANEL",
+      "cutoff": "2026-10-30T13:30:00Z",
+      "provider": "Alpha Finance",
+      "price_usd": 1.2466,
+      "open_interest_usd": 2830000000
+    },
+    {
+      "type": "XRP_DERIVATIVES_PANEL",
+      "cutoff": "2026-10-30T11:02:00Z",
+      "provider": "Liqwall",
+      "price_usd": 1.26,
+      "open_interest_usd": 1310000000
+    },
+    {
+      "type": "XRP_ETF_FLOW_PRE_INCIDENT",
+      "cutoff": "2026-10-29T20:00:00Z",
+      "provider": "XRP Insights",
+      "net_flow_xrp": 6400000
+    },
+    {
+      "type": "MACRO_RISK_REGIME",
+      "cutoff": "2026-10-30",
+      "boj_rate_pct": 1.25,
+      "yen_per_usd": 157
+    }
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}

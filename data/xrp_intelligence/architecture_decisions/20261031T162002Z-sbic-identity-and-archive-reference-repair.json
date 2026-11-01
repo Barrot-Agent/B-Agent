@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T162002Z-SBIC-IDENTITY-AND-ARCHIVE-REFERENCE-REPAIR",
+  "captured_at_utc": "2026-10-31T16:20:02Z",
+  "status": "ACCEPTED_IDENTITY_CLARIFICATION; ARCHIVE_REPAIR_PENDING_VALIDATION",
+  "decisions": [
+    "Resolve SBIC East Japan as Tokyo Small and Medium Business Investment & Consultation Co., Ltd., official English descriptor SBIC East Japan, corporate number 9011001030621.",
+    "Treat Nagoya and Osaka SBIC as sister companies, not branches of SBI Holdings.",
+    "Do not infer SBI Holdings or SBI VC Trade affiliation from the shared letters SBI; no direct affiliation is established in reviewed official sources.",
+    "Treat ChatGPT/Copilot seminars as education, not an OpenAI or Microsoft commercial partnership.",
+    "No direct XRP, Ripple, Circle, stablecoin, custody or payments relationship is established for Tokyo SBIC East Japan; exclude it from XRP adoption/flow features.",
+    "Repair the exact-head archive validation failure by restoring the missing official source record; preserve the prior snapshot and graph files.",
+    "The approval workflow push-event zero-job failure remains a separate unknown; do not attribute it to invalid YAML."
+  ],
+  "validation_failure_root_cause": "The 16:01 snapshot referenced SRC-20261031T121200Z-SBI-EAST-JAPAN-PROFILE, but no matching source record existed in the indexed source shards.",
+  "repair": "Add the official SBIC East Japan profile as that exact source ID, append source shard 124, add regression coverage, and rerun the exact-head archive validator.",
+  "feature_admission": {
+    "sbic_xrp_relationship": "NOT_ESTABLISHED",
+    "sbic_institutional_adoption_feature": "NOT_ADMITTED",
+    "forecast": "NOT_ISSUED"
+  }
+}

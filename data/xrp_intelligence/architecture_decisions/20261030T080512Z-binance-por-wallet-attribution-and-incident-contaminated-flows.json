@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "XRP-ADR-20261030T080512Z-BINANCE-POR-WALLET-ATTRIBUTION-AND-INCIDENT-CONTAMINATED-FLOWS",
+  "captured_at_utc": "2026-10-30T08:05:12Z",
+  "title": "Separate official proof-of-reserves membership, third-party wallet labels, incident-driven outflows and executable XRP liquidity",
+  "status": "DESIGNED; DATA CROSSCHECK EXECUTED; OFFICIAL XRP POR CROSSWALK NOT VERIFIED",
+  "decision": [
+    "Treat Bitquery's PoR address labels as secondary attribution until the official October 1 Binance address-download payload is parsed and all five XRPL addresses are matched exactly.",
+    "Keep CoinDesk's Ethereum Binance 14 PoR finding separate from XRP wallet membership; do not extrapolate ETH reserve impairment to XRP.",
+    "Treat TrackWhale's seven-day net outflow as incident-contaminated large-transfer activity, not voluntary holder withdrawals or net new capital.",
+    "Maintain separate features for exchange wallet transfers, executed spot/DEX volume, ETF creations/redemptions, derivatives liquidations, institutional custody, wrapped-token reserves and actual collateral deposits.",
+    "Keep Coinbase cbXRP reserve stock separate from net new XRP purchases; require a time series and mint/redemption reconciliation before calculating growth.",
+    "Keep fixCleanup3_5_0 as a proposed protocol change until code merge and validator activation are verified.",
+    "Do not admit the current asynchronous event panel into the prediction engine and do not issue a directional forecast."
+  ],
+  "rationale": [
+    "Bitquery's report is more current than the prior 03:54 UTC observation and says approximately 233.5M XRP remained at the attacker receiver at 06:43 UTC.",
+    "CoinDesk's PoR investigation specifically identifies Ethereum Binance 14, while Bitquery's PoR label coverage is a secondary provider attribution; the five XRP wallets still require the official address-set crosswalk.",
+    "TrackWhale's seven-day outflow includes the Binance theft window, so interpreting it as a bullish exchange outflow would create event-label leakage and causal misclassification.",
+    "Coinbase's official cbXRP reserve snapshot is a real institutional custody relationship but is not a measure of fresh market demand.",
+    "The new XRPL restricted-token changes are not activated and cannot be represented as current production capabilities."
+  ],
+  "rejected_shortcuts": [
+    "Do not infer that Binance's XRP reserve ratio is below 100% from the Ethereum Binance 14 finding.",
+    "Do not interpret -210.09M XRP tracked exchange netflow as voluntary investor withdrawals.",
+    "Do not equate Coinbase's 151.4M XRP cbXRP backing reserve with 151.4M XRP of new purchases.",
+    "Do not combine CoinGlass/CoinDesk and TradRadar liquidation totals without time/venue harmonization.",
+    "Do not treat the proposed XRPL restricted-token fix as active."
+  ],
+  "required_next_evidence": [
+    "Retrieve Binance's official October 1 address-download payload and compare the five exact XRPL source accounts.",
+    "Identify the XRP-BF2 backing address from official or reproducible public records and compare it with the five sources.",
+    "Capture the November 1 Binance PoR snapshot and compute asset-specific reserve ratios only from matching liability/reserve definitions.",
+    "Monitor the attacker receiver and any subsequent XRPL destinations after the 07:23 UTC Bithomp observation.",
+    "Build synchronized CEX balances, order-book depth, executed spot trades, ETF creations/redemptions, OTC evidence and derivative positions.",
+    "Capture a historical Coinbase cbXRP reserve/supply series and distinguish mint/redemption from market purchases."
+  ],
+  "prediction_policy": "NOT_ISSUED until synchronized point-in-time features, leakage-safe walk-forward testing, baselines, calibration and shadow evaluation pass.",
+  "source_ids": [
+    "SRC-BITQUERY-BINANCE-HACK-UPDATED-20261030T0643Z",
+    "SRC-COINDESK-XRP-LIQUIDATIONS-20261030T0622Z",
+    "SRC-TRADRADAR-XRP-PERPETUALS-20261030T0700Z",
+    "SRC-TRACKWHALE-XRP-FLOWS-20261030T0745Z",
+    "SRC-COINDESK-XRPL-RESTRICTED-TOKEN-FIXES-20261030T0545Z",
+    "SRC-COINDESK-INSTITUTIONAL-CEX-WITHDRAWALS-20261030T0356Z",
+    "SRC-COINBASE-CBXRP-POR-REFRESH-20261030T0805Z",
+    "SRC-BINANCE-OFFICIAL-POR-METHODOLOGY-20261030T0805Z",
+    "SRC-COINDESK-BINANCE-PO-RESERVES-ETH-WALLET-20261030T0017Z"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 68,
+  "chunk_count": 69,
+  "record_count": 5,
+  "created_at_utc": "2026-10-30T18:22:06Z",
+  "records": [
+    "CoinDesk's confirmed PoR wallet is Binance14, an Ethereum address (0x28C6…1d60). It is not the five XRPL source addresses. The report's approximately 94% ETH coverage estimate must not be applied to XRP.",
+    "The official Binance PoR portal displays a Download All Address control, but static web extraction did not expose the downloadable file URL or contents. The five XRPL addresses therefore cannot yet be matched to the October 1 PoR set.",
+    "Historical Binance-labelled XRP rotations and Bithomp activation labels support a common operational-wallet cluster but do not prove inclusion in the PoR set, customer-liability backing, or ownership of every balance at the snapshot time.",
+    "The approximately 94% post-theft ETH coverage is CoinDesk's estimate using October 1 data and assuming no replenishment; it is not a Binance-confirmed current ratio. The November 1 snapshot is still pending.",
+    "The latest no-outgoing observation for the 233.46M XRP attacker receiver is 07:23 UTC. No fresh 18:22 UTC receiver balance was obtained; intervening movement remains unknown."
+  ]
+}

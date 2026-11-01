@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 75,
+  "chunk_count": 76,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T18:17:10Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T18:17:10Z",
+      "update_type": "RESOLVE_SBIC_CHATGPT_BENCHMARK_AND_PERMISSION_ASK_TOKEN_CANDIDATE",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "28e6b8d60e68163c7f46409c2805a86bc84982ff",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261030T181710Z-sbic-chatgpt-ask-identity-resolution.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261030T181710Z-sbic-chatgpt-ask-identity-resolution.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261030T181710Z-benchmark-metric-and-token-identity-separation.json",
+      "source_ids": [
+        "SRC-ACL-SBIC-SOCIAL-BIAS-INFERENCE-2020",
+        "SRC-ZIEMS-LLM-CSS-BENCHMARK-SBIC-2023V3",
+        "SRC-CHENG-CSS-REVIEW-SBIC-MISEXPANSION-2023",
+        "SRC-PERMISSION-OFFICIAL-FAMILY-AI-20261030",
+        "SRC-PERMISSION-OFFICIAL-ASK-TOKEN-DOCS-20261030",
+        "SRC-CMC-PERMISSION-ASK-20261030T1817Z",
+        "SRC-COINGECKO-PERMISSION-ASK-20261030T1817Z",
+        "SRC-COINBASE-BASE-OFFICIAL-2023"
+      ],
+      "new_sources": 8,
+      "new_relationship_edges": 9,
+      "new_hypotheses": 6,
+      "new_market_observations": 0,
+      "new_related_asset_observations": 2,
+      "key_findings": "The exact ChatGPT/SBIC benchmark context resolves to Social Bias Inference Corpus, not Japanese SBIC East Japan. The 65.9% GPT-3.5 figure is pairwise human preference over gold explanations, not accuracy; GPT-4 scored 60.6%. A secondary review mis-expands SBIC as a COVID-19 corpus and conflates the gold reference with political ideology; primary sources disconfirm it. Permission Coin ASK is a plausible but unconfirmed ASK Coin candidate; current official positioning is family-friendly AI and ASK rewards, explicitly not an investment product. ASK is an OFT on Base and Polygon; Base is Coinbase-incubated, creating only an indirect network relationship. No direct XRP/XRPL integration was found. CMC and CoinGecko ASK prices/supplies/volumes materially disagree and order-book depth is extremely thin.",
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "platform_coordination": {
+        "github_connector": "VERIFIED",
+        "claude": "NOT_TESTED",
+        "grok": "NOT_TESTED",
+        "gemini": "NOT_TESTED",
+        "copilot": "NOT_TESTED",
+        "codex": "NOT_TESTED",
+        "hugging_face": "NOT_TESTED",
+        "kaggle": "NOT_TESTED",
+        "databricks": "NOT_TESTED"
+      },
+      "safety": {
+        "main_modified": false,
+        "merge_performed": false,
+        "force_push": false,
+        "workflow_dispatch_performed": false,
+        "paper_state_mutated": false,
+        "real_money_trade": false
+      },
+      "next_action": "Complete exact-head archive validation for the SBIC/ASK append; continue exact YouTube identity research and Binance XRP PoR crosswalk."
+    }
+  ]
+}

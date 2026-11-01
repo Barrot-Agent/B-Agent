@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "ADR-20261030T182206Z-POR-MEMBERSHIP-AND-RESERVE-COVERAGE",
+  "captured_at_utc": "2026-10-30T18:22:06Z",
+  "decision": "Never infer exchange proof-of-reserves membership from an explorer label or from another chain's hot-wallet identity. Calculate asset-specific reserve coverage only after exact address-set matching and customer-liability reconciliation.",
+  "rules": [
+    "Keep Binance14 EVM wallet and the five XRPL source accounts as distinct chain-specific entities.",
+    "CoinDesk's reported Binance14 inclusion in October 1 PoR supports an ETH coverage risk estimate only; do not transfer the approximately 94% ETH estimate to XRP.",
+    "Treat Bithomp/Whale Alert Binance labels and historical wallet rotations as operational-cluster evidence, not official PoR attestation.",
+    "XRP reserve shortfall remains unknown until all five XRPL addresses are matched against the October 1 downloadable PoR address list and XRP customer liabilities.",
+    "Use November 1 PoR to test replenishment, while preserving the October 1 baseline and the theft-time balances."
+  ],
+  "status": "DESIGNED_AND_RECORDED",
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

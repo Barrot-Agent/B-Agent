@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 61,
+  "chunk_count": 62,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T16:52:00Z",
+  "records": [
+    "Current derivatives and ETF panels are asynchronous and provider-specific. Alpha Finance reports USD2.83B XRP open interest at 13:30 UTC, Liqwall USD1.31B at 11:02 UTC, and an earlier TradRadar panel USD1.85B; coverage and aggregation are not reconciled. October 29 ETF flow trackers use different fund populations and partial reporting; the US session closed four minutes before the first Binance XRPL drain, so it is pre-incident. Binance's USD6.34B reserve/replenishment statement discloses no XRP-specific quantity or execution. Bitquery's attacker balance/no-exchange observation is cutoff-bound at 03:54 UTC; no receiver-specific XRP refresh later than 07:23 UTC was obtained. Macro context is one session and not a validated XRP causal beta."
+  ]
+}

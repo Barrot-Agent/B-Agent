@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+  "captured_at_utc": "2026-10-31T17:52:18Z",
+  "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+  "sources": [
+    {
+      "source_id": "SRC-BINANCE-RECOVERY-UPDATE3-OFFICIAL",
+      "publisher": "Binance",
+      "title": "Security Incident | Recovery Update #3: 90% of Stolen Assets Replenished; Proof of Reserves Snapshot Provided",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "published_at_utc": "2026-10-31T14:24:00Z",
+      "evidence_class": "CONFIRMED_PRIMARY_COMPANY_STATEMENT",
+      "independence_group": "BINANCE_OFFICIAL"
+    },
+    {
+      "source_id": "SRC-REUTERS-BINANCE-90PCT-20261031",
+      "publisher": "Reuters",
+      "title": "Binance says it has covered 90% of losses from $6.3 billion hack so far",
+      "url": "https://www.reuters.com/legal/government/binance-says-90-stolen-assets-replenished-2026-10-31/",
+      "published_at": "2026-10-31",
+      "evidence_class": "INDEPENDENT_REPORTING_OF_COMPANY_STATEMENT",
+      "independence_group": "REUTERS"
+    },
+    {
+      "source_id": "SRC-COINDESK-BINANCE-90PCT-20261031",
+      "publisher": "CoinDesk",
+      "title": "Binance says it has replaced 90% of stolen crypto after massive $6.3 billion breach",
+      "url": "https://www.coindesk.com/business/2026/10/31/binance-says-it-has-replaced-90-of-stolen-crypto-after-massive-usd6-3-billion-breach",
+      "published_at": "2026-10-31",
+      "evidence_class": "INDEPENDENT_REPORTING_WITH_PRIOR_RESERVE_CONTEXT",
+      "independence_group": "COINDESK"
+    },
+    {
+      "source_id": "SRC-CRYPTOTIMES-BINANCE-POR-XRP-RATIO-20261031",
+      "publisher": "The Crypto Times",
+      "title": "Binance Reports 90% Replenishment, Updates PoR After $6.3B Hack",
+      "url": "https://www.cryptotimes.io/2026/10/31/binance-reports-90-replenishment-updates-por-after-6-3b-hack/",
+      "evidence_class": "SECONDARY_SCREENSHOT_TRANSCRIPTION_OF_BINANCE_PRIMARY_PAGE",
+      "independence_group": "CRYPTOTIMES_REPORTING",
+      "screenshot_url": "https://www.cryptotimes.io/wp-content/uploads/2026/10/Proof-of-Reserve-.png"
+    },
+    {
+      "source_id": "SRC-TOKENVIEW-SAFU-BTC-ADDRESS-20261031",
+      "publisher": "Tokenview",
+      "title": "Binance SAFU BTC address",
+      "url": "https://btc.tokenview.io/en/address/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+      "retrieved_at_utc": "2026-10-31T17:52:18Z",
+      "evidence_class": "SECONDARY_PUBLIC_BLOCK_EXPLORER",
+      "independence_group": "TOKENVIEW"
+    }
+  ],
+  "official_update3_claims": {
+    "total_incident_loss_usd_approx": 6300000000,
+    "prior_covered_amount_pct": 80,
+    "current_covered_amount_pct": 90,
+    "fully_backed_top_ten_assets": [
+      "BTC",
+      "ETH",
+      "USDT",
+      "BNB",
+      "SOL",
+      "USDC",
+      "XRP",
+      "USD1",
+      "RLUSD",
+      "ZEC"
+    ],
+    "top_ten_coverage_claim": "100_PERCENT",
+    "remaining_assets_pct_approx": 10,
+    "remaining_assets_scope": "TOKENS_OUTSIDE_TOP_TEN; DESCRIBED_AS_LESS_LIQUID",
+    "remaining_asset_acquisition": "CONTINUE_MARKET_AND_OTC_PURCHASES",
+    "funding_sources": [
+      "PARTIAL_SAFU_DEPLOYMENT; EXPECTED OVER THE NEXT 24 HOURS",
+      "PORTION_OF_FUTURES_INSURANCE_FUND; BINANCE SAYS REMAINING BALANCE STAYS ABOVE REQUIRED LEVEL",
+      "BINANCE_CORPORATE_TREASURY"
+    ],
+    "new_por_snapshot_utc": "2026-10-31T00:00:00Z",
+    "full_zk_proof_generation_estimate_hours": [
+      40,
+      50
+    ],
+    "full_proof_estimated_date": "2026-11-03",
+    "withdrawal_reopening_target_date": "2026-11-01",
+    "company_statement": "Binance says it will absorb the financial impact rather than pass it to users."
+  },
+  "xrp_por_secondary_snapshot": {
+    "displayed_reserve_ratio_pct": 100.99,
+    "net_account_balances_xrp": 2516373182.286,
+    "onchain_wallet_balance_xrp": 2541393612.546,
+    "exchange_balance_xrp": 2458677298.071,
+    "third_party_custody_xrp": 82716314.475,
+    "derived_surplus_xrp": 25020430.26,
+    "merkle_root_status": "IN_PROGRESS",
+    "verification_mechanism": "zk-SNARKs",
+    "evidence_class": "SECONDARY_SCREENSHOT_TRANSCRIPTION; FULL_PROOF_NOT_YET_GENERATED"
+  },
+  "safu_btc_address_observation": {
+    "address": "1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
+    "displayed_balance_btc": 15000.00147092,
+    "total_received_btc": 31277.00056174,
+    "total_sent_btc": 16276.99909082,
+    "transaction_count": 27,
+    "latest_transaction_time_utc": "2026-08-09T01:20:03Z",
+    "observation": "The public explorer capture showed no transaction after 2026-08-09 in this disclosed SAFU BTC address. Binance's update says partial SAFU deployment is expected over the next 24 hours, not that it had already completed at the 17:52 UTC capture.",
+    "limitations": [
+      "This is one publicly identified SAFU BTC address, not a complete map of all SAFU assets, sub-custody or off-chain movements.",
+      "A lack of movement in this address does not disprove deployment from another wallet or an internal accounting reallocation.",
+      "The explorer is a secondary data provider."
+    ]
+  },
+  "causal_interpretation": {
+    "confirmed": "Binance publicly states that aggregate coverage increased from approximately 80% to 90%, and that the ten named assets including XRP are now 100% backed; it identifies SAFU, futures insurance and corporate treasury as sources.",
+    "inferred": "The October 31 XRP PoR screenshot is consistent with slightly more XRP reserve than net customer liabilities at the snapshot time.",
+    "not_established": [
+      "The exact quantity of XRP bought after the incident.",
+      "Whether any XRP was acquired on open spot markets versus OTC or sourced from existing treasury/custody inventory.",
+      "The amount of SAFU or futures-insurance capital allocated specifically to XRP.",
+      "That the 233.46M XRP stolen from the five source wallets has been recovered from the attacker.",
+      "That the 100.99% screenshot is already cryptographically verified; the Merkle root was still in progress."
+    ],
+    "key_distinction": "100% backing of XRP customer liabilities is not the same as recovering stolen XRP, nor does it disclose the marginal purchase flow. The 90% aggregate coverage figure refers to the broader affected-asset set; the remaining 10% is outside the named top ten."
+  },
+  "prediction_feature_admission": "EVENT_AND_CUSTODY_CONTEXT_ONLY; DO_NOT_TREAT_90_PERCENT_REPLENISHMENT_AS_XRP_SPOT_BUY_FLOW; DO_NOT_TREAT_POR_SURPLUS_AS_PURCHASE_VOLUME",
+  "pending_archive_append": true,
+  "exact_head_validation": {
+    "status": "PASS",
+    "validated_head_sha": "3a439153ddf57750bd7fe11d567e903dfd0d9b93",
+    "validator_run_id": 41226651996,
+    "fail_closed_gate_run_id": 41226651999,
+    "archive_shards_checked": 427,
+    "source_revision_addenda_checked": 7,
+    "source_revision_addenda_pending_archive_append": 7,
+    "regression_tests_passed": 32,
+    "state_mutated": false,
+    "verified_at_utc": "2026-10-31T17:52:56Z",
+    "limitation": "The revision file and index pointer were hash-verified. This source record remains pending append to the immutable sources archive."
+  }
+}

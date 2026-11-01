@@ -1,0 +1,553 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "XRP-20261031T001232Z-BINANCE-RESERVE-DERIVATIVES-ETF-COINBASE-RLUSD",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261031T001232Z-binance-reserve-derivatives-etf-and-coinbase-rlusd-update.json",
+  "created_at_utc": "2026-10-31T00:12:32Z",
+  "captured_at_utc": "2026-10-31T00:12:32Z",
+  "data_cutoff_utc": "2026-10-31T00:12:32Z",
+  "extends_snapshot_path": "data/xrp_intelligence/snapshots/20261030T233149Z-rlusd-binance-wallet-crosswalk-actual-capital.json",
+  "correction_of_snapshot_path": null,
+  "source_ids": [
+    "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+    "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z",
+    "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z",
+    "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0400Z",
+    "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T0530Z",
+    "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z",
+    "SRC-COINMARKETCAP-XRP-MARKETS-20261031T001232Z",
+    "SRC-ALPHAFINANCE-XRP-ETF-20261029",
+    "SRC-XRPINSIGHTS-ETF-TOTALS-20261030T233337Z",
+    "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+  ],
+  "source_reference_count": 10,
+  "missing_source_references": 0,
+  "findings": [
+    {
+      "finding_id": "F-20261031T001232Z-01",
+      "classification": "OFFICIAL_EXCHANGE_INCIDENT_AND_CORPORATE_BACKSTOP",
+      "statement": "Binance says the incident caused about $6.3B in token-asset losses; it set aside more than $6.34B in company funds, with $5B held in exact impacted token assets and remaining relevant assets being acquired through market/OTC channels. It reports about $3B frozen and withdrawals temporarily suspended. No token-level XRP acquisition or reserve ratio is disclosed.",
+      "source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+        "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z"
+      ],
+      "disconfirming_evidence": "Company funding commitment is a mitigating fact, but does not independently verify the reserve composition, all customer liabilities or XRP-specific address backing."
+    },
+    {
+      "finding_id": "F-20261031T001232Z-02",
+      "classification": "ETH_ONLY_PROOF_OF_RESERVES_CROSSWALK",
+      "statement": "CoinDesk's October 1 PoR analysis concerns Binance 14 and Binance 16 on Ethereum; it estimates ETH backing near 94% after approximately 204,500 ETH was drained. This does not establish PoR membership for the five XRPL source wallets.",
+      "source_ids": [
+        "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z"
+      ],
+      "disconfirming_evidence": "The five XRPL addresses have separate ledger histories and were not identified as Binance 14/16; the official XRP PoR address export is still required."
+    },
+    {
+      "finding_id": "F-20261031T001232Z-03",
+      "classification": "SPOT_AND_ORDERBOOK_PROVIDER_SNAPSHOT",
+      "statement": "CoinGecko and CoinMarketCap both display XRP near $1.25 during the capture window. CoinGecko shows Coinbase XRP/USD +2% depth around $3.67M and -2% depth around $7.55M; Binance XRP/USDT around $2.25M/$2.00M and XRP/USDC around $0.55M/$0.55M. These are provider snapshots, not guaranteed executable liquidity.",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z",
+        "SRC-COINMARKETCAP-XRP-MARKETS-20261031T001232Z"
+      ],
+      "disconfirming_evidence": "Exact quote timestamps and venue aggregation methodology are not synchronized; the page is dynamic."
+    },
+    {
+      "finding_id": "F-20261031T001232Z-04",
+      "classification": "DERIVATIVES_UNIVERSE_AND_POSITIONING_DISAGREEMENT",
+      "statement": "CoinGecko displays approximately $4.067B perpetual OI and +0.0071% 8-hour funding, while TradRadar's seven-exchange panel shows approximately $1.85B OI, -5.36% 24-hour change and -0.0077% weighted funding; Seandra's Binance-only panel shows approximately $348.7M OI, down 9.8%, with positive funding. The observations imply heterogeneous venue positioning and different coverage, not one consensus OI/funding value.",
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0400Z",
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T0530Z",
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ],
+      "disconfirming_evidence": "Different provider universes and timestamps prevent a direct causal comparison; the signs and levels cannot be combined into a single net-long or net-short estimate."
+    },
+    {
+      "finding_id": "F-20261031T001232Z-05",
+      "classification": "ETF_FLOWS_WITH_SETTLEMENT_STATUS",
+      "statement": "Alpha Finance reports +$8.4M XRP spot ETF flow on 29 October and +$98.9M over 30 sessions across five funds. XRP Insights reports +3.44M XRP across 26–29 October and 1.19665B XRP held on 29 October across six spot funds plus BITW; its 30 October row is provisional at the cutoff.",
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-ETF-20261029",
+        "SRC-XRPINSIGHTS-ETF-TOTALS-20261030T233337Z"
+      ],
+      "disconfirming_evidence": "Fund coverage differs, GXRP flow is withheld in XRP Insights, BITW can rebalance, and provisional 30 October holdings are not a settled flow."
+    },
+    {
+      "finding_id": "F-20261031T001232Z-06",
+      "classification": "DIRECT_RIPPLE_COINBASE_RLUSD_DISTRIBUTION_RELATIONSHIP",
+      "statement": "Ripple confirms RLUSD trading/management availability on Coinbase Prime, Exchange and Retail from 28 October and deposits/withdrawals on XRPL, Base and Ethereum. Coinbase Global Exchange collateral functionality is future availability, not live. Ripple will provide RLUSD liquidity on Base.",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ],
+      "disconfirming_evidence": "No evidence in the announcement establishes XRP collateral, incremental XRP spot purchases, or that all RLUSD distribution occurs on XRPL."
+    },
+    {
+      "finding_id": "F-20261031T001232Z-07",
+      "classification": "PREDICTION_ADMISSION_DECISION",
+      "statement": "Current spot, derivatives, ETF, reserve and RLUSD observations remain context-only. OI and funding coverage is not harmonized, the ETF 30 October row is provisional, and XRP-specific Binance reserve replenishment is unknown. No feature is admitted and no directional forecast is issued.",
+      "source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+        "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z",
+        "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z",
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0400Z",
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T0530Z",
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z",
+        "SRC-COINMARKETCAP-XRP-MARKETS-20261031T001232Z",
+        "SRC-ALPHAFINANCE-XRP-ETF-20261029",
+        "SRC-XRPINSIGHTS-ETF-TOTALS-20261030T233337Z",
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ],
+      "disconfirming_evidence": "Future synchronized historical data and a fixed-horizon out-of-sample test could establish predictive value; none has been executed in this run."
+    }
+  ],
+  "market_observations": [
+    {
+      "observation_id": "OBS-20261031T001232Z-01",
+      "asset": "XRP",
+      "metric": "coingecko_spot_aggregate",
+      "value": {
+        "price_usd": 1.25,
+        "change_24h_pct": 1.6,
+        "low_24h_usd": 1.2,
+        "high_24h_usd": 1.27,
+        "market_cap_usd": 79491336505,
+        "volume_24h_usd": 3187759205,
+        "perpetual_oi_usd": 4067000000,
+        "oi_to_market_cap_pct": 5.12,
+        "funding_8h_pct": 0.0071,
+        "perps_to_spot_volume_ratio": 4.9,
+        "circulating_supply_xrp": 63351000000
+      },
+      "unit": "USD_percent_XRP",
+      "as_of_utc": "2026-10-31T00:12:32Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ],
+      "classification": "COINGECKO_DYNAMIC_AGGREGATE_SNAPSHOT",
+      "admission_status": "NOT_ADMITTED_PENDING_POINT_IN_TIME_CAPTURE",
+      "notes": "Dynamic page did not expose exact quote timestamp; values are retrieval-window context only."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-02",
+      "asset": "XRP",
+      "metric": "coinmarketcap_spot_aggregate",
+      "value": {
+        "price_usd": 1.25,
+        "change_24h_pct": 1.32,
+        "market_cap_usd": 79450000000,
+        "volume_24h_usd": 3930000000,
+        "low_24h_usd": 1.2,
+        "high_24h_usd": 1.27,
+        "circulating_supply_xrp": 63350000000
+      },
+      "unit": "USD_percent_XRP",
+      "as_of_utc": "2026-10-31T00:12:32Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-COINMARKETCAP-XRP-MARKETS-20261031T001232Z"
+      ],
+      "classification": "COINMARKETCAP_DYNAMIC_AGGREGATE_SNAPSHOT",
+      "admission_status": "NOT_ADMITTED_PENDING_POINT_IN_TIME_CAPTURE",
+      "notes": "Aggregator values are not synchronized to CoinGecko's quote or volume methodology."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-03",
+      "asset": "XRP",
+      "metric": "coinbase_xrp_usd_orderbook_depth",
+      "value": {
+        "spread_pct": 0.01,
+        "depth_plus_2pct_usd": 3667440,
+        "depth_minus_2pct_usd": 7547216,
+        "volume_24h_usd": 148934722
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-31T00:12:32Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ],
+      "classification": "COINGECKO_EXCHANGE_MARKET_DEPTH_SNAPSHOT",
+      "admission_status": "NOT_ADMITTED_AS_EXECUTABLE_LIQUIDITY",
+      "notes": "Coinbase Exchange XRP/USD, dynamic order-book depth display."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-04",
+      "asset": "XRP",
+      "metric": "binance_xrp_usdt_orderbook_depth",
+      "value": {
+        "spread_pct": 0.01,
+        "depth_plus_2pct_usd": 2247362,
+        "depth_minus_2pct_usd": 1999060,
+        "volume_24h_usd": 148233234
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-31T00:12:32Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ],
+      "classification": "COINGECKO_EXCHANGE_MARKET_DEPTH_SNAPSHOT",
+      "admission_status": "NOT_ADMITTED_AS_EXECUTABLE_LIQUIDITY",
+      "notes": "Binance XRP/USDT pair; distinct from Binance XRP/USDC."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-05",
+      "asset": "XRP",
+      "metric": "binance_xrp_usdc_orderbook_depth",
+      "value": {
+        "spread_pct": 0.01,
+        "depth_plus_2pct_usd": 548435,
+        "depth_minus_2pct_usd": 545947,
+        "volume_24h_usd": 263183892
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-31T00:12:32Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ],
+      "classification": "COINGECKO_EXCHANGE_MARKET_DEPTH_SNAPSHOT",
+      "admission_status": "NOT_ADMITTED_AS_EXECUTABLE_LIQUIDITY",
+      "notes": "Binance XRP/USDC pair; not interchangeable with XRP/USDT."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-06",
+      "asset": "XRP",
+      "metric": "coingecko_perpetual_aggregate_oi_funding",
+      "value": {
+        "open_interest_usd": 4067000000,
+        "oi_to_market_cap_pct": 5.12,
+        "funding_8h_pct": 0.0071,
+        "perps_to_spot_volume_ratio": 4.9
+      },
+      "unit": "USD_percent_ratio",
+      "as_of_utc": "2026-10-31T00:12:32Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKETS-20261031T001232Z"
+      ],
+      "classification": "COINGECKO_134_MARKET_DERIVATIVES_AGGREGATE",
+      "admission_status": "NOT_ADMITTED_PENDING_UNIVERSE_RECONCILIATION",
+      "notes": "Broad derivatives page with 134 markets; not equivalent to TradRadar's seven-exchange subset."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-07",
+      "asset": "XRP",
+      "metric": "tradradar_7_exchange_derivatives",
+      "value": {
+        "open_interest_usd": 1850000000,
+        "oi_change_24h_pct": -5.36,
+        "weighted_funding_8h_pct": -0.0077,
+        "liquidations_24h_usd_at_least": 31720000,
+        "long_liquidations_usd": 30250000,
+        "short_liquidations_usd": 1470000,
+        "as_of_utc": "2026-10-30T04:00:00Z"
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-30T04:00:00Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-TRADRADAR-XRP-DERIVATIVES-20261030T0400Z"
+      ],
+      "classification": "TRADRADAR_SEVEN_EXCHANGE_DERIVATIVES_SNAPSHOT",
+      "admission_status": "NOT_ADMITTED_PENDING_COVERAGE_VALIDATION",
+      "notes": "Provider-specific universe and older capture; long liquidation imbalance is not a directional forecast."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-08",
+      "asset": "XRP",
+      "metric": "seandra_binance_perpetual_snapshot",
+      "value": {
+        "price_usd": 1.26,
+        "open_interest_usd": 348700000,
+        "oi_change_24h_pct": -9.8,
+        "funding_8h_pct": 0.0074,
+        "long_account_share_pct": 74,
+        "liquidations_24h_usd_at_least": 12100000,
+        "as_of_utc": "2026-10-30T05:30:00Z"
+      },
+      "unit": "USD_percent",
+      "as_of_utc": "2026-10-30T05:30:00Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-SEANDRA-BINANCE-XRP-PERP-20261030T0530Z"
+      ],
+      "classification": "SEANDRA_BINANCE_ONLY_PERPETUAL_SNAPSHOT",
+      "admission_status": "NOT_ADMITTED_PENDING_VENUE_NORMALIZATION",
+      "notes": "Single venue; long-account share is not notional exposure."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-09",
+      "asset": "XRP",
+      "metric": "alpha_finance_spot_etf_flows",
+      "value": {
+        "flow_2026_10_29_usd": 8400000,
+        "flow_30_sessions_usd": 98900000,
+        "cumulative_since_launch_usd": 1730000000,
+        "flow_2026_10_29_xrp_approx": 6400000,
+        "coverage_funds": 5
+      },
+      "unit": "USD_XRP_funds",
+      "as_of_utc": "2026-10-29T20:00:00Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-ALPHAFINANCE-XRP-ETF-20261029"
+      ],
+      "classification": "ALPHAFINANCE_FIVE_FUND_SPOT_ETF_AGGREGATE",
+      "admission_status": "NOT_ADMITTED_PENDING_ISSUER_RECONCILIATION",
+      "notes": "29 October U.S. session ended before first identified Binance XRPL drain around 20:05 UTC."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-10",
+      "asset": "XRP",
+      "metric": "xrp_insights_spot_etf_holdings_and_flows",
+      "value": {
+        "flow_xrp_2026_10_26_to_29": 3440288,
+        "holdings_xrp_2026_10_29": 1196650118,
+        "break_even_price_usd": 1.71,
+        "price_2026_10_29_usd": 1.25,
+        "funds_included": 7
+      },
+      "unit": "XRP_USD_funds",
+      "as_of_utc": "2026-10-29",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-TOTALS-20261030T233337Z"
+      ],
+      "classification": "ISSUER_HOLDINGS_DERIVED_FLOW_DATASET",
+      "admission_status": "NOT_ADMITTED_PENDING_SETTLEMENT_AND_FUND_COVERAGE",
+      "notes": "Six spot funds plus BITW; GXRP flow excluded; BITW rebalancing may affect holding deltas."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-11",
+      "asset": "XRP",
+      "metric": "xrp_insights_october_30_etf_row_status",
+      "value": {
+        "latest_row_date": "2026-10-30",
+        "row_status": "provisional",
+        "data_as_of": "2026-10-29",
+        "generated_at_utc": "2026-10-30T23:33:37Z",
+        "next_friday_resettlement_utc": "2026-10-31T12:30:00Z"
+      },
+      "unit": "dataset_status",
+      "as_of_utc": "2026-10-30T23:33:37Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-XRPINSIGHTS-ETF-TOTALS-20261030T233337Z"
+      ],
+      "classification": "ETF_DATASET_SETTLEMENT_METADATA",
+      "admission_status": "EXCLUDED_UNTIL_SETTLED",
+      "notes": "The latest 30 October row had not yet reached the provider's Saturday 12:30 UTC re-settlement at this cutoff."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-12",
+      "asset": "BNB_EXCHANGE_SECURITY",
+      "metric": "binance_company_reserve_and_replenishment_commitment",
+      "value": {
+        "loss_usd_approx": 6300000000,
+        "company_funds_set_aside_usd_over": 6340000000,
+        "exact_impacted_tokens_held_usd": 5000000000,
+        "remaining_to_acquire_usd_approx": 1340000000,
+        "frozen_onchain_usd_approx": 3000000000
+      },
+      "unit": "USD",
+      "as_of_utc": "2026-10-30T19:33:00Z",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-BINANCE-SECURITY-UPDATE-2-20261030T1933Z",
+        "SRC-REUTERS-BINANCE-LOSS-COVER-20261030T1403Z"
+      ],
+      "classification": "BINANCE_OFFICIAL_STATEMENT_REPORTED_BY_REUTERS",
+      "admission_status": "NOT_ADMITTED_AS_XRP_SPECIFIC_RESERVE_OR_DEMAND_FEATURE",
+      "notes": "Aggregate company statement. No token-level XRP quantity, trade execution or PoR address crosswalk disclosed."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-13",
+      "asset": "ETH",
+      "metric": "binance_14_october_1_por_eth_coverage_estimate",
+      "value": {
+        "eth_removed_from_binance_14_and_16_approx": 204500,
+        "october_1_eth_reserve_ratio_pct": 100,
+        "post_loss_eth_coverage_estimate_pct": 94,
+        "october_1_usdc_reserve_ratio_pct": 108.26
+      },
+      "unit": "ETH_percent",
+      "as_of_utc": "2026-10-01",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-COINDESK-BINANCE14-ETH-POR-20261030T0416Z"
+      ],
+      "classification": "COINDESK_SECONDARY_ETH_ONLY_POR_ESTIMATE",
+      "admission_status": "NOT_ADMITTED_AS_XRP_POR_EVIDENCE",
+      "notes": "Ethereum Binance 14/16 only; no inference to XRPL source wallets."
+    },
+    {
+      "observation_id": "OBS-20261031T001232Z-14",
+      "asset": "RLUSD",
+      "metric": "coinbase_distribution_and_collateral_availability",
+      "value": {
+        "trading_management_live_from": "2026-10-28",
+        "platforms": [
+          "Coinbase Prime",
+          "Coinbase Exchange",
+          "Coinbase Retail"
+        ],
+        "chains": [
+          "XRPL",
+          "Base",
+          "Ethereum"
+        ],
+        "global_exchange_collateral_status": "ANNOUNCED_FUTURE_AVAILABILITY",
+        "ripple_base_liquidity_provision": "ANNOUNCED",
+        "ripple_reported_market_cap_usd_over": 2400000000
+      },
+      "unit": "status_USD",
+      "as_of_utc": "2026-10-28",
+      "retrieved_at_utc": "2026-10-31T00:12:32Z",
+      "source_ids": [
+        "SRC-RIPPLE-COINBASE-RLUSD-20261028"
+      ],
+      "classification": "RIPPLE_OFFICIAL_PARTNERSHIP_ANNOUNCEMENT",
+      "admission_status": "NOT_ADMITTED_AS_XRP_COLLATERAL_OR_PRICE_DEMAND",
+      "notes": "RLUSD distribution relationship is direct; XRP collateral and actual RLUSD-to-XRP conversion volumes remain unknown."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H-20261031T001232Z-01",
+      "claim": "Binance's corporate backstop and reported asset freezes materially reduce immediate customer-loss risk, but do not by themselves prove current token-level proof-of-reserves or XRP-specific coverage.",
+      "assessment": "SUPPORTED_AS_RISK_MITIGATION_CLAIM; TOKEN_LEVEL_COVERAGE_UNVERIFIED",
+      "supporting_evidence": [
+        "Binance says more than $6.34B in company funds is set aside, including $5B in exact impacted token assets.",
+        "Binance reports approximately $3B frozen and says customers will not bear the loss."
+      ],
+      "disconfirming_evidence": [
+        "CoinDesk's Ethereum-only PoR analysis estimates ETH backing near 94% before replenishment.",
+        "No independent current PoR reconciliation or XRP address export was retrieved."
+      ],
+      "unknowns": [
+        "Asset-by-asset reserve composition after the incident.",
+        "Whether customer liabilities and exact wallet balances reconcile on the next PoR snapshot."
+      ],
+      "confidence": "MEDIUM_FOR_BACKSTOP_EXISTENCE_AS_COMPANY_STATEMENT; LOW_FOR_TOKEN_LEVEL_SOLVENCY"
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-02",
+      "claim": "The five XRPL incident source wallets may have been part of Binance's October 1 XRP PoR set, creating an XRP reserve gap until replenishment, but membership is not established.",
+      "assessment": "CONDITIONAL_SCENARIO_ONLY; OFFICIAL_XRP_POR_CROSSWALK_UNKNOWN",
+      "supporting_evidence": [
+        "Bitquery's provider labels and the five XRPL transfer records are preserved in earlier snapshots.",
+        "CoinDesk independently shows that at least the Ethereum Binance 14 hot wallet was in the October 1 PoR set."
+      ],
+      "disconfirming_evidence": [
+        "CoinDesk's Binance 14 finding is Ethereum-only and does not name the five XRPL accounts.",
+        "Binance has not published an XRP-specific reserve ratio or the required address crosswalk in the retrieved update."
+      ],
+      "unknowns": [
+        "Official October 1 XRP address membership for all five wallets.",
+        "November 1 XRP balances and customer liabilities."
+      ],
+      "confidence": "LOW; NOT_ESTABLISHED"
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-03",
+      "claim": "Binance's market/OTC acquisition of remaining impacted token assets could create buying demand, but the XRP-specific quantity, venue, timing and execution are unknown.",
+      "assessment": "POTENTIAL_FLOW_CHANNEL; NOT_A_MEASURED_XRP_FLOW",
+      "supporting_evidence": [
+        "Binance explicitly says it is buying remaining relevant token assets through market and OTC channels."
+      ],
+      "disconfirming_evidence": [
+        "The statement is aggregate USD and does not identify XRP or a purchase execution.",
+        "Some impacted tokens may be replenished through corporate inventory, SAFU or frozen assets rather than open-market buying."
+      ],
+      "unknowns": [
+        "Token-by-token shortfall and acquisition amounts.",
+        "Whether XRP was included in the remaining 20% and whether purchases occurred on CEX, OTC or on-chain."
+      ],
+      "confidence": "LOW_FOR_XRP_DEMAND"
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-04",
+      "claim": "XRP derivatives positioning is heterogeneous: broad aggregate pages show positive funding and large OI, while a seven-exchange panel shows lower OI and negative weighted funding; venue-level long liquidations suggest recent deleveraging but do not establish direction.",
+      "assessment": "HETEROGENEOUS_POSITIONING; NO_DIRECTIONAL_EDGE_ESTABLISHED",
+      "supporting_evidence": [
+        "CoinGecko shows about $4.067B OI and +0.0071% aggregate funding.",
+        "TradRadar shows about $1.85B OI, down 5.36%, and -0.0077% weighted funding with long liquidations dominating.",
+        "Seandra's Binance-only panel shows OI down 9.8% while funding remains positive."
+      ],
+      "disconfirming_evidence": [
+        "The providers use different universes, times and weighting methods; disagreement may be coverage rather than a true market-position conflict."
+      ],
+      "unknowns": [
+        "Synchronized contract-level OI and funding across all major venues.",
+        "Actual notional long/short exposure and liquidation coverage."
+      ],
+      "confidence": "HIGH_FOR_NONCOMPARABILITY; LOW_FOR_DIRECTION"
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-05",
+      "claim": "Positive spot ETF holdings-derived flows provide evidence of some institutional accumulation through 29 October, but one-day flow is small relative to market turnover and does not establish a near-term XRP price effect.",
+      "assessment": "POSITIVE_FLOW_CONTEXT; CAUSAL_PRICE_EFFECT_UNKNOWN",
+      "supporting_evidence": [
+        "Alpha Finance reports +$8.4M on 29 October and +$98.9M over 30 sessions.",
+        "XRP Insights reports +3.44M XRP across 26–29 October and 1.19665B XRP held on 29 October."
+      ],
+      "disconfirming_evidence": [
+        "Fund coverage and flow methodologies differ; XRP Insights' 30 October row is provisional and BITW rebalancing can affect holding deltas.",
+        "The 29 October ETF session closed before the first Binance XRPL drain."
+      ],
+      "unknowns": [
+        "Final 30 October flows by fund.",
+        "Issuer creation/redemption confirmation and primary-market timing."
+      ],
+      "confidence": "MEDIUM_FOR_POSITIVE_FLOW_THROUGH_OCT29; LOW_FOR_PRICE_CAUSALITY"
+    },
+    {
+      "hypothesis_id": "H-20261031T001232Z-06",
+      "claim": "Coinbase's RLUSD integration increases RLUSD distribution access and creates a direct Ripple-Coinbase relationship, but the announced future collateral feature and XRPL support do not establish incremental XRP collateral or spot demand.",
+      "assessment": "DIRECT_RLUSD_DISTRIBUTION_CONFIRMED; XRP_TRANSMISSION_UNKNOWN",
+      "supporting_evidence": [
+        "Ripple says RLUSD trading/management is live on Coinbase Prime, Exchange and Retail.",
+        "Deposits/withdrawals are supported on XRPL, Base and Ethereum; Ripple will provide liquidity on Base."
+      ],
+      "disconfirming_evidence": [
+        "Coinbase Global Exchange collateral functionality is explicitly future availability.",
+        "No XRP-specific collateral, conversion, bridge or order-book flow is disclosed."
+      ],
+      "unknowns": [
+        "Go-live date and collateral eligibility rules for RLUSD.",
+        "Actual RLUSD volume by chain and any resulting XRP bridge/DEX demand."
+      ],
+      "confidence": "HIGH_FOR_ANNOUNCED_DISTRIBUTION; LOW_FOR_XRP_EFFECT"
+    }
+  ],
+  "limitation_ids": [
+    "LIM-20261031T001232Z-01",
+    "LIM-20261031T001232Z-02",
+    "LIM-20261031T001232Z-03",
+    "LIM-20261031T001232Z-04",
+    "LIM-20261031T001232Z-05",
+    "LIM-20261031T001232Z-06",
+    "LIM-20261031T001232Z-07",
+    "LIM-20261031T001232Z-08",
+    "LIM-20261031T001232Z-09"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Download the official Binance October 1 PoR XRP address export and exact-crosswalk the five XRPL sources; keep Binance 14 Ethereum evidence separate.",
+    "Retrieve raw validated XRPL account_info for all five source wallets, rs8Z and the attacker receiver; preserve ledger index and exact cutoff.",
+    "Reconcile Binance's November 1 PoR snapshot against October 1 by asset and address; calculate XRP-specific coverage only if source wallet membership is proven.",
+    "Capture the first settled XRP Insights 30 October ETF row after its scheduled re-settlement; compare issuer holdings with Alpha and other fund-level sources.",
+    "Build a venue-by-venue derivatives panel with contract IDs, OI units, funding intervals, timestamps and provider coverage; never average mismatched universes.",
+    "Verify Coinbase Global Exchange RLUSD collateral activation from product documentation or live supported functionality; do not infer XRP collateral.",
+    "Continue immutable fixed-horizon forecast/outcome design and baseline evaluation; do not issue a forecast before walk-forward and calibration tests."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "workflow_dispatches": 0,
+  "paper_state_mutations": 0,
+  "real_money_trades": 0
+}

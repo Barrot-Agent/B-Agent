@@ -1,0 +1,247 @@
+{
+  "record_type": "barrot_repository_audit",
+  "schema_version": "1.0",
+  "audit_id": "AUDIT-20261030T204000Z-MAIN-WRITERS-SUBSCRIBER-PR-QUEUE",
+  "audit_timestamp_utc": "2026-10-30T20:40:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_branch": {
+    "sha": "78e5cf1fd3ca64768f4c83107210532c6f0c41ec",
+    "modified_by_this_run": false,
+    "protected": true,
+    "notes": "Main SHA remained unchanged after scheduled Scheduler Tick and Subscriber Sync runs; no main write by this research run."
+  },
+  "research_branch": {
+    "name": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "head_before_audit": "d80a0caf0f5e59780c0e36d692313674b4333fdf",
+    "write_scope": "research branch only",
+    "no_force_push": true
+  },
+  "open_prs": [
+    {
+      "number": 1353,
+      "title": "Research: losslessly shard XRP ledger with hash-verified read-only validation",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "head_before_audit": "d80a0caf0f5e59780c0e36d692313674b4333fdf",
+      "mergeable": true,
+      "checks": "Prior exact-head validator and fail-closed gate passed on 39a5cc830c9c973728f96e756809c92d3757d2af; new append triggers fresh checks."
+    },
+    {
+      "number": 1381,
+      "title": "Safety: make merge queue read-only on fresh main",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "78e5cf1fd3ca64768f4c83107210532c6f0c41ec",
+      "head_sha": "b22472f10ba8e8c169892780572784f64c6ed4a2",
+      "mergeable": true,
+      "checks": "Core CI and fail-closed gate passed on exact PR head; no merge performed."
+    },
+    {
+      "number": 1380,
+      "title": "Fix Barrot task-bundle authorization gate recognition",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "34722b7053c33ea0424d18005da7a8eeebab2147",
+      "head_sha": "049bec8a7494f7bfdca2bba2a1aa24b807e82c01",
+      "mergeable": true,
+      "checks": "Core CI and fail-closed gate passed on PR head; base is one main commit behind; issue #1377 was not rerun."
+    },
+    {
+      "number": 1379,
+      "title": "Safety: make Barrot signal and knowledge workflows review-gated",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "34722b7053c33ea0424d18005da7a8eeebab2147",
+      "head_sha": "9abfef6f9a7b969f908440c427f40c9248eb14a5",
+      "mergeable": true,
+      "checks": "Core CI and fail-closed gate passed on PR head; base is one main commit behind with no changed-path overlap identified; fresh merge-commit checks still required."
+    },
+    {
+      "number": 1355,
+      "title": "Stop mutable variable-horizon XRP accuracy scoring",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+      "head_sha": "33776a0f838e875a8c1dfedc046105520b75659f",
+      "mergeable": true,
+      "checks": "Prior head checks passed; base is materially behind current main; no current-main validation."
+    },
+    {
+      "number": 1373,
+      "title": "Make scheduled cross-analysis read-only",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+      "head_sha": "99c5efbdcbff55aea9294d7bbfa235879f812f02",
+      "mergeable": true,
+      "checks": "Prior head checks passed; older than current main."
+    },
+    {
+      "number": 1374,
+      "title": "Isolate Hugging Face upload token from remote-code merge",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "3a1b1e7a2cf2a22e262d73592ceec9196356fbae",
+      "head_sha": "5f70b26eac93b4835130db2541e085dd2e107ce2",
+      "mergeable": true,
+      "checks": "Prior tests passed; unpinned dependencies, remote-code execution and artifact trust remain."
+    },
+    {
+      "number": 1375,
+      "title": "MMI V1 single-contract remediation",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "617d48a4980c6f1d0d6bafc168321c8410916e26",
+      "head_sha": "1939bf96426ecfe74c607f054f29bb84291b78d0",
+      "mergeable": true,
+      "checks": "Prior tests passed; only first remediation slice, not full MMI acceptance matrix."
+    },
+    {
+      "number": 1367,
+      "title": "Fail closed on unidentified paper-trading position",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "base_sha": "7bc248654412643af1baf071db707771cb1ce2e5",
+      "head_sha": "9ee42d8a6d2e90a43e15f80558b7ec599aad84a0",
+      "mergeable": true,
+      "checks": "Prior checks passed; main paper position product identity remains null and untouched."
+    }
+  ],
+  "workflow_audit": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "Scheduled and workflow_run triggers with contents:write and automatic commit/push to main; PR #1379 proposes review-gated/read-only replacement."
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "risk": "Scheduled workflow writes mutable signal history and accuracy output to main; legacy variable-horizon 45.9% metric is not valid out-of-sample skill; PR #1379 proposes read-only artifact treatment."
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "risk": "Manual workflow has contents:write and can commit/push to main; PR #1379 proposes review-gated publication."
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "Manual workflow has write/merge/delete capability and dry_run=false default; PR #1381 proposes read-only queue behavior."
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "15-minute schedule with contents:write and actions:write; latest run 41124143665 succeeded with zero tasks fired and no main commit."
+    },
+    {
+      "path": ".github/workflows/subscriber_sync.yml",
+      "risk": "Scheduled workflow reads Gumroad sales, hashes customer emails with unsalted SHA-256 and writes public web/subscribers.json; current file contains zero hashes and latest run 41124378900 found zero active subscribers with no main commit."
+    },
+    {
+      "path": ".github/workflows/sync-huggingface.yml",
+      "risk": "Manual upload path still needs pinned dependencies and a trust boundary for untrusted artifacts/remote code; PR #1374 isolates upload token but does not close all supply-chain risks."
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "risk": "Previously observed push-event runs with zero jobs despite workflow_dispatch-only declaration; root cause remains unresolved and no job logs exist."
+    }
+  ],
+  "security_audit": [
+    {
+      "finding": "Public subscriber hash exposure",
+      "severity": "HIGH_FUTURE_RISK",
+      "status": "CURRENT_FILE_EMPTY",
+      "detail": "SHA-256 hashes of email addresses are pseudonymous, dictionary-attackable identifiers. Current web/subscribers.json count is zero, so no current hashes were observed. The page uses the hash list for access gating; do not disable without tested replacement."
+    },
+    {
+      "finding": "Subscriber workflow credential handling",
+      "severity": "MEDIUM",
+      "status": "REVIEW_REQUIRED",
+      "detail": "Gumroad access token is supplied as an API query parameter in the workflow; no secret value was read or exposed in this audit."
+    },
+    {
+      "finding": "Workflow write permissions",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "detail": "Multiple scheduled/manual workflows retain main write permissions; no merge or permission change performed."
+    },
+    {
+      "finding": "Hugging Face supply chain",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "detail": "Unpinned dependencies, remote-code execution and untrusted artifact handling remain after token-isolation proposal."
+    },
+    {
+      "finding": "Paper-trader state identity",
+      "severity": "HIGH",
+      "status": "PROTECTED_BY_DRAFT_PR",
+      "detail": "Persisted open position still has null product identity; no reset, guessed symbol or state mutation."
+    }
+  ],
+  "ci_and_test_evidence": [
+    {
+      "run_id": 41122537226,
+      "head_sha": "39a5cc830c9c973728f96e756809c92d3757d2af",
+      "result": "PASS",
+      "detail": "19 exact-head ledger validator tests passed."
+    },
+    {
+      "run_id": 41122536876,
+      "head_sha": "39a5cc830c9c973728f96e756809c92d3757d2af",
+      "result": "PASS",
+      "detail": "Fail-closed gate passed; automatic merge disabled."
+    },
+    {
+      "run_id": 41120930158,
+      "head_sha": "b22472f10ba8e8c169892780572784f64c6ed4a2",
+      "result": "PASS",
+      "detail": "PR #1381 core CI passed 343 tests plus 8 subtests."
+    },
+    {
+      "run_id": 41120930223,
+      "head_sha": "b22472f10ba8e8c169892780572784f64c6ed4a2",
+      "result": "PASS",
+      "detail": "PR #1381 fail-closed gate passed."
+    },
+    {
+      "run_id": 41124143665,
+      "head_sha": "78e5cf1fd3ca64768f4c83107210532c6f0c41ec",
+      "result": "PASS_NO_CHANGES",
+      "detail": "Scheduler Tick fired zero queue entries; no main commit."
+    },
+    {
+      "run_id": 41124378900,
+      "head_sha": "78e5cf1fd3ca64768f4c83107210532c6f0c41ec",
+      "result": "PASS_NO_CHANGES",
+      "detail": "Subscriber Sync found zero active subscribers; no main commit."
+    }
+  ],
+  "blockers": [
+    "No public actual XRP collateral utilization, custody AUC or venue client balances.",
+    "raRVLN AMM/vault/loan-broker asset pair and identity unresolved; XRPLWin rate-limited object details.",
+    "r39TA beneficial owner and complete XRP/RLUSD history unknown.",
+    "Binance rNxp4h is linked to compromised rDAE53 by activation, but is not established as compromised or as a reserve wallet.",
+    "No XRP-specific amount for Binance's announced market/OTC replenishment.",
+    "Subscriber email-hash gate cannot be safely replaced until Gumroad product ID and a tested license-key/server-side verification path are established.",
+    "Full repository CI and dependency/security scans were not run in this pass."
+  ],
+  "platform_coordination": {
+    "authenticated_or_tested": [
+      "GitHub repository connector"
+    ],
+    "not_authenticated_or_live": [
+      "Claude",
+      "Grok/xAI",
+      "Gemini",
+      "Copilot",
+      "Codex as a separate external collaborator",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "design_status": "DESIGNED_ONLY",
+    "rule": "No live collaboration claim until authentication, permissions, data flow and evidence handoff are tested."
+  },
+  "main_modified": false,
+  "merged_prs": [],
+  "force_pushes": [],
+  "deployments": [],
+  "manual_workflow_dispatches": [],
+  "paper_state_mutations": [],
+  "real_money_trades": [],
+  "next_actions": [
+    "Run exact-head validator and fail-closed gate after the new research append.",
+    "Recheck main and open PRs before any branch updates; no merge without approval.",
+    "Prioritize a privacy-safe subscriber verification design after product ID and customer access requirements are verified.",
+    "Prepare fresh-main remediation for scheduler-tick and subscriber-sync writers without breaking scheduled functionality.",
+    "Keep PR #1381, #1379 and #1380 open and unmerged; refresh checks after current-main changes.",
+    "Continue XRP wallet-flow, PoR and collateral utilization investigation."
+  ]
+}

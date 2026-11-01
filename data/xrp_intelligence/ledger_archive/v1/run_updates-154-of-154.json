@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 153,
+  "chunk_count": 154,
+  "record_count": 1,
+  "created_at_utc": "2026-10-31T17:07:00Z",
+  "records": [
+    {
+      "id": "RUN-20261031T170700Z-SBI-RETAIL-DISTRIBUTION-MARKET-AND-V3-SAFETY",
+      "recorded_at_utc": "2026-10-31T17:07:00Z",
+      "update_type": "SBI_XRP_RETAIL_DISTRIBUTION_ACTUAL_CAPITAL_AND_CURRENT_MAIN_WORKFLOW_AUDIT",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "previous_research_head_sha": "2bca5f4214f16eaaf40dead24147b6fc6bff5312",
+      "data_cutoff_utc": "2026-10-31T17:07:00Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261031T170700Z-sbi-retail-distribution-market-and-v3-audit.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T170700Z-sbi-retail-distribution-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T170700Z-sbi-retail-distribution-actual-capital-and-v3-safety.json",
+      "repository_audit_path": "data/repository_audits/20261031T170700Z-current-main-193-pr-and-workflow-safety-audit.json",
+      "source_bundle_path": "data/xrp_intelligence/sources/20261031T170700Z-sbi-retail-distribution-sources.json",
+      "source_ids": [
+        "SRC-20261031T170700Z-SBI-VC-TRADE-DCA",
+        "SRC-20261031T170700Z-SBI-VISA-CRYPTO-CARD",
+        "SRC-20261031T170700Z-SBI-HOLDINGS-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-ARUHI-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-INSURANCE-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-SHINSEI-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-GLOBAL-ASSET-XRP-SHAREHOLDER",
+        "SRC-20261031T170700Z-SBI-VISA-CARD-LAUNCH",
+        "SRC-20261031T170700Z-SBI-VC-TRADE-CORPORATE",
+        "SRC-20261031T170700Z-BINANCE-XRP-PRICE",
+        "SRC-20261031T170700Z-LIQWALL-XRP-PANEL",
+        "SRC-20261031T170700Z-GITHUB-MAIN-REF-PR-INVENTORY",
+        "SRC-20261031T170700Z-GITHUB-PR-1419",
+        "SRC-20261031T170700Z-GITHUB-PR-1420",
+        "SRC-20261031T170700Z-GITHUB-CI-GATES-1419-1420"
+      ],
+      "findings": [
+        "SBI VC Trade's official product page confirms customer-funded scheduled XRP accumulation from JPY 500 to JPY 2,000,000 per order, daily/weekly/monthly, requiring prefunded JPY.",
+        "SBI VISA Crypto Card automatically converts eligible points into one selected asset among BTC, ETH and XRP; the September–October campaign had ended in Japan by the capture time.",
+        "Five SBI Group entities published 2026 shareholder-benefit programs that can deliver XRP into same-name SBI VC Trade accounts; the programs are JPY-denominated benefit liabilities, not proof of market purchases.",
+        "SBI Insurance Group's official release identifies SBI Holdings as Ripple investor and strategic partner and states that SBI Ripple Asia was established in 2016.",
+        "The current market panel shows XRP around USD 1.25, Liqwall OI USD 1.33B, positive funding and a 72.9% Binance long-account share; account share is not notional exposure and provider OI universes remain inconsistent.",
+        "Fresh-main PR #1419 and #1420 now have exact-head CI and fail-closed gates passing; both remain draft and unmerged.",
+        "Current main remains at 9a25; 193 open PRs include 189 stale main-based proposals."
+      ],
+      "actual_capital_separation": {
+        "dca": "CUSTOMER_FUNDED_PURCHASE_MECHANISM_CONFIRMED; FILLS_UNKNOWN",
+        "card": "POINT_REWARD_DISTRIBUTION; SPOT_BUY_UNKNOWN",
+        "shareholder": "XRP_BENEFIT_DISTRIBUTION; SPOT_BUY_UNKNOWN",
+        "external_sourcing": "UNKNOWN",
+        "net_external_xrp_capital": "UNKNOWN"
+      },
+      "market_observations": [
+        {
+          "observation_id": "XRP-MARKET-20261031T164200Z-LIQWALL",
+          "provider": "Liqwall",
+          "observed_at_utc": "2026-10-31T16:42:00Z",
+          "retrieved_at_utc": "2026-10-31T17:07:00Z",
+          "asset": "XRP",
+          "price_usd": 1.25,
+          "open_interest_usd": 1330000000,
+          "open_interest_change_24h_pct": 0.8,
+          "average_funding_8h_pct": 0.004,
+          "binance_funding_8h_pct": 0.01,
+          "liquidations_rolling_24h_usd": 808000,
+          "long_liquidations_usd": 542000,
+          "short_liquidations_usd": 266000,
+          "binance_long_account_share_pct": 72.9,
+          "binance_top_trader_long_account_share_pct": 71,
+          "window_semantics": "Rolling 24-hour liquidations; not comparable to UTC-day bins.",
+          "feature_admission": "PROVIDER_SPECIFIC_OBSERVATION_ONLY; NO_DIRECTIONAL_FEATURE_ADMITTED"
+        },
+        {
+          "observation_id": "XRP-MARKET-20261031T115300Z-BINANCE-DIRECTORY",
+          "provider": "Binance Price Directory",
+          "observed_at_utc": "2026-10-31T11:53:00Z",
+          "retrieved_at_utc": "2026-10-31T17:07:00Z",
+          "asset": "XRP",
+          "price_usd": 1.25,
+          "change_24h_pct": 0.18,
+          "market_cap_usd": 79100000000,
+          "volume_24h_usd": 2000000000,
+          "circulating_supply_xrp": 63400000000,
+          "high_24h_usd": 1.26,
+          "low_24h_usd": 1.23,
+          "window_semantics": "Provider page's explicit last-updated marker is 11:53 UTC.",
+          "feature_admission": "PRICE_CROSSCHECK_ONLY; OLDER_THAN_LIQWALL_PANEL"
+        }
+      ],
+      "repository_state": {
+        "main_sha": "9a25f4c05983c93c2fb572f7c2ff0f6c5006a999",
+        "open_pr_count": 193,
+        "draft_pr_count": 183,
+        "ready_pr_count": 10,
+        "stale_main_based_pr_count": 189,
+        "current_main_based_prs": [
+          1419,
+          1420
+        ],
+        "pr1419": {
+          "head_sha": "4fd68e3b0a00868e52ae10aa9369372b9df12df4",
+          "ci_run_id": 41222623134,
+          "tests_passed": 345,
+          "subtests_passed": 8,
+          "gate_run_id": 41222623112,
+          "gate_status": "PASS_MERGE_DISABLED"
+        },
+        "pr1420": {
+          "head_sha": "9950a00fae54afed0c84db2e1946f6c6f1f9fa15",
+          "ci_run_id": 41222627119,
+          "tests_passed": 346,
+          "subtests_passed": 8,
+          "gate_run_id": 41222627169,
+          "gate_status": "PASS_MERGE_DISABLED"
+        },
+        "main_modified_by_this_run": false
+      },
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 15,
+        "missing_source_references": 0,
+        "expected_archive_shards": 424,
+        "main_modified": false
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "merge": false,
+      "force_push": false,
+      "manual_dispatch": false,
+      "deployment": false,
+      "secret_access": false,
+      "real_money_trade": false,
+      "next_actions": [
+        "Validate the new 424-shard ledger pointer and snapshot source references on the exact metadata head.",
+        "Reconcile SBI DCA execution and XRP reward sourcing before estimating actual capital.",
+        "Recheck Binance post-incident PoR and XRP receiver state.",
+        "Keep provider-specific derivatives data separate and build fixed-horizon walk-forward benchmarks.",
+        "Review PR #1419 and #1420; no merge without approval."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T164500Z-SAFU-FUTURES-ADGM",
+  "captured_at_utc": "2026-10-31T16:45:00Z",
+  "status": "ACCEPTED_FOR_EVENT_TIMELINE; DIRECTIONAL_FEATURES_NOT_ADMITTED",
+  "decisions": [
+    "Model SAFU, Futures Insurance Funds and corporate treasury as three distinct reimbursement sources; do not aggregate them into one reserve wallet.",
+    "Treat Binance's partial SAFU deployment as a company claim with a 24-hour future window; at 16:45 UTC October 31 the deadline had not elapsed.",
+    "Record the public SAFU BTC wallet's BitInfoCharts balance and transaction summary as one provider observation; do not infer the entire SAFU balance or deployment status from one address.",
+    "Treat Nest Clearing and Custody Limited as the ADGM-recognised legal custodian and clearing house for the relevant Binance structure; keep Nest Exchange and Nest Trading as separate legal entities and functions.",
+    "Treat Futures Insurance Fund as exchange-funded and not user assets; record Binance's statement that the remainder is above its required minimum, but independently verify pool-level balances.",
+    "Do not treat Binance's XRPUSDT shared insurance pool as XRP-specific because it covers ten symbols; keep Bybit's XRPUSD isolated pool separate.",
+    "Do not admit SAFU or insurance-fund balances as directional XRP features until historical, time-aligned pool balances and OI denominators are available."
+  ],
+  "required_verification": [
+    "Recheck public SAFU BTC address after 2026-11-01T14:24:00Z.",
+    "Obtain Binance official Futures Insurance Fund daily balance snapshots before/after the reallocation.",
+    "Reconcile ADGM capital-reserve requirements and SAFU segregation from public filings.",
+    "Obtain contract-level OI and pool-level loss/coverage data for Binance XRPUSDT and Bybit XRPUSD."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

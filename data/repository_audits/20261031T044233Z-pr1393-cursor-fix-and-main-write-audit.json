@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0",
+  "record_type": "barrot_repository_audit",
+  "audit_id": "AUDIT-20261031T044233Z-PR1393-CURSOR-FIX-AND-MAIN-WRITE-AUDIT",
+  "captured_at_utc": "2026-10-31T04:42:33Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "df35e4ef72200495ce83126fcf26e78cc8cf775b",
+  "source_references": [
+    "SRC-20261031-GITHUB-PR1393-CI-043633Z",
+    "SRC-20261031-GITHUB-PR1393-GATE-043633Z",
+    "SRC-20261031-GITHUB-XRP-LEDGER-VALIDATOR-044139Z",
+    "SRC-20261031-GITHUB-XRP-LEDGER-GATE-044139Z",
+    "SRC-20261031-GITHUB-MAIN-HEAD-044233Z",
+    "SRC-20261031-GITHUB-MAIN-WORKFLOWS-044233Z",
+    "SRC-20261031-GITHUB-PR1392-044233Z",
+    "SRC-20261031-GITHUB-PR1394-044233Z",
+    "SRC-20261031-GITHUB-PR1390-044233Z"
+  ],
+  "source_reference_count": 9,
+  "missing_source_references": 0,
+  "latest_main_commit": {
+    "sha": "df35e4ef72200495ce83126fcf26e78cc8cf775b",
+    "message": "Cross-analysis refresh [skip ci]",
+    "path": "ping-pongings/knowledge-base/sentiment_shift.json",
+    "committed_at_utc": "2026-10-31T03:51:40Z",
+    "signed": false,
+    "associated_workflow_runs": 0,
+    "actor": "Barrot-Agent",
+    "causal_process": "UNKNOWN"
+  },
+  "pull_requests": [
+    {
+      "number": 1392,
+      "head_sha": "a220326569e2da370842287f2390503fe06199ae",
+      "base_sha": "df35e4ef72200495ce83126fcf26e78cc8cf775b",
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "mergeable": true,
+      "ci_run_id": 41167455337,
+      "ci_tests_passed": 388,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41167455378,
+      "gate": "PASS_MERGE_DISABLED",
+      "scope": "Read-only cross-analysis and signal-accuracy/telemetry changes plus bounded scheduler allowlist and merge/deployment gates; scheduler-tick queue commit to main remains."
+    },
+    {
+      "number": 1393,
+      "head_sha": "573f91614e3b7542ff485575bd2d55f598b9c20d",
+      "base_sha": "df35e4ef72200495ce83126fcf26e78cc8cf775b",
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "mergeable": true,
+      "ci_run_id": 41169234347,
+      "ci_tests_passed": 349,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41169234345,
+      "gate": "PASS_MERGE_DISABLED",
+      "scope": "Morpho cbXRP/USDC read-only ingestion, now with top-level pagination-cursor detection and two regression tests; live API not executed and scheduled artifact workflow inactive until merge."
+    },
+    {
+      "number": 1394,
+      "head_sha": "2541ece48bdfd00a47abf9c10afb190ca77e02f6",
+      "base_sha": "df35e4ef72200495ce83126fcf26e78cc8cf775b",
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "mergeable": true,
+      "ci_run_id": 41168580068,
+      "ci_tests_passed": 356,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41168580089,
+      "gate": "PASS_MERGE_DISABLED",
+      "scope": "Task-bundle schema and destructive rollback safeguards; live autonomous repair remains unverified."
+    },
+    {
+      "number": 1390,
+      "head_sha": "0db7bfb7ee3967a0eb5b45ebe277f9f429ad45f7",
+      "base_sha": "7a780dec1aaeea1d02df7d430cbd27768a0024b5",
+      "state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "mergeable": true,
+      "ci_run_id": 41158871301,
+      "ci_tests_passed": 348,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41158871353,
+      "gate": "PASS_MERGE_DISABLED",
+      "scope": "Narrow scheduler allowlist; stale base and overlapping scheduler work in #1392 make it a non-independent merge candidate."
+    }
+  ],
+  "main_write_paths": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "permission": "contents:write",
+      "trigger": "workflow_run Knowledge Signal Cycle, hourly cron, workflow_dispatch",
+      "effect": "commits and pushes cross-analysis refresh to main",
+      "status": "ACTIVE_ON_MAIN; PR1392_READ_ONLY_PROPOSAL"
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "permission": "contents:write",
+      "trigger": "daily cron and workflow_dispatch",
+      "effect": "commits and pushes signal accuracy output to main",
+      "status": "ACTIVE_ON_MAIN; PR1392_READ_ONLY_PROPOSAL"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "permission": "contents:write and actions:write",
+      "trigger": "every 15 minutes and workflow_dispatch",
+      "effect": "dispatches allowlisted workflow and commits schedule_queue.jsonl to main",
+      "status": "ACTIVE_ON_MAIN; STILL_WRITES_IN_PR1392"
+    }
+  ],
+  "scheduler": {
+    "allowlist": [
+      "barrot-controlled-feature-validation.yml"
+    ],
+    "target_workflow_restriction": "PR #1225 only; exact feature branch feat/bundle-task-dispatch-resume-20261027",
+    "xrp_research_scheduling": "NOT_SUPPORTED_BY_CURRENT_ALLOWLIST",
+    "queue_storage": "ping-pongings/knowledge-base/schedule_queue.jsonl on main",
+    "status": "DESIGNED_NARROW_ALLOWLIST_EXECUTED_TICK_WRITE_PATH_REMAINS"
+  },
+  "repository_inventory": {
+    "last_full_open_pr_count": 168,
+    "last_full_count_at_utc": "2026-10-31T04:28:05Z",
+    "full_recount_this_run": false,
+    "dependency_lockfiles_found": 0,
+    "dependency_manifest_inventory": "PARTIAL_READ_ONLY",
+    "security_alerts": "NOT_ACCESSIBLE_THROUGH_AVAILABLE_GITHUB_READ_ACTION",
+    "full_repository_ci": "NOT_RUN"
+  },
+  "platform_coordination": {
+    "designed_platforms": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "authenticated_external_platforms": 0,
+    "verified_external_handoffs": 0,
+    "status": "DESIGNED_NOT_EXECUTED"
+  },
+  "blockers": [
+    "Main still has three write-capable workflows; PR #1392 is not merged.",
+    "PR #1392 scheduler-tick continues to write queue state to main and retains actions:write.",
+    "Current scheduler allowlist only dispatches a controlled validation workflow for PR #1225; no general XRP research schedule.",
+    "PR #1393 live Morpho API request and first scheduled artifact have not been executed.",
+    "Issue #1377 has not been rerun with a valid bundle against a live provider.",
+    "No dependency lockfiles found in the partial manifest inventory; security-alert access unavailable; full repository CI not run.",
+    "Only ChatGPT and GitHub are verified active; the other eight platforms have no tested authentication or handoff."
+  ],
+  "safety": {
+    "main_changed_by_this_run": false,
+    "main_write_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "manual_workflow_dispatch_performed": false,
+    "dirty_worktree_mutated": false,
+    "paper_state_mutated": false,
+    "real_money_trade_performed": false
+  },
+  "next_actions": [
+    "Keep main unchanged; require review/approval before merging any PR.",
+    "Resolve whether scheduler queue state can move to a dedicated state branch or external artifact without overwriting user work.",
+    "Do not expand scheduler allowlist until an exact-commit, read-only XRP validation workflow is implemented and reviewed.",
+    "After PR #1393 approval/merge, inspect first live Morpho artifact and compare raw state/oracle/history; do not admit features yet.",
+    "Recheck PR #1392 and #1394 on fresh main before approval.",
+    "Continue full dependency lock and security-alert audit when authorized read access exists."
+  ]
+}

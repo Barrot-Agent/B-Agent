@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "XRP-ADR-20261030T083100Z-CIRCLE-SBI-RIPPLE-COINBASE-ECONOMIC-NETWORK",
+  "captured_at_utc": "2026-10-30T08:31:00Z",
+  "title": "Correct direct Circle-SBI relationship and model Coinbase/Circle stablecoin economics separately from XRP demand",
+  "status": "PRIMARY_SOURCE_RECONCILIATION_EXECUTED; GRAPH_CORRECTED; MARKET_FEATURES_NOT_ADMITTED",
+  "decisions": [
+    "Record Circle SBI Japan K.K. as a direct 50/50 Circle-SBI JV established in 2025 for USDC distribution in Japan. Circle consolidates it as a VIE despite 50% equity; Q2 2026 filing reports no significant operating results through June 30.",
+    "Record SBI Holdings and SBI Shinsei Bank as Circle strategic equity investors with USD25M each at the 2025 IPO; keep this distinct from the Circle-SBI Japan JV and SBI's historical Ripple stake.",
+    "Correct the prior 2026-10-30T083100Z snapshot's no-direct-Circle-SBI statement; preserve the old snapshot and append a correction.",
+    "Record Coinbase's Q3 2026 SEC disclosure that its Circle arrangement was renewed on the same terms and average USDC in products reached an all-time high.",
+    "Record Circle's Q2 2026 SEC-reported USD655.3M H1/USD324.6M Q2 distribution costs to Coinbase and the balance-linked/ecosystem-growth formula.",
+    "Model stablecoin revenue as a function of average USDC balances, reserve rates, distribution terms and incentives. Q3 balance growth was partly offset by lower rates; do not treat revenue as direct XRP flow.",
+    "Keep Circle's 84% Circle Reserve Fund exposure, BlackRock management and bank cash separately modeled; SBI/BlackRock JPYSC tokenized-MMF MOU is a shared manager link, not a common reserve pool.",
+    "Treat native USDC and RLUSD on XRPL as stablecoin liquidity; do not infer native XRP demand or bridge use without transaction-path analysis.",
+    "Keep Coinbase as multi-issuer distributor: USDC with Circle, RLUSD with Ripple, and Open Standard/OUSD founding-partner role. Token-level balances and revenue splits remain unknown.",
+    "Do not admit Coinbase/Circle financial metrics as XRP prediction features until causal mapping and walk-forward validation demonstrate incremental out-of-sample value."
+  ],
+  "rationale": [
+    "Primary SBI and SEC documents establish a direct Circle-SBI JV and equity relationship missed in the prior addendum.",
+    "Coinbase Q3 and Circle Q2 SEC filings quantify stablecoin distribution economics and rate sensitivity.",
+    "Circle USDC and Ripple RLUSD coexist on XRPL, but no direct Circle-Ripple partnership or automatic XRP demand follows."
+  ],
+  "feature_admission": {
+    "coinbase_q3_stablecoin_revenue": "CONTEXT_ONLY",
+    "circle_q2_usdc_supply_reserve_yield": "CONTEXT_ONLY",
+    "coinbase_circle_distribution_costs": "CONTEXT_ONLY",
+    "circle_sbi_jv_equity": "ENTITY_GRAPH_ONLY",
+    "usdc_on_xrpl_supply_volume": "PENDING_CHAIN_LEVEL_TIME_SERIES",
+    "native_xrp_bridge_usage": "PENDING_TRANSACTION_PATH_CLASSIFICATION",
+    "xrp_prediction_feature_admission": false
+  },
+  "next_action": "Obtain Circle Q3 2026 results on November 4; reconcile USDC circulation, reserve yield, Coinbase platform share, Circle SBI Japan operating results and XRP/XRPL transaction paths. Continue Binance PoR wallet crosswalk and public-only bitbank MCP evaluation.",
+  "forecast_status": "NOT_ISSUED"
+}

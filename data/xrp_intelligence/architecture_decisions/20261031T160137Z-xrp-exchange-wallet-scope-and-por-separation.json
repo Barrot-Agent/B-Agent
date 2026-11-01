@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-XRP-20261031T160137Z-EXCHANGE-WALLET-SCOPE-POR-SEPARATION",
+  "captured_at_utc": "2026-10-31T16:01:37Z",
+  "status": "ACCEPTED_FOR_CUSTODY_TIMELINE; PRICE_FEATURES_BLOCKED",
+  "decisions": [
+    "Use XRP Insights as a broad XRPL attributed-wallet custody series: balances are read from rippled account_info, while exchange attribution relies on XRPSCAN public labels.",
+    "Keep the 22.48B all-exchange attributed-wallet total separate from tradable float, order-book liquidity, customer liabilities and proprietary exchange holdings.",
+    "Separate known non-customer reserves/funds (487.2M XRP: Binance-Peg 325.8M, cbXRP 150.2M, insurance/charity 11.2M) from customer-custody interpretations.",
+    "Record cold/hot/unclassified shares separately; do not equate hot-labelled balances with immediate sellable liquidity.",
+    "Correct the Binance theft-reserve hypothesis: XRP Insights reports Binance same-wallet changes +17.6M over 7d and +30.3M over 30d; Oct30 all-exchange -207.3M was followed by +105.9M on Oct31. Causality remains unresolved.",
+    "Keep CryptoQuant's narrower exchange reserve series separate from XRP Insights' XRPSCAN-labelled broad wallet universe; do not average or treat the prior 2.58B observation as the same series as the current 2.78B observation.",
+    "Treat Binance Update #3's XRP 1:1 coverage as a primary company claim at 2026-10-31 00:00 UTC; full zk-SNARK proof and independent same-time reserve/liability reconciliation remain pending.",
+    "Do not infer XRP spot/OTC purchases from Binance's 90% aggregate replenishment claim or from the XRP 1:1 coverage claim.",
+    "Admit institutional updates (Coinbase/RLUSD, BNY custody, Aviva tokenized fund, C2FO Instant Pay, Ripple National Trust Bank, SBI multi-rail) to the event timeline only; they do not establish XRP purchases or XRP collateral balances.",
+    "Keep ETF and derivatives provider series separate; partial ETF reports and non-comparable OI universes are not directional features.",
+    "No new directional XRP feature is admitted and no forecast is issued."
+  ],
+  "required_verification": [
+    "Crosswalk all five Binance incident source wallets against the exact XRPSCAN label snapshot and CryptoQuant reserve address universe.",
+    "Obtain Binance's full zk-SNARK proof and same-time October 31 XRP reserve-address/customer-liability export by the November 3 estimate.",
+    "Reconcile 2.78B Binance attributed wallets against the prior 2.58B reserve-series observation without assuming a 200M inflow.",
+    "Reproduce the 701-wallet XRPL account_info balances from public ledger state and version the XRPSCAN label set.",
+    "Obtain venue-level order-book depth, spreads and executed volumes before translating wallet balances into liquidity or float.",
+    "Reconcile complete ETF flows from issuer files and futures OI at contract level before any model admission."
+  ],
+  "feature_admission": {
+    "exchange_wallet_balances": "CUSTODY_TIMELINE_ONLY",
+    "exchange_balance_directional_feature": "NOT_ADMITTED",
+    "binance_theft_reserve_causality": "WEAKENED_NOT_ESTABLISHED",
+    "binance_recovery_xrp_purchase": "NOT_ADMITTED",
+    "composite_oi": "NOT_ADMITTED",
+    "daily_etf_flows": "NOT_ADMITTED",
+    "actual_capital": "BLOCKED",
+    "forecast": "NOT_ISSUED"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261031T003700Z-MAIN-PR1388-AND-CBXRP-COLLATERAL",
+  "created_at_utc": "2026-10-31T00:37:00Z",
+  "captured_at_utc": "2026-10-31T00:37:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "default_branch": "main",
+  "main": {
+    "head_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+    "compare_status": "UNCHANGED_DURING_THIS_RUN",
+    "modified_by_this_run": false
+  },
+  "open_pr_inventory": {
+    "total_open": 163,
+    "draft": 153,
+    "ready_for_review": 10,
+    "main_based": 161,
+    "stale_main_base": 159,
+    "current_main_base": 2,
+    "non_main_base": 2,
+    "source": "GitHub Search API total_count plus two paginated pulls API pages"
+  },
+  "pull_requests": [
+    {
+      "number": 1388,
+      "title": "Safety: replace mutation-capable merge queue with read-only audit on current main",
+      "head_sha": "8c633f4d6d076522770b9773a71cf3484312aecd",
+      "base_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+      "state": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "ci_run_id": 41151068671,
+      "ci_status": "PASS",
+      "tests_passed": 343,
+      "subtests_passed": 8,
+      "gate_run_id": 41151068718,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "summary": "Removes write/merge/delete/update-branch behavior from manual merge queue, replaces it with read-only PR inventory, adds regression test. Workflow itself was not manually dispatched."
+    },
+    {
+      "number": 1386,
+      "title": "Safety: remove scheduled main writes and quarantine legacy XRP accuracy",
+      "head_sha": "969fbd32b7909014e013056f3ae4cb33e17a8c54",
+      "base_sha": "f97ac7a4c1dd08afe1ccd37b40fe2aae5ba5bbf9",
+      "state": "OPEN_DRAFT_UNMERGED_MERGEABLE",
+      "ci_run_id": 41149771642,
+      "ci_status": "PASS",
+      "tests_passed": 354,
+      "subtests_passed": 8,
+      "gate_run_id": 41149771730,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "summary": "Consolidates read-only cross-analysis and daily accuracy workflow fixes; legacy variable-horizon accuracy is quarantined. Not merged."
+    },
+    {
+      "number": 1353,
+      "title": "Research: losslessly shard XRP ledger with hash-verified read-only validation",
+      "head_sha": "80c72908549ec4cd70126f6fa2a74f80690933ca",
+      "base_ref": "research/xrp-ledger-index-pointer-migration-20261028T1959Z",
+      "base_sha": "99a1880fa6fb2f0ef681ce816c2421f6de24a676",
+      "state": "OPEN_DRAFT_UNMERGED_MERGEABLE_STACKED_RESEARCH_PR",
+      "validator_run_id": 41150495133,
+      "validator_status": "PASS_294_SHARDS_1743_SOURCES_310_RUN_UPDATES_742_LIMITATIONS_20_TESTS",
+      "gate_run_id": 41150495070,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "summary": "Current research branch targets a parent research branch, not main. Latest exact-head validator checked 294 archive shards, 1,743 source IDs, 310 run updates and 742 limitations; 20 regression tests passed."
+    }
+  ],
+  "main_active_write_paths": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "status": "WRITE_CAPABLE_ON_MAIN",
+      "risk": "Scheduled hourly/workflow_run path retains contents:write and automatic commit/push; PR #1386 proposes read-only replacement."
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "status": "WRITE_CAPABLE_ON_MAIN",
+      "risk": "Daily writer can mutate legacy signal history; PR #1386 proposes read-only artifact output and accuracy quarantine."
+    },
+    {
+      "path": ".github/workflows/knowledge-signal-cycle.yml",
+      "status": "MANUAL_WRITE_CAPABLE",
+      "risk": "Manual workflow retains write capability; no dispatch occurred."
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "status": "MANUAL_MUTATION_CAPABLE_ON_MAIN",
+      "risk": "PR #1388 replaces it with read-only inventory, but PR is not merged."
+    }
+  ],
+  "approval_workflow": {
+    "path": ".github/workflows/barrot-approve-pr.yml",
+    "latest_observed_run_id": 41150491599,
+    "event": "push",
+    "conclusion": "failure",
+    "job_count": 0,
+    "root_cause": "UNRESOLVED_NO_JOB_LOGS",
+    "note": "Workflow file inspected on main and research branch; configured for workflow_dispatch, but a push-event run with zero jobs recurs. No bypass or manual dispatch."
+  },
+  "prediction_engine": {
+    "legacy_accuracy_status": "NOT_COMPARABLE_NOT_VALID_OUT_OF_SAMPLE_SKILL",
+    "fixed_horizon_model": "NOT_IMPLEMENTED",
+    "latest_main_signal_status": "STALE_SCORE_44_CONFIDENCE_0",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "dependencies": {
+    "manifests": [
+      "requirements.txt",
+      "requirements-dev.txt",
+      "pyproject.toml",
+      "hf_space/requirements.txt",
+      "a2a/package.json"
+    ],
+    "lockfiles_found": 0,
+    "status": "LOWER_BOUND_DEPENDENCIES_NO_LOCKFILE_REPRODUCIBILITY_RISK"
+  },
+  "security": {
+    "dependabot": "NOT_ACCESSIBLE",
+    "code_scanning": "NOT_ACCESSIBLE",
+    "secret_scanning": "NOT_ACCESSIBLE",
+    "sbom": "NOT_ACCESSIBLE",
+    "full_repository_ci": "NOT_RUN",
+    "vulnerability_scan": "NOT_RUN"
+  },
+  "platforms": {
+    "ChatGPT": "ACTIVE_CURRENT_SESSION",
+    "GitHub": "CONNECTED_AND_TESTED",
+    "Claude": "NOT_AUTHENTICATED_OR_TESTED",
+    "Grok": "NOT_AUTHENTICATED_OR_TESTED",
+    "Gemini": "NOT_AUTHENTICATED_OR_TESTED",
+    "Copilot": "NOT_AUTHENTICATED_OR_TESTED",
+    "Codex": "STANDALONE_PLATFORM_AUTH_NOT_VERIFIED",
+    "HuggingFace": "NOT_AUTHENTICATED_OR_TESTED",
+    "Kaggle": "NOT_AUTHENTICATED_OR_TESTED",
+    "Databricks": "NOT_AUTHENTICATED_OR_TESTED"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merges": 0,
+    "force_pushes": 0,
+    "deployments": 0,
+    "manual_workflow_dispatches": 0,
+    "paper_state_mutations": 0,
+    "real_money_trades": 0
+  },
+  "next_actions": [
+    "Keep PR #1388 and #1386 draft/open; do not merge without owner approval.",
+    "Fresh-main validate all safety PRs after any main advance; current main workflows remain write-capable until reviewed changes are approved and merged.",
+    "Investigate the approval workflow push-event zero-job run with workflow metadata and GitHub event semantics; do not bypass the fail-closed behavior.",
+    "Complete official Binance XRP PoR export crosswalk and raw XRPL account_info checks.",
+    "Continue fixed-horizon prediction-engine implementation; no legacy accuracy claims."
+  ]
+}

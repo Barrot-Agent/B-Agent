@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 51,
+  "chunk_count": 52,
+  "record_count": 1,
+  "created_at_utc": "2026-10-30T13:05:00Z",
+  "records": [
+    {
+      "recorded_at_utc": "2026-10-30T13:05:00Z",
+      "update_type": "SOURCE_IDENTITY_CORRECTION_PRESERVES_INDEPENDENT_PRIMARY_CORROBORATION",
+      "research_branch": "research/xrp-ledger-shard-migration-20261029T2210Z",
+      "parent_head_sha": "e84dd2973845baa7e4325134fbf90a9721e88a2b",
+      "validator_failure": {
+        "run_id": 41059722595,
+        "tests_passed": 17,
+        "tests_failed": 1,
+        "error": "duplicate source IDs",
+        "fail_closed_gate_run_id": 41059722433,
+        "gate_status": "PASS_MERGE_DISABLED"
+      },
+      "root_cause": {
+        "duplicate_source_id": "SRC-SBI-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+        "first_document": "SBI Holdings October 27 MOU announcement",
+        "first_document_path": "data/xrp_intelligence/ledger_archive/v1/sources-024-of-024.json",
+        "second_document": "Startale October 27 MOU announcement",
+        "second_document_path": "data/xrp_intelligence/ledger_archive/v1/sources-040-of-040.json",
+        "cause": "A source ID was reused across two distinct primary documents."
+      },
+      "correction": {
+        "new_source_id": "SRC-STARTALE-BLACKROCK-JPYSC-TOKENIZED-MMF-MOU-20261027",
+        "corrected_source_shard": "data/xrp_intelligence/ledger_archive/v1/sources-040-corrected-independent-of-040.json",
+        "record_count": 8,
+        "previous_seven_record_correction_preserved_unreferenced": "data/xrp_intelligence/ledger_archive/v1/sources-040-corrected-of-040.json",
+        "original_duplicate_shard_preserved_unreferenced": "data/xrp_intelligence/ledger_archive/v1/sources-040-of-040.json",
+        "source_count_net_change": 0,
+        "latest_snapshot": "data/xrp_intelligence/snapshots/20261030T130500Z-sbi-blackrock-mou-independent-source-corroboration.json",
+        "latest_graph": "data/xrp_intelligence/relationship_graph_addenda/20261030T130500Z-sbi-blackrock-mou-independent-source-corroboration.json",
+        "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261030T130500Z-source-identity-independent-primary-documents.json"
+      },
+      "next_step": "Update source chunk 39 pointer, include unreferenced run-update/limitation shards, append this update and limitation, then run exact-head validator and fail-closed gate.",
+      "main_current_sha": "30bd52caf6a4e09b4c393410f2a82d31a668cdae",
+      "main_cross_analysis_write_enabled": true,
+      "no_merge": true,
+      "no_force_push": true,
+      "no_deployment": true,
+      "no_workflow_dispatch": true,
+      "no_paper_state_mutation": true,
+      "no_real_money_trade": true,
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_architecture_decision",
+  "decision_id": "ADR-20261030T181148Z-LEDGER-VALIDATOR-TEST-FIXTURE-AND-SNAPSHOT-PATH-CORRECTION",
+  "captured_at_utc": "2026-10-30T18:11:48Z",
+  "decision": "A v3 validator fixture must use valid archive_pointer objects and a matching archive_policy summary. Every snapshot file must contain snapshot_path equal to the index pointer. Preserve malformed first attempts unreferenced and append corrected copies instead of overwriting them.",
+  "test_failure": {
+    "workflow_run_id": 41104531465,
+    "validator_tests_failed": 2,
+    "validator_tests_passed": 17,
+    "failures": [
+      {
+        "test": "test_v3_snapshot_pointer_matches_ledger_format",
+        "root_cause": "The synthetic v3 fixture lacked the newly required archive_policy object and did not use archive pointers for all three archive arrays."
+      },
+      {
+        "test": "test_current_repository_ledger_validates_read_only",
+        "root_cause": "The first 18:02 snapshot file omitted its required snapshot_path field, so the index pointer did not match the snapshot payload."
+      }
+    ]
+  },
+  "corrections": [
+    {
+      "change": "Updated v3 test fixture to create valid source/run/limitation archive shards, pointers and matching policy counts."
+    },
+    {
+      "change": "Created a corrected immutable snapshot copy with snapshot_path matching its new path; original malformed snapshot remains preserved unreferenced."
+    }
+  ],
+  "verification_status": "PENDING_NEW_EXACT_HEAD_CI_AND_FAIL_CLOSED_GATE",
+  "main_modified": false,
+  "merge_performed": false
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "record_type": "snapshot",
+  "snapshot_id": "XRP-20261101T001238Z-POST-ELIGIBILITY-ESCROW-STATUS",
+  "captured_at_utc": "2026-11-01T00:12:38Z",
+  "data_cutoff_utc": "2026-10-31T22:18:00Z",
+  "event": {
+    "name": "Ripple November 2026 scheduled XRP escrow release",
+    "eligibility_time_utc": "2026-11-01T00:00:00Z",
+    "gross_scheduled_xrp": 1000000000,
+    "escrow_object_count": 2,
+    "owner_accounts": [
+      "r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+      "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn"
+    ],
+    "elapsed_since_eligibility_seconds": 758,
+    "event_status": "ELIGIBILITY_TIME_PASSED_EXECUTION_UNVERIFIED",
+    "escrow_finish_hashes": [],
+    "destination_receipts": [],
+    "follow_on_transfers": [],
+    "reescrow_creates": [],
+    "exchange_deposits": [],
+    "market_supply_change_verified": false
+  },
+  "prior_pattern": {
+    "observation_window": "November 2025 through October 2026",
+    "monthly_releases_xrp": 12000000000,
+    "monthly_reescrows_xrp": 8400000000,
+    "reescrow_ratio": 0.7,
+    "net_outside_escrow_xrp": 3600000000,
+    "interpretation": "Descriptive prior only; not a protocol rule or a forecast for November."
+  },
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW"
+  ],
+  "source_reference_count": 1,
+  "missing_source_references": 0,
+  "source_revision_ids": [
+    "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS"
+  ],
+  "source_revision_addenda_count": 1,
+  "source_revision_addenda_pending_archive_append": 1,
+  "new_source_candidates": [
+    "SRC-XRPL-ACCOUNT-OBJECTS-DOCS-CANDIDATE",
+    "SRC-XRPL-ESCROW-FINALITY-DOCS-CANDIDATE",
+    "SRC-XRPSCAN-ACCOUNT-TRANSACTIONS-DOCS-CANDIDATE"
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "limitations": [
+    "Latest tracker observation predates eligibility by 1h42m38s.",
+    "No raw validated post-eligibility XRPL ledger response or transaction hash was obtained.",
+    "Prior Bithomp page conflict remains unresolved.",
+    "Gross eligibility is not equivalent to execution, net circulating supply, sale, or exchange sell pressure."
+  ]
+}

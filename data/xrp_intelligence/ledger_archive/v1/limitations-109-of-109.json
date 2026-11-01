@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 108,
+  "chunk_count": 109,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "LIM-20261031T033000Z-01",
+      "category": "c2fo_early_pay_metric_discrepancy",
+      "statement": "C2FO's official Oct. 27 release reports more than $525B of historical working capital accessed through existing Early Pay programs; Ripple's parallel release reports more than $520B. Preserve both as publisher-specific company statements rather than averaging or silently selecting one. Neither figure is C2FO Instant Pay production volume, XRPL settlement value, XRP demand or newly deployed capital. Actual Instant Pay funded invoices, capital providers and settled value remain undisclosed.",
+      "severity": "medium",
+      "status": "open",
+      "affected_source_ids": [
+        "SRC-RIPPLE-C2FO-INSTANTPAY-20261031T020816Z",
+        "SRC-C2FO-OFFICIAL-INSTANTPAY-20261031T033000Z"
+      ]
+    }
+  ]
+}

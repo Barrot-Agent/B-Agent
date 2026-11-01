@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit_correction",
+  "audit_id": "AUDIT-20261031T051200Z-PR1353-DIVERGENCE-AND-LIVE-MARKET-CORRECTION",
+  "captured_at_utc": "2026-10-31T05:12:00Z",
+  "main_sha": "ab053b0fc9714ef7fe368636a1fd3f6b02aab85c",
+  "research_branch": {
+    "name": "research/xrp-ledger-shard-migration-20261029T2210Z",
+    "head_sha": "a3db8ba21b0c11da98ad303a7e962eb3d21a4d2d",
+    "pr_number": 1353,
+    "state": "OPEN_DRAFT_UNMERGED",
+    "compare": {
+      "status": "diverged",
+      "ahead_by": 1177,
+      "behind_by": 351,
+      "merge_base": "7a558c0859393e9e29ea326aa90877ee2ef49220"
+    },
+    "pr_metadata_mergeable": true,
+    "conflict": "Compare endpoint's diverged history and PR metadata's mergeable=true are inconsistent. Treat as not safe to merge until a fresh-main split/migration is independently validated.",
+    "exact_head_validation": {
+      "validator_run_id": 41171491785,
+      "head_sha": "a3db8ba21b0c11da98ad303a7e962eb3d21a4d2d",
+      "status": "PASS",
+      "archive_shards": 337,
+      "sources": 1880,
+      "run_updates": 326,
+      "limitations": 809,
+      "source_references": 24,
+      "missing_references": 0,
+      "tests_passed": 20,
+      "gate_run_id": 41171491778,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    "merge_performed": false,
+    "rebase_performed": false,
+    "force_push_performed": false
+  },
+  "current_market_update": {
+    "binance_official_restoration_claim": "A verified Binance News account post says restoration of affected assets to users has begun; amount and XRP-specific allocation unknown.",
+    "withdrawal_status": "No verified resumption at 05:12 UTC; support update target approximately 34h after Oct30 19:33 UTC.",
+    "por_status": "Initial snapshot target approximately Oct31 07:33 UTC; results targeted by Nov2; not yet observed.",
+    "kodexius_oi_usd": 734170000,
+    "kodexius_updated_at_utc": "2026-10-31T04:54:00Z",
+    "kodexius_contracts": 7,
+    "tradradar_oi_usd": 1840000000,
+    "tradradar_updated_at_utc": "2026-10-31T04:35:00Z",
+    "tradradar_exchanges": 7,
+    "oi_provider_ratio": 2.506,
+    "common_exchange_oi": {
+      "Binance": {
+        "kodexius": 360050000,
+        "tradradar": 414150000
+      },
+      "Bybit": {
+        "kodexius": 150780000,
+        "tradradar": 339410000
+      },
+      "OKX": {
+        "kodexius": 97540000,
+        "tradradar": 108890000
+      },
+      "Hyperliquid": {
+        "kodexius": 97440000,
+        "tradradar": 195050000
+      }
+    },
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "prior_audit_status": "PR #1395 remains open draft, exact-head CI 344 tests plus 8 subtests passed, fail-closed gate passed; PR #1392 and #1393 remain open draft/unmerged.",
+  "main_workflow_safety_status": "MULTIPLE_SCHEDULED_WRITE_PATHS_REMAIN; PR #1392 AND #1395 ARE PROPOSALS ONLY",
+  "source_ids": [
+    "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+    "SRC-20261031-KODEXIUS-XRP-OI-0454Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-0435Z",
+    "SRC-20261031-INVESTING-XRP-LIVE-0047Z",
+    "SRC-20261031-GITHUB-PR1353-COMPARE-0512Z",
+    "SRC-20261031-GITHUB-PR1353-VALIDATOR-0510Z",
+    "SRC-20261031-GITHUB-PR1353-GATE-0510Z"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-XRP-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-ACCOUNT",
+  "captured_at_utc": "2026-10-31T21:40:05Z",
+  "source_ids": [
+    "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "label": "Ripple",
+      "kind": "COMPANY"
+    },
+    {
+      "id": "RIPPLE_TREASURY",
+      "label": "Ripple Treasury / GTreasury",
+      "kind": "TREASURY_MANAGEMENT_PLATFORM"
+    },
+    {
+      "id": "XRP",
+      "label": "Native XRP",
+      "kind": "ASSET"
+    },
+    {
+      "id": "RLUSD",
+      "label": "RLUSD",
+      "kind": "STABLECOIN"
+    },
+    {
+      "id": "CORPORATE_TREASURY",
+      "label": "Corporate treasury customers",
+      "kind": "CUSTOMER_SEGMENT"
+    },
+    {
+      "id": "RIPPLE_PAYMENTS",
+      "label": "Ripple Payments",
+      "kind": "PAYMENT_PRODUCT"
+    },
+    {
+      "id": "RIPPLE_PRIME",
+      "label": "Ripple Prime",
+      "kind": "PRIME_BROKER"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E-TREASURY-13T",
+      "source": "RIPPLE_TREASURY",
+      "target": "CORPORATE_TREASURY",
+      "relationship": "2025_PAYMENT_VOLUME_13T_USD",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+      ],
+      "claim": "Ripple Treasury says it facilitated $13T in 2025 payments volume; the figure predates native digital-asset account launch and is not XRP settlement."
+    },
+    {
+      "id": "E-TREASURY-XRP-ACCOUNT",
+      "source": "RIPPLE_TREASURY",
+      "target": "XRP",
+      "relationship": "DIGITAL_ACCOUNT_SUPPORT_VIEW_HOLD_RECEIVE_MANAGE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+      ],
+      "claim": "Digital Account Management supports XRP balances in a regulated Ripple-native account structure; customer balances and usage unknown."
+    },
+    {
+      "id": "E-TREASURY-RLUSD-ACCOUNT",
+      "source": "RIPPLE_TREASURY",
+      "target": "RLUSD",
+      "relationship": "DIGITAL_ACCOUNT_SUPPORT_VIEW_HOLD_RECEIVE_MANAGE",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+      ],
+      "claim": "Digital Account Management supports RLUSD balances in the same account structure as cash."
+    },
+    {
+      "id": "E-TREASURY-FUTURE-SETTLEMENT",
+      "source": "RIPPLE_TREASURY",
+      "target": "RIPPLE_PAYMENTS",
+      "relationship": "PLANNED_FUTURE_CROSS_BORDER_INTERCOMPANY_SETTLEMENT_INTEGRATION",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+      ],
+      "claim": "The April2026 announcement says the digital-asset framework will soon expand to cross-border/intercompany settlement; live status unverified."
+    },
+    {
+      "id": "E-TREASURY-FUTURE-REPO",
+      "source": "RIPPLE_TREASURY",
+      "target": "RIPPLE_PRIME",
+      "relationship": "PLANNED_24_7_YIELD_OVERNIGHT_REPO",
+      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "source_ids": [
+        "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS"
+      ],
+      "claim": "The announcement describes future 24/7 yield through overnight repo; production status and collateral asset mix unknown."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "status": "CAPABILITY_CONFIRMED_USAGE_UNKNOWN",
+      "statement": "Treasury platform support may increase institutional access to XRP balances.",
+      "disconfirming": [
+        "No customer holdings or transaction volumes disclosed."
+      ],
+      "next_test": "Customer adoption and XRP account/transfer disclosures."
+    },
+    {
+      "id": "H2",
+      "status": "NOT_SUPPORTED",
+      "statement": "The $13T 2025 payment volume is XRP/RLUSD settlement.",
+      "disconfirming": [
+        "Digital-asset features launched in 2026; no 2025 on-chain split disclosed."
+      ],
+      "next_test": "Post-launch asset-specific transaction data."
+    },
+    {
+      "id": "H3",
+      "status": "PLANNED_NOT_VERIFIED",
+      "statement": "Future treasury settlement and repo may create digital-asset liquidity use.",
+      "disconfirming": [
+        "Future capability language only; no production volumes or collateral allocation."
+      ],
+      "next_test": "Verify launch, actual asset mix and counterparties."
+    }
+  ]
+}

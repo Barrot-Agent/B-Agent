@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 144,
+  "chunk_count": 145,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "LIM-XRP-ESCROW-NET-SUPPLY-DERIVATIVES-AND-STALE-SENTIMENT-20261031T200209Z",
+      "recorded_at_utc": "2026-10-31T20:02:09Z",
+      "category": "ESCROW_EVENT_DERIVATIVES_AND_KNOWLEDGE_PIPELINE_FRESHNESS",
+      "severity": "HIGH",
+      "status": "OPEN_UNKNOWN",
+      "statement": "The 1B XRP event is FinishAfter eligibility only; actual EscrowFinish, destinations, re-escrow and market disposition are unknown. TradRadar positioning is provider-scoped. XRP/BTC logs are ~54h stale and Knowledge Signal Cycle is manual-only, so null sentiment is missing data, not neutral. Main retains scheduled/manual writers and all 198 main-based PRs are stale.",
+      "impact": "Treating escrow eligibility as sell pressure, account ratios as notional or stale sentiment as current can contaminate prediction features. Main writers and empty required checks weaken repository integrity.",
+      "source_ids": [
+        "SRC-20261031T200209Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261031T200209Z-TRADRADAR-XRP",
+        "SRC-20261031T200209Z-GITHUB-WORKFLOW-PR-AUDIT",
+        "SRC-20261031T200209Z-KB-FRESHNESS",
+        "SRC-20261031T200209Z-XRPL-ESCROW-DOCS"
+      ],
+      "unresolved": [
+        "EscrowFinish hashes, senders, amounts, ledger indexes and Destination accounts.",
+        "Post-finish destination balances, subsequent transfers and re-escrow amount.",
+        "Exchange/OTC disposition and market-depth impact.",
+        "Fresh ingestion and safe isolated storage/promotion.",
+        "Stale PR reconciliation, required checks, full CI and security review."
+      ],
+      "feature_admission": "EVENT_CONTEXT_ONLY_NO_DIRECTIONAL_FEATURE; NO_FORECAST"
+    }
+  ]
+}

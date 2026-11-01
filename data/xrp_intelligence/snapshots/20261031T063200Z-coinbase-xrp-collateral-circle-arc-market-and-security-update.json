@@ -1,0 +1,250 @@
+{
+  "record_type": "xrp_intelligence_snapshot",
+  "schema_version": "1.0",
+  "index_format_version": "3.0",
+  "snapshot_id": "XRP-20261031T063200Z-COINBASE-COLLATERAL-CIRCLE-ARC-MARKET-SECURITY",
+  "captured_at_utc": "2026-10-31T06:32:00Z",
+  "data_cutoff_utc": "2026-10-31T06:32:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "source_reference_count": 17,
+  "missing_source_references": 0,
+  "source_ids": [
+    "SRC-20261031-COINBASE-GLOBAL-XRP-COLLATERAL-0632Z",
+    "SRC-20261031-COINBASE-CROSS-COLLATERAL-METHOD-0632Z",
+    "SRC-20261031-COINBASE-MORPHO-XRP-LOAN-0632Z",
+    "SRC-20261031-COINBASE-CBXRP-CONTRACT-0632Z",
+    "SRC-20261031-CIRCLE-ARC-MAINNET-0632Z",
+    "SRC-20261031-TRADRADAR-XRP-OI-0540Z",
+    "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0632Z",
+    "SRC-20261031-TOKYO-SBIC-GENAI-SEMINAR-0632Z",
+    "SRC-20261031-GITHUB-PR1398-0632Z",
+    "SRC-20261031-GITHUB-PR1398-CI-0632Z",
+    "SRC-20261031-GITHUB-PR1398-GATE-0632Z",
+    "SRC-20261031-GITHUB-MAIN-BRANCH-PROTECTION-0632Z",
+    "SRC-20261031-GITHUB-WORKFLOW-SAFETY-AUDIT-0632Z",
+    "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+    "SRC-20261031-BINANCE-UPDATE2-0505Z",
+    "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z",
+    "SRC-20261031-GITHUB-OPEN-PR-INVENTORY-0642Z"
+  ],
+  "market_observations": {
+    "xrp_derivatives": {
+      "provider": "TradRadar",
+      "observed_at_utc": "2026-10-31T05:40:00Z",
+      "mark_price_usd": 1.2454,
+      "price_change_24h_pct": -1.06,
+      "open_interest_usd": 1850000000,
+      "open_interest_change_24h_pct": 0.28,
+      "funding_rate_8h_pct": 0.0058,
+      "liquidations_24h_usd_lower_bound": 2890000,
+      "long_liquidations_usd": 1820000,
+      "short_liquidations_usd": 1070000,
+      "long_account_share_pct": 78.5,
+      "exchanges": 7,
+      "features_admitted": false,
+      "limitations": [
+        "15-minute delay",
+        "provider-specific contract universe",
+        "liquidations are partial lower bound",
+        "account share is not notional exposure"
+      ]
+    },
+    "exchange_wallet_balances": {
+      "provider": "XRP Insights",
+      "observed_at_utc": "2026-10-30T08:00:00Z",
+      "exchanges_tracked": 24,
+      "attributed_wallets": 701,
+      "total_xrp": 22370000000,
+      "circulating_supply_reference_xrp": 68590000000,
+      "binance_xrp": 2580000000,
+      "binance_wallets": 153,
+      "binance_same_wallet_change_7d_xrp": -173200000,
+      "coinbase_xrp": 5840000000,
+      "coinbase_wallets": 358,
+      "wrapped_reserve_components": {
+        "binance_peg_xrp": 327400000,
+        "coinbase_cbxrp_xrp": 151400000
+      },
+      "features_admitted": false,
+      "limitations": [
+        "Public wallet labels and provider-specific coverage",
+        "includes cold storage and wrapped-token backing reserves",
+        "not tradable float",
+        "incident source wallets not individually crosswalked"
+      ]
+    },
+    "binance_incident_context": {
+      "official_loss_estimate_usd": 6300000000,
+      "company_reserve_claim_usd": 6340000000,
+      "exact_impacted_tokens_already_held_usd": 5000000000,
+      "remaining_token_acquisition_claim_usd": 1340000000,
+      "frozen_assets_claim_usd": 3000000000,
+      "xrp_specific_replenishment_amount": "UNKNOWN",
+      "post_incident_por_target_utc": "2026-10-31T07:33:00Z",
+      "por_publication_deadline": "2026-11-02",
+      "status": "OFFICIAL_COMPANY_CLAIMS; TOKEN-LEVEL XRP PURCHASE/RESERVE RECONCILIATION UNKNOWN"
+    }
+  },
+  "institutional_relationships": {
+    "coinbase_global_exchange": {
+      "status": "CONFIRMED_PRODUCT_ELIGIBILITY",
+      "xrp_accepted_as_perpetual_futures_collateral": true,
+      "valuation_method": "Notional value multiplied by collateral weight; weight is 1 minus the greater of base and closeout-horizon haircuts.",
+      "usage_limit": "Percentage of average daily quantity per organization/UBO.",
+      "automatic_collateral_liquidation": true,
+      "xrp_haircut": "NOT_DISCLOSED",
+      "posted_xrp_amount": "NOT_DISCLOSED"
+    },
+    "coinbase_morpho_loans": {
+      "status": "CONFIRMED_PRODUCT_STRUCTURE",
+      "collateral_asset": "cbXRP on Base",
+      "cbxrp_contract": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+      "loan_asset": "USDC",
+      "lending_protocol": "Morpho",
+      "coinbase_role": "Customer interface",
+      "morpho_role": "On-chain lending protocol",
+      "loan_proceeds_trade_on_coinbase": "PROHIBITED_BY_COINBASE_TERMS",
+      "xrp_loan_balance": "NOT_DISCLOSED",
+      "circle_direct_lender": "NOT_ESTABLISHED"
+    },
+    "circle_arc": {
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "network": "Arc",
+      "gas_asset": "USDC",
+      "founding_validator": "SBI Group",
+      "exchange_access_partner": "Coinbase",
+      "credit_layer": "Morpho",
+      "distinct_from_xrpl": true,
+      "xrp_native_gas_or_collateral": "NOT_ANNOUNCED",
+      "strategic_interpretation": "Parallel institutional stablecoin/FX/credit rail; potential competition and interoperability, not proof of XRPL displacement."
+    },
+    "tokyo_sbi_sbic": {
+      "identity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "event": "2026-10-06 generative-AI seminar",
+      "chatgpt_context": "Educational discussion; Microsoft Japan speaker",
+      "openai_partnership": "NOT_ESTABLISHED",
+      "relationship_to_sbi_holdings": "DISTINCT LEGAL ENTITY; NO RELATIONSHIP ESTABLISHED BY THE SEMINAR"
+    }
+  },
+  "causal_hypotheses": [
+    {
+      "id": "H-BINANCE-XRP-RESERVE-INCIDENT",
+      "statement": "The October 29 233.46M XRP theft explains a substantial share of the observed Binance XRP reserve decline.",
+      "classification": "HYPOTHESIS",
+      "supporting_evidence": [
+        "Temporal and magnitude proximity in prior provider-specific reserve snapshots",
+        "XRP Insights same-wallet Binance series shows -173.2M over seven days ending Oct30"
+      ],
+      "disconfirming_or_alternative_evidence": [
+        "CryptoQuant and XRP Insights use different wallet universes",
+        "XRP Insights total 2.58B differs from CryptoQuant's narrower approximately 2.47B series",
+        "No five-wallet crosswalk to the provider reserve set",
+        "No same-time customer liability/PoR snapshot"
+      ],
+      "confidence": "UNQUANTIFIED",
+      "forecast_feature_admission": false
+    },
+    {
+      "id": "H-COINBASE-XRP-COLLATERAL-UTILITY",
+      "statement": "Coinbase's Global Exchange margin collateral acceptance and Morpho-backed XRP loans increase XRP's utility as collateral and may change holder retention and liquidation pathways.",
+      "classification": "INFERENCE_FROM_CONFIRMED_PRODUCT_DOCUMENTATION",
+      "supporting_evidence": [
+        "XRP explicitly listed as Global Exchange perpetual-futures collateral",
+        "cbXRP explicitly mapped as Morpho loan collateral",
+        "Coinbase documents haircuts, ADQ caps and automatic collateral liquidation"
+      ],
+      "disconfirming_or_alternative_evidence": [
+        "No posted XRP amount, haircut or loan balance disclosed",
+        "Coinbase loan proceeds cannot be used for trading on Coinbase",
+        "Collateral liquidation may create supply rather than reduce it"
+      ],
+      "confidence": "STRUCTURAL_RELATIONSHIP_CONFIRMED; PRICE_EFFECT_UNKNOWN",
+      "forecast_feature_admission": false
+    },
+    {
+      "id": "H-CIRCLE-ARC-INSTITUTIONAL-RAIL",
+      "statement": "Arc creates a parallel institutional USDC/FX/credit rail with SBI, Coinbase and Morpho participation that may compete with or complement XRPL-based stablecoin/payment flows.",
+      "classification": "INFERENCE",
+      "supporting_evidence": [
+        "Circle launch announcement identifies SBI as validator, Coinbase as exchange-access partner and Morpho as credit-layer participant",
+        "USDC is native gas on Arc"
+      ],
+      "disconfirming_or_alternative_evidence": [
+        "Circle also supports USDC on XRPL",
+        "No direct XRP integration on Arc announced",
+        "Network membership does not establish actual settlement volumes or substitution"
+      ],
+      "confidence": "ECOSYSTEM_RELATIONSHIPS_CONFIRMED; COMPETITIVE_EFFECT_UNKNOWN",
+      "forecast_feature_admission": false
+    },
+    {
+      "id": "H-XRP-DERIVATIVES-LONG-CROWDING",
+      "statement": "Positive funding and a high long-account share may create liquidation asymmetry if price weakens.",
+      "classification": "MARKET_STRUCTURE_HYPOTHESIS",
+      "supporting_evidence": [
+        "TradRadar reports +0.0058% funding per eight hours and 78.5% long accounts"
+      ],
+      "disconfirming_or_alternative_evidence": [
+        "Account share is not notional exposure",
+        "Open interest rose only 0.28%",
+        "Provider coverage and liquidations are incomplete"
+      ],
+      "confidence": "UNQUANTIFIED",
+      "forecast_feature_admission": false
+    }
+  ],
+  "research_status": {
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "fixed_horizon_model": "NOT_EXECUTED",
+    "walk_forward": "NOT_EXECUTED",
+    "calibration": "NOT_EXECUTED",
+    "shadow_evaluation": "NOT_EXECUTED"
+  },
+  "repository_status": {
+    "main_sha": "33a490e2793f2c4250c7b370d4cc7cf308dbf6fe",
+    "main_mutated_by_this_run": false,
+    "main_branch_protected": true,
+    "required_status_check_contexts": [],
+    "detailed_protection_endpoint": "403_RESOURCE_NOT_ACCESSIBLE",
+    "open_pr_1398": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1398",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "head_sha": "2ea9a8dcad1c51f85d345fcdca02c50902ec5285",
+      "ci_run_id": 41176897933,
+      "ci_tests_passed": 344,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41176897925,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    "workflow_audit_scope": "24 targeted high-risk files inspected out of 77 active YAML workflows; not exhaustive",
+    "token_rotation_workflow": "DISABLED_IN_PR_1398; exact-head CI passed",
+    "manual_main_writers": "PRESENT; not dispatched",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "approval_workflow_anomaly": {
+      "run_id": 41177228657,
+      "event": "push",
+      "conclusion": "failure",
+      "jobs_count": 0,
+      "root_cause": "UNKNOWN",
+      "exact_head_validator": "PENDING"
+    },
+    "open_pr_inventory": {
+      "total_open": 173,
+      "drafts": 163,
+      "ready_for_review": 10,
+      "base_main": 171,
+      "current_main_base": 2,
+      "stale_main_base": 169,
+      "non_main_base": 2,
+      "captured_at_utc": "2026-10-31T06:42:00Z"
+    },
+    "latest_audit_path": "data/repository_audits/20261031T063200Z-main-workflow-and-token-rotation-security-audit.json"
+  },
+  "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED",
+  "exact_head_validation": false
+}

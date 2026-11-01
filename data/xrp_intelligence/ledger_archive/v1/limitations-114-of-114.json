@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 113,
+  "chunk_count": 114,
+  "record_count": 7,
+  "records": [
+    {
+      "id": "LIM-20261031T063200Z-BINANCE-RESERVE-INCIDENT-CAUSALITY",
+      "category": "exchange_reserve_series_wallet_universe_mismatch",
+      "statement": "A prior CryptoQuant observation of roughly 2.47B Binance XRP and an approximately 220M two-day reserve decline cannot be equated with the 233.46M XRP incident transfer. XRP Insights reports 2.58B across 153 labeled Binance wallets and a same-wallet seven-day change of -173.2M as of 2026-10-30 08:00 UTC. Provider wallet universes, dates, reserve definitions and wrapped-token exclusions differ. No five-wallet-to-provider crosswalk or same-time customer-liability comparison is complete. Treat the incident/reserve relationship as a strong hypothesis, not a reconciled fact.",
+      "severity": "CRITICAL",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-XRP-INSIGHTS-EXCHANGE-BALANCES-0632Z",
+        "SRC-20261031-BINANCE-SQUARE-RESTORATION-0512Z",
+        "SRC-20261031-BINANCE-UPDATE2-0505Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T063200Z-COINBASE-XRP-COLLATERAL-AMOUNTS",
+      "category": "collateral_eligibility_without_posted_balance",
+      "statement": "Coinbase documents XRP as eligible collateral for Global Exchange perpetual-futures margin and for Morpho-backed USDC loans through cbXRP on Base. It does not disclose XRP-specific collateral balances, posted notional, asset haircuts, ADQ caps or actual borrowing amounts. Product eligibility is not actual capital deployment and must not be used as a quantitative demand feature.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-COINBASE-GLOBAL-XRP-COLLATERAL-0632Z",
+        "SRC-20261031-COINBASE-CROSS-COLLATERAL-METHOD-0632Z",
+        "SRC-20261031-COINBASE-MORPHO-XRP-LOAN-0632Z",
+        "SRC-20261031-COINBASE-CBXRP-CONTRACT-0632Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T063200Z-CIRCLE-ARC-AND-XRPL-CAUSALITY",
+      "category": "institutional_network_membership_not_xrp_adoption",
+      "statement": "Circle's Arc announcement directly lists SBI Group as a founding validator, Coinbase among exchange-access partners and Morpho as a credit-layer participant. Arc uses USDC for gas and is distinct from XRPL. These relationships do not prove a direct Circle-Coinbase-SBI XRP transaction, an XRP collateral position on Arc, or substitution of XRPL flows by Arc.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-CIRCLE-ARC-MAINNET-0632Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T063200Z-XRP-DERIVATIVES-AND-LONG-RATIO",
+      "category": "provider_specific_derivatives_snapshot",
+      "statement": "TradRadar's 2026-10-31 05:40 UTC snapshot reports $1.85B OI, positive funding and 78.5% long accounts. The account ratio is not notional exposure; liquidations are partial lower bounds; the observation is provider-specific and is not a calibrated forecast.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-TRADRADAR-XRP-OI-0540Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T063200Z-SBIC-CHATGPT-COMMERCIAL-RELATIONSHIP",
+      "category": "educational_event_not_commercial_partnership",
+      "statement": "Tokyo SBIC's 2026-10-06 generative-AI seminar references ChatGPT and lists a Microsoft Japan speaker. This establishes an educational event only; it does not establish an OpenAI partnership, SBI Holdings relationship, XRP connection or data-sharing arrangement. The exact original context of the phrase 'ChatGPT SBIC' remains unresolved.",
+      "severity": "MEDIUM",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-TOKYO-SBIC-GENAI-SEMINAR-0632Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T063800Z-APPROVAL-WORKFLOW-ZERO-JOBS",
+      "category": "github_approval_workflow_push_event_zero_jobs",
+      "statement": "GitHub Actions run 41177228657 was triggered by a push event, completed as failure and returned zero jobs, while the inspected approval workflow declares workflow_dispatch only. No job logs are available and the root cause is unknown. Do not attribute the failure to invalid YAML, permission configuration or a specific GitHub service defect without further evidence. The research-branch XRP validator workflow was present in the research branch but no exact-head validator run was returned for the latest branch head; full repository validator status remains pending.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GITHUB-APPROVAL-WORKFLOW-ZERO-JOBS-0638Z"
+      ]
+    },
+    {
+      "id": "LIM-20261031T064200Z-PR-BACKLOG-BASE-DRIFT",
+      "category": "open_pull_request_base_sha_drift",
+      "statement": "GitHub returned 173 open PRs: 163 drafts, 10 ready for review; 171 target main, of which 169 are based on a SHA older than current main 33a490e and only two are current-base. Stale base metadata does not establish conflicts, but exact-head checks and changed-path/merge-base review are required before merge consideration. Do not bulk rebase, force-push, merge or close PRs without approval.",
+      "severity": "HIGH",
+      "status": "OPEN",
+      "affected_source_ids": [
+        "SRC-20261031-GITHUB-OPEN-PR-INVENTORY-0642Z"
+      ]
+    }
+  ]
+}

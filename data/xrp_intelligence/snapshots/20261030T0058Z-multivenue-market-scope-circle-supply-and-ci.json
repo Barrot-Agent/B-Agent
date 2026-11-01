@@ -1,0 +1,225 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_snapshot",
+  "snapshot_id": "BARROT-XRP-INTELLIGENCE-2026-10-30T0058Z-MULTIVENUE-MARKET-SCOPE-CIRCLE-SUPPLY-CI",
+  "captured_at_utc": "2026-10-30T00:58:00Z",
+  "snapshot_path": "data/xrp_intelligence/snapshots/20261030T0058Z-multivenue-market-scope-circle-supply-and-ci.json",
+  "observed_main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+  "focus": "Synchronized-cutoff audit of XRP spot, derivatives, ETF-flow and USDC-supply observations; exact-head research-ledger validation; current main workflow and PR state.",
+  "source_ids": [
+    "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T0058Z",
+    "SRC-COINGECKO-XRP-MARKET-DERIVATIVES-20261030T0058Z",
+    "SRC-KODEXIUS-XRP-PERP-20261029T2332Z",
+    "SRC-FIBONOMY-BINANCE-XRP-PERP-20261030T0058Z",
+    "SRC-COINPAPRIKA-XRP-QUOTE-20261029T1846Z",
+    "SRC-COINDESK-XRP-QUOTE-20261030T0058Z",
+    "SRC-XRP-INSIGHTS-ETF-20261030T0058Z",
+    "SRC-ALPHA-XRP-ETF-20261030T0058Z"
+  ],
+  "findings": [
+    {
+      "classification": "CONFIRMED_PRIMARY_ISSUER_TRANSPARENCY",
+      "claim": "Circle's latest transparency page in this capture is dated 2026-10-26: $71.0B USDC in circulation against $71.2B reserves; net circulation change -$1.0B over seven days and -$4.2B over 30 days. This is an issuer-wide supply contraction, not evidence of migration into XRP or RLUSD.",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261030T0058Z"
+      ]
+    },
+    {
+      "classification": "SECONDARY_MARKET_DATA_SCOPE_CONFLICT",
+      "claim": "CoinGecko's broad XRP page reports about $4.087B perpetual OI and +0.0085% 8-hour funding, while Kodexius reports $764.70M across seven contracts and +0.0046%; Fibonomy's Binance-only snapshot reports $402.79M OI and +0.0100%. Different contract universes, exchange coverage, timestamps and aggregation methods prevent direct comparison or averaging.",
+      "source_ids": [
+        "SRC-COINGECKO-XRP-MARKET-DERIVATIVES-20261030T0058Z",
+        "SRC-KODEXIUS-XRP-PERP-20261029T2332Z",
+        "SRC-FIBONOMY-BINANCE-XRP-PERP-20261030T0058Z"
+      ]
+    },
+    {
+      "classification": "SECONDARY_PRICE_QUOTE_CONFLICT",
+      "claim": "CoinPaprika's explicitly timestamped 18:46 UTC Oct 29 quote is $1.281; CoinDesk indexed page variants return $1.2459 and $1.2899. No shared quote cutoff is available, so no single current spot price is established by this panel.",
+      "source_ids": [
+        "SRC-COINPAPRIKA-XRP-QUOTE-20261029T1846Z",
+        "SRC-COINDESK-XRP-QUOTE-20261030T0058Z"
+      ]
+    },
+    {
+      "classification": "SECONDARY_ETF_FLOW_SCOPE_CONFLICT",
+      "claim": "XRP Insights reports +174,140 XRP on Oct 28 but -2.96M over Oct 26-28; Alpha Finance reports $0 on Oct 28 across a different five-fund population. GXRP treatment, fund coverage, units and settlement cutoffs differ; no combined flow series is admitted.",
+      "source_ids": [
+        "SRC-XRP-INSIGHTS-ETF-20261030T0058Z",
+        "SRC-ALPHA-XRP-ETF-20261030T0058Z"
+      ]
+    },
+    {
+      "classification": "REPOSITORY_VERIFICATION",
+      "claim": "PR #1353 archive validator completed on exact head 20272c96ba090b6dd8413a3736f54b3c65d404b2: 12 tests passed in 0.05 seconds; fail-closed gate run 40979600272 passed. PR remains draft and unmerged.",
+      "source_ids": []
+    },
+    {
+      "classification": "REPOSITORY_OBSERVATION",
+      "claim": "Current main remains ab11f5cda5b1d55e24d677ed8b73220205523f92. Main XRP signal remains stale at 2026-10-29T13:23:33Z with score 44/confidence 0.0 and provider failures; public summary remains stale. Main accuracy workflow remains scheduled at 23:55 UTC with contents:write and git push; current artifact is 1,683 checked, 772 correct, 45.9%, a variable-horizon legacy metric and not comparable predictive skill.",
+      "source_ids": []
+    },
+    {
+      "classification": "REPOSITORY_OBSERVATION",
+      "claim": "Main Coinbase paper trader is manual-dispatch-only but still commits/pushes state after a successful run. Persisted state has nonzero position_size 0.012445158497236623 and position_product=null; no identity was inferred and no dispatch or repair occurred.",
+      "source_ids": []
+    },
+    {
+      "classification": "REPOSITORY_OBSERVATION",
+      "claim": "Main Kaggle automation remains scheduled daily and invokes a root-level script path that does not exist; prior run failed before reaching Kaggle API/submission. PR #1359 is the tested draft mitigation; no submission occurred.",
+      "source_ids": []
+    },
+    {
+      "classification": "REPOSITORY_OBSERVATION",
+      "claim": "Main merge queue remains mutation-capable with contents:write and pull-requests:write, and can update branches, merge and delete branches. No queue dispatch occurred.",
+      "source_ids": []
+    }
+  ],
+  "market_panel": {
+    "capture_cutoff_utc": "2026-10-30T00:58:00Z",
+    "spot_quotes": [
+      {
+        "source": "CoinPaprika",
+        "source_timestamp_utc": "2026-10-29T18:46:00Z",
+        "price_usd": 1.281,
+        "change_24h_pct": -3.74,
+        "market_cap_usd": 81150000000,
+        "volume_24h_usd": 1410000000,
+        "quality": "timestamped_but_stale_at_capture"
+      },
+      {
+        "source": "CoinDesk",
+        "source_timestamp_utc": null,
+        "price_usd": 1.2459,
+        "change_24h_pct": -6.05,
+        "market_cap_usd": 78930000000,
+        "volume_24h_usd": 1730000000,
+        "quality": "dynamic_quote_timestamp_unavailable; conflicting indexed variant exists"
+      }
+    ],
+    "derivatives": [
+      {
+        "source": "CoinGecko",
+        "oi_usd": 4087000000,
+        "funding_8h_pct": 0.0085,
+        "perps_to_spot_volume_ratio": 3.2,
+        "quality": "broad_aggregate_universe_not_crosswalked"
+      },
+      {
+        "source": "Kodexius",
+        "source_timestamp_utc": "2026-10-29T23:32:00Z",
+        "oi_usd": 764700000,
+        "funding_weighted_8h_pct": 0.0046,
+        "volume_24h_usd": 2250000000,
+        "contracts": 7,
+        "quality": "seven-contract_panel"
+      },
+      {
+        "source": "Fibonomy Binance",
+        "oi_usd": 402790000,
+        "funding_8h_pct": 0.01,
+        "oi_change_24h_pct": -3.46,
+        "volume_24h_usd": 656140000,
+        "quality": "single_exchange_dynamic_snapshot; exact timestamp unavailable"
+      }
+    ],
+    "etf_flows": [
+      {
+        "source": "XRP Insights",
+        "date": "2026-10-28",
+        "net_flow_xrp": 174140,
+        "period_2026_10_26_to_28_net_flow_xrp": -2960000,
+        "holdings_xrp": 1190000000,
+        "aum_usd": 1590000000,
+        "universe": "six US spot funds plus BITW; GXRP excluded from flow totals"
+      },
+      {
+        "source": "Alpha Finance",
+        "date": "2026-10-28",
+        "net_flow_usd": 0,
+        "period_30_sessions_net_flow_usd": 90400000,
+        "universe": "five US spot funds"
+      }
+    ],
+    "stablecoin_supply": [
+      {
+        "issuer": "Circle",
+        "asset": "USDC",
+        "as_of_date": "2026-10-26",
+        "circulation_usd": 71000000000,
+        "reserves_usd": 71200000000,
+        "net_change_7d_usd": -1000000000,
+        "net_change_30d_usd": -4200000000
+      }
+    ],
+    "admission": "NONE; unsynchronized and methodologically non-equivalent observations remain research-only."
+  },
+  "repository_state": {
+    "main_sha": "ab11f5cda5b1d55e24d677ed8b73220205523f92",
+    "main_signal": {
+      "timestamp": "2026-10-29T13:23:33.142057+00:00",
+      "score": 44,
+      "confidence": 0,
+      "news_score": 88,
+      "news_entries": 11,
+      "provider_failures": [
+        "missing GITHUB_TOKEN/GH_MODELS_TOKEN",
+        "Groq HTTP 429"
+      ],
+      "status": "STALE_INVALID_NOT_A_RETURN_FORECAST"
+    },
+    "main_summary": "STALE_DIRECTIONAL_NARRATIVE_AND_AUDIO_REFERENCE",
+    "main_accuracy": {
+      "checked_count": 1683,
+      "correct_count": 772,
+      "accuracy_pct": 45.9,
+      "status": "LEGACY_VARIABLE_HORIZON_NOT_COMPARABLE"
+    },
+    "paper_state": {
+      "position_product": null,
+      "position_size": 0.012445158497236623,
+      "cash_usd": 9009.936613782476,
+      "trade_count": 126,
+      "status": "UNRESOLVED_SIMULATED_STATE"
+    },
+    "workflow_findings": {
+      "accuracy": "check-signal-accuracy.yml schedule 23:55 UTC; contents:write; commits/pushes signal_history and signal_accuracy",
+      "paper_trader": "coinbase-paper-trader.yml workflow_dispatch only; successful run commits/pushes state/log",
+      "kaggle": "kaggle-competitions.yml daily schedule; wrong root script path; no API submission in observed failed run",
+      "merge_queue": "merge-queue.yml retains contents:write and pull-requests:write with update/merge/delete commands",
+      "summary": "signal-summary.yml manual-only, contents:read, uploads artifacts; tracked public summary remains stale"
+    },
+    "pr1353": {
+      "head_sha": "20272c96ba090b6dd8413a3736f54b3c65d404b2",
+      "validator_run_id": 40979596408,
+      "tests_passed": 12,
+      "duration_seconds": 0.05,
+      "gate_run_id": 40979600272,
+      "gate": "PASS",
+      "draft": true,
+      "merged": false
+    },
+    "other_safety_prs": {
+      "1355": "exact-head CI/gate passed; draft; overlaps ci.yml with #1358; base one telemetry-only commit behind main",
+      "1356": "exact-head CI/gate passed; draft; overlaps tests/test_v3_scripts.py with #1357 and #1359",
+      "1357": "exact-head CI/gate passed; draft; overlaps tests/test_v3_scripts.py",
+      "1358": "exact-head CI/gate passed; draft; overlaps ci.yml with #1355",
+      "1359": "exact-head CI/gate passed; draft; overlaps tests/test_v3_scripts.py"
+    }
+  },
+  "unresolved": {
+    "sbic": "Tokyo SBIC East Japan is a confirmed Small and Medium Business Investment & Consultation entity; regional SBIC entities remain distinct from SBI Holdings/SBI Ripple Asia. The original phrase context remains unresolved; no direct XRP relationship for regional SBIC is established.",
+    "coinbase_circle_ripple": "Coinbase's Q3 USDC economics and RLUSD distribution establish multi-issuer distribution, not RLUSD displacement or XRP spot demand. Post-listing RLUSD balances/collateral usage are unmeasured.",
+    "actual_capital": "Exchange transfers are not cash inflows. Reconcile stablecoin mint/redemption, ETF creations/redemptions, quote-asset balances, OTC settlement, CVD, depth and maker inventory.",
+    "ask_coin": "Permission Coin ASK remains a candidate; GoAsk is a separate ASK ticker; no XRPL integration found.",
+    "creator_identity": "Kamilah/Camila/Camilla Stevenson channel candidate remains unverified as exact requested Camilla Stephenson; video inventory remains partial."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push": false,
+  "deployment_executed": false,
+  "workflow_dispatch_performed": false,
+  "real_money_trade": false
+}

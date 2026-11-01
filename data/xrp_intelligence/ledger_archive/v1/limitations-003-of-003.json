@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 2,
+  "chunk_count": 3,
+  "record_count": 4,
+  "records": [
+    "XRP spot, derivatives and ETF observations in the 2026-10-30T0058Z snapshot are not synchronized. Aggregator price quotes conflict, and the broad CoinGecko perpetual-OI universe is not reconciled with Kodexius' seven-contract panel or Fibonomy's Binance-only view; no averaging or feature admission is permitted.",
+    "ETF trackers use different fund populations, units, GXRP treatment and settlement/data-refresh cutoffs. XRP Insights' Oct 28 positive daily change and three-session negative total cannot be reconciled with Alpha Finance's five-fund $0 daily report without issuer-level holdings and shares-outstanding crosswalks.",
+    "Circle's latest transparency observation in this capture is as of 2026-10-26. Its USDC supply contraction is not evidence of XRP, RLUSD or Coinbase-specific capital rotation; destination flows are unknown.",
+    "The current main accuracy workflow still schedules a variable-horizon evaluator with contents:write and git push. Its 45.9% legacy result is not predictive skill. The tested retirement proposal remains draft/unmerged; the current public summary and XRP signal remain stale."
+  ]
+}

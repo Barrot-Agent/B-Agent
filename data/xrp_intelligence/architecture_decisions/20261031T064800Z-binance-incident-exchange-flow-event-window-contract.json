@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_intelligence_architecture_decision",
+  "decision_id": "ADR-20261031T064800Z-BINANCE-INCIDENT-EXCHANGE-FLOW-EVENT-WINDOW-CONTRACT",
+  "captured_at_utc": "2026-10-31T06:48:00Z",
+  "status": "ACCEPTED_FOR_RESEARCH_ARCHITECTURE",
+  "decisions": [
+    {
+      "id": "DEC-DAILY-EXCHANGE-EVENT-WINDOW",
+      "rule": "Treat the XRP Insights Oct29 08:00–Oct30 08:00 UTC same-wallet change (-207.3M XRP) as an event-window observation that contains the Binance incident, not as a Binance-specific theft amount.",
+      "rationale": "The five-wallet 233.46M XRP incident occurred Oct29 20:05–20:09 UTC, between the two daily snapshots. The -207.3M is across the tracked exchange universe and is 88.8% of the incident amount, but no per-exchange daily breakdown or source-wallet crosswalk is available.",
+      "feature_admission": "EVENT_STUDY_CANDIDATE_ONLY; no live model feature."
+    },
+    {
+      "id": "DEC-RESERVE-CAUSALITY-RECONCILIATION",
+      "rule": "Keep all-exchange daily change, all-exchange 7d/30d change, Binance-specific 7d/30d change and CryptoQuant reserve series separate. Do not merge them into one reserve-flow feature.",
+      "rationale": "The all-exchange 7d change (-234.9M) is numerically close to the incident amount but not Binance-only; Binance-specific 7d change is -173.2M; CryptoQuant's approximately -220M series uses a different wallet universe.",
+      "feature_admission": "NO_SYNTHETIC_EXCHANGE_RESERVE_FEATURE."
+    },
+    {
+      "id": "DEC-SBI-VC-TRADE-EXCHANGE-CUSTODY",
+      "rule": "Retain SBI VC Trade's 59.5M XRP across two public-labeled wallets as exchange/custody infrastructure evidence; do not classify as SBI Group proprietary holdings.",
+      "rationale": "Public XRPSCAN labels and balances are not official PoR, customer liabilities or beneficial-owner records.",
+      "feature_admission": "STRUCTURAL_ECOSYSTEM_RELATIONSHIP_ONLY."
+    },
+    {
+      "id": "DEC-POSTEVENT-RESIDUAL",
+      "rule": "Do not assign the 26.16M XRP arithmetic difference between the -207.3M daily aggregate and 233.46M incident transfer to deposits, withdrawals or any specific actor.",
+      "rationale": "All-exchange aggregate includes multiple venues; no per-exchange daily breakdown or per-wallet history.",
+      "feature_admission": "UNKNOWN; no causal attribution."
+    }
+  ],
+  "source_ids": [
+    "SRC-20261031-XRP-INSIGHTS-DAILY-EXCHANGE-EVENT-WINDOW-0648Z",
+    "SRC-20261031-TRM-BINANCE-INCIDENT-043333Z",
+    "SRC-20261031-BINANCE-UPDATE2-0505Z"
+  ],
+  "next_actions": [
+    "Map the five incident source wallets into the 153-wallet Binance set used by XRP Insights.",
+    "Obtain raw XRPL account_info and transaction history for each source wallet and the attacker receiver.",
+    "Obtain per-exchange daily balance changes or independently calculate them from the same wallet set.",
+    "Compare Binance PoR reserve addresses and customer liabilities at identical timestamps.",
+    "Use event-study controls (BTC/ETH, unaffected exchanges, non-incident days) before estimating any causal effect.",
+    "Keep the event-window observation out of predictive features until leakage-safe walk-forward validation."
+  ],
+  "market_features_admitted": false,
+  "forecast_status": "NOT_ISSUED"
+}
