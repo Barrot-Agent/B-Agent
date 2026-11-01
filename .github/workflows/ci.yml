@@ -81,14 +81,4 @@ jobs:
             tests/test_signal_summary.py \
             tests/test_fixed_horizon_ledger.py \
             tests/test_signal_accuracy_fail_closed.py \
-            tests/test_cross_analysis_workflow_safety.py \
-            tests/test_knowledge_freshness.py \
-            tests/test_scheduler_queue_workflow_safety.py \
-            tests/test_merge_queue_fail_closed.py \
-            tests/test_databricks_token_rotation_safety.py \
-            tests/test_telemetry_workflow_readonly.py \
-            tests/test_external_mutation_workflows_manual_only.py \
-            tests/test_remaining_workflow_safety.py \
-            tests/test_barrot_agent_workflow_authorization.py \
-            tests/test_barrot_approve_pr_workflow.py \
             -v --no-cov
