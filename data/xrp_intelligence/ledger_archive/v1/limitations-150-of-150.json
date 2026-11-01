@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 149,
+  "chunk_count": 150,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "LIM-BINANCE-XRP-WITHDRAWAL-LIVE-STATUS-UNVERIFIED-20261101T060500Z",
+      "recorded_at_utc": "2026-11-01T06:05:00Z",
+      "category": "BINANCE_XRP_WITHDRAWAL_LIVE_STATUS",
+      "severity": "HIGH",
+      "status": "OPEN_UNKNOWN",
+      "statement": "Binance's official Update #4 announces a progressive 06:00–09:00 UTC phase-one window including XRP, but the public network-status page displayed no asset rows at 06:04 UTC; actual XRP withdrawal availability and completed customer withdrawals remain unverified.",
+      "impact": "Treating the scheduled window or empty status page as actual service activation would contaminate exchange-flow and market-impact features.",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T060400Z-BINANCE-NETWORK-STATUS-PAGE"
+      ],
+      "unresolved": [
+        "First actual XRP network activation timestamp.",
+        "Successful XRP customer withdrawal totals and ledger transaction hashes.",
+        "External destination classification versus internal wallet reshuffling.",
+        "Subsequent venue deposits, trades or OTC disposition."
+      ],
+      "feature_admission": "ANNOUNCED_EVENT_MARKER_ONLY; NO_DIRECTIONAL_FEATURE; NO_FORECAST"
+    },
+    {
+      "id": "LIM-BAGENT-PR1444-CURRENT-HEAD-CI-AND-MAIN-STALE-20261101T060500Z",
+      "recorded_at_utc": "2026-11-01T06:05:00Z",
+      "category": "BAGENT_WORKFLOW_SAFETY_VERIFICATION",
+      "severity": "CRITICAL",
+      "status": "OPEN_REMEDIATION_PROPOSED",
+      "statement": "Main is at 694fc424; PRs #1443/#1444 are based on 0ae640 and therefore one commit behind. PR #1444 prior head failed four tests; fixes were committed to head 680037, but its exact-head CI/gate rerun has not been observed. Main's privileged workflows remain active.",
+      "impact": "Reporting the remediation as verified or applied would be false; scheduled writers and external mutation paths remain live on main.",
+      "source_ids": [
+        "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT"
+      ],
+      "unresolved": [
+        "Exact-head CI and fail-closed gate on PR #1444 head 680037.",
+        "Reconcile PR base against latest main without force-push or PR merge.",
+        "Explicitly review remaining workflow mutation paths not covered by PRs #1443/#1444.",
+        "Full repository CI, dependency vulnerability scan and branch-protection details."
+      ],
+      "feature_admission": "NOT_MARKET_FEATURE; MAIN_SAFETY_REMEDIATION_NOT_APPLIED"
+    }
+  ]
+}

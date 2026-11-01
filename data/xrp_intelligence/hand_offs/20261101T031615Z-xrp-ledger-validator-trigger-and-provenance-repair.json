@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T031615Z-XRP-LEDGER-VALIDATOR-TRIGGER-REPAIR",
+  "captured_at_utc": "2026-11-01T03:16:15Z",
+  "branch": "verify/xrp-ledger-archive-20261101T031615Z",
+  "base_head": "c37299a15118cffe1785ac5f8b5d9b6e767bf39e",
+  "objective": "Run the read-only XRP archive validator on the exact combined research data head without manual workflow dispatch or merging.",
+  "changes": [
+    "Three corrected source-revision copies derived from PR #1437; originals preserved.",
+    "Latest snapshot includes snapshot_path matching the ledger pointer and source_ids from the registered source archive.",
+    "Validator workflow push filter includes this exact verification branch; PR filters include the research shard and staging bases.",
+    "Workflow is contents:read only, checkout credentials disabled, no workflow_dispatch, no write permissions.",
+    "Three regression tests cover permissions, manual-dispatch absence and branch filters."
+  ],
+  "validation_plan": {
+    "trigger": "Fast-forward push to the exact verification branch should trigger XRP Ledger Archive Validation automatically.",
+    "steps": [
+      "Compile validator and tests",
+      "Run validate_xrp_ledger_index.py against all archive pointers",
+      "Run test_xrp_ledger_index.py, test_xrp_exchange_balance_snapshot.py, test_sbic_identity.py and the new workflow-trigger tests"
+    ],
+    "manual_dispatch": false
+  },
+  "dependencies": {
+    "base_pr": 1436,
+    "prior_repair_pr": 1437,
+    "prior_repair_pr_status": "OPEN_DRAFT_UNMERGED; three corrections carried forward without overwriting originals."
+  },
+  "next_actions": [
+    "Check the automatic push-triggered workflow run.",
+    "If validator fails, repair only the reported pointer/file and preserve the failed run.",
+    "If validator passes, record exact head, 442 archive shards, source-revision count, test count and state_mutated=false in PR #1440 and the durable ledger.",
+    "Keep PR #1440 draft/unmerged; no merge without approval."
+  ],
+  "safety": {
+    "main_modified": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "merge": false,
+    "real_money_trade": false
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T075930Z-BINANCE-PHASE1-ESCROW-MARKET-MAIN-AUDIT",
+  "captured_at_utc": "2026-11-01T07:59:30Z",
+  "source_id": "SRC-20261101T064200Z-XRP-INSIGHTS-ESCROW-LEDGER-108039913",
+  "source_ids": [
+    "SRC-20261101T075930Z-BINANCE-NETWORK-STATUS-PAGE",
+    "SRC-20261101T071000Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261101T074000Z-SEANDRA-BINANCE-XRP-PERP",
+    "SRC-20261101T064200Z-XRP-INSIGHTS-ESCROW-LEDGER-108039913",
+    "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ],
+  "source_bundle_path": "data/xrp_intelligence/sources/20261101T075930Z-binance-phase1-market-escrow-and-main-audit.json",
+  "source_bundle_blob_sha": "0fb95a96faac79cca792febf41b5867444282fb4",
+  "supersedes_revision_id": "REV-20261101T071609Z-REUTERS-BINANCE-PHASE1-XRP-RESUMPTION",
+  "claims": [
+    "XRP Insights reports ledger 108039913 at 06:42 UTC, 1B XRP released at 00:00:02 UTC, zero re-escrow by that ledger, 30.4B XRP remaining in 96 Ripple-owned escrow objects across eight accounts, and 64.2% rolling 12-release re-escrow.",
+    "Binance Update #4 lists XRP in progressive phase-one withdrawals for 06:00–09:00 UTC. Reuters at 06:49 reports Bitcoin withdrawals resumed and the first phase covers 15 assets including XRP. No successful XRP withdrawal is documented.",
+    "Binance's public network status page displayed last-updated 07:34 with timezone undisclosed and an empty No Data table; XRP-specific availability remains unconfirmed.",
+    "TradRadar 07:10 reports $1.89B OI across seven venues, +1.79% 24h, +0.005% funding per 8h and 78.1% long accounts. Seandra 07:40 is Binance XRPUSDT only: $335.5M OI, +1.2% 24h, +0.010% funding and 72% long accounts. These are not comparable totals.",
+    "Main advanced to c8e66e95 at 07:51 UTC through Cross Analysis. Logs show zero recent/prior samples for XRP and BTC sentiment shift; the committed change was generated_at-only.",
+    "Scheduler Tick run 41286201403 fired zero of one queued entries; no scheduler commit was observed, but write and workflow-dispatch capabilities remain.",
+    "Live PR inventory: 219 open, 209 drafts, 10 ready, 213 targeting main and all 213 stale. PR #1449 is open/draft/unmerged, base 760b while main is c8e; compare diverged 1 ahead/1 behind, mergeable_state clean; its 367+8 tests ran against the earlier 760b merge ref."
+  ],
+  "observations": [
+    {
+      "source_id": "SRC-20261101T064200Z-XRP-INSIGHTS-ESCROW-LEDGER-108039913",
+      "observed_at_utc": "2026-11-01T06:42:00Z",
+      "ledger": 108039913,
+      "release_xrp": 1000000000,
+      "finish_utc": "2026-11-01T00:00:02Z",
+      "reescrow_xrp": 0,
+      "remaining_escrow_xrp": 30400000000,
+      "objects": 96,
+      "owners": 8,
+      "reescrow_pct_12_release": 64.2,
+      "destination_decoded": false,
+      "follow_on_transfers_verified": false
+    },
+    {
+      "source_id": "SRC-20261101T075930Z-BINANCE-NETWORK-STATUS-PAGE",
+      "observed_at_utc": "2026-11-01T07:34:00Z",
+      "timezone": "UNDISCLOSED",
+      "table": "NO DATA",
+      "xrp_row": false,
+      "xrp_availability": "UNCONFIRMED"
+    },
+    {
+      "source_id": "SRC-20261101T071000Z-TRADRADAR-XRP-DERIVATIVES",
+      "observed_at_utc": "2026-11-01T07:10:00Z",
+      "price_usd": 1.2539,
+      "oi_usd": 1890000000,
+      "venues": 7,
+      "oi_change_24h_pct": 1.79,
+      "funding_8h_pct": 0.005,
+      "long_account_share_pct": 78.1,
+      "liquidations_24h_usd_min": 296880
+    },
+    {
+      "source_id": "SRC-20261101T074000Z-SEANDRA-BINANCE-XRP-PERP",
+      "observed_at_utc": "2026-11-01T07:40:00Z",
+      "venue": "Binance",
+      "contract": "XRPUSDT perpetual",
+      "oi_usd": 335500000,
+      "oi_change_24h_pct": 1.2,
+      "funding_8h_pct": 0.01,
+      "long_account_share_pct": 72,
+      "oi_change_7d_coins_pct": -13
+    },
+    {
+      "source_id": "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT",
+      "observed_at_utc": "2026-11-01T07:59:30Z",
+      "main_sha": "c8e66e95f385f48a03bb17b4498dc969a43fa97b",
+      "open_prs": 219,
+      "drafts": 209,
+      "ready": 10,
+      "main_targeted": 213,
+      "stale_main_targeted": 213,
+      "current_main_targeted": 0,
+      "non_main": 6
+    }
+  ],
+  "evidence_classification": {
+    "escrow": "TRACKER_REPORTED_FROM_PUBLIC_RIPPLED_JSON_RPC; RAW_DESTINATION_NOT_DECODED",
+    "withdrawal": "COMPANY_ANNOUNCEMENT_PLUS_REUTERS; XRP_SUCCESS_NOT_VERIFIED",
+    "derivatives": "SECONDARY_PROVIDER_DATA; NONCOMPARABLE_UNIVERSES",
+    "repository": "AUTHORIZED_GITHUB_API_AND_ACTIONS_LOGS"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "XRP withdrawals, if enabled, can reduce Binance-labelled custody balances without implying net buying or selling.",
+      "status": "CONDITIONAL_INFERENCE",
+      "disconfirming": "No XRP-specific successful withdrawal or asset-level status row."
+    },
+    {
+      "id": "H2",
+      "claim": "The 1B escrow release creates a potential supply overhang only if subsequent transfers reach sale/market-making venues.",
+      "status": "UNRESOLVED",
+      "disconfirming": "No destination or sale verified; zero re-escrow does not prove selling."
+    },
+    {
+      "id": "H3",
+      "claim": "Positive funding and high long-account share may increase liquidation sensitivity but do not predict direction.",
+      "status": "INFERENCE",
+      "disconfirming": "Funding modest; account ratios are not notional exposure."
+    },
+    {
+      "id": "H4",
+      "claim": "Binance withdrawal restoration may shift venue flows but does not establish Coinbase share gains without comparative deposit/volume data.",
+      "status": "UNTESTED",
+      "disconfirming": "No customer-migration evidence."
+    }
+  ],
+  "disconfirming_evidence": [
+    "Reuters confirms Bitcoin withdrawals resumed but not XRP withdrawal success.",
+    "Binance status page rendered no asset-level rows.",
+    "TradRadar and Seandra OI cover different universes.",
+    "Explorer transaction pages do not expose raw Destination fields in text rendering."
+  ],
+  "unknowns": [
+    "XRP-specific Binance withdrawal availability.",
+    "Raw EscrowFinish Destination and subsequent transfers.",
+    "Attacker wallet balance after 2026-10-31 16:51 UTC.",
+    "XRP-specific Binance replacement purchase quantity and venue.",
+    "Coinbase XRP-specific collateral and customer migration."
+  ],
+  "feature_admission": {
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED"
+  },
+  "limitations": [
+    "No raw EscrowFinish Destination decoded.",
+    "No successful XRP withdrawal observed.",
+    "OI provider coverage differs; no aggregate justified.",
+    "Attacker-wallet observation is stale.",
+    "13 source stubs unresolved.",
+    "43 prior addenda pending archive append; this revision adds one more.",
+    "Main privileged workflows remain active.",
+    "Full repository CI and security scans incomplete."
+  ],
+  "pending_archive_append": true,
+  "status": "PENDING_ARCHIVE_APPEND",
+  "correction_reason": "Append the 06:42 XRPL ledger, Binance status-page recheck, current derivatives observations and live GitHub audit without inferring XRP withdrawal success."
+}

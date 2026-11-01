@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261101T070712Z-MAIN-PR1449-218-PRS",
+  "captured_at_utc": "2026-11-01T07:07:12Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "branch": "main",
+    "sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+    "protected": true,
+    "required_status_check_contexts": [],
+    "latest_commit_message": "Cross-analysis refresh [skip ci]",
+    "latest_commit_at_utc": "2026-11-01T06:51:33Z",
+    "main_modified_by_this_run": false
+  },
+  "pr_inventory": {
+    "open": 218,
+    "draft": 208,
+    "ready": 10,
+    "main_based": 213,
+    "current_main_base_count": 1,
+    "current_main_base_pr_numbers": [
+      1449
+    ],
+    "stale_main_based": 212,
+    "non_main_based": 5,
+    "captured_at_utc": "2026-11-01T07:07:12Z"
+  },
+  "safety_prs": {
+    "pr1449": {
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1449",
+      "base_sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+      "head_sha": "dce8be8e8df59390c7a986c7ff7a2b699cb18593",
+      "changed_files": 28,
+      "additions": 714,
+      "deletions": 517,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "mergeable": true,
+      "ci_run_id": 41283447287,
+      "ci_tests_passed": 367,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41283447301,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    "pr1444": {
+      "base_sha": "0ae640073f01321555d7f69dfc28d5b62a348fc6",
+      "head_sha": "8d8965eaa72b9402ad1dedec9d752387256a51dd",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41279721635,
+      "tests_passed": 363,
+      "subtests_passed": 8,
+      "gate_run_id": 41279721643,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "stale": true
+    },
+    "pr1446": {
+      "base_sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+      "head_sha": "a5f98fa2fc53a8875e45017f5ec4bdcedcead080",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41281605535,
+      "tests_passed": 346,
+      "subtests_passed": 8,
+      "gate_run_id": 41281605590,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "stale": true
+    },
+    "pr1445": {
+      "base_sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+      "head_sha": "ac04af6f19db8a1d39eaf1346943628db1acc2cb",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41280065967,
+      "tests_passed": 346,
+      "subtests_passed": 8,
+      "gate_run_id": 41280065895,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "stale": true
+    }
+  },
+  "workflow_risks": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "SCHEDULED_MAIN_WRITE",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "READ_ONLY_ARTIFACT_ONLY"
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "ACTIONS_WRITE_AND_WORKFLOW_DISPATCH",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "READ_ONLY_QUEUE_AUDIT"
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "MANUAL_MERGE_WITHOUT_EXPLICIT_APPROVAL_CHECK",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "READ_ONLY_FAIL_CLOSED_NOTICE"
+    },
+    {
+      "path": ".github/workflows/check-signal-accuracy.yml",
+      "risk": "SCHEDULED_MAIN_WRITE",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "ARTIFACT_ONLY"
+    },
+    {
+      "path": ".github/workflows/autonomous_self_deployment.yml",
+      "risk": "SCHEDULED_TELEMETRY_MAIN_WRITE",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "ARTIFACT_ONLY"
+    },
+    {
+      "path": ".github/workflows/auto-resolve-issues.yml",
+      "risk": "SCHEDULED_ISSUE_MUTATION",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "DRY_RUN_AND_ARTIFACT_ONLY"
+    },
+    {
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "risk": "SCHEDULED_ISSUE_MUTATION",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "DRY_RUN_AND_ARTIFACT_ONLY"
+    },
+    {
+      "path": ".github/workflows/daily-digest.yml",
+      "risk": "SCHEDULED_ISSUE_OR_COMMENT_MUTATION",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "READ_ONLY_ARTIFACT_ONLY"
+    },
+    {
+      "path": ".github/workflows/self-schedule.yml",
+      "risk": "SCHEDULED_QUEUE_MUTATION",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "READ_ONLY_ARTIFACT_ONLY"
+    },
+    {
+      "path": ".github/workflows/gumroad-metrics.yml",
+      "risk": "SCHEDULED_PUBLIC_METRICS_PUSH",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "ALLOWLISTED_ARTIFACT_ONLY"
+    },
+    {
+      "path": ".github/workflows/rotate-databricks-token.yml",
+      "risk": "MANUAL_SECRET_ROTATION_INPUT",
+      "status": "ACTIVE_ON_MAIN_UNTIL_PR1449_MERGED",
+      "proposed_control": "DISABLED_NO_TOKEN_INPUT"
+    }
+  ],
+  "approval_workflow_anomaly": {
+    "path": ".github/workflows/barrot-approve-pr.yml",
+    "main_trigger": "workflow_dispatch only",
+    "verify_branch_trigger": "workflow_dispatch only",
+    "observed_run_id": 41272080914,
+    "observed_event": "push",
+    "observed_jobs": 0,
+    "conclusion": "failure",
+    "root_cause": "UNRESOLVED_TRIGGER_METADATA_OR_WORKFLOW_REGISTRATION_MISMATCH",
+    "do_not_claim_invalid_yaml": true
+  },
+  "controls_already_proposed": [
+    "PR #1449 combines the exact-head-tested writer quarantine from #1444 and issue/metrics mutation controls from #1446 on current main.",
+    "PR #1445 separately gates manual model upload, Space restart, self-upgrade and force-deploy operations."
+  ],
+  "limitations": [
+    "PR #1449 is draft and unmerged; main remediation has not occurred.",
+    "Required status-check contexts are empty in the exposed branch response; complete branch protection settings are not verified.",
+    "Full repository CI was not run.",
+    "Dependency vulnerability scan is incomplete; security-alert access is unavailable.",
+    "Approval-workflow push-event/zero-job root cause remains unresolved."
+  ],
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false,
+  "secret_access": false,
+  "paper_or_real_trade": false,
+  "source_ids": [
+    "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ]
+}

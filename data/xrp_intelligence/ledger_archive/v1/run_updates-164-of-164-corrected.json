@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 163,
+  "chunk_count": 164,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261101T064027Z-XRP-SBI-COINBASE-BINANCE-PHASE1-PR1446",
+      "captured_at_utc": "2026-11-01T06:40:27Z",
+      "summary": "Appended Binance phase-one status recheck, XRP ETF fund-universe comparison, derivatives provider scope map, XRPL stablecoin supply cross-check, Coinbase/Circle Q3/Q2 economics, SBI multi-rail initiatives and PR #1446 exact-head verification.",
+      "verified": [
+        "Binance official announcement includes XRP in the 06:00-09:00 UTC phase-one window; current status page remains stale/no data.",
+        "XRP Insights reports +3.39M XRP ETF holdings delta for the week; provider daily differences are explained in part by fund-universe differences.",
+        "XRPL RLUSD supply near $707M is corroborated by DefiLlama and stables.cool; total stablecoin coverage differs.",
+        "Coinbase Q3 10-Q has no XRP text hit and no separately disclosed XRP collateral amount.",
+        "Circle Q2 filing reports $655.3M H1 distribution costs to Coinbase.",
+        "SBI JPYSC, SMFG, BlackRock/Startale and Open Standard announcements add multi-rail relationships but do not establish XRP routing.",
+        "PR #1446 exact-head CI passed 346 tests plus eight subtests; fail-closed gate passed with merging disabled."
+      ],
+      "unresolved": [
+        "Actual Binance XRP withdrawal availability.",
+        "Raw EscrowFinish Destination fields and post-release disposition.",
+        "Cause of RLUSD XRPL supply contraction.",
+        "Asset-specific Coinbase XRP collateral, if any.",
+        "Fund-level ETF cash and in-kind flows after universe reconciliation.",
+        "Protected reviewer approval for external-mutation workflows."
+      ],
+      "next_actions": [
+        "Capture a live Binance XRP withdrawal status and first successful transaction.",
+        "Decode escrow destinations and trace subsequent XRP flows.",
+        "Reconcile issuer-level ETF inventory, creations, redemptions and AUM separately.",
+        "Build OI provider coverage mapping.",
+        "Trace RLUSD mint/burn/bridge events.",
+        "Review PR #1446 and PR #1445 approval gates; do not merge."
+      ],
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "source_ids": [
+        "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+        "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+        "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF",
+        "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+        "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+        "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+        "SRC-20261101T064027Z-TRDESK-XRP-OI",
+        "SRC-20261101T064027Z-COINGLASS-XRP-OI",
+        "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+        "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS",
+        "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY",
+        "SRC-20261101T064027Z-REUTERS-COINBASE-Q3-2026",
+        "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+        "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+        "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+        "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+        "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+        "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT",
+        "SRC-20261101T064027Z-GITHUB-PR1446-SCHEDULED-WRITERS",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+        "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+        "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+        "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+        "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+        "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+        "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+        "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+        "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+        "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION"
+      ],
+      "status": "COMPLETED_PARTIAL_VERIFIED"
+    }
+  ]
+}

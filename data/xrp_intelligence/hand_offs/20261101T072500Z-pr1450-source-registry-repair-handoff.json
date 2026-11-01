@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T072500Z-PR1450-SOURCE-REGISTRY-REPAIR",
+  "captured_at_utc": "2026-11-01T07:25:00Z",
+  "branch": "verify/xrp-ledger-archive-20261101T070712Z",
+  "verified_this_run": [
+    "Archive validator run 41284561140 verified 459 shard pointers, archive_policy counts, snapshot blob SHA, snapshot_reference mode and 49 source-revision addenda; it reported only 13 unknown source IDs.",
+    "The 13 IDs were referenced by the 06:40 snapshot and source bundle existing_source_references but absent from source archive.",
+    "Added 13 unresolved source stubs with null metadata; they are explicitly excluded from evidence claims and model features."
+  ],
+  "unresolved": [
+    "Original metadata for 13 source IDs.",
+    "PR #1450 exact-head validator and gate after the new stubs.",
+    "Binance XRP withdrawal success; raw escrow destinations; attacker-wallet current state.",
+    "Main workflow safety remediation pending approval."
+  ],
+  "next_actions": [
+    "Run archive validator and fail-closed gate on the new PR #1450 head.",
+    "If validation passes, record actual run IDs and add a metadata successor to the ledger.",
+    "Recover source metadata for the 13 stubs from official filings and company sources; do not treat stubs as evidence.",
+    "Continue XRP escrow and Binance withdrawal verification; no directional forecast."
+  ],
+  "safety": {
+    "main_modified_by_this_run": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "manual_workflow_dispatch_performed": false,
+    "secret_access": false,
+    "paper_position_mutated": false,
+    "real_money_trade_performed": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false
+}

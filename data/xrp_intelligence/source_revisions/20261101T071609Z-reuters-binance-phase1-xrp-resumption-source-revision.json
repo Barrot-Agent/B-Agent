@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T071609Z-REUTERS-BINANCE-PHASE1-XRP-RESUMPTION",
+  "captured_at_utc": "2026-11-01T07:16:09Z",
+  "source_id": "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+  "source_ids": [
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER"
+  ],
+  "source_bundle_path": "data/xrp_intelligence/sources/20261101T071609Z-reuters-binance-phase1-xrp-resumption-source-bundle.json",
+  "source_bundle_blob_sha": "0641ba6729484f49ce15be948764b821d2223829",
+  "supersedes_revision_id": "REV-20261101T070712Z-BINANCE-PHASE1-ESCROW-PR1449",
+  "claims": [
+    "Reuters article published 2026-11-01 06:49 UTC reports Binance's status page shortly after 06:00 GMT said planned withdrawals had begun; first phase covers 15 cryptoassets including BTC, ETH, XRP and DOGE.",
+    "Reuters reports Binance says it bought approximately $6B of stolen cryptocurrencies as replacement tokens using company funds; remaining 5% are less-liquid assets.",
+    "Reuters reports Binance named SAFU including a bitcoin reserve, Futures Insurance Fund and corporate treasury as funding sources; co-CEO Yi He said 50% of SAFU funds would be used while the fund would be replenished toward $1B.",
+    "The Reuters report confirms BTC withdrawals resumed; it does not document a successful XRP withdrawal or disclose XRP-specific acquisition quantity, venue or timing."
+  ],
+  "observations": [
+    {
+      "source_id": "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+      "publication_time_utc": "2026-11-01T06:49:00Z",
+      "retrieved_at_utc": "2026-11-01T07:16:09Z",
+      "phase_one_start_reported_after_utc": "06:00",
+      "assets_in_first_phase": 15,
+      "xrp_included": true,
+      "btc_withdrawals_reported_resumed": true,
+      "aggregate_replacement_token_purchases_usd_approx": 6000000000,
+      "aggregate_coverage_pct": 95,
+      "remaining_assets_pct": 5,
+      "remaining_assets_description": "Less liquid",
+      "funding_sources": [
+        "SAFU including bitcoin reserve",
+        "Futures Insurance Fund",
+        "Corporate treasury"
+      ],
+      "safu_use_pct_reported_by_co_ceo": 50,
+      "safu_replenishment_target_usd": 1000000000,
+      "xrp_specific_purchase_amount_usd": null,
+      "xrp_specific_purchase_quantity": null,
+      "xrp_specific_withdrawal_success": false
+    }
+  ],
+  "evidence_classification": {
+    "phase_one_start": "REUTERS_SECONDARY_REPORT_OF_BINANCE_STATUS_PAGE_AND_COMPANY_STATEMENTS",
+    "aggregate_replacement_purchases": "COMPANY_REPORTED_VIA_REUTERS",
+    "xrp_specific_purchase": "UNKNOWN",
+    "xrp_specific_withdrawal_success": "NOT_VERIFIED"
+  },
+  "feature_admission": {
+    "market_features_admitted": false,
+    "reason": "The Reuters report concerns aggregate exchange recovery and phased availability; no XRP-specific withdrawal or acquisition is verified."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "pending_archive_append": true,
+  "status": "PENDING_ARCHIVE_APPEND",
+  "correction_reason": "Append the Reuters 06:49 UTC phase-one start report and aggregate replacement-capital details under the existing Reuters source ID; do not create a duplicate source record or infer XRP-specific demand."
+}

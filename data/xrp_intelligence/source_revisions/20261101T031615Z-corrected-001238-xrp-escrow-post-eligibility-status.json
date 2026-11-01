@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS",
+  "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+  "captured_at_utc": "2026-11-01T00:12:38Z",
+  "data_cutoff_utc": "2026-10-31T22:18:00Z",
+  "title": "Post-eligibility verification status for the November 1, 2026 Ripple XRP escrow event",
+  "classification": "UNVERIFIED_POST_ELIGIBILITY_EXECUTION",
+  "observations": {
+    "scheduled_eligibility_utc": "2026-11-01T00:00:00Z",
+    "capture_after_eligibility_seconds": 758,
+    "owner_accounts": [
+      {
+        "account": "r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+        "reported_scheduled_escrow_xrp": 500000000
+      },
+      {
+        "account": "rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn",
+        "reported_scheduled_escrow_xrp": 500000000
+      }
+    ],
+    "tracker": {
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "last_observed_ledger": 108032198,
+      "last_observed_ledger_time_utc": "2026-10-31T22:18:00Z",
+      "still_displayed_as_next_unlock_at_capture": true,
+      "refresh_claim": "At most hourly",
+      "reported_ripple_escrow_xrp": 31400000000,
+      "reported_escrow_objects": 98,
+      "reported_owner_accounts": 8,
+      "prior_12_month_reescrow_ratio": 0.7,
+      "prior_12_month_released_xrp": 12000000000,
+      "prior_12_month_reescrowed_xrp": 8400000000,
+      "prior_12_month_net_outside_escrow_xrp": 3600000000
+    },
+    "post_eligibility_transactions": {
+      "escrow_finish_hashes_verified": [],
+      "raw_account_objects_response_obtained": false,
+      "raw_account_tx_response_obtained": false,
+      "validated_ledger_index_after_eligibility_obtained": false,
+      "destination_receipt_verified": false,
+      "follow_on_transfers_verified": false,
+      "new_escrow_create_verified": false,
+      "exchange_deposit_verified": false,
+      "status": "NOT_OBTAINED_NOT_NEGATIVE_EVIDENCE"
+    },
+    "prior_explorer_conflict": {
+      "prior_bithomp_account_page_observation": "Displayed no transaction history and no escrow objects for the two accounts.",
+      "prior_observation_time_utc": "2026-10-31T23:16:45Z",
+      "interpretation": "Potential stale/incomplete explorer cache or page rendering. Not sufficient to disprove the tracker schedule.",
+      "status": "UNRESOLVED"
+    }
+  },
+  "source_evidence": [
+    {
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "source_type": "secondary_on_chain_analytics",
+      "supports": "The latest captured schedule, account labels, 1B XRP gross eligibility and prior release/re-escrow history.",
+      "observation_time_utc": "2026-10-31T22:18:00Z"
+    },
+    {
+      "source_id": "SRC-XRPL-ACCOUNT-OBJECTS-DOCS-CANDIDATE",
+      "url": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects",
+      "source_type": "official_protocol_documentation",
+      "supports": "Raw ledger account objects, including Escrow objects, must be queried at a specified validated ledger.",
+      "archive_status": "NEW_SOURCE_CANDIDATE_PENDING_ARCHIVE"
+    },
+    {
+      "source_id": "SRC-XRPL-ESCROW-FINALITY-DOCS-CANDIDATE",
+      "url": "https://xrpl.org/docs/concepts/transactions/finality-of-results/look-up-transaction-results",
+      "source_type": "official_protocol_documentation",
+      "supports": "An EscrowFinish transaction is required for release; transaction metadata determines the actual result.",
+      "archive_status": "NEW_SOURCE_CANDIDATE_PENDING_ARCHIVE"
+    },
+    {
+      "source_id": "SRC-XRPSCAN-ACCOUNT-TRANSACTIONS-DOCS-CANDIDATE",
+      "url": "https://docs.xrpscan.com/api-documentation/account/transactions",
+      "source_type": "third_party_api_documentation",
+      "supports": "A public GET account-transactions endpoint is documented, but the direct API request was inaccessible through the current browser interface.",
+      "archive_status": "NEW_SOURCE_CANDIDATE_PENDING_ARCHIVE"
+    },
+    {
+      "source_id": "SRC-BITHOMP-OWNER-PAGE-CONFLICT-PRIOR",
+      "url": "https://bithomp.com/explorer/r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+      "source_type": "explorer_page",
+      "supports": "Prior page observation conflicting with XRP Insights; not revalidated in this run.",
+      "archive_status": "PRIOR_REVISION_REFERENCE"
+    }
+  ],
+  "access_and_method_limitations": [
+    "The XRP Insights page returned a validated-ledger observation from 22:18 UTC, before the 00:00 UTC eligibility time.",
+    "The official account_objects and account_tx methods are JSON-RPC requests; no raw POST request execution was available in this run.",
+    "The XRPSCAN GET API documentation was reviewed, but the direct account endpoint was inaccessible through the browser retrieval path.",
+    "Search-engine queries returned no indexed November 1 transaction hash. Search-result absence is not evidence that no transaction occurred.",
+    "No private credentials, account keys, or unauthorized access were used."
+  ],
+  "required_classification": "ELIGIBILITY_TIME_PASSED_EXECUTION_UNVERIFIED",
+  "prediction_admission": "NOT_ADMITTED",
+  "forecast_status": "NOT_ISSUED",
+  "pending_archive_append": true,
+  "supersedes_path": "data/xrp_intelligence/source_revisions/20261101T001238Z-xrp-escrow-post-eligibility-status.json",
+  "correction_note": "Append-only validator repair copy. Original preserved; ledger pointer redirected to this corrected copy. Source claim and observation unchanged."
+}

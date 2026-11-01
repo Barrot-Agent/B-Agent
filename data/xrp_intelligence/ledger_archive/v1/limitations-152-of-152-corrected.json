@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 151,
+  "chunk_count": 152,
+  "record_count": 6,
+  "records": [
+    {
+      "limitation_id": "LIM-BINANCE-XRP-WITHDRAWAL-STATUS-UNCONFIRMED-20261101T064027Z",
+      "category": "EXCHANGE_AVAILABILITY",
+      "description": "Binance announced XRP for progressive phase-one withdrawals 06:00-09:00 UTC, but the public status page rechecked at 06:40 displayed last-updated 2026-10-30 01:00 (timezone undisclosed) and No Data.",
+      "evidence": "Official announcement plus stale status page; no successful customer XRP withdrawal observed.",
+      "first_observed_utc": "2026-11-01T06:40:27Z",
+      "impact": "HIGH",
+      "related_run_id": "RUN-20261101T064027Z-XRP-SBI-COINBASE-BINANCE-PHASE1-PR1446",
+      "source_ids": [
+        "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T06:40:27Z"
+    },
+    {
+      "limitation_id": "LIM-XRP-ETF-FLOW-UNIVERSE-AND-METHOD-DIVERGENCE-20261101T064027Z",
+      "category": "CAPITAL_FLOW_MEASUREMENT",
+      "description": "XRP Insights, Maketo and SoSoValue use different fund universes and methods; XRP holdings deltas cannot be equated to direct cash subscriptions.",
+      "evidence": "XRP Insights excludes GXRP flows and includes BITW; Maketo tracks five tickers; SoSoValue reports a different per-fund universe.",
+      "first_observed_utc": "2026-11-01T06:40:27Z",
+      "impact": "HIGH",
+      "related_run_id": "RUN-20261101T064027Z-XRP-SBI-COINBASE-BINANCE-PHASE1-PR1446",
+      "source_ids": [
+        "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+        "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+        "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T06:40:27Z"
+    },
+    {
+      "limitation_id": "LIM-XRP-OI-PROVIDER-SCOPE-DIVERGENCE-20261101T064027Z",
+      "category": "MARKET_DATA_COVERAGE",
+      "description": "XRP open-interest provider observations range from approximately $749M to $2.81B because venue and contract universes differ; no unified total is justified.",
+      "evidence": "Kodexius seven contracts, JustScreener nine exchanges, Kairo 13 venues, TRdesk 26 exchanges including CME and CoinGlass broad dashboard.",
+      "first_observed_utc": "2026-11-01T06:40:27Z",
+      "impact": "HIGH",
+      "related_run_id": "RUN-20261101T064027Z-XRP-SBI-COINBASE-BINANCE-PHASE1-PR1446",
+      "source_ids": [
+        "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+        "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+        "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+        "SRC-20261101T064027Z-TRDESK-XRP-OI",
+        "SRC-20261101T064027Z-COINGLASS-XRP-OI"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T06:40:27Z"
+    },
+    {
+      "limitation_id": "LIM-COINBASE-XRP-COLLATERAL-NOT-SEPARATELY-DISCLOSED-20261101T064027Z",
+      "category": "COLLATERAL_DISCLOSURE",
+      "description": "Coinbase Q3 2026 10-Q does not separately identify XRP collateral; other crypto assets are aggregated and customer collateral not recognized is not asset-level broken out.",
+      "evidence": "SEC Q3 10-Q contains no XRP text hit; recognized other crypto collateral $9.903M; customer crypto collateral not recognized $2.804B; derivatives collateral table names BTC and ETH.",
+      "first_observed_utc": "2026-11-01T06:40:27Z",
+      "impact": "HIGH",
+      "related_run_id": "RUN-20261101T064027Z-XRP-SBI-COINBASE-BINANCE-PHASE1-PR1446",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T06:40:27Z"
+    },
+    {
+      "limitation_id": "LIM-RLUSD-USDC-XRPL-SUPPLY-CAUSE-UNKNOWN-20261101T064027Z",
+      "category": "STABLECOIN_SUPPLY_AND_CHAIN_ALLOCATION",
+      "description": "Two trackers show RLUSD near $707M on XRPL, but total stablecoin supply differs and the reported seven-day contraction has not been reconciled to mint, burn or bridge transactions.",
+      "evidence": "DefiLlama and stables.cool snapshots; USDC on XRPL is about $4.8M in the stables.cool observation.",
+      "first_observed_utc": "2026-11-01T06:40:27Z",
+      "impact": "HIGH",
+      "related_run_id": "RUN-20261101T064027Z-XRP-SBI-COINBASE-BINANCE-PHASE1-PR1446",
+      "source_ids": [
+        "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+        "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T06:40:27Z"
+    },
+    {
+      "limitation_id": "LIM-SBI-JPYSC-OPEN-STANDARD-NO-XRP-ROUTE-ESTABLISHED-20261101T064027Z",
+      "category": "INSTITUTIONAL_RELATIONSHIP_INFERENCE",
+      "description": "SBI's JPYSC, SMFG, BlackRock/Startale and Open Standard/OUSD initiatives do not establish XRP routing or a coordinated XRP strategy.",
+      "evidence": "Official announcements describe stablecoin, tokenized-MMF and interoperability exploration without naming Ripple or XRP in those initiatives.",
+      "first_observed_utc": "2026-11-01T06:40:27Z",
+      "impact": "MEDIUM",
+      "related_run_id": "RUN-20261101T064027Z-XRP-SBI-COINBASE-BINANCE-PHASE1-PR1446",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+        "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+        "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+        "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH"
+      ],
+      "status": "OPEN",
+      "updated_at_utc": "2026-11-01T06:40:27Z"
+    }
+  ]
+}

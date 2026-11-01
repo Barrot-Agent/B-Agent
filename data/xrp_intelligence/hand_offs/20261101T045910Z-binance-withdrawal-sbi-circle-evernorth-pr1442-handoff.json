@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "record_type": "research_handoff",
+  "handoff_id": "HANDOFF-20261101T045910Z-BINANCE-SBI-CIRCLE-EVERNORTH-PR1442",
+  "captured_at_utc": "2026-11-01T04:59:10Z",
+  "data_cutoff_utc": "2026-11-01T04:59:10Z",
+  "verified_this_run": [
+    "Binance Update #4 schedules XRP withdrawal phase one 06:00–09:00 UTC; not yet begun at capture.",
+    "SBI presentation resolves Circle SBI Japan K.K. / SBI Circle Holdings K.K. name mapping and 50/50 ratio.",
+    "SBI reports $50M Circle investment and approximately 9% Ripple equity as of June 2025.",
+    "SBI reports $200M Evernorth PIPE contribution.",
+    "Evernorth SEC filing reports 473.276M XRP at closing, SBI Class A/C holdings, Ripple facility and potential equity line.",
+    "Evernorth tracker reports 103.13M XRP in 13 attributed BitGo wallets and 370.35M outside attributed set.",
+    "Circle Q2 filing reports no significant SBI-Circle JV results to June 30 and $655.3M H1 distribution costs to Coinbase.",
+    "Coinbase Q3 filing reports renewed Circle agreement and all-time-high average USDC platform balances.",
+    "PR #1442 exact-head CI passed 349 tests plus 8 subtests; gate passed with merging disabled."
+  ],
+  "unresolved": [
+    "Actual Binance XRP withdrawal availability and transactions.",
+    "Raw XRPL Destination fields and subsequent escrow disposition.",
+    "Attacker-wallet balance after October 31 16:51 UTC.",
+    "Destination attribution for Evernorth 370.35M XRP outflow and current total holdings.",
+    "Evernorth current custody, encumbrance, debt and equity-line draw.",
+    "Current SBI Ripple stake and SBI Remit volumes.",
+    "SBI-Circle JV actual USDC volume and network distribution.",
+    "Exact origin of actual capital phrase; exact Camilla Stephenson identity and exhaustive video inventory."
+  ],
+  "next_actions": [
+    "At/after 06:00 UTC verify Binance XRP withdrawal availability and first successful transactions.",
+    "Capture pre/during/post wallet flows, order-book depth, spreads, basis, funding and OI with controls.",
+    "Trace Evernorth 370.35M unattributed XRP destinations and reconcile with SEC tranches/BitGo custody.",
+    "Decode November 1 EscrowFinish Destination fields and follow-on transfers/EscrowCreate.",
+    "Monitor Binance November 3 cryptographic Proof of Reserves.",
+    "Keep PR #1442 open and unmerged pending explicit approval.",
+    "Run exact-head archive validation on the new 445-shard append and update the receipt only after success."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "main_modified": false,
+  "merge_performed": false,
+  "force_push": false,
+  "manual_workflow_dispatch": false,
+  "paper_position_mutated": false,
+  "real_money_trade": false,
+  "platform_status": "DESIGNED_ONLY; GitHub access verified; no external AI/data-platform handoff verified."
+}

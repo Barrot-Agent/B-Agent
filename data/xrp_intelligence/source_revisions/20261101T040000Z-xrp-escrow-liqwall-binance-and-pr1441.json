@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T040000Z-XRP-ESCROW-LIQWALL-BINANCE-PR1441",
+  "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+  "captured_at_utc": "2026-11-01T04:00:00Z",
+  "data_cutoff_utc": "2026-11-01T03:52:00Z",
+  "title": "Post-release XRP escrow ledger, fresh derivatives snapshot, Binance restoration status and current-main writer quarantine",
+  "classification": "SOURCE_REPORTED_ESCROW; PROVIDER_MARKET_OBSERVATION; BINANCE_COMPANY_CLAIM; GITHUB_EXACT_HEAD_CI_VERIFIED",
+  "observations": {
+    "escrow": {
+      "pinned_ledger_index": 108036051,
+      "pinned_ledger_time_utc": "2026-11-01T02:31:00Z",
+      "reported_first_escrow_finish_utc": "2026-11-01T00:00:02Z",
+      "gross_released_xrp": 1000000000,
+      "reported_reescrow_by_pinned_ledger_xrp": 0,
+      "net_outside_escrow_at_pinned_ledger_xrp": 1000000000,
+      "remaining_ripple_escrow_xrp": 30400000000,
+      "remaining_objects": 96,
+      "trailing_12_release_reescrow_pct": 64.2,
+      "trailing_12_release_net_outside_xrp": 4300000000,
+      "next_unlock_utc": "2026-12-01T00:00:00Z",
+      "destination_fields_decoded": false,
+      "subsequent_disposition_unknown": true
+    },
+    "market": {
+      "liqwall": {
+        "observed_at_utc": "2026-11-01T03:52:00Z",
+        "xrp_usd": 1.25,
+        "open_interest_usd": 1330000000,
+        "open_interest_24h_change_pct": 1.4,
+        "average_funding_8h_pct": 0.0025,
+        "binance_funding_8h_pct": 0.01,
+        "binance_long_account_share_pct": 71.9,
+        "binance_top_trader_long_share_pct": 71.1,
+        "liquidations_24h_usd": 369000,
+        "long_liquidations_usd": 228000,
+        "short_liquidations_usd": 141000,
+        "url": "https://liqwall.com/coins/xrp",
+        "source_registry_status": "CANDIDATE_PENDING_REGISTRY_INGESTION"
+      },
+      "okx": {
+        "observed_at_utc": "2026-11-01T03:09:31Z",
+        "xrp_usd": 1.248,
+        "change_24h_pct": -0.43,
+        "volume_24h_usd": 735810000,
+        "change_7d_pct": -3.61,
+        "change_30d_pct": -16.2,
+        "change_3m_pct": 15.97,
+        "url": "https://www.okx.com/price/xrp-xrp",
+        "source_registry_status": "CANDIDATE_PENDING_REGISTRY_INGESTION"
+      },
+      "interpretation": "Provider-specific observations. OI is not averaged with prior TradRadar series. Account long-share is not notional exposure. Price difference is small but does not establish causal market impact from escrow or Binance."
+    },
+    "binance": {
+      "update3_published_utc": "2026-10-31T14:24:00Z",
+      "update3_updated_utc": "2026-10-31T15:23:00Z",
+      "aggregate_replenishment_pct": 90,
+      "xrp_customer_asset_coverage_pct": 100,
+      "rlusd_customer_asset_coverage_pct": 100,
+      "evidence_class": "COMPANY_REPORTED_PENDING_FULL_ZK_PROOF",
+      "remaining_10pct": "Less-liquid assets outside top ten",
+      "replenishment_sources": [
+        "partial SAFU",
+        "portion of Futures Insurance Fund",
+        "corporate treasury"
+      ],
+      "full_zk_por_estimated_date": "2026-11-03",
+      "withdrawal_reopening_target": "2026-11-01",
+      "reopening_confirmation_found_as_of_cutoff": false,
+      "xrp_specific_acquisition_quantity": "NOT_DISCLOSED",
+      "stolen_xrp_recovery": "NOT_CONFIRMED",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62"
+    },
+    "attacker_wallet": {
+      "address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "last_bitquery_cutoff_utc": "2026-10-31T16:51:00Z",
+      "bitquery_reported_rounded_balance_xrp": 233500000,
+      "xrplwin_exact_balance_xrp": 233461943.10005,
+      "xrplwin_article_date": "2026-10-30",
+      "current_balance": "UNKNOWN_AFTER_BITQUERY_CUTOFF",
+      "later_outflows": "UNKNOWN"
+    },
+    "repository": {
+      "main_sha": "9226a7c40d06b0c59cf914190cc35ca99bd377ba",
+      "main_commit_timestamp_utc": "2026-11-01T03:51:46Z",
+      "main_commit_changed_only_generated_at": true,
+      "sentiment_shift_xrp_recent_entries": 0,
+      "sentiment_shift_xrp_prior_entries": 0,
+      "sentiment_shift_btc_recent_entries": 0,
+      "sentiment_shift_btc_prior_entries": 0,
+      "main_branch_protected": true,
+      "required_status_check_contexts": [],
+      "required_status_check_interpretation": "No required contexts are configured in the branch object response; complete protection detail endpoint was not accessible.",
+      "main_write_paths_active": [
+        "cross-analysis.yml",
+        "scheduler-tick.yml",
+        "merge-queue.yml"
+      ],
+      "pr1439_status": "OPEN_DRAFT_UNMERGED; DIVERGED 1 AHEAD/1 BEHIND; CI 349+8 AND GATE PASS ON OLD BASE",
+      "pr1441_status": "OPEN_DRAFT_UNMERGED; FRESH MAIN BASE; CI PASS; FAIL-CLOSED GATE PASS",
+      "pr1441_head_sha": "c7751f83437456b10a68587f4f7fc8ae3dfa29c3",
+      "pr1441_ci_run_id": 41271720986,
+      "pr1441_gate_run_id": 41271720993,
+      "pr1441_ci_conclusion": "SUCCESS",
+      "pr1441_gate_conclusion": "SUCCESS; MERGING DISABLED",
+      "open_prs": 212,
+      "draft_prs": 202,
+      "ready_prs": 10,
+      "main_based_prs": 207,
+      "stale_main_based_prs": 206,
+      "current_main_base_prs": 1,
+      "non_main_based_prs": 5
+    }
+  },
+  "source_evidence": [
+    {
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "supports": "Pinned ledger #108036051 at 02:31 UTC, November 1 EscrowFinish report, 1B gross release, zero re-escrow by that ledger, 30.4B remaining, 64.2% trailing 12-release re-escrow."
+    },
+    {
+      "source_id": "SRC-20261031T210244Z-BINANCE-RECOVERY-UPDATE3",
+      "publisher": "Binance",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "supports": "90% aggregate replenishment; XRP and RLUSD company-reported 100% customer asset backing; 10% less-liquid remainder; PoR proof estimate Nov 3; withdrawal reopening target Nov 1."
+    },
+    {
+      "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+      "publisher": "GitHub / Barrot-Agent/B-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "supports": "Current main workflow and PR state, exact-head CI/gate evidence, open PR inventory."
+    },
+    {
+      "candidate_id": "CAND-20261101T040000Z-LIQWALL-XRP-0352Z",
+      "publisher": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "supports": "03:52 UTC XRP derivatives observation; not yet in immutable source registry."
+    },
+    {
+      "candidate_id": "CAND-20261101T040000Z-OKX-XRP-030931Z",
+      "publisher": "OKX",
+      "url": "https://www.okx.com/price/xrp-xrp",
+      "supports": "03:09:31 UTC spot quote, volume and performance; not yet in immutable source registry."
+    }
+  ],
+  "source_candidates_pending_registry": [
+    {
+      "id": "CAND-20261101T040000Z-LIQWALL-XRP-0352Z",
+      "publisher": "Liqwall",
+      "url": "https://liqwall.com/coins/xrp",
+      "data_cutoff_utc": "2026-11-01T03:52:00Z"
+    },
+    {
+      "id": "CAND-20261101T040000Z-OKX-XRP-030931Z",
+      "publisher": "OKX",
+      "url": "https://www.okx.com/price/xrp-xrp",
+      "data_cutoff_utc": "2026-11-01T03:09:31Z"
+    }
+  ],
+  "access_and_method_limitations": [
+    "XRP Insights is a secondary ledger-derived tracker. The two linked XRPL Explorer transaction pages require JavaScript; raw transaction JSON and Destination fields were not independently decoded.",
+    "The pinned escrow ledger is 89 minutes old at this capture. Later EscrowCreate activity may have occurred after the pinned ledger.",
+    "Liqwall and OKX observations are provider-specific and are candidates pending immutable source-registry ingestion.",
+    "The 24-hour price, volume, OI and liquidation windows overlap the Binance incident and other market events; no escrow causality is established.",
+    "Binance's 100% XRP/RLUSD backing and 90% aggregate replenishment are company claims pending full cryptographic PoR proof; XRP-specific purchase quantity is undisclosed.",
+    "No official post-target Binance withdrawal-reopening confirmation was found by the capture time; status remains unconfirmed, not asserted paused or reopened.",
+    "The attacker-wallet observation remains stale after 2026-10-31 16:51 UTC.",
+    "GitHub branch protection detail endpoint returned 403; the public branch object shows protected=true and an empty required-status-check context list, but other protection settings are unknown.",
+    "Full repository CI, dependency vulnerability scan and security-alert review were not completed."
+  ],
+  "required_classification": "ESCROW_FINISH_TRACKER_REPORTED; DESTINATION_UNKNOWN; MARKET_PROVIDER_OBSERVATIONS; BINANCE_WITHDRAWAL_STATUS_UNCONFIRMED; PR1441_EXACT_HEAD_CI_AND_GATE_VERIFIED",
+  "prediction_admission": "NOT_ADMITTED",
+  "forecast_status": "NOT_ISSUED",
+  "pending_archive_append": true,
+  "supersedes_path": "data/xrp_intelligence/source_revisions/20261101T030943Z-xrp-insights-postrelease-ledger-108035119.json",
+  "correction_note": "New point-in-time update. Earlier source revisions and snapshots remain unchanged."
+}

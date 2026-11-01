@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 160,
+  "chunk_count": 161,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "RUN-XRP-BINANCE-UPDATE4-WITHDRAWAL-PHASE1-PR1442-SAFETY-20261101T052616Z",
+      "recorded_at_utc": "2026-11-01T05:26:16Z",
+      "update_type": "BINANCE_UPDATE4_XRP_WITHDRAWAL_PHASE1_AND_BAGENT_PR1442_SAFETY",
+      "data_cutoff_utc": "2026-11-01T05:26:16Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261101T052616Z-binance-update4-withdrawal-phase-and-pr1442-audit.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T052616Z-binance-update4-withdrawal-phase-xrp-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T052616Z-binance-phase1-withdrawal-event-study-and-pr1442-safety.json",
+      "repository_audit_path": "data/repository_audits/20261101T052616Z-main-pr1442-and-binance-update4-audit.json",
+      "source_revision_path": "data/xrp_intelligence/source_revisions/20261101T052616Z-binance-update4-withdrawal-phase1-and-pr1442-ci.json",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T052616Z-GITHUB-BAGENT-MAIN-PR1442-VERIFICATION"
+      ],
+      "findings": [
+        "Binance Update #4 raises the company-reported aggregate recovery/replenishment claim from 90% to 95%; remaining 5% is described as less-liquid assets outside the top ten.",
+        "XRP is explicitly included in phase-one withdrawal restoration scheduled 06:00–09:00 UTC; availability is progressive and had not started at the capture cutoff.",
+        "Reuters reports the same announcement but does not independently verify reserve assets.",
+        "No XRP-specific replenishment purchase quantity or actual withdrawal flow is disclosed.",
+        "The November 1 escrow release remains tracker-reported at ledger 108036051; destination and later disposition unknown.",
+        "PR #1442 exact-head CI passed 349 tests plus 8 subtests and fail-closed gate passed; main remains unchanged and privileged workflows remain active."
+      ],
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 3,
+        "missing_source_references": 0
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+        "main_modified": false,
+        "merge": false,
+        "force_push": false,
+        "manual_workflow_dispatch": false,
+        "secret_access": false,
+        "paper_state_mutation": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

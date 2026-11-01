@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "captured_at_utc": "2026-11-01T05:26:16Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+    "latest_commit_utc": "2026-11-01T04:51:51Z",
+    "latest_commit_message": "Cross-analysis refresh [skip ci]",
+    "changed_files": [
+      {
+        "path": "ping-pongings/knowledge-base/sentiment_shift.json",
+        "change": "generated_at timestamp only"
+      }
+    ],
+    "sentiment_shift": {
+      "generated_at_utc": "2026-11-01T04:51:50.732771Z",
+      "xrp_recent_entries": 0,
+      "xrp_prior_entries": 0,
+      "xrp_recent_score": null,
+      "xrp_prior_score": null,
+      "btc_recent_entries": 0,
+      "btc_prior_entries": 0,
+      "btc_recent_score": null,
+      "btc_prior_score": null
+    },
+    "knowledge_log_jsonl_entries": 0,
+    "privileged_workflows": [
+      {
+        "path": ".github/workflows/cross-analysis.yml",
+        "permissions": [
+          "contents:write"
+        ],
+        "triggers": [
+          "workflow_run",
+          "schedule",
+          "workflow_dispatch"
+        ],
+        "capability": "commits and pushes generated analysis outputs"
+      },
+      {
+        "path": ".github/workflows/scheduler-tick.yml",
+        "permissions": [
+          "contents:write",
+          "actions:write"
+        ],
+        "triggers": [
+          "schedule",
+          "workflow_dispatch"
+        ],
+        "capability": "scripts/scheduler.py can dispatch workflow files without a specific allowlist; current queue tick fired zero entries"
+      },
+      {
+        "path": ".github/workflows/merge-queue.yml",
+        "permissions": [
+          "contents:write",
+          "pull-requests:write"
+        ],
+        "triggers": [
+          "workflow_dispatch"
+        ],
+        "defaults": {
+          "mode": "label",
+          "label": "merge-queue",
+          "max_prs": 0,
+          "dry_run": false
+        },
+        "capability": "can update branches and merge eligible labelled PRs; no explicit user-approval check verified"
+      }
+    ],
+    "branch_protected_flag": true,
+    "full_branch_protection_details": "403_FROM_AVAILABLE_GITHUB_INTEGRATION; REQUIRED_STATUS_CHECKS_AND_OTHER_RULES_UNKNOWN"
+  },
+  "workflow_runs": {
+    "cross_analysis": {
+      "run_id": 41274697648,
+      "status": "SUCCESS",
+      "completed_at_utc": "2026-11-01T04:51:55Z",
+      "xrp_recent_entries": 0,
+      "xrp_prior_entries": 0,
+      "btc_recent_entries": 0,
+      "btc_prior_entries": 0,
+      "pages_run_id": 41274706437
+    },
+    "scheduler_tick": {
+      "run_id": 41276373377,
+      "status": "SUCCESS",
+      "completed_at_utc": "2026-11-01T05:17:45Z",
+      "entries_fired": 0,
+      "queue_size": 1,
+      "queue_entry_status": "DONE",
+      "push_result": "EVERYTHING_UP_TO_DATE",
+      "new_main_commit": false
+    },
+    "pr1442_tests": {
+      "run_id": 41275266085,
+      "status": "SUCCESS",
+      "tests_passed": 349,
+      "subtests_passed": 8,
+      "head_sha": "bc84abfeefee3ca60f43fa729d5631ad84719c55"
+    },
+    "pr1442_gate": {
+      "run_id": 41275266092,
+      "status": "SUCCESS",
+      "gate": "MERGING_DISABLED"
+    }
+  },
+  "pr_inventory": {
+    "captured_at_utc": "2026-11-01T05:26:16Z",
+    "total": 200,
+    "draft": 191,
+    "ready": 9,
+    "main_based": 195,
+    "current_main_base": 1,
+    "stale_main_based": 194,
+    "non_main_base": 5,
+    "current_main_based_prs": [
+      1442
+    ]
+  },
+  "safety_prs": [
+    {
+      "number": 1442,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1442",
+      "base_sha": "cf3ff49e4128c732fe84ca36efb7f0424774e904",
+      "head_sha": "bc84abfeefee3ca60f43fa729d5631ad84719c55",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run_id": 41275266085,
+      "tests_passed": 349,
+      "subtests_passed": 8,
+      "gate_run_id": 41275266092,
+      "gate_status": "PASS_MERGE_DISABLED"
+    }
+  ],
+  "limitations": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_lockfile_inventory": "PARTIAL",
+    "vulnerability_scan": "NOT_RUN",
+    "security_alerts": "NOT_ACCESSIBLE",
+    "branch_protection_detail": "403",
+    "merge_queue_not_disabled_on_main": true
+  },
+  "main_modified_by_this_run": false,
+  "merge_performed": false,
+  "force_push_performed": false,
+  "manual_workflow_dispatch_performed": false
+}

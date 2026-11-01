@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 162,
+  "chunk_count": 163,
+  "record_count": 1,
+  "records": [
+    {
+      "id": "RUN-XRP-BINANCE-PHASE1-PR1445-WORKFLOW-AUDIT-20261101T061500Z",
+      "recorded_at_utc": "2026-11-01T06:15:00Z",
+      "update_type": "BINANCE_WITHDRAWAL_RECHECK_PR1445_AND_REMAINING_SCHEDULED_WORKFLOW_AUDIT",
+      "data_cutoff_utc": "2026-11-01T06:15:00Z",
+      "snapshot_path": "data/xrp_intelligence/snapshots/20261101T061500Z-xrp-escrow-binance-phase1-pr1444-pr1445-workflow-audit.json",
+      "graph_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T061500Z-binance-withdrawal-and-bagent-safety-graph.json",
+      "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T061500Z-withdrawal-evidence-and-scheduled-workflow-safety.json",
+      "repository_audit_path": "data/repository_audits/20261101T061500Z-main-216-prs-workflow-risk-and-pr1445-audit.json",
+      "source_revision_path": "data/xrp_intelligence/source_revisions/20261101T061500Z-binance-withdrawal-recheck-pr1444-pr1445-workflow-audit.json",
+      "handoff_path": "data/xrp_intelligence/hand_offs/20261101T061500Z-binance-phase1-pr1445-and-next-workflow-safety-handoff.json",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T060400Z-BINANCE-NETWORK-STATUS-PAGE",
+        "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT",
+        "SRC-20261101T061000Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT"
+      ],
+      "findings": [
+        "XRP Insights' pinned ledger 108037957 at 04:35 UTC reports 1B XRP released, zero re-escrow by that ledger and destination/later disposition unknown.",
+        "Binance phase-one XRP withdrawal window is 15 minutes into the announced 06:00–09:00 UTC period; 06:10 status-page recheck still showed No records and actual XRP availability is unconfirmed.",
+        "PR #1443 passed 349 tests + 8 subtests and gate; PR #1444 passed 363 + 8 and gate; PR #1445 passed 346 + 8 and gate. All remain draft/unmerged.",
+        "Main remains 694fc424; 216 open PRs, 206 drafts, 10 ready, 211 main-based, one current-main-based, 210 stale and five non-main.",
+        "Additional scheduled issue-mutating workflows and the scheduled Gumroad metrics main writer remain active; their quarantine is the next repository safety priority.",
+        "The approval workflow's zero-job push records are expected unmatched events because the workflow is workflow_dispatch-only."
+      ],
+      "verification": {
+        "status": "PENDING_EXACT_HEAD_VALIDATION",
+        "source_references": 7,
+        "missing_source_references": 0
+      },
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "safety": {
+        "main_sha": "694fc4241f543917fc6eb787c025bf1eb6726595",
+        "main_modified": false,
+        "merge": false,
+        "force_push": false,
+        "manual_workflow_dispatch": false,
+        "secret_access": false,
+        "paper_state_mutation": false,
+        "real_money_trade": false
+      }
+    }
+  ]
+}

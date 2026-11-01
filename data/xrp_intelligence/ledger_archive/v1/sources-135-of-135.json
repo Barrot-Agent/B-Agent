@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 134,
+  "chunk_count": 135,
+  "record_count": 3,
+  "records": [
+    {
+      "id": "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+      "publisher": "Binance Support — Security Incident | Recovery Update #4: Withdrawals Resume in Phases",
+      "url": "https://www.binance.com/en/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
+      "retrieved_at_utc": "2026-11-01T05:26:16Z",
+      "publication_time_utc": "2026-11-01T04:08:00Z",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "Binance announced phase one of withdrawal restoration for 2026-11-01 between 06:00 and 09:00 UTC.",
+        "The phase-one network/asset table explicitly includes the XRP network and XRP.",
+        "Binance reports approximately 95% of the impacted amount covered, up from approximately 90% in its previous update.",
+        "Binance states BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC balances are fully backed 100%.",
+        "Binance says the remaining 5% consists of less-liquid assets outside the named top ten.",
+        "Binance says it continues purchasing remaining affected assets through market and OTC channels.",
+        "Binance says deposits remain open and it will absorb the financial impact rather than pass losses to users.",
+        "Binance says phase-one assets will become available progressively and users should check the network-status page."
+      ],
+      "limitations": [
+        "The 95% aggregate replenishment and 100% top-ten coverage are company-reported claims, not independent proof of asset-by-asset purchases or liabilities.",
+        "The announcement does not disclose an XRP-specific replenishment quantity, purchase venue, acquisition price, SAFU allocation or corporate-treasury allocation.",
+        "The 06:00–09:00 UTC interval is a phase-one rollout window; availability is progressive and may be delayed. It is not proof that every XRP withdrawal was enabled at 06:00.",
+        "The public network-status page returned an empty server-rendered table at 05:11 UTC; the XRP-specific live state could not be read from that page.",
+        "The full cryptographic Proof of Reserves remains pending the previously announced November 3 target.",
+        "No actual customer XRP withdrawal, external destination, sale or market impact is established by this announcement."
+      ]
+    },
+    {
+      "id": "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+      "publisher": "Reuters — Binance to resume withdrawals after recovering bulk of $6 billion in stolen funds",
+      "url": "https://www.reuters.com/legal/government/binance-resume-withdrawals-after-recovering-bulk-6-billion-stolen-funds-2026-11-01/",
+      "retrieved_at_utc": "2026-11-01T05:26:16Z",
+      "publication_time_utc": "2026-11-01T04:57:00Z",
+      "evidence_class": "SECONDARY_NEWS_REPORT_OF_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "Reuters reports Binance's 95% aggregate replenishment statement.",
+        "Reuters reports that phase one was scheduled between 06:00 and 09:00 GMT and includes XRP among the assets.",
+        "Reuters reports the FBI attribution of the overall Binance theft to North Korea's TraderTraitor unit."
+      ],
+      "limitations": [
+        "Reuters reports Binance's statements and is not an independent asset-by-asset reserve audit.",
+        "The report does not disclose XRP-specific acquisitions, purchases, customer withdrawals or on-chain reserve changes.",
+        "The FBI attribution applies to the overall incident; it does not independently identify the XRPL attacker receiver as a North Korean-controlled account."
+      ]
+    },
+    {
+      "id": "SRC-20261101T052616Z-GITHUB-BAGENT-MAIN-PR1442-VERIFICATION",
+      "publisher": "GitHub API and GitHub Actions — Barrot-Agent/B-Agent main, pull requests and workflow evidence",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-11-01T05:26:16Z",
+      "publication_time_utc": "2026-11-01T05:26:16Z",
+      "evidence_class": "PRIMARY_REPOSITORY_AND_CI_STATE",
+      "claims": [
+        "The main branch was observed at cf3ff49e4128c732fe84ca36efb7f0424774e904.",
+        "PR #1442 is open, draft, unmerged and based on that exact main SHA; its head is bc84abfeefee3ca60f43fa729d5631ad84719c55.",
+        "PR #1442 exact-head CI run 41275266085 completed successfully with 349 tests and 8 subtests passing.",
+        "PR #1442 fail-closed gate run 41275266092 completed successfully and kept merging disabled.",
+        "Main Cross Analysis run 41274697648 reported zero recent and prior XRP/BTC sentiment-shift samples, then committed a generated_at-only change to sentiment_shift.json.",
+        "Main Scheduler Tick run 41276373377 fired zero queue entries; the queue contained one already-completed entry and the final git push reported Everything up-to-date.",
+        "The main Cross Analysis, Scheduler Tick and Merge Queue workflows remain write/dispatch-capable until an approved remediation is merged.",
+        "The open-pull-request API inventory returned 200 open PRs: 191 drafts, 9 ready, 195 main-based, 194 stale main-based, 1 current-main-based (#1442), and 5 non-main-based."
+      ],
+      "limitations": [
+        "The full branch-protection details endpoint returned 403 to the available GitHub integration; only the branch's protected flag is observable, and required-check configuration remains unknown.",
+        "Full repository CI has not been run.",
+        "A complete lockfile-based dependency vulnerability scan has not been run; security-alert access remains unavailable.",
+        "PR #1442 is a proposal. Its successful CI does not change main; no merge or main-branch remediation occurred."
+      ]
+    }
+  ]
+}

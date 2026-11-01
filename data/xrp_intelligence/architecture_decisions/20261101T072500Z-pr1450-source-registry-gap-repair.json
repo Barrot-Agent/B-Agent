@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T072500Z-PR1450-SOURCE-REGISTRY-GAP-REPAIR",
+  "captured_at_utc": "2026-11-01T07:25:00Z",
+  "title": "Preserve 13 orphaned source identifiers as explicit unresolved stubs; exclude them from evidence admission",
+  "status": "DECIDED_NOT_EXECUTED",
+  "context": [
+    "The PR #1450 validator now passes archive pointer/schema and archive_policy checks but fails because 13 source IDs referenced by the latest snapshot are absent from the source archive.",
+    "The 13 IDs were present in the 06:40 snapshot and its source bundle existing_source_references list; the inspected source bundles did not contain their full records."
+  ],
+  "decisions": [
+    "Add 13 source registry stubs with exact referenced IDs and null metadata; label each UNRESOLVED_SOURCE_REFERENCE_STUB.",
+    "Do not invent titles, URLs, publishers, dates or claims; the stub records are not admissible evidence or prediction features.",
+    "Recover original metadata from official filings, company pages or source revisions in a later append-only correction; preserve stubs and history.",
+    "Keep PR #1450 draft/unmerged until exact-head archive validation and fail-closed gate pass."
+  ],
+  "unresolved": [
+    "Original metadata for all 13 source IDs.",
+    "Whether any IDs are duplicate aliases of other canonical source records; no alias mapping is asserted without evidence."
+  ],
+  "source_ids": [
+    "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+    "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+    "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+    "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+    "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION",
+    "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+    "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+    "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+    "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+    "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+    "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q"
+  ],
+  "feature_admission": {
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED",
+    "exclude_source_ids": [
+      "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+      "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+      "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+      "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+      "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION",
+      "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+      "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+      "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+      "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+      "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+      "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+      "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+      "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q"
+    ],
+    "reason": "Source metadata is unrecovered; identifier-only stubs cannot support claims or features."
+  }
+}

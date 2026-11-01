@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 166,
+  "chunk_count": 167,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261101T072500Z-PR1450-ARCHIVE-REPAIR-SOURCE-STUBS",
+      "captured_at_utc": "2026-11-01T07:25:00Z",
+      "summary": "Repaired archive pointer and snapshot-reference errors on PR #1450; the next exact-head validator reached the source-ID integrity check and found 13 source IDs referenced by the 06:40 snapshot but absent from the source registry. Added explicit unresolved stubs rather than inventing URLs or claims.",
+      "verified": [
+        "Validator run 41284561140 checked 459 shards, reconciled archive_policy counts, verified the snapshot blob SHA, accepted snapshot_reference mode, checked 49 source-revision addenda and found 43 pending archive append.",
+        "The only reported validation error was 13 unknown source IDs referenced by the snapshot.",
+        "The 13 IDs were present in the 06:40 snapshot source_ids list and its source bundle existing_source_references list, but no underlying records for those IDs were found in the 21 source bundles inspected.",
+        "The new source records preserve those identifiers as unresolved stubs with null title, publisher, URL and publication time; no substantive evidence is inferred from an identifier."
+      ],
+      "unresolved": [
+        "Original metadata, source URLs and substantive claims for the 13 source IDs remain unrecovered.",
+        "The 13 source stubs are registry-integrity placeholders, not evidence suitable for relationship claims or model features.",
+        "PR #1450 exact-head archive validation after adding the stubs remains pending."
+      ],
+      "next_actions": [
+        "Run exact-head archive validation and fail-closed gate on the new PR #1450 head.",
+        "Recover the original 13 source records from authoritative URLs or original source revisions; replace stubs only by appending new revisions and preserve stubs.",
+        "Keep the 13 unresolved stubs excluded from evidence claims and prediction features.",
+        "Continue Binance XRP withdrawal and escrow destination verification; no forecast."
+      ],
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "source_ids": [
+        "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+        "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+        "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+        "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+        "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION",
+        "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+        "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+        "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+        "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+        "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q"
+      ],
+      "status": "COMPLETED_PARTIAL_VERIFIED"
+    }
+  ]
+}

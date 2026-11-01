@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "limitations",
+  "chunk_index": 150,
+  "chunk_count": 151,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "LIM-BINANCE-XRP-WITHDRAWAL-AVAILABILITY-UNVERIFIED-20261101T061500Z",
+      "recorded_at_utc": "2026-11-01T06:15:00Z",
+      "category": "BINANCE_XRP_WITHDRAWAL_LIVE_STATUS",
+      "severity": "HIGH",
+      "status": "OPEN_UNKNOWN",
+      "statement": "Binance's official phase-one window includes XRP and is progressive, but the 06:10 UTC network-status page still showed No records; actual XRP withdrawal availability and successful customer flows remain unverified.",
+      "impact": "Using the announced window or empty status page as a completed service event would contaminate exchange-flow and market-impact features.",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T061000Z-BINANCE-NETWORK-STATUS-RECHECK"
+      ],
+      "unresolved": [
+        "First actual XRP network activation timestamp.",
+        "Successful XRP withdrawal ledger hashes and totals.",
+        "Destination classification versus internal wallet reshuffling.",
+        "Subsequent exchange deposits, trades or OTC disposition."
+      ],
+      "feature_admission": "ANNOUNCED_EVENT_MARKER_ONLY; NO_DIRECTIONAL_FEATURE; NO_FORECAST"
+    },
+    {
+      "id": "LIM-BAGENT-SCHEDULED-ISSUE-MUTATORS-UNQUARANTINED-20261101T061500Z",
+      "recorded_at_utc": "2026-11-01T06:15:00Z",
+      "category": "BAGENT_SCHEDULED_EXTERNAL_MUTATION",
+      "severity": "HIGH",
+      "status": "OPEN_REMEDIATION_REQUIRED",
+      "statement": "Main retains scheduled workflows that create/close/assign GitHub issues or commit Gumroad aggregate metrics to main. PRs #1443–#1445 do not cover these paths.",
+      "impact": "Scheduled external issue changes and main-branch writes can occur without a per-run user confirmation; Barrot's Copilot assignee variable may also create an unverified handoff if configured.",
+      "source_ids": [
+        "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT"
+      ],
+      "unresolved": [
+        "Convert scheduled issue workflows to read-only reports/artifacts and require explicit confirmation for apply operations.",
+        "Convert Gumroad metrics to artifact-only without main commit/push.",
+        "Verify whether COPILOT_ASSIGNEE is configured without exposing private values; do not claim live Copilot collaboration without a tested handoff.",
+        "Review manual main writers and Coinbase paper-trader script."
+      ],
+      "feature_admission": "NOT_MARKET_FEATURE; REPOSITORY_SAFETY_BLOCKER"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T064027Z-BINANCE-PHASE1-ETF-SBI-COINBASE-PR1446",
+  "captured_at_utc": "2026-11-01T06:40:27Z",
+  "source_id": "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+  "source_ids": [
+    "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+    "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+    "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF",
+    "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+    "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+    "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+    "SRC-20261101T064027Z-TRDESK-XRP-OI",
+    "SRC-20261101T064027Z-COINGLASS-XRP-OI",
+    "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY",
+    "SRC-20261101T064027Z-REUTERS-COINBASE-Q3-2026",
+    "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+    "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+    "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+    "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+    "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+    "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT",
+    "SRC-20261101T064027Z-GITHUB-PR1446-SCHEDULED-WRITERS",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+    "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+    "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+    "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+    "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+    "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+    "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+    "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+    "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+    "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION"
+  ],
+  "source_bundle_path": "data/xrp_intelligence/sources/20261101T064027Z-binance-phase1-etf-sbi-coinbase-source-bundle.json",
+  "source_bundle_blob_sha": "77a5c67994a2e7518cb8e29d979839cd50187b93",
+  "supersedes_revision_id": "REV-20261101T061500Z-BINANCE-WITHDRAWAL-RECHECK-PR1444-PR1445-WORKFLOW-AUDIT-V2",
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Binance announced phase-one XRP withdrawal inclusion during 06:00-09:00 UTC on November 1 and 95% aggregate asset replenishment, but the status page rechecked at 06:40 showed a stale last-updated timestamp and no asset rows.",
+      "classification": "PRIMARY_COMPANY_CLAIM_PLUS_STATUS_PAGE_LIMITATION",
+      "source_ids": [
+        "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "confidence": "HIGH_FOR_ANNOUNCEMENT_LOW_FOR_ACTUAL_AVAILABILITY"
+    },
+    {
+      "id": "C2",
+      "claim": "XRP Insights reports +3.39M XRP ETF holdings change for October 26-30; daily provider values differ because fund universes and methods differ.",
+      "classification": "SOURCED_SECONDARY_OBSERVATION",
+      "source_ids": [
+        "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+        "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+        "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "C3",
+      "claim": "XRP open-interest aggregators range from about $0.749B to $2.81B because their venue/contract coverage is not aligned; no unified total is admitted.",
+      "classification": "SOURCED_PROVIDER_DISAGREEMENT",
+      "source_ids": [
+        "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+        "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+        "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+        "SRC-20261101T064027Z-TRDESK-XRP-OI",
+        "SRC-20261101T064027Z-COINGLASS-XRP-OI"
+      ],
+      "confidence": "HIGH_THAT_SCOPE_DIFFERS"
+    },
+    {
+      "id": "C4",
+      "claim": "Two third-party XRPL stablecoin trackers report RLUSD near $707M, while their total XRPL stablecoin totals differ; DefiLlama reports a large seven-day contraction whose cause is unknown.",
+      "classification": "CORROBORATED_SECONDARY_ONCHAIN_OBSERVATION",
+      "source_ids": [
+        "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+        "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS"
+      ],
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "C5",
+      "claim": "Circle's global USDC supply was about $70B on October 29 with reported net contraction over seven, thirty and 365 days; this is not an XRPL-specific metric.",
+      "classification": "PRIMARY_ISSUER_DISCLOSURE",
+      "source_ids": [
+        "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "id": "C6",
+      "claim": "Coinbase's Q3 2026 filing contains no XRP text hit and does not separately disclose XRP in collateral tables; BTC, ETH and aggregate other-crypto lines are reported, so XRP-specific collateral is unknown rather than zero.",
+      "classification": "PRIMARY_FILING_ABSENCE_AND_AGGREGATION_LIMITATION",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q"
+      ],
+      "confidence": "HIGH_FOR_NO_SEPARATE_DISCLOSURE"
+    },
+    {
+      "id": "C7",
+      "claim": "Circle reported $655.3M of H1 distribution costs to Coinbase; Coinbase reported substantial stablecoin revenue and USDC customer rewards. These are different accounting line items and do not establish Coinbase net profit from USDC.",
+      "classification": "PRIMARY_FILINGS_CROSSWALK",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "id": "C8",
+      "claim": "SBI Group's Ripple, Circle, Evernorth, JPYSC, SMFG, BlackRock, Startale and Open Standard relationships form a multi-rail network; no evidence establishes a single coordinated XRP strategy.",
+      "classification": "SOURCED_FACTS_PLUS_INFERENCE",
+      "source_ids": [
+        "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+        "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+        "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+        "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+        "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+        "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+        "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+        "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+        "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+        "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+        "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+        "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+        "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+        "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT"
+      ],
+      "confidence": "HIGH_FOR_LINKS_MEDIUM_FOR_STRATEGIC_INFERENCE"
+    },
+    {
+      "id": "C9",
+      "claim": "SBI START bond and shareholder benefit programs distribute XRP rewards, but do not prove XRP-denominated financing, XRPL issuance or quantified open-market demand.",
+      "classification": "PRIMARY_AFFILIATE_ANNOUNCEMENT_WITH_LIMITATION",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+        "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "id": "C10",
+      "claim": "PR #1446 passed exact-head CI and the fail-closed gate, but remains draft and unmerged; main workflow writers remain active until authorized integration.",
+      "classification": "PRIMARY_REPOSITORY_AND_CI_EVIDENCE",
+      "source_ids": [
+        "SRC-20261101T064027Z-GITHUB-PR1446-SCHEDULED-WRITERS"
+      ],
+      "confidence": "HIGH"
+    }
+  ],
+  "observations": {
+    "binance": {
+      "phase_one_window_utc": "06:00-09:00",
+      "xrp_included_in_announcement": true,
+      "status_page_last_updated_displayed": "2026-10-30 01:00",
+      "status_page_timezone": "UNDISCLOSED",
+      "status_page_table": "NO DATA",
+      "actual_xrp_withdrawal_availability": "UNCONFIRMED"
+    },
+    "escrow": {
+      "gross_release_xrp": 1000000000,
+      "reported_finish_utc": "2026-11-01T00:00:02Z",
+      "last_pinned_tracker_ledger": 108037957,
+      "last_pinned_tracker_timestamp_utc": "2026-11-01T04:35:00Z",
+      "later_destination_or_disposition": "UNKNOWN",
+      "current_web_search_index_regressed_to_ledger": 108034152,
+      "current_web_search_index_timestamp_utc": "2026-11-01T00:27:00Z",
+      "regressed_search_result_supersedes_pinned_snapshot": false
+    },
+    "etf": {
+      "xrp_insights_weekly_holdings_delta_xrp": 3390000,
+      "holdings_xrp": 1196600000,
+      "aum_usd": 1503000000,
+      "maketo_oct30_usd": -496500,
+      "xrp_insights_oct30_xrp": -49932,
+      "chaincatcher_sosovalue_oct29_usd": 8431600,
+      "methodology": "HOLDINGS_DELTA_AND_FUND_UNIVERSE_DIFFERENCES; NOT A SINGLE CASH-FLOW MEASURE"
+    },
+    "derivatives": {
+      "kairo_oi_usd": 1900000000,
+      "kairo_venues": 13,
+      "kodexius_oi_usd": 749190000,
+      "kodexius_contracts": 7,
+      "justscreener_oi_usd": 1600000000,
+      "justscreener_venues": 9,
+      "trdesk_oi_usd": 2660000000,
+      "trdesk_venues": 26,
+      "coinglass_oi_usd": 2810000000,
+      "aggregate_status": "NONCOMPARABLE"
+    },
+    "xrpl_stablecoins": {
+      "defillama_total_usd": 799090000,
+      "defillama_rlusd_dominance_pct": 88.55,
+      "defillama_7d_change_pct": -24.55,
+      "stables_cool_total_usd": 712200000,
+      "stables_cool_rlusd_usd": 707400000,
+      "stables_cool_usdc_usd": 4800000,
+      "rlusd_chain_supply_cause": "UNKNOWN"
+    },
+    "coinbase": {
+      "q3_2026_10q_xrp_text_hit": false,
+      "xrp_separately_disclosed_in_collateral": false,
+      "other_crypto_recognized_collateral_usd": 9903000,
+      "customer_crypto_collateral_not_recognized_usd": 2804000000,
+      "derivatives_collateral_named_assets": [
+        "BTC",
+        "ETH"
+      ],
+      "xrp_specific_amount": "UNKNOWN"
+    },
+    "circle_coinbase": {
+      "circle_h1_distribution_costs_to_coinbase_usd": 655300000,
+      "coinbase_q3_ytd_stablecoin_revenue_usd": 904500000,
+      "coinbase_q3_ytd_usdc_rewards_expense_increase_usd": 175700000
+    },
+    "sbi": {
+      "smfg_alliance": true,
+      "blackrock_startale_jpysc_mou": true,
+      "open_standard_coinbase_participation": true,
+      "jpysc_initial_distribution": "SBI VC TRADE ACCOUNTS",
+      "sbi_start_bond_xrp_rewards": true,
+      "shareholder_xrp_coupon_program": true,
+      "coordinated_xrp_strategy": "NOT ESTABLISHED"
+    }
+  },
+  "evidence_classification": {
+    "confirmed_facts": [
+      "The official Binance phase-one announcement includes XRP.",
+      "The Binance status page returned no asset-level data and displayed a last-updated date of October 30.",
+      "The cited company/filing announcements document the SBI, SMFG, BlackRock, Startale and Open Standard relationships.",
+      "The Coinbase Q3 10-Q does not separately disclose XRP in its collateral tables.",
+      "PR #1446 exact-head CI and fail-closed gate passed."
+    ],
+    "sourced_claims": [
+      "XRP ETF and derivatives figures are provider-reported observations.",
+      "Circle and Coinbase financial figures are from their respective filings and are not directly netted."
+    ],
+    "inference": [
+      "SBI is pursuing a multi-rail digital-finance strategy spanning XRP, USDC, RLUSD, JPYSC, OUSD and tokenized assets."
+    ],
+    "speculation": [
+      "Some JPYSC or tokenized-MMF use cases could substitute for selected XRP bridge flows in the future."
+    ],
+    "unknown": [
+      "Actual Binance XRP withdrawal availability.",
+      "XRP-specific Coinbase collateral balances.",
+      "Cause of the recent RLUSD XRPL supply decline.",
+      "Actual JPYSC/OUSD interoperability production volumes.",
+      "Current XRP destination and disposition after escrow release."
+    ],
+    "disconfirming_evidence": [
+      "No XRP text hit or separately disclosed XRP collateral amount in Coinbase's Q3 10-Q.",
+      "The SBI JPYSC/BlackRock/SMFG announcements do not identify XRP or Ripple integration.",
+      "Circle USDC supply on XRPL is small relative to RLUSD in the cited third-party snapshots."
+    ]
+  },
+  "feature_admission": {
+    "status": "RESEARCH_ONLY",
+    "market_features_admitted": false,
+    "reason": "Timestamp, coverage and accounting differences require reconciliation before feature-store admission."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "pending_archive_append": true,
+  "status": "PENDING_ARCHIVE_APPEND",
+  "correction_reason": "Append new public evidence on Binance phase-one status, ETF fund-universe differences, derivatives coverage, XRPL stablecoin supply, Coinbase/Circle economics and SBI multi-rail strategy. Preserve prior observations and disagreements."
+}

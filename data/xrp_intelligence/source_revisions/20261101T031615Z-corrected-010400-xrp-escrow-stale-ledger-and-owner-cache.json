@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_revision_addendum",
+  "revision_id": "REV-20261101T010400Z-XRP-ESCROW-STALE-LEDGER-AND-OWNER-CACHE",
+  "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+  "captured_at_utc": "2026-11-01T01:04:00Z",
+  "data_cutoff_utc": "2026-10-31T23:22:00Z",
+  "title": "November 1 escrow eligibility: refreshed page still uses a pre-event validated-ledger snapshot",
+  "classification": "POST_ELIGIBILITY_EXECUTION_UNVERIFIED; SOURCE_TIMEBASE_MISMATCH",
+  "observations": {
+    "scheduled_eligibility_utc": "2026-11-01T00:00:00Z",
+    "capture_after_eligibility_seconds": 3840,
+    "tracker": {
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "pinned_ledger_index": 108033174,
+      "pinned_ledger_time_utc": "2026-10-31T23:22:00Z",
+      "pinned_ledger_precedes_eligibility_seconds": 2280,
+      "page_reports_next_scheduled_release": "2026-12-01T00:00:00Z",
+      "page_reports_december_objects": 4,
+      "page_reports_ripple_escrow_xrp": 31400000000,
+      "page_reports_total_objects": 98,
+      "page_reports_owner_accounts": 8,
+      "page_text_says_november_1_1b_is_eligible_and_awaiting_release": true,
+      "temporal_interpretation": "The page combines a current eligibility statement with a pinned ledger observation from 38 minutes before eligibility. The pinned ledger cannot establish post-00:00 execution or non-execution."
+    },
+    "owner_pages": {
+      "bithomp_accounts": [
+        "https://bithomp.com/account/r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+        "https://bithomp.com/account/rB3WNZc45gxzW31zxfXdkx8HusAhoqscPn"
+      ],
+      "observed_balance_each_xrp": 500000000,
+      "displayed_transaction_history": "No transactions found",
+      "displayed_escrow_objects": "No escrow objects",
+      "displayed_last_activity": "6 months ago",
+      "interpretation": "Pages appear stale or incomplete; not same-ledger corroboration and not evidence against a validated XRPL transaction."
+    },
+    "raw_post_eligibility_verification": {
+      "validated_ledger_after_eligibility_obtained": false,
+      "account_objects_response_obtained": false,
+      "account_tx_response_obtained": false,
+      "escrow_finish_hashes_verified": [],
+      "transaction_metadata_verified": false,
+      "destination_receipts_verified": false,
+      "follow_on_transfers_verified": false,
+      "new_escrow_create_verified": false,
+      "exchange_deposit_verified": false,
+      "status": "NOT_OBTAINED; ABSENCE OF RETRIEVED DATA IS NOT NEGATIVE EVIDENCE"
+    }
+  },
+  "source_evidence": [
+    {
+      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "source_type": "secondary_on_chain_analytics",
+      "supports": "Pinned ledger 108033174 at 23:22 UTC, schedule, 31.4B XRP in 98 objects, and page's mixed-time eligibility text."
+    },
+    {
+      "source_id": "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES",
+      "url": "https://bithomp.com/account/r9UUEXn3cx2seufBkDa8F86usfjWM6HiYp",
+      "source_type": "explorer_page",
+      "supports": "Account page renders 500M XRP, no transaction history, no escrow objects and last activity six months ago; freshness is inadequate."
+    },
+    {
+      "source_id": "SRC-XRPL-ACCOUNT-OBJECTS-DOCS-CANDIDATE",
+      "url": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects",
+      "source_type": "official_protocol_documentation",
+      "supports": "account_objects returns raw ledger entries for a specified ledger; validated status and ledger index are required."
+    },
+    {
+      "source_id": "SRC-XRPL-TRANSACTION-FINALITY-DOCS-CANDIDATE",
+      "url": "https://xrpl.org/docs/concepts/transactions/finality-of-results/look-up-transaction-results",
+      "source_type": "official_protocol_documentation",
+      "supports": "A transaction must be in a validated ledger and its metadata/AffectedNodes establish the resulting state."
+    },
+    {
+      "source_id": "SRC-XRPL-ACCOUNT-TX-DOCS-CANDIDATE",
+      "url": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
+      "source_type": "official_protocol_documentation",
+      "supports": "account_tx retrieves validated transactions involving an account."
+    }
+  ],
+  "access_and_method_limitations": [
+    "The latest page's pinned ledger is 38 minutes before eligibility, despite the page's current eligibility text.",
+    "The XRPL Explorer pages require JavaScript and did not expose raw ledger objects.",
+    "Direct public JSON-RPC POST was not available through the browser retrieval path; container network name resolution also failed.",
+    "XRPSCAN public GET endpoint documentation was reviewed, but direct account API URLs were inaccessible through the browser tool.",
+    "No transaction hash surfaced in web search; search-result absence is not evidence of non-execution.",
+    "No private credentials, account keys, deception or unauthorized access were used."
+  ],
+  "required_classification": "ELIGIBILITY_TIME_PASSED_EXECUTION_UNVERIFIED",
+  "prediction_admission": "NOT_ADMITTED",
+  "forecast_status": "NOT_ISSUED",
+  "pending_archive_append": true,
+  "supersedes_path": "data/xrp_intelligence/source_revisions/20261101T010400Z-xrp-escrow-stale-ledger-and-owner-cache.json",
+  "correction_note": "Append-only validator repair copy. Original preserved; ledger pointer redirected to this corrected copy. Source claim and observation unchanged."
+}

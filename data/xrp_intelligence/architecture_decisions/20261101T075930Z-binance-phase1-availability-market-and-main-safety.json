@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T075930Z-BINANCE-PHASE1-ESCROW-MARKET-MAIN-SAFETY",
+  "captured_at_utc": "2026-11-01T07:59:30Z",
+  "title": "Separate Binance withdrawal availability, escrow disposition and derivatives provider coverage",
+  "status": "ADOPTED_FOR_RESEARCH_PIPELINE",
+  "decisions": [
+    "Treat 06:42 XRPL escrow observation as tracker-reported, not raw Destination-verified.",
+    "Treat XRP phase-one inclusion as announced, BTC reopening as Reuters-reported, XRP-specific success as unverified.",
+    "Keep TradRadar seven-venue OI and Seandra Binance-only OI separate; prohibit averaging.",
+    "Keep new source IDs pending archive append and excluded from model features.",
+    "Forecast NOT_ISSUED; market_features_admitted false.",
+    "Do not merge PR #1449 or any PR; main remains unremediated until explicit approval."
+  ],
+  "rationale": "The latest observations improve event coverage but retain transaction-disposition and source-scope gaps. Treating announcements as successful XRP withdrawals or mixing OI universes would create measurement error.",
+  "rejected_alternatives": [
+    "Assume all phase-one assets available at 06:00 UTC.",
+    "Use BTC reopening as proof of XRP withdrawal success.",
+    "Average multi-venue OI with Binance-only OI.",
+    "Treat escrow release as immediate sell pressure."
+  ],
+  "source_ids": [
+    "SRC-20261101T075930Z-BINANCE-NETWORK-STATUS-PAGE",
+    "SRC-20261101T071000Z-TRADRADAR-XRP-DERIVATIVES",
+    "SRC-20261101T074000Z-SEANDRA-BINANCE-XRP-PERP",
+    "SRC-20261101T064200Z-XRP-INSIGHTS-ESCROW-LEDGER-108039913",
+    "SRC-20261101T075930Z-GITHUB-MAIN-PR-INVENTORY-AUDIT",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ],
+  "feature_admission": {
+    "market_features_admitted": false,
+    "forecast_status": "NOT_ISSUED"
+  }
+}
