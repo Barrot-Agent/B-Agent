@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "graph_id": "circle-usdc-xrp-shared-deribit-collateral-20261101T221000Z",
+  "captured_at_utc": "2026-11-01T22:10:00Z",
+  "edges": [
+    {
+      "from": "CIRCLE",
+      "to": "USDC",
+      "relation": "issuer_and_reserve_manager",
+      "status": "CONFIRMED_PRIMARY_SOURCE",
+      "source_ids": [
+        "SRC-CIRCLE-USDC-TERMS-20261101T221000Z",
+        "SRC-CIRCLE-USDC-TRANSPARENCY-20261101T221000Z"
+      ]
+    },
+    {
+      "from": "USDC",
+      "to": "DERIBIT",
+      "relation": "full_cross_collateral_currency_no_stated_haircut_in_X_PM_or_X_SM",
+      "status": "CONFIRMED_CURRENT_VENUE_SPECIFICATION",
+      "source_ids": [
+        "SRC-DERIBIT-CROSS-COLLATERAL-USDC-XRP-20261101T221000Z"
+      ]
+    },
+    {
+      "from": "XRP",
+      "to": "DERIBIT",
+      "relation": "full_cross_collateral_currency_no_stated_X_PM_haircut_15_percent_X_SM",
+      "status": "CONFIRMED_CURRENT_VENUE_SPECIFICATION",
+      "source_ids": [
+        "SRC-DERIBIT-CROSS-COLLATERAL-USDC-XRP-20261101T221000Z"
+      ]
+    },
+    {
+      "from": "COINBASE_GLOBAL",
+      "to": "COINBASE_FINANCIAL_MARKETS",
+      "relation": "subsidiary",
+      "status": "CONFIRMED_CFTC_26_17"
+    },
+    {
+      "from": "COINBASE_FINANCIAL_MARKETS",
+      "to": "COINBASE_BERMUDA",
+      "relation": "30_7_customer_asset_routing",
+      "status": "CONDITIONAL_CFTC_NO_ACTION_PATH"
+    },
+    {
+      "from": "COINBASE_BERMUDA",
+      "to": "DERIBIT",
+      "relation": "foreign_broker_and_derivatives_margin_route",
+      "status": "CONDITIONAL_CFTC_NO_ACTION_PATH"
+    },
+    {
+      "from": "COINBASE",
+      "to": "CIRCLE",
+      "relation": "USDC_distribution_and_revenue_share",
+      "status": "CONFIRMED_EXISTING_COMMERCIAL_RELATIONSHIP"
+    },
+    {
+      "from": "RLUSD",
+      "to": "DERIBIT",
+      "relation": "not_listed_in_current_cross_collateral_currency_table",
+      "status": "NO_CURRENT_VENUE_CROSS_COLLATERAL_EVIDENCE"
+    }
+  ],
+  "non_edges": [
+    {
+      "from": "CIRCLE",
+      "to": "XRP",
+      "status": "NO_DIRECT_ISSUER_OR_PARTNERSHIP_EDGE_ESTABLISHED",
+      "reason": "USDC and XRP share a venue collateral framework; this does not establish a direct Circle-Ripple or Circle-XRP agreement."
+    }
+  ]
+}

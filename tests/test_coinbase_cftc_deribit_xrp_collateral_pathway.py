@@ -76,3 +76,18 @@ def test_deribit_xrp_is_cross_collateral_only_not_offset_currency():
     assert row["x_sm_haircut_pct"] == 15
     assert ledger["correction"]["previous_value"] is True
     assert ledger["correction"]["corrected_value"] is False
+
+
+def test_circle_usdc_and_xrp_share_deribit_cross_collateral_but_rlusd_is_not_listed():
+    snapshot = load(f"data/xrp_intelligence/snapshots/20261101T221000Z-circle-usdc-xrp-shared-deribit-collateral.json")
+    ledger = load(f"data/xrp_intelligence/research_ledger_addenda/20261101T221000Z-circle-usdc-xrp-shared-deribit-collateral.json")
+    venue = snapshot["deribit_cross_collateral"]
+    assert venue["USDC"]["cross_collateral"] is True
+    assert venue["XRP"]["cross_collateral"] is True
+    assert venue["USDC"]["offset_currency"] is False
+    assert venue["XRP"]["offset_currency"] is False
+    assert venue["XRP"]["x_sm_haircut_pct"] == 15
+    assert venue["RLUSD"]["listed"] is False
+    assert snapshot["usdc"]["net_change_30d_usd"] == -3100000000
+    assert ledger["feature_admission"] == "NONE"
+    assert ledger["forecast_status"] == "NOT_ISSUED"

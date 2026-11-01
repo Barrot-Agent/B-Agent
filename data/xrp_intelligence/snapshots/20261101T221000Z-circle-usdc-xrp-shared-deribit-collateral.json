@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "circle-usdc-xrp-shared-deribit-collateral-20261101T221000Z",
+  "captured_at_utc": "2026-11-01T22:10:00Z",
+  "cutoff": {
+    "usdc_supply": "2026-10-29",
+    "deribit_collateral_table": "2026-09-28T14:59:00Z",
+    "cftc_definition": "2026-05-29"
+  },
+  "usdc": {
+    "circulation_usd": 70000000000,
+    "reserves_usd": 71400000000,
+    "net_change_7d_usd": -800000000,
+    "net_change_30d_usd": -3100000000,
+    "net_change_365d_usd": -5000000000,
+    "issuer": "Circle Internet Financial, LLC",
+    "pre_genius_payment_stablecoin_match": "LIKELY_NOT_CFTC_CONFIRMED"
+  },
+  "deribit_cross_collateral": {
+    "USDC": {
+      "cross_collateral": true,
+      "offset_currency": false,
+      "x_pm_haircut": "no haircut stated",
+      "x_sm_haircut": "no haircut stated"
+    },
+    "XRP": {
+      "cross_collateral": true,
+      "offset_currency": false,
+      "x_pm_haircut": "no haircut stated",
+      "x_sm_haircut_pct": 15
+    },
+    "RLUSD": {
+      "listed": false
+    }
+  },
+  "actual_cfm_or_deribit_balances": "UNKNOWN",
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "revision_id": "circle-usdc-xrp-shared-deribit-collateral-20261101T221000Z",
+  "captured_at_utc": "2026-11-01T22:10:00Z",
+  "sources": [
+    {
+      "id": "SRC-CFTC-26-17-PAYMENT-STABLECOIN-DEF-20261101T221000Z",
+      "url": "https://www.cftc.gov/csl/26-17/download",
+      "publisher": "CFTC Market Participants Division",
+      "type": "OFFICIAL_STAFF_INTERPRETATION",
+      "published_at": "2026-05-29",
+      "accessed_at_utc": "2026-11-01T22:07:00Z",
+      "claims": [
+        "Before the GENIUS Act effective date, CFTC 26-17 defines a payment stablecoin as USD-denominated and issued by a state-regulated money transmitter, state-regulated trust company or national trust bank; reserves must be limited to direct or indirect investments in cash, U.S. Treasury securities or overnight U.S. Treasury repurchase agreements; monthly reserve attestations are required.",
+        "The letter's digital-asset and payment-stablecoin collateral path is conditional and subject to 26-05 and 26-17 requirements."
+      ],
+      "limitations": [
+        "The letter does not name Circle USDC or Ripple RLUSD as individually approved assets.",
+        "No CFM account usage or collateral balance is disclosed."
+      ]
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-TERMS-20261101T221000Z",
+      "url": "https://www.circle.com/legal/usdc-terms",
+      "publisher": "Circle",
+      "type": "OFFICIAL_ISSUER_TERMS",
+      "published_at": "2026-10-15",
+      "accessed_at_utc": "2026-11-01T22:07:00Z",
+      "claims": [
+        "Circle Internet Financial, LLC is identified as the issuer of USDC for the covered non-EEA terms.",
+        "USDC is regulated as stored value or prepaid access under money-transmission laws in U.S. states; Circle states it is licensed in many states and identifies New York as a state where it is licensed and regulated as a money transmitter and for virtual-currency business.",
+        "USDC reserves are USD-denominated assets held with U.S.-regulated financial institutions in segregated accounts for holders."
+      ],
+      "limitations": [
+        "These terms do not constitute a CFTC asset-specific eligibility determination."
+      ]
+    },
+    {
+      "id": "SRC-CIRCLE-USDC-TRANSPARENCY-20261101T221000Z",
+      "url": "https://www.circle.com/transparency",
+      "publisher": "Circle",
+      "type": "OFFICIAL_RESERVE_AND_ISSUANCE_DISCLOSURE",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-11-01T22:07:00Z",
+      "claims": [
+        "USDC circulation was $70.0 billion and total reserves were $71.4 billion as of October 29, 2026.",
+        "The 7-day issuance/redemption totals were $10.9 billion issued and $11.7 billion redeemed, a net circulation decrease of $0.8 billion.",
+        "The 30-day issuance/redemption totals were $47.9 billion issued and $51.0 billion redeemed, a net circulation decrease of $3.1 billion.",
+        "The 365-day issuance/redemption totals were $362.1 billion issued and $367.2 billion redeemed, a net circulation decrease of $5.0 billion.",
+        "Reserve categories include other bank deposits, deposits at systemically important institutions, overnight reverse Treasury repo and Treasury securities with maturities under three months; the Circle Reserve Fund (USDXX) is a 2a-7 money-market fund managed by BlackRock."
+      ],
+      "limitations": [
+        "Net USDC supply change is not a direct measure of Deribit balances, Coinbase balances or XRP capital flows.",
+        "Reserve-category values in this extracted disclosure are not individually stated in the captured result."
+      ]
+    },
+    {
+      "id": "SRC-DERIBIT-CROSS-COLLATERAL-USDC-XRP-20261101T221000Z",
+      "url": "https://support.deribit.com/hc/en-us/articles/25944777203869-Cross-collateral-specifications",
+      "publisher": "Deribit",
+      "type": "OFFICIAL_VENUE_COLLATERAL_SPECIFICATION",
+      "published_at": "2026-09-28T14:59:00Z",
+      "accessed_at_utc": "2026-11-01T22:07:00Z",
+      "claims": [
+        "Deribit's table lists USDC as a full cross-collateral currency with no stated X:PM or X:SM haircut.",
+        "Deribit's table lists XRP as a full cross-collateral currency, not an offset currency, with no stated X:PM haircut and a 15% X:SM haircut.",
+        "Deribit states any cross-collateral currency can be used as margin for any derivative position when cross collateral is enabled.",
+        "RLUSD is not listed in the current cross-collateral currency table."
+      ],
+      "limitations": [
+        "Venue eligibility is not proof of CFM U.S. account enablement or actual USDC/XRP balances.",
+        "Absence of RLUSD from this table does not prove it is unavailable in every other Deribit account or collateral arrangement."
+      ]
+    },
+    {
+      "id": "SRC-CIRCLE-RLUSD-ISSUER-RESERVES-20261101T221000Z",
+      "url": "https://ripple.com/products/stablecoin/transparency/",
+      "publisher": "Ripple",
+      "type": "OFFICIAL_ISSUER_RESERVE_DISCLOSURE",
+      "published_at": "2026-10-29",
+      "accessed_at_utc": "2026-11-01T22:07:00Z",
+      "claims": [
+        "Ripple's transparency page reports RLUSD circulation and reserve balances as of October 29, 2026.",
+        "The issuer is Standard Custody & Trust Company, a New York limited-purpose trust company; the accessible August 31 attestation reports Treasury bills, government money-market funds and cash."
+      ],
+      "limitations": [
+        "The money-market fund holdings require look-through to determine whether all assets satisfy the CFTC pre-GENIUS payment-stablecoin reserve definition.",
+        "RLUSD is not listed in Deribit's current cross-collateral table."
+      ]
+    }
+  ]
+}
