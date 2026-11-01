@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T060500Z-XRP-WITHDRAWAL-PHASE-AND-PR1444",
+  "captured_at_utc": "2026-11-01T06:05:00Z",
+  "branch": "verify/xrp-ledger-archive-20261101T031615Z",
+  "prior_head_sha": "c35743df7e9638f776eb7afe8e95054ae383572f",
+  "objective": "Track actual Binance XRP withdrawal activation and flow separately from the November escrow release, and preserve Barrot main while testing least-privilege workflow quarantine.",
+  "verified_this_run": [
+    "XRP Insights' latest accessible pinned observation is ledger 108037957 at 04:35 UTC; it reports 1B XRP released and zero re-escrow by that ledger. Destination and later disposition remain unknown.",
+    "Binance Update #4 reports 95% aggregate replenishment and includes XRP among ten assets it says are 100% backed; these are company claims pending full cryptographic proof and liability reconciliation.",
+    "Binance's 06:00–09:00 UTC phase-one withdrawal window includes XRP and is progressive. At 06:05 UTC the window is in progress, but live XRP availability is unconfirmed.",
+    "The Binance network-status page last-updated display reads 05:28:24 AM (timezone unspecified) and the rendered table says No records; this is not evidence that XRP is open or suspended.",
+    "Reuters reports the same Binance Update #4 announcement and is not independent reserve verification.",
+    "Main advanced to 694fc4241f543917fc6eb787c025bf1eb6726595 at 06:03:40 UTC via a telemetry report commit changing only the timestamp; the report still says OPERATIONAL without deployment verification.",
+    "Open PR inventory: 215 total, 205 drafts, 10 ready, 210 main-based, zero based on the latest main SHA, 210 stale main-based and five non-main.",
+    "PR #1443 exact-head CI passed 349 tests and 8 subtests; fail-closed gate passed with merging disabled. It remains open, draft and unmerged.",
+    "PR #1444 previous head CI failed four assertions (359 passed, 8 subtests passed). The two root causes were fixed in current head 680037388ba80f0ed75eccb918469123dfd69bea; its exact-head rerun has not yet been observed.",
+    "No main write, merge, force-push, manual workflow dispatch, secret access, paper-position mutation or real-money trade occurred."
+  ],
+  "unresolved": [
+    "Actual XRP withdrawal availability and first successful customer withdrawal timestamp.",
+    "Successful customer withdrawal totals and destination classification.",
+    "Whether any withdrawn XRP reaches another exchange, custody provider, OTC counterparty or self-custody.",
+    "Raw November 1 EscrowFinish transaction metadata, Destination fields, affected nodes and follow-on disposition.",
+    "Current attacker-wallet balance and activity after the last October 31 16:51 UTC observation.",
+    "XRP-specific Binance replenishment purchase amount, venues, prices and funding sources.",
+    "Full Binance cryptographic Proof of Reserves and asset/liability reconciliation.",
+    "PR #1444 exact-head CI/gate rerun; main workflow remediation remains unmerged.",
+    "Remaining scheduled/manual workflow mutation paths outside PRs #1443/#1444.",
+    "Full repository CI, dependency vulnerability scan and branch-protection details."
+  ],
+  "next_actions": [
+    "Recheck Binance's official network-status page and withdrawal page for XRP after the 06:00–09:00 UTC phase-one window; record first actual available timestamp, not the announced schedule.",
+    "If XRP withdrawals activate, observe public XRPL transactions from known Binance-controlled wallets and classify external customer withdrawals separately from internal reshuffling.",
+    "Capture synchronized 1h/4h/24h pre/post XRP spot volume, order-book depth/spread, spot/perpetual basis, open interest, funding, liquidations and BTC/ETH controls.",
+    "Do not infer a sale from a withdrawal; require venue deposit attribution and trade/flow evidence.",
+    "Obtain raw public XRPL transaction metadata for both EscrowFinish hashes and decode Destination/affected nodes.",
+    "Refresh the 233.46M-XRP attacker receiver using an accessible public explorer and preserve exact ledger/cutoff; do not bypass access controls.",
+    "Wait for PR #1444 exact-head CI and fail-closed gate; repair any newly observed failures on its branch only.",
+    "Keep PRs #1443 and #1444 draft and unmerged; no workflow dispatch or deployment.",
+    "Continue Coinbase, Circle, Ripple, SBI/SBIC, ASK Coin, actual-capital and Camilla Stephenson investigations without identity conflation."
+  ],
+  "safety": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secret_access": false,
+    "local_worktree_mutation": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  },
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "artifact_paths": {
+    "snapshot": "data/xrp_intelligence/snapshots/20261101T060500Z-xrp-escrow-binance-withdrawal-phase-and-pr1444-audit.json",
+    "source_revision": "data/xrp_intelligence/source_revisions/20261101T060500Z-binance-withdrawal-phase1-pr1444-and-escrow-update.json",
+    "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T060500Z-binance-withdrawal-xrp-and-bagent-safety-graph.json",
+    "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T060500Z-binance-withdrawal-phase-event-and-workflow-safety.json",
+    "repository_audit": "data/repository_audits/20261101T060500Z-main-215-prs-workflow-inventory-and-pr1444-audit.json"
+  }
+}
