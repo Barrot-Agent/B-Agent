@@ -372,7 +372,7 @@ class ForecastLedger:
                 "source_registry must be a hash-bearing mapping or SourceRegistry in verified mode"
             )
 
-    def _registered_source_hash(self, source_id: str) -> str:
+    def _registered_source_hash(self, source_id: str, field: str = "source_ids") -> str:
         if self.source_registry_mode == "ID_ONLY":
             if source_id not in self.source_registry:
                 raise ValueError(f"source_id is not registered: {source_id}")
@@ -381,7 +381,7 @@ class ForecastLedger:
             raise ValueError("source registry is unavailable")
         if isinstance(self.source_registry, Mapping):
             if source_id not in self.source_registry:
-                raise ValueError(f"source_ids are not registered: {source_id}")
+                raise ValueError(f"{field} is not registered: {source_id}")
             entry = self.source_registry[source_id]
         else:
             try:
@@ -652,7 +652,7 @@ class ForecastLedger:
         price_source_registry_status = "NOT_CHECKED"
         price_source_content_hash = None
         if self.source_registry_mode == "HASH_VERIFIED":
-            price_source_content_hash = self._registered_source_hash(price_source_id)
+            price_source_content_hash = self._registered_source_hash(price_source_id, field="price_source_id")
             price_source_registry_status = "REGISTERED"
         elif self.source_registry_mode == "ID_ONLY":
             if price_source_id not in self.source_registry:
