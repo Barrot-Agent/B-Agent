@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "record_type": "source_bundle",
+  "bundle_id": "BUNDLE-20261101T071609Z-REUTERS-BINANCE-PHASE1-XRP-RESUMPTION",
+  "captured_at_utc": "2026-11-01T07:16:09Z",
+  "source_ids": [
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER"
+  ],
+  "source_count": 4,
+  "sources": [
+    {
+      "id": "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+      "publisher": "Reuters",
+      "title": "Binance resumes bitcoin withdrawals after covering bulk of stolen $6.3 billion",
+      "url": "https://www.reuters.com/legal/government/binance-resumes-bitcoin-withdrawals-after-covering-bulk-stolen-63-billion-2026-11-01/",
+      "publication_time_utc": "2026-11-01T06:49:00Z",
+      "retrieved_at_utc": "2026-11-01T07:16:09Z",
+      "evidence_class": "SECONDARY_REPORT_OF_EXCHANGE_ANNOUNCEMENT",
+      "claims": [
+        "Reuters reports Binance's status page shortly after 06:00 GMT said planned withdrawals had begun; first phase covers 15 cryptoassets including BTC, ETH, XRP and DOGE.",
+        "Reuters reports Binance says it bought approximately $6B of replacement tokens using company funds; remaining 5% are less-liquid assets.",
+        "Reuters reports funding sources named by Binance: SAFU including a bitcoin reserve, Futures Insurance Fund and corporate treasury; co-CEO Yi He said 50% of SAFU funds would be used and replenished toward $1B."
+      ],
+      "limitations": [
+        "Reuters reports the aggregate exchange recovery and phase announcement; it does not verify an XRP-specific successful withdrawal or XRP-specific purchase amount."
+      ]
+    },
+    {
+      "id": "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+      "publisher": "Binance",
+      "title": "Recovery Update #4 — 95% aggregate incident coverage and progressive phase-one withdrawals",
+      "url": "https://www.binance.com/en/support/announcement/detail/1fdf1f61559c401da0435895ffcccb62",
+      "publication_time_utc": "2026-11-01T04:08:00Z",
+      "retrieved_at_utc": "2026-11-01T07:16:09Z",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "XRP is listed among the phase-one withdrawal assets for progressive availability during 06:00-09:00 UTC.",
+        "Binance reports 95% aggregate recovery and 100% coverage for the ten listed top assets including XRP and RLUSD."
+      ],
+      "limitations": [
+        "Company-reported coverage; no XRP-specific purchase quantity or customer-withdrawal success."
+      ]
+    },
+    {
+      "id": "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+      "publisher": "Binance",
+      "title": "Deposit and withdrawal network status recheck",
+      "url": "https://www.binance.com/en/network",
+      "publication_time_utc": null,
+      "retrieved_at_utc": "2026-11-01T07:07:12Z",
+      "evidence_class": "PRIMARY_EXCHANGE_STATUS_PAGE",
+      "claims": [
+        "Displayed last-updated text 06:53:22 AM with timezone undisclosed; rendered table showed 'No records' and no XRP-specific row."
+      ],
+      "limitations": [
+        "An empty rendered table is not evidence of unavailability or successful XRP withdrawal."
+      ]
+    },
+    {
+      "id": "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+      "publisher": "XRP Insights",
+      "title": "XRP escrow schedule and post-release state at XRPL ledger 108038942",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "publication_time_utc": "2026-11-01T05:39:00Z",
+      "retrieved_at_utc": "2026-11-01T07:07:12Z",
+      "evidence_class": "SECONDARY_LEDGER_DERIVED_TRACKER",
+      "claims": [
+        "Tracker reports 1B XRP released at 00:00:02 UTC; zero re-escrow by ledger 108038942 at 05:39 UTC; 30.4B XRP remaining."
+      ],
+      "limitations": [
+        "Raw transaction Destination fields and later disposition not independently decoded."
+      ]
+    }
+  ],
+  "independence_groups": [
+    "REUTERS_REPORTING",
+    "BINANCE_OFFICIAL",
+    "XRPL_INSIGHTS"
+  ],
+  "cross_corroboration_notes": [
+    "Reuters and Binance both report the phase-one start and aggregate recovery, but Reuters is reporting Binance's own status page and statements; this is not independent on-chain confirmation.",
+    "XRP is included in the first 15 assets, but the Reuters article specifically confirms BTC withdrawals resumed; it does not document a successful XRP withdrawal.",
+    "Binance's approximately $6B replacement-token purchase is aggregate across stolen assets; no XRP-specific amount, venue or timing is disclosed.",
+    "The XRP escrow observation is a separate tracker-derived XRPL snapshot and is not causally linked to Binance's replacement purchases."
+  ]
+}

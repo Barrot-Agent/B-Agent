@@ -1,0 +1,848 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "GRAPH-20261101T071609Z-REUTERS-BINANCE-PHASE1-XRP-ESCROW-PR1450",
+  "captured_at_utc": "2026-11-01T07:16:09Z",
+  "data_cutoff_utc": "2026-11-01T07:16:09Z",
+  "source_ids": [
+    "SRC-20261101T064027Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T064027Z-XRP-INSIGHTS-ETF-WEEK44",
+    "SRC-20261101T064027Z-MAKETO-XRP-ETF-FLOWS",
+    "SRC-20261101T064027Z-CHAINCATCHER-SOSOVALUE-XRP-ETF",
+    "SRC-20261101T064027Z-KAIRO-TRADE-XRP-OI",
+    "SRC-20261101T064027Z-KODEXIUS-XRP-OI",
+    "SRC-20261101T064027Z-JUSTSCREENER-XRP-OI",
+    "SRC-20261101T064027Z-TRDESK-XRP-OI",
+    "SRC-20261101T064027Z-COINGLASS-XRP-OI",
+    "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS",
+    "SRC-20261101T064027Z-CIRCLE-USDC-TRANSPARENCY",
+    "SRC-20261101T064027Z-REUTERS-COINBASE-Q3-2026",
+    "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE",
+    "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+    "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+    "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+    "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS",
+    "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT",
+    "SRC-20261101T064027Z-GITHUB-PR1446-SCHEDULED-WRITERS",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T045910Z-GITHUB-PR1444-REMAINING-WRITERS-AUDIT",
+    "SRC-20261101T045910Z-SBI-GROUP-CIRCLE-RIPPLE-INVESTMENT",
+    "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
+    "SRC-20261101T045910Z-EVERNORTH-SEC-424B3-XRP-TREASURY",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-XRP-VISA-REWARDS",
+    "SRC-20261101T045910Z-SBI-RIPPLE-ASIA-XRPL-POC",
+    "SRC-20261101T045910Z-SBI-VC-TRADE-RLUSD-ETHEREUM-ONLY",
+    "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR",
+    "SRC-20261101T045910Z-CIRCLE-SBI-JAPAN-JV-SEC-FILING",
+    "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+    "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+    "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+    "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION",
+    "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+    "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+    "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "type": "EXCHANGE",
+      "value": "Binance",
+      "classification": "COMPANY_ENTITY"
+    },
+    {
+      "id": "BINANCE_UPDATE4",
+      "type": "COMPANY_ANNOUNCEMENT",
+      "value": "Recovery Update #4; 95% aggregate recovery claim; phase-one window 06:00–09:00 UTC",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "id": "XRP_NETWORK",
+      "type": "NETWORK",
+      "value": "XRP Ledger withdrawal network",
+      "classification": "OFFICIAL_ANNOUNCEMENT"
+    },
+    {
+      "id": "BINANCE_STATUS_RECHECK",
+      "type": "STATUS_ENDPOINT_OBSERVATION",
+      "value": "06:10 UTC recheck; displayed update 05:28:24 AM, timezone unknown; table No records",
+      "classification": "INCOMPLETE_RENDERED_STATUS"
+    },
+    {
+      "id": "RIPPLE_ESCROW_NOV1",
+      "type": "EVENT",
+      "value": "1B XRP release tracker-reported; pinned ledger 108037957 at 04:35 UTC; destination unknown",
+      "classification": "TRACKER_REPORTED"
+    },
+    {
+      "id": "BINANCE_ATTACKER_WALLET",
+      "type": "XRPL_ACCOUNT",
+      "value": "233.46M XRP at last reviewed 2026-10-31 16:51 UTC; current state unknown",
+      "classification": "STALE_SECONDARY_OBSERVATION"
+    },
+    {
+      "id": "BAGENT_MAIN",
+      "type": "REPOSITORY_BRANCH",
+      "value": "main 694fc4241f543917fc6eb787c025bf1eb6726595",
+      "classification": "GITHUB_API_OBSERVATION"
+    },
+    {
+      "id": "BAGENT_PR1443",
+      "type": "PULL_REQUEST",
+      "value": "Cross Analysis, Scheduler Tick and Merge Queue quarantine; 349 tests + 8 subtests; gate pass",
+      "classification": "EXACT_HEAD_VERIFIED_OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "id": "BAGENT_PR1444",
+      "type": "PULL_REQUEST",
+      "value": "Remaining scheduled writers, subscriber, token and deployment quarantine; 363 tests + 8 subtests; gate pass",
+      "classification": "EXACT_HEAD_VERIFIED_OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "id": "BAGENT_PR1445",
+      "type": "PULL_REQUEST",
+      "value": "External model/Space mutation approval and force-deploy disable; 346 tests + 8 subtests; gate pass",
+      "classification": "EXACT_HEAD_VERIFIED_OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "id": "BAGENT_SCHEDULED_ISSUE_MUTATORS",
+      "type": "REPOSITORY_RISK",
+      "value": "auto-resolve-issues, autonomous-resolver, daily-digest and self-schedule have scheduled issue mutation permissions",
+      "classification": "CURRENT_MAIN_WORKFLOW_REVIEW"
+    },
+    {
+      "id": "BAGENT_GUMROAD_METRICS",
+      "type": "REPOSITORY_RISK",
+      "value": "Scheduled aggregate Gumroad metrics workflow writes and commits to main",
+      "classification": "CURRENT_MAIN_WORKFLOW_REVIEW"
+    },
+    {
+      "id": "COPILOT_ASSIGNEE_VARIABLE",
+      "type": "REPOSITORY_CONFIGURATION_REFERENCE",
+      "value": "barrot-autonomous-resolver reads vars.COPILOT_ASSIGNEE; value and live handoff unverified",
+      "classification": "UNVERIFIED_CONFIGURATION"
+    },
+    {
+      "id": "SMFG",
+      "type": "FINANCIAL_GROUP",
+      "value": "Sumitomo Mitsui Financial Group",
+      "classification": "COMPANY_ENTITY"
+    },
+    {
+      "id": "BLACKROCK",
+      "type": "ASSET_MANAGER",
+      "value": "BlackRock",
+      "classification": "COMPANY_ENTITY"
+    },
+    {
+      "id": "STARTALE",
+      "type": "BLOCKCHAIN_COMPANY",
+      "value": "Startale Group",
+      "classification": "COMPANY_ENTITY"
+    },
+    {
+      "id": "SBI_STARTALE",
+      "type": "JOINT_VENTURE",
+      "value": "SBI Startale Marketing",
+      "classification": "COMPANY_ENTITY"
+    },
+    {
+      "id": "OPEN_STANDARD",
+      "type": "CONSORTIUM",
+      "value": "Open Standard",
+      "classification": "NETWORK_ENTITY"
+    },
+    {
+      "id": "OUSD",
+      "type": "STABLECOIN",
+      "value": "OUSD",
+      "classification": "DIGITAL_ASSET"
+    },
+    {
+      "id": "JPYSC",
+      "type": "STABLECOIN",
+      "value": "JPYSC",
+      "classification": "DIGITAL_ASSET"
+    },
+    {
+      "id": "SBI_START_BOND",
+      "type": "TOKENIZED_BOND",
+      "value": "SBI START bond on ibet for Fin",
+      "classification": "FINANCIAL_PRODUCT"
+    },
+    {
+      "id": "COINBASE_Q3_FILING",
+      "type": "SEC_FILING",
+      "value": "Coinbase Q3 2026 Form 10-Q",
+      "classification": "PRIMARY_DOCUMENT"
+    },
+    {
+      "id": "CIRCLE_Q2_FILING",
+      "type": "SEC_FILING",
+      "value": "Circle Q2 2026 Form 10-Q",
+      "classification": "PRIMARY_DOCUMENT"
+    },
+    {
+      "id": "SBIC_TOKYO",
+      "type": "SME_INVESTMENT_CORPORATION",
+      "value": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "classification": "DISTINCT_FROM_SBI_HOLDINGS"
+    },
+    {
+      "id": "BINANCE_PHASE1_XRP_WITHDRAWAL_20261101",
+      "type": "EXCHANGE_NETWORK_SERVICE",
+      "value": "Binance XRP phase-one withdrawal window, 2026-11-01 06:00-09:00 UTC",
+      "classification": "COMPANY_ANNOUNCED; LIVE_AVAILABILITY_UNCONFIRMED"
+    },
+    {
+      "id": "XRP_ESCROW_NOV2026",
+      "type": "XRPL_ESCROW_EVENT",
+      "value": "November 1 2026 gross 1B XRP escrow release",
+      "classification": "TRACKER_REPORTED; DESTINATION_UNVERIFIED"
+    },
+    {
+      "id": "BAGENT_PR1449",
+      "type": "GITHUB_PULL_REQUEST",
+      "value": "PR #1449 current-main scheduled-writer and merge-queue safety quarantine",
+      "classification": "EXACT_HEAD_CI_VERIFIED_PROPOSAL; OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "id": "REUTERS_BINANCE_PHASE1_REPORT_20261101",
+      "type": "MEDIA_REPORT",
+      "value": "Reuters 2026-11-01 06:49 UTC report: phase one began after 06:00 GMT; BTC withdrawals resumed; XRP included among 15 assets",
+      "classification": "SECONDARY_REPORT_OF_EXCHANGE_STATUS"
+    },
+    {
+      "id": "BINANCE_AGGREGATE_REPLACEMENT_PURCHASES_20261101",
+      "type": "EXCHANGE_RECOVERY_CAPITAL",
+      "value": "Approximately $6B aggregate replacement-token purchases reported by Binance via Reuters",
+      "classification": "AGGREGATE_COMPANY_REPORTED; XRP_SPECIFIC_COMPONENT_UNKNOWN"
+    }
+  ],
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_UPDATE4",
+      "relation": "PUBLISHED",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "from": "BINANCE_UPDATE4",
+      "to": "XRP_NETWORK",
+      "relation": "ANNOUNCES_PROGRESSIVE_PHASE1_WITHDRAWAL_INCLUSION",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_STATUS_RECHECK",
+      "relation": "STATUS_PAGE_RECHECKED; NO_ASSET_LEVEL_ROW",
+      "source_ids": [
+        "SRC-20261101T061000Z-BINANCE-NETWORK-STATUS-RECHECK"
+      ],
+      "evidence_class": "PRIMARY_PAGE_RENDER_LIMITATION"
+    },
+    {
+      "from": "RIPPLE_ESCROW_NOV1",
+      "to": "BINANCE_UPDATE4",
+      "relation": "TEMPORAL_OVERLAP_ONLY; NO_CAUSAL_LINK",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "COINCIDENT_EVENTS"
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "BAGENT_PR1443",
+      "relation": "PROPOSED_REMEDIATION_NOT_MERGED",
+      "source_ids": [
+        "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT"
+      ],
+      "evidence_class": "CI_AND_PR_METADATA"
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "BAGENT_PR1444",
+      "relation": "PROPOSED_REMEDIATION_NOT_MERGED",
+      "source_ids": [
+        "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT"
+      ],
+      "evidence_class": "CI_AND_PR_METADATA"
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "BAGENT_PR1445",
+      "relation": "PROPOSED_REMEDIATION_NOT_MERGED",
+      "source_ids": [
+        "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT"
+      ],
+      "evidence_class": "CI_AND_PR_METADATA"
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "BAGENT_SCHEDULED_ISSUE_MUTATORS",
+      "relation": "RETAINS_SCHEDULED_ISSUE_MUTATION_PATHS",
+      "source_ids": [
+        "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT"
+      ],
+      "evidence_class": "WORKFLOW_SOURCE_REVIEW"
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "BAGENT_GUMROAD_METRICS",
+      "relation": "RETAINS_SCHEDULED_MAIN_WRITER",
+      "source_ids": [
+        "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT"
+      ],
+      "evidence_class": "WORKFLOW_SOURCE_REVIEW"
+    },
+    {
+      "from": "BAGENT_SCHEDULED_ISSUE_MUTATORS",
+      "to": "COPILOT_ASSIGNEE_VARIABLE",
+      "relation": "MAY_ASSIGN_ISSUES_AND_PRS_IF_VARIABLE_CONFIGURED",
+      "source_ids": [
+        "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT"
+      ],
+      "evidence_class": "WORKFLOW_SOURCE; CONFIG_VALUE_UNKNOWN"
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "SMFG",
+      "relation": "CAPITAL_AND_BUSINESS_ALLIANCE",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED",
+      "limitations": [
+        "Exploratory alliance; no XRP product named."
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "BLACKROCK",
+      "relation": "MOU_ON_TOKENIZED_MMF_AND_JPYSC",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED_EXPLORATORY",
+      "limitations": [
+        "No XRP or Ripple integration named; no production volumes disclosed."
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "OPEN_STANDARD",
+      "relation": "CONSORTIUM_PARTICIPANT",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "status": "CONFIRMED_ANNOUNCED",
+      "limitations": [
+        "Membership does not prove live interoperability."
+      ]
+    },
+    {
+      "from": "STARTALE",
+      "to": "JPYSC",
+      "relation": "INTEROPERABILITY_AND_ECOSYSTEM_DEVELOPMENT",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+        "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD",
+        "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED",
+      "limitations": [
+        "Public-chain circulation and production interoperability remain unverified."
+      ]
+    },
+    {
+      "from": "OPEN_STANDARD",
+      "to": "COINBASE",
+      "relation": "CONSORTIUM_PARTICIPANT",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "status": "CONFIRMED_ANNOUNCED",
+      "limitations": [
+        "No direct XRP settlement route established."
+      ]
+    },
+    {
+      "from": "OPEN_STANDARD",
+      "to": "OUSD",
+      "relation": "PLANNED_JPYSC_OUSD_INTEROPERABILITY_TEST",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-OPEN-STANDARD-OUSD"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "status": "PLANNED_NOT_EXECUTED",
+      "limitations": [
+        "OUSD is not USDC or RLUSD; no XRP bridge requirement established."
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "JPYSC",
+      "relation": "GROUP_STABLECOIN_ECOSYSTEM",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-JPYSC-LAUNCH",
+        "SRC-20261101T064027Z-SBI-BLACKROCK-STARTALE-JPYSC-MOU",
+        "SRC-20261101T064027Z-SBI-SMFG-STABLECOIN-ALLIANCE"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "status": "ISSUED_ACCOUNT_LIMITED",
+      "limitations": [
+        "Initial distribution is within SBI VC Trade accounts; public-chain circulation not established."
+      ]
+    },
+    {
+      "from": "SBI_START_BOND",
+      "to": "XRP",
+      "relation": "PURCHASER_REWARD",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-START-BOND-XRP-REWARDS"
+      ],
+      "evidence_class": "PRIMARY_AFFILIATE_ANNOUNCEMENT",
+      "status": "ANNOUNCED_REWARD_PROGRAM",
+      "limitations": [
+        "Bond is not XRP-denominated or issued on XRPL; reward totals unknown."
+      ]
+    },
+    {
+      "from": "SBI_HOLDINGS",
+      "to": "XRP",
+      "relation": "SHAREHOLDER_BENEFIT_COUPON",
+      "source_ids": [
+        "SRC-20261101T064027Z-SBI-SHAREHOLDER-XRP-BENEFIT"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "status": "ANNOUNCED_PROGRAM",
+      "limitations": [
+        "Coupon redemption and actual XRP acquired are unknown."
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "COINBASE",
+      "relation": "USDC_DISTRIBUTION_ECONOMICS",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-CIRCLE-Q2-2026-10Q",
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q"
+      ],
+      "evidence_class": "PRIMARY_SEC_FILINGS",
+      "status": "CONFIRMED_FINANCIAL_RELATIONSHIP",
+      "limitations": [
+        "Circle distribution cost is not Coinbase net profit; periods and line items differ."
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "XRP",
+      "relation": "COLLATERAL_DISCLOSURE",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q"
+      ],
+      "evidence_class": "PRIMARY_SEC_FILING_ABSENCE",
+      "status": "NO_XRP_SPECIFIC_AMOUNT_DISCLOSED",
+      "limitations": [
+        "Other crypto collateral is aggregated; absence of a separate XRP line does not prove zero exposure."
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "XRP_ETFS",
+      "relation": "CUSTODY_ROLE_IN_FIVE_OF_SIX_US_SPOT_FUNDS",
+      "source_ids": [
+        "SRC-20261101T045910Z-SEC-COINBASE-Q3-2026-10Q",
+        "SRC-20261101T045910Z-RIPPLE-COINBASE-RLUSD-DISTRIBUTION"
+      ],
+      "evidence_class": "MIXED_FILING_AND_SECONDARY_CUSTODY_MAPPING",
+      "status": "CUSTODY_ROLE_REPORTED",
+      "limitations": [
+        "Per-fund Coinbase XRP custody allocation is not disclosed."
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "USDC_XRPL",
+      "relation": "NATIVE_USDC_ISSUANCE_SUPPORT",
+      "source_ids": [
+        "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+        "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+        "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS"
+      ],
+      "evidence_class": "PRIMARY_ISSUER_SUPPORT_PLUS_SECONDARY_SUPPLY",
+      "status": "SUPPORTED_SMALL_OBSERVED_SUPPLY",
+      "limitations": [
+        "XRPL USDC supply near 4.8-5.0M in cited trackers; stock does not measure transfer velocity."
+      ]
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD_XRPL",
+      "relation": "ISSUER_AND_XRPL_STABLECOIN_SUPPLY",
+      "source_ids": [
+        "SRC-20261101T045910Z-CIRCLE-USDC-XRPL-NATIVE-ISSUANCE",
+        "SRC-20261101T064027Z-DEFILLAMA-XRPL-STABLECOINS",
+        "SRC-20261101T064027Z-STABLESCOOL-XRPL-STABLECOINS"
+      ],
+      "evidence_class": "ISSUER_AND_SECONDARY_ONCHAIN_DATA",
+      "status": "RLUSD_DOMINANT_XRPL_STABLECOIN",
+      "limitations": [
+        "DefiLlama reports 7d contraction; cause and cross-chain disposition unknown."
+      ]
+    },
+    {
+      "from": "SBIC_TOKYO",
+      "to": "SBI_HOLDINGS",
+      "relation": "NAME_SIMILARITY_ONLY",
+      "source_ids": [
+        "SRC-20261101T045910Z-SBIC-TOKYO-CHATGPT-ENTITY-AND-SEMINAR"
+      ],
+      "evidence_class": "OFFICIAL_ENTITY_IDENTITY_DISTINCTION",
+      "status": "NO_CORPORATE_CONTROL_RELATIONSHIP_ESTABLISHED",
+      "limitations": [
+        "Do not conflate regional SBIC entities with SBI Holdings or Circle SBI Japan K.K."
+      ]
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_PHASE1_XRP_WITHDRAWAL_20261101",
+      "relation": "ANNOUNCES_PROGRESSIVE_XRP_WITHDRAWAL_SUPPORT",
+      "source_ids": [
+        "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "COMPANY_ANNOUNCEMENT_PLUS_OFFICIAL_STATUS_PAGE",
+      "status": "XRP_LISTED; LIVE_AVAILABILITY_UNCONFIRMED",
+      "limitations": [
+        "Status page rendered no records; no successful XRP withdrawal observed."
+      ]
+    },
+    {
+      "from": "BINANCE",
+      "to": "XRP",
+      "relation": "REPORTS_100_PERCENT_CUSTOMER_ASSET_BACKING",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "COMPANY_REPORTED",
+      "status": "TOP_TEN_COVERAGE_CLAIM; NOT_INDEPENDENTLY_VERIFIED",
+      "limitations": [
+        "No XRP-specific acquisition quantity or address-level liability proof established."
+      ]
+    },
+    {
+      "from": "XRP_INSIGHTS",
+      "to": "XRP_ESCROW_NOV2026",
+      "relation": "REPORTS_ESCROWFINISH_AND_PINNED_LEDGER_STATE",
+      "source_ids": [
+        "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER"
+      ],
+      "evidence_class": "SECONDARY_LEDGER_DERIVED_TRACKER",
+      "status": "1B_RELEASE_REPORTED; 0_REESCROW_BY_LEDGER_108038942; DESTINATION_UNKNOWN",
+      "limitations": [
+        "Raw transaction metadata not independently decoded."
+      ]
+    },
+    {
+      "from": "BAGENT_PR1449",
+      "to": "BARROT_AGENT_BAGENT_MAIN",
+      "relation": "PROPOSES_READ_ONLY_QUARANTINE_OF_SCHEDULED_WRITERS_AND_MERGE_QUEUE",
+      "source_ids": [
+        "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT"
+      ],
+      "evidence_class": "PRIMARY_REPOSITORY_AND_CI_EVIDENCE",
+      "status": "367_TESTS_PLUS_8_SUBTESTS_PASS; GATE_PASS; UNMERGED",
+      "limitations": [
+        "Main remediation is not active until an authorized merge."
+      ]
+    },
+    {
+      "from": "BINANCE_PHASE1_XRP_WITHDRAWAL_20261101",
+      "to": "XRP_MARKET_LIQUIDITY",
+      "relation": "POTENTIAL_CUSTODY_OUTFLOW_CHANNEL",
+      "source_ids": [
+        "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "INFERENCE",
+      "status": "NOT_ADMITTED_AS_MARKET_FEATURE",
+      "limitations": [
+        "No successful withdrawal, customer-flow series or market-impact study observed."
+      ]
+    },
+    {
+      "from": "REUTERS_BINANCE_PHASE1_REPORT_20261101",
+      "to": "BINANCE_PHASE1_XRP_WITHDRAWAL_20261101",
+      "relation": "REPORTS_PHASE1_STARTED_BTC_RESUMED_XRP_INCLUDED",
+      "source_ids": [
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "SECONDARY_REPORT_PLUS_PRIMARY_COMPANY_ANNOUNCEMENT",
+      "status": "PHASE1_START_REPORTED; XRP_SPECIFIC_SUCCESS_NOT_VERIFIED",
+      "limitations": [
+        "Reuters confirms BTC withdrawals resumed and XRP is in the 15-asset phase; no XRP-specific successful transaction was reported."
+      ]
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_AGGREGATE_REPLACEMENT_PURCHASES_20261101",
+      "relation": "REPORTS_APPROXIMATELY_6B_USD_AGGREGATE_REPLACEMENT_TOKEN_PURCHASES",
+      "source_ids": [
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "COMPANY_STATEMENT_REPORTED_BY_REUTERS",
+      "status": "AGGREGATE_ONLY; XRP_SPECIFIC_AMOUNT_AND_VENUE_UNKNOWN",
+      "limitations": [
+        "No XRP-specific purchase quantity, venue, timing or on-chain acquisition address is disclosed."
+      ]
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "H-BINANCE-XRP-WITHDRAWAL-OUTFLOW-01",
+      "claim": "Progressive phase-one reopening will produce observable net XRP withdrawals from Binance-controlled wallets.",
+      "classification": "TESTABLE_NOT_YET_OBSERVED",
+      "support": [
+        "Official announcement includes XRP in phase one."
+      ],
+      "disconfirming_or_missing": [
+        "Status page still exposes no per-asset row.",
+        "No successful customer withdrawal observed.",
+        "Internal reshuffling and custody consolidation remain alternatives."
+      ],
+      "status": "MONITOR_ONLY"
+    },
+    {
+      "id": "H-BINANCE-XRP-WITHDRAWAL-SELL-02",
+      "claim": "Withdrawn XRP will be sold and create net sell pressure.",
+      "classification": "UNSUPPORTED",
+      "support": [],
+      "disconfirming_or_missing": [
+        "Self-custody, exchange-to-exchange, institutional custody and OTC routes are alternatives.",
+        "No trade evidence."
+      ],
+      "status": "NOT_ADMITTED"
+    },
+    {
+      "id": "H-ESCROW-WITHDRAWAL-CAUSAL-03",
+      "claim": "Ripple's escrow release caused or was coordinated with Binance withdrawal reopening.",
+      "classification": "UNSUPPORTED_TEMPORAL_COINCIDENCE",
+      "support": [
+        "Both events occur on November 1."
+      ],
+      "disconfirming_or_missing": [
+        "No shared transaction, counterparty or flow evidence."
+      ],
+      "status": "NOT_ADMITTED"
+    },
+    {
+      "id": "H-SCHEDULED-ISSUE-MUTATION-04",
+      "claim": "Scheduled GitHub workflows can create/close/assign issues or commit metrics without an explicit per-run human confirmation.",
+      "classification": "SUPPORTED_BY_WORKFLOW_SOURCE",
+      "support": [
+        "auto-resolve-issues has schedule and issues:write; autonomous-resolver has hourly schedule and issues/pull-requests write; daily-digest and self-schedule create issues on schedules; gumroad-metrics commits aggregate metrics to main."
+      ],
+      "disconfirming_or_missing": [
+        "No evidence these workflows ran during this research run; actual schedule history not exhaustively inspected."
+      ],
+      "status": "REMEDIATION_REQUIRED"
+    },
+    {
+      "id": "H-COPILOT-LIVE-HANDOFF-05",
+      "claim": "Barrot Autonomous Resolver is actively collaborating with Copilot.",
+      "classification": "UNVERIFIED",
+      "support": [
+        "Workflow reads vars.COPILOT_ASSIGNEE and will assign issues/PRs if configured."
+      ],
+      "disconfirming_or_missing": [
+        "Variable value not inspected; no authentication or handoff test; no Copilot completion evidence."
+      ],
+      "status": "DO_NOT_CLAIM"
+    },
+    {
+      "id": "H-SBI-MULTIRAIL-NOT-EXCLUSIVE-XRP-01",
+      "claim": "SBI Group is building a multi-rail digital-finance network in which XRP is one of several instruments rather than the exclusive settlement rail.",
+      "classification": "INFERENCE_FROM_MULTIPLE_CONFIRMED_LINKS",
+      "support": [
+        "SBI's Ripple and Evernorth relationships.",
+        "SBI's Circle investment/JV and USDC distribution relationship.",
+        "JPYSC, SMFG, BlackRock, Startale and Open Standard/OUSD initiatives.",
+        "SBI XRP rewards, remittance and XRPL PoC programs."
+      ],
+      "disconfirming_or_missing": [
+        "No integrated production flow connecting XRP with JPYSC, OUSD or the BlackRock tokenized MMF has been established.",
+        "No disclosed capital-allocation mandate showing coordinated cross-entity XRP strategy."
+      ],
+      "status": "TESTABLE_INFERENCE"
+    },
+    {
+      "id": "H-STABLECOIN-SUBSTITUTION-FOR-XRP-BRIDGE-02",
+      "claim": "JPYSC, USDC and RLUSD may substitute for some XRP bridge-asset use in selected institutional payment or collateral workflows.",
+      "classification": "SCENARIO_HYPOTHESIS",
+      "support": [
+        "SBI's expanding stablecoin and tokenized-asset partnerships.",
+        "Circle and Ripple stablecoin distribution on overlapping infrastructure."
+      ],
+      "disconfirming_or_missing": [
+        "SBI Remit continues to describe XRP as a bridge asset in certain corridors.",
+        "No corridor-level before/after volumes or replacement evidence."
+      ],
+      "status": "UNPROVEN_MONITOR"
+    },
+    {
+      "id": "H-COINBASE-MULTIISSUER-ECONOMICS-03",
+      "claim": "Coinbase has strong economic incentives to distribute USDC while maintaining a multi-issuer stablecoin strategy that includes RLUSD.",
+      "classification": "INFERENCE_FROM_FILINGS_AND_PRODUCT_LISTINGS",
+      "support": [
+        "Circle H1 distribution costs to Coinbase of $655.3M.",
+        "Coinbase Q3 stablecoin revenue and USDC rewards disclosures.",
+        "Coinbase's RLUSD distribution arrangement."
+      ],
+      "disconfirming_or_missing": [
+        "Coinbase Q3 filing does not separately disclose XRP collateral or XRP-specific stablecoin revenue.",
+        "Circle distribution costs do not equal Coinbase net profit."
+      ],
+      "status": "SUPPORTED_STRATEGIC_INFERENCE"
+    },
+    {
+      "id": "H-RLUSD-XRPL-SUPPLY-CONTRACTION-04",
+      "claim": "The reported RLUSD XRPL supply decline reflects a material chain-specific contraction, but its cause is not established.",
+      "classification": "SOURCED_ONCHAIN_OBSERVATION_WITH_CAUSAL_UNKNOWN",
+      "support": [
+        "DefiLlama reports 7d -24.55% total XRPL stablecoins and 88.55% RLUSD dominance.",
+        "stables.cool reports RLUSD near $707.4M and USDC near $4.8M."
+      ],
+      "disconfirming_or_missing": [
+        "Provider total stablecoin universes differ.",
+        "No complete mint/burn/bridge/transfer reconciliation was performed."
+      ],
+      "status": "MONITOR_ONLY"
+    },
+    {
+      "id": "H-ETF-FLOW-SCOPE-DRIVES-DAILY-DISAGREEMENT-05",
+      "claim": "Daily ETF flow differences primarily reflect fund-universe and measurement differences rather than a single contradictory capital event.",
+      "classification": "METHODOLOGY_HYPOTHESIS",
+      "support": [
+        "XRP Insights excludes GXRP flows and includes BITW; Maketo tracks five different tickers.",
+        "ChainCatcher/SoSoValue October 29 inflow near $8.43M aligns with Maketo +$8.4M and XRP Insights +6.4M XRP."
+      ],
+      "disconfirming_or_missing": [
+        "Issuer-level share creation/redemption and XRP inventory files still need row-by-row reconciliation."
+      ],
+      "status": "TESTABLE"
+    },
+    {
+      "id": "H-BINANCE-PHASE1-XRP-WITHDRAWALS-06",
+      "claim": "The announced Binance phase-one window may lead to measurable XRP withdrawals, but actual XRP availability is not verified.",
+      "classification": "TESTABLE_EVENT_HYPOTHESIS",
+      "support": [
+        "Official announcement includes XRP and a 06:00-09:00 UTC progressive window."
+      ],
+      "disconfirming_or_missing": [
+        "Status page last-updated text is stale and table shows No Data.",
+        "No successful customer XRP withdrawal transaction observed."
+      ],
+      "status": "UNCONFIRMED_MONITOR"
+    },
+    {
+      "id": "H-BINANCE-PHASE1-OUTFLOW-07",
+      "claim": "Progressive reopening may produce measurable Binance XRP custody outflows, but the size and market effect are unknown.",
+      "classification": "TESTABLE_EVENT_HYPOTHESIS",
+      "support": [
+        "Official Binance announcement lists XRP in phase one.",
+        "Reuters reports the first withdrawal phase began after 06:00 GMT and includes XRP among 15 assets; BTC withdrawals resumed."
+      ],
+      "disconfirming_or_missing": [
+        "Status page has no per-asset record; no successful withdrawal observed; custody outflow does not necessarily imply sale.",
+        "No XRP-specific successful withdrawal transaction or asset-level status row was observed; the Binance network page rendered 'No records'."
+      ],
+      "status": "PHASE1_START_REPORTED; XRP_SUCCESS_UNCONFIRMED"
+    },
+    {
+      "id": "H-ESCROW-NET-SUPPLY-09",
+      "claim": "The November 1 1B XRP gross release could increase XRP outside escrow, but it does not establish tradable supply or sell pressure.",
+      "classification": "TRACKER_REPORTED_EVENT_WITH_CAUSAL_UNKNOWN",
+      "support": [
+        "XRP Insights reports 1B released and zero re-escrow by ledger 108038942."
+      ],
+      "disconfirming_or_missing": [
+        "Destination fields, custody control, subsequent transfers, OTC transactions and later EscrowCreate events remain unknown."
+      ],
+      "status": "MONITOR_ONLY"
+    },
+    {
+      "id": "H-PR1449-QUARANTINE-10",
+      "claim": "Main-branch workflow integrity risk persists until the fresh-main safety proposal is approved and merged.",
+      "classification": "REPOSITORY_OBSERVATION",
+      "support": [
+        "Main retains write-capable scheduled workflows and a manual merge queue; PR #1449 passed exact-head CI and gate."
+      ],
+      "disconfirming_or_missing": [
+        "No approved merge has occurred; CI validates the proposal only."
+      ],
+      "status": "OPEN_HIGH_PRIORITY"
+    },
+    {
+      "id": "H-BINANCE-AGGREGATE-REPLENISHMENT-TO-XRP-DEMAND-11",
+      "claim": "Binance's reported approximately $6B aggregate replacement-token purchases may include XRP, but the XRP-specific component is undisclosed and must not be treated as verified XRP buy pressure.",
+      "classification": "TESTABLE_CAPITAL_FLOW_HYPOTHESIS",
+      "support": [
+        "Reuters reports Binance bought approximately $6B of replacement tokens using company funds and names SAFU/bitcoin reserve, Futures Insurance Fund and corporate treasury as funding sources."
+      ],
+      "disconfirming_or_missing": [
+        "No XRP-specific purchase quantity, venue, timestamp, counterparty or address is disclosed; aggregate replacement purchases span multiple stolen assets."
+      ],
+      "status": "UNCONFIRMED_NO_FEATURE_ADMISSION"
+    }
+  ],
+  "exclusions": [
+    "Do not infer actual XRP withdrawal availability from the announced window or empty status page.",
+    "Do not infer a sale from a withdrawal or wallet movement.",
+    "Do not infer XRP-specific purchases from Binance's aggregate recovery claim.",
+    "Do not infer causality between Ripple escrow and Binance withdrawals.",
+    "Do not treat scheduled issue assignment as verified Copilot collaboration.",
+    "Do not treat PR CI as main remediation before explicit approval and merge.",
+    "Do not infer a no-job push event on a workflow_dispatch-only workflow is a failed approval execution."
+  ],
+  "supersedes_graph_id": "GRAPH-20261101T071609Z-REUTERS-BINANCE-PHASE1-XRP-ESCROW-PR1450",
+  "unknowns": [
+    "Current Binance XRP withdrawal activation and first successful customer withdrawal.",
+    "Cause and transaction path of RLUSD XRPL supply contraction.",
+    "Coinbase asset-specific XRP collateral balances, if any.",
+    "Production JPYSC/OUSD interoperability and any XRP routing.",
+    "Actual XRP disposition after November 1 escrow execution.",
+    "Binance XRP withdrawal success and asset-specific status during phase one.",
+    "Actual XRP-specific amount and venue used for Binance incident replenishment.",
+    "Destination and subsequent disposition of the November 1 escrow release after ledger 108038942.",
+    "Current attacker-wallet balance and any post-October 31 outflows.",
+    "Whether PR #1449 will receive explicit approval and be merged.",
+    "Whether any XRP withdrawal completed successfully after the phase-one start.",
+    "The XRP-specific share, venue and timing of Binance's approximately $6B aggregate replacement-token purchases."
+  ],
+  "disconfirming_evidence": [
+    "Coinbase Q3 10-Q has no XRP text hit and no separately disclosed XRP collateral amount.",
+    "SBI's JPYSC, BlackRock/Startale and SMFG announcements do not name Ripple or XRP.",
+    "XRPL USDC supply is only about 4.8-5.0M in the cited trackers, far below RLUSD supply.",
+    "Binance status page at 06:53:22 AM displayed no records, so the announcement alone cannot establish live XRP withdrawal availability.",
+    "The 100% XRP backing statement is company-reported and does not prove XRP-specific purchases or stolen-XRP recovery.",
+    "PR #1449 remains draft and unmerged; no main remediation is active.",
+    "Reuters confirms BTC withdrawals resumed and XRP is included in phase one, but does not document an XRP withdrawal transaction.",
+    "The approximately $6B replacement-token purchase figure is aggregate and cannot be converted into XRP demand."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "run_updates",
+  "chunk_index": 164,
+  "chunk_count": 165,
+  "record_count": 1,
+  "records": [
+    {
+      "run_id": "RUN-20261101T070712Z-BINANCE-PHASE1-ESCROW-PR1449",
+      "captured_at_utc": "2026-11-01T07:07:12Z",
+      "summary": "Rechecked Binance phase-one status, refreshed the XRPL escrow observation, recounted the live GitHub PR inventory, and created a fresh-main 28-path safety successor with exact-head CI and fail-closed gate passing.",
+      "verified": [
+        "Binance Recovery Update #4 lists XRP in progressive phase one between 06:00 and 09:00 UTC and reports 95% aggregate incident coverage; these are company statements.",
+        "Binance network status page at capture displayed last-updated text 06:53:22 AM with timezone undisclosed and a 'No records' table; XRP withdrawal availability remains unconfirmed.",
+        "XRP Insights reports ledger 108038942 at 05:39 UTC, 1B XRP released at 00:00:02 UTC, no re-escrow by that ledger, and 30.4B XRP remaining.",
+        "Main remains 760b61e216f1044d4faaa359962939757d9d6adf; live inventory: 218 open PRs, 208 drafts, 10 ready, 213 main-based, 212 stale, one current-main PR (#1449), and five non-main.",
+        "PR #1449 exact head dce8be8e8df59390c7a986c7ff7a2b699cb18593 passed CI with 367 tests and eight subtests; fail-closed gate passed with merging disabled."
+      ],
+      "unresolved": [
+        "Successful Binance XRP withdrawal and live per-asset status.",
+        "Raw EscrowFinish Destination fields and later XRP disposition.",
+        "Current Binance attacker-wallet balance and any post-October 31 outflows.",
+        "XRP-specific Binance replenishment quantity or acquisition venue.",
+        "Approval-workflow push-event/zero-job root cause.",
+        "Full repository CI, comprehensive dependency vulnerability scan and security-alert review."
+      ],
+      "next_actions": [
+        "Verify Binance XRP withdrawal availability through an asset-specific status response or successful public transaction evidence.",
+        "Decode both EscrowFinish transactions and trace Destination, subsequent transfers and EscrowCreate activity.",
+        "Refresh the Binance attacker wallet through an independent public explorer/API.",
+        "Verify Binance's November 3 Proof of Reserves evidence and distinguish aggregate coverage from XRP-specific acquisitions.",
+        "Keep PR #1449 draft and unmerged pending explicit authorization; reconcile remaining PR #1445 external-mutation controls separately.",
+        "Resolve the approval-workflow zero-job anomaly and complete full repository CI/dependency/security review.",
+        "Continue point-in-time feature capture and leakage-safe walk-forward evaluation; do not issue a forecast from this event."
+      ],
+      "forecast_status": "NOT_ISSUED",
+      "market_features_admitted": false,
+      "source_ids": [
+        "SRC-20261101T070712Z-BINANCE-NETWORK-STATUS-RECHECK",
+        "SRC-20261101T070712Z-XRP-INSIGHTS-ESCROW-LEDGER",
+        "SRC-20261101T070712Z-GITHUB-PR1449-CI-AND-MAIN-AUDIT",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL"
+      ],
+      "status": "COMPLETED_PARTIAL_VERIFIED"
+    }
+  ]
+}
