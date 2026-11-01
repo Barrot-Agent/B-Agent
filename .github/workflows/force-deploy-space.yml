@@ -1,8 +1,6 @@
 name: Force Deploy Space (Disabled)
 
 on:
-  push:
-    branches: ["safety/**"]
   workflow_dispatch:
 
 permissions: {}
