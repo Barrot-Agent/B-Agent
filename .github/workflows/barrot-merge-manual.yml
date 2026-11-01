@@ -7,12 +7,21 @@ name: Barrot Superior Merge
         description: "Merged model name"
         required: true
         default: "barrot-superior-v1"
+      confirm_external_change:
+        description: "Set to YES only after explicit approval to publish this model to Hugging Face."
+        required: true
+        type: choice
+        options:
+          - NO
+          - YES
+        default: NO
 
 permissions:
   contents: read
 
 jobs:
   merge:
+    if: ${{ inputs.confirm_external_change == 'YES' && github.actor == github.repository_owner }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -31,6 +40,7 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
+          set -euo pipefail
           test -n "$HF_TOKEN" || (echo "HF_TOKEN secret missing" && exit 1)
           git config --global credential.helper store
           printf "https://__token__:%s@huggingface.co\n" "$HF_TOKEN" > ~/.git-credentials
@@ -41,16 +51,16 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          mergekit-yaml merges/barrot-superior/config.yaml output/${{ github.event.inputs.model_name }} \
+          mergekit-yaml merges/barrot-superior/config.yaml "output/${{ github.event.inputs.model_name }}" \
             --copy-tokenizer --out-shard-size 2B --trust-remote-code
 
       - name: Verify
         run: |
-          ls -lah output/${{ github.event.inputs.model_name }}
+          ls -lah "output/${{ github.event.inputs.model_name }}"
 
       - name: Upload
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          hf upload Barrot-Agent/${{ github.event.inputs.model_name }} output/${{ github.event.inputs.model_name }} . --repo-type model
+          hf upload "Barrot-Agent/${{ github.event.inputs.model_name }}" "output/${{ github.event.inputs.model_name }}" . --repo-type model
