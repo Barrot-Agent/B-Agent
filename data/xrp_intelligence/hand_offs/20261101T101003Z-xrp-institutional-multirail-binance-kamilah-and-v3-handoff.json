@@ -1,0 +1,585 @@
+{
+  "handoff_id": "HANDOFF-20261101T101003Z-XRP-INSTITUTIONAL-MULTIRAIL-BINANCE-KAMILAH-V3",
+  "captured_at_utc": "2026-11-01T10:10:03Z",
+  "data_cutoff_utc": "2026-11-01T10:10:03Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery is Barrot's highest-priority mission; Barrot V3 remains the execution and verification foundation.",
+  "source_status": {
+    "count": 23,
+    "records": [
+      {
+        "id": "SRC-20261101T101003Z-COINBASE-Q3",
+        "publisher": "Coinbase",
+        "title": "Q3 2026 earnings",
+        "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+        "class": "PRIMARY_CORPORATE",
+        "claim": "10.7% trading share; 12.5% assets-on-platform share; $22B average USDC held (~30% average market cap); ~50% USDC economics reported; 179% derivatives CAGR; subscription/services 49%; GAAP $718.7M vs adjusted $77.7M after $715M crypto-investment gains.",
+        "limitation": "Company-reported; 50% economics is not net profit; GAAP includes investment gains."
+      },
+      {
+        "id": "SRC-20261101T101003Z-COINBASE-XRP-MORPHO",
+        "publisher": "Coinbase Help",
+        "title": "XRP-backed USDC borrowing through Morpho/Base",
+        "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-intro",
+        "class": "PRIMARY_PRODUCT_DOCS",
+        "claim": "XRP eligible collateral for USDC borrowing via Morpho on Base; Coinbase interface, Morpho protocol.",
+        "limitation": "Eligibility is not actual utilization; pool issuer mix and collateral balances undisclosed."
+      },
+      {
+        "id": "SRC-20261101T101003Z-CBXRP-RISK",
+        "publisher": "Coinbase Help",
+        "title": "cbXRP collateral contract and liquidation terms",
+        "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+        "class": "PRIMARY_PRODUCT_RISK_DOCS",
+        "claim": "cbXRP contract 0xcb585250f852c6c6bf90434ab21a00f02833a4af; cited loan path describes 86% LTV and 4.38% penalty.",
+        "limitation": "Current cbXRP supply, collateral balances and utilization unknown."
+      },
+      {
+        "id": "SRC-20261101T101003Z-CIRCLE-ARC",
+        "publisher": "Circle",
+        "title": "Arc Mainnet launch",
+        "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+        "class": "PRIMARY_CORPORATE",
+        "claim": "Arc launched Sep16; >$74B USDC circulation reported; USDC gas; SBI Group founding validator; Coinbase/Morpho ecosystem participants.",
+        "limitation": "Company announcement mixes live and phased features; actual volumes undisclosed."
+      },
+      {
+        "id": "SRC-20261101T101003Z-CIRCLE-USDC-XRPL",
+        "publisher": "Circle",
+        "title": "USDC native on XRPL",
+        "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+        "class": "PRIMARY_PRODUCT",
+        "claim": "USDC native on XRPL mainnet via Circle Mint/APIs, no bridge required.",
+        "limitation": "XRPL USDC supply/volume not exposed; USDC settlement need not use XRP."
+      },
+      {
+        "id": "SRC-20261101T101003Z-CIRCLE-SBI-MOU",
+        "publisher": "Circle",
+        "title": "SBI Holdings MOU",
+        "url": "https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services",
+        "class": "PRIMARY_CORPORATE",
+        "claim": "2023 MOU for USDC circulation, banking and Web3; SBI VC Trade distribution plan; SBI Shinsei Bank banking.",
+        "limitation": "MOU does not prove current volumes."
+      },
+      {
+        "id": "SRC-20261101T101003Z-SBI-CIRCLE-JV",
+        "publisher": "SBI Holdings",
+        "title": "Circle joint venture announcement",
+        "url": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+        "class": "PRIMARY_CORPORATE",
+        "claim": "SBI Holdings announced a JV with Circle in Aug2025.",
+        "limitation": "Rendered body unavailable in this retrieval; financial terms not inferred."
+      },
+      {
+        "id": "SRC-20261101T101003Z-SBIC-PROFILE",
+        "publisher": "Tokyo SBIC",
+        "title": "Official company profile",
+        "url": "https://www.sbic.co.jp/company/profile/",
+        "class": "PRIMARY_IDENTITY",
+        "claim": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate no. 9011001030621, founded 1963; 18 prefectures/local governments and other shareholders; Nagoya/Osaka sister companies.",
+        "limitation": "No SBI Holdings affiliation established."
+      },
+      {
+        "id": "SRC-20261101T101003Z-SBIC-CHATGPT",
+        "publisher": "Tokyo SBIC",
+        "title": "ChatGPT seminar 2026-03-05",
+        "url": "https://www.sbic.co.jp/seminar/20260305js/",
+        "class": "PRIMARY_EVENT",
+        "claim": "Tokyo SBIC ChatGPT seminar co-hosted by Hamamatsu Iwata Shinkin; Microsoft Japan executive evangelist speaker.",
+        "limitation": "Educational event, not OpenAI partnership."
+      },
+      {
+        "id": "SRC-20261101T101003Z-SBI-REMIT-ODL",
+        "publisher": "SBI Holdings",
+        "title": "SBI Remit Japan-Philippines XRP ODL",
+        "url": "https://www.sbigroup.co.jp/news/2021/0728_12577.html",
+        "class": "PRIMARY_OPERATIONAL",
+        "claim": "2021 remittance service using Ripple ODL and XRP.",
+        "limitation": "Current corridor volume and inventory undisclosed."
+      },
+      {
+        "id": "SRC-20261101T101003Z-SBI-ODL-EXPANSION",
+        "publisher": "SBI Holdings",
+        "title": "XRP ODL expansion",
+        "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+        "class": "PRIMARY_OPERATIONAL",
+        "claim": "2023 expansion to Philippines, Vietnam and Indonesia.",
+        "limitation": "Current volumes/holding periods undisclosed."
+      },
+      {
+        "id": "SRC-20261101T101003Z-SBI-RIPPLE-ASIA-POC",
+        "publisher": "SBI Ripple Asia",
+        "title": "Tokenized-deposit POC",
+        "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+        "class": "PRIMARY_POC",
+        "claim": "Tokenized-deposit/deposit-backed money POC on XRPL.",
+        "limitation": "POC does not establish native XRP use."
+      },
+      {
+        "id": "SRC-20261101T101003Z-RIPPLE-COINBASE-RLUSD",
+        "publisher": "Ripple",
+        "title": "Coinbase RLUSD partnership",
+        "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+        "class": "PRIMARY_PARTNERSHIP",
+        "claim": "RLUSD on Coinbase Prime/Exchange/Retail across XRPL, Base and Ethereum; Global Exchange collateral to follow.",
+        "limitation": "Collateral not confirmed live; volumes undisclosed."
+      },
+      {
+        "id": "SRC-20261101T101003Z-BINANCE-UPDATE4",
+        "publisher": "Binance",
+        "title": "Recovery Update #4",
+        "url": "https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda",
+        "class": "PRIMARY_EXCHANGE",
+        "claim": "Phase one 06:00–09:00 UTC; XRP listed for progressive restoration; 95% aggregate coverage and 100% XRP/RLUSD backing reported.",
+        "limitation": "Schedule is not proof of successful XRP withdrawals or XRP-specific purchases."
+      },
+      {
+        "id": "SRC-20261101T101003Z-REUTERS-PHASE1",
+        "publisher": "Reuters",
+        "title": "Binance phase-one withdrawals",
+        "url": "https://www.reuters.com/technology/cybersecurity/binance-begins-phased-withdrawal-restoration-after-security-incident-2026-11-01/",
+        "class": "INDEPENDENT_NEWS",
+        "claim": "BTC, ETH, BNB and some stablecoin withdrawals reported resumed.",
+        "limitation": "No XRP-specific confirmation."
+      },
+      {
+        "id": "SRC-20261101T101003Z-BINANCE-STATUS",
+        "publisher": "Binance",
+        "title": "Network status page",
+        "url": "https://www.binance.com/en/network",
+        "class": "PRIMARY_STATUS",
+        "claim": "At retrieval last-updated 10:04:18 and table showed No records.",
+        "limitation": "Timezone not stated; no asset-level XRP status."
+      },
+      {
+        "id": "SRC-20261101T101003Z-XRP-ESCROW",
+        "publisher": "XRP Insights",
+        "title": "Escrow tracker ledger 108041786",
+        "url": "https://xrp-insights.com/xrp-radar/escrow",
+        "class": "LEDGER_DERIVED",
+        "claim": "Tracker reports ledger 108041786 at 08:45Z, 1B EscrowFinish, zero re-escrow by that ledger, 30.4B remaining.",
+        "limitation": "Raw Destination/follow-on transfers not independently decoded."
+      },
+      {
+        "id": "SRC-20261101T101003Z-COINGECKO",
+        "publisher": "CoinGecko",
+        "title": "XRP market snapshot",
+        "url": "https://www.coingecko.com/en/coins/xrp",
+        "class": "MARKET_AGGREGATOR",
+        "claim": "~$1.25, $79.275B market cap, $687.481M 24h volume, $3.469B OI/127 markets, +0.0072% funding, 6x perps/spot.",
+        "limitation": "Exact timestamp not exposed; OI universe differs from Liqwall/TradRadar."
+      },
+      {
+        "id": "SRC-20261101T101003Z-PR1459",
+        "publisher": "GitHub / Barrot-Agent",
+        "title": "PR #1459 exact-head safety CI",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1459",
+        "class": "REPOSITORY_CI",
+        "claim": "369 tests + 8 subtests passed; fail-closed gate passed.",
+        "limitation": "Draft/open/unmerged; main still exposed."
+      },
+      {
+        "id": "SRC-20261101T101003Z-PR1450",
+        "publisher": "GitHub / Barrot-Agent",
+        "title": "PR #1450 archive validator",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41295838139",
+        "class": "REPOSITORY_VALIDATION",
+        "claim": "462 shards/3,545 records; 35 tests; zero errors; 45 source revisions pending append; gate passed.",
+        "limitation": "Not model validation or full repo CI."
+      },
+      {
+        "id": "SRC-20261101T101003Z-PR1169",
+        "publisher": "GitHub / Barrot-Agent",
+        "title": "Merged PR #1169 Kamilah catalog",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1169",
+        "class": "REPOSITORY_CATALOG",
+        "claim": "Merged Oct26; ten Kamilah seed video IDs and provenance rules.",
+        "limitation": "Full channel inventory/transcripts incomplete."
+      },
+      {
+        "id": "SRC-20261101T101003Z-YT-KAMILAH-1",
+        "publisher": "Kamilah Stevenson / YouTube",
+        "title": "XRP Was Built for What's Coming",
+        "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+        "class": "CREATOR_VIDEO",
+        "claim": "Indexed as Kamilah Stevenson, 2026-03-03; neutral-bridge/de-dollarization/institutional-adoption claims; affiliate disclosures.",
+        "limitation": "Creator claims are not independent evidence; transcript incomplete."
+      },
+      {
+        "id": "SRC-20261101T101003Z-YT-KAMILAH-2",
+        "publisher": "Kamilah Stevenson / YouTube",
+        "title": "XRP's Biggest Upgrade Yet?",
+        "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+        "class": "CREATOR_VIDEO",
+        "claim": "Indexed as Kamilah Stevenson, 2026-07-30; Confidential Transfers/Sponsored Fees/Reserves claims; affiliate disclosures.",
+        "limitation": "Feature design vs activation/adoption not reconciled; transcript incomplete."
+      }
+    ],
+    "archive_status": "PENDING_ARCHIVE_APPEND",
+    "legacy_unresolved_stubs_preserved": 13
+  },
+  "institutional_findings": {
+    "coinbase": {
+      "q3_market_share_pct": 10.7,
+      "assets_on_platform_share_pct": 12.5,
+      "average_usdc_held_usd": 22000000000,
+      "average_usdc_share_pct": 30,
+      "company_reported_usdc_economics_share_pct": 50,
+      "derivatives_cagr_pct": 179,
+      "subscription_services_share_pct": 49,
+      "gaap_net_income_usd": 718700000,
+      "adjusted_net_income_usd": 77700000,
+      "investment_gains_usd": 715000000,
+      "xrp_collateral": {
+        "eligible": true,
+        "loan_asset": "USDC",
+        "protocol": "Morpho",
+        "network": "Base",
+        "token": "cbXRP",
+        "contract": "0xcb585250f852c6c6bf90434ab21a00f02833a4af",
+        "liquidation_ltv_pct": 86,
+        "penalty_pct": 4.38,
+        "actual_utilization": null
+      }
+    },
+    "circle": {
+      "usdc_native_on_xrpl": true,
+      "xrpl_supply": null,
+      "arc": {
+        "launched": "2026-09-16",
+        "reported_usdc_circulation_usd": 74000000000,
+        "usdc_gas": true,
+        "sbi_group_founding_validator": true,
+        "coinbase_and_morpho_ecosystem_participants": true,
+        "actual_volume": null
+      }
+    },
+    "sbi_group": {
+      "ripple_xrp_odl_corridors": [
+        "Philippines",
+        "Vietnam",
+        "Indonesia"
+      ],
+      "circle_usdc_mou": true,
+      "circle_jv_announced": true,
+      "arc_founding_validator": true,
+      "jpysc_rail": true,
+      "interpretation": "MULTI_RAIL_NOT_EXCLUSIVE"
+    },
+    "tokyo_sbic": {
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "corporate_number": "9011001030621",
+      "founded": "1963-11-15",
+      "distinct_from_sbi_holdings": true,
+      "chatgpt_seminar": "2026-03-05; Microsoft Japan executive evangelist speaker; educational; no OpenAI partnership evidence"
+    },
+    "ripple_coinbase": {
+      "rlusd_distribution_on_prime_exchange_retail": true,
+      "networks": [
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "global_exchange_collateral": "FUTURE_AT_ANNOUNCEMENT"
+    }
+  },
+  "market_snapshot": {
+    "provider": "CoinGecko",
+    "retrieved_at_utc": "2026-11-01T10:10:03Z",
+    "provider_timestamp": "NOT_EXPOSED",
+    "price_usd": 1.25,
+    "market_cap_usd": 79275000000,
+    "volume_24h_usd": 687481000,
+    "open_interest_usd": 3469000000,
+    "markets": 127,
+    "funding_8h_pct": 0.0072,
+    "perps_spot_ratio": 6,
+    "feature_admission": false,
+    "reason": "Exact timestamp and provider universe mismatch."
+  },
+  "escrow": {
+    "tracker_ledger": 108041786,
+    "ledger_time_utc": "2026-11-01T08:45:00Z",
+    "gross_release_xrp": 1000000000,
+    "finish_count": 2,
+    "reenescrow_by_pinned_ledger_xrp": 0,
+    "remaining_ripple_escrow_xrp": 30400000000,
+    "destination_decoded": false,
+    "subsequent_transfers_verified": false,
+    "sales_verified": false
+  },
+  "binance": {
+    "update4_phase1_window_utc": [
+      "06:00",
+      "09:00"
+    ],
+    "xrp_listed_for_progressive_restoration": true,
+    "aggregate_coverage_pct": 95,
+    "xrp_rlusd_backing_pct": 100,
+    "reuters_other_assets_resumed": [
+      "BTC",
+      "ETH",
+      "BNB",
+      "some stablecoins"
+    ],
+    "xrp_specific_withdrawal_status": "UNCONFIRMED",
+    "network_status_page": "No records at displayed 10:04:18; timezone not stated"
+  },
+  "attacker_wallet": {
+    "address": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "last_observation_utc": "2026-10-31T16:51:00Z",
+    "reported_balance_xrp": 233461943.10005,
+    "current_balance": "UNKNOWN"
+  },
+  "relationship_graph": {
+    "edges": [
+      [
+        "Coinbase",
+        "USDC",
+        "$22B average USDC held; ~50% economics reported",
+        "company-reported"
+      ],
+      [
+        "Coinbase",
+        "XRP",
+        "XRP collateral for USDC borrowing via Morpho/Base",
+        "product-confirmed; utilization unknown"
+      ],
+      [
+        "XRP",
+        "cbXRP",
+        "Base collateral representation",
+        "product-confirmed"
+      ],
+      [
+        "cbXRP",
+        "Morpho",
+        "Collateral path",
+        "product-confirmed"
+      ],
+      [
+        "Circle",
+        "XRPL",
+        "Native USDC issuance",
+        "primary-confirmed"
+      ],
+      [
+        "Circle",
+        "Arc",
+        "USDC gas, StableFX/CPN and collateral ecosystem",
+        "primary-confirmed"
+      ],
+      [
+        "SBI Group",
+        "Arc",
+        "Founding validator",
+        "company-reported"
+      ],
+      [
+        "Coinbase",
+        "Arc",
+        "Ecosystem participant",
+        "company-reported"
+      ],
+      [
+        "SBI Group",
+        "Circle",
+        "MOU/JV/USDC distribution",
+        "primary-confirmed"
+      ],
+      [
+        "SBI Group",
+        "Ripple",
+        "SBI Ripple Asia and XRP ODL",
+        "primary-confirmed"
+      ],
+      [
+        "SBI Remit",
+        "XRP",
+        "ODL bridge asset",
+        "operationally reported"
+      ],
+      [
+        "SBI Ripple Asia",
+        "XRPL",
+        "Tokenized-deposit POC; native XRP use not established",
+        "POC"
+      ],
+      [
+        "Ripple",
+        "Coinbase",
+        "RLUSD distribution",
+        "primary-confirmed"
+      ],
+      [
+        "Circle",
+        "Ripple",
+        "Compete for XRPL dollar-stablecoin liquidity; no direct corporate partnership found",
+        "inference"
+      ],
+      [
+        "Tokyo SBIC",
+        "SBI Group",
+        "No affiliation established; name similarity only",
+        "disambiguation"
+      ]
+    ],
+    "hypotheses": [
+      {
+        "id": "H1",
+        "claim": "Coinbase XRP-to-USDC credit path creates collateral utility but not proven material XRP demand.",
+        "counter": "No utilization/collateral balances or pool issuer attribution."
+      },
+      {
+        "id": "H2",
+        "claim": "Circle USDC and Ripple RLUSD compete for XRPL dollar liquidity while coexisting across chains.",
+        "counter": "No XRPL share time series or direct Circle-Ripple partnership."
+      },
+      {
+        "id": "H3",
+        "claim": "SBI Group is multi-rail rather than exclusive Ripple/XRP.",
+        "counter": "No public allocation/transaction-share data."
+      },
+      {
+        "id": "H4",
+        "claim": "Tokyo SBIC ChatGPT activity is educational and separate from SBI Holdings/OpenAI partnership claims.",
+        "counter": "No reviewed ownership or commercial partnership evidence."
+      },
+      {
+        "id": "H5",
+        "claim": "Binance phase-one schedule does not prove XRP withdrawals resumed.",
+        "counter": "XRP may have resumed without appearing in reviewed page."
+      },
+      {
+        "id": "H6",
+        "claim": "Kamilah videos are hypothesis inputs, not independent evidence or predictive features before transcript/corroboration.",
+        "counter": "Individual claims may be accurate when independently corroborated."
+      },
+      {
+        "id": "H7",
+        "claim": "Reported 1B escrow release is not 1B sold or exchange-available.",
+        "counter": "Subsequent transfers may create market supply; disposition open."
+      }
+    ]
+  },
+  "kamilah": {
+    "creator_name": "Kamilah Stevenson",
+    "user_confirmed_creator_name": true,
+    "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "channel_id_status": "PROBABLE_MATCH_IN_MERGED_CATALOG",
+    "merged_pr": 1169,
+    "seed_videos": 10,
+    "full_inventory_complete": false,
+    "prior_partial_inventory_reported": "161 unique IDs / 1,239 channel videos (~12.1%) from prior VidIQ snapshot; not refreshed this run.",
+    "new_indexed_videos": [
+      "ywQEoYPzhlQ",
+      "8xiy8w2YlfY"
+    ],
+    "affiliate_disclosures_present": true,
+    "transcripts_complete": false,
+    "vidIQ_credits": "UNAVAILABLE_UNTIL_2026-11-27; NO_RETRY",
+    "exact_actual_capital_phrase": "UNRESOLVED; 'ACTUALLY' title is not 'actual capital'",
+    "ask_coin": "UNRESOLVED; Permission Coin ASK only a candidate"
+  },
+  "competing_hypotheses": [
+    "Native XRP ODL/collateral utility can coexist with stablecoin-native settlement; actual flow volumes decide materiality.",
+    "Stablecoins can reduce need for XRP as bridge in some routes even when deployed on XRPL.",
+    "SBI Group's Ripple and Circle relationships indicate multi-rail diversification, not exclusive alignment.",
+    "Coinbase's distribution/custody/credit position makes it a multi-issuer intermediary, not exclusive Circle affiliate."
+  ],
+  "repository_audit": {
+    "main_sha": "79e038866fe1cb46afcbed70ea7da92c1c1b97f4",
+    "pr1459": {
+      "head": "4175bd560e7a9efe21b5bdd1e20917e10774c6a2",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41296116525,
+      "tests": 369,
+      "subtests": 8,
+      "gate_run": 41296116559,
+      "gate": "PASS_MERGING_DISABLED"
+    },
+    "pr1450": {
+      "head": "4c3e33d8d5980f42cf56aca581fefeaba1f9a0ae",
+      "validator_run": 41295838139,
+      "shards": 462,
+      "records": 3545,
+      "tests": 35,
+      "errors": 0,
+      "pending_addenda": 45,
+      "gate_run": 41295838276
+    },
+    "pr1169": "MERGED; ten seed videos; full inventory incomplete",
+    "approval_workflow": "Push-event zero-job runs are expected because workflow_dispatch-only trigger does not match push; not YAML failure.",
+    "open_pr_inventory": "latest search limited to 100 results; total not re-established",
+    "remaining_risks": [
+      "Main privileged workflows remain until PR #1459 approved/merged.",
+      "Full repository CI/dependency/security scan incomplete.",
+      "Manual YES input is not equivalent to protected environment required reviewers."
+    ]
+  },
+  "archive": {
+    "base_branch": "verify/xrp-ledger-archive-20261101T070712Z",
+    "base_head": "4c3e33d8d5980f42cf56aca581fefeaba1f9a0ae",
+    "existing_archive_shards": 462,
+    "existing_archive_records": 3545,
+    "prior_validation": "PASS",
+    "new_source_records_pending": 23,
+    "new_run_update_pending": 1,
+    "new_limitation_pending": 1,
+    "source_revision_addendum_pending": true,
+    "inherited_pending_addenda": 45,
+    "unresolved_source_stubs": 13
+  },
+  "platform_coordination": {
+    "targets": [
+      "ChatGPT",
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "status": "DESIGNED_NOT_LIVE",
+    "verified_external_authentications": 0,
+    "verified_external_handoffs": 0,
+    "least_privilege_adapters": "DESIGNED",
+    "ChatGPT_current_session": true,
+    "GitHub_access": true
+  },
+  "architecture_decisions": [
+    "No market features admitted from provider timestamps/universes that cannot be normalized.",
+    "No directional forecast issued.",
+    "Distinguish eligibility/collateral capacity from actual utilization.",
+    "Distinguish gross escrow release from destination/disposition/sale.",
+    "Distinguish company-reported aggregate coverage from XRP-specific purchases.",
+    "Keep Tokyo SBIC separate from SBI Holdings.",
+    "Treat creator videos as hypothesis-generation only until transcripts and corroboration."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "market_features_admitted": false,
+    "reason": "No calibrated walk-forward model and unresolved event/market timestamps."
+  },
+  "safety": {
+    "main_modified": false,
+    "merged": false,
+    "force_pushed": false,
+    "workflow_dispatched": false,
+    "secrets_accessed": false,
+    "paper_position_changed": false,
+    "real_money_traded": false
+  },
+  "next_actions": [
+    "Decode raw XRPL EscrowFinish Destination and trace subsequent transfers/EscrowCreate.",
+    "Verify XRP-specific Binance withdrawal availability through asset-specific status or public transaction evidence.",
+    "Measure cbXRP supply and Morpho XRP collateral utilization; separate eligibility from actual borrowing.",
+    "Measure USDC/RLUSD supply and DEX liquidity on XRPL/Base with exact block cutoffs.",
+    "Map SBI Group Ripple/XRP and Circle/USDC/Arc/JPYSC flows; keep Tokyo SBIC separate.",
+    "Continue Kamilah full-channel inventory and transcripts when VidIQ credits return; catalog remains partial.",
+    "Append 24 sources, one run update and one limitation to immutable archive shards after this handoff is validated.",
+    "Keep PR #1459 draft/unmerged pending explicit approval; add protected-environment reviewer gate before external mutations."
+  ],
+  "status": "RESEARCH_HANDOFF_PENDING_ARCHIVE_APPEND"
+}
