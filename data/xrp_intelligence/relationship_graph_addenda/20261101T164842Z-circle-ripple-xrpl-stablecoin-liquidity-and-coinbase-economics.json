@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "graph_id": "circle-ripple-xrpl-stablecoin-liquidity-and-coinbase-economics-20261101T164842Z",
+  "captured_at_utc": "2026-11-01T16:48:42Z",
+  "nodes": [
+    {
+      "id": "circle",
+      "name": "Circle",
+      "type": "stablecoin_issuer_and_payment_network"
+    },
+    {
+      "id": "usdc",
+      "name": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple",
+      "type": "payments_and_stablecoin_company"
+    },
+    {
+      "id": "rlusd",
+      "name": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "xrpl",
+      "name": "XRP Ledger",
+      "type": "public_blockchain"
+    },
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "native_crypto_asset"
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "type": "exchange_custody_and_financial_platform"
+    },
+    {
+      "id": "morpho",
+      "name": "Morpho",
+      "type": "onchain_lending_protocol"
+    },
+    {
+      "id": "sbi_group",
+      "name": "SBI Group",
+      "type": "financial_conglomerate"
+    }
+  ],
+  "edges": [
+    {
+      "from": "circle",
+      "to": "usdc",
+      "relation": "issues",
+      "evidence": "Circle SEC Q2 2026 filing and USDC product disclosures",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "usdc",
+      "to": "xrpl",
+      "relation": "native_issued_token",
+      "evidence": "Circle USDC on XRPL page; XRPLWin issuer page",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "ripple",
+      "to": "rlusd",
+      "relation": "issues",
+      "evidence": "Ripple RLUSD disclosures; XRPLWin issuer page",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "rlusd",
+      "to": "xrpl",
+      "relation": "native_issued_token",
+      "evidence": "XRPLWin RLUSD issuer page",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "usdc",
+      "to": "xrp",
+      "relation": "permissionless_xrpl_amm_pair",
+      "evidence": "XRPLWin USDC/XRP pool reserves and 30d trades",
+      "confidence": "confirmed_pool"
+    },
+    {
+      "from": "rlusd",
+      "to": "xrp",
+      "relation": "permissionless_xrpl_amm_pair",
+      "evidence": "XRPLWin RLUSD/XRP pool reserves and 30d trades",
+      "confidence": "confirmed_pool"
+    },
+    {
+      "from": "usdc",
+      "to": "rlusd",
+      "relation": "permissionless_xrpl_amm_pair",
+      "evidence": "XRPLWin RLUSD/USDC pool reserves and 30d trades",
+      "confidence": "confirmed_pool"
+    },
+    {
+      "from": "circle",
+      "to": "coinbase",
+      "relation": "distribution_revenue_sharing_and_platform_balance_economics",
+      "evidence": "Circle Q2 2026 10-Q: Coinbase allocations tied to platform USDC and broader ecosystem; $324.6M Q2 and $655.3M H1 distribution costs",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "coinbase",
+      "to": "morpho",
+      "relation": "customer_interface_for_usdc_credit",
+      "evidence": "Coinbase product page and The Block report",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "coinbase",
+      "to": "xrp",
+      "relation": "xrp_collateral_for_usdc_loans",
+      "evidence": "Coinbase product page and The Block report",
+      "confidence": "confirmed_product"
+    },
+    {
+      "from": "circle",
+      "to": "xrp",
+      "relation": "direct_native_xrp_issuer_or_custodian_relationship",
+      "evidence": "Not established; Circle's direct XRPL relationship is USDC issuance and AMM participation",
+      "confidence": "not_established"
+    },
+    {
+      "from": "sbi_group",
+      "to": "circle",
+      "relation": "usdc_distribution_and_arc_validator_relationship",
+      "evidence": "Circle/SBI MOU and Arc announcement",
+      "confidence": "confirmed"
+    },
+    {
+      "from": "sbi_group",
+      "to": "ripple",
+      "relation": "strategic_partnership_and_rlusd_distribution",
+      "evidence": "SBI/Ripple releases and previous ledger",
+      "confidence": "confirmed"
+    }
+  ],
+  "competing_interpretations": [
+    {
+      "id": "I1",
+      "statement": "Stablecoin liquidity on XRPL complements XRP by increasing on-ledger market access and pair routing."
+    },
+    {
+      "id": "I2",
+      "statement": "Stablecoins may substitute for XRP as the bridge asset in some corridors and reduce the need to source XRP for settlement."
+    },
+    {
+      "id": "I3",
+      "statement": "Both can be true in different pairs/corridors; current supply and pool data are too small to quantify the net effect."
+    }
+  ],
+  "minority_objection": "XRPLWin is one indexer. Its current supply values are described as exact by the provider, but no raw account_lines/gateway_balances or AMM ledger nodes were retrieved. Holder concentration is account-level, not beneficial-owner concentration."
+}

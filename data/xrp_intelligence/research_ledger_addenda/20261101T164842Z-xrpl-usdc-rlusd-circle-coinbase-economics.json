@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrpl-usdc-rlusd-circle-coinbase-economics-20261101T164842Z",
+  "captured_at_utc": "2026-11-01T16:48:42Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T164842Z-xrpl-usdc-rlusd-circle-coinbase-economics.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T164842Z-circle-ripple-xrpl-stablecoin-liquidity-and-coinbase-economics.json",
+  "source_bundle": "data/xrp_intelligence/sources/20261101T164842Z-xrpl-stablecoins-circle-coinbase-sec-source-bundle.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T164842Z-xrpl-usdc-rlusd-circle-coinbase-economics.json",
+  "key_updates": [
+    "XRPLWin reports 6.02M USDC and 712.52M RLUSD on XRPL, making RLUSD supply approximately 118.36 times the reported USDC supply on the same indexer.",
+    "The largest RLUSD/XRP AMM pool displays 2.34M RLUSD and 1.87M XRP, with 35,388 trades over 30 days; the largest USDC/XRP pool displays 130.29K USDC and 104.3K XRP, with 33,522 trades over 30 days.",
+    "The RLUSD/USDC pool exists on XRPL with 25.08K RLUSD and 26.17K USDC, 24 LP holders and 144 30-day trades. This is permissionless pool evidence, not a formal Circle-Ripple partnership.",
+    "XRPL USDC is approximately 0.0086% of Circle's $70B global USDC circulation as of October 29.",
+    "Circle reports $70B USDC circulation and $71.4B reserves as of October 29, with $3.1B net redemptions over 30 days. This is issuer-level supply contraction, not XRP inflow.",
+    "Circle's Q2 2026 10-Q reports reserve income at 95.2% of total revenue, a 3.5% reserve return rate, and $324.6M Q2 / $655.3M H1 distribution costs to Coinbase.",
+    "Coinbase's Q3 2026 10-Q reports 59% lower consumer spot volume and 53% lower institutional spot volume year over year, while average USDC on platform reached an all-time high and derivatives, DEX and borrow/lend activity grew.",
+    "Coinbase Q3 net income of $718.7M included $715.0M of gains on crypto assets held for investment, primarily BTC and ETH; operating income was $61.7M.",
+    "Coinbase's Q3 stablecoin revenue was $306.9M, down 5% year over year, while nine-month stablecoin revenue was $904.5M, approximately flat year over year."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

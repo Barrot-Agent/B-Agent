@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "source_bundle_id": "xrpl-stablecoins-circle-coinbase-sec-20261101T164842Z",
+  "captured_at_utc": "2026-11-01T16:48:42Z",
+  "sources": [
+    {
+      "id": "xrplwin-usdc-xrpl-token-2026-11-01",
+      "url": "https://xrplwin.com/token/rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE/5553444300000000000000000000000000000000",
+      "publisher": "XRPLWin / WinDB",
+      "type": "LIVE_LEDGER_INDEXER",
+      "accessed_at_utc": "2026-11-01T16:48:42Z",
+      "claims": [
+        "USDC XRPL supply 6.02M; 10,806 holders; 17,631 trustlines",
+        "24h 1,756 trades, 107.5K volume, 175 payments",
+        "Largest USDC/XRP pool: 130.29K USDC and 104.3K XRP, 33,522 30d trades",
+        "Largest USDC/RLUSD pool: 26.17K USDC and 25.08K RLUSD, 144 30d trades"
+      ],
+      "limitations": [
+        "Provider page states WinDB follows the ledger; raw account_lines/gateway_balances not independently queried",
+        "Last token activity shown as 16:00 UTC; retrieval time 16:48:42 UTC",
+        "Holder account labels and beneficial owners not resolved"
+      ]
+    },
+    {
+      "id": "xrplwin-rlusd-xrpl-token-2026-11-01",
+      "url": "https://xrplwin.com/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000",
+      "publisher": "XRPLWin / WinDB",
+      "type": "LIVE_LEDGER_INDEXER",
+      "accessed_at_utc": "2026-11-01T16:48:42Z",
+      "claims": [
+        "RLUSD XRPL supply 712.52M; 68,751 holders; 122,422 trustlines",
+        "24h 11,638 trades, 930.48K volume and 49,248 payments",
+        "Largest RLUSD/XRP pool: 2.34M RLUSD and 1.87M XRP, 35,388 30d trades",
+        "RLUSD/USDC pool: 25.08K RLUSD and 26.17K USDC, 144 30d trades"
+      ],
+      "limitations": [
+        "Same WinDB indexer as USDC page; not independent source corroboration",
+        "Top holder addresses are not beneficial-owner identities",
+        "24h sent/payment counts are not proven external commerce or net capital flow"
+      ]
+    },
+    {
+      "id": "circle-transparency-usdc-2026-10-29",
+      "url": "https://www.circle.com/transparency",
+      "publisher": "Circle",
+      "type": "PRIMARY_ISSUER_TRANSPARENCY",
+      "accessed_at_utc": "2026-11-01T16:48:42Z",
+      "claims": [
+        "As of 2026-10-29 USDC circulation approximately $70.0B and reserve assets $71.4B",
+        "7d net issuance approximately -$0.8B; 30d approximately -$3.1B; 365d approximately -$5.0B"
+      ],
+      "limitations": [
+        "Issuer-reported; does not identify destination of redemptions or chain-level flows"
+      ]
+    },
+    {
+      "id": "circle-q2-2026-sec-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "publisher": "Circle",
+      "type": "SEC_FILING",
+      "accessed_at_utc": "2026-11-01T16:48:42Z",
+      "claims": [
+        "USDC circulation $73.269B at 2026-06-30; average $76.524B",
+        "USDC on Coinbase platform $12.442B; daily weighted average 19.5%",
+        "Q2 onchain volume $14.8T, +151% YoY",
+        "Reserve income 95.2% of Q2 revenue; reserve return rate 3.5% versus 4.1% prior year",
+        "Coinbase distribution costs $324.6M in Q2 and $655.3M in first half",
+        "66bp average yield decline offset approximately $113.9M of Q2 reserve-income growth"
+      ],
+      "limitations": [
+        "Company filing; Q2 period differs from Coinbase Q3 filing and October 29 transparency snapshot"
+      ]
+    },
+    {
+      "id": "coinbase-q3-2026-sec-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase",
+      "type": "SEC_FILING",
+      "accessed_at_utc": "2026-11-01T16:48:42Z",
+      "claims": [
+        "Q3 stablecoin revenue $306.905M, down 5% YoY; nine-month $904.487M",
+        "Consumer spot volume down 59% YoY; institutional spot volume down 53% YoY",
+        "Average USDC held on Coinbase products all-time high; Circle arrangement renewed on same terms",
+        "Derivatives volume resilient; DEX trading and balances borrowed/lent grew",
+        "Net income $718.697M, including $715.022M investment-asset gains primarily BTC and ETH; operating income $61.669M"
+      ],
+      "limitations": [
+        "Company filing; stablecoin revenue includes accounting presentation changes and is not automatically all Circle-derived revenue"
+      ]
+    }
+  ],
+  "source_independence": "XRPLWin supplies both XRPL token observations from the same indexer; this is same-provider comparison, not independent corroboration. Circle and Coinbase SEC filings are primary company disclosures. Circle transparency is issuer-reported. The stale usdc.cool value is excluded from current supply comparison.",
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

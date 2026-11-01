@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrpl-usdc-rlusd-circle-coinbase-economics-20261101T164842Z",
+  "captured_at_utc": "2026-11-01T16:48:42Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T164842Z-xrpl-usdc-rlusd-circle-coinbase-economics.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T164842Z-circle-ripple-xrpl-stablecoin-liquidity-and-coinbase-economics.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T164842Z-xrpl-usdc-rlusd-circle-coinbase-economics.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T164842Z-xrpl-stablecoin-supply-and-coinbase-circle-economics.json",
+  "next_actions": [
+    "Reproduce USDC and RLUSD issued balances from issuer account_lines/gateway_balances at one pinned validated XRPL ledger and compare with XRPLWin.",
+    "Retrieve AMM account/ledger nodes for USDC/XRP, RLUSD/XRP and RLUSD/USDC pools at the same validated ledger; compute executable depth, fee tiers, slippage and 30-day volume.",
+    "Attribute top holder accounts only through verified public labels; do not infer beneficial owners from balance concentration.",
+    "Compare Circle's November 4 Q3 results with October 29 transparency data; reconcile circulation, reserve yield, redemptions, Coinbase distribution and Arc economics.",
+    "Track USDC on XRPL versus RLUSD on XRPL and Ethereum, but keep issuer-level supply separate from market cap and bridge flows.",
+    "Build a point-in-time Circle reserve-income/interest-rate feature series and Coinbase product-mix series; test whether either adds predictive value beyond market/macro baselines.",
+    "Keep Circle-USDC and Ripple-RLUSD pool relationships as permissionless market links unless formal corporate evidence appears.",
+    "No directional XRP forecast or predictive feature admission until synchronized historical observations and walk-forward validation exist."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}
