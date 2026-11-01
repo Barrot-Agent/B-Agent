@@ -56,5 +56,7 @@ def test_ai_agent_transaction_count_is_separated_from_settled_value():
     assert d["reported_all_time_transactions"] == 4491820
     assert d["reported_xrp_settled"] == 5836.71
     assert d["reported_rlusd_settled"] == 4125.29
-    assert d["approximate_usd_value_at_article_price"] == 11830
+    assert d["approximate_usd_value_at_article_price"] == 12297
+    assert d["reported_registered_merchants"] == 152
+    assert d["reported_seven_day_average_payments_per_day"] == 199059
     assert any("not equivalent to economic value" in item for item in d["limitations"])
