@@ -725,17 +725,15 @@ def test_scheduled_telemetry_and_accuracy_workflows_are_readonly_artifact_only()
     assert "**Status:** OPERATIONAL" not in telemetry
 
 
-def test_subscriber_sync_requires_manual_private_data_confirmation_and_does_not_publish() -> None:
+def test_subscriber_sync_is_fully_disabled_pending_server_side_authorization() -> None:
     workflow = (REPO_ROOT / ".github" / "workflows" / "subscriber_sync.yml").read_text(encoding="utf-8")
     assert "workflow_dispatch:" in workflow
-    assert "schedule:" not in workflow
-    assert "confirm_private_data_processing" in workflow
-    assert 'default: "NO"' in workflow
-    assert "inputs.confirm_private_data_processing == 'YES'" in workflow
-    assert "contents: read" in workflow
-    assert "git commit" not in workflow
-    assert "git push" not in workflow
-    assert "rm -f web/subscribers.json" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    assert "GUMROAD_ACCESS_TOKEN" not in workflow
+    assert "secrets." not in workflow
+    assert "api.gumroad.com" not in workflow
+    assert "emails" not in workflow.lower()
 
 
 def test_databricks_token_rotation_is_disabled_and_accepts_no_token_input() -> None:
