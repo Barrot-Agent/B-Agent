@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   audit_and_upgrade:
-    if: ${{ inputs.confirm_repository_write == 'YES' && github.ref_type == 'branch' && github.ref != 'refs/heads/main' }}
+    if: ${{ inputs.confirm_repository_write == 'YES' && github.actor == github.repository_owner && github.ref_type == 'branch' && github.ref != 'refs/heads/main' }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

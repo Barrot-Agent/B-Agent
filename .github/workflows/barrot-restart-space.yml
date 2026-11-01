@@ -16,7 +16,7 @@ permissions: {}
 
 jobs:
   restart:
-    if: ${{ inputs.confirm_external_change == 'YES' }}
+    if: ${{ inputs.confirm_external_change == 'YES' && github.actor == github.repository_owner }}
     runs-on: ubuntu-latest
     steps:
       - name: Factory-restart the Space via stored HF_TOKEN
