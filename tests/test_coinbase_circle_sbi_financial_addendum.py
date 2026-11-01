@@ -51,3 +51,7 @@ def test_coinbase_circle_sbi_financial_addendum_is_consistent():
     assert ledger["forecast_status"] == "NOT_ISSUED"
     assert ledger["artifacts"]["relationship_graph"].endswith("20261101T140000Z-coinbase-circle-sbi-arc-cbxrp-graph.json")
     assert "sbi-remit-xrp-corridors-20230906" in ledger["source_ids"]
+
+    arc_revision = load("data/xrp_intelligence/source_revisions/20261101T141200Z-circle-arc-mainnet-canonical-url-and-capability-correction.json")
+    assert arc_revision["canonical_urls"][0].endswith("circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet")
+    assert "Circle_Payments_Network" in {node["id"] for node in load("data/xrp_intelligence/relationship_graph_addenda/20261101T141200Z-circle-arc-cpn-stablefx-and-xrpl-competitive-graph.json")["nodes"]}
