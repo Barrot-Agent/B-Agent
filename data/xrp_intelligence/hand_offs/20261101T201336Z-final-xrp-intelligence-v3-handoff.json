@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "handoff_id": "final-xrp-intelligence-v3-handoff-20261101T201336Z",
+  "captured_at_utc": "2026-11-01T20:13:36Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "research_pr": 1464,
+  "research_branch_head": "1f5d1cbd23e22a735449ab5ed4be344f4c5e1131",
+  "main_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+  "new_research": {
+    "coinbase_cftc_bitnomial": "CFTC Letter 26-05 was requested by Coinbase Financial Markets and is a conditional no-action framework, not a rule. Bitnomial's XRP collateral announcement predates the Coinbase request, so the request did not cause the original XRP collateral support. Bitnomial currently lists XRP at 40% haircut/$15M notional limit; Payward acquired Bitnomial. Coinbase FCM XRP use, direct Coinbase/Bitnomial clearing, actual balances, $15M cap scope and current RLUSD acceptance remain unknown.",
+    "market_structure": "XRP at approximately $1.25 in provider observations. Open interest varies widely by provider and contract coverage; no cross-provider aggregate is authorized. ETF weekly flow is +3.39M XRP for Oct 23–30 with GXRP excluded from flow calculation. Publicly attributed exchange wallets total 22.45B XRP but include cold storage and are not tradable float.",
+    "prediction_integrity": "PR #1475 fixed an outcome provenance gap: persisted price-source hashes are now revalidated against the current registered hash. Exact head passed 405 tests plus 8 subtests and fail-closed gate. Semantic verification of price values against immutable source snapshot bytes remains a gap."
+  },
+  "repository": {
+    "pr1474": "Open draft; 390 tests + 8 subtests and fail-closed gate passed; two ancillary zero-job push failures remain unexplained.",
+    "pr1475": "Open draft; latest head 8268d158; 405 tests + 8 subtests and fail-closed gate passed; no merge.",
+    "pr1464": "Open draft; latest head 1f5d1cbd; 431 tests + 8 subtests and fail-closed gate passed; no merge.",
+    "main_unchanged": true,
+    "active_main_risks": [
+      "Scheduler arbitrary workflow dispatch with write permissions.",
+      "Merge Queue defaults to real/unlimited processing without explicit human approval.",
+      "Cross Analysis writes timestamp-only artifacts with zero sentiment observations.",
+      "Autonomous Resolver retains issues/PR write permissions."
+    ]
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "next_actions": [
+    "Resolve PR #1474's zero-job workflow failures using run-level diagnostics or controlled reproduction; no speculative fix.",
+    "Keep PRs #1474, #1475 and #1464 draft/unmerged pending explicit approval.",
+    "Harden outcome provenance by binding the observed price and timestamp to an immutable, retrievable snapshot and verifying the value.",
+    "Normalize OI by provider, venue, contract type, quote currency and timestamp; do not aggregate until coverage is reconciled.",
+    "Find Coinbase Financial Markets' notice of reliance under CFTC Letter 26-05 and verify any actual XRP collateral use.",
+    "Verify Bitnomial's $15M limit scope, current RLUSD status and actual XRP posted collateral.",
+    "Continue SBIC, ASK Coin, exact actual-capital phrase and complete Camilla/Kamilah public-upload identity/catalog research.",
+    "Populate the historical feature store and forecast/outcome ledger before issuing any XRP probability."
+  ],
+  "safety": "No merge, main modification, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade."
+}

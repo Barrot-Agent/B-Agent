@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "decision_id": "oi-provider-coverage-and-outcome-provenance-20261101T201336Z",
+  "captured_at_utc": "2026-11-01T20:13:36Z",
+  "decisions": [
+    {
+      "topic": "Open interest normalization",
+      "decision": "Never average or compare provider OI levels as one series without a normalized contract-coverage key.",
+      "reason": "TradRadar, Kodexius and Seandra expose different exchange and instrument universes; even same-exchange Binance values differ."
+    },
+    {
+      "topic": "ETF flows",
+      "decision": "Store XRP-unit holdings change, USD valuation, AUM and reporting coverage separately; mark GXRP flow history incomplete.",
+      "reason": "Holdings-derived flows can differ from AUM movement and the current weekly total excludes GXRP flow catch-up."
+    },
+    {
+      "topic": "Exchange balances",
+      "decision": "Do not use attributed exchange wallet totals as tradable float or customer flow.",
+      "reason": "Cold storage is included and same-wallet deltas cannot distinguish customer withdrawals from wallet relabeling/migration."
+    },
+    {
+      "topic": "Outcome source provenance",
+      "decision": "Before metrics, require each persisted outcome source hash to equal the current registered content hash for its price_source_id.",
+      "reason": "A syntactically valid but tampered SHA-256 string previously passed the outcome provenance gate."
+    },
+    {
+      "topic": "Residual outcome integrity",
+      "decision": "Next hardening step must bind price_at_horizon_usd and price_observed_at_utc to an immutable, retrievable observation snapshot and verify the value against that snapshot.",
+      "reason": "Registry-hash equality proves source-version linkage but does not yet prove that the submitted price value is present in the hashed source content."
+    }
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

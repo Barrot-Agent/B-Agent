@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "revision_id": "xrp-market-oi-provider-coverage-etf-exchange-balances-20261101T201336Z",
+  "captured_at_utc": "2026-11-01T20:13:36Z",
+  "sources": [
+    {
+      "id": "tradradar-xrp-derivatives-20261101T1525Z",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "observed_at_utc": "2026-11-01T15:25:00Z",
+      "classification": "AGGREGATED_DERIVATIVES_PROVIDER",
+      "claims": [
+        "XRP $1.2511; seven-exchange OI $1.90B; OI +1.63% 24h; OI-weighted funding +0.0072%/8h; long/short 3.56; long share 78.1%; reported 24h liquidations at least $595.04K."
+      ],
+      "limitations": [
+        "Provider's exchange/contract inclusion and OI methodology are not fully specified in the captured page.",
+        "Not directly comparable with single-exchange or smaller-contract-universe providers."
+      ]
+    },
+    {
+      "id": "seandra-binance-xrp-perp-20261101T1605Z",
+      "publisher": "Seandra AI",
+      "url": "https://seandra.ai/perp/xrp",
+      "observed_at_utc": "2026-11-01T16:05:00Z",
+      "classification": "SINGLE_EXCHANGE_DERIVATIVES_PROVIDER",
+      "claims": [
+        "Binance USDT perpetual OI $340.6M, +2.4% 24h; funding +0.0100% per period; 71% of accounts long; at least $329K forced closures, mostly longs."
+      ],
+      "limitations": [
+        "Binance-only scope; account ratios are not notional exposure."
+      ]
+    },
+    {
+      "id": "kodexius-xrp-perpetual-20261101T1732Z",
+      "publisher": "Kodexius",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "observed_at_utc": "2026-11-01T17:32:00Z",
+      "classification": "MULTI_CONTRACT_DERIVATIVES_PROVIDER",
+      "claims": [
+        "Seven XRP perpetual contracts; OI $757.33M; 8h funding +0.0090%; 24h volume $475.51M; OI/volume 1.59."
+      ],
+      "limitations": [
+        "The displayed exchange rows do not fully explain the seven-contract universe; not directly comparable with TradRadar."
+      ]
+    },
+    {
+      "id": "xrp-insights-etf-week-44-2026",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/news/xrp-supply-report-2026-10-31",
+      "published_at": "2026-10-31",
+      "accessed_at_utc": "2026-11-01T20:13:36Z",
+      "classification": "ISSUER_HOLDING_DERIVED_ETF_FLOW_AGGREGATE",
+      "claims": [
+        "Oct 23 to Oct 30 settled closes: +3.39M XRP net ETF/index-fund flow, approximately $4.03M; 1.20B XRP holdings; $1.51B net assets."
+      ],
+      "limitations": [
+        "GXRP excluded from flow calculation while catch-up from a scrape gap is allocated across prior dates; holdings still included."
+      ]
+    },
+    {
+      "id": "xrp-insights-exchange-balances-20261101",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "observed_at_utc": "2026-11-01T08:00:00Z",
+      "accessed_at_utc": "2026-11-01T20:13:36Z",
+      "classification": "PUBLIC_XRPL_LABELLED_WALLET_BALANCE_AGGREGATE",
+      "claims": [
+        "22.45B XRP in 701 publicly attributed wallets across 24 exchanges; same-wallet 7d change -161.1M XRP and 30d change -12.7M XRP."
+      ],
+      "limitations": [
+        "Includes cold storage and unclassified attributed wallets; not tradable float; wallet attribution and coverage can change."
+      ]
+    }
+  ],
+  "data_quality_decisions": [
+    "Do not average or sum OI across providers until exchange, instrument, contract, quote currency and timestamp coverage is normalized.",
+    "Do not infer OI direction from provider-to-provider level differences.",
+    "Keep ETF holdings, daily creations/redemptions, AUM valuation and fund coverage as separate series.",
+    "Keep exchange wallet balances separate from tradable float and distinguish same-wallet changes from customer flows."
+  ]
+}
