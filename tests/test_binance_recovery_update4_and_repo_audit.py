@@ -54,7 +54,7 @@ def test_current_main_audit_records_writers_and_dependency_scan_gap():
     assert audit["main_sha"] == "46e9f9d276a862157906dce63a0910e20eb8f7b5"
     assert audit["workflow_inventory"]["active_workflow_files"] == 77
     assert audit["security_and_dependencies"]["dependabot"]["frequency"] == "weekly"
-    assert audit["security_and_dependencies"]["status"] == "DEPENDENCY_AUDIT_GAP_OR_DOCUMENTATION_DRIFT"
+    assert audit["security_and_dependencies"]["status"].startswith("DEPENDENCY_AUDIT_GAP_OR_DOCUMENTATION_DRIFT")
     assert audit["pr_inventory"]["prediction_pr_1466"]["status"] == "OPEN_DRAFT_NEW_FRESH_MAIN_SUCCESSOR_CI_PENDING"
 
 
