@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_relationship_and_collateral_source_registry",
+  "captured_at_utc": "2026-11-01T23:01:22Z",
+  "sources": [
+    {
+      "id": "SRC_RIPPLE_CIRCLE_XRPL",
+      "publisher": "Ripple",
+      "date": "2025-06-12",
+      "url": "https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/",
+      "type": "joint_official_partnership_announcement",
+      "supports": [
+        "Ripple and Circle announced a partnership to bring USDC to XRPL",
+        "Ripple stated it intended to use USDC alongside RLUSD in Ripple Payments",
+        "XRPL DEX and auto-bridging can use XRP as a bridge currency for efficient trading with USDC"
+      ],
+      "limits": [
+        "Does not establish that every USDC transaction uses XRP",
+        "Does not establish equity or joint ownership"
+      ]
+    },
+    {
+      "id": "SRC_CIRCLE_USDC_XRPL",
+      "publisher": "Circle",
+      "date": "2025-06-12",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "type": "official_product_launch",
+      "supports": [
+        "Native USDC is live on XRPL mainnet without bridging",
+        "Circle Mint and Circle APIs support USDC on XRPL"
+      ],
+      "limits": [
+        "Official issuer statement; independent onchain supply reconciliation remains separate"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_NON_US_XCOLLATERAL",
+      "publisher": "Coinbase",
+      "date": "effective for most customers 2026-10-01",
+      "url": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral",
+      "type": "official_product_specification",
+      "supports": [
+        "Cross-collateral product is for eligible supported regions outside the US",
+        "XRP is a cross-collateral currency",
+        "XRP standard-margin haircut is 15%",
+        "X:PM column shows a dash; this record preserves it as unspecified rather than assuming zero",
+        "Positive-equity currencies can be used to buy negative settlement currencies",
+        "Rebalancing is separate from liquidation"
+      ],
+      "limits": [
+        "No XRP collateral balances, customer counts or rebalancing volumes disclosed"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_PRIME_GLOBAL_PRODUCT",
+      "publisher": "Coinbase",
+      "date": "observed 2026-11-01",
+      "url": "https://help.coinbase.com/en/prime/derivatives/what-is-global-derivatives",
+      "type": "official_product_specification",
+      "supports": [
+        "Eligible US institutional clients can access Global Derivatives via Coinbase Prime and CFM",
+        "CFM is broker of record; Deribit is execution venue",
+        "Collateral is held in a CFM secured Rule 30.7 account and delegated to Deribit"
+      ],
+      "limits": [
+        "Product availability and instrument lists may vary by entity and approval"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_PRIME_GLOBAL_COLLATERAL",
+      "publisher": "Coinbase",
+      "date": "observed 2026-11-01",
+      "url": "https://help.coinbase.com/en/prime/derivatives/funding-your-global-derivatives-portfolio",
+      "type": "official_product_specification",
+      "supports": [
+        "Public US Prime Global Derivatives eligible collateral list is USDC, BTC and ETH",
+        "Cross-collateral is not enabled in this Prime portfolio; deficits in one settlement currency are not automatically covered by surpluses in another"
+      ],
+      "limits": [
+        "No XRP in current public list; account-specific exceptions not established"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_US_DERIVATIVES_COLLATERAL",
+      "publisher": "Coinbase",
+      "date": "observed 2026-11-01",
+      "url": "https://help.coinbase.com/en/prime/derivatives/funding-and-eligible-collateral-for-us-derivatives",
+      "type": "official_product_specification",
+      "supports": [
+        "US Derivatives margin is USD cash",
+        "USDC is indirect collateral through auto-conversion when enabled"
+      ],
+      "limits": [
+        "No XRP eligible collateral listed"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_XRP_USDC_OPTIONS",
+      "publisher": "Coinbase",
+      "date": "observed 2026-11-01",
+      "url": "https://help.coinbase.com/en/coinbase/derivatives/global-derivatives-linear-usdc-options",
+      "type": "official_product_specification",
+      "supports": [
+        "XRP_USDC index is listed",
+        "24/7 trading",
+        "USDC quote, margin and cash settlement",
+        "1,000 XRP contract multiplier"
+      ],
+      "limits": [
+        "Cited page describes the supported non-US Global Derivatives product; do not infer US access"
+      ]
+    },
+    {
+      "id": "SRC_CFTC_26_17",
+      "publisher": "CFTC Market Participants Division",
+      "date": "2026-05-29",
+      "url": "https://www.cftc.gov/csl/26-17/download",
+      "type": "official_staff_interpretation_and_no_action_letter",
+      "supports": [
+        "References March 2026 SEC/CFTC digital-commodity interpretation, which lists XRP as an example",
+        "Describes CFM-to-Coinbase Bermuda-to-Deribit route for 30.7 customer foreign futures/options",
+        "Permits conditional right of re-use solely for margining/securing specified 30.7 customer obligations",
+        "Records CFM representation of 100% net liquidating equity assets at Coinbase Custody Trust",
+        "References 120% limit under CFTC Regulation 30.7(c)"
+      ],
+      "limits": [
+        "Staff position, not binding on the Commission",
+        "Does not prove XRP is accepted or used in the current product",
+        "100% net-liquidating-equity custody is a factual-background representation, not one of the numbered no-action conditions",
+        "120% cap is a regulation 30.7(c) limit, not a letter-specific condition"
+      ]
+    },
+    {
+      "id": "SRC_RIPPLE_COINBASE_RLUSD",
+      "publisher": "Ripple",
+      "date": "2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "type": "official_partnership_announcement",
+      "supports": [
+        "RLUSD live on Coinbase Prime, Coinbase Exchange and retail",
+        "Deposits and withdrawals supported across XRPL, Base and Ethereum",
+        "1:1 conversion from USD and other supported USD-denominated stablecoins",
+        "Coinbase Global Exchange availability and RLUSD collateral were future, not live, at announcement"
+      ],
+      "limits": [
+        "Announcement is not proof of balances, trading volume or collateral usage"
+      ]
+    },
+    {
+      "id": "SRC_CIRCLE_ARC",
+      "publisher": "Circle",
+      "date": "2026-09-16",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "type": "official_mainnet_announcement",
+      "supports": [
+        "Arc uses USDC for gas",
+        "SBI Group is in founding validator cohort",
+        "Coinbase is listed among exchange participants, not validators",
+        "Circle reported 98.8% of agent-driven transaction volume in USDC"
+      ],
+      "limits": [
+        "98.8% metric is company-reported and global Agent Stack/x402 scope, not Arc-specific usage"
+      ]
+    },
+    {
+      "id": "SRC_CIRCLE_AGENT_STACK",
+      "publisher": "Circle",
+      "date": "observed 2026-11-01",
+      "url": "https://www.circle.com/agent-stack",
+      "type": "official_product_page",
+      "supports": [
+        "Circle describes Agent Stack as chain- and protocol-agnostic",
+        "Current page reports 99.8% of x402 transaction value in USDC"
+      ],
+      "limits": [
+        "Different metric from agent-driven transaction volume; denominator and exact capture window require pinning"
+      ]
+    },
+    {
+      "id": "SRC_CIRCLE_AGENT_PORTAL",
+      "publisher": "Circle",
+      "date": "October 2026 metric displayed; observed 2026-11-01",
+      "url": "https://agents.circle.com/",
+      "type": "official_product_page",
+      "supports": [
+        "Current page reports 99.6% of agent transaction volume on x402 in USDC"
+      ],
+      "limits": [
+        "Different metric and capture window from Arc release and Agent Stack transaction-value metric; do not average"
+      ]
+    },
+    {
+      "id": "SRC_SBIC_PROFILE",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "date": "observed 2026-11-01",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "type": "official_company_profile",
+      "supports": [
+        "Legal/company name is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+        "Company profile gives legal corporate number 9011001030621 and shareholder categories"
+      ],
+      "limits": [
+        "Distinct entity from SBI Holdings/SBI Group"
+      ]
+    },
+    {
+      "id": "SRC_SBIC_TRAINING",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "date": "2025-06-12 to 2025-06-13",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "type": "official_training_announcement",
+      "supports": [
+        "Two-day generative AI and machine-learning course for investee companies",
+        "Day one included ChatGPT usage; day two included Copilot"
+      ],
+      "limits": [
+        "Educational training, not evidence of OpenAI partnership or XRP/Circle relationship"
+      ]
+    },
+    {
+      "id": "SRC_PERMISSION_ASK",
+      "publisher": "Permission",
+      "date": "observed 2026-11-01",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "type": "official_token_contract_directory",
+      "supports": [
+        "Permission ASK is a LayerZero OFT token",
+        "Official contracts listed on Base and Polygon",
+        "Stargate integration listed"
+      ],
+      "limits": [
+        "No XRPL contract is listed in this official directory; this does not exclude arbitrary third-party transfers to XRPL addresses"
+      ]
+    }
+  ],
+  "independence_policy": "Official company sources are authoritative for each issuer's own announcements and product specifications but are not independent corroboration of market usage, balances or outcomes. CFTC is an independent regulator. Onchain and market metrics require independent raw-data replication."
+}

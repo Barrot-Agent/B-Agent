@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_relationship_graph_correction",
+  "captured_at_utc": "2026-11-01T23:01:22Z",
+  "status": "APPEND_ONLY_CORRECTION",
+  "supersedes": [
+    {
+      "artifact": "data/xrp_intelligence/relationship_graph_addenda/20261101T220304Z-coinbase-circle-ripple-sbi-arc.json",
+      "prior_non_edge": {
+        "from": "CIRCLE",
+        "to": "RIPPLE",
+        "status": "NO_DIRECT_PARTNERSHIP_ESTABLISHED"
+      },
+      "replacement_status": "SUPERSEDED_BY_CONFIRMED_DIRECT_PRODUCT_INTEGRATION_PARTNERSHIP",
+      "reason": "Ripple and Circle jointly announced a partnership on 2025-06-12 to bring native USDC to XRPL."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "RIPPLE",
+      "name": "Ripple",
+      "type": "payments_and_stablecoin_company"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle",
+      "type": "stablecoin_and_payment_infrastructure_company"
+    },
+    {
+      "id": "USDC",
+      "name": "USDC",
+      "type": "payment_stablecoin"
+    },
+    {
+      "id": "RLUSD",
+      "name": "RLUSD",
+      "type": "payment_stablecoin"
+    },
+    {
+      "id": "XRPL",
+      "name": "XRP Ledger",
+      "type": "public_blockchain"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "native_digital_asset"
+    },
+    {
+      "id": "COINBASE",
+      "name": "Coinbase",
+      "type": "exchange_custody_and_prime_platform"
+    },
+    {
+      "id": "COINBASE_ADVANCED_GLOBAL_NON_US",
+      "name": "Coinbase Advanced Global Derivatives (supported non-US regions)",
+      "type": "derivatives_product"
+    },
+    {
+      "id": "COINBASE_PRIME_GLOBAL_US",
+      "name": "Coinbase Prime Global Derivatives (eligible US institutions)",
+      "type": "derivatives_product"
+    },
+    {
+      "id": "COINBASE_US_DERIVATIVES",
+      "name": "Coinbase US Derivatives / Coinbase Derivatives Exchange",
+      "type": "derivatives_product"
+    },
+    {
+      "id": "CFM",
+      "name": "Coinbase Financial Markets",
+      "type": "CFTC_registered_futures_commission_merchant"
+    },
+    {
+      "id": "CBBM",
+      "name": "Coinbase Bermuda Limited",
+      "type": "foreign_broker"
+    },
+    {
+      "id": "DERIBIT",
+      "name": "Deribit",
+      "type": "foreign_board_of_trade_and_derivatives_venue"
+    },
+    {
+      "id": "COINBASE_CUSTODY_TRUST",
+      "name": "Coinbase Custody Trust Company",
+      "type": "New_York_limited_purpose_trust_company"
+    },
+    {
+      "id": "ARC",
+      "name": "Arc",
+      "type": "Circle_L1_network"
+    },
+    {
+      "id": "SBI_GROUP",
+      "name": "SBI Group",
+      "type": "financial_group"
+    },
+    {
+      "id": "SBIC",
+      "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "separate_SME_investment_consultation_company"
+    },
+    {
+      "id": "ASK_PERMISSION",
+      "name": "Permission Coin ASK",
+      "type": "LayerZero_OFT_token_candidate"
+    }
+  ],
+  "edges": [
+    {
+      "from": "RIPPLE",
+      "to": "CIRCLE",
+      "type": "direct_product_integration_partnership",
+      "status": "CONFIRMED",
+      "date": "2025-06-12",
+      "scope": "Joint announcement to bring native USDC to XRPL; Circle Mint and APIs support USDC on XRPL. Ripple stated it intended to use USDC alongside RLUSD in Ripple Payments.",
+      "sources": [
+        "SRC_RIPPLE_CIRCLE_XRPL",
+        "SRC_CIRCLE_USDC_XRPL"
+      ],
+      "limits": [
+        "This confirms a direct product/integration partnership, not an equity relationship, merger, joint ownership or exclusive strategic alliance."
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "USDC",
+      "type": "issuer",
+      "status": "CONFIRMED",
+      "sources": [
+        "SRC_CIRCLE_USDC_XRPL"
+      ]
+    },
+    {
+      "from": "USDC",
+      "to": "XRPL",
+      "type": "native_issuance",
+      "status": "CONFIRMED",
+      "sources": [
+        "SRC_RIPPLE_CIRCLE_XRPL",
+        "SRC_CIRCLE_USDC_XRPL"
+      ],
+      "limits": [
+        "Native issuance does not mean every XRPL payment uses XRP as a bridge asset."
+      ]
+    },
+    {
+      "from": "XRPL",
+      "to": "XRP",
+      "type": "native_asset",
+      "status": "CONFIRMED",
+      "sources": [
+        "SRC_RIPPLE_CIRCLE_XRPL"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "RIPPLE",
+      "type": "RLUSD_distribution_partnership",
+      "status": "CONFIRMED",
+      "date": "2026-10-28",
+      "scope": "RLUSD trading and management on Coinbase Prime, Coinbase Exchange and retail; deposits/withdrawals on XRPL, Base and Ethereum.",
+      "limits": [
+        "Coinbase Global Exchange availability and RLUSD collateral use were announced as future, not live, on 2026-10-28."
+      ],
+      "sources": [
+        "SRC_RIPPLE_COINBASE_RLUSD"
+      ]
+    },
+    {
+      "from": "XRP",
+      "to": "COINBASE_ADVANCED_GLOBAL_NON_US",
+      "type": "cross_collateral_for_cross_margined_derivatives",
+      "status": "CONFIRMED_PRODUCT_ELIGIBILITY",
+      "terms": {
+        "standard_margin_haircut_pct": 15,
+        "portfolio_margin_haircut": "DASH_NOT_INTERPRETED_AS_ZERO"
+      },
+      "sources": [
+        "SRC_COINBASE_NON_US_XCOLLATERAL"
+      ],
+      "limits": [
+        "Eligible supported regions outside the US; no customer counts, balances or XRP rebalancing volumes disclosed."
+      ]
+    },
+    {
+      "from": "XRP",
+      "to": "COINBASE_ADVANCED_GLOBAL_NON_US",
+      "type": "underlying_of_XRP_USDC_linear_options",
+      "status": "CONFIRMED_PRODUCT_LISTING",
+      "terms": {
+        "contract_multiplier_xrp": 1000,
+        "quoted_currency": "USDC",
+        "margin_currency": "USDC",
+        "settlement_currency": "USDC",
+        "trading_hours": "24/7"
+      },
+      "sources": [
+        "SRC_COINBASE_XRP_USDC_OPTIONS"
+      ],
+      "limits": [
+        "The cited options page is for supported non-US Global Derivatives regions; do not infer US instrument availability."
+      ]
+    },
+    {
+      "from": "COINBASE_PRIME_GLOBAL_US",
+      "to": "DERIBIT",
+      "type": "institutional_execution_access_via_CFM",
+      "status": "CONFIRMED_COMPANY_PRODUCT_DESCRIPTION",
+      "sources": [
+        "SRC_COINBASE_PRIME_GLOBAL_PRODUCT"
+      ],
+      "limits": [
+        "Public Prime collateral list is USDC, BTC and ETH; XRP is not listed."
+      ]
+    },
+    {
+      "from": "COINBASE_PRIME_GLOBAL_US",
+      "to": "XRP",
+      "type": "eligible_collateral",
+      "status": "NOT_IN_CURRENT_PUBLIC_ELIGIBLE_LIST",
+      "sources": [
+        "SRC_COINBASE_PRIME_GLOBAL_COLLATERAL"
+      ]
+    },
+    {
+      "from": "COINBASE_US_DERIVATIVES",
+      "to": "XRP",
+      "type": "eligible_collateral",
+      "status": "NOT_IN_CURRENT_PUBLIC_ELIGIBLE_LIST",
+      "sources": [
+        "SRC_COINBASE_US_DERIVATIVES_COLLATERAL"
+      ],
+      "limits": [
+        "US Derivatives use USD cash; USDC is indirect via auto-conversion when enabled."
+      ]
+    },
+    {
+      "from": "CFM",
+      "to": "CBBM",
+      "type": "customer_30_7_funds_transfer_under_right_of_reuse",
+      "status": "CONDITIONAL_CFTC_STAFF_NO_ACTION_PATHWAY",
+      "sources": [
+        "SRC_CFTC_26_17"
+      ]
+    },
+    {
+      "from": "CBBM",
+      "to": "DERIBIT",
+      "type": "foreign_broker_margining_for_30_7_customer_positions",
+      "status": "CONDITIONAL_CFTC_STAFF_NO_ACTION_PATHWAY",
+      "sources": [
+        "SRC_CFTC_26_17"
+      ]
+    },
+    {
+      "from": "DERIBIT",
+      "to": "COINBASE_CUSTODY_TRUST",
+      "type": "100_percent_net_liquidating_equity_custody_representation",
+      "status": "CFM_FACTUAL_BACKGROUND_REPRESENTATION_NOT_ENUMERATED_NO_ACTION_CONDITION",
+      "sources": [
+        "SRC_CFTC_26_17"
+      ],
+      "limits": [
+        "The CFTC letter records CFM's representation that Deribit would maintain assets equal to 100% of relevant 30.7 customer net liquidating equity at Coinbase Custody Trust; it is not one of the numbered no-action conditions and is not an independent custody audit."
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "ARC",
+      "type": "network_issuer_and_operator_ecosystem",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "ARC",
+      "to": "USDC",
+      "type": "native_gas_asset",
+      "status": "CONFIRMED_DESIGN",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "SBI_GROUP",
+      "to": "ARC",
+      "type": "founding_validator_cohort",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    },
+    {
+      "from": "COINBASE",
+      "to": "ARC",
+      "type": "exchange_participant",
+      "status": "CONFIRMED_COMPANY_ANNOUNCEMENT_NOT_VALIDATOR",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ]
+    }
+  ],
+  "non_edges": [
+    {
+      "from": "SBIC",
+      "to": "SBI_GROUP",
+      "status": "DISTINCT_LEGAL_ENTITIES; DO_NOT_CONFLATE",
+      "sources": [
+        "SRC_SBIC_PROFILE"
+      ],
+      "limits": [
+        "No ownership/control relationship established by the reviewed official SBIC profile."
+      ]
+    },
+    {
+      "from": "SBIC",
+      "to": "XRP",
+      "status": "NO_DIRECT_RELATIONSHIP_ESTABLISHED",
+      "sources": [
+        "SRC_SBIC_PROFILE",
+        "SRC_SBIC_TRAINING"
+      ]
+    },
+    {
+      "from": "SBIC",
+      "to": "CIRCLE",
+      "status": "NO_DIRECT_RELATIONSHIP_ESTABLISHED",
+      "sources": [
+        "SRC_SBIC_PROFILE",
+        "SRC_SBIC_TRAINING"
+      ]
+    },
+    {
+      "from": "ASK_PERMISSION",
+      "to": "XRPL",
+      "status": "NO_XRPL_CONTRACT_LISTED_IN_CURRENT_OFFICIAL_PERMISSION_DIRECTORY",
+      "sources": [
+        "SRC_PERMISSION_ASK"
+      ],
+      "limits": [
+        "This is not proof that no third party has ever transferred ASK to an XRPL address; it means the official contract directory lists Base and Polygon only."
+      ]
+    },
+    {
+      "from": "CIRCLE",
+      "to": "RIPPLE",
+      "type": "equity_or_control_relationship",
+      "status": "NOT_ESTABLISHED",
+      "limits": [
+        "A direct product integration partnership is confirmed; no equity, merger or joint-control relationship is established by the cited sources."
+      ]
+    }
+  ],
+  "interpretation": {
+    "coinbase": "Coinbase operates distinct collateral regimes. The non-US Coinbase Advanced Global Derivatives cross-collateral product lists XRP; Coinbase Prime Global Derivatives for eligible US institutions lists only USDC/BTC/ETH; US Derivatives use USD cash with optional indirect USDC conversion. These must be separate product entities in the feature store.",
+    "circle_ripple": "Circle and Ripple are direct product partners for USDC on XRPL and simultaneously compete in stablecoins through USDC and RLUSD. Ripple said it would use USDC alongside RLUSD; treat complementarity and competition as simultaneous, not mutually exclusive.",
+    "rebalancing": "Coinbase's non-US cross-collateral documentation permits positive-equity currencies to be used to purchase a negative settlement currency. XRP could be sold in that process if XRP is the positive-equity currency, but this is a conditional mechanical inference; no XRP-specific rebalancing or sale volume is disclosed.",
+    "cftc": "CFTC Letter 26-17 is a staff no-action position, not a rule or blanket product authorization. The referenced March 2026 SEC/CFTC digital-commodity interpretation lists XRP. The current public US Prime collateral list still excludes XRP."
+  }
+}
