@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "id": "rlusd-xrpl-supply-and-payment-quality-20261101T210615Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "market_cutoff_utc": "2026-11-01T20:37:00Z",
+  "asset_scope": [
+    "RLUSD/XRPL",
+    "RLUSD/Ethereum",
+    "XRP/USD derivatives",
+    "XRPL stablecoin activity"
+  ],
+  "stablecoin_supply": {
+    "current": {
+      "xrpl_usd": 707400000,
+      "ethereum_usd": 1710000000,
+      "two_chain_total_usd": 2420000000,
+      "xrpl_share_pct": 29,
+      "ethereum_share_pct": 71,
+      "as_of_date": "2026-11-01",
+      "source_id": "xrp-insights-radar-rlusd-chain-supply-20261101",
+      "method": "XRPL issuer gateway_balances plus Ethereum totalSupply; small L2s excluded"
+    },
+    "cross_checks": [
+      {
+        "provider": "stables.cool",
+        "xrpl_rlusd_usd": 707400000,
+        "change_30d_pct": -30.21,
+        "peak_usd": 1250000000,
+        "peak_date": "2026-10-07",
+        "change_from_peak_pct": -43.26,
+        "as_of_date": "2026-11-01"
+      },
+      {
+        "provider": "XRPL.to",
+        "xrpl_rlusd_units": 711828559,
+        "holders": 67904,
+        "trust_lines": 101680,
+        "top_10_holder_share_pct": 83,
+        "reported_24h_volume_usd": 851034,
+        "exact_utc_timestamp": null
+      },
+      {
+        "provider": "stables.cool",
+        "usd_stablecoins_total_usd": 716800000,
+        "rlusd_usd": 711800000,
+        "usdc_usd": 5000000,
+        "observed_label": "2026-11-01 21:05; timezone unspecified"
+      }
+    ],
+    "q3_comparison": {
+      "source": "Blockworks Q3 2026 report",
+      "published": "2026-10-30",
+      "q3_xrpl_rlusd_usd": 1010000000,
+      "q3_xrpl_all_stablecoins_usd": 1030000000,
+      "q3_rlusd_share_pct": 98.1,
+      "approx_current_vs_q3_rlusd_change_pct": -29.96,
+      "qualification": "Different source/time methods; use as a provisional comparison, not a reconciled daily series."
+    },
+    "all_chain_comparison": {
+      "q3_rlusd_all_chains_usd": 2520000000,
+      "current_two_chain_usd": 2420000000,
+      "approx_change_pct": -3.97,
+      "qualification": "Current total excludes small L2 and XRPL EVM supplies; do not infer exact net redemption or bridge flow."
+    }
+  },
+  "payment_quality": {
+    "source_id": "bitquery-rlusd-xrpl-dust-bots-20261019",
+    "measurement_window_utc": {
+      "start": "2026-09-19",
+      "end": "2026-10-18",
+      "source_cutoff": "2026-10-19T13:00:00Z"
+    },
+    "rlusd_payment_count": 7821066,
+    "payments_under_1_rlusd": 7806466,
+    "under_1_share_pct": 99.8,
+    "payments_to_three_collectors": 7789341,
+    "collector_share_of_payment_count_pct": 99.6,
+    "total_dust_rlusd": 7722,
+    "cluster_wallets": 110,
+    "cluster_funding": "Six Binance-labelled PoR wallets funded XRP; one Binance-labelled wallet funded RLUSD. Attribution fits a customer using Binance rails; no evidence Binance corporate operated the cluster.",
+    "cluster_shutdown": "Collector activity declined from 2026-10-14 17:00 UTC and was largely silent by 2026-10-16 03:00 UTC. Cross River announced RLUSD integration on 2026-10-15. Temporal coincidence only; causality unknown.",
+    "payments_at_least_1_rlusd": 14600,
+    "distinct_senders": 1826,
+    "distinct_receivers": 1536,
+    "genuine_issuer_payment_value_usd": 7330000000,
+    "payments_at_least_1000000": 828,
+    "value_in_payments_at_least_1000000_usd": 6980000000,
+    "top_10_sender_share_pct": 82,
+    "median_payment_rlusd": 150,
+    "issuer_mint_usd": 728000000,
+    "issuer_redemption_usd": 744000000,
+    "issuer_loop_share_of_gross_value_approx_pct": 20,
+    "round_trip_pair_value_each_way_usd": 424000000,
+    "round_trip_pair_gross_double_count_usd": 848000000,
+    "genuine_issuer_payment_count": 14578,
+    "lookalike_token_payment_count": 30,
+    "lookalike_token_value_usd": 38600000,
+    "interpretation": "High payment count is mostly dust automation. Remaining value is substantial but highly concentrated and includes issuer operations and round-trip transfers; gross volume is not net external capital or broad retail adoption."
+  },
+  "derivatives": {
+    "observations": [
+      {
+        "provider": "TradRadar",
+        "observed_at_utc": "2026-11-01T18:30:00Z",
+        "open_interest_usd": 1900000000,
+        "exchange_count": 7,
+        "funding_8h_pct": 0.0096,
+        "long_share_pct": 78,
+        "liquidations_24h_min_usd": 579270
+      },
+      {
+        "provider": "Liqwall",
+        "observed_at_utc": "2026-11-01T18:12:00Z",
+        "open_interest_usd": 1340000000,
+        "coverage": "all exchanges per provider label",
+        "funding_8h_pct": 0.0094,
+        "binance_long_accounts_pct": 71.4,
+        "liquidations_24h_usd": 559000
+      },
+      {
+        "provider": "Webeconomia",
+        "observed_at_label": "2026-11-01 20:28; timezone unspecified",
+        "open_interest_usd": 1600000000,
+        "exchange_count": 7,
+        "funding_8h_pct": 0.0091,
+        "binance_long_accounts_pct": 71
+      }
+    ],
+    "admission_status": "QUARANTINED_PROVIDER_COVERAGE_NOT_NORMALIZED",
+    "rule": "Do not average OI values across providers until venue, contract type, quote currency, open-interest units, and observation timestamp are aligned."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "model_admission_status": "OBSERVATIONS_CAPTURED_NOT_ADMITTED_AS_PREDICTIVE_FEATURES"
+}

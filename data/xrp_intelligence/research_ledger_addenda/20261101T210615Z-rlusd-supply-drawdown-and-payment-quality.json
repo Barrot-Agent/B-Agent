@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "id": "rlusd-supply-drawdown-and-payment-quality-20261101T210615Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "findings": [
+    {
+      "id": "R1",
+      "class": "SOURCE_REPORTED_ONCHAIN_OBSERVATION",
+      "text": "XRP Insights reports approximately $707.4M RLUSD on XRPL and $1.71B on Ethereum, $2.42B across those two chains, with 29% on XRPL and 71% on Ethereum as of November 1. Its methodology reads the XRPL issuer balance and Ethereum totalSupply; small L2 and XRPL EVM supplies are excluded."
+    },
+    {
+      "id": "R2",
+      "class": "CROSS_PROVIDER_CORROBORATION_WITH_VARIANCE",
+      "text": "stables.cool reports $707.4M XRPL RLUSD and a 30-day decline of 30.21%, with an October 7 peak of $1.25B and a 43.26% decline from that peak. XRPL.to reports 711,828,559 RLUSD, 67,904 holders and 101,680 trust lines, but no precise UTC snapshot time. The roughly $4.4M difference is not averaged."
+    },
+    {
+      "id": "R3",
+      "class": "SOURCED_Q3_CLAIM",
+      "text": "Blockworks' Q3 2026 report summary states XRPL stablecoin supply reached $1.03B, RLUSD $1.01B and 98.1% share. Comparing that quarter-end figure with the November 1 on-chain snapshot implies an approximate 29.96% contraction in XRPL RLUSD supply; this is provisional because source methods and exact cutoffs differ."
+    },
+    {
+      "id": "R4",
+      "class": "INFERENCE_NOT_RECONCILED",
+      "text": "Q3 all-chain RLUSD was reported at $2.52B versus a November 1 two-chain read of $2.42B, approximately 4% lower. The much larger XRPL decline alongside a higher implied Ethereum balance is consistent with some chain-allocation rotation plus possible net redemption, but current L2 exclusions and source-scope differences prevent a precise flow reconciliation."
+    },
+    {
+      "id": "R5",
+      "class": "ONCHAIN_ANALYSIS_SOURCED_CLAIM",
+      "text": "Bitquery's September 19–October 18 analysis counted 7,821,066 RLUSD payments; 7,789,341 (99.6%) went to three collector wallets from a 110-wallet cluster, mostly around 0.00099 RLUSD each. Those dust payments carried only 7,722 RLUSD in total. This explains inflated transaction counts, not a material share of RLUSD supply."
+    },
+    {
+      "id": "R6",
+      "class": "ONCHAIN_ANALYSIS_SOURCED_CLAIM",
+      "text": "After excluding sub-1 RLUSD dust, Bitquery counted 14,600 payments, 1,826 senders and 1,536 receivers, with $7.33B gross genuine-issuer value. The top ten senders represented 82%; issuer mint/redemption operations represented about one fifth; a $424M each-way round trip added $848M of gross volume. Gross transfer volume is not net new capital."
+    },
+    {
+      "id": "R7",
+      "class": "ATTRIBUTION_LIMITED",
+      "text": "The 110-wallet cluster was funded with XRP and RLUSD from wallets Bitquery labels as Binance proof-of-reserves wallets, and collector sweeps returned to a Binance-labelled deposit wallet. The pattern fits one Binance customer; it does not establish Binance corporate operation or identify the customer."
+    },
+    {
+      "id": "R8",
+      "class": "TEMPORAL_COINCIDENCE_ONLY",
+      "text": "The bot cluster began winding down October 14 and was largely silent by October 16, around Cross River Bank's October 15 RLUSD core-banking announcement. Bitquery found no ledger fee spike or amendment explaining the shutdown and did not establish causality."
+    },
+    {
+      "id": "R9",
+      "class": "SOURCED_Q3_CLAIM",
+      "text": "Blockworks' Q3 summary reports $355.3M global XRP ETP net inflows and $3.32B ETP AUM, while XRPL payment transactions fell 33.6% and total transactions fell 8.6%; payment volume rose 4.3%, native DEX volume rose 20.2%. Institutional product inflows and network transaction counts therefore tell different stories."
+    },
+    {
+      "id": "R10",
+      "class": "DATA_QUALITY_CONFLICT",
+      "text": "XRP derivatives providers reported $1.90B OI (TradRadar, 18:30 UTC), $1.60B (Webeconomia, displayed 20:28 with timezone unspecified) and $1.34B (Liqwall, 18:12 UTC). Provider universes and timing differ; values are not pooled."
+    },
+    {
+      "id": "R11",
+      "class": "STRUCTURAL_INFERENCE",
+      "text": "RLUSD can move as an issued currency directly on XRPL. XRP is used for XRPL transaction fees and account reserves, but RLUSD transfer volume is not proof that XRP is purchased as a bridge asset for each payment. The cluster paid 495 XRP in fees across its reported 8.6M transactions, a small network-cost flow."
+    },
+    {
+      "id": "R12",
+      "class": "UNKNOWN",
+      "text": "The precise XRPL RLUSD burn/redemption and Ethereum mint sequence responsible for the October–November chain split has not been reconstructed transaction by transaction. No actor, motive or illicit conduct is inferred."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "RLUSD liquidity is rotating from XRPL to Ethereum rather than disappearing in equal measure.",
+      "support": [
+        "XRPL supply fell about 30% from Q3 and 43% from its October 7 peak.",
+        "Current two-chain snapshot assigns 71% to Ethereum versus 29% to XRPL.",
+        "Approximate total RLUSD supply is much less changed than XRPL-only supply."
+      ],
+      "disconfirming": [
+        "Q3 and current all-chain totals have scope differences; current dashboard excludes small L2s.",
+        "No paired issuer burn/mint or bridge transaction sequence has been verified."
+      ],
+      "status": "PLAUSIBLE_NOT_PROVEN"
+    },
+    {
+      "id": "H2",
+      "claim": "Some RLUSD supply has been redeemed or net issuance has slowed.",
+      "support": [
+        "Current two-chain total is below the Q3 reported total by roughly 4%.",
+        "Bitquery observed $744M issuer redemptions versus $728M issuer mint operations in its 30-day window."
+      ],
+      "disconfirming": [
+        "The $16M difference in Bitquery's window is far smaller than the XRPL-only supply contraction and uses a different time window.",
+        "No full issuer mint/burn reconciliation is complete."
+      ],
+      "status": "PARTIAL_SUPPORT_UNRESOLVED"
+    },
+    {
+      "id": "H3",
+      "claim": "Headline RLUSD payment counts materially overstated broad adoption because a dust cluster generated most transactions.",
+      "support": [
+        "Bitquery attributed 99.6% of 30-day payment count to 110 wallets and three collectors; dust total was only 7,722 RLUSD."
+      ],
+      "disconfirming": [
+        "The remaining 14,600 payments moved $7.33B gross through 1,826 senders and 1,536 receivers, so genuine large-value settlement activity exists."
+      ],
+      "status": "SUPPORTED_WITH_SCOPE_LIMITS"
+    },
+    {
+      "id": "H4",
+      "claim": "The meaningful RLUSD payment rail is concentrated among a small set of large senders, exchange-shaped accounts and issuer operations.",
+      "support": [
+        "Top ten senders represented 82% of gross value; 828 payments of at least $1M represented 95% of value; issuer loop was about 20%."
+      ],
+      "disconfirming": [
+        "There were 1,826 distinct senders and 1,536 receivers; not every counterparty is identified."
+      ],
+      "status": "SUPPORTED_ATTRIBUTION_LIMITED"
+    },
+    {
+      "id": "H5",
+      "claim": "RLUSD growth or payment volume creates proportional XRP spot demand.",
+      "support": [
+        "XRPL fees and account reserves use XRP; stablecoin infrastructure may indirectly increase XRP utility."
+      ],
+      "disconfirming": [
+        "RLUSD is transferred directly as an issued currency; fees are small; no per-payment XRP bridge purchase or proportional spot inventory increase was established."
+      ],
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "H6",
+      "claim": "The October 14–16 bot shutdown was caused by Cross River Bank's October 15 announcement.",
+      "support": [
+        "The events occurred within roughly 34 hours."
+      ],
+      "disconfirming": [
+        "Bitquery explicitly found no causal evidence, no fee spike or amendment; timing alone is insufficient."
+      ],
+      "status": "UNKNOWN_NO_CAUSAL_CLAIM"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "source_limitations": [
+    "Bitquery's findings are public on-chain analysis with behavior-based clustering; wallet identity remains unknown.",
+    "Blockworks Q3 PDF was listed but exceeded the web reader's 10 MB retrieval limit; figures are retained as sourced report claims, not independently recalculated.",
+    "Live stablecoin providers do not expose identical timestamps or scopes."
+  ]
+}
