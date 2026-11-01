@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "handoff_id": "run11-xrp-intelligence-v3-handoff-20261101T221200Z",
+  "captured_at_utc": "2026-11-01T22:12:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery first; Barrot V3 remains the execution and verification foundation.",
+  "latest_research": {
+    "coinbase_deribit": "CFTC 26-17 names XRP as a digital commodity and provides a conditional CFM->CBBM->Deribit 30.7 customer asset/right-of-reuse route. Deribit lists XRP and USDC as full cross-collateral currencies; XRP is NOT an offset currency. XRP has no stated X:PM haircut and 15% X:SM; USDC has no stated X:PM/X:SM haircut.",
+    "cftc_gates": "26-17 imports 26-05: first three months from CFM's own notice allow only payment stablecoins/BTC/ETH. Afterward XRP must meet the qualifying DCO/foreign-clearing route or fallback with at least 20% haircut and revised risk policies. CFM notice date, Deribit's exact 26-05 foreign-clearing qualification and actual usage remain unknown.",
+    "q3_disconfirmation": "Coinbase Q3 2026 filing at Sep30 reports $325.766M recognized customer derivatives collateral: BTC $322.341M and ETH $3.425M, no XRP line. Q3 ends before Oct1 integration; post-integration Q4 use remains unknown. Broader $1.2995B collateral and $2.804B unrecognized lending collateral are not XRP-specific.",
+    "custody": "Deribit Oct14 custody policy lists Coinbase Custody Trust Company as cold-wallet provider; CBBM warm wallet still described as planned after September. Deribit says no connected clearing house/members and describes quasi-clearing; legal qualification under 26-05 remains unresolved.",
+    "circle": "USDC and XRP share Deribit's cross-collateral framework. Circle reports $70.0B USDC circulation/$71.4B reserves at Oct29, with net supply changes -$0.8B/7d, -$3.1B/30d, -$5.0B/365d. USDC likely fits pre-GENIUS payment-stablecoin criteria but no CFTC asset-specific approval. RLUSD is not in Deribit's current cross-collateral table; its reserve-fund look-through remains open.",
+    "sbic": "Japan's current SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., corporate number 9011001030621, a private policy-implementation investor under the 1963 Act. ChatGPT/Copilot events are training, not an OpenAI partnership. Historical SBI CAPITAL Co., Ltd. is a separate 2007 entity.",
+    "xrp_escrow": "Pinned ledger 108052148 at 20:11 UTC: 31.1B Ripple escrow, 99 objects, 8 owners; 1B released, 700M re-escrowed in three objects; November net outside escrow 300M. Rolling 12 release re-escrow 70%, net 3.6B."
+  },
+  "prediction_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "repository": {
+    "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+    "latest_research_pr_1464_head": "dfd8dd42bd62557954b07886b3baa4bdb3dfef87",
+    "latest_research_pr_1464_ci": "455 tests and 8 subtests passed; fail-closed gate passed",
+    "security_pr_1476": "Open draft; 345 tests and 8 subtests passed; gate passed",
+    "security_pr_1474": "Open draft; 390 tests and 8 subtests passed; gate passed",
+    "prediction_pr_1475": "Open draft; 405 tests and 8 subtests passed; gate passed",
+    "active_main_risks": [
+      "Subscriber sync can process Gumroad purchaser emails and publish unsalted hashes; current file is empty and last run found zero active subscribers.",
+      "Static client-side email-hash gate can be bypassed because latest_signal.json is public.",
+      "Scheduler Tick, Merge Queue, Cross Analysis and Autonomous Resolver retain privileged mutation paths pending security remediation."
+    ]
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "next_actions": [
+    "Verify CFM WinJammer notice/commencement date and three-month restriction expiry.",
+    "Resolve Deribit's qualifying foreign-clearing status under 26-05 and actual CFM XRP/USDC collateral enablement.",
+    "Check Coinbase Q4 reporting for post-Oct1 collateral and CBBM warm-wallet activation.",
+    "Check Circle Q3 results on November 4, 2026 at 8:00 AM ET for USDC supply, Coinbase distribution costs and reserve income.",
+    "Verify actual XRP/USDC balances at Deribit and distinguish new deposits from existing holdings.",
+    "Continue source-byte semantic binding and LIVE/HISTORICAL_REPLAY enforcement in forecast ledger.",
+    "Keep PRs #1464, #1474, #1475 and #1476 unmerged pending explicit approval."
+  ],
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access by the agent, deployment, paper-position mutation or real-money trade."
+}
