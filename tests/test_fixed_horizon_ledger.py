@@ -382,7 +382,10 @@ def test_forecast_source_ids_are_checked_when_registry_is_supplied(tmp_path):
     record = ledger.append_forecast(forecast_payload())
     assert record["source_registry_status"] == "REGISTERED"
 
-    unregistered = ForecastLedger(tmp_path / "unregistered", source_registry={})
+    unregistered = ForecastLedger(
+        tmp_path / "unregistered",
+        source_registry=HashVerifiedRegistryFixture({}),
+    )
     with pytest.raises(ValueError, match="source_ids are not registered"):
         unregistered.append_forecast(forecast_payload())
 
