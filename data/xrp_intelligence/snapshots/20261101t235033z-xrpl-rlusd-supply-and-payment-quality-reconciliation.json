@@ -51,8 +51,8 @@
     "unresolved": "The full disposition of the recent XRPL supply reduction is not traced. It may include cross-chain migration, redemption, issuer inventory movement, or provider corrections.",
     "cross_chain_migration_claim": "Two secondary observations support cross-chain migration as a real mechanism: Coindaro's October 28 analysis reports approximately 25M RLUSD leaving XRPL with a similar amount appearing on Ethereum between October 27-28 while total supply stayed broadly flat; TokenPost documents a matched 1,363,614.85 RLUSD burn on XRPL and mint on Ethereum seconds later on September 6. These observations do not reconcile the full October 28-November 1 XRPL supply reduction.",
     "sources": [
-      "https://coindaro.com/article/rlusd-on-xrpl-ethereum-defillama-2026-10-28",
-      "https://tokenpost.com/rlusd-migration-xrpl-to-ethereum-september-2026-1363614"
+      "https://www.coindaro.com/rlusd-coinbase-listing/",
+      "https://www.tokenpost.com/news/investing/23006"
     ]
   },
   "payment_quality_observation": {
@@ -119,6 +119,14 @@
       "Dated pool snapshot, not current liquidity.",
       "Pool depth is not total XRPL stablecoin supply or all XRP trading depth.",
       "No current slippage curve or LP concentration captured."
+    ],
+    "xrpl_dex_volume_30d_usd": 253100000,
+    "xrpl_dex_volume_7d_usd": 30600000,
+    "stablecoin_base_usd": 1126000000,
+    "notes": [
+      "At the Sept. 11 snapshot, tracked XRPL DEX volume was $253.1M over 30 days and $30.6M over seven days.",
+      "CryptoSlate states that the dataset does not reveal the share of trades routed through XRP or how long liquidity providers retain XRP.",
+      "The pool is one observed venue, not necessarily the largest XRP/RLUSD pool."
     ]
   },
   "competing_hypotheses": [
@@ -213,18 +221,22 @@
   "ai_agent_payment_case": {
     "date": "2026-09-08",
     "provider": "XRPL AI Hub / t54 Labs",
-    "source": "https://cryptoslate.com/xrp-ledger-ai-hub-crosses-4-5-million-transactions-as-ai-agents-settle-12000-in-xrp-and-rlusd/",
+    "source": "https://cryptoslate.com/xrp-ai-agents-processed-4-5-million-payments-but-settled-just-5837-tokens/",
     "reported_all_time_transactions": 4491820,
     "reported_xrp_settled": 5836.71,
     "reported_rlusd_settled": 4125.29,
-    "approximate_usd_value_at_article_price": 11830,
+    "approximate_usd_value_at_article_price": 12297,
     "use_case": "x402-style AI-agent micropayments for API calls, inference and digital services",
     "classification": "THIRD_PARTY_APPLICATION_DASHBOARD_REPORTED",
     "limitations": [
       "The dashboard is not an official Ripple or Circle product.",
-      "The article's transaction count is not equivalent to economic value; reported token settlement totals are approximately $11.8K at the article's XRP reference price.",
+      "At the article's reference prices ($1.40 XRP and $1.00 RLUSD), the reported settlement is approximately $12.3K. The transaction count is not equivalent to economic value; it is an application-level micropayment counter.",
       "Agent count, unique payer count, merchant revenue, recurring use and current throughput were not independently verified.",
       "This is a dated application-level snapshot, not total XRPL AI-agent payment volume."
-    ]
+    ],
+    "xrp_reference_price_usd": 1.4,
+    "rlusd_reference_price_usd": 1,
+    "reported_registered_merchants": 152,
+    "reported_seven_day_average_payments_per_day": 199059
   }
 }
