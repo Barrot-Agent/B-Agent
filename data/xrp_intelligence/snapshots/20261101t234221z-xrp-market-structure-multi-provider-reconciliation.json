@@ -102,7 +102,6 @@
     },
     {
       "provider": "XRP Insights ETF tracker",
-      "captured_at_utc": "2026-10-30T21:00:00Z",
       "source": "https://xrp-insights.com/",
       "methodology": "https://xrp-insights.com/data",
       "holdings_xrp": 1200000000,
@@ -114,7 +113,8 @@
       "notes": [
         "GXRP is excluded from flow calculation while a scrape gap is reconciled; its holdings remain in total holdings.",
         "Flows are derived from changes in issuer-reported holdings, not exchange purchases directly."
-      ]
+      ],
+      "observed_through_date": "2026-10-30"
     },
     {
       "provider": "XRP Insights exchange-wallet tracker",
