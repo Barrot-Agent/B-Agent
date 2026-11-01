@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "XRP-20261101T142000Z-MARKET-EXCHANGE-ETF-DERIVATIVES",
+  "captured_at_utc": "2026-11-01T14:20:00Z",
+  "latest_available_observations": {
+    "exchange_wallets": {
+      "observed_at_utc": "2026-11-01T08:00:00Z",
+      "total_xrp": 22450000000,
+      "wallet_count": 701,
+      "exchange_count": 24,
+      "circulating_supply_provider_definition": 69590000000,
+      "share_of_provider_circulating_supply_pct": 32.3,
+      "same_wallet_change_7d_xrp": -161100000,
+      "same_wallet_change_30d_xrp": -12700000,
+      "regional_xrp": {
+        "South_Korea": 8580000000,
+        "United_States": 8510000000,
+        "Japan": 1380000000,
+        "Global_offshore": 2840000000,
+        "Rest_of_world": 1130000000
+      },
+      "largest_exchange_wallet_clusters_xrp": {
+        "Upbit": 6430000000,
+        "Coinbase": 5850000000,
+        "Binance": 2780000000
+      },
+      "known_wrapped_or_fund_reserves_xrp": {
+        "Binance_Peg_XRP": 325800000,
+        "Coinbase_cbXRP": 150900000,
+        "insurance_and_charity": 11200000,
+        "total": 487900000
+      },
+      "labeled_storage": {
+        "cold_pct": 48,
+        "hot_pct": 14,
+        "unclassified_pct": 37.8
+      },
+      "coverage_gap_estimate_xrp": 323000000,
+      "interpretation": "broad attributed custody inventory, not tradable float; same-wallet changes can include internal migrations"
+    },
+    "etfs": {
+      "observed_through": "2026-10-30",
+      "funds": "six US spot XRP ETFs plus BITW",
+      "xrp_holdings": 1200000000,
+      "net_assets_usd": 1510000000,
+      "net_flow_2026_10_30_xrp": -49900,
+      "net_flow_week_2026_10_26_to_30_xrp": 3390000,
+      "net_flow_previous_week_xrp": 1530000,
+      "gxrp_flow_status": "excluded while a data gap is corrected; holdings remain included"
+    },
+    "supply_and_ecosystem": {
+      "observed_at_utc": "2026-11-01T09:06:00Z",
+      "xrp_price_usd": 1.25,
+      "escrow_xrp": 30400000000,
+      "tracked_exchange_wallets_xrp": 22450000000,
+      "etf_and_index_fund_holdings_xrp": 1200000000,
+      "corporate_treasuries_xrp": 473300000,
+      "defi_and_amm_xrp": 418700000,
+      "permanently_burned_xrp": 14400000,
+      "rlusd_supply_xrpl_usd": 707000000,
+      "rlusd_supply_total_xrpl_and_ethereum_usd": 2420000000,
+      "rwa_distributed_transferable_usd": 276000000,
+      "rwa_represented_registry_notional_usd": 4060000000,
+      "rwa_value_age": "asset values last updated between 2026-07-03 and 2026-10-23"
+    },
+    "derivatives": {
+      "kodexius": {
+        "observed_at_utc": "2026-11-01T11:27:00Z",
+        "open_interest_usd": 759930000,
+        "contracts": 7,
+        "funding_8h_pct": 0.0055,
+        "volume_24h_usd": 454370000,
+        "exchange_oi_share_pct": {
+          "Binance": 49.3,
+          "Bybit": 20.5,
+          "OKX": 13.6,
+          "Hyperliquid": 12.9,
+          "HTX": 3.7
+        }
+      },
+      "liqwall": {
+        "observed_at_utc": "2026-11-01T03:52:00Z",
+        "open_interest_usd": 1330000000,
+        "funding_8h_pct": 0.0025,
+        "binance_long_account_share_pct": 71.9,
+        "liquidations_24h_usd": 369000
+      },
+      "reconciliation": "provider OI differs materially; contract coverage and timestamps differ, so no average or trend inference is admitted"
+    }
+  },
+  "derived_observations": {
+    "exchange_7d_vs_30d": "the 7-day same-wallet outflow exceeds the 30-day net outflow; earlier 23-day net movement approximately +148.4M XRP, subject to same-wallet methodology",
+    "top_three_exchange_share_of_tracked_wallets_pct": 67.1,
+    "known_wrapped_and_fund_reserves_share_of_exchange_wallets_pct": 2.17,
+    "cbxrp_reserve_share_of_coinbase_attributed_wallets_pct": 2.58,
+    "binance_peg_reserve_share_of_binance_attributed_wallets_pct": 11.72
+  },
+  "data_quality_flags": [
+    "exchange wallet total includes cold storage and wrapped-token reserves",
+    "Coinbase cbXRP reserves are counted in exchange and DeFi categories by the source; avoid double-counting",
+    "Binance-Peg XRP reserves are not the same as customer spot balances",
+    "ETF daily flow is incomplete for GXRP while holdings include it",
+    "derivatives open interest providers disagree and are not synchronized",
+    "price snapshot is five hours old at capture",
+    "RWA represented value is not freely transferable float and is partly stale",
+    "circulating supply definition differs from market-data vendors that subtract Ripple operational holdings"
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none; these are research snapshots, not synchronized predictive features"
+}

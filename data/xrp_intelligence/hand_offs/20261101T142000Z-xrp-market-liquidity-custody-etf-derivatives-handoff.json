@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-market-liquidity-custody-etf-derivatives-handoff-20261101T1420Z",
+  "captured_at_utc": "2026-11-01T14:20:00Z",
+  "research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+  "latest_snapshot": "data/xrp_intelligence/snapshots/20261101T142000Z-xrp-market-exchange-etf-derivatives-snapshot.json",
+  "latest_source_bundle": "data/xrp_intelligence/sources/20261101T142000Z-xrp-market-structure-liquidity-etf-source-bundle.json",
+  "latest_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T142000Z-xrp-market-custody-etf-derivatives-graph.json",
+  "latest_decision": "data/xrp_intelligence/architecture_decisions/20261101T142000Z-xrp-exchange-etf-derivatives-feature-gating.json",
+  "key_findings": [
+    "22.45B XRP across 701 attributed wallets and 24 exchanges at 2026-11-01 08:00 UTC; same-wallet changes -161.1M over seven days but only -12.7M over 30 days. This is custody inventory, not tradable float.",
+    "Upbit 6.43B, Coinbase 5.85B and Binance 2.78B represent about 67.1% of the tracked exchange-wallet total.",
+    "487.9M XRP in tracked exchange-controlled reserves/funds includes 325.8M Binance-Peg backing, 150.9M cbXRP backing and 11.2M insurance/charity. Coinbase cbXRP backing is also counted in the DeFi category; avoid double counting.",
+    "ETF/index funds held about 1.20B XRP and $1.51B net assets; weekly unit flow +3.39M XRP for Oct26-30, while Oct30 was -49.9K XRP. GXRP flow gap remains.",
+    "Kodexius reports $759.93M open interest across seven contracts and +0.0055% funding at 11:27 UTC. Liqwall reported $1.33B OI at 03:52 UTC. Coverage differs; no OI trend is inferred.",
+    "XRP Radar reports about $707M RLUSD supply on XRPL and $2.42B total across XRPL/Ethereum; this is a secondary onchain aggregation snapshot.",
+    "XRPL transactions burn XRP fees, but the standard minimum 10-drop fee is tiny and not proportional to stablecoin transfer value.",
+    "RWA represented registry notional of $4.06B is not freely transferable collateral; distributed transferable value is reported at $276M and some asset values are stale."
+  ],
+  "next_actions": [
+    "Build daily per-wallet and exchange-cohort history with label-change and migration flags.",
+    "Reconcile Binance-Peg and cbXRP reserve addresses against token totalSupply and native XRP balances.",
+    "Collect issuer-level ETF holdings and daily creations/redemptions, resolving GXRP gap.",
+    "Collect venue-level XRP perpetual open interest, funding, basis and liquidation events.",
+    "Pin XRPL RLUSD/USDC supply and DEX auto-bridge routes to validated ledgers.",
+    "Keep RWA transferable float separate from represented registry notionals.",
+    "Continue Circle Q3 results review on November 4, 2026 at 08:00 ET."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none"
+}

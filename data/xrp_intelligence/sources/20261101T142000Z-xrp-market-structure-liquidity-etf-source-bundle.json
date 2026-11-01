@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "bundle_id": "xrp-market-structure-liquidity-etf-derivatives-20261101T1420Z",
+  "captured_at_utc": "2026-11-01T14:20:00Z",
+  "sources": [
+    {
+      "id": "xrp-insights-exchange-balances-20261101T0800Z",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "publisher": "XRP Insights",
+      "type": "onchain_wallet_label_aggregation",
+      "observed_at_utc": "2026-11-01T08:00:00Z",
+      "claims": [
+        "22.45B XRP in 701 publicly attributed wallets across 24 tracked exchanges",
+        "same-wallet change -161.1M XRP over 7 days and -12.7M over 30 days",
+        "Upbit 6.43B, Coinbase 5.85B, Binance 2.78B",
+        "487.9M XRP in tracked exchange-controlled reserves/funds: Binance-Peg 325.8M, Coinbase cbXRP 150.9M, insurance/charity 11.2M",
+        "about 323M XRP in labeled wallets of roughly 36 exchanges outside the tracked set",
+        "48% labeled cold, 14% labeled hot, 37.8% without hot/cold label"
+      ],
+      "limitations": [
+        "includes cold storage and wrapped-token reserves; not tradable float",
+        "same-wallet balance changes cannot distinguish customer withdrawals from internal wallet migration",
+        "tracked total is a floor and coverage gaps remain",
+        "Coinbase cbXRP reserve is also counted under DeFi by the source's category view; do not double-count"
+      ]
+    },
+    {
+      "id": "xrp-insights-etf-tracker-20261030",
+      "url": "https://xrp-insights.com/",
+      "publisher": "XRP Insights",
+      "type": "issuer_holdings_based_etf_flow_aggregation",
+      "observed_at_utc": "2026-11-01",
+      "claims": [
+        "six US spot XRP ETFs plus BITW held approximately 1.20B XRP and $1.51B net assets",
+        "October 30 net flow -49.9K XRP",
+        "week October 26-30 net flow +3.39M XRP; prior week +1.53M XRP",
+        "GXRP is excluded from flow totals while a data gap is corrected but its holdings remain counted"
+      ],
+      "limitations": [
+        "daily flow coverage is incomplete while GXRP gap is corrected",
+        "unit changes in issuer holdings are preferable to AUM changes but still require fund-by-fund reconciliation"
+      ]
+    },
+    {
+      "id": "xrp-radar-supply-breakdown-20261101",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "publisher": "XRP Insights",
+      "type": "multi-source-supply-breakdown",
+      "observed_at_utc": "2026-11-01T09:06:00Z",
+      "claims": [
+        "XRP price displayed at $1.25 at 09:06 UTC",
+        "30.40B XRP in on-ledger escrow",
+        "22.45B XRP in tracked exchange wallets",
+        "1.20B XRP in ETFs and index funds",
+        "473.3M XRP in corporate treasuries",
+        "418.7M XRP in DeFi/AMM",
+        "14.4M XRP burned",
+        "RLUSD supply approximately $707M on XRPL and $2.42B across XRPL and Ethereum",
+        "18 tracked XRPL RWAs: $276M distributed transferable value and $4.06B represented registry notionals"
+      ],
+      "limitations": [
+        "some supply categories use company-reported or estimated data",
+        "RWA per-asset values were last updated between July 3 and October 23, 2026",
+        "the $4.06B represented registry value is not freely transferable investor float",
+        "other-circulating remainder inherits the oldest input and is not a current direct observation"
+      ]
+    },
+    {
+      "id": "kodexius-xrp-perpetuals-20261101T1127Z",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "publisher": "Kodexius",
+      "type": "derivatives_aggregation",
+      "observed_at_utc": "2026-11-01T11:27:00Z",
+      "claims": [
+        "open interest $759.93M across seven perpetual contracts",
+        "weighted funding +0.0055% per eight hours",
+        "24-hour volume $454.37M",
+        "reported OI distribution: Binance 49.3%, Bybit 20.5%, OKX 13.6%, Hyperliquid 12.9%, HTX 3.7%"
+      ],
+      "limitations": [
+        "provider contract coverage and methodology may differ from other aggregators",
+        "not independently reconciled to venue APIs in this run"
+      ]
+    },
+    {
+      "id": "liqwall-xrp-derivatives-20261101T0352Z",
+      "url": "https://liqwall.com/coins/xrp",
+      "publisher": "Liqwall",
+      "type": "derivatives_aggregation",
+      "observed_at_utc": "2026-11-01T03:52:00Z",
+      "claims": [
+        "open interest $1.33B",
+        "weighted funding +0.0025% per eight hours",
+        "Binance long-account share 71.9%",
+        "24-hour liquidations $369K"
+      ],
+      "limitations": [
+        "earlier observation and different contract coverage than Kodexius; do not average or interpret the difference as an OI decline"
+      ]
+    },
+    {
+      "id": "xrpl-transaction-cost",
+      "url": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
+      "publisher": "XRP Ledger documentation",
+      "type": "protocol_documentation",
+      "claims": [
+        "each validated XRPL transaction destroys a small XRP-denominated fee",
+        "standard minimum is 10 drops or 0.00001 XRP before load scaling"
+      ],
+      "limitations": [
+        "fee burn is not proportional to USD value transferred"
+      ]
+    }
+  ],
+  "source_independence": {
+    "xrp_insights": "single secondary aggregation provider combining onchain reads, public wallet labels and issuer disclosures; not independent of its own previous snapshots",
+    "kodexius_and_liqwall": "separate derivatives aggregators with non-identical contract coverage; disagreement retained",
+    "xrpl_docs": "primary protocol documentation"
+  }
+}

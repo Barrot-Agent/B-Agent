@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrp-market-structure-ledger-addendum-20261101T1420Z",
+  "captured_at_utc": "2026-11-01T14:20:00Z",
+  "supersedes_addendum": "xrpl-fee-and-sbi-type4-ledger-addendum-20261101T1415Z",
+  "source_bundle": "data/xrp_intelligence/sources/20261101T142000Z-xrp-market-structure-liquidity-etf-source-bundle.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T142000Z-xrp-market-exchange-etf-derivatives-snapshot.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T142000Z-xrp-market-custody-etf-derivatives-graph.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T142000Z-xrp-exchange-etf-derivatives-feature-gating.json",
+  "handoff": "data/xrp_intelligence/hand_offs/20261101T142000Z-xrp-market-liquidity-custody-etf-derivatives-handoff.json",
+  "evidence_classes": {
+    "onchain_label_aggregation": [
+      "XRP exchange wallet balances and same-wallet changes"
+    ],
+    "issuer_holdings_aggregation": [
+      "XRP ETF holdings and unit flows"
+    ],
+    "secondary_derivatives_aggregation": [
+      "Kodexius and Liqwall OI/funding"
+    ],
+    "protocol_documentation": [
+      "XRPL fee burn"
+    ],
+    "inference": [
+      "possible exchange inventory tightening; possible ETF demand persistence"
+    ],
+    "unknown": [
+      "tradable float",
+      "customer withdrawal vs internal wallet migration",
+      "cross-provider OI reconciliation",
+      "USDC bridge-routing share"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none"
+}

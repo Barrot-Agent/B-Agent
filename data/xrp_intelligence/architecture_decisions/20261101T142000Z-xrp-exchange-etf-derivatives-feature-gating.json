@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "decision_id": "xrp-exchange-etf-derivatives-feature-gating-20261101T1420Z",
+  "decisions": [
+    {
+      "id": "exchange_wallets",
+      "decision": "Store attributed exchange wallet inventory as custody inventory, not tradable float.",
+      "required_adjustments": [
+        "separate cold/hot/unclassified",
+        "exclude or separately identify Binance-Peg and cbXRP backing reserves",
+        "maintain same-wallet cohorts and label-change logs",
+        "preserve known coverage gaps"
+      ]
+    },
+    {
+      "id": "etf_flows",
+      "decision": "Use issuer-reported XRP unit holdings and creations/redemptions where available; do not use AUM delta as net flow.",
+      "required_adjustments": [
+        "record fund-by-fund timestamp and share count",
+        "flag GXRP gap",
+        "separate BITW index-fund holdings from spot ETFs"
+      ]
+    },
+    {
+      "id": "derivatives",
+      "decision": "Keep Kodexius and Liqwall series separate until contract-level coverage is reconciled.",
+      "required_adjustments": [
+        "collect venue-level open interest and funding",
+        "normalize contract denomination and timestamp",
+        "measure spot/perp basis and liquidations by venue"
+      ]
+    },
+    {
+      "id": "rwa_and_stablecoins",
+      "decision": "Separate distributed RWA float, represented registry notionals, RLUSD supply and USDC supply.",
+      "required_adjustments": [
+        "verify onchain supply at pinned ledgers",
+        "classify transferable vs registry-only tokens",
+        "record issuer-reported valuation age"
+      ]
+    },
+    {
+      "id": "prediction_features",
+      "decision": "Admit none of these observations into predictive features in this run.",
+      "required_adjustments": [
+        "build synchronized point-in-time series",
+        "reconcile raw XRPL/Base data",
+        "test leakage-safe walk-forward baselines and calibration"
+      ]
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none"
+}
