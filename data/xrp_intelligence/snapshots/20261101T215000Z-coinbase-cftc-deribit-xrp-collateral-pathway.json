@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "coinbase-cftc-deribit-xrp-collateral-20261101T215000Z",
+  "captured_at_utc": "2026-11-01T21:50:00Z",
+  "cutoff_by_source": {
+    "cftc_26_17": "2026-05-29",
+    "cftc_26_05": "2026-02-06",
+    "deribit_cross_collateral": "2026-09-28T14:59:00Z",
+    "deribit_linear_perpetual": "2026-10-20T13:12:00Z",
+    "coinbase_integration_notice": "2026-10-02"
+  },
+  "status_matrix": [
+    {
+      "question": "Is XRP named as a digital commodity in the CFTC framework used by 26-17?",
+      "status": "CONFIRMED_YES",
+      "evidence": "CFTC 26-17 footnote 5 lists XRP."
+    },
+    {
+      "question": "Does the 26-17 letter provide a conditional customer-asset transfer/re-use path through CFM, CBBM and Deribit?",
+      "status": "CONFIRMED_YES",
+      "evidence": "The no-action position covers customer-owned digital commodities and payment stablecoins for specified 30.7 customer positions, subject to conditions."
+    },
+    {
+      "question": "Does Deribit currently list XRP as a cross-collateral currency?",
+      "status": "CONFIRMED_YES",
+      "evidence": "September 28 cross-collateral table: XRP check mark in Cross Collateral Currency and Offset Currency columns; X:SM haircut 15%, X:PM no stated haircut."
+    },
+    {
+      "question": "Is an XRP-USDC derivative listed on Deribit?",
+      "status": "CONFIRMED_YES",
+      "evidence": "XRP-USDC linear perpetual listed; USDC quote and settlement; 24/7 trading."
+    },
+    {
+      "question": "Did Coinbase complete the Deribit integration?",
+      "status": "CONFIRMED_COMPANY_STATEMENT",
+      "evidence": "Coinbase says transition completed October 1, 2026."
+    },
+    {
+      "question": "Has CFM's notice/commencement date and first three-month collateral restriction been verified?",
+      "status": "UNKNOWN"
+    },
+    {
+      "question": "Has XRP actually been posted or reused as collateral by CFM U.S. customers?",
+      "status": "UNKNOWN"
+    },
+    {
+      "question": "Are actual XRP collateral balances, venues and account-level haircuts public?",
+      "status": "UNKNOWN"
+    }
+  ],
+  "venue_haircut": {
+    "asset": "XRP",
+    "cross_collateral_currency": true,
+    "offset_currency": true,
+    "portfolio_margin_x_pm_haircut": null,
+    "portfolio_margin_x_pm_haircut_display": "dash/no haircut stated",
+    "standard_margin_x_sm_haircut_pct": 15,
+    "scope": "Deribit general platform specification; not CFM-specific account proof"
+  },
+  "interpretation": "A credible legal and venue pathway exists for XRP to support derivatives collateral through Coinbase's CFM/CBBM/Deribit structure, but actual U.S. customer use remains unverified.",
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

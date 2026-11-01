@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "revision_id": "coinbase-cftc-deribit-xrp-collateral-20261101T215000Z",
+  "captured_at_utc": "2026-11-01T21:50:00Z",
+  "sources": [
+    {
+      "id": "SRC-CFTC-26-17-20261101T215000Z",
+      "url": "https://www.cftc.gov/csl/26-17/download",
+      "publisher": "U.S. Commodity Futures Trading Commission, Market Participants Division",
+      "type": "OFFICIAL_STAFF_INTERPRETATION_AND_NO_ACTION_LETTER",
+      "published_at": "2026-05-29",
+      "accessed_at_utc": "2026-11-01T21:47:00Z",
+      "claims": [
+        "The letter responds to Coinbase Financial Markets, Inc. (CFM), a registered FCM and subsidiary of Coinbase Global.",
+        "CFM's described routing chain is CFM -> Coinbase Bermuda Limited (CBBM), its foreign broker affiliate -> Deribit FZE, an affiliated foreign board of trade/foreign clearing organization.",
+        "The letter's footnote 5 explicitly lists XRP among examples of digital commodities under the March 2026 SEC/CFTC digital-commodity interpretation.",
+        "The staff no-action position covers CFM posting customer-owned digital commodities and payment stablecoins to CBBM to margin 30.7 customer foreign-futures and foreign-option positions on Deribit, where CBBM has a right of re-use, subject to the letter's conditions.",
+        "CFM represented that Deribit would maintain assets with value equal to 100 percent of the net liquidating equity for relevant 30.7 customers in one or more accounts at Coinbase Custody Trust Company, LLC.",
+        "Conditions include the Coinbase Global subsidiary structure, an acknowledgment-style agreement filed with the Division, access to audited financial statements and SOC 2 reporting, risk-analysis and information-security controls, local-law authorization for re-use, use only for the specified customer obligations, customer disclosures, and compliance with Letter 26-05."
+      ],
+      "limitations": [
+        "The letter is a staff interpretation/no-action position, is not binding on the Commission or other staff, and is based on the represented facts and conditions.",
+        "The letter does not prove that any XRP collateral was actually posted, re-used or held in a CFM customer account.",
+        "The footnote's classification of XRP as a digital commodity does not by itself establish acceptance by every FCM, clearing organization or product.",
+        "The Coinbase Custody Trust statement is CFM's representation in the request, not an independently verified custody balance."
+      ]
+    },
+    {
+      "id": "SRC-CFTC-26-05-20261101T215000Z",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "publisher": "U.S. Commodity Futures Trading Commission, Market Participants Division",
+      "type": "OFFICIAL_STAFF_NO_ACTION_LETTER",
+      "published_at": "2026-02-06",
+      "accessed_at_utc": "2026-11-01T21:47:00Z",
+      "claims": [
+        "An FCM relying on the no-action position must file a notice of intent and its intended commencement date with the Market Participants Division through WinJammer before reliance.",
+        "For the first three months from commencement, the FCM may accept only payment stablecoins, Bitcoin and Ether as customer margin collateral.",
+        "After the initial period, other non-security digital assets remain subject to the letter's acceptance, valuation and haircut conditions.",
+        "For 30.7 customer accounts, the letter distinguishes digital assets accepted by a registered DCO or qualifying foreign clearing organization from assets valued under the specified fallback haircut methodology.",
+        "The letter's position is conditional and does not make every cryptoasset eligible for every FCM or clearing venue."
+      ],
+      "limitations": [
+        "The actual CFM notice date and commencement date were not located in public sources during this run.",
+        "The notice and weekly asset reports may be filed through WinJammer and may not be publicly accessible.",
+        "Do not infer that the initial three-month period has expired without the CFM-specific notice date."
+      ]
+    },
+    {
+      "id": "SRC-DERIBIT-CROSS-COLLATERAL-20261101T215000Z",
+      "url": "https://support.deribit.com/hc/en-us/articles/25944777203869-Cross-collateral-specifications",
+      "publisher": "Deribit",
+      "type": "OFFICIAL_VENUE_COLLATERAL_SPECIFICATION",
+      "published_at": "2026-09-28",
+      "accessed_at_utc": "2026-11-01T21:47:00Z",
+      "claims": [
+        "The September 28, 2026 cross-collateral table lists XRP as both a Cross Collateral Currency and an Offset Currency.",
+        "The table displays no X:PM haircut for XRP and a 15 percent X:SM haircut.",
+        "Deribit states that any Cross Collateral Currency can be used as margin for any derivative position.",
+        "Deribit distinguishes an Offset Currency from a Cross Collateral Currency; offset assets do not enter the margin balance for other products."
+      ],
+      "limitations": [
+        "This is a general Deribit venue specification, not proof that the same asset settings are enabled for every CFM customer or U.S. account.",
+        "The displayed dash is recorded as no stated haircut in the venue table; account-specific risk limits and margin requirements may still apply."
+      ]
+    },
+    {
+      "id": "SRC-DERIBIT-XRP-USDC-PERP-20261101T215000Z",
+      "url": "https://support.deribit.com/hc/en-us/articles/31424969384605-Linear-Perpetual",
+      "publisher": "Deribit",
+      "type": "OFFICIAL_CONTRACT_SPECIFICATION",
+      "published_at": "2026-10-20",
+      "accessed_at_utc": "2026-11-01T21:47:00Z",
+      "claims": [
+        "The current linear-perpetual table lists XRP as Listed, using the Deribit XRP-USDC Index.",
+        "The contract size is 1 XRP, the quote and settlement currency is USDC, trading hours are 24/7, and daily settlement is 08:00 UTC.",
+        "Deribit states that linear perpetual margin is USDC unless cross collateral is used."
+      ],
+      "limitations": [
+        "A listed derivative is not evidence that Coinbase Financial Markets has enabled it for every U.S. customer.",
+        "Derivative open interest and collateral balances were not supplied by this contract-specification page."
+      ]
+    },
+    {
+      "id": "SRC-COINBASE-DERIBIT-INTEGRATION-20261101T215000Z",
+      "url": "https://help.coinbase.com/en/international-exchange/deribit/what-you-need-to-know",
+      "publisher": "Coinbase",
+      "type": "OFFICIAL_PLATFORM_INTEGRATION_NOTICE",
+      "published_at": "2026-10-02",
+      "accessed_at_utc": "2026-11-01T21:47:00Z",
+      "claims": [
+        "Coinbase states the Coinbase International Exchange and Deribit integration was completed on October 1, 2026.",
+        "Coinbase says perpetual trading infrastructure was consolidated onto Deribit and that Coinbase users continue to trade through the Coinbase app and website.",
+        "The notice describes unified liquidity, a faster matching engine, expanded perpetual/futures/options access and separate onboarding/eligibility conditions for institutional clients."
+      ],
+      "limitations": [
+        "The help notice does not identify actual XRP collateral posted by CFM customers.",
+        "Product availability differs by customer type and jurisdiction; U.S. Prime options were still described as upcoming in Q4."
+      ]
+    },
+    {
+      "id": "SRC-COINBASE-CFM-GLOBAL-DERIVATIVES-20261101T215000Z",
+      "url": "https://www.coinbase.com/en-ca/blog/coinbase-brings-global-crypto-derivatives-to-us-market",
+      "publisher": "Coinbase",
+      "type": "OFFICIAL_COMPANY_PRODUCT_ANNOUNCEMENT",
+      "published_at": "2026-05-29",
+      "accessed_at_utc": "2026-11-01T21:47:00Z",
+      "claims": [
+        "Coinbase announced that Coinbase Financial Markets would provide U.S. customers a regulated FCM route to global crypto derivatives, including perpetual futures and options, with institutional onboarding available.",
+        "Coinbase described the CFTC framework as creating access to global derivatives liquidity for U.S. clients."
+      ],
+      "limitations": [
+        "This is a company announcement and does not prove a particular U.S. customer's product access or actual XRP collateral use."
+      ]
+    }
+  ]
+}

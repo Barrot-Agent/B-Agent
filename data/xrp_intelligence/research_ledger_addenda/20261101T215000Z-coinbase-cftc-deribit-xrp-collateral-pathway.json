@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "addendum_id": "coinbase-cftc-deribit-xrp-collateral-20261101T215000Z",
+  "captured_at_utc": "2026-11-01T21:50:00Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T215000Z-coinbase-cftc-deribit-xrp-collateral-pathway.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T215000Z-coinbase-cftc-deribit-xrp-collateral-pathway.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T215000Z-coinbase-cftc-deribit-xrp-collateral-evidence-gates.json",
+  "findings": [
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "CFTC Staff Letter 26-17 explicitly lists XRP as an example of a digital commodity and provides a conditional staff no-action path for CFM customer-owned digital commodities and payment stablecoins to be transferred through CBBM to Deribit for 30.7 customer foreign-futures/foreign-option margin under a right of re-use."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Deribit's September 28 cross-collateral table lists XRP as a full cross-collateral currency and an offset currency, with no stated X:PM haircut and a 15% X:SM haircut."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Deribit lists an XRP-USDC linear perpetual; the contract is USDC-settled and can use cross collateral when the account's margin mode supports it."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "Coinbase states the International Exchange/Deribit integration completed October 1, 2026 and that perpetual trading infrastructure moved onto Deribit."
+    },
+    {
+      "classification": "INFERENCE",
+      "claim": "The combination of CFTC 26-17, XRP's named digital-commodity status, Deribit's current XRP cross-collateral eligibility and Coinbase's completed integration establishes a credible institutional route through which XRP can support derivatives margin beyond XRP-only positions, subject to account eligibility, CFM's notice/three-month restrictions, venue settings and applicable haircuts."
+    },
+    {
+      "classification": "UNKNOWN",
+      "claim": "CFM's actual notice-of-intent date, commencement date, expiry of its initial three-month restriction, U.S. customer access to XRP cross collateral, posted XRP balances, actual reuse, account-level haircuts and custody balances were not verified."
+    },
+    {
+      "classification": "DISCONFIRMING_EVIDENCE",
+      "claim": "CFTC 26-05 initially restricts an FCM to payment stablecoins, BTC and ETH for the first three months from its own commencement date. The CFTC letters are conditional staff positions, not blanket rulemaking; Deribit platform specifications do not prove CFM account enablement or actual usage."
+    },
+    {
+      "classification": "INFERENCE",
+      "claim": "Collateral eligibility can improve capital efficiency and reduce the need to liquidate already-held XRP to fund derivatives margin, but it does not establish new spot purchases or net external capital inflows."
+    },
+    {
+      "classification": "SPECULATION",
+      "claim": "If materially adopted, XRP cross collateral could increase demand to hold XRP for multi-asset derivatives margin, but the magnitude, direction and price effect are unknown and may be offset by rehypothecation, liquidation and counterparty risks."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-CFM-XRP-COLLATERAL-LIVE",
+      "statement": "CFM has enabled XRP as customer collateral for eligible U.S. 30.7 customers through CBBM/Deribit after satisfying the notice and initial-period requirements.",
+      "status": "POSSIBLE_NOT_VERIFIED",
+      "support": [
+        "SRC-CFTC-26-17-20261101T215000Z",
+        "SRC-DERIBIT-CROSS-COLLATERAL-20261101T215000Z",
+        "SRC-COINBASE-DERIBIT-INTEGRATION-20261101T215000Z"
+      ],
+      "disconfirming": [
+        "No CFM notice date, account configuration, actual posted balance or weekly asset report was found."
+      ],
+      "test": "Locate CFM's WinJammer notice, relevant disclosures and independently verifiable collateral balance/flow data."
+    },
+    {
+      "id": "HYP-CFM-XRP-ELIGIBLE_NOT_USED",
+      "statement": "The legal and venue framework permits XRP collateral in principle, but CFM has not enabled or materially used XRP in U.S. customer accounts.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "No actual balance or use evidence found; venue eligibility alone is not usage."
+      ],
+      "disconfirming": [
+        "Coinbase/Deribit integration is complete and XRP is on Deribit's current cross-collateral table."
+      ],
+      "test": "Monitor CFM product disclosures, customer eligibility notices and venue/FCM collateral reports."
+    },
+    {
+      "id": "HYP-COLLATERAL_UTILITY_WITHOUT_SPOT_DEMAND",
+      "statement": "Any XRP collateral adoption mostly reuses existing holdings and improves capital efficiency without creating comparable net spot buying.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "The CFTC framework is based on customer-owned assets; no purchase is required merely to post existing XRP."
+      ],
+      "disconfirming": [
+        "New account onboarding or portfolio requirements could create incremental acquisition demand, but this is not measured."
+      ],
+      "test": "Compare collateral balances, net deposits, venue spot flows, custody changes and price/volume around verified adoption events."
+    }
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED",
+  "explicit_non_equivalences": [
+    "Digital-commodity classification is not the same as actual FCM acceptance.",
+    "Deribit cross-collateral eligibility is not proof of CFM U.S. account enablement.",
+    "Collateral posted is not necessarily newly purchased XRP.",
+    "A right of re-use is not proof that assets were actually rehypothecated.",
+    "Deribit margin haircuts are not the same as CFTC FCM capital charges or DCO initial-margin requirements."
+  ]
+}

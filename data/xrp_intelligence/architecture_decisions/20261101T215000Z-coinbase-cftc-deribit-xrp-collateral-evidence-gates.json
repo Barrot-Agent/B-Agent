@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "decision_id": "coinbase-cftc-deribit-xrp-collateral-evidence-gates-20261101T215000Z",
+  "captured_at_utc": "2026-11-01T21:50:00Z",
+  "decision": "Treat XRP's CFTC digital-commodity classification, Deribit venue collateral eligibility, CFM product enablement and actual collateral use as four separate evidence states.",
+  "rules": [
+    "Record CFTC Letter 26-17 as a conditional staff no-action position and interpretation, not a binding rule or universal authorization.",
+    "Record XRP as explicitly named in the digital-commodity examples in CFTC Letter 26-17 footnote 5.",
+    "Record Deribit's September 28 table as current venue evidence: XRP is a full cross-collateral currency and offset currency; X:PM has no stated haircut and X:SM has a 15% haircut.",
+    "Do not use the January 13 Deribit update saying XRP remained offset-only as current; it is superseded by the September 28 cross-collateral table.",
+    "Do not infer that CFM has enabled XRP collateral until its notice/commencement date, three-month initial restriction, U.S. product eligibility and customer account settings are verified.",
+    "Do not infer that collateral posting creates a new spot purchase. Track pre-existing holdings, new deposits, collateral balances, re-use and spot acquisitions separately.",
+    "Track rehypothecation/right-of-reuse as both a capital-efficiency channel and a counterparty/custody risk.",
+    "Keep venue haircut, FCM capital charge, DCO/foreign clearing margin and liquidation threshold as separate numeric fields.",
+    "No predictive feature admission until actual collateral balances and source timestamps are independently corroborated."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

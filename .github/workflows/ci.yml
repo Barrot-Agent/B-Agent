@@ -93,4 +93,5 @@ jobs:
             tests/test_xrpl_usdc_rlusd_supply_and_coinbase_circle_economics.py \
             tests/test_sbi_multirail_graph_corrections.py \
             tests/test_sbic_east_japan_identity_and_v3_subscriber_audit.py \
+            tests/test_coinbase_cftc_deribit_xrp_collateral_pathway.py \
             -v --no-cov

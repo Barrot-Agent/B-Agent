@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "handoff_id": "coinbase-cftc-deribit-xrp-collateral-handoff-20261101T215000Z",
+  "captured_at_utc": "2026-11-01T21:50:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery remains first; Barrot V3 remains the execution and verification foundation.",
+  "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+  "major_new_finding": "CFTC Letter 26-17 explicitly names XRP as a digital commodity and provides a conditional Coinbase Financial Markets -> Coinbase Bermuda -> Deribit customer-collateral/right-of-reuse pathway. Deribit's current September 28 cross-collateral table lists XRP as a full cross-collateral currency (X:PM no haircut stated; X:SM 15%). Coinbase says the Deribit integration completed October 1. Actual CFM XRP collateral use, notice date and account balances remain unknown.",
+  "important_correction": "The January 13 Deribit notice that XRP was offset-only is superseded by the September 28, 2026 current cross-collateral specification. Do not repeat the older offset-only classification as current.",
+  "prediction_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "current_prs": {
+    "1464": {
+      "head": "1976627f12635db9b604ddba26c96c5c9ad9033f",
+      "ci": "448 passed, 8 subtests passed",
+      "gate": "passed",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "1474": {
+      "head": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "ci": "390 passed, 8 subtests passed",
+      "gate": "passed",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "1475": {
+      "head": "8268d158449f3e96b585661ee670e515752146f6",
+      "ci": "405 passed, 8 subtests passed",
+      "gate": "passed",
+      "state": "OPEN_DRAFT_UNMERGED"
+    },
+    "1476": {
+      "head": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+      "ci": "345 passed, 8 subtests passed",
+      "gate": "passed",
+      "state": "OPEN_DRAFT_UNMERGED"
+    }
+  },
+  "next_actions": [
+    "Find or confirm CFM's WinJammer notice of intent and the exact commencement date; calculate the first three-month restricted-asset window from that date.",
+    "Verify whether CFM's U.S. 30.7 customers can select XRP as collateral in their actual Deribit cross-collateral account mode.",
+    "Seek public/authorized evidence of actual XRP collateral balances, deposit/withdrawal flows and any re-use; do not infer use from eligibility.",
+    "Reconcile the 26-05 DCO/foreign-clearing-organization acceptance and haircut requirements with Deribit's current XRP cross-collateral rules and CFM's 26-17 conditions.",
+    "Measure whether XRP collateral adoption corresponds to new XRP acquisitions, reduced exchange deposits/sales, or only reuse of existing balances.",
+    "Continue source-byte semantic binding and LIVE versus HISTORICAL_REPLAY enforcement in the forecast ledger.",
+    "Keep all open PRs unmerged pending explicit authorization."
+  ],
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, external deployment, paper-position mutation or real-money trade occurred."
+}
