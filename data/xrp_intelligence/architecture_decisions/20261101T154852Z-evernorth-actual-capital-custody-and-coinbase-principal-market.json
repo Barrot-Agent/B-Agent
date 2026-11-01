@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "decision_id": "evernorth-actual-capital-custody-and-coinbase-principal-market-20261101T154852Z",
+  "captured_at_utc": "2026-11-01T15:48:52Z",
+  "decisions": [
+    {
+      "id": "cash_vs_in_kind",
+      "decision": "Separate the $214.05M historical cash-funded purchase of 84.366M XRP from approximately 388.911M XRP contributed in kind. Do not describe the full approximately 473M XRP treasury as cash purchased."
+    },
+    {
+      "id": "capital_double_counting",
+      "decision": "Treat the $214.05M purchase as part of the wider cash-financing history; do not add it again to the $272.6M gross closing cash proceeds."
+    },
+    {
+      "id": "new_debt",
+      "decision": "Record the $30M notes as actual debt financing proceeds issued October 12, 2026, but do not infer that the proceeds were used to buy XRP."
+    },
+    {
+      "id": "eloc",
+      "decision": "Treat the Cantor ELOC as optional equity-financing capacity, not cash on hand. Preserve the prospectus's $76.8M cover/detailed figure and $80.7M summary-row discrepancy; use $74.4M only as the detailed estimated net figure under its assumptions. No draw verified."
+    },
+    {
+      "id": "coinbase_principal_market",
+      "decision": "Add a direct Evernorth-to-Coinbase principal-market relationship for XRP financial reporting. This supports Coinbase's institutional price-reference importance, but does not establish custody or exclusive execution."
+    },
+    {
+      "id": "custody",
+      "decision": "BitGo is the primary custodian; SEC filing reports 100% cold storage, multisignature/HSM controls and shared $250M insurance equal to 36.9% of holdings value as of October 9. The filing does not state a 2-of-3 threshold."
+    },
+    {
+      "id": "yield_and_defi",
+      "decision": "Classify yield strategies and DeFi protocol participation as company-reported commenced after Closing, while keeping actual XRP amounts, protocols, counterparties and transactions unverified. Reconcile against the same filing's 100% cold-storage statement."
+    },
+    {
+      "id": "xrp_collateral",
+      "decision": "Classify XRP-secured financing and DeFi lending as strategic possibilities; no executed collateral transaction is established."
+    },
+    {
+      "id": "sbi_ripple_rlusd",
+      "decision": "Record SBI Holdings as strategic investor, Ripple as contributor and RLUSD as a planned stable-value asset for XRP-based DeFi. Keep SBIC regional SME investment companies distinct from SBI Holdings."
+    },
+    {
+      "id": "feature_admission",
+      "decision": "Do not admit these capital/custody statements as market-price features yet. Preserve as fundamental event evidence pending point-in-time source validation and actual deployment verification."
+    }
+  ],
+  "unresolved_items": [
+    "Identify the actual protocols and wallet addresses, if any, used for yield/DeFi activity after Closing.",
+    "Reconcile the prospectus statement that 100% of XRP was cold stored with the statement that DeFi protocol participation commenced.",
+    "Verify whether any XRP-secured loan, pledge or collateral arrangement was executed.",
+    "Verify whether the $30M note proceeds were used to acquire XRP.",
+    "Verify whether any ELOC shares were sold and whether the upfront fee was paid.",
+    "Track the annual reassessment of Coinbase as Evernorth's principal market.",
+    "Reconcile the $76.8M versus $80.7M ELOC gross-proceeds inconsistency in any subsequent filing."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

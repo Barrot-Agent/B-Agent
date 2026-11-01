@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "bundle_id": "evernorth-sec-coinbase-custody-capital-source-bundle-20261101T154852Z",
+  "captured_at_utc": "2026-11-01T15:48:52Z",
+  "sources": [
+    {
+      "id": "sec-evernorth-424b3-2026-10-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
+      "publisher": "SEC / Evernorth Holdings Inc.",
+      "classification": "PRIMARY_REGULATORY_FILING",
+      "prospectus_date": "2026-10-30",
+      "accessed_at_utc": "2026-11-01T15:48:52Z"
+    }
+  ],
+  "independent_corroboration_needed": [
+    "Evernorth wallet ownership and deployed XRP positions",
+    "BitGo custody account and any operational/DeFi wallet movement",
+    "Actual ELOC share sales and cash proceeds",
+    "Actual use of the $30M note proceeds",
+    "Any executed XRP-secured financing"
+  ],
+  "no_market_feature_admission": true
+}

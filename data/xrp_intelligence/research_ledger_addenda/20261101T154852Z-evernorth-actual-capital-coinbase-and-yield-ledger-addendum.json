@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "addendum_id": "evernorth-actual-capital-coinbase-and-yield-ledger-addendum-20261101T154852Z",
+  "captured_at_utc": "2026-11-01T15:48:52Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T154852Z-evernorth-sec-capital-coinbase-custody-yield-recapture.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T154852Z-evernorth-sec-capital-custody-coinbase-and-yield-reconciliation.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T154852Z-evernorth-coinbase-ripple-sbi-bitgo-rlusd-capital-graph.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T154852Z-evernorth-actual-capital-custody-and-coinbase-principal-market.json",
+  "evidence_classification": {
+    "confirmed_filing_facts": [
+      "Coinbase principal-market selection",
+      "BitGo primary custody and cold-storage claim",
+      "historical cash purchase and in-kind contribution amounts",
+      "$30M note issuance",
+      "ELOC terms and internal gross-proceeds inconsistency",
+      "Ripple and SBI strategic/personnel relationships"
+    ],
+    "company_reported_but_not_independently_verified": [
+      "yield strategies and DeFi protocol participation commenced following Closing"
+    ],
+    "planned_or_conditional": [
+      "future XRP purchases from financing proceeds",
+      "XRP-secured financing",
+      "lending to counterparties",
+      "RLUSD/XRP AMM deployment",
+      "future ELOC proceeds"
+    ],
+    "unknown": [
+      "actual DeFi protocol addresses and deployed XRP amounts",
+      "actual ELOC draw",
+      "use of note proceeds",
+      "specific collateral loans"
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}
