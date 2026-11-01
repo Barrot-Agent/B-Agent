@@ -54,3 +54,9 @@ def test_self_upgrade_requires_explicit_non_main_branch_approval() -> None:
     assert "github.ref_type == 'branch'" in workflow
     assert "github.ref != 'refs/heads/main'" in workflow
     assert "pull-requests: write" not in workflow
+
+
+def test_databricks_deployment_is_repository_owner_only():
+    workflow = (REPO_ROOT / ".github/workflows/deploy-databricks.yml").read_text(encoding="utf-8")
+    assert "inputs.confirm_external_change == 'YES'" in workflow
+    assert "github.actor == github.repository_owner" in workflow
