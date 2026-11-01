@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "artifact_type": "repository_clock_provenance_correction",
+  "recorded_at_utc": "2026-11-01T22:13:33Z",
+  "affected_prior_artifact": "data/xrp_intelligence/hand_offs/20261101T221200Z-run11-xrp-intelligence-v3-handoff.json",
+  "prior_commit_sha": "f9f5c3feb0ac8ae90a78f7616b904dcc11bd1985",
+  "prior_commit_time_utc": "2026-11-01T21:54:18Z",
+  "embedded_artifact_time_utc": "2026-11-01T22:12:00Z",
+  "current_pr_created_at_utc": "2026-11-01T22:13:33Z",
+  "classification": "CONTENT_VS_COMMIT_TIMESTAMP_MISMATCH",
+  "conclusion": "The embedded time is not future relative to current GitHub server time, but it is later than the containing commit timestamp. Preserve the artifact and treat its capture time as unverified until the generator clock and commit chronology are reconciled.",
+  "policy": "Keep source as-of timestamps, artifact capture timestamps, Git author/committer timestamps and GitHub server timestamps as separate fields. Never overwrite the original artifact."
+}

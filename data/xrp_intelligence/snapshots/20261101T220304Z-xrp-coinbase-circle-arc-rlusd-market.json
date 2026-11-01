@@ -421,8 +421,8 @@
     {
       "id": "DQ7",
       "severity": "MEDIUM",
-      "issue": "Prior PR #1464 branch contains a 22:12Z handoff later than this run cutoff 22:03:04Z.",
-      "action": "Preserve but exclude future-dated artifact pending clock-skew/concurrent-run provenance.",
+      "issue": "Prior PR #1464 handoff filename embeds 2026-11-01T22:12:00Z while its containing Git commit author/committer timestamp is 21:54:18Z; this is a content-versus-commit timestamp mismatch. GitHub server time at PR #1477 creation was 22:13:33Z, so the 22:12 label is not future relative to server time.",
+      "action": "Preserve the original artifact. Treat embedded capture time as unverified until generation clock and commit chronology are reconciled; use per-source as-of times and Git commit timestamps separately.",
       "feature_admission": "BLOCKED_FOR_TIME_ORDERED_REPLAY"
     },
     {

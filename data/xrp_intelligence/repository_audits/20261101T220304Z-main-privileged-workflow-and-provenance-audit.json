@@ -82,7 +82,12 @@
   "prior_research_branch": {
     "pr": 1464,
     "status": "OPEN_DRAFT_UNMERGED",
-    "note": "Contains a 20261101T221200Z handoff later than this run's 20261101T220304Z cutoff; preserve but exclude pending clock-skew/concurrent-run provenance."
+    "branch_head": "f9f5c3feb0ac8ae90a78f7616b904dcc11bd1985",
+    "git_commit_time_utc": "2026-11-01T21:54:18Z",
+    "embedded_handoff_time_utc": "2026-11-01T22:12:00Z",
+    "github_pr_1477_created_at_utc": "2026-11-01T22:13:33Z",
+    "classification": "CONTENT_VS_COMMIT_TIMESTAMP_MISMATCH",
+    "note": "Do not label the handoff future relative to current server time. Preserve it; do not use its embedded timestamp as verified capture time until clock provenance is reconciled."
   },
   "actions_not_taken": [
     "No merge",
