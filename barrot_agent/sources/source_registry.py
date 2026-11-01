@@ -34,6 +34,7 @@ class SourceVersion:
     version: Optional[str] = None
     retrieved_at: str = field(default_factory=utc_now)
     content_hash: Optional[str] = None
+    snapshot_path: Optional[str] = None
     supersedes: Optional[str] = None
 
 
@@ -185,6 +186,55 @@ class SourceRegistry:
             raise KeyError(f"Unknown source_id: {source_id}")
         return record
 
+    def verify_content_hash(self, source_id: str, content: Optional[bytes] = None) -> bool:
+        """Verify registered SHA-256 against supplied bytes or the retained local snapshot."""
+        record = self.require(source_id)
+        expected = record.version.content_hash
+        if not isinstance(expected, str) or len(expected) != 64:
+            return False
+        try:
+            int(expected, 16)
+        except ValueError:
+            return False
+
+        if content is not None:
+            return isinstance(content, bytes) and sha256_bytes(content) == expected.lower()
+
+        snapshot_path = record.version.snapshot_path or record.identity.uri
+        if not isinstance(snapshot_path, str) or not snapshot_path.strip():
+            return False
+        if snapshot_path.startswith(("http://", "https://")):
+            return False
+
+        path = Path(snapshot_path)
+        if not path.is_absolute():
+            path = (self.path.parent / path).resolve()
+        try:
+            actual = sha256_bytes(path.read_bytes())
+        except OSError:
+            return False
+        return actual == expected.lower()
+
+    def read_verified_content(self, source_id: str) -> bytes:
+        """Read the retained local snapshot only when its bytes match the registered SHA-256."""
+        record = self.require(source_id)
+        snapshot_path = record.version.snapshot_path or record.identity.uri
+        if not isinstance(snapshot_path, str) or not snapshot_path.strip():
+            raise ValueError(f"source snapshot path is unavailable: {source_id}")
+        if snapshot_path.startswith(("http://", "https://")):
+            raise ValueError(f"remote source has no retained local snapshot: {source_id}")
+
+        path = Path(snapshot_path)
+        if not path.is_absolute():
+            path = (self.path.parent / path).resolve()
+        try:
+            content = path.read_bytes()
+        except OSError as exc:
+            raise ValueError(f"source snapshot bytes are unavailable: {source_id}") from exc
+        if not self.verify_content_hash(source_id, content):
+            raise ValueError(f"source snapshot bytes do not match registered content hash: {source_id}")
+        return content
+
     def remove(self, source_id: str) -> None:
         """
         Deliberately unsupported.
@@ -284,6 +334,10 @@ def register_file_source(
 ) -> SourceRecord:
     file_path = Path(path)
     data = file_path.read_bytes()
+    try:
+        snapshot_path = str(file_path.resolve().relative_to(registry.path.parent.resolve()))
+    except ValueError:
+        snapshot_path = str(file_path.resolve())
 
     record = SourceRecord(
         identity=SourceIdentity(
@@ -296,6 +350,7 @@ def register_file_source(
         ),
         version=SourceVersion(
             content_hash=sha256_bytes(data),
+            snapshot_path=snapshot_path,
         ),
         scope=SourceScope(
             total_scope=f"{len(data)} bytes",
