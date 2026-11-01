@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_collateral_source_revision",
+  "captured_at_utc": "2026-11-01T22:15:37Z",
+  "sources": [
+    {
+      "id": "SRC_COINBASE_CBXRP_POR_20261101",
+      "publisher": "Coinbase",
+      "date": "2026-11-01",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "type": "official_proof_of_reserves_page",
+      "supports": [
+        "150,942,337.33 XRP reserve",
+        "150,940,089.8 cbXRP supply",
+        "Coinbase says cbXRP is backed 1:1 by XRP held by Coinbase"
+      ],
+      "limits": [
+        "Issuer-operated proof-of-reserves disclosure; refresh timezone unspecified"
+      ]
+    },
+    {
+      "id": "SRC_MORPHOWATCH_CBXRP_MARKET_20261101",
+      "publisher": "MorphoWatch",
+      "date": "2026-11-01",
+      "url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "type": "independent_dashboard_from_Morpho_public_API_and_blockchain",
+      "supports": [
+        "cbXRP/USDC market on Base, 62.5% LLTV",
+        "$65.92M USDC supplied, $59.21M borrowed, $148.1M collateral, 118.59M cbXRP",
+        "89.8% utilization, 12,007 borrowers, 1,122 liquidations/30d, $3.94M debt repaid",
+        "9 vaults provide $58.19M supply; top three provide about $52M",
+        "Market created Jan 15 2026; MorphoWatch identifies it as the market behind Coinbase XRP loans"
+      ],
+      "limits": [
+        "MorphoWatch is independent and not affiliated with Coinbase or Morpho",
+        "Market is permissionless; all borrowers cannot be attributed to Coinbase retail product"
+      ]
+    },
+    {
+      "id": "SRC_MORPHOWATCH_BASE_NETWORK_20261101",
+      "publisher": "MorphoWatch",
+      "date": "2026-11-01",
+      "url": "https://morphowatch.com/networks/base/",
+      "type": "independent_dashboard_from_Morpho_public_API",
+      "supports": [
+        "Later 18:11 UTC network page showed cbXRP/USDC $65.70M supplied, $59.25M borrowed, $148.2M collateral and 90.2% utilization"
+      ],
+      "limits": [
+        "Different observation time from market-specific page; preserve as separate snapshot"
+      ]
+    },
+    {
+      "id": "SRC_THEBLOCK_COINBASE_XRP_LOANS_20260218",
+      "publisher": "The Block",
+      "date": "2026-02-18",
+      "url": "https://www.theblock.co/news/business/2026-02-18-coinbase-xrp-dogecoin-cardano-litecoin-loans-morpho-390403",
+      "type": "reported_product_terms_quoting_Coinbase",
+      "supports": [
+        "Eligible U.S. users excluding New York can borrow up to $100,000 USDC against XRP/DOGE/ADA/LTC",
+        "Coinbase product max LTV 49%, liquidation at 62.5%",
+        "Morpho/Base execution"
+      ],
+      "limits": [
+        "Product report is not an onchain borrower attribution file"
+      ]
+    },
+    {
+      "id": "SRC_CLEAN_SKY_CBXRP_20260824",
+      "publisher": "CleanSky",
+      "date": "2026-08-26",
+      "url": "https://cleansky.io/blog/coinbase-wrappers-manufactured-demand-2026/",
+      "type": "independent_onchain_analysis",
+      "supports": [
+        "As of Aug 24, 91.619M of 117.288M cbXRP (78.1%) was in a Morpho market with 62.5% LLTV"
+      ],
+      "limits": [
+        "Historical snapshot; not current market data; attribution to Coinbase product is inference"
+      ]
+    },
+    {
+      "id": "SRC_COINBASE_HELP_WRAPPED_ASSETS",
+      "publisher": "Coinbase",
+      "date": "not_stated",
+      "url": "https://help.coinbase.com/en/exchange/crypto-transfers/wrapped-assets",
+      "type": "official_product_documentation",
+      "supports": [
+        "Coinbase Wrapped Assets are backed 1:1 by underlying assets held in Coinbase custody; cbXRP supported on Base"
+      ],
+      "limits": [
+        "No current Morpho market balances disclosed"
+      ]
+    }
+  ]
+}
