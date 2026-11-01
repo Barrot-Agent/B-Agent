@@ -50,7 +50,7 @@ def test_eloc_stale_price_explanation_is_inference_and_no_draw_is_verified():
     assert eloc["cover_gross_proceeds_usd"] == 76800000
     assert eloc["detailed_net_proceeds_estimate_usd"] == 74400000
     assert eloc["conflicting_summary_gross_proceeds_usd"] == 80700000
-    assert eloc["likely_stale_reference_price_usd"] == 15.46
+    assert eloc["inferred_stale_reference_price_usd"] == 15.46
     assert eloc["draw_verified"] is False
     assert "likely stale reference-price carryover" in eloc["likely_explanation"]
 
