@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-OCC-TRUST-CHARTER-STATUS-COMPARISON-20261101T1425Z",
+  "captured_at_utc": "2026-11-01T14:25:00Z",
+  "sources": [
+    {
+      "id": "ripple-rntb-final-approval-company-announcement",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "publisher": "Ripple",
+      "published_date": "2026-10-26",
+      "classification": "COMPANY_REPORTED_FINAL_APPROVAL",
+      "claims": [
+        "Ripple says OCC granted final approval to charter Ripple National Trust Bank",
+        "Ripple says RNTB approved activities include managing segregated RLUSD reserves, acting as collateral trustee for RLUSD holders, and providing fiduciary digital-asset custody",
+        "RLUSD continues to be issued by Standard Custody & Trust Company, Ripple's NYDFS-regulated limited-purpose trust company",
+        "RNTB's custody services are to begin upon opening; opening date not specified"
+      ],
+      "limitations": [
+        "no OCC final decision document or reference number for Ripple was located in this run",
+        "OCC public Interpretations & Decisions page still displays Ripple Conditional Approval 1359 dated December 12 2025; the page says it is updated as letters are ready, so absence of a later final document is not disconfirmation",
+        "company announcement is not a substitute for the OCC's final order or proof that the bank is operational"
+      ]
+    },
+    {
+      "id": "circle-national-trust-final-approval",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Receives-Final-OCC-Approval-to-Establish-National-Trust-Bank/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "published_date": "2026-07-10",
+      "classification": "COMPANY_REPORTED_FINAL_APPROVAL",
+      "claims": [
+        "Circle announced final OCC approval to establish First National Digital Currency Bank, N.A., operating as Circle National Trust",
+        "upon opening, the trust bank will provide fiduciary digital-asset custody for Circle and affiliates",
+        "management of the USDC Reserve is described as a future capability, not an activity at initial opening"
+      ],
+      "limitations": [
+        "announcement does not establish that the bank has opened or begun operating",
+        "reserve management is explicitly future capability"
+      ]
+    },
+    {
+      "id": "coinbase-national-trust-conditional-occ-approval",
+      "url": "https://occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "publisher": "Office of the Comptroller of the Currency",
+      "published_date": "2026-04-02",
+      "classification": "OCC_PRIMARY_CONDITIONAL_APPROVAL",
+      "claims": [
+        "OCC table lists Corporate Decision 1370, dated April 2 2026, as preliminary conditional approval for Coinbase National Trust Company"
+      ],
+      "limitations": [
+        "conditional approval is not final approval or operational authorization"
+      ]
+    },
+    {
+      "id": "occ-genius-final-rule-20261021",
+      "url": "https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-50.html",
+      "publisher": "Office of the Comptroller of the Currency",
+      "published_date": "2026-10-21",
+      "classification": "OCC_PRIMARY_FINAL_RULE",
+      "claims": [
+        "OCC issued final rule implementing the GENIUS Act for payment stablecoin issuance and related activities under OCC jurisdiction",
+        "rule covers reserve assets, redemption, risk management, audits, reports, supervision, custody, applications and capital/operational backstop",
+        "effective date is January 18 2027, not November 1 2026"
+      ],
+      "limitations": [
+        "OCC states BSA/AML and OFAC requirements will be addressed in a separate rulemaking with Treasury",
+        "OCC says it is not yet accepting applications or waivers for permitted payment stablecoin issuers pending OMB approval of application information collection"
+      ]
+    },
+    {
+      "id": "occ-genius-applications-status",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/genius-act/index-genius-act.html",
+      "publisher": "Office of the Comptroller of the Currency",
+      "observed_at_utc": "2026-11-01",
+      "classification": "OCC_PRIMARY_STATUS_PAGE",
+      "claims": [
+        "OCC states it is not yet accepting waivers or applications from payment stablecoin issuers",
+        "OCC will announce when applications begin after OMB approval of application forms"
+      ],
+      "limitations": [
+        "status can change; monitor official page"
+      ]
+    },
+    {
+      "id": "occ-decisions-list-ripple-and-coinbase",
+      "url": "https://occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "publisher": "Office of the Comptroller of the Currency",
+      "observed_at_utc": "2026-11-01",
+      "classification": "OCC_PRIMARY_DECISIONS_INDEX",
+      "claims": [
+        "page lists Ripple Conditional Approval 1359 from December 12 2025",
+        "page lists Coinbase Corporate Decision 1370 from April 2 2026",
+        "page states it is updated as letters are ready for publishing"
+      ],
+      "limitations": [
+        "index absence of a later Ripple final order is not conclusive evidence that no final approval occurred after the latest listed decision"
+      ]
+    }
+  ],
+  "comparison": {
+    "ripple": "company-reported final approval; claimed reserve-management and collateral-trustee authority; RNTB not confirmed operational",
+    "circle": "company-reported final approval; custody for Circle and affiliates upon opening; USDC reserve management explicitly future capability",
+    "coinbase": "OCC primary preliminary conditional approval; not final",
+    "status_labels": [
+      "conditional",
+      "final_approved_preopening",
+      "operational"
+    ],
+    "warning": "Do not collapse charter approval, opening, permitted stablecoin issuer status, and actual product deployment into one status."
+  }
+}
