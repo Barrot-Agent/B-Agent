@@ -816,6 +816,7 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
                 head_branch,
                 "--base",
                 "main",
+                "--draft",
             ]
         )
     if result.returncode != 0 and "already exists" not in (result.stderr + result.stdout).lower():
