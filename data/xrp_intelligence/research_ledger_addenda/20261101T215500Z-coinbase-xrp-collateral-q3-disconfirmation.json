@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "addendum_id": "coinbase-xrp-collateral-q3-disconfirmation-20261101T215500Z",
+  "captured_at_utc": "2026-11-01T21:55:00Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T215500Z-coinbase-xrp-collateral-q3-disconfirmation.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T215500Z-coinbase-xrp-collateral-q3-disconfirmation.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T215500Z-coinbase-xrp-collateral-period-and-custody-gates.json",
+  "findings": [
+    {
+      "classification": "CONFIRMED_SEC_FILING",
+      "claim": "Coinbase's Q3 2026 Form 10-Q reports $325.766 million recognized customer derivatives collateral at September 30, 2026: BTC $322.341 million and ETH $3.425 million. XRP is not listed in that recognized derivatives-collateral table."
+    },
+    {
+      "classification": "CONFIRMED_SEC_FILING",
+      "claim": "Coinbase's broader crypto-assets-held-as-collateral balance was $1.2995 billion at September 30, 2026, but the filing does not allocate that total to XRP or to Deribit."
+    },
+    {
+      "classification": "CONFIRMED_SEC_FILING",
+      "claim": "Coinbase reports $2.804112 billion of unrecognized customer crypto collateral in lending arrangements, but no token-level breakdown; it must not be counted as recognized derivatives collateral or as XRP."
+    },
+    {
+      "classification": "CONFIRMED_SEC_FILING",
+      "claim": "Coinbase states customer assets are not used as collateral for loans, margin, rehypothecation or similar activities without customer consent."
+    },
+    {
+      "classification": "CONFIRMED_DERIBIT_POLICY",
+      "claim": "Deribit's October 14 custody policy lists Coinbase Custody Trust Company in the cold-wallet provider set and Coinbase Institutional UK Limited in the warm-wallet provider set; it still describes Coinbase Bermuda Limited as to be added after September 2026."
+    },
+    {
+      "classification": "INFERENCE",
+      "claim": "The CFTC/Deribit XRP collateral pathway was legally and technically plausible by late 2026, but the Q3 Coinbase filing does not show recognized XRP derivatives collateral through September 30. October 1 platform integration and the October 14 custody-policy wording indicate a phased integration; post-integration Q4 usage remains unverified."
+    },
+    {
+      "classification": "UNKNOWN",
+      "claim": "It is unknown whether CBBM was added to Deribit's warm-wallet custody stack after October 14, whether CFM's notice and initial three-month restriction were completed, and whether any U.S. customer posted XRP after September 30."
+    },
+    {
+      "classification": "DISCONFIRMING_EVIDENCE",
+      "claim": "The Q3 recognized derivatives-collateral table contains BTC and ETH only; the current Deribit custody policy still described CBBM as a future addition as of October 14. These facts disconfirm any claim that XRP collateral was already demonstrably live in Coinbase's recognized derivatives collateral by September 30."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "HYP-CFM-XRP-Q4-ADOPTION",
+      "statement": "Coinbase enables XRP cross collateral for eligible CFM/Deribit customers after the Q3 reporting cutoff and after the CFM-specific three-month initial restriction.",
+      "status": "POSSIBLE_NOT_VERIFIED",
+      "support": [
+        "CFTC 26-17 conditional route",
+        "Deribit September 28 XRP cross-collateral table",
+        "Coinbase October 1 integration announcement"
+      ],
+      "disconfirming": [
+        "No CFM notice date or post-September XRP balance was found; CBBM was still described as to be added in the October 14 custody policy."
+      ],
+      "test": "Locate the CFM notice/commencement date, later custody-policy revision, customer terms and Q4 collateral reporting."
+    },
+    {
+      "id": "HYP-CFM-BTC-ETH-ONLY",
+      "statement": "CFM's recognized derivatives collateral remains primarily BTC and ETH; XRP is eligible at the venue but not enabled or not materially used by CFM customers.",
+      "status": "PLAUSIBLE",
+      "support": [
+        "Coinbase Q3 10-Q recognized derivatives collateral table lists BTC and ETH only."
+      ],
+      "disconfirming": [
+        "The Q3 reporting cutoff precedes the October 1 Deribit integration and later Q4 product rollout."
+      ],
+      "test": "Review Coinbase Q4 10-Q and any subsequent CFM collateral disclosure."
+    }
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED",
+  "non_equivalences": [
+    "Coinbase's $1.2995B total crypto collateral is not XRP-specific.",
+    "Unrecognized lending collateral is not the same as recognized derivatives collateral.",
+    "Corporate assets pledged against borrowings are not customer-posted XRP margin.",
+    "Q3 September 30 disclosures predate the October 1 Deribit integration completion.",
+    "A custody provider being listed is not evidence of actual XRP held at that custodian."
+  ]
+}
