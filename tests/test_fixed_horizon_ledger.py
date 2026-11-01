@@ -605,8 +605,26 @@ def test_metrics_refuse_tampered_registered_feature_snapshot_hash(tmp_path):
     ]
     rows[0]["source_content_hashes"]["SRC-FEATURE-001"] = "d" * 64
     ledger.forecasts_path.write_text(
-        "".join(json.dumps(row) + "\\n" for row in rows),
+        "".join(json.dumps(row) + "\n" for row in rows),
         encoding="utf-8",
+    )
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
+
+
+def test_id_only_registry_cannot_authorize_forecast_metrics(tmp_path):
+    ledger = ForecastLedger(
+        tmp_path,
+        source_registry=set(TEST_SOURCE_REGISTRY),
+        allow_unverified_sources=True,
+    )
+    forecast = ledger.append_forecast(forecast_payload())
+    assert forecast["source_registry_status"] == "ID_ONLY_NOT_HASH_VERIFIED"
+    assert forecast["feature_snapshot_hash_verified"] is False
+    ledger.append_outcome(
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+        "2026-10-31T01:01:00Z", "SRC-PRICE-001"
     )
     metrics = ledger.metrics()
     assert metrics["accuracy"] is None

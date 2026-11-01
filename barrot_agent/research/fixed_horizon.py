@@ -310,7 +310,7 @@ def _evaluation_protocol(forecast: Mapping[str, Any]) -> dict[str, Any]:
 
 
 class ForecastLedger:
-    """Persist immutable forecasts and separate, timestamped outcomes."""
+    """Persist forecasts only with verified source and feature-snapshot provenance."""
 
     def __init__(
         self,
