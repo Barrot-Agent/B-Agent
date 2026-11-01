@@ -1,4 +1,4 @@
-name: Auto-Resolve Workflow Issues
+name: Auto-Resolve Workflow Issues (Read-Only Audit)
 
 on:
   schedule:
@@ -7,19 +7,30 @@ on:
 
 permissions:
   contents: read
-  issues: write
+  issues: read
   actions: read
 
 jobs:
-  resolve:
+  audit:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - run: pip install requests
-      - name: Resolve all matching open issues
-        run: python3 scripts/resolve_issue.py --all
+      - name: Install read-only audit dependency
+        run: pip install requests
+      - name: Evaluate resolver actions without applying them
+        run: |
+          mkdir -p artifacts
+          set -o pipefail
+          python3 scripts/resolve_issue.py --all 2>&1 | tee artifacts/issue-resolution-audit.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: issue-resolution-read-only-audit
+          path: artifacts/issue-resolution-audit.txt
+          if-no-files-found: error
+          retention-days: 7
