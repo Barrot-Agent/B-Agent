@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "audit_id": "pr1467-exact-head-sha-correction-20261101T155521Z",
+  "captured_at_utc": "2026-11-01T15:55:21Z",
+  "correct_pr_state": {
+    "pr_number": 1467,
+    "title": "Security: add read-only matrix Python dependency audit (fresh main)",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "head_branch": "security/dependency-audit-fresh-main-20261101T1545Z",
+    "head_sha": "0d438fa451fdfb1794393b1984e58ddb6e005527",
+    "base_branch": "main",
+    "base_sha": "46e9f9d276a862157906dce63a0910e20eb8f7b5",
+    "verified_from": "GitHub PR metadata and workflow run 41321643924"
+  },
+  "exact_head_ci": {
+    "run_id": 41321643924,
+    "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41321643924",
+    "head_sha": "0d438fa451fdfb1794393b1984e58ddb6e005527",
+    "conclusion": "SUCCESS",
+    "jobs": [
+      "root-requirements",
+      "legacy-requirements",
+      "huggingface-space-requirements"
+    ],
+    "each_reported": "No known vulnerabilities found"
+  },
+  "prior_record_correction": {
+    "path": "data/repository_audits/20261101T154204Z-prediction-cohort-guard-and-python-dependency-audit.json",
+    "recorded_head_sha": "0d438fae4e8d6c67e5f66e23d3a85ecf1a8bd1b5",
+    "status": "MISMATCHED_UNSUPPORTED_SHA",
+    "correction": "Use the exact head SHA above. Preserve the prior immutable audit file and this correction; do not silently rewrite history."
+  },
+  "scope_limit": "This corrects the PR #1467 head SHA only. The no-known-vulnerabilities result remains scoped to the three audited Python requirement sets and is not a full repository security scan."
+}

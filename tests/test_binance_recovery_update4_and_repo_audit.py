@@ -112,3 +112,10 @@ def test_binance_network_status_static_capture_does_not_claim_xrp_availability()
     assert observation["extracted_table_rows"] == []
     assert observation["displayed_timezone"] == "NOT_SPECIFIED"
     assert "cannot confirm" in " ".join(observation["limitations"])
+
+def test_pr1467_dependency_audit_head_sha_correction_is_explicit():
+    audit = load("data/repository_audits/20261101T155521Z-pr1467-exact-head-sha-correction.json")
+    assert audit["correct_pr_state"]["head_sha"] == "0d438fa451fdfb1794393b1984e58ddb6e005527"
+    assert audit["correct_pr_state"]["base_sha"] == "46e9f9d276a862157906dce63a0910e20eb8f7b5"
+    assert audit["exact_head_ci"]["run_id"] == 41321643924
+    assert audit["prior_record_correction"]["status"] == "MISMATCHED_UNSUPPORTED_SHA"
