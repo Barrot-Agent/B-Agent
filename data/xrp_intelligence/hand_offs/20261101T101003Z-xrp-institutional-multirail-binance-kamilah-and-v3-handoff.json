@@ -214,8 +214,9 @@
         "limitation": "Feature design vs activation/adoption not reconciled; transcript incomplete."
       }
     ],
-    "archive_status": "PENDING_ARCHIVE_APPEND",
-    "legacy_unresolved_stubs_preserved": 13
+    "archive_status": "PENDING_SOURCE_SHARD_APPEND",
+    "legacy_unresolved_stubs_preserved": 13,
+    "source_revision_file_materialized": false
   },
   "institutional_findings": {
     "coinbase": {
@@ -525,9 +526,10 @@
     "new_source_records_pending": 23,
     "new_run_update_pending": 1,
     "new_limitation_pending": 1,
-    "source_revision_addendum_pending": true,
+    "source_revision_addendum_pending": false,
     "inherited_pending_addenda": 45,
-    "unresolved_source_stubs": 13
+    "unresolved_source_stubs": 13,
+    "source_revision_addendum_not_materialized": true
   },
   "platform_coordination": {
     "targets": [
