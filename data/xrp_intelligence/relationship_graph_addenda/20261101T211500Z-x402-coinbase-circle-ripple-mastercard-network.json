@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "id": "x402-coinbase-circle-ripple-mastercard-network-20261101T211500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "nodes": [
+    {
+      "id": "Coinbase",
+      "type": "company"
+    },
+    {
+      "id": "Circle",
+      "type": "company"
+    },
+    {
+      "id": "Ripple",
+      "type": "company"
+    },
+    {
+      "id": "Linux Foundation",
+      "type": "standards_governance"
+    },
+    {
+      "id": "x402 Foundation",
+      "type": "open_payment_standard_governance"
+    },
+    {
+      "id": "x402 protocol",
+      "type": "HTTP_payment_protocol"
+    },
+    {
+      "id": "Mastercard",
+      "type": "payments_network"
+    },
+    {
+      "id": "t54 Labs",
+      "type": "XRPL_facilitator_operator"
+    },
+    {
+      "id": "XRPL",
+      "type": "ledger"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "Heurist Inference Router",
+      "type": "x402_merchant"
+    },
+    {
+      "id": "AskSurf",
+      "type": "x402_merchant"
+    },
+    {
+      "id": "Heurist Mesh",
+      "type": "x402_merchant"
+    },
+    {
+      "id": "110-wallet x402-compatible cohort",
+      "type": "behavioral_wallet_cluster"
+    },
+    {
+      "id": "Cross River Bank",
+      "type": "bank"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Coinbase",
+      "to": "x402 protocol",
+      "relationship": "originated_and_contributed_protocol",
+      "evidence_class": "CONFIRMED_LINUX_FOUNDATION_ANNOUNCEMENT"
+    },
+    {
+      "from": "Linux Foundation",
+      "to": "x402 Foundation",
+      "relationship": "hosts_vendor_neutral_open_governance",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "Coinbase",
+      "to": "x402 Foundation",
+      "relationship": "founding_member",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "Circle",
+      "to": "x402 Foundation",
+      "relationship": "founding_member; public statement supports x402 plus USDC",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "Ripple",
+      "to": "x402 Foundation",
+      "relationship": "founding_member; public statement supports XRP and RLUSD on XRPL",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "Mastercard",
+      "to": "x402 Foundation",
+      "relationship": "founding_member; Agent Pay for Machines participant",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "t54 Labs",
+      "to": "x402 Foundation",
+      "relationship": "general_member",
+      "evidence_class": "CONFIRMED"
+    },
+    {
+      "from": "t54 Labs",
+      "to": "XRPL",
+      "relationship": "operates x402 facilitator",
+      "evidence_class": "OFFICIAL_OPERATOR_SOURCE"
+    },
+    {
+      "from": "x402 protocol",
+      "to": "XRPL",
+      "relationship": "implementation supports XRP and issued assets such as RLUSD",
+      "evidence_class": "OFFICIAL_TECHNICAL_DOCUMENTATION"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relationship": "supports x402 agent payments using USDC",
+      "evidence_class": "PUBLIC_STATEMENT_AT_FOUNDATION_LAUNCH"
+    },
+    {
+      "from": "Ripple",
+      "to": "XRP",
+      "relationship": "supports XRP payments through XRPL x402 implementation",
+      "evidence_class": "PUBLIC_STATEMENT_AT_FOUNDATION_LAUNCH"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relationship": "supports RLUSD payments through XRPL x402 implementation",
+      "evidence_class": "PUBLIC_STATEMENT_AT_FOUNDATION_LAUNCH"
+    },
+    {
+      "from": "t54 Labs",
+      "to": "Mastercard",
+      "relationship": "official launch partner of Agent Pay for Machines",
+      "evidence_class": "OFFICIAL_XRPL_AI_HUB_DISCLOSURE"
+    },
+    {
+      "from": "110-wallet x402-compatible cohort",
+      "to": "Heurist Inference Router",
+      "relationship": "payments to exact merchant address",
+      "evidence_class": "BITQUERY_AND_XRP_INSIGHTS_ADDRESS_CROSSWALK"
+    },
+    {
+      "from": "110-wallet x402-compatible cohort",
+      "to": "AskSurf",
+      "relationship": "payments to exact merchant address",
+      "evidence_class": "BITQUERY_AND_XRP_INSIGHTS_ADDRESS_CROSSWALK"
+    },
+    {
+      "from": "110-wallet x402-compatible cohort",
+      "to": "Heurist Mesh",
+      "relationship": "payments to exact merchant address",
+      "evidence_class": "BITQUERY_AND_XRP_INSIGHTS_ADDRESS_CROSSWALK"
+    },
+    {
+      "from": "t54 Labs",
+      "to": "XRPL",
+      "relationship": "batch-settles x402 paid requests through Checks in closed beta",
+      "evidence_class": "OFFICIAL_PRODUCT_UPDATE"
+    },
+    {
+      "from": "Cross River Bank",
+      "to": "RLUSD",
+      "relationship": "announced core-banking integration on 2026-10-15",
+      "evidence_class": "OFFICIAL_ANNOUNCEMENT"
+    }
+  ],
+  "non_edges_and_limits": [
+    "Coinbase, Circle and Ripple share x402 Foundation participation; this is open standards collaboration, not an exclusive partnership or proof of common commercial control.",
+    "x402 supports multiple payment types and networks; x402 Foundation membership does not imply that all members settle on XRPL or use XRP.",
+    "Circle's public x402 statement refers to USDC; Ripple's refers to XRP and RLUSD on XRPL. These are distinct rail implementations under a common protocol.",
+    "No evidence identifies the 110-wallet cohort operator or proves it was part of t54's internal batch-settlement beta.",
+    "No evidence attributes the cluster to Binance corporate."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "x402-merchant-crosslink-and-batch-settlement-source-revision-20261101T211500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "revisions": [
+    {
+      "source_id": "bitquery-rlusd-xrpl-dust-bots-20261019",
+      "revision_type": "reinterpretation_with_new_cross_source_link",
+      "url": "https://www.bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "claim": "Three collector addresses are the same addresses indexed as Heurist Inference Router, AskSurf and Heurist Mesh in the XRPL x402 merchant index.",
+      "verification": "Exact string match of all three XRPL account addresses across the Bitquery investigation and XRP Insights x402 merchant listing."
+    },
+    {
+      "source_id": "t54-xrpl-batch-settlement-update-20261014",
+      "revision_type": "new_mechanism_for_payment_count_discontinuity",
+      "url": "https://xrpl-ai.org/updates",
+      "claim": "XRPL Checks batch settlement entered closed beta on mainnet October 14; 213,008 paid requests were handled in 3,162 sessions and 6,324 ledger transactions from October 14–17.",
+      "verification": "Official t54 Labs product update. It does not identify the 110-wallet cohort as a beta participant."
+    },
+    {
+      "source_id": "linux-foundation-x402-foundation-launch-20260714",
+      "revision_type": "new_institutional_relationship_graph",
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-operational-launch-of-x402-foundation-to-standardize-internet-native-payments-for-ai-agents-and-applications",
+      "claim": "Coinbase contributed x402; Coinbase, Circle, Ripple, Mastercard and t54 Labs are among the x402 Foundation members. Circle publicly discusses USDC; Ripple publicly discusses XRP and RLUSD on XRPL.",
+      "verification": "Linux Foundation primary announcement; establishes shared open-standard participation, not exclusivity."
+    }
+  ],
+  "correction": "The earlier 'dust bot' wording remains a description of automated small-value payments, but does not establish spam, manipulation, or illegality. Reclassify as x402-compatible agent micropayments with unknown operator and unknown production/test status.",
+  "status": "APPENDED_CORRECTION; COHORT_TO_BATCH_MIGRATION_NOT_VERIFIED"
+}
