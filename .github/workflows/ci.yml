@@ -87,4 +87,5 @@ jobs:
             tests/test_external_mutation_workflows_manual_only.py \
             tests/test_remaining_workflow_safety.py \
             tests/test_barrot_agent_workflow_authorization.py \
+            tests/test_barrot_approve_pr_workflow.py \
             -v --no-cov
