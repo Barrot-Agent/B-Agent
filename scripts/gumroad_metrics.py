@@ -54,9 +54,8 @@ def main():
               f"Real permalinks available: {[real_permalink(p) for p in products]}")
         target = products[0] if products else {}
 
-    print("=== RAW real product response (verify field names against this) ===")
-    print(json.dumps(target, indent=2))
-    print("=== end raw response ===\n")
+    # Suppress the raw provider response from workflow logs. Only the
+    # explicitly allowlisted aggregate fields below are written to the artifact.
 
     # Extract only aggregate, non-identifying fields. Field names below
     # are best-guess from Gumroad's own docs (sales_count, price) -
