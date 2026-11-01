@@ -28,6 +28,7 @@ def _source_content(source_id):
             "observations": [
                 {"price_usd": 1.25, "observed_at_utc": "2026-10-30T23:59:00Z"},
                 {"price_usd": 1.25, "observed_at_utc": "2026-10-30T23:58:00Z"},
+                {"price_usd": 1.25, "observed_at_utc": "2026-10-31T23:59:00Z"},
             ],
         })
     if source_id == "SRC-PRICE-001":
