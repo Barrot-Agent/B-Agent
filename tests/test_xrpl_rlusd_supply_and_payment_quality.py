@@ -42,3 +42,19 @@ def test_xrp_auto_bridge_flow_is_gross_transient_usage_not_net_xrp_demand():
     assert d["reported_xrp_in_swaps"] == 246000
     assert any("not net XRP acquired or held" in item for item in d["limitations"])
     assert load()["prediction_status"] == "NOT_ISSUED"
+
+def test_cross_chain_migration_is_supported_but_does_not_reconcile_full_supply_change():
+    d = load()
+    claim = d["supply_assessment"]["cross_chain_migration_claim"]
+    assert "do not reconcile the full" in claim
+    assert any("coindaro.com" in source for source in d["supply_assessment"]["sources"])
+    assert any("tokenpost.com" in source for source in d["supply_assessment"]["sources"])
+
+
+def test_ai_agent_transaction_count_is_separated_from_settled_value():
+    d = load()["ai_agent_payment_case"]
+    assert d["reported_all_time_transactions"] == 4491820
+    assert d["reported_xrp_settled"] == 5836.71
+    assert d["reported_rlusd_settled"] == 4125.29
+    assert d["approximate_usd_value_at_article_price"] == 11830
+    assert any("not equivalent to economic value" in item for item in d["limitations"])
