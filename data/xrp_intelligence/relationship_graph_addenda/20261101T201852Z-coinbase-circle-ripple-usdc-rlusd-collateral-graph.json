@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "id": "coinbase-circle-ripple-usdc-rlusd-collateral-graph-20261101T201852Z",
+  "captured_at_utc": "2026-11-01T20:18:52Z",
+  "nodes": [
+    {
+      "id": "coinbase_financial_markets",
+      "name": "Coinbase Financial Markets",
+      "type": "registered_FCM"
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "type": "exchange_custody_distribution_platform"
+    },
+    {
+      "id": "cftc",
+      "name": "CFTC Market Participants Division",
+      "type": "regulator"
+    },
+    {
+      "id": "circle_internet_financial",
+      "name": "Circle Internet Financial LLC",
+      "type": "NYDFS_money_transmitter_and_virtual_currency_licensee"
+    },
+    {
+      "id": "circle_new_york_trust",
+      "name": "Circle Internet Trust Company LLC",
+      "type": "NYDFS_limited_purpose_trust_company"
+    },
+    {
+      "id": "usdc",
+      "name": "USDC",
+      "type": "payment_stablecoin_candidate"
+    },
+    {
+      "id": "standard_custody",
+      "name": "Standard Custody & Trust Company LLC",
+      "type": "NYDFS_limited_purpose_trust_company_and_RLUSD_issuer"
+    },
+    {
+      "id": "rlusd",
+      "name": "RLUSD",
+      "type": "payment_stablecoin_candidate"
+    },
+    {
+      "id": "ripple_national_trust_bank",
+      "name": "Ripple National Trust Bank",
+      "type": "OCC_approved_national_trust_bank"
+    },
+    {
+      "id": "ripple",
+      "name": "Ripple",
+      "type": "digital_asset_company"
+    },
+    {
+      "id": "bny",
+      "name": "BNY",
+      "type": "institutional_custodian"
+    },
+    {
+      "id": "standard_chartered",
+      "name": "Standard Chartered",
+      "type": "institutional_custodian"
+    },
+    {
+      "id": "lmax",
+      "name": "LMAX Group",
+      "type": "institutional_trading_infrastructure"
+    },
+    {
+      "id": "xrp",
+      "name": "XRP",
+      "type": "digital_asset"
+    }
+  ],
+  "edges": [
+    {
+      "from": "coinbase_financial_markets",
+      "to": "cftc",
+      "relation": "originated_no_action_request_for_FCM_digital_asset_collateral_and_own_stablecoin_residual_interest",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "circle_internet_financial",
+      "to": "usdc",
+      "relation": "regulated_affiliate_issuer",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "circle_new_york_trust",
+      "to": "usdc",
+      "relation": "separate_regulated_affiliate_not_identified_as_current_issuer",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "coinbase",
+      "to": "circle_internet_financial",
+      "relation": "commercial_USDC_distribution_relationship",
+      "status": "PREVIOUS_SEC_FILING_RESEARCH"
+    },
+    {
+      "from": "standard_custody",
+      "to": "rlusd",
+      "relation": "current_issuer",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "ripple_national_trust_bank",
+      "to": "rlusd",
+      "relation": "approved_reserve_management_collateral_trustee_and_custody_roles",
+      "status": "CONFIRMED_APPROVAL_NOT_ISSUER"
+    },
+    {
+      "from": "bny",
+      "to": "rlusd",
+      "relation": "primary_reserve_custodian_and_live_custody_support",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "bny",
+      "to": "xrp",
+      "relation": "live_institutional_custody_support",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "standard_chartered",
+      "to": "rlusd",
+      "relation": "live_custody_on_XRPL",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "standard_chartered",
+      "to": "lmax",
+      "relation": "planned_RLUSD_collateral_mirroring",
+      "status": "PLANNED_NOT_LIVE"
+    },
+    {
+      "from": "cftc",
+      "to": "usdc",
+      "relation": "pre_GENIUS_payment_stablecoin_criteria",
+      "status": "LIKELY_PUBLIC_MATCH_NOT_DETERMINED"
+    },
+    {
+      "from": "cftc",
+      "to": "rlusd",
+      "relation": "pre_GENIUS_payment_stablecoin_criteria",
+      "status": "ISSUER_MATCH_RESERVE_LOOK_THROUGH_UNKNOWN"
+    },
+    {
+      "from": "rlusd",
+      "to": "xrp",
+      "relation": "shared_XRPL_ecosystem_not_proof_of_native_XRP_demand",
+      "status": "ECOSYSTEM_RELATIONSHIP"
+    }
+  ],
+  "unknown_edges": [
+    {
+      "from": "coinbase_financial_markets",
+      "to": "xrp",
+      "relation": "actual_FCM_XRP_collateral_use",
+      "status": "UNKNOWN"
+    },
+    {
+      "from": "coinbase_financial_markets",
+      "to": "bitnomial",
+      "relation": "direct_clearing_relationship",
+      "status": "UNKNOWN"
+    },
+    {
+      "from": "circle_internet_financial",
+      "to": "xrp",
+      "relation": "direct_XRP_collateral_or_purchase_program",
+      "status": "NOT_ESTABLISHED"
+    }
+  ]
+}
