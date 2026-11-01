@@ -43,7 +43,7 @@ def test_tracker_to_sec_holdings_difference_is_preserved():
 
 def test_custody_migration_is_not_called_a_sale():
     snap = load("data/xrp_intelligence/snapshots/20261101T154500Z-evernorth-financing-and-custody-correction.json")
-    assert snap["custody_migration_reconciliation"]["bitgo_activation_confirmed_by_bithomp"] == 9
+    assert snap["custody_migration_reconciliation"]["bitgo_activation_confirmed_in_explorer"] == 9
     assert snap["custody_migration_reconciliation"]["classification"].startswith("STRONGLY_SUPPORTED_BITGO_CUSTODY_REALLOCATION")
 
 
