@@ -21,7 +21,8 @@ def test_external_deploy_workflows_are_manual_and_fail_closed() -> None:
         assert "workflow_dispatch:" in workflow, relative_path
         assert "default: NO" in workflow, relative_path
         assert "options:" in workflow and "- YES" in workflow, relative_path
-        assert "if: ${{ inputs.confirm_external_change == 'YES' }}" in workflow, relative_path
+        assert "inputs.confirm_external_change == 'YES'" in workflow, relative_path
+        assert "github.actor == github.repository_owner" in workflow, relative_path
         assert re.search(r"(?m)^\s*(contents|pull-requests):\s*write\b", workflow) is None, relative_path
         if relative_path.endswith("sync-huggingface.yml"):
             assert "permissions:\n  contents: read" in workflow, relative_path
@@ -48,5 +49,8 @@ def test_self_upgrade_requires_explicit_non_main_branch_approval() -> None:
     assert "confirm_repository_write:" in workflow
     assert "default: NO" in workflow
     assert "options:" in workflow and "- YES" in workflow
-    assert "if: ${{ inputs.confirm_repository_write == 'YES' && github.ref_type == 'branch' && github.ref != 'refs/heads/main' }}" in workflow
+    assert "inputs.confirm_repository_write == 'YES'" in workflow
+    assert "github.actor == github.repository_owner" in workflow
+    assert "github.ref_type == 'branch'" in workflow
+    assert "github.ref != 'refs/heads/main'" in workflow
     assert "pull-requests: write" not in workflow
