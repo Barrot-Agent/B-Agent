@@ -80,4 +80,5 @@ jobs:
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
             tests/test_xrp_cbxrp_morpho_reconciliation.py \
+            tests/test_xrp_cbxrp_institutional_relationship_graph.py \
             -v --no-cov

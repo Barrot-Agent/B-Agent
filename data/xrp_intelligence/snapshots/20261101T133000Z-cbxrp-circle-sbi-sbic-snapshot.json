@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "cbxrp-circle-sbi-sbic-snapshot-20261101T1330Z",
+  "data_cutoff_utc": "2026-11-01T13:30:40Z",
+  "base_main_sha": "7fdef08b5dcaaf85d2fb6b01986b6a8c4b7a9c20",
+  "observations": {
+    "cbxrp": {
+      "total_reserve_xrp": 150942337.33,
+      "total_supply_cbxrp": 150940089.8,
+      "reserve_surplus_xrp": 2247.53,
+      "reserve_coverage_ratio": 1.0000149,
+      "wrapped_asset_contract_base": "0xcb585250f852C6c6bf90434AB21A00f02833a4af",
+      "reserve_page_display_time": "2026-11-01 12:13 PM; timezone not stated",
+      "coinbase_policy": "1:1 backed; underlying held in custody and not sold, transferred, or utilized by Coinbase; cbXRP can be used in DeFi; no separate Coinbase order book"
+    },
+    "morpho_candidate_market": {
+      "chain_id": 8453,
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "collateral_token": "cbXRP",
+      "loan_token": "USDC",
+      "lltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "collateral_cbxrp": 118550000,
+      "collateral_value_usd": 148000000,
+      "borrowed_usdc": 59200000,
+      "supplied_usdc": 65460000,
+      "utilization_pct": 90.4,
+      "borrow_apy_pct": 7.87,
+      "supply_apy_pct": 7.09,
+      "available_to_borrow_usdc": 6260000,
+      "additional_vault_capacity_usdc": 708000,
+      "open_loan_positions_reported": 12006,
+      "liquidations_30d_reported": 1122,
+      "debt_repaid_by_liquidations_30d_usdc": 3940000,
+      "top_three_vault_supply_usdc": 51850000,
+      "top_three_vault_share_of_market_supply_pct": 79.2,
+      "vault_supply_total_usdc": 58130000,
+      "top_position_price_drop_to_liquidation_pct_min": 13.1,
+      "top_position_price_drop_to_liquidation_pct_next": 14.8,
+      "modeled_collateral_at_risk_under_20pct_price_drop_usd": 22050000,
+      "source_last_updated_utc": "2026-11-01T13:11:00Z",
+      "classification": "third_party_onchain_analytics_candidate_market"
+    },
+    "coinbase_product": {
+      "product": "USDC crypto-backed loans powered by Morpho on Base",
+      "xrp_eligible": true,
+      "max_usdc_borrow_against_xrp": 100000,
+      "generic_documented_liquidation_ltv_pct": 86,
+      "exact_xrp_market_id_published_by_coinbase": false,
+      "collateral_transferred_onchain_to_morpho": true,
+      "usdc_delivered_to_coinbase_account": true
+    },
+    "coinbase_financials_q3_2026": {
+      "stablecoin_revenue_q3_usd": 306905000,
+      "stablecoin_revenue_9m_usd": 904487000,
+      "q3_net_revenue_usd": 1200000000,
+      "q3_subscription_services_revenue_usd": 570238000,
+      "q3_consumer_spot_volume_yoy_change_pct": -59,
+      "q3_institutional_spot_volume_yoy_change_pct": -53,
+      "usdc_average_on_platform": "all-time high",
+      "circle_arrangement": "renewed on same terms"
+    },
+    "circle_financials_q2_2026": {
+      "reserve_income_share_q2_revenue_pct": 95.2,
+      "reserve_income_share_h1_revenue_pct": 94.6,
+      "usdc_circulation_q2_end_usd": 73269000000,
+      "usdc_average_circulation_q2_usd": 76524000000,
+      "usdc_on_coinbase_q2_end_usd": 12442000000,
+      "coinbase_daily_weighted_average_share_pct": 19.5,
+      "distribution_costs_to_coinbase_q2_usd": 324600000,
+      "distribution_costs_to_coinbase_h1_usd": 655300000
+    }
+  },
+  "derived_metrics": {
+    "cbxrp_supply_in_candidate_market_share_pct": 78.5,
+    "candidate_market_aggregate_debt_to_collateral_pct": 40,
+    "top_three_vaults_share_pct": 79.2,
+    "reserve_surplus_basis_points": 0.149,
+    "coinbase_q3_stablecoin_revenue_share_of_subscription_services_pct": 53.8
+  },
+  "interpretation": {
+    "confirmed": "Coinbase offers USDC loans through Morpho on Base, supports XRP as eligible collateral, and issues 1:1 cbXRP on Base; underlying XRP remains in Coinbase custody under Coinbase's published policy.",
+    "inference": "Morpho Watch's cbXRP/USDC Base market is a candidate market associated with Coinbase's XRP loan product, but Coinbase has not published the exact market ID.",
+    "disconfirming_evidence": [
+      "Coinbase's generic product page states an 86% liquidation LTV while the candidate Morpho market has 62.5% LLTV",
+      "Coinbase's retail loan cap for XRP is $100,000, while displayed positions in the candidate market exceed $200,000",
+      "Morpho is permissionless and market-wide positions are not attributable to Coinbase's retail interface"
+    ],
+    "actual_capital": "The $59.2M borrowed USDC is outstanding collateralized credit in a permissionless market, not evidence of $59.2M of fresh spot XRP purchases or net external capital entering XRP.",
+    "collateralization": "The posted asset is cbXRP, not native XRP. Coinbase states the underlying XRP backing wrapped assets is not sold, transferred or otherwise utilized by Coinbase. Borrowers pledge the transferable wrapper."
+  },
+  "forecasts": [],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "none; all Morpho Watch aggregates remain quarantined pending raw block-level reconstruction"
+}
