@@ -10,6 +10,8 @@ import os
 from collections import Counter
 from itertools import combinations
 
+from knowledge_freshness import latest_ingested_at, freshness_status, as_utc_iso
+
 KB_DIR = "ping-pongings/knowledge-base"
 XRP_LOG = os.path.join(KB_DIR, "log.jsonl")
 BTC_LOG = os.path.join(KB_DIR, "log_btc.jsonl")
@@ -63,7 +65,10 @@ def main():
             }
         )
 
+    data_as_of = latest_ingested_at([e for e, _asset in all_entries])
     out = {
+        "data_as_of": as_utc_iso(data_as_of),
+        "input_freshness_status": freshness_status(data_as_of),
         "generated_from": {"xrp_entries": len(xrp_entries), "btc_entries": len(btc_entries)},
         "unique_pairs_found": len(results),
         "pairs": results,
