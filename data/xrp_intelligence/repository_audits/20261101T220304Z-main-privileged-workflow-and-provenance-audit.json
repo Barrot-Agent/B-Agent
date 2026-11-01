@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "artifact_type": "barrot_repository_audit_addendum",
+  "captured_at_utc": "2026-11-01T22:03:04Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "a26feebb31c98923e4161b61339cfb575df6fc34",
+    "protected": true,
+    "required_status_contexts": [],
+    "review_rules": "NOT_VERIFIED_FROM_BRANCH_RESPONSE"
+  },
+  "findings": [
+    {
+      "severity": "CRITICAL",
+      "path": "scripts/scheduler.py",
+      "finding": "_valid_workflow only checks that a queued filename exists in .github/workflows; tick() then executes gh workflow run with queue-supplied inputs. No strict workflow allowlist.",
+      "impact": "Any existing workflow, including privileged workflows, can be dispatched by a queue entry."
+    },
+    {
+      "severity": "CRITICAL",
+      "path": ".github/workflows/scheduler-tick.yml",
+      "finding": "Current main grants contents:write and actions:write and runs the mutating scheduler tick."
+    },
+    {
+      "severity": "CRITICAL",
+      "path": ".github/workflows/merge-queue.yml",
+      "finding": "Manual dispatch defaults dry_run=false; max_prs=0 means unlimited; mode=all is available; GH_PAT write/merge capability; no explicit per-PR designated-human approval check found in inspected source.",
+      "impact": "Can update branches and attempt merges; exposed branch metadata shows no required status contexts."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/subscriber_sync.yml and web/signals.html",
+      "finding": "Reads Gumroad subscriber emails, publishes unsalted SHA-256 identifiers in web/subscribers.json, and performs client-side comparison.",
+      "impact": "Not server-side authorization; current public file was empty. PR #1476 disables this path."
+    },
+    {
+      "severity": "HIGH",
+      "path": "ping-pongings/knowledge-base/sentiment_shift.json",
+      "finding": "Current artifact has zero recent/prior observations and null XRP/BTC scores while generated_at advances.",
+      "impact": "Computation timestamp is not source freshness; exclude from predictive features."
+    },
+    {
+      "severity": "HIGH",
+      "path": "cross-analysis and autonomous issue/PR workflows",
+      "finding": "Scheduled writer and autonomous issue/PR mutation capabilities remain on main pending approved remediation.",
+      "impact": "PR #1474 is a tested proposal, not active remediation."
+    }
+  ],
+  "open_prs": [
+    {
+      "number": 1474,
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "head_sha": "2fd1d1c92e2849bfb5d71a1fd28db04695cb6709",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41345160046,
+      "ci": "390 passed, 8 subtests",
+      "gate_run": 41345160075,
+      "gate": "PASS; merge disabled"
+    },
+    {
+      "number": 1475,
+      "base_sha": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "head_sha": "8268d158449f3e96b585661ee670e515752146f6",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41345671223,
+      "ci": "405 passed, 8 subtests",
+      "gate_run": 41345671296,
+      "gate": "PASS; merge disabled",
+      "remaining_gap": "Outcome source hash is verified against registry; semantic proof that submitted horizon price appears in immutable source bytes remains follow-up."
+    },
+    {
+      "number": 1476,
+      "base_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+      "head_sha": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci_run": 41353058271,
+      "ci": "345 passed, 8 subtests",
+      "gate_run": 41353058127,
+      "gate": "PASS; merge disabled"
+    }
+  ],
+  "prior_research_branch": {
+    "pr": 1464,
+    "status": "OPEN_DRAFT_UNMERGED",
+    "note": "Contains a 20261101T221200Z handoff later than this run's 20261101T220304Z cutoff; preserve but exclude pending clock-skew/concurrent-run provenance."
+  },
+  "actions_not_taken": [
+    "No merge",
+    "No force-push",
+    "No manual workflow dispatch",
+    "No secret access",
+    "No deployment",
+    "No main-branch write"
+  ],
+  "limitations": [
+    "Full Node/Docker/GitHub Action dependency audit not completed",
+    "Branch-protection review requirements not independently read",
+    "Known zero-job push-event anomalies remain unresolved"
+  ]
+}

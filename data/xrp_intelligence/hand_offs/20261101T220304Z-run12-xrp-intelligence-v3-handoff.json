@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "artifact_type": "barrot_xrp_intelligence_v3_handoff",
+  "captured_at_utc": "2026-11-01T22:03:04Z",
+  "mission": "XRP intelligence and prediction-engine mastery is the highest-priority Barrot mission; Barrot V3 remains the execution and verification foundation.",
+  "completed_this_run": [
+    "Inspected live main and open PR state first.",
+    "Researched Coinbase-Ripple RLUSD partnership, Coinbase-Circle SEC economics, Circle Arc and SBI Group participation.",
+    "Cross-matched three x402 merchant destination addresses with Bitquery RLUSD dust-cluster collector addresses.",
+    "Recorded RLUSD supply definition/time discrepancy and blocked feature admission.",
+    "Captured XRP derivatives, ETF flows and exchange balances without averaging incompatible providers.",
+    "Audited current main scheduler, merge queue, subscriber gate and sentiment artifact.",
+    "Created fresh-main research branch with append-only evidence and regression tests."
+  ],
+  "verified": [
+    "Main SHA before branch creation: a26feebb31c98923e4161b61339cfb575df6fc34.",
+    "Main branch protected=true; exposed required status context list empty.",
+    "PR #1474 exact-head CI 390 tests + 8 subtests and fail-closed gate passed.",
+    "PR #1475 exact-head CI 405 tests + 8 subtests and fail-closed gate passed.",
+    "PR #1476 exact-head CI 345 tests + 8 subtests and fail-closed gate passed.",
+    "No directional XRP forecast issued."
+  ],
+  "designed_not_executed": [
+    "Nine-platform adapters for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain design-only.",
+    "Walk-forward/backtest/calibration/shadow engine has no verified XRP outcome population.",
+    "Raw XRPL gateway_balances and x402 SourceTag joins remain required."
+  ],
+  "blockers": [
+    "RLUSD XRPL supply definition/ledger-cutoff mismatch ($707.4M versus $910.3M observation).",
+    "x402 count may overlap a 110-wallet RLUSD dust cluster; raw SourceTag join not done.",
+    "Main retains privileged scheduler and merge queue pending approved remediation.",
+    "Main subscriber page remains client-side; PR #1476 is unmerged.",
+    "Main sentiment timestamp advances despite zero observations and null scores."
+  ],
+  "next_action": "Verify this research PR's exact-head CI and fail-closed gate; then reconcile raw RLUSD supply definitions and x402 SourceTag overlap before predictive feature admission.",
+  "forecast_status": "NOT_ISSUED",
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ]
+  },
+  "safety": {
+    "main_unchanged": true,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployment": false,
+    "real_money": false
+  }
+}

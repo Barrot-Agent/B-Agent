@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-01T22:03:04Z",
+  "run": "12",
+  "findings": [
+    {
+      "id": "F1",
+      "label": "CONFIRMED",
+      "claim": "Coinbase-Ripple RLUSD partnership announced 2026-10-28; Prime, Exchange and Retail access live; Global Exchange collateral future-announced.",
+      "sources": [
+        "SRC_RIPPLE_COINBASE"
+      ]
+    },
+    {
+      "id": "F2",
+      "label": "CONFIRMED_BY_SEC_FILINGS",
+      "claim": "Coinbase renewed Circle arrangement on same terms; Q3 stablecoin revenue $306.905M; Circle reported Q2 Coinbase distribution costs $324.6M.",
+      "sources": [
+        "SRC_COINBASE_10Q",
+        "SRC_CIRCLE_10Q"
+      ]
+    },
+    {
+      "id": "F3",
+      "label": "CONFIRMED_COMPANY_ANNOUNCEMENT",
+      "claim": "Arc uses USDC gas; SBI Group is in founding validator cohort; Coinbase is an exchange participant; Circle reports 98.8% agent-driven volume is USDC.",
+      "sources": [
+        "SRC_CIRCLE_ARC"
+      ],
+      "caveat": "98.8% is company-reported."
+    },
+    {
+      "id": "F4",
+      "label": "HISTORICAL_LAUNCH_CONFIRMED",
+      "claim": "SBI Remit announced XRP remittance corridors via SBI VC Trade and Tranglo; current throughput unknown.",
+      "sources": [
+        "SRC_SBI_REMIT"
+      ]
+    },
+    {
+      "id": "F5",
+      "label": "IDENTITY_RESOLVED",
+      "claim": "SBIC is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., distinct from SBI Holdings; no direct XRP/Circle relation established.",
+      "sources": [
+        "SRC_SBIC"
+      ]
+    },
+    {
+      "id": "F6",
+      "label": "SOURCED_ONCHAIN_ANALYSIS",
+      "claim": "Bitquery reports 99.6% of RLUSD payment count in its window went to three collectors from a 110-wallet cluster; the same addresses are x402 dashboard top merchants.",
+      "sources": [
+        "SRC_BITQUERY",
+        "SRC_XRP_INSIGHTS"
+      ],
+      "caveat": "Address overlap confirmed; same transaction SourceTag and operator identity not confirmed."
+    },
+    {
+      "id": "F7",
+      "label": "SOURCED_BUT_UNRECONCILED",
+      "claim": "RLUSD XRPL supply observations differ by $202.9M across two provider/time definitions.",
+      "sources": [
+        "SRC_XRP_INSIGHTS",
+        "SRC_XR_LINEAGE"
+      ]
+    },
+    {
+      "id": "F8",
+      "label": "SOURCED_MARKET_OBSERVATION",
+      "claim": "XRP derivatives show positive funding and long-skewed positioning; provider scopes differ.",
+      "sources": [
+        "SRC_TRADRADAR",
+        "SRC_SEANDRA"
+      ]
+    }
+  ],
+  "unresolved_threads": [
+    {
+      "topic": "ASK Coin",
+      "status": "UNRESOLVED",
+      "note": "Permission Coin ASK remains a candidate; direct XRP integration unverified."
+    },
+    {
+      "topic": "actual capital",
+      "status": "UNRESOLVED_ORIGIN_PHRASE",
+      "note": "Separate cash purchases, in-kind contributions, debt, collateral encumbrance, stablecoin reserves, internal transfers and valuation changes."
+    },
+    {
+      "topic": "Camilla Stephenson videos",
+      "status": "IDENTITY_NOT_CONFIRMED",
+      "note": "Kamilah/Camila Stevenson remains a candidate, not confirmed as Camilla Stephenson; exhaustive public upload inventory incomplete."
+    },
+    {
+      "topic": "SBIC",
+      "status": "IDENTITY_RESOLVED",
+      "note": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; distinct from SBI Holdings."
+    }
+  ],
+  "forecast_ledger": {
+    "status": "NOT_ISSUED",
+    "verified_xrp_forecasts": 0,
+    "resolved_xrp_outcomes": 0,
+    "calibration_status": "NOT_ESTIMABLE"
+  },
+  "next_actions": [
+    "Reconcile raw RLUSD gateway_balances with pinned ledger and hot-wallet exclusions.",
+    "Join x402 SourceTag 804681468 to Bitquery collector transaction hashes and t54 event IDs.",
+    "Capture Arc public-mainnet activity and stablecoin liquidity with methodology.",
+    "Verify Coinbase Global Exchange RLUSD collateral activation and FCM notices of reliance under CFTC 26-05.",
+    "Reconcile ETF flows issuer by issuer, including GXRP and Maketo differences.",
+    "Normalize derivatives by venue/contract/quote currency/timestamp.",
+    "Continue SBIC, ASK Coin, actual capital and Camilla identity research."
+  ]
+}
