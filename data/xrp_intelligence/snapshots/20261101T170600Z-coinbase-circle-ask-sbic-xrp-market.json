@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "coinbase-circle-ask-sbic-xrp-market-20261101T170600Z",
+  "captured_at_utc": "2026-11-01T17:06:00Z",
+  "subject": "Coinbase Q3 strategy, Circle distribution economics, Permission Coin ASK wallet integration, Japan SBIC identity and XRP derivatives",
+  "market_observation": {
+    "source_id": "tradradar-xrp-perpetuals-2026-11-01-1610z",
+    "provider_updated_at_utc": "2026-11-01T16:10:00Z",
+    "retrieval_time_utc": "2026-11-01T17:06:00Z",
+    "display_delay_minutes": 15,
+    "xrp_usd": 1.2509,
+    "price_change_24h_pct": -0.22,
+    "open_interest_usd": 1900000000,
+    "open_interest_24h_change_pct": 1.43,
+    "funding_rate_oi_weighted_8h_pct": 0.0077,
+    "liquidations_24h_lower_bound_usd": 552720,
+    "long_liquidations_usd": 432250,
+    "short_liquidations_usd": 120460,
+    "long_short_account_ratio": 3.52,
+    "long_account_share_pct": 77.9,
+    "exchange_open_interest_usd": {
+      "Binance": 425160000,
+      "Bybit": 347940000,
+      "MEXC": 286850000,
+      "Gate": 275810000,
+      "Bitget": 250090000,
+      "Hyperliquid": 195520000,
+      "OKX": 114270000
+    },
+    "methodology": "Seven exchange perpetual OI; five exchange long/short and liquidation data. Liquidations are a lower bound.",
+    "comparability_warning": "Do not infer a change versus Liqwall's earlier $1.33B without matching exchange coverage, contract scope and observation time.",
+    "feature_admission": "DESCRIPTIVE_ONLY_NOT_ADMITTED_TO_PREDICTIVE_FEATURE_STORE"
+  },
+  "coinbase_q3_2026": {
+    "source_ids": [
+      "coinbase-q3-2026-ir-2026-10-29",
+      "coinbase-2026q3-10q"
+    ],
+    "period_end": "2026-09-30",
+    "filing_date": "2026-10-29",
+    "gaap_net_income_usd": 718697000,
+    "net_crypto_investment_fair_value_gains_usd": 715022000,
+    "adjusted_net_income_usd": 77700000,
+    "adjusted_ebitda_usd": 332868000,
+    "net_revenue_usd": 1160462000,
+    "subscription_and_services_share_of_net_revenue_pct": 49,
+    "stablecoin_revenue_q3_usd": 306905000,
+    "stablecoin_revenue_nine_months_usd": 904487000,
+    "stablecoin_revenue_nine_months_prior_year_usd": 907485000,
+    "average_usdc_held_in_coinbase_products_usd": 22000000000,
+    "average_usdc_share_of_average_market_cap_pct": 30,
+    "crypto_trading_volume_market_share_pct": 10.7,
+    "assets_on_platform_share_of_total_crypto_market_cap_pct": 12.5,
+    "prediction_markets_annualized_revenue_usd_lower_bound": 200000000,
+    "average_daily_loan_book_balance_growth_yoy_pct": 74,
+    "interpretation": "Q3 GAAP net income included $715.022M of gains on crypto assets held for investment, mainly fair-value remeasurement of BTC and ETH. Adjusted net income was $77.7M. Higher average USDC balances supported stablecoin revenue while lower interest rates offset part of that benefit.",
+    "xrp_implication": "These are Coinbase-wide platform metrics, not XRP-specific net purchases, collateral balances or settlement volume."
+  },
+  "circle_h1_2026": {
+    "source_ids": [
+      "circle-usdc-economics-2026-10-16",
+      "circle-2026q2-10q"
+    ],
+    "issuer_reported_onchain_transaction_volume_usd": 36000000000000,
+    "issuer_reported_mint_and_redeem_volume_usd": 315000000000,
+    "issuer_reported_share_of_global_stablecoin_transaction_volume_june_pct": 77,
+    "sec_reported_revenue_and_reserve_income_usd": 1395448000,
+    "sec_reported_distribution_transaction_and_other_costs_usd": 815816000,
+    "issuer_blog_rounded_partner_and_transaction_costs_usd": 819000000,
+    "issuer_blog_reinvestment_usd": 473000000,
+    "issuer_blog_net_profit_per_revenue_dollar_usd": 0.07,
+    "sec_reported_coinbase_distribution_costs_h1_usd": 655300000,
+    "limitation": "Circle's transaction-volume and 77% market-share figures are issuer-reported aggregates, not unique payments, net economic settlement or XRPL/XRP-specific volume."
+  },
+  "circle_binance_relationship": {
+    "source_id": "circle-binance-2026-09-17-8k",
+    "agreement_entered": "2026-09-17",
+    "filing_date": "2026-09-22",
+    "equity_investment_usd": 100000000,
+    "shares_issued": 1237011,
+    "price_per_share_usd": 80.84,
+    "commercial_term_years": 5,
+    "incentive_basis": "Monthly incentive fee linked to USDC held through Circle Modular Smart Contract Wallet infrastructure; Binance promotes USDC.",
+    "limitation": "No XRP purchases, XRP market making or XRP reserve changes are specified."
+  },
+  "permission_ask": {
+    "candidate_identity": "Permission Coin (ASK)",
+    "identity_status": "STRONG_CANDIDATE_NOT_EXCLUSIVE_IDENTIFICATION",
+    "wallet_partnership_date": "2026-09-22",
+    "wallet_provider": "Coinbase embedded wallet infrastructure",
+    "custody_description": "Permission says Coinbase secures the private key in its systems; Permission login authorizes transactions and key export is supported.",
+    "official_contracts": {
+      "Base": "0xBB146326778227A8498b105a18f84E0987A684b4",
+      "Polygon": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff"
+    },
+    "token_standard": "LayerZero OFT-20",
+    "bridging": "Stargate",
+    "documented_networks": [
+      "Base",
+      "Polygon"
+    ],
+    "planned_networks": [
+      "Ethereum Mainnet",
+      "Arbitrum",
+      "other EVM-compatible chains"
+    ],
+    "xrp_or_xrpl_contract_listed": false,
+    "classification": "COINBASE_WALLET_INFRASTRUCTURE_RELATIONSHIP_NOT_COINBASE_EXCHANGE_LISTING",
+    "limitation": "No direct ASK/XRP or ASK/XRPL integration is established by reviewed official docs. Cross-chain-ready wallet language does not establish XRPL support."
+  },
+  "japan_sbic": {
+    "source_ids": [
+      "sbic-tokyo-profile",
+      "sbic-ai-training-2025-06-12"
+    ],
+    "resolved_entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社; SBIC East Japan)",
+    "legal_identifier": "9011001030621",
+    "established": "1963-11-15",
+    "coverage": "18 prefectures and other areas",
+    "business": "Long-term equity investment and growth support for investee SMEs.",
+    "chatgpt_event": "Official 2025-06-12/13 generative-AI and ML training for investee companies, including ChatGPT and Copilot, delivered by VOST.",
+    "relationship_classification": "EDUCATIONAL_TRAINING_FOR_INVESTEES",
+    "not_established": [
+      "OpenAI commercial partnership",
+      "SBI Holdings affiliation",
+      "SBI Ripple Asia affiliation",
+      "XRP or XRPL investment or integration"
+    ],
+    "disambiguation": "Tokyo SBIC is a separate legal entity from SBI Holdings, SBI Ripple Asia, SBI VC Trade, and the Osaka and Nagoya regional corporations."
+  },
+  "upcoming_events": [
+    {
+      "event": "Circle Q3 2026 financial results",
+      "scheduled_at": "2026-11-04T13:00:00Z",
+      "local_time": "2026-11-04 08:00 ET",
+      "source_id": "circle-q3-2026-event-2026-11-04",
+      "status": "SCHEDULED_EVENT_NOT_OUTCOME"
+    }
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

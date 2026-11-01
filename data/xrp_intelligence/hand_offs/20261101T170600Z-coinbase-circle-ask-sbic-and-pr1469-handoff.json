@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "handoff_id": "coinbase-circle-ask-sbic-and-pr1469-handoff-20261101T170600Z",
+  "captured_at_utc": "2026-11-01T17:06:00Z",
+  "latest_research_snapshot": "data/xrp_intelligence/snapshots/20261101T170600Z-coinbase-circle-ask-sbic-xrp-market.json",
+  "latest_source_revision": "data/xrp_intelligence/source_revisions/20261101T170600Z-coinbase-circle-ask-sbic-xrp-source-revision.json",
+  "latest_relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T170600Z-ask-coinbase-circle-sbi-xrp-graph.json",
+  "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T170600Z-coinbase-circle-ask-sbic-market-admission.json",
+  "research_ledger_addendum": "data/xrp_intelligence/research_ledger_addenda/20261101T170600Z-coinbase-circle-ask-sbic-market-and-pr1469.json",
+  "repository_audit": "data/repository_audits/20261101T170600Z-main-workflow-pr1469-and-research-pr-audit.json",
+  "prs": {
+    "security_successor": {
+      "number": 1469,
+      "head": "490d8c2eb08961dc85f788f87a8052bdc3bc2895",
+      "base": "32682bc3797009421682ab51da59bf058b7d63d5",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": "IN_PROGRESS_AT_CAPTURE",
+      "gate": "PASSED_MERGING_DISABLED"
+    },
+    "research": {
+      "number": 1464,
+      "head": "dfae6e87d646dde07e8f832a9fef8e49f37099be",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": "426 tests + 8 subtests passed",
+      "gate": "PASSED_MERGING_DISABLED"
+    },
+    "prediction_integrity": {
+      "number": 1468,
+      "head": "cea621064bb11815482ac23b04be18245cd6609d",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": "389 tests + 8 subtests passed",
+      "gate": "PASSED_MERGING_DISABLED"
+    },
+    "dependency_audit": {
+      "number": 1467,
+      "head": "827e96dce829a2f6093abd7faaefe7807f80e1e7",
+      "state": "OPEN_DRAFT_UNMERGED",
+      "ci": "348 tests + 8 subtests passed; four Python dependency sets audited",
+      "gate": "PASSED_MERGING_DISABLED"
+    }
+  },
+  "prediction_engine": {
+    "status": "IMPLEMENTED_NOT_POPULATED",
+    "forecast_status": "NOT_ISSUED",
+    "feature_admission": "NONE",
+    "reason": "No verified forecast/outcome cohort and no synchronized point-in-time XRP feature history."
+  },
+  "next_actions": [
+    "Poll PR #1469 exact-head CI; update status only after completed run is verified.",
+    "Preserve main; do not merge without explicit user authorization.",
+    "Capture Circle Q3 2026 results on 2026-11-04 08:00 ET and reconcile reserve income, USDC circulation, distribution costs, Coinbase share and onchain volume.",
+    "Build Coinbase-specific XRP market/loan history; distinguish product eligibility from actual utilization.",
+    "Verify ASK activity on Base and Polygon; search for an exact ASK-to-XRPL channel rather than infer one.",
+    "Resolve Camilla/Kamilah channel-ID ambiguity and deduplicate public uploads.",
+    "Continue raw XRPL escrow transaction/destination tracing; do not convert gross releases into net selling supply.",
+    "Keep all market observations descriptive until venue-level snapshots, feature lineage and walk-forward evaluation are implemented."
+  ],
+  "safety": "Main unchanged at 32682bc3797009421682ab51da59bf058b7d63d5. No merge, force-push, manual workflow dispatch, secret access, deployment or trading action."
+}

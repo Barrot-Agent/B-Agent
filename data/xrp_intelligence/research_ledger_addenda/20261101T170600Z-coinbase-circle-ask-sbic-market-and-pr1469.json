@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "addendum_id": "coinbase-circle-ask-sbic-market-and-pr1469-20261101T170600Z",
+  "captured_at_utc": "2026-11-01T17:06:00Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T170600Z-coinbase-circle-ask-sbic-xrp-market.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T170600Z-coinbase-circle-ask-sbic-xrp-source-revision.json",
+  "relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T170600Z-ask-coinbase-circle-sbi-xrp-graph.json",
+  "architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T170600Z-coinbase-circle-ask-sbic-market-admission.json",
+  "repository_audit": "data/repository_audits/20261101T170600Z-main-workflow-pr1469-and-research-pr-audit.json",
+  "findings": [
+    "Coinbase Q3 shows $22B average USDC on-platform and 10.7% company-reported trading-volume share, but GAAP net income includes $715.022M crypto investment gains; adjusted net income is $77.7M.",
+    "Circle H1 distribution economics and Binance $100M equity/USDC deal are separately sourced; no XRP-specific market-making or reserve purchase is established.",
+    "Permission Coin ASK is the strongest candidate for ASK Coin; Coinbase supplies embedded wallet infrastructure; official contracts are on Base and Polygon, with no direct XRPL contract listed.",
+    "Tokyo SBIC is identified as Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; its ChatGPT course was for investee companies, not an OpenAI commercial partnership.",
+    "TradRadar 16:10 UTC XRP derivatives snapshot is preserved provider-specifically and excluded from predictive features."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

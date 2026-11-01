@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "decision_id": "coinbase-circle-ask-sbic-market-admission-20261101T170600Z",
+  "captured_at_utc": "2026-11-01T17:06:00Z",
+  "decisions": [
+    {
+      "topic": "Coinbase Q3 earnings",
+      "decision": "Separate GAAP net income from adjusted operating measures and crypto investment fair-value gains.",
+      "reason": "$718.697M GAAP net income included $715.022M net gains on crypto assets held for investment; adjusted net income was $77.7M."
+    },
+    {
+      "topic": "Coinbase USDC economics",
+      "decision": "Treat $22B average USDC platform balance and $306.905M Q3 stablecoin revenue as stablecoin economics, not XRP demand.",
+      "reason": "Neither metric identifies XRP purchases, XRP collateral balances or XRP settlement volume."
+    },
+    {
+      "topic": "Circle H1 transaction volume",
+      "decision": "Keep Circle's $36T USDC volume and 77% June stablecoin-volume share as issuer-reported aggregate metrics.",
+      "reason": "These do not establish unique payments, net settlement, XRPL-specific volume or XRP demand."
+    },
+    {
+      "topic": "Circle-Binance",
+      "decision": "Add $100M equity investment and five-year USDC distribution agreement as a direct Circle-Binance edge and only an indirect XRP-market connection.",
+      "reason": "SEC 8-K ties incentives to USDC held through Circle wallet infrastructure; it does not mention XRP."
+    },
+    {
+      "topic": "ASK Coin identity",
+      "decision": "Treat Permission Coin ASK as strongest candidate, not an exclusive resolution of the original phrase.",
+      "reason": "Official contracts list Base and Polygon LayerZero OFT-20 deployments; Coinbase partnership is embedded-wallet infrastructure, not an exchange listing; no XRPL contract is listed."
+    },
+    {
+      "topic": "Japan SBIC",
+      "decision": "Keep Tokyo SBIC separate from SBI Holdings, SBI Ripple Asia and SBI VC Trade.",
+      "reason": "Official profile identifies its own corporate number; ChatGPT course was for investee companies and delivered by VOST."
+    },
+    {
+      "topic": "XRP derivatives",
+      "decision": "Preserve TradRadar 16:10 UTC observation as provider-specific descriptive data only.",
+      "reason": "Seven-exchange OI and five-exchange liquidation coverage differ from Liqwall; no cross-provider delta is admitted."
+    },
+    {
+      "topic": "Prediction issuance",
+      "decision": "Do not issue a directional XRP forecast from these relationships or one derivatives snapshot.",
+      "reason": "No point-in-time feature history, matched event-study baseline or out-of-sample calibrated model supports a probability."
+    }
+  ],
+  "model_policy": {
+    "feature_admission": "NONE",
+    "forecast_status": "NOT_ISSUED",
+    "company_metrics": "CONTEXTUAL_COVARIATES_ONLY_PENDING_POINT_IN_TIME_HISTORY",
+    "onchain_settlement": "REQUIRE_CHAIN_AND_ASSET_SPECIFIC_RAW_LEDGER_EVIDENCE",
+    "stablecoin_volume": "DO_NOT_TREAT_GROSS_TRANSFER_VOLUME_AS_NET_EXTERNAL_CAPITAL",
+    "collateral": "SEPARATE_WRAPPER_SUPPLY_RESERVES_COLLATERAL_POSTED_DEBT_AND_UTILIZATION",
+    "market_data": "RETAIN_PROVIDER_VENUE_COVERAGE_AND_AS_OF_TIMESTAMP"
+  }
+}

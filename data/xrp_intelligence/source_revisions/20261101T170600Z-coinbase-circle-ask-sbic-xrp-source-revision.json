@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "revision_id": "coinbase-circle-ask-sbic-xrp-source-revision-20261101T170600Z",
+  "captured_at_utc": "2026-11-01T17:06:00Z",
+  "sources": [
+    {
+      "id": "coinbase-q3-2026-ir-2026-10-29",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "publisher": "Coinbase Investor Relations",
+      "type": "PRIMARY_COMPANY_EARNINGS_RELEASE",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Q3 average USDC held in Coinbase products reached $22B, about 30% of average USDC market cap.",
+        "Coinbase reported 10.7% crypto trading-volume market share and 12.5% assets-on-platform share.",
+        "Prediction markets exceeded $200M annualized revenue; subscription and services were 49% of Q3 net revenue; average daily loan-book balance rose 74% YoY.",
+        "Adjusted net income was $77.7M and adjusted EBITDA approximately $332.9M."
+      ],
+      "limitations": [
+        "Company-defined market-share and annualized product metrics; not independently recomputed."
+      ]
+    },
+    {
+      "id": "coinbase-2026q3-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "SEC / Coinbase Global",
+      "type": "SEC_FORM_10Q",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Q3 GAAP net income was $718.697M; net gains on crypto assets held for investment were $715.022M, primarily BTC and ETH fair-value remeasurement.",
+        "Q3 stablecoin revenue was $306.905M; nine-month stablecoin revenue was $904.487M versus $907.485M prior year.",
+        "Higher average USDC balances added $84.6M to Q3 stablecoin revenue while lower rates reduced it by $52.8M.",
+        "Coinbase renewed its Circle arrangement on the same terms."
+      ],
+      "limitations": [
+        "Stablecoin revenue is not an XRP flow metric."
+      ]
+    },
+    {
+      "id": "circle-usdc-economics-2026-10-16",
+      "url": "https://www.circle.com/blog/the-economics-of-usdc-and-why-our-partners-win",
+      "publisher": "Circle",
+      "type": "PRIMARY_COMPANY_BLOG",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Circle reported more than $36T USDC onchain transaction volume in H1 2026 and more than $315B minted and redeemed.",
+        "Circle stated USDC represented roughly 77% of global stablecoin transaction volume in June.",
+        "Circle said approximately $819M of H1 revenue went to distribution partners and transaction costs and approximately $473M was reinvested."
+      ],
+      "limitations": [
+        "Issuer claims; gross transaction volume is not unique payments, net settlement or XRPL-specific activity."
+      ]
+    },
+    {
+      "id": "circle-2026q2-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "publisher": "SEC / Circle Internet Group",
+      "type": "SEC_FORM_10Q",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Circle reported $1.395448B H1 revenue and reserve income and $815.816M distribution, transaction and other costs.",
+        "Circle reported $655.3M H1 distribution costs connected with Coinbase agreements.",
+        "Circle identifies Coinbase and Binance as key USDC distribution partners; costs depend on USDC held on their platforms and interest rates."
+      ],
+      "limitations": [
+        "Company-wide stablecoin economics, not XRP-specific capital flows."
+      ]
+    },
+    {
+      "id": "circle-binance-2026-09-17-8k",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000276/crcl-20260917.htm",
+      "publisher": "SEC / Circle Internet Group",
+      "type": "SEC_FORM_8K",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Circle issued 1,237,011 Class A shares to Binance at $80.84 for $100M aggregate proceeds.",
+        "Circle subsidiaries entered a five-year USDC promotion arrangement with Binance; incentive fee linked to USDC held through Circle wallet infrastructure."
+      ],
+      "limitations": [
+        "No XRP purchase, market-making or reserve relationship is specified."
+      ]
+    },
+    {
+      "id": "permission-ask-wallet-coinbase-2026-09-22",
+      "url": "https://www.permission.ai/blog/ask-wallet-update",
+      "publisher": "Permission",
+      "type": "PRIMARY_PRODUCT_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Permission moved its ASK wallet to Coinbase embedded-wallet infrastructure.",
+        "Permission says Coinbase secures private keys; Permission login authorizes transactions and key export is supported.",
+        "Permission says email, account identifier and wallet information are shared with Coinbase to operate the wallet."
+      ],
+      "limitations": [
+        "Does not establish a Coinbase exchange listing, XRP integration or XRPL deployment."
+      ]
+    },
+    {
+      "id": "permission-ask-contracts",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "publisher": "Permission documentation",
+      "type": "PRIMARY_TECHNICAL_DOCUMENTATION",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Official ASK contracts are listed on Base and Polygon as LayerZero OFT-20 tokens.",
+        "Permission documents Stargate support and planned EVM-compatible chain expansion."
+      ],
+      "limitations": [
+        "Reviewed official contract list does not include XRPL or an XRP-native contract."
+      ]
+    },
+    {
+      "id": "sbic-tokyo-profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "PRIMARY_CORPORATE_PROFILE",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Official English name is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan).",
+        "Corporate number 9011001030621; established 1963-11-15; coverage includes 18 prefectures."
+      ],
+      "limitations": [
+        "Do not conflate this entity with SBI Holdings or SBI financial subsidiaries."
+      ]
+    },
+    {
+      "id": "sbic-ai-training-2025-06-12",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "PRIMARY_TRAINING_ANNOUNCEMENT",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "SBIC announced June 12–13 2025 generative-AI/ML training for investee companies, including ChatGPT and Copilot, delivered by VOST."
+      ],
+      "limitations": [
+        "Training is not evidence of an OpenAI commercial partnership or XRP relationship."
+      ]
+    },
+    {
+      "id": "tradradar-xrp-perpetuals-2026-11-01-1610z",
+      "url": "https://tradradar.io/markets/xrp",
+      "publisher": "TradRadar",
+      "type": "AGGREGATED_MARKET_DATA",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Page updated 2026-11-01 16:10 UTC with 15-minute delay: XRP $1.2509, seven-exchange OI $1.90B, OI +1.43% 24h, funding +0.0077% per 8h.",
+        "Five-exchange account long/short ratio 3.52, or 77.9% long; 24h liquidations at least $552.72K."
+      ],
+      "limitations": [
+        "Provider aggregation; raw venue payloads not captured. Liquidations are a lower bound; account ratio is not notional exposure."
+      ]
+    },
+    {
+      "id": "circle-q3-2026-event-2026-11-04",
+      "url": "https://investor.circle.com/events-and-presentations/event-details/2026/Circle-Reports-Third-Quarter-2026-Results/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "type": "PRIMARY_EVENT_CALENDAR",
+      "accessed_at_utc": "2026-11-01T17:06:00Z",
+      "claims": [
+        "Circle Q3 2026 results webcast scheduled for 2026-11-04 at 08:00 ET."
+      ],
+      "limitations": [
+        "Scheduled event only; results not yet published."
+      ]
+    }
+  ]
+}
