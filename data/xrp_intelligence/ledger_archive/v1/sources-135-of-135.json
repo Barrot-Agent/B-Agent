@@ -5,231 +5,74 @@
   "array_name": "sources",
   "chunk_index": 134,
   "chunk_count": 135,
-  "record_count": 12,
+  "record_count": 3,
   "records": [
     {
-      "id": "SRC-20261101T045910Z-BINANCE-RECOVERY-UPDATE4",
-      "publisher": "Binance",
-      "title": "Security Incident Recovery Update #4",
+      "id": "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+      "publisher": "Binance Support — Security Incident | Recovery Update #4: Withdrawals Resume in Phases",
       "url": "https://www.binance.com/en/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
+      "retrieved_at_utc": "2026-11-01T05:26:16Z",
       "publication_time_utc": "2026-11-01T04:08:00Z",
-      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT",
       "claims": [
-        "95% aggregate replenishment reported.",
-        "XRP and RLUSD are 100% backed among named top-ten assets, per Binance.",
-        "Phase-one withdrawals scheduled 06:00–09:00 UTC November 1; XRP included.",
-        "Deposits remain open; remaining 5% is less-liquid assets outside top ten."
+        "Binance announced phase one of withdrawal restoration for 2026-11-01 between 06:00 and 09:00 UTC.",
+        "The phase-one network/asset table explicitly includes the XRP network and XRP.",
+        "Binance reports approximately 95% of the impacted amount covered, up from approximately 90% in its previous update.",
+        "Binance states BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC balances are fully backed 100%.",
+        "Binance says the remaining 5% consists of less-liquid assets outside the named top ten.",
+        "Binance says it continues purchasing remaining affected assets through market and OTC channels.",
+        "Binance says deposits remain open and it will absorb the financial impact rather than pass losses to users.",
+        "Binance says phase-one assets will become available progressively and users should check the network-status page."
       ],
       "limitations": [
-        "Company claims pending full cryptographic PoR.",
-        "Schedule is not proof withdrawals are live.",
-        "XRP-specific purchases and recovered stolen XRP are undisclosed."
+        "The 95% aggregate replenishment and 100% top-ten coverage are company-reported claims, not independent proof of asset-by-asset purchases or liabilities.",
+        "The announcement does not disclose an XRP-specific replenishment quantity, purchase venue, acquisition price, SAFU allocation or corporate-treasury allocation.",
+        "The 06:00–09:00 UTC interval is a phase-one rollout window; availability is progressive and may be delayed. It is not proof that every XRP withdrawal was enabled at 06:00.",
+        "The public network-status page returned an empty server-rendered table at 05:11 UTC; the XRP-specific live state could not be read from that page.",
+        "The full cryptographic Proof of Reserves remains pending the previously announced November 3 target.",
+        "No actual customer XRP withdrawal, external destination, sale or market impact is established by this announcement."
       ]
     },
     {
-      "id": "SRC-20261101T045910Z-EVERNORTH-NASDAQ-CLOSING",
-      "publisher": "Evernorth / Nasdaq",
-      "title": "Evernorth completes business combination",
-      "url": "https://www.nasdaq.com/press-release/evernorth-completes-business-combination-armada-acquisition-corp-ii-2026-10-09",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2026-10-09",
-      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
+      "id": "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+      "publisher": "Reuters — Binance to resume withdrawals after recovering bulk of $6 billion in stolen funds",
+      "url": "https://www.reuters.com/legal/government/binance-resume-withdrawals-after-recovering-bulk-6-billion-stolen-funds-2026-11-01/",
+      "retrieved_at_utc": "2026-11-01T05:26:16Z",
+      "publication_time_utc": "2026-11-01T04:57:00Z",
+      "evidence_class": "SECONDARY_NEWS_REPORT_OF_COMPANY_ANNOUNCEMENT",
       "claims": [
-        "Business combination closed October 9; ticker XRPN began trading October 12.",
-        "Evernorth reported approximately 473M XRP at closing and approximately $300M gross cash proceeds.",
-        "SBI Group and Ripple were named among investors."
+        "Reuters reports Binance's 95% aggregate replenishment statement.",
+        "Reuters reports that phase one was scheduled between 06:00 and 09:00 GMT and includes XRP among the assets.",
+        "Reuters reports the FBI attribution of the overall Binance theft to North Korea's TraderTraitor unit."
       ],
       "limitations": [
-        "Closing figures are not current balances.",
-        "Gross proceeds are not cash remaining after purchases and expenses."
+        "Reuters reports Binance's statements and is not an independent asset-by-asset reserve audit.",
+        "The report does not disclose XRP-specific acquisitions, purchases, customer withdrawals or on-chain reserve changes.",
+        "The FBI attribution applies to the overall incident; it does not independently identify the XRPL attacker receiver as a North Korean-controlled account."
       ]
     },
     {
-      "id": "SRC-20261101T045910Z-GITHUB-BAGENT-PR1442-MAIN-AUDIT",
-      "publisher": "GitHub / Barrot-Agent/B-Agent",
-      "title": "Current-main repository and PR #1442 exact-head audit",
-      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1442",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": null,
-      "evidence_class": "AUTHORIZED_REPOSITORY_API_OBSERVATION",
+      "id": "SRC-20261101T052616Z-GITHUB-BAGENT-MAIN-PR1442-VERIFICATION",
+      "publisher": "GitHub API and GitHub Actions — Barrot-Agent/B-Agent main, pull requests and workflow evidence",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-11-01T05:26:16Z",
+      "publication_time_utc": "2026-11-01T05:26:16Z",
+      "evidence_class": "PRIMARY_REPOSITORY_AND_CI_STATE",
       "claims": [
-        "Main cf3ff49e4128c732fe84ca36efb7f0424774e904; PR #1442 based on current main, head bc84abfeefee3ca60f43fa729d5631ad84719c55.",
-        "CI 41275266085 passed 349 tests plus 8 subtests; gate 41275266092 passed with merging disabled; PR open draft unmerged.",
-        "Inventory 213 open, 203 drafts, 10 ready; 208 main-based, 207 stale, 1 current-main-based, 5 non-main-based.",
-        "Main retains scheduled write-capable Cross Analysis, Scheduler Tick and Merge Queue paths until approved remediation."
+        "The main branch was observed at cf3ff49e4128c732fe84ca36efb7f0424774e904.",
+        "PR #1442 is open, draft, unmerged and based on that exact main SHA; its head is bc84abfeefee3ca60f43fa729d5631ad84719c55.",
+        "PR #1442 exact-head CI run 41275266085 completed successfully with 349 tests and 8 subtests passing.",
+        "PR #1442 fail-closed gate run 41275266092 completed successfully and kept merging disabled.",
+        "Main Cross Analysis run 41274697648 reported zero recent and prior XRP/BTC sentiment-shift samples, then committed a generated_at-only change to sentiment_shift.json.",
+        "Main Scheduler Tick run 41276373377 fired zero queue entries; the queue contained one already-completed entry and the final git push reported Everything up-to-date.",
+        "The main Cross Analysis, Scheduler Tick and Merge Queue workflows remain write/dispatch-capable until an approved remediation is merged.",
+        "The open-pull-request API inventory returned 200 open PRs: 191 drafts, 9 ready, 195 main-based, 194 stale main-based, 1 current-main-based (#1442), and 5 non-main-based."
       ],
       "limitations": [
-        "Exact-head PR CI is not full repository CI or comprehensive security verification.",
-        "Dependency scan incomplete; security-alert access unavailable.",
-        "Approval workflow zero-job anomaly unresolved."
-      ]
-    },
-    {
-      "id": "SRC-20261101T045910Z-LIQWALL-XRP-MARKET-SNAPSHOT",
-      "publisher": "Liqwall",
-      "title": "Liqwall XRP derivatives observation",
-      "url": "https://liqwall.com/coins/xrp",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2026-11-01T04:52:00Z",
-      "evidence_class": "THIRD_PARTY_DERIVATIVES_MARKET_DATA",
-      "claims": [
-        "XRP near $1.25; OI about $1.33B; OI +0.6% 24h; funding +0.0024% per 8h; Binance long-account share 71.8%; liquidations about $300K."
-      ],
-      "limitations": [
-        "Provider-specific contract coverage; not directly comparable with other OI sources.",
-        "Long-account share is not notional exposure."
-      ]
-    },
-    {
-      "id": "SRC-20261101T045910Z-OKX-XRP-MARKET-SNAPSHOT",
-      "publisher": "OKX",
-      "title": "OKX XRP spot market observation",
-      "url": "https://www.okx.com/price/xrp-xrp",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2026-11-01T04:32:23Z",
-      "evidence_class": "PRIMARY_EXCHANGE_MARKET_DATA",
-      "claims": [
-        "XRP near $1.251; 24h change -0.36%; 24h volume about $731.34M; 7d -3.61%; 30d -16.20%; 3m +15.97%."
-      ],
-      "limitations": [
-        "Exchange-specific, not consolidated global price or volume.",
-        "Gross volume is not net capital inflow."
-      ]
-    },
-    {
-      "id": "SRC-20261101T045910Z-SBI-CIRCLE-JV-NAME-MAPPING",
-      "publisher": "SBI Holdings",
-      "title": "SBI Information Meeting 2025 — Circle SBI Japan / SBI Circle Holdings name mapping",
-      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250602presentations.pdf",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2025-06-02",
-      "evidence_class": "PRIMARY_COMPANY_PRESENTATION",
-      "claims": [
-        "SBI maps English name Circle SBI Japan K.K. to Japanese name SBI Circle Holdings K.K.",
-        "Presentation identifies 50/50 SBI/Circle ownership and USDC distribution/payment-service-provider purpose.",
-        "SBI VC Trade public USDC offering began March 26, 2025."
-      ],
-      "limitations": [
-        "No current transaction volumes.",
-        "Circle Q2 2026 filing says no significant operating results to June 30.",
-        "JV purpose does not establish XRP/XRPL use."
-      ]
-    },
-    {
-      "id": "SRC-20261101T045910Z-SBI-CIRCLE-RIPPLE-STRATEGIC-INVESTMENT",
-      "publisher": "SBI Holdings",
-      "title": "SBI investment in Circle and Ripple shareholding disclosure",
-      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2025-06-09",
-      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
-      "claims": [
-        "SBI Holdings and SBI Shinsei each invested $25M in Circle, $50M combined.",
-        "SBI reported approximately 9% Ripple equity ownership as of June 9, 2025.",
-        "The release describes the planned 50/50 SBI-Circle USDC distribution JV."
-      ],
-      "limitations": [
-        "9% Ripple stake is dated and not reverified currently.",
-        "Ripple equity is not XRP ownership.",
-        "Circle equity does not prove XRP bridge use."
-      ]
-    },
-    {
-      "id": "SRC-20261101T045910Z-SBI-EVERNORTH-200M-PIPE",
-      "publisher": "SBI Holdings",
-      "title": "SBI Group $200M Evernorth PIPE investment",
-      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/1021_a_en.pdf",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2025-10-21",
-      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
-      "claims": [
-        "SBI Group announced a $200M cash contribution to Evernorth PIPE.",
-        "SBI described the financing as supporting an XRP treasury strategy, including primarily open-market XRP acquisitions."
-      ],
-      "limitations": [
-        "Cash is pooled with other investors; no dollar-for-dollar purchase allocation.",
-        "Does not establish current XRP balance or encumbrance."
-      ]
-    },
-    {
-      "id": "SRC-20261101T045910Z-SBI-REMIT-XRP-CORRIDORS",
-      "publisher": "SBI Remit",
-      "title": "SBI Remit Ripple solution using XRP as bridge currency",
-      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2023-09-06",
-      "evidence_class": "PRIMARY_COMPANY_STATEMENT",
-      "claims": [
-        "SBI Remit announced XRP bridge-currency remittance corridors to the Philippines, Vietnam and Indonesia.",
-        "The described flow uses XRP as bridge currency and local payout partners including Tranglo.",
-        "The stated rationale includes reducing pre-funded nostro/vostro requirements."
-      ],
-      "limitations": [
-        "Current corridor volumes and active status are not disclosed.",
-        "Not all SBI/Ripple payments necessarily use XRP."
-      ]
-    },
-    {
-      "id": "SRC-20261101T045910Z-SEC-CIRCLE-Q2-10Q",
-      "publisher": "SEC / Circle Internet Group",
-      "title": "Circle Q2 2026 Form 10-Q",
-      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2026-07-30",
-      "evidence_class": "PRIMARY_REGULATORY_FILING",
-      "claims": [
-        "Circle SBI Japan K.K. is 50%-owned VIE controlled and consolidated by Circle; SBI has non-controlling interest.",
-        "No significant JV operating results to June 30, 2026.",
-        "Circle Coinbase distribution costs: $324.6M Q2, $655.3M H1 2026.",
-        "USDC Mint Q2 gross flows: $83.004B minted, $86.784B redeemed; H1 $156.543B minted, $158.540B redeemed.",
-        "Circle reports 27% USDC market share and 7.01M meaningful wallets at June 30."
-      ],
-      "limitations": [
-        "Mint/redeem are gross Circle Mint flows, not net circulating supply.",
-        "JV scale and XRPL routing not established.",
-        "Distribution costs are not Coinbase net profit."
-      ]
-    },
-    {
-      "id": "SRC-20261101T045910Z-SEC-EVERNORTH-424B3-XRP-TREASURY",
-      "publisher": "SEC / Evernorth Holdings",
-      "title": "Evernorth 424B3 prospectus and capital structure",
-      "url": "https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2026-10-30",
-      "evidence_class": "PRIMARY_REGULATORY_FILING",
-      "claims": [
-        "473,276,430 XRP at October 9 closing: 84,365,876 cash-purchased for about $214.1M, 261,919,096 private-placement in-kind, 126,791,458 Ripple contribution plus a 200,000-XRP tranche requiring attribution review.",
-        "As of October 22, SBI held 9,431,914 Class A shares (36.1% of class) and 2,359,038 Class C shares (7.5% of class).",
-        "Ripple facility: $10M limit, about $9.7M drawn as of October 7, 3.81% interest, repayable within five business days after closing or earlier on demand.",
-        "Potential $76.8M equity line and $30M 4% convertible notes due 2031 are disclosed."
-      ],
-      "limitations": [
-        "Cash purchase used pooled subscription cash, not attributable solely to SBI.",
-        "473M is a closing figure, not current verified balance.",
-        "20.5% combined share-count estimate is derived, not fully diluted company-reported ownership.",
-        "Equity line is potential, not confirmed drawn.",
-        "No XRP security interest established in reviewed Ripple facility terms."
-      ]
-    },
-    {
-      "id": "SRC-20261101T045910Z-XRP-INSIGHTS-EVERNORTH-ONCHAIN-CUSTODY",
-      "publisher": "XRP Insights",
-      "title": "Evernorth XRPN XRP holdings and custody-wallet attribution",
-      "url": "https://xrp-insights.com/xrp-radar/evernorth",
-      "retrieved_at_utc": "2026-11-01T04:59:10Z",
-      "publication_time_utc": "2026-11-01T03:40:00Z",
-      "evidence_class": "INDEPENDENT_ONCHAIN_ANALYSIS",
-      "claims": [
-        "At ledger 108037105, approximately 103,129,905 XRP attributed to 13 Evernorth custody wallets.",
-        "Approximately 370,346,663 XRP moved outside the attributed wallet set; destinations not attributed; latest identified movement October 22.",
-        "Tracker describes BitGo Trust custody, 2-of-3 multisig and disabled master key."
-      ],
-      "limitations": [
-        "Outflow is not proof of sale, exchange deposit, DeFi or collateral.",
-        "103.13M is the attributed subset, not complete company balance.",
-        "Wallet labels and custody attribution are third-party analysis."
+        "The full branch-protection details endpoint returned 403 to the available GitHub integration; only the branch's protected flag is observable, and required-check configuration remains unknown.",
+        "Full repository CI has not been run.",
+        "A complete lockfile-based dependency vulnerability scan has not been run; security-alert access remains unavailable.",
+        "PR #1442 is a proposal. Its successful CI does not change main; no merge or main-branch remediation occurred."
       ]
     }
   ]
