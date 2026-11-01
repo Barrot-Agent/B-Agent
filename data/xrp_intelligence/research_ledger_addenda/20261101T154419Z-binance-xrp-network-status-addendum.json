@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "addendum_id": "binance-xrp-network-status-addendum-20261101T154419Z",
+  "captured_at_utc": "2026-11-01T15:44:19Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T154419Z-binance-xrp-network-status-static-observation.json",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T154419Z-binance-xrp-network-status-observation.json",
+  "supersedes_or_clarifies": "The 15:42:04Z escrow/Binance snapshot's direct-service-status limitation with a later primary Binance status-page observation.",
+  "finding": "The Binance network-status page static extraction returned 'No Data' and exposed no XRP row. This does not disconfirm the CBS/AFP report of Binance's X status, but it prevents direct independent verification of the current XRP withdrawal service state.",
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

@@ -104,3 +104,11 @@ def test_prediction_cohort_guard_and_dependency_audit_are_recorded_without_overc
     assert audit["prediction_integrity_review"]["exact_head_tests_passed"] == 389
     assert audit["prediction_integrity_review"]["exact_head_subtests_passed"] == 8
     assert audit["prediction_integrity_review"]["status"] == "OPEN_DRAFT_UNMERGED"
+
+def test_binance_network_status_static_capture_does_not_claim_xrp_availability():
+    source = load("data/xrp_intelligence/source_revisions/20261101T154419Z-binance-xrp-network-status-static-observation.json")
+    observation = source["source"]
+    assert observation["extracted_result"] == "No Data"
+    assert observation["extracted_table_rows"] == []
+    assert observation["displayed_timezone"] == "NOT_SPECIFIED"
+    assert "cannot confirm" in " ".join(observation["limitations"])

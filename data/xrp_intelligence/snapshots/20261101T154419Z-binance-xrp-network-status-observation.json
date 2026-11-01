@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "binance-xrp-network-status-observation-20261101T154419Z",
+  "captured_at_utc": "2026-11-01T15:44:19Z",
+  "xrp_withdrawal_status": {
+    "official_update4_phase1_listing": true,
+    "phase1_window_utc": [
+      "2026-11-01T06:00:00Z",
+      "2026-11-01T09:00:00Z"
+    ],
+    "cbs_afp_reported_restored_as_of_utc": "2026-11-01T10:00:00Z",
+    "direct_binance_status_page_accessed_at_utc": "2026-11-01T15:44:19Z",
+    "direct_status_page_displayed_last_updated_text": "2026-11-01 15:05",
+    "direct_status_page_displayed_timezone": "NOT_SPECIFIED",
+    "direct_status_page_extracted_rows": [],
+    "direct_status_page_result": "No Data",
+    "status": "MEDIA_REPORTED_AVAILABLE; DIRECT_NETWORK_STATUS_NOT_VERIFIED",
+    "successful_xrp_withdrawal_independently_observed": null,
+    "test_withdrawal_initiated": false
+  },
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

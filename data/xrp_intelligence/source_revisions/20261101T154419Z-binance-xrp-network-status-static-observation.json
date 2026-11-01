@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "revision_id": "REV-BINANCE-XRP-NETWORK-STATUS-STATIC-OBSERVATION-20261101T154419Z",
+  "captured_at_utc": "2026-11-01T15:44:19Z",
+  "source": {
+    "id": "binance-network-status-page-20261101-1544z",
+    "url": "https://www.binance.com/en-GB/network",
+    "publisher": "Binance",
+    "accessed_at_utc": "2026-11-01T15:44:19Z",
+    "classification": "PRIMARY_SERVICE_STATUS_PAGE",
+    "page_title": "Deposit & Withdrawal Status",
+    "displayed_last_updated_text": "2026-11-01 15:05",
+    "displayed_timezone": "NOT_SPECIFIED",
+    "extracted_table_headers": [
+      "Coin",
+      "Deposit Status",
+      "Withdrawal Status"
+    ],
+    "extracted_table_rows": [],
+    "extracted_result": "No Data",
+    "limitations": [
+      "Static extraction did not expose any coin/network status rows, including XRP.",
+      "The displayed last-updated timezone is unspecified.",
+      "This observation cannot confirm that XRP withdrawals are open or suspended.",
+      "No test withdrawal was initiated."
+    ]
+  },
+  "interpretation": "The status page was accessed after the announced phase-one window and after CBS/AFP reported Binance's X status, but its static extraction returned no data. Keep XRP withdrawal status at MEDIA_REPORTED_AVAILABLE; DIRECT_NETWORK_STATUS_NOT_VERIFIED."
+}
