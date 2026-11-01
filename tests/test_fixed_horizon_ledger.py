@@ -795,3 +795,18 @@ def test_metrics_refuse_tampered_registered_replay_manifest_hash(tmp_path):
     assert metrics["accuracy"] is None
     assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
 
+def test_metrics_refuse_tampered_registered_outcome_price_source_hash(tmp_path):
+    ledger = _ledger_with_valid_outcome(tmp_path)
+    _rewrite_single_outcome(ledger, price_source_content_hash="f" * 64)
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
+
+
+def test_metrics_refuse_outcome_when_registered_price_source_hash_changes(tmp_path):
+    ledger = _ledger_with_valid_outcome(tmp_path)
+    ledger.source_registry["SRC-PRICE-001"] = "f" * 64
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
+
