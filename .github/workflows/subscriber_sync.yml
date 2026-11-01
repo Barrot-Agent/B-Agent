@@ -1,10 +1,16 @@
 name: Barrot Subscriber Sync
 on:
-  schedule:
-    - cron: "30 * * * *"
   workflow_dispatch:
+    inputs:
+      confirm_private_data_processing:
+        description: "Explicitly authorize one-time processing of private Gumroad purchaser emails; output is not persisted"
+        required: true
+        default: "NO"
+permissions:
+  contents: read
 jobs:
   sync:
+    if: inputs.confirm_private_data_processing == 'YES'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -41,9 +47,11 @@ jobs:
               json.dump(out, f)
           print(f"Synced {len(emails)} active subscribers (hashed)")
           SCRIPT
-      - name: Commit
+      - name: Remove ephemeral subscriber hashes
+        if: always()
         run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add web/subscribers.json
-          git diff --staged --quiet || (git commit -m "chore: subscriber sync" && git push origin main)
+          if [ -f web/subscribers.json ]; then
+            count=$(python3 -c 'import json; print(json.load(open("web/subscribers.json", encoding="utf-8")).get("count", 0))')
+            echo "Processed $count pseudonymous subscriber records; no file was persisted." >> "$GITHUB_STEP_SUMMARY"
+            rm -f web/subscribers.json
+          fi
