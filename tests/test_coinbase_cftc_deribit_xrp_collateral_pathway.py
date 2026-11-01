@@ -51,3 +51,16 @@ def test_coinbase_q3_filing_is_pre_integration_disconfirmation_not_post_integrat
     assert any(item["classification"] == "DISCONFIRMING_EVIDENCE" for item in ledger["findings"])
     assert ledger["feature_admission"] == "NONE"
     assert ledger["forecast_status"] == "NOT_ISSUED"
+
+
+def test_cftc_26_05_post_initial_xrp_eligibility_requires_a_verified_route():
+    source = load(f"data/xrp_intelligence/source_revisions/20261101T220100Z-cftc-26-05-xrp-eligibility.json")
+    ledger = load(f"data/xrp_intelligence/research_ledger_addenda/20261101T220100Z-cftc-26-05-xrp-eligibility.json")
+    snapshot = load(f"data/xrp_intelligence/snapshots/20261101T220100Z-cftc-26-05-xrp-eligibility.json")
+    letter = next(item for item in source["sources"] if item["id"] == f"SRC-CFTC-26-05-20261101T220100Z")
+    assert any("minimum is 20%" in claim for claim in letter["claims"])
+    assert any("revised risk-management policies" in claim for claim in letter["claims"])
+    assert snapshot["cftc_26_05"]["initial_allowed_assets"] == ["payment stablecoins", "BTC", "ETH"]
+    assert snapshot["cfm_actual_status"]["foreign_clearing_qualification_under_26_05"] == "UNKNOWN"
+    assert any(item["classification"] == "UNKNOWN_LEGAL_QUALIFICATION" for item in ledger["findings"])
+    assert ledger["feature_admission"] == "NONE"

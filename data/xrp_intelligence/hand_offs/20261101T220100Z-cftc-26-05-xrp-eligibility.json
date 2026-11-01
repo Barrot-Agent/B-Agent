@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "handoff_id": "cftc-26-05-xrp-eligibility-20261101T220100Z",
+  "captured_at_utc": "2026-11-01T22:01:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery first; Barrot V3 remains the execution and verification foundation.",
+  "legal_update": "CFTC 26-17 names XRP as a digital commodity and provides a conditional CFM->CBBM->Deribit right-of-reuse path. Condition 9 imports 26-05: first three months from CFM's own notice are restricted to payment stablecoins/BTC/ETH; after that XRP requires qualifying clearing-organization acceptance or a fallback with at least 20% haircut and revised risk policies filed before acceptance. The same-asset exception does not apply to XRP-USDC linear contracts.",
+  "unresolved": "Deribit's own policy says no connected clearing house/members and describes quasi-clearing, while the CFTC letter calls it a foreign clearing organization in the CFM structure. The exact 26-05 CPMI-IOSCO qualification is unresolved. CFM notice date, revised policy, CBBM warm-wallet activation and actual XRP balances are unknown.",
+  "prediction_status": "NOT_ISSUED",
+  "feature_admission": "NONE",
+  "next_actions": [
+    "Find CFM's WinJammer notice/commencement date.",
+    "Verify Deribit's exact 26-05 foreign-clearing qualification and the applicable haircut route.",
+    "Find any revised CFM risk policy for XRP.",
+    "Verify CBBM warm-wallet activation after October 14.",
+    "Check Q4 Coinbase disclosures and actual Deribit/CFM XRP collateral balances."
+  ]
+}

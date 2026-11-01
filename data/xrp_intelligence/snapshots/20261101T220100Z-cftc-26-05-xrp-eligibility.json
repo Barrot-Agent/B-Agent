@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "cftc-26-05-xrp-eligibility-20261101T220100Z",
+  "captured_at_utc": "2026-11-01T22:01:00Z",
+  "asset": "XRP",
+  "cftc_26_17": {
+    "xrp_named_digital_commodity": true,
+    "conditional_cfm_cbbm_deribit_reuse_path": true,
+    "condition_9_imports_26_05": true,
+    "staff_position_nonbinding": true
+  },
+  "cftc_26_05": {
+    "notice_required": true,
+    "initial_period_months": 3,
+    "initial_allowed_assets": [
+      "payment stablecoins",
+      "BTC",
+      "ETH"
+    ],
+    "post_initial_qualifying_route": "registered DCO or qualifying foreign clearing organization in CPMI-IOSCO CCP Recommendations jurisdiction",
+    "fallback_minimum_haircut_pct": 20,
+    "fallback_revised_risk_policy_required_for_non_BTC_ETH_non_stablecoin": true,
+    "same_asset_exception_requires_contract_based_and_denominated_in_same_asset": true
+  },
+  "deribit": {
+    "xrp_cross_collateral": true,
+    "x_pm_haircut": "no haircut stated",
+    "x_sm_haircut_pct": 15,
+    "policy_says_no_connected_clearing_house_or_members": true,
+    "clearing_model": "quasi-clearing via insurance fund and settlement-agent role",
+    "cbbm_warm_wallet_status_as_of_2026_10_14": "planned after September; later activation unverified"
+  },
+  "cfm_actual_status": {
+    "notice_date": "UNKNOWN",
+    "initial_period_expiry": "UNKNOWN",
+    "foreign_clearing_qualification_under_26_05": "UNKNOWN",
+    "revised_risk_policy_filed": "UNKNOWN",
+    "xrp_enabled_for_cfm_us_customers": "UNKNOWN",
+    "xrp_collateral_posted": "UNKNOWN"
+  },
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}
