@@ -15,7 +15,8 @@ def test_candidate_morpho_market_is_not_mislabeled_as_coinbase_book():
     assert snap["observations"]["coinbase_product"]["generic_documented_liquidation_ltv_pct"] == 86
     assert snap["observations"]["coinbase_product"]["exact_xrp_market_id_published_by_coinbase"] is False
     assert snap["interpretation"]["inference"].startswith("Morpho Watch")
-    assert "not" in snap["interpretation"]["disconfirming_evidence"][0].lower()
+    assert "86%" in snap["interpretation"]["disconfirming_evidence"][0]
+    assert "62.5%" in snap["interpretation"]["disconfirming_evidence"][0]
 
 
 def test_cbxrp_reserve_and_collateral_math_are_consistent():
