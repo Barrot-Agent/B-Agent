@@ -90,4 +90,5 @@ jobs:
             tests/test_barrot_agent_workflow_authorization.py \
             tests/test_barrot_approve_pr_workflow.py \
             tests/test_cognitive_pingpong_workflow_safety.py \
+            tests/test_self_hosted_brain_secret_fail_closed.py \
             -v --no-cov
