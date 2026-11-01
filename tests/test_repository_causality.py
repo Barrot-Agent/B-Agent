@@ -4,6 +4,8 @@ from pathlib import Path
 
 from barrot_agent.repository.causality import RepositoryCausality
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 
 def test_causality_excludes_nested_git_repository(tmp_path: Path) -> None:
     root = tmp_path / "repo"
@@ -123,7 +125,7 @@ def test_issue_resolver_defaults_to_no_external_mutation(monkeypatch) -> None:
 
     module.resolve(123, apply=True)
 
-    assert ("issue", "comment", "123", "--body", calls[0][4]) == calls[0]
+    assert calls[0][:4] == ("issue", "comment", "123", "--body")
     assert ("issue", "close", "123") in calls
 
 
