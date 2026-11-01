@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261101T060500Z-BINANCE-WITHDRAWAL-PR1444",
+  "captured_at_utc": "2026-11-01T06:05:00Z",
+  "data_cutoff_utc": "2026-11-01T06:05:00Z",
+  "source_ids": [
+    "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+    "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+    "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL",
+    "SRC-20261101T060400Z-BINANCE-NETWORK-STATUS-PAGE",
+    "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT"
+  ],
+  "nodes": [
+    {
+      "id": "BINANCE",
+      "type": "EXCHANGE",
+      "value": "Binance",
+      "classification": "COMPANY_ENTITY"
+    },
+    {
+      "id": "BINANCE_UPDATE4",
+      "type": "COMPANY_ANNOUNCEMENT",
+      "value": "Recovery Update #4, 2026-11-01 04:08 UTC",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "id": "BINANCE_RECOVERY_95",
+      "type": "COMPANY_CLAIM",
+      "value": "Approximately 95% aggregate impacted assets covered",
+      "classification": "COMPANY_REPORTED"
+    },
+    {
+      "id": "BINANCE_TOP10_100",
+      "type": "COMPANY_CLAIM",
+      "value": "XRP and nine other named assets reported 100% backed",
+      "classification": "COMPANY_REPORTED_PENDING_FULL_PROOF"
+    },
+    {
+      "id": "BINANCE_PHASE1",
+      "type": "EVENT_WINDOW",
+      "value": "2026-11-01 06:00–09:00 UTC; progressive restoration",
+      "classification": "ANNOUNCED_WINDOW_IN_PROGRESS"
+    },
+    {
+      "id": "XRP_NETWORK",
+      "type": "NETWORK",
+      "value": "XRP Ledger withdrawal network",
+      "classification": "OFFICIAL_ANNOUNCEMENT"
+    },
+    {
+      "id": "BINANCE_STATUS_PAGE",
+      "type": "STATUS_ENDPOINT",
+      "value": "Last updated displayed 05:28:24 AM, timezone unspecified; table says No records",
+      "classification": "INCOMPLETE_SERVER_RENDERED_OBSERVATION"
+    },
+    {
+      "id": "RIPPLE_ESCROW_NOV1",
+      "type": "EVENT",
+      "value": "1B XRP gross release reported; latest pinned ledger 108037957 at 04:35 UTC",
+      "classification": "TRACKER_REPORTED_DESTINATION_UNKNOWN"
+    },
+    {
+      "id": "BINANCE_ATTACKER_WALLET",
+      "type": "XRPL_ACCOUNT",
+      "value": "233.46M XRP reported at last reviewed 2026-10-31 16:51 UTC",
+      "classification": "STALE_OBSERVATION_CURRENT_STATE_UNKNOWN"
+    },
+    {
+      "id": "BAGENT_MAIN",
+      "type": "REPOSITORY_BRANCH",
+      "value": "main at 694fc4241f543917fc6eb787c025bf1eb6726595",
+      "classification": "GITHUB_API_OBSERVATION"
+    },
+    {
+      "id": "BAGENT_TELEMETRY_COMMIT",
+      "type": "COMMIT",
+      "value": "2026-11-01 06:03:40 UTC; AUTONOMOUS_DEPLOYMENT_REPORT.md timestamp-only change; Status OPERATIONAL",
+      "classification": "VERIFIED_COMMIT_CONTENT; OPERATIONAL_CLAIM_UNSUPPORTED"
+    },
+    {
+      "id": "BAGENT_PR1443",
+      "type": "PULL_REQUEST",
+      "value": "Workflow quarantine for Cross Analysis, Scheduler Tick and Merge Queue; 349 tests + 8 subtests, gate passed",
+      "classification": "EXACT_HEAD_VERIFIED_OPEN_DRAFT_UNMERGED"
+    },
+    {
+      "id": "BAGENT_PR1444",
+      "type": "PULL_REQUEST",
+      "value": "Comprehensive safety successor; previous head CI failed four tests; fixes committed, rerun pending",
+      "classification": "OPEN_DRAFT_UNMERGED_CURRENT_HEAD_UNVERIFIED"
+    },
+    {
+      "id": "BAGENT_REMAINING_WRITERS",
+      "type": "REPOSITORY_RISK",
+      "value": "Scheduled main writers, subscriber data handling, token input and push-triggered deployments",
+      "classification": "CURRENT_MAIN_SOURCE_REVIEW"
+    }
+  ],
+  "edges": [
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_UPDATE4",
+      "relation": "PUBLISHED",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "from": "BINANCE_UPDATE4",
+      "to": "BINANCE_RECOVERY_95",
+      "relation": "CLAIMS_AGGREGATE_REPLENISHMENT_95_PERCENT",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T045700Z-REUTERS-BINANCE-RECOVERY-95PCT-WITHDRAWAL"
+      ],
+      "evidence_class": "COMPANY_CLAIM_WITH_SECONDARY_REPORT"
+    },
+    {
+      "from": "BINANCE_UPDATE4",
+      "to": "BINANCE_TOP10_100",
+      "relation": "CLAIMS_TOP_TEN_ASSETS_100_PERCENT_BACKED",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "COMPANY_CLAIM_PENDING_FULL_PROOF"
+    },
+    {
+      "from": "BINANCE_UPDATE4",
+      "to": "BINANCE_PHASE1",
+      "relation": "ANNOUNCES_PHASE_ONE_WINDOW",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "from": "BINANCE_PHASE1",
+      "to": "XRP_NETWORK",
+      "relation": "INCLUDES_XRP_NETWORK_FOR_PROGRESSIVE_WITHDRAWALS",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "PRIMARY_COMPANY_ANNOUNCEMENT"
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_STATUS_PAGE",
+      "relation": "DIRECTS_USERS_TO_CHECK_LIVE_STATUS",
+      "source_ids": [
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1",
+        "SRC-20261101T060400Z-BINANCE-NETWORK-STATUS-PAGE"
+      ],
+      "evidence_class": "OFFICIAL_STATUS_ENDPOINT_INCOMPLETE"
+    },
+    {
+      "from": "BINANCE_STATUS_PAGE",
+      "to": "XRP_NETWORK",
+      "relation": "DOES_NOT_EXPOSE_ASSET_LEVEL_STATUS_AT_CAPTURE",
+      "source_ids": [
+        "SRC-20261101T060400Z-BINANCE-NETWORK-STATUS-PAGE"
+      ],
+      "evidence_class": "OBSERVED_PAGE_RENDER_LIMITATION"
+    },
+    {
+      "from": "RIPPLE_ESCROW_NOV1",
+      "to": "BINANCE_PHASE1",
+      "relation": "TEMPORAL_OVERLAP_ONLY; NO_CAUSAL_LINK",
+      "source_ids": [
+        "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "SRC-20261101T040800Z-BINANCE-RECOVERY-UPDATE4-WITHDRAWAL-PHASE1"
+      ],
+      "evidence_class": "COINCIDENT_EVENT_WINDOWS"
+    },
+    {
+      "from": "BINANCE_ATTACKER_WALLET",
+      "to": "BINANCE",
+      "relation": "RECEIVED_233.46M_XRP_FROM_BINANCE_LABELLED_HOT_WALLETS; CURRENT_STATE_UNKNOWN",
+      "evidence_class": "STALE_SECONDARY_ONCHAIN_OBSERVATION"
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "BAGENT_TELEMETRY_COMMIT",
+      "relation": "CONTAINS_TIMESTAMP_ONLY_TELEMETRY_REPORT_COMMIT",
+      "source_ids": [
+        "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT"
+      ],
+      "evidence_class": "GITHUB_COMMIT_READBACK"
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "BAGENT_REMAINING_WRITERS",
+      "relation": "RETAINS_PRIVILEGED_WORKFLOW_CAPABILITIES",
+      "source_ids": [
+        "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT"
+      ],
+      "evidence_class": "CURRENT_MAIN_WORKFLOW_REVIEW"
+    },
+    {
+      "from": "BAGENT_REMAINING_WRITERS",
+      "to": "BAGENT_PR1443",
+      "relation": "PARTIALLY_QUARANTINED_BY_TESTED_PROPOSAL",
+      "source_ids": [
+        "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT"
+      ],
+      "evidence_class": "EXACT_HEAD_CI_AND_GATE"
+    },
+    {
+      "from": "BAGENT_REMAINING_WRITERS",
+      "to": "BAGENT_PR1444",
+      "relation": "ADDITIONAL_QUARANTINE_PROPOSED_NOT_APPLIED",
+      "source_ids": [
+        "SRC-20261101T060400Z-GITHUB-BAGENT-MAIN-PR1444-AUDIT"
+      ],
+      "evidence_class": "PR_DIFF_AND_PRIOR_HEAD_CI_FAILURE"
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "H-BINANCE-XRP-WITHDRAWAL-OUTFLOW-01",
+      "claim": "The phase-one reopening will produce measurable net XRP withdrawals from Binance-controlled wallets.",
+      "classification": "TESTABLE_NOT_YET_OBSERVED",
+      "support": [
+        "Binance officially lists XRP for progressive phase-one restoration during 06:00–09:00 UTC."
+      ],
+      "disconfirming_or_missing": [
+        "Actual XRP service availability not confirmed by the status page.",
+        "No successful customer withdrawal or destination classification observed.",
+        "Internal wallet reshuffling and custody consolidation are alternatives."
+      ],
+      "status": "MONITOR_ONLY"
+    },
+    {
+      "id": "H-BINANCE-XRP-WITHDRAWAL-SELL-02",
+      "claim": "XRP withdrawn from Binance will be sold and create net market sell pressure.",
+      "classification": "UNSUPPORTED",
+      "support": [],
+      "disconfirming_or_missing": [
+        "Withdrawals may move to self-custody, another exchange, institutional custody or OTC counterparties.",
+        "No trade or sale evidence."
+      ],
+      "status": "NOT_ADMITTED"
+    },
+    {
+      "id": "H-BINANCE-XRP-REPLENISHMENT-BUY-03",
+      "claim": "Binance's 95% aggregate recovery proves a specific quantity of XRP was purchased in spot markets.",
+      "classification": "UNSUPPORTED",
+      "support": [
+        "Binance says XRP is 100% backed among its top ten assets."
+      ],
+      "disconfirming_or_missing": [
+        "No XRP-specific quantity, venue, price or funding source disclosed.",
+        "Existing inventory, OTC acquisitions and internal reallocation remain alternatives."
+      ],
+      "status": "NOT_ADMITTED"
+    },
+    {
+      "id": "H-BINANCE-STATUS-EMPTY-04",
+      "claim": "The empty network-status table means XRP withdrawals remain suspended.",
+      "classification": "UNSUPPORTED",
+      "support": [],
+      "disconfirming_or_missing": [
+        "The page says No records and does not expose an asset-level row; rendering failure and missing data are alternatives."
+      ],
+      "status": "UNKNOWN_NOT_CLASSIFIABLE"
+    },
+    {
+      "id": "H-ESCROW-BINANCE-CAUSAL-05",
+      "claim": "Ripple's November 1 escrow release caused or was coordinated with Binance's withdrawal reopening.",
+      "classification": "UNSUPPORTED_TEMPORAL_COINCIDENCE",
+      "support": [
+        "Both events occur on November 1."
+      ],
+      "disconfirming_or_missing": [
+        "No transaction, counterparty, contract or common flow links the events."
+      ],
+      "status": "NOT_ADMITTED"
+    },
+    {
+      "id": "H-BAGENT-FALSE-FRESHNESS-06",
+      "claim": "The scheduled telemetry writer can make repository state appear operational/fresh without verifying deployment or data freshness.",
+      "classification": "SUPPORTED_BY_MAIN_COMMIT_READBACK",
+      "support": [
+        "06:03:40 commit changed only the telemetry report timestamp while retaining Status: OPERATIONAL.",
+        "Separate Cross Analysis commit at 05:51 changed generated_at despite zero XRP/BTC observations."
+      ],
+      "disconfirming_or_missing": [
+        "The workflow may still be useful as a telemetry artifact if relabelled and made read-only; the current main behavior is the issue."
+      ],
+      "status": "REMEDIATION_PROPOSED_PR1444"
+    }
+  ],
+  "exclusions": [
+    "Do not infer XRP withdrawals are available from the announced window alone.",
+    "Do not infer a sale from a withdrawal or wallet movement.",
+    "Do not infer XRP-specific purchases from Binance's aggregate 95% recovery claim.",
+    "Do not infer that an empty status table means XRP is open or suspended.",
+    "Do not connect the escrow release causally to Binance's withdrawal reopening without transaction-level evidence.",
+    "Do not treat Reuters as independent proof of Binance reserves.",
+    "Do not treat PR CI as main-branch remediation before an authorized merge."
+  ]
+}
