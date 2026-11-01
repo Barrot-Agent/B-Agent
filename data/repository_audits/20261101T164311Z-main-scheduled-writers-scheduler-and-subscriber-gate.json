@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "audit_id": "main-scheduled-writers-scheduler-and-subscriber-gate-20261101T164311Z",
+  "captured_at_utc": "2026-11-01T16:43:11Z",
+  "main_sha": "5f7669d4c01fdc53de16a3f0db366926e690f1dc",
+  "evidence": [
+    {
+      "workflow": ".github/workflows/scheduler-tick.yml",
+      "run_id": 41326898634,
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41326898634",
+      "observation": "0 entries fired; 1 total queue entry; no commit. Workflow has contents:write and actions:write."
+    },
+    {
+      "workflow": "scripts/scheduler.py",
+      "observation": "_valid_workflow checks only that a file exists under .github/workflows. tick() dispatches any due queued workflow with gh workflow run. No explicit safe-workflow allowlist. The current queue contains one completed entry and no pending entry."
+    },
+    {
+      "workflow": ".github/workflows/subscriber_sync.yml",
+      "run_id": 41327039830,
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41327039830",
+      "observation": "Scheduled hourly. Reads GUMROAD_ACCESS_TOKEN, fetches sales, SHA-256 hashes purchaser emails and stages web/subscribers.json. Run observed zero active subscribers and main did not advance."
+    },
+    {
+      "path": "web/signals.html",
+      "observation": "Subscriber check is client-side SHA-256 comparison against public subscribers.json; on success it fetches public latest_signal.json. Directly requesting latest_signal.json bypasses the UI check. This is not server-side entitlement enforcement."
+    },
+    {
+      "path": "web/subscribers.json",
+      "observation": "Current main file is empty: {emails:[],count:0}. No current subscriber hashes were observed."
+    },
+    {
+      "workflow": ".github/workflows/cross-analysis.yml",
+      "run_id": 41323332158,
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41323332158",
+      "observation": "XRP and BTC sentiment windows both had n=0 recent and n=0 prior. Workflow still committed a generated_at-only refresh; resulting main commit is 5f7669d4."
+    },
+    {
+      "workflow": ".github/workflows/merge-queue.yml",
+      "observation": "Manual dispatch; contents:write and pull-requests:write; default dry_run=false; max_prs=0 means unlimited; merges clean/mergeable PRs without explicit authorized-human approval check."
+    },
+    {
+      "workflow": ".github/workflows/barrot-pr-automerge.yml",
+      "observation": "Current main version is disabled/fail-closed. This does not neutralize the separate manual Merge Queue."
+    },
+    {
+      "workflow": ".github/workflows/barrot-merge.yml and .github/workflows/barrot-merge-manual.yml",
+      "observation": "Manual workflows use HF_TOKEN to merge and upload model artifacts to Hugging Face. PR #1465 proposes to make these workflows inert."
+    },
+    {
+      "workflow": ".github/workflows/barrot-approve-pr.yml",
+      "observation": "Current main applies an approved label after PR number/head/reason checks but does not verify a designated protected-environment reviewer. PR #1465 proposes disabling this path."
+    },
+    {
+      "workflow": ".github/workflows/barrot-autonomous-resolver.yml",
+      "run_id": 41324158994,
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41324158994",
+      "observation": "Found existing open issues for failing workflows and skipped duplicates. No COPILOT_ASSIGNEE repository variable was configured, so issue and PR assignment were skipped."
+    }
+  ],
+  "status": {
+    "repository_metadata_reports_main_protected": true,
+    "branch_protection_endpoint": "403 Resource not accessible by integration; detailed required checks and environment rules remain unknown",
+    "active_main_privileged_workflows": "NOT_REMEDIATED",
+    "current_scheduler_pending_entries": 0,
+    "subscriber_paywall": "CLIENT_SIDE_ONLY_BYPASSABLE",
+    "subscriber_hashes_currently_public": 0
+  },
+  "proposals": {
+    "security_pr": 1465,
+    "security_pr_head": "57805749b156477e1c0b6d8bdf3040e5f5c5998a",
+    "security_pr_state": "OPEN_DRAFT_UNMERGED",
+    "security_pr_ci": "376 tests + 8 subtests passed",
+    "security_pr_gate": "passed; merge disabled",
+    "security_pr_caveat": "Proposed subscriber_sync change stops public hash persistence but does not implement server-side subscriber authorization; current static paid-signal flow would need a replacement."
+  },
+  "recommendations": [
+    "Keep Scheduler Tick dispatch disabled until an explicit workflow allowlist and immutable queue authorization model exist.",
+    "Keep Merge Queue and all external deployment/model-upload workflows inert until protected reviewer approvals and exact-head gates are independently verified.",
+    "Replace static client-side subscriber hashes and public signal JSON with server-side entitlement verification; do not restore public subscriber hash commits.",
+    "Separate sentiment data freshness from generated_at; no new timestamp unless underlying observations changed and pass minimum sample/independence checks.",
+    "Obtain authorized branch-protection/Environment configuration evidence before claiming protected human approval."
+  ],
+  "safety": "No main modification, merge, force-push, manual workflow dispatch, secret access, subscriber data retrieval, external deployment or trading action."
+}

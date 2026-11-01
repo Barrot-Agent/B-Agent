@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-collateral-multirail-and-main-audit-20261101T164311Z",
+  "captured_at_utc": "2026-11-01T16:43:11Z",
+  "latest_research_snapshot": "data/xrp_intelligence/snapshots/20261101T163641Z-xrp-collateral-multirail-morpho-circle-sbi.json",
+  "latest_relationship_graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T163641Z-coinbase-circle-sbi-xrp-collateral-multirail.json",
+  "latest_source_revision": "data/xrp_intelligence/source_revisions/20261101T163641Z-xrp-collateral-multirail-morpho-circle-sbi.json",
+  "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261101T163641Z-xrp-collateral-usage-and-multirail-admission.json",
+  "repository_audit": "data/repository_audits/20261101T164311Z-main-scheduled-writers-scheduler-and-subscriber-gate.json",
+  "research_pr": {
+    "number": 1464,
+    "head": "8a01fd25700c09adcc27f55daef3e23536d2b1e2",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_run": 41327529145,
+    "ci_result": "417 tests + 8 subtests passed",
+    "gate_run": 41327529148,
+    "gate_result": "passed; merging disabled",
+    "base_sha": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9"
+  },
+  "security_pr": {
+    "number": 1465,
+    "head": "57805749b156477e1c0b6d8bdf3040e5f5c5998a",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "ci_result": "376 tests + 8 subtests passed",
+    "gate_result": "passed; merging disabled",
+    "base_sha": "02d9f11404ba80823392ad215c733b49e4536128",
+    "blocker": "stale base and current-main active workflow capabilities remain"
+  },
+  "prediction_engine": {
+    "status": "IMPLEMENTED_NOT_POPULATED",
+    "forecast_status": "NOT_ISSUED",
+    "feature_admission": "NONE"
+  },
+  "next_actions": [
+    "Reproduce Morpho FXRP/RLUSD market state from raw Ethereum RPC at a pinned block and build a historical utilization/concentration series.",
+    "Resolve Coinbase's XRP collateral token/wrapper contract, current Morpho market parameters, reserves and actual utilization.",
+    "Capture native USDC-on-XRPL issuer supply, transfers, DEX/AMM liquidity and redemption flows at matched validated ledgers.",
+    "Find corridor-level SBI Remit XRP ODL volume or preserve it as undisclosed; do not attribute the JPY 2.5T total to XRP.",
+    "Track Circle Arc validator activation and real USDC/StableFX/CPN settlement volumes; distinguish announced partners from production activity.",
+    "Monitor Circle Q3 2026 results scheduled 2026-11-04 at 08:00 ET.",
+    "Continue SBIC identity/ChatGPT event verification, ASK Coin identity resolution and Camilla Stephenson channel-ID/public-video inventory.",
+    "Keep main-branch workflow risks quarantined; obtain explicit user authorization before any PR merge or external action.",
+    "Design a server-side subscriber entitlement flow before restoring paid-signal access; current static hash gate is bypassable."
+  ],
+  "safety": "Main unchanged at 5f7669d4c01fdc53de16a3f0db366926e690f1dc. No merge, force-push, manual dispatch, secret access, deployment or trading action."
+}
