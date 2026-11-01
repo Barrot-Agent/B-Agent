@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "record_type": "xrp_research_ledger_archive_shard",
+  "archive_schema_version": "1.0",
+  "array_name": "sources",
+  "chunk_index": 136,
+  "chunk_count": 137,
+  "record_count": 2,
+  "records": [
+    {
+      "id": "SRC-20261101T061000Z-BINANCE-NETWORK-STATUS-RECHECK",
+      "publisher": "Binance — Deposit & Withdrawal Status / Network Status",
+      "url": "https://www.binance.bh/en/network",
+      "retrieved_at_utc": "2026-11-01T06:10:00Z",
+      "publication_time_utc": "NOT_DISCLOSED",
+      "evidence_class": "PRIMARY_EXCHANGE_STATUS_PAGE_RECHECK_RENDERED_INCOMPLETE",
+      "claims": [
+        "At 06:10 UTC, the page still displayed last updated 2026-11-01 05:28:24 AM; timezone not disclosed.",
+        "The server-rendered asset table still displayed 'No records'."
+      ],
+      "limitations": [
+        "No XRP-specific status row was exposed.",
+        "The empty table does not establish XRP open or suspended.",
+        "No successful customer withdrawal or transaction was verified."
+      ]
+    },
+    {
+      "id": "SRC-20261101T061500Z-GITHUB-BAGENT-PR1445-AND-WORKFLOW-AUDIT",
+      "publisher": "GitHub API, GitHub Actions and current-main workflow source — Barrot-Agent/B-Agent",
+      "url": "https://github.com/Barrot-Agent/B-Agent",
+      "retrieved_at_utc": "2026-11-01T06:15:00Z",
+      "publication_time_utc": "2026-11-01T06:15:00Z",
+      "evidence_class": "PRIMARY_REPOSITORY_WORKFLOW_AND_CI_STATE",
+      "claims": [
+        "Main SHA 694fc4241f543917fc6eb787c025bf1eb6726595; open PR inventory 216 total, 206 draft, 10 ready, 211 main-based, one current-main-based, 210 stale main-based and five non-main.",
+        "PR #1443 exact-head CI 349 tests + 8 subtests; gate pass; open/draft/unmerged.",
+        "PR #1444 exact-head CI 363 tests + 8 subtests; gate pass; open/draft/unmerged; one commit behind current main.",
+        "PR #1445 exact-head CI 346 tests + 8 subtests; gate pass; open/draft/unmerged; based on current main.",
+        "Main retains scheduled issue-mutating workflows auto-resolve-issues, barrot-autonomous-resolver, daily-digest and self-schedule, plus scheduled Gumroad metrics main writer.",
+        "Barrot Autonomous Resolver references vars.COPILOT_ASSIGNEE and can assign unassigned issues/PRs if configured; the variable value and actual handoff are unverified.",
+        "barrot-pr-automerge is disabled; no automatic merge execution was observed."
+      ],
+      "limitations": [
+        "No PR #1443/#1444/#1445 is merged; main remediation remains unapplied.",
+        "Scheduled issue-mutating workflows and Gumroad metrics main writer are not yet quarantined.",
+        "No live Copilot handoff has been authenticated or tested.",
+        "Full repository CI, dependency vulnerability scanning and security-alert review remain incomplete.",
+        "Branch-protection details endpoint returned 403."
+      ]
+    }
+  ]
+}
