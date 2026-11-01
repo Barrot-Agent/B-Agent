@@ -54,3 +54,14 @@ def test_kamilah_creator_inventory_remains_partial_and_camilla_match_unverified(
     ledger = load(f"data/xrp_intelligence/research_ledger_addenda/{STAMP}-sbic-east-japan-chatgpt-identity.json")
     assert any(item["classification"] == "UNKNOWN" and "Camilla Stephenson" in item["claim"] for item in ledger["findings"])
     assert any(item["classification"] == "UNKNOWN" and "all-public-video inventory remains incomplete" in item["claim"] for item in ledger["findings"])
+
+
+def test_followup_handoff_records_corrected_exact_head_ci():
+    audit = load("data/repository_audits/20261101T214400Z-v3-and-research-ci-followup.json")
+    handoff = load("data/xrp_intelligence/hand_offs/20261101T214400Z-xrp-intelligence-and-v3-followup.json")
+    assert audit["research_pr"]["head_sha"] == "4267b5fe3cf7b2091f25a308a256a63b42343e1b"
+    assert audit["research_pr"]["ci_result"] == "447 passed, 8 subtests passed"
+    assert audit["research_pr"]["fail_closed_gate_result"].startswith("success")
+    assert audit["subscriber_security_pr"]["number"] == 1476
+    assert handoff["prediction_engine"]["status"] == "NOT_ISSUED"
+    assert handoff["repository"]["active_main_risk"].startswith("Main still contains")

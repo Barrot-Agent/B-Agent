@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-intelligence-and-v3-followup-20261101T214400Z",
+  "captured_at_utc": "2026-11-01T21:44:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery remains first; Barrot V3 remains the execution and verification foundation.",
+  "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+  "current_research": {
+    "sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate number 9011001030621, is resolved. It is a private corporation/policy implementation institution under the 1963 Act, not a government financial institution. ChatGPT/Copilot references are education, not an OpenAI partnership. Historical SBI CAPITAL Co., Ltd. is a distinct 2007 SBI Holdings entity.",
+    "xrp_escrow": "Pinned XRP Ledger 108052148 at 20:11 UTC: 31.1B Ripple escrow, 99 objects, 8 owner accounts. November 1 release 1B; 700M re-escrowed in three objects at 17:38-17:42 UTC; net 300M outside escrow. Rolling 12 releases: 70% re-escrowed, 3.6B net outside escrow. The 08:00 UTC 30.4B snapshot predates the later relock.",
+    "market": "XRP exchange-wallet balances 22.45B across 701 wallets at 08:00 UTC include cold storage and 487.9M wrapped/fund reserves. Derivatives OI providers differ by universe (TradRadar 1.90B/7 venues at 15:25 UTC; Bentley 1.61B/17 venues at 15:16 UTC); no averaging.",
+    "creator": "Kamilah Stevenson remains the probable XRP channel candidate, channel ID UCqUPJMQdkCN6lsLVDnichPA; 11 seed videos on research branch; all-public inventory incomplete. Exact Camilla Stephenson identity equivalence remains unverified. vidIQ quota exhausted; no retry."
+  },
+  "prediction_engine": {
+    "status": "NOT_ISSUED",
+    "current_controls": "Fixed-horizon protocol segregation and current source-registry hash revalidation are implemented in unmerged PR #1475.",
+    "remaining_gaps": [
+      "Bind outcome price and timestamp to actual immutable source snapshot bytes, not only a registered hash string.",
+      "Enforce LIVE versus HISTORICAL_REPLAY mode at append time.",
+      "Build point-in-time feature store, walk-forward evaluation, baseline comparisons, calibration, drift detection and shadow evaluation."
+    ],
+    "feature_admission": "NONE"
+  },
+  "repository": {
+    "research_pr_1464_head": "4267b5fe3cf7b2091f25a308a256a63b42343e1b",
+    "research_pr_1464_ci": "447 tests and 8 subtests passed; fail-closed gate passed",
+    "security_pr_1476": "Open draft; 345 tests and 8 subtests passed; fail-closed gate passed",
+    "security_pr_1474": "Open draft; 390 tests and 8 subtests passed; fail-closed gate passed",
+    "prediction_pr_1475": "Open draft; 405 tests and 8 subtests passed; fail-closed gate passed",
+    "active_main_risk": "Main still contains the hourly Gumroad subscriber sync and a client-side-only subscriber gate. Latest observed sync processed zero active subscribers and current public subscriber hash file is empty. PR #1476 is a fail-closed proposal, not active remediation."
+  },
+  "platform_status": {
+    "verified": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "vidIQ": "No credits available; channel enumeration not completed."
+  },
+  "next_actions": [
+    "Continue raw XRPL metadata verification and recipient attribution for the three November re-escrow transactions.",
+    "Investigate Coinbase Financial Markets' actual notice of reliance and actual stablecoin/collateral balances under CFTC Letter 26-05.",
+    "Verify reserve look-through for USDC/USDXX and RLUSD money-market funds.",
+    "Implement immutable source-byte and observation-pointer verification for forecast outcomes.",
+    "Enforce LIVE versus HISTORICAL_REPLAY at forecast append time.",
+    "Reconcile the broad PR #1474 security proposal against current main without rewriting existing branch history.",
+    "Design a server-side entitlement and private delivery path before any paid subscriber signals are restored.",
+    "Continue ASK Coin, actual capital and Camilla/Kamilah identity/video work."
+  ],
+  "safety": "Main unchanged. No merge, force-push, manual workflow dispatch, secret access by the agent, deployment, paper position or real-money trade."
+}
