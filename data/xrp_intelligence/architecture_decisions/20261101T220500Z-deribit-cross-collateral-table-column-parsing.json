@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "decision_id": "deribit-cross-collateral-table-column-parsing-20261101T220500Z",
+  "captured_at_utc": "2026-11-01T22:05:00Z",
+  "decision": "Parse each Deribit collateral table column independently; do not propagate the cross-collateral check mark into the offset-currency field.",
+  "rules": [
+    "For the September 28 table, XRP Cross Collateral Currency = true.",
+    "For the September 28 table, XRP Offset Currency = false.",
+    "X:PM haircut is displayed as a dash/no haircut stated; X:SM haircut is 15%.",
+    "Use the corrected 22:05 source revision to supersede the 21:50 offset-currency interpretation.",
+    "The cross-collateral eligibility remains a venue capability, not proof of CFM U.S. customer enablement or actual posted XRP."
+  ]
+}

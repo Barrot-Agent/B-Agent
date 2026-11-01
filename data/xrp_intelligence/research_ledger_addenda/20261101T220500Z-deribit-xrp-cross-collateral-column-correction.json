@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "addendum_id": "deribit-xrp-cross-collateral-column-correction-20261101T220500Z",
+  "captured_at_utc": "2026-11-01T22:05:00Z",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T220500Z-deribit-xrp-cross-collateral-column-correction.json",
+  "supersedes": [
+    "data/xrp_intelligence/source_revisions/20261101T215000Z-coinbase-cftc-deribit-xrp-collateral-pathway.json",
+    "data/xrp_intelligence/relationship_graph_addenda/20261101T215000Z-coinbase-cftc-deribit-xrp-collateral-pathway.json",
+    "data/xrp_intelligence/snapshots/20261101T215000Z-coinbase-cftc-deribit-xrp-collateral-pathway.json"
+  ],
+  "correction": {
+    "field": "Deribit XRP Offset Currency status",
+    "previous_value": true,
+    "corrected_value": false,
+    "reason": "The four-column table was misread. XRP has a check mark under Cross Collateral Currency and a dash under Offset Currency."
+  },
+  "findings": [
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "XRP is a full Deribit cross-collateral currency, not an offset currency. The September 28 table marks Cross Collateral Currency ✓ and Offset Currency –."
+    },
+    {
+      "classification": "CONFIRMED_PRIMARY_SOURCE",
+      "claim": "The XRP row shows no X:PM haircut stated and a 15% X:SM haircut."
+    },
+    {
+      "classification": "CORRECTION",
+      "claim": "The 21:50 revision's assertion that XRP is also an offset currency is withdrawn. Do not use that field or graph edge; this 22:05 correction is authoritative."
+    }
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

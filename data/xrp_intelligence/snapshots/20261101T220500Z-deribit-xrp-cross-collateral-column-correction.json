@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "deribit-xrp-cross-collateral-column-correction-20261101T220500Z",
+  "captured_at_utc": "2026-11-01T22:05:00Z",
+  "source_id": "SRC-DERIBIT-CROSS-COLLATERAL-CORRECTED-20261101T220500Z",
+  "venue_haircut": {
+    "asset": "XRP",
+    "cross_collateral_currency": true,
+    "offset_currency": false,
+    "x_pm_haircut": "no haircut stated",
+    "x_sm_haircut_pct": 15
+  },
+  "supersedes_snapshot": "20261101T215000Z-coinbase-cftc-deribit-xrp-collateral-pathway",
+  "note": "The earlier 21:50 snapshot's offset_currency=true field was a column-parsing error and is superseded."
+}
