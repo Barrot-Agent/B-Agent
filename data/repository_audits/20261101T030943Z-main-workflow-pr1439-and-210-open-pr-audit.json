@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "captured_at_utc": "2026-11-01T03:09:43Z",
+  "data_cutoff_utc": "2026-11-01T03:09:43Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "f6fb103c61aa7f0da0205d8a0d776f88d6e58164",
+  "main_branch_protected_flag": true,
+  "full_branch_protection_rules": "NOT_ACCESSIBLE/NOT_FULLY_INSPECTED",
+  "findings": [
+    {
+      "id": "CROSS_ANALYSIS_TIMESTAMP_ONLY_FALSE_FRESHNESS",
+      "severity": "HIGH",
+      "status": "CONFIRMED_ACTIVE_ON_MAIN",
+      "workflow": ".github/workflows/cross-analysis.yml",
+      "run_id": 41266873208,
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41266873208",
+      "commit_sha": "f6fb103c61aa7f0da0205d8a0d776f88d6e58164",
+      "changed_path": "ping-pongings/knowledge-base/sentiment_shift.json",
+      "commit_diff": "generated_at changed only; XRP/BTC recent_24h_entries=0 and prior_24h_entries=0; scores null",
+      "conclusion": "A fresh timestamp is not fresh sentiment evidence."
+    },
+    {
+      "id": "SCHEDULER_TICK_UNBOUNDED_WORKFLOW_DISPATCH",
+      "severity": "HIGH",
+      "status": "CONFIRMED_ACTIVE_WRITE_CAPABILITY_ON_MAIN",
+      "workflow": ".github/workflows/scheduler-tick.yml",
+      "permissions": [
+        "contents:write",
+        "actions:write"
+      ],
+      "cadence": "Every 15 minutes",
+      "latest_run_id": 41267947619,
+      "latest_run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41267947619",
+      "latest_result": "0 entries fired; 1 total queue; git add/diff/push path executed; no changes; push up-to-date.",
+      "root_cause": "Scheduler implementation can dispatch existing workflow files without an explicit allowlist; write permissions remain."
+    },
+    {
+      "id": "MANUAL_MERGE_QUEUE_WITHOUT_APPROVAL_GATE",
+      "severity": "CRITICAL",
+      "status": "CONFIRMED_ACTIVE_ON_MAIN",
+      "workflow": ".github/workflows/merge-queue.yml",
+      "permissions": [
+        "contents:write",
+        "pull-requests:write"
+      ],
+      "trigger": "workflow_dispatch",
+      "default_dry_run": false,
+      "default_max_prs": 0,
+      "merge_methods": [
+        "squash",
+        "merge",
+        "rebase"
+      ],
+      "explicit_user_approval_check": false,
+      "workflow_dispatch_performed": false
+    },
+    {
+      "id": "PR1439_FRESH_MAIN_SAFETY_PROPOSAL",
+      "severity": "CRITICAL_REMEDIATION",
+      "status": "EXACT_HEAD_VERIFIED_OPEN_DRAFT_UNMERGED",
+      "pr": 1439,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1439",
+      "base_sha": "f6fb103c61aa7f0da0205d8a0d776f88d6e58164",
+      "head_sha": "5322ae1d27244973f85f56ada7ce5ad27a3f2edb",
+      "changed_files": 7,
+      "additions": 193,
+      "deletions": 235,
+      "ci_run_id": 41267879084,
+      "tests_passed": 349,
+      "subtests_passed": 8,
+      "gate_run_id": 41267879049,
+      "gate_status": "PASS_MERGE_DISABLED",
+      "mergeable": true,
+      "merged": false,
+      "draft": true,
+      "changes": [
+        "Cross Analysis read-only artifact-only",
+        "Scheduler Tick read-only queue audit; no workflow dispatch or queue mutation",
+        "Merge Queue disabled fail-closed and read-only",
+        "Seven-file regression suite in core CI"
+      ],
+      "tradeoffs": [
+        "Cross Analysis tracked-file/Pages refresh pauses pending separate publisher",
+        "Scheduler queue execution pauses pending allowlist, persistence, idempotency and approval design",
+        "Manual merge queue disabled"
+      ]
+    },
+    {
+      "id": "PR1438_STALE_SAFETY_PREDECESSOR",
+      "severity": "HIGH",
+      "status": "OPEN_DRAFT_UNMERGED_STALE_BASE",
+      "pr": 1438,
+      "base_sha": "9e9b134956f51cf74f846b010083ac375fa7e7e3",
+      "head_sha": "43c09658dc9431382b786c6d845838c7cc7415b8",
+      "ci_tests_passed": 349,
+      "ci_subtests_passed": 8,
+      "gate_run_id": 41264208876,
+      "gate_status": "PASS_MERGE_DISABLED"
+    },
+    {
+      "id": "APPROVAL_WORKFLOW_ACTOR_ALLOWLIST",
+      "severity": "MEDIUM",
+      "status": "REVIEW_REQUIRED",
+      "workflow": ".github/workflows/barrot-approve-pr.yml",
+      "observed": "Manual workflow validates PR number, expected head SHA, open state, base main, same repository and reason; applies approved label and comment only; no merge command. No explicit actor allowlist observed."
+    },
+    {
+      "id": "AUTONOMOUS_RESOLVER_METADATA_WRITES",
+      "severity": "MEDIUM",
+      "status": "WRITE_CAPABILITY_PRESENT",
+      "workflow": ".github/workflows/barrot-autonomous-resolver.yml",
+      "latest_run_id": 41267572239,
+      "latest_run_result": "success",
+      "permissions": [
+        "contents:read",
+        "issues:write",
+        "pull-requests:write"
+      ],
+      "observed": "Can create failure issues and assign issues/PRs; no merge command in inspected workflow; COPILOT_ASSIGNEE unset so assignments skipped."
+    }
+  ],
+  "open_pr_inventory": {
+    "total": 210,
+    "draft": 201,
+    "ready": 9,
+    "main_based": 206,
+    "current_main_base": 1,
+    "stale_main_base": 205,
+    "non_main_base": 4,
+    "pr1439_current_main_base": true
+  },
+  "verification": {
+    "pr1439_exact_head_ci": "PASS",
+    "pr1439_tests_passed": 349,
+    "pr1439_subtests_passed": 8,
+    "pr1439_fail_closed_gate": "PASS_MERGE_DISABLED",
+    "full_repository_ci": "NOT_RUN",
+    "dependency_vulnerability_scan": "NOT_RUN",
+    "security_alerts": "NOT_ACCESSIBLE",
+    "archive_validator_for_this_research_head": "NOT_RUN",
+    "archive_validation": "PENDING_EXACT_HEAD_VALIDATION"
+  },
+  "safety": {
+    "main_modified_by_this_run": false,
+    "pr1439_created_this_run": true,
+    "pr1439_merged": false,
+    "research_branch_append_only": true,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_position_mutated": false,
+    "real_money_trade": false
+  }
+}

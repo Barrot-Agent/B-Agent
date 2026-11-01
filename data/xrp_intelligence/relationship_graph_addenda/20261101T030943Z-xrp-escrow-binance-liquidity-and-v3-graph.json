@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.0",
+  "record_type": "relationship_graph_addendum",
+  "graph_id": "XRP-GRAPH-20261101T030943Z-POSTRELEASE-BINANCE-LIQUIDITY-V3",
+  "captured_at_utc": "2026-11-01T03:09:43Z",
+  "data_cutoff_utc": "2026-11-01T02:52:00Z",
+  "nodes": [
+    {
+      "id": "RIPPLE_ESCROW_POOL",
+      "type": "ENTITY",
+      "value": "Ripple-owned XRPL escrow",
+      "classification": "SOURCE_REPORTED"
+    },
+    {
+      "id": "NOV1_ESCROW_FINISH_1",
+      "type": "XRPL_TRANSACTION",
+      "value": "3CB037A5F9BC193427592EDB87C49C1ABE499F80F5C049090141B4EDE539F948",
+      "classification": "TRACKER_LINKED_RAW_TX_NOT_DECODED"
+    },
+    {
+      "id": "NOV1_ESCROW_FINISH_2",
+      "type": "XRPL_TRANSACTION",
+      "value": "33F693E7C92AD6D7A127F55441C0B38A153E8F37092B7CE0235652FF326DE564",
+      "classification": "TRACKER_LINKED_RAW_TX_NOT_DECODED"
+    },
+    {
+      "id": "NOV1_ESCROW_EVENT",
+      "type": "EVENT",
+      "value": "1B XRP released at 2026-11-01T00:00:02Z",
+      "classification": "LEDGER_DERIVED_TRACKER_REPORT"
+    },
+    {
+      "id": "XRPL_LEDGER_108035119",
+      "type": "VALIDATED_LEDGER_SNAPSHOT",
+      "value": "2026-11-01T01:30:00Z",
+      "classification": "PINNED_TRACKER_LEDGER"
+    },
+    {
+      "id": "ESCROW_DESTINATIONS_UNKNOWN",
+      "type": "UNKNOWN",
+      "value": "Both Destination fields not independently decoded",
+      "classification": "UNKNOWN"
+    },
+    {
+      "id": "RIPPLE_ESCROW_AFTER",
+      "type": "BALANCE_STATE",
+      "value": "30.4B XRP, 96 objects, 8 owner accounts",
+      "classification": "TRACKER_REPORTED"
+    },
+    {
+      "id": "BINANCE",
+      "type": "EXCHANGE",
+      "value": "Binance",
+      "classification": "COMPANY_REPORTED"
+    },
+    {
+      "id": "BINANCE_XRP_COVERAGE",
+      "type": "CLAIM",
+      "value": "XRP customer assets 100% backed",
+      "classification": "COMPANY_REPORTED_PENDING_ZK_PROOF"
+    },
+    {
+      "id": "BINANCE_RLUSD_COVERAGE",
+      "type": "CLAIM",
+      "value": "RLUSD customer assets 100% backed",
+      "classification": "COMPANY_REPORTED_PENDING_ZK_PROOF"
+    },
+    {
+      "id": "BINANCE_ATTACKER_WALLET",
+      "type": "XRPL_ACCOUNT",
+      "value": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "classification": "STALE_SECONDARY_OBSERVATION"
+    },
+    {
+      "id": "LIQWALL_MARKET",
+      "type": "MARKET_SNAPSHOT",
+      "value": "XRP $1.25; OI $1.33B; average funding +0.0009%/8h; 72.9% Binance accounts long; $394K liquidations",
+      "classification": "SECONDARY_PROVIDER_2026-11-01T02:52Z"
+    },
+    {
+      "id": "OKX_SPOT",
+      "type": "MARKET_SNAPSHOT",
+      "value": "XRP $1.249; 24h -0.06%; updated 02:41:50 UTC",
+      "classification": "SINGLE_EXCHANGE_OBSERVATION"
+    },
+    {
+      "id": "BAGENT_MAIN",
+      "type": "REPOSITORY_BRANCH",
+      "value": "main f6fb103c61aa7f0da0205d8a0d776f88d6e58164",
+      "classification": "GITHUB_API_OBSERVATION"
+    },
+    {
+      "id": "PR1439",
+      "type": "PULL_REQUEST",
+      "value": "Fresh-main safety PR #1439; head 5322ae1; 349 tests + 8 subtests and fail-closed gate passed; open draft unmerged",
+      "classification": "EXACT_HEAD_VERIFIED"
+    },
+    {
+      "id": "SCHEDULER_TICK_41267947619",
+      "type": "WORKFLOW_RUN",
+      "value": "0 entries fired, 1 total queue; no commit; write-capable path executed",
+      "classification": "GITHUB_JOB_LOG_VERIFIED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "RIPPLE_ESCROW_POOL",
+      "to": "NOV1_ESCROW_FINISH_1",
+      "relation": "RELEASED_BY",
+      "evidence_class": "TRACKER_REPORTED"
+    },
+    {
+      "from": "RIPPLE_ESCROW_POOL",
+      "to": "NOV1_ESCROW_FINISH_2",
+      "relation": "RELEASED_BY",
+      "evidence_class": "TRACKER_REPORTED"
+    },
+    {
+      "from": "NOV1_ESCROW_FINISH_1",
+      "to": "NOV1_ESCROW_EVENT",
+      "relation": "CONTRIBUTES_500M_XRP",
+      "evidence_class": "TRACKER_REPORTED"
+    },
+    {
+      "from": "NOV1_ESCROW_FINISH_2",
+      "to": "NOV1_ESCROW_EVENT",
+      "relation": "CONTRIBUTES_500M_XRP",
+      "evidence_class": "TRACKER_REPORTED"
+    },
+    {
+      "from": "NOV1_ESCROW_EVENT",
+      "to": "XRPL_LEDGER_108035119",
+      "relation": "OBSERVED_BY_CUTOFF",
+      "evidence_class": "TRACKER_REPORTED"
+    },
+    {
+      "from": "XRPL_LEDGER_108035119",
+      "to": "RIPPLE_ESCROW_AFTER",
+      "relation": "SHOWS_REMAINING_ESCROW",
+      "evidence_class": "TRACKER_REPORTED"
+    },
+    {
+      "from": "NOV1_ESCROW_EVENT",
+      "to": "ESCROW_DESTINATIONS_UNKNOWN",
+      "relation": "DESTINATION_NOT_DECODED",
+      "evidence_class": "UNKNOWN"
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_XRP_COVERAGE",
+      "relation": "CLAIMS_100_PERCENT_BACKING",
+      "evidence_class": "COMPANY_REPORTED"
+    },
+    {
+      "from": "BINANCE",
+      "to": "BINANCE_RLUSD_COVERAGE",
+      "relation": "CLAIMS_100_PERCENT_BACKING",
+      "evidence_class": "COMPANY_REPORTED"
+    },
+    {
+      "from": "BINANCE_ATTACKER_WALLET",
+      "to": "BINANCE",
+      "relation": "RECEIVED_233461943_1_XRP_FROM_BINANCE_HOT_WALLETS; CURRENT_BALANCE_UNKNOWN",
+      "evidence_class": "STALE_SECONDARY_ONCHAIN_OBSERVATION"
+    },
+    {
+      "from": "LIQWALL_MARKET",
+      "to": "OKX_SPOT",
+      "relation": "CROSS_PROVIDER_PRICE_CONSISTENCY_AROUND_1_25_USD",
+      "evidence_class": "SECONDARY_PROVIDER_CORROBORATION"
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "SCHEDULER_TICK_41267947619",
+      "relation": "RUNS_WRITE_CAPABLE_SCHEDULER",
+      "evidence_class": "GITHUB_JOB_LOG_VERIFIED"
+    },
+    {
+      "from": "BAGENT_MAIN",
+      "to": "PR1439",
+      "relation": "SAFETY_PROPOSAL_NOT_YET_APPLIED",
+      "evidence_class": "GITHUB_API_OBSERVATION"
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "H-ESCROW-01",
+      "claim": "The 1B XRP release immediately created 1B XRP of sell pressure.",
+      "classification": "UNSUPPORTED",
+      "supporting_evidence": [
+        "1B XRP reported released; 1B net outside escrow at ledger 108035119."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "Destination fields not decoded.",
+        "No subsequent exchange deposit or sale established.",
+        "No synchronized event study with controls.",
+        "Spot near $1.249-$1.25 is a short post-event observation, not causal evidence."
+      ],
+      "status": "NOT_ADMITTED"
+    },
+    {
+      "id": "H-ESCROW-02",
+      "claim": "Some or all of the released XRP may be re-escrowed later.",
+      "classification": "PLAUSIBLE_ALTERNATIVE",
+      "supporting_evidence": [
+        "Historical rolling 12-cycle re-escrow ratio 64.2%."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "Zero re-escrow by ledger 108035119 at 01:30 UTC.",
+        "Later EscrowCreate activity unknown."
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "H-BINANCE-01",
+      "claim": "Binance's 100% XRP backing claim proves it bought 233.46M XRP in the spot market.",
+      "classification": "UNSUPPORTED",
+      "supporting_evidence": [
+        "Binance says XRP is 100% backed and continues market/OTC purchases for remaining assets."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "XRP-specific acquisition amount and venue undisclosed.",
+        "Top-ten assets already claimed 100% backed; remaining 10% is outside top ten.",
+        "Existing inventory, OTC, internal reallocation or custody movements are alternatives."
+      ],
+      "status": "NOT_ADMITTED"
+    },
+    {
+      "id": "H-ATTACK-01",
+      "claim": "The attacker-held 233.46M XRP is a current available supply overhang.",
+      "classification": "CONDITIONAL_RISK_NOT_CURRENT_FACT",
+      "supporting_evidence": [
+        "Historical on-chain observation reports 233,461,943.10005 XRP and no outflows through 16:51 UTC Oct31."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "Observation is stale by more than 10 hours.",
+        "Current balance and any later transactions unknown.",
+        "No sale or exchange deposit established."
+      ],
+      "status": "MONITOR_ONLY"
+    },
+    {
+      "id": "H-MARKET-01",
+      "claim": "The escrow release caused the current XRP price/derivatives state.",
+      "classification": "UNSUPPORTED_CAUSAL_ATTRIBUTION",
+      "supporting_evidence": [
+        "Price around $1.249-$1.25; OI $1.33B and positive funding in one provider."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "24h windows overlap Binance incident and other market events.",
+        "No high-frequency event-time spot depth/trade data.",
+        "Provider universes differ; long account share is not notional exposure."
+      ],
+      "status": "NOT_ADMITTED"
+    },
+    {
+      "id": "H-REPO-01",
+      "claim": "PR #1439 has removed the unapproved main-branch merge and scheduled writer risks.",
+      "classification": "FALSE_UNTIL_MERGED",
+      "supporting_evidence": [
+        "PR #1439 exact-head CI 349 + 8 and fail-closed gate passed."
+      ],
+      "disconfirming_or_missing_evidence": [
+        "PR remains open, draft and unmerged.",
+        "Main merge queue, Scheduler Tick and Cross Analysis remain active."
+      ],
+      "status": "NOT_APPLIED"
+    }
+  ],
+  "exclusions": [
+    "No edge links the escrow event to Coinbase, Circle, RLUSD, ETF flows or an exchange sale without direct evidence.",
+    "No destination account is inferred from the Ripple owner label.",
+    "No Binance XRP acquisition quantity is inferred from aggregate 90% replenishment or 100% coverage.",
+    "No attacker balance is presented as current after 2026-10-31T16:51Z.",
+    "No market direction is inferred from one price snapshot, funding or account-share ratios."
+  ]
+}

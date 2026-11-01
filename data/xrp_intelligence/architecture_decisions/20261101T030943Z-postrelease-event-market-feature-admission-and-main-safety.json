@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "record_type": "architecture_decision",
+  "decision_id": "ADR-20261101T030943Z-POSTRELEASE-EVENT-MARKET-FEATURE-AND-MAIN-SAFETY",
+  "created_at_utc": "2026-11-01T03:09:43Z",
+  "status": "DESIGNED; SNAPSHOT_CAPTURED; EXACT_HEAD_ARCHIVE_VALIDATION_PENDING",
+  "context": "XRP Insights advanced the pinned ledger from 108034152 at 00:27 UTC to 108035119 at 01:30 UTC. The same tracker reports 1B XRP released, zero re-escrow by 01:30, 30.4B XRP remaining and a 64.2% rolling 12-cycle re-escrow ratio. Fresh Liqwall/OKX observations are available, but no causal event study is complete. Current main remains write-capable; PR #1439 has passed exact-head tests but is unmerged.",
+  "decisions": [
+    "Record gross EscrowFinish release and net outside escrow only as of ledger 108035119 at 01:30 UTC; do not infer destination, sale, exchange deposit or market impact.",
+    "Use 64.2% trailing 12-cycle re-escrow and 358.3M XRP/month average net outside escrow as pinned source statistics; later EscrowCreate activity may change the window.",
+    "Keep raw transaction metadata and Destination decoding as a hard gate for downstream disposition features.",
+    "Keep Liqwall and OKX observations separate, timestamped and source-specific; do not merge Liqwall OI 1.33B with TradRadar OI 1.87B without methodology reconciliation.",
+    "Treat 72.9% Binance long-account share as account count, not notional positioning.",
+    "Treat Binance 100% XRP/RLUSD backing as company-reported pending full ZK proof and independent address/liability reconciliation; do not infer XRP-specific market purchases.",
+    "Keep attacker-wallet 233.46M XRP as a stale observation from 16:51 UTC Oct31; current state unknown.",
+    "Do not issue a directional forecast or admit market features from these snapshots.",
+    "Keep PR #1439 open, draft and unmerged; its exact-head CI and fail-closed gate pass do not apply its changes to main.",
+    "Continue to quarantine main writers only through an approved PR merge; no merge was performed."
+  ],
+  "feature_gate": {
+    "escrow_release_amount": "CONTEXT_ONLY",
+    "destination_account": "NOT_ADMITTED; UNKNOWN",
+    "subsequent_disposition": "NOT_ADMITTED; UNKNOWN",
+    "reescrow_amount": "ZERO_OBSERVED_ONLY_THROUGH_LEDGER_108035119_AT_01:30Z",
+    "spot_price": "CONTEXT_ONLY; SECONDARY_PROVIDER_SNAPSHOT",
+    "open_interest": "NOT_ADMITTED; PROVIDER_METHODOLOGY_RECONCILIATION_REQUIRED",
+    "funding_and_long_account_share": "CONTEXT_ONLY; NOT_DIRECTIONAL",
+    "binance_xrp_replenishment": "COMPANY_REPORTED; XRP_SPECIFIC_ACQUISITION_UNDISCLOSED",
+    "attacker_wallet_balance": "STALE; NOT_CURRENT",
+    "market_impact": "NOT_ADMITTED",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "next_action": "Retrieve raw XRPL transaction JSON and account_objects at a newer validated ledger; decode both Destination fields and account_tx history; monitor EscrowCreate and exchange-tagged transfers. Capture high-frequency spot trades/depth around the release, reconcile ETF holdings and venue flows, and compare only source-matched derivatives. Continue PR #1439 exact-head evidence preservation and do not merge without approval."
+}
