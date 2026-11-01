@@ -144,7 +144,7 @@ def test_ripple_escrow_post_release_relock_uses_pinned_ledger_and_corrects_stale
     assert escrow["rolling_12_releases"]["net_out_xrp"] == 3_600_000_000
     assert escrow["conflicting_summary"]["difference_xrp"] == 700_000_000
     assert escrow["schedule"]["unlock_objects_left"] == 32
-    assert escrow["schedule"]["last_scheduled_unlock"] == "2029-07-01"
+    assert escrow["schedule"]["last_unlock"] == "2029-07-01"
 
 
 def test_ripple_escrow_supply_correction_keeps_net_release_separate_from_sales():
@@ -163,7 +163,7 @@ def test_xrpl_rwa_headline_separates_distributed_float_from_registry_notional():
          "20261101T212500Z-escrow-post-release-relock-and-supply-breakdown.json").read_text(encoding="utf-8")
     )
     rwa = snapshot["market_structure"]["rwa"]
-    assert rwa["total_usd"] == 4_330_000_000
+    assert rwa["combined_usd"] == 4_330_000_000
     assert rwa["distributed_usd"] == 276_000_000
     assert rwa["represented_usd"] == 4_060_000_000
     assert rwa["distributed_share_pct"] < 7
