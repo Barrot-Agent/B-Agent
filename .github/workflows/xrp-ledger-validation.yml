@@ -5,10 +5,12 @@ on:
     branches:
       - research/xrp-ledger-shard-migration-20261029T2210Z
       - verify/xrp-ledger-archive-20261101T031615Z
+      - verify/xrp-ledger-archive-20261101T070712Z
   pull_request:
     branches:
       - research/xrp-ledger-shard-migration-20261029T2210Z
       - research/binance-xrp-hack-graph-20261101T0108Z
+      - verify/xrp-ledger-archive-20261101T070712Z
 
 permissions:
   contents: read
