@@ -53,4 +53,4 @@ def test_repository_audit_records_subscriber_bypass_and_exact_head_remediation()
 def test_kamilah_creator_inventory_remains_partial_and_camilla_match_unverified():
     ledger = load(f"data/xrp_intelligence/research_ledger_addenda/{STAMP}-sbic-east-japan-chatgpt-identity.json")
     assert any(item["classification"] == "UNKNOWN" and "Camilla Stephenson" in item["claim"] for item in ledger["findings"])
-    assert any("incomplete" in hypothesis["status"].lower() or "not established" in hypothesis["statement"].lower() for hypothesis in ledger["competing_hypotheses"])
+    assert any(item["classification"] == "UNKNOWN" and "all-public-video inventory remains incomplete" in item["claim"] for item in ledger["findings"])
