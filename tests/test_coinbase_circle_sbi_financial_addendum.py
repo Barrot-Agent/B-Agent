@@ -46,3 +46,8 @@ def test_coinbase_circle_sbi_financial_addendum_is_consistent():
     assert decision["forecast_status"] == "NOT_ISSUED"
     assert handoff["forecast_status"] == "NOT_ISSUED"
     assert handoff["safety"]["main_modified"] is False
+
+    ledger = load("data/xrp_intelligence/research_ledger_addenda/20261101T140000Z-coinbase-circle-sbi-arc-cbxrp-ledger-addendum.json")
+    assert ledger["forecast_status"] == "NOT_ISSUED"
+    assert ledger["artifacts"]["relationship_graph"].endswith("20261101T140000Z-coinbase-circle-sbi-arc-cbxrp-graph.json")
+    assert "sbi-remit-xrp-corridors-20230906" in ledger["source_ids"]
