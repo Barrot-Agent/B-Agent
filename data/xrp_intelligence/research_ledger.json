@@ -27,8 +27,8 @@
     "captured_at_utc": "2026-11-01T01:08:00Z",
     "data_cutoff_utc": "2026-11-01T01:04:00Z",
     "snapshot_path": "data/xrp_intelligence/snapshots/20261101T010800Z-binance-xrp-overhang-and-market.json",
-    "snapshot_blob_sha": "0ae9ceb89ea6224ac38abb96fee47df39c9f8d40",
-    "snapshot_commit_sha": "08e9b0032b17db88e0e60be3f6e79ebb441b0010",
+    "snapshot_blob_sha": "0e81db60ce9b611dbff80d7f32a9cbbce10f4c15",
+    "snapshot_commit_sha": "f0380a0b4650f4360aedc07e56c206090763b301",
     "graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T010800Z-binance-xrp-circle-ripple-fbi.json",
     "graph_addendum_blob_sha": "5a1fcfc63a60951618b921573fc5fd663de96b15",
     "graph_addendum_commit_sha": "901c2fb61ed2d96b5f62b6ccdfe53082cac7e2d4",
@@ -389,12 +389,12 @@
       },
       {
         "path": "data/xrp_intelligence/source_revisions/20261101T010800Z-binance-xrp-attacker-address-issuer-freezes.json",
-        "blob_sha": "5ecd7d32ec9940a345b31d57012634b9261e340a",
-        "commit_sha": "981628145903eec387cd3b670123c5175e3d85e5",
+        "blob_sha": "b5b1589c6a803ac54bfc6a8ef7970d5506cf4251",
+        "commit_sha": "b646ec15cad47dfb7d8ff9f2a816ccd95659d0d3",
         "revision_id": "REV-20261101T010800Z-BINANCE-XRP-ATTACKER-ADDRESS-ISSUER-FREEZES",
         "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
         "captured_at_utc": "2026-11-01T01:08:00Z",
-        "status": "PENDING_ARCHIVE_APPEND; NEW_REVISION_THIS_RUN; SIX_SOURCE_CANDIDATES_PENDING_REGISTRY",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_RECORD_TYPE_CORRECTED; SIX_SOURCE_CANDIDATES_PENDING_REGISTRY",
         "pending_archive_append": true,
         "new_source_candidates": 6
       }
@@ -411,9 +411,9 @@
     "inherited_pending_source_revision_addenda_count": 32,
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED",
-    "verification_status": "PENDING_ARCHIVE_VALIDATION_AND_RESEARCH_BRANCH_INTEGRATION",
+    "verification_status": "PENDING_BASE_REPAIR_PR_AND_ARCHIVE_VALIDATION",
     "exact_head_validation": false,
-    "pending_data_head_sha": "fe6a8fe6e91fd64df2bcf03e6471afe7ba0ca34c",
+    "pending_data_head_sha": "f0380a0b4650f4360aedc07e56c206090763b301",
     "created_at_utc": "2026-11-01T01:08:00Z",
     "previous_graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261101T010400Z-escrow-main-writer-pr1435.json",
     "previous_architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T010400Z-validated-escrow-and-readonly-cross-analysis.json",
@@ -461,7 +461,9 @@
     "latest_market_snapshot_xrp_usd": 1.25,
     "latest_market_snapshot_open_interest_usd": 3460000000,
     "latest_market_snapshot_volume_24h_usd": 746633504.83,
-    "latest_market_features_admitted": false
+    "latest_market_features_admitted": false,
+    "latest_repair_dependency_pr": 1437,
+    "latest_repair_dependency_status": "BASE_RESEARCH_BRANCH_VALIDATOR_FAILURE; PR1437_REPAIR_PROPOSAL_PENDING"
   },
   "sources": {
     "record_type": "archive_pointer",
@@ -7331,9 +7333,9 @@
     "causal_attribution": "NOT_ESTABLISHED; OCT30 ALL-EXCHANGE DECLINE PARTIALLY REVERSED OCT31; BINANCE SAME-WALLET 7D AND 30D ARE POSITIVE; CRYPTOQUANT SERIES SEPARATE; NO INCIDENT-SOURCE WALLET CROSSWALK",
     "market_feature_admission": "CUSTODY_TIMELINE_ONLY_NOT_DIRECTIONAL"
   },
-  "latest_snapshot_verification_status": "PENDING_ARCHIVE_VALIDATION_AND_RESEARCH_BRANCH_INTEGRATION",
-  "latest_snapshot_verification_head_sha": "fe6a8fe6e91fd64df2bcf03e6471afe7ba0ca34c",
-  "latest_snapshot_verification_at_utc": "2026-11-01T01:08:00Z",
+  "latest_snapshot_verification_status": "PENDING_BASE_REPAIR_PR_AND_ARCHIVE_VALIDATION",
+  "latest_snapshot_verification_head_sha": "f0380a0b4650f4360aedc07e56c206090763b301",
+  "latest_snapshot_verification_at_utc": "2026-11-01T01:16:00Z",
   "latest_architecture_decision": "data/xrp_intelligence/architecture_decisions/20261031T215123Z-drivewealth-integration-status-and-xrp-demand.json",
   "last_verified_head_sha": "fe59a6a5c83becc89fd607ce2fc606d41b7eaf8f",
   "last_verified_at_utc": "2026-10-31T22:10:20Z",
@@ -8397,7 +8399,9 @@
   "archive_shards_total_in_repository_status": "EXPECTED_439; NEW_3_SHARD_APPEND_PENDING_EXACT_HEAD_VALIDATION",
   "last_reconciled_at_utc": "2026-11-01T01:08:00Z",
   "counts_reconciled": true,
-  "latest_snapshot_verification_errors": [],
+  "latest_snapshot_verification_errors": [
+    "Base research branch 4472 validator failed on three source_revision record_type values and missing snapshot_path; repair proposal #1437 is separate and unmerged."
+  ],
   "latest_snapshot_verification_state_mutated": false,
   "real_money_trade_performed": false,
   "latest_repository_audit_count_status": "PREVIOUS_202_OPEN_PR_COUNT; NOT_RECOUNTED_THIS_CAPTURE; SEARCH_RETURNED_TOP_100",
@@ -13793,5 +13797,6 @@
   "latest_market_snapshot_open_interest_usd": 3460000000,
   "latest_market_snapshot_volume_24h_usd": 746633504.83,
   "staging_research_branch": "research/binance-xrp-hack-graph-20261101T0108Z",
-  "staging_research_branch_base_sha": "4472b6274da4476c2049d0c26fb742f86bbbb093"
+  "staging_research_branch_base_sha": "4472b6274da4476c2049d0c26fb742f86bbbb093",
+  "latest_binance_xrp_staging_validation_status": "JSON_POINTERS_READ_BACK; ARCHIVE_VALIDATOR_NOT_RUN; BASE_REPAIR_PR_PENDING"
 }
