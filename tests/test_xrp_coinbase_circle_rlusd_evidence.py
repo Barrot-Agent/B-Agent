@@ -37,10 +37,14 @@ def test_coinbase_global_exchange_collateral_is_future_not_live():
     p = load_snapshot()["institutional_relationships"]["coinbase"]["ripple_rlusd_partnership"]
     assert p["global_exchange_collateral"] == "FUTURE_ANNOUNCED_NOT_LIVE"
 
-def test_circle_arc_agent_share_is_company_reported():
-    a = load_snapshot()["stablecoins"]["arc_usdc"]
-    assert a["agent_driven_transaction_volume_usdc_pct"] == 98.8
-    assert a["agent_share_evidence"] == "COMPANY_REPORTED"
+def test_circle_agent_share_is_global_not_arc_specific():
+    data = load_snapshot()
+    global_metric = data["stablecoins"]["circle_agent_stack"]
+    arc = data["stablecoins"]["arc_usdc"]
+    assert global_metric["agent_driven_transaction_volume_usdc_pct"] == 98.8
+    assert global_metric["scope"] == "GLOBAL_AGENT_STACK_X402_NOT_ARC_SPECIFIC"
+    assert global_metric["evidence"] == "COMPANY_REPORTED"
+    assert "agent_driven_transaction_volume_usdc_pct" not in arc
 
 def test_ambiguous_etf_and_escrow_data_are_not_silently_merged():
     d = load_snapshot()

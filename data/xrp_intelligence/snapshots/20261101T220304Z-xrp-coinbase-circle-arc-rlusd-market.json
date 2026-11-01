@@ -155,10 +155,15 @@
       "validator_model": "permissioned validator cohort",
       "founding_validator_sbi_group": true,
       "coinbase_role": "listed among exchange participants, not a founding validator",
-      "agent_driven_transaction_volume_usdc_pct": 98.8,
-      "agent_share_evidence": "COMPANY_REPORTED",
       "source_id": "SRC_CIRCLE_ARC",
       "live_volume_reconciliation": "NOT_AVAILABLE_IN_THIS_RUN"
+    },
+    "circle_agent_stack": {
+      "agent_driven_transaction_volume_usdc_pct": 98.8,
+      "scope": "GLOBAL_AGENT_STACK_X402_NOT_ARC_SPECIFIC",
+      "description": "Circle says USDC accounts for 98.8% of agent-driven transaction volume across its Agent Stack/x402 activity. This is not a measure of Arc-chain-only transactions.",
+      "evidence": "COMPANY_REPORTED",
+      "source_id": "SRC_CIRCLE_ARC"
     }
   },
   "agentic_payments": {
@@ -431,6 +436,13 @@
       "issue": "Main sentiment_shift timestamp advances despite zero observations and null scores.",
       "action": "Require source-data cutoff and freshness status; do not use generated_at as freshness.",
       "feature_admission": "BLOCKED"
+    },
+    {
+      "id": "DQ9",
+      "severity": "HIGH",
+      "issue": "Circle's 98.8% USDC agent-driven transaction-volume metric refers to global Agent Stack/x402 activity, not Arc-specific on-chain activity.",
+      "action": "Keep global Agent Stack share separate from Arc chain metrics; use independent Arc transaction/volume snapshots for Arc adoption.",
+      "feature_admission": "BLOCKED_FOR_ARC_SPECIFIC_AGENT_ACTIVITY"
     }
   ],
   "prediction": {

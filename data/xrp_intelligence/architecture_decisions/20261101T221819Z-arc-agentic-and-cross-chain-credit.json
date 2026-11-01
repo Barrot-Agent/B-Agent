@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "artifact_type": "arc_and_xrp_prediction_architecture_decision",
+  "decision_id": "ADR-XRP-20261101-ARC-AGENT-METRICS-AND-SBI-MULTIRAIL",
+  "captured_at_utc": "2026-11-01T22:18:19Z",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Separate global Circle Agent Stack/x402 USDC share from Arc-chain-specific x402 activity.",
+      "reason": "Circle's 98.8% statement describes global agent-driven transaction volume, not Arc-only volume."
+    },
+    {
+      "id": "D2",
+      "decision": "Track Arc public-chain metrics and filtered organic activity separately.",
+      "reason": "Bitquery's first-month study found 94% active-wallet decline, farms, bots and a self-trading outlier; headline DEX volume overstated adjusted real-trader volume."
+    },
+    {
+      "id": "D3",
+      "decision": "Track Arc stablecoin supply, TVL, DEX, perps, active addresses, bridge flows and Morpho credit as separate time series.",
+      "reason": "DefiLlama's Nov 1 data show material TVL, stablecoin and perps activity despite weaker early organic-wallet retention."
+    },
+    {
+      "id": "D4",
+      "decision": "Compare Arc cirBTC/USDC and Base cbXRP/USDC Morpho markets as separate collateral markets.",
+      "reason": "USDC is a shared debt asset; collateral, LLTV, borrower, vault and bridge-flow dimensions differ."
+    },
+    {
+      "id": "D5",
+      "decision": "Represent SBI Group as a multi-rail investor/operator: Ripple equity, Circle equity, ARC presale, Arc validator, USDC distribution, RLUSD MOU and XRP remittance.",
+      "reason": "SBI's direct capital and operating relationships span both ecosystems; SBIC is a separate entity."
+    },
+    {
+      "id": "D6",
+      "decision": "Do not infer XRP token holdings from SBI's 9% Ripple equity stake.",
+      "reason": "SBI's official investor presentation identifies equity ownership, not a $10B XRP token position."
+    }
+  ],
+  "required_dimensions": [
+    "chain",
+    "metric_scope",
+    "global_or_chain_specific",
+    "provider",
+    "window",
+    "filter_method",
+    "wallet_cluster",
+    "stablecoin_issuer",
+    "collateral_asset",
+    "debt_asset",
+    "vault",
+    "bridge_destination",
+    "validated_block",
+    "source_hash"
+  ],
+  "forecast_policy": "No directional XRP forecast until Arc and XRPL data are normalized, bot/cluster adjusted, time-aligned and tested out of sample."
+}

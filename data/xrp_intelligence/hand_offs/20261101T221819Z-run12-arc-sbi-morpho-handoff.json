@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "artifact_type": "barrot_arc_sbi_xrp_handoff",
+  "captured_at_utc": "2026-11-01T22:18:19Z",
+  "pr": 1477,
+  "branch": "research/xrp-coinbase-circle-arc-rlusd-20261101T220304Z",
+  "prior_head": "d47926fdb20f493f6093a95304142f27c6064494",
+  "prior_head_ci": {
+    "run": 41356331941,
+    "result": "342 tests and 8 subtests passed"
+  },
+  "prior_head_gate": {
+    "run": 41356331930,
+    "result": "passed; merge disabled"
+  },
+  "corrections": [
+    "Moved Circle's 98.8% global Agent Stack/x402 USDC share out of Arc-specific metrics.",
+    "Added Bitquery Arc first-month activity and Morpho cirBTC/USDC lending analysis.",
+    "Added SBI Group Ripple equity, Circle equity, ARC presale, Arc validator, USDC distribution, RLUSD MOU and XRP remittance relationships."
+  ],
+  "next_action": "Verify exact-head CI and fail-closed gate; reconcile Arc stablecoin supply and chain-specific agent activity before predictive feature admission.",
+  "forecast_status": "NOT_ISSUED",
+  "safety": {
+    "main_unchanged": true,
+    "merge_performed": false,
+    "force_push": false,
+    "manual_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployment": false,
+    "real_money": false
+  }
+}
