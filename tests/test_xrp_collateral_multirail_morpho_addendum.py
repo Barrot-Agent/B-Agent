@@ -29,7 +29,7 @@ def test_coinbase_usdc_xrp_collateral_is_not_attributed_to_circle_as_lender():
     assert snap["stated_max_loan_usd"] == 100000
     assert snap["reported_max_initial_ltv_pct"] == 49
     assert snap["reported_liquidation_ltv_pct"] == 62.5
-    assert "no evidence Circle controls" in " ".join(snap["caveats"])
+    assert "no evidence Circle controls" in snap["circle_role"]
 
 
 def test_circle_native_usdc_on_xrpl_is_not_native_xrp():
