@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_intelligence_and_barrot_v3_run_handoff",
+  "captured_at_utc": "2026-11-01T23:46:47.623Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "repo_state": {
+    "repository": "Barrot-Agent/B-Agent",
+    "default_branch": "main",
+    "verified_main_sha": "ce1139c7c032e0bdca93efcf2ea963a5ace56b6e",
+    "main_status": "Unchanged by this run; all writes were confined to existing PR branches.",
+    "branch_name_warning": "A separate capitalized `Main` branch exists and is stale. The repository README says it is transitioning from Main to main. Use the default branch `main`, not `Main`.",
+    "no_merge_force_push_or_manual_dispatch": true
+  },
+  "research_findings": [
+    {
+      "topic": "Coinbase non-US XRP collateral",
+      "finding": "Coinbase Advanced Global Derivatives lists XRP as cross-collateral in supported non-US regions. The standard-margin X:SM haircut is 15%; X:PM is a dash with no interpretation. Rebalancing can use a positive-equity currency to buy a negative settlement currency; if XRP is positive and USDC is negative, a rebalance could sell XRP for USDC. No collateral balances or rebalancing flows are public.",
+      "sources": [
+        "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral"
+      ],
+      "classification": "PRODUCT_FACT_PLUS_CONDITIONAL_INFERENCE"
+    },
+    {
+      "topic": "Coinbase US Prime scope",
+      "finding": "Coinbase Prime Global Derivatives' current public eligible collateral list is USDC, BTC and ETH; XRP is absent. Its U.S. product scope is distinct from non-U.S. Advanced Global Derivatives.",
+      "sources": [
+        "https://help.coinbase.com/en/prime/derivatives/funding-your-global-derivatives-portfolio",
+        "https://help.coinbase.com/en/prime/derivatives/what-is-global-derivatives"
+      ],
+      "classification": "PRODUCT_FACT"
+    },
+    {
+      "topic": "CFTC 26-05/26-17",
+      "finding": "Letter 26-17 provides conditional staff no-action relief for specified 30.7 customer-owned digital-commodity/payment-stablecoin transfers from Coinbase Financial Markets through Coinbase Bermuda to Deribit under right of re-use. Letter 26-05 imposes an FCM-specific first three months limited to payment stablecoins, BTC and ETH; afterward, other assets can qualify under stated DCO/foreign-clearing or underlying-commodity-of-CFTC-DCM-futures tests. Coinbase Derivatives lists XRP futures, creating a possible conditional 30.7 pathway, not proof of CFM notice or actual XRP collateral usage.",
+      "sources": [
+        "https://www.cftc.gov/csl/26-05/download",
+        "https://www.cftc.gov/csl/26-17/download",
+        "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizations/43304",
+        "https://www.cftc.gov/sites/default/files/filings/ptc/25/04/ptc04032518916.pdf"
+      ],
+      "classification": "REGULATORY_STAFF_POSITION_PLUS_CONDITIONAL_INFERENCE"
+    },
+    {
+      "topic": "Ripple Prime and Coinbase derivatives",
+      "finding": "Ripple Prime clients have access to Coinbase Derivatives' standard and nano XRP futures through Nodal Clear. This is a direct institutional access/clearing relationship; contracts are cash-settled and do not require physical XRP delivery. Coinbase COT as of 2026-10-06 showed 293,853,500 XRP-equivalent contract notional across standard/nano/nano-perp-style contracts, not physical XRP holdings or Ripple Prime-specific positions.",
+      "sources": [
+        "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf",
+        "https://www.cftc.gov/sites/default/files/files/dea/cotarchives/2026/futures/financial_lf100626.htm"
+      ],
+      "classification": "CONFIRMED_ACCESS_PLUS_HISTORICAL_COT"
+    },
+    {
+      "topic": "Coinbase Q3 / Circle Q2 economics",
+      "finding": "Coinbase Q3 2026 stablecoin revenue was $306.905M (-5% y/y); nine-month stablecoin revenue was $904.487M (flat). Higher average USDC balances contributed $84.6M while lower rates reduced revenue by $52.8M. Consumer/institutional spot volume fell 59%/53% y/y. Net income was $718.697M and adjusted EBITDA $332.868M; $715.022M investment-asset gains materially complicate interpretation of net income. Circle Q2 reported $12.442B USDC on Coinbase platform, but its definition includes Circle Mint, corporate-held and non-custodial balances; Coinbase's $8.616B Q3 USDC AOP excludes assets where customers hold full or partial keys. The measures are not directly comparable.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+        "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+      ],
+      "classification": "SEC_FILINGS"
+    },
+    {
+      "topic": "Circle, Ripple, SBI and Arc",
+      "finding": "Circle USDC is natively issued on XRPL through a direct Circle-Ripple collaboration. Circle Arc uses USDC as gas; SBI Group is in the founding-validator cohort and Coinbase is an exchange participant, not a validator. SBI Group's validator and USDC distribution roles are distinct from SBI Holdings' Ripple relationship and SBI Remit's operational XRP remittance corridor. SBIC is a separate Japanese investment/consulting company, not SBI Group.",
+      "sources": [
+        "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+        "https://www.circle.com/usdc",
+        "https://www.sbic.co.jp/",
+        "https://www.sbic.co.jp/training/20250612co/"
+      ],
+      "classification": "OFFICIAL_COMPANY_AND_ENTITY_RECORDS"
+    },
+    {
+      "topic": "XRP market snapshot",
+      "finding": "At 2026-11-01 23:15 UTC, TradRadar showed $1.89B OI across seven exchanges, +1.27% 24h, +0.0076%/8h funding, 77.9% long accounts, and $1.01M+ liquidations (long $898.27K, short $107.57K). Kodexius showed $750.25M across seven contracts at 22:34 UTC. Coverage and overlapping venue values differ materially; do not average. Exchange-wallet attributed balances include cold storage and are not tradable float. ETF holdings/flow changes are not direct evidence of exchange purchases.",
+      "sources": [
+        "https://tradradar.io/markets/xrp",
+        "https://tradradar.io/methodology",
+        "https://kodexius.com/data/crypto-derivatives/XRP",
+        "https://xrp-insights.com/",
+        "https://xrp-insights.com/exchange-balances"
+      ],
+      "classification": "PROVIDER_SNAPSHOTS_WITH_UNRESOLVED_COVERAGE"
+    }
+  ],
+  "identity_threads": {
+    "SBIC": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; distinct from SBI Holdings. Its ChatGPT/Copilot training was for investee companies, not an XRP or OpenAI commercial partnership.",
+    "ASK_Coin": "Permission Coin ASK is a candidate. Official token contract documentation lists Base and Polygon; no direct XRPL/XRP integration is documented.",
+    "actual_capital": "Exact originating phrase remains unresolved. Barrot now separates cash-funded purchases, in-kind contributions, debt, optional facilities, collateral balances, stablecoin issuance and actual XRP acquisitions.",
+    "video_identity": "Strong candidate match is Dr. Kamilah Stevenson / Camilla Stevenson, YouTube handle @drkamilahstevenson. The June 11, 2026 Paul Barron episode uses Dr. Kamilah in title/description while the transcript has the guest call herself Camilla Stevenson. The user's spelling Stephenson is not confirmed. The channel's complete public upload inventory is not yet enumerated; third-party candidate videos are not attributed as uploads without channel ownership evidence.",
+    "video_evidence": [
+      "https://www.youtube.com/watch?v=Sulo54IlQ60",
+      "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069"
+    ]
+  },
+  "prediction_engine": {
+    "status": "IMPLEMENTED_NOT_POPULATED",
+    "forecast_status": "NOT_ISSUED",
+    "key_change": "Hash-verified source registries now expose retained bytes; issue and horizon prices/timestamps must match exactly one normalized XRP/USD observation in the registered snapshot. Metrics fail closed if persisted price values are tampered even when the source hash is valid.",
+    "verified_tests": "417 tests and 8 subtests passed on PR #1475 exact head.",
+    "remaining_gaps": [
+      "historical point-in-time feature store",
+      "canonical exchange/contract metadata",
+      "walk-forward evaluation",
+      "baseline comparisons",
+      "probability calibration and uncertainty intervals",
+      "drift detection",
+      "paper/shadow evaluation"
+    ],
+    "no_skill_claim": "No verified XRP forecasts and resolved outcomes exist; out-of-sample predictive skill and calibration are not measured."
+  },
+  "pull_requests": [
+    {
+      "number": 1474,
+      "title": "Security: quarantine privileged workflows on current main",
+      "head": "4481bda15b29ca68ea4f92d1a865ee293c49df95",
+      "base": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "state": "open_draft_unmerged",
+      "verification": "394 tests and 8 subtests passed; fail-closed gate passed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1474"
+    },
+    {
+      "number": 1475,
+      "title": "Prediction integrity: bind append time and separate live from replay",
+      "head": "60a8845fb289073b09adbe0e5cebe18f9418f2c4",
+      "base": "3a5aec4b6f3f5024117ecb51ca4651268dfb0569",
+      "state": "open_draft_unmerged",
+      "verification": "417 tests and 8 subtests passed; fail-closed gate passed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1475"
+    },
+    {
+      "number": 1477,
+      "title": "XRP research: Coinbase–Circle–Arc links and XRPL payment-quality controls",
+      "head": "81c20db159cb31aeca2b77a1f1c3f63cfaecbba5",
+      "base": "a26feebb31c98923e4161b61339cfb575df6fc34",
+      "state": "open_draft_unmerged",
+      "verification": "393 tests and 8 subtests passed; fail-closed gate passed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1477"
+    },
+    {
+      "number": 1476,
+      "title": "Security: disable public client-side subscriber gate until server auth exists",
+      "head": "c0ade467c88a24b5cd37013e41b7242df794ff6b",
+      "base": "465ff4b40c43721db25e313df08b44a659f4a360",
+      "state": "open_draft_unmerged",
+      "verification": "CI and fail-closed gate passed",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1476"
+    },
+    {
+      "number": 1464,
+      "title": "Research: reconcile live cbXRP collateralized USDC market",
+      "head": "f9f5c3feb0ac8ae90a78f7616b904dcc11bd1985",
+      "base": "7fdef08db8d85a6fc6ac9e2ea6236640892abfc9",
+      "state": "open_draft_unmerged",
+      "changed_files": 317,
+      "note": "Large research archive; keep separate from focused PR #1477 and do not merge as a single oversized batch.",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1464"
+    }
+  ],
+  "security_status": {
+    "current_main_workflows": "Privileged Scheduler Tick, Merge Queue, Cross Analysis, Autonomous Resolver, Task Allocator, Force Deploy Space and subscriber-sync capabilities remain active on main until approved PRs merge.",
+    "proposal": "PR #1474 quarantines privileged automation while preserving the core Barrot agent workflow for owner-gated branch/PR creation. Subscriber sync is now fully inert in that proposal; PR #1476 separately disables the public client-side subscriber gate.",
+    "residuals": [
+      "Main branch protection details remain unverified because the relevant endpoint returned 403.",
+      "Two earlier zero-job workflow failures remain unexplained; no root cause is invented.",
+      "The core barrot-agent workflow still needs least-privilege review because it legitimately retains repository/PR/issue write permissions and model secrets to create task branches and PRs; it does not merge."
+    ]
+  },
+  "platform_status": {
+    "verified_live": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "unverified_live": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "note": "Nine-platform capability and permission map is designed; no live collaboration is claimed for unverified platforms."
+  },
+  "next_actions": [
+    "Verify Coinbase Financial Markets' Letter 26-05 notice of intent and commencement date, if publicly accessible.",
+    "Monitor actual XRP collateral balances and rebalancing flows; do not infer them from eligibility.",
+    "Ingest Circle Q3 2026 Form 10-Q when filed and reconcile distribution economics.",
+    "Capture Ripple Prime/Coinbase Derivatives daily volumes, OI, basis and venue-specific hedging.",
+    "Normalize TradRadar/Kodexius OI at contract level and reconcile overlapping venue differences.",
+    "Bind all forecast issue/outcome prices to retained point-in-time source snapshots; extend walk-forward and calibration architecture.",
+    "Complete the @drkamilahstevenson channel's public upload inventory using channel-owned evidence; preserve the spelling discrepancy.",
+    "Continue exact ASK Coin, actual capital and SBIC phrase investigations."
+  ],
+  "safety": "No main-branch writes, merges, force-pushes, manual workflow dispatches, secret access, deployments, paper-position mutations or real-money trades occurred."
+}
