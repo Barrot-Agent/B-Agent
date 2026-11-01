@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "decision_id": "dtcc-initial-networks-and-rlusd-supply-mix-20261101T162626Z",
+  "captured_at_utc": "2026-11-01T16:26:26Z",
+  "decisions": [
+    {
+      "topic": "DTCC",
+      "decision": "Classify DTS as a major institutional tokenized-securities and collateral rail, but not an XRP/XRPL integration at launch.",
+      "reason": "Official Oct28 release names Canton and DTCC private Besu; additional networks are unnamed for 2027; no XRP/Ripple mention."
+    },
+    {
+      "topic": "Circle",
+      "decision": "Record Circle as a named participant in DTCC's July15 production event; do not infer USDC use or specific collateral role.",
+      "reason": "Official release names Circle but does not specify its instrument or function; Circle is absent from Oct28 collaborator list."
+    },
+    {
+      "topic": "BitGo",
+      "decision": "Record BitGo as both July pilot participant and October launch collaborator; link indirectly to Evernorth through its disclosed custody role.",
+      "reason": "DTCC official releases and Evernorth SEC filing."
+    },
+    {
+      "topic": "RLUSD chain supply",
+      "decision": "Store the Oct28-29 XRPL/Ethereum supply changes as descriptive quarantined observations; do not classify as cross-chain migration or XRP demand.",
+      "reason": "Only Q-Eternal's supply comparison was retrieved; no bridge path or independent raw reproduction."
+    },
+    {
+      "topic": "XRPL institutional activity",
+      "decision": "Do not equate feature existence or offer creation with active institutional usage.",
+      "reason": "Q-Eternal reports one permissioned-domain maker, zero qualified-account domain trades and zero XRP-intermediated EUROP settlements for its observation window."
+    }
+  ],
+  "model_policy": {
+    "dtcc_launch_networks": "DESCRIPTIVE_EVENT_ONLY",
+    "circle_dtcc_participation": "RELATIONSHIP_FEATURE_ONLY; EXACT_ROLE_UNKNOWN",
+    "rlusd_chain_share": "QUARANTINED_PENDING_INDEPENDENT_RAW_REPRODUCTION",
+    "permissioned_domain_activity": "QUARANTINED_PENDING_INDEPENDENT_RAW_REPRODUCTION",
+    "xrp_directional_forecast": "NOT_ISSUED"
+  }
+}

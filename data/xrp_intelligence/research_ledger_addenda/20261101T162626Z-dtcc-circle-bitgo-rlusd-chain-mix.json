@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "addendum_id": "dtcc-circle-bitgo-rlusd-chain-mix-20261101T162626Z",
+  "captured_at_utc": "2026-11-01T16:26:26Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T162626Z-dtcc-tokenization-circle-bitgo-and-rlusd-chain-mix.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T162626Z-dtcc-circle-bitgo-rlusd-chain-mix.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T162626Z-dtcc-circle-bitgo-xrpl-rlusd.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T162626Z-dtcc-initial-networks-and-rlusd-supply-mix.json",
+  "source_bundle": "data/xrp_intelligence/sources/20261101T162626Z-dtcc-tokenization-circle-bitgo-source-bundle.json",
+  "key_updates": [
+    "DTCC launched DTS on 2026-10-28 using Canton and DTCC private Besu; future network additions are not named.",
+    "DTCC reports $114T assets under custody, 20 participant agreements and more than 150 firms in its working group.",
+    "Circle and BitGo were named participants in the 2026-07-15 DTCC production event; BitGo is also an Oct28 launch collaborator.",
+    "Neither XRP nor Ripple is named in the July15 or Oct28 DTCC release; this is disconfirming evidence for claims that XRP is already part of DTS.",
+    "Q-Eternal reports XRPL RLUSD obligations down 3.855M and Ethereum RLUSD supply up 27.446M from Oct28 to Oct29; this is a chain-supply mix observation, not proof of a bridge transfer.",
+    "Q-Eternal reports limited use of the measured permissioned domains and no XRP-intermediated settlement in the measured EUROP/XRP pool; independent reproduction remains pending."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

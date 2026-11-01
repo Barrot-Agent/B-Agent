@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "dtcc-tokenization-circle-bitgo-and-rlusd-chain-mix-20261101T162626Z",
+  "captured_at_utc": "2026-11-01T16:26:26Z",
+  "subject": "DTCC institutional tokenization and collateral rails; Circle/BitGo participation; RLUSD chain-level supply mix; XRPL adoption counter-evidence",
+  "dtcc": {
+    "launch_date": "2026-10-28",
+    "service": "DTCC Tokenization Service (DTS)",
+    "operator": "The Depository Trust Company, a DTCC subsidiary",
+    "assets_under_custody_usd": 114000000000000,
+    "signed_dtc_participants": 20,
+    "industry_working_group_firms": "More than 150",
+    "launch_networks": [
+      "Canton Network",
+      "DTCC private Besu network"
+    ],
+    "additional_networks": "May be added in 2027; no named XRP/XRPL inclusion in launch release",
+    "tokenized_assets": "Tokenized representations of DTC-custodied securities entitlements; not native XRP",
+    "use_cases_in_july_15_production_event": [
+      "collateral pledge",
+      "securities lending",
+      "U.S. Treasury/repo DVP",
+      "equity DVP",
+      "equity DVD",
+      "equity token transfer",
+      "CCP margin workflows"
+    ],
+    "oct28_collaborators": [
+      "BitGo Bank & Trust",
+      "Blockdaemon",
+      "Broadridge",
+      "DFNS",
+      "DRW",
+      "Fireblocks",
+      "HIFI",
+      "Kaleido",
+      "Matter Labs",
+      "Ondo",
+      "Prometheum Capital",
+      "Talos",
+      "Taurus",
+      "Temple Digital Group",
+      "Tradeweb",
+      "Transcend",
+      "Virtu"
+    ],
+    "xrp_or_ripple_named_in_oct28_press_release": false,
+    "circle_named_in_oct28_collaborator_list": false,
+    "source": "https://www.dtcc.com/press-releases/2026/dtcc-tokenization-service-goes-live",
+    "classification": "PRIMARY_COMPANY_ANNOUNCEMENT"
+  },
+  "dtcc_july15_pilot": {
+    "date": "2026-07-15",
+    "production_trades_on": [
+      "DTCC private Besu",
+      "Canton"
+    ],
+    "firms": "More than 30",
+    "named_participants": [
+      "Circle",
+      "BitGo Bank & Trust",
+      "BlackRock",
+      "Chainlink",
+      "CME Group",
+      "DriveWealth",
+      "Fireblocks",
+      "Goldman Sachs",
+      "J.P. Morgan",
+      "Nasdaq",
+      "State Street Investment Management",
+      "Vanguard"
+    ],
+    "use_cases": [
+      "collateral pledge",
+      "securities lending",
+      "Treasury/repo DVP",
+      "equity DVP",
+      "equity DVD",
+      "equity token transfer",
+      "CCP margin"
+    ],
+    "circle_role": "Named participant in DTCC's production-event announcement; the release does not specify whether Circle supplied USDC, a wallet, settlement service or another function.",
+    "bitgo_role": "Named participant in DTCC's production-event announcement; later also named as an Oct28 DTS collaborator.",
+    "xrp_or_ripple_named": false,
+    "source": "https://www.dtcc.com/press-releases/2026/dtcc-turns-tokenization-into-reality",
+    "classification": "PRIMARY_COMPANY_ANNOUNCEMENT"
+  },
+  "rlusd_two_chain_observation": {
+    "source": "https://q-eternal.com/blog/2026-10-29/",
+    "observation_start_ledger": 107956087,
+    "observation_end_ledger": 107977763,
+    "xrpl_rlusd_start": 981990101.99,
+    "xrpl_rlusd_end": 978135475.86,
+    "xrpl_change": -3854626.13,
+    "ethereum_rlusd_start": 1597611610.08,
+    "ethereum_rlusd_end": 1625057610.08,
+    "ethereum_change": 27446000,
+    "xrpl_share_start_pct": 38.07,
+    "xrpl_share_end_pct": 37.57,
+    "two_chain_net_change": 23591373.87,
+    "interpretation": "Observed chain-level supply mix shifted toward Ethereum. This does not prove a bridge transfer from XRPL to Ethereum; independent mint/burn activity or other issuance/redemption can produce the same pattern.",
+    "independent_raw_ledger_retrieval_by_this_run": false,
+    "model_feature_admission": "QUARANTINED_PENDING_RAW_ISSUER_BALANCE_AND_ETHEREUM_SUPPLY_RECONCILIATION"
+  },
+  "xrpl_institutional_feature_activity_claims": {
+    "source": "https://q-eternal.com/blog/2026-10-29/",
+    "permissioned_domains": {
+      "offer_create_count_24h": 6110,
+      "offer_maker_accounts": 1,
+      "qualified_accounts_with_domain_trades": 0,
+      "domain_xrp_rlusd_book_offers_both_directions": 0,
+      "classification": "SINGLE_RESEARCHER_LEDGER_ANALYSIS; NOT_INDEPENDENTLY_RETRIEVED_IN_THIS_RUN"
+    },
+    "europ_xrp_amm": {
+      "settlements_24h": 2294,
+      "self_payment_settlements": 2294,
+      "xrp_used_as_intermediate_asset": 0,
+      "classification": "SINGLE_RESEARCHER_LEDGER_ANALYSIS; NOT_INDEPENDENTLY_RETRIEVED_IN_THIS_RUN"
+    },
+    "implication": "Permissioned XRPL infrastructure and a EUR/XRP pool are not, by themselves, evidence of broad institutional participation or meaningful XRP bridge usage."
+  },
+  "relationship_interpretation": {
+    "evernorth_to_bitgo": "SEC filing identifies BitGo as Evernorth's primary XRP custodian.",
+    "bitgo_to_dtcc": "BitGo is named in DTCC's July pilot and October launch collaborator lists.",
+    "circle_to_dtcc": "Circle is named in DTCC's July production-event participant list; its exact role is unspecified.",
+    "circle_to_xrp": "No direct Circle-to-native-XRP relationship is established by these DTCC sources.",
+    "ripple_to_dtcc": "No direct Ripple/XRPL inclusion in DTCC's October 28 launch release or July 15 pilot release.",
+    "dtcc_to_xrp": "Initial DTS networks are Canton and private Besu; additional 2027 networks unnamed."
+  },
+  "hypotheses": [
+    {
+      "id": "D1",
+      "statement": "DTCC is building a major parallel institutional tokenized-collateral rail that may compete for some institutional collateral and settlement workflows, but it does not currently establish native-XRP demand.",
+      "classification": "SUPPORTED_BY_PRIMARY_ANNOUNCEMENTS",
+      "counter_evidence": "Future network expansion could include other networks, but no names are committed."
+    },
+    {
+      "id": "D2",
+      "statement": "Circle's participation in the July 15 DTCC production event may create institutional connectivity relevant to its stablecoin and payments strategy.",
+      "classification": "PLAUSIBLE_RELATIONSHIP; EXACT_ROLE_UNKNOWN",
+      "counter_evidence": "The DTCC release does not specify Circle's instrument, wallet, settlement or collateral role; Circle is not named in the Oct28 launch collaborator list."
+    },
+    {
+      "id": "D3",
+      "statement": "BitGo's DTCC participation may provide broader institutional infrastructure relationships relevant to Evernorth's custody network.",
+      "classification": "CONFIRMED_PARTICIPATION; EVERNORTH_BENEFIT_UNPROVEN",
+      "counter_evidence": "No evidence shows Evernorth's XRP was used in DTCC tokenization workflows."
+    },
+    {
+      "id": "D4",
+      "statement": "The RLUSD chain supply mix shift represents cross-chain migration from XRPL to Ethereum.",
+      "classification": "NOT_ESTABLISHED",
+      "counter_evidence": "Observed issuer obligations can change through independent mint/burn/redemption; no matching bridge transfer or atomic cross-chain transaction is identified."
+    },
+    {
+      "id": "D5",
+      "statement": "Permissioned XRPL domains and EUR/XRP pools already demonstrate material institutional XRP adoption.",
+      "classification": "NOT_SUPPORTED_BY_REVIEWED_ACTIVITY_CLAIMS",
+      "counter_evidence": "Q-Eternal reports one maker, zero qualified-account domain trades and zero XRP intermediate settlements in the measured EUR pool."
+    }
+  ],
+  "data_quality": {
+    "dtcc_press_release_date": "2026-10-28",
+    "dtcc_faq_freshness": "A separate FAQ page still says production launch expected in Q4 2026; treat it as stale relative to the Oct28 launch release.",
+    "q_eternal_method": "Public XRPL issuer-obligation and Ethereum token-supply observations; no independent raw API call was performed by this run.",
+    "source_independence": "DTCC primary announcements; Q-Eternal independent ledger research; no second independent provider used for the specific RLUSD supply deltas."
+  },
+  "model_controls": {
+    "dtcc_network_membership_feature": "DESCRIPTIVE_EVENT_ONLY; no XRP directional feature",
+    "rlusd_chain_share_feature": "QUARANTINED",
+    "permissioned_domain_activity_feature": "QUARANTINED",
+    "forecast_status": "NOT_ISSUED"
+  }
+}

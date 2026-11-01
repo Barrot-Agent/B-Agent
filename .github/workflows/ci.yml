@@ -87,4 +87,5 @@ jobs:
             tests/test_evernorth_financing_correction.py \
             tests/test_evernorth_bitgo_custody_reorganization.py \
             tests/test_main_privileged_workflow_gap_audit.py \
+            tests/test_dtcc_circle_bitgo_rlusd_rail_addendum.py \
             -v --no-cov
