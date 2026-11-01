@@ -12,7 +12,7 @@ import math
 import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Iterable, Iterator, Mapping
+from typing import Any, Iterator, Mapping
 
 CLASSES = ("up", "flat", "down")
 TIE_BREAK_ORDER = ("flat", "up", "down")
@@ -47,6 +47,16 @@ def _positive_number(value: Any, field: str) -> float:
     if not math.isfinite(number) or number <= 0:
         raise ValueError(f"{field} must be a finite positive number")
     return number
+
+
+def _is_sha256_digest(value: Any) -> bool:
+    if not isinstance(value, str) or len(value) != 64:
+        return False
+    try:
+        int(value, 16)
+    except ValueError:
+        return False
+    return True
 
 
 def _probabilities(value: Any, field: str) -> dict[str, float]:
@@ -307,7 +317,8 @@ class ForecastLedger:
         root: str | Path | None = None,
         max_observation_lag_seconds: int = 120,
         max_issue_price_lag_seconds: int = 120,
-        source_registry: Iterable[str] | None = None,
+        source_registry: Any = None,
+        allow_unverified_sources: bool = False,
     ) -> None:
         if (
             isinstance(max_observation_lag_seconds, bool)
@@ -326,18 +337,78 @@ class ForecastLedger:
         ):
             raise ValueError("max_issue_price_lag_seconds must be a positive integer")
         self.max_issue_price_lag_seconds = int(max_issue_price_lag_seconds)
+        if not isinstance(allow_unverified_sources, bool):
+            raise ValueError("allow_unverified_sources must be a boolean")
+        self.allow_unverified_sources = allow_unverified_sources
         if source_registry is None:
-            self.source_registry: frozenset[str] | None = None
-        else:
+            if not allow_unverified_sources:
+                raise ValueError(
+                    "source_registry is required for verified forecast issuance; "
+                    "set allow_unverified_sources=True only for isolated tests or development"
+                )
+            self.source_registry = None
+            self.source_registry_mode = "UNAVAILABLE"
+        elif isinstance(source_registry, Mapping):
+            if any(not isinstance(key, str) or not key.strip() for key in source_registry):
+                raise ValueError("source_registry keys must be non-empty strings")
+            self.source_registry = source_registry
+            self.source_registry_mode = "HASH_VERIFIED"
+        elif callable(getattr(source_registry, "require", None)):
+            self.source_registry = source_registry
+            self.source_registry_mode = "HASH_VERIFIED"
+        elif allow_unverified_sources:
             if isinstance(source_registry, (str, bytes)):
-                raise ValueError("source_registry must be an iterable of source IDs")
+                raise ValueError("source_registry must be a mapping, SourceRegistry or iterable of source IDs")
             try:
                 registry_values = list(source_registry)
             except TypeError as exc:
-                raise ValueError("source_registry must be an iterable of source IDs") from exc
+                raise ValueError("source_registry must be a mapping, SourceRegistry or iterable of source IDs") from exc
             if any(not isinstance(item, str) or not item.strip() for item in registry_values):
                 raise ValueError("source_registry entries must be non-empty strings")
             self.source_registry = frozenset(item.strip() for item in registry_values)
+            self.source_registry_mode = "ID_ONLY"
+        else:
+            raise ValueError(
+                "source_registry must be a hash-bearing mapping or SourceRegistry in verified mode"
+            )
+
+    def _registered_source_hash(self, source_id: str) -> str:
+        if self.source_registry_mode == "ID_ONLY":
+            if source_id not in self.source_registry:
+                raise ValueError(f"source_id is not registered: {source_id}")
+            raise ValueError("ID-only source registry cannot verify content hashes")
+        if self.source_registry_mode != "HASH_VERIFIED":
+            raise ValueError("source registry is unavailable")
+        if isinstance(self.source_registry, Mapping):
+            if source_id not in self.source_registry:
+                raise ValueError(f"source_ids are not registered: {source_id}")
+            entry = self.source_registry[source_id]
+        else:
+            try:
+                entry = self.source_registry.require(source_id)
+            except KeyError as exc:
+                raise ValueError(f"source_ids are not registered: {source_id}") from exc
+            lifecycle = getattr(entry, "lifecycle", None)
+            if lifecycle is not None:
+                if (
+                    getattr(lifecycle, "state", "ACTIVE") != "ACTIVE"
+                    or getattr(lifecycle, "inaccessible", False)
+                    or getattr(lifecycle, "revalidation_required", False)
+                ):
+                    raise ValueError(f"source_id is not active and validated: {source_id}")
+        if isinstance(entry, str):
+            content_hash = entry
+        elif isinstance(entry, Mapping):
+            content_hash = entry.get("content_hash")
+            version = entry.get("version")
+            if content_hash is None and isinstance(version, Mapping):
+                content_hash = version.get("content_hash")
+        else:
+            version = getattr(entry, "version", None)
+            content_hash = getattr(version, "content_hash", None)
+        if not _is_sha256_digest(content_hash):
+            raise ValueError(f"source registry entry must contain a SHA-256 content_hash: {source_id}")
+        return content_hash.lower()
 
     def forecasts(self) -> list[dict[str, Any]]:
         with _ledger_lock(self.root):
@@ -454,12 +525,29 @@ class ForecastLedger:
         source_ids = _string_list(payload.get("source_ids"), "source_ids")
         if len(set(source_ids)) != len(source_ids):
             raise ValueError("source_ids must be unique")
+        feature_source_id = feature.get("source_id")
+        if not isinstance(feature_source_id, str) or not feature_source_id.strip():
+            raise ValueError("feature_snapshot.source_id is required")
+        feature_source_id = feature_source_id.strip()
+        if feature_source_id not in source_ids:
+            raise ValueError("feature_snapshot.source_id must be included in source_ids")
         source_registry_status = "NOT_CHECKED"
-        if self.source_registry is not None:
-            missing_source_ids = sorted(set(source_ids) - self.source_registry)
-            if missing_source_ids:
-                raise ValueError(f"source_ids are not registered: {missing_source_ids}")
+        feature_snapshot_hash_verified = False
+        source_content_hashes: dict[str, str] = {}
+        if self.source_registry_mode == "HASH_VERIFIED":
+            for source_id in source_ids:
+                source_content_hashes[source_id] = self._registered_source_hash(source_id)
+            if source_content_hashes[feature_source_id] != feature_hash.lower():
+                raise ValueError(
+                    "feature snapshot SHA-256 does not match registered source content hash"
+                )
             source_registry_status = "REGISTERED"
+            feature_snapshot_hash_verified = True
+        elif self.source_registry_mode == "ID_ONLY":
+            for source_id in source_ids:
+                if source_id not in self.source_registry:
+                    raise ValueError(f"source_ids are not registered: {source_id}")
+            source_registry_status = "ID_ONLY_NOT_HASH_VERIFIED"
         price_source_id = payload.get("price_at_issue_source_id")
         if not isinstance(price_source_id, str) or not price_source_id.strip():
             raise ValueError("price_at_issue_source_id is required")
@@ -499,6 +587,7 @@ class ForecastLedger:
             "model": {"name": model_name.strip(), "version": model_version.strip()},
             "feature_snapshot": {
                 "snapshot_id": feature_id.strip(),
+                "source_id": feature_source_id,
                 "sha256": feature_hash.lower(),
                 "captured_at_utc": _format_utc(feature_captured),
             },
@@ -510,6 +599,8 @@ class ForecastLedger:
             },
             "source_ids": source_ids,
             "source_registry_status": source_registry_status,
+            "source_content_hashes": source_content_hashes,
+            "feature_snapshot_hash_verified": feature_snapshot_hash_verified,
             "price_at_issue_usd": price_at_issue,
             "price_at_issue_source_id": price_source_id,
             "price_at_issue_observed_at_utc": _format_utc(price_observed_at),
@@ -559,10 +650,14 @@ class ForecastLedger:
             raise ValueError("price_source_id is required")
         price_source_id = price_source_id.strip()
         price_source_registry_status = "NOT_CHECKED"
-        if self.source_registry is not None:
+        price_source_content_hash = None
+        if self.source_registry_mode == "HASH_VERIFIED":
+            price_source_content_hash = self._registered_source_hash(price_source_id)
+            price_source_registry_status = "REGISTERED"
+        elif self.source_registry_mode == "ID_ONLY":
             if price_source_id not in self.source_registry:
                 raise ValueError(f"price_source_id is not registered: {price_source_id}")
-            price_source_registry_status = "REGISTERED"
+            price_source_registry_status = "ID_ONLY_NOT_HASH_VERIFIED"
 
         price_at_horizon = _positive_number(price_at_horizon_usd, "price_at_horizon_usd")
         price_at_issue = float(forecast["price_at_issue_usd"])
@@ -589,6 +684,7 @@ class ForecastLedger:
             "outcome_recorded_at_utc": _format_utc(recorded_at),
             "price_source_id": price_source_id,
             "price_source_registry_status": price_source_registry_status,
+            "price_source_content_hash": price_source_content_hash,
             "realized_return_pct": realized_return,
             "realized_class": realized_class,
         }
@@ -620,6 +716,45 @@ class ForecastLedger:
 
         resolved = [(by_id[key], value) for key, value in outcome_by_id.items()]
         pending_count = len(forecasts) - len(resolved)
+
+        unverified_forecasts = any(
+            item.get("source_registry_status") != "REGISTERED"
+            or item.get("feature_snapshot_hash_verified") is not True
+            or not isinstance(item.get("source_content_hashes"), Mapping)
+            or set(item.get("source_content_hashes", {})) != set(item.get("source_ids", []))
+            or not all(_is_sha256_digest(value) for value in item.get("source_content_hashes", {}).values())
+            or item.get("source_content_hashes", {}).get(item.get("feature_snapshot", {}).get("source_id"))
+                != item.get("feature_snapshot", {}).get("sha256")
+            for item in forecasts
+        )
+        unverified_outcomes = any(
+            item.get("price_source_registry_status") != "REGISTERED"
+            or not _is_sha256_digest(item.get("price_source_content_hash"))
+            for item in outcomes
+        )
+        if unverified_forecasts or unverified_outcomes:
+            return {
+                "forecast_count": len(forecasts),
+                "resolved_count": len(resolved),
+                "pending_count": pending_count,
+                "accuracy": None,
+                "mean_brier_score": None,
+                "mean_log_loss": None,
+                "mean_baseline_brier_score": None,
+                "mean_baseline_log_loss": None,
+                "brier_skill_score": None,
+                "mean_entropy_nats": None,
+                "mean_observation_lag_seconds": None,
+                "max_observation_lag_seconds": None,
+                "min_effective_horizon_seconds": None,
+                "max_effective_horizon_seconds": None,
+                "top_label_calibration_bins": [],
+                "top_label_tie_break_order": list(TIE_BREAK_ORDER),
+                "evaluation_protocol_status": "UNVERIFIED_PROVENANCE",
+                "evaluation_protocols": [],
+                "walk_forward_baseline_status": "UNVERIFIED_PROVENANCE",
+                "performance_claim_status": "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE",
+            }
 
         # Accuracy, calibration and proper scoring rules are comparable only
         # within one evaluation protocol. Never pool different horizons,

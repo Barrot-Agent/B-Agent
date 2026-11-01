@@ -6,6 +6,19 @@ from threading import Barrier
 import pytest
 
 from barrot_agent.research.fixed_horizon import ForecastLedger, _append_jsonl
+from barrot_agent.sources.source_registry import SourceIdentity, SourceRecord, SourceRegistry, SourceVersion
+
+
+TEST_SOURCE_REGISTRY = {
+    "SRC-MARKET-001": "b" * 64,
+    "SRC-PRICE-001": "c" * 64,
+    "SRC-FEATURE-001": "a" * 64,
+}
+
+
+def make_ledger(root, **kwargs):
+    kwargs.setdefault("source_registry", TEST_SOURCE_REGISTRY)
+    return ForecastLedger(root, **kwargs)
 
 
 def forecast_payload(**overrides):
@@ -26,6 +39,7 @@ def forecast_payload(**overrides):
         "model": {"name": "barrot-xrp", "version": "0.1.0"},
         "feature_snapshot": {
             "snapshot_id": "features-001",
+            "source_id": "SRC-FEATURE-001",
             "sha256": "a" * 64,
             "captured_at_utc": "2026-10-30T23:58:00Z",
         },
@@ -35,7 +49,7 @@ def forecast_payload(**overrides):
             "computed_at_utc": "2026-10-30T23:59:00Z",
             "probabilities": {"up": 1 / 3, "flat": 1 / 3, "down": 1 / 3},
         },
-        "source_ids": ["SRC-MARKET-001"],
+        "source_ids": ["SRC-MARKET-001", "SRC-FEATURE-001"],
         "price_at_issue_usd": 1.25,
         "price_at_issue_source_id": "SRC-MARKET-001",
         "price_at_issue_observed_at_utc": "2026-10-30T23:59:00Z",
@@ -45,7 +59,7 @@ def forecast_payload(**overrides):
 
 
 def test_forecast_is_appended_with_fixed_target_and_computed_confidence(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     record = ledger.append_forecast(forecast_payload())
     assert record["record_type"] == "xrp_forecast"
     assert record["horizon_seconds"] == 3600
@@ -57,13 +71,13 @@ def test_forecast_is_appended_with_fixed_target_and_computed_confidence(tmp_path
 
 
 def test_forecast_rejects_data_cutoff_after_issue_time(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     with pytest.raises(ValueError, match="data_cutoff_utc"):
         ledger.append_forecast(forecast_payload(data_cutoff_utc="2026-10-31T00:01:00Z"))
 
 
 def test_forecast_rejects_feature_snapshot_after_data_cutoff(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload()
     payload["feature_snapshot"]["captured_at_utc"] = "2026-10-31T00:00:01Z"
     with pytest.raises(ValueError, match="feature snapshot"):
@@ -71,7 +85,7 @@ def test_forecast_rejects_feature_snapshot_after_data_cutoff(tmp_path):
 
 
 def test_forecast_rejects_baseline_trained_after_data_cutoff(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload()
     payload["baseline"]["trained_through_utc"] = "2026-10-31T00:00:01Z"
     with pytest.raises(ValueError, match="baseline"):
@@ -79,7 +93,7 @@ def test_forecast_rejects_baseline_trained_after_data_cutoff(tmp_path):
 
 
 def test_forecast_rejects_baseline_trained_after_computation(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload()
     payload["baseline"]["trained_through_utc"] = "2026-10-30T23:58:30Z"
     payload["baseline"]["computed_at_utc"] = "2026-10-30T23:58:00Z"
@@ -88,7 +102,7 @@ def test_forecast_rejects_baseline_trained_after_computation(tmp_path):
 
 
 def test_forecast_rejects_baseline_computed_after_issue_time(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload()
     payload["baseline"]["computed_at_utc"] = "2026-10-31T00:00:01Z"
     with pytest.raises(ValueError, match="baseline must be computed"):
@@ -96,14 +110,14 @@ def test_forecast_rejects_baseline_computed_after_issue_time(tmp_path):
 
 
 def test_forecast_rejects_issue_price_observed_after_cutoff(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload(price_at_issue_observed_at_utc="2026-10-31T00:00:01Z")
     with pytest.raises(ValueError, match="issue price observation"):
         ledger.append_forecast(payload)
 
 
 def test_forecast_requires_issue_price_source_in_source_registry(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload(price_at_issue_source_id="SRC-UNREGISTERED")
     with pytest.raises(ValueError, match="included in source_ids"):
         ledger.append_forecast(payload)
@@ -111,31 +125,31 @@ def test_forecast_requires_issue_price_source_in_source_registry(tmp_path):
 
 def test_observation_lag_must_be_an_integer(tmp_path):
     with pytest.raises(ValueError, match="positive integer"):
-        ForecastLedger(tmp_path, max_observation_lag_seconds=1.5)
+        make_ledger(tmp_path, max_observation_lag_seconds=1.5)
 
 
 def test_forecast_rejects_invalid_probability_distribution(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload(probabilities={"up": 0.6, "flat": 0.2, "down": 0.1})
     with pytest.raises(ValueError, match="sum to one"):
         ledger.append_forecast(payload)
 
 
 def test_forecast_rejects_timezone_naive_timestamps(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     with pytest.raises(ValueError, match="timezone"):
         ledger.append_forecast(forecast_payload(issued_at_utc="2026-10-31T00:00:00"))
 
 
 def test_forecast_rejects_duplicate_ids(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     with pytest.raises(ValueError, match="already exists"):
         ledger.append_forecast(forecast_payload())
 
 
 def test_outcome_uses_latest_observation_at_or_before_fixed_horizon(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     forecast = ledger.append_forecast(forecast_payload())
     assert forecast["target_resolution_policy"] == "LATEST_OBSERVATION_AT_OR_BEFORE_HORIZON"
     assert forecast["max_pre_horizon_observation_lag_seconds"] == 120
@@ -149,7 +163,7 @@ def test_outcome_uses_latest_observation_at_or_before_fixed_horizon(tmp_path):
 
 
 def test_outcome_price_after_horizon_is_rejected(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     with pytest.raises(ValueError, match="cannot be after the fixed horizon"):
         ledger.append_outcome(
@@ -159,7 +173,7 @@ def test_outcome_price_after_horizon_is_rejected(tmp_path):
 
 
 def test_outcome_recorded_before_horizon_is_rejected(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     with pytest.raises(ValueError, match="cannot precede the fixed horizon"):
         ledger.append_outcome(
@@ -169,7 +183,7 @@ def test_outcome_recorded_before_horizon_is_rejected(tmp_path):
 
 
 def test_outcome_observation_cannot_precede_forecast_issuance(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload(horizon_seconds=300))
     with pytest.raises(ValueError, match="cannot precede forecast issuance"):
         ledger.append_outcome(
@@ -179,7 +193,7 @@ def test_outcome_observation_cannot_precede_forecast_issuance(tmp_path):
 
 
 def test_outcome_rejects_price_observation_outside_lag_window(tmp_path):
-    ledger = ForecastLedger(tmp_path, max_observation_lag_seconds=60)
+    ledger = make_ledger(tmp_path, max_observation_lag_seconds=60)
     ledger.append_forecast(forecast_payload())
     with pytest.raises(ValueError, match="maximum pre-horizon observation lag"):
         ledger.append_outcome(
@@ -189,7 +203,7 @@ def test_outcome_rejects_price_observation_outside_lag_window(tmp_path):
 
 
 def test_outcome_is_separate_and_does_not_mutate_forecast(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     original_forecasts = ledger.forecasts_path.read_bytes()
     outcome = ledger.append_outcome(
@@ -203,7 +217,7 @@ def test_outcome_is_separate_and_does_not_mutate_forecast(tmp_path):
 
 
 def test_duplicate_outcome_is_rejected(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_outcome(
         "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
@@ -217,7 +231,7 @@ def test_duplicate_outcome_is_rejected(tmp_path):
 
 
 def test_metrics_report_brier_log_loss_baseline_and_calibration(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_outcome(
         "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
@@ -237,7 +251,7 @@ def test_metrics_report_brier_log_loss_baseline_and_calibration(tmp_path):
 
 
 def test_metrics_do_not_claim_skill_without_resolved_outcomes(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     metrics = ledger.metrics()
     assert metrics["resolved_count"] == 0
@@ -247,7 +261,7 @@ def test_metrics_do_not_claim_skill_without_resolved_outcomes(tmp_path):
 
 
 def test_invalid_feature_snapshot_hash_is_rejected(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload()
     payload["feature_snapshot"]["sha256"] = "not-a-hash"
     with pytest.raises(ValueError, match="SHA-256"):
@@ -255,7 +269,7 @@ def test_invalid_feature_snapshot_hash_is_rejected(tmp_path):
 
 
 def test_outcome_requires_a_price_source_id(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     with pytest.raises(ValueError, match="price_source_id"):
         ledger.append_outcome(
@@ -265,21 +279,21 @@ def test_outcome_requires_a_price_source_id(tmp_path):
 
 
 def test_forecast_rejects_stale_issue_price_observation(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload(price_at_issue_observed_at_utc="2026-10-30T23:57:59Z")
     with pytest.raises(ValueError, match="freshness window"):
         ledger.append_forecast(payload)
 
 
 def test_forecast_accepts_issue_price_at_freshness_boundary(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload(price_at_issue_observed_at_utc="2026-10-30T23:58:00Z")
     record = ledger.append_forecast(payload)
     assert record["price_at_issue_max_observation_lag_seconds"] == 120
 
 
 def test_forecast_rejects_duplicate_source_ids(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload(source_ids=["SRC-MARKET-001", "SRC-MARKET-001"])
     with pytest.raises(ValueError, match="source_ids must be unique"):
         ledger.append_forecast(payload)
@@ -287,11 +301,11 @@ def test_forecast_rejects_duplicate_source_ids(tmp_path):
 
 def test_issue_price_freshness_lag_must_be_a_positive_integer(tmp_path):
     with pytest.raises(ValueError, match="max_issue_price_lag_seconds"):
-        ForecastLedger(tmp_path, max_issue_price_lag_seconds=1.5)
+        make_ledger(tmp_path, max_issue_price_lag_seconds=1.5)
 
 
 def test_metrics_tie_breaks_to_flat(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     payload = forecast_payload(probabilities={"up": 1 / 3, "flat": 1 / 3, "down": 1 / 3})
     ledger.append_forecast(payload)
     ledger.append_outcome(
@@ -304,11 +318,11 @@ def test_metrics_tie_breaks_to_flat(tmp_path):
 
 
 def test_forecast_source_ids_are_checked_when_registry_is_supplied(tmp_path):
-    ledger = ForecastLedger(tmp_path, source_registry={"SRC-MARKET-001"})
+    ledger = ForecastLedger(tmp_path, source_registry={"SRC-MARKET-001": "b" * 64, "SRC-FEATURE-001": "a" * 64})
     record = ledger.append_forecast(forecast_payload())
     assert record["source_registry_status"] == "REGISTERED"
 
-    unregistered = ForecastLedger(tmp_path / "unregistered", source_registry=set())
+    unregistered = ForecastLedger(tmp_path / "unregistered", source_registry={})
     with pytest.raises(ValueError, match="source_ids are not registered"):
         unregistered.append_forecast(forecast_payload())
 
@@ -316,7 +330,11 @@ def test_forecast_source_ids_are_checked_when_registry_is_supplied(tmp_path):
 def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
     ledger = ForecastLedger(
         tmp_path,
-        source_registry={"SRC-MARKET-001", "SRC-PRICE-001"},
+        source_registry={
+            "SRC-MARKET-001": "b" * 64,
+            "SRC-PRICE-001": "c" * 64,
+            "SRC-FEATURE-001": "a" * 64,
+        },
     )
     ledger.append_forecast(forecast_payload())
     outcome = ledger.append_outcome(
@@ -330,7 +348,10 @@ def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
 
     unregistered = ForecastLedger(
         tmp_path / "unregistered",
-        source_registry={"SRC-MARKET-001"},
+        source_registry={
+            "SRC-MARKET-001": "b" * 64,
+            "SRC-FEATURE-001": "a" * 64,
+        },
     )
     unregistered.append_forecast(forecast_payload())
     with pytest.raises(ValueError, match="price_source_id is not registered"):
@@ -344,7 +365,7 @@ def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
 
 
 def test_forecast_and_outcome_mark_registry_unchecked_when_not_supplied(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = ForecastLedger(tmp_path, allow_unverified_sources=True)
     forecast = ledger.append_forecast(forecast_payload())
     assert forecast["source_registry_status"] == "NOT_CHECKED"
     outcome = ledger.append_outcome(
@@ -355,12 +376,37 @@ def test_forecast_and_outcome_mark_registry_unchecked_when_not_supplied(tmp_path
         "SRC-PRICE-001",
     )
     assert outcome["price_source_registry_status"] == "NOT_CHECKED"
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
+
+
+def test_verified_forecast_requires_a_hash_bearing_source_registry(tmp_path):
+    with pytest.raises(ValueError, match="source_registry is required"):
+        ForecastLedger(tmp_path)
+
+
+def test_feature_snapshot_hash_must_match_registered_source_content(tmp_path):
+    registry = {
+        "SRC-MARKET-001": "b" * 64,
+        "SRC-FEATURE-001": "d" * 64,
+    }
+    ledger = ForecastLedger(tmp_path, source_registry=registry)
+    with pytest.raises(ValueError, match="does not match registered source content hash"):
+        ledger.append_forecast(forecast_payload())
+
+
+def test_feature_snapshot_source_must_be_in_forecast_source_ids(tmp_path):
+    ledger = make_ledger(tmp_path)
+    payload = forecast_payload(source_ids=["SRC-MARKET-001"])
+    with pytest.raises(ValueError, match="feature_snapshot.source_id must be included"):
+        ledger.append_forecast(payload)
 
 
 def test_source_registry_rejects_invalid_entries(tmp_path):
-    with pytest.raises(ValueError, match="source_registry entries"):
-        ForecastLedger(tmp_path, source_registry={"SRC-OK", ""})
-    with pytest.raises(ValueError, match="iterable of source IDs"):
+    with pytest.raises(ValueError, match="source_registry keys must be non-empty"):
+        ForecastLedger(tmp_path, source_registry={"": "a" * 64})
+    with pytest.raises(ValueError, match="hash-bearing mapping or SourceRegistry"):
         ForecastLedger(tmp_path, source_registry="SRC-STRING")
 
 
@@ -388,7 +434,7 @@ def test_concurrent_jsonl_appends_serialize_duplicate_forecast_ids(tmp_path):
 
 
 def _ledger_with_valid_outcome(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_outcome(
         "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
@@ -443,7 +489,7 @@ def test_metrics_exposes_effective_horizon_and_observation_lag(tmp_path):
     assert metrics["max_effective_horizon_seconds"] == pytest.approx(3599.0)
 
 def test_metrics_refuse_to_pool_resolved_forecasts_with_different_horizons(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_forecast(forecast_payload(
         forecast_id="xrp-forecast-002",
@@ -473,7 +519,7 @@ def test_metrics_refuse_to_pool_resolved_forecasts_with_different_horizons(tmp_p
 
 
 def test_metrics_refuse_to_pool_different_target_thresholds(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_forecast(forecast_payload(
         forecast_id="xrp-forecast-002",
@@ -492,7 +538,7 @@ def test_metrics_refuse_to_pool_different_target_thresholds(tmp_path):
 
 
 def test_metrics_refuse_to_pool_different_model_versions(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_forecast(forecast_payload(
         forecast_id="xrp-forecast-002",
@@ -506,7 +552,7 @@ def test_metrics_refuse_to_pool_different_model_versions(tmp_path):
     assert len(metrics["evaluation_protocols"]) == 2
 
 def test_metrics_refuse_to_pool_different_baseline_versions(tmp_path):
-    ledger = ForecastLedger(tmp_path)
+    ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_forecast(forecast_payload(
         forecast_id="xrp-forecast-002",
@@ -523,3 +569,45 @@ def test_metrics_refuse_to_pool_different_baseline_versions(tmp_path):
     assert metrics["accuracy"] is None
     assert metrics["performance_claim_status"] == "NOT_COMPARABLE_MIXED_PROTOCOLS"
     assert len(metrics["evaluation_protocols"]) == 2
+
+
+def test_source_registry_object_verifies_feature_snapshot_content_hash(tmp_path):
+    registry = SourceRegistry(tmp_path / "registry.json")
+    for source_id, content_hash in TEST_SOURCE_REGISTRY.items():
+        registry.register(
+            SourceRecord(
+                identity=SourceIdentity(
+                    source_id=source_id,
+                    source_type="test",
+                    name=source_id,
+                    origin="unit-test",
+                ),
+                version=SourceVersion(content_hash=content_hash),
+            )
+        )
+    ledger = ForecastLedger(tmp_path / "ledger", source_registry=registry)
+    record = ledger.append_forecast(forecast_payload())
+    assert record["source_registry_status"] == "REGISTERED"
+    assert record["feature_snapshot_hash_verified"] is True
+    assert record["source_content_hashes"]["SRC-FEATURE-001"] == "a" * 64
+
+
+def test_metrics_refuse_tampered_registered_feature_snapshot_hash(tmp_path):
+    ledger = make_ledger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    ledger.append_outcome(
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+        "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+    )
+    rows = [
+        json.loads(line)
+        for line in ledger.forecasts_path.read_text(encoding="utf-8").splitlines()
+    ]
+    rows[0]["source_content_hashes"]["SRC-FEATURE-001"] = "d" * 64
+    ledger.forecasts_path.write_text(
+        "".join(json.dumps(row) + "\\n" for row in rows),
+        encoding="utf-8",
+    )
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
