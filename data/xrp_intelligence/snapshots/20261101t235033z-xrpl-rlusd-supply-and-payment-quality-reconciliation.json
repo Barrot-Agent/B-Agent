@@ -49,11 +49,10 @@
   "supply_assessment": {
     "confirmed": "Two current independent aggregators place XRPL RLUSD outstanding near $708M-$712M on November 1. DefiLlama reports XRPL stablecoin market cap down 24.55% over seven days.",
     "unresolved": "The full disposition of the recent XRPL supply reduction is not traced. It may include cross-chain migration, redemption, issuer inventory movement, or provider corrections.",
-    "cross_chain_migration_claim": "A Japanese onchain analysis dated October 20 reported a 66.99M RLUSD decrease on XRPL, with 52.1M moved to Ethereum. This is a sourced secondary claim, not a complete transaction-level reconciliation.",
+    "cross_chain_migration_claim": "Two secondary observations support cross-chain migration as a real mechanism: Coindaro's October 28 analysis reports approximately 25M RLUSD leaving XRPL with a similar amount appearing on Ethereum between October 27-28 while total supply stayed broadly flat; TokenPost documents a matched 1,363,614.85 RLUSD burn on XRPL and mint on Ethereum seconds later on September 6. These observations do not reconcile the full October 28-November 1 XRPL supply reduction.",
     "sources": [
-      "https://q-eternal.com/rlusd-supply-shift-xrp-ledger-ethereum-october-2026/",
-      "https://defillama.com/chain/XRPL",
-      "https://xrpldash.com/rwa"
+      "https://coindaro.com/article/rlusd-on-xrpl-ethereum-defillama-2026-10-28",
+      "https://tokenpost.com/rlusd-migration-xrpl-to-ethereum-september-2026-1363614"
     ]
   },
   "payment_quality_observation": {
@@ -99,7 +98,7 @@
     "period": "2026-10-19 through 2026-10-25",
     "reported_bridge_trades": 11009,
     "reported_xrp_in_swaps": 246000,
-    "source": "https://thecryptobasic.com/2026/10/27/xrp-auto-bridging-hits-new-weekly-high-on-xrpl-dex/",
+    "source": "https://thecryptobasic.com/2026/10/27/xrp-used-as-bridge-asset-in-11009-xrpl-dex-trades-facilitating-246000-xrp-in-swaps/",
     "source_type": "SECONDARY_REPORT_ATTRIBUTING_DATA_TO_VALIDATOR_VET",
     "limitations": [
       "The original public X post was not independently accessible during this run.",
@@ -115,7 +114,7 @@
     "xrp_in_pool": 1724000,
     "rlusd_in_pool": 2288000,
     "share_of_stablecoin_base_pct": 0.41,
-    "source": "https://cryptoslate.com/xrp-rlusd-amm-liquidity-remains-thin-despite-ripple-stablecoin-growth/",
+    "source": "https://cryptoslate.com/xrps-30-monthly-rebound-meets-a-4-6-million-liquidity-trial-inside-xrpls-1-1-billion-stablecoin-boom/",
     "limitations": [
       "Dated pool snapshot, not current liquidity.",
       "Pool depth is not total XRPL stablecoin supply or all XRP trading depth.",
@@ -129,7 +128,8 @@
       "support": [
         "October 20 Japanese analysis reports 52.1M moved to Ethereum.",
         "XRPL outstanding near $712M on November 1 versus a stale approximately $982M snapshot four days earlier.",
-        "DefiLlama reports a 24.55% seven-day XRPL stablecoin market-cap decline."
+        "DefiLlama reports a 24.55% seven-day XRPL stablecoin market-cap decline.",
+        "Coindaro reports a 25M XRPL-to-Ethereum supply shift on October 27-28 with total supply broadly flat; TokenPost documents a matched XRPL burn/Ethereum mint transaction pair on September 6."
       ],
       "disconfirming": [
         "No complete November 1 Ethereum supply observation or end-to-end bridge transaction reconciliation.",
@@ -176,6 +176,17 @@
       "disconfirming": [
         "No trade denominator, no net XRP holdings, no current pool depth; gross routed flow is not capital inflow."
       ]
+    },
+    {
+      "id": "H6_AI_AGENT_PAYMENT_ACTIVITY",
+      "hypothesis": "XRPL supports real AI-agent micropayment use cases, but high transaction counts can coexist with low token settlement value.",
+      "support": [
+        "XRPL AI Hub reported 4,491,820 transactions with 5,836.71 XRP and 4,125.29 RLUSD settled in a September 8 snapshot."
+      ],
+      "disconfirming": [
+        "Single application dashboard; no current throughput, unique payer, merchant revenue or agent count verified.",
+        "The reported settled value is only about $11.8K at the article's XRP reference price."
+      ]
     }
   ],
   "data_model_requirements": [
@@ -188,7 +199,8 @@
     "unique senders/receivers and concentration metrics",
     "AMM pool depth, slippage and LP concentration",
     "Cross River integration usage if publicly disclosed",
-    "source independence and timestamp reconciliation"
+    "source independence and timestamp reconciliation",
+    "AI-agent payment count, unique payer/agent/merchant count, median and total settled value, fee-adjusted value, repeat rate and x402 application attribution"
   ],
   "prediction_status": "NOT_ISSUED",
   "next_actions": [
@@ -197,5 +209,22 @@
     "Reproduce Bitquery's dust and round-trip analysis from public ledger data or an independent provider before treating it as confirmed.",
     "Capture Cross River usage only from public/authorized disclosures.",
     "Track current XRP/RLUSD AMM pool depth and auto-bridging route volume with denominators."
-  ]
+  ],
+  "ai_agent_payment_case": {
+    "date": "2026-09-08",
+    "provider": "XRPL AI Hub / t54 Labs",
+    "source": "https://cryptoslate.com/xrp-ledger-ai-hub-crosses-4-5-million-transactions-as-ai-agents-settle-12000-in-xrp-and-rlusd/",
+    "reported_all_time_transactions": 4491820,
+    "reported_xrp_settled": 5836.71,
+    "reported_rlusd_settled": 4125.29,
+    "approximate_usd_value_at_article_price": 11830,
+    "use_case": "x402-style AI-agent micropayments for API calls, inference and digital services",
+    "classification": "THIRD_PARTY_APPLICATION_DASHBOARD_REPORTED",
+    "limitations": [
+      "The dashboard is not an official Ripple or Circle product.",
+      "The article's transaction count is not equivalent to economic value; reported token settlement totals are approximately $11.8K at the article's XRP reference price.",
+      "Agent count, unique payer count, merchant revenue, recurring use and current throughput were not independently verified.",
+      "This is a dated application-level snapshot, not total XRPL AI-agent payment volume."
+    ]
+  }
 }
