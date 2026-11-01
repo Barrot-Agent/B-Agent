@@ -441,3 +441,66 @@ def test_metrics_exposes_effective_horizon_and_observation_lag(tmp_path):
     assert metrics["max_observation_lag_seconds"] == pytest.approx(1.0)
     assert metrics["min_effective_horizon_seconds"] == pytest.approx(3599.0)
     assert metrics["max_effective_horizon_seconds"] == pytest.approx(3599.0)
+
+def test_metrics_refuse_to_pool_resolved_forecasts_with_different_horizons(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    ledger.append_forecast(forecast_payload(
+        forecast_id="xrp-forecast-002",
+        horizon_seconds=7200,
+    ))
+    ledger.append_outcome(
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
+        "2026-10-31T01:00:10Z", "SRC-PRICE-001"
+    )
+    ledger.append_outcome(
+        "xrp-forecast-002", 1.28, "2026-10-31T01:59:59Z",
+        "2026-10-31T02:00:10Z", "SRC-PRICE-001"
+    )
+
+    metrics = ledger.metrics()
+
+    assert metrics["forecast_count"] == 2
+    assert metrics["resolved_count"] == 2
+    assert metrics["accuracy"] is None
+    assert metrics["mean_brier_score"] is None
+    assert metrics["performance_claim_status"] == "NOT_COMPARABLE_MIXED_PROTOCOLS"
+    assert metrics["evaluation_protocol_status"] == "MIXED_PROTOCOLS_NOT_AGGREGATED"
+    assert {
+        item["protocol"]["horizon_seconds"]
+        for item in metrics["evaluation_protocols"]
+    } == {3600, 7200}
+
+
+def test_metrics_refuse_to_pool_different_target_thresholds(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    ledger.append_forecast(forecast_payload(
+        forecast_id="xrp-forecast-002",
+        target={
+            "name": "xrp_usd_return_class_v1",
+            "up_threshold_pct": 1.0,
+            "down_threshold_pct": -1.0,
+        },
+    ))
+
+    metrics = ledger.metrics()
+
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_COMPARABLE_MIXED_PROTOCOLS"
+    assert len(metrics["evaluation_protocols"]) == 2
+
+
+def test_metrics_refuse_to_pool_different_model_versions(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    ledger.append_forecast(forecast_payload(
+        forecast_id="xrp-forecast-002",
+        model={"name": "barrot-xrp", "version": "0.2.0"},
+    ))
+
+    metrics = ledger.metrics()
+
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_COMPARABLE_MIXED_PROTOCOLS"
+    assert len(metrics["evaluation_protocols"]) == 2

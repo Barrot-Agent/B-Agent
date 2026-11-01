@@ -232,6 +232,73 @@ def _validate_outcome_record(forecast: Mapping[str, Any], outcome: Mapping[str, 
         raise ValueError("persisted outcome realized_class is inconsistent with its prices")
 
 
+def _evaluation_protocol(forecast: Mapping[str, Any]) -> dict[str, Any]:
+    """Return the protocol dimensions that must match before forecasts are pooled."""
+    asset_pair = forecast.get("asset_pair")
+    if not isinstance(asset_pair, str) or not asset_pair.strip():
+        raise ValueError("stored forecast asset_pair is invalid")
+
+    horizon = forecast.get("horizon_seconds")
+    if isinstance(horizon, bool) or not isinstance(horizon, int) or horizon <= 0:
+        raise ValueError("stored forecast horizon_seconds is invalid")
+
+    target = forecast.get("target")
+    if not isinstance(target, Mapping):
+        raise ValueError("stored forecast target is invalid")
+    target_name = target.get("name")
+    if not isinstance(target_name, str) or not target_name.strip():
+        raise ValueError("stored forecast target name is invalid")
+    try:
+        up_threshold = float(target.get("up_threshold_pct"))
+        down_threshold = float(target.get("down_threshold_pct"))
+    except (TypeError, ValueError) as exc:
+        raise ValueError("stored forecast target thresholds are invalid") from exc
+    if (
+        not math.isfinite(up_threshold)
+        or not math.isfinite(down_threshold)
+        or up_threshold <= 0
+        or down_threshold >= 0
+        or down_threshold >= up_threshold
+    ):
+        raise ValueError("stored forecast target thresholds are invalid")
+
+    model = forecast.get("model")
+    if not isinstance(model, Mapping):
+        raise ValueError("stored forecast model metadata is invalid")
+    model_name = model.get("name")
+    model_version = model.get("version")
+    if not all(isinstance(item, str) and item.strip() for item in (model_name, model_version)):
+        raise ValueError("stored forecast model identity is invalid")
+
+    baseline = forecast.get("baseline")
+    if not isinstance(baseline, Mapping):
+        raise ValueError("stored forecast baseline metadata is invalid")
+    baseline_id = baseline.get("id")
+    if not isinstance(baseline_id, str) or not baseline_id.strip():
+        raise ValueError("stored forecast baseline identity is invalid")
+
+    resolution_policy = forecast.get("target_resolution_policy")
+    if resolution_policy != "LATEST_OBSERVATION_AT_OR_BEFORE_HORIZON":
+        raise ValueError("stored forecast target resolution policy is invalid")
+    max_lag = forecast.get("max_pre_horizon_observation_lag_seconds")
+    if isinstance(max_lag, bool) or not isinstance(max_lag, int) or max_lag <= 0:
+        raise ValueError("stored forecast observation-lag limit is invalid")
+
+    return {
+        "asset_pair": asset_pair,
+        "horizon_seconds": horizon,
+        "target": {
+            "name": target_name,
+            "up_threshold_pct": up_threshold,
+            "down_threshold_pct": down_threshold,
+        },
+        "model": {"name": model_name.strip(), "version": model_version.strip()},
+        "baseline_id": baseline_id.strip(),
+        "target_resolution_policy": resolution_policy,
+        "max_pre_horizon_observation_lag_seconds": max_lag,
+    }
+
+
 class ForecastLedger:
     """Persist immutable forecasts and separate, timestamped outcomes."""
 
@@ -553,6 +620,57 @@ class ForecastLedger:
 
         resolved = [(by_id[key], value) for key, value in outcome_by_id.items()]
         pending_count = len(forecasts) - len(resolved)
+
+        # Accuracy, calibration and proper scoring rules are comparable only
+        # within one evaluation protocol. Never pool different horizons,
+        # target thresholds, model versions or baselines into one score.
+        protocol_groups: dict[str, dict[str, Any]] = {}
+        for forecast in forecasts:
+            protocol = _evaluation_protocol(forecast)
+            protocol_key = json.dumps(protocol, sort_keys=True, separators=(",", ":"))
+            group = protocol_groups.setdefault(
+                protocol_key,
+                {"protocol": protocol, "forecast_ids": []},
+            )
+            group["forecast_ids"].append(forecast["forecast_id"])
+
+        if len(protocol_groups) > 1:
+            protocol_summaries = []
+            for protocol_key in sorted(protocol_groups):
+                group = protocol_groups[protocol_key]
+                ids = group["forecast_ids"]
+                group_resolved = sum(1 for forecast_id in ids if forecast_id in outcome_by_id)
+                protocol_summaries.append(
+                    {
+                        "protocol": group["protocol"],
+                        "forecast_count": len(ids),
+                        "resolved_count": group_resolved,
+                        "pending_count": len(ids) - group_resolved,
+                    }
+                )
+            return {
+                "forecast_count": len(forecasts),
+                "resolved_count": len(resolved),
+                "pending_count": pending_count,
+                "accuracy": None,
+                "mean_brier_score": None,
+                "mean_log_loss": None,
+                "mean_baseline_brier_score": None,
+                "mean_baseline_log_loss": None,
+                "brier_skill_score": None,
+                "mean_entropy_nats": None,
+                "mean_observation_lag_seconds": None,
+                "max_observation_lag_seconds": None,
+                "min_effective_horizon_seconds": None,
+                "max_effective_horizon_seconds": None,
+                "top_label_calibration_bins": [],
+                "top_label_tie_break_order": list(TIE_BREAK_ORDER),
+                "evaluation_protocol_status": "MIXED_PROTOCOLS_NOT_AGGREGATED",
+                "evaluation_protocols": protocol_summaries,
+                "walk_forward_baseline_status": "NOT_COMPARABLE_MIXED_PROTOCOLS",
+                "performance_claim_status": "NOT_COMPARABLE_MIXED_PROTOCOLS",
+            }
+
         if not resolved:
             return {
                 "forecast_count": len(forecasts),
