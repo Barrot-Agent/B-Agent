@@ -504,3 +504,22 @@ def test_metrics_refuse_to_pool_different_model_versions(tmp_path):
     assert metrics["accuracy"] is None
     assert metrics["performance_claim_status"] == "NOT_COMPARABLE_MIXED_PROTOCOLS"
     assert len(metrics["evaluation_protocols"]) == 2
+
+def test_metrics_refuse_to_pool_different_baseline_versions(tmp_path):
+    ledger = ForecastLedger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    ledger.append_forecast(forecast_payload(
+        forecast_id="xrp-forecast-002",
+        baseline={
+            "id": "uniform-v2",
+            "trained_through_utc": "2026-10-30T23:59:00Z",
+            "computed_at_utc": "2026-10-30T23:59:00Z",
+            "probabilities": {"up": 1 / 3, "flat": 1 / 3, "down": 1 / 3},
+        },
+    ))
+
+    metrics = ledger.metrics()
+
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_COMPARABLE_MIXED_PROTOCOLS"
+    assert len(metrics["evaluation_protocols"]) == 2
