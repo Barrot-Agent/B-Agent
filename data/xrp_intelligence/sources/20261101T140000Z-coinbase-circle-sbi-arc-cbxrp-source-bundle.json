@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "artifact_id": "coinbase-circle-sbi-arc-cbxrp-source-bundle-20261101T1400Z",
+  "captured_at_utc": "2026-11-01T14:00:00Z",
+  "source_policy": "public lawful sources only; no private or unauthorized access",
+  "sources": [
+    {
+      "id": "coinbase-q3-2026-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "publisher": "Coinbase Global, Inc. / SEC",
+      "type": "sec_filing_10q",
+      "published_date": "2026-10-29",
+      "claims": [
+        "Coinbase states 2026 priorities are the everything exchange, stablecoins/payments, and onchain adoption",
+        "Q3 net revenue approximately $1.2B; transaction revenue $590.2M; subscription and services revenue $570.2M",
+        "Q3 stablecoin revenue $306.905M; nine-month stablecoin revenue $904.487M",
+        "Average USDC held in Coinbase products reached an all-time high; arrangement with Circle renewed on the same terms",
+        "Q3 consumer and institutional crypto spot volume declined 59% and 53% year over year",
+        "Q3 assets on platform $376.6B versus $515.9B a year earlier; monthly transacting users 7.4M versus 9.3M",
+        "Q3 net income $718.7M; operating income $61.669M; $715.022M gain on crypto assets held for investment, primarily fair-value remeasurement of Bitcoin and Ethereum",
+        "At September 30, Coinbase reported $1.2995B crypto assets held as collateral, $389.657M crypto assets borrowed, and $2.2248B crypto assets held for investment",
+        "Coinbase says customer assets are not used as collateral without customer consent"
+      ],
+      "limitations": [
+        "company-reported accounting and operating measures",
+        "stablecoin revenue is not XRP-specific revenue",
+        "aggregate collateral and borrowed-asset balances are not XRP-specific",
+        "net income is materially affected by fair-value gains on long-term crypto investments"
+      ]
+    },
+    {
+      "id": "circle-q2-2026-10q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "publisher": "Circle Internet Group, Inc. / SEC",
+      "type": "sec_filing_10q",
+      "published_date": "2026-08-05",
+      "claims": [
+        "USDC in circulation reached approximately $73.3B at Q2 end, up 19% year over year; average circulation approximately $76.524B",
+        "USDC onchain transaction volume was $14.8T, up 151% year over year",
+        "Reserve income was 95.2% of Q2 revenue and 94.6% of first-half revenue; reserve returns are linked to rates near SOFR",
+        "USDC on Coinbase platform was $12.442B at quarter end; daily weighted-average share was 19.5%",
+        "Circle incurred $324.6M Q2 and $655.3M first-half distribution costs under its Coinbase agreements",
+        "Coinbase receives allocations based on USDC held on its platform after issuer retention and half of the remaining amount tied to broader ecosystem growth after approved third-party participants"
+      ],
+      "limitations": [
+        "USDC on platform includes Circle Mint, corporate-held and non-custodial wallet balances; it is not a Coinbase customer-only custody figure",
+        "Q2 filing is the latest Circle quarterly filing before the scheduled November 4 Q3 release"
+      ]
+    },
+    {
+      "id": "coinbase-cbxrp-proof-of-reserves-20261101",
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "publisher": "Coinbase",
+      "type": "issuer_custody_disclosure",
+      "observed_display_time": "2026-11-01 07:12 AM; timezone not stated",
+      "claims": [
+        "Displayed XRP reserve 150,942,337.33",
+        "Displayed cbXRP supply 150,940,089.8",
+        "Displayed reserve surplus 2,247.53 XRP",
+        "Page lists public reserve addresses"
+      ],
+      "limitations": [
+        "issuer-controlled disclosure page, not independent audit",
+        "display timestamp timezone unspecified",
+        "reserve and supply observations are not pinned to one externally verifiable XRPL/Base block in the rendered page"
+      ]
+    },
+    {
+      "id": "coinbase-wrapped-assets-policy",
+      "url": "https://www.coinbase.com/campaigns/wrapped-assets",
+      "publisher": "Coinbase",
+      "type": "official_product_and_custody_policy",
+      "claims": [
+        "cbXRP is a transferable Base wrapper backed 1:1 by XRP held by Coinbase",
+        "Coinbase states underlying backing assets are not sold, transferred or utilized by Coinbase",
+        "wrapped assets can be used in DeFi including lending and can be unwrapped through Coinbase",
+        "wrapped assets do not have a separate Coinbase order book"
+      ],
+      "limitations": [
+        "company policy statement; not an independent proof of every reserve movement"
+      ]
+    },
+    {
+      "id": "coinbase-xrp-loans",
+      "url": "https://www.coinbase.com/borrow",
+      "publisher": "Coinbase",
+      "type": "official_product_documentation",
+      "claims": [
+        "Coinbase offers USDC crypto-backed loans powered by Morpho on Base",
+        "XRP is an eligible collateral asset with a stated maximum borrow amount of $100,000",
+        "collateral is moved onchain to Morpho and borrowed USDC is delivered to the Coinbase account"
+      ],
+      "limitations": [
+        "Coinbase does not publish the exact Morpho market ID for the XRP product",
+        "product cap does not constrain all users of a permissionless Morpho market"
+      ]
+    },
+    {
+      "id": "coinbase-loan-health-help",
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/borrow/loan-health",
+      "publisher": "Coinbase",
+      "type": "official_risk_documentation",
+      "claims": [
+        "liquidation loan-to-value threshold varies by Morpho market",
+        "Coinbase's examples include 62.5%, 77% and 86% LLTV values"
+      ],
+      "limitations": [
+        "examples do not identify the exact cbXRP market configuration"
+      ]
+    },
+    {
+      "id": "morphowatch-cbxrp-usdc-20261101T1311Z",
+      "url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "publisher": "Morpho Watch",
+      "type": "third_party_onchain_analytics",
+      "observed_at_utc": "2026-11-01T13:11:00Z",
+      "claims": [
+        "candidate Base cbXRP/USDC market displays 118.55M cbXRP collateral valued about $148.0M",
+        "$59.20M USDC borrowed, $65.46M supplied, 90.4% utilization",
+        "62.5% LLTV, 12.68% liquidation bonus, 7.87% borrow APY, 7.09% supply APY",
+        "top three displayed vaults supply about $51.85M or 79.2% of displayed market supply",
+        "30-day liquidation dashboard reports 1,122 events and about $3.94M debt repaid",
+        "20% price-shock map estimates $22.05M collateral at risk"
+      ],
+      "limitations": [
+        "third-party aggregator; not Coinbase or Morpho attestation",
+        "permissionless market may include borrowers outside Coinbase's interface",
+        "market-wide totals and borrower counts require raw Base-block reconstruction",
+        "exact market ID mapping to Coinbase's retail product remains unconfirmed"
+      ]
+    },
+    {
+      "id": "ripple-coinbase-rlusd-20261028",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple",
+      "type": "company_partnership_announcement",
+      "published_date": "2026-10-28",
+      "claims": [
+        "RLUSD launched on Coinbase Prime, Coinbase Exchange and Coinbase retail",
+        "deposits and withdrawals supported on XRPL, Base and Ethereum",
+        "Ripple says it will provide liquidity on Base",
+        "Coinbase Global Exchange collateral use was announced as a future rollout"
+      ],
+      "limitations": [
+        "company announcement; no independent volume or collateral utilization figures",
+        "Global Exchange collateral feature was not live at announcement"
+      ]
+    },
+    {
+      "id": "circle-usdc-xrpl-20250612",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "publisher": "Circle",
+      "type": "issuer_product_announcement",
+      "published_date": "2025-06-12",
+      "claims": [
+        "native USDC launched on XRPL",
+        "Circle Mint and Circle APIs support USDC on XRPL"
+      ],
+      "limitations": [
+        "native issuance does not prove that all USDC flows use XRP as a bridge asset or create material XRP demand"
+      ]
+    },
+    {
+      "id": "ripple-circle-usdc-xrpl-20250612",
+      "url": "https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/",
+      "publisher": "Ripple",
+      "type": "company_partnership_announcement",
+      "published_date": "2025-06-12",
+      "claims": [
+        "Ripple and Circle jointly announced native USDC on XRPL",
+        "Ripple stated it intended to use USDC alongside RLUSD in Ripple Payments",
+        "XRPL DEX auto-bridging can use XRP as a bridge asset"
+      ],
+      "limitations": [
+        "intent does not quantify actual payment flows or XRP bridge volume"
+      ]
+    },
+    {
+      "id": "circle-binance-strategic-partnership-20260922",
+      "url": "https://investor.circle.com/news/news-details/2026/Binance-Invests-100-Million-in-Circle-Expands-Strategic-Partnership-and-Renews-Commercial-Agreement-for-Five-Years/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "type": "company_investment_and_commercial_agreement",
+      "published_date": "2026-09-22",
+      "claims": [
+        "Binance made a $100M strategic equity investment in Circle",
+        "Circle and Binance entered a five-year commercial agreement focused on expanding USDC access, especially in emerging markets"
+      ],
+      "limitations": [
+        "does not establish a direct XRP investment or quantify XRP trading/settlement flows through Binance"
+      ]
+    },
+    {
+      "id": "circle-arc-mainnet-20260916",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet",
+      "publisher": "Circle",
+      "type": "company_network_announcement",
+      "published_date": "2026-09-16",
+      "claims": [
+        "Arc mainnet launched with USDC as gas asset",
+        "SBI Group is a founding validator",
+        "Coinbase is named among exchange participants and Morpho among credit-market integrations",
+        "Arc is a separate Circle-led network with USDC-native settlement"
+      ],
+      "limitations": [
+        "network participation does not prove XRP demand",
+        "Ripple was not named in the reviewed founding-validator/integration cohort; absence is not proof of no relationship"
+      ]
+    },
+    {
+      "id": "sbi-circle-investment-20250609",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf",
+      "publisher": "SBI Holdings and SBI Shinsei Bank",
+      "type": "official_corporate_announcement",
+      "published_date": "2025-06-09",
+      "claims": [
+        "SBI Holdings and SBI Shinsei Bank invested $50M in Circle, $25M each",
+        "SBI announced the establishment of Circle SBI Japan KK",
+        "SBI company materials report approximately 9% Ripple shareholding and identify SBI Ripple Asia as a joint venture"
+      ],
+      "limitations": [
+        "Ripple stake percentage is an SBI company-reported figure, not an independent cap-table audit"
+      ]
+    },
+    {
+      "id": "sbi-remit-xrp-corridors-20230906",
+      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+      "publisher": "SBI Remit / SBI VC Trade / SBI Ripple Asia",
+      "type": "official_operational_payment_announcement",
+      "published_date": "2023-09-06",
+      "claims": [
+        "SBI Remit expanded XRP-based bank-account remittances to the Philippines, Vietnam and Indonesia",
+        "SBI Remit sends customer remittance requests; SBI VC Trade sends XRP in real time; Tranglo handles payout to local bank accounts",
+        "SBI states XRP is used as a bridge between fiat currencies to reduce destination pre-funding costs"
+      ],
+      "limitations": [
+        "announcement does not disclose current throughput, transaction size, XRP inventory duration or net market impact",
+        "payment flows may use XRP transiently and do not imply long-term holdings"
+      ]
+    },
+    {
+      "id": "sbi-ripple-asia-tokenized-deposits-poc-20260226",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "publisher": "SBI Holdings / SBI Ripple Asia",
+      "type": "official_proof_of_concept_announcement",
+      "published_date": "2026-02-26",
+      "claims": [
+        "SBI Ripple Asia announced a proof of concept for tokenized deposits and deposit-type digital money using XRPL"
+      ],
+      "limitations": [
+        "proof of concept is not production deployment",
+        "XRPL use does not prove XRP is the settlement asset or collateral"
+      ]
+    },
+    {
+      "id": "sbi-ripple-rlusd-japan-20260624",
+      "url": "https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/",
+      "publisher": "Ripple",
+      "type": "company_partnership_announcement",
+      "published_date": "2026-06-24",
+      "claims": [
+        "RLUSD distribution launched in Japan through SBI VC Trade following regulatory approval"
+      ],
+      "limitations": [
+        "availability does not quantify adoption or XRP demand"
+      ]
+    },
+    {
+      "id": "sbic-official-faq",
+      "url": "https://www.sbic.co.jp/investment/faq/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "official_entity_identity_source",
+      "claims": [
+        "Tokyo SBIC is a policy implementation company under the Small and Medium Business Investment & Consultation Company Act and operates as an independent private corporation",
+        "Nagoya and Osaka SBICs are sister companies with separate operating regions"
+      ],
+      "limitations": [
+        "no direct SBI Holdings, XRP, Ripple, Circle or Coinbase relationship identified"
+      ]
+    },
+    {
+      "id": "sbic-chatgpt-training-20250612",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "type": "official_training_announcement",
+      "published_date": "2025-06-12",
+      "claims": [
+        "two-day generative AI and machine-learning training on June 12-13, 2025",
+        "course included ChatGPT, Copilot, APIs, RAG and data-leakage risk",
+        "course was restricted to SBIC investee companies"
+      ],
+      "limitations": [
+        "educational training only; not evidence of an OpenAI partnership or XRP-related activity"
+      ]
+    },
+    {
+      "id": "circle-q3-2026-results-date",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-to-Announce-Q3-2026-Financial-Results-on-November-4-2026/default.aspx",
+      "publisher": "Circle Investor Relations",
+      "type": "official_investor_event_notice",
+      "published_date": "2026-10-07",
+      "claims": [
+        "Circle will report Q3 2026 results on November 4, 2026 at 8:00 AM ET"
+      ],
+      "limitations": [
+        "future event at this research cutoff"
+      ]
+    }
+  ],
+  "source_independence": {
+    "SEC_filings": "primary issuer disclosures; independent regulatory filing channel but issuer-authored",
+    "Coinbase_and_Circle_product_pages": "primary company product/custody statements",
+    "Ripple_and_SBI_announcements": "primary company claims; operational volumes not independently supplied",
+    "MorphoWatch": "secondary analytics; raw Base-block reconstruction required",
+    "Circle_investor_relations": "primary issuer announcement",
+    "SBIC": "primary identity and training evidence"
+  }
+}

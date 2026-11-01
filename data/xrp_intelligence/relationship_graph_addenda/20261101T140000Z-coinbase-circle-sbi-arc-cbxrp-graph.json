@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "graph_id": "coinbase-circle-ripple-sbi-binance-arc-cbxrp-graph-20261101T1400Z",
+  "nodes": [
+    {
+      "id": "Coinbase",
+      "type": "company"
+    },
+    {
+      "id": "Circle",
+      "type": "company"
+    },
+    {
+      "id": "Ripple",
+      "type": "company"
+    },
+    {
+      "id": "SBI_Holdings",
+      "type": "company"
+    },
+    {
+      "id": "SBI_Remit",
+      "type": "remittance_provider"
+    },
+    {
+      "id": "SBI_VC_Trade",
+      "type": "exchange"
+    },
+    {
+      "id": "SBI_Ripple_Asia",
+      "type": "joint_venture"
+    },
+    {
+      "id": "Circle_SBI_Japan_KK",
+      "type": "joint_venture"
+    },
+    {
+      "id": "Binance",
+      "type": "exchange"
+    },
+    {
+      "id": "Arc",
+      "type": "blockchain"
+    },
+    {
+      "id": "Morpho",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "cbXRP",
+      "type": "wrapped_asset"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "USDC",
+      "type": "stablecoin"
+    },
+    {
+      "id": "RLUSD",
+      "type": "stablecoin"
+    },
+    {
+      "id": "Tokyo_SBIC",
+      "type": "investment_consultation_company"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC_distribution_revenue_share_and_equity_investment",
+      "status": "confirmed_SEC_filings"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relation": "distribution_costs_and_USDC_collaboration_agreement",
+      "status": "confirmed_SEC_filing"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relation": "RLUSD_distribution_on_Prime_Exchange_Retail",
+      "status": "confirmed_company_announcement"
+    },
+    {
+      "from": "Ripple",
+      "to": "Coinbase",
+      "relation": "RLUSD_liquidity_on_Base",
+      "status": "company_announced"
+    },
+    {
+      "from": "Coinbase",
+      "to": "cbXRP",
+      "relation": "issues_and_custodies_1_to_1_wrapper",
+      "status": "confirmed_company_disclosure"
+    },
+    {
+      "from": "cbXRP",
+      "to": "XRP",
+      "relation": "represents_custodied_underlying_XRP",
+      "status": "confirmed_company_disclosure"
+    },
+    {
+      "from": "cbXRP",
+      "to": "Morpho",
+      "relation": "pledged_in_candidate_USDC_credit_market",
+      "status": "third_party_market_observation; exact Coinbase product mapping unconfirmed"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Morpho",
+      "relation": "USDC_loan_product_on_Base",
+      "status": "confirmed_company_product_documentation"
+    },
+    {
+      "from": "Morpho",
+      "to": "USDC",
+      "relation": "permissionless_credit_supply_and_borrowing",
+      "status": "protocol_design_confirmed; market aggregates secondary"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer",
+      "status": "confirmed"
+    },
+    {
+      "from": "Circle",
+      "to": "XRP",
+      "relation": "native_USDC_issued_on_XRPL",
+      "status": "confirmed_chain_availability; no automatic XRP bridge demand"
+    },
+    {
+      "from": "Ripple",
+      "to": "Circle",
+      "relation": "native_USDC_on_XRPL_and_intended_USDC_use_alongside_RLUSD",
+      "status": "confirmed_company_announcements"
+    },
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relation": "issuer",
+      "status": "confirmed"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "listing_on_XRPL_Base_Ethereum",
+      "status": "confirmed; Global Exchange collateral future_not_live"
+    },
+    {
+      "from": "Circle",
+      "to": "Binance",
+      "relation": "100M_equity_investment_and_five_year_USDC_distribution_agreement",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP",
+      "relation": "exchange_trading_and_custody_venue",
+      "status": "confirmed_market_listing; current balances require timestamped evidence"
+    },
+    {
+      "from": "Circle",
+      "to": "Arc",
+      "relation": "network_issuer_and_USDC_gas_asset",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "Arc",
+      "relation": "founding_validator",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Arc",
+      "relation": "exchange_participant",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "Morpho",
+      "to": "Arc",
+      "relation": "credit_market_integration",
+      "status": "confirmed_Circle_announcement"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "Circle",
+      "relation": "50M_equity_investment_and_Circle_SBI_Japan_KK",
+      "status": "confirmed_SBI_announcement"
+    },
+    {
+      "from": "SBI_Holdings",
+      "to": "Ripple",
+      "relation": "reported_approximately_9_percent_shareholding_and_SBI_Ripple_Asia_JV",
+      "status": "SBI_company_reported"
+    },
+    {
+      "from": "SBI_Remit",
+      "to": "XRP",
+      "relation": "uses_XRP_as_bridge_asset_for_remittances",
+      "status": "confirmed_official_operational_announcement"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "XRP",
+      "relation": "sends_XRP_in_real_time_for_SBI_Remit_requests",
+      "status": "confirmed_official_operational_announcement"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "Ripple",
+      "relation": "joint_venture",
+      "status": "confirmed"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "USDC",
+      "relation": "Japanese_USDC_distribution",
+      "status": "confirmed_company_announcements"
+    },
+    {
+      "from": "SBI_VC_Trade",
+      "to": "RLUSD",
+      "relation": "Japanese_RLUSD_distribution",
+      "status": "confirmed_Ripple_announcement"
+    },
+    {
+      "from": "SBI_Ripple_Asia",
+      "to": "XRP",
+      "relation": "XRPL_tokenized_deposit_POC",
+      "status": "XRPL_use_confirmed; XRP token use not established"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "SBI_Holdings",
+      "relation": "no_relationship_established",
+      "status": "unknown; entities must not be conflated"
+    },
+    {
+      "from": "Tokyo_SBIC",
+      "to": "ChatGPT",
+      "relation": "investee_company_training_included_ChatGPT",
+      "status": "education_only; no partnership"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1_coinbase_multistablecoin_platform",
+      "claim": "Coinbase is pursuing a multi-issuer distribution/custody/credit strategy rather than exclusive Circle alignment.",
+      "support": [
+        "Circle arrangement renewed on same terms",
+        "RLUSD listed on Coinbase",
+        "cbXRP collateral loans and USDC credit product",
+        "Circle equity investment"
+      ],
+      "disconfirming_or_unknown": [
+        "actual RLUSD volumes and collateral adoption not yet disclosed",
+        "revenue contribution by each stablecoin not fully separated"
+      ],
+      "status": "best_supported_strategic_interpretation"
+    },
+    {
+      "id": "H2_circle_distribution_diversification",
+      "claim": "Circle is reducing dependence on any one exchange distributor by deepening Binance, Coinbase, SBI and Arc distribution.",
+      "support": [
+        "Circle-Coinbase agreement and distribution costs",
+        "Binance $100M investment and five-year USDC deal",
+        "SBI investment/JV and Japanese distribution",
+        "Arc integrations"
+      ],
+      "disconfirming_or_unknown": [
+        "relative distributor balances and economics after Q3 not yet available"
+      ],
+      "status": "supported_strategy_inference"
+    },
+    {
+      "id": "H3_cbxrp_credit_utility",
+      "claim": "cbXRP collateralization expands XRP utility and can encumber wrapped XRP without requiring sale of underlying native XRP.",
+      "support": [
+        "Coinbase 1:1 wrapper and custody policy",
+        "Coinbase XRP-eligible Morpho loan product",
+        "candidate cbXRP/USDC market"
+      ],
+      "disconfirming_or_unknown": [
+        "exact Coinbase market mapping and onchain positions not independently reconstructed",
+        "cbXRP minting may reflect conversion of existing holdings, not new spot demand"
+      ],
+      "status": "plausible_but_market_mapping_unverified"
+    },
+    {
+      "id": "H4_sbi_transactional_xrp_use",
+      "claim": "SBI Remit provides confirmed operational XRP bridge use in Japan-to-Southeast-Asia remittance corridors.",
+      "support": [
+        "SBI official announcement says SBI VC Trade sends XRP in real time and Tranglo pays local fiat"
+      ],
+      "disconfirming_or_unknown": [
+        "throughput, average holding time, current corridor activity and net XRP inventory undisclosed"
+      ],
+      "status": "confirmed_use_case; economic_scale_unknown"
+    },
+    {
+      "id": "H5_arc_competes_or_complements_xrpl",
+      "claim": "Circle Arc may compete with XRPL for stablecoin payments/credit infrastructure while multichain USDC and RLUSD create complementary paths.",
+      "support": [
+        "Arc uses USDC as gas; SBI, Coinbase and Morpho participate",
+        "USDC and RLUSD are available on XRPL",
+        "Ripple says it intends to use USDC alongside RLUSD"
+      ],
+      "disconfirming_or_unknown": [
+        "no comparative settlement volumes, pricing or institutional routing data"
+      ],
+      "status": "open_competing_hypotheses"
+    },
+    {
+      "id": "H6_stablecoin_usage_means_xrp_demand",
+      "claim": "More USDC/RLUSD usage on XRPL necessarily creates material XRP investment demand.",
+      "support": [
+        "XRP is native asset and transaction fee asset; DEX auto-bridging can use XRP"
+      ],
+      "disconfirming_or_unknown": [
+        "stablecoin transfers do not all route through XRP",
+        "transaction fees are small; actual bridge routing share and net inventory demand unknown"
+      ],
+      "status": "not_established"
+    }
+  ],
+  "red_team_objections": [
+    "Do not equate Coinbase cbXRP supply with fresh XRP purchases.",
+    "Do not treat permissionless Morpho market aggregates as Coinbase retail loan balances.",
+    "Do not equate Circle's distribution costs with XRP capital inflows.",
+    "Do not infer XRP token use from an XRPL tokenized-deposit proof of concept.",
+    "Do not infer exclusive alignment among Coinbase, Circle, Ripple and SBI; their relationships include cooperation and competition."
+  ]
+}

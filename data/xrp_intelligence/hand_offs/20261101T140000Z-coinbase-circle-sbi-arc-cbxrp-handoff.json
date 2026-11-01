@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "handoff_id": "coinbase-circle-sbi-arc-cbxrp-handoff-20261101T1400Z",
+  "captured_at_utc": "2026-11-01T14:00:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification and safety",
+  "current_research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1464",
+  "security_successor_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1465",
+  "research_pr_status": "open_draft_unmerged; base is one main commit behind current main",
+  "key_findings": [
+    "Coinbase's Q3 2026 filing shows a multi-product strategy: everything exchange, stablecoins/payments and onchain adoption. It renewed the Circle arrangement on the same terms while listing RLUSD on Coinbase across XRPL, Base and Ethereum.",
+    "Coinbase's Q3 stablecoin revenue was $306.905M, down about 5.4% year over year, despite average USDC balances reaching an all-time high; lower reserve rates offset balance growth.",
+    "Coinbase's Q3 net income includes $715.022M of gains on crypto assets held for investment, mainly Bitcoin and Ethereum; do not treat the headline net income as pure operating strength.",
+    "Circle's Q2 filing reports $12.442B USDC on Coinbase at quarter end, a 19.5% daily weighted-average share, and $324.6M Q2/$655.3M H1 distribution costs to Coinbase. Circle's reserve income was 95.2% of Q2 revenue and is sensitive to rates near SOFR.",
+    "Circle has diversified distribution and strategic ties: $100M Binance equity investment and a five-year USDC agreement, in addition to Coinbase and SBI relationships.",
+    "Circle Arc launched with USDC as gas; SBI Group is a founding validator, Coinbase an exchange participant, and Morpho a credit-market integration. This is a parallel stablecoin rail, not evidence of an exclusive anti-XRPL strategy.",
+    "Coinbase's cbXRP reserve page displays 150,942,337.33 XRP against 150,940,089.8 cbXRP, a displayed surplus of 2,247.53 XRP; refresh timezone is unstated.",
+    "Morpho Watch's candidate cbXRP/USDC market shows $59.2M borrowed and 90.4% utilization, but it is permissionless and not a verified Coinbase retail loan book. Coinbase's help docs confirm market-specific LLTV can be 62.5%, which weakens the earlier 86% versus 62.5% contradiction.",
+    "SBI Remit's official 2023 announcement confirms XRP bridge use for remittances to the Philippines, Vietnam and Indonesia; SBI VC Trade sends XRP in real time and Tranglo pays local currency. Volume and net inventory are undisclosed.",
+    "SBI Ripple Asia's 2026 tokenized-deposit POC uses XRPL, but XRP token use is not established.",
+    "Tokyo SBIC is the Tokyo Small and Medium Business Investment & Consultation Co., Ltd., separate from SBI Holdings. Its ChatGPT training was for investee companies only."
+  ],
+  "next_actions": [
+    "Capture Circle Q3 2026 results on November 4, 2026 at 08:00 ET; compare USDC circulation, reserve return rate, Coinbase platform balances and distribution costs.",
+    "Reconstruct the candidate Morpho market at a pinned Base block, including market config, oracle, positions, liquidations, collateral seized and debt repaid.",
+    "Reconcile Coinbase cbXRP reserve addresses to one validated XRPL ledger and Base totalSupply.",
+    "Measure cbXRP mint/burn/redemption and SBI remittance flows separately from spot XRP demand.",
+    "Track Coinbase Global Exchange RLUSD collateral rollout only after official launch and observed usage.",
+    "Compare Circle Arc and XRPL using actual settlement and liquidity metrics, not partner lists alone.",
+    "Continue ASK Coin exact-context search and actual-capital source tracing.",
+    "Continue public YouTube identity verification for Camilla/Kamilah Stevenson; do not claim the full video inventory is complete."
+  ],
+  "platform_status": {
+    "ChatGPT": "available",
+    "GitHub": "verified_repository_access",
+    "Claude": "not_verified",
+    "Grok": "not_verified",
+    "Gemini": "not_verified",
+    "Copilot": "not_verified",
+    "Codex": "not_verified",
+    "HuggingFace": "not_verified",
+    "Kaggle": "not_verified",
+    "Databricks": "not_verified"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "safety": {
+    "main_modified": false,
+    "merged": false,
+    "force_push": false,
+    "manual_workflow_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployments": false,
+    "paper_position_mutation": false,
+    "real_money_trade": false
+  }
+}
