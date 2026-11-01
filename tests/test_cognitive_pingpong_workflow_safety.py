@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,9 +29,10 @@ def test_cognitive_relay_is_manual_read_only_and_does_not_claim_live_collaborati
 
 def test_cognitive_relay_artifact_reports_unverified_adapters_truthfully():
     workflow = PINGPONG.read_text(encoding="utf-8")
-    match = re.search(r"<<'JSON'\\n(.*?)\\n\\s*JSON", workflow, re.DOTALL)
-    assert match is not None
-    status = json.loads(match.group(1))
+    marker = "<<'JSON'\\n"
+    assert marker in workflow
+    payload = workflow.split(marker, 1)[1].split("\\n          JSON", 1)[0]
+    status = json.loads(payload)
 
     assert status["status"] == "NOT_IMPLEMENTED"
     assert status["live_collaboration_verified"] is False
