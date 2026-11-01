@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "escrow-relock-correction-and-v3-handoff-20261101T212500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "research_branch": "research/cbxrp-morpho-market-reconciliation-20261101T1311Z",
+  "prior_head": "7a71082f066a41c3774148b795a7922959b5cfe2",
+  "escrow_correction": {
+    "preferred_balance_xrp": 31100000000,
+    "ledger_index": 108052148,
+    "ledger_time_utc": "2026-11-01T20:11:00Z",
+    "same_day_released_xrp": 1000000000,
+    "same_day_reescrowed_xrp": 700000000,
+    "same_day_net_out_xrp": 300000000,
+    "rolling_12m_reescrow_pct": 70,
+    "rolling_12m_net_out_xrp": 3600000000,
+    "next_unlock": "2026-12-01T00:00:00Z",
+    "remaining_unlocks": 32,
+    "last_unlock": "2029-07-01",
+    "main_radar_summary_conflict_xrp": 30400000000,
+    "conflict_difference_xrp": 700000000,
+    "status": "DETAIL_PAGE_PINNED_LEDGER_PREFERRED; MAIN_SUMMARY_INCONSISTENT"
+  },
+  "other_market_structure": {
+    "exchange_wallets_xrp": 22450000000,
+    "coinbase_wallets_xrp": 5850000000,
+    "upbit_wallets_xrp": 6430000000,
+    "binance_wallets_xrp": 2780000000,
+    "sbi_vc_trade_wallets_xrp": 60000000,
+    "etf_holdings_xrp": 1200000000,
+    "rwa_distributed_usd": 276000000,
+    "rwa_represented_usd": 4060000000,
+    "rwa_total_usd": 4330000000
+  },
+  "research_status": {
+    "x402_cluster": "reclassified as x402-compatible agent micropayment cohort; operator unknown; batch migration plausible, not verified",
+    "rlusd_xrpl_supply": "about 707.4M; 30-day drawdown about 30.2%; issuer burn/mint chain split unreconciled",
+    "prediction": "NOT_ISSUED"
+  },
+  "repository_status": {
+    "main_sha": "465ff4b40c43721db25e313df08b44a659f4a360",
+    "research_pr1464_head": "7a71082f066a41c3774148b795a7922959b5cfe2",
+    "research_pr1464_ci": "436 tests + 8 subtests passed on run 41351622399",
+    "research_pr1464_gate": "run 41351622569 passed; merge disabled",
+    "pr1464_state": "open draft unmerged",
+    "pr1474_state": "open draft unmerged; security quarantine not active on main",
+    "pr1475_state": "open draft unmerged; prediction integrity fix not active on main"
+  },
+  "next_actions": [
+    "Verify the 31.1B escrow object total directly against a public rippled account_objects call at ledger 108052148; retain the page's pinned result until independent RPC confirmation.",
+    "Trace the three EscrowCreate transactions and their new FinishAfter dates; reconcile the 700M summary discrepancy.",
+    "Map the 300M net-out destinations from the two EscrowFinish transactions; do not label it sold or spot supply without exchange/market evidence.",
+    "Recalculate historical 12-release escrow series with post-release re-escrow events; replace 64.2%/4.3B with 70%/3.6B only for the updated cutoff.",
+    "Keep RWA distributed float separate from represented registry notional and exchange wallet balances separate from tradable float.",
+    "Continue x402 CheckCash cohort tracing and RLUSD issuer mint/burn chain reconciliation.",
+    "Keep all PRs unmerged and main untouched; reconcile privileged workflows and prediction source-byte validation only through tested branches."
+  ],
+  "safety": "No main write, merge, force-push, manual workflow dispatch, deployment, paper-position mutation or real-money trade."
+}

@@ -126,3 +126,45 @@ def test_live_x402_checkcash_is_recorded_without_claiming_cohort_migration():
     assert observation["observation"]["amount_rlusd"] == 0.67376
     assert observation["observation"]["intent_status"] == "Unverified"
     assert "not proof" in observation["interpretation"].lower() or "not that the earlier 110-wallet cohort migrated" in observation["interpretation"].lower()
+
+
+def test_ripple_escrow_post_release_relock_uses_pinned_ledger_and_corrects_stale_summary():
+    snapshot = json.loads(
+        (ROOT / "data" / "xrp_intelligence" / "snapshots" /
+         "20261101T212500Z-escrow-post-release-relock-and-supply-breakdown.json").read_text(encoding="utf-8")
+    )
+    escrow = snapshot["escrow"]
+    assert escrow["preferred_observation"]["ledger_index"] == 108052148
+    assert escrow["preferred_observation"]["ripple_owned_escrow_xrp"] == 31_100_000_000
+    assert escrow["preferred_observation"]["objects"] == 99
+    assert escrow["same_day_events"]["released_xrp"] == 1_000_000_000
+    assert escrow["same_day_events"]["re_escrowed_xrp"] == 700_000_000
+    assert escrow["same_day_events"]["net_out_of_escrow_xrp"] == 300_000_000
+    assert escrow["rolling_12_releases"]["reescrow_pct"] == 70
+    assert escrow["rolling_12_releases"]["net_out_xrp"] == 3_600_000_000
+    assert escrow["conflicting_summary"]["difference_xrp"] == 700_000_000
+    assert escrow["schedule"]["unlock_objects_left"] == 32
+    assert escrow["schedule"]["last_scheduled_unlock"] == "2029-07-01"
+
+
+def test_ripple_escrow_supply_correction_keeps_net_release_separate_from_sales():
+    correction = json.loads(
+        (ROOT / "data" / "xrp_intelligence" / "research_ledger_addenda" /
+         "20261101T212500Z-escrow-700m-relock-and-circulating-supply-correction.json").read_text(encoding="utf-8")
+    )
+    assert correction["forecast_status"] == "NOT_ISSUED"
+    assert any(item["id"] == "E3" and item["status"] == "NOT_ESTABLISHED" for item in correction["hypotheses"])
+    assert any("not proof of 300M XRP sold" in item["text"] for item in correction["findings"])
+
+
+def test_xrpl_rwa_headline_separates_distributed_float_from_registry_notional():
+    snapshot = json.loads(
+        (ROOT / "data" / "xrp_intelligence" / "snapshots" /
+         "20261101T212500Z-escrow-post-release-relock-and-supply-breakdown.json").read_text(encoding="utf-8")
+    )
+    rwa = snapshot["market_structure"]["rwa"]
+    assert rwa["total_usd"] == 4_330_000_000
+    assert rwa["distributed_usd"] == 276_000_000
+    assert rwa["represented_usd"] == 4_060_000_000
+    assert rwa["distributed_share_pct"] < 7
+    assert rwa["represented_share_pct"] > 93

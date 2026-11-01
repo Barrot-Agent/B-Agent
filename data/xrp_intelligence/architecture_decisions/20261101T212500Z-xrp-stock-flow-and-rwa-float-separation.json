@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "xrp-stock-flow-and-rwa-float-separation-20261101T212500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "decisions": [
+    {
+      "topic": "Ripple escrow",
+      "decision": "Use a single pinned validated ledger and object-by-object Ripple-owned escrow read as the canonical stock. Store each EscrowFinish and EscrowCreate as separate event flows. Flag any dashboard summary that disagrees with the pinned object sum.",
+      "reason": "The main Radar summary says 30.4B while the detailed page at ledger 108,052,148 says 31.1B; the 700M difference matches three later EscrowCreate transactions."
+    },
+    {
+      "topic": "Monthly escrow release",
+      "decision": "Store gross released, re-escrowed, and net-out-of-escrow separately. Do not equate net out with sale, spot supply, or exchange inflow.",
+      "reason": "November 1 released 1B, re-escrowed 700M, net 300M. Destination and disposition remain unknown."
+    },
+    {
+      "topic": "Circulating supply",
+      "decision": "Label broad not-escrowed/not-burned supply separately from free float and from vendor circulating supply definitions.",
+      "reason": "The derived 68.8856B does not subtract operational Ripple holdings, exchange custody, lost/inaccessible XRP or other encumbrances."
+    },
+    {
+      "topic": "RWA actual capital",
+      "decision": "Store distributed transferable token float separately from represented registry notional and issuer-reported valuations.",
+      "reason": "The $4.33B RWA headline consists of $276M distributed and $4.06B represented; only about 6.37% is distributed."
+    },
+    {
+      "topic": "Exchange balances",
+      "decision": "Treat attributed exchange wallet totals as a public-wallet floor and custody concentration measure, not tradable float or exchange net flows.",
+      "reason": "Omnibus deposits, cold storage, cbXRP backing and Binance-Peg reserves may be included; unlabeled wallets are excluded."
+    }
+  ],
+  "status": "DESIGNED_NOT_EXECUTED",
+  "forecast_status": "NOT_ISSUED"
+}

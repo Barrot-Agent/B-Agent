@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "id": "ripple-escrow-objects-and-custody-concentration-20261101T212500Z",
+  "captured_at_utc": "2026-11-01T21:06:15Z",
+  "nodes": [
+    {
+      "id": "Ripple",
+      "type": "company"
+    },
+    {
+      "id": "Ripple-owned escrow accounts",
+      "type": "XRPL_account_group"
+    },
+    {
+      "id": "XRP Ledger Escrow objects",
+      "type": "ledger_objects"
+    },
+    {
+      "id": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "Coinbase",
+      "type": "exchange_custodian"
+    },
+    {
+      "id": "Upbit",
+      "type": "exchange_custodian"
+    },
+    {
+      "id": "Binance",
+      "type": "exchange_custodian"
+    },
+    {
+      "id": "SBI VC Trade",
+      "type": "exchange_custodian"
+    },
+    {
+      "id": "Evernorth",
+      "type": "corporate_treasury"
+    },
+    {
+      "id": "XRPL RWA registry tokens",
+      "type": "tokenized_asset_registry"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Ripple",
+      "to": "Ripple-owned escrow accounts",
+      "relationship": "controls_99_escrow_objects_totaling_31_1B_XRP_at_ledger_108052148",
+      "evidence_class": "SOURCE_REPORTED_PINNED_LEDGER"
+    },
+    {
+      "from": "Ripple-owned escrow accounts",
+      "to": "XRP Ledger Escrow objects",
+      "relationship": "created_700M_new_escrow_in_three_objects_on_2026_11_01",
+      "evidence_class": "SOURCE_REPORTED_TRANSACTION_SEQUENCE"
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relationship": "5.85B XRP in 358 publicly attributed wallets",
+      "evidence_class": "ONCHAIN_WALLET_LABEL_AGGREGATION_NOT_TRADABLE_FLOAT"
+    },
+    {
+      "from": "Upbit",
+      "to": "XRP",
+      "relationship": "6.43B XRP in 13 publicly attributed wallets",
+      "evidence_class": "ONCHAIN_WALLET_LABEL_AGGREGATION_NOT_TRADABLE_FLOAT"
+    },
+    {
+      "from": "Binance",
+      "to": "XRP",
+      "relationship": "2.78B XRP in 153 publicly attributed wallets",
+      "evidence_class": "ONCHAIN_WALLET_LABEL_AGGREGATION_NOT_TRADABLE_FLOAT"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "XRP",
+      "relationship": "60M XRP in 2 publicly attributed wallets",
+      "evidence_class": "ONCHAIN_WALLET_LABEL_AGGREGATION_NOT_TRADABLE_FLOAT"
+    },
+    {
+      "from": "Evernorth",
+      "to": "XRP",
+      "relationship": "473.28M company-reported holdings",
+      "evidence_class": "SEC_FILING_REPORTED"
+    },
+    {
+      "from": "XRPL RWA registry tokens",
+      "to": "XRP Ledger",
+      "relationship": "$276M distributed and $4.06B represented registry notional",
+      "evidence_class": "MIXED_ONCHAIN_AND_ISSUER_REPORTED"
+    }
+  ],
+  "limitations": [
+    "Wallet attribution does not identify beneficial owner or available inventory.",
+    "Exchange balances include custody and some backing reserves; not all are liquid or for sale.",
+    "RWA represented notional is not transferable float."
+  ]
+}
