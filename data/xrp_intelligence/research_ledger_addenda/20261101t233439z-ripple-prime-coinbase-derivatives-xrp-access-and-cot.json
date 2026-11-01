@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "artifact_type": "ripple_prime_coinbase_derivatives_xrp_access_and_cot_snapshot",
+  "captured_at_utc": "2026-11-01T23:34:39.007Z",
+  "executive_finding": "A direct institutional access relationship links Ripple Prime clients to Coinbase Derivatives' XRP futures through Nodal Clear. This expands regulated XRP hedging/trading access and connects Ripple Prime, Coinbase Derivatives and Nodal Clear. It is not evidence of spot XRP purchases or physical delivery.",
+  "confirmed_relationships": [
+    {
+      "from": "Ripple Prime",
+      "to": "Coinbase Derivatives",
+      "relationship": "Ripple Prime clients have access to the full suite of Coinbase Derivatives contracts, including institutional and nano XRP contracts",
+      "date": "2026-03-05",
+      "status": "JOINT_COMPANY_ANNOUNCEMENT",
+      "source": "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf",
+      "limits": [
+        "Announcement confirms product access, not client volume, open positions or XRP inventory."
+      ]
+    },
+    {
+      "from": "Ripple Prime",
+      "to": "Nodal Clear",
+      "relationship": "Ripple is a new clearing member of Nodal Clear",
+      "date": "2026-03-05",
+      "status": "JOINT_COMPANY_ANNOUNCEMENT",
+      "source": "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf"
+    },
+    {
+      "from": "Coinbase Derivatives",
+      "to": "Nodal Clear",
+      "relationship": "Coinbase Derivatives contracts are cleared by Nodal Clear; Nodal Clear is a CFTC-registered DCO",
+      "status": "REGULATOR_AND_COMPANY_DISCLOSURE",
+      "sources": [
+        "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizations/43304",
+        "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf"
+      ]
+    },
+    {
+      "from": "Coinbase Derivatives",
+      "to": "XRP",
+      "relationship": "CFTC-designated DCM with standard, nano and nano perpetual-style XRP futures",
+      "status": "REGULATOR_FILING",
+      "sources": [
+        "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizations/43304",
+        "https://www.cftc.gov/sites/default/files/filings/ptc/25/04/ptc04032518916.pdf",
+        "https://www.cftc.gov/sites/default/files/filings/ptc/ptc07312527702.pdf"
+      ]
+    }
+  ],
+  "product_facts": [
+    {
+      "id": "STANDARD_XRP_FUTURES",
+      "contract_size_xrp": 10000,
+      "settlement": "USD cash-settled",
+      "source": "https://www.cftc.gov/sites/default/files/filings/ptc/25/04/ptc04032518916.pdf"
+    },
+    {
+      "id": "NANO_XRP_FUTURES",
+      "contract_size_xrp": 500,
+      "settlement": "USD cash-settled",
+      "source": "https://www.cftc.gov/sites/default/files/filings/ptc/ptc07312527702.pdf"
+    },
+    {
+      "id": "RIPPLE_PRIME_ACCESS",
+      "finding": "Ripple Prime clients can access the full Coinbase Derivatives suite, including institutional and nano XRP futures; the announcement states 24/7 CFTC-regulated access.",
+      "source": "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf"
+    }
+  ],
+  "cftc_cot_snapshot": {
+    "as_of": "2026-10-06",
+    "report": "CFTC Traders in Financial Futures, Futures Only",
+    "source": "https://www.cftc.gov/sites/default/files/files/dea/cotarchives/2026/futures/financial_lf100626.htm",
+    "contracts": [
+      {
+        "contract": "XRP - Coinbase Derivatives, LLC",
+        "cftc_code": "176LM2",
+        "open_interest_contracts": 24483,
+        "contract_size_xrp": 10000,
+        "xrp_equivalent": 244830000,
+        "total_traders": 21
+      },
+      {
+        "contract": "NANO XRP - Coinbase Derivatives, LLC",
+        "cftc_code": "176LM1",
+        "open_interest_contracts": 59287,
+        "contract_size_xrp": 500,
+        "xrp_equivalent": 29643500,
+        "total_traders": 40
+      },
+      {
+        "contract": "NANO XRP PERP STYLE - Coinbase Derivatives, LLC",
+        "cftc_code": "176LM3",
+        "open_interest_contracts": 38760,
+        "contract_size_xrp": 500,
+        "xrp_equivalent": 19380000
+      }
+    ],
+    "combined_contract_notional_xrp_equivalent": 293853500,
+    "interpretation": "Open-interest contract notional equivalent, counted once by open-interest convention. Not XRP held in custody, not spot demand, not net directional exposure, and not attributable to Ripple Prime clients.",
+    "freshness_limit": "Three weeks old at the 2026-11-01 research cutoff. A newer directly accessible Coinbase COT report was not verified during this run."
+  },
+  "causal_hypotheses": [
+    {
+      "id": "H1_INSTITUTIONAL_HEDGE_ACCESS",
+      "hypothesis": "Ripple Prime distribution of Coinbase XRP futures may improve institutional hedging access, basis trading and venue connectivity.",
+      "support": [
+        "Joint Ripple/Nodal announcement",
+        "Coinbase Derivatives is a CFTC-designated DCM",
+        "XRP contracts are listed"
+      ],
+      "disconfirming": [
+        "No Ripple Prime customer volume or position data",
+        "Cash settlement does not require delivery of XRP"
+      ]
+    },
+    {
+      "id": "H2_MARKET_INTEGRATION",
+      "hypothesis": "The Ripple Prime–Nodal–Coinbase link may improve cross-venue price discovery and basis convergence as institutions arbitrage futures against spot and other derivatives.",
+      "support": [
+        "Clearing access and 24/7 contract availability"
+      ],
+      "disconfirming": [
+        "No time-aligned basis, spread, depth or execution data in this artifact"
+      ]
+    },
+    {
+      "id": "H3_LEVERAGE_AND_VOLATILITY",
+      "hypothesis": "Expanded regulated derivatives access can increase both hedging capacity and leverage/short exposure, potentially amplifying volatility during margin stress.",
+      "support": [
+        "CFTC COT shows material open interest across standard and nano XRP contracts"
+      ],
+      "disconfirming": [
+        "COT is stale and does not identify beneficial owners or Ripple Prime client positions"
+      ]
+    }
+  ],
+  "non_equivalences": [
+    "Futures open interest is not spot XRP demand.",
+    "Cash-settled XRP futures do not require physical XRP delivery.",
+    "Ripple Prime client access does not establish that any Ripple Prime client opened an XRP position.",
+    "CFTC 26-17's Coinbase Financial Markets–Coinbase Bermuda–Deribit right-of-reuse pathway is separate from Ripple Prime's Nodal Clear access to Coinbase Derivatives.",
+    "The 293,853,500 XRP-equivalent figure is not an amount of XRP held, bought, borrowed or locked."
+  ],
+  "unknowns": [
+    "Ripple Prime client-level XRP futures volume and open interest.",
+    "How much of Coinbase Derivatives XRP open interest is used for hedging versus directional speculation.",
+    "Current daily volume, depth, bid/ask spread and basis across Coinbase Derivatives, CME, offshore venues and spot.",
+    "Whether Ripple Prime's clearing access has changed XRP market share or price discovery since March 5, 2026."
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "next_actions": [
+    "Capture daily Coinbase Derivatives XRP standard/nano volume and open interest with contract multipliers and timestamp.",
+    "Compare Coinbase Derivatives and CME COT with offshore OI on a same-cutoff basis; preserve venue and methodology distinctions.",
+    "Estimate futures basis and spot hedge ratios before attributing derivatives growth to net XRP demand."
+  ]
+}
