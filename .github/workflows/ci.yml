@@ -78,6 +78,7 @@ jobs:
                         tests/test_xrp_coinbase_circle_rlusd_evidence.py \
                         tests/test_xrp_coinbase_global_derivatives_collateral.py \
             tests/test_xrp_coinbase_cftc_collateral_pathways.py \
+            tests/test_xrp_ripple_prime_coinbase_derivatives_access.py \
             tests/test_data_registry.py \
             tests/test_repository_causality.py \
             tests/test_bundle_delivery.py \
