@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "revision_id": "xrp-cftc-digital-commodity-and-bitnomial-products-2026-11-01T200000Z",
+  "captured_at_utc": "2026-11-01T20:00:00Z",
+  "sources": [
+    {
+      "id": "sec-cftc-joint-crypto-interpretation-20260323",
+      "url": "https://www.cftc.gov/LawRegulation/FederalRegister/finalrules/2026-05635.html",
+      "publisher": "SEC and CFTC",
+      "published_at": "2026-03-23",
+      "effective_at": "2026-03-23",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "PRIMARY_JOINT_REGULATORY_INTERPRETATION",
+      "claims": [
+        "The Federal Register release explicitly lists XRP among digital commodities.",
+        "Digital commodities are not themselves securities under the interpretation.",
+        "The release also says a non-security crypto asset may still be offered or sold subject to an investment contract."
+      ],
+      "limitations": [
+        "This is asset-level taxonomy and interpretive guidance, not a universal collateral acceptance order.",
+        "The release says its interpretation does not supersede Howey precedent and may be refined based on comments."
+      ]
+    },
+    {
+      "id": "sec-press-release-2026-30-20260317",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets",
+      "publisher": "SEC",
+      "published_at": "2026-03-17",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "PRIMARY_REGULATORY_ANNOUNCEMENT",
+      "claims": [
+        "SEC issued the interpretation and CFTC joined to administer the Commodity Exchange Act consistently with it."
+      ],
+      "limitations": [
+        "Press release summarizes the interpretation; Federal Register text controls detail."
+      ]
+    },
+    {
+      "id": "cftc-bitnomial-xrp-spot-futures-certification-20260421",
+      "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60549",
+      "publisher": "CFTC",
+      "published_at": "2026-04-21",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "PRIMARY_DCM_PRODUCT_FILING",
+      "claims": [
+        "Organization BTNL; product XRP US Dollar Spot Contract; type Future; status Certified; date 2026-04-21."
+      ],
+      "limitations": [
+        "Product certification is not proof of trading volume or collateral use."
+      ]
+    },
+    {
+      "id": "cftc-bitnomial-xrp-hecto-perpetual-certification-20260514",
+      "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60786",
+      "publisher": "CFTC",
+      "published_at": "2026-05-14",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "PRIMARY_DCM_PRODUCT_FILING",
+      "claims": [
+        "Organization BTNL; product XRP US Dollar Hecto Perpetual Futures; type Future; status Certified; date 2026-05-14."
+      ],
+      "limitations": [
+        "Product certification is not proof of open interest, trading volume or collateral use."
+      ]
+    },
+    {
+      "id": "sec-ripple-final-judgment-appeal-dismissal-20250807",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369",
+      "publisher": "SEC",
+      "published_at": "2025-08-07",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "PRIMARY_ENFORCEMENT_STATUS",
+      "claims": [
+        "The appeals were dismissed; the final judgment, $125,035,150 civil penalty and injunction remained in effect."
+      ],
+      "limitations": [
+        "The release addresses Ripple's conduct and final judgment; it does not classify all secondary-market transactions or collateral arrangements."
+      ]
+    },
+    {
+      "id": "cftc-letter-26-05-20260206",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "publisher": "CFTC Market Participants Division",
+      "published_at": "2026-02-06",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "PRIMARY_REGULATORY_NO_ACTION_LETTER",
+      "claims": [
+        "Letter 26-05 responds to Coinbase Financial Markets' request and provides conditional no-action relief for FCMs.",
+        "FCMs may consider qualifying non-security digital assets accepted by a registered DCO, subject to notice, DCO valuation and haircuts.",
+        "The first three months of each FCM's reliance are limited to payment stablecoins, BTC and ETH."
+      ],
+      "limitations": [
+        "No Coinbase notice of reliance or actual XRP collateral balance was located.",
+        "No-action relief is not a formal rule or universal asset approval."
+      ]
+    },
+    {
+      "id": "bitnomial-current-accepted-collateral-schedule-20261002",
+      "url": "https://bitnomial.com/clearinghouse/",
+      "publisher": "Bitnomial Clearinghouse",
+      "observed_at_utc": "2026-10-02",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "PRIMARY_CLEARINGHOUSE_RISK_SCHEDULE",
+      "claims": [
+        "XRP accepted at 40% haircut and $15M notional limit; BTC 15%/$100M; ETH 20%/$45M."
+      ],
+      "limitations": [
+        "Limit scope is unspecified; RLUSD is absent from the current table despite an older announcement."
+      ]
+    },
+    {
+      "id": "bitnomial-xrp-rlusd-collateral-announcement-20251103",
+      "url": "https://bitnomial.com/news/2025-11-03/",
+      "publisher": "Bitnomial",
+      "published_at": "2025-11-03",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "Bitnomial announced XRP and RLUSD margin deposits for institutional clients trading leveraged perpetuals, futures and options, subject to applicable regulatory approvals."
+      ],
+      "limitations": [
+        "Historical announcement; current RLUSD schedule and actual posted balances remain unknown."
+      ]
+    },
+    {
+      "id": "payward-bitnomial-acquisition-completed-20260501",
+      "url": "https://www.payward.com/press-release/payward-completes-acquisition-of-bitnomial-the-first-fully-cftc-licensed-crypto-native-derivatives-stack-in-the-us",
+      "publisher": "Payward",
+      "published_at": "2026-05-01",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "PRIMARY_ACQUISITION_ANNOUNCEMENT",
+      "claims": [
+        "Payward completed acquisition of Bitnomial and owns the FCM, DCM and DCO stack; third-party clearing continues."
+      ],
+      "limitations": [
+        "Ownership does not prove XRP collateral utilization or market share."
+      ]
+    },
+    {
+      "id": "kamilah-video-xrp-collateral-M8TmDXO7B-0",
+      "url": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "publisher": "Kamilah Stevenson",
+      "published_at": "2025-12-06",
+      "accessed_at_utc": "2026-11-01T20:00:00Z",
+      "classification": "CREATOR_CLAIM_SOURCE",
+      "claims": [
+        "Video title claims XRP was approved as collateral for federally regulated derivatives and compares it with gold, Treasuries and major FX."
+      ],
+      "limitations": [
+        "Full transcript unavailable; video title is not a legal source."
+      ]
+    }
+  ]
+}

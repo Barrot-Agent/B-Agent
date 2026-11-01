@@ -284,12 +284,16 @@
       ],
       "fact_check_summary": {
         "limited_venue_claim": "CORROBORATED: Bitnomial Clearinghouse's current accepted-collateral schedule lists XRP with a 40% haircut and $15M notional limit.",
-        "universal_cftc_approval": "NOT_SUPPORTED: CFTC Letter 26-05 is a conditional no-action position, not a CFTC-wide XRP approval.",
-        "same_risk_class_claim": "NOT_SUPPORTED_BY_REVIEWED_SCHEDULE: XRP has a higher haircut and lower limit than BTC and ETH; gold, Treasuries and major FX are not listed in this Bitnomial schedule.",
+        "federal_asset_classification": "CONFIRMED: the March 23, 2026 SEC/CFTC joint interpretation explicitly lists XRP as a digital commodity; digital commodities are not themselves securities under that interpretation.",
+        "transaction_level_caveat": "A non-security crypto asset can still be offered or sold subject to an investment contract; the 2025 SEC final judgment and injunction against Ripple remained in effect after the appeals were dismissed.",
+        "cftc_margin_framework": "CFTC Letter 26-05 is conditional no-action relief for FCMs. It requires FCM notice and DCO acceptance/haircuts; the first three months of each FCM's reliance are restricted to payment stablecoins, BTC and ETH.",
+        "derivatives_products": "CFTC product filings list Bitnomial XRP USD Spot Contract as certified on 2026-04-21 and XRP USD Hecto Perpetual Futures as certified on 2026-05-14.",
+        "universal_cftc_approval": "NOT_ESTABLISHED: asset classification and product certification do not create a universal right for every FCM, DCO or derivatives venue to accept XRP collateral.",
+        "same_risk_class_claim": "NOT_SUPPORTED_BY_REVIEWED_SCHEDULE: XRP has a 40% haircut and $15M limit, versus BTC 15%/$100M and ETH 20%/$45M; gold, Treasuries and major FX are not listed in this schedule.",
         "rlusd_current_status": "UNRESOLVED: November 2025 Bitnomial announcement says RLUSD and XRP margin deposits were available subject to approvals, but the current October 2, 2026 accepted-collateral schedule omits RLUSD.",
         "actual_posted_collateral": "UNKNOWN: no customer-level posted XRP collateral balance or usage volume was disclosed."
       },
-      "claim_status": "TITLE_AND_DATE_INDEXED; LIMITED_VENUE_CLAIM_CORROBORATED; UNIVERSAL_CFTC_CLAIM_OVERSTATED; FULL_TRANSCRIPT_NOT_RETRIEVED",
+      "claim_status": "VIDEO_INDEXED; LIMITED_VENUE_CLAIM_CORROBORATED; XRP_DIGITAL_COMMODITY_CLASSIFICATION_CONFIRMED; UNIVERSAL_APPROVAL_AND_EQUAL_RISK_NOT_ESTABLISHED; FULL_TRANSCRIPT_NOT_RETRIEVED",
       "corroboration_priority": "HIGH"
     }
   ],
@@ -337,9 +341,14 @@
       "https://bitnomial.com/clearinghouse/",
       "https://www.cftc.gov/csl/26-05/download",
       "https://www.cftc.gov/PressRoom/PressReleases/9200-26",
-      "https://www.payward.com/press-release/payward-completes-acquisition-of-bitnomial-the-first-fully-cftc-licensed-crypto-native-derivatives-stack-in-the-us"
+      "https://www.payward.com/press-release/payward-completes-acquisition-of-bitnomial-the-first-fully-cftc-licensed-crypto-native-derivatives-stack-in-the-us",
+      "https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets",
+      "https://www.cftc.gov/LawRegulation/FederalRegister/finalrules/2026-05635.html",
+      "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60549",
+      "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60786",
+      "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369"
     ],
-    "last_updated_at_utc": "2026-11-01T19:40:00Z"
+    "last_updated_at_utc": "2026-11-01T20:00:00Z"
   },
   "status": "PARTIAL_SOURCE_CATALOG_EXPANDED; USER_CONFIRMED_CREATOR_NAME; FULL_CHANNEL_AND_TRANSCRIPT_INGESTION_NOT_YET_EXECUTED",
   "cross_corroboration_findings": [
@@ -392,13 +401,18 @@
     {
       "video_id": "M8TmDXO7B-0",
       "fact_check_id": "KAMILAH-BITNOMIAL-XRP-COLLATERAL-20261101",
-      "verdict": "LIMITED_VENUE_TRUE; UNIVERSAL_CFTC_APPROVAL_AND_EQUAL_RISK_CLASS_NOT_ESTABLISHED",
+      "verdict": "LIMITED_VENUE_CONFIRMED; XRP_DIGITAL_COMMODITY_CLASSIFICATION_CONFIRMED; UNIVERSAL_CFTC_APPROVAL_AND_EQUAL_RISK_CLASS_NOT_ESTABLISHED",
       "primary_sources": [
         "https://bitnomial.com/news/2025-11-03/",
         "https://bitnomial.com/clearinghouse/",
         "https://www.cftc.gov/csl/26-05/download",
         "https://www.cftc.gov/PressRoom/PressReleases/9200-26",
-        "https://www.payward.com/press-release/payward-completes-acquisition-of-bitnomial-the-first-fully-cftc-licensed-crypto-native-derivatives-stack-in-the-us"
+        "https://www.payward.com/press-release/payward-completes-acquisition-of-bitnomial-the-first-fully-cftc-licensed-crypto-native-derivatives-stack-in-the-us",
+        "https://www.sec.gov/newsroom/press-releases/2026-30-sec-clarifies-application-federal-securities-laws-crypto-assets",
+        "https://www.cftc.gov/LawRegulation/FederalRegister/finalrules/2026-05635.html",
+        "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60549",
+        "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60786",
+        "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369"
       ],
       "details": [
         "Bitnomial announced XRP and RLUSD margin collateral for institutional clients on November 3, 2025, subject to applicable regulatory approvals.",
@@ -406,9 +420,14 @@
         "CFTC Letter 26-05 was reissued February 6, 2026 in response to Coinbase Financial Markets' December 8, 2025 request. It is a conditional staff no-action position, not a universal asset approval.",
         "FCMs must file a notice and date of reliance. For each FCM's first three months, only payment stablecoins, BTC and ETH may be accepted; after that, other non-security digital assets accepted by a registered DCO may be considered under the DCO's valuation and haircut.",
         "Payward completed its acquisition of Bitnomial on May 1, 2026 and now owns the FCM/DCM/DCO stack; Bitnomial says third-party clearing operations and licenses continue.",
-        "The current accepted-collateral schedule omits RLUSD despite the older announcement; current RLUSD acceptance is unconfirmed."
+        "The current accepted-collateral schedule omits RLUSD despite the older announcement; current RLUSD acceptance is unconfirmed.",
+        "The March 23, 2026 SEC/CFTC joint interpretation explicitly lists XRP as a digital commodity. It says digital commodities are not themselves securities, while also explaining that a non-security crypto asset can still be offered or sold subject to an investment contract.",
+        "CFTC product filings show Bitnomial's XRP US Dollar Spot Contract certified April 21, 2026 and XRP US Dollar Hecto Perpetual Futures certified May 14, 2026.",
+        "The August 7, 2025 SEC litigation release says the final judgment, $125,035,150 civil penalty and injunction remained in effect after the appeals were dismissed; the later digital-commodity interpretation does not erase that judgment.",
+        "The video's December 6, 2025 date precedes the December 8, 2025 CFTC pilot announcement and the later 2026 joint interpretation; the likely immediate reference is Bitnomial's November 3, 2025 announcement, but the video's transcript was not retrieved."
       ],
-      "transcript_status": "NOT_RETRIEVED"
+      "transcript_status": "NOT_RETRIEVED",
+      "fact_check_revision": "20261101T200000Z"
     }
   ]
 }

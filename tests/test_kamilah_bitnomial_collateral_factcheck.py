@@ -60,5 +60,47 @@ def test_cftc_no_action_path_does_not_prove_coinbase_uses_xrp():
 def test_kamilah_video_factcheck_preserves_transcript_and_scope_limits():
     profile = load_json("data/xrp_intelligence/sources/kamilah_stevenson_channel.json")
     fact = next(item for item in profile["video_fact_checks"] if item["video_id"] == "M8TmDXO7B-0")
-    assert fact["verdict"] == "LIMITED_VENUE_TRUE; UNIVERSAL_CFTC_APPROVAL_AND_EQUAL_RISK_CLASS_NOT_ESTABLISHED"
+    assert fact["verdict"] == "LIMITED_VENUE_CONFIRMED; XRP_DIGITAL_COMMODITY_CLASSIFICATION_CONFIRMED; UNIVERSAL_CFTC_APPROVAL_AND_EQUAL_RISK_CLASS_NOT_ESTABLISHED"
     assert fact["transcript_status"] == "NOT_RETRIEVED"
+
+
+def test_joint_sec_cftc_interpretation_lists_xrp_as_digital_commodity():
+    snapshot = load_json(
+        "data/xrp_intelligence/snapshots/20261101T200000Z-xrp-collateral-cftc-classification-and-products.json"
+    )
+    classification = snapshot["regulatory_asset_classification"]
+    assert "XRP" in classification["named_digital_commodities"]
+    assert classification["effective_date"] == "2026-03-23"
+    assert "investment contract" in classification["transaction_level_caveat"].lower()
+
+
+def test_bitnomial_xrp_products_are_cftc_certified_separately_from_collateral():
+    snapshot = load_json(
+        "data/xrp_intelligence/snapshots/20261101T200000Z-xrp-collateral-cftc-classification-and-products.json"
+    )
+    products = snapshot["cftc_product_certifications"]
+    assert any(p["product_name"] == "XRP US Dollar Spot Contract" and p["status"] == "Certified" for p in products)
+    assert any(p["product_name"] == "XRP US Dollar Hecto Perpetual Futures" and p["status"] == "Certified" for p in products)
+    assert all(p["classification"] == "DERIVATIVES_PRODUCT_CERTIFICATION_NOT_COLLATERAL_APPROVAL" for p in products)
+
+
+def test_sec_ripple_final_judgment_is_not_erased_by_digital_commodity_interpretation():
+    snapshot = load_json(
+        "data/xrp_intelligence/snapshots/20261101T200000Z-xrp-collateral-cftc-classification-and-products.json"
+    )
+    judgment = snapshot["historical_sec_ripple_judgment"]
+    assert judgment["final_judgment_remains_in_effect"] is True
+    assert judgment["civil_penalty_usd"] == 125_035_150
+    assert judgment["injunction_remains_in_effect"] is True
+
+
+def test_kamilah_video_chronology_is_not_rewritten_by_later_regulatory_guidance():
+    snapshot = load_json(
+        "data/xrp_intelligence/snapshots/20261101T200000Z-xrp-collateral-cftc-classification-and-products.json"
+    )
+    chronology = snapshot["video_claim_chronology"]
+    assert chronology["video_published_at"] == "2025-12-06"
+    assert chronology["bitnomial_announcement_at"] == "2025-11-03"
+    assert chronology["cftc_letter_26_05_at"] == "2026-02-06"
+    assert chronology["joint_interpretation_effective_at"] == "2026-03-23"
+

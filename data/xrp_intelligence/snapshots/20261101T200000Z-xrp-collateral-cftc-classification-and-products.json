@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrp-collateral-cftc-classification-and-products-2026-11-01T200000Z",
+  "captured_at_utc": "2026-11-01T20:00:00Z",
+  "data_cutoff_utc": "2026-11-01T20:00:00Z",
+  "video_claim_chronology": {
+    "video_published_at": "2025-12-06",
+    "bitnomial_announcement_at": "2025-11-03",
+    "cftc_pilot_announcement_at": "2025-12-08",
+    "cftc_letter_26_05_at": "2026-02-06",
+    "joint_interpretation_issued_at": "2026-03-17",
+    "joint_interpretation_effective_at": "2026-03-23",
+    "bitnomial_xrp_spot_contract_certified_at": "2026-04-21",
+    "bitnomial_xrp_hecto_perpetual_certified_at": "2026-05-14",
+    "payward_bitnomial_acquisition_at": "2026-05-01",
+    "interpretation": "The video predates the CFTC pilot and all 2026 regulatory guidance. Its likely immediate reference is Bitnomial's November 3, 2025 announcement, but the transcript was not retrieved and the exact source is unproven."
+  },
+  "regulatory_asset_classification": {
+    "authority": "SEC/CFTC joint interpretation published in Federal Register 2026-05635",
+    "effective_date": "2026-03-23",
+    "named_digital_commodities": [
+      "APT",
+      "AVAX",
+      "BTC",
+      "BCH",
+      "ADA",
+      "LINK",
+      "DOGE",
+      "ETH",
+      "HBAR",
+      "LTC",
+      "DOT",
+      "SHIB",
+      "SOL",
+      "XLM",
+      "XTZ",
+      "XRP"
+    ],
+    "xrp_classification": "DIGITAL_COMMODITY",
+    "asset_level_effect": "Digital commodities are not themselves securities under the interpretation.",
+    "transaction_level_caveat": "A non-security crypto asset can still be offered or sold subject to an investment contract; transaction structure and Howey analysis remain relevant.",
+    "interpretation_scope": "SEC interpretation with CFTC guidance; not a universal collateral approval or exemption from all securities laws."
+  },
+  "historical_sec_ripple_judgment": {
+    "source_id": "sec-ripple-final-judgment-appeal-dismissal-20250807",
+    "final_judgment_remains_in_effect": true,
+    "civil_penalty_usd": 125035150,
+    "injunction_remains_in_effect": true,
+    "effect_of_2026_joint_interpretation": "The 2026 asset taxonomy does not itself vacate or modify the 2024 final judgment or its injunction."
+  },
+  "cftc_product_certifications": [
+    {
+      "organization": "BTNL",
+      "product_name": "XRP US Dollar Spot Contract",
+      "product_type": "Future",
+      "status": "Certified",
+      "certification_date": "2026-04-21",
+      "source_id": "cftc-bitnomial-xrp-spot-futures-certification-20260421",
+      "classification": "DERIVATIVES_PRODUCT_CERTIFICATION_NOT_COLLATERAL_APPROVAL"
+    },
+    {
+      "organization": "BTNL",
+      "product_name": "XRP US Dollar Hecto Perpetual Futures",
+      "product_type": "Future",
+      "status": "Certified",
+      "certification_date": "2026-05-14",
+      "source_id": "cftc-bitnomial-xrp-hecto-perpetual-certification-20260514",
+      "classification": "DERIVATIVES_PRODUCT_CERTIFICATION_NOT_COLLATERAL_APPROVAL"
+    }
+  ],
+  "collateral": {
+    "venue": "Bitnomial Clearinghouse",
+    "entity_type": "CFTC-registered DCO",
+    "schedule_observation_date": "2026-10-02",
+    "accepted_assets": [
+      {
+        "asset": "BTC",
+        "haircut_pct": 15,
+        "notional_limit_usd": 100000000
+      },
+      {
+        "asset": "ETH",
+        "haircut_pct": 20,
+        "notional_limit_usd": 45000000
+      },
+      {
+        "asset": "XRP",
+        "haircut_pct": 40,
+        "notional_limit_usd": 15000000
+      }
+    ],
+    "rlusd_current_schedule_status": "NOT_LISTED; CURRENT_ACCEPTANCE_UNCONFIRMED",
+    "limit_scope": "UNKNOWN_PER_CUSTOMER_VS_MEMBER_VS_AGGREGATE",
+    "actual_posted_xrp_collateral_usd": "UNKNOWN",
+    "interpretation": [
+      "XRP collateral eligibility is confirmed at one specific DCO.",
+      "The 40% haircut and $15M limit indicate materially more restrictive risk treatment than BTC and ETH.",
+      "The schedule does not list gold, U.S. Treasuries or major FX; equal risk treatment is not established."
+    ]
+  },
+  "cftc_margin_framework": {
+    "letter": "26-05",
+    "legal_character": "CONDITIONAL_STAFF_NO_ACTION_POSITION_NOT_A_FORMAL_RULE",
+    "requester": "Coinbase Financial Markets, Inc.",
+    "notice_required": true,
+    "initial_three_month_scope": [
+      "payment stablecoins",
+      "BTC",
+      "ETH"
+    ],
+    "after_initial_period": "Other qualifying non-security digital assets accepted by a registered DCO may be considered subject to continuing conditions and DCO valuation/haircuts.",
+    "xrp_path": "XRP is named a digital commodity by the joint interpretation and is accepted by Bitnomial's DCO schedule; an FCM still needs its own notice/reliance, qualifying treatment, DCO relationship and compliance with the letter.",
+    "coinbase_actual_use": "NOT_ESTABLISHED; no Coinbase notice of reliance, XRP collateral balance or Bitnomial clearing relationship verified."
+  },
+  "ownership_and_strategy": {
+    "acquirer": "Payward (Kraken parent)",
+    "acquired": "Bitnomial",
+    "acquisition_completed": "2026-05-01",
+    "acquired_stack": [
+      "FCM",
+      "DCM",
+      "DCO"
+    ],
+    "third_party_clearing": "Payward says Bitnomial's licenses, regulatory structure and third-party clearing operations continue.",
+    "strategic_inference": "Payward controls a US crypto-native derivatives stack with an XRP-accepting DCO and CFTC-certified XRP futures products; actual XRP collateral utilization remains unknown."
+  },
+  "ripple_and_stablecoins": {
+    "ripple_bitnomial_announcement": "2025-11-03",
+    "announcement_claim": "XRP and RLUSD margin deposits were announced for institutional clients subject to applicable regulatory approvals.",
+    "rlusd_current_status": "Current accepted-collateral schedule omits RLUSD; current eligibility is unresolved.",
+    "circle_usdc": "USDC is a payment-stablecoin candidate under the CFTC framework subject to issuer qualification; no Circle-specific FCM collateral use was established."
+  },
+  "video_claim_verdict": "LIMITED_VENUE_CONFIRMED; XRP_DIGITAL_COMMODITY_CLASSIFICATION_CONFIRMED; UNIVERSAL_CFTC_APPROVAL_AND_EQUAL_RISK_CLASS_NOT_ESTABLISHED",
+  "unknowns": [
+    "Actual XRP collateral posted by customers at Bitnomial.",
+    "Whether the $15M limit is per customer, clearing member or aggregate.",
+    "Whether RLUSD remains accepted despite omission from the current schedule.",
+    "Whether Coinbase Financial Markets filed a notice of reliance or accepts XRP collateral.",
+    "Whether any Coinbase customer XRP collateral is cleared through Bitnomial.",
+    "Full Kamilah video transcript and exact source used for the December 6, 2025 claim."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}

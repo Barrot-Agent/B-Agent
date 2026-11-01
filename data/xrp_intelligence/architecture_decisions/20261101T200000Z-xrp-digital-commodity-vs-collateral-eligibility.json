@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "decision_id": "xrp-digital-commodity-vs-collateral-eligibility-separation-20261101T2000Z",
+  "captured_at_utc": "2026-11-01T20:00:00Z",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Keep asset classification, derivatives-product certification, DCO collateral eligibility, FCM no-action reliance and actual collateral posting as five separate fields.",
+      "reason": [
+        "SEC/CFTC joint interpretation names XRP as a digital commodity.",
+        "CFTC product filings certify Bitnomial XRP futures.",
+        "Bitnomial schedule accepts XRP collateral.",
+        "CFTC Letter 26-05 is conditional FCM relief.",
+        "Actual posted collateral is undisclosed."
+      ]
+    },
+    {
+      "id": "D2",
+      "decision": "Preserve transaction-level securities analysis even when XRP is classified as a digital commodity.",
+      "reason": [
+        "The joint interpretation says a non-security crypto asset may still be offered or sold subject to an investment contract.",
+        "The 2025 SEC final judgment and injunction remain in effect."
+      ]
+    },
+    {
+      "id": "D3",
+      "decision": "Do not call XRP collateral eligibility universal; model the DCO schedule and FCM notice individually.",
+      "reason": [
+        "Letter 26-05 is conditional no-action relief; FCMs must file notice and apply DCO haircuts."
+      ]
+    },
+    {
+      "id": "D4",
+      "decision": "Do not infer actual collateral balances or spot purchases from product certification or an accepted-collateral schedule.",
+      "reason": [
+        "No customer-level XRP collateral balance or actual utilization is disclosed."
+      ]
+    },
+    {
+      "id": "D5",
+      "decision": "Keep RLUSD collateral status unresolved until a current schedule includes it or Bitnomial confirms it.",
+      "reason": [
+        "The historical announcement includes RLUSD, but the current schedule omits it."
+      ]
+    },
+    {
+      "id": "D6",
+      "decision": "Fact-check creator video titles against primary legal and clearinghouse sources; preserve the creator's wording and later regulatory chronology separately.",
+      "reason": [
+        "The Kamilah video predates the later CFTC and SEC/CFTC developments."
+      ]
+    }
+  ],
+  "forecast_policy": "NOT_ISSUED; no collateral-eligibility feature admitted as a price predictor without actual usage and point-in-time market linkage."
+}
