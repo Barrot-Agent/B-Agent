@@ -45,17 +45,17 @@ def test_cognitive_relay_artifact_reports_unverified_adapters_truthfully():
     ]
 
 
-def test_disabled_privileged_workflows_keep_safe_status_jobs_for_push_check_events():
+def test_disabled_privileged_workflows_retain_safe_manual_status_jobs():
     expectations = {
-        "task-allocator.yml": ("TASK_ALLOCATION_NOT_PERFORMED", ".github/workflows/task-allocator.yml"),
-        "force-deploy-space.yml": ("DEPLOYMENT_NOT_PERFORMED", ".github/workflows/force-deploy-space.yml"),
+        "task-allocator.yml": "TASK_ALLOCATION_NOT_PERFORMED",
+        "force-deploy-space.yml": "DEPLOYMENT_NOT_PERFORMED",
     }
-    for filename, (marker, path_filter) in expectations.items():
+    for filename, marker in expectations.items():
         workflow = (WORKFLOWS / filename).read_text(encoding="utf-8")
         trigger_block = workflow.split("permissions:", 1)[0]
         assert "workflow_dispatch:" in trigger_block
-        assert "push:" in trigger_block
-        assert path_filter in trigger_block
+        assert "schedule:" not in trigger_block
+        assert "push:" not in trigger_block
         assert "permissions: {}" in workflow
         assert "jobs:" in workflow
         assert "runs-on: ubuntu-latest" in workflow
