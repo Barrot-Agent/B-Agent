@@ -16,7 +16,7 @@ def test_same_indexer_reports_rlusd_supply_materially_above_usdc():
     assert tokens["rlusd"]["supply"] == 712_520_000
     assert tokens["comparisons"]["rlusd_to_usdc_xrpl_supply_multiple"] == 118.36
     assert tokens["comparisons"]["usdc_xrpl_share_of_circle_global_circulation_pct"] == 0.0086
-    assert "same-indexer" in tokens["comparisons"]["caveat"]
+    assert "same-indexer" in tokens["comparisons"]["caveat"].lower()
 
 
 def test_permissionless_stablecoin_and_xrp_amm_pools_are_not_corporate_partnerships():
