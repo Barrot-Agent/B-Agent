@@ -262,7 +262,7 @@ footer strong{color:var(--text)}
   mcp.registerTool({
     name: "getSignalAccuracy",
     title: "Signal Accuracy Record",
-    description: "Get the tracked accuracy record: how often past XRP signals were directionally correct against real price movement.",
+    description: "Get the current XRP signal-evaluation status and any comparable forecast-skill record; legacy metrics may be marked NOT_COMPARABLE.",
     inputSchema: { type: "object", properties: {
         license_key: { type: "string", description: "Gumroad license key for XRP Signal Service" },} },
     annotations: { readOnlyHint: true },

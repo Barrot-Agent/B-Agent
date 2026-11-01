@@ -82,16 +82,22 @@ def main():
             flagged = abs(shift) >= SHIFT_THRESHOLD
 
         results[asset] = {
+            "status": "EVALUATED" if shift is not None else "INSUFFICIENT_DATA",
+            "reason": None if shift is not None else (
+                "At least one 24-hour window has no eligible distilled entries with valid timestamps and positive relevance."
+            ),
             "recent_24h_score": recent_score,
             "recent_24h_entries": recent_n,
             "prior_24h_score": prior_score,
             "prior_24h_entries": prior_n,
             "shift": shift,
-            "significant_shift": flagged,
+            "significant_shift": flagged if shift is not None else None,
         }
 
     out = {
         "generated_at": now.isoformat(),
+        "data_cutoff_utc": now.isoformat(),
+        "window_seconds": 86400,
         "shift_threshold": SHIFT_THRESHOLD,
         "assets": results,
     }

@@ -5,39 +5,34 @@ on:
     paths:
       - 'hover_bike_revolution/**'
   schedule:
-    - cron: '0 6 * * 1'   # every Monday at 06:00 UTC
+    - cron: '0 6 * * 1'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   generate-artefacts:
     name: Generate design artefacts
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
-
+        with:
+          persist-credentials: false
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
           python-version: '3.11'
-
       - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-
+        run: python -m pip install --upgrade pip
       - name: Generate hover bike design artefacts
         working-directory: hover_bike_revolution
         run: |
           python src/hover_bike_generator.py
           python src/magnetic_system_designer.py > /tmp/magnetic_report.json
-          python src/propulsion_simulator.py    > /tmp/propulsion_report.json
+          python src/propulsion_simulator.py > /tmp/propulsion_report.json
           python src/power_management_system.py > /tmp/power_report.json
-          echo "✅ Design artefacts generated"
-
       - name: Run simulations
         working-directory: hover_bike_revolution
         run: |
@@ -45,21 +40,14 @@ jobs:
           python simulations/power_consumption_sim.py
           python simulations/stability_analysis.py
           python simulations/flight_dynamics_sim.py
-          echo "✅ Simulations complete"
-
       - name: Generate documentation
         working-directory: hover_bike_revolution
-        run: |
-          python src/assembly_guide_generator.py
-          echo "✅ Documentation generated"
-
+        run: python src/assembly_guide_generator.py
       - name: Estimate print cost
         working-directory: hover_bike_revolution
         run: |
           python tools/cost_calculator.py
           python tools/print_estimator.py
-          echo "✅ Cost estimates generated"
-
       - name: Upload artefacts
         uses: actions/upload-artifact@v7
         with:

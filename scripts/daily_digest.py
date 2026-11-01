@@ -36,6 +36,15 @@ def _count_recent_kb(hours=24):
             continue
     return count
 
+def _format_accuracy(accuracy):
+    if accuracy.get("status") == "NOT_EVALUATED" or accuracy.get("metric_status") == "NOT_COMPARABLE":
+        return "**Signal accuracy:** NOT EVALUATED — the legacy metric is not comparable; fixed-horizon out-of-sample evaluation is not yet implemented."
+    checked = accuracy.get("checked_count", 0)
+    if checked and accuracy.get("accuracy_pct") is not None:
+        return f"**Signal accuracy:** {accuracy.get('accuracy_pct')}% correct over {checked} checked signals"
+    return "**Signal accuracy:** no comparable fixed-horizon evaluation is available."
+
+
 def main():
     signal = _read_json("web/latest_signal.json")
     accuracy = _read_json("web/signal_accuracy.json")
@@ -45,11 +54,7 @@ def main():
     else:
         lines.append("**Latest signal:** none yet")
     lines.append("")
-    checked = accuracy.get("checked_count", 0)
-    if checked:
-        lines.append(f"**Signal accuracy:** {accuracy.get('accuracy_pct')}% correct over {checked} checked signals")
-    else:
-        lines.append("**Signal accuracy:** no signals have crossed the 24h check window yet")
+    lines.append(_format_accuracy(accuracy))
     lines.append("")
     lines.append(f"**New knowledge base entries (24h):** {_count_recent_kb()}")
     lines.append(f"**New content drafts (24h):** {_count_recent_content()}")
