@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "source_bundle_id": "kamilah-bitnomial-collateral-video-20261101",
+  "creator": "Kamilah Stevenson",
+  "video_id": "M8TmDXO7B-0",
+  "video_url": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+  "user_identity_confirmation": "The user confirmed in prior conversation that Kamilah Stevenson is the intended creator and the target channel is XRP-focused.",
+  "transcript_status": "NOT_RETRIEVED",
+  "claim_extraction": {
+    "title_claim": "XRP was just approved as acceptable collateral for federally regulated derivatives.",
+    "comparison_claim": "Same class as gold, U.S. Treasuries and major FX pairs.",
+    "fact_check": "Bitnomial Clearinghouse specifically lists XRP as accepted collateral; the CFTC framework is conditional and not a universal approval. The current schedule's 40% haircut/$15M limit does not support equal risk treatment with gold, Treasuries or major FX."
+  },
+  "primary_evidence": [
+    {
+      "source_id": "bitnomial-xrp-rlusd-collateral-announcement-20251103",
+      "url": "https://bitnomial.com/news/2025-11-03/",
+      "role": "historical venue announcement"
+    },
+    {
+      "source_id": "bitnomial-current-accepted-collateral-schedule-20261002",
+      "url": "https://bitnomial.com/clearinghouse/",
+      "role": "current accepted-collateral schedule"
+    },
+    {
+      "source_id": "cftc-letter-26-05-20260206",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "role": "conditional regulatory framework"
+    },
+    {
+      "source_id": "payward-bitnomial-acquisition-completed-20260501",
+      "url": "https://www.payward.com/press-release/payward-completes-acquisition-of-bitnomial-the-first-fully-cftc-licensed-crypto-native-derivatives-stack-in-the-us",
+      "role": "current ownership and distribution"
+    }
+  ],
+  "status": "VIDEO_INDEXED; TRANSCRIPT_NOT_RETRIEVED; CLAIM_FACT_CHECKED_WITH_PRIMARY_SOURCES"
+}

@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "revision_id": "bitnomial-xrp-collateral-cftc-coinbase-payward-kamilah-2026-11-01T194000Z",
+  "captured_at_utc": "2026-11-01T19:40:00Z",
+  "sources": [
+    {
+      "id": "kamilah-video-xrp-collateral-M8TmDXO7B-0",
+      "url": "https://www.youtube.com/watch?v=M8TmDXO7B-0",
+      "publisher": "Kamilah Stevenson",
+      "published_at": "2025-12-06",
+      "accessed_at_utc": "2026-11-01T19:40:00Z",
+      "classification": "CREATOR_CLAIM_SOURCE",
+      "claims": [
+        "Title claims XRP was approved as acceptable collateral for federally regulated derivatives and compares its class to gold, U.S. Treasuries and major FX."
+      ],
+      "limitations": [
+        "Full transcript and canonical YouTube metadata were unavailable in this run; title/date are from public YouTube-indexed result.",
+        "Creator statement is a claim, not a legal or clearinghouse source."
+      ]
+    },
+    {
+      "id": "bitnomial-xrp-rlusd-collateral-announcement-20251103",
+      "url": "https://bitnomial.com/news/2025-11-03/",
+      "publisher": "Bitnomial",
+      "published_at": "2025-11-03",
+      "accessed_at_utc": "2026-11-01T19:40:00Z",
+      "classification": "PRIMARY_COMPANY_ANNOUNCEMENT",
+      "claims": [
+        "Bitnomial announced XRP and RLUSD margin deposits for institutional clients trading leveraged perpetuals, futures and options.",
+        "Announcement states availability is subject to applicable regulatory approvals."
+      ],
+      "limitations": [
+        "Historical announcement; does not establish current RLUSD schedule or actual customer collateral balances."
+      ]
+    },
+    {
+      "id": "bitnomial-current-accepted-collateral-schedule-20261002",
+      "url": "https://bitnomial.com/clearinghouse/",
+      "publisher": "Bitnomial Clearinghouse",
+      "observed_at_utc": "2026-10-02",
+      "accessed_at_utc": "2026-11-01T19:40:00Z",
+      "classification": "PRIMARY_CLEARINGHOUSE_RISK_SCHEDULE",
+      "claims": [
+        "XRP is listed as accepted collateral with a 40% haircut and $15M notional limit.",
+        "BTC is listed at 15% haircut and $100M limit; ETH at 20% and $45M.",
+        "Current schedule table lists USD, BTC, ETH and XRP; RLUSD is not listed."
+      ],
+      "limitations": [
+        "Page does not state whether the $15M limit is per customer, clearing member or aggregate program.",
+        "No actual customer-level posted collateral balances or usage volume are disclosed.",
+        "Absence of RLUSD from the current table conflicts with the older announcement and requires direct clarification."
+      ]
+    },
+    {
+      "id": "cftc-letter-26-05-20260206",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "publisher": "CFTC Market Participants Division",
+      "published_at": "2026-02-06",
+      "accessed_at_utc": "2026-11-01T19:40:00Z",
+      "classification": "PRIMARY_REGULATORY_NO_ACTION_LETTER",
+      "claims": [
+        "Letter 26-05 reissues Letter 25-40 in response to a December 8, 2025 request by Coinbase Financial Markets, a CFTC-registered FCM.",
+        "An FCM may take into account non-security digital assets accepted as collateral or for settlement by a registered DCO, using the DCO's valuation and haircuts, subject to conditions.",
+        "FCM must file a notice of intent and commencement date with MPD via WinJammer.",
+        "For the first three months of each FCM's reliance, it may accept only payment stablecoins, Bitcoin and Ether; after that, other qualifying non-security digital assets accepted by a registered DCO may be considered subject to continuing conditions.",
+        "The no-action position is not a universal CFTC asset approval or formal rule."
+      ],
+      "limitations": [
+        "No Coinbase notice of reliance or actual XRP collateral use was located in this run.",
+        "Whether a specific FCM treats XRP as a qualifying non-security digital asset and uses a specific DCO must be established separately.",
+        "The letter does not prove any customer has posted XRP collateral."
+      ]
+    },
+    {
+      "id": "cftc-crypto-faq-20260320",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9200-26",
+      "publisher": "CFTC",
+      "published_at": "2026-03-20",
+      "accessed_at_utc": "2026-11-01T19:40:00Z",
+      "classification": "PRIMARY_REGULATORY_FAQ_ANNOUNCEMENT",
+      "claims": [
+        "CFTC Market Participants Division and Division of Clearing and Risk published FAQs clarifying Letter 25-39 tokenized collateral guidance and Letter 26-05 digital-asset margin collateral."
+      ],
+      "limitations": [
+        "Press release announces the FAQs; exact operational interpretation must be read from the underlying FAQ text and letter."
+      ]
+    },
+    {
+      "id": "payward-bitnomial-acquisition-completed-20260501",
+      "url": "https://www.payward.com/press-release/payward-completes-acquisition-of-bitnomial-the-first-fully-cftc-licensed-crypto-native-derivatives-stack-in-the-us",
+      "publisher": "Payward",
+      "published_at": "2026-05-01",
+      "accessed_at_utc": "2026-11-01T19:40:00Z",
+      "classification": "PRIMARY_ACQUISITION_ANNOUNCEMENT",
+      "claims": [
+        "Payward completed acquisition of Bitnomial.",
+        "Payward now owns FCM, DCM and DCO infrastructure.",
+        "Bitnomial continues operating within Payward with existing licenses, regulatory structure and third-party clearing operations intact.",
+        "Payward plans CFTC-regulated spot margin, perpetuals and options distribution through Kraken, NinjaTrader and Payward Services."
+      ],
+      "limitations": [
+        "The acquisition establishes ownership and strategic capability, not actual XRP collateral utilization or market share."
+      ]
+    },
+    {
+      "id": "cftc-pilot-initial-asset-scope-20251208",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/2025-12-08",
+      "publisher": "CFTC",
+      "published_at": "2025-12-08",
+      "accessed_at_utc": "2026-11-01T19:40:00Z",
+      "classification": "PRIMARY_REGULATORY_PILOT_ANNOUNCEMENT",
+      "claims": [
+        "Initial three-month digital-asset collateral pilot scope was Bitcoin, Ether and USDC/payment stablecoins; XRP was not among the initial named assets."
+      ],
+      "limitations": [
+        "This initial period is per FCM reliance under Letter 26-05, not a permanent exclusion of all other non-security digital assets."
+      ]
+    }
+  ]
+}

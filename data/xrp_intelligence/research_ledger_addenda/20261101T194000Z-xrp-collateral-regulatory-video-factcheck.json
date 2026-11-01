@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrp-collateral-regulatory-video-factcheck-20261101T1940Z",
+  "captured_at_utc": "2026-11-01T19:40:00Z",
+  "findings": [
+    {
+      "id": "F1",
+      "classification": "CONFIRMED_VENUE_SPECIFIC",
+      "statement": "Bitnomial Clearinghouse's October 2, 2026 schedule lists XRP as accepted collateral at a 40% haircut and $15M notional limit."
+    },
+    {
+      "id": "F2",
+      "classification": "CONFIRMED_REGULATORY_FRAMEWORK",
+      "statement": "CFTC Letter 26-05 is conditional no-action relief requested by Coinbase Financial Markets; it recognizes non-security digital assets accepted by a registered DCO, subject to DCO valuation/haircuts and FCM notice."
+    },
+    {
+      "id": "F3",
+      "classification": "SCOPE_LIMIT",
+      "statement": "The first three months of each FCM's reliance are limited to payment stablecoins, BTC and ETH. Other DCO-accepted non-security assets may be considered after that period subject to conditions; this is not a CFTC-wide XRP approval."
+    },
+    {
+      "id": "F4",
+      "classification": "CONFIRMED_OWNERSHIP",
+      "statement": "Payward completed acquisition of Bitnomial on May 1, 2026 and now owns its FCM/DCM/DCO stack; third-party clearing operations continue."
+    },
+    {
+      "id": "F5",
+      "classification": "UNRESOLVED",
+      "statement": "Bitnomial's November 2025 announcement included RLUSD, but its current October 2026 schedule omits RLUSD. Current eligibility and actual posted balances are unknown."
+    },
+    {
+      "id": "F6",
+      "classification": "VIDEO_FACT_CHECK",
+      "statement": "Kamilah Stevenson's December 6, 2025 video title is supported only in the limited Bitnomial venue-specific sense. 'Same class as gold, Treasuries and major FX' is not supported by the reviewed schedule or CFTC letter."
+    },
+    {
+      "id": "F7",
+      "classification": "POTENTIAL_NOT_EXECUTED",
+      "statement": "Coinbase FCM could potentially use DCO-accepted XRP under Letter 26-05 if it files notice and satisfies conditions; no Coinbase XRP collateral use or Bitnomial clearing relationship was verified."
+    }
+  ],
+  "source_revision": "20261101T194000Z-bitnomial-xrp-collateral-cftc-payward-kamilah",
+  "snapshot": "20261101T194000Z-xrp-collateral-cftc-bitnomial-payward-kamilah-video",
+  "relationship_graph": "20261101T194000Z-xrp-collateral-coinbase-bitnomial-payward-circle",
+  "forecast_status": "NOT_ISSUED"
+}

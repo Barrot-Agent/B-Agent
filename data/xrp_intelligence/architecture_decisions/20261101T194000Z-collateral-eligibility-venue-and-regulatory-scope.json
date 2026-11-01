@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "decision_id": "venue-specific-collateral-eligibility-model-20261101T1940Z",
+  "captured_at_utc": "2026-11-01T19:40:00Z",
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Represent collateral eligibility at the venue/DCO/FCM/product/account level, not as a universal asset property.",
+      "required_fields": [
+        "asset",
+        "DCO",
+        "FCM",
+        "DCM_or_product",
+        "regulatory_basis",
+        "effective_from",
+        "effective_to",
+        "FCM_notice_status",
+        "haircut_pct",
+        "notional_limit",
+        "limit_scope",
+        "custody_location",
+        "actual_posted_balance",
+        "recognized_collateral_value",
+        "source_id"
+      ]
+    },
+    {
+      "id": "D2",
+      "decision": "Separate eligibility, actual posting, recognized margin value and net new spot acquisition.",
+      "reason": [
+        "A collateral schedule does not prove customer use or spot purchases.",
+        "A haircut reduces recognized collateral value relative to market value."
+      ]
+    },
+    {
+      "id": "D3",
+      "decision": "Treat CFTC Letter 26-05 as conditional no-action relief, not a universal XRP approval.",
+      "reason": [
+        "Coinbase Financial Markets originated the request.",
+        "FCMs must file a notice and date of reliance.",
+        "Initial three months are restricted to payment stablecoins, BTC and ETH; after that other DCO-accepted non-security assets may be considered subject to conditions and DCO haircuts."
+      ]
+    },
+    {
+      "id": "D4",
+      "decision": "Preserve the 40% XRP haircut and $15M notional limit as Bitnomial-specific parameters; do not infer the limit's scope or apply it to other venues.",
+      "reason": [
+        "The public schedule does not specify per-customer, per-member or aggregate scope."
+      ]
+    },
+    {
+      "id": "D5",
+      "decision": "Mark current RLUSD collateral status unresolved until the current schedule or direct Bitnomial documentation confirms it.",
+      "reason": [
+        "2025 announcement included RLUSD; October 2026 schedule omits it."
+      ]
+    },
+    {
+      "id": "D6",
+      "decision": "Do not treat the Kamilah video title as legal evidence; preserve creator claim and primary-source fact-check separately.",
+      "reason": [
+        "The core claim is venue-specific true; universal CFTC approval and same-risk-class wording are unsupported."
+      ]
+    }
+  ],
+  "forecast_policy": "NOT_ISSUED; collateral eligibility is a structural feature only after effective date, actual usage, and market relevance are verified."
+}

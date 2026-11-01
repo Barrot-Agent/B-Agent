@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrp-collateral-cftc-bitnomial-payward-kamilah-video-2026-11-01T194000Z",
+  "captured_at_utc": "2026-11-01T19:40:00Z",
+  "data_cutoff_utc": "2026-11-01T19:40:00Z",
+  "video": {
+    "creator": "Kamilah Stevenson",
+    "video_id": "M8TmDXO7B-0",
+    "title": "XRP Was Just Approved as acceptable collateral for federally regulated derivatives",
+    "published_at": "2025-12-06",
+    "transcript_status": "NOT_RETRIEVED",
+    "identity_status": "USER_CONFIRMED_CREATOR_NAME_AND_XRP_FOCUSED_TARGET_CHANNEL; PUBLIC_CHANNEL_ID_CROSS_LINK_PARTIAL",
+    "claim_verdict": "LIMITED_VENUE_TRUE; UNIVERSAL_CFTC_APPROVAL_AND_EQUAL_RISK_CLASS_NOT_ESTABLISHED"
+  },
+  "collateral": {
+    "venue": "Bitnomial Clearinghouse",
+    "entity_type": "CFTC-registered DCO",
+    "schedule_observation_date": "2026-10-02",
+    "accepted_assets": [
+      {
+        "asset": "BTC",
+        "haircut_pct": 15,
+        "notional_limit_usd": 100000000
+      },
+      {
+        "asset": "ETH",
+        "haircut_pct": 20,
+        "notional_limit_usd": 45000000
+      },
+      {
+        "asset": "XRP",
+        "haircut_pct": 40,
+        "notional_limit_usd": 15000000
+      }
+    ],
+    "rlUSD_current_schedule_status": "NOT_LISTED; CURRENT_ACCEPTANCE_UNCONFIRMED",
+    "limit_scope": "UNKNOWN_PER_CUSTOMER_VS_MEMBER_VS_AGGREGATE",
+    "actual_posted_xrp_collateral_usd": "UNKNOWN",
+    "interpretation": [
+      "XRP is accepted by this specific clearinghouse schedule.",
+      "XRP receives a materially higher haircut and lower stated notional limit than BTC and ETH.",
+      "This is not evidence of CFTC-wide XRP approval or actual customer use.",
+      "The schedule does not list gold, U.S. Treasuries or major FX; equal risk-class wording is unsupported by this schedule."
+    ]
+  },
+  "regulation": {
+    "cftc_letter": "26-05",
+    "issued_at": "2026-02-06",
+    "original_requester": "Coinbase Financial Markets, Inc.",
+    "original_request_date": "2025-12-08",
+    "legal_character": "CONDITIONAL_STAFF_NO_ACTION_POSITION_NOT_A_FORMAL_RULE",
+    "conditions": [
+      "FCM must file notice of intent and start date with CFTC MPD through WinJammer.",
+      "For each FCM's first three months of reliance, only payment stablecoins, BTC and ETH may be accepted from customers.",
+      "After the initial three-month period, other non-security digital assets accepted by a registered DCO may be considered subject to continuing conditions and DCO valuation/haircuts.",
+      "If multiple DCOs accept the same asset, the FCM applies the highest applicable DCO haircut.",
+      "Payment stablecoins may be used as proprietary residual interest only with applicable capital charge; this is not a general license to invest customer funds in stablecoins.",
+      "CFTC FAQ clarifies limits for uncleared swaps; do not generalize cleared-derivatives relief to all OTC derivatives."
+    ],
+    "xrp_specificity": "No CFTC-wide XRP approval. Bitnomial's DCO schedule is the venue-specific acceptance evidence.",
+    "coinbase_actual_use": "NOT_ESTABLISHED; no FCM notice, XRP customer balance or Bitnomial clearing relationship verified."
+  },
+  "ownership_and_strategy": {
+    "payward_acquisition_completed": "2026-05-01",
+    "acquirer": "Payward (Kraken parent)",
+    "acquired": "Bitnomial",
+    "acquired_stack": [
+      "FCM",
+      "DCM",
+      "DCO"
+    ],
+    "distribution_surfaces": [
+      "Kraken",
+      "NinjaTrader",
+      "Payward Services"
+    ],
+    "third_party_clearing": "Payward says Bitnomial's third-party clearing operations remain intact.",
+    "strategic_inference": "Payward now controls a US digital-asset-native derivatives stack with an XRP-accepting DCO; this is a competitive infrastructure position, not proof of XRP volume."
+  },
+  "ripple_and_stablecoins": {
+    "ripple_bitnomial_announcement": "2025-11-03",
+    "announcement_claim": "XRP and RLUSD margin deposits available for institutional clients, subject to regulatory approvals.",
+    "rlusd_reconciliation": "Older announcement includes RLUSD; current accepted-collateral schedule omits it. Treat current RLUSD eligibility as unresolved.",
+    "circle_usdc": "USDC is a candidate payment stablecoin under the CFTC framework subject to GENIUS Act permitted-issuer requirements; no Circle-specific FCM collateral use was established."
+  },
+  "relationships": {
+    "coinbase_to_cftc": "Coinbase Financial Markets originated the no-action request; no evidence it currently accepts XRP collateral.",
+    "payward_to_bitnomial": "Completed acquisition; ownership confirmed.",
+    "bitnomial_to_xrp": "Specific DCO accepts XRP at 40% haircut/$15M stated limit.",
+    "ripple_to_bitnomial": "Historical company announcement of XRP/RLUSD margin availability; current RLUSD schedule unresolved.",
+    "circle_to_xrp_collateral": "No direct Circle/XRP collateral usage established."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "XRP collateral eligibility can improve institutional utility and collateral mobility.",
+      "support": [
+        "Bitnomial current DCO schedule lists XRP.",
+        "CFTC Letter 26-05 allows FCMs to recognize DCO-accepted non-security digital assets subject to conditions."
+      ],
+      "counterevidence": [
+        "40% haircut and $15M cap constrain capacity.",
+        "Actual posted collateral is undisclosed.",
+        "FCM notice and customer usage are not verified."
+      ]
+    },
+    {
+      "id": "H2",
+      "statement": "Payward's Bitnomial acquisition creates a strategic advantage over Coinbase in native US derivatives clearing.",
+      "support": [
+        "Payward owns FCM/DCM/DCO stack and distributes through Kraken/NinjaTrader/Payward Services.",
+        "Bitnomial schedule accepts XRP."
+      ],
+      "counterevidence": [
+        "Coinbase originated CFTC Letter 26-05 and may access DCO-approved assets under conditions.",
+        "No comparative market share, customer balances or execution volumes are available."
+      ]
+    },
+    {
+      "id": "H3",
+      "statement": "Coinbase's CFTC request creates a pathway for Coinbase FCM to accept XRP if it files notice and uses an XRP-accepting DCO.",
+      "support": [
+        "Letter 26-05 was requested by Coinbase Financial Markets.",
+        "The letter references collateral accepted by a registered DCO."
+      ],
+      "counterevidence": [
+        "No Coinbase notice of reliance or XRP customer collateral balance found.",
+        "Coinbase is not listed among the Bitnomial clearing members visible in the reviewed schedule."
+      ],
+      "status": "POTENTIAL_PATHWAY_NOT_EXECUTED_EVIDENCE"
+    },
+    {
+      "id": "H4",
+      "statement": "RLUSD remains accepted collateral at Bitnomial.",
+      "support": [
+        "November 3, 2025 Bitnomial announcement said RLUSD and XRP margin deposits were available."
+      ],
+      "counterevidence": [
+        "October 2, 2026 accepted-collateral schedule lists XRP but omits RLUSD."
+      ],
+      "status": "UNRESOLVED"
+    }
+  ],
+  "prediction_status": "NOT_ISSUED",
+  "feature_admission": "NONE"
+}
