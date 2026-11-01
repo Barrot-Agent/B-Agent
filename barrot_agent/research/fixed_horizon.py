@@ -381,13 +381,23 @@ class ForecastLedger:
             raise ValueError("source registry is unavailable")
         if isinstance(self.source_registry, Mapping):
             if source_id not in self.source_registry:
-                raise ValueError(f"{field} is not registered: {source_id}")
+                message = (
+                    f"source_ids are not registered: {source_id}"
+                    if field == "source_ids"
+                    else f"{field} is not registered: {source_id}"
+                )
+                raise ValueError(message)
             entry = self.source_registry[source_id]
         else:
             try:
                 entry = self.source_registry.require(source_id)
             except KeyError as exc:
-                raise ValueError(f"source_ids are not registered: {source_id}") from exc
+                message = (
+                    f"source_ids are not registered: {source_id}"
+                    if field == "source_ids"
+                    else f"{field} is not registered: {source_id}"
+                )
+                raise ValueError(message) from exc
             lifecycle = getattr(entry, "lifecycle", None)
             if lifecycle is not None:
                 if (
