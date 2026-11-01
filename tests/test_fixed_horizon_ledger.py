@@ -3,12 +3,15 @@ import math
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from threading import Barrier
+from types import SimpleNamespace
 
 import pytest
 import barrot_agent.research.fixed_horizon as fixed_horizon
 
 from barrot_agent.research.fixed_horizon import ForecastLedger, _append_jsonl
-from barrot_agent.sources.source_registry import SourceIdentity, SourceRecord, SourceRegistry, SourceVersion
+from barrot_agent.sources.source_registry import (
+    SourceIdentity, SourceRecord, SourceRegistry, SourceVersion, register_file_source,
+)
 
 
 TEST_SOURCE_REGISTRY = {
@@ -19,8 +22,53 @@ TEST_SOURCE_REGISTRY = {
 }
 
 
+class HashVerifiedRegistryFixture:
+    """Test double for the byte-verifying registry interface."""
+
+    def __init__(self, entries):
+        self.entries = dict(entries)
+
+    def require(self, source_id):
+        if source_id not in self.entries:
+            raise KeyError(source_id)
+        return SimpleNamespace(
+            version=SimpleNamespace(content_hash=self.entries[source_id]),
+            lifecycle=SimpleNamespace(state="ACTIVE", inaccessible=False, revalidation_required=False),
+        )
+
+    def verify_content_hash(self, source_id, content=None):
+        value = self.entries.get(source_id)
+        return (
+            source_id in self.entries
+            and isinstance(value, str)
+            and len(value) == 64
+            and all(char in "0123456789abcdef" for char in value.lower())
+        )
+
+
+def make_file_backed_registry(root):
+    registry = SourceRegistry(root / "registry.json")
+    paths = {}
+    hashes = {}
+    for source_id in TEST_SOURCE_REGISTRY:
+        path = root / "snapshots" / f"{source_id}.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(f"snapshot:{source_id}", encoding="utf-8")
+        record = register_file_source(
+            registry,
+            source_id=source_id,
+            source_type="test_snapshot",
+            name=source_id,
+            origin="unit-test",
+            path=path,
+        )
+        paths[source_id] = path
+        hashes[source_id] = record.version.content_hash
+    return registry, hashes, paths
+
+
 def make_ledger(root, **kwargs):
-    kwargs.setdefault("source_registry", TEST_SOURCE_REGISTRY)
+    kwargs.setdefault("source_registry", HashVerifiedRegistryFixture(TEST_SOURCE_REGISTRY))
     return ForecastLedger(root, **kwargs)
 
 
@@ -323,7 +371,14 @@ def test_metrics_tie_breaks_to_flat(tmp_path):
 
 
 def test_forecast_source_ids_are_checked_when_registry_is_supplied(tmp_path):
-    ledger = ForecastLedger(tmp_path, source_registry={"SRC-MARKET-001": "b" * 64, "SRC-FEATURE-001": "a" * 64, "SRC-REPLAY-MANIFEST-001": "e" * 64})
+    ledger = ForecastLedger(
+        tmp_path,
+        source_registry=HashVerifiedRegistryFixture({
+            "SRC-MARKET-001": "b" * 64,
+            "SRC-FEATURE-001": "a" * 64,
+            "SRC-REPLAY-MANIFEST-001": "e" * 64,
+        }),
+    )
     record = ledger.append_forecast(forecast_payload())
     assert record["source_registry_status"] == "REGISTERED"
 
@@ -335,12 +390,12 @@ def test_forecast_source_ids_are_checked_when_registry_is_supplied(tmp_path):
 def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
     ledger = ForecastLedger(
         tmp_path,
-        source_registry={
+        source_registry=HashVerifiedRegistryFixture({
             "SRC-MARKET-001": "b" * 64,
             "SRC-PRICE-001": "c" * 64,
             "SRC-FEATURE-001": "a" * 64,
             "SRC-REPLAY-MANIFEST-001": "e" * 64,
-        },
+        }),
     )
     ledger.append_forecast(forecast_payload())
     outcome = ledger.append_outcome(
@@ -354,11 +409,11 @@ def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
 
     unregistered = ForecastLedger(
         tmp_path / "unregistered",
-        source_registry={
+        source_registry=HashVerifiedRegistryFixture({
             "SRC-MARKET-001": "b" * 64,
             "SRC-FEATURE-001": "a" * 64,
             "SRC-REPLAY-MANIFEST-001": "e" * 64,
-        },
+        }),
     )
     unregistered.append_forecast(forecast_payload())
     with pytest.raises(ValueError, match="price_source_id is not registered"):
@@ -394,11 +449,11 @@ def test_verified_forecast_requires_a_hash_bearing_source_registry(tmp_path):
 
 
 def test_feature_snapshot_hash_must_match_registered_source_content(tmp_path):
-    registry = {
+    registry = HashVerifiedRegistryFixture({
         "SRC-MARKET-001": "b" * 64,
         "SRC-FEATURE-001": "d" * 64,
         "SRC-REPLAY-MANIFEST-001": "e" * 64,
-    }
+    })
     ledger = ForecastLedger(tmp_path, source_registry=registry)
     with pytest.raises(ValueError, match="does not match registered source content hash"):
         ledger.append_forecast(forecast_payload())
@@ -416,6 +471,26 @@ def test_source_registry_rejects_invalid_entries(tmp_path):
         ForecastLedger(tmp_path, source_registry={"": "a" * 64})
     with pytest.raises(ValueError, match="hash-bearing mapping or SourceRegistry"):
         ForecastLedger(tmp_path, source_registry="SRC-STRING")
+
+
+def test_plain_hash_mapping_cannot_authorize_verified_forecast_metrics(tmp_path):
+    with pytest.raises(ValueError, match="plain source_registry mappings cannot verify snapshot bytes"):
+        ForecastLedger(tmp_path / "strict", source_registry=TEST_SOURCE_REGISTRY)
+    ledger = ForecastLedger(
+        tmp_path / "id-only",
+        source_registry=TEST_SOURCE_REGISTRY,
+        allow_unverified_sources=True,
+    )
+    forecast = ledger.append_forecast(forecast_payload())
+    assert forecast["source_registry_status"] == "ID_ONLY_NOT_HASH_VERIFIED"
+    outcome = ledger.append_outcome(
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+        "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+    )
+    assert outcome["price_source_registry_status"] == "ID_ONLY_NOT_HASH_VERIFIED"
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
 
 
 
@@ -580,24 +655,16 @@ def test_metrics_refuse_to_pool_different_baseline_versions(tmp_path):
 
 
 def test_source_registry_object_verifies_feature_snapshot_content_hash(tmp_path):
-    registry = SourceRegistry(tmp_path / "registry.json")
-    for source_id, content_hash in TEST_SOURCE_REGISTRY.items():
-        registry.register(
-            SourceRecord(
-                identity=SourceIdentity(
-                    source_id=source_id,
-                    source_type="test",
-                    name=source_id,
-                    origin="unit-test",
-                ),
-                version=SourceVersion(content_hash=content_hash),
-            )
-        )
+    registry, hashes, paths = make_file_backed_registry(tmp_path)
+    payload = forecast_payload()
+    payload["feature_snapshot"]["sha256"] = hashes["SRC-FEATURE-001"]
     ledger = ForecastLedger(tmp_path / "ledger", source_registry=registry)
-    record = ledger.append_forecast(forecast_payload())
+    record = ledger.append_forecast(payload)
     assert record["source_registry_status"] == "REGISTERED"
     assert record["feature_snapshot_hash_verified"] is True
-    assert record["source_content_hashes"]["SRC-FEATURE-001"] == "a" * 64
+    assert record["source_content_hashes"]["SRC-FEATURE-001"] == hashes["SRC-FEATURE-001"]
+    assert all(registry.verify_content_hash(source_id) for source_id in TEST_SOURCE_REGISTRY)
+    assert all(path.is_file() for path in paths.values())
 
 
 def test_metrics_refuse_tampered_registered_feature_snapshot_hash(tmp_path):
@@ -772,6 +839,38 @@ def test_outcome_recorded_at_uses_system_time_not_caller_claim(tmp_path, monkeyp
     assert outcome["caller_claimed_recorded_at_utc"] == "2026-10-31T01:01:00Z"
 
 
+
+
+
+def test_forecast_rejects_source_snapshot_bytes_changed_after_registration(tmp_path):
+    registry, hashes, paths = make_file_backed_registry(tmp_path)
+    payload = forecast_payload()
+    payload["feature_snapshot"]["sha256"] = hashes["SRC-FEATURE-001"]
+    ledger = ForecastLedger(tmp_path / "ledger", source_registry=registry)
+    ledger.append_forecast(payload)
+    paths["SRC-PRICE-001"].write_text("tampered after registration", encoding="utf-8")
+    with pytest.raises(ValueError, match="source snapshot bytes"):
+        ledger.append_outcome(
+            "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+            "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+        )
+
+
+def test_metrics_fail_closed_when_source_snapshot_bytes_change_after_outcome(tmp_path):
+    registry, hashes, paths = make_file_backed_registry(tmp_path)
+    payload = forecast_payload()
+    payload["feature_snapshot"]["sha256"] = hashes["SRC-FEATURE-001"]
+    ledger = ForecastLedger(tmp_path / "ledger", source_registry=registry)
+    ledger.append_forecast(payload)
+    ledger.append_outcome(
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+        "2026-10-31T01:01:00Z", "SRC-PRICE-001"
+    )
+    paths["SRC-PRICE-001"].write_text("tampered after outcome", encoding="utf-8")
+    metrics = ledger.metrics()
+    assert metrics["accuracy"] is None
+    assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"
+
 def test_metrics_refuse_tampered_registered_replay_manifest_hash(tmp_path):
     ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
@@ -805,7 +904,7 @@ def test_metrics_refuse_tampered_registered_outcome_price_source_hash(tmp_path):
 
 def test_metrics_refuse_outcome_when_registered_price_source_hash_changes(tmp_path):
     ledger = _ledger_with_valid_outcome(tmp_path)
-    ledger.source_registry["SRC-PRICE-001"] = "f" * 64
+    ledger.source_registry.entries["SRC-PRICE-001"] = "f" * 64
     metrics = ledger.metrics()
     assert metrics["accuracy"] is None
     assert metrics["performance_claim_status"] == "NOT_AUTHORIZED_UNVERIFIED_PROVENANCE"

@@ -406,14 +406,21 @@ class ForecastLedger:
                 )
             self.source_registry = None
             self.source_registry_mode = "UNAVAILABLE"
+        elif callable(getattr(source_registry, "require", None)) and callable(
+            getattr(source_registry, "verify_content_hash", None)
+        ):
+            self.source_registry = source_registry
+            self.source_registry_mode = "HASH_VERIFIED"
         elif isinstance(source_registry, Mapping):
             if any(not isinstance(key, str) or not key.strip() for key in source_registry):
                 raise ValueError("source_registry keys must be non-empty strings")
-            self.source_registry = source_registry
-            self.source_registry_mode = "HASH_VERIFIED"
-        elif callable(getattr(source_registry, "require", None)):
-            self.source_registry = source_registry
-            self.source_registry_mode = "HASH_VERIFIED"
+            if not allow_unverified_sources:
+                raise ValueError(
+                    "plain source_registry mappings cannot verify snapshot bytes; "
+                    "use SourceRegistry or set allow_unverified_sources=True"
+                )
+            self.source_registry = frozenset(key.strip() for key in source_registry)
+            self.source_registry_mode = "ID_ONLY"
         elif allow_unverified_sources:
             if isinstance(source_registry, (str, bytes)):
                 raise ValueError("source_registry must be a mapping, SourceRegistry or iterable of source IDs")
@@ -464,6 +471,11 @@ class ForecastLedger:
                     or getattr(lifecycle, "revalidation_required", False)
                 ):
                     raise ValueError(f"source_id is not active and validated: {source_id}")
+            verifier = getattr(self.source_registry, "verify_content_hash", None)
+            if not callable(verifier) or not verifier(source_id):
+                raise ValueError(
+                    f"source snapshot bytes are unavailable or do not match registered content hash: {source_id}"
+                )
         if isinstance(entry, str):
             content_hash = entry
         elif isinstance(entry, Mapping):
