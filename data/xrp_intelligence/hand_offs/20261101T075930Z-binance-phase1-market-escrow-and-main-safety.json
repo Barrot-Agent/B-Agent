@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "record_type": "handoff",
+  "handoff_id": "HANDOFF-20261101T075930Z-BINANCE-PHASE1-MARKET-ESCROW-MAIN",
+  "captured_at_utc": "2026-11-01T07:59:30Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 execution and verification",
+  "verified": [
+    "XRP Insights ledger 108039913 at 06:42 reports 1B release, zero re-escrow by that ledger, 30.4B remaining in 96 objects across eight owners.",
+    "Binance Update #4 includes XRP in phase one; Reuters reports BTC withdrawals resumed, but XRP success unverified.",
+    "TradRadar and Seandra observations preserved separately.",
+    "PR #1450 head 7564 passed archive validation: 462 shards, 3,545 records, 2,193 sources, 370 updates, 982 limitations, 49 addenda checked, 43 pending, 35 tests, zero errors, no mutation."
+  ],
+  "blockers": [
+    "Raw escrow Destination and later disposition unverified.",
+    "XRP-specific Binance withdrawal status unknown.",
+    "Attacker wallet stale after 2026-10-31 16:51 UTC.",
+    "Main scheduled writers and merge queue remain active.",
+    "PR #1449 stale by one main commit; 213 main-targeted PRs stale.",
+    "Approval workflow zero-job event unresolved.",
+    "13 source stubs and 43 pending addenda remain."
+  ],
+  "next_actions": [
+    "Verify successful XRP withdrawal or asset-level status.",
+    "Decode EscrowFinish destinations and follow-on transfers.",
+    "Refresh attacker wallet.",
+    "Reconcile spot, ETF and derivatives by venue.",
+    "Review PR #1449 against current main without merging.",
+    "Quarantine privileged main workflows only after explicit approval."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "market_features_admitted": false,
+  "operational_boundary": {
+    "main_modified": false,
+    "pr_merged": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secrets_accessed": false,
+    "paper_position_mutated": false,
+    "real_money_trade": false
+  }
+}

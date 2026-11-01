@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "record_type": "repository_audit",
+  "audit_id": "AUDIT-20261101T075930Z-MAIN-PR-INVENTORY-WORKFLOW-SAFETY",
+  "captured_at_utc": "2026-11-01T07:59:30Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main": {
+    "sha": "c8e66e95f385f48a03bb17b4498dc969a43fa97b",
+    "latest_commit_utc": "2026-11-01T07:51:52Z",
+    "message": "Cross-analysis refresh [skip ci]",
+    "changed_paths": [
+      "ping-pongings/knowledge-base/sentiment_shift.json"
+    ],
+    "change": "generated_at timestamp only",
+    "sentiment_shift_samples": {
+      "xrp": {
+        "recent": 0,
+        "prior": 0
+      },
+      "btc": {
+        "recent": 0,
+        "prior": 0
+      }
+    },
+    "workflow_run_id": 41286457391
+  },
+  "workflows": [
+    {
+      "path": ".github/workflows/cross-analysis.yml",
+      "risk": "Scheduled contents:write commit/push; zero recent/prior samples."
+    },
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "risk": "contents:write and actions:write; dispatches workflow files without allowlist.",
+      "run_id": 41286201403,
+      "entries_fired": 0,
+      "queue_size": 1,
+      "new_commit": false
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "risk": "Manual privileged merge, dry_run=false, max_prs=0, no explicit user-approval check."
+    },
+    {
+      "path": ".github/workflows/barrot-approve-pr.yml",
+      "risk": "Push-event failure with zero jobs; root cause unresolved.",
+      "run_id": 41285458536,
+      "event": "push",
+      "jobs": 0
+    }
+  ],
+  "pr_inventory": {
+    "total": 219,
+    "drafts": 209,
+    "ready": 10,
+    "main_targeted": 213,
+    "stale_main_targeted": 213,
+    "current_main_targeted": 0,
+    "non_main": 6
+  },
+  "pr1449": {
+    "base_sha": "760b61e216f1044d4faaa359962939757d9d6adf",
+    "head_sha": "dce8be8e8df59390c7a986c7ff7a2b699cb18593",
+    "state": "OPEN_DRAFT_UNMERGED",
+    "compare": "DIVERGED_AHEAD_1_BEHIND_1",
+    "mergeable_state": "clean",
+    "ci_run": 41283447287,
+    "tests": 367,
+    "subtests": 8,
+    "gate_run": 41283447301,
+    "gate": "PASS_MERGE_DISABLED",
+    "ci_merge_ref_base": "760b61e216f1044d4faaa359962939757d9d6adf"
+  },
+  "limitations": {
+    "full_repository_ci": "NOT_RUN",
+    "dependency_scan": "INCOMPLETE",
+    "security_alerts": "UNAVAILABLE",
+    "branch_protection_details": "403",
+    "main_remediation_applied": false
+  },
+  "safety": {
+    "main_modified": false,
+    "merge": false,
+    "force_push": false,
+    "manual_dispatch": false,
+    "secret_access": false,
+    "trade": false
+  }
+}
