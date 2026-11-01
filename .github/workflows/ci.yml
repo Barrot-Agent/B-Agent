@@ -72,6 +72,11 @@ jobs:
             tests/test_source_registry.py \
             tests/test_nine_platform_coordination_map.py \
             tests/test_xrp_ripple_circle_coinbase_scope_reconciliation.py \
+                        tests/test_kamilah_stevenson_identity_evidence.py \
+                        tests/test_xrp_arc_and_sbi_relationships.py \
+                        tests/test_xrp_cbXRP_morpho_collateral.py \
+                        tests/test_xrp_coinbase_circle_rlusd_evidence.py \
+                        tests/test_xrp_coinbase_global_derivatives_collateral.py \
             tests/test_data_registry.py \
             tests/test_repository_causality.py \
             tests/test_bundle_delivery.py \
