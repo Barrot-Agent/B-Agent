@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-collateral-multirail-morpho-circle-sbi-20261101T163641Z",
+  "captured_at_utc": "2026-11-01T16:36:41Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T163641Z-xrp-collateral-multirail-morpho-circle-sbi.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T163641Z-xrp-collateral-multirail-morpho-circle-sbi.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T163641Z-coinbase-circle-sbi-xrp-collateral-multirail.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T163641Z-xrp-collateral-usage-and-multirail-admission.json",
+  "source_bundle": "data/xrp_intelligence/sources/20261101T163641Z-xrp-collateral-multirail-morpho-circle-sbi-source-bundle.json",
+  "next_actions": [
+    "Retrieve raw Ethereum logs and Morpho market storage at a pinned block for market 0x4fa31e3f8ba345227d44e1cf48559eea53a90dd5311dc006984c060f2f311d96; independently reproduce debt, collateral, utilization, oracle and borrower/supplier concentration.",
+    "Resolve the Coinbase XRP collateral token/wrapper contract, underlying reserve, market parameters and current loan utilization on Base.",
+    "Capture native USDC issued on XRPL from the issuer account and compare supply, transfer velocity, DEX/AMM volume and redemption activity at matched ledgers.",
+    "Find corridor-level SBI Remit XRP ODL volumes or state explicitly that none are publicly disclosed; keep the JPY 2.5T company-wide total separate.",
+    "Map Circle Arc's phased validator status, USDC liquidity, StableFX pairs, CPN integrations and actual settlement volumes; distinguish announced participants from production users.",
+    "Monitor Circle Q3 2026 results scheduled for November 4 at 08:00 ET and reconcile USDC circulation, reserve yield, Coinbase distribution costs and Arc investment.",
+    "Continue SBIC entity separation, ASK Coin phrase resolution and the exact Camilla Stephenson channel-ID/video inventory.",
+    "Reconcile PR #1465's stale base against current main only if needed; current main changed since its base only in sentiment_shift.json, a timestamp-only refresh. Do not merge without explicit approval."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED",
+  "safety": "Append-only research branch update; no main modification, merge, force-push, manual workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
+}

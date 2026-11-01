@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "addendum_id": "xrp-collateral-multirail-morpho-circle-sbi-20261101T163641Z",
+  "captured_at_utc": "2026-11-01T16:36:41Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T163641Z-xrp-collateral-multirail-morpho-circle-sbi.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T163641Z-xrp-collateral-multirail-morpho-circle-sbi.json",
+  "graph": "data/xrp_intelligence/relationship_graph_addenda/20261101T163641Z-coinbase-circle-sbi-xrp-collateral-multirail.json",
+  "decision": "data/xrp_intelligence/architecture_decisions/20261101T163641Z-xrp-collateral-usage-and-multirail-admission.json",
+  "source_bundle": "data/xrp_intelligence/sources/20261101T163641Z-xrp-collateral-multirail-morpho-circle-sbi-source-bundle.json",
+  "key_updates": [
+    "Morpho's live Ethereum FXRP/RLUSD market displays $8.44M outstanding loans, $9.35M total market size, $914.37K liquidity and 90.22% utilization at the captured page observation.",
+    "The FXRP/RLUSD market is concentrated: Sentora RLUSD Main supplies 99.04% of displayed RLUSD and the top three borrowers account for 91.00% of displayed debt.",
+    "The current $9.35M isolated market must not be confused with Flare's $280M broader Sentora RLUSD Main vault statement from August 3.",
+    "Coinbase offers XRP-backed USDC loans through Morpho; Circle is the USDC issuer but is not shown as the lender or collateral manager.",
+    "Circle confirms native USDC on XRPL with Circle Mint issuance/redemption and cross-chain swap support. This is a direct Circle-XRPL relationship, not native XRP demand.",
+    "Circle Arc launched September 16 with USDC gas; SBI Group is in the founding validator cohort, Coinbase and Binance are named exchange participants, BitGo is a custody provider, and Morpho/Aave are credit protocols.",
+    "SBI Remit's JPY 2.5T cumulative remittance total as of May 27 is company-wide, not XRP ODL volume. Ripple confirms one commercialized XRP ODL corridor, but corridor volume is undisclosed.",
+    "SBI Group has documented relationships with both Circle/USDC/Arc and Ripple/RLUSD/XRP, alongside Nium and Fasset remittance partnerships. This is multi-rail positioning, not exclusivity.",
+    "Circle/ACI's October 27 Colombia pilot integrates USDC with existing Bre-B payment infrastructure; no XRP is identified."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}
