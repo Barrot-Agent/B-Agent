@@ -490,6 +490,32 @@ class ForecastLedger:
             raise ValueError(f"source registry entry must contain a SHA-256 content_hash: {source_id}")
         return content_hash.lower()
 
+    def _verified_price_observation(self, source_id: str, field: str) -> tuple[float, datetime]:
+        """Load a normalized XRP/USD price observation from its hash-verified snapshot."""
+        if self.source_registry_mode != "HASH_VERIFIED":
+            raise ValueError("price observation bytes require a hash-verified source registry")
+        reader = getattr(self.source_registry, "read_verified_content", None)
+        verifier = getattr(self.source_registry, "verify_content_hash", None)
+        if not callable(reader) or not callable(verifier):
+            raise ValueError("hash-verified source registry must expose verified snapshot bytes")
+        try:
+            content = reader(source_id)
+        except (KeyError, OSError, ValueError) as exc:
+            raise ValueError(f"{field} source snapshot bytes are unavailable or unverified: {source_id}") from exc
+        if not isinstance(content, bytes) or not verifier(source_id, content):
+            raise ValueError(f"{field} source snapshot bytes do not match the registered content hash: {source_id}")
+        try:
+            snapshot = json.loads(content)
+        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise ValueError(f"{field} source snapshot must be valid JSON: {source_id}") from exc
+        if not isinstance(snapshot, Mapping) or snapshot.get("record_type") != "xrp_price_observation":
+            raise ValueError(f"{field} source snapshot must be a normalized xrp_price_observation: {source_id}")
+        if snapshot.get("asset_pair") != "XRP/USD":
+            raise ValueError(f"{field} source snapshot asset_pair must be XRP/USD: {source_id}")
+        price = _positive_number(snapshot.get("price_usd"), f"{field}.price_usd")
+        observed_at = _parse_utc(snapshot.get("observed_at_utc"), f"{field}.observed_at_utc")
+        return price, observed_at
+
     def forecasts(self) -> list[dict[str, Any]]:
         with _ledger_lock(self.root):
             return _read_jsonl(self.forecasts_path)
@@ -668,6 +694,14 @@ class ForecastLedger:
         if issued - price_observed_at > timedelta(seconds=self.max_issue_price_lag_seconds):
             raise ValueError("issue price observation exceeds the configured freshness window")
         price_at_issue = _positive_number(payload.get("price_at_issue_usd"), "price_at_issue_usd")
+        if self.source_registry_mode == "HASH_VERIFIED":
+            snapshot_price, snapshot_observed_at = self._verified_price_observation(
+                price_source_id, "price_at_issue"
+            )
+            if not math.isclose(snapshot_price, price_at_issue, rel_tol=1e-12, abs_tol=1e-12):
+                raise ValueError("issue price does not match its registered price source snapshot")
+            if snapshot_observed_at != price_observed_at:
+                raise ValueError("issue price timestamp does not match its registered price source snapshot")
 
         record = {
             "schema_version": "1.2",
@@ -713,6 +747,7 @@ class ForecastLedger:
             "feature_snapshot_hash_verified": feature_snapshot_hash_verified,
             "price_at_issue_usd": price_at_issue,
             "price_at_issue_source_id": price_source_id,
+            "price_at_issue_source_content_hash": source_content_hashes.get(price_source_id),
             "price_at_issue_observed_at_utc": _format_utc(price_observed_at),
             "price_at_issue_max_observation_lag_seconds": self.max_issue_price_lag_seconds,
             "status": "OPEN",
@@ -778,6 +813,14 @@ class ForecastLedger:
             price_source_registry_status = "ID_ONLY_NOT_HASH_VERIFIED"
 
         price_at_horizon = _positive_number(price_at_horizon_usd, "price_at_horizon_usd")
+        if self.source_registry_mode == "HASH_VERIFIED":
+            snapshot_price, snapshot_observed_at = self._verified_price_observation(
+                price_source_id, "price_at_horizon"
+            )
+            if not math.isclose(snapshot_price, price_at_horizon, rel_tol=1e-12, abs_tol=1e-12):
+                raise ValueError("horizon price does not match its registered price source snapshot")
+            if snapshot_observed_at != observed_at:
+                raise ValueError("horizon price timestamp does not match its registered price source snapshot")
         price_at_issue = float(forecast["price_at_issue_usd"])
         realized_return = (price_at_horizon / price_at_issue - 1.0) * 100.0
         target = forecast["target"]
@@ -853,6 +896,30 @@ class ForecastLedger:
             except ValueError:
                 return False
 
+        def issue_price_source_matches_registry(item: Mapping[str, Any]) -> bool:
+            if self.source_registry_mode != "HASH_VERIFIED":
+                return False
+            source_id = item.get("price_at_issue_source_id")
+            stored_hash = item.get("price_at_issue_source_content_hash")
+            if not isinstance(source_id, str) or not source_id.strip() or not _is_sha256_digest(stored_hash):
+                return False
+            try:
+                registered_hash = self._registered_source_hash(source_id, field="price_at_issue_source_id")
+                snapshot_price, snapshot_observed_at = self._verified_price_observation(
+                    source_id, "price_at_issue"
+                )
+                recorded_price = _positive_number(item.get("price_at_issue_usd"), "price_at_issue_usd")
+                recorded_observed_at = _parse_utc(
+                    item.get("price_at_issue_observed_at_utc"), "price_at_issue_observed_at_utc"
+                )
+                return (
+                    stored_hash.lower() == registered_hash
+                    and math.isclose(snapshot_price, recorded_price, rel_tol=1e-12, abs_tol=1e-12)
+                    and snapshot_observed_at == recorded_observed_at
+                )
+            except (KeyError, ValueError):
+                return False
+
         unverified_forecasts = any(
             item.get("source_registry_status") != "REGISTERED"
             or item.get("feature_snapshot_hash_verified") is not True
@@ -862,6 +929,7 @@ class ForecastLedger:
             or item.get("source_content_hashes", {}).get(item.get("feature_snapshot", {}).get("source_id"))
                 != item.get("feature_snapshot", {}).get("sha256")
             or not source_hashes_match_registry(item)
+            or not issue_price_source_matches_registry(item)
             for item in forecasts
         )
         def outcome_source_hash_matches_registry(item: Mapping[str, Any]) -> bool:
@@ -876,10 +944,22 @@ class ForecastLedger:
             ):
                 return False
             try:
-                return stored_hash.lower() == self._registered_source_hash(
+                registered_hash = self._registered_source_hash(
                     source_id, field="price_source_id"
                 )
-            except ValueError:
+                snapshot_price, snapshot_observed_at = self._verified_price_observation(
+                    source_id, "price_at_horizon"
+                )
+                recorded_price = _positive_number(item.get("price_at_horizon_usd"), "price_at_horizon_usd")
+                recorded_observed_at = _parse_utc(
+                    item.get("price_observed_at_utc"), "price_observed_at_utc"
+                )
+                return (
+                    stored_hash.lower() == registered_hash
+                    and math.isclose(snapshot_price, recorded_price, rel_tol=1e-12, abs_tol=1e-12)
+                    and snapshot_observed_at == recorded_observed_at
+                )
+            except (KeyError, ValueError):
                 return False
 
         unverified_outcomes = any(
