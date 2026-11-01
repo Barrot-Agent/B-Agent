@@ -47,13 +47,361 @@
     "source_reference_count": 1,
     "missing_source_references": 0,
     "source_revision_ids": [
+      "REV-20261031T230816Z-XRP-INSIGHTS-ESCROW-PREUNLOCK",
+      "REV-20261031T230816Z-XRP-INSIGHTS-EXCHANGE-DELTA-RECONCILIATION",
+      "REV-20261031T230816Z-TRADRADAR-STALE-SEARCH-RESULT-RECONCILIATION",
+      "REV-20261031T230816Z-GITHUB-MAIN-WORKFLOW-PR1431-AUDIT",
+      "REV-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGE-CONFLICT",
+      "REV-20261031T232127Z-GITHUB-PR1432-SIGNAL-SAFETY-AND-ARCHIVE-VERIFICATION",
       "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS"
     ],
-    "source_revision_addenda_count": 1,
-    "source_revision_addenda_pending_archive_append": 1,
+    "source_revision_addenda": [
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T-current-xrp-insights-binance-peg-reserve-correction.json",
+        "blob_sha": "3d0c7bf3acbd8b355b1b2b02ca335a96765a352a",
+        "commit_sha": null,
+        "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-20261031",
+        "captured_at_utc": "2026-10-31T17:19:41Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T-current-xrp-insights-binance-peg-reserve-internal-conflict.json",
+        "blob_sha": "fe793b30d208cbe29af559dcf91ca205dc903c9d",
+        "commit_sha": null,
+        "revision_id": "REV-XRP-INSIGHTS-BINANCE-PEG-RESERVE-INTERNAL-CONFLICT-20261031",
+        "captured_at_utc": "2026-10-31T17:20:43Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T-current-sbi-dca-version-and-biz-card-campaign.json",
+        "blob_sha": "e5e8d129976565fd1afeeb6cf3a6931f59205df7",
+        "commit_sha": null,
+        "revision_id": "REV-SBI-DCA-ASSET-COUNT-AND-BIZ-CARD-CAMPAIGN-20261031",
+        "captured_at_utc": "2026-10-31T17:22:22Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T173756Z-binance-xrp-por-screenshot-reconciliation.json",
+        "blob_sha": "a0f61304d15a0f15c01bc502a82a1c5b496d8f5e",
+        "commit_sha": "8021ca699fb0a6174955bafb37da3dd605274a1c",
+        "revision_id": "REV-BINANCE-XRP-POR-20261031T173756Z",
+        "source_id": "SRC-20261031T173756Z-CRYPTOTIMES-BINANCE-POR-SCREENSHOT",
+        "captured_at_utc": "2026-10-31T17:37:56Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T173944Z-sbi-vctrade-dca-canonical-page.json",
+        "blob_sha": "a24228fc73abd77a34a7d4357647b668401ad7d0",
+        "commit_sha": "1ef821ecd008e2fa24547a25f2923c746bc829f0",
+        "revision_id": "REV-SBI-VCTRADE-DCA-CANONICAL-20261031T173944Z",
+        "source_id": "SRC-20261031T173944Z-SBI-VC-TRADE-DCA-CANONICAL",
+        "captured_at_utc": "2026-10-31T17:39:44Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T175112Z-ask-coinbase-dex-wallet-relationship.json",
+        "blob_sha": "54771504bc587eb72f61eb7ae05a86d9bd9ea989",
+        "commit_sha": "e05dc9369f4eb4a20f31c82ada3978ce184c303d",
+        "revision_id": "REV-ASK-COINBASE-DEX-EMBEDDED-WALLET-20261031T175112Z",
+        "source_id": "SRC-20261031T175112Z-ASK-COINBASE-WALLET-DEX-RELATIONSHIP",
+        "captured_at_utc": "2026-10-31T17:51:12Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T175218Z-binance-recovery-update3-xrp-por-safu-reconciliation.json",
+        "blob_sha": "3517170103527a98d4d4c4f613d0d15215295686",
+        "commit_sha": "e189dfb69a0cd61a620b990068816509ae4842c7",
+        "revision_id": "REV-BINANCE-RECOVERY-UPDATE3-XRP-POR-AND-SAFU-20261031T175218Z",
+        "source_id": "SRC-20261031T175218Z-BINANCE-RECOVERY-UPDATE3-RECONCILIATION",
+        "captured_at_utc": "2026-10-31T17:52:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T175703Z-xrpl-rlusd-supply-coinbase-listing-exchange-reserve-reconciliation.json",
+        "blob_sha": "f73584782ff8865019fc43d352cd0577165338e0",
+        "commit_sha": "1f817b7d591792af36848762cb5cdf815d0bdd79",
+        "revision_id": "REV-XRPL-RLUSD-SUPPLY-EXCHANGE-RESERVES-COINBASE-LISTING-20261031T175703Z",
+        "source_id": "SRC-20261031T175703Z-XRPL-SUPPLY-RESERVES-COINBASE-RLUSD-LISTING",
+        "captured_at_utc": "2026-10-31T17:57:03Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+      },
+      {
+        "revision_id": "REV-SBIC-JAPAN-KAMILAH-YOUTUBE-OCC-TRUST-CHARTER-20261031T190021Z",
+        "source_id": "SRC-20261031T190021Z-SBIC-REGIONAL-ENTITIES-KAMILAH-YOUTUBE-OCC-CHARTERS",
+        "path": "data/xrp_intelligence/source_revisions/20261031T190021Z-sbic-regional-entities-kamilah-youtube-and-occ-trust-charters.json",
+        "blob_sha": "a0cb61670ca00786586c4282762a8026c490c77c",
+        "commit_sha": "d4f0814382a4bf5f3766b13c1ab02e94212de12e",
+        "captured_at_utc": "2026-10-31T19:00:21Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATED_AT_2026-10-31T19:19:49Z"
+      },
+      {
+        "revision_id": "REV-TRADRADAR-XRP-1945Z-UPDATE-20261031T201433Z",
+        "source_id": "SRC-20261031T200209Z-TRADRADAR-XRP",
+        "path": "data/xrp_intelligence/source_revisions/20261031T201433Z-tradradar-xrp-derivatives-1945z-update-v4.json",
+        "blob_sha": "a279d044723ff0c387a4ee7100340694e3ce1197",
+        "commit_sha": "5ed367cfa9bf584a7b31632d7355bacc5f90e370",
+        "captured_at_utc": "2026-10-31T20:14:33Z",
+        "status": "PENDING_ARCHIVE_APPEND; EXACT_HEAD_VALIDATION_RETRY",
+        "pending_archive_append": true
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-xrp-insights-escrow.json",
+        "blob_sha": "f13b10beb015d93ca0a05febc75a4b6bd7afbcea",
+        "revision_id": "REV-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+        "source_id": "SRC-20261031T213618Z-XRP-INSIGHTS-ESCROW",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-tokenpost-ripple-accounts.json",
+        "blob_sha": "e68c0ad863b22365f1a6926392d1eae55d863fb6",
+        "revision_id": "REV-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+        "source_id": "SRC-20261031T213618Z-TOKENPOST-RIPPLE-ACCOUNTS",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-ripple-16t-product-volume.json",
+        "blob_sha": "3a06b210005b324f2f55b86cc46f3fc0920143db",
+        "revision_id": "REV-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+        "source_id": "SRC-20261031T213618Z-RIPPLE-16T-PRODUCT-VOLUME",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-bny-xrp-rlusd-custody.json",
+        "blob_sha": "20ff9ac91895364a946936722fa923d5e63950ec",
+        "revision_id": "REV-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+        "source_id": "SRC-20261031T213618Z-BNY-XRP-RLUSD-CUSTODY",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-sbi-remit-xrp-bridge.json",
+        "blob_sha": "f7abe4b6b4e21a1e8877f155f4c04db114fd5ba0",
+        "revision_id": "REV-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+        "source_id": "SRC-20261031T213618Z-SBI-REMIT-XRP-BRIDGE",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-ripple-rlusd-xrp-corridor-strategy.json",
+        "blob_sha": "fe8631536f29877bf71ce96735f785761116c057",
+        "revision_id": "REV-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+        "source_id": "SRC-20261031T213618Z-RIPPLE-RLUSD-XRP-CORRIDOR-STRATEGY",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-ripple-coinbase-rlusd.json",
+        "blob_sha": "ced2bed45eb80c8bedf89b04dceee36682eaaaec",
+        "revision_id": "REV-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+        "source_id": "SRC-20261031T213618Z-RIPPLE-COINBASE-RLUSD",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-tokenpost-sosovalue-xrp-etf.json",
+        "blob_sha": "7bcdd510c9add3df410b0b5dbea5006cc2fc66db",
+        "revision_id": "REV-20261031T213618Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+        "source_id": "SRC-20261031T213618Z-TOKENPOST-SOSOVALUE-XRP-ETF",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-alphafinance-xrp-etf.json",
+        "blob_sha": "b31fb358a558cda9ac251ddfe1ddb925f22e599c",
+        "revision_id": "REV-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+        "source_id": "SRC-20261031T213618Z-ALPHAFINANCE-XRP-ETF",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-cryptoslate-actual-xrp-volume.json",
+        "blob_sha": "4c07fe0cd107e2d2bfc371adf60ed2483110f2b5",
+        "revision_id": "REV-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+        "source_id": "SRC-20261031T213618Z-CRYPTOSLATE-ACTUAL-XRP-VOLUME",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T213618Z-20261031t213618z-github-bagent-audit.json",
+        "blob_sha": "3932b1b42f75777d88574b216ede485cd741101f",
+        "revision_id": "REV-20261031T213618Z-GITHUB-BAGENT-AUDIT",
+        "source_id": "SRC-20261031T213618Z-GITHUB-BAGENT-AUDIT",
+        "captured_at_utc": "2026-10-31T21:36:18Z",
+        "status": "PENDING_ARCHIVE_APPEND; SOURCE_REVISION_ADDED_THIS_RUN"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T214005Z-ripple-treasury-13t-primary-and-xrp-account-capability.json",
+        "blob_sha": "393d6e4eff8bc3c4b697a3a4b97487fa278fe890",
+        "revision_id": "REV-RIPPLE-TREASURY-13T-PRIMARY-AND-XRP-ACCOUNT-CAPABILITY-20261031T214005Z",
+        "source_id": "SRC-20261031T214005Z-RIPPLE-TREASURY-DIGITAL-ASSET-TMS",
+        "captured_at_utc": "2026-10-31T21:40:05Z",
+        "status": "PENDING_ARCHIVE_APPEND; PRIMARY_SOURCE_CORRECTION"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-garlinghouse-coindesk-transcript.json",
+        "blob_sha": "f0525e29f532ea79bc2437a12944f8967fa4ec6e",
+        "revision_id": "REV-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+        "source_id": "SRC-20261031T214545Z-GARLINGHOUSE-COINDESK-TRANSCRIPT",
+        "captured_at_utc": "2026-10-31T21:45:45Z",
+        "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-xrp-insights-rlusd-supply.json",
+        "blob_sha": "9ee2ebfb3904263fd451c9052ccc7c56837cb7a2",
+        "revision_id": "REV-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+        "source_id": "SRC-20261031T214545Z-XRP-INSIGHTS-RLUSD-SUPPLY",
+        "captured_at_utc": "2026-10-31T21:45:45Z",
+        "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-defillama-xrpl-stablecoin.json",
+        "blob_sha": "0b2d6f6dd4695e953927073a4bc9154e62fce04d",
+        "revision_id": "REV-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+        "source_id": "SRC-20261031T214545Z-DEFILLAMA-XRPL-STABLECOIN",
+        "captured_at_utc": "2026-10-31T21:45:45Z",
+        "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-stablecoininsider-rlusd.json",
+        "blob_sha": "6f86297886e007c06c83f5bd756e306de4e5b61b",
+        "revision_id": "REV-20261031T214545Z-STABLECOININSIDER-RLUSD",
+        "source_id": "SRC-20261031T214545Z-STABLECOININSIDER-RLUSD",
+        "captured_at_utc": "2026-10-31T21:45:45Z",
+        "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-standard-chartered-rlusd-custody.json",
+        "blob_sha": "0405a8713c030b6a5a45c50d4458ca08ab36123c",
+        "revision_id": "REV-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+        "source_id": "SRC-20261031T214545Z-STANDARD-CHARTERED-RLUSD-CUSTODY",
+        "captured_at_utc": "2026-10-31T21:45:45Z",
+        "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T214545Z-20261031t214545z-lmax-ripple-rlusd-partnership.json",
+        "blob_sha": "7204be5785ba4d38623a71ed7c33b4c1f1c67437",
+        "revision_id": "REV-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP",
+        "source_id": "SRC-20261031T214545Z-LMAX-RIPPLE-RLUSD-PARTNERSHIP",
+        "captured_at_utc": "2026-10-31T21:45:45Z",
+        "status": "PENDING_ARCHIVE_APPEND; ACTUAL_CAPITAL_AND_COLLATERAL_EVIDENCE"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T215123Z-ripple-drivewealth-rlusd-xrpl-settlement.json",
+        "blob_sha": "72084d2594db41e62caea371e8c9c7069c223e2b",
+        "commit_sha": "d77350e78ae526ccc1c0d37febadd72a6605ed8c",
+        "revision_id": "REV-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT-20261031T215123Z",
+        "source_id": "SRC-20261031T215123Z-RIPPLE-DRIVEWEALTH-RLUSD-XRPL-SETTLEMENT",
+        "captured_at_utc": "2026-10-31T21:51:23Z",
+        "status": "VERIFIED_ARCHIVED",
+        "pending_archive_append": false,
+        "exact_head_validation": true,
+        "verified_head_sha": "f89557964ddc53024214210ed55e90fd6b0d2be2",
+        "validator_run_id": 41246834315,
+        "fail_closed_gate_run_id": 41246834314,
+        "verified_at_utc": "2026-10-31T22:08:55Z"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T230816Z-xrp-insights-escrow-preunlock.json",
+        "blob_sha": "3fd09750071f1206b5b1b037e4f7d8610b5510e2",
+        "revision_id": "REV-20261031T230816Z-XRP-INSIGHTS-ESCROW-PREUNLOCK",
+        "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "captured_at_utc": "2026-10-31T23:08:16Z",
+        "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T230816Z-xrp-insights-exchange-delta-reconciliation.json",
+        "blob_sha": "f43005bdf9e3dbcfb6d1439b5288a4aba1bf760f",
+        "revision_id": "REV-20261031T230816Z-XRP-INSIGHTS-EXCHANGE-DELTA-RECONCILIATION",
+        "source_id": "SRC-20261031T211452Z-XRP-INSIGHTS-EXCHANGE-METHODOLOGY",
+        "captured_at_utc": "2026-10-31T23:08:16Z",
+        "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T230816Z-tradradar-stale-search-result-reconciliation.json",
+        "blob_sha": "c8a24ecd51ebfa142360798311d2da8c81ea6fed",
+        "revision_id": "REV-20261031T230816Z-TRADRADAR-STALE-SEARCH-RESULT-RECONCILIATION",
+        "source_id": "SRC-20261031T210244Z-TRADRADAR-XRP",
+        "captured_at_utc": "2026-10-31T23:08:16Z",
+        "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T230816Z-github-main-workflow-pr1431-audit.json",
+        "blob_sha": "c2f3d611e24d4ffc3f397a68734a6304ab4d5106",
+        "revision_id": "REV-20261031T230816Z-GITHUB-MAIN-WORKFLOW-PR1431-AUDIT",
+        "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+        "captured_at_utc": "2026-10-31T23:08:16Z",
+        "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T231645Z-bithomp-ripple-escrow-owner-page-conflict.json",
+        "blob_sha": "55d4762496f541d80bcaa782949d5c7a627b3742",
+        "revision_id": "REV-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGE-CONFLICT",
+        "source_id": "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES",
+        "captured_at_utc": "2026-10-31T23:16:45Z",
+        "status": "PENDING_ARCHIVE_APPEND_AND_EXACT_HEAD_VALIDATION"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261031T232127Z-github-pr1432-signal-safety-and-archive-verification.json",
+        "blob_sha": "47d14b29578e005c471c7a8f09a8ecb55d7661ec",
+        "revision_id": "REV-20261031T232127Z-GITHUB-PR1432-SIGNAL-SAFETY-AND-ARCHIVE-VERIFICATION",
+        "source_id": "SRC-20261031T210244Z-GITHUB-MAIN-WORKFLOW-AND-PR1429",
+        "captured_at_utc": "2026-10-31T23:21:27Z",
+        "status": "SOURCE_ID_ALREADY_ARCHIVED; PENDING_EXACT_HEAD_VALIDATION"
+      },
+      {
+        "path": "data/xrp_intelligence/source_revisions/20261101T001238Z-xrp-escrow-post-eligibility-status.json",
+        "blob_sha": "88214d132502cf29fb3ab386c33d3036fea00f5c",
+        "commit_sha": "959cefa6984c1b35d05c4acbc97aeb2d98ddeadd",
+        "revision_id": "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS",
+        "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
+        "captured_at_utc": "2026-11-01T00:12:38Z",
+        "status": "PENDING_ARCHIVE_APPEND_AND_EXACT_HEAD_VALIDATION",
+        "pending_archive_append": true,
+        "source_candidates_pending": 3
+      }
+    ],
+    "source_revision_addenda_count": 36,
+    "source_revision_addenda_pending_archive_append": 30,
+    "source_records": 2150,
+    "run_updates": 363,
+    "limitations": 964,
+    "expected_archive_shards": 442,
+    "expected_archive_records_roundtrip": 3477,
+    "archive_records_appended": 0,
+    "new_source_revision_addenda": 1,
+    "inherited_pending_source_revision_addenda_count": 29,
     "market_features_admitted": false,
     "forecast_status": "NOT_ISSUED",
-    "verification_status": "PENDING_EXACT_HEAD_VALIDATION"
+    "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
+    "exact_head_validation": false,
+    "pending_data_head_sha": "11e8c2db63e340bd6b28709b930170a6b99d6b5b",
+    "created_at_utc": "2026-11-01T00:12:38Z",
+    "previous_graph_addendum_path": "data/xrp_intelligence/relationship_graph_addenda/20261031T230816Z-escrow-binance-daily-delta-and-v3-graph.json",
+    "previous_architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261031T230816Z-pre-escrow-event-and-exchange-delta-feature-admission.json",
+    "previous_handoff_path": "data/xrp_intelligence/hand_offs/20261031T231645Z-pre-escrow-conflict-and-v3-verification-handoff.json",
+    "latest_conflict_source_id": "SRC-20261031T231645Z-BITHOMP-RIPPLE-ESCROW-OWNER-PAGES",
+    "latest_conflict_status": "UNRESOLVED_BITHOMP_VS_XRP_INSIGHTS_ESCROW_OWNER_PAGE_CONFLICT",
+    "verified_head_sha": null,
+    "validator_run_id": null,
+    "pr_validator_run_id": null,
+    "fail_closed_gate_run_id": null,
+    "fail_closed_gate_status": "NOT_RUN",
+    "archive_shards_checked": null,
+    "archive_records_roundtrip": null,
+    "source_revision_addenda_checked": null,
+    "tests_passed": null,
+    "errors": [],
+    "state_mutated": false,
+    "verified_at_utc": null,
+    "metadata_successor_validation_pending": true,
+    "previous_repository_audit_path": "data/repository_audits/20261031T232127Z-main-writer-knowledge-signal-and-pr1432-audit.json",
+    "previous_verified_head_sha": "68816271c26643712784b0261ae40b38c7e27e5a",
+    "previous_verified_at_utc": "2026-10-31T23:24:10Z",
+    "gate_run_id": null,
+    "metadata_successor_parent_sha": "11e8c2db63e340bd6b28709b930170a6b99d6b5b"
   },
   "sources": {
     "record_type": "archive_pointer",
@@ -3715,16 +4063,21 @@
     "architecture_decision_path": "data/xrp_intelligence/architecture_decisions/20261101T001238Z-escrow-eligibility-execution-evidence-gate.json",
     "repository_audit_path": "data/repository_audits/20261101T001238Z-main-knowledge-signal-freshness-pr1433-audit.json",
     "handoff_path": "data/xrp_intelligence/hand_offs/20261101T001238Z-post-eligibility-escrow-and-pr1433-handoff.json",
-    "correction_of_snapshot_id": "XRP-20261101T001238Z-POST-ELIGIBILITY-ESCROW-STATUS",
+    "correction_of_snapshot_id": "XRP-20261031T230816Z-PRE-ESCROW-BINANCE-DAILY-DELTA-AND-V3-AUDIT",
     "new_source_records": 0,
     "new_relationship_edges": 8,
     "new_competing_hypotheses": 3,
     "source_archive_append_status": "PENDING_ARCHIVE_APPEND",
-    "source_revision_addenda_count": 1,
-    "source_revision_addenda_pending_archive_append": 1,
+    "source_revision_addenda_count": 36,
+    "source_revision_addenda_pending_archive_append": 30,
     "verification_status": "PENDING_EXACT_HEAD_VALIDATION",
     "market_features_admitted": false,
-    "forecast_status": "NOT_ISSUED"
+    "forecast_status": "NOT_ISSUED",
+    "correction_reason": "Post-eligibility observation supersedes the prior pre-eligibility countdown; it does not claim execution.",
+    "verified_head_sha": null,
+    "validator_run_id": null,
+    "fail_closed_gate_run_id": null,
+    "verified_at_utc": null
   },
   "previous_snapshot_verification": {
     "status": "PASS",
@@ -13122,8 +13475,8 @@
     "etf_custody_vaults_counted": false
   },
   "latest_merge_queue_safety_pr_url": "https://github.com/Barrot-Agent/B-Agent/pull/1430",
-  "latest_snapshot_source_revision_addenda_count": 1,
-  "latest_snapshot_source_revision_addenda_pending_archive_append": 1,
+  "latest_snapshot_source_revision_addenda_count": 36,
+  "latest_snapshot_source_revision_addenda_pending_archive_append": 30,
   "main_modified_by_scheduled_workflow": true,
   "latest_run_update_path": null,
   "latest_limitation_path": null,
@@ -13328,18 +13681,5 @@
     "metadata_successor_validation_pending": true,
     "note": "The data-bearing head passed exact-head push validation, PR validation and the fail-closed gate. The following ledger metadata commit is a successor and remains pending its own validation."
   },
-  "source_revision_addenda": [
-    {
-      "path": "data/xrp_intelligence/source_revisions/20261101T001238Z-xrp-escrow-post-eligibility-status.json",
-      "blob_sha": "88214d132502cf29fb3ab386c33d3036fea00f5c",
-      "commit_sha": "959cefa6984c1b35d05c4acbc97aeb2d98ddeadd",
-      "revision_id": "REV-20261101T001238Z-XRP-ESCROW-POST-ELIGIBILITY-STATUS",
-      "source_id": "SRC-20261031T210244Z-XRP-INSIGHTS-ESCROW",
-      "captured_at_utc": "2026-11-01T00:12:38Z",
-      "status": "PENDING_ARCHIVE_APPEND_AND_EXACT_HEAD_VALIDATION",
-      "pending_archive_append": true,
-      "source_candidates_pending": 3
-    }
-  ],
   "latest_knowledge_signal_safety_pr_verification_status": "EXECUTED_BRANCH_AND_PR_CREATED; NOT_VERIFIED_NO_CI_RUN"
 }
