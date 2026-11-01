@@ -1,4 +1,6 @@
 from pathlib import Path
+import ast
+import re
 
 WORKFLOW = Path(".github/workflows/dependency-audit.yml").read_text(encoding="utf-8")
 CI = Path(".github/workflows/ci.yml").read_text(encoding="utf-8")
@@ -6,12 +8,15 @@ DEV_REQUIREMENTS = Path("requirements-dev.txt").read_text(encoding="utf-8")
 ROOT_REQUIREMENTS = Path("requirements.txt").read_text(encoding="utf-8")
 HF_REQUIREMENTS = Path("hf_space/requirements.txt").read_text(encoding="utf-8")
 LEGACY_REQUIREMENTS = Path("legacy/requirements_legacy.txt").read_text(encoding="utf-8")
+AUX_REQUIREMENTS = Path("requirements.tx").read_text(encoding="utf-8")
+PYPROJECT = Path("pyproject.toml").read_text(encoding="utf-8")
 
 
 def test_dependency_audit_is_scheduled_and_runs_on_dependency_changes():
     assert "schedule:" in WORKFLOW
     assert "pull_request:" in WORKFLOW
     assert "'requirements*.txt'" in WORKFLOW
+    assert "'requirements.tx'" in WORKFLOW
     assert "'pyproject.toml'" in WORKFLOW
     assert "'hf_space/requirements.txt'" in WORKFLOW
     assert "'legacy/requirements_legacy.txt'" in WORKFLOW
@@ -43,11 +48,25 @@ def test_matrix_covers_root_hf_space_and_legacy_python_requirements():
     assert "requirements-dev.txt" in WORKFLOW
     assert "hf_space/requirements.txt" in WORKFLOW
     assert "legacy/requirements_legacy.txt" in WORKFLOW
+    assert "requirements.tx" in WORKFLOW
     assert "-r requirements.txt" in DEV_REQUIREMENTS
     assert ROOT_REQUIREMENTS.strip()
     assert HF_REQUIREMENTS.strip()
     assert LEGACY_REQUIREMENTS.strip()
+    assert AUX_REQUIREMENTS.strip()
 
 
 def test_ci_registers_dependency_audit_workflow_regression_tests():
     assert "tests/test_dependency_audit_workflow.py" in CI
+
+
+def test_pyproject_dependencies_match_the_audited_root_requirements():
+    match = re.search(r"(?ms)^dependencies\\s*=\\s*(\\[[^\\]]*\\])", PYPROJECT)
+    assert match is not None
+    project_dependencies = sorted(ast.literal_eval(match.group(1)))
+    root_dependencies = sorted(
+        line.strip()
+        for line in ROOT_REQUIREMENTS.splitlines()
+        if line.strip() and not line.strip().startswith(("#", "-"))
+    )
+    assert project_dependencies == root_dependencies
