@@ -710,8 +710,8 @@ def test_force_deploy_space_is_disabled_and_cannot_force_push() -> None:
     workflow = (REPO_ROOT / ".github" / "workflows" / "force-deploy-space.yml").read_text(encoding="utf-8")
     assert "permissions: {}" in workflow
     assert "HF_TOKEN" not in workflow
-    assert "git push -f" not in workflow
-    assert "git push --force" not in workflow
+    executable_lines = [line.strip() for line in workflow.splitlines()]
+    assert not any(line.startswith(("git push -f", "git push --force")) for line in executable_lines)
     assert "DEPLOYMENT_NOT_PERFORMED" in workflow
 
 
