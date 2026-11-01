@@ -64,3 +64,18 @@ def test_no_unverified_xrp_forecast_is_issued():
     assert d["verified_xrp_forecasts"] == 0
     assert d["calibration"] == "NOT_ESTIMABLE"
     assert d["real_money"] == "NOT_AUTHORIZED"
+
+
+def test_run13_crosslink_handoff_preserves_user_identity_and_pr1464_evidence():
+    handoff_path = ROOT / "data/xrp_intelligence/hand_offs/20261101T232307Z-run13-pr1464-crosslink-and-kamilah-identity-correction.json"
+    d = load(handoff_path)
+    identity = d["corrections"][0]
+    assert identity["source_class"] == "USER_PROVIDED_CONTEXT"
+    assert identity["exact_user_wording"] == "Kamilah Stevenson is her name"
+    assert identity["instruction"].startswith("Use Kamilah Stevenson")
+    pr = d["cross_research_pr"]
+    assert pr["number"] == 1464
+    assert pr["head_sha"] == "f9f5c3feb0ac8ae90a78f7616b904dcc11bd1985"
+    assert pr["exact_head_ci"]["tests"] == "455 passed, 8 subtests passed"
+    assert pr["video_inventory"]["exhaustive_upload_inventory"] == "NOT_COMPLETE"
+    assert d["safety"]["merge"] is False
