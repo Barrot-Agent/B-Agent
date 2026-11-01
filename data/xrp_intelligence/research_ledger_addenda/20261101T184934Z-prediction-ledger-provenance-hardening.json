@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "addendum_id": "prediction-ledger-provenance-hardening-2026-11-01T18:49:34Z",
+  "captured_at_utc": "2026-11-01T18:49:34Z",
+  "finding": {
+    "prior_gap": "The initial fixed-horizon ledger allowed source_registry=None and only checked that feature_snapshot.sha256 looked like a 64-character hexadecimal digest. It could mark source_registry_status=NOT_CHECKED while still allowing outcome metrics to be computed.",
+    "correction": "PR #1470 now requires hash-bearing source registry entries, ties feature_snapshot.source_id to source_ids, compares the registered content hash to the snapshot SHA-256, registers outcome price sources and blocks all performance metrics for unverified provenance.",
+    "classification": "VERIFIED_CODE_CHANGE_ON_OPEN_PR",
+    "exact_head": "604076164f8695c2f09c59568204883b87f6932a",
+    "tests": "395 passed + 8 subtests",
+    "ci_run": 41338490845,
+    "fail_closed_gate": 41338490862,
+    "merged": false
+  },
+  "unresolved": {
+    "live_vs_replay": "Not yet implemented. Backdated issuance can still be represented unless a trusted append-time timestamp and explicit replay mode are added.",
+    "model_hash": "Model artifact/configuration hash not yet mandatory.",
+    "baseline_hash": "Baseline artifact/configuration hash not yet mandatory."
+  },
+  "forecast_status": "NOT_ISSUED",
+  "outcome_count": 0,
+  "skill_estimate": "UNAVAILABLE"
+}
