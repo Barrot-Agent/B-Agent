@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "source_bundle_id": "coingecko-xrp-market-depth-derivatives-20261101T164508Z",
+  "captured_at_utc": "2026-11-01T16:45:08Z",
+  "sources": [
+    {
+      "id": "coingecko-xrp-market-page-2026-11-01-1645",
+      "url": "https://www.coingecko.com/en/coins/xrp",
+      "publisher": "CoinGecko",
+      "type": "AGGREGATED_MARKET_AND_EXCHANGE_DATA",
+      "accessed_at_utc": "2026-11-01T16:45:08Z",
+      "claims": [
+        "XRP price $1.25; market cap $79.11B; 24h spot volume $695.452M",
+        "Perpetual OI $3.501B; OI/market cap 4.43%; funding +0.0093% per 8h; perps/spot 16.4x",
+        "Coinbase XRP/USD pair depth and volume; Binance XRP/USDC and XRP/USDT pair depth and volume",
+        "Top derivative venue OI/funding/volume rows"
+      ],
+      "limitations": [
+        "Exchange rows show Last Updated 'Recently', not synchronized venue timestamps",
+        "Aggregator methodology and venue coverage may change",
+        "Descriptive only"
+      ]
+    }
+  ],
+  "source_independence": "Single aggregated provider observation. It is not an independent corroboration of venue-specific exchange data.",
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

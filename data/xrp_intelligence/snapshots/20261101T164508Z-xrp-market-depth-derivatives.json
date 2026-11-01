@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "xrp-market-depth-derivatives-20261101T164508Z",
+  "captured_at_utc": "2026-11-01T16:45:08Z",
+  "provider": "CoinGecko",
+  "source_url": "https://www.coingecko.com/en/coins/xrp",
+  "timestamp_quality": "Page retrieval time is recorded; exchange-level underlying observation timestamps are displayed only as 'Recently' and are not synchronized.",
+  "market": {
+    "price_usd": 1.25,
+    "price_24h_change_pct": 0.4,
+    "price_24h_range_usd": [
+      1.25,
+      1.26
+    ],
+    "price_7d_range_usd": [
+      1.2,
+      1.34
+    ],
+    "return_7d_pct": 3.7,
+    "return_30d_pct": 17.5,
+    "return_1y_pct": 49.7,
+    "market_cap_usd": 79110000000,
+    "fully_diluted_valuation_usd": 124857000000,
+    "spot_volume_24h_usd": 695452000,
+    "perpetual_open_interest_usd": 3501000000,
+    "open_interest_to_market_cap_pct": 4.43,
+    "funding_rate_8h_pct": 0.0093,
+    "perpetual_to_spot_24h_volume_ratio": 16.4,
+    "circulating_supply_xrp": 63351000000,
+    "total_supply_xrp": 99986000000,
+    "max_supply_xrp": 100000000000,
+    "coin_gecko_total_treasury_holding_field_xrp": 473276430,
+    "treasury_field_attribution": "Unassigned in this page extract; do not attribute to Evernorth or any single holder without the treasury detail page.",
+    "feature_admission": "DESCRIPTIVE_ONLY_PROVIDER_AGGREGATE_NOT_ADMITTED_TO_PREDICTIVE_FEATURE_STORE"
+  },
+  "spot_pairs": [
+    {
+      "exchange": "Kraken",
+      "pair": "XRP/USD",
+      "spread_pct": 0.01,
+      "depth_plus_2pct_usd": 5063680,
+      "depth_minus_2pct_usd": 4877576,
+      "volume_24h_usd": 6737828,
+      "last_updated": "Recently"
+    },
+    {
+      "exchange": "Coinbase Exchange",
+      "pair": "XRP/USD",
+      "spread_pct": 0.01,
+      "depth_plus_2pct_usd": 4486633,
+      "depth_minus_2pct_usd": 7711117,
+      "volume_24h_usd": 18874830,
+      "last_updated": "Recently"
+    },
+    {
+      "exchange": "Binance",
+      "pair": "XRP/USDC",
+      "spread_pct": 0.01,
+      "depth_plus_2pct_usd": 363842,
+      "depth_minus_2pct_usd": 739110,
+      "volume_24h_usd": 33297806,
+      "last_updated": "Recently"
+    },
+    {
+      "exchange": "Bitget",
+      "pair": "XRP/USDT",
+      "spread_pct": 0.01,
+      "depth_plus_2pct_usd": 2274026,
+      "depth_minus_2pct_usd": 2077359,
+      "volume_24h_usd": 14648789,
+      "last_updated": "Recently"
+    },
+    {
+      "exchange": "OKX",
+      "pair": "XRP/USDT",
+      "spread_pct": 0.01,
+      "depth_plus_2pct_usd": 1916645,
+      "depth_minus_2pct_usd": 1593277,
+      "volume_24h_usd": 15845690,
+      "last_updated": "Recently"
+    },
+    {
+      "exchange": "Binance",
+      "pair": "XRP/USDT",
+      "spread_pct": 0.01,
+      "depth_plus_2pct_usd": 2028573,
+      "depth_minus_2pct_usd": 2026306,
+      "volume_24h_usd": 30679640,
+      "last_updated": "Recently"
+    }
+  ],
+  "derivatives_top_pairs": [
+    {
+      "exchange": "Binance Futures",
+      "pair": "XRP/USDT",
+      "open_interest_usd": 341044693,
+      "funding_rate_8h_pct": 0.01,
+      "volume_24h_usd": 240210815
+    },
+    {
+      "exchange": "MEXC Futures",
+      "pair": "XRP/USDT",
+      "open_interest_usd": 286636469,
+      "funding_rate_8h_pct": 0.01,
+      "volume_24h_usd": 109125879
+    },
+    {
+      "exchange": "Bybit Futures",
+      "pair": "XRP/USDT",
+      "open_interest_usd": 305369256,
+      "funding_rate_8h_pct": 0.004,
+      "volume_24h_usd": 106779609
+    },
+    {
+      "exchange": "WEEX Futures",
+      "pair": "XRP/USDT",
+      "open_interest_usd": 153853738,
+      "funding_rate_8h_pct": 0,
+      "volume_24h_usd": 168231786
+    },
+    {
+      "exchange": "Hyperliquid",
+      "pair": "XRP/USDC",
+      "open_interest_usd": 195559390,
+      "funding_rate_8h_pct": 0.001,
+      "volume_24h_usd": 13939030
+    },
+    {
+      "exchange": "Gate Futures",
+      "pair": "XRP/USDT",
+      "open_interest_usd": 276222596,
+      "funding_rate_8h_pct": 0.01,
+      "volume_24h_usd": 32910363
+    },
+    {
+      "exchange": "Bitget Futures",
+      "pair": "XRP/USDT",
+      "open_interest_usd": 231973505,
+      "funding_rate_8h_pct": 0.01,
+      "volume_24h_usd": 37443725
+    },
+    {
+      "exchange": "Toobit Futures",
+      "pair": "XRP/USDT",
+      "open_interest_usd": 124835560,
+      "funding_rate_8h_pct": 0.01,
+      "volume_24h_usd": 151474020
+    },
+    {
+      "exchange": "CoinW Futures",
+      "pair": "XRP/USDT",
+      "open_interest_usd": 149736026,
+      "funding_rate_8h_pct": 0.01,
+      "volume_24h_usd": 105629296
+    },
+    {
+      "exchange": "OKX Futures",
+      "pair": "XRP/USDT",
+      "open_interest_usd": 103359435,
+      "funding_rate_8h_pct": 0.003,
+      "volume_24h_usd": 91211298
+    }
+  ],
+  "interpretation": [
+    "Coinbase XRP/USD has a displayed 0.01% spread, approximately $4.49M bid-side +2% depth, $7.71M ask-side -2% depth and $18.87M 24h pair volume in this provider snapshot.",
+    "Binance's XRP/USDC and XRP/USDT rows show different depth and volume; pair-level quote-asset differences must be preserved rather than combined into a single exchange-liquidity figure.",
+    "The provider's aggregate perps/spot ratio is 16.4x and funding is positive at 0.0093% per 8h. This is a derivatives-heavy, mildly positive-funding snapshot, not a directional forecast.",
+    "Compared with the earlier same-provider retrieval at 16:36:41Z, OI changed from $3.517B to $3.501B, funding from 0.0086% to 0.0093%, and perps/spot ratio from 13.1x to 16.4x. Because venue timestamps and aggregation windows are not synchronized, these deltas are provider-observation changes, not a verified market time series."
+  ],
+  "limitations": [
+    "No exact venue snapshot timestamp; 'Recently' is not a machine-usable timestamp.",
+    "CoinGecko aggregates exchanges and derivative venues; pair rows are not a complete order book or total exchange liquidity.",
+    "The displayed 473,276,430 XRP treasury field is not attributed in this page extract.",
+    "No prediction or model feature admission."
+  ],
+  "forecast_status": "NOT_ISSUED"
+}

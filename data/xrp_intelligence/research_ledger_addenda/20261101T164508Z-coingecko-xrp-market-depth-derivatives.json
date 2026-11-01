@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "addendum_id": "coingecko-xrp-market-depth-derivatives-20261101T164508Z",
+  "captured_at_utc": "2026-11-01T16:45:08Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T164508Z-xrp-market-depth-derivatives.json",
+  "source_bundle": "data/xrp_intelligence/sources/20261101T164508Z-coingecko-xrp-market-depth-derivatives.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T164508Z-coingecko-xrp-market-depth-derivatives.json",
+  "key_updates": [
+    "CoinGecko's 16:45 UTC page retrieval displays XRP at $1.25, $79.11B market cap, $695.452M 24h spot volume, $3.501B perpetual open interest, +0.0093% 8h funding and 16.4x perps/spot volume.",
+    "Coinbase XRP/USD displayed 0.01% spread, $4.487M +2% depth, $7.711M -2% depth and $18.875M 24h pair volume.",
+    "Binance XRP/USDC and XRP/USDT show materially different pair-level depth and volume; quote assets must not be conflated.",
+    "The same provider's prior retrieval at 16:36:41Z differed on OI, funding and perps/spot ratio. Underlying venue timestamps are unsynchronized, so no directional inference or time-series admission is permitted.",
+    "CoinGecko's 'Total Treasury Holding' field of 473,276,430 XRP is not attributed in this page extract and must not be assigned to Evernorth without the treasury-detail evidence."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}

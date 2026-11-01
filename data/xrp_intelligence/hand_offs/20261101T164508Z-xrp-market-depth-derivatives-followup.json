@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "handoff_id": "xrp-market-depth-derivatives-followup-20261101T164508Z",
+  "captured_at_utc": "2026-11-01T16:45:08Z",
+  "snapshot": "data/xrp_intelligence/snapshots/20261101T164508Z-xrp-market-depth-derivatives.json",
+  "source_bundle": "data/xrp_intelligence/sources/20261101T164508Z-coingecko-xrp-market-depth-derivatives.json",
+  "source_revision": "data/xrp_intelligence/source_revisions/20261101T164508Z-coingecko-xrp-market-depth-derivatives.json",
+  "addendum": "data/xrp_intelligence/research_ledger_addenda/20261101T164508Z-coingecko-xrp-market-depth-derivatives.json",
+  "next_actions": [
+    "Obtain synchronized direct Coinbase, Binance, Kraken and OKX order-book snapshots with venue timestamps and quote-asset-specific depth.",
+    "Reconcile CoinGecko's aggregate OI/funding/perps-to-spot metrics against exchange-level contract endpoints and a second independent provider.",
+    "Do not infer customer migration from Coinbase/Binance pair volume; require matched time windows, pair coverage and market-wide denominators.",
+    "Keep the 473,276,430 XRP treasury field unattributed until CoinGecko treasury detail and SEC filing holdings reconcile.",
+    "No feature admission or directional forecast until point-in-time history and out-of-sample tests exist."
+  ],
+  "feature_admission": "NONE",
+  "forecast_status": "NOT_ISSUED"
+}
