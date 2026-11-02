@@ -1,0 +1,31 @@
+name: XRP Evidence Gate
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "barrot_agent/analysis/xrp_telemetry_matrix.py"
+      - "barrot_agent/tools/upgrade_bundle.py"
+      - "tests/test_xrp_telemetry_matrix.py"
+      - "tests/test_upgrade_bundle_disabled.py"
+      - ".github/workflows/xrp-evidence-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install test dependency
+        run: python -m pip install pytest
+      - name: Run evidence-gate regression tests
+        run: python -m pytest tests/test_xrp_telemetry_matrix.py tests/test_upgrade_bundle_disabled.py -q
