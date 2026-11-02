@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "platform_coordination_capability_map",
+  "title": "Nine-platform XRP research coordination: capability, authentication, permissions and data-flow status",
+  "captured_at_utc": "2026-11-02T06:28:48.671Z",
+  "overall_status": "DESIGNED_NOT_OPERATIONALLY_CONNECTED",
+  "repository": "https://github.com/Barrot-Agent/B-Agent",
+  "repository_main_sha_observed": "d7c7d8072110ac3e77f7e265e897632ff334e6ef",
+  "platforms": [
+    {
+      "name": "ChatGPT",
+      "runtime_status": "VERIFIED_ACTIVE_IN_THIS_SESSION",
+      "evidence": "Current ChatGPT runtime used for research and structured GitHub connector operations.",
+      "auth": "Managed ChatGPT session; no external provider token exposed.",
+      "default_permission": "Public web research and GitHub read/search/branch/PR operations exposed by connected tools; no secret access or merge authority used.",
+      "xrp_role": "Orchestration, evidence synthesis, hypothesis comparison, source-quality review.",
+      "adapter_status": "Native session tools tested; no claim of independent external agent process."
+    },
+    {
+      "name": "Claude",
+      "runtime_status": "NOT_VERIFIED_CONNECTED",
+      "evidence": "No authenticated Claude session, API adapter, or tested handoff established in this run.",
+      "auth": "Not configured/verified.",
+      "default_permission": "None.",
+      "xrp_role": "Designed independent red-team and alternative-hypothesis review.",
+      "adapter_status": "DESIGNED_ONLY"
+    },
+    {
+      "name": "Grok",
+      "runtime_status": "NOT_VERIFIED_CONNECTED",
+      "evidence": "No authenticated xAI/Grok session or tested adapter found. Repository Groq integration is a different provider and must not be counted as Grok.",
+      "auth": "Not configured/verified.",
+      "default_permission": "None.",
+      "xrp_role": "Designed public-discussion/event discovery and adversarial market narrative review.",
+      "adapter_status": "DESIGNED_ONLY"
+    },
+    {
+      "name": "Gemini",
+      "runtime_status": "NOT_VERIFIED_CONNECTED",
+      "evidence": "No authenticated Gemini session or tested adapter established.",
+      "auth": "Not configured/verified.",
+      "default_permission": "None.",
+      "xrp_role": "Designed multimodal public-document/video extraction and independent source parsing.",
+      "adapter_status": "DESIGNED_ONLY"
+    },
+    {
+      "name": "Copilot",
+      "runtime_status": "CONFIG_ARTIFACTS_ONLY_NOT_LIVE_COLLABORATION",
+      "evidence": "Main contains .github/copilot-instructions.md and ping-pongings/agents/copilot-role.yaml; these are static instructions/role configuration, not proof of an authenticated Copilot API session.",
+      "auth": "No live Copilot token/session verified.",
+      "default_permission": "None verified; any future repository access read-only by default.",
+      "xrp_role": "Designed code review, workflow and test analysis.",
+      "adapter_status": "ROLE_CONFIG_PRESENT; LIVE_ADAPTER_NOT_VERIFIED"
+    },
+    {
+      "name": "Codex",
+      "runtime_status": "NOT_VERIFIED_CONNECTED",
+      "evidence": "No authenticated Codex session or adapter handoff tested in this run.",
+      "auth": "Not configured/verified.",
+      "default_permission": "None.",
+      "xrp_role": "Designed implementation and test-generation worker operating only on isolated branches.",
+      "adapter_status": "DESIGNED_ONLY"
+    },
+    {
+      "name": "Hugging Face",
+      "runtime_status": "REPOSITORY_CODE_AND_WORKFLOWS_PRESENT_LIVE_AUTH_NOT_TESTED",
+      "evidence": "deploy_huggingface.py, sync-huggingface.yml and force-deploy-space.yml exist. Main sync workflow is manual with explicit YES and writes a Space plus propagates secrets; force-deploy-space can force-push an external Space without an explicit confirmation input. PR #1480 proposes disabling both.",
+      "auth": "HF_TOKEN is referenced through GitHub Actions secrets; no token value read or live authentication test performed.",
+      "default_permission": "Read-only model/dataset lookup; external uploads/secrets require protected human approval.",
+      "xrp_role": "Designed model/dataset registry, reproducible model artifacts and inference hosting.",
+      "adapter_status": "CODE_PRESENT; EXECUTION_NOT_VERIFIED"
+    },
+    {
+      "name": "Kaggle",
+      "runtime_status": "REPOSITORY_CODE_AND_SCHEDULE_PRESENT_LIVE_AUTH_NOT_TESTED",
+      "evidence": "kaggle-competitions.yml runs daily at 00:00 UTC and passes KAGGLE_USERNAME/KAGGLE_KEY; kaggle_competitions_automation.py defaults to up to five active competitions and submits generated baseline files. Main has no explicit submission approval gate. PR #1480 changes it to manual-only and adds an explicit allow_submission/KAGGLE_ALLOW_SUBMISSIONS guard.",
+      "auth": "KAGGLE_USERNAME/KAGGLE_KEY referenced through GitHub Actions secrets; no credential read or account test performed.",
+      "default_permission": "Dataset/leaderboard read-only; submission disabled unless separately approved.",
+      "xrp_role": "Designed public historical dataset sourcing, benchmark replication and reproducible competitions; no XRP auto-submission.",
+      "adapter_status": "CODE_PRESENT; MAIN_WORKFLOW_RISK_RECORDED; EXECUTION_NOT_VERIFIED"
+    },
+    {
+      "name": "Databricks",
+      "runtime_status": "REPOSITORY_CODE_AND_WORKFLOWS_PRESENT_LIVE_AUTH_NOT_TESTED",
+      "evidence": "mcp_databricks.py uses DATABRICKS_HOST/TOKEN and Jobs API; deploy_databricks.py uploads files with overwrite, creates/updates a scheduled job and triggers it. deploy-databricks and databricks-bundle require manual YES inputs; rotate-databricks-token accepts a token as workflow input, writes a GitHub secret and dispatches deployment. PR #1480 proposes disabling these workflows.",
+      "auth": "DATABRICKS_HOST/TOKEN referenced through GitHub Actions secrets; no token read or workspace test performed.",
+      "default_permission": "Read-only SQL/feature-store access in a dedicated workspace; no workspace upload, job create/update/run or secret rotation without protected approval.",
+      "xrp_role": "Designed historical feature store, large-scale walk-forward/backtesting and reproducible shadow evaluation.",
+      "adapter_status": "CODE_PRESENT; EXECUTION_NOT_VERIFIED"
+    }
+  ],
+  "execution_substrate": {
+    "name": "GitHub",
+    "status": "VERIFIED_ACTIVE",
+    "role": "Repository, issue/PR, CI and durable handoff substrate; not counted as one of the nine target AI platforms.",
+    "permission_boundary": "Changes are prepared on branches and PRs; no merge, force-push or manual workflow dispatch in this run."
+  },
+  "repository_adapter_audit": {
+    "generic_mcp_adapter": "barrot_agent/mcp_adapters.py contains generic Git and read-only filesystem adapters; no dedicated authenticated Claude/Grok/Gemini/Codex adapter was verified.",
+    "databricks_and_huggingface": "Existing clients are primarily for the Stupid Sindy/video pipeline, not proven XRP research agents.",
+    "groq_vs_grok": "scripts/groq_chain.py and Groq API credentials are not xAI Grok. Treat as separate services.",
+    "source_paths": [
+      "barrot_agent/mcp_adapters.py",
+      "barrot_agent/orchestration/mcp_databricks.py",
+      "barrot_agent/orchestration/mcp_huggingface.py",
+      "barrot_agent/orchestration/deploy_databricks.py",
+      "barrot_agent/orchestration/deploy_huggingface.py",
+      "barrot_agent/tools/kaggle_competitions_automation.py",
+      ".github/copilot-instructions.md",
+      "ping-pongings/agents/copilot-role.yaml"
+    ]
+  },
+  "designed_task_assignment": {
+    "ChatGPT": "Orchestrate evidence intake, normalize claims, maintain relationship graph and forecast ledger, synthesize disagreements.",
+    "Claude": "Independent red-team review, counter-hypotheses, falsification and calibration critique.",
+    "Grok": "Public social-discourse/event discovery; distinguish sentiment from verified market activity.",
+    "Gemini": "Multimodal public filings, video and document extraction with page/time provenance.",
+    "Copilot": "Repository/workflow/security review; read-only default.",
+    "Codex": "Minimal isolated-branch code implementation, tests and reproducible fixes.",
+    "HuggingFace": "Model/dataset discovery, immutable model artifact registry and inference; no automatic public upload.",
+    "Kaggle": "Historical dataset/benchmark replication; submissions disabled by default.",
+    "Databricks": "Historical feature store, point-in-time joins, walk-forward backtesting and shadow evaluation; no workspace deployment without approval."
+  },
+  "evidence_envelope_schema": {
+    "required_fields": [
+      "request_id",
+      "platform",
+      "adapter_version",
+      "auth_test_status",
+      "permission_scope",
+      "task_id",
+      "source_id",
+      "source_url",
+      "retrieved_at_utc",
+      "captured_at_utc",
+      "content_sha256",
+      "source_independence_group",
+      "claim",
+      "claim_class",
+      "confidence",
+      "supporting_span",
+      "disconfirming_evidence",
+      "alternative_hypothesis",
+      "limitations",
+      "handoff_status"
+    ],
+    "claim_classes": [
+      "CONFIRMED_FACT",
+      "SOURCED_CLAIM",
+      "INFERENCE",
+      "SPECULATION",
+      "UNKNOWN",
+      "DISCONFIRMING_EVIDENCE"
+    ],
+    "rule": "A platform output is a sourced claim until independently corroborated. Preserve minority objections and provenance; do not force consensus."
+  },
+  "least_privilege_design": {
+    "default": "Read-only public data and repository reads; separate scoped credential per platform; no shared secrets.",
+    "write_controls": "Human approval and a protected GitHub Environment with required reviewers for repository mutation, deployments, public uploads, Kaggle submissions, token rotation or external job execution.",
+    "secrets": "Never pass raw tokens or private data in prompts, artifacts, logs or cross-platform handoffs.",
+    "data_flow": "Public source -> immutable snapshot -> feature store -> independent agent analyses -> evidence envelope -> contradiction/red-team review -> human-approved code/PR changes.",
+    "fallback": "If provider unavailable/rate-limited, continue deterministic local ingestion and record provider_unavailable; do not silently substitute current data for historical values.",
+    "disagreement_resolution": "Rank source quality and independence; preserve dissent; require explicit counter-evidence before promoting inference to confirmed."
+  },
+  "security_findings": {
+    "main_kaggle_daily_auto_submission": "ACTIVE_ON_MAIN_UNTIL_APPROVED_REMEDIATION; daily schedule, secrets, up to five active competitions, script auto-submits.",
+    "main_force_deploy_space": "ACTIVE_ON_MAIN_UNTIL_APPROVED_REMEDIATION; manual workflow can force-push to Hugging Face Space without explicit approval input.",
+    "main_databricks_token_rotation": "ACTIVE_ON_MAIN_UNTIL_APPROVED_REMEDIATION; accepts token as workflow input, writes secret and dispatches deployment.",
+    "main_sync_huggingface": "MANUAL_CONFIRMATION_EXISTS_BUT_STILL_MUTATES_EXTERNAL_SPACE_AND_PROPAGATES_SECRETS.",
+    "main_databricks_deploy": "MANUAL_CONFIRMATION_EXISTS_BUT_NO_PROTECTED_ENVIRONMENT_VERIFIED.",
+    "proposed_quarantine": "PR #1480 disables/quarantines these paths; remains draft and unmerged. PR #1487 separately disables Merge Queue on fresh main; remains draft and unmerged."
+  },
+  "next_actions": [
+    "Do not claim Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks are live XRP collaborators until each adapter passes an explicit auth and least-privilege test.",
+    "Design provider adapters with capability manifests and a common evidence envelope before enabling cross-agent data exchange.",
+    "Use read-only Databricks SQL/feature-store access and Hugging Face model/dataset read access first; defer deployment/write scopes.",
+    "Disable or gate current main's scheduled Kaggle submissions and force-push/secret-rotation workflows through reviewed proposals before any external execution.",
+    "Retain independent red-team assignments and minority objections in the durable research ledger."
+  ],
+  "safety": {
+    "no_unauthorized_access": true,
+    "no_deception": true,
+    "no_private_data": true,
+    "no_market_manipulation": true,
+    "no_secret_access": true,
+    "no_external_write_executed": true
+  }
+}
