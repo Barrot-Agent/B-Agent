@@ -1,0 +1,175 @@
+{
+  "schema": "barrot.xrp-intelligence.handoff.v1",
+  "artifact_id": "20261102T132500Z-binance-crosschain-freeze-timeline-and-xrpl-scope",
+  "captured_at_utc": "2026-11-02T13:25:00Z",
+  "topic": "Binance incident cross-chain freeze timeline and explicit XRPL coverage boundary",
+  "status": "append_only_evidence_snapshot",
+  "primary_source": {
+    "publisher": "OnChain Benchmark Research",
+    "title": "Four Hours, 20 Freezes, One Attacker: Inside the Race to Freeze the Binance Hack, Second by Second",
+    "published_at_utc": "2026-10-30T04:30:00Z",
+    "data_read_window_utc": "2026-10-30T00:48:00Z/2026-10-30T04:10:00Z",
+    "source": "https://onchainbenchmark.com/reports/binance-hack-freeze-race",
+    "method": "Direct public blockchain reads, issuer freeze events and balances at freeze blocks; address labels from public explorer tags.",
+    "critical_scope_limit": "The report explicitly did not read XRPL, Bitcoin, Solana, Optimism and other chains. It cannot independently verify the 233.46M XRP tranche or the six XRPL recipient wallets."
+  },
+  "timeline_utc": [
+    {
+      "time": "2026-10-29T20:24:23Z",
+      "chain": "Ethereum",
+      "event": "Main Binance 14 drain; one transaction moved 167,464 ETH, 1.62B USDT and dozens of other tokens.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T20:30:00Z/2026-10-29T20:33:00Z",
+      "chain": "Ethereum",
+      "event": "About 700M USDT left the main attacker address before Tether's freeze; approximately 205M was later frozen downstream.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T21:01:35Z",
+      "chain": "Ethereum",
+      "event": "Tether blacklisted the main attacker address 37 minutes after the drain.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T21:04:59Z",
+      "chain": "Ethereum",
+      "event": "Circle froze approximately 823M USDC at the main attacker address, 41 minutes after the drain.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T21:07:55Z",
+      "chain": "Avalanche",
+      "event": "Tether froze approximately 8.4M USDt.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T21:09:12Z",
+      "chain": "Tron",
+      "event": "Tether froze approximately 312.7M USDT at the main address plus approximately 66.0M one hop downstream.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T21:11:23Z",
+      "chain": "Ethereum",
+      "event": "Tether Gold freeze: 12,574 XAUt, valued by the report at approximately $50.6M.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T22:00:59Z",
+      "chain": "Ethereum",
+      "event": "Ripple paused approximately 40.5M RLUSD across three wallets; the report says approximately 48M had already moved.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T22:10:35Z",
+      "chain": "Ethereum",
+      "event": "USD1 freeze: approximately $27.8M.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T22:30:47Z",
+      "chain": "Ethereum",
+      "event": "PAXG freeze: 1,907 oz, valued at approximately $7.7M.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T22:48:35Z",
+      "chain": "Ethereum",
+      "event": "Binance moved 29,934 WBETH, valued at approximately $76.9M, to a wallet where it was frozen.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-29T23:25:39Z",
+      "chain": "Polygon",
+      "event": "USDT0 freeze: approximately $6.2M.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-30T00:18:20Z",
+      "chain": "Arbitrum",
+      "event": "Arbitrum Security Council moved 74.6M ARB and 8,426 ETH to a frozen holding wallet.",
+      "class": "chain_governance_intervention"
+    },
+    {
+      "time": "2026-10-30T00:46:11Z",
+      "chain": "Ethereum",
+      "event": "First Digital froze approximately $3.5M FDUSD.",
+      "class": "onchain_observation"
+    },
+    {
+      "time": "2026-10-30T04:11:35Z",
+      "chain": "Ethereum",
+      "event": "Circle froze a second attacker-linked wallet holding approximately 123,176 USDC.",
+      "class": "onchain_observation"
+    }
+  ],
+  "freeze_amounts": {
+    "tether": {
+      "total_across_ethereum_avalanche_polygon_tron_usd": 1569500000,
+      "tron_usdt_usd": 378700000,
+      "ethereum_usdt_at_first_freeze_usd": 971100000,
+      "ethereum_usdt_later_balance_usd": 1180000000,
+      "note": "The later Ethereum amount includes approximately $204M more USDT that reached the blacklisted address and was frozen on arrival. The $378.7M Tron amount is a subset of Tether's cross-chain total, not an additional amount."
+    },
+    "circle": {
+      "attacker_main_ethereum_usdc_usd": 823000000,
+      "second_wallet_usdc": 123176,
+      "separate_binance_compromised_wallet_usdc_usd": 60000000,
+      "note": "The report excludes the approximately $60M USDC in Binance's own compromised wallets from its approximately $2.8B attacker-address total. The second wallet and Binance-wallet freezes are separate observations."
+    },
+    "ripple": {
+      "rlusd_paused_usd": 40500000,
+      "rlusd_already_moved_usd": 48000000,
+      "note": "The report's RLUSD observation is Ethereum-specific. It explicitly says XRPL RLUSD was not read."
+    },
+    "other": {
+      "usd1_usd": 27800000,
+      "paxg_usd": 7700000,
+      "wbeth_usd": 76900000,
+      "usdt0_polygon_usd": 6200000,
+      "arbitrum_arb_and_eth_usd": 31800000,
+      "fdusd_usd": 3500000
+    }
+  },
+  "later_reuters_reconciliation": {
+    "source_published_at_utc": "2026-11-02T01:53:00Z",
+    "reported_circle_usdc_frozen_usd": 1100000000,
+    "earlier_onchain_benchmark_main_attacker_usdc_usd": 823000000,
+    "known_separate_circle_freezes_usdc": {
+      "second_attacker_wallet": 123176,
+      "binance_compromised_wallets_base_usd": 60000000
+    },
+    "unresolved_difference_usd_approx": 216876824,
+    "interpretation": "Reuters attributes a later >$1.1B USDC freeze statement to Circle. The October 30 onchain report documents $823M at the main attacker address plus the listed separate freezes, which still do not fully reconcile to >$1.1B. Further later freezes or broader scope may explain the difference; exact address/contract reconciliation is unavailable. Preserve both snapshots and do not add them."
+  },
+  "unfreezable_asset_context": {
+    "ethereum_eth_at_read_time_approx": 460000,
+    "wallets": 17,
+    "value_usd_at_attack_price_approx": 1070000000,
+    "later_update_any_transfer_size_eth_approx": 507500,
+    "note": "These are Ethereum attacker-funded wallets and are unrelated to the XRP recipient balances. ETH on Ethereum has no issuer freeze control or chain-level emergency council comparable to Arbitrum's."
+  },
+  "relationship_and_causal_implications": [
+    "Circle, Tether and Ripple issuer controls operated as emergency brakes for their own token contracts, not for native XRP.",
+    "Tether's 378.7M Tron freeze is included in its 1.5695B cross-chain total and must not be double-counted.",
+    "The reported Circle >1.1B USDC figure is later and broader than the October 30 823M main-address observation; scope is unresolved.",
+    "The Arbitrum Security Council intervention is a chain-governance action, not a stablecoin issuer freeze.",
+    "The report's explicit omission of XRPL means it is not independent corroboration of the 233.46M XRP theft or later six-wallet redistribution.",
+    "No freeze amount proves recovery, return to Binance, or market purchase."
+  ],
+  "sources": [
+    "https://onchainbenchmark.com/reports/binance-hack-freeze-race",
+    "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+    "https://news.bitcoin.com/security/binance-hacker-moves-293m-stolen-xrp/"
+  ],
+  "next_actions": [
+    "Obtain the report's full freeze list and verify each token/chain/contract/address against raw public transaction receipts.",
+    "Reconcile Circle's later >$1.1B statement to subsequent USDC blacklist events by address and chain.",
+    "Reconcile Tether's Tron 378.7M subset to its 1.5695B cross-chain total.",
+    "Keep XRPL attacker-recipient monitoring on a separate native-ledger data path; do not use the OnChain Benchmark report as XRPL corroboration."
+  ],
+  "forecast_status": "NOT_ISSUED",
+  "safety": "Public chain data and public reporting only; no unauthorized access, wallet interaction, or asset movement."
+}

@@ -1,0 +1,358 @@
+{
+  "schema": "barrot.xrp-intelligence.handoff.v1",
+  "artifact_id": "20261102T131240Z-binance-outflows-tron-circle-freeze-market-pillar-audit",
+  "captured_at_utc": "2026-11-02T13:12:40Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "status": "append_only_research_snapshot",
+  "summary": "Fresh Reuters, Bitcoin.com, CoinDesk, market-provider and GitHub evidence. Separates Binance customer withdrawals from labeled-wallet reserve flows; separates the Tron laundering stream from XRPL stolen XRP; records Circle/Tether freeze figures by source and cutoff; diagnoses a scheduled Barrot pillar-health failure without changing secrets or external services.",
+  "event_timeline": [
+    {
+      "event": "Binance withdrawals reopened in phases",
+      "window_utc": "2026-11-01 from 06:00 UTC",
+      "status": "sourced_claim",
+      "details": {
+        "initial_window_withdrawals_usd": 4649000000,
+        "initial_window_deposits_usd": 1010000000,
+        "initial_window_net_outflow_usd": 3640000000,
+        "initial_window_end_utc": "2026-11-01T15:30:00Z",
+        "share_of_reported_assets_pct": 2.1,
+        "interpretation": "This is an earlier, bounded first-nine-and-a-half-hour window. It is not additive to the later Reuters cumulative figure."
+      },
+      "sources": [
+        "https://www.binance.com/en/square/post/11-01-2026-cz-binance-net-outflow-was-just-2-1-after-withdrawals-reopen-mostly-in-the-first-hours-383648617105723",
+        "https://www.coindesk.com/markets/2026/11/02/live-updates-binance-records-usd6-billion-outflows-after-starting-withdrawals-less-then-4-of-total-holdings"
+      ]
+    },
+    {
+      "event": "Reuters updated Binance customer net withdrawals",
+      "source_published_at_utc": "2026-11-02T01:53:00Z",
+      "status": "sourced_claim",
+      "details": {
+        "cumulative_net_customer_outflow_usd": 4720000000,
+        "share_of_platform_assets_pct": 2.8,
+        "reported_inflows_usd": 2700000000,
+        "exchange_statement": "Withdrawal volumes declined after an initial spike and were stabilizing; deposits remained substantial.",
+        "comparison_rule": "The $4.72B Reuters figure is a later cumulative update from reopening. The $3.64B earlier window is nested/earlier and must not be added to it."
+      },
+      "source": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/"
+    },
+    {
+      "event": "Public labeled-address reserve monitor reports Binance outflows",
+      "observation_time_utc": "2026-11-02T12:00:00Z",
+      "status": "provider_observation",
+      "details": {
+        "tracked_reserves_usd": 89200000000,
+        "net_flow_24h_usd": -1350000000,
+        "net_flow_7d_usd": -8210000000,
+        "worst_24h_net_outflow_since_2026_11_01T09_00_00Z_usd": -4060000000,
+        "worst_24h_pct_of_covered_reserves": 4.4,
+        "coverage_limit": "The provider reads its own BTC, ETH, LTC, DOGE and BCH nodes, with stablecoins on Ethereum. It explicitly says it cannot see customer liabilities, pledged assets or undisclosed/custodial addresses; Coinbase and Kraken are absent. This is not an XRPL/XRP reserve series."
+      },
+      "source": "https://cryptokeyhole.com/proof-of-reserves/"
+    },
+    {
+      "event": "Attacker redistributed the XRPL XRP tranche",
+      "observation_time_utc": "2026-11-02T04:37:00Z",
+      "status": "secondary_sourced_claim_cross_checked_against_prior_bithomp_capture",
+      "details": {
+        "original_stolen_xrp_approx": 233461943.1,
+        "redistributed_xrp_approx": 233454920,
+        "destination_wallet_count": 6,
+        "destination_pattern": "Five recipients reported near 40M XRP each; sixth near 33.46M XRP.",
+        "onward_transfer_observed_at_source_cutoff": false,
+        "sale_or_exchange_deposit_established": false,
+        "interpretation": "The movement is wallet segmentation/staging. It is not evidence of a sale. The latest raw validated-ledger refresh remains unavailable."
+      },
+      "sources": [
+        "https://news.bitcoin.com/security/binance-hacker-moves-293m-stolen-xrp/",
+        "https://bithomp.com/account/rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx/transactions"
+      ]
+    },
+    {
+      "event": "Separate Tron laundering route reported",
+      "source_published_at_utc": "2026-11-02T07:30:00Z",
+      "status": "secondary_sourced_claim",
+      "details": {
+        "reported_tron_route_value_usd": 242000000,
+        "reported_tron_stolen_assets_usd": 628000000,
+        "reported_tether_frozen_usdt": 378700000,
+        "reported_bitget_wallet_flow_usd": 41700000,
+        "bitget_destination": "unconfirmed",
+        "reported_gate_deposit_usd": 250000,
+        "gate_deposit_asset_and_chain": "not specified in cited article; do not attribute to XRP",
+        "routes_named": [
+          "Relay",
+          "THORChain",
+          "Chainflip",
+          "Symbiosis"
+        ],
+        "interpretation": "This is a separate Tron/cross-chain laundering stream. It is not evidence that the six XRPL recipient wallets sold XRP. The $378.7M figure may overlap larger incident-wide Tether freeze totals; do not add without address-level reconciliation."
+      },
+      "source": "https://news.bitcoin.com/security/binance-hacker-moves-293m-stolen-xrp/"
+    },
+    {
+      "event": "Circle USDC freeze amount updated in Reuters reporting",
+      "source_published_at_utc": "2026-11-02T01:53:00Z",
+      "status": "sourced_claim",
+      "details": {
+        "reported_circle_usdc_frozen_usd": 1100000000,
+        "prior_trm_reported_usdc_frozen_usd": 825000000,
+        "reconciliation": "Different publication cutoffs and potentially different scope. The later Reuters figure is attributed to Circle's Monday statement. Preserve both; do not add them or silently overwrite the earlier TRM snapshot."
+      },
+      "sources": [
+        "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+        "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history"
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "captured_at_utc": "2026-11-02T13:12:40Z",
+    "observations": [
+      {
+        "provider": "CoinMarketCap",
+        "price_usd": 1.24,
+        "market_cap_usd": 79050000000,
+        "volume_24h_usd": 778550000,
+        "circulating_supply_xrp": 63351197653,
+        "timestamp_quality": "dynamic_page_retrieval; exact quote timestamp not exposed",
+        "source": "https://coinmarketcap.com/currencies/xrp/"
+      },
+      {
+        "provider": "CoinGecko",
+        "price_usd": 1.25,
+        "market_cap_usd": 79094000000,
+        "volume_24h_usd": 1063000000,
+        "open_interest_usd": 3680000000,
+        "pair_depth_observations": {
+          "kraken_xrp_usd": {
+            "depth_plus_2pct_usd": 4753365,
+            "depth_minus_2pct_usd": 5738357,
+            "volume_24h_usd": 20835551
+          },
+          "binance_xrp_usdt": {
+            "depth_plus_2pct_usd": 2052958,
+            "depth_minus_2pct_usd": 2134254,
+            "volume_24h_usd": 57499146
+          },
+          "coinbase_xrp_usd": {
+            "depth_plus_2pct_usd": 3619474,
+            "depth_minus_2pct_usd": 8411513,
+            "volume_24h_usd": 35061618
+          }
+        },
+        "timestamp_quality": "dynamic_page_retrieval; exact quote timestamp not exposed",
+        "source": "https://www.coingecko.com/ja/coins/xrp"
+      },
+      {
+        "provider": "CoinGlass",
+        "price_usd": 1.2516,
+        "open_interest_usd": 2850000000,
+        "futures_volume_24h_usd": 1410000000,
+        "spot_volume_24h_usd": 289830000,
+        "timestamp_quality": "dynamic_page_retrieval; exact quote timestamp not exposed",
+        "source": "https://www.coinglass.com/currencies/XRP"
+      }
+    ],
+    "data_quality_rules": [
+      "Do not average provider prices or volumes without synchronized timestamps and common methodology.",
+      "Do not average open interest across providers with different venue/contract coverage.",
+      "Preserve venue-level ±2% depth separately from total reported volume.",
+      "No price direction or causal effect is inferred from the Binance event alone."
+    ]
+  },
+  "repository_audit": {
+    "repository": "Barrot-Agent/B-Agent",
+    "current_main_sha": "ddd4ce028e338035b270d04c2028bc66132d3882",
+    "main_commit_time_utc": "2026-11-02T12:51:30Z",
+    "inspected_workflows": {
+      "cross_analysis": {
+        "path": ".github/workflows/cross-analysis.yml",
+        "observed_permissions": {
+          "contents": "write"
+        },
+        "observed_behavior": "Scheduled and workflow_run triggers execute analysis scripts, git add generated JSON, commit and push to main.",
+        "status": "verified_current_main_risk",
+        "related_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1504"
+      },
+      "scheduler_tick": {
+        "path": ".github/workflows/scheduler-tick.yml",
+        "observed_permissions": {
+          "contents": "write",
+          "actions": "write"
+        },
+        "observed_behavior": "Every 15 minutes, runs scripts/scheduler.py tick and commits schedule_queue.jsonl; current main scheduler accepts any existing workflow filename.",
+        "status": "verified_current_main_risk",
+        "related_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1505"
+      },
+      "merge_queue": {
+        "status": "current main still has autonomous mutation capability",
+        "related_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1502"
+      }
+    },
+    "scheduled_pillars_check": {
+      "run_id": 41449586817,
+      "run_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41449586817",
+      "head_sha": "ddd4ce028e338035b270d04c2028bc66132d3882",
+      "result": "failure",
+      "job_id": 125291182295,
+      "script": "scripts/pillars_check.py",
+      "check_results": {
+        "github_app": {
+          "result": "FAIL",
+          "detail": "GITHUB_APP_ID/GITHUB_APP_PRIVATE_KEY/GITHUB_INSTALLATION_ID were absent from the job environment."
+        },
+        "databricks": {
+          "result": "FAIL",
+          "detail": "DATABRICKS_HOST, DATABRICKS_TOKEN and DATABRICKS_WAREHOUSE_ID were present (token masked), but SQL Statements API returned HTTP 403."
+        },
+        "hf_space": {
+          "result": "FAIL",
+          "detail": "Public Hugging Face runtime endpoint reported stage=BUILD_ERROR."
+        },
+        "deploy_sync": {
+          "result": "PASS",
+          "detail": "Main branch hf_space/app.py contained the expected Barrot-Ω marker."
+        },
+        "system_prompt_fiction": {
+          "result": "PASS",
+          "detail": "No configured fiction terms were detected in the full deployed app.py source."
+        }
+      },
+      "root_cause_classification": {
+        "github_app": "missing repository integration configuration/secrets; no secret read attempted",
+        "databricks": "authorization/warehouse ACL/host entitlement or token-scope issue; HTTP 403 alone does not identify which",
+        "hf_space": "external Space build failure; build logs not obtained, so exact dependency/build root cause remains unknown",
+        "script_logic": "the checker correctly exits nonzero when any required pillar fails; no evidence that Python test code caused this run failure"
+      },
+      "exact_logs_retrieved": true,
+      "source_file": "https://github.com/Barrot-Agent/B-Agent/blob/main/scripts/pillars_check.py",
+      "workflow_file": "https://github.com/Barrot-Agent/B-Agent/blob/main/.github/workflows/pillars-check.yml",
+      "safety": "No secret values accessed, changed or exposed; no external service configuration changed."
+    },
+    "open_remediation_prs": [
+      {
+        "number": 1502,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1502",
+        "purpose": "disable autonomous merge queue",
+        "status": "open_draft_unmerged",
+        "base_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401"
+      },
+      {
+        "number": 1504,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1504",
+        "purpose": "make Cross Analysis read-only and artifact-only",
+        "status": "open_draft_unmerged",
+        "base_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401"
+      },
+      {
+        "number": 1505,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1505",
+        "purpose": "restrict scheduler to two input-free validation workflows",
+        "status": "open_draft_unmerged",
+        "base_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401"
+      }
+    ],
+    "research_pr": {
+      "number": 1503,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1503",
+      "head_sha": "fd63f60963048b62a4deacab18ae5062ddeb9bdf",
+      "base_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401",
+      "comparison_to_current_main": {
+        "ahead_by": 16,
+        "behind_by": 3,
+        "status": "diverged"
+      },
+      "note": "Research branch is preserved; no rebase, force-push or merge performed."
+    }
+  },
+  "causal_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Binance customer outflows reflect post-reopening custody diversification and confidence management, not a market-wide run.",
+      "supporting": [
+        "Reuters reports $4.72B net outflow as 2.8% of platform assets and says withdrawals stabilized; Binance reports $2.7B inflows."
+      ],
+      "disconfirming_or_limitations": [
+        "CryptoKeyhole observes substantial covered-address reserve outflows, but its tracked networks/addresses do not equal customer liabilities or XRP reserves."
+      ],
+      "status": "plausible_not_proven"
+    },
+    {
+      "id": "H2",
+      "claim": "Some stolen funds are being segmented and routed through cross-chain laundering infrastructure.",
+      "supporting": [
+        "Six-wallet XRP redistribution; secondary reporting of approximately $242M moved through Tron-related routes and THORChain/bridges."
+      ],
+      "disconfirming_or_limitations": [
+        "No sale of the six XRPL XRP recipient balances established; Tron and XRPL flows are distinct."
+      ],
+      "status": "supported_for_wallet_segmentation; route_details_secondary"
+    },
+    {
+      "id": "H3",
+      "claim": "Stablecoin issuer controls are reducing recoverability gaps relative to native XRP.",
+      "supporting": [
+        "Reuters reports Circle froze more than $1.1B USDC; earlier TRM snapshots record USDC/USDT/RLUSD freezes; native XRP has no issuer freeze mechanism."
+      ],
+      "disconfirming_or_limitations": [
+        "Freeze totals differ by cutoff/scope; frozen does not mean recovered or returned."
+      ],
+      "status": "structural_fact_with_amount_scope_uncertainty"
+    },
+    {
+      "id": "H4",
+      "claim": "XRP price weakness/strength around the incident is driven by broader risk sentiment, leverage and liquidity as well as XRP-specific flows.",
+      "supporting": [
+        "BTC/ETH market recovery and broad derivatives liquidation data; provider-scoped XRP depth and open-interest dispersion."
+      ],
+      "disconfirming_or_limitations": [
+        "No synchronized event study or causal model run; no directional forecast issued."
+      ],
+      "status": "untested_competing_hypothesis"
+    }
+  ],
+  "prediction_controls": {
+    "forecast_issued": false,
+    "legacy_main_signal_accuracy": "NOT_COMPARABLE",
+    "requirements_before_forecast": [
+      "immutable point-in-time source snapshots and source registration timestamps",
+      "synchronized venue/chain observations with explicit coverage",
+      "fixed target and horizon",
+      "walk-forward splits and leakage checks",
+      "naive and market-structure baselines",
+      "probability calibration and uncertainty intervals",
+      "shadow evaluation and resolved outcomes"
+    ]
+  },
+  "blockers": [
+    "Raw validated XRPL ledger refresh for the six Binance recipient wallets remains unavailable.",
+    "The 0.5992 XRP residual in the earlier source-account flow reconciliation remains unresolved.",
+    "Circle's Reuters-reported >$1.1B USDC freeze and earlier TRM $825M require address-level/time-scope reconciliation.",
+    "Tether's reported 378.7M USDT freeze may overlap incident-wide freeze totals; do not add without address-level evidence.",
+    "GitHub App integration secrets are absent; do not access or create them.",
+    "Databricks returns HTTP 403; a workspace administrator must verify token scope, SQL warehouse entitlement and permissions.",
+    "Hugging Face Space reports BUILD_ERROR; public build logs or authorized owner diagnostics are needed to identify the exact cause.",
+    "PR #1503 is three commits behind current main; preserve its research branch and do not rebase/force-push automatically."
+  ],
+  "next_actions": [
+    "Obtain independent raw XRPL/Clio account_tx and AccountRoot observations at a pinned validated ledger for all six recipients.",
+    "Reconcile the 0.5992 XRP residual from exact delivered amounts and transaction fees.",
+    "Track the six recipient accounts for exchange deposits, DEX swaps and bridge transfers without assuming sale.",
+    "Reconcile Reuters' updated Binance customer outflow with address-monitor scope and Binance's forthcoming cryptographic Proof of Reserves.",
+    "Reconcile Circle and Tether freeze totals by token contract, chain, address and cutoff.",
+    "Keep XRP market prices, exchange depths, open interest and volume provider-scoped.",
+    "Request only the specific missing GitHub App configuration, Databricks authorization or Hugging Face build-log access if those pillars are to be restored.",
+    "Preserve PR #1502/#1504/#1505 for approval; do not merge or dispatch privileged workflows."
+  ],
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push_performed": false,
+    "workflow_dispatch_performed": false,
+    "secrets_accessed": false,
+    "external_deployment_performed": false,
+    "paper_position_mutated": false,
+    "real_money_transaction_performed": false
+  }
+}
