@@ -727,6 +727,41 @@
       "published_at": "2025-06-12",
       "url": "https://www.sbic.co.jp/training/20250612co/",
       "independence": "Primary official training announcement; states investee-company-only eligibility and curriculum."
+    },
+    {
+      "id": "CAMILLA-STEPHENSON-EXACT-NAME-BGC",
+      "publisher": "British Comedy Guide",
+      "published_at": null,
+      "url": "https://www.comedy.co.uk/people/camilla_stephenson/",
+      "independence": "Exact-name professional profile identifies a location-management crew member; no YouTube channel connection established."
+    },
+    {
+      "id": "CAMILLA-STEPHENSON-TV-GUIDE",
+      "publisher": "TV Guide",
+      "published_at": null,
+      "url": "https://www.tvguide.com/celebrities/camilla-stephenson/3000752768",
+      "independence": "Exact-name profile lists location-management credits; no connection to the XRP creator established."
+    },
+    {
+      "id": "CAMILLA-STEPHENSON-LOCATION-ASSIST",
+      "publisher": "Location Assist",
+      "published_at": null,
+      "url": "https://www.locationassist.co.uk/",
+      "independence": "Professional testimonial identifies a Camilla Stephenson as a supervising location manager; not evidence of a YouTube creator identity."
+    },
+    {
+      "id": "KAMILAH-STEVENSON-XRP-YOUTUBE",
+      "publisher": "YouTube",
+      "published_at": "2026-07-30",
+      "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "independence": "Video metadata identifies Kamilah Stevenson, not Camilla Stephenson."
+    },
+    {
+      "id": "KAMILAH-STEVENSON-XRP-PODCAST",
+      "publisher": "iHeart / The XRP Podcast",
+      "published_at": "2026-06-11",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "independence": "Episode listing identifies Dr. Kamilah Stevenson; transcript uses Camila/Camilla variants. It does not establish the surname Stephenson."
     }
   ],
   "identity_threads": {
@@ -734,7 +769,55 @@
     "circle_sbi_japan": "Circle SBI Japan K.K. is a 50/50 Circle-SBI Holdings joint venture formed to support USDC distribution in Japan. Circle's 2026 Q2 SEC filing says there were no significant operating results through 2026-06-30. It is not Tokyo SBIC.",
     "ask_coin": "Permission Coin (ASK) is an omnichain LayerZero OFT with official Base and Polygon contracts. Permission announced Coinbase Embedded Wallet integration on 2026-09-22. No XRPL ASK contract or direct XRP integration identified.",
     "chatgpt_sbic": "Social Bias Inference Corpus remains a separate academic candidate meaning; no Japanese-SBIC/OpenAI partnership established.",
-    "actual_capital": "Flare USDt0/FXRP liquidity deployment language; distinguish gross payments, transaction count, collateral, wrapped supply and RWA registry notional from net external capital."
+    "actual_capital": "Flare USDt0/FXRP liquidity deployment language; distinguish gross payments, transaction count, collateral, wrapped supply and RWA registry notional from net external capital.",
+    "camilla_stephenson": {
+      "requested_identity": "Camilla Stephenson",
+      "status": "UNRESOLVED",
+      "exact_name_search": "Public exact-name results include a UK film/location-management profile and unrelated professional profiles; no verified YouTube channel under the exact name was established.",
+      "separate_xrp_creator_candidate": {
+        "name_variants": [
+          "Kamilah Stevenson",
+          "Camila Stevenson"
+        ],
+        "handle": "@drkamilahstevenson",
+        "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "evidence": "YouTube metadata and transcript summaries identify the creator as Kamilah Stevenson; transcripts include the spoken introduction 'Camila Stevenson'. An XRP Podcast host addresses a guest as Camilla while the episode listing identifies Dr. Kamilah Stevenson.",
+        "identity_match_to_requested_name": false
+      },
+      "candidate_videos_not_attributed_to_camilla_stephenson": [
+        {
+          "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+          "video_id": "Gy4BuGhAWE8",
+          "published": "2025-12-03",
+          "creator_metadata": "Kamilah Stevenson"
+        },
+        {
+          "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+          "video_id": "QslbjGQD0MU",
+          "published": "2025-12-14",
+          "creator_metadata": "Kamilah Stevenson"
+        },
+        {
+          "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing",
+          "video_id": "ci0FH73lbCs",
+          "published": "2026-01-13",
+          "creator_metadata": "Kamilah Stevenson"
+        },
+        {
+          "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+          "video_id": "cxeX_eu_2H0",
+          "published": "2026-01-15",
+          "creator_metadata": "Kamilah Stevenson"
+        },
+        {
+          "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+          "video_id": "8xiy8w2YlfY",
+          "published": "2026-07-30",
+          "creator_metadata": "Kamilah Stevenson"
+        }
+      ],
+      "inventory_status": "These five are candidate videos from the separate Kamilah/Camila Stevenson channel, not a verified inventory for Camilla Stephenson. The exact-name YouTube inventory remains incomplete and must not be attributed to the requested person without identity evidence."
+    }
   },
   "circle_macro_sensitivity": {
     "filing_as_of": "2026-06-30",
