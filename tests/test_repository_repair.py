@@ -1009,3 +1009,21 @@ def test_git_gateway_refuses_to_commit_pre_staged_user_changes(tmp_path: Path) -
     assert git(workspace, "rev-parse", "HEAD").stdout.strip() == head_before
     assert git(workspace, "diff", "--cached", "--binary").stdout == staged_before
     assert target.read_text(encoding="utf-8") == 'FLAG = "USER EDIT"\\n'
+
+
+def test_patch_executor_rollback_preserves_concurrent_user_edit(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    target = workspace / path
+    original = target.read_text(encoding="utf-8")
+    executor = PatchExecutor(workspace)
+    snapshots = executor.snapshot([path])
+    changeset = json.loads(repair_payload(path))["changeset"]
+
+    _, changed = executor.apply(changeset)
+    assert changed == [path]
+    assert target.read_text(encoding="utf-8") == 'FLAG = "FIXED"\\n'
+
+    target.write_text("concurrent user edit\\n", encoding="utf-8")
+    assert executor.rollback(snapshots) is False
+    assert target.read_text(encoding="utf-8") == "concurrent user edit\\n"
+    assert target.read_text(encoding="utf-8") != original
