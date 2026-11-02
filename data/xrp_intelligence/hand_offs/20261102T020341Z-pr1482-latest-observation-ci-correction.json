@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-02T02:03:41.490Z",
+  "pr_number": 1482,
+  "branch": "prediction/fixed-horizon-latest-observation-8e966c7d-20261102T015917Z",
+  "failed_run": 41375632986,
+  "failed_job": 125055128889,
+  "failed_run_result": {
+    "passed_tests": 412,
+    "failed_tests": 9,
+    "subtests_passed": 8,
+    "failing_test_class": "Existing success-path fixtures selected 00:59:30Z even though the registered snapshot contains a later pre-horizon observation at 00:59:59Z.",
+    "production_logic": "The new latest-observation guard rejected the earlier fixture timestamps as designed. No failure indicates a defect in the latest-observation selection rule."
+  },
+  "corrective_changes": [
+    "Update success-path outcome fixtures to select the snapshot's latest pre-horizon observation at 00:59:59Z.",
+    "Keep negative regression fixtures at 00:59:30Z to prove earlier observations are rejected.",
+    "Make the issue-price freshness-boundary fixture set data_cutoff_utc, feature captured_at_utc, baseline trained_through_utc and baseline computed_at_utc to 23:58:00Z so the 120-second boundary is also the latest eligible observation.",
+    "Retain tampered-persisted-timestamp tests so metrics authorization rejects earlier observations even when price and lag fields are internally consistent."
+  ],
+  "status": "CORRECTION_COMMITTED_CI_PENDING",
+  "main_sha_unchanged": "8e966c7d53b5f80acf3653acfecbc862bb356fb3",
+  "no_merge": true,
+  "no_force_push": true,
+  "no_manual_workflow_dispatch": true
+}

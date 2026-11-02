@@ -332,7 +332,7 @@ def test_outcome_is_separate_and_does_not_mutate_forecast(tmp_path):
     ledger.append_forecast(forecast_payload())
     original_forecasts = ledger.forecasts_path.read_bytes()
     outcome = ledger.append_outcome(
-        "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
         "2026-10-31T01:01:00Z", "SRC-PRICE-001"
     )
     assert outcome["realized_class"] == "up"
@@ -345,7 +345,7 @@ def test_duplicate_outcome_is_rejected(tmp_path):
     ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_outcome(
-        "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
         "2026-10-31T01:01:00Z", "SRC-PRICE-001"
     )
     with pytest.raises(ValueError, match="already exists"):
@@ -359,7 +359,7 @@ def test_metrics_report_brier_log_loss_baseline_and_calibration(tmp_path):
     ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_outcome(
-        "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
         "2026-10-31T01:01:00Z", "SRC-PRICE-001"
     )
     metrics = ledger.metrics()
@@ -412,7 +412,22 @@ def test_forecast_rejects_stale_issue_price_observation(tmp_path):
 
 def test_forecast_accepts_issue_price_at_freshness_boundary(tmp_path):
     ledger = make_ledger(tmp_path)
-    payload = forecast_payload(price_at_issue_observed_at_utc="2026-10-30T23:58:00Z")
+    payload = forecast_payload(
+        data_cutoff_utc="2026-10-30T23:58:00Z",
+        feature_snapshot={
+            "snapshot_id": "features-001",
+            "source_id": "SRC-FEATURE-001",
+            "sha256": TEST_SOURCE_REGISTRY["SRC-FEATURE-001"],
+            "captured_at_utc": "2026-10-30T23:58:00Z",
+        },
+        baseline={
+            "id": "uniform-v1",
+            "trained_through_utc": "2026-10-30T23:58:00Z",
+            "computed_at_utc": "2026-10-30T23:58:00Z",
+            "probabilities": {"up": 1 / 3, "flat": 1 / 3, "down": 1 / 3},
+        },
+        price_at_issue_observed_at_utc="2026-10-30T23:58:00Z",
+    )
     record = ledger.append_forecast(payload)
     assert record["price_at_issue_max_observation_lag_seconds"] == 120
 
@@ -470,7 +485,7 @@ def test_outcome_price_source_is_checked_when_registry_is_supplied(tmp_path):
     outcome = ledger.append_outcome(
         "xrp-forecast-001",
         1.27,
-        "2026-10-31T00:59:30Z",
+        "2026-10-31T00:59:59Z",
         "2026-10-31T01:01:00Z",
         "SRC-PRICE-001",
     )
@@ -842,7 +857,7 @@ def test_metrics_refuse_tampered_registered_feature_snapshot_hash(tmp_path):
     ledger = make_ledger(tmp_path)
     ledger.append_forecast(forecast_payload())
     ledger.append_outcome(
-        "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
         "2026-10-31T01:01:00Z", "SRC-PRICE-001"
     )
     rows = [
@@ -1002,7 +1017,7 @@ def test_outcome_recorded_at_uses_system_time_not_caller_claim(tmp_path, monkeyp
     outcome = ledger.append_outcome(
         "xrp-forecast-001",
         1.27,
-        "2026-10-31T00:59:30Z",
+        "2026-10-31T00:59:59Z",
         "2026-10-31T01:01:00Z",
         "SRC-PRICE-001",
     )
@@ -1034,7 +1049,7 @@ def test_metrics_fail_closed_when_source_snapshot_bytes_change_after_outcome(tmp
     ledger = ForecastLedger(tmp_path / "ledger", source_registry=registry)
     ledger.append_forecast(payload)
     ledger.append_outcome(
-        "xrp-forecast-001", 1.27, "2026-10-31T00:59:30Z",
+        "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
         "2026-10-31T01:01:00Z", "SRC-PRICE-001"
     )
     paths["SRC-PRICE-001"].write_text("tampered after outcome", encoding="utf-8")
@@ -1048,7 +1063,7 @@ def test_metrics_refuse_tampered_registered_replay_manifest_hash(tmp_path):
     ledger.append_outcome(
         "xrp-forecast-001",
         1.27,
-        "2026-10-31T00:59:30Z",
+        "2026-10-31T00:59:59Z",
         "2026-10-31T01:01:00Z",
         "SRC-PRICE-001",
     )
