@@ -2,6 +2,12 @@ name: Barrot Self-Upgrade
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Authorize one self-upgrade run; proposed code changes must remain in a draft pull request"
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: write
@@ -9,6 +15,7 @@ permissions:
 
 jobs:
   audit_and_upgrade:
+    if: ${{ inputs.confirm == true && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -17,7 +24,7 @@ jobs:
       - name: Checkout requested ref
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
@@ -40,28 +47,25 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python3 scripts/barrot_self_upgrade.py
 
-      - name: Persist generated audit
+      - name: Validate generated audit
         run: |
-          git status --short
-          if git diff --quiet -- barrot_capability_audit.json; then
-            echo "No audit artifact changes."
-          else
-            git add barrot_capability_audit.json
-            git commit -m "chore: update Barrot capability audit"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-          fi
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("barrot_capability_audit.json").read_text(encoding="utf-8"))
+          if report.get("status") != "VERIFIED":
+              raise SystemExit("Capability audit is not VERIFIED")
+          print("Capability audit JSON validated; no repository ref was changed.")
+          PY
 
-      - name: Verify remote ref
-        run: |
-          local_sha="$(git rev-parse HEAD)"
-          remote_ref="$(git ls-remote --heads origin "${GITHUB_REF_NAME}")"
-          remote_sha="$(printf '%s\n' "${remote_ref}" | awk 'NR==1 {print $1}')"
-          echo "Local SHA: ${local_sha}"
-          echo "Remote ref: ${remote_ref}"
-          if [ -z "${remote_sha}" ] || [ "${local_sha}" != "${remote_sha}" ]; then
-            echo "Remote verification failed for ${GITHUB_REF_NAME}" >&2
-            exit 1
-          fi
+      - name: Preserve audit as workflow artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: barrot-capability-audit-${{ github.run_id }}
+          path: barrot_capability_audit.json
+          if-no-files-found: ignore
+          retention-days: 30
 
       - name: Final state
         run: |
