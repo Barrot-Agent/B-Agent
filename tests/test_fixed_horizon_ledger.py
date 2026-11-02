@@ -463,9 +463,11 @@ def test_forecast_rejects_price_snapshot_captured_after_data_cutoff(tmp_path):
     contents["SRC-MARKET-001"] = _snapshot_bytes(snapshot)
     entries = dict(TEST_SOURCE_REGISTRY)
     entries["SRC-MARKET-001"] = hashlib.sha256(contents["SRC-MARKET-001"]).hexdigest()
+    source_registry = HashVerifiedRegistryFixture(entries, contents)
+    source_registry.registered_at["SRC-MARKET-001"] = "2026-10-30T23:59:00Z"
     ledger = ForecastLedger(
         tmp_path,
-        source_registry=HashVerifiedRegistryFixture(entries, contents),
+        source_registry=source_registry,
     )
     with pytest.raises(ValueError, match="captured after its availability cutoff"):
         ledger.append_forecast(forecast_payload())
