@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_market_microstructure_snapshot",
+  "captured_at_utc": "2026-11-02T14:29:00Z",
+  "evidence_cutoff_utc": "2026-11-02T14:29:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "status": {
+    "market_research": "EXECUTED",
+    "source_capture": "VERIFIED",
+    "forecast": "NOT_ISSUED"
+  },
+  "observations": [
+    {
+      "id": "CHARTEXCHANGE_COINBASE_XRPUSD_2026_11_02_054449Z",
+      "provider": "ChartExchange",
+      "source": "https://chartexchange.com/symbol/crypto-xrpusd/historical?exchange=coinbase",
+      "observed_at_utc": "2026-11-02T05:44:49Z",
+      "values": {
+        "last_usd": 1.2538,
+        "bid_usd": 1.2537,
+        "ask_usd": 1.2538,
+        "spread_usd": 0.0001,
+        "reported_24h_volume_xrp": 25096132,
+        "reported_24h_volume_usd": 31379108,
+        "utc_day_open_usd": 1.2493,
+        "utc_day_high_usd": 1.2627,
+        "utc_day_low_usd": 1.2401,
+        "partial_utc_day_volume_xrp": 9906614
+      },
+      "scope": "Coinbase XRP/USD venue view plus provider composite",
+      "limits": [
+        "This is a historical provider capture at 05:44:49 UTC, not a quote at the artifact cutoff.",
+        "The 24-hour rolling volume and partial UTC-day volume are different windows.",
+        "Top-of-book spread is not full order-book depth or consolidated market liquidity."
+      ]
+    },
+    {
+      "id": "TRADRADAR_XRP_DERIVATIVES_2026_11_02_0945Z",
+      "provider": "TradRadar",
+      "source": "https://tradradar.io/markets/xrp",
+      "observed_at_utc": "2026-11-02T09:45:00Z",
+      "values": {
+        "mark_price_usd": 1.2518,
+        "reported_24h_price_change_percent": 0.05,
+        "open_interest_usd": 1920000000,
+        "open_interest_venues": 7,
+        "open_interest_24h_change_percent": 1.79,
+        "open_interest_weighted_funding_percent_per_8h": 0.0075,
+        "reported_24h_liquidations_usd_at_least": 1370000,
+        "long_liquidations_usd_approx": 1050000,
+        "short_liquidations_usd_approx": 317390,
+        "long_short_account_ratio": 3.56,
+        "long_account_share_percent": 78.1,
+        "venue_open_interest_usd": {
+          "Binance": 434670000,
+          "Bybit": 353590000,
+          "MEXC": 298740000,
+          "Gate": 270070000,
+          "Bitget": 251300000,
+          "Hyperliquid": 200170000,
+          "OKX": 115940000
+        }
+      },
+      "limits": [
+        "Provider reports a 15-minute delay.",
+        "Seven-exchange coverage and account-ratio methodology are provider-specific.",
+        "Long-account share is not notional positioning and does not prove directional intent.",
+        "Positive funding and long concentration are crowding/risk features, not a price forecast."
+      ]
+    },
+    {
+      "id": "KODEXIUS_XRP_DERIVATIVES_2026_11_02_0609Z",
+      "provider": "Kodexius",
+      "source": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "observed_at_utc": "2026-11-02T06:09:00Z",
+      "values": {
+        "open_interest_usd": 767590000,
+        "contract_count": 7,
+        "funding_percent_per_8h": 0.0074,
+        "volume_24h_usd": 670810000,
+        "open_interest_to_volume_ratio": 1.14,
+        "exchange_open_interest_usd": {
+          "Binance": 376530000,
+          "Bybit": 158760000,
+          "OKX": 104180000,
+          "Hyperliquid": 99800000,
+          "HTX": 28330000
+        }
+      },
+      "limits": [
+        "Coverage and contract aggregation differ from TradRadar.",
+        "The roughly 2.5x difference from TradRadar's open-interest total is not averaged away.",
+        "A common contract-by-contract reconciliation is required before using provider totals as one feature."
+      ]
+    },
+    {
+      "id": "BYKARANTEL_XRP_ETF_FLOWS_2026_10_30",
+      "provider": "ByKaranteli",
+      "source": "https://bykaranteli.com/etf/xrp",
+      "observed_at_utc": "2026-11-01T22:49:00Z",
+      "event_date": "2026-10-30",
+      "values": {
+        "daily_net_flow_usd": -496000,
+        "five_day_net_flow_usd": 4300000,
+        "cumulative_net_inflows_usd": 1810000000,
+        "net_assets_usd": 1420000000
+      },
+      "limits": [
+        "October 30 is the latest reported U.S. trading day in this capture.",
+        "Daily flows are provisional until fund reports settle.",
+        "Net assets are not the same as cumulative net inflows or gross purchases."
+      ]
+    },
+    {
+      "id": "TRADINGDIGITS_XRP_ETF_DAILY_FLOWS_2026_10_30",
+      "provider": "TradingDigits",
+      "source": "https://www.tradingdigits.io/ar/xrp-etf-inflows-tracker",
+      "observed_at_utc": "2026-11-02T00:39:12Z",
+      "event_date": "2026-10-30",
+      "values": {
+        "total_daily_net_flow_usd_millions": -0.49,
+        "fund_flows_usd_millions": {
+          "XRP": -0.69,
+          "GXRP": -0.72,
+          "TOXR": 0,
+          "XRPC": 0.92,
+          "XRPZ": 0
+        }
+      },
+      "limits": [
+        "Aggregator's displayed total rounds to -0.49M.",
+        "Individual fund data may be revised; retain provider capture and event date separately."
+      ]
+    }
+  ],
+  "cross_provider_reconciliation": {
+    "spot": {
+      "status": "PARTIAL",
+      "observations": [
+        {
+          "provider": "ChartExchange",
+          "time_utc": "2026-11-02T05:44:49Z",
+          "price_usd": 1.2538
+        },
+        {
+          "provider": "TradRadar",
+          "time_utc": "2026-11-02T09:45:00Z",
+          "price_usd": 1.2518
+        }
+      ],
+      "interpretation": "Two historical observations are directionally close but are not synchronized; no synthetic current price is calculated."
+    },
+    "derivatives_open_interest": {
+      "status": "MATERIAL_DISAGREEMENT",
+      "tradradar_usd": 1920000000,
+      "kodexius_usd": 767590000,
+      "ratio_approx": 2.5,
+      "interpretation": "Different venue/contract coverage or aggregation is likely; exact coverage reconciliation is required. Do not average."
+    },
+    "etf_flows": {
+      "status": "ROUNDED_CROSS_PROVIDER_CORROBORATION",
+      "bykaranteli_usd": -496000,
+      "tradingdigits_usd_approx": -490000,
+      "interpretation": "Two aggregators show a roughly half-million-dollar net outflow for October 30. This is not independent fund-level attestation; reconcile to issuer creation/redemption files."
+    }
+  },
+  "causal_hypotheses": [
+    {
+      "id": "H1_CUMULATIVE_ETF_SUPPORT_VS_DAILY_REDEMPTION",
+      "statement": "Positive cumulative ETF inflows can coexist with a negative latest daily flow; one day's redemptions do not negate the cumulative holdings base.",
+      "supporting": [
+        "ByKaranteli reports +1.81B cumulative inflows and -496K on October 30."
+      ],
+      "disconfirming": [
+        "The ETF series is short relative to full market cycles and fund-level completeness varies."
+      ],
+      "required_tests": [
+        "Daily issuer creations/redemptions",
+        "XRP holdings changes",
+        "Flow persistence across multiple sessions"
+      ]
+    },
+    {
+      "id": "H2_LONG_CROWDING_AMPLIFIES_DOWNSIDE_IF_SPOT_BREAKS",
+      "statement": "Positive funding and a high long-account share may make XRP vulnerable to liquidation cascades if spot liquidity thins and price falls.",
+      "supporting": [
+        "TradRadar reports 78.1% long accounts, positive funding and more long than short liquidations."
+      ],
+      "disconfirming": [
+        "Long-account share is not notional exposure; open-interest providers disagree materially; spot price was not synchronized to the derivatives snapshot."
+      ],
+      "required_tests": [
+        "Venue-level liquidation maps",
+        "Notional long/short positions",
+        "Synchronized spot depth and futures basis",
+        "Funding persistence"
+      ]
+    },
+    {
+      "id": "H3_INSTITUTIONAL_CUSTODY_NEEDS_FLOW_CONFIRMATION",
+      "statement": "BNY custody support and Coinbase RLUSD listing may lower institutional access barriers but need not create immediate XRP buying.",
+      "supporting": [
+        "BNY added XRP custody; Coinbase listed RLUSD across retail and institutional platforms."
+      ],
+      "disconfirming": [
+        "No custody balances, client inflows, XRP order-book demand or route-level settlement data are disclosed."
+      ],
+      "required_tests": [
+        "Institutional custody disclosures",
+        "XRP exchange/OTC flows",
+        "RLUSD mint/redeem and venue-level flows"
+      ]
+    }
+  ],
+  "data_quality_rules": [
+    "Every quote retains event time, provider capture time and timezone.",
+    "Do not merge rolling 24-hour volume with partial UTC-day volume.",
+    "Do not treat exchange count, account count and notional exposure as interchangeable.",
+    "Do not average materially divergent open-interest providers without contract-level reconciliation.",
+    "Do not infer net spot demand from cumulative ETF flows alone.",
+    "Do not infer XRP purchases from RLUSD listings or institutional custody announcements."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "The observations are asynchronous, derivatives open-interest totals disagree materially, and the institutional announcements do not quantify incremental XRP flows.",
+    "required_next_steps": [
+      "Synchronize spot, perpetual, USDT/USD and order-book snapshots.",
+      "Normalize open interest by contract and venue.",
+      "Reconcile ETF fund creations/redemptions against primary issuer files.",
+      "Join custody and collateral observations to actual onchain flows.",
+      "Evaluate fixed-horizon models against naive, momentum and volatility baselines."
+    ]
+  },
+  "provenance": {
+    "sources_are_public": true,
+    "primary_sources_used": [
+      "Coinbase",
+      "fund-flow aggregators"
+    ],
+    "market_data_providers": [
+      "ChartExchange",
+      "TradRadar",
+      "Kodexius",
+      "ByKaranteli",
+      "TradingDigits"
+    ],
+    "source_independence": "Partial; two ETF aggregators may consume overlapping issuer disclosures.",
+    "no_private_or_unauthorized_data": true
+  }
+}
