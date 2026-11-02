@@ -162,3 +162,62 @@ def test_summary(tmp_path):
     assert summary["active_count"] == 2
     assert summary["gap_count"] == 1
     assert summary["types"] == ["dataset", "paper"]
+
+
+
+def test_registered_file_snapshot_verification_detects_post_registration_mutation(tmp_path):
+    source = tmp_path / "snapshot.json"
+    source.write_text('{"price": 1.25}', encoding="utf-8")
+    registry = SourceRegistry(tmp_path / "registry.json")
+    record = register_file_source(
+        registry,
+        source_id="snapshot-source",
+        source_type="market_snapshot",
+        name="Pinned market snapshot",
+        origin="unit-test",
+        path=source,
+    )
+    assert record.version.snapshot_path
+    assert registry.verify_content_hash("snapshot-source") is True
+    source.write_text('{"price": 9.99}', encoding="utf-8")
+    assert registry.verify_content_hash("snapshot-source") is False
+
+
+def test_read_verified_content_returns_only_registered_snapshot_bytes(tmp_path):
+    source = tmp_path / "price-snapshot.json"
+    original = (
+        '{"record_type":"xrp_price_observation_set","source_id":"price-source",'
+        '"asset_pair":"XRP/USD","observations":[{"price_usd":1.25,'
+        '"observed_at_utc":"2026-10-30T23:59:00Z"}]}'
+    ).encode("utf-8")
+    source.write_bytes(original)
+    registry = SourceRegistry(tmp_path / "registry.json")
+    register_file_source(
+        registry,
+        source_id="price-source",
+        source_type="market_snapshot",
+        name="Pinned XRP/USD observation set",
+        origin="unit-test",
+        path=source,
+    )
+    assert registry.read_verified_content("price-source") == original
+    source.write_bytes(original + b" ")
+    with pytest.raises(ValueError, match="do not match registered content hash"):
+        registry.read_verified_content("price-source")
+
+
+def test_remote_source_without_retained_snapshot_bytes_is_not_hash_verified(tmp_path):
+    registry = SourceRegistry(tmp_path / "registry.json")
+    registry.register(
+        SourceRecord(
+            identity=SourceIdentity(
+                source_id="remote-source",
+                source_type="web",
+                name="Remote source",
+                origin="https://example.test/source",
+                uri="https://example.test/source",
+            ),
+            version=SourceVersion(content_hash="a" * 64),
+        )
+    )
+    assert registry.verify_content_hash("remote-source") is False
