@@ -1,0 +1,384 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_collateral_market_reconciliation",
+  "created_at_utc": "2026-11-02T19:08:22Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "forecast_status": "NOT_ISSUED",
+  "summary": "Timestamped comparison of the cbXRP/USDC Morpho market on Base and FXRP/RLUSD Morpho market on Ethereum, with Flare FAssets dashboard flow conflicts retained as separate observations. No spot-demand or directional-price conclusion is inferred.",
+  "market_observations": [
+    {
+      "id": "cbxrp_usdc_base_2026-11-02T16:31Z",
+      "network": "Base",
+      "protocol": "Morpho",
+      "pair": "cbXRP/USDC",
+      "provider": "MorphoWatch",
+      "provider_data_source": "Morpho API",
+      "provider_updated_at_utc": "2026-11-02T16:31:00Z",
+      "supplied_usdc_usd": 66420000,
+      "borrowed_usdc_usd": 59260000,
+      "utilization_pct": 89.2,
+      "immediately_available_usdc_usd": 7160000,
+      "collateral_cbXRP": 118750000,
+      "collateral_value_usd": 148100000,
+      "borrow_apy_pct": 6.89,
+      "supply_apy_pct": 6.12,
+      "liquidation_ltv_pct": 62.5,
+      "liquidation_bonus_pct": 12.68,
+      "oracle_price_usdc": 1.24,
+      "borrower_count_reported": 12056,
+      "market_id": "0xd4a903dc6d949519060c7707f9604fdc9772c046e05c2e3a8fce0bd7196e4109",
+      "collateral_token": "0xcb585250f852C6c6bf90434AB21A00f02833a4af",
+      "official_product_linkage": "Coinbase officially documents XRP-backed USDC loans through Morpho and cbXRP collateral. MorphoWatch labels this exact market as the market behind Coinbase's XRP loans; Coinbase does not publish this market ID in the cited help page, so exact market attribution remains a high-confidence third-party match, not an issuer-labelled contract mapping.",
+      "source_url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "source_class": "secondary_onchain_aggregator",
+      "limitations": [
+        "Provider reports a Morpho API update time; this is not a raw independently replayed block snapshot.",
+        "Borrower count is addresses/open loans, not verified unique natural persons or Coinbase customers.",
+        "Available liquidity is market-level and should not be confused with total vault withdrawals.",
+        "The market is permissionless; not every position can be attributed to Coinbase consumer loans."
+      ]
+    },
+    {
+      "id": "fxrp_rlusd_ethereum_2026-11-02T18:11Z",
+      "network": "Ethereum",
+      "protocol": "Morpho",
+      "pair": "FXRP/RLUSD",
+      "provider": "MorphoWatch",
+      "provider_data_source": "Morpho API",
+      "provider_updated_at_utc": "2026-11-02T18:11:00Z",
+      "supplied_rlusd_usd": 9350000,
+      "borrowed_rlusd_usd": 8450000,
+      "utilization_pct": 90.3,
+      "immediately_available_rlusd_usd": 907000,
+      "collateral_fxrp": 13490000,
+      "collateral_value_usd": 16770000,
+      "borrow_apy_pct": 7.92,
+      "supply_apy_pct": 7.13,
+      "liquidation_ltv_pct": 77,
+      "liquidation_bonus_pct": 7.41,
+      "oracle_price_rlusd": 1.24,
+      "borrower_count_reported": 57,
+      "market_id": "0x4fa31e3f8ba345227d44e1cf48559eea53a90dd5311dc006984c060f2f311d96",
+      "collateral_token": "0xCE61...0110",
+      "loan_token": "0x8292...17eD",
+      "largest_borrowers_usd": [
+        3150000,
+        2910000,
+        1610000
+      ],
+      "largest_three_debt_share_pct": 90.77,
+      "largest_three_health_factors": [
+        1.68,
+        1.5,
+        1.27
+      ],
+      "largest_three_liquidation_price_declines_pct": [
+        40.3,
+        33.2,
+        21.2
+      ],
+      "lending_vault": "Sentora RLUSD Main V2",
+      "lending_vault_amount_usd": 9260000,
+      "lending_vault_total_deposits_usd": 403400000,
+      "source_url": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/",
+      "source_class": "secondary_onchain_aggregator",
+      "limitations": [
+        "Borrower concentration is derived from the three largest positions displayed by the provider.",
+        "Vault total deposits are not market-level withdrawable liquidity.",
+        "Market data is not synchronized with the cbXRP/USDC snapshot.",
+        "Borrower addresses are not attributed to legal persons."
+      ]
+    }
+  ],
+  "cross_market_derived_metrics": {
+    "cbxrp_collateral_to_reported_coinbase_cbXRP_supply_pct_approx": 78.67,
+    "basis": "118.75M cbXRP collateral divided by Coinbase proof-of-reserves page's 150.9400898M cbXRP supply.",
+    "timestamp_warning": "Coinbase's page displayed a November 2 refresh at 2:03 AM with timezone unspecified; MorphoWatch reports 16:31 UTC. This ratio is approximate and non-synchronous.",
+    "cbxrp_to_fxrp_borrowed_stablecoin_notional_ratio_approx": 7.01,
+    "basis_2": "59.26M USDC divided by 8.45M RLUSD from two different provider update times; ratio is descriptive only, not a simultaneous market share.",
+    "fxrp_morpho_collateral_to_flaremetrics_supply_pct_approx": 9.37,
+    "basis_3": "13.49M FXRP collateral divided by 143.98M FXRP dashboard supply; page retrievals are close in time but not block-synchronized.",
+    "utilization_comparison": "Both markets are near Morpho's 90% target utilization; cbXRP/USDC was 89.2%, FXRP/RLUSD 90.3%."
+  },
+  "flare_fassets_dashboard_observations": [
+    {
+      "capture_sequence": 1,
+      "retrieved_during_run_at_utc": "2026-11-02T19:08:22Z",
+      "provider_updated_at_utc": null,
+      "supply_fxrp": 143980000,
+      "collateral_ratio_pct": 630,
+      "proof_of_reserve_pct": 100.01,
+      "pool_collateral_flr": 824850000,
+      "agents": 6,
+      "holders_reported": 13812,
+      "minting_capacity_used_pct": 84.7,
+      "trailing_24h_minted_fxrp": 90500,
+      "trailing_24h_redeemed_fxrp": 108700,
+      "trailing_24h_net_flow_fxrp": -18200,
+      "trailing_24h_volume_usd": 246892,
+      "success_rate_pct": 80.6,
+      "pending_mints": 0,
+      "payment_defaults": 6,
+      "xrp_reference_price_usd": 1.239,
+      "core_vault_supply_fxrp": 142590000,
+      "total_collateral_usd": 10717347,
+      "agent_vault_collateral_usd": 8625919,
+      "liquidations": 0,
+      "source_url": "https://flaremetrics.io/fassets"
+    },
+    {
+      "capture_sequence": 2,
+      "retrieved_during_run_at_utc": "2026-11-02T19:08:22Z",
+      "provider_updated_at_utc": null,
+      "supply_fxrp": 144000000,
+      "collateral_ratio_pct": 621,
+      "proof_of_reserve_pct": 100.01,
+      "pool_collateral_flr": 825360000,
+      "agents": 6,
+      "holders_reported": 13827,
+      "minting_capacity_used_pct": 84.7,
+      "trailing_24h_minted_fxrp": 121800,
+      "trailing_24h_redeemed_fxrp": 113900,
+      "trailing_24h_net_flow_fxrp": 7900,
+      "trailing_24h_volume_usd": 294284,
+      "success_rate_pct": 83.8,
+      "pending_mints": 0,
+      "payment_defaults": 6,
+      "source_url": "https://flaremetrics.io/fassets"
+    }
+  ],
+  "flare_dashboard_data_quality": {
+    "issue": "Two captures returned during the same research run report different trailing-24-hour net flow and success-rate values.",
+    "differences": "Capture 1 reports -18.2K FXRP net redemptions and 80.6% success; capture 2 reports +7.9K FXRP net minting and 83.8% success.",
+    "treatment": "Preserve as separate observations. Do not average, choose one as canonical, or treat the difference as an economic reversal until provider refresh timestamps and raw request/transaction denominators are available.",
+    "definition_notes": "Flare Metrics defines net flow as FXRP minted minus redeemed. It defines success rate as the share of FAssets requests completed without payment default.",
+    "denominator_warning": "The six payment defaults and success-rate denominator require transaction-level reconciliation.",
+    "reserve_vs_pool_collateral": "The 100.01% proof-of-reserve metric is distinct from the 621–630% collateral ratio and 824.85–825.36M FLR agent-pool collateral. Do not treat the latter as additional XRP reserves.",
+    "source_url": "https://flaremetrics.io/fassets"
+  },
+  "reserve_and_custody_context": {
+    "coinbase_cbXRP": {
+      "source_url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "displayed_refresh": "November 2, 2026, 2:03 AM; timezone unspecified",
+      "xrp_reserves": 150942337.33,
+      "cbxrp_supply": 150940089.8,
+      "approximate_coverage_pct": 100.00149,
+      "reserve_addresses_reported": 20,
+      "largest_address_share_pct_approx": 26.6,
+      "top_six_address_share_pct_approx": 59.8,
+      "evidence_class": "issuer_primary_page",
+      "limitation": "Displayed refresh timezone and block/ledger cutoff are not exposed in the retrieved page text."
+    },
+    "flare_fxrp": {
+      "prior_same_run_snapshot_source": "https://flareforge.io/api/fxrp.json",
+      "provider_generated_at_utc": "2026-11-02T01:57:21Z",
+      "flare_block": 73532960,
+      "xrpl_ledger": 108057311,
+      "fxrp_supply": 143948176.22,
+      "xrp_backing": 144032206.81,
+      "coverage_pct": 100.0584,
+      "core_vault_share_of_backing_pct": 98.96,
+      "limitation": "This earlier FlareForge API snapshot is not synchronized with the later MorphoWatch or Flare Metrics observations."
+    }
+  },
+  "relationship_edges": [
+    {
+      "from": "Coinbase",
+      "to": "cbXRP",
+      "relation": "issues/backs wrapped XRP representation",
+      "evidence_class": "issuer_confirmed",
+      "source": "https://www.coinbase.com/cbxrp/proof-of-reserves"
+    },
+    {
+      "from": "cbXRP",
+      "to": "Morpho Base cbXRP/USDC market",
+      "relation": "posted collateral",
+      "evidence_class": "onchain_aggregator_observation",
+      "source": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/"
+    },
+    {
+      "from": "Morpho Base cbXRP/USDC market",
+      "to": "USDC",
+      "relation": "borrowed stablecoin",
+      "evidence_class": "onchain_aggregator_observation",
+      "source": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/"
+    },
+    {
+      "from": "Coinbase",
+      "to": "Morpho",
+      "relation": "consumer crypto-backed USDC loan product routes through Morpho",
+      "evidence_class": "issuer_documented",
+      "source": "https://www.coinbase.com/"
+    },
+    {
+      "from": "Flare FAssets",
+      "to": "FXRP",
+      "relation": "issues XRP representation backed by XRP reserves and agent collateral",
+      "evidence_class": "protocol_documentation_and_dashboard",
+      "source": "https://flaremetrics.io/fassets"
+    },
+    {
+      "from": "Flare Core Vault",
+      "to": "XRP Ledger",
+      "relation": "holds XRP backing and escrow",
+      "evidence_class": "protocol_documentation",
+      "source": "https://dev.flare.network/fassets/"
+    },
+    {
+      "from": "FXRP",
+      "to": "Morpho Ethereum FXRP/RLUSD market",
+      "relation": "posted collateral",
+      "evidence_class": "onchain_aggregator_observation",
+      "source": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/"
+    },
+    {
+      "from": "Morpho Ethereum FXRP/RLUSD market",
+      "to": "RLUSD",
+      "relation": "borrowed stablecoin",
+      "evidence_class": "onchain_aggregator_observation",
+      "source": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/"
+    },
+    {
+      "from": "Sentora RLUSD Main V2",
+      "to": "Morpho Ethereum FXRP/RLUSD market",
+      "relation": "supplies most displayed lending liquidity",
+      "evidence_class": "onchain_aggregator_observation",
+      "source": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/"
+    }
+  ],
+  "causal_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Collateralized stablecoin borrowing may reduce immediate spot selling by allowing holders to obtain liquidity without selling XRP exposure.",
+      "supporting": "Both markets have measurable outstanding stablecoin debt backed by XRP representations.",
+      "disconfirming": "No borrower-use-of-proceeds data; borrowing does not prove the borrower otherwise would have sold XRP.",
+      "status": "plausible_inference"
+    },
+    {
+      "id": "H2",
+      "claim": "Collateral markets create incremental utility and can increase demand to hold or wrap XRP.",
+      "supporting": "118.75M cbXRP and 13.49M FXRP are posted as collateral in the captured markets.",
+      "disconfirming": "Collateral posting may reflect migration of existing holders; it does not establish net new XRP acquisition.",
+      "status": "plausible_inference"
+    },
+    {
+      "id": "H3",
+      "claim": "High utilization and borrower concentration can amplify liquidation and liquidity feedback under adverse price moves.",
+      "supporting": "Both markets are near 90% utilization; FXRP/RLUSD top three borrowers represent about 90.8% of debt.",
+      "disconfirming": "Current bad debt is reported as zero; displayed health factors remain above 1; the FXRP market has only small reported liquidation repayments.",
+      "status": "risk_hypothesis"
+    },
+    {
+      "id": "H4",
+      "claim": "FXRP introduces bridge, Core Vault governance and redemption-timing risks beyond native XRP price risk.",
+      "supporting": "FXRP relies on agents, a multisig Core Vault, KYC-gated direct redemptions and scheduled processing.",
+      "disconfirming": "Flare reports 100.01% proof of reserve and zero pending mints in the captured dashboard.",
+      "status": "documented_structural_risk"
+    },
+    {
+      "id": "H5",
+      "claim": "cbXRP market activity is more distributed across borrowers than FXRP/RLUSD in the captured snapshots.",
+      "supporting": "MorphoWatch reports 12,056 open loans for cbXRP/USDC versus 57 for FXRP/RLUSD; displayed top cbXRP loans are around $200K each while FXRP top three exceed $7.6M.",
+      "disconfirming": "Address counts are not verified unique beneficial owners; exact Coinbase attribution is a third-party market match.",
+      "status": "provisional_comparison"
+    },
+    {
+      "id": "H6",
+      "claim": "The similar ~90% utilization levels may reflect market rate-model targets rather than independent evidence of system-wide XRP credit demand.",
+      "supporting": "MorphoWatch documents a 90% target utilization curve for both markets.",
+      "disconfirming": "Both markets also show actual outstanding borrowing and collateral, but causality of the shared utilization level is not established.",
+      "status": "counter_hypothesis"
+    },
+    {
+      "id": "H7",
+      "claim": "Near-100% reserve coverage does not by itself guarantee immediate redemption liquidity.",
+      "supporting": "Flare documentation specifies KYC and daily direct-user redemption processing, manual multisig governance and priority rules.",
+      "disconfirming": "No pending mints were shown and the proof-of-reserve indicator was 100.01%.",
+      "status": "documented_limitation"
+    }
+  ],
+  "source_independence": {
+    "morphowatch": "One secondary source group using Morpho API for both markets. The two pages are not independent corroboration.",
+    "coinbase": "Issuer primary source for cbXRP reserve figures and Coinbase product eligibility; exact Morpho market mapping remains third-party inference.",
+    "flaremetrics": "Secondary Flare FAssets dashboard; raw block-level payload hashes were not captured.",
+    "flareforge": "Separate public API/dashboard with explicit Flare block and XRPL ledger; underlying data lineage may overlap Flare protocol feeds and is not assumed fully independent.",
+    "conclusion": "No source-counting inflation. Provider diversity is recorded, but independent underlying data provenance remains partially unresolved."
+  },
+  "data_quality_flags": [
+    "MorphoWatch market timestamps differ: cbXRP 16:31 UTC, FXRP 18:11 UTC.",
+    "Coinbase proof-of-reserves displayed refresh timezone is unspecified.",
+    "Flare Metrics returned conflicting trailing-24-hour flow and success values during the same research run.",
+    "MorphoWatch is a single provider group for both markets.",
+    "Borrower addresses do not identify beneficial owners.",
+    "No raw transaction-by-transaction Morpho replay or API response hashes were captured in this run.",
+    "No borrower destination-of-proceeds analysis was performed.",
+    "cbXRP and FXRP are representations of native XRP and must not be double-counted as additional native XRP supply."
+  ],
+  "prediction_engine_policy": {
+    "status": "NOT_ISSUED",
+    "reason": "The observations are cross-time, provider-dependent, and incomplete for causal attribution. No fixed-horizon out-of-sample evaluation attestation is available.",
+    "next_required_work": [
+      "Capture immutable raw Morpho market state at pinned Base and Ethereum blocks.",
+      "Capture synchronized Coinbase XRP reserve and cbXRP supply snapshot with explicit timezone/block metadata.",
+      "Reconcile FXRP Core Vault reserve against pinned XRPL ledger and Flare block.",
+      "Replay liquidation events and liquidator receipts; distinguish collateral seizure from subsequent native XRP sale.",
+      "Track borrower concentration and health-factor changes over time.",
+      "Resolve Flare Metrics trailing-24h flow and success-rate denominator discrepancies.",
+      "Build fixed-horizon point-in-time features and independent evaluation attestation before any forecast."
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://morphowatch.com/markets/base/cbxrp-usdc-62-5/",
+      "publisher": "MorphoWatch",
+      "published_or_updated": "2026-11-02 16:31 UTC",
+      "class": "secondary_onchain_aggregator"
+    },
+    {
+      "url": "https://morphowatch.com/markets/ethereum/fxrp-rlusd-77/",
+      "publisher": "MorphoWatch",
+      "published_or_updated": "2026-11-02 18:11 UTC",
+      "class": "secondary_onchain_aggregator"
+    },
+    {
+      "url": "https://www.coinbase.com/cbxrp/proof-of-reserves",
+      "publisher": "Coinbase",
+      "published_or_updated": "November 2, 2026; displayed 2:03 AM, timezone unspecified",
+      "class": "issuer_primary"
+    },
+    {
+      "url": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup",
+      "publisher": "Coinbase",
+      "class": "issuer_primary_product_documentation"
+    },
+    {
+      "url": "https://flaremetrics.io/fassets",
+      "publisher": "Flare Metrics",
+      "class": "secondary_protocol_dashboard"
+    },
+    {
+      "url": "https://flareforge.io/api/fxrp.json",
+      "publisher": "FlareForge",
+      "published_or_updated": "2026-11-02T01:57:21Z",
+      "class": "secondary_public_api"
+    },
+    {
+      "url": "https://dev.flare.network/fassets/",
+      "publisher": "Flare developer documentation",
+      "class": "protocol_documentation"
+    },
+    {
+      "url": "https://www.coindesk.com/markets/2026/02/19/coinbase-lets-xrp-ada-and-dogecoin-holders-borrow-up-to-usd100-000-without-selling",
+      "publisher": "CoinDesk",
+      "published_or_updated": "2026-02-19",
+      "class": "secondary_reporting"
+    }
+  ],
+  "limitations": [
+    "This is a research snapshot, not investment advice or a forecast.",
+    "No real-money or paper-trading positions were changed.",
+    "No private borrower identity was inferred.",
+    "Market observations are not synchronized; derived ratios are explicitly approximate."
+  ]
+}
