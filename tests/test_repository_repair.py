@@ -9,6 +9,8 @@ import pytest
 
 from barrot_agent.orchestration.repository_repair import (
     FailureEvidence,
+    GitGateway,
+    PatchExecutor,
     ProjectIdentity,
     RemoteSyncEvidence,
     RepairCycleEvidence,
@@ -17,6 +19,7 @@ from barrot_agent.orchestration.repository_repair import (
     RepositoryRepairController,
     SyncController,
     WorkQueueController,
+    safe_checkout_branch,
 )
 
 
@@ -860,3 +863,149 @@ def test_controlled_end_to_end_workflow_persists_sync_evidence(tmp_path: Path) -
     assert work.queue_advanced is True
     assert work.sync_operation["status"] == RepairState.COMPLETE.value
     assert work.sync_operation["last_valid_project"]["path_with_namespace"] == "Barrot-Agent/B-Agent"
+
+
+def test_safe_checkout_branch_creates_task_branch_without_moving_main(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    assert git(workspace, "switch", "main").returncode == 0
+    main_sha = git(workspace, "rev-parse", "HEAD").stdout.strip()
+
+    safe_checkout_branch(workspace, "barrot/task-123")
+
+    assert git(workspace, "branch", "--show-current").stdout.strip() == "barrot/task-123"
+    assert git(workspace, "rev-parse", "main").stdout.strip() == main_sha
+    assert git(workspace, "status", "--porcelain").stdout.strip() == ""
+
+
+def test_safe_checkout_branch_refuses_dirty_worktree_without_switching(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    assert git(workspace, "switch", "main").returncode == 0
+    note = workspace / "user-notes.txt"
+    note.write_text("preserve this user work\\n", encoding="utf-8")
+
+    with pytest.raises(RepairError, match="pre-existing changes"):
+        safe_checkout_branch(workspace, "barrot/task-123")
+
+    assert git(workspace, "branch", "--show-current").stdout.strip() == "main"
+    assert note.read_text(encoding="utf-8") == "preserve this user work\\n"
+    assert "user-notes.txt" in git(workspace, "status", "--porcelain").stdout
+
+
+def test_safe_checkout_branch_preserves_existing_local_task_branch_commit(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    assert git(workspace, "switch", "-c", "barrot/task-existing").returncode == 0
+    note = workspace / "task-evidence.txt"
+    note.write_text("existing task commit\\n", encoding="utf-8")
+    assert git(workspace, "add", "task-evidence.txt").returncode == 0
+    assert git(workspace, "commit", "-m", "existing task commit").returncode == 0
+    task_sha = git(workspace, "rev-parse", "HEAD").stdout.strip()
+    assert git(workspace, "switch", "main").returncode == 0
+
+    safe_checkout_branch(workspace, "barrot/task-existing")
+
+    assert git(workspace, "branch", "--show-current").stdout.strip() == "barrot/task-existing"
+    assert git(workspace, "rev-parse", "HEAD").stdout.strip() == task_sha
+    assert note.read_text(encoding="utf-8") == "existing task commit\\n"
+
+
+def test_safe_checkout_branch_tracks_existing_remote_branch_without_force(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path, origin=True)
+    assert git(workspace, "switch", "-c", "barrot/task-remote").returncode == 0
+    note = workspace / "remote-task.txt"
+    note.write_text("remote task history\\n", encoding="utf-8")
+    assert git(workspace, "add", "remote-task.txt").returncode == 0
+    assert git(workspace, "commit", "-m", "remote task history").returncode == 0
+    assert git(workspace, "push", "-u", "origin", "barrot/task-remote").returncode == 0
+    remote_sha = git(workspace, "rev-parse", "HEAD").stdout.strip()
+    assert git(workspace, "switch", "main").returncode == 0
+    assert git(workspace, "branch", "-D", "barrot/task-remote").returncode == 0
+
+    safe_checkout_branch(workspace, "barrot/task-remote")
+
+    assert git(workspace, "branch", "--show-current").stdout.strip() == "barrot/task-remote"
+    assert git(workspace, "rev-parse", "HEAD").stdout.strip() == remote_sha
+    assert note.read_text(encoding="utf-8") == "remote task history\\n"
+
+
+def test_safe_checkout_branch_rejects_protected_target(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    with pytest.raises(RepairError, match="protected branch"):
+        safe_checkout_branch(workspace, "main")
+    assert git(workspace, "branch", "--show-current").stdout.strip() == "repair/test"
+
+
+def test_patch_executor_refuses_dirty_worktree_before_writing(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    note = workspace / "user-notes.txt"
+    note.write_text("preserve this user work\\n", encoding="utf-8")
+    target = workspace / path
+    original = target.read_text(encoding="utf-8")
+    changeset = json.loads(repair_payload(path))["changeset"]
+
+    with pytest.raises(RepairError, match="pre-existing changes"):
+        PatchExecutor(workspace).apply(changeset)
+
+    assert target.read_text(encoding="utf-8") == original
+    assert note.read_text(encoding="utf-8") == "preserve this user work\\n"
+
+
+def test_controller_blocks_dirty_worktree_before_model_or_patch(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    note = workspace / "user-notes.txt"
+    note.write_text("preserve this user work\\n", encoding="utf-8")
+    target = workspace / path
+    original = target.read_text(encoding="utf-8")
+    brain = FakeBrain(repair_payload(path))
+
+    cycle = run_cycle(workspace, brain)
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "WORKTREE_PREFLIGHT_FAILED"
+    assert brain.calls == 0
+    assert target.read_text(encoding="utf-8") == original
+    assert note.read_text(encoding="utf-8") == "preserve this user work\\n"
+
+
+def test_controller_blocks_branch_mismatch_before_model_or_patch(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    brain = FakeBrain(repair_payload(path))
+    controller = make_controller(workspace, brain)
+
+    cycle = controller.run(
+        task_title="Repair target",
+        task_body="Fix the reproduced defect in barrot_agent/target.py",
+        issue_number="123",
+        repo="Barrot-Agent/B-Agent",
+        branch="barrot/task-123",
+        audit_context={"inventory": path},
+    )
+
+    assert cycle.status == "blocked"
+    assert cycle.failure is not None
+    assert cycle.failure.code == "BRANCH_MISMATCH"
+    assert brain.calls == 0
+    assert git(workspace, "branch", "--show-current").stdout.strip() == "repair/test"
+
+
+def test_git_gateway_refuses_protected_branch_push(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    result = GitGateway(workspace).push("origin", "main")
+    assert result.success is False
+    assert "protected branch" in result.error
+
+
+def test_git_gateway_refuses_to_commit_pre_staged_user_changes(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    target = workspace / path
+    target.write_text('FLAG = "USER EDIT"\\n', encoding="utf-8")
+    assert git(workspace, "add", path).returncode == 0
+    head_before = git(workspace, "rev-parse", "HEAD").stdout.strip()
+    staged_before = git(workspace, "diff", "--cached", "--binary").stdout
+
+    with pytest.raises(RepairError, match="already contains staged changes"):
+        GitGateway(workspace).commit("must not include user changes", [path])
+
+    assert git(workspace, "rev-parse", "HEAD").stdout.strip() == head_before
+    assert git(workspace, "diff", "--cached", "--binary").stdout == staged_before
+    assert target.read_text(encoding="utf-8") == 'FLAG = "USER EDIT"\\n'
