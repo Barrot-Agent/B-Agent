@@ -529,28 +529,51 @@
     "actual_capital": "Flare's May 2025 wording concerns USDt0/FXRP liquidity deployment, not a disclosed amount of new XRP spot purchases.",
     "camilla_stephenson": {
       "requested_identity": "Camilla Stephenson",
-      "candidate_channel": "Kamilah Stevenson, @drkamilahstevenson",
+      "likely_creator": "Dr. Kamilah Stevenson (surname spelled Stevenson, not Stephenson)",
+      "identity_assessment": "strong likely match, not exact spelling match. In the iHeart episode 'Crypto Panics! with Dr. Kamilah Stevenson', the guest says she is also found on YouTube as 'Doctor Camilla Stevenson' and warns that fake pages exist. Candidate YouTube handle @drkamilahstevenson is the large channel indexed under Kamilah Stevenson; video transcripts also introduce the speaker as Camila Stevenson. This triangulates Kamilah/Camila/Camilla as name variants for the same creator, while the user's 'Stephenson' spelling remains unverified.",
+      "candidate_channel": "https://www.youtube.com/@drkamilahstevenson",
       "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
-      "identity_status": "unconfirmed; candidate video descriptions identify the speaker as Dr. Kamilah Stevenson, while some earlier transcript snippets rendered Camila. No primary self-identification as Camilla Stephenson has been found.",
-      "newly_retrieved_public_videos": [
+      "candidate_channel_inventory": "Third-party channel analytics reports approximately 1.2K uploads; this is not an exhaustive video export. The channel /videos page and RSS feed were not retrievable through the current public web path.",
+      "known_candidate_videos": [
+        {
+          "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+          "video_id": "QslbjGQD0MU",
+          "published": "2025-12-14",
+          "url": "https://www.youtube.com/watch?v=QslbjGQD0MU"
+        },
+        {
+          "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+          "video_id": "ci0FH73lbCs",
+          "published": "2026-01-13",
+          "url": "https://www.youtube.com/watch?v=ci0FH73lbCs"
+        },
+        {
+          "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+          "video_id": "cxeX_eu_2H0",
+          "published": "2026-01-15",
+          "url": "https://www.youtube.com/watch?v=cxeX_eu_2H0"
+        },
         {
           "title": "XRP Was Built for What's Coming",
           "video_id": "ywQEoYPzhlQ",
           "published": "2026-03-03",
-          "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
-          "attribution": "YouTube search result labels creator Kamilah Stevenson"
+          "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ"
         },
         {
           "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
           "video_id": "8xiy8w2YlfY",
           "published": "2026-07-30",
-          "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
-          "attribution": "YouTube search result labels creator Kamilah Stevenson; description self-identifies Dr. Kamilah Stevenson"
+          "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY"
         }
       ],
-      "inventory_status": "incomplete. The channel /videos page and channel RSS feed were not retrievable through the public web retrieval path; search indexing returned only a subset. Do not claim exhaustive coverage or attribute these videos to Camilla Stephenson until identity is verified.",
+      "inventory_status": "partial candidate list only. Do not claim exhaustive coverage or attribute unrelated lookalike channels. The creator explicitly warns that fake pages exist; use the channel ID/handle and corroborated podcast/video self-identification to avoid impersonators.",
       "sources": [
-        "https://www.youtube.com/@drkamilahstevenson/videos",
+        "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+        "https://www.youtube.com/@drkamilahstevenson",
+        "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+        "https://www.youtube.com/watch?v=QslbjGQD0MU",
+        "https://www.youtube.com/watch?v=ci0FH73lbCs",
+        "https://www.youtube.com/watch?v=cxeX_eu_2H0",
         "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
         "https://www.youtube.com/watch?v=8xiy8w2YlfY"
       ]
