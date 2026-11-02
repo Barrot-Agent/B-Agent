@@ -52,3 +52,10 @@ def test_writer_never_overwrites(tmp_path):
 def test_naive_timestamp_rejected():
     s=not_issued(); s["captured_at_utc"]="2026-11-02T14:00:00"
     with pytest.raises(EvidenceError,match="UTC timezone"): validate_snapshot(s)
+
+
+def test_issued_rejects_sources_retrieved_after_forecast_cutoff():
+    s = issued()
+    s["sources"][0]["retrieved_at_utc"] = "2026-11-02T14:00:00Z"
+    with pytest.raises(EvidenceError, match="retrieval time follows forecast data cutoff"):
+        validate_snapshot(s)
