@@ -1,0 +1,227 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "point_in_time_market_structure_snapshot",
+  "artifact_id": "20261102T091500Z-xrp-exchange-concentration-snapshot",
+  "created_at_utc": "2026-11-02T09:15:00Z",
+  "source_snapshot_time_utc": "2026-11-02T08:32:00Z",
+  "source": "https://xrp-insights.com/xrp-radar",
+  "source_class": "single secondary aggregator with stated daily rippled account_info reads and XRPSCAN label attribution",
+  "market_mark": {
+    "xrp_usd": 1.25,
+    "source_timestamp": "2026-11-02T08:32:00Z",
+    "status": "provider-reported mark; not an executable quote"
+  },
+  "exchange_wallets": {
+    "total_xrp": 22380000000,
+    "approximate_usd": 28000000000,
+    "exchange_count": 24,
+    "attributed_wallet_count": 701,
+    "top_exchanges": [
+      {
+        "name": "Upbit",
+        "region": "South Korea",
+        "wallets": 13,
+        "xrp": 6430000000,
+        "seven_day_change_xrp": -765000
+      },
+      {
+        "name": "Coinbase",
+        "region": "United States",
+        "wallets": 358,
+        "xrp": 5840000000,
+        "seven_day_change_xrp": -919000
+      },
+      {
+        "name": "Binance",
+        "region": "Global/offshore",
+        "wallets": 153,
+        "xrp": 2720000000,
+        "seven_day_change_xrp": -62300000
+      },
+      {
+        "name": "Bithumb",
+        "region": "South Korea",
+        "wallets": 4,
+        "xrp": 1830000000,
+        "seven_day_change_xrp": -2600000
+      },
+      {
+        "name": "Uphold",
+        "region": "United States",
+        "wallets": 24,
+        "xrp": 1700000000,
+        "seven_day_change_xrp": -2100000
+      },
+      {
+        "name": "Kraken",
+        "region": "United States",
+        "wallets": 14,
+        "xrp": 957000000,
+        "seven_day_change_xrp": -3000000
+      },
+      {
+        "name": "bitbank",
+        "region": "Japan",
+        "wallets": 2,
+        "xrp": 576000000,
+        "seven_day_change_xrp": -123000
+      },
+      {
+        "name": "Coincheck",
+        "region": "Japan",
+        "wallets": 2,
+        "xrp": 554000000,
+        "seven_day_change_xrp": 110000
+      },
+      {
+        "name": "Coinone",
+        "region": "South Korea",
+        "wallets": 3,
+        "xrp": 318000000,
+        "seven_day_change_xrp": -482000
+      },
+      {
+        "name": "bitFlyer",
+        "region": "Japan",
+        "wallets": 94,
+        "xrp": 193000000,
+        "seven_day_change_xrp": 524000
+      },
+      {
+        "name": "SBI VC Trade",
+        "region": "Japan",
+        "wallets": 2,
+        "xrp": 60000000,
+        "seven_day_change_xrp": 260000
+      }
+    ],
+    "region_totals_xrp": {
+      "South_Korea": 8580000000,
+      "United_States": 8500000000,
+      "Japan": 1380000000,
+      "Global_offshore": 2780000000,
+      "Rest_of_world": 1140000000
+    },
+    "derived_concentration": {
+      "top_two_share_pct": 54.82,
+      "top_three_share_pct": 66.98,
+      "sbi_vc_trade_share_of_japan_tracked_pct": 4.35
+    },
+    "methodology_notes": [
+      "Source says balances are read from XRPL using rippled account_info daily at approximately 08:00 UTC.",
+      "Wallet labels are attributed using XRPSCAN labels; 701 addresses across 24 exchange platforms.",
+      "Regional grouping uses exchange headquarters, not customer residence.",
+      "Balances are mostly pooled customer deposits in omnibus wallets, including cold storage, plus some exchange-controlled reserves such as cbXRP backing and Binance-Peg XRP.",
+      "Exchanges may hold additional XRP in unlabeled wallets; the total is a labeled-wallet floor."
+    ]
+  },
+  "flow_interpretation": {
+    "seven_day_changes_are": "same-wallet balance deltas reported by the aggregator",
+    "not_equivalent_to": [
+      "customer net deposits",
+      "spot purchases",
+      "exchange sell pressure",
+      "order-book liquidity",
+      "tradable float",
+      "proof of beneficial ownership"
+    ],
+    "binance_comparison": {
+      "tracked_binance_wallet_change_xrp": -62300000,
+      "previously_observed_attacker_redistribution_xrp": 233454920,
+      "interpretation": "The tracked seven-day net decline is much smaller than the theft redistribution. This does not reconcile the theft because wallet coverage, offsetting deposits, internal rebalancing and label completeness are unknown. Do not infer that the stolen XRP was sold or that Binance bought a specific amount."
+    },
+    "sbi_vc_trade_comparison": {
+      "tracked_balance_xrp": 60000000,
+      "seven_day_change_xrp": 260000,
+      "seven_day_change_pct": 0.44,
+      "interpretation": "Small positive change in two labeled SBI VC Trade wallets; not proof of customer buying, SBI treasury purchases or Ripple-related flows."
+    }
+  },
+  "adjacent_supply_and_capital_context": {
+    "tracked_escrow_xrp": 31100000000,
+    "next_unlock_xrp": 1000000000,
+    "next_unlock_utc": "2026-12-01T00:00:00Z",
+    "november_cycle_reported_release_xrp": 1000000000,
+    "november_cycle_reported_reescrow_xrp": 700000000,
+    "november_cycle_net_leaving_escrow_xrp": 300000000,
+    "tracked_defi_and_wrapped_xrp": 417800000,
+    "tracked_defi_tvl_usd": 522000000,
+    "cbxrp_xrp": 150900000,
+    "wxrp_xrp": 19400000,
+    "rwa_tracked_value_usd": 4330000000,
+    "rwa_transferable_onchain_usd": 276000000,
+    "rwa_registry_notional_usd": 4060000000,
+    "x402_transactions": 14875541,
+    "x402_settled_xrp": 7022,
+    "x402_settled_rlusd": 40389,
+    "x402_approx_usd_at_mark": 49166.5,
+    "x402_approx_usd_per_transaction": 0.003305,
+    "etf_and_index_holdings_xrp": 1196600186,
+    "etf_and_index_aum_usd": 1500000000,
+    "etf_and_index_supply_share_pct": 1.197
+  },
+  "hypotheses": [
+    {
+      "id": "XW-H1",
+      "claim": "South Korean and U.S. exchange custody concentrations can dominate labeled exchange-held XRP balances and should be separate features in market-structure models.",
+      "counterevidence": "Custody balances are not tradable float or order-book depth."
+    },
+    {
+      "id": "XW-H2",
+      "claim": "SBI VC Trade's small positive labeled-wallet delta may be a useful Japan venue observation.",
+      "counterevidence": "Two wallets and +260K XRP cannot establish customer demand, treasury accumulation or SBI institutional strategy."
+    },
+    {
+      "id": "XW-H3",
+      "claim": "Binance's tracked-wallet decline after the theft may reflect withdrawals, rebalancing or label coverage rather than replacement purchases or attacker monetization.",
+      "counterevidence": "The source's 7-day aggregate does not include all exchange-controlled addresses or offsetting deposits; it cannot be used as a causal measure."
+    }
+  ],
+  "data_quality_rules": [
+    "Do not use exchange wallet balances as float or order-book depth.",
+    "Store per-wallet balance and same-wallet delta with ledger index and observation time.",
+    "Do not combine 08:00 UTC wallet balances with unsynchronized market prices without an explicit time-alignment rule.",
+    "Treat labels and region assignments as source claims, not verified beneficial ownership.",
+    "Keep Binance theft flows separate from Binance customer withdrawals and ordinary exchange rebalancing.",
+    "Keep escrow unlocks separate from market sales.",
+    "Keep DeFi wrapped supply separate from native XRP spot demand.",
+    "Keep registry RWA notional separate from transferable tokenized assets.",
+    "Keep x402 transaction counts separate from settlement value."
+  ],
+  "source_register": [
+    {
+      "id": "XR-1",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "type": "secondary dashboard with stated daily rippled and issuer-data methods"
+    },
+    {
+      "id": "XR-2",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "type": "secondary escrow snapshot with stated pinned-ledger reads"
+    },
+    {
+      "id": "XR-3",
+      "url": "https://xrp-insights.com/xrp-radar/exchanges",
+      "type": "exchange balance methodology and same-wallet flow view"
+    }
+  ],
+  "forecast_status": {
+    "status": "NOT_ISSUED",
+    "reason": "This single-provider wallet snapshot is not synchronized with executable market data and does not establish tradable liquidity or causal flows."
+  },
+  "next_actions": [
+    "Capture the same 701 labeled wallet balances at a fixed validated ledger index and preserve raw AccountRoot responses.",
+    "Compare XRP Radar's per-wallet 7-day changes with independent XRPSCAN labels and a second raw-node source.",
+    "Reconcile the Binance hot-wallet source addresses and all six theft recipient accounts separately from ordinary Binance exchange flows.",
+    "Build order-book depth and trade-volume features separately from exchange custody balances.",
+    "Track SBI VC Trade's two labeled wallets without attributing changes to institutional purchases.",
+    "Align ETF holdings, escrow objects, cbXRP/wXRP supplies and DeFi market states to a common UTC cutoff."
+  ],
+  "safety": {
+    "public_sources_only": true,
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_trade": true,
+    "no_main_write": true
+  }
+}
