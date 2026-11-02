@@ -18,7 +18,8 @@
     "fbi_attribution": "FBI October 31 statement attributes more than $6B stolen from Binance to DPRK TraderTraitor.",
     "trm_url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
     "fbi_url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
-    "interpretation": "Five Binance-attributed XRPL hot wallets transferred 233,461,943.1 XRP to one new account. The transfer is not evidence of a sale. TRM assesses compromise of Binance hot-wallet signing infrastructure, not an XRPL protocol exploit."
+    "interpretation": "Five Binance-attributed XRPL hot wallets transferred 233,461,943.1 XRP to one new account. The transfer is not evidence of a sale. TRM assesses compromise of Binance hot-wallet signing infrastructure, not an XRPL protocol exploit.",
+    "trm_xrp_balance_status": "TRM says the 233.46M XRP remained in place through its onchain observation cutoff of 2026-10-30T00:30:00Z."
   },
   "transfers": [
     {
@@ -105,7 +106,10 @@
     "xrp_in_phase_one_withdrawal_list": true,
     "remaining_5_percent": "Tokens outside the named top ten by liquidity.",
     "interpretation": "Binance says XRP is among the fully backed top-ten assets. No XRP-specific purchase amount, venue or execution time disclosed. Remaining 5% is not described as an XRP shortfall.",
-    "successful_independent_xrp_withdrawal_test": "NOT_VERIFIED"
+    "successful_independent_xrp_withdrawal_test": "NOT_VERIFIED",
+    "reuters_confirmation_url": "https://www.reuters.com/legal/government/binance-resume-withdrawals-after-recovering-bulk-6-billion-stolen-funds-2026-11-01/",
+    "reuters_confirmation_published_at_utc": "2026-11-01T04:57:00Z",
+    "reuters_confirmation": "Reuters explicitly lists XRP in phase one. This confirms the announced phase-one inclusion, not that a specific customer withdrawal succeeded."
   },
   "etf_flow_correction": {
     "data_date": "2026-10-30",
@@ -293,8 +297,8 @@
     "alternative_source": "DefiLlama dashboard as reported by Reuters.",
     "disagreement": "Binance disputed the DefiLlama figure, saying it omitted flows deposited to Binance's new hot wallet and that its own update was closest to accurate. These totals use different wallet coverage and must not be averaged.",
     "replenishment": "Reuters reports Binance said it used company funds to buy replacement tokens and had covered about 95% of the stolen amount; the remaining 5% consists of less-liquid assets.",
-    "phase_one": "Reuters independently reports phased service resumption and an initial 15-token cohort, but its abbreviated list does not name XRP. Binance Recovery Update #4 itself lists XRP among assets reported 100% backed and included in phase one.",
-    "successful_xrp_withdrawal": "No independently observed successful XRP withdrawal in this run.",
+    "phase_one": "Reuters Nov 1, 2026 04:57 UTC explicitly reports that the first withdrawal phase included XRP. Reuters Nov 2 separately reports the phased reopening and 15-token cohort. Binance Recovery Update #4 also lists XRP among the fully backed assets included in phase one.",
+    "successful_xrp_withdrawal": "No independently observed successful XRP withdrawal in this run; phase-one inclusion is confirmed by Reuters and Binance, execution success is not independently tested.",
     "market_stress_context": {
       "usdt_usdc_combined_market_cap_change_since_friday_usd_approx": -1200000000,
       "bitcoin_etf_outflow_friday_usd": 643000000,
