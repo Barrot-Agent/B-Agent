@@ -96,10 +96,11 @@ def run_sandbox(html_path: Path, port: int = 8791) -> dict:
     try:
         with sync_playwright() as p:
             browser = p.chromium.launch()
-            page = browser.new_page()
+            context = browser.new_context()
+            context.route("**/*", _route_local_only)
+            page = context.new_page()
             page.on("pageerror", lambda exc: page_errors.append(str(exc)))
             page.on("popup", lambda popup: popup.close())
-            page.route("**/*", _route_local_only)
             page.add_init_script(_POLYFILL_JS)
             page.goto(f"http://127.0.0.1:{port}/{html_path.name}", wait_until="load")
             try:
