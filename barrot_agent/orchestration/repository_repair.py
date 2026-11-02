@@ -1360,7 +1360,7 @@ class PatchExecutor:
         operations = [PatchOperation.from_dict(item) for item in raw_operations]
         expected_files = [str(item) for item in raw_expected if isinstance(item, str) and item]
         evidence: list[dict[str, Any]] = []
-        pending_writes: list[tuple[Path, str]] = []
+        pending_writes: list[tuple[str, Path, str | None, str]] = []
 
         for operation in operations:
             if operation.type != "replace":
