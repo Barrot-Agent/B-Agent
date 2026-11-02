@@ -89,6 +89,18 @@
         "V16",
         "V17"
       ]
+    },
+    {
+      "source_id": "flareforge-network-snapshot-20261021",
+      "publisher": "FlareForge",
+      "published_at": "2026-10-21",
+      "provider_timestamp_utc": "2026-10-21T09:12:21Z",
+      "url": "https://flareforge.io/network",
+      "independence_group": "flareforge-public-api",
+      "evidence_class": "third_party_cached_historical_snapshot",
+      "claims": [
+        "V18"
+      ]
     }
   ],
   "claims": [
@@ -249,6 +261,23 @@
       "limitations": [
         "A heartbeat is not a guaranteed update interval; direct oracle contract and failure-mode review remains necessary."
       ]
+    },
+    {
+      "claim_id": "V18",
+      "classification": "SAME_PROVIDER_HISTORICAL_COMPARISON",
+      "statement": "FlareForge's October 21 snapshot reported 143,277,822 FXRP supply; its November 2 API snapshot reports 143,948,176.22.",
+      "derived_calculation": {
+        "value": 670354.22,
+        "percentage": 0.004679,
+        "formula": "143,948,176.222337 - 143,277,822; divide by 143,277,822",
+        "label": "approximately +670,354 FXRP (+0.468%) between the two provider snapshots"
+      },
+      "interpretation": "This shows a modest rebound from the October 21 snapshot; it does not establish a return to the June peak or a price signal.",
+      "limitations": [
+        "Same provider/source family, not independent corroboration.",
+        "October 21 page is a cached snapshot and explicitly stale at the time of retrieval.",
+        "November 2 API generated at 01:57:21 UTC, not at the 18:18 research cutoff."
+      ]
     }
   ],
   "relationship_edges": [
@@ -377,6 +406,23 @@
       ],
       "disconfirming_evidence": [
         "Current realized bad debt is zero and recent liquidations were small"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H6",
+      "statement": "FXRP supply may have peaked in the first half of 2026 and contracted through October, but the October 21 to November 2 FlareForge snapshots show a small recent rebound; a simple linear supply trend is not justified.",
+      "supporting_evidence": [
+        "V1",
+        "V18"
+      ],
+      "disconfirming_evidence": [
+        "The recent increase is small and snapshots are same-provider; it does not prove a durable reversal"
+      ],
+      "unknowns": [
+        "Continuous daily totalSupply history",
+        "Net mints/redemptions by cause",
+        "Cross-chain locked supply and DeFi deployment at common cutoffs"
       ],
       "status": "OPEN"
     }
