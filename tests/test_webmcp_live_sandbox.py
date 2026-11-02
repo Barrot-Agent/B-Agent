@@ -61,7 +61,43 @@ def test_sandbox_fails_closed_on_page_errors():
 def test_sandbox_records_unauthenticated_license_scope_and_blocks_external_network():
     source = SCRIPT.read_text(encoding="utf-8")
     assert "unauthenticated_paywall_path_only" in source
-    assert 'page.route("**/*", _route_local_only)' in source
+    assert 'context.route("**/*", _route_local_only)' in source
     assert 'page.on("popup"' in source
     assert "external_network_blocked" in source
     assert "licensed_data_paths_exercised" in source
+
+
+def test_sandbox_expected_tool_names_match_landing_page():
+    import re
+
+    module = load_sandbox()
+    html = (ROOT / "web" / "landing.html").read_text(encoding="utf-8")
+    names = set(re.findall(r'name: "([^"]+)"', html))
+    assert module.EXPECTED_TOOL_NAMES == names
+
+
+def test_route_handler_continues_local_requests_and_aborts_external_requests():
+    module = load_sandbox()
+
+    class Request:
+        def __init__(self, url):
+            self.url = url
+
+    class Route:
+        def __init__(self, url):
+            self.request = Request(url)
+            self.continued = False
+            self.aborted = False
+
+        def continue_(self):
+            self.continued = True
+
+        def abort(self):
+            self.aborted = True
+
+    local = Route("http://127.0.0.1:8791/landing.html")
+    external = Route("https://api.gumroad.com/v2/licenses/verify")
+    module._route_local_only(local)
+    module._route_local_only(external)
+    assert local.continued and not local.aborted
+    assert external.aborted and not external.continued
