@@ -277,6 +277,16 @@
     "separate_test_wallet": {
       "address": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
       "reported_test_payment_xrp": 1000
+    },
+    "reconciliation_arithmetic": {
+      "six_main_recipient_wallets_reported_xrp": 233460920,
+      "separate_test_wallet_reported_xrp": 1000,
+      "original_attacker_account_residual_reported_xrp": 23.69905,
+      "sum_of_reported_recipient_and_residual_balances_xrp": 233461943.69905,
+      "initial_trm_xrplwin_theft_total_xrp": 233461943.1,
+      "delta_reported_sum_minus_initial_total_xrp": 0.59905,
+      "status": "UNRESOLVED_SOURCE_PRECISION_OR_LEDGER_RECONCILIATION_DIFFERENCE",
+      "note": "These are source-reported figures from different ledger/account snapshots. Do not force equality or attribute the 0.59905 XRP difference to fees without transaction-level replay."
     }
   },
   "market_observations": [
@@ -883,7 +893,8 @@
     "Can the six destination balances be replayed from a current validated XRPL account_tx response and reconciled to 233,461,943.1 XRP net of fees?",
     "What was the exact source and scope of Binance co-CEO Yi He's earlier rounded statement that Ripple froze approximately $200M, given TRM's 40.5M RLUSD Ethereum freeze and separate RLUSD movements on XRPL?",
     "Did any of the six main recipient wallets or the separate test wallet transact after validated ledger 108064685 (approximately 19:55 UTC Nov 2)?",
-    "Can the six-wallet total, seventh test transfer and original account residual be reconciled exactly to the initial 233,461,943.1 XRP theft after network fees and reserve balances?"
+    "Can the six-wallet total, seventh test transfer and original account residual be reconciled exactly to the initial 233,461,943.1 XRP theft after network fees and reserve balances?",
+    "The reported six-wallet total + separate 1,000 XRP test wallet + original-account residual sum to 233,461,943.69905 XRP, 0.59905 XRP above TRM/XRPLWin's initial 233,461,943.1 XRP total; direct validated-ledger replay is required to explain the discrepancy."
   ],
   "next_actions": [
     "Pin the latest validated XRPL ledger after 19:55 UTC and query account_tx for the original attacker account, six recipient accounts and separate test wallet; corroborate with a second public XRPL data provider.",
@@ -897,6 +908,6 @@
     "Record Circle and Tether freeze addresses only from official or independently corroborated public sources; do not infer user identities.",
     "Keep forecasts NOT_ISSUED until fixed-horizon out-of-sample evaluation and independent attestation are verified."
   ],
-  "provenance_precision_note": "Do not infer a publication or retrieval clock time where the source or capture log did not provide one. Dates are retained at date precision; market and Binance snapshot timestamps are retained only where explicitly published. TRM and XRPLWin now support a quantified 233,461,943.1 XRP theft from Binance-attributed wallets; the earlier UNKNOWN_NOT_DISCLOSED field has been corrected. Subsequent six-wallet redistribution is time-stamped only through the reported 04:37 UTC observation and is not represented as current. Latest source-reported recipient status is pinned to ledger 108064685 (approximately 19:55 UTC Nov 2); it is not represented as a live query performed by this run.",
-  "last_updated_at_utc": "2026-11-02T21:13:45Z"
+  "provenance_precision_note": "Do not infer a publication or retrieval clock time where the source or capture log did not provide one. Dates are retained at date precision; market and Binance snapshot timestamps are retained only where explicitly published. TRM and XRPLWin now support a quantified 233,461,943.1 XRP theft from Binance-attributed wallets; the earlier UNKNOWN_NOT_DISCLOSED field has been corrected. Subsequent six-wallet redistribution is time-stamped only through the reported 04:37 UTC observation and is not represented as current. Latest source-reported recipient status is pinned to ledger 108064685 (approximately 19:55 UTC Nov 2); it is not represented as a live query performed by this run. The reported six-wallet/test-wallet/residual arithmetic differs from the initial forensic total by +0.59905 XRP; this exact delta is retained as unresolved rather than attributed to fees or rounding without replay.",
+  "last_updated_at_utc": "2026-11-02T21:14:55Z"
 }
