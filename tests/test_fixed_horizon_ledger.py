@@ -1044,10 +1044,10 @@ def test_metrics_never_pool_live_and_historical_replay(tmp_path, monkeypatch):
         issued_at_utc="2026-11-01T00:00:00Z",
         data_cutoff_utc="2026-10-31T23:59:00Z",
         feature_snapshot={
-            "snapshot_id": "features-live-001",
+            "snapshot_id": "features-001",
             "source_id": "SRC-FEATURE-001",
             "sha256": TEST_SOURCE_REGISTRY["SRC-FEATURE-001"],
-            "captured_at_utc": "2026-10-31T23:58:00Z",
+            "captured_at_utc": "2026-10-30T23:58:00Z",
         },
         baseline={
             "id": "uniform-v1",
