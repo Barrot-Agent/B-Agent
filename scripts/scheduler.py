@@ -9,9 +9,9 @@ practical reliable minimum - exact-minute firing is NOT guaranteed,
 run_after is a lower bound not an exact time) and dispatches due
 entries via `gh workflow run`.
 
-SAFETY: only workflows already present in .github/workflows/ can be
-targeted - the queue cannot invoke arbitrary commands even if the
-file were tampered with. This adds *when*, never *what*.
+SAFETY: unattended dispatch is restricted to an explicit allowlist of
+read-only validation workflows. Queue tampering cannot select deploy,
+merge, post, submit or other mutating workflows.
 """
 import json
 import os
@@ -22,6 +22,13 @@ from datetime import datetime, timezone
 
 QUEUE_PATH = "ping-pongings/knowledge-base/schedule_queue.jsonl"
 WORKFLOWS_DIR = ".github/workflows"
+
+# Only read-only validation workflows may be dispatched by the unattended queue.
+# Anything that writes data, deploys, posts, submits or calls external services is excluded.
+SAFE_WORKFLOWS = frozenset({
+    "ci.yml",
+    "barrot-bundle-operational-smoke.yml",
+})
 
 
 def _now():
@@ -48,16 +55,26 @@ def _save(entries):
 
 
 def _valid_workflow(name):
-    return os.path.isfile(os.path.join(WORKFLOWS_DIR, name))
+    return (
+        isinstance(name, str)
+        and name in SAFE_WORKFLOWS
+        and os.path.isfile(os.path.join(WORKFLOWS_DIR, name))
+    )
 
 
 def schedule(workflow, run_after_iso, note="", inputs=None):
     if not _valid_workflow(workflow):
-        sys.exit(f"Refusing to schedule: '{workflow}' is not a real file in {WORKFLOWS_DIR}/")
+        sys.exit(f"Refusing to schedule: '{workflow}' is not in the safe workflow allowlist")
+    if inputs is not None and inputs != {}:
+        sys.exit("Refusing to schedule workflow inputs; allowlisted workflows must be input-free")
+    if not isinstance(run_after_iso, str):
+        sys.exit("run_after must be a timezone-aware ISO 8601 string")
     try:
-        datetime.fromisoformat(run_after_iso.replace("Z", "+00:00"))
+        parsed_run_after = datetime.fromisoformat(run_after_iso.replace("Z", "+00:00"))
     except ValueError:
         sys.exit(f"run_after must be real ISO 8601, got: {run_after_iso}")
+    if parsed_run_after.tzinfo is None or parsed_run_after.utcoffset() is None:
+        sys.exit("run_after must include a timezone offset (for example Z or +00:00)")
 
     entry = {
         "id": str(uuid.uuid4())[:8],
@@ -84,24 +101,37 @@ def tick():
     for e in entries:
         if e["status"] != "pending":
             continue
-        try:
-            due = datetime.fromisoformat(e["run_after"].replace("Z", "+00:00"))
-        except ValueError:
+        raw_run_after = e.get("run_after")
+        if not isinstance(raw_run_after, str):
             e["status"] = "failed"
-            e["error"] = "unparseable run_after"
+            e["error"] = "missing or non-string run_after"
+            changed = True
+            continue
+        try:
+            due = datetime.fromisoformat(raw_run_after.replace("Z", "+00:00"))
+            if due.tzinfo is None or due.utcoffset() is None:
+                raise ValueError("run_after must include a timezone offset")
+        except ValueError as exc:
+            e["status"] = "failed"
+            e["error"] = str(exc)[:300]
             changed = True
             continue
         if due > now:
             continue
-        if not _valid_workflow(e["workflow"]):
+        workflow = e.get("workflow")
+        if not _valid_workflow(workflow):
             e["status"] = "failed"
-            e["error"] = f"workflow '{e['workflow']}' no longer exists"
+            e["error"] = "workflow is not in the safe dispatch allowlist or no longer exists"
+            changed = True
+            continue
+        inputs = e.get("inputs", {})
+        if not isinstance(inputs, dict) or inputs:
+            e["status"] = "failed"
+            e["error"] = "workflow inputs are disabled for unattended scheduled dispatch"
             changed = True
             continue
 
-        cmd = ["gh", "workflow", "run", e["workflow"]]
-        for k, v in e.get("inputs", {}).items():
-            cmd += ["-f", f"{k}={v}"]
+        cmd = ["gh", "workflow", "run", workflow]
         result = subprocess.run(cmd, capture_output=True, text=True)
         e["fired_at"] = now.isoformat()
         if result.returncode == 0:
