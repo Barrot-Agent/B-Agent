@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import shutil
 from collections import Counter
@@ -52,7 +53,7 @@ def load_jsonl(path):
     path = Path(path)
     if not path.exists():
         return entries, malformed
-    with path.open("r", encoding="utf-8") as handle:
+    with path.open("r", encoding="utf-8", errors="replace") as handle:
         for line in handle:
             if not line.strip():
                 continue
@@ -87,6 +88,7 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
     url_counts = Counter()
     feed_counts = Counter()
     missing_timestamp = 0
+    missing_url = 0
     future_timestamp = 0
     recent_entries = 0
     prior_entries = 0
@@ -106,6 +108,8 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
         url = entry.get("url")
         if isinstance(url, str) and url.strip():
             url_counts[url.strip()] += 1
+        else:
+            missing_url += 1
 
         feed = entry.get("feed") or entry.get("source") or "unknown"
         feed_counts[str(feed)] += 1
@@ -138,7 +142,7 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
             relevance = float(distill.get("xrp_relevance"))
         except (TypeError, ValueError):
             relevance = None
-        if relevance is None or relevance < 0 or relevance > 1:
+        if relevance is None or not math.isfinite(relevance) or relevance < 0 or relevance > 1:
             missing_relevance += 1
             relevance = None
 
@@ -169,7 +173,8 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
     prior_score = _weighted_score(prior_num, prior_den)
     shift = recent_score - prior_score if recent_score is not None and prior_score is not None else None
 
-    if malformed or missing_timestamp or future_timestamp:
+    if (malformed or missing_timestamp or missing_url or future_timestamp
+            or duplicate_urls or missing_relevance or invalid_sentiment):
         status = "DEGRADED"
     elif recent_entries == 0:
         status = "STALE"
@@ -196,6 +201,7 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
         "duplicate_url_count": duplicate_urls,
         "malformed_jsonl_lines": malformed,
         "missing_ingested_at": missing_timestamp,
+        "missing_url": missing_url,
         "future_ingested_at": future_timestamp,
         "earliest_ingested_at_utc": earliest_ingested.isoformat() if earliest_ingested else None,
         "latest_ingested_at_utc": latest_ingested.isoformat() if latest_ingested else None,
