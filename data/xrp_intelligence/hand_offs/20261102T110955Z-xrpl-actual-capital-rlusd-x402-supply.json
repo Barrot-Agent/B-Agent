@@ -392,6 +392,59 @@
         "NODAL-XRP-24X7-CLEARING-2025",
         "NODAL-RIPPLE-COINBASE-2026-03-05"
       ]
+    },
+    {
+      "id": "COINBASE-Q3-2026-STRATEGIC-POSITION",
+      "classification": "primary_company_earnings_release",
+      "publisher": "Coinbase Global, Inc.",
+      "published_at": "2026-10-29",
+      "claims": [
+        "Coinbase reported 10.7% crypto trading-volume market share in Q3 2026 and its fourth consecutive quarter of share gains in spot and derivatives.",
+        "Coinbase reported 12.5% share of total crypto market capitalization by Assets on Platform.",
+        "Average USDC held in Coinbase products reached $22B, up 49% year over year; Coinbase said it captured approximately 50% of all USDC economics over the prior year.",
+        "Coinbase reported 179% compound annual growth in crypto derivatives trading volume over the preceding two years.",
+        "Subscription and services revenue represented 49% of Q3 net revenue; prediction markets exceeded $200M annualized revenue; average daily loan-book balance was up 74% year over year.",
+        "Coinbase said Base remained the leading L2 for spot trading and DeFi TVL as of Q3 2026."
+      ],
+      "interpretation": "Coinbase's competitive position is an integrated exchange, derivatives, custody, stablecoin-distribution, lending, onchain and prediction-market platform. These are company-reported performance measures, not independent market-share calculations. The release does not disclose XRP-specific custody, collateral balances, or Ripple Prime client XRP positions.",
+      "sources": [
+        "COINBASE-Q3-2026-EARNINGS-RELEASE"
+      ]
+    },
+    {
+      "id": "COINBASE-X402-AGENTIC-PAYMENTS-Q2",
+      "classification": "primary_company_earnings_release",
+      "publisher": "Coinbase Global, Inc.",
+      "published_at": "2026-07-30",
+      "claims": [
+        "Coinbase reported that 97%+ of onchain agentic transactions used its x402 protocol in Q2 2026.",
+        "Coinbase reported that 99%+ of onchain agentic commerce was completed using USDC.",
+        "Coinbase reported that 90%+ of agentic stablecoin transaction volume ran on Base.",
+        "Coinbase reported average USDC held in Coinbase products of $20B in Q2 2026 and approximately 50% of all USDC economics over the prior year."
+      ],
+      "interpretation": "Coinbase's x402/agentic payments strategy is USDC- and Base-centered according to its own Q2 release. XRP Ledger t54/x402 dashboard observations use a different facilitator, chain, payment population and measurement window; they are not directly comparable. This creates a competing payment-rail hypothesis, not proof that Coinbase's x402 displaced XRPL activity.",
+      "sources": [
+        "COINBASE-Q2-2026-EARNINGS-RELEASE"
+      ]
+    },
+    {
+      "id": "USDC-COINBASE-METRIC-SCOPE-RECONCILIATION",
+      "classification": "cross_filing_metric_scope_comparison",
+      "publisher": "Circle and Coinbase SEC filings / earnings releases",
+      "as_of": "2026-06-30_to_2026-09-30",
+      "claims": [
+        "Coinbase Q2 2026 Form 10-Q reports $8.874B USDC within its June 30 Assets on Platform table; Coinbase defines AOP to exclude assets for which customers hold full or partial keys.",
+        "Coinbase Q2 earnings release reports average USDC held in Coinbase products of $20B.",
+        "Coinbase Q3 earnings release reports average USDC held in Coinbase products of $22B.",
+        "Circle Q2 2026 Form 10-Q reports $12.442B USDC on Coinbase at quarter-end and a 19.5% daily weighted-average Coinbase share metric."
+      ],
+      "interpretation": "These figures are not interchangeable: one is Coinbase's point-in-time AOP category, two are average product-balance metrics, and one is Circle's issuer-side view of USDC on Coinbase. The filings/releases retrieved do not provide a complete reconciliation bridge. Preserve each metric with its own definition and date; do not average or treat the difference as an error without a scope reconciliation.",
+      "sources": [
+        "COINBASE-SEC-10Q-2026Q2",
+        "COINBASE-Q2-2026-EARNINGS-RELEASE",
+        "COINBASE-Q3-2026-EARNINGS-RELEASE",
+        "CIRCLE-SEC-10Q-2026Q2"
+      ]
     }
   ],
   "actual_capital_framework": {
@@ -470,6 +523,26 @@
       "claim": "Institutional XRP adoption is broadening through ETFs, cbXRP, DeFi, custody and RWA rails.",
       "supporting": "ETF holdings, cbXRP supply, DeFi locked XRP and XRPL RWA records.",
       "counterevidence": "ETF holdings are not flows; cbXRP and wXRP are wrapped claims; RWA notional is mostly non-transferable registry value; DeFi/custody categories may overlap."
+    },
+    {
+      "id": "PAYMENT-RAIL-H3",
+      "claim": "Coinbase's USDC/Base x402 ecosystem may compete with XRPL-based XRP/RLUSD agent micropayments for developer and merchant adoption.",
+      "supporting_evidence": [
+        "Coinbase Q2 company release reports 97%+ of onchain agentic transactions using Coinbase x402, 99%+ of onchain agentic commerce using USDC and 90%+ of agentic stablecoin volume on Base.",
+        "XRP Radar/t54 dashboard reports 14.88M XRPL x402 transactions but only 7,022 XRP plus 40,389 RLUSD cumulative settled value."
+      ],
+      "counterevidence_or_limits": [
+        "Different facilitators, chains, user populations, time windows and definitions; not directly comparable.",
+        "Coinbase's figures are company-reported aggregate metrics; XRP Radar's figures are a dashboard/operator aggregation not independently replayed here.",
+        "A chain-agnostic x402 protocol can support multiple settlement assets and networks; competition and complementarity can coexist."
+      ],
+      "observable_tests": [
+        "Facilitator-level payment counts and delivered value by chain and asset.",
+        "Unique payer/merchant concentration and repeat payment rates.",
+        "Net external settlement after internal transfers and issuer mint/redemption.",
+        "Developer/merchant route selection and fees.",
+        "Cross-chain bridge flows between Base and XRPL."
+      ]
     }
   ],
   "relationship_edges": [
@@ -548,6 +621,24 @@
       "to": "Coinbase Embedded Wallet",
       "relationship": "wallet infrastructure/key custody and user-authorized signing",
       "status": "confirmed by Permission announcement 2026-09-22; ASK official contracts on Base and Polygon, no XRPL contract identified"
+    },
+    {
+      "from": "Coinbase x402",
+      "to": "USDC on Base",
+      "relationship": "dominant company-reported agentic payment route",
+      "status": "Coinbase Q2 2026 says 99%+ of onchain agentic commerce used USDC and 90%+ of agentic stablecoin volume ran on Base"
+    },
+    {
+      "from": "t54 Labs x402",
+      "to": "XRP Ledger",
+      "relationship": "XRPL micropayment facilitator",
+      "status": "dashboard/operator-reported 14.88M transactions and 7,022 XRP + 40,389 RLUSD; complete ledger replay not performed"
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC",
+      "relationship": "major distribution and product-balance platform",
+      "status": "Q3 company release reports $22B average USDC in products and approximately 50% of USDC economics over prior year"
     }
   ],
   "source_independence_and_caveats": [
@@ -818,6 +909,20 @@
       "published_at": "2025-06-13",
       "url": "https://www.nodalclear.com/nodal-clear-expands-24x7-clearing-to-solana-and-xrp-futures/",
       "independence": "Primary clearing-house announcement listing 24x7 XRP and nano-XRP futures contract sizes."
+    },
+    {
+      "id": "COINBASE-Q3-2026-EARNINGS-RELEASE",
+      "publisher": "Coinbase Global, Inc.",
+      "published_at": "2026-10-29",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "independence": "Primary company earnings release; figures are company-reported and do not disclose XRP-specific balances."
+    },
+    {
+      "id": "COINBASE-Q2-2026-EARNINGS-RELEASE",
+      "publisher": "Coinbase Global, Inc.",
+      "published_at": "2026-07-30",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q2-Earnings-Everything-Exchange-Drives-3rd-Consecutive-Quarter-of-Record-Crypto-Trading-Volume-Market-Share-Revenue-Diversification-and-Resilience/default.aspx",
+      "independence": "Primary company earnings release; x402 and agentic commerce metrics are company-reported."
     }
   ],
   "identity_threads": {
