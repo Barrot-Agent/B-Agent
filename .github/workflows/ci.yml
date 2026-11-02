@@ -79,4 +79,15 @@ jobs:
             tests/test_autonomous_real_bundle.py \
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
+            tests/test_cross_analysis_workflow_safety.py \
+            tests/test_knowledge_freshness.py \
+            tests/test_scheduler_queue_workflow_safety.py \
+            tests/test_merge_queue_fail_closed.py \
+            tests/test_databricks_token_rotation_safety.py \
+            tests/test_telemetry_workflow_readonly.py \
+            tests/test_external_mutation_workflows_manual_only.py \
+            tests/test_remaining_workflow_safety.py \
+            tests/test_barrot_agent_workflow_authorization.py \
+            tests/test_barrot_approve_pr_workflow.py \
+            tests/test_cognitive_pingpong_workflow_safety.py \
             -v --no-cov
