@@ -1,0 +1,381 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "japan_sbic_identity_and_chatgpt_phrase_resolution",
+  "captured_at_utc": "2026-11-02T14:38:00Z",
+  "evidence_cutoff_utc": "2026-11-02T14:38:00Z",
+  "status": {
+    "identity_resolution": "EXECUTED",
+    "official_source_readback": "VERIFIED",
+    "xrp_relationship": "NO_DIRECT_LINK_ESTABLISHED"
+  },
+  "conclusion": {
+    "short": "Japan's SBIC is not one uniquely identifiable company. Official sources identify three sister regional Small and Medium Business Investment & Consultation companies: Tokyo (East Japan), Nagoya (Central Japan) and Osaka (West Japan). They were established in 1963 under the Small and Medium Business Investment & Consultation Company Act. They are separate from SBI Holdings/SBI Group.",
+    "acronym_expansion": "Small and Medium Business Investment & Consultation",
+    "legal_basis": "Small and Medium Business Investment & Consultation Company Act, Act No. 101 of 1963",
+    "caution": "The acronym SBIC is also used in unrelated contexts, including the U.S. Small Business Investment Company program and the academic Social Bias Inference Corpus dataset. The exact phrase 'ChatGPT SBIC' is context-dependent."
+  },
+  "entities": [
+    {
+      "id": "TOKYO_SBIC_EAST",
+      "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "japanese_name": "東京中小企業投資育成株式会社",
+      "regional_label": "SBIC East Japan",
+      "official_source": "https://www.sbic.co.jp/company/profile/",
+      "founded": "1963-11-15",
+      "corporate_number": "9011001030621",
+      "operating_area": "18 prefectures east of and including the stated regional boundary; official profile specifies Shizuoka, Nagano and Niigata eastward.",
+      "relationship_to_other_regional_sbics": "Officially lists Nagoya and Osaka as sister companies.",
+      "xrp_ripple_circle_coinbase_relationship": "NO_DIRECT_PUBLIC_EVIDENCE_IDENTIFIED"
+    },
+    {
+      "id": "NAGOYA_SBIC_CENTRAL",
+      "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+      "japanese_name": "名古屋中小企業投資育成株式会社",
+      "regional_label": "SBIC Central Japan",
+      "official_source": "https://www.sbic-cj.co.jp/company/about/",
+      "founded": "1963-11-18",
+      "operating_area": "Aichi, Gifu, Mie, Toyama and Ishikawa.",
+      "relationship_to_other_regional_sbics": "Officially lists Tokyo and Osaka as sister companies.",
+      "xrp_ripple_circle_coinbase_relationship": "NO_DIRECT_PUBLIC_EVIDENCE_IDENTIFIED"
+    },
+    {
+      "id": "OSAKA_SBIC_WEST",
+      "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+      "japanese_name": "大阪中小企業投資育成株式会社",
+      "regional_label": "SBIC West Japan",
+      "official_source": "https://www.sbic-wj.co.jp/profiles/profile/",
+      "founded": "1963-11-20",
+      "operating_area": "24 prefectures west of Fukui, Shiga, Nara and Wakayama.",
+      "relationship_to_other_regional_sbics": "Officially identifies Tokyo and Nagoya as sister companies.",
+      "xrp_ripple_circle_coinbase_relationship": "NO_DIRECT_PUBLIC_EVIDENCE_IDENTIFIED"
+    }
+  ],
+  "chatgpt_and_ai_public_programs": [
+    {
+      "id": "TOKYO_SBIC_CHATGPT_2025_02_26",
+      "entity": "TOKYO_SBIC_EAST",
+      "date": "2025-02-26",
+      "title": "Generative AI (ChatGPT): Present and Future",
+      "source": "https://www.sbic.co.jp/seminar/20250226ym/",
+      "classification": "OFFICIAL_SEMINAR_LISTING",
+      "details": [
+        "Tokyo SBIC co-hosted the event with the Tokyo Chamber of Commerce and Industry Taito branch; Japan Finance Corporation Tokyo/Ueno branches were listed as supporters.",
+        "The program covered ChatGPT, OpenAI, practical business applications and a live demonstration.",
+        "The listed speaker was a Microsoft evangelist, not an OpenAI representative."
+      ],
+      "limits": [
+        "A public educational seminar does not establish a commercial partnership, product integration, endorsement or privileged relationship with OpenAI."
+      ]
+    },
+    {
+      "id": "TOKYO_SBIC_GENERATIVE_AI_2025_06",
+      "entity": "TOKYO_SBIC_EAST",
+      "date_range": [
+        "2025-06-12",
+        "2025-06-13"
+      ],
+      "title": "Introductory Generative AI and Machine Learning Training for Manufacturing",
+      "source": "https://www.sbic.co.jp/training/20250612co/",
+      "classification": "OFFICIAL_TRAINING_LISTING",
+      "details": [
+        "Curriculum explicitly included ChatGPT use, Copilot, prompt applications, image/video generation and AI-assisted code creation.",
+        "The listing restricted general-company enrollment; investee-company pricing was shown."
+      ],
+      "limits": [
+        "Training access is not an OpenAI partnership or evidence of XRP/crypto activity."
+      ]
+    },
+    {
+      "id": "OSAKA_SBIC_CHATGPT_2025_12_04",
+      "entity": "OSAKA_SBIC_WEST",
+      "date": "2025-12-04",
+      "title": "Accelerate Business with Generative AI — Start Using It from Your Smartphone",
+      "source": "https://www.sbic-wj.co.jp/seminar/16652/",
+      "classification": "OFFICIAL_SEMINAR_LISTING",
+      "details": [
+        "Osaka SBIC co-hosted the event with Japan Finance Corporation.",
+        "The listing described practical generative-AI use and ChatGPT on smartphones; an external management-consulting firm supplied the presenter."
+      ],
+      "limits": [
+        "Co-hosting an educational event is not a product, investment or strategic partnership with OpenAI."
+      ]
+    },
+    {
+      "id": "NAGOYA_SBIC_GENERATIVE_AI_2026_06",
+      "entity": "NAGOYA_SBIC_CENTRAL",
+      "date": "2026-06-02",
+      "title": "Generative AI in Practice at Investee Companies",
+      "source": "https://www.sbic-cj.co.jp/",
+      "classification": "OFFICIAL_SITE_NEWS_LISTING",
+      "details": [
+        "Nagoya SBIC advertised an investee-company salon focused on practical generative-AI use."
+      ],
+      "limits": [
+        "The retrieved listing does not establish that the program was specifically ChatGPT-branded; do not label it a ChatGPT event."
+      ]
+    },
+    {
+      "id": "OSAKA_SBIC_GEMINI_NOTEBOOKLM_2026_05",
+      "entity": "OSAKA_SBIC_WEST",
+      "date": "2026-05-21",
+      "title": "Generative AI Use in Recruitment",
+      "source": "https://www.sbic-wj.co.jp/seminar/20585/",
+      "classification": "OFFICIAL_SEMINAR_LISTING",
+      "details": [
+        "The program specifically described Google Gemini and NotebookLM."
+      ],
+      "limits": [
+        "This is evidence of broader AI education, not a ChatGPT/OpenAI relationship."
+      ]
+    }
+  ],
+  "academic_candidate": {
+    "id": "SOCIAL_BIAS_INFERENCE_CORPUS",
+    "expansion": "Social Bias Inference Corpus",
+    "source": "https://ojs.aaai.org/index.php/AAAI/article/download/30178/32091",
+    "classification": "ACADEMIC_DATASET",
+    "details": [
+      "The SBIC dataset is used in academic toxic-content/bias classification research; the paper reports experiments involving ChatGPT as one of the models or label-generation approaches."
+    ],
+    "limits": [
+      "This is not a Japanese investment institution and not evidence of an OpenAI partnership with any Japanese SBIC company."
+    ]
+  },
+  "relationship_graph": {
+    "nodes": [
+      {
+        "id": "TOKYO_SBIC_EAST",
+        "type": "regional_policy_investment_company"
+      },
+      {
+        "id": "NAGOYA_SBIC_CENTRAL",
+        "type": "regional_policy_investment_company"
+      },
+      {
+        "id": "OSAKA_SBIC_WEST",
+        "type": "regional_policy_investment_company"
+      },
+      {
+        "id": "SMB_INVESTMENT_COMPANY_ACT",
+        "type": "japanese_law"
+      },
+      {
+        "id": "OpenAI",
+        "type": "ai_company"
+      },
+      {
+        "id": "ChatGPT",
+        "type": "ai_product"
+      },
+      {
+        "id": "Microsoft",
+        "type": "technology_company"
+      },
+      {
+        "id": "Japan_Finance_Corporation",
+        "type": "public_financial_institution"
+      },
+      {
+        "id": "Tokyo_Chamber_Taito",
+        "type": "business_association"
+      },
+      {
+        "id": "SBI_Holdings",
+        "type": "financial_group"
+      },
+      {
+        "id": "Ripple",
+        "type": "digital_asset_company"
+      },
+      {
+        "id": "XRP",
+        "type": "digital_asset"
+      },
+      {
+        "id": "Circle",
+        "type": "stablecoin_company"
+      }
+    ],
+    "edges": [
+      {
+        "from": "SMB_INVESTMENT_COMPANY_ACT",
+        "to": "TOKYO_SBIC_EAST",
+        "relation": "established_under",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "SMB_INVESTMENT_COMPANY_ACT",
+        "to": "NAGOYA_SBIC_CENTRAL",
+        "relation": "established_under",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "SMB_INVESTMENT_COMPANY_ACT",
+        "to": "OSAKA_SBIC_WEST",
+        "relation": "established_under",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "TOKYO_SBIC_EAST",
+        "to": "NAGOYA_SBIC_CENTRAL",
+        "relation": "sister_company",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "TOKYO_SBIC_EAST",
+        "to": "OSAKA_SBIC_WEST",
+        "relation": "sister_company",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "NAGOYA_SBIC_CENTRAL",
+        "to": "OSAKA_SBIC_WEST",
+        "relation": "sister_company",
+        "status": "CONFIRMED"
+      },
+      {
+        "from": "TOKYO_SBIC_EAST",
+        "to": "ChatGPT",
+        "relation": "public_educational_seminar_and_training",
+        "status": "CONFIRMED_EVENT_NOT_PARTNERSHIP"
+      },
+      {
+        "from": "OSAKA_SBIC_WEST",
+        "to": "ChatGPT",
+        "relation": "public_educational_seminar",
+        "status": "CONFIRMED_EVENT_NOT_PARTNERSHIP"
+      },
+      {
+        "from": "NAGOYA_SBIC_CENTRAL",
+        "to": "ChatGPT",
+        "relation": "specific_product_use_not_established",
+        "status": "UNKNOWN"
+      },
+      {
+        "from": "Microsoft",
+        "to": "TOKYO_SBIC_EAST",
+        "relation": "speaker_at_Tokyo_SBIC_ChatGPT_seminar",
+        "status": "CONFIRMED_EVENT"
+      },
+      {
+        "from": "Japan_Finance_Corporation",
+        "to": "TOKYO_SBIC_EAST",
+        "relation": "event_supporter_or_cohost_in_listed_events",
+        "status": "CONFIRMED_EVENT"
+      },
+      {
+        "from": "Tokyo_Chamber_Taito",
+        "to": "TOKYO_SBIC_EAST",
+        "relation": "event_cohost",
+        "status": "CONFIRMED_EVENT"
+      }
+    ],
+    "explicit_non_edges": [
+      {
+        "from": "TOKYO_SBIC_EAST",
+        "to": "SBI_Holdings",
+        "status": "NO_AFFILIATION_ESTABLISHED"
+      },
+      {
+        "from": "NAGOYA_SBIC_CENTRAL",
+        "to": "SBI_Holdings",
+        "status": "NO_AFFILIATION_ESTABLISHED"
+      },
+      {
+        "from": "OSAKA_SBIC_WEST",
+        "to": "SBI_Holdings",
+        "status": "NO_AFFILIATION_ESTABLISHED"
+      },
+      {
+        "from": "TOKYO_SBIC_EAST",
+        "to": "Ripple",
+        "status": "NO_DIRECT_PUBLIC_RELATIONSHIP_IDENTIFIED"
+      },
+      {
+        "from": "NAGOYA_SBIC_CENTRAL",
+        "to": "Ripple",
+        "status": "NO_DIRECT_PUBLIC_RELATIONSHIP_IDENTIFIED"
+      },
+      {
+        "from": "OSAKA_SBIC_WEST",
+        "to": "Ripple",
+        "status": "NO_DIRECT_PUBLIC_RELATIONSHIP_IDENTIFIED"
+      },
+      {
+        "from": "TOKYO_SBIC_EAST",
+        "to": "XRP",
+        "status": "NO_DIRECT_PUBLIC_RELATIONSHIP_IDENTIFIED"
+      },
+      {
+        "from": "NAGOYA_SBIC_CENTRAL",
+        "to": "XRP",
+        "status": "NO_DIRECT_PUBLIC_RELATIONSHIP_IDENTIFIED"
+      },
+      {
+        "from": "OSAKA_SBIC_WEST",
+        "to": "XRP",
+        "status": "NO_DIRECT_PUBLIC_RELATIONSHIP_IDENTIFIED"
+      },
+      {
+        "from": "TOKYO_SBIC_EAST",
+        "to": "Circle",
+        "status": "NO_DIRECT_PUBLIC_RELATIONSHIP_IDENTIFIED"
+      },
+      {
+        "from": "NAGOYA_SBIC_CENTRAL",
+        "to": "Circle",
+        "status": "NO_DIRECT_PUBLIC_RELATIONSHIP_IDENTIFIED"
+      },
+      {
+        "from": "OSAKA_SBIC_WEST",
+        "to": "Circle",
+        "status": "NO_DIRECT_PUBLIC_RELATIONSHIP_IDENTIFIED"
+      }
+    ]
+  },
+  "hypotheses": [
+    {
+      "id": "H1_THREE_REGIONAL_SIBLINGS",
+      "statement": "The intended Japanese SBIC may refer to any of three sister regional companies, and the exact entity should be identified from the original event or phrase context.",
+      "status": "SUPPORTED_BY_OFFICIAL_PROFILES"
+    },
+    {
+      "id": "H2_CHATGPT_EVENT_IS_PARTNERSHIP",
+      "statement": "ChatGPT-branded SBIC events indicate a formal OpenAI partnership.",
+      "status": "NOT_SUPPORTED",
+      "disconfirming": [
+        "The listed events are education seminars; Tokyo's named presenter was from Microsoft and Osaka's presenter was an external consulting firm.",
+        "No official OpenAI partnership announcement was located."
+      ]
+    },
+    {
+      "id": "H3_SBIC_IS_SBI_HOLDINGS",
+      "statement": "Japanese SBIC is part of SBI Holdings/SBI Group.",
+      "status": "NOT_SUPPORTED",
+      "disconfirming": [
+        "Official profiles identify three regional investment-development corporations with sister-company relationships; no ownership or corporate affiliation with SBI Holdings is established."
+      ]
+    },
+    {
+      "id": "H4_SBIC_HAS_XRP_LINK",
+      "statement": "One of the Japanese SBIC companies is directly involved in XRP/Ripple/Circle/Coinbase.",
+      "status": "UNVERIFIED_NO_DIRECT_EVIDENCE",
+      "disconfirming": [
+        "Official company profiles and the located AI seminar listings describe SME equity investment and business-growth support, not digital-asset or XRP activity."
+      ]
+    }
+  ],
+  "next_actions": [
+    "Search the exact original 'SBIC, ChatGPT SBIC' phrase against each regional company's official event archive and any supplied video transcript.",
+    "Keep the three regional entities separate in the institutional graph.",
+    "Do not merge Japanese SBIC records with SBI Holdings, SBI VC Trade, Circle SBI Japan K.K., or the U.S. SBA SBIC program.",
+    "Retain the Social Bias Inference Corpus as a separate academic meaning.",
+    "Require a primary announcement before adding any XRP/Ripple/Circle/Coinbase relationship edge."
+  ],
+  "safety": {
+    "public_sources_only": true,
+    "private_data_used": false,
+    "unauthorized_access": false,
+    "market_action": false
+  }
+}
