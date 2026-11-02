@@ -84,6 +84,7 @@ jobs:
             tests/test_xrp_run_handoff_integrity.py \
             tests/test_xrpl_rlusd_supply_and_payment_quality.py \
             tests/test_xrpl_x402_economic_value_reconciliation.py \
+            tests/test_flare_fxrp_firelight_morpho_and_identity_reconciliation.py \
             tests/test_data_registry.py \
             tests/test_repository_causality.py \
             tests/test_bundle_delivery.py \

@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_ripple_flare_sentora_firelight_coinbase_circle_sbi_relationship_graph_addendum",
+  "captured_at_utc": "2026-11-02T00:13:48Z",
+  "nodes": [
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "native_asset"
+    },
+    {
+      "id": "FXRP",
+      "name": "FXRP",
+      "type": "Flare_FAsset_representation_backed_by_XRP"
+    },
+    {
+      "id": "STXRP",
+      "name": "stXRP",
+      "type": "Firelight_receipt_and_cover_position"
+    },
+    {
+      "id": "RLUSD",
+      "name": "RLUSD",
+      "type": "Ripple_stablecoin"
+    },
+    {
+      "id": "USDC",
+      "name": "USDC",
+      "type": "Circle_stablecoin"
+    },
+    {
+      "id": "USDT0",
+      "name": "USDt0",
+      "type": "Tether_omnichain_stablecoin"
+    },
+    {
+      "id": "FLARE",
+      "name": "Flare",
+      "type": "blockchain_network"
+    },
+    {
+      "id": "SENTORA",
+      "name": "Sentora",
+      "type": "institutional_DeFi_curator"
+    },
+    {
+      "id": "MORPHO",
+      "name": "Morpho",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "FIRELIGHT",
+      "name": "Firelight",
+      "type": "shared_cover_pool"
+    },
+    {
+      "id": "RIPPLE",
+      "name": "Ripple",
+      "type": "payments_and_stablecoin_company"
+    },
+    {
+      "id": "COINBASE",
+      "name": "Coinbase",
+      "type": "exchange_custody_and_derivatives_group"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle",
+      "type": "stablecoin_issuer"
+    },
+    {
+      "id": "SBI",
+      "name": "SBI Group",
+      "type": "Japanese_financial_group"
+    },
+    {
+      "id": "SBIC_TOKYO",
+      "name": "Tokyo SBIC",
+      "type": "Japanese_investment_consultation_company"
+    },
+    {
+      "id": "LAYERZERO",
+      "name": "LayerZero",
+      "type": "cross_chain_messaging_and_OFT"
+    },
+    {
+      "id": "ANTHONY_DEMARTINO",
+      "name": "Anthony DeMartino",
+      "type": "executive_personnel_link"
+    },
+    {
+      "id": "ASKCOIN_EXCHANGE",
+      "name": "Ask Coin exchange listing",
+      "type": "inactive_CoinMarketCap_exchange_listing"
+    },
+    {
+      "id": "PERMISSION_ASK",
+      "name": "Permission Coin ASK",
+      "type": "separate_token"
+    },
+    {
+      "id": "ASKSURF",
+      "name": "AskSurf",
+      "type": "x402_merchant"
+    }
+  ],
+  "edges": [
+    {
+      "from": "XRP",
+      "to": "FXRP",
+      "type": "underlying_asset_representation",
+      "status": "CONFIRMED_1_TO_1_BACKING_SNAPSHOT"
+    },
+    {
+      "from": "FXRP",
+      "to": "STXRP",
+      "type": "deposited_into_Firelight_cover_pool",
+      "status": "CONFIRMED_CONTRACT_BALANCE"
+    },
+    {
+      "from": "FXRP",
+      "to": "MORPHO",
+      "type": "collateral_in_RLUSD_market",
+      "status": "LIVE_PERMISSIONLESS_MARKET"
+    },
+    {
+      "from": "RLUSD",
+      "to": "MORPHO",
+      "type": "borrowed_debt_asset",
+      "status": "LIVE_PERMISSIONLESS_MARKET"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD",
+      "type": "issuer_ownership",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "SENTORA",
+      "to": "MORPHO",
+      "type": "curator_and_supplier_vault",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "SENTORA",
+      "type": "strategic_series_A_investor",
+      "status": "SENTORA_ANNOUNCEMENT"
+    },
+    {
+      "from": "FLARE",
+      "to": "SENTORA",
+      "type": "strategic_series_A_investor",
+      "status": "SENTORA_ANNOUNCEMENT"
+    },
+    {
+      "from": "SENTORA",
+      "to": "FIRELIGHT",
+      "type": "incubator_and_cover_vault_integration",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "STXRP",
+      "type": "issues_receipt_for_slashable_cover_capital",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "USDC",
+      "type": "shared_cover_of_Kraken_USDC_strategy",
+      "status": "OFFICIAL_COVER_ANNOUNCEMENT"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "RLUSD",
+      "type": "shared_cover_of_Sentora_USD_vault",
+      "status": "OFFICIAL_COVER_ANNOUNCEMENT"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "USDT0",
+      "type": "reported_first_loss_buffer_asset",
+      "status": "SECONDARY_ONCHAIN_OBSERVATION_ONLY"
+    },
+    {
+      "from": "USDT0",
+      "to": "FLARE",
+      "type": "OFT_stablecoin_liquidity_asset",
+      "status": "FLARE_FIRST_PARTY_ARTICLE"
+    },
+    {
+      "from": "LAYERZERO",
+      "to": "USDT0",
+      "type": "OFT_cross_chain_standard",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "COINBASE",
+      "to": "ANTHONY_DEMARTINO",
+      "type": "former_employment_as_head_of_risk",
+      "status": "PERSONNEL_LINK"
+    },
+    {
+      "from": "ANTHONY_DEMARTINO",
+      "to": "SENTORA",
+      "type": "CEO",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "COINBASE",
+      "to": "RIPPLE",
+      "type": "RLUSD_distribution_and_listing",
+      "status": "COMMERCIAL_ANNOUNCEMENT"
+    },
+    {
+      "from": "COINBASE",
+      "to": "XRP",
+      "type": "Evernorth_principal_market_and_nonUS_cross_collateral_eligibility",
+      "status": "SEC_FILING_AND_PRODUCT_DOCUMENTATION"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "USDC",
+      "type": "issuer",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "XRP",
+      "type": "native_USDC_issued_on_XRPL",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "COINBASE",
+      "type": "USDC_distribution_and_revenue_share",
+      "status": "SEC_FILINGS"
+    },
+    {
+      "from": "SBI",
+      "to": "CIRCLE",
+      "type": "strategic_investment_and_Circle_SBI_Japan",
+      "status": "COMPANY_REPORTED"
+    },
+    {
+      "from": "SBI",
+      "to": "FLARE",
+      "type": "Circle_Arc_validator_cohort",
+      "status": "CIRCLE_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI",
+      "to": "RIPPLE",
+      "type": "reported_shareholding_and_operational_XRP_remittance_relationships",
+      "status": "COMPANY_REPORTED"
+    },
+    {
+      "from": "SBIC_TOKYO",
+      "to": "COINBASE",
+      "type": "no_corporate_relationship_established",
+      "status": "NO_EDGE"
+    },
+    {
+      "from": "ASKCOIN_EXCHANGE",
+      "to": "PERMISSION_ASK",
+      "type": "no_identity_or_ownership_relationship_established",
+      "status": "NO_EDGE"
+    },
+    {
+      "from": "ASKSURF",
+      "to": "ASKCOIN_EXCHANGE",
+      "type": "no_relationship_established",
+      "status": "NO_EDGE"
+    }
+  ],
+  "unresolved_edges": [
+    {
+      "from": "FIRELIGHT",
+      "to": "USDT0",
+      "type": "current_first_loss_buffer_balance_and_asset_composition",
+      "status": "UNVERIFIED"
+    },
+    {
+      "from": "STXRP",
+      "to": "XRP",
+      "type": "exact_unstaking_reward_cutoff_and_claim_exposure",
+      "status": "UNRESOLVED"
+    },
+    {
+      "from": "MORPHO",
+      "to": "FXRP",
+      "type": "full_market_collateral_vs_Ethereum_remote_FXRP_reconciliation",
+      "status": "PARTIAL"
+    },
+    {
+      "from": "COINBASE",
+      "to": "MORPHO",
+      "type": "corporate_or_financing_relationship",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "ASKCOIN_EXCHANGE",
+      "to": "XRP",
+      "type": "trading_pair_or_corporate_link",
+      "status": "NOT_ESTABLISHED"
+    }
+  ]
+}
