@@ -170,6 +170,13 @@
       "status": "UNKNOWN",
       "thesis": "0.59995 XRP difference may be a small inbound payment or dashboard methodology difference.",
       "disconfirming": "No transaction hash or raw AccountRoot state obtained."
+    },
+    {
+      "id": "H7_BINANCE_CUSTOMER_CUSTODY_CONFIDENCE_SHOCK",
+      "status": "OBSERVED_AGGREGATE_OUTFLOW_WITH_PROVIDER_DISAGREEMENT",
+      "thesis": "The incident was followed by material aggregate Binance net customer outflows and a decline in combined USDT/USDC market capitalization, potentially affecting exchange liquidity and risk appetite across crypto assets.",
+      "supporting": "Reuters reports Binance net customer outflows of $3.64B, or 2.1% of assets, with deposits remaining substantial and outflows stabilizing; DefiLlama showed $5.81B but Binance disputed the measurement.",
+      "disconfirming": "The outflow estimate is aggregate across assets, not XRP-specific; Binance disputes the higher figure; no synchronized XRP venue-level customer flow, order-book depth or spread series is included."
     }
   ],
   "prediction_admission": {
@@ -201,6 +208,8 @@
     "reason": "No synchronized post-event venue liquidity, fresh pinned-ledger account state or XRP-specific replenishment execution evidence. No verified out-of-sample XRP forecasting skill exists."
   },
   "next_actions": [
+    "Reconcile Binance's $3.64B net outflow report against DefiLlama's $5.81B wallet-flow estimate and the new-hot-wallet exclusion before deriving customer withdrawal pressure.",
+    "Separate aggregate Binance company-funded replenishment from any XRP-specific external acquisition; the public report does not disclose XRP purchase size or venue.",
     "Obtain fresh validated-ledger AccountRoot and account_tx for receiving account; record ledger index, close time, balance, sequence, last transaction and outbound count.",
     "Reconcile the 0.59995 XRP increase between Oct 30 and Nov 1 observations.",
     "Verify the reported failed 42,750,000.1 RLUSD transaction and the 51,172,508 RLUSD transfer from Binance wallet.",
@@ -221,5 +230,26 @@
     "new_branch": "research/binance-xrpl-account-etf-reconciliation-ad022-20261102T0401Z",
     "new_branch_base": "ad022ee4e8c4f2605915cb88c029e53924100440",
     "preservation": "Research-only JSON. No main ref modification, merge, force-push, workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
+  },
+  "binance_customer_flow": {
+    "source_url": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+    "published_at_utc": "2026-11-02T01:53:00Z",
+    "reported_net_customer_outflows_usd": 3640000000,
+    "reported_share_of_binance_assets_pct": 2.1,
+    "reported_binance_assets_usd_as_of_2026_10_28": 171000000000,
+    "deposits": "Reuters reports deposits remained substantial and Binance said net outflows were stabilizing.",
+    "alternative_aggregate_estimate_usd": 5810000000,
+    "alternative_source": "DefiLlama dashboard as reported by Reuters.",
+    "disagreement": "Binance disputed the DefiLlama figure, saying it omitted flows deposited to Binance's new hot wallet and that its own update was closest to accurate. These totals use different wallet coverage and must not be averaged.",
+    "replenishment": "Reuters reports Binance said it used company funds to buy replacement tokens and had covered about 95% of the stolen amount; the remaining 5% consists of less-liquid assets.",
+    "phase_one": "Reuters independently reports phased service resumption and an initial 15-token cohort, but its abbreviated list does not name XRP. Binance Recovery Update #4 itself lists XRP among assets reported 100% backed and included in phase one.",
+    "successful_xrp_withdrawal": "No independently observed successful XRP withdrawal in this run.",
+    "market_stress_context": {
+      "usdt_usdc_combined_market_cap_change_since_friday_usd_approx": -1200000000,
+      "bitcoin_etf_outflow_friday_usd": 643000000,
+      "leveraged_liquidations_usd_more_than": 1300000000,
+      "classification": "Reuters-reported broad market stress context, not XRP-specific causal evidence."
+    },
+    "attribution_caveat": "Reuters reports the FBI attribution to TraderTraitor and separately notes President Trump publicly expressed uncertainty. The FBI statement remains the official law-enforcement attribution; the political comment is retained as conflicting public commentary, not a technical disproof."
   }
 }
