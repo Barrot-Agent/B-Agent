@@ -63,13 +63,17 @@ def call_groq(prompt):
         return None
 
 
+def reject_nonfinite_json_constant(value):
+    raise ValueError(f"non-finite JSON number is not permitted: {value}")
+
+
 def extract_json(text):
     start = text.find('{')
     end = text.rfind('}') + 1
     if start == -1:
         return None
     try:
-        return json.loads(text[start:end])
+        return json.loads(text[start:end], parse_constant=reject_nonfinite_json_constant)
     except Exception:
         return None
 
@@ -109,8 +113,8 @@ def save_state(state):
 
 def log_decision(entry):
     LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(LOG_FILE, "a") as f:
-        f.write(json.dumps(entry) + "\n")
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, allow_nan=False) + "\n")
 
 
 def decide(product_id, ticker, recent_trades, state):
@@ -192,6 +196,8 @@ def validate_state_only():
 
 
 def execute_paper_trade(state, decision, current_price, product_id):
+    if not isinstance(decision, dict):
+        return "hold -- invalid decision object"
     identity_error = validate_position_product(state, product_id)
     if identity_error:
         return identity_error
@@ -201,8 +207,11 @@ def execute_paper_trade(state, decision, current_price, product_id):
         return "hold -- invalid current price"
     if not math.isfinite(price) or price <= 0:
         return "hold -- invalid current price"
+    raw_amount = decision.get("amount_usd", 0)
+    if isinstance(raw_amount, bool):
+        return "hold -- invalid decision amount"
     try:
-        amount_usd = float(decision.get("amount_usd", 0) or 0)
+        amount_usd = float(raw_amount or 0)
     except (TypeError, ValueError):
         return "hold -- invalid decision amount"
     if not math.isfinite(amount_usd) or amount_usd < 0:
@@ -275,6 +284,8 @@ def run(allow_state_mutation=False):
     starting_value = portfolio_value(state, current_price)
     decision = decide(PRODUCT_ID, ticker, recent_trades, state)
     result = execute_paper_trade(state, decision, current_price, PRODUCT_ID)
+    if result.startswith("hold -- invalid decision"):
+        decision = {"action": "hold", "amount_usd": 0, "reasoning": result}
     if result.startswith("aborted"):
         print(f"ABORT: {result}; state preserved")
         raise SystemExit(2)
@@ -291,7 +302,8 @@ def run(allow_state_mutation=False):
     log_decision(entry)
 
     print(f"Price: ${current_price:.2f}")
-    print(f"Decision: {decision.get('action')} -- {decision.get('reasoning', '')[:150]}")
+    reasoning = decision.get("reasoning", "")
+    print(f"Decision: {decision.get('action')} -- {str(reasoning)[:150]}")
     print(f"Result: {result}")
     print(f"Portfolio value: ${ending_value:.2f} ({entry['cumulative_return_pct']:+.3f}% since start)")
 
