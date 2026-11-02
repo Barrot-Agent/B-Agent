@@ -1,0 +1,457 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T142853Z-sbi-coinbase-circle-open-standard-crosswalk",
+  "captured_at_utc": "2026-11-02T14:28:53.226Z",
+  "evidence_cutoff_utc": "2026-11-02T14:28:53.226Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "research_question": "Resolve direct and indirect SBI, JPYSC, Circle, Coinbase, Ripple, Open Standard, and Tokyo SBIC relationships without treating membership, announcements, handled balances or custody as executed XRP capital.",
+  "evidence_classes": [
+    "official_company_statement",
+    "SEC_filing",
+    "company_reported_metric",
+    "third_party_market_observation",
+    "inference",
+    "unknown"
+  ],
+  "entities": [
+    {
+      "id": "SBIH",
+      "name": "SBI Holdings",
+      "type": "financial_group"
+    },
+    {
+      "id": "SBISHINSEI",
+      "name": "SBI Shinsei Trust Bank",
+      "type": "trust_bank"
+    },
+    {
+      "id": "SBIVCT",
+      "name": "SBI VC Trade",
+      "type": "crypto_and_electronic_payment_intermediary"
+    },
+    {
+      "id": "STARTALE",
+      "name": "Startale Group",
+      "type": "blockchain_development_company"
+    },
+    {
+      "id": "JPYSC",
+      "name": "JPYSC",
+      "type": "JPY_trust_stablecoin"
+    },
+    {
+      "id": "CIRCLE",
+      "name": "Circle Internet Group",
+      "type": "stablecoin_issuer"
+    },
+    {
+      "id": "CIRCLE_SBI_JAPAN",
+      "name": "Circle SBI Japan K.K.",
+      "type": "joint_venture"
+    },
+    {
+      "id": "COINBASE",
+      "name": "Coinbase",
+      "type": "exchange_and_financial_platform"
+    },
+    {
+      "id": "RIPPLE",
+      "name": "Ripple",
+      "type": "blockchain_and_payments_company"
+    },
+    {
+      "id": "OPEN_STANDARD",
+      "name": "Open Standard",
+      "type": "stablecoin_interoperability_initiative"
+    },
+    {
+      "id": "OUSD",
+      "name": "Open USD",
+      "type": "USD_stablecoin"
+    },
+    {
+      "id": "TOKYO_SBIC",
+      "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+      "type": "regional_investment_company"
+    },
+    {
+      "id": "BLACKROCK",
+      "name": "BlackRock Financial Management / BlackRock Japan",
+      "type": "asset_manager"
+    },
+    {
+      "id": "SMFG",
+      "name": "Sumitomo Mitsui Financial Group",
+      "type": "banking_group"
+    },
+    {
+      "id": "MORPHO",
+      "name": "Morpho",
+      "type": "onchain_lending_protocol"
+    },
+    {
+      "id": "CBXRP",
+      "name": "Coinbase Wrapped XRP",
+      "type": "wrapped_asset"
+    },
+    {
+      "id": "NODAL",
+      "name": "Nodal Clear",
+      "type": "derivatives_clearing_house"
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBISHINSEI",
+      "to": "JPYSC",
+      "relation": "issuer",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "from": "SBIVCT",
+      "to": "JPYSC",
+      "relation": "distributor_and_lending_counterparty",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "from": "STARTALE",
+      "to": "JPYSC",
+      "relation": "co_development_partner",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "from": "SBIH",
+      "to": "OPEN_STANDARD",
+      "relation": "joined_with_Startale_on_2026_10_16",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+    },
+    {
+      "from": "STARTALE",
+      "to": "OPEN_STANDARD",
+      "relation": "joined_with_SBI_Holdings",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+    },
+    {
+      "from": "OPEN_STANDARD",
+      "to": "COINBASE",
+      "relation": "Coinbase_named_as_one_of_more_than_140_participants",
+      "classification": "official_company_statement_about_participant_cohort",
+      "source": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+    },
+    {
+      "from": "SBIH",
+      "to": "JPYSC",
+      "relation": "SBI_and_Startale_exploring_JPYSC_OUSD_interoperability_after_OUSD_public_launch",
+      "classification": "official_statement_of_exploration_not_live_integration",
+      "source": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+    },
+    {
+      "from": "SBIH",
+      "to": "CIRCLE_SBI_JAPAN",
+      "relation": "50_percent_joint_venture_interest",
+      "classification": "SEC_filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "CIRCLE_SBI_JAPAN",
+      "relation": "50_percent_interest_and_VIE_control",
+      "classification": "SEC_filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "from": "CIRCLE_SBI_JAPAN",
+      "to": "JPYSC",
+      "relation": "NO_RELATIONSHIP_ESTABLISHED",
+      "classification": "explicit_non_inference",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "from": "SBIH",
+      "to": "RIPPLE",
+      "relation": "separate_SBI_Ripple_joint_venture_and_business_relationship",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/"
+    },
+    {
+      "from": "SBIH",
+      "to": "BLACKROCK",
+      "relation": "MOU_to_explore_tokenized_MMF_and_JPYSC_ecosystem",
+      "classification": "official_MOU_not_launched_product",
+      "source": "https://www.sbigroup.co.jp/news/2026/1027_16682.html"
+    },
+    {
+      "from": "SBIH",
+      "to": "SMFG",
+      "relation": "capital_and_business_alliance_to_study_stablecoin_financial_services",
+      "classification": "official_company_statement_not_XRP_route",
+      "source": "https://www.sbigroup.co.jp/news/2026/1030_16698.html"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "COINBASE",
+      "relation": "USDC_distribution_and_collaboration_agreement",
+      "classification": "SEC_filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "from": "COINBASE",
+      "to": "CBXRP",
+      "relation": "wrapped_XRP_custody_and_distribution",
+      "classification": "Coinbase_proof_of_reserves",
+      "source": "https://www.coinbase.com/cbxrp/proof-of-reserves"
+    },
+    {
+      "from": "CBXRP",
+      "to": "MORPHO",
+      "relation": "collateral_asset_in_Base_USDC_market",
+      "classification": "onchain_provider_observation_plus_Coinbase_product_documentation",
+      "source": "https://help.coinbase.com/en/coinbase/trading-and-funding/loan/loan-backup"
+    },
+    {
+      "from": "COINBASE",
+      "to": "NODAL",
+      "relation": "XRP_and_nano_XRP_futures_cleared_by_Nodal_Clear",
+      "classification": "official_clearing_and_access_announcements",
+      "source": "https://www.nodalclear.com/ripple-offers-clients-access-to-coinbase-derivatives-contracts-cleared-by-nodal-clear/"
+    },
+    {
+      "from": "TOKYO_SBIC",
+      "to": "CHATGPT",
+      "relation": "2025_investee_company_training_curriculum_included_ChatGPT_and_Copilot",
+      "classification": "official_training_page",
+      "source": "https://www.sbic.co.jp/training/20250612co/"
+    }
+  ],
+  "verified_facts": [
+    {
+      "id": "JPYSC-ISSUANCE-AND-PUBLIC-CHAIN",
+      "classification": "official_company_statement",
+      "fact": "JPYSC launched on June 24, 2026 inside SBI VC Trade accounts. SBI Shinsei Trust Bank issues it; SBI VC Trade distributes it; Startale co-developed it. The launch statement says public-chain circulation would follow after relevant legal/tax arrangements are clarified.",
+      "source": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "id": "JPYSC-HANDLED-BALANCE",
+      "classification": "official_company_statement",
+      "fact": "On November 2, 2026, SBI VC Trade reported JPYSC lending balance above JPY10B and handled balance above JPY30B. Its footnote defines handled balance as on-chain balance plus lending balance; the lending service has customers lend JPYSC to SBI VC Trade for a fee.",
+      "source": "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+    },
+    {
+      "id": "OPEN-STANDARD",
+      "classification": "official_company_statement",
+      "fact": "On October 16, 2026, SBI Holdings and Startale announced joining Open Standard, which the release describes as having more than 140 participating companies including Coinbase. SBI and Startale said they were considering an interoperability proof of concept between JPYSC and OUSD after OUSD's onchain launch.",
+      "source": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+    },
+    {
+      "id": "CIRCLE-SBI-JV",
+      "classification": "SEC_filing",
+      "fact": "Circle's Q2 2026 Form 10-Q says Circle and SBI Holdings each contributed approximately $1.5M to Circle SBI Japan K.K. in November 2025; Circle owns 50%, controls the VIE, and reported no significant operating results through June 30, 2026.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "id": "COINBASE-USDC-STRATEGY",
+      "classification": "company_reported_metric",
+      "fact": "Coinbase's Q3 2026 release reports $22B average USDC held in Coinbase products (+49% YoY), 10.7% crypto trading-volume market share, 12.5% assets-on-platform share, 179% two-year derivatives-volume CAGR and over $200M annualized prediction-market revenue.",
+      "source": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+    },
+    {
+      "id": "CIRCLE-COINBASE-ECONOMICS",
+      "classification": "SEC_filing",
+      "fact": "Circle's Q2 2026 filing reports $324.6M Q2 and $655.3M H1 distribution costs in connection with Coinbase agreements. It says payments depend in part on USDC held on Coinbase and broader ecosystem growth. Circle's $12.442B USDC-on-platform metric is Circle's own platform, not Coinbase's.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
+    },
+    {
+      "id": "TOKYO-SBIC-IDENTITY",
+      "classification": "official_company_profile",
+      "fact": "SBIC East Japan is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., corporate number 9011001030621, established in 1963. Its June 2025 training page says the two-day generative-AI course was for investee companies only and included ChatGPT, Copilot, RAG and API implementation.",
+      "source": "https://www.sbic.co.jp/company/profile/"
+    },
+    {
+      "id": "TOKYO-SBIC-CHATGPT-TRAINING",
+      "classification": "official_training_page",
+      "fact": "The training took place June 12-13, 2025; the page says general companies were not eligible and lists ChatGPT use, Copilot features, RAG and API implementation.",
+      "source": "https://www.sbic.co.jp/training/20250612co/"
+    }
+  ],
+  "key_metric_scope": [
+    {
+      "metric": "Coinbase average USDC held in Coinbase products",
+      "value_usd": 22000000000,
+      "period": "Q3 2026 average",
+      "publisher": "Coinbase",
+      "classification": "company_reported_metric",
+      "not_equivalent_to": "quarter-end Coinbase USDC AOP or Circle USDC on platform"
+    },
+    {
+      "metric": "Circle USDC on platform",
+      "value_usd": 12442000000,
+      "period": "June 30 2026 end-of-period",
+      "publisher": "Circle",
+      "classification": "SEC_filing",
+      "not_equivalent_to": "Coinbase USDC holdings"
+    },
+    {
+      "metric": "Circle distribution costs under Coinbase agreements",
+      "value_usd": 324600000,
+      "period": "Q2 2026",
+      "publisher": "Circle",
+      "classification": "SEC_filing_expense",
+      "not_equivalent_to": "Coinbase net profit"
+    },
+    {
+      "metric": "Circle distribution costs under Coinbase agreements",
+      "value_usd": 655300000,
+      "period": "H1 2026",
+      "publisher": "Circle",
+      "classification": "SEC_filing_expense",
+      "not_equivalent_to": "Coinbase net profit"
+    },
+    {
+      "metric": "JPYSC handled balance",
+      "value_jpy_gt": 30000000000,
+      "period": "November 2 2026",
+      "publisher": "SBI VC Trade",
+      "classification": "product_metric_onchain_plus_lending",
+      "not_equivalent_to": "net settlement, net issuance or XRP capital"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "SBI is pursuing a multi-rail strategy spanning Ripple/XRPL, JPYSC, Circle/USDC, tokenized MMF infrastructure and broader stablecoin interoperability.",
+      "support": "Separate official SBI/Ripple and SBI/Circle relationships, JPYSC issuance, Open Standard participation, BlackRock MOU and SMFG alliance.",
+      "counterevidence_or_limit": "Multiple announcements and exploration agreements do not establish deployed interoperability or actual transaction volumes.",
+      "status": "SUPPORTED_AS_STRATEGIC_POSITIONING; OPERATIONAL_SCALE_UNKNOWN"
+    },
+    {
+      "id": "H2",
+      "claim": "Open Standard membership creates a direct Coinbase-JPYSC commercial integration.",
+      "support": "Coinbase is named among Open Standard participants; SBI/Startale are exploring JPYSC-OUSD interoperability.",
+      "counterevidence_or_limit": "No bilateral Coinbase-JPYSC contract, launch, route or transaction volume is disclosed.",
+      "status": "NOT_ESTABLISHED; ONLY_SHARED_INITIATIVE_MEMBERSHIP"
+    },
+    {
+      "id": "H3",
+      "claim": "Circle's SBI JV is already a material USDC distribution channel in Japan.",
+      "support": "Circle's SEC filing confirms a 50/50 JV for USDC distribution support.",
+      "counterevidence_or_limit": "The same filing says no significant operating results through June 30, 2026.",
+      "status": "STRUCTURE_CONFIRMED; MATERIAL_OPERATIONS_NOT_ESTABLISHED"
+    },
+    {
+      "id": "H4",
+      "claim": "JPYSC growth creates direct XRP demand.",
+      "support": "SBI's broader Ripple relationship and JPYSC's planned future public-chain migration.",
+      "counterevidence_or_limit": "JPYSC is currently VCTRADE-account-limited; handled balance includes lending; no XRP collateral, XRP bridge usage or public XRPL deployment is established.",
+      "status": "NOT_SUPPORTED_BY_CURRENT_EVIDENCE"
+    },
+    {
+      "id": "H5",
+      "claim": "Coinbase's USDC economics and XRP products make it a key transmission point between stablecoin liquidity and XRP markets.",
+      "support": "Coinbase's USDC balances/distribution economics, cbXRP/Morpho collateral and XRP derivatives access.",
+      "counterevidence_or_limit": "No disclosed XRP spot purchases, customer-level loan attribution or net capital transfer linking these products; the rails are distinct.",
+      "status": "PLAUSIBLE_TRANSMISSION_CHANNELS; XRP_PRICE_CAUSALITY_UNTESTED"
+    }
+  ],
+  "non_inferences": [
+    "Open Standard participant overlap is not a bilateral partnership or deployed JPYSC-Coinbase integration.",
+    "JPYSC handled balance is not net new capital and does not imply XRP demand.",
+    "Circle SBI Japan K.K. is not Tokyo SBIC East Japan.",
+    "Tokyo SBIC's ChatGPT/Copilot training is not an OpenAI partnership, SBI Holdings partnership or XRP relationship.",
+    "Circle's USDC-on-platform figure is not Coinbase's USDC balance.",
+    "Circle distribution expense is not Coinbase profit.",
+    "cbXRP supply is wrapped representation of custody-backed XRP, not incremental native XRP supply.",
+    "XRP futures access does not establish customer positions, volume or net directional exposure."
+  ],
+  "feature_admission": {
+    "open_standard_membership": "categorical ecosystem relationship only; not transaction flow or launch",
+    "jpysc_handled_balance": "product-level stock after timestamped history; exclude from XRP flow",
+    "circle_sbi_japan": "JV existence and reported operating-status feature; no material operating volume until disclosed",
+    "coinbase_usdc_balance": "platform balance series with issuer and period definition; do not mix with Circle platform metric",
+    "circle_coinbase_distribution_cost": "expense series; do not treat as Coinbase profit",
+    "cbxrp_morpho": "collateral and credit-liquidity features with block/time/provider metadata; separate from native XRP spot demand",
+    "xrp_derivatives_access": "product availability only until open interest/volume/positions are measured"
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized cross-venue market and flow panel with verified time-aligned XRP outcomes; no calibrated out-of-sample skill."
+  },
+  "next_actions": [
+    "Verify whether Open Standard publishes a member list, OUSD deployment chains, and any executed JPYSC-OUSD test transaction; do not infer from membership.",
+    "Track JPYSC public-chain migration announcements and verify chain/contract/issuer controls before treating balances as onchain supply.",
+    "Monitor Circle SBI Japan K.K. disclosures for first material operating results and USDC distribution volumes.",
+    "Reconcile Coinbase's Q3 average product balance with SEC period-end USDC AOP definitions; keep Circle platform balances separate.",
+    "Measure Coinbase XRP derivative contract open interest, volume, basis and funding separately from cbXRP collateral markets.",
+    "Map XRP spot liquidity and collateral channels only after synchronizing timestamps, venues, blocks and source methodologies."
+  ],
+  "sources": [
+    {
+      "publisher": "SBI Holdings",
+      "date": "2026-10-16",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI Holdings / SBI Shinsei Bank / SBI Shinsei Trust Bank / SBI VC Trade / Startale",
+      "date": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI VC Trade",
+      "date": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI Holdings / Startale / BlackRock entities",
+      "date": "2026-10-27",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "class": "official_MOU"
+    },
+    {
+      "publisher": "SBI Holdings / SMFG",
+      "date": "2026-10-30",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "Circle Internet Group",
+      "date": "2026-06-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "class": "SEC_filing"
+    },
+    {
+      "publisher": "Coinbase",
+      "date": "2026-10-29",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "class": "company_reported_metric"
+    },
+    {
+      "publisher": "Tokyo SBIC East Japan",
+      "date": "current_company_profile",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "class": "official_company_profile"
+    },
+    {
+      "publisher": "Tokyo SBIC East Japan",
+      "date": "2025-06-12/13",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "class": "official_training_page"
+    }
+  ],
+  "safety": {
+    "append_only": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_secret_access": true,
+    "no_external_mutation": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}
