@@ -2,21 +2,41 @@ name: Coinbase Paper Trader
 
 on:
   workflow_dispatch:
+    inputs:
+      allow_paper_state_mutation:
+        description: "Explicitly authorize one simulated paper-trading cycle and state/log update"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coinbase-paper-trader
+  cancel-in-progress: false
 
 jobs:
   trade:
+    if: ${{ inputs.allow_paper_state_mutation }}
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       PRODUCT_ID: "BTC-USD"
       STARTING_BALANCE_USD: "10000"
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: true
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - run: python3 scripts/coinbase_paper_trader.py
-      - name: Commit
+      - name: Validate persisted paper state before any provider call
+        run: python3 scripts/coinbase_paper_trader.py --validate-state
+      - name: Run explicitly authorized paper cycle
+        run: python3 scripts/coinbase_paper_trader.py --execute
+      - name: Persist validated paper-trading state
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
