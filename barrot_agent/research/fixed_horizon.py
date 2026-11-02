@@ -455,7 +455,12 @@ class ForecastLedger:
         try:
             entry = require_by(source_id, registered_by_utc)
         except KeyError as exc:
-            raise ValueError(f"{field} is not registered: {source_id}") from exc
+            message = (
+                f"{field} are not registered: {source_id}"
+                if field == "source_ids"
+                else f"{field} is not registered: {source_id}"
+            )
+            raise ValueError(message) from exc
         lifecycle = getattr(entry, "lifecycle", None)
         if lifecycle is not None and (
             getattr(lifecycle, "state", "ACTIVE") != "ACTIVE"
@@ -1055,7 +1060,8 @@ class ForecastLedger:
             if not isinstance(source_id, str) or not source_id.strip() or not _is_sha256_digest(stored_hash):
                 return False
             try:
-                cutoff = _format_utc(_parse_utc(item.get("data_cutoff_utc"), "data_cutoff_utc"))
+                cutoff_dt = _parse_utc(item.get("data_cutoff_utc"), "data_cutoff_utc")
+                cutoff = _format_utc(cutoff_dt)
                 registered_hash = self._registered_source_hash(
                     source_id, field="price_at_issue_source_id", registered_by_utc=cutoff
                 )
@@ -1073,8 +1079,8 @@ class ForecastLedger:
                 )
                 self._verified_price_observation(
                     source_id, "price_at_issue", recorded_price, recorded_observed_at,
-                    latest_not_after=cutoff,
-                    snapshot_available_not_after=cutoff,
+                    latest_not_after=cutoff_dt,
+                    snapshot_available_not_after=cutoff_dt,
                 )
                 return stored_hash.lower() == registered_hash
             except (KeyError, ValueError):
