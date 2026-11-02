@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "artifact_type": "xrp_market_macro_and_source_quality_handoff",
   "title": "XRP market and macro context; Binance XRPL redistribution source-quality correction",
-  "captured_at_utc": "2026-11-02T06:42:00Z",
+  "captured_at_utc": "2026-11-02T06:45:00Z",
   "evidence_cutoff_utc": "2026-11-02T06:27:00Z",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "execution_foundation": "Barrot V3",
@@ -118,16 +118,21 @@
     },
     {
       "event": "Bank of Japan October policy decision",
-      "date": "2026-10-29",
-      "decision": "Held policy rate at 1.25%",
+      "date": "2026-10-30",
+      "decision": "Held the uncollateralized overnight call rate around 1.25% by an 8-1 majority vote.",
       "vote": "8-1",
-      "dissent": "One board member proposed 1.50%",
+      "dissent": "Hajime Takata proposed 1.50%.",
       "classification": "confirmed_policy_event",
       "xrp_relevance": "Yen funding and carry-trade repricing can affect global risk appetite and cross-border capital costs; direct XRP flow is unproven.",
       "source_urls": [
-        "https://www.reuters.com/world/asia-pacific/bank-japan-hold-rates-signal-further-hikes-2026-10-29/",
-        "https://www.oanda.jp/lab-education/market_news/boj-oct-2026-review/"
-      ]
+        "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf",
+        "https://www.reuters.com/world/asia-pacific/bank-japan-hold-rates-signal-further-hikes-2026-10-29/"
+      ],
+      "meeting_dates": [
+        "2026-10-29",
+        "2026-10-30"
+      ],
+      "additional_policy_change": "Raised planned annual ETF sales pace from about ¥330B to about ¥860B book value, effective January 2027; BOJ said the pace is about 0.1% of Tokyo Stock Exchange Prime Market trading value."
     },
     {
       "event": "Japan-US foreign-exchange coordination",
@@ -261,7 +266,8 @@
     "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
     "https://docs.xrpscan.com/api-documentation/account/transactions",
     "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
-    "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack-2026"
+    "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack-2026",
+    "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030a.pdf"
   ],
   "next_actions": [
     "Obtain exact five incoming delivered_amount values and all outgoing delivered_amount/fee records from a raw validated XRPL account_tx/tx response at pinned ledger indices.",
