@@ -435,6 +435,58 @@
       "published_at_utc": "2026-11-02T03:24:00Z",
       "url": "https://investin.news/newsfeeds/story/us-spot-xrp-etf-inflows-eed6",
       "independence": "AI-rewritten timeline attributed to SoSoValue; likely same underlying data family as other ETF dashboards."
+    },
+    {
+      "id": "THECRYPTOBASIC-ATTACKER-80M-AND-SEPARATE-BINANCE-50M",
+      "publisher": "TheCryptoBasic",
+      "published_at": "2026-11-02",
+      "url": "https://thecryptobasic.com/2026/11/02/binance-hack-wallet-moves-80m-xrp-in-50-seconds-as-separate-50m-xrp-leaves-binance/",
+      "independence": "Secondary reporting; correctly distinguishes two 40M transfers from attacker account and separate 50M Binance-labeled wallet transfer."
+    },
+    {
+      "id": "WHALE-ALERT-40M-ATTACKER-TRANSFER",
+      "publisher": "Whale Alert",
+      "published_at": "2026-11-02T03:56:21Z",
+      "url": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "independence": "Transaction alert provider for one 40M payment; not full account history."
+    },
+    {
+      "id": "SHRIDLOCK-SOCIAL-RECIPIENT-STATUS",
+      "publisher": "Shridlock via Sotwe",
+      "published_at": "2026-11-02T04:12:00Z",
+      "url": "https://www.sotwe.com/shridlock",
+      "independence": "Secondary social tracking claim; not raw-ledger corroboration."
     }
-  ]
+  ],
+  "binance_xrp_flow_reconciliation": {
+    "original_attacker_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "original_incoming_xrp": 233461943.1,
+    "captured_redistribution_xrp": 233454920,
+    "recipient_count": 6,
+    "successful_outgoing_payments_reported": 9,
+    "important_separation": [
+      "The two 40M XRP transfers in 50 seconds reported by TheCryptoBasic on November 2 originated from the original attacker account and are components of the approximately 233.455M XRP redistribution. They are not an additional 80M XRP on top of that total.",
+      "The separate Binance-labeled wallet's November 1 30M and 50M transfers to r9nsQj5... are a different source-wallet flow. No direct link to the attacker account has been established.",
+      "The separate Binance wallet transfer is not evidence of a purchase; internal wallet reorganization, customer withdrawal and custody settlement remain alternatives."
+    ],
+    "latest_recipient_status": {
+      "last_captured_bithomp_observation_utc": "2026-11-02T06:25:00Z",
+      "observed_no_subsequent_outbound_from_six_recipients": true,
+      "raw_pinned_ledger_reconciliation_in_this_run": false,
+      "current_balances": "UNKNOWN",
+      "sale_or_dex_conversion_established": false
+    },
+    "secondary_social_update": {
+      "source": "Shridlock public social post as surfaced by Sotwe",
+      "reported_at_utc": "2026-11-02T04:12:00Z",
+      "claim": "All six recipients still held their entire tranches at that time.",
+      "classification": "secondary_social_tracking_claim",
+      "independence": "Not an independent raw-ledger observation; earlier than the 06:25 UTC Bithomp snapshot."
+    },
+    "sources": [
+      "THECRYPTOBASIC-ATTACKER-80M-AND-SEPARATE-BINANCE-50M",
+      "WHALE-ALERT-40M-ATTACKER-TRANSFER",
+      "SHRIDLOCK-SOCIAL-RECIPIENT-STATUS"
+    ]
+  }
 }
