@@ -358,6 +358,23 @@
         "TOKYO-SBIC-COMPANY-PROFILE",
         "TOKYO-SBIC-CHATGPT-COPILOT-TRAINING"
       ]
+    },
+    {
+      "id": "COINBASE-Q2-2026-USDC-AND-AOP-SEC-DISCLOSURE",
+      "classification": "primary_SEC_filing",
+      "publisher": "Coinbase Global, Inc. Form 10-Q",
+      "as_of": "2026-06-30",
+      "claims": [
+        "Coinbase reported USDC assets on platform of $8.874B at June 30, 2026, versus $7.485B at June 30, 2025, a 19% increase.",
+        "Coinbase reported first-half 2026 USDC rewards expense of $232.535M, including $119.108M in Q2.",
+        "Coinbase said first-half 2026 stablecoin revenue decreased by $113.4M due to lower average interest rates, partly offset by higher average USDC balances held by customers in eligible Coinbase products.",
+        "Coinbase reported total assets on platform of $245.866B at June 30, 2026; the 'Other' category was $36.478B and comprised various other crypto/payment-stablecoin balances, none individually above 5% of total AOP.",
+        "The 10-Q does not separately disclose XRP or RLUSD balances or XRP collateral utilization."
+      ],
+      "interpretation": "This provides primary SEC evidence that Coinbase's USDC platform balances grew while rate declines reduced stablecoin revenue. The Circle-reported $655.3M H1 distribution cost and Coinbase-reported $232.535M H1 USDC rewards expense are different companies' expense measures; they must not be subtracted to claim Coinbase net profit. The filing's broad 'Other' category does not permit an XRP-specific custody estimate.",
+      "sources": [
+        "COINBASE-SEC-10Q-2026Q2"
+      ]
     }
   ],
   "actual_capital_framework": {
@@ -770,6 +787,13 @@
       "retrieved_at_utc": "2026-11-02T11:14:18Z",
       "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
       "independence": "Primary public exchange ticker endpoint; single venue and single capture."
+    },
+    {
+      "id": "COINBASE-SEC-10Q-2026Q2",
+      "publisher": "Coinbase Global, Inc.",
+      "published_at": "2026-07-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000088/coin-20260630.htm",
+      "independence": "Primary SEC filing; point-in-time AOP and period expense/revenue disclosures. Does not separately disclose XRP or RLUSD balances."
     }
   ],
   "identity_threads": {
