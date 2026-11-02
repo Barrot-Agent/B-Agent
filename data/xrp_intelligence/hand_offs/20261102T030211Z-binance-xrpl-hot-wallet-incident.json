@@ -1,0 +1,621 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-02T03:02:11Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 remains the execution, security, preservation and verification foundation.",
+  "status": "INCIDENT_RESEARCH_SNAPSHOT_NO_FORECAST",
+  "evidence_cutoff_utc": "2026-11-02T03:02:11Z",
+  "summary": {
+    "event": "2026-10-29 Binance multi-chain hot-wallet theft",
+    "xrp_ledger_amount_xrp": 233461943.1,
+    "xrp_transfer_window_utc": {
+      "start": "2026-10-29T20:05:00Z",
+      "end": "2026-10-29T20:09:20Z"
+    },
+    "theft_time_value_usd_approx": 296000000,
+    "receiving_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "latest_located_account_snapshot": {
+      "timestamp_utc": "2026-11-01T20:00:00Z",
+      "balance_xrp": 233461943.7,
+      "outbound_transactions": 0,
+      "signed_transactions": 0,
+      "trustlines": 0,
+      "source": "XRPLDashboard weekly on-ledger review",
+      "source_url": "https://xrpldashboard.com/thisweek/2026-11-01",
+      "limitation": "Third-party dashboard snapshot, approximately seven hours older than this handoff cutoff. A fresh pinned-ledger read is required."
+    },
+    "conclusion": "233.46M native XRP left five Binance-attributed hot wallets and was consolidated into one new XRPL account. The latest located public snapshot reports no outbound movement through 2026-11-01 20:00 UTC. Native XRP was not issuer-frozen. Binance separately reported XRP customer balances 100% backed and included XRP in phase-one withdrawal reopening. Neither statement proves an XRP-specific buyback quantity or attacker sale."
+  },
+  "xrpl_transfers": [
+    {
+      "sequence": 1,
+      "time_utc": "2026-10-29T20:05:00Z",
+      "sender": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "amount_xrp": 185017485.5,
+      "ctid": "C66FBF0500670000",
+      "hash": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+      "source_url": "https://whale-alert.io/transaction/ripple/78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A"
+    },
+    {
+      "sequence": 2,
+      "time_utc": "2026-10-29T20:07:00Z",
+      "sender_abbreviated": "rBtttd…",
+      "amount_xrp": 14693052.5,
+      "ctid": "C66FBF2100960000"
+    },
+    {
+      "sequence": 3,
+      "time_utc": "2026-10-29T20:08:20Z",
+      "sender_abbreviated": "rfQ9Ec…",
+      "amount_xrp": 13140680.4,
+      "ctid": "C66FBF3400010000"
+    },
+    {
+      "sequence": 4,
+      "time_utc": "2026-10-29T20:08:50Z",
+      "sender_abbreviated": "rarG6F…",
+      "amount_xrp": 11955157.6,
+      "ctid": "C66FBF3C01AA0000"
+    },
+    {
+      "sequence": 5,
+      "time_utc": "2026-10-29T20:09:20Z",
+      "sender_abbreviated": "rNU4eA…",
+      "amount_xrp": 8655567.1,
+      "ctid": "C66FBF4200120000"
+    }
+  ],
+  "account_observations": {
+    "receiving_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "creation": "XRPLWin reports the first incoming XRP payment created the previously nonexistent receiving account.",
+    "latest_located_snapshot": {
+      "observed_at_utc": "2026-11-01T20:00:00Z",
+      "balance_xrp": 233461943.7,
+      "outbound_count": 0,
+      "signed_transaction_count": 0,
+      "trustline_count": 0,
+      "source_url": "https://xrpldashboard.com/thisweek/2026-11-01",
+      "classification": "SECONDARY_ONCHAIN_AGGREGATION"
+    },
+    "earlier_cross_check": {
+      "observed_at_utc": "2026-10-30T00:30:00Z",
+      "balance_xrp": 233461943.10005,
+      "outgoing_transactions_reported": 0,
+      "source_url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "classification": "SECONDARY_ONCHAIN_ANALYSIS"
+    },
+    "caveat": "These snapshots support inactivity only through their stated cutoffs, not at the current handoff cutoff."
+  },
+  "secondary_leads_not_yet_independently_reconciled": [
+    {
+      "claim": "A 42,750,000.1 RLUSD payment attempted at 2026-10-29T20:04:52Z failed with tecNO_DST, eight seconds before the first XRP payment created the destination account.",
+      "classification": "SECONDARY_ONCHAIN_AGGREGATION",
+      "source_url": "https://xrpldashboard.com/thisweek/2026-11-01",
+      "implication": "If confirmed, this may indicate a common withdrawal instruction sequence. The failed transaction delivered no RLUSD.",
+      "required_verification": "Retrieve exact validated-ledger transaction hash, source, destination, delivered_amount and transaction result."
+    },
+    {
+      "claim": "The receiving account had zero trustlines and therefore could not hold RLUSD or other issued assets at the reported snapshot.",
+      "classification": "SECONDARY_ONCHAIN_AGGREGATION",
+      "required_verification": "Confirm AccountRoot and RippleState objects at a pinned ledger index."
+    }
+  ],
+  "cross_chain_incident": {
+    "classification": "CONFIRMED_SECURITY_INCIDENT; FBI_ATTRIBUTION",
+    "binance_estimated_impact_usd": 6300000000,
+    "trm_transfer_time_valuation_usd": 6360000000,
+    "affected_networks": [
+      "Ethereum",
+      "Bitcoin",
+      "Tron",
+      "XRP Ledger",
+      "Solana",
+      "Arbitrum",
+      "Optimism",
+      "Base",
+      "Avalanche",
+      "Polygon"
+    ],
+    "attribution": {
+      "entity": "TraderTraitor",
+      "attribution": "North Korea / DPRK",
+      "trm_assessment": "High confidence, based on on-chain and off-chain intelligence.",
+      "fbi_position": "The FBI's 2026-10-31 public alert states North Korea was responsible for the theft of more than $6B from Binance and names the activity TraderTraitor.",
+      "caveat": "Binance's completed technical postmortem was not located by this evidence cutoff."
+    },
+    "technical_assessment": {
+      "trm_assessment": "The Ethereum leg used EIP-7702 delegation and pre-signed authorizations. Transfers from Binance wallets on the other nine chains were ordinary signed transfers. TRM assesses compromise of Binance hot-wallet signing infrastructure as the most likely explanation.",
+      "xrpl_implication": "The cited evidence does not identify an XRPL consensus, validator, cryptographic or protocol vulnerability. The XRP payments were validly signed transfers from Binance-attributed hot wallets.",
+      "root_cause_status": "BINANCE_POSTMORTEM_PENDING"
+    }
+  },
+  "freeze_and_control_asymmetry": {
+    "trm_snapshot_utc": "2026-10-30T00:30:00Z",
+    "stablecoin_freezes_usd_approx": 2670000000,
+    "additional_arbitrum_security_council_action_usd_approx": 30000000,
+    "actions": [
+      {
+        "entity": "Tether",
+        "asset": "USDT",
+        "amount_frozen_approx": 1770000000,
+        "classification": "TRM_ONCHAIN_ANALYSIS"
+      },
+      {
+        "entity": "Circle",
+        "asset": "USDC",
+        "amount_frozen_approx": 825000000,
+        "details": "Approximately $823M in the main receiving wallet plus a later $1.56M freeze.",
+        "classification": "TRM_ONCHAIN_ANALYSIS"
+      },
+      {
+        "entity": "Ripple",
+        "asset": "RLUSD",
+        "amount_frozen": 40500000,
+        "details": "TRM reports 40.5M RLUSD remained when Ripple froze the relevant wallet at 22:01 UTC; 48M had already been sold through DEXs from the 88.5M stolen.",
+        "classification": "TRM_ONCHAIN_ANALYSIS"
+      },
+      {
+        "entity": "World Liberty Financial",
+        "asset": "USD1",
+        "amount_frozen_approx": 27800000,
+        "classification": "TRM_ONCHAIN_ANALYSIS"
+      },
+      {
+        "entity": "Arbitrum Security Council",
+        "asset": "ETH and ARB",
+        "amount": {
+          "eth": 8426,
+          "arb": 74600000
+        },
+        "classification": "TRM_ONCHAIN_ANALYSIS"
+      }
+    ],
+    "native_xrp": {
+      "issuer_freeze_available": false,
+      "issuer_clawback_available": false,
+      "classification": "PROTOCOL_PROPERTY",
+      "consequence": "Recovery depends on subsequent movement, tracing, exchange/bridge screening, legal process or voluntary return. Issuer freeze controls for stablecoins do not apply to native XRP."
+    },
+    "caveat": "A frozen token is not necessarily recovered or returned to Binance. Values are TRM's incident-time chain-analysis snapshot, not final recovery accounting."
+  },
+  "binance_recovery": {
+    "update_4_published_at_utc": "2026-11-01T04:08:00Z",
+    "source_url": "https://www.binance.com/en-PH/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
+    "company_claims": [
+      "Phase-one withdrawal reopening was scheduled for 06:00–09:00 UTC on November 1 and explicitly included XRP on the XRP Ledger.",
+      "Binance stated BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC customer balances were 100% backed.",
+      "Binance reported approximately 95% of the total incident amount covered, up from 90%.",
+      "The remaining 5% consisted of assets outside the listed top ten and was being sourced through market and OTC channels.",
+      "Binance said it would bear the financial impact rather than pass it to users."
+    ],
+    "classification": "COMPANY_REPORTED_NOT_INDEPENDENTLY_AUDITED_HERE",
+    "limitations": [
+      "The 95% figure is aggregate across affected assets, not an XRP-specific replenishment percentage.",
+      "The 100% XRP backing statement does not disclose whether replacement came from treasury inventory, internal transfers, market purchases, OTC purchases or a combination.",
+      "No XRP-specific acquisition quantity, execution venue, timestamp or counterparty has been verified.",
+      "The official announcement schedules phase-one reopening; an independent successful XRP withdrawal test was not performed."
+    ],
+    "market_interpretation": [
+      "The theft transfer itself does not establish a market sale.",
+      "An XRP reserve replacement creates external spot/OTC demand only to the extent it requires net acquisition rather than internal inventory transfers.",
+      "Withdrawal suspension and phased reopening can affect venue liquidity, customer confidence and exchange-specific balances independently of XRP's global supply."
+    ]
+  },
+  "evidence_registry": [
+    {
+      "id": "TRM-BINANCE-2026-10-29",
+      "source": "TRM Labs",
+      "published_at": "2026-10-29",
+      "url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+      "classification": "PRIMARY_ANALYTICS_PROVIDER_REPORT",
+      "supports": [
+        "$6.36B transfer-time estimate; ten affected chains.",
+        "233.46M XRP from five Binance wallets between 20:05 and 20:09 UTC.",
+        "High-confidence TraderTraitor attribution.",
+        "Issuer freezes including 40.5M RLUSD.",
+        "Initial no-movement XRP observation."
+      ],
+      "cutoff": "2026-10-30T00:30:00Z"
+    },
+    {
+      "id": "FBI-TRADERTRAITOR-2026-10-31",
+      "source": "Federal Bureau of Investigation",
+      "published_at": "2026-10-31",
+      "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+      "classification": "OFFICIAL_LAW_ENFORCEMENT_ATTRIBUTION",
+      "supports": [
+        "FBI states DPRK was responsible for theft of more than $6B from Binance.",
+        "FBI names the activity TraderTraitor.",
+        "FBI says stolen assets were being converted primarily into ETH and warns about DeFi/instant-swap laundering."
+      ]
+    },
+    {
+      "id": "BINANCE-RECOVERY-UPDATE-4",
+      "source": "Binance",
+      "published_at": "2026-11-01T04:08:00Z",
+      "url": "https://www.binance.com/en-PH/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
+      "classification": "COMPANY_STATEMENT",
+      "supports": [
+        "XRP included in phase-one XRP Ledger withdrawal reopening schedule.",
+        "Company-reported 100% backing of XRP customer balances.",
+        "Company-reported 95% aggregate incident coverage/replenishment."
+      ]
+    },
+    {
+      "id": "XRPLWIN-TRANSFER-RECONSTRUCTION",
+      "source": "XRPLWin",
+      "published_at": "2026-10-30",
+      "url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "classification": "SECONDARY_ONCHAIN_RECONSTRUCTION",
+      "supports": [
+        "Five payment amounts and CTIDs.",
+        "Receiving account creation and earlier no-outbound snapshot.",
+        "Failed retries and source-wallet reserve-only balances."
+      ],
+      "caveat": "Re-read validated transactions from a pinned ledger before automated feature admission."
+    },
+    {
+      "id": "WHALEALERT-FIRST-TRANSFER",
+      "source": "Whale Alert",
+      "observed_at_utc": "2026-10-29T20:05:00Z",
+      "url": "https://whale-alert.io/transaction/ripple/78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A",
+      "classification": "TRANSACTION_LEVEL_SECONDARY_INDEX_WITH_EXPLORER_LINK",
+      "supports": [
+        "First 185,017,485 XRP payment.",
+        "Exact hash, sender, receiver and timestamp."
+      ]
+    },
+    {
+      "id": "XRPLDASHBOARD-NOVEMBER-1",
+      "source": "XRPLDashboard",
+      "published_at_utc": "2026-11-01T20:00:00Z",
+      "url": "https://xrpldashboard.com/thisweek/2026-11-01",
+      "classification": "SECONDARY_ONCHAIN_AGGREGATION",
+      "supports": [
+        "Receiving-account balance approximately 233,461,943.7 XRP at stated snapshot.",
+        "Zero outbound transactions and zero trustlines reported.",
+        "Failed RLUSD payment lead."
+      ],
+      "caveat": "Not current at this handoff cutoff; exact transaction-level verification required."
+    }
+  ],
+  "source_independence": {
+    "corroboration": [
+      "TRM and XRPLWin agree on the five-wallet total and transfer window.",
+      "Whale Alert independently exposes the first payment hash, sender, receiver, amount and timestamp.",
+      "FBI's October 31 alert independently establishes official North Korea/TraderTraitor attribution."
+    ],
+    "limitations": [
+      "These are not four independent investigations of attacker identity; most XRP amount evidence derives from the same public ledger events.",
+      "Exchange-wallet labels are third-party attribution, not protocol-level identity proof.",
+      "Binance reserve/replenishment claims are company statements; independent reserve reconciliation was not completed.",
+      "The latest located recipient-account snapshot is November 1 20:00 UTC, not this handoff cutoff."
+    ]
+  },
+  "relationship_graph": {
+    "nodes": [
+      {
+        "id": "BINANCE",
+        "name": "Binance",
+        "type": "centralized_exchange_and_custodian"
+      },
+      {
+        "id": "XRP",
+        "name": "Native XRP",
+        "type": "non_issuer_controlled_digital_asset"
+      },
+      {
+        "id": "XRPL",
+        "name": "XRP Ledger",
+        "type": "distributed_ledger"
+      },
+      {
+        "id": "ATTACKER_XRPL",
+        "name": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+        "type": "unattributed_receiving_account"
+      },
+      {
+        "id": "TRM",
+        "name": "TRM Labs",
+        "type": "blockchain_analytics"
+      },
+      {
+        "id": "FBI",
+        "name": "Federal Bureau of Investigation",
+        "type": "law_enforcement"
+      },
+      {
+        "id": "TETHER",
+        "name": "Tether",
+        "type": "USDT_issuer"
+      },
+      {
+        "id": "CIRCLE",
+        "name": "Circle",
+        "type": "USDC_issuer"
+      },
+      {
+        "id": "RIPPLE",
+        "name": "Ripple",
+        "type": "RLUSD_issuer_group"
+      },
+      {
+        "id": "WLF",
+        "name": "World Liberty Financial",
+        "type": "USD1_issuer_group"
+      },
+      {
+        "id": "ARBITRUM_SC",
+        "name": "Arbitrum Security Council",
+        "type": "network_governance_body"
+      },
+      {
+        "id": "TRADERTRAITOR",
+        "name": "TraderTraitor",
+        "type": "FBI_attributed_DPRK_malicious_cyber_activity"
+      }
+    ],
+    "edges": [
+      {
+        "from": "BINANCE",
+        "to": "ATTACKER_XRPL",
+        "relation": "five_hot_wallet_payments_total_233461943_1_XRP",
+        "status": "ON_LEDGER_TRANSACTIONS_WITH_THIRD_PARTY_WALLET_ATTRIBUTION"
+      },
+      {
+        "from": "ATTACKER_XRPL",
+        "to": "XRP",
+        "relation": "holds_native_XRP_balance",
+        "status": "LAST_LOCATED_SNAPSHOT_2026-11-01T20:00Z"
+      },
+      {
+        "from": "XRPL",
+        "to": "XRP",
+        "relation": "native_asset_ledger",
+        "status": "PROTOCOL_FACT"
+      },
+      {
+        "from": "FBI",
+        "to": "TRADERTRAITOR",
+        "relation": "official_DPRK_attribution",
+        "status": "OFFICIAL_STATEMENT_2026-10-31"
+      },
+      {
+        "from": "TRM",
+        "to": "TRADERTRAITOR",
+        "relation": "high_confidence_analytics_attribution",
+        "status": "ANALYTICS_ASSESSMENT_2026-10-29"
+      },
+      {
+        "from": "TETHER",
+        "to": "XRP",
+        "relation": "no_issuer_freeze_control_over_native_XRP",
+        "status": "PROTOCOL_PROPERTY"
+      },
+      {
+        "from": "CIRCLE",
+        "to": "XRP",
+        "relation": "no_issuer_freeze_control_over_native_XRP",
+        "status": "PROTOCOL_PROPERTY"
+      },
+      {
+        "from": "RIPPLE",
+        "to": "XRP",
+        "relation": "no_issuer_freeze_control_over_native_XRP; separately_froze_40_5M_RLUSD",
+        "status": "TRM_ONCHAIN_ANALYSIS"
+      },
+      {
+        "from": "TETHER",
+        "to": "TRADERTRAITOR",
+        "relation": "froze_about_1_77B_USDT",
+        "status": "TRM_ONCHAIN_ANALYSIS"
+      },
+      {
+        "from": "CIRCLE",
+        "to": "TRADERTRAITOR",
+        "relation": "froze_about_825M_USDC",
+        "status": "TRM_ONCHAIN_ANALYSIS"
+      },
+      {
+        "from": "RIPPLE",
+        "to": "TRADERTRAITOR",
+        "relation": "froze_40_5M_RLUSD",
+        "status": "TRM_ONCHAIN_ANALYSIS"
+      },
+      {
+        "from": "WLF",
+        "to": "TRADERTRAITOR",
+        "relation": "froze_27_8M_USD1",
+        "status": "TRM_ONCHAIN_ANALYSIS"
+      },
+      {
+        "from": "ARBITRUM_SC",
+        "to": "TRADERTRAITOR",
+        "relation": "removed_8426_ETH_and_74_6M_ARB_from_attacker_reach",
+        "status": "TRM_ONCHAIN_ANALYSIS"
+      }
+    ]
+  },
+  "causal_hypotheses": [
+    {
+      "id": "H1_NO_IMMEDIATE_XRP_SPOT_SELL_PRESSURE",
+      "thesis": "The stolen XRP was consolidated into one receiving account and remained unmoved through the latest located November 1 snapshot; the transfer itself does not demonstrate a market sale.",
+      "supporting_evidence": [
+        "TRM's 2026-10-30T00:30Z snapshot.",
+        "XRPLWin's October 30 reconstruction.",
+        "XRPLDashboard's November 1 20:00Z zero-outbound report."
+      ],
+      "disconfirming_evidence": [
+        "No fresh pinned-ledger read after 2026-11-01T20:00Z.",
+        "Future movement or off-ledger monetization could change the assessment."
+      ],
+      "missing_data": [
+        "Current AccountRoot and transaction history at a pinned validated ledger.",
+        "Subsequent DEX, bridge or exchange-deposit interaction."
+      ]
+    },
+    {
+      "id": "H2_BINANCE_REPLENISHMENT_MAY_CREATE_XRP_DEMAND",
+      "thesis": "Replacing the stolen XRP could create in-kind market/OTC demand if Binance lacked sufficient unencumbered XRP inventory.",
+      "supporting_evidence": [
+        "Binance says affected assets were replenished and remaining assets were being sourced through market/OTC channels.",
+        "Binance reported XRP customer balances 100% backed."
+      ],
+      "disconfirming_evidence": [
+        "Remaining 5% of aggregate incident amount was outside the listed top ten, which included XRP.",
+        "No XRP-specific purchase quantity, venue or execution timestamp disclosed.",
+        "Internal treasury inventory can restore backing without new spot demand."
+      ],
+      "missing_data": [
+        "Before/after Binance XRP Proof-of-Reserves wallet balances.",
+        "Treasury/custody transfer reconciliation.",
+        "XRP-specific spot/OTC acquisition disclosure."
+      ]
+    },
+    {
+      "id": "H3_NATIVE_XRP_RECOVERY_ASYMMETRY",
+      "thesis": "Native XRP cannot be issuer-frozen, unlike USDT, USDC, RLUSD and USD1, while stablecoin issuers and Arbitrum governance froze or removed substantial value.",
+      "supporting_evidence": [
+        "TRM's issuer-freeze breakdown.",
+        "Ripple's 40.5M RLUSD freeze.",
+        "No issuer-freeze mechanism for native XRP."
+      ],
+      "disconfirming_evidence": [
+        "No issuer freeze does not make XRP untraceable or impossible to recover through exchange screening, legal process or voluntary return."
+      ],
+      "missing_data": [
+        "Subsequent movement of the XRP account.",
+        "Any exchange/bridge screening or recovery announcement."
+      ]
+    },
+    {
+      "id": "H4_CENTRALIZED_EXCHANGE_COUNTERPARTY_SHOCK",
+      "thesis": "The incident and withdrawal interruption may alter centralized-exchange liquidity, customer custody preferences, venue concentration and derivatives basis independently of XRP payment utility.",
+      "supporting_evidence": [
+        "Binance suspended affected withdrawals and announced phased reopening.",
+        "The incident involved a large XRP hot-wallet balance and cross-chain signing infrastructure."
+      ],
+      "disconfirming_evidence": [
+        "Binance stated XRP customer balances were fully backed and included XRP in phase-one reopening.",
+        "No synchronized venue-level order-book or customer-flow series is included here."
+      ],
+      "missing_data": [
+        "Binance XRP deposits/withdrawals.",
+        "Binance reserve and venue-share changes.",
+        "Cross-venue order-book depth, basis, funding and OI before/after."
+      ]
+    },
+    {
+      "id": "H5_XRPL_PROTOCOL_COMPROMISE",
+      "thesis": "The incident may be interpreted as an XRP Ledger security failure.",
+      "supporting_evidence": [],
+      "disconfirming_evidence": [
+        "TRM says XRP payments were ordinary signed transfers from Binance wallets.",
+        "TRM points to Binance signing infrastructure across chains.",
+        "No cited evidence identifies an XRPL consensus or protocol vulnerability."
+      ],
+      "status": "NOT_SUPPORTED_BY_CURRENT_EVIDENCE"
+    }
+  ],
+  "prediction_feature_candidates": {
+    "status": "RESEARCH_ONLY_NOT_ADMITTED",
+    "features": [
+      "exchange_security_incident_indicator",
+      "incident_asset_amount_by_chain",
+      "withdrawal_status_by_asset_and_network",
+      "stolen_native_XRP_balance_at_pinned_ledger",
+      "attacker_account_inactivity_duration",
+      "stablecoin_freeze_amount_by_issuer_and_chain",
+      "exchange_reserve_replenishment_claims",
+      "verified_XRP_reserve_change",
+      "spot_and_OTC_acquisition_evidence",
+      "venue_order_book_depth",
+      "venue_open_interest_and_funding",
+      "exchange_net_deposit_withdrawal_flow"
+    ],
+    "leakage_controls": [
+      "Keep publication, observation and ingestion timestamps separate.",
+      "Do not backdate Binance statements to the incident timestamp.",
+      "Do not treat the November 1 account snapshot as known before its capture time.",
+      "Do not infer purchases from reserve-backing claims.",
+      "Do not count frozen stablecoins as recovered/returned.",
+      "Do not equate an exchange-wallet transfer with a market sale."
+    ]
+  },
+  "prediction_record": {
+    "status": "NOT_ISSUED",
+    "reason": "The incident is a material event feature, but synchronized post-event price, venue-normalized liquidity, exchange withdrawal/replenishment flows and order-book data are unavailable. No calibrated out-of-sample XRP model skill has been established.",
+    "prohibited_claims": [
+      "No guaranteed price direction.",
+      "No claim Binance bought exactly 233.46M XRP.",
+      "No claim the attacker sold the XRP.",
+      "No claim XRPL itself was compromised.",
+      "No claim all frozen assets were recovered."
+    ]
+  },
+  "repository_handoff": {
+    "repository": "Barrot-Agent/B-Agent",
+    "inspected_main_sha": "fca0ed9645bd428373694229a6e1cfa60771f361",
+    "inspected_at_utc": "2026-11-02T02:52:00Z",
+    "prediction_pr": {
+      "number": 1482,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1482",
+      "head_sha": "bd9fd2fc68ce20c8b90687db3d4ff6e7a64005c9",
+      "base_sha": "8e966c7d53b5f80acf3653acfecbc862bb356fb3",
+      "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41376543022",
+      "ci_result": "PASSED",
+      "fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41376542992",
+      "gate_result": "PASSED_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "research_pr": {
+      "number": 1481,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1481",
+      "head_sha": "3f8403f5daf36950a847723b9b852990ab71e328",
+      "base_sha": "d84915325f3d6f69f5c7131c9ceb9b5c4040e3ec",
+      "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41376988928",
+      "ci_result": "PASSED",
+      "fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41376989619",
+      "gate_result": "PASSED_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "security_pr": {
+      "number": 1480,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1480",
+      "head_sha": "b25da91ad0c8ebd9fa0362022d5983da687e0d9c",
+      "base_sha": "d84915325f3d6f69f5c7131c9ceb9b5c4040e3ec",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "limitation": "Current-main security remediation remains inactive until an authorized proposal is merged."
+    },
+    "preservation": "No main ref modification, merge, force-push, manual workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
+  },
+  "platform_status": {
+    "verified_live": [
+      "ChatGPT",
+      "GitHub"
+    ],
+    "not_verified_live": [
+      "Claude",
+      "Grok",
+      "Gemini",
+      "Copilot",
+      "Codex",
+      "Hugging Face",
+      "Kaggle",
+      "Databricks"
+    ],
+    "rule": "No platform is described as collaborating live without authenticated, tested request/response evidence."
+  },
+  "next_actions": [
+    "Re-read the receiving account at a current validated XRPL ledger and record ledger index, close time, balance, sequence, outbound count and trustlines.",
+    "Verify all five XRP payments and exact source/destination fields from validated transaction records.",
+    "Retrieve the failed 42,750,000.1 RLUSD transaction and confirm tecNO_DST and zero delivered amount.",
+    "Reconcile Binance October 1 and November 1 Proof-of-Reserves wallet snapshots, isolating XRP reserve changes and custody transfers.",
+    "Track Binance XRP deposits, withdrawals, network availability and venue-level order-book depth after phased reopening.",
+    "Verify whether XRP customer-balance backing used pre-existing inventory or new market/OTC purchases.",
+    "Keep attacker inactivity, issuer freezes and exchange recovery as separate time-stamped features.",
+    "Append the completed Binance incident postmortem and later law-enforcement/asset-recovery updates when published.",
+    "Continue source-registry trusted retrieval timestamps, immutable per-snapshot IDs and tamper-evident forecast/outcome records.",
+    "Do not issue a directional forecast until synchronized post-event data and the prediction evaluation gate are available."
+  ]
+}
