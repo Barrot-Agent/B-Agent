@@ -1,0 +1,538 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "jpysc-circle-collateral-accounting-20261102T181011Z",
+  "captured_at_utc": "2026-11-02T18:10:11Z",
+  "data_cutoff_utc": "2026-11-02T18:10:11Z",
+  "purpose": "Correctly distinguish JPYSC issuance, customer lending, handled balances, reserve assets, public-chain availability, Circle USDC settlement volume, regulated collateral usage, and institutional custody from incremental XRP capital demand.",
+  "status": "RESEARCH_ONLY",
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "This institutional and accounting evidence does not establish a directional XRP price signal or calibrated predictive advantage."
+  },
+  "sources": [
+    {
+      "source_id": "sbi-jpysc-20261102",
+      "publisher": "SBI Holdings / SBI VC Trade",
+      "published_at": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "independence_group": "sbi-vc-trade-official",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "C1",
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "source_id": "sbi-jpysc-launch-20260624",
+      "publisher": "SBI Holdings and participating SBI entities",
+      "published_at": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+      "independence_group": "sbi-group-official",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "C4",
+        "C5"
+      ]
+    },
+    {
+      "source_id": "sbi-jpysc-reserves-20260907",
+      "publisher": "SBI VC Trade",
+      "published_at": "2026-09-07",
+      "url": "https://www.sbivc.co.jp/newsview/p9lx_sf_x",
+      "independence_group": "sbi-vc-trade-official",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "C6",
+        "C7"
+      ]
+    },
+    {
+      "source_id": "sbi-open-standard-20261016",
+      "publisher": "SBI Holdings / Startale",
+      "published_at": "2026-10-16",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+      "independence_group": "sbi-startale-official",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "C8",
+        "C9"
+      ]
+    },
+    {
+      "source_id": "sbi-blackrock-mmf-20261027",
+      "publisher": "SBI Holdings / Startale",
+      "published_at": "2026-10-27",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "independence_group": "sbi-startale-official",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "C10"
+      ]
+    },
+    {
+      "source_id": "circle-q2-2026",
+      "publisher": "Circle",
+      "published_at": "2026-08-05",
+      "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "independence_group": "circle-investor-relations",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16"
+      ]
+    },
+    {
+      "source_id": "bny-ripple-20261027",
+      "publisher": "BNY and Ripple",
+      "published_at": "2026-10-27",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "independence_group": "bny-ripple-joint-release",
+      "evidence_class": "joint_primary_statement",
+      "claims": [
+        "C17",
+        "C18",
+        "C19"
+      ]
+    },
+    {
+      "source_id": "coinbase-q3-2026",
+      "publisher": "Coinbase",
+      "published_at": "2026-10-29",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "independence_group": "coinbase-investor-relations",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "C20"
+      ]
+    },
+    {
+      "source_id": "reuters-coinbase-rlusd-20261028",
+      "publisher": "Reuters",
+      "published_at": "2026-10-28",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "independence_group": "reuters-independent-reporting",
+      "evidence_class": "independent_secondary",
+      "claims": [
+        "C21"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "classification": "CONFIRMED_OFFICIAL_STATEMENT",
+      "statement": "SBI VC Trade reported on 2026-11-02 that JPYSC Lending balances exceeded JPY 10 billion and JPYSC handled balances exceeded JPY 30 billion.",
+      "interpretation": "Issuer-reported product balances; not independently audited in this artifact.",
+      "disconfirming_or_limitations": [
+        "The announcement uses threshold language, not exact balances.",
+        "No chain-level raw supply or holder dataset is attached."
+      ]
+    },
+    {
+      "claim_id": "C2",
+      "classification": "CONFIRMED_OFFICIAL_DEFINITION",
+      "statement": "SBI defines JPYSC handled balance as on-chain balance plus lending balance.",
+      "interpretation": "Handled balance is not equivalent to circulating public-chain supply, new issuance, customer net deposits, XRP liquidity, or XRP purchases.",
+      "disconfirming_or_limitations": [
+        "The precise operational definition of on-chain balance and its network/accounting perimeter are not specified in the captured announcement."
+      ]
+    },
+    {
+      "claim_id": "C3",
+      "classification": "CONFIRMED_OFFICIAL_PRODUCT_DESCRIPTION",
+      "statement": "JPYSC Lending (貸コイン) lets customers lend JPYSC to SBI VC Trade and receive a lending fee.",
+      "interpretation": "This is customer lending to the exchange operator, not a customer borrowing against JPYSC collateral.",
+      "disconfirming_or_limitations": [
+        "The announcement does not disclose borrower-level use of proceeds or detailed counterparty exposure."
+      ]
+    },
+    {
+      "claim_id": "C4",
+      "classification": "CONFIRMED_OFFICIAL_LAUNCH_CONDITION",
+      "statement": "At launch on 2026-06-24, JPYSC was initially limited to SBI VC Trade accounts and external-wallet withdrawals were unavailable.",
+      "interpretation": "Public-chain transferability was not available in the initial launch phase.",
+      "disconfirming_or_limitations": [
+        "The launch announcement said technical and practical public-chain preparations were complete, but migration depended on legal/tax treatment and supervisory confirmation."
+      ]
+    },
+    {
+      "claim_id": "C5",
+      "classification": "UNKNOWN",
+      "statement": "The November 2 phrase on-chain balance does not by itself identify the public network, address set, or externally transferable public-chain supply.",
+      "interpretation": "Do not map JPYSC balances to XRPL, Ethereum, Base or another public chain without fresh primary evidence.",
+      "disconfirming_or_limitations": [
+        "A future official deployment announcement or independently observed token contract could resolve this."
+      ]
+    },
+    {
+      "claim_id": "C6",
+      "classification": "CONFIRMED_OFFICIAL_STATEMENT",
+      "statement": "SBI reported approximately JPY 20.1 billion JPYSC issuance outstanding as of 2026-09-07.",
+      "interpretation": "This is an issuer-reported issuance balance at a historical cutoff.",
+      "disconfirming_or_limitations": [
+        "Not a November 2 synchronized supply observation."
+      ]
+    },
+    {
+      "claim_id": "C7",
+      "classification": "CONFIRMED_OFFICIAL_STATEMENT_WITH_SCOPE_LIMIT",
+      "statement": "SBI disclosed an initial JPY 1 billion allocation of JPYSC trust backing to short-term Japanese government bonds, and approximately JPY 6.9 billion in JPYSC lending applications as of 2026-09-07.",
+      "derived_calculation": {
+        "value": 0.0497512438,
+        "formula": "1.0 billion / 20.1 billion",
+        "label": "approximately 4.98% of the reported issuance balance"
+      },
+      "interpretation": "The JPY 1 billion is the disclosed initial allocation, not the maximum permitted allocation and not proof that all reserves are invested in government bonds.",
+      "disconfirming_or_limitations": [
+        "Do not extrapolate the initial allocation to the full reserve portfolio.",
+        "The September 7 figures are not synchronized with November 2 thresholds."
+      ]
+    },
+    {
+      "claim_id": "C8",
+      "classification": "CONFIRMED_OFFICIAL_MEMBERSHIP",
+      "statement": "SBI Holdings and Startale announced participation in Open Standard, whose founding partners include Coinbase, and more than 140 companies were reported as participating.",
+      "interpretation": "This establishes indirect ecosystem adjacency through a shared industry initiative, not a bilateral Coinbase-SBI integration.",
+      "disconfirming_or_limitations": [
+        "Membership does not prove production connectivity, transaction volume or capital flows."
+      ]
+    },
+    {
+      "claim_id": "C9",
+      "classification": "PROPOSED_NOT_EXECUTED",
+      "statement": "SBI and Startale said they were considering a proof of concept for JPYSC-OUSD interoperability after OUSD public-chain availability.",
+      "interpretation": "This is an exploratory interoperability proposal, not a completed production settlement rail.",
+      "disconfirming_or_limitations": [
+        "The official announcement expressly says it does not mean a new service or production transaction has begun."
+      ]
+    },
+    {
+      "claim_id": "C10",
+      "classification": "PROPOSED_NOT_EXECUTED",
+      "statement": "SBI, Startale and BlackRock entities signed an MOU to explore a tokenized money-market-fund and JPYSC ecosystem.",
+      "interpretation": "A strategic exploration that may connect tokenized cash-equivalent assets with yen stablecoin settlement.",
+      "disconfirming_or_limitations": [
+        "No deployed fund integration, operational settlement or XRP purchase is established."
+      ]
+    },
+    {
+      "claim_id": "C11",
+      "classification": "CONFIRMED_ISSUER_REPORTED_METRIC",
+      "statement": "Circle reported USD 73.3 billion USDC in circulation at 2026 Q2 quarter-end and USD 14.8 trillion Q2 onchain transaction volume, up 151% year over year.",
+      "interpretation": "Gross transaction volume is turnover, not net new capital or unique economic settlement.",
+      "disconfirming_or_limitations": [
+        "The issuer metric is aggregate across covered chains and activity; it is not XRP-specific."
+      ]
+    },
+    {
+      "claim_id": "C12",
+      "classification": "CONFIRMED_ISSUER_REPORTED_METRIC",
+      "statement": "Circle reported Q2 reserve income of USD 668 million and total distribution, transaction and other costs of USD 412 million.",
+      "interpretation": "Stablecoin distribution economics are material and rate-sensitive.",
+      "disconfirming_or_limitations": [
+        "The aggregate cost category is not a Coinbase-only payment amount."
+      ]
+    },
+    {
+      "claim_id": "C13",
+      "classification": "CONFIRMED_ISSUER_REPORTED_METRIC",
+      "statement": "Circle reported Circle Payments Network annualized transaction volume of USD 14.7 billion based on the trailing 30 days at Q2 end, with 175 enrolled financial institutions.",
+      "interpretation": "Enrollment and annualized volume are distinct from realized cumulative cash settlement and active counterparties.",
+      "disconfirming_or_limitations": [
+        "The release does not provide a corridor-by-corridor volume table."
+      ]
+    },
+    {
+      "claim_id": "C14",
+      "classification": "CONFIRMED_ISSUER_REPORTED_INTEGRATION",
+      "statement": "Circle said Marex enabled a stablecoin-powered initial-margin transaction using USDC for CFTC-regulated derivatives under a December 2025 CFTC no-action letter.",
+      "interpretation": "USDC has a documented institutional collateral use in a regulated derivatives context; this competes with or complements volatile crypto collateral depending on product and risk policy.",
+      "disconfirming_or_limitations": [
+        "This is not evidence that XRP is accepted as collateral in the same Marex arrangement."
+      ]
+    },
+    {
+      "claim_id": "C15",
+      "classification": "CONFIRMED_ISSUER_REPORTED_INTEGRATION",
+      "statement": "Circle reported Nium integration connecting USDC settlement with global payout infrastructure across more than 190 countries.",
+      "interpretation": "Stablecoin-to-local-currency payout distribution is a competing or complementary rail to XRP-based cross-border liquidity.",
+      "disconfirming_or_limitations": [
+        "The release does not disclose actual XRP displacement, route-level savings or realized volumes."
+      ]
+    },
+    {
+      "claim_id": "C16",
+      "classification": "CONFIRMED_ISSUER_REPORTED_INTEGRATION",
+      "statement": "Circle reported JCB collaboration on USDC treasury transfers and stablecoin merchant payment experiences in Japan.",
+      "interpretation": "USDC has a documented Japan-facing payment and treasury initiative alongside SBI's JPYSC ecosystem.",
+      "disconfirming_or_limitations": [
+        "The initiative is not proof of JPYSC or XRP integration."
+      ]
+    },
+    {
+      "claim_id": "C17",
+      "classification": "CONFIRMED_JOINT_STATEMENT",
+      "statement": "BNY says it is the primary reserve custodian for RLUSD, has a custody relationship with Ripple Prime, and now supports XRP and RLUSD on its Digital Asset Custody platform for eligible clients.",
+      "interpretation": "Institutional custody access is established; custody balances and client allocations are not disclosed.",
+      "disconfirming_or_limitations": [
+        "Assets under custody are client assets, not BNY proprietary investments or new spot purchases."
+      ]
+    },
+    {
+      "claim_id": "C18",
+      "classification": "PROPOSED_SUBJECT_TO_APPROVAL",
+      "statement": "BNY and Ripple intend to enable direct RLUSD minting and redemption through BNY, subject to final BNY and regulatory approvals.",
+      "interpretation": "A future institutional issuance/redemption access path, not yet confirmed as live by this statement.",
+      "disconfirming_or_limitations": [
+        "Do not count planned capacity as current settlement volume."
+      ]
+    },
+    {
+      "claim_id": "C19",
+      "classification": "EXPLORATORY",
+      "statement": "BNY, Ripple and C2FO are exploring tokenized trade finance and approved receivables on XRPL.",
+      "interpretation": "Potentially relevant to receivables financing and collateral workflows, but not proof of XRP as the financed collateral or settlement asset.",
+      "disconfirming_or_limitations": [
+        "No named live client, funded amount, production launch date or XRP collateral policy is disclosed."
+      ]
+    },
+    {
+      "claim_id": "C20",
+      "classification": "CONFIRMED_ISSUER_REPORTED_METRIC",
+      "statement": "Coinbase Q3 2026 results report USD 22 billion average USDC held in Coinbase products and 10.7% crypto trading-volume market share.",
+      "interpretation": "Coinbase has substantial stablecoin distribution and exchange reach.",
+      "disconfirming_or_limitations": [
+        "Average product balances are not point-in-time USDC supply or XRP-specific exposure."
+      ]
+    },
+    {
+      "claim_id": "C21",
+      "classification": "CONFIRMED_INDEPENDENT_REPORTING",
+      "statement": "Reuters reported that Coinbase began making Ripple's RLUSD available on retail and institutional platforms on 2026-10-28.",
+      "interpretation": "Coinbase's stablecoin distribution is multi-issuer; RLUSD listing can broaden access without proving USDC substitution.",
+      "disconfirming_or_limitations": [
+        "Listing does not establish realized trading volume, net holdings or payment settlement."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "SBI VC Trade",
+      "to": "JPYSC",
+      "relationship": "distribution_and_customer_lending",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "sbi-jpysc-20261102",
+        "sbi-jpysc-launch-20260624"
+      ]
+    },
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relationship": "issuer_and_trust_asset_manager",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "sbi-jpysc-launch-20260624"
+      ]
+    },
+    {
+      "from": "SBI Holdings + Startale",
+      "to": "Open Standard",
+      "relationship": "participating_members",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "sbi-open-standard-20261016"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Open Standard",
+      "relationship": "founding_partner",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "sbi-open-standard-20261016"
+      ]
+    },
+    {
+      "from": "SBI Holdings + Startale",
+      "to": "JPYSC-OUSD",
+      "relationship": "interoperability_PoC_under_consideration",
+      "status": "PROPOSED",
+      "source_ids": [
+        "sbi-open-standard-20261016"
+      ]
+    },
+    {
+      "from": "SBI + Startale",
+      "to": "BlackRock",
+      "relationship": "tokenized_MMF_JPYSC_MOU",
+      "status": "EXPLORATORY",
+      "source_ids": [
+        "sbi-blackrock-mmf-20261027"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relationship": "issuer",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "circle-q2-2026"
+      ]
+    },
+    {
+      "from": "Marex",
+      "to": "USDC",
+      "relationship": "regulated_derivatives_initial_margin_use",
+      "status": "CONFIRMED_ISSUER_REPORTED",
+      "source_ids": [
+        "circle-q2-2026"
+      ]
+    },
+    {
+      "from": "Nium",
+      "to": "Circle Payments Network",
+      "relationship": "global_payout_integration",
+      "status": "CONFIRMED_ISSUER_REPORTED",
+      "source_ids": [
+        "circle-q2-2026"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "RLUSD",
+      "relationship": "primary_reserve_custodian",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "bny-ripple-20261027"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "XRP",
+      "relationship": "institutional_custody_support",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "bny-ripple-20261027"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "Ripple",
+      "relationship": "custody_and_trade_finance_exploration",
+      "status": "CONFIRMED_PLUS_EXPLORATORY",
+      "source_ids": [
+        "bny-ripple-20261027"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relationship": "retail_and_institutional_distribution",
+      "status": "CONFIRMED_LISTING",
+      "source_ids": [
+        "reuters-coinbase-rlusd-20261028"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H1",
+      "statement": "JPYSC and OUSD interoperability may create a yen-dollar stablecoin rail that competes with XRP as a bridge asset on some Japan-linked corridors.",
+      "supporting_evidence": [
+        "C8",
+        "C9",
+        "C10"
+      ],
+      "disconfirming_evidence": [
+        "C4",
+        "C5"
+      ],
+      "unknowns": [
+        "Whether JPYSC public-chain transfer is live",
+        "Whether the PoC is executed",
+        "Actual corridor settlement and conversion costs"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H2",
+      "statement": "SBI's simultaneous Ripple relationships, Circle Arc participation and Open Standard membership indicate a multi-network strategy rather than exclusive alignment.",
+      "supporting_evidence": [
+        "C8",
+        "C9",
+        "C10",
+        "C17"
+      ],
+      "disconfirming_evidence": [
+        "No evidence of exclusive allocation or internal strategy documents"
+      ],
+      "unknowns": [
+        "SBI capital allocation by network",
+        "Production route shares",
+        "Whether network interoperability is used in live settlement"
+      ],
+      "status": "INFERENCE_OPEN"
+    },
+    {
+      "hypothesis_id": "H3",
+      "statement": "Circle's USDC collateral and payout integrations may compete with volatile XRP collateral and XRP-based liquidity on certain institutional routes.",
+      "supporting_evidence": [
+        "C14",
+        "C15",
+        "C16"
+      ],
+      "disconfirming_evidence": [
+        "Different products, corridors and risk requirements can make the rails complementary"
+      ],
+      "unknowns": [
+        "Matched route costs",
+        "Collateral eligibility by institution",
+        "Realized settlement volumes"
+      ],
+      "status": "INFERENCE_OPEN"
+    },
+    {
+      "hypothesis_id": "H4",
+      "statement": "BNY custody and RLUSD mint/redemption access may lower institutional operational barriers to XRPL use without creating incremental XRP demand.",
+      "supporting_evidence": [
+        "C17",
+        "C18",
+        "C19"
+      ],
+      "disconfirming_evidence": [
+        "No disclosed XRP balance, purchase or collateral acceptance"
+      ],
+      "unknowns": [
+        "Client balances",
+        "Asset transfer frequency",
+        "New XRP acquisitions",
+        "Collateral policy"
+      ],
+      "status": "OPEN"
+    }
+  ],
+  "data_quality_controls": [
+    "Do not add JPYSC lending balances to issuance or handled balance without using the issuer's stated accounting definition.",
+    "Do not interpret the November 2 handled balance as externally transferable public-chain supply.",
+    "Do not extrapolate the initial JPY 1B short-term government-bond allocation to the full reserve portfolio.",
+    "Do not treat gross USDC transaction volume as net new capital or unique external settlement.",
+    "Do not count enrolled financial institutions as active transacting institutions without activity evidence.",
+    "Do not treat BNY assets under custody as BNY proprietary XRP holdings or client purchases.",
+    "Do not treat future RLUSD mint/redemption plans or exploratory trade-finance MOUs as production flows.",
+    "Group issuer press releases by issuer/source family when measuring independent corroboration."
+  ],
+  "next_actions": [
+    "Obtain a synchronized JPYSC issuance, reserve and lending statement with exact balance definitions and public-chain/network identifiers.",
+    "Verify whether any JPYSC contract is publicly transferable and identify its chain, contract address and finalized supply.",
+    "Track the JPYSC-OUSD PoC from design through execution and production.",
+    "Extract Circle's Q3 2026 results when published on November 4 and reconcile Q2/Q3 circulation, reserve income, distribution costs and CPN volumes.",
+    "Seek route-level evidence before asserting substitution or complementarity between USDC, RLUSD and XRP.",
+    "Track BNY XRP custody balances only if publicly disclosed; do not infer from institution-wide AUC."
+  ]
+}
