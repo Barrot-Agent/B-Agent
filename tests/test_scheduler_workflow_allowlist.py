@@ -1,5 +1,6 @@
 import importlib.util
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
@@ -79,7 +80,7 @@ def test_tick_rejects_tampered_queue_entry_before_dispatch(tmp_path, monkeypatch
     })
     monkeypatch.setattr(scheduler, "WORKFLOWS_DIR", str(workflows))
     monkeypatch.setattr(scheduler, "QUEUE_PATH", str(queue))
-    monkeypatch.setattr(scheduler, "_now", lambda: __import__("datetime").datetime(2026, 11, 2, 6, 0, tzinfo=__import__("datetime").timezone.utc))
+    monkeypatch.setattr(scheduler, "_now", lambda: datetime(2026, 11, 2, 6, 0, tzinfo=timezone.utc))
     calls = []
     monkeypatch.setattr(scheduler.subprocess, "run", lambda *args, **kwargs: calls.append(args))
     scheduler.tick()
