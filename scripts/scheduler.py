@@ -9,9 +9,9 @@ practical reliable minimum - exact-minute firing is NOT guaranteed,
 run_after is a lower bound not an exact time) and dispatches due
 entries via `gh workflow run`.
 
-SAFETY: only workflows already present in .github/workflows/ can be
-targeted - the queue cannot invoke arbitrary commands even if the
-file were tampered with. This adds *when*, never *what*.
+SAFETY: unattended dispatch is restricted to an explicit allowlist of
+read-only validation workflows. Queue tampering cannot select deploy,
+merge, post, submit or other mutating workflows.
 """
 import json
 import os
