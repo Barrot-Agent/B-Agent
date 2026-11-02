@@ -317,6 +317,14 @@ class RepairError(RuntimeError):
 PROTECTED_BRANCH_NAMES = frozenset({"main", "master", "production", "release", "stable"})
 
 
+def _is_protected_branch_target(branch: str) -> bool:
+    """Recognize protected destinations in both short and fully qualified ref form."""
+    value = str(branch).strip().casefold()
+    while value.startswith("refs/heads/"):
+        value = value[len("refs/heads/"):]
+    return value in PROTECTED_BRANCH_NAMES
+
+
 def _assert_clean_worktree(workspace: str | Path) -> None:
     """Refuse mutation when staged, unstaged, or untracked user work exists."""
     result = subprocess.run(
@@ -347,8 +355,10 @@ def safe_checkout_branch(workspace: str | Path, branch: str) -> str:
     name = str(branch).strip()
     if not name or not re.fullmatch(r"[A-Za-z0-9._/-]+", name) or ".." in name or name.startswith("-"):
         raise RepairError("Invalid task branch name.")
-    if name.casefold() in PROTECTED_BRANCH_NAMES:
+    if _is_protected_branch_target(name):
         raise RepairError(f"Refusing to use protected branch {name!r} as an autonomous task branch.")
+    if name.casefold().startswith("refs/"):
+        raise RepairError("Task branch names must be short branch names, not fully qualified Git refs.")
 
     _assert_clean_worktree(root)
     current = subprocess.run(
@@ -1328,6 +1338,22 @@ class PatchExecutor:
             if any(operation.path.startswith(prefix) for prefix in self.PROTECTED_WRITE):
                 raise RepairError(f"Protected path cannot be modified: {operation.path}")
             target = self._resolve_path(operation.path)
+            if target.exists():
+                tracked = subprocess.run(
+                    ["git", "ls-files", "--error-unmatch", "--", operation.path],
+                    cwd=self.workspace,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+                if tracked.returncode == 1:
+                    raise RepairError(
+                        f"Refusing to overwrite a pre-existing untracked or ignored file: {operation.path}"
+                    )
+                if tracked.returncode != 0:
+                    raise RepairError(
+                        tracked.stderr.strip() or f"Unable to verify tracked status for {operation.path}"
+                    )
             current = target.read_text(encoding="utf-8") if target.exists() else ""
             occurrences = current.count(operation.old)
             if occurrences == 0:
@@ -1547,7 +1573,7 @@ class GitGateway:
         )
 
     def push(self, remote: str, branch: str) -> CommandEvidence:
-        if str(branch).strip().casefold() in PROTECTED_BRANCH_NAMES:
+        if _is_protected_branch_target(branch):
             return CommandEvidence(
                 command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
                 success=False,
@@ -1846,7 +1872,7 @@ actually observed.
                 failed_operation="preflight_worktree",
                 required_external_action="Preserve the existing worktree and retry only from a clean isolated task branch.",
             )
-        if branch_name.casefold() in PROTECTED_BRANCH_NAMES:
+        if _is_protected_branch_target(branch_name):
             return self._failure(
                 cycle,
                 RepairState.BLOCKED,
