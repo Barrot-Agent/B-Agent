@@ -194,6 +194,8 @@ def _train_and_predict(comp_dir: Path) -> Optional[Path]:
 
 
 def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> None:
+    if not _submission_authorized():
+        raise RuntimeError("KAGGLE_ALLOW_SUBMISSIONS=true is required for external submissions")
     try:
         api.competition_submit(
             file_name=str(submission_path),
@@ -210,7 +212,15 @@ def _submit(api: KaggleApiExtended, competition: str, submission_path: Path) -> 
 # ---------------------------------------------------------------------------
 
 
+def _submission_authorized() -> bool:
+    return os.environ.get("KAGGLE_ALLOW_SUBMISSIONS", "").strip().lower() == "true"
+
+
 def main() -> None:
+    if not _submission_authorized():
+        raise SystemExit(
+            "KAGGLE_ALLOW_SUBMISSIONS=true is required before any Kaggle API call or submission"
+        )
     api = _build_api()
     competitions = _list_active_competitions(api)
 
