@@ -59,3 +59,25 @@ def test_issued_rejects_sources_retrieved_after_forecast_cutoff():
     s["sources"][0]["retrieved_at_utc"] = "2026-11-02T14:00:00Z"
     with pytest.raises(EvidenceError, match="retrieval time follows forecast data cutoff"):
         validate_snapshot(s)
+
+
+def test_issued_requires_observations_to_use_distinct_independent_sources():
+    s = issued()
+    s["market_observations"][1]["source_id"] = "a"
+    with pytest.raises(EvidenceError, match="market observations must be backed"):
+        validate_snapshot(s)
+
+
+def test_issued_rejects_observation_newer_than_its_source_retrieval():
+    s = issued()
+    s["market_observations"][0]["timestamp_utc"] = "2026-11-02T13:58:10Z"
+    with pytest.raises(EvidenceError, match="timestamp follows source retrieval"):
+        validate_snapshot(s)
+
+
+def test_issued_requires_distinct_publishers_and_source_hosts():
+    s = issued()
+    s["sources"][1]["publisher"] = "A"
+    s["sources"][1]["url"] = "https://a.example/second-feed"
+    with pytest.raises(EvidenceError, match="market observations must be backed"):
+        validate_snapshot(s)
