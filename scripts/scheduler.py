@@ -120,8 +120,6 @@ def tick():
             continue
 
         cmd = ["gh", "workflow", "run", workflow]
-        for k, v in e.get("inputs", {}).items():
-            cmd += ["-f", f"{k}={v}"]
         result = subprocess.run(cmd, capture_output=True, text=True)
         e["fired_at"] = now.isoformat()
         if result.returncode == 0:
