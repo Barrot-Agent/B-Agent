@@ -762,3 +762,22 @@ def test_destructive_hugging_face_admin_workflow_is_disabled() -> None:
     assert "HF_TOKEN" not in workflow
     assert "api/repos/delete" not in workflow
     assert "no external repository was changed" in workflow.lower()
+
+
+def test_kaggle_automation_requires_manual_submission_opt_in():
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    workflow = (root / ".github" / "workflows" / "kaggle-competitions.yml").read_text(encoding="utf-8")
+    script = (root / "scripts" / "kaggle_competitions_automation.py").read_text(encoding="utf-8")
+
+    assert "workflow_dispatch:" in workflow
+    assert "schedule:" not in workflow
+    assert "allow_submission:" in workflow
+    assert "default: false" in workflow
+    assert "contents: read" in workflow
+    assert "KAGGLE_ALLOW_SUBMISSIONS:" in workflow
+    assert "python scripts/kaggle_competitions_automation.py" in workflow
+    assert "python kaggle_competitions_automation.py" not in workflow
+    assert 'os.environ.get("KAGGLE_ALLOW_SUBMISSIONS", "false")' in script
+    assert "prepared (submission disabled)" in script
