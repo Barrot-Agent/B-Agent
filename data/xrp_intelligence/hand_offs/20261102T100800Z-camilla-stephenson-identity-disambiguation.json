@@ -1,0 +1,113 @@
+{
+  "schema_version": "barrot-xrp-research-handoff/v1",
+  "captured_at_utc": "2026-11-02T10:08:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "research_topic": "Exact identity and public YouTube inventory for Camilla Stephenson",
+  "status": {
+    "identity": "UNRESOLVED",
+    "candidate_channel": "NOT_ATTRIBUTED_TO_REQUESTED_PERSON",
+    "exhaustive_video_inventory": "NOT_STARTED_FOR_VERIFIED_CHANNEL",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "evidence_cutoff_utc": "2026-11-02T10:07:00Z",
+  "confirmed_observations": [
+    {
+      "id": "CAM-SEARCH-001",
+      "classification": "negative_search_result_not_exhaustive",
+      "claim": "Exact-name web searches for 'Camilla Stephenson' combined with YouTube, XRP and channel terms did not return a verified XRP-focused YouTube channel or upload catalogue for that exact identity.",
+      "limitation": "Search-engine absence is not proof that no such channel exists."
+    },
+    {
+      "id": "CAM-ENTITY-002",
+      "classification": "public_professional_profile_candidate",
+      "claim": "A public LinkedIn profile for Camilla Stephenson identifies a Melbourne-based marketing/PR professional associated with Sheet Society. Public posts describe brand/social work. No XRP or crypto YouTube connection was found in the retrieved evidence.",
+      "source_urls": [
+        "https://au.linkedin.com/in/camilla-stephenson-366976108",
+        "https://www.linkedin.com/posts/camilla-stephenson-366976108_hard-launch-i-joined-the-sheet-society-team-activity-7381517215600312321-CDCV"
+      ]
+    },
+    {
+      "id": "CAM-ENTITY-003",
+      "classification": "separate_film_industry_name_match",
+      "claim": "A public film-industry mentor page identifies a Camilla Stephenson working in location management. Pathé's La Dame de Fer production page also credits a Camilla Stephenson in the production/locations section. No relationship to the XRP YouTube candidate was established.",
+      "source_urls": [
+        "https://myfirstjobinfilm.com/UK/mentors/camilla-stephenson",
+        "https://www.pathefilms.com/en/movies/la-dame-de-fer/"
+      ]
+    },
+    {
+      "id": "CAM-ENTITY-004",
+      "classification": "public_document_name_match_not_youtube_identity",
+      "claim": "A New Zealand OIA response lists 'Camilla (Millie) Stephenson' in the UK market as a content creator under the name/handle 'Wholesome Mils'. The document does not connect this person to XRP, the candidate Kamilah Stevenson channel, or the requested YouTube inventory.",
+      "source_urls": [
+        "https://fyi.org.nz/request/28272/response/109134/attach/2/fyi.org%20OIA%20response%20Stargrazing%20campaign.pdf"
+      ]
+    },
+    {
+      "id": "CAM-CHANNEL-005",
+      "classification": "candidate_channel_identity_mismatch",
+      "claim": "The previously catalogued XRP-focused candidate channel is titled 'Kamilah Stevenson' and uses @drkamilahstevenson, candidate channel ID UCqUPJMQdkCN6lsLVDnichPA. YouTube's accessible channel page labels it Kamilah Stevenson, not Camilla Stephenson. Some third-party transcript snippets reportedly render the spoken name as 'Camila Stevenson', but that is not sufficient identity evidence.",
+      "source_urls": [
+        "https://www.youtube.com/@drkamilahstevenson",
+        "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/about"
+      ]
+    }
+  ],
+  "candidate_video_scope": {
+    "status": "UNATTRIBUTED_CANDIDATE_SET",
+    "count_recorded_in_prior_handoff": 8,
+    "note": "The eight previously catalogued XRP-related video URLs belong only to the unverified Kamilah/Camila Stevenson candidate set. They must not be described as videos posted by Camilla Stephenson until a direct self-identification or cross-linked official account establishes the match.",
+    "examples": [
+      "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+      "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+      "https://www.youtube.com/watch?v=QslbjGQD0MU",
+      "https://www.youtube.com/watch?v=ci0FH73lbCs",
+      "https://www.youtube.com/watch?v=cxeX_eu_2H0"
+    ]
+  },
+  "identity_hypotheses": [
+    {
+      "id": "H_CAM_1",
+      "statement": "The requested Camilla Stephenson is the Kamilah/Camila Stevenson XRP video creator.",
+      "status": "UNVERIFIED",
+      "support": "Similar spoken first-name rendering and XRP-related candidate videos.",
+      "disconfirming_evidence": "Channel title and handle identify Kamilah, not Camilla; no verified official cross-link to an exact-name Camilla profile."
+    },
+    {
+      "id": "H_CAM_2",
+      "statement": "The requested person is another exact-name Camilla Stephenson, such as a professional or content creator appearing in public records.",
+      "status": "POSSIBLE_BUT_UNRESOLVED",
+      "support": "Multiple distinct exact-name public profiles exist.",
+      "disconfirming_evidence": "No retrieved exact-name profile was connected to the XRP video catalogue."
+    }
+  ],
+  "next_actions": [
+    "Do not merge the Camilla, Camila and Kamilah identities.",
+    "Search for a direct self-identification on a verified YouTube channel or an official social account that links to the XRP videos.",
+    "Once a channel ID is verified, enumerate its uploads playlist and preserve video ID, title, publication timestamp, visibility, duration and source URL.",
+    "Do not claim the eight candidate videos are authored by Camilla Stephenson; retain them as an unattributed candidate set.",
+    "Keep the identity and inventory status unresolved rather than inventing a match."
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "publisher": "YouTube",
+      "classification": "channel page labels candidate Kamilah Stevenson"
+    },
+    {
+      "url": "https://au.linkedin.com/in/camilla-stephenson-366976108",
+      "publisher": "LinkedIn",
+      "classification": "public professional profile"
+    },
+    {
+      "url": "https://myfirstjobinfilm.com/UK/mentors/camilla-stephenson",
+      "publisher": "My First Job in Film",
+      "classification": "film-industry mentor profile"
+    },
+    {
+      "url": "https://fyi.org.nz/request/28272/response/109134/attach/2/fyi.org%20OIA%20response%20Stargrazing%20campaign.pdf",
+      "publisher": "FYI/OIA response",
+      "classification": "public attendee list; name match only"
+    }
+  ]
+}
