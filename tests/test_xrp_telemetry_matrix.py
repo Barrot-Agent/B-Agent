@@ -139,3 +139,22 @@ def test_naive_capture_timestamp_is_rejected():
     snapshot["captured_at_utc"] = "2026-11-02T14:00:00"
     with pytest.raises(EvidenceError, match="UTC timezone"):
         validate_snapshot(snapshot)
+
+
+def test_not_issued_payload_does_not_render_untrusted_forecast_fields():
+    snapshot = not_issued()
+    snapshot["forecast"].update(
+        {
+            "target": "XRP/USD return over one hour",
+            "horizon": "1h",
+            "probability": 0.99,
+            "confidence": 0.99,
+            "model_version": "unverified",
+            "evaluation": {"walk_forward_samples": 9999, "out_of_sample": True},
+        }
+    )
+    report = render_report(snapshot)
+    assert "Forecast status: NOT_ISSUED" in report
+    assert "0.99" not in report
+    assert "9999" not in report
+    assert "unverified" not in report
