@@ -93,7 +93,7 @@ def get_run_log_tail(run_id, lines=40):
     return "\n".join(all_lines[-lines:])
 
 
-def resolve(issue_number):
+def resolve(issue_number, *, apply: bool = False):
     print(f"=== Resolving issue #{issue_number} ===")
     issue = get_issue(issue_number)
     print(f"Title: {issue['title']}")
@@ -136,9 +136,12 @@ def resolve(issue_number):
             f"Closing as resolved - verified against live workflow status, not assumed."
         )
         print("Real conclusion: SUCCESS - closing issue with honest explanation")
-        gh("issue", "comment", str(issue_number), "--body", comment)
-        gh("issue", "close", str(issue_number))
-        print(f"Issue #{issue_number} closed.")
+        if apply:
+            gh("issue", "comment", str(issue_number), "--body", comment)
+            gh("issue", "close", str(issue_number))
+            print(f"Issue #{issue_number} closed.")
+        else:
+            print(f"DRY RUN: would comment and close issue #{issue_number}; no issue mutation performed. Re-run with --apply only after explicit approval.")
     else:
         log_tail = get_run_log_tail(run_id)
         comment = (
@@ -149,11 +152,14 @@ def resolve(issue_number):
             f"attempted. Real log tail from the failing run:\n\n```\n{log_tail}\n```"
         )
         print("Real conclusion: STILL FAILING - posting diagnostic comment, leaving open")
-        gh("issue", "comment", str(issue_number), "--body", comment)
-        print(f"Diagnostic comment posted to issue #{issue_number}. Left open for review.")
+        if apply:
+            gh("issue", "comment", str(issue_number), "--body", comment)
+            print(f"Diagnostic comment posted to issue #{issue_number}. Left open for review.")
+        else:
+            print(f"DRY RUN: would post a diagnostic comment to issue #{issue_number}; no issue mutation performed. Re-run with --apply only after explicit approval.")
 
 
-def resolve_all_open():
+def resolve_all_open(*, apply: bool = False):
     """Real batch mode: scan every open issue, attempt to resolve any
     that match the [Auto] Workflow failing pattern. Skips (does not
     touch) anything that doesn't match - same safe, honest behavior
@@ -166,16 +172,18 @@ def resolve_all_open():
           f"the [Auto] Workflow failing pattern.")
     for issue in candidates:
         try:
-            resolve(issue["number"])
+            resolve(issue["number"], apply=apply)
         except Exception as e:
             print(f"  Real error resolving #{issue['number']}: {e}")
         print()
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        sys.exit("Usage: python3 resolve_issue.py <issue_number>|--all")
-    if sys.argv[1] == "--all":
-        resolve_all_open()
+    args = [arg for arg in sys.argv[1:] if arg != "--apply"]
+    apply = "--apply" in sys.argv[1:]
+    if len(args) < 1:
+        sys.exit("Usage: python3 resolve_issue.py <issue_number>|--all [--apply]")
+    if args[0] == "--all":
+        resolve_all_open(apply=apply)
     else:
-        resolve(int(sys.argv[1]))
+        resolve(int(args[0]), apply=apply)

@@ -715,16 +715,73 @@ def configure_git() -> None:
     run(["git", "config", "user.name", "Barrot-Agent"])
 
 
-def checkout_branch(branch: str) -> None:
-    if not re.fullmatch(r"[A-Za-z0-9._/-]+", branch) or ".." in branch or branch.startswith("-"):
+def _validated_task_branch(branch: str) -> str:
+    value = str(branch or "").strip()
+    if (
+        not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._/-]{0,180}", value)
+        or ".." in value
+        or "//" in value
+        or value.endswith(("/", "."))
+        or value.startswith("-")
+        or "@{" in value
+        or value.lower().endswith(".lock")
+    ):
         raise ValueError("Invalid Barrot task branch name")
-    remote = run(["git", "fetch", "origin", f"+refs/heads/{branch}:refs/remotes/origin/{branch}"], check=False, quiet=True)
+    return value
+
+
+def checkout_branch(branch: str) -> None:
+    branch = _validated_task_branch(branch)
+    status = run(["git", "status", "--porcelain"], check=False, quiet=True)
+    if status.returncode != 0:
+        raise RuntimeError(status.stderr.strip() or "Unable to inspect worktree status")
+    if status.stdout.strip():
+        raise RuntimeError(
+            "Refusing to switch task branches with a dirty worktree; user changes were preserved."
+        )
+
+    current = run(["git", "branch", "--show-current"], check=False, quiet=True)
+    if current.returncode != 0:
+        raise RuntimeError(current.stderr.strip() or "Unable to inspect current branch")
+    if current.stdout.strip() == branch:
+        return
+
+    local = run(
+        ["git", "show-ref", "--verify", "--quiet", f"refs/heads/{branch}"],
+        check=False,
+        quiet=True,
+    )
+    if local.returncode == 0:
+        raise RuntimeError("Refusing to overwrite an existing local task branch.")
+    if local.returncode != 1:
+        raise RuntimeError("Unable to determine whether the local task branch exists.")
+
+    remote = run(
+        ["git", "fetch", "origin", f"refs/heads/{branch}:refs/remotes/origin/{branch}"],
+        check=False,
+        quiet=True,
+    )
     if remote.returncode == 0:
-        result = run(["git", "checkout", "-B", branch, f"origin/{branch}"], check=False)
+        result = run(["git", "switch", "--create", branch, f"origin/{branch}"], check=False)
     else:
-        result = run(["git", "checkout", "-B", branch], check=False)
+        remote_exists = run(
+            ["git", "ls-remote", "--exit-code", "--heads", "origin", f"refs/heads/{branch}"],
+            check=False,
+            quiet=True,
+        )
+        if remote_exists.returncode == 2:
+            result = run(["git", "switch", "--create", branch], check=False)
+        elif remote_exists.returncode == 0:
+            raise RuntimeError(
+                "Remote task branch exists but could not be fetched; refusing to overwrite it."
+            )
+        else:
+            raise RuntimeError(
+                "Unable to verify remote task branch existence; refusing to create or overwrite it."
+            )
+
     if result.returncode != 0:
-        raise RuntimeError(result.stderr.strip() or f"Unable to checkout branch {branch}")
+        raise RuntimeError(result.stderr.strip() or f"Unable to safely create task branch {branch}")
 
 
 def post_issue_comment(message: str) -> None:
@@ -777,11 +834,16 @@ def _is_research_cycle(payload: dict[str, Any]) -> bool:
 def create_pull_request(cycle: dict[str, object] | Any) -> None:
     cycle_data = _extract_cycle_data(cycle)
     safe_title = TITLE.replace('"', "'").replace("`", "'").replace("$", "")
-    head_branch = (
+    head_branch = _validated_task_branch(BRANCH)
+    reported_branch = (
         str(cycle_data.get("commit", {}).get("branch", "")).strip()
         or str(cycle_data.get("issue", {}).get("branch", "")).strip()
-        or BRANCH
     )
+    if reported_branch and reported_branch != head_branch:
+        raise ValueError(
+            "Refusing to open a pull request from a model-selected branch that differs "
+            "from the configured task branch."
+        )
     body = [
         f"Autonomous execution of #{ISSUE} by Barrot." if ISSUE and ISSUE != "0" else "Autonomous execution by Barrot.",
         "",
@@ -816,6 +878,7 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
                 head_branch,
                 "--base",
                 "main",
+                "--draft",
             ]
         )
     if result.returncode != 0 and "already exists" not in (result.stderr + result.stdout).lower():

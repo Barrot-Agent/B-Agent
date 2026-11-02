@@ -8,39 +8,26 @@ def test_barrot_approval_workflow_exists():
     assert WORKFLOW.is_file()
 
 
-def test_barrot_approval_workflow_is_pull_request_write_scoped():
-    text = WORKFLOW.read_text()
-    assert "pull-requests: write" in text
-    assert "contents: read" in text
+def test_barrot_approval_workflow_is_fail_closed_without_write_permissions():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    assert "permissions: {}" in text
+    assert "if: ${{ false }}" in text
+    assert "pull-requests: write" not in text
+    assert "contents: write" not in text
+    assert "APPROVAL_NOT_PERFORMED" in text
 
 
-def test_barrot_approval_requires_explicit_pr_inputs():
-    text = WORKFLOW.read_text()
-    assert "pr_number:" in text
-    assert "expected_head_sha:" in text
-    assert "reason:" in text
+def test_barrot_approval_workflow_cannot_apply_labels_comments_or_merge():
+    text = WORKFLOW.read_text(encoding="utf-8").lower()
+    assert "labels[]=approved" not in text
+    assert "gh api" not in text
+    assert "gh pr" not in text
+    assert "gh pr merge" not in text
+    assert "merge_performed=true" not in text
 
 
-def test_barrot_approval_validates_open_main_pr_and_sha():
-    text = WORKFLOW.read_text()
-    assert '[[ "$state" != "open" ]]' in text
-    assert '[[ "$base_ref" != "main" ]]' in text
-    assert '[[ "$head_sha" != "$EXPECTED_HEAD_SHA" ]]' in text
-
-
-def test_barrot_approval_rejects_cross_repository_prs():
-    text = WORKFLOW.read_text()
-    assert '[[ "$head_repo" != "$repo" ]]' in text
-
-
-def test_barrot_approval_applies_only_approved_label():
-    text = WORKFLOW.read_text()
-    assert 'labels[]=approved' in text
-    assert "MERGE_PERFORMED=FALSE" in text
-
-
-def test_barrot_approval_records_audit_evidence():
-    text = WORKFLOW.read_text()
-    assert "Barrot controlled approval recorded." in text
-    assert "Workflow run:" in text
-    assert "Reason:" in text
+def test_barrot_approval_workflow_explains_protected_human_review_requirement():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    assert "distinct human reviewer" in text
+    assert "protected-environment approval" in text
+    assert "required reviewers" in text
