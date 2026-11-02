@@ -300,6 +300,24 @@
         "status": "confirmed wallet-infrastructure relationship; not an exchange listing",
         "detail": "Permission announced on 2026-09-22 that its ASK wallet moved to Coinbase embedded-wallet infrastructure. Permission says Coinbase secures the private key on the user's behalf and transactions are authorized through the user's Permission login. Permission says email, account identifier and wallet information are shared with Coinbase for wallet operation.",
         "source": "https://www.permission.ai/blog/ask-wallet-update"
+      },
+      {
+        "edge": "Coinbase Prime U.S. Derivatives (CFM/CDE) -> XRP collateral",
+        "status": "not eligible in current published collateral table",
+        "detail": "U.S. Derivatives margin is USD cash; USDC can only be auto-converted to USD for a margin call. XRP is not listed as accepted collateral.",
+        "source": "https://help.coinbase.com/en/prime/derivatives/funding-and-eligible-collateral-for-us-derivatives"
+      },
+      {
+        "edge": "Coinbase Prime Global Derivatives (CFM routing to Deribit) -> XRP collateral",
+        "status": "not eligible in current published Prime collateral table",
+        "detail": "Current Coinbase Prime documentation lists USDC, BTC and ETH only; it states there is no cross-margin with spot or U.S. Derivatives today. This is distinct from the Coinbase Bermuda Limited Global Derivatives cross-collateral terms.",
+        "source": "https://help.coinbase.com/en/prime/derivatives/funding-your-global-derivatives-portfolio"
+      },
+      {
+        "edge": "Coinbase Bermuda Limited Global Derivatives -> XRP collateral",
+        "status": "confirmed for eligible customers in supported regions outside the U.S.",
+        "detail": "Separate CBBM User Agreement product: XRP is a cross-collateral currency with 15% X:SM haircut; X:PM displays no fixed percentage, which is not evidence of zero risk. Effective date for most customers October 1, 2026.",
+        "source": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral"
       }
     ],
     "circle_arc_sbi": [
@@ -324,7 +342,49 @@
         "detail": "Circle's StableFX local stablecoin list included JPYC, not JPYSC; SBI's collaboration statement mentioned JPYSC but no Arc deployment was verified."
       }
     ],
-    "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx"
+    "source": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/default.aspx",
+    "coinbase_product_regime_matrix": [
+      {
+        "product": "Coinbase Global Exchange perpetual futures",
+        "entity": "Coinbase Global Exchange",
+        "xrp_collateral": "Yes",
+        "notes": "XRP listed as accepted collateral. Haircut is determined by base/closeout-horizon rules; no XRP-specific numerical haircut in the help page. Cross-collateral UBO ADQ limits apply.",
+        "source": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work"
+      },
+      {
+        "product": "Coinbase Global Exchange USDC Borrow",
+        "entity": "Coinbase Global Exchange",
+        "xrp_collateral": "Potentially via accepted non-USDC collateral; XRP-specific loan multiplier not disclosed in public help page",
+        "notes": "Published 10% APY; collateral is held while USDC is borrowed; interest accrues every 30 seconds and is paid at midnight UTC; insufficient collateral can cause liquidation or rolling debt.",
+        "source": "https://help.coinbase.com/en/global-exchange/portfolio-balances/usdc-borrow"
+      },
+      {
+        "product": "Coinbase Bermuda Limited Global Derivatives",
+        "entity": "Coinbase Bermuda Limited (CBBM)",
+        "xrp_collateral": "Yes",
+        "notes": "Eligible customers in supported regions outside the U.S.; XRP X:SM haircut 15%; X:PM no fixed percentage displayed.",
+        "source": "https://help.coinbase.com/en-bm/coinbase/derivatives/global-derivatives-cross-collateral"
+      },
+      {
+        "product": "Coinbase Prime U.S. Derivatives / CDE",
+        "entity": "Coinbase Financial Markets (CFM)",
+        "xrp_collateral": "No in current published table",
+        "notes": "USD cash margin; USDC only indirectly via auto-conversion to USD.",
+        "source": "https://help.coinbase.com/en/prime/derivatives/funding-and-eligible-collateral-for-us-derivatives"
+      },
+      {
+        "product": "Coinbase Prime Global Derivatives / Deribit",
+        "entity": "Coinbase Financial Markets (CFM) through foreign broker",
+        "xrp_collateral": "No in current published table",
+        "notes": "Eligible collateral listed as USDC, BTC and ETH only; no cross-margin with spot or U.S. Derivatives today.",
+        "source": "https://help.coinbase.com/en/prime/derivatives/funding-your-global-derivatives-portfolio"
+      }
+    ],
+    "cftc_26_17_correction": {
+      "status": "conditional regulatory no-action position; not proof of XRP collateral enablement",
+      "detail": "CFTC Letter 26-17 concerns CFM's planned foreign-broker arrangement and rights of reuse for customer-owned digital commodities and payment stablecoins. Current Coinbase Prime collateral documentation for the CFM/Deribit product lists USDC, BTC and ETH, not XRP. Product eligibility must be verified separately from broad legal asset classification.",
+      "source": "https://www.cftc.gov/csl/26-17/download"
+    }
   },
   "coinbase_q3_2026": {
     "filing_date": "2026-10-29",
@@ -511,5 +571,8 @@
     "Reconcile October 30 XRP ETF flows at fund level using issuer creations/redemptions and official daily holdings.",
     "Review PR #1495 and #1496; neither is merged or executed on main.",
     "Complete source independence, timestamp anchoring, immutable feature store and walk-forward forecast evaluation before issuing any directional forecast."
+  ],
+  "research_corrections": [
+    "Do not conflate Coinbase Global Exchange, Coinbase Bermuda Limited Global Derivatives, Coinbase Prime U.S. Derivatives, and Coinbase Prime Global Derivatives via CFM/Deribit. XRP is listed as collateral on Global Exchange and CBBM Global Derivatives; current Prime CFM tables list USD/USDC auto-convert for U.S. Derivatives and USDC/BTC/ETH for Prime Global Derivatives, with no XRP."
   ]
 }
