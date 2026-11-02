@@ -1,23 +1,37 @@
 name: Kaggle Competitions Automation
 
 on:
-  schedule:
-    - cron: '0 0 * * *'   # daily at 00:00 UTC
   workflow_dispatch:
+    inputs:
+      allow_submission:
+        description: "Explicitly authorize submissions to selected Kaggle competitions"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kaggle-competitions-manual
+  cancel-in-progress: false
 
 jobs:
   kaggle-auto:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
@@ -28,5 +42,6 @@ jobs:
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-          KAGGLE_MAX_COMPETITIONS: '5'
-        run: python kaggle_competitions_automation.py
+          KAGGLE_MAX_COMPETITIONS: "5"
+          KAGGLE_ALLOW_SUBMISSIONS: ${{ inputs.allow_submission }}
+        run: python scripts/kaggle_competitions_automation.py
