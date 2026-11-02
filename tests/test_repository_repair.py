@@ -1095,7 +1095,7 @@ def test_patch_executor_rechecks_preimage_after_patch_planning(tmp_path: Path) -
 
     class ConcurrentEditor:
         def inspect_patch(self, *, path: str, new_content: str, reason: str):
-            target.write_text("concurrent user edit\\n", encoding="utf-8")
+            target.write_text("concurrent user edit\n", encoding="utf-8")
 
             class Allowed:
                 allowed = True
@@ -1109,7 +1109,7 @@ def test_patch_executor_rechecks_preimage_after_patch_planning(tmp_path: Path) -
     with pytest.raises(RepairError, match="changed after planning"):
         executor.apply(changeset)
 
-    assert target.read_text(encoding="utf-8") == "concurrent user edit\\n"
+    assert target.read_text(encoding="utf-8") == "concurrent user edit\n"
     assert executor._last_applied_content == {}
 
 
@@ -1117,13 +1117,13 @@ def test_patch_executor_refuses_to_create_new_git_ignored_path(tmp_path: Path) -
     workspace, _ = init_repo(tmp_path)
     ignored_relative = "barrot_agent/ignored_new.py"
     with (workspace / ".gitignore").open("a", encoding="utf-8") as handle:
-        handle.write(ignored_relative + "\\n")
+        handle.write(ignored_relative + "\n")
     assert git(workspace, "add", ".gitignore").returncode == 0
     assert git(workspace, "commit", "-m", "ignore new target fixture").returncode == 0
 
     target = workspace / ignored_relative
     changeset = json.loads(
-        repair_payload(ignored_relative, old="", new='FLAG = "FIXED"\\n')
+        repair_payload(ignored_relative, old="", new='FLAG = "FIXED"\n')
     )["changeset"]
 
     with pytest.raises(RepairError, match="new path ignored by Git"):
