@@ -1,4 +1,4 @@
-name: Gumroad Metrics
+name: Gumroad Metrics (read-only artifact)
 
 on:
   schedule:
@@ -6,24 +6,36 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: gumroad-metrics-readonly
+  cancel-in-progress: false
 
 jobs:
   metrics:
     runs-on: ubuntu-latest
-    env:
-      GUMROAD_ACCESS_TOKEN: ${{ secrets.GUMROAD_ACCESS_TOKEN }}
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - name: Fetch aggregate metrics
+
+      - name: Fetch allowlisted aggregate product metrics
+        env:
+          GUMROAD_ACCESS_TOKEN: ${{ secrets.GUMROAD_ACCESS_TOKEN }}
         run: python3 scripts/gumroad_metrics.py
-      - name: Commit
-        run: |
-          git config user.email "barrot@barrot-agent.com"
-          git config user.name "Barrot-Agent"
-          git add ping-pongings/knowledge-base/gumroad_metrics.json
-          git diff --cached --quiet || git commit -m "Gumroad metrics refresh [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+
+      - name: Upload aggregate metrics artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gumroad-aggregate-metrics-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ping-pongings/knowledge-base/gumroad_metrics.json
+          if-no-files-found: error
+          retention-days: 30
