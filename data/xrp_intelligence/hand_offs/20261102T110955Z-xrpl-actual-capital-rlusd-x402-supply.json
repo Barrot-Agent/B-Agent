@@ -341,6 +341,23 @@
       "sources": [
         "CIRCLE-SEC-10Q-2026Q2"
       ]
+    },
+    {
+      "id": "TOKYO-SBIC-IDENTITY-AND-CHATGPT-TRAINING",
+      "classification": "primary_company_profile_and_training_announcement",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "claims": [
+        "The official company profile gives the legal/trade name 東京中小企業投資育成株式会社 and English name Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan).",
+        "The company was established November 15, 1963, has corporate number 9011001030621, and lists shareholders including 18 prefectural/local governments, chambers of commerce, financial institutions and operating companies.",
+        "Its June 12-13, 2025 two-day generative-AI and machine-learning training was restricted to investee companies; the official page says general companies could not enroll.",
+        "Day one included ChatGPT instruction. Day two included Copilot, RAG, APIs, prompt/business use and information-leakage risk."
+      ],
+      "interpretation": "This resolves the Japanese SBIC entity from its own corporate profile. The training is an investee-company education programme, not evidence of an OpenAI commercial partnership, a ChatGPT-SBIC product, an XRP project or an SBI Holdings relationship.",
+      "identity_boundary": "Tokyo SBIC is distinct from SBI Holdings, SBI VC Trade and Circle SBI Japan K.K.",
+      "sources": [
+        "TOKYO-SBIC-COMPANY-PROFILE",
+        "TOKYO-SBIC-CHATGPT-COPILOT-TRAINING"
+      ]
     }
   ],
   "actual_capital_framework": {
@@ -696,10 +713,24 @@
       "published_at": "2026-10-28",
       "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
       "independence": "Primary company announcement; collateral availability on Coinbase Global Exchange described as future."
+    },
+    {
+      "id": "TOKYO-SBIC-COMPANY-PROFILE",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "published_at": null,
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "independence": "Primary official corporate profile identifying the legal entity, English name, corporate number, establishment date and shareholder categories."
+    },
+    {
+      "id": "TOKYO-SBIC-CHATGPT-COPILOT-TRAINING",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "published_at": "2025-06-12",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "independence": "Primary official training announcement; states investee-company-only eligibility and curriculum."
     }
   ],
   "identity_threads": {
-    "japanese_sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; separate from SBI Holdings and from Circle SBI Japan K.K.",
+    "japanese_sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate number 9011001030621, established 1963; shareholders include local governments, chambers, financial institutions and companies. Its June 12-13, 2025 ChatGPT/Copilot/RAG/API training was restricted to investee companies. It is distinct from SBI Holdings and Circle SBI Japan K.K.; no XRP relationship or OpenAI partnership established.",
     "circle_sbi_japan": "Circle SBI Japan K.K. is a 50/50 Circle-SBI Holdings joint venture formed to support USDC distribution in Japan. Circle's 2026 Q2 SEC filing says there were no significant operating results through 2026-06-30. It is not Tokyo SBIC.",
     "ask_coin": "Permission Coin (ASK) is an omnichain LayerZero OFT with official Base and Polygon contracts. Permission announced Coinbase Embedded Wallet integration on 2026-09-22. No XRPL ASK contract or direct XRP integration identified.",
     "chatgpt_sbic": "Social Bias Inference Corpus remains a separate academic candidate meaning; no Japanese-SBIC/OpenAI partnership established.",
