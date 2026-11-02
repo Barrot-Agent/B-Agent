@@ -445,6 +445,24 @@
         "COINBASE-Q3-2026-EARNINGS-RELEASE",
         "CIRCLE-SEC-10Q-2026Q2"
       ]
+    },
+    {
+      "id": "CROSS-RIVER-RLUSD-XRPL-ISSUANCE-AND-AVAILABILITY",
+      "classification": "primary_bank_announcement",
+      "publisher": "Cross River Bank",
+      "published_at": "2026-10-15",
+      "claims": [
+        "Cross River said it integrated Ripple's RLUSD into its proprietary Core Operating System with support for XRPL transactions.",
+        "Cross River said eligible fintechs could move between USD and RLUSD, settle cross-border payments and treasury movements 24/7 through one API alongside ACH, wires and real-time payments.",
+        "Cross River said customers could access RLUSD through the API and that the service was available only in limited U.S. states at announcement.",
+        "The announcement described RLUSD market capitalization as above $2.5B and more than $1B issued on XRPL."
+      ],
+      "interpretation": "This is a direct Ripple/Cross River banking-infrastructure relationship and an announced RLUSD payment rail on XRPL. It does not establish XRP is used as a bridge for every RLUSD payment, nor does it disclose production payment volume or net new XRP demand.",
+      "data_quality_note": "XRP Radar's November 2 dashboard displays approximately $2.42B RLUSD supply. This is not directly reconciled with Cross River's October 15 'more than $2.5B' market-cap statement; dates, circulating-supply scope and methodology differ. Preserve both source claims rather than choosing one.",
+      "sources": [
+        "CROSS-RIVER-RLUSD-XRPL-ANNOUNCEMENT",
+        "XRP-RADAR-EXCHANGE-AND-SUPPLY"
+      ]
     }
   ],
   "actual_capital_framework": {
