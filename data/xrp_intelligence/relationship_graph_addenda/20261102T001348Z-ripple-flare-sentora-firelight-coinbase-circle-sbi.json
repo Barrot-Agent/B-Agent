@@ -127,6 +127,26 @@
       "id": "XRPL",
       "name": "XRP Ledger",
       "type": "native_XRP_ledger"
+    },
+    {
+      "id": "CIRCLE_SBI_JV",
+      "name": "Circle SBI Japan KK / SBI Circle Holdings",
+      "type": "50_50_USDC_distribution_joint_venture"
+    },
+    {
+      "id": "SBI_REMIT",
+      "name": "SBI Remit",
+      "type": "cross_border_remittance_operator"
+    },
+    {
+      "id": "SBI_VC_TRADE",
+      "name": "SBI VC Trade",
+      "type": "Japanese_crypto_and_electronic_payment_instrument_provider"
+    },
+    {
+      "id": "SBI_RIPPLE_ASIA",
+      "name": "SBI Ripple Asia",
+      "type": "Ripple_SBI_joint_venture"
     }
   ],
   "edges": [
@@ -263,12 +283,6 @@
       "status": "COMPANY_REPORTED"
     },
     {
-      "from": "SBI",
-      "to": "RIPPLE",
-      "type": "reported_shareholding_and_operational_XRP_remittance_relationships",
-      "status": "COMPANY_REPORTED"
-    },
-    {
       "from": "SBIC_TOKYO",
       "to": "COINBASE",
       "type": "no_corporate_relationship_established",
@@ -375,6 +389,60 @@
       "to": "USDC",
       "type": "shared_cover_of_Kraken_USDC_strategy",
       "status": "OFFICIAL_COVER_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI",
+      "to": "CIRCLE",
+      "type": "$50M strategic equity investment by SBI Holdings and SBI Shinsei Bank",
+      "status": "OFFICIAL_SBI_DISCLOSURE"
+    },
+    {
+      "from": "SBI",
+      "to": "CIRCLE_SBI_JV",
+      "type": "50_percent_joint_venture_ownership",
+      "status": "OFFICIAL_SBI_DISCLOSURE"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "CIRCLE_SBI_JV",
+      "type": "50_percent_joint_venture_ownership",
+      "status": "OFFICIAL_SBI_DISCLOSURE"
+    },
+    {
+      "from": "SBI",
+      "to": "ARC_TOKEN",
+      "type": "presale_participation_via_consolidated_subsidiary_amount_undisclosed",
+      "status": "OFFICIAL_SBI_DISCLOSURE"
+    },
+    {
+      "from": "SBI",
+      "to": "RIPPLE",
+      "type": "reported_around_9_percent_equity_stake_not_XRP_treasury",
+      "status": "CEO_PUBLIC_X_STATEMENT_NOT_AUDITED_FILING"
+    },
+    {
+      "from": "SBI_REMIT",
+      "to": "XRP",
+      "type": "operational_cross_border_remittance_bridge_asset",
+      "status": "SBI_REMIT_OFFICIAL_2023_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_REMIT",
+      "to": "SBI_VC_TRADE",
+      "type": "documented_XRP_source_venue_in_remittance_flow",
+      "status": "SBI_REMIT_OFFICIAL_2023_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "type": "Japanese_Type_4_electronic_payment_instrument_listing",
+      "status": "OFFICIAL_SBI_VC_TRADE_2026_06_24_NETWORK_NOT_SPECIFIED"
+    },
+    {
+      "from": "SBI_RIPPLE_ASIA",
+      "to": "XRPL",
+      "type": "tokenized_deposit_proof_of_concept_uses_XRPL",
+      "status": "OFFICIAL_SBI_RIPPLE_ASIA_2026_02_26"
     }
   ],
   "unresolved_edges": [
@@ -419,6 +487,24 @@
       "to": "MORPHO",
       "type": "corporate_or_financing_relationship",
       "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "SBI_VC_TRADE",
+      "to": "RLUSD",
+      "type": "specific_supported_blockchain_for_Japan_listing",
+      "status": "NOT_SPECIFIED_IN_PRIMARY_ANNOUNCEMENT"
+    },
+    {
+      "from": "SBI",
+      "to": "RIPPLE",
+      "type": "exact_current_equity_percentage_and_share_class",
+      "status": "CEO_PUBLIC_STATEMENT_ONLY; NO_PUBLIC_OWNERSHIP_FILING_VERIFIED"
+    },
+    {
+      "from": "SBI",
+      "to": "ARC_TOKEN",
+      "type": "presale_amount_allocation_and_lockup",
+      "status": "NOT_DISCLOSED"
     }
   ]
 }

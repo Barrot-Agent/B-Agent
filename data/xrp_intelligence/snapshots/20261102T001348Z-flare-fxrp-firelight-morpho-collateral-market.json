@@ -307,11 +307,12 @@
         "Day 1: ChatGPT and generative AI",
         "Day 2: Copilot, RAG and API integration"
       ],
-      "relationship_to_openai": "No OpenAI partnership established",
+      "relationship_to_openai": "No OpenAI partnership established; the course was training for SBIC investee companies.",
       "relationship_to_xrp": "No XRP or Ripple relationship established",
       "distinctions": [
         "Tokyo SBIC is separate from SBI Holdings.",
-        "Other Japanese entities use SBIC-like abbreviations; the exact ChatGPT course identifies Tokyo SBIC as the strongest referent for the phrase."
+        "Other Japanese entities use SBIC-like abbreviations; the exact ChatGPT course identifies Tokyo SBIC as the strongest referent for the phrase.",
+        "Tokyo SBIC is not SBI Holdings, SBI Circle Holdings/Circle SBI Japan KK, SBI VC Trade or SBI Ripple Asia."
       ]
     },
     "actual_capital": {
@@ -504,15 +505,83 @@
           "98.8% is a Circle company claim, not independently verified global market share.",
           "No absolute agent-payment volume was supplied in the announcement.",
           "Arc's permissioned validator set is distinct from a permissionless validator network."
-        ]
+        ],
+        "sbi_participation_in_arc_presale": {
+          "date": "2026-05-12",
+          "source": "Official SBI Holdings notice",
+          "sbi_amount_usd": "NOT_DISCLOSED",
+          "expected_total_presale_raise_usd": 222000000,
+          "token_allocation": "NOT_DISCLOSED",
+          "lockup": "NOT_DISCLOSED"
+        }
       }
     },
     "sbi_group": {
-      "circle_investment_usd": 50000000,
-      "circle_japan_entity": "Circle SBI Japan KK",
-      "arc_role": "Founding validator",
-      "ripple_relationship": "SBI company materials report an approximately 9% Ripple shareholding; SBI Remit has operational XRP remittance routes and SBI Ripple Asia is a separate JV.",
-      "rlusd_japan": "SBI VC Trade announced Japanese regulatory treatment/listing; the initial chain scope was not specified in the primary announcement."
+      "circle_equity_investment": {
+        "total_usd": 50000000,
+        "contributors": [
+          {
+            "entity": "SBI Holdings",
+            "amount_usd": 25000000
+          },
+          {
+            "entity": "SBI Shinsei Bank",
+            "amount_usd": 25000000
+          }
+        ],
+        "date": "2025-06-09",
+        "source": "Official SBI disclosure"
+      },
+      "circle_jv": {
+        "english_name": "Circle SBI Japan KK",
+        "japanese_name": "SBI Circle Holdings Co., Ltd.",
+        "ownership": [
+          {
+            "entity": "SBI Holdings",
+            "pct": 50
+          },
+          {
+            "entity": "Circle",
+            "pct": 50
+          }
+        ],
+        "agreement_date": "2025-03-18",
+        "completed": "2025",
+        "purpose": "Promote USDC circulation and new use cases in Japan."
+      },
+      "arc_presale": {
+        "participation_date": "2026-05-12",
+        "participant": "SBI Holdings through one of its consolidated subsidiaries",
+        "expected_total_presale_raise_usd": 222000000,
+        "sbi_investment_amount": "NOT_DISCLOSED",
+        "token_allocation": "NOT_DISCLOSED",
+        "lockup": "NOT_DISCLOSED",
+        "status": "OFFICIAL_SBI_DISCLOSURE"
+      },
+      "ripple_equity": {
+        "reported_percentage": "Around 9% / more than 9%, according to SBI Chairman Yoshitaka Kitao's public X statement on 2026-02-15.",
+        "source": "https://x.com/yoshitaka_kitao/status/2022851705772138784",
+        "secondary_reporting": "https://crypto.news/sbi-holdings-says-10b-xrp-talk-is-false/",
+        "classification": "PUBLIC_EXECUTIVE_STATEMENT_NOT_AUDITED_OWNERSHIP_FILING",
+        "clarification": "The statement corrected a claim that SBI held $10B in XRP; it referred to Ripple Labs equity, not a $10B XRP token treasury.",
+        "exact_current_percentage": "NOT_INDEPENDENTLY_VERIFIED"
+      },
+      "operating_xrp_rails": {
+        "sbi_remit": "Operational XRP-based remittance routes to the Philippines, Vietnam and Indonesia; SBI VC Trade supplies XRP and Tranglo handles local payout in the documented 2023 model.",
+        "volumes_and_xrp_inventory": "NOT_DISCLOSED"
+      },
+      "xrpl_tokenized_deposits": {
+        "entity": "SBI Ripple Asia",
+        "date": "2026-02-26",
+        "status": "PROOF_OF_CONCEPT",
+        "description": "Tokenized deposits/deposit-like digital money conceptually using XRPL; not proof of XRP collateralization or XRP-denominated settlement."
+      },
+      "rlusd_japan": {
+        "entity": "SBI VC Trade",
+        "date": "2026-06-24",
+        "treatment": "Japan Type 4 Electronic Payment Instrument classification as stated by SBI VC Trade.",
+        "network_scope": "Not specified in the primary announcement; do not assume XRPL or Ethereum."
+      }
     },
     "sbic_tokyo": "Separate from SBI Group; the ChatGPT/Copilot course was for Tokyo SBIC investee companies, not an OpenAI or XRP partnership."
   },

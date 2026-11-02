@@ -24,6 +24,16 @@
       "topic": "Camilla Stephenson",
       "correction": "The user-confirmed intended creator is Dr. Kamilah Stevenson, channel handle @drkamilahstevenson. 'Camilla' appears as a spoken-name variant in an iHeart transcript. Full upload inventory remains incomplete.",
       "confidence": "USER_CONFIRMED_IDENTITY; INVENTORY_INCOMPLETE"
+    },
+    {
+      "topic": "SBI Holdings versus XRP token holdings",
+      "correction": "SBI Chairman Yoshitaka Kitao publicly corrected the viral $10B XRP claim, saying the exposure was around/more than 9% of Ripple Labs equity. This is a public executive statement, not an audited ownership filing; it does not establish SBI's total XRP inventory.",
+      "confidence": "HIGH_FOR_PUBLIC_STATEMENT; EXACT_EQUITY_PERCENTAGE_UNVERIFIED"
+    },
+    {
+      "topic": "SBI / Circle / Arc",
+      "correction": "SBI Holdings and SBI Shinsei Bank disclosed a $50M Circle equity investment ($25M each), a 50/50 Circle SBI Japan KK / SBI Circle Holdings JV, and participation in Circle's ARC token presale through a consolidated subsidiary. The presale amount, allocation and lockup were not disclosed.",
+      "confidence": "HIGH_FOR_PARTICIPATION; AMOUNT_UNDISCLOSED"
     }
   ],
   "key_findings": [
@@ -38,7 +48,11 @@
     "Circle's Arc mainnet is a major USDC-first institutional and agentic-payment rail: USDC is gas; SBI Group is a founding validator; Coinbase and Binance are exchange participants; Morpho and Aave are credit integrations. Circle claims USDC is 98.8% of agent-driven transaction volume, but gives no absolute denominator.",
     "Flare reports 130M FXRP deployed in DeFi, but explicitly states that only specific events (minting, destination-tag fees, FDC attestations and redemptions) generate Flare fees; not every FXRP trade or loan does. The reported $44,632 cumulative value in FIRE accrues to Flare's fee/burn mechanism, not XRP.",
     "Flare's own one-year article describes the direct XRPL-wallet-to-RLUSD borrow path as the next step; the current live Morpho market uses FXRP collateral on Ethereum. Native XRP collateral borrowing with RLUSD delivered back to XRPL is therefore roadmap, not live.",
-    "The Firelight USD Protected vault's exact stablecoin composition is not specified in the official announcement; do not label it RLUSD without contract-level evidence."
+    "The Firelight USD Protected vault's exact stablecoin composition is not specified in the official announcement; do not label it RLUSD without contract-level evidence.",
+    "SBI Group has multi-rail exposure: $50M Circle equity investment, a 50/50 Circle SBI Japan JV, ARC token presale participation and a founding-validator role on Arc; separately, its chairman publicly stated an approximately 9% Ripple Labs equity stake, while SBI subsidiaries operate XRP remittance routes and an XRPL tokenized-deposit proof of concept. This is not evidence of exclusive XRP positioning or coordinated price activity.",
+    "The $10B XRP claim about SBI was corrected by SBI Chairman Yoshitaka Kitao: the cited exposure was Ripple Labs equity, not a $10B XRP token treasury. The exact current equity percentage is not independently verified in a public ownership filing.",
+    "SBI VC Trade's June 24, 2026 RLUSD listing was classified by SBI as a Type 4 Electronic Payment Instrument under Japanese law; the primary announcement did not specify the supported blockchain, so the Japan listing must not be assumed to be XRPL or Ethereum.",
+    "SBI Ripple Asia's February 26, 2026 tokenized-deposit proof of concept contemplated XRPL use; this does not establish XRP collateralization or XRP-denominated settlement."
   ],
   "competing_hypotheses": [
     {
@@ -80,6 +94,11 @@
       "id": "H_COINBASE_MULTI_ISSUER",
       "claim": "Coinbase is positioning as a multi-issuer stablecoin distribution and collateral platform, not exclusively a Circle/USDC venue.",
       "counter": "Coinbase reported an all-time high average USDC balance in Q3; RLUSD Global Exchange collateral support was future at announcement and actual use is unverified."
+    },
+    {
+      "id": "H_SBI_MULTI_RAIL",
+      "claim": "SBI is positioning itself as a cross-network institutional intermediary across Ripple/XRP, Circle/USDC/Arc and Japanese regulated stablecoin distribution.",
+      "counter": "Different subsidiaries and investments may have independent mandates; no public evidence establishes a single coordinated capital strategy, current token inventory or XRP price objective."
     }
   ],
   "architecture_decisions": [
@@ -114,10 +133,17 @@
     {
       "id": "AD-XRP-049",
       "decision": "Treat Circle's 98.8% agent-volume statement as a first-party claim without absolute denominator; never compare it directly with XRPL x402 counts or gross transfer volume."
+    },
+    {
+      "id": "AD-XRP-050",
+      "decision": "Keep corporate equity, token holdings, stablecoin equity investments, token presales, validator roles, payment rails and proof-of-concept ledger usage as separate capital/exposure classes."
     }
   ],
   "forecast_status": "NOT_ISSUED",
   "next_actions": [
+    "Verify any disclosed SBI ARC presale allocation, lockup or token delivery; current SBI filing discloses participation but not amount or allocation.",
+    "Track Circle SBI Japan JV execution and SBI VC Trade USDC/RLUSD distribution separately; verify chain scope and transaction volumes from primary data.",
+    "Track SBI Remit XRP remittance volumes and net XRP inventory only when public data is available; distinguish operational bridge inventory from treasury holdings.",
     "Compare Circle Arc agent-payment settled value and transaction definitions with XRPL t54 x402 and Flare agent-payment data; do not compare percentages without denominators.",
     "Monitor Flare's reported FIRE fee accumulation and distinguish FLR/FIRE value capture from XRP demand.",
     "Verify whether Coinbase Global Exchange has activated RLUSD collateral support; until then keep it future/announced.",

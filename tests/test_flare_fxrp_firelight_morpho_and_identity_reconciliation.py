@@ -144,3 +144,31 @@ def test_circle_arc_and_xrpl_x402_metrics_are_not_comparable():
     assert d["circle_arc"]["reported_usdc_share_of_agent_driven_transaction_volume_pct"] == 98.8
     assert d["circle_arc"]["absolute_volume_usd"] == "NOT_DISCLOSED"
     assert d["comparability"].startswith("NOT_COMPARABLE")
+
+
+def test_sbi_circle_and_arc_exposure_is_separate_from_ripple_equity():
+    sbi = load_snapshot()["coinbase_circle_sbi"]["sbi_group"]
+    assert sbi["circle_equity_investment"]["total_usd"] == 50_000_000
+    assert sbi["circle_jv"]["ownership"][0]["pct"] == 50
+    assert sbi["circle_jv"]["ownership"][1]["pct"] == 50
+    assert sbi["arc_presale"]["sbi_investment_amount"] == "NOT_DISCLOSED"
+    assert "CEO_PUBLIC_STATEMENT" in sbi["ripple_equity"]["classification"]
+    assert "not a $10B XRP token treasury" in sbi["ripple_equity"]["clarification"]
+    assert "NOT_DISCLOSED" in sbi["arc_presale"]["token_allocation"]
+
+
+def test_sbi_operational_xrp_and_xrpl_poc_are_not_token_treasury_claims():
+    sbi = load_snapshot()["coinbase_circle_sbi"]["sbi_group"]
+    assert "Operational XRP-based remittance" in sbi["operating_xrp_rails"]["sbi_remit"]
+    assert sbi["xrpl_tokenized_deposits"]["status"] == "PROOF_OF_CONCEPT"
+    assert "not proof of XRP collateralization" in sbi["xrpl_tokenized_deposits"]["description"]
+
+
+def test_sbi_graph_has_circle_arc_presale_and_operational_entities():
+    g = load_graph()
+    edges = {(e["from"], e["to"], e["type"]) for e in g["edges"]}
+    assert ("SBI", "ARC_CHAIN", "founding_validator") in edges
+    assert ("SBI", "ARC_TOKEN", "presale_participation_via_consolidated_subsidiary_amount_undisclosed") in edges
+    assert ("SBI", "CIRCLE_SBI_JV", "50_percent_joint_venture_ownership") in edges
+    assert ("SBI_RIPPLE_ASIA", "XRPL", "tokenized_deposit_proof_of_concept_uses_XRPL") in edges
+    assert ("SBI_REMIT", "XRP", "operational_cross_border_remittance_bridge_asset") in edges

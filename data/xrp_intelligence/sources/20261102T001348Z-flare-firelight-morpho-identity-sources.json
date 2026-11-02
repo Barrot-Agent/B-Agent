@@ -207,6 +207,75 @@
       "type": "official_ecosystem_article",
       "supports": "Exact phrase 'actual capital deployment and liquidity provision' in USDt0/XRPFi context.",
       "limits": "Marketing statement; not a disclosed amount or proof of a specific capital transfer."
+    },
+    {
+      "id": "SRC_SBI_CIRCLE_INVESTMENT",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+      "publisher": "SBI Holdings / SBI Shinsei Bank",
+      "date": "2025-06-09",
+      "type": "official_investment_disclosure",
+      "supports": "$50M Circle equity investment, $25M each from SBI Holdings and SBI Shinsei Bank."
+    },
+    {
+      "id": "SRC_SBI_CIRCLE_JV",
+      "url": "https://www.sbigroup.co.jp/news/2025/0325_15331.html",
+      "publisher": "SBI Holdings",
+      "date": "2025-03-25",
+      "type": "official_joint_venture_disclosure",
+      "supports": "50/50 joint venture named Circle SBI Japan KK / SBI Circle Holdings Co., Ltd. to promote USDC in Japan."
+    },
+    {
+      "id": "SRC_SBI_ARC_PRESALE",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf",
+      "publisher": "SBI Holdings",
+      "date": "2026-05-12",
+      "type": "official_presale_participation_notice",
+      "supports": "SBI participated in Circle ARC token presale through a consolidated subsidiary; expected total raise $222M.",
+      "limits": "SBI's own amount, allocation and lockup are not disclosed."
+    },
+    {
+      "id": "SRC_SBI_RIPPLE_EQUITY",
+      "url": "https://x.com/yoshitaka_kitao/status/2022851705772138784",
+      "publisher": "Yoshitaka Kitao public X account",
+      "date": "2026-02-15",
+      "type": "public_executive_statement",
+      "supports": "Kitao said SBI's exposure was around/more than 9% of Ripple Labs, correcting a $10B XRP token-holding claim.",
+      "limits": "Not an audited ownership filing; exact current percentage/share class unverified."
+    },
+    {
+      "id": "SRC_SBI_RIPPLE_EQUITY_SECONDARY",
+      "url": "https://crypto.news/sbi-holdings-says-10b-xrp-talk-is-false/",
+      "publisher": "crypto.news",
+      "date": "2026-02-16",
+      "type": "secondary_reporting",
+      "supports": "Reports and links to the public X statement; distinguishes Ripple equity from XRP tokens."
+    },
+    {
+      "id": "SRC_SBI_RLUSD_JAPAN",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "publisher": "SBI Holdings / SBI VC Trade / Ripple",
+      "date": "2026-06-24",
+      "type": "official_joint_product_announcement",
+      "supports": "SBI VC Trade began RLUSD service under its Japanese Type 4 electronic payment instrument classification.",
+      "limits": "Primary announcement does not specify blockchain/network scope."
+    },
+    {
+      "id": "SRC_SBI_RIPPLE_ASIA_XRPL",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "publisher": "SBI Ripple Asia",
+      "date": "2026-02-26",
+      "type": "official_proof_of_concept_announcement",
+      "supports": "Tokenized deposits/deposit-like digital money proof of concept considering XRPL.",
+      "limits": "Proof of concept, not live XRP collateral or XRP settlement."
+    },
+    {
+      "id": "SRC_SBI_REMIT_XRP",
+      "url": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+      "publisher": "SBI Remit",
+      "date": "2023-09-06",
+      "type": "official_operational_payment_announcement",
+      "supports": "XRP-based remittance service to the Philippines, Vietnam and Indonesia, using SBI VC Trade and Tranglo.",
+      "limits": "No current volumes or net XRP inventory disclosed."
     }
   ],
   "source_independence": "Flare official metrics are company-reported; FlareForge is independent direct onchain/XRPL data; Morpho page is protocol data; Sentora PR is company-supplied; The Block is independent business reporting; CoinMarketCap and TradRadar are aggregators; no source alone establishes net XRP demand."
