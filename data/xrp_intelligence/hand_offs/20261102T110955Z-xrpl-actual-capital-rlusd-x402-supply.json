@@ -433,12 +433,13 @@
       "publisher": "Circle and Coinbase SEC filings / earnings releases",
       "as_of": "2026-06-30_to_2026-09-30",
       "claims": [
-        "Coinbase Q2 2026 Form 10-Q reports $8.874B USDC within its June 30 Assets on Platform table; Coinbase defines AOP to exclude assets for which customers hold full or partial keys.",
-        "Coinbase Q2 earnings release reports average USDC held in Coinbase products of $20B.",
-        "Coinbase Q3 earnings release reports average USDC held in Coinbase products of $22B.",
-        "Circle Q2 2026 Form 10-Q reports $12.442B USDC on Coinbase at quarter-end and a 19.5% daily weighted-average Coinbase share metric."
+        "Coinbase Q2 2026 Form 10-Q reports $8.874B USDC within its June 30 Assets on Platform table; Coinbase AOP excludes assets for which customers hold full or partial private keys.",
+        "Coinbase Q2 earnings release reports average USDC held in Coinbase products of $20B; Coinbase Q3 release reports $22B average USDC held in products.",
+        "Circle Q2 2026 Form 10-Q reports $12.442B USDC on Circle's own platform at June 30, 2026 and a 19.5% daily weighted-average share of total USDC circulation.",
+        "Circle defines its 'USDC on platform' as USDC in Circle Mint accounts, corporate-held USDC and non-custodial wallets offered through Circle. It is not a Coinbase-held balance.",
+        "Circle separately reports $655.3M H1 2026 distribution costs in connection with its Coinbase agreements; the agreement's allocation formula is based in part on USDC held on Coinbase, but the $12.442B Circle-platform figure is not that Coinbase balance."
       ],
-      "interpretation": "These figures are not interchangeable: one is Coinbase's point-in-time AOP category, two are average product-balance metrics, and one is Circle's issuer-side view of USDC on Coinbase. The filings/releases retrieved do not provide a complete reconciliation bridge. Preserve each metric with its own definition and date; do not average or treat the difference as an error without a scope reconciliation.",
+      "interpretation": "These figures have different scopes: Coinbase point-in-time custodial AOP, Coinbase average product balances, and Circle's own platform balances. Circle's 19.5% share is Circle-platform share, not Coinbase share. The SEC filing separately discloses distribution costs paid in connection with Coinbase agreements but does not disclose a directly comparable Coinbase-held USDC balance in the cited table. Preserve each metric and definition; do not average or label Circle's $12.442B as Coinbase assets.",
       "sources": [
         "COINBASE-SEC-10Q-2026Q2",
         "COINBASE-Q2-2026-EARNINGS-RELEASE",
@@ -1035,5 +1036,8 @@
       "interpretation": "One Kraken XRP/USD venue snapshot, not a global price or consolidated order book. The displayed bid/ask sizes are top-of-book quantities only; they do not measure depth across multiple levels or other exchanges.",
       "source": "KRAKEN-XRPUSD-PUBLIC-TICKER"
     }
+  ],
+  "corrections_and_non_inferences": [
+    "Correction: Circle's $12.442B USDC on-platform metric at 2026-06-30 refers to Circle's own platform (Circle Mint, corporate-held and Circle non-custodial wallets), not Coinbase. The Circle 19.5% daily weighted-average share is also Circle-platform share. Coinbase-held USDC is a separate input to Circle's distribution formula; the $12.442B figure must not be attributed to Coinbase."
   ]
 }
