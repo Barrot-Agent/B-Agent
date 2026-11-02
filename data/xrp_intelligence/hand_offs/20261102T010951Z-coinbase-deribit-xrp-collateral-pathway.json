@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-02T01:09:51.705Z",
+  "title": "Coinbase–CFM–CBBM–Deribit XRP collateral pathway: legal and operational conditions",
+  "status": "REGULATORY_PATH_CONFIRMED_PRODUCT_ACCESS_PARTLY_LIVE_XRP_SPECIFIC_USE_UNVERIFIED",
+  "executive_conclusion": "A concrete conditional route exists for customer-owned XRP to be accepted as 30.7 margin collateral by Coinbase Financial Markets and re-used through Coinbase Bermuda to Deribit. XRP qualifies as a digital commodity under the referenced March 2026 SEC/CFTC interpretation and is the underlying of a Coinbase Derivatives CFTC-registered DCM futures contract. Deribit lists XRP linear USDC options/perpetuals and lists XRP as cross-collateral in X:SM. This is not proof that CFM has enabled XRP collateral, that the initial three-month restriction has expired, or that any customer has posted XRP.",
+  "pathway": {
+    "sequence": [
+      {
+        "entity": "Coinbase Financial Markets (CFM)",
+        "role": "U.S. CFTC-registered FCM; holds customer positions and margin collateral on its books."
+      },
+      {
+        "entity": "Coinbase Bermuda Limited (CBBM)",
+        "role": "Foreign broker affiliate; receives 30.7 customer funds in an omnibus account and routes orders to Deribit; customer-level subaccounts are pseudonymized."
+      },
+      {
+        "entity": "Deribit FZE",
+        "role": "Foreign board of trade/foreign clearing organization; executes derivatives and receives margin under a right of re-use authorized by applicable local law/rules."
+      },
+      {
+        "entity": "Coinbase Custody Trust Company, LLC",
+        "role": "CFM represented that Deribit would maintain assets equal to 100% of net liquidating equity for the relevant CFM 30.7 customers in one or more accounts at this Coinbase-owned New York limited-purpose trust company."
+      }
+    ],
+    "product_status": {
+      "official_coinbase_announcement": "2026-05-29",
+      "source_url": "https://www.coinbase.com/en-gb/blog/coinbase-brings-global-crypto-derivatives-to-us-market",
+      "facts": [
+        "Coinbase said institutional clients could begin onboarding to global crypto derivatives through CFM.",
+        "Coinbase said options on Deribit were live through CFM.",
+        "Coinbase said contracts and collateral types would expand, with perpetual futures to follow."
+      ],
+      "limitation": "This announcement does not name XRP as a collateral type enabled through CFM and does not disclose XRP balances or customer use."
+    }
+  },
+  "xrp_asset_eligibility": {
+    "digital_commodity_classification": {
+      "status": "CONFIRMED_IN_REFERENCED_SEC_CFTC_INTERPRETATION",
+      "source_url": "https://www.cftc.gov/csl/26-17/download",
+      "evidence": "CFTC Letter 26-17 footnote 5 identifies XRP among the examples of digital commodities in the March 2026 SEC/CFTC Digital Commodity Interpretation."
+    },
+    "cftc_registered_dcm_futures_criterion": {
+      "status": "CONFIRMED",
+      "source_url": "https://www.cftc.gov/sites/default/files/filings/ptc/25/04/ptc04032518916.pdf",
+      "evidence": "Coinbase Derivatives, LLC self-certified an XRP Futures contract on April 3, 2025 for listing on or after April 21, 2025. The contract is a monthly, USD-settled and margined futures contract, 10,000 XRP per contract, code XRL.",
+      "significance": "CFTC Letter 26-05 condition 1.2 permits a non-stablecoin digital asset in a 30.7 customer account if it is the underlying commodity of a futures contract listed on a CFTC-registered DCM, subject to the remaining conditions."
+    },
+    "cftc_26_05_constraints": {
+      "source_url": "https://www.cftc.gov/csl/26-05/download",
+      "conditions": [
+        "The FCM must file a notice of intent with the Market Participants Division before relying on the no-action position and state the date it will begin accepting digital-asset collateral.",
+        "For the first three months from the FCM's stated commencement date, customer collateral is restricted to payment stablecoins, Bitcoin and Ether.",
+        "Before accepting a non-security digital asset other than Bitcoin, Ether or a payment stablecoin, the FCM must submit revised risk-management policies and procedures to MPD via WinJammer.",
+        "For a 30.7 customer account, if the asset is not accepted by a registered DCO or a qualifying foreign clearing organization, the FCM applies fair market value after a haircut of at least 20% for non-stablecoin digital assets.",
+        "If the asset is accepted by a qualifying registered DCO or foreign clearing organization, the applicable clearing organization's valuation and haircut rules apply; where multiple organizations accept it, the highest applicable haircut is used.",
+        "For a digital asset that is not a payment stablecoin, the special matched-currency haircut treatment only applies when the contract is both based on and denominated in that same digital asset and the collateral offsets a deficit in that contract."
+      ],
+      "unresolved": "CFM's actual notice-of-intent date, commencement date, weekly asset reports and XRP-specific revised risk-policy filing were not located in public search. The three-month restriction therefore cannot be assumed to have expired."
+    },
+    "cftc_26_17_right_of_reuse": {
+      "status": "CONFIRMED_STAFF_NO_ACTION_POSITION_SUBJECT_TO_CONDITIONS",
+      "source_url": "https://www.cftc.gov/csl/26-17/download",
+      "facts": [
+        "CFM planned to offer Deribit Futures, Deribit Options and Deribit Perpetuals to its 30.7 customers and represented that it would accept customer-owned digital commodities and payment stablecoins as margin.",
+        "The CFTC staff position permits the described transfer of customer digital assets from CFM to CBBM and then Deribit under a right of re-use, solely for margining or securing the relevant 30.7 customer foreign futures and foreign-option obligations.",
+        "CFM, CBBM and Deribit must remain wholly owned subsidiaries of Coinbase Global; required customer disclosures, acknowledgements, audit/SOC 2 availability and integrated risk/security controls apply.",
+        "The no-action position requires compliance with all relevant CFTC Letter 26-05 asset-eligibility and haircut conditions.",
+        "CFTC Regulation 30.7 limits 30.7 customer funds deposited with CBBM to no more than 120% of required margin on the relevant customer positions."
+      ],
+      "caveats": [
+        "The letter is a staff interpretation/no-action position, not a generally applicable Commission rule; it is not binding on the Commission or other staff and may be modified, suspended or terminated.",
+        "The route does not authorize unrelated use of customer assets; right-of-reuse is limited to the specified margin/security obligations.",
+        "The letter describes CFM's plan and representations; it does not disclose actual XRP collateral balances."
+      ]
+    }
+  },
+  "venue_eligibility": {
+    "deribit_xrp_products": {
+      "source_options": "https://support.deribit.com/hc/en-us/articles/31424932728093-Linear-USDC-Options",
+      "source_margin": "https://support.deribit.com/hc/en-us/articles/25944811528477-Standard-Margin",
+      "facts": [
+        "Deribit lists XRP_USDC linear European options, quoted and margined in USDC; one option contract represents 1,000 XRP.",
+        "Deribit lists XRP among Tier 1 linear perpetuals.",
+        "The XRP_USDC option and perpetual instruments are USDC-denominated, not XRP-denominated."
+      ]
+    },
+    "deribit_xrp_collateral": {
+      "source_url": "https://support.deribit.com/hc/en-us/articles/25944777203869-Cross-collateral-specifications",
+      "facts": [
+        "The September 28, 2026 cross-collateral schedule marks XRP as a cross-collateral currency.",
+        "The displayed XRP haircut is 15% in Cross Standard Margin (X:SM); the X:PM column shows no haircut.",
+        "The same specification says cross-collateral currencies may be used as margin for derivative positions with other settlement currencies.",
+        "Deribit's Standard Margin documentation says new accounts default to Segregated Standard Margin (S:SM)."
+      ],
+      "caveats": [
+        "XRP cross-collateral use therefore requires the relevant cross-collateral account mode; venue-wide eligibility does not prove the CFM route has enabled that mode for customers.",
+        "The 15% venue haircut does not automatically override the CFTC 26-05 minimum 20% fallback. The 15% treatment is relevant only if the applicable qualifying DCO/foreign-clearing-organization acceptance pathway is satisfied.",
+        "No public XRP collateral balance or CFM-specific account configuration was found."
+      ]
+    }
+  },
+  "actual_capital_analysis": {
+    "classification": "COLLATERAL_REUSE_NOT_NEW_SPOT_PURCHASE",
+    "points": [
+      "A customer posting already-owned XRP as margin is a transfer/encumbrance of existing inventory, not proof of a new XRP spot purchase.",
+      "A right of re-use allows collateral to be re-posted for the permitted obligations; it does not by itself create new net XRP supply demand.",
+      "The Coinbase Custody Trust Company asset-backing representation concerns net liquidating equity support, not net new XRP acquisition.",
+      "Potential price effects depend on new acquisition demand, reduced available float, collateral rehypothecation, rebalancing conversions, and liquidations; none can be inferred from the regulatory pathway alone."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_NEW_INSTITUTIONAL_HOLDING_DEMAND",
+      "thesis": "If CFM enables XRP collateral and customers acquire XRP specifically to fund margin, institutional demand and custody balances could rise.",
+      "missing_proof": [
+        "XRP-specific collateral enablement",
+        "new spot purchases attributable to CFM customers",
+        "customer collateral balances"
+      ]
+    },
+    {
+      "id": "H2_EXISTING_INVENTORY_LOCKUP",
+      "thesis": "Customers may post XRP already held in custody, reducing available inventory without generating new spot purchases.",
+      "missing_proof": [
+        "before/after customer XRP custody balances",
+        "posted XRP amounts",
+        "withdrawal and encumbrance data"
+      ]
+    },
+    {
+      "id": "H3_COLLATERAL_REBALANCING_SELL_FLOW",
+      "thesis": "Cross-collateral rebalancing could convert XRP with positive equity into a negative settlement currency during account stress, creating mechanical XRP sell/conversion flow.",
+      "missing_proof": [
+        "Deribit rebalancing transactions by source asset",
+        "CFM account mode and collateral mix",
+        "time-aligned price impact"
+      ]
+    },
+    {
+      "id": "H4_STABLECOIN_SUBSTITUTION",
+      "thesis": "USDC and potentially RLUSD may be easier collateral choices, reducing the need to post XRP even while XRP remains eligible in principle.",
+      "missing_proof": [
+        "CFM live collateral menu",
+        "actual stablecoin versus XRP collateral composition",
+        "haircut comparison and customer uptake"
+      ]
+    }
+  ],
+  "unresolved_questions": [
+    "What date did CFM file its 26-05 notice of intent, and what was its commencement date?",
+    "Has CFM submitted revised risk-management policies specifically covering XRP?",
+    "Has CFM made XRP available as collateral for 30.7 customers using Deribit?",
+    "Does CFM apply Deribit's 15% X:SM haircut, or the CFTC 26-05 minimum 20% fallback?",
+    "Is X:SM cross-collateral mode available to CFM customers, given Deribit's default S:SM account mode?",
+    "Are there public aggregate weekly collateral reports or a public CFTC filing showing XRP amounts?",
+    "What are the actual customer XRP balances held at Coinbase Custody Trust Company and the amount posted or re-used at Deribit?"
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "A legal/technical collateral pathway is not a price signal. No XRP collateral balances, customer uptake, net spot acquisition or historical event response series has been verified."
+  },
+  "source_registry": [
+    {
+      "id": "S1",
+      "url": "https://www.cftc.gov/csl/26-17/download",
+      "type": "primary_regulatory_letter",
+      "supports": "XRP digital-commodity example, CFM/CBBM/Deribit route, right of re-use, 100% net-liquidating-equity representation, 120% cap, conditions"
+    },
+    {
+      "id": "S2",
+      "url": "https://www.cftc.gov/csl/26-05/download",
+      "type": "primary_regulatory_letter",
+      "supports": "30.7 eligibility, DCM-underlying criterion, 3-month initial asset restriction, 20% minimum haircut fallback, revised risk-policy filing"
+    },
+    {
+      "id": "S3",
+      "url": "https://www.cftc.gov/sites/default/files/filings/ptc/25/04/ptc04032518916.pdf",
+      "type": "primary_dcm_self_certification",
+      "supports": "Coinbase Derivatives XRP Futures contract XRL"
+    },
+    {
+      "id": "S4",
+      "url": "https://www.coinbase.com/en-gb/blog/coinbase-brings-global-crypto-derivatives-to-us-market",
+      "type": "company_product_announcement",
+      "supports": "CFM institutional onboarding and Deribit options product status"
+    },
+    {
+      "id": "S5",
+      "url": "https://support.deribit.com/hc/en-us/articles/25944777203869-Cross-collateral-specifications",
+      "type": "venue_collateral_specification",
+      "supports": "XRP cross-collateral eligibility and X:SM haircut"
+    },
+    {
+      "id": "S6",
+      "url": "https://support.deribit.com/hc/en-us/articles/31424932728093-Linear-USDC-Options",
+      "type": "venue_contract_specification",
+      "supports": "XRP_USDC options and contract multiplier"
+    },
+    {
+      "id": "S7",
+      "url": "https://support.deribit.com/hc/en-us/articles/25944811528477-Standard-Margin",
+      "type": "venue_margin_specification",
+      "supports": "XRP Tier 1 perpetuals and default segregated margin mode"
+    }
+  ],
+  "handoff": {
+    "next_action": "Obtain the CFM notice-of-intent date and verify any public weekly asset reports or XRP-specific revised risk-policy filings before classifying XRP collateral as live.",
+    "evidence_state": "REGULATORY_PATH_AND_VENUE_CAPABILITY_VERIFIED; CFM_XRP_ENABLEMENT_AND_ACTUAL_USE_UNKNOWN",
+    "no_main_change": true,
+    "no_trade": true
+  }
+}
