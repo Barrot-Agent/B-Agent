@@ -386,10 +386,13 @@
       "source": "https://www.cftc.gov/csl/26-17/download"
     },
     "coinbase_usdc_borrow_api_followup": {
-      "endpoint_candidate": "GET /loans/assets",
-      "purpose": "Coinbase documentation indicates a per-asset loan_collateral_requirement_multiplier is available via API; public endpoint retrieval was not completed in this run.",
-      "status": "DESIGNED / endpoint candidate identified; not EXECUTED or VERIFIED",
-      "next": "Obtain current XRP multiplier and confirm authentication, response schema, rate limit and jurisdiction scope before ingestion."
+      "candidate_public_endpoint": "GET /api/v1/assets on Coinbase International Exchange (INTX)",
+      "purpose": "Potentially retrieve per-asset metadata related to collateral/loan eligibility and the loan_collateral_requirement_multiplier mentioned by Coinbase Help.",
+      "evidence": "CCXT's Coinbase International API mapping identifies GET /api/v1/assets as public. Coinbase Help says the current collateral multiplier is available through an API, but does not identify this exact endpoint in the help article. A third-party data model includes a loan_collateral_requirement_multiplier field.",
+      "status": "DESIGNED / candidate identified; not EXECUTED or VERIFIED",
+      "retrieval_limitation": "The API host rejected the available public web retrieval path. No current XRP multiplier or response schema was retrieved.",
+      "caution": "Do not substitute the older Coinbase Exchange GET /loans/assets endpoint; third-party endpoint maps classify that route as private and it may belong to a different Coinbase product.",
+      "next": "Use the official INTX API reference or an authorized public client to verify the base URL, endpoint response, field presence, rate limit and product/jurisdiction scope."
     }
   },
   "coinbase_q3_2026": {
