@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-11-02T04:01:54Z",
+  "generated_at_utc": "2026-11-02T04:11:26Z",
   "evidence_cutoff_utc": "2026-11-02T04:01:54Z",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "foundation": "Barrot V3 remains the execution, security, preservation and verification foundation.",
@@ -270,10 +270,13 @@
       "json_readback": "VALID",
       "ci_runs": "NONE_FOUND_WHILE_DRAFT",
       "status": "OPEN_DRAFT_UNMERGED",
-      "prior_head_ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41386881887",
-      "prior_head_ci_status": "SUCCESS_ON_PRIOR_HEAD_b88d39069da1ad553a882a1419939b47f4f48071",
-      "latest_head_ci_status": "NOT_YET_REPORTED_FOR_67098211f2736808b248b73f3e065b674b8c6f36",
-      "latest_head_json_readback": "VALID"
+      "prior_head_ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41387021227",
+      "prior_head_ci_status": "SUCCESS_ON_PRIOR_HEAD_b5fa51186db285158dc8b7db0f6de63988ba6289",
+      "latest_head_ci_status": "NO_EXACT_HEAD_RUN_REPORTED_FOR_3df38630b58cad5a098fa6ecae2b1d6c59348e5d",
+      "latest_head_json_readback": "VALID",
+      "branch_head_before_handoff_append": "3df38630b58cad5a098fa6ecae2b1d6c59348e5d",
+      "prior_head_gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41387021380",
+      "prior_head_gate_status": "SUCCESS_MERGE_DISABLED"
     },
     "source_registry_pr": {
       "number": 1485,
@@ -281,7 +284,19 @@
       "head_sha": "0d80103ea8dac14b47849dac5115b3b2b865a992",
       "base_sha": "ad022ee4e8c4f2605915cb88c029e53924100440",
       "change": "Makes source snapshot IDs immutable, stamps system registration time, and adds a cutoff check. The fixed-horizon ledger integration remains separate.",
-      "ci_runs": "NONE_FOUND_WHILE_DRAFT",
+      "ci_runs": [
+        {
+          "name": "CI",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41386725626",
+          "status": "SUCCESS_ON_EXACT_HEAD_0d80103ea8dac14b47849dac5115b3b2b865a992",
+          "job": "Tests completed successfully; test count not exposed by job listing."
+        },
+        {
+          "name": "Fail-closed gate",
+          "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41386725558",
+          "status": "SUCCESS_MERGE_DISABLED"
+        }
+      ],
       "status": "OPEN_DRAFT_UNMERGED"
     },
     "preservation": "Main unchanged. No merge, force-push, manual workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
