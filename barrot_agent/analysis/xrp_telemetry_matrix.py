@@ -101,69 +101,13 @@ def validate_snapshot(s):
     if status == "NOT_ISSUED":
         _text(forecast.get("reason"), "forecast.reason")
         return {"sources": len(ids), "groups": groups, "observations": len(observations), "venues": venues}
-    if status != "ISSUED":
-        raise EvidenceError("forecast status must be NOT_ISSUED or ISSUED")
-    if any(retrieved_at > cutoff for retrieved_at in retrieval_times):
-        raise EvidenceError("source retrieval time follows forecast data cutoff")
-    for field in ("target", "horizon", "model_version"):
-        _text(forecast.get(field), f"forecast.{field}")
-    issued_at = _utc(forecast.get("issued_at_utc"), "forecast.issued_at_utc")
-    if issued_at < captured:
-        raise EvidenceError("forecast issue time precedes snapshot capture")
-    horizon_seconds = forecast.get("horizon_seconds")
-    if isinstance(horizon_seconds, bool) or not isinstance(horizon_seconds, int) or horizon_seconds <= 0:
-        raise EvidenceError("horizon_seconds must be a positive integer")
-    try:
-        earliest_resolution = issued_at + timedelta(seconds=horizon_seconds)
-    except OverflowError as exc:
-        raise EvidenceError("horizon_seconds exceeds supported datetime range") from exc
-    _num(forecast.get("probability"), "probability", 0, 1)
-    _num(forecast.get("confidence"), "confidence", 0, 1)
-    if forecast.get("data_cutoff_utc") != s.get("data_cutoff_utc"):
-        raise EvidenceError("forecast cutoff must match snapshot cutoff")
-    for field in ("assumptions", "alternatives"):
-        values = forecast.get(field)
-        if not isinstance(values, list) or not values:
-            raise EvidenceError(f"forecast.{field} must be non-empty")
-        for value in values:
-            _text(value, field)
-    if len(observation_groups) < 2 or len(observation_publishers) < 2 or len(observation_hosts) < 2:
-        raise EvidenceError("market observations must be backed by two independent source groups, publishers and hosts")
-    if len(venues) < 2 or len(times) < 2:
-        raise EvidenceError("ISSUED forecast requires two venues and two observations")
-    if len(symbols) != 1 or (max(times) - min(times)).total_seconds() > MAX_MARKET_SKEW_SECONDS:
-        raise EvidenceError("market observations exceed synchronization window or mix symbols")
-    ev = forecast.get("evaluation")
-    if not isinstance(ev, dict):
-        raise EvidenceError("ISSUED forecast requires evaluation evidence")
-    n = ev.get("walk_forward_samples")
-    if isinstance(n, bool) or not isinstance(n, int) or n < MIN_WALK_FORWARD_SAMPLES:
-        raise EvidenceError(f"walk_forward_samples must be at least {MIN_WALK_FORWARD_SAMPLES}")
-    if ev.get("out_of_sample") is not True or ev.get("leakage_check") != "passed" or ev.get("drift_status") != "stable":
-        raise EvidenceError("out-of-sample, leakage and drift checks must pass")
-    if _num(ev.get("model_brier_score"), "model_brier_score") >= _num(ev.get("baseline_brier_score"), "baseline_brier_score"):
-        raise EvidenceError("model Brier score must beat baseline")
-    if _num(ev.get("model_log_loss"), "model_log_loss") >= _num(ev.get("baseline_log_loss"), "baseline_log_loss"):
-        raise EvidenceError("model log loss must beat baseline")
-    if _num(ev.get("calibration_error"), "calibration_error") > _num(ev.get("calibration_tolerance"), "calibration_tolerance", 0.00000001, 1):
-        raise EvidenceError("calibration error exceeds tolerance")
-    _text(ev.get("evaluation_artifact_id"), "evaluation_artifact_id")
-    if not _text(ev.get("evaluation_run_url"), "evaluation_run_url").startswith("https://"):
-        raise EvidenceError("evaluation run URL must use HTTPS")
-    outcome = forecast.get("outcome")
-    if not isinstance(outcome, dict) or outcome.get("status") not in {"PENDING", "RESOLVED"}:
-        raise EvidenceError("forecast outcome must be PENDING or RESOLVED")
-    if outcome["status"] == "RESOLVED":
-        resolved_at = _utc(outcome.get("resolved_at_utc"), "outcome.resolved_at_utc")
-        if resolved_at < earliest_resolution:
-            raise EvidenceError("resolved outcome precedes the declared forecast horizon")
-        _num(outcome.get("observed_value"), "outcome.observed_value", low=-math.inf)
-        if not isinstance(outcome.get("scoring"), dict):
-            raise EvidenceError("resolved outcome requires scoring")
-    elif any(field in outcome for field in ("resolved_at_utc", "observed_value", "scoring")):
-        raise EvidenceError("pending outcome must not contain resolution fields")
-    return {"sources": len(ids), "groups": groups, "observations": len(observations), "venues": venues}
-
+    if status == "ISSUED":
+        raise EvidenceError(
+            "ISSUED forecasts are disabled until an independently verifiable evaluation-attestation "
+            "verifier is implemented. Source groups, metrics, artifact IDs, and run URLs inside a "
+            "JSON snapshot are self-asserted and cannot authorize forecast issuance."
+        )
+    raise EvidenceError("forecast status must be NOT_ISSUED or ISSUED")
 def render_report(s):
     summary = validate_snapshot(s)
     f = s["forecast"]
