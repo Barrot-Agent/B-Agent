@@ -169,7 +169,7 @@
       "prior_2026_11_01_snapshot_balance_xrp": 233461943.7,
       "prior_snapshot_minus_trm_rounded_inflow_xrp": 0.6,
       "prior_claimed_delta_0_99904_status": "NOT_VALIDATED_AS_FLOW_DIFFERENCE",
-      "interpretation": "The 0.5992 XRP difference may reflect rounding in the source-reported 233,461,943.1 XRP inflow or a small unaccounted ledger event. The earlier 0.99904 figure compared a final AccountRoot balance with a later explorer available-balance display and was not a valid flow reconciliation. The 1 XRP base reserve explains the difference between AccountRoot and spendable balance, not the 0.5992 flow residual.",
+      "interpretation": "The 0.5992 XRP difference may reflect a source-level aggregation/rounding difference in the reported original inflow or a small unaccounted ledger event. The earlier 0.99904 figure compared a final AccountRoot balance with a later explorer available-balance display and was not a valid flow reconciliation. The 1 XRP base reserve explains the difference between AccountRoot and spendable balance, not the 0.5992 flow residual.",
       "required_resolution": "Sum the five exact incoming Payment delivered_amount values, all 16 outgoing delivered_amount values and fees from raw validated XRPL transaction metadata at pinned ledger indices. Do not classify the 0.5992 XRP as an inbound transfer or unexplained sale until reconciled."
     },
     "recipient_status_snapshot_utc": "2026-11-02T06:25:04.536Z",
