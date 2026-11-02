@@ -47,3 +47,21 @@ The function creates a `pingpong_request.json` file with the following structure
 - The generated `pingpong_request.json` file is excluded from version control by default (see `.gitignore`)
 - To trigger the external system, you must manually commit and push the JSON file
 - Timestamps are in ISO 8601 format with UTC timezone
+## SMS webhook adapter
+
+`scripts/barrot_sms_webhook.py` provides a dependency-free Twilio-compatible
+inbound webhook and routes authorized messages through the existing
+`scripts/pingpong.py` chain (including its optional GPT cross-check).
+
+Configure these deployment-only environment variables:
+
+- `TWILIO_AUTH_TOKEN`
+- `BARROT_SMS_ALLOWED_FROM` (comma-separated E.164 sender numbers)
+- `BARROT_SMS_PUBLIC_URL` (the exact public webhook URL used for signature validation)
+- Optional `BARROT_SMS_BIND` and `BARROT_SMS_PORT`
+
+The adapter rejects invalid signatures and non-allow-listed senders, prevents
+replay and rate abuse, bounds replies, redacts request logging, and returns a
+generic failure response when the Barrot chain is unavailable. Keep credentials
+in the hosting provider's secret store; never commit them. Twilio must be
+configured to POST URL-encoded messages to the deployed endpoint.
