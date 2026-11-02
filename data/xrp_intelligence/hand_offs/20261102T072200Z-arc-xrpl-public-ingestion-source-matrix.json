@@ -1,0 +1,95 @@
+{
+  "schema_version": "barrot-xrp-data-source-addendum/v1",
+  "captured_at_utc": "2026-11-02T07:22:00Z",
+  "purpose": "Publicly documented ingestion options for Arc and XRPL, with coverage/rate limits and non-claims. No API data retrieval was executed in this run.",
+  "sources": [
+    {
+      "id": "ARC-NODELY-001",
+      "provider": "Nodely",
+      "network": "Arc mainnet",
+      "source_type": "third_party_public_json_rpc",
+      "endpoint": "https://arc.nodely.dev",
+      "websocket": "wss://arc.nodely.dev/ws",
+      "chain_id": 5042,
+      "auth": "No account/key according to provider documentation",
+      "coverage": "Pruned recent state/blocks/receipts/logs and transaction lookups: last 237,000 blocks, approximately 33 hours; not archival",
+      "rate_limits": "25 calls/sec typical (burst 50); heavy methods including eth_getLogs 5/sec (burst 10); eth_sendRawTransaction 2/sec (burst 5); HTTP 429 and JSON-RPC -32005 require backoff",
+      "limits": "eth_getLogs max 10,000 blocks and 10,000 logs; pending transactions not exposed; old-state eth_call/getBalance fail outside retained range",
+      "provider_claims": "Blocks approximately every 0.5 seconds and final once included; USDC gas; native balance uses 18 decimals while ERC-20 interface uses 6",
+      "verification_status": "documented_not_live_tested",
+      "source": "https://nodely.io/docs/arc",
+      "source_lines": "89-121,184-198"
+    },
+    {
+      "id": "ARC-BITQUERY-001",
+      "provider": "Bitquery",
+      "network": "Arc mainnet",
+      "source_type": "indexed_graphql_and_streaming_api",
+      "endpoint": "https://streaming.bitquery.io/graphql",
+      "chain_id": 5042,
+      "auth": "API access token required outside IDE",
+      "coverage": "Trading.Trades/Tokens/Pairs documented for live data and last 30 days; older DEX trades depend on EVM archive availability",
+      "provider_claims": "Docs say Arc production queries/streams returned data at availability check on 2026-09-16; EVM dataset combined/archive did not answer at that check",
+      "verification_status": "documented_not_live_tested",
+      "source": "https://docs.bitquery.io/docs/blockchain/arc-mainnet/",
+      "source_lines": "95-108,111-125,183-198"
+    },
+    {
+      "id": "ARC-ETHERSCAN-001",
+      "provider": "Etherscan",
+      "network": "Arc mainnet",
+      "source_type": "explorer_api",
+      "endpoint": "https://arc.etherscan.io/api",
+      "chain_id": 5042,
+      "auth": "API key required according to provider page",
+      "coverage": "Balances, transactions, tokens, contracts and logs; detailed plan/retention not independently inspected",
+      "verification_status": "search_result_only_not_live_tested",
+      "source": "https://arc.etherscan.io/api"
+    },
+    {
+      "id": "XRPL-ACCOUNT-TX-001",
+      "provider": "XRPL official documentation",
+      "network": "XRP Ledger",
+      "source_type": "protocol_api_reference",
+      "method": "account_tx",
+      "coverage": "Validated transactions involving an account; supports ledger_index_min/max, ledger_hash or ledger_index, and marker pagination",
+      "quality_controls": "Require response validated=true; pin a common ledger index/hash for balance and transaction reconciliation; retain close_time_iso, ledger_index, ledger_hash, tx hash, tx_json and metadata",
+      "verification_status": "documentation_verified_query_not_executed",
+      "source": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
+      "source_lines": "144-188,198-202,212-218"
+    },
+    {
+      "id": "BITHOMP-ACCESS-001",
+      "provider": "Bithomp",
+      "network": "XRP Ledger",
+      "source_type": "explorer",
+      "verification_status": "direct page retrieval failed in this run; prior captured transaction references remain historical evidence only",
+      "source": "https://bithomp.com"
+    }
+  ],
+  "normalization_rules": [
+    "Do not equate Arc native USDC gas balance (18 decimals) with the USDC ERC-20 interface (6 decimals) without mapping both representations to the same underlying asset and preventing double counting.",
+    "Record provider, endpoint, node/client version, capture timestamp, block number/hash or XRPL ledger index/hash, query parameters, pagination marker, raw response hash and stated archival coverage.",
+    "Treat Nodely's 33-hour retention as unsuitable for long historical backtesting; use an indexed/archive provider for older history and independently reconcile samples against a node.",
+    "Treat Bitquery's 2026-09-16 availability statement as a dated provider claim, not proof that all archival datasets work on 2026-11-02.",
+    "Use exponential backoff and bounded retries for provider rate limits; never fill gaps with interpolated transaction events.",
+    "For XRPL attacker/recipient account reconciliation, pin the same validated ledger index/hash across account_info/account_tx requests and paginate account_tx using the returned marker.",
+    "Do not count Arc native USDC and its ERC-20 interface as two separate supplies or transfer flows."
+  ],
+  "unresolved": {
+    "arc_live_rpc_test": "not executed",
+    "bitquery_query": "not executed; API token required outside IDE",
+    "etherscan_api": "not executed",
+    "xrpl_raw_node_reconciliation": "not executed",
+    "attacker_wallet_latest_balances": "not refreshed in this run",
+    "reason": "The available tools exposed public documentation and GitHub access but did not provide a verified arbitrary POST JSON-RPC/API execution path in this run."
+  },
+  "next_actions": [
+    "Test Arc eth_chainId and eth_blockNumber on two independent providers and capture response bodies plus hashes.",
+    "Query Arc native USDC and ERC-20-interface balances/transfers separately, then reconcile to one economic USDC measure.",
+    "Use Bitquery Trading.Trades for live/30-day DEX activity and test older-history archive availability before backtest use.",
+    "Use Etherscan as a third Arc cross-check for selected blocks, receipts, logs and contract balances.",
+    "Use XRPL account_tx with validated=true and pinned ledger_index/ledger_hash to reconcile the six Binance-theft recipient accounts and the 0.5992 XRP residual.",
+    "Do not mark any provider adapter EXECUTED or VERIFIED until actual requests, response hashes, and cross-provider checks are recorded."
+  ]
+}
