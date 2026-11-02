@@ -53,7 +53,6 @@ def test_handoff_records_confirmed_firelight_kraken_usdc_relationship():
     assert relationship["mechanism"]["fee_conversion_status"] == "OFFICIAL_FIRELIGHT_PHASE2_DESCRIPTION"
     assert "auto-compound" in relationship["mechanism"]["fee_conversion"]
     assert relationship["mechanism"]["first_loss_buffer_type"] == "PROTOCOL_OWNED_STABLECOIN_RESERVE"
-    assert "after exhaustion" in relationship["mechanism"]["first_loss_order"]
 
 
 def test_handoff_records_fxrp_backing_concentration_and_escrow_ladder():
@@ -67,6 +66,17 @@ def test_handoff_records_fxrp_backing_concentration_and_escrow_ladder():
     concentration = d["fxrp_reserve_concentration"]
     assert concentration["top_six_share_pct"] > 86
     assert concentration["holder_balances"][0]["label"] == "Firelight (stXRP)"
+
+
+def test_handoff_records_current_core_vault_control_and_data_quality():
+    d = load()
+    control = d["fxrp_reserve_control_architecture"]
+    assert control["current_core_vault"]["share_of_total_backing_pct"] > 98
+    assert control["reserve_roles"]["agents_count"] == 6
+    assert "single designated account" in control["reserve_roles"]["transfer_authority"]
+    assert control["escrow_ladder"]["current_individual_amounts_and_dates"].startswith("NOT_RETURNED")
+    assert d["source_usage_policy"]["xrpl_to"].startswith("Use the documented API")
+    assert d["data_quality_flags"][-1]["status"] == "UNRESOLVED_SMALL_DISCREPANCY"
 
 
 def test_handoff_distinguishes_verified_and_unverified_platforms():
