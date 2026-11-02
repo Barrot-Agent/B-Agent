@@ -254,6 +254,77 @@
         "XRP-RADAR-EVERNORTH",
         "SEC-FILINGS"
       ]
+    },
+    {
+      "id": "CIRCLE-SBI-JAPAN-JV",
+      "classification": "primary_SEC_filing",
+      "publisher": "Circle Internet Group Form 10-Q",
+      "as_of": "2026-06-30",
+      "claims": [
+        "Circle's SEC filing says Circle and SBI Holdings each contributed approximately USD 1.5M equivalent in Japanese yen to Circle SBI Japan K.K. in November 2025.",
+        "The entity was established to support USDC distribution in Japan.",
+        "Circle owns 50% but consolidates the variable-interest entity because it directs the activities that most significantly affect the entity and bears potentially significant losses/benefits.",
+        "The filing says there had been no significant operating results to date as of June 30, 2026."
+      ],
+      "interpretation": "SBI Group has a direct 50/50-capitalized USDC distribution joint venture with Circle, but the filing's no-significant-results statement cautions against treating the JV itself as proof of material production volumes. SBI VC Trade's separate USDC distribution and JPYSC operations must be tracked independently.",
+      "identity_boundary": "Circle SBI Japan K.K. is not Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (the separately identified Japanese SBIC company), and neither should be conflated with SBI Holdings.",
+      "sources": [
+        "CIRCLE-SEC-10Q-2026Q2",
+        "SBI-STRATEGIC-INVESTMENT-CIRCLE"
+      ]
+    },
+    {
+      "id": "RIPPLE-PRIME-COINBASE-DERIVATIVES",
+      "classification": "primary_joint_company_announcement_and_exchange_listing",
+      "publisher": "Nodal Clear / Ripple and Coinbase Derivatives",
+      "published_at": "2026-03-05",
+      "claims": [
+        "Ripple and Nodal Clear announced Ripple Prime clients have access to the full suite of Coinbase Derivatives contracts cleared by Nodal Clear.",
+        "The announcement specifically includes institutional and nano-sized XRP contracts among the Coinbase Derivatives products.",
+        "Access is facilitated through Hidden Road Partners CIV US LLC, the FCM acquired by Ripple and renamed Ripple Prime.",
+        "Coinbase's current derivatives page lists Ripple Prime among broker distribution partners."
+      ],
+      "interpretation": "This is a confirmed institutional distribution/access relationship between Ripple Prime and Coinbase Derivatives, including XRP futures. It is stronger evidence than merely listing Ripple Prime as a broker partner.",
+      "unknowns": [
+        "Actual Ripple Prime client positions, executed XRP futures volume and market share.",
+        "Whether client access caused incremental XRP spot demand or only hedging/derivatives exposure."
+      ],
+      "sources": [
+        "NODAL-RIPPLE-COINBASE-2026-03-05",
+        "COINBASE-DERIVATIVES-BROKER-PARTNERS"
+      ]
+    },
+    {
+      "id": "CIRCLE-COINBASE-USDC-ECONOMICS",
+      "classification": "primary_SEC_filing",
+      "publisher": "Circle Internet Group Form 10-Q",
+      "as_of": "2026-06-30",
+      "claims": [
+        "Circle reported $655.3M in first-half 2026 distribution costs in connection with its agreements with Coinbase.",
+        "The corresponding second-quarter amount was $324.6M.",
+        "The filing says Coinbase allocations depend on USDC held on its platform after Circle's issuer retention and also include half of remaining broader ecosystem growth economics after approved third-party participant payments."
+      ],
+      "interpretation": "Coinbase is economically central to USDC distribution. The reported amount is Circle's expense under the agreements, not a direct measurement of Coinbase net profit. The formula also means Circle's economics are sensitive to USDC balances, reserve yields and approved ecosystem distributions.",
+      "sources": [
+        "CIRCLE-SEC-10Q-2026Q2"
+      ]
+    },
+    {
+      "id": "PERMISSION-ASK-COINBASE-EMBEDDED-WALLET",
+      "classification": "primary_project_documentation_and_company_announcement",
+      "publisher": "Permission",
+      "published_at": "2026-09-22",
+      "claims": [
+        "Permission identifies ASK as an omnichain LayerZero OFT token with official contracts on Base and Polygon.",
+        "Permission announced that its ASK wallet moved to Coinbase Embedded Wallet infrastructure.",
+        "Permission says Coinbase secures the private key, while the user's Permission login authorizes transactions; Permission says it no longer holds wallet keys.",
+        "Permission says email address, account identifier and wallet information are shared with Coinbase for wallet operation."
+      ],
+      "interpretation": "This resolves one strong ASK Coin candidate as Permission Coin (ASK) and establishes a direct Coinbase wallet-infrastructure relationship. No official ASK contract on XRPL was identified; this is not evidence of an XRP integration.",
+      "sources": [
+        "PERMISSION-ASK-CONTRACTS",
+        "PERMISSION-ASK-COINBASE-WALLET"
+      ]
     }
   ],
   "actual_capital_framework": {
@@ -378,6 +449,38 @@
       "to": "SBI Holdings",
       "relationship": "none established",
       "status": "distinct legal entity; no XRP link established"
+    },
+    {
+      "from": "Circle",
+      "to": "SBI Holdings",
+      "relationship": "50/50 Circle SBI Japan K.K. joint venture",
+      "purpose": "USDC distribution support in Japan",
+      "status": "confirmed by Circle 2026 Q2 SEC filing; no significant operating results reported through 2026-06-30"
+    },
+    {
+      "from": "Ripple Prime",
+      "to": "Coinbase Derivatives",
+      "relationship": "institutional broker distribution/access",
+      "purpose": "full suite of Nodal Clear-cleared Coinbase Derivatives contracts, including XRP futures",
+      "status": "confirmed by March 5, 2026 joint announcement and Coinbase broker listing"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relationship": "USDC distribution collaboration and reserve-income-linked economics",
+      "status": "confirmed by Circle SEC filing; $655.3M H1 2026 distribution costs in connection with agreements"
+    },
+    {
+      "from": "Ripple",
+      "to": "Coinbase",
+      "relationship": "RLUSD distribution on Coinbase Prime, Exchange and Retail",
+      "status": "announced live 2026-10-28; Global Exchange collateral support was described as future"
+    },
+    {
+      "from": "Permission ASK",
+      "to": "Coinbase Embedded Wallet",
+      "relationship": "wallet infrastructure/key custody and user-authorized signing",
+      "status": "confirmed by Permission announcement 2026-09-22; ASK official contracts on Base and Polygon, no XRPL contract identified"
     }
   ],
   "source_independence_and_caveats": [
@@ -528,6 +631,62 @@
       "published_at": null,
       "url": "https://www.sec.gov/edgar/search/",
       "independence": "Primary regulatory filings source."
+    },
+    {
+      "id": "CIRCLE-SEC-10Q-2026Q2",
+      "publisher": "Circle Internet Group",
+      "published_at": "2026-08-05",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "independence": "Primary SEC filing; reports Circle SBI Japan K.K. ownership/control and Coinbase distribution costs."
+    },
+    {
+      "id": "SBI-STRATEGIC-INVESTMENT-CIRCLE",
+      "publisher": "SBI Holdings",
+      "published_at": "2025-06-09",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2025/0609_a_en.pdf",
+      "independence": "Primary SBI announcement of strategic investment and USDC Japan collaboration."
+    },
+    {
+      "id": "NODAL-RIPPLE-COINBASE-2026-03-05",
+      "publisher": "Nodal Clear and Ripple",
+      "published_at": "2026-03-05",
+      "url": "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf",
+      "independence": "Joint primary announcement; establishes access rights, not executed client volume."
+    },
+    {
+      "id": "COINBASE-DERIVATIVES-BROKER-PARTNERS",
+      "publisher": "Coinbase",
+      "published_at": null,
+      "url": "https://www.coinbase.com/DERIVATIVES",
+      "independence": "Primary exchange page listing Ripple Prime as broker distribution partner."
+    },
+    {
+      "id": "PERMISSION-ASK-CONTRACTS",
+      "publisher": "Permission",
+      "published_at": null,
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "independence": "Primary project documentation listing official Base and Polygon contracts."
+    },
+    {
+      "id": "PERMISSION-ASK-COINBASE-WALLET",
+      "publisher": "Permission",
+      "published_at": "2026-09-22",
+      "url": "https://www.permission.ai/blog/ask-wallet-update",
+      "independence": "Primary project announcement; describes Coinbase Embedded Wallet key custody and data sharing."
+    },
+    {
+      "id": "RIPPLE-COINBASE-RLUSD-LAUNCH",
+      "publisher": "Ripple",
+      "published_at": "2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "independence": "Primary company announcement; collateral availability on Coinbase Global Exchange described as future."
     }
-  ]
+  ],
+  "identity_threads": {
+    "japanese_sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; separate from SBI Holdings and from Circle SBI Japan K.K.",
+    "circle_sbi_japan": "Circle SBI Japan K.K. is a 50/50 Circle-SBI Holdings joint venture formed to support USDC distribution in Japan. Circle's 2026 Q2 SEC filing says there were no significant operating results through 2026-06-30. It is not Tokyo SBIC.",
+    "ask_coin": "Permission Coin (ASK) is an omnichain LayerZero OFT with official Base and Polygon contracts. Permission announced Coinbase Embedded Wallet integration on 2026-09-22. No XRPL ASK contract or direct XRP integration identified.",
+    "chatgpt_sbic": "Social Bias Inference Corpus remains a separate academic candidate meaning; no Japanese-SBIC/OpenAI partnership established.",
+    "actual_capital": "Flare USDt0/FXRP liquidity deployment language; distinguish gross payments, transaction count, collateral, wrapped supply and RWA registry notional from net external capital."
+  }
 }
