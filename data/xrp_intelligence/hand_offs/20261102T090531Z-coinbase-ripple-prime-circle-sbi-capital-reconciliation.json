@@ -1,0 +1,622 @@
+{
+  "schema_version": "1.1",
+  "artifact_type": "timestamped_research_handoff",
+  "artifact_id": "20261102T090531Z-coinbase-ripple-prime-circle-sbi-capital-reconciliation",
+  "created_at_utc": "2026-11-02T09:05:31Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "data_cutoffs": {
+    "coinbase_q3_financials": "2026-09-30",
+    "circle_q2_financials": "2026-06-30",
+    "arc_launch": "2026-09-16",
+    "xrp_radar_onchain": "2026-11-02T08:32:00Z",
+    "xrp_etf_holdings": "2026-10-30",
+    "xrp_escrow_ledger": "108063085"
+  },
+  "headline_findings": [
+    {
+      "id": "F001",
+      "classification": "CONFIRMED_OFFICIAL",
+      "claim": "Ripple Prime clients have access to the full suite of Coinbase Derivatives contracts cleared by Nodal Clear, including institutional and nano XRP contracts.",
+      "date": "2026-03-05",
+      "mechanism": "Ripple Prime/Hidden Road FCM access; Coinbase Derivatives is the CFTC-registered DCM; Nodal Clear is the CFTC-registered DCO.",
+      "limits": [
+        "Access announcement does not establish actual client positions, XRP open interest attributable to Ripple Prime, or spot XRP purchases.",
+        "The joint announcement is one coordinated first-party release, not independent corroboration."
+      ],
+      "source_ids": [
+        "S001"
+      ]
+    },
+    {
+      "id": "F002",
+      "classification": "CONFIRMED_OFFICIAL",
+      "claim": "Coinbase Global Exchange lists XRP as eligible cross-collateral for perpetual-futures portfolios.",
+      "mechanism": "Asset quantity is capped by an organization-level average-daily-quantity limit. Collateral weight reflects the greater of the static base haircut and size-sensitive closeout-horizon haircut. Collateral may be automatically liquidated when maintenance-margin coverage fails.",
+      "limits": [
+        "Current XRP-specific base haircut, closeout haircut and ADQ cap were not retrieved.",
+        "This is Global Exchange cross-collateral, not the Coinbase consumer Morpho loan or Coinbase Bermuda Global Derivatives regime."
+      ],
+      "source_ids": [
+        "S002"
+      ]
+    },
+    {
+      "id": "F003",
+      "classification": "CONFIRMED_OFFICIAL",
+      "claim": "Coinbase Global Exchange USDC Borrow accrues interest at 10% APY, holds non-USDC collateral on-platform, and uses asset-specific collateral multipliers and borrow limits exposed through API fields.",
+      "limits": [
+        "Current XRP loan_collateral_requirement_multiplier, min_borrow_qty, max_borrow_qty and aggregate XRP balances were not retrieved.",
+        "Insufficient collateral can lead to collateral liquidation or rolling debt; this is separate from perpetual-futures margin."
+      ],
+      "source_ids": [
+        "S003"
+      ]
+    },
+    {
+      "id": "F004",
+      "classification": "CONFIRMED_OFFICIAL_PLUS_SECONDARY_DETAIL",
+      "claim": "Coinbase's consumer crypto-backed loan product supports XRP as collateral for up to 100,000 USDC for eligible U.S. users outside New York, through a Morpho integration on Base.",
+      "limits": [
+        "Coinbase confirms asset eligibility and the 100,000 USDC cap. The Block reports up to 49% LTV and liquidation at 62.5% for XRP/DOGE/ADA/LTC.",
+        "Do not apply Coinbase's generic 86% BTC/ETH liquidation figure to XRP.",
+        "The exact consumer-loan routing from XRP to the cbXRP/USDC Morpho market is strongly suggested by the matching asset and 62.5% LLTV, but the exact per-loan wrapper route was not independently traced in this run."
+      ],
+      "source_ids": [
+        "S004",
+        "S005",
+        "S006"
+      ]
+    },
+    {
+      "id": "F005",
+      "classification": "CONFIRMED_OFFICIAL",
+      "claim": "Coinbase Q3 2026 reported average USDC held in Coinbase products of 22 billion dollars, up 49% year over year and an all-time high for the fourteenth consecutive quarter. Coinbase said it captured approximately 50% of USDC economics over the prior year.",
+      "additional_metrics": {
+        "crypto_trading_volume_market_share_pct": 10.7,
+        "assets_on_platform_share_of_total_crypto_market_cap_pct": 12.5,
+        "crypto_derivatives_volume_two_year_cagr_pct": 179,
+        "prediction_markets_annualized_revenue_usd": 200000000,
+        "average_daily_loan_book_balance_yoy_growth_pct": 74,
+        "subscription_and_services_share_of_net_revenue_pct": 49
+      },
+      "limits": [
+        "Metrics are company-reported; prediction-market annualized revenue is not a quarterly GAAP revenue figure.",
+        "USDC balances are not XRP balances or proof of XRP buying."
+      ],
+      "source_ids": [
+        "S007"
+      ]
+    },
+    {
+      "id": "F006",
+      "classification": "CONFIRMED_SEC_FILING",
+      "claim": "Coinbase Q3 2026 stablecoin revenue was 306.905 million dollars, versus 324.534 million dollars in Q3 2025; nine-month stablecoin revenue was 904.487 million dollars versus 907.485 million dollars.",
+      "additional_metrics": {
+        "q3_yoy_change_usd_millions": -17.629,
+        "q3_yoy_change_pct": -5.4,
+        "q3_share_of_net_revenue_pct": 26.45,
+        "q3_revenue_effect_higher_average_usdc_balances_usd_millions": 84.6,
+        "q3_revenue_effect_lower_average_interest_rates_usd_millions": -52.8
+      },
+      "limits": [
+        "Coinbase's stablecoin revenue line is not identical to Circle's distribution-cost line or a direct measure of USDC transfer volume."
+      ],
+      "source_ids": [
+        "S008"
+      ]
+    },
+    {
+      "id": "F007",
+      "classification": "CONFIRMED_SEC_FILING",
+      "claim": "Circle's Q2 2026 filing reports 324.6 million dollars of distribution costs paid in connection with Coinbase agreements in Q2 and 655.3 million dollars in H1.",
+      "limits": [
+        "These are Circle expenses under its distribution arrangements, not an additional amount to add to Coinbase stablecoin revenue.",
+        "The Circle filing's 12.442 billion dollars of USDC on platform and 19.5% daily weighted-average share refer to Circle's own platform, not Coinbase's platform. The filing defines the metric as USDC held on Circle's platform."
+      ],
+      "source_ids": [
+        "S009"
+      ]
+    },
+    {
+      "id": "F008",
+      "classification": "CONFIRMED_OFFICIAL_CORRECTION",
+      "claim": "Coinbase's Q3 filing says its Circle arrangement was renewed on the same terms. Coinbase's own Q3 release separately reports 22 billion dollars average USDC held in Coinbase products.",
+      "correction": "A prior handoff misattributed Circle's Q2 'USDC on platform' 12.442 billion dollars and 19.5% share to Coinbase. That was incorrect: those metrics refer to Circle's own platform. Coinbase's 22 billion dollar average is separately reported by Coinbase for Q3.",
+      "source_ids": [
+        "S007",
+        "S008",
+        "S009"
+      ]
+    },
+    {
+      "id": "F009",
+      "classification": "CONFIRMED_OFFICIAL_WITH_ROLLOUT_LIMIT",
+      "claim": "Circle launched Arc public mainnet on September 16, 2026. SBI Group is in the founding-validator cohort with phased rollout; Coinbase, Binance and Kraken are listed as exchange-access participants, not validators. Arc uses USDC for gas.",
+      "limits": [
+        "Circle describes a phased validator rollout; this does not prove SBI was already actively validating at the launch timestamp.",
+        "JPYC appears in the local-stablecoin list active or onboarding to StableFX. SBI's JPYSC is a distinct trust-type yen stablecoin; JPYSC deployment on Arc/StableFX is not established.",
+        "Circle states Arc is operated by a permissioned validator set and had not been reviewed or approved by NYDFS or another regulatory authority at launch."
+      ],
+      "source_ids": [
+        "S010"
+      ]
+    },
+    {
+      "id": "F010",
+      "classification": "SECONDARY_AGGREGATED_ONCHAIN_CLAIM",
+      "claim": "XRP Radar reports 22.38 billion XRP in 701 publicly attributed wallets across 24 exchanges as of November 2, 2026; this is a floor, not tradable float.",
+      "exchange_balances_xrp": {
+        "Upbit": 6430000000,
+        "Coinbase": 5840000000,
+        "Binance": 2720000000,
+        "SBI_VC_Trade": 60000000
+      },
+      "limits": [
+        "Mostly pooled customer deposits and cold storage, plus some exchange-controlled reserves; some exchange wallets are unlabeled or omitted.",
+        "Wallet balances do not establish available order-book liquidity, customer ownership, or intent to sell."
+      ],
+      "source_ids": [
+        "S011"
+      ]
+    },
+    {
+      "id": "F011",
+      "classification": "SECONDARY_AGGREGATED_ONCHAIN_CLAIM",
+      "claim": "XRP Radar reports 417.8 million XRP across tracked DeFi/AMM, bridge and wrapped-XRP categories, including 150.9 million cbXRP and 19.4 million wXRP.",
+      "limits": [
+        "Protocol categories may represent different custody/bridging states; do not automatically treat every unit as freely liquid or as incremental demand.",
+        "Coinbase proof-of-reserves and the cbXRP supply read should be reconciled at a common timestamp before computing a precise reserve ratio."
+      ],
+      "source_ids": [
+        "S011"
+      ]
+    },
+    {
+      "id": "F012",
+      "classification": "SECONDARY_AGGREGATED_ONCHAIN_CLAIM",
+      "claim": "XRP Radar reports 14,875,541 XRPL x402 agent transactions, 190 agents, 183 merchants and 5,791 endpoints, with cumulative settlement of 7,022 XRP plus 40,389 RLUSD.",
+      "derived_metrics": {
+        "xrp_usd_mark_used": 1.25,
+        "estimated_total_settlement_usd": 49166.5,
+        "estimated_mean_usd_per_transaction": 0.003305
+      },
+      "limits": [
+        "Derived USD value uses the page's approximately 1.25 dollar XRP mark and a 1 dollar RLUSD assumption; this is an approximate conversion, not historical cash-flow accounting.",
+        "The source operator says settlements are native XRPL Payments tagged with SourceTag 804681468 and spot-checks recent transactions against rippled. Only a sample is independently checked by the publisher; the complete 14.9 million transaction history was not independently reprocessed in this run.",
+        "Transaction count is not capital deployed, XRP spot demand, revenue, or unique payer count."
+      ],
+      "source_ids": [
+        "S011",
+        "S012"
+      ]
+    },
+    {
+      "id": "F013",
+      "classification": "SECONDARY_AGGREGATED_ONCHAIN_AND_ISSUER_DATA",
+      "claim": "XRP Radar reports 4.33 billion dollars of tracked XRPL tokenized RWA value, comprising approximately 276 million dollars of transferable on-chain assets and 4.06 billion dollars of platform-locked registry notional.",
+      "limits": [
+        "The 4.06 billion registry component is not freely transferable investor float and must not be described as deployed or liquid capital.",
+        "Per-asset source dates range from July 3 through October 23, 2026."
+      ],
+      "source_ids": [
+        "S011"
+      ]
+    },
+    {
+      "id": "F014",
+      "classification": "SECONDARY_ONCHAIN_READ_WITH_STATED_RIPPLED_METHOD",
+      "claim": "XRP Radar reports 1 billion XRP released from Ripple-owned escrow on November 1, 2026, 700 million re-escrowed in three new escrow objects later that day, and approximately 300 million net leaving escrow. The next scheduled unlock is 1 billion XRP on December 1, 2026.",
+      "limits": [
+        "Escrow release is not proof of sale, exchange deposit, or circulating market supply increase of the same amount.",
+        "The source describes pinned-ledger rippled reads; independent raw-node reproduction was not performed in this run."
+      ],
+      "source_ids": [
+        "S013"
+      ]
+    },
+    {
+      "id": "F015",
+      "classification": "SECONDARY_ISSUER_HOLDINGS_DERIVED_FLOW",
+      "claim": "XRP Insights reports 1,196,600,186 XRP held by six spot funds plus BITW on October 30, and net weekly flow of +3,390,356 XRP for October 26-30.",
+      "limits": [
+        "Flows are derived from issuer-reported daily holdings changes; exact execution venue, in-kind creation/redemption and market-maker inventory effects are not disclosed.",
+        "Another tracker reports October 30 net outflow of approximately 496,500 dollars while XRP Insights reports approximately -49,932 XRP (about -62,400 dollars). The daily discrepancy is unresolved; exclude that daily observation from predictive features until issuer-level reconciliation."
+      ],
+      "source_ids": [
+        "S014",
+        "S015"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Ripple Prime",
+      "to": "Coinbase Derivatives",
+      "relation": "clients have access to full contract suite including XRP futures",
+      "status": "CONFIRMED",
+      "via": "Nodal Clear",
+      "source_ids": [
+        "S001"
+      ]
+    },
+    {
+      "from": "Coinbase Derivatives",
+      "to": "Nodal Clear",
+      "relation": "listed futures cleared by CFTC-registered DCO",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S001"
+      ]
+    },
+    {
+      "from": "Coinbase Global Exchange",
+      "to": "XRP",
+      "relation": "eligible cross-collateral for perpetual futures portfolios",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S002"
+      ]
+    },
+    {
+      "from": "Coinbase Global Exchange USDC Borrow",
+      "to": "XRP",
+      "relation": "asset-specific collateral multiplier applies if XRP is pledged; current multiplier unverified",
+      "status": "CAPABILITY_CONFIRMED_PARAMETER_UNKNOWN",
+      "source_ids": [
+        "S003"
+      ]
+    },
+    {
+      "from": "Coinbase consumer crypto-backed loans",
+      "to": "XRP",
+      "relation": "eligible collateral for up to 100,000 USDC via Morpho for eligible US users outside New York",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S004",
+        "S005"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC distribution/collaboration economics; arrangement renewed on same terms",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S007",
+        "S008",
+        "S009"
+      ]
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native USDC issuance on XRPL",
+      "status": "CONFIRMED_FROM_PRIOR_LEDGER",
+      "source_ids": [
+        "S016"
+      ]
+    },
+    {
+      "from": "Ripple",
+      "to": "USDC",
+      "relation": "Ripple announced use of USDC alongside RLUSD in Ripple Payments",
+      "status": "CONFIRMED_COMPANY_STATEMENT",
+      "source_ids": [
+        "S016"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Circle Arc",
+      "relation": "founding-validator cohort with phased rollout",
+      "status": "CONFIRMED_COHORT_NOT_LIVE_VALIDATION",
+      "source_ids": [
+        "S010"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "Ripple",
+      "relation": "longstanding corporate, joint-venture and payments relationships",
+      "status": "CONFIRMED_FROM_PRIOR_LEDGER",
+      "source_ids": [
+        "S017"
+      ]
+    },
+    {
+      "from": "SBI Group",
+      "to": "JPYSC",
+      "relation": "JPYSC issued by SBI Shinsei Trust and referenced in Arc collaboration statement",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S010",
+        "S017"
+      ]
+    },
+    {
+      "from": "Circle Arc",
+      "to": "Coinbase",
+      "relation": "Coinbase listed as exchange-access participant",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "S010"
+      ]
+    },
+    {
+      "from": "Circle Arc",
+      "to": "XRP",
+      "relation": "potential competing stablecoin-native payment/FX rail; no direct XRP integration established",
+      "status": "INFERENCE_WITH_UNKNOWN_NET_EFFECT",
+      "source_ids": [
+        "S010",
+        "S016"
+      ]
+    },
+    {
+      "from": "t54 XRPL x402 facilitator",
+      "to": "XRP and RLUSD",
+      "relation": "native XRPL agent payments reported in both assets",
+      "status": "SOURCE_REPORTED_ONCHAIN_SAMPLE_VERIFICATION",
+      "source_ids": [
+        "S011",
+        "S012"
+      ]
+    }
+  ],
+  "capital_flow_reconciliation": {
+    "rule": "Separate collateral posting, borrowing, token wrapping, stablecoin settlement, reserve backing, ETF holdings changes, escrow releases and actual spot purchases.",
+    "distinctions": [
+      "XRP posted as collateral is not a new XRP purchase.",
+      "cbXRP supply growth is not automatically spot buying; it may reflect wrapping/custody movement of existing XRP.",
+      "USDC borrowed against XRP is debt/liquidity, not a new XRP capital inflow.",
+      "Liquidations can create forced XRP sales even when collateral onboarding initially reduces voluntary selling.",
+      "Coinbase's 22B average USDC product balance is not XRP demand.",
+      "Circle's payments to Coinbase are Circle distribution expenses, not an additional Coinbase revenue line to add to Coinbase stablecoin revenue.",
+      "x402 transaction counts are not equivalent to dollar settlement value or capital deployed.",
+      "Ripple escrow releases are not automatically market sales.",
+      "RWA registry notional is not freely transferable tokenized capital."
+    ]
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "Coinbase XRP collateral and loan products reduce voluntary spot selling by allowing holders to access USDC or margin while retaining XRP exposure.",
+      "supporting_evidence": [
+        "Coinbase Global Exchange accepts XRP cross collateral.",
+        "Coinbase consumer product supports up to 100,000 USDC against XRP through Morpho.",
+        "cbXRP supply is reported at approximately 150.9M XRP."
+      ],
+      "disconfirming_or_counterevidence": [
+        "No aggregate XRP loan/collateral balances or product adoption counts disclosed.",
+        "Loan proceeds are debt, not new XRP buying.",
+        "Collateral liquidations can force sales.",
+        "The consumer loan's XRP LTV and liquidation threshold are materially more conservative than BTC/ETH."
+      ],
+      "measurable_tests": [
+        "Daily cbXRP mint/burn and reserve changes.",
+        "Morpho XRP collateral, borrow, liquidation and health-factor time series.",
+        "Coinbase Global Exchange XRP collateral multiplier, ADQ cap and liquidation flows.",
+        "Matched Coinbase wallet flows and XRP order-book depth."
+      ]
+    },
+    {
+      "id": "H2",
+      "hypothesis": "Coinbase's USDC economics and Arc expansion make Coinbase/Circle stablecoin rails more strategically important than XRP as a payment bridge on some corridors.",
+      "supporting_evidence": [
+        "Coinbase average USDC held reached 22B in Q3.",
+        "Coinbase says it captured about 50% of USDC economics over the prior year.",
+        "Arc uses USDC for gas and integrates StableFX and Circle Payments Network.",
+        "SBI Group is in Arc's founding-validator cohort."
+      ],
+      "disconfirming_or_counterevidence": [
+        "USDC is native on XRPL.",
+        "Ripple has said it will use USDC alongside RLUSD in Ripple Payments.",
+        "No measured migration of payment routes or liquidity away from XRPL.",
+        "SBI's JPYSC is not verified on Arc; JPYC is the StableFX-listed Japanese stablecoin."
+      ],
+      "measurable_tests": [
+        "Corridor-level settlement volumes and fees by chain/asset.",
+        "USDC and RLUSD supply/velocity by chain.",
+        "StableFX route volumes, Arc validator activation and JPYSC interoperability."
+      ]
+    },
+    {
+      "id": "H3",
+      "hypothesis": "Ripple Prime's Coinbase Derivatives access expands institutional XRP hedging and risk transfer, improving market access without necessarily creating spot demand.",
+      "supporting_evidence": [
+        "Official Ripple/Nodal announcement grants Ripple Prime clients access to Coinbase Derivatives' full suite including XRP contracts.",
+        "Coinbase reports strong derivatives market-share and volume growth."
+      ],
+      "disconfirming_or_counterevidence": [
+        "No Ripple Prime XRP positions, client counts, contract volumes or open interest attributable to the relationship disclosed.",
+        "Derivatives exposure can hedge or short spot XRP rather than create net demand."
+      ],
+      "measurable_tests": [
+        "Venue-level XRP contract volume/open interest, basis, funding and block-trade data.",
+        "Publicly disclosed Ripple Prime product/clearing volume updates."
+      ]
+    },
+    {
+      "id": "H4",
+      "hypothesis": "XRPL agentic payments demonstrate adoption but currently contribute negligible XRP capital demand relative to institutional collateral and custody balances.",
+      "supporting_evidence": [
+        "XRP Radar reports approximately 14.9M x402 transactions but only 7,022 XRP and 40,389 RLUSD settled all-time; derived total value is about 49.2K dollars at the captured mark."
+      ],
+      "disconfirming_or_counterevidence": [
+        "Transaction value may be intentionally sub-cent; low dollar value does not negate utility or future growth.",
+        "Full facilitator history has not been independently replayed."
+      ],
+      "measurable_tests": [
+        "Validated-ledger replay of all SourceTag 804681468 payments.",
+        "Daily value, median/mean payment, XRP/RLUSD mix, active payers and repeat payer concentration."
+      ]
+    },
+    {
+      "id": "H5",
+      "hypothesis": "SBI is diversifying across Ripple/XRPL and Circle/Arc rather than selecting one exclusive network.",
+      "supporting_evidence": [
+        "SBI's Ripple relationships coexist with its Circle USDC distribution and Arc founding-validator cohort.",
+        "SBI's own Arc statement references both USDC and JPYSC."
+      ],
+      "disconfirming_or_counterevidence": [
+        "No internal allocation, live validator activity, JPYSC Arc deployment or route-level volumes disclosed."
+      ],
+      "measurable_tests": [
+        "SBI filings, validator telemetry, JPYSC chain deployment, SBI VC Trade wallet/flow data, Ripple corridor usage."
+      ]
+    }
+  ],
+  "source_register": [
+    {
+      "id": "S001",
+      "type": "joint first-party press release PDF",
+      "url": "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S002",
+      "type": "Coinbase official help",
+      "url": "https://help.coinbase.com/en/global-exchange/margin-requirements/how-does-cross-collateral-work",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S003",
+      "type": "Coinbase official help",
+      "url": "https://help.coinbase.com/en/global-exchange/portfolio-balances/usdc-borrow",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S004",
+      "type": "Coinbase official product blog",
+      "url": "https://www.coinbase.com/blog/now-get-a-USDC-loan-without-selling-your-crypto",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S005",
+      "type": "secondary reporting with Coinbase product attribution",
+      "url": "https://www.theblock.co/news/business/2026-02-18-coinbase-xrp-dogecoin-cardano-litecoin-loans-morpho-390403",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S006",
+      "type": "Coinbase official product page",
+      "url": "https://www.coinbase.com/borrow",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S007",
+      "type": "Coinbase official Q3 earnings release",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S008",
+      "type": "SEC Coinbase Q3 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S009",
+      "type": "SEC Circle Q2 2026 Form 10-Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S010",
+      "type": "Circle official Arc mainnet announcement",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S011",
+      "type": "secondary XRP supply/escrow/exchange/DeFi/x402 dashboard with stated rippled and issuer-data methods",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S012",
+      "type": "XRPL x402 facilitator operator documentation",
+      "url": "https://xrpl-ai.org/",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S013",
+      "type": "secondary escrow dashboard with stated pinned-ledger rippled reads",
+      "url": "https://xrp-insights.com/xrp-radar/escrow",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S014",
+      "type": "secondary ETF dataset sourced from issuer holdings",
+      "url": "https://xrp-insights.com/data",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S015",
+      "type": "secondary ETF flow tracker with conflicting daily observation",
+      "url": "https://maketo.com/etf/xrp/flows",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S016",
+      "type": "Ripple/Circle first-party announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-circle-launch-usdc-on-the-xrp-ledger/",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    },
+    {
+      "id": "S017",
+      "type": "SBI official materials already captured in prior handoff",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf",
+      "accessed_at_utc": "2026-11-02T09:05:31Z"
+    }
+  ],
+  "data_quality_corrections": [
+    "Correct prior Circle Q2 2026 filing interpretation: 12.442B USDC on platform and 19.5% daily weighted-average share are Circle's own platform metrics, not Coinbase's.",
+    "Use Coinbase's separate Q3 2026 disclosure of 22B average USDC held in Coinbase products; it is an average, not an end-of-quarter balance.",
+    "Do not add Circle distribution expenses paid to Coinbase to Coinbase stablecoin revenue; they are different sides of the commercial arrangement and may overlap economically.",
+    "Do not apply the generic 86% BTC/ETH Morpho liquidation figure to XRP. The Block reports 49% maximum LTV and 62.5% liquidation threshold for XRP/DOGE/ADA/LTC.",
+    "Do not treat XRP Radar's 22.38B exchange wallet total as tradable float.",
+    "Do not treat 4.33B RWA notional as freely transferable capital; only 276M is classified as distributed on-chain float.",
+    "Do not treat x402 transaction count as material capital inflow; current reported all-time settlement value is approximately 49.2K dollars at the captured mark.",
+    "Do not treat escrow unlock/release as sale or spot supply without tracing subsequent transactions.",
+    "Do not treat the Coinbase/Morpho collateral wrapper mapping as fully verified until loan-route transactions are traced."
+  ],
+  "forecast_status": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized, immutable point-in-time dataset or resolved out-of-sample evaluation supports a directional XRP forecast. No calibrated predictive skill is established.",
+    "required_before_forecast": [
+      "source registration and capture timestamps",
+      "publication-time news features",
+      "exchange-level market data",
+      "on-chain collateral/escrow flows",
+      "fixed horizon and target",
+      "baseline comparison",
+      "walk-forward leakage controls",
+      "probability calibration"
+    ]
+  },
+  "next_actions": [
+    "Trace Coinbase consumer XRP loan routes to determine whether collateral is deposited as cbXRP in the identified Morpho market.",
+    "Retrieve current Coinbase Global Exchange XRP collateral multiplier, ADQ cap, borrow min/max and aggregate usage from the documented API.",
+    "Measure Coinbase Global Exchange USDC Borrow balances and distinguish debt from futures margin.",
+    "Reconcile Morpho cbXRP/USDC market state at a pinned block with Coinbase cbXRP proof of reserves.",
+    "Verify Ripple Prime client access through Nodal/Coinbase contract volume and open-interest data where public.",
+    "Reconcile Circle Q3 2026 filing after its November 4 release; keep Coinbase distribution economics separate from Circle reserve metrics.",
+    "Verify SBI Arc validator activation and any JPYSC deployment; do not substitute JPYC data.",
+    "Reprocess x402 SourceTag 804681468 payments from a validated XRPL ledger range and calculate actual asset-denominated value.",
+    "Reconcile October 30 ETF daily flows from issuer-level holdings; preserve the unresolved provider conflict.",
+    "Recheck all six Binance recipient accounts at a fresh pinned validated ledger before describing current balances."
+  ],
+  "safety": {
+    "no_private_data": true,
+    "no_unauthorized_access": true,
+    "no_market_manipulation": true,
+    "no_trade": true,
+    "no_main_branch_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_workflow_dispatch": true,
+    "no_secret_access": true
+  }
+}
