@@ -1239,6 +1239,7 @@ class PatchExecutor:
     def __init__(self, workspace: str | Path, *, watchdog: DefensiveWatchdog | None = None):
         self.workspace = Path(workspace).resolve()
         self.watchdog = watchdog
+        self._last_applied_content: dict[str, str] = {}
 
     def _resolve_path(self, relative_path: str) -> Path:
         if not relative_path or Path(relative_path).is_absolute():
@@ -1270,15 +1271,27 @@ class PatchExecutor:
         return snapshots
 
     def rollback(self, snapshots: dict[str, str | None]) -> bool:
+        """Restore only files still byte-for-byte equal to this executor's patch."""
+        changed = {
+            path: (snapshots[path], expected)
+            for path, expected in self._last_applied_content.items()
+            if path in snapshots
+        }
         try:
-            for path, original in snapshots.items():
+            # Compare every changed path before restoring any path. If a user or
+            # another process edited/deleted one after validation began, preserve it.
+            for path, (_, expected) in changed.items():
+                target = self._resolve_path(path)
+                if not target.is_file() or target.read_text(encoding="utf-8") != expected:
+                    return False
+            for path, (original, _) in changed.items():
                 target = self._resolve_path(path)
                 if original is None:
-                    if target.exists():
-                        target.unlink()
-                    continue
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_text(original, encoding="utf-8")
+                    target.unlink()
+                else:
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_text(original, encoding="utf-8")
+            self._last_applied_content.clear()
             return True
         except Exception:
             return False
@@ -1292,6 +1305,7 @@ class PatchExecutor:
             raise RepairError("Changeset must contain a non-empty expected_files list.")
 
         _assert_clean_worktree(self.workspace)
+        self._last_applied_content.clear()
         operations = [PatchOperation.from_dict(item) for item in raw_operations]
         expected_files = [str(item) for item in raw_expected if isinstance(item, str) and item]
         evidence: list[dict[str, Any]] = []
@@ -1330,6 +1344,7 @@ class PatchExecutor:
 
         for target, updated in pending_writes:
             target.write_text(updated, encoding="utf-8")
+            self._last_applied_content[str(target.relative_to(self.workspace))] = updated
 
         changed = subprocess.run(
             ["git", "status", "--porcelain"],
