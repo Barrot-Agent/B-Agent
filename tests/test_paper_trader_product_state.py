@@ -205,3 +205,49 @@ def test_save_state_uses_atomic_replace(tmp_path, monkeypatch):
     trader.save_state(make_state())
     assert json.loads(state_path.read_text(encoding="utf-8"))["position_size"] == 0.0
     assert not list(tmp_path.glob("*.tmp"))
+
+
+def test_state_preflight_rejects_trade_count_exceeding_log_entries(tmp_path, monkeypatch):
+    trader = load_trader()
+    state_path = tmp_path / "paper_state.json"
+    log_path = tmp_path / "paper_log.jsonl"
+    state_path.write_text(json.dumps(make_state(trades=2)), encoding="utf-8")
+    log_path.write_text(json.dumps({"timestamp": "2026-11-02T00:00:00Z"}) + "\n", encoding="utf-8")
+    monkeypatch.setattr(trader, "STATE_FILE", state_path)
+    monkeypatch.setattr(trader, "LOG_FILE", log_path)
+    try:
+        trader.validate_state_only()
+    except SystemExit as exc:
+        assert exc.code == 2
+    else:
+        raise AssertionError("state trade count greater than log entries must fail closed")
+    assert json.loads(state_path.read_text(encoding="utf-8"))["trade_count"] == 2
+    assert len(log_path.read_text(encoding="utf-8").splitlines()) == 1
+
+
+def test_state_preflight_rejects_malformed_decision_log(tmp_path, monkeypatch):
+    trader = load_trader()
+    state_path = tmp_path / "paper_state.json"
+    log_path = tmp_path / "paper_log.jsonl"
+    state_path.write_text(json.dumps(make_state()), encoding="utf-8")
+    log_path.write_text("{not json}\n", encoding="utf-8")
+    monkeypatch.setattr(trader, "STATE_FILE", state_path)
+    monkeypatch.setattr(trader, "LOG_FILE", log_path)
+    try:
+        trader.validate_state_only()
+    except SystemExit as exc:
+        assert exc.code == 2
+    else:
+        raise AssertionError("malformed decision log must fail closed")
+
+
+def test_state_preflight_allows_flat_zero_trade_state_without_log(tmp_path, monkeypatch):
+    trader = load_trader()
+    state_path = tmp_path / "paper_state.json"
+    log_path = tmp_path / "paper_log.jsonl"
+    state_path.write_text(json.dumps(make_state()), encoding="utf-8")
+    monkeypatch.setattr(trader, "STATE_FILE", state_path)
+    monkeypatch.setattr(trader, "LOG_FILE", log_path)
+    state = trader.validate_state_only()
+    assert state["trade_count"] == 0
+    assert not log_path.exists()

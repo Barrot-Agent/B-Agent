@@ -187,13 +187,47 @@ def validate_position_product(state, product_id):
     return None
 
 
+def validate_trade_log(state):
+    """Require an auditable JSONL trail for every counted simulated trade."""
+    trade_count = state.get("trade_count", 0)
+    if not isinstance(trade_count, int) or isinstance(trade_count, bool) or trade_count < 0:
+        return "aborted -- invalid trade count for decision-log reconciliation"
+    if not LOG_FILE.exists():
+        if trade_count > 0:
+            return f"aborted -- paper state records {trade_count} trades but decision log is missing"
+        return None
+    try:
+        raw = LOG_FILE.read_text(encoding="utf-8")
+    except Exception as exc:
+        return f"aborted -- decision log is unreadable ({type(exc).__name__})"
+    lines = [line for line in raw.splitlines() if line.strip()]
+    for index, line in enumerate(lines, start=1):
+        try:
+            json.loads(line, parse_constant=reject_nonfinite_json_constant)
+        except Exception:
+            return f"aborted -- decision log contains invalid JSON at line {index}"
+    if len(lines) < trade_count:
+        return (
+            f"aborted -- paper state records {trade_count} trades but decision log "
+            f"contains only {len(lines)} entries"
+        )
+    return None
+
+
 def validate_state_only():
     state = load_state()
-    error = validate_position_product(state, PRODUCT_ID)
-    if error:
-        print(f"ABORT: {error}; state preserved")
+    errors = []
+    identity_error = validate_position_product(state, PRODUCT_ID)
+    if identity_error:
+        errors.append(identity_error)
+    log_error = validate_trade_log(state)
+    if log_error:
+        errors.append(log_error)
+    if errors:
+        for error in errors:
+            print(f"ABORT: {error}; state and log preserved")
         raise SystemExit(2)
-    print("Persisted paper state validation passed; no provider or model calls made.")
+    print("Persisted paper state and decision-log validation passed; no provider or model calls made.")
     return state
 
 
