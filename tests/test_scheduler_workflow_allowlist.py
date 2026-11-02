@@ -56,7 +56,7 @@ def test_schedule_rejects_inputs_for_allowlisted_workflows(tmp_path, monkeypatch
     (workflows / "ci.yml").write_text("name: CI", encoding="utf-8")
     monkeypatch.setattr(scheduler, "WORKFLOWS_DIR", str(workflows))
     monkeypatch.setattr(scheduler, "QUEUE_PATH", str(tmp_path / "queue.jsonl"))
-    with pytest.raises(SystemExit, match="workflow inputs are input-free"):
+    with pytest.raises(SystemExit, match="allowlisted workflows must be input-free"):
         scheduler.schedule(
             "ci.yml",
             "2026-11-03T00:00:00Z",
