@@ -43,7 +43,7 @@ def test_morpho_market_is_live_collateral_use_but_not_a_ripple_loan():
     assert d["supplier_concentration"]["share_pct"] == 99.04
     assert d["borrower_concentration"]["top_three_total_share_pct"] == 90.96
     assert d["realized_bad_debt_usd"] == 0
-    assert "not a direct Ripple loan" in " ".join(d["limits"])
+    assert "does not make this a direct Ripple loan" in " ".join(d["limits"])
 
 
 def test_firelight_is_slashable_shared_cover_not_native_xrp_staking_or_insurance():
@@ -89,3 +89,58 @@ def test_cumulative_sentiment_is_not_admitted_as_current_xrp_signal():
     assert d["entity_sentiment_profile"]["model_admission"] == "REJECTED_AS_CURRENT_SENTIMENT_FEATURE"
     assert d["sentiment_shift"]["recent_entries"] == 0
     assert d["sentiment_shift"]["score"] is None
+
+
+GRAPH = ROOT / "data/xrp_intelligence/relationship_graph_addenda/20261102T001348Z-ripple-flare-sentora-firelight-coinbase-circle-sbi.json"
+
+
+def load_graph():
+    return json.loads(GRAPH.read_text(encoding="utf-8"))
+
+
+def test_circle_arc_is_usdc_gas_and_sbi_is_its_validator():
+    d = load_snapshot()["coinbase_circle_sbi"]["circle"]["arc"]
+    assert d["gas_asset"] == "USDC"
+    assert d["founding_validator"] == "SBI Group"
+    assert d["exchange_participants"] == ["Coinbase", "Binance"]
+    assert d["circle_claim_agent_transaction_volume_usdc_pct"] == 98.8
+    assert d["arc_token"]["public_launch"].startswith("Not committed")
+    g = load_graph()
+    edges = {(e["from"], e["to"], e["type"]) for e in g["edges"]}
+    assert ("SBI", "ARC_CHAIN", "founding_validator") in edges
+    assert ("COINBASE", "ARC_CHAIN", "exchange_ecosystem_participant") in edges
+    assert ("BINANCE", "ARC_CHAIN", "exchange_wallet_ecosystem_participant") in edges
+    assert not any(a == "SBI" and b == "FLARE" for a, b, _ in edges)
+
+
+def test_firelight_does_not_assume_sentora_usd_vault_is_rlusd():
+    d = load_snapshot()["firelight_cover"]
+    assert "do not assume" in d["sentora_usd_vault_asset_identity"]
+    g = load_graph()
+    assert not any(e["from"] == "FIRELIGHT" and e["to"] == "RLUSD" for e in g["edges"])
+    assert any(e["from"] == "FIRELIGHT" and e["to"] == "SENTORA" for e in g["edges"])
+
+
+def test_flare_fee_value_capture_is_not_mislabeled_as_xrp_value_capture():
+    d = load_snapshot()["flare_official_ecosystem_update"]["token_value_capture"]
+    assert d["reported_cumulative_fire_value_usd"] == 44632
+    assert "FIRE" in d["fee_destination"]
+    assert "not XRP value capture" in " ".join(d["limits"])
+    path = load_snapshot()["flare_official_ecosystem_update"]["xrpl_native_rlusd_borrow_path"]
+    assert path["status"] == "ROADMAP_NOT_LIVE"
+
+
+def test_coinbase_rlusd_listing_is_live_but_global_exchange_collateral_is_future():
+    d = load_snapshot()["coinbase_circle_sbi"]["coinbase"]["rlusd_listing"]
+    assert d["platforms"] == ["Coinbase Prime", "Coinbase Exchange", "Coinbase Retail"]
+    assert d["supported_networks"] == ["XRPL", "Base", "Ethereum"]
+    assert d["global_exchange_collateral"] == "FUTURE_ANNOUNCED_NOT_LIVE_AT_CAPTURE"
+
+
+def test_circle_arc_and_xrpl_x402_metrics_are_not_comparable():
+    d = load_snapshot()["agentic_payments_comparison"]
+    assert d["xrpl_t54"]["reported_all_time_transactions"] == 14_850_000
+    assert d["xrpl_t54"]["reported_all_time_settled_value_usd"] == 48_848
+    assert d["circle_arc"]["reported_usdc_share_of_agent_driven_transaction_volume_pct"] == 98.8
+    assert d["circle_arc"]["absolute_volume_usd"] == "NOT_DISCLOSED"
+    assert d["comparability"].startswith("NOT_COMPARABLE")

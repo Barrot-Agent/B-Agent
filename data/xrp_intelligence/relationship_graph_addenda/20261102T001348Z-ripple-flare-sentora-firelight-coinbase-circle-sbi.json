@@ -102,6 +102,31 @@
       "id": "ASKSURF",
       "name": "AskSurf",
       "type": "x402_merchant"
+    },
+    {
+      "id": "ARC_CHAIN",
+      "name": "Circle Arc",
+      "type": "Circle_operated_public_L1_with_permissioned_validators"
+    },
+    {
+      "id": "ARC_TOKEN",
+      "name": "ARC token",
+      "type": "genesis_minted_not_publicly_launched"
+    },
+    {
+      "id": "BINANCE",
+      "name": "Binance",
+      "type": "exchange_and_wallet_ecosystem"
+    },
+    {
+      "id": "AAVE",
+      "name": "Aave",
+      "type": "lending_protocol"
+    },
+    {
+      "id": "XRPL",
+      "name": "XRP Ledger",
+      "type": "native_XRP_ledger"
     }
   ],
   "edges": [
@@ -173,12 +198,6 @@
     },
     {
       "from": "FIRELIGHT",
-      "to": "RLUSD",
-      "type": "shared_cover_of_Sentora_USD_vault",
-      "status": "OFFICIAL_COVER_ANNOUNCEMENT"
-    },
-    {
-      "from": "FIRELIGHT",
       "to": "USDT0",
       "type": "reported_first_loss_buffer_asset",
       "status": "SECONDARY_ONCHAIN_OBSERVATION_ONLY"
@@ -245,12 +264,6 @@
     },
     {
       "from": "SBI",
-      "to": "FLARE",
-      "type": "Circle_Arc_validator_cohort",
-      "status": "CIRCLE_ANNOUNCEMENT"
-    },
-    {
-      "from": "SBI",
       "to": "RIPPLE",
       "type": "reported_shareholding_and_operational_XRP_remittance_relationships",
       "status": "COMPANY_REPORTED"
@@ -272,15 +285,99 @@
       "to": "ASKCOIN_EXCHANGE",
       "type": "no_relationship_established",
       "status": "NO_EDGE"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "ARC_CHAIN",
+      "type": "network_operator_and_builder",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "USDC",
+      "to": "ARC_CHAIN",
+      "type": "native_gas_and_settlement_asset",
+      "status": "LIVE_MAINNET"
+    },
+    {
+      "from": "SBI",
+      "to": "ARC_CHAIN",
+      "type": "founding_validator",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "COINBASE",
+      "to": "ARC_CHAIN",
+      "type": "exchange_ecosystem_participant",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "BINANCE",
+      "to": "ARC_CHAIN",
+      "type": "exchange_wallet_ecosystem_participant",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "MORPHO",
+      "to": "ARC_CHAIN",
+      "type": "credit_protocol_integrated_at_launch",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "AAVE",
+      "to": "ARC_CHAIN",
+      "type": "credit_protocol_integrated_at_launch",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "ARC_CHAIN",
+      "to": "ARC_TOKEN",
+      "type": "genesis_mint_10B_no_public_launch_commitment",
+      "status": "CIRCLE_FIRST_PARTY_ANNOUNCEMENT"
+    },
+    {
+      "from": "XRP",
+      "to": "XRPL",
+      "type": "native_asset",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "USDC",
+      "to": "XRPL",
+      "type": "native_issuance",
+      "status": "CIRCLE_SUPPORTED_NETWORK"
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL",
+      "type": "native_issuance",
+      "status": "RIPPLE_SUPPORTED_NETWORK"
+    },
+    {
+      "from": "RIPPLE",
+      "to": "RLUSD",
+      "type": "parent_of_issuer_entity",
+      "status": "STANDARD_CUSTODY_AND_TRUST_IS_RIPPLE_OWNED_ISSUER"
+    },
+    {
+      "from": "CIRCLE",
+      "to": "RIPPLE",
+      "type": "competing_stablecoin_issuers_with_overlapping_XRPL_and_Coinbase_distribution",
+      "status": "MARKET_OVERLAP_NO_FORMAL_PARTNERSHIP_ESTABLISHED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "SENTORA",
+      "type": "shared_cover_of_Sentora_USD_Protected_and_RWA_vaults",
+      "status": "OFFICIAL_COVER_ANNOUNCEMENT_ASSET_COMPOSITION_UNSPECIFIED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "USDC",
+      "type": "shared_cover_of_Kraken_USDC_strategy",
+      "status": "OFFICIAL_COVER_ANNOUNCEMENT"
     }
   ],
   "unresolved_edges": [
-    {
-      "from": "FIRELIGHT",
-      "to": "USDT0",
-      "type": "current_first_loss_buffer_balance_and_asset_composition",
-      "status": "UNVERIFIED"
-    },
     {
       "from": "STXRP",
       "to": "XRP",
@@ -294,15 +391,33 @@
       "status": "PARTIAL"
     },
     {
-      "from": "COINBASE",
-      "to": "MORPHO",
-      "type": "corporate_or_financing_relationship",
-      "status": "NOT_ESTABLISHED"
-    },
-    {
       "from": "ASKCOIN_EXCHANGE",
       "to": "XRP",
       "type": "trading_pair_or_corporate_link",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "USDT0",
+      "type": "current_first_loss_buffer_balance_and_asset_composition",
+      "status": "OFFICIAL_BALANCE_UNKNOWN; SECONDARY_USDT0_OBSERVATION"
+    },
+    {
+      "from": "ARC_CHAIN",
+      "to": "XRP",
+      "type": "native_XRP_integration_or_XRP_settlement",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "FIRELIGHT",
+      "to": "RLUSD",
+      "type": "whether_Sentora_USD_Protected_vault_uses_RLUSD",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "COINBASE",
+      "to": "MORPHO",
+      "type": "corporate_or_financing_relationship",
       "status": "NOT_ESTABLISHED"
     }
   ]

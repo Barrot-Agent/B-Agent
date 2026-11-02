@@ -171,6 +171,42 @@
       "type": "ETF_and_supply_aggregator",
       "supports": "Week 44 XRP ETF flows, holdings, AUM and attributed exchange wallet balances.",
       "limits": "GXRP historical flow gap; custody wallet balances are not tradable float."
+    },
+    {
+      "id": "SRC_CIRCLE_ARC_MAINNET",
+      "url": "https://www.circle.com/pressroom/circle-launches-arc-mainnet-an-economic-operating-system-for-the-internet",
+      "publisher": "Circle",
+      "date": "2026-09-16",
+      "type": "official_network_launch_announcement",
+      "supports": "Arc mainnet, USDC gas, SBI Group founding validator, Coinbase/Binance exchange participants, Morpho/Aave credit integrations, 98.8% Circle-reported agent transaction share, ARC genesis mint and no public launch commitment.",
+      "limits": "Company-reported adoption claims; no absolute agent transaction volume; permissioned validator set."
+    },
+    {
+      "id": "SRC_COINBASE_RLUSD",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "publisher": "Ripple and Coinbase",
+      "date": "2026-10-28",
+      "type": "joint_commercial_announcement",
+      "supports": "RLUSD on Coinbase Prime, Exchange and retail; XRPL/Base/Ethereum support; Global Exchange collateral support to follow.",
+      "limits": "Global Exchange collateral support is future at announcement; no actual collateral balances disclosed."
+    },
+    {
+      "id": "SRC_FLARE_ONE_YEAR",
+      "url": "https://flare.network/news/one-year-of-fxrp-on-flare",
+      "publisher": "Flare",
+      "date": "2026-09-24",
+      "type": "official_ecosystem_report",
+      "supports": "FXRP 1:1 representation, 130M deployed in DeFi, 7.8M transactions, 21M cross-chain, Morpho RLUSD market, future direct XRPL borrow path, FLR/FIRE fee-routing distinctions.",
+      "limits": "Rounded first-party ecosystem metrics; not an independent event-level audit."
+    },
+    {
+      "id": "SRC_FLARE_ACTUAL_CAPITAL",
+      "url": "https://flare.network/de/news/introduction-to-xrp-defi",
+      "publisher": "Flare",
+      "date": "2025-05-02",
+      "type": "official_ecosystem_article",
+      "supports": "Exact phrase 'actual capital deployment and liquidity provision' in USDt0/XRPFi context.",
+      "limits": "Marketing statement; not a disclosed amount or proof of a specific capital transfer."
     }
   ],
   "source_independence": "Flare official metrics are company-reported; FlareForge is independent direct onchain/XRPL data; Morpho page is protocol data; Sentora PR is company-supplied; The Block is independent business reporting; CoinMarketCap and TradRadar are aggregators; no source alone establishes net XRP demand."

@@ -34,7 +34,11 @@
     "Sentora is a strategic ecosystem investment of both Ripple and Flare; its CEO Anthony DeMartino is a former Coinbase Head of Risk. These are investor and personnel links, not evidence of common control.",
     "The Morpho market provides a live RLUSD/FXRP collateral pathway, but FXRP is a representation of existing XRP; the market does not prove new XRP spot purchases or net XRP demand.",
     "Firelight's shared cover can expose FXRP stakers to losses in non-XRP strategies, including USDC and RWA vaults; a secondary source identifies approximately $1M USDT0 in the first-loss buffer on 2026-10-14, but the current official balance and asset composition remain unknown.",
-    "Coinbase's XRP cross-collateral product and CFTC 26-17 no-action route remain distinct from the RLUSD listing; the latter's Global Exchange collateral support was announced as future, not yet live."
+    "Coinbase's XRP cross-collateral product and CFTC 26-17 no-action route remain distinct from the RLUSD listing; the latter's Global Exchange collateral support was announced as future, not yet live.",
+    "Circle's Arc mainnet is a major USDC-first institutional and agentic-payment rail: USDC is gas; SBI Group is a founding validator; Coinbase and Binance are exchange participants; Morpho and Aave are credit integrations. Circle claims USDC is 98.8% of agent-driven transaction volume, but gives no absolute denominator.",
+    "Flare reports 130M FXRP deployed in DeFi, but explicitly states that only specific events (minting, destination-tag fees, FDC attestations and redemptions) generate Flare fees; not every FXRP trade or loan does. The reported $44,632 cumulative value in FIRE accrues to Flare's fee/burn mechanism, not XRP.",
+    "Flare's own one-year article describes the direct XRPL-wallet-to-RLUSD borrow path as the next step; the current live Morpho market uses FXRP collateral on Ethereum. Native XRP collateral borrowing with RLUSD delivered back to XRPL is therefore roadmap, not live.",
+    "The Firelight USD Protected vault's exact stablecoin composition is not specified in the official announcement; do not label it RLUSD without contract-level evidence."
   ],
   "competing_hypotheses": [
     {
@@ -61,6 +65,21 @@
       "id": "H_STABLECOIN_COMPLEMENT",
       "claim": "USDC and RLUSD on XRPL and Coinbase can expand settlement liquidity.",
       "counter": "Stablecoin transfers can settle without XRP; stablecoin volume is not automatically XRP demand."
+    },
+    {
+      "id": "H_CIRCLE_ARC_AGENT_RAIL",
+      "claim": "Circle Arc's USDC gas model, SBI validator and Coinbase/Binance participation could capture a large share of institutional and agentic payments, competing with XRPL/Flare for stablecoin settlement.",
+      "counter": "Circle's 98.8% figure is company-reported without absolute volume or global denominator; Arc is early and uses a permissioned validator set; XRP can remain a bridge/collateral asset even if USDC is the payment/gas asset."
+    },
+    {
+      "id": "H_FLARE_VALUE_CAPTURE",
+      "claim": "FXRP DeFi growth can increase XRP utility and collateral use.",
+      "counter": "Flare explicitly routes only specific protocol fees to FLR/FIRE; most FXRP trading/lending does not automatically generate XRP fees or net spot demand."
+    },
+    {
+      "id": "H_COINBASE_MULTI_ISSUER",
+      "claim": "Coinbase is positioning as a multi-issuer stablecoin distribution and collateral platform, not exclusively a Circle/USDC venue.",
+      "counter": "Coinbase reported an all-time high average USDC balance in Q3; RLUSD Global Exchange collateral support was future at announcement and actual use is unverified."
     }
   ],
   "architecture_decisions": [
@@ -83,10 +102,26 @@
     {
       "id": "AD-XRP-046",
       "decision": "Do not count FXRP minting, bridge volume, Morpho debt or repeated DeFi transactions as net XRP purchases without wallet-level source/sink reconciliation."
+    },
+    {
+      "id": "AD-XRP-047",
+      "decision": "Model Circle Arc, XRPL, Flare and Ethereum as distinct settlement/credit rails; record gas asset, validator model, stablecoin, bridge, and institutional participants separately."
+    },
+    {
+      "id": "AD-XRP-048",
+      "decision": "Separate XRP utility from token value capture: record FLR/FIRE fees and burns separately from XRP fees, demand and net purchases."
+    },
+    {
+      "id": "AD-XRP-049",
+      "decision": "Treat Circle's 98.8% agent-volume statement as a first-party claim without absolute denominator; never compare it directly with XRPL x402 counts or gross transfer volume."
     }
   ],
   "forecast_status": "NOT_ISSUED",
   "next_actions": [
+    "Compare Circle Arc agent-payment settled value and transaction definitions with XRPL t54 x402 and Flare agent-payment data; do not compare percentages without denominators.",
+    "Monitor Flare's reported FIRE fee accumulation and distinguish FLR/FIRE value capture from XRP demand.",
+    "Verify whether Coinbase Global Exchange has activated RLUSD collateral support; until then keep it future/announced.",
+    "Verify whether Flare's direct XRPL-wallet RLUSD borrowing path has launched; current Ethereum Morpho FXRP collateral market is not that path.",
     "Reconcile Firelight first-loss buffer balance and token composition from the current contract and all cover orders.",
     "Verify Firelight unstaking reward cutoff and claim exposure from deployed contract state/code; resolve official/secondary wording discrepancy.",
     "Reconcile the Ethereum Morpho market's full FXRP collateral balance against FlareForge's Ethereum remote FXRP balance.",
