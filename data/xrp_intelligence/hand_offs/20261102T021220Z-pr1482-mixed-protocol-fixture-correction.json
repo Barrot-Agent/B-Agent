@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-02T02:12:20Z",
+  "pr_number": 1482,
+  "branch": "prediction/fixed-horizon-latest-observation-8e966c7d-20261102T015917Z",
+  "failed_run": 41376419869,
+  "failed_job": 125057241520,
+  "status": "MIXED_PROTOCOL_FIXTURE_CORRECTED_CI_PENDING",
+  "root_cause": "The mixed-protocol test's LIVE forecast used an issue timestamp on 2026-10-31T23:59Z, but the registered point-in-time market snapshot was captured on 2026-10-30T23:59Z and correctly contained no next-day observation. The test was using a price point that was absent from the immutable snapshot.",
+  "correction": "Reordered the mixed-protocol fixture chronologically: append the LIVE forecast at 2026-10-31T00:00:10Z using the verified 2026-10-30T23:59Z observation, then append the HISTORICAL_REPLAY forecast at 2026-11-01T00:00:10Z. The test still verifies that metrics never pool the two protocols.",
+  "ci_observation": "424 tests and 8 subtests passed; the single remaining failure was this mixed-protocol fixture's unavailable issue-price point.",
+  "main_sha_unchanged": "8e966c7d53b5f80acf3653acfecbc862bb356fb3",
+  "no_forecasts_issued": true,
+  "no_merge": true,
+  "no_force_push": true,
+  "no_manual_workflow_dispatch": true
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-02T02:11:21Z",
+  "pr_number": 1482,
+  "branch": "prediction/fixed-horizon-latest-observation-8e966c7d-20261102T015917Z",
+  "failed_run": 41376327397,
+  "failed_job": 125057241520,
+  "status": "TEST_FIXTURE_CORRECTED_CI_PENDING",
+  "root_cause": "The new semantic feature-snapshot validator correctly rejected the mixed-protocol test's synthetic LIVE forecast because that test declared snapshot_id features-live-001 and a next-day capture time while referencing the registered bytes for features-001 captured the prior day. The production validator behaved as intended.",
+  "correction": "The mixed-protocol test now references the actual registered feature snapshot identity and capture time. Its purpose is to test LIVE versus HISTORICAL_REPLAY protocol separation, not to fabricate a second unregistered feature snapshot.",
+  "ci_observation": "424 tests and 8 subtests passed; one mixed-protocol fixture failed. The correction is limited to that fixture. New exact-head CI remains pending.",
+  "main_sha_unchanged": "8e966c7d53b5f80acf3653acfecbc862bb356fb3",
+  "no_forecasts_issued": true,
+  "no_merge": true,
+  "no_force_push": true,
+  "no_manual_workflow_dispatch": true
+}
