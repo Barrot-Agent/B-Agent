@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any, Iterable, Optional
 
 
-REGISTRY_VERSION = "1.0"
+REGISTRY_VERSION = "1.1"
 
 
 def utc_now() -> str:
@@ -17,6 +17,21 @@ def utc_now() -> str:
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def _parse_utc(value: str, field_name: str) -> datetime:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{field_name} must be a non-empty ISO-8601 timestamp")
+    normalized = value.strip()
+    if normalized.endswith("Z"):
+        normalized = normalized[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError as exc:
+        raise ValueError(f"{field_name} must be a valid ISO-8601 timestamp") from exc
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise ValueError(f"{field_name} must include a timezone")
+    return parsed.astimezone(timezone.utc)
 
 
 @dataclass
@@ -34,6 +49,7 @@ class SourceVersion:
     version: Optional[str] = None
     retrieved_at: str = field(default_factory=utc_now)
     content_hash: Optional[str] = None
+    snapshot_path: Optional[str] = None
     supersedes: Optional[str] = None
 
 
@@ -96,6 +112,7 @@ class SourceRecord:
     evidence: SourceEvidence = field(default_factory=SourceEvidence)
     knowledge: SourceKnowledge = field(default_factory=SourceKnowledge)
     lifecycle: SourceLifecycle = field(default_factory=SourceLifecycle)
+    registered_at_utc: Optional[str] = None
     created_at: str = field(default_factory=utc_now)
     updated_at: str = field(default_factory=utc_now)
 
@@ -113,6 +130,7 @@ class SourceRecord:
             evidence=SourceEvidence(**data.get("evidence", {})),
             knowledge=SourceKnowledge(**data.get("knowledge", {})),
             lifecycle=SourceLifecycle(**data.get("lifecycle", {})),
+            registered_at_utc=data.get("registered_at_utc"),
             created_at=data.get("created_at", utc_now()),
             updated_at=data.get("updated_at", utc_now()),
         )
@@ -162,17 +180,21 @@ class SourceRegistry:
         temporary.replace(self.path)
 
     def register(self, record: SourceRecord) -> SourceRecord:
-        existing = self._records.get(record.identity.source_id)
+        source_id = record.identity.source_id
+        existing = self._records.get(source_id)
 
         if existing is not None:
             if existing.version.content_hash == record.version.content_hash:
                 return existing
+            raise ValueError(
+                "source_id is immutable; register each changed snapshot under a new source_id"
+            )
 
-            record.version.supersedes = existing.identity.source_id
-            record.lifecycle.revalidation_required = True
-
-        record.updated_at = utc_now()
-        self._records[record.identity.source_id] = record
+        registered_at = utc_now()
+        record.registered_at_utc = registered_at
+        record.created_at = registered_at
+        record.updated_at = registered_at
+        self._records[source_id] = record
         self._save()
         return record
 
@@ -183,6 +205,66 @@ class SourceRegistry:
         record = self.get(source_id)
         if record is None:
             raise KeyError(f"Unknown source_id: {source_id}")
+        return record
+
+    def verify_content_hash(self, source_id: str, content: Optional[bytes] = None) -> bool:
+        """Verify registered SHA-256 against supplied bytes or the retained local snapshot."""
+        record = self.require(source_id)
+        expected = record.version.content_hash
+        if not isinstance(expected, str) or len(expected) != 64:
+            return False
+        try:
+            int(expected, 16)
+        except ValueError:
+            return False
+
+        if content is not None:
+            return isinstance(content, bytes) and sha256_bytes(content) == expected.lower()
+
+        snapshot_path = record.version.snapshot_path or record.identity.uri
+        if not isinstance(snapshot_path, str) or not snapshot_path.strip():
+            return False
+        if snapshot_path.startswith(("http://", "https://")):
+            return False
+
+        path = Path(snapshot_path)
+        if not path.is_absolute():
+            path = (self.path.parent / path).resolve()
+        try:
+            actual = sha256_bytes(path.read_bytes())
+        except OSError:
+            return False
+        return actual == expected.lower()
+
+    def read_verified_content(self, source_id: str) -> bytes:
+        """Read the retained local snapshot only when its bytes match the registered SHA-256."""
+        record = self.require(source_id)
+        snapshot_path = record.version.snapshot_path or record.identity.uri
+        if not isinstance(snapshot_path, str) or not snapshot_path.strip():
+            raise ValueError(f"source snapshot path is unavailable: {source_id}")
+        if snapshot_path.startswith(("http://", "https://")):
+            raise ValueError(f"remote source has no retained local snapshot: {source_id}")
+
+        path = Path(snapshot_path)
+        if not path.is_absolute():
+            path = (self.path.parent / path).resolve()
+        try:
+            content = path.read_bytes()
+        except OSError as exc:
+            raise ValueError(f"source snapshot bytes are unavailable: {source_id}") from exc
+        if not self.verify_content_hash(source_id, content):
+            raise ValueError(f"source snapshot bytes do not match registered content hash: {source_id}")
+        return content
+
+    def require_registered_by(self, source_id: str, cutoff_utc: str) -> SourceRecord:
+        """Return a source only when its system-recorded registry time is at/before cutoff."""
+        record = self.require(source_id)
+        if not isinstance(record.registered_at_utc, str) or not record.registered_at_utc.strip():
+            raise ValueError(f"source registration timestamp is unavailable: {source_id}")
+        registered_at = _parse_utc(record.registered_at_utc, "registered_at_utc")
+        cutoff = _parse_utc(cutoff_utc, "cutoff_utc")
+        if registered_at > cutoff:
+            raise ValueError(f"source was registered after the permitted cutoff: {source_id}")
         return record
 
     def remove(self, source_id: str) -> None:
@@ -284,6 +366,10 @@ def register_file_source(
 ) -> SourceRecord:
     file_path = Path(path)
     data = file_path.read_bytes()
+    try:
+        snapshot_path = str(file_path.resolve().relative_to(registry.path.parent.resolve()))
+    except ValueError:
+        snapshot_path = str(file_path.resolve())
 
     record = SourceRecord(
         identity=SourceIdentity(
@@ -296,6 +382,7 @@ def register_file_source(
         ),
         version=SourceVersion(
             content_hash=sha256_bytes(data),
+            snapshot_path=snapshot_path,
         ),
         scope=SourceScope(
             total_scope=f"{len(data)} bytes",
