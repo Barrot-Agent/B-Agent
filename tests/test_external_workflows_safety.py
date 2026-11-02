@@ -7,7 +7,27 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def _load_kaggle_script():
+def _load_kaggle_script(monkeypatch):
+    # The safety tests exercise the pre-authentication guard only; keep the
+    # optional Kaggle/pandas/sklearn runtime dependencies stubbed and offline.
+    import sys
+    import types
+
+    def stub(name, **attributes):
+        module = types.ModuleType(name)
+        module.__dict__.update(attributes)
+        module.__path__ = []
+        monkeypatch.setitem(sys.modules, name, module)
+        return module
+
+    stub("pandas")
+    stub("kaggle")
+    stub("kaggle.api")
+    stub("kaggle.api.kaggle_api_extended", KaggleApiExtended=type("KaggleApiExtended", (), {}))
+    stub("sklearn")
+    stub("sklearn.dummy", DummyClassifier=type("DummyClassifier", (), {}), DummyRegressor=type("DummyRegressor", (), {}))
+    stub("sklearn.preprocessing", LabelEncoder=type("LabelEncoder", (), {}))
+
     path = ROOT / "scripts" / "kaggle_competitions_automation.py"
     spec = importlib.util.spec_from_file_location("kaggle_submission_guard_test", path)
     assert spec is not None and spec.loader is not None
@@ -54,7 +74,7 @@ def test_kaggle_workflow_is_manual_and_explicitly_gated():
 
 
 def test_kaggle_script_blocks_api_authentication_before_any_api_call(monkeypatch):
-    module = _load_kaggle_script()
+    module = _load_kaggle_script(monkeypatch)
     monkeypatch.delenv("KAGGLE_ALLOW_SUBMISSIONS", raising=False)
     monkeypatch.setattr(module, "_build_api", lambda: pytest.fail("Kaggle API must not initialize without explicit opt-in"))
     with pytest.raises(SystemExit, match="KAGGLE_ALLOW_SUBMISSIONS=true"):
