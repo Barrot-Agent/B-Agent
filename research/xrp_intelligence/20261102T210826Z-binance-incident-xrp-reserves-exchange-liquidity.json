@@ -388,7 +388,7 @@
       "title": "Security Incident Recovery Update #5: October 31st PoR Snapshot Now Fully Verifiable",
       "url": "https://www.binance.com/en/support/announcement/detail/185bd9a4717f44088b3be70287b8237f",
       "published_at_utc": "2026-11-02T12:45:00Z",
-      "retrieved_at_utc": "2026-11-02T20:55:00Z",
+      "retrieved_at_utc": null,
       "independence_group": "binance_primary",
       "source_type": "primary_company_statement",
       "supports": [
@@ -400,7 +400,9 @@
       "limitations": [
         "company-reported recovery totals",
         "no XRP-specific stolen/replenished amount"
-      ]
+      ],
+      "retrieved_date": "2026-11-02",
+      "retrieval_time_precision": "Exact retrieval clock time was not recorded; date only."
     },
     {
       "source_id": "binance-por-method",
@@ -408,7 +410,7 @@
       "title": "Proof of Reserves methodology",
       "url": "https://www.binance.com/en/proof-of-reserves",
       "published_at_utc": null,
-      "retrieved_at_utc": "2026-11-02T20:55:00Z",
+      "retrieved_at_utc": null,
       "independence_group": "binance_primary",
       "source_type": "primary_methodology",
       "supports": [
@@ -419,15 +421,17 @@
       "limitations": [
         "methodology page is not an independent audit",
         "this run did not execute the verifier"
-      ]
+      ],
+      "retrieved_date": "2026-11-02",
+      "retrieval_time_precision": "Exact retrieval clock time was not recorded; date only."
     },
     {
       "source_id": "fbi-2026-10-31",
       "publisher": "Federal Bureau of Investigation",
       "title": "North Korea Responsible for $6 Billion+ Binance Attack",
       "url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
-      "published_at_utc": "2026-10-31T00:00:00Z",
-      "retrieved_at_utc": "2026-11-02T20:55:00Z",
+      "published_at_utc": null,
+      "retrieved_at_utc": null,
       "independence_group": "us_government_primary",
       "source_type": "official_government_alert",
       "supports": [
@@ -437,7 +441,11 @@
       ],
       "limitations": [
         "official attribution, not judicial determination"
-      ]
+      ],
+      "retrieved_date": "2026-11-02",
+      "retrieval_time_precision": "Exact retrieval clock time was not recorded; date only.",
+      "published_date": "2026-10-31",
+      "publication_time_precision": "FBI page provides publication date, not a clock time."
     },
     {
       "source_id": "reuters-2026-11-02",
@@ -445,7 +453,7 @@
       "title": "Binance clients pull $4.7 billion after hack as crypto world studies fallout",
       "url": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
       "published_at_utc": "2026-11-02T01:53:00Z",
-      "retrieved_at_utc": "2026-11-02T20:55:00Z",
+      "retrieved_at_utc": null,
       "independence_group": "reuters_reporting",
       "source_type": "independent_media_reporting",
       "supports": [
@@ -458,7 +466,9 @@
       "limitations": [
         "flow figures partly sourced to Binance and DeFiLlama",
         "not XRP-pair-specific"
-      ]
+      ],
+      "retrieved_date": "2026-11-02",
+      "retrieval_time_precision": "Exact retrieval clock time was not recorded; date only."
     },
     {
       "source_id": "reuters-2026-10-29",
@@ -466,7 +476,7 @@
       "title": "Binance seeks to shore up confidence after record $6.3 billion heist",
       "url": "https://www.reuters.com/legal/transactional/tether-circle-freeze-238-billion-after-binance-reports-security-incident-2026-10-29/",
       "published_at_utc": "2026-10-29T22:26:00Z",
-      "retrieved_at_utc": "2026-11-02T20:55:00Z",
+      "retrieved_at_utc": null,
       "independence_group": "reuters_reporting",
       "source_type": "independent_media_reporting",
       "supports": [
@@ -476,7 +486,9 @@
       ],
       "limitations": [
         "earlier freeze totals are superseded by later reporting and must not be added to November 2 totals"
-      ]
+      ],
+      "retrieved_date": "2026-11-02",
+      "retrieval_time_precision": "Exact retrieval clock time was not recorded; date only."
     },
     {
       "source_id": "tradradar-xrp-2026-11-02",
@@ -484,7 +496,7 @@
       "title": "XRP futures market data",
       "url": "https://tradradar.io/markets/xrp",
       "published_at_utc": "2026-11-02T15:40:00Z",
-      "retrieved_at_utc": "2026-11-02T20:55:00Z",
+      "retrieved_at_utc": null,
       "independence_group": "tradradar_aggregator",
       "source_type": "aggregated_market_data",
       "supports": [
@@ -498,7 +510,9 @@
         "15-minute stated delay",
         "partial liquidation feeds",
         "not independently corroborated at the exact timestamp"
-      ]
+      ],
+      "retrieved_date": "2026-11-02",
+      "retrieval_time_precision": "Exact retrieval clock time was not recorded; date only."
     }
   ],
   "unresolved_questions": [
@@ -516,5 +530,6 @@
     "Reconcile Reuters/DeFiLlama cross-exchange inflows with venue-specific XRP deposits only where attribution is public and reliable.",
     "Record Circle and Tether freeze addresses only from official or independently corroborated public sources; do not infer user identities.",
     "Keep forecasts NOT_ISSUED until fixed-horizon out-of-sample evaluation and independent attestation are verified."
-  ]
+  ],
+  "provenance_precision_note": "Do not infer a publication or retrieval clock time where the source or capture log did not provide one. Dates are retained at date precision; market and Binance snapshot timestamps are retained only where explicitly published."
 }
