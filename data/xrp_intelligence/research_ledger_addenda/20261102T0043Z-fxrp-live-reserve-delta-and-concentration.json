@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-02T00:43:54.697Z",
+  "topic": "FXRP live reserve delta, escrow ladder, protocol concentration and supply-contraction counter-hypothesis",
+  "sources": [
+    {
+      "url": "https://flareforge.io/api/fxrp.json",
+      "type": "public_onchain_and_xrpl_api_snapshot",
+      "generated_at_utc": "2026-11-02T00:27:21Z"
+    },
+    {
+      "url": "https://xrpl.to/insights/fxrp-backing-nine-xrpl-addresses",
+      "type": "third_party_fixed_ledger_analysis",
+      "measurement_date": "2026-08-30",
+      "method": "Flare contract registry and agent calls plus XRPL account_info/account_objects escrow reads at one fixed ledger; site directs users to documented API and prohibits UI scraping."
+    },
+    {
+      "url": "https://flare.network/news/one-year-of-fxrp-on-flare",
+      "type": "first_party_flare_report",
+      "date": "2026-09-24"
+    }
+  ],
+  "current_snapshot": {
+    "fxrp_supply": 143977216.689871,
+    "xrp_backing": 144061207.5824,
+    "backing_ratio": 1.000583362385105,
+    "core_vault_xrp": 142528708.226796,
+    "core_vault_liquid_xrp": 2528708.226796,
+    "core_vault_escrowed_xrp": 140000000,
+    "core_vault_escrow_count": 14,
+    "core_vault_escrowed_share_pct": 98.2258253384,
+    "core_vault_share_of_total_backing_pct": 98.9362165004,
+    "agent_xrp": 1532499.355604,
+    "remote_fxrp_total": 20098496.191908,
+    "core_vault_paused": false,
+    "pending_requests_xrp": 0
+  },
+  "delta_from_2026_11_01T23_57_22Z": {
+    "fxrp_supply": -17856.778131,
+    "xrp_backing": -17834.266816,
+    "core_vault_liquid_xrp": -147740.00039,
+    "agent_xrp": 129905.733574,
+    "escrowed_xrp": 0,
+    "interpretation": "Consistent with reserve reallocation plus a smaller net supply/backing reduction, but no transaction path is proven. Reconcile at fixed XRPL ledger indices."
+  },
+  "concentration": {
+    "firelight_fxrp": 51901496.580832,
+    "firelight_share_pct": 36.0484094457,
+    "morpho_lending_markets_fxrp": 28849463.21767,
+    "morpho_share_pct": 20.0375197416,
+    "bridged_fxrp": 20098496.191908,
+    "bridge_share_pct": 13.959497658,
+    "kinetic_lending_fxrp": 18087773.393349,
+    "kinetic_share_pct": 12.5629414217,
+    "enosys_fxrp": 4320169.021392,
+    "enosys_share_pct": 3.0005921219,
+    "sparkdex_fxrp": 1900464.452783,
+    "sparkdex_share_pct": 1.3199758243,
+    "top_three_share_pct": 70.0454268453,
+    "top_four_share_pct": 82.608368267,
+    "top_six_share_pct": 86.9289362132,
+    "caveat": "Morpho holder category aggregates markets; it is not the same as the isolated FXRP/RLUSD market."
+  },
+  "escrow_ladder": {
+    "count": 14,
+    "amount_each_xrp": 10000000,
+    "total_xrp": 140000000,
+    "cadence": "One 10M XRP batch per day, per Flare's first-party description and XRPL.to's historical fixed-ledger analysis.",
+    "conditions": "XRPL.to reports a crypto-condition and a one-day finish/cancel window; unclaimed escrow returns to Core Vault on cancellation.",
+    "current_expiry_schedule": "NOT_REVALIDATED",
+    "implication": "The 140M is not permanently inaccessible, but it is not immediate free liquidity either."
+  },
+  "historical_supply_context": {
+    "peak_fxrp_supply": 157425535,
+    "peak_date": "2026-06-01",
+    "xrpl_to_august_30_decline": 9281110,
+    "reported_decline_pct": 5.9,
+    "march_mints_xrp": 37188200,
+    "august_mints_xrp": 2066170,
+    "mint_decline_pct": 94,
+    "current_api_supply_below_peak_pct": 8.54,
+    "caveat": "Supply contraction is a counter-hypothesis to accelerating adoption; exact daily burn/redemption series is not yet built."
+  },
+  "conclusions": [
+    "Backing remains slightly above 1:1 in the captured API snapshot.",
+    "Backing is operationally concentrated: about 98.94% sits in the Core Vault; the six agent reserve balances total about 1.53M XRP.",
+    "The escrow ladder releases capacity in daily tranches if conditions are satisfied; do not equate 140M escrowed with 140M permanently unavailable.",
+    "Protocol destinations are concentrated: Firelight, Morpho, bridge and Kinetic represent most FXRP supply.",
+    "Supply contraction and the 94% March-to-August mint slowdown are material counter-evidence to a simple accelerating-adoption thesis."
+  ],
+  "open_questions": [
+    "Trace the 147,740 XRP Core Vault liquid-balance decline and 129,906 XRP agent-reserve increase at fixed ledger indices.",
+    "Revalidate current escrow finish/cancel dates and crypto-conditions.",
+    "Rebuild daily FXRP totalSupply, mint/burn/redemption and agent funding history.",
+    "Distinguish reserve redistribution from true redemptions and external spot purchases.",
+    "Use the documented XRPL.to API rather than scraping/copying its UI."
+  ]
+}

@@ -40,7 +40,7 @@ def test_handoff_records_open_unmerged_prs_and_exact_head_verification():
         assert p["verification"]["ci_conclusion"] == "success"
         assert p["verification"]["gate_conclusion"] == "success"
         assert p["verification"]["merge_enabled"] is False
-    assert by_number[1477]["verification"]["test_summary"] == "424 tests and 8 subtests passed"
+    assert by_number[1477]["verification"]["test_summary"] == "425 tests and 8 subtests passed"
     assert d["repo_state"]["no_merge_force_push_or_manual_dispatch"] is True
 
 
@@ -52,6 +52,19 @@ def test_handoff_records_confirmed_firelight_kraken_usdc_relationship():
     assert relationship["mechanism"]["fee_asset"] == "USDC"
     assert "converted to FXRP" in relationship["mechanism"]["fee_conversion"]
     assert relationship["mechanism"]["first_loss_buffer"].startswith("Exists")
+
+
+def test_handoff_records_fxrp_backing_concentration_and_escrow_ladder():
+    d = load()
+    fxrp = next(x for x in d["research_findings"] if x["topic"] == "FXRP supply, backing and reserve liquidity")
+    assert fxrp["values"]["fxrp_supply"] == 143977216.689871
+    assert fxrp["values"]["native_xrp_backing"] > fxrp["values"]["fxrp_supply"]
+    assert fxrp["values"]["core_vault_escrow_count"] == 14
+    assert fxrp["values"]["core_vault_escrowed_xrp"] == 140000000
+    assert fxrp["escrow_ladder"]["reported_amount_each_xrp"] == 10000000
+    concentration = d["fxrp_reserve_concentration"]
+    assert concentration["top_six_share_pct"] > 86
+    assert concentration["holder_balances"][0]["label"] == "Firelight (stXRP)"
 
 
 def test_handoff_distinguishes_verified_and_unverified_platforms():
