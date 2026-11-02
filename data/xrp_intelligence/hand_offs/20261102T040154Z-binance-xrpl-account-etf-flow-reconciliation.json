@@ -1,1 +1,225 @@
-{"schema_version":1,"generated_at_utc":"2026-11-02T04:01:54Z","evidence_cutoff_utc":"2026-11-02T04:01:54Z","status":"INCIDENT_RECONCILIATION_NO_FORECAST","note":"Superseding research addendum; details to follow."}
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-11-02T04:01:54Z",
+  "evidence_cutoff_utc": "2026-11-02T04:01:54Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "foundation": "Barrot V3 remains the execution, security, preservation and verification foundation.",
+  "status": "INCIDENT_RECONCILIATION_NO_FORECAST",
+  "incident": {
+    "date": "2026-10-29",
+    "trm_total_usd": 6360000000,
+    "xrp_total": 233461943.1,
+    "transfer_window_utc": [
+      "2026-10-29T20:05:00Z",
+      "2026-10-29T20:09:20Z"
+    ],
+    "receiving_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "trm_attribution": "High-confidence attribution to DPRK TraderTraitor.",
+    "fbi_attribution": "FBI October 31 statement attributes more than $6B stolen from Binance to DPRK TraderTraitor.",
+    "trm_url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+    "fbi_url": "https://www.fbi.gov/investigate/cyber/alerts/2026/north-korea-responsible-for-6-billion-binance-attack",
+    "interpretation": "Five Binance-attributed XRPL hot wallets transferred 233,461,943.1 XRP to one new account. The transfer is not evidence of a sale. TRM assesses compromise of Binance hot-wallet signing infrastructure, not an XRPL protocol exploit."
+  },
+  "transfers": [
+    {
+      "time_utc": "2026-10-29T20:05:00Z",
+      "sender": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "amount_xrp": 185017485.5,
+      "ctid": "C66FBF0500670000",
+      "hash": "78E31E7BB06ADABE2322FDD0553533873C1D90664AEDE0C12DE06208F50BFA6A"
+    },
+    {
+      "time_utc": "2026-10-29T20:07:00Z",
+      "sender": "rBtttd",
+      "amount_xrp": 14693052.5,
+      "ctid": "C66FBF2100960000"
+    },
+    {
+      "time_utc": "2026-10-29T20:08:20Z",
+      "sender": "rfQ9Ec",
+      "amount_xrp": 13140680.4,
+      "ctid": "C66FBF3400010000"
+    },
+    {
+      "time_utc": "2026-10-29T20:08:50Z",
+      "sender": "rarG6F",
+      "amount_xrp": 11955157.6,
+      "ctid": "C66FBF3C01AA0000"
+    },
+    {
+      "time_utc": "2026-10-29T20:09:20Z",
+      "sender": "rNU4eA",
+      "amount_xrp": 8655567.1,
+      "ctid": "C66FBF4200120000"
+    }
+  ],
+  "account_observations": {
+    "xrplwin": {
+      "source_url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
+      "last_account_transaction_utc": "2026-10-29T22:35:00Z",
+      "last_transaction": "Third-party Check creation addressed to the receiving account; not an XRP Payment.",
+      "balance_xrp": 233461943.10005,
+      "outbound_transactions": 0,
+      "signed_transactions": 0,
+      "sequence": 107986693,
+      "composition": "Five principal transfers plus five 0.00001 XRP dust transfers.",
+      "classification": "SECONDARY_ONCHAIN_ANALYSIS"
+    },
+    "xrpldashboard": {
+      "source_url": "https://xrpldashboard.com/thisweek/2026-11-01",
+      "observed_at_utc": "2026-11-01T20:00:00Z",
+      "balance_xrp": 233461943.7,
+      "outbound_count": 0,
+      "signed_transaction_count": 0,
+      "trustline_count": 0,
+      "classification": "SECONDARY_ONCHAIN_AGGREGATION"
+    },
+    "unresolved_delta_xrp": 0.59995,
+    "delta_explanation": "Nov 1 dashboard balance is 0.59995 XRP above the earlier exact XRPLWin balance. Later inbound payment or reporting difference is possible; no transaction-level reconciliation completed.",
+    "harvest_rich_list": {
+      "source_url": "https://harvest.finance/xrp-rich-list",
+      "observed_at_utc": "2026-11-01T21:59:00Z",
+      "ledger_index": 108053752,
+      "rounded_balance_xrp": 233500000,
+      "precision_xrp": 100000,
+      "limitation": "Rounded to 0.1M XRP; not suitable for exact reconciliation."
+    },
+    "current_status": "No fresh pinned-ledger RPC read completed in this run."
+  },
+  "issuer_freezes": {
+    "source_url": "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+    "usdt_frozen_usd_approx": 1770000000,
+    "usdc_frozen_usd_approx": 825000000,
+    "rlusd_frozen_usd": 40500000,
+    "usd1_frozen_usd_approx": 27800000,
+    "arbitrum_security_council": "8,426 ETH and 74.6M ARB removed from attacker reach.",
+    "stablecoins_frozen_usd_approx": 2670000000,
+    "caveat": "Frozen is not recovered or returned. TRM reports 40.5M RLUSD frozen on Ethereum; native XRP has no issuer freeze mechanism.",
+    "rlusd_detail": "TRM reports 88.5M ERC-20 RLUSD stolen on Ethereum, 40.5M frozen and about 48M swapped before the freeze. Do not conflate with RLUSD on XRPL."
+  },
+  "binance_recovery": {
+    "source_url": "https://www.binance.com/en-GB/support/announcement/security-incident-recovery-update-4-withdrawals-resume-in-phases-2026-11-01-73911fb819b240f88b88256bdd318eda",
+    "publication_date": "2026-11-01",
+    "company_reported_aggregate_coverage_pct": 95,
+    "company_reported_xrp_backing_pct": 100,
+    "xrp_in_phase_one_withdrawal_list": true,
+    "remaining_5_percent": "Tokens outside the named top ten by liquidity.",
+    "interpretation": "Binance says XRP is among the fully backed top-ten assets. No XRP-specific purchase amount, venue or execution time disclosed. Remaining 5% is not described as an XRP shortfall.",
+    "successful_independent_xrp_withdrawal_test": "NOT_VERIFIED"
+  },
+  "etf_flow_correction": {
+    "data_date": "2026-10-30",
+    "refreshed_at_utc": "2026-11-01T22:49:00Z",
+    "provider": "ByKaranteli",
+    "source_url": "https://bykaranteli.com/etf/xrp",
+    "final_net_flow_usd": -496000,
+    "five_day_net_flow_usd": 4300000,
+    "net_assets_usd": 1420000000,
+    "cumulative_net_inflow_usd": 1810000000,
+    "by_fund_usd": {
+      "Bitwise_XRP": -694000,
+      "Franklin_XRPZ": 0,
+      "Canary_XRPC": 922000,
+      "21Shares_TOXR": 0,
+      "Grayscale_GXRP": -725000
+    },
+    "superseded_partial_snapshot": {
+      "provider": "Crypto ETF",
+      "source_url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "published_at_utc": "2026-10-31T05:48:00Z",
+      "net_flow_usd": 200000,
+      "reporting_status": "PARTIAL_3_OF_5_FUNDS"
+    },
+    "correction": "Earlier +$200K was a partial three-of-five-fund snapshot. Later five-fund ByKaranteli table reports -$496K for Oct 30. Keep partial observation as superseded.",
+    "independence_caveat": "ETF dashboards may share issuer disclosures; do not count as independent without tracing underlying inputs.",
+    "event_timing": "Oct 29 XRP drain began at 20:05 UTC, after the U.S. ETF cash session. Do not attribute Oct 29 ETF flows to the incident."
+  },
+  "hypotheses": [
+    {
+      "id": "H1_XRP_NOT_YET_SOLD",
+      "status": "SUPPORTED_THROUGH_STATED_CUTOFF_ONLY",
+      "thesis": "233.46M XRP was consolidated and remained unmoved through the Nov 1 20:00 UTC dashboard snapshot.",
+      "disconfirming": "No fresh pinned-ledger read; 0.59995 XRP delta unresolved; off-ledger monetization unknown."
+    },
+    {
+      "id": "H2_BINANCE_EXTERNAL_XRP_REPLENISHMENT",
+      "status": "UNVERIFIED",
+      "thesis": "Binance may have bought XRP externally if internal unencumbered inventory was insufficient.",
+      "disconfirming": "XRP is among assets Binance reports 100% backed; remaining 5% is outside named top ten; no XRP-specific purchase evidence."
+    },
+    {
+      "id": "H3_ISSUER_CONTROL_ASYMMETRY",
+      "status": "SUPPORTED",
+      "thesis": "Issuer-controlled stablecoins were frozen while native XRP could not be issuer-frozen.",
+      "disconfirming": "Native XRP remains traceable and may be disrupted at exchanges, bridges or through legal process."
+    },
+    {
+      "id": "H4_EXCHANGE_CONFIDENCE_SHOCK",
+      "status": "PLAUSIBLE_NOT_QUANTIFIED",
+      "thesis": "Breach and withdrawal interruption may affect venue liquidity, custody preference, basis and depth independently of XRP payment utility.",
+      "disconfirming": "Binance reported XRP fully backed and included in phase-one withdrawals; synchronized order-book/customer-flow data absent."
+    },
+    {
+      "id": "H5_XRPL_PROTOCOL_VULNERABILITY",
+      "status": "NOT_SUPPORTED_BY_CURRENT_EVIDENCE",
+      "thesis": "Incident caused by an XRPL consensus or protocol weakness.",
+      "disconfirming": "TRM points to Binance signing infrastructure and ordinary signed transfers; no XRPL consensus exploit evidence cited."
+    },
+    {
+      "id": "H6_SMALL_INBOUND_OR_REPORTING_DELTA",
+      "status": "UNKNOWN",
+      "thesis": "0.59995 XRP difference may be a small inbound payment or dashboard methodology difference.",
+      "disconfirming": "No transaction hash or raw AccountRoot state obtained."
+    }
+  ],
+  "prediction_admission": {
+    "status": "RESEARCH_ONLY_NOT_ADMITTED",
+    "candidate_features": [
+      "attacker_balance_at_pinned_ledger",
+      "attacker_outbound_count",
+      "attacker_sequence",
+      "inbound_dust_delta",
+      "Binance_XRP_withdrawal_status",
+      "Binance_XRP_backing_claim",
+      "XRP_specific_replenishment_evidence",
+      "ETF_flow_by_fund_and_completeness",
+      "post_incident_orderbook_depth",
+      "venue_normalized_open_interest",
+      "funding_and_liquidations"
+    ],
+    "restrictions": [
+      "No directional forecast from event alone.",
+      "Do not infer sale from transfer out of Binance.",
+      "Do not infer new spot demand from 100% backing.",
+      "Do not treat issuer freezes as recovered assets.",
+      "Do not attribute Oct 29 ETF flows to an event after the U.S. cash-session close.",
+      "Do not mix partial ETF snapshots with later complete observations."
+    ]
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized post-event venue liquidity, fresh pinned-ledger account state or XRP-specific replenishment execution evidence. No verified out-of-sample XRP forecasting skill exists."
+  },
+  "next_actions": [
+    "Obtain fresh validated-ledger AccountRoot and account_tx for receiving account; record ledger index, close time, balance, sequence, last transaction and outbound count.",
+    "Reconcile the 0.59995 XRP increase between Oct 30 and Nov 1 observations.",
+    "Verify the reported failed 42,750,000.1 RLUSD transaction and the 51,172,508 RLUSD transfer from Binance wallet.",
+    "Reconcile Binance XRP Proof-of-Reserves snapshots and labeled-wallet changes; do not infer buys from backing statements.",
+    "Track XRP withdrawal availability and independent successful withdrawal reports.",
+    "Normalize post-incident order-book depth, exchange net flows, ETF creations/redemptions, open interest, funding and liquidation data.",
+    "Continue Coinbase, Circle, Ripple and SBI institutional graph research.",
+    "Advance source-registry trusted retrieval timestamps, immutable per-snapshot IDs, forecast-ledger integrity, walk-forward testing and calibration."
+  ],
+  "repository_handoff": {
+    "inspected_main_sha": "ad022ee4e8c4f2605915cb88c029e53924100440",
+    "inspected_at_utc": "2026-11-02T03:52:12Z",
+    "main_change": "Cross-analysis refresh changed only ping-pongings/knowledge-base/sentiment_shift.json; current main still has active write-capable Cross Analysis, Scheduler Tick and Merge Queue workflows.",
+    "source_pr_1483_head": "d55323499f8e1ae5c4a37079d2d4d8ab46659132",
+    "source_pr_1483_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41381448277",
+    "source_pr_1483_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41381448288",
+    "source_pr_1483_status": "OPEN_DRAFT_UNMERGED; exact-head CI and fail-closed gate passed.",
+    "new_branch": "research/binance-xrpl-account-etf-reconciliation-ad022-20261102T0401Z",
+    "new_branch_base": "ad022ee4e8c4f2605915cb88c029e53924100440",
+    "preservation": "Research-only JSON. No main ref modification, merge, force-push, workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
+  }
+}
