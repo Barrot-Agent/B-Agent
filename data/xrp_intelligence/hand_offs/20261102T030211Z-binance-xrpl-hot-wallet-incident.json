@@ -15,14 +15,16 @@
     "theft_time_value_usd_approx": 296000000,
     "receiving_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
     "latest_located_account_snapshot": {
-      "timestamp_utc": "2026-11-01T20:00:00Z",
-      "balance_xrp": 233461943.7,
-      "outbound_transactions": 0,
-      "signed_transactions": 0,
-      "trustlines": 0,
-      "source": "XRPLDashboard weekly on-ledger review",
-      "source_url": "https://xrpldashboard.com/thisweek/2026-11-01",
-      "limitation": "Third-party dashboard snapshot, approximately seven hours older than this handoff cutoff. A fresh pinned-ledger read is required."
+      "timestamp_utc": "2026-11-01T21:59:00Z",
+      "ledger_index": 108053752,
+      "balance_xrp_approx": 233500000,
+      "display_precision_xrp": 100000,
+      "outbound_transactions": null,
+      "signed_transactions": null,
+      "trustlines": null,
+      "source": "Harvest XRP rich-list ledger walk",
+      "source_url": "https://harvest.finance/xrp-rich-list",
+      "limitation": "The rich-list page reports a rounded 233.5M XRP balance at a validated ledger closed 21:59 UTC. It does not expose outbound count or trustline state in the ranked table. The earlier 20:00 UTC XRPLDashboard snapshot reported 233,461,943.7 XRP and zero outbound transactions."
     },
     "conclusion": "233.46M native XRP left five Binance-attributed hot wallets and was consolidated into one new XRPL account. The latest located public snapshot reports no outbound movement through 2026-11-01 20:00 UTC. Native XRP was not issuer-frozen. Binance separately reported XRP customer balances 100% backed and included XRP in phase-one withdrawal reopening. Neither statement proves an XRP-specific buyback quantity or attacker sale."
   },
@@ -84,7 +86,16 @@
       "source_url": "https://xrplwin.com/insights/the-63-billion-binance-hack-233-million-xrp-drained-on-the-xrp-ledger",
       "classification": "SECONDARY_ONCHAIN_ANALYSIS"
     },
-    "caveat": "These snapshots support inactivity only through their stated cutoffs, not at the current handoff cutoff."
+    "caveat": "These snapshots support inactivity only through their stated cutoffs, not at the current handoff cutoff.",
+    "latest_balance_only_snapshot": {
+      "observed_at_utc": "2026-11-01T21:59:00Z",
+      "ledger_index": 108053752,
+      "balance_xrp_approx": 233500000,
+      "display_precision_xrp": 100000,
+      "source_url": "https://harvest.finance/xrp-rich-list",
+      "classification": "THIRD_PARTY_VALIDATED_LEDGER_RANKING",
+      "caveat": "Balance rounded to 0.1M XRP; no transaction count or trustline data shown."
+    }
   },
   "secondary_leads_not_yet_independently_reconciled": [
     {
@@ -321,19 +332,34 @@
         "Seven-contract XRP perpetual open interest, funding and volume."
       ],
       "caveat": "Not comparable to broader exchange-level aggregators without contract coverage reconciliation."
+    },
+    {
+      "id": "HARVEST-XRP-RICHLIST-LEDGER-108053752",
+      "source": "Harvest XRP Rich List",
+      "observed_at_utc": "2026-11-01T21:59:00Z",
+      "ledger_index": 108053752,
+      "url": "https://harvest.finance/xrp-rich-list",
+      "classification": "THIRD_PARTY_LEDGER_WALK",
+      "supports": [
+        "The receiving account is ranked #49 with approximately 233.5M XRP at ledger 108053752, closed 2026-11-01 21:59 UTC.",
+        "The page states all 500 listed accounts were read from the same validated ledger."
+      ],
+      "caveat": "Account label is Unnamed. The balance is rounded to 0.1M XRP and the page does not expose this account's transaction history or trustlines."
     }
   ],
   "source_independence": {
     "corroboration": [
       "TRM and XRPLWin agree on the five-wallet total and transfer window.",
       "Whale Alert independently exposes the first payment hash, sender, receiver, amount and timestamp.",
-      "FBI's October 31 alert independently establishes official North Korea/TraderTraitor attribution."
+      "FBI's October 31 alert independently establishes official North Korea/TraderTraitor attribution.",
+      "Harvest's ledger 108053752 balance-only observation at 2026-11-01T21:59Z reports approximately 233.5M XRP, consistent with XRPLDashboard's exact 233,461,943.7 XRP at 20:00Z. The later source confirms balance magnitude but not inactivity."
     ],
     "limitations": [
       "These are not four independent investigations of attacker identity; most XRP amount evidence derives from the same public ledger events.",
       "Exchange-wallet labels are third-party attribution, not protocol-level identity proof.",
       "Binance reserve/replenishment claims are company statements; independent reserve reconciliation was not completed.",
-      "The latest located recipient-account snapshot is November 1 20:00 UTC, not this handoff cutoff."
+      "The latest located recipient-account snapshot is November 1 20:00 UTC, not this handoff cutoff.",
+      "Harvest's 21:59Z rich-list snapshot is the latest located balance observation; it is not a current 2026-11-02 pinned-ledger query and does not establish zero outbound transactions after 20:00Z."
     ]
   },
   "relationship_graph": {
