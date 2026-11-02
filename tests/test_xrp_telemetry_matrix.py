@@ -22,11 +22,11 @@ def test_not_issued_never_emits_hardcoded_price_or_direction():
 
 def test_issued_requires_independent_sources():
     s=issued(); s["sources"][1]["independence_group"]="a"
-    with pytest.raises(EvidenceError,match="two independent sources"):
+    with pytest.raises(EvidenceError,match="market observations must be backed"):
         validate_snapshot(s)
 
 def test_issued_requires_synchronized_venues():
-    s=issued(); s["market_observations"][0]["timestamp_utc"]="2026-11-02T13:57:00Z"; s["market_observations"][1]["timestamp_utc"]="2026-11-02T13:58:30Z"
+    s=issued(); s["market_observations"][0]["timestamp_utc"]="2026-11-02T13:57:00Z"; s["market_observations"][1]["timestamp_utc"]="2026-11-02T13:58:30Z"; s["sources"][1]["retrieved_at_utc"]="2026-11-02T13:58:40Z"
     with pytest.raises(EvidenceError,match="synchronization window"):
         validate_snapshot(s)
 
@@ -64,6 +64,7 @@ def test_issued_rejects_sources_retrieved_after_forecast_cutoff():
 def test_issued_requires_observations_to_use_distinct_independent_sources():
     s = issued()
     s["market_observations"][1]["source_id"] = "a"
+    s["market_observations"][1]["timestamp_utc"] = "2026-11-02T13:58:00Z"
     with pytest.raises(EvidenceError, match="market observations must be backed"):
         validate_snapshot(s)
 
