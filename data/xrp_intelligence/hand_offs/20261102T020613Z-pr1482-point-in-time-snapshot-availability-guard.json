@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-02T02:06:13Z",
+  "pr_number": 1482,
+  "branch": "prediction/fixed-horizon-latest-observation-8e966c7d-20261102T015917Z",
+  "previous_head_sha": "211855ba80d04fce2e7d17dfdaa415f91ca5fa6e",
+  "status": "POINT_IN_TIME_CAPTURE_GUARD_ADDED_CI_PENDING",
+  "root_cause": "The first provenance revision checked market observation timestamps against the data cutoff but did not require the source snapshot itself to have been captured by that cutoff. A later-retrieved or revised historical snapshot could therefore contain a timestamp-valid observation that was not actually available to the model at forecast time. Feature snapshot metadata was also hash-bound but not semantically compared with the bytes.",
+  "corrections": [
+    "Price snapshots now require captured_at_utc.",
+    "Every observation in a price snapshot must be no later than the snapshot capture time.",
+    "Issue-price snapshots must have been captured no later than data_cutoff_utc.",
+    "Outcome-price snapshots must have been captured no later than the system-recorded outcome time, while the selected observation remains the latest one at or before target_end_at_utc.",
+    "Feature snapshot bytes must match record_type, source_id, snapshot_id and captured_at_utc metadata, be captured no later than the forecast cutoff, and contain a non-empty features mapping.",
+    "Metrics authorization revalidates price-snapshot availability and feature-snapshot semantics from hash-verified bytes."
+  ],
+  "tests_added": [
+    "Reject issue price snapshots captured after the data cutoff.",
+    "Reject price observations later than the snapshot's capture time.",
+    "Reject feature snapshot bytes whose identity disagrees with forecast metadata.",
+    "Reject outcome price snapshots captured after the system outcome-recording time."
+  ],
+  "data_policy": "Historical replay forecasts are eligible for evaluation only when their source snapshots themselves are point-in-time captures no later than the recorded data cutoff. Later backfilled snapshots cannot silently masquerade as point-in-time inputs.",
+  "no_forecasts_issued": true,
+  "main_sha_unchanged": "8e966c7d53b5f80acf3653acfecbc862bb356fb3",
+  "no_merge": true,
+  "no_force_push": true,
+  "no_manual_workflow_dispatch": true
+}

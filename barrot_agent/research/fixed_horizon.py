@@ -497,6 +497,7 @@ class ForecastLedger:
         expected_price: float,
         expected_observed_at: datetime,
         latest_not_after: datetime | None = None,
+        snapshot_available_not_after: datetime | None = None,
     ) -> None:
         """Require the exact price/time pair to exist in a hash-verified normalized snapshot."""
         if self.source_registry_mode != "HASH_VERIFIED":
@@ -522,6 +523,16 @@ class ForecastLedger:
             or snapshot.get("asset_pair") != "XRP/USD"
         ):
             raise ValueError(f"{field} source snapshot must be a normalized XRP/USD observation set: {source_id}")
+        snapshot_captured_at = _parse_utc(
+            snapshot.get("captured_at_utc"), f"{field}.snapshot_captured_at_utc"
+        )
+        if (
+            snapshot_available_not_after is not None
+            and snapshot_captured_at > snapshot_available_not_after
+        ):
+            raise ValueError(
+                f"{field} source snapshot was captured after its availability cutoff: {source_id}"
+            )
         observations = snapshot.get("observations")
         if not isinstance(observations, list) or not observations:
             raise ValueError(f"{field} source snapshot has no normalized observations: {source_id}")
@@ -533,6 +544,10 @@ class ForecastLedger:
                 raise ValueError(f"{field} source snapshot contains an invalid observation: {source_id}")
             price = _positive_number(observation.get("price_usd"), f"{field}.snapshot_price_usd")
             observed_at = _parse_utc(observation.get("observed_at_utc"), f"{field}.snapshot_observed_at_utc")
+            if observed_at > snapshot_captured_at:
+                raise ValueError(
+                    f"{field} source snapshot contains an observation later than its capture time: {source_id}"
+                )
             if latest_not_after is not None and observed_at <= latest_not_after:
                 eligible_observations.append((observed_at, price))
             if (
@@ -562,6 +577,51 @@ class ForecastLedger:
                 raise ValueError(
                     f"{field} must use the latest observation at or before its cutoff: {source_id}"
                 )
+
+
+    def _verified_feature_snapshot(
+        self,
+        source_id: str,
+        feature: Mapping[str, Any],
+        available_not_after: datetime,
+    ) -> None:
+        """Bind feature metadata to the exact captured, hash-verified feature snapshot."""
+        if self.source_registry_mode != "HASH_VERIFIED":
+            raise ValueError("feature snapshot bytes require a hash-verified source registry")
+        reader = getattr(self.source_registry, "read_verified_content", None)
+        verifier = getattr(self.source_registry, "verify_content_hash", None)
+        if not callable(reader) or not callable(verifier):
+            raise ValueError("hash-verified source registry must expose verified feature snapshot bytes")
+        try:
+            content = reader(source_id)
+        except (KeyError, OSError, ValueError) as exc:
+            raise ValueError(f"feature snapshot bytes are unavailable or unverified: {source_id}") from exc
+        if not isinstance(content, bytes) or not verifier(source_id, content):
+            raise ValueError(f"feature snapshot bytes do not match the registered content hash: {source_id}")
+        try:
+            snapshot = json.loads(content)
+        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise ValueError(f"feature snapshot must be valid JSON: {source_id}") from exc
+        if (
+            not isinstance(snapshot, Mapping)
+            or snapshot.get("record_type") != "xrp_feature_snapshot"
+            or snapshot.get("source_id") != source_id
+            or snapshot.get("snapshot_id") != feature.get("snapshot_id")
+        ):
+            raise ValueError(f"feature snapshot metadata does not match registered snapshot content: {source_id}")
+        captured_at = _parse_utc(
+            snapshot.get("captured_at_utc"), "feature_snapshot.source_captured_at_utc"
+        )
+        declared_capture = _parse_utc(
+            feature.get("captured_at_utc"), "feature_snapshot.captured_at_utc"
+        )
+        if captured_at != declared_capture:
+            raise ValueError(f"feature snapshot capture time does not match registered snapshot content: {source_id}")
+        if captured_at > available_not_after:
+            raise ValueError(f"feature snapshot was captured after its availability cutoff: {source_id}")
+        features = snapshot.get("features")
+        if not isinstance(features, Mapping) or not features:
+            raise ValueError(f"feature snapshot must contain a non-empty features mapping: {source_id}")
 
     def forecasts(self) -> list[dict[str, Any]]:
         with _ledger_lock(self.root):
@@ -720,6 +780,7 @@ class ForecastLedger:
                 raise ValueError(
                     "feature snapshot SHA-256 does not match registered source content hash"
                 )
+            self._verified_feature_snapshot(feature_source_id, feature, cutoff)
             source_registry_status = "REGISTERED"
             feature_snapshot_hash_verified = True
         elif self.source_registry_mode == "ID_ONLY":
@@ -745,6 +806,7 @@ class ForecastLedger:
             self._verified_price_observation(
                 price_source_id, "price_at_issue", price_at_issue, price_observed_at,
                 latest_not_after=cutoff,
+                snapshot_available_not_after=cutoff,
             )
 
         record = {
@@ -861,6 +923,7 @@ class ForecastLedger:
             self._verified_price_observation(
                 price_source_id, "price_at_horizon", price_at_horizon, observed_at,
                 latest_not_after=target_end,
+                snapshot_available_not_after=recorded_at,
             )
         price_at_issue = float(forecast["price_at_issue_usd"])
         realized_return = (price_at_horizon / price_at_issue - 1.0) * 100.0
@@ -930,11 +993,18 @@ class ForecastLedger:
             if set(hashes) != set(source_ids):
                 return False
             try:
-                return all(
+                if not all(
                     hashes.get(source_id) == self._registered_source_hash(source_id)
                     for source_id in source_ids
-                )
-            except ValueError:
+                ):
+                    return False
+                feature = item.get("feature_snapshot")
+                if not isinstance(feature, Mapping):
+                    return False
+                cutoff = _parse_utc(item.get("data_cutoff_utc"), "data_cutoff_utc")
+                self._verified_feature_snapshot(feature.get("source_id"), feature, cutoff)
+                return True
+            except (KeyError, ValueError):
                 return False
 
         def issue_price_source_matches_registry(item: Mapping[str, Any]) -> bool:
@@ -950,9 +1020,11 @@ class ForecastLedger:
                 recorded_observed_at = _parse_utc(
                     item.get("price_at_issue_observed_at_utc"), "price_at_issue_observed_at_utc"
                 )
+                cutoff = _parse_utc(item.get("data_cutoff_utc"), "data_cutoff_utc")
                 self._verified_price_observation(
                     source_id, "price_at_issue", recorded_price, recorded_observed_at,
-                    latest_not_after=_parse_utc(item.get("data_cutoff_utc"), "data_cutoff_utc"),
+                    latest_not_after=cutoff,
+                    snapshot_available_not_after=cutoff,
                 )
                 return stored_hash.lower() == registered_hash
             except (KeyError, ValueError):
@@ -992,6 +1064,9 @@ class ForecastLedger:
                 self._verified_price_observation(
                     source_id, "price_at_horizon", recorded_price, recorded_observed_at,
                     latest_not_after=_parse_utc(item.get("target_end_at_utc"), "target_end_at_utc"),
+                    snapshot_available_not_after=_parse_utc(
+                        item.get("outcome_recorded_at_utc"), "outcome_recorded_at_utc"
+                    ),
                 )
                 return stored_hash.lower() == registered_hash
             except (KeyError, ValueError):

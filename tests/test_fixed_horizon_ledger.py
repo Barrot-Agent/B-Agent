@@ -25,10 +25,10 @@ def _source_content(source_id):
             "record_type": "xrp_price_observation_set",
             "source_id": source_id,
             "asset_pair": "XRP/USD",
+            "captured_at_utc": "2026-10-30T23:59:00Z",
             "observations": [
                 {"price_usd": 1.25, "observed_at_utc": "2026-10-30T23:59:00Z"},
                 {"price_usd": 1.25, "observed_at_utc": "2026-10-30T23:58:00Z"},
-                {"price_usd": 1.25, "observed_at_utc": "2026-10-31T23:59:00Z"},
             ],
         })
     if source_id == "SRC-PRICE-001":
@@ -36,6 +36,7 @@ def _source_content(source_id):
             "record_type": "xrp_price_observation_set",
             "source_id": source_id,
             "asset_pair": "XRP/USD",
+            "captured_at_utc": "2026-10-31T02:00:00Z",
             "observations": [
                 {"price_usd": 1.27, "observed_at_utc": "2026-10-31T00:59:59Z"},
                 {"price_usd": 1.27, "observed_at_utc": "2026-10-31T00:59:30Z"},
@@ -48,12 +49,19 @@ def _source_content(source_id):
             "record_type": "xrp_price_observation_set",
             "source_id": source_id,
             "asset_pair": "XRP/USD",
+            "captured_at_utc": "2026-10-31T01:00:00Z",
             "observations": [
                 {"price_usd": 1.25, "observed_at_utc": "2026-10-31T00:59:30Z"},
             ],
         })
     if source_id == "SRC-FEATURE-001":
-        return _snapshot_bytes({"record_type": "xrp_feature_snapshot", "snapshot_id": "features-001"})
+        return _snapshot_bytes({
+            "record_type": "xrp_feature_snapshot",
+            "source_id": source_id,
+            "snapshot_id": "features-001",
+            "captured_at_utc": "2026-10-30T23:58:00Z",
+            "features": {"xrp_usd_return_1h": 0.004, "funding_rate_8h": 0.00005},
+        })
     if source_id == "SRC-REPLAY-MANIFEST-001":
         return _snapshot_bytes({"record_type": "xrp_replay_manifest", "manifest_id": source_id})
     raise KeyError(source_id)
@@ -413,23 +421,76 @@ def test_forecast_rejects_stale_issue_price_observation(tmp_path):
 def test_forecast_accepts_issue_price_at_freshness_boundary(tmp_path):
     ledger = make_ledger(tmp_path)
     payload = forecast_payload(
-        data_cutoff_utc="2026-10-30T23:58:00Z",
-        feature_snapshot={
-            "snapshot_id": "features-001",
-            "source_id": "SRC-FEATURE-001",
-            "sha256": TEST_SOURCE_REGISTRY["SRC-FEATURE-001"],
-            "captured_at_utc": "2026-10-30T23:58:00Z",
-        },
-        baseline={
-            "id": "uniform-v1",
-            "trained_through_utc": "2026-10-30T23:58:00Z",
-            "computed_at_utc": "2026-10-30T23:58:00Z",
-            "probabilities": {"up": 1 / 3, "flat": 1 / 3, "down": 1 / 3},
-        },
-        price_at_issue_observed_at_utc="2026-10-30T23:58:00Z",
+        issued_at_utc="2026-10-31T00:01:00Z",
+        data_cutoff_utc="2026-10-31T00:01:00Z",
+        price_at_issue_observed_at_utc="2026-10-30T23:59:00Z",
     )
     record = ledger.append_forecast(payload)
     assert record["price_at_issue_max_observation_lag_seconds"] == 120
+
+
+def test_forecast_rejects_price_snapshot_captured_after_data_cutoff(tmp_path):
+    contents = dict(TEST_SOURCE_CONTENTS)
+    snapshot = json.loads(contents["SRC-MARKET-001"])
+    snapshot["captured_at_utc"] = "2026-10-31T00:00:01Z"
+    contents["SRC-MARKET-001"] = _snapshot_bytes(snapshot)
+    entries = dict(TEST_SOURCE_REGISTRY)
+    entries["SRC-MARKET-001"] = hashlib.sha256(contents["SRC-MARKET-001"]).hexdigest()
+    ledger = ForecastLedger(
+        tmp_path,
+        source_registry=HashVerifiedRegistryFixture(entries, contents),
+    )
+    with pytest.raises(ValueError, match="captured after its availability cutoff"):
+        ledger.append_forecast(forecast_payload())
+
+
+def test_forecast_rejects_observation_later_than_snapshot_capture(tmp_path):
+    contents = dict(TEST_SOURCE_CONTENTS)
+    snapshot = json.loads(contents["SRC-MARKET-001"])
+    snapshot["observations"].append(
+        {"price_usd": 1.26, "observed_at_utc": "2026-10-31T00:00:01Z"}
+    )
+    contents["SRC-MARKET-001"] = _snapshot_bytes(snapshot)
+    entries = dict(TEST_SOURCE_REGISTRY)
+    entries["SRC-MARKET-001"] = hashlib.sha256(contents["SRC-MARKET-001"]).hexdigest()
+    ledger = ForecastLedger(
+        tmp_path,
+        source_registry=HashVerifiedRegistryFixture(entries, contents),
+    )
+    with pytest.raises(ValueError, match="observation later than its capture time"):
+        ledger.append_forecast(forecast_payload())
+
+
+def test_feature_snapshot_bytes_must_match_metadata_and_contain_features(tmp_path):
+    contents = dict(TEST_SOURCE_CONTENTS)
+    snapshot = json.loads(contents["SRC-FEATURE-001"])
+    snapshot["snapshot_id"] = "different-snapshot"
+    contents["SRC-FEATURE-001"] = _snapshot_bytes(snapshot)
+    entries = dict(TEST_SOURCE_REGISTRY)
+    entries["SRC-FEATURE-001"] = hashlib.sha256(contents["SRC-FEATURE-001"]).hexdigest()
+    payload = forecast_payload()
+    payload["feature_snapshot"]["sha256"] = entries["SRC-FEATURE-001"]
+    ledger = ForecastLedger(
+        tmp_path,
+        source_registry=HashVerifiedRegistryFixture(entries, contents),
+    )
+    with pytest.raises(ValueError, match="feature snapshot metadata does not match"):
+        ledger.append_forecast(payload)
+
+
+def test_outcome_rejects_price_snapshot_captured_after_record_time(tmp_path, monkeypatch):
+    monkeypatch.setattr(
+        fixed_horizon,
+        "_utc_now",
+        lambda: datetime(2026, 10, 31, 1, 30, 0, tzinfo=timezone.utc),
+    )
+    ledger = make_ledger(tmp_path)
+    ledger.append_forecast(forecast_payload())
+    with pytest.raises(ValueError, match="captured after its availability cutoff"):
+        ledger.append_outcome(
+            "xrp-forecast-001", 1.27, "2026-10-31T00:59:59Z",
+            "2026-10-31T01:30:00Z", "SRC-PRICE-001"
+        )
 
 
 def test_forecast_rejects_duplicate_source_ids(tmp_path):
