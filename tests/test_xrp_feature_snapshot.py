@@ -128,3 +128,19 @@ def test_xrp_ingestion_workflow_is_scheduled_read_only_and_artifact_backed():
     assert "retention-days: 90" in workflow
     assert 'MAX_DISTILL_PER_RUN: "24"' in workflow
     assert "tests/test_xrp_feature_snapshot.py" in ci
+
+
+def test_snapshot_rejects_non_finite_relevance_and_missing_urls(tmp_path):
+    now = datetime(2026, 11, 2, 8, 0, tzinfo=timezone.utc)
+    log = tmp_path / "log.jsonl"
+    _write_jsonl(log, [{
+        "feed": "feed-a",
+        "ingested_at": (now - timedelta(minutes=5)).isoformat(),
+        "distilled": True,
+        "distill": {"sentiment": "bullish", "xrp_relevance": float("nan"), "entities": ["XRP"]},
+    }])
+    snapshot = build_snapshot(log, tmp_path / "missing-config.json", now=now)
+    assert snapshot["missing_url"] == 1
+    assert snapshot["missing_or_invalid_xrp_relevance"] == 1
+    assert snapshot["recent_24h_weighted_sentiment_score"] is None
+    assert snapshot["status"] == "DEGRADED"
