@@ -291,7 +291,8 @@
       ],
       "sources": [
         "NODAL-RIPPLE-COINBASE-2026-03-05",
-        "COINBASE-DERIVATIVES-BROKER-PARTNERS"
+        "COINBASE-DERIVATIVES-BROKER-PARTNERS",
+        "NODAL-XRP-24X7-CLEARING-2025"
       ]
     },
     {
@@ -374,6 +375,22 @@
       "interpretation": "This provides primary SEC evidence that Coinbase's USDC platform balances grew while rate declines reduced stablecoin revenue. The Circle-reported $655.3M H1 distribution cost and Coinbase-reported $232.535M H1 USDC rewards expense are different companies' expense measures; they must not be subtracted to claim Coinbase net profit. The filing's broad 'Other' category does not permit an XRP-specific custody estimate.",
       "sources": [
         "COINBASE-SEC-10Q-2026Q2"
+      ]
+    },
+    {
+      "id": "NODAL-CLEAR-XRP-CONTRACT-SPECS",
+      "classification": "primary_clearing_house_announcement",
+      "publisher": "Nodal Clear",
+      "published_at": "2025-06-13",
+      "claims": [
+        "Nodal Clear expanded 24x7 clearing support for Coinbase Derivatives Exchange XRP futures on June 13, 2025.",
+        "The published 24x7 eligible product list identifies nano XRP futures (XRP) at 500 XRP per contract and XRP futures (XRL) at 10,000 XRP per contract.",
+        "Nodal Clear describes itself as the CFTC-regulated derivatives clearing organization for these contracts."
+      ],
+      "interpretation": "The Ripple Prime distribution relationship is built on an already operational 24x7 XRP futures clearing product set. Contract access is confirmed; actual Ripple Prime client positions and volume remain undisclosed.",
+      "sources": [
+        "NODAL-XRP-24X7-CLEARING-2025",
+        "NODAL-RIPPLE-COINBASE-2026-03-05"
       ]
     }
   ],
@@ -700,8 +717,8 @@
       "id": "NODAL-RIPPLE-COINBASE-2026-03-05",
       "publisher": "Nodal Clear and Ripple",
       "published_at": "2026-03-05",
-      "url": "https://www.nodalclear.com/wp-content/uploads/Press-Release_FINAL_Ripple-Offers-Clients-Access-to-Coinbase-Derivatives-Exchange-Contracts-Cleared-by-Nodal-Clear-1.pdf",
-      "independence": "Joint primary announcement; establishes access rights, not executed client volume."
+      "url": "https://www.nodalclear.com/ripple-offers-clients-access-to-coinbase-derivatives-contracts-cleared-by-nodal-clear/",
+      "independence": "Primary Nodal Clear/Ripple joint announcement in HTML; establishes access rights, not executed client volume. The previously recorded PDF URL returned 404 and has been replaced with the official HTML page."
     },
     {
       "id": "COINBASE-DERIVATIVES-BROKER-PARTNERS",
@@ -794,6 +811,13 @@
       "published_at": "2026-07-30",
       "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000088/coin-20260630.htm",
       "independence": "Primary SEC filing; point-in-time AOP and period expense/revenue disclosures. Does not separately disclose XRP or RLUSD balances."
+    },
+    {
+      "id": "NODAL-XRP-24X7-CLEARING-2025",
+      "publisher": "Nodal Clear",
+      "published_at": "2025-06-13",
+      "url": "https://www.nodalclear.com/nodal-clear-expands-24x7-clearing-to-solana-and-xrp-futures/",
+      "independence": "Primary clearing-house announcement listing 24x7 XRP and nano-XRP futures contract sizes."
     }
   ],
   "identity_threads": {
