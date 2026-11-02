@@ -21,9 +21,11 @@ def check_github():
     import jwt
     now = int(time.time())
     token = jwt.encode({"iat": now - 60, "exp": now + 300, "iss": app_id}, priv, algorithm="RS256")
-    r = requests.post(f"https://api.github.com/app/installations/{inst}/access_tokens",
+    # Verify the app installation with a read-only endpoint. Do not mint an
+    # installation access token merely to run a scheduled health check.
+    r = requests.get(f"https://api.github.com/app/installations/{inst}",
         headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}, timeout=15)
-    return r.status_code == 201, f"HTTP {r.status_code}"
+    return r.status_code == 200, f"HTTP {r.status_code}"
 
 def check_databricks():
     host, token, wh = os.getenv("DATABRICKS_HOST"), os.getenv("DATABRICKS_TOKEN"), os.getenv("DATABRICKS_WAREHOUSE_ID")
@@ -42,32 +44,35 @@ def check_hf_space():
     except Exception as e:
         return False, f"parse error: {e}"
 
-def check_deploy_sync():
+def check_repo_source_marker():
+    """Checks a marker in GitHub main source; it does not verify the deployed Space revision."""
     r = requests.get("https://api.github.com/repos/Barrot-Agent/B-Agent/contents/hf_space/app.py", timeout=15)
     if r.status_code != 200:
         return False, f"HTTP {r.status_code}"
     content = base64.b64decode(r.json()["content"]).decode()
-    return "Barrot-\u03a9" in content, "checked main branch hf_space/app.py"
+    ok = "Barrot-Ω" in content
+    return ok, "GitHub main source marker present; deployed Space revision not checked"
 
-def check_system_prompt_fiction():
-    """Scans the ENTIRE deployed hf_space/app.py, not just SYSTEM_PROMPT -- fiction
-    vocabulary in UI labels, API docs, or variable names is the same problem as
-    fiction in the chat prompt: it's real users/callers being told something false."""
+def check_repo_source_fiction():
+    """Scans GitHub main source, not the deployed Hugging Face runtime."""
     r = requests.get("https://raw.githubusercontent.com/Barrot-Agent/B-Agent/main/hf_space/app.py", timeout=15)
+    if r.status_code != 200:
+        return False, f"HTTP {r.status_code}"
     text = r.text
     KNOWN_SAFE = ["mrp_label AS signal_label"]  # real DB column, aliased not renamed
     scan_text = text
     for safe in KNOWN_SAFE:
         scan_text = scan_text.replace(safe, "")
     hits = [t for t in FICTION_TERMS if t.lower() in scan_text.lower()]
-    return len(hits) == 0, ("clean" if not hits else f"fiction terms present in hf_space/app.py: {hits}")
+    detail = "GitHub main source clean; deployed runtime not inspected"
+    return len(hits) == 0, (detail if not hits else f"fiction terms present in GitHub main hf_space/app.py: {hits}")
 
 CHECKS = [
     ("github_app", check_github),
     ("databricks", check_databricks),
     ("hf_space", check_hf_space),
-    ("deploy_sync", check_deploy_sync),
-    ("system_prompt_fiction", check_system_prompt_fiction),
+    ("repo_source_marker", check_repo_source_marker),
+    ("repo_source_fiction", check_repo_source_fiction),
 ]
 
 if __name__ == "__main__":
