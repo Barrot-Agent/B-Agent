@@ -70,7 +70,7 @@ def existing_open_gap_issues():
         print(f"WARN: could not check existing issues: {e}", file=sys.stderr)
     return []
 
-def open_gap_issue(source, hours_stale, threshold):
+def open_gap_issue(source, hours_stale, threshold, *, apply: bool = False):
     title = f"[self-scheduled] {source} feed stale ({hours_stale:.0f}h, threshold {threshold}h)"
     body = (
         f"Barrot self-scheduling detected a gap.\n\n"
@@ -82,6 +82,10 @@ def open_gap_issue(source, hours_stale, threshold):
         f"This issue was opened automatically -- verify the underlying workflow "
         f"(schedule, API limits, credentials) before making changes."
     )
+    if not apply:
+        print(f"DRY RUN: would create and label issue: {title}; no issue mutation performed. Re-run with --apply only after explicit approval.")
+        return
+
     create_result = subprocess.run(
         ["gh", "issue", "create", "--title", title, "--body", body],
         capture_output=True, text=True
@@ -101,7 +105,7 @@ def open_gap_issue(source, hours_stale, threshold):
     if label_result.returncode != 0:
         print(f"FAILED to label issue {issue_url}: {label_result.stderr}", file=sys.stderr)
 
-def main():
+def main(*, apply: bool = False):
     entries = load_entries()
     if not entries:
         print("No entries in knowledge base -- nothing to check.")
@@ -120,11 +124,11 @@ def main():
             if any(source in t for t in existing_titles):
                 print(f"Gap already tracked for {source}, skipping duplicate issue.")
                 continue
-            open_gap_issue(source, stale_hours, threshold)
+            open_gap_issue(source, stale_hours, threshold, apply=apply)
             gaps_found += 1
 
     if gaps_found == 0:
         print("No gaps detected -- all tracked sources within threshold.")
 
 if __name__ == "__main__":
-    main()
+    main(apply="--apply" in sys.argv[1:])

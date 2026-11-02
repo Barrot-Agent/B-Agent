@@ -573,17 +573,118 @@ def test_checkout_branch_resumes_remote_branch_and_rejects_unsafe_names(monkeypa
 
     def fake_run(args, *, check=True, quiet=False):
         calls.append(args)
+        if args == ["git", "status", "--porcelain"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        if args == ["git", "branch", "--show-current"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="main\\n", stderr="")
+        if args[:3] == ["git", "show-ref", "--verify"]:
+            return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="")
         return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
 
     monkeypatch.setattr(module, "run", fake_run)
     module.checkout_branch("barrot/task-42")
-    assert calls[0][1] == "fetch"
-    assert "refs/remotes/origin/barrot/task-42" in calls[0][3]
-    assert calls[1] == ["git", "checkout", "-B", "barrot/task-42", "origin/barrot/task-42"]
+    assert calls[0] == ["git", "status", "--porcelain"]
+    assert calls[1] == ["git", "branch", "--show-current"]
+    assert calls[2][:3] == ["git", "show-ref", "--verify"]
+    assert calls[3][1] == "fetch"
+    assert "refs/remotes/origin/barrot/task-42" in calls[3][3]
+    assert calls[4] == ["git", "switch", "--create", "barrot/task-42", "origin/barrot/task-42"]
 
     import pytest
     with pytest.raises(ValueError, match="Invalid Barrot task branch"):
         module.checkout_branch("../main")
+    with pytest.raises(ValueError, match="Invalid Barrot task branch"):
+        module.checkout_branch("owner:foreign-branch")
+
+
+def test_checkout_branch_refuses_dirty_worktree_before_any_fetch_or_switch(monkeypatch) -> None:
+    import pytest
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_agent_dirty_worktree_test")
+    calls: list[list[str]] = []
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        return module.subprocess.CompletedProcess(args, 0, stdout=" M user-file.txt\\n", stderr="")
+
+    monkeypatch.setattr(module, "run", fake_run)
+    with pytest.raises(RuntimeError, match="dirty worktree"):
+        module.checkout_branch("barrot/task-42")
+    assert calls == [["git", "status", "--porcelain"]]
+
+
+def test_checkout_branch_refuses_existing_local_branch_without_overwriting(monkeypatch) -> None:
+    import pytest
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_agent_existing_branch_test")
+    calls: list[list[str]] = []
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        if args == ["git", "status", "--porcelain"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        if args == ["git", "branch", "--show-current"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="main\\n", stderr="")
+        if args[:3] == ["git", "show-ref", "--verify"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        raise AssertionError(f"Unexpected git command: {args}")
+
+    monkeypatch.setattr(module, "run", fake_run)
+    with pytest.raises(RuntimeError, match="existing local task branch"):
+        module.checkout_branch("barrot/task-42")
+    assert not any(args[1] in {"fetch", "switch"} for args in calls)
+
+
+def test_checkout_branch_creates_new_branch_only_after_remote_absence_is_verified(monkeypatch) -> None:
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_agent_new_branch_test")
+    calls: list[list[str]] = []
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        if args == ["git", "status", "--porcelain"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        if args == ["git", "branch", "--show-current"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="main\\n", stderr="")
+        if args[:3] == ["git", "show-ref", "--verify"]:
+            return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="")
+        if args[1] == "fetch":
+            return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="remote branch not found")
+        if args[1] == "ls-remote":
+            return module.subprocess.CompletedProcess(args, 2, stdout="", stderr="")
+        if args[1] == "switch":
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        raise AssertionError(f"Unexpected git command: {args}")
+
+    monkeypatch.setattr(module, "run", fake_run)
+    module.checkout_branch("barrot/task-42")
+    assert calls[-1] == ["git", "switch", "--create", "barrot/task-42"]
+
+
+def test_checkout_branch_fails_closed_if_remote_exists_but_fetch_fails(monkeypatch) -> None:
+    import pytest
+    monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
+    module = load_script_module("barrot_agent_remote_fetch_failure_test")
+    calls: list[list[str]] = []
+
+    def fake_run(args, *, check=True, quiet=False):
+        calls.append(args)
+        if args == ["git", "status", "--porcelain"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+        if args == ["git", "branch", "--show-current"]:
+            return module.subprocess.CompletedProcess(args, 0, stdout="main\\n", stderr="")
+        if args[:3] == ["git", "show-ref", "--verify"]:
+            return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="")
+        if args[1] == "fetch":
+            return module.subprocess.CompletedProcess(args, 1, stdout="", stderr="non-fast-forward")
+        if args[1] == "ls-remote":
+            return module.subprocess.CompletedProcess(args, 0, stdout="abc refs/heads/barrot/task-42\\n", stderr="")
+        raise AssertionError(f"Unexpected git command: {args}")
+
+    monkeypatch.setattr(module, "run", fake_run)
+    with pytest.raises(RuntimeError, match="Remote task branch exists"):
+        module.checkout_branch("barrot/task-42")
+    assert not any(args[1] == "switch" for args in calls)
 
 
 def test_scientific_discovery_persistence_commits_pushes_and_opens_draft_pr(tmp_path: Path, monkeypatch) -> None:

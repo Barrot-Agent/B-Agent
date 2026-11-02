@@ -417,14 +417,15 @@ def test_persist_audit_report_is_idempotent_when_main_already_matches(tmp_path: 
     assert ("push", "origin", "HEAD:main") not in git_in_calls
 
 
-def test_self_upgrade_workflow_verifies_same_ref_without_branch_switch() -> None:
+def test_self_upgrade_workflow_is_inert_pending_protected_environment() -> None:
     workflow = SELF_UPGRADE_WORKFLOW.read_text(encoding="utf-8")
 
-    assert 'ref: ${{ github.ref_name }}' in workflow
-    assert 'git push origin "HEAD:${GITHUB_REF_NAME}"' in workflow
-    assert 'git ls-remote --heads origin "${GITHUB_REF_NAME}"' in workflow
-    assert "git checkout main" not in workflow
-
+    assert "workflow_dispatch:" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "secrets." not in workflow
+    assert "git push" not in workflow
+    assert "scripts/barrot_self_upgrade.py" not in workflow
 
 def test_self_upgrade_source_avoids_literal_content_gate_terms() -> None:
     source = (REPO_ROOT / "scripts" / "barrot_self_upgrade.py").read_text(encoding="utf-8")
@@ -696,11 +697,68 @@ def test_groq_json_validation_failure_retries_without_response_format(monkeypatc
     assert "response_format" not in seen[1]
 
 
-def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
+def test_controlled_approval_workflow_is_disabled_until_protected_human_review() -> None:
     workflow_path = REPO_ROOT / ".github" / "workflows" / "barrot-approve-pr.yml"
     workflow = workflow_path.read_text(encoding="utf-8")
 
-    assert "base_ref:.base.ref" in workflow
-    assert "head_sha:.head.sha" in workflow
-    assert "head_ref:.head.ref" in workflow
-    assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+    assert "permissions: {}" in workflow
+    assert "if: ${{ false }}" in workflow
+    assert "APPROVAL_NOT_PERFORMED" in workflow
+    assert "pull-requests: write" not in workflow
+    assert "gh api" not in workflow.lower()
+    assert "gh pr" not in workflow.lower()
+
+
+
+def test_scheduled_telemetry_and_accuracy_workflows_are_readonly_artifact_only() -> None:
+    telemetry = (REPO_ROOT / ".github" / "workflows" / "autonomous_self_deployment.yml").read_text(encoding="utf-8")
+    accuracy = (REPO_ROOT / ".github" / "workflows" / "check-signal-accuracy.yml").read_text(encoding="utf-8")
+    for workflow in (telemetry, accuracy):
+        assert "contents: read" in workflow
+        assert "contents: write" not in workflow
+        assert "persist-credentials: false" in workflow
+        assert "actions/upload-artifact@v4" in workflow
+        assert "git commit" not in workflow
+        assert "git push" not in workflow
+    assert "TELEMETRY_ONLY" in telemetry
+    assert "NOT_PERFORMED" in telemetry
+    assert "**Status:** OPERATIONAL" not in telemetry
+
+
+def test_subscriber_sync_is_fully_disabled_pending_server_side_authorization() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "subscriber_sync.yml").read_text(encoding="utf-8")
+    assert "workflow_dispatch:" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    assert "GUMROAD_ACCESS_TOKEN" not in workflow
+    assert "secrets." not in workflow
+    assert "api.gumroad.com" not in workflow
+    assert "emails" not in workflow.lower()
+
+
+def test_databricks_token_rotation_is_disabled_and_accepts_no_token_input() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "rotate-databricks-token.yml").read_text(encoding="utf-8")
+    assert "permissions: {}" in workflow
+    assert "new_token" not in workflow
+    assert "secrets." not in workflow
+    assert "gh secret set" not in workflow
+    assert "gh workflow run" not in workflow
+    assert "ROTATION_NOT_PERFORMED" in workflow
+
+
+def test_external_deployment_workflows_are_disabled_pending_approval() -> None:
+    for name in ("deploy-a2a-worker.yml", "sync-self-hosted-brain.yml"):
+        workflow = (REPO_ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
+        assert "workflow_dispatch:" in workflow
+        assert "push:" not in workflow
+        assert "permissions: {}" in workflow
+        assert "secrets." not in workflow
+        assert "DEPLOYMENT_NOT_PERFORMED" in workflow
+
+
+def test_destructive_hugging_face_admin_workflow_is_disabled() -> None:
+    workflow = (REPO_ROOT / ".github" / "workflows" / "barrot-hf-admin.yml").read_text(encoding="utf-8")
+    assert "permissions: {}" in workflow
+    assert "HF_TOKEN" not in workflow
+    assert "api/repos/delete" not in workflow
+    assert "no external repository was changed" in workflow.lower()
