@@ -261,11 +261,15 @@
     "current_research_pr": {
       "number": 1484,
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1484",
-      "head_sha": "b2f33c22527d6538b26ccc09e21c4f582159c3ae",
+      "head_sha": "67098211f2736808b248b73f3e065b674b8c6f36",
       "base_sha": "ad022ee4e8c4f2605915cb88c029e53924100440",
       "json_readback": "VALID",
       "ci_runs": "NONE_FOUND_WHILE_DRAFT",
-      "status": "OPEN_DRAFT_UNMERGED"
+      "status": "OPEN_DRAFT_UNMERGED",
+      "prior_head_ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41386881887",
+      "prior_head_ci_status": "SUCCESS_ON_PRIOR_HEAD_b88d39069da1ad553a882a1419939b47f4f48071",
+      "latest_head_ci_status": "NOT_YET_REPORTED_FOR_67098211f2736808b248b73f3e065b674b8c6f36",
+      "latest_head_json_readback": "VALID"
     },
     "source_registry_pr": {
       "number": 1485,
