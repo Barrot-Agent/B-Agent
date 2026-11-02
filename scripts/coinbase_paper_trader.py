@@ -188,7 +188,7 @@ def validate_position_product(state, product_id):
 
 
 def validate_trade_log(state):
-    """Require an auditable JSONL trail for every counted simulated trade."""
+    """Require valid decision records and an exact count of executed buy/sell events."""
     trade_count = state.get("trade_count", 0)
     if not isinstance(trade_count, int) or isinstance(trade_count, bool) or trade_count < 0:
         return "aborted -- invalid trade count for decision-log reconciliation"
@@ -200,16 +200,65 @@ def validate_trade_log(state):
         raw = LOG_FILE.read_text(encoding="utf-8")
     except Exception as exc:
         return f"aborted -- decision log is unreadable ({type(exc).__name__})"
+
     lines = [line for line in raw.splitlines() if line.strip()]
+    executed_trades = 0
     for index, line in enumerate(lines, start=1):
         try:
-            json.loads(line, parse_constant=reject_nonfinite_json_constant)
+            record = json.loads(line, parse_constant=reject_nonfinite_json_constant)
         except Exception:
             return f"aborted -- decision log contains invalid JSON at line {index}"
-    if len(lines) < trade_count:
+        if not isinstance(record, dict):
+            return f"aborted -- decision log record {index} is not an object"
+
+        timestamp = record.get("timestamp")
+        if not isinstance(timestamp, str):
+            return f"aborted -- decision log record {index} has no timestamp"
+        try:
+            parsed_timestamp = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+        except ValueError:
+            return f"aborted -- decision log record {index} has an invalid timestamp"
+        if parsed_timestamp.tzinfo is None or parsed_timestamp.utcoffset() is None:
+            return f"aborted -- decision log record {index} has a timezone-naive timestamp"
+
+        product = record.get("product")
+        if not isinstance(product, str) or not product.strip():
+            return f"aborted -- decision log record {index} has no product identity"
+
+        price = record.get("price")
+        if (isinstance(price, bool) or not isinstance(price, (int, float))
+                or not math.isfinite(float(price)) or float(price) <= 0):
+            return f"aborted -- decision log record {index} has an invalid price"
+
+        decision = record.get("decision")
+        if not isinstance(decision, dict) or decision.get("action") not in ("buy", "sell", "hold"):
+            return f"aborted -- decision log record {index} has an invalid decision"
+
+        result = record.get("result")
+        if not isinstance(result, str) or not result.strip():
+            return f"aborted -- decision log record {index} has no result"
+
+        if result.startswith("bought "):
+            if decision["action"] != "buy":
+                return f"aborted -- decision log record {index} buy result/action mismatch"
+            executed_trades += 1
+        elif result.startswith("sold "):
+            if decision["action"] != "sell":
+                return f"aborted -- decision log record {index} sell result/action mismatch"
+            executed_trades += 1
+        elif not (result.startswith("held ") or result.startswith("hold --")):
+            return f"aborted -- decision log record {index} has an unknown result"
+
+        for field in ("portfolio_value_usd", "portfolio_change_this_cycle", "cumulative_return_pct"):
+            value = record.get(field)
+            if (isinstance(value, bool) or not isinstance(value, (int, float))
+                    or not math.isfinite(float(value))):
+                return f"aborted -- decision log record {index} has invalid {field}"
+
+    if executed_trades != trade_count:
         return (
-            f"aborted -- paper state records {trade_count} trades but decision log "
-            f"contains only {len(lines)} entries"
+            f"aborted -- paper state records {trade_count} executed trades but decision log "
+            f"contains {executed_trades} executed trade records"
         )
     return None
 
