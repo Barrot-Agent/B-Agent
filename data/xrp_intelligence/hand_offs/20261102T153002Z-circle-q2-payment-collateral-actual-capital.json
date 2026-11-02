@@ -1,0 +1,262 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T153002Z-circle-q2-payment-collateral-actual-capital",
+  "captured_at_utc": "2026-11-02T15:30:02Z",
+  "evidence_cutoff_utc": "2026-11-02T15:30:02Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "source": {
+    "publisher": "Circle Internet Group",
+    "publication_date": "2026-08-05",
+    "title": "Circle Reports Second Quarter 2026 Results",
+    "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+    "classification": "official_company_results_and_business_update"
+  },
+  "reported_metrics": [
+    {
+      "metric": "USDC in circulation at quarter end",
+      "value": 73300000000,
+      "unit": "USD",
+      "period_end": "2026-06-30",
+      "yoy_growth_percent": 19,
+      "classification": "point_in_time_token_supply"
+    },
+    {
+      "metric": "USDC onchain transaction volume",
+      "value": 14800000000000,
+      "unit": "USD",
+      "period": "2026-Q2",
+      "yoy_growth_percent": 151,
+      "classification": "gross_onchain_transaction_volume",
+      "caveat": "Not net external settlement, not net new capital, and not unique customer payment volume. May include exchange, DeFi, internal and repeated transfers."
+    },
+    {
+      "metric": "Circle Payments Network volume",
+      "value": 14700000000,
+      "unit": "USD annualized",
+      "measurement": "trailing 30 days as of 2026-06-30",
+      "qoq_growth_percent": 76,
+      "classification": "annualized_run_rate",
+      "caveat": "This is not $14.7B of actual Q2 settled volume. Underlying trailing-30-day realized volume is not stated as a separate number."
+    },
+    {
+      "metric": "Financial institutions enrolled in CPN",
+      "value": 175,
+      "measurement_date": "2026-06-30",
+      "qoq_growth_percent": 29,
+      "classification": "enrollment_count",
+      "caveat": "Enrolled is not synonymous with active, live, transacting or production-volume contribution."
+    },
+    {
+      "metric": "USDC share of Circle Agent Stack x402 agent-payment volume",
+      "value": 99.3,
+      "unit": "percent",
+      "period": "2026-H1/Q2 business update",
+      "classification": "reported_volume_share",
+      "caveat": "This is volume share within Circle's Agent Stack x402 context, not share of all agentic payments, all x402 transactions, or global payments."
+    },
+    {
+      "metric": "Paid services on Circle Agent Stack",
+      "value": 900,
+      "qualifier": "more than",
+      "classification": "service_catalog_count",
+      "caveat": "Service count is not payment volume, active users or settlement capital."
+    },
+    {
+      "metric": "USDC reserve income",
+      "value": 668000000,
+      "unit": "USD",
+      "period": "2026-Q2",
+      "classification": "issuer_revenue"
+    },
+    {
+      "metric": "Distribution, transaction and other costs",
+      "value": 412000000,
+      "unit": "USD",
+      "period": "2026-Q2",
+      "classification": "issuer_cost"
+    }
+  ],
+  "institutional_relationships": [
+    {
+      "entity": "BNY",
+      "relationship": "Circle expanded its partnership with BNY; BNY added USDC minting and redemption directly within its Digital Asset Custody platform, building on BNY's existing role as primary custodian of USDC reserves.",
+      "classification": "official_company_statement",
+      "operational_limit": "No client-level USDC balance, custody AUC/A or mint/redemption volume through BNY is disclosed in this announcement."
+    },
+    {
+      "entity": "Marex",
+      "relationship": "Circle says Marex enabled the first stablecoin-powered initial-margin transaction in regulated derivatives clearing, allowing institutional clients to post USDC as collateral for CFTC-regulated derivatives under a December 2025 CFTC no-action letter.",
+      "classification": "company_reported_institutional_collateral_use",
+      "operational_limit": "The announcement does not disclose collateral balance, transaction count, client count, or the proportion of Marex initial margin represented by USDC."
+    },
+    {
+      "entity": "Nium",
+      "relationship": "Circle says Nium connected USDC settlement to its global payout infrastructure across more than 190 countries through CPN.",
+      "classification": "company_reported_payment_integration",
+      "operational_limit": "190+ country reach is network coverage, not actual payments in every country; route-level volume and active-corridor count are undisclosed."
+    },
+    {
+      "entity": "JCB",
+      "relationship": "Circle says JCB combined Circle stablecoin infrastructure with its merchant network, initially focusing on cross-border treasury transfers and in-store stablecoin payment experiences in Japan.",
+      "classification": "company_reported_collaboration",
+      "operational_limit": "No production go-live date, merchant count, settlement value or XRP integration disclosed."
+    },
+    {
+      "entity": "SBI Group",
+      "relationship": "Circle identifies SBI Group as a founding third-party validator in Arc's validator cohort.",
+      "classification": "official_company_statement",
+      "operational_limit": "This is an SBI Group/Arc governance-validator relationship, not a relationship with the separate Japanese SBIC regional companies and not evidence of XRP purchases."
+    },
+    {
+      "entity": "BlackRock",
+      "relationship": "Circle says BlackRock was expected to deploy BUIDL on Arc.",
+      "classification": "company_statement_about_expected_deployment",
+      "operational_limit": "The Q2 announcement is forward-looking; it does not itself prove current deployed balances or live settlement."
+    },
+    {
+      "entity": "DTCC",
+      "relationship": "Circle says DTCC would enable tokenization of DTC-custodied assets on Arc.",
+      "classification": "company_statement_about_planned_integration",
+      "operational_limit": "Do not treat this as completed tokenization or actual XRP/RLUSD capital."
+    }
+  ],
+  "relationship_graph": [
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "relation": "issuer through regulated affiliates",
+      "classification": "confirmed"
+    },
+    {
+      "from": "Circle",
+      "to": "Circle Payments Network",
+      "relation": "stablecoin/fiat payment network",
+      "classification": "confirmed"
+    },
+    {
+      "from": "BNY",
+      "to": "USDC reserves",
+      "relation": "primary reserve custodian per Circle",
+      "classification": "confirmed_company_statement"
+    },
+    {
+      "from": "BNY",
+      "to": "USDC mint/redemption",
+      "relation": "direct institutional access within Digital Asset Custody",
+      "classification": "confirmed_company_statement"
+    },
+    {
+      "from": "Marex",
+      "to": "USDC",
+      "relation": "reported initial-margin collateral use for regulated derivatives",
+      "classification": "company_reported"
+    },
+    {
+      "from": "Nium",
+      "to": "USDC",
+      "relation": "reported global payout and CPN settlement integration",
+      "classification": "company_reported"
+    },
+    {
+      "from": "JCB",
+      "to": "Circle stablecoin infrastructure",
+      "relation": "Japanese treasury and merchant-payment collaboration",
+      "classification": "company_reported"
+    },
+    {
+      "from": "SBI Group",
+      "to": "Arc",
+      "relation": "founding validator",
+      "classification": "confirmed_company_statement"
+    },
+    {
+      "from": "Circle",
+      "to": "ACI Worldwide",
+      "relation": "separate October 27 USDC settlement pilot in Colombia",
+      "classification": "joint_announcement"
+    },
+    {
+      "from": "Circle",
+      "to": "Coinbase",
+      "relation": "USDC distribution/economic partnership",
+      "classification": "SEC_filings_and_company_disclosures"
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relation": "separate multi-network distribution launched October 28",
+      "classification": "joint_announcement"
+    },
+    {
+      "from": "Circle/USDC",
+      "to": "XRP/XRPL",
+      "relation": "USDC also exists natively on XRPL; no claim that Circle's CPN or x402 flows use XRP as bridge asset",
+      "classification": "explicit_non_inference"
+    }
+  ],
+  "actual_capital_reconciliation": {
+    "73.3B_USDC_circulation": "Stock at quarter-end.",
+    "14.8T_onchain_volume": "Gross repeated transaction activity across USDC networks; not net new capital or external settlement.",
+    "14.7B_CPN_annualized": "Trailing-30-day run rate multiplied/expressed annually; not actual quarter settlement.",
+    "175_FI_enrolled": "Enrollment count; not necessarily active production users.",
+    "99.3_percent_x402": "Volume share within Circle Agent Stack's x402 activity; not global market share.",
+    "900_plus_paid_services": "Catalog size; not users or transaction count.",
+    "Marex_USDC_collateral": "Qualitative company-reported use; actual posted amount undisclosed.",
+    "Nium_190_plus_countries": "Potential coverage footprint; actual active corridor usage undisclosed."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "CIRCLE-H1-USDC-COLLATERAL-RAIL",
+      "claim": "USDC is gaining institutional collateral utility beyond spot trading, including regulated derivatives margin.",
+      "support": "Circle's report identifies Marex initial-margin use and BNY mint/redemption access.",
+      "disconfirming_or_unknown": "No USDC collateral amount, open positions, client concentration or repeated transaction series disclosed.",
+      "status": "USE_CASE_CONFIRMED_BY_COMPANY; CAPITAL_SCALE_UNKNOWN"
+    },
+    {
+      "id": "CIRCLE-H2-CPN-REAL_SETTLEMENT_SCALE",
+      "claim": "CPN's $14.7B annualized figure indicates meaningful institutional settlement adoption.",
+      "support": "Circle reports 175 enrolled institutions and a 76% quarter-over-quarter increase in annualized trailing-30-day volume.",
+      "disconfirming_or_unknown": "The $14.7B is a run rate, not actual Q2 volume; enrollment does not prove activity; no route-level net settlement or independent payment-rail reconciliation is provided.",
+      "status": "COMPANY_REPORTED_RUN_RATE; NET_EXTERNAL_SETTLEMENT_NOT_INDEPENDENTLY_MEASURED"
+    },
+    {
+      "id": "CIRCLE-H3-USDC-XRP-COMPETITION",
+      "claim": "Circle's bank, collateral, payout and agentic-payment integrations could compete with XRP-based bridge and payment use cases.",
+      "support": "Marex, Nium, JCB, BNY and ACI relationships broaden USDC's institutional utility.",
+      "disconfirming_or_unknown": "No corridor-by-corridor XRP-versus-USDC cost, FX, speed, depth or market-share comparison. USDC is also native on XRPL and can complement XRPL activity.",
+      "status": "COMPETITIVE_SCENARIO; ROUTE_LEVEL_EFFECT_UNKNOWN"
+    }
+  ],
+  "feature_admission": {
+    "usdc_circulation": "Point-in-time supply stock, separate by chain and issuer/bridge contract.",
+    "usdc_onchain_volume": "Gross activity feature only after de-duplication and classification; never label as actual capital.",
+    "cpn_annualized_run_rate": "Keep distinct from realized trailing-30-day volume and quarterly settled value.",
+    "fi_enrollment": "Enrollment metric only; do not equate with active institutions.",
+    "marex_collateral": "Qualitative collateral-use event until amounts and timestamps are disclosed.",
+    "nium_and_jcb": "Integration/coverage events only until actual settlement volumes are disclosed.",
+    "xrp_demand": "No XRP demand or price-direction feature admitted from Circle's USDC metrics."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "The reported metrics establish institutional product reach and use cases but do not provide synchronized net external settlement, XRP bridge usage or calibrated causal evidence for a directional XRP forecast."
+  },
+  "next_actions": [
+    "Reconcile Circle's November 4 Q3 results with Q2 run-rate definitions and actual USDC circulation.",
+    "Seek realized trailing-30-day CPN settlement value, active institution count and corridor distribution, separating gross from net.",
+    "Track BNY USDC mint/redemption volumes and compare with its RLUSD reserve-custody role.",
+    "Track Marex USDC collateral amounts and eligible collateral rules; compare with Coinbase XRP/cbXRP collateral channels.",
+    "Measure Nium and JCB production go-live, active routes, settlement value and FX costs.",
+    "Measure whether USDC activity on XRPL produces direct RLUSD/USDC flows or executed XRP bridge swaps."
+  ],
+  "safety": {
+    "append_only": true,
+    "no_prior_artifact_overwrite": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_manual_workflow_dispatch": true,
+    "no_secret_access": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}
