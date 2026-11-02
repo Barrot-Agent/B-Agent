@@ -51,6 +51,7 @@ def test_pillars_source_checks_do_not_claim_deployed_runtime_verification(monkey
     response.json.return_value = {
         "content": base64.b64encode("Barrot-Ω".encode("utf-8")).decode("ascii")
     }
+    response.text = "clean source"
     monkeypatch.setattr(pillars_check.requests, "get", lambda url, **kwargs: response)
 
     ok, detail = pillars_check.check_repo_source_marker()
