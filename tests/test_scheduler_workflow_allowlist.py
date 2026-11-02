@@ -50,6 +50,17 @@ def test_schedule_rejects_existing_but_unapproved_workflow(tmp_path, monkeypatch
         scheduler.schedule("force-deploy-space.yml", "2026-11-03T00:00:00Z")
 
 
+def test_schedule_rejects_naive_run_after_timestamp(tmp_path, monkeypatch):
+    scheduler = load_scheduler()
+    workflows = tmp_path / "workflows"
+    workflows.mkdir()
+    (workflows / "ci.yml").write_text("name: CI", encoding="utf-8")
+    monkeypatch.setattr(scheduler, "WORKFLOWS_DIR", str(workflows))
+    monkeypatch.setattr(scheduler, "QUEUE_PATH", str(tmp_path / "queue.jsonl"))
+    with pytest.raises(SystemExit, match="include a timezone offset"):
+        scheduler.schedule("ci.yml", "2026-11-03T00:00:00")
+
+
 def test_schedule_rejects_inputs_for_allowlisted_workflows(tmp_path, monkeypatch):
     scheduler = load_scheduler()
     workflows = tmp_path / "workflows"
@@ -87,6 +98,31 @@ def test_tick_rejects_tampered_queue_entry_before_dispatch(tmp_path, monkeypatch
     entry = json.loads(queue.read_text(encoding="utf-8").splitlines()[0])
     assert entry["status"] == "failed"
     assert "safe dispatch allowlist" in entry["error"]
+    assert calls == []
+
+
+def test_tick_marks_naive_run_after_failed_without_dispatch(tmp_path, monkeypatch):
+    scheduler = load_scheduler()
+    workflows = tmp_path / "workflows"
+    workflows.mkdir()
+    (workflows / "ci.yml").write_text("name: CI", encoding="utf-8")
+    queue = tmp_path / "queue.jsonl"
+    write_queue(queue, {
+        "id": "unsafe-naive-time-1",
+        "workflow": "ci.yml",
+        "inputs": {},
+        "run_after": "2026-11-02T00:00:00",
+        "status": "pending",
+    })
+    monkeypatch.setattr(scheduler, "WORKFLOWS_DIR", str(workflows))
+    monkeypatch.setattr(scheduler, "QUEUE_PATH", str(queue))
+    monkeypatch.setattr(scheduler, "_now", lambda: datetime(2026, 11, 2, 6, 0, tzinfo=timezone.utc))
+    calls = []
+    monkeypatch.setattr(scheduler.subprocess, "run", lambda *args, **kwargs: calls.append(args))
+    scheduler.tick()
+    entry = json.loads(queue.read_text(encoding="utf-8").splitlines()[0])
+    assert entry["status"] == "failed"
+    assert "timezone offset" in entry["error"]
     assert calls == []
 
 

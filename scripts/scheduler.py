@@ -67,10 +67,14 @@ def schedule(workflow, run_after_iso, note="", inputs=None):
         sys.exit(f"Refusing to schedule: '{workflow}' is not in the safe workflow allowlist")
     if inputs is not None and inputs != {}:
         sys.exit("Refusing to schedule workflow inputs; allowlisted workflows must be input-free")
+    if not isinstance(run_after_iso, str):
+        sys.exit("run_after must be a timezone-aware ISO 8601 string")
     try:
-        datetime.fromisoformat(run_after_iso.replace("Z", "+00:00"))
+        parsed_run_after = datetime.fromisoformat(run_after_iso.replace("Z", "+00:00"))
     except ValueError:
         sys.exit(f"run_after must be real ISO 8601, got: {run_after_iso}")
+    if parsed_run_after.tzinfo is None or parsed_run_after.utcoffset() is None:
+        sys.exit("run_after must include a timezone offset (for example Z or +00:00)")
 
     entry = {
         "id": str(uuid.uuid4())[:8],
@@ -97,11 +101,19 @@ def tick():
     for e in entries:
         if e["status"] != "pending":
             continue
-        try:
-            due = datetime.fromisoformat(e["run_after"].replace("Z", "+00:00"))
-        except ValueError:
+        raw_run_after = e.get("run_after")
+        if not isinstance(raw_run_after, str):
             e["status"] = "failed"
-            e["error"] = "unparseable run_after"
+            e["error"] = "missing or non-string run_after"
+            changed = True
+            continue
+        try:
+            due = datetime.fromisoformat(raw_run_after.replace("Z", "+00:00"))
+            if due.tzinfo is None or due.utcoffset() is None:
+                raise ValueError("run_after must include a timezone offset")
+        except ValueError as exc:
+            e["status"] = "failed"
+            e["error"] = str(exc)[:300]
             changed = True
             continue
         if due > now:
