@@ -1,5 +1,31 @@
 {
-  "checked_count": 1697,
-  "correct_count": 772,
-  "accuracy_pct": 45.5
+  "schema_version": "2.0",
+  "status": "NOT_EVALUATED",
+  "metric_status": "NOT_COMPARABLE",
+  "checked_count": 0,
+  "correct_count": 0,
+  "accuracy_pct": null,
+  "reason": "The fixed-horizon forecast/outcome ledger is proposed in draft PR #1486 but is not yet active on main. No verified XRP forecasts and resolved outcomes exist. No predictive-skill estimate is available. No live market data was queried.",
+  "legacy_metric": {
+    "status": "NOT_COMPARABLE",
+    "checked_count": 1697,
+    "correct_count": 772,
+    "accuracy_pct": 45.5,
+    "reason": "Preserved from the current main-branch snapshot for audit only; variable-horizon scoring and mutable historical rows prevent interpretation as predictive skill."
+  },
+  "evaluation_protocol": {
+    "status": "PROPOSED_NOT_ACTIVE_ON_MAIN",
+    "target": "XRP/USD return and direction",
+    "horizon_seconds": null,
+    "data_cutoff_utc": null,
+    "requirements": [
+      "immutable forecast timestamp and data cutoff",
+      "predeclared fixed horizon and target definition",
+      "point-in-time features with leakage prevention",
+      "baseline comparison and walk-forward evaluation",
+      "probability calibration and uncertainty reporting",
+      "recorded outcome after the horizon closes"
+    ],
+    "implementation": "draft PR #1486: barrot_agent.research.fixed_horizon.ForecastLedger"
+  }
 }
