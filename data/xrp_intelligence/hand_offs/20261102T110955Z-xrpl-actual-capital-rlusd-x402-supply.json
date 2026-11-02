@@ -762,6 +762,14 @@
       "published_at": "2026-06-11",
       "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
       "independence": "Episode listing identifies Dr. Kamilah Stevenson; transcript uses Camila/Camilla variants. It does not establish the surname Stephenson."
+    },
+    {
+      "id": "KRAKEN-XRPUSD-PUBLIC-TICKER",
+      "publisher": "Kraken",
+      "published_at_utc": null,
+      "retrieved_at_utc": "2026-11-02T11:14:18Z",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "independence": "Primary public exchange ticker endpoint; single venue and single capture."
     }
   ],
   "identity_threads": {
@@ -828,5 +836,33 @@
       "direction": "positive for +100bp; negative for -100bp"
     },
     "caveat": "Internal sensitivity model; not a forecast. Circle explicitly says the effect of rate changes on USDC circulation and end-user behavior is uncertain."
-  }
+  },
+  "venue_snapshots": [
+    {
+      "provider": "Kraken public REST ticker",
+      "market": "XRP/USD",
+      "captured_at_utc": "2026-11-02T11:14:18Z",
+      "raw_observation": {
+        "last_price_usd": 1.24673,
+        "best_bid_usd": 1.24666,
+        "best_bid_size_xrp": 4011,
+        "best_ask_usd": 1.24667,
+        "best_ask_size_xrp": 192,
+        "spread_usd": 0.00001,
+        "volume_24h_xrp": 16689557.07057357,
+        "vwap_24h_usd": 1.24869322,
+        "high_24h_usd": 1.26254,
+        "low_24h_usd": 1.23996,
+        "open_day_usd": 1.24911,
+        "trades_24h": 16376
+      },
+      "derived": {
+        "spread_bps_approx": 0.0802,
+        "last_vs_vwap_pct_approx": -0.157,
+        "location_in_24h_range_approx": 0.3
+      },
+      "interpretation": "One Kraken XRP/USD venue snapshot, not a global price or consolidated order book. The displayed bid/ask sizes are top-of-book quantities only; they do not measure depth across multiple levels or other exchanges.",
+      "source": "KRAKEN-XRPUSD-PUBLIC-TICKER"
+    }
+  ]
 }
