@@ -19,7 +19,7 @@ def load_scheduler():
 
 def write_queue(path, entry):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(entry) + "\\n", encoding="utf-8")
+    path.write_text(json.dumps(entry) + "\n", encoding="utf-8")
 
 
 def test_scheduler_allowlist_contains_only_read_only_validation_workflows():
