@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T170748Z-xrp-market-data-quality-etf-derivatives-snapshot",
+  "created_at_utc": "2026-11-02T17:07:48Z",
+  "data_cutoff_utc": "2026-11-02T09:45:00Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "status": {
+    "research": "EXECUTED_SOURCE_RETRIEVAL",
+    "raw_exchange_api_verification": "NOT_EXECUTED",
+    "synchronized_market_snapshot": "NOT_AVAILABLE",
+    "forecast": "NOT_ISSUED",
+    "predictive_skill": "NOT_ESTABLISHED"
+  },
+  "observations": [
+    {
+      "metric": "XRP/USD spot",
+      "value": 1.24,
+      "unit": "USD",
+      "source": "CoinMarketCap",
+      "source_ref": "turn147923search7",
+      "source_time": "crawl/current page; exact capture time not exposed",
+      "coverage": "aggregated market page",
+      "eligibility": "context_only",
+      "notes": "Market capitalization approximately 79.05B USD; 24h volume approximately 778.55M USD; circulating supply approximately 63.351B XRP; total supply approximately 99.98B XRP."
+    },
+    {
+      "metric": "XRP/USD mark price",
+      "value": 1.2518,
+      "unit": "USD",
+      "source": "TradRadar",
+      "source_ref": "turn147923search8",
+      "source_time": "2026-11-02T09:45:00Z",
+      "coverage": "provider's seven-exchange futures market summary",
+      "eligibility": "provider_specific",
+      "notes": "Not a consolidated spot price."
+    },
+    {
+      "metric": "XRP/USD spot",
+      "value": 1.2522,
+      "unit": "USD",
+      "source": "Alpha Finance",
+      "source_ref": "turn147923search4",
+      "source_time": "2026-11-02T08:36:00Z",
+      "coverage": "all-venue liquidation heatmap page",
+      "eligibility": "provider_specific",
+      "notes": "Page describes spot price alongside modelled futures liquidation levels."
+    },
+    {
+      "metric": "XRP futures open interest",
+      "value": 1.92,
+      "unit": "USD billions",
+      "source": "TradRadar",
+      "source_ref": "turn147923search8",
+      "source_time": "2026-11-02T09:45:00Z",
+      "coverage": "seven exchanges",
+      "eligibility": "provider_specific",
+      "notes": "Reported 24h change +1.79%; OI-weighted funding +0.0075% per eight hours; at least 1.37M USD 24h liquidations, including 1.05M longs and 317.39K shorts; long-account share 78.1% across five exchanges."
+    },
+    {
+      "metric": "XRP futures open interest",
+      "value": 1.35,
+      "unit": "USD billions",
+      "source": "Liqwall",
+      "source_ref": "turn147923search1",
+      "source_time": "2026-11-02T08:32:00Z",
+      "coverage": "all exchanges per provider",
+      "eligibility": "provider_specific",
+      "notes": "Reported 24h change +1.0%; average funding +0.0040% per eight hours; 1.3M USD 24h liquidations, 1.0M longs and 273K shorts; Binance long-account share 71.7%."
+    },
+    {
+      "metric": "XRP futures open interest",
+      "value": 2.86,
+      "unit": "USD billions",
+      "source": "Alpha Finance",
+      "source_ref": "turn147923search4",
+      "source_time": "2026-11-02T08:36:00Z",
+      "coverage": "all exchanges aggregated; exact venue list not exposed in search result",
+      "eligibility": "provider_specific",
+      "notes": "24h volume approximately 1.25B USD. Liquidation heatmap levels are modelled from OI and standard leverage tiers, not verified position-level liquidation prices."
+    },
+    {
+      "metric": "XRP perpetual futures open interest",
+      "value": 3.562,
+      "unit": "USD billions",
+      "source": "CoinGecko",
+      "source_ref": "turn147923search13",
+      "source_time": "not exposed; page crawled two days before retrieval",
+      "coverage": "perpetual futures aggregate; venue methodology not exposed in result",
+      "eligibility": "stale_context_only",
+      "notes": "Not eligible for synchronized November 2 comparisons."
+    },
+    {
+      "metric": "XRP ETF daily net flow",
+      "value": 8.4,
+      "unit": "USD millions",
+      "source": "Alpha Finance / SoSoValue-derived",
+      "source_ref": "turn147923search2",
+      "source_time": "2026-10-29 US session",
+      "coverage": "five US spot XRP funds",
+      "eligibility": "historical_flow",
+      "notes": "Thirty-session flow approximately 98.9M USD; cumulative net inflows approximately 1.73B USD."
+    },
+    {
+      "metric": "XRP ETF daily net flow",
+      "value": 8.4316,
+      "unit": "USD millions",
+      "source": "ChainCatcher reporting SoSoValue",
+      "source_ref": "turn147923search3",
+      "source_time": "2026-10-29 US session",
+      "coverage": "US spot XRP ETFs; fund coverage definition not fully specified",
+      "eligibility": "historical_flow",
+      "notes": "This is substantially the same underlying SoSoValue observation as the Alpha Finance figure, not independent corroboration. Reported cumulative net inflows approximately 1.809B USD and net assets approximately 1.465B USD."
+    },
+    {
+      "metric": "XRP ETF assets under management",
+      "value": 1.5,
+      "unit": "USD billions",
+      "source": "TheXRPInvestor",
+      "source_ref": "turn147923search11",
+      "source_time": "last updated 2026-11-01",
+      "coverage": "tracker claims 12 products",
+      "eligibility": "secondary_unreconciled",
+      "notes": "Reports approximately 1.20B XRP in trust. Product category counts shown as 6 spot + 4 derivative + 1 index = 11, not 12; one product is unclassified or the count is inconsistent."
+    }
+  ],
+  "data_quality_findings": [
+    {
+      "id": "DQ-001",
+      "severity": "high",
+      "finding": "Derivatives open-interest providers report 1.35B, 1.92B and 2.86B USD in nearby but not synchronized captures; CoinGecko shows 3.562B USD without a precise current timestamp.",
+      "treatment": "Do not average. Preserve provider, capture time, venue coverage, contract type and methodology; require contract-level normalization."
+    },
+    {
+      "id": "DQ-002",
+      "severity": "high",
+      "finding": "ETF cumulative net inflows differ between the five-fund Alpha Finance tracker (1.73B USD) and the broader SoSoValue-derived report (1.809B USD).",
+      "treatment": "Treat as a coverage/methodology difference until fund-by-fund creations/redemptions and dates are reconciled."
+    },
+    {
+      "id": "DQ-003",
+      "severity": "medium",
+      "finding": "TheXRPInvestor reports 12 products but its displayed categories sum to 11.",
+      "treatment": "Exclude product count and aggregate AUM from model features until the missing classification is resolved."
+    },
+    {
+      "id": "DQ-004",
+      "severity": "medium",
+      "finding": "Price observations range from 1.24 to 1.2522 USD with different capture times and provider methodologies.",
+      "treatment": "Do not interpret the spread as arbitrage or a single-time market dislocation."
+    },
+    {
+      "id": "DQ-005",
+      "severity": "high",
+      "finding": "Liquidation heatmap levels are modelled from open interest and standard leverage tiers, not observed individual positions.",
+      "treatment": "Use only as scenario/pressure estimates; never label modelled clusters as guaranteed liquidation triggers."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Positive cumulative XRP ETF net flows may provide structural demand support.",
+      "support": "Cumulative net inflows remain positive in secondary trackers.",
+      "disconfirming": "Latest reported daily inflow is small relative to cumulative flows; October price weakness and daily outflows occurred.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "H2",
+      "claim": "Long-skewed futures positioning can amplify downside if spot liquidity thins.",
+      "support": "TradRadar reports 78.1% long accounts and positive funding; Liqwall reports 71.7% Binance long accounts.",
+      "disconfirming": "Account ratios are not notional positioning; OI totals differ materially; no causal price-impact study was performed.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "H3",
+      "claim": "High reported OI indicates leverage is an important XRP market-structure variable.",
+      "support": "All providers report substantial XRP derivatives OI.",
+      "disconfirming": "Provider scope and timestamps are inconsistent; aggregate totals are not comparable yet.",
+      "status": "UNRESOLVED"
+    },
+    {
+      "id": "H4",
+      "claim": "Stablecoin and institutional payment-rail expansion can complement or compete with XRP bridge utility depending on corridor and settlement design.",
+      "support": "Existing USDC/RLUSD distribution, custody and payment integrations are documented in prior artifacts.",
+      "disconfirming": "No matched corridor-level net settlement or XRP bridge-volume comparison is available.",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "upcoming_events": [
+    {
+      "event": "Circle Q3 2026 earnings release and webcast",
+      "time_utc": "2026-11-04T13:00:00Z",
+      "source": "Circle official investor announcement",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "status": "SCHEDULED_NOT_YET_RELEASED"
+    }
+  ],
+  "forecast_record": {
+    "status": "NOT_ISSUED",
+    "reason": "Market snapshots are not synchronized, derivatives coverage is unreconciled, ETF coverage differs, and verified out-of-sample calibration has not been established.",
+    "target": null,
+    "horizon": null,
+    "probability": null,
+    "confidence": null,
+    "alternatives": [],
+    "outcome": null
+  },
+  "provenance": {
+    "primary_sources_used": 0,
+    "secondary_market_data_sources": [
+      "CoinMarketCap",
+      "TradRadar",
+      "Liqwall",
+      "Alpha Finance",
+      "CoinGecko",
+      "TheXRPInvestor",
+      "ChainCatcher reporting SoSoValue"
+    ],
+    "independence_notes": "Alpha Finance and ChainCatcher both expose SoSoValue-derived ETF data; count as one underlying source family for the October 29 flow observation. No provider data was treated as independent raw-exchange verification.",
+    "retrieval_mode": "public web search results",
+    "raw_exchange_api_calls": "NOT_EXECUTED",
+    "immutable_raw_payload_hashes": "NOT_CAPTURED"
+  },
+  "next_actions": [
+    "Retrieve timestamp-aligned XRP/USD spot and order-book snapshots from named venues.",
+    "Normalize futures open interest by venue, contract type, quote currency and timestamp.",
+    "Reconcile ETF flows by fund and creation/redemption date using issuer filings and SoSoValue source data.",
+    "Build an immutable point-in-time market feature store before walk-forward evaluation.",
+    "Capture Circle Q3 results on November 4 and reconcile USDC circulation, reserve income, distribution costs and chain settlement."
+  ]
+}
