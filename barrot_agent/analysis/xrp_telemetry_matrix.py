@@ -42,7 +42,7 @@ def validate_snapshot(s):
     sources = s.get("sources", [])
     if not isinstance(sources, list):
         raise EvidenceError("sources must be a list")
-    ids, groups = set(), set()
+    ids, groups, retrieval_times = set(), set(), []
     for i, src in enumerate(sources):
         if not isinstance(src, dict):
             raise EvidenceError(f"sources[{i}] must be an object")
@@ -52,8 +52,10 @@ def validate_snapshot(s):
             raise EvidenceError("source URLs must use HTTPS")
         groups.add(_text(src.get("independence_group"), f"sources[{i}].independence_group"))
         _text(src.get("evidence_class"), f"sources[{i}].evidence_class")
-        if _utc(src.get("retrieved_at_utc"), f"sources[{i}].retrieved_at_utc") > captured:
+        retrieved_at = _utc(src.get("retrieved_at_utc"), f"sources[{i}].retrieved_at_utc")
+        if retrieved_at > captured:
             raise EvidenceError("source retrieval time follows snapshot capture")
+        retrieval_times.append(retrieved_at)
         if sid in ids:
             raise EvidenceError(f"duplicate source_id: {sid}")
         ids.add(sid)
@@ -82,6 +84,8 @@ def validate_snapshot(s):
         return {"sources": len(ids), "groups": groups, "observations": len(observations), "venues": venues}
     if status != "ISSUED":
         raise EvidenceError("forecast status must be NOT_ISSUED or ISSUED")
+    if any(retrieved_at > cutoff for retrieved_at in retrieval_times):
+        raise EvidenceError("source retrieval time follows forecast data cutoff")
     for field in ("target", "horizon", "model_version"):
         _text(forecast.get(field), f"forecast.{field}")
     _num(forecast.get("probability"), "probability", 0, 1)
