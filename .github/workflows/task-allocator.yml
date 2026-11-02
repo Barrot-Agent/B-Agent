@@ -6,6 +6,11 @@ on:
       goal:
         description: "Refactor goal for Barrot to split across barrot/gpt/ibm_bob"
         required: true
+      confirm:
+        description: "Authorize one allocation run; generated worker pull requests remain draft"
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: write
@@ -13,6 +18,7 @@ permissions:
 
 jobs:
   allocate:
+    if: ${{ inputs.confirm == true && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
@@ -31,13 +37,15 @@ jobs:
         run: |
           git config user.email "barrot@barrot-agent.com"
           git config user.name "Barrot-Agent"
-      - name: Diagnose available secrets (names only)
-        run: gh secret list || echo "gh secret list not permitted with this token"
       - name: Allocate and dispatch
         run: python3 scripts/barrot_task_allocator.py
-      - name: Commit allocation record
-        run: |
-          git checkout main
-          git add allocation_run_*.json tasks/ 2>/dev/null || true
-          git diff --cached --quiet || git commit -m "Task allocation run [skip ci]"
-          git push || (git pull --no-rebase --no-edit origin main && git push)
+      - name: Preserve allocation outputs as workflow artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: barrot-task-allocation-${{ github.run_id }}
+          path: |
+            allocation_run_*.json
+            tasks/
+          if-no-files-found: ignore
+          retention-days: 30
