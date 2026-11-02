@@ -222,14 +222,61 @@
   "repository_handoff": {
     "inspected_main_sha": "ad022ee4e8c4f2605915cb88c029e53924100440",
     "inspected_at_utc": "2026-11-02T03:52:12Z",
-    "main_change": "Cross-analysis refresh changed only ping-pongings/knowledge-base/sentiment_shift.json; current main still has active write-capable Cross Analysis, Scheduler Tick and Merge Queue workflows.",
-    "source_pr_1483_head": "d55323499f8e1ae5c4a37079d2d4d8ab46659132",
-    "source_pr_1483_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41381448277",
-    "source_pr_1483_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41381448288",
-    "source_pr_1483_status": "OPEN_DRAFT_UNMERGED; exact-head CI and fail-closed gate passed.",
-    "new_branch": "research/binance-xrpl-account-etf-reconciliation-ad022-20261102T0401Z",
-    "new_branch_base": "ad022ee4e8c4f2605915cb88c029e53924100440",
-    "preservation": "Research-only JSON. No main ref modification, merge, force-push, workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
+    "main_change": "Cross-analysis refresh changed only ping-pongings/knowledge-base/sentiment_shift.json. Current main still has active write-capable Scheduler Tick, Merge Queue and Cross Analysis workflows.",
+    "security_pr": {
+      "number": 1480,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1480",
+      "head_sha": "b25da91ad0c8ebd9fa0362022d5983da687e0d9c",
+      "base_sha": "d84915325f3d6f69f5c7131c9ceb9b5c4040e3ec",
+      "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41370708032",
+      "ci_status": "SUCCESS_ON_EXACT_HEAD",
+      "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41370708029",
+      "gate_status": "SUCCESS_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "residual_review": "The core barrot-agent.yml worker still retains contents/pull-requests/issues write and GROQ_API_KEY in the proposal. Its manual dispatch is restricted to the repository owner and issue/scheduled triggers are restricted to owner-authored or Barrot-Agent tasks. This is an intentional execution-worker exception requiring continued review, not a fully read-only quarantine."
+    },
+    "prediction_pr": {
+      "number": 1482,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1482",
+      "head_sha": "bd9fd2fc68ce20c8b90687db3d4ff6e7a64005c9",
+      "base_sha": "8e966c7d53b5f80acf3653acfecbc862bb356fb3",
+      "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41376543022",
+      "ci_status": "425_TESTS_PLUS_8_SUBTESTS_PASSED",
+      "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41376542992",
+      "gate_status": "SUCCESS_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED",
+      "remaining_gap": "Fixed-horizon ledger does not yet check a trusted source-registry registration timestamp against the forecast data cutoff or outcome-record time."
+    },
+    "prior_research_pr": {
+      "number": 1483,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1483",
+      "head_sha": "d55323499f8e1ae5c4a37079d2d4d8ab46659132",
+      "base_sha": "fca0ed9645bd428373694229a6e1cfa60771f361",
+      "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41381448277",
+      "ci_status": "SUCCESS_ON_EXACT_HEAD",
+      "gate_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41381448288",
+      "gate_status": "SUCCESS_MERGE_DISABLED",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "current_research_pr": {
+      "number": 1484,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1484",
+      "head_sha": "b2f33c22527d6538b26ccc09e21c4f582159c3ae",
+      "base_sha": "ad022ee4e8c4f2605915cb88c029e53924100440",
+      "json_readback": "VALID",
+      "ci_runs": "NONE_FOUND_WHILE_DRAFT",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "source_registry_pr": {
+      "number": 1485,
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1485",
+      "head_sha": "0d80103ea8dac14b47849dac5115b3b2b865a992",
+      "base_sha": "ad022ee4e8c4f2605915cb88c029e53924100440",
+      "change": "Makes source snapshot IDs immutable, stamps system registration time, and adds a cutoff check. The fixed-horizon ledger integration remains separate.",
+      "ci_runs": "NONE_FOUND_WHILE_DRAFT",
+      "status": "OPEN_DRAFT_UNMERGED"
+    },
+    "preservation": "Main unchanged. No merge, force-push, manual workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
   },
   "binance_customer_flow": {
     "source_url": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
