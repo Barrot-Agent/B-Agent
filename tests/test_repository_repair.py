@@ -931,10 +931,11 @@ def test_safe_checkout_branch_tracks_existing_remote_branch_without_force(tmp_pa
     assert note.read_text(encoding="utf-8") == "remote task history\n"
 
 
-def test_safe_checkout_branch_rejects_protected_target(tmp_path: Path) -> None:
+@pytest.mark.parametrize("branch", ["main", "refs/heads/main", "refs/heads/production"])
+def test_safe_checkout_branch_rejects_protected_target(tmp_path: Path, branch: str) -> None:
     workspace, _ = init_repo(tmp_path)
     with pytest.raises(RepairError, match="protected branch"):
-        safe_checkout_branch(workspace, "main")
+        safe_checkout_branch(workspace, branch)
     assert git(workspace, "branch", "--show-current").stdout.strip() == "repair/test"
 
 
@@ -951,6 +952,28 @@ def test_patch_executor_refuses_dirty_worktree_before_writing(tmp_path: Path) ->
 
     assert target.read_text(encoding="utf-8") == original
     assert note.read_text(encoding="utf-8") == "preserve this user work\n"
+
+
+def test_patch_executor_refuses_to_overwrite_preexisting_ignored_file(tmp_path: Path) -> None:
+    workspace, _ = init_repo(tmp_path)
+    ignored_path = "barrot_agent/ignored_target.py"
+    with (workspace / ".gitignore").open("a", encoding="utf-8") as handle:
+        handle.write("barrot_agent/ignored_target.py\n")
+    assert git(workspace, "add", ".gitignore").returncode == 0
+    assert git(workspace, "commit", "-m", "ignore target").returncode == 0
+
+    target = workspace / ignored_path
+    target.write_text('FLAG = "USER DATA"\n', encoding="utf-8")
+    changeset = json.loads(
+        repair_payload(ignored_path, old='FLAG = "USER DATA"', new='FLAG = "OVERWRITTEN"')
+    )["changeset"]
+
+    assert git(workspace, "status", "--porcelain", "--untracked-files=all").stdout.strip() == ""
+    with pytest.raises(RepairError, match="untracked or ignored file"):
+        PatchExecutor(workspace).apply(changeset)
+
+    assert target.read_text(encoding="utf-8") == 'FLAG = "USER DATA"\n'
+    assert git(workspace, "status", "--porcelain", "--untracked-files=all").stdout.strip() == ""
 
 
 def test_controller_blocks_dirty_worktree_before_model_or_patch(tmp_path: Path) -> None:
@@ -992,9 +1015,10 @@ def test_controller_blocks_branch_mismatch_before_model_or_patch(tmp_path: Path)
     assert git(workspace, "branch", "--show-current").stdout.strip() == "repair/test"
 
 
-def test_git_gateway_refuses_protected_branch_push(tmp_path: Path) -> None:
+@pytest.mark.parametrize("branch", ["main", "refs/heads/main", "refs/heads/production"])
+def test_git_gateway_refuses_protected_branch_push(tmp_path: Path, branch: str) -> None:
     workspace, _ = init_repo(tmp_path)
-    result = GitGateway(workspace).push("origin", "main")
+    result = GitGateway(workspace).push("origin", branch)
     assert result.success is False
     assert "protected branch" in result.error
 
