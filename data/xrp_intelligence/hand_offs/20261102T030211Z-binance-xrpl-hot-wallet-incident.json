@@ -345,6 +345,23 @@
         "The page states all 500 listed accounts were read from the same validated ledger."
       ],
       "caveat": "Account label is Unnamed. The balance is rounded to 0.1M XRP and the page does not expose this account's transaction history or trustlines."
+    },
+    {
+      "id": "XRP-INSIGHTS-EXCHANGE-BALANCES-2026-11-01",
+      "source": "XRP Insights",
+      "cutoff_utc": "2026-11-01T08:00:00Z",
+      "url": "https://xrp-insights.com/exchange-balances",
+      "classification": "THIRD_PARTY_LABELLED_WALLET_AGGREGATION_FROM_PUBLIC_XRPL_ACCOUNT_INFO",
+      "supports": [
+        "22.45B XRP across 701 wallets attributed to 24 exchanges.",
+        "Approximately 2.78B XRP attributed to Binance at the stated cutoff.",
+        "Same-wallet 7-day and 30-day changes."
+      ],
+      "caveats": [
+        "Includes cold storage, omnibus and wrapped reserves; not tradable float.",
+        "Attribution depends on third-party labels.",
+        "Not a complete Binance custody inventory."
+      ]
     }
   ],
   "source_independence": {
@@ -563,7 +580,8 @@
       "thesis": "The incident and withdrawal interruption may alter centralized-exchange liquidity, customer custody preferences, venue concentration and derivatives basis independently of XRP payment utility.",
       "supporting_evidence": [
         "Binance suspended affected withdrawals and announced phased reopening.",
-        "The incident involved a large XRP hot-wallet balance and cross-chain signing infrastructure."
+        "The incident involved a large XRP hot-wallet balance and cross-chain signing infrastructure.",
+        "XRP Insights' 2026-11-01 08:00Z labeled-wallet snapshot attributes approximately 2.78B XRP to Binance; the 233.46M incident amount is about 8.4% of that tracked snapshot, a contextual scale comparison rather than a custody or float calculation."
       ],
       "disconfirming_evidence": [
         "Binance stated XRP customer balances were fully backed and included XRP in phase-one reopening.",
@@ -814,6 +832,23 @@
         "source_url": "https://kodexius.com/data/crypto-derivatives/XRP"
       }
     ],
-    "admission_rule": "Do not average these OI series. Venue, contract, quote-currency, aggregation and timestamp coverage differ materially. Long-account share is not notional exposure. Positive funding is not by itself a directional signal."
+    "admission_rule": "Do not average these OI series. Venue, contract, quote-currency, aggregation and timestamp coverage differ materially. Long-account share is not notional exposure. Positive funding is not by itself a directional signal.",
+    "exchange_attributed_wallets": {
+      "provider": "XRP Insights using XRPSCAN labels and rippled account_info",
+      "cutoff_utc": "2026-11-01T08:00:00Z",
+      "tracked_wallets": 701,
+      "exchanges": 24,
+      "total_exchange_attributed_xrp": 22450000000,
+      "binance_attributed_xrp": 2780000000,
+      "binance_share_of_tracked_exchange_total": 0.1238,
+      "seven_day_same_wallet_change_xrp": -161100000,
+      "thirty_day_same_wallet_change_xrp": -12700000,
+      "source_url": "https://xrp-insights.com/exchange-balances",
+      "contextual_ratio": {
+        "incident_xrp_as_pct_of_binance_attributed_snapshot": 8.4,
+        "calculation": "233,461,943.1 / 2,780,000,000",
+        "caveat": "Approximate cross-snapshot scale comparison only. Wallet labels and coverage are provider-defined; cold/omnibus/wrapped reserves are included. This is not Binance's complete custody balance or tradable float, and the stolen amount is not assumed to have been sold."
+      }
+    }
   }
 }
