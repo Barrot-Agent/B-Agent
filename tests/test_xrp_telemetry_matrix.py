@@ -12,7 +12,7 @@ def issued():
     s["market_observations"]=[
       {"symbol":"XRP/USD","venue":"A","price":1.2,"timestamp_utc":"2026-11-02T13:58:00Z","source_id":"a"},
       {"symbol":"XRP/USD","venue":"B","price":1.19,"timestamp_utc":"2026-11-02T13:58:20Z","source_id":"b"}]
-    s["forecast"]={"status":"ISSUED","target":"XRP/USD return over one hour","horizon":"1h","data_cutoff_utc":"2026-11-02T13:59:00Z","probability":0.65,"confidence":0.7,"model_version":"test-v1","assumptions":["Observations are valid."],"alternatives":["Move reverses."],"evaluation":{"walk_forward_samples":30,"out_of_sample":True,"leakage_check":"passed","drift_status":"stable","model_brier_score":0.18,"baseline_brier_score":0.22,"model_log_loss":0.5,"baseline_log_loss":0.62,"calibration_error":0.05,"calibration_tolerance":0.1,"evaluation_artifact_id":"eval-1","evaluation_run_url":"https://github.com/Barrot-Agent/B-Agent/actions/runs/1"},"outcome":{"status":"PENDING"}}
+    s["forecast"]={"status":"ISSUED","target":"XRP/USD return over one hour","horizon":"1h","horizon_seconds":3600,"issued_at_utc":"2026-11-02T14:00:01Z","data_cutoff_utc":"2026-11-02T13:59:00Z","probability":0.65,"confidence":0.7,"model_version":"test-v1","assumptions":["Observations are valid."],"alternatives":["Move reverses."],"evaluation":{"walk_forward_samples":30,"out_of_sample":True,"leakage_check":"passed","drift_status":"stable","model_brier_score":0.18,"baseline_brier_score":0.22,"model_log_loss":0.5,"baseline_log_loss":0.62,"calibration_error":0.05,"calibration_tolerance":0.1,"evaluation_artifact_id":"eval-1","evaluation_run_url":"https://github.com/Barrot-Agent/B-Agent/actions/runs/1"},"outcome":{"status":"PENDING"}}
     return s
 
 def test_not_issued_never_emits_hardcoded_price_or_direction():
@@ -81,4 +81,48 @@ def test_issued_requires_distinct_publishers_and_source_hosts():
     s["sources"][1]["publisher"] = "A"
     s["sources"][1]["url"] = "https://a.example/second-feed"
     with pytest.raises(EvidenceError, match="market observations must be backed"):
+        validate_snapshot(s)
+
+
+def test_issued_requires_forecast_issue_timestamp_and_numeric_horizon():
+    s = issued()
+    s["forecast"].pop("issued_at_utc")
+    with pytest.raises(EvidenceError, match="forecast.issued_at_utc"):
+        validate_snapshot(s)
+
+
+def test_issued_rejects_forecast_issued_before_snapshot_capture():
+    s = issued()
+    s["forecast"]["issued_at_utc"] = "2026-11-02T13:59:59Z"
+    with pytest.raises(EvidenceError, match="precedes snapshot capture"):
+        validate_snapshot(s)
+
+
+def test_resolved_outcome_cannot_precede_declared_horizon():
+    s = issued()
+    s["forecast"]["outcome"] = {
+        "status": "RESOLVED",
+        "resolved_at_utc": "2026-11-02T14:30:00Z",
+        "observed_value": 0.01,
+        "scoring": {},
+    }
+    with pytest.raises(EvidenceError, match="precedes the declared forecast horizon"):
+        validate_snapshot(s)
+
+
+def test_resolved_outcome_after_declared_horizon_is_accepted():
+    s = issued()
+    s["forecast"]["outcome"] = {
+        "status": "RESOLVED",
+        "resolved_at_utc": "2026-11-02T15:00:01Z",
+        "observed_value": 0.01,
+        "scoring": {"brier_score": 0.18, "log_loss": 0.5},
+    }
+    assert validate_snapshot(s)["observations"] == 2
+
+
+def test_pending_outcome_cannot_carry_resolution_fields():
+    s = issued()
+    s["forecast"]["outcome"]["observed_value"] = 0.01
+    with pytest.raises(EvidenceError, match="pending outcome must not contain resolution fields"):
         validate_snapshot(s)
