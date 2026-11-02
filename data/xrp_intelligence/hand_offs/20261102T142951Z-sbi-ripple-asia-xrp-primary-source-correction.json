@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T142951Z-sbi-ripple-asia-xrp-primary-source-correction",
+  "captured_at_utc": "2026-11-02T14:29:51.806Z",
+  "evidence_cutoff_utc": "2026-11-02T14:29:51.806Z",
+  "correction_of": "20261102T142853Z-sbi-coinbase-circle-open-standard-crosswalk",
+  "correction_reason": "The prior crosswalk used a generic SBI news index for the SBI Holdings–Ripple edge. This append-only correction supplies direct primary sources and separates historical operational XRP use from later XRPL research/PoC activity.",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "verified_relationships": [
+    {
+      "id": "SBI-RIPPLE-ASIA-JV",
+      "classification": "official_company_statement",
+      "fact": "SBI Holdings and Ripple jointly established SBI Ripple Asia in 2016. SBI Group's official company profile lists SBI Group at 60% of voting rights as of March 31, 2026.",
+      "sources": [
+        "https://www.sbigroup.co.jp/english/news/pdf/2016/0519_a_en.pdf",
+        "https://www.sbigroup.co.jp/company/group/sbirippleasia.html"
+      ],
+      "limits": "The 60% figure is SBI Group voting rights, not a statement that SBI Holdings parent directly owns 60% by itself."
+    },
+    {
+      "id": "SBI-REMIT-XRP-CORRIDORS",
+      "classification": "official_company_statement",
+      "fact": "On September 6, 2023, SBI Remit, SBI VC Trade and SBI Ripple Asia announced expansion of Ripple's XRP-using remittance solution to bank accounts in the Philippines, Vietnam and Indonesia. The announcement says SBI Remit sends the customer's remittance request and SBI VC Trade sends XRP in real time in response.",
+      "source": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "limits": "This verifies an announced service expansion and described operating flow at that date. It does not provide current corridor volumes, current uptime, current market purchases, or a 2026 net XRP flow series."
+    },
+    {
+      "id": "SBI-RIPPLE-ASIA-XRPL-TOKENIZED-DEPOSIT-POC",
+      "classification": "official_company_statement",
+      "fact": "On February 26, 2026, SBI Ripple Asia announced a conceptual proof of concept for lower-cost tokenized deposits and deposit-based digital money using existing SBI remittance infrastructure, MoneyTap and its token issuance platform, with XRPL considered as the blockchain.",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "limits": "A conceptual proof of concept is not a production deployment, commercial volume, XRP bridge route, or proof that JPYSC is issued on XRPL."
+    },
+    {
+      "id": "SBI-RIPPLE-ASIA-JAPAN-KOREA-STUDY",
+      "classification": "official_company_statement",
+      "fact": "On February 24, 2026, SBI Ripple Asia and Korean infrastructure provider DSRV announced a joint study of blockchain use in remittance and payments for Japan/Korea; XRPL was identified as a candidate technology for examination.",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+      "limits": "The announcement explicitly frames this as research and consideration, not a specific product-development or commercialization commitment."
+    }
+  ],
+  "corrected_relationship_edges": [
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relation": "co-founded SBI Ripple Asia joint venture in 2016",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/english/news/pdf/2016/0519_a_en.pdf"
+    },
+    {
+      "from": "SBI Group",
+      "to": "SBI Ripple Asia",
+      "relation": "60 percent voting rights as of 2026-03-31",
+      "classification": "official_company_profile",
+      "source": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html"
+    },
+    {
+      "from": "SBI Remit",
+      "to": "SBI VC Trade",
+      "relation": "remittance request and real-time XRP delivery workflow described in 2023 announcement",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+    },
+    {
+      "from": "SBI Remit / SBI VC Trade / SBI Ripple Asia",
+      "to": "Ripple Payments",
+      "relation": "XRP-using remittance service expansion announced for Philippines, Vietnam and Indonesia",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/2023/0906_14052.html"
+    },
+    {
+      "from": "SBI Ripple Asia",
+      "to": "XRPL",
+      "relation": "tokenized-deposit and deposit-based digital-money conceptual PoC considered XRPL",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html"
+    },
+    {
+      "from": "SBI Ripple Asia",
+      "to": "DSRV",
+      "relation": "Japan-Korea remittance/payments joint study with XRPL as a technology candidate",
+      "classification": "official_company_statement",
+      "source": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html"
+    }
+  ],
+  "relationship_boundary_updates": [
+    "SBI's Ripple/XRP corridor work is a separate line of activity from JPYSC issuance and SBI's Circle joint venture.",
+    "Historical XRP-using remittance service announcements establish a real operational use case at the announced date, but not current 2026 transaction volume or net XRP demand.",
+    "The February 2026 XRPL PoC and Japan-Korea study are exploratory; neither establishes a production deployment.",
+    "JPYSC's June 2026 launch was limited to SBI VC Trade accounts, and SBI's November 2 public-chain statement describes public-chain circulation as a future step after legal/tax arrangements. No JPYSC-on-XRPL deployment is established."
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "SBI-MULTIRAIL-H1",
+      "claim": "SBI is maintaining a multi-rail strategy: XRP-using Ripple remittance, XRPL conceptual work, JPYSC, Circle/USDC distribution, and wider stablecoin/tokenized-asset partnerships.",
+      "support": "Separate official announcements and JV/partnership disclosures across these product lines.",
+      "counterevidence": "Announcements and historical service descriptions do not establish current transaction volume or cross-product integration.",
+      "status": "STRATEGIC_POSITIONING_SUPPORTED; CURRENT_FLOW_UNQUANTIFIED"
+    },
+    {
+      "id": "SBI-XRP-DEMAND-H2",
+      "claim": "SBI's remittance and XRPL work create recurring net XRP spot demand.",
+      "support": "2023 SBI announcement describes real-time XRP delivery in a remittance flow.",
+      "counterevidence": "No 2026 corridor-level XRP purchases, net flows, turnover, inventory/recycling, or current settlement volume is disclosed.",
+      "status": "POSSIBLE_CHANNEL; QUANTITATIVE_DEMAND_NOT_ESTABLISHED"
+    },
+    {
+      "id": "JPYSC-XRPL-H3",
+      "claim": "JPYSC's planned public-chain transition will use XRPL and increase XRP demand.",
+      "support": "SBI Ripple Asia has separate XRPL conceptual PoC work.",
+      "counterevidence": "No official JPYSC-XRPL chain/contract announcement; JPYSC's own issuer/distributor notice describes public-chain migration only as future after legal/tax clarification.",
+      "status": "SPECULATIVE; NOT_ADMITTED"
+    }
+  ],
+  "feature_admission": {
+    "sbi_xrp_remittance": "Historical service-availability event only until current corridor transaction volume, XRP acquired/sold, settlement latency, inventory reuse and counterparties are independently measured.",
+    "xrpl_tokenized_deposit_poc": "Categorical PoC event; not a live transaction-volume or XRP-demand feature.",
+    "japan_korea_dsrV_study": "Research event only; no commercial flow feature.",
+    "jpysc_public_chain": "No chain-specific supply feature until issuer confirms chain, contract, deployment and circulating balances."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No synchronized, validated XRP flow and market features or calibrated out-of-sample evidence."
+  },
+  "sources": [
+    {
+      "publisher": "SBI Holdings",
+      "date": "2016-05-19",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2016/0519_a_en.pdf",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "date": "2026-03-31 profile state",
+      "url": "https://www.sbigroup.co.jp/company/group/sbirippleasia.html",
+      "class": "official_company_profile"
+    },
+    {
+      "publisher": "SBI Remit / SBI VC Trade / SBI Ripple Asia",
+      "date": "2023-09-06",
+      "url": "https://www.sbigroup.co.jp/news/2023/0906_14052.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI Ripple Asia",
+      "date": "2026-02-26",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0226_16145.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI Ripple Asia / DSRV",
+      "date": "2026-02-24",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0224_16132.html",
+      "class": "official_company_statement"
+    },
+    {
+      "publisher": "SBI VC Trade",
+      "date": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "class": "official_company_statement"
+    }
+  ],
+  "safety": {
+    "append_only": true,
+    "no_prior_artifact_overwrite": true,
+    "no_main_write": true,
+    "no_merge": true,
+    "no_force_push": true,
+    "no_external_mutation": true,
+    "no_paper_position_mutation": true,
+    "no_real_money_trade": true
+  }
+}
