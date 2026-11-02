@@ -325,6 +325,22 @@
         "PERMISSION-ASK-CONTRACTS",
         "PERMISSION-ASK-COINBASE-WALLET"
       ]
+    },
+    {
+      "id": "CIRCLE-RESERVE-YIELD-MACRO-SENSITIVITY",
+      "classification": "primary_SEC_filing_internal_sensitivity_analysis",
+      "publisher": "Circle Internet Group Form 10-Q",
+      "as_of": "2026-06-30",
+      "claims": [
+        "Circle's Q2 2026 10-Q reports an average reserve return rate of approximately 3.49% in June 2026.",
+        "Circle's internal twelve-month sensitivity table estimates that a 100-basis-point increase from that yield would increase reserve income by approximately $737M and distribution/transaction costs by approximately $360M; a 100-basis-point decrease produces the corresponding negative changes.",
+        "Circle states that while reserve yield effects can be modeled, it cannot accurately predict how interest-rate changes affect reserve income because USDC circulation and end-user behavior are uncertain.",
+        "Circle says distribution costs payable to Coinbase and Binance are directly affected by USDC held on those platforms and by distributor actions and policies Circle does not control."
+      ],
+      "interpretation": "Circle's macro exposure is a joint function of reserve yield, USDC circulation and distribution mix. Lower rates can reduce reserve income, but the net effect on USDC circulation and Circle's economics is uncertain. The sensitivity table is a company model scenario, not a forecast or guaranteed outcome.",
+      "sources": [
+        "CIRCLE-SEC-10Q-2026Q2"
+      ]
     }
   ],
   "actual_capital_framework": {
@@ -688,5 +704,15 @@
     "ask_coin": "Permission Coin (ASK) is an omnichain LayerZero OFT with official Base and Polygon contracts. Permission announced Coinbase Embedded Wallet integration on 2026-09-22. No XRPL ASK contract or direct XRP integration identified.",
     "chatgpt_sbic": "Social Bias Inference Corpus remains a separate academic candidate meaning; no Japanese-SBIC/OpenAI partnership established.",
     "actual_capital": "Flare USDt0/FXRP liquidity deployment language; distinguish gross payments, transaction count, collateral, wrapped supply and RWA registry notional from net external capital."
+  },
+  "circle_macro_sensitivity": {
+    "filing_as_of": "2026-06-30",
+    "average_reserve_return_rate_pct": 3.49,
+    "twelve_month_model_sensitivity_per_100bp": {
+      "reserve_income_change_usd": 737000000,
+      "distribution_transaction_cost_change_usd": 360000000,
+      "direction": "positive for +100bp; negative for -100bp"
+    },
+    "caveat": "Internal sensitivity model; not a forecast. Circle explicitly says the effect of rate changes on USDC circulation and end-user behavior is uncertain."
   }
 }
