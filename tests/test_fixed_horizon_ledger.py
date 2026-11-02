@@ -1033,31 +1033,21 @@ def test_metrics_never_pool_live_and_historical_replay(tmp_path, monkeypatch):
     monkeypatch.setattr(
         fixed_horizon,
         "_utc_now",
-        lambda: datetime(2026, 11, 1, 0, 0, 10, tzinfo=timezone.utc),
+        lambda: datetime(2026, 10, 31, 0, 0, 10, tzinfo=timezone.utc),
     )
     ledger = make_ledger(tmp_path)
-    ledger.append_forecast(forecast_payload())
     live = forecast_payload(
         forecast_id="xrp-live-forecast-001",
         mode="LIVE",
         replay_manifest_source_id=None,
-        issued_at_utc="2026-11-01T00:00:00Z",
-        data_cutoff_utc="2026-10-31T23:59:00Z",
-        feature_snapshot={
-            "snapshot_id": "features-001",
-            "source_id": "SRC-FEATURE-001",
-            "sha256": TEST_SOURCE_REGISTRY["SRC-FEATURE-001"],
-            "captured_at_utc": "2026-10-30T23:58:00Z",
-        },
-        baseline={
-            "id": "uniform-v1",
-            "trained_through_utc": "2026-10-31T23:59:00Z",
-            "computed_at_utc": "2026-10-31T23:59:00Z",
-            "probabilities": {"up": 1 / 3, "flat": 1 / 3, "down": 1 / 3},
-        },
-        price_at_issue_observed_at_utc="2026-10-31T23:59:00Z",
     )
     ledger.append_forecast(live)
+    monkeypatch.setattr(
+        fixed_horizon,
+        "_utc_now",
+        lambda: datetime(2026, 11, 1, 0, 0, 10, tzinfo=timezone.utc),
+    )
+    ledger.append_forecast(forecast_payload())
     metrics = ledger.metrics()
     assert metrics["accuracy"] is None
     assert metrics["evaluation_protocol_status"] == "MIXED_PROTOCOLS_NOT_AGGREGATED"
