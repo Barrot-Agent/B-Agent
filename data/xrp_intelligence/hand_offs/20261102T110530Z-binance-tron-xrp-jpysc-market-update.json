@@ -1,0 +1,440 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T110530Z-binance-tron-xrp-jpysc-market-update",
+  "captured_at_utc": "2026-11-02T11:05:30Z",
+  "evidence_cutoff_utc": "2026-11-02T11:05:30Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "repository_observation": {
+    "repository": "Barrot-Agent/B-Agent",
+    "main_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401",
+    "main_sha_observed_at_utc": "2026-11-02T10:51:42Z",
+    "note": "Main was read-only during this research run. The only subsequent repository write is a draft proposal branch and pull request."
+  },
+  "new_findings": [
+    {
+      "id": "BINANCE-RECOVERY-2026-11-01",
+      "classification": "official_company_statement",
+      "publisher": "Binance",
+      "published_at_utc": "2026-11-01T04:08:00Z",
+      "claims": [
+        "Binance said phase-one withdrawals would resume progressively and explicitly included the XRP network.",
+        "Binance stated that BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD and ZEC balances were fully backed at 100%.",
+        "Binance said approximately 95% of the total impacted amount had been covered and that the remaining 5% consisted of less-liquid tokens outside the top ten.",
+        "Binance said it continued acquiring the remaining affected assets through market and OTC channels."
+      ],
+      "interpretation": "The 95% figure is aggregate incident recovery. The explicit 100% XRP statement means the remaining 5% must not be described as an XRP shortfall. The market/OTC acquisition statement applies to remaining affected assets, not necessarily XRP.",
+      "unknowns": [
+        "XRP-specific replacement quantity, if any.",
+        "Whether any XRP replacement was sourced from existing inventory, internal transfers, spot purchases or OTC purchases.",
+        "Execution dates, venues, counterparties and realized average prices."
+      ],
+      "sources": [
+        "BINANCE-RECOVERY-4",
+        "REUTERS-WITHDRAWAL-REOPENING"
+      ]
+    },
+    {
+      "id": "BINANCE-WITHDRAWAL-FLOW-2026-11-02",
+      "classification": "reported_company_data_and_independent_reporting",
+      "publisher": "Reuters",
+      "published_at_utc": "2026-11-02T00:57:00Z",
+      "claims": [
+        "Reuters reported Binance customers withdrew approximately $3.64B, or 2.1% of reported exchange assets, after service resumed.",
+        "Binance said withdrawals were stabilizing after an initial spike and deposits remained substantial.",
+        "A HashKey researcher quoted by Reuters said the outflows had not yet constituted widespread panic and could include ordinary withdrawals, asset adjustments and self-custody diversification."
+      ],
+      "cross_source_context": "The Guardian live report at approximately 10:35 UTC separately described about $4.6B withdrawals and $1B deposits, producing approximately $3.6B net outflow. These are compatible rounded gross-flow components, not a separate $3.6B measure to add to the Reuters figure.",
+      "interpretation": "A 2.1% net outflow is material but does not by itself establish a run or a migration to competing exchanges. Self-custody transfers and internal portfolio adjustments are plausible alternatives.",
+      "unknowns": [
+        "Asset-level withdrawal and deposit composition.",
+        "Share of XRP withdrawals versus BTC, ETH, stablecoins and other assets.",
+        "Destination split between self-custody, other exchanges, bridges and OTC counterparties."
+      ],
+      "sources": [
+        "REUTERS-MACRO-AND-BINANCE",
+        "GUARDIAN-BINANCE-LIVE"
+      ]
+    },
+    {
+      "id": "BINANCE-TRON-LAUNDERING-2026-11-01",
+      "classification": "secondary_onchain_analyst_reporting",
+      "publisher": "The Block citing SomaXBT and Elliptic",
+      "published_at_utc": "2026-11-01T18:25:00Z",
+      "claims": [
+        "SomaXBT estimated approximately $242M of stolen Binance funds were laundered on Tron over two days.",
+        "The analyst estimated approximately $194M moved off Tron through bridges and swap services, about $26M remained on Tron and about $22M reflected fees, slippage and price movement.",
+        "The analyst attributed approximately $48M of outflows to Relay, $44M to THORChain, $32.1M to Chainflip and $16M to Symbiosis; a further $41.7M handled by Bitget Wallet had unresolved destination at publication.",
+        "Elliptic reported approximately $2.85B frozen or seized, around 44% of its $6.43B stolen-funds estimate, with 94% of the frozen/seized value in stablecoins.",
+        "Elliptic reported no funds frozen on Bitcoin, XRP Ledger, Solana or NEAR and identified approximately $3.25B, including 18,327 BTC and 233M XRP, as assets without issuer freeze controls."
+      ],
+      "critical_separation": "The approximately $242M Tron laundering stream is a separate chain-specific stream. It is not evidence that the six XRPL recipient accounts holding the approximately 233.455M XRP redistribution tranches were bridged, sold or otherwise monetized.",
+      "interpretation": "The incident demonstrates issuer-control asymmetry: stablecoin issuers can freeze issuer-controlled tokens, while native XRP and BTC cannot be frozen by a token issuer. This does not make native XRP untraceable or immune to exchange-level controls and lawful enforcement.",
+      "unknowns": [
+        "Current destination of the unresolved Bitget Wallet flows.",
+        "Whether any later bridge or exchange route touched the six XRPL XRP recipient accounts.",
+        "Whether any XRP was sold after the last captured Bithomp observation."
+      ],
+      "sources": [
+        "THEBLOCK-TRON-LAUNDERING",
+        "ELLIPTIC-FROZEN-ASSETS-AS-REPORTED-BY-THEBLOCK"
+      ]
+    },
+    {
+      "id": "SBI-JPYSC-2026-11-02",
+      "classification": "official_company_statement",
+      "publisher": "SBI VC Trade / SBI Holdings",
+      "published_at_utc": "2026-11-02",
+      "claims": [
+        "SBI VC Trade announced that JPYSC lending balances exceeded JPY 10B as of November 2, 2026.",
+        "The same announcement said JPYSC handled balances exceeded JPY 30B.",
+        "SBI said JPYSC handling began in June 2026 and its lending product began in July 2026."
+      ],
+      "interpretation": "This is evidence of growth in SBI's yen-stablecoin product activity. The Japanese metric 取扱残高 is preserved as the issuer's stated handled-balance metric; it is not silently equated with circulating supply, reserve assets, net issuance or new XRP purchases.",
+      "relationship_boundary": "JPYSC is distinct from JPYC, USDC, RLUSD, USDt0 and XRP. This announcement does not establish JPYSC deployment on Circle Arc, an XRP purchase, or a direct Tokyo SBIC relationship.",
+      "sources": [
+        "SBI-JPYSC-2026-11-02"
+      ]
+    }
+  ],
+  "market_snapshot": {
+    "captured_at_utc": "2026-11-02T11:05:30Z",
+    "spot": {
+      "provider": "CoinMarketCap",
+      "provider_timestamp": "not exposed in captured search result",
+      "price_usd": 1.24,
+      "market_cap_usd": 79050000000,
+      "volume_24h_usd": 778550000,
+      "circulating_supply_xrp": 63350000000,
+      "total_supply_xrp": 99980000000,
+      "admission": "provisional_provider_snapshot",
+      "caveat": "The capture time is known but the provider's underlying quote timestamp is not. Do not combine this with exchange-specific candles as if synchronized."
+    },
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "provider_updated_at_utc": "2026-11-02T03:50:00Z",
+        "venue_coverage": "7 exchanges",
+        "open_interest_usd": 1920000000,
+        "open_interest_change_24h_pct": 2.58,
+        "funding_pct_per_8h": 0.0073,
+        "long_account_share_pct": 75.2,
+        "liquidations_24h_usd_at_least": 1200000,
+        "long_liquidations_usd": 892860,
+        "short_liquidations_usd": 307350,
+        "admission": "provider_observation",
+        "caveat": "15-minute delay stated by provider; observation is stale relative to this handoff cutoff."
+      },
+      {
+        "provider": "Kodexius",
+        "provider_updated_at_utc": "2026-11-02T06:09:00Z",
+        "venue_coverage": "7 contracts",
+        "open_interest_usd": 767590000,
+        "volume_24h_usd": 670810000,
+        "funding_pct_per_8h": 0.0074,
+        "admission": "provider_observation",
+        "caveat": "Contract set differs from TradRadar; do not average."
+      },
+      {
+        "provider": "TRdesk",
+        "provider_updated_at_utc": null,
+        "capture_at_utc": "2026-11-02T11:05:30Z",
+        "venue_coverage": "26 exchanges",
+        "open_interest_usd": 2690000000,
+        "open_interest_xrp": 2150057904.7,
+        "open_interest_change_24h_pct": 0.78,
+        "largest_reported_venue": "CME",
+        "largest_venue_share_pct": 20.3,
+        "admission": "provisional_provider_observation",
+        "caveat": "Underlying update timestamp not exposed in captured page. The reported CME share is not independently reconciled to CME primary contract data."
+      }
+    ],
+    "etf_flows": [
+      {
+        "provider": "Alpha Finance",
+        "data_through": "2026-10-29",
+        "net_flow_2026_10_29_usd": 8400000,
+        "net_flow_30_sessions_usd": 98900000,
+        "cumulative_net_inflow_usd": 1730000000,
+        "net_xrp_since_2025_11_14": 989100000,
+        "admission": "secondary_aggregator_observation",
+        "caveat": "Five-fund coverage; underlying provider data should be reconciled to primary fund shares/holdings and issuer disclosures."
+      },
+      {
+        "provider": "InvestIn.News timeline summarizing SoSoValue",
+        "published_at_utc": "2026-11-02T03:24:00Z",
+        "period": "2026-10-26 through 2026-10-30",
+        "net_flow_usd": 4330000,
+        "xrpz_net_flow_usd": 5570000,
+        "bitwise_xrp_net_flow_usd": -1440000,
+        "admission": "secondary_rewrite_of_aggregator_data",
+        "caveat": "Likely overlaps the Alpha Finance/SoSoValue data family; not independent corroboration."
+      }
+    ]
+  },
+  "macro_context": {
+    "publisher": "Reuters",
+    "published_at_utc": "2026-11-02T00:57:00Z",
+    "observations": [
+      "U.S. dollar index was reported down 0.5% to 101.45, a one-month low.",
+      "Brent crude was reported down 3.8% amid hopes for diplomacy regarding the U.S.-Iran conflict.",
+      "Yen was reported at 157.64 per dollar.",
+      "Bitcoin and ether had modestly rebounded after the Binance incident.",
+      "U.S. midterm elections, central-bank decisions and U.S. jobs data were identified as near-term macro events."
+    ],
+    "interpretation": "The report describes a modestly more risk-friendly macro backdrop at the same time as a crypto-specific exchange-confidence shock. This is a competing driver, not an XRP-specific signal."
+  },
+  "corrections_and_non_inferences": [
+    "Do not add the approximately $242M Tron laundering estimate to the approximately 233.455M XRP redistribution; they are different chain-specific streams.",
+    "Do not treat Binance's aggregate 95% recovery as an XRP-specific purchase quantity. Binance separately states XRP is among the ten assets fully backed at 100%.",
+    "Do not describe the approximately $3.64B Binance net outflow as $3.64B of transfers to other exchanges; self-custody and ordinary portfolio adjustments remain plausible.",
+    "Do not treat stablecoin freezes on Ethereum/Tron as an XRPL issuer freeze. Elliptic's reported no-freeze statement concerns native XRP on XRPL.",
+    "Do not interpret positive ETF flows as proof that ETF demand exceeded total market selling.",
+    "Do not average XRP open-interest totals from different exchange and contract universes.",
+    "Do not interpret JPYSC handled balances as XRP capital inflows or automatically as circulating token supply."
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "claim": "Binance's breach causes a temporary exchange-confidence and liquidity shock across crypto, including XRP.",
+      "supporting_evidence": [
+        "Reuters-reported $3.64B net Binance outflow",
+        "Guardian-reported BTC ETF outflows and increased put-premium share",
+        "The Block's multi-chain laundering and issuer-freeze reporting"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Net outflow was reported as 2.1% of Binance assets",
+        "Binance said withdrawals were stabilizing and deposits remained substantial",
+        "Reuters quoted a researcher saying widespread panic had not yet occurred"
+      ],
+      "observable_tests": [
+        "XRP exchange-specific deposits/withdrawals",
+        "Coinbase/Upbit/Binance order-book depth",
+        "Cross-venue spreads and basis",
+        "XRP-specific ETF flows",
+        "Stablecoin net flows"
+      ]
+    },
+    {
+      "id": "H2",
+      "claim": "Most Binance withdrawals reflect self-custody diversification and ordinary asset adjustment rather than migration to competitors.",
+      "supporting_evidence": [
+        "Reuters quoted HashKey researcher describing self-custody diversification as a plausible explanation"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No asset-level destination breakdown is available"
+      ],
+      "observable_tests": [
+        "Known exchange wallet net flows",
+        "New self-custody address clusters with cautious attribution",
+        "Withdrawal destination classifications"
+      ]
+    },
+    {
+      "id": "H3",
+      "claim": "The six-wallet XRPL redistribution creates future sale risk but has not yet been shown to create realized market supply.",
+      "supporting_evidence": [
+        "Prior captured Bithomp records show six large tranches and no subsequent outbound payment at capture"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Current recipient balances were not refreshed in this run",
+        "The Tron laundering stream shows the broader attackers use multiple chains and services, but does not establish XRP sale"
+      ],
+      "observable_tests": [
+        "Fresh validated-ledger AccountRoot reads",
+        "Full recipient account_tx history",
+        "Exchange deposit tags",
+        "DEX path tracing",
+        "Cross-chain bridge evidence"
+      ]
+    },
+    {
+      "id": "H4",
+      "claim": "Positive XRP ETF flows provide a partial demand offset but may be too small to overcome spot/derivatives selling.",
+      "supporting_evidence": [
+        "Secondary trackers report positive 26-30 October weekly flows and +$8.4M on October 29"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "ETF flows are small relative to broader market turnover and are secondary aggregated data",
+        "Daily fund data can be revised or incomplete"
+      ],
+      "observable_tests": [
+        "Primary issuer share/holdings reconciliation",
+        "Fund creation/redemption records",
+        "Spot market depth and net exchange flows"
+      ]
+    },
+    {
+      "id": "H5",
+      "claim": "Positive funding and long-account skew can amplify downside under a renewed shock, but do not establish direction.",
+      "supporting_evidence": [
+        "TradRadar reports approximately 75.2% long accounts and positive funding"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Open-interest totals differ materially by provider coverage",
+        "Funding and account ratios are snapshots, not causal evidence"
+      ],
+      "observable_tests": [
+        "Contract-level OI and funding",
+        "Liquidation cascades",
+        "Spot/perp basis",
+        "CME versus offshore venue changes"
+      ]
+    },
+    {
+      "id": "H6",
+      "claim": "A softer dollar and lower oil amid Iran-diplomacy hopes can offset some crypto-specific risk aversion.",
+      "supporting_evidence": [
+        "Reuters reports dollar down 0.5%, Brent down 3.8%, and modest BTC/ETH recovery"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Macro risk appetite is not an XRP-specific catalyst",
+        "U.S. midterms, central-bank decisions and jobs data remain event risks"
+      ],
+      "observable_tests": [
+        "DXY, Treasury yields, USDJPY, Brent, BTC beta and XRP residual returns"
+      ]
+    }
+  ],
+  "feature_admission": {
+    "allowed_provisional_features": [
+      "provider_timestamped_xrp_spot_price",
+      "provider_scoped_open_interest",
+      "provider_scoped_funding",
+      "provider_scoped_long_short_accounts",
+      "provider_scoped_liquidations",
+      "primary_reconciled_etf_flows",
+      "binance_net_outflow_reported",
+      "binance_asset_level_withdrawals_when_available",
+      "xrp_attacker_wallet_ledger_events",
+      "jpysc_company_reported_handled_balance"
+    ],
+    "excluded_until_reconciled": [
+      "cross_provider_average_open_interest",
+      "unverified_xrp_replacement_purchase",
+      "tron_laundering_as_xrpl_flow",
+      "aggregate_social_sentiment_without_publication_time",
+      "x402_transaction_count_as_capital_inflow",
+      "rwa_registry_notional_as_deployed_liquidity",
+      "JPYSC_handled_balance_as_xrp_demand"
+    ],
+    "source_independence_rule": "News reports that quote the same onchain analyst or aggregator are one underlying evidence family, not independent corroboration."
+  },
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No validated point-in-time feature store, leakage-safe walk-forward evaluation, calibrated probabilities or resolved shadow outcomes are available. Conflicting provider coverage and missing asset-level Binance flow data prevent a defensible directional forecast.",
+    "next_eligible_step": "Reconcile native XRPL ledger data and primary ETF/derivatives observations before issuing a fixed-horizon forecast."
+  },
+  "identity_threads": {
+    "japanese_sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; separate from SBI Holdings. No new XRP relationship established.",
+    "chatgpt_sbic": "Social Bias Inference Corpus remains a separate academic candidate meaning; not a Japanese-SBIC/OpenAI partnership.",
+    "ask_coin": "Permission ASK token remains documented on Base and Polygon; no XRPL contract established. AskSurf is a separate XRPL merchant.",
+    "actual_capital": "Flare USDt0/FXRP liquidity deployment language; not a disclosed amount of new XRP spot purchases.",
+    "camilla_stephenson": "Candidate Kamilah/Camila Stevenson channel remains an unconfirmed identity match; exhaustive public-upload inventory incomplete."
+  },
+  "next_actions": [
+    "Refresh all six Binance XRP recipient accounts from two independent public XRPL/Clio endpoints at a common validated ledger.",
+    "Resolve the archived 0.5992 XRP residual using exact delivered amounts and transaction fees.",
+    "Separate Tron laundering, Ethereum laundering, Bitcoin holdings and XRPL recipient balances into distinct chain-specific flow ledgers.",
+    "Obtain Binance asset-level XRP withdrawal/deposit data or explicitly retain it as unknown.",
+    "Reconcile primary XRP ETF share/holdings data through October 30.",
+    "Build contract-level XRP open-interest and funding snapshots with explicit venue universes.",
+    "Capture SBI's JPYSC metric definitions and distinguish handled balance from supply, reserves and lending balances.",
+    "Continue Coinbase/Circle/Ripple/SBI relationship research and Arc/XRPL settlement-route comparison.",
+    "Complete immutable source registration, outcome snapshots, walk-forward baselines, calibration and shadow evaluation.",
+    "Continue SBIC, ASK Coin and the Camilla/Kamilah public-video identity investigation."
+  ],
+  "sources": [
+    {
+      "id": "BINANCE-RECOVERY-4",
+      "publisher": "Binance",
+      "published_at_utc": "2026-11-01T04:08:00Z",
+      "url": "https://www.binance.com/en-PH/support/announcement/detail/73911fb819b240f88b88256bdd318eda",
+      "independence": "Primary company statement."
+    },
+    {
+      "id": "REUTERS-WITHDRAWAL-REOPENING",
+      "publisher": "Reuters",
+      "published_at_utc": "2026-11-01T04:57:00Z",
+      "url": "https://www.reuters.com/legal/government/binance-resume-withdrawals-after-recovering-bulk-6-billion-stolen-funds-2026-11-01/",
+      "independence": "Independent reporting of Binance and FBI statements."
+    },
+    {
+      "id": "REUTERS-MACRO-AND-BINANCE",
+      "publisher": "Reuters",
+      "published_at_utc": "2026-11-02T00:57:00Z",
+      "url": "https://www.reuters.com/world/asia-pacific/dollar-rangebound-ahead-us-midterms-bitcoin-reels-crypto-heist-2026-11-02/",
+      "independence": "Independent macro and exchange-flow reporting."
+    },
+    {
+      "id": "GUARDIAN-BINANCE-LIVE",
+      "publisher": "The Guardian",
+      "published_at_utc": "2026-11-02T10:35:00Z",
+      "url": "https://www.theguardian.com/business/live/2026/nov/02/crypto-scam-binance-billion-hack-business-live-latest-updates-news",
+      "independence": "Live coverage; flow numbers attributed to Binance/PoR and market-source commentary."
+    },
+    {
+      "id": "THEBLOCK-TRON-LAUNDERING",
+      "publisher": "The Block",
+      "published_at_utc": "2026-11-01T18:25:00Z",
+      "url": "https://www.theblock.co/news/defi/2026-11-01-north-korean-hackers-launder-242-million-of-binance-loot-via-tron-as-fbi-presses-thorchain-analyst-432257",
+      "independence": "Secondary reporting citing SomaXBT, Elliptic, Chainalysis and public chain data; multiple claims share underlying analyst sources."
+    },
+    {
+      "id": "ELLIPTIC-FROZEN-ASSETS-AS-REPORTED-BY-THEBLOCK",
+      "publisher": "Elliptic as quoted by The Block",
+      "published_at_utc": "2026-11-01",
+      "url": "https://www.theblock.co/news/defi/2026-11-01-north-korean-hackers-launder-242-million-of-binance-loot-via-tron-as-fbi-presses-thorchain-analyst-432257",
+      "independence": "Elliptic figures are attributed within The Block article; primary Elliptic dashboard/report not independently fetched in this run."
+    },
+    {
+      "id": "SBI-JPYSC-2026-11-02",
+      "publisher": "SBI Holdings / SBI VC Trade",
+      "published_at_utc": "2026-11-02",
+      "url": "https://www.sbigroup.co.jp/news/2026/1102_16704.html",
+      "independence": "Primary company announcement; exact definition of 取扱残高 requires footnote/context review."
+    },
+    {
+      "id": "XRP-CMC-SNAPSHOT",
+      "publisher": "CoinMarketCap",
+      "published_at_utc": null,
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "independence": "Dynamic provider page; quote timestamp not exposed in captured result."
+    },
+    {
+      "id": "XRP-TRADRADAR",
+      "publisher": "TradRadar",
+      "published_at_utc": "2026-11-02T03:50:00Z",
+      "url": "https://tradradar.io/markets/xrp",
+      "independence": "Seven-exchange aggregate; 15-minute delay stated."
+    },
+    {
+      "id": "XRP-KODEXIUS",
+      "publisher": "Kodexius",
+      "published_at_utc": "2026-11-02T06:09:00Z",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "independence": "Seven-contract aggregate; universe differs from TradRadar."
+    },
+    {
+      "id": "XRP-TRDESK",
+      "publisher": "TRdesk",
+      "published_at_utc": null,
+      "url": "https://trdesk.com/open-interest/xrp",
+      "independence": "Twenty-six-exchange aggregate; provider update timestamp not exposed in captured result."
+    },
+    {
+      "id": "XRP-ALPHA-ETF",
+      "publisher": "Alpha Finance",
+      "published_at_utc": null,
+      "url": "https://alphafinance.io/etf/xrp/",
+      "independence": "Secondary ETF dashboard; data through October 29."
+    },
+    {
+      "id": "XRP-ETF-TIMELINE",
+      "publisher": "InvestIn.News",
+      "published_at_utc": "2026-11-02T03:24:00Z",
+      "url": "https://investin.news/newsfeeds/story/us-spot-xrp-etf-inflows-eed6",
+      "independence": "AI-rewritten timeline attributed to SoSoValue; likely same underlying data family as other ETF dashboards."
+    }
+  ]
+}
