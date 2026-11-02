@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_x402_payment_quality_relationship_graph_addendum",
+  "captured_at_utc": "2026-11-02T00:00:46Z",
+  "nodes": [
+    {
+      "id": "T54",
+      "name": "t54 Labs / XRPL AI Hub",
+      "type": "x402_facilitator_and_index"
+    },
+    {
+      "id": "XRPL",
+      "name": "XRP Ledger",
+      "type": "public_blockchain"
+    },
+    {
+      "id": "XRP",
+      "name": "XRP",
+      "type": "native_asset_and_fee_asset"
+    },
+    {
+      "id": "RLUSD",
+      "name": "RLUSD",
+      "type": "Ripple_stablecoin"
+    },
+    {
+      "id": "BITQUERY",
+      "name": "Bitquery",
+      "type": "onchain_analytics_provider"
+    },
+    {
+      "id": "HEURIST_ROUTER",
+      "name": "Heurist Inference Router",
+      "type": "x402_directory_merchant_address"
+    },
+    {
+      "id": "ASKSURF",
+      "name": "AskSurf",
+      "type": "x402_directory_merchant_address"
+    },
+    {
+      "id": "HEURIST_MESH",
+      "name": "Heurist Mesh",
+      "type": "x402_directory_merchant_address"
+    },
+    {
+      "id": "BINANCE_LABELLED_FUNDERS",
+      "name": "Binance-labelled funding wallets",
+      "type": "analytics_labelled_wallet_cluster"
+    }
+  ],
+  "edges": [
+    {
+      "from": "T54",
+      "to": "XRPL",
+      "type": "x402_facilitator_and_index",
+      "status": "FIRST_PARTY_DASHBOARD_AND_DOCUMENTATION"
+    },
+    {
+      "from": "XRPL",
+      "to": "XRP",
+      "type": "native_fee_and_bridge_asset",
+      "status": "PROTOCOL_FACT"
+    },
+    {
+      "from": "RLUSD",
+      "to": "XRPL",
+      "type": "native_issued_payment_asset",
+      "status": "CONFIRMED"
+    },
+    {
+      "from": "T54",
+      "to": "HEURIST_ROUTER",
+      "type": "directory_merchant_listing",
+      "status": "FIRST_PARTY_DIRECTORY"
+    },
+    {
+      "from": "T54",
+      "to": "ASKSURF",
+      "type": "directory_merchant_listing",
+      "status": "FIRST_PARTY_DIRECTORY"
+    },
+    {
+      "from": "T54",
+      "to": "HEURIST_MESH",
+      "type": "directory_merchant_listing",
+      "status": "FIRST_PARTY_DIRECTORY"
+    },
+    {
+      "from": "BITQUERY",
+      "to": "HEURIST_ROUTER",
+      "type": "dust_collector_address",
+      "status": "PUBLISHED_ONCHAIN_ANALYSIS"
+    },
+    {
+      "from": "BITQUERY",
+      "to": "ASKSURF",
+      "type": "dust_collector_address",
+      "status": "PUBLISHED_ONCHAIN_ANALYSIS"
+    },
+    {
+      "from": "BITQUERY",
+      "to": "HEURIST_MESH",
+      "type": "dust_collector_address",
+      "status": "PUBLISHED_ONCHAIN_ANALYSIS"
+    },
+    {
+      "from": "BINANCE_LABELLED_FUNDERS",
+      "to": "BITQUERY",
+      "type": "funding_wallet_labels_used_in_analysis",
+      "status": "ANALYTICS_LABEL_NOT_OPERATOR_ATTRIBUTION"
+    }
+  ],
+  "unresolved_edges": [
+    {
+      "from": "BITQUERY",
+      "to": "T54",
+      "type": "same_transaction_identity",
+      "status": "UNVERIFIED",
+      "required_evidence": "Raw validated transaction hashes with SourceTag 804681468 joined to t54 facilitator event IDs."
+    },
+    {
+      "from": "BINANCE_LABELLED_FUNDERS",
+      "to": "T54",
+      "type": "operator_or_control_relationship",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "from": "ASKSURF",
+      "to": "ASK_COIN_PERMISSION_COIN",
+      "type": "token_or_company_relationship",
+      "status": "NO_RELATIONSHIP_ESTABLISHED"
+    }
+  ],
+  "interpretation": "The three destination-address overlaps are real. They do not prove the same payments were counted by both systems, do not identify the operator of the dust cluster, and do not establish organic AI-agent economic adoption."
+}

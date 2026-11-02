@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrpl_x402_economic_value_and_rlusd_dust_reconciliation",
+  "captured_at_utc": "2026-11-02T00:00:46Z",
+  "scope": "Public XRPL AI Hub/t54 dashboard and directory, cross-checked against Bitquery's published XRPL RLUSD payment investigation.",
+  "t54_dashboard": {
+    "source": "https://xrpl-ai.org/",
+    "source_class": "FIRST_PARTY_INDEX_DASHBOARD",
+    "captured_at_utc": "2026-11-02T00:00:46Z",
+    "reported_all_time_settled_transactions": 14850938,
+    "reported_all_time_settled_value_usd": 48848,
+    "reported_registered_merchants": 183,
+    "reported_live_services": 5318,
+    "calculated_mean_settled_value_per_reported_transaction_usd": 0.003289,
+    "limitations": [
+      "Dashboard is an index/operator-reported metric, not independently reconciled to every validated XRPL transaction in this run.",
+      "The page's sample live-settlement rows display 'Unverified' despite nearby 'verified before settle' wording; individual settlement verification state is therefore unresolved.",
+      "The dashboard does not publish a complete raw transaction-hash export or a reconciled source-tag query in the captured page.",
+      "The 183 registered merchants and 5,318 live services are not equivalent to active paying customers, unique agents, or revenue-generating endpoints."
+    ]
+  },
+  "t54_directory": {
+    "source": "https://xrpl-ai.org/partners",
+    "source_class": "FIRST_PARTY_DIRECTORY_SEARCH_CAPTURE",
+    "capture_time": "Search-index capture crawled during the week before 2026-11-02; exact page capture time unavailable.",
+    "reported_service_entries": 33,
+    "reported_merchant_addresses": 157,
+    "limitations": [
+      "Directory counts differ from the homepage's 5,318 live-services and 183 registered-merchants cards; definitions and refresh windows are not reconciled.",
+      "Directory ranking by transaction count is not an independently verified economic-usage measure."
+    ]
+  },
+  "bitquery_rlusd_window": {
+    "source": "https://bitquery.io/investigations/rlusd-xrpl-dust-bots",
+    "verified_period": "2026-09-19 through 2026-10-18",
+    "total_rlusd_payment_count": 7821066,
+    "payments_to_three_collectors": 7789341,
+    "share_to_three_collectors_pct": 99.6,
+    "cluster_wallet_count": 110,
+    "total_rlusd_carried_by_dust_payments": 7722,
+    "mean_dust_payment_rlusd": 0.00099,
+    "payments_at_least_1_rlusd": 14600,
+    "gross_value_of_payments_at_least_1_rlusd_usd": 7330000000,
+    "top_ten_sender_share_pct": 82,
+    "issuer_mint_rlusd": 728000000,
+    "issuer_redeem_rlusd": 744000000,
+    "one_round_trip_pair_gross_value_rlusd": 424000000,
+    "round_trip_gross_volume_contribution_rlusd": 848000000,
+    "classification": "SINGLE_COMMERCIAL_ANALYTICS_PROVIDER_PUBLISHED_ONCHAIN_INVESTIGATION",
+    "limitations": [
+      "The $7.33B is gross transfer value, not net external capital, net settlement, new XRP demand, or stablecoin reserve inflow.",
+      "Issuer mint/redemption activity and a $424M round-trip pair materially contribute to gross volume.",
+      "The cluster's funding from Binance-labeled wallets does not establish Binance ownership, operation, or intent.",
+      "Wallet clustering is an analytical inference; beneficial ownership is unknown.",
+      "Raw transaction hashes and source-tag joins were not independently reproduced in this run."
+    ]
+  },
+  "address_overlap": {
+    "status": "CONFIRMED_DESTINATION_ADDRESS_OVERLAP",
+    "same_transaction_identity": "UNVERIFIED",
+    "raw_source_tag_join_performed": false,
+    "facilitator_source_tag": 804681468,
+    "facilitator_source_tag_source": "https://wallet.openapps.network/developers/accept-payments",
+    "facilitator_source_tag_limit": "The implementation documentation shows this sourceTag configured for the t54 mainnet facilitator; no raw account_tx/transaction-hash join was performed here.",
+    "operator_attribution": "UNKNOWN",
+    "addresses": [
+      {
+        "address": "rBi1QrVjwaNofisZAQnovoXdHkS73FG1tJ",
+        "t54_directory_label": "Heurist Inference Router",
+        "bitquery_role": "collector_1",
+        "bitquery_cluster_payments": 7050565,
+        "interpretation": "Same destination address appears in both public indexes; do not equate all incoming payments with x402 settlements."
+      },
+      {
+        "address": "ra9b6JX5aPVbdJhogDDddsRAcasWg7gzC3",
+        "t54_directory_label": "AskSurf",
+        "bitquery_role": "collector_2",
+        "bitquery_cluster_payments": 470120,
+        "interpretation": "Same destination address appears in both public indexes; no transaction-level identity or operator attribution established."
+      },
+      {
+        "address": "rMPwy3Ntx56Nyc2fKGNm7VRWdmpHSB92Z7",
+        "t54_directory_label": "Heurist Mesh",
+        "bitquery_role": "collector_3",
+        "bitquery_cluster_payments": 16083,
+        "interpretation": "Same destination address appears in both public indexes; no transaction-level identity or operator attribution established."
+      }
+    ],
+    "required_join": [
+      "Fetch validated account_tx histories for each collector over the exact Bitquery window.",
+      "Filter successful Payment transactions for the genuine RLUSD issuer/currency code.",
+      "Inspect SourceTag=804681468 and any invoice/memo fields.",
+      "Join transaction hashes to t54 index records or a public facilitator event export.",
+      "Compare event counts, delivered amounts, payer uniqueness and timestamps.",
+      "Retain non-matching transactions as ordinary RLUSD payments, not x402 events."
+    ]
+  },
+  "xrpl_rlusd_supply_context": {
+    "xrpl_dashboard_reported_outstanding_usd": 711830000,
+    "xrpl_dashboard_observed_local_time": "2026-11-01 17:37",
+    "xrpl_dashboard_timezone": "not specified",
+    "defillama_reported_rlusd_market_cap_usd": 707540000,
+    "defillama_reported_total_xrpl_stablecoin_market_cap_usd": 799140000,
+    "defillama_reported_seven_day_stablecoin_market_cap_change_pct": -24.55,
+    "classification": "TWO_AGGREGATORS_CURRENTLY_AGREE_WITHIN_APPROXIMATELY_0_6_PERCENT",
+    "unresolved": "Full October 28-November 1 XRPL RLUSD supply reduction is not reconciled to issuer redemptions, cross-chain burn/mint migration, hot-wallet exclusions, or provider corrections."
+  },
+  "xrp_bridge_context": {
+    "reported_period": "2026-10-19 through 2026-10-25",
+    "reported_xrpl_dex_bridge_trades": 11009,
+    "reported_xrp_in_swaps": 246000,
+    "source": "https://thecryptobasic.com/2026/10/27/xrp-used-as-bridge-asset-in-11009-xrpl-dex-trades-facilitating-246000-xrp-in-swaps/",
+    "classification": "SECONDARY_REPORT_ATTRIBUTING_DATA_TO_VALIDATOR_VET",
+    "limitations": [
+      "Original public post not independently accessible in this run.",
+      "No denominator of total XRPL DEX trades.",
+      "246,000 XRP is gross transient routed flow, not net XRP acquired or held."
+    ]
+  },
+  "ask_coin_disambiguation": {
+    "t54_directory_merchant": "AskSurf",
+    "address": "ra9b6JX5aPVbdJhogDDddsRAcasWg7gzC3",
+    "relationship_to_permission_coin_ask": "NO_RELATIONSHIP_ESTABLISHED",
+    "note": "The AskSurf merchant name is not evidence of a Permission Coin ASK token relationship or an answer to the separate 'ASK Coin' identity investigation."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1_X402_AND_DUST_SAME_EVENTS",
+      "hypothesis": "Some or all of the Bitquery collector-directed dust payments are included in t54's x402 merchant transaction counts.",
+      "support": [
+        "Three exact destination addresses overlap between the t54 merchant directory and Bitquery collector addresses."
+      ],
+      "disconfirming_or_missing": [
+        "No raw SourceTag 804681468 and transaction-hash join; same destination can receive both tagged x402 and unrelated payments."
+      ]
+    },
+    {
+      "id": "H2_SHARED_DESTINATION_DIFFERENT_EVENTS",
+      "hypothesis": "The addresses are valid x402 merchant destinations, but the Bitquery dust transactions are unrelated inbound transfers and are not x402 facilitator events.",
+      "support": [
+        "XRPL Payment destinations can receive transactions outside the x402 facilitator; the source-tag join is absent."
+      ],
+      "disconfirming_or_missing": [
+        "The public directory and Bitquery use the same exact addresses, so transaction-level separation is still required."
+      ]
+    },
+    {
+      "id": "H3_DIRECTORY_COUNT_INFLATION",
+      "hypothesis": "Address-level transaction counts overstate actual merchant/customer activity because unrelated transfers, dust and automated calls can share merchant destinations.",
+      "support": [
+        "Bitquery reports 99.6% of RLUSD payments in its window going to three collector addresses; t54 directory ranks merchant addresses by transaction count."
+      ],
+      "disconfirming_or_missing": [
+        "A complete t54 raw-event export and independent validated-ledger classification are unavailable."
+      ]
+    },
+    {
+      "id": "H4_MICROPAYMENT_UTILITY_WITH_LOW_VALUE",
+      "hypothesis": "The high transaction count reflects genuine low-ticket API/machine payments but remains economically small at aggregate scale.",
+      "support": [
+        "t54 dashboard reports $48,848 over 14,850,938 all-time settlements; the calculated average is approximately $0.00329 per reported event."
+      ],
+      "disconfirming_or_missing": [
+        "The dashboard's value/count definitions, event deduplication and source-tag completeness are not independently reconciled."
+      ]
+    }
+  ],
+  "prediction_policy": {
+    "status": "NOT_ADMITTED_AS_DIRECTIONAL_XRP_FEATURE",
+    "reason": "Transaction count, merchant count, live-service count and gross stablecoin transfer value are not substitutes for net external settlement value or XRP inventory demand.",
+    "required_features": [
+      "source-tag-verified x402 event count",
+      "unique paying accounts and unique merchant accounts",
+      "delivered value by asset and issuer",
+      "median and distribution of ticket size",
+      "repeat-payer and merchant-retention rates",
+      "fee-adjusted settled value",
+      "issuer mint/burn and cross-chain bridge adjustments",
+      "XRP bridge-route share and net inventory change",
+      "collector concentration and circular-flow exclusions",
+      "point-in-time ledger index and source snapshot hash"
+    ]
+  },
+  "next_actions": [
+    "Perform the raw validated-ledger SourceTag and transaction-hash join for all three addresses.",
+    "Obtain a paginated t54 merchant/event export or a reproducible public API response.",
+    "Reconcile t54 homepage counters with its directory counts and per-merchant records.",
+    "Reproduce Bitquery's dust clustering independently from XRPL account_tx data.",
+    "Do not attribute the cluster to Binance or any merchant operator without separate evidence.",
+    "Do not infer XRP demand from RLUSD payment counts or stablecoin supply alone."
+  ]
+}

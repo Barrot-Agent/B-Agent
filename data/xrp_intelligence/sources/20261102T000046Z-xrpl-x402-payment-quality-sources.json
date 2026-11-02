@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_x402_payment_quality_source_registry_addendum",
+  "captured_at_utc": "2026-11-02T00:00:46Z",
+  "sources": [
+    {
+      "id": "SRC_T54_HOME",
+      "publisher": "t54 Labs / XRPL AI Hub",
+      "url": "https://xrpl-ai.org/",
+      "source_type": "first_party_dashboard",
+      "observed_at_utc": "2026-11-02T00:00:46Z",
+      "claims": [
+        "14,850,938 all-time settled transactions",
+        "$48,848.00 reported all-time value settled",
+        "183 registered merchants",
+        "5,318 live services"
+      ],
+      "limits": [
+        "Dashboard counters not independently reconciled",
+        "Individual live settlement rows show Unverified labels",
+        "No raw event-hash export captured"
+      ]
+    },
+    {
+      "id": "SRC_T54_DIRECTORY",
+      "publisher": "t54 Labs / XRPL AI Hub",
+      "url": "https://xrpl-ai.org/partners",
+      "source_type": "first_party_directory",
+      "observed_window": "Crawled during week before 2026-11-02; exact capture time unavailable",
+      "claims": [
+        "Directory lists merchant addresses and service entries",
+        "Heurist Inference Router, AskSurf and Heurist Mesh destination addresses match Bitquery collector addresses"
+      ],
+      "limits": [
+        "Directory counts differ from homepage counters",
+        "Search-index rendering is not a raw event export"
+      ]
+    },
+    {
+      "id": "SRC_BITQUERY_DUST",
+      "publisher": "Bitquery Research",
+      "url": "https://bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "source_type": "commercial_onchain_analysis",
+      "published_or_verified_date": "2026-10-19",
+      "claims": [
+        "7.82M RLUSD payments in 30-day window",
+        "99.6% to three collector wallets",
+        "110-wallet cluster",
+        "7,722 RLUSD carried by dust payments",
+        "$7.33B gross >=1 RLUSD payments"
+      ],
+      "limits": [
+        "Single provider's published analysis",
+        "Raw event dataset not independently reproduced here",
+        "Wallet operator attribution unknown"
+      ]
+    },
+    {
+      "id": "SRC_T54_FACILITATOR_TAG",
+      "publisher": "OpenWallet developer documentation",
+      "url": "https://wallet.openapps.network/developers/accept-payments",
+      "source_type": "implementation_documentation",
+      "claims": [
+        "Example mainnet configuration uses https://xrpl-facilitator-mainnet.t54.ai with sourceTag 804681468"
+      ],
+      "limits": [
+        "Confirms documented facilitator configuration, not that any specific Bitquery transaction carried this tag"
+      ]
+    },
+    {
+      "id": "SRC_XRPL_ACCOUNT_TX",
+      "publisher": "XRPL.org",
+      "url": "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
+      "source_type": "protocol_documentation",
+      "claims": [
+        "account_tx retrieves validated transactions involving an account"
+      ],
+      "limits": [
+        "This run did not execute a complete raw account_tx export or SourceTag join"
+      ]
+    },
+    {
+      "id": "SRC_CROSS_RIVER",
+      "publisher": "Cross River Bank",
+      "url": "https://www.crossriver.com/newsroom/cross-river-embeds-ripple-usd-stablecoin-on-the-xrp-ledger-into-its-core-banking-infrastructure-expanding-faster-payment-capabilities-for-businesses",
+      "source_type": "official_company_announcement",
+      "published_date": "2026-10-15",
+      "claims": [
+        "RLUSD on XRPL integrated into Cross River Core Operating System",
+        "Limited-state availability"
+      ],
+      "limits": [
+        "No customer count, throughput, transaction volume or XRP bridge usage disclosed"
+      ]
+    },
+    {
+      "id": "SRC_XRPL_DASH_RLUSD",
+      "publisher": "XRPL Dashboard",
+      "url": "https://xrpldash.com/rwa",
+      "source_type": "ledger_aggregator",
+      "observed_local_time": "2026-11-01 17:37",
+      "timezone": "not specified",
+      "claims": [
+        "Approximately $711.83M RLUSD outstanding on XRPL"
+      ],
+      "limits": [
+        "Hot-wallet exclusions and exact ledger index not exposed in captured content"
+      ]
+    },
+    {
+      "id": "SRC_DEFILLAMA_XRPL",
+      "publisher": "DefiLlama",
+      "url": "https://defillama.com/chain/XRPL",
+      "source_type": "independent_aggregator",
+      "observed_date": "2026-11-01",
+      "claims": [
+        "Approximately $707.54M RLUSD market cap on XRPL",
+        "Total XRPL stablecoin market cap approximately $799.14M",
+        "Seven-day stablecoin market-cap change -24.55%"
+      ],
+      "limits": [
+        "Provider methodology and exact ledger cutoff require capture; not issuer reporting"
+      ]
+    },
+    {
+      "id": "SRC_XRP_BRIDGE_SECONDARY",
+      "publisher": "The Crypto Basic",
+      "url": "https://thecryptobasic.com/2026/10/27/xrp-used-as-bridge-asset-in-11009-xrpl-dex-trades-facilitating-246000-xrp-in-swaps/",
+      "source_type": "secondary_report",
+      "observed_period": "2026-10-19 through 2026-10-25",
+      "claims": [
+        "11,009 reported XRPL DEX bridge trades",
+        "246,000 XRP in swaps"
+      ],
+      "limits": [
+        "Original public validator post not independently accessible",
+        "No denominator; gross transient flow is not net XRP demand"
+      ]
+    }
+  ],
+  "independence_notes": "t54 and Bitquery are distinct providers but their transaction-level overlap has not been joined. DefiLlama and XRPL Dashboard are separate aggregators, not issuer attestations. Cross River is a primary company source for its integration announcement but not for actual transaction usage."
+}
