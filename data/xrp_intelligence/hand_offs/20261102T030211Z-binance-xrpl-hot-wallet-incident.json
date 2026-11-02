@@ -663,7 +663,50 @@
       "status": "OPEN_DRAFT_UNMERGED",
       "limitation": "Current-main security remediation remains inactive until an authorized proposal is merged."
     },
-    "preservation": "No main ref modification, merge, force-push, manual workflow dispatch, secret access, deployment, paper-position mutation or real-money trade."
+    "preservation": "No main ref modification, merge, force-push, manual workflow dispatch, secret access, deployment, paper-position mutation or real-money trade.",
+    "legacy_accuracy_audit": {
+      "current_main_files": {
+        "evaluator_path": "scripts/check_signal_accuracy.py",
+        "evaluator_blob_sha": "f7630d5655a66001d9de19c30451e5d6e53940a4",
+        "summary_path": "web/signal_accuracy.json",
+        "summary_blob_sha": "0c186b904ec3ae668ac53da42087931ccf483d0e",
+        "workflow_path": ".github/workflows/check-signal-accuracy.yml"
+      },
+      "current_main_reported_values": {
+        "checked_count": 1697,
+        "correct_count": 772,
+        "accuracy_pct": 45.5
+      },
+      "root_cause": [
+        "The evaluator compares each signal against a single current CoinGecko price when the signal is at least 24 hours old; it does not enforce one fixed horizon.",
+        "The exact outcome observation timestamp and source-price snapshot are not recorded.",
+        "The workflow runs on a daily schedule, so actual elapsed horizons vary.",
+        "Historical JSONL signal rows are rewritten with checked/correct/price_at_check fields.",
+        "The score is reduced to broad >60/<40/neutral thresholds; the result is not a calibrated probability score.",
+        "No baseline comparison, walk-forward protocol, uncertainty interval or calibration analysis is present."
+      ],
+      "classification": "LEGACY_METRIC_NOT_COMPARABLE_TO_FIXED_HORIZON_OUT_OF_SAMPLE_SKILL",
+      "interpretation": "The 45.5% value is a legacy descriptive tally only. It must not be described as XRP prediction accuracy, model skill or a measured win rate.",
+      "corrective_proposal": {
+        "pr_number": 1482,
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1482",
+        "head_sha": "bd9fd2fc68ce20c8b90687db3d4ff6e7a64005c9",
+        "base_sha": "8e966c7d53b5f80acf3653acfecbc862bb356fb3",
+        "ci_run": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41376543022",
+        "ci_result": "PASSED_425_TESTS_PLUS_8_SUBTESTS",
+        "fail_closed_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/41376542992",
+        "gate_result": "PASSED_MERGE_DISABLED",
+        "status": "OPEN_DRAFT_UNMERGED",
+        "correction": [
+          "Stops the live-price request and variable-horizon scoring.",
+          "Makes the scheduled workflow read-only and artifact-only.",
+          "Does not rewrite signal_history.jsonl.",
+          "Publishes NOT_EVALUATED / NOT_COMPARABLE while preserving the legacy 1697/772/45.5% tally for audit.",
+          "Labels the fixed-horizon ledger IMPLEMENTED_NOT_POPULATED because no verified XRP forecasts and resolved outcomes exist."
+        ]
+      },
+      "current_main_effect": "The misleading legacy tally remains in main until the proposal is approved and merged. No merge was performed."
+    }
   },
   "platform_status": {
     "verified_live": [
