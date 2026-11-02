@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-11-02T01:09:51.705Z",
+  "generated_at_utc": "2026-11-02T01:12:24.157Z",
   "title": "Coinbase–CFM–CBBM–Deribit XRP collateral pathway: legal and operational conditions",
   "status": "REGULATORY_PATH_CONFIRMED_PRODUCT_ACCESS_PARTLY_LIVE_XRP_SPECIFIC_USE_UNVERIFIED",
   "executive_conclusion": "A concrete conditional route exists for customer-owned XRP to be accepted as 30.7 margin collateral by Coinbase Financial Markets and re-used through Coinbase Bermuda to Deribit. XRP qualifies as a digital commodity under the referenced March 2026 SEC/CFTC interpretation and is the underlying of a Coinbase Derivatives CFTC-registered DCM futures contract. Deribit lists XRP linear USDC options/perpetuals and lists XRP as cross-collateral in X:SM. This is not proof that CFM has enabled XRP collateral, that the initial three-month restriction has expired, or that any customer has posted XRP.",
@@ -54,9 +54,17 @@
         "Before accepting a non-security digital asset other than Bitcoin, Ether or a payment stablecoin, the FCM must submit revised risk-management policies and procedures to MPD via WinJammer.",
         "For a 30.7 customer account, if the asset is not accepted by a registered DCO or a qualifying foreign clearing organization, the FCM applies fair market value after a haircut of at least 20% for non-stablecoin digital assets.",
         "If the asset is accepted by a qualifying registered DCO or foreign clearing organization, the applicable clearing organization's valuation and haircut rules apply; where multiple organizations accept it, the highest applicable haircut is used.",
-        "For a digital asset that is not a payment stablecoin, the special matched-currency haircut treatment only applies when the contract is both based on and denominated in that same digital asset and the collateral offsets a deficit in that contract."
+        "For a digital asset that is not a payment stablecoin, the special matched-currency haircut treatment only applies when the contract is both based on and denominated in that same digital asset and the collateral offsets a deficit in that contract.",
+        "The September 24, 2026 CFTC staff FAQ Q10 clarifies that the initial three-month restriction runs from the date the FCM first accepts crypto assets from customers; the notice must state the intended commencement date. Weekly reporting is a separate three-month period beginning with the calendar month after the notice month.",
+        "For non-security digital assets other than Bitcoin, Ether and payment stablecoins, the FCM must submit revised Regulation 1.11 risk-management policies and procedures to MPD via WinJammer before accepting the asset as customer margin collateral."
       ],
-      "unresolved": "CFM's actual notice-of-intent date, commencement date, weekly asset reports and XRP-specific revised risk-policy filing were not located in public search. The three-month restriction therefore cannot be assumed to have expired."
+      "unresolved": "CFM's actual notice-of-intent date, first customer-acceptance date, XRP-specific revised risk-policy filing and any weekly WinJammer asset reports were not located in public search. The initial three-month restriction and the start/end of weekly reporting therefore cannot be calculated.",
+      "caveats": [
+        "The 20% minimum in CFTC Letter 26-05 is the customer-collateral fallback for a non-security digital asset such as XRP when it is not accepted by a registered DCO or a qualifying foreign clearing organization, subject to the letter's inverse-contract exception.",
+        "This is distinct from the September 2026 FAQ's separate 20% capital charge for FCM proprietary inventory positions in BTC/ETH and 2% for proprietary payment-stablecoin residual interest. Those proprietary-position figures do not establish an XRP customer-collateral haircut.",
+        "If CFM accepts XRP as margin collateral for a qualifying foreign clearing organization subject to the CPSS/IOSCO Recommendations for Central Counterparties, the applicable foreign clearing organization's haircut applies; Deribit's published 15% X:SM haircut is a candidate only if that qualification and CFM acceptance are established.",
+        "Deribit cross-collateral eligibility and CFM's regulatory no-action pathway do not prove that CFM has enabled XRP collateral or that any customer has posted XRP."
+      ]
     },
     "cftc_26_17_right_of_reuse": {
       "status": "CONFIRMED_STAFF_NO_ACTION_POSITION_SUBJECT_TO_CONDITIONS",
@@ -94,8 +102,9 @@
         "Deribit's Standard Margin documentation says new accounts default to Segregated Standard Margin (S:SM)."
       ],
       "caveats": [
-        "XRP cross-collateral use therefore requires the relevant cross-collateral account mode; venue-wide eligibility does not prove the CFM route has enabled that mode for customers.",
-        "The 15% venue haircut does not automatically override the CFTC 26-05 minimum 20% fallback. The 15% treatment is relevant only if the applicable qualifying DCO/foreign-clearing-organization acceptance pathway is satisfied.",
+        "XRP cross-collateral use requires the relevant cross-collateral account mode; venue-wide eligibility does not prove the CFM route has enabled that mode for customers.",
+        "The 15% Deribit X:SM haircut applies to the CFTC route only if Deribit qualifies as a foreign clearing organization subject to the CPSS/IOSCO Recommendations for Central Counterparties and CFM accepts XRP through that route. If XRP is not accepted by a qualifying DCO/FCO, CFTC Letter 26-05 requires a minimum 20% customer-collateral haircut under condition 1.2.3.2.",
+        "The separate CFTC FAQ 20% proprietary BTC/ETH capital charge is not the basis for the XRP customer-collateral fallback; the latter is stated directly in CFTC Letter 26-05.",
         "No public XRP collateral balance or CFM-specific account configuration was found."
       ]
     }
@@ -154,7 +163,8 @@
     "Does CFM apply Deribit's 15% X:SM haircut, or the CFTC 26-05 minimum 20% fallback?",
     "Is X:SM cross-collateral mode available to CFM customers, given Deribit's default S:SM account mode?",
     "Are there public aggregate weekly collateral reports or a public CFTC filing showing XRP amounts?",
-    "What are the actual customer XRP balances held at Coinbase Custody Trust Company and the amount posted or re-used at Deribit?"
+    "What are the actual customer XRP balances held at Coinbase Custody Trust Company and the amount posted or re-used at Deribit?",
+    "Does Deribit qualify as a foreign clearing organization subject to the CPSS/IOSCO Recommendations for Central Counterparties for the specific 30.7 customer collateral route, and has CFM accepted it as such?"
   ],
   "forecast": {
     "status": "NOT_ISSUED",
@@ -171,7 +181,7 @@
       "id": "S2",
       "url": "https://www.cftc.gov/csl/26-05/download",
       "type": "primary_regulatory_letter",
-      "supports": "30.7 eligibility, DCM-underlying criterion, 3-month initial asset restriction, 20% minimum haircut fallback, revised risk-policy filing"
+      "supports": "30.7 eligibility, DCM-underlying criterion, conditional 20% minimum customer-collateral fallback when no qualifying DCO/FCO accepts the asset, three-month initial restriction, revised risk-policy filing"
     },
     {
       "id": "S3",
@@ -202,6 +212,12 @@
       "url": "https://support.deribit.com/hc/en-us/articles/25944811528477-Standard-Margin",
       "type": "venue_margin_specification",
       "supports": "XRP Tier 1 perpetuals and default segregated margin mode"
+    },
+    {
+      "id": "S8",
+      "url": "https://www.cftc.gov/media/14671/FAQ_CryptoAsset092426/download",
+      "type": "primary_regulatory_faq_updated_2026_09_24",
+      "supports": "Q9-Q11 clarify FCM notice, three-month initial asset restriction, weekly reporting period, and post-period ability to accept other crypto assets; Q6 distinguishes proprietary BTC/ETH and payment-stablecoin capital charges."
     }
   ],
   "handoff": {
