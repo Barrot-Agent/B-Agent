@@ -1,5 +1,7 @@
 from pathlib import Path
+
 from barrot_agent.tools import upgrade_bundle
+
 
 def test_legacy_upgrade_bundle_is_disabled_without_writes(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(Path, "home", lambda: tmp_path)

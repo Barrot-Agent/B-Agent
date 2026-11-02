@@ -22,19 +22,23 @@ def test_not_issued_never_emits_hardcoded_price_or_direction():
 
 def test_issued_requires_independent_sources():
     s=issued(); s["sources"][1]["independence_group"]="a"
-    with pytest.raises(EvidenceError,match="two independent sources"): validate_snapshot(s)
+    with pytest.raises(EvidenceError,match="two independent sources"):
+        validate_snapshot(s)
 
 def test_issued_requires_synchronized_venues():
     s=issued(); s["market_observations"][0]["timestamp_utc"]="2026-11-02T13:57:00Z"; s["market_observations"][1]["timestamp_utc"]="2026-11-02T13:58:30Z"
-    with pytest.raises(EvidenceError,match="synchronization window"): validate_snapshot(s)
+    with pytest.raises(EvidenceError,match="synchronization window"):
+        validate_snapshot(s)
 
 def test_issued_requires_baseline_improvement():
     s=issued(); s["forecast"]["evaluation"]["model_brier_score"]=0.25
-    with pytest.raises(EvidenceError,match="Brier score must beat"): validate_snapshot(s)
+    with pytest.raises(EvidenceError,match="Brier score must beat"):
+        validate_snapshot(s)
 
 def test_issued_requires_outcome_record():
     s=issued(); s["forecast"]["outcome"]={}
-    with pytest.raises(EvidenceError,match="outcome must be"): validate_snapshot(s)
+    with pytest.raises(EvidenceError,match="outcome must be"):
+        validate_snapshot(s)
 
 def test_valid_issued_forecast_is_research_only():
     report=render_report(issued())
