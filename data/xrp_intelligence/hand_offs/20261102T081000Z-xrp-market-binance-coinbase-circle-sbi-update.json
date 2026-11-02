@@ -384,6 +384,12 @@
       "status": "conditional regulatory no-action position; not proof of XRP collateral enablement",
       "detail": "CFTC Letter 26-17 concerns CFM's planned foreign-broker arrangement and rights of reuse for customer-owned digital commodities and payment stablecoins. Current Coinbase Prime collateral documentation for the CFM/Deribit product lists USDC, BTC and ETH, not XRP. Product eligibility must be verified separately from broad legal asset classification.",
       "source": "https://www.cftc.gov/csl/26-17/download"
+    },
+    "coinbase_usdc_borrow_api_followup": {
+      "endpoint_candidate": "GET /loans/assets",
+      "purpose": "Coinbase documentation indicates a per-asset loan_collateral_requirement_multiplier is available via API; public endpoint retrieval was not completed in this run.",
+      "status": "DESIGNED / endpoint candidate identified; not EXECUTED or VERIFIED",
+      "next": "Obtain current XRP multiplier and confirm authentication, response schema, rate limit and jurisdiction scope before ingestion."
     }
   },
   "coinbase_q3_2026": {
@@ -488,14 +494,20 @@
     "chatgpt_sbic": {
       "candidates": [
         "Tokyo SBIC's official June 2025 training included ChatGPT on day one and Copilot on day two for investee companies.",
-        "SBIC also commonly refers to the Social Bias Inference Corpus in NLP research; papers evaluate LLMs including ChatGPT on social-bias tasks."
+        "The academic SBIC is the Social Bias Inference Corpus. The primary 2024 Computational Linguistics paper describes 34K inferences where hate speech is annotated with free-text explanations of why a demographic subgroup is targeted."
       ],
-      "conclusion": "No ChatGPT-SBIC product, OpenAI partnership or XRP relationship was established. The earlier 65.9% interpretation is not being reused without checking the primary paper table and task definition.",
+      "primary_paper_result": {
+        "model": "GPT 3.5",
+        "task": "Social Bias Inference explanation generation",
+        "metric": "65.9% of pairwise rankings in Table 7",
+        "exact_interpretation": "The paper's authors unanimously preferred GPT-3.5's generated explanation over the dataset's gold human reference in 65.9% of reported pairwise rankings for the SBIC generation task.",
+        "not": "Not 65.9% classification accuracy, not overall model accuracy, not proof ChatGPT outperformed humans generally, and not an OpenAI partnership with Japanese SBIC."
+      },
+      "conclusion": "The phrase 'ChatGPT SBIC' most plausibly refers either to Tokyo SBIC's ChatGPT training or GPT-3.5's evaluation on the Social Bias Inference Corpus. They are separate entities/contexts; the exact intended reference remains dependent on the originating phrase context.",
       "sources": [
         "https://www.sbic.co.jp/training/20250612co/",
         "https://www.sbic.co.jp/company/profile/",
-        "https://arxiv.org/abs/2305.03514",
-        "https://doi.org/10.1162/coli_a_00502"
+        "https://aclanthology.org/2024.cl-1.8.pdf"
       ]
     },
     "ask_coin": {
