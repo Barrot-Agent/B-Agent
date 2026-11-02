@@ -272,6 +272,7 @@ def test_create_pull_request_accepts_cycle_objects(monkeypatch) -> None:
     monkeypatch.setenv("REPO", "Barrot-Agent/B-Agent")
     monkeypatch.setenv("GROQ_API_KEY", "test-key")
     monkeypatch.setenv("TASK_TITLE", "Repair issue")
+    monkeypatch.setenv("BRANCH", "repair/from-cycle")
     module = load_script_module("barrot_agent_pr_test")
 
     calls: dict[str, object] = {}
