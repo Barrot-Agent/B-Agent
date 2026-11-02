@@ -277,7 +277,8 @@
     "Reconcile the 0.5992 XRP flow residual before updating the attacker's final balance accounting.",
     "Normalize XRP spot price and volume feeds by venue, quote currency, timestamp and aggregation method.",
     "Store Fed, BOJ and Japan FX-policy observations as contextual macro features with publication and observation timestamps.",
-    "Continue fixed-horizon point-in-time forecasting and shadow evaluation; do not issue a directional forecast from this event."
+    "Continue fixed-horizon point-in-time forecasting and shadow evaluation; do not issue a directional forecast from this event.",
+    "Repair sentiment ingestion and timestamp coverage; do not use the corpus-wide XRP entity score as a current sentiment feature."
   ],
   "safety": {
     "public_data_only": true,
@@ -287,5 +288,44 @@
     "no_market_manipulation": true,
     "no_trading": true,
     "no_main_branch_write": true
+  },
+  "internal_sentiment_quality": {
+    "main_commit": "d7c7d8072110ac3e77f7e265e897632ff334e6ef",
+    "sentiment_shift": {
+      "path": "ping-pongings/knowledge-base/sentiment_shift.json",
+      "sha": "efcdf9a5a5514430fb665f12799b5a8c3e6c5aaf",
+      "generated_at_utc": "2026-11-02T05:51:47.546905Z",
+      "xrp": {
+        "recent_24h_entries": 0,
+        "prior_24h_entries": 0,
+        "recent_24h_score": null,
+        "prior_24h_score": null,
+        "shift": null,
+        "significant_shift": false
+      },
+      "classification": "NO_CURRENT_SENTIMENT_SIGNAL"
+    },
+    "entity_sentiment_profile": {
+      "path": "ping-pongings/knowledge-base/entity_sentiment_profile.json",
+      "sha": "5f681eda996fbf1220c19baed03726745dccc859",
+      "generated_from": {
+        "xrp_entries": 1208,
+        "btc_entries": 1245
+      },
+      "xrp_entity": {
+        "total_mentions": 286,
+        "bullish": 186,
+        "neutral": 44,
+        "bearish": 56,
+        "net_sentiment_score": 0.455
+      },
+      "limitations": [
+        "No rolling time window or publication-time distribution is exposed in this artifact.",
+        "Example headlines include older material and mixed BTC/XRP source context.",
+        "Source deduplication and independent-source weighting are not demonstrated."
+      ],
+      "classification": "CORPUS_AGGREGATE_NOT_CURRENT_SENTIMENT"
+    },
+    "correction": "Do not describe 286 mentions and +0.455 as a current XRP sentiment reading. The timestamped 24-hour sentiment-shift artifact has zero recent and prior entries and null scores. Neither artifact is admitted as a current predictive feature until timestamp coverage, asset attribution, deduplication and source independence are verified."
   }
 }
