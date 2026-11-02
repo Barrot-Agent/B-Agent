@@ -2,8 +2,8 @@
   "schema_version": "1.0",
   "artifact_type": "xrp_market_macro_and_source_quality_handoff",
   "title": "XRP market and macro context; Binance XRPL redistribution source-quality correction",
-  "captured_at_utc": "2026-11-02T06:45:00Z",
-  "evidence_cutoff_utc": "2026-11-02T06:45:00Z",
+  "captured_at_utc": "2026-11-02T06:48:00Z",
+  "evidence_cutoff_utc": "2026-11-02T06:48:00Z",
   "mission_priority": "XRP intelligence and prediction-engine mastery",
   "execution_foundation": "Barrot V3",
   "market_snapshots": [
@@ -89,6 +89,46 @@
         "Older update than CoinMarketCap retrieval.",
         "Different market aggregation and quote timing."
       ]
+    },
+    {
+      "provider": "CoinMarketCap",
+      "retrieved_at_utc": "2026-11-02T06:47:00Z",
+      "price_usd": 1.24,
+      "change_24h_pct": 0.32,
+      "market_cap_usd": 79080000000,
+      "volume_24h_usd": 1090000000,
+      "circulating_supply_xrp": 63350000000,
+      "total_supply_xrp": 99980000000,
+      "classification": "provider_live_snapshot",
+      "limitations": [
+        "Provider page does not expose a precise exchange-tick timestamp.",
+        "Volume aggregation differs from other providers."
+      ]
+    },
+    {
+      "provider": "MarketCapitalize / CoinPaprika quote",
+      "retrieved_at_utc": "2026-11-02T06:47:00Z",
+      "price_usd": 1.25,
+      "change_24h_pct": 0.11,
+      "market_cap_usd": 79120000000,
+      "volume_24h_usd": 3170000000,
+      "reported_circulating_supply_xrp": 99990000000,
+      "source_cache_status": "cached",
+      "chart_source": "Binance XRP/USDT daily closes",
+      "technical_summary": "Strong sell; 1 buy, 3 neutral, 14 sell; 261 days of daily closes; technical summary only, not a forecast.",
+      "performance_windows_pct": {
+        "7d": -4.54,
+        "30d": -16.39,
+        "90d": 14.92,
+        "1y": -50.23
+      },
+      "classification": "provider_snapshot_with_supply_field_anomaly",
+      "limitations": [
+        "The page labels 99.99B XRP as circulating, which conflicts with its own market capitalization and with CoinMarketCap's 63.35B circulating supply.",
+        "At $1.25 and 99.99B units, the implied market capitalization would be about $124.99B, not the displayed $79.12B. The 99.99B field is not admissible as circulating supply without clarification.",
+        "The page states its price, market cap and 24-hour volume are from CoinPaprika and its chart is from Binance; those are different data sources.",
+        "The page is marked cached and may lag individual exchanges."
+      ]
     }
   ],
   "etf_flows": {
@@ -100,7 +140,15 @@
     "limitations": [
       "A blank day is not a zero; source explicitly notes at least one incomplete reporting day.",
       "This flow observation is not proof of spot-market execution at a particular venue."
-    ]
+    ],
+    "past_week_net_flow_usd": 4300000,
+    "past_month_net_flow_usd": 19000000,
+    "reported_fund_status_on_latest_day": {
+      "funds_reported": 5,
+      "net_inflow_funds": 1,
+      "net_outflow_funds": 2,
+      "unchanged_funds": 2
+    }
   },
   "macro_context": [
     {
@@ -278,7 +326,8 @@
     "Normalize XRP spot price and volume feeds by venue, quote currency, timestamp and aggregation method.",
     "Store Fed, BOJ and Japan FX-policy observations as contextual macro features with publication and observation timestamps.",
     "Continue fixed-horizon point-in-time forecasting and shadow evaluation; do not issue a directional forecast from this event.",
-    "Repair sentiment ingestion and timestamp coverage; do not use the corpus-wide XRP entity score as a current sentiment feature."
+    "Repair sentiment ingestion and timestamp coverage; do not use the corpus-wide XRP entity score as a current sentiment feature.",
+    "Resolve MarketCapitalize's 99.99B 'circulating' field against its own $79.12B market cap and preserve the Oct 31 candle revision as separate point-in-time snapshots."
   ],
   "safety": {
     "public_data_only": true,
@@ -327,5 +376,63 @@
       "classification": "CORPUS_AGGREGATE_NOT_CURRENT_SENTIMENT"
     },
     "correction": "Do not describe 286 mentions and +0.455 as a current XRP sentiment reading. The timestamped 24-hour sentiment-shift artifact has zero recent and prior entries and null scores. Neither artifact is admitted as a current predictive feature until timestamp coverage, asset attribution, deduplication and source independence are verified."
+  },
+  "market_data_quality": {
+    "supply_definitions": [
+      {
+        "provider": "CoinMarketCap",
+        "reported_circulating_supply_xrp": 63350000000,
+        "classification": "provider_circulating_supply"
+      },
+      {
+        "provider": "MarketCapitalize",
+        "reported_circulating_supply_xrp": 99990000000,
+        "classification": "SUSPECT_FIELD_LABEL_OR_SOURCE_MAPPING",
+        "admissible": false
+      },
+      {
+        "provider": "XRP Insights",
+        "reported_supply_proxy_xrp": 69590000000,
+        "classification": "ledger_based_supply_proxy",
+        "not_equivalent_to_provider_circulating_supply": true
+      }
+    ],
+    "candle_revision": {
+      "date": "2026-10-31",
+      "earlier_capture": {
+        "retrieved_at_utc": "2026-11-02T06:40:00Z",
+        "close_usd": 1.25,
+        "change_pct": -0.37,
+        "volume_xrp": 22190000
+      },
+      "later_capture": {
+        "retrieved_at_utc": "2026-11-02T06:47:00Z",
+        "close_usd": 1.25,
+        "change_pct": -0.6,
+        "volume_xrp": 12510000
+      },
+      "classification": "PROVIDER_HISTORICAL_REVISION_OR_CAPTURE_DIFFERENCE",
+      "treatment": "Preserve both snapshots. Do not overwrite the earlier point-in-time record or treat the difference as real market trading without the provider's revision history."
+    },
+    "volume_divergence": {
+      "observations": [
+        {
+          "provider": "CoinMarketCap",
+          "volume_24h_usd": 1090000000,
+          "retrieved_at_utc": "2026-11-02T06:47:00Z"
+        },
+        {
+          "provider": "MarketCapitalize/CoinPaprika",
+          "volume_24h_usd": 3170000000,
+          "retrieved_at_utc": "2026-11-02T06:47:00Z"
+        },
+        {
+          "provider": "ET Now",
+          "volume_24h_usd": 980740000,
+          "retrieved_at_utc": "2026-11-02T02:50:00Z"
+        }
+      ],
+      "treatment": "Do not average. Normalize venue coverage, quote currency, timestamp, wash-trading filters and aggregation method before model admission."
+    }
   }
 }
