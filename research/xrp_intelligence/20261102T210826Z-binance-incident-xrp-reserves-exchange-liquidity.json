@@ -230,6 +230,42 @@
         "qeternal-xrp-recipient-ledger-2026-11-02"
       ],
       "caveat": "This is not a live node query by this run and does not establish who controls the receiving wallets or whether funds were later moved, deposited or sold."
+    },
+    {
+      "id": "C14",
+      "classification": "forensic_provider_estimate",
+      "claim": "TRM estimates approximately 325M USDT was sold through UniswapX and other intent-based contracts for about 122,300 ETH, implying roughly $2,650 per ETH while the cited market reference was $2,300–$2,350; TRM describes the USDT conversion as more than a 10% discount.",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ],
+      "caveat": "Provider estimate; this run did not replay each route or independently reconstruct the execution benchmark."
+    },
+    {
+      "id": "C15",
+      "classification": "forensic_provider_report",
+      "claim": "TRM reports an attacker wallet supplied approximately 60M USDT to Aave and borrowed approximately 19,760 ETH against it; Aave subsequently froze affected markets.",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ],
+      "caveat": "Exact collateral factor, liquidation threshold, market-freeze scope and eventual disposition are not independently reconciled here."
+    },
+    {
+      "id": "C16",
+      "classification": "forensic_provider_report",
+      "claim": "TRM reports approximately 300M USDT moved to a wallet that began supplying it to JustLend; a further approximately 200M USDT moved through hop wallets and was swapped on Uniswap, with about 30M USDT from that route frozen.",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ],
+      "caveat": "Approximate aggregate flows; the final balances and recoveries are not fully reconciled in this artifact."
+    },
+    {
+      "id": "C17",
+      "classification": "forensic_provider_report",
+      "claim": "TRM reports approximately 48M of the 88.5M Ethereum RLUSD tranche was sold through DEXs between 21:42 and 22:01 UTC before Ripple froze the remaining 40.5M.",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ],
+      "caveat": "Ethereum RLUSD tranche only; not a claim about all RLUSD movements on XRPL or Binance's separate hot-wallet balance."
     }
   ],
   "xrp_specific_reconciliation": {
@@ -466,6 +502,46 @@
       "source_ids": [
         "qeternal-xrp-recipient-ledger-2026-11-02"
       ]
+    },
+    {
+      "from": "attacker-controlled USDT",
+      "to": "UniswapX and professional market makers",
+      "relationship": "rapid stablecoin conversion into ETH",
+      "evidence": "TRM estimates ~325M USDT exchanged for ~122,300 ETH at an implied execution price materially adverse to the attacker.",
+      "classification": "forensic_provider_report",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ]
+    },
+    {
+      "from": "attacker-controlled USDT",
+      "to": "Aave",
+      "relationship": "collateral supply and ETH borrowing",
+      "evidence": "TRM reports ~60M USDT supplied and ~19,760 ETH borrowed; affected markets were subsequently frozen.",
+      "classification": "forensic_provider_report",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ]
+    },
+    {
+      "from": "attacker-controlled USDT",
+      "to": "JustLend",
+      "relationship": "stablecoin supply",
+      "evidence": "TRM reports approximately 300M USDT moved to a wallet that began supplying it to JustLend.",
+      "classification": "forensic_provider_report",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ]
+    },
+    {
+      "from": "attacker-controlled USDT",
+      "to": "Uniswap",
+      "relationship": "multi-hop stablecoin conversion",
+      "evidence": "TRM reports about 200M USDT routed through hop wallets and swapped, with about 30M later frozen.",
+      "classification": "forensic_provider_report",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ]
     }
   ],
   "competing_hypotheses": [
@@ -575,6 +651,22 @@
         "The attacker may retain the XRP without market impact for an extended period."
       ],
       "status": "OPEN"
+    },
+    {
+      "id": "H8",
+      "name": "Issuer-freeze windows create a race between stablecoin conversion and DeFi intervention",
+      "claim": "Stablecoin issuer controls can block remaining balances, but attackers may attempt to convert or collateralize stablecoins before freezes propagate; DEX market makers and lending protocols become critical liquidity and intervention chokepoints.",
+      "support": [
+        "TRM reports Tether, Circle, Ripple and USD1 freezes totaling about $2.67B in stablecoins by 00:30 UTC.",
+        "TRM reports 325M USDT converted to ETH at a large adverse execution price, USDT collateralized borrowing on Aave, and RLUSD sold before Ripple's freeze.",
+        "TRM reports Aave froze affected markets after the collateralized borrowing."
+      ],
+      "disconfirming": [
+        "The source's aggregate route values require independent transaction replay.",
+        "Some freezes may have blocked funds before conversion; not every route produced realized losses.",
+        "Market-maker discounts and lending actions may be idiosyncratic to this event rather than generalizable to future attacks."
+      ],
+      "status": "OPEN"
     }
   ],
   "event_study_design": {
@@ -597,7 +689,11 @@
       "funding and basis",
       "liquidations by side",
       "XRP-specific exchange netflows where attributable",
-      "cbXRP and FXRP collateral/borrow balances"
+      "cbXRP and FXRP collateral/borrow balances",
+      "stablecoin freeze latency by issuer",
+      "stablecoin-to-native-asset conversion slippage",
+      "DeFi collateral supplied and assets borrowed from attacker-linked wallets",
+      "protocol emergency-freeze timing and affected-market scope"
     ],
     "leakage_controls": [
       "use event-time and publication-time separately",
@@ -894,9 +990,14 @@
     "What was the exact source and scope of Binance co-CEO Yi He's earlier rounded statement that Ripple froze approximately $200M, given TRM's 40.5M RLUSD Ethereum freeze and separate RLUSD movements on XRPL?",
     "Did any of the six main recipient wallets or the separate test wallet transact after validated ledger 108064685 (approximately 19:55 UTC Nov 2)?",
     "Can the six-wallet total, seventh test transfer and original account residual be reconciled exactly to the initial 233,461,943.1 XRP theft after network fees and reserve balances?",
-    "The reported six-wallet total + separate 1,000 XRP test wallet + original-account residual sum to 233,461,943.69905 XRP, 0.59905 XRP above TRM/XRPLWin's initial 233,461,943.1 XRP total; direct validated-ledger replay is required to explain the discrepancy."
+    "The reported six-wallet total + separate 1,000 XRP test wallet + original-account residual sum to 233,461,943.69905 XRP, 0.59905 XRP above TRM/XRPLWin's initial 233,461,943.1 XRP total; direct validated-ledger replay is required to explain the discrepancy.",
+    "Can the approximately 325M USDT-to-122,300 ETH route be reconstructed transaction-by-transaction and compared with contemporaneous executable liquidity?",
+    "Which Aave markets and collateral positions were frozen, and what became of the approximately 19,760 ETH borrowed?",
+    "What proportion of the approximately 300M USDT supplied to JustLend remained deposited, was withdrawn or was frozen?",
+    "Can the approximately 200M USDT Uniswap route and 30M frozen subset be reconciled to exact addresses and transaction hashes?"
   ],
   "next_actions": [
+    "Reconstruct TRM's stablecoin conversion and lending routes from public transaction hashes; measure actual execution slippage, collateral factors, borrow proceeds, freeze timing and residual balances.",
     "Pin the latest validated XRPL ledger after 19:55 UTC and query account_tx for the original attacker account, six recipient accounts and separate test wallet; corroborate with a second public XRPL data provider.",
     "Reconcile six main recipient balances (reported total 233,460,920 XRP), seventh test payment (1,000 XRP), residual 23.69905 XRP and the original 233,461,943.1 XRP theft, explicitly accounting for transaction fees and ledger reserves.",
     "Re-query the original attacker account and all six recipient accounts through two independent XRPL public data providers at a pinned validated ledger; reconcile all outgoing payments, DEX offers, AMM interactions and exchange-tagged deposits.",
@@ -909,5 +1010,71 @@
     "Keep forecasts NOT_ISSUED until fixed-horizon out-of-sample evaluation and independent attestation are verified."
   ],
   "provenance_precision_note": "Do not infer a publication or retrieval clock time where the source or capture log did not provide one. Dates are retained at date precision; market and Binance snapshot timestamps are retained only where explicitly published. TRM and XRPLWin now support a quantified 233,461,943.1 XRP theft from Binance-attributed wallets; the earlier UNKNOWN_NOT_DISCLOSED field has been corrected. Subsequent six-wallet redistribution is time-stamped only through the reported 04:37 UTC observation and is not represented as current. Latest source-reported recipient status is pinned to ledger 108064685 (approximately 19:55 UTC Nov 2); it is not represented as a live query performed by this run. The reported six-wallet/test-wallet/residual arithmetic differs from the initial forensic total by +0.59905 XRP; this exact delta is retained as unresolved rather than attributed to fees or rounding without replay.",
-  "last_updated_at_utc": "2026-11-02T21:14:55Z"
+  "last_updated_at_utc": "2026-11-02T21:15:20Z",
+  "collateral_and_liquidity_observations": [
+    {
+      "time_window_utc": "2026-10-29T21:00:00Z/2026-10-30T00:30:00Z",
+      "mechanism": "USDT sale into ETH through UniswapX and other intent-based contracts",
+      "usdt_sold_approx": 325000000,
+      "eth_received_approx": 122300,
+      "implied_execution_usd_per_eth_approx": 2650,
+      "reference_eth_market_usd_range": [
+        2300,
+        2350
+      ],
+      "trm_characterization": "more than 10% discount on the USDT conversion",
+      "classification": "forensic_provider_estimate",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ],
+      "caveat": "Provider estimate; transaction-level route, fee and market benchmark require independent replay."
+    },
+    {
+      "time_window_utc": "2026-10-29",
+      "mechanism": "USDT supplied to Aave as collateral and ETH borrowed",
+      "usdt_supplied_approx": 60000000,
+      "eth_borrowed_approx": 19760,
+      "protocol": "Aave",
+      "classification": "forensic_provider_report",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ],
+      "caveat": "TRM reports Aave subsequently froze affected markets; this artifact does not infer the exact collateral factor, liquidation threshold or final repayment."
+    },
+    {
+      "time_window_utc": "2026-10-29",
+      "mechanism": "USDT supplied to JustLend",
+      "usdt_supplied_approx": 300000000,
+      "protocol": "JustLend",
+      "classification": "forensic_provider_report",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ],
+      "caveat": "The source reports supply activity; it does not establish final withdrawal, liquidation or recovery status."
+    },
+    {
+      "time_window_utc": "2026-10-29",
+      "mechanism": "USDT routed through hop wallets and swapped on Uniswap",
+      "usdt_routed_approx": 200000000,
+      "usdt_later_frozen_approx": 30000000,
+      "protocol": "Uniswap",
+      "classification": "forensic_provider_report",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ],
+      "caveat": "Approximate flow amounts; route-level reconciliation is not performed in this run."
+    },
+    {
+      "time_window_utc": "2026-10-29T21:42:00Z/22:01:00Z",
+      "mechanism": "Ethereum RLUSD converted through DEXs before issuer freeze",
+      "rlusd_sold_approx": 48000000,
+      "rlusd_frozen_approx": 40500000,
+      "rlusd_initial_stolen_approx": 88500000,
+      "classification": "forensic_provider_report",
+      "source_ids": [
+        "trm-binance-xrp-2026-10-29"
+      ],
+      "caveat": "These are the Ethereum RLUSD balances reported by TRM; separate XRPL RLUSD movements are not included in this tranche."
+    }
+  ]
 }
