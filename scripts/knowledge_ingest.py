@@ -7,6 +7,7 @@ increments the source counter in config.json. Every entry has a real URL.
 
 import json, os, sys, urllib.request, xml.etree.ElementTree as ET
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 
 KB_DIR = "ping-pongings/knowledge-base"
 LOG_PATH = os.path.join(KB_DIR, "log.jsonl")
@@ -19,6 +20,23 @@ FEEDS = {
         "https://www.newsbtc.com/feed/",
     ],
 }
+
+
+def normalize_published_at(value):
+    """Return a timezone-aware RSS publication timestamp in UTC, or None."""
+    if not isinstance(value, str) or not value.strip():
+        return None
+    raw = value.strip()
+    try:
+        parsed = parsedate_to_datetime(raw)
+    except (TypeError, ValueError, OverflowError):
+        try:
+            parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        except ValueError:
+            return None
+    if parsed.tzinfo is None:
+        return None
+    return parsed.astimezone(timezone.utc).isoformat()
 
 
 def fetch(url):
@@ -53,6 +71,7 @@ def parse_rss(raw, source, feed_url, limit=8):
                 "title": title[:300],
                 "url": link,
                 "published": pub,
+                "published_at_utc": normalize_published_at(pub),
                 "summary": desc[:500],
             }
         )

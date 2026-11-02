@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from knowledge_distill import select_todo
+from knowledge_ingest import parse_rss
 from xrp_feature_snapshot import build_snapshot, write_snapshot
 
 
@@ -27,6 +28,7 @@ def test_snapshot_uses_capture_time_and_preserves_quality_gaps(tmp_path):
             "url": "https://example.com/a",
             "feed": "feed-a",
             "ingested_at": (now - timedelta(hours=1)).isoformat(),
+            "published_at_utc": (now - timedelta(hours=1)).isoformat(),
             "distilled": True,
             "distill": {"sentiment": "bullish", "xrp_relevance": 0.8, "entities": ["Ripple", "XRP"]},
         },
@@ -34,6 +36,7 @@ def test_snapshot_uses_capture_time_and_preserves_quality_gaps(tmp_path):
             "url": "https://example.com/a",
             "feed": "feed-a",
             "ingested_at": (now - timedelta(hours=2)).isoformat(),
+            "published_at_utc": (now - timedelta(hours=2)).isoformat(),
             "distilled": True,
             "distill": {"sentiment": "bearish", "xrp_relevance": 0.2, "entities": ["XRP"]},
         },
@@ -41,6 +44,7 @@ def test_snapshot_uses_capture_time_and_preserves_quality_gaps(tmp_path):
             "url": "https://example.com/b",
             "feed": "feed-b",
             "ingested_at": (now - timedelta(hours=25)).isoformat(),
+            "published_at_utc": (now - timedelta(hours=25)).isoformat(),
             "distilled": True,
             "distill": {"sentiment": "bearish", "xrp_relevance": 1.0, "entities": ["SEC"]},
         },
@@ -49,6 +53,7 @@ def test_snapshot_uses_capture_time_and_preserves_quality_gaps(tmp_path):
             "url": "https://example.com/d",
             "feed": "feed-d",
             "ingested_at": (now + timedelta(hours=1)).isoformat(),
+            "published_at_utc": (now + timedelta(hours=1)).isoformat(),
             "distilled": False,
         },
     ]
@@ -61,9 +66,13 @@ def test_snapshot_uses_capture_time_and_preserves_quality_gaps(tmp_path):
     assert snapshot["duplicate_url_count"] == 1
     assert snapshot["malformed_jsonl_lines"] == 1
     assert snapshot["missing_ingested_at"] == 1
+    assert snapshot["missing_published_at"] == 1
     assert snapshot["future_ingested_at"] == 1
+    assert snapshot["future_published_at"] == 1
     assert snapshot["recent_24h_entries"] == 2
     assert snapshot["prior_24h_entries"] == 1
+    assert snapshot["recent_24h_published_entries"] == 2
+    assert snapshot["prior_24h_published_entries"] == 1
     assert snapshot["recent_24h_weighted_sentiment_score"] == 80
     assert snapshot["prior_24h_weighted_sentiment_score"] == 0
     assert snapshot["sentiment_shift_points"] == 80
@@ -78,6 +87,7 @@ def test_snapshot_is_stale_when_no_entries_fall_in_recent_window(tmp_path):
     _write_jsonl(log, [{
         "url": "https://example.com/old",
         "ingested_at": (now - timedelta(hours=60)).isoformat(),
+        "published_at_utc": (now - timedelta(hours=60)).isoformat(),
         "distilled": True,
         "distill": {"sentiment": "neutral", "xrp_relevance": 1.0, "entities": []},
     }])
@@ -85,6 +95,54 @@ def test_snapshot_is_stale_when_no_entries_fall_in_recent_window(tmp_path):
     assert snapshot["status"] == "STALE"
     assert snapshot["recent_24h_entries"] == 0
     assert snapshot["recent_24h_weighted_sentiment_score"] is None
+
+
+def test_rss_ingestion_normalizes_publisher_timestamp():
+    raw = b"""<rss><channel><item>
+      <title>XRP market structure update</title>
+      <link>https://example.com/xrp-update</link>
+      <description>Public test item</description>
+      <pubDate>Mon, 02 Nov 2026 07:00:00 GMT</pubDate>
+    </item></channel></rss>"""
+    rows = parse_rss(raw, "online_articles", "https://example.com/feed")
+    assert len(rows) == 1
+    assert rows[0]["published"] == "Mon, 02 Nov 2026 07:00:00 GMT"
+    assert rows[0]["published_at_utc"] == "2026-11-02T07:00:00+00:00"
+
+
+def test_snapshot_uses_publication_time_not_capture_time_for_sentiment(tmp_path):
+    now = datetime(2026, 11, 2, 8, 0, tzinfo=timezone.utc)
+    log = tmp_path / "log.jsonl"
+    rows = [
+        {
+            "url": "https://example.com/old",
+            "feed": "feed-a",
+            "ingested_at": (now - timedelta(hours=1)).isoformat(),
+            "published_at_utc": (now - timedelta(hours=48)).isoformat(),
+            "distilled": True,
+            "distill": {"sentiment": "bearish", "xrp_relevance": 1.0, "entities": ["XRP"]},
+        },
+        {
+            "url": "https://example.com/new",
+            "feed": "feed-b",
+            "ingested_at": (now - timedelta(hours=30)).isoformat(),
+            "published": "Mon, 02 Nov 2026 07:00:00 GMT",
+            "distilled": True,
+            "distill": {"sentiment": "bullish", "xrp_relevance": 1.0, "entities": ["Ripple"]},
+        },
+    ]
+    _write_jsonl(log, rows)
+    snapshot = build_snapshot(log, tmp_path / "missing-config.json", now=now)
+
+    assert snapshot["recent_24h_entries"] == 1
+    assert snapshot["prior_24h_entries"] == 1
+    assert snapshot["recent_24h_published_entries"] == 1
+    assert snapshot["prior_24h_published_entries"] == 1
+    assert snapshot["recent_24h_xrp_relevant_entries"] == 1
+    assert snapshot["recent_24h_ingested_xrp_relevant_entries"] == 1
+    assert snapshot["recent_24h_weighted_sentiment_score"] == 100
+    assert snapshot["prior_24h_weighted_sentiment_score"] == 0
+    assert snapshot["status"] == "OK"
 
 
 def test_snapshot_writer_stages_rolling_feature_store(tmp_path):

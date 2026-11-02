@@ -13,6 +13,7 @@ import os
 import shutil
 from collections import Counter
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 KB_DIR = Path("ping-pongings/knowledge-base")
@@ -34,6 +35,23 @@ def parse_utc(value):
     if parsed.tzinfo is None:
         return None
     return parsed.astimezone(timezone.utc)
+
+
+def parse_publication_timestamp(entry):
+    """Parse normalized or legacy RSS publication time; reject naive timestamps."""
+    for raw in (entry.get("published_at_utc"), entry.get("published")):
+        parsed = parse_utc(raw)
+        if parsed is not None:
+            return parsed
+        if not isinstance(raw, str) or not raw.strip():
+            continue
+        try:
+            parsed = parsedate_to_datetime(raw.strip())
+        except (TypeError, ValueError, OverflowError):
+            continue
+        if parsed.tzinfo is not None:
+            return parsed.astimezone(timezone.utc)
+    return None
 
 
 def sha256_file(path):
@@ -88,10 +106,14 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
     url_counts = Counter()
     feed_counts = Counter()
     missing_timestamp = 0
+    missing_published_timestamp = 0
     missing_url = 0
     future_timestamp = 0
+    future_published_timestamp = 0
     recent_entries = 0
     prior_entries = 0
+    recent_published_entries = 0
+    prior_published_entries = 0
     distilled_entries = 0
     undistilled_entries = 0
     missing_relevance = 0
@@ -103,6 +125,9 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
     all_entities = Counter()
     latest_ingested = None
     earliest_ingested = None
+    latest_published = None
+    earliest_published = None
+    recent_ingested_relevant = 0
 
     for entry in entries:
         url = entry.get("url")
@@ -126,6 +151,19 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
                 recent_entries += 1
             elif prior_start <= ts < recent_start:
                 prior_entries += 1
+
+        pub_ts = parse_publication_timestamp(entry)
+        if pub_ts is None:
+            missing_published_timestamp += 1
+        else:
+            latest_published = pub_ts if latest_published is None else max(latest_published, pub_ts)
+            earliest_published = pub_ts if earliest_published is None else min(earliest_published, pub_ts)
+            if pub_ts > now:
+                future_published_timestamp += 1
+            elif recent_start <= pub_ts <= now:
+                recent_published_entries += 1
+            elif prior_start <= pub_ts < recent_start:
+                prior_published_entries += 1
 
         distill = entry.get("distill")
         if not entry.get("distilled") or not isinstance(distill, dict):
@@ -157,13 +195,17 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
         all_entities.update(clean_entities)
 
         if ts is not None and recent_start <= ts <= now:
+            if relevance is not None and relevance > 0:
+                recent_ingested_relevant += 1
+
+        if pub_ts is not None and recent_start <= pub_ts <= now:
             recent_entities.update(clean_entities)
             if relevance is not None and relevance > 0:
                 recent_relevant += 1
                 if weight is not None:
                     recent_num += weight * relevance
                     recent_den += relevance
-        elif ts is not None and prior_start <= ts < recent_start:
+        elif pub_ts is not None and prior_start <= pub_ts < recent_start:
             if relevance is not None and relevance > 0 and weight is not None:
                 prior_num += weight * relevance
                 prior_den += relevance
@@ -173,10 +215,11 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
     prior_score = _weighted_score(prior_num, prior_den)
     shift = recent_score - prior_score if recent_score is not None and prior_score is not None else None
 
-    if (malformed or missing_timestamp or missing_url or future_timestamp
-            or duplicate_urls or missing_relevance or invalid_sentiment):
+    if (malformed or missing_timestamp or missing_published_timestamp or missing_url
+            or future_timestamp or future_published_timestamp or duplicate_urls
+            or missing_relevance or invalid_sentiment):
         status = "DEGRADED"
-    elif recent_entries == 0:
+    elif recent_published_entries == 0:
         status = "STALE"
     elif undistilled_entries:
         status = "PARTIAL"
@@ -201,17 +244,24 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
         "duplicate_url_count": duplicate_urls,
         "malformed_jsonl_lines": malformed,
         "missing_ingested_at": missing_timestamp,
+        "missing_published_at": missing_published_timestamp,
         "missing_url": missing_url,
         "future_ingested_at": future_timestamp,
+        "future_published_at": future_published_timestamp,
         "earliest_ingested_at_utc": earliest_ingested.isoformat() if earliest_ingested else None,
         "latest_ingested_at_utc": latest_ingested.isoformat() if latest_ingested else None,
+        "earliest_published_at_utc": earliest_published.isoformat() if earliest_published else None,
+        "latest_published_at_utc": latest_published.isoformat() if latest_published else None,
         "recent_24h_entries": recent_entries,
         "prior_24h_entries": prior_entries,
+        "recent_24h_published_entries": recent_published_entries,
+        "prior_24h_published_entries": prior_published_entries,
         "distilled_entries": distilled_entries,
         "undistilled_entries": undistilled_entries,
         "missing_or_invalid_xrp_relevance": missing_relevance,
         "invalid_sentiment_labels": invalid_sentiment,
         "recent_24h_xrp_relevant_entries": recent_relevant,
+        "recent_24h_ingested_xrp_relevant_entries": recent_ingested_relevant,
         "recent_24h_weighted_sentiment_score": recent_score,
         "prior_24h_weighted_sentiment_score": prior_score,
         "sentiment_shift_points": shift,
@@ -226,7 +276,9 @@ def build_snapshot(log_path=LOG_PATH, config_path=CONFIG_PATH, now=None,
         ],
         "forecast_status": "NOT_ISSUED",
         "notes": [
-            "Ingested-at windows measure capture time, not publisher publication time.",
+            "Ingested-at windows measure capture/arrival time and are retained for ingestion diagnostics.",
+            "Publisher publication timestamps drive recent/prior sentiment and entity windows; legacy RFC822 published fields are parsed when normalized timestamps are absent.",
+            "Entries with missing or future publication timestamps are excluded from publication-time windows and degrade the snapshot.",
             "Entity and sentiment counts are descriptive features, not causal evidence or price forecasts.",
             "This snapshot does not establish source independence; feed URLs are retained for later corroboration.",
         ],
