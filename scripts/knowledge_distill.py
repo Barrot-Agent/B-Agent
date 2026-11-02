@@ -86,6 +86,14 @@ def add_vader_check(d, text):
     return d
 
 
+def select_todo(entries, max_items=0):
+    """Select pending entries in file order; zero means no batch limit."""
+    pending = [entry for entry in entries if not entry.get("distilled")]
+    if max_items < 0:
+        raise ValueError("max_items must be zero or positive")
+    return pending[:max_items] if max_items else pending
+
+
 def main():
     if not KEY:
         sys.exit("GROQ_API_KEY not set")
@@ -94,9 +102,17 @@ def main():
     with open(LOG_PATH) as f:
         entries = [json.loads(l) for l in f if l.strip()]
 
-    todo = [e for e in entries if not e.get("distilled")]
+    all_todo = [e for e in entries if not e.get("distilled")]
+    try:
+        max_items = int(os.environ.get("MAX_DISTILL_PER_RUN", "0") or 0)
+    except ValueError:
+        sys.exit("MAX_DISTILL_PER_RUN must be an integer")
+    todo = select_todo(entries, max_items)
     if not todo:
-        print("All entries already distilled.")
+        if all_todo:
+            print(f"No entries selected; {len(all_todo)} pending entries remain.")
+        else:
+            print("All entries already distilled.")
         return
 
     done = 0
@@ -120,7 +136,7 @@ def main():
     with open(LOG_PATH, "w") as f:
         for e in entries:
             f.write(json.dumps(e) + "\n")
-    print(f"Distilled {done}/{len(todo)} pending entries.")
+    print(f"Distilled {done}/{len(todo)} selected entries; {len(all_todo) - done} pending entries remain.")
 
 
 if __name__ == "__main__":
