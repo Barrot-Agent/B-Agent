@@ -40,7 +40,7 @@ def test_handoff_records_open_unmerged_prs_and_exact_head_verification():
         assert p["verification"]["ci_conclusion"] == "success"
         assert p["verification"]["gate_conclusion"] == "success"
         assert p["verification"]["merge_enabled"] is False
-    assert by_number[1477]["verification"]["test_summary"] == "425 tests and 8 subtests passed"
+    assert by_number[1477]["verification"]["test_summary"] == "426 tests and 8 subtests passed"
     assert d["repo_state"]["no_merge_force_push_or_manual_dispatch"] is True
 
 
@@ -50,8 +50,10 @@ def test_handoff_records_confirmed_firelight_kraken_usdc_relationship():
     assert relationship["status"] == "CONFIRMED_OFFICIAL_FIRELIGHT_ANNOUNCEMENTS"
     assert relationship["roles"]["sentora"].startswith("Curates")
     assert relationship["mechanism"]["fee_asset"] == "USDC"
-    assert "converted to FXRP" in relationship["mechanism"]["fee_conversion"]
-    assert relationship["mechanism"]["first_loss_buffer"].startswith("Exists")
+    assert relationship["mechanism"]["fee_conversion_status"] == "OFFICIAL_FIRELIGHT_PHASE2_DESCRIPTION"
+    assert "auto-compound" in relationship["mechanism"]["fee_conversion"]
+    assert relationship["mechanism"]["first_loss_buffer_type"] == "PROTOCOL_OWNED_STABLECOIN_RESERVE"
+    assert "after exhaustion" in relationship["mechanism"]["first_loss_order"]
 
 
 def test_handoff_records_fxrp_backing_concentration_and_escrow_ladder():

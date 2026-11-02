@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-02T00:46:18.003Z",
+  "topic": "Firelight Phase 2: official confirmation of stablecoin first-loss reserve and USDC-to-FXRP auto-compounding",
+  "sources": [
+    {
+      "url": "https://firelight.finance/articles/everything-stakers-need-to-know-about-phase-2",
+      "date": "2026-07-23",
+      "type": "official_firelight_phase2_explainer"
+    },
+    {
+      "url": "https://firelight.finance/articles/firelight-is-live-institutional-grade-cover-for-defi",
+      "date": "2026-10-06",
+      "type": "official_firelight_launch_article"
+    },
+    {
+      "url": "https://firelight.finance/articles/firelight-brings-onchain-cover-to-kraken-defi-earn",
+      "date": "2026-10-15",
+      "type": "official_firelight_kraken_announcement"
+    },
+    {
+      "url": "https://firelight.finance/articles/how-protected-vaults-reach-users-the-kraken-defi-earn-example",
+      "date": "2026-10-22",
+      "type": "official_firelight_role_separation_and_claims_article"
+    }
+  ],
+  "confirmed_mechanics": [
+    "The First-Loss Buffer is a dedicated protocol-owned stablecoin reserve and absorbs the first tranche of a validated cover claim.",
+    "After the First-Loss Buffer is exhausted, staked FXRP is slashed pro rata to fund remaining covered losses.",
+    "Fees paid in USDC convert back to FXRP and flow automatically into staker positions; the rewards auto-compound and increase redemption value and slashable exposure.",
+    "The unstaking window extends to align with active 30-day coverage periods; exact total duration is not stated.",
+    "Kraken Protected Strategies USDC is curated by Sentora and covered by Firelight. Platform access, vault curation/infrastructure and coverage are separate roles."
+  ],
+  "relationship_graph": [
+    {
+      "from": "Kraken",
+      "to": "Kraken Protected Strategies USDC",
+      "edge": "platform distribution/access through Kraken DeFi Earn"
+    },
+    {
+      "from": "Sentora",
+      "to": "Kraken Protected Strategies USDC",
+      "edge": "strategy curator; selects markets, allocations and risk parameters"
+    },
+    {
+      "from": "Firelight",
+      "to": "Kraken Protected Strategies USDC",
+      "edge": "onchain cover and claims process"
+    },
+    {
+      "from": "FXRP stakers",
+      "to": "Firelight shared cover pool",
+      "edge": "supply slashable backing capital"
+    },
+    {
+      "from": "USDC operator fees",
+      "to": "FXRP staker positions",
+      "edge": "Firelight-stated conversion and auto-compounding"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "edge": "issuer relationship; no direct Circle-Firelight agreement established"
+    },
+    {
+      "from": "XRP",
+      "to": "FXRP",
+      "edge": "native XRP locked on XRPL to mint its Flare representation"
+    }
+  ],
+  "economics_and_risk": {
+    "first_loss_buffer_type": "PROTOCOL_OWNED_STABLECOIN_RESERVE",
+    "first_loss_buffer_asset": "Specific stablecoin not disclosed",
+    "first_loss_buffer_balance": "Not disclosed",
+    "post_buffer_loss_allocation": "Pro-rata slashing of staked FXRP",
+    "fee_asset": "USDC",
+    "fee_conversion": "USDC fees convert to FXRP and auto-compound in staker positions, according to Firelight.",
+    "cover_period_days": 30,
+    "unstaking_window": "Aligned with coverage obligations; exact duration not disclosed",
+    "coverage_is_insurance": false,
+    "implication": "USDC fee streams can create a protocol-level FXRP reward conversion mechanism, but no actual fee amount or transaction-level conversion has yet been traced. It is not proof of new XRP spot buying."
+  },
+  "unresolved": [
+    "Identify the exact stablecoin and current balance of the protocol-owned first-loss reserve.",
+    "Trace USDC fee receipts and FXRP conversion transactions by cover programme.",
+    "Measure net Firelight staker inflows, rewards, slashing, unstaking and redemptions.",
+    "Verify current covered-vault composition and active Cover Registry terms at a fixed chain block."
+  ]
+}
