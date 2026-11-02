@@ -1,0 +1,279 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T112018Z-research-architecture-platform-map",
+  "captured_at_utc": "2026-11-02T11:20:18Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "repository_state": {
+    "main_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401",
+    "main_read_only_this_run": true,
+    "current_research_pr": 1503,
+    "current_research_pr_head": "0e4d2a8141a3d1acaa8b5d9626fd83ce7f48d335",
+    "note": "This artifact is append-only on a draft branch. No main write, merge, force-push or workflow dispatch."
+  },
+  "platform_coordination": {
+    "target_platforms": [
+      {
+        "platform": "ChatGPT",
+        "live_status": "VERIFIED_ACTIVE_CURRENT_SESSION",
+        "observed_capabilities": [
+          "web research",
+          "evidence synthesis",
+          "GitHub repository/PR read",
+          "GitHub branch/file/PR creation"
+        ],
+        "authentication": "current ChatGPT session and connected GitHub integration",
+        "permissions_observed": "repository reads plus branch/file/PR writes through the connected GitHub integration; no merge or workflow dispatch performed",
+        "proposed_assignment": "primary orchestration, source provenance, hypothesis ledger, cross-source reconciliation and forecast governance",
+        "data_flow": "public sources and GitHub evidence -> structured claim ledger -> research artifacts/PRs",
+        "fallback": "deterministic local JSON validation and manual source snapshots"
+      },
+      {
+        "platform": "Claude",
+        "live_status": "NOT_VERIFIED",
+        "authentication": "no authenticated live session or connector action tested in this run",
+        "proposed_assignment": "independent legal/regulatory review, causal red-team and counter-hypothesis generation",
+        "least_privilege": "receive source URLs, redacted evidence packets and claim IDs; no repository secrets or write access",
+        "fallback": "local source-by-source counter-hypothesis checklist"
+      },
+      {
+        "platform": "Grok",
+        "live_status": "NOT_VERIFIED",
+        "authentication": "no authenticated live session or connector action tested in this run",
+        "proposed_assignment": "public discussion/event discovery and narrative-change triage",
+        "least_privilege": "public data only; no private messages, account access or trading permissions; social sentiment excluded from model features until timestamped and validated",
+        "fallback": "public RSS/search snapshots with source independence grouping"
+      },
+      {
+        "platform": "Gemini",
+        "live_status": "NOT_VERIFIED",
+        "authentication": "no authenticated live session or connector action tested in this run",
+        "proposed_assignment": "document/table extraction and public-video transcript inventory after identity verification",
+        "least_privilege": "public documents/videos only; no private drive or personal account data",
+        "fallback": "official filing HTML/PDF extraction and manual transcript checks"
+      },
+      {
+        "platform": "Copilot",
+        "live_status": "NOT_VERIFIED",
+        "authentication": "repository workflows or installed configuration do not prove a live Copilot session",
+        "proposed_assignment": "independent repository code review and CI/workflow safety review",
+        "least_privilege": "read-only review by default; no merge, force-push, deployment or secret access",
+        "fallback": "GitHub diff inspection and deterministic regression tests"
+      },
+      {
+        "platform": "Codex",
+        "live_status": "NOT_VERIFIED",
+        "authentication": "no separate authenticated Codex handoff tested in this run",
+        "proposed_assignment": "isolated implementation, test generation and minimal PR preparation",
+        "least_privilege": "branch-scoped write only; no main write, merge, force-push or external dispatch",
+        "fallback": "current GitHub connector plus deterministic code edits and CI"
+      },
+      {
+        "platform": "Hugging Face",
+        "live_status": "NOT_VERIFIED",
+        "authentication": "no Hub API call or model/dataset access tested; existing deployment workflow is not proof of live collaboration",
+        "proposed_assignment": "model/dataset discovery, offline evaluation and reproducible model-card review",
+        "least_privilege": "public model/dataset reads; no Space force-push or deployment token",
+        "fallback": "local baseline models and public research papers"
+      },
+      {
+        "platform": "Kaggle",
+        "live_status": "NOT_VERIFIED",
+        "authentication": "no Kaggle API authentication or competition access tested; repository workflow is not proof of live collaboration",
+        "proposed_assignment": "historical dataset exploration and reproducible offline backtests",
+        "least_privilege": "dataset read-only; competition submission disabled unless separately authorized",
+        "fallback": "local public datasets and notebook-free Python evaluation"
+      },
+      {
+        "platform": "Databricks",
+        "live_status": "NOT_VERIFIED",
+        "authentication": "no workspace/API authentication tested; existing PAT workflow is not proof of live collaboration",
+        "proposed_assignment": "large-scale time-series feature store, event joins and streaming evaluation",
+        "least_privilege": "read-only workspace token initially; no PAT passed through workflow inputs; no deployment or secret mutation",
+        "fallback": "local SQLite/Parquet feature store and deterministic batch processing"
+      }
+    ],
+    "proposed_independent_deliberation": {
+      "rule": "These are proposed task assignments, not executed handoffs. No agent is represented as collaborating until a specific authenticated action and returned evidence are tested.",
+      "evidence_packet_fields": [
+        "claim_id",
+        "claim_status",
+        "exact_source_url",
+        "publisher",
+        "published_at_utc",
+        "retrieved_at_utc",
+        "data_cutoff_utc",
+        "source_independence_group",
+        "raw_snapshot_hash",
+        "evidence_excerpt_or_transaction_ids",
+        "interpretation",
+        "alternative_hypotheses",
+        "disconfirming_evidence",
+        "confidence_and_basis",
+        "reviewer_platform",
+        "handoff_status"
+      ],
+      "disagreement_resolution": [
+        "Do not force unanimity.",
+        "Retain minority objections and their supporting evidence.",
+        "Resolve factual disputes against primary filings, official statements and independently replayable ledger records.",
+        "Treat repeated syndication of one press release or one analyst's wallet labels as one evidence family.",
+        "Require a separate red-team review before any forecast is admitted to shadow evaluation."
+      ]
+    }
+  },
+  "research_architecture_status": {
+    "ingestion_and_change_detection": {
+      "status": "DESIGNED_PARTIALLY_PROPOSED",
+      "evidence": "PR #1496 proposes hourly ingestion from three public RSS feeds with source snapshots and tests; it remains draft/unmerged.",
+      "executed": "manual web and public-source captures in this run",
+      "verified": "GitHub exact-head CI for the earlier PR #1496 head passed 354 tests and 8 subtests; the workflow is not running from main.",
+      "limitation": "not a complete market, filing, exchange, XRPL or EVM ingestion system"
+    },
+    "provenance_and_snapshots": {
+      "status": "PARTIALLY_EXECUTED_AND_VERIFIED_AS_RESEARCH_ARTIFACTS",
+      "evidence": "Two JSON research artifacts were serialized, uploaded to a draft branch, fetched back and parsed; PR #1503 current head is subject to exact-head CI.",
+      "limitation": "not yet merged into main; raw external API snapshots are not independently anchored outside GitHub"
+    },
+    "source_registry": {
+      "status": "PROPOSED",
+      "evidence": "PR #1486 adds immutable source IDs and registration-cutoff controls; exact-head CI/gate previously passed.",
+      "limitation": "unmerged; no external digest anchor or independent trusted timestamp authority"
+    },
+    "historical_feature_store": {
+      "status": "DESIGNED_NOT_IMPLEMENTED",
+      "proposed_storage": "point-in-time Parquet/SQLite initially; migrate to Databricks only after authenticated least-privilege access and reproducible benchmarks",
+      "required_dimensions": [
+        "asset",
+        "venue",
+        "contract",
+        "network",
+        "issuer",
+        "wallet_label",
+        "source_id",
+        "snapshot_id",
+        "event_time",
+        "capture_time",
+        "ledger_or_block_id",
+        "methodology_version"
+      ]
+    },
+    "data_quality_and_source_independence": {
+      "status": "PARTIALLY_EXECUTED_MANUALLY",
+      "examples": [
+        "open-interest provider universes kept separate",
+        "USDC balances preserved with different metric definitions",
+        "RLUSD dust cluster treated as one analytics-provider finding",
+        "Tron laundering not conflated with XRPL XRP redistribution",
+        "RWA registry notional excluded from transferable capital"
+      ]
+    },
+    "event_timeline_and_relationship_graph": {
+      "status": "PARTIALLY_EXECUTED_IN_APPEND_ONLY_DRAFT_ARTIFACTS",
+      "evidence": "Binance, Ripple, Coinbase, Circle, SBI, SBIC, Cross River, Nodal Clear, Permission ASK and market events recorded in PR #1503."
+    },
+    "competing_hypotheses_and_red_team": {
+      "status": "PARTIALLY_EXECUTED",
+      "evidence": "Six market/payment hypotheses and disconfirming evidence in the current research artifact; independent external-agent red-team not executed."
+    },
+    "walk_forward_and_backtesting": {
+      "status": "NOT_IMPLEMENTED_FOR_XRP",
+      "requirements": [
+        "fixed horizon",
+        "point-in-time features",
+        "chronological splits",
+        "purged/embargoed leakage controls",
+        "transaction costs",
+        "venue/contract coverage",
+        "baseline models",
+        "reproducible folds"
+      ]
+    },
+    "probability_calibration_and_uncertainty": {
+      "status": "NOT_IMPLEMENTED_FOR_XRP",
+      "requirements": [
+        "Brier score",
+        "log loss",
+        "reliability diagrams",
+        "calibration by horizon/regime",
+        "confidence intervals",
+        "abstention rules"
+      ]
+    },
+    "drift_detection": {
+      "status": "NOT_IMPLEMENTED_FOR_XRP",
+      "requirements": [
+        "feature drift",
+        "label/target drift",
+        "source methodology changes",
+        "venue coverage changes",
+        "regime shifts"
+      ]
+    },
+    "paper_and_shadow_evaluation": {
+      "status": "NOT_AUTHORIZED_FOR_XRP_FORECASTS",
+      "evidence": "PR #1498 proposes strict paper-trading state/decision-log validation; main's current paper state has a null product and zero-byte decision log, so it is not valid evidence of executed trades.",
+      "limitation": "no valid XRP forecast ledger or resolved shadow outcomes"
+    },
+    "real_money": {
+      "status": "NOT_AUTHORIZED",
+      "rule": "No live trading, order placement, custody transfer, external deployment or capital movement without separate explicit approval and prior shadow validation."
+    }
+  },
+  "repository_security_handoff": {
+    "main_sha": "57a7e9a0cd0a18ac10129456fcabfa7fef373401",
+    "fresh_main_proposals": [
+      {
+        "pr": 1502,
+        "purpose": "disable autonomous merge queue",
+        "head": "471eda6cff82e3425c0d458d591fdbbc7e49d2de",
+        "ci": "343 tests + 8 subtests passed",
+        "gate": "passed; merge disabled"
+      },
+      {
+        "pr": 1504,
+        "purpose": "make Cross Analysis read-only and artifact-based",
+        "head": "3a1348e0f90b792c0bc818605ebabf1ac8dc228d",
+        "ci": "348 tests + 8 subtests passed",
+        "gate": "passed; merge disabled"
+      },
+      {
+        "pr": 1505,
+        "purpose": "restrict unattended scheduler to two read-only input-free workflows",
+        "head": "a8a10e6709555ec6167ae97d8ce003317d1f7b74",
+        "ci": "350 tests + 8 subtests passed",
+        "gate": "passed; merge disabled; scheduler not manually dispatched"
+      },
+      {
+        "pr": 1503,
+        "purpose": "XRP research evidence archive",
+        "head": "0e4d2a8141a3d1acaa8b5d9626fd83ce7f48d335",
+        "ci": "latest CI still pending at capture time",
+        "gate": "passed; merge disabled"
+      }
+    ],
+    "residual_main_risks": [
+      "Merge queue remains manually dispatchable and can process all open PRs with dry_run=false until PR #1502 is approved and merged.",
+      "Cross Analysis still commits generated artifacts directly to main until PR #1504 is approved and merged.",
+      "Scheduler Tick still accepts any existing workflow name from queue entries until PR #1505 is approved and merged.",
+      "Other deployment, subscriber-sync, Kaggle, Databricks and broad Barrot Agent permissions remain active on main until their proposals are reviewed and merged.",
+      "Required branch-protection reviews and required status checks remain unverified through the available administrative API."
+    ],
+    "approval_boundary": "All PRs are draft and unmerged. No workflow dispatch, merge, force-push, secret access, deployment or main write occurred."
+  },
+  "next_actions": [
+    "Refresh the six Binance attacker-recipient accounts at a common validated XRPL ledger using two independent public data endpoints.",
+    "Reconcile the 0.5992 XRP residual from exact delivered amounts, activation transfers and fees.",
+    "Replay Bitquery's RLUSD payment window from raw ledgers or a second independent indexer; resolve the 14,600 versus 14,608 count discrepancy and $734M versus $744M issuer-loop discrepancy.",
+    "Build daily exchange-wallet snapshots with immutable label versions and distinguish pooled customer balances from corporate treasury.",
+    "Normalize Coinbase x402/Base/USDC and t54 XRPL x402/XRP/RLUSD metrics by facilitator, chain, payment value, payer and merchant.",
+    "Reconcile XRP ETF issuer holdings, Coinbase cbXRP reserves and Morpho collateral at common timestamps.",
+    "Capture Circle's November 4 Q3 results and reconcile USDC reserve yield, distribution economics and Circle SBI Japan operating status.",
+    "Implement historical features and leakage-safe walk-forward evaluation before issuing any XRP forecast.",
+    "Only after explicit approval, evaluate draft security PRs for merge; do not automate merging."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "No validated XRP feature store, walk-forward baseline, calibrated probabilities or resolved shadow forecasts."
+  }
+}
