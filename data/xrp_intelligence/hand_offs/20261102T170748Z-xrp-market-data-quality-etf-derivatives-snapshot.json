@@ -22,7 +22,9 @@
       "source_time": "crawl/current page; exact capture time not exposed",
       "coverage": "aggregated market page",
       "eligibility": "context_only",
-      "notes": "Market capitalization approximately 79.05B USD; 24h volume approximately 778.55M USD; circulating supply approximately 63.351B XRP; total supply approximately 99.98B XRP."
+      "notes": "Market capitalization approximately 79.05B USD; 24h volume approximately 778.55M USD; circulating supply approximately 63.351B XRP; total supply approximately 99.98B XRP.",
+      "source_url": "https://coinmarketcap.com/currencies/xrp/",
+      "source_independence_group": "coinmarketcap"
     },
     {
       "metric": "XRP/USD mark price",
@@ -33,7 +35,9 @@
       "source_time": "2026-11-02T09:45:00Z",
       "coverage": "provider's seven-exchange futures market summary",
       "eligibility": "provider_specific",
-      "notes": "Not a consolidated spot price."
+      "notes": "Not a consolidated spot price.",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "source_independence_group": "tradradar"
     },
     {
       "metric": "XRP/USD spot",
@@ -44,7 +48,9 @@
       "source_time": "2026-11-02T08:36:00Z",
       "coverage": "all-venue liquidation heatmap page",
       "eligibility": "provider_specific",
-      "notes": "Page describes spot price alongside modelled futures liquidation levels."
+      "notes": "Page describes spot price alongside modelled futures liquidation levels.",
+      "source_url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "source_independence_group": "alpha-finance"
     },
     {
       "metric": "XRP futures open interest",
@@ -55,7 +61,9 @@
       "source_time": "2026-11-02T09:45:00Z",
       "coverage": "seven exchanges",
       "eligibility": "provider_specific",
-      "notes": "Reported 24h change +1.79%; OI-weighted funding +0.0075% per eight hours; at least 1.37M USD 24h liquidations, including 1.05M longs and 317.39K shorts; long-account share 78.1% across five exchanges."
+      "notes": "Reported 24h change +1.79%; OI-weighted funding +0.0075% per eight hours; at least 1.37M USD 24h liquidations, including 1.05M longs and 317.39K shorts; long-account share 78.1% across five exchanges.",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "source_independence_group": "tradradar"
     },
     {
       "metric": "XRP futures open interest",
@@ -66,7 +74,9 @@
       "source_time": "2026-11-02T08:32:00Z",
       "coverage": "all exchanges per provider",
       "eligibility": "provider_specific",
-      "notes": "Reported 24h change +1.0%; average funding +0.0040% per eight hours; 1.3M USD 24h liquidations, 1.0M longs and 273K shorts; Binance long-account share 71.7%."
+      "notes": "Reported 24h change +1.0%; average funding +0.0040% per eight hours; 1.3M USD 24h liquidations, 1.0M longs and 273K shorts; Binance long-account share 71.7%.",
+      "source_url": "https://liqwall.com/coins/xrp",
+      "source_independence_group": "liqwall"
     },
     {
       "metric": "XRP futures open interest",
@@ -77,7 +87,9 @@
       "source_time": "2026-11-02T08:36:00Z",
       "coverage": "all exchanges aggregated; exact venue list not exposed in search result",
       "eligibility": "provider_specific",
-      "notes": "24h volume approximately 1.25B USD. Liquidation heatmap levels are modelled from OI and standard leverage tiers, not verified position-level liquidation prices."
+      "notes": "24h volume approximately 1.25B USD. Liquidation heatmap levels are modelled from OI and standard leverage tiers, not verified position-level liquidation prices.",
+      "source_url": "https://alphafinance.io/liquidation-heatmap/xrp/",
+      "source_independence_group": "alpha-finance"
     },
     {
       "metric": "XRP perpetual futures open interest",
@@ -88,7 +100,9 @@
       "source_time": "not exposed; page crawled two days before retrieval",
       "coverage": "perpetual futures aggregate; venue methodology not exposed in result",
       "eligibility": "stale_context_only",
-      "notes": "Not eligible for synchronized November 2 comparisons."
+      "notes": "Not eligible for synchronized November 2 comparisons.",
+      "source_url": "https://www.coingecko.com/en/coins/xrp",
+      "source_independence_group": "coingecko"
     },
     {
       "metric": "XRP ETF daily net flow",
@@ -99,7 +113,9 @@
       "source_time": "2026-10-29 US session",
       "coverage": "five US spot XRP funds",
       "eligibility": "historical_flow",
-      "notes": "Thirty-session flow approximately 98.9M USD; cumulative net inflows approximately 1.73B USD."
+      "notes": "Thirty-session flow approximately 98.9M USD; cumulative net inflows approximately 1.73B USD.",
+      "source_url": "https://alphafinance.io/etf/xrp/",
+      "source_independence_group": "sosovalue-derived"
     },
     {
       "metric": "XRP ETF daily net flow",
@@ -110,7 +126,9 @@
       "source_time": "2026-10-29 US session",
       "coverage": "US spot XRP ETFs; fund coverage definition not fully specified",
       "eligibility": "historical_flow",
-      "notes": "This is substantially the same underlying SoSoValue observation as the Alpha Finance figure, not independent corroboration. Reported cumulative net inflows approximately 1.809B USD and net assets approximately 1.465B USD."
+      "notes": "This is substantially the same underlying SoSoValue observation as the Alpha Finance figure, not independent corroboration. Reported cumulative net inflows approximately 1.809B USD and net assets approximately 1.465B USD.",
+      "source_url": "https://www.chaincatcher.com/en/article/2300227",
+      "source_independence_group": "sosovalue-derived"
     },
     {
       "metric": "XRP ETF assets under management",
@@ -121,7 +139,9 @@
       "source_time": "last updated 2026-11-01",
       "coverage": "tracker claims 12 products",
       "eligibility": "secondary_unreconciled",
-      "notes": "Reports approximately 1.20B XRP in trust. Product category counts shown as 6 spot + 4 derivative + 1 index = 11, not 12; one product is unclassified or the count is inconsistent."
+      "notes": "Reports approximately 1.20B XRP in trust. Product category counts shown as 6 spot + 4 derivative + 1 index = 11, not 12; one product is unclassified or the count is inconsistent.",
+      "source_url": "https://thexrpinvestor.com/xrp-etf-flows",
+      "source_independence_group": "thexrpinvestor"
     }
   ],
   "data_quality_findings": [
@@ -206,7 +226,7 @@
     "outcome": null
   },
   "provenance": {
-    "primary_sources_used": 0,
+    "primary_sources_used": 1,
     "secondary_market_data_sources": [
       "CoinMarketCap",
       "TradRadar",
@@ -219,7 +239,9 @@
     "independence_notes": "Alpha Finance and ChainCatcher both expose SoSoValue-derived ETF data; count as one underlying source family for the October 29 flow observation. No provider data was treated as independent raw-exchange verification.",
     "retrieval_mode": "public web search results",
     "raw_exchange_api_calls": "NOT_EXECUTED",
-    "immutable_raw_payload_hashes": "NOT_CAPTURED"
+    "immutable_raw_payload_hashes": "NOT_CAPTURED",
+    "official_primary_source": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+    "source_url_policy": "Every market observation now carries a canonical public URL and an explicit source-independence group. The two October 29 ETF observations share the SoSoValue-derived group."
   },
   "next_actions": [
     "Retrieve timestamp-aligned XRP/USD spot and order-book snapshots from named venues.",
