@@ -878,9 +878,9 @@ def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, An
 
 def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
     payload = _work_dict(cycle)
-    record_dir = ROOT / ".barrot" / "collaboration_records"
-    record_dir.mkdir(parents=True, exist_ok=True)
     if _is_research_cycle(payload):
+        record_dir = ROOT / ".barrot" / "collaboration_records"
+        record_dir.mkdir(parents=True, exist_ok=True)
         record = {
             "work_bundle": "scientific_discovery",
             "cycle_id": payload.get("cycle_id"),
@@ -916,6 +916,11 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
         return latest
 
     cycle_data = _extract_cycle_data(payload)
+    # Engineering runtime evidence is local execution state, not a tracked handoff.
+    # Keep it under .git so it cannot overwrite the historical .barrot record or
+    # leave generated files that contaminate the user's worktree.
+    record_dir = ROOT / ".git" / "barrot_repair" / "collaboration_records"
+    record_dir.mkdir(parents=True, exist_ok=True)
     record = {
         "work_bundle": "autonomous_repository_repair",
         "cycle_id": cycle_data.get("cycle_id"),
