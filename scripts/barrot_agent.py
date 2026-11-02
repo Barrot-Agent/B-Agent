@@ -809,6 +809,7 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
                 f"Barrot: {safe_title}",
                 "--body-file",
                 str(pr_path),
+                "--draft",
                 "--head",
                 head_branch,
                 "--base",
