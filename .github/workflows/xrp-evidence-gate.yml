@@ -28,4 +28,4 @@ jobs:
       - name: Install test dependencies
         run: python -m pip install pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests
       - name: Run evidence-gate regression tests
-        run: python -m pytest tests/test_xrp_telemetry_matrix.py tests/test_upgrade_bundle_disabled.py -q
+        run: python -m pytest tests/test_xrp_telemetry_matrix.py tests/test_upgrade_bundle_disabled.py -q --no-cov
