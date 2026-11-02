@@ -76,3 +76,30 @@ def test_engineering_pull_requests_are_created_as_drafts():
     section = script[start:end]
     assert '"--draft"' in section
     assert '"pr", "merge"' not in section
+
+
+def test_task_branch_checkout_refuses_dirty_or_existing_local_work():
+    script = (ROOT / "scripts" / "barrot_agent.py").read_text(encoding="utf-8")
+    start = script.index("def checkout_branch")
+    end = script.index("def post_issue_comment", start)
+    section = script[start:end]
+    assert '["git", "status", "--porcelain"]' in section
+    assert '["git", "show-ref", "--verify", "--quiet"' in section
+    assert '["git", "switch", "--create"' in section
+    assert "dirty worktree" in section
+    assert '["git", "checkout", "-B"' not in section
+    assert '"+refs/heads/' not in section
+    assert '["git", "reset"' not in section
+    assert '["git", "clean"' not in section
+    assert '["git", "stash"' not in section
+
+
+def test_agent_pr_head_is_the_validated_configured_branch_not_model_output():
+    script = (ROOT / "scripts" / "barrot_agent.py").read_text(encoding="utf-8")
+    start = script.index("def create_pull_request")
+    end = script.index("def persist_scientific_discovery", start)
+    section = script[start:end]
+    assert "head_branch = _validated_task_branch(BRANCH)" in section
+    assert "reported_branch and reported_branch != head_branch" in section
+    assert "model-selected branch" in section
+    assert '"--head",\n                head_branch' in section
