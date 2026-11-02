@@ -22,19 +22,19 @@
         "sequence": 107986701,
         "amount_xrp": 30000000,
         "destination": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
-        "tx": "9276D3A91E9F..."
+        "tx": "9276B5D5876F3805CF9BCA7038CB56DD1DBA4DE673E6EFD7D5FE6EE34BF51671"
       },
       {
         "sequence": 107986702,
         "amount_xrp": 30000000,
         "destination": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
-        "tx": "3885..."
+        "tx": "3885C363F650AF8B0EF7CAFE754B049E35DC7B119847BE8C1A31583340A0CA62"
       },
       {
         "sequence": 107986703,
         "amount_xrp": 40000000,
         "destination": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
-        "tx": "DC8D..."
+        "tx": "DC8D39BC98DB7EDB76EE18E7DD6B0874DA83B51091E2BBFD6C4C70C156A0436A"
       },
       {
         "sequence": 107986704,
@@ -46,19 +46,19 @@
         "sequence": 107986705,
         "amount_xrp": 10000000,
         "destination": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
-        "tx": "7D6C..."
+        "tx": "7D6CC61F70A8332DAC76EBC36FD05788268C025CF331FC5389CED98DBFB5627B"
       },
       {
         "sequence": 107986706,
         "amount_xrp": 10000000,
         "destination": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
-        "tx": "1597..."
+        "tx": "1597D75A8C1F4734EF68C459DE45B8B50DB19B0345C70301D269FBBF76D4D82F"
       },
       {
         "sequence": 107986707,
         "amount_xrp": 10000000,
         "destination": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
-        "tx": "B416..."
+        "tx": "B416DB72953E794BFFAA079C58E8AA010D386CD08D841258E7109A87B33D16D4"
       },
       {
         "sequence": 107986708,
@@ -127,14 +127,26 @@
     "captured_at_utc": "2026-11-02T08:04:53Z",
     "coingecko": {
       "price_usd": 1.25,
-      "market_cap_usd": 79169000000,
-      "volume_24h_usd": 1081000000,
+      "market_cap_usd": 79127000000,
+      "volume_24h_usd": 1078082854,
       "circulating_supply_xrp": 63351000000,
       "total_supply_xrp": 99986000000,
       "perp_open_interest_usd": 3645000000,
       "funding_8h_pct": 0.0087,
       "perps_to_spot_volume": 9,
-      "provider_price_change_24h_pct": -0.2
+      "provider_price_change_24h_pct": 0.2,
+      "performance_data_quality": {
+        "displayed_summary_table": {
+          "one_hour_pct": 0.4,
+          "twenty_four_hour_pct": 0.4,
+          "seven_day_pct": 3.2,
+          "fourteen_day_pct": 4.8,
+          "thirty_day_pct": 15.9,
+          "one_year_pct": 50.5
+        },
+        "displayed_narrative_seven_day_pct": -3.2,
+        "decision": "exclude provider return series from features until this internal page inconsistency is resolved"
+      }
     },
     "coingecko_spot_depth": {
       "note": "Provider labels +2% and -2% are preserved as displayed; do not assign bid/ask interpretation without the provider's precise field definition.",
@@ -315,15 +327,26 @@
     "q3_transaction_revenue_usd": 590224000,
     "q3_subscription_services_revenue_usd": 570238000,
     "q3_stablecoin_revenue_usd": 306905000,
+    "q3_corporate_interest_and_other_income_usd": 55120000,
     "q3_net_income_usd": 718697000,
+    "q3_adjusted_ebitda_usd": 332868000,
     "nine_month_net_loss_usd": 34888000,
+    "assets_on_platform_usd": 376600000000,
+    "assets_on_platform_share_of_total_crypto_market_pct": 12.5,
+    "monthly_transacting_users_millions": 7.4,
+    "crypto_trading_volume_market_share_pct": 10.7,
     "average_usdc_held_in_coinbase_products_usd": 22000000000,
-    "average_usdc_off_platform_usd": 51000000000,
-    "average_usdc_total_usd": 73000000000,
-    "revenue_causality": "Higher average USDC balances added $84.6M to Q3 stablecoin revenue versus prior-year quarter, while lower average interest rates reduced it by $52.8M. Net income also reflects investment gains; it should not be interpreted as operating run-rate.",
+    "average_usdc_market_cap_usd": 73000000000,
+    "average_usdc_products_share_pct": 30,
+    "average_off_platform_usdc_usd": 51000000000,
+    "usdc_economics_management_statement": "Coinbase said it captured approximately 50% of USDC economics over the prior year; this is management's characterization, not an independently calculated market-share metric.",
+    "relationship_with_circle": "10-Q says Coinbase renewed its arrangement with Circle on the same terms. Q3 earnings materials describe Coinbase and Circle as both building stablecoin payment infrastructure, cooperating to grow USDC while competing in some infrastructure areas.",
+    "revenue_causality": "Higher average USDC balances added $84.6M to Q3 stablecoin revenue versus prior-year quarter; lower average interest rates reduced it by $52.8M. Q3 net income includes volatile investment/other-income effects and should not be treated as operating run-rate.",
+    "source_sec_10q": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+    "source_sec_earnings_deck": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm",
     "sources": [
-      "https://www.stocktitan.net/sec-filings/COIN/10-q-coinbase-global-inc-quarterly-earnings-report-344f1f5ae109.html",
-      "https://www.reuters.com/business/finance/coinbase-snaps-losing-streak-with-third-quarter-profit-crypto-trading-rebound-2026-10-29/"
+      "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm"
     ]
   },
   "binance_tron_separate_stream": {
