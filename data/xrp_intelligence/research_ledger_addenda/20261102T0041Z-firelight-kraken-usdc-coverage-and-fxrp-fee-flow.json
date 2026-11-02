@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-02T00:41:36.016Z",
+  "topic": "Firelight-Kraken USDC cover confirmation and USDC-to-FXRP fee mechanism",
+  "supersedes_prior_status": "Kraken cover was previously marked unconfirmed because the October 6 launch notice named only the two initial Sentora vaults.",
+  "corrected_status": "CONFIRMED_BY_FIRELIGHT_OFFICIAL_OCTOBER_15_AND_OCTOBER_22_PUBLICATIONS",
+  "sources": [
+    {
+      "url": "https://firelight.finance/articles/firelight-brings-onchain-cover-to-kraken-defi-earn",
+      "date": "2026-10-15",
+      "type": "official_firelight_publication"
+    },
+    {
+      "url": "https://firelight.finance/articles/how-protected-vaults-reach-users-the-kraken-defi-earn-example",
+      "date": "2026-10-22",
+      "type": "official_firelight_publication"
+    },
+    {
+      "url": "https://firelight.finance/",
+      "date": "2026-11-02",
+      "type": "official_firelight_site"
+    }
+  ],
+  "confirmed_facts": [
+    "Firelight cover is enabled on Kraken Protected Strategies USDC, formerly Boosted USDC, curated by Sentora.",
+    "The same shared pool of staked FXRP backs the full Firelight cover portfolio, including Sentora USD Protected, Sentora Protected RWA and Kraken Protected Strategies USDC.",
+    "Program-operator fees paid in USDC are converted to FXRP and added to staker positions, according to Firelight's public description.",
+    "For Kraken Protected Strategies USDC, per-address cover is capped at $100,000 and terms reset each 30-day epoch.",
+    "A covered payout draws first on a first-loss buffer, then on staked capital pro rata; payouts are made in stablecoins to the covered vault.",
+    "At least three of five Risk Consortium members must approve a claim through an onchain multisig.",
+    "Firelight explicitly states its coverage mechanism is not insurance and staker principal/rewards are slashable."
+  ],
+  "relationship_graph": [
+    {
+      "from": "Kraken",
+      "to": "Kraken Protected Strategies USDC",
+      "edge": "provides user access through Kraken DeFi Earn"
+    },
+    {
+      "from": "Sentora",
+      "to": "Kraken Protected Strategies USDC",
+      "edge": "curates strategy and risk parameters"
+    },
+    {
+      "from": "Firelight",
+      "to": "Kraken Protected Strategies USDC",
+      "edge": "provides onchain cover"
+    },
+    {
+      "from": "FXRP stakers",
+      "to": "Firelight shared cover pool",
+      "edge": "supply slashable cover capital"
+    },
+    {
+      "from": "USDC fees",
+      "to": "FXRP staker positions",
+      "edge": "protocol-stated conversion into FXRP rewards"
+    },
+    {
+      "from": "Circle",
+      "to": "USDC",
+      "edge": "issuer relationship; no direct Firelight agreement established"
+    },
+    {
+      "from": "XRP",
+      "to": "FXRP",
+      "edge": "1:1 representation minted through Flare FAssets; native XRP backing remains on XRPL"
+    }
+  ],
+  "economic_interpretation": "This is a confirmed cross-product link: XRP-derived staked capital backs a Kraken USDC earn strategy, while USDC cover fees are stated to convert into FXRP rewards. It is not evidence that Kraken buys XRP, that Circle directly participates, or that fee conversion produces net new spot XRP demand.",
+  "unresolved": [
+    "First-loss buffer asset composition and current balance.",
+    "Actual USDC fees by covered programme and transaction-level conversion path to FXRP.",
+    "Current cover-token positions, market composition, claims and staker outflows.",
+    "Whether fee conversion buys FXRP in open markets or uses existing protocol inventory."
+  ]
+}

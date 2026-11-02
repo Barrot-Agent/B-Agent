@@ -44,6 +44,16 @@ def test_handoff_records_open_unmerged_prs_and_exact_head_verification():
     assert d["repo_state"]["no_merge_force_push_or_manual_dispatch"] is True
 
 
+def test_handoff_records_confirmed_firelight_kraken_usdc_relationship():
+    d = load()
+    relationship = d["firelight_kraken_relationship"]
+    assert relationship["status"] == "CONFIRMED_OFFICIAL_FIRELIGHT_ANNOUNCEMENTS"
+    assert relationship["roles"]["sentora"].startswith("Curates")
+    assert relationship["mechanism"]["fee_asset"] == "USDC"
+    assert "converted to FXRP" in relationship["mechanism"]["fee_conversion"]
+    assert relationship["mechanism"]["first_loss_buffer"].startswith("Exists")
+
+
 def test_handoff_distinguishes_verified_and_unverified_platforms():
     d = load()
     assert set(d["platform_status"]["verified_live"]) == {"ChatGPT", "GitHub"}
