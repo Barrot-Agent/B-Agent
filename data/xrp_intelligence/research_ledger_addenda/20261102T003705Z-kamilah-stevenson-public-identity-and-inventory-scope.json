@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_research_ledger_addendum",
+  "captured_at_utc": "2026-11-02T00:39:38.797Z",
+  "topic": "Kamilah Stevenson public-channel identity and complete inventory scope",
+  "identity_resolution": {
+    "canonical_name": "Dr. Kamilah Stevenson",
+    "channel_display_title_observed": "Kamilah Stevenson",
+    "channel_handle": "@drkamilahstevenson",
+    "channel_url": "https://www.youtube.com/@drkamilahstevenson",
+    "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "channel_id_verification": "UNVERIFIED_HANDLE_TO_CHANNEL_ID_MAPPING_IN_THIS_CAPTURE",
+    "interview_url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069",
+    "transcript_name_variant": "Camilla Stevenson",
+    "interpretation": "Use Dr. Kamilah Stevenson as the canonical research subject. A spoken Camilla variant in an interview transcript is not sufficient to create a separate Camilla Stephenson identity."
+  },
+  "public_video_inventory": {
+    "scope": [
+      "videos",
+      "shorts",
+      "livestreams"
+    ],
+    "candidate_uploads": 11,
+    "channel_reported_total": "1.3K",
+    "total_is_rounded": true,
+    "complete": false,
+    "exhaustive_enumeration": false,
+    "blockers": [
+      "Full YouTube channel page exceeded the public fetch limit.",
+      "Channel ID-to-handle mapping was not independently revalidated in this capture.",
+      "Prior vidIQ attempt returned an insufficient-credit response; no credits were charged.",
+      "No complete authorized channel export was available."
+    ],
+    "attribution_rule": "Count only uploads demonstrably owned by the canonical channel; exclude guest appearances, reposts and display-name-only matches.",
+    "next_action": "Enumerate the channel-owned uploads playlist and Shorts/live tabs with a lawful public-data method; paginate to exhaustion and preserve video IDs, timestamps, format, transcript availability and ownership evidence."
+  },
+  "research_use": {
+    "scope": "XRP-related claims in public videos, including institutional adoption, Japan, liquidity, market structure, macro/geopolitics, AI and price narratives.",
+    "model_admission": "TRANSCRIPT_CLAIMS_REQUIRE_INDEPENDENT_CORROBORATION",
+    "rule": "Titles, thumbnails, guest appearances and view counts are not market features. Extract claims, verify independently, timestamp them and retain disconfirming evidence."
+  },
+  "sources": [
+    {
+      "id": "SRC_KAMILAH_YOUTUBE_CHANNEL",
+      "url": "https://www.youtube.com/@drkamilahstevenson",
+      "publisher": "YouTube",
+      "type": "public_channel_page",
+      "supports": "Channel handle page title identifies Kamilah Stevenson.",
+      "limits": "Static extraction did not expose channel ID or complete upload inventory."
+    },
+    {
+      "id": "SRC_KAMILAH_IHEART_INTERVIEW",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "type": "public_interview",
+      "supports": "Interview title identifies Dr. Kamilah Stevenson; transcript includes a Camilla spoken-name variant.",
+      "limits": "Guest appearance is not a YouTube upload by the guest; spoken-name variant alone does not establish a separate identity."
+    }
+  ]
+}

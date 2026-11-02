@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,10 +13,14 @@ def load():
     return json.loads(FILES[-1].read_text(encoding="utf-8"))
 
 
-def test_handoff_preserves_main_and_separates_main_from_legacy_Main():
+def test_handoff_preserves_main_and_reports_branch_protection_limits():
     d = load()
     assert d["repo_state"]["default_branch"] == "main"
-    assert d["repo_state"]["verified_main_sha"] == "ce1139c7c032e0bdca93efcf2ea963a5ace56b6e"
+    assert re.fullmatch(r"[0-9a-f]{40}", d["repo_state"]["verified_main_sha"])
+    protection = d["repo_state"]["branch_protection"]
+    assert protection["branch_api_reports_protected"] is True
+    assert protection["required_status_check_contexts"] == []
+    assert protection["repository_rulesets"][0]["enforcement"] == "disabled"
     assert "capitalized" in d["repo_state"]["branch_name_warning"]
 
 
@@ -26,12 +31,16 @@ def test_handoff_keeps_prediction_status_honest():
     assert "No verified XRP forecasts" in d["prediction_engine"]["no_skill_claim"]
 
 
-def test_handoff_records_open_unmerged_prs_and_verified_test_evidence():
+def test_handoff_records_open_unmerged_prs_and_exact_head_verification():
     d = load()
     by_number = {p["number"]: p for p in d["pull_requests"]}
-    assert by_number[1474]["state"] == "open_draft_unmerged"
-    assert by_number[1475]["verification"].startswith("417 tests")
-    assert by_number[1477]["verification"].startswith("393 tests")
+    for number in (1474, 1475, 1476, 1477):
+        p = by_number[number]
+        assert p["state"] == "open_draft_unmerged"
+        assert p["verification"]["ci_conclusion"] == "success"
+        assert p["verification"]["gate_conclusion"] == "success"
+        assert p["verification"]["merge_enabled"] is False
+    assert by_number[1477]["verification"]["test_summary"] == "424 tests and 8 subtests passed"
     assert d["repo_state"]["no_merge_force_push_or_manual_dispatch"] is True
 
 
