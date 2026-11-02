@@ -314,6 +314,133 @@ class RepairError(RuntimeError):
     """Raised when the repair controller cannot advance safely."""
 
 
+PROTECTED_BRANCH_NAMES = frozenset({"main", "master", "production", "release", "stable"})
+
+
+def _assert_clean_worktree(workspace: str | Path) -> None:
+    """Refuse mutation when staged, unstaged, or untracked user work exists."""
+    result = subprocess.run(
+        ["git", "status", "--porcelain", "--untracked-files=all"],
+        cwd=Path(workspace).resolve(),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise RepairError(
+            "Unable to verify worktree cleanliness; refusing repository mutation: "
+            + (result.stderr.strip() or f"git status exited {result.returncode}")
+        )
+    changes = [line for line in result.stdout.splitlines() if line.strip()]
+    if changes:
+        preview = "\n".join(changes[:20])
+        raise RepairError(
+            "Refusing repository mutation because the worktree/index contains pre-existing changes. "
+            "Preserve them and retry from a clean isolated worktree; no reset, clean, stash, or restore "
+            "was attempted.\n" + preview
+        )
+
+
+def safe_checkout_branch(workspace: str | Path, branch: str) -> str:
+    """Switch to/create a task branch without resetting or force-updating any ref."""
+    root = Path(workspace).resolve()
+    name = str(branch).strip()
+    if not name or not re.fullmatch(r"[A-Za-z0-9._/-]+", name) or ".." in name or name.startswith("-"):
+        raise RepairError("Invalid task branch name.")
+    if name.casefold() in PROTECTED_BRANCH_NAMES:
+        raise RepairError(f"Refusing to use protected branch {name!r} as an autonomous task branch.")
+
+    _assert_clean_worktree(root)
+    current = subprocess.run(
+        ["git", "branch", "--show-current"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if current.returncode != 0:
+        raise RepairError(current.stderr.strip() or "Unable to determine current branch.")
+    current_name = current.stdout.strip()
+    if current_name == name:
+        return name
+    if current_name.casefold() not in {"main", "master"}:
+        raise RepairError(
+            f"Refusing to switch away from existing branch {current_name!r}; "
+            "run from main/master or the requested task branch."
+        )
+
+    local = subprocess.run(
+        ["git", "show-ref", "--verify", "--quiet", f"refs/heads/{name}"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if local.returncode == 0:
+        result = subprocess.run(
+            ["git", "switch", name],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    else:
+        remotes = subprocess.run(
+            ["git", "remote"],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if remotes.returncode != 0:
+            raise RepairError(remotes.stderr.strip() or "Unable to inspect configured remotes.")
+        origin_configured = "origin" in {item.strip() for item in remotes.stdout.splitlines()}
+        fetched = False
+        if origin_configured:
+            fetch = subprocess.run(
+                ["git", "fetch", "origin", f"refs/heads/{name}:refs/remotes/origin/{name}"],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            fetched = fetch.returncode == 0
+            if not fetched:
+                remote = subprocess.run(
+                    ["git", "ls-remote", "--heads", "origin", f"refs/heads/{name}"],
+                    cwd=root,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+                if remote.returncode != 0:
+                    raise RepairError(remote.stderr.strip() or "Unable to verify remote task branch.")
+                if remote.stdout.strip():
+                    raise RepairError(
+                        "Remote task branch exists but could not be fetched without a forced ref update; "
+                        "refusing to reset or overwrite it."
+                    )
+        if fetched:
+            result = subprocess.run(
+                ["git", "switch", "--track", "-c", name, f"origin/{name}"],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+        else:
+            result = subprocess.run(
+                ["git", "switch", "-c", name],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+    if result.returncode != 0:
+        raise RepairError(result.stderr.strip() or f"Unable to switch to task branch {name!r}.")
+    return name
+
+
 class ModelFailure(RepairError):
     """Raised when the model response or provider cannot be used safely."""
 
@@ -1164,6 +1291,7 @@ class PatchExecutor:
         if not isinstance(raw_expected, list) or not raw_expected:
             raise RepairError("Changeset must contain a non-empty expected_files list.")
 
+        _assert_clean_worktree(self.workspace)
         operations = [PatchOperation.from_dict(item) for item in raw_operations]
         expected_files = [str(item) for item in raw_expected if isinstance(item, str) and item]
         evidence: list[dict[str, Any]] = []
@@ -1341,6 +1469,14 @@ class GitGateway:
 
     def commit(self, message: str, expected_paths: list[str]) -> CommitEvidence:
         sanitized = " ".join(str(message).split()).strip()[:120] or "Barrot autonomous repair"
+        staged_before = self._run("diff", "--cached", "--name-only")
+        if staged_before.returncode != 0:
+            raise RepairError(staged_before.stderr.strip() or "Unable to inspect the Git index.")
+        if staged_before.stdout.strip():
+            raise RepairError(
+                "Refusing to commit because the Git index already contains staged changes: "
+                + ", ".join(staged_before.stdout.splitlines()[:20])
+            )
         add = self._run("add", "--", *expected_paths)
         if add.returncode != 0:
             raise RepairError(add.stderr.strip() or "git add failed")
@@ -1385,6 +1521,13 @@ class GitGateway:
         )
 
     def push(self, remote: str, branch: str) -> CommandEvidence:
+        if str(branch).strip().casefold() in PROTECTED_BRANCH_NAMES:
+            return CommandEvidence(
+                command={"program": "git", "args": ["push", remote, f"HEAD:{branch}"]},
+                success=False,
+                returncode=None,
+                error=f"Push to protected branch {branch!r} is blocked.",
+            )
         if self.watchdog is not None:
             decision = self.watchdog.authorize(
                 Capability.EXTERNAL_ACTION,
@@ -1665,6 +1808,36 @@ actually observed.
             "branch": branch_name,
             "task_title": task_title,
         }
+        try:
+            _assert_clean_worktree(self.workspace)
+            current_branch = self.git_gateway.current_branch()
+        except Exception as exc:
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "WORKTREE_PREFLIGHT_FAILED",
+                str(exc),
+                failed_operation="preflight_worktree",
+                required_external_action="Preserve the existing worktree and retry only from a clean isolated task branch.",
+            )
+        if branch_name.casefold() in PROTECTED_BRANCH_NAMES:
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "PROTECTED_BRANCH",
+                f"Autonomous repair is forbidden from pushing to protected branch {branch_name!r}.",
+                failed_operation="preflight_branch",
+                required_external_action="Use a separate task branch; no protected branch was modified.",
+            )
+        if current_branch != branch_name:
+            return self._failure(
+                cycle,
+                RepairState.BLOCKED,
+                "BRANCH_MISMATCH",
+                f"Current branch {current_branch!r} does not match requested task branch {branch_name!r}.",
+                failed_operation="preflight_branch",
+                required_external_action="Switch safely to the requested task branch from a clean main/master checkout; no branch reset was attempted.",
+            )
         self.watchdog.set_context(repository=repo_name, task=task_title, session=cycle.cycle_id)
         if latest.get("project_identity", {}) == cycle.project_identity:
             cycle.attempt_number = int(latest.get("attempt_number") or 0) + 1
