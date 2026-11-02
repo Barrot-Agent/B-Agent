@@ -298,5 +298,49 @@
       "classification": "Reuters-reported broad market stress context, not XRP-specific causal evidence."
     },
     "attribution_caveat": "Reuters reports the FBI attribution to TraderTraitor and separately notes President Trump publicly expressed uncertainty. The FBI statement remains the official law-enforcement attribution; the political comment is retained as conflicting public commentary, not a technical disproof."
+  },
+  "market_snapshot": {
+    "evidence_cutoff_utc": "2026-11-02T04:01:54Z",
+    "spot": {
+      "provider": "TradRadar",
+      "price_usd": 1.2503,
+      "change_24h_pct": -0.08,
+      "updated_at_utc": "2026-11-01T21:25:00Z",
+      "source_url": "https://tradradar.io/markets/xrp",
+      "limitation": "15-minute delay; provider mark price, not consolidated spot VWAP."
+    },
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "updated_at_utc": "2026-11-01T21:25:00Z",
+        "open_interest_usd": 1890000000,
+        "venues": 7,
+        "open_interest_24h_change_pct": 1.36,
+        "funding_8h": 0.000088,
+        "long_account_share": 0.778,
+        "liquidations_24h_usd_at_least": 902460,
+        "long_liquidations_usd": 797170,
+        "short_liquidations_usd": 105290,
+        "source_url": "https://tradradar.io/markets/xrp"
+      },
+      {
+        "provider": "Kodexius",
+        "updated_at_utc": "2026-11-01T23:39:00Z",
+        "open_interest_usd": 755300000,
+        "contracts": 7,
+        "funding_8h": 0.000076,
+        "volume_24h_usd": 554540000,
+        "binance_open_interest_usd": 371100000,
+        "source_url": "https://kodexius.com/data/crypto-derivatives/XRP"
+      },
+      {
+        "provider": "Sharpe.ai",
+        "updated_at_utc": "2026-11-01T22:00:00Z",
+        "open_interest_usd": 1480000000,
+        "venues": 22,
+        "source_url": "https://www.sharpe.ai/futures"
+      }
+    ],
+    "admission_rule": "Do not average these OI values. Venue coverage, contract type, quote currency, sampling time and aggregation differ. Positive funding and a high long-account share describe positioning, not a reliable directional forecast. Binance-specific OI from one aggregator is not a customer-flow measure."
   }
 }
