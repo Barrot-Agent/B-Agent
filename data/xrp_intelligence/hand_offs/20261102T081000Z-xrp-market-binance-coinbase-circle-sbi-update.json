@@ -241,14 +241,24 @@
     "rule": "Preserve each source and universe. Do not average or label any figure final without fund-level issuer/creation-redemption reconciliation."
   },
   "escrow": {
-    "ledger_index": 108052148,
-    "ledger_close_utc": "2026-11-01T20:11:00Z",
+    "ledger_index": 108063085,
+    "ledger_close_utc": "2026-11-02T08:16:00Z",
+    "ripple_escrow_xrp": 31100000000,
+    "escrow_objects": 99,
+    "owner_accounts": 8,
+    "next_unlock_utc": "2026-12-01T00:00:00Z",
+    "next_unlock_xrp": 1000000000,
+    "next_unlock_objects": 4,
     "november_release_xrp": 1000000000,
-    "re_escrowed_xrp": 700000000,
-    "net_released_from_escrow_xrp": 300000000,
-    "total_ripple_escrow_xrp": 31100000000,
-    "objects": 99,
-    "note": "Release from escrow is not proof of circulation, exchange deposit or sale.",
+    "november_re_escrowed_xrp": 700000000,
+    "november_net_out_of_escrow_xrp": 300000000,
+    "trailing_12_month_release_xrp": 12000000000,
+    "trailing_12_month_re_escrow_xrp": 8400000000,
+    "trailing_12_month_net_out_xrp": 3600000000,
+    "trailing_12_month_re_escrow_share_pct": 70,
+    "median_escrow_finish_delay_seconds": 11,
+    "longest_finish_delay_days": 2.3,
+    "note": "Net released from escrow is not proof of exchange deposit, circulation, sale or spot-market demand. Ripple-owned escrow excludes Flare Core Vault and other third-party escrows.",
     "source": "https://xrp-insights.com/xrp-radar/escrow"
   },
   "xrpl_stablecoin_supply": {
@@ -483,6 +493,18 @@
       "claim": "The six-wallet XRP redistribution is staging for eventual laundering or liquidation",
       "support": "Six newly activated destinations, round-number tranches, common funding source, and the wider Binance theft laundering activity.",
       "counterevidence": "Bithomp snapshots show exact tranche balances and no outbound payments at capture; no exchange/DEX/bridge sale is established."
+    },
+    {
+      "id": "H5",
+      "claim": "Agentic-payment transaction counts overstate economic scale",
+      "support": "XRP Radar reports 14.8M x402 transactions but only 7,021 XRP plus 38,031 RLUSD cumulative settlement value (about $46.8K at the captured XRP mark).",
+      "counterevidence": "The metric may omit some facilitator or off-ledger value; raw settlement sample could not be independently fetched in this run."
+    },
+    {
+      "id": "H6",
+      "claim": "Exchange-wallet concentration is custody concentration, not tradable float",
+      "support": "XRP Radar attributes 22.38B XRP to 24 exchanges, including Coinbase 5.84B, Upbit 6.43B and Binance 2.72B, while explicitly noting pooled customer deposits and cold storage.",
+      "counterevidence": "Unlabeled exchange wallets may be omitted; wallet labels may include exchange-controlled reserves and customer assets."
     }
   ],
   "research_threads": {
@@ -608,9 +630,144 @@
     "Reconcile Circle/DefiLlama/RWA.xyz XRPL stablecoin supply and Coinbase Q3 USDC revenue categories.",
     "Reconcile October 30 XRP ETF flows at fund level using issuer creations/redemptions and official daily holdings.",
     "Review PR #1495 and #1496; neither is merged or executed on main.",
-    "Complete source independence, timestamp anchoring, immutable feature store and walk-forward forecast evaluation before issuing any directional forecast."
+    "Complete source independence, timestamp anchoring, immutable feature store and walk-forward forecast evaluation before issuing any directional forecast.",
+    "Reconcile XRP Radar's exchange wallet set against XRPSCAN labels and the earlier XRP Insights 701-wallet exchange-balance methodology; treat wallet-set changes as coverage changes, not flows.",
+    "Verify the t54 x402 aggregate value against SourceTag 804681468 payments at a pinned ledger; separate XRP/RLUSD settlement notional from transaction count.",
+    "Track the 1B XRP escrow unlock on 2026-12-01 and subsequent EscrowFinish/EscrowCreate transactions; distinguish net release from sales."
   ],
   "research_corrections": [
-    "Do not conflate Coinbase Global Exchange, Coinbase Bermuda Limited Global Derivatives, Coinbase Prime U.S. Derivatives, and Coinbase Prime Global Derivatives via CFM/Deribit. XRP is listed as collateral on Global Exchange and CBBM Global Derivatives; current Prime CFM tables list USD/USDC auto-convert for U.S. Derivatives and USDC/BTC/ETH for Prime Global Derivatives, with no XRP."
-  ]
+    "Do not conflate Coinbase Global Exchange, Coinbase Bermuda Limited Global Derivatives, Coinbase Prime U.S. Derivatives, and Coinbase Prime Global Derivatives via CFM/Deribit. XRP is listed as collateral on Global Exchange and CBBM Global Derivatives; current Prime CFM tables list USD/USDC auto-convert for U.S. Derivatives and USDC/BTC/ETH for Prime Global Derivatives, with no XRP.",
+    "XRP Radar's 14.8M x402 transaction count corresponds to only 7,021 XRP plus 38,031 RLUSD reported cumulative settlement value. Treat as micropayment activity; do not present transaction count as actual capital.",
+    "XRP Radar reports 22.38B XRP in tracked exchange wallets, including 5.84B Coinbase, 6.43B Upbit, 2.72B Binance and 60M SBI VC Trade. These are pooled/cold customer balances plus some exchange reserves, not tradable float.",
+    "XRP Radar's $4.33B RWA total contains approximately $276M transferable on-chain value and $4.06B platform-locked registry notional. Do not call the entire $4.33B deployed or tradable capital."
+  ],
+  "xrp_radar_snapshot": {
+    "captured_at_utc": "2026-11-02T08:16:00Z",
+    "total_supply_xrp": 100000000000,
+    "tracker_circulating_xrp": 68890000000,
+    "ripple_escrow_xrp": 31100000000,
+    "exchange_wallets_xrp": 22380000000,
+    "exchange_platforms": 24,
+    "etf_and_index_holdings_xrp": 1200000000,
+    "etf_and_index_assets_usd": 1500000000,
+    "etf_and_index_products": 7,
+    "defi_amm_xrp": 417800000,
+    "defi_amm_tvl_usd": 523000000,
+    "treasury_xrp": 473300000,
+    "tokenized_rwa_tracked_value_usd": 4330000000,
+    "rwa_transferable_onchain_value_usd": 276000000,
+    "rwa_platform_locked_registry_notional_usd": 4060000000,
+    "supply_taxonomy_note": "The tracker’s 68.89B circulating taxonomy differs from CoinMarketCap’s 63.351B circulating figure. Do not combine definitions or infer tradable float.",
+    "exchange_holdings": [
+      {
+        "exchange": "Upbit",
+        "region": "South Korea",
+        "xrp": 6430000000,
+        "tracked_wallets": 13
+      },
+      {
+        "exchange": "Coinbase",
+        "region": "United States",
+        "xrp": 5840000000,
+        "tracked_wallets": 358
+      },
+      {
+        "exchange": "Binance",
+        "region": "Global/offshore",
+        "xrp": 2720000000,
+        "tracked_wallets": 153
+      },
+      {
+        "exchange": "Bithumb",
+        "region": "South Korea",
+        "xrp": 1830000000,
+        "tracked_wallets": 4
+      },
+      {
+        "exchange": "Uphold",
+        "region": "United States",
+        "xrp": 1700000000,
+        "tracked_wallets": 24
+      },
+      {
+        "exchange": "Kraken",
+        "region": "United States",
+        "xrp": 957000000,
+        "tracked_wallets": 14
+      },
+      {
+        "exchange": "bitbank",
+        "region": "Japan",
+        "xrp": 576000000,
+        "tracked_wallets": 2
+      },
+      {
+        "exchange": "Coincheck",
+        "region": "Japan",
+        "xrp": 554000000,
+        "tracked_wallets": 2
+      },
+      {
+        "exchange": "SBI VC Trade",
+        "region": "Japan",
+        "xrp": 60000000,
+        "tracked_wallets": 2
+      }
+    ],
+    "exchange_holdings_caveat": "Mostly pooled customer deposits, including cold storage, plus exchange-controlled reserves such as cbXRP backing. Wallet labels are a verified floor, not complete exchange inventory or tradable float. Regional grouping uses exchange headquarters, not customer residency.",
+    "defi_breakdown": [
+      {
+        "protocol": "Flare FAssets",
+        "xrp": 145400000,
+        "classification": "bridged/wrapped XRP"
+      },
+      {
+        "protocol": "Doppler Finance",
+        "xrp": 89600000,
+        "classification": "institutional yield"
+      },
+      {
+        "protocol": "XRPL native AMM",
+        "xrp": 12600000,
+        "classification": "native AMM"
+      },
+      {
+        "protocol": "cbXRP",
+        "xrp": 150900000,
+        "classification": "Coinbase-wrapped XRP on Base"
+      },
+      {
+        "protocol": "wXRP",
+        "xrp": 19400000,
+        "classification": "Hex Trust wrapped XRP"
+      }
+    ],
+    "defi_note": "The categories overlap conceptually with bridge/wrapped collateral and should not be summed blindly into unique XRP supply without protocol-level deduplication.",
+    "rwa_note": "Only $276M is described as distributed, transferable on-chain investor float. Approximately $4.06B is represented/registry notional locked on issuing platforms, not transferable XRP Ledger float or proof of deployed cash."
+  },
+  "x402_agent_payments": {
+    "source": "https://xrp-insights.com/xrp-radar",
+    "capture_time_utc": "2026-11-02T08:16:00Z",
+    "agent_transactions": 14803915,
+    "approximate_transactions_per_day": 102700,
+    "active_agents": 189,
+    "merchants": 183,
+    "paid_service_endpoints": 5790,
+    "all_time_settled_xrp": 7021,
+    "all_time_settled_rlusd": 38031,
+    "approximate_usd_at_xrp_1_25": 46807,
+    "approximate_average_usd_per_transaction": 0.00316,
+    "top_merchant": {
+      "name": "AskSurf",
+      "transactions": 1126310
+    },
+    "source_tag": 804681468,
+    "last_sample_transaction": "4D80732653B8E86D77BFC11B5818F6A5236CAAA9A1A456D7F1C2C41B72616672",
+    "last_sample_ledger": 108041043,
+    "verification_limit": "The tracker says it spot-checks a native XRPL Payment using SourceTag 804681468. Its linked sample transaction returned 403 from XRPLScan and the official explorer was inaccessible through this retrieval path; the aggregate totals are not independently raw-node verified in this run.",
+    "economic_interpretation": "Very high transaction count but approximately $46.8K cumulative value at the captured XRP price. This is micro-payment activity, not evidence of large XRP capital inflows. Transaction count must not substitute for settled notional.",
+    "coinbase_connection": "The page describes x402 as an open standard revived by Coinbase. That is a protocol-level indirect connection; no direct Coinbase operation of the XRPL t54 facilitator was established.",
+    "ripple_connection": "The page identifies t54 as XRPL facilitator operator and describes Ripple as a strategic investor/partner. The page says settlement can be in XRP or RLUSD.",
+    "asksurf_disambiguation": "AskSurf is a merchant/service endpoint on XRPL, not the Permission ASK token and not proof of an ASK-token/XRP integration."
+  }
 }
