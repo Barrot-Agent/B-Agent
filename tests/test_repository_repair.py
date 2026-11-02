@@ -1027,3 +1027,17 @@ def test_patch_executor_rollback_preserves_concurrent_user_edit(tmp_path: Path) 
     assert executor.rollback(snapshots) is False
     assert target.read_text(encoding="utf-8") == "concurrent user edit\\n"
     assert target.read_text(encoding="utf-8") != original
+
+
+def test_patch_executor_refuses_commit_after_concurrent_target_edit(tmp_path: Path) -> None:
+    workspace, path = init_repo(tmp_path)
+    target = workspace / path
+    executor = PatchExecutor(workspace)
+    changeset = json.loads(repair_payload(path))["changeset"]
+
+    executor.apply(changeset)
+    target.write_text("concurrent user edit\\n", encoding="utf-8")
+
+    with pytest.raises(RepairError, match="changed after patch application"):
+        executor.verify_applied_content()
+    assert target.read_text(encoding="utf-8") == "concurrent user edit\\n"
