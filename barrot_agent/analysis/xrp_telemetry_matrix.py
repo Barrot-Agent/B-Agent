@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse, json, math, sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import urlsplit
 
 MIN_WALK_FORWARD_SAMPLES = 30
 MAX_MARKET_SKEW_SECONDS = 60
@@ -43,14 +44,18 @@ def validate_snapshot(s):
     if not isinstance(sources, list):
         raise EvidenceError("sources must be a list")
     ids, groups, retrieval_times = set(), set(), []
+    source_records = {}
     for i, src in enumerate(sources):
         if not isinstance(src, dict):
             raise EvidenceError(f"sources[{i}] must be an object")
         sid = _text(src.get("source_id"), f"sources[{i}].source_id")
-        _text(src.get("publisher"), f"sources[{i}].publisher")
-        if not _text(src.get("url"), f"sources[{i}].url").startswith("https://"):
-            raise EvidenceError("source URLs must use HTTPS")
-        groups.add(_text(src.get("independence_group"), f"sources[{i}].independence_group"))
+        publisher = _text(src.get("publisher"), f"sources[{i}].publisher")
+        url = _text(src.get("url"), f"sources[{i}].url")
+        parsed_url = urlsplit(url)
+        if parsed_url.scheme != "https" or not parsed_url.hostname:
+            raise EvidenceError("source URLs must use HTTPS and include a hostname")
+        independence_group = _text(src.get("independence_group"), f"sources[{i}].independence_group")
+        groups.add(independence_group)
         _text(src.get("evidence_class"), f"sources[{i}].evidence_class")
         retrieved_at = _utc(src.get("retrieved_at_utc"), f"sources[{i}].retrieved_at_utc")
         if retrieved_at > captured:
@@ -59,21 +64,35 @@ def validate_snapshot(s):
         if sid in ids:
             raise EvidenceError(f"duplicate source_id: {sid}")
         ids.add(sid)
+        source_records[sid] = {
+            "publisher": publisher,
+            "host": parsed_url.hostname.lower(),
+            "independence_group": independence_group,
+            "retrieved_at": retrieved_at,
+        }
     observations = s.get("market_observations", [])
     if not isinstance(observations, list):
         raise EvidenceError("market_observations must be a list")
     venues, times, symbols = set(), [], set()
+    observation_groups, observation_publishers, observation_hosts = set(), set(), set()
     for i, obs in enumerate(observations):
         if not isinstance(obs, dict):
             raise EvidenceError(f"market_observations[{i}] must be an object")
         symbols.add(_text(obs.get("symbol"), f"observations[{i}].symbol"))
         venues.add(_text(obs.get("venue"), f"observations[{i}].venue"))
-        if _text(obs.get("source_id"), f"observations[{i}].source_id") not in ids:
+        source_id = _text(obs.get("source_id"), f"observations[{i}].source_id")
+        if source_id not in ids:
             raise EvidenceError("market observation references unknown source_id")
+        source = source_records[source_id]
         _num(obs.get("price"), f"observations[{i}].price", 0.00000001)
         ts = _utc(obs.get("timestamp_utc"), f"observations[{i}].timestamp_utc")
         if ts > cutoff:
             raise EvidenceError("market observation is later than data cutoff")
+        if ts > source["retrieved_at"]:
+            raise EvidenceError("market observation timestamp follows source retrieval time")
+        observation_groups.add(source["independence_group"])
+        observation_publishers.add(source["publisher"].casefold())
+        observation_hosts.add(source["host"])
         times.append(ts)
     forecast = s.get("forecast")
     if not isinstance(forecast, dict):
@@ -98,8 +117,10 @@ def validate_snapshot(s):
             raise EvidenceError(f"forecast.{field} must be non-empty")
         for value in values:
             _text(value, field)
-    if len(groups) < 2 or len(venues) < 2 or len(times) < 2:
-        raise EvidenceError("ISSUED forecast requires two independent sources and two venues")
+    if len(observation_groups) < 2 or len(observation_publishers) < 2 or len(observation_hosts) < 2:
+        raise EvidenceError("market observations must be backed by two independent source groups, publishers and hosts")
+    if len(venues) < 2 or len(times) < 2:
+        raise EvidenceError("ISSUED forecast requires two venues and two observations")
     if len(symbols) != 1 or (max(times) - min(times)).total_seconds() > MAX_MARKET_SKEW_SECONDS:
         raise EvidenceError("market observations exceed synchronization window or mix symbols")
     ev = forecast.get("evaluation")
