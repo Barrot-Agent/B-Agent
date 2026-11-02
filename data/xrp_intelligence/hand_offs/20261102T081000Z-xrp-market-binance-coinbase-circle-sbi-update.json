@@ -452,7 +452,34 @@
       ]
     },
     "actual_capital": "Flare's May 2025 wording concerns USDt0/FXRP liquidity deployment, not a disclosed amount of new XRP spot purchases.",
-    "camilla_stephenson": "Kamilah/Camila Stevenson remains a candidate identity; exact match and exhaustive public YouTube inventory are unresolved."
+    "camilla_stephenson": {
+      "requested_identity": "Camilla Stephenson",
+      "candidate_channel": "Kamilah Stevenson, @drkamilahstevenson",
+      "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "identity_status": "unconfirmed; candidate video descriptions identify the speaker as Dr. Kamilah Stevenson, while some earlier transcript snippets rendered Camila. No primary self-identification as Camilla Stephenson has been found.",
+      "newly_retrieved_public_videos": [
+        {
+          "title": "XRP Was Built for What's Coming",
+          "video_id": "ywQEoYPzhlQ",
+          "published": "2026-03-03",
+          "url": "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+          "attribution": "YouTube search result labels creator Kamilah Stevenson"
+        },
+        {
+          "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+          "video_id": "8xiy8w2YlfY",
+          "published": "2026-07-30",
+          "url": "https://www.youtube.com/watch?v=8xiy8w2YlfY",
+          "attribution": "YouTube search result labels creator Kamilah Stevenson; description self-identifies Dr. Kamilah Stevenson"
+        }
+      ],
+      "inventory_status": "incomplete. The channel /videos page and channel RSS feed were not retrievable through the public web retrieval path; search indexing returned only a subset. Do not claim exhaustive coverage or attribute these videos to Camilla Stephenson until identity is verified.",
+      "sources": [
+        "https://www.youtube.com/@drkamilahstevenson/videos",
+        "https://www.youtube.com/watch?v=ywQEoYPzhlQ",
+        "https://www.youtube.com/watch?v=8xiy8w2YlfY"
+      ]
+    }
   },
   "repo_status": {
     "main_sha": "f4acd0472e140a7d1445cebd1c5621aa152eef9c",
