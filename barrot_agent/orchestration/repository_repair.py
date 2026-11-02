@@ -1270,6 +1270,17 @@ class PatchExecutor:
             snapshots[path] = target.read_text(encoding="utf-8") if target.exists() else None
         return snapshots
 
+    def verify_applied_content(self) -> None:
+        """Fail closed if a target changed after Barrot applied its patch."""
+        if not self._last_applied_content:
+            raise RepairError("No applied patch content is available for commit verification.")
+        for path, expected in self._last_applied_content.items():
+            target = self._resolve_path(path)
+            if not target.is_file() or target.read_text(encoding="utf-8") != expected:
+                raise RepairError(
+                    f"Refusing to commit because {path} changed after patch application."
+                )
+
     def rollback(self, snapshots: dict[str, str | None]) -> bool:
         """Restore only files still byte-for-byte equal to this executor's patch."""
         changed = {
@@ -2139,6 +2150,7 @@ actually observed.
         self._persist(cycle)
         expected_files = [str(item) for item in changeset.get("expected_files", []) if isinstance(item, str)]
         try:
+            self.patch_executor.verify_applied_content()
             cycle.commit = self.git_gateway.commit(
                 str(changeset.get("commit_message", "")).strip(),
                 expected_files,
