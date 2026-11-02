@@ -294,6 +294,12 @@
         "status": "confirmed",
         "detail": "RLUSD available on Prime, Exchange and retail app from Oct 28; XRPL, Base and Ethereum deposits/withdrawals. Global Exchange collateral availability was stated to follow, so RLUSD collateral use is not established at launch.",
         "source": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase"
+      },
+      {
+        "edge": "Permission / ASK Wallet -> Coinbase Embedded Wallet",
+        "status": "confirmed wallet-infrastructure relationship; not an exchange listing",
+        "detail": "Permission announced on 2026-09-22 that its ASK wallet moved to Coinbase embedded-wallet infrastructure. Permission says Coinbase secures the private key on the user's behalf and transactions are authorized through the user's Permission login. Permission says email, account identifier and wallet information are shared with Coinbase for wallet operation.",
+        "source": "https://www.permission.ai/blog/ask-wallet-update"
       }
     ],
     "circle_arc_sbi": [
@@ -347,7 +353,15 @@
     "sources": [
       "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
       "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000121/q326earningsdeck_vsec.htm"
-    ]
+    ],
+    "circle_relationship_update": {
+      "ten_q": "Coinbase's Q3 2026 Form 10-Q says its arrangement with Circle was renewed on the same terms.",
+      "management_position": "Coinbase management described the companies as both building stablecoin payment infrastructure, cooperating to grow USDC while competing in some infrastructure areas.",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+        "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+      ]
+    }
   },
   "binance_tron_separate_stream": {
     "analyst_estimated_tron_assets_stolen_usd": 628000000,
@@ -403,9 +417,40 @@
     }
   ],
   "research_threads": {
-    "japanese_sbic": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; separate from SBI Holdings. Its ChatGPT/Copilot training is not evidence of an OpenAI or XRP partnership.",
-    "chatgpt_sbic": "Social Bias Inference Corpus is a separate academic candidate meaning.",
-    "ask_coin": "Permission Coin ASK remains a candidate; direct XRP integration unverified.",
+    "japanese_sbic": {
+      "identity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate number 9011001030621; founded 1963.",
+      "distinction": "Separate from SBI Holdings and the SBI Group. Its ChatGPT/Copilot training was restricted to investee companies; no OpenAI commercial partnership or XRP relationship is established.",
+      "sources": [
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic.co.jp/training/20250612co/"
+      ]
+    },
+    "chatgpt_sbic": {
+      "candidates": [
+        "Tokyo SBIC's official June 2025 training included ChatGPT on day one and Copilot on day two for investee companies.",
+        "SBIC also commonly refers to the Social Bias Inference Corpus in NLP research; papers evaluate LLMs including ChatGPT on social-bias tasks."
+      ],
+      "conclusion": "No ChatGPT-SBIC product, OpenAI partnership or XRP relationship was established. The earlier 65.9% interpretation is not being reused without checking the primary paper table and task definition.",
+      "sources": [
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic.co.jp/company/profile/",
+        "https://arxiv.org/abs/2305.03514",
+        "https://doi.org/10.1162/coli_a_00502"
+      ]
+    },
+    "ask_coin": {
+      "identity_assessment": "Permission's ASK token is now the strongest candidate for the user's 'ASK Coin' reference, but the phrase remains ambiguous without its original context.",
+      "confirmed_coinbase_edge": "Permission announced on 2026-09-22 that its ASK wallet moved to Coinbase embedded-wallet infrastructure. This is a wallet/custody technology relationship, not evidence of Coinbase exchange listing or XRP integration.",
+      "token_deployment": "Permission's official docs list ASK OFT-20 contracts on Base and Polygon and describe LayerZero OFT plus Stargate support. No XRPL contract or direct XRP integration was found in the official token-address list.",
+      "base_contract": "0xBB146326778227A8498b105a18f84E0987A684b4",
+      "polygon_contract": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+      "classification": "strong candidate, not final identity resolution",
+      "sources": [
+        "https://www.permission.ai/blog/ask-wallet-update",
+        "https://docs.permission.ai/ask-token/contract-addresses",
+        "https://www.permission.ai/"
+      ]
+    },
     "actual_capital": "Flare's May 2025 wording concerns USDt0/FXRP liquidity deployment, not a disclosed amount of new XRP spot purchases.",
     "camilla_stephenson": "Kamilah/Camila Stevenson remains a candidate identity; exact match and exhaustive public YouTube inventory are unresolved."
   },
