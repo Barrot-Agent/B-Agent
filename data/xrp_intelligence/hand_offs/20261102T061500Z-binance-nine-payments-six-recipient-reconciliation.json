@@ -1,0 +1,363 @@
+{
+  "schema_version": "1.2",
+  "artifact_type": "xrp_onchain_event_reconciliation",
+  "title": "Nine successful large XRP Payments: six main recipient wallets and seven account activations",
+  "captured_at_utc": "2026-11-02T06:16:01.939Z",
+  "event_window_utc": {
+    "start": "2026-11-02T02:12:40Z",
+    "end": "2026-11-02T04:00:31Z"
+  },
+  "supersedes_prior_handoff": "20261102T061000Z-binance-attacker-first-outbound-and-count-reconciliation.json",
+  "correction": "The prior run's nine-payment count and six-recipient table are now reconciled. The nine large payments are split across six recipients. Seven separate 1,000-XRP payments activated six main recipients plus one additional child account.",
+  "source_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+  "large_payments": [
+    {
+      "timestamp_utc": "2026-11-02T03:52:41Z",
+      "amount_xrp": 30000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "destination": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "hash": "156CB85F02F55DCFFC757A88402515472413F085CCB73C032E4C67AF1E34EB69",
+      "ledger_index": 108059052,
+      "sequence": 107986700,
+      "ctid": "C670D9AC00060000",
+      "fee_xrp": 0.00001,
+      "transaction_type": "Payment",
+      "transaction_result": "tesSUCCESS",
+      "delivered_amount_xrp": 30000000
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:53:40Z",
+      "amount_xrp": 30000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "destination": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+      "hash": "9276B5D5876F3805CF9BCA7038CB56DD1DBA4DE673E6EFD7D5FE6EE34BF51671",
+      "ledger_index": 108059066,
+      "sequence": 107986701,
+      "ctid": "C670D9BA00070000",
+      "fee_xrp": 0.00001,
+      "transaction_type": "Payment",
+      "transaction_result": "tesSUCCESS",
+      "delivered_amount_xrp": 30000000
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:54:41Z",
+      "amount_xrp": 30000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "destination": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+      "hash": "3885C363F650AF8B0EF7CAFE754B049E35DC7B119847BE8C1A31583340A0CA62",
+      "ledger_index": 108059081,
+      "sequence": 107986702,
+      "ctid": "C670D9C9000A0000",
+      "fee_xrp": 0.00001,
+      "transaction_type": "Payment",
+      "transaction_result": "tesSUCCESS",
+      "delivered_amount_xrp": 30000000
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:55:31Z",
+      "amount_xrp": 40000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "destination": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+      "hash": "DC8D39BC98DB7EDB76EE18E7DD6B0874DA83B51091E2BBFD6C4C70C156A0436A",
+      "ledger_index": 108059094,
+      "sequence": 107986703,
+      "ctid": "C670D9D6000B0000",
+      "fee_xrp": 0.00001,
+      "transaction_type": "Payment",
+      "transaction_result": "tesSUCCESS",
+      "delivered_amount_xrp": 40000000
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:56:21Z",
+      "amount_xrp": 40000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "destination": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+      "hash": "3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "ledger_index": 108059106,
+      "sequence": 107986704,
+      "ctid": "C670D9E2002C0000",
+      "fee_xrp": 0.00001,
+      "transaction_type": "Payment",
+      "transaction_result": "tesSUCCESS",
+      "delivered_amount_xrp": 40000000
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:57:20Z",
+      "amount_xrp": 10000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "destination": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "hash": "7D6CC61F70A8332DAC76EBC36FD05788268C025CF331FC5389CED98DBFB5627B",
+      "ledger_index": 108059119,
+      "sequence": 107986705,
+      "ctid": "C670D9EF00070000",
+      "fee_xrp": 0.00001,
+      "transaction_type": "Payment",
+      "transaction_result": "tesSUCCESS",
+      "delivered_amount_xrp": 10000000
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:58:21Z",
+      "amount_xrp": 10000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "destination": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+      "hash": "1597D75A8C1F4734EF68C459DE45B8B50DB19B0345C70301D269FBBF76D4D82F",
+      "ledger_index": 108059136,
+      "sequence": 107986706,
+      "ctid": "C670DA0000220000",
+      "fee_xrp": 0.00001,
+      "transaction_type": "Payment",
+      "transaction_result": "tesSUCCESS",
+      "delivered_amount_xrp": 10000000
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:59:00Z",
+      "amount_xrp": 10000000,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "destination": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+      "hash": "B416DB72953E794BFFAA079C58E8AA010D386CD08D841258E7109A87B33D16D4",
+      "ledger_index": 108059145,
+      "sequence": 107986707,
+      "ctid": "C670DA09002D0000",
+      "fee_xrp": 0.00001,
+      "transaction_type": "Payment",
+      "transaction_result": "tesSUCCESS",
+      "delivered_amount_xrp": 10000000
+    },
+    {
+      "timestamp_utc": "2026-11-02T04:00:31Z",
+      "amount_xrp": 33454920,
+      "sender": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "destination": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+      "hash": "0CF6FAF899D3D09573380E2F65B12CC9F75B78464FF36E74ABBD27812CAC01A0",
+      "ledger_index": 108059170,
+      "sequence": 107986708,
+      "ctid": "C670DA22004E0000",
+      "fee_xrp": 0.00001,
+      "transaction_type": "Payment",
+      "transaction_result": "tesSUCCESS",
+      "delivered_amount_xrp": 33454920
+    }
+  ],
+  "large_payment_count": 9,
+  "large_payment_total_xrp": 233454920,
+  "child_account_activations": [
+    {
+      "timestamp_utc": "2026-11-02T03:47:11Z",
+      "account": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "hash": "DFDABF76FBC4CF7C5103E7FF4808EBE1654F7D7D64CFA614E09B1D1DAF3B5ED9",
+      "from": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "amount_xrp": 1000,
+      "type": "Payment",
+      "source": "Bithomp recipient transaction history"
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:48:31Z",
+      "account": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+      "hash": "5F85EB35327EE1E15A0B9BE6DC721AE2204C84B5EDD68BBBD779341ABF442A4C",
+      "from": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "amount_xrp": 1000,
+      "type": "Payment",
+      "source": "Bithomp recipient transaction history"
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:49:10Z",
+      "account": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+      "hash": "6FD7CF5695FDD3FBB2B6DD0C66A79AFB438A10A35816053241873AC5393DC5D9",
+      "from": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "amount_xrp": 1000,
+      "type": "Payment",
+      "source": "Bithomp recipient transaction history"
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:50:00Z",
+      "account": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+      "hash": "227F40E1936F41845629B828BDEA7346CC4077E727DDEBB8594657F13BE23C7C",
+      "from": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "amount_xrp": 1000,
+      "type": "Payment",
+      "source": "Bithomp recipient transaction history"
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:50:22Z",
+      "account": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+      "hash": "F018AC7056FD7A221CD9907D2971775F54E208CA424BAEFDCAD3E70375491A05",
+      "from": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "amount_xrp": 1000,
+      "type": "Payment",
+      "source": "Bithomp recipient transaction history"
+    },
+    {
+      "timestamp_utc": "2026-11-02T03:50:42Z",
+      "account": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+      "hash": "FBD767C477DE179FEFBE070B31E520A85F8512972B27D3A1AF2113BF3B927FFE",
+      "from": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "amount_xrp": 1000,
+      "type": "Payment",
+      "source": "Bithomp recipient transaction history"
+    },
+    {
+      "timestamp_utc": "2026-11-02T02:12:40Z",
+      "account": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
+      "hash": "22B06ABCD125D638A8DA3FC9BC48BD57267FB203471B3D507898508999116680",
+      "from": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "amount_xrp": 1000,
+      "type": "Payment",
+      "source": "Bithomp recipient transaction history"
+    }
+  ],
+  "activation_count": 7,
+  "activation_total_xrp": 7000,
+  "recipients": [
+    {
+      "account": "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx",
+      "large_xrp": 40000000,
+      "history_entries": 3,
+      "entries": "1,000 activation; 30M at 03:52:41; 10M at 03:57:20",
+      "history_url": "https://bithomp.com/account/ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx/transactions",
+      "outbound_transactions_listed": 0
+    },
+    {
+      "account": "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F",
+      "large_xrp": 40000000,
+      "history_entries": 3,
+      "entries": "1,000 activation; 30M at 03:53:40; 10M at 03:58:21",
+      "history_url": "https://bithomp.com/account/rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F/transactions",
+      "outbound_transactions_listed": 0
+    },
+    {
+      "account": "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB",
+      "large_xrp": 40000000,
+      "history_entries": 3,
+      "entries": "1,000 activation; 30M at 03:54:41; 10M at 03:59:00",
+      "history_url": "https://bithomp.com/account/rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB/transactions",
+      "outbound_transactions_listed": 0
+    },
+    {
+      "account": "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW",
+      "large_xrp": 40000000,
+      "history_entries": 2,
+      "entries": "1,000 activation; 40M at 03:55:31",
+      "history_url": "https://bithomp.com/account/rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW/transactions",
+      "outbound_transactions_listed": 0
+    },
+    {
+      "account": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+      "large_xrp": 40000000,
+      "history_entries": 2,
+      "entries": "1,000 activation; 40M at 03:56:21",
+      "history_url": "https://bithomp.com/account/rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD/transactions",
+      "outbound_transactions_listed": 0
+    },
+    {
+      "account": "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t",
+      "large_xrp": 33454920,
+      "history_entries": 2,
+      "entries": "1,000 activation; 33,454,920 at 04:00:31",
+      "history_url": "https://bithomp.com/account/raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t/transactions",
+      "outbound_transactions_listed": 0
+    },
+    {
+      "account": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
+      "large_xrp": 0,
+      "history_entries": 1,
+      "entries": "1,000 activation only; no large tranche",
+      "history_url": "https://bithomp.com/account/rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b/transactions",
+      "outbound_transactions_listed": 0
+    }
+  ],
+  "attacker_balance_reconciliation": {
+    "prior_balance_snapshot_xrp": 233461943.69905,
+    "prior_snapshot_source": "https://q-eternal.com/blog/2026-11-01/",
+    "gross_large_payments_xrp": 233454920,
+    "gross_child_activations_xrp": 7000,
+    "accountroot_after_final_large_payment_xrp": 23.69904,
+    "final_large_payment_ledger": 108059170,
+    "final_large_payment_transaction": "https://bithomp.com/tx/0CF6FAF899D3D09573380E2F65B12CC9F75B78464FF36E74ABBD27812CAC01A0",
+    "arithmetic_residual_xrp": 0.00001,
+    "current_bithomp_available_balance_xrp": 22.7,
+    "base_reserve_xrp": 1,
+    "reserve_source": "https://xrpl.org/docs/concepts/accounts/reserves",
+    "reserve_explanation": "AccountRoot 23.69904 less the 1 XRP base reserve equals 22.69904 available, which rounds to the Bithomp account-page display of 22.70. The apparent ~0.99904 difference is reserve accounting, not evidence of another 1 XRP transfer.",
+    "residual_note": "The 0.00001 gross-flow residual is fee/dust-scale and not fully reconstructed across all small transactions. It does not affect the exact sum of the nine large payments."
+  },
+  "recipient_state": {
+    "captured_at_utc": "2026-11-02T06:16:01.939Z",
+    "observation": "Each of the six large recipients' Bithomp transaction-history pages ends after only the activation and large inbound payments; the seventh child page shows only its activation. No outbound transactions are listed at capture time.",
+    "sale_or_monetization_evidence": false,
+    "caveat": "Explorer history is a public third-party rendering. Independent raw account_tx and account_info calls against at least two public rippled/Clio nodes remain pending."
+  },
+  "independent_corroboration": {
+    "whale_alert": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+    "matched_transaction": "40,000,000 XRP from source to rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD at 2026-11-02T03:56:21Z",
+    "note": "Whale Alert independently corroborates one of the nine payments; the other eight are individually detailed by Bithomp in this run."
+  },
+  "evidence_classification": {
+    "confirmed": "Nine successful XRPL Payment records in Bithomp detail pages, all tesSUCCESS, delivered amounts matching stated XRP amounts, sequence numbers 107986700–107986708, ledgers 108059052–108059170; six recipient histories show inbound-only records at capture; seven 1,000-XRP activation payments are recorded.",
+    "inferred": "The pattern is deliberate segmentation of the stolen XRP into six large balances and one smaller child account.",
+    "unknown": "Beneficial ownership, key control, purpose of the seventh child, subsequent off-ledger monetization, and whether any destination will later route to an exchange, DEX or bridge.",
+    "disconfirming": "No sale, DEX swap, bridge transfer or exchange deposit is visible in the captured seven recipient histories. This does not exclude later movement or off-ledger arrangements."
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "claim": "The stolen XRP was segmented into six large recipient wallets plus one small child wallet.",
+      "status": "strongly_supported"
+    },
+    {
+      "id": "H2",
+      "claim": "The six large recipient wallets are staging wallets that may remain dormant.",
+      "status": "consistent_with_current_histories"
+    },
+    {
+      "id": "H3",
+      "claim": "The wallets are preparing for later exchange/DEX/bridge monetization.",
+      "status": "speculative"
+    },
+    {
+      "id": "H4",
+      "claim": "The distribution is a legitimate recovery/law-enforcement operation.",
+      "status": "not_supported_by_current_public_evidence"
+    },
+    {
+      "id": "H5",
+      "claim": "The wallet transfers themselves constitute market sell pressure.",
+      "status": "rejected_by_available_evidence; no sale or execution shown"
+    }
+  ],
+  "source_urls": [
+    "https://bithomp.com/account/rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx/transactions",
+    "https://bithomp.com/tx/156CB85F02F55DCFFC757A88402515472413F085CCB73C032E4C67AF1E34EB69",
+    "https://bithomp.com/tx/9276B5D5876F3805CF9BCA7038CB56DD1DBA4DE673E6EFD7D5FE6EE34BF51671",
+    "https://bithomp.com/tx/3885C363F650AF8B0EF7CAFE754B049E35DC7B119847BE8C1A31583340A0CA62",
+    "https://bithomp.com/tx/DC8D39BC98DB7EDB76EE18E7DD6B0874DA83B51091E2BBFD6C4C70C156A0436A",
+    "https://bithomp.com/tx/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+    "https://bithomp.com/tx/7D6CC61F70A8332DAC76EBC36FD05788268C025CF331FC5389CED98DBFB5627B",
+    "https://bithomp.com/tx/1597D75A8C1F4734EF68C459DE45B8B50DB19B0345C70301D269FBBF76D4D82F",
+    "https://bithomp.com/tx/B416DB72953E794BFFAA079C58E8AA010D386CD08D841258E7109A87B33D16D4",
+    "https://bithomp.com/tx/0CF6FAF899D3D09573380E2F65B12CC9F75B78464FF36E74ABBD27812CAC01A0",
+    "https://bithomp.com/account/ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx/transactions",
+    "https://bithomp.com/account/rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F/transactions",
+    "https://bithomp.com/account/rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB/transactions",
+    "https://bithomp.com/account/rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW/transactions",
+    "https://bithomp.com/account/rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD/transactions",
+    "https://bithomp.com/account/raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t/transactions",
+    "https://bithomp.com/account/rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b/transactions",
+    "https://xrpl.org/docs/concepts/accounts/reserves",
+    "https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx"
+  ],
+  "next_actions": [
+    "Cross-check all nine large-payment hashes and seven activation hashes through two independent public rippled/Clio endpoints at pinned validated ledger indices.",
+    "Capture synchronized account_info/account_tx snapshots for all seven recipients and the source account.",
+    "Monitor for subsequent outbound payments to exchanges, DEXs, bridges, custodians or additional wallets.",
+    "Keep wallet redistribution, exchange deposit, DEX swap, bridge movement and actual sale as separate event types.",
+    "Do not convert wallet segmentation into a directional XRP forecast without actual execution/liquidity evidence."
+  ],
+  "safety": {
+    "public_data_only": true,
+    "no_wallet_interaction": true,
+    "no_signing": true,
+    "no_private_data": true,
+    "no_trading": true,
+    "no_main_branch_write": true
+  }
+}
