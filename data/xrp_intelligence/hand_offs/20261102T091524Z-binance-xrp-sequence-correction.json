@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "event_sequence_correction",
+  "artifact_id": "20261102T091524Z-binance-xrp-sequence-correction",
+  "created_at_utc": "2026-11-02T09:15:24Z",
+  "event": "Binance 2026-10-29 security incident — XRPL branch",
+  "confirmed_inflow": {
+    "source_wallets": 5,
+    "destination": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+    "total_xrp": 233461943.1,
+    "window_start_utc": "2026-10-29T20:05:00Z",
+    "window_end_utc": "2026-10-29T20:09:20Z",
+    "source": "TRM Labs incident reconstruction and XRPL transaction records"
+  },
+  "redistribution": {
+    "destination_wallets": 6,
+    "total_xrp": 233454920,
+    "window_start_utc": "2026-11-02T03:52:41Z",
+    "window_end_utc": "2026-11-02T04:00:31Z",
+    "payments": 9,
+    "components": [
+      {
+        "amount_xrp": 40000000,
+        "time_utc": "2026-11-02T03:55:31Z",
+        "classification": "one component of the nine-payment redistribution"
+      },
+      {
+        "amount_xrp": 40000000,
+        "time_utc": "2026-11-02T03:56:21Z",
+        "classification": "one component of the nine-payment redistribution",
+        "transaction_hash": "3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D"
+      }
+    ],
+    "derived": {
+      "two_40m_payments_xrp": 80000000,
+      "share_of_total_redistribution_pct": 34.27
+    }
+  },
+  "chronology_correction": {
+    "claim": "A November 2 secondary article describes the two 40M payments at 03:55:31 and 03:56:21 as an 80M movement from the hack-linked wallet.",
+    "correction": "Those two payments fall inside the already-recorded 03:52:41–04:00:31 nine-payment redistribution of 233,454,920 XRP. They are components of that 233.45M total, not an additional 80M movement after the six-wallet redistribution.",
+    "evidence": [
+      "The 03:56:21 payment is independently listed by Whale Alert with the original attacker account as sender and one of the six known recipients.",
+      "The two 40M timestamps are within the Bithomp-captured nine-payment redistribution window."
+    ],
+    "source_ids": [
+      "S1",
+      "S2",
+      "S3"
+    ]
+  },
+  "separate_exchange_transfers": [
+    {
+      "time_utc": "2026-11-01T15:04:01Z",
+      "amount_xrp": 50000000,
+      "sender_label": "Binance",
+      "relation_to_exploit": "not established; a Nov 2 secondary report explicitly says the transaction data supplied by Whale Alert does not connect it to the attacker address",
+      "source_ids": [
+        "S3",
+        "S4"
+      ]
+    },
+    {
+      "time_utc": "2026-11-01T08:59:00Z",
+      "amount_xrp": 30000000,
+      "sender_label": "Binance",
+      "relation_to_exploit": "separate Binance-labeled wallet movement; downstream beneficiary and customer/treasury purpose not established in this run",
+      "source_ids": [
+        "S5"
+      ]
+    }
+  ],
+  "status_at_cutoff": {
+    "latest_raw_validated_ledger_read": "NOT_OBTAINED",
+    "six_recipient_current_balances": "UNKNOWN",
+    "subsequent_outbound_payments": "NOT_VERIFIED_AFTER_PRIOR_CAPTURE",
+    "sale_or_dex_conversion": "NOT_ESTABLISHED",
+    "exchange_deposit": "NOT_ESTABLISHED",
+    "bridge_transfer": "NOT_ESTABLISHED"
+  },
+  "competing_hypotheses": [
+    {
+      "id": "BXR-1",
+      "hypothesis": "The six-wallet split is staging/segmentation before further movement.",
+      "support": "Six new accounts were activated shortly before the transfers; five received 40M each and one received 33.45492M.",
+      "counter": "No later outbound movement or monetization has been verified."
+    },
+    {
+      "id": "BXR-2",
+      "hypothesis": "The split is an operational concealment step rather than immediate liquidation.",
+      "support": "The transactions create six separate balances and no exchange/DEX destination was identified in captured recipient histories.",
+      "counter": "No beneficial-owner or intent evidence is available."
+    },
+    {
+      "id": "BXR-3",
+      "hypothesis": "Separate Binance-labeled 30M/50M transfers are ordinary custody/withdrawal rebalancing.",
+      "support": "They originate from a different Binance-labeled account and are not linked to the attacker in available evidence.",
+      "counter": "Recipient purpose and account ownership remain unknown."
+    }
+  ],
+  "source_register": [
+    {
+      "id": "S1",
+      "type": "Bithomp explorer transaction/account history",
+      "url": "https://bithomp.com/account/rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx/transactions"
+    },
+    {
+      "id": "S2",
+      "type": "Whale Alert transaction record",
+      "url": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D"
+    },
+    {
+      "id": "S3",
+      "type": "secondary reporting of 2026-11-02 transaction timestamps",
+      "url": "https://thecryptobasic.com/2026/11/02/binance-hack-wallet-moves-80m-xrp-in-50-seconds-as-separate-50m-xrp-leaves-binance/"
+    },
+    {
+      "id": "S4",
+      "type": "Whale Alert transaction record for separate Binance 50M transfer",
+      "url": "https://whale-alert.io/"
+    },
+    {
+      "id": "S5",
+      "type": "prior captured Bithomp/Whale Alert observation for separate Binance 30M transfer",
+      "url": "https://bithomp.com/whales"
+    }
+  ],
+  "source_independence": {
+    "caveat": "The nine-payment redistribution was previously reconstructed from Bithomp; Whale Alert independently corroborates one 40M payment, not all nine. TRM/FBI attribution concerns the wider breach and does not independently verify the later six-wallet redistribution.",
+    "live_raw_node_verification": "BLOCKED_BY_UNAVAILABLE_PUBLIC_RPC_PATH_IN_THIS_RUN"
+  },
+  "forecast_status": "NOT_ISSUED",
+  "safety": {
+    "public_data_only": true,
+    "no_wallet_access": true,
+    "no_private_data": true,
+    "no_market_intervention": true,
+    "no_trade": true
+  }
+}
