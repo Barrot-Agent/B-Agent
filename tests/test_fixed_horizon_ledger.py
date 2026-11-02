@@ -511,7 +511,9 @@ def test_outcome_rejects_price_snapshot_captured_after_record_time(tmp_path, mon
         "_utc_now",
         lambda: datetime(2026, 10, 31, 1, 30, 0, tzinfo=timezone.utc),
     )
-    ledger = make_ledger(tmp_path)
+    source_registry = HashVerifiedRegistryFixture(TEST_SOURCE_REGISTRY)
+    source_registry.registered_at["SRC-PRICE-001"] = "2026-10-31T01:00:00Z"
+    ledger = make_ledger(tmp_path, source_registry=source_registry)
     ledger.append_forecast(forecast_payload())
     with pytest.raises(ValueError, match="captured after its availability cutoff"):
         ledger.append_outcome(
