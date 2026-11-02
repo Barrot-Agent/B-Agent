@@ -50,7 +50,7 @@ def check_repo_source_marker():
     if r.status_code != 200:
         return False, f"HTTP {r.status_code}"
     content = base64.b64decode(r.json()["content"]).decode()
-    ok = "Barrot-\\u03a9" in content
+    ok = "Barrot-Ω" in content
     return ok, "GitHub main source marker present; deployed Space revision not checked"
 
 def check_repo_source_fiction():
