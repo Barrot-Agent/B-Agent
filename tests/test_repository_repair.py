@@ -169,6 +169,8 @@ def run_cycle(workspace: Path, brain: FakeBrain) -> RepairCycleEvidence:
 def test_healthy_repository_returns_no_repair_required(tmp_path: Path) -> None:
     workspace, path = init_repo(tmp_path)
     (workspace / path).write_text('FLAG = "FIXED"\n', encoding="utf-8")
+    assert git(workspace, "add", path).returncode == 0
+    assert git(workspace, "commit", "-m", "commit healthy fixture").returncode == 0
     brain = FakeBrain(repair_payload(path))
 
     cycle = run_cycle(workspace, brain)
@@ -251,6 +253,8 @@ def test_missing_old_text_rejects_patch(tmp_path: Path) -> None:
 def test_ambiguous_replacement_rejects_patch(tmp_path: Path) -> None:
     workspace, path = init_repo(tmp_path)
     (workspace / path).write_text('FLAG = "BROKEN"\nFLAG = "BROKEN"\n', encoding="utf-8")
+    assert git(workspace, "add", path).returncode == 0
+    assert git(workspace, "commit", "-m", "commit ambiguous fixture").returncode == 0
     brain = FakeBrain(repair_payload(path))
 
     cycle = run_cycle(workspace, brain)
