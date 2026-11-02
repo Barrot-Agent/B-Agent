@@ -34,6 +34,7 @@ from barrot_agent.orchestration.repository_repair import (
     ProjectIdentity,
     RepositoryRepairController,
     WorkQueueController,
+    safe_checkout_branch,
 )
 from barrot_agent.orchestration.bundle_engineering import (
     BundleEngineeringController,
@@ -716,15 +717,11 @@ def configure_git() -> None:
 
 
 def checkout_branch(branch: str) -> None:
-    if not re.fullmatch(r"[A-Za-z0-9._/-]+", branch) or ".." in branch or branch.startswith("-"):
-        raise ValueError("Invalid Barrot task branch name")
-    remote = run(["git", "fetch", "origin", f"+refs/heads/{branch}:refs/remotes/origin/{branch}"], check=False, quiet=True)
-    if remote.returncode == 0:
-        result = run(["git", "checkout", "-B", branch, f"origin/{branch}"], check=False)
-    else:
-        result = run(["git", "checkout", "-B", branch], check=False)
-    if result.returncode != 0:
-        raise RuntimeError(result.stderr.strip() or f"Unable to checkout branch {branch}")
+    """Select a task branch without resetting local or remote refs."""
+    try:
+        safe_checkout_branch(ROOT, branch)
+    except Exception as exc:
+        raise RuntimeError(f"Safe task-branch checkout blocked: {exc}") from exc
 
 
 def post_issue_comment(message: str) -> None:
@@ -812,6 +809,7 @@ def create_pull_request(cycle: dict[str, object] | Any) -> None:
                 f"Barrot: {safe_title}",
                 "--body-file",
                 str(pr_path),
+                "--draft",
                 "--head",
                 head_branch,
                 "--base",
@@ -881,9 +879,9 @@ def persist_scientific_discovery(cycle: dict[str, object] | Any) -> dict[str, An
 
 def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
     payload = _work_dict(cycle)
-    record_dir = ROOT / ".barrot" / "collaboration_records"
-    record_dir.mkdir(parents=True, exist_ok=True)
     if _is_research_cycle(payload):
+        record_dir = ROOT / ".barrot" / "collaboration_records"
+        record_dir.mkdir(parents=True, exist_ok=True)
         record = {
             "work_bundle": "scientific_discovery",
             "cycle_id": payload.get("cycle_id"),
@@ -919,6 +917,11 @@ def write_collaboration_record(cycle: dict[str, object] | Any) -> Path:
         return latest
 
     cycle_data = _extract_cycle_data(payload)
+    # Engineering runtime evidence is local execution state, not a tracked handoff.
+    # Keep it under .git so it cannot overwrite the historical .barrot record or
+    # leave generated files that contaminate the user's worktree.
+    record_dir = ROOT / ".git" / "barrot_repair" / "collaboration_records"
+    record_dir.mkdir(parents=True, exist_ok=True)
     record = {
         "work_bundle": "autonomous_repository_repair",
         "cycle_id": cycle_data.get("cycle_id"),
