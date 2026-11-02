@@ -1,0 +1,622 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "ripple-bny-coinbase-circle-regulatory-rails-20261102T181011Z",
+  "captured_at_utc": "2026-11-02T18:10:11Z",
+  "data_cutoff_utc": "2026-11-02T18:10:11Z",
+  "purpose": "Separate Ripple company-wide product throughput from XRP-specific demand; map shared BNY custody infrastructure, RLUSD collateral, Coinbase multi-issuer distribution, agent-wallet integrations, and current U.S. regulatory status.",
+  "status": "RESEARCH_ONLY",
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "Institutional announcements, aggregate throughput and regulatory interpretations do not establish a calibrated directional XRP forecast."
+  },
+  "sources": [
+    {
+      "source_id": "ripple-banner-20261028",
+      "publisher": "Ripple",
+      "published_at": "2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "independence_group": "ripple-corporate-release",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R7",
+        "R8"
+      ]
+    },
+    {
+      "source_id": "ripple-treasury-20261026",
+      "publisher": "Ripple Treasury",
+      "published_at": "2026-10-26",
+      "url": "https://ripple.com/ripple-press/ripple-treasury-introduces-always-on-corporate-treasury-platform-to-modernize-corporate-cash-management/",
+      "independence_group": "ripple-corporate-release",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "R9"
+      ]
+    },
+    {
+      "source_id": "privy-xrpl-2026",
+      "publisher": "Privy",
+      "published_at": "2026-11-02",
+      "url": "https://www.privy.io/blog/building-payments-and-agentic-commerce-with-the-xrp-ledger",
+      "independence_group": "privy-product-announcement",
+      "evidence_class": "partner_primary",
+      "claims": [
+        "R10"
+      ]
+    },
+    {
+      "source_id": "ripple-rntb-20261026",
+      "publisher": "Ripple",
+      "published_at": "2026-10-26",
+      "url": "https://ripple.com/ripple-press/ripple-receives-final-occ-approval-to-establish-national-trust-bank/",
+      "independence_group": "ripple-corporate-release",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "R11",
+        "R12",
+        "R13"
+      ]
+    },
+    {
+      "source_id": "occ-conditional-20251212",
+      "publisher": "Office of the Comptroller of the Currency",
+      "published_at": "2025-12-12",
+      "url": "https://www.occ.gov/news-issuances/news-releases/2025/nr-occ-2025-125.html",
+      "independence_group": "occ-official",
+      "evidence_class": "regulator_primary",
+      "claims": [
+        "R14"
+      ]
+    },
+    {
+      "source_id": "bny-ripple-20261027",
+      "publisher": "BNY and Ripple",
+      "published_at": "2026-10-27",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+      "independence_group": "bny-ripple-joint-release",
+      "evidence_class": "joint_primary_statement",
+      "claims": [
+        "R15",
+        "R16"
+      ]
+    },
+    {
+      "source_id": "circle-q2-2026",
+      "publisher": "Circle",
+      "published_at": "2026-08-05",
+      "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "independence_group": "circle-investor-relations",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "R17",
+        "R18"
+      ]
+    },
+    {
+      "source_id": "coinbase-q3-2026",
+      "publisher": "Coinbase",
+      "published_at": "2026-10-29",
+      "url": "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx",
+      "independence_group": "coinbase-investor-relations",
+      "evidence_class": "issuer_primary",
+      "claims": [
+        "R19"
+      ]
+    },
+    {
+      "source_id": "reuters-coinbase-rlusd-20261028",
+      "publisher": "Reuters",
+      "published_at": "2026-10-28",
+      "url": "https://www.reuters.com/legal/transactional/coinbase-adds-ripples-stablecoin-its-exchange-2026-10-28/",
+      "independence_group": "reuters-independent-reporting",
+      "evidence_class": "independent_secondary",
+      "claims": [
+        "R20"
+      ]
+    },
+    {
+      "source_id": "sec-interpretation-20260317",
+      "publisher": "SEC and CFTC",
+      "published_at": "2026-03-17",
+      "url": "https://www.sec.gov/rules-regulations/2026/03/s7-2026-09",
+      "independence_group": "sec-cftc-regulatory",
+      "evidence_class": "regulator_primary",
+      "claims": [
+        "R21"
+      ]
+    },
+    {
+      "source_id": "sec-proposed-regulation-crypto-20260818",
+      "publisher": "SEC",
+      "published_at": "2026-08-18",
+      "url": "https://www.sec.gov/rules-regulations/2026/08/s7-2026-27",
+      "independence_group": "sec-cftc-regulatory",
+      "evidence_class": "regulator_primary",
+      "claims": [
+        "R22"
+      ]
+    },
+    {
+      "source_id": "cftc-xrp-event-contract-20260401",
+      "publisher": "CFTC",
+      "published_at": "2026-04-01",
+      "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts/60308",
+      "independence_group": "cftc-product-filings",
+      "evidence_class": "regulator_primary",
+      "claims": [
+        "R23"
+      ]
+    },
+    {
+      "source_id": "cftc-xrp-perpetual-20260902",
+      "publisher": "CFTC",
+      "published_at": "2026-09-02",
+      "url": "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizationProducts",
+      "independence_group": "cftc-product-filings",
+      "evidence_class": "regulator_primary",
+      "claims": [
+        "R24"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "R1",
+      "classification": "COMPANY_REPORTED_FORWARD_GUIDANCE",
+      "statement": "Ripple said it was on track to exit 2026 with a USD 900M annualized product-revenue run rate.",
+      "interpretation": "A company-reported annualized run-rate expectation, not audited full-year 2026 revenue or XRP revenue.",
+      "limitations": [
+        "Product revenue spans Ripple's broader product portfolio.",
+        "No XRP-specific revenue split was disclosed."
+      ]
+    },
+    {
+      "claim_id": "R2",
+      "classification": "COMPANY_REPORTED_AGGREGATE",
+      "statement": "Ripple said its products enabled more than USD 16T in transactions during 2025.",
+      "interpretation": "Aggregate product-enabled throughput, not XRP trading volume, XRPL settlement value, net external capital, or XRP purchases.",
+      "limitations": [
+        "No asset-level, chain-level, customer-level or route-level breakdown was supplied in the announcement."
+      ]
+    },
+    {
+      "claim_id": "R3",
+      "classification": "COMPANY_REPORTED_AGGREGATE",
+      "statement": "Ripple reported 1,700+ institutional/corporate/enterprise users and 3x growth in customers and partners using multiple solutions together.",
+      "interpretation": "Broad enterprise adoption claim; not a count of active XRP holders or active XRP settlement clients.",
+      "limitations": [
+        "Customer/partner definitions, active usage and revenue contribution are not broken out."
+      ]
+    },
+    {
+      "claim_id": "R4",
+      "classification": "COMPANY_REPORTED_AGGREGATE",
+      "statement": "Ripple said its network spans 60+ payout markets and is approaching USD 150B lifetime volume by year end.",
+      "interpretation": "Payments network aggregate, not necessarily XRP-routed volume.",
+      "limitations": [
+        "The release says customers may use stablecoins, custody and preferred-currency payout routes; asset mix is undisclosed."
+      ]
+    },
+    {
+      "claim_id": "R5",
+      "classification": "COMPANY_REPORTED_METRIC",
+      "statement": "Ripple reported RLUSD at approximately USD 2.6B market capitalization, up more than 88% year to date.",
+      "interpretation": "RLUSD scale is evidence of Ripple stablecoin adoption, not direct incremental XRP demand.",
+      "limitations": [
+        "Market-cap timestamp and source methodology are not specified in the release."
+      ]
+    },
+    {
+      "claim_id": "R6",
+      "classification": "COMPANY_REPORTED_COLLATERAL_USE",
+      "statement": "Ripple's October 26 OCC-related release says RLUSD is used as collateral within Ripple Prime.",
+      "interpretation": "A direct RLUSD collateral use is company-reported. It must not be relabeled as XRP collateral.",
+      "limitations": [
+        "No collateral amount, haircut, counterparty, eligible-account population or concentration was disclosed."
+      ]
+    },
+    {
+      "claim_id": "R7",
+      "classification": "COMPANY_REPORTED_PRODUCT_PARTNERSHIPS",
+      "statement": "Ripple Prime supports settlement, financing and clearing for event contracts and RWA perpetual futures across named venues and counterparties including Jump Trading, Kalshi, Hyperliquid, Virtu and Rothera.",
+      "interpretation": "Ripple Prime is positioning as multi-asset institutional financing and clearing infrastructure.",
+      "limitations": [
+        "The announcement does not disclose XRP-specific positions or transaction volume with each counterparty."
+      ]
+    },
+    {
+      "claim_id": "R8",
+      "classification": "COMPANY_REPORTED_PRODUCT_LAUNCH",
+      "statement": "Ripple Treasury's October 28 release describes 24/7 Returns and an orchestration layer for cash management, forecasting, liquidity and payments, including RLUSD and tokenized money-market-fund rails on XRPL.",
+      "interpretation": "Corporate treasury use cases can expand XRPL/RLUSD utility without necessarily requiring XRP as the settlement asset for every flow.",
+      "limitations": [
+        "Eligibility, realized balances, returns, MMF assets and XRP bridge usage are not disclosed."
+      ]
+    },
+    {
+      "claim_id": "R9",
+      "classification": "COMPANY_REPORTED_PRODUCT_DETAIL",
+      "statement": "Ripple Treasury's October 26 announcement says eligible corporate customers may earn returns on qualifying digital assets held in Ripple wallets, including RLUSD, subject to program requirements.",
+      "interpretation": "A treasury distribution and yield workflow; not evidence of a public-market XRP purchase.",
+      "limitations": [
+        "No rate, balance, partner, realized volume or XRP-specific eligibility is stated."
+      ]
+    },
+    {
+      "claim_id": "R10",
+      "classification": "PARTNER_ANNOUNCEMENT_CAPABILITY_ROADMAP",
+      "statement": "Privy says developers will be able to create/manage XRPL wallets programmatically, sign transactions, build with XRP, RLUSD and other assets, and enable x402 agentic payments.",
+      "interpretation": "A concrete wallet infrastructure integration path for XRP and RLUSD agent payments.",
+      "limitations": [
+        "The announcement describes developer capabilities and continuing integration; it does not report live production volume or deployed customer count."
+      ]
+    },
+    {
+      "claim_id": "R11",
+      "classification": "ISSUER_REPORTED_REGULATORY_STATUS",
+      "statement": "Ripple announced final OCC approval for Ripple National Trust Bank on 2026-10-26.",
+      "interpretation": "Treat final approval as Ripple-reported in this snapshot.",
+      "limitations": [
+        "The OCC source retrieved in this pass confirms conditional approval on 2025-12-12; a separate OCC final approval notice/decision record was not located. Independent regulator confirmation remains a verification task."
+      ]
+    },
+    {
+      "claim_id": "R12",
+      "classification": "COMPANY_REPORTED_APPROVED_ACTIVITIES",
+      "statement": "Ripple says the national trust bank's approved plan includes managing segregated RLUSD reserves, acting as collateral trustee for RLUSD holders and providing fiduciary digital-asset custody.",
+      "interpretation": "The named reserve collateral is RLUSD reserve assets, not XRP collateral.",
+      "limitations": [
+        "Opening date and operational commencement are not established in the retrieved release."
+      ]
+    },
+    {
+      "claim_id": "R13",
+      "classification": "CONFIRMED_ISSUER_STRUCTURE",
+      "statement": "Ripple says RLUSD continues to be issued by Standard Custody & Trust Company, its NYDFS-regulated limited-purpose trust company; the national trust bank adds federal supervision to reserve management/custody functions.",
+      "interpretation": "Do not say the new national trust bank itself issues RLUSD.",
+      "limitations": [
+        "Final operational status of the bank remains subject to regulator-record confirmation."
+      ]
+    },
+    {
+      "claim_id": "R14",
+      "classification": "REGULATOR_CONFIRMED_HISTORICAL_STATUS",
+      "statement": "OCC's December 12, 2025 release confirms conditional approval of Ripple National Trust Bank, not by itself the later final approval claimed by Ripple.",
+      "interpretation": "Separates conditional approval from the issuer-reported final stage.",
+      "limitations": [
+        "No final OCC notice was found in this research pass."
+      ]
+    },
+    {
+      "claim_id": "R15",
+      "classification": "CONFIRMED_JOINT_STATEMENT",
+      "statement": "BNY says it is primary reserve custodian for RLUSD, has a custody relationship with Ripple Prime, and now supports XRP and RLUSD custody for eligible institutional clients.",
+      "interpretation": "BNY is a common institutional custody node for Ripple/XRP and RLUSD.",
+      "limitations": [
+        "No XRP custody balance, client allocation or BNY proprietary holding is disclosed."
+      ]
+    },
+    {
+      "claim_id": "R16",
+      "classification": "PROPOSED_AND_EXPLORATORY",
+      "statement": "BNY and Ripple intend to enable direct RLUSD mint/redemption through BNY subject to approvals and are exploring tokenized trade finance with C2FO on XRPL.",
+      "interpretation": "Potential institutional settlement and receivables financing pathways, not current production flows.",
+      "limitations": [
+        "No live amount, named funded client or XRP collateral policy is disclosed."
+      ]
+    },
+    {
+      "claim_id": "R17",
+      "classification": "CONFIRMED_ISSUER_REPORTED_COLLATERAL_INTEGRATION",
+      "statement": "Circle says Marex enabled a USDC initial-margin transaction for CFTC-regulated derivatives under a December 2025 CFTC no-action letter.",
+      "interpretation": "USDC has a reported regulated derivatives collateral use; this is not an XRP collateral integration.",
+      "limitations": [
+        "No amount, product-level volume or XRP comparison is disclosed."
+      ]
+    },
+    {
+      "claim_id": "R18",
+      "classification": "CONFIRMED_ISSUER_REPORTED_COMMON_CUSTODY",
+      "statement": "Circle says BNY is primary custodian for USDC reserves and added USDC mint/redemption inside BNY's Digital Asset Custody platform.",
+      "interpretation": "BNY is a shared institutional custody/access provider for Circle USDC and Ripple RLUSD/XRP.",
+      "limitations": [
+        "Shared custodian does not establish direct Circle-Ripple partnership, cross-token netting, swaps or interoperability."
+      ]
+    },
+    {
+      "claim_id": "R19",
+      "classification": "CONFIRMED_ISSUER_REPORTED_METRICS",
+      "statement": "Coinbase Q3 2026 release reports USD 22B average USDC held in Coinbase products, 10.7% crypto trading-volume market share, 12.5% Assets-on-Platform share and 179% two-year derivatives-volume CAGR.",
+      "interpretation": "Coinbase has major exchange, custody, stablecoin distribution and derivatives reach.",
+      "limitations": [
+        "Average USDC balances and platform share are not XRP-specific exposures or customer-level flows."
+      ]
+    },
+    {
+      "claim_id": "R20",
+      "classification": "CONFIRMED_INDEPENDENT_LISTING_REPORT",
+      "statement": "Reuters reported RLUSD availability across Coinbase retail and institutional platforms beginning 2026-10-28.",
+      "interpretation": "Coinbase's stablecoin distribution is multi-issuer while its USDC economics remain substantial.",
+      "limitations": [
+        "Listing does not prove net RLUSD holdings, trading volume or USDC substitution."
+      ]
+    },
+    {
+      "claim_id": "R21",
+      "classification": "REGULATOR_INTERPRETATION",
+      "statement": "The March 17, 2026 SEC interpretive release, with CFTC guidance, classifies XRP among examples of digital commodities in the release's taxonomy.",
+      "interpretation": "A meaningful federal agency interpretation, effective March 23, 2026; it is not a new statute or a blanket determination that every XRP-related transaction is outside securities laws.",
+      "limitations": [
+        "The release is interpretive; transaction-specific investment-contract analysis and other legal regimes remain relevant."
+      ]
+    },
+    {
+      "claim_id": "R22",
+      "classification": "PROPOSED_RULE_NOT_FINAL",
+      "statement": "SEC's Regulation Crypto Assets (Release 33-11434) remains labeled Proposed on the SEC page after its October 20, 2026 comment deadline.",
+      "interpretation": "The proposal's exemptions and conditional safe harbor are not yet available as final rules in this snapshot.",
+      "limitations": [
+        "No final adoption/effective date was found in this pass."
+      ]
+    },
+    {
+      "claim_id": "R23",
+      "classification": "REGULATOR_PRODUCT_FILING",
+      "statement": "CFTC records a certified Ripple (XRP) Event Contract from organization CDNA dated 2026-04-01.",
+      "interpretation": "A certified derivatives/event-contract product listing; not an SEC spot-market ruling or proof of institutional XRP ownership.",
+      "limitations": [
+        "Certification does not disclose open interest, volume or customer holdings."
+      ]
+    },
+    {
+      "claim_id": "R24",
+      "classification": "REGULATOR_PRODUCT_FILING",
+      "statement": "CFTC's product listings include certified XRP USD Perpetual Futures under organization BTNL dated 2026-09-02.",
+      "interpretation": "Evidence of regulated derivatives product availability; not proof of realized volume or spot demand.",
+      "limitations": [
+        "The public listing must be paired with actual exchange volume/open-interest data."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Ripple",
+      "to": "RLUSD",
+      "relationship": "issuer_group_product_and_payments",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "ripple-banner-20261028",
+        "ripple-rntb-20261026"
+      ]
+    },
+    {
+      "from": "Ripple Prime",
+      "to": "RLUSD",
+      "relationship": "collateral_use",
+      "status": "COMPANY_REPORTED",
+      "source_ids": [
+        "ripple-rntb-20261026"
+      ]
+    },
+    {
+      "from": "Ripple Prime",
+      "to": "Jump Trading / Kalshi / Hyperliquid / Virtu / Rothera",
+      "relationship": "settlement_financing_clearing_counterparty_or_venue_network",
+      "status": "COMPANY_REPORTED",
+      "source_ids": [
+        "ripple-banner-20261028"
+      ]
+    },
+    {
+      "from": "Ripple Treasury",
+      "to": "RLUSD and tokenized MMFs on XRPL",
+      "relationship": "corporate_treasury_24_7_returns_rails",
+      "status": "ANNOUNCED_PRODUCT",
+      "source_ids": [
+        "ripple-banner-20261028",
+        "ripple-treasury-20261026"
+      ]
+    },
+    {
+      "from": "Privy",
+      "to": "XRPL",
+      "relationship": "programmable_wallet_and_agent_payment_integration",
+      "status": "PARTNER_ANNOUNCEMENT",
+      "source_ids": [
+        "privy-xrpl-2026"
+      ]
+    },
+    {
+      "from": "Privy",
+      "to": "XRP / RLUSD",
+      "relationship": "wallet_signing_and_payment_asset_support",
+      "status": "ANNOUNCED_CAPABILITY",
+      "source_ids": [
+        "privy-xrpl-2026"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "USDC",
+      "relationship": "primary_reserve_custody_and_mint_redemption_access",
+      "status": "CIRCLE_REPORTED",
+      "source_ids": [
+        "circle-q2-2026"
+      ]
+    },
+    {
+      "from": "BNY",
+      "to": "RLUSD and XRP",
+      "relationship": "reserve_custody_and_institutional_asset_custody",
+      "status": "JOINT_STATEMENT",
+      "source_ids": [
+        "bny-ripple-20261027"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "USDC",
+      "relationship": "distribution_and_shared_economics",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "coinbase-q3-2026"
+      ]
+    },
+    {
+      "from": "Coinbase",
+      "to": "RLUSD",
+      "relationship": "retail_and_institutional_listing",
+      "status": "CONFIRMED",
+      "source_ids": [
+        "reuters-coinbase-rlusd-20261028"
+      ]
+    },
+    {
+      "from": "Marex",
+      "to": "USDC",
+      "relationship": "regulated_derivatives_initial_margin",
+      "status": "CIRCLE_REPORTED",
+      "source_ids": [
+        "circle-q2-2026"
+      ]
+    },
+    {
+      "from": "SEC + CFTC",
+      "to": "XRP",
+      "relationship": "digital_commodity_interpretive_taxonomy",
+      "status": "REGULATOR_INTERPRETATION",
+      "source_ids": [
+        "sec-interpretation-20260317"
+      ]
+    },
+    {
+      "from": "CFTC",
+      "to": "XRP derivatives",
+      "relationship": "certified event/perpetual contract listings",
+      "status": "REGULATOR_PRODUCT_FILINGS",
+      "source_ids": [
+        "cftc-xrp-event-contract-20260401",
+        "cftc-xrp-perpetual-20260902"
+      ]
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "hypothesis_id": "H1",
+      "statement": "Ripple's enterprise growth and product throughput may increase XRPL/RLUSD utility, but may have limited direct effect on XRP demand if payment and treasury flows settle primarily in stablecoins or fiat.",
+      "supporting_evidence": [
+        "R2",
+        "R4",
+        "R5",
+        "R8",
+        "R10"
+      ],
+      "disconfirming_evidence": [
+        "Ripple describes XRP as underpinning its capabilities and Privy supports XRP payments"
+      ],
+      "unknowns": [
+        "XRP-specific payment share",
+        "XRPL XRP bridge volume",
+        "Customer-level asset choice",
+        "Net XRP inventory required by payment corridors"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H2",
+      "statement": "RLUSD and USDC institutional collateral use may compete with XRP as collateral for some products while expanding the broader digital-asset collateral market.",
+      "supporting_evidence": [
+        "R6",
+        "R17",
+        "R18"
+      ],
+      "disconfirming_evidence": [
+        "Different risk profiles and product mandates can make stablecoin and XRP collateral complementary"
+      ],
+      "unknowns": [
+        "Haircuts and concentration by product",
+        "Collateral balances",
+        "Substitution between stablecoin and XRP collateral"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H3",
+      "statement": "BNY's role across USDC and RLUSD/XRP custody creates a shared institutional infrastructure node that may reduce onboarding friction without proving direct Circle-Ripple cooperation or cross-token settlement.",
+      "supporting_evidence": [
+        "R15",
+        "R18"
+      ],
+      "disconfirming_evidence": [
+        "No disclosed direct Circle-Ripple joint product or token-netting arrangement"
+      ],
+      "unknowns": [
+        "Shared clients",
+        "Actual mint/redemption volumes",
+        "Cross-token liquidity or settlement routes"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H4",
+      "statement": "Privy's programmable XRPL wallets may support agentic commerce using XRP, RLUSD or other assets, but adoption and asset mix remain unknown.",
+      "supporting_evidence": [
+        "R10"
+      ],
+      "disconfirming_evidence": [
+        "No production volume or active developer/customer counts are reported"
+      ],
+      "unknowns": [
+        "x402 production transactions",
+        "XRP versus RLUSD asset share",
+        "Gas sponsorship and policy-control deployment status"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "hypothesis_id": "H5",
+      "statement": "U.S. agency guidance and certified derivatives products reduce some market-structure uncertainty, but proposed rulemaking and transaction-specific legal issues remain.",
+      "supporting_evidence": [
+        "R21",
+        "R23",
+        "R24"
+      ],
+      "disconfirming_evidence": [
+        "The SEC's proposed rule remains unadopted and agency interpretations can be revised"
+      ],
+      "unknowns": [
+        "Final Regulation Crypto Assets rule",
+        "Future court or regulator treatment of specific Ripple sales and transactions"
+      ],
+      "status": "OPEN"
+    }
+  ],
+  "data_quality_controls": [
+    "Do not treat Ripple's USD 16T product-enabled 2025 transaction figure as XRP or XRPL transaction value.",
+    "Do not treat Ripple's USD 900M annualized product revenue run-rate target as audited realized revenue.",
+    "Do not treat 1,700+ enterprise users as active XRP customers.",
+    "Separate RLUSD collateral use within Ripple Prime from XRP collateral use.",
+    "Separate BNY custody of client XRP from BNY proprietary holdings or client purchases.",
+    "Treat Ripple's final OCC approval as issuer-reported until an independent OCC final decision record is located.",
+    "Do not treat SEC/CFTC interpretive guidance as a statute or blanket transaction safe harbor.",
+    "Do not treat the SEC's proposed Regulation Crypto Assets as final after the comment deadline.",
+    "Treat CFTC product certification as product availability, not realized volume or spot demand.",
+    "Treat Privy x402 capabilities as announced integration, not verified production adoption."
+  ],
+  "next_actions": [
+    "Locate the OCC final decision record for Ripple National Trust Bank and verify opening/operational commencement.",
+    "Quantify RLUSD collateral in Ripple Prime and obtain public haircut/counterparty/volume disclosures if available.",
+    "Measure XRP-specific share of Ripple Payments and the 60+ payout-market network.",
+    "Track Privy XRPL wallet and x402 production usage, distinguishing XRP from RLUSD.",
+    "Track USDC collateral use at Marex against XRP collateral channels at Coinbase/Morpho and other venues.",
+    "Reconcile Coinbase RLUSD balances/volume with USDC distribution economics.",
+    "Track the final status of SEC Regulation Crypto Assets after the October 20 comment deadline.",
+    "Keep court-specific XRP sales analysis separate from the SEC/CFTC digital-commodity interpretation."
+  ]
+}
