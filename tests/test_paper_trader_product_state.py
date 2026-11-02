@@ -27,6 +27,19 @@ def make_state(*, cash=1000.0, size=0.0, product=None, avg=None, count=0):
     }
 
 
+def make_log_entry(result, action, second=0):
+    return {
+        "timestamp": f"2026-11-02T00:00:{second:02d}Z",
+        "product": "BTC-USD",
+        "price": 100.0,
+        "decision": {"action": action},
+        "result": result,
+        "portfolio_value_usd": 1000.0,
+        "portfolio_change_this_cycle": 0.0,
+        "cumulative_return_pct": 0.0,
+    }
+
+
 def test_empty_position_accepts_any_configured_product():
     trader = load_trader()
     assert trader.validate_position_product(make_state(), "BTC-USD") is None
@@ -207,11 +220,49 @@ def test_save_state_uses_atomic_replace(tmp_path, monkeypatch):
     assert not list(tmp_path.glob("*.tmp"))
 
 
-def test_state_preflight_rejects_trade_count_exceeding_log_entries(tmp_path, monkeypatch):
+def test_state_preflight_counts_executed_trades_not_all_decision_rows(tmp_path, monkeypatch):
     trader = load_trader()
     state_path = tmp_path / "paper_state.json"
     log_path = tmp_path / "paper_log.jsonl"
     state_path.write_text(json.dumps(make_state(count=2)), encoding="utf-8")
+    entries = [
+        make_log_entry("bought $100.00 at $100.00", "buy", 0),
+        make_log_entry("held -- no action taken", "hold", 1),
+    ]
+    log_path.write_text("".join(json.dumps(entry) + "\n" for entry in entries), encoding="utf-8")
+    monkeypatch.setattr(trader, "STATE_FILE", state_path)
+    monkeypatch.setattr(trader, "LOG_FILE", log_path)
+    try:
+        trader.validate_state_only()
+    except SystemExit as exc:
+        assert exc.code == 2
+    else:
+        raise AssertionError("decision rows without enough executed trades must fail closed")
+    assert json.loads(state_path.read_text(encoding="utf-8"))["trade_count"] == 2
+    assert len(log_path.read_text(encoding="utf-8").splitlines()) == 2
+
+
+def test_state_preflight_accepts_exact_executed_trade_count(tmp_path, monkeypatch):
+    trader = load_trader()
+    state_path = tmp_path / "paper_state.json"
+    log_path = tmp_path / "paper_log.jsonl"
+    state_path.write_text(json.dumps(make_state(count=1)), encoding="utf-8")
+    entries = [
+        make_log_entry("held -- no action taken", "hold", 0),
+        make_log_entry("bought $100.00 at $100.00", "buy", 1),
+    ]
+    log_path.write_text("".join(json.dumps(entry) + "\n" for entry in entries), encoding="utf-8")
+    monkeypatch.setattr(trader, "STATE_FILE", state_path)
+    monkeypatch.setattr(trader, "LOG_FILE", log_path)
+    state = trader.validate_state_only()
+    assert state["trade_count"] == 1
+
+
+def test_state_preflight_rejects_incomplete_decision_record(tmp_path, monkeypatch):
+    trader = load_trader()
+    state_path = tmp_path / "paper_state.json"
+    log_path = tmp_path / "paper_log.jsonl"
+    state_path.write_text(json.dumps(make_state()), encoding="utf-8")
     log_path.write_text(json.dumps({"timestamp": "2026-11-02T00:00:00Z"}) + "\n", encoding="utf-8")
     monkeypatch.setattr(trader, "STATE_FILE", state_path)
     monkeypatch.setattr(trader, "LOG_FILE", log_path)
@@ -220,9 +271,7 @@ def test_state_preflight_rejects_trade_count_exceeding_log_entries(tmp_path, mon
     except SystemExit as exc:
         assert exc.code == 2
     else:
-        raise AssertionError("state trade count greater than log entries must fail closed")
-    assert json.loads(state_path.read_text(encoding="utf-8"))["trade_count"] == 2
-    assert len(log_path.read_text(encoding="utf-8").splitlines()) == 1
+        raise AssertionError("incomplete decision records must fail closed")
 
 
 def test_state_preflight_rejects_malformed_decision_log(tmp_path, monkeypatch):
