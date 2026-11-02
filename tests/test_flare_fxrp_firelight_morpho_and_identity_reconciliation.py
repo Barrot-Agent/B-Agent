@@ -78,7 +78,8 @@ def test_tokyo_sbic_chatgpt_course_is_education_not_partnership():
     d = load_snapshot()["identity_resolution"]["sbic"]
     assert d["entity"] == "Tokyo Small and Medium Business Investment & Consultation Co., Ltd."
     assert "Day 1: ChatGPT and generative AI" in d["content"]
-    assert d["relationship_to_openai"] == "No OpenAI partnership established"
+    assert d["relationship_to_openai"].startswith("No OpenAI partnership established;")
+    assert "training for SBIC investee companies" in d["relationship_to_openai"]
     assert d["relationship_to_xrp"] == "No XRP or Ripple relationship established"
 
 
@@ -152,7 +153,7 @@ def test_sbi_circle_and_arc_exposure_is_separate_from_ripple_equity():
     assert sbi["circle_jv"]["ownership"][0]["pct"] == 50
     assert sbi["circle_jv"]["ownership"][1]["pct"] == 50
     assert sbi["arc_presale"]["sbi_investment_amount"] == "NOT_DISCLOSED"
-    assert "CEO_PUBLIC_STATEMENT" in sbi["ripple_equity"]["classification"]
+    assert sbi["ripple_equity"]["classification"] == "PUBLIC_EXECUTIVE_STATEMENT_NOT_AUDITED_OWNERSHIP_FILING"
     assert "not a $10B XRP token treasury" in sbi["ripple_equity"]["clarification"]
     assert "NOT_DISCLOSED" in sbi["arc_presale"]["token_allocation"]
 
