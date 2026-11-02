@@ -154,8 +154,10 @@ def validate_position_product(state, product_id):
         return "aborted -- invalid cash or position size"
     if not math.isfinite(cash) or cash < 0:
         return "aborted -- non-finite or negative cash balance"
-    if not math.isfinite(position_size) or position_size < 0:
-        return "aborted -- non-finite or negative position size"
+    if not math.isfinite(position_size):
+        return "aborted -- non-finite position size"
+    if position_size < 0:
+        return "aborted -- negative position size"
 
     trade_count = state.get("trade_count")
     if isinstance(trade_count, bool) or not isinstance(trade_count, int) or trade_count < 0:

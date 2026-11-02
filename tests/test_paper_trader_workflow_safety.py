@@ -13,7 +13,7 @@ def test_paper_trader_workflow_is_manual_only_while_state_is_unreconciled():
     content = WORKFLOW.read_text(encoding="utf-8")
     assert "workflow_dispatch:" in content
     assert "schedule:" not in content
-    assert "Validate persisted paper position before execution" in content
+    assert "Validate persisted paper state before any provider call" in content
 
 
 def test_workflow_requires_explicit_boolean_authorization_and_has_no_schedule():
