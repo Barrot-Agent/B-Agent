@@ -107,6 +107,16 @@ def validate_snapshot(s):
         raise EvidenceError("source retrieval time follows forecast data cutoff")
     for field in ("target", "horizon", "model_version"):
         _text(forecast.get(field), f"forecast.{field}")
+    issued_at = _utc(forecast.get("issued_at_utc"), "forecast.issued_at_utc")
+    if issued_at < captured:
+        raise EvidenceError("forecast issue time precedes snapshot capture")
+    horizon_seconds = forecast.get("horizon_seconds")
+    if isinstance(horizon_seconds, bool) or not isinstance(horizon_seconds, int) or horizon_seconds <= 0:
+        raise EvidenceError("horizon_seconds must be a positive integer")
+    try:
+        earliest_resolution = issued_at + timedelta(seconds=horizon_seconds)
+    except OverflowError as exc:
+        raise EvidenceError("horizon_seconds exceeds supported datetime range") from exc
     _num(forecast.get("probability"), "probability", 0, 1)
     _num(forecast.get("confidence"), "confidence", 0, 1)
     if forecast.get("data_cutoff_utc") != s.get("data_cutoff_utc"):
@@ -144,10 +154,14 @@ def validate_snapshot(s):
     if not isinstance(outcome, dict) or outcome.get("status") not in {"PENDING", "RESOLVED"}:
         raise EvidenceError("forecast outcome must be PENDING or RESOLVED")
     if outcome["status"] == "RESOLVED":
-        _utc(outcome.get("resolved_at_utc"), "outcome.resolved_at_utc")
+        resolved_at = _utc(outcome.get("resolved_at_utc"), "outcome.resolved_at_utc")
+        if resolved_at < earliest_resolution:
+            raise EvidenceError("resolved outcome precedes the declared forecast horizon")
         _num(outcome.get("observed_value"), "outcome.observed_value", low=-math.inf)
         if not isinstance(outcome.get("scoring"), dict):
             raise EvidenceError("resolved outcome requires scoring")
+    elif any(field in outcome for field in ("resolved_at_utc", "observed_value", "scoring")):
+        raise EvidenceError("pending outcome must not contain resolution fields")
     return {"sources": len(ids), "groups": groups, "observations": len(observations), "venues": venues}
 
 def render_report(s):
@@ -158,7 +172,7 @@ def render_report(s):
         lines += [f"Reason: {f['reason']}", "", "No directional forecast or trading recommendation was issued."]
     else:
         ev = f["evaluation"]
-        lines += ["**Research-only forecast. Not a trading instruction.**", "", f"- Target: {f['target']}", f"- Horizon: {f['horizon']}", f"- Probability: {f['probability']:.4f}", f"- Confidence: {f['confidence']:.4f}", f"- Model: {f['model_version']}", f"- Walk-forward samples: {ev['walk_forward_samples']}", f"- Brier model/baseline: {ev['model_brier_score']} / {ev['baseline_brier_score']}", f"- Log-loss model/baseline: {ev['model_log_loss']} / {ev['baseline_log_loss']}", f"- Calibration error/tolerance: {ev['calibration_error']} / {ev['calibration_tolerance']}", f"- Outcome: {f['outcome']['status']}", "", "### Assumptions", *[f"- {x}" for x in f["assumptions"]], "", "### Alternatives", *[f"- {x}" for x in f["alternatives"]], "", f"Evaluation evidence: {ev['evaluation_run_url']}"]
+        lines += ["**Research-only forecast. Not a trading instruction.**", "", f"- Issued: {f['issued_at_utc']}", f"- Target: {f['target']}", f"- Horizon: {f['horizon']} ({f['horizon_seconds']} seconds)", f"- Probability: {f['probability']:.4f}", f"- Confidence: {f['confidence']:.4f}", f"- Model: {f['model_version']}", f"- Walk-forward samples: {ev['walk_forward_samples']}", f"- Brier model/baseline: {ev['model_brier_score']} / {ev['baseline_brier_score']}", f"- Log-loss model/baseline: {ev['model_log_loss']} / {ev['baseline_log_loss']}", f"- Calibration error/tolerance: {ev['calibration_error']} / {ev['calibration_tolerance']}", f"- Outcome: {f['outcome']['status']}", "", "### Assumptions", *[f"- {x}" for x in f["assumptions"]], "", "### Alternatives", *[f"- {x}" for x in f["alternatives"]], "", f"Evaluation evidence: {ev['evaluation_run_url']}"]
     return "\n".join(lines) + "\n"
 
 def write_report(report, output_path):
