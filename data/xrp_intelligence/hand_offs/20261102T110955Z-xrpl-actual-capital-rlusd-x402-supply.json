@@ -1,0 +1,533 @@
+{
+  "schema_version": "1.0",
+  "artifact_id": "20261102T110955Z-xrpl-actual-capital-rlusd-x402-supply",
+  "captured_at_utc": "2026-11-02T11:09:55Z",
+  "evidence_cutoff_utc": "2026-11-02T11:09:55Z",
+  "mission_priority": "XRP intelligence and prediction-engine mastery",
+  "research_question": "Distinguish transaction activity, gross payment value, collateral, custody, tokenized notional and net new capital across XRPL and its connected ecosystem.",
+  "key_findings": [
+    {
+      "id": "XRPL-RLUSD-PAYMENT-QUALITY",
+      "classification": "independent_analytics_provider_onchain_investigation",
+      "publisher": "Bitquery",
+      "analysis_window_utc": {
+        "start": "2026-09-19",
+        "end": "2026-10-18"
+      },
+      "claims": [
+        "Bitquery counted approximately 7.82 million RLUSD account-to-account payments on XRPL in the 30-day window.",
+        "Approximately 7.79 million payments, reported as 99.6%, went from a 110-wallet cluster to three collector wallets, at an average payment of approximately 0.00099 RLUSD.",
+        "The cluster was funded with RLUSD from one Binance-labeled wallet and XRP from six Binance-labeled wallets; Bitquery describes the pattern as repeated withdrawal, dust-payment and return-deposit activity.",
+        "The 110-wallet cluster's 495 XRP fee cost was estimated at approximately $648 for 8.6 million transactions over the month.",
+        "The cluster accounted for 45.6% of all XRPL account-to-account payment count in the week of October 8-14 and then largely stopped between October 14 and 16."
+      ],
+      "real_payment_subset": {
+        "payments_at_least_1_rlusd": 14600,
+        "total_gross_value_usd": 7330000000,
+        "distinct_senders": 1826,
+        "distinct_receivers": 1536,
+        "senders_over_10000_usd": 184,
+        "senders_over_1000000_usd": 50,
+        "payments_at_least_1000000_usd": 828,
+        "value_in_payments_at_least_1000000_usd": 6980000000,
+        "top_ten_senders_value_usd": 6050000000,
+        "top_ten_senders_share_pct": 82,
+        "median_payment_rlusd": 150
+      },
+      "issuer_loop": {
+        "issuer_to_mint_wallet_usd": 728000000,
+        "issuer_to_mint_wallet_payments": 97,
+        "redemption_wallet_to_issuer_usd": 734000000,
+        "redemption_wallet_to_issuer_payments": 67,
+        "total_paid_to_issuer_usd": 744000000,
+        "payments_paid_to_issuer": 68,
+        "source_interpretation": "Issuer mint/redemption plumbing accounts for approximately one-fifth of gross payment value."
+      },
+      "classification_limits": [
+        "The term 'bots' is Bitquery's behavioral characterization. The 110-wallet cluster is defined by common collector wallets and shared funding; no beneficial owner or operator identity is established.",
+        "Bitquery says every sampled dust payment carried the genuine RLUSD issuer token, but its stated sample covers one sender for one day, not every dust payment.",
+        "The article reports 14,600 payments of at least 1 RLUSD, then says 14,578 were genuine issuer RLUSD and 30 were look-alike tokens. Those counts sum to 14,608, an eight-payment internal discrepancy that remains unresolved.",
+        "The issuer loop table reports $734M from redemption wallet to issuer, while the following paragraph reports $744M paid to issuer. Preserve both reported values; do not silently reconcile the $10M difference.",
+        "The timing of the cluster shutdown and the October 15 Cross River announcement is temporal correlation only. Bitquery explicitly does not establish causation."
+      ],
+      "interpretation": "Payment count was materially inflated by a small-value, highly repetitive cluster. The remaining gross RLUSD value is large but concentrated in a small number of wallets and includes issuer mint/redemption and exchange/custodian-style deposit flows. It is not equivalent to $7.33B of net new capital, XRP purchases or independent end-user payment demand.",
+      "sources": [
+        "BITQUERY-RLUSD-XRPL-INVESTIGATION",
+        "CROSS-RIVER-RLUSD-XRPL-ANNOUNCEMENT"
+      ]
+    },
+    {
+      "id": "CROSS-RIVER-RIPPLE-RAIL",
+      "classification": "primary_company_announcement",
+      "publisher": "Cross River Bank",
+      "published_at": "2026-10-15",
+      "claims": [
+        "Cross River announced a partnership with Ripple to integrate RLUSD into its Core Operating System, with support for transactions on XRPL.",
+        "The integration is intended to let eligible fintech businesses access USD/RLUSD conversion, cross-border payments and treasury movement through one API, alongside ACH, wires and real-time payments.",
+        "Cross River described RLUSD as an additional payment rail inside its regulated banking infrastructure."
+      ],
+      "relationship_boundary": "This is a direct Cross River-Ripple/RLUSD-XRPL integration. It does not establish that XRP is used as a bridge asset for every RLUSD payment or that payment volume creates net new XRP spot demand.",
+      "sources": [
+        "CROSS-RIVER-RLUSD-XRPL-ANNOUNCEMENT"
+      ]
+    },
+    {
+      "id": "XRPL-EXCHANGE-CUSTODY-CONCENTRATION",
+      "classification": "provider_aggregated_ledger_observation",
+      "publisher": "XRP Insights / XRP Radar",
+      "observation_date": "2026-11-02",
+      "metrics": {
+        "tracked_exchange_wallets": 701,
+        "exchanges": 24,
+        "total_xrp": 22380000000,
+        "upbit_xrp": 6430000000,
+        "coinbase_xrp": 5840000000,
+        "binance_xrp": 2720000000,
+        "sbi_vc_trade_xrp": 60000000,
+        "south_korea_region_xrp": 8580000000,
+        "united_states_region_xrp": 8500000000,
+        "japan_region_xrp": 1380000000,
+        "global_offshore_region_xrp": 2780000000,
+        "rest_of_world_region_xrp": 1140000000
+      },
+      "methodology": "Dashboard says balances are read daily from XRPL rippled account_info at approximately 08:00 UTC; exchange labels use XRPSCAN. Region means exchange headquarters, not customer residence.",
+      "limits": [
+        "Most balances are pooled customer deposits in omnibus wallets, including cold storage.",
+        "Some exchange-controlled reserves, including cbXRP and Binance-Peg XRP backing, are included.",
+        "Unlabeled exchange wallets may be missing.",
+        "These balances are not order-book depth, corporate treasury holdings or immediately tradable float."
+      ],
+      "interpretation": "Upbit is the largest tracked exchange custodian by labeled XRP wallet balance; Coinbase is the largest tracked U.S.-headquartered venue. SBI VC Trade's 60M XRP is a pooled labeled-wallet observation, not proof of SBI treasury accumulation or new customer purchases.",
+      "sources": [
+        "XRP-RADAR-EXCHANGE-AND-SUPPLY",
+        "XRPSCAN-LABELS"
+      ]
+    },
+    {
+      "id": "XRPL-EXCHANGE-SAME-WALLET-FLOWS",
+      "classification": "provider_methodology_specific_observation",
+      "publisher": "XRP Insights / XRP Radar",
+      "observation_date": "2026-11-01T08:00:00Z",
+      "metrics": {
+        "tracked_exchange_wallets_xrp": 22450000000,
+        "same_wallet_7d_change_xrp": -161100000,
+        "same_wallet_30d_change_xrp": -12700000
+      },
+      "methodology": "Same-wallet comparison removes wallets newly added to the tracked set; exchanges with incomplete wallet-set checks are excluded.",
+      "limitation": "A same-wallet balance decline can be customer withdrawal, exchange internal movement to a wallet not yet tracked, or wallet relabeling. It is not automatically a sale or a transfer to self-custody.",
+      "sources": [
+        "XRP-RADAR-EXCHANGE-AND-SUPPLY"
+      ]
+    },
+    {
+      "id": "XRPL-LARGE-TRANSFER-FLOW",
+      "classification": "provider_large_transfer_subset",
+      "publisher": "TrackWhale",
+      "observation_at_utc": "2026-11-02T10:51:00Z",
+      "window": "preceding seven days",
+      "metrics": {
+        "exchange_inflows_xrp": 210950000,
+        "exchange_outflows_xrp": 398610000,
+        "net_exchange_flow_xrp": -187670000,
+        "exchange_inflows_transfers": 14,
+        "exchange_outflows_transfers": 9
+      },
+      "methodology": "TrackWhale says exchange flows count transfers between tracked exchanges and wallets outside the tracked exchange set; internal and exchange-to-exchange transfers are excluded. Only tracked large transfers are included.",
+      "comparison_note": "Direction is consistent with XRP Radar's negative same-wallet balance change, but the figures are not directly comparable and are not a full-market netflow series.",
+      "sources": [
+        "TRACKWHALE-XRP-WHALE-TRACKER"
+      ]
+    },
+    {
+      "id": "XRPL-SUPPLY-ESCROW-TAXONOMY",
+      "classification": "provider_ledger_derived_observation",
+      "publisher": "XRP Insights / XRP Radar",
+      "observation_date": "2026-11-02",
+      "metrics": {
+        "total_supply_xrp": 100000000000,
+        "escrow_xrp": 31100000000,
+        "broad_ledger_circulating_proxy_xrp": 68890000000,
+        "next_scheduled_unlock_utc": "2026-12-01T00:00:00Z",
+        "scheduled_unlock_xrp": 1000000000,
+        "estimated_reescrow_xrp": 700000000,
+        "estimated_net_monthly_release_xrp": 300000000
+      },
+      "interpretation": "The 68.89B ledger-based proxy subtracts escrow and burned fees but does not necessarily subtract Ripple-held non-escrow operational XRP. It is not the same definition as CoinMarketCap's approximately 63.35B circulating supply. The estimated 70% re-escrow/30% use split is a historical tracker pattern, not a guarantee of future behavior.",
+      "sources": [
+        "XRP-RADAR-EXCHANGE-AND-SUPPLY",
+        "XRPL-ESCROW-OBJECTS"
+      ]
+    },
+    {
+      "id": "XRPL-ETF-HOLDINGS",
+      "classification": "secondary_aggregator_of_issuer_holdings",
+      "publisher": "XRP Insights / XRP Radar",
+      "observation_date": "2026-11-02",
+      "holdings_dates": "varied between 2026-09-28 and 2026-10-30",
+      "metrics": {
+        "xrp_held_by_etfs_and_index_funds": 1200000000,
+        "reported_aum_usd": 1500000000,
+        "funds_count": 7
+      },
+      "interpretation": "This is holdings/AUM, not daily net inflow. Holdings dates vary by issuer and must not be treated as a synchronized point-in-time snapshot.",
+      "sources": [
+        "XRP-RADAR-ETF-HOLDINGS",
+        "OFFICIAL-ETF-ISSUER-REPORTS"
+      ]
+    },
+    {
+      "id": "XRPL-DEFI-WRAPPED-COLLATERAL",
+      "classification": "provider_aggregated_onchain_token_supply",
+      "publisher": "XRP Insights / XRP Radar",
+      "observation_date": "2026-11-02",
+      "metrics": {
+        "xrp_locked_defi_and_amm_xrp": 417800000,
+        "reported_tvl_usd": 522000000,
+        "flare_fassets_xrp": 145400000,
+        "doppler_finance_xrp": 89600000,
+        "native_xrpl_amm_xrp": 12600000,
+        "cbxrp_wrapped_xrp": 150900000,
+        "wxrp_hex_trust_xrp": 19400000
+      },
+      "limits": [
+        "Dashboard says totals use each protocol's oldest counted data date.",
+        "Wrapped representations are claims on underlying XRP, not additional native XRP supply.",
+        "Cross-category aggregation with exchange reserve balances may overlap; do not add all dashboard categories without checking custody/underlying relationships."
+      ],
+      "sources": [
+        "XRP-RADAR-DEFI-AND-WRAPPED-SUPPLY",
+        "DOPPLER",
+        "FLARE-XRP-FASSETS",
+        "XRPL-AMM",
+        "COINBASE-CBXRP",
+        "HEX-TRUST-WXRP"
+      ]
+    },
+    {
+      "id": "XRPL-RWA-NOTIONAL-VS-FLOAT",
+      "classification": "provider_asset_registry_aggregation",
+      "publisher": "XRP Insights / XRP Radar",
+      "observation_date": "2026-11-02",
+      "metrics": {
+        "total_tokenized_rwa_reported_usd": 4330000000,
+        "transferable_distributed_onchain_value_usd": 276000000,
+        "represented_registry_notional_usd": 4060000000
+      },
+      "interpretation": "Only approximately $276M is described as transferable investor float. Approximately $4.06B is registry/represented notional for assets that cannot move wallet-to-wallet by design or regulation. The $4.33B headline must not be called freely tradable capital, deployed XRP liquidity or XRP demand.",
+      "sources": [
+        "XRP-RADAR-RWA-METHODOLOGY"
+      ]
+    },
+    {
+      "id": "XRPL-X402-ACTUAL-SETTLEMENT",
+      "classification": "facilitator_operator_claim_aggregated_by_dashboard",
+      "publisher": "XRP Insights / XRP Radar citing t54 Labs",
+      "observation_date": "2026-11-02",
+      "metrics": {
+        "cumulative_agent_transactions": 14875541,
+        "active_agents": 190,
+        "merchants": 183,
+        "paid_endpoints": 5791,
+        "daily_settlements_latest_day": 23522,
+        "cumulative_settled_xrp": 7022,
+        "cumulative_settled_rlusd": 40389
+      },
+      "interpretation": "The dashboard says these are sub-cent micropayments. At a rough $1.24-$1.25 XRP reference, cumulative value is approximately $49K, not millions or billions. Transaction count measures service-call frequency, not capital deployed. The dashboard claims native XRPL Payments with source tag 804681468 and periodic rippled spot checks; this run did not replay the facilitator's complete transaction history.",
+      "sources": [
+        "XRP-RADAR-X402",
+        "T54-XRPL-AI-HUB",
+        "XRPL-AGENTIC-DOCS"
+      ]
+    },
+    {
+      "id": "XRPL-CORPORATE-TREASURY",
+      "classification": "company_reported_filings_aggregated_by_provider",
+      "publisher": "XRP Insights / XRP Radar",
+      "observation_date": "2026-11-02",
+      "metrics": {
+        "reported_corporate_treasury_xrp": 473300000,
+        "tracked_companies": 1,
+        "named_company": "Evernorth Holdings"
+      },
+      "limitation": "Company-reported figure attributed to SEC filings; not independently reconciled to a complete set of custody wallets or a fresh filing in this run.",
+      "sources": [
+        "XRP-RADAR-EVERNORTH",
+        "SEC-FILINGS"
+      ]
+    }
+  ],
+  "actual_capital_framework": {
+    "principle": "Do not use raw transaction count, gross transfer value, wrapped token supply, collateral notional, reserve backing, registry notional or ETF holdings as substitutes for net new capital.",
+    "categories": [
+      {
+        "metric": "transaction_count",
+        "what_it_measures": "Network/service activity",
+        "not_equivalent_to": "settlement value or capital inflow"
+      },
+      {
+        "metric": "gross_payment_value",
+        "what_it_measures": "Total value of qualifying payments",
+        "not_equivalent_to": "net external capital; may include exchange sweeps and issuer mint/redemption"
+      },
+      {
+        "metric": "net_external_settlement",
+        "what_it_measures": "Value reaching independent counterparties after internal loops and reversals",
+        "required_evidence": "Counterparty classification, path-level deduplication, mint/redemption exclusion and source/destination attribution"
+      },
+      {
+        "metric": "collateral_locked",
+        "what_it_measures": "Assets committed to support credit or derivatives",
+        "not_equivalent_to": "spot purchase; liquidation and rehypothecation risks remain"
+      },
+      {
+        "metric": "wrapped_supply",
+        "what_it_measures": "Claims on custody-held underlying assets",
+        "not_equivalent_to": "additional XRP supply"
+      },
+      {
+        "metric": "rwa_registry_notional",
+        "what_it_measures": "Recorded contractual/appraised asset value",
+        "not_equivalent_to": "transferable onchain float or XRP demand"
+      },
+      {
+        "metric": "etf_holdings",
+        "what_it_measures": "Underlying XRP held by fund vehicles",
+        "not_equivalent_to": "current-period inflows"
+      },
+      {
+        "metric": "exchange_wallet_balance",
+        "what_it_measures": "Pooled custody/customer balances and some reserves",
+        "not_equivalent_to": "tradable float or exchange corporate treasury"
+      }
+    ],
+    "application": "x402's 14.9M transaction count maps to roughly $49K cumulative value. RLUSD's $7.33B gross value includes concentrated large transfers and an issuer loop; the 99.6% dust cluster inflated payment count. RWA's $4.33B headline includes only $276M described as transferable. These must remain separate feature families."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "RLUSD-H1",
+      "claim": "XRPL RLUSD payment counts substantially overstated broad economic usage during the 19 Sep-18 Oct window because a small dust-payment cluster dominated count.",
+      "supporting": "Bitquery's 110-wallet/three-collector analysis and 99.6% payment-count share.",
+      "limitation": "Bitquery's cluster attribution is behavioral inference; no beneficial owner or intent is identified."
+    },
+    {
+      "id": "RLUSD-H2",
+      "claim": "Despite the dust cluster, the remaining RLUSD payment value reflects meaningful institutional settlement activity.",
+      "supporting": "Bitquery reports $7.33B across 14,600 payments >=1 RLUSD and 1,826 senders/1,536 receivers.",
+      "counterevidence": "95% of gross value came from 828 >=$1M payments; top ten senders were 82%; issuer loop accounted for roughly one-fifth; some wallets look like exchange/custodian deposit accounts."
+    },
+    {
+      "id": "RLUSD-H3",
+      "claim": "Cross River integration could expand RLUSD usage through regulated banking and fintech API channels.",
+      "supporting": "Cross River's official Oct 15 announcement.",
+      "unknown": "Actual production payment volumes, customer count, corridor mix, and the XRP-vs-RLUSD role in settlement."
+    },
+    {
+      "id": "XRP-H1",
+      "claim": "Tracked exchange-wallet balances and large-transfer datasets suggest net XRP withdrawals from exchange-attributed wallets.",
+      "supporting": "XRP Radar same-wallet 7-day decline and TrackWhale large-transfer net outflow.",
+      "counterevidence": "Both methods have label coverage limitations; wallet rotation and untracked destinations can mimic withdrawals."
+    },
+    {
+      "id": "XRP-H2",
+      "claim": "Institutional XRP adoption is broadening through ETFs, cbXRP, DeFi, custody and RWA rails.",
+      "supporting": "ETF holdings, cbXRP supply, DeFi locked XRP and XRPL RWA records.",
+      "counterevidence": "ETF holdings are not flows; cbXRP and wXRP are wrapped claims; RWA notional is mostly non-transferable registry value; DeFi/custody categories may overlap."
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Cross River Bank",
+      "to": "Ripple",
+      "relationship": "announced integration partnership",
+      "asset": "RLUSD",
+      "network": "XRPL",
+      "status": "confirmed by Cross River Oct 15 announcement"
+    },
+    {
+      "from": "Ripple RLUSD",
+      "to": "XRP Ledger",
+      "relationship": "native issued stablecoin payment rail",
+      "status": "confirmed"
+    },
+    {
+      "from": "Coinbase",
+      "to": "cbXRP",
+      "relationship": "custody-backed wrapped XRP issuance",
+      "status": "documented reserve/supply observation; reserve account-level reconciliation still pending"
+    },
+    {
+      "from": "cbXRP",
+      "to": "Morpho Base market",
+      "relationship": "collateral asset supporting USDC borrowing",
+      "status": "market observation; actual customer/product-level attribution partly inferred"
+    },
+    {
+      "from": "t54 Labs",
+      "to": "XRPL",
+      "relationship": "x402 payment facilitator",
+      "status": "operator/dashboard claim; full event history not replayed"
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "XRP",
+      "relationship": "exchange custody/customer balances",
+      "status": "60M XRP in two tracked wallets; not treasury ownership"
+    },
+    {
+      "from": "Tokyo SBIC",
+      "to": "SBI Holdings",
+      "relationship": "none established",
+      "status": "distinct legal entity; no XRP link established"
+    }
+  ],
+  "source_independence_and_caveats": [
+    "Bitquery's RLUSD analysis is one provider's onchain reconstruction; its source labels and cluster inference are not independent confirmations.",
+    "XRP Radar aggregates multiple primary sources but remains one dashboard; the raw source records and methodology must be independently replayed before predictive admission.",
+    "TrackWhale large-transfer flows and XRP Radar same-wallet balances use different inclusion rules and must not be numerically combined.",
+    "Cross River's press release is primary evidence of an announced integration, not proof of current production payment volume.",
+    "The 110-wallet cluster's shutdown around October 15 is timing correlation, not proof that Cross River's announcement caused it."
+  ],
+  "forecast": {
+    "status": "NOT_ISSUED",
+    "reason": "These are market-structure and payment-quality findings. No point-in-time historical feature store, leakage-safe walk-forward evaluation, calibrated probability model or resolved shadow forecast series has been established."
+  },
+  "next_actions": [
+    "Replay Bitquery's RLUSD payment window from raw XRPL ledgers or a second independent indexed source, checking the 14,600 versus 14,608 count discrepancy and the $734M versus $744M issuer-loop discrepancy.",
+    "Identify the three RLUSD collector wallets and verify the deposit-account loop using transaction-level ledger data without inferring beneficial ownership.",
+    "Separate RLUSD dust payments, genuine external settlement, exchange/custodian sweeps and issuer mint/redemption into distinct features.",
+    "Reconcile XRP Radar's 701 exchange wallets against XRPSCAN labels and fresh validated ledger balances.",
+    "Compare XRP Radar same-wallet net change with TrackWhale's large-transfer subset only after aligning timestamps and wallet coverage.",
+    "Reconcile escrow objects and the December 1 release schedule at fixed validated ledger indices.",
+    "Reconcile ETF issuer holdings dates and cbXRP underlying reserves before supply/float aggregation.",
+    "Trace x402 facilitator source-tag payments and calculate actual delivered value, distinct payer/merchant concentration and fee costs.",
+    "Do not infer new XRP spot demand from RLUSD activity, x402 count, JPYSC balances, ETF holdings, cbXRP issuance or RWA notional."
+  ],
+  "sources": [
+    {
+      "id": "BITQUERY-RLUSD-XRPL-INVESTIGATION",
+      "publisher": "Bitquery",
+      "published_at": "2026-10-19",
+      "url": "https://bitquery.io/investigations/rlusd-xrpl-dust-bots",
+      "independence": "Single onchain analytics provider; detailed transaction methodology; cluster ownership/intent not established."
+    },
+    {
+      "id": "CROSS-RIVER-RLUSD-XRPL-ANNOUNCEMENT",
+      "publisher": "Cross River Bank",
+      "published_at": "2026-10-15",
+      "url": "https://www.crossriver.com/newsroom/cross-river-embeds-ripple-usd-stablecoin-on-the-xrp-ledger-into-its-core-banking-infrastructure-expanding-faster-payment-capabilities-for-businesses",
+      "independence": "Primary company announcement; production volume not disclosed."
+    },
+    {
+      "id": "XRP-RADAR-EXCHANGE-AND-SUPPLY",
+      "publisher": "XRP Insights / XRP Radar",
+      "published_at": "2026-11-02",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "independence": "Dashboard aggregates daily XRPL rippled account_info, XRPSCAN labels, issuer reports and estimates; underlying data not fully replayed in this run."
+    },
+    {
+      "id": "TRACKWHALE-XRP-WHALE-TRACKER",
+      "publisher": "TrackWhale",
+      "published_at": "2026-11-02T10:51:00Z",
+      "url": "https://trackwhale.io/xrp-whale-tracker",
+      "independence": "Large-transfer subset with explicit methodology; not complete exchange balance history."
+    },
+    {
+      "id": "XRP-RADAR-ETF-HOLDINGS",
+      "publisher": "XRP Insights / XRP Radar",
+      "published_at": "2026-11-02",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "independence": "Aggregates official issuer reports with differing report dates."
+    },
+    {
+      "id": "XRP-RADAR-DEFI-AND-WRAPPED-SUPPLY",
+      "publisher": "XRP Insights / XRP Radar",
+      "published_at": "2026-11-02",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "independence": "Aggregates protocol and onchain token supply; possible cross-category custody overlap."
+    },
+    {
+      "id": "XRP-RADAR-RWA-METHODOLOGY",
+      "publisher": "XRP Insights / XRP Radar",
+      "published_at": "2026-11-02",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "independence": "Issuer NAV, onchain supply, registry and contracted/appraised notional; not all transferable."
+    },
+    {
+      "id": "XRP-RADAR-X402",
+      "publisher": "XRP Insights / XRP Radar citing t54 Labs",
+      "published_at": "2026-11-02",
+      "url": "https://xrp-insights.com/xrp-radar",
+      "independence": "Operator/dashboard claim; recent ledger spot-check described but full historical replay not performed."
+    },
+    {
+      "id": "T54-XRPL-AI-HUB",
+      "publisher": "t54 Labs",
+      "published_at": "2026-06",
+      "url": "https://xrpl-ai.org/",
+      "independence": "Facilitator operator source."
+    },
+    {
+      "id": "XRPL-AGENTIC-DOCS",
+      "publisher": "XRPL.org",
+      "published_at": null,
+      "url": "https://xrpl.org/",
+      "independence": "Protocol documentation."
+    },
+    {
+      "id": "XRPSCAN-LABELS",
+      "publisher": "XRPSCAN",
+      "published_at": null,
+      "url": "https://xrpscan.com/",
+      "independence": "Public account labels; attribution may be incomplete or change."
+    },
+    {
+      "id": "DOPPLER",
+      "publisher": "Doppler Finance",
+      "published_at": null,
+      "url": "https://doppler.finance/",
+      "independence": "Protocol source; current holdings require direct reconciliation."
+    },
+    {
+      "id": "FLARE-XRP-FASSETS",
+      "publisher": "Flare",
+      "published_at": null,
+      "url": "https://xrpfi.flare.network/",
+      "independence": "Protocol source; current holdings require direct reconciliation."
+    },
+    {
+      "id": "XRPL-AMM",
+      "publisher": "XRPLScan",
+      "published_at": null,
+      "url": "https://xrpscan.com/",
+      "independence": "On-ledger AMM source."
+    },
+    {
+      "id": "COINBASE-CBXRP",
+      "publisher": "Coinbase",
+      "published_at": null,
+      "url": "https://www.coinbase.com/en-br/cbxrp/proof-of-reserves",
+      "independence": "Primary proof-of-reserves page; exact ledger snapshot still needs independent pinning."
+    },
+    {
+      "id": "HEX-TRUST-WXRP",
+      "publisher": "Hex Trust",
+      "published_at": null,
+      "url": "https://hextrust.com/",
+      "independence": "Custodian/wrapped-token source; current supply requires direct reconciliation."
+    },
+    {
+      "id": "XRP-RADAR-EVERNORTH",
+      "publisher": "Evernorth / SEC filings as aggregated by XRP Insights",
+      "published_at": null,
+      "url": "https://xrp-insights.com/xrp-radar",
+      "independence": "Company-reported treasury holding; latest filing and custody accounts not independently checked in this run."
+    },
+    {
+      "id": "SEC-FILINGS",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "published_at": null,
+      "url": "https://www.sec.gov/edgar/search/",
+      "independence": "Primary regulatory filings source."
+    }
+  ]
+}
