@@ -82,7 +82,7 @@ def test_kaggle_script_blocks_api_authentication_before_any_api_call(monkeypatch
 
 
 def test_kaggle_submit_guard_runs_before_external_submission(monkeypatch, tmp_path):
-    module = _load_kaggle_script()
+    module = _load_kaggle_script(monkeypatch)
     monkeypatch.delenv("KAGGLE_ALLOW_SUBMISSIONS", raising=False)
 
     class FakeApi:
