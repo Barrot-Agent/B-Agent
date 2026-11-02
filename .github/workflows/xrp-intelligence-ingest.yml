@@ -1,0 +1,117 @@
+name: XRP Intelligence Ingestion and Snapshot
+
+on:
+  schedule:
+    - cron: "12 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: xrp-intelligence-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest-and-snapshot:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout read-only source
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Locate latest successful feature-store artifact
+        id: previous
+        env:
+          GH_TOKEN: \${{ github.token }}
+          GH_REPO: \${{ github.repository }}
+        run: |
+          set -euo pipefail
+          run_id="$(gh run list --repo "$GH_REPO" --workflow xrp-intelligence-ingest.yml --branch main --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')"
+          if [[ "$run_id" =~ ^[0-9]+$ ]]; then
+            echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_id=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download previous feature-store snapshot
+        if: steps.previous.outputs.run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: xrp-feature-store
+          run-id: \${{ steps.previous.outputs.run_id }}
+          github-token: \${{ github.token }}
+          repository: \${{ github.repository }}
+          path: .xrp-previous
+
+      - name: Restore prior rolling state
+        env:
+          PREVIOUS_RUN_ID: \${{ steps.previous.outputs.run_id }}
+        run: |
+          set -euo pipefail
+          if [ -s .xrp-previous/log.jsonl ]; then
+            cp .xrp-previous/log.jsonl ping-pongings/knowledge-base/log.jsonl
+            if [ -s .xrp-previous/config.json ]; then
+              cp .xrp-previous/config.json ping-pongings/knowledge-base/config.json
+            fi
+            echo "XRP_STORE_RESTORE_STATUS=RESTORED_PREVIOUS_ARTIFACT" >> "$GITHUB_ENV"
+          elif [ -n "$PREVIOUS_RUN_ID" ]; then
+            echo "XRP_STORE_RESTORE_STATUS=PREVIOUS_ARTIFACT_UNAVAILABLE_FELL_BACK_TO_REPOSITORY_SEED" >> "$GITHUB_ENV"
+          else
+            echo "XRP_STORE_RESTORE_STATUS=INITIAL_REPOSITORY_SEED" >> "$GITHUB_ENV"
+          fi
+          echo "XRP_STORE_RESTORE_RUN_ID=$PREVIOUS_RUN_ID" >> "$GITHUB_ENV"
+
+      - name: Ingest public RSS sources
+        run: python3 scripts/knowledge_ingest.py
+
+      - name: Bounded provider distillation
+        env:
+          GROQ_API_KEY: \${{ secrets.GROQ_API_KEY }}
+          MAX_DISTILL_PER_RUN: "24"
+        run: |
+          set -euo pipefail
+          if [ -n "$GROQ_API_KEY" ]; then
+            python3 scripts/knowledge_distill.py 2>&1 | tee distillation.log
+          else
+            echo "DISTILLATION_SKIPPED_NO_GROQ_KEY" | tee distillation.log
+          fi
+
+      - name: Build point-in-time XRP feature snapshot
+        run: python3 scripts/xrp_feature_snapshot.py
+
+      - name: Upload rolling feature store
+        uses: actions/upload-artifact@v4
+        with:
+          name: xrp-feature-store
+          path: artifacts/xrp_feature_store/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Publish snapshot quality summary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("ping-pongings/knowledge-base/xrp_feature_snapshot.json").read_text())
+          print("## XRP Intelligence Snapshot")
+          print("")
+          print(f"- Status: **{data['status']}**")
+          print(f"- Total entries: {data['entries_total']}")
+          print(f"- Recent 24h entries: {data['recent_24h_entries']}")
+          print(f"- Recent XRP-relevant entries: {data['recent_24h_xrp_relevant_entries']}")
+          print(f"- Undistilled entries: {data['undistilled_entries']}")
+          print(f"- Malformed JSONL lines: {data['malformed_jsonl_lines']}")
+          print(f"- Restore source: {data['restore_status']}")
+          PY
