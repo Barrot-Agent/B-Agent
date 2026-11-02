@@ -277,6 +277,50 @@
         "Failed RLUSD payment lead."
       ],
       "caveat": "Not current at this handoff cutoff; exact transaction-level verification required."
+    },
+    {
+      "id": "CMC-XRP-SPOT-2026-11-02",
+      "source": "CoinMarketCap",
+      "retrieved_at_utc": "2026-11-02T03:10:00Z",
+      "url": "https://coinmarketcap.com/currencies/xrp/",
+      "classification": "DYNAMIC_MARKET_DATA_PAGE",
+      "supports": [
+        "XRP spot quote, market cap, 24-hour volume and provider-defined circulating supply."
+      ],
+      "caveat": "Exact quote timestamp not exposed; retain retrieval time separately."
+    },
+    {
+      "id": "CRYPTOETF-XRP-FLOWS-2026-10-30",
+      "source": "Crypto ETF",
+      "published_at_utc": "2026-10-31T05:48:00Z",
+      "url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "classification": "T_PLUS_ONE_FUND_FLOW_AGGREGATOR",
+      "supports": [
+        "Partial October 30 XRP spot ETF flow, cumulative net flows, AUM, reported XRP holdings and lagged Q2 13F holders."
+      ],
+      "caveat": "Only three of five funds reported for October 30; XRPZ and GXRP were missing."
+    },
+    {
+      "id": "TRADRAR-XRP-OI-2026-11-01",
+      "source": "TradRadar",
+      "updated_at_utc": "2026-11-01T21:25:00Z",
+      "url": "https://tradradar.io/markets/xrp",
+      "classification": "MULTI_EXCHANGE_DERIVATIVES_AGGREGATOR",
+      "supports": [
+        "Seven-exchange XRP open interest, funding, long-account share and reported liquidations."
+      ],
+      "caveat": "Provider's exchange universe and contract aggregation differ from other providers."
+    },
+    {
+      "id": "KODEXIUS-XRP-OI-2026-11-01",
+      "source": "Kodexius",
+      "updated_at_utc": "2026-11-01T23:39:00Z",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "classification": "CONTRACT_LEVEL_DERIVATIVES_AGGREGATOR",
+      "supports": [
+        "Seven-contract XRP perpetual open interest, funding and volume."
+      ],
+      "caveat": "Not comparable to broader exchange-level aggregators without contract coverage reconciliation."
     }
   ],
   "source_independence": {
@@ -531,7 +575,13 @@
       "spot_and_OTC_acquisition_evidence",
       "venue_order_book_depth",
       "venue_open_interest_and_funding",
-      "exchange_net_deposit_withdrawal_flow"
+      "exchange_net_deposit_withdrawal_flow",
+      "post_incident_spot_price_and_volume",
+      "post_incident_spot_ETF_flow_by_fund_and_reporting_completeness",
+      "lagged_13F_institutional_holder_changes",
+      "venue_normalized_open_interest_and_funding",
+      "long_liquidation_notional_by_venue",
+      "Binance_XRP_withdrawal_availability_and_net_flows"
     ],
     "leakage_controls": [
       "Keep publication, observation and ingestion timestamps separate.",
@@ -617,5 +667,84 @@
     "Append the completed Binance incident postmortem and later law-enforcement/asset-recovery updates when published.",
     "Continue source-registry trusted retrieval timestamps, immutable per-snapshot IDs and tamper-evident forecast/outcome records.",
     "Do not issue a directional forecast until synchronized post-event data and the prediction evaluation gate are available."
-  ]
+  ],
+  "market_snapshot": {
+    "retrieved_at_utc": "2026-11-02T03:10:00Z",
+    "spot": {
+      "provider": "CoinMarketCap",
+      "price_usd": 1.25,
+      "change_24h_pct": 0.35,
+      "market_cap_usd": 79346727373,
+      "volume_24h_usd": 980075146,
+      "total_supply_xrp": 99980000000,
+      "circulating_supply_xrp": 63351197653,
+      "source_url": "https://coinmarketcap.com/currencies/xrp/",
+      "timestamp_quality": "Page crawled 2026-11-02; exact underlying quote timestamp not exposed."
+    },
+    "us_spot_etfs": {
+      "provider": "Crypto ETF",
+      "data_date": "2026-10-30",
+      "published_at_utc": "2026-10-31T05:48:00Z",
+      "reporting_status": "PARTIAL_3_OF_5_FUNDS",
+      "net_flow_usd": 200000,
+      "fund_flows_usd": {
+        "XRPC": 900000,
+        "XRP": -700000,
+        "XRPZ": null,
+        "GXRP": null,
+        "TOXR": 0
+      },
+      "cumulative_net_flow_usd": 1820000000,
+      "net_assets_usd": 1420000000,
+      "holdings_xrp_as_of": "2026-10-30",
+      "holdings_xrp": 1142785690,
+      "source_url": "https://cryptoetf.today/en/xrp-etf-flows",
+      "caveats": [
+        "October 30 is the first post-incident U.S. ETF session; the T+1 snapshot is partial because XRPZ and GXRP had not reported.",
+        "October 29 ETF flow was +$8.4M, but the Binance XRPL theft began at 20:05 UTC (4:05 p.m. ET), after the U.S. cash-session close; do not attribute the October 29 flow to the incident.",
+        "Cumulative net flows and fund AUM are different quantities; AUM includes price effects."
+      ],
+      "lagged_13f_institutional_holdings": {
+        "quarter_end": "2026-06-30",
+        "institutions": 127,
+        "reported_value_usd": 179000000,
+        "goldman_sachs_value_usd": 86500000,
+        "source_url": "https://cryptoetf.today/en/xrp-etf-flows",
+        "caveat": "Lagged Q2 2026 13F data; not a current holdings snapshot and excludes positions not reportable under 13F."
+      }
+    },
+    "derivatives": [
+      {
+        "provider": "TradRadar",
+        "updated_at_utc": "2026-11-01T21:25:00Z",
+        "open_interest_usd": 1890000000,
+        "exchanges": 7,
+        "funding_8h": 0.000088,
+        "long_account_share": 0.778,
+        "liquidations_24h_usd_at_least": 902460,
+        "long_liquidations_usd": 797170,
+        "short_liquidations_usd": 105290,
+        "source_url": "https://tradradar.io/markets/xrp"
+      },
+      {
+        "provider": "Webeconomia",
+        "updated_at_utc": "2026-11-01T20:28:00Z",
+        "open_interest_usd": 1600000000,
+        "exchanges": 7,
+        "funding_8h": 0.000091,
+        "binance_account_long_share": 0.71,
+        "source_url": "https://www.webeconomia.it/mercati/crypto/derivati/xrp/"
+      },
+      {
+        "provider": "Kodexius",
+        "updated_at_utc": "2026-11-01T23:39:00Z",
+        "open_interest_usd": 755300000,
+        "contracts": 7,
+        "funding_8h": 0.000076,
+        "volume_24h_usd": 554540000,
+        "source_url": "https://kodexius.com/data/crypto-derivatives/XRP"
+      }
+    ],
+    "admission_rule": "Do not average these OI series. Venue, contract, quote-currency, aggregation and timestamp coverage differ materially. Long-account share is not notional exposure. Positive funding is not by itself a directional signal."
+  }
 }
