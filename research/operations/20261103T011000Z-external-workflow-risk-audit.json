@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "remaining_external_workflow_mutation_audit",
+  "snapshot_id": "external-workflow-risk-audit-20261103-run11",
+  "captured_at_utc": "2026-11-03T01:10:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_sha": "fe3f12d67f5508be501464548c6477ec23a3b648",
+  "workflow_inventory": {
+    "workflow_files_scanned": 77,
+    "open_pull_requests": 304,
+    "open_pr_pagination": {
+      "page_1": 100,
+      "page_2": 100,
+      "page_3": 100,
+      "page_4": 4
+    }
+  },
+  "priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "confirmed_findings": [
+    {
+      "severity": "CRITICAL",
+      "path": ".github/workflows/barrot-merge.yml",
+      "classification": "UNAPPROVED_EXTERNAL_UPLOAD_AND_SHELL_INPUT_INJECTION_RISK",
+      "evidence": "workflow_dispatch model_name was interpolated directly into run-script commands while HF_TOKEN was available in the same job; the job uploaded to a Hugging Face model repository without a per-run confirmation gate.",
+      "correction": "Require confirm_external_change=YES, pass model_name through an environment variable, validate a strict lowercase slug, quote all uses, disable checkout credential persistence and remove stored Git credentials."
+    },
+    {
+      "severity": "CRITICAL",
+      "path": ".github/workflows/barrot-merge-manual.yml",
+      "classification": "DUPLICATE_UNAPPROVED_EXTERNAL_UPLOAD_AND_SHELL_INPUT_INJECTION_RISK",
+      "evidence": "The workflow was byte-for-byte equivalent in behavior to barrot-merge.yml and had the same token exposure and unvalidated model_name interpolation.",
+      "correction": "Apply the same per-run confirmation and strict model-name validation."
+    },
+    {
+      "severity": "CRITICAL",
+      "path": ".github/workflows/barrot-hf-admin.yml",
+      "classification": "DESTRUCTIVE_EXTERNAL_REPOSITORY_OPERATION_WITHOUT_APPROVAL_GATE",
+      "evidence": "Manual dispatch used HF_TOKEN to DELETE the Barrot-Omega-v2 Space repository and POST creation of a different Space, without a confirmation input.",
+      "correction": "Make the workflow inert with empty permissions pending a separately reviewed, target-specific migration."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/barrot-restart-space.yml",
+      "classification": "FACTORY_RESTART_WITHOUT_APPROVAL_GATE",
+      "evidence": "Manual dispatch called the Hugging Face Space restart endpoint with factory=true and no explicit confirmation input.",
+      "correction": "Require confirm_external_change=YES; give the workflow no repository-token permissions."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/sync-self-hosted-brain.yml",
+      "classification": "PUSH_TRIGGERED_EXTERNAL_DEPLOYMENT",
+      "evidence": "A push to main affecting self_hosted_brain/** automatically uploaded the folder to a Hugging Face Space and could propagate a shared secret; manual dispatch was also available without an approval gate.",
+      "correction": "Remove the push trigger and require confirm_external_change=YES for manual deployment."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/deploy-a2a-worker.yml",
+      "classification": "PUSH_TRIGGERED_EXTERNAL_DEPLOYMENT_AND_SECRET_UPLOAD",
+      "evidence": "A push to main affecting a2a/** automatically deployed a Cloudflare Worker and uploaded GROQ_API_KEY and BRAIN_SHARED_SECRET; manual dispatch had no approval gate.",
+      "correction": "Remove the push trigger and require confirm_external_change=YES for manual deployment."
+    },
+    {
+      "severity": "HIGH",
+      "path": ".github/workflows/task-allocator.yml",
+      "classification": "UNVERIFIED_MULTI_PROVIDER_ORCHESTRATION_WITH_WRITE_PERMISSIONS",
+      "evidence": "The workflow exposed GROQ_API_KEY, OPENAI_API_KEY and CHATGPT_TOKEN to a task allocator, held contents:write and pull-requests:write, listed secret names, dispatched tasks and committed allocation records to main. No nine-platform capability/authentication/permission/data-flow verification was established.",
+      "correction": "Disable the workflow and remove all token access until the nine-platform adapter map and independent permission tests exist."
+    }
+  ],
+  "remaining_backlog": {
+    "classification": "CONFIRMED_MAIN_BRANCH_WRITERS_NOT_CONTAINED_BY_THIS_PR",
+    "workflows": [
+      "Barrot.Cognitive.PingPong.Engine.yml",
+      "autonomous_self_deployment.yml",
+      "barrot-transparency-audit.yml",
+      "riemann-harvest.yml",
+      "webmcp-live-sandbox.yml",
+      "webmcp-monetization-enrich.yml",
+      "subscriber_sync.yml",
+      "gumroad-metrics.yml",
+      "cross-analysis.yml",
+      "check-signal-accuracy.yml",
+      "scheduler-tick.yml",
+      "merge-queue.yml"
+    ],
+    "notes": [
+      "Some have separate open proposals (#1517, #1519, #1522, #1530, #1532); several older proposals are stale or not mergeable.",
+      "Fresh-main successors #1530, #1531, #1532 and #1539 address selected prediction, corpus, scheduler/merge and external-deploy risks, but remain unmerged.",
+      "This artifact does not claim that all 77 workflows are safe. It records the six high-risk external workflows changed in this PR and a bounded remaining backlog."
+    ]
+  },
+  "forecast_status": "NOT_ISSUED",
+  "verification": {
+    "state": "PENDING_EXACT_HEAD_CI"
+  },
+  "safety": {
+    "main_modified": false,
+    "external_workflows_dispatched": false,
+    "secrets_accessed": false,
+    "external_deployments_performed": false,
+    "merge_performed": false,
+    "force_push": false,
+    "real_money": false
+  }
+}
