@@ -115,15 +115,17 @@
     },
     {
       "id": "SM-08",
-      "classification": "CONFIRMED_OFFICIAL_LAUNCH_WITH_STATUS_LIMITATION",
-      "claim": "SBI Group, SBI Shinsei Trust Bank, SBI VC Trade and Startale launched JPYSC on June 24, 2026. The initial service was restricted to balances within SBI VC Trade accounts, with external-wallet withdrawals unavailable at launch; public-chain circulation was described as a future step after legal, tax and practical arrangements.",
-      "implication": "JPYSC's >¥30B handling figure must not automatically be interpreted as freely transferable public-chain circulation. The public-chain status needs a current technical and legal confirmation.",
+      "classification": "CONFIRMED_CURRENT_PRODUCT_RESTRICTION",
+      "claim": "SBI VC Trade's current official JPYSC product page states that JPYSC deposits and withdrawals are not currently supported. It says the company aims to move to public-chain circulation only after relevant legal and tax treatment is clarified and supervisory confirmation is obtained. The June 24 launch was account-restricted, and the current product page still states that external transfer is unavailable.",
+      "implication": "The November 2 >¥30B handling balance must not be treated as freely transferable public-chain stablecoin supply or public on-chain liquidity. The phrase 'on-chain balance' in the handling definition does not override the official no-deposit/no-withdrawal restriction.",
       "unknowns": [
-        "Whether public-chain issuance/withdrawal was enabled after the June 24 launch",
-        "Current chain, token contract, redemption route and on-chain supply"
+        "Whether the issuer uses a private/permissioned ledger for the reported on-chain component",
+        "The current exact internal ledger architecture",
+        "Public-chain contract address and launch date, because public-chain circulation is not yet enabled"
       ],
       "sources": [
         "SBI-JPYSC-LAUNCH-20260624",
+        "SBI-JPYSC-CURRENT-TRANSFER-STATUS-20261102",
         "SBI-JPYSC-LENDING-20261102"
       ]
     },
@@ -585,6 +587,15 @@
       "date": null,
       "url": "https://www.osaka-sbic.co.jp/",
       "independence_group": "osaka-sbic"
+    },
+    {
+      "id": "SBI-JPYSC-CURRENT-TRANSFER-STATUS-20261102",
+      "publisher": "SBI VC Trade",
+      "type": "official_product_status_page",
+      "date": null,
+      "retrieved_at_utc": "2026-11-03T02:12:06Z",
+      "url": "https://home.sbivc.co.jp/jpysc",
+      "independence_group": "sbi-vc-trade"
     }
   ],
   "data_quality": [
@@ -596,7 +607,8 @@
     "The September 7 JPYSC lending amount of approximately ¥6.9B is described as applications, not confirmed completed/outstanding loans.",
     "The November 2 JPYSC handling balance includes lending balance; do not add the >¥10B lending balance again.",
     "The September 7 ¥10B JGB allocation and November 2 >¥30B handling balance are different dates and different measures; do not combine them as a current reserve reconciliation.",
-    "The June 24 JPYSC launch was account-restricted with external-wallet withdrawals unavailable; current public-chain status requires a fresh technical check."
+    "The June 24 JPYSC launch was account-restricted with external-wallet withdrawals unavailable; current public-chain status requires a fresh technical check.",
+    "SBI VC Trade's current official JPYSC product page states deposits/withdrawals are not currently supported and public-chain circulation is a future step pending legal/tax clarification and supervisory confirmation. Therefore, the >¥30B handling figure is not comparable to freely transferable public-chain stablecoin supply or public DEX liquidity."
   ],
   "prediction_status": {
     "status": "NOT_ISSUED",
@@ -608,7 +620,8 @@
     "No production JPYSC/OUSD bridge or tokenized-MMF integration was established.",
     "No SMBC alliance cash amount or valuation for the 5% stake was disclosed.",
     "No current JPYSC public-chain contract/supply reconciliation was executed in this run.",
-    "Regional SBIC companies remain distinct from SBI Group entities."
+    "Regional SBIC companies remain distinct from SBI Group entities.",
+    "The current official SBI VC Trade product page states JPYSC deposits and withdrawals are not currently supported; public-chain circulation remains future/pending. No public-chain JPYSC contract or freely transferable supply was verified."
   ],
   "safety": {
     "public_authorized_sources_only": true,
@@ -619,5 +632,13 @@
     "secret_access": false,
     "external_transaction": false,
     "forecast_issued": false
+  },
+  "jpysc_current_transfer_status": {
+    "current_product_page": "https://home.sbivc.co.jp/jpysc",
+    "deposits_supported": false,
+    "withdrawals_supported": false,
+    "external_wallet_transfers_supported": false,
+    "public_chain_circulation": "future/pending legal and tax clarification plus supervisory confirmation",
+    "interpretation": "Do not count JPYSC handling balance as public-chain circulating supply or XRP liquidity."
   }
 }
