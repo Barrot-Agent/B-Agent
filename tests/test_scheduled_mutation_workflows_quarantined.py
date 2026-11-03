@@ -1,6 +1,8 @@
 from pathlib import Path
 import re
 
+import yaml
+
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = (
     ".github/workflows/barrot-autonomous-resolver.yml",
@@ -13,17 +15,21 @@ WORKFLOWS = (
 )
 
 
-def test_scheduled_mutation_workflows_are_quarantined():
+def test_scheduled_mutation_workflows_are_valid_yaml_and_quarantined():
     for relative in WORKFLOWS:
-        workflow = (ROOT / relative).read_text(encoding="utf-8")
-        assert "workflow_dispatch: {}" in workflow, relative
-        assert "permissions: {}" in workflow, relative
-        assert "if: false" in workflow, relative
-        assert "No credentials are read" in workflow, relative
-        assert "secrets." not in workflow, relative
-        assert not re.search(r"(?m)^\s*(schedule|workflow_run|push):", workflow), relative
-        assert not re.search(r"(?m)^\s*(contents|actions|issues|pull-requests):\s*write\b", workflow), relative
-        assert not re.search(r"(?m)^\s*(git push|gh issue (create|close|edit|comment)|gh pr edit)\b", workflow), relative
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        parsed = yaml.safe_load(text)
+        assert isinstance(parsed, dict), relative
+        on_config = parsed.get("on", parsed.get(True))
+        assert isinstance(on_config, dict), relative
+        assert set(on_config) == {"workflow_dispatch"}, relative
+        assert parsed.get("permissions") == {}, relative
+        assert parsed["jobs"]["disabled"]["if"] is False, relative
+        assert "No credentials are read" in text, relative
+        assert "secrets." not in text, relative
+        assert not re.search(r"(?m)^\s*(schedule|workflow_run|push):", text), relative
+        assert not re.search(r"(?m)^\s*(contents|actions|issues|pull-requests):\s*write\b", text), relative
+        assert not re.search(r"(?m)^\s*(git push|gh issue (create|close|edit|comment)|gh pr edit)\b", text), relative
 
 
 def test_daily_digest_cannot_publish_unvalidated_accuracy_while_quarantined():

@@ -1,4 +1,4 @@
-name: Barrot Autonomous Resolver (disabled pending reviewed automation policy)
+name: barrot-autonomous-resolver (disabled pending reviewed automation policy)
 
 on:
   workflow_dispatch: {}
@@ -11,4 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Explain disabled state
-        run: echo "Disabled: the previous hourly workflow created issues and could assign open issues and pull requests. Re-enable only after a scoped allowlist, protected approval and duplicate/rate-limit controls are reviewed. No credentials are read and no repository mutation is performed."
+        run: |
+          echo "The previous hourly workflow created issues for failed workflows and could assign unassigned issues and pull requests. Re-enable only after a scoped allowlist, protected approval and duplicate/rate-limit controls are reviewed."
+          echo "No credentials are read and no repository mutation is performed."

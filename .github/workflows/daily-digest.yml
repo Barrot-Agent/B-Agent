@@ -1,4 +1,4 @@
-name: Daily Digest (disabled pending prediction-integrity correction)
+name: daily-digest (disabled pending reviewed automation policy)
 
 on:
   workflow_dispatch: {}
@@ -11,4 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Explain disabled state
-        run: echo "Disabled: the previous scheduled digest could publish the legacy unvalidated signal-accuracy percentage in a public issue. Re-enable only after the fixed-horizon evaluation status and public digest are corrected. No credentials are read and no repository mutation is performed."
+        run: |
+          echo "The previous scheduled digest could publish the legacy unvalidated signal-accuracy percentage in a public issue. Re-enable only after fixed-horizon evaluation status and the public digest are corrected."
+          echo "No credentials are read and no repository mutation is performed."

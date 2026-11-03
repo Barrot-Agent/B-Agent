@@ -1,4 +1,4 @@
-name: Auto-Resolve Workflow Issues (disabled pending explicit review)
+name: auto-resolve-issues (disabled pending reviewed automation policy)
 
 on:
   workflow_dispatch: {}
@@ -11,4 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Explain disabled state
-        run: echo "Disabled: the previous batch workflow could comment on and close matching open issues based on workflow status. Re-enable only with per-issue authorization, auditable evidence and a protected approval boundary. No credentials are read and no repository mutation is performed."
+        run: |
+          echo "The previous batch workflow could comment on and close matching open issues based on workflow status. Re-enable only with per-issue authorization, auditable evidence and a protected approval boundary."
+          echo "No credentials are read and no repository mutation is performed."

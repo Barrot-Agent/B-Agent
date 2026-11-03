@@ -1,4 +1,4 @@
-name: Gumroad Metrics (disabled pending output minimization and approval)
+name: gumroad-metrics (disabled pending reviewed automation policy)
 
 on:
   workflow_dispatch: {}
@@ -11,4 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Explain disabled state
-        run: echo "Disabled: the previous scheduled workflow used a Gumroad token, printed the raw product API response to job logs and wrote metrics to main. Re-enable only after output minimization, log privacy review and protected approval. No credentials are read and no repository mutation is performed."
+        run: |
+          echo "The previous scheduled workflow used a Gumroad token, printed the raw product API response to job logs and wrote metrics to main. Re-enable only after output minimization, log privacy review and protected approval."
+          echo "No credentials are read and no repository mutation is performed."

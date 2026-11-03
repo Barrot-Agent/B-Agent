@@ -1,4 +1,4 @@
-name: Riemann Research Harvest (disabled pending non-main persistence design)
+name: riemann-harvest (disabled pending reviewed automation policy)
 
 on:
   workflow_dispatch: {}
@@ -11,4 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Explain disabled state
-        run: echo "Disabled: the previous weekly/manual harvest wrote research outputs and pushed them directly to main. Re-enable only with append-only artifact storage, provenance checks and reviewed promotion. No credentials are read and no repository mutation is performed."
+        run: |
+          echo "The previous weekly/manual harvest wrote research outputs and pushed them directly to main. Re-enable only with append-only artifact storage, provenance checks and reviewed promotion."
+          echo "No credentials are read and no repository mutation is performed."
