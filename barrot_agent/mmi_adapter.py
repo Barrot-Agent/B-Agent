@@ -10,6 +10,7 @@ from .mmi_v1 import (
     ParseState,
     ProvenanceClass,
     SourceRecord,
+    canonical_claim_id,
 )
 from barrot_agent.evolution.source_independence import canonical_publisher_group
 
@@ -147,6 +148,12 @@ class MMIExistingSystemsAdapter:
                 + sha256(content.encode("utf-8")).hexdigest()
             )
 
+        resolved_claim_id = canonical_claim_id(claim)
+        if not resolved_claim_id:
+            raise ValueError("claim must contain non-empty text")
+        if claim_id and claim_id != resolved_claim_id:
+            raise ValueError("claim_id must match the canonical claim-text fingerprint")
+
         return EvidenceRecord(
             evidence_id=evidence_id,
             claim=claim,
@@ -155,7 +162,7 @@ class MMIExistingSystemsAdapter:
             independent=independent,
             content_hash=content_hash,
             observed_at=observed_at,
-            claim_id=claim_id,
+            claim_id=resolved_claim_id,
         )
 
     def create_record(

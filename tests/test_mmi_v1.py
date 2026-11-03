@@ -1,6 +1,8 @@
 import json
 import time
 
+import pytest
+
 from barrot_agent.mmi_v1 import (
     BoundedTraversal,
     EvidenceRecord,
@@ -19,7 +21,9 @@ from barrot_agent.mmi_v1 import (
     StageOutcome,
     StageRecord,
     classify_idempotency,
+    canonical_claim_id,
 )
+from barrot_agent.mmi_adapter import MMIExistingSystemsAdapter
 
 
 def complete_stages():
@@ -55,21 +59,21 @@ def add_valid_corroboration(record):
         EvidenceRecord(
             evidence_id="corroboration-e1",
             claim="test claim",
-            claim_id="claim-001",
+            claim_id=canonical_claim_id("test claim"),
             state=ParseState.OBSERVED,
             source_ids=["s1"],
         ),
         EvidenceRecord(
             evidence_id="corroboration-e2",
             claim="test claim",
-            claim_id="claim-001",
+            claim_id=canonical_claim_id("test claim"),
             state=ParseState.OBSERVED,
             source_ids=["s2"],
         ),
     ])
     record.corroboration_results.append({
         "status": "CORROBORATED",
-        "claim_id": "claim-001",
+        "claim_id": canonical_claim_id("test claim"),
         "supporting_evidence_ids": ["corroboration-e1", "corroboration-e2"],
         "independent_source_ids": ["s1", "s2"],
         "independent_sources": 2,
@@ -507,14 +511,14 @@ def test_multiple_sources_from_one_group_do_not_inflate_independent_count():
         EvidenceRecord(
             evidence_id="corroboration-e3",
             claim="test claim",
-            claim_id="claim-001",
+            claim_id=canonical_claim_id("test claim"),
             state=ParseState.OBSERVED,
             source_ids=["s3"],
         )
     )
     record.corroboration_results = [{
         "status": "CORROBORATED",
-        "claim_id": "claim-001",
+        "claim_id": canonical_claim_id("test claim"),
         "supporting_evidence_ids": [
             "corroboration-e1",
             "corroboration-e2",
@@ -530,7 +534,7 @@ def test_multiple_sources_from_one_group_do_not_inflate_independent_count():
 
 def test_contradictory_independent_evidence_can_complete_without_forced_unanimity():
     record = complete_record_with_two_sources()
-    claim_id = "claim-contradictory"
+    claim_id = canonical_claim_id("test claim")
     record.evidence = [
         EvidenceRecord(
             evidence_id="e-support",
@@ -607,6 +611,49 @@ def test_uri_derived_publisher_identity_overrides_forged_group():
     record.source_graph[0].independence_group = "source-a.example"
 
     assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_claim_fingerprint_normalizes_formatting_but_preserves_wording():
+    assert canonical_claim_id("  ＸＲＰ   reserves    are backed ") == canonical_claim_id(
+        "xrp reserves are backed"
+    )
+    assert canonical_claim_id("XRP reserves are backed") != canonical_claim_id(
+        "XRP reserves are not backed"
+    )
+    assert canonical_claim_id("   ") == ""
+
+
+def test_corroboration_rejects_same_caller_id_for_different_claim_text():
+    record = complete_record_with_two_sources()
+    record.evidence[-1].claim = "an unrelated proposition"
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_corroboration_rejects_caller_selected_opaque_claim_id():
+    record = complete_record_with_two_sources()
+    for evidence in record.evidence:
+        evidence.claim_id = "caller-selected"
+    record.corroboration_results[0]["claim_id"] = "caller-selected"
+
+    assert MMIStateMachine.evaluate(record) == MMIResult.BLOCKED
+
+
+def test_mmi_adapter_generates_and_enforces_claim_fingerprint():
+    evidence = MMIExistingSystemsAdapter.evidence_record(
+        evidence_id="adapter-evidence-001",
+        claim="XRP reserves are backed",
+        source_ids=["source-1"],
+    )
+    assert evidence.claim_id == canonical_claim_id(evidence.claim)
+
+    with pytest.raises(ValueError, match="canonical claim-text fingerprint"):
+        MMIExistingSystemsAdapter.evidence_record(
+            evidence_id="adapter-evidence-002",
+            claim="XRP reserves are backed",
+            source_ids=["source-1"],
+            claim_id="caller-selected",
+        )
 
 
 def test_corroboration_not_applicable_requires_reason():
