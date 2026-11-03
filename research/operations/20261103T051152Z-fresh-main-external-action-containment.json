@@ -103,7 +103,8 @@
     ".github/workflows/barrot-self-upgrade.yml",
     "tests/test_external_deploys_require_confirmation.py",
     "research/operations/20261103T051152Z-fresh-main-external-action-containment.json",
-    "research/xrp_intelligence/HANDOFF_20261103T051152Z.md"
+    "research/xrp_intelligence/HANDOFF_20261103T051152Z.md",
+    "tests/test_v3_scripts.py"
   ],
   "limitations": [
     "YES input gates are per-run operator confirmations, not protected GitHub Environment reviewer approvals.",
@@ -116,10 +117,19 @@
     "base_commit": "5e82b27205285257edef5ece404356c8900be73d",
     "branch": "security/fresh-main-external-gates-20261103T0512Z",
     "local_tests": "NOT_EXECUTED",
-    "exact_head_ci": "PENDING",
+    "exact_head_ci": "RERUN_PENDING_AFTER_TEST_INVARIANT_FIX",
     "fail_closed_gate": "PENDING",
     "main_modified": false,
-    "external_actions_executed": false
+    "external_actions_executed": false,
+    "ci_failure_observed": {
+      "run_id": 41582715794,
+      "conclusion": "failure",
+      "summary": "350 passed, 1 failed, 8 subtests passed",
+      "failing_test": "tests/test_v3_scripts.py::test_self_upgrade_workflow_verifies_same_ref_without_branch_switch",
+      "root_cause": "Existing test encoded the previous active self-upgrade workflow invariant (same-ref checkout and push). The new containment intentionally disables that workflow, so the old assertion was contradictory.",
+      "correction": "Replaced the obsolete test with assertions that the self-upgrade workflow is inert, has empty permissions, exposes no provider token and contains no push capability.",
+      "rerun": "PENDING"
+    }
   },
   "next_actions": [
     "Create a draft PR against main.",
