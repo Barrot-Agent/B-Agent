@@ -1,0 +1,704 @@
+{
+  "schema_version": "barrot.xrp.market-microstructure-etf-reconciliation.v1",
+  "captured_at_utc": "2026-11-03T15:09:20Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery; Barrot V3 remains execution and verification foundation",
+  "forecast_status": "NOT_ISSUED",
+  "forecast_block_reason": "Provider coverage and timestamps are not harmonized; ETF flow methodologies differ; this snapshot is not a validated fixed-horizon forecasting dataset.",
+  "market_observations": [
+    {
+      "id": "MKT-KRAKEN-SPOT-20261103-150920",
+      "provider": "Kraken public REST API",
+      "source_id": "SRC-KRAKEN",
+      "market_type": "spot",
+      "pair": "XRP/USD",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "exchange_event_timestamp": null,
+      "values": {
+        "best_bid_usd": 1.2752,
+        "best_ask_usd": 1.27522,
+        "last_usd": 1.27437,
+        "volume_24h_xrp": 21802803.91830115,
+        "vwap_24h_usd": 1.26157743,
+        "high_24h_usd": 1.28923,
+        "low_24h_usd": 1.23364,
+        "open_24h_usd": 1.24803,
+        "trades_24h": 23939
+      },
+      "limitations": [
+        "Response exposes no exchange event timestamp; retrieval time is recorded separately.",
+        "Single venue and pair; not a consolidated spot index."
+      ]
+    },
+    {
+      "id": "MKT-SWIFTEDGE-PERP-LIVE-20261103-150800",
+      "provider": "Swiftedge",
+      "source_id": "SRC-SWIFTEDGE",
+      "market_type": "perpetual_futures",
+      "observed_at_utc": "2026-11-03T15:08:00Z",
+      "values": {
+        "price_usd": 1.276,
+        "change_24h_pct": 2.1,
+        "low_24h_usd": 1.2444,
+        "high_24h_usd": 1.2914,
+        "bid_wall_price_usd": 1.24,
+        "bid_wall_size_xrp": 3330696,
+        "ask_wall_price_usd": 1.279,
+        "ask_wall_size_xrp": 2542207,
+        "whale_trades_24h_count": 178,
+        "whale_net_flow_usd": -446000,
+        "whale_buys_usd_approx": 19000000,
+        "whale_sells_usd_approx": 19000000,
+        "funding_8h_pct": 0.01,
+        "open_interest_change_24h_pct": 2.6,
+        "long_account_share_pct": 42.7
+      },
+      "limitations": [
+        "Perpetual venue aggregate is not spot.",
+        "The page labels whale orders as trades of at least USD 50,000; values are rounded.",
+        "The live page's long-account share and funding are provider-specific and not interchangeable with other venue universes."
+      ]
+    },
+    {
+      "id": "MKT-SWIFTEDGE-DEPTH-20261103-141800",
+      "provider": "Swiftedge",
+      "source_id": "SRC-SWIFTEDGE",
+      "market_type": "perpetual_order_book",
+      "observed_at_utc": "2026-11-03T14:18:00Z",
+      "values": {
+        "price_usd": 1.2805,
+        "change_today_pct": 2.47,
+        "low_today_usd": 1.2444,
+        "high_today_usd": 1.2914,
+        "bid_wall_price_usd": 1.244,
+        "bid_wall_size_xrp": 3348264,
+        "ask_wall_price_usd": 1.287,
+        "ask_wall_size_xrp": 2460357,
+        "depth_within_1pct": {
+          "bids_usd_m": 26,
+          "asks_usd_m": 26
+        },
+        "depth_within_2pct": {
+          "bids_usd_m": 32,
+          "asks_usd_m": 33
+        },
+        "estimated_upper_positioning_wall_usd": 1.2825,
+        "estimated_lower_positioning_wall_usd": 1.275,
+        "estimated_flip_usd": 1.2775
+      },
+      "limitations": [
+        "One provider's perpetual order book, not consolidated spot depth.",
+        "Walls can be cancelled or consumed; provider explicitly states these are not predictions.",
+        "Positioning walls are estimates from a subset of public open positions."
+      ]
+    },
+    {
+      "id": "MKT-SWIFTEDGE-ONCHAIN-OI-20261103-141800",
+      "provider": "Swiftedge",
+      "source_id": "SRC-SWIFTEDGE",
+      "market_type": "onchain_perpetual_open_interest",
+      "observed_at_utc": "2026-11-03T14:18:00Z",
+      "values": {
+        "open_interest_xrp": 165882926,
+        "open_interest_usd_approx": 212000000,
+        "change_4h_pct": -1.6,
+        "change_24h_pct": 2.2,
+        "venues": {
+          "Hyperliquid": {
+            "open_interest_xrp": 164232944,
+            "share_pct": 99
+          },
+          "Lighter": {
+            "open_interest_xrp": 1649982,
+            "share_pct": 1
+          }
+        }
+      },
+      "limitations": [
+        "Only the on-chain perpetual venues listed by Swiftedge (Hyperliquid and Lighter); not an all-market OI estimate.",
+        "XRP-denominated OI and USD valuation are retained separately."
+      ]
+    },
+    {
+      "id": "MKT-TRADRADAR-PERPS-20261103-140500",
+      "provider": "TradRadar",
+      "source_id": "SRC-TRADRADAR",
+      "market_type": "perpetual_futures_composite",
+      "observed_at_utc": "2026-11-03T14:05:00Z",
+      "values": {
+        "mark_price_usd": 1.2811,
+        "change_24h_pct": 2.13,
+        "open_interest_usd": 2000000000,
+        "open_interest_change_24h_pct": 4.45,
+        "funding_8h_pct": 0.0094,
+        "liquidations_24h_min_usd": 5110000,
+        "long_liquidations_usd": 2500000,
+        "short_liquidations_usd": 2620000,
+        "long_short_account_ratio": 3.28,
+        "long_account_share_pct": 76.6,
+        "venues": [
+          "Binance",
+          "Bybit",
+          "Gate",
+          "Bitget",
+          "MEXC",
+          "Hyperliquid",
+          "OKX"
+        ]
+      },
+      "limitations": [
+        "Provider states 15-minute delay.",
+        "Liquidations are a lower bound because exchange feeds are incomplete.",
+        "Long/short account ratio covers five exchanges, not all seven OI venues."
+      ]
+    },
+    {
+      "id": "MKT-KODEXIUS-PERPS-20261103-124400",
+      "provider": "Kodexius",
+      "source_id": "SRC-KODEXIUS",
+      "market_type": "perpetual_futures_contract_composite",
+      "observed_at_utc": "2026-11-03T12:44:00Z",
+      "values": {
+        "open_interest_usd": 877930000,
+        "contracts": 7,
+        "exchanges": 5,
+        "funding_8h_pct": 0.0093,
+        "volume_24h_usd": 1400000000,
+        "contract_open_interest_usd": {
+          "Binance_XRPUSDT": 445130000,
+          "Bybit_XRPUSDT": 157850000,
+          "OKX_XRP_USDT_SWAP": 106490000,
+          "Hyperliquid_XRP_USDC": 105910000,
+          "Binance_XRPUSDC": 31190000,
+          "HTX_XRP_USDT": 28680000,
+          "Bybit_XRPPERP_USDC": 2690000
+        }
+      },
+      "limitations": [
+        "Seven named contracts across five exchanges; not a universal market total.",
+        "Hyperliquid's native one-hour funding quote is scaled to an eight-hour equivalent for comparison."
+      ]
+    },
+    {
+      "id": "MKT-SWOLECHARTS-PERPS-20261103-145500",
+      "provider": "SwoleCharts",
+      "source_id": "SRC-SWOLECHARTS",
+      "market_type": "perpetual_futures_composite",
+      "observed_at_utc": "2026-11-03T14:55:00Z",
+      "values": {
+        "open_interest_usd_rounded": 1250000000,
+        "tracked_ranked_exchanges": 9,
+        "funding_oi_weighted_8h_pct": 0.0098,
+        "ranked_exchange_oi_usd": {
+          "Binance": 526600000,
+          "Bybit": 180720000,
+          "Gate": 136760000,
+          "Bitget": 118830000,
+          "KuCoin": 116030000,
+          "Hyperliquid": 105250000,
+          "Aster": 32630000,
+          "HTX": 28480000,
+          "Lighter": 2110000
+        },
+        "unranked_exchange_observation": {
+          "MEXC": 253030000
+        },
+        "binance_oi_change_24h_pct": 20.18,
+        "binance_liquidations_24h_usd": 2060000,
+        "binance_long_liquidation_share_pct": 51.4
+      },
+      "limitations": [
+        "The published approximately USD 1.25B total corresponds to the nine ranked exchanges; MEXC is separately displayed as unranked and is not included in that total.",
+        "Provider says USDⓈ-M and, from 2026-09-28, COIN-M inverse perps are included; HIP-3 markets are excluded.",
+        "Open interest is valued on one side at mark price; funding is normalized to an eight-hour equivalent."
+      ]
+    },
+    {
+      "id": "MKT-COINGLASS-PERPS-UNSYNCHRONIZED",
+      "provider": "CoinGlass",
+      "source_id": "SRC-COINGLASS",
+      "market_type": "perpetual_and_delivery_futures_aggregate",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "exchange_event_timestamp": null,
+      "values": {
+        "xrp_price_usd": 1.2798,
+        "open_interest_usd": 2900000000,
+        "futures_volume_24h_usd": 2400000000,
+        "spot_volume_24h_usd": 463610000
+      },
+      "limitations": [
+        "The retrieved page exposes no observation timestamp or exchange universe in the rendered summary.",
+        "Retained as an unsynchronized provider observation; excluded from any harmonized comparison or forecast feature."
+      ]
+    }
+  ],
+  "etf_observations": [
+    {
+      "id": "ETF-XRPINSIGHTS-20261102-SETTLED",
+      "provider": "XRP Insights",
+      "source_id": "SRC-XRP-INSIGHTS",
+      "data_as_of": "2026-11-02",
+      "dataset_generated_at_utc": "2026-11-03T13:12:10.910Z",
+      "row_status": "settled",
+      "values": {
+        "net_flow_xrp": -32825,
+        "net_flow_usd_approx": -42000,
+        "total_xrp_holdings": 1196567361,
+        "total_aum_usd_approx": 1507450000,
+        "tracked_funds": [
+          "XRPC",
+          "XRP",
+          "XRPR",
+          "XRPZ",
+          "GXRP",
+          "TOXR",
+          "BITW"
+        ],
+        "trading_days": 227,
+        "rows": 1569
+      },
+      "methodology": "Day-over-day change in issuer-reported XRP holdings. Changes smaller than 100 XRP are treated as rounding noise. GXRP flows are excluded across the history because an issuer-page capture gap caused frozen holdings and a later catch-up; GXRP holdings and AUM remain in totals. BITW's XRP sleeve is included, so index rebalancing and XRP-denominated fee effects can appear as holdings changes.",
+      "limitations": [
+        "This is a holdings-delta measure, not a direct issuer creation/redemption report.",
+        "The dataset's latest settled day is Nov 2; it is not a Nov 3 intraday flow."
+      ]
+    },
+    {
+      "id": "ETF-BYKARANTELI-20261102-PROVISIONAL",
+      "provider": "ByKaranteli",
+      "source_id": "SRC-BYKARANTELI",
+      "data_as_of": "2026-11-02",
+      "refreshed_at_utc": "2026-11-03T09:09:00Z",
+      "row_status": "provisional",
+      "values": {
+        "net_flow_usd": -530000,
+        "tracked_funds": [
+          "XRP",
+          "XRPZ",
+          "XRPC",
+          "TOXR",
+          "GXRP"
+        ],
+        "reported_fund_flows_usd": {
+          "XRP": 0,
+          "XRPZ": 0,
+          "XRPC": -530000,
+          "TOXR": 0,
+          "GXRP": 0
+        },
+        "five_day_net_flow_usd": 7400000,
+        "total_net_assets_usd": 1420000000,
+        "cumulative_net_inflow_usd": 1810000000
+      },
+      "methodology": "Provider's own daily collection of public US spot ETF flow data; current-day rows remain provisional until issuer settlement. The page identifies Canary's XRPC series as coming from Canary's own daily table.",
+      "limitations": [
+        "The Nov 2 row is explicitly provisional.",
+        "The displayed five-fund set differs from XRP Insights' six spot funds plus BITW; XRPR and BITW are not in this displayed five-fund table.",
+        "Dollar flow and XRP holdings-delta methods are not directly comparable."
+      ]
+    },
+    {
+      "id": "ETF-CRYPTOKEYHOLE-20261102-PARTIAL",
+      "provider": "CryptoKeyhole",
+      "source_id": "SRC-CRYPTOKEYHOLE",
+      "data_as_of": "2026-11-02",
+      "refreshed_at_utc": "2026-11-03T05:18:00Z",
+      "row_status": "partial",
+      "values": {
+        "latest_complete_day": "2026-10-30",
+        "latest_complete_day_net_flow_xrp": -1123743,
+        "latest_complete_day_net_flow_usd_approx": -1400000,
+        "latest_complete_day_funds_included": 4,
+        "nov_2_funds_published": 3,
+        "nov_2_funds_expected": 4
+      },
+      "methodology": "Issuer-file holdings, shares and NAV checks; daily aggregate is only published when all tracked funds have reported. The Nov 2 observation remained partial at capture.",
+      "limitations": [
+        "The -1,123,743 XRP figure is for Oct 30, not Nov 2.",
+        "Nov 2 was partial at retrieval and is not a completed daily flow."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "status": "CONFIRMED_SOURCE_OBSERVATION",
+      "detail": "Kraken's public XRP/USD ticker returned a last trade of USD 1.27437, best bid USD 1.27520 and ask USD 1.27522 at retrieval time 15:09:20 UTC; the response has no exchange event timestamp.",
+      "sources": [
+        "SRC-KRAKEN"
+      ]
+    },
+    {
+      "id": "C02",
+      "status": "CONFIRMED_SOURCE_OBSERVATION",
+      "detail": "Swiftedge's XRP perpetual page at 15:08 UTC showed USD 1.2760, +2.10% on the day, with a 24-hour range of USD 1.2444–1.2914 and provider-specific whale/order-flow metrics.",
+      "sources": [
+        "SRC-SWIFTEDGE"
+      ]
+    },
+    {
+      "id": "C03",
+      "status": "CONFIRMED_SOURCE_OBSERVATION",
+      "detail": "Swiftedge's 14:18 UTC perpetual-book snapshot showed approximately USD 26M bids and USD 26M asks within 1%, and USD 32M bids versus USD 33M asks within 2%; visible walls and estimated liquidation-positioning levels are provider-specific and transient.",
+      "sources": [
+        "SRC-SWIFTEDGE"
+      ]
+    },
+    {
+      "id": "C04",
+      "status": "CONFIRMED_SOURCE_OBSERVATION",
+      "detail": "Swiftedge measured 165.88M XRP of on-chain perpetual open interest, approximately USD 212M, at 14:18 UTC; 99% was on Hyperliquid and 1% on Lighter.",
+      "sources": [
+        "SRC-SWIFTEDGE"
+      ]
+    },
+    {
+      "id": "C05",
+      "status": "CONFIRMED_SOURCE_OBSERVATION",
+      "detail": "TradRadar's 14:05 UTC delayed composite showed USD 2.00B XRP perpetual OI across seven exchanges, +4.45% over 24 hours, funding +0.0094% per eight hours, and at least USD 5.11M liquidations; its five-exchange account ratio was 76.6% long.",
+      "sources": [
+        "SRC-TRADRADAR"
+      ]
+    },
+    {
+      "id": "C06",
+      "status": "CONFIRMED_SOURCE_OBSERVATION",
+      "detail": "Kodexius reported USD 877.93M OI across seven XRP perpetual contracts at 12:44 UTC, with USD 1.40B 24-hour volume and +0.0093% OI-weighted funding per eight hours.",
+      "sources": [
+        "SRC-KODEXIUS"
+      ]
+    },
+    {
+      "id": "C07",
+      "status": "CONFIRMED_SOURCE_OBSERVATION",
+      "detail": "SwoleCharts reported approximately USD 1.25B OI across nine ranked exchanges at 14:55 UTC and +0.0098% OI-weighted funding per eight hours; it separately displayed USD 253.03M MEXC OI as unranked, outside the stated nine-exchange total.",
+      "sources": [
+        "SRC-SWOLECHARTS"
+      ]
+    },
+    {
+      "id": "C08",
+      "status": "UNSYNCHRONIZED_PROVIDER_OBSERVATION",
+      "detail": "CoinGlass rendered USD 2.90B XRP futures OI, USD 2.40B futures volume and USD 463.61M spot volume, but the captured summary exposed no timestamp or universe definition; it is excluded from synchronized comparisons.",
+      "sources": [
+        "SRC-COINGLASS"
+      ]
+    },
+    {
+      "id": "C09",
+      "status": "CONFIRMED_SOURCE_OBSERVATION",
+      "detail": "XRP Insights' metadata generated 13:12:10 UTC marked Nov 2 as the latest settled row and reported -32,825 XRP (approximately -USD 42,000) across computed flows, with 1,196,567,361 XRP held across the tracked funds and BITW sleeve.",
+      "sources": [
+        "SRC-XRP-INSIGHTS"
+      ]
+    },
+    {
+      "id": "C10",
+      "status": "CONFIRMED_SOURCE_OBSERVATION",
+      "detail": "ByKaranteli reported a provisional Nov 2 net outflow of USD 530,000 across five displayed funds, entirely attributed to XRPC in its table; it had refreshed at 09:09 UTC.",
+      "sources": [
+        "SRC-BYKARANTELI"
+      ]
+    },
+    {
+      "id": "C11",
+      "status": "DERIVED_DATA_QUALITY_FINDING",
+      "detail": "The named provider OI observations range from USD 877.93M to USD 2.90B, but their times, contract universes and inclusion rules differ; this spread is a coverage/methodology warning, not a confidence interval and not an amount to average.",
+      "sources": [
+        "SRC-TRADRADAR",
+        "SRC-KODEXIUS",
+        "SRC-SWOLECHARTS",
+        "SRC-COINGLASS"
+      ]
+    },
+    {
+      "id": "C12",
+      "status": "DERIVED_DATA_QUALITY_FINDING",
+      "detail": "The Nov 2 ETF flow readings are not reconciled: XRP Insights reports a settled holdings-delta outflow of 32,825 XRP across computed funds, while ByKaranteli reports a provisional USD 530,000 outflow across a different five-fund set; CryptoKeyhole still showed Nov 2 as partial at its earlier capture.",
+      "sources": [
+        "SRC-XRP-INSIGHTS",
+        "SRC-BYKARANTELI",
+        "SRC-CRYPTOKEYHOLE"
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "id": "E01",
+      "from": "Kraken",
+      "relation": "publishes_public_spot_ticker_for",
+      "to": "XRP/USD",
+      "claim_ids": [
+        "C01"
+      ],
+      "strength": "direct_observed"
+    },
+    {
+      "id": "E02",
+      "from": "Swiftedge",
+      "relation": "aggregates_or_displays",
+      "to": "XRP_perpetual_order_book_and_positioning",
+      "claim_ids": [
+        "C02",
+        "C03"
+      ],
+      "strength": "provider_observed"
+    },
+    {
+      "id": "E03",
+      "from": "Swiftedge",
+      "relation": "tracks",
+      "to": "Hyperliquid_and_Lighter_XRP_perpetual_OI",
+      "claim_ids": [
+        "C04"
+      ],
+      "strength": "provider_observed"
+    },
+    {
+      "id": "E04",
+      "from": "TradRadar",
+      "relation": "aggregates",
+      "to": "seven_exchange_XRP_perpetual_metrics",
+      "claim_ids": [
+        "C05"
+      ],
+      "strength": "provider_observed"
+    },
+    {
+      "id": "E05",
+      "from": "Kodexius",
+      "relation": "aggregates",
+      "to": "seven_XRP_perpetual_contracts",
+      "claim_ids": [
+        "C06"
+      ],
+      "strength": "provider_observed"
+    },
+    {
+      "id": "E06",
+      "from": "SwoleCharts",
+      "relation": "aggregates",
+      "to": "nine_ranked_exchange_XRP_perpetual_metrics",
+      "claim_ids": [
+        "C07"
+      ],
+      "strength": "provider_observed"
+    },
+    {
+      "id": "E07",
+      "from": "CoinGlass",
+      "relation": "publishes",
+      "to": "XRP_futures_market_summary",
+      "claim_ids": [
+        "C08"
+      ],
+      "strength": "provider_observed_timestamp_unknown"
+    },
+    {
+      "id": "E08",
+      "from": "XRP_Insights",
+      "relation": "derives_daily_holdings_delta_flows_for",
+      "to": "US_spot_XRP_ETFs_and_BITW_XRP_sleeve",
+      "claim_ids": [
+        "C09"
+      ],
+      "strength": "methodology_documented"
+    },
+    {
+      "id": "E09",
+      "from": "ByKaranteli",
+      "relation": "collects_and_reports_daily_flow_estimates_for",
+      "to": "five_displayed_US_spot_XRP_funds",
+      "claim_ids": [
+        "C10"
+      ],
+      "strength": "provider_methodology_stated"
+    },
+    {
+      "id": "E10",
+      "from": "ETF_flow_providers",
+      "relation": "produce_non_comparable_observations_for",
+      "to": "2026-11-02_XRP_ETF_flows",
+      "claim_ids": [
+        "C09",
+        "C10",
+        "C12"
+      ],
+      "strength": "measurement_disagreement"
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H01",
+      "statement": "The Nov 3 price advance coincided with increased leveraged participation and positive funding, which may reinforce momentum while increasing liquidation sensitivity.",
+      "supporting_claims": [
+        "C02",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "disconfirming_or_qualifying_claims": [
+        "C04",
+        "C05"
+      ],
+      "status": "PLAUSIBLE_NOT_TESTED",
+      "note": "TradRadar reports 76.6% long accounts, but liquidations were nearly balanced; Swiftedge's on-chain long-account share was 42.7% and its on-chain OI universe is much smaller. These are different populations."
+    },
+    {
+      "id": "H02",
+      "statement": "Most of the cross-provider XRP OI spread may be explained by differing contract coverage, exchange lists, inverse-contract treatment, timestamps, mark prices and normalization.",
+      "supporting_claims": [
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C11"
+      ],
+      "disconfirming_or_qualifying_claims": [],
+      "status": "PLAUSIBLE_NOT_TESTED",
+      "note": "No same-timestamp raw contract-by-contract reconciliation has yet been completed; do not treat this as a proven explanation."
+    },
+    {
+      "id": "H03",
+      "statement": "US spot ETF activity on Nov 2 was small relative to total holdings and cannot yet be classified as a strong institutional demand signal.",
+      "supporting_claims": [
+        "C09",
+        "C10",
+        "C12"
+      ],
+      "disconfirming_or_qualifying_claims": [
+        "C09"
+      ],
+      "status": "PLAUSIBLE_NOT_TESTED",
+      "note": "XRP Insights reports a settled but small holdings-delta outflow; ByKaranteli reports a larger provisional USD outflow on a different fund set. Issuer-level row reconciliation is required."
+    },
+    {
+      "id": "H04",
+      "statement": "The visible order-book walls may create short-lived liquidity zones but are not reliable directional predictors because they can be cancelled, replenished or consumed.",
+      "supporting_claims": [
+        "C02",
+        "C03"
+      ],
+      "disconfirming_or_qualifying_claims": [
+        "C03"
+      ],
+      "status": "STRUCTURAL_RISK_HYPOTHESIS",
+      "note": "A historical wall-persistence and execution-impact study is required before using these features in a forecast."
+    },
+    {
+      "id": "H05",
+      "statement": "The rise in price and OI could reflect mixed directional and hedging activity rather than a net bullish positioning imbalance.",
+      "supporting_claims": [
+        "C02",
+        "C04",
+        "C05",
+        "C07"
+      ],
+      "disconfirming_or_qualifying_claims": [
+        "C05"
+      ],
+      "status": "PLAUSIBLE_NOT_TESTED",
+      "note": "Open interest is paired long and short exposure; the aggregate does not identify beneficial owners, hedge intent or net spot delta."
+    }
+  ],
+  "source_independence": {
+    "SRC-KRAKEN": "Primary exchange API; direct venue observation.",
+    "SRC-SWIFTEDGE": "Independent analytics provider, but several panels share the same provider and underlying on-chain venue feeds.",
+    "SRC-TRADRADAR": "Independent analytics provider aggregating public exchange data; not independent of the exchanges it samples.",
+    "SRC-KODEXIUS": "Independent analytics provider aggregating public exchange data; contract selection differs from other providers.",
+    "SRC-SWOLECHARTS": "Independent analytics provider using public exchange APIs; method includes USDⓈ-M and COIN-M and excludes HIP-3.",
+    "SRC-COINGLASS": "Independent analytics provider; captured summary lacks timestamp and universe detail.",
+    "SRC-XRP-INSIGHTS": "Independent dataset using issuer-published holdings; flow is a computed holdings delta, not a direct issuer flow report.",
+    "SRC-BYKARANTELI": "Independent collector of public ETF flow data; current row provisional and fund universe differs.",
+    "SRC-CRYPTOKEYHOLE": "Independent tracker using issuer files and completeness checks; Nov 2 was partial at its capture."
+  },
+  "data_quality_controls": [
+    "Do not average OI values from non-harmonized providers.",
+    "Store USD OI and XRP-denominated OI separately.",
+    "Keep spot, centralized-exchange perps, on-chain perps and delivery futures separate.",
+    "Keep provider observation time, page refresh time and retrieval time separate.",
+    "Do not infer ETF flows from AUM changes; retain each provider's stated methodology and fund universe.",
+    "Do not treat provisional or partial ETF rows as final or missing values as zero.",
+    "Do not use visible order-book walls as forecast labels without persistence and execution-impact backtesting."
+  ],
+  "next_actions": [
+    "Capture same-minute raw public contract-level OI, funding and volume for Binance, Bybit, OKX, Gate, Bitget, MEXC, Hyperliquid, Lighter, KuCoin and Aster; normalize contract type and settlement interval.",
+    "Reconcile Nov 2 ETF observations against each issuer's own holdings/NAV/share files, with separate rows for XRPR and BITW and an explicit GXRP exclusion.",
+    "Build a historical feature store that preserves spot/perpetual basis, OI in XRP and USD, funding, liquidation coverage, account ratios and order-book depth with source timestamps.",
+    "Test order-book wall persistence and slippage against realized trades before any forecast feature use.",
+    "Keep forecast issuance blocked until fixed-horizon walk-forward tests, leakage checks, baselines, calibration, drift monitoring and independent outcome attestation pass."
+  ],
+  "sources": [
+    {
+      "id": "SRC-KRAKEN",
+      "publisher": "Kraken",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "source_type": "public_exchange_api"
+    },
+    {
+      "id": "SRC-SWIFTEDGE",
+      "publisher": "Swiftedge",
+      "url": "https://swiftedge.uk/xrp",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "source_type": "analytics_provider"
+    },
+    {
+      "id": "SRC-TRADRADAR",
+      "publisher": "TradRadar",
+      "url": "https://tradradar.io/markets/xrp",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "observed_at_utc": "2026-11-03T14:05:00Z",
+      "source_type": "analytics_provider"
+    },
+    {
+      "id": "SRC-KODEXIUS",
+      "publisher": "Kodexius",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "observed_at_utc": "2026-11-03T12:44:00Z",
+      "source_type": "analytics_provider"
+    },
+    {
+      "id": "SRC-SWOLECHARTS",
+      "publisher": "SwoleCharts",
+      "url": "https://swolecharts.com/exchanges/binance/XRP",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "observed_at_utc": "2026-11-03T14:55:00Z",
+      "source_type": "public_exchange_api_aggregator"
+    },
+    {
+      "id": "SRC-COINGLASS",
+      "publisher": "CoinGlass",
+      "url": "https://www.coinglass.com/currencies/XRP/futures",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "source_type": "analytics_provider",
+      "timestamp_quality": "not_exposed_in_captured_page"
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/data/xrp-etf-flows.json",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "generated_at_utc": "2026-11-03T13:12:10.910Z",
+      "data_as_of": "2026-11-02",
+      "source_type": "issuer_holdings_derived_dataset"
+    },
+    {
+      "id": "SRC-BYKARANTELI",
+      "publisher": "ByKaranteli",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "refreshed_at_utc": "2026-11-03T09:09:00Z",
+      "source_type": "ETF_flow_aggregator"
+    },
+    {
+      "id": "SRC-CRYPTOKEYHOLE",
+      "publisher": "CryptoKeyhole",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "retrieved_at_utc": "2026-11-03T15:09:20Z",
+      "updated_at_utc": "2026-11-03T05:18:00Z",
+      "source_type": "issuer_file_holdings_tracker"
+    }
+  ]
+}
