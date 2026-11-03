@@ -1,0 +1,647 @@
+{
+  "schema_version": 1,
+  "artifact_type": "xrp_ecosystem_relationship_update",
+  "captured_at_utc": "2026-11-03T16:41:02Z",
+  "repository_base": {
+    "branch": "main",
+    "commit": "2bc91a58699cd023d7d017be4c13b77cf3a2e069"
+  },
+  "scope": [
+    "XRP and XRPL",
+    "Coinbase",
+    "Circle and USDC",
+    "Ripple and RLUSD",
+    "SBI Group and SBI VC Trade",
+    "SBIC acronym disambiguation",
+    "public phrase research"
+  ],
+  "source_register": [
+    {
+      "id": "S1",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "Coinbase Global, Inc. Form 10-Q for quarter ended 2026-09-30",
+      "published_or_period": "Filed 2026-10-29; period ended 2026-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+      "source_type": "regulatory_filing",
+      "reliability": "high",
+      "notes": "Primary issuer filing; includes revenue, stablecoin, lending and collateral disclosures."
+    },
+    {
+      "id": "S2",
+      "publisher": "Coinbase",
+      "title": "RLUSD is now available on Coinbase",
+      "published_or_period": "2026-10-28",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+      "source_type": "official_product_announcement",
+      "reliability": "high",
+      "notes": "Launch networks, supported products and future Global Exchange collateral availability."
+    },
+    {
+      "id": "S3",
+      "publisher": "Ripple",
+      "title": "Ripple and Coinbase Partner to Expand Access to Ripple USD",
+      "published_or_period": "2026-10-28",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Confirms Ripple-Coinbase commercial partnership for RLUSD distribution."
+    },
+    {
+      "id": "S4",
+      "publisher": "Coinbase Help",
+      "title": "What is collateral? Coinbase Global Exchange",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/what-is-collateral",
+      "source_type": "official_product_documentation",
+      "reliability": "high",
+      "notes": "Lists XRP among accepted collateral assets; no public utilization quantities."
+    },
+    {
+      "id": "S5",
+      "publisher": "Coinbase Help",
+      "title": "Coinbase Perpetual Futures Product Specifications",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://help.coinbase.com/en/global-exchange/perpetual-futures-basics/perpetual-futures-product-specifications",
+      "source_type": "official_product_documentation",
+      "reliability": "high",
+      "notes": "XRP perpetual is USDC-settled; product specification states acceptable margin is all INTX-offered collateral."
+    },
+    {
+      "id": "S6",
+      "publisher": "Circle",
+      "title": "Now Available: USDC on the XRPL",
+      "published_or_period": "2025-06-12",
+      "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+      "source_type": "official_product_announcement",
+      "reliability": "high",
+      "notes": "Confirms native USDC on XRPL mainnet, Circle Mint and API support."
+    },
+    {
+      "id": "S7",
+      "publisher": "Circle",
+      "title": "USDC on the XRPL",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://www.circle.com/multi-chain-usdc/xrpl",
+      "source_type": "official_product_documentation",
+      "reliability": "high",
+      "notes": "Confirms native issuance, 1:1 redemption for qualified Circle Mint customers and cross-chain movement through Circle Mint/APIs."
+    },
+    {
+      "id": "S8",
+      "publisher": "Circle",
+      "title": "Circle Reports Second Quarter 2026 Results",
+      "published_or_period": "2026-08-05; quarter ended 2026-06-30",
+      "url": "https://www.circle.com/pressroom/circle-reports-second-quarter-2026-results",
+      "source_type": "official_financial_release",
+      "reliability": "high",
+      "notes": "USDC circulation, onchain volume, revenue, reserve income, distribution costs and Arc validator cohort."
+    },
+    {
+      "id": "S9",
+      "publisher": "Circle",
+      "title": "Transparency & Stability",
+      "published_or_period": "Dashboard snapshot as of 2026-10-29",
+      "url": "https://www.circle.com/transparency",
+      "source_type": "issuer_transparency_dashboard",
+      "reliability": "high",
+      "notes": "Dynamic issuer-reported USDC circulation, reserve and issuance/redemption figures; snapshot is not a quarterly audited balance."
+    },
+    {
+      "id": "S10",
+      "publisher": "Circle",
+      "title": "Circle to Announce Q3 2026 Financial Results on November 4, 2026",
+      "published_or_period": "2026-10-07",
+      "url": "https://www.circle.com/pressroom/circle-to-announce-q3-2026-financial-results-on-november-4-2026",
+      "source_type": "official_investor_relations_notice",
+      "reliability": "high",
+      "notes": "Q3 earnings webcast scheduled for 2026-11-04 at 08:00 ET."
+    },
+    {
+      "id": "S11",
+      "publisher": "Circle",
+      "title": "SBI Holdings Partners with Circle to Pioneer Digital Currency Innovation in Japan with USDC, Banking, and Web3 Services",
+      "published_or_period": "2023-11-27",
+      "url": "https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Original SBI-Circle MOU; planned USDC circulation, banking relationship and Web3 services."
+    },
+    {
+      "id": "S12",
+      "publisher": "SBI Holdings / SBI VC Trade",
+      "title": "RLUSD handling begins on VCTRADE",
+      "published_or_period": "2026-06-24",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Confirms SBI VC Trade RLUSD listing and its Japanese Payment Services Act classification approach."
+    },
+    {
+      "id": "S13",
+      "publisher": "SBI Holdings / SBI Shinsei Trust Bank / SBI VC Trade",
+      "title": "JPYSC begins investing part of backing assets in Japanese government bonds",
+      "published_or_period": "2026-09-07",
+      "url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Identifies JPYSC issuer, operator roles, backing-asset policy and 2026-09-07 supply/lending snapshot."
+    },
+    {
+      "id": "S14",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Company profile",
+      "published_or_period": "Current page retrieved 2026-11-03",
+      "url": "https://www.sbic.co.jp/company/profile/",
+      "source_type": "official_company_profile",
+      "reliability": "high",
+      "notes": "Officially identifies SBIC East Japan and corporate particulars."
+    },
+    {
+      "id": "S15",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Introductory generative AI and machine learning training for manufacturing",
+      "published_or_period": "2025-06-12 to 2025-06-13",
+      "url": "https://www.sbic.co.jp/training/20250612co/",
+      "source_type": "official_training_listing",
+      "reliability": "high",
+      "notes": "Course curriculum includes ChatGPT use, Copilot, prompt applications, RAG and API implementation; does not establish an OpenAI partnership."
+    },
+    {
+      "id": "S16",
+      "publisher": "XRP Ledger",
+      "title": "Reserves",
+      "published_or_period": "Current documentation retrieved 2026-11-03",
+      "url": "https://xrpl.org/docs/concepts/accounts/reserves",
+      "source_type": "protocol_documentation",
+      "reliability": "high",
+      "notes": "Current mainnet base reserve 1 XRP and owner reserve 0.2 XRP per item; reserve values can change."
+    },
+    {
+      "id": "S17",
+      "publisher": "XRP Ledger",
+      "title": "Transaction Cost",
+      "published_or_period": "Current documentation retrieved 2026-11-03",
+      "url": "https://xrpl.org/docs/concepts/transactions/transaction-cost",
+      "source_type": "protocol_documentation",
+      "reliability": "high",
+      "notes": "Standard minimum transaction cost is 10 drops and is destroyed, not paid to a validator or issuer."
+    },
+    {
+      "id": "S18",
+      "publisher": "XRP Ledger",
+      "title": "Sponsored Fees and Reserves",
+      "published_or_period": "Current documentation retrieved 2026-11-03",
+      "url": "https://xrpl.org/docs/concepts/accounts/sponsored-fees-and-reserves",
+      "source_type": "protocol_documentation",
+      "reliability": "high",
+      "notes": "Sponsors can cover fees and reserve requirements for other accounts; this weakens any assumption that every token user must personally acquire XRP."
+    },
+    {
+      "id": "S19",
+      "publisher": "Circle",
+      "title": "Binance Invests $100 Million in Circle, Expands Strategic Partnership and Renews Commercial Agreement for Five Years",
+      "published_or_period": "2026-09-22",
+      "url": "https://www.circle.com/fr/pressroom/binance-invests-100-million-in-circle-expands-strategic-partnership-and-renews-commercial-agreement-for-five-years",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Shows Circle pursuing additional large exchange distribution and strategic capital."
+    },
+    {
+      "id": "S20",
+      "publisher": "SBI Holdings",
+      "title": "Notice Regarding Participation in Circle’s ARC Token Presale",
+      "published_or_period": "2026-05-12",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/0512_a_en.pdf",
+      "source_type": "official_corporate_notice",
+      "reliability": "high",
+      "notes": "SBI notice reports a USD 50 million strategic investment in Circle and participation in ARC token presale."
+    }
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "classification": "confirmed_fact",
+      "subject": "Coinbase-Ripple-RLUSD distribution",
+      "statement": "Coinbase added RLUSD to Coinbase Prime, Coinbase Exchange and Coinbase Retail on 2026-10-28. At launch it supports deposits and withdrawals across XRPL, Base and Ethereum and 1:1 conversion from USD. Coinbase stated that availability for Coinbase Global Exchange customers, including RLUSD collateral use, would follow.",
+      "evidence": [
+        "S2",
+        "S3"
+      ],
+      "limitations": [
+        "The announcement does not disclose chain-level RLUSD balances, transfer volumes or institutional usage.",
+        "Future Global Exchange collateral availability must not be represented as live until separately confirmed."
+      ]
+    },
+    {
+      "id": "O2",
+      "classification": "confirmed_fact",
+      "subject": "Circle-USDC-XRPL",
+      "statement": "Circle launched native USDC on XRPL mainnet on 2025-06-12, with Circle Mint and API support. Qualified Circle Mint customers can redeem USDC 1:1; ordinary users rely on secondary-market and intermediary access.",
+      "evidence": [
+        "S6",
+        "S7"
+      ],
+      "limitations": [
+        "Native issuance does not establish transaction volume, active balances or use of XRP as a bridge asset."
+      ]
+    },
+    {
+      "id": "O3",
+      "classification": "confirmed_fact",
+      "subject": "Coinbase-XRP collateral eligibility",
+      "statement": "Coinbase Global Exchange documentation lists XRP as an accepted collateral asset for perpetual-futures margin. XRP perpetual futures are USDC-settled.",
+      "evidence": [
+        "S4",
+        "S5"
+      ],
+      "limitations": [
+        "The product is associated with Coinbase International Exchange and eligible jurisdictions; it is not evidence that all Coinbase customers, especially U.S. retail customers, can use XRP as collateral.",
+        "No public XRP collateral utilization, haircut, position limit or balance was found."
+      ]
+    },
+    {
+      "id": "O4",
+      "classification": "confirmed_fact",
+      "subject": "Coinbase Q3 2026 financial and collateral disclosures",
+      "statement": "Coinbase's Q3 2026 Form 10-Q says average USDC held in Coinbase products reached an all-time high and its Circle arrangement was renewed on the same terms. It attributes a $84.6 million Q3 and $201.6 million nine-month increase in stablecoin revenue to higher average USDC balances, partly offset by lower interest rates. Institutional loan receivables were $1.976 billion; collateral requirements were 100%-250% of loan fair value. Recognized lending collateral was $1.009 billion, including $11.740 million fiat/payment stablecoins and $997.557 million crypto assets. The crypto collateral table identified BTC, ETH and aggregate 'other crypto'; it did not identify XRP. Borrower-pledged collateral not recognized on the balance sheet totaled $3.285 billion, including $2.804 billion crypto assets. The recognized derivatives-collateral table identified BTC and ETH only.",
+      "evidence": [
+        "S1"
+      ],
+      "limitations": [
+        "No XRP-specific amount can be inferred from aggregate 'other crypto' or unrecognized borrower collateral.",
+        "The absence of an XRP line item does not prove zero XRP use elsewhere in Coinbase products.",
+        "Three counterparties each represented more than 10% of loan receivables, indicating disclosed counterparty concentration."
+      ]
+    },
+    {
+      "id": "O5",
+      "classification": "confirmed_fact",
+      "subject": "Circle USDC operating scale and current supply snapshot",
+      "statement": "Circle reported $73.3 billion USDC in circulation at 2026-06-30, $14.8 trillion Q2 onchain transaction volume, $701 million Q2 revenue and reserve income, $668 million reserve income, and $412 million distribution, transaction and other costs. Circle's transparency dashboard snapshot for 2026-10-29 showed $70.0 billion in circulation and $71.4 billion reserves; it showed a $3.1 billion net decrease over 30 days and a $5.0 billion net decrease over 365 days.",
+      "evidence": [
+        "S8",
+        "S9"
+      ],
+      "limitations": [
+        "The dashboard is dynamic and the Oct 29 snapshot is not a Q3 audited result. Q3 financial results are scheduled for 2026-11-04 at 08:00 ET.",
+        "Comparing quarter-end circulation to a later dashboard date is a point-in-time comparison, not a complete average-supply or flow decomposition."
+      ]
+    },
+    {
+      "id": "O6",
+      "classification": "confirmed_fact",
+      "subject": "Circle-SBI relationship",
+      "statement": "Circle and SBI Holdings announced a 2023 MOU covering USDC circulation, banking relationships and Web3 services. SBI VC Trade launched USDC distribution in Japan in March 2025. Circle's Q2 2026 release listed SBI Group among the founding third-party validator cohort for Circle's Arc network. SBI's 2026 notice also reports a USD 50 million strategic investment in Circle and participation in the ARC token presale.",
+      "evidence": [
+        "S8",
+        "S11",
+        "S20"
+      ],
+      "limitations": [
+        "A validator-cohort announcement and presale participation do not by themselves establish production payment volume or XRP demand."
+      ]
+    },
+    {
+      "id": "O7",
+      "classification": "confirmed_fact",
+      "subject": "Ripple-SBI relationship",
+      "statement": "SBI VC Trade began handling Ripple's RLUSD on 2026-06-24. SBI VC Trade describes its Japanese-law treatment as a No.4 electronic payment instrument under the Payment Services Act. This is a Japan-law classification approach, not a statement that RLUSD is a U.S. trust instrument.",
+      "evidence": [
+        "S12"
+      ],
+      "limitations": [
+        "Listing and regulatory classification do not disclose circulating supply, trading volume, custody balances or XRP bridge usage."
+      ]
+    },
+    {
+      "id": "O8",
+      "classification": "confirmed_fact",
+      "subject": "SBI JPYSC",
+      "statement": "SBI Shinsei Trust Bank is the issuer of JPYSC; SBI VC Trade acts as issuance委託者 and electronic-payment-instrument service provider. SBI reported about ¥20.1 billion JPYSC issued and about ¥6.9 billion in JPYSC lending applications as of 2026-09-07; it began investing ¥1 billion of backing assets in short-term Japanese government bonds under the amended framework.",
+      "evidence": [
+        "S13"
+      ],
+      "limitations": [
+        "These are issuer-reported figures for the stated date. JPYSC is a separate yen-denominated lane, not evidence of XRP usage or a Circle/Ripple joint product."
+      ]
+    },
+    {
+      "id": "O9",
+      "classification": "confirmed_fact",
+      "subject": "SBIC identity and ChatGPT reference",
+      "statement": "The exact SBIC entity identified by the Japanese company profile is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), established in 1963. Its official 2025 training listing includes ChatGPT and Copilot in a generative-AI/ML course. No OpenAI partnership, SBI Holdings affiliation or XRP relationship is established by those pages.",
+      "evidence": [
+        "S14",
+        "S15"
+      ],
+      "limitations": [
+        "SBIC is an acronym with other meanings, including Social Bias Inference Corpus in NLP research. The phrase 'ChatGPT SBIC' remains ambiguous without the originating context."
+      ]
+    },
+    {
+      "id": "O10",
+      "classification": "confirmed_fact",
+      "subject": "XRPL native-token mechanics",
+      "statement": "XRPL transaction costs are paid in XRP and destroyed; current standard minimum is 10 drops. Current documented mainnet reserves are 1 XRP base and 0.2 XRP per owner object. Sponsored fees and reserves can allow a sponsor to cover costs for another account.",
+      "evidence": [
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "limitations": [
+        "The minimum fee and reserve mechanics do not imply material XRP price demand; sponsorship and the very small standard fee reduce direct end-user acquisition requirements."
+      ]
+    }
+  ],
+  "relationship_edges": [
+    {
+      "from": "Coinbase",
+      "to": "Ripple",
+      "relation": "commercial_distribution_partnership",
+      "asset": "RLUSD",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S2",
+        "S3"
+      ],
+      "note": "Coinbase distributes RLUSD and supports XRPL deposits/withdrawals; this is not a statement that Coinbase or Ripple purchases XRP."
+    },
+    {
+      "from": "Coinbase",
+      "to": "Circle",
+      "relation": "USDC_collaboration_and_distribution_economics",
+      "asset": "USDC",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S1"
+      ],
+      "note": "Coinbase says the Circle arrangement was renewed on the same terms and average USDC held in Coinbase products reached an all-time high."
+    },
+    {
+      "from": "Circle",
+      "to": "XRPL",
+      "relation": "native_USDC_issuance",
+      "asset": "USDC",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_protocol_presence_but_not_bridge_use",
+      "evidence": [
+        "S6",
+        "S7"
+      ],
+      "note": "USDC is native on XRPL; no XRP bridge conversion is implied."
+    },
+    {
+      "from": "Ripple",
+      "to": "XRPL",
+      "relation": "RLUSD_native_issuance_and_ecosystem",
+      "asset": "RLUSD",
+      "classification": "confirmed",
+      "xrp_relevance": "direct_protocol_presence_but_not_bridge_use",
+      "evidence": [
+        "S3",
+        "S12"
+      ],
+      "note": "Coinbase's RLUSD support includes XRPL; do not equate RLUSD volume with XRP spot demand."
+    },
+    {
+      "from": "Coinbase",
+      "to": "XRP",
+      "relation": "perpetual_futures_collateral_eligibility",
+      "asset": "XRP",
+      "classification": "confirmed_product_eligibility",
+      "xrp_relevance": "direct_product_link",
+      "evidence": [
+        "S4",
+        "S5"
+      ],
+      "note": "Eligibility is documented; actual XRP collateral balances and utilization are unknown."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Circle",
+      "relation": "strategic_partnership_equity_and_Arc_ecosystem",
+      "asset": "USDC/ARC",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S8",
+        "S11",
+        "S20"
+      ],
+      "note": "SBI has USDC distribution, Arc validator-cohort participation and reported $50m Circle strategic investment."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "Ripple",
+      "relation": "longstanding_partnership_and_RLUSD_distribution",
+      "asset": "RLUSD",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect_to_direct_ecosystem",
+      "evidence": [
+        "S12"
+      ],
+      "note": "SBI VC Trade handles RLUSD; this does not establish XRP bridge settlement volumes."
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "USDC",
+      "relation": "Japanese_distribution",
+      "asset": "USDC",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S11"
+      ],
+      "note": "USDC distribution began in Japan in March 2025."
+    },
+    {
+      "from": "SBI VC Trade",
+      "to": "RLUSD",
+      "relation": "Japanese_distribution",
+      "asset": "RLUSD",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect",
+      "evidence": [
+        "S12"
+      ],
+      "note": "RLUSD handling began 2026-06-24."
+    },
+    {
+      "from": "SBI Shinsei Trust Bank",
+      "to": "JPYSC",
+      "relation": "issuer_and_reserve_custodian",
+      "asset": "JPYSC",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S13"
+      ],
+      "note": "Separate yen-denominated stablecoin project with SBI VC Trade as distribution/operator partner."
+    },
+    {
+      "from": "Circle",
+      "to": "Ripple",
+      "relation": "stablecoin_competition_and_shared_XRPL_rail",
+      "asset": "USDC/RLUSD",
+      "classification": "inference_from_confirmed_products",
+      "xrp_relevance": "shared_rail",
+      "evidence": [
+        "S3",
+        "S6",
+        "S7"
+      ],
+      "note": "Both issuers have stablecoins on XRPL; no direct Circle-Ripple corporate agreement was located in this pass."
+    }
+  ],
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "name": "Coinbase becomes a multi-issuer stablecoin distribution and execution hub",
+      "thesis": "Coinbase can earn from and influence both USDC and RLUSD distribution rather than being dependent on a single issuer. Its Q3 filing confirms an ongoing Circle economic arrangement while its October 28 RLUSD integration adds a second major issuer.",
+      "supporting_evidence": [
+        "O1",
+        "O4",
+        "O5"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "RLUSD Global Exchange collateral availability was announced as future, not live at launch.",
+        "No RLUSD chain-level or Coinbase-specific volume was disclosed.",
+        "Q3 filing says USDC balances held on Coinbase products rose, but does not disclose the exact balance or Circle payment calculation."
+      ],
+      "status": "plausible_structural_hypothesis"
+    },
+    {
+      "id": "H2",
+      "name": "Stablecoin growth on XRPL increases ledger utility more than XRP spot demand",
+      "thesis": "Native USDC and RLUSD can expand dollar-denominated settlement and token activity on XRPL, but direct XRP demand may be limited to fees, reserves and any separately proven bridge/collateral use.",
+      "supporting_evidence": [
+        "O1",
+        "O2",
+        "O10"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No on-ledger RLUSD/USDC transaction volume, XRP bridge conversion or fee-burn decomposition was collected in this snapshot.",
+        "Standard fees are extremely small and sponsored fees/reserves can reduce the need for every end user to hold XRP."
+      ],
+      "status": "plausible_mechanism_not_quantified"
+    },
+    {
+      "id": "H3",
+      "name": "SBI acts as a multi-currency distribution and institutional infrastructure hub",
+      "thesis": "SBI's USDC, RLUSD and JPYSC lanes position the group across USD stablecoins, yen settlement, custody and tokenized-finance infrastructure. This creates multiple paths into Japanese financial institutions, but XRP usage depends on the actual payment/collateral route selected.",
+      "supporting_evidence": [
+        "O6",
+        "O7",
+        "O8"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "Published product availability and partnership announcements do not disclose actual settlement volume or the share routed through XRP.",
+        "JPYSC is a separate yen lane and should not be treated as an XRP integration."
+      ],
+      "status": "plausible_structural_hypothesis"
+    },
+    {
+      "id": "H4",
+      "name": "Coinbase XRP collateral eligibility may create institutional XRP utility",
+      "thesis": "XRP collateral eligibility on Coinbase Global Exchange creates a direct product pathway for XRP to support derivatives positions and potentially influence institutional inventory demand.",
+      "supporting_evidence": [
+        "O3"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "No public XRP collateral utilization, haircuts, limits or outstanding balances were found.",
+        "Coinbase's Q3 recognized derivatives-collateral table lists BTC and ETH, not XRP; lending tables aggregate 'other crypto'.",
+        "International Exchange access is restricted by jurisdiction and customer eligibility."
+      ],
+      "status": "product_capability_confirmed_usage_unverified"
+    },
+    {
+      "id": "H5",
+      "name": "USDC supply contraction with rising Coinbase-held balances may indicate distribution concentration",
+      "thesis": "Circle's Oct 29 dashboard shows lower aggregate USDC circulation than at June 30, while Coinbase reports record average USDC balances on its own products. If comparable definitions and periods are confirmed, this could indicate a greater share of USDC held within Coinbase products despite weaker total circulation.",
+      "supporting_evidence": [
+        "O4",
+        "O5"
+      ],
+      "disconfirming_or_limiting_evidence": [
+        "The Circle figure is a point-in-time snapshot and Coinbase reports an average balance; dates and measures are not directly comparable.",
+        "Q3 results from Circle are not yet available in this snapshot."
+      ],
+      "status": "testable_inference_low_confidence"
+    }
+  ],
+  "sbic_disambiguation": {
+    "verified_entity": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan)",
+    "distinction": "This is not SBI Holdings, Inc. and no ownership/affiliation with SBI Holdings is established by the cited company profile.",
+    "chatgpt_context": "Its official June 2025 training page lists ChatGPT as part of a general generative-AI curriculum, alongside Copilot, prompt applications, RAG and API implementation. This does not establish a partnership with OpenAI.",
+    "alternate_academic_meaning": "Social Bias Inference Corpus (SBIC) is also a dataset name in NLP research; it is unrelated to the Japanese investment-support company unless separate evidence connects them.",
+    "unresolved_phrase": "The user's exact phrase 'SBIC, ChatGPT SBIC' remains unresolved without its original source/context.",
+    "evidence": [
+      "S14",
+      "S15"
+    ]
+  },
+  "phrase_watch": {
+    "ask_coin": {
+      "candidate": "Permission Coin (ASK)",
+      "status": "candidate_only",
+      "xrp_relationship": "none_verified_in_this_pass",
+      "note": "The exact phrase 'ASK Coin' is ambiguous; retain the Permission Coin interpretation only as a candidate, not a confirmed identification."
+    },
+    "actual_capital": {
+      "status": "unresolved",
+      "note": "No specific XRP-linked entity, transaction or source meaning was confirmed in this pass."
+    },
+    "camilla_stephenson": {
+      "status": "likely_identity_match_but_inventory_incomplete",
+      "note": "Existing branch research provisionally maps the spelling to Kamilah Stevenson / Camila or Camilla in transcripts. The public channel inventory remains partial; do not claim all videos have been enumerated."
+    }
+  },
+  "key_unknowns": [
+    "Actual XRP amounts, haircuts, limits and utilization accepted as Coinbase derivatives collateral.",
+    "Whether and when RLUSD becomes usable as collateral on Coinbase Global Exchange after the announced future availability.",
+    "Coinbase-specific RLUSD deposits, withdrawals, trading and chain-level balances.",
+    "Native USDC and RLUSD active balances and transaction volumes on XRPL, separated from other chains.",
+    "SBI VC Trade's actual USDC/RLUSD/J​​PYSC transaction volumes, custody balances and corridor-level settlement paths.",
+    "Whether any specific SBI/Ripple payment flow uses XRP as a bridge asset rather than fiat or stablecoin settlement.",
+    "Circle Q3 2026 financial results and updated USDC circulation/reserve data, scheduled for 2026-11-04 08:00 ET.",
+    "The originating context for 'SBIC, ChatGPT SBIC', 'ASK Coin' and 'actual capital'.",
+    "Complete public YouTube video inventory and transcript coverage for the likely Kamilah/Camila/Camilla Stevenson channel."
+  ],
+  "next_actions": [
+    "Ingest Circle Q3 results on 2026-11-04 and reconcile reported average USDC balances, reserve income, distribution costs and supply change.",
+    "Capture issuer-level Coinbase Q3 collateral details and compare with Coinbase's live product eligibility; preserve 'eligible' versus 'used' as separate fields.",
+    "Query XRPL validated-ledger data for issuer-specific USDC/RLUSD trustline balances, transfers, DEX activity, transaction fees and reserve sponsorship; separate active balances from issued supply.",
+    "Build SBI product-level volume and custody evidence from SBI VC Trade disclosures, SBI Shinsei Trust Bank filings and public ledger data.",
+    "Update the relationship graph with dates, role, product, jurisdiction, directness and confidence; preserve disconfirming evidence.",
+    "Add a point-in-time feature store with immutable source snapshots before generating any XRP forecasts."
+  ],
+  "research_status": {
+    "designed": [
+      "Relationship graph and competing-hypothesis structure",
+      "Source classification and uncertainty labels"
+    ],
+    "executed": [
+      "SEC Q3 Coinbase filing review",
+      "Coinbase-Ripple RLUSD launch review",
+      "Circle XRPL and SBI relationships review",
+      "SBIC identity and ChatGPT course disambiguation"
+    ],
+    "verified": [
+      "Primary source links and published dates for the claims above"
+    ],
+    "not_yet_done": [
+      "Independent XRPL ledger volume analysis",
+      "SBI product-level flow reconciliation",
+      "Circle Q3 results analysis",
+      "Validated XRP price forecasting"
+    ]
+  },
+  "safety": {
+    "public_authorized_sources_only": true,
+    "no_private_data_or_unauthorized_access": true,
+    "no_market_manipulation": true,
+    "no_trading_or_deployment_action": true
+  }
+}
