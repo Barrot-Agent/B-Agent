@@ -61,7 +61,7 @@
       "Pass independence_group through MMIExistingSystemsAdapter.source_record.",
       "Require CORROBORATED results to cite at least two known external source IDs from at least two distinct non-empty independence groups.",
       "Reject model-derived and Barrot-generated records as independent corroboration sources.",
-      "If independent_sources is supplied, require it to match the number of cited source IDs.",
+      "If independent_sources is supplied, require it to match the number of distinct independence groups, not raw URLs or records.",
       "Require a CORROBORATION COMPLETE stage to have a validated CORROBORATED result, or a CONTRADICTORY result with two independent groups and explicit reconciliation preserving both supporting and contradicting evidence.",
       "Permit CORROBORATION NOT_APPLICABLE only with a non-empty reason.",
       "Make MMICompletenessReport use the state-machine result and expose corroboration_complete and validation_errors.",
@@ -71,6 +71,7 @@
       "Zero independent sources cannot complete corroboration.",
       "Two source IDs in the same publisher group are not independent.",
       "Two distinct external source groups can corroborate.",
+      "Multiple source records from one publisher group do not inflate the independent-source count.",
       "Contradictory independent evidence can complete with explicit reconciliation; unanimity is not forced.",
       "NOT_APPLICABLE requires a reason."
     ],
