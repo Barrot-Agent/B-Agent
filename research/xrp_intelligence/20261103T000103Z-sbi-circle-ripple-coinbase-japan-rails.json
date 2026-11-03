@@ -143,6 +143,43 @@
         "tokyo-sbic-profile",
         "tokyo-sbic-chatgpt-training-20250612"
       ]
+    },
+    {
+      "id": "F15",
+      "class": "CONFIRMED_SEC_LITIGATION_RELEASE",
+      "finding": "On August 7, 2025, the SEC announced the joint stipulation dismissing its appeal and Ripple's cross-appeal. The final district-court judgment remained in effect, including a $125,035,150 civil penalty and an injunction prohibiting Ripple from violating Securities Act registration provisions.",
+      "implication": "The federal civil enforcement action and appeals were resolved, but the penalty and injunction were not vacated. This is the legal baseline for assessing Ripple institutional distribution and XRP-related business activity; it does not mean every XRP transaction or product has one universal legal classification.",
+      "sources": [
+        "sec-ripple-appeals-dismissed-20250807"
+      ]
+    },
+    {
+      "id": "F16",
+      "class": "CONFIRMED_REGULATORY_RULE",
+      "finding": "The OCC issued its final rule implementing the GENIUS Act on October 21, 2026. The rule covers permitted payment stablecoin issuers and certain custody activities under OCC jurisdiction, including reserve assets, redemption, risk management, audits, reports, supervision, custody and capital/operational backstops. The rule and Act take effect January 18, 2027; BSA/AML and OFAC requirements are to be addressed in separate rulemaking.",
+      "implication": "USDC, RLUSD and other payment stablecoins face a defined federal implementation timeline. The final rule's scope depends on issuer and activity jurisdiction; it is not a blanket determination that every token or issuer is already approved.",
+      "sources": [
+        "occ-genius-final-rule-20261021"
+      ]
+    },
+    {
+      "id": "F17",
+      "class": "CONFIRMED_FSA_REGULATORY_CHANGE_AND_COMPANY_CLASSIFICATION",
+      "finding": "Japan's FSA promulgated amendments on May 19, 2026, effective June 1, 2026, expanding the treatment of certain foreign trust beneficiary interests as electronic payment instruments where the foreign legal framework is equivalent to Japan's. Separately, SBI VC Trade and Ripple state that SBI VC Trade classifies RLUSD as a Type 4 electronic payment instrument for its Japanese handling.",
+      "implication": "The foreign trust-equivalence route is a regulatory enabler for foreign stablecoins. The captured FSA notice does not itself name RLUSD or constitute a token-specific FSA approval; SBI VC Trade's classification and operational acceptance are separately evidenced.",
+      "sources": [
+        "fsa-foreign-trust-e-payment-amendment-20260519",
+        "sbi-ripple-rlusd-japan-20260624"
+      ]
+    },
+    {
+      "id": "F18",
+      "class": "THIRD_PARTY_LIQUIDITY_RESEARCH",
+      "finding": "CoinGecko's September 30, 2026 CEX liquidity report describes XRP depth across eight exchanges as broadly distributed within a ±2% band, with roughly $18M of bids and $14M of asks and total depth around $30M. It reports Binance as the leader at the market price and Coinbase surpassing Binance at the ±0.1% band. The report says aggregate XRP depth was broadly similar to 2025, while SOL's average daily volume was about 25% higher.",
+      "implication": "XRP liquidity is not represented by one exchange. Coinbase's near-touch depth may be strategically relevant, but the report is a multi-period study, not a synchronized November 2 order-book snapshot.",
+      "sources": [
+        "coingecko-cex-liquidity-2026-0930"
+      ]
     }
   ],
   "identity_resolution": {
@@ -675,6 +712,20 @@
       "circle_reported_usdc_freezes": "more than $1.1B",
       "stablecoin_market_cap_direction": "Reuters reported stablecoin market capitalizations had fallen since Friday.",
       "interpretation": "Exchange-wide security/confidence shock, not an XRP-specific flow measure. Exchange inflows are not automatically customer migration."
+    },
+    "spot_depth": {
+      "publisher": "CoinGecko",
+      "publication_update_date": "2026-09-30",
+      "exchange_count": 8,
+      "xrp_bid_depth_within_plus_minus_2pct_usd_approx": 18000000,
+      "xrp_ask_depth_within_plus_minus_2pct_usd_approx": 14000000,
+      "xrp_total_depth_within_plus_minus_2pct_usd_approx": 30000000,
+      "venue_observations": {
+        "market_price": "Binance is reported as the deepest at the market price.",
+        "plus_minus_0_1pct": "Coinbase is reported to surpass Binance at the ±0.1% price-deviation band."
+      },
+      "classification": "THIRD_PARTY_MULTI_PERIOD_RESEARCH_NOT_LIVE_SNAPSHOT",
+      "limitation": "The approximate bid and ask figures and total-depth figure are rounded report summaries; do not force them into an exact arithmetic identity or treat them as November 2 executable depth."
     }
   },
   "competing_causal_hypotheses": [
@@ -902,6 +953,26 @@
       "date": "2026-11-04",
       "event": "Circle Q3 2026 results scheduled for 8:00 AM Eastern.",
       "status": "SCHEDULED_NOT_YET_REPORTED"
+    },
+    {
+      "date": "2025-08-07",
+      "event": "SEC and Ripple jointly dismiss appeals; $125,035,150 penalty and injunction in final judgment remain.",
+      "status": "OFFICIAL_SEC_LITIGATION_RESOLUTION"
+    },
+    {
+      "date": "2026-05-19",
+      "event": "Japan FSA promulgates amendments expanding qualifying foreign trust-beneficiary interests under an equivalence test.",
+      "status": "OFFICIAL_REGULATORY_AMENDMENT"
+    },
+    {
+      "date": "2026-06-01",
+      "event": "Japan FSA amendments for qualifying foreign trust-beneficiary interests take effect.",
+      "status": "REGULATION_EFFECTIVE"
+    },
+    {
+      "date": "2026-10-21",
+      "event": "OCC issues final GENIUS Act rule, effective January 18, 2027.",
+      "status": "OFFICIAL_FINAL_RULE"
     }
   ],
   "source_records": [
@@ -1120,6 +1191,38 @@
       "date": "2025-06-12/2025-06-13",
       "url": "https://www.sbic.co.jp/training/20250612co/",
       "observation": "Two-day introductory generative-AI/machine-learning course for investee companies; curriculum includes ChatGPT use, Copilot features, code generation and information-leakage risk."
+    },
+    {
+      "id": "sec-ripple-appeals-dismissed-20250807",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "type": "official_litigation_release",
+      "date": "2025-08-07",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26369",
+      "observation": "Joint stipulation dismisses SEC appeal and Ripple cross-appeal; final district-court judgment remains, including $125,035,150 civil penalty and injunction."
+    },
+    {
+      "id": "occ-genius-final-rule-20261021",
+      "publisher": "Office of the Comptroller of the Currency",
+      "type": "official_final_rule_announcement",
+      "date": "2026-10-21",
+      "url": "https://www.occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html",
+      "observation": "OCC final GENIUS Act rule covers reserve assets, redemption, risk management, audits, reporting, supervision, custody and capital/operational backstop; effective January 18, 2027; BSA/AML and OFAC rulemaking separate."
+    },
+    {
+      "id": "fsa-foreign-trust-e-payment-amendment-20260519",
+      "publisher": "Japan Financial Services Agency",
+      "type": "official_regulatory_amendment",
+      "date": "2026-05-19",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260519/20260519.html",
+      "observation": "Amendments expand certain foreign trust beneficiary interests as electronic payment instruments using an equivalence test; effective June 1, 2026."
+    },
+    {
+      "id": "coingecko-cex-liquidity-2026-0930",
+      "publisher": "CoinGecko Research",
+      "type": "third_party_market_liquidity_report",
+      "date": "2026-09-30",
+      "url": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2026",
+      "observation": "XRP CEX depth distributed across eight venues; approximately $18M bids and $14M asks within ±2%; Coinbase exceeds Binance at ±0.1% band; multi-period report, not a live snapshot."
     }
   ],
   "architecture_state": {
@@ -1179,6 +1282,8 @@
     "Resolve 'ASK Coin', 'actual capital' and 'SBIC, ChatGPT SBIC' with source-level evidence."
   ],
   "next_actions": [
+    "Track the OCC GENIUS Act rule's January 18, 2027 effective date and separate AML/OFAC rulemaking; map issuer-specific applicability to Circle, Ripple and exchange custody/distribution.",
+    "Track Japan FSA foreign trust-equivalence implementation and distinguish regulator rulemaking from SBI VC Trade's own RLUSD classification.",
     "Capture SBI VC Trade token/network support and deposit/withdrawal instructions for USDC, RLUSD and JPYSC.",
     "Replay SBI Remit XRP corridor public transactions and distinguish native XRP bridge usage from XRPL ledger usage.",
     "Capture raw Binance, Bybit, OKX, Hyperliquid, MEXC, Gate, Bitget and HTX XRP perpetual OI/funding at one UTC cutoff.",
@@ -1204,5 +1309,49 @@
     "Official company statements establish what each company disclosed, not independent proof of commercial success, profitability or causal price impact.",
     "SBI's common investments in Ripple and Circle establish a disclosed institutional network, not direct Ripple-Circle coordination.",
     "Public sources do not establish the current complete YouTube video inventory for the Camilla Stephenson candidate."
-  ]
+  ],
+  "regulatory_context": {
+    "us_ripple_case": {
+      "event_date": "2025-08-07",
+      "status": "SEC appeal and Ripple cross-appeal dismissed by joint stipulation; final district-court judgment remains",
+      "penalty_usd": 125035150,
+      "injunction": "Prohibits Ripple from violating Securities Act registration provisions.",
+      "source_ids": [
+        "sec-ripple-appeals-dismissed-20250807"
+      ]
+    },
+    "us_payment_stablecoins": {
+      "statute": "GENIUS Act",
+      "enacted_date": "2025-07-18",
+      "occ_final_rule_date": "2026-10-21",
+      "effective_date": "2027-01-18",
+      "topics": [
+        "reserve assets",
+        "redemption",
+        "risk management",
+        "audits and reporting",
+        "supervision",
+        "custody",
+        "capital and operational backstop"
+      ],
+      "separate_pending_rulemaking": [
+        "Bank Secrecy Act",
+        "anti-money laundering",
+        "OFAC sanctions"
+      ],
+      "source_ids": [
+        "occ-genius-final-rule-20261021"
+      ]
+    },
+    "japan_foreign_stablecoins": {
+      "fsa_amendment_promulgated": "2026-05-19",
+      "effective_date": "2026-06-01",
+      "scope": "Certain foreign trust beneficiary interests may qualify as electronic payment instruments where foreign legal rules are equivalent to Japan's framework.",
+      "rlusd_note": "SBI VC Trade says it classifies RLUSD as a Type 4 electronic payment instrument for its Japanese handling. Do not describe the FSA notice itself as a token-specific RLUSD approval.",
+      "source_ids": [
+        "fsa-foreign-trust-e-payment-amendment-20260519",
+        "sbi-ripple-rlusd-japan-20260624"
+      ]
+    }
+  }
 }
