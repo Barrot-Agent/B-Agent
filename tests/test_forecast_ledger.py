@@ -1,4 +1,6 @@
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
 import pytest
 
 from barrot_agent.evolution.forecast_ledger import (
@@ -6,6 +8,8 @@ from barrot_agent.evolution.forecast_ledger import (
     ForecastLedger,
     ForecastLedgerError,
 )
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 CUTOFF = "2026-11-03T16:00:00Z"
 ISSUED = "2026-11-03T16:01:00Z"
@@ -312,3 +316,14 @@ def test_rejects_boolean_probability(tmp_path):
         ledger.record_forecast(
             forecast(probabilities={"down": True, "flat": 0.0, "up": 0.0})
         )
+
+
+
+def test_default_forecast_ledger_database_and_sidecars_are_gitignored() -> None:
+    ignored = set((REPO_ROOT / ".gitignore").read_text(encoding="utf-8").splitlines())
+    assert {
+        "data/xrp_intelligence/forecast_ledger.sqlite3",
+        "data/xrp_intelligence/forecast_ledger.sqlite3-wal",
+        "data/xrp_intelligence/forecast_ledger.sqlite3-shm",
+        "data/xrp_intelligence/forecast_ledger.sqlite3-journal",
+    }.issubset(ignored)
