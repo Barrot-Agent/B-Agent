@@ -200,3 +200,82 @@ Circle's Q3 2026 results webcast is scheduled for November 4, 2026 at 08:00 ET. 
 - EXECUTED: public-source research, three durable addenda, fresh-main scheduler containment PR.
 - VERIFIED: OCC CAS statuses and source links; PR #1594 CI and fail-closed gate; earlier PR #1590/#1592 exact-head checks as noted.
 - PENDING: PR #1591 exact-head CI/gate; authorized merge decisions; Circle Q3 ingestion; point-in-time feature store; walk-forward dataset and calibrated out-of-sample prediction results.
+
+
+## Capital, distribution and market-structure update — 2026-11-03
+
+### "Actual capital" thread clarified
+Prior conversation retrieval points the original research thread toward Ripple Prime/Hidden Road regulatory net capital, customer-segregated funds, repo financing and parent contributions, plus the still-unnamed C2FO Instant Pay capital providers. The Hyperliquid 0x243 leveraged XRP position is a separate lead and is not established as the source of the user's phrase.
+
+New durable files:
+- `20261103-ripple-prime-hidden-road-capital-review.json`
+- `20261103-cftc-fcm-capital-and-customer-funds-comparison.json`
+- `20261103-c2fo-instant-pay-actual-capital-status.json`
+
+### Ripple Prime / Hidden Road — primary regulatory figures
+SEC audited statement for Hidden Road Partners CIV US LLC, year-end 2025:
+- Member's equity: $520.401m.
+- SEC/CFTC net capital disclosed: $518.602m; required $33.802m; excess $484.801m.
+- Customer-segregated cash included in broker/clearing receivables: $765.473m, plus $0.332m in segregated bank cash. These are customer assets, not proprietary capital.
+- Reverse-repo assets: $38.183bn; repo liabilities: $37.770bn. These are matched-book financing balances, not equity or free cash.
+- A $100m U.S. Treasury repo with Ripple was outstanding at 2025-12-31. This is collateralized financing, not an equity contribution.
+- The filing reports $70m of capital contributions from the immediate Parent (Hidden Road Partners CIV US HoldCo LLC) through 2026-02-26. Ripple is the ultimate parent after the 2025 acquisition; do not claim Ripple directly remitted the $70m.
+
+CFTC same-source monthly series:
+- 2025-12-31: adjusted net capital $518.602m; requirement $33.802m; excess $484.801m; customer assets in segregation $765.805m; required $703.540m; excess $62.265m.
+- 2026-08-31: adjusted net capital $968.424m; requirement $30.689m; excess $937.735m; customer assets in segregation $720.132m; required $657.476m; excess $62.656m.
+- Adjusted net capital rose 86.74% between the two CFTC dates. Segregated customer assets fell 5.96%. The $70m parent contribution cannot explain the full $449.822m rise; composition and cause remain unknown.
+- CFTC data are as of August 31 and were filed by October 1. September data were not yet on the index. CFTC says it does not revise published data for later amended reports.
+
+Coinbase Financial Markets Inc. (separate Coinbase FCM entity), CFTC 2026-08-31:
+- Adjusted net capital $321.159m; requirement $11.797m; excess $309.362m.
+- Customer assets in segregation $346.894m; required $211.435m; excess $135.459m.
+- Cleared-swap customer assets $166.135m; required $6.159m; excess $159.976m.
+- Ripple Prime's FCM reported about 3.015x Coinbase FCM's adjusted net capital and 2.076x its segregated customer assets on the same date. This is a raw legal-entity comparison, not a credit-quality or profitability ranking. Customer assets are not proprietary capital.
+
+### Direct Ripple–Coinbase relationships now confirmed
+- October 28, 2026: Ripple and Coinbase announced a direct RLUSD distribution partnership. RLUSD is live on Coinbase Prime, Coinbase Exchange and the retail app, with deposits/withdrawals on XRPL, Base and Ethereum and 1:1 conversion from USD and supported stablecoins. RLUSD collateral for Coinbase Global Exchange customers was described as a future rollout, not live at announcement.
+- March 5, 2026: Ripple Prime clients gained access to Coinbase Derivatives contracts through Nodal Clear, including XRP futures. Ripple Prime/Hidden Road and Coinbase Financial Markets are both listed as clearing members of Nodal Clear.
+- These are two distinct channels: RLUSD distribution and XRP futures access. Neither proves spot XRP purchases or XRP collateral usage. Coinbase's current U.S. derivatives documentation lists USD and USDC auto-conversion, not RLUSD.
+- Coinbase is now a multi-stablecoin distribution venue: its established USDC/Circle relationship remains, while RLUSD has a separate Ripple partnership. No evidence yet that RLUSD displaces USDC or changes Coinbase's revenue mix.
+
+### C2FO / BNY — financing status versus settlement claims
+- C2FO and Ripple announced Instant Pay on October 27: participating capital providers fund approved invoices; RLUSD is the settlement asset on XRPL.
+- C2FO's public page still shows a waitlist and limited U.S. rollout over coming months. No capital providers are named; no committed/deployed capital, invoice count or XRPL transaction volume is disclosed.
+- C2FO's $525bn figure is cumulative historical Early Pay working-capital activity, not Instant Pay funding or XRPL volume.
+- The release describes XRPL settlement in seconds; the supplier-facing page says funds arrive in minutes. Treat those as different steps in the payment chain.
+- BNY's separate October 27 initiative with Ripple/C2FO is exploratory tokenized trade finance, not evidence of a funded receivables pilot. BNY's XRP/RLUSD custody support for eligible institutional clients is announced as live; direct RLUSD mint/redeem through BNY remains intended future functionality subject to approvals.
+
+### OCC trust-bank status and initial capital conditions
+- Ripple National Trust Bank: OCC CAS Consummated/Effective 2026-10-26.
+- Circle First National Digital Currency Bank: OCC CAS Consummated/Effective 2026-07-24.
+- Coinbase National Trust Company: OCC CAS Approved 2026-04-02; no Consummated/Effective date was shown in the retrieved detail page.
+- Initial conditional approval letters set minimum Tier 1 capital of $11.7m Ripple, $6.05m Circle and $60m Coinbase, plus separate liquid-asset/operating-expense conditions. These are regulatory minimums in initial letters, not actual paid-in capital.
+- Ripple's and Circle's trust banks support stablecoin reserve/collateral-trust and custody models; Coinbase's proposed bank focuses on institutional custody and related customer transaction services. None of the retrieved letters establishes XRP as a required reserve asset.
+- OCC charter approval or an obligation to apply for Federal Reserve Bank stock does not prove a Federal Reserve master account or direct Fedwire access.
+
+### Current single-venue snapshot
+- Kraken XRP/USD API, 2026-11-03 date-only retrieval: last $1.27742; bid $1.27721; ask $1.27722; 24h volume 21.724m XRP; 24h VWAP $1.26301793; 24h range $1.23364–$1.28923.
+- No server timestamp was exposed; this is one venue, not a consolidated price, and not a forecast.
+
+### Creator identity and public-video inventory
+- The user's requested spelling is "Camilla Stephenson". The best-supported candidate is Dr. Kamilah Stevenson, who uses spoken variants Camila/Camilla Stevenson. An iHeart interview dated June 11, 2026 has her say her YouTube presence is "doctor Camilla Stevenson" and warns that fake pages exist.
+- The surname spelling differs (Stephenson vs Stevenson), so canonical channel identity is probable but not confirmed. Four additional likely video IDs are recorded in the video-discovery addendum; the inventory is not exhaustive.
+- vidIQ channel enumeration failed because the connected account reported insufficient credits; no credits were charged. Direct YouTube page/RSS retrieval did not yield a full upload list. Do not claim all videos have been inventoried.
+
+### Current repository status
+- Main remains `09466f945b8b9a658e0b2a03e70c05d78c33b765`; no main write or merge occurred.
+- PR #1594 scheduler-tick containment is draft/open/unmerged, fresh-main, exact-head CI and fail-closed gate passed.
+- PR #1592 Cross Analysis read-only containment is draft/open/unmerged, fresh-main, checks passed.
+- PR #1590 prediction-ledger integrity is draft/open/unmerged, based on older main by one commit; exact-head CI and prediction-integrity checks passed on `f6a4687976a6d9ca5a2d530255609212fc4a031f`.
+- PR #1591 research branch latest head `0ca9d77492f06dfd6e2b1013bfa69835b433eac4`, 28 commits ahead and 1 behind current main. The code/data commits through `3d862b44a42f3f0a084d2adf199a42341ad18cd7` passed Tests and the fail-closed gate. The latest commit only updates the video identity addendum and has no new CI checks because it is documentation-only.
+- Scheduled scheduler tick, Cross Analysis and check-signal-accuracy remain active on main until their respective containment PRs are authorized and merged. Other scheduled issue/subscriber workflows still require separate audit.
+- No PR merge, force-push, manual workflow dispatch, deployment, or trading action occurred.
+
+### Next highest-impact actions
+1. Ingest Circle Q3 2026 results scheduled for 2026-11-04 at 08:00 ET; isolate reserve income, distribution economics, RLUSD/USDC competition and trust-bank operations.
+2. Ingest the next CFTC FCM monthly dataset and reconcile the Hidden Road/CFM capital and segregation changes.
+3. Obtain named C2FO Instant Pay funding providers and first funded invoice/settlement evidence; do not infer from the $525bn Early Pay figure.
+4. Track Coinbase RLUSD collateral activation and XRP futures utilization separately.
+5. Build the point-in-time historical feature store and fixed-horizon forecast dataset only after the source/vintage contract is stable.
+6. Continue the exhaustive YouTube inventory after canonical channel identity and a paginated public source are available.
