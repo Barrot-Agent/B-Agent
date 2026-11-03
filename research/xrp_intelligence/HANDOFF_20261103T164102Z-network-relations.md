@@ -170,3 +170,33 @@ This is a confirmed corporate AI-adoption map within SBI Group, separate from SB
 ## Stevenson channel identity refinement — 2026-11-03 16:59 UTC
 
 The identity match is now stronger. The June 11, 2026 iHeart interview is titled for Dr. Kamilah Stevenson; the host addresses the guest as Camilla, and at 40:07 the guest says her YouTube is “Doctor Camilla Stevenson” and gives X/Instagram spelling variants. Vling indexes channel ID `UCqUPJMQdkCN6lsLVDnichPA` as Kamilah Stevenson and estimates 1.3K videos / 143K subscribers. The official YouTube handle URL resolves to “Kamilah Stevenson.” This is a strong identity match for the user's “Camilla Stephenson” reference, but the 1.3K count is third-party metadata and the complete public upload inventory remains unfinished.
+
+
+## Follow-up research and repository audit — 2026-11-03
+
+### New durable research addenda
+- `20261103-occ-trust-bank-competitive-positioning.json`: OCC CAS status comparison. Ripple National Trust Bank is recorded `Consummated/Effective` on 2026-10-26; Circle's First National Digital Currency Bank is recorded `Consummated/Effective` on 2026-07-24; Coinbase National Trust Company is recorded `Approved` on 2026-04-02, with no `Consummated/Effective` date shown in the retrieved detail page.
+- Ripple's approved trust-bank scope is RLUSD reserve management, collateral trusteeship for RLUSD holders and fiduciary digital-asset custody. The OCC's 2025 decision letter says the proposed bank is limited to trust-company operations and is not an insured depository institution. The charter evidence does not establish XRP-specific reserve, collateral, custody or payment usage. Keep stablecoin/custody regulatory infrastructure separate from XRP demand.
+- `20261103-actual-capital-hyperliquid-xrp-position-review.json`: ChainCatcher reports 52.67 BTC (about $3.26m) deposited and a 14.189m XRP position with $16.3m notional at 20x. $815,000 is only the arithmetic notional/20 under a simplified isolated-margin assumption; actual account equity and capital allocated remain unknown. The original Onchain Lens X post was inaccessible; repeated secondary reports are not independent corroboration. The exact phrase "actual capital" remains unresolved.
+- `20261103-kamilah-stevenson-public-video-discovery-addendum.json`: four additional likely channel matches were indexed: QslbjGQD0MU (2025-12-14), ci0FH73lbCs (2026-01-13), cxeX_eu_2H0 (2026-01-15), rv0BAV0vLgo (2026-03-19). Identity remains a likely match, not canonically confirmed. The public upload inventory is not exhaustive. vidIQ channel listing failed for insufficient credits; no credits were charged.
+
+### Important creator-claim verification
+The December 14, 2025 video "Ripple Just Became a BANK" frames Ripple's conditional OCC approval as a structural banking change. The later status is now stronger: OCC CAS records Ripple's application as Consummated/Effective on October 26, 2026, matching Ripple's final-approval announcement. However, the bank's defined scope is trust-company activity centered on RLUSD reserves and custody; this does not prove XRP is a required bank asset or that XRP demand rises automatically. Treat the creator's structural framing as commentary, and validate each factual subclaim against regulator and issuer records.
+
+### Upcoming event
+Circle's Q3 2026 results webcast is scheduled for November 4, 2026 at 08:00 ET. Prioritize USDC circulation and reserve income, distribution costs, Coinbase economics, Arc and trust-bank operating updates, and any XRP-specific disclosure. Do not equate USDC growth with XRP demand.
+
+### Fresh-main repository containment
+- Current main remains `09466f945b8b9a658e0b2a03e70c05d78c33b765`; no main-branch mutation was performed.
+- PR #1594, [disable unsafe scheduled scheduler tick](https://github.com/Barrot-Agent/B-Agent/pull/1594), is draft/open/unmerged, based directly on current main. Head `37f00934515688ad6f7b0eab629adc2b00b89b4a`. CI passed and the fail-closed gate passed on that exact head. It removes the 15-minute schedule, token permissions, scheduler execution and direct queue commits; it adds a regression test. The live workflow remains active on main until an authorized merge.
+- PR #1592 (Cross Analysis read-only containment) remains draft/open/unmerged and has passing checks on its exact head. The scheduled writer remains active on main until authorized merge.
+- PR #1590 (prediction-ledger integrity) has passing core CI, dedicated prediction-integrity checks and fail-closed gate on head `f6a4687976a6d9ca5a2d530255609212fc4a031f`; it is one commit behind current main. The ledger is an append-only evaluation prototype, not a live prediction engine.
+- PR #1591 now contains the three addenda above. Latest head `a12c5f66913a22a48777268d0d1e5df25bb09ff1`, base `2bc91a58699cd023d7d017be4c13b77cf3a2e069`, 19 commits ahead and 1 behind current main. Latest CI and gate were still running when this handoff was written; do not carry earlier successful checks forward to this head.
+- The scheduled `check-signal-accuracy.yml`, subscriber sync, autonomous resolver and other identified writers also remain active on main unless separately contained. Do not assume draft PRs change live behavior.
+- No PR was merged, no workflow was manually dispatched, no force-push or deployment occurred, and no trading action was taken.
+
+### Current status discipline
+- DESIGNED: relationship graph, competitive trust-bank status comparison, capital-claim arithmetic and video discovery schema.
+- EXECUTED: public-source research, three durable addenda, fresh-main scheduler containment PR.
+- VERIFIED: OCC CAS statuses and source links; PR #1594 CI and fail-closed gate; earlier PR #1590/#1592 exact-head checks as noted.
+- PENDING: PR #1591 exact-head CI/gate; authorized merge decisions; Circle Q3 ingestion; point-in-time feature store; walk-forward dataset and calibrated out-of-sample prediction results.
