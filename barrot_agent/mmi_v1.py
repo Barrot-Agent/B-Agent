@@ -94,7 +94,8 @@ class SourceRecord:
     depth: int = 1
     content_hash: str = ""
     observed_at: str = ""
-    independence_group: str = ""  # Canonical publisher/origin; shared groups are not independent.
+    # Canonical publisher/origin; shared groups are not independent.
+    independence_group: str = ""
 
 
 @dataclass
