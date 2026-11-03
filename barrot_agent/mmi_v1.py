@@ -236,7 +236,10 @@ class MMIRecord:
     def _has_independent_source_set(self, source_ids) -> bool:
         if not isinstance(source_ids, list) or len(source_ids) < 2:
             return False
-        if any(not isinstance(source_id, str) or not source_id.strip() for source_id in source_ids):
+        if any(
+            not isinstance(source_id, str) or not source_id.strip()
+            for source_id in source_ids
+        ):
             return False
         if len(set(source_ids)) != len(source_ids):
             return False
@@ -259,7 +262,10 @@ class MMIRecord:
         }
         if len(groups) < 2 or len(groups) != len(sources):
             return False
-        if any(source.provenance_class not in external_classes for source in sources):
+        if any(
+            source.provenance_class not in external_classes
+            for source in sources
+        ):
             return False
         return True
 
@@ -282,12 +288,22 @@ class MMIRecord:
                 if not isinstance(contradicting, list) or not contradicting:
                     continue
                 required_ids = set(supporting + contradicting)
-                reconciled_ids = {
-                    evidence_id
-                    for item in self.reconciliation
-                    if isinstance(item, dict)
-                    for evidence_id in item.get("evidence_ids", [])
-                }
+                if any(
+                    not isinstance(evidence_id, str) or not evidence_id.strip()
+                    for evidence_id in supporting + contradicting
+                ):
+                    continue
+                reconciled_ids = set()
+                for item in self.reconciliation:
+                    if not isinstance(item, dict):
+                        continue
+                    evidence_ids = item.get("evidence_ids")
+                    if isinstance(evidence_ids, list):
+                        reconciled_ids.update(
+                            evidence_id
+                            for evidence_id in evidence_ids
+                            if isinstance(evidence_id, str) and evidence_id.strip()
+                        )
                 if required_ids and required_ids.issubset(reconciled_ids):
                     return True
         return False
@@ -347,10 +363,17 @@ class MMIStateMachine:
 
         if outcomes.get("CORROBORATION") == StageOutcome.NOT_APPLICABLE:
             corroboration_stage = next(
-                (stage for stage in record.stages if stage.name == "CORROBORATION"),
+                (
+                    stage
+                    for stage in record.stages
+                    if stage.name == "CORROBORATION"
+                ),
                 None,
             )
-            if corroboration_stage is None or not corroboration_stage.details.strip():
+            if (
+                corroboration_stage is None
+                or not corroboration_stage.details.strip()
+            ):
                 return MMIResult.PARTIAL
 
         if all(
@@ -522,7 +545,11 @@ class MMICompletenessReport:
 
         if required_stages.get("CORROBORATION") == StageOutcome.NOT_APPLICABLE.value:
             corroboration_stage = next(
-                (stage for stage in record.stages if stage.name == "CORROBORATION"),
+                (
+                    stage
+                    for stage in record.stages
+                    if stage.name == "CORROBORATION"
+                ),
                 None,
             )
             if corroboration_stage is not None and corroboration_stage.details.strip():
