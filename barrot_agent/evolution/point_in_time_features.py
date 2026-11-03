@@ -266,15 +266,41 @@ def build_feature_snapshot(
     ids = [item["record"]["record_id"] for item in checked]
     if len(ids) != len(set(ids)):
         raise FeatureSnapshotError("snapshot contains duplicate record_id values")
+    records_by_id = {item["record"]["record_id"]: item for item in checked}
+    superseded_by: dict[str, str] = {}
+    for item in checked:
+        current = item["record"]
+        if not item["eligible"] or current["revision_status"] != "revised":
+            continue
+        predecessor_id = current["supersedes_record_id"]
+        predecessor = records_by_id.get(predecessor_id)
+        if predecessor is None:
+            continue
+        previous = predecessor["record"]
+        if previous["feature_id"] != current["feature_id"] or previous["asset"] != current["asset"]:
+            raise FeatureSnapshotError("a revision must supersede the same feature and asset")
+        if current["feature_version"] <= previous["feature_version"]:
+            raise FeatureSnapshotError("a revision feature_version must exceed its predecessor")
+        if predecessor_id in superseded_by:
+            raise FeatureSnapshotError("multiple eligible revisions supersede the same predecessor")
+        superseded_by[predecessor_id] = current["record_id"]
+
     included = sorted(
-        (item["record"] for item in checked if item["eligible"]),
+        (
+            item["record"] for item in checked
+            if item["eligible"] and item["record"]["record_id"] not in superseded_by
+        ),
         key=lambda item: (item["feature_id"], item["asset"], item["event_time_utc"], item["record_id"]),
     )
-    excluded = sorted(
-        ({"record_id": item["record"]["record_id"], "reasons": item["exclusion_reasons"]}
-         for item in checked if not item["eligible"]),
-        key=lambda item: item["record_id"],
-    )
+    excluded_items = []
+    for item in checked:
+        record_id = item["record"]["record_id"]
+        reasons = list(item["exclusion_reasons"])
+        if item["eligible"] and record_id in superseded_by:
+            reasons.append("superseded_by_revision")
+        if reasons:
+            excluded_items.append({"record_id": record_id, "reasons": sorted(set(reasons))})
+    excluded = sorted(excluded_items, key=lambda item: item["record_id"])
     if not included:
         raise FeatureSnapshotError("snapshot has no point-in-time eligible records")
     derived_assets = sorted({item["asset"] for item in included})
