@@ -61,3 +61,10 @@ Only ChatGPT and the GitHub repository connection were exercised and verified in
 - VERIFIED: repository state, current-main delta, prior PR exact-head CI/gate, and raw Kraken ticker response.
 - PENDING: updated PR exact-head checks, fixed-horizon dataset, backtesting/calibration, paper/shadow evaluation.
 - No merge, force-push, main-branch write, deployment, secret access, paper trade or real-money action was performed.
+
+
+## CI failure diagnosis and correction — 2026-11-03 16:13 UTC
+
+- First run of the new isolated workflow [41671832259](https://github.com/Barrot-Agent/B-Agent/actions/runs/41671832259) failed before collecting tests. The log shows pytest loaded `tests/conftest.py`, which imports `barrot_agent.config`; that module requires both `pydantic` and `pydantic-settings`. The initial minimal dependency set omitted them.
+- This is an environment/dependency failure, not a failing prediction-integrity assertion. The workflow now installs the same base dependency set used by core CI: pytest, pytest-cov, PyJWT, cryptography, pydantic, pydantic-settings and requests.
+- The failed run is retained as evidence. A new run on the corrected exact head is required; no success is claimed until it completes.

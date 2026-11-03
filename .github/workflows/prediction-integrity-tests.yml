@@ -25,7 +25,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install test dependencies
-        run: python -m pip install pytest requests
+        run: python -m pip install pytest pytest-cov PyJWT cryptography pydantic pydantic-settings requests
 
       - name: Run prediction-integrity regression tests
         run: >-
