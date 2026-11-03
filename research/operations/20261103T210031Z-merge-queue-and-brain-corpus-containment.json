@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "manual_writer_and_public_corpus_export_audit",
+  "capture_time_utc": "2026-11-03T21:00:31.525Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_commit": "fada1c0712894e92f301e2cb5e6aa098280bfbe8",
+  "status": "EXECUTED_PENDING_CI_AND_REVIEW",
+  "mission_priority": "XRP intelligence and prediction-engine mastery; Barrot V3 is execution and verification foundation",
+  "sources": [
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "blob_sha": "19b41e2894fdf1b835498fca3eeab870c3b4c8b1",
+      "classification": "confirmed",
+      "observation": "Manual workflow_dispatch only; contents:write and pull-requests:write; mode=all selects every open PR; max_prs=0 is unlimited; dry_run defaults false; can update branches, comment, merge and delete branches."
+    },
+    {
+      "path": ".github/workflows/dump-brain-corpus.yml",
+      "blob_sha": "3427669a1aa8115ad4c786b67b561ebcbaa08c4d",
+      "classification": "confirmed",
+      "observation": "Manual workflow_dispatch with contents:write; reads DATABRICKS_TOKEN and queries workspace.barrot.brain through scripts/dump_brain_corpus.py; pushes generated corpus files to public repository."
+    },
+    {
+      "path": "scripts/dump_brain_corpus.py",
+      "blob_sha": "8b68f919b076f94c857f45c72bc065ac90f2b618",
+      "classification": "confirmed",
+      "observation": "Exporter paginates Databricks SQL results and writes timestamp/topic/insight/session records to brain_corpus/dump.json and dump.md."
+    },
+    {
+      "path": "brain_corpus/dump.json",
+      "blob_sha": "f5397bc2868a0a4a7f832b7f33c7624226f6a08a",
+      "size_bytes": 353950,
+      "classification": "public_current_tree_data_unclassified",
+      "observation": "Public current-tree export exists; contents were not opened or copied into this audit."
+    },
+    {
+      "path": "brain_corpus/dump.md",
+      "blob_sha": "d2ccf44fdb0331b8dd0271bb1ca5d9bc7e27581e",
+      "size_bytes": 296527,
+      "classification": "public_current_tree_data_unclassified",
+      "observation": "Public human-readable export exists; contents were not opened or copied into this audit."
+    },
+    {
+      "path": "tests/test_v3_scripts.py",
+      "blob_sha": "b5e50e3ee1fc7c4a48588225dc4804e570042063",
+      "classification": "CI_included_test_module",
+      "observation": "Two regression tests are appended to an existing file explicitly enumerated by core CI."
+    }
+  ],
+  "findings": [
+    {
+      "id": "MQ-01",
+      "severity": "critical",
+      "classification": "confirmed",
+      "summary": "A manually dispatched merge queue can process every open PR with mode=all and dry_run=false, with repository and pull-request write permissions; it can update branches, merge and delete branches."
+    },
+    {
+      "id": "BC-01",
+      "severity": "critical",
+      "classification": "confirmed",
+      "summary": "A manually dispatched workflow exports the full non-error workspace.barrot.brain table to the public repository using a Databricks token."
+    },
+    {
+      "id": "BC-02",
+      "severity": "high",
+      "classification": "confirmed",
+      "summary": "Two current-tree public corpus dumps exist (353950-byte JSON and 296527-byte Markdown); record-level sensitivity has not been classified."
+    }
+  ],
+  "proposed_controls": [
+    "Disable Merge Queue until a protected per-PR authorization mechanism is implemented and independently reviewed.",
+    "Disable the public brain-corpus export workflow with empty permissions and an unconditional false job guard.",
+    "Replace the exporter with a deterministic inert entry point that reads no credentials, performs no network calls and writes no files.",
+    "Remove the two generated dumps from the proposed current tree without rewriting Git history.",
+    "Add regression tests to tests/test_v3_scripts.py, already enumerated in core CI."
+  ],
+  "limitations": [
+    "Removing files from the current tree does not erase historical Git objects, forks, caches or external copies.",
+    "The contents of the existing public corpus dumps were not inspected; data classification and historical exposure remain unresolved.",
+    "No Databricks token was read, no SQL query was run, no workflow was dispatched, no branch was updated, no PR was merged, no branch was deleted and no external deployment or transaction occurred.",
+    "This PR does not change branch-protection rules or repository-wide merge permissions."
+  ],
+  "next_actions": [
+    "Run exact-head core CI and confirm both new test names are collected.",
+    "Run the fail-closed gate and verify automatic merge remains disabled.",
+    "Perform an authorized historical corpus exposure review and credential-scope review; do not rewrite history without explicit approval.",
+    "Audit the remaining active main-branch Cross Analysis and legacy signal-accuracy writers.",
+    "Continue point-in-time XRP feature-store and fixed-horizon evaluation work."
+  ]
+}

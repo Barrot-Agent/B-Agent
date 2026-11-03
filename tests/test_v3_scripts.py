@@ -704,3 +704,61 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+def test_merge_queue_is_disabled_until_explicit_per_pr_authorization() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "merge-queue.yml"
+    ).read_text(encoding="utf-8")
+
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    assert "No credentials are read" in workflow
+    for forbidden in (
+        "schedule:",
+        "contents: write",
+        "pull-requests: write",
+        "checks: write",
+        "statuses: write",
+        "secrets.",
+        "actions/checkout",
+        "gh pr merge",
+        "update-branch",
+        "--delete-branch",
+        "mode: all",
+        "max_prs",
+    ):
+        assert forbidden not in workflow
+
+
+def test_public_brain_corpus_export_is_disabled_and_dumps_absent() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "dump-brain-corpus.yml"
+    ).read_text(encoding="utf-8")
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    assert "No credentials are read" in workflow
+    for forbidden in (
+        "schedule:",
+        "DATABRICKS_TOKEN",
+        "secrets.",
+        "actions/checkout",
+        "scripts/dump_brain_corpus.py",
+        "git push",
+        "contents: write",
+    ):
+        assert forbidden not in workflow
+
+    script_path = REPO_ROOT / "scripts" / "dump_brain_corpus.py"
+    source = script_path.read_text(encoding="utf-8")
+    assert "DISABLED: public brain-corpus export is not authorized." in source
+    assert "import requests" not in source
+    assert "DATABRICKS_TOKEN" not in source
+    assert "https://" not in source
+    module = load_script(script_path, "dump_brain_corpus_disabled_test")
+    assert module.main() == 2
+
+    assert not (REPO_ROOT / "brain_corpus" / "dump.json").exists()
+    assert not (REPO_ROOT / "brain_corpus" / "dump.md").exists()
+
