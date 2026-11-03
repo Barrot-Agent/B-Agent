@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-11-03T06:25:00Z",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "market_snapshot": {
+    "cutoff_utc": "2026-11-03T05:49:00Z",
+    "price_observations": [
+      {
+        "provider": "TradRadar",
+        "price_usd": 1.2549,
+        "observed_at_utc": "2026-11-03T04:35:00Z",
+        "source": "https://tradradar.io/id/markets/xrp"
+      },
+      {
+        "provider": "Yahoo Finance",
+        "price_usd": 1.2485,
+        "observed_at_utc": "2026-11-03T02:23:37Z",
+        "source": "https://es.finance.yahoo.com/quote/XRP-USD/history/"
+      }
+    ],
+    "interpretation": "Non-synchronous provider snapshots; no averaged or canonical spot price is asserted."
+  },
+  "derivatives": {
+    "observations": [
+      {
+        "provider": "TradRadar",
+        "open_interest_usd": 1960000000,
+        "exchanges": 7,
+        "updated_at_utc": "2026-11-03T04:05:00Z",
+        "oi_change_24h_pct": 1.89,
+        "weighted_funding_8h_pct": 0.0064,
+        "long_short_account_ratio": 3.46,
+        "long_account_share_pct": 77.6,
+        "long_liquidations_usd": 2300000,
+        "short_liquidations_usd": 187570,
+        "source": "https://tradradar.io/markets/xrp"
+      },
+      {
+        "provider": "JustScreener",
+        "open_interest_usd": 1600000000,
+        "exchanges": 9,
+        "updated_at_utc": "2026-11-03T00:46:00Z",
+        "oi_change_24h_pct": 1.62,
+        "source": "https://justscreener.com/en/market/XRP/open-interest"
+      },
+      {
+        "provider": "Kodexius",
+        "open_interest_usd": 810650000,
+        "contracts": 7,
+        "exchanges": 5,
+        "updated_at_utc": "2026-11-02T23:44:00Z",
+        "weighted_funding_8h_pct": 0.0062,
+        "source": "https://kodexius.com/data/crypto-derivatives/XRP"
+      }
+    ],
+    "broad_provider_range_ratio": 2.42,
+    "partial_contract_observation": {
+      "provider": "Coinalyze via BitcoinLeverage",
+      "observed_at_utc": "2026-11-03T01:00:00Z",
+      "checked_at_utc": "2026-11-03T02:10:00Z",
+      "covered_contracts": 2,
+      "reported_contracts": 22,
+      "open_interest_usd": 703350000,
+      "binance": {
+        "funding_per_period_pct": 0.01,
+        "long_account_share_pct": 72.16,
+        "taker_buy_share_pct": 47.203
+      },
+      "bybit": {
+        "funding_per_period_pct": -0.002903,
+        "long_account_share_pct": 80.1,
+        "taker_buy_share_pct": 44.892
+      },
+      "source": "https://bitcoinleverage.com/xrp/funding-rate",
+      "caveat": "Partial two-contract sub-universe; not a competing global OI total."
+    },
+    "interpretation": [
+      "The 2.42x spread among three broad multi-exchange aggregators is material and cannot be resolved by averaging.",
+      "Coverage differs by venue and contract: USDT and USDC perps, contract inclusion and source timestamp differ.",
+      "Funding is not uniform: Binance positive and Bybit negative in the partial Coinalyze observation.",
+      "Account-count long/short ratios do not measure notional positioning; taker buy shares below 50% in the two reported contracts do not by themselves establish net market direction.",
+      "TradRadar reports long liquidations materially exceeding short liquidations, but liquidation data is incomplete/venue-limited."
+    ]
+  },
+  "exchange_liquidity": {
+    "source": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2026",
+    "updated_at": "2026-09-30",
+    "exchanges": 8,
+    "xrp_depth_plus_minus_2pct_usd_approx": 30000000,
+    "bids_usd_approx": 18000000,
+    "asks_usd_approx": 14000000,
+    "mid_market_findings": {
+      "binance": "Deepest at market price in the report.",
+      "coinbase": "Surpassed Binance at approximately ±0.1% (±$0.0025) depth.",
+      "bybit_and_kraken": "Each reported below $100,000 at zero price deviation."
+    },
+    "interpretation": "Coinbase has a documented near-mid XRP liquidity strength in this dated report, while Binance remains deeper at the touch. This supports a tactical liquidity/market-quality role, not price control or proof of current live depth."
+  },
+  "etf_flows": {
+    "observations": [
+      {
+        "provider": "CryptoKeyhole",
+        "as_of_utc": "2026-11-03T05:49:00Z",
+        "tracked_funds": 4,
+        "nov_2_status": "PARTIAL_3_OF_4",
+        "waiting_for": "Franklin Templeton XRPZ",
+        "last_complete_day": "2026-10-30",
+        "last_complete_day_net_flow_xrp": -1123743,
+        "last_complete_day_net_flow_usd": -1400000,
+        "last_5_complete_days_net_flow_xrp": 3387862,
+        "holdings_xrp": 1076819240,
+        "source": "https://cryptokeyhole.com/etf-flows/xrp/"
+      },
+      {
+        "provider": "XRP Insights",
+        "data_as_of": "2026-10-30",
+        "tracked_products": "6 US spot XRP ETFs plus BITW XRP sleeve",
+        "settled_5_day_flow_xrp": 3390356,
+        "holdings_xrp": 1196600186,
+        "nov_2_row_status": "PROVISIONAL",
+        "method": "Issuer holdings day-over-day change; flow-excluded funds contribute zero to totals; reconstructed intervals use third-party estimates.",
+        "source": "https://xrp-insights.com/data"
+      },
+      {
+        "provider": "TheXRPInvestor",
+        "updated": "2026-11-03",
+        "reported_products": 12,
+        "reported_categories": {
+          "spot": 6,
+          "derivative": 4,
+          "index": 1
+        },
+        "reported_aum_usd": 1490000000,
+        "source": "https://thexrpinvestor.com/xrp-etf-flows",
+        "caveat": "Listed categories sum to 11, not 12; product universe includes non-spot products and is not comparable to spot holdings-derived flow totals."
+      }
+    ],
+    "interpretation": "ETF flow observations differ by product universe, fund coverage, settlement status and holdings-delta methodology. No canonical November 2 daily net flow is assigned. AUM, trust holdings, secondary-market trading volume and primary creations/redemptions remain separate variables."
+  },
+  "protocol": {
+    "amendment": "fixCleanup3_4_0",
+    "status": "CONDITIONAL_PROJECTION",
+    "projected_earliest_activation_utc": "2026-11-04T14:46:22Z",
+    "caveat": "Requires continuous validator support; verify the actual validated-ledger EnableAmendment transaction.",
+    "paymentburn_scope": "Issued trust-line tokens and MPTs, not native XRP supply.",
+    "sources": [
+      "https://xrplwin.com/amendment/fixCleanup3_4_0",
+      "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+      "https://xrpl.org/docs/references/protocol/data-types/permission-values"
+    ]
+  },
+  "model_policy": {
+    "no_averaging": "Keep provider OI and ETF universes separate until coverage, contract, timestamp and methodology are reconciled.",
+    "point_in_time": "Store source timestamp, retrieval timestamp, provider, contract universe, quote currency, unit, coverage and raw snapshot hash.",
+    "feature_eligibility": "No derivatives aggregate or ETF daily flow becomes a forecast feature until synchronized and validated.",
+    "forecast_status": "NOT_ISSUED"
+  },
+  "sources": [
+    {
+      "name": "TradRadar XRP derivatives",
+      "url": "https://tradradar.io/markets/xrp",
+      "type": "aggregated market data",
+      "independence": "provider"
+    },
+    {
+      "name": "JustScreener XRP open interest",
+      "url": "https://justscreener.com/en/market/XRP/open-interest",
+      "type": "aggregated market data",
+      "independence": "provider"
+    },
+    {
+      "name": "Kodexius XRP derivatives",
+      "url": "https://kodexius.com/data/crypto-derivatives/XRP",
+      "type": "contract-level market data",
+      "independence": "provider"
+    },
+    {
+      "name": "BitcoinLeverage/Coinalyze",
+      "url": "https://bitcoinleverage.com/xrp/funding-rate",
+      "type": "partial venue contract data",
+      "independence": "aggregator/source Coinalyze"
+    },
+    {
+      "name": "CoinGecko liquidity report",
+      "url": "https://www.coingecko.com/research/publications/crypto-liquidity-report-2026",
+      "type": "dated CEX order-book liquidity study",
+      "independence": "research publisher"
+    },
+    {
+      "name": "CryptoKeyhole ETF flow",
+      "url": "https://cryptokeyhole.com/etf-flows/xrp/",
+      "type": "issuer-holdings derived flows",
+      "independence": "aggregator"
+    },
+    {
+      "name": "XRP Insights ETF data",
+      "url": "https://xrp-insights.com/data",
+      "type": "issuer-holdings derived flows",
+      "independence": "aggregator"
+    },
+    {
+      "name": "TheXRPInvestor ETF flows",
+      "url": "https://thexrpinvestor.com/xrp-etf-flows",
+      "type": "multi-product ETF tracker",
+      "independence": "aggregator"
+    }
+  ],
+  "caveats": [
+    "Market snapshots are not synchronized.",
+    "The CoinGecko liquidity report is dated September 30 and is not a live order-book snapshot.",
+    "Provider OI coverage and contract definitions differ; broad totals are not comparable without reconciliation.",
+    "ETF holdings deltas are not identical to unhedged investor conviction or exchange spot purchases.",
+    "No price forecast or trading recommendation is issued."
+  ]
+}

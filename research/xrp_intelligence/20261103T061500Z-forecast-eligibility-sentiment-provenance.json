@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-11-03T06:15:00Z",
+  "mission_priority": "XRP intelligence and measured prediction-engine mastery",
+  "foundation": "Barrot V3 execution, verification, security and preservation",
+  "repository": "Barrot-Agent/B-Agent",
+  "base_commit": "91b66a388cbb03010f590159919d18aadcaa42cc",
+  "branch": "prediction/fixed-horizon-sentiment-only-20261103T0615Z",
+  "root_cause_findings": [
+    {
+      "id": "variable-horizon-scorer",
+      "status": "CONFIRMED",
+      "evidence": [
+        "scripts/check_signal_accuracy.py",
+        ".github/workflows/check-signal-accuracy.yml"
+      ],
+      "detail": "Legacy scorer evaluated records at the first scheduled run after a 24-hour minimum, not at one fixed horizon. It compared an immutable emission reference with a mutable live CoinGecko price at check time, then rewrote history and summary."
+    },
+    {
+      "id": "unreproducible-summary",
+      "status": "CONFIRMED",
+      "evidence": [
+        "web/signal_accuracy.json",
+        "web/signal_history.jsonl"
+      ],
+      "detail": "Current main summary reports 1,697 checked, 772 correct and 45.5%. The current main signal_history.jsonl is 0 bytes, so the aggregate cannot be reproduced from row-level records in the current tree. The percentage is not a valid out-of-sample performance claim."
+    },
+    {
+      "id": "self-description-leak",
+      "status": "CONFIRMED",
+      "evidence": [
+        "scripts/ask_barrot.py"
+      ],
+      "detail": "Barrot's system prompt described the legacy tracker as real directional correctness and injected checked/correct/accuracy_pct counts into its own context."
+    },
+    {
+      "id": "marketing-capability-mismatch",
+      "status": "CONFIRMED",
+      "evidence": [
+        "web/landing.html",
+        "scripts/emit_signal.py"
+      ],
+      "detail": "Landing page claimed order-book depth, live price structure, a pre-anchor filter, ternary BUY/SELL decisions and 1.58-bit logic. The emitter actually builds a news/LLM sentiment feature and has no order-book or technical-price input."
+    },
+    {
+      "id": "fabricated-default-confidence",
+      "status": "CONFIRMED",
+      "evidence": [
+        "scripts/emit_signal.py"
+      ],
+      "detail": "A valid JSON classifier response missing confidence previously defaulted to 0.5. Self-consistency output could also bypass the normal confidence clamp."
+    },
+    {
+      "id": "unnecessary-price-anchor",
+      "status": "CONFIRMED",
+      "evidence": [
+        "scripts/emit_signal.py"
+      ],
+      "detail": "The sentiment-only emitter fetched a CoinGecko price and wrote price_at_emission into the feature history, allowing downstream code to mistake a sentiment timestamp reference for a forecast anchor."
+    }
+  ],
+  "proposed_controls": [
+    "Replace the legacy scorer with deterministic blocked evaluation status; no network access and no file writes.",
+    "Make the scheduled/manual evaluation workflow contents:read, persist-credentials:false and artifact-only.",
+    "Remove the legacy accuracy percentage from the public API tool and daily digest.",
+    "Replace public web/signal_accuracy.json with a status-only response; preserve the old aggregate in web/legacy/signal_accuracy_unvalidated.json with an explicit unvalidated label and missing-row-level-history note.",
+    "Remove legacy accuracy injection and claims from scripts/ask_barrot.py; inject NOT_ISSUED and UNVALIDATED_VARIABLE_HORIZON instead.",
+    "Mark the XRP output as sentiment_feature_only, forecast_eligible=false and NOT_A_FORECAST.",
+    "Normalize labels to bullish/neutral/bearish; missing, invalid or nonfinite confidence becomes zero; clamp finite confidence to [0,1] and score to [0,100].",
+    "Remove the CoinGecko reference-price fetch and price_at_emission fields from newly emitted sentiment history rows.",
+    "Correct landing/subscriber copy so it describes only news/LLM sentiment, not order-book, technical analysis, BUY/SELL decisions or validated predictive performance.",
+    "Add explicit CI regression tests for the scorer, workflow, emitter, public API, daily digest, self-description and marketing claims."
+  ],
+  "preserved_legacy_metric": {
+    "original_summary_sha": "0c186b904ec3ae668ac53da42087931ccf483d0e",
+    "checked_count": 1697,
+    "correct_count": 772,
+    "accuracy_pct": 45.5,
+    "status": "UNVALIDATED_VARIABLE_HORIZON",
+    "row_level_history_bytes_on_current_main": 0,
+    "interpretation": "Historical summary preserved for provenance only; cannot be independently reproduced from current-tree row-level history and is not an out-of-sample performance measure."
+  },
+  "market_research_update": {
+    "cutoff_utc": "2026-11-03T06:15:00Z",
+    "etf_flow_observations": [
+      {
+        "source": "CryptoETF.today",
+        "date": "2026-11-02",
+        "status": "PARTIAL_T_PLUS_1",
+        "detail": "Five spot products in the tracked universe; one of five had reported. The reporting fund showed no creation/redemption; four funds remained unreported. Page displayed approximately $1.42B net assets and $1.81B cumulative net flows.",
+        "url": "https://cryptoetf.today/en/xrp-etf-flows"
+      },
+      {
+        "source": "TheXRPInvestor",
+        "date": "2026-11-02",
+        "status": "DIFFERENT_PRODUCT_UNIVERSE",
+        "detail": "Page reports 12 products and approximately $1.49B AUM, 1.20B XRP and $23.89M daily volume, but its listed categories (6 spot, 4 derivative, 1 index) sum to 11. Its product universe and trading-volume measures are not comparable to the five-spot-product partial T+1 flow snapshot.",
+        "url": "https://thexrpinvestor.com/xrp-etf-flows"
+      }
+    ],
+    "amendment": {
+      "name": "fixCleanup3_4_0",
+      "status": "CONDITIONAL_PROJECTION",
+      "projected_earliest_activation_utc": "2026-11-04T14:46:22Z",
+      "validator_support_reported": "33/35",
+      "caveat": "Projection depends on continuous threshold support; the actual validated-ledger EnableAmendment sequence has not been observed.",
+      "paymentburn_scope": "Issued trust-line tokens and MPTs; not native XRP supply.",
+      "sources": [
+        "https://xrplwin.com/amendment/fixCleanup3_4_0",
+        "https://xrpl.org/docs/concepts/networks-and-servers/amendments",
+        "https://xrpl.org/docs/references/protocol/data-types/permission-values"
+      ]
+    },
+    "forecast_status": "NOT_ISSUED"
+  },
+  "validation": {
+    "source_pr_1557_exact_head_ci": "354 tests + 8 subtests passed; does not verify this fresh-main head.",
+    "fresh_main_branch_ci": "PENDING",
+    "local_tests": "NOT_RUN",
+    "branch_diff_review": "Executed; 10 intended paths compared against exact base.",
+    "critical_file_fetch_back": "Executed; workflow, scorer, emitter, ask_barrot, landing, subscriber page and tests retrieved.",
+    "json_archive_parse": "Executed; legacy aggregate archive parsed."
+  },
+  "limitations": [
+    "source_cutoff_utc and source_snapshot_ids remain null/empty for sentiment features; they are not forecasts and are not eligible for forecast evaluation.",
+    "The LLM sentiment feature still depends on provider responses and recent knowledge-base input; source independence and classifier calibration are not established.",
+    "The legacy aggregate remains unvalidated and cannot be reproduced from current-tree row-level history.",
+    "Fixed-horizon walk-forward testing, leakage prevention, baseline comparison, calibration, drift monitoring and independent attestation remain unimplemented.",
+    "The XRP ETF providers use different universes and reporting cutoffs; no canonical November 2 net flow is assigned.",
+    "fixCleanup3_4_0 activation remains a conditional projection pending validated-ledger confirmation."
+  ],
+  "safety": {
+    "main_modified": false,
+    "force_push": false,
+    "merge": false,
+    "workflow_dispatch": false,
+    "secrets_read": false,
+    "deployment": false,
+    "paper_trade": false,
+    "real_money": false
+  },
+  "next_actions": [
+    "Create a fresh-main draft PR from the current main base and wait for exact-head CI and fail-closed gate.",
+    "Review the PR diff for the status-only public endpoint and preservation of the legacy aggregate archive.",
+    "Verify the fixCleanup3_4_0 EnableAmendment transaction on a validated ledger after the projected window.",
+    "Reconcile ETF provider universes and T+1 completeness before constructing a daily flow feature.",
+    "Implement immutable source snapshots and fixed-horizon evaluation only after the data contract is established.",
+    "Continue contract-level derivatives reconciliation, SBI/Circle/Coinbase relationship research, ASK Coin and Camilla Stephenson public-video research."
+  ]
+}
