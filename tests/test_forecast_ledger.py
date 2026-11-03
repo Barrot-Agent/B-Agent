@@ -246,6 +246,42 @@ def test_calibration_bins_are_reported(tmp_path):
     assert summary["weighted_calibration_error"] is not None
 
 
+def test_summary_does_not_pool_different_horizons(tmp_path):
+    ledger = ForecastLedger(tmp_path / "forecasts.sqlite3")
+    one_hour_id = ledger.record_forecast(forecast())
+    four_hour_id = ledger.record_forecast(
+        forecast(
+            target_time_utc="2026-11-03T20:00:00Z",
+            horizon_seconds=14400,
+        )
+    )
+    ledger.resolve_forecast(
+        one_hour_id,
+        resolved_at_utc=RESOLVED,
+        outcome_price_usd=1.28,
+        outcome_price_timestamp_utc=OUTCOME_TIME,
+        outcome_venue="kraken:XRP/USD",
+        outcome_source_ids=["kraken-outcome-001"],
+    )
+    ledger.resolve_forecast(
+        four_hour_id,
+        resolved_at_utc="2026-11-03T20:01:00Z",
+        outcome_price_usd=1.28,
+        outcome_price_timestamp_utc="2026-11-03T20:00:30Z",
+        outcome_venue="kraken:XRP/USD",
+        outcome_source_ids=["kraken-outcome-004h"],
+    )
+
+    summary = ledger.summary()
+    assert summary["scored"] == 2
+    assert summary["directional_accuracy"] is None
+    assert summary["top_class_accuracy"] is None
+    assert summary["mean_brier_score"] is None
+    assert len(summary["cohort_summaries"]) == 2
+    assert {item["horizon_seconds"] for item in summary["cohort_summaries"]} == {3600, 14400}
+    assert all(item["scored"] == 1 for item in summary["cohort_summaries"])
+
+
 def test_database_rejects_mutation_of_ledger_records(tmp_path):
     import sqlite3
 
