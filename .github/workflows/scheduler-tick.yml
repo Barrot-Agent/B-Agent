@@ -1,4 +1,4 @@
-name: Scheduler Tick
+name: Scheduler Tick (safe validation allowlist)
 
 on:
   schedule:
@@ -9,11 +9,16 @@ permissions:
   contents: write
   actions: write
 
+concurrency:
+  group: scheduler-tick
+  cancel-in-progress: false
+
 jobs:
   tick:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 30
 
@@ -28,6 +33,7 @@ jobs:
 
       - name: Commit queue updates
         run: |
+          set -euo pipefail
           git config user.name "Barrot-Agent"
           git config user.email "barrot@barrot-agent.com"
           git add ping-pongings/knowledge-base/schedule_queue.jsonl
