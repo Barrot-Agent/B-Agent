@@ -28,23 +28,28 @@
       "quantity_xrp": 261919096,
       "classification": "in-kind XRP contribution; not spot-market buying",
       "cutoff": "2026-10-09",
-      "source": "Evernorth SEC 10-Q filed 2026-10-30"
+      "source": "Evernorth SEC 10-Q filed 2026-10-30",
+      "aggregation_role": "component"
     },
     {
       "asset_or_capital": "Evernorth cash-funded XRP acquisition",
-      "cash_usd": 214100000,
+      "cash_usd": 214000000,
       "quantity_xrp": 84365876,
       "classification": "cash used to acquire XRP; execution venue/route not specified",
       "derived_average_price_usd": 2.53657,
       "cutoff": "2026-10-09",
-      "source": "Evernorth SEC 10-Q filed 2026-10-30"
+      "source": "Evernorth SEC 10-Q filed 2026-10-30",
+      "raised_cash_usd": 214100000,
+      "aggregation_role": "component",
+      "note": "SEC filing separately reports $214.1M cash raised and approximately $214.0M used in investing activities to acquire XRP; approximately $0.1M is separately described as restricted cash. The difference is not silently allocated."
     },
     {
       "asset_or_capital": "Ripple contribution to Evernorth",
       "quantity_xrp": 126791458,
       "classification": "in-kind strategic contribution; not a spot purchase",
       "cutoff": "2026-10-09",
-      "source": "Evernorth SEC 10-Q"
+      "source": "Evernorth SEC 10-Q",
+      "aggregation_role": "component"
     },
     {
       "asset_or_capital": "Evernorth approximate treasury",
@@ -52,14 +57,16 @@
       "derived_component_sum_xrp": 473076430,
       "classification": "company-reported approximate holdings as of 2026-10-09",
       "cutoff": "2026-10-09",
-      "source": "Evernorth SEC 10-Q"
+      "source": "Evernorth SEC 10-Q",
+      "aggregation_role": "reported_approximate_total_not_additive"
     },
     {
       "asset_or_capital": "Delayed funding subscription",
       "quantity_xrp": 200000,
       "date": "2026-10-12",
       "classification": "post-2026-10-09 filing event; do not add to Oct 9 holdings without custody confirmation",
-      "source": "Evernorth SEC 424B3"
+      "source": "Evernorth SEC 424B3",
+      "aggregation_role": "post_cutoff_not_in_oct9_total"
     },
     {
       "asset_or_capital": "SBI investment in Evernorth",
@@ -95,6 +102,13 @@
       "amount_usd": 65000000000,
       "classification": "platform-wide annualized throughput as of Aug 2026; not stablecoin-only volume and not XRP volume",
       "source": "SBI Holdings official release"
+    },
+    {
+      "asset_or_capital": "Restricted cash from subscription proceeds",
+      "cash_usd": 100000,
+      "classification": "separately reported restricted cash; not included in the $214.0M XRP acquisition calculation",
+      "aggregation_role": "restricted_cash",
+      "source": "Evernorth SEC 10-Q"
     }
   ],
   "evidence_claims": [
@@ -580,7 +594,8 @@
     "PhotonPay's $65B annualized throughput is total platform activity, not stablecoin-only volume.",
     "Erebor's $7B deposits are total bank deposits, not stablecoin deposits.",
     "Open Standard and BlackRock/JPYSC arrangements are PoC/MOU stages, not production settlement flows.",
-    "TradRadar and Kodexius derivatives totals differ materially due to coverage/methodology and non-synchronized timestamps."
+    "TradRadar and Kodexius derivatives totals differ materially due to coverage/methodology and non-synchronized timestamps.",
+    "The SEC filing reports approximately $214.1M cash raised but approximately $214.0M cash used to acquire XRP; approximately $0.1M is separately described as restricted cash. The purchase average uses $214.0M / 84,365,876 XRP = approximately $2.53657; the $214.1M funding figure is not used as the purchase numerator."
   ],
   "source_registry": [
     {
