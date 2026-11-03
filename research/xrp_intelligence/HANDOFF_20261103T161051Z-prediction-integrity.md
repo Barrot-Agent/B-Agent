@@ -41,7 +41,7 @@ Artifact: `research/xrp_intelligence/20261103T161051Z-xrp-market-snapshot-kraken
 - SBIC East Japan is Tokyo Small and Medium Business Investment & Consultation Co., Ltd., not SBI Holdings. A separate academic SBIC means Social Bias Inference Corpus; a 2024 paper evaluated ChatGPT on that dataset. These are distinct entities/uses.
 - Permission Coin (ASK) remains only a candidate interpretation of “ASK Coin”; its official contracts are on Base and Polygon, not XRPL. A Coinbase Wallet route on Base is not an exchange listing, custody or corporate partnership. The issuer's subscription-funded ASK buyback claim remains unverified at transaction level.
 - “Actual capital” remains unresolved as a specific XRP-linked entity or transaction.
-- No exact-name Camilla Stephenson YouTube channel/video has yet been verified. Search limitations are not proof of nonexistence; the inventory remains incomplete.
+- The exact spelling “Camilla Stephenson” is not verified as the XRP creator's canonical name. New evidence points to a likely match: Kamilah Stevenson, channel ID `UCqUPJMQdkCN6lsLVDnichPA`; transcripts and a podcast use Camila/Camilla Stevenson. The match is likely, not user-confirmed, and the inventory remains incomplete.
 - Existing PR #1586 contains the source-classified Evernorth/Cantor, Coinbase collateral, Japan/SBI/Circle, ETF and phrase-disambiguation work. It remains draft and unmerged; do not treat its branch as main.
 
 ## Platform coordination
@@ -59,7 +59,8 @@ Only ChatGPT and the GitHub repository connection were exercised and verified in
 - DESIGNED: dedicated read-only prediction-integrity test workflow and fixed-horizon evaluation requirements.
 - EXECUTED: live repository audit, current-main comparison, market-data retrieval and source cross-check.
 - VERIFIED: repository state, current-main delta, prior PR exact-head CI/gate, and raw Kraken ticker response.
-- PENDING: updated PR exact-head checks, fixed-horizon dataset, backtesting/calibration, paper/shadow evaluation.
+- VERIFIED: updated PR #1590 exact-head core CI (342 tests + 8 subtests), targeted prediction-integrity suite (20 tests), and fail-closed gate.
+- PENDING: fixed-horizon dataset, backtesting/calibration, paper/shadow evaluation.
 - No merge, force-push, main-branch write, deployment, secret access, paper trade or real-money action was performed.
 
 
@@ -68,3 +69,18 @@ Only ChatGPT and the GitHub repository connection were exercised and verified in
 - First run of the new isolated workflow [41671832259](https://github.com/Barrot-Agent/B-Agent/actions/runs/41671832259) failed before collecting tests. The log shows pytest loaded `tests/conftest.py`, which imports `barrot_agent.config`; that module requires both `pydantic` and `pydantic-settings`. The initial minimal dependency set omitted them.
 - This is an environment/dependency failure, not a failing prediction-integrity assertion. The workflow now installs the same base dependency set used by core CI: pytest, pytest-cov, PyJWT, cryptography, pydantic, pydantic-settings and requests.
 - The failed run is retained as evidence. A new run on the corrected exact head is required; no success is claimed until it completes.
+
+
+## Updated exact-head verification — 2026-11-03 16:14 UTC
+
+- Updated PR #1590 head: `fbfe0b2c4e90c91e14680217081a6bf8e84475af`; current main: `2bc91a58699cd023d7d017be4c13b77cf3a2e069`; 3 commits ahead, 0 behind.
+- Core CI [41672013745](https://github.com/Barrot-Agent/B-Agent/actions/runs/41672013745): 342 tests + 8 subtests passed.
+- Targeted prediction-integrity suite [41672013761](https://github.com/Barrot-Agent/B-Agent/actions/runs/41672013761): 20 tests passed.
+- Fail-closed gate [41672013823](https://github.com/Barrot-Agent/B-Agent/actions/runs/41672013823): passed; automatic merging remains disabled.
+- The first isolated test run failed only because the workflow omitted pydantic dependencies; corrected dependency set passed on the updated exact head.
+
+## Kamilah/Camila/Camilla Stevenson identity reconciliation — 2026-11-03 16:16 UTC
+
+The XRP creator most likely intended by the phrase “Camilla Stephenson” is **Kamilah Stevenson**, not a verified person whose canonical name is Camilla Stephenson. The likely channel ID is `UCqUPJMQdkCN6lsLVDnichPA`; the handle page is `https://www.youtube.com/@drkamilahstevenson/videos`. A Vling channel listing associates that channel ID with Kamilah Stevenson and reports 1.3K videos, but the count is third-party and conflicts with another analytics provider. An iHeart/XRP Podcast transcript and several Glasp video transcripts use Camila/Camilla Stevenson as spoken-name variants. The podcast transcript also records a warning about fake pages. Keep channel ID, not name spelling, as the provisional identity key; do not assume the user meant this person without confirmation.
+
+A new machine-readable inventory artifact is added at `research/xrp_intelligence/20261103T161619Z-kamilah-stevenson-identity-and-video-inventory.json`. It contains 13 video IDs with public indexed evidence and one candidate ID that is not counted because direct YouTube verification failed. This is a partial seed inventory, not all 1.3K videos; complete enumeration, transcripts and forecast scoring remain pending.

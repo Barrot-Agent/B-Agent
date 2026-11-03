@@ -1,0 +1,195 @@
+{
+  "schema_version": "barrot.youtube.creator-identity-inventory.v1",
+  "captured_at_utc": "2026-11-03T16:16:19.768Z",
+  "requested_identity": {
+    "literal_name": "Camilla Stephenson",
+    "context": "XRP/markets YouTube videos"
+  },
+  "likely_match": {
+    "display_name": "Kamilah Stevenson",
+    "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+    "handle_url": "https://www.youtube.com/@drkamilahstevenson",
+    "match_status": "LIKELY_MATCH_NOT_USER_CONFIRMED",
+    "alternate_names_seen": [
+      "Camila Stevenson",
+      "Camilla Stevenson",
+      "Dr. Camilla Stevenson"
+    ],
+    "evidence": [
+      {
+        "source": "Vling channel listing",
+        "url": "https://vling.net/en/channel/UCqUPJMQdkCN6lsLVDnichPA/channel-info",
+        "finding": "Lists the channel ID and display name Kamilah Stevenson; reports 143K subscribers and 1.3K videos as a third-party snapshot."
+      },
+      {
+        "source": "YouTube channel page",
+        "url": "https://www.youtube.com/@drkamilahstevenson/videos",
+        "finding": "Page title resolves to Kamilah Stevenson."
+      },
+      {
+        "source": "The XRP Podcast / iHeart transcript",
+        "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+        "finding": "Host addresses the guest as Camilla; transcript has her identify her YouTube presence as Doctor Camilla Stevenson and warns that fake pages exist."
+      },
+      {
+        "source": "Glasp transcript",
+        "url": "https://glasp.co/youtube/QslbjGQD0MU",
+        "finding": "Video attributed to Kamilah Stevenson; transcript begins with the creator saying 'Camila Stevenson'."
+      },
+      {
+        "source": "Glasp transcript",
+        "url": "https://glasp.co/youtube/ci0FH73lbCs",
+        "finding": "Video attributed to Kamilah Stevenson; transcript begins with the creator saying 'Camila Stevenson'."
+      }
+    ],
+    "disconfirming_or_limiting_evidence": [
+      "The exact requested spelling 'Camilla Stephenson' was not verified as the XRP creator's canonical name.",
+      "The likely creator's channel spelling is Kamilah Stevenson; transcript and podcast spellings vary between Camila and Camilla.",
+      "The podcast transcript is automatically generated and may contain spelling errors.",
+      "Third-party analytics counts conflict: Vling reports 1.3K videos while CryptoKrios reports 633 analyzed; neither count is treated as a canonical inventory.",
+      "The creator warns publicly about fake pages, so channel ID is the primary deduplication key."
+    ]
+  },
+  "video_inventory": {
+    "status": "PARTIAL_INDEXED_INVENTORY",
+    "completeness_verified": false,
+    "confirmed_video_ids": 13,
+    "videos": [
+      {
+        "video_id": "ywQEoYPzhlQ",
+        "title": "XRP Was Built for What's Coming",
+        "published_date": "2026-03-03",
+        "evidence": "YouTube indexed video result",
+        "transcript_status": "DESCRIPTION_ONLY"
+      },
+      {
+        "video_id": "pmJTrXJQ8Vw",
+        "title": "XRP Is Not Bitcoin. And That's Exactly Why It Matters",
+        "published_date": "2025-12-24",
+        "evidence": "YouTube indexed video result",
+        "transcript_status": "DESCRIPTION_ONLY"
+      },
+      {
+        "video_id": "rv0BAV0vLgo",
+        "title": "How Much XRP Do You ACTUALLY Need?",
+        "published_date": "2026-03-19",
+        "evidence": "Glasp video page attributed to Kamilah Stevenson",
+        "transcript_status": "GLASP_PAGE_FOUND; FULL_TRANSCRIPT_NOT_CAPTURED"
+      },
+      {
+        "video_id": "QslbjGQD0MU",
+        "title": "Ripple Just Became a BANK — And XRP Holders Need to Understand This",
+        "published_date": "2025-12-14",
+        "evidence": "Glasp transcript page attributed to Kamilah Stevenson",
+        "transcript_status": "TRANSCRIPT_EXCERPT_AVAILABLE; creator says Camila Stevenson at 00:06"
+      },
+      {
+        "video_id": "ci0FH73lbCs",
+        "title": "XRP ETFs Are Here. Price Isn't Moving. Here's What Everyone's Missing.",
+        "published_date": "2026-01-13",
+        "evidence": "Glasp transcript page attributed to Kamilah Stevenson",
+        "transcript_status": "TRANSCRIPT_EXCERPT_AVAILABLE; creator says Camila Stevenson"
+      },
+      {
+        "video_id": "cxeX_eu_2H0",
+        "title": "Why Most People Will Lose Their Crypto Wealth (Even If They're Right)",
+        "published_date": "2026-01-15",
+        "evidence": "Glasp transcript page attributed to Kamilah Stevenson",
+        "transcript_status": "TRANSCRIPT_EXCERPT_AVAILABLE; creator says Camila Stevenson"
+      },
+      {
+        "video_id": "8xiy8w2YlfY",
+        "title": "XRP's Biggest Upgrade Yet? Banks Have Been Waiting for This",
+        "published_date": "2026-07-30",
+        "evidence": "YouTube indexed result and description",
+        "transcript_status": "DESCRIPTION_AND_CHAPTERS_INDEXED"
+      },
+      {
+        "video_id": "pFru4idBTMA",
+        "title": "XRP Tokenization: $3.5 Billion Just Settled on XRPL — And Nobody Is Watching",
+        "published_date": "2026-05-12",
+        "evidence": "YouTube indexed result and description",
+        "transcript_status": "DESCRIPTION_ONLY"
+      },
+      {
+        "video_id": "Gy4BuGhAWE8",
+        "title": "XRP & The 2026 Setup: Something BIG Is Coming (Most People Have No Idea)",
+        "published_date": "2025-12-03",
+        "evidence": "YouTube indexed result and description",
+        "transcript_status": "DESCRIPTION_ONLY"
+      },
+      {
+        "video_id": "qtT2hLeFkM0",
+        "title": "More Than 100 Million XRP Just Moved Into Flare — And Holders Did It Voluntarily",
+        "published_date": "2026-08-25",
+        "evidence": "YouTube indexed result and description",
+        "transcript_status": "DESCRIPTION_ONLY"
+      },
+      {
+        "video_id": "iwhpNT73zpk",
+        "title": "Something Just Broke in Global Finance — And It's Connected to XRP",
+        "published_date": "2026-03-06",
+        "evidence": "YouTube video search result; attributed to Kamilah Stevenson",
+        "transcript_status": "DESCRIPTION_AVAILABLE"
+      },
+      {
+        "video_id": "xkrcSsIHh0Q",
+        "title": "Congress Still Hasn't Passed the Crypto Bill. XRP Already Has CLARITY",
+        "published_date": "2026-08-15",
+        "evidence": "YouTube video search result; attributed to Kamilah Stevenson",
+        "transcript_status": "DESCRIPTION_AVAILABLE"
+      },
+      {
+        "video_id": "1ICh2cuBKmM",
+        "title": "1,196 Cold Wallets Drained in 41 Minutes but XRP Holders Had One Thing DIFFERENT",
+        "published_date": "2026-08-08",
+        "evidence": "YouTube video result; attributed to Kamilah Stevenson",
+        "transcript_status": "DESCRIPTION_AVAILABLE"
+      }
+    ],
+    "candidate_not_counted": [
+      {
+        "video_id": "QXOxXikifLU",
+        "title": "The ‘Secret’ XRP Update Everyone’s Panicking About (Debunked)",
+        "attribution": "BitPeaks XRP video listing attributes the title to Kamilah Stevenson; thumbnail URL contains this video ID.",
+        "status": "CANDIDATE_ID_NOT_VERIFIED",
+        "reason": "Direct YouTube watch page was throttled and exact-ID search returned no result; do not count until canonical page metadata confirms it."
+      }
+    ],
+    "limits": [
+      "This is not a complete inventory of the channel's reported 1.3K videos.",
+      "The public YouTube videos, Shorts, livestreams and archived streams still need complete pagination and deduplication by video ID.",
+      "Most listed items have only indexed title/description evidence; transcript extraction and claim/forecast scoring remain incomplete."
+    ]
+  },
+  "forecast_scoring_policy": {
+    "creator_statements_are_claims_not_ground_truth": true,
+    "extract_only_explicit_forecasts": true,
+    "required_fields": [
+      "video_id",
+      "published_at_utc",
+      "forecast_cutoff_utc",
+      "target",
+      "direction",
+      "horizon",
+      "probability_if_explicit",
+      "assumptions",
+      "venue",
+      "outcome_time",
+      "observed_outcome",
+      "source_snapshot_ids"
+    ],
+    "no_inferred_probability": true,
+    "no_post_cutoff_features": true,
+    "missing_target_or_horizon": "UNSCORABLE_NOT_A_MISS",
+    "shadow_evaluation_only": true
+  },
+  "next_actions": [
+    "Use channel ID UCqUPJMQdkCN6lsLVDnichPA as the provisional canonical identifier, while retaining the name mismatch for user confirmation.",
+    "Enumerate every public upload, Shorts, livestream and archive surface from the canonical channel using pagination and timestamped inventory snapshots.",
+    "Resolve candidate QXOxXikifLU against canonical YouTube metadata before counting it.",
+    "Retrieve permitted public transcripts, hash exact captures, preserve timestamps, and extract explicit claims separately from opinions and promotional material.",
+    "Score only forecasts with explicit target, horizon and cutoff after the outcome window closes."
+  ]
+}
