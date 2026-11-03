@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "fresh_main_automation_containment_audit",
+  "captured_at_utc": "2026-11-03T22:38:29Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "main_base": "8007440e08a40608c119e48b7f8fa4e189175280",
+  "branch": "security/automation-containment-8007440e-20261103T2238Z",
+  "findings": [
+    {
+      "path": ".github/workflows/scheduler-tick.yml",
+      "severity": "critical",
+      "status": "confirmed_on_base",
+      "finding": "15-minute scheduler had contents:write and actions:write, dispatched any workflow file passing an existence-only check, and pushed queue changes to main."
+    },
+    {
+      "path": ".github/workflows/subscriber_sync.yml",
+      "severity": "high",
+      "status": "confirmed_on_base",
+      "finding": "Hourly Gumroad sync read customer emails, SHA-256 hashed selected addresses and committed hashes to public web/subscribers.json. Hashes are pseudonymous, not anonymized; prior history is not fully audited."
+    },
+    {
+      "path": ".github/workflows/merge-queue.yml",
+      "severity": "critical",
+      "status": "confirmed_on_base",
+      "finding": "Manual merge queue could select all open PRs with mode=all, max_prs=0 and dry_run=false, update branches, merge PRs and delete branches."
+    },
+    {
+      "path": ".github/workflows/dump-brain-corpus.yml",
+      "severity": "critical",
+      "status": "confirmed_on_base",
+      "finding": "Manual Databricks exporter queried workspace.barrot.brain and published timestamp/topic/insight/session records to public JSON and Markdown files."
+    },
+    {
+      "path": ".github/workflows/auto-resolve-issues.yml",
+      "severity": "medium",
+      "status": "confirmed_on_base",
+      "finding": "Scheduled batch resolver could comment on and close matching open issues."
+    },
+    {
+      "path": ".github/workflows/barrot-autonomous-resolver.yml",
+      "severity": "medium",
+      "status": "confirmed_on_base",
+      "finding": "Hourly resolver could create issues and assign unassigned issues and PRs."
+    },
+    {
+      "path": ".github/workflows/daily-digest.yml",
+      "severity": "medium",
+      "status": "confirmed_on_base",
+      "finding": "Scheduled workflow could publish a public GitHub issue containing the unvalidated legacy XRP accuracy claim."
+    },
+    {
+      "path": ".github/workflows/self-schedule.yml",
+      "severity": "medium",
+      "status": "confirmed_on_base",
+      "finding": "Scheduled gap detector could create and label GitHub issues."
+    }
+  ],
+  "proposed_controls": [
+    "Make the six scheduled/public issue and subscriber workflows inert with workflow_dispatch-only, permissions: {}, and if: false.",
+    "Disable Scheduler Tick and Merge Queue pending reviewed allowlists, protected per-item authorization and safe state storage.",
+    "Disable the Databricks public exporter and replace its script with a no-network, no-credential, no-write status-only entry point.",
+    "Preserve existing brain_corpus/dump.json and brain_corpus/dump.md unchanged; classify them separately before any removal or republishing.",
+    "Add four regression tests to tests/test_v3_scripts.py, explicitly included in core CI."
+  ],
+  "limitations": [
+    "Existing public brain-corpus dump files remain unchanged; this proposal stops future exports but does not remove public copies or rewrite Git history.",
+    "The current subscriber JSON was previously observed empty; historical exposure in commits, forks, caches and external copies is unresolved.",
+    "Other scheduled writers and external actions from the older PR #1610 audit remain for a separate fresh-main successor.",
+    "hover_bike_updates.yml and manual Databricks token rotation remain separate reviews.",
+    "PR #1613 separately proposes fresh-main Cross Analysis and legacy accuracy containment."
+  ],
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatched": false,
+    "secret_access": false,
+    "public_data_export": false,
+    "existing_brain_dump_deleted": false,
+    "paper_trade": false,
+    "real_money_action": false
+  }
+}
