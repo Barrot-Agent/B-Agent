@@ -245,6 +245,18 @@
       "source_ids": [
         "S3"
       ]
+    },
+    {
+      "id": "A26",
+      "classification": "derived",
+      "claim": "The disclosed $214.1M cash-funded purchase divided by 84,365,876 XRP implies an aggregate average of approximately $2.53776 per XRP; compared with the XRPL Dashboard's $1.2533 mark at 2026-11-03 05:05 UTC, that mark is approximately 50.61% lower.",
+      "source_ids": [
+        "S1",
+        "S7"
+      ],
+      "limitations": [
+        "This is a ratio of aggregate disclosed cash and units, not a verified lot-level cost basis or realized/unrealized loss. Evernorth's impairment policy uses the lowest observable intraday price on its selected principal market since acquisition, not this simple average. The dashboard price is a third-party mark, not an executable quote."
+      ]
     }
   ],
   "capital_ledger": {
@@ -273,8 +285,13 @@
       "126,791,458 XRP was contributed by Ripple; zero historical carrying value is an accounting basis, not zero economic value.",
       "The $30M notes and $9.7M Ripple facility draw are financing sources, not proof of completed XRP purchases.",
       "The 5,218,935-share Cantor facility is potential equity issuance and is not XRP token supply.",
-      "Coinbase principal-market designation is for impairment measurement; it is not evidence of trade execution or custody."
-    ]
+      "Coinbase principal-market designation is for impairment measurement; it is not evidence of trade execution or custody.",
+      "The $2.53776 implied cash-tranche average is aggregate cash divided by aggregate XRP units, not a lot-level tax or accounting basis; do not treat the 50.61% mark difference as a realized loss or final impairment."
+    ],
+    "implied_cash_tranche_average_price_usd": 2.53775591,
+    "dashboard_mark_usd": 1.2533,
+    "dashboard_mark_at_utc": "2026-11-03T05:05:00Z",
+    "mark_discount_to_implied_cash_average_percent": -50.61
   },
   "relationship_edges": [
     {
@@ -455,6 +472,15 @@
         "A25"
       ],
       "confidence": "high"
+    },
+    {
+      "from": "Evernorth_cash_funded_XRP_tranche",
+      "to": "XRP_market_price",
+      "relation": "aggregate_implied_average_2_53776_vs_dashboard_mark_1_2533",
+      "claim_ids": [
+        "A26"
+      ],
+      "confidence": "derived_mark_comparison"
     }
   ],
   "competing_hypotheses": [
