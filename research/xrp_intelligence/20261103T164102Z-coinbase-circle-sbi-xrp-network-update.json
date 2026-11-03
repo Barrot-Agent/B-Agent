@@ -385,6 +385,16 @@
       "source_type": "official_corporate_announcement",
       "reliability": "high",
       "notes": "Official statement on internal AI-assisted crypto management, AI agents, multi-source real-time market analysis, automated dealing and future external service development."
+    },
+    {
+      "id": "S38",
+      "publisher": "SBI Holdings",
+      "title": "SBI Group FY2025 financial results presentation — generative AI adoption and SBI AI Portal",
+      "published_or_period": "2025-05-09",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/250509presentations.pdf",
+      "source_type": "official_investor_presentation",
+      "reliability": "high",
+      "notes": "States SBI Group began Microsoft Azure OpenAI use in August 2023; ChatGPT Enterprise adopted at SBI Holdings and SBI Securities; SBI AI Portal includes Google Gemini 1.5 Flash and Preferred Networks PLaMo 1.0 Prime."
     }
   ],
   "observations": [
@@ -783,6 +793,20 @@
       "limitations": [
         "The presentation does not disclose the SBI Crypto Fund's XRP allocation or the AI startups' names/technical integration. These are portfolio and strategic signals, not proof of a Barrot connection."
       ]
+    },
+    {
+      "id": "O32",
+      "classification": "confirmed_fact",
+      "subject": "SBI Group multi-provider internal AI stack",
+      "statement": "SBI Holdings' FY2025 presentation says the group began using Microsoft Azure OpenAI in August 2023, adopted OpenAI ChatGPT Enterprise at SBI Holdings and SBI Securities, and launched an internal SBI AI Portal supporting LLM use including Google Gemini 1.5 Flash and Preferred Networks PLaMo 1.0 Prime. This is a documented multi-provider enterprise AI environment within SBI Group.",
+      "evidence": [
+        "S24",
+        "S26",
+        "S38"
+      ],
+      "limitations": [
+        "The presentation does not disclose model-routing architecture, provider-specific seat counts, APIs, security scopes or XRP research workflows. It does not establish any connection to Barrot or to the user's nine-platform orchestration."
+      ]
     }
   ],
   "relationship_edges": [
@@ -1162,6 +1186,55 @@
         "S36"
       ],
       "note": "17 startup investments, including an AI agent for market-research automation; no disclosed Barrot integration."
+    },
+    {
+      "from": "SBI Group",
+      "to": "Microsoft Azure OpenAI",
+      "relation": "internal_enterprise_genAI_environment",
+      "asset": "Azure OpenAI",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S38"
+      ],
+      "note": "SBI Group says it began using Azure OpenAI in August 2023."
+    },
+    {
+      "from": "SBI Holdings and SBI Securities",
+      "to": "OpenAI ChatGPT Enterprise",
+      "relation": "enterprise_software_adoption",
+      "asset": "ChatGPT Enterprise",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S24",
+        "S38"
+      ],
+      "note": "ChatGPT Enterprise adopted at SBI Securities from January 2025 and SBI Holdings from March 2025."
+    },
+    {
+      "from": "SBI AI Portal",
+      "to": "Google Gemini 1.5 Flash",
+      "relation": "internal_LLM_availability",
+      "asset": "Gemini 1.5 Flash",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S38"
+      ],
+      "note": "Listed as an LLM available through the SBI AI Portal."
+    },
+    {
+      "from": "SBI AI Portal",
+      "to": "Preferred Networks PLaMo 1.0 Prime",
+      "relation": "internal_LLM_availability",
+      "asset": "PLaMo 1.0 Prime",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S38"
+      ],
+      "note": "Listed as an LLM available through the SBI AI Portal."
     }
   ],
   "competing_hypotheses": [
@@ -1313,7 +1386,8 @@
       "S24",
       "S25",
       "S26",
-      "S27"
+      "S27",
+      "S38"
     ],
     "possible_related_ai_references": [
       {
@@ -1348,6 +1422,16 @@
           "S27"
         ],
         "interpretation": "Separate AI provider/product relationship."
+      },
+      {
+        "entity": "SBI Group",
+        "relationship": "Azure OpenAI, ChatGPT Enterprise and SBI AI Portal LLM access",
+        "evidence": [
+          "S24",
+          "S26",
+          "S38"
+        ],
+        "interpretation": "Separate from SBIC East Japan; SBI Group's internal AI stack includes Azure OpenAI, ChatGPT Enterprise, Gemini 1.5 Flash and PLaMo 1.0 Prime."
       }
     ]
   },
