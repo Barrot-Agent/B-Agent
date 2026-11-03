@@ -1,0 +1,126 @@
+{
+  "schema_version": "barrot.xrp.market-snapshot.v1",
+  "captured_at_utc": "2026-11-03T16:10:51.722Z",
+  "asset": "XRP",
+  "forecast_status": "NOT_ISSUED",
+  "spot_observation": {
+    "source_id": "SRC-KRAKEN-XRPUSD-TICKER",
+    "publisher": "Kraken",
+    "endpoint": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+    "retrieved_at_utc": "2026-11-03T16:10:51.722Z",
+    "exchange_event_timestamp_utc": null,
+    "pair_key": "XXRPZUSD",
+    "quote_currency": "USD",
+    "last_usd": 1.278,
+    "best_bid_usd": 1.27777,
+    "best_ask_usd": 1.27778,
+    "bid_ask_spread_usd": 0.00001,
+    "volume_24h_xrp": 21868956.2810974,
+    "vwap_24h_usd": 1.26239422,
+    "low_24h_usd": 1.23364,
+    "high_24h_usd": 1.28923,
+    "open_24h_usd": 1.24803,
+    "trade_count_24h": 24241,
+    "interpretation": "Single-venue public ticker snapshot. The API response contains no exchange event timestamp; retrieval time is recorded separately. Not a consolidated market price or a forecast."
+  },
+  "etf_observations": [
+    {
+      "source_id": "SRC-XRP-INSIGHTS",
+      "publisher": "XRP Insights",
+      "url": "https://xrp-insights.com/",
+      "retrieved_at_utc": "2026-11-03T16:10:51.722Z",
+      "observation_date": "2026-11-02",
+      "reported_net_flow_xrp": -32825,
+      "reported_total_holdings_xrp": 1196570000,
+      "reported_total_aum_usd": 1507450000,
+      "coverage_as_reported": "Six US spot XRP ETFs plus BITW",
+      "methodology_as_reported": "Day-over-day change in issuer-reported XRP holdings; GXRP flow excluded while holdings remain in totals.",
+      "quality_status": "PROVISIONAL_OR_INTERNALLY_INCONSISTENT",
+      "limitation": "The dashboard reports a Nov 2 value while its data page says the dataset is as of Oct 30 and the Nov 2 row remains provisional until re-settled. Do not treat this as a final settled flow."
+    },
+    {
+      "source_id": "SRC-BYKARANTELI",
+      "publisher": "ByKaranteli",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "retrieved_at_utc": "2026-11-03T16:10:51.722Z",
+      "observation_date": "2026-11-02",
+      "reported_net_flow_usd": -530000,
+      "reported_five_day_net_flow_usd": 7400000,
+      "reported_total_net_assets_usd": 1420000000,
+      "reported_cumulative_net_inflow_usd": 1810000000,
+      "coverage_as_reported": "Displayed table includes XRP, XRPZ, XRPC, TOXR and GXRP; full product universe not reconciled here.",
+      "quality_status": "PROVISIONAL_UNTIL_SETTLED",
+      "limitation": "USD cash-flow reporting and displayed fund coverage differ from XRP Insights' holdings-delta methodology. The page explicitly marks the date provisional."
+    },
+    {
+      "source_id": "SRC-XRP-DESK",
+      "publisher": "XRP Desk",
+      "url": "https://xrpdesk.app/",
+      "retrieved_at_utc": "2026-11-03T16:10:51.722Z",
+      "observation_date": "2026-11-02",
+      "reported_net_flow_xrp": -585900,
+      "reported_total_holdings_xrp": 1160000000,
+      "coverage_as_reported": "Six spot funds; page references a Google Sheet and additional 'other columns'.",
+      "page_cache_refreshed_at_utc": "2026-11-03T10:20:00Z",
+      "quality_status": "METHODOLOGY_AND_UNIVERSE_NOT_HARMONIZED",
+      "limitation": "Not directly comparable with XRP Insights' seven-product total or its issuer-holdings delta."
+    }
+  ],
+  "data_quality_assessment": {
+    "flags": [
+      "Kraken is one venue and the ticker has no exchange event timestamp.",
+      "ETF trackers report different units, fund universes, and flow methodologies.",
+      "Nov 2 ETF observations are provisional or otherwise not fully settled in the retrieved sources.",
+      "Source independence among the ETF trackers is not established; they are not counted as three independent confirmations.",
+      "No issuer-by-issuer reconciliation has been completed for the observation date."
+    ],
+    "handling": "Retain every source observation separately with its own methodology and timestamp. Do not average the ETF figures, impute missing funds as zero, or use the aggregate as a model feature until the universe and settlement rules are reconciled."
+  },
+  "feature_store_eligibility": {
+    "spot_ticker": "RAW_VENUE_SPECIFIC_FEATURE_ONLY; requires aligned multi-venue snapshots for consolidated features.",
+    "etf_flows": "BLOCKED_PENDING_ISSUER_LEVEL_RECONCILIATION",
+    "prediction_use": "NOT_ELIGIBLE_FOR_DIRECTIONAL_FORECAST_FROM_THIS_SNAPSHOT"
+  },
+  "causal_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Issuer-reported ETF holdings changes may approximate net fund accumulation over time.",
+      "support": "Holdings deltas are directly observable in issuer disclosures.",
+      "disconfirming_or_limiting_evidence": "Holdings changes can include non-creation/redemption effects, fund rebalancing, fees, timing differences, and missing issuer observations."
+    },
+    {
+      "id": "H2",
+      "statement": "Sustained, reconciled ETF creations may contribute to spot demand or reduce freely available inventory.",
+      "support": "A creation requires the fund ecosystem to source or receive underlying XRP, subject to each product's operational mechanics.",
+      "disconfirming_or_limiting_evidence": "One-day provisional flow observations do not establish causal price impact; market makers, OTC sourcing, derivatives hedging, redemptions, and broader liquidity can offset or dominate the effect."
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC-KRAKEN-XRPUSD-TICKER",
+      "url": "https://api.kraken.com/0/public/Ticker?pair=XRPUSD",
+      "source_type": "exchange_public_api",
+      "source_timestamp_utc": null
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS",
+      "url": "https://xrp-insights.com/",
+      "source_type": "third_party_tracker_using_issuer_holdings"
+    },
+    {
+      "id": "SRC-XRP-INSIGHTS-DATA",
+      "url": "https://xrp-insights.com/data",
+      "source_type": "tracker_methodology_and_download_metadata"
+    },
+    {
+      "id": "SRC-BYKARANTELI",
+      "url": "https://bykaranteli.com/etf/xrp",
+      "source_type": "third_party_tracker"
+    },
+    {
+      "id": "SRC-XRP-DESK",
+      "url": "https://xrpdesk.app/",
+      "source_type": "third_party_dashboard"
+    }
+  ]
+}
