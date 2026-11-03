@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "xrp_binance_redistribution_followup",
+  "snapshot_id": "xrp-redistribution-followup-20261103-run11",
+  "captured_at_utc": "2026-11-03T01:12:00Z",
+  "repository": "Barrot-Agent/B-Agent",
+  "research_priority": "XRP intelligence and prediction-engine mastery",
+  "execution_foundation": "Barrot V3",
+  "forecast_status": "NOT_ISSUED",
+  "event": {
+    "incident": "Binance multi-chain hot-wallet security incident",
+    "initial_xrp_drain": {
+      "window_utc": [
+        "2026-10-29T20:04:00Z",
+        "2026-10-29T20:09:00Z"
+      ],
+      "source_wallet_count": 5,
+      "source_attribution": "Binance proof-of-reserves-labelled hot-wallet accounts per Bitquery address data",
+      "total_xrp_reported": 233461943.1,
+      "approximate_value_usd_at_theft": 296000000,
+      "receiving_account": "rK21t6nGLy4MNDqhvy3pGwcLFy25qgfzMx",
+      "classification": "SOURCED_ONCHAIN_ATTRIBUTION"
+    },
+    "redistribution": {
+      "window_utc": [
+        "2026-11-02T03:52:00Z",
+        "2026-11-02T04:00:00Z"
+      ],
+      "large_payments": 9,
+      "recipient_accounts": 6,
+      "separate_test_account": "rJheAAxFoWNoTrfrt8N5GyAJLa559jWh4b",
+      "test_account_balance_xrp": 1000,
+      "six_recipient_balances_xrp": {
+        "ryB7NESZcttqzRioiD5L6Kf5tFL87ktmx": 40001000,
+        "rKxwzjpZj5r9eXnCJQvLVUnebpGEHTDH1F": 40001000,
+        "rhfA8QzpcDPYX3safySLrvT5afnNjHc9XB": 40001000,
+        "rsNoNkb1zqMBR1rjbrasUzExqjCDXseisW": 40001000,
+        "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD": 40001000,
+        "raoMrxbMFo5xpVfE9VPoEuVpv1CTtebm5t": 33455920
+      },
+      "six_recipient_total_xrp": 233460920,
+      "seven_account_total_xrp": 233461920,
+      "original_sender_residual_xrp": 23.69905,
+      "combined_reported_balance_xrp": 233461943.69905,
+      "difference_vs_initial_report_xrp": 0.59905,
+      "accounting_status": "UNRESOLVED_0_59905_XRP_DIFFERENCE",
+      "two_40m_transfers": {
+        "first_utc": "2026-11-02T03:55:31Z",
+        "second_utc": "2026-11-02T03:56:21Z",
+        "interval_seconds": 50,
+        "second_transaction_hash": "3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+        "second_recipient": "rhXtRtpfZRAKVayWd5Z5kRJ2YXYkcuxNRD",
+        "classification": "PART_OF_THE_NINE_PAYMENT_REDISTRIBUTION_NOT_ADDITIONAL_TO_INITIAL_233_46M_XRP"
+      },
+      "separate_binance_50m_transfer": {
+        "timestamp_utc": "2026-11-01T15:04:01Z",
+        "amount_xrp": 50000000,
+        "source": "Binance-labelled wallet",
+        "destination": "unidentified",
+        "linkage_to_attack": "NOT_ESTABLISHED",
+        "classification": "SEPARATE_EXCHANGE_FLOW_OBSERVATION"
+      }
+    },
+    "post_redistribution_status": {
+      "bitquery_cutoff_utc": "2026-11-02T13:26:00Z",
+      "q_eternal_ledger_index": 108064685,
+      "q_eternal_observation_utc": "2026-11-02T19:55:00Z",
+      "reported_outgoing_payments_from_seven_recipient_accounts": 0,
+      "interpretation": "No outgoing XRP payments were reported from the seven recipient accounts at the cited cutoffs. This does not rule out offchain sale arrangements, custodial credit, or activity after those cutoffs.",
+      "latest_public_snapshot_not_live_rpc_replay": true
+    }
+  },
+  "market_and_cross_chain_context": {
+    "bitquery_cutoff_utc": "2026-11-02T13:26:00Z",
+    "total_incident_value_at_theft_prices_usd": 6300000000,
+    "frozen_or_rescued_estimate_usd": 2700000000,
+    "still_at_attacker_estimate_usd": 3000000000,
+    "attacker_eth_reported": 539862,
+    "attacker_btc_reported": 18270,
+    "aave_path": {
+      "usdt_supplied_usd": 60000000,
+      "eth_borrowed_usd": 45000000,
+      "status_at_2026_11_02T12_55Z": "LOAN_REPORTED_OPEN",
+      "note": "Tether address-level freeze does not automatically freeze USDT deposited into a pooled lending protocol; the receipt position and protocol-level intervention are separate mechanisms."
+    },
+    "issuer_freezes": {
+      "circle_usdc_tracked_wallets_usd": 823000000,
+      "circle_later_issuer_report_usd": 1100000000,
+      "tether_tracked_wallets_usd": 1380000000,
+      "tether_later_issuer_report_usd": 1560000000,
+      "ripple_rlusd_usd": 40500000,
+      "reconciliation": "Issuer-reported totals and investigator-tracked wallet totals have different scopes and must not be added."
+    },
+    "whaleradar_scope": {
+      "snapshot_utc": "2026-11-03T00:43:00Z",
+      "tracked_chains": [
+        "Bitcoin",
+        "Ethereum"
+      ],
+      "xrp_tracking": "NOT_INCLUDED",
+      "note": "WhaleRadar's latest page is not an independent post-cutoff XRP-wallet status source. Its ETH/BTC aggregate is not directly comparable to Bitquery's broader ETH route accounting."
+    }
+  },
+  "evidence_classification": {
+    "confirmed_onchain_observation": "Transactions and balances as reported by named public-chain investigators/explorers.",
+    "sourced_attribution": "Wallet ownership labels supplied by investigators; labels can be incomplete or wrong.",
+    "inference": "The seven new accounts are redistribution destinations controlled by the same attacker, inferred from timing, funding and transfer pattern.",
+    "speculation": "The purpose of the split, beneficial ownership of destination accounts, eventual sale route and any offchain disposition remain unknown.",
+    "disconfirming_evidence": "No exchange deposit or mixer was found on Bitquery's followed trails as of its cutoff; this does not prove none exists outside the traced scope."
+  },
+  "competing_hypotheses": [
+    {
+      "id": "H1",
+      "statement": "The seven-account split is a custody/operational dispersal step before later movement.",
+      "evidence_for": [
+        "Nine payments from the original receiver into newly created accounts",
+        "Small test payments preceded the larger transfers"
+      ],
+      "evidence_against": [
+        "No outgoing payments reported from recipients at the cited cutoffs"
+      ],
+      "status": "PLAUSIBLE_NOT_CONFIRMED"
+    },
+    {
+      "id": "H2",
+      "statement": "The split is an attempt to reduce monitoring concentration or prepare multiple liquidity paths.",
+      "evidence_for": [
+        "Six principal accounts plus a test account",
+        "Large equal-sized transfers"
+      ],
+      "evidence_against": [
+        "No exchange deposits or swaps reported in the followed XRP trails"
+      ],
+      "status": "SPECULATIVE"
+    },
+    {
+      "id": "H3",
+      "statement": "The 50M XRP Binance-labelled transfer on November 1 is part of the attacker trail.",
+      "evidence_for": [
+        "Large transfer from a Binance-labelled account near the incident"
+      ],
+      "evidence_against": [
+        "No direct on-ledger connection to the attacker address was established; separate source account"
+      ],
+      "status": "NOT_SUPPORTED_BY_CURRENT_LINKAGE"
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "bitquery-binance-investigation-20261102",
+      "publisher": "Bitquery",
+      "url": "https://www.bitquery.io/investigations/binance-hack",
+      "published_or_updated": "2026-11-02",
+      "observation_cutoff_utc": "2026-11-02T13:26:00Z",
+      "source_type": "ONCHAIN_INVESTIGATION",
+      "independence_note": "Primary investigator's own multi-chain trace; address attribution still label-based."
+    },
+    {
+      "id": "q-eternal-xrp-redistribution-20261102",
+      "publisher": "Q-Eternal",
+      "url": "https://q-eternal.com/blog/2026-11-02/",
+      "observation_cutoff_utc": "2026-11-02T19:55:00Z",
+      "ledger_index": 108064685,
+      "source_type": "XRPL_LEDGER_REPLAY_AND_ANALYSIS",
+      "independence_note": "Separate public-ledger analyst; uses same public XRPL ledger, not an independent underlying data universe."
+    },
+    {
+      "id": "whale-alert-40m-xrp-second-transfer",
+      "publisher": "Whale Alert",
+      "url": "https://whale-alert.io/transaction/ripple/3AAA8BEE45ADFD6833A2CAED9E28D00F82C20278F730BA722B79DB453B0E617D",
+      "observation_utc": "2026-11-02T03:56:21Z",
+      "source_type": "TRANSACTION_ALERT",
+      "independence_note": "Transaction-level alert and address label; does not independently establish beneficial ownership."
+    },
+    {
+      "id": "coindesk-cc-xrp-first-binance-outflow",
+      "publisher": "CoinDesk CC",
+      "url": "https://coindesk.cc/story/2026/11/xrp-hit-first-in-binance-hack-five-wallets-drained-in-about-four-minutes",
+      "published_utc": "2026-11-02T06:06:00Z",
+      "source_type": "SECONDARY_REPORT",
+      "independence_note": "Summarizes TRM Labs, Bitcoin.com News and U.Today; not counted as an independent onchain data source."
+    },
+    {
+      "id": "the-crypto-basic-xrp-80m-redistribution",
+      "publisher": "The Crypto Basic",
+      "url": "https://thecryptobasic.com/2026/11/02/binance-hack-wallet-moves-80m-xrp-in-50-seconds-as-separate-50m-xrp-leaves-binance/",
+      "published": "2026-11-02",
+      "source_type": "SECONDARY_REPORT",
+      "independence_note": "Distinguishes the two 40M transfers from a separate Binance-labelled 50M transfer; the two 40M transfers are part of the seven-account redistribution."
+    },
+    {
+      "id": "whaleradar-binance-funds-20261103",
+      "publisher": "WhaleRadar",
+      "url": "https://whaleradar.com/events/binance-hack-2026-10/funds",
+      "observation_utc": "2026-11-03T00:43:00Z",
+      "source_type": "BTC_ETH_TRACKER",
+      "independence_note": "Tracks Bitcoin and Ethereum; does not track XRP, TRON, Solana, Arbitrum or Avalanche. Not used to assert XRP-wallet status."
+    },
+    {
+      "id": "reuters-binance-outflows-20261102",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/finance/binance-sees-outflows-stabilising-exchange-returns-online-after-63-billion-heist-2026-11-02/",
+      "published": "2026-11-02",
+      "source_type": "NEWS_REPORT",
+      "independence_note": "Exchange-wide net-flow reporting; does not identify XRP-specific migration."
+    }
+  ],
+  "event_study": {
+    "status": "DESIGNED_NOT_EXECUTED",
+    "controls_required": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "BNB",
+      "XLM",
+      "broad_crypto_index"
+    ],
+    "event_windows": [
+      "2026-10-29T20:04:00Z",
+      "2026-11-02T04:00:00Z"
+    ],
+    "features": [
+      "XRP_spot_volume",
+      "XRP_exchange_netflows",
+      "XRP_perp_OI",
+      "funding_by_venue",
+      "XRP_AMM_depth",
+      "issuer_freeze_events",
+      "wallet_outflow_events"
+    ],
+    "leakage_controls": [
+      "Use only information published by each cutoff",
+      "Pin ledger heights and exchange timestamps",
+      "Separate original theft from subsequent redistribution",
+      "Do not treat Binance aggregate reserve replenishment as XRP spot demand"
+    ],
+    "success_metrics": [
+      "Out-of-sample incremental explanatory power",
+      "Event-window abnormal return versus controls",
+      "Liquidity/impact recovery time",
+      "Calibration of event-risk probabilities"
+    ]
+  },
+  "changed_scope_from_previous_handoff": [
+    "The two 40M XRP transfers at 03:55:31 and 03:56:21 UTC are confirmed as components of the nine-payment redistribution from the original attacker receiver into the six principal recipient accounts; they are not an additional 80M beyond the original theft.",
+    "The separate 50M XRP transfer from a Binance-labelled wallet on November 1 remains unlinked to the attacker.",
+    "WhaleRadar's latest November 3 page tracks BTC and ETH, not XRP; it must not be used as a current XRP-wallet status source."
+  ],
+  "verification": {
+    "artifact_status": "DESIGNED",
+    "source_urls_reviewed": "EXECUTED",
+    "direct_live_xrpl_rpc_replay": "NOT_EXECUTED",
+    "arithmetic_recomputed": "EXECUTED",
+    "exact_head_ci": "PENDING"
+  },
+  "safety": {
+    "main_modified": false,
+    "merge_performed": false,
+    "force_push": false,
+    "workflow_dispatch": false,
+    "secrets_accessed": false,
+    "external_deployments": false,
+    "paper_trading": false,
+    "real_money": false
+  }
+}
