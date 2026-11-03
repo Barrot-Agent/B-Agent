@@ -75,17 +75,24 @@ def test_status_contract_requires_fixed_horizon_and_independent_evaluation():
     assert "independent evaluation attestation" in controls
 
 
-def test_accuracy_workflow_is_read_only_and_does_not_push():
+def test_accuracy_workflow_is_disabled_until_fixed_horizon_evaluator_is_verified():
     workflow = WORKFLOW.read_text(encoding="utf-8")
 
-    assert "contents: read" in workflow
-    assert "persist-credentials: false" in workflow
-    assert "signal_evaluation_status.json" in workflow
-    assert "actions/upload-artifact@v4" in workflow
-    assert "contents: write" not in workflow
-    assert "git push" not in workflow
-    assert "git add" not in workflow
-    assert "pip install requests" not in workflow
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    for forbidden in (
+        "schedule:",
+        "contents: write",
+        "contents: read",
+        "actions/checkout",
+        "scripts/check_signal_accuracy.py",
+        "git push",
+        "git add",
+        "requests",
+        "GH_TOKEN",
+    ):
+        assert forbidden not in workflow
 
 
 
