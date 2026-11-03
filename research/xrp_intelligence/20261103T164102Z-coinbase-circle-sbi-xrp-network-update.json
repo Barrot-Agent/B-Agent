@@ -245,6 +245,56 @@
       "source_type": "peer_reviewed_research_paper",
       "reliability": "high",
       "notes": "Uses SBIC to mean Social Bias Inference Corpus; demonstrates acronym collision, not a link to the Japanese company."
+    },
+    {
+      "id": "S24",
+      "publisher": "SBI Holdings / SBI Securities",
+      "title": "SBI Group begins deployment of OpenAI ChatGPT Enterprise",
+      "published_or_period": "2025-05-01",
+      "url": "https://www.sbigroup.co.jp/news/2025/0501_15410.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "SBI Holdings says it introduced ChatGPT Enterprise to some employees from March 2025; SBI Securities had introduced it from January 2025; SBI established an internal generative-AI office in July 2023."
+    },
+    {
+      "id": "S25",
+      "publisher": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+      "title": "Generative AI (ChatGPT): present and future seminar",
+      "published_or_period": "2026-03-05",
+      "url": "https://www.sbic.co.jp/seminar/20260305js/",
+      "source_type": "official_seminar_listing",
+      "reliability": "high",
+      "notes": "SBIC East Japan seminar on ChatGPT use, hosted with Hamamatsu Iwata Shinkin and featuring a Microsoft evangelist."
+    },
+    {
+      "id": "S26",
+      "publisher": "SBI Holdings",
+      "title": "SBI AI Portal opened to accelerate AI use and innovation",
+      "published_or_period": "2025-05-08",
+      "url": "https://www.sbigroup.co.jp/news/pr/2025/0508_15419.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Describes an internal group AI/data platform, approved AI applications, knowledge sharing and governance."
+    },
+    {
+      "id": "S27",
+      "publisher": "SBI Securities / AlpacaTech",
+      "title": "Expansion of AI-generated morning and evening investment information service",
+      "published_or_period": "2025-08-22",
+      "url": "https://www.sbigroup.co.jp/news/pr/2025/0822_15678.html",
+      "source_type": "official_corporate_announcement",
+      "reliability": "high",
+      "notes": "Describes a Gemini/Google Cloud generative-AI investment-information service for Japanese and U.S. stocks."
+    },
+    {
+      "id": "S28",
+      "publisher": "Permission",
+      "title": "Official ASK token contract addresses",
+      "published_or_period": "Current docs retrieved 2026-11-03",
+      "url": "https://docs.permission.ai/ask-token/contract-addresses",
+      "source_type": "official_token_documentation",
+      "reliability": "high",
+      "notes": "Lists official ASK token contracts on Base and Polygon using LayerZero OFT; no XRPL deployment is listed in the current official contract table."
     }
   ],
   "observations": [
@@ -408,6 +458,67 @@
       "limitations": [
         "Management's strategy description is not proof of future results or XRP-specific adoption."
       ]
+    },
+    {
+      "id": "O13",
+      "classification": "confirmed_fact",
+      "subject": "SBI Holdings-OpenAI enterprise adoption",
+      "statement": "SBI Holdings and SBI Securities officially announced adoption of OpenAI's ChatGPT Enterprise. SBI Holdings began limited employee use in March 2025; SBI Securities had begun in January 2025. SBI also said it established an internal generative-AI office in July 2023. This is a direct enterprise-software adoption relationship, not evidence of an XRP integration or a live Barrot connector.",
+      "evidence": [
+        "S24"
+      ],
+      "limitations": [
+        "The announcement does not disclose seat counts, API use, model versions, external data access or XRP-specific workflows."
+      ]
+    },
+    {
+      "id": "O14",
+      "classification": "confirmed_fact",
+      "subject": "SBIC-ChatGPT educational activity",
+      "statement": "The separate Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan) has published multiple generative-AI/ChatGPT seminars, including a March 5, 2026 seminar titled 'Generative AI (ChatGPT): present and future' and a 2025 course covering ChatGPT usage. This establishes educational programming, not a formal OpenAI partnership.",
+      "evidence": [
+        "S15",
+        "S25"
+      ],
+      "limitations": [
+        "The exact phrase 'SBIC, ChatGPT SBIC' remains ambiguous; the seminar does not prove that SBIC is a ChatGPT customer or an XRP-related entity."
+      ]
+    },
+    {
+      "id": "O15",
+      "classification": "confirmed_fact",
+      "subject": "SBI internal AI platform",
+      "statement": "SBI Holdings announced an internal SBI AI Portal on May 8, 2025, intended to support AI/data literacy, approved generative-AI applications, data-driven decisions, knowledge sharing and governance across the group.",
+      "evidence": [
+        "S26"
+      ],
+      "limitations": [
+        "An internal portal announcement does not identify every underlying provider or prove integration with Barrot."
+      ]
+    },
+    {
+      "id": "O16",
+      "classification": "confirmed_fact",
+      "subject": "SBI Securities-Google Gemini usage",
+      "statement": "SBI Securities and AlpacaTech expanded an AI-generated morning/evening investment-information service using Google Gemini and Google Cloud generative-AI services for Japanese and U.S. market information.",
+      "evidence": [
+        "S27"
+      ],
+      "limitations": [
+        "This is a product-level AI adoption signal, not proof of an authenticated Gemini API connection available to Barrot."
+      ]
+    },
+    {
+      "id": "O17",
+      "classification": "sourced_claim",
+      "subject": "ASK Coin candidate identification",
+      "statement": "If 'ASK Coin' refers to the ASK ticker token, the strongest current candidate is Permission's ASK token. Permission's official documentation lists LayerZero OFT contracts on Base and Polygon; the current official contract table does not list XRPL.",
+      "evidence": [
+        "S28"
+      ],
+      "limitations": [
+        "The phrase remains ambiguous without its originating context. No XRP/XRPL relationship was established for this candidate."
+      ]
     }
   ],
   "relationship_edges": [
@@ -564,6 +675,55 @@
         "S19"
       ],
       "note": "Binance announced a USD 100 million strategic investment in Circle and a five-year USDC commercial agreement; this broadens Circle's distribution relationships beyond Coinbase."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "OpenAI",
+      "relation": "ChatGPT_Enterprise_adoption",
+      "asset": "ChatGPT Enterprise",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S24"
+      ],
+      "note": "Enterprise software adoption by SBI Holdings and SBI Securities; no Barrot integration or XRP-specific workflow is disclosed."
+    },
+    {
+      "from": "SBIC East Japan",
+      "to": "ChatGPT",
+      "relation": "public_training_and_seminars",
+      "asset": "ChatGPT",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S15",
+        "S25"
+      ],
+      "note": "SBIC East Japan runs ChatGPT education events; this is separate from SBI Holdings' ChatGPT Enterprise adoption."
+    },
+    {
+      "from": "SBI Holdings",
+      "to": "SBI AI Portal",
+      "relation": "internal_AI_and_data_enablement_platform",
+      "asset": "AI applications",
+      "classification": "confirmed",
+      "xrp_relevance": "indirect_corporate_capability",
+      "evidence": [
+        "S26"
+      ],
+      "note": "Internal group AI portal and governance initiative."
+    },
+    {
+      "from": "SBI Securities",
+      "to": "Google Gemini",
+      "relation": "generative_AI_investment_information_service",
+      "asset": "Gemini",
+      "classification": "confirmed",
+      "xrp_relevance": "none_established",
+      "evidence": [
+        "S27"
+      ],
+      "note": "Gemini/Google Cloud used for an AI-generated investment-information service; no Barrot connector is established."
     }
   ],
   "competing_hypotheses": [
@@ -651,15 +811,58 @@
     "evidence": [
       "S14",
       "S15",
-      "S23"
+      "S23",
+      "S24",
+      "S25",
+      "S26",
+      "S27"
+    ],
+    "possible_related_ai_references": [
+      {
+        "entity": "SBIC East Japan",
+        "relationship": "ChatGPT training/seminars",
+        "evidence": [
+          "S15",
+          "S25"
+        ],
+        "interpretation": "Education and demonstrations; not an OpenAI partnership."
+      },
+      {
+        "entity": "SBI Holdings and SBI Securities",
+        "relationship": "ChatGPT Enterprise adoption",
+        "evidence": [
+          "S24"
+        ],
+        "interpretation": "Direct enterprise software adoption by SBI Group companies; distinct from SBIC East Japan."
+      },
+      {
+        "entity": "SBI Holdings",
+        "relationship": "SBI AI Portal",
+        "evidence": [
+          "S26"
+        ],
+        "interpretation": "Internal AI/data enablement platform."
+      },
+      {
+        "entity": "SBI Securities",
+        "relationship": "Google Gemini market-information service",
+        "evidence": [
+          "S27"
+        ],
+        "interpretation": "Separate AI provider/product relationship."
+      }
     ]
   },
   "phrase_watch": {
     "ask_coin": {
-      "candidate": "Permission Coin (ASK)",
-      "status": "candidate_only",
-      "xrp_relationship": "none_verified_in_this_pass",
-      "note": "The exact phrase 'ASK Coin' is ambiguous; retain the Permission Coin interpretation only as a candidate, not a confirmed identification."
+      "candidate": "Permission ASK token",
+      "status": "best_supported_candidate_not_final_identity",
+      "evidence": [
+        "S28"
+      ],
+      "technical_scope": "Official contract documentation lists Base and Polygon LayerZero OFT deployments.",
+      "xrp_relationship": "none_verified",
+      "note": "If the user meant a different 'ASK Coin', the original source/context is still required."
     },
     "actual_capital": {
       "status": "unresolved",
