@@ -129,3 +129,24 @@ Public data retrieval found:
 The 3.5x range between the smallest and largest OI provider observations is quarantined. The providers do not expose a harmonized contract universe, exchange set, update time or calculation method. No averaging or directional inference is permitted. The single Kraken quote is not synchronized with the older aggregator observations. Coinbase and Binance raw API requests were inaccessible through this retrieval path; no substitute values were invented.
 
 Forecast remains `NOT_ISSUED`. Next market task is a fixed-universe, timestamped per-exchange capture of spot L2, perpetual OI/funding/liquidations, and regulated CME futures kept as a separate universe.
+
+
+## XRP ETF flow settlement correction — 2026-11-03 13:34 UTC
+
+New append-only correction:
+`research/xrp_intelligence/20261103T133429Z-xrp-etf-flow-settlement-methodology-correction.json`
+
+Fresh XRP Insights JSON metadata generated at 12:19:10.322 UTC now reports:
+- `data_as_of=2026-11-02`, `latest_row_date=2026-11-02`, `provisional_row_date=null`.
+- Dashboard says one settled trading day.
+- Aggregate holdings-change flow: -32,825 XRP (approximately -$41K), with total reported holdings 1,196,567,361 XRP.
+- GXRP flow is excluded across the history because of the issuer-page capture gap from September 2–28; GXRP holdings/AUM remain in totals, but its flow is withheld. Therefore -32,825 XRP is settled for available computed flows, not a complete seven-fund flow.
+
+CryptoETF remains a separate observation published at 05:47 UTC:
+- November 2 flow -$0.5M, 3/5 funds reported.
+- XRPC -$0.5M; XRPZ and GXRP not yet reported; Bitwise XRP and TOXR zero.
+- CryptoETF describes flow as shares created/redeemed at NAV, not trading volume.
+
+XRP Insights computes day-over-day changes in issuer-reported XRP holdings. Its methodology notes that changes can include effects other than creations/redemptions, including BITW index rebalancing and XRP-denominated fee accruals. The two providers therefore differ in universe, completeness, publication time and measurement method. Do not average or treat the figures as equivalent measures of actual spot purchases or new external capital.
+
+The CSV row-level file was not retrievable through the current web reader (unsupported text/csv content type); no per-fund rows were reconstructed. The JSON metadata and methodology page were retrieved directly. Forecast remains `NOT_ISSUED`.
