@@ -92,3 +92,23 @@ PR #1589 final exact-head verification completed:
 - Core CI [41644395374](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644395374): 343 tests and 8 subtests passed in 7.85 seconds.
 - Fail-closed gate [41644394934](https://github.com/Barrot-Agent/B-Agent/actions/runs/41644394934): passed; merge remained disabled.
 - PR #1589 remains draft/open/unmerged.
+
+
+## Evernorth equity-structure inventory — 2026-11-03 13:30 UTC
+
+New artifact:
+`research/xrp_intelligence/20261103T133002Z-evernorth-equity-instrument-inventory-and-sbi-affiliates.json`
+
+Verified from the SEC prospectus and October 9 closing 8-K:
+- 26,094,680 issued Class A shares as of October 22.
+- 31,392,746 issued Class C shares as of the prospectus date.
+- 2,359,038 Class C shares issued to investors affiliated with SBI Holdings at closing because of the 39.9% ownership threshold.
+- Class C is an economic, generally non-voting, non-listed and transfer-restricted class with conversion mechanics under the charter.
+- 22,953,128 Company Units may be redeemed/exchanged for new Class A one-for-one or cash at Pubco's election.
+- Separate potential/reserved Class A categories include 9,283,847 warrants, 3,585,278 initial note-conversion shares, 8,930,929 incentive-plan reserves, 1,786,185 ESPP reserves and 5,218,935 Cantor facility shares.
+
+Do not sum these into a fully diluted share count. Class C is already issued; unit redemptions may be cash-settled; warrants/notes/reserves/ELOC are conditional; possible overlap among instruments is not fully reconciled. These are Evernorth equity interests, not XRP supply or actual XRP buying.
+
+A separate arithmetic correction artifact,
+`research/xrp_intelligence/20261103T133112Z-evernorth-sbi-classc-ratio-arithmetic-correction.json`,
+corrects the simple SBI-affiliated Class C / issued A+C ratio from 4.1039% to 4.1036% (2,359,038 / 57,487,426). The approximate 4.10% interpretation is unchanged. This is not a beneficial-ownership or voting-power percentage.
