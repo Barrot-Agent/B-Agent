@@ -7,7 +7,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def _load_kaggle_script(monkeypatch):
+def _load_kaggle_script(monkeypatch, relative_path="scripts/kaggle_competitions_automation.py"):
     # The safety tests exercise the pre-authentication guard only; keep the
     # optional Kaggle/pandas/sklearn runtime dependencies stubbed and offline.
     import sys
@@ -28,7 +28,7 @@ def _load_kaggle_script(monkeypatch):
     stub("sklearn.dummy", DummyClassifier=type("DummyClassifier", (), {}), DummyRegressor=type("DummyRegressor", (), {}))
     stub("sklearn.preprocessing", LabelEncoder=type("LabelEncoder", (), {}))
 
-    path = ROOT / "scripts" / "kaggle_competitions_automation.py"
+    path = ROOT / relative_path
     spec = importlib.util.spec_from_file_location("kaggle_submission_guard_test", path)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
@@ -158,3 +158,35 @@ def test_invalid_competition_allowlist_slug_fails_closed(monkeypatch):
     monkeypatch.setenv("KAGGLE_COMPETITION_ALLOWLIST", "approved-competition,*")
     with pytest.raises(SystemExit, match="invalid slug"):
         module._approved_competitions()
+
+
+
+def test_allowlist_cannot_exceed_configured_submission_cap(monkeypatch):
+    module = _load_kaggle_script(monkeypatch)
+    monkeypatch.setenv(
+        "KAGGLE_COMPETITION_ALLOWLIST",
+        "competition-one,competition-two,competition-three,competition-four,competition-five,competition-six",
+    )
+    with pytest.raises(SystemExit, match="exceeds KAGGLE_MAX_COMPETITIONS"):
+        module._approved_competitions()
+
+
+def test_duplicate_kaggle_entrypoint_is_guarded_and_identical(monkeypatch):
+    primary = _load_kaggle_script(monkeypatch)
+    duplicate = _load_kaggle_script(
+        monkeypatch,
+        "barrot_agent/tools/kaggle_competitions_automation.py",
+    )
+    primary_text = (ROOT / "scripts" / "kaggle_competitions_automation.py").read_text(encoding="utf-8")
+    duplicate_text = (ROOT / "barrot_agent" / "tools" / "kaggle_competitions_automation.py").read_text(encoding="utf-8")
+    assert primary_text == duplicate_text
+
+    monkeypatch.delenv("KAGGLE_ALLOW_SUBMISSIONS", raising=False)
+    monkeypatch.delenv("KAGGLE_COMPETITION_ALLOWLIST", raising=False)
+    monkeypatch.setattr(
+        duplicate,
+        "_build_api",
+        lambda: pytest.fail("duplicate entrypoint must fail before Kaggle API authentication"),
+    )
+    with pytest.raises(SystemExit, match="non-empty exact"):
+        duplicate.main()
