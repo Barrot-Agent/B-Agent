@@ -213,96 +213,6 @@
       ]
     }
   ],
-  "actual_capital_ledger": [
-    {
-      "item": "Circle USDC circulation",
-      "amount_usd": 70000000000,
-      "as_of": "2026-10-29",
-      "classification": "ISSUER_REPORTED_STABLECOIN_LIABILITY",
-      "detail": "Circle's current USDC page reports $70.0B in circulation; this is not XRP market capitalization or XRP capital inflow."
-    },
-    {
-      "item": "Circle average USDC in circulation",
-      "amount_usd": 76524000000,
-      "as_of": "2026-Q2",
-      "classification": "PERIOD_AVERAGE_STABLECOIN_LIABILITY",
-      "detail": "Circle Q2 2026 Form 10-Q."
-    },
-    {
-      "item": "Circle USDC on Coinbase at period end",
-      "amount_usd": 12442000000,
-      "as_of": "2026-06-30",
-      "classification": "DISTRIBUTION_PLATFORM_BALANCE",
-      "detail": "Circle Q2 2026 Form 10-Q; not an XRP position."
-    },
-    {
-      "item": "Circle distribution costs under Coinbase agreements",
-      "amount_usd": 324600000,
-      "as_of": "2026-Q2",
-      "classification": "ISSUER_REPORTED_DISTRIBUTION_COST",
-      "detail": "Circle-reported Q2 cost; not assumed equal to Coinbase revenue."
-    },
-    {
-      "item": "Circle distribution costs under Coinbase agreements",
-      "amount_usd": 655300000,
-      "as_of": "2026-H1",
-      "classification": "ISSUER_REPORTED_DISTRIBUTION_COST",
-      "detail": "Six-month total through June 30, 2026; includes Q2 and is not additive to the Q2 amount."
-    },
-    {
-      "item": "Coinbase stablecoin revenue",
-      "amount_usd": 306905000,
-      "as_of": "2026-Q3",
-      "classification": "EXCHANGE_REPORTED_REVENUE",
-      "detail": "Coinbase Q3 2026 10-Q; distinct accounting measure from Circle distribution costs."
-    },
-    {
-      "item": "Coinbase total net revenue",
-      "amount_usd": 1160462000,
-      "as_of": "2026-Q3",
-      "classification": "EXCHANGE_REPORTED_REVENUE",
-      "detail": "Coinbase Q3 2026 10-Q."
-    },
-    {
-      "item": "BNY assets under custody/administration",
-      "amount_usd": 63400000000000,
-      "as_of": "2026-09-30",
-      "classification": "CUSTODIAN_WIDE_CORPORATE_SCALE",
-      "detail": "BNY-wide figure; not digital-asset AUC, XRP holdings or Ripple client balances."
-    },
-    {
-      "item": "SBI JPYSC handling balance",
-      "amount_jpy": 30000000000,
-      "as_of": "2026-11-02",
-      "classification": "STABLECOIN_HANDLING_BALANCE",
-      "detail": "Includes the lending balance; do not add the >¥10B lending balance again."
-    },
-    {
-      "item": "SBI JPYSC lending balance",
-      "amount_jpy": 10000000000,
-      "as_of": "2026-11-02",
-      "classification": "CUSTOMER_LENDING_BALANCE",
-      "detail": "Subset of handling balance; customers lend JPYSC to SBI VC Trade."
-    },
-    {
-      "item": "BNY XRP custody balances",
-      "amount_xrp": null,
-      "classification": "UNKNOWN",
-      "detail": "No XRP-specific assets-under-custody amount disclosed."
-    },
-    {
-      "item": "Standard Chartered / LMAX RLUSD collateral capacity",
-      "amount_usd": null,
-      "classification": "UNKNOWN_FUTURE_PRODUCT",
-      "detail": "Collateral integration is announced as future work; no amount, haircut or live balance disclosed."
-    },
-    {
-      "item": "Coinbase RLUSD collateral balance",
-      "amount_usd": null,
-      "classification": "NOT_LIVE_AT_LAUNCH_UNKNOWN",
-      "detail": "Coinbase says Global Exchange RLUSD collateral availability will follow."
-    }
-  ],
   "relationship_edges": [
     {
       "from": "BNY",
@@ -645,17 +555,19 @@
       "id": "CIRCLE-10Q-20260630",
       "publisher": "Circle Internet Group",
       "type": "SEC_form_10-Q",
-      "date": "2026-08-2026",
+      "date": "2026-08-05",
       "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm",
-      "independence_group": "sec-circle-filing"
+      "independence_group": "sec-circle-filing",
+      "date_semantics": "SEC EDGAR directory timestamp for filing accession"
     },
     {
       "id": "COINBASE-10Q-20260930",
       "publisher": "Coinbase Global",
       "type": "SEC_form_10-Q",
-      "date": "2026-10-29",
+      "date": "2026-09-30",
       "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
-      "independence_group": "sec-coinbase-filing"
+      "independence_group": "sec-coinbase-filing",
+      "date_semantics": "reporting period end; filing date not asserted in this artifact"
     },
     {
       "id": "SBI-JPYSC-LENDING-20261102",
@@ -717,5 +629,109 @@
     "secret_access": false,
     "external_transaction": false,
     "forecast_issued": false
-  }
+  },
+  "capital_and_financial_metrics_ledger": [
+    {
+      "item": "Circle USDC circulation",
+      "amount_usd": 70000000000,
+      "as_of": "2026-10-29",
+      "classification": "ISSUER_REPORTED_STABLECOIN_LIABILITY",
+      "detail": "Circle's current USDC page reports $70.0B in circulation; this is not XRP market capitalization or XRP capital inflow.",
+      "metric_type": "stablecoin_outstanding_or_average_balance"
+    },
+    {
+      "item": "Circle average USDC in circulation",
+      "amount_usd": 76524000000,
+      "as_of": "2026-Q2",
+      "classification": "PERIOD_AVERAGE_STABLECOIN_LIABILITY",
+      "detail": "Circle Q2 2026 Form 10-Q.",
+      "metric_type": "stablecoin_outstanding_or_average_balance"
+    },
+    {
+      "item": "Circle USDC on Coinbase at period end",
+      "amount_usd": 12442000000,
+      "as_of": "2026-06-30",
+      "classification": "DISTRIBUTION_PLATFORM_BALANCE",
+      "detail": "Circle Q2 2026 Form 10-Q; not an XRP position.",
+      "metric_type": "distribution_platform_balance"
+    },
+    {
+      "item": "Circle distribution costs under Coinbase agreements",
+      "amount_usd": 324600000,
+      "as_of": "2026-Q2",
+      "classification": "ISSUER_REPORTED_DISTRIBUTION_COST",
+      "detail": "Circle-reported Q2 cost; not assumed equal to Coinbase revenue.",
+      "metric_type": "distribution_expense_not_capital"
+    },
+    {
+      "item": "Circle distribution costs under Coinbase agreements",
+      "amount_usd": 655300000,
+      "as_of": "2026-H1",
+      "classification": "ISSUER_REPORTED_DISTRIBUTION_COST",
+      "detail": "Six-month total through June 30, 2026; includes Q2 and is not additive to the Q2 amount.",
+      "metric_type": "distribution_expense_not_capital"
+    },
+    {
+      "item": "Coinbase stablecoin revenue",
+      "amount_usd": 306905000,
+      "as_of": "2026-Q3",
+      "classification": "EXCHANGE_REPORTED_REVENUE",
+      "detail": "Coinbase Q3 2026 10-Q; distinct accounting measure from Circle distribution costs.",
+      "metric_type": "reported_revenue_not_capital"
+    },
+    {
+      "item": "Coinbase total net revenue",
+      "amount_usd": 1160462000,
+      "as_of": "2026-Q3",
+      "classification": "EXCHANGE_REPORTED_REVENUE",
+      "detail": "Coinbase Q3 2026 10-Q.",
+      "metric_type": "reported_revenue_not_capital"
+    },
+    {
+      "item": "BNY assets under custody/administration",
+      "amount_usd": 63400000000000,
+      "as_of": "2026-09-30",
+      "classification": "CUSTODIAN_WIDE_CORPORATE_SCALE",
+      "detail": "BNY-wide figure; not digital-asset AUC, XRP holdings or Ripple client balances.",
+      "metric_type": "custodian_scale_not_asset_specific"
+    },
+    {
+      "item": "SBI JPYSC handling balance",
+      "amount_jpy": 30000000000,
+      "as_of": "2026-11-02",
+      "classification": "STABLECOIN_HANDLING_BALANCE",
+      "detail": "Includes the lending balance; do not add the >¥10B lending balance again.",
+      "metric_type": "stablecoin_handling_balance"
+    },
+    {
+      "item": "SBI JPYSC lending balance",
+      "amount_jpy": 10000000000,
+      "as_of": "2026-11-02",
+      "classification": "CUSTOMER_LENDING_BALANCE",
+      "detail": "Subset of handling balance; customers lend JPYSC to SBI VC Trade.",
+      "metric_type": "customer_lending_balance_subset"
+    },
+    {
+      "item": "BNY XRP custody balances",
+      "amount_xrp": null,
+      "classification": "UNKNOWN",
+      "detail": "No XRP-specific assets-under-custody amount disclosed.",
+      "metric_type": "unknown_asset_specific_balance"
+    },
+    {
+      "item": "Standard Chartered / LMAX RLUSD collateral capacity",
+      "amount_usd": null,
+      "classification": "UNKNOWN_FUTURE_PRODUCT",
+      "detail": "Collateral integration is announced as future work; no amount, haircut or live balance disclosed.",
+      "metric_type": "unknown_asset_specific_balance"
+    },
+    {
+      "item": "Coinbase RLUSD collateral balance",
+      "amount_usd": null,
+      "classification": "NOT_LIVE_AT_LAUNCH_UNKNOWN",
+      "detail": "Coinbase says Global Exchange RLUSD collateral availability will follow.",
+      "metric_type": "unknown_asset_specific_balance"
+    }
+  ],
+  "ledger_note": "This ledger intentionally separates stablecoin outstanding balances, platform balances, reserve/financial revenue, distribution expenses and custodian-wide scale metrics. Revenue and distribution expenses are financial flows, not capital balances; they must not be added to stablecoin circulation or XRP flows."
 }
