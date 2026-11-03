@@ -6,7 +6,7 @@ XRP ecosystem intelligence and prediction-engine mastery remain the highest-prio
 ## New research artifact
 - Artifact: `research/xrp_intelligence/20261103T164102Z-coinbase-circle-sbi-xrp-network-update.json`
 - Captured: 2026-11-03 16:41:02 UTC
-- Source register: 23 sources (including official corporate/product documents and one peer-reviewed acronym-disambiguation paper)
+- Source register: 28 sources (official corporate/product documents, protocol documentation and one peer-reviewed acronym-disambiguation paper)
 - Observations: 12
 - Relationship edges: 12
 - Competing hypotheses: 5
@@ -83,3 +83,15 @@ The research artifact was strengthened with three additional sources:
 - An ACL Anthology research paper using SBIC to mean Social Bias Inference Corpus, documenting an acronym collision without implying any relationship to the Japanese SBIC company.
 
 The artifact now contains 23 sources, 12 observations, 12 relationship edges and 5 competing hypotheses. JSON was parsed successfully after the update. The new research PR remains draft and unmerged; CI status is checked separately.
+
+
+## SBI / ChatGPT and ASK Coin clarification — 2026-11-03 16:46 UTC
+
+The phrase thread is more resolved, but the entities must remain separate:
+- SBI Holdings and SBI Securities officially announced adoption of OpenAI ChatGPT Enterprise on 2025-05-01. SBI Holdings said limited employee use began in March 2025; SBI Securities began in January 2025. SBI had created an internal generative-AI office in July 2023. This is a direct enterprise-software adoption relationship, not an XRP integration and not a live Barrot connector.
+- SBI Holdings also announced an internal SBI AI Portal on 2025-05-08. SBI Securities separately described an investment-information product using Google Gemini and Google Cloud generative-AI services. These are corporate AI-adoption signals, not evidence that Barrot can access those systems.
+- SBIC East Japan is a separate legal entity from SBI Holdings. Its official pages show ChatGPT training/seminars, including a 2026-03-05 event and a 2025 course. This establishes education programming, not a formal OpenAI partnership.
+- If 'ASK Coin' refers to the ASK ticker token, the strongest supported candidate is Permission's ASK token. Its official contract documentation lists Base and Polygon LayerZero OFT contracts; no XRPL deployment appears in the current official contract table. Keep the identification as a candidate until the originating context is known.
+- 'actual capital' remains unresolved.
+
+The research artifact now contains 28 sources, 17 observations, 16 relationship edges and 5 competing hypotheses. It was serialized and parsed successfully after these additions.
