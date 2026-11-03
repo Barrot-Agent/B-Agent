@@ -8,6 +8,10 @@ from barrot_agent.evolution.point_in_time_features import (
     independent_source_groups,
     validate_feature_record,
 )
+from barrot_agent.evolution.research_artifact_clock import (
+    ResearchArtifactClockError,
+    validate_capture_before_commit,
+)
 
 CUTOFF = "2026-11-03T16:00:00Z"
 CAPTURED = "2026-11-03T16:05:00Z"
@@ -194,3 +198,91 @@ def test_future_values_never_enter_model_facing_snapshot():
     snapshot = build_feature_snapshot([feature(), late], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED)
     assert "future-secret" not in str(snapshot["records"])
     assert "future-secret" not in str(snapshot["excluded_records"])
+
+
+
+def test_snapshot_uses_only_latest_eligible_revision_for_a_feature():
+    original = feature(record_id="v1", feature_version=1, value=1.25)
+    revised = feature(
+        record_id="v2",
+        feature_version=2,
+        value=1.28,
+        known_at_utc="2026-11-03T16:00:00Z",
+        source_data_as_of_utc="2026-11-03T16:00:00Z",
+        ingested_at_utc="2026-11-03T16:00:01Z",
+        revision_available_at_utc="2026-11-03T16:00:00Z",
+        revision_status="revised",
+        supersedes_record_id="v1",
+    )
+    snapshot = build_feature_snapshot(
+        [original, revised], cutoff_utc="2026-11-03T16:00:00Z", captured_at_utc="2026-11-03T16:05:00Z"
+    )
+    assert [record["record_id"] for record in snapshot["records"]] == ["v2"]
+    assert snapshot["excluded_records"] == [
+        {"record_id": "v1", "reasons": ["superseded_by_revision"]}
+    ]
+
+
+def test_revision_must_match_predecessor_feature_and_asset():
+    original = feature(record_id="v1", feature_version=1)
+    revised = feature(
+        record_id="v2",
+        feature_version=2,
+        feature_id="xrp.spot.spread",
+        revision_status="revised",
+        supersedes_record_id="v1",
+    )
+    with pytest.raises(FeatureSnapshotError, match="same feature and asset"):
+        build_feature_snapshot(
+            [original, revised], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+        )
+
+
+def test_revision_version_must_exceed_present_predecessor():
+    original = feature(record_id="v1", feature_version=2)
+    revised = feature(
+        record_id="v2",
+        feature_version=2,
+        revision_status="revised",
+        supersedes_record_id="v1",
+    )
+    with pytest.raises(FeatureSnapshotError, match="must exceed its predecessor"):
+        build_feature_snapshot(
+            [original, revised], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+        )
+
+
+def test_conflicting_revisions_cannot_supersede_the_same_predecessor():
+    original = feature(record_id="v1", feature_version=1)
+    revised_a = feature(
+        record_id="v2a", feature_version=2, revision_status="revised", supersedes_record_id="v1"
+    )
+    revised_b = feature(
+        record_id="v2b", feature_version=3, revision_status="revised", supersedes_record_id="v1"
+    )
+    with pytest.raises(FeatureSnapshotError, match="multiple eligible revisions"):
+        build_feature_snapshot(
+            [original, revised_a, revised_b], cutoff_utc=CUTOFF, captured_at_utc=CAPTURED
+        )
+
+
+def test_artifact_capture_must_not_follow_introducing_commit():
+    result = validate_capture_before_commit(
+        "2026-11-03T22:00:00Z", "2026-11-03T22:00:01Z"
+    )
+    assert result["chronology"] == "valid"
+    with pytest.raises(ResearchArtifactClockError, match="cannot be later"):
+        validate_capture_before_commit(
+            "2026-11-03T22:00:02Z", "2026-11-03T22:00:01Z"
+        )
+
+
+def test_artifact_clock_rejects_naive_or_malformed_timestamps():
+    with pytest.raises(ResearchArtifactClockError, match="include a timezone"):
+        validate_capture_before_commit(
+            "2026-11-03T22:00:00", "2026-11-03T22:00:01Z"
+        )
+    with pytest.raises(ResearchArtifactClockError, match="not valid ISO-8601"):
+        validate_capture_before_commit(
+            "not-a-time", "2026-11-03T22:00:01Z"
+        )
