@@ -704,3 +704,29 @@ def test_controlled_approval_workflow_uses_nested_github_pr_fields() -> None:
     assert "head_sha:.head.sha" in workflow
     assert "head_ref:.head.ref" in workflow
     assert "'{number,state,base_ref,head_sha,head_ref,head_repo:.head.repo.full_name}'" not in workflow
+
+
+def test_autonomous_resolver_is_disabled_until_issue_writes_are_approval_gated() -> None:
+    workflow = (
+        REPO_ROOT / ".github" / "workflows" / "barrot-autonomous-resolver.yml"
+    ).read_text(encoding="utf-8")
+
+    assert "workflow_dispatch: {}" in workflow
+    assert "permissions: {}" in workflow
+    assert "if: false" in workflow
+    for forbidden in (
+        "schedule:",
+        "contents: write",
+        "issues: write",
+        "pull-requests: write",
+        "GH_TOKEN",
+        "secrets.GITHUB_TOKEN",
+        "AUTO_ASSIGNEE",
+        "vars.COPILOT_ASSIGNEE",
+        "gh issue create",
+        "gh issue edit",
+        "gh pr edit",
+        "gh pr list",
+        "actions/checkout",
+    ):
+        assert forbidden not in workflow
