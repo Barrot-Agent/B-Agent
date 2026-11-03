@@ -2,7 +2,7 @@
 
 ## Status
 
-Implemented as a deterministic recording/scoring prototype in the draft PR #1590 branch. It does not generate forecasts, ingest live data, train a model, or place trades. It is not merged into main and must not be treated as an operational predictor.
+Proposed as a deterministic recording/scoring prototype in draft PR #1601, with a follow-up safety clarification in PR #1602. It does not generate forecasts, ingest live data, train a model, or place trades. It is not merged into main and must not be treated as an operational predictor.
 
 ## Fixed horizons and target
 
@@ -51,7 +51,7 @@ The Brier normalization is explicitly versioned as three_class_brier_mean_square
 
 ## Storage and safety
 
-The prototype uses SQLite with write transactions and database triggers that reject updates/deletes to forecast, outcome and event records. Events are append-only. No network access, credentials, external writes, or trading actions are included.
+The prototype uses SQLite with write transactions and database triggers that reject ordinary SQL updates/deletes to forecast, outcome and event records. Events are append-only through the library API. The default database and SQLite WAL/SHM/journal sidecars are explicitly ignored by Git so runtime state is not accidentally committed. These controls are not cryptographically tamper-proof against direct database-file replacement, schema/trigger modification or host compromise. Stronger tamper evidence requires periodic hash verification and an independently anchored/signed export. No network access, credentials, external writes, or trading actions are included.
 
 ## Existing calibration-engine gap
 
