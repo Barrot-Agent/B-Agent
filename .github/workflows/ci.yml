@@ -79,4 +79,6 @@ jobs:
             tests/test_autonomous_real_bundle.py \
             tests/test_deliver_bundle_action.py \
             tests/test_signal_summary.py \
+            tests/test_scheduler_workflow_allowlist.py \
+            tests/test_merge_queue_disabled.py \
             -v --no-cov
